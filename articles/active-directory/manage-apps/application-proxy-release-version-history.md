@@ -1,6 +1,6 @@
 ---
-title: 'Serwer proxy aplikacji usługi Azure AD platformy Azure: Historia wersji systemu | Microsoft Docs'
-description: W tym artykule wymieniono wszystkie wersje platformy Azure serwer proxy aplikacji usługi Azure AD i opisano nowe funkcje oraz naprawione problemy
+title: 'Serwer proxy aplikacji usługi Azure AD: historia wersji | Dokumenty firmy Microsoft'
+description: W tym artykule wymieniono wszystkie wersje serwera proxy aplikacji usługi Azure AD i opisano nowe funkcje i problemy z naprawą
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -17,48 +17,48 @@ ms.subservice: app-mgmt
 ms.author: mimart
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b9ecd193282ed9b7333df44689530b4d057ad7f8
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68693898"
 ---
-# <a name="azure-ad-application-proxy-version-release-history"></a>Serwer proxy aplikacji usługi Azure AD platformy Azure: Historia wersji
-W tym artykule wymieniono wersje i funkcje serwera proxy aplikacji Azure Active Directory (Azure AD), który został wystawiony. Zespół usługi Azure AD regularnie aktualizuje serwer proxy aplikacji przy użyciu nowych funkcji i funkcjonalności. Łączniki serwera proxy aplikacji są aktualizowane automatycznie po wydaniu nowej wersji. 
+# <a name="azure-ad-application-proxy-version-release-history"></a>Serwer proxy aplikacji usługi Azure AD: historia wersji
+W tym artykule wymieniono wersje i funkcje serwera proxy aplikacji usługi Azure Active Directory (Azure AD), które zostały wydane. Zespół usługi Azure AD regularnie aktualizuje serwer proxy aplikacji o nowe funkcje i funkcje. Łączniki serwera proxy aplikacji są aktualizowane automatycznie po wydaniu nowej wersji. 
 
-Zalecamy, aby upewnić się, że funkcja autoaktualizacje jest włączona dla łączników, aby upewnić się, że masz najnowsze funkcje i poprawki błędów. Firma Microsoft zapewnia bezpośrednią pomoc techniczną dotyczącą najnowszej wersji łącznika i jednej wersji przed.
+Firma Microsoft zaleca upewnienie się, że automatyczne aktualizacje są włączone dla łączników, aby upewnić się, że masz najnowsze funkcje i poprawki błędów. Firma Microsoft zapewnia bezpośrednie wsparcie dla najnowszej wersji łącznika i jednej wersji wcześniej.
 
-Poniżej znajduje się lista powiązanych zasobów:
+Oto lista powiązanych zasobów:
 
-Resource |  Szczegóły
+Zasób |  Szczegóły
 --------- | --------- |
 Jak włączyć serwer proxy aplikacji | Wymagania wstępne dotyczące włączania serwera proxy aplikacji oraz instalowania i rejestrowania łącznika są opisane w tym [samouczku](application-proxy-add-on-premises-application.md).
-Omówienie łączników serwera Proxy aplikacji usługi Azure AD | Dowiedz się więcej o [zarządzaniu łącznikami](application-proxy-connectors.md) i sposobach [uaktualniania](application-proxy-connectors.md#automatic-updates)łączników.
-Pobieranie łącznika usługi Azure serwer proxy aplikacji usługi Azure AD |  [Pobierz najnowszy łącznik](https://download.msappproxy.net/subscription/d3c8b69d-6bf7-42be-a529-3fe9c2e70c90/connector/download).
+Opis łączników serwera proxy aplikacji usługi Azure AD | Dowiedz się więcej o [zarządzaniu łącznikami](application-proxy-connectors.md) i o [automatycznej aktualizacji](application-proxy-connectors.md#automatic-updates)złączy .
+Pobieranie łącznika serwera proxy aplikacji usługi Azure AD |  [Pobierz najnowszy łącznik](https://download.msappproxy.net/subscription/d3c8b69d-6bf7-42be-a529-3fe9c2e70c90/connector/download).
 
 ## <a name="156120"></a>1.5.612.0
 
 ### <a name="release-status"></a>Stan wydania
 
-20 września 2018: Wydane do pobrania
+20 września 2018: Premiera do pobrania
 
 ### <a name="new-features-and-improvements"></a>Nowe funkcje i ulepszenia
 
-- Dodano obsługę protokołu WebSocket dla aplikacji QlikSense. Aby dowiedzieć się więcej o tym, jak zintegrować QlikSense z serwerem proxy aplikacji, zobacz ten [Przewodnik](application-proxy-qlik.md). 
-- Ulepszono Kreatora instalacji, aby ułatwić konfigurowanie wychodzącego serwera proxy. 
-- Dla łączników należy ustawić protokół TLS 1,2. 
-- Dodano nową umowę licencyjną użytkownika oprogramowania (EULA).  
+- Dodano obsługę WebSocket dla aplikacji QlikSense. Aby dowiedzieć się więcej o tym, jak zintegrować QlikSense z serwerem proxy aplikacji, zobacz ten [instruktaż](application-proxy-qlik.md). 
+- Udoskonalono kreatora instalacji, aby ułatwić konfigurowanie wychodzącego serwera proxy. 
+- Ustaw protokół TLS 1.2 jako domyślny protokół dla łączników. 
+- Dodano nową umowę licencyjną użytkownika końcowego (EULA).  
 
 ### <a name="fixed-issues"></a>Rozwiązane problemy
 
-- Naprawiono usterkę, która spowodowała wystąpienie przecieków pamięci w łączniku.
-- Zaktualizowano wersję Azure Service Bus, która obejmuje rozwiązywanie problemów z przekroczeniem limitu czasu łącznika.
+- Naprawiono błąd, który powodował pewne przecieki pamięci w złączu.
+- Zaktualizowano wersję usługi Azure Service Bus, która zawiera poprawkę błędu w przypadku problemów z limitem czasu łącznika.
 
 ## <a name="154020"></a>1.5.402.0
 
 ### <a name="release-status"></a>Stan wydania
 
-19 stycznia 2018: Wydane do pobrania
+Styczeń 19, 2018: Wydany do pobrania
 
 ### <a name="fixed-issues"></a>Rozwiązane problemy
 
@@ -68,28 +68,28 @@ Pobieranie łącznika usługi Azure serwer proxy aplikacji usługi Azure AD |  [
 
 ### <a name="release-status"></a>Stan wydania 
 
-25 maja 2017: Wydane do pobrania 
+25 maja 2017: Wydany do pobrania 
 
 ### <a name="new-features-and-improvements"></a>Nowe funkcje i ulepszenia 
 
-Ulepszona kontrola nad limitami połączeń wychodzących łączników. 
+Poprawiono kontrolę nad limitami połączeń wychodzących łączników. 
 
 ## <a name="15360"></a>1.5.36.0
 
 ### <a name="release-status"></a>Stan wydania
 
-15 kwietnia 2017: Wydane do pobrania
+15 kwietnia 2017: Wydany do pobrania
 
 ### <a name="new-features-and-improvements"></a>Nowe funkcje i ulepszenia
 
-- Uproszczone dołączanie i zarządzanie przy użyciu mniejszej liczby wymaganych portów. Serwer proxy aplikacji wymaga teraz otwarcia tylko dwóch standardowych portów wychodzących: 443 i 80. Serwer proxy aplikacji nadal używa tylko połączeń wychodzących, więc nadal nie są potrzebne żadne składniki w strefie DMZ. Aby uzyskać szczegółowe informacje, zobacz [dokumentację dotyczącą konfiguracji](application-proxy-add-on-premises-application.md).  
-- Jeśli jest to obsługiwane przez zewnętrzny serwer proxy lub zaporę, możesz teraz otworzyć sieć przy użyciu systemu DNS, a nie z zakresu adresów IP. Usługi serwera proxy aplikacji wymagają połączeń tylko z *. msappproxy.net i *. servicebus.windows.net.
+- Uproszczone dołączanie i zarządzanie z mniejszą liczbą wymaganych portów. Serwer proxy aplikacji wymaga teraz otwarcia tylko dwóch standardowych portów wychodzących: 443 i 80. Serwer proxy aplikacji nadal używa tylko połączeń wychodzących, więc nadal nie potrzebujesz żadnych składników w strefie DMZ. Szczegółowe informacje można znaleźć w naszej [dokumentacji konfiguracyjnej.](application-proxy-add-on-premises-application.md)  
+- Jeśli jest obsługiwany przez zewnętrzny serwer proxy lub zaporę, można teraz otworzyć sieć przez dns zamiast zakresu IP. Usługi proxy aplikacji wymagają tylko połączeń z plikami *.msappproxy.net i *.servicebus.windows.net.
 
 
 ## <a name="earlier-versions"></a>Wcześniejsze wersje
 
-Jeśli używasz wersji łącznika serwera proxy aplikacji starszej niż 1.5.36.0, zaktualizuj ją do najnowszej wersji, aby upewnić się, że masz najnowsze w pełni obsługiwane funkcje.
+Jeśli używasz wersji łącznika serwera proxy aplikacji wcześniej niż 1.5.36.0, zaktualizuj do najnowszej wersji, aby upewnić się, że masz najnowsze w pełni obsługiwane funkcje.
 
 ## <a name="next-steps"></a>Następne kroki
-- Dowiedz się więcej na temat [dostępu zdalnego do aplikacji lokalnych za pomocą usługi Azure serwer proxy aplikacji usługi Azure AD](application-proxy.md).
-- Aby rozpocząć korzystanie z serwera proxy aplikacji [, zobacz Samouczek: Dodaj aplikację lokalną dla dostępu zdalnego za poorednictwem serwera proxy](application-proxy-add-on-premises-application.md)aplikacji.
+- Dowiedz się więcej o [zdalnym dostępie do aplikacji lokalnych za pośrednictwem serwera proxy aplikacji usługi Azure AD.](application-proxy.md)
+- Aby rozpocząć korzystanie z serwera proxy aplikacji, zobacz [Samouczek: Dodawanie aplikacji lokalnej do zdalnego dostępu za pośrednictwem serwera proxy aplikacji](application-proxy-add-on-premises-application.md).

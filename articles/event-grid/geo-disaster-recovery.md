@@ -1,6 +1,6 @@
 ---
-title: Geograficzne odzyskiwanie po awarii w usłudze Azure Event Grid | Dokumentacja firmy Microsoft
-description: W tym artykule opisano, jak usługi Azure Event Grid obsługuje odzyskiwania po awarii replikacji geograficznej (GeoDR) automatycznie.
+title: Odzyskiwanie po awarii geograficznej w usłudze Azure Event Grid | Dokumenty firmy Microsoft
+description: W tym artykule opisano, jak usługa Azure Event Grid automatycznie obsługuje odzyskiwanie po awarii geograficznej (GeoDR).
 services: event-grid
 author: spelluru
 ms.service: event-grid
@@ -8,33 +8,33 @@ ms.topic: conceptual
 ms.date: 05/24/2019
 ms.author: spelluru
 ms.openlocfilehash: 5b5c973a8daa8776efb0909092c569ea46902265
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "66307320"
 ---
-# <a name="server-side-geo-disaster-recovery-in-azure-event-grid"></a>Po stronie serwera geograficznego odzyskiwania po awarii w usłudze Azure Event Grid
-Usługa Event Grid ma teraz automatyczne geograficznego odzyskiwania po awarii (GeoDR) metadane nie tylko dla nowych, ale wszystkie istniejące domeny, tematy i subskrypcje zdarzeń. W przypadku awarii całego regionu platformy Azure, usługi Event Grid już mieć wszystkie metadane związane ze zdarzeniami infrastruktury synchronizowane z usługą sparowanym regionie. Twoje nowe zdarzenia rozpocznie się przepływ ponownie bez potrzeby interwencji użytkownika. 
+# <a name="server-side-geo-disaster-recovery-in-azure-event-grid"></a>Odzyskiwanie po awarii geograficznej po stronie serwera w usłudze Azure Event Grid
+Usługa Event Grid ma teraz automatyczne odzyskiwanie po awarii geograficznej (GeoDR) metadanych nie tylko dla nowych, ale wszystkich istniejących domen, tematów i subskrypcji zdarzeń. Jeśli cały region platformy Azure ujmuje się, usługa Event Grid będzie już synchronizowana wszystkie metadane infrastruktury związane ze zdarzeniami z sparowanym regionem. Twoje nowe wydarzenia zaczną płynąć ponownie bez interwencji ze strony Ciebie. 
 
-Odzyskiwanie po awarii jest mierzona z dwie metryki:
+Odzyskiwanie po awarii jest mierzone za pomocą dwóch metryk:
 
-- [Cel punktu odzyskiwania (RPO)](https://en.wikipedia.org/wiki/Disaster_recovery#Recovery_Point_Objective): minuty lub godziny, danych, które mogą zostać utracone.
-- [Cel czasu odzyskiwania (RTO)](https://en.wikipedia.org/wiki/Disaster_recovery#Recovery_time_objective): minut, godzin, usługa może być w dół.
+- [Cel punktu odzyskiwania (RPO)](https://en.wikipedia.org/wiki/Disaster_recovery#Recovery_Point_Objective): minuty lub godziny danych, które mogą zostać utracone.
+- [Cel czasu odzyskiwania (RTO)](https://en.wikipedia.org/wiki/Disaster_recovery#Recovery_time_objective): minuty godzin, w których usługa może być wyłączna.
 
-Automatycznej pracy awaryjnej usługi Event Grid ma inną wartościom celu punktu odzyskiwania i docelowego czasu odzyskiwania dla metadanych programu (subskrypcje zdarzeń itd.) oraz dane (zdarzenia). Jeśli potrzebujesz innej specyfikacji z poniższych, można nadal implementować własne [po stronie klienta w trybie Failover przy użyciu tematu kondycji interfejsów API](custom-disaster-recovery.md).
+Automatyczna funkcja trybu failover usługi Event Grid ma różne obiekty RPO i RTO dla metadanych (subskrypcje zdarzeń itp.) i danych (zdarzenia). Jeśli potrzebujesz innej specyfikacji niż następujące, nadal możesz zaimplementować własną [stronę klienta w trybie fail over przy użyciu apis kondycji tematu](custom-disaster-recovery.md).
 
 ## <a name="recovery-point-objective-rpo"></a>Cel punktu odzyskiwania (recovery point objective, RPO)
-- **Cel punktu odzyskiwania w metadanych**: zero minut. W dowolnym momencie zasób jest tworzony w usłudze Event Grid, natychmiast są replikowane między regionami. W przypadku przejścia w tryb failover metadanych nie zostaną utracone.
-- **Cel punktu odzyskiwania danych**: Jeśli system jest w dobrej kondycji i w czasie wystąpienia regionalnego trybu failover będzie podążać za istniejącym ruchem, cel RPO dla zdarzeń wynosi około 5 minut.
+- **RPO metadanych:** zero minut. Za każdym razem, gdy zasób jest tworzony w uszkcie zdarzeń, jest natychmiast replikowany w różnych regionach. W przypadku pracy awaryjnej nie są tracone metadane.
+- **RPO danych**: Jeśli system jest zdrowy i nadrabia problem z istniejącym ruchem w czasie regionalnego trybu failover, obiekt RPO dla zdarzeń wynosi około 5 minut.
 
 ## <a name="recovery-time-objective-rto"></a>Cel czasu odzyskiwania (recovery time objective, RTO)
-- **Cel czasu odzyskiwania metadanych**: Chociaż zwykle dużo szybciej i nastąpi to w ciągu 60 minut, usługa Event Grid rozpocznie się do akceptowania połączeń Tworzenie/aktualizowanie/usuwanie tematów i subskrypcji.
-- **Data RTO**: Metadane, np. Zazwyczaj zdarza się znacznie szybciej, jednak w ciągu 60 minut, usługa Event Grid rozpocznie akceptowanie natężenia ruchu po regionalnym przejściu w tryb failover.
+- **RTO metadanych:** Chociaż ogólnie dzieje się to znacznie szybciej, w ciągu 60 minut usługa Event Grid zacznie akceptować wywołania create/update/delete dla tematów i subskrypcji.
+- **RTO danych:** Podobnie jak metadane, zwykle dzieje się znacznie szybciej, jednak w ciągu 60 minut usługa Event Grid rozpocznie akceptowanie nowego ruchu po regionalnej pracy awaryjnej.
 
 > [!NOTE]
-> Koszt metadanych GeoDR na usługi Event Grid to: $0.
+> Koszt metadanych GeoDR w siatce zdarzeń wynosi: $0.
 
 
-## <a name="next-steps"></a>Kolejne kroki
-Jeśli chcesz zaimplementować możesz logiki własnych trybu failover po stronie klienta, zobacz [# tworzyć własne odzyskiwanie po awarii dla tematy niestandardowe w usłudze Event Grid](custom-disaster-recovery.md)
+## <a name="next-steps"></a>Następne kroki
+Jeśli chcesz zaimplementować własną logikę trybu failover po stronie klienta, zobacz [# Tworzenie własnego odzyskiwania po awarii dla tematów niestandardowych w siatce zdarzeń](custom-disaster-recovery.md)

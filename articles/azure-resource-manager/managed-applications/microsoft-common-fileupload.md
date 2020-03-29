@@ -1,22 +1,22 @@
 ---
-title: FileUpload — element interfejsu użytkownika
-description: Opisuje element interfejsu użytkownika Microsoft. Common. FileUpload dla Azure Portal. Umożliwia użytkownikom przesyłanie plików podczas wdrażania aplikacji zarządzanej.
+title: Element interfejsu użytkownika fileupload
+description: Zawiera opis elementu interfejsu użytkownika microsoft.common.fileupload dla witryny Azure portal. Umożliwia użytkownikom przekazywanie plików podczas wdrażania aplikacji zarządzanej.
 author: tfitzmac
 ms.topic: conceptual
 ms.date: 09/05/2018
 ms.author: tomfitz
 ms.openlocfilehash: 61e1c9fe07fdd29ebc00e7e3491472d073bc4e5d
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75652491"
 ---
-# <a name="microsoftcommonfileupload-ui-element"></a>Microsoft.Common.FileUpload UI element
+# <a name="microsoftcommonfileupload-ui-element"></a>Element interfejsu użytkownika microsoft.common.fileupload
 
-Kontrolka, która umożliwia użytkownikowi określenie co najmniej jednego pliku do przekazania.
+Formant, który umożliwia użytkownikowi określenie jednego lub więcej plików do przekazania.
 
-## <a name="ui-sample"></a>Przykładowy interfejs użytkownika
+## <a name="ui-sample"></a>Próbka interfejsu użytkownika
 
 ![Microsoft.Common.FileUpload](./media/managed-application-elements/microsoft.common.fileupload.png)
 
@@ -44,13 +44,13 @@ Kontrolka, która umożliwia użytkownikowi określenie co najmniej jednego plik
 
 ## <a name="sample-output"></a>Przykładowe dane wyjściowe
 
-Jeśli opcje. Multiple ma wartość false, a opcje. parametr-loadmode jest plikiem, a dane wyjściowe zawierają zawartość pliku jako ciąg JSON:
+Jeśli plik options.multiple jest fałszywy, a options.uploadMode jest plikiem, dane wyjściowe mają zawartość pliku jako ciąg JSON:
 
 ```json
 "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
 ```
 
-Jeśli opcja. Multiple ma wartość true, and'options. FileMode ma plik, a następnie dane wyjściowe zawierają zawartość plików jako tablicę JSON:
+Jeśli options.multiple jest true and'options.uploadMode jest plik, a następnie dane wyjściowe ma zawartość plików jako tablicy JSON:
 
 ```json
 [
@@ -61,13 +61,13 @@ Jeśli opcja. Multiple ma wartość true, and'options. FileMode ma plik, a nast�
 ]
 ```
 
-Jeśli opcje. Multiple ma wartość false, a opcje. parametr-loadmode ma wartość URL, a wynikiem jest adres URL w postaci ciągu JSON:
+Jeśli options.multiple jest false i options.uploadMode jest url, a następnie dane wyjściowe ma adres URL jako ciąg JSON:
 
 ```json
 "https://myaccount.blob.core.windows.net/pictures/profile.jpg?sv=2013-08-15&st=2013-08-16&se=2013-08-17&sr=c&sp=r&rscd=file;%20attachment&rsct=binary &sig=YWJjZGVmZw%3d%3d&sig=a39%2BYozJhGp6miujGymjRpN8tsrQfLo9Z3i8IRyIpnQ%3d"
 ```
 
-Jeśli opcje. wiele ma wartość true, a opcja. Właściwość-loadmode ma adres URL, a dane wyjściowe zawierają listę adresów URL jako tablicę JSON:
+Jeśli options.multiple jest true i options.uploadMode jest url, a następnie dane wyjściowe ma listę adresów URL jako tablicy JSON:
 ```json
 [
   "https://myaccount.blob.core.windows.net/pictures/profile1.jpg?sv=2013-08-15&st=2013-08-16&se=2013-08-17&sr=c&sp=r&rscd=file;%20attachment&rsct=binary &sig=YWJjZGVmZw%3d%3d&sig=a39%2BYozJhGp6miujGymjRpN8tsrQfLo9Z3i8IRyIpnQ%3d",
@@ -76,19 +76,19 @@ Jeśli opcje. wiele ma wartość true, a opcja. Właściwość-loadmode ma adres
 ]
 ```
 
-Podczas testowania CreateUiDefinition, niektóre przeglądarki (na przykład Google Chrome) obcinają adresy URL wygenerowane przez element Microsoft. Common. FileUpload w konsoli przeglądarki. Może być konieczne kliknięcie prawym przyciskiem myszy poszczególnych linków w celu skopiowania pełnych adresów URL.
+Podczas testowania createuidedefition niektóre przeglądarki (takie jak Google Chrome) obcinają adresy URL generowane przez element Microsoft.Common.FileUpload w konsoli przeglądarki. Aby skopiować pełne adresy URL, może być konieczne kliknięcie prawym przyciskiem myszy poszczególnych łączy.
 
 ## <a name="remarks"></a>Uwagi
 
-- `constraints.accept` określa typy plików, które są wyświetlane w oknie dialogowym pliku przeglądarki. Aby uzyskać dozwolone wartości, zobacz [specyfikację HTML5](https://html.spec.whatwg.org/multipage/input.html#attr-input-accept) . Wartość domyślna to **null**.
-- Jeśli `options.multiple` ma **wartość true**, użytkownik może wybrać więcej niż jeden plik w oknie dialogowym pliku przeglądarki. Wartość domyślna to **false**.
-- Ten element obsługuje przekazywanie plików w dwóch trybach na podstawie wartości `options.uploadMode`. Jeśli **plik** jest określony, dane wyjściowe mają zawartość pliku jako obiekt BLOB. Jeśli określono **adres URL** , plik zostanie przekazany do tymczasowej lokalizacji, a dane wyjściowe zawierają adres URL obiektu BLOB. Tymczasowe obiekty blob zostaną przeczyszczone po 24 godzinach. Wartość domyślna to **plik**.
-- Przekazany plik jest chroniony. Wyjściowy adres URL zawiera [token SAS](../../storage/common/storage-dotnet-shared-access-signature-part-1.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) służący do uzyskiwania dostępu do pliku podczas wdrażania.
-- Wartość `options.openMode` określa, jak odczytywany jest plik. Jeśli oczekujesz, że plik ma być zwykłym tekstem, określ **tekst**; w przeciwnym razie Określ dane **binarne**. Wartość domyślna to **Text**.
-- Jeśli `options.uploadMode` jest ustawiona na wartość **plik** i `options.openMode` jest ustawiona na wartość **binarną**, dane wyjściowe są kodowane algorytmem Base64.
-- `options.encoding` określa kodowanie, które ma być używane podczas odczytywania pliku. Wartość domyślna to **UTF-8**i jest używana tylko wtedy, gdy `options.openMode` jest ustawiona na **tekst**.
+- `constraints.accept`określa typy plików, które są wyświetlane w oknie dialogowym pliku przeglądarki. Zobacz [specyfikację HTML5](https://html.spec.whatwg.org/multipage/input.html#attr-input-accept) dla dozwolonych wartości. Wartość domyślna to **null**.
+- Jeśli `options.multiple` jest **ustawiona**na true , użytkownik może wybrać więcej niż jeden plik w oknie dialogowym pliku przeglądarki. Wartość domyślna to **fałsz**.
+- Ten element obsługuje przesyłanie plików w dwóch `options.uploadMode`trybach na podstawie wartości programu . Jeśli **plik** jest określony, dane wyjściowe ma zawartość pliku jako obiekt blob. Jeśli **adres URL** jest określony, plik jest przekazyany do lokalizacji tymczasowej, a dane wyjściowe ma adres URL obiektu blob. Tymczasowe obiekty blob zostaną usunięte po 24 godzinach. Wartością domyślną jest **plik**.
+- Przekazany plik jest chroniony. Wyjściowy adres URL zawiera [token sygnatury dostępu](../../storage/common/storage-dotnet-shared-access-signature-part-1.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) Współdzielonego do uzyskiwania dostępu do pliku podczas wdrażania.
+- Wartość określa `options.openMode` sposób odczytywania pliku. Jeśli oczekuje się, że plik będzie tekstem zwykłym, należy określić **tekst**; w przeciwnym razie określ **plik binarny**. Wartością domyślną jest **tekst**.
+- Jeśli `options.uploadMode` jest ustawiona `options.openMode` na **plik** i jest ustawiona na **binarną,** dane wyjściowe są zakodowane w formacie base64.
+- `options.encoding`określa kodowanie, które ma być używane podczas odczytywania pliku. Wartością domyślną jest **UTF-8**i `options.openMode` jest używana tylko wtedy, gdy jest **ustawiona**na tekst .
 
 ## <a name="next-steps"></a>Następne kroki
 
-* Wprowadzenie do tworzenia definicji interfejsu użytkownika można znaleźć w temacie [wprowadzenie do CreateUiDefinition](create-uidefinition-overview.md).
-* Opis wspólnych właściwości elementów interfejsu użytkownika można znaleźć w temacie [CreateUiDefinition elementy](create-uidefinition-elements.md).
+* Aby zapoznać się z wprowadzeniem do tworzenia definicji interfejsu użytkownika, zobacz [Wprowadzenie do createuidefinition](create-uidefinition-overview.md).
+* Aby uzyskać opis wspólnych właściwości w elementach interfejsu użytkownika, zobacz [CreateUiDefinition elementów](create-uidefinition-elements.md).

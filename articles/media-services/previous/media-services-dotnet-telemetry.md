@@ -1,6 +1,6 @@
 ---
-title: Konfigurowanie telemetrii usługi Azure Media Services przy użyciu platformy .NET | Dokumentacja firmy Microsoft
-description: W tym artykule opisano korzystanie z telemetrii usługi Azure Media Services przy użyciu zestawu .NET SDK.
+title: Konfigurowanie danych telemetrycznych usługi Azure Media Services za pomocą platformy .NET| Dokumenty firmy Microsoft
+description: W tym artykule pokazano, jak używać danych telemetrycznych usługi Azure Media Services przy użyciu narzędzia .NET SDK.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -15,33 +15,33 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: 1ffaefc51121aeb7421d6e49a3c0e58c76d4391e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "61464950"
 ---
-# <a name="configuring-azure-media-services-telemetry-with-net"></a>Konfigurowanie telemetrii usługi Azure Media Services przy użyciu platformy .NET 
+# <a name="configuring-azure-media-services-telemetry-with-net"></a>Konfigurowanie danych telemetrycznych usługi Azure Media Services za pomocą platformy .NET 
 
-W tym artykule opisano ogólne kroki, które może wykonać podczas konfigurowania telemetrii usługi Azure Media Services (AMS) przy użyciu zestawu .NET SDK. 
+W tym artykule opisano ogólne kroki, które można wykonać podczas konfigurowania danych telemetrycznych usługi Azure Media Services (AMS) przy użyciu pliku .NET SDK. 
 
 >[!NOTE]
->Aby uzyskać szczegółowy opis co to jest telemetrii usługi AMS i jak go używać, zobacz [Przegląd](media-services-telemetry-overview.md) artykułu.
+>Aby uzyskać szczegółowe wyjaśnienie, co to jest telemetria AMS i jak go używać, zobacz [artykuł omówienie.](media-services-telemetry-overview.md)
 
-Korzystanie z danych telemetrycznych, w jednym z następujących sposobów:
+Dane telemetryczne można wykorzystać w jeden z następujących sposobów:
 
-- Odczytywać dane bezpośrednio z usługi Azure Table Storage (na przykład przy użyciu zestawu SDK usługi Storage). Opis tabel magazynu danych telemetrycznych, patrz **wykorzystywanie informacje telemetryczne** w [to](https://msdn.microsoft.com/library/mt742089.aspx) artykułu.
+- Odczytuj dane bezpośrednio z usługi Azure Table Storage (na przykład przy użyciu SDK magazynu). Aby zapoznać się z opisem tabel magazynu danych telemetrycznych, zobacz **informacje dotyczące ilości danych telemetrycznych** w [tym](https://msdn.microsoft.com/library/mt742089.aspx) artykule.
 
 Lub
 
-- Na użytek obsługi w Media Services .NET SDK odczytu magazynu danych. W tym artykule pokazano, jak włączyć telemetrię dla określonego konta usługi AMS i tworzenie zapytań względem metryk za pomocą usługi Azure Media Services .NET SDK.  
+- Użyj pomocy technicznej w programie Media Services .NET SDK do odczytywania danych magazynu. W tym artykule pokazano, jak włączyć dane telemetryczne dla określonego konta usługi AMS i jak wysyłać zapytania do metryk przy użyciu narzędzia Azure Media Services .NET SDK.  
 
-## <a name="configuring-telemetry-for-a-media-services-account"></a>Konfigurowanie telemetrii dla konta usługi Media Services
+## <a name="configuring-telemetry-for-a-media-services-account"></a>Konfigurowanie danych telemetrycznych dla konta usługi Media Services
 
-Poniższe kroki są wymagane do włączenia telemetrii:
+Aby włączyć telemetrię, potrzebne są następujące kroki:
 
-- Uzyskiwanie poświadczeń konta magazynu dołączone do konta usługi Media Services. 
-- Tworzenie punktu końcowego powiadomienia za pomocą **EndPointType** równa **AzureTable** i endPointAddress wskazujący tabeli magazynu.
+- Pobierz poświadczenia konta magazynu dołączonego do konta usługi Media Services. 
+- Utwórz punkt końcowy powiadomień z **endpointtype** ustawiony na **AzureTable** i endPointAddress wskazując tabelę magazynu.
 
 ```csharp
         INotificationEndPoint notificationEndPoint = 
@@ -50,7 +50,7 @@ Poniższe kroki są wymagane do włączenia telemetrii:
                       "https://" + _mediaServicesStorageAccountName + ".table.core.windows.net/");
 ```
 
-- Tworzenie konfiguracji monitorowania dla usług, które chcesz monitorować. Nie więcej niż jedno ustawienie konfiguracji monitorowania jest dozwolone. 
+- Utwórz ustawienie konfiguracji monitorowania dla usług, które chcesz monitorować. Dozwolone jest nie więcej niż jedno ustawienie konfiguracji monitorowania. 
 
 ```csharp
         IMonitoringConfiguration monitoringConfiguration = _context.MonitoringConfigurations.Create(notificationEndPoint.Id,
@@ -61,15 +61,15 @@ Poniższe kroki są wymagane do włączenia telemetrii:
             });
 ```
 
-## <a name="consuming-telemetry-information"></a>Wykorzystywanie informacji telemetrycznych
+## <a name="consuming-telemetry-information"></a>Korzystanie z informacji telemetrycznych
 
-Informacji dotyczących odbierająca komunikaty telemetryczne, zobacz [to](media-services-telemetry-overview.md) artykułu.
+Aby uzyskać informacje dotyczące korzystania z informacji telemetrycznych, zobacz [ten](media-services-telemetry-overview.md) artykuł.
 
 ## <a name="create-and-configure-a-visual-studio-project"></a>Tworzenie i konfigurowanie projektu programu Visual Studio
 
 1. Skonfiguruj środowisko projektowe i wypełnij plik app.config przy użyciu informacji dotyczących połączenia, zgodnie z opisem w sekcji [Projektowanie usługi Media Services na platformie .NET](media-services-dotnet-how-to-use.md). 
 
-2. Dodaj następujący element do **appSettings** zdefiniowane w pliku app.config:
+2. Dodaj następujący element do **appSettings zdefiniowane** w pliku app.config:
 
     ```xml
         <add key="StorageAccountName" value="storage_name" />
@@ -77,7 +77,7 @@ Informacji dotyczących odbierająca komunikaty telemetryczne, zobacz [to](media
  
 ## <a name="example"></a>Przykład  
     
-Poniższy przykład pokazuje, jak włączyć telemetrię dla określonego konta usługi AMS i tworzenie zapytań względem metryk za pomocą usługi Azure Media Services .NET SDK.  
+W poniższym przykładzie pokazano, jak włączyć dane telemetryczne dla określonego konta USŁUGI AMS i jak wysyłać zapytania do metryk przy użyciu narzędzia Azure Media Services .NET SDK.  
 
 ```csharp
 using System;
@@ -226,7 +226,7 @@ namespace AMSMetrics
 }
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 

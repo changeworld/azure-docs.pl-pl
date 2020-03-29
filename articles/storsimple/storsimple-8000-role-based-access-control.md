@@ -1,6 +1,6 @@
 ---
-title: Korzystanie z kontroli dostępu opartej na rolach dla usługi StorSimple | Dokumentacja firmy Microsoft
-description: Opisuje sposób używania kontroli dostępu opartej na rolach platformy Azure (RBAC) w ramach usługi StorSimple.
+title: Korzystanie z kontroli dostępu opartej na rolach dla StorSimple | Dokumenty firmy Microsoft
+description: W tym artykule opisano sposób korzystania z kontroli dostępu opartej na rolach platformy Azure (RBAC) w kontekście StorSimple.
 services: storsimple
 documentationcenter: ''
 author: alkohli
@@ -15,34 +15,34 @@ ms.workload: na
 ms.date: 10/11/2017
 ms.author: alkohli
 ms.openlocfilehash: a79753a897a62e194a759c23a9c0acc45c5f36c1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "66159123"
 ---
-# <a name="role-based-access-control-for-storsimple"></a>Kontrola dostępu oparta na rolach dla usługi StorSimple
+# <a name="role-based-access-control-for-storsimple"></a>Kontrola dostępu oparta na rolach dla StorSimple
 
-Ten artykuł zawiera krótki opis sposobu użycia based kontroli dostępu (RBAC) dla urządzenia StorSimple. RBAC oferuje szczegółowe zarządzanie dostępem dla platformy Azure. Przy użyciu kontroli RBAC jest przyznanie tylko będzie odpowiednia ilość dostęp do wykonywania ich zadań, a nie umożliwia wszystkim użytkownikom StorSimple nieograniczony dostęp. Aby uzyskać więcej informacji na temat zarządzania dostępem na platformie Azure, zobacz [wprowadzenie opartej na rolach kontrola dostępu w witrynie Azure portal](../role-based-access-control/overview.md).
+Ten artykuł zawiera krótki opis sposobu, w jaki azure oparte na kontroli dostępu (RBAC) może służyć do urządzenia StorSimple. RBAC oferuje szczegółowe zarządzanie dostępem dla platformy Azure. Użyj RBAC, aby udzielić odpowiedniej ilości dostępu do użytkowników StorSimple do wykonywania swoich zadań zamiast dawać wszystkim nieograniczony dostęp. Aby uzyskać więcej informacji na temat podstaw zarządzania dostępem na platformie Azure, zobacz [Wprowadzenie do kontroli dostępu opartej na rolach w witrynie Azure portal.](../role-based-access-control/overview.md)
 
-Ten artykuł ma zastosowanie do urządzeń z serii StorSimple 8000 systemem Update w wersji 3.0 lub później w witrynie Azure portal.
+Ten artykuł dotyczy urządzeń z serii StorSimple 8000 z aktualizacją 3.0 lub nowszą w witrynie Azure portal.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="rbac-roles-for-storsimple"></a>Role RBAC dla usługi StorSimple
+## <a name="rbac-roles-for-storsimple"></a>Role RBAC dla StorSimple
 
-RBAC można przypisywać na podstawie ról. Role zapewnia pewne poziomy uprawnień na podstawie dostępnych zasobów w środowisku. Istnieją dwa typy ról, które mogą wybierać użytkownicy StorSimple: wbudowanych lub niestandardowych.
+RBAC można przypisać na podstawie ról. Role zapewniają pewne poziomy uprawnień na podstawie dostępnych zasobów w środowisku. Istnieją dwa typy ról, które użytkownicy StorSimple mogą wybierać: wbudowany lub niestandardowy.
 
-* **Wbudowane role** — mogą być wbudowane role, właściciel, współautor, Czytelnik lub administrator dostępu użytkowników. Aby uzyskać więcej informacji, zobacz [wbudowanych ról dla kontroli dostępu opartej na roli Azure](../role-based-access-control/built-in-roles.md).
+* **Wbudowane role** — wbudowane role mogą być administratorem dostępu właściciela, współautora, czytelnika lub użytkownika. Aby uzyskać więcej informacji, zobacz [Wbudowane role dla kontroli dostępu opartej na rolach platformy Azure.](../role-based-access-control/built-in-roles.md)
 
-* **Role niestandardowe** — Jeśli wbudowanych ról nie spełnia Twoich potrzeb, można utworzyć niestandardowe role RBAC dla usługi StorSimple. Aby utworzyć niestandardową rolę RBAC, rozpoczynać rolę wbudowaną, edytuj go, a następnie zaimportuj je z powrotem w środowisku. Pobieranie i przekazywanie roli odbywa się przy użyciu programu Azure PowerShell lub interfejsu wiersza polecenia platformy Azure. Aby uzyskać więcej informacji, zobacz [tworzenie ról niestandardowych dla kontroli dostępu opartej na rolach](../role-based-access-control/custom-roles.md).
+* **Role niestandardowe** — jeśli wbudowane role nie odpowiadają Twoim potrzebom, można utworzyć niestandardowe role RBAC dla StorSimple. Aby utworzyć niestandardową rolę RBAC, należy rozpocząć od wbudowanej roli, edytować ją, a następnie zaimportować z powrotem do środowiska. Pobieranie i przekazywanie roli są zarządzane przy użyciu programu Azure PowerShell lub interfejsu wiersza polecenia platformy Azure. Aby uzyskać więcej informacji, zobacz [Tworzenie ról niestandardowych dla kontroli dostępu opartej na rolach](../role-based-access-control/custom-roles.md).
 
-Aby wyświetlić różne role dostępne dla użytkownika urządzenia StorSimple w witrynie Azure portal, przejdź do usługi Menedżer urządzeń StorSimple, a następnie przejdź do **kontrola dostępu (IAM) > role**.
+Aby wyświetlić różne role dostępne dla użytkownika urządzenia StorSimple w witrynie Azure portal, przejdź do usługi Menedżer urządzeń StorSimple, a następnie przejdź do **kontroli dostępu (IAM) > role**.
 
 
-## <a name="create-a-custom-role-for-storsimple-infrastructure-administrator"></a>Utworzyć niestandardową rolę Administrator infrastruktury usługi StorSimple
+## <a name="create-a-custom-role-for-storsimple-infrastructure-administrator"></a>Tworzenie roli niestandardowej dla administratora infrastruktury StorSimple
 
-W poniższym przykładzie Rozpoczniemy pracę wbudowana rola **czytnika** umożliwia użytkownikom można wyświetlać wszystkie zakresy zasobów, ale nie edytować je lub utworzyć nowe. Następnie rozszerzmy tę rolę, aby utworzyć rolę niestandardową nowego administratora infrastruktury usługi StorSimple. Ta rola jest przypisywana do użytkowników, którzy mogą zarządzać infrastruktury dla urządzeń StorSimple.
+W poniższym przykładzie rozpoczynamy od wbudowanej roli **Reader,** która umożliwia użytkownikom wyświetlanie wszystkich zakresów zasobów, ale nie do ich edytowania lub tworzenia nowych. Następnie rozszerzamy tę rolę, aby utworzyć nową rolę niestandardową StorSimple Infrastructure admin. Ta rola jest przypisana do użytkowników, którzy mogą zarządzać infrastrukturą dla urządzeń StorSimple.
 
 1. Uruchom program Windows PowerShell jako administrator.
 
@@ -50,7 +50,7 @@ W poniższym przykładzie Rozpoczniemy pracę wbudowana rola **czytnika** umożl
 
     `Connect-AzAccount`
 
-3. Eksportowanie roli Czytelnik jako szablon JSON na tym komputerze.
+3. Wyeksportuj rolę czytnika jako szablon JSON na komputerze.
 
     ```powershell
     Get-AzRoleDefinition -Name "Reader"
@@ -58,21 +58,21 @@ W poniższym przykładzie Rozpoczniemy pracę wbudowana rola **czytnika** umożl
     Get-AzRoleDefinition -Name "Reader" | ConvertTo-Json | Out-File C:\ssrbaccustom.json
     ```
 
-4. Otwórz plik JSON w programie Visual Studio. Zobaczysz, że typowych ról RBAC składa się z trzema głównymi sekcjami, **akcje**, **NotActions**, i **AssignableScopes**.
+4. Otwórz plik JSON w programie Visual Studio. Widzisz, że typowa rola RBAC składa się z trzech głównych sekcji, **Akcje**, **NotActions**i **AssignableScopes**.
 
-    W **akcji** sekcji wszystkie dozwolone operacje dla tej roli są wyświetlane. Każda akcja jest przypisywany od dostawcy zasobów. Jako administrator infrastruktury StorSimple można używać `Microsoft.StorSimple` dostawcy zasobów.
+    W **akcji** sekcji wszystkie dozwolone operacje dla tej roli są wymienione. Każda akcja jest przypisywana od dostawcy zasobów. W przypadku administratora infrastruktury StorSimple użyj dostawcy `Microsoft.StorSimple` zasobów.
 
-    Zobacz wszystkich dostawców zasobów dostępnych i zarejestrowanych w ramach subskrypcji za pomocą programu PowerShell.
+    Użyj programu PowerShell, aby wyświetlić wszystkich dostawców zasobów dostępnych i zarejestrowanych w subskrypcji.
 
     `Get-AzResourceProvider`
 
-    Możesz również sprawdzić dla wszystkich dostępnych poleceń cmdlet programu PowerShell do zarządzania dostawcy zasobów.
+    Można również sprawdzić, czy wszystkie dostępne polecenia cmdlet programu PowerShell do zarządzania dostawcami zasobów.
 
-    W **NotActions** sekcje, wszystkie ograniczeniami akcji dla określonej roli RBAC są wyświetlane. W tym przykładzie Brak akcji są ograniczone.
+    W **sekcjach NotActions** zostaną wyświetlone wszystkie akcje z ograniczeniami dla określonej roli RBAC. W tym przykładzie żadne akcje nie są ograniczone.
     
-    W obszarze **AssignableScopes**, są wyświetlane identyfikatory subskrypcji. Upewnij się, że rola RBAC zawiera identyfikator subskrypcji jawne, gdy jest używany. Jeśli nie określono Identyfikatora poprawną subskrypcję, nie możesz zaimportować rolę w ramach subskrypcji.
+    W obszarze **AssignableScopes**zostaną wyświetlone identyfikatory subskrypcji. Upewnij się, że rola RBAC zawiera jawny identyfikator subskrypcji, w którym jest używany. Jeśli nie określono prawidłowego identyfikatora subskrypcji, nie można zaimportować roli w ramach subskrypcji.
 
-    Edytuj plik, pamiętając o poprzednim zagadnienia.
+    Edytuj plik, mając na uwadze powyższe uwagi.
 
     ```json
     {
@@ -102,18 +102,18 @@ W poniższym przykładzie Rozpoczniemy pracę wbudowana rola **czytnika** umożl
     }
     ```
 
-6. Importuj niestandardową rolę RBAC, wróć do środowiska.
+6. Zaimportuj niestandardową rolę RBAC z powrotem do środowiska.
 
     `New-AzRoleDefinition -InputFile "C:\ssrbaccustom.json"`
 
 
-Ta rola powinien zostać wyświetlony na liście ról w **kontroli dostępu** bloku.
+Ta rola powinna teraz pojawić się na liście ról w bloku **kontroli dostępu.**
 
-![Wyświetl role RBAC](./media/storsimple-8000-role-based-access-control/rbac-role-types.png)
+![Wyświetlanie ról RBAC](./media/storsimple-8000-role-based-access-control/rbac-role-types.png)
 
 Aby uzyskać więcej informacji, przejdź do [niestandardowych ról](../role-based-access-control/custom-roles.md).
 
-### <a name="sample-output-for-custom-role-creation-via-the-powershell"></a>Przykładowe dane wyjściowe do tworzenia roli niestandardowej za pomocą programu PowerShell
+### <a name="sample-output-for-custom-role-creation-via-the-powershell"></a>Przykładowe dane wyjściowe do tworzenia ról niestandardowych za pośrednictwem programu PowerShell
 
 ```powershell
 Connect-AzAccount
@@ -163,37 +163,37 @@ AssignableScopes : {/subscriptions/<subscription_ID>/}
 
 ## <a name="add-users-to-the-custom-role"></a>Dodawanie użytkowników do roli niestandardowej
 
-Dostęp udzielany jest w ramach zasobu, grupy zasobów lub subskrypcji, która jest zakresem przypisania roli. Przy udzielaniu dostępu, pamiętać, że dostępu przyznane w węźle nadrzędnym jest dziedziczona przez dziecko. Aby uzyskać więcej informacji, przejdź do [kontroli dostępu opartej na rolach](../role-based-access-control/overview.md).
+Dostęp udzielany jest w ramach zasobu, grupy zasobów lub subskrypcji, która jest zakresem przypisania roli. Podczas udzielania dostępu należy pamiętać, że dostęp przyznany w węźle nadrzędnym jest dziedziczony przez element podrzędny. Aby uzyskać więcej informacji, przejdź do [kontroli dostępu opartej na rolach](../role-based-access-control/overview.md).
 
-1. Przejdź do **kontrola dostępu (IAM)** . Kliknij przycisk **+ Dodaj** w bloku kontrola dostępu.
+1. Przejdź do **kontroli dostępu (IAM)**. Kliknij **przycisk + Dodaj** na bloku kontroli dostępu.
 
     ![Dodawanie dostępu do roli RBAC](./media/storsimple-8000-role-based-access-control/rbac-add-role.png)
 
-2. Wybierz rolę, którą chcesz przypisać, w tym przypadku jest **administrator infrastruktury StorSimple**.
+2. Wybierz rolę, którą chcesz przypisać, w tym przypadku jest to **Administrator infrastruktury StorSimple**.
 
 3. Wybierz użytkownika, grupę lub aplikację w katalogu, którym chcesz udzielić dostępu. Możesz przeszukiwać katalog przy użyciu nazw wyświetlanych, adresów e-mail i identyfikatorów obiektów.
 
-4. Wybierz **Zapisz** przypisanie.
+4. Wybierz **pozycję Zapisz,** aby utworzyć przypisanie.
 
-    ![Dodaj uprawnienia do roli RBAC](./media/storsimple-8000-role-based-access-control/rbac-create-role-infra-admin.png)
+    ![Dodawanie uprawnień do roli RBAC](./media/storsimple-8000-role-based-access-control/rbac-create-role-infra-admin.png)
 
-**Dodawanie użytkownika** powiadomień śledzi postęp. Po użytkownik został pomyślnie dodany, listę użytkowników, kontroli dostępu jest aktualizowana.
+Powiadomienie **o dodaniu użytkownika** śledzi postęp. Po pomyślnym dodaniu użytkownika lista użytkowników w formancie dostępu jest aktualizowana.
 
-## <a name="view-permissions-for-the-custom-role"></a>Wyświetl uprawnienia dla roli niestandardowej
+## <a name="view-permissions-for-the-custom-role"></a>Wyświetlanie uprawnień dla roli niestandardowej
 
 Po utworzeniu tej roli można wyświetlić uprawnienia skojarzone z tą rolą w witrynie Azure portal.
 
-1. Aby wyświetlić uprawnienia skojarzone z tą rolą, przejdź do **kontrola dostępu (IAM) > Role > administrator infrastruktury StorSimple**. Zostanie wyświetlona lista użytkowników w tej roli.
+1. Aby wyświetlić uprawnienia skojarzone z tą rolą, przejdź do sekcji **Kontrola dostępu (IAM) > Role > Administrator infrastruktury StorSimple**. Zostanie wyświetlona lista użytkowników w tej roli.
 
-2. Wybierz użytkownika administracyjnego infrastruktury usługi StorSimple, a następnie kliknij przycisk **uprawnienia**.
+2. Wybierz użytkownika administratora infrastruktury StorSimple i kliknij przycisk **Uprawnienia**.
 
-    ![Wyświetl uprawnienia dla roli administratora usługi StorSimple Infra](./media/storsimple-8000-role-based-access-control/rbac-roles-view-permissions.png)
+    ![Wyświetlanie uprawnień dla roli Administratora infrastruktury StorSimple Infra](./media/storsimple-8000-role-based-access-control/rbac-roles-view-permissions.png)
 
-3. Skojarzone z tą rolą uprawnienia są wyświetlane.
+3. Zostaną wyświetlone uprawnienia skojarzone z tą rolą.
 
-    ![Wyświetl użytkowników należących do roli administratora usługi StorSimple Infra](./media/storsimple-8000-role-based-access-control/rbac-infra-admin-permissions1.png)
+    ![Wyświetlanie użytkowników w roli Administratora infrastruktury StorSimple](./media/storsimple-8000-role-based-access-control/rbac-infra-admin-permissions1.png)
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Dowiedz się, jak [przypisywanie ról niestandardowych dla użytkowników wewnętrznych i zewnętrznych](../role-based-access-control/role-assignments-external-users.md).
+Dowiedz się, jak [przypisać role niestandardowe użytkownikom wewnętrznym i zewnętrznym](../role-based-access-control/role-assignments-external-users.md).

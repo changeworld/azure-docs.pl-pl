@@ -1,6 +1,6 @@
 ---
-title: Jak aplikacje pojawiają się na panelu dostępu | Dokumentacja firmy Microsoft
-description: Rozwiązywanie problemów, dlaczego widać aplikację w panelu dostępu
+title: Jak aplikacje pojawiają się w panelu dostępu | Dokumenty firmy Microsoft
+description: Rozwiązywanie problemów z pojawianiem się aplikacji w Panelu dostępu
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -17,141 +17,141 @@ ms.author: mimart
 ms.reviewr: japere
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8fa8ea75cc7fda05326c802c25a91d025b66b5ce
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "65784412"
 ---
-# <a name="how-applications-appear-on-the-access-panel"></a>Jak aplikacje pojawiają się na panelu dostępu
+# <a name="how-applications-appear-on-the-access-panel"></a>Sposób, w jaki aplikacje są wyświetlane w panelu dostępu
 
-Panel dostępu jest portal sieci web, która pozwala użytkownikom przy użyciu konta służbowego w usłudze Azure Active Directory (Azure AD) do wyświetlania i uruchamiania aplikacji opartych na chmurze, że administrator usługi Azure AD udzielił im dostępu do. Te aplikacje są skonfigurowane w imieniu użytkownika w portalu usługi Azure AD. Administrator może aprowizować bezpośrednio aplikacji do użytkownika lub do grupy użytkowników jest częścią skutkuje aplikacji znajdujących się na panelu dostępu użytkownika.
+Panel dostępu to portal internetowy, który umożliwia użytkownikowi z kontem służbowym w usłudze Azure Active Directory (Azure AD) wyświetlanie i uruchamianie aplikacji opartych na chmurze, do których administrator usługi Azure AD przyznał im dostęp. Te aplikacje są konfigurowane w imieniu użytkownika w portalu usługi Azure AD. Administrator może aprowizować aplikację bezpośrednio lub do grupy, w wyniku czego aplikacja pojawia się w Panelu dostępu użytkownika.
 
-## <a name="general-issues-to-check-first"></a>Zagadnienia ogólne w celu sprawdzenia
+## <a name="general-issues-to-check-first"></a>Kwestie ogólne do sprawdzenia w pierwszej kolejności
 
--   Jeśli aplikacja została usunięta z użytkownika lub grupę, do których użytkownik jest członkiem, spróbuj zarejestrować i pomniejszać ponownie do panelu dostępu użytkownika po kilku minutach aby zobaczyć, jeśli aplikacja zostanie usunięta.
+-   Jeśli aplikacja została usunięta z użytkownika lub grupy, do zespołu, do się, spróbuj zalogować się i ponownie zalogować do panelu dostępu użytkownika po kilku minutach, aby sprawdzić, czy aplikacja została usunięta.
 
--   Jeśli licencja została usunięta z użytkownikowi lub grupie użytkownik jest członkiem to może zająć dużo czasu, w zależności od rozmiaru i złożoności grupy zmian, które ma zostać wykonane. Zezwalaj na dodatkowy czas, przed zalogowaniem się do panelu dostępu.
+-   Jeśli licencja została usunięta z użytkownika lub grupy, użytkownik jest członkiem tego może zająć dużo czasu, w zależności od rozmiaru i złożoności grupy dla zmian, które mają być wprowadzone. Przed zalogowaniem się do Panelu dostępu pozostaw na dodatkowy czas.
 
-## <a name="problems-related-to-assigning-applications-to-users"></a>Problemy związane z przypisaniem aplikacji do użytkowników
+## <a name="problems-related-to-assigning-applications-to-users"></a>Problemy związane z przypisywaniem aplikacji użytkownikom
 
-Użytkownik może być widoczny aplikację w swoim panelu dostępu, ponieważ miał zostały wcześniej przypisane do niego. Poniżej przedstawiono kilka sposobów, aby sprawdzić:
+Użytkownik może widzieć aplikację w panelu dostępu, ponieważ został wcześniej do niej przypisany. Oto kilka sposobów sprawdzenia:
 
--   [Sprawdź, jeśli użytkownik jest przypisany do aplikacji](#check-if-a-user-is-assigned-to-the-application)
+-   [Sprawdź, czy użytkownik jest przypisany do aplikacji](#check-if-a-user-is-assigned-to-the-application)
 
--   [Sprawdź, czy użytkownik jest w ramach licencji, związane z aplikacji](#check-if-a-user-is-under-a-license-related-to-the-application)
+-   [Sprawdź, czy użytkownik ma licencję związaną z aplikacją](#check-if-a-user-is-under-a-license-related-to-the-application)
 
 
-### <a name="check-if-a-user-is-assigned-to-the-application"></a>Sprawdź, jeśli użytkownik jest przypisany do aplikacji
+### <a name="check-if-a-user-is-assigned-to-the-application"></a>Sprawdź, czy użytkownik jest przypisany do aplikacji
 
-Aby sprawdzić, jeśli użytkownik jest przypisany do aplikacji, wykonaj następujące kroki:
+Aby sprawdzić, czy użytkownik jest przypisany do aplikacji, wykonaj następujące kroki:
 
-1. Otwórz [ **witryny Azure portal** ](https://portal.azure.com/) i zaloguj się jako **administratora globalnego.**
+1. Otwórz [**witrynę Azure portal**](https://portal.azure.com/) i zaloguj się jako **administrator globalny.**
 
-2. Otwórz **rozszerzenia usługi Azure Active Directory** , klikając **wszystkich usług** w górnej części menu główne menu nawigacji po lewej stronie.
+2. Otwórz **rozszerzenie usługi Azure Active Directory,** klikając **pozycję Wszystkie usługi** u góry głównego menu nawigacji po lewej stronie.
 
-3. Wpisz **"Azure Active Directory**" w polu wyszukiwania filtru i wybierz pozycję **usługi Azure Active Directory** elementu.
+3. Wpisz **"Usługa Azure Active Directory"** w polu wyszukiwania filtru i wybierz element **usługi Azure Active Directory.**
 
-4. Kliknij przycisk **aplikacje dla przedsiębiorstw** menu nawigacji po lewej stronie usługi Azure Active Directory.
+4. kliknij polecenie **Aplikacje przedsiębiorstwa** z menu nawigacji po lewej stronie usługi Azure Active Directory.
 
-5. Kliknij przycisk **wszystkie aplikacje** Aby wyświetlić listę wszystkich aplikacji.
+5. kliknij pozycję **Wszystkie aplikacje,** aby wyświetlić listę wszystkich aplikacji.
 
-6. **Wyszukiwanie** dla nazwy aplikacji w danym.
+6. **Wyszukaj** nazwę danej aplikacji.
 
-7. Kliknij przycisk **użytkowników i grup**.
+7. kliknij pozycję **Użytkownicy i grupy**.
 
-8. Sprawdź, czy użytkownik ma przypisaną aplikacji.
+8. Sprawdź, czy użytkownik jest przypisany do aplikacji.
 
-   * Jeśli chcesz usunąć użytkownika z aplikacji, **kliknij wiersz** użytkownika i wybierz **Usuń**.
+   * Jeśli chcesz usunąć użytkownika z aplikacji, **kliknij wiersz** użytkownika i wybierz polecenie **Usuń**.
 
-### <a name="check-if-a-user-is-under-a-license-related-to-the-application"></a>Sprawdź, czy użytkownik jest w ramach licencji, związane z aplikacji
+### <a name="check-if-a-user-is-under-a-license-related-to-the-application"></a>Sprawdź, czy użytkownik ma licencję związaną z aplikacją
 
-Aby sprawdzić przypisanych licencji użytkownika, wykonaj następujące kroki:
+Aby sprawdzić przypisane licencje użytkownika, wykonaj następujące czynności:
 
-1. Otwórz [ **witryny Azure portal** ](https://portal.azure.com/) i zaloguj się jako **administratora globalnego.**
+1. Otwórz [**witrynę Azure portal**](https://portal.azure.com/) i zaloguj się jako **administrator globalny.**
 
-2. Otwórz **rozszerzenia usługi Azure Active Directory** , klikając **wszystkich usług** w górnej części menu główne menu nawigacji po lewej stronie.
+2. Otwórz **rozszerzenie usługi Azure Active Directory,** klikając **pozycję Wszystkie usługi** u góry głównego menu nawigacji po lewej stronie.
 
-3. Wpisz **"Azure Active Directory**" w polu wyszukiwania filtru i wybierz pozycję **usługi Azure Active Directory** elementu.
+3. Wpisz **"Usługa Azure Active Directory"** w polu wyszukiwania filtru i wybierz element **usługi Azure Active Directory.**
 
-4. Kliknij przycisk **użytkowników i grup** w menu nawigacji.
+4. kliknij **pozycję Użytkownicy i grupy** w menu nawigacyjnym.
 
-5. Kliknij przycisk **wszyscy użytkownicy**.
+5. kliknij pozycję **Wszyscy użytkownicy**.
 
-6. **Wyszukiwanie** dla użytkownika, jesteś zainteresowany i **kliknij wiersz** do wybrania.
+6. **Wyszukaj** użytkownika, którego jesteś zainteresowany, i **kliknij wiersz,** aby wybrać.
 
-7. Kliknij przycisk **licencji** aby zobaczyć, które obecnie licencji użytkownika został przypisany.
+7. kliknij **pozycję Licencje,** aby zobaczyć, które licencje użytkownik aktualnie ma przypisane.
 
-   * Jeśli użytkownik jest przypisany do licencji usługi Office, to umożliwia aplikacjom pierwszy Office innych firm są wyświetlane na panelu dostępu użytkownika.
+   * Jeśli użytkownik jest przypisany do licencji pakietu Office, umożliwia to wyświetlanie aplikacji pakietu Office pierwszej firmy w Panelu dostępu użytkownika.
 
-## <a name="problems-related-to-assigning-applications-to-groups"></a>Problemy związane z przypisaniem aplikacji do grup
+## <a name="problems-related-to-assigning-applications-to-groups"></a>Problemy związane z przypisywaniem aplikacji do grup
 
-Użytkownik może być widoczny aplikację w swoim panelu dostępu, ponieważ są one częścią grupy, która ma przypisane aplikacji. Poniżej przedstawiono kilka sposobów, aby sprawdzić:
+Użytkownik może widzieć aplikację w panelu dostępu, ponieważ jest częścią grupy, do którą przypisano aplikację. Oto kilka sposobów sprawdzenia:
 
--   [Sprawdzanie członkostwa grupy użytkownika](#check-a-users-group-memberships)
+-   [Sprawdzanie członkostwa w grupie użytkownika](#check-a-users-group-memberships)
 
--   [Sprawdź, czy użytkownik jest członkiem grupy przypisane do licencji](#check-if-a-user-is-a-member-of-a-group-assigned-to-a-license)
+-   [Sprawdzanie, czy użytkownik jest członkiem grupy przypisanej do licencji](#check-if-a-user-is-a-member-of-a-group-assigned-to-a-license)
 
-### <a name="check-a-users-group-memberships"></a>Sprawdzanie członkostwa grupy użytkownika
+### <a name="check-a-users-group-memberships"></a>Sprawdzanie członkostwa w grupie użytkownika
 
-Aby sprawdzić członkostwa w grupie, wykonaj następujące kroki:
+Aby sprawdzić przynależność do grupy, wykonaj następujące czynności:
 
-1. Otwórz [ **witryny Azure portal** ](https://portal.azure.com/) i zaloguj się jako **administratora globalnego.**
+1. Otwórz [**witrynę Azure portal**](https://portal.azure.com/) i zaloguj się jako **administrator globalny.**
 
-2. Otwórz **rozszerzenia usługi Azure Active Directory** , klikając **wszystkich usług** w górnej części menu główne menu nawigacji po lewej stronie.
+2. Otwórz **rozszerzenie usługi Azure Active Directory,** klikając **pozycję Wszystkie usługi** u góry głównego menu nawigacji po lewej stronie.
 
-3. Wpisz **"Azure Active Directory**" w polu wyszukiwania filtru i wybierz pozycję **usługi Azure Active Directory** elementu.
+3. Wpisz **"Usługa Azure Active Directory"** w polu wyszukiwania filtru i wybierz element **usługi Azure Active Directory.**
 
-4. Kliknij przycisk **użytkowników i grup** w menu nawigacji.
+4. kliknij **pozycję Użytkownicy i grupy** w menu nawigacyjnym.
 
-5. Kliknij przycisk **wszyscy użytkownicy**.
+5. kliknij pozycję **Wszyscy użytkownicy**.
 
-6. **Wyszukiwanie** dla użytkownika, jesteś zainteresowany i **kliknij wiersz** do wybrania.
+6. **Wyszukaj** użytkownika, którego jesteś zainteresowany, i **kliknij wiersz,** aby wybrać.
 
-7. Kliknij przycisk **grup.**
+7. kliknij pozycję **Grupy.**
 
-8. Sprawdź, czy użytkownik jest częścią grupy przypisane do aplikacji.
+8. Sprawdź, czy użytkownik jest częścią grupy przypisanej do aplikacji.
 
    * Jeśli chcesz usunąć użytkownika z grupy, **kliknij wiersz** grupy i wybierz pozycję Usuń.
 
-### <a name="check-if-a-user-is-a-member-of-a-group-assigned-to-a-license"></a>Sprawdź, czy użytkownik jest członkiem grupy przypisane do licencji
+### <a name="check-if-a-user-is-a-member-of-a-group-assigned-to-a-license"></a>Sprawdzanie, czy użytkownik jest członkiem grupy przypisanej do licencji
 
-1. Otwórz [ **witryny Azure portal** ](https://portal.azure.com/) i zaloguj się jako **administratora globalnego.**
+1. Otwórz [**witrynę Azure portal**](https://portal.azure.com/) i zaloguj się jako **administrator globalny.**
 
-2. Otwórz **rozszerzenia usługi Azure Active Directory** , klikając **wszystkich usług** w górnej części menu główne menu nawigacji po lewej stronie.
+2. Otwórz **rozszerzenie usługi Azure Active Directory,** klikając **pozycję Wszystkie usługi** u góry głównego menu nawigacji po lewej stronie.
 
-3. Wpisz **"Azure Active Directory**" w polu wyszukiwania filtru i wybierz pozycję **usługi Azure Active Directory** elementu.
+3. Wpisz **"Usługa Azure Active Directory"** w polu wyszukiwania filtru i wybierz element **usługi Azure Active Directory.**
 
-4. Kliknij przycisk **użytkowników i grup** w menu nawigacji.
+4. kliknij **pozycję Użytkownicy i grupy** w menu nawigacyjnym.
 
-5. Kliknij przycisk **wszyscy użytkownicy**.
+5. kliknij pozycję **Wszyscy użytkownicy**.
 
-6. **Wyszukiwanie** dla użytkownika, jesteś zainteresowany i **kliknij wiersz** do wybrania.
+6. **Wyszukaj** użytkownika, którego jesteś zainteresowany, i **kliknij wiersz,** aby wybrać.
 
-7. Kliknij przycisk **grup.**
+7. kliknij pozycję **Grupy.**
 
-8. Kliknij wiersz określonej grupy.
+8. kliknij wiersz określonej grupy.
 
-9. Kliknij przycisk **licencji** aby zobaczyć, który licencji grupy został przypisany do niego.
+9. kliknij **pozycję Licencje,** aby zobaczyć, które licencje grupa została do niej przypisana.
 
-   * Jeśli grupa jest przypisana do licencji usługi Office, to może umożliwiać niektórych aplikacji pierwszy Office innych firm są wyświetlane na panelu dostępu użytkownika.
+   * Jeśli grupa jest przypisana do licencji pakietu Office, może to umożliwić niektórym aplikacjom pakietu Office pierwszej strony pojawianie się w Panelu dostępu użytkownika.
 
 
-## <a name="if-these-troubleshooting-steps-do-not-the-resolve-the-issue"></a>Jeśli te kroki rozwiązywania problemów nie Rozwiąż ten problem
+## <a name="if-these-troubleshooting-steps-do-not-the-resolve-the-issue"></a>Jeśli te kroki rozwiązywania problemów nie rozwiążą problemu
 
-Otwórz bilet pomocy technicznej, używając następujących informacji, jeśli jest dostępny:
+otwórz bilet pomocy technicznej z następującymi informacjami, jeśli są dostępne:
 
 -   Identyfikator błędu korelacji
 
--   Nazwy UPN (adres e-mail użytkownika)
+-   UPN (adres e-mail użytkownika)
 
 -   Identyfikator dzierżawy
 
 -   Typ przeglądarki
 
--   Występuje, strefę czasową i przedziału czasu/czasu podczas błędu
+-   Strefa czasowa i czas/ramy czasowe podczas wystąpienia błędu
 
--   Ślady narzędzia fiddler
+-   Ślady skrzypka
 
-## <a name="next-steps"></a>Kolejne kroki
-[Managing Applications with Azure Active Directory (Zarządzanie aplikacjami za pomocą usługi Azure Active Directory)](what-is-application-management.md)
+## <a name="next-steps"></a>Następne kroki
+[Zarządzanie aplikacjami za pomocą usługi Azure Active Directory](what-is-application-management.md)

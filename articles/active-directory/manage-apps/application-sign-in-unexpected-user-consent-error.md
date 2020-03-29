@@ -1,6 +1,6 @@
 ---
-title: Nieoczekiwany błąd podczas wyrażania zgody dla aplikacji | Dokumentacja firmy Microsoft
-description: W tym artykule omówiono błędy, które mogą wystąpić w trakcie procesu, który integruję aplikację i co można zrobić na ich temat
+title: Nieoczekiwany błąd podczas wykonywania zgody na aplikację | Dokumenty firmy Microsoft
+description: W tym artykule omówiono błędy, które mogą wystąpić podczas procesu wyrażania zgody na aplikację i co można z nimi zrobić
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -17,66 +17,66 @@ ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6dff3be9a9bc7fd897f340e5fe6a4775a4914810
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "65824943"
 ---
-# <a name="unexpected-error-when-performing-consent-to-an-application"></a>Nieoczekiwany błąd podczas wyrażania zgody dla aplikacji
+# <a name="unexpected-error-when-performing-consent-to-an-application"></a>Nieoczekiwany błąd podczas wykonywania zgody na aplikację
 
-W tym artykule omówiono błędy, które mogą wystąpić w trakcie procesu wyrażanie zgody na aplikację. Jeśli rozwiązujesz monity nieoczekiwany zgody, które nie zawierają komunikaty o błędach, zobacz [scenariusze uwierzytelniania dla usługi Azure AD](https://docs.microsoft.com/azure/active-directory/develop/active-directory-authentication-scenarios).
+W tym artykule omówiono błędy, które mogą wystąpić podczas procesu wyrażania zgody na aplikację. Jeśli rozwiązujesz problemy z nieoczekiwanymi monitami o zgodę, które nie zawierają żadnych komunikatów o [błędach, zobacz Scenariusze uwierzytelniania dla usługi Azure AD](https://docs.microsoft.com/azure/active-directory/develop/active-directory-authentication-scenarios).
 
-Wiele aplikacji, które integrują się z usługą Azure Active Directory wymaga uprawnień do dostępu do innych zasobów, aby funkcjonować. Podczas tych zasobów są także zintegrowana z usługą Azure Active Directory, uprawnienia dostępu do nich jest często żądana za pomocą wspólnego platformy wyrażania zgody. Zostanie wyświetlony monit zgody, która zwykle pojawia się po raz pierwszy aplikacji jest używany, ale może również wystąpić na późniejsze użycie aplikacji.
+Wiele aplikacji, które integrują się z usługą Azure Active Directory wymagają uprawnień dostępu do innych zasobów w celu działania. Gdy te zasoby są również zintegrowane z usługą Azure Active Directory, uprawnienia dostępu do nich jest często wymagane przy użyciu wspólnej struktury zgody. Wyświetlany jest monit o zgodę, który zazwyczaj występuje przy pierwszym użyciu aplikacji, ale może również wystąpić przy kolejnym użyciu aplikacji.
 
-Określone warunki muszą być spełnione, użytkownik może wyrazić zgodę na uprawnienia, których wymaga aplikacja. Jeśli te warunki nie są spełnione, mogą wystąpić następujące błędy.
+Niektóre warunki muszą być spełnione dla użytkownika do wyrażenia zgody na uprawnienia aplikacji wymaga. Jeśli te warunki nie są spełnione, mogą wystąpić następujące błędy.
 
-## <a name="requesting-not-authorized-permissions-error"></a>Błąd uprawnień nie Autoryzowano żądania
-* **AADSTS90093:** &lt;clientAppDisplayName&gt; żąda co najmniej jednego uprawnienia, które są nie uprawnień do udzielania. Skontaktuj się z administratorem, który mogą wyrazić zgodę na tę aplikację w Twoim imieniu.
+## <a name="requesting-not-authorized-permissions-error"></a>Żądanie błędu nieautoryzowanych uprawnień
+* **AADSTS90093:** &lt;clientAppDisplayName&gt; żąda co najmniej jednego uprawnienia, które nie są autoryzowane do przyznania. Skontaktuj się z administratorem, który może wyrazić zgodę na tę aplikację w Twoim imieniu.
 
-Ten błąd występuje, gdy użytkownik, który nie jest administratorem firmy podejmują próbę użycia aplikacji, która żąda uprawnienia, których może udzielić tylko administrator. Ten błąd można rozwiązać, administrator udzielanie dostępu do aplikacji w imieniu swojej organizacji.
+Ten błąd występuje, gdy użytkownik, który nie jest administratorem firmy próbuje użyć aplikacji, która żąda uprawnień, które tylko administrator może udzielić. Ten błąd może zostać rozwiązany przez administratora udzielającego dostępu do aplikacji w imieniu swojej organizacji.
 
-## <a name="policy-prevents-granting-permissions-error"></a>Zasady uniemożliwiają, udzielanie uprawnień błąd
-* **AADSTS90093:** Administrator &lt;tenantDisplayName&gt; ustawił zasadę, która uniemożliwia udzielanie &lt;Nazwa aplikacji&gt; uprawnień żąda. Skontaktuj się z administratorem &lt;tenantDisplayName&gt;, kto może nadać uprawnienia do tej aplikacji w Twoim imieniu.
+## <a name="policy-prevents-granting-permissions-error"></a>Zasady zapobiegają udzielaniu błędów uprawnień
+* **AADSTS90093:** Administrator &lt;tenantDisplayName&gt; ustawił zasadę, która uniemożliwia &lt;przyznanie nazwy&gt; aplikacji, której żąda. Skontaktuj się &lt;z administratorem&gt;tenantDisplayName , który może udzielić uprawnień do tej aplikacji w Twoim imieniu.
 
-Ten błąd występuje, gdy administrator firmy wyłącza możliwości użytkownikom na wyrażanie zgody dla aplikacji, a następnie próbuje użyć aplikacji, która wymaga zgody użytkownika bez uprawnień administratora. Ten błąd można rozwiązać, administrator udzielanie dostępu do aplikacji w imieniu swojej organizacji.
+Ten błąd występuje, gdy administrator firmy wyłącza możliwość wyrażania zgody użytkowników na aplikacje, a następnie użytkownik niebędący administratorem próbuje użyć aplikacji, która wymaga zgody. Ten błąd może zostać rozwiązany przez administratora udzielającego dostępu do aplikacji w imieniu swojej organizacji.
 
-## <a name="intermittent-problem-error"></a>Błąd sporadyczny problem
-* **AADSTS90090:** Wygląda na proces logowania napotkał sporadyczny problem rejestrowanie uprawnienia próbujesz udzielić &lt;clientAppDisplayName&gt;. Spróbuj ponownie później.
+## <a name="intermittent-problem-error"></a>Przerywany błąd problemu
+* **AADSTS90090:** Wygląda na to, że proces logowania napotkał sporadyczny problem rejestrowania uprawnień, które próbowano przyznać &lt;clientAppDisplayName&gt;. spróbuj ponownie później.
 
-Ten błąd wskazuje, że wystąpił problem po stronie usługi sporadyczne. Można go rozwiązać, próbując do wyrażenia zgody na aplikację ponownie.
+Ten błąd wskazuje, że wystąpił sporadyczny problem po stronie usługi. Można go rozwiązać, próbując ponownie wyrazić zgodę na aplikację.
 
-## <a name="resource-not-available-error"></a>Zasób błąd nie jest dostępna
-* **AADSTS65005:** Aplikacja &lt;clientAppDisplayName&gt; żądane uprawnienia dostępu do zasobu &lt;resourceAppDisplayName&gt; które nie są dostępne. 
+## <a name="resource-not-available-error"></a>Błąd niedostępny zasób
+* **AADSTS65005:** ClientappAppDisplayName &lt;&gt; żądanie uprawnień dostępu do &lt;zasobuAppDisplayName,&gt; który jest niedostępny. 
 
 Skontaktuj się z deweloperem aplikacji.
 
-##  <a name="resource-not-available-in-tenant-error"></a>Zasób nie jest dostępny w wyniku błędu dzierżawy
-* **AADSTS65005:** &lt;clientAppDisplayName&gt; żąda dostępu do zasobu &lt;resourceAppDisplayName&gt; które nie są dostępne w Twojej organizacji &lt;tenantDisplayName &gt;. 
+##  <a name="resource-not-available-in-tenant-error"></a>Zasób niedostępny w błędzie dzierżawy
+* **AADSTS65005:** &lt;&gt; clientAppDisplayName żąda dostępu do &lt;zasobu ZasobówAppDisplayName,&gt; który &lt;nie jest&gt;dostępny w organizacji tenantDisplayName . 
 
-Upewnij się, że ten zasób jest dostępny, lub skontaktuj się z administratorem &lt;tenantDisplayName&gt;.
+Upewnij się, że ten zasób jest dostępny lub skontaktuj się z &lt;administratorem tenantDisplayName&gt;.
 
 ## <a name="permissions-mismatch-error"></a>Błąd niezgodności uprawnień
-* **AADSTS65005:** Aplikacja wymagane zgody na dostęp do zasobów &lt;resourceAppDisplayName&gt;. To żądanie nie powiodło się, ponieważ nie jest zgodny, jak aplikacja została wstępnie skonfigurowane podczas rejestracji aplikacji. Skontaktuj się z aplikacji vendor.* *
+* **AADSTS65005:** Aplikacja zażądała zgody na &lt;dostęp do zasobuAppSprzestępczego Programu&gt;. To żądanie nie powiodło się, ponieważ nie jest zgodne, jak aplikacja została wstępnie skonfigurowana podczas rejestracji aplikacji. Skontaktuj się z dostawcą aplikacji.**
 
-Te błędy, które wszystkie występują, gdy aplikacji użytkownik próbuje się do wyrażenia zgody na żąda uprawnienia dostępu do aplikacji zasobu, którego nie można znaleźć w katalogu organizacji (dzierżawa). Taka sytuacja może wystąpić z kilku powodów:
+Wszystkie te błędy występują, gdy aplikacja, na którą użytkownik próbuje wyrazić zgodę, żąda uprawnień dostępu do aplikacji zasobów, których nie można znaleźć w katalogu organizacji (dzierżawie). Taka sytuacja może wystąpić z kilku powodów:
 
--   Deweloper aplikacji klienta ma ich stosowania nieprawidłowo skonfigurowane, powodowania umożliwia zażądanie dostępu do nieprawidłowych zasobów. W tym przypadku Deweloper aplikacji musi zaktualizować konfigurację aplikacji klienta, aby rozwiązać ten problem.
+-   Deweloper aplikacji klienckiej niepoprawnie skonfigurował swoją aplikację, powodując żądanie dostępu do nieprawidłowego zasobu. W takim przypadku deweloper aplikacji musi zaktualizować konfigurację aplikacji klienckiej, aby rozwiązać ten problem.
 
--   Jednostki usługi, reprezentujący zasób aplikacji docelowej nie istnieje w danej organizacji lub istniał w przeszłości, ale została usunięta. Aby rozwiązać ten problem, jednostkę usługi, dla której aplikacja zasobu musi być obsługiwana w organizacji, dzięki czemu aplikacja kliencka może zażądać uprawnień do niego. Nazwa główna usługi mogą być udostępniane na wiele sposobów, w zależności od typu aplikacji, w tym:
+-   Jednostka usługi reprezentująca aplikację zasobu docelowego nie istnieje w organizacji lub istniała w przeszłości, ale została usunięta. Aby rozwiązać ten problem, jednostka usługi dla aplikacji zasobów musi być aprowizowana w organizacji, aby aplikacja kliencka mogła żądać uprawnień do niej. Podmiot usługi mogą być aprowizowana na wiele sposobów, w zależności od typu aplikacji, w tym:
 
-    -   Uzyskiwanie subskrypcji dla zasobów aplikacji (Microsoft opublikowane aplikacje)
+    -   Pobieranie subskrypcji dla aplikacji zasobów (opublikowane przez firmę Microsoft aplikacje)
 
-    -   Wyrażanie zgody na aplikacji zasobów.
+    -   Wyrażanie zgody na aplikację zasobów
 
-    -   Udzielanie uprawnień aplikacji w witrynie Azure portal
+    -   Udzielanie uprawnień aplikacji za pośrednictwem witryny Azure portal
 
     -   Dodawanie aplikacji z galerii aplikacji usługi Azure AD
 
-## <a name="next-steps"></a>Kolejne kroki 
+## <a name="next-steps"></a>Następne kroki 
 
-[Aplikacje, uprawnienia i zgody w usłudze Azure Active Directory (punkt końcowy v1)](https://docs.microsoft.com/azure/active-directory/active-directory-apps-permissions-consent)<br>
+[Aplikacje, uprawnienia i zgoda w usłudze Azure Active Directory (punkt końcowy w wersji 1)](https://docs.microsoft.com/azure/active-directory/active-directory-apps-permissions-consent)<br>
 
-[Zakresy, uprawnienia i zgody w usłudze Azure Active Directory (punktu końcowego v2.0)](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-scopes)
+[Zakresy, uprawnienia i zgody w usłudze Azure Active Directory (punkt końcowy w wersji 2.0)](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-scopes)
 
 

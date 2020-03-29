@@ -1,6 +1,6 @@
 ---
-title: Usługa Azure Media Services zadania kody błędów (kodowania i analizowanie) | Dokumentacja firmy Microsoft
-description: Ten artykuł stanowi łącze do temat referencyjny kody błędów zadań i udostępnia przydatne linki do powiązanych tematów.
+title: Kody błędów zadania usługi Azure Media Services (kodowanie i analizowanie) | Dokumenty firmy Microsoft
+description: W tym artykule znajdują się łącza do tematu odwołania do kodów błędów zadań i przydatne łącza do tematów pokrewnych.
 author: Juliako
 manager: femila
 editor: ''
@@ -14,30 +14,30 @@ ms.topic: article
 ms.date: 04/28/2019
 ms.author: juliako
 ms.openlocfilehash: 9443a50d130e6542672eb143bcb56d04d63959a4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "65235708"
 ---
-# <a name="media-services-job-error-codes"></a>Kody błędów zadania usługi Media Services
+# <a name="media-services-job-error-codes"></a>Kody błędów zadań usługi Media Services
 
-Ten temat zawiera łącza do POZOSTAŁEJ dokument referencyjny dotyczący szczegółowy opis działania [zadania](transforms-jobs-concept.md) kody błędów i komunikaty.
+W tym temacie znajdują się łącza do dokumentu referencyjnego REST, aby uzyskać [szczegółowy](transforms-jobs-concept.md) opis kodów błędów i komunikatów dotyczących zadań.
 
 ## <a name="job-error-codes"></a>Kody błędów zadań
 
-Poniższy dokument REST zawiera szczegółowe wyjaśnienia dotyczące [zadania kody błędów](https://docs.microsoft.com/rest/api/media/jobs/get#joberrorcode).
+Poniższy dokument REST zawiera szczegółowe wyjaśnienia dotyczące [kodów błędów pracy](https://docs.microsoft.com/rest/api/media/jobs/get#joberrorcode).
 
-## <a name="ask-questions-give-feedback-get-updates"></a>Zadawaj pytania, Prześlij opinię i pobieranie aktualizacji
+## <a name="ask-questions-give-feedback-get-updates"></a>Zadawaj pytania, przekazuj opinie, otrzyj aktualizacje
 
-Zapoznaj się z [społeczności usługi Azure Media Services](media-services-community.md) artykuł, aby wyświetlić różne sposoby zadawaj pytania, Prześlij opinię i pobrać aktualizacje o usłudze Media Services.
+Zapoznaj się z artykułem [społeczności usługi Azure Media Services,](media-services-community.md) aby zobaczyć różne sposoby zadawania pytań, przekazywania opinii i otrzymywać aktualizacje dotyczące usługi Media Services.
 
-## <a name="see-also"></a>Zobacz także
+## <a name="see-also"></a>Zobacz też
 
-- [Kody błędów usługi przesyłania strumieniowego punktu końcowego](streaming-endpoint-error-codes.md)
+- [Kody błędów punktu końcowego przesyłania strumieniowego](streaming-endpoint-error-codes.md)
 - [Pojęcia dotyczące usługi Azure Media Services](concepts-overview.md)
 - [Przydziały i ograniczenia](limits-quotas-constraints.md)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-[Przykład: dostęp do ErrorCode i wiadomości z ApiException przy użyciu platformy .NET](configure-connect-dotnet-howto.md#connect-to-the-net-client)
+[Przykład: dostęp do kodu errorcode i wiadomości z apiexception z .NET](configure-connect-dotnet-howto.md#connect-to-the-net-client)

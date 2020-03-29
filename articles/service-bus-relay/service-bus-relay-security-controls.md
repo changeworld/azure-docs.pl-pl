@@ -1,6 +1,6 @@
 ---
-title: Kontrolki zabezpieczeń dla Azure Service Bus Relay
-description: Ten artykuł zawiera listę kontrolną wbudowanych mechanizmów zabezpieczeń do oceny Azure Service Bus Relay.
+title: Kontrolki zabezpieczeń dla przekaźnika usługi Azure Service Bus
+description: Te artykuły zawiera listę kontrolną wbudowanych zabezpieczeń do oceny usługi Azure Service Bus Relay.
 services: service-bus-relay
 ms.service: service-bus-relay
 author: spelluru
@@ -8,58 +8,58 @@ ms.topic: conceptual
 ms.date: 01/21/2020
 ms.author: spelluru
 ms.openlocfilehash: 28d3ba14aa7769ac4f3fc22bd2b5bd7acd30557c
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76514021"
 ---
-# <a name="security-controls-for-azure-service-bus-relay"></a>Kontrolki zabezpieczeń dla Azure Service Bus Relay
+# <a name="security-controls-for-azure-service-bus-relay"></a>Kontrolki zabezpieczeń dla przekaźnika usługi Azure Service Bus
 
-W tym artykule opisano mechanizmy kontroli zabezpieczeń wbudowane w Azure Service Bus Relay.
+W tym artykule dokumentuje zabezpieczenia wbudowane w usługę Azure Service Bus Relay.
 
 [!INCLUDE [Security controls Header](../../includes/security-controls-header.md)]
 
 ## <a name="network"></a>Network (Sieć)
 
-| Kontrola zabezpieczeń | Tak/Nie | Uwagi | Dokumentacja |
+| Kontrola bezpieczeństwa | Tak/Nie | Uwagi | Dokumentacja |
 |---|---|--|--|
-| Obsługa punktów końcowych usługi| Nie |  |   |
-| Izolacja sieci i obsługa zapór| Nie |  |   |
-| Obsługa tunelowania wymuszonego| ND | Przekaźnik jest tunelem TLS  |   |
+| Obsługa punktu końcowego usługi| Nie |  |   |
+| Obsługa izolacji sieci i zaporowania| Nie |  |   |
+| Wymuszone wsparcie tunelowania| Nie dotyczy | Przekaźnik jest tunelem TLS  |   |
 
-## <a name="monitoring--logging"></a>Monitorowanie rejestrowania &
+## <a name="monitoring--logging"></a>Monitorowanie & rejestrowania
 
-| Kontrola zabezpieczeń | Tak/Nie | Uwagi| Dokumentacja |
+| Kontrola bezpieczeństwa | Tak/Nie | Uwagi| Dokumentacja |
 |---|---|--|--|
-| Pomoc techniczna dotycząca monitorowania platformy Azure (log Analytics, App Insights itp.)| Tak | |   |
-| Rejestrowanie i inspekcja płaszczyzny kontroli i zarządzania| Tak | Za [Azure Resource Manager](../azure-resource-manager/index.yml). |   |
-| Rejestrowanie i inspekcja płaszczyzny danych| Tak | Powodzenie/Niepowodzenie połączenia i błędy oraz zarejestrowane.  |   |
+| Obsługa monitorowania platformy Azure (analiza dzienników, wgląd w aplikacje itp.)| Tak | |   |
+| Rejestrowanie i audyt płaszczyzny kontroli i zarządzania| Tak | Za pośrednictwem [usługi Azure Resource Manager](../azure-resource-manager/index.yml). |   |
+| Rejestrowanie i inspekcja płaszczyzny danych| Tak | Sukces połączenia / awaria i błędy i rejestrowane.  |   |
 
 ## <a name="identity"></a>Tożsamość
 
-| Kontrola zabezpieczeń | Tak/Nie | Uwagi| Dokumentacja |
+| Kontrola bezpieczeństwa | Tak/Nie | Uwagi| Dokumentacja |
 |---|---|--|--|
-| Authentication| Tak | Za pośrednictwem SAS. | [Azure Relay uwierzytelnianie i autoryzacja](relay-authentication-and-authorization.md) |
-| Autoryzacja|  Tak | Za pośrednictwem SAS. | [Azure Relay uwierzytelnianie i autoryzacja](relay-authentication-and-authorization.md) |
+| Uwierzytelnianie| Tak | Przez SAS. | [Uwierzytelnianie i autoryzacja usługi Azure Relay](relay-authentication-and-authorization.md) |
+| Autoryzacja|  Tak | Przez SAS. | [Uwierzytelnianie i autoryzacja usługi Azure Relay](relay-authentication-and-authorization.md) |
 
 ## <a name="data-protection"></a>Ochrona danych
 
-| Kontrola zabezpieczeń | Tak/Nie | Uwagi | Dokumentacja |
+| Kontrola bezpieczeństwa | Tak/Nie | Uwagi | Dokumentacja |
 |---|---|--|--|
-| Szyfrowanie po stronie serwera w czasie spoczynku: klucze zarządzane przez firmę Microsoft |  ND | Przekaźnik jest gniazdem internetowym i nie utrzymuje danych. |   |
-| Szyfrowanie po stronie serwera w spoczynku: klucze zarządzane przez klienta (BYOK) | Nie | Używa tylko certyfikatów Microsoft TLS.  |   |
-| Szyfrowanie na poziomie kolumny (Data Services platformy Azure)| ND | |   |
-| Szyfrowanie podczas przesyłania (takie jak szyfrowanie ExpressRoute, szyfrowanie sieci wirtualnej i szyfrowanie sieci wirtualnej)| Tak | Usługa wymaga protokołu TLS. |   |
-| Wywołania interfejsu API są szyfrowane| Tak | HTTPS. |
+| Szyfrowanie po stronie serwera w spoczynku: klucze zarządzane przez firmę Microsoft |  Nie dotyczy | Przekaźnik jest gniazdem internetowym i nie utrwala danych. |   |
+| Szyfrowanie po stronie serwera w spoczynku: klucze zarządzane przez klienta (BYOK) | Nie | Używa tylko certyfikatów TLS firmy Microsoft.  |   |
+| Szyfrowanie na poziomie kolumny (usługi Azure Data Services)| Nie dotyczy | |   |
+| Szyfrowanie podczas przesyłania (takie jak szyfrowanie usługi ExpressRoute, szyfrowanie w sieci wirtualnej i szyfrowanie sieci wirtualnej wirtualnej)| Tak | Usługa wymaga protokołu TLS. |   |
+| Szyfrowane wywołania interfejsu API| Tak | protokołu HTTPS. |
 
 
 ## <a name="configuration-management"></a>Zarządzanie konfiguracją
 
-| Kontrola zabezpieczeń | Tak/Nie | Uwagi| Dokumentacja |
+| Kontrola bezpieczeństwa | Tak/Nie | Uwagi| Dokumentacja |
 |---|---|--|--|
-| Obsługa zarządzania konfiguracją (wersja konfiguracji itp.)| Tak | Za [Azure Resource Manager](../azure-resource-manager/index.yml).|   |
+| Obsługa zarządzania konfiguracją (przechowywanie wersji konfiguracji itp.)| Tak | Za pośrednictwem [usługi Azure Resource Manager](../azure-resource-manager/index.yml).|   |
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Dowiedz się więcej o [wbudowanych kontrolach zabezpieczeń w ramach usług platformy Azure](../security/fundamentals/security-controls.md).
+- Dowiedz się więcej o [wbudowanych zabezpieczeniach w usługach platformy Azure.](../security/fundamentals/security-controls.md)

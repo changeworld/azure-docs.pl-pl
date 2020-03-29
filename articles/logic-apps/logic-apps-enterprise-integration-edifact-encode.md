@@ -1,6 +1,6 @@
 ---
 title: Kodowanie komunikatów EDIFACT
-description: Sprawdź poprawność EDI i Generuj XML za pomocą kodera komunikatów EDIFACT dla Azure Logic Apps z Pakiet integracyjny dla przedsiębiorstw
+description: Sprawdzanie poprawności edi i generowanie kodu XML za pomocą kodera komunikatów EDIFACT dla aplikacji Logika Azure z pakietem integracji przedsiębiorstwa
 services: logic-apps
 ms.suite: integration
 author: divyaswarnkar
@@ -9,88 +9,88 @@ ms.reviewer: jonfan, divswa, logicappspm
 ms.topic: article
 ms.date: 01/27/2017
 ms.openlocfilehash: 257cbd0b1a68ddd2b16235e6f8dec5d5b0eb10e2
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74790647"
 ---
-# <a name="encode-edifact-messages-for-azure-logic-apps-with-enterprise-integration-pack"></a>Koduj komunikaty EDIFACT dla Azure Logic Apps z Pakiet integracyjny dla przedsiębiorstw
+# <a name="encode-edifact-messages-for-azure-logic-apps-with-enterprise-integration-pack"></a>Kodowanie komunikatów EDIFACT dla aplikacji logiki azure za pomocą pakietu Enterprise Integration Pack
 
-Za pomocą łącznika komunikatu EDIFACT można sprawdzić poprawność EDI i właściwości specyficzne dla partnera, wygenerować dokument XML dla każdego zestawu transakcji i zażądać potwierdzenia technicznego, potwierdzenia funkcjonalności lub obu tych funkcji.
-Aby użyć tego łącznika, należy dodać Łącznik do istniejącego wyzwalacza w aplikacji logiki.
+Za pomocą łącznika komunikatu Encode EDIFACT można sprawdzić poprawność właściwości EDI i właściwości specyficzne dla partnera, wygenerować dokument XML dla każdego zestawu transakcji i zażądać potwierdzenia technicznego, potwierdzenia funkcjonalnego lub obu tych właściwości.
+Aby użyć tego łącznika, należy dodać łącznik do istniejącego wyzwalacza w aplikacji logiki.
 
 ## <a name="before-you-start"></a>Przed rozpoczęciem
 
-Oto elementy, których potrzebujesz:
+Oto potrzebne przedmioty:
 
-* Konto platformy Azure; Możesz utworzyć [bezpłatne konto](https://azure.microsoft.com/free)
-* [Konto integracji](logic-apps-enterprise-integration-create-integration-account.md) , które jest już zdefiniowane i skojarzone z subskrypcją platformy Azure. Musisz mieć konto integracji, aby używać łącznika wiadomości EDIFACT. 
-* Co najmniej dwóch [partnerów](logic-apps-enterprise-integration-partners.md) , które są już zdefiniowane na koncie integracji
-* [Umowa EDIFACT](logic-apps-enterprise-integration-edifact.md) , która jest już zdefiniowana na koncie integracji
+* Konto platformy Azure; można utworzyć [darmowe konto](https://azure.microsoft.com/free)
+* [Konto integracji,](logic-apps-enterprise-integration-create-integration-account.md) które jest już zdefiniowane i skojarzone z subskrypcją platformy Azure. Aby użyć łącznika komunikatu Encode EDIFACT, musisz mieć konto integracji. 
+* Co najmniej dwóch [partnerów,](logic-apps-enterprise-integration-partners.md) którzy są już zdefiniowani na koncie integracji
+* [Umowa EDIFACT,](logic-apps-enterprise-integration-edifact.md) która jest już zdefiniowana na koncie integracyjnym
 
 ## <a name="encode-edifact-messages"></a>Kodowanie komunikatów EDIFACT
 
-1. [Utwórz aplikację logiki](quickstart-create-first-logic-app-workflow.md).
+1. [Tworzenie aplikacji logiki](quickstart-create-first-logic-app-workflow.md).
 
-2. Łącznik EDIFACT komunikatów kodowania nie ma wyzwalaczy, dlatego należy dodać wyzwalacz do uruchamiania aplikacji logiki, jak wyzwalacz żądania. W Projektancie aplikacji logiki Dodaj wyzwalacz, a następnie Dodaj akcję do aplikacji logiki.
+2. Łącznik komunikatu Encode EDIFACT nie ma wyzwalaczy, więc należy dodać wyzwalacz do uruchamiania aplikacji logiki, takich jak wyzwalacz żądania. W projektancie aplikacji logiki dodaj wyzwalacz, a następnie dodaj akcję do aplikacji logiki.
 
-3.  W polu wyszukiwania wprowadź ciąg "EDIFACT" jako filtr. Wybierz opcję **Koduj komunikat EDIFACT według nazwy umowy** lub **Zakoduj na komunikat EDIFACT przez tożsamość**.
+3.  W polu wyszukiwania wpisz "EDIFACT" jako filtr. Wybierz opcję **Zakoduj wiadomość EDIFACT według nazwy umowy** lub **zakoduj do wiadomości EDIFACT według tożsamości**.
    
-    ![Wyszukaj EDIFACT](media/logic-apps-enterprise-integration-edifact-encode/edifactdecodeimage1.png)  
+    ![szukaj EDIFACT](media/logic-apps-enterprise-integration-edifact-encode/edifactdecodeimage1.png)  
 
-3. Jeśli nie utworzono wcześniej żadnych połączeń z kontem integracji, zostanie wyświetlony monit o utworzenie tego połączenia teraz. Nazwij połączenie i wybierz konto integracji, które chcesz połączyć.
+3. Jeśli wcześniej nie utworzyłeś żadnych połączeń z kontem integracji, zostanie wyświetlony monit o utworzenie tego połączenia. Nazwij połączenie i wybierz konto integracji, które chcesz połączyć.
 
-    ![Utwórz połączenie z kontem integracji](media/logic-apps-enterprise-integration-edifact-encode/edifactencodeimage1.png)  
+    ![tworzenie połączenia z kontem integracji](media/logic-apps-enterprise-integration-edifact-encode/edifactencodeimage1.png)  
 
-    Właściwości z gwiazdką są wymagane.
+    Wymagane są właściwości z gwiazdką.
 
     | Właściwość | Szczegóły |
     | --- | --- |
-    | Nazwa połączenia * |Wprowadź dowolną nazwę dla połączenia. |
-    | Konto integracji * |Wprowadź nazwę konta integracji. Upewnij się, że Twoje konto integracji i aplikacja logiki znajdują się w tej samej lokalizacji platformy Azure. |
+    | Nazwa połączenia * |Wprowadź dowolną nazwę połączenia. |
+    | Konto integracji * |Wprowadź nazwę konta integracyjnego. Upewnij się, że konto integracji i aplikacja logiki znajdują się w tej samej lokalizacji platformy Azure. |
 
-5.  Gdy wszystko będzie gotowe, szczegóły połączenia powinny wyglądać podobnie do tego przykładu. Aby zakończyć tworzenie połączenia, wybierz pozycję **Utwórz**.
+5.  Po zakończeniu szczegóły połączenia powinny wyglądać podobnie do tego przykładu. Aby zakończyć tworzenie połączenia, wybierz pozycję **Utwórz**.
 
-    ![Szczegóły połączenia z kontem integracji](media/logic-apps-enterprise-integration-edifact-encode/edifactencodeimage2.png)
+    ![szczegóły połączenia konta integracji](media/logic-apps-enterprise-integration-edifact-encode/edifactencodeimage2.png)
 
-    Połączenie zostało utworzone.
+    Połączenie zostanie utworzone.
 
-    ![utworzono połączenie z kontem integracji](media/logic-apps-enterprise-integration-edifact-encode/edifactencodeimage4.png)
+    ![utworzone połączenie z kontem integracji](media/logic-apps-enterprise-integration-edifact-encode/edifactencodeimage4.png)
 
-#### <a name="encode-edifact-message-by-agreement-name"></a>Koduj komunikat EDIFACT według nazwy umowy
+#### <a name="encode-edifact-message-by-agreement-name"></a>Kodowanie komunikatu EDIFACT według nazwy umowy
 
-W przypadku wybrania kodowania komunikatów EDIFACT według nazwy umowy Otwórz nazwę listy **umów EDIFACT** , wprowadź lub wybierz nazwę umowy EDIFACT. Wprowadź komunikat XML do zakodowania.
+Jeśli zdecydujesz się zakodować komunikaty EDIFACT według nazwy umowy, otwórz listę **umowy Nazwa EDIFACT,** wprowadź lub wybierz nazwę umowy EDIFACT. Wprowadź komunikat XML do zakodowania.
 
-![Wprowadź nazwę umowy EDIFACT i komunikat XML do zakodowania](media/logic-apps-enterprise-integration-edifact-encode/edifactencodeimage6.png)
+![Wprowadź nazwę umowy EDIFACT i komunikat XML do kodowania](media/logic-apps-enterprise-integration-edifact-encode/edifactencodeimage6.png)
 
-#### <a name="encode-edifact-message-by-identities"></a>Koduj komunikat EDIFACT według tożsamości
+#### <a name="encode-edifact-message-by-identities"></a>Kodowanie wiadomości EDIFACT według tożsamości
 
-W przypadku wybrania kodowania komunikatów EDIFACT według tożsamości wprowadź identyfikator nadawcy, kwalifikator nadawcy, identyfikator odbiorcy i kwalifikator odbiorcy zgodnie z konfiguracją w umowie EDIFACT. Wybierz komunikat XML do zakodowania.
+Jeśli zdecydujesz się zakodować komunikaty EDIFACT według tożsamości, wprowadź identyfikator nadawcy, kwalifikator nadawcy, identyfikator odbiorcy i kwalifikator odbiorcy skonfigurowany w umowie EDIFACT. Wybierz komunikat XML do zakodowania.
 
-![Podaj tożsamości dla nadawcy i odbiornika, wybierz wiadomość XML do zakodowania](media/logic-apps-enterprise-integration-edifact-encode/edifactencodeimage7.png)
+![Podaj tożsamości nadawcy i odbiorcy, wybierz komunikat XML do zakodowania](media/logic-apps-enterprise-integration-edifact-encode/edifactencodeimage7.png)
 
-## <a name="edifact-encode-details"></a>Szczegóły kodowania EDIFACT
+## <a name="edifact-encode-details"></a>EDIFACT Szczegóły kodowania
 
-Łącznik EDIFACT kodowania wykonuje następujące zadania: 
+Łącznik Encode EDIFACT wykonuje następujące zadania: 
 
-* Rozpoznaj umowę, dopasowując kwalifikator nadawcy & identyfikator i kwalifikator i identyfikator adresata
-* Serializacja wymiany EDI, konwertowanie komunikatów zakodowanych w formacie XML na zestawy transakcji EDI w wymianie.
-* Stosuje nagłówek i segmenty naczepy zestawu transakcji
-* Generuje numer kontrolny wymiany, numer kontrolny grupy i numer kontrolny zestawu transakcji dla każdej wychodzącej wymiany
-* Zamienia separatory w danych ładunku
-* Sprawdza poprawność EDI i właściwości specyficzne dla partnera
-  * Sprawdzanie poprawności schematu dla elementów danych zestawu transakcji względem schematu komunikatów.
-  * Sprawdzanie poprawności EDI wykonane dla elementów danych zestawu transakcji.
-  * Przeprowadzono rozszerzoną weryfikację dla elementów danych zestawu transakcji
+* Rozwiąż umowę, dopasowując kwalifikator nadawcy & identyfikator i kwalifikator odbiorcy oraz identyfikator
+* Serializuje wymianę EDI, konwertując wiadomości zakodowane w formacie XML na zestawy transakcji EDI w wymianie.
+* Stosuje segmenty nagłówka i zwiastuna zestawu transakcji
+* Generuje numer kontroli wymiany, numer kontroli grupy i numer kontroli zestawu transakcji dla każdej wychodzącej wymiany
+* Zastępuje separatory w danych ładunku
+* Sprawdza poprawność właściwości EDI i specyficzne dla partnera
+  * Sprawdzanie poprawności schematu elementów danych zestawu transakcji względem schematu wiadomości.
+  * Sprawdzanie poprawności EDI wykonywane na elementach danych zestawu transakcji.
+  * Rozszerzona sprawdzanie poprawności wykonywane na elementach danych zestawu transakcji
 * Generuje dokument XML dla każdego zestawu transakcji.
-* Żąda potwierdzeń technicznych i/lub funkcjonalnych (jeśli zostały skonfigurowane).
-  * Jako potwierdzenie techniczne komunikat CONTRL wskazuje na otrzymanie wymiany.
-  * W ramach potwierdzenia funkcjonalności komunikat CONTRL wskazuje na akceptację lub odrzucenie odebranej wymiany, grupy lub komunikatu, z listą błędów lub nieobsługiwaną funkcjonalnością
+* Żąda potwierdzenia technicznego i/lub funkcjonalnego (jeśli jest skonfigurowany).
+  * Jako potwierdzenie techniczne komunikat CONTRL wskazuje odbiór wymiany.
+  * Jako potwierdzenie funkcjonalne komunikat CONTRL wskazuje akceptację lub odrzucenie odebranej wymiany, grupy lub wiadomości, z listą błędów lub nieobsługiwałem funkcji
 
 ## <a name="view-swagger-file"></a>Wyświetl plik Swagger
-Aby wyświetlić szczegóły struktury Swagger dla łącznika EDIFACT, zobacz [EDIFACT](/connectors/edifact/).
+Aby wyświetlić szczegóły Swagger dla złącza EDIFACT, zobacz [EDIFACT](/connectors/edifact/).
 
 ## <a name="next-steps"></a>Następne kroki
-[Dowiedz się więcej o Pakiet integracyjny dla przedsiębiorstw](logic-apps-enterprise-integration-overview.md "Dowiedz się więcej o Pakiet integracyjny dla przedsiębiorstw") 
+[Dowiedz się więcej o pakiecie integracji dla przedsiębiorstw](logic-apps-enterprise-integration-overview.md "Dowiedz się więcej o pakiecie integracji w przedsiębiorstwie") 
 

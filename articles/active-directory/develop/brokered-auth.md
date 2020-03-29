@@ -1,7 +1,7 @@
 ---
-title: Uwierzytelnianie obsługiwane przez brokera w systemie Android | Azure
+title: Uwierzytelnianie brokerskie w systemie Android | Azure
 titlesuffix: Microsoft identity platform
-description: Omówienie uwierzytelniania obsługiwanego przez brokera & autoryzacji dla systemu Android na platformie tożsamości firmy Microsoft
+description: Omówienie uwierzytelniania & autoryzacji w systemie Android na platformie tożsamości firmy Microsoft
 services: active-directory
 author: shoatman
 manager: CelesteDG
@@ -14,71 +14,71 @@ ms.author: shoatman
 ms.custom: aaddev
 ms.reviewer: shoatman, hahamil, brianmel
 ms.openlocfilehash: a734589178438fd65d9a2d156fd91fc82807f578
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76697901"
 ---
-# <a name="brokered-authentication-in-android"></a>Uwierzytelnianie obsługiwane przez brokera w systemie Android
+# <a name="brokered-authentication-in-android"></a>Uwierzytelnianie brokerskie w systemie Android
 
-Musisz użyć jednego z brokerów uwierzytelniania firmy Microsoft, aby wziąć udział w rejestracji jednokrotnej na całym urządzeniu (SSO) i spełnić zasady dostępu warunkowego do organizacji. Integracja z brokerem zapewnia następujące korzyści:
+Musisz użyć jednego z brokerów uwierzytelniania firmy Microsoft, aby uczestniczyć w rejestracji jednokrotnej (SSO) całego urządzenia i spełniać zasady organizacyjnego dostępu warunkowego. Integracja z brokerem zapewnia następujące korzyści:
 
 - Logowanie jednokrotne urządzenia
 - Dostęp warunkowy dla:
-  - Intune App Protection
-  - Rejestracja urządzenia (Workplace Join)
+  - Ochrona aplikacji usługi Intune
+  - Rejestracja urządzenia (dołączanie do miejsca pracy)
   - Zarządzanie urządzeniami przenośnymi
-- Zarządzanie kontami w całym urządzeniu
-  -  za pomocą konta Android AccountManager & Ustawienia konta
-  - "Konto służbowe" — typ konta niestandardowego
+- Zarządzanie kontem w całym urządzeniu
+  -  za pośrednictwem Android AccountManager & ustawienia konta
+  - "Konto służbowe" - typ konta niestandardowego
 
-W systemie Android Broker uwierzytelniania firmy Microsoft jest składnikiem zawartym w [aplikacji Microsoft Authenticator](https://play.google.com/store/apps/details?id=com.azure.authenticator) i [Intune — portal firmy](https://play.google.com/store/apps/details?id=com.microsoft.windowsintune.companyportal)
+W systemie Android broker uwierzytelniania firmy Microsoft jest składnikiem dołączonym do [aplikacji Microsoft Authenticator](https://play.google.com/store/apps/details?id=com.azure.authenticator) i [portalu firmy usługi Intune](https://play.google.com/store/apps/details?id=com.microsoft.windowsintune.companyportal)
 
 > [!TIP]
-> Tylko jedna aplikacja, która hostuje brokera, będzie aktywna jako Broker w danym momencie. Która aplikacja jest aktywna jako Broker jest określona przez kolejność instalacji na urządzeniu. Pierwszy, który ma zostać zainstalowany, lub ostatni obecny na urządzeniu, jest aktywnym brokerem.
+> Tylko jedna aplikacja, która obsługuje brokera będzie aktywny jako broker w czasie. Która aplikacja jest aktywna jako broker jest określana przez kolejność instalacji na urządzeniu. Pierwszy, który zostanie zainstalowany lub ostatni prezent na urządzeniu, staje się aktywnym brokerem.
 
 Na poniższym diagramie przedstawiono relację między aplikacją, biblioteką uwierzytelniania firmy Microsoft (MSAL) i brokerami uwierzytelniania firmy Microsoft.
 
 ![Diagram wdrażania brokera](./media/brokered-auth/brokered-deployment-diagram.png)
 
-## <a name="installing-apps-that-host-a-broker"></a>Instalowanie aplikacji obsługujących brokera
+## <a name="installing-apps-that-host-a-broker"></a>Instalowanie aplikacji hostujących brokera
 
-Aplikacje hostingowe brokera mogą być instalowane przez właściciela urządzenia ze sklepu z aplikacjami (zwykle Sklep Google Play) w dowolnym momencie. Niektóre interfejsy API (zasoby) są jednak chronione przez zasady dostępu warunkowego, które wymagają urządzeń:
+Aplikacje brokera hostingu mogą być instalowane przez właściciela urządzenia ze sklepu z aplikacjami (zazwyczaj w Sklepie Google Play) w dowolnym momencie. Jednak niektóre interfejsy API (zasoby) są chronione przez zasady dostępu warunkowego, które wymagają urządzeń, które mają być:
 
-- Zarejestrowane (dołączono do miejsca pracy) i/lub
-- Zarejestrowano w zarządzaniu urządzeniami lub
-- Zarejestrowane w Intune App Protection
+- Zarejestrowany (przyłączony do miejsca pracy) i/lub
+- Zarejestrowane w Zarządzaniu urządzeniami lub
+- Zarejestrowano się w ochronie aplikacji usługi Intune
 
-Jeśli na urządzeniu nie ma jeszcze zainstalowanej aplikacji brokera, MSAL nakazuje użytkownikowi zainstalowanie go zaraz po próbie uzyskania tokenu interaktywnie. Następnie aplikacja będzie musiała prowadzić użytkownika przez kroki, aby zapewnić zgodność urządzenia z wymaganymi zasadami.
+Jeśli urządzenie nie ma jeszcze zainstalowanej aplikacji brokera, MSAL nakazuje użytkownikowi zainstalować ją, gdy tylko aplikacja spróbuje uzyskać token interaktywnie. Aplikacja będzie następnie trzeba prowadzić użytkownika przez kroki, aby urządzenie zgodne z wymaganymi zasadami.
 
-## <a name="effects-of-installing-and-uninstalling-a-broker"></a>Efekty instalacji i dezinstalacji brokera
+## <a name="effects-of-installing-and-uninstalling-a-broker"></a>Efekty instalacji i odinstalowywania brokera
 
 ### <a name="when-a-broker-is-installed"></a>Po zainstalowaniu brokera
 
-Gdy na urządzeniu jest zainstalowany Broker, wszystkie kolejne żądania tokenu interakcyjnego (wywołania do `acquireToken()`) są obsługiwane przez brokera, a nie lokalnie przez MSAL. Wszystkie Stany logowania jednokrotnego, wcześniej dostępne dla MSAL, nie są dostępne dla brokera. W związku z tym użytkownik będzie musiał ponownie przeprowadzić uwierzytelnienie lub wybrać konto z istniejącej listy kont znanych urządzeniu.
+Gdy broker jest zainstalowany na urządzeniu, wszystkie kolejne `acquireToken()`żądania tokenu interaktywnego (wywołania) są obsługiwane przez brokera, a nie lokalnie przez MSAL. Każdy stan samego przysłówka wcześniej dostępny dla usługi MSAL nie jest dostępny dla brokera. W rezultacie użytkownik będzie musiał uwierzytelnić się ponownie lub wybrać konto z istniejącej listy kont znanych urządzeniu.
 
-Zainstalowanie brokera nie wymaga ponownego zalogowania użytkownika. Tylko wtedy, gdy użytkownik musi rozwiązać `MsalUiRequiredException`, następnym żądaniem będzie przejście do brokera. `MsalUiRequiredException` jest generowany z kilku powodów i musi zostać rozwiązany interaktywnie. Oto najczęstsze przyczyny:
+Instalowanie brokera nie wymaga ponownego logowania użytkownika. Tylko wtedy, gdy użytkownik `MsalUiRequiredException` musi rozwiązać będzie następne żądanie przejść do brokera. `MsalUiRequiredException`jest wyrzucany z wielu powodów i musi być rozwiązany interaktywnie. Oto kilka typowych przyczyn:
 
 - Użytkownik zmienił hasło skojarzone z kontem.
 - Konto użytkownika nie spełnia już zasad dostępu warunkowego.
-- Użytkownik odwołał swoją zgodę na skojarzenie aplikacji ze swoim kontem.
+- Użytkownik cofnął zgodę na powiązanie aplikacji z kontem.
 
 ### <a name="when-a-broker-is-uninstalled"></a>Po odinstalowaniu brokera
 
-Jeśli jest zainstalowana tylko jedna aplikacja hostingu brokera i zostanie usunięta, użytkownik będzie musiał zalogować się ponownie. Odinstalowanie aktywnego brokera spowoduje usunięcie konta i skojarzonych z nim tokenów.
+Jeśli zainstalowano tylko jedną aplikację hostingu brokera i zostanie usunięta, użytkownik będzie musiał zalogować się ponownie. Odinstalowanie aktywnego brokera powoduje usunięcie konta i skojarzonych tokenów z urządzenia.
 
-Jeśli Intune — Portal firmy jest zainstalowana i działa jako aktywny Broker, a Microsoft Authenticator również jest zainstalowana, wówczas jeśli Intune — Portal firmy (Active Broker) zostanie odinstalowany, użytkownik będzie musiał zalogować się ponownie. Po ponownym zalogowaniu aplikacja Microsoft Authenticator przechodzi do aktywnego brokera.
+Jeśli program Intune Company Portal jest zainstalowany i działa jako aktywny broker, a program Microsoft Authenticator jest również zainstalowany, jeśli portal firmy usługi Intune (aktywny broker) zostanie odinstalowany, użytkownik będzie musiał zalogować się ponownie. Po ponownym zalogowaniu aplikacja Microsoft Authenticator staje się aktywnym brokerem.
 
-## <a name="integrating-with-a-broker"></a>Integrowanie z brokerem
+## <a name="integrating-with-a-broker"></a>Integracja z brokerem
 
 ### <a name="generating-a-redirect-uri-for-a-broker"></a>Generowanie identyfikatora URI przekierowania dla brokera
 
-Należy zarejestrować identyfikator URI przekierowania, który jest zgodny z brokerem. Identyfikator URI przekierowania dla brokera musi zawierać nazwę pakietu aplikacji, a także reprezentację sygnatury zakodowanej w formacie base64.
+Należy zarejestrować identyfikator URI przekierowania, który jest zgodny z brokera. Identyfikator URI przekierowania dla brokera musi zawierać nazwę pakietu aplikacji, a także zakodowaną reprezentację podpisu aplikacji zakodowaną w base64.
 
-Format identyfikatora URI przekierowania to: `msauth://<yourpackagename>/<base64urlencodedsignature>`
+Format identyfikatora URI przekierowania jest:`msauth://<yourpackagename>/<base64urlencodedsignature>`
 
-Wygeneruj podpis kodowany przez adres URL w formacie base64 przy użyciu kluczy podpisywania aplikacji. Oto kilka przykładowych poleceń korzystających z kluczy podpisywania debugowania:
+Wygeneruj podpis zakodowany w adresie URL Base64 przy użyciu kluczy podpisywania aplikacji. Oto kilka przykładowych poleceń, które używają kluczy podpisywania debugowania:
 
 #### <a name="macos"></a>macOS
 
@@ -92,14 +92,14 @@ keytool -exportcert -alias androiddebugkey -keystore ~/.android/debug.keystore |
 keytool -exportcert -alias androiddebugkey -keystore %HOMEPATH%\.android\debug.keystore | openssl sha1 -binary | openssl base64
 ```
 
-Aby uzyskać informacje na temat podpisywania aplikacji, zobacz [Podpisz swoją aplikację](https://developer.android.com/studio/publish/app-signing) .
+Aby uzyskać informacje na temat podpisywania aplikacji, zobacz [Podpisywanie aplikacji.](https://developer.android.com/studio/publish/app-signing)
 
 > [!IMPORTANT]
-> Użyj Twojego produkcyjnego klucza podpisywania dla wersji produkcyjnej aplikacji.
+> Użyj klucza podpisywania produkcji dla produkcyjnej wersji aplikacji.
 
-### <a name="configure-msal-to-use-a-broker"></a>Konfigurowanie MSAL do korzystania z brokera
+### <a name="configure-msal-to-use-a-broker"></a>Konfigurowanie usługi MSAL do używania brokera
 
-Aby korzystać z brokera w aplikacji, należy zaświadczać, że skonfigurowano przekierowanie brokera. Na przykład Uwzględnij identyfikator URI przekierowania z włączoną obsługą brokera--i wskaż, że został on zarejestrowany — przez uwzględnienie następujących danych w pliku konfiguracji MSAL:
+Aby korzystać z brokera w aplikacji, musisz potwierdzić, że skonfigurowano przekierowanie brokera. Na przykład uwzględnij zarówno identyfikator URI przekierowania włączonego brokera — jak i wskaż, że został zarejestrowany — przez uwzględnienie następujących elementów w pliku konfiguracyjnym MSAL:
 
 ```javascript
 "redirect_uri" : "<yourbrokerredirecturi>",
@@ -107,18 +107,18 @@ Aby korzystać z brokera w aplikacji, należy zaświadczać, że skonfigurowano 
 ```
 
 > [!TIP]
-> Nowy interfejs użytkownika rejestracji aplikacji Azure Portal pomaga wygenerować identyfikator URI przekierowania brokera. Jeśli aplikacja została zarejestrowana przy użyciu starszego środowiska lub w portalu rejestracji aplikacji firmy Microsoft, może być konieczne wygenerowanie identyfikatora URI przekierowania i ręczne zaktualizowanie listy identyfikatorów URI przekierowania w portalu.
+> Nowy interfejs użytkownika rejestracji aplikacji witryny Azure portal pomaga wygenerować brokera przekierowania identyfikatora URI. Jeśli aplikacja została zarejestrowana przy użyciu starszego środowiska lub zrobiła to za pomocą portalu rejestracji aplikacji firmy Microsoft, może być konieczne wygenerowanie identyfikatora URI przekierowania i ręczne zaktualizowanie listy identyfikatorów URI przekierowania w portalu.
 
 ### <a name="broker-related-exceptions"></a>Wyjątki związane z brokerem
 
 MSAL komunikuje się z brokerem na dwa sposoby:
 
-- Usługa powiązana z brokerem
-- Konto systemu Android
+- Usługa związana z brokerem
+- Menedżer konta w systemie Android
 
-MSAL najpierw używa usługi powiązanej z brokerem, ponieważ wywołanie tej usługi nie wymaga żadnych uprawnień systemu Android. Jeśli wiązanie do powiązanej usługi zakończy się niepowodzeniem, MSAL będzie używać interfejsu API konta systemu Android. MSAL to zrobić tylko wtedy, gdy aplikacja ma już przyznane uprawnienia `"READ_CONTACTS"`.
+MSAL najpierw używa usługi powiązanej z brokerem, ponieważ wywołanie tej usługi nie wymaga żadnych uprawnień systemu Android. Jeśli powiązanie z powiązaną usługą zakończy się niepowodzeniem, usługa MSAL użyje interfejsu API programu Android AccountManager. Usługa MSAL robi to tylko wtedy, `"READ_CONTACTS"` gdy aplikacja została już przyznana uprawnieniu.
 
-Jeśli zostanie wyświetlony `MsalClientException` z kodem błędu `"BROKER_BIND_FAILURE"`, dostępne są dwie opcje:
+Jeśli pojawi `MsalClientException` się kod `"BROKER_BIND_FAILURE"`błędu , istnieją dwie opcje:
 
-- Poproszenie użytkownika o wyłączenie optymalizacji zużycia baterii dla aplikacji Microsoft Authenticator i Intune — Portal firmy.
-- Poproszenie użytkownika o przyznanie uprawnienia `"READ_CONTACTS"`
+- Poproś użytkownika o wyłączenie optymalizacji zasilania aplikacji Microsoft Authenticator i portalu firmy usługi Intune.
+- Poproś użytkownika o `"READ_CONTACTS"` udzielenie uprawnień

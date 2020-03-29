@@ -1,6 +1,6 @@
 ---
-title: Schemat zdarzeń w usłudze Azure Event Grid Container Registry
-description: Opisuje właściwości, które są dostarczane dla zdarzeń rejestru kontenerów za pomocą usługi Azure Event Grid
+title: Schemat zdarzenia rejestru kontenerów usługi Azure Event Grid
+description: W tym artykule opisano właściwości, które są dostarczane dla zdarzeń rejestru kontenerów za pomocą usługi Azure Event Grid
 services: event-grid
 author: spelluru
 manager: timlt
@@ -9,30 +9,30 @@ ms.topic: reference
 ms.date: 03/12/2019
 ms.author: spelluru
 ms.openlocfilehash: c5998ff428c4b6f4c1f7a4087c6ccb27d93773eb
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60345468"
 ---
-# <a name="azure-event-grid-event-schema-for-container-registry"></a>Schemat zdarzeń Azure Event Grid dla rejestru kontenerów
+# <a name="azure-event-grid-event-schema-for-container-registry"></a>Schemat zdarzenia usługi Azure Event Grid dla rejestru kontenerów
 
-Ten artykuł zawiera właściwości i schematu zdarzeń rejestru kontenerów. Aby zapoznać się z wprowadzeniem do schematów zdarzeń, zobacz [schematu zdarzeń usługi Azure Event Grid](event-schema.md).
+Ten artykuł zawiera właściwości i schemat zdarzeń rejestru kontenerów.Aby zapoznać się ze schematem zdarzeń, zobacz [Schemat zdarzeń usługi Azure Event Grid](event-schema.md).
 
-## <a name="available-event-types"></a>Zdarzenie dostępne typy
+## <a name="available-event-types"></a>Dostępne typy zdarzeń
 
 Usługa Azure Container Registry emituje następujące typy zdarzeń:
 
 | Typ zdarzenia | Opis |
 | ---------- | ----------- |
-| Microsoft.ContainerRegistry.ImagePushed | Wywoływane, gdy obraz jest przekazywane. |
-| Microsoft.ContainerRegistry.ImageDeleted | Wywoływane, gdy obraz zostanie usunięty. |
-| Microsoft.ContainerRegistry.ChartPushed | Wywoływane, gdy są wypychane wykresu Helm. |
-| Microsoft.ContainerRegistry.ChartDeleted | Wywoływane, gdy wykresu Helm zostanie usunięty. |
+| Microsoft.ContainerRegistry.ImagePushed | Wywoływane po wypchnięciu obrazu. |
+| Plik Microsoft.ContainerRegistry.ImageDeleted | Wywoływane po usunięciu obrazu. |
+| Plik Microsoft.ContainerRegistry.ChartPushed | Wywoływane po naciśnięciu wykresu helm. |
+| Plik Microsoft.ContainerRegistry.ChartDeleted | Wywoływane po usunięciu wykresu Helm. |
 
-## <a name="example-event"></a>Przykład zdarzenia
+## <a name="example-event"></a>Przykładowe zdarzenie
 
-Poniższy przykład przedstawia schematu obraz wypchnięty zdarzeń: 
+W poniższym przykładzie przedstawiono schemat zdarzenia wypchniętego obrazu: 
 
 ```json
 [{
@@ -65,7 +65,7 @@ Poniższy przykład przedstawia schematu obraz wypchnięty zdarzeń:
 }]
 ```
 
-Schemat zdarzenia usunięto obraz jest podobne:
+Schemat zdarzenia usuniętego obrazu jest podobny:
 
 ```json
 [{
@@ -95,7 +95,7 @@ Schemat zdarzenia usunięto obraz jest podobne:
 }]
 ```
 
-Schemat wykres wypychania zdarzeń jest podobne do schematu utworzone z obrazów wypychanie zdarzeń, ale nie zawiera obiektu żądania:
+Schemat zdarzenia wypychanego wykresu jest podobny do schematu dla sobrazowanego zdarzenia wypchniętego, ale nie zawiera obiektu żądania:
 
 ```json
 [{
@@ -123,7 +123,7 @@ Schemat wykres wypychania zdarzeń jest podobne do schematu utworzone z obrazów
 }]
 ```
 
-Schemat zdarzenia usunięto wykresu jest podobne do schematu na zdarzenie usunięte utworzone z obrazów, ale nie zawiera obiektu żądania:
+Schemat zdarzenia usuniętego wykresu jest podobny do schematu dla zdarzenia usuniętego z obrazem, ale nie zawiera obiektu żądania:
 
 ```json
 [{
@@ -153,53 +153,53 @@ Schemat zdarzenia usunięto wykresu jest podobne do schematu na zdarzenie usuni�
 
 ## <a name="event-properties"></a>Właściwości zdarzenia
 
-Zdarzenie zawiera następujące dane najwyższego poziomu:
+Zdarzenie ma następujące dane najwyższego poziomu:
 
 | Właściwość | Typ | Opis |
 | -------- | ---- | ----------- |
-| topic | string | Zasobów Pełna ścieżka do źródła zdarzeń. To pole nie jest zapisywalna. Usługa Event Grid udostępnia tę wartość. |
-| subject | string | Ścieżka zdefiniowana przez wydawcę na temat zdarzenia. |
-| eventType | string | Jeden z typów zdarzeń zarejestrowane dla tego źródła zdarzeń. |
-| eventTime | string | Czas, którego zdarzenie jest generowane na podstawie czasu UTC dostawcy. |
-| id | string | Unikatowy identyfikator zdarzenia. |
-| data | object | Dane zdarzenia magazynu obiektów blob. |
-| dataVersion | string | Wersja schematu dla obiektu danych. Wydawca Określa wersję schematu. |
-| metadataVersion | string | Wersja schematu dla metadanych zdarzenia. Usługa Event Grid definiuje schemat właściwości najwyższego poziomu. Usługa Event Grid udostępnia tę wartość. |
+| temat | ciąg | Pełna ścieżka zasobu do źródła zdarzeń. To pole nie jest zapisywalne. Ta wartość jest podawana przez usługę Event Grid. |
+| Temat | ciąg | Zdefiniowana przez wydawcę ścieżka do tematu zdarzenia. |
+| Eventtype | ciąg | Jeden z zarejestrowanych typów zdarzeń dla tego źródła zdarzeń. |
+| eventTime | ciąg | Czas, w której zdarzenie jest generowane na podstawie czasu UTC dostawcy. |
+| id | ciąg | Unikatowy identyfikator zdarzenia. |
+| dane | obiekt | Dane zdarzenia magazynu obiektów blob. |
+| dataVersion | ciąg | Wersja schematu obiektu danych. Wydawca definiuje wersję schematu. |
+| metadataVersion | ciąg | Wersja schematu metadanych zdarzenia. Usługa Event Grid definiuje schemat właściwości najwyższego poziomu. Ta wartość jest podawana przez usługę Event Grid. |
 
 Obiekt danych ma następujące właściwości:
 
 | Właściwość | Typ | Opis |
 | -------- | ---- | ----------- |
-| id | string | Identyfikator zdarzenia. |
-| timestamp | string | Czas, w którym wystąpiło zdarzenie. |
-| action | string | Akcja, która obejmuje podanego zdarzenia. |
-| target | object | Obiekt docelowy zdarzenia. |
-| request | object | Żądanie, który wygenerował zdarzenie. |
+| id | ciąg | Identyfikator zdarzenia. |
+| sygnatura czasowa | ciąg | Czas, w którym wystąpiło zdarzenie. |
+| action | ciąg | Akcja, która obejmuje dostarczone zdarzenie. |
+| Docelowego | obiekt | Cel zdarzenia. |
+| Żądanie | obiekt | Żądanie, które wygenerowało zdarzenie. |
 
 Obiekt docelowy ma następujące właściwości:
 
 | Właściwość | Typ | Opis |
 | -------- | ---- | ----------- |
-| mediaType | string | Typ MIME przywoływanego obiektu. |
-| size | integer | Liczba bajtów treści. Taka sama jak długość pola. |
-| digest | string | Skrót zawartości, zgodnie z definicją w specyfikacji interfejsu API HTTP V2 rejestru. |
-| length | integer | Liczba bajtów treści. Taka sama jak rozmiar pola. |
-| repository | string | Nazwa repozytorium. |
-| tag | string | Nazwa tagu. |
-| name | string | Nazwa wykresu. |
-| version | string | Wersja wykresu. |
+| Mediatype | ciąg | Typ MIME obiektu, do którego istnieje odwołanie. |
+| size | liczba całkowita | Liczba bajtów zawartości. Tak samo jak pole Długość. |
+| digest | ciąg | Podsumowanie zawartości, zgodnie z definicją specyfikacji interfejsu API HTTP rejestru V2. |
+| length | liczba całkowita | Liczba bajtów zawartości. Tak samo jak pole Rozmiar. |
+| repozytorium | ciąg | Nazwa repozytorium. |
+| tag | ciąg | Nazwa tagu. |
+| name | ciąg | Nazwa wykresu. |
+| version | ciąg | Wersja wykresu. |
 
 Obiekt żądania ma następujące właściwości:
 
 | Właściwość | Typ | Opis |
 | -------- | ---- | ----------- |
-| id | string | Identyfikator żądania, który zainicjował zdarzenie. |
-| addr | string | Adresu IP lub nazwę hosta i prawdopodobnie portu połączenia klienta, który zainicjował zdarzenie. Ta wartość jest RemoteAddr z żądania standardowego protokołu http. |
-| host | string | Dostępne z zewnątrz nazwę hosta wystąpienia rejestru, określony przez nagłówka hosta http na żądań przychodzących. |
-| method | string | Metoda żądania, który wygenerował zdarzenie. |
-| useragent | string | Nagłówek agenta użytkownika żądania. |
+| id | ciąg | Identyfikator żądania, które zainicjowało zdarzenie. |
+| Addr | ciąg | Adres IP lub nazwa hosta i ewentualnie port połączenia klienta, który zainicjował zdarzenie. Ta wartość jest RemoteAddr od standardowego żądania http. |
+| host | ciąg | Zewnętrznie dostępna nazwa hosta wystąpienia rejestru, określona przez nagłówek hosta http w żądaniach przychodzących. |
+| method | ciąg | Metoda żądania, która wygenerowała zdarzenie. |
+| Useragent | ciąg | Nagłówek agenta użytkownika żądania. |
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-* Wprowadzenie do usługi Azure Event Grid, zobacz [co to jest usługa Event Grid?](overview.md)
+* Aby uzyskać wprowadzenie do usługi Azure Event Grid, zobacz [Co to jest siatka zdarzeń?](overview.md)
 * Aby uzyskać więcej informacji na temat tworzenia subskrypcji usługi Azure Event Grid, zobacz [schemat subskrypcji usługi Event Grid](subscription-creation-schema.md).

@@ -1,6 +1,6 @@
 ---
-title: Analizowanie danych szeregów czasowych przy użyciu usługi Azure Eksplorator danych
-description: Dowiedz się, jak analizować dane szeregów czasowych w chmurze przy użyciu usługi Azure Eksplorator danych.
+title: Analizowanie danych szeregów czasowych przy użyciu Eksploratora danych platformy Azure
+description: Dowiedz się, jak analizować dane szeregów czasowych w chmurze przy użyciu Eksploratora danych platformy Azure.
 author: orspod
 ms.author: orspodek
 ms.reviewer: adieldar
@@ -8,49 +8,49 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 04/07/2019
 ms.openlocfilehash: 3873b25394f91ce1c1601c348de2098198ba7fdd
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74765487"
 ---
-# <a name="time-series-analysis-in-azure-data-explorer"></a>Analiza szeregów czasowych w usłudze Azure Eksplorator danych
+# <a name="time-series-analysis-in-azure-data-explorer"></a>Analiza szeregów czasowych w Eksploratorze danych platformy Azure
 
-Usługa Azure Eksplorator danych (ADX) wykonuje gromadzenie danych telemetrycznych z usług Cloud Services i IoT. Te dane można analizować pod kątem różnych szczegółowych informacji, takich jak monitorowanie kondycji usług, fizyczne procesy produkcyjne i trendy użycia. Analiza jest wykonywana w szeregach czasowych wybranych metryk, aby znaleźć odchylenia wzorca w porównaniu z jego typowym wzorcem linii bazowej.
-ADX zawiera natywną obsługę tworzenia, manipulowania i analizy wielu szeregów czasowych. W tym temacie dowiesz się, jak ADX jest używany do tworzenia i analizowania **tysięcy szeregów czasowych w ciągu kilku sekund**, co pozwala na monitorowanie rozwiązań i przepływów pracy niemal w czasie rzeczywistym.
+Usługa Azure Data Explorer (ADX) wykonuje w toku zbieranie danych telemetrycznych z usług w chmurze lub urządzeń IoT. Te dane mogą być analizowane pod kątem różnych szczegółowych informacji, takich jak monitorowanie kondycji usługi, fizycznych procesów produkcyjnych i trendów użycia. Analiza jest wykonywana w szeregach czasowych wybranych metryk, aby znaleźć odchylenie we wzorcu w porównaniu do jego typowego wzorca linii bazowej.
+ADX zawiera natywną obsługę tworzenia, manipulowania i analizy wielu szeregów czasowych. W tym temacie dowiedz się, jak adx jest używany do tworzenia i analizowania **tysięcy szeregów czasowych w ciągu kilku sekund,** umożliwiając niemal w czasie rzeczywistym rozwiązania monitorowania i przepływy pracy.
 
 ## <a name="time-series-creation"></a>Tworzenie szeregów czasowych
 
-W tej sekcji utworzymy duży zestaw regularnych cyklów czasowych, po prostu i intuicyjnie przy użyciu operatora `make-series` i wypełnianie brakujących wartości zgodnie z wymaganiami.
-Pierwszym krokiem w analizie szeregów czasowych jest partycjonowanie i przekształcenie oryginalnej tabeli telemetrii na zestaw szeregów czasowych. Tabela zwykle zawiera kolumnę sygnatur czasowych, wymiary kontekstowe i metryki opcjonalne. Wymiary są używane do partycjonowania danych. Celem jest utworzenie tysięcy szeregów czasowych na partycję w regularnych odstępach czasu.
+W tej sekcji utworzymy duży zestaw regularnych szeregów czasowych `make-series` w prosty i intuicyjnie za pomocą operatora i wypełnij brakujące wartości w razie potrzeby.
+Pierwszym krokiem w analizie szeregów czasowych jest partycjonowanie i przekształcenie oryginalnej tabeli telemetrii na zestaw szeregów czasowych. Tabela zazwyczaj zawiera kolumnę sygnatury czasowej, wymiary kontekstowe i opcjonalne metryki. Wymiary są używane do partycjonowania danych. Celem jest utworzenie tysięcy szeregów czasowych na partycję w regularnych odstępach czasu.
 
-Tabela wejściowa *demo_make_series1* zawiera rekordy 600K dowolnego ruchu usługi sieci Web. Użyj poniższego polecenia do przykładu 10 rekordów:
+Tabela wprowadzania *demo_make_series1* zawiera 600K rekordów dowolnego ruchu usługi sieci web. Użyj poniższego polecenia, aby wypróbować 10 rekordów:
 
-**\[** [**kliknij, aby uruchomić zapytanie**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0tJzc2Pz03MTo0vTi3KTC02VKhRKAFyFQwNADOyzKUbAAAA) **\]**
+**\[**[**Kliknij, aby uruchomić kwerendę**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0tJzc2Pz03MTo0vTi3KTC02VKhRKAFyFQwNADOyzKUbAAAA)**\]**
 
 ```kusto
 demo_make_series1 | take 10 
 ```
 
-Poniższa tabela zawiera kolumnę sygnatur czasowych, trzy kolumny z wymiarami kontekstowymi i brak metryk:
+Wynikowa tabela zawiera kolumnę sygnatury czasowej, trzy kolumny wymiarów kontekstowych i brak metryk:
 
 |   |   |   |   |   |
 | --- | --- | --- | --- | --- |
-|   | Znacznik czasu | BrowserVer | OsVer | Kraj/region |
-|   | 2016-08-25 09:35.4020000 | Chrome 51,0 | Windows 7 | Zjednoczone Królestwo |
-|   | 2016-08-25 09:41.1120000 | Chrome 52,0 | Windows 10 |   |
-|   | 2016-08-25 09:46.2300000 | Chrome 52,0 | Windows 7 | Zjednoczone Królestwo |
-|   | 2016-08-25 09:46.5100000 | Chrome 52,0 | Windows 10 | Zjednoczone Królestwo |
-|   | 2016-08-25 09:46.5570000 | Chrome 52,0 | Windows 10 | Republika Litwy |
-|   | 2016-08-25 09:47.0470000 | Chrome 52,0 | Windows 8.1 | Indie |
-|   | 2016-08-25 09:51.3600000 | Chrome 52,0 | Windows 10 | Zjednoczone Królestwo |
-|   | 2016-08-25 09:51.6930000 | Chrome 52,0 | Windows 7 | Holandia |
-|   | 2016-08-25 09:56.4240000 | Chrome 52,0 | Windows 10 | Zjednoczone Królestwo |
-|   | 2016-08-25 09:13:08.7230000 | Chrome 52,0 | Windows 10 | Indie |
+|   | Sygnatury czasowej | PrzeglądarkaVer | OsVer (osVer) | Kraj/region |
+|   | 2016-08-25 09:12:35.4020000 | Chrome 51.0 | Windows 7 | Wielka Brytania |
+|   | 2016-08-25 09:12:41.1120000 | Chrome 52.0 | Windows 10 |   |
+|   | 2016-08-25 09:12:46.2300000 | Chrome 52.0 | Windows 7 | Wielka Brytania |
+|   | 2016-08-25 09:12:46.5100000 | Chrome 52.0 | Windows 10 | Wielka Brytania |
+|   | 2016-08-25 09:12:46.5570000 | Chrome 52.0 | Windows 10 | Republika Litewska |
+|   | 2016-08-25 09:12:47.0470000 | Chrome 52.0 | Windows 8.1 | Indie |
+|   | 2016-08-25 09:12:51.3600000 | Chrome 52.0 | Windows 10 | Wielka Brytania |
+|   | 2016-08-25 09:12:51.6930000 | Chrome 52.0 | Windows 7 | Holandia |
+|   | 2016-08-25 09:12:56.4240000 | Chrome 52.0 | Windows 10 | Wielka Brytania |
+|   | 2016-08-25 09:13:08.7230000 | Chrome 52.0 | Windows 10 | Indie |
 
-Ze względu na to, że nie istnieją żadne metryki, można skompilować zestaw szeregów czasowych reprezentujący samą liczbę ruchu, partycjonowany przez system operacyjny przy użyciu następującej kwerendy:
+Ponieważ nie ma żadnych metryk, możemy utworzyć tylko zestaw szeregów czasowych reprezentujących samą liczbę ruchu, podzielony na partycje przez system operacyjny przy użyciu następującej kwerendy:
 
-**\[** [**kliknij, aby uruchomić zapytanie**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA5XPwQrCMBAE0Hu/Yo4NVLBn6Td4ULyWtV1tMJtIsoEq/XhbC4J48jgw+5h1rBDrW0UDDakjR7HsWUIrdOM2cbScakxIWYSiffJSL49W+KAkd2N2hVsMGv8yaPw2furFhCVu1gifpelC9loa9Hyh7LTZInh8FFiPSP7K5fufap1UoR4Mzg/s04njjEb2PUfofNYNFPUFtJiguAEBAAA=) **\]**
+**\[**[**Kliknij, aby uruchomić kwerendę**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA5XPwQrCMBAE0Hu/Yo4NVLBn6Td4ULyWtV1tMJtIsoEq/XhbC4J48jgw+5h1rBDrW0UDDakjR7HsWUIrdOM2cbScakxIWYSiffJSL49W+KAkd2N2hVsMGv8yaPw2furFhCVu1gifpelC9loa9Hyh7LTZInh8FFiPSP7K5fufap1UoR4Mzg/s04njjEb2PUfofNYNFPUFtJiguAEBAAA=)**\]**
 
 ```kusto
 let min_t = toscalar(demo_make_series1 | summarize min(TimeStamp));
@@ -60,31 +60,31 @@ demo_make_series1
 | render timechart 
 ```
 
-- Użyj operatora [`make-series`](/azure/kusto/query/make-seriesoperator) , aby utworzyć zestaw trzech szeregów czasowych, gdzie:
-    - `num=count()`: szereg czasowy ruchu
-    - `range(min_t, max_t, 1h)`: serie czasowe są tworzone w 1-godzinnym zasobniku w przedziale czasu (najstarsze i najnowsze sygnatury czasowe rekordów tabeli)
-    - `default=0`: Określ metodę Fill dla brakujących pojemników, aby utworzyć regularne serie czasowe. Alternatywnie możesz użyć [`series_fill_const()`](/azure/kusto/query/series-fill-constfunction), [`series_fill_forward()`](/azure/kusto/query/series-fill-forwardfunction), [`series_fill_backward()`](/azure/kusto/query/series-fill-backwardfunction) i [`series_fill_linear()`](/azure/kusto/query/series-fill-linearfunction) do wprowadzania zmian
-    - `byOsVer`: Podziel na partycje według systemu operacyjnego
-- Rzeczywista struktura danych szeregów czasowych to tablica liczbowa zagregowanej wartości dla każdego przedziału czasu. Używamy `render timechart` do wizualizacji.
+- Operator [`make-series`](/azure/kusto/query/make-seriesoperator) służy do tworzenia zestawu trzech szeregów czasowych, gdzie:
+    - `num=count()`: szeregi czasowe ruchu
+    - `range(min_t, max_t, 1h)`: szeregi czasowe są tworzone w 1-godzinnych pojemnikach w zakresie czasu (najstarsze i najnowsze znaczniki czasu rekordów tabeli)
+    - `default=0`: określić metodę wypełniania brakujących pojemników, aby utworzyć regularne serie czasowe. Alternatywnie [`series_fill_const()`](/azure/kusto/query/series-fill-constfunction)użyć [`series_fill_forward()`](/azure/kusto/query/series-fill-forwardfunction) [`series_fill_backward()`](/azure/kusto/query/series-fill-backwardfunction) , [`series_fill_linear()`](/azure/kusto/query/series-fill-linearfunction) i dla zmian
+    - `byOsVer`: partycja przez system operacyjny
+- Rzeczywista struktura danych szeregów czasowych jest tablicą liczbową zagregowanych wartości dla każdego pojemnika czasu. Używamy `render timechart` do wizualizacji.
 
-W powyższej tabeli mamy trzy partycje. Możemy utworzyć oddzielną serię czasową: system Windows 10 (czerwony), 7 (niebieski) i 8,1 (zielony) dla każdej wersji systemu operacyjnego widziany na grafie:
+W powyższej tabeli mamy trzy partycje. Możemy utworzyć oddzielny szereg czasu: Windows 10 (czerwony), 7 (niebieski) i 8.1 (zielony) dla każdej wersji systemu operacyjnego, jak widać na wykresie:
 
 ![Partycja szeregów czasowych](media/time-series-analysis/time-series-partition.png)
 
 ## <a name="time-series-analysis-functions"></a>Funkcje analizy szeregów czasowych
 
 W tej sekcji wykonamy typowe funkcje przetwarzania serii.
-Po utworzeniu zestawu szeregów czasowych program ADX obsługuje rosnącą listę funkcji do przetworzenia i analizowania tych elementów, które można znaleźć w [dokumentacji szeregów czasowych](/azure/kusto/query/machine-learning-and-tsa). Opiszemy kilka funkcji reprezentatywnych dla przetwarzania i analizowania szeregów czasowych.
+Po utworzeniu zestawu szeregów czasowych ADX obsługuje rosnącą listę funkcji do ich przetwarzania i analizowania, które można znaleźć w [dokumentacji szeregów czasowych.](/azure/kusto/query/machine-learning-and-tsa) Opiszemy kilka funkcji reprezentacyjnych do przetwarzania i analizowania szeregów czasowych.
 
 ### <a name="filtering"></a>Filtrowanie
 
-Filtrowanie jest powszechną metodą przetwarzania sygnałów i przydatne w przypadku zadań przetwarzania szeregów czasowych (na przykład wygładzanie sygnału szumu, wykrywania zmian).
-- Istnieją dwie funkcje filtrowania ogólnego:
-    - [`series_fir()`](/azure/kusto/query/series-firfunction): stosowanie filtru FIR. Używane do prostej obliczeń średniej przeniesień i rozróżnienia szeregów czasowych na potrzeby wykrywania zmian.
-    - [`series_iir()`](/azure/kusto/query/series-iirfunction): stosowanie filtru IIR. Używany do wygładzania wykładniczego i sumy skumulowanej.
-- `Extend` zestawu czasowego, dodając nową średnią liczbę pojemników o rozmiarze 5 (o nazwie *ma_num*) do zapytania:
+Filtrowanie jest powszechną praktyką w przetwarzaniu sygnału i przydatne do zadań przetwarzania szeregów czasowych (na przykład wygładzić hałaśliwy sygnał, wykrywanie zmian).
+- Istnieją dwie ogólne funkcje filtrowania:
+    - [`series_fir()`](/azure/kusto/query/series-firfunction): Zastosowanie filtra FIR. Służy do prostego obliczania średniej ruchomej i różnicowania szeregów czasowych do wykrywania zmian.
+    - [`series_iir()`](/azure/kusto/query/series-iirfunction): Zastosowanie filtra IIR. Służy do wygładzania wykładniczego i sumy skumulowanej.
+- `Extend`zestaw szeregów czasowych przez dodanie do kwerendy nowej średniej ruchomej serii pojemników o rozmiarze 5 (o nazwie *ma_num):*
 
-**\[** [**kliknij, aby uruchomić zapytanie**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA5WPQavCMBCE7/6KOSYQ4fXgSfobPDx517C2q4bXpLLZQBV/vKkFQTx5WRh25tvZgRUxJK9ooWPuaCAxPcfRR/pnn1kC5wZ35BIjSbjxbDf7EPlXKV6s3a6GmUHTVwya3hkf9tUds1wvEqnEthtLUmPR85HKoO0PxoQXBSFBKJ3YPP9xSyWH5mxxuGKX/1gqlCfl1Neln5EL3R+DmCodhC9MahqHjXVQKbxMW5NScyzQerA7k+gDa1tswzsBAAA=) **\]**
+**\[**[**Kliknij, aby uruchomić kwerendę**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA5WPQavCMBCE7/6KOSYQ4fXgSfobPDx517C2q4bXpLLZQBV/vKkFQTx5WRh25tvZgRUxJK9ooWPuaCAxPcfRR/pnn1kC5wZ35BIjSbjxbDf7EPlXKV6s3a6GmUHTVwya3hkf9tUds1wvEqnEthtLUmPR85HKoO0PxoQXBSFBKJ3YPP9xSyWH5mxxuGKX/1gqlCfl1Neln5EL3R+DmCodhC9MahqHjXVQKbxMW5NScyzQerA7k+gDa1tswzsBAAA=)**\]**
 
 ```kusto
 let min_t = toscalar(demo_make_series1 | summarize min(TimeStamp));
@@ -99,13 +99,13 @@ demo_make_series1
 
 ### <a name="regression-analysis"></a>Analiza regresji
 
-ADX obsługuje wielosegmentową analizę regresji liniowej w celu oszacowania trendu szeregów czasowych.
-- Użyj [series_fit_line ()](/azure/kusto/query/series-fit-linefunction) , aby dopasować najlepszą linię do szeregów czasowych na potrzeby ogólnego wykrywania trendów.
-- Użyj [series_fit_2lines ()](/azure/kusto/query/series-fit-2linesfunction) w celu wykrycia zmian trendów względem linii bazowej, które są przydatne w scenariuszach monitorowania.
+ADX obsługuje segmentową analizę regresji liniowej w celu oszacowania trendu szeregów czasowych.
+- Użyj [series_fit_line(),](/azure/kusto/query/series-fit-linefunction) aby dopasować najlepszą linię do szeregów czasowych do ogólnego wykrywania trendów.
+- Użyj [series_fit_2lines(),](/azure/kusto/query/series-fit-2linesfunction) aby wykryć zmiany trendu w stosunku do linii bazowej, które są przydatne w scenariuszach monitorowania.
 
-Przykład funkcji `series_fit_line()` i `series_fit_2lines()` w zapytaniu szeregów czasowych:
+Przykład `series_fit_line()` i `series_fit_2lines()` funkcje w kwerendzie szeregów czasowych:
 
-**\[** [**kliknij, aby uruchomić zapytanie**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0tJzc2PL04tykwtNuKqUUitKEnNS1GACMSnZZbEG+Vk5qUWa1Rq6iCLggSBYkAdRUD1qUUKIIHkjMSiEoXyzJIMjYrk/JzS3DzbCk0AUIIJ02EAAAA=) **\]**
+**\[**[**Kliknij, aby uruchomić kwerendę**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0tJzc2PL04tykwtNuKqUUitKEnNS1GACMSnZZbEG+Vk5qUWa1Rq6iCLggSBYkAdRUD1qUUKIIHkjMSiEoXyzJIMjYrk/JzS3DzbCk0AUIIJ02EAAAA=)**\]**
 
 ```kusto
 demo_series2
@@ -115,35 +115,35 @@ demo_series2
 
 ![Regresja szeregów czasowych](media/time-series-analysis/time-series-regression.png)
 
-- Niebieska: Oryginalna seria czasowa
-- Zielony: zamontowany wiersz
-- Czerwony: dwa dopasowane linie
+- Niebieski: oryginalna seria czasowa
+- Zielony: linia fitt
+- Czerwony: dwie linie wyposażone
 
 > [!NOTE]
 > Funkcja dokładnie wykryła punkt skoku (zmiana poziomu).
 
 ### <a name="seasonality-detection"></a>Wykrywanie sezonowości
 
-Wiele metryk obserwuje wzorce sezonowe (okresowe). Ruch użytkowników usług w chmurze zwykle zawiera codzienne i cotygodniowe wzorce, które są najwyższe w połowie dnia roboczego i najtańsze i w weekendy. Miara czujników IoT w regularnych odstępach czasu. Pomiary fizyczne, takie jak temperatura, ciśnienie lub wilgotność, mogą również przedstawiać zachowanie sezonowe.
+Wiele wskaźników jest zgodnych z sezonowymi (okresowymi) wzorcami. Ruch użytkowników usług w chmurze zwykle zawiera dzienne i tygodniowe wzorce, które są najwyższe w środku dnia roboczego i najniższe w nocy i w weekend. Czujniki IoT mierzą się w odstępach czasu. Pomiary fizyczne, takie jak temperatura, ciśnienie lub wilgotność, mogą również wykazywać zachowanie sezonowe.
 
-W poniższym przykładzie zastosowano wykrywanie sezonowości w jednym miesiącu ruchu usługi sieci Web (w przypadku zasobników 2-godzinnych):
+Poniższy przykład stosuje wykrywanie sezonowości w ruchu miesięcznym usługi sieci web (pojemniki 2-godzinne):
 
-**\[** [**kliknij, aby uruchomić zapytanie**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0tJzc2PL04tykwtNuaqUShKzUtJLVIoycxNTc5ILCoBAHrjE80fAAAA) **\]**
+**\[**[**Kliknij, aby uruchomić kwerendę**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0tJzc2PL04tykwtNuaqUShKzUtJLVIoycxNTc5ILCoBAHrjE80fAAAA)**\]**
 
 ```kusto
 demo_series3
 | render timechart 
 ```
 
-![Sezonowości szeregów czasowych](media/time-series-analysis/time-series-seasonality.png)
+![Sezonowość szeregów czasowych](media/time-series-analysis/time-series-seasonality.png)
 
-- Użyj [series_periods_detect ()](/azure/kusto/query/series-periods-detectfunction) , aby automatycznie wykrywać okresy w szeregach czasowych. 
-- Użyj [series_periods_validate ()](/azure/kusto/query/series-periods-validatefunction) , jeśli wiemy, że Metryka powinna mieć określone odrębne okresy i chcemy sprawdzić, czy istnieją.
+- Użyj [series_periods_detect(),](/azure/kusto/query/series-periods-detectfunction) aby automatycznie wykryć okresy w szeregach czasowych. 
+- Użyj [series_periods_validate(),](/azure/kusto/query/series-periods-validatefunction) jeśli wiemy, że dane powinny mieć określone różne okresy i chcemy sprawdzić, czy istnieją.
 
 > [!NOTE]
-> Jest to anomalia w przypadku nieistnienia określonych odrębnych okresów
+> Jest to anomalia, jeśli nie istnieją określone odrębne okresy
 
-**\[** [**kliknij, aby uruchomić zapytanie**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA12OwQ6CMBBE737FHKmpVtAr39IguwkYyzZ0IZj48TZSLx533szOEAfxieeR0/XwRpzlwb2iilkSShapl5mTQYvd5QvxxJqd1bQEi8vZor6RawaLxsA5FewcOjBKBOP0PXUMXL7lyrCeeIvdRPjrzIw35Qyoe6W2GY4qJMv9yb91xtX0AS7N323BAAAA) **\]**
+**\[**[**Kliknij, aby uruchomić kwerendę**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA12OwQ6CMBBE737FHKmpVtAr39IguwkYyzZ0IZj48TZSLx533szOEAfxieeR0/XwRpzlwb2iilkSShapl5mTQYvd5QvxxJqd1bQEi8vZor6RawaLxsA5FewcOjBKBOP0PXUMXL7lyrCeeIvdRPjrzIw35Qyoe6W2GY4qJMv9yb91xtX0AS7N323BAAAA)**\]**
 
 ```kusto
 demo_series3
@@ -154,17 +154,17 @@ demo_series3
 
 |   |   |   |   |
 | --- | --- | --- | --- |
-|   | okresu | punkt | dni |
+|   | Okresy | Wyniki | Dni |
 |   | 84 | 0.820622786055595 | 7 |
 |   | 12 | 0.764601405803502 | 1 |
 
-Funkcja wykrywa codzienne i cotygodniowe sezonowości. Dzienne wyniki są mniejsze niż cotygodniowe, ponieważ dni weekendowe różnią się od dnia tygodnia.
+Funkcja wykrywa sezonowość dzienną i tygodniową. Dzienne wyniki są mniejsze niż w tygodniu, ponieważ dni weekendowe różnią się od dni powszednich.
 
-### <a name="element-wise-functions"></a>Funkcje związane z elementami
+### <a name="element-wise-functions"></a>Funkcje oparte na elementach
 
-Operacje arytmetyczne i logiczne można wykonywać w szeregach czasowych. Korzystając z [series_subtract ()](/azure/kusto/query/series-subtractfunction) , możemy obliczyć resztę szeregów czasowych, czyli różnice między pierwotną metryką nieprzetworzoną i gładką i wyszukać anomalie w sygnale resztkowym:
+Operacje arytmetyczne i logiczne można wykonać w szeregach czasowych. Za pomocą [series_subtract()](/azure/kusto/query/series-subtractfunction) możemy obliczyć resztkowe szeregi czasowe, czyli różnicę między oryginalną surową metryką a wygładzone, i szukać anomalii w sygnale resztkowym:
 
-**\[** [**kliknij, aby uruchomić zapytanie**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA5WQQU/DMAyF7/sVT5waqWjrgRPqb+AAgmPltR6LSNLJcdhA+/G4izRAnLhEerbfl2cHVkSfBkUPnfNIgaSZOM5DpDceMovn3OGMXGIk8Z+8jDdPPvKjUjw4d78KC4NO/2LQ6Tfjz/jqjEXeVolUYj/OJWnjMPGOStB+gznhSoFPEEqv3Fz2aWukFt3eYfuBh/zMYlA+KafJmsOCrPRh56Ux2UL4wKRN1+LOtVApXF/37RTOfioUfvpz2arQqBVS2Q7rtc6wa4wlkPLVCLXIqE7DHvcsXOOh73Hz4tM0HzO6zQ1gDOx8UOvZrtayst0Y7z4babkkYQxMyQbGPYnCiGIxTS/fXGpfwk+n7uQBAAA=) **\]**
+**\[**[**Kliknij, aby uruchomić kwerendę**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA5WQQU/DMAyF7/sVT5waqWjrgRPqb+AAgmPltR6LSNLJcdhA+/G4izRAnLhEerbfl2cHVkSfBkUPnfNIgaSZOM5DpDceMovn3OGMXGIk8Z+8jDdPPvKjUjw4d78KC4NO/2LQ6Tfjz/jqjEXeVolUYj/OJWnjMPGOStB+gznhSoFPEEqv3Fz2aWukFt3eYfuBh/zMYlA+KafJmsOCrPRh56Ux2UL4wKRN1+LOtVApXF/37RTOfioUfvpz2arQqBVS2Q7rtc6wa4wlkPLVCLXIqE7DHvcsXOOh73Hz4tM0HzO6zQ1gDOx8UOvZrtayst0Y7z4babkkYQxMyQbGPYnCiGIxTS/fXGpfwk+n7uQBAAA=)**\]**
 
 ```kusto
 let min_t = toscalar(demo_make_series1 | summarize min(TimeStamp));
@@ -179,15 +179,15 @@ demo_make_series1
 
 ![Operacje szeregów czasowych](media/time-series-analysis/time-series-operations.png)
 
-- Niebieska: Oryginalna seria czasowa
-- Czerwona: wygładzone serie czasowe
-- Zielony: pozostałe serie czasowe
+- Niebieski: oryginalna seria czasowa
+- Czerwony: wygładzone szeregi czasowe
+- Zielony: resztkowe szeregi czasowe
 
-## <a name="time-series-workflow-at-scale"></a>Przepływ pracy szeregów czasowych w skali
+## <a name="time-series-workflow-at-scale"></a>Przepływ pracy szeregów czasowych na dużą skalę
 
-W poniższym przykładzie pokazano, jak te funkcje mogą być uruchamiane na dużą skalę w tysiącach czasowych w ciągu kilku sekund na potrzeby wykrywania anomalii. Aby wyświetlić kilka przykładowych rekordów telemetrii metryki liczby odczytów usługi bazy danych w ciągu czterech dni, uruchom następujące zapytanie:
+Poniższy przykład pokazuje, jak te funkcje mogą działać na dużą skalę na tysiące szeregów czasowych w sekundach do wykrywania anomalii. Aby wyświetlić kilka przykładowych rekordów telemetrycznych metryki liczby odczytów usługi DB w ciągu czterech dni, uruchom następującą kwerendę:
 
-**\[** [**kliknij, aby uruchomić zapytanie**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0tJzc2Pz03Mq4wvTi3KTC025KpRKEnMTlUwAQArfAiiGgAAAA==) **\]**
+**\[**[**Kliknij, aby uruchomić kwerendę**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0tJzc2Pz03Mq4wvTi3KTC025KpRKEnMTlUwAQArfAiiGgAAAA==)**\]**
 
 ```kusto
 demo_many_series1
@@ -196,15 +196,15 @@ demo_many_series1
 
 |   |   |   |   |   |   |
 | --- | --- | --- | --- | --- | --- |
-|   | ZNACZNIK czasu | Loc | anonOp | BAZĄ | Odczyt DataReady |
-|   | 2016-09-11 21:00:00.0000000 | Loc 9 | 5117853934049630089 | 262 | 0 |
-|   | 2016-09-11 21:00:00.0000000 | Loc 9 | 5117853934049630089 | 241 | 0 |
-|   | 2016-09-11 21:00:00.0000000 | Loc 9 | -865998331941149874 | 262 | 279862 |
-|   | 2016-09-11 21:00:00.0000000 | Loc 9 | 371921734563783410 | 255 | 0 |
+|   | Sygnatury czasowej | Loc | anonOp ( anonOp ) | DB | Dataread |
+|   | 2016-09-11 21:00:00.0000000 | Loc 9 (łat. | 5117853934049630089 | 262 | 0 |
+|   | 2016-09-11 21:00:00.0000000 | Loc 9 (łat. | 5117853934049630089 | 241 | 0 |
+|   | 2016-09-11 21:00:00.0000000 | Loc 9 (łat. | -865998331941149874 | 262 | 279862 |
+|   | 2016-09-11 21:00:00.0000000 | Loc 9 (łat. | 371921734563783410 | 255 | 0 |
 
 I proste statystyki:
 
-**\[** [**kliknij, aby uruchomić zapytanie**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0tJzc2Pz03Mq4wvTi3KTC025KpRKC7NzU0syqxKVcgrzbVNzi/NK9HQ1FHIzcyLL7EFkhohnr6uwSGOvgEg0cQKkGhiBZIoAEq2dK9VAAAA) **\]**
+**\[**[**Kliknij, aby uruchomić kwerendę**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0tJzc2Pz03Mq4wvTi3KTC025KpRKC7NzU0syqxKVcgrzbVNzi/NK9HQ1FHIzcyLL7EFkhohnr6uwSGOvgEg0cQKkGhiBZIoAEq2dK9VAAAA)**\]**
 
 ```kusto
 demo_many_series1
@@ -213,12 +213,12 @@ demo_many_series1
 
 |   |   |   |   |
 | --- | --- | --- | --- |
-|   | numerowan | min\_t | maks\_t |
+|   | num | min\_t | maks.\_ |
 |   | 2177472 | 2016-09-08 00:00:00.0000000 | 2016-09-11 23:00:00.0000000 |
 
-Tworzenie szeregów czasowych w 1-godzinnym zasobniku metryki odczytu (łącznie cztery dni * 24 godziny = 96 punktów), wyniki w normalnych wahaniach wzorców:
+Tworzenie szeregów czasowych w 1-godzinnych pojemnikach metryki odczytu (łącznie cztery dni * 24 godziny = 96 punktów), powoduje normalne wahania wzoru:
 
-**\[** [**kliknij, aby uruchomić zapytanie**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA5WPMQvCMBSE9/6KGxOoYGfpIOjgUBDtXh7twwabFF6ittIfb2rBQSfHg+8+7joOsMZVATlC72vqSFTDtq8subHyLIZ9hgn+Zi2JefKMq/JQ7M/ltjhqvQGSbrbQ8JeFhm/LTyGZInbl1RIhTI3P6X5ROwp0ikmjd/hYYByE3IXV+1G6TEqRtTqahF3DgmAs1y1JwMOEVo0Rzdf6BbBH5FAHAQAA) **\]**
+**\[**[**Kliknij, aby uruchomić kwerendę**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA5WPMQvCMBSE9/6KGxOoYGfpIOjgUBDtXh7twwabFF6ittIfb2rBQSfHg+8+7joOsMZVATlC72vqSFTDtq8subHyLIZ9hgn+Zi2JefKMq/JQ7M/ltjhqvQGSbrbQ8JeFhm/LTyGZInbl1RIhTI3P6X5ROwp0ikmjd/hYYByE3IXV+1G6TEqRtTqahF3DgmAs1y1JwMOEVo0Rzdf6BbBH5FAHAQAA)**\]**
 
 ```kusto
 let min_t = toscalar(demo_many_series1 | summarize min(TIMESTAMP));  
@@ -230,11 +230,11 @@ demo_many_series1
 
 ![Szeregi czasowe na dużą skalę](media/time-series-analysis/time-series-at-scale.png)
 
-Powyższe zachowanie jest mylące, ponieważ pojedyncze normalne serie czasowe są agregowane z tysięcy różnych wystąpień, które mogą mieć nietypowe wzorce. W związku z tym tworzymy serie czasowe dla każdego wystąpienia. Wystąpienie jest zdefiniowane przez Loc (Location), anonOp (Operation) i DB (określony komputer).
+Powyższe zachowanie jest mylące, ponieważ pojedyncze normalne serie czasowe są agregowane z tysięcy różnych wystąpień, które mogą mieć nieprawidłowe wzorce. W związku z tym tworzymy szeregi czasowe na wystąpienie. Wystąpienie jest definiowane przez Loc (lokalizacja), anonOp (operacja) i DB (określony komputer).
 
-Ile szeregów czasowych można utworzyć?
+Ile szeregów czasowych możemy utworzyć?
 
-**\[** [**kliknij, aby uruchomić zapytanie**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0tJzc2Pz03Mq4wvTi3KTC025KpRKC7NzU0syqxKVUiqVPDJT9ZR8C/QUXBxAkol55fmlQAAWEsFxjQAAAA=) **\]**
+**\[**[**Kliknij, aby uruchomić kwerendę**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0tJzc2Pz03Mq4wvTi3KTC025KpRKC7NzU0syqxKVUiqVPDJT9ZR8C/QUXBxAkol55fmlQAAWEsFxjQAAAA=)**\]**
 
 ```kusto
 demo_many_series1
@@ -247,9 +247,9 @@ demo_many_series1
 |   | Liczba |
 |   | 18339 |
 
-Teraz utworzymy zestaw 18339 szeregów czasowych metryki liczby odczytów. Dodajemy klauzulę `by` do instrukcji CREATE-Series, Zastosuj regresję liniową i wybierz dwie górne serie czasu, które miały najbardziej znaczący trend spadkowy:
+Teraz utworzymy zestaw 18339 szeregów czasowych metryki liczby odczytów. Dodamy `by` klauzulę do instrukcji make-series, stosujemy regresję liniową i wybieramy dwie pierwsze serie czasowe, które miały najbardziej znaczący trend spadkowy:
 
-**\[** [**kliknij, aby uruchomić zapytanie**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA5WPsU7DQBBE+3zFdLmTTGHSgFAKUCiQiIKIe2u5rJ0T9l3YWwcH5eO5JBIFVJSzmnmz07Gi96FWzKExOepIzIb7WPcUDnVi8ZxKHJGGvifxX3yym+pp+biu7pcv1t4Bk+5EofFfFBp/U/4EJsdse+eri4QwbdKc9q1ZkNJrVhYx4IcCHyAUWjbnRcXlpQLl1uLtgOfoCqx2BRYPGcyjctjASPoYSLhA6uKObR5waasbr3XnA5tzrc0RjTtcn0hnKyg55KtkDAvU9+y2JIpPr1ujXjueT9cse+8YlVDTeIfVoNQymiiZ5ENSCi4vM3FQxAblzWx2a6f2G2UcBRyWAQAA) **\]**
+**\[**[**Kliknij, aby uruchomić kwerendę**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA5WPsU7DQBBE+3zFdLmTTGHSgFAKUCiQiIKIe2u5rJ0T9l3YWwcH5eO5JBIFVJSzmnmz07Gi96FWzKExOepIzIb7WPcUDnVi8ZxKHJGGvifxX3yym+pp+biu7pcv1t4Bk+5EofFfFBp/U/4EJsdse+eri4QwbdKc9q1ZkNJrVhYx4IcCHyAUWjbnRcXlpQLl1uLtgOfoCqx2BRYPGcyjctjASPoYSLhA6uKObR5waasbr3XnA5tzrc0RjTtcn0hnKyg55KtkDAvU9+y2JIpPr1ujXjueT9cse+8YlVDTeIfVoNQymiiZ5ENSCi4vM3FQxAblzWx2a6f2G2UcBRyWAQAA)**\]**
 
 ```kusto
 let min_t = toscalar(demo_many_series1 | summarize min(TIMESTAMP));  
@@ -261,11 +261,11 @@ demo_many_series1
 | render timechart with(title='Service Traffic Outage for 2 instances (out of 18339)')
 ```
 
-![Seria czasowa — pierwsze dwa](media/time-series-analysis/time-series-top-2.png)
+![Seria czasowa dwie najlepsze](media/time-series-analysis/time-series-top-2.png)
 
 Wyświetl wystąpienia:
 
-**\[** [**kliknij, aby uruchomić zapytanie**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA5WPvW4CMRCEe55iSlsyBWkjChApIoESAb21udsQg38O26AD8fDx3SEUJVXKWc18s2M5wxmvM6bIIVVkKYqaXdCO/EUnjobTBDekk3MUzZU7u9i+rl4229nqXcpnYGQ7CrX/olD7m/InMLoV24HHg0RkqtOUzjuxoEzroiSCx4MC4xHJ71j0i9TwksLkS+LjgmWoFN4ahcW8gLnN7GuImI4niqyQbGhYlgFDm/40WVvjWfS1skRyaPDUkXorKFXl2MSw5yr/pN9Z31SyxuhbAQAA) **\]**
+**\[**[**Kliknij, aby uruchomić kwerendę**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA5WPvW4CMRCEe55iSlsyBWkjChApIoESAb21udsQg38O26AD8fDx3SEUJVXKWc18s2M5wxmvM6bIIVVkKYqaXdCO/EUnjobTBDekk3MUzZU7u9i+rl4229nqXcpnYGQ7CrX/olD7m/InMLoV24HHg0RkqtOUzjuxoEzroiSCx4MC4xHJ71j0i9TwksLkS+LjgmWoFN4ahcW8gLnN7GuImI4niqyQbGhYlgFDm/40WVvjWfS1skRyaPDUkXorKFXl2MSw5yr/pN9Z31SyxuhbAQAA)**\]**
 
 ```kusto
 let min_t = toscalar(demo_many_series1 | summarize min(TIMESTAMP));  
@@ -279,15 +279,15 @@ demo_many_series1
 
 |   |   |   |   |   |
 | --- | --- | --- | --- | --- |
-|   | Loc | Op | BAZĄ | widm |
-|   | Loc 15 | 37 | 1151 | -102743,910227889 |
+|   | Loc | Operator | DB | Nachylenie |
+|   | Loc 15 (łot 15) | 37 | 1151 | -102743.910227889 |
 |   | Loc 13 | 37 | 1249 | -86303.2334644601 |
 
-W czasie krótszym niż dwie minuty ADX przeanalizowane blisko do 20 000 szeregów czasowych i wykryto dwie nietypowe serie czasowe, w których liczba odczytanych nagle została porzucona.
+W ciągu niecałych dwóch minut adx przeanalizował blisko 20 000 szeregów czasowych i wykrył dwa nietypowe szeregi czasowe, w których liczba odczytów nagle spadła.
 
-Te zaawansowane możliwości połączone z ADX Fast Performance zapewniają unikatowe i zaawansowane rozwiązanie do analizy szeregów czasowych.
+Te zaawansowane możliwości w połączeniu z wysoką wydajnością ADX stanowią unikalne i wydajne rozwiązanie do analizy szeregów czasowych.
 
 ## <a name="next-steps"></a>Następne kroki
 
-* Informacje o [wykrywaniu anomalii szeregów czasowych i prognozowania](/azure/data-explorer/anomaly-detection) na platformie Azure Eksplorator danych.
-* Dowiedz się więcej o [możliwościach uczenia maszynowego](/azure/data-explorer/machine-learning-clustering) w usłudze Azure Eksplorator danych.
+* Dowiedz się więcej o [wykrywaniu anomalii szeregów czasowych i prognozowaniu](/azure/data-explorer/anomaly-detection) w Eksploratorze danych platformy Azure.
+* Dowiedz się więcej o [funkcjach uczenia maszynowego](/azure/data-explorer/machine-learning-clustering) w Eksploratorze danych platformy Azure.

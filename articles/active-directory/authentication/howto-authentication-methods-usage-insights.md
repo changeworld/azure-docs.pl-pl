@@ -1,6 +1,6 @@
 ---
-title: Użycie metod uwierzytelniania & Insights — Azure Active Directory
-description: Raportowanie w usłudze Azure AD Samoobsługowe resetowanie hasła i użycie metody uwierzytelniania Multi-Factor Authentication
+title: Użycie metod uwierzytelniania & szczegółowych informacji — usługa Azure Active Directory
+description: Raportowanie samoobsługowego resetowania hasła usługi Azure AD i użycia metody uwierzytelniania wieloskładnikowego
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
@@ -12,90 +12,90 @@ manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b448e6ce7c8b4522d5e7bdbafb39eccca982fdee
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74848514"
 ---
-# <a name="authentication-methods-usage--insights-preview"></a>Użycie metod uwierzytelniania & Insights (wersja zapoznawcza)
+# <a name="authentication-methods-usage--insights-preview"></a>Użycie metod uwierzytelniania & szczegółowych informacji (wersja zapoznawcza)
 
-Usługa & Insights umożliwia zrozumienie, jak metody uwierzytelniania dla funkcji, takich jak platforma Azure Multi-Factor Authentication i Samoobsługowe resetowanie haseł, działają w organizacji. Ta funkcja raportowania umożliwia organizacji korzystanie z metod, aby zrozumieć, jakie metody są rejestrowane i jak są używane.
+Zastosowanie & szczegółowych informacji pozwala zrozumieć, jak metody uwierzytelniania dla funkcji, takich jak uwierzytelnianie wieloskładnikowe platformy Azure i samoobsługowe resetowanie haseł, działają w Twojej organizacji. Ta funkcja raportowania zapewnia organizacji środki, aby zrozumieć, jakie metody są rejestrowane i jak są one używane.
 
 ## <a name="permissions-and-licenses"></a>Uprawnienia i licencje
 
-Następujące role mogą uzyskać dostęp do użycia i szczegółowych informacji:
+Następujące role mogą uzyskiwać dostęp do użycia i szczegółowych informacji:
 
 - Administrator globalny
 - Czytelnik zabezpieczeń
 - Administrator zabezpieczeń
-- Czytelnik raportów
+- Czytnik raportów
 
-Do uzyskania dostępu do informacji o użyciu i szczegółowych informacji nie są wymagane żadne dodatkowe licencje. Informacje dotyczące licencjonowania Multi-Factor Authentication platformy Azure i samoobsługowego resetowania hasła (SSPR) znajdują się w [witrynie Azure Active Directory cenowej](https://azure.microsoft.com/pricing/details/active-directory/).
+Aby uzyskać dostęp do użycia i szczegółowych informacji, nie jest wymagane żadne dodatkowe licencjonowanie. Informacje o licencjonowaniu azure multi-factor authentication i samoobsługowe resetowanie haseł (SSPR) można znaleźć w [witrynie cenowej usługi Azure Active Directory](https://azure.microsoft.com/pricing/details/active-directory/).
 
-## <a name="how-it-works"></a>Zasady działania
+## <a name="how-it-works"></a>Jak to działa
 
-Aby uzyskać dostęp do informacji o użyciu metody uwierzytelniania i szczegółowych informacji:
+Aby uzyskać dostęp do użycia metody uwierzytelniania i szczegółowych informacji:
 
-1. Przejdź do witryny [Azure Portal](https://portal.azure.com).
-1. Przejdź do **Azure Active Directory** > **resetowania hasła** > **użyciu & szczegółowych**informacji.
-1. Z omówienia **rejestracji** lub **użycia** można wybrać opcję otwarcia wstępnie filtrowanych raportów do filtrowania na podstawie Twoich potrzeb.
+1. Przejdź do [witryny Azure portal](https://portal.azure.com).
+1. Przejdź do funkcji**Resetowanie** > hasła **usługi Azure Active Directory** > Użycie & szczegółowych**informacji**.
+1. W przeglądach **Rejestracji** lub **Użycia** możesz otworzyć wstępnie filtrowane raporty, aby filtrować na podstawie twoich potrzeb.
 
-![Omówienie użycia & Insights](./media/howto-authentication-methods-usage-insights/usage-insights-overview.png)
+![Omówienie szczegółowych informacji o & użycia](./media/howto-authentication-methods-usage-insights/usage-insights-overview.png)
 
-Aby uzyskiwać dostęp do & szczegółowych informacji, przejdź do [https://portal.azure.com/#blade/Microsoft_AAD_IAM/AuthMethodsOverviewBlade](https://portal.azure.com/#blade/Microsoft_AAD_IAM/AuthMethodsOverviewBlade). Ten link spowoduje przeprowadzenie przeglądu rejestracji.
+Aby uzyskać bezpośredni dostęp do & [https://portal.azure.com/#blade/Microsoft_AAD_IAM/AuthMethodsOverviewBlade](https://portal.azure.com/#blade/Microsoft_AAD_IAM/AuthMethodsOverviewBlade)szczegółowych informacji o użyciu, przejdź do pliku . Ten link spowoduje, że przejdziesz do przeglądu rejestracji.
 
-Kafelki Użytkownicy zarejestrowani, użytkownicy i użytkownicy z możliwością obsługi użytkowników pokazują następujące dane rejestracyjne dla użytkowników:
+Zarejestrowane, Włączone użytkownicy i kafelki z obsługą Użytkowników wyświetlą następujące dane rejestracyjne dla użytkowników:
 
-- Zarejestrowane: użytkownik jest uważany za zarejestrowany, jeśli (lub administrator) zarejestrował wystarczającą metodę uwierzytelniania w celu spełnienia zasad SSPR lub Multi-Factor Authentication organizacji.
-- Włączone: użytkownik jest uznawany za włączony, jeśli znajdują się w zakresie zasad SSPRymi. Jeśli SSPR jest włączona dla grupy, użytkownik jest uznawany za włączony, jeśli znajdują się w tej grupie. Jeśli SSPR jest włączona dla wszystkich użytkowników, zostaną uznane za włączone wszyscy użytkownicy w dzierżawie (z wyjątkiem Gości).
-- Możliwe: użytkownik jest uznawany za możliwy do zarejestrowania i włączenia. Ten stan oznacza, że w razie konieczności można wykonać SSPR w dowolnym momencie.
+- Zarejestrowany: Użytkownik jest uważany za zarejestrowany, jeśli on (lub administrator) zarejestrował wystarczająco dużo metod uwierzytelniania, aby spełnić zasady SSPR lub uwierzytelniania wieloskładnikowego w organizacji.
+- Włączone: Użytkownik jest uważany za włączone, jeśli są one w zakresie zasad sspr. Jeśli funkcja SSPR jest włączona dla grupy, użytkownik jest uważany za włączonego, jeśli znajduje się w tej grupie. Jeśli funkcja SSPR jest włączona dla wszystkich użytkowników, wszyscy użytkownicy w dzierżawie (z wyłączeniem gości) są uznawani za włączonych.
+- Zdolny: Użytkownik jest uważany za zdolnego, jeśli są one zarówno zarejestrowane i włączone. Ten stan oznacza, że mogą wykonywać sspr w dowolnym momencie, jeśli to konieczne.
 
-Kliknięcie dowolnego z tych kafelków lub szczegółowych informacji w nich spowoduje przełączenie do wstępnie przefiltrowanej listy szczegółów rejestracji.
+Kliknięcie dowolnego z tych kafelków lub przedstawionych w nich statystyk spowoduje wyświetlenie wstępnie przefiltrowanego wykazu szczegółów rejestracji.
 
-Na wykresie **rejestracje** na karcie **rejestracja** wyświetlana jest liczba pomyślnych i nieudanych rejestracji metod uwierzytelniania przez metodę uwierzytelniania. Na wykresie **resetowania** na karcie **użycie** wyświetlana jest liczba pomyślnych i nieudanych uwierzytelnień podczas przepływu resetowania hasła przez metodę uwierzytelniania.
+Wykres **Rejestracje** na karcie **Rejestracja** pokazuje liczbę rejestracji metod uwierzytelniania, które zakończyły się pomyślnie i nie powiodło się według metody uwierzytelniania. Wykres **Resetuje** na karcie **Użycie** pokazuje liczbę pomyślnych i nieudanych uwierzytelniania podczas resetowania hasła przez metodę uwierzytelniania.
 
-Kliknięcie dowolnego z wykresów spowoduje przełączenie do wstępnie filtrowanej listy zdarzeń rejestracji lub resetowania.
+Kliknięcie jednego z wykresów spowoduje wyświetlenie wstępnie przefiltrowanej listy zdarzeń rejestracji lub resetowania.
 
-Za pomocą kontrolki w górnym prawym rogu można zmienić zakres dat dla danych inspekcji pokazywanych w rejestracjach i resetować wykresy do 24 godzin, 7 dni lub 30 dni.
+Za pomocą formantu w górnym, prawym rogu można zmienić zakres dat dla danych inspekcji wyświetlanych na wykresach Rejestracje i Resetuje do 24 godzin, 7 dni lub 30 dni.
 
 ### <a name="registration-details"></a>Szczegóły rejestracji
 
-Kliknięcie kafelków **Użytkownicy**, **którzy włączyli**rejestrację lub Użytkownicy **mogą** uzyskać szczegółowe informacje o rejestracji.
+Kliknięcie na **zarejestrowanych Użytkowników**, **Użytkownicy włączone**, lub **Użytkownicy obsługujące** kafelki lub statystyki spowoduje, że do ciebie dane rejestracyjne.
 
-Raport szczegóły rejestracji zawiera następujące informacje dla każdego użytkownika:
-
-- Nazwa
-- Nazwa użytkownika
-- Stan rejestracji (wszystkie, zarejestrowane, niezarejestrowane)
-- Włączony stan (wszystkie, włączone, nie włączono)
-- Stan możliwości (wszystkie, obsługujące, nieobsługujący)
-- Metody (powiadomienie aplikacji, kod aplikacji, połączenie telefoniczne, wiadomości SMS, wiadomości E-mail, pytania zabezpieczające)
-
-Za pomocą kontrolek w górnej części listy można wyszukać użytkownika i odfiltrować listę użytkowników na podstawie wyświetlanych kolumn.
-
-### <a name="reset-details"></a>Resetuj szczegóły
-
-Kliknięcie na wykresach rejestracji lub resetowania spowoduje przełączenie do szczegółów resetowania.
-
-Raport szczegóły resetu przedstawia zdarzenia rejestracji i resetowania z ostatnich 30 dni, w tym:
+Raport szczegółów rejestracji zawiera następujące informacje dla każdego użytkownika:
 
 - Nazwa
 - Nazwa użytkownika
-- Funkcja (wszystkie, rejestracja, Reset)
-- Metoda uwierzytelniania (powiadomienie aplikacji, kod aplikacji, połączenie telefoniczne, połączenie biurowe, wiadomość SMS, adres E-mail, pytania zabezpieczające)
-- Stan (wszystkie, sukces, niepowodzenie)
+- Status rejestracji (wszystkie, zarejestrowane, niezarejestrowane)
+- Stan włączone (Wszystkie, Włączone, Nie włączone)
+- Stan stanie (wszystkie, zdolne, nie zdolne)
+- Metody (powiadomienie o aplikacji, kod aplikacji, połączenie telefoniczne, SMS, e-mail, pytania zabezpieczające)
 
-Za pomocą kontrolek w górnej części listy można wyszukać użytkownika i odfiltrować listę użytkowników na podstawie wyświetlanych kolumn.
+Korzystając z formantów u góry listy, można wyszukać użytkownika i filtrować listę użytkowników na podstawie pokazanych kolumn.
+
+### <a name="reset-details"></a>Szczegóły resetowania
+
+Kliknięcie na wykresy Rejestracje lub Resetuje spowoduje, że przejdziesz do szczegółów resetowania.
+
+Raport szczegółów resetowania pokazuje zdarzenia rejestracji i resetowania z ostatnich 30 dni, w tym:
+
+- Nazwa
+- Nazwa użytkownika
+- Funkcja (wszystko, rejestracja, resetowanie)
+- Metoda uwierzytelniania (powiadomienie aplikacji, kod aplikacji, połączenie telefoniczne, połączenie z biurem, SMS, e-mail, pytania zabezpieczające)
+- Status (Wszystko, Sukces, Porażka)
+
+Korzystając z formantów u góry listy, można wyszukać użytkownika i filtrować listę użytkowników na podstawie pokazanych kolumn.
 
 ## <a name="limitations"></a>Ograniczenia
 
-Dane wyświetlane w tych raportach zostaną opóźnione o maksymalnie 60 minut. Pole "ostatnio odświeżone" istnieje w Azure Portal, aby określić, jak ostatnie dane są.
+Dane przedstawione w tych raportach będą opóźnione o maksymalnie 60 minut. W witrynie Azure Portal istnieje pole "Ostatnio odświeżone", aby określić, jak aktualne są twoje dane.
 
-Dane dotyczące użycia i szczegółowych informacji nie są zamiennikiem raportów dotyczących aktywności platformy Azure Multi-Factor Authentication ani informacje zawarte w raporcie dotyczącym logowania w usłudze Azure AD.
+Dane użycia i szczegółowe informacje nie zastępują raportów aktywności uwierzytelniania wieloskładnikowego platformy Azure ani informacji zawartych w raporcie logowania usługi Azure AD.
 
 ## <a name="next-steps"></a>Następne kroki
 
-- [Praca z interfejsem API raportów użycia metod uwierzytelniania](https://docs.microsoft.com/graph/api/resources/authenticationmethods-usage-insights-overview?view=graph-rest-beta)
+- [Praca z interfejsem API raportu użycia metod uwierzytelniania](https://docs.microsoft.com/graph/api/resources/authenticationmethods-usage-insights-overview?view=graph-rest-beta)
 - [Wybieranie metod uwierzytelniania dla organizacji](concept-authentication-methods.md)
-- [Połączone środowisko rejestracji](concept-registration-mfa-sspr-combined.md)
+- [Połączone doświadczenie rejestracji](concept-registration-mfa-sspr-combined.md)

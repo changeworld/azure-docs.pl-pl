@@ -1,27 +1,27 @@
 ---
-title: Polimorfizm w Reliable Actors Framework
-description: Kompiluj hierarchie interfejsów i typów .NET w Reliable Actors Framework, aby ponownie użyć funkcji i definicji interfejsu API.
+title: Polimorfizm w ramach Wiarygodnych Aktorów
+description: Tworzenie hierarchii interfejsów i typów platformy .NET w ramach reliable actors do ponownego użycia funkcji i definicji interfejsu API.
 author: vturecek
 ms.topic: conceptual
 ms.date: 11/02/2017
 ms.author: vturecek
 ms.openlocfilehash: 4e485463f41cdfbadeb166ecbb3a86d4a32c1589
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75348939"
 ---
-# <a name="polymorphism-in-the-reliable-actors-framework"></a>Polimorfizm w Reliable Actors Framework
-Struktura Reliable Actors umożliwia kompilowanie aktorów przy użyciu wielu z tych samych technik, których można użyć w projekcie zorientowanym obiektowo. Jedną z tych technik jest polimorfizm, który umożliwia typom i interfejsom dziedziczenie z bardziej uogólnionych obiektów nadrzędnych. Dziedziczenie w strukturze Reliable Actors jest ogólnie zgodne z modelem platformy .NET z kilkoma dodatkowymi ograniczeniami. W przypadku środowiska Java/Linux następuje po modelu Java.
+# <a name="polymorphism-in-the-reliable-actors-framework"></a>Polimorfizm w ramach Wiarygodnych Aktorów
+Struktura Reliable Actors umożliwia tworzenie aktorów przy użyciu wielu tych samych technik, które można użyć w projektowaniu obiektowym. Jedną z tych technik jest polimorfizm, który pozwala typom i interfejsom dziedziczyć po bardziej uogólnionych rodzicach. Dziedziczenie w ramach reliable actors zazwyczaj następuje model .NET z kilku dodatkowych ograniczeń. W przypadku Java / Linux, wynika z modelu Java.
 
 ## <a name="interfaces"></a>Interfejsy
-Struktura Reliable Actors wymaga zdefiniowania co najmniej jednego interfejsu, który ma być zaimplementowany przez typ aktora. Ten interfejs jest używany do generowania klasy proxy, która może być używana przez klientów do komunikowania się z aktorami. Interfejsy mogą dziedziczyć z innych interfejsów, o ile każdy interfejs, który jest implementowany przez typ aktora i wszystkie jego obiekty nadrzędne,C#ostatecznie pochodzi od IActor () lub aktora (Java). IActor (C#) i aktor (Java) są interfejsami podstawowymi zdefiniowanymi na platformie dla aktorów odpowiednio w strukturach .NET i Java. W ten sposób klasyczny przykład polimorfizmu używający kształtów może wyglądać następująco:
+Struktura reliable actors wymaga zdefiniowania co najmniej jednego interfejsu, który ma zostać zaimplementowany przez typ aktora. Ten interfejs jest używany do generowania klasy proxy, która może być używana przez klientów do komunikowania się z aktorami. Interfejsy mogą dziedziczyć z innych interfejsów, o ile każdy interfejs zaimplementowany przez typ aktora i wszystkie jego elementy rodziców ostatecznie pochodzą od IActor(C#) lub Actor(Java). IActor(C#) i Actor(Java) to zdefiniowane na platformie interfejsy podstawowe dla aktorów w ramach .NET i Java odpowiednio. Tak więc klasyczny przykład polimorfizmu przy użyciu kształtów może wyglądać mniej więcej tak:
 
-![Hierarchia interfejsów dla aktorów kształtów][shapes-interface-hierarchy]
+![Hierarchia interfejsu dla aktorów kształtu][shapes-interface-hierarchy]
 
-## <a name="types"></a>Typy
-Można również utworzyć hierarchię typów aktorów, które pochodzą z podstawowej klasy aktora dostarczonej przez platformę. W przypadku kształtów może istnieć podstawowy `Shape`(C#) lub `ShapeImpl`(Java):
+## <a name="types"></a>Types
+Można również utworzyć hierarchię typów aktorów, które pochodzą od podstawowej actor klasy, która jest dostarczana przez platformę. W przypadku kształtów może być typ `Shape`podstawowy (C#) lub `ShapeImpl`(Java):
 
 ```csharp
 public abstract class Shape : Actor, IShape
@@ -40,7 +40,7 @@ public abstract class ShapeImpl extends FabricActor implements Shape
 }
 ```
 
-Podtypy `Shape`(C#) lub `ShapeImpl`(Java) mogą przesłonić metody z bazy.
+Podtypy `Shape`(C#) `ShapeImpl`lub (Java) można zastąpić metody z podstawy.
 
 ```csharp
 [ActorService(Name = "Circle")]
@@ -83,10 +83,10 @@ public class Circle extends ShapeImpl implements Circle
 }
 ```
 
-Zwróć uwagę na atrybut `ActorService` typu aktora. Ten atrybut informuje niezawodną strukturę aktora, że powinna automatycznie utworzyć usługę do hostingu aktorów tego typu. W niektórych przypadkach można utworzyć typ podstawowy, który jest przeznaczony wyłącznie do udostępniania funkcjonalności z podtypem i nigdy nie będzie używany do wystąpienia konkretnych aktorów. W takich przypadkach należy użyć słowa kluczowego `abstract`, aby wskazać, że nigdy nie utworzysz aktora na podstawie tego typu.
+Zwróć `ActorService` uwagę na atrybut typu aktora. Ten atrybut informuje platformę niezawodnego aktora, że należy automatycznie utworzyć usługę dla podmiotów hostingu tego typu. W niektórych przypadkach można utworzyć typ podstawowy, który jest przeznaczony wyłącznie do udostępniania funkcji z podtypami i nigdy nie będzie używany do tworzenia wystąpienia konkretnych podmiotów. W takich przypadkach należy `abstract` użyć słowa kluczowego, aby wskazać, że nigdy nie utworzy aktora na podstawie tego typu.
 
 ## <a name="next-steps"></a>Następne kroki
-* Zobacz, [jak struktura Reliable Actors wykorzystuje platformę Service Fabric](service-fabric-reliable-actors-platform.md) , aby zapewnić niezawodność, skalowalność i spójny stan.
+* Zobacz, [jak platforma reliable actors wykorzystuje platformę sieci szkieletowej usług,](service-fabric-reliable-actors-platform.md) aby zapewnić niezawodność, skalowalność i spójny stan.
 * Dowiedz się więcej o [cyklu życia aktora](service-fabric-reliable-actors-lifecycle.md).
 
 <!-- Image references -->

@@ -15,10 +15,10 @@ ms.topic: conceptual
 ms.date: 03/09/2017
 ms.author: cawa
 ms.openlocfilehash: fe3a8ab5b43c41b7e9f79f92de674515377fa9ec
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60456854"
 ---
 # <a name="using-storage-explorer-with-azure-file-storage"></a>Używanie programu Storage Explorer z usługą Azure File Storage
@@ -31,7 +31,7 @@ Do wykonania kroków opisanych w tym artykule konieczne jest wykonanie kroków z
 
 - [Pobieranie i instalowanie Eksploratora usługi Storage](https://www.storageexplorer.com/)
 
-- [Nawiązać połączenie z usługą lub kontem magazynu platformy Azure](https://docs.microsoft.com//azure/vs-azure-tools-storage-manage-with-storage-explorer#connect-to-a-storage-account-or-service)
+- [Łączenie się z kontem lub usługą magazynu platformy Azure](https://docs.microsoft.com//azure/vs-azure-tools-storage-manage-with-storage-explorer#connect-to-a-storage-account-or-service)
 
 ## <a name="create-a-file-share"></a>Tworzenie udziału plików
 
@@ -89,7 +89,7 @@ Poniższe kroki ilustrują usuwanie udziału plików w Eksploratorze usługi Sto
 
 1. Kliknij prawym przyciskiem myszy udział plików, który chcesz usunąć, a następnie z menu kontekstowego wybierz pozycję **Usuń**. Możesz również nacisnąć klawisz **Delete**, aby usunąć aktualnie wybrany udział plików.
 
-    ![Usuwanie](media/vs-azure-tools-storage-explorer-files/image6.png)
+    ![Usuń](media/vs-azure-tools-storage-explorer-files/image6.png)
 
 1. Wybierz pozycję **Tak** w oknie dialogowym potwierdzenia.
     
@@ -203,23 +203,23 @@ Poniższe kroki ilustrują zarządzanie plikami (i folderami) w udziale plików.
 
         ![Przekazywanie plików](media/vs-azure-tools-storage-explorer-files/image18.png)
         
-        b. W oknie dialogowym **Przekazywanie plików** wybierz przycisk wielokropka ( **...** ) po prawej stronie pola tekstowego **Pliki**, aby wybrać pliki do przekazania.
+        b. W oknie dialogowym **Przekazywanie plików** wybierz przycisk wielokropka (**...**) po prawej stronie pola tekstowego **Pliki**, aby wybrać pliki do przekazania.
 
         ![Dodawanie plików](media/vs-azure-tools-storage-explorer-files/image19.png)
 
-        c. Wybierz pozycję **Przekaż**.
+        d. Wybierz **pozycję Przekaż**.
 
     - **Przekazywanie folderu do udziału plików**
         
-        a. Na pasku narzędzi okienka głównego wybierz pozycję **Przekaż**, a następnie z menu rozwijanego wybierz pozycję **Przekaż folder**.
+        a. Na pasku narzędzi głównego okienka wybierz pozycję **Przekaż**, a następnie **przekaż folder** z menu rozwijanego.
 
         ![Menu Przekaż folder](media/vs-azure-tools-storage-explorer-files/image20.png)
 
-        b. W oknie dialogowym **Przekazywanie folderu** wybierz przycisk wielokropka ( **...** ) po prawej stronie pola tekstowego **Folder**, aby wybrać folder, którego zawartość chcesz przekazać.
+        b. W oknie dialogowym **Przekazywanie folderu** wybierz przycisk wielokropka (**...**) po prawej stronie pola tekstowego **Folder**, aby wybrać folder, którego zawartość chcesz przekazać.
 
-        c. Opcjonalnie określ folder docelowy, do którego zawartość wybranego folderu zostanie przekazana. Jeśli folder docelowy nie istnieje, zostanie on utworzony.
+        d. Opcjonalnie określ folder docelowy, do którego zawartość wybranego folderu zostanie przekazana. Jeśli folder docelowy nie istnieje, zostanie on utworzony.
 
-        d. Wybierz pozycję **Przekaż**.
+        d. Wybierz **pozycję Przekaż**.
 
     - **Pobieranie pliku na komputer lokalny**
         
@@ -227,9 +227,9 @@ Poniższe kroki ilustrują zarządzanie plikami (i folderami) w udziale plików.
         
         b. Na pasku narzędzi okienka głównego wybierz pozycję **Pobierz**.
         
-        c. W oknie dialogowym **Określanie lokalizacji, w której zapisać pobrany plik** określ lokalizację, w której ma zostać zapisany pobrany plik, oraz nazwę tego pliku.
+        d. W oknie dialogowym **Określanie lokalizacji, w której zapisać pobrany plik** określ lokalizację, w której ma zostać zapisany pobrany plik, oraz nazwę tego pliku.
 
-        d. Wybierz pozycję **Zapisz**.
+        d. Wybierz **pozycję Zapisz**.
 
     - **Otwieranie pliku na komputerze lokalnym**
         
@@ -237,7 +237,7 @@ Poniższe kroki ilustrują zarządzanie plikami (i folderami) w udziale plików.
         
         b.  Na pasku narzędzi okienka głównego wybierz pozycję **Otwórz**.
         
-        c.  Plik zostanie pobrany i otwarty przy użyciu aplikacji skojarzonej z typem pliku źródłowego.
+        d.  Plik zostanie pobrany i otwarty przy użyciu aplikacji skojarzonej z typem pliku źródłowego.
 
     - **Kopiowanie pliku do Schowka**
 
@@ -245,7 +245,7 @@ Poniższe kroki ilustrują zarządzanie plikami (i folderami) w udziale plików.
 
         b. Na pasku narzędzi okienka głównego wybierz pozycję **Kopiuj**.
 
-        c. W lewym okienku przejdź do innego udziału plików i kliknij go dwukrotnie, aby wyświetlić go w okienku głównym.
+        d. W lewym okienku przejdź do innego udziału plików i kliknij go dwukrotnie, aby wyświetlić go w okienku głównym.
 
         d. Na pasku narzędzi okienka głównego wybierz pozycję **Wklej**, aby utworzyć kopię pliku.
 
@@ -255,9 +255,9 @@ Poniższe kroki ilustrują zarządzanie plikami (i folderami) w udziale plików.
 
         b. Na pasku narzędzi okienka głównego wybierz pozycję **Usuń**.
 
-        c. Wybierz pozycję **Tak** w oknie dialogowym potwierdzenia.
+        d. Wybierz pozycję **Tak** w oknie dialogowym potwierdzenia.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - Zobacz [najnowsze informacje o wersji i wideo dotyczące Eksploratora usługi Storage](https://www.storageexplorer.com/).
 

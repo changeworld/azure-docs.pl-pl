@@ -7,17 +7,17 @@ ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: zhshang
 ms.openlocfilehash: 8a4012d204b6dafa1233e4ce3d878590120be47d
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60640229"
 ---
 # <a name="scale-aspnet-core-signalr-applications-with-azure-signalr-service"></a>Skalowanie aplikacji ASP.NET Core SignalR za pomocą usługi Azure SignalR Service
 
 ## <a name="developing-signalr-apps"></a>Tworzenie aplikacji SignalR
 
-Obecnie istnieją [dwie wersje](https://docs.microsoft.com/aspnet/core/signalr/version-differences) usługi SignalR, których można używać z aplikacjami internetowymi: usługa SignalR dla platformy ASP.NET i usługa ASP.NET Core SignalR, która jest najnowszą wersją. Usługa Azure SignalR Service jest usługą zarządzaną przez platformę Azure, zbudowaną na podstawie biblioteki ASP.NET Core SignalR.
+Obecnie istnieją [dwie wersje](https://docs.microsoft.com/aspnet/core/signalr/version-differences) SignalR, których można używać z aplikacjami internetowymi: SignalR dla ASP.NET i ASP.NET Core SignalR, który jest najnowszą wersją. Usługa Azure SignalR Service jest usługą zarządzaną przez platformę Azure, zbudowaną na podstawie biblioteki ASP.NET Core SignalR.
 
 ASP.NET Core SignalR to ponownie napisana poprzednia wersja tej biblioteki. W związku z tym biblioteka ASP.NET Core SignalR nie jest zgodna z wcześniejszą wersją biblioteki SignalR. Interfejsy API i działanie różnią się. Zestaw ASP.NET Core SignalR SDK jest zgodny ze specyfikacją .NET Standard, więc nadal można z niego korzystać z programem .NET Framework. Należy jednak używać nowych interfejsów API zamiast starych. Jeśli używasz biblioteki SignalR i chcesz przejść na bibliotekę ASP.NET Core SignalR lub usługę Azure SignalR Service, musisz zmodyfikować swój kod tak, aby uwzględnić różnice w interfejsach API.
 
@@ -31,7 +31,7 @@ Wdrażanie własnej aplikacji internetowej platformy Azure obsługującej biblio
 
 Jednym z najważniejszych argumentów za korzystaniem z usługi Azure SignalR Service jest prostota. W przypadku usługi Azure SignalR Service nie trzeba martwić się o takie rzeczy jak wydajność, skalowalność i dostępność. Tymi kwestiami zajmujemy się my, dając umowę SLA gwarantującą czas dostępności na poziomie 99,9%.
 
-Ponadto preferowaną techniką aktualizacji zawartości w czasie rzeczywistym jest protokół WebSocket. Jednak równoważenie obciążenia dużą liczbą trwałych połączeń protokołu WebSocket staje się problemem niełatwym do rozwiązania podczas skalowania. Wykorzystanie typowych rozwiązań: równoważenie obciążenia DNS, sprzętowe moduły równoważenia obciążenia i programowe równoważenie obciążenia. Usługa Azure SignalR Service rozwiązuje ten problem za Ciebie.
+Ponadto preferowaną techniką aktualizacji zawartości w czasie rzeczywistym jest protokół WebSocket. Jednak równoważenie obciążenia dużą liczbą trwałych połączeń protokołu WebSocket staje się problemem niełatwym do rozwiązania podczas skalowania. Jego typowe rozwiązania obejmują równoważenie obciążenia DNS, sprzętowe moduły równoważenia obciążenia i programowe równoważenie obciążenia. Usługa Azure SignalR Service rozwiązuje ten problem za Ciebie.
 
 Innym argumentem może być to, że w ogóle nie potrzebujesz hostować aplikacji internetowej. Logika Twojej aplikacji internetowej może wykorzystywać [obliczenia bezserwerowe](https://azure.microsoft.com/overview/serverless-computing/). Na przykład Twój kod może być hostowany i wykonywany jedynie na żądanie przy użyciu wyzwalaczy usługi [Azure Functions](https://docs.microsoft.com/azure/azure-functions/). Ten scenariusz może być niełatwy, ponieważ Twój kod jest wykonywany tylko na żądanie i nie utrzymuje długich połączeń z klientami. Usługa Azure SignalR Service może obsłużyć taką sytuację, ponieważ już zarządza połączeniami za Ciebie. Aby uzyskać więcej szczegółów, zobacz [omówienie sposobu użycia usługi SignalR Service z usługą Azure Functions](signalr-concept-azure-functions.md).
 
@@ -39,6 +39,6 @@ Innym argumentem może być to, że w ogóle nie potrzebujesz hostować aplikacj
 
 Częstą sytuacją jest skalowanie biblioteki SignalR za pomocą programu SQL Server, usługi Azure Service Bus lub usługi Azure Cache for Redis. Usługa Azure SignalR Service obsługuje podejście ze skalowaniem za Ciebie. Wydajność i koszty są porównywalne jak w powyższym podejściu, ale bez złożoności związanej z obsługą tych innych usług. Wszystko, co trzeba zrobić, to zaktualizować liczbę jednostek dla swojej usługi. Każda jednostka obsługuje do 1000 połączeń z klientami.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-* [Szybki start: Tworzenie pokoju rozmów za pomocą usługi Azure SignalR](signalr-quickstart-dotnet-core.md)
+* [Szybki start: tworzenie pokoju rozmów za pomocą usługi Azure SignalR](signalr-quickstart-dotnet-core.md)

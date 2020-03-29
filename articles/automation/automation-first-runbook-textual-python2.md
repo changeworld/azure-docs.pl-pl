@@ -1,29 +1,29 @@
 ---
-title: Mój pierwszy element Runbook w języku Python w Azure Automation
-description: Samouczek, który przeprowadzi Cię przez proces tworzenia, testowania i publikowania prostego elementu Runbook języka Python.
+title: Mój pierwszy system runbook języka Python w usłudze Azure Automation
+description: Samouczek, który przeprowadzi Cię przez tworzenie, testowanie i publikowanie prostego elementu runbook języka Python.
 services: automation
 ms.subservice: process-automation
 ms.date: 03/19/2019
 ms.topic: conceptual
 ms.openlocfilehash: b17a0403a3b2a3ff8c3586ed26a4b833db54922d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75365941"
 ---
-# <a name="my-first-python-runbook"></a>Mój pierwszy element Runbook w języku Python
+# <a name="my-first-python-runbook"></a>Mój pierwszy element Runbook (Python)
 
 > [!div class="op_single_selector"]
 > - [Element graficzny](automation-first-runbook-graphical.md)
-> - [Program PowerShell](automation-first-runbook-textual-powershell.md)
+> - [Powershell](automation-first-runbook-textual-powershell.md)
 > - [Przepływ pracy programu PowerShell](automation-first-runbook-textual.md)
 > - [Python](automation-first-runbook-textual-python2.md)
 
-Ten samouczek przeprowadzi Cię przez proces tworzenia [elementu Runbook](automation-runbook-types.md#python-runbooks) w języku Python w Azure Automation. Zacznij od prostego elementu Runbook, który można testować i publikować. Następnie zmodyfikujesz element runbook, aby faktycznie zarządzał zasobami platformy Azure — w tym przypadku uruchamiając maszynę wirtualną platformy Azure. W końcu element Runbook jest bardziej niezawodny przez dodanie parametrów elementu Runbook.
+W tym samouczku przeprowadzi Cię tworzenie [elementu runbook języka Python](automation-runbook-types.md#python-runbooks) w usłudze Azure Automation. Zaczynasz od prostego śmiętu, który testujesz i publikujesz. Następnie zmodyfikujesz element runbook, aby faktycznie zarządzał zasobami platformy Azure — w tym przypadku uruchamiając maszynę wirtualną platformy Azure. Na koniec należy uczynić system runbook bardziej niezawodne przez dodanie parametrów uruchomieniu. ś.00.
 
 > [!NOTE]
-> Korzystanie z elementu webhook do uruchamiania elementów Runbook języka Python nie jest obsługiwane.
+> Używanie elementu webhook do uruchamiania elementu runbook języka Python nie jest obsługiwane.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -33,29 +33,29 @@ Do wykonania kroków tego samouczka niezbędne są następujące elementy:
 - [Konto usługi Automation](automation-offering-get-started.md) do przechowywania elementu Runbook i uwierzytelniania w zasobach platformy Azure. To konto musi mieć uprawnienia do uruchamiania i zatrzymywania maszyny wirtualnej.
 - Maszyna wirtualna platformy Azure. Będziesz uruchamiać i zatrzymywać tę maszynę, dlatego należy użyć maszyny innej niż produkcyjna.
 
-## <a name="create-a-new-runbook"></a>Utwórz nowy element Runbook
+## <a name="create-a-new-runbook"></a>Tworzenie nowego śmiętu
 
-Zacznij od utworzenia prostego elementu Runbook, który będzie wyprowadzał tekst *Hello World*.
+Zacznij od utworzenia prostego podstawowego podstawowego podstawowego tekstu *Hello World*.
 
 1. W witrynie Azure Portal otwórz konto usługi Automation.
 
     Strona konta usługi Automation umożliwia szybki przegląd zasobów na tym koncie. Konto powinno mieć już pewne elementy zawartości. Większość z nich to moduły, które są automatycznie uwzględniane na nowym koncie usługi Automation. Powinien istnieć również element zawartości Poświadczenie wymieniony w części dotyczącej [wymagań wstępnych](#prerequisites).<br>
 
 1. Wybierz pozycję **Elementy runbook** w obszarze **ZARZĄDZANIE PROCESAMI**, aby otworzyć listę elementów runbook.
-1. Wybierz pozycję **+ Dodaj element Runbook** , aby utworzyć nowy element Runbook.
-1. Nadaj elementowi Runbook nazwę *MyFirstRunbook-Python*.
-1. W takim przypadku należy utworzyć [element Runbook](automation-runbook-types.md#python-runbooks) w języku Python, aby wybrać opcję **Python 2** dla **typu elementu Runbook**.
+1. Wybierz **+ Dodaj projekt runbook,** aby utworzyć nowy projekt runbook.
+1. Nadaj projektowi uszytemu nazwę *MyFirstRunbook-Python*.
+1. W takim przypadku zamierzasz utworzyć [projekt owy Pythona,](automation-runbook-types.md#python-runbooks) więc wybierz **Python 2** dla **typu runbook**.
 1. Kliknij pozycję **Utwórz**, aby utworzyć element Runbook i otworzyć edytor tekstów.
 
-## <a name="add-code-to-the-runbook"></a>Dodawanie kodu do elementu Runbook
+## <a name="add-code-to-the-runbook"></a>Dodawanie kodu do podręcznika runbooka
 
-Teraz można dodać proste polecenie do drukowania tekstu "Hello world":
+Teraz dodajesz proste polecenie, aby wydrukować tekst "Hello World":
 
 ```python
 print("Hello World!")
 ```
 
-Kliknij przycisk **Zapisz** , aby zapisać element Runbook.
+Kliknij **przycisk Zapisz,** aby zapisać projekt runbook.
 
 ## <a name="test-the-runbook"></a>Testowanie elementu runbook
 
@@ -64,42 +64,42 @@ Przed opublikowaniem elementu runbook w celu udostępnienia go w środowisku pro
 1. Kliknij pozycję **Okienko testowania**, aby otworzyć okienko testowania.
 1. Kliknij opcję **Uruchom**, aby rozpocząć test. Powinna to być jedyna włączona opcja.
 1. Zostanie utworzone [zadanie elementu Runbook](automation-runbook-execution.md) i pojawi się jego stan.
-   Zadanie będzie miało początkowy stan *W kolejce*, wskazujący, że trwa oczekiwanie na udostępnienie procesu roboczego elementu runbook w chmurze. Przenosi się do *początku* , gdy proces roboczy pozyskuje zadanie, a następnie *uruchamia* się, gdy element Runbook faktycznie zacznie działać.
-1. Po zakończeniu zadania elementu Runbook zostaną wyświetlone jego dane wyjściowe. W takim przypadku powinna zostać wyświetlona *Hello World*.
+   Zadanie będzie miało początkowy stan *W kolejce*, wskazujący, że trwa oczekiwanie na udostępnienie procesu roboczego elementu runbook w chmurze. Przenosi się do *Uruchamianie,* gdy pracownik żąda zadania, a następnie *uruchomiony,* gdy runbook faktycznie rozpoczyna się uruchomiony.
+1. Po zakończeniu zadania elementu Runbook zostaną wyświetlone jego dane wyjściowe. W takim przypadku powinieneś zobaczyć *Hello World*.
 1. Zamknij okienko testowania, aby wrócić do kanwy.
 
-## <a name="publish-and-start-the-runbook"></a>Publikowanie i Uruchamianie elementu Runbook
+## <a name="publish-and-start-the-runbook"></a>Publikowanie i uruchamianie podręcznika runbook
 
-Utworzony element Runbook nadal działa w trybie roboczym. Należy ją opublikować przed uruchomieniem jej w środowisku produkcyjnym.
-Po opublikowaniu elementu Runbook Zastąp istniejącą opublikowaną wersję wersją roboczą.
-W takim przypadku nie masz jeszcze opublikowanej wersji, ponieważ element Runbook został właśnie utworzony.
+Utworzony projekt runbook jest nadal w trybie roboczym. Należy go opublikować, zanim będzie można uruchomić go w produkcji.
+Podczas publikowania likrządu należy zastąpić istniejącą opublikowaną wersję wersją wersji roboczej.
+W takim przypadku nie masz jeszcze opublikowanej wersji, ponieważ właśnie utworzono projekt runbook.
 
 1. Kliknij przycisk **Opublikuj**, aby opublikować element Runbook, a następnie kliknij opcję **Tak** po wyświetleniu monitu.
-1. Jeśli przewiniesz w lewo, aby wyświetlić element Runbook w okienku **elementy Runbook** , zostanie wyświetlony **Stan tworzenia** **opublikowanych**.
-1. Przewiń z powrotem w prawo, aby wyświetlić okienko dla **MyFirstRunbook-Python**.
-   Opcje w górnej części umożliwiają nam Uruchamianie elementu Runbook, wyświetlanie elementu Runbook lub planowanie jego uruchomienia w przyszłości.
-2. Chcesz uruchomić element Runbook, a następnie kliknij przycisk **Start** , a następnie kliknij przycisk **OK** , gdy zostanie otwarty blok Uruchamianie elementu Runbook.
-3. Zostanie otwarte okienko zadań dla utworzonego zadania elementu Runbook. Można zamknąć to okienko, ale w tym przypadku pozostawić otwarte, aby można było obserwować postęp zadania.
-1. Stan zadania jest pokazywany w **podsumowaniu zadania** i jest zgodny z Stanami wyświetlonymi podczas testowania elementu Runbook.
-2. Gdy stanem elementu Runbook będzie *Ukończono*, kliknij pozycję **Dane wyjściowe**. Zostanie otwarte okienko danych wyjściowych i będzie można zobaczyć *Hello World*.
+1. Jeśli przewiniesz w lewo, aby wyświetlić element runbook w okienku **Runbooks** teraz, pokazuje **stan tworzenia** **opublikowanych**.
+1. Przewiń z powrotem w prawo, aby wyświetlić okienko **myfirstRunbook-Python**.
+   Opcje w górnej części pozwalają nam uruchomić runbook, wyświetlić runbook, lub zaplanować jego uruchomienie w pewnym momencie w przyszłości.
+2. Chcesz uruchomić projekt runbook, więc kliknij przycisk **Start,** a następnie kliknij przycisk **Ok** po otwarciu bloku Rozpocznij program Runbook.
+3. Okienko zadania jest otwierane dla utworzonego zadania ego. Możesz zamknąć to okienko, ale w tym przypadku pozostawiasz je otwarte, aby można było obserwować postęp zadania.
+1. Stan zadania jest wyświetlany w **podsumowaniu zadania** i odpowiada stanom, które zostały wyświetlone podczas testowania śmiwoja.
+2. Gdy stanem elementu Runbook będzie *Ukończono*, kliknij pozycję **Dane wyjściowe**. Okienko Dane wyjściowe zostanie otwarte i będzie można zobaczyć swój *Hello World*.
 3. Zamknij okienko danych wyjściowych.
 4. Kliknij pozycję **Wszystkie dzienniki**, aby otworzyć okienko strumieni dla zadania elementu Runbook. W strumieniu danych wyjściowych powinien być widoczny tylko ciąg *Witaj, świecie*, ale mogą zostać wyświetlone inne strumienie zadania elementu runbook, takie jak Pełne informacje i Błąd, jeśli element runbook wykonuje w nich operacje zapisywania.
-5. Zamknij okienko strumieni i okienko zadania, aby wrócić do okienka MyFirstRunbook-Python.
+5. Zamknij okienko Strumienie i okienko zadania, aby powrócić do okienka MyFirstRunbook-Python.
 6. Kliknij pozycję **Zadania**, aby otworzyć okienko zadań dla tego elementu Runbook. Zawiera ono listę wszystkich zadań utworzonych przez dany element Runbook. Ponieważ uruchomiono zadanie tylko raz, powinno być widoczne tylko jedno zadanie.
 7. Możesz kliknąć to zadanie, aby otworzyć okienko Zadania wyświetlone wcześniej po uruchomieniu elementu runbook. Dzięki temu możesz cofnąć się w czasie i wyświetlić szczegóły dowolnego zadania, które zostało utworzone dla określonego elementu Runbook.
 
 ## <a name="add-authentication-to-manage-azure-resources"></a>Dodawanie uwierzytelniania w celu zarządzania zasobami platformy Azure
 
 Element runbook został przetestowany i opublikowany, ale jak do tej pory nie wykonuje on żadnych użytecznych czynności. Powinien zarządzać zasobami platformy Azure.
-Aby zarządzać zasobami platformy Azure, skrypt musi uwierzytelniać się przy użyciu poświadczeń z konta usługi Automation. Aby ułatwić Ci korzystanie z zasobów platformy Azure, można użyć [pakietu narzędzi Azure Automation](https://github.com/azureautomation/azure_automation_utility) .
+Aby zarządzać zasobami platformy Azure, skrypt musi uwierzytelnić się przy użyciu poświadczeń z konta automatyzacji. Aby ci pomóc, możesz użyć [pakietu narzędzi usługi Azure Automation,](https://github.com/azureautomation/azure_automation_utility) aby ułatwić uwierzytelnianie zasobów platformy Azure i interakcję z nimi.
 
 > [!NOTE]
-> Konto usługi Automation musi zostać utworzone za pomocą funkcji głównej usługi, aby można było używać certyfikatu Uruchom jako.
-> Jeśli konto usługi Automation nie zostało utworzone za pomocą nazwy głównej, można przeprowadzić uwierzytelnianie przy użyciu metody opisanej w temacie [uwierzytelnianie przy użyciu bibliotek zarządzania platformy Azure dla języka Python](/azure/python/python-sdk-azure-authenticate).
+> Konto automatyzacji musi zostać utworzone przy za pomocą funkcji głównej usługi, aby można było uruchomić jako certyfikat.
+> Jeśli konto automatyzacji nie zostało utworzone z jednostką usługi, można uwierzytelnić się przy użyciu metody opisanej w [uwierzytelniij za pomocą bibliotek zarządzania platformy Azure dla języka Python.](/azure/python/python-sdk-azure-authenticate)
 
-1. Otwórz Edytor tekstów, klikając pozycję **Edytuj** w okienku MyFirstRunbook-Python.
+1. Otwórz edytor tekstu, klikając przycisk **Edytuj** w okienku MyFirstRunbook-Python.
 
-2. Dodaj następujący kod w celu uwierzytelnienia na platformie Azure:
+2. Dodaj następujący kod do uwierzytelniania na platformie Azure:
 
    ```python
    import os
@@ -142,9 +142,9 @@ Aby zarządzać zasobami platformy Azure, skrypt musi uwierzytelniać się przy 
 
 ## <a name="add-code-to-create-python-compute-client-and-start-the-vm"></a>Dodaj kod, aby utworzyć klienta obliczeniowego języka Python i uruchomić maszynę wirtualną
 
-Aby współpracować z maszynami wirtualnymi platformy Azure, Utwórz wystąpienie [klienta obliczeniowego platformy Azure dla języka Python](https://docs.microsoft.com/python/api/azure-mgmt-compute/azure.mgmt.compute.computemanagementclient).
+Aby pracować z maszynami wirtualnymi platformy Azure, utwórz [wystąpienie klienta obliczeń platformy Azure dla języka Python](https://docs.microsoft.com/python/api/azure-mgmt-compute/azure.mgmt.compute.computemanagementclient).
 
-Użyj klienta obliczeniowego, aby uruchomić maszynę wirtualną. Dodaj następujący kod do elementu Runbook:
+Użyj klienta obliczeniowego, aby uruchomić maszynę wirtualną. Dodaj następujący kod do elementów runbook:
 
 ```python
 # Initialize the compute management client with the RunAs credential and specify the subscription to work against.
@@ -160,17 +160,17 @@ async_vm_start = compute_client.virtual_machines.start(
 async_vm_start.wait()
 ```
 
-Gdzie moja _resourceName_ jest nazwą grupy zasobów ZAWIERAJĄCEj maszynę wirtualną, a _TestVM_ to nazwa maszyny wirtualnej, która ma zostać uruchomiona.
+Gdzie _MyResourceGroup_ jest nazwą grupy zasobów, która zawiera maszynę wirtualną, a _TestVM_ jest nazwą maszyny Wirtualnej, którą chcesz uruchomić.
 
-Przetestuj i uruchom ponownie element Runbook, aby zobaczyć, że uruchamia maszynę wirtualną.
+Przetestuj i uruchom runbook ponownie, aby zobaczyć, że uruchamia maszynę wirtualną.
 
 ## <a name="use-input-parameters"></a>Użyj parametrów wejściowych
 
-Element Runbook obecnie używa trwale zakodowanych wartości nazw grupy zasobów i maszyny wirtualnej.
-Teraz Dodajmy kod, który pobiera te wartości z parametrów wejściowych.
+Księga runbooka używa obecnie zakodowanych wartości dla nazw grupy zasobów i maszyny wirtualnej.
+Teraz dodajmy kod, który pobiera te wartości z parametrów wejściowych.
 
-Użyj zmiennej `sys.argv`, aby pobrać wartości parametrów.
-Dodaj następujący kod do elementu Runbook bezpośrednio po innych instrukcjach `import`:
+Zmienna `sys.argv` służy do uzyskania wartości parametrów.
+Dodaj następujący kod do elementów runbook natychmiast po innych `import` instrukcji:
 
 ```python
 import sys
@@ -179,10 +179,10 @@ resource_group_name = str(sys.argv[1])
 vm_name = str(sys.argv[2])
 ```
 
-Spowoduje to zaimportowanie modułu `sys` i utworzenie dwóch zmiennych w celu przechowywania nazw grup zasobów i maszyn wirtualnych.
-Zauważ, że element listy argumentów, `sys.argv[0]`, to nazwa skryptu i nie jest wprowadzany przez użytkownika.
+Spowoduje to `sys` zaimportowanie modułu i utworzenie dwóch zmiennych do przechowywania nazw grupy zasobów i maszyn wirtualnych.
+Należy zauważyć, że element `sys.argv[0]`listy argumentów, , jest nazwą skryptu i nie jest wprowadzany przez użytkownika.
 
-Teraz można zmodyfikować ostatnie dwa wiersze elementu Runbook, aby używały wartości parametrów wejściowych zamiast używać zakodowanych wartości:
+Teraz możesz zmodyfikować dwa ostatnie wiersze żytnika, aby używać wartości parametrów wejściowych zamiast wartości zakodowanych na twardo:
 
 ```python
 async_vm_start = compute_client.virtual_machines.start(
@@ -190,21 +190,21 @@ async_vm_start = compute_client.virtual_machines.start(
 async_vm_start.wait()
 ```
 
-Po uruchomieniu elementu Runbook w języku Python (na stronie **test** lub jako opublikowanego elementu Runbook) można wprowadzić wartości parametrów na stronie **Uruchom element Runbook** w obszarze **Parametry**.
+Po uruchomieniu ślikmy python (na stronie **testowej** lub jako opublikowany projekt runbook) można wprowadzić wartości parametrów na stronie **Rozpocznij runbook** w obszarze **Parametry**.
 
-Po rozpoczęciu wprowadzania wartości w pierwszym polu zostanie wyświetlona druga sekunda, tak aby można było wprowadzić tyle wartości parametrów, ile jest to konieczne.
+Po rozpoczęciu wprowadzania wartości w pierwszym polu pojawi się druga i tak dalej, dzięki czemu można wprowadzić dowolną liczbę wartości parametrów.
 
-Wartości są dostępne dla skryptu jako tablica `sys.argv`, jak w kodzie, który właśnie został dodany.
+Wartości są dostępne dla skryptu jako tablicy, `sys.argv` jak w kodzie, który właśnie dodano.
 
-Wprowadź nazwę grupy zasobów jako wartość pierwszego parametru i nazwę maszyny wirtualnej, która ma być uruchamiana jako wartość drugiego parametru.
+Wprowadź nazwę grupy zasobów jako wartość pierwszego parametru i nazwę maszyny Wirtualnej, aby rozpocząć jako wartość drugiego parametru.
 
-![Wprowadź wartości parametrów](media/automation-first-runbook-textual-python/runbook-python-params.png)
+![Wprowadzanie wartości parametrów](media/automation-first-runbook-textual-python/runbook-python-params.png)
 
-Kliknij przycisk **OK** , aby uruchomić element Runbook. Element Runbook działa i uruchamia określoną maszynę wirtualną.
+Kliknij **przycisk OK,** aby uruchomić program runbook. Projekt runbook uruchamia i uruchamia określoną maszynę wirtualną.
 
-## <a name="error-handling-in-python"></a>Obsługa błędów w języku Python
+## <a name="error-handling-in-python"></a>Obsługa błędów w pythonie
 
-Można również użyć poniższych konwencji do pobrania różnych strumieni z elementów Runbook języka Python, w tym **ostrzeżeń**, **błędów**i **debugowania** strumieni.
+Można również użyć następujących konwencji do pobierania różnych strumieni z elementów runbook języka Python, w tym **OSTRZEŻENIE**, **BŁĄD**i **debug** strumieni.
 
 ```python
 print("Hello World output") 
@@ -214,7 +214,7 @@ print("DEBUG: - Hello world debug")
 print("VERBOSE: - Hello world verbose")
 ```
 
-W poniższym przykładzie przedstawiono Konwencję używaną w bloku `try...except`.
+Poniższy przykład pokazuje tę `try...except` konwencję używaną w bloku.
 
 ```python
 try:
@@ -224,13 +224,13 @@ except Exception as detail:
 ```
 
 > [!NOTE]
-> **sys. stderr** nie jest obsługiwany w Azure Automation.
+> **sys.stderr** nie jest obsługiwany w usłudze Azure Automation.
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Aby rozpocząć pracę z elementami Runbook programu PowerShell, zobacz artykuł [My first PowerShell runbook](automation-first-runbook-textual-powershell.md) (Mój pierwszy element Runbook programu PowerShell).
+- Aby rozpocząć pracę z podręcznikami runbook programu PowerShell, zobacz [Mój pierwszy program PowerShell runbook](automation-first-runbook-textual-powershell.md)
 - Aby rozpocząć pracę z graficznymi elementami Runbook, zobacz artykuł [My first graphical runbook](automation-first-runbook-graphical.md) (Mój pierwszy graficzny element Runbook).
-- Aby rozpocząć pracę z elementami Runbook przepływu pracy programu PowerShell, zobacz artykuł [My first PowerShell workflow runbook](automation-first-runbook-textual.md) (Mój pierwszy element Runbook przepływu pracy programu PowerShell).
+- Aby rozpocząć pracę z uruchomieniu przepływem pracy programu PowerShell, zobacz [Mój pierwszy program PowerShell workflow runbook](automation-first-runbook-textual.md)
 - Aby dowiedzieć się więcej na temat typów elementów Runbook, ich zalet i ograniczeń, zobacz [Azure Automation runbook types](automation-runbook-types.md) (Typy elementów Runbook usługi Azure Automation).
-- Aby dowiedzieć się więcej na temat tworzenia aplikacji dla platformy Azure przy użyciu języka Python, zobacz [Azure for Python Developers](/azure/python/)
-- Aby wyświetlić Przykładowe elementy Runbook języka Python 2, zobacz [Azure Automation GitHub](https://github.com/azureautomation/runbooks/tree/master/Utility/Python)
+- Aby dowiedzieć się więcej o tworzeniu platformy Azure za pomocą języka Python, zobacz [Azure for Python developers](/azure/python/)
+- Aby wyświetlić przykładowe elementy runbook języka Python 2, zobacz [usługę Azure Automation GitHub](https://github.com/azureautomation/runbooks/tree/master/Utility/Python)

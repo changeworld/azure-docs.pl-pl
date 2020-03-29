@@ -1,6 +1,6 @@
 ---
 title: Przekształcanie danych przy użyciu skryptu U-SQL
-description: Dowiedz się, jak przetwarzać lub przekształcać dane, uruchamiając skrypty U-SQL w usłudze Azure Data Lake Analytics COMPUTE.
+description: Dowiedz się, jak przetwarzać lub przekształcać dane, uruchamiając skrypty U-SQL w usłudze obliczeniowej usługi Azure Data Lake Analytics.
 services: data-factory
 documentationcenter: ''
 ms.author: abnarain
@@ -13,53 +13,53 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/01/2018
 ms.openlocfilehash: 257c71f7994b889540ec8cc5d0f384f3f8894f4d
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74913273"
 ---
-# <a name="transform-data-by-running-u-sql-scripts-on-azure-data-lake-analytics"></a>Przekształcanie danych przez uruchamianie skryptów U-SQL na Azure Data Lake Analytics 
-> [!div class="op_single_selector" title1="Wybierz używaną wersję usługi Data Factory:"]
+# <a name="transform-data-by-running-u-sql-scripts-on-azure-data-lake-analytics"></a>Przekształcanie danych przez uruchamianie skryptów U-SQL w usłudze Azure Data Lake Analytics 
+> [!div class="op_single_selector" title1="Wybierz wersję używanej usługi Data Factory:"]
 > * [Wersja 1](v1/data-factory-usql-activity.md)
 > * [Bieżąca wersja](transform-data-using-data-lake-analytics.md)
 
-Potok w usłudze Azure Data Factory przetwarza dane w połączonych usługach magazynu za pomocą połączonych usług obliczeniowych. Zawiera sekwencję działań, w których każde działanie wykonuje określoną operację przetwarzania. W tym artykule opisano **działanie programu Data Lake Analytics u-SQL** , które uruchamia skrypt **u-SQL** na połączonej usłudze **Azure Data Lake Analytics** COMPUTE. 
+Potok w fabryce danych platformy Azure przetwarza dane w połączonych usługach magazynu przy użyciu połączonych usług obliczeniowych. Zawiera sekwencję działań, w których każde działanie wykonuje określoną operację przetwarzania. W tym artykule opisano **działanie U-SQL analizy usługi Data Lake Analytics,** która uruchamia skrypt **U-SQL** w połączonej usłudze obliczeniowej **usługi Azure Data Lake Analytics.** 
 
-Utwórz konto Azure Data Lake Analytics przed utworzeniem potoku za pomocą Data Lake Analytics działania U-SQL. Aby dowiedzieć się więcej na temat Azure Data Lake Analytics, zobacz Rozpoczynanie [pracy z Azure Data Lake Analytics](../data-lake-analytics/data-lake-analytics-get-started-portal.md).
+Utwórz konto usługi Azure Data Lake Analytics przed utworzeniem potoku z aktywność U-SQL analizy usługi Data Lake Analytics. Aby dowiedzieć się więcej o usłudze Azure Data Lake Analytics, zobacz [Wprowadzenie do usługi Azure Data Lake Analytics](../data-lake-analytics/data-lake-analytics-get-started-portal.md).
 
 
-## <a name="azure-data-lake-analytics-linked-service"></a>Azure Data Lake Analytics połączona usługa
-Tworzysz **Azure Data Lake Analytics** połączonej usługi, aby połączyć usługę obliczeniową Azure Data Lake Analytics z fabryką danych Azure. Działanie Data Lake Analytics U-SQL w potoku odwołuje się do tej połączonej usługi. 
+## <a name="azure-data-lake-analytics-linked-service"></a>Usługa połączona z usługą Azure Data Lake Analytics
+Utwórz usługę połączony **usługi Usługi Azure Data Lake Analytics,** aby połączyć usługę obliczeniową usługi Azure Data Lake Analytics z fabryką danych platformy Azure. Działanie U-SQL usługi Data Lake Analytics w potoku odnosi się do tej połączonej usługi. 
 
-Poniższa tabela zawiera opis właściwości ogólnych używanych w definicji JSON. 
+Poniższa tabela zawiera opisy właściwości ogólnych używanych w definicji JSON. 
 
-| Właściwość                 | Opis                              | Wymagane                                 |
+| Właściwość                 | Opis                              | Wymagany                                 |
 | ------------------------ | ---------------------------------------- | ---------------------------------------- |
-| **type**                 | Właściwość Type powinna mieć wartość: **AzureDataLakeAnalytics**. | Tak                                      |
-| **accountName**          | Nazwa konta Azure Data Lake Analytics.  | Tak                                      |
-| **dataLakeAnalyticsUri** | Azure Data Lake Analytics identyfikator URI.           | Nie                                       |
-| **Identyfikator**       | Identyfikator subskrypcji platformy Azure                    | Nie                                       |
-| **resourceGroupName**    | Nazwa grupy zasobów platformy Azure                | Nie                                       |
+| **Typu**                 | Właściwość typu powinna być ustawiona na: **AzureDataLakeAnalytics**. | Tak                                      |
+| **Accountname**          | Nazwa konta usługi Azure Data Lake Analytics.  | Tak                                      |
+| **dataLakeAnalyticsUri** | Identyfikator URI usługi Azure Data Lake Analytics.           | Nie                                       |
+| **Subscriptionid**       | Identyfikator subskrypcji platformy Azure                    | Nie                                       |
+| **nazwa grupy zasobów**    | Nazwa grupy zasobów platformy Azure                | Nie                                       |
 
 ### <a name="service-principal-authentication"></a>Uwierzytelnianie jednostki usługi
-Połączona usługa Azure Data Lake Analytics wymaga uwierzytelniania jednostki usługi w celu nawiązania połączenia z usługą Azure Data Lake Analytics. Aby skorzystać z uwierzytelniania jednostki usługi, zarejestruj jednostkę aplikacji w Azure Active Directory (Azure AD) i Udziel jej dostępu zarówno do Data Lake Analytics, jak i Data Lake Store. Aby uzyskać szczegółowe instrukcje, zobacz [Service-to-service authentication](../data-lake-store/data-lake-store-authenticate-using-active-directory.md). Zanotuj następujące wartości, które służą do definiowania połączonej usługi:
+Usługa połączona usługi Azure Data Lake Analytics wymaga uwierzytelniania głównego usługi, aby połączyć się z usługą Azure Data Lake Analytics. Aby użyć uwierzytelniania jednostki usługi, zarejestruj jednostkę aplikacji w usłudze Azure Active Directory (Azure AD) i udziel jej dostępu zarówno do usługi Data Lake Analytics, jak i do używanego magazynu usługi Data Lake. Aby uzyskać szczegółowe kroki, zobacz [Uwierzytelnianie usługi do usługi](../data-lake-store/data-lake-store-authenticate-using-active-directory.md). Zanotuj następujące wartości, których używasz do definiowania połączonej usługi:
 
 * Identyfikator aplikacji
 * Klucz aplikacji 
 * Identyfikator dzierżawy
 
-Udziel uprawnienia nazwy głównej usługi do Azure Data Lake anatlyics za pomocą [Kreatora dodawania użytkownika](../data-lake-analytics/data-lake-analytics-manage-use-portal.md#add-a-new-user).
+Udziel uprawnień jednostki usługi do usługi Azure Data Lake Anatlyics za pomocą [Kreatora dodawania użytkownika.](../data-lake-analytics/data-lake-analytics-manage-use-portal.md#add-a-new-user)
 
-Użyj uwierzytelniania nazwy głównej usługi, określając następujące właściwości:
+Użyj uwierzytelniania głównego usługi, określając następujące właściwości:
 
-| Właściwość                | Opis                              | Wymagane |
+| Właściwość                | Opis                              | Wymagany |
 | :---------------------- | :--------------------------------------- | :------- |
 | **servicePrincipalId**  | Określ identyfikator klienta aplikacji.     | Tak      |
 | **servicePrincipalKey** | Określ klucz aplikacji.           | Tak      |
-| **tenant**              | Określ informacje dzierżawy (identyfikator nazwy lub dzierżawy domeny), w którym znajduje się aplikacja. Można je pobrać, ustawiając kursor myszy w prawym górnym rogu witryny Azure portal. | Tak      |
+| **Dzierżawy**              | Określ informacje o dzierżawie (nazwa domeny lub identyfikator dzierżawy), w którym znajduje się aplikacja. Można go pobrać, najeżdżając myszą w prawym górnym rogu witryny Azure portal. | Tak      |
 
-**Przykład: Uwierzytelnianie jednostki usługi**
+**Przykład: uwierzytelnianie jednostki usługi**
 ```json
 {
     "name": "AzureDataLakeAnalyticsLinkedService",
@@ -85,10 +85,10 @@ Użyj uwierzytelniania nazwy głównej usługi, określając następujące wła�
 }
 ```
 
-Aby dowiedzieć się więcej na temat połączonej usługi, zobacz [połączone usługi obliczeniowe](compute-linked-services.md).
+Aby dowiedzieć się więcej o połączonej usłudze, zobacz [Obliczenie połączonych usług](compute-linked-services.md).
 
 ## <a name="data-lake-analytics-u-sql-activity"></a>Działania języka U-SQL usługi Data Lake Analytics
-Poniższy fragment kodu JSON definiuje potok z działaniem Data Lake Analytics U-SQL. Definicja działania zawiera odwołanie do utworzonej wcześniej połączonej usługi Azure Data Lake Analytics. Aby wykonać Data Lake Analytics skrypt U-SQL, Data Factory przesyła skrypt określony do Data Lake Analytics, a wymagane dane wejściowe i wyjściowe są zdefiniowane w skrypcie dla Data Lake Analytics do pobrania i wygenerowania danych wyjściowych. 
+Poniższy fragment kodu JSON definiuje potok z działaniem U-SQL analizy usługi Data Lake Analytics. Definicja działania ma odwołanie do usługi połączonej usługi Usługi Azure Data Lake Analytics utworzonej wcześniej. Aby wykonać skrypt U-SQL usługi Data Lake Analytics, usługa Data Factory przesyła skrypt określony do usługi Data Lake Analytics, a wymagane dane wejściowe i wyjściowe są zdefiniowane w skrypcie dla usługi Data Lake Analytics w celu pobrania i danych wyjściowych. 
 
 ```json
 {
@@ -117,21 +117,21 @@ Poniższy fragment kodu JSON definiuje potok z działaniem Data Lake Analytics U
 
 W poniższej tabeli opisano nazwy i opisy właściwości, które są specyficzne dla tego działania. 
 
-| Właściwość            | Opis                              | Wymagane |
+| Właściwość            | Opis                              | Wymagany |
 | :------------------ | :--------------------------------------- | :------- |
 | name                | Nazwa działania w potoku     | Tak      |
-| description         | Tekst opisujący działanie działania.  | Nie       |
-| type                | W przypadku Data Lake Analytics działania U-SQL typ działania to **DataLakeAnalyticsU-SQL**. | Tak      |
-| linkedServiceName   | Połączona usługa do Azure Data Lake Analytics. Aby dowiedzieć się więcej o tej połączonej usłudze, zobacz artykuł dotyczący [połączonych usług obliczeniowych](compute-linked-services.md) .  |Tak       |
-| scriptPath          | Ścieżka do folderu, który zawiera skrypt U-SQL. Nazwa pliku jest rozróżniana wielkość liter. | Tak      |
-| scriptLinkedService | Połączona usługa łącząca **Azure Data Lake Store** lub **Magazyn platformy Azure** , który zawiera skrypt do fabryki danych | Tak      |
-| degreeOfParallelism | Maksymalna liczba węzłów jednocześnie używanych do uruchomienia zadania. | Nie       |
-| priority            | Określa, które zadania z wszystkich znajdujących się w kolejce powinny zostać wybrane do uruchomienia jako pierwsze. Im niższa wartość, tym wyższy priorytet. | Nie       |
+| description         | Tekst opisujący działanie.  | Nie       |
+| type                | W przypadku aktywności U-SQL usługi Data Lake Analytics typem działania jest **DataLakeAnalyticsU-SQL**. | Tak      |
+| linkedServiceName   | Usługa połączona z usługą Azure Data Lake Analytics. Aby dowiedzieć się więcej o tej połączonej usłudze, zobacz Artykuł [dotyczący powiązanych usług obliczeń.](compute-linked-services.md)  |Tak       |
+| scriptPath          | Ścieżka do folderu zawierającego skrypt U-SQL. W nazwie pliku jest rozróżniana wielkość liter. | Tak      |
+| scriptLinkedService | Połączona usługa łącząca **magazyn usługi Azure Data Lake Store** lub usługę Azure **Storage** zawierającą skrypt z fabryką danych | Tak      |
+| stopieńParalelizm | Maksymalna liczba węzłów jednocześnie używanych do uruchamiania zadania. | Nie       |
+| priority            | Określa, które zadania ze wszystkich, które są w kolejce, powinny być wybrane do uruchomienia jako pierwsze. Im mniejsza liczba, tym wyższy priorytet. | Nie       |
 | parameters          | Parametry do przekazania do skryptu U-SQL.    | Nie       |
-| runtimeVersion      | Wersja środowiska uruchomieniowego aparatu U-SQL do użycia. | Nie       |
-| kompilacjamode     | <p>Tryb kompilacji języka U-SQL. Musi mieć jedną z następujących wartości: **semantyka:** wykonaj tylko testy semantyczne i niezbędne kontrole Sanity, **pełne:** wykonaj pełną kompilację, w tym sprawdzanie składni, optymalizację, generowanie kodu itp., **SingleBox:** wykonaj pełną kompilację z ustawieniem TargetType na SingleBox. Jeśli nie określisz wartości tej właściwości, serwer określi tryb optymalnej kompilacji. | Nie |
+| wersja runtimeVersion      | Wersja runtime aparatu U-SQL do użycia. | Nie       |
+| kompilacjaMode     | <p>Tryb kompilacji U-SQL. Musi być jedną z następujących wartości: **Semantyczne:** Tylko wykonać kontrole semantyczne i niezbędne testy poczytalności, **Pełna:** Wykonaj pełną kompilację, w tym sprawdzanie składni, optymalizacja, generowanie kodu, itp., **SingleBox:** Wykonaj pełną kompilację, z targettype ustawienie SingleBox. Jeśli nie określisz wartości dla tej właściwości, serwer określa tryb kompilacji optymalne. | Nie |
 
-Zobacz [SearchLogProcessing. txt](#sample-u-sql-script) , aby zapoznać się z definicją skryptu. 
+Definicję skryptu można znaleźć w [pliku SearchLogProcessing.txt.](#sample-u-sql-script) 
 
 ## <a name="sample-u-sql-script"></a>Przykładowy skrypt U-SQL
 
@@ -162,12 +162,12 @@ OUTPUT @rs1
       USING Outputters.Tsv(quoting:false, dateTimeFormat:null);
 ```
 
-W powyższym przykładzie skryptu dane wejściowe i wyjściowe do skryptu są zdefiniowane w **\@w** i **\@parametry out** . Wartości **\@w** i\@parametry **out** w skrypcie U-SQL są przesyłane dynamicznie przez Data Factory przy użyciu sekcji "Parameters". 
+W powyższym przykładzie skryptu dane wejściowe i wyjściowe do skryptu jest zdefiniowany ** \@w** i ** \@obecnie** parametrów. Wartości parametrów ** \@in** i ** \@out** w skrypcie U-SQL są przekazywane dynamicznie przez usługę Data Factory przy użyciu sekcji "parametry". 
 
-Można określić inne właściwości, takie jak degreeOfParallelism i Priority, jak również w definicji potoku dla zadań uruchamianych w usłudze Azure Data Lake Analytics.
+Można określić inne właściwości, takie jak stopieńParallelism i priorytet, a także w definicji potoku dla zadań, które są uruchamiane w usłudze Azure Data Lake Analytics.
 
 ## <a name="dynamic-parameters"></a>Parametry dynamiczne
-W definicji potoku przykładowego parametry in i out są przypisywane z ustalonymi wartościami. 
+W definicji potoku próbki parametry in i out są przypisywane z wartościami zakodowanych na czas. 
 
 ```json
 "parameters": {
@@ -176,7 +176,7 @@ W definicji potoku przykładowego parametry in i out są przypisywane z ustalony
 }
 ```
 
-Zamiast tego można użyć parametrów dynamicznych. Na przykład: 
+Zamiast tego można użyć parametrów dynamicznych. Przykład: 
 
 ```json
 "parameters": {
@@ -185,16 +185,16 @@ Zamiast tego można użyć parametrów dynamicznych. Na przykład:
 }
 ```
 
-W takim przypadku pliki wejściowe są nadal pobierane z folderu/datalake/Input, a pliki wyjściowe są generowane w folderze/datalake/Output. Nazwy plików są dynamiczne na podstawie czasu rozpoczęcia okna, gdy zostanie wyzwolone potoku.  
+W takim przypadku pliki wejściowe są nadal pobierane z folderu /datalake/input, a pliki wyjściowe są generowane w folderze /datalake/output. Nazwy plików są dynamiczne na podstawie czasu rozpoczęcia okna przekazywane w momencie wyzwalania potoku.  
 
 ## <a name="next-steps"></a>Następne kroki
-Zapoznaj się z następującymi artykułami, które wyjaśniają sposób przekształcania danych w inny sposób: 
+Zobacz następujące artykuły, które wyjaśniają, jak przekształcać dane w inny sposób: 
 
-* [Działanie Hive](transform-data-using-hadoop-hive.md)
-* [Aktywność trzody chlewnej](transform-data-using-hadoop-pig.md)
-* [Działanie MapReduce](transform-data-using-hadoop-map-reduce.md)
-* [Działanie przesyłania strumieniowego Hadoop](transform-data-using-hadoop-streaming.md)
-* [Działanie platformy Spark](transform-data-using-spark.md)
+* [Aktywność gałęzi](transform-data-using-hadoop-hive.md)
+* [Aktywność świń](transform-data-using-hadoop-pig.md)
+* [Działanie mapreduce](transform-data-using-hadoop-map-reduce.md)
+* [Aktywność w serwisie Hadoop Streaming](transform-data-using-hadoop-streaming.md)
+* [Aktywność iskierki](transform-data-using-spark.md)
 * [Niestandardowe działanie platformy .NET](transform-data-using-dotnet-custom-activity.md)
-* [Działanie wykonywania wsadowego Machine Learning](transform-data-using-machine-learning.md)
+* [Działanie wsadowe uczenia maszynowego](transform-data-using-machine-learning.md)
 * [Działanie procedury składowanej](transform-data-using-stored-procedure.md)

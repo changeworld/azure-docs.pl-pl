@@ -1,6 +1,6 @@
 ---
-title: Zabezpieczenia Azure Data Box Edge | Microsoft Docs
-description: Opisuje funkcje zabezpieczeń i ochrony prywatności, które chronią urządzenie Azure Data Box Edge, usługę i dane lokalnie i w chmurze.
+title: Zabezpieczenia usługi Azure Data Box Edge | Dokumenty firmy Microsoft
+description: W tym artykule opisano funkcje zabezpieczeń i prywatności, które chronią urządzenie, usługę i dane usługi Azure Data Box Edge lokalnie i w chmurze.
 services: Data Box Edge
 author: alkohli
 ms.service: databox
@@ -9,89 +9,89 @@ ms.topic: article
 ms.date: 08/21/2019
 ms.author: alkohli
 ms.openlocfilehash: 375576dd4a7897c48474fd2af00a99084292d854
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "69970880"
 ---
-# <a name="azure-data-box-edge-security-and-data-protection"></a>Azure Data Box Edge zabezpieczenia i ochrona danych
+# <a name="azure-data-box-edge-security-and-data-protection"></a>Azure Data Box Edge security and data protection (Zabezpieczenia i ochrona danych w usłudze Azure Data Box Edge)
 
-Bezpieczeństwo jest ważnym problemem w przypadku przyjęcia nowej technologii, szczególnie jeśli technologia jest używana z danymi poufnymi lub zastrzeżonymi. Azure Data Box Edge pomaga upewnić się, że tylko autoryzowane jednostki mogą wyświetlać, modyfikować i usuwać dane.
+Bezpieczeństwo jest poważnym problemem, gdy przyjmujesz nową technologię, zwłaszcza jeśli technologia ta jest używana z poufnymi lub zastrzeżonymi danymi. Usługa Azure Data Box Edge pomaga zapewnić, że tylko autoryzowane jednostki mogą wyświetlać, modyfikować lub usuwać dane.
 
-W tym artykule opisano funkcje zabezpieczeń Data Box Edge chroniące poszczególne składniki rozwiązań i przechowywane w nich dane.
+W tym artykule opisano funkcje zabezpieczeń usługi Data Box Edge, które pomagają chronić każdy ze składników rozwiązania i przechowywane w nich dane.
 
-Azure Data Box Edge obejmuje cztery główne składniki, które współpracują ze sobą:
+Usługa Azure Data Box Edge składa się z czterech głównych składników, które współdziałają ze sobą:
 
-- **Usługa Data Box Edge hostowana na platformie Azure**. Zasób zarządzania służący do tworzenia kolejności urządzeń, konfigurowania urządzenia, a następnie śledzenia kolejności do ukończenia.
-- **Data Box Edge urządzenia**. Urządzenie transferowe, które jest wysyłane do Ciebie, aby można było zaimportować dane lokalne na platformę Azure.
-- **Klienci/hosty połączeni z urządzeniem**. Klienci w infrastrukturze, którzy łączą się z urządzeniem Data Box Edge i zawierają dane, które muszą być chronione.
-- **Magazyn w chmurze**. Lokalizacja na platformie Azure w chmurze, w której są przechowywane dane. Ta lokalizacja jest zazwyczaj kontem magazynu połączonym z tworzonym zasobem Data Box Edge.
+- **Usługa Data Box Edge, hostowana na platformie Azure**. Zasób zarządzania używany do tworzenia zamówienia urządzenia, konfigurowania urządzenia, a następnie śledzenia zamówienia do zakończenia.
+- **Urządzenie Data Box Edge**. Urządzenie transferu, które jest wysyłane do Ciebie, dzięki czemu można zaimportować dane lokalne na platformę Azure.
+- **Klienci/hosty podłączone do urządzenia**. Klienci w infrastrukturze, które łączą się z urządzeniem Data Box Edge i zawierają dane, które muszą być chronione.
+- **Przechowywanie w chmurze**. Lokalizacja na platformie chmurowej platformy Azure, na której przechowywane są dane. Ta lokalizacja jest zazwyczaj kontem magazynu połączonym z utworzonym zasobem Data Box Edge.
 
-## <a name="data-box-edge-service-protection"></a>Data Box Edge ochronę usługi
+## <a name="data-box-edge-service-protection"></a>Ochrona usługi Data Box Edge
 
 Usługa Data Box Edge to usługa zarządzania hostowana na platformie Azure. Usługa służy do konfigurowania urządzenia i zarządzania nim.
 
 [!INCLUDE [data-box-edge-gateway-data-rest](../../includes/data-box-edge-gateway-service-protection.md)]
 
-## <a name="data-box-edge-device-protection"></a>Data Box Edge ochrony urządzeń
+## <a name="data-box-edge-device-protection"></a>Ochrona urządzeń Data Box Edge
 
-Urządzenie Data Box Edge jest urządzeniem lokalnym, które pomaga przekształcić dane, przetwarzając je lokalnie, a następnie wysyłając je na platformę Azure. Twoje urządzenie:
+Urządzenie data box edge to urządzenie lokalne, które pomaga przekształcać dane, przetwarzając je lokalnie, a następnie wysyłając je na platformę Azure. Urządzenie:
 
-- Wymaga klucza aktywacji w celu uzyskania dostępu do usługi Data Box Edge.
-- Jest chronione przez cały czas przy użyciu hasła urządzenia.
-- Jest urządzeniem zablokowanym. Kontroler BMC i system BIOS urządzenia są chronione hasłem. System BIOS jest chroniony przez ograniczony dostęp użytkownika.
+- Potrzebuje klucza aktywacyjnego, aby uzyskać dostęp do usługi Data Box Edge.
+- Jest zawsze chroniony hasłem urządzenia.
+- Jest urządzeniem zablokowanym. Urządzenie BMC i BIOS są chronione hasłem. System BIOS jest chroniony przez ograniczony dostęp użytkownika.
 - Ma włączony bezpieczny rozruch.
-- Uruchamia funkcję Windows Defender Device Guard. Funkcja Device Guard pozwala uruchamiać tylko zaufane aplikacje zdefiniowane w ramach zasad integralności kodu.
+- Uruchamia osłonę urządzenia usługi Windows Defender. Device Guard umożliwia uruchamianie tylko zaufanych aplikacji zdefiniowanych w zasadach integralności kodu.
 
-### <a name="protect-the-device-via-activation-key"></a>Ochrona urządzenia za pomocą klucza aktywacji
+### <a name="protect-the-device-via-activation-key"></a>Chroń urządzenie za pomocą klucza aktywacyjnego
 
-Tylko autoryzowane urządzenie Data Box Edge może przyłączyć się do usługi Data Box Edge utworzonej w ramach subskrypcji platformy Azure. Aby autoryzować urządzenie, należy użyć klucza aktywacji w celu aktywowania urządzenia za pomocą usługi Data Box Edge.
+Tylko autoryzowane urządzenie data box edge może dołączyć do usługi Data Box Edge utworzonej w ramach subskrypcji platformy Azure. Aby autoryzować urządzenie, musisz użyć klucza aktywacyjnego, aby aktywować urządzenie za pomocą usługi Data Box Edge.
 
 [!INCLUDE [data-box-edge-gateway-data-rest](../../includes/data-box-edge-gateway-activation-key.md)]
 
-Aby uzyskać więcej informacji, zobacz [Uzyskiwanie klucza aktywacji](data-box-edge-deploy-prep.md#get-the-activation-key).
+Aby uzyskać więcej informacji, zobacz [Pobierz klucz aktywacyjny](data-box-edge-deploy-prep.md#get-the-activation-key).
 
-### <a name="protect-the-device-via-password"></a>Ochrona urządzenia za pomocą hasła
+### <a name="protect-the-device-via-password"></a>Chroń urządzenie za pomocą hasła
 
-Hasła zapewniają, że dostęp do danych mają tylko autoryzowani użytkownicy. Data Box Edge urządzenia są uruchamiane w stanie zablokowanym.
+Hasła zapewniają dostęp tylko autoryzowanym użytkownikom do twoich danych. Urządzenia Data Box Edge uruchamiają się w stanie zablokowanym.
 
 Możesz:
 
-- Połącz się z lokalnym interfejsem użytkownika sieci Web urządzenia za pośrednictwem przeglądarki, a następnie podaj hasło, aby zalogować się na urządzeniu.
-- Zdalne łączenie się z interfejsem PowerShell urządzenia za pośrednictwem protokołu HTTP. Zdalne zarządzanie jest domyślnie włączone. Następnie można podać hasło urządzenia, aby zalogować się na urządzeniu. Aby uzyskać więcej informacji, zobacz [zdalne łączenie z urządzeniem Data Box Edge](data-box-edge-connect-powershell-interface.md#connect-to-the-powershell-interface).
+- Połącz się z lokalnym internetowym interfejsem użytkownika urządzenia za pośrednictwem przeglądarki, a następnie podaj hasło, aby zalogować się do urządzenia.
+- Zdalnie połącz się z interfejsem programu PowerShell urządzenia za pośrednictwem protokołu HTTP. Zarządzanie zdalne jest domyślnie włączone. Następnie możesz podać hasło urządzenia, aby zalogować się do urządzenia. Aby uzyskać więcej informacji, zobacz [Łączenie zdalnie z urządzeniem Data Box Edge](data-box-edge-connect-powershell-interface.md#connect-to-the-powershell-interface).
 
 [!INCLUDE [data-box-edge-gateway-data-rest](../../includes/data-box-edge-gateway-password-best-practices.md)]
-- [Zmień hasło](data-box-edge-manage-access-power-connectivity-mode.md#manage-device-access)przy użyciu lokalnego interfejsu użytkownika sieci Web. Jeśli zmienisz hasło, upewnij się, że wszyscy użytkownicy dostępu zdalnego nie mają problemów z logowaniem.
+- Użyj lokalnego interfejsu użytkownika sieci Web, aby [zmienić hasło](data-box-edge-manage-access-power-connectivity-mode.md#manage-device-access). Jeśli zmienisz hasło, pamiętaj, aby powiadomić wszystkich użytkowników dostępu zdalnego, aby nie mieli problemów z zalogowaniem się.
 
-## <a name="protect-your-data"></a>Ochrona Twoich danych
+## <a name="protect-your-data"></a>Ochrona danych
 
-W tej sekcji opisano funkcje zabezpieczeń Data Box Edge chroniące dane przesyłane w trakcie przesyłania i przechowywania.
+W tej sekcji opisano funkcje zabezpieczeń usługi Data Box Edge, które chronią dane przesyłane i przechowywane.
 
 ### <a name="protect-data-at-rest"></a>Ochrona danych magazynowanych
 
 [!INCLUDE [data-box-edge-gateway-data-rest](../../includes/data-box-edge-gateway-data-rest.md)]
-- Funkcja BitLocker XTS-AES 256-bitowe szyfrowanie jest używane do ochrony danych lokalnych.
+- 256-bitowe szyfrowanie bitlocker XTS-AES służy do ochrony danych lokalnych.
 
 
-### <a name="protect-data-in-flight"></a>Ochrona danych w locie
+### <a name="protect-data-in-flight"></a>Ochrona danych podczas lotu
 
 [!INCLUDE [data-box-edge-gateway-data-rest](../../includes/data-box-edge-gateway-data-flight.md)]
 
-### <a name="protect-data-via-storage-accounts"></a>Ochrona danych za pomocą kont magazynu
+### <a name="protect-data-via-storage-accounts"></a>Ochrona danych za pośrednictwem kont magazynu
 
 [!INCLUDE [data-box-edge-gateway-data-rest](../../includes/data-box-edge-gateway-protect-data-storage-accounts.md)]
-- Regularnie Obróć i [Synchronizuj klucze konta magazynu](data-box-edge-manage-shares.md#sync-storage-keys) , aby chronić konto magazynu przed nieautoryzowanymi użytkownikami.
+- Regularnie obracaj, a następnie [synchronizuj klucze konta magazynu,](data-box-edge-manage-shares.md#sync-storage-keys) aby chronić swoje konto magazynu przed nieautoryzowanymi użytkownikami.
 
-## <a name="manage-personal-information"></a>Zarządzanie informacjami osobistymi
+## <a name="manage-personal-information"></a>Zarządzanie informacjami osobowymi
 
 Usługa Data Box Edge zbiera informacje osobiste w następujących scenariuszach:
 
 [!INCLUDE [data-box-edge-gateway-data-rest](../../includes/data-box-edge-gateway-manage-personal-data.md)]
 
-Aby wyświetlić listę użytkowników, którzy mogą uzyskać dostęp do udziału lub go usunąć, wykonaj kroki opisane w sekcji [Zarządzanie udziałami na Data Box Edge](data-box-edge-manage-shares.md).
+Aby wyświetlić listę użytkowników, którzy mogą uzyskiwać dostęp do udziału lub go usuwać, wykonaj czynności opisane w [polu Zarządzanie udziałami na krawędzi pola danych](data-box-edge-manage-shares.md).
 
-Aby uzyskać więcej informacji, zapoznaj się z zasadami ochrony prywatności firmy Microsoft w [Centrum zaufania](https://www.microsoft.com/trustcenter).
+Aby uzyskać więcej informacji, zapoznaj się z zasadami zachowania poufności firmy Microsoft w [Centrum zaufania](https://www.microsoft.com/trustcenter).
 
 ## <a name="next-steps"></a>Następne kroki
 

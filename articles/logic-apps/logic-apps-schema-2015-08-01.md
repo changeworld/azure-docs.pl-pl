@@ -1,6 +1,6 @@
 ---
-title: Aktualizacje schematu dla wersji zapoznawczej sierpnia 1-2015
-description: Zaktualizowano wersję schematu 2015-08-01-Preview dla definicji aplikacji logiki w Azure Logic Apps
+title: Aktualizacje schematu dla wersji zapoznawczej sierpień-1-2015
+description: Zaktualizowano wersję schematu 2015-08-01-preview dla definicji aplikacji logiki w usłudze Azure Logic Apps
 services: logic-apps
 ms.suite: integration
 author: kevinlam1
@@ -9,39 +9,39 @@ ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 05/31/2016
 ms.openlocfilehash: b6746baaede777eb8c2afcae9eb3fe80b669c468
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74792842"
 ---
-# <a name="schema-updates-for-azure-logic-apps---august-1-2015-preview"></a>Aktualizacje schematu dla Azure Logic Apps — 1 sierpnia 2015 wersja zapoznawcza
+# <a name="schema-updates-for-azure-logic-apps---august-1-2015-preview"></a>Aktualizacje schematu dla aplikacji logiki azure — wersja zapoznawcza z 1 sierpnia 2015 r.
 
-Ten schemat i wersja interfejsu API dla Azure Logic Apps obejmują kluczowe udoskonalenia, dzięki którym Aplikacje logiki są bardziej niezawodne i łatwiejsze w użyciu:
+Ten schemat i wersja interfejsu API dla usługi Azure Logic Apps zawiera kluczowe ulepszenia, które sprawiają, że aplikacje logiki są bardziej niezawodne i łatwiejsze w użyciu:
 
-* Typ akcji **APIApp** ma teraz nazwę [**APIConnection**](#api-connections).
-* Akcja **powtarzania** jest teraz nazywana [**foreach**](#foreach).
-* [Aplikacja interfejsu API **odbiornika http** ](#http-listener) nie jest już wymagana.
+* Typ akcji **APIApp** nosi teraz nazwę [**APIConnection**](#api-connections).
+* Akcja **Powtórz** ma teraz nazwę [**Foreach**](#foreach).
+* Aplikacja interfejsu API [ **odbiornika HTTP** ](#http-listener) nie jest już wymagana.
 * Wywoływanie podrzędnych przepływów pracy używa [nowego schematu](#child-workflows).
 
 <a name="api-connections"></a>
 
-## <a name="move-to-api-connections"></a>Przenieś do połączeń interfejsu API
+## <a name="move-to-api-connections"></a>Przechodzenie do połączeń interfejsu API
 
-Największą zmianą jest to, że nie trzeba już wdrażać API Apps w ramach subskrypcji platformy Azure, aby można było używać interfejsów API. Poniżej przedstawiono sposoby używania interfejsów API:
+Największą zmianą jest to, że nie trzeba już wdrażać aplikacji interfejsu API w ramach subskrypcji platformy Azure, dzięki czemu można używać interfejsów API. Oto sposoby używania interfejsów API:
 
 * Zarządzane interfejsy API
 * Niestandardowe interfejsy API sieci Web
 
-Każdy sposób jest obsługiwany nieco inaczej, ponieważ ich modele zarządzania i hostingu są różne. Jedną z zalet tego modelu jest już ograniczenie zasobów wdrożonych w grupie zasobów platformy Azure. 
+Każdy sposób jest traktowany nieco inaczej, ponieważ ich modele zarządzania i hostingu są różne. Jedną z zalet tego modelu jest nie jesteś już ograniczona do zasobów, które są wdrażane w grupie zasobów platformy Azure. 
 
 ### <a name="managed-apis"></a>Zarządzane interfejsy API
 
-Firma Microsoft zarządza niektórymi interfejsami API w Twoim imieniu, takimi jak Office 365, Salesforce, Twitter i FTP. Niektóre zarządzane interfejsy API można używać w taki sam sposób, jak w przypadku funkcji tłumaczenia Bing, a inne wymagają konfiguracji, nazywanej również *połączeniem*.
+Firma Microsoft zarządza niektórymi interfejsami API w Twoim imieniu, takimi jak Office 365, Salesforce, Twitter i FTP. Można użyć niektórych zarządzanych interfejsów API w stanie takim, w jakim jest, takich jak Tłumacz Bing, podczas gdy inne wymagają konfiguracji, zwanej również *połączeniem*.
 
-Na przykład w przypadku korzystania z pakietu Office 365 należy utworzyć połączenie zawierające token logowania pakietu Office 365. Token jest bezpiecznie przechowywany i odświeżany, dzięki czemu aplikacja logiki zawsze może wywoływać interfejs API pakietu Office 365. Jeśli chcesz nawiązać połączenie z serwerem SQL lub FTP, musisz utworzyć połączenie z parametrami połączenia. 
+Na przykład podczas korzystania z usługi Office 365 należy utworzyć połączenie, które zawiera token logowania usługi Office 365. Token jest bezpiecznie przechowywany i odświeżany, dzięki czemu aplikacja logiki zawsze może wywołać interfejs API usługi Office 365. Jeśli chcesz połączyć się z serwerem SQL lub FTP, należy utworzyć połączenie, które ma parametry połączenia. 
 
-W tej definicji te działania są nazywane `APIConnection`. Oto przykład połączenia, które wywołuje pakiet Office 365 w celu wysłania wiadomości e-mail:
+W tej definicji te `APIConnection`akcje są nazywane . Oto przykład połączenia, które wywołuje w usłudze Office 365 wysyłanie wiadomości e-mail:
 
 ``` json
 {
@@ -70,20 +70,20 @@ W tej definicji te działania są nazywane `APIConnection`. Oto przykład połą
 }
 ```
 
-Obiekt `host` jest częścią danych wejściowych, które są unikatowe dla połączeń interfejsu API i zawiera te części: `api` i `connection`. Obiekt `api` określa adres URL środowiska uruchomieniowego dla miejsca, w którym jest hostowany zarządzany interfejs API. Aby wyświetlić wszystkie dostępne zarządzane interfejsy API, należy wywołać tę metodę:
+Obiekt `host` jest częścią danych wejściowych, która jest unikatowa dla połączeń `api` `connection`interfejsu API i zawiera następujące części: i . Obiekt `api` określa adres URL środowiska wykonawczego, w którym znajduje się zarządzany interfejs API. Wszystkie dostępne zarządzane interfejsy API można wyświetlić, wywołując tę metodę:
 
 ```text
 GET https://management.azure.com/subscriptions/<Azure-subscription-ID>/providers/Microsoft.Web/locations/<location>/managedApis?api-version=2015-08-01-preview
 ```
 
-W przypadku korzystania z interfejsu API, ten interfejs API może lub nie zdefiniował żadnych *parametrów połączenia*. Dlatego, jeśli interfejs API nie definiuje tych parametrów, połączenie nie jest wymagane. Jeśli interfejs API definiuje te parametry, należy utworzyć połączenie z określoną nazwą.  
-Następnie należy odwołać się do tej nazwy w obiekcie `connection` wewnątrz obiektu `host`. Aby utworzyć połączenie w grupie zasobów, Wywołaj tę metodę:
+Podczas korzystania z interfejsu API ten interfejs API może lub nie został zdefiniowany przez *żadne parametry połączenia*. Tak więc jeśli interfejs API nie definiuje tych parametrów, nie jest wymagane połączenie. Jeśli interfejs API definiuje te parametry, należy utworzyć połączenie o określonej nazwie.  
+Następnie odwołać się `connection` do tej `host` nazwy w obiekcie wewnątrz obiektu. Aby utworzyć połączenie w grupie zasobów, należy wywołać tę metodę:
 
 ```text
 PUT https://management.azure.com/subscriptions/<Azure-subscription-ID>/resourceGroups/<Azure-resource-group-name>/providers/Microsoft.Web/connections/<name>?api-version=2015-08-01-preview
 ```
 
-Z następującą treścią:
+Z następującym ciałem:
 
 ``` json
 {
@@ -99,10 +99,10 @@ Z następującą treścią:
 }
 ```
 
-### <a name="deploy-managed-apis-in-an-azure-resource-manager-template"></a>Wdrażanie zarządzanych interfejsów API w szablonie Azure Resource Manager
+### <a name="deploy-managed-apis-in-an-azure-resource-manager-template"></a>Wdrażanie zarządzanych interfejsów API w szablonie usługi Azure Resource Manager
 
-Gdy logowanie interaktywne nie jest wymagane, można utworzyć pełną aplikację przy użyciu szablonu Menedżer zasobów.
-Jeśli jest wymagane logowanie, nadal możesz użyć szablonu Menedżer zasobów, ale musisz autoryzować połączenia za pomocą Azure Portal. 
+Jeśli logowanie interaktywne nie jest wymagane, możesz utworzyć pełną aplikację przy użyciu szablonu Menedżera zasobów.
+Jeśli logowanie jest wymagane, nadal można użyć szablonu Menedżera zasobów, ale musisz autoryzować połączenia za pośrednictwem witryny Azure portal. 
 
 ``` json
 "resources": [ {
@@ -192,13 +192,13 @@ Jeśli jest wymagane logowanie, nadal możesz użyć szablonu Menedżer zasobów
 } ]
 ```
 
-W tym przykładzie można zobaczyć, że połączenia są tylko zasobami, które znajdują się na żywo w grupie zasobów. Odwołują się do zarządzanych interfejsów API dostępnych w ramach subskrypcji.
+W tym przykładzie widać, że połączenia są tylko zasobami, które znajdują się w grupie zasobów. Odwołują się do zarządzanych interfejsów API dostępnych w ramach subskrypcji.
 
 ### <a name="your-custom-web-apis"></a>Niestandardowe interfejsy API sieci Web
 
-Jeśli używasz własnych interfejsów API, a nie zarządzanych przez firmę Microsoft, użyj wbudowanej akcji **http** do wywoływania interfejsów API. Najlepszym rozwiązaniem jest zapewnienie punktu końcowego struktury Swagger dla interfejsu API. Ten punkt końcowy ułatwia projektantowi aplikacji logiki wyświetlanie danych wejściowych i wyjściowych interfejsu API. Bez punktu końcowego struktury Swagger Projektant może wyświetlać tylko dane wejściowe i wyjściowe jako nieprzezroczyste obiekty JSON.
+Jeśli używasz własnych interfejsów API, a nie zarządzanych przez firmę Microsoft, użyj wbudowanej akcji **HTTP,** aby wywołać interfejsy API. W idealnym przypadku należy podać punkt końcowy Swagger dla interfejsu API. Ten punkt końcowy pomaga logic app designer pokazać dane wejściowe i wyjściowe interfejsu API. Bez punktu końcowego Swagger projektanta można wyświetlić tylko dane wejściowe i wyjściowe jako nieprzezroczyste obiekty JSON.
 
-Oto przykład przedstawiający nową właściwość `metadata.apiDefinitionUrl`:
+Oto przykład przedstawiający `metadata.apiDefinitionUrl` nową właściwość:
 
 ``` json
 "actions": {
@@ -215,12 +215,12 @@ Oto przykład przedstawiający nową właściwość `metadata.apiDefinitionUrl`:
 }
 ```
 
-Jeśli interfejs API sieci Web jest hostowany na Azure App Service, internetowy interfejs API zostanie automatycznie wyświetlony na liście akcji dostępnych w projektancie. Jeśli nie, musisz bezpośrednio wkleić adres URL. Punkt końcowy struktury Swagger musi być nieuwierzytelniony, aby można go było używać w Projektancie aplikacji logiki, chociaż można zabezpieczyć interfejs API za pomocą dowolnych metod obsługiwanych przez strukturę Swagger.
+Jeśli hostujesz interfejs API sieci Web w usłudze Azure App Service, interfejs API sieci Web jest automatycznie wyświetlany na liście akcji dostępnych w projektancie. Jeśli nie, musisz wkleić bezpośrednio adres URL. Punkt końcowy Swagger musi być nieuwierzyfowany do zastosowania w logice App Designer, chociaż można zabezpieczyć samego interfejsu API za pomocą metod, które obsługuje Swagger.
 
-### <a name="call-deployed-api-apps-with-2015-08-01-preview"></a>Wywołaj wdrożone aplikacje interfejsu API z 2015-08-01 — wersja zapoznawcza
+### <a name="call-deployed-api-apps-with-2015-08-01-preview"></a>Wywoływanie wdrożonych aplikacji interfejsu API z podglądem 2015-08-01
 
-Jeśli wcześniej wdrożono aplikację interfejsu API, można wywołać tę aplikację za pomocą akcji **http** .
-Na przykład jeśli używasz usługi Dropbox do wyświetlania plików, definicja wersji schematu **2014-12-01-Preview** może wyglądać następująco:
+Jeśli wcześniej wdrożono aplikację interfejsu API, możesz wywołać tę aplikację za pomocą akcji **HTTP.**
+Jeśli na przykład używasz Dropbox do wyświetlania plików, definicja wersji schematu **podglądu 2014-12-01** może mieć coś takiego:
 
 ``` json
 "definition": {
@@ -261,7 +261,7 @@ Na przykład jeśli używasz usługi Dropbox do wyświetlania plików, definicja
 }
 ```
 
-Teraz możesz teraz utworzyć podobną akcję HTTP i pozostawić sekcję `parameters` definicji aplikacji logiki bez zmian, na przykład:
+Teraz możesz teraz utworzyć podobną akcję HTTP i pozostawić `parameters` sekcję definicji aplikacji logiki bez zmian, na przykład:
 
 ``` json
 "actions": {
@@ -286,24 +286,24 @@ Teraz możesz teraz utworzyć podobną akcję HTTP i pozostawić sekcję `parame
 }
 ```
 
-Przechodzenie między tymi właściwościami jeden-do-jednego:
+Przechodzenie przez te właściwości jeden po drugim:
 
-| Akcja — Właściwość | Opis |
+| Właściwość akcji | Opis |
 | --- | --- |
-| `type` | `Http` zamiast `APIapp` |
-| `metadata.apiDefinitionUrl` | Aby użyć tej akcji w Projektancie aplikacji logiki, Dołącz punkt końcowy metadanych, który jest zbudowany z: `{api app host.gateway}/api/service/apidef/{last segment of the api app host.id}/?api-version=2015-01-14&format=swagger-2.0-standard` |
-| `inputs.uri` | Skonstruowane z: `{api app host.gateway}/api/service/invoke/{last segment of the api app host.id}/{api app operation}?api-version=2015-01-14` |
-| `inputs.method` | Zawsze `POST` |
-| `inputs.body` | Analogicznie jak parametry aplikacji interfejsu API |
-| `inputs.authentication` | Analogicznie jak uwierzytelnianie aplikacji interfejsu API |
+| `type` | `Http`Zamiast`APIapp` |
+| `metadata.apiDefinitionUrl` | Aby użyć tej akcji w logice App Designer, obejmują punkt końcowy metadanych, który jest zbudowany z:`{api app host.gateway}/api/service/apidef/{last segment of the api app host.id}/?api-version=2015-01-14&format=swagger-2.0-standard` |
+| `inputs.uri` | Wykonane z:`{api app host.gateway}/api/service/invoke/{last segment of the api app host.id}/{api app operation}?api-version=2015-01-14` |
+| `inputs.method` | Zawsze`POST` |
+| `inputs.body` | Tak samo jak parametry aplikacji interfejsu API |
+| `inputs.authentication` | Tak samo jak uwierzytelnianie aplikacji interfejsu API |
 
-Takie podejście powinno współpracować ze wszystkimi akcjami aplikacji interfejsu API. Należy jednak pamiętać, że te poprzednie API Apps nie są już obsługiwane. W związku z tym należy przejść do jednej z dwóch pozostałych opcji, zarządzanego interfejsu API lub hostowania niestandardowego interfejsu API sieci Web.
+Takie podejście powinno działać dla wszystkich akcji aplikacji interfejsu API. Należy jednak pamiętać, że te poprzednie aplikacje interfejsu API nie są już obsługiwane. Dlatego należy przejść do jednej z dwóch innych poprzednich opcji, zarządzanego interfejsu API lub hostowania niestandardowego interfejsu API sieci Web.
 
 <a name="foreach"></a>
 
-## <a name="renamed-repeat-to-foreach"></a>Zmieniono nazwę "Repeat" na "foreach"
+## <a name="renamed-repeat-to-foreach"></a>Zmieniono nazwę na "repeat" na "foreach"
 
-W przypadku poprzedniej wersji schematu firma Microsoft otrzymała wiele opinii od klientów, że Nazwa akcji **powtarzania** była myląca i nieprawidłowo przechwytuje, że **powtarzające** się to dla każdej pętli. Dlatego zmieniono nazwę `repeat` na `foreach`. Wcześniej napiszesz tę akcję, taką jak w tym przykładzie:
+W poprzedniej wersji schematu otrzymaliśmy wiele opinii klientów, że nazwa akcji **Powtórz** była myląca i nie poprawnie przechwyciła, że **repeat** był naprawdę dla każdej pętli. Tak, zmieniliśmy `repeat` `foreach`nazwę na . Wcześniej napisałeś tę akcję w tym przykładzie:
 
 ``` json
 "actions": {
@@ -318,7 +318,7 @@ W przypadku poprzedniej wersji schematu firma Microsoft otrzymała wiele opinii 
 }
 ```
 
-Teraz napiszesz tę wersję zamiast:
+Teraz chcesz napisać tę wersję zamiast:
 
 ``` json
 "actions": {
@@ -333,13 +333,13 @@ Teraz napiszesz tę wersję zamiast:
 }
 ```
 
-Ponadto zmieniono nazwę `item()`funkcji `repeatItem()`, która odwołuje się do elementu, który jest przetwarzany przez pętlę podczas bieżącej iteracji. 
+Ponadto `repeatItem()` funkcja, która odwołuje się do elementu, który przetwarza pętlę podczas bieżącej iteracji, jest teraz zmieniana `item()`. 
 
-### <a name="reference-outputs-from-foreach"></a>Odwołania do danych wyjściowych z instrukcji "foreach"
+### <a name="reference-outputs-from-foreach"></a>Wyjścia referencyjne z 'foreach'
 
-Dla uproszczenia dane wyjściowe z akcji `foreach` nie są już zawijane w obiekcie o nazwie `repeatItems`. Ponadto po wprowadzeniu tych zmian funkcje `repeatItem()`, `repeatBody()`i `repeatOutputs()` są usuwane.
+W celu uproszczenia `foreach` dane wyjściowe z akcji `repeatItems`nie są już zawijane w obiekt o nazwie . Ponadto, dzięki tym `repeatItem()`zmianom, , `repeatBody()`i `repeatOutputs()` funkcje są usuwane.
 
-Dlatego przy użyciu poprzedniego `repeat` przykładu uzyskasz następujące dane wyjściowe:
+Tak więc, `repeat` korzystając z poprzedniego przykładu, można uzyskać następujące dane wyjściowe:
 
 ``` json
 "repeatItems": [ {
@@ -356,7 +356,7 @@ Dlatego przy użyciu poprzedniego `repeat` przykładu uzyskasz następujące dan
 } ]
 ```
 
-Teraz uzyskasz następujące dane wyjściowe:
+Teraz zamiast tego otrzymujesz następujące wyjścia:
 
 ``` json
 [ {
@@ -373,7 +373,7 @@ Teraz uzyskasz następujące dane wyjściowe:
 } ]
 ```
 
-Wcześniej, aby uzyskać `body` z akcji podczas odwoływania się do tych danych wyjściowych:
+Wcześniej, aby uzyskać `body` z akcji podczas odwoływania się do tych wyjść:
 
 ``` json
 "actions": {
@@ -389,7 +389,7 @@ Wcześniej, aby uzyskać `body` z akcji podczas odwoływania się do tych danych
 }
 ```
 
-Teraz można użyć tej wersji:
+Teraz możesz użyć tej wersji:
 
 ``` json
 "actions": {
@@ -409,15 +409,15 @@ Teraz można użyć tej wersji:
 
 ## <a name="native-http-listener"></a>Natywny odbiornik HTTP
 
-Funkcje odbiornika HTTP są teraz wbudowane, więc nie trzeba wdrażać aplikacji interfejsu API odbiornika HTTP. Aby uzyskać więcej informacji, Dowiedz się, jak nawiązać [żądanie punktu końcowego aplikacji logiki](../logic-apps/logic-apps-http-endpoint.md). 
+Funkcje odbiornika HTTP są teraz wbudowane, więc nie trzeba wdrażać aplikacji interfejsu API odbiornika HTTP. Aby uzyskać więcej informacji, dowiedz się, jak [sprawić, aby punkt końcowy aplikacji logiki był wywoływany](../logic-apps/logic-apps-http-endpoint.md). 
 
-Po wprowadzeniu tych zmian Logic Apps zastępuje funkcję `@accessKeys()` funkcją `@listCallbackURL()`, która pobiera punkt końcowy w razie potrzeby. Ponadto należy zdefiniować co najmniej jeden wyzwalacz w aplikacji logiki. Jeśli chcesz `/run` przepływ pracy, musisz użyć jednego z tych typów wyzwalaczy: `Manual`, `ApiConnectionWebhook`lub `HttpWebhook`
+Dzięki tym zmianom aplikacje `@accessKeys()` logiki `@listCallbackURL()` zastępuje funkcję z funkcją, która pobiera punkt końcowy, gdy jest to konieczne. Ponadto teraz należy zdefiniować co najmniej jeden wyzwalacz w aplikacji logiki. Aby przepływ `/run` pracy został uruchomiony, należy użyć jednego z `Manual` `ApiConnectionWebhook`następujących typów wyzwalaczy: , , lub`HttpWebhook`
 
 <a name="child-workflows"></a>
 
-## <a name="call-child-workflows"></a>Wywołaj podrzędne przepływy pracy
+## <a name="call-child-workflows"></a>Wywoływanie podrzędnych przepływów pracy
 
-Wcześniej wywołując podrzędne przepływy pracy wymagające przechodzenia do przepływu pracy, uzyskiwania tokenu dostępu i wklejania tokenu w definicji aplikacji logiki, w której chcesz wywołać ten podrzędny przepływ pracy. W tym schemacie aparat Logic Apps automatycznie generuje sygnaturę dostępu współdzielonego w czasie wykonywania dla podrzędnego przepływu pracy, dzięki czemu nie trzeba wklejać żadnych wpisów tajnych do definicji. Oto przykład:
+Wcześniej wywoływanie podrzędnych przepływów pracy wymagało przechodzenia do przepływu pracy, uzyskiwania tokenu dostępu i wklejania tokenu w definicji aplikacji logiki, w którym chcesz wywołać ten podrzędny przepływ pracy. Za pomocą tego schematu aparat aplikacji logiki automatycznie generuje sygnatury dostępu Współdzielonego w czasie wykonywania dla przepływu pracy podrzędnej, dzięki czemu nie trzeba wklejać żadnych wpisów tajnych do definicji. Oto przykład:
 
 ``` json
 "myNestedWorkflow": {
@@ -443,20 +443,20 @@ Wcześniej wywołując podrzędne przepływy pracy wymagające przechodzenia do 
 }
 ```
 
-Ponadto podrzędne przepływy pracy uzyskują pełny dostęp do żądania przychodzącego. Dlatego można przekazać parametry w sekcji `queries` i w obiekcie `headers`. Możesz również w pełni zdefiniować całą sekcję `body`.
+Ponadto przepływy pracy podrzędnych uzyskać pełny dostęp do żądania przychodzącego. Tak, można przekazać parametry `queries` w sekcji `headers` i w obiekcie. Można również w pełni `body` zdefiniować całą sekcję.
 
-Na koniec podrzędne przepływy pracy mają te wymagane zmiany. Chociaż można wcześniej i bezpośrednio wywołać podrzędny przepływ pracy, musisz teraz zdefiniować punkt końcowy wyzwalacza w przepływie pracy dla elementu nadrzędnego, który ma zostać wywołany. Ogólnie rzecz biorąc, należy dodać wyzwalacz, który ma typ `Manual`, a następnie użyć tego wyzwalacza w definicji nadrzędnej. Właściwość `host` ma szczególnie `triggerName`, ponieważ należy zawsze określić wyzwalacz, który jest wywoływany.
+Na koniec przepływy pracy podrzędne mają te wymagane zmiany. Chociaż można wcześniej i bezpośrednio wywołać podrzędny przepływ pracy, należy teraz zdefiniować punkt końcowy wyzwalacza w przepływie pracy dla obiektu nadrzędnego do wywołania. Ogólnie rzecz biorąc należy dodać `Manual` wyzwalacz, który ma typ, a następnie użyć tego wyzwalacza w definicji nadrzędnej. Właściwość `host` w szczególności `triggerName` ma, ponieważ należy zawsze określić wyzwalacz, który wywołujesz.
 
 ## <a name="other-changes"></a>Inne zmiany
 
 ### <a name="new-queries-property"></a>Nowa właściwość "zapytania"
 
-Wszystkie typy akcji obsługują teraz nowe dane wejściowe o nazwie `queries`. Ta wartość wejściowa może być obiektem strukturalnym, a nie koniecznością podawania ciągu.
+Wszystkie typy akcji obsługują `queries`teraz nowe dane wejściowe o nazwie . To dane wejściowe mogą być obiektem strukturalnym, a nie koniecznością ręcznego składania ciągu.
 
-### <a name="renamed-parse-function-to-json"></a>Zmieniono nazwę funkcji "Parse ()" na "JSON ()"
+### <a name="renamed-parse-function-to-json"></a>Zmieniono nazwę na "parse()" na 'json()'
 
-Funkcja `parse()` ma teraz nazwę funkcji `json()` dla przyszłych typów zawartości.
+Nazwa `parse()` funkcji jest teraz `json()` zmieniona na funkcję dla przyszłych typów zawartości.
 
-## <a name="enterprise-integration-apis"></a>Interfejsy API Integracja dla przedsiębiorstw
+## <a name="enterprise-integration-apis"></a>Interfejsy API integracji przedsiębiorstwa
 
-Ten schemat nie obsługuje jeszcze zarządzanych wersji interfejsów API Integracja dla przedsiębiorstw, takich jak AS2. Można jednak używać istniejących wdrożonych interfejsów API BizTalk za pośrednictwem akcji HTTP. Aby uzyskać więcej informacji, zobacz sekcję "Używanie już wdrożonych aplikacji interfejsu API" w [przewodniku integracji](https://www.zdnet.com/article/microsoft-outlines-its-cloud-and-server-integration-roadmap-for-2016/). 
+Ten schemat nie obsługuje jeszcze wersji zarządzanych dla interfejsów API integracji przedsiębiorstwa, takich jak AS2. Można jednak użyć istniejących wdrożonych interfejsów API systemu BizTalk za pomocą akcji HTTP. Aby uzyskać więcej informacji, zobacz "Korzystanie z już wdrożonych aplikacji interfejsu API" w [planie integracji](https://www.zdnet.com/article/microsoft-outlines-its-cloud-and-server-integration-roadmap-for-2016/). 

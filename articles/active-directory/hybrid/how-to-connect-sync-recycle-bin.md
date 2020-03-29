@@ -1,8 +1,8 @@
 ---
-title: 'Synchronizacja programu Azure AD Connect: Włączanie Kosza usługi AD | Dokumentacja firmy Microsoft'
-description: W tym temacie zaleca używanie funkcji Kosz usługi AD za pomocą usługi Azure AD Connect.
+title: 'Synchronizacja usługi Azure AD Connect: włączanie kosza usługi AD | Dokumenty firmy Microsoft'
+description: W tym temacie zaleca się korzystanie z funkcji Kosza usługi AD w usłudze Azure AD Connect.
 services: active-directory
-keywords: Kosz usługi AD, przypadkowemu usunięciu, zakotwiczenie źródła
+keywords: Kosz usługi AD, przypadkowe usunięcie, kotwica źródłowa
 documentationcenter: ''
 author: billmath
 manager: daveba
@@ -18,32 +18,32 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5fe7d3ea7d4f6d648438efc1a484d5909ade2f23
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60382899"
 ---
-# <a name="azure-ad-connect-sync-enable-ad-recycle-bin"></a>Synchronizacja programu Azure AD Connect: Włączanie kosza usługi AD
-Zalecane jest, Włącz funkcję Kosz usługi AD dla katalogów Active w środowisku lokalnym, które są synchronizowane z usługą Azure AD. 
+# <a name="azure-ad-connect-sync-enable-ad-recycle-bin"></a>Synchronizacja usługi Azure AD Connect: włączanie kosza usługi AD
+Zaleca się włączenie funkcji Kosza usługi AD dla lokalnych usług Active Directories, które są synchronizowane z usługą Azure AD. 
 
-Jeśli przypadkowo usunięty lokalnego obiektu użytkownika AD i przywracanie jej przy użyciu funkcji usługi Azure AD przywraca odpowiedni obiekt użytkownika usługi Azure AD.  Informacje o funkcji Kosz usługi AD, można znaleźć w artykule [omówienie scenariusza dla przywracania usunięte obiekty usługi Active Directory](https://technet.microsoft.com/library/dd379542.aspx).
+Jeśli przypadkowo usunięto lokalny obiekt użytkownika usługi AD i przywrócić go przy użyciu tej funkcji, usługa Azure AD przywróci odpowiedni obiekt użytkownika usługi Azure AD.  Aby uzyskać informacje na temat funkcji Kosz usługi AD, zobacz artykuł [Omówienie scenariusza przywracania usuniętych obiektów usługi Active Directory](https://technet.microsoft.com/library/dd379542.aspx).
 
-## <a name="benefits-of-enabling-the-ad-recycle-bin"></a>Zalety włączenie Kosza usługi AD
-Ta funkcja pomaga z przywracaniem obiekty użytkownika usługi Azure AD, wykonując następujące czynności:
+## <a name="benefits-of-enabling-the-ad-recycle-bin"></a>Korzyści z włączenia kosza AD
+Ta funkcja pomaga w przywracaniu obiektów użytkowników usługi Azure AD, wykonując następujące czynności:
 
-* Jeśli przypadkowo usunięty lokalnego obiektu użytkownika AD odpowiedni obiekt użytkownika usługi Azure AD zostaną usunięte podczas następnego cyklu synchronizacji. Domyślnie usługa Azure AD przechowuje usuniętego obiektu użytkownika w usłudze Azure AD w stanie usunięty nietrwale przez 30 dni.
+* Jeśli przypadkowo usuniesz lokalny obiekt użytkownika usługi AD, odpowiedni obiekt użytkownika usługi Azure AD zostanie usunięty w następnym cyklu synchronizacji. Domyślnie usługa Azure AD przechowuje usunięty obiekt użytkownika usługi Azure AD w stanie nietrwale usuniętym przez 30 dni.
 
-* W przypadku lokalnej usługi AD Recycle Bin funkcja jest włączona, można przywrócić usunięte lokalnego obiektu użytkownika AD bez konieczności zmieniania jego wartości zakotwiczenie źródła. Gdy odzyskane lokalnej obiektu użytkownika AD, jest synchronizowany z usługą Azure AD, usługa Azure AD będą obiektu użytkownika przywracania odpowiedniej wszystkie usunięte nietrwale usługi Azure AD. Informacje o atrybut zakotwiczenia źródła, można znaleźć w artykule [program Azure AD Connect: Pojęcia dotyczące projektowania](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-design-concepts#sourceanchor).
+* Jeśli masz włączoną funkcję lokalnego Kosza usługi AD, można przywrócić usunięty lokalny obiekt użytkownika usługi AD bez zmiany jego wartości zakotwiczenia źródła. Gdy odzyskany lokalny obiekt użytkownika usługi AD jest synchronizowany z usługą Azure AD, usługa Azure AD przywróci odpowiedni obiekt użytkownika usługi Azure AD usuniętych programem. Aby uzyskać informacje na temat atrybutu Kotwica źródła, zobacz artykuł [Azure AD Connect: Pojęcia dotyczące projektowania](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-design-concepts#sourceanchor).
 
-* Jeśli nie masz lokalnego włączoną funkcję Kosz usługi AD, może być wymagane do tworzenia obiektu użytkownika AD, aby zastąpić usuniętego obiektu. Jeśli usługa Azure AD Connect synchronizacji jest skonfigurowany do używania generowanych przez system atrybutu usługi AD (na przykład ObjectGuid) dla atrybutu zakotwiczenia źródła, nowo utworzonego obiektu użytkownika AD nie będzie taka sama wartość zakotwiczenia źródła, jak usuniętego obiektu użytkownika AD. Nowo utworzony obiekt użytkownika AD są synchronizowane z usługą Azure AD, usługa Azure AD tworzy nowy obiekt użytkownika usługi Azure AD zamiast usunięty nietrwale obiektu użytkownika w usłudze Azure AD.
+* Jeśli nie masz włączonej funkcji lokalnego Kosza usługi AD, może być konieczne utworzenie obiektu użytkownika usługi AD w celu zastąpienia usuniętego obiektu. Jeśli usługa synchronizacji usługi Azure AD Connect jest skonfigurowana do używania atrybutu usługi AD generowanego przez system (takiego jak ObjectGuid) dla atrybutu Zakotwiczenie źródła, nowo utworzony obiekt użytkownika usługi AD nie będzie miał tej samej wartości zakotwiczenia źródła, co usunięty obiekt użytkownika usługi AD. Gdy nowo utworzony obiekt użytkownika usługi AD jest synchronizowany z usługą Azure AD, usługa Azure AD tworzy nowy obiekt użytkownika usługi Azure AD zamiast przywracania obiektu użytkownika usługi Azure AD usuniętego nietrwale.
 
 > [!NOTE]
-> Domyślnie usługa Azure AD przechowuje usunięte obiekty użytkownika usługi Azure AD w stanie usunięty nietrwale przez 30 dni, zanim zostaną one trwale usunięte. Jednak administratorzy mogą przyspieszać usuwania tych obiektów. Gdy obiekty są trwale usuwane, nie będzie można odzyskać, nawet wtedy, gdy lokalne jest włączona funkcja Kosza usługi AD.
+> Domyślnie usługa Azure AD przechowuje usunięte obiekty użytkowników usługi Azure AD w stanie nietrwałym usuniętym przez 30 dni, zanim zostaną trwale usunięte. Jednak administratorzy mogą przyspieszyć usuwanie takich obiektów. Po trwałym usunięciu obiektów nie można ich już odzyskać, nawet jeśli lokalna funkcja Kosza usługi AD jest włączona.
 
-## <a name="next-steps"></a>Kolejne kroki
-**Tematy poglądowe**
+## <a name="next-steps"></a>Następne kroki
+**Tematy omówienie**
 
-* [Synchronizacja w programie Azure AD Connect: Zrozumienie i dostosowywanie synchronizacji](how-to-connect-sync-whatis.md)
+* [Synchronizacja usługi Azure AD Connect: zrozumienie i dostosowywanie synchronizacji](how-to-connect-sync-whatis.md)
 
 * [Integrowanie tożsamości lokalnych z usługą Azure Active Directory](whatis-hybrid-identity.md)

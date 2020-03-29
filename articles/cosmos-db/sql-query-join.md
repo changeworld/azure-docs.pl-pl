@@ -1,109 +1,109 @@
 ---
-title: Zapytania SPRZĘŻENIa SQL dla Azure Cosmos DB
-description: Dowiedz się, jak dołączać wiele tabel w Azure Cosmos DB, aby wykonywać zapytania dotyczące danych
+title: Kwerendy SQL JOIN dla usługi Azure Cosmos DB
+description: Dowiedz się, jak dołączyć wiele tabel w usłudze Azure Cosmos DB do wykonywania zapytań o dane
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/17/2019
 ms.author: mjbrown
 ms.openlocfilehash: 38e80f1597a08b8db7cbfa852d1bcf38ac768b1f
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74871146"
 ---
-# <a name="joins-in-azure-cosmos-db"></a>Sprzężenia w Azure Cosmos DB
+# <a name="joins-in-azure-cosmos-db"></a>Dołączanie do usługi Azure Cosmos DB
 
-W relacyjnej bazie danych sprzężenia między tabelami jest logicznym współrzutem do projektowania znormalizowanych schematów. W przeciwieństwie do interfejsu API SQL jest używany nieznormalizowany model danych elementów bez schematu, który jest logicznym odpowiednikiem *samosprzężenia*.
+W relacyjnej bazie danych sprzężenia między tabelami są logicznym następstwem projektowania znormalizowanych schematów. Natomiast sql API używa zdenormalizowanego modelu danych elementów wolnych od schematu, który jest logicznym odpowiednikiem *samosprzężenia*.
 
-Sprzężenia wewnętrzne spowodować pełny iloczyn wektorowy zestawy uczestniczących w sprzężenia. Wynikiem sprzężenia sposób N jest zestaw spójnych kolekcji N-elementowej, gdzie każda wartość w spójnej kolekcji jest skojarzony z aliasem, ustaw udział w sprzężeniu i jest dostępny, odwołując się do tego aliasu w innych klauzul.
+Sprzężenia wewnętrzne powodują kompletny produkt krzyżowy zestawów uczestniczących w sprzężeniu. Wynikiem sprzężenia N-way jest zestaw krotek N-element, gdzie każda wartość w krocie jest skojarzony z aliasem zestawu uczestniczącego w sprzężeniu i można uzyskać do niego dostęp, odwołując się do tego aliasu w innych klauzulach.
 
 ## <a name="syntax"></a>Składnia
 
-Język obsługuje składnię `<from_source1> JOIN <from_source2> JOIN ... JOIN <from_sourceN>`. To zapytanie zwraca zestaw krotek z wartościami `N`. Każda krotka ma wartości utworzone w procesie iterowania wszystkich aliasów kontenera w odpowiednich zestawach. 
+Język obsługuje składnię `<from_source1> JOIN <from_source2> JOIN ... JOIN <from_sourceN>`. Ta kwerenda zwraca zestaw krotek z `N` wartościami. Każda krotka ma wartości utworzone w procesie iterowania wszystkich aliasów kontenera w odpowiednich zestawach. 
 
-Spójrzmy na następujący klauzuli FROM: `<from_source1> JOIN <from_source2> JOIN ... JOIN <from_sourceN>`  
+Przyjrzyjmy się następującej klauzuli FROM:`<from_source1> JOIN <from_source2> JOIN ... JOIN <from_sourceN>`  
   
- Pozwól każdego źródła, zdefiniuj `input_alias1, input_alias2, …, input_aliasN`. Ta klauzula FROM zwraca zestaw (krotki wartości N) N-krotek. Każda krotka ma wartości utworzone w procesie iterowania wszystkich aliasów kontenera w odpowiednich zestawach.  
+ Niech każde `input_alias1, input_alias2, …, input_aliasN`źródło zdefiniuje . Ta klauzula FROM zwraca zestaw N-krotek (krotka z wartościami N). Każda krotka ma wartości utworzone w procesie iterowania wszystkich aliasów kontenera w odpowiednich zestawach.  
   
-**Przykład 1** -2 źródeł  
+**Przykład 1** - 2 źródła  
   
-- Pozwól `<from_source1>` kontenerów należące i reprezentują zestawu {A, B, C}.  
+- Pozwól, `<from_source1>` aby był on objęty zakresem kontenera i reprezentuj zestaw {A, B, C}.  
   
-- Pozwól `<from_source2>` się dokument o zakresie odwołujące się do input_alias1 i reprezentują zestawów:  
+- Niech `<from_source2>` będzie dokument o zakresie odwołując się input_alias1 i reprezentują zestawy:  
   
-    {1, 2} dla `input_alias1 = A,`  
+    {1, 2} dla`input_alias1 = A,`  
   
-    {3} Aby uzyskać `input_alias1 = B,`  
+    {3}For`input_alias1 = B,`  
   
-    {4, 5} dla `input_alias1 = C,`  
+    {4, 5} dla`input_alias1 = C,`  
   
-- Klauzula FROM `<from_source1> JOIN <from_source2>` spowoduje następujące kolekcje:  
+- Klauzula `<from_source1> JOIN <from_source2>` FROM spowoduje następujące krotki:  
   
     (`input_alias1, input_alias2`):  
   
     `(A, 1), (A, 2), (B, 3), (C, 4), (C, 5)`  
   
-**Przykład 2** -3 źródła  
+**Przykład 2** - 3 źródła  
   
-- Pozwól `<from_source1>` kontenerów należące i reprezentują zestawu {A, B, C}.  
+- Pozwól, `<from_source1>` aby był on objęty zakresem kontenera i reprezentuj zestaw {A, B, C}.  
   
-- Pozwól `<from_source2>` być zakresem dokument odwołuje się do `input_alias1` i reprezentują zestawów:  
+- Niech `<from_source2>` będzie odwołujące `input_alias1` się do dokumentu i reprezentują zestawy:  
   
-    {1, 2} dla `input_alias1 = A,`  
+    {1, 2} dla`input_alias1 = A,`  
   
-    {3} Aby uzyskać `input_alias1 = B,`  
+    {3}For`input_alias1 = B,`  
   
-    {4, 5} dla `input_alias1 = C,`  
+    {4, 5} dla`input_alias1 = C,`  
   
-- Pozwól `<from_source3>` być zakresem dokument odwołuje się do `input_alias2` i reprezentują zestawów:  
+- Niech `<from_source3>` będzie odwołujące `input_alias2` się do dokumentu i reprezentują zestawy:  
   
-    {100, 200} dla `input_alias2 = 1,`  
+    {100, 200} dla`input_alias2 = 1,`  
   
-    {300} Aby uzyskać `input_alias2 = 3,`  
+    {300}For`input_alias2 = 3,`  
   
-- Klauzula FROM `<from_source1> JOIN <from_source2> JOIN <from_source3>` spowoduje następujące kolekcje:  
+- Klauzula `<from_source1> JOIN <from_source2> JOIN <from_source3>` FROM spowoduje następujące krotki:  
   
     (input_alias1, input_alias2, input_alias3):  
   
     (A, 1, 100), (A, 1, 200), (B, 3, 300)  
   
   > [!NOTE]
-  > Brak spójnych kolekcji dla innych wartości parametru `input_alias1`, `input_alias2`, dla którego `<from_source3>` nie zwrócił żadnych wartości.  
+  > Brak krotek dla innych `input_alias1`wartości `input_alias2`, dla `<from_source3>` których nie zwrócił żadnych wartości.  
   
-**Przykład 3** -3 źródła  
+**Przykład 3** - 3 źródła  
   
-- Pozwól < from_source1 > być należące do kontenera i reprezentują zestawu {A, B, C}.  
+- Pozwól <from_source1> być o zakresie kontenera i reprezentować zestaw {A, B, C}.  
   
-- Pozwól `<from_source1>` kontenerów należące i reprezentują zestawu {A, B, C}.  
+- Pozwól, `<from_source1>` aby był on objęty zakresem kontenera i reprezentuj zestaw {A, B, C}.  
   
-- Pozwól < from_source2 > być zakresu w dokumencie input_alias1 odwołujący się i reprezentują zestawów:  
+- Pozwól <from_source2> być input_alias1 o zakresie dokumentu i reprezentować zestawy:  
   
-    {1, 2} dla `input_alias1 = A,`  
+    {1, 2} dla`input_alias1 = A,`  
   
-    {3} Aby uzyskać `input_alias1 = B,`  
+    {3}For`input_alias1 = B,`  
   
-    {4, 5} dla `input_alias1 = C,`  
+    {4, 5} dla`input_alias1 = C,`  
   
-- Pozwól `<from_source3>` należeć do zakresu `input_alias1` i reprezentują zestawów:  
+- Niech `<from_source3>` być `input_alias1` zakres i reprezentują zestawy:  
   
-    {100, 200} dla `input_alias2 = A,`  
+    {100, 200} dla`input_alias2 = A,`  
   
-    {300} Aby uzyskać `input_alias2 = C,`  
+    {300}For`input_alias2 = C,`  
   
-- Klauzula FROM `<from_source1> JOIN <from_source2> JOIN <from_source3>` spowoduje następujące kolekcje:  
+- Klauzula `<from_source1> JOIN <from_source2> JOIN <from_source3>` FROM spowoduje następujące krotki:  
   
     (`input_alias1, input_alias2, input_alias3`):  
   
-    (A, 1, 100), (A, 1, 200), (A, 2, 100), (A, 2, 200), C, 4, 300, (C, 5, 300)  
+    (A, 1, 100), (A, 1, 200), (A, 2, 100), (A, 2, 200), (C, 4, 300), (C, 5, 300)  
   
   > [!NOTE]
-  > Pozwoliło to odnotować iloczyn między `<from_source2>` i `<from_source3>` ponieważ zarówno dostosowanych do tej samej `<from_source1>`.  Pozwoliło to odnotować 4 (2 x 2) krotki o wartości A, 0 krotek mających wartość B (1 x 0) i 2 (2 x 1) krotek mających wartość C.  
+  > Spowodowało to, że `<from_source2>` `<from_source3>` produkt krzyżowy między i `<from_source1>`ponieważ oba są objęte zakresem do tego samego .  Spowodowało to 4 (2x2) krotek o wartości A, 0 krotek o wartości B (1x0) i 2 (2x1) krotek o wartości C.  
   
 ## <a name="examples"></a>Przykłady
 
-W poniższych przykładach pokazano, jak działa klauzula JOIN. Przed uruchomieniem tych przykładów Przekaż przykładowe [dane rodziny](sql-query-getting-started.md#upload-sample-data). W poniższym przykładzie wynik jest pusty, ponieważ iloczyn między elementami źródłowymi i pustym jest pusty:
+W poniższych przykładach pokazano, jak działa klauzula JOIN. Przed uruchomieniem tych przykładów należy przesłać przykładowe [dane rodzinne](sql-query-getting-started.md#upload-sample-data). W poniższym przykładzie wynik jest pusty, ponieważ produkt krzyżowy każdego towaru ze źródła i pusty zestaw jest pusty:
 
 ```sql
     SELECT f.id
@@ -111,14 +111,14 @@ W poniższych przykładach pokazano, jak działa klauzula JOIN. Przed uruchomien
     JOIN f.NonExistent
 ```
 
-Wynik:
+Rezultatem jest:
 
 ```json
     [{
     }]
 ```
 
-W poniższym przykładzie sprzężenie jest iloczynem krzyżowym między dwoma obiektami JSON, głównym elementem `id` i `children` podgłównym. Fakt, że `children` jest tablicą, nie obowiązuje w sprzężeniu, ponieważ zajmuje się pojedynczym elementem głównym, który jest tablicą `children`. Wynik zawiera tylko dwa wyniki, ponieważ iloczyn poprzeczny każdego elementu z tablicą daje tylko jeden element.
+W poniższym przykładzie sprzężenia jest produktem krzyżowym `id` między `children` dwoma obiektami JSON, katalogiem głównym towaru i podrozkiem. Fakt, `children` że jest tablica nie jest skuteczne w sprzężeniu, `children` ponieważ zajmuje się jednym katalogiem głównym, który jest tablicą. Wynik zawiera tylko dwa wyniki, ponieważ produkt krzyżowy każdego elementu z tablicą daje dokładnie tylko jeden element.
 
 ```sql
     SELECT f.id
@@ -163,15 +163,15 @@ Wyniki są następujące:
     ]
 ```
 
-Źródłowa klauzula JOIN jest iteratorem. Dlatego przepływ w poprzednim przykładzie jest:  
+Źródło from klauzuli JOIN jest iteratorem. Tak więc przepływ w poprzednim przykładzie jest:  
 
-1. Rozwiń każdy element podrzędny `c` w tablicy.
-2. Zastosuj iloczyn krzyżowy z elementem głównym elementu `f` z każdym elementem podrzędnym, `c` ten, który został spłaszczony w pierwszym kroku.
-3. Na koniec Zaprojektuj tylko obiekt główny `f` właściwości `id`.
+1. Rozwiń każdy `c` element podrzędny w tablicy.
+2. Zastosuj produkt krzyżowy z katalogiem głównym `f` `c` elementu z każdym elementem podrzędnym spłaszczonym pierwszym krokiem.
+3. Na koniec project właściwości `f` `id` obiektu głównego samodzielnie.
 
-Pierwszy element, `AndersenFamily`, zawiera tylko jeden element `children`, więc zestaw wyników zawiera tylko jeden obiekt. Drugi element, `WakefieldFamily`, zawiera dwa `children`, więc iloczyn krzyżowy wytwarza dwa obiekty, jeden dla każdego `children` elementu. Główne pola w obu elementach są takie same, tak jak można oczekiwać w iloczynie wektorowym.
+Pierwszy element `AndersenFamily`, zawiera `children` tylko jeden element, więc zestaw wyników zawiera tylko jeden obiekt. Drugi element, `WakefieldFamily`, `children`zawiera dwa , więc produkt krzyżowy `children` tworzy dwa obiekty, po jednym dla każdego elementu. Główne pola w obu elementach są takie same, tak jak można oczekiwać w iloczynie wektorowym.
 
-Prawdziwe narzędzie klauzuli JOIN polega na utworzeniu krotek od iloczynu krzyżowego w kształcie, który w przeciwnym razie trudno jest projektować. Poniższy przykład filtruje kombinację spójnej kolekcji, która umożliwia użytkownikowi wybranie warunku, który jest ogólny przez krotki.
+Prawdziwe użyteczność JOIN klauzuli jest do tworzenia krotek z produktu krzyżowego w kształcie, który w przeciwnym razie trudne do projektu. Poniższy przykład filtruje kombinację krotki, która pozwala użytkownikowi wybrać warunek spełniony przez krotek ogólnej.
 
 ```sql
     SELECT 
@@ -206,7 +206,7 @@ Wyniki są następujące:
     ]
 ```
 
-Poniższe rozszerzenie powyższego przykładu wykonuje podwójne sprzężenie. Można wyświetlić iloczyn krzyżowy jako następujący pseudo kod:
+Następujące rozszerzenie poprzedniego przykładu wykonuje double join. Produkt krzyżowy można wyświetlić jako następujący pseudokod:
 
 ```
     for-each(Family f in Families)
@@ -224,9 +224,9 @@ Poniższe rozszerzenie powyższego przykładu wykonuje podwójne sprzężenie. M
     }
 ```
 
-`AndersenFamily` ma jednego elementu podrzędnego, który ma jedną PET, więc iloczyn krzyżowy daje jeden wiersz (1\*1\*1) z tej rodziny. `WakefieldFamily` ma dwa elementy podrzędne, tylko jeden z nich ma zwierzęta domowe, ale ten element podrzędny ma dwa zwierzęta domowe. Iloczyn krzyżowy dla tej rodziny daje 1\*1\*2 = 2 wierszy.
+`AndersenFamily`ma jedno dziecko, które ma jedno zwierzę, więc produkt\*krzyżowy daje jeden rząd (1 1\*1) z tej rodziny. `WakefieldFamily`ma dwoje dzieci, z których tylko jedno ma zwierzęta domowe, ale to dziecko ma dwa zwierzęta domowe. Produkt krzyżowy dla tej rodziny\*daje\*1 1 2 = 2 rzędy.
 
-W następnym przykładzie istnieje dodatkowy filtr dla `pet`, który wyklucza wszystkie krotki, w których nazwa PET nie jest `Shadow`. Można tworzyć krotki z tablic, filtrować według dowolnego elementu krotki i projektować dowolną kombinację elementów.
+W następnym przykładzie znajduje się `pet`dodatkowy filtr na , który wyklucza wszystkie krotki, gdzie nazwa zwierzęcia nie `Shadow`jest . Można tworzyć krotek z tablic, filtrować na dowolnych elementów krotki i projekt dowolnej kombinacji elementów.
 
 ```sql
     SELECT 
@@ -254,6 +254,6 @@ Wyniki są następujące:
 
 ## <a name="next-steps"></a>Następne kroki
 
-- [Rozpoczęcie pracy](sql-query-getting-started.md)
+- [Wprowadzenie](sql-query-getting-started.md)
 - [Przykłady dla platformy .NET w usłudze Azure Cosmos DB](https://github.com/Azure/azure-cosmosdb-dotnet)
-- [Podzapytania](sql-query-subquery.md)
+- [Podkwerend](sql-query-subquery.md)

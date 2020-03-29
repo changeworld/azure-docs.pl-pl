@@ -1,6 +1,6 @@
 ---
-title: 264 szybkość transmisji bitów 4K Audio 5.1 | Dokumentacja firmy Microsoft
-description: Temat zawiera omówienie **264 szybkość transmisji bitów h264 4K Audio 5.1** ustawienie wstępne zadania.
+title: 264 Dźwięk 4K o wielu szybkościach transmisji bitów 5.1 | Dokumenty firmy Microsoft
+description: W tym temacie przedstawiono omówienie predefiniowanych zadań **264 Multiple Bitrate 4K Audio 5.1.**
 author: Juliako
 manager: femila
 editor: ''
@@ -15,24 +15,24 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: 2466edb3d14ebbe9296fad087fce432b83005437
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "61463688"
 ---
 # <a name="h264-multiple-bitrate-4k-audio-51"></a>Wielokrotna szybkość transmisji bitów H264 4K Audio 5.1
-`Media Encoder Standard` definiuje zestaw kodowania ustawienia wstępne, których można użyć podczas tworzenia zadań kodowania. Można użyć `preset name` do określenia do formatu, który chcesz zakodować pliku multimedialnego. Lub można utworzyć własne JSON lub XML na podstawie ustawień wstępnych (przy użyciu kodowania UTF-8 lub UTF-16. Następnie należy wprowadzić niestandardowego ustawienia wstępnego z koderem. Aby uzyskać listę wszystkich wstępnie zdefiniowanych nazw obsługiwanych przez to `Media Encoder Standard` encoder, zobacz [ustawienia wstępne zadań usługi Media Encoder Standard](media-services-mes-presets-overview.md).  
+`Media Encoder Standard`definiuje zestaw ustawień predefiniowanych kodowania, których można używać podczas tworzenia zadań kodowania. Można użyć a, `preset name` aby określić, w jakim formacie chcesz zakodować plik multimedialny. Można też utworzyć własne ustawienia predefiniowane oparte na języku JSON lub XML (przy użyciu kodowania UTF-8 lub UTF-16. Następnie należy przekazać niestandardowe ustawienia predefiniowane do kodera. Aby uzyskać listę wszystkich predefiniowanych `Media Encoder Standard` nazw obsługiwanych przez ten koder, zobacz [Presety zadań dla standardu kodera multimediów](media-services-mes-presets-overview.md).  
   
- W tym temacie przedstawiono `H264 Multiple Bitrate 4K Audio 5.1` wstępnie ustawione w formacie XML i JSON.  
+ W tym `H264 Multiple Bitrate 4K Audio 5.1` temacie przedstawiono ustawienia predefiniowane w formacie XML i JSON.  
   
- To ustawienie wstępne tworzy zbiór 12 wyrównane GOP pliki MP4 z, od 20000 KB/s do 1000 KB/s i audio AAC 5.1. Aby uzyskać szczegółowe informacje o profilu szybkości transmisji bitów, próbkowanie wskaźnik, itp., to ustawień, sprawdź zdefiniowane poniżej w formacie JSON lub XML. Objaśnienia dotyczące oznacza jaki każdy element i prawidłowe wartości dla każdego elementu, zobacz [schemat usługi Media Encoder Standard](media-services-mes-schema.md).  
-  
-> [!NOTE]
->  Należy pobrać jednostki zarezerwowanej Premium koduje typu z 4K. Aby uzyskać więcej informacji, zobacz [jak kodowanie skalowania](https://azure.microsoft.com/documentation/articles/media-services-portal-encoding-units).  
+ To ustawienie wstępne tworzy zestaw 12 plików MP4 wyrównanych do GOP, od 20000 kb/s do 1000 kb/s i dźwięku AAC 5.1. Aby uzyskać szczegółowe informacje na temat profilu, szybkości transmisji bitów, częstotliwości próbkowania itp. Aby uzyskać wyjaśnienia dotyczące tego, co oznacza każdy element i prawidłowych wartości dla każdego elementu, zobacz [schemat Standardowy kodera multimediów](media-services-mes-schema.md).  
   
 > [!NOTE]
->  Podczas modyfikowania `Width` i `Height` wartości wielu warstw, upewnij się, że współczynnik proporcji pozostanie spójna. Na przykład: 1920x1080, 1280x720, 1080x576, 640x360. Nie należy używać kombinacji proporcji, takich jak: 1280x720, 720x480, 640x360.  
+>  Powinieneś otrzymać typ jednostki zarezerwowanej premium z kodami 4K. Aby uzyskać więcej informacji, zobacz [Jak skalować kodowanie](https://azure.microsoft.com/documentation/articles/media-services-portal-encoding-units).  
+  
+> [!NOTE]
+>  Modyfikując `Width` wartości `Height` i wartości między warstwami, upewnij się, że współczynnik proporcji pozostaje spójny. Na przykład: 1920x1080, 1280x720, 1080x576, 640x360. Nie należy używać kombinacji współczynników proporcji, takich jak: 1280x720, 720x480, 640x360.  
   
  XML  
   

@@ -1,6 +1,6 @@
 ---
-title: Włączanie i wyświetlanie dzienników diagnostycznych usługi Azure Data Lake Analytics
-description: Dowiedz się, jak skonfigurować i dostęp do dzienników diagnostycznych usługi Azure Data Lake Analytics
+title: Włączanie i wyświetlanie dzienników diagnostycznych dla usługi Azure Data Lake Analytics
+description: Dowiedz się, jak skonfigurować dzienniki diagnostyczne usługi Azure Data Lake Analytics i uzyskiwać do nich dostęp
 services: data-lake-analytics
 ms.service: data-lake-analytics
 author: jasonwhowell
@@ -9,56 +9,56 @@ ms.assetid: cf5633d4-bc43-444e-90fc-f90fbd0b7935
 ms.topic: conceptual
 ms.date: 02/12/2018
 ms.openlocfilehash: 7fd88383e909ebd6be64c22721b813946e37179e
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60616511"
 ---
-# <a name="accessing-diagnostic-logs-for-azure-data-lake-analytics"></a>Uzyskiwanie dostępu do dzienników diagnostycznych usługi Azure Data Lake Analytics
+# <a name="accessing-diagnostic-logs-for-azure-data-lake-analytics"></a>Accessing diagnostic logs for Azure Data Lake Analytics (Dostęp do dzienników diagnostycznych usługi Azure Data Lake Analytics)
 
-Rejestrowanie diagnostyczne można zbierać ślady inspekcji dostępu do danych. Te dzienniki zawierają informacje, takie jak:
+Rejestrowanie diagnostyczne umożliwia zbieranie śladów inspekcji dostępu do danych. Te dzienniki zawierają informacje, takie jak:
 
-* Lista użytkowników, którzy dostęp do danych.
-* Jak często uzyskać dostępu do danych.
-* Jak dużo danych jest przechowywany na koncie.
+* Lista użytkowników, którzy uzyskili dostęp do danych.
+* Jak często dane są dostępne.
+* Ile danych jest przechowywanych na koncie.
 
 ## <a name="enable-logging"></a>Włącz rejestrowanie
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 
-2. Otwórz konto usługi Data Lake Analytics i wybierz **dzienniki diagnostyczne** z __Monitor__ sekcji. Następnie wybierz pozycję __Włącz diagnostykę__.
+2. Otwórz konto usługi Data Lake Analytics i wybierz **dzienniki diagnostyczne** w sekcji __Monitor.__ Następnie wybierz pozycję __Włącz diagnostykę__.
 
-    ![Włącz diagnostykę do zbierania danych inspekcji i Dziennik żądań](./media/data-lake-analytics-diagnostic-logs/turn-on-logging.png)
+    ![Włączanie diagnostyki w celu zbierania dzienników inspekcji i żądań](./media/data-lake-analytics-diagnostic-logs/turn-on-logging.png)
 
-3. Z __ustawień diagnostycznych__, wprowadź __nazwa__ dla tej konfiguracji rejestrowania i rejestrowania a następnie wybierz pozycję Opcje.
+3. W __obszarze Ustawienia diagnostyki__wprowadź __nazwę__ dla tej konfiguracji rejestrowania, a następnie wybierz opcję rejestrowania.
 
-    ![Włącz diagnostykę do zbierania danych inspekcji i Dzienniki żądań](./media/data-lake-analytics-diagnostic-logs/enable-diagnostic-logs.png "Włączanie dzienników diagnostycznych")
+    ![Włączanie diagnostyki w celu zbierania dzienników inspekcji i żądań](./media/data-lake-analytics-diagnostic-logs/enable-diagnostic-logs.png "Włączanie dzienników diagnostycznych")
 
-   * Istnieje możliwość magazyn i przetwarzanie tych danych na trzy różne sposoby.
+   * Można zapisać/przetworzyć dane na trzy różne sposoby.
 
-     * Wybierz __Zarchiwizuj na koncie magazynu__ do przechowywania dzienników na koncie usługi Azure storage. Użyj tej opcji, jeśli chcesz zarchiwizować dane. Jeśli wybierzesz tę opcję, musisz podać konto magazynu platformy Azure, aby zapisać dzienniki.
+     * Wybierz __opcję Archiwizuj konto magazynu,__ aby przechowywać dzienniki na koncie magazynu platformy Azure. Użyj tej opcji, jeśli chcesz zarchiwizować dane. Jeśli wybierzesz tę opcję, musisz podać konto magazynu platformy Azure, aby zapisać dzienniki.
 
-     * Wybierz **Stream do usługi Event Hub** przesyłanie strumieniowe dzienników danych do usługi Azure Event Hub. Użyj tej opcji, jeśli masz potok przetwarzania transmisji dla klientów, który analizuje przychodzące dzienników w czasie rzeczywistym. Jeśli wybierzesz tę opcję, musisz podać szczegółowe informacje dla usługi Azure Event Hub, którego chcesz użyć.
+     * Wybierz **opcję Strumień do Centrum zdarzeń,** aby przesyłać strumieniowo dane dziennika do usługi Azure Event Hub. Użyj tej opcji, jeśli masz potok przetwarzania podrzędnego, który analizuje przychodzące dzienniki w czasie rzeczywistym. Jeśli wybierzesz tę opcję, musisz podać szczegóły dotyczące usługi Azure Event Hub, którego chcesz użyć.
 
-     * Wybierz __wysyłanie do usługi Log Analytics__ do wysyłania danych do usługi Azure Monitor. Użyj tej opcji, jeśli chcesz używać dzienników usługi Azure Monitor do zbierania i analizowania dzienników.
-   * Określ, czy chcesz pobrać dzienniki inspekcji, dzienniki żądania lub obu.  Dziennik żądań przechwytuje każde żądanie interfejsu API. Dziennik inspekcji rejestruje wszystkie operacje, które są wyzwalane przez żądanie tego interfejsu API.
+     * Wybierz __pozycję Wyślij do usługi Log Analytics,__ aby wysłać dane do usługi Azure Monitor. Użyj tej opcji, jeśli chcesz używać dzienników usługi Azure Monitor do zbierania i analizowania dzienników.
+   * Określ, czy chcesz uzyskać dzienniki inspekcji lub dzienniki żądań, czy oba te dzienniki.  Dziennik żądań przechwytuje każde żądanie interfejsu API. Dziennik inspekcji rejestruje wszystkie operacje, które są wyzwalane przez to żądanie interfejsu API.
 
-   * Aby uzyskać __Zarchiwizuj na koncie magazynu__, określ liczbę dni przechowywania danych.
+   * W przypadku __konta magazynu Archiwum__należy określić liczbę dni przechowywania danych.
 
-   * Kliknij pozycję __Zapisz__.
+   * Kliknij przycisk __Zapisz__.
 
         > [!NOTE]
-        > Należy wybrać __Zarchiwizuj na koncie magazynu__, __Stream do usługi Event Hub__ lub __wysyłanie do usługi Log Analytics__ przed kliknięciem przycisku __Zapisz__ przycisk.
+        > Przed kliknięciem przycisku __Zapisz__ należy wybrać __opcję Archiwizuj do konta magazynu,__ __Strumień do Centrum zdarzeń__ lub Wyślij do usługi Log __Analytics.__
 
-### <a name="use-the-azure-storage-account-that-contains-log-data"></a>Użyj konta usługi Azure Storage, która zawiera dane dziennika
+### <a name="use-the-azure-storage-account-that-contains-log-data"></a>Korzystanie z konta usługi Azure Storage zawierającego dane dziennika
 
-1. Aby wyświetlić kontenery obiektów blob, w których przechowywane są dane rejestrowania, otwórz konto usługi Azure Storage używane usługi Data Lake Analytics do rejestrowania, a następnie kliknij przycisk __obiektów blob__.
+1. Aby wyświetlić kontenery obiektów blob, w których przechowywane są dane rejestrowania, otwórz konto usługi Azure Storage używane do rejestrowania usługi Data Lake Analytics, a następnie kliknij przycisk __Obiekty Blobs__.
 
-   * Kontener **insights — dzienniki inspekcji** zawiera dzienniki inspekcji.
-   * Kontener **insights Dzienniki żądań** zawiera dzienniki żądania.
+   * Kontener **insights-logs-audit** zawiera dzienniki inspekcji.
+   * Kontener **insights-logs-requests** zawiera dzienniki żądań.
 
-2. W kontenerach dzienniki są przechowywane w obszarze następującej struktury plików:
+2. W kontenerach dzienniki są przechowywane w następującej strukturze plików:
 
         resourceId=/
           SUBSCRIPTIONS/
@@ -77,23 +77,23 @@ Rejestrowanie diagnostyczne można zbierać ślady inspekcji dostępu do danych.
                                     PT1H.json
 
    > [!NOTE]
-   > `##` Wpisy w ścieżce zawiera rok, miesiąc, dzień i godzinę, w którym utworzono dziennik. Usługa Data Lake Analytics tworzy jeden plik co godzinę, więc `m=` zawsze zawiera wartość `00`.
+   > `##` Wpisy w ścieżce zawierają rok, miesiąc, dzień i godzinę, w którym został utworzony dziennik. Data Lake Analytics tworzy jeden `m=` plik co godzinę, więc zawsze zawiera wartość `00`.
 
-    Na przykład może być pełną ścieżką do dziennika inspekcji:
+    Na przykład pełna ścieżka do dziennika inspekcji może być:
 
         https://adllogs.blob.core.windows.net/insights-logs-audit/resourceId=/SUBSCRIPTIONS/<sub-id>/RESOURCEGROUPS/myresourcegroup/PROVIDERS/MICROSOFT.DATALAKEANALYTICS/ACCOUNTS/mydatalakeanalytics/y=2016/m=07/d=18/h=04/m=00/PT1H.json
 
-    Podobnie Pełna ścieżka do dziennika żądań może być:
+    Podobnie pełna ścieżka do dziennika żądań może być:
 
         https://adllogs.blob.core.windows.net/insights-logs-requests/resourceId=/SUBSCRIPTIONS/<sub-id>/RESOURCEGROUPS/myresourcegroup/PROVIDERS/MICROSOFT.DATALAKEANALYTICS/ACCOUNTS/mydatalakeanalytics/y=2016/m=07/d=18/h=14/m=00/PT1H.json
 
 ## <a name="log-structure"></a>Struktura dziennika
 
-Dzienniki inspekcji i żądania są w formacie JSON ze strukturą.
+Dzienniki inspekcji i żądań są w ustrukturyzowanym formacie JSON.
 
-### <a name="request-logs"></a>Dziennik żądań
+### <a name="request-logs"></a>Dzienniki żądań
 
-Poniżej przedstawiono przykładowy wpis w dzienniku żądania w formacie JSON. Każdy obiekt blob ma jeden główny obiekt o nazwie **rekordów** zawierający tablicę obiektów dziennika.
+Oto przykładowy wpis w dzienniku żądań w formacie JSON. Każdy obiekt blob ma jeden obiekt główny o nazwie **rekordy,** który zawiera tablicę obiektów dziennika.
 
     {
     "records":
@@ -123,34 +123,34 @@ Poniżej przedstawiono przykładowy wpis w dzienniku żądania w formacie JSON. 
       ]
     }
 
-#### <a name="request-log-schema"></a>Schemat dziennika żądania
+#### <a name="request-log-schema"></a>Schemat dziennika żądań
 
-| Name (Nazwa) | Typ | Opis |
+| Nazwa | Typ | Opis |
 | --- | --- | --- |
-| time |String |Znacznik czasu (w formacie UTC) dziennika |
-| resourceId |String |Identyfikator zasobu, która trwała operacja umieść na |
-| category |String |Kategoria dziennika. Na przykład **żądań**. |
-| operationName |String |Nazwa operacji, który jest zalogowany. Na przykład GetAggregatedJobHistory. |
-| resultType |String |Stan operacji, na przykład 200. |
-| callerIpAddress |String |Adres IP klienta wysyłającego żądanie |
-| correlationId |String |Identyfikator dziennika. Ta wartość może służyć do grupowania zbiór wpisów dziennika powiązane. |
-| identity |Object |Tożsamość, która wygenerowała dziennika |
-| properties |JSON |W następnej sekcji (schemat właściwości dziennika żądania) Aby uzyskać szczegółowe informacje |
+| time |Ciąg |Sygnatura czasowa (w czasie UTC) dziennika |
+| resourceId |Ciąg |Identyfikator zasobu, który operacja miała miejsce na |
+| category |Ciąg |Kategoria dziennika. Na przykład **żądania**. |
+| operationName |Ciąg |Nazwa operacji, która jest rejestrowana. Na przykład GetAggregatedJobHistory. |
+| resultType |Ciąg |Stan operacji, Na przykład 200. |
+| callerIpAddress |Ciąg |Adres IP klienta składającego wniosek |
+| correlationId |Ciąg |Identyfikator dziennika. Ta wartość może służyć do grupowania zestawu powiązanych wpisów dziennika. |
+| identity |Obiekt |Tożsamość, która wygenerowała dziennik |
+| properties |JSON |Szczegółowe informacje można znaleźć w następnej sekcji (Schemat właściwości dziennika żądania) |
 
 #### <a name="request-log-properties-schema"></a>Schemat właściwości dziennika żądania
 
-| Name (Nazwa) | Typ | Opis |
+| Nazwa | Typ | Opis |
 | --- | --- | --- |
-| HttpMethod |String |Metoda HTTP używana dla tej operacji. Na przykład UZYSKAĆ. |
-| Ścieżka |String |Ścieżka operacja została wykonana w |
-| RequestContentLength |int |Długość zawartości żądania HTTP |
-| ClientRequestId |String |Identyfikator, który unikatowo identyfikuje tego żądania |
-| StartTime |String |Czas, w którym serwer odebrał żądanie |
-| EndTime |String |Czas wysłanego przez serwer odpowiedzi |
+| HttpMethod (httpmethod) |Ciąg |Metoda HTTP używana do operacji. Na przykład GET. |
+| Ścieżka |Ciąg |Ścieżka, na którą została wykonana operacja |
+| ProśbaContentLength |int |Długość zawartości żądania HTTP |
+| Identyfikator zapisu klienta |Ciąg |Identyfikator, który jednoznacznie identyfikuje to żądanie |
+| StartTime |Ciąg |Czas, w którym serwer odebrał żądanie |
+| EndTime |Ciąg |Czas, w którym serwer wysłał odpowiedź |
 
 ### <a name="audit-logs"></a>Dzienniki inspekcji
 
-Poniżej przedstawiono przykładowy wpis w dzienniku inspekcji w formacie JSON. Każdy obiekt blob ma jeden główny obiekt o nazwie **rekordów** zawierający tablicę obiektów dziennika.
+Oto przykładowy wpis w dzienniku inspekcji w formacie JSON. Każdy obiekt blob ma jeden obiekt główny o nazwie **rekordy,** który zawiera tablicę obiektów dziennika.
 
     {
     "records":
@@ -177,40 +177,40 @@ Poniżej przedstawiono przykładowy wpis w dzienniku inspekcji w formacie JSON. 
 
 #### <a name="audit-log-schema"></a>Schemat dziennika inspekcji
 
-| Name (Nazwa) | Typ | Opis |
+| Nazwa | Typ | Opis |
 | --- | --- | --- |
-| time |String |Znacznik czasu (w formacie UTC) dziennika |
-| resourceId |String |Identyfikator zasobu, która trwała operacja umieść na |
-| category |String |Kategoria dziennika. Na przykład **inspekcji**. |
-| operationName |String |Nazwa operacji, który jest zalogowany. Na przykład JobSubmitted. |
-| resultType |String |Podstan stan zadania (operationName). |
-| resultSignature |String |Więcej informacji na temat stanu zadania (operationName). |
-| identity |String |Użytkownik, który zażądał operacji. Na przykład susan@contoso.com. |
-| properties |JSON |W następnej sekcji (schemat właściwości dziennika inspekcji) Aby uzyskać szczegółowe informacje |
+| time |Ciąg |Sygnatura czasowa (w czasie UTC) dziennika |
+| resourceId |Ciąg |Identyfikator zasobu, który operacja miała miejsce na |
+| category |Ciąg |Kategoria dziennika. Na przykład **Inspekcja**. |
+| operationName |Ciąg |Nazwa operacji, która jest rejestrowana. Na przykład JobSubmitted. |
+| resultType |Ciąg |Podstatus stanu zadania (operationName). |
+| resultSignature |Ciąg |Dodatkowe szczegóły dotyczące stanu zadania (operationName). |
+| identity |Ciąg |Użytkownik, który zażądał operacji. Na przykład susan@contoso.com. |
+| properties |JSON |Szczegółowe informacje można znaleźć w następnej sekcji (Schemat właściwości dziennika inspekcji) |
 
 > [!NOTE]
-> **Typ resultType** i **resultSignature** zawierają informacje na temat wynik operacji i zawierać tylko wartości, jeśli operacja została ukończona. Na przykład tylko z wartościami, gdy **operationName** znajduje się wartość **JobStarted** lub **JobEnded**.
+> **resultType** i **resultSygnatura** podają informacje o wyniku operacji i zawierają wartość tylko wtedy, gdy operacja została zakończona. Na przykład zawierają one tylko wartość, gdy **operationName** zawiera wartość **JobStarted** lub **JobEnded**.
 >
 >
 
 #### <a name="audit-log-properties-schema"></a>Schemat właściwości dziennika inspekcji
 
-| Name (Nazwa) | Typ | Opis |
+| Nazwa | Typ | Opis |
 | --- | --- | --- |
-| JobId |String |Identyfikator przypisany do zlecenia |
-| JobName |String |Nazwa która została podana dla zadania |
-| JobRunTime |String |Środowiska uruchomieniowego użytego do przetworzenia zadania |
-| SubmitTime |String |Czas (w formacie UTC), które przesłano zadanie |
-| StartTime |String |Uruchomienia zadania uruchamiania po przesłaniu wizualizacji (w formacie UTC) |
-| EndTime |String |Czas zakończenia zadania |
-| Równoległość |String |Liczba wymagane dla tego zadania podczas przesyłania jednostki usługi Data Lake Analytics |
+| JobId |Ciąg |Identyfikator przypisany do zadania |
+| Jobname |Ciąg |Nazwa, która została podana dla zadania |
+| Czas pracy |Ciąg |Środowisko wykonawcze używane do przetwarzania zadania |
+| Czas przesyłania |Ciąg |Czas (w czasie UTC), w której zadanie zostało przesłane |
+| StartTime |Ciąg |Czas rozpoczęcia pracy po przesłaniu (w czasie UTC) |
+| EndTime |Ciąg |Czas zakończenia zadania |
+| Równoległości prostych |Ciąg |Liczba jednostek Data Lake Analytics wymaganych dla tego zadania podczas przesyłania |
 
 > [!NOTE]
-> **SubmitTime**, **StartTime**, **EndTime**, i **równoległości** zawierają informacje na temat operacji. Te wpisy tylko zawierać wartości, jeśli operacja ma rozpoczęciu lub zakończeniu, które. Na przykład **SubmitTime** zawiera tylko wartości po **operationName** ma wartość **JobSubmitted**.
+> **SubmitTime**, **StartTime**, **EndTime**i **Równoległość** zawierają informacje o operacji. Te wpisy zawierają wartość tylko wtedy, gdy ta operacja została uruchomiona lub ukończona. Na przykład **SubmitTime** zawiera tylko wartość po **operationName** ma wartość **JobSubmitted**.
 
 ## <a name="process-the-log-data"></a>Przetwarzanie danych dziennika
 
-Usługa Azure Data Lake Analytics zawiera przykładowy na temat sposobu przetwarzania i analizowania danych dziennika. Można znaleźć przykład w [ https://github.com/Azure/AzureDataLake/tree/master/Samples/AzureDiagnosticsSample ](https://github.com/Azure/AzureDataLake/tree/master/Samples/AzureDiagnosticsSample).
+Usługa Azure Data Lake Analytics zawiera przykład sposobu przetwarzania i analizowania danych dziennika. Przykład można znaleźć [https://github.com/Azure/AzureDataLake/tree/master/Samples/AzureDiagnosticsSample](https://github.com/Azure/AzureDataLake/tree/master/Samples/AzureDiagnosticsSample)w pliku .
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 * [Omówienie usługi Azure Data Lake Analytics](data-lake-analytics-overview.md)

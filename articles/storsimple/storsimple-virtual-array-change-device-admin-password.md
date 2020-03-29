@@ -1,6 +1,6 @@
 ---
-title: Zmienianie hasła administratora urządzenia StorSimple Virtual Array | Dokumentacja firmy Microsoft
-description: W tym artykule opisano, jak zmienić hasło administratora urządzenia za pomocą witryny Azure portal lub interfejsu użytkownika sieci web macierzy wirtualnej StorSimple.
+title: Zmień hasło administratora urządzenia StorSimple Virtual Array | Dokumenty firmy Microsoft
+description: W tym artykule opisano, jak zmienić hasło administratora urządzenia za pomocą portalu Azure lub interfejsu użytkownika sieci Web Tablicy wirtualnej StorSimple.
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -16,67 +16,67 @@ ms.date: 02/27/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 5308badf439254062a8aefca1840eb21bc234ace
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60580414"
 ---
-# <a name="change-the-storsimple-virtual-array-device-administrator-password-via-storsimple-device-manager"></a>Zmień hasło administratora urządzenia StorSimple Virtual Array za pośrednictwem Menedżera urządzeń StorSimple
+# <a name="change-the-storsimple-virtual-array-device-administrator-password-via-storsimple-device-manager"></a>Zmienianie hasła administratora urządzenia StorSimple Virtual Array za pośrednictwem Menedżera urządzeń StorSimple
 
 ## <a name="overview"></a>Omówienie
 
-Korzystając z interfejsu programu Windows PowerShell na dostęp do macierzy wirtualnej StorSimple, musisz wprowadzić hasło administratora urządzenia. Gdy urządzenie StorSimple jest najpierw zainicjowano obsługę administracyjną i uruchomiony, jest domyślne hasło *Password1*. Dla bezpieczeństwa danych domyślne hasło wygaśnie, logowania i są wymagane, aby zmienić to hasło po raz pierwszy.
+Podczas uzyskiwania dostępu do tablicy wirtualnej StorSimple za pomocą interfejsu programu Windows PowerShell wymagane jest wprowadzenie hasła administratora urządzenia. Gdy urządzenie StorSimple jest po raz pierwszy aprowizowane i uruchomione, domyślnym hasłem jest *Password1*. Ze względów bezpieczeństwa danych domyślne hasło wygasa przy pierwszym loguch i konieczności zmiany tego hasła.
 
-Aby zmienić hasło administratora urządzenia w dowolnym momencie po wdrożeniu urządzenia w środowisku produkcyjnym, można użyć lokalnego Interfejsu w przeglądarce lub w portalu Azure. W tym artykule opisano każdy z tych procedur.
+Można również użyć lokalnego interfejsu użytkownika sieci web lub witryny Azure portal, aby zmienić hasło administratora urządzenia w dowolnym momencie po wdrożeniu urządzenia w środowisku produkcyjnym. Każda z tych procedur jest opisana w tym artykule.
 
- ![Blok urządzeń](./media/storsimple-virtual-array-change-device-admin-password/ova-devices-blade.png)
+ ![ostrze urządzeń](./media/storsimple-virtual-array-change-device-admin-password/ova-devices-blade.png)
 
-## <a name="use-the-azure-portal-to-change-the-password"></a>Użyj witryny Azure portal, aby zmienić hasło
+## <a name="use-the-azure-portal-to-change-the-password"></a>Zmień hasło za pomocą portalu Azure
 
-Wykonaj poniższe kroki, aby zmienić hasło administratora urządzenia za pośrednictwem witryny Azure portal.
+Wykonaj następujące kroki, aby zmienić hasło administratora urządzenia za pośrednictwem witryny Azure portal.
 
 #### <a name="to-change-the-device-administrator-password-via-the-azure-portal"></a>Aby zmienić hasło administratora urządzenia za pośrednictwem witryny Azure portal
 
-1. Na stronie docelowej usługi, wybierz usługę, kliknij dwukrotnie nazwę usługi i następnie w ramach **zarządzania** kliknij **urządzeń**. Spowoduje to otwarcie **urządzeń** bloku, który zawiera listę wszystkich urządzeń StorSimple Virtual Array.
+1. Na stronie docelowej usługi wybierz usługę, kliknij dwukrotnie nazwę usługi, a następnie w sekcji **Zarządzanie** kliknij pozycję **Urządzenia**. Spowoduje to otwarcie **urządzenia** bloku, który zawiera listę wszystkich urządzeń StorSimple Virtual Array.
 
-2. W **urządzeń** bloku, kliknij dwukrotnie urządzenie wymaga zmiany hasła.
+2. W **bloku Urządzenia** kliknij dwukrotnie urządzenie, które wymaga zmiany hasła.
 
-3. W **ustawienia** bloku dla urządzenia, kliknij przycisk **zabezpieczeń**.
+3. W bloku **Ustawienia** urządzenia kliknij pozycję **Zabezpieczenia**.
 
-4. W **ustawienia zabezpieczeń** blok, wykonaj następujące czynności:
+4. W bloku **Ustawienia zabezpieczeń** wykonaj następujące czynności:
    
-   1. Przewiń w dół do **hasło administratora urządzenia** sekcji. Podaj hasło administratora, który zawiera od 8 do 15 znaków.
+   1. Przewiń w dół do sekcji **Hasło administratora urządzenia.** Podaj hasło administratora zawierające od 8 do 15 znaków.
    2. Potwierdź hasło.
-   3. Kliknij pozycję **Zapisz** w górnej części bloku.
+   3. Kliknij **pozycję Zapisz** w górnej części bloku.
 
-Hasło administratora urządzenia jest już uaktualniona. To hasło zmodyfikowane służy do uzyskania dostępu do urządzenia lokalnego.
+Hasło administratora urządzenia jest teraz aktualizowane. Możesz użyć tego zmodyfikowanego hasła, aby uzyskać dostęp do urządzenia lokalnie.
 
-![Blok ustawienia zabezpieczeń](./media/storsimple-virtual-array-change-device-admin-password/ova-change-device-pwd.png)
+![Blok ustawień zabezpieczeń](./media/storsimple-virtual-array-change-device-admin-password/ova-change-device-pwd.png)
 
-## <a name="use-the-local-web-ui-to-change-the-password"></a>Aby zmienić hasło przy użyciu lokalnego Interfejsu w przeglądarce
+## <a name="use-the-local-web-ui-to-change-the-password"></a>Zmiana hasła za pomocą lokalnego interfejsu użytkownika sieci Web
 
-Wykonaj poniższe kroki, aby zmienić hasło administratora urządzenia za pomocą lokalnego Interfejsu w przeglądarce.
+Wykonaj następujące kroki, aby zmienić hasło administratora urządzenia za pośrednictwem lokalnego interfejsu użytkownika sieci Web.
 
-#### <a name="to-change-the-device-administrator-password-via-the-local-web-ui"></a>Aby zmienić hasło administratora urządzenia za pomocą lokalnego internetowego interfejsu użytkownika
+#### <a name="to-change-the-device-administrator-password-via-the-local-web-ui"></a>Aby zmienić hasło administratora urządzenia za pośrednictwem lokalnego interfejsu użytkownika sieci Web
 
-1. W lokalnym internetowym interfejsie użytkownika, kliknij przycisk **konserwacji** > **zmiany hasła** dla Twojego urządzenia.
+1. W lokalnym interfejsie użytkownika sieci Web kliknij pozycję**Zmiana hasła** **konserwacji** > urządzenia.
    
-    ![Zmień password1](./media/storsimple-virtual-array-change-device-admin-password/image40.png)
+    ![zmienianie hasła1](./media/storsimple-virtual-array-change-device-admin-password/image40.png)
 2. Wprowadź **bieżące hasło**.
-3. Podaj **nowe hasło**. Hasło musi mieć co najmniej 8 znaków. Musi zawierać 3 z 4 z następujących: wielkie litery, małe litery, cyfry i znaki specjalne.
+3. Podaj **nowe hasło**. Hasło musi mieć co najmniej 8 znaków. Musi zawierać 3 z 4 z następujących znaków: wielkie, małe, numeryczne i znaki specjalne.
    
-    Należy pamiętać, hasło nie może być taka sama jak ostatnie 24 haseł.
+    Pamiętaj, że hasło nie może być takie samo jak ostatnie 24 hasła.
 4. Wprowadź ponownie hasło w celu potwierdzenia.
    
-    ![Zmień password2](./media/storsimple-virtual-array-change-device-admin-password/image41.png)
-5. W dolnej części strony kliknij **Zastosuj**. Nowego hasła są teraz stosowane. Jeśli zmiany hasła zakończy się niepowodzeniem, zostanie wyświetlony następujący błąd:
+    ![zmienianie hasła2](./media/storsimple-virtual-array-change-device-admin-password/image41.png)
+5. U dołu strony kliknij pozycję **Zastosuj**. Nowe hasło jest teraz stosowane. Jeśli zmiana hasła nie powiedzie się, zostanie wyświetlony następujący błąd:
    
-    ![Błąd hasła](./media/storsimple-virtual-array-change-device-admin-password/image42.png)
+    ![błąd hasła](./media/storsimple-virtual-array-change-device-admin-password/image42.png)
    
-    Po pomyślnym zaktualizowaniu hasło, otrzymasz powiadomienie. Następnie służy to zmodyfikowane hasło dostępu do tego urządzenia lokalnie.
+    Po pomyślnym zaktualizowaniu hasła użytkownik zostanie o tym powiadomiony. Następnie można użyć tego zmodyfikowanego hasła, aby uzyskać dostęp do urządzenia lokalnie.
 
 
-## <a name="next-steps"></a>Kolejne kroki
-Dowiedz się, jak [administrowania rozwiązania StorSimple Virtual Array](storsimple-ova-web-ui-admin.md).
+## <a name="next-steps"></a>Następne kroki
+Dowiedz się, jak [administrować tablicą wirtualną StorSimple](storsimple-ova-web-ui-admin.md).
 
