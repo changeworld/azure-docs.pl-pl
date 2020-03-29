@@ -1,6 +1,6 @@
 ---
-title: Wywołaj interfejsy API sieci Web z aplikacji klasycznej — Microsoft Identity platform | Azure
-description: Dowiedz się, jak utworzyć aplikację klasyczną wywołującą interfejsy API sieci Web
+title: Wywoływanie internetowych interfejsów API z aplikacji klasycznej — platforma tożsamości firmy Microsoft | Azure
+description: Dowiedz się, jak utworzyć aplikację klasyczną, która wywołuje internetowe interfejsy API
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -15,26 +15,26 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: 2b3d9fdc163d0661670f3d0cf6e6a276c8b691bd
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76702168"
 ---
-# <a name="desktop-app-that-calls-web-apis-call-a-web-api"></a>Aplikacja klasyczna, która wywołuje interfejsy API sieci Web: wywoływanie interfejsu API sieci Web
+# <a name="desktop-app-that-calls-web-apis-call-a-web-api"></a>Aplikacja klasyczna wywołująca internetowe interfejsy API: wywoływanie internetowego interfejsu API
 
-Teraz, gdy masz token, możesz wywołać chroniony internetowy interfejs API.
+Teraz, gdy masz token, można wywołać chroniony interfejs API sieci web.
 
 ## <a name="call-a-web-api"></a>Wywoływanie interfejsu API sieci Web
 
-# <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
+# <a name="net"></a>[.NET](#tab/dotnet)
 
 [!INCLUDE [Call web API in .NET](../../../includes/active-directory-develop-scenarios-call-apis-dotnet.md)]
 
 <!--
 More includes will come later for Python and Java
 -->
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 ```Python
 endpoint = "url to the API"
@@ -44,7 +44,7 @@ http_headers = {'Authorization': 'Bearer ' + result['access_token'],
 data = requests.get(endpoint, headers=http_headers, stream=False).json()
 ```
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 ```Java
 HttpURLConnection conn = (HttpURLConnection) url.openConnection();
@@ -63,13 +63,13 @@ if(responseCode != HttpURLConnection.HTTP_OK) {
 JSONObject responseObject = HttpClientHelper.processResponse(responseCode, response);
 ```
 
-# <a name="macostabmacos"></a>[MacOS](#tab/macOS)
+# <a name="macos"></a>[Macos](#tab/macOS)
 
-## <a name="call-a-web-api-in-msal-for-ios-and-macos"></a>Wywoływanie interfejsu API sieci Web w programie MSAL dla systemów iOS i macOS
+## <a name="call-a-web-api-in-msal-for-ios-and-macos"></a>Wywoływanie internetowego interfejsu API w systemie MSAL dla systemu iOS i macOS
 
-Metody uzyskiwania tokenów zwracają `MSALResult` obiektu. `MSALResult` uwidacznia Właściwość `accessToken`, która może służyć do wywoływania internetowego interfejsu API. Dodaj token dostępu do nagłówka autoryzacji HTTP przed wywołaniem dostępu do chronionego internetowego interfejsu API.
+Metody uzyskiwania tokenów `MSALResult` zwracają obiekt. `MSALResult`udostępnia `accessToken` właściwość, która może służyć do wywoływania interfejsu API sieci web. Dodaj token dostępu do nagłówka autoryzacji HTTP przed wywołaniem dostępu do chronionego interfejsu API sieci web.
 
-Cel-C:
+Cel C:
 
 ```objc
 NSMutableURLRequest *urlRequest = [NSMutableURLRequest new];
@@ -83,7 +83,7 @@ NSURLSessionDataTask *task =
 [task resume];
 ```
 
-Adres
+Swift:
 
 ```swift
 let urlRequest = NSMutableURLRequest()
@@ -95,9 +95,9 @@ let task = URLSession.shared.dataTask(with: urlRequest as URLRequest) { (data: D
 task.resume()
 ```
 
-## <a name="call-several-apis-incremental-consent-and-conditional-access"></a>Wywoływanie kilku interfejsów API: przyrostowej zgody i dostępu warunkowego
+## <a name="call-several-apis-incremental-consent-and-conditional-access"></a>Wywoływanie kilku interfejsów API: przyrostowa zgoda i dostęp warunkowy
 
-Aby wywołać kilka interfejsów API dla tego samego użytkownika, po uzyskaniu tokenu dla pierwszego interfejsu API Wywołaj `AcquireTokenSilent`. Otrzymasz token dla innych interfejsów API w sposób cichy przez większość czasu.
+Aby wywołać kilka interfejsów API dla tego samego użytkownika, po `AcquireTokenSilent`dokonaniu tokenu dla pierwszego interfejsu API, wywołaj . Otrzymasz token dla innych interfejsów API po cichu przez większość czasu.
 
 ```csharp
 var result = await app.AcquireTokenXX("scopeApi1")
@@ -107,10 +107,10 @@ result = await app.AcquireTokenSilent("scopeApi2")
                   .ExecuteAsync();
 ```
 
-Interakcja jest wymagana w przypadku:
+Interakcja jest wymagana, gdy:
 
-- Użytkownik wyraził zgodę na pierwszy interfejs API, ale teraz musi powyrazić zgody na więcej zakresów. Ten rodzaj zgody jest znany jako poprzednia zgoda.
-- Pierwszy interfejs API nie wymagał uwierzytelniania wieloskładnikowego, ale Następna z nich robi.
+- Użytkownik wyraził zgodę na pierwszy interfejs API, ale teraz musi wyrazić zgodę na więcej zakresów. Ten rodzaj zgody jest znany jako zgoda przyrostowa.
+- Pierwszy interfejs API nie wymaga uwierzytelniania wieloskładnikowego, ale następny nie.
 
 ```csharp
 var result = await app.AcquireTokenXX("scopeApi1")
@@ -133,4 +133,4 @@ catch(MsalUiRequiredException ex)
 ## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Przenieś do środowiska produkcyjnego](scenario-desktop-production.md)
+> [Przenoszenie do środowiska produkcyjnego](scenario-desktop-production.md)

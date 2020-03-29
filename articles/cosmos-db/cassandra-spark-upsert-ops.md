@@ -1,6 +1,6 @@
 ---
-title: UPSERT danych w usłudze Azure Cosmos DB Cassandra interfejs API, z platformy Spark
-description: Ten artykuł zawiera instrukcje upsert do tabel na interfejs API usługi Azure Cosmos DB Cassandra z platformy Spark
+title: Dane upsert w interfejsie API Cassandra usługi Azure Cosmos DB z platformy Spark
+description: W tym artykule opisano, jak wprowadzić usługę upsert do tabel w usłudze Azure Cosmos DB Cassandra API z platformy Spark
 author: kanshiG
 ms.author: govindk
 ms.reviewer: sngun
@@ -9,17 +9,17 @@ ms.subservice: cosmosdb-cassandra
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.openlocfilehash: 7770e7fbe846defc865b3fcc702fcb00bae1b73c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60893422"
 ---
-# <a name="upsert-data-into-azure-cosmos-db-cassandra-api-from-spark"></a>UPSERT danych w usłudze Azure Cosmos DB Cassandra interfejs API, z platformy Spark
+# <a name="upsert-data-into-azure-cosmos-db-cassandra-api-from-spark"></a>Dane upsert w interfejsie API Cassandra usługi Azure Cosmos DB z platformy Spark
 
-W tym artykule opisano sposób upsert danych do interfejsu API usługi Azure Cosmos DB Cassandra z platformy Spark.
+W tym artykule opisano sposób wprowadzania danych w usłudze Azure Cosmos DB Cassandra API z platformy Spark.
 
-## <a name="cassandra-api-configuration"></a>Konfiguracja interfejsu API rozwiązania Cassandra
+## <a name="cassandra-api-configuration"></a>Konfiguracja interfejsu API Cassandra
 
 ```scala
 import org.apache.spark.sql.cassandra._
@@ -46,9 +46,9 @@ spark.conf.set("spark.cassandra.output.batch.grouping.buffer.size", "1000")
 spark.conf.set("spark.cassandra.connection.keep_alive_ms", "600000000")
 ```
 
-## <a name="dataframe-api"></a>Ramka danych interfejsu API
+## <a name="dataframe-api"></a>Interfejs API dla ram danych
 
-### <a name="create-a-dataframe"></a>Utwórz ramkę danych 
+### <a name="create-a-dataframe"></a>Tworzenie ramki danych 
 
 ```scala
 // (1) Update: Changing author name to include prefix of "Sir"
@@ -83,14 +83,14 @@ booksUpsertDF.write
 cdbConnector.withSessionDo(session => session.execute("update books_ks.books set book_price=99.33 where book_id ='b00300';"))
 ```
 
-## <a name="rdd-api"></a>INTERFEJS API RDD
+## <a name="rdd-api"></a>RDD API
 > [!NOTE]
-> UPSERT z interfejsu API RDD jest taka sama jak w operacji tworzenia 
+> Upsert z interfejsu API RDD jest taki sam jak operacja tworzenia 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Przejdź do następujące artykuły, aby wykonywać inne operacje na danych przechowywanych w tabelach interfejsu API usługi Azure Cosmos DB Cassandra:
+Przejdź do następujących artykułów, aby wykonać inne operacje na danych przechowywanych w tabelach interfejsu API usługi Azure Cosmos DB Cassandra:
  
-* [Operacje usuwania](cassandra-spark-delete-ops.md)
+* [Usuwanie operacji](cassandra-spark-delete-ops.md)
 * [Operacje agregacji](cassandra-spark-aggregation-ops.md)
 * [Operacje kopiowania tabeli](cassandra-spark-table-copy-ops.md)

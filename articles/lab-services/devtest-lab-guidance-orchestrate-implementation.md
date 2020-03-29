@@ -1,6 +1,6 @@
 ---
-title: Organizowanie wdrażania usługi Azure DevTest Labs
-description: Ten artykuł zawiera wskazówki dotyczące organizowanie wdrożenia usługi Azure DevTest Labs w Twojej organizacji.
+title: Organizowanie implementacji laboratoriów DevTest w usłudze Azure
+description: Ten artykuł zawiera wskazówki dotyczące organizowania implementacji platformy Azure DevTest Labs w organizacji.
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -14,51 +14,51 @@ ms.date: 02/11/2019
 ms.author: spelluru
 ms.reviewer: christianreddington,anthdela,juselph
 ms.openlocfilehash: e0ac09a68bda539fe7abd05fce1739d1a58a3c99
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "62127348"
 ---
-# <a name="orchestrate-the-implementation-of-azure-devtest-labs"></a>Organizowanie wdrażania usługi Azure DevTest Labs
-Ten artykuł zawiera zalecane podejście do szybkiego wdrażania i stosowania usługi Azure DevTest Labs. Poniższa ilustracja kładzie nacisk całego procesu jako wskazówki podczas obserwowania elastyczność do obsługi różnych wymagania branżowe i scenariuszy.
+# <a name="orchestrate-the-implementation-of-azure-devtest-labs"></a>Organizowanie implementacji laboratoriów DevTest azure
+Ten artykuł zawiera zalecane podejście do szybkiego wdrażania i wdrażania platformy Azure DevTest Labs. Poniższa ilustracja podkreśla ogólny proces jako wskazówki nakazowe, przestrzegając jednocześnie elastyczności obsługi różnych wymagań i scenariuszy branżowych.
 
-![Kroki dotyczące wdrażania usługi Azure DevTest Labs](./media/devtest-lab-guidance-orchestrate-implementation/implementation-steps.png)
+![Kroki wdrażania laboratoriów DevTest Azure](./media/devtest-lab-guidance-orchestrate-implementation/implementation-steps.png)
 
 ## <a name="assumptions"></a>Założenia
-W tym artykule założono, że następujące elementy w miejscu przed wdrożeniem pilotażu DevTest Labs:
+W tym artykule założono, że masz następujące elementy w miejscu przed wdrożeniem pilotażu DevTest Labs:
 
-- **Subskrypcja platformy Azure**: Zespołu pilotażowego ma dostęp do wdrażania zasobów w subskrypcji platformy Azure. W przypadku obciążeń tylko tworzenia i testowania aplikacji, zaleca się wybranie oferty Enterprise DevTest dodatkowe dostępnych obrazów i niższe stawki na maszynach wirtualnych Windows.
-- **Dostęp do lokalnego**: Jeśli to konieczne, dostępu do lokalnego została już skonfigurowana. Dostępu do lokalnego może się odbywać za pośrednictwem połączenia sieci VPN typu lokacja lokacja lub Expressroute. Połączeń za pomocą usługi Express Route zazwyczaj może trwać wiele tygodni ustanowić, zaleca się mieć Express Route w miejscu przed rozpoczęciem projektu.
-- **Pilotażowy zespoły**: Zespoły projektu początkowego projektowania, które korzysta z usługi DevTest Labs wykryto wraz z odpowiednich rozwoju lub testowania działania i określać wymagania/celów/wyznaczone cele dotyczące tych zespołów.
+- **Subskrypcja platformy Azure:** zespół pilotażowy ma dostęp do wdrażania zasobów w ramach subskrypcji platformy Azure. Jeśli obciążenia są tylko rozwoju i testowania, zaleca się, aby wybrać ofertę Enterprise DevTest dla dodatkowych dostępnych obrazów i niższych stawek na maszynach wirtualnych systemu Windows.
+- **Dostęp lokalny**: W razie potrzeby dostęp lokalny został już skonfigurowany. Dostęp lokalny można uzyskać za pośrednictwem połączenia sieci VPN lokacja lokacja lub za pośrednictwem trasy ekspresowej. Połączenie za pośrednictwem trasy ekspresowej może zwykle potrwać wiele tygodni, aby ustalić, zaleca się, aby mieć express route w miejscu przed rozpoczęciem projektu.
+- **Zespoły pilotażowe:** Początkowy zespół (zespoły) projektu rozwoju, który korzysta z DevTest Labs został zidentyfikowany wraz z odpowiednimi działaniami rozwojowymi lub testowymi i ustanawia wymagania/cele/cele dla tych zespołów.
 
-## <a name="milestone-1-establish-initial-network-topology-and-design"></a>Punkt kontrolny 1: Ustanów sieciowego początkowej topologii i projekt
-Pierwszy obszar koncentracji uwagi podczas wdrażania rozwiązania w usłudze Azure DevTest Labs jest ustanowienie planowane łączności dla maszyn wirtualnych. Poniższe kroki przedstawiają niezbędnych procedur:
+## <a name="milestone-1-establish-initial-network-topology-and-design"></a>Kamień milowy 1: Ustanowienie wstępnej topologii i projektowania sieci
+Pierwszym obszarem zainteresowania podczas wdrażania rozwiązania Azure DevTest Labs jest ustanowienie planowanej łączności dla maszyn wirtualnych. Następujące kroki przedstawiają niezbędne procedury:
 
-1. Zdefiniuj **początkowej zakresów adresów IP** są przypisane do subskrypcji usługi DevTest Labs na platformie Azure. Ten krok wymaga prognozowania oczekiwanego użycia w wielu maszyn wirtualnych, tak, aby można było zapewnić dużą wystarczająco dużo bloku na przyszłe rozszerzenia.
-2. Identyfikowanie **metody żądanego dostępu** w laboratoria DevTest Lab (na przykład dostęp zewnętrznych / wewnętrzny). Kluczowym punktem, w tym kroku ma na celu określenie, czy maszyny wirtualne mają publiczne adresy IP (czyli dostępne z Internetu, bezpośrednio).
-3. Identyfikowanie i ustanowić **metody łączności** z pozostałą częścią platformy Azure i w chmurze środowisko lokalne. Jeśli włączono wymuszone routing z usługą Express Route, jest prawdopodobne, że maszyny wirtualne muszą odpowiednie konfiguracje, aby przechodzić przez zapory firmowej.
-4. Jeśli maszyny wirtualne mają być **przyłączonych do domeny**, określić, czy dołączyć domeny oparte na chmurze (usługi katalogu usługi AAD na przykład) lub w domenie lokalnej. Dla lokalnego należy określić które jednostki organizacyjnej (OU) w usłudze active directory, który łączy się maszyn wirtualnych. Ponadto upewnij się, że użytkownicy mają dostęp do przyłączenia (lub utworzyć konto usługi, który ma możliwość tworzenia rekordów komputera w domenie)
+1. Zdefiniuj **początkowe zakresy adresów IP,** które są przypisane do subskrypcji DevTest Labs na platformie Azure. Ten krok wymaga prognozowania oczekiwanego użycia w liczbie maszyn wirtualnych, dzięki czemu można podać wystarczająco duży blok dla przyszłego rozszerzenia.
+2. Identyfikowanie **metod żądanego dostępu** do Laboratoriów DevTest (na przykład dostęp zewnętrzny / wewnętrzny). Kluczowym punktem w tym kroku jest ustalenie, czy maszyny wirtualne mają publiczne adresy IP (czyli dostępne bezpośrednio z Internetu).
+3. Identyfikowanie i **ustanawianie metod łączności** z pozostałymi środowiskach chmury platformy Azure i lokalnymi. Jeśli wymuszona routing z marszrutą ekspresową jest włączona, prawdopodobnie maszyny wirtualne potrzebują odpowiednich konfiguracji serwera proxy, aby przechodzić przez zaporę firmową.
+4. Jeśli maszyny wirtualne mają być **przyłączone**do domeny, należy określić, czy dołączają do domeny opartej na chmurze (na przykład usługi katalogowe AAD) lub domeny lokalnej. W przypadku jednostek lokalnych należy określić, która jednostka organizacyjna (OU) w usłudze Active Directory, do której przyłączają się maszyny wirtualne. Ponadto upewnij się, że użytkownicy mają dostęp do dołączenia (lub ustanowić konto usługi, które ma możliwość tworzenia rekordów komputera w domenie)
 
-## <a name="milestone-2-deploy-the-pilot-lab"></a>Punkt kontrolny 2: Wdrażanie pilotażowe laboratorium
-Po umieszczeniu topologii sieci w miejscu laboratorium pierwszy/projekt pilotażowy można utworzyć, wykonując następujące kroki:
+## <a name="milestone-2-deploy-the-pilot-lab"></a>Kamień milowy 2: Wdrożenie laboratorium pilotażowego
+Po wprowadzeniu topologii sieci można utworzyć pierwsze/pilotażowe laboratorium, wykonując następujące kroki:
 
-1. Tworzenie środowiska usługi DevTest Labs początkowej (instrukcje krok po kroku można znaleźć [tutaj](https://github.com/Azure/fta-devops/blob/master/devtest-labs/articles/devtest-labs-walkthrough-it.md))
-2. Określ dopuszczalny rozmiar obrazów maszyn wirtualnych i rozmiarach do użytku z programem lab. Zdecyduj, czy obrazy niestandardowe można przekazać na platformę Azure do użycia z usługą DevTest Labs.
-3. Bezpieczny dostęp do laboratorium, tworząc początkowej ról Base dostęp do formantów (RBAC) dla lab (laboratorium właścicieli i użytkowników laboratorium). Zalecane jest użycie kont synchronizacja usługi active directory z usługą Azure Active Directory dla tożsamości z usługą DevTest Labs.
-4. Konfigurowanie usługi DevTest Labs korzystania z zasad, takie jak harmonogramy, koszt zarządzania, przejęcia maszyn wirtualnych, niestandardowych obrazów i formuł.
-5. Należy ustanowić repozytorium online, takich jak Azure repozytoriów/Git.
-6. Zdecyduj, przy użyciu repozytoriów publicznych lub prywatnych lub kombinację obu tych elementów. Organizowanie szablonów JSON dla wdrożeń i sustainment długoterminowego.
-7. Jeśli to konieczne, należy utworzyć niestandardowe artefakty. Ten krok jest opcjonalny. 
+1. Tworzenie początkowego środowiska DevTest Labs (instrukcje krok po kroku można znaleźć [tutaj)](https://github.com/Azure/fta-devops/blob/master/devtest-labs/articles/devtest-labs-walkthrough-it.md)
+2. Określ dopuszczalne obrazy i rozmiary maszyn wirtualnych do użycia w laboratorium. Zdecyduj, czy obrazy niestandardowe mogą być przekazywane na platformę Azure do użytku z DevTest Labs.
+3. Bezpieczny dostęp do laboratorium przez utworzenie początkowych kontroli dostępu do bazy ról (RBAC) dla laboratorium (właścicieli laboratoriów i użytkowników laboratorium). Zaleca się używanie zsynchronizowanych kont usługi Active Directory z usługą Azure Active Directory dla tożsamości w laboratoriach DevTest.
+4. Skonfiguruj laboratoria DevTest, aby używały zasad, takich jak harmonogramy, zarządzanie kosztami, maszyny wirtualne, niestandardowe obrazy lub formuły.
+5. Ustanowienie repozytorium online, takiego jak Repozytorium azure/Git.
+6. Zdecyduj o korzystaniu z publicznych lub prywatnych repozytoriów lub kombinacji obu tych repozytoriów. Organizowanie szablonów JSON dla wdrożeń i długoterminowego utrzymania.
+7. W razie potrzeby utwórz niestandardowe artefakty. Ten krok jest opcjonalny. 
 
-## <a name="milestone-3-documentation-support-learn-and-improve"></a>Punkt kontrolny 3: Dokumentacji, pomocy technicznej, Dowiedz się więcej i poprawy
-Początkowej zespołów pilotowego może wymagać szczegółowe pomocy technicznej dla klientów zaczynających pracę. Użyj swojego środowiska, aby zapewnić dokumentację i pomoc techniczna jest w miejscu na potrzeby ciągłego wdrażania usługi Azure DevTest Labs.
+## <a name="milestone-3-documentation-support-learn-and-improve"></a>Kamień milowy 3: Dokumentacja, wsparcie, nauka i ulepszanie
+Początkowe zespoły pilotażowe mogą wymagać dogłębnej pomocy technicznej przy rozpoczęciu pracy. Użyj ich środowiska, aby upewnić się, że odpowiednia dokumentacja i pomoc techniczna jest w miejscu do dalszego wdrażania platformy Azure DevTest Labs.
 
-1. Wprowadzenie zespołów pilotowego do swoich nowych zasobów DevTest Labs (pokazy, dokumentacja)
-2. Na podstawie doświadczeń zespołów pilotowego, planowanie i dostarczaj dokumentację, zgodnie z potrzebami
-3. Formalnego proces dołączania nowe zespoły (Tworzenie i konfigurowanie laboratoriów, zapewniając dostęp, itp)
-4. Oparte na początkowej pobór, upewnij się, że oryginalna prognozy przestrzeni adresów IP nadal jest uzasadnione i dokładne
-5. Upewnij się, zostały ukończone odpowiednie przeglądy zgodności i zabezpieczeń
+1. Przedstawianie zespołów pilotażowych do nowych zasobów DevTest Labs (wersje demonstracyjne, dokumentacja)
+2. W oparciu o doświadczenia zespołów pilotażowych, planuj i dostarczaj dokumentację w razie potrzeby
+3. Sformalizować proces dołączania nowych zespołów (tworzenie i konfigurowanie laboratoriów, zapewnianie dostępu itp.)
+4. Na podstawie początkowego wykorzystania, sprawdź, czy pierwotna prognoza przestrzeni adresów IP jest nadal rozsądna i dokładna
+5. Zapewnienie odpowiednich przeglądów zgodności i zabezpieczeń
 
-## <a name="next-steps"></a>Kolejne kroki
-Zobacz następny artykuł w tej serii: [Zarządzanie infrastrukturą usługi Azure DevTest Labs](devtest-lab-guidance-governance-resources.md)
+## <a name="next-steps"></a>Następne kroki
+Zobacz następny artykuł z tej serii: [Zarządzanie infrastrukturą laboratoriów azure devtest](devtest-lab-guidance-governance-resources.md)

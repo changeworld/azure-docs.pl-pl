@@ -1,6 +1,6 @@
 ---
-title: Wiele szybkość transmisji bitów H264 16 x 9 dla systemu iOS | Dokumentacja firmy Microsoft
-description: Temat zawiera omówienie **wielu szybkość transmisji bitów H264 16 x 9 dla systemu iOS** ustawienie wstępne zadania.
+title: H264 Wielokrotna szybkość transmisji bitów 16x9 dla systemu iOS | Dokumenty firmy Microsoft
+description: W tym temacie przedstawiono omówienie ustawienia **h264 multiple bitrate 16x9 dla systemu iOS.**
 author: Juliako
 manager: femila
 editor: ''
@@ -15,21 +15,21 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
 ms.openlocfilehash: 358a44c59112aa4d2a235adcae1d34313afe6859
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "61129648"
 ---
 # <a name="h264-multiple-bitrate-16x9-for-ios"></a>Wielokrotna szybkość transmisji bitów H264 16x9 dla systemu iOS
-`Media Encoder Standard` definiuje zestaw kodowania ustawienia wstępne, których można użyć podczas tworzenia zadań kodowania. Można użyć `preset name` do określenia do formatu, który chcesz zakodować pliku multimedialnego. Lub można utworzyć własne JSON lub XML na podstawie ustawień wstępnych (przy użyciu kodowania UTF-8 lub UTF-16. Następnie należy wprowadzić niestandardowego ustawienia wstępnego z koderem. Aby uzyskać listę wszystkich wstępnie zdefiniowanych nazw obsługiwanych przez to `Media Encoder Standard` encoder, zobacz [ustawienia wstępne zadań usługi Media Encoder Standard](media-services-mes-presets-overview.md).  
+`Media Encoder Standard`definiuje zestaw ustawień predefiniowanych kodowania, których można używać podczas tworzenia zadań kodowania. Można użyć a, `preset name` aby określić, w jakim formacie chcesz zakodować plik multimedialny. Można też utworzyć własne ustawienia predefiniowane oparte na języku JSON lub XML (przy użyciu kodowania UTF-8 lub UTF-16. Następnie należy przekazać niestandardowe ustawienia predefiniowane do kodera. Aby uzyskać listę wszystkich predefiniowanych `Media Encoder Standard` nazw obsługiwanych przez ten koder, zobacz [Presety zadań dla standardu kodera multimediów](media-services-mes-presets-overview.md).  
   
- W tym temacie przedstawiono `H264 Multiple Bitrate 16x9 for iOS` wstępnie ustawione w formacie XML i JSON.  
+ W tym `H264 Multiple Bitrate 16x9 for iOS` temacie przedstawiono ustawienia predefiniowane w formacie XML i JSON.  
   
- To ustawienie wstępne tworzy zbiór 8 wyrównane GOP pliki MP4 z, od 8500 KB/s do 200 KB/s i stereo AAC audio. Aby uzyskać szczegółowe informacje o profilu szybkości transmisji bitów, próbkowanie wskaźnik, itp., to ustawień, sprawdź zdefiniowane poniżej w formacie JSON lub XML. Objaśnienia każdego elementu w tych oznacza, że ustawienia i prawidłowe wartości dla każdego elementu, zobacz [schemat usługi Media Encoder Standard](media-services-mes-schema.md) tematu.  
+ To ustawienie wstępne tworzy zestaw 8 plików MP4 wyrównanych do GOP, od 8500 kb/s do 200 kb/s i stereofoniczny dźwięk AAC. Aby uzyskać szczegółowe informacje na temat profilu, szybkości transmisji bitów, częstotliwości próbkowania itp. Aby uzyskać wyjaśnienia, co oznacza każdy element w tych ustawieniach predefiniowanych i prawidłowe wartości dla każdego elementu, zobacz temat [schematu Standardowy koder nośnika.](media-services-mes-schema.md)  
   
 > [!NOTE]
->  Podczas modyfikowania `Width` i `Height` wartości wielu warstw, upewnij się, że współczynnik proporcji pozostanie spójna. Na przykład: 1920x1080, 1280x720, 1080x576, 640x360. Nie należy używać kombinacji proporcji, takich jak: 1280x720, 720x480, 640x360.  
+>  Modyfikując `Width` wartości `Height` i wartości między warstwami, upewnij się, że współczynnik proporcji pozostaje spójny. Na przykład: 1920x1080, 1280x720, 1080x576, 640x360. Nie należy używać kombinacji współczynników proporcji, takich jak: 1280x720, 720x480, 640x360.  
   
  XML  
   

@@ -1,6 +1,6 @@
 ---
 title: Rejestrowanie aplikacji jednostronicowych — platforma tożsamości firmy Microsoft | Azure
-description: Dowiedz się, jak utworzyć aplikację jednostronicową (Rejestracja aplikacji)
+description: Dowiedz się, jak utworzyć aplikację jednostronicową (rejestracja aplikacji)
 services: active-directory
 documentationcenter: dev-center-name
 author: navyasric
@@ -15,35 +15,35 @@ ms.date: 05/07/2019
 ms.author: nacanuma
 ms.custom: aaddev
 ms.openlocfilehash: 5b18b10748e0587920c6965f1d235376da928469
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76701896"
 ---
-# <a name="single-page-application-app-registration"></a>Aplikacja jednostronicowa: Rejestracja aplikacji
+# <a name="single-page-application-app-registration"></a>Aplikacja jednostronicowa: rejestracja aplikacji
 
-Ta strona zawiera wyjaśnienia dotyczące rejestracji aplikacji dla aplikacji jednostronicowej (SPA).
+Na tej stronie opisano szczegóły rejestracji aplikacji dla aplikacji jednostronicowej (SPA).
 
-Postępuj zgodnie z instrukcjami, aby [zarejestrować nową aplikację na platformie tożsamości firmy Microsoft](quickstart-register-app.md), a następnie wybierz obsługiwane konta aplikacji. Scenariusz SPA może obsługiwać uwierzytelnianie z kontami w organizacji lub dowolną organizację i osobiste konta Microsoft.
+Wykonaj kroki, aby [zarejestrować nową aplikację na platformie tożsamości firmy Microsoft](quickstart-register-app.md)i wybierz obsługiwane konta dla aplikacji. Scenariusz SPA może obsługiwać uwierzytelnianie przy użyciu kont w organizacji lub dowolnej organizacji i osobistych kont Microsoft.
 
-Następnie zapoznaj się z określonymi aspektami rejestracji aplikacji, które mają zastosowanie do aplikacji jednostronicowych.
+Następnie zapoznaj się z konkretnymi aspektami rejestracji aplikacji, które mają zastosowanie do aplikacji jednostronicowych.
 
 ## <a name="register-a-redirect-uri"></a>Rejestrowanie identyfikatora URI przekierowania
 
-Przepływ niejawny wysyła tokeny w przekierowaniu do aplikacji jednostronicowej działającej w przeglądarce sieci Web. Ważne jest, aby zarejestrować identyfikator URI przekierowania, w którym aplikacja może odbierać tokeny. Upewnij się, że identyfikator URI przekierowania dokładnie odpowiada identyfikatorowi URI aplikacji.
+Przepływ niejawny wysyła tokeny w przekierowaniu do aplikacji jednostronicowej uruchomionej w przeglądarce sieci web. Dlatego ważne jest, aby zarejestrować identyfikator URI przekierowania, gdzie aplikacja może odbierać tokeny. Upewnij się, że identyfikator URI przekierowania dokładnie pasuje do identyfikatora URI dla aplikacji.
 
-W [Azure Portal](https://go.microsoft.com/fwlink/?linkid=2083908)przejdź do swojej zarejestrowanej aplikacji. Na stronie **uwierzytelnianie** w aplikacji wybierz platformę **sieci Web** . Wprowadź wartość identyfikatora URI przekierowania dla aplikacji w polu **Identyfikator URI przekierowania** .
+W [witrynie Azure portal](https://go.microsoft.com/fwlink/?linkid=2083908)przejdź do zarejestrowanej aplikacji. Na stronie **Uwierzytelnianie** aplikacji wybierz platformę **sieci Web.** Wprowadź wartość identyfikatora URI przekierowania dla aplikacji w polu **Przekierowanie identyfikatora URI.**
 
-## <a name="enable-the-implicit-flow"></a>Włącz przepływ niejawny
+## <a name="enable-the-implicit-flow"></a>Włączanie przepływu niejawnego
 
-Na tej samej stronie **uwierzytelniania** w obszarze **Ustawienia zaawansowane**należy również włączyć **niejawny**przydział. Jeśli aplikacja loguje się tylko do użytkowników i otrzymuje tokeny identyfikatora, wystarczy zaznaczyć pole wyboru **tokeny identyfikatorów** .
+Na tej samej stronie **uwierzytelniania** w obszarze **Ustawienia zaawansowane**należy również włączyć **niejawne przyznanie**. Jeśli aplikacja loguje się tylko do użytkowników i otrzymuje tokeny identyfikatorów, wystarczy zaznaczyć pole wyboru **tokeny identyfikatorów.**
 
-Jeśli aplikacja wymaga również uzyskania tokenów dostępu do wywoływania interfejsów API, pamiętaj o zaznaczeniu pola wyboru **tokeny dostępu** . Aby uzyskać więcej informacji, zobacz [identyfikatory tokenów](./id-tokens.md) i [tokeny dostępu](./access-tokens.md).
+Jeśli aplikacja musi również uzyskać tokeny dostępu do wywoływania interfejsów API, upewnij się, aby **zaznaczyć tokeny dostępu** pole wyboru, jak również. Aby uzyskać więcej informacji, zobacz [tokeny identyfikatorów](./id-tokens.md) i [tokeny dostępu](./access-tokens.md).
 
-## <a name="api-permissions"></a>Uprawnienia do interfejsu API
+## <a name="api-permissions"></a>Uprawnienia aplikacji
 
-Aplikacje jednostronicowe mogą wywoływać interfejsy API w imieniu zalogowanego użytkownika. Muszą oni zażądać uprawnień delegowanych. Aby uzyskać szczegółowe informacje, zobacz [Dodawanie uprawnień dostępu do interfejsów API sieci Web](quickstart-configure-app-access-web-apis.md#add-permissions-to-access-web-apis).
+Aplikacje jednostronicowe mogą wywoływać interfejsy API w imieniu zalogowanego użytkownika. Muszą zażądać delegowanych uprawnień. Aby uzyskać szczegółowe informacje, zobacz [Dodawanie uprawnień dostępu do internetowych interfejsów API](quickstart-configure-app-access-web-apis.md#add-permissions-to-access-web-apis).
 
 ## <a name="next-steps"></a>Następne kroki
 

@@ -1,6 +1,6 @@
 ---
-title: 'Java SDK: Operacje systemu plików w usłudze Azure Data Lake magazynu Gen1 | Dokumentacja firmy Microsoft'
-description: Użyj usługi Azure Storage Gen1 Java zestawu SDK Data Lake można wykonywać operacje systemu plików w Data Lake Storage Gen1, takie jak tworzenie folderów itp.
+title: 'Zestaw Java SDK: operacje systemu plików w usłudze Azure Data Lake Storage Gen1 | Dokumenty firmy Microsoft'
+description: Użyj narzędzia Azure Data Lake Storage Gen1 Java SDK do wykonywania operacji systemu plików w usłudze Data Lake Storage Gen1, takich jak tworzenie folderów itp.
 services: data-lake-store
 documentationcenter: ''
 author: twooley
@@ -13,28 +13,28 @@ ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: bc6e0718cdc4ccb18480dc760279da9c177db4cb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60877468"
 ---
-# <a name="filesystem-operations-on-azure-data-lake-storage-gen1-using-java-sdk"></a>Operacje systemu plików w usłudze Azure Data Lake magazynu Gen1 przy użyciu zestawu SDK języka Java
+# <a name="filesystem-operations-on-azure-data-lake-storage-gen1-using-java-sdk"></a>Operacje systemu plików w usłudze Azure Data Lake Storage Gen1 przy użyciu zestawu Java SDK
 > [!div class="op_single_selector"]
 > * [Zestaw SDK platformy .NET](data-lake-store-data-operations-net-sdk.md)
-> * [Zestaw SDK Java](data-lake-store-get-started-java-sdk.md)
-> * [Interfejs API REST](data-lake-store-data-operations-rest-api.md)
+> * [Java SDK](data-lake-store-get-started-java-sdk.md)
+> * [INTERFEJS API ODPOCZYNKU](data-lake-store-data-operations-rest-api.md)
 > * [Python](data-lake-store-data-operations-python.md)
 >
 > 
 
-Dowiedz się, jak używać usługi Azure Data Lake Storage Gen1 zestawu SDK Java, aby wykonywać podstawowe operacje, takie jak tworzenie folderów, przekazywanie i pobieranie plików danych itp. Aby uzyskać więcej informacji na temat Data Lake Storage Gen1 zobacz [usługi Azure Data Lake Storage Gen1](data-lake-store-overview.md).
+Dowiedz się, jak używać zestawu JavaDK usługi Azure Data Lake Storage Gen1 do wykonywania podstawowych operacji, takich jak tworzenie folderów, przekazywanie i pobieranie plików danych itp. Aby uzyskać więcej informacji na temat usługi Data Lake Storage Gen1, zobacz [Azure Data Lake Storage Gen1](data-lake-store-overview.md).
 
-Możesz uzyskać dostęp dokumentacja interfejsu API zestawu SDK języka Java Data Lake Storage Gen1 na [dokumentacja interfejsu API usługi Azure Data Lake Storage Gen1 Java](https://azure.github.io/azure-data-lake-store-java/javadoc/).
+Dostęp do dokumentów interfejsu API java SDK dla usługi Data Lake Storage Gen1 można uzyskać w [dokumentów interfejsu Java Java Azure Data Storage Gen1.](https://azure.github.io/azure-data-lake-store-java/javadoc/)
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 * Zestaw Java Development Kit (JDK 7 lub nowszy, korzystający z języka Java w wersji 1.7 lub nowszej)
-* Konta usługi Data Lake Storage Gen1. Postępuj zgodnie z instrukcjami w artykule [Rozpoczynanie pracy z usługą Azure Data Lake Storage Gen1 przy użyciu witryny Azure portal](data-lake-store-get-started-portal.md).
+* Konto Data Lake Storage Gen1. Postępuj zgodnie z instrukcjami w [usłudze Wprowadzenie do usługi Azure Data Lake Storage Gen1 przy użyciu witryny Azure portal.](data-lake-store-get-started-portal.md)
 * [Maven](https://maven.apache.org/install.html). Ten samouczek używa programu Maven na potrzeby zależności między kompilacją i projektem. Chociaż istnieje możliwość kompilacji bez używania systemu kompilacji, takiego jak Maven lub Gradle, systemy te znacznie ułatwiają zarządzanie zależnościami.
 * (Opcjonalnie) Wtyczka [IntelliJ IDEA](https://www.jetbrains.com/idea/download/) lub [Eclipse](https://www.eclipse.org/downloads/) przypominająca środowisko IDE lub podobna.
 
@@ -43,7 +43,7 @@ Przykładowy kod dostępny [w usłudze GitHub](https://azure.microsoft.com/docum
 
 1. Utwórz projekt Maven za pomocą polecenia [mvn archetype](https://maven.apache.org/guides/getting-started/maven-in-five-minutes.html) w wierszu polecenia lub w środowisku IDE. Aby uzyskać instrukcje dotyczące sposobu tworzenia projektu Java przy użyciu wtyczki IntelliJ, zobacz [tutaj](https://www.jetbrains.com/help/idea/2016.1/creating-and-running-your-first-java-application.html). Aby uzyskać instrukcje dotyczące sposobu tworzenia projektu Java przy użyciu wtyczki Eclipse, zobacz [tutaj](https://help.eclipse.org/mars/index.jsp?topic=%2Forg.eclipse.jdt.doc.user%2FgettingStarted%2Fqs-3.htm). 
 
-2. Dodaj poniższe zależności do Twojego pliku **pom.xml** programu Maven. Dodaj poniższy fragment kodu przed tagiem **\</project>** :
+2. Dodaj poniższe zależności do Twojego pliku **pom.xml** programu Maven. Dodaj następujący fragment kodu przed tagiem ** \</project>:**
    
         <dependencies>
           <dependency>
@@ -58,7 +58,7 @@ Przykładowy kod dostępny [w usłudze GitHub](https://azure.microsoft.com/docum
           </dependency>
         </dependencies>
    
-    Pierwszą zależnością jest użycie zestawu SDK usługi Data Lake Storage Gen1 (`azure-data-lake-store-sdk`) z repozytorium maven. Drugą zależnością (`slf4j-nop`) jest określenie struktury rejestrowania używanej dla tej aplikacji. Korzysta z zestawu SDK usługi Data Lake Storage Gen1 [slf4j](https://www.slf4j.org/) fasady rejestrowania, które umożliwia wybór spośród wielu popularnych struktur rejestrowania, takich jak log4j, rejestrowanie Java, logback itp., lub Brak rejestrowania. W tym przykładzie wyłączyliśmy rejestrowanie, dlatego używamy powiązania **slf4j-nop**. Aby używać innych opcji rejestrowania w aplikacji, zobacz [tutaj](https://www.slf4j.org/manual.html#projectDep).
+    Pierwszą zależnością jest użycie SDK gen1`azure-data-lake-store-sdk`magazynu danych Lake Gen1 ( ) z repozytorium maven. Drugą zależnością (`slf4j-nop`) jest określenie struktury rejestrowania używanej dla tej aplikacji. Zestaw SDK data lake storage Gen1 używa fasady rejestrowania [slf4j,](https://www.slf4j.org/) która umożliwia wybór spośród wielu popularnych struktur rejestrowania, takich jak log4j, rejestrowanie w języku Java, logowanie itp., lub brak rejestrowania. W tym przykładzie wyłączyliśmy rejestrowanie, dlatego używamy powiązania **slf4j-nop**. Aby używać innych opcji rejestrowania w aplikacji, zobacz [tutaj](https://www.slf4j.org/manual.html#projectDep).
 
 3. Dodaj do swojej aplikacji następujące instrukcje importowania.
 
@@ -73,22 +73,22 @@ Przykładowy kod dostępny [w usłudze GitHub](https://azure.microsoft.com/docum
         import java.util.Arrays;
         import java.util.List;
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>Uwierzytelnianie
 
-* Do uwierzytelniania użytkownika końcowego dla aplikacji, zobacz [końcowych-użytkowników — uwierzytelnianie za pomocą programu Data Lake Storage Gen1 przy użyciu języka Java](data-lake-store-end-user-authenticate-java-sdk.md).
-* Do uwierzytelniania service to service dla aplikacji, zobacz [uwierzytelniania Service to service za pomocą programu Data Lake Storage Gen1 przy użyciu języka Java](data-lake-store-service-to-service-authenticate-java.md).
+* Aby uzyskać uwierzytelnianie użytkowników końcowych dla aplikacji, zobacz [Uwierzytelnianie użytkownika końcowego za pomocą usługi Data Lake Storage Gen1 przy użyciu języka Java](data-lake-store-end-user-authenticate-java-sdk.md).
+* Aby uzyskać uwierzytelnianie między usługami dla aplikacji, zobacz [Uwierzytelnianie usługi do usługi przy użyciu usługi Lake Storage Gen1 przy użyciu języka Java](data-lake-store-service-to-service-authenticate-java.md).
 
-## <a name="create-a-data-lake-storage-gen1-client"></a>Tworzenie klienta Data Lake Storage Gen1
-Tworzenie [ADLStoreClient](https://azure.github.io/azure-data-lake-store-java/javadoc/) obiektu wymaga określenia nazwy konta Data Lake Storage Gen1 oraz dostawcy tokenu, który został wygenerowany podczas uwierzytelniania przy użyciu Data Lake Storage Gen1 (zobacz [uwierzytelniania](#authentication) sekcji). Nazwa konta Data Lake Storage Gen1 musi być w pełni kwalifikowanej nazwy domeny. Na przykład Zastąp ciąg **Fill-in-tutaj** wierszem podobnym **mydatalakestoragegen1.azuredatalakestore.net**.
+## <a name="create-a-data-lake-storage-gen1-client"></a>Tworzenie klienta gen1 magazynu usługi Data Lake
+Tworzenie obiektu [ADLStoreClient](https://azure.github.io/azure-data-lake-store-java/javadoc/) wymaga określenia nazwy konta Data Lake Storage Gen1 i dostawcy tokenu wygenerowanego podczas uwierzytelniania za pomocą usługi Data Lake Storage Gen1 (zobacz sekcja [Uwierzytelnianie).](#authentication) Nazwa konta Data Lake Storage Gen1 musi być w pełni kwalifikowaną nazwą domeny. Na przykład zastąp **wypełnienie tutaj** czymś takim jak **mydatalakestoragegen1.azuredatalakestore.net**.
 
     private static String accountFQDN = "FILL-IN-HERE";  // full account FQDN, not just the account name
     ADLStoreClient client = ADLStoreClient.createClient(accountFQDN, provider);
 
-Fragmenty kodu w poniższych sekcjach zawierają przykłady niektórych typowych operacji systemu plików. Zapoznanie się z pełną [dokumentacja interfejsu API Data Lake Storage Gen1 Java SDK](https://azure.github.io/azure-data-lake-store-java/javadoc/) z **ADLStoreClient** obiektu, aby zobaczyć inne operacje.
+Fragmenty kodu w poniższych sekcjach zawierają przykłady niektórych typowych operacji systemu plików. Możesz spojrzeć na pełne [dokumenty interfejsu API java magazynu danych Lake Gen1 obiektu](https://azure.github.io/azure-data-lake-store-java/javadoc/) **ADLStoreClient,** aby wyświetlić inne operacje.
 
 ## <a name="create-a-directory"></a>Tworzenie katalogu
 
-Poniższy fragment kodu tworzy strukturę katalogów w katalogu głównym konta Data Lake Storage Gen1 wskazana.
+Poniższy fragment kodu tworzy strukturę katalogów w katalogu głównym konta Data Lake Storage Gen1, które określono.
 
     // create directory
     client.createDirectory("/a/b/w");
@@ -134,7 +134,7 @@ Definicja funkcji `getSampleContent` używana w poprzednim fragmencie kodu jest 
 
 ## <a name="read-a-file"></a>Odczytywanie pliku
 
-Poniższy fragment kodu odczytuje zawartość z pliku w ramach konta Data Lake Storage Gen1.
+Poniższy fragment kodu odczytuje zawartość z pliku na koncie Gen1 magazynu usługi Data Lake.
 
     // Read File
     InputStream in = client.getReadStream(filename);
@@ -149,7 +149,7 @@ Poniższy fragment kodu odczytuje zawartość z pliku w ramach konta Data Lake S
 
 ## <a name="concatenate-files"></a>Łączenie plików
 
-Poniższy fragment kodu łączy dwa pliki na koncie usługi Data Lake Storage Gen1. W przypadku powodzenia połączony plik zastępuje te dwa istniejące pliki.
+Poniższy fragment kodu łączy dwa pliki na koncie Gen1 magazynu usługi Data Lake. W przypadku powodzenia połączony plik zastępuje te dwa istniejące pliki.
 
     // concatenate the two files into one
     List<String> fileList = Arrays.asList("/a/b/c.txt", "/a/b/d.txt");
@@ -158,7 +158,7 @@ Poniższy fragment kodu łączy dwa pliki na koncie usługi Data Lake Storage Ge
 
 ## <a name="rename-a-file"></a>Zmienianie nazwy pliku
 
-Poniższy fragment kodu zmienia nazwę pliku na koncie Data Lake Storage Gen1.
+Poniższy fragment kodu zmienia nazwę pliku na koncie Usługi Data Lake Storage Gen1.
 
     //rename the file
     client.rename("/a/b/f.txt", "/a/b/g.txt");
@@ -166,7 +166,7 @@ Poniższy fragment kodu zmienia nazwę pliku na koncie Data Lake Storage Gen1.
 
 ## <a name="get-metadata-for-a-file"></a>Pobranie metadanych dla pliku
 
-Poniższy fragment kodu pobiera metadane dla pliku w ramach konta Data Lake Storage Gen1.
+Poniższy fragment kodu pobiera metadane pliku na koncie Data Lake Storage Gen1.
 
     // get file metadata
     DirectoryEntry ent = client.getDirectoryEntry(filename);
@@ -197,7 +197,7 @@ Definicja funkcji `printDirectoryInfo` używana w poprzednim fragmencie kodu jes
 
 ## <a name="delete-files-and-folders"></a>Usuwanie plików i folderów
 
-Poniższy fragment kodu usuwa określone pliki i foldery, w ramach konta Data Lake Storage Gen1 cyklicznie.
+Poniższy fragment kodu usuwa określone pliki i foldery na koncie Data Lake Storage Gen1, cyklicznie.
 
     // delete directory along with all the subdirectories and files in it
     client.deleteRecursive("/a");
@@ -206,9 +206,9 @@ Poniższy fragment kodu usuwa określone pliki i foldery, w ramach konta Data La
 
 ## <a name="build-and-run-the-application"></a>Kompilowanie i uruchamianie aplikacji
 1. Aby przeprowadzić uruchomienie z poziomu środowiska IDE, znajdź i naciśnij przycisk **Run** (Uruchom). Aby przeprowadzić uruchomienie z poziomu programu Maven, użyj polecenia [exec:exec](https://www.mojohaus.org/exec-maven-plugin/exec-mojo.html).
-2. Aby wygenerować autonomiczny plik JAR, który można uruchomić z poziomu wiersza polecenia, skompiluj plik JAR zawierający wszystkie zależności, używając [wtyczki zestawu Maven](https://maven.apache.org/plugins/maven-assembly-plugin/usage.html). Pom.xml w [przykładowym kodzie źródłowym w serwisie GitHub](https://github.com/Azure-Samples/data-lake-store-java-upload-download-get-started/blob/master/pom.xml) zawiera przykład.
+2. Aby wygenerować autonomiczny plik JAR, który można uruchomić z poziomu wiersza polecenia, skompiluj plik JAR zawierający wszystkie zależności, używając [wtyczki zestawu Maven](https://maven.apache.org/plugins/maven-assembly-plugin/usage.html). Pom.xml w [przykładowym kodzie źródłowym w usłudze GitHub](https://github.com/Azure-Samples/data-lake-store-java-upload-download-get-started/blob/master/pom.xml) ma przykład.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 * [Zapoznawanie się z dokumentacją JavaDoc dotyczącą zestawu SDK Java](https://azure.github.io/azure-data-lake-store-java/javadoc/)
 * [Zabezpieczanie danych w usłudze Data Lake Storage 1. generacji](data-lake-store-secure-data.md)
 

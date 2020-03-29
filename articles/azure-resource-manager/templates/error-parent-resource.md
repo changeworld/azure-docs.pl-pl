@@ -1,22 +1,22 @@
 ---
-title: Błędy zasobów nadrzędnych
-description: Opisuje sposób rozwiązywania błędów podczas pracy z zasobem nadrzędnym w szablonie Azure Resource Manager.
+title: Nadrzędne błędy zasobów
+description: W tym artykule opisano sposób rozwiązywania błędów podczas pracy z zasobem nadrzędnym w szablonie usługi Azure Resource Manager.
 ms.topic: troubleshooting
 ms.date: 08/01/2018
 ms.openlocfilehash: f1847389d60ddf3c6abc70bc3309940c2246084e
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76154044"
 ---
-# <a name="resolve-errors-for-parent-resources"></a>Rozwiązywanie błędów dotyczących zasobów nadrzędnych
+# <a name="resolve-errors-for-parent-resources"></a>Rozwiązywanie problemów dotyczących zasobów nadrzędnych
 
-W tym artykule opisano błędy, które mogą wystąpić podczas wdrażania zasobu zależnego od zasobu nadrzędnego.
+W tym artykule opisano błędy, które mogą wystąpić podczas wdrażania zasobu, który jest zależny od zasobu nadrzędnego.
 
 ## <a name="symptom"></a>Objaw
 
-Podczas wdrażania zasobu, który jest elementem podrzędnym innego zasobu, może zostać wyświetlony następujący błąd:
+Podczas wdrażania zasobu, który jest podrzędny do innego zasobu, może pojawić się następujący błąd:
 
 ```
 Code=ParentResourceNotFound;
@@ -25,7 +25,7 @@ Message=Can not perform requested operation on nested resource. Parent resource 
 
 ## <a name="cause"></a>Przyczyna
 
-Jeśli jeden zasób jest elementem podrzędnym innego zasobu, musi istnieć zasób nadrzędny przed utworzeniem zasobu podrzędnego. Nazwa zasobu podrzędnego definiuje połączenie z zasobem nadrzędnym. Nazwa zasobu podrzędnego jest w formacie `<parent-resource-name>/<child-resource-name>`. Na przykład SQL Database może być zdefiniowana jako:
+Gdy jeden zasób jest elementem podrzędnym do innego zasobu, zasób nadrzędny musi istnieć przed utworzeniem zasobu podrzędnego. Nazwa zasobu podrzędnego definiuje połączenie z zasobem nadrzędnym. Nazwa zasobu podrzędnego jest `<parent-resource-name>/<child-resource-name>`w formacie . Na przykład baza danych SQL może być zdefiniowana jako:
 
 ```json
 {
@@ -34,13 +34,13 @@ Jeśli jeden zasób jest elementem podrzędnym innego zasobu, musi istnieć zas�
   ...
 ```
 
-Jeśli serwer i baza danych programu zostały wdrożone w tym samym szablonie, ale nie określisz zależności na serwerze, wdrożenie bazy danych może się zacząć przed wdrożeniem serwera.
+Jeśli wdrożysz serwer i bazę danych w tym samym szablonie, ale nie określisz zależności od serwera, wdrożenie bazy danych może zostać rozpocznie się przed wdrożeniem serwera.
 
-Jeśli zasób nadrzędny już istnieje i nie jest wdrożony w tym samym szablonie, ten błąd występuje, gdy Menedżer zasobów nie można skojarzyć zasobu podrzędnego z elementem nadrzędnym. Ten błąd może wystąpić, gdy zasób podrzędny nie ma poprawnego formatu lub zasób podrzędny jest wdrażany w grupie zasobów, która jest inna niż grupa zasobów dla zasobu nadrzędnego.
+Jeśli zasób nadrzędny już istnieje i nie jest wdrażany w tym samym szablonie, ten błąd jest taki, gdy Menedżer zasobów nie może skojarzyć zasobu podrzędnego z elementem nadrzędnym. Ten błąd może wystąpić, gdy zasób podrzędny nie jest w poprawnym formacie lub zasób podrzędny jest wdrażany w grupie zasobów, która jest inna niż grupa zasobów dla zasobu nadrzędnego.
 
 ## <a name="solution"></a>Rozwiązanie
 
-Aby rozwiązać ten problem, gdy zasoby nadrzędne i podrzędne są wdrażane w tym samym szablonie, należy uwzględnić zależność.
+Aby rozwiązać ten błąd, gdy zasoby nadrzędne i podrzędne są wdrażane w tym samym szablonie, należy uwzględnić zależność.
 
 ```json
 "dependsOn": [
@@ -48,7 +48,7 @@ Aby rozwiązać ten problem, gdy zasoby nadrzędne i podrzędne są wdrażane w 
 ]
 ```
 
-Aby rozwiązać ten problem, gdy zasób nadrzędny został wcześniej wdrożony w innym szablonie, nie ustawisz zależności. Zamiast tego należy wdrożyć element podrzędny w tej samej grupie zasobów i podać nazwę zasobu nadrzędnego.
+Aby rozwiązać ten błąd, gdy zasób nadrzędny został wcześniej wdrożony w innym szablonie, nie należy ustawiać zależności. Zamiast tego wdrożyć element podrzędny do tej samej grupy zasobów i podać nazwę zasobu nadrzędnego.
 
 ```json
 {
@@ -78,4 +78,4 @@ Aby rozwiązać ten problem, gdy zasób nadrzędny został wcześniej wdrożony 
 }
 ```
 
-Aby uzyskać więcej informacji, zobacz [Definiowanie kolejności wdrażania zasobów w szablonach Azure Resource Manager](define-resource-dependency.md).
+Aby uzyskać więcej informacji, zobacz [Definiowanie kolejności wdrażania zasobów w szablonach usługi Azure Resource Manager](define-resource-dependency.md).

@@ -1,6 +1,6 @@
 ---
-title: Symulacja urządzenia za pomocą monitorowania zdalnego IoT — Azure | Microsoft Docs
-description: Ten przewodnik przedstawia sposób korzystania z symulatora urządzeń przy użyciu akceleratora rozwiązania do zdalnego monitorowania.
+title: Symulacja urządzenia za pomocą zdalnego monitorowania IoT — Platforma Azure | Dokumenty firmy Microsoft
+description: W tym przewodniku pokazano, jak używać symulatora urządzenia z akceleratorem rozwiązania zdalnego monitorowania.
 author: dominicbetts
 manager: timlt
 ms.author: dobett
@@ -9,115 +9,115 @@ services: iot-accelerators
 ms.date: 03/08/2019
 ms.topic: conceptual
 ms.openlocfilehash: 8babacfede6e13fde629492e1cd9f80af7f0e53f
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/09/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78943067"
 ---
 # <a name="create-and-test-a-new-simulated-device"></a>Tworzenie i testowanie nowego symulowanego urządzenia
 
-Akcelerator rozwiązania do monitorowania zdalnego pozwala definiować własne symulowane urządzenia. W tym artykule opisano sposób definiowania nowego symulowanego urządzenia żarówki, a następnie przetestowania go lokalnie. Akcelerator rozwiązania obejmuje symulowane urządzenia, takie jak chłodner i samochody. Można jednak zdefiniować własne symulowane urządzenia do testowania rozwiązań IoT przed wdrożeniem rzeczywistych urządzeń.
+Akcelerator rozwiązań do zdalnego monitorowania umożliwia definiowanie własnych symulowanych urządzeń. W tym artykule pokazano, jak zdefiniować nowe symulowane urządzenie żarówki, a następnie przetestować go lokalnie. Akcelerator rozwiązań obejmuje symulowane urządzenia, takie jak agregaty chłodnicze i ciężarówki. Można jednak zdefiniować własne symulowane urządzenia, aby przetestować rozwiązania IoT przed wdrożeniem rzeczywistych urządzeń.
 
 > [!NOTE]
-> W tym artykule opisano sposób korzystania z symulowanych urządzeń hostowanych w usłudze symulacji urządzeń. Jeśli chcesz utworzyć rzeczywiste urządzenie, zobacz [łączenie urządzenia z akceleratorem rozwiązania do monitorowania zdalnego](iot-accelerators-connecting-devices.md).
+> W tym artykule opisano sposób używania symulowanych urządzeń hostowanych w usłudze symulacji urządzeń. Jeśli chcesz utworzyć prawdziwe urządzenie, zobacz [Łączenie urządzenia z akceleratorem rozwiązań do zdalnego monitorowania](iot-accelerators-connecting-devices.md).
 
-W tym przewodniku opisano sposób dostosowywania mikrousługi symulacji urządzenia. Ta mikrousługa jest częścią akceleratora rozwiązania do monitorowania zdalnego. Aby wyświetlić możliwości symulacji urządzeń, ten przewodnik zawiera dwa scenariusze w aplikacji Contoso IoT:
+W tym przewodniku pokazano, jak dostosować mikrousługi symulacji urządzenia. Ta mikrousługa jest częścią akceleratora rozwiązania zdalnego monitorowania. Aby pokazać możliwości symulacji urządzenia, w tym przewodniku opisano dwa scenariusze w aplikacji Contoso IoT:
 
-W pierwszym scenariuszu należy dodać nowy typ telemetrii do istniejącego typu urządzenia dla **chłodzenia** firmy Contoso.
+W pierwszym scenariuszu należy dodać nowy typ telemetrii do istniejącego typu urządzenia **agregatu chłodniczego** firmy Contoso.
 
-W drugim scenariuszu firma Contoso chce przetestować nowe urządzenie inteligentne żarówki. Aby uruchomić testy, należy utworzyć nowe symulowane urządzenie o następujących cechach:
+W drugim scenariuszu Contoso chce przetestować nowe inteligentne urządzenie żarówki. Aby uruchomić testy, należy utworzyć nowe symulowane urządzenie o następujących cechach:
 
-*Aœciwoœci*
+*Właściwości*
 
-| Name (Nazwa)                     | Wartości                      |
+| Nazwa                     | Wartości                      |
 | ------------------------ | --------------------------- |
-| Kolor                    | White, Red, Blue            |
-| Jasność               | od 0 do 100                    |
-| Szacowany pozostały okres istnienia | Odliczanie od 10 000 godzin |
+| Kolor                    | Biały, Czerwony, Niebieski            |
+| Jasność               | Od 0 do 100                    |
+| Szacowany pozostały okres eksploatacji | Odliczanie od 10 000 godzin |
 
-*Telemetrii*
+*Telemetria*
 
-W poniższej tabeli przedstawiono dane, które żarówki raporty do chmury jako strumień danych:
+W poniższej tabeli przedstawiono dane raportów żarówki do chmury jako strumień danych:
 
-| Name (Nazwa)   | Wartości      |
+| Nazwa   | Wartości      |
 | ------ | ----------- |
 | Stan | "on", "off" |
 | Temperatura | Stopnie F |
 | online | wartość true, false |
 
 > [!NOTE]
-> Wartość telemetrii **online** jest wymagana dla wszystkich typów symulowanych.
+> Wartość telemetrii **online** jest obowiązkowa dla wszystkich symulowanych typów.
 
-*Form*
+*Metody*
 
-W poniższej tabeli przedstawiono akcje obsługiwane przez nowe urządzenie:
+W poniższej tabeli przedstawiono akcje, które obsługuje nowe urządzenie:
 
-| Name (Nazwa)        |
+| Nazwa        |
 | ----------- |
-| Włącz   |
-| Wyłącz  |
+| Włączanie   |
+| Wyłączyć  |
 
 *Stan początkowy*
 
-W poniższej tabeli przedstawiono początkowy stan urządzenia:
+W poniższej tabeli przedstawiono stan początkowy urządzenia:
 
-| Name (Nazwa)                     | Wartości |
+| Nazwa                     | Wartości |
 | ------------------------ | -------|
 | Kolor początkowy            | Biały  |
-| Jasność początkowa       | 75     |
-| Początkowy pozostały okres istnienia   | 10 000 |
-| Początkowy stan telemetrii | z   |
+| Początkowa jasność       | 75     |
+| Początkowy pozostały okres eksploatacji   | 10 000 |
+| Stan danych telemetrycznych początkowych | "on"   |
 | Początkowa temperatura telemetrii | 200   |
 
-Aby wykonać kroki opisane w tym przewodniku, musisz mieć aktywną subskrypcję platformy Azure.
+Aby wykonać kroki opisane w tym przewodniku, potrzebujesz aktywnej subskrypcji platformy Azure.
 
-Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Jeśli nie masz subskrypcji platformy Azure, utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) przed rozpoczęciem.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby wykonać czynności opisane w tym przewodniku:
+Aby postępować zgodnie z tym przewodnikiem, potrzebujesz:
 
-* Program Visual Studio Code. Możesz [pobrać Visual Studio Code dla systemów Mac, Linux i Windows](https://code.visualstudio.com/download).
-* .NET Core. Możesz pobrać [.NET Core dla systemów Mac, Linux i Windows](https://www.microsoft.com/net/download).
+* Program Visual Studio Code. Program Visual Studio Code można [pobrać dla komputerów Mac, Linux i Windows](https://code.visualstudio.com/download).
+* .NET Core. Program .NET Core można pobrać [dla komputerów Mac, Linux i Windows](https://www.microsoft.com/net/download).
 * [Rozszerzenie C# for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)
-* Postman. Możesz pobrać program [Poster dla komputerów Mac, Windows lub Linux](https://www.getpostman.com/apps).
-* [Centrum IoT zostało wdrożone w ramach subskrypcji platformy Azure](../../articles/iot-hub/iot-hub-create-through-portal.md). Do wykonania kroków opisanych w tym przewodniku potrzebne są parametry połączenia Centrum IoT Hub. Parametry połączenia można uzyskać z Azure Portal.
-* Baza danych Cosmos DB, która korzysta z interfejsu API SQL i jest skonfigurowana pod kątem [silnej spójności](../../articles/cosmos-db/how-to-manage-database-account.md). Do wykonania kroków opisanych w tym przewodniku potrzebne są parametry połączenia bazy danych Cosmos DB. Parametry połączenia można uzyskać z Azure Portal.
+* Listonosz. Listonosz można pobrać [dla komputerów Mac, Windows lub Linux](https://www.getpostman.com/apps).
+* [Centrum IoT wdrożone w ramach subskrypcji platformy Azure.](../../articles/iot-hub/iot-hub-create-through-portal.md) Aby wykonać kroki opisane w tym przewodniku, potrzebujesz ciągu połączenia centrum IoT. Ciąg połączenia można uzyskać z witryny Azure portal.
+* Baza danych Usługi Cosmos, która używa interfejsu API SQL i która jest skonfigurowana pod kątem [silnej spójności.](../../articles/cosmos-db/how-to-manage-database-account.md) Aby wykonać kroki opisane w tym przewodniku, potrzebny jest parametry połączenia bazy danych usługi Cosmos DB. Ciąg połączenia można uzyskać z witryny Azure portal.
 
 ## <a name="prepare-your-development-environment"></a>Przygotowywanie środowiska projektowego
 
 Wykonaj następujące zadania, aby przygotować środowisko programistyczne:
 
-* Pobierz Źródło dla mikrousługi symulacji urządzenia.
-* Pobierz Źródło dla mikrousługi karty pamięci.
-* Uruchom lokalnie kartę usługi Storage.
+* Pobierz źródło mikrousług symulacji urządzenia.
+* Pobierz źródło mikrousługi karty magazynu.
+* Uruchom mikrousługę karty magazynu lokalnie.
 
-W instrukcjach przedstawionych w tym artykule przyjęto założenie, że używasz systemu Windows. Jeśli używasz innego systemu operacyjnego, może być konieczne dostosowanie niektórych ścieżek i poleceń plików do środowiska.
+W instrukcjach w tym artykule założono, że używasz systemu Windows. Jeśli używasz innego systemu operacyjnego, może być konieczne dostosowanie niektórych ścieżek plików i poleceń do środowiska.
 
 ### <a name="download-the-microservices"></a>Pobierz mikrousługi
 
-Pobierz i rozpakuj [mikrousługi zdalnego monitorowania](https://github.com/Azure/remote-monitoring-services-dotnet/archive/master.zip) z witryny GitHub do odpowiedniej lokalizacji na komputerze lokalnym. W tym artykule założono, że nazwa tego folderu to **Remote-Monitoring-Services-dotnet-Master**.
+Pobierz i rozpaj [mikrousług monitorowania zdalnego](https://github.com/Azure/remote-monitoring-services-dotnet/archive/master.zip) z gitHub do odpowiedniej lokalizacji na komputerze lokalnym. W artykule przyjęto założenie, że nazwa tego folderu to **remote-monitoring-services-dotnet-master**.
 
-Pobierz i rozpakuj [mikrousługę symulacji urządzenia z usługi](https://github.com/Azure/device-simulation-dotnet/archive/master.zip) GitHub do odpowiedniej lokalizacji na komputerze lokalnym. W tym artykule przyjęto, że nazwa tego folderu to **symulacja urządzenia — dotnet-Master**.
+Pobierz i rozpaj [mikrousługę symulacji urządzenia](https://github.com/Azure/device-simulation-dotnet/archive/master.zip) z usługi GitHub do odpowiedniej lokalizacji na komputerze lokalnym. W artykule przyjęto założenie, że nazwa tego folderu to **device-simulation-dotnet-master**.
 
-### <a name="run-the-storage-adapter-microservice"></a>Uruchamianie mikrousługi karty pamięci
+### <a name="run-the-storage-adapter-microservice"></a>Uruchamianie mikrousług karty pamięci masowej
 
-Otwórz folder **Remote-Monitoring-Services-dotnet-master\storage-adapter** w Visual Studio Code. Kliknij dowolne przyciski **przywracania** , aby naprawić wszystkie nierozwiązane zależności.
+Otwórz folder **zdalnego monitorowania usług-dotnet-master\storage-adapter** w programie Visual Studio Code. Kliknij dowolne przyciski **Przywracanie,** aby naprawić wszelkie nierozwiązane zależności.
 
-Otwórz plik **Storage-Adapter/WebService/appSettings. ini** i przypisz Cosmos DB parametry połączenia do zmiennej **documentDBConnectionString** .
+Otwórz plik **karty magazynu/WebService/appsettings.ini** i przypisz parametry połączenia usługi Cosmos DB do zmiennej **documentDBConnectionString.**
 
-Aby uruchomić mikrousługę lokalnie, kliknij pozycję **debuguj > Rozpocznij debugowanie**.
+Aby uruchomić mikrousługę lokalnie, kliknij przycisk **Debugowanie > Rozpocznij debugowanie**.
 
-W oknie **terminalu** w Visual Studio Code są wyświetlane dane wyjściowe z uruchomionej mikrousługi, w tym adres URL sprawdzania kondycji usługi sieci web: [http://127.0.0.1:9022/v1/status](http://127.0.0.1:9022/v1/status). Po przejściu na ten adres stan powinien mieć wartość "OK: Alive i".
+Okno **Terminal** w programie Visual Studio Code pokazuje dane wyjściowe z uruchomionej mikrousługi, w tym adres URL sprawdzania kondycji usługi sieci web: [http://127.0.0.1:9022/v1/status](http://127.0.0.1:9022/v1/status). Po przejściu do tego adresu, stan powinien być "OK: Żyje i dobrze".
 
-W tym wystąpieniu Visual Studio Code należy pozostawić działającą mikrousługę kart pamięci podczas wykonywania następnych kroków.
+Pozostaw mikrousługę karty magazynu uruchomione w tym wystąpieniu programu Visual Studio Code podczas wykonywania kolejnych kroków.
 
-## <a name="modify-the-chiller"></a>Modyfikowanie chłodzenia
+## <a name="modify-the-chiller"></a>Modyfikowanie agregatu chłodniczego
 
-W tej sekcji dodasz nowy typ telemetrii **temperatury wewnętrznej** do istniejącego typu urządzenia **chłodzenia** :
+W tej sekcji należy dodać nowy typ danych telemetrycznych **temperatury wewnętrznej** do istniejącego typu urządzenia **agregatu chłodniczego:**
 
 1. Utwórz nowy folder **C:\temp\devicemodels** na komputerze lokalnym.
 
@@ -125,23 +125,23 @@ W tej sekcji dodasz nowy typ telemetrii **temperatury wewnętrznej** do istniej�
 
     | Element źródłowy | Element docelowy |
     | ------ | ----------- |
-    | Services\data\devicemodels\chiller-01.json | C:\temp\devicemodels\chiller-01.json |
-    | Services\data\devicemodels\scripts\chiller-01-state.js | C:\temp\devicemodels\scripts\chiller-01-state.js |
-    | Services\data\devicemodels\scripts\Reboot-method.js | C:\temp\devicemodels\scripts\Reboot-method.js |
-    | Services\data\devicemodels\scripts\FirmwareUpdate-method.js | C:\temp\devicemodels\scripts\FirmwareUpdate-method.js |
-    | Services\data\devicemodels\scripts\EmergencyValveRelease-method.js | C:\temp\devicemodels\scripts\EmergencyValveRelease-method.js |
-    | Services\data\devicemodels\scripts\IncreasePressure-method.js | C:\temp\devicemodels\scripts\IncreasePressure-method.js |
+    | Usługi\dane\devicemodels\chiller-01.json | C:\temp\devicemodels\chiller-01.json |
+    | Usługi\dane\devicemodels\scripts\chiller-01-state.js | C:\temp\devicemodels\scripts\chiller-01-state.js |
+    | Usługi\dane\devicemodels\scripts\Reboot-method.js | C:\temp\devicemodels\scripts\Reboot-method.js |
+    | Usługi\dane\devicemodels\scripts\FirmwareUpdate-method.js | C:\temp\devicemodels\scripts\FirmwareUpdate-method.js |
+    | Usługi\dane\devicemodels\scripts\EmergencyValveRelease-method.js | C:\temp\devicemodels\scripts\EmergencyValveRelease-method.js |
+    | Usługi\dane\devicemodels\skrypty\IncreasePressure-method.js | C:\temp\devicemodels\scripts\IncreasePressure-method.js |
 
-1. Otwórz plik **C:\temp\devicemodels\chiller-01.JSON** .
+1. Otwórz plik **C:\temp\devicemodels\chiller-01.json.**
 
-1. W sekcji **InitialState** Dodaj następujące dwie definicje:
+1. W sekcji **Stan początkowy** dodaj następujące dwie definicje:
 
     ```json
     "internal_temperature": 65.0,
     "internal_temperature_unit": "F",
     ```
 
-1. W tablicy **telemetrii** Dodaj następującą definicję:
+1. W tablicy **Telemetria** dodaj następującą definicję:
 
     ```json
     {
@@ -158,18 +158,18 @@ W tej sekcji dodasz nowy typ telemetrii **temperatury wewnętrznej** do istniej�
     },
     ```
 
-1. Zapisz plik **C:\temp\devicemodels\chiller-01.JSON** .
+1. Zapisz plik **C:\temp\devicemodels\chiller-01.json.**
 
-1. Otwórz plik **C:\temp\devicemodels\scripts\chiller-01-State.js** .
+1. Otwórz plik **C:\temp\devicemodels\scripts\chiller-01-state.js.**
 
-1. Dodaj następujące pola do zmiennej **stanu** :
+1. Dodaj następujące pola do zmiennej **stanu:**
 
     ```js
     internal_temperature: 65.0,
     internal_temperature_unit: "F",
     ```
 
-1. Zaktualizuj **główną** funkcję w następujący sposób:
+1. Zaktualizuj funkcję **główną** w następujący sposób:
 
     ```js
     function main(context, previousState, previousProperties) {
@@ -201,13 +201,13 @@ W tej sekcji dodasz nowy typ telemetrii **temperatury wewnętrznej** do istniej�
     }
     ```
 
-1. Zapisz plik **C:\temp\devicemodels\scripts\chiller-01-State.js** .
+1. Zapisz plik **C:\temp\devicemodels\scripts\chiller-01-state.js.**
 
 ## <a name="create-the-lightbulb"></a>Tworzenie żarówki
 
-W tej sekcji definiujesz nowy typ urządzenia **żarówki** :
+W tej sekcji należy zdefiniować nowy typ urządzenia **żarówki:**
 
-1. Utwórz plik **C:\temp\devicemodels\lightbulb-01.JSON** i Dodaj następującą zawartość:
+1. Utwórz plik **C:\temp\devicemodels\lightbulb-01.json** i dodaj następującą zawartość:
 
     ```json
     {
@@ -271,9 +271,9 @@ W tej sekcji definiujesz nowy typ urządzenia **żarówki** :
     }
     ```
 
-    Zapisz zmiany w **C:\temp\devicemodels\lightbulb-01.JSON**.
+    Zapisz zmiany w **języku C:\temp\devicemodels\lightbulb-01.json**.
 
-1. Utwórz plik **C:\temp\devicemodels\scripts\lightbulb-01-State.js** i Dodaj następującą zawartość:
+1. Utwórz plik **C:\temp\devicemodels\scripts\lightbulb-01-state.js** i dodaj następującą zawartość:
 
     ```javascript
     "use strict";
@@ -360,9 +360,9 @@ W tej sekcji definiujesz nowy typ urządzenia **żarówki** :
     }
     ```
 
-    Zapisz zmiany w **C:\temp\devicemodels\scripts\lightbulb-01-State.js**.
+    Zapisz zmiany w **C:\temp\devicemodels\scripts\lightbulb-01-state.js**.
 
-1. Utwórz plik **C:\temp\devicemodels\scripts\SwitchOn-Method.js** i Dodaj następującą zawartość:
+1. Utwórz plik **C:\temp\devicemodels\scripts\SwitchOn-method.js** i dodaj następującą zawartość:
 
     ```javascript
     "use strict";
@@ -386,9 +386,9 @@ W tej sekcji definiujesz nowy typ urządzenia **żarówki** :
     }
     ```
 
-    Zapisz zmiany w **C:\temp\devicemodels\scripts\SwitchOn-Method.js**.
+    Zapisz zmiany w **języku C:\temp\devicemodels\scripts\SwitchOn-method.js**.
 
-1. Utwórz plik **C:\temp\devicemodels\scripts\SwitchOff-Method.js** i Dodaj następującą zawartość:
+1. Utwórz plik **C:\temp\devicemodels\scripts\SwitchOff-method.js** i dodaj następującą zawartość:
 
     ```javascript
     "use strict";
@@ -412,19 +412,19 @@ W tej sekcji definiujesz nowy typ urządzenia **żarówki** :
     }
     ```
 
-    Zapisz zmiany w **C:\temp\devicemodels\scripts\SwitchOff-Method.js**.
+    Zapisz zmiany w **języku C:\temp\devicemodels\scripts\SwitchOff-method.js**.
 
-Utworzono dostosowaną wersję typu urządzenia **chłodzenia** i utworzono nowy typ urządzenia **żarówki** .
+Teraz utworzono dostosowaną wersję typu urządzenia **chiller** i utworzono nowy typ urządzenia **żarówki.**
 
 ## <a name="test-the-devices"></a>Testowanie urządzeń
 
-W tej sekcji przetestujesz typy urządzeń utworzone w poprzednich sekcjach lokalnie.
+W tej sekcji można przetestować typy urządzeń utworzonych w poprzednich sekcjach lokalnie.
 
-### <a name="run-the-device-simulation-microservice"></a>Uruchamianie mikrousługi symulacji urządzenia
+### <a name="run-the-device-simulation-microservice"></a>Uruchamianie mikrousług symulacji urządzenia
 
-Otwórz folder **"symulacja urządzenia-dotnet"** , który został pobrany z usługi GitHub w nowym wystąpieniu Visual Studio Code. Kliknij dowolne przyciski **przywracania** , aby naprawić wszystkie nierozwiązane zależności.
+Otwórz folder **device-simulation-dotnet-master** pobrany z usługi GitHub w nowym wystąpieniu programu Visual Studio Code. Kliknij dowolne przyciski **Przywracanie,** aby naprawić wszelkie nierozwiązane zależności.
 
-Otwórz plik **WebService/appSettings. ini** i przypisz Cosmos DB parametry połączenia do zmiennej **documentdb_connstring** i zmodyfikuj ustawienia w następujący sposób:
+Otwórz plik **WebService/appsettings.ini** i przypisz parametry połączenia usługi Cosmos DB do **zmiennej documentdb_connstring,** a także zmodyfikuj ustawienia w następujący sposób:
 
 ```ini
 device_models_folder = C:\temp\devicemodels\
@@ -432,17 +432,17 @@ device_models_folder = C:\temp\devicemodels\
 device_models_scripts_folder = C:\temp\devicemodels\scripts\
 ```
 
-Aby uruchomić mikrousługę lokalnie, kliknij pozycję **debuguj > Rozpocznij debugowanie**.
+Aby uruchomić mikrousługę lokalnie, kliknij przycisk **Debugowanie > Rozpocznij debugowanie**.
 
-W oknie **terminalu** w Visual Studio Code są wyświetlane dane wyjściowe z uruchomionej mikrousługi.
+Okno **Terminal** w programie Visual Studio Code pokazuje dane wyjściowe z uruchomionej mikrousługi.
 
-W tym wystąpieniu Visual Studio Code należy pozostawić uruchomioną mikrousługę symulacji urządzenia podczas wykonywania następnych kroków.
+Pozostaw mikrousługi symulacji urządzenia uruchomione w tym wystąpieniu programu Visual Studio Code podczas wykonywania kolejnych kroków.
 
-### <a name="set-up-a-monitor-for-device-events"></a>Konfigurowanie monitora dla zdarzeń urządzeń
+### <a name="set-up-a-monitor-for-device-events"></a>Konfigurowanie monitora zdarzeń urządzenia
 
-W tej sekcji użyto interfejsu wiersza polecenia platformy Azure, aby skonfigurować Monitor zdarzeń do wyświetlania danych telemetrycznych wysyłanych z urządzeń podłączonych do centrum IoT.
+W tej sekcji można użyć interfejsu wiersza polecenia platformy Azure, aby skonfigurować monitor zdarzeń, aby wyświetlić dane telemetryczne wysyłane z urządzeń podłączonych do centrum IoT hub.
 
-W poniższym skrypcie założono, że nazwa Twojego centrum IoT to **symulacja urządzenia**.
+Poniższy skrypt zakłada, że nazwa centrum IoT hub jest **device-simulation-test**.
 
 ```azurecli-interactive
 # Install the IoT extension if it's not already installed
@@ -452,54 +452,54 @@ az extension add --name azure-iot
 az iot hub monitor-events --hub-name device-simulation-test
 ```
 
-Pozostaw uruchomiony Monitor zdarzeń podczas testowania symulowanych urządzeń.
+Pozostaw monitor zdarzeń uruchomiony podczas testowania symulowanych urządzeń.
 
-### <a name="create-a-simulation-with-the-updated-chiller-device-type"></a>Tworzenie symulacji przy użyciu zaktualizowanego typu urządzenia dla platformy chłodzenia
+### <a name="create-a-simulation-with-the-updated-chiller-device-type"></a>Tworzenie symulacji ze zaktualizowanym typem urządzenia agregatu chłodniczego
 
-W tej sekcji użyjemy narzędzia do ogłaszania, aby zażądać mikrousługi symulacji urządzenia do uruchomienia symulacji przy użyciu zaktualizowanego typu urządzenia chłodzenia. Program Poster to narzędzie, które umożliwia wysyłanie żądań REST do usługi sieci Web. Pliki konfiguracji programu Poster są potrzebne w lokalnej kopii repozytorium **dotnet dla symulacji urządzenia** .
+W tej sekcji użyj narzędzia Postman, aby zażądać mikrousług symulacji urządzenia do uruchomienia symulacji przy użyciu zaktualizowanego typu urządzenia agregatu chłodniczego. Listonosz to narzędzie, które umożliwia wysyłanie żądań REST do usługi sieci web. Pliki konfiguracyjne postmana, których potrzebujesz, znajdują się w lokalnej kopii repozytorium **device-simulation-dotnet.**
 
-Aby skonfigurować notkę:
+Aby skonfigurować listonosza:
 
-1. Otwórz wpis na komputerze lokalnym.
+1. Otwórz listonosza na lokalnym komputerze.
 
-1. Kliknij kolejno pozycje **plik > Importuj**. Następnie kliknij pozycję **Wybierz pliki**.
+1. Kliknij **pozycję Plik > Importuj**. Następnie kliknij pozycję **Wybierz pliki**.
 
-1. Przejdź do folderu **Device-symulacja dotnet-Master/docs/** doc. Wybierz **Akcelerator rozwiązania do symulacji urządzeń Azure IoT. postman_collection** i **Akcelerator rozwiązania do symulacji urządzeń azure IoT. postman_environment** i kliknij przycisk **Otwórz**.
+1. Przejdź do folderu **device-simulation-dotnet-master/docs/listonosz.** Wybierz **akcelerator rozwiązań symulacji urządzeń Azure IoT.postman_collection** i **akcelerator rozwiązań symulacji urządzeń Usługi Azure IoT.postman_environment** i kliknij przycisk **Otwórz**.
 
-1. Rozwiń **Akcelerator rozwiązania do symulacji urządzenia Azure IoT** na żądania, które można wysłać.
+1. Rozwiń **akcelerator rozwiązań symulacji urządzeń usługi Azure IoT** do żądań, które można wysłać.
 
-1. Kliknij pozycję **Brak środowiska** i wybierz **Akcelerator rozwiązania do symulacji urządzeń Azure IoT**.
+1. Kliknij **pozycję Brak środowiska** i wybierz **akcelerator rozwiązań symulacji urządzeń Usługi Azure IoT**.
 
-Masz teraz kolekcję i środowisko załadowane w obszarze roboczym programu Poster, którego można użyć do współdziałania z mikrousługą symulacji urządzenia.
-
-Aby skonfigurować i uruchomić symulację:
-
-1. W kolekcji Ogłośer wybierz pozycję **Utwórz zmodyfikowaną symulację chłodzenia** , a następnie kliknij pozycję **Wyślij**. To żądanie tworzy cztery wystąpienia symulowanego typu urządzenia chłodzenia.
-
-1. Dane wyjściowe monitora zdarzeń w oknie interfejsu wiersza polecenia platformy Azure pokazują dane telemetryczne z symulowanych urządzeń, w tym nowe wartości **internal_temperature** .
-
-Aby zatrzymać symulację, wybierz żądanie **zatrzymania symulacji** w programie Poster i kliknij pozycję **Wyślij**.
-
-### <a name="create-a-simulation-with-the-lightbulb-device-type"></a>Tworzenie symulacji przy użyciu typu urządzenia żarówki
-
-W tej sekcji użyjemy narzędzia do ogłaszania, aby zażądać mikrousługi symulacji urządzenia do uruchomienia symulacji przy użyciu typu urządzenia żarówki. Program Poster to narzędzie, które umożliwia wysyłanie żądań REST do usługi sieci Web.
+Masz teraz kolekcji i środowiska załadowany w obszarze roboczym Postman, który służy do interakcji z mikrousługi symulacji urządzenia.
 
 Aby skonfigurować i uruchomić symulację:
 
-1. W kolekcji Poster wybierz pozycję **Utwórz symulację żarówki** , a następnie kliknij pozycję **Wyślij**. To żądanie tworzy dwa wystąpienia symulowanego typu urządzenia żarówki.
+1. W kolekcji Listonosz wybierz pozycję **Utwórz zmodyfikowaną symulację agregatu chłodniczego** i kliknij przycisk **Wyślij**. To żądanie tworzy cztery wystąpienia typu symulowanego urządzenia agregatu chłodniczego.
 
-1. Dane wyjściowe monitora zdarzeń w oknie interfejsu wiersza polecenia platformy Azure pokazują dane telemetryczne z symulowanego lightbulbs.
+1. Dane wyjściowe monitora zdarzeń w oknie interfejsu wiersza polecenia platformy Azure zawiera dane telemetryczne z symulowanych urządzeń, w tym nowe wartości **internal_temperature.**
 
-Aby zatrzymać symulację, wybierz żądanie **zatrzymania symulacji** w programie Poster i kliknij pozycję **Wyślij**.
+Aby zatrzymać symulację, wybierz żądanie **Zatrzymaj symulację** w postmanie i kliknij przycisk **Wyślij**.
+
+### <a name="create-a-simulation-with-the-lightbulb-device-type"></a>Tworzenie symulacji z typem urządzenia żarówki
+
+W tej sekcji można użyć narzędzia Postman, aby zażądać mikrousług symulacji urządzenia do uruchomienia symulacji przy użyciu typu urządzenia żarówki. Listonosz to narzędzie, które umożliwia wysyłanie żądań REST do usługi sieci web.
+
+Aby skonfigurować i uruchomić symulację:
+
+1. W kolekcji Listonosz wybierz pozycję **Utwórz symulację żarówki** i kliknij przycisk **Wyślij**. To żądanie tworzy dwa wystąpienia symulowanego typu urządzenia żarówki.
+
+1. Dane wyjściowe monitora zdarzeń w oknie interfejsu wiersza polecenia platformy Azure pokazuje dane telemetryczne z symulowanych żarówek.
+
+Aby zatrzymać symulację, wybierz żądanie **Zatrzymaj symulację** w postmanie i kliknij przycisk **Wyślij**.
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Można zatrzymać dwa lokalnie działające mikrousługi w Visual Studio Code wystąpieniach (**debugowanie > zatrzymać debugowanie**).
+Można zatrzymać dwa lokalnie uruchomione mikrousług w ich wystąpień kodu programu Visual Studio **(Debug > Zatrzymaj debugowanie**).
 
-Jeśli nie potrzebujesz już IoT Hub i Cosmos DB wystąpień, usuń je z subskrypcji platformy Azure, aby uniknąć niepotrzebnych opłat.
+Jeśli nie potrzebujesz już wystąpień usługi IoT Hub i usługi Cosmos DB, usuń je z subskrypcji platformy Azure, aby uniknąć niepotrzebnych opłat.
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym przewodniku pokazano, jak utworzyć niestandardowe typy symulowanych urządzeń i przetestować je przez uruchomienie mikrousługi symulacji urządzenia lokalnie.
+W tym przewodniku pokazano, jak utworzyć niestandardowe typy symulowanych urządzeń i przetestować je, uruchamiając lokalnie mikrousługę symulacji urządzenia.
 
-Sugerowanym następnym krokiem jest zapoznanie się ze sposobem wdrażania niestandardowych typów urządzeń symulowanych w [akceleratorze rozwiązania do monitorowania zdalnego](iot-accelerators-remote-monitoring-deploy-simulated-device.md).
+Sugerowanym następnym krokiem jest zapoznanie się z instrukcjami wdrażania niestandardowych typów symulowanych urządzeń w [akceleratorze rozwiązań do zdalnego monitorowania.](iot-accelerators-remote-monitoring-deploy-simulated-device.md)

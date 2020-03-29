@@ -1,6 +1,6 @@
 ---
-title: Nie można pulpitu zdalnego do maszyn wirtualnych platformy Azure z powodu statyczny adres IP | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak rozwiązać problem protokołu RDP, którego przyczyną statyczny adres IP na platformie Microsoft Azure. | Dokumentacja firmy Microsoft
+title: Nie można zdalnie oddezywować na maszynach wirtualnych platformy Azure z powodu statycznego adresu IP| Dokumenty firmy Microsoft
+description: Dowiedz się, jak rozwiązać problem z prowędrzem RDP spowodowany statycznym adresem IP na platformie Microsoft Azure.| Dokumenty firmy Microsoft
 services: virtual-machines-windows
 documentationCenter: ''
 author: genlin
@@ -13,22 +13,22 @@ ms.workload: infrastructure
 ms.date: 11/08/2018
 ms.author: genli
 ms.openlocfilehash: 92ad33fbc759605ae901c3bcf09283c8e0b1c4b5
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77918193"
 ---
-#  <a name="cannot-remote-desktop-to-azure-virtual-machines-because-of-static-ip"></a>Nie można pulpitu zdalnego do maszyn wirtualnych platformy Azure z powodu statyczny adres IP
+#  <a name="cannot-remote-desktop-to-azure-virtual-machines-because-of-static-ip"></a>Nie można zdalnie oddezywować do maszyn wirtualnych platformy Azure z powodu statycznego adresu IP
 
-W tym artykule opisano problem, w którym nie jest możliwe pulpitu zdalnego do platformy Azure Windows Virtual Machines (VMs) po skonfigurowaniu statyczny adres IP na maszynie wirtualnej.
+W tym artykule opisano problem, w którym nie można zdalnie pulpitu do maszyn wirtualnych systemu Azure Systemu Windows (VMs) po skonfigurowaniu statycznego adresu IP na maszynie wirtualnej.
 
 
 ## <a name="symptoms"></a>Objawy
 
-Po wprowadzeniu z połączeniem RDP z maszyną wirtualną na platformie Azure, pojawi się następujący komunikat o błędzie:
+Po nawiązaniu połączenia RDP z maszyną wirtualną na platformie Azure zostanie wyświetlony następujący komunikat o błędzie:
 
-**Pulpit zdalny nie może nawiązać połączenia z komputerem zdalnym z jednego z następujących powodów:**
+**Pulpit zdalny nie może połączyć się z komputerem zdalnym z jednego z następujących powodów:**
 
 1. **Dostęp zdalny do serwera nie jest włączony**
 
@@ -38,37 +38,37 @@ Po wprowadzeniu z połączeniem RDP z maszyną wirtualną na platformie Azure, p
 
 **Upewnij się, że komputer zdalny jest włączony i podłączony do sieci, a dostęp zdalny jest włączony.**
 
-Po sprawdzeniu zrzutu ekranu w [diagnostyki rozruchu](../troubleshooting/boot-diagnostics.md) w Azure Portal zobaczysz, że maszyna wirtualna jest uruchamiana normalnie i czeka na poświadczenia na ekranie logowania.
+Po sprawdzeniu zrzutu ekranu w [diagnostyki rozruchu](../troubleshooting/boot-diagnostics.md) w witrynie Azure portal, widzisz bootiowania maszyny Wirtualnej normalnie i czeka na poświadczenia na ekranie logowania.
 
 ## <a name="cause"></a>Przyczyna
 
-Maszyna wirtualna ma statyczny adres IP, która jest zdefiniowana w interfejsie sieciowym w Windows. Ten adres IP różni się od adresu, który jest zdefiniowany w witrynie Azure portal.
+Maszyna wirtualna ma statyczny adres IP, który jest zdefiniowany w interfejsie sieciowym w systemie Windows. Ten adres IP różni się od adresu zdefiniowanego w witrynie Azure portal.
 
 ## <a name="solution"></a>Rozwiązanie
 
-Przed wykonaniem tych kroków należy utworzyć migawkę dysku systemu operacyjnego, których to dotyczy maszyny wirtualnej do przechowywania kopii zapasowych. Aby uzyskać więcej informacji, zobacz [migawka dysku](../windows/snapshot-copy-managed-disk.md).
+Przed wykonać następujące kroki, należy wykonać migawkę dysku systemu operacyjnego maszyny Wirtualnej, którego dotyczy problem jako kopię zapasową. Aby uzyskać więcej informacji, zobacz [Migawka dysku](../windows/snapshot-copy-managed-disk.md).
 
-Aby rozwiązać ten problem, należy użyć kontrolki serial do włączenia protokołu DHCP lub [zresetowania interfejsu sieciowego](reset-network-interface.md) dla maszyny wirtualnej.
+Aby rozwiązać ten problem, użyj kontrolki szeregowej, aby włączyć usługę DHCP lub [zresetować interfejs sieciowy](reset-network-interface.md) maszyny Wirtualnej.
 
-### <a name="use-serial-control"></a>Korzystanie z kontroli szeregowej
+### <a name="use-serial-control"></a>Użyj kontrolki szeregowego
 
-1. Połącz się z [konsolą szeregową i Otwórz wystąpienie programu Cmd](./serial-console-windows.md#use-cmd-or-powershell-in-serial-console
-). Jeśli konsola szeregowa nie jest włączona na maszynie wirtualnej, zobacz [Resetowanie interfejsu sieciowego](reset-network-interface.md).
-2. Sprawdź, czy DHCP jest wyłączony w interfejsie sieciowym:
+1. Połącz się z [konsolą szeregową i otwórz wystąpienie CMD](./serial-console-windows.md#use-cmd-or-powershell-in-serial-console
+). Jeśli konsola szeregowa nie jest włączona na maszynie Wirtualnej, zobacz [Resetowanie interfejsu sieciowego](reset-network-interface.md).
+2. Sprawdź, czy usługa DHCP jest wyłączona w interfejsie sieciowym:
 
         netsh interface ip show config
-3. Jeżeli DHCP jest wyłączona, należy przywrócić konfigurację interfejsu sieciowego do używania protokołu DHCP:
+3. Jeśli usługa DHCP jest wyłączona, przywróć konfigurację interfejsu sieciowego, aby użyć usługi DHCP:
 
         netsh interface ip set address name="<NIC Name>" source=dhc
 
-    Na przykład jeśli interfejs interwork nazwy "Ethernet 2", uruchom następujące polecenie:
+    Na przykład, jeśli interfejs interwork nazywa "Ethernet 2", uruchom następujące polecenie:
 
         netsh interface ip set address name="Ethernet 2" source=dhc
 
-4. Wyślij zapytanie do konfiguracji adresu IP, ponownie, aby upewnić się, że interfejs sieciowy jest teraz prawidłowo skonfigurowany. Nowy adres IP powinien pasuje do dostarczonego przez platformę Azure.
+4. Ponownie skonserwuj konfigurację IP, aby upewnić się, że interfejs sieciowy jest teraz poprawnie skonfigurowany. Nowy adres IP powinien być zgodny z adresem dostarczonym przez platformę Azure.
 
         netsh interface ip show config
 
-    Nie trzeba ponownie maszynę Wirtualną, w tym momencie. Maszyna wirtualna będzie ponownie dostępny.
+    W tym momencie nie trzeba ponownie uruchamiać maszyny Wirtualnej. Maszyna wirtualna będzie z powrotem osiągalne.
 
-Po tym, jeśli chcesz skonfigurować statyczny adres IP dla maszyny wirtualnej, zobacz [Konfigurowanie statycznych adresów IP dla maszyny wirtualnej](../../virtual-network/virtual-networks-static-private-ip-arm-pportal.md).
+Następnie, jeśli chcesz skonfigurować statyczny adres IP dla maszyny Wirtualnej, zobacz [Konfigurowanie statycznych adresów IP dla maszyny Wirtualnej](../../virtual-network/virtual-networks-static-private-ip-arm-pportal.md).

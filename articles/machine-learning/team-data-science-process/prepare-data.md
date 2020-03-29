@@ -1,6 +1,6 @@
 ---
-title: Przygotowywanie danych dla ML Studio (klasyczny) — proces nauki o danych zespołowych
-description: Wstępne przetwarzanie i czyszczenie danych, aby przygotować go do efektywnie używać uczenia maszynowego.
+title: Prep danych dla ML Studio (classic) - Team Data Science Process
+description: Wstępne przetwarzanie i czyszczenie danych w celu przygotowania ich do skutecznego wykorzystania do uczenia maszynowego.
 services: machine-learning
 author: marktab
 manager: marktab
@@ -12,92 +12,92 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: caedcf313ab809e9607907545f26ca1b62bbeca7
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76720048"
 ---
 # <a name="tasks-to-prepare-data-for-enhanced-machine-learning"></a>Zadania w celu przygotowania danych do rozszerzonego uczenia maszynowego
-Wstępne przetwarzanie i czyszczenie danych to ważne zadania, które należy wykonać, aby można było użyć zestawu danych do uczenia modelu. Nieprzetworzone dane są często hałas i zawodnych i może brakować wartości. Przy użyciu tych danych do modelowania może spowodować wyświetlenie nieprawdziwych wyników. Te zadania są dostępne w ramach procesu do nauki o danych zespołu (TDSP) i zwykle należy wykonać początkową eksploracji zestawu danych używane do odnajdywania i planowanie wstępnego przetwarzania wymagane. Więcej szczegółowych instrukcji dotyczących procesu przetwarzania TDSP można znaleźć w opisie kroków przedstawionych w [procesie nauka danych zespołu](overview.md).
+Wstępne przetwarzanie i czyszczenie danych są ważne zadania, które muszą być wykonywane przed zestaw danych może być używany do szkolenia modelu. Nieprzetworzone dane są często hałaśliwe i zawodne i mogą brakować wartości. Używanie takich danych do modelowania może spowodować wprowadzające w błąd wyniki. Te zadania są częścią procesu nauki o danych zespołu (TDSP) i zazwyczaj wykonaj początkową eksplorację zestawu danych używanego do odnajdowania i planowania wymaganego przetwarzania wstępnego. Aby uzyskać bardziej szczegółowe instrukcje dotyczące procesu TDSP, zobacz kroki opisane w [procesie nauki o danych zespołu.](overview.md)
 
-Zadania wstępnego przetwarzania i czyszczenia, takie jak zadanie eksploracji danych, można wykonywać w różnych środowiskach, takich jak SQL lub Hive lub Azure Machine Learning Studio (klasyczny) oraz z różnymi narzędziami i językami, takimi jak R lub Python, w zależności od tego, gdzie dane jest przechowywany i jak jest sformatowany. Ponieważ przetwarzanie TDSP iteracyjne pochylone, te zadania mogą być wykonywane w różnych kroków w przepływie pracy procesu.
+Zadania przetwarzania wstępnego i czyszczenia, takie jak zadanie eksploracji danych, mogą być wykonywane w wielu różnych środowiskach, takich jak SQL lub Hive lub Azure Machine Learning Studio (klasyczny) oraz za pomocą różnych narzędzi i języków, takich jak R lub Python, w zależności od tego, gdzie dane jest przechowywany i jak jest sformatowany. Ponieważ TDSP ma charakter iteracyjny, zadania te mogą odbywać się na różnych etapach przepływu pracy procesu.
 
-W tym artykule wprowadzono różne koncepcje przetwarzania danych i zadania, które można podjąć przed lub po pozyskaniu danych do Azure Machine Learning Studio (klasyczne).
+W tym artykule przedstawiono różne pojęcia przetwarzania danych i zadania, które można podjąć przed lub po spożyciu danych do usługi Azure Machine Learning Studio (klasyczny).
 
-Aby zapoznać się z przykładem eksploracji i wstępnego przetwarzania danych w ramach Azure Machine Learning Studio (klasyczny), zobacz wideo dotyczące [przetwarzania wstępnego danych](https://azure.microsoft.com/documentation/videos/preprocessing-data-in-azure-ml-studio/) .
+Na przykład eksploracji danych i przetwarzania wstępnego wykonane w usłudze Azure Machine Learning Studio (klasyczny), zobacz [wideo przetwarzania wstępnego danych.](https://azure.microsoft.com/documentation/videos/preprocessing-data-in-azure-ml-studio/)
 
 ## <a name="why-pre-process-and-clean-data"></a>Dlaczego wstępne przetwarzanie i czyszczenie danych?
-Rzeczywiste dane są zbierane z różnych źródeł i procesy i może zawierać nieprawidłowości lub uszkodzone dane pogarszania jakości zestawu danych. Problemy z jakością typowych danych, które powstają są:
+Dane ze świata rzeczywistego są zbierane z różnych źródeł i procesów i mogą zawierać nieprawidłowości lub uszkodzone dane naruszające jakość zestawu danych. Typowe problemy z jakością danych, które powstają są:
 
-* **Niekompletne**: dane nie mają atrybutów lub zawierają brakujące wartości.
-* **Zakłócenia**: dane zawierają błędne rekordy lub elementy odstające.
-* **Niespójne**: dane zawierają rekordy powodujące konflikt lub niezgodności.
+* **Niekompletne**: Dane nie mają atrybutów lub zawierają brakujące wartości.
+* **Hałaśliwe**: Dane zawierają błędne rekordy lub odstające.
+* **Niespójne**: Dane zawierają sprzeczne rekordy lub rozbieżności.
 
-Dane dotyczące jakości jest wymaganiem wstępnym dla modeli predykcyjnych jakości. Aby uniknąć "wyrzucania elementów w pamięci out" i poprawić jakość danych i w związku z tym modelu wydajności, konieczne jest przeprowadzenie ekran kondycji danych wczesne wykrywanie problemów z danych i wybrać odpowiedniego przetwarzania danych i czynności czyszczenia.
+Dane dotyczące jakości są warunkiem wstępnym modeli predykcyjnych jakości. Aby uniknąć "śmieci, śmieci" i poprawić jakość danych, a tym samym wydajność modelu, konieczne jest przeprowadzenie ekranu kondycji danych, aby wcześnie wykryć problemy z danymi i zdecydować o odpowiednich krokach przetwarzania i czyszczenia danych.
 
-## <a name="what-are-some-typical-data-health-screens-that-are-employed"></a>Jakie są niektóre ekrany kondycji typowych danych, które są wykorzystywane?
-Możemy sprawdzić ogólnej jakości danych, sprawdzając:
+## <a name="what-are-some-typical-data-health-screens-that-are-employed"></a>Jakie są typowe ekrany kondycji danych, które są stosowane?
+Możemy sprawdzić ogólną jakość danych, sprawdzając:
 
 * Liczba **rekordów**.
 * Liczba **atrybutów** (lub **funkcji**).
-* **Typy danych** atrybutu (nominalny, porządkowy lub ciągły).
+* **Typy danych atrybutów** (nominalne, porządkowe lub ciągłe).
 * Liczba **brakujących wartości**.
-* **Poprawnie sformułowane** dane.
-  * Jeśli dane znajdują się w TSV lub CSV, sprawdź, czy kolumna separatory i separatory wierszy zawsze poprawnie oddzielić kolumn i wierszy.
-  * Jeśli dane są w formacie HTML lub XML, sprawdź, czy dane jest poprawnie sformułowany oparte na ich odpowiednich standardów.
-  * Analiza kodu mogą być również konieczne w celu wyodrębnienia informacji z danych z częściową strukturą lub bez struktury.
-* **Niespójne rekordy danych**. Sprawdź zakres wartości są dozwolone. Na przykład, jeśli dane zawierają GPA uczniów (średnia punktu oceny), sprawdź, czy GPA znajduje się w wyznaczonam zakresie, powiedz 0 ~ 4.
+* **Dobrze sformułowane** dane.
+  * Jeśli dane są w TSV lub CSV, sprawdź, czy separatory kolumn i separatory linii zawsze poprawnie oddzielają kolumny i linie.
+  * Jeśli dane są w formacie HTML lub XML, sprawdź, czy dane są dobrze sformułowane na podstawie ich odpowiednich standardów.
+  * Analizowanie może być również konieczne w celu wyodrębnienia informacji strukturalnych z danych półstrukturalnych lub niestrukturalnych.
+* **Niespójne rekordy danych**. Sprawdź zakres wartości są dozwolone. Na przykład, jeśli dane zawierają gpa studenta (średnia punkt klasy), sprawdź, czy GPA znajduje się w wyznaczonym zakresie, powiedzmy 0 ~ 4.
 
-Gdy znajdziesz problemy z danymi, **kroki przetwarzania** są konieczne, co często polega na czyszczeniu brakujących wartości, normalizacji danych, dyskretyzacji, przetwarzaniu tekstu, aby usunąć i/lub zastąpić osadzone znaki, które mogą mieć wpływ na wyrównanie danych, mieszane typy danych w wspólnych polach i innych.
+W przypadku znalezienia problemów z danymi konieczne są **kroki przetwarzania,** które często obejmują czyszczenie brakujących wartości, normalizację danych, dyskretyzację, przetwarzanie tekstu w celu usunięcia i/lub zastąpienia osadzonych znaków, które mogą mieć wpływ na wyrównanie danych, mieszane typy danych w typowych polach i inne.
 
-**Azure Machine Learning wykorzystuje poprawnie sformułowane dane tabelaryczne**.  Jeśli dane są już w formie tabelarycznej, przetwarzanie wstępne danych może być wykonywane bezpośrednio z Azure Machine Learning Studio (klasyczne) w Machine Learning.  Jeśli dane nie są w formie tabelarycznej, powiedz, który jest w formacie XML, analizowania może być wymagane w celu konwersji danych w formie tabelarycznej.  
+**Usługa Azure Machine Learning zużywa dobrze uformowane dane tabelaryczne.**  Jeśli dane są już w formie tabelarycznej, wstępne przetwarzanie danych można wykonać bezpośrednio za pomocą usługi Azure Machine Learning Studio (klasyczny) w usłudze Machine Learning.  Jeśli dane nie są w formie tabelarycznej, powiedzmy, że jest w XML, analizowanie może być wymagane w celu przekonwertowania danych na formularz tabelaryczny.  
 
-## <a name="what-are-some-of-the-major-tasks-in-data-pre-processing"></a>Jakie są niektóre z najważniejszych zadań wstępne przetwarzanie danych?
-* **Czyszczenie danych**: Wypełnij brakujące wartości, Wykryj i Usuń dane o zakłóceniach i wartości odstające.
-* **Przekształcanie danych**: normalizowanie danych w celu zmniejszenia wymiarów i szumów.
-* **Zmniejszenie ilości danych**: Przykładowe rekordy danych lub atrybuty w celu ułatwienia obsługi danych.
-* **Data dyskretyzacji**: konwertowanie atrybutów ciągłych na atrybuty kategorii w celu ułatwienia używania z określonymi metodami uczenia maszynowego.
-* **Czyszczenie tekstu**: Usuwanie znaków osadzonych, które mogą spowodować niewłaściwe wyrównania danych, na przykład karty osadzone w pliku danych rozdzielanych kartami, osadzone nowe wiersze, które mogą przerywać rekordy, na przykład.
+## <a name="what-are-some-of-the-major-tasks-in-data-pre-processing"></a>Jakie są główne zadania w przetwarzaniu wstępnym danych?
+* **Czyszczenie danych**: Wypełnianie brakujących wartości, wykrywanie i usuwanie hałaśliwych danych i wartości odstających.
+* **Transformacja danych**: Znormalizuj dane, aby zmniejszyć wymiary i hałas.
+* **Redukcja danych:** Przykładowe rekordy danych lub atrybuty ułatwiające obsługę danych.
+* **Discretization danych:** Konwertuj atrybuty ciągłe na atrybuty kategoryczne, aby ułatwić korzystanie z niektórych metod uczenia maszynowego.
+* **Czyszczenie tekstu:** usuń osadzone znaki, które mogą powodować niewspółosiowość danych, na przykład osadzone karty w pliku danych oddzielonym kartą, osadzone nowe linie, które mogą na przykład bić rekordy.
 
 W poniższych sekcjach opisano niektóre z tych kroków przetwarzania danych.
 
 ## <a name="how-to-deal-with-missing-values"></a>Jak radzić sobie z brakującymi wartościami?
-Aby poradzić sobie z brakującymi wartościami, najlepiej jest najpierw określić przyczynę brakujące wartości, aby lepiej obsługiwać ten problem. Typowe metody obsługi brakujące wartości to:
+Aby poradzić sobie z brakującymi wartościami, najlepiej najpierw zidentyfikować przyczynę brakujących wartości, aby lepiej obsługiwać problem. Typowe brakujące metody obsługi wartości to:
 
-* **Usuwanie**: usuwanie rekordów z brakującymi wartościami
-* **Podstawienie fikcyjne**: Zastąp brakujące wartości wartością fikcyjną: np. *nieznane* dla kategorii lub 0 dla wartości liczbowych.
-* **Znaczenie znaczenia**: jeśli brakujące dane są liczbowe, Zastąp brakujące wartości średnią.
-* **Częste podstawienie**: jeśli brakujące dane to kategorii, Zastąp brakujące wartości z najczęściej występującym elementem
-* **Podstawienie regresji**: Użyj metody regresji, aby zastąpić brakujące wartości wartościami uległa pogorszeniu.  
+* **Usuwanie**: Usuwanie rekordów z brakującymi wartościami
+* **Substytucja manekina**: Zastąp brakujące *unknown* wartości wartością manekina: np.
+* **Średnie podstawienie**: Jeśli brakujące dane są numeryczne, zastąp brakujące wartości średnią.
+* **Częste zastępowanie**: Jeśli brakujące dane są kategoryczne, zastąp brakujące wartości najczęstszym elementem
+* **Podstawianie regresji**: Użyj metody regresji, aby zastąpić brakujące wartości wartości regressed.  
 
-## <a name="how-to-normalize-data"></a>Jak normalizacji danych?
-Normalizacja danych przeskaluje wartości liczbowe do określonego zakresu. Metody normalizacji danych popularnych obejmują:
+## <a name="how-to-normalize-data"></a>Jak normalizować dane?
+Normalizacja danych ponownie skaluje wartości liczbowe do określonego zakresu. Popularne metody normalizacji danych obejmują:
 
-* **Minimalna-maksymalna normalizacja**: liniowo Przekształć dane w zakres, powiedzmy od 0 do 1, gdzie wartość minimalna jest skalowana do 0, a maksymalna wartość 1.
-* **Normalizacja wyniku Z**: Skaluj dane na podstawie średniego i odchylenia standardowego: Podziel różnicę między danymi a średnią przez odchylenie standardowe.
-* **Skalowanie dziesiętne**: Skaluj dane przez przeniesienie przecinka dziesiętnego wartości atrybutu.  
+* **Normalizacja min-Max:** Liniowo przekształcaj dane w zakres, powiedzmy od 0 do 1, gdzie wartość min jest skalowana do 0, a wartość maksymalna do 1.
+* **Normalizacja z wynikiem:** Skaluj dane na podstawie średniej i odchylenia standardowego: podziel różnicę między danymi a średnią przez odchylenie standardowe.
+* **Skalowanie dziesiętne:** Skaluj dane, przesuwając dziesiętny punkt wartości atrybutu.  
 
-## <a name="how-to-discretize-data"></a>Jak dyskretyzowania danych?
-Dane można zdyskretyzować konwertując ciągłe wartości atrybutów nominalna lub odstępach czasu. W ten sposób niektóre sposoby są następujące:
+## <a name="how-to-discretize-data"></a>Jak dyskretnie dyskretnie ująć dane?
+Dane można dyskretyzowane przez konwertowanie wartości ciągłych na atrybuty nominalne lub interwały. Oto kilka sposobów na to:
 
-* **Pakowania o równej szerokości**: Podziel zakres wszystkich możliwych wartości atrybutu na N grup o tym samym rozmiarze i przypisz wartości, które znajdują się w pojemniku z numerem pojemnika.
-* **Pakowania o równej wysokości**: Podziel zakres wszystkich możliwych wartości atrybutu na N grup, z których każdy zawiera tę samą liczbę wystąpień, a następnie przypisz wartości, które znajdują się w pojemniku z numerem pojemnika.  
+* **Binning o równej szerokości:** Podziel zakres wszystkich możliwych wartości atrybutu na grupy N o tym samym rozmiarze i przypisz wartości, które wchodzą do pojemnika z numerem pojemnika.
+* **Równej wysokości Binning:** Podziel zakres wszystkich możliwych wartości atrybutu na grupy N, z których każda zawiera taką samą liczbę wystąpień, a następnie przypisz wartości, które wchodzą do pojemnika z numerem pojemnika.  
 
-## <a name="how-to-reduce-data"></a>W jaki sposób zmniejszenia ilości danych?
-Istnieją różne metody, aby zmniejszyć rozmiar danych do obsługi danych łatwiejsze. W zależności od rozmiaru danych i domeny można zastosować następujących metod:
+## <a name="how-to-reduce-data"></a>Jak ograniczyć dane?
+Istnieją różne metody, aby zmniejszyć rozmiar danych w celu łatwiejszej obsługi danych. W zależności od rozmiaru danych i domeny można zastosować następujące metody:
 
-* **Rejestruj próbkowanie**: Przykładowe rekordy danych i wybierz tylko reprezentatywny podzbiór danych.
-* **Próbkowanie atrybutów**: Wybierz tylko podzestaw najważniejszych atrybutów z danych.  
-* **Agregacja**: Podziel dane na grupy i przechowuj numery dla każdej grupy. Na przykład przychód dziennej liczby sieć restauracji, w ciągu ostatnich 20 lat, może być agregowany dochodem miesięczny, aby zmniejszyć rozmiar danych.  
+* **Próbkowanie rekordów:** próbkowanie rekordów danych i wybieranie tylko reprezentatywnego podzbioru z danych.
+* **Próbkowanie atrybutów:** Wybierz tylko podzbiór najważniejszych atrybutów z danych.  
+* **Agregacja**: Podziel dane na grupy i przechowuj liczby dla każdej grupy. Na przykład dzienne przychody sieci restauracji w ciągu ostatnich 20 lat można zagregować z miesięcznymi przychodami, aby zmniejszyć rozmiar danych.  
 
-## <a name="how-to-clean-text-data"></a>Jak wyczyścić dane tekstowe?
-**Pola tekstowe w danych tabelarycznych** mogą zawierać znaki, które mają wpływ na wyrównanie kolumn i/lub granice rekordów. Na przykład karty osadzone w pliku rozdzielonym tabulatorem powodują nieprawidłowe wyrównanie kolumn i osadzonych znaków nowego wiersza. Niewłaściwa obsługa kodowania tekstu podczas zapisywania lub odczytywania tekstu prowadzi do utraty informacji, przypadkowe wprowadzenie nieczytelnych znaków (takich jak null) i może mieć wpływ na analizowanie tekstu. Dokładnej analizy i edytowania może być wymagane, aby można było wyczyścić pola tekstowe do prawidłowego wyrównania i/lub dane wyodrębnione ze strukturą danych niestrukturyzowanych i strukturyzowanych tekstu.
+## <a name="how-to-clean-text-data"></a>Jak czyścić dane tekstowe?
+**Pola tekstowe w danych tabelaryczne** mogą zawierać znaki wpływające na wyrównanie kolumn i/lub granice rekordów. Na przykład osadzone karty w pliku oddzielonym tabulatorem powodują niewspółosiowość kolumny, a osadzone nowe znaki wiersza pobijają linie rekordów. Niewłaściwa obsługa kodowania tekstu podczas pisania lub czytania tekstu prowadzi do utraty informacji, niezamierzonego wprowadzenia nieczytelnych znaków (takich jak wartości null), a także może mieć wpływ na analizowanie tekstu. Staranne analizowanie i edytowanie może być wymagane w celu oczyszczenia pól tekstowych w celu prawidłowego wyrównania i/lub wyodrębnienia danych strukturalnych z danych tekstowych bez struktury lub półstrukturacyjnych.
 
-**Eksploracja danych** oferuje wczesny wgląd w dane. Liczba problemów z danych może być niepokryty, w tym kroku i odpowiedniej metody mogą być stosowane w celu rozwiązania tych problemów.  Jest ważne zadawać pytania, takie jak co to jest źródłem problemu i jak problemu mogły zostać wprowadzone. Ten proces pomaga również w wyborze kroków przetwarzania danych, które należy podjąć w celu ich rozwiązania. Określenie ostatecznych przypadków użycia i osób może być również używane do określania priorytetów nakładu pracy przetwarzania danych.
+**Eksploracja danych** oferuje wczesny wgląd w dane. Podczas tego kroku można odkryć szereg problemów z danymi i można zastosować odpowiednie metody w celu rozwiązania tych problemów.  Ważne jest, aby zadawać pytania, takie jak to, co jest źródłem problemu i jak problem mógł zostać wprowadzony. Ten proces pomaga również zdecydować o krokach przetwarzania danych, które należy podjąć, aby je rozwiązać. Określenie ostatecznych przypadków użycia i personas może również służyć do priorytetów nakładu przetwarzania danych.
 
 ## <a name="references"></a>Dokumentacja
-> *Wyszukiwanie danych: koncepcje i techniki*, wydanie trzecie, Morgan Kaufmann, 2011, Jiawei Han, Micheline Kamber i Jian PEI
+> *Eksploracja danych: Koncepcje i techniki*, Edycja trzecia, Morgan Kaufmann, 2011, Jiawei Han, Micheline Kamber i Jian Pei
 > 
 > 
 

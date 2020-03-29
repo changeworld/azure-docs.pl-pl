@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 02/24/2017
 ms.author: yurid
 ms.openlocfilehash: 69062e42a5d572cf7b73bec3932613d39be9b92f
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77921508"
 ---
 # <a name="azure-security-center-and-azure-virtual-machines"></a>Usługi Azure Security Center i Azure Virtual Machines
@@ -47,7 +47,7 @@ Aby rozpocząć pracę z usługą Azure Security Center, należy uwzględnić na
 
 * Potrzebna jest subskrypcja platformy Microsoft Azure. Aby uzyskać więcej informacji o warstwach Bezpłatna i Standardowa usługi Security Center, zobacz [Cennik usługi Security Center](https://azure.microsoft.com/pricing/details/security-center/).
 * Zaplanuj wdrożenie usługi Security Center. Aby uzyskać więcej informacji o zagadnieniach związanych z planowaniem i obsługą, zobacz [Przewodnik planowania i obsługi usługi Azure Security Center](security-center-planning-and-operations-guide.md).
-* Aby uzyskać informacje dotyczące obsługiwanych systemów operacyjnych, zobacz [Azure Security Center często zadawanych pytań](faq-vms.md). 
+* Aby uzyskać informacje dotyczące obsługiwanych systemów operacyjnych, zobacz [Często zadawane pytania usługi Azure Security Center .](faq-vms.md) 
 
 ## <a name="set-security-policy"></a>Ustawianie zasad zabezpieczeń
 Aby usługa Azure Security Center mogła zbierać informacje niezbędne do udostępniania zaleceń i alertów generowanych na podstawie skonfigurowanych zasad zabezpieczeń, trzeba włączyć zbieranie danych. Na poniższej ilustracji przedstawiono zrzut ekranu, na którym **Zbieranie danych** jest **Włączone**.
@@ -70,7 +70,7 @@ Po skonfigurowaniu zasad zabezpieczeń usługa Security Center analizuje stan za
 | Koryguj luki w zabezpieczeniach systemu operacyjnego |Zaleca dostosowanie konfiguracji systemu operacyjnego do zalecanych reguł konfiguracji (np. uniemożliwienie zapisywania haseł). |
 | Zastosuj aktualizacje systemu |Zaleca wdrożenie na maszynach wirtualnych brakujących zabezpieczeń systemu i aktualizacji krytycznych. |
 | Uruchom ponownie po zaktualizowaniu systemu |Zaleca ponowne uruchomienie maszyny wirtualnej w celu ukończenia procesu stosowania aktualizacji systemu. |
-| Zainstaluj program Endpoint Protection |Zaleca aprowizację programów chroniących przed złośliwym oprogramowaniem na maszynach wirtualnych (dotyczy tylko maszyn wirtualnych z systemem Windows). |
+| Zainstaluj punkt końcowy |Zaleca aprowizację programów chroniących przed złośliwym oprogramowaniem na maszynach wirtualnych (dotyczy tylko maszyn wirtualnych z systemem Windows). |
 | Włącz agenta maszyny wirtualnej |Umożliwia zobaczenie, które maszyny wirtualne wymagają agenta maszyny wirtualnej. Agent maszyny wirtualnej musi być zainstalowany na maszynach wirtualnych, aby zapewnić aprowizację skanowania w poszukiwaniu poprawek, skanowania linii bazowej i programów chroniących przed złośliwym oprogramowaniem. Agent maszyny wirtualnej jest instalowany domyślnie w przypadku maszyn wirtualnych wdrażanych z poziomu portalu Azure Marketplace. Informacje na temat instalowania agenta maszyny wirtualnej można znaleźć w artykule [Agent maszyny wirtualnej i rozszerzenia — część 2](https://azure.microsoft.com/blog/2014/04/15/vm-agent-and-extensions-part-2/). |
 | Zastosuj szyfrowanie dysków |Zaleca szyfrowanie dysków maszyny wirtualnej przy użyciu usługi Azure Disk Encryption (maszyny wirtualne z systemami Windows i Linux). Szyfrowanie jest zalecane zarówno w przypadku woluminów z systemem operacyjnym, jak i z danymi maszyny wirtualnej. |
 | Funkcja oceny luk w zabezpieczeniach nie jest zainstalowana |Zaleca się zainstalowanie na maszynie wirtualnej rozwiązania do oceny luk w zabezpieczeniach. |
@@ -82,7 +82,7 @@ Po skonfigurowaniu zasad zabezpieczeń usługa Security Center analizuje stan za
 > 
 
 ## <a name="monitor-security-health"></a>Monitoruj kondycję zabezpieczeń
-Po włączeniu [zasad zabezpieczeń](tutorial-security-policy.md) dla zasobów subskrypcji Centrum zabezpieczeń będzie analizować zabezpieczenia zasobów, aby zidentyfikować potencjalne luki.  Stan zabezpieczeń zasobów oraz informacje o problemach można wyświetlić w bloku **Kondycja zabezpieczeń zasobów**. Jeśli klikniesz pozycję **Maszyny wirtualne** w ramach kafelka **Kondycja zabezpieczeń zasobów**, zostanie otwarty blok **Maszyny wirtualne** z zaleceniami dotyczącymi maszyn wirtualnych. 
+Po włączeniu [zasad zabezpieczeń](tutorial-security-policy.md) dla zasobów subskrypcji Centrum zabezpieczeń będzie analizować zabezpieczenia zasobów, aby zidentyfikować potencjalne luki.  Można wyświetlić stan zabezpieczeń zasobów, wraz z wszelkimi problemami w **zasobochłoczym bloku kondycji** zabezpieczeń. Jeśli klikniesz pozycję **Maszyny wirtualne** w ramach kafelka **Kondycja zabezpieczeń zasobów**, zostanie otwarty blok **Maszyny wirtualne** z zaleceniami dotyczącymi maszyn wirtualnych. 
 
 ![Kondycja zabezpieczeń](./media/security-center-virtual-machine/security-center-virtual-machine-fig2.png)
 
@@ -98,4 +98,4 @@ Aby dowiedzieć się więcej na temat Centrum zabezpieczeń, zobacz następując
 
 * [Ustawianie zasad zabezpieczeń w usłudze Azure Security Center](tutorial-security-policy.md) — informacje na temat konfigurowania zasad zabezpieczeń dla subskrypcji i grup zasobów na platformie Azure.
 * [Reagowanie na alerty zabezpieczeń i zarządzanie nimi w usłudze Azure Security Center](security-center-managing-and-responding-alerts.md) — informacje na temat reagowania na alerty zabezpieczeń i zarządzania nimi.
-* [Często zadawane pytania — Virtual Machines](faq-vms.md) — wyszukiwanie często zadawanych pytań dotyczących korzystania z usługi.
+* [Często zadawane pytania — Maszyny wirtualne](faq-vms.md) — znajdź często zadawane pytania dotyczące korzystania z usługi.

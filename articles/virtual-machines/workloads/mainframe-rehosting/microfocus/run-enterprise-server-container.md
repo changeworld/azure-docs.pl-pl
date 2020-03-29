@@ -1,6 +1,6 @@
 ---
-title: Uruchom Micro Focus Enterprise Server w wersji 4.0 w kontenerze platformy Docker na maszynach wirtualnych platformy Azure
-description: Ponowne hostowanie obciążeń mainframe firmy IBM z/OS, uruchamiając Micro fokus Enterprise Server w kontenerze platformy Docker na maszynach wirtualnych platformy Azure.
+title: Uruchamianie programu Micro Focus Enterprise Server 4.0 w kontenerze platformy Docker na maszynach wirtualnych platformy Azure
+description: Hostuj ponownie obciążenia komputerami mainframe IBM z/OS, uruchamiając program Micro Focus Enterprise Server w kontenerze platformy Docker na maszynach wirtualnych platformy Azure.
 services: virtual-machines-linux
 documentationcenter: ''
 author: njray
@@ -9,166 +9,166 @@ ms.date: 04/02/2019
 ms.topic: article
 ms.service: multiple
 ms.openlocfilehash: 30d99c3f4767eb50361f7074c0d508fcf309faca
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "61488460"
 ---
-# <a name="run-micro-focus-enterprise-server-40-in-a-docker-container-on-azure"></a>Uruchamianie Micro Focus Enterprise Server w wersji 4.0 w kontenerze platformy Docker na platformie Azure
+# <a name="run-micro-focus-enterprise-server-40-in-a-docker-container-on-azure"></a>Uruchamianie programu Micro Focus Enterprise Server 4.0 w kontenerze platformy Docker na platformie Azure
 
-Możesz uruchomić Micro fokus Enterprise Server 4.0 w kontenerze platformy Docker na platformie Azure. Ten samouczek pokazuje sposób. Enterprise Server używa pokaz acctdemo CICS Windows (System kontroli klienta informacji).
+Program Micro Focus Enterprise Server 4.0 można uruchomić w kontenerze platformy Docker na platformie Azure. Ten samouczek pokazuje, jak to zrobić. Używa demonstracji acctdemo systemu Windows CICS (Customer Information Control System) dla programu Enterprise Server.
 
-Docker dodaje przenośność i izolacji aplikacji. Na przykład można wyeksportować obrazu platformy Docker z jedną Windows z maszyn wirtualnych do uruchomienia na inną, lub z repozytorium do serwera Windows za pomocą platformy Docker. Obraz platformy Docker działa w nowej lokalizacji, z tą samą konfiguracją — bez konieczności instalowania serwera przedsiębiorstwa. Jego część obrazu. Zagadnienia dotyczące licencjonowania jest nadal mają zastosowanie.
+Docker dodaje przenośność i izolację do aplikacji. Na przykład można wyeksportować obraz platformy Docker z jednej maszyny Wirtualnej systemu Windows do uruchomienia na innej lub z repozytorium do serwera systemu Windows z platformą Docker. Obraz platformy Docker jest uruchamiany w nowej lokalizacji w tej samej konfiguracji — bez konieczności instalowania programu Enterprise Server. To część obrazu. Nadal obowiązują zagadnienia dotyczące licencjonowania.
 
-W tym samouczku instaluje **Windows Datacenter 2016 z kontenerami** maszynę wirtualną (VM) w portalu Azure Marketplace. Ta maszyna wirtualna zawiera **Docker 18.09.0**. Poniższe kroki pokazują jak miało miejsce wdrożenie kontenera, należy ją uruchomić, a następnie połączyć się z nim 3270 emulatora.
+W tym samouczku instaluje **centrum danych systemu Windows 2016 z** maszyną wirtualną kontenery (VM) z portalu Azure Marketplace. Ta maszyna wirtualna zawiera **dok 18.09.0**. Poniższe kroki pokazują, jak wdrożyć kontener, uruchomić go, a następnie połączyć się z nim za pomocą emulatora 3270.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Przed rozpoczęciem pracy zapoznaj się z tych wymagań wstępnych:
+Przed rozpoczęciem zapoznaj się z tymi wymaganiami:
 
 - Subskrypcja platformy Azure. Jeśli nie masz subskrypcji, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-- Oprogramowanie Micro fokus i prawidłowej licencji (lub licencji próbnej). Jeśli jesteś istniejącym klientem Micro fokus, skontaktuj się z przedstawicielem Micro fokus. W przeciwnym razie [Zamów wersję próbną](https://www.microfocus.com/products/enterprise-suite/enterprise-server/trial/).
+- Oprogramowanie Micro Focus i ważna licencja (lub licencja próbna). Jeśli jesteś istniejącym klientem micro focus, skontaktuj się z przedstawicielem firmy Micro Focus. W przeciwnym razie [poproś o wersję próbną](https://www.microfocus.com/products/enterprise-suite/enterprise-server/trial/).
 
      > [!NOTE]
-     > Pliki pokaz platformy Docker są dołączone do Enterprise Server 4.0. Ten samouczek używa ent\_serwera\_pliki dockerfile\_4.0\_windows.zip. Do niego dostęp z tym samym miejscu, dostęp do pliku instalacyjnego Enterprise Server, lub przejdź do *fokus Micro* na rozpoczęcie pracy.
+     > Pliki demonstracyjny platformy Docker są dołączone do programu Enterprise Server 4.0. W tym samouczku\_\_użyto pliku\_dockerfiles\_4.0 windows.zip. Uzyskaj do niego dostęp z tego samego miejsca, w które uzyskałeś dostęp do pliku instalacyjnego programu Enterprise Server, lub przejdź do *micro focus,* aby rozpocząć.
 
-- W dokumentacji dotyczącej [Enterprise Server i Enterprise Developer](https://www.microfocus.com/documentation/enterprise-developer/#").
+- Dokumentacja dla [enterprise server i enterprise developer](https://www.microfocus.com/documentation/enterprise-developer/#").
 
 ## <a name="create-a-vm"></a>Tworzenie maszyny wirtualnej
 
-1. Bezpieczny nośnika z ent\_serwera\_pliki dockerfile\_4.0\_windows.zip pliku. Zabezpiecz ES-Docker-Prod-XXXXXXXX.mflic pliku licencji (wymagane do tworzenia obrazów platformy Docker).
+1. Zabezpiecz nośnik z\_pliku\_windows.zip\_serwera ent.\_ Zabezpiecz plik licencjonowania ES-Docker-Prod-XXXXXXXX.mflic (wymagany do tworzenia obrazów platformy Docker).
 
-2. Tworzenie maszyny Wirtualnej. Aby to zrobić, otwórz Azure portal, wybierz opcję **Utwórz zasób** od lewego górnego rogu i Filtruj według *systemu windows server*. W wynikach wybierz **systemu Windows Server 2016 Datacenter — z kontenerami**.
+2. Utwórz maszynę wirtualną. Aby to zrobić, otwórz witrynę Azure Portal, wybierz pozycję **Utwórz zasób** z lewej górnej części i filtruj według *serwera systemu Windows*. W wynikach wybierz pozycję **Centrum danych systemu Windows Server 2016 — z kontenerami**.
 
-     ![Wyniki wyszukiwania portalu Azure](media/01-portal.png)
+     ![Wyniki wyszukiwania w portalu Azure](media/01-portal.png)
 
-3. Aby skonfigurować właściwości maszyny wirtualnej, wybierz Szczegóły wystąpienia:
+3. Aby skonfigurować właściwości maszyny Wirtualnej, wybierz szczegóły wystąpienia:
 
-    1. Wybierz rozmiar maszyny wirtualnej. W tym samouczku należy wziąć pod uwagę przy użyciu **standardowa DS2\_v2** maszyny Wirtualnej przy użyciu 2 procesorów Vcpu i 7 GB pamięci.
+    1. Wybierz rozmiar maszyny wirtualnej. W tym samouczku należy rozważyć użycie standardowej maszyny Wirtualnej **\_DS2 v2** z 2 procesorami wirtualnymi i 7 GB pamięci.
 
-    2. Wybierz **Region** i **grupy zasobów** chcesz wdrożyć.
+    2. Wybierz **region** i **grupę zasobów,** w których chcesz wdrożyć.
 
-    3. Aby uzyskać **opcji dostępności**, użyj ustawienia domyślnego.
+    3. W przypadku **opcji dostępności**użyj ustawienia domyślnego.
 
-    4. Aby uzyskać **Username**, typ, którego chcesz użyć konta administratora i hasło.
+    4. W obszarze **Nazwa użytkownika**wpisz konto administratora, którego chcesz użyć, oraz hasło.
 
-    5. Upewnij się, że **portu 3389 protokołu RDP** jest otwarty. Tylko ten port musi być publicznie udostępniany, dzięki czemu możesz zalogować się do maszyny Wirtualnej. Następnie zaakceptuj wartości domyślne i kliknij przycisk **przeglądanie + tworzenie**.
+    5. Upewnij **się, że port 3389 RDP** jest otwarty. Tylko ten port musi być publicznie naświetlony, dzięki czemu można zalogować się do maszyny Wirtualnej. Następnie zaakceptuj wszystkie wartości domyślne i kliknij przycisk **Przejrzyj+ utwórz**.
 
-     ![Utwórz okienka maszyny wirtualnej](media/container-02.png)
+     ![Tworzenie okienka maszyny wirtualnej](media/container-02.png)
 
-4. Oczekiwanie na zakończenie (kilka minut) wdrożenia. Wyświetlany jest komunikat informujący o tym, że Twoja maszyna wirtualna została utworzona.
+4. Poczekaj na zakończenie wdrożenia (kilka minut). Komunikat stwierdza, że maszyna wirtualna została utworzona.
 
-5. Kliknij przycisk **przejdź do zasobu** można przejść do **Przegląd** bloku maszyny wirtualnej.
+5. Kliknij **przycisk Przejdź do zasobu,** aby przejść do bloku **Przegląd** maszyny Wirtualnej.
 
-6. Po prawej stronie, kliknij przycisk **Connect** przycisku. **Połącz z maszyną wirtualną** opcje są wyświetlane po prawej stronie.
+6. Po prawej stronie kliknij przycisk **Połącz.** Opcje **Połącz z maszyną wirtualną** są wyświetlane po prawej stronie.
 
-7. Kliknij przycisk **Pobierz plik RDP** przycisk, aby pobrać plik protokołu RDP, który umożliwia dołączanie do maszyny Wirtualnej.
+7. Kliknij przycisk **Pobierz plik RDP,** aby pobrać plik RDP, który umożliwia dołączenie do maszyny Wirtualnej.
 
-8. Po zakończeniu pobierania, otwórz go i wpisz nazwę użytkownika i hasło utworzone dla maszyny Wirtualnej.
+8. Po zakończeniu pobierania pliku otwórz go i wpisz nazwę użytkownika i hasło utworzone dla maszyny Wirtualnej.
 
      > [!NOTE]
-     > Nie należy używać poświadczeń firmowych do logowania. (Klienta RDP przyjęto założenie, że chcesz użyć. Nie.)
+     > Do logowania nie należy używać poświadczeń firmowych. (Klient RDP zakłada, że można ich użyć. Nie.)
 
-9.  Wybierz **więcej opcji**, następnie wybierz swoje poświadczenia maszyny Wirtualnej.
+9.  Wybierz **pozycję Więcej opcji**, a następnie wybierz poświadczenia maszyny Wirtualnej.
 
-W tym momencie maszyna wirtualna jest uruchomiona i dołączone za pośrednictwem protokołu RDP. Po zarejestrowaniu się i przygotowane do kolejnego kroku.
+W tym momencie maszyna wirtualna jest uruchomiona i podłączona za pośrednictwem protokołu RDP. Zalogujesz się i przygotuj do następnego kroku.
 
-## <a name="create-a-sandbox-directory-and-upload-the-zip-file"></a>Utwórz katalog piaskownica i przekaż plik zip
+## <a name="create-a-sandbox-directory-and-upload-the-zip-file"></a>Tworzenie katalogu piaskownicy i przesyłanie pliku zip
 
-1.  Utwórz katalog na maszynie Wirtualnej, w którym możesz przekazać pliki pokazów i licencji. Na przykład **C:\\piaskownicy**.
+1.  Utwórz katalog na maszynie Wirtualnej, w którym można przekazać pliki demo i licencji. Na przykład **\\C: Piaskownica**.
 
-2.  Przekaż **ent\_serwera\_pliki dockerfile\_4.0\_windows.zip** i **ES-Docker-Prod-XXXXXXXX.mflic** plik do katalogu, który został utworzony.
+2.  Przekaż plik **dockerfiles\_windows.zip\_\_serwera\_ent 4.0** i plik **ES-Docker-Prod-XXXXXXXX.mflic** do utworzonego katalogu.
 
-3.  Wyodrębnij zawartość pliku zip do **ent\_serwera\_pliki dockerfile\_4.0\_windows** Katalog utworzony przez proces wyodrębniania. Ten katalog zawiera plik readme (jako plik HTML, a txt) i dwa podkatalogów **EnterpriseServer** i **przykłady**.
+3.  Wyodrębnij zawartość pliku zip do katalogu **\_dockerfiles\_systemu Windows\_4.0\_** utworzonego przez proces wyodrębniania. Ten katalog zawiera plik readme (jako plik .html i txt) oraz dwa podkatalogi, **EnterpriseServer** i **Examples**.
 
-4.  Kopiuj **ES-Docker-Prod-XXXXXXXX.mflic** na dysku C:\\piaskownicy\\ent\_serwera\_pliki dockerfile\_4.0\_windows\\ EnterpriseServer i C:\\piaskownicy\\ent\_serwera\_pliki dockerfile\_4.0\_windows\\przykłady\\CICS katalogów.
+4.  Kopiowanie **ES-Docker-Prod-XXXXXXXX.mflic** do\\\\C:\_Sandbox ent\_server\_dockerfiles\_4.0 windows\\EnterpriseServer i C:\\Sandbox\\ent\_\_server\_dockerfiles 4.0\_windows\\Przykłady katalogów\\CICS.
 
 > [!NOTE]
-> Upewnij się, że kopiujesz plik licencjonowania w obu katalogach. Są one wymagane dla kroku kompilacji platformy Docker upewnić się, że obrazy są licencjonowane.
+> Upewnij się, że plik licencjonowania został skopiowany do obu katalogów. Są one wymagane dla kroku kompilacji platformy Docker, aby upewnić się, że obrazy są poprawnie licencjonowane.
 
-## <a name="check-docker-version-and-create-base-image"></a>Zapoznaj się z wersją platformy Docker i utworzyć obrazu podstawowego
+## <a name="check-docker-version-and-create-base-image"></a>Sprawdź wersję platformy Docker i utwórz obraz podstawowy
 
 > [!IMPORTANT]
-> Tworzenie odpowiedni obraz platformy Docker jest procesem dwuetapowym. Najpierw utwórz obraz podstawowy Enterprise Server 4.0. Następnie utwórz inny obraz x64 platformy. Chociaż można utworzyć x86 (32-bitowy) obrazu, należy użyć 64-bitowego obrazu.
+> Tworzenie odpowiedniego obrazu platformy Docker jest procesem dwuetapowym. Najpierw utwórz obraz podstawowy programu Enterprise Server 4.0.Następnie utwórz kolejny obraz dla platformy x64. Chociaż można utworzyć obraz x86 (32-bitowy), użyj obrazu 64-bitowego.
 
 1. Otwórz wiersz polecenia.
 
-2. Sprawdź, czy platforma Docker jest zainstalowana. W wierszu polecenia wpisz polecenie:
+2. Sprawdź, czy program Docker jest zainstalowany. W wierszu polecenia wpisz polecenie:
 
     ```
         docker version
     ```
 
-     Na przykład wersja był 18.09.0, kiedy to zostało zapisane.
+     Na przykład wersja była 18.09.0, gdy została napisana.
 
 3. Aby zmienić katalog, wpisz **cd \Sandbox\ent_server_dockerfiles_4.0_windows\EnterpriseServer**.
 
-4. Typ **bld.bat IacceptEULA** do rozpoczęcia procesu tworzenia początkowej podstawowy obraz. Poczekaj kilka minut, aż do uruchomienia tego procesu. W wynikach, zwróć uwagę, dwa obrazy, które zostały utworzone — jeden dla x64 i jeden dla x86:
+4. Wpisz **bld.bat IacceptEULA,** aby rozpocząć proces kompilacji dla początkowego obrazu podstawowego. Poczekaj kilka minut na uruchomienie tego procesu. W wynikach zwróć uwagę na dwa utworzone obrazy — jeden dla x64 i jeden dla x86:
 
-     ![Okno polecenia pokazywanie obrazów](media/container-04.png)
+     ![Okno polecenia z obrazami](media/container-04.png)
 
-5. Aby utworzyć obraz końcowy demonstracyjne CICS, przełącz się do katalogu CICS, wpisując **cd\\piaskownicy\\ent\_serwera\_pliki dockerfile\_4.0\_systemuwindows\\ Przykłady\\CICS**.
+5. Aby utworzyć obraz końcowy dla demonstracji CICS, przełącz się do katalogu CICS, wpisując **cd\\Sandbox\\\\ent\\\_\_server dockerfiles\_4.0\_windows Examples CICS**.
 
-6. Do utworzenia obrazu, wpisz **bld.bat x64**. Poczekaj kilka minut, aż do uruchamiania procesu i komunikat informujący o tym, że obraz został utworzony.
+6. Aby utworzyć obraz, wpisz **bld.bat x64**. Poczekaj kilka minut na uruchomienie procesu i komunikat informujący, że obraz został utworzony.
 
-7. Typ **obrazów platformy docker** do wyświetlania listy wszystkich obrazów platformy Docker zainstalowany na maszynie Wirtualnej. Upewnij się, że **microfocus/es-acctdemo** jest jednym z nich.
+7. Wpisz **obrazy docker,** aby wyświetlić listę wszystkich obrazów platformy Docker zainstalowanych na maszynie Wirtualnej. Upewnij się, że **microfocus/es-acctdemo** jest jednym z nich.
 
-     ![Okno polecenia przedstawiający es acctdemo obrazu](media/container-05.png)
+     ![Okno polecenia z obrazem es-acctdemo](media/container-05.png)
 
-## <a name="run-the-image"></a>Uruchom obraz 
+## <a name="run-the-image"></a>Uruchamianie obrazu 
 
-1.  Aby uruchomić Enterprise Server 4.0 i aplikacji acctdemo, wpisz w wierszu polecenia:
+1.  Aby uruchomić enterprise server 4.0 i aplikację acctdemo, w wierszu polecenia typu:
 
     ```
          docker run -p 16002:86/tcp -p 16002:86/udp -p 9040-9050:9040-9050 -p 9000-9010:9000-9010 -ti --network="nat" --rm microfocus/es-acctdemo:win_4.0_x64
     ```
 
-2.  Takich jak instalowania emulatora terminala 3270 [x3270](http://x3270.bgp.nu/) i przy jego użyciu, aby dołączyć za pośrednictwem portu 9040, do obrazu, który jest uruchomiony.
+2.  Zainstaluj emulator terminala 3270, taki jak [x3270,](http://x3270.bgp.nu/) i użyj go do podłączenia, za pośrednictwem portu 9040, do uruchomionego obrazu.
 
-3.  Uzyskaj adres IP kontenera acctdemo, dlatego Docker może działać jako serwer DHCP dla kontenerów zarządza:
+3.  Pobierz adres IP kontenera acctdemo, aby firma Docker mogła działać jako serwer DHCP dla kontenerów, którymi zarządza:
 
-    1.  Pobierz identyfikator uruchomionego kontenera. Typ **Docker ps** w wierszu polecenia i Zanotuj identyfikator (**22a0fe3159d0** w tym przykładzie). Zapisz go do kolejnego kroku.
+    1.  Pobierz identyfikator uruchomionego kontenera. Wpisz **docker ps** w wierszu polecenia i zanotuj identyfikator (**22a0fe3159d0** w tym przykładzie). Zapisz go do następnego kroku.
 
-    2.  Aby uzyskać adres IP dla kontenera acctdemo, użyj Identyfikatora kontenera z poprzedniego kroku w następujący sposób:
+    2.  Aby uzyskać adres IP kontenera acctdemo, użyj identyfikatora kontenera z poprzedniego kroku w następujący sposób:
 
     ```
        docker inspect <containerID> --format="{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}"
     ```
 
-       Na przykład:
+       Przykład:
 
     ```   
         docker inspect 22a0fe3159d0 --format="{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}"
     ```
-4. Zanotuj adres IP dla obrazu acctdemo. Na przykład adres w następujących danych wyjściowych jest 172.19.202.52.
+4. Zanotuj adres IP obrazu acctdemo. Na przykład adres w następujących danych wyjściowych jest 172.19.202.52.
 
-     ![Okno polecenia wyświetlanie adresu IP](media/container-06.png)
+     ![Okno polecenia z adresem IP](media/container-06.png)
 
-5. Zainstaluj obraz przy użyciu emulatora. Skonfigurować emulator, aby użyć adresu acctdemo obrazu i port 9040. W tym miejscu ma **172.19.202.52:9040**. Należy do Ciebie będzie podobny. **Logować się CICS** zostanie otwarty ekran.
+5. Zamontuj obraz za pomocą emulatora. Skonfiguruj emulator do używania adresu obrazu acctdemo i portu 9040. Tutaj jest **172.19.202.52:9040**. Twoje będą podobne. Zostanie otwarty ekran **Signon to CICS.**
 
-    ![Logować do ekranu CICS](media/container-07.png)
+    ![Ekran Logowania do cics](media/container-07.png)
 
-6. Zaloguj się do regionu CICS, wprowadzając **SYSAD** dla **USERID** i **SYSAD** dla **hasło**.
+6. Zaloguj się do regionu CICS, wprowadzając pozycję **SYSAD** dla **identyfikatora użytkownika** i **identyfikatora SYSAD** dla **hasła**.
 
-7. Wyczyść ekran przy użyciu emulatora usługi keymap. W przypadku x3270, wybrać **Keymap** opcji menu.
+7. Wyczyść ekran, używając mapy klawiszy emulatora. W przypadku x3270 wybierz opcję menu **Mapa klawiszy.**
 
-8. Aby uruchomić aplikację acctdemo, wpisz **ACCT**. Jest wyświetlany ekran początkowy dla aplikacji.
+8. Aby uruchomić aplikację acctdemo, wpisz **ACCT**. Zostanie wyświetlony ekran początkowy aplikacji.
 
-     ![Ekran pokaz konta](media/container-08.png)
+     ![Ekran wersji demonstracyjnej konta](media/container-08.png)
 
-9. Poeksperymentuj z wyświetlanie typów kont. Na przykład wpisz **D** dla żądania i **11111** dla **konta**. Inne numery kont, aby spróbować są 22222, 33333 i tak dalej.
+9. Eksperymentuj z typami kont wyświetlanych. Na przykład wpisz **D** dla żądania i **11111** dla **konta**. Inne numery kont do wypróbowania to 22222, 33333 i tak dalej.
 
-     ![Ekran pokaz konta](media/container-09.png)
+     ![Ekran wersji demonstracyjnej konta](media/container-09.png)
 
-10. Aby wyświetlić konsolę administracyjną serwera przedsiębiorstwa, przejdź do wiersza polecenia i wpisz **start http:172.19.202.52:86**
+10. Aby wyświetlić konsolę Enterprise Server Administration, przejdź do wiersza polecenia i wpisz **start http:172.19.202.52:86**
 
-     ![Konsola administracyjna serwera przedsiębiorstwa](media/container-010.png)
+     ![Konsola administracji serwerem Przedsiębiorstwa](media/container-010.png)
 
-To wszystko! Jesteś teraz uruchomiona i zarządzania aplikacją CICS w kontenerze platformy Docker.
+Gotowe. Teraz jest uruchomiony i zarządzanie aplikacją CICS w kontenerze platformy Docker.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-- [Instalowanie Micro Focus Enterprise Server w wersji 4.0 i Enterprise, Developer 4.0 na platformie Azure](./set-up-micro-focus-azure.md)
-- [Migracja aplikacji mainframe](/azure/architecture/cloud-adoption/infrastructure/mainframe-migration/application-strategies)
+- [Instalowanie programu Micro Focus Enterprise Server 4.0 i Enterprise Developer 4.0 na platformie Azure](./set-up-micro-focus-azure.md)
+- [Migracja aplikacji komputerów mainframe](/azure/architecture/cloud-adoption/infrastructure/mainframe-migration/application-strategies)

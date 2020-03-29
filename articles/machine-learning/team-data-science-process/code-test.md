@@ -1,6 +1,6 @@
 ---
-title: Testowanie kodu do nauki o danych dzięki usługom DevOps platformy Azure — zespołu danych dla celów naukowych
-description: Kod do nauki o danych, testowanie na platformie Azure przy użyciu UCI treści dla dorosłych dochodu prognozowania zestaw danych o procesie nauki o danych zespołu i usługom DevOps platformy Azure
+title: Testowanie kodu do nauki o danych za pomocą usług Azure DevOps — proces nauki o danych zespołowych
+description: Testowanie kodu nauki o danych na platformie Azure za pomocą zestawu danych prognozowania dochodów uci za pomocą procesu nauki o danych zespołu i usług Azure DevOps
 services: machine-learning
 author: marktab
 manager: marktab
@@ -12,150 +12,150 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=weig, previous-ms.author=weig
 ms.openlocfilehash: 9612114bb368898ccf31b2c8692869b84544b652
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76722066"
 ---
-# <a name="data-science-code-testing-on-azure-with-the-team-data-science-process-and-azure-devops-services"></a>Kod do nauki o danych, testowanie na platformie Azure za pomocą zespołowego danych naukowych i usługom DevOps platformy Azure
-Ten artykuł zawiera wskazówki wstępne do testowania kodu w przepływie pracy do analizy danych. Takie testy daje analitykom danych systematyczne i wydajny sposób kontroli jakości i oczekiwany wynik swój kod. Korzystamy z projektu zespołowego przetwarzania danych (przetwarzania TDSP) [, który korzysta z zestawu danych dochodów dla dorosłych](https://github.com/Azure/MachineLearningSamples-TDSPUCIAdultIncome) , który został opublikowany wcześniej, aby pokazać, jak można przeprowadzić testowanie kodu. 
+# <a name="data-science-code-testing-on-azure-with-the-team-data-science-process-and-azure-devops-services"></a>Testowanie kodu nauki o danych na platformie Azure za pomocą procesu nauki o danych zespołu i usług Azure DevOps
+Ten artykuł zawiera wstępne wskazówki dotyczące testowania kodu w przepływie pracy nauki o danych. Takie testy zapewniają analitykom danych systematyczny i skuteczny sposób sprawdzania jakości i oczekiwanego wyniku ich kodu. Używamy projektu procesu nauki o danych zespołu (TDSP), [który używa zestawu danych UCI Adult Income,](https://github.com/Azure/MachineLearningSamples-TDSPUCIAdultIncome) który opublikowaliśmy wcześniej, aby pokazać, jak można przeprowadzić testowanie kodu. 
 
-## <a name="introduction-on-code-testing"></a>Wprowadzenie na testowanie kodu
-"Testy jednostkowe" jest rozwiązaniem w zakresie od rozwoju oprogramowania. Jednak w przypadku nauki danych często nie jest jasne, co oznacza "testy jednostkowe" i jak należy przetestować kod dla różnych etapów cyklu życia analizy danych, na przykład:
+## <a name="introduction-on-code-testing"></a>Wprowadzenie do testowania kodu
+"Testowanie jednostkowe" jest od dawna praktyką w zakresie tworzenia oprogramowania. Ale dla nauki o danych często nie jest jasne, co oznacza "testowanie jednostkowe" i jak należy przetestować kod dla różnych etapów cyklu życia nauki o danych, takich jak:
 
 * Przygotowywanie danych
 * Badanie jakości danych
 * Modelowanie
 * Wdrażanie modelu 
 
-W tym artykule zastępuje termin "testów jednostkowych" z "Testowanie kodu." Odnosi się do testowania jako funkcje, które pomagają w celu ustalenia, czy kod kroku cykl życia analizy danych jest przedstawiania wyników "zgodnie z oczekiwaniami." Osobę piszącą testu definiuje, co to jest "zgodnie z oczekiwaniami," w zależności od wyniku funkcji — na przykład, kontrola jakości danych lub modelowania.
+Ten artykuł zastępuje termin "testowanie jednostkowe" terminem "testowanie kodu". Odnosi się do testowania jako funkcje, które pomagają ocenić, czy kod dla pewnego kroku cyklu życia nauki o danych przynosi wyniki "zgodnie z oczekiwaniami". Osoba, która pisze test definiuje, co jest "zgodnie z oczekiwaniami", w zależności od wyniku funkcji — na przykład sprawdzanie jakości danych lub modelowanie.
 
-Ten artykuł zawiera odwołania, jak przydatne zasoby.
+Ten artykuł zawiera odwołania jako przydatne zasoby.
 
 ## <a name="azure-devops-for-the-testing-framework"></a>Usługa Azure DevOps dla struktury testowania
-W tym artykule opisano sposób wykonywania i zautomatyzować testowanie za pomocą usługi Azure DevOps. Można zdecydować się za pomocą narzędzi alternatywne. Ponadto przedstawiono, jak skonfigurować automatyczne kompilacji za pomocą DevOps platformy Azure i agentów kompilacji. Agenci kompilacji używamy maszyn wirtualnych do nauki o danych platformy Azure (maszyny).
+W tym artykule opisano sposób wykonywania i automatyzacji testowania przy użyciu usługi Azure DevOps. Możesz skorzystać z alternatywnych narzędzi. Pokazujemy również, jak skonfigurować automatyczną kompilację przy użyciu usługi Azure DevOps i agentów kompilacji. Dla agentów kompilacji używamy maszyn wirtualnych usługi Azure Data Science (DSVM).
 
 ## <a name="flow-of-code-testing"></a>Przepływ testowania kodu
-Ogólny przepływ pracy testowania kodu w projekcie do nauki o danych wygląda następująco: 
+Ogólny przepływ pracy kodu testowania w projekcie nauki o danych wygląda następująco: 
 
 ![Schemat blokowy testowania kodu](./media/code-test/test-flow-chart.PNG)
 
     
 ## <a name="detailed-steps"></a>Szczegółowe procedury
 
-Aby skonfigurować i uruchomić testowanie kodu i automatycznej kompilacji za pomocą agenta kompilacji i DevOps platformy Azure, wykonaj następujące kroki:
+Aby skonfigurować i uruchomić testowanie kodu oraz automatyczną kompilację przy użyciu agenta kompilacji i usługi Azure DevOps, należy wykonać następujące kroki:
 
-1. Utwórz projekt w aplikacji klasycznej w programie Visual Studio:
+1. Tworzenie projektu w aplikacji klasycznej Visual Studio:
 
     ![Ekran "Tworzenie nowego projektu" w programie Visual Studio](./media/code-test/create_project.PNG)
 
-   Po utworzeniu projektu, znajdziesz go w Eksploratorze rozwiązań w okienku po prawej stronie:
+   Po utworzeniu projektu znajdziesz go w Eksploratorze rozwiązań w prawym okienku:
     
-    ![Procedury służące do tworzenia projektu](./media/code-test/create_python_project_in_vs.PNG)
+    ![Kroki tworzenia projektu](./media/code-test/create_python_project_in_vs.PNG)
 
     ![Eksplorator rozwiązań](./media/code-test/solution_explorer_in_vs.PNG)
 
-1. Źródła danych projektu kodu do repozytorium kodu projektu DevOps platformy Azure: 
+1. Podaj kod projektu do repozytorium kodu projektu Usługi Azure DevOps: 
 
     ![Repozytorium kodu projektu](./media/code-test/create_repo.PNG)
 
-1. Załóżmy, że wykonano pewne przygotowywaniem danych, takich jak pozyskiwanie danych, technicznego opracowywania funkcji i tworzenia etykiety kolumn. Chcesz upewnić się, że Twój kod generuje wyniki, których można oczekiwać. Poniżej przedstawiono niektóre kod, który służy do sprawdzenia, czy kod przetwarzania danych działa prawidłowo:
+1. Załóżmy, że wykonaliśmy pewne prace nad przygotowaniem danych, takie jak pozyskiwania danych, inżynierii funkcji i tworzenia kolumn etykiet. Chcesz upewnić się, że kod generuje oczekiwane wyniki. Oto kod, którego można użyć do sprawdzenia, czy kod przetwarzania danych działa poprawnie:
 
-    * Sprawdź, czy odpowiednie nazwy kolumn:
+    * Sprawdź, czy nazwy kolumn są odpowiednie:
     
-      ![Kod w celu dopasowania nazw kolumn](./media/code-test/check_column_names.PNG)
+      ![Kod pasujących nazw kolumn](./media/code-test/check_column_names.PNG)
 
-    * Sprawdź, czy odpowiednie poziomy odpowiedzi:
+    * Sprawdź, czy poziomy odpowiedzi są odpowiednie:
 
-      ![Kod do dopasowania Poziomy](./media/code-test/check_response_levels.PNG)
+      ![Kod dopasowywania poziomów](./media/code-test/check_response_levels.PNG)
 
-    * Sprawdź, czy procent odpowiedzi jest uzasadnione:
+    * Sprawdź, czy odsetek odpowiedzi jest rozsądny:
 
-      ![Kod na procent odpowiedzi](./media/code-test/check_response_percentage.PNG)
+      ![Kod procentu odpowiedzi](./media/code-test/check_response_percentage.PNG)
 
-    * Sprawdź Brak stopień każdej kolumny w danych:
+    * Sprawdź brakujące stawki każdej kolumny w danych:
     
-      ![Kod dla brakujących stawki](./media/code-test/check_missing_rate.PNG)
+      ![Kod brakującego kursu](./media/code-test/check_missing_rate.PNG)
 
 
-1. Po wykonaniu przetwarzania danych i funkcji pracy inżynierów i już skonfigurowanych pod kątem dobry model, upewnij się, że model który szkolenia można poprawnie wynik nowe zestawy danych. Następujących dwóch testów służy do sprawdzania poziomy prognoz i rozkładu wartości etykiety:
+1. Po wykonaniu przetwarzania danych i pracy inżynieryjnej funkcji i przeszkolonych dobry model, upewnij się, że model, który przeszkolony można uzyskać nowe zestawy danych poprawnie. Aby sprawdzić poziomy prognozowania i rozkład wartości etykiet, można użyć następujących dwóch testów:
 
-    * Sprawdź poziom prognozowania:
+    * Sprawdź poziomy prognozowania:
     
-      ![Kod do sprawdzania poziomy prognoz](./media/code-test/check_prediction_levels.PNG)
+      ![Kod do sprawdzania poziomów prognozowania](./media/code-test/check_prediction_levels.PNG)
 
-    * Sprawdzanie rozkładu wartości prognozowania:
+    * Sprawdź rozkład wartości prognozowania:
 
-      ![Kod do sprawdzania wartości prognozy](./media/code-test/check_prediction_values.PNG)
+      ![Kod do sprawdzania wartości prognozowania](./media/code-test/check_prediction_values.PNG)
 
-1. Umieść wszystkie funkcje testowe w skrypcie języka Python o nazwie **test_funcs. PR**:
+1. Umieść wszystkie funkcje testowe razem w skrypcie Pythona o nazwie **test_funcs.py:**
 
-    ![Skrypt języka Python dla usługi functions testu](./media/code-test/create_file_test_func.PNG)
+    ![Skrypt Języka Python dla funkcji testowych](./media/code-test/create_file_test_func.PNG)
 
 
-1. Po przygotowaniu są kody testu, możesz skonfigurować środowisko testowe w programie Visual Studio.
+1. Po przygotowaniu kodów testowych można skonfigurować środowisko testowe w programie Visual Studio.
 
-   Utwórz plik w języku Python o nazwie **Test1.py**. W tym pliku należy utworzyć klasę, która zawiera wszystkie testy, które chcesz wykonać. Poniższy przykład przedstawia sześć testy przygotować:
+   Utwórz plik języka Python o nazwie **test1.py**. W tym pliku utwórz klasę, która zawiera wszystkie testy, które chcesz wykonać. Poniższy przykład przedstawia sześć testów przygotowanych:
     
-    ![Plik języka Python z listy testów w klasie](./media/code-test/create_file_test1_class.PNG)
+    ![Plik Języka Python z listą testów w klasie](./media/code-test/create_file_test1_class.PNG)
 
-1. Te testy mogą być automatycznie odnajdywane, jeśli po nazwie klasy umieścisz **codetest. przypadku testowego** . Otwórz Eksploratora testów w prawym okienku, a następnie wybierz pozycję **Uruchom wszystkie**. Wszystkie testy uruchomią się sekwencyjnie i poinformuje, jeśli test wypadnie pomyślnie.
+1. Te testy mogą być automatycznie wykrywane, jeśli umieścisz **codetest.testCase** po nazwie klasy. Otwórz Eksploratora testów w prawym okienku i wybierz pozycję **Uruchom wszystko**. Wszystkie testy będą uruchamiane sekwencyjnie i powiedzą, czy test zakończy się pomyślnie, czy nie.
 
     ![Uruchamianie testów](./media/code-test/run_tests.PNG)
 
-1. Zaewidencjonuj kod do repozytorium projektu przy użyciu poleceń usługi Git. Najbardziej aktualną pracy zostaną odzwierciedlone wkrótce w DevOps platformy Azure.
+1. Zaewidencjonuj swój kod do repozytorium projektu za pomocą poleceń Git. Najnowsze prace zostaną wkrótce odzwierciedlone w usłudze Azure DevOps.
 
-    ![Polecenia usługi Git, sprawdzania kodu pod kątem](./media/code-test/git_check_in.PNG)
+    ![Polecenia Git do sprawdzania kodu](./media/code-test/git_check_in.PNG)
 
-    ![Najbardziej aktualną pracy w DevOps platformy Azure](./media/code-test/git_check_in_most_recent_work.PNG)
+    ![Najnowsze prace w usłudze Azure DevOps](./media/code-test/git_check_in_most_recent_work.PNG)
 
-1. Skonfiguruj automatyczne kompilację i testowanie w metodyce DevOps platformy Azure:
+1. Konfigurowanie automatycznej kompilacji i testowania w usłudze Azure DevOps:
 
-    a. W repozytorium projektu wybierz pozycję **kompilacja i wydanie**, a następnie wybierz pozycję **+ Nowy** , aby utworzyć nowy proces kompilacji.
+    a. W repozytorium projektu wybierz pozycję **Buduj i zwolnij**, a następnie wybierz **+Nowy,** aby utworzyć nowy proces kompilacji.
 
-    ![Wybory dotyczące rozpoczynania nowego procesu kompilacji](./media/code-test/create_new_build.PNG)
+    ![Wybór do rozpoczęcia nowego procesu kompilacji](./media/code-test/create_new_build.PNG)
 
-    b. Postępuj zgodnie z monitami, aby wybrać lokalizacji kodu źródłowego, nazwę projektu, repozytorium i informacji o gałęzi.
+    b. Postępuj zgodnie z instrukcjami, aby wybrać lokalizację kodu źródłowego, nazwę projektu, repozytorium i informacje o gałęzi.
     
-    ![Informacje źródłowe, nazwa, repozytorium i gałąź](./media/code-test/fill_in_build_info.PNG)
+    ![Źródło, nazwa, repozytorium i informacje o gałęzi](./media/code-test/fill_in_build_info.PNG)
 
-    c. Wybierz szablon. Ponieważ nie ma szablonu projektu języka Python, Zacznij od wybrania **pustego procesu**. 
+    d. Wybierz szablon. Ponieważ nie ma szablonu projektu języka Python, zacznij od wybrania **opcji Pusty proces**. 
 
-    ![Lista szablonów i przycisk "pusty proces"](./media/code-test/start_empty_process_template.PNG)
+    ![Lista szablonów i przycisk "Opróżnij proces"](./media/code-test/start_empty_process_template.PNG)
 
-    d. Nadaj nazwę kompilacji i wybierz agenta. W tym miejscu możesz wybrać wartość domyślną, jeśli chcesz użyć DSVM do ukończenia procesu kompilacji. Aby uzyskać więcej informacji na temat ustawiania agentów, zobacz [kompilacje i wydania agentów](https://docs.microsoft.com/azure/devops/pipelines/agents/agents?view=vsts).
+    d. Nazwij kompilację i wybierz agenta. W tym miejscu można wybrać wartość domyślną, jeśli chcesz użyć dsvm do ukończenia procesu kompilacji. Aby uzyskać więcej informacji na temat ustawiania agentów, zobacz [Tworzenie i zwalnianie agentów](https://docs.microsoft.com/azure/devops/pipelines/agents/agents?view=vsts).
     
-    ![Kompilacje i wybór agentów](./media/code-test/select_agent.PNG)
+    ![Wybór kompilacji i agentów](./media/code-test/select_agent.PNG)
 
-    e. Wybierz **+** w lewym okienku, aby dodać zadanie dla tej fazy kompilacji. Ponieważ będziemy **Test1.py** skrypt języka Python, aby zakończyć wszystkie testy, to zadanie używa polecenia programu PowerShell do uruchomienia kodu w języku Python.
+    e. Wybierz **+** w lewym okienku, aby dodać zadanie dla tej fazy kompilacji. Ponieważ mamy zamiar uruchomić skrypt Języka Python **test1.py,** aby zakończyć wszystkie kontrole, to zadanie jest za pomocą polecenia programu PowerShell do uruchamiania kodu języka Python.
     
-    ![Okienko "Dodawanie zadań" z wybranym programem PowerShell](./media/code-test/add_task_powershell.PNG)
+    ![Okienko "Dodawanie zadań" z zaznaczoną wybraną podaniem programu PowerShell](./media/code-test/add_task_powershell.PNG)
 
-    f. W szczegółach programu PowerShell Podaj wymagane informacje, takie jak nazwa i wersja programu PowerShell. Wybierz **skrypt wbudowany** jako typ. 
+    f. W szczegółach programu PowerShell wprowadź wymagane informacje, takie jak nazwa i wersja programu PowerShell. Wybierz **skrypt wbudowany** jako typ. 
     
-    W polu w obszarze **skrypt wbudowany**można wpisać **Python test1.py**. Upewnij się, że zmienna środowiskowa została prawidłowo skonfigurowana dla języka Python. Jeśli potrzebna jest inna wersja lub jądro języka Python, można jawnie określić ścieżkę, jak pokazano na rysunku: 
+    W polu w obszarze **Skrypt wbudowany**można wpisać **python test1.py**. Upewnij się, że zmienna środowiskowa jest poprawnie skonfigurowana dla języka Python. Jeśli potrzebujesz innej wersji lub jądra Języka Python, możesz jawnie określić ścieżkę, jak pokazano na rysunku: 
     
     ![Szczegóły programu PowerShell](./media/code-test/powershell_scripts.PNG)
 
-    g. Wybierz pozycję **zapisz & kolejkę** , aby ukończyć proces kompilacji potoku.
+    g. Wybierz **pozycję Zapisz & kolejki,** aby zakończyć proces potoku kompilacji.
 
     ![Przycisk "Zapisz & kolejki"](./media/code-test/save_and_queue_build_definition.PNG)
 
-Teraz za każdym razem, gdy nowe zatwierdzenia są wypychane do repozytorium kodu, proces kompilacji rozpocznie się automatycznie. (W tym miejscu użyjemy wzorca jako repozytorium, ale możesz zdefiniować dowolną gałąź). Proces uruchamia plik **Test1.py** na maszynie agenta, aby upewnić się, że wszystko zdefiniowane w kodzie działa poprawnie. 
+Teraz za każdym razem, gdy nowe zatwierdzenie jest wypychane do repozytorium kodu, proces kompilacji rozpocznie się automatycznie. (W tym przypadku używamy wzorca jako repozytorium, ale można zdefiniować dowolną gałąź. Proces uruchamia plik **test1.py** na komputerze agenta, aby upewnić się, że wszystko zdefiniowane w kodzie działa poprawnie. 
 
-Jeśli alerty są prawidłowo skonfigurowane, zostanie wyświetlone powiadomienie w wiadomości e-mail po zakończeniu kompilacji. Możesz również sprawdzić stan kompilacji w DevOps platformy Azure. Jeśli nie powiedzie się, można sprawdzić szczegóły kompilacji i Dowiedz się, które jest uszkodzona.
+Jeśli alerty są poprawnie skonfigurowane, otrzymasz powiadomienie w wiadomości e-mail po zakończeniu kompilacji. Można również sprawdzić stan kompilacji w usłudze Azure DevOps. Jeśli to się nie powiedzie, możesz sprawdzić szczegóły kompilacji i dowiedzieć się, który kawałek jest uszkodzony.
 
-![Powiadomienia e-mail o powodzeniu kompilacji](./media/code-test/email_build_succeed.PNG)
+![Powiadomienie e-mail o sukcesie kompilacji](./media/code-test/email_build_succeed.PNG)
 
-![Powiadomienie usługi Azure DevOps sukcesu kompilacji](./media/code-test/vs_online_build_succeed.PNG)
+![Powiadomienie o sukcesie kompilacji w usłudze Azure DevOps](./media/code-test/vs_online_build_succeed.PNG)
 
 ## <a name="next-steps"></a>Następne kroki
-* Zapoznaj się z [repozytorium przewidywania dochodu UCI](https://github.com/Azure/MachineLearningSamples-TDSPUCIAdultIncome) dla konkretnych przykładów testów jednostkowych na potrzeby scenariuszy analizy danych.
-* Postępuj zgodnie z poprzednim konturu i przykłady z tego scenariusza Prognozowanie przychodów UCI do własnych projektów do nauki o danych.
+* Zobacz [repozytorium prognozowania dochodów UCI,](https://github.com/Azure/MachineLearningSamples-TDSPUCIAdultIncome) aby uzyskać konkretne przykłady testów jednostkowych dla scenariuszy analizy danych.
+* Postępuj zgodnie z poprzednim konspektem i przykładami ze scenariusza prognozowania dochodów UCI w własnych projektach nauki o danych.
 
 ## <a name="references"></a>Dokumentacja
 * [Zespołowe przetwarzanie danych dla celów naukowych](https://aka.ms/tdsp)
-* [Narzędzia do testowania programu Visual Studio](https://www.visualstudio.com/vs/features/testing-tools/)
+* [Narzędzia testowania programu Visual Studio](https://www.visualstudio.com/vs/features/testing-tools/)
 * [Zasoby testowe usługi Azure DevOps](https://www.visualstudio.com/team-services/)
-* [Virtual Machines analizy danych](https://azure.microsoft.com/services/virtual-machines/data-science-virtual-machines/)
+* [Maszyny wirtualne Data Science Virtual Machine](https://azure.microsoft.com/services/virtual-machines/data-science-virtual-machines/)

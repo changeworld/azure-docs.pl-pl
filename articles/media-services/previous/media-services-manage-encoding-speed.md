@@ -1,6 +1,6 @@
 ---
-title: Zarządzanie szybkością i współbieżnością kodowania za pomocą usługi Azure Media Services | Dokumentacja firmy Microsoft
-description: Ten artykuł zawiera krótkie omówienie, jak można zarządzać szybkością i współbieżnością kodowania zadań/zadań za pomocą usługi Azure Media Services.
+title: Zarządzanie szybkością i współbieżnością kodowania za pomocą usługi Azure Media Services | Dokumenty firmy Microsoft
+description: W tym artykule przedstawiono krótkie omówienie sposobu zarządzania szybkością i współbieżnością zadań/zadań kodowania za pomocą usługi Azure Media Services.
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -15,27 +15,27 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: 6bcaadc8dd61899aff860ad246e30170c99ec0f6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "61463756"
 ---
 #  <a name="manage-speed-and-concurrency-of-your-encoding"></a>Zarządzanie szybkością i współbieżnością kodowania  
 
-Ten artykuł zawiera krótkie omówienie, jak można zarządzać szybkością i współbieżnością kodowania zadań/zadań.
+W tym artykule przedstawiono krótki przegląd sposobu zarządzania szybkością i współbieżnością zadań/zadań kodowania.
 
 ## <a name="overview"></a>Omówienie
 
-W usłudze Media Services **zastrzeżony typ jednostki** określającym szybkość, z jaką są przetwarzane zadania przetwarzania multimediów. Można wybrać jeden z następujących typów jednostki zarezerwowanej: **S1**, **S2** lub **S3**. Na przykład to samo zadanie kodowania jest wykonywane szybciej przy użyciu typu jednostki zarezerwowanej **S2** niż w przypadku użycia typu **S1**. [Skalowania jednostek kodowania](media-services-scale-media-processing-overview.md) temat zawiera tabelę, która pomoże Ci w podjęciu decyzji, wybierając między różne szybkości kodowania.
+W udziale usługi Media Services **typ jednostki zarezerwowanej** określa szybkość przetwarzania zadań przetwarzania multimediów. Można wybrać między następującymi typami jednostek zarezerwowanych: **S1**, **S2**lub **S3**. Na przykład to samo zadanie kodowania jest wykonywane szybciej przy użyciu typu jednostki zarezerwowanej **S2** niż w przypadku użycia typu **S1**. W temacie [jednostek kodowania skalowania](media-services-scale-media-processing-overview.md) przedstawiono tabelę, która ułatwia podejmowanie decyzji przy wyborze między różnymi szybkościami kodowania.
 
-Oprócz określenia typu jednostki zarezerwowanej, można określić aprowizację swojego konta za pomocą **jednostek zarezerwowanych**. Liczba zainicjowanych jednostek zarezerwowanych określa liczbę zadań multimedialnych, które mogą być przetwarzane jednocześnie w ramach danego konta. Na przykład jeśli konto ma pięć jednostek zarezerwowanych, a następnie pięć zadań będą uruchomione jednocześnie tak długo, jak istnieją zadania do przetworzenia. Pozostałe zadania będzie oczekiwać w kolejce i będzie pobrać wybrany do przetwarzania sekwencyjnie, po zakończeniu bieżące zadanie. Jeśli konto nie ma żadnych jednostek zarezerwowanych zainicjowano obsługę administracyjną, następnie zadania zostaną pobrane po kolei. W tym przypadku czas oczekiwania między jedno zadanie zostało ukończone, a następnie bazujący będzie zależeć od dostępności zasobów w systemie.
+Oprócz określenia typu jednostki zarezerwowanej można określić, aby aprowizować konto za pomocą **jednostek zarezerwowanych**. Liczba zainicjowanych jednostek zarezerwowanych określa liczbę zadań multimedialnych, które mogą być przetwarzane jednocześnie w ramach danego konta. Jeśli na przykład konto ma pięć jednostek zarezerwowanych, pięć zadań multimedialnych będzie uruchamianych jednocześnie, o ile istnieją zadania do przetworzenia. Pozostałe zadania będą czekać w kolejce i zostaną odebrane do przetwarzania sekwencyjnie po zakończeniu uruchomionego zadania. Jeśli konto nie ma żadnych jednostek zarezerwowanych aprowizowanych, zadania będą pobierane kolejno. W takim przypadku czas oczekiwania między jednym zakończeniem zadania a następnym uruchomieniem będzie zależeć od dostępności zasobów w systemie.
 
-Aby uzyskać szczegółowe informacje i przykłady, które pokazują sposób skalowania jednostek kodowania, zobacz [to](media-services-scale-media-processing-overview.md) tematu.
+Aby uzyskać szczegółowe informacje i przykłady, które pokazują, jak skalować jednostki kodowania, zobacz [ten](media-services-scale-media-processing-overview.md) temat.
 
 ## <a name="next-step"></a>Następny krok
 
-[Możliwość skalowania jednostek kodowania](media-services-scale-media-processing-overview.md)
+[Skalowanie jednostek kodujących](media-services-scale-media-processing-overview.md)
 
 ## <a name="media-services-learning-paths"></a>Ścieżki szkoleniowe dotyczące usługi Media Services
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

@@ -1,6 +1,6 @@
 ---
-title: Istnieje transformacja przepływu danych mapowania
-description: Sprawdzanie istniejących wierszy przy użyciu transformacji EXISTS w Azure Data Factory mapowaniu przepływu danych
+title: Istnieje transformacja w przepływie danych mapowania
+description: Sprawdź istniejące wiersze przy użyciu transformacji istnieje w usłudze Azure Data Factory mapowanie przepływu danych
 author: kromerm
 ms.author: makromer
 ms.reviewer: daperlov
@@ -9,36 +9,36 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 10/16/2019
 ms.openlocfilehash: efcc45dcf3565b70305323701810c49c4a720394
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74930406"
 ---
-# <a name="exists-transformation-in-mapping-data-flow"></a>Istnieje transformacja przepływu danych mapowania
+# <a name="exists-transformation-in-mapping-data-flow"></a>Istnieje transformacja w przepływie danych mapowania
 
-Transformacja EXISTS to transformacja filtrowania wierszy, która sprawdza, czy dane istnieją w innym źródle lub strumieniu. Strumień wyjściowy zawiera wszystkie wiersze w lewym strumieniu, który istnieje lub nie istnieje w odpowiednim strumieniu. Transformacja istnieje podobna do ```SQL WHERE EXISTS``` i ```SQL WHERE NOT EXISTS```.
+Transformacja istnieje jest transformacja filtrowania wiersza, który sprawdza, czy dane istnieją w innym źródle lub strumieniu. Strumień wyjściowy zawiera wszystkie wiersze w lewym strumieniu, które istnieją lub nie istnieją w prawym strumieniu. Transformacja istnieje jest ```SQL WHERE EXISTS``` podobna do i ```SQL WHERE NOT EXISTS```.
 
 ## <a name="configuration"></a>Konfigurowanie
 
-1. Wybierz, który strumień danych ma być używany na liście rozwijanej **odpowiedniego strumienia** .
-1. Określ, czy chcesz, aby dane były już istniejące, czy nie istnieją w ustawieniu **typu istnieją** .
-1. Wybierz, czy chcesz utworzyć **wyrażenie niestandardowe**.
-1. Wybierz kolumny klucza, które mają zostać porównane jako warunki istnienia. Domyślnie przepływ danych wyszukuje równość między jedną kolumną w każdym strumieniu. Aby porównać przez obliczoną wartość, umieść kursor na liście rozwijanej kolumny i wybierz **kolumnę obliczaną**.
+1. Wybierz, który strumień danych sprawdzasz, czy istnieje w prawej listy rozwijanej **strumienia.**
+1. Określ, czy szukasz danych, które mają istnieć, czy nie w ustawieniu **Typ Istnieje.**
+1. Wybierz, czy chcesz **wyrażenie niestandardowe**.
+1. Wybierz kolumny kluczy, które chcesz porównać jako istniejące warunki. Domyślnie przepływ danych wyszukuje równość między jedną kolumną w każdym strumieniu. Aby porównać za pomocą obliczonej wartości, umieść wskaźnik myszy na rozwijanej kolumnie i wybierz **kolumnę Obliczona**.
 
-![Istnieją ustawienia](media/data-flow/exists.png "Istnieje 1")
+![Istnieją ustawienia](media/data-flow/exists.png "istnieje 1")
 
 ### <a name="multiple-exists-conditions"></a>Istnieje wiele warunków
 
-Aby porównać wiele kolumn z każdego strumienia, Dodaj warunek "istnieje", klikając ikonę znaku plus obok istniejącego wiersza. Każdy dodatkowy warunek jest przyłączony do instrukcji "i". Porównywanie dwóch kolumn jest takie samo jak następujące wyrażenie:
+Aby porównać wiele kolumn z każdego strumienia, dodaj nowy warunek istnieje, klikając ikonę plus obok istniejącego wiersza. Każdy dodatkowy warunek jest połączony przez instrukcję "i". Porównanie dwóch kolumn jest takie samo jak następujące wyrażenie:
 
 `source1@column1 == source2@column1 && source1@column2 == source2@column2`
 
 ### <a name="custom-expression"></a>Wyrażenie niestandardowe
 
-Aby utworzyć wyrażenie o dowolnej postaci zawierające operatory inne niż "i" i "Equals do", zaznacz pole **wyrażenie niestandardowe** . Wprowadź wyrażenie niestandardowe za pośrednictwem konstruktora wyrażeń przepływu danych, klikając niebieskie pole.
+Aby utworzyć wyrażenie swobodne, które zawiera operatory inne niż "i" i "równa się", wybierz pole **wyrażenia niestandardowego.** Wprowadź wyrażenie niestandardowe za pośrednictwem konstruktora wyrażeń przepływu danych, klikając niebieskie pole.
 
-![Istnieją ustawienia niestandardowe](media/data-flow/exists1.png "Istnieje niestandardowe")
+![Istnieje ustawienia niestandardowe](media/data-flow/exists1.png "istnieje niestandardowe")
 
 ## <a name="data-flow-script"></a>Skrypt przepływu danych
 
@@ -55,13 +55,13 @@ Aby utworzyć wyrażenie o dowolnej postaci zawierające operatory inne niż "i"
 
 ### <a name="example"></a>Przykład
 
-Poniższy przykład jest przekształceniem o nazwie `checkForChanges`, które pobiera lewe `NameNorm2` strumienia i właściwe `TypeConversions`przesyłania strumieniowego.  Warunek EXISTS jest wyrażeniem, `NameNorm2@EmpID == TypeConversions@EmpID && NameNorm2@Region == DimEmployees@Region` zwraca wartość true, jeśli zarówno kolumny `EMPID`, jak i `Region` w poszczególnych strumieniach pasują do siebie. Gdy sprawdzimy obecność, `negate` ma wartość false. Nie włączamy żadnej emisji na karcie Optymalizacja, więc `broadcast` ma `'none'`wartości.
+Poniższy przykład jest istnieje `checkForChanges` transformacja o `NameNorm2` nazwie, `TypeConversions`która ma strumień w lewo i w prawo.  Warunek istnieje jest wyrażeniem, `NameNorm2@EmpID == TypeConversions@EmpID && NameNorm2@Region == DimEmployees@Region` które zwraca `EMPID` `Region` wartość true, jeśli zarówno i kolumny w każdym strumieniu pasuje. Jak sprawdzamy istnienie, `negate` jest fałszywe. Nie włączamy żadnych transmisji w zakładce `broadcast` optymalizacji, `'none'`więc ma wartość .
 
-W Data Factory środowisku użytkownika Ta transformacja wygląda jak na poniższym obrazie:
+W ux fabryki danych ta transformacja wygląda jak poniższy obraz:
 
 ![Istnieje przykład](media/data-flow/exists-script.png "Istnieje przykład")
 
-Skrypt przepływu danych dla tego przekształcenia znajduje się w poniższym fragmencie kodu:
+Skrypt przepływu danych dla tej transformacji znajduje się we urywce poniżej:
 
 ```
 NameNorm2, TypeConversions
@@ -74,4 +74,4 @@ NameNorm2, TypeConversions
 
 ## <a name="next-steps"></a>Następne kroki
 
-Podobne przekształcenia to [Wyszukiwanie](data-flow-lookup.md) i [sprzężenie](data-flow-join.md).
+Podobne przekształcenia to [Odnośnik](data-flow-lookup.md) i [Dołącz](data-flow-join.md).

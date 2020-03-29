@@ -1,6 +1,6 @@
 ---
-title: Aprowizowanie urządzeń Raspberry Pi, zdalne monitorowanie za pomocą języka C — Azure | Dokumentacja firmy Microsoft
-description: W tym artykule opisano sposób łączenia urządzeń Raspberry Pi do akceleratora rozwiązania monitorowania zdalnego przy użyciu aplikacji napisanych w C.
+title: Aprowizuj raspberry pi do zdalnego monitorowania przy użyciu języka C — Azure | Dokumenty firmy Microsoft
+description: W tym artykule opisano sposób podłączania urządzenia Raspberry Pi do akceleratora rozwiązań zdalnego monitorowania przy użyciu aplikacji napisanej w języku C.
 author: dominicbetts
 manager: timlt
 ms.service: iot-accelerators
@@ -9,75 +9,75 @@ ms.topic: conceptual
 ms.date: 03/08/2019
 ms.author: dobett
 ms.openlocfilehash: 3331db51f4d141cf142d1bd0578043ca6681f3cd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "61454507"
 ---
-# <a name="connect-your-raspberry-pi-device-to-the-remote-monitoring-solution-accelerator-c"></a>Łączenie urządzenia Raspberry Pi do akceleratora rozwiązań zdalnego monitorowania (C)
+# <a name="connect-your-raspberry-pi-device-to-the-remote-monitoring-solution-accelerator-c"></a>Podłącz urządzenie Raspberry Pi do akceleratora rozwiązań do zdalnego monitorowania (C)
 
 [!INCLUDE [iot-suite-selector-connecting](../../includes/iot-suite-selector-connecting.md)]
 
-Ten samouczek pokazuje, jak połączyć prawdziwe urządzenie do akceleratora rozwiązania monitorowania zdalnego. Podobnie jak w przypadku najbardziej osadzone aplikacje działają na urządzeniach ograniczone, kod klienta dla aplikacji urządzenia Raspberry Pi są zapisywane w C. W tym samouczku utworzysz aplikację na urządzeniach Raspberry Pi z systemem operacyjnym Raspbian.
+W tym samouczku pokazano, jak podłączyć rzeczywiste urządzenie do akceleratora rozwiązań zdalnego monitorowania. Podobnie jak w przypadku większości osadzonych aplikacji, które działają na urządzeniach z ograniczeniami, kod klienta aplikacji urządzenia Raspberry Pi jest zapisywany w języku C. W tym samouczku tworzysz aplikację na Raspberry Pi z systemem Raspbian OS.
 
-Jeśli wolisz symulowanie urządzenia, zobacz [tworzenie i testowanie nowych symulowanych urządzeń](iot-accelerators-remote-monitoring-create-simulated-device.md).
+Jeśli wolisz symulować urządzenie, zobacz [Tworzenie i testowanie nowego symulowanego urządzenia](iot-accelerators-remote-monitoring-create-simulated-device.md).
 
 ### <a name="required-hardware"></a>Wymagany sprzęt
 
-Komputer stacjonarny, aby włączyć zdalne łączenie się z wiersza polecenia na urządzenia Raspberry Pi.
+Komputer stacjonarny umożliwiający zdalne łączenie się z wierszem polecenia w raspberry pi.
 
-[Pakiet startowy IoT firmy Microsoft do Raspberry Pi 3](https://azure.microsoft.com/develop/iot/starter-kits/) lub równoważne składników. W tym samouczku korzysta z następujących elementów z zestawu SDK:
+[Zestaw startowy Microsoft IoT dla Raspberry Pi 3](https://azure.microsoft.com/develop/iot/starter-kits/) lub równoważnych składników. W tym samouczku użyto następujących elementów z zestawu:
 
 - Raspberry Pi 3
 - Karta MicroSD (z NOOBS)
-- Kabel USB Mini
+- Mini kabel USB
 - Kabel Ethernet
 
-### <a name="required-desktop-software"></a>Wymagane oprogramowania dla komputerów stacjonarnych
+### <a name="required-desktop-software"></a>Wymagane oprogramowanie komputerowe
 
-Klient SSH jest niezbędne w komputera stacjonarnego, aby umożliwić dostęp zdalny do wiersza polecenia na urządzenia Raspberry Pi.
+Potrzebujesz klienta SSH na komputerze stacjonarnym, aby umożliwić zdalny dostęp do wiersza polecenia na Raspberry Pi.
 
-- Windows nie zawiera klienta SSH. Firma Microsoft zaleca używanie [PuTTY](https://www.putty.org/).
-- Większość dystrybucje systemu Linux i Mac OS obejmują narzędzia wiersza polecenia SSH. Aby uzyskać więcej informacji, zobacz [SSH przy użyciu systemu Linux lub Mac OS](https://www.raspberrypi.org/documentation/remote-access/ssh/unix.md).
+- System Windows nie zawiera klienta SSH. Zalecamy stosowanie [PuTTY](https://www.putty.org/).
+- Większość dystrybucji Linuksa i Mac OS zawiera narzędzie SSH wiersza polecenia. Aby uzyskać więcej informacji, zobacz [SSH Using Linux lub Mac OS](https://www.raspberrypi.org/documentation/remote-access/ssh/unix.md).
 
-### <a name="required-raspberry-pi-software"></a>Wymagane oprogramowanie urządzenia Raspberry Pi
+### <a name="required-raspberry-pi-software"></a>Wymagane oprogramowanie Raspberry Pi
 
-W tym artykule założono, zainstalowano najnowszą wersję [OS Raspbian na urządzenia Raspberry Pi](https://www.raspberrypi.org/learning/software-guide/quickstart/).
+W tym artykule założono, że zainstalowano najnowszą wersję [systemu operacyjnego Raspbian na Raspberry Pi](https://www.raspberrypi.org/learning/software-guide/quickstart/).
 
-Poniższe kroki pokazują, jak przygotować urządzenia Raspberry Pi do tworzenia aplikacji języka C, który nawiązuje połączenie z akceleratora rozwiązań:
+Poniższe kroki pokazują, jak przygotować Raspberry Pi do tworzenia aplikacji C, która łączy się z akceleratorem rozwiązań:
 
-1. Łączenie z urządzeniem Raspberry Pi z wykorzystaniem **ssh**. Aby uzyskać więcej informacji, zobacz [SSH (Secure Shell)](https://www.raspberrypi.org/documentation/remote-access/ssh/README.md) na [witryny sieci Web urządzenia Raspberry Pi](https://www.raspberrypi.org/).
+1. Połącz się ze swoim Raspberry Pi za pomocą **ssh**. Aby uzyskać więcej informacji, zobacz [SSH (Secure Shell)](https://www.raspberrypi.org/documentation/remote-access/ssh/README.md) w [witrynie Raspberry Pi](https://www.raspberrypi.org/).
 
-1. Aby zaktualizować urządzenia Raspberry Pi, użyj następującego polecenia:
+1. Użyj następującego polecenia, aby zaktualizować Raspberry Pi:
 
     ```sh
     sudo apt-get update
     ```
 
-1. Aby wykonać kroki opisane w tym przewodniku z instrukcjami postępuj zgodnie z instrukcjami w [Konfigurowanie środowiska projektowego systemu Linux](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md#linux) dodać bibliotek i narzędzi projektowania wymagane do urządzenia Raspberry Pi.
+1. Aby wykonać kroki opisane w tym przewodniku, wykonaj kroki opisane w [konfiguracji środowiska programistycznego systemu Linux,](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md#linux) aby dodać wymagane narzędzia programistyczne i biblioteki do raspberry pi.
 
-## <a name="view-the-code"></a>Wyświetl kod
+## <a name="view-the-code"></a>Zobacz kod
 
-[Przykładowego kodu](https://github.com/Azure/azure-iot-sdk-c/tree/master/samples/solutions/remote_monitoring_client) użyto w tym przewodniku jest dostępny w repozytorium zestawów SDK C pakietu Azure IoT w witrynie GitHub.
+[Przykładowy kod](https://github.com/Azure/azure-iot-sdk-c/tree/master/samples/solutions/remote_monitoring_client) użyty w tym przewodniku jest dostępny w repozytorium Zestawów SDK języka Azure IoT C GitHub.
 
-### <a name="download-the-source-code-and-prepare-the-project"></a>Pobierz kod źródłowy i przygotowywanie projektu
+### <a name="download-the-source-code-and-prepare-the-project"></a>Pobierz kod źródłowy i przygotuj projekt
 
-Aby przygotować projekt, Klonuj lub Pobierz [repozytorium zestawów SDK C usługi IoT Azure](https://github.com/Azure/azure-iot-sdk-c) z usługi GitHub.
+Aby przygotować projekt, sklonuj lub pobierz [repozytorium zestawów SDK C usługi Azure IoT](https://github.com/Azure/azure-iot-sdk-c) z usługi GitHub.
 
-Przykład znajduje się w **rozwiązania/samples/remote_monitoring_client** folderu.
+Próbka znajduje się w folderze **próbki/roztwory/remote_monitoring_client.**
 
-Otwórz **remote_monitoring.c** w pliku **rozwiązania/samples/remote_monitoring_client** folderu w edytorze tekstów.
+Otwórz plik **remote_monitoring.c** w folderze **samples/solutions/remote_monitoring_client** w edytorze tekstu.
 
 [!INCLUDE [iot-accelerators-connecting-code](../../includes/iot-accelerators-connecting-code.md)]
 
 ## <a name="build-and-run-the-application"></a>Kompilowanie i uruchamianie aplikacji
 
-W poniższych krokach opisano sposób użycia *CMake* do tworzenia aplikacji klienckiej. Aplikacja klienta do monitorowania zdalnego powstała jako część procesu kompilacji dla zestawu SDK.
+W poniższych krokach opisano, jak używać *CMake* do tworzenia aplikacji klienckiej. Aplikacja klienta zdalnego monitorowania jest zbudowany jako część procesu kompilacji dla SDK.
 
-1. Edytuj **remote_monitoring.c** plik, aby zastąpić `<connectionstring>` przy użyciu parametrów połączenia urządzenia wymienionych na początku, w tym przewodniku z instrukcjami, po dodaniu urządzenia do akceleratora rozwiązań.
+1. Edytuj plik **remote_monitoring.c,** aby `<connectionstring>` zastąpić ciąg połączenia urządzenia, który został odnotowany na początku tego przewodnika instruktora po dodaniu urządzenia do akceleratora rozwiązań.
 
-1. Przejdź do katalogu głównym sklonowanej kopii [repozytorium zestawów SDK C usługi IoT Azure](https://github.com/Azure/azure-iot-sdk-c) repozytorium i uruchom następujące polecenia, aby skompilować aplikację klienta:
+1. Przejdź do katalogu głównego sklonowanej kopii [repozytorium sdek sdek sedek SDKs usługi Azure IoT](https://github.com/Azure/azure-iot-sdk-c) C i uruchom następujące polecenia w celu utworzenia aplikacji klienckiej:
 
     ```sh
     mkdir cmake
@@ -86,15 +86,15 @@ W poniższych krokach opisano sposób użycia *CMake* do tworzenia aplikacji kli
     make
     ```
 
-1. Uruchom aplikację klienta i wysyłanie danych telemetrycznych do Centrum IoT Hub:
+1. Uruchom aplikację kliencką i wyślij dane telemetryczne do usługi IoT Hub:
 
     ```sh
     ./samples/solutions/remote_monitoring_client/remote_monitoring_client
     ```
 
-    W konsoli są wyświetlane komunikaty w postaci:
+    Konsola wyświetla komunikaty w następujący sposób:
 
-    - Aplikacja wysyła telemetrię próbki do akceleratora rozwiązań.
-    - Odpowiada na metody wywołane z poziomu pulpitu nawigacyjnego rozwiązania.
+    - Aplikacja wysyła przykładowe dane telemetryczne do akceleratora rozwiązania.
+    - Odpowiada na metody wywoływane z pulpitu nawigacyjnego rozwiązania.
 
 [!INCLUDE [iot-suite-visualize-connecting](../../includes/iot-suite-visualize-connecting.md)]

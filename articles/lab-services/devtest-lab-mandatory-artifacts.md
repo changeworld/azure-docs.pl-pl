@@ -1,6 +1,6 @@
 ---
-title: Określ artefaktów obowiązkowe dla usługi Azure DevTest Labs | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak określić obowiązkowy artefaktów, które trzeba zainstalować przed zainstalowaniem wszelkie artefakty wybrane przez użytkownika na maszynach wirtualnych (VM) w środowisku laboratoryjnym.
+title: Określ obowiązkowe artefakty dla laboratoriów devtest platformy Azure | Dokumenty firmy Microsoft
+description: Dowiedz się, jak określić obowiązkowe artefakty, które należy zainstalować przed zainstalowaniem jakichkolwiek artefaktów wybranych przez użytkownika na maszynach wirtualnych (VM) w laboratorium.
 services: devtest-lab,virtual-machines
 documentationcenter: na
 author: spelluru
@@ -14,76 +14,76 @@ ms.topic: article
 ms.date: 07/23/2018
 ms.author: spelluru
 ms.openlocfilehash: 090236ec3647c7c3e38eb862780a615f854e952b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60562262"
 ---
-# <a name="specify-mandatory-artifacts-for-your-lab-in-azure-devtest-labs"></a>Określ obowiązkowe artefaktów dla laboratorium w usłudze Azure DevTest Labs
-Jako właściciel laboratorium możesz określić obowiązkowy artefaktów, które są stosowane do każdej maszyny, utworzone w środowisku laboratoryjnym. Wyobraź sobie scenariusz, w której chcesz poszczególnych maszyn w środowisku laboratoryjnym, które będą podłączone do sieci firmowej. W takim przypadku każdy użytkownik laboratorium będą musiały dodać artefaktu przyłączanie do domeny podczas tworzenia maszyny wirtualnej, aby upewnić się, że ich maszyna jest podłączona do domeny firmy. Innymi słowy użytkownicy laboratorium zasadniczo musi ponownie utworzyć maszynę w przypadku, gdy zapomną zastosowanie obowiązkowe artefaktów na swoim komputerze. Jako właściciel laboratorium należy artefaktu przyłączanie do domeny jako obowiązkowe artefakt w laboratorium. Ten krok pozwala się upewnić, że każda maszyna jest połączona z siecią firmową i zapisywanie czas i nakład pracy użytkowników laboratorium.
+# <a name="specify-mandatory-artifacts-for-your-lab-in-azure-devtest-labs"></a>Określanie obowiązkowych artefaktów dla laboratorium w laboratoriach devtest azure
+Jako właściciel laboratorium można określić obowiązkowe artefakty, które są stosowane do każdej maszyny utworzonej w laboratorium. Wyobraź sobie scenariusz, w którym chcesz, aby każdy komputer w laboratorium był połączony z siecią firmową. W takim przypadku każdy użytkownik laboratorium musiałby dodać artefakt sprzężenia domeny podczas tworzenia maszyny wirtualnej, aby upewnić się, że ich maszyna jest połączona z domeną firmową. Innymi słowy, użytkownicy laboratorium będą zasadniczo musieli odtworzyć maszynę w przypadku, gdy zapomną zastosować obowiązkowe artefakty na swoim komputerze. Jako właściciel laboratorium należy wprowadzić artefakt sprzężenia domeny jako obowiązkowy artefakt w laboratorium. Ten krok zapewnia, że każda maszyna jest podłączona do sieci firmowej i oszczędność czasu i wysiłku dla użytkowników laboratorium.
  
-Inne artefakty obowiązkowe mogą obejmować popularnego narzędzia, z której korzystają członkowie zespołu lub pakiet zabezpieczeń związane z platformą, który każda maszyna musi mieć domyślnie itp. Krótko mówiąc nazwy wspólnej programów, które muszą mieć do każdej maszyny w środowisku laboratoryjnym staje się obowiązkowe artefaktu. Jeśli tworzenie obrazu niestandardowego z maszynie, która zawiera artefakty obowiązkowe zastosowano, a następnie utworzyć nowej maszynie z tego obrazu, obowiązkowe artefaktów zostaną ponownie zastosowane na komputerze podczas tworzenia. To zachowanie również oznacza, że, mimo że niestandardowego obrazu jest stary, każdym razem, gdy tworzysz maszynę z niego najbardziej zaktualizowaną wersję artefaktów obowiązkowe są do niego zastosowane podczas tworzenia przepływu. 
+Inne obowiązkowe artefakty mogą zawierać typowe narzędzie używane przez zespół lub pakiet zabezpieczeń związany z platformą, który każdy komputer musi mieć domyślnie itp. Krótko mówiąc, każde wspólne oprogramowanie, które musi mieć każda maszyna w laboratorium, staje się obowiązkowym artefaktem. Jeśli utworzysz obraz niestandardowy z komputera, na którym zastosowano obowiązkowe artefakty, a następnie utworzysz nową maszynę z tego obrazu, artefakty obowiązkowe zostaną ponownie zastosowane na komputerze podczas tworzenia. To zachowanie oznacza również, że nawet jeśli obraz niestandardowy jest stary, za każdym razem, gdy tworzysz z niego maszynę, najbardziej zaktualizowana wersja obowiązkowych artefaktów jest stosowana do niego podczas przepływu tworzenia. 
  
-Tylko te artefakty, które nie mają parametrów są obsługiwane jako obowiązkowe z nich. Użytkownika usługi laboratoryjnej nie trzeba wprowadzić dodatkowe parametry podczas tworzenia laboratorium i czyniąc prosty proces tworzenia maszyny Wirtualnej. 
+Tylko artefakty, które nie mają parametrów są obsługiwane jako obowiązkowe. Użytkownik laboratorium nie trzeba wprowadzać dodatkowe parametry podczas tworzenia laboratorium, a tym samym ułatwia proces tworzenia maszyn wirtualnych. 
 
 ## <a name="specify-mandatory-artifacts"></a>Określanie obowiązkowych artefaktów
-Obowiązkowe artefaktów dla maszyn Windows i Linux można wybrać oddzielnie. Można również zmieniać kolejność tych artefaktów, w zależności od kolejności, w której chcesz zastosować. 
+Artefakty obowiązkowe dla komputerów z systemem Windows i Linux można wybrać oddzielnie. Można również zamieścić kolejność tych artefaktów w zależności od kolejności ich stosowania. 
 
-1. Na stronie głównej w środowisku laboratoryjnym wybierz **konfiguracji i zasad** w obszarze **ustawienia**. 
-3. Wybierz **obowiązkowe artefaktów** w obszarze **zasobów zewnętrznych**. 
-4. Wybierz **Edytuj** w **Windows** sekcji lub **Linux** sekcji. W tym przykładzie użyto **Windows** opcji. 
+1. Na stronie głównej laboratorium wybierz **pozycję Konfiguracja i zasady** w obszarze **USTAWIENIA**. 
+3. Wybierz **opcję Obowiązkowe artefakty** w obszarze **ZASOBY ZEWNĘTRZNE**. 
+4. Wybierz **pozycję Edytuj** w sekcji **Windows** lub w systemie **Linux.** W tym przykładzie użyto opcji **Windows.** 
 
-    ![Strona obowiązkowe artefaktów — przycisk Edytuj](media/devtest-lab-mandatory-artifacts/mandatory-artifacts-edit-button.png)
-4. Wybierz artefakt. W tym przykładzie użyto **7 Zip** opcji. 
-5. Na **Dodawanie artefaktu** wybierz opcję **Dodaj**. 
+    ![Strona Obowiązkowe artefakty - przycisk Edytuj](media/devtest-lab-mandatory-artifacts/mandatory-artifacts-edit-button.png)
+4. Wybierz artefakt. W tym przykładzie użyto opcji **7-Zip.** 
+5. Na stronie **Dodawanie artefaktów** wybierz pozycję **Dodaj**. 
 
-    ![Obowiązkowe artefaktów stronie — Dodawanie 7 zip](media/devtest-lab-mandatory-artifacts/add-seven-zip.png)
-6. Aby dodać innego artefaktu, wybierz artykuł, a następnie wybierz **Dodaj**. Ten przykład dodaje **Chrome** jako drugi obowiązkowy artefakt.
+    ![Strona obowiązkowych artefaktów - Dodaj 7-zip](media/devtest-lab-mandatory-artifacts/add-seven-zip.png)
+6. Aby dodać kolejny artefakt, zaznacz artykuł i wybierz pozycję **Dodaj**. W tym przykładzie dodano **Chrome** jako drugi obowiązkowy artefakt.
 
-    ![Strona obowiązkowe artefaktów — Dodaj dla programu Chrome](media/devtest-lab-mandatory-artifacts/add-chrome.png)
-7. Na **obowiązkowe artefaktów** strony, zostanie wyświetlony komunikat, który określa liczbę artefaktów, które wybrano. Jeśli możesz kliknąć komunikat, zostanie wyświetlony artefaktów, które zostały wybrane. Wybierz **Zapisz** do zapisania. 
+    ![Strona Obowiązkowych artefaktów - Dodaj Chrome](media/devtest-lab-mandatory-artifacts/add-chrome.png)
+7. Na stronie **Obowiązkowe artefakty** zostanie wyświetlony komunikat określający liczbę wybranych artefaktów. Po kliknięciu wiadomości zostaną wyświetlane wybrane artefakty. Wybierz **pozycję Zapisz,** aby zapisać. 
 
-    ![Strona obowiązkowe artefaktów — Zapisz artefaktów](media/devtest-lab-mandatory-artifacts/save-artifacts.png)
-8. Powtórz kroki, aby określić obowiązkowy artefaktów dla maszyn wirtualnych systemu Linux. 
+    ![Strona Obowiązkowych artefaktów — zapisywanie artefaktów](media/devtest-lab-mandatory-artifacts/save-artifacts.png)
+8. Powtórz kroki, aby określić obowiązkowe artefakty dla maszyn wirtualnych z systemem Linux. 
     
-    ![Strona obowiązkowe artefaktów — artefaktów Windows i Linux](media/devtest-lab-mandatory-artifacts/windows-linux-artifacts.png)
-9. Aby **Usuń** artefaktu z listy wybierz **... (wielokropek)**  na końcu wiersza, a następnie wybierz pozycję **Usuń**. 
-10. Aby **kolejności** artefaktów na liście, umieść kursor myszy nad artefaktu, wybierz **... (wielokropek)**  pojawia się na początku wiersza i przeciągnij element do nowej pozycji. 
-11. Aby zapisać obowiązkowe artefakty w laboratorium, zaznacz **Zapisz**. 
+    ![Strona obowiązkowych artefaktów - artefakty systemu Windows i Linux](media/devtest-lab-mandatory-artifacts/windows-linux-artifacts.png)
+9. Aby **usunąć** artefakt z listy, wybierz **... (wielokropek)** na końcu wiersza, a następnie wybierz pozycję **Usuń**. 
+10. Aby **zamiesorować** artefakty na liście, umieść wskaźnik myszy na artefakt, wybierz **... (wielokropek)** który pojawi się na początku wiersza i przeciągnij element do nowej pozycji. 
+11. Aby zapisać obowiązkowe artefakty w laboratorium, wybierz pozycję **Zapisz**. 
 
-    ![Strona obowiązkowe artefaktów — Zapisz artefakty w laboratorium](media/devtest-lab-mandatory-artifacts/save-to-lab.png)
-12. Zamknij **konfiguracji i zasad** strony (wybierz **X** w prawym górnym rogu), aby wrócić do strony głównej dla swojego laboratorium.  
+    ![Strona Obowiązkowych artefaktów — zapisywanie artefaktów w laboratorium](media/devtest-lab-mandatory-artifacts/save-to-lab.png)
+12. Zamknij stronę **Konfiguracja i zasady** (wybierz **X** w prawym górnym rogu), aby wrócić do strony głównej laboratorium.  
 
-## <a name="delete-a-mandatory-artifact"></a>Usuń obowiązkowe artefaktu
-Aby usunąć artefakt obowiązkowe z laboratorium, wykonaj następujące czynności: 
+## <a name="delete-a-mandatory-artifact"></a>Usuwanie obowiązkowego artefaktu
+Aby usunąć obowiązkowy artefakt z laboratorium, wykonaj następujące czynności: 
 
-1. Wybierz **konfiguracji i zasad** w obszarze **ustawienia**. 
-2. Wybierz **obowiązkowe artefaktów** w obszarze **zasobów zewnętrznych**. 
-3. Wybierz **Edytuj** w **Windows** sekcji lub **Linux** sekcji. W tym przykładzie użyto **Windows** opcji. 
-4. Zaznacz wiadomość z liczbą artefaktów obowiązkowe u góry. 
+1. Wybierz **pozycję Konfiguracja i zasady** w obszarze **USTAWIENIA**. 
+2. Wybierz **opcję Obowiązkowe artefakty** w obszarze **ZASOBY ZEWNĘTRZNE**. 
+3. Wybierz **pozycję Edytuj** w sekcji **Windows** lub w systemie **Linux.** W tym przykładzie użyto opcji **Windows.** 
+4. Wybierz wiadomość z liczbą obowiązkowych artefaktów u góry. 
 
-    ![Strona obowiązkowe artefaktów — wybierz komunikat](media/devtest-lab-mandatory-artifacts/select-message-artifacts.png)
-5. Na **wybrane artefaktów** wybierz opcję **... (wielokropek)**  dla artefaktu do usunięcia, a następnie wybierz pozycję **Usuń**. 
+    ![Strona Obowiązkowych artefaktów — wybierz komunikat](media/devtest-lab-mandatory-artifacts/select-message-artifacts.png)
+5. Na stronie **Wybrane artefakty** wybierz **pozycję ... (wielokropek)** aby usunąć artefakt, a następnie wybierz pozycję **Usuń**. 
     
-    ![Strona obowiązkowe artefaktów — usuwanie artefaktów](media/devtest-lab-mandatory-artifacts/remove-artifact.png)
-6. Wybierz **OK** zamknąć **wybrane artefaktów** strony. 
-7. Wybierz **Zapisz** na **obowiązkowe artefaktów** strony.
-8. Powtórz kroki dla **Linux** obrazy w razie potrzeby. 
-9. Wybierz **Zapisz** można zapisać wszystkich zmian w środowisku laboratoryjnym. 
+    ![Strona Artefakty obowiązkowe — usuwanie artefaktu](media/devtest-lab-mandatory-artifacts/remove-artifact.png)
+6. Wybierz **przycisk OK,** aby zamknąć stronę **Wybrane artefakty.** 
+7. Wybierz **pozycję Zapisz** na stronie **Artefakty obowiązkowe.**
+8. W razie potrzeby powtórz kroki dla obrazów **systemu Linux.** 
+9. Wybierz **pozycję Zapisz,** aby zapisać wszystkie zmiany w laboratorium. 
 
-## <a name="view-mandatory-artifacts-when-creating-a-vm"></a>Widok artefaktów obowiązkowy podczas tworzenia maszyny Wirtualnej
-Teraz jako użytkownik laboratorium można wyświetlić listę artefaktów obowiązkowy podczas tworzenia maszyny Wirtualnej w środowisku laboratoryjnym. Nie można edytować ani usuwać artefakty obowiązkowe ustawione w środowisku laboratoryjnym przez właściciela usługi laboratorium.
+## <a name="view-mandatory-artifacts-when-creating-a-vm"></a>Wyświetlanie obowiązkowych artefaktów podczas tworzenia maszyny Wirtualnej
+Teraz jako użytkownik laboratorium można wyświetlić listę obowiązkowych artefaktów podczas tworzenia maszyny Wirtualnej w laboratorium. Nie można edytować ani usuwać obowiązkowych artefaktów ustawionych w laboratorium przez właściciela laboratorium.
 
-1. Na stronie głównej dla swojego laboratorium wybierz **Przegląd** z menu.
-2. Aby dodać Maszynę wirtualną laboratorium, wybierz **+ Dodaj**. 
-3. Wybierz **obrazu podstawowego**. W tym przykładzie użyto **w systemie Windows Server w wersji 1709**.
-4. Należy zauważyć, że zostanie wyświetlony komunikat dla **artefaktów** z liczbą artefaktów obowiązkowe wybrane. 
-5. Wybierz **artefaktów**. 
-6. Upewnij się, że **obowiązkowe artefaktów** określony w konfiguracji i zasad laboratorium. 
+1. Na stronie głównej laboratorium wybierz **pozycję Przegląd** z menu.
+2. Aby dodać maszynę wirtualną do laboratorium, wybierz pozycję **+ Dodaj**. 
+3. Wybierz **obraz bazowy**. W tym przykładzie użyto **systemu Windows Server w wersji 1709**.
+4. Należy zauważyć, że zostanie wyświetlony komunikat dla **artefaktów** z liczbą obowiązkowych artefaktów zaznaczonych. 
+5. Wybierz **artefakty**. 
+6. Upewnij się, że są widoczne **artefakty obowiązkowe** określone w konfiguracji i zasadach laboratorium. 
 
-    ![Tworzenie maszyny Wirtualnej — obowiązkowe artefaktów](media/devtest-lab-mandatory-artifacts/create-vm-artifacts.png)
+    ![Tworzenie maszyny Wirtualnej — artefakty obowiązkowe](media/devtest-lab-mandatory-artifacts/create-vm-artifacts.png)
 
-## <a name="next-steps"></a>Kolejne kroki
-* Dowiedz się, jak [Dodawanie repozytorium artefaktów usługi Git do laboratorium](devtest-lab-add-artifact-repo.md).
+## <a name="next-steps"></a>Następne kroki
+* Dowiedz się, jak [dodać repozytorium artefaktów Git do laboratorium.](devtest-lab-add-artifact-repo.md)
 

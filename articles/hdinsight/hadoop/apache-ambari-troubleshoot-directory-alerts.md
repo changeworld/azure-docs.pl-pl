@@ -1,6 +1,6 @@
 ---
-title: Alerty katalogów Apache Ambari w usłudze Azure HDInsight
-description: Dyskusja i analiza możliwych przyczyn i rozwiązań dotyczących alertów dotyczących katalogów Apache Ambari w usłudze HDInsight.
+title: Alerty katalogu Apache Ambari w usłudze Azure HDInsight
+description: Omówienie i analiza możliwych przyczyn i rozwiązań dla alertów katalogu Apache Ambari w HDInsight.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -8,19 +8,19 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 01/22/2020
 ms.openlocfilehash: 7fd287377a82caeaecea264f0165d12ced57f5cd
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76722839"
 ---
-# <a name="scenario-apache-ambari-directory-alerts-in-azure-hdinsight"></a>Scenariusz: alerty katalogów Apache Ambari w usłudze Azure HDInsight
+# <a name="scenario-apache-ambari-directory-alerts-in-azure-hdinsight"></a>Scenariusz: Alerty katalogu Apache Ambari w usłudze Azure HDInsight
 
-W tym artykule opisano kroki rozwiązywania problemów oraz możliwe rozwiązania problemów występujących w przypadku współpracy z klastrami usługi Azure HDInsight.
+W tym artykule opisano kroki rozwiązywania problemów i możliwe rozwiązania problemów podczas interakcji z klastrami usługi Azure HDInsight.
 
 ## <a name="issue"></a>Problem
 
-W programie Apache Ambari są wyświetlane błędy podobne do:
+Pojawiają się błędy z Apache Ambari, które są podobne do:
 
 ```
 1/1 local-dirs have errors: [ /mnt/resource/hadoop/yarn/local : Cannot create directory: /mnt/resource/hadoop/yarn/local ]
@@ -29,17 +29,17 @@ W programie Apache Ambari są wyświetlane błędy podobne do:
 
 ## <a name="cause"></a>Przyczyna
 
-W węzłach procesu roboczego nie ma żadnego z wymienionych katalogów z alertu Ambari.
+We wspomnianych katalogach z alertu Ambari brakuje węzłów procesu roboczego, których dotyczy problem.
 
 ## <a name="resolution"></a>Rozwiązanie
 
-Ręcznie Utwórz brakujące katalogi na węzłach procesu roboczego, których to dotyczy.
+Ręcznie utwórz brakujące katalogi w węzłach procesowych, których dotyczy problem.
 
-1. Protokół SSH do odpowiedniego węzła procesu roboczego.
+1. SSH do odpowiedniego węzła procesu roboczego.
 
-1. Pobierz użytkownika root: `sudo su`.
+1. Pobierz użytkownika `sudo su`głównego: .
 
-1. Tworzenie rekursywnie wymaganych katalogów.
+1. Rekursyjnie utworzyć potrzebne katalogi.
 
 1. Zmień właściciela i grupę dla tych katalogów.
 
@@ -50,14 +50,14 @@ Ręcznie Utwórz brakujące katalogi na węzłach procesu roboczego, których to
     chgrp -R hadoop /mnt/resource/hadoop/yarn/log
     ```
 
-1. W interfejsie użytkownika Apache Ambari Wyłącz opcję, a następnie Włącz alert.
+1. Z apache Ambari UI, wyłącz, a następnie włącz alert.
 
 ## <a name="next-steps"></a>Następne kroki
 
-Jeśli problem nie został wyświetlony lub nie można rozwiązać problemu, odwiedź jeden z następujących kanałów, aby uzyskać więcej pomocy:
+Jeśli nie widzisz problemu lub nie możesz rozwiązać problemu, odwiedź jeden z następujących kanałów, aby uzyskać więcej pomocy technicznej:
 
-* Uzyskaj odpowiedzi od ekspertów platformy Azure za pośrednictwem [pomocy technicznej dla społeczności platformy Azure](https://azure.microsoft.com/support/community/).
+* Uzyskaj odpowiedzi od ekspertów platformy Azure za pośrednictwem [pomocy technicznej platformy Azure Community.](https://azure.microsoft.com/support/community/)
 
-* Połącz się z [@AzureSupport](https://twitter.com/azuresupport) — oficjalnego Microsoft Azure konta, aby zwiększyć komfort obsługi klienta. Połączenie społeczności platformy Azure z właściwymi zasobami: odpowiedziami, wsparciem i ekspertami.
+* Połącz [@AzureSupport](https://twitter.com/azuresupport) się z — oficjalnym kontem platformy Microsoft Azure w celu poprawy jakości obsługi klienta. Łączenie społeczności platformy Azure z odpowiednimi zasobami: odpowiedziami, pomocą techniczną i ekspertami.
 
-* Jeśli potrzebujesz więcej pomocy, możesz przesłać żądanie pomocy technicznej z [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Na pasku menu wybierz pozycję **Obsługa** , a następnie otwórz Centrum **pomocy i obsługi technicznej** . Aby uzyskać szczegółowe informacje, zapoznaj [się z tematem jak utworzyć żądanie pomocy technicznej platformy Azure](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request). Dostęp do pomocy w zakresie zarządzania subskrypcjami i rozliczeń jest dostępny w ramach subskrypcji Microsoft Azure, a pomoc techniczna jest świadczona za pomocą jednego z [planów pomocy technicznej systemu Azure](https://azure.microsoft.com/support/plans/).
+* Jeśli potrzebujesz więcej pomocy, możesz przesłać żądanie pomocy z [witryny Azure portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Wybierz **pozycję Obsługa z** paska menu lub otwórz centrum pomocy + pomocy **technicznej.** Aby uzyskać bardziej szczegółowe informacje, zapoznaj [się z instrukcjami tworzenia żądania pomocy technicznej platformy Azure.](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request) Dostęp do obsługi zarządzania subskrypcjami i rozliczeń jest dołączony do subskrypcji platformy Microsoft Azure, a pomoc techniczna jest świadczona za pośrednictwem jednego z [planów pomocy technicznej platformy Azure.](https://azure.microsoft.com/support/plans/)

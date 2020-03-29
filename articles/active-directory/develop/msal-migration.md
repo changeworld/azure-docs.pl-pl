@@ -1,7 +1,7 @@
 ---
 title: Migrowanie do biblioteki uwierzytelniania firmy Microsoft (MSAL)
 titleSuffix: Microsoft identity platform
-description: Dowiedz się więcej o różnicach między biblioteką uwierzytelniania firmy Microsoft (MSAL) i biblioteką uwierzytelniania usługi Azure AD (ADAL) oraz jak przeprowadzić migrację do MSAL.
+description: Dowiedz się więcej o różnicach między biblioteką uwierzytelniania Firmy Microsoft (MSAL) a biblioteką uwierzytelniania usługi Azure AD (ADAL) oraz o tym, jak przeprowadzić migrację do usługi MSAL.
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -14,28 +14,28 @@ ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: 3af18eb09fd9906a0caaebda0b786795400467f3
-ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78164934"
 ---
 # <a name="migrate-applications-to-microsoft-authentication-library-msal"></a>Migrowanie aplikacji do biblioteki uwierzytelniania firmy Microsoft (MSAL)
 
-Zarówno Biblioteka uwierzytelniania firmy Microsoft (MSAL), jak i Biblioteka Azure AD Authentication Library (ADAL) służą do uwierzytelniania jednostek usługi Azure AD i żądania tokenów z usługi Azure AD. Do tej pory większość deweloperów pracowała z usługą Azure AD for Developers platform (v 1.0) do uwierzytelniania tożsamości usługi Azure AD (konta służbowe) przez żądanie tokenów przy użyciu biblioteki Azure AD Authentication Library (ADAL). Korzystanie z MSAL:
+Zarówno Biblioteka uwierzytelniania firmy Microsoft (MSAL), jak i biblioteka uwierzytelniania usługi Azure AD (ADAL) są używane do uwierzytelniania jednostek usługi Azure AD i żądania tokenów z usługi Azure AD. Do tej pory większość deweloperów współpracowała z platformą Azure AD for developers (w wersji 1.0) w celu uwierzytelnienia tożsamości usługi Azure AD (kont służbowych i szkolnych), żądając tokenów przy użyciu biblioteki uwierzytelniania usługi Azure AD (ADAL). Korzystanie z usługi MSAL:
 
-- Można uwierzytelnić szerszy zbiór tożsamości firmy Microsoft (tożsamości usługi Azure AD i konta Microsoft, a także konta społecznościowe i lokalne za pośrednictwem Azure AD B2C), ponieważ korzysta on z punktu końcowego platformy tożsamości firmy Microsoft.
-- Użytkownicy będą korzystać z najlepszego środowiska logowania jednokrotnego.
-- Aplikacja może włączyć przyrostową zgodę i ułatwić dostęp warunkowy.
+- Można uwierzytelnić szerszy zestaw tożsamości firmy Microsoft (tożsamości usługi Azure AD i kont Microsoft oraz kont społecznościowych i lokalnych za pośrednictwem usługi Azure AD B2C), ponieważ używa punktu końcowego platformy tożsamości firmy Microsoft.
+- Użytkownicy otrzymają najlepsze środowisko rejestracji jednokrotnej.
+- Aplikacja może włączyć przyrostową zgodę, a obsługa dostępu warunkowego jest łatwiejsza.
 - Korzystasz z innowacji.
 
-**MSAL jest teraz zalecaną biblioteką uwierzytelniania do użycia z platformą tożsamości firmy Microsoft**. Nie będą implementowane żadne nowe funkcje w bibliotece ADAL. Wysiłki są skoncentrowane na ulepszaniu MSAL.
+**MSAL jest teraz zalecaną biblioteką śuchalną do użycia z platformą tożsamości firmy Microsoft.** Żadne nowe funkcje nie zostaną zaimplementowane w adal. Wysiłki koncentrują się na poprawie MSAL.
 
-W poniższych artykułach opisano różnice między bibliotekami MSAL i ADAL i ułatwiają migrację do MSAL:
-- [Migrowanie do MSAL.NET](msal-net-migration.md)
-- [Migrowanie do MSAL. js](msal-compare-msal-js-and-adal-js.md)
-- [Migruj do MSAL. Systemów](migrate-android-adal-msal.md)
-- [Migrowanie do MSAL. iOS/macOS](migrate-objc-adal-msal.md)
-- [Migrowanie do MSAL Python](migrate-python-adal-msal.md)
-- [Migrowanie do MSAL dla języka Java](migrate-adal-msal-java.md)
-- [Migrowanie aplikacji platformy Xamarin przy użyciu brokerów do MSAL.NET](msal-net-migration-ios-broker.md)
+W poniższych artykułach opisano różnice między bibliotekami MSAL i ADAL i pomagają w migracji do usługi MSAL:
+- [Migrowanie do platformy MSAL.NET](msal-net-migration.md)
+- [Migrowanie do biblioteki MSAL.js](msal-compare-msal-js-and-adal-js.md)
+- [Migrowanie do biblioteki MSAL.Android](migrate-android-adal-msal.md)
+- [Migracja do usługi MSAL.iOS / macOS](migrate-objc-adal-msal.md)
+- [Migrowanie do biblioteki MSAL dla języka Python](migrate-python-adal-msal.md)
+- [Migrowanie do biblioteki MSAL dla języka Java](migrate-adal-msal-java.md)
+- [Migrowanie aplikacji platformy Xamarin do biblioteki MSAL.NET przy użyciu brokerów](msal-net-migration-ios-broker.md)
