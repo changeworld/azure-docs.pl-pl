@@ -1,7 +1,7 @@
 ---
-title: Pomoc techniczna i opcje pomocy
+title: Opcje wsparcia technicznego i pomocy
 titleSuffix: Azure Cognitive Services
-description: Jak uzyskać pomoc i pomoc techniczną dotyczącą pytań i problemów podczas tworzenia aplikacji, które integrują się z usługą Azure Cognitive Services.
+description: Jak uzyskać pomoc i pomoc techniczną dotyczącą pytań i problemów podczas tworzenia aplikacji, które integrują się z usługami Azure Cognitive Services.
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
@@ -10,23 +10,23 @@ ms.topic: conceptual
 ms.date: 11/22/2019
 ms.author: dapine
 ms.openlocfilehash: 2cdf34bb7df121665548be98f9f2098cc5cfe99b
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/17/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "76169079"
 ---
-# <a name="azure-cognitive-services-support-and-help-options"></a>Obsługa Cognitive Services platformy Azure i opcje pomocy
+# <a name="azure-cognitive-services-support-and-help-options"></a>Opcje pomocy technicznej i pomocy usługi Azure Cognitive Services
 
-Czy dopiero zaczynasz Eksplorowanie funkcjonalności platformy Azure Cognitive Services? Czy wdrażasz nową funkcję w aplikacji? Poniżej znajdują się sugestie dotyczące tego, gdzie można uzyskać pomoc jako deweloper.
+Czy dopiero zaczynasz eksplorować funkcjonalność usług Azure Cognitive Services? Czy implementujesz nową funkcję w aplikacji? Oto sugestie, gdzie możesz uzyskać pomoc jako programista.
 
 > [!div class="checklist"]
-> * Bądź na bieżąco z nowymi zmianami w *usłudze Azure Cognitive Services*.
-> * Informacje o wersji obejmują wszystkie wersje.
-> * Wyszukaj, aby sprawdzić, czy problem został omówiony przez społeczność lub czy istniejąca dokumentacja już istnieje.
-> * Jeśli nie możesz znaleźć zadowalającej odpowiedzi, zadawaj pytanie na *Stack Overflow*.
-> * Jeśli znajdziesz problem z jednym z przykładów w witrynie GitHub, zgłoś problem w usłudze *GitHub* .
-> * Wyszukaj rozwiązanie na *forum UserVoice*.
+> * Bądź na bieżąco z nowymi rozwiązaniami w *usłudze Azure Cognitive Services*.
+> * Informacje o wersji zawierają informacje dotyczące wszystkich wersji.
+> * Wyszukaj, czy problem został omówiony przez społeczność lub czy istniejąca dokumentacja już istnieje.
+> * Jeśli nie możesz znaleźć zadowalającej odpowiedzi, zadaj pytanie w *usłudze Przepełnienie stosu*.
+> * Jeśli znajdziesz problem z jednym z przykładów w usłudze GitHub, zgłać problem z *gitHub.*
+> * Poszukaj rozwiązania na *forum UserVoice*.
 
 ## <a name="create-an-azure-support-request"></a>Tworzenie wniosku o pomoc techniczną platformy Azure
 
@@ -34,28 +34,28 @@ Czy dopiero zaczynasz Eksplorowanie funkcjonalności platformy Azure Cognitive S
     <img alt='Azure support' src='https://docs.microsoft.com/media/logos/logo_azure.svg'>
 </div>
 
-Poznaj zakres [opcji pomocy technicznej platformy Azure i wybierz plan](https://azure.microsoft.com/support/plans) , który najlepiej pasuje do tego, czy jesteś deweloperem, który właśnie rozpoczyna pracę w chmurze, czy też znaczną organizację wdrażających aplikacje o znaczeniu krytycznym dla działalności firmy. Klienci platformy Azure mogą tworzyć żądania pomocy technicznej i zarządzać nimi w Azure Portal.
+Zapoznaj się z zakresem [opcji pomocy technicznej platformy Azure i wybierz plan,](https://azure.microsoft.com/support/plans) który najlepiej pasuje, niezależnie od tego, czy jesteś programistą, który dopiero rozpoczyna podróż w chmurze, czy dużą organizacją wdrażającą aplikacje strategiczne o znaczeniu krytycznym dla firmy. Klienci platformy Azure mogą tworzyć żądania pomocy technicznej i zarządzać nimi w witrynie Azure portal.
 
-* [Azure Portal](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)
-* [Azure Portal dla instytucji rządowych Stany Zjednoczone](https://portal.azure.us)
+* [Portal Azure](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)
+* [Portal Azure dla rządu Stanów Zjednoczonych](https://portal.azure.us)
 
-## <a name="post-a-question-on-stack-overflow"></a>Opublikuj pytanie na Stack Overflow
+## <a name="post-a-question-on-stack-overflow"></a>Zamieść pytanie na temat Przepełnienia stosu
 
 <div class='icon is-large'>
     <img alt='Stack Overflow' src='https://docs.microsoft.com/media/logos/logo_stackoverflow.svg'>
 </div>
 
-Aby uzyskać natychmiastowe odpowiedzi ze społeczności, należy poszukać Stack Overflow. Stack Overflow jest preferowanym kanałem dla pytań związanych z programowaniem. Jest to miejsce, w którym członkowie społeczności i członkowie zespołu firmy Microsoft są bezpośrednio włączeni do ułatwienia rozwiązywania problemów.
+Aby uzyskać natychmiastowe odpowiedzi od społeczności, poszukaj przepełnienia stosu. Przepełnienie stosu jest preferowanym kanałem pytań związanych z rozwojem. To właśnie w tym miejscu członkowie społeczności i członkowie zespołu firmy Microsoft są bezpośrednio zaangażowani w pomoc w rozwiązywaniu problemów.
 
-Jeśli nie możesz znaleźć odpowiedzi na problem za pośrednictwem wyszukiwania, Prześlij nowe pytanie do Stack Overflow. Przy formułowaniu pytania Użyj jednego z następujących tagów:
+Jeśli nie możesz znaleźć odpowiedzi na problem za pomocą wyszukiwania, prześlij nowe pytanie do Przepełnienie stosu. Podczas formułowanie pytania należy użyć jednego z następujących tagów:
 
- - [Poznawcze firmy Microsoft](https://stackoverflow.com/questions/tagged/microsoft-cognitive)
+ - [Microsoft Cognitive](https://stackoverflow.com/questions/tagged/microsoft-cognitive)
  - [Azure Cognitive Services](https://stackoverflow.com/questions/tagged/azure-cognitive-services)
 
 > [!TIP]
-> Poniższe wpisy z Stack Overflow zawierają wskazówki dotyczące sposobu tworzenia pytań i dodawania kodu źródłowego. Postępując zgodnie z tymi wskazówkami, można zwiększyć szansę, że członkowie społeczności oceniają i reagują na pytania szybko:
-> * [Jak mogę zadać dobrym pytaniem?](https://stackoverflow.com/help/how-to-ask)
-> * [Jak utworzyć minimalny, powtarzalny przykład?](https://stackoverflow.com/help/minimal-reproducible-example)
+> Poniższe posty z Przepełnienie stosu zawierają wskazówki dotyczące tworzenia pytań i dodawania kodu źródłowego. Przestrzeganie tych wytycznych może zwiększyć szanse, że członkowie społeczności szybko oceniają twoje pytanie i odpowiedzą na nie:
+> * [Jak zadać dobre pytanie?](https://stackoverflow.com/help/how-to-ask)
+> * [Jak stworzyć minimalny, powtarzalny przykład?](https://stackoverflow.com/help/minimal-reproducible-example)
 
 ## <a name="uservoice-forum"></a>Forum UserVoice
 
@@ -63,24 +63,24 @@ Jeśli nie możesz znaleźć odpowiedzi na problem za pośrednictwem wyszukiwani
     <img alt='UserVoice' src='https://docs.microsoft.com/media/logos/logo-uservoice.svg'>
 </div>
 
-Aby zażądać nowych funkcji, Opublikuj je w usłudze UserVoice. Podziel się swoimi pomysłami, aby tworzyć Cognitive Services i towarzyszące interfejsy API działają lepiej w przypadku aplikacji, które tworzysz:
+Aby poprosić o nowe funkcje, opublikuj je na UserVoice. Podziel się swoimi pomysłami na uczynienie usług Cognitive Services i towarzyszącymi im interfejsami API działają lepiej dla aplikacji, które opracowujesz:
 
-| Usługa                       | Adres URL Cognitive Services UserVoice |
+| Usługa                       | Cognitive Services UserVoice URL |
 |-------------------------------|---------------|
 | Narzędzie do wykrywania anomalii              | https://cognitive.uservoice.com/forums/912196-anomaly-detector |
 | Usługi Bing                 | https://cognitive.uservoice.com/forums/555907-bing-search |
 | Przetwarzanie obrazów               | https://cognitive.uservoice.com/forums/430309-computer-vision |
 | Content Moderator             | https://cognitive.uservoice.com/forums/559960-content-moderator |
-| Niestandardowe przetwarzanie obrazów                 | https://cognitive.uservoice.com/forums/598141-custom-vision-service |
+| Custom Vision                 | https://cognitive.uservoice.com/forums/598141-custom-vision-service |
 | Rozpoznawanie twarzy                          | https://cognitive.uservoice.com/forums/430315-face |
 | Formularz                          | https://cognitive.uservoice.com/forums/921556-form-recognizer |
 | Wciągające                     | https://feedback.azure.com/forums/34192--general-feedback |
-| Usługa interpretacji języka (LUIS) | https://cognitive.uservoice.com/forums/551524-luis |
+| Language Understanding (LUIS) | https://cognitive.uservoice.com/forums/551524-luis |
 | Personalizacja                  | https://cognitive.uservoice.com/forums/921562-personalizer |
 | QnA Maker                     | https://cognitive.uservoice.com/forums/578689-qna-maker |
 | Usługi mowy               | https://cognitive.uservoice.com/forums/912208-speech-service |
 | Analiza tekstu                | https://cognitive.uservoice.com/forums/555922-text-analytics |
-| Tłumaczenie tekstu w usłudze Translator               | https://cognitive.uservoice.com/forums/558796-translator |
+| Tekst usługi Translator               | https://cognitive.uservoice.com/forums/558796-translator |
 | Indeksator wideo                 | https://cognitive.uservoice.com/forums/598144-video-indexer |
 
 ## <a name="release-notes"></a>Informacje o wersji
@@ -89,88 +89,88 @@ Aby zażądać nowych funkcji, Opublikuj je w usłudze UserVoice. Podziel się s
     <img alt='Release notes' src='https://docs.microsoft.com/media/common/i_learn-about.svg'>
 </div>
 
-Informacje o wersji są aktualizowane w miarę udostępnienia nowych wersji. Notatki zawierają informacje dotyczące nowych funkcji, ulepszeń i poprawek błędów.
+Informacje o wersji są aktualizowane w miarę udostępniania nowych wersji. Notatki zawierają informacje o nowych funkcjach, ulepszeniach i poprawkach błędów.
 
  - [Custom Vision](custom-vision-service/release-notes.md)
- - [Twarzy](face/releasenotes.md)
- - [Language Understanding (LUIS)](luis/whats-new.md)
+ - [Rozpoznawanie twarzy](face/releasenotes.md)
+ - [Rozumienie języka (LUIS)](luis/whats-new.md)
  - [Usługi mowy](speech-service/releasenotes.md)
- - [Zestaw SDK usługi Speech Services](speech-service/devices-sdk-release-notes.md)
+ - [SDK usług mowy](speech-service/devices-sdk-release-notes.md)
  - [Analiza tekstu](text-analytics/whats-new.md)
 
-## <a name="stay-informed"></a>Bądź na bieżąco z informacjami
+## <a name="stay-informed"></a>Bądź na bieżąco
 
 <div class='icon is-large'>
     <img alt='Stay informed' src='https://docs.microsoft.com/media/common/i_blog.svg'>
 </div>
 
-Wiadomości dotyczące Cognitive Services są udostępniane w [blogu platformy Azure](https://azure.microsoft.com/blog/topics/cognitive-services/).
+Wiadomości o usługach Cognitive Services są udostępniane w [blogu platformy Azure](https://azure.microsoft.com/blog/topics/cognitive-services/).
 
-## <a name="search"></a>Search
+## <a name="search"></a>Wyszukiwanie
 
 <div class='icon is-large'>
     <img alt='Search' src='https://docs.microsoft.com/media/common/i_search.svg'>
 </div>
 
-Możesz znaleźć wymaganą odpowiedź w dokumentacji, przykłady lub odpowiedzi na pytania [Stack Overflow](https://www.stackoverflow.com) lub przykłady.
+Odpowiedź, której potrzebujesz, może znaleźć w dokumentacji, przykładach lub odpowiedziach na pytania [przepełnienie stosu](https://www.stackoverflow.com) lub w przykładach.
 
  - https://stackoverflow.com/questions/tagged/azure-cognitive-services
 
-### <a name="scoped-search"></a>Wyszukiwanie w zakresie
+### <a name="scoped-search"></a>Wyszukiwanie z zakresem
 
-Aby przyspieszyć wyniki, należy ograniczyć wyszukiwanie do odpowiednich witryn, takich jak Stack Overflow, Microsoft docs lub przykłady kodu usługi GitHub. Użyj `site:` notacji zapytania w [ulubionym aparacie wyszukiwania](https://bing.com):
+Aby uzyskać szybsze wyniki, należy skomunikować wyszukiwanie do odpowiednich witryn, takich jak Przepełnienie stosu, dokumenty firmy Microsoft lub przykłady kodu GitHub. Użyj `site:` notacji zapytania w [ulubionej wyszukiwarce:](https://bing.com)
 
 ```
 {search keywords} site:stackoverflow.com
 ```
 
-Gdzie `{search keywords}` jest kontekstem wyszukiwania. To wyszukiwanie przeprowadzi zakres wyników do Stack Overflow. Rozważ użycie tych przeszukiwanych zakresów odpowiednio:
+Gdzie `{search keywords}` jest kontekst wyszukiwania. To wyszukiwanie będzie zakres wyników do przepełnienia stosu. Należy rozważyć użycie tych wyszukiwań o określonym zakresie odpowiednio:
 
- - Stack Overflow: `site:stackoverflow.com`
- - Microsoft Docs: `site:docs.microsoft.com`
- - Przykłady GitHub: `site:github.com/azure-samples`
+ - Przepełnienie stosu:`site:stackoverflow.com`
+ - Dokumenty firmy Microsoft:`site:docs.microsoft.com`
+ - Próbki github:`site:github.com/azure-samples`
 
-## <a name="create-a-github-issue"></a>Utwórz problem w usłudze GitHub
+## <a name="create-a-github-issue"></a>Tworzenie problemu z githubem
 
 <div class='icon is-large'>
     <img alt='GitHub' src='https://docs.microsoft.com/media/logos/logo_octokitty.svg'>
 </div>
 
-Przykłady są często ogłaszane jako Open Source. W przypadku pytań i problemów Utwórz *problem* w odpowiednim repozytorium GitHub. Możesz również przesłać żądanie ściągnięcia. Szukasz kodu źródłowego **przykłady dla platformy Azure** poniżej znajduje się lista przykładowego kodu źródłowego Cognitive Services:
+Przykłady są często publikowane jako open source. W przypadku pytań i problemów utwórz *problem* w odpowiednim repozytorium GitHub. Możesz również przesłać prośbę o pociągnięcie! Poszukaj **przykładowego** kodu źródłowego platformy Azure poniżej znajduje się lista przykładowego kodu źródłowego usług Cognitive Services:
 
-* [Przykłady dla platformy Azure — Cognitive Services](https://github.com/Azure-Samples?utf8=%E2%9C%93&q=cognitive&type=&language=)
+* [Przykłady platformy Azure — usługi Cognitive Services](https://github.com/Azure-Samples?utf8=%E2%9C%93&q=cognitive&type=&language=)
 
-Możesz utworzyć raport o usterce, żądanie funkcji lub zadać ogólne pytanie i udostępnić najlepsze rozwiązania. W przypadku raportów o usterkach postępuj zgodnie z podanym szablonem:
+Możesz utworzyć raport o błędzie, żądanie funkcji lub zadać ogólne pytanie i udostępnić najlepsze rozwiązania. W przypadku zgłoszeń o błędach postępuj zgodnie z podanym szablonem:
 
-**Opisz usterkę**
+**Opisz błąd**
 
-Jasno i zwięzły opis błędu.
+Jasny i zwięzły opis tego, czym jest błąd.
 
 **Aby odtworzyć**
 
-Kroki prowadzące do odtworzenia zachowania:
-1. Przyciski ...
-2. Przyciski ...
+Kroki, aby odtworzyć zachowanie:
+1. ...
+2. ...
 
 **Oczekiwane zachowanie**
 
-Jasno i zwięzły opis oczekiwań.
+Jasny i zwięzły opis tego, czego się spodziewałeś.
 
-**Które oferty Cognitive Services są używane**
+**Z jakich usług Cognitive Services korzystasz**
 
-Zapoznaj się z Cognitive Services ofertą, której próbujesz użyć, i podaj szczegóły dotyczące tego, co próbujesz osiągnąć.
+Szczegółowo opisuj ofertę usług Cognitive Services, której próbujesz użyć, i podaj szczegółowe informacje na temat tego, co próbujesz osiągnąć.
 
 **Platforma, system operacyjny i język programowania**
 
- - System operacyjny: [na przykład Windows, Linux, Android, iOS,...] — Wybierz
- - Sprzęt — x64, x86, ARM,...
- - Przeglądarka, np. Chrome, Safari] (jeśli ma zastosowanie) — podaj szczegółowe informacje
+ - System operacyjny: [np. Windows, Linux, Android, iOS, ...] - proszę być konkretnym
+ - Sprzęt - x64, x86, ARM, ...
+ - przeglądarki, np.
 
 **Kontekst**
 
- - Komunikaty o błędach, informacje dziennika, ślad stosu,...
- - Jeśli zgłaszasz błąd dotyczący konkretnej interakcji z usługą, zgłoś identyfikator SessionId i czas (w tym strefę czasową) zgłoszonych zdarzeń. Identyfikator sesji jest raportowany we wszystkich odbieranych wywołaniach/zdarzeniach.
- - Inne dodatkowe informacje
+ - Komunikaty o błędach, informacje dziennika, śledzenie stosu, ...
+ - Jeśli zgłosisz błąd dla określonej interakcji usługi, zgłoś SessionId i czas (włącznie ze strefą czasową) zgłoszonych zdarzeń. Identyfikator SessionId jest zgłaszany we wszystkich wywołaniach/zdarzeniach, które otrzymujesz.
+ - Wszelkie inne dodatkowe informacje
 
 ## <a name="reddit"></a>Reddit
 
@@ -178,9 +178,9 @@ Zapoznaj się z Cognitive Services ofertą, której próbujesz użyć, i podaj s
     <img alt='Reddit' src='https://docs.microsoft.com/media/logos/logo_reddit.svg'>
 </div>
 
-Reddit to Klasyfikacja zawartości sieci Web oparta na społeczności i witryna internetowa dyskusji, która oferuje najnowsze szczegóły dotyczące [Cognitive Services platformy Azure](https://www.reddit.com/r/AZURE/search/?q=Cognitive%20Services&restrict_sr=1). Zarejestrowane elementy członkowskie mogą przesyłać zawartość, a inne mogą głosować na tym komputerze
+Reddit to oparta na społeczności internetowa ocena treści i witryna dyskusyjna, oferująca najnowsze szczegóły [usługi Azure Cognitive Services.](https://www.reddit.com/r/AZURE/search/?q=Cognitive%20Services&restrict_sr=1) Zarejestrowani użytkownicy mogą przesyłać treści, a inni mogą na nią głosować - organicznie umożliwiając najbardziej trafne treści awansują na szczyt.
 
 ## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Co to jest platforma Azure Cognitive Services?](welcome.md)
+> [Co to są usługi Azure Cognitive Services?](welcome.md)

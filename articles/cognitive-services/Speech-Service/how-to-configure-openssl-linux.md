@@ -11,42 +11,42 @@ ms.topic: conceptual
 ms.date: 01/16/2020
 ms.author: jhakulin
 ms.openlocfilehash: 350c2bf3c4d0fc0a16f1b393e7c8d8a372679797
-ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78331148"
 ---
 # <a name="configure-openssl-for-linux"></a>Konfigurowanie biblioteki OpenSSL dla systemu Linux
 
-W przypadku korzystania z dowolnej wersji zestawu Speech SDK przed 1.9.0, [OpenSSL](https://www.openssl.org) jest konfigurowana dynamicznie z wersją systemu hosta. W nowszych wersjach zestawu Speech SDK OpenSSL (wersja [1.1.1 b](https://mta.openssl.org/pipermail/openssl-announce/2019-February/000147.html)) jest statycznie połączony z podstawową biblioteką zestawu Speech SDK.
+W przypadku korzystania z dowolnej wersji SDK mowy przed 1.9.0, [OpenSSL](https://www.openssl.org) jest dynamicznie skonfigurowany do wersji systemu hosta. W nowszych wersjach SDK mowy OpenSSL (wersja [1.1.1b)](https://mta.openssl.org/pipermail/openssl-announce/2019-February/000147.html)jest statycznie połączony z podstawową biblioteką SDK mowy.
 
 Aby zapewnić łączność, sprawdź, czy certyfikaty OpenSSL zostały zainstalowane w systemie. Uruchom polecenie:
 ```bash
 openssl version -d
 ```
 
-Dane wyjściowe w systemach opartych na systemie Ubuntu/Debian powinny być następujące:
+Dane wyjściowe w systemach opartych na Ubuntu/Debianie powinny być następujące:
 ```
 OPENSSLDIR: "/usr/lib/ssl"
 ```
 
-Sprawdź, czy `certs` podkatalogu w obszarze OPENSSLDIR. W powyższym przykładzie `/usr/lib/ssl/certs`.
+Sprawdź, czy `certs` w obszarze OPENSSLDIR nie ma podkatalogu. W powyższym przykładzie `/usr/lib/ssl/certs`będzie .
 
-* Jeśli `/usr/lib/ssl/certs` i zawiera wiele pojedynczych plików certyfikatów (z rozszerzeniem `.crt` lub `.pem`), nie ma potrzeby wykonywania dalszych akcji.
+* Jeśli istnieje `/usr/lib/ssl/certs` i zawiera wiele pojedynczych `.crt` `.pem` plików certyfikatów (z lub rozszerzeniem), nie ma potrzeby dalszych działań.
 
-* Jeśli OPENSSLDIR jest coś innego niż `/usr/lib/ssl` i/lub istnieje pojedynczy plik pakietu certyfikatów zamiast wielu pojedynczych plików, należy ustawić odpowiednią zmienną środowiskową SSL, aby wskazać, gdzie można znaleźć certyfikaty.
+* Jeśli OPENSSLDIR jest `/usr/lib/ssl` czymś innym niż i/lub zamiast wielu pojedynczych plików znajduje się plik pakietu pojedynczego certyfikatu, należy ustawić odpowiednią zmienną środowiskową SSL, aby wskazać, gdzie można znaleźć certyfikaty.
 
 ## <a name="examples"></a>Przykłady
 
-- OPENSSLDIR jest `/opt/ssl`. Istnieje `certs` podkatalog z wieloma plikami `.crt` lub `.pem`.
-Ustaw zmienną środowiskową `SSL_CERT_DIR` na `/opt/ssl/certs` przed uruchomieniem programu korzystającego z zestawu Speech SDK. Na przykład:
+- OPENSSLDIR `/opt/ssl`jest . Istnieje `certs` podkatalog `.crt` z `.pem` wieloma plikami lub plikami.
+Ustaw zmienną `SSL_CERT_DIR` środowiskową, `/opt/ssl/certs` aby wskazać przed uruchomieniem programu, który używa zestawu SDK mowy. Przykład:
 ```bash
 export SSL_CERT_DIR=/opt/ssl/certs
 ```
 
-- OPENSSLDIR jest `/etc/pki/tls` (podobnie jak w systemach opartych na RHEL/CentOS). `certs` podkatalog z plikiem pakietu certyfikatów, na przykład `ca-bundle.crt`.
-Ustaw zmienną środowiskową `SSL_CERT_FILE`, aby wskazywała ten plik przed uruchomieniem programu korzystającego z zestawu Speech SDK. Na przykład:
+- OPENSSLDIR `/etc/pki/tls` jest (podobnie jak w systemach opartych na RHEL/CentOS). Istnieje `certs` podkatalog z plikiem pakietu `ca-bundle.crt`certyfikatów, na przykład .
+Przed uruchomieniem programu korzystającego z zestawu SDK mowy należy ustawić zmienną `SSL_CERT_FILE` środowiskową, aby wskazywała ten plik. Przykład:
 ```bash
 export SSL_CERT_FILE=/etc/pki/tls/certs/ca-bundle.crt
 ```
@@ -54,4 +54,4 @@ export SSL_CERT_FILE=/etc/pki/tls/certs/ca-bundle.crt
 ## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Informacje o zestawie SDK mowy](speech-sdk.md)
+> [Informacje o zestawie SDK usługi Mowa](speech-sdk.md)

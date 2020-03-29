@@ -1,7 +1,7 @@
 ---
-title: Obsługa języka i regionu dla interfejsu API rozpoznawania pisma odręcznego
+title: Obsługa języka i regionu interfejsu API aparatu rozpoznawania pisma odurzacza
 titleSuffix: Azure Cognitive Services
-description: Lista języków naturalnych obsługiwane przez interfejs API rozpoznawania pisma odręcznego.
+description: Lista języków naturalnych obsługiwanych przez interfejs API aparatu rozpoznawania pisma odurzacza.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,15 +11,15 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: aahi
 ms.openlocfilehash: 36f2fa65f47f824ccc3544f5c13b5f5ee9afd21a
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/10/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67721740"
 ---
-# <a name="language-and-region-support-for-the-ink-recognizer-api"></a>Obsługa języka i regionu dla interfejsu API rozpoznawania pisma odręcznego
+# <a name="language-and-region-support-for-the-ink-recognizer-api"></a>Obsługa języka i regionu interfejsu API aparatu rozpoznawania pisma odurzacza
 
-W tym artykule opisano, które języki są obsługiwane dla interfejsu API rozpoznawania pisma odręcznego. Zawartość cyfrowy atrament zapisywane w następujących językach można interpretowane i przetwarzane przez interfejs API.
+W tym artykule wyjaśniono, które języki są obsługiwane dla interfejsu API aparatu rozpoznawania pisma odczłowego. Zawartość atramentu cyfrowego napisana w następujących językach może być interpretowana i przetwarzana przez interfejs API.
 
 ## <a name="supported-languages"></a>Obsługiwane języki
 
@@ -34,53 +34,53 @@ W tym artykule opisano, które języki są obsługiwane dla interfejsu API rozpo
 | Chiński (tradycyjny, Tajwan)              |     `zh-TW`     |
 | Chorwacki (Chorwacja)                         |     `hr-HR`     |
 | Czeski                                      |     `cs-CZ`     |
-| Duński                                     |     `da-DK`     |
+| duński                                     |     `da-DK`     |
 | Holenderski (Belgia)                            |     `nl-BE`     |
-| Holenderski (Holandia)                        |     `nl-NL`     |
+| Niderlandzki (Holandia)                        |     `nl-NL`     |
 | Angielski (Australia)                        |     `en-AU`     |
 | Angielski (Kanada)                           |     `en-CA`     |
 | Angielski (Zjednoczone Królestwo)                   |     `en-GB`     |
-| English (India)                            |     `en-IN`     |
+| Angielski (Indie)                            |     `en-IN`     |
 | Angielski (Stany Zjednoczone)                    |     `en-US`     |
-| Fiński                                    |     `fi-FI`     |
+| fiński                                    |     `fi-FI`     |
 | Francuski (Francja)                            |     `fr-FR`     |
 | Galicyjski                                   |     `gl-ES`     |
 | Niemiecki (Szwajcaria)                      |     `de-CH`     |
 | Niemiecki (Niemcy)                           |     `de-DE`     |
-| Grecki                                      |     `el-GR`     |
+| grecki                                      |     `el-GR`     |
 | Hindi                                      |     `hi-IN`     |
 | Indonezyjski                                 |     `id-ID`     |
 | Irlandzki                                      |     `ga-IE`     |
 | Włoski (Włochy)                            |     `it-IT`     |
 | Japoński                                   |     `ja-JP`     |
 | Kinyarwanda                                |     `rw-RW`     |
-| Suahili (Kenia)                          |     `sw-KE`     |
+| Kiswahili (Kenia)                          |     `sw-KE`     |
 | Koreański                                     |     `ko-KR`     |
 | Luksemburski                              |     `lb-LU`     |
-| Malajski (Brunei Darussalam)                  |     `ms-BN`     |
+| Brunei Darussalam                  |     `ms-BN`     |
 | Malajski (Malezja)                           |     `ms-MY`     |
 | Maoryjski                                      |     `mi-NZ`     |
 | Norweski (Bokmal)                         |     `nb-NO`     |
 | Norweski (Nynorsk)                        |     `nn-NO`     |
 | Polski                                     |     `pl-PL`     |
-| Portugalski (Brazylia)                        |     `pt-BR`     |
+| portugalski (Brazylia)                        |     `pt-BR`     |
 | Portugalski (Portugalia)                      |     `pt-PT`     |
-| Romansz — Retoromański                                    |     `rm-CH`     |
+| Retoromański                                    |     `rm-CH`     |
 | Rumuński                                   |     `ro-RO`     |
 | Rosyjski                                    |     `ru-RU`     |
-| Szkocki celtycki                            |     `gd-GB`     |
+| Szkocki gaelicki                            |     `gd-GB`     |
 | Sesotho sa Leboa                           |    `nso-ZA`     |
-| Serbski (cyrylica, Bośnia i Hercegowina) |  `sr-Cyrl-BA`   |
+| serbski (cyrylica, Bośnia i Hercegowina) |  `sr-Cyrl-BA`   |
 | Serbski (cyrylica, Czarnogóra)             |  `sr-Cyrl-ME`   |
 | Serbski (cyrylica, Serbia)                 |  `sr-Cyrl-RS`   |
-| Serbski (łaciński, Bośnia i Hercegowina)    |  `sr-Latn-BA`   |
+| Serbski (łaciński, bośnia i hercegowina)    |  `sr-Latn-BA`   |
 | Serbski (łaciński, Czarnogóra)                |  `sr-Latn-ME`   |
 | Serbski (łaciński, Serbia)                    |  `sr-Latn-RS`   |
-| Setswana (RPA)                    |     `tn-ZA`     |
+| Setswana (Republika Południowej Afryki)                    |     `tn-ZA`     |
 | Słowacki                                     |     `sk-SK`     |
 | Słoweński                                  |     `sl-SI`     |
 | Hiszpański (Argentyna)                        |     `es-AR`     |
-| Hiszpański (Hiszpania)                            |     `es-ES`     |
+| hiszpański (Hiszpania)                            |     `es-ES`     |
 | Hiszpański (Meksyk)                           |     `es-MX`     |
 | Szwedzki (Szwecja)                           |     `sv-SE`     |
 | Turecki                                    |     `tr-TR`     |
@@ -89,7 +89,7 @@ W tym artykule opisano, które języki są obsługiwane dla interfejsu API rozpo
 | Xhosa                                      |     `xh-ZA`     |
 | Zulu                                       |     `zu-ZA`     |
 
-## <a name="see-also"></a>Zobacz także
+## <a name="see-also"></a>Zobacz też
 
 * [Co to jest interfejs API rozpoznawania pisma odręcznego?](overview.md)
-* [Wysyłanie pociągnięć odręcznych cyfrowych do interfejsu API rozpoznawania pisma odręcznego](concepts/send-ink-data.md)
+* [Wysyłanie cyfrowych pociągnięć atramentu do interfejsu API aparatu rozpoznawania pisma odręcznego](concepts/send-ink-data.md)

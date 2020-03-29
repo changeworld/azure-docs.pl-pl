@@ -1,7 +1,7 @@
 ---
-title: Konwersja danych — LUIS
+title: Konwersja danych — usługa LUIS
 titleSuffix: Azure Cognitive Services
-description: Dowiedz się, jak można zmienić wypowiedzi przed prognozy w Language Understanding (LUIS)
+description: Dowiedz się, jak można zmienić wypowiedzi przed przewidywaniem w zrozumieni języku (LUIS)
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -12,34 +12,34 @@ ms.topic: conceptual
 ms.date: 07/29/2019
 ms.author: diberry
 ms.openlocfilehash: aeb9094db83b14af988f70485788934a7854200c
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/29/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "68619804"
 ---
-# <a name="convert-data-format-of-utterances"></a>Konwertuj wypowiedzi format danych
-LUIS udostępnia następujące konwersje wypowiedź użytkownika przed przewidywaniam "
+# <a name="convert-data-format-of-utterances"></a>Konwertowanie formatu danych wypowiedzi
+Usługa LUIS udostępnia następujące konwersje wypowiedzi użytkownika przed przewidywaniem"
 
-* Zamiana mowy na tekst za pomocą usługi [Cognitive Services Speech](../Speech-Service/overview.md) . 
+* Mowa do tekstu przy użyciu usługi [Cognitive Services Speech.](../Speech-Service/overview.md) 
 
 ## <a name="speech-to-text"></a>Zamiana mowy na tekst
 
-Zamiana mowy na tekst jest zapewniana jako integracja z usługą LUIS. 
+Zamiana mowy na tekst jest dostarczana jako integracja z usługą LUIS. 
 
-### <a name="intent-conversion-concepts"></a>Pojęcia dotyczące konwersji intencji
-Konwersja mowy na tekst w LUIS umożliwia wysyłania wypowiedzi mowy do punktu końcowego i odbierania odpowiedzi prognoz usługi LUIS. Ten proces jest integracja [mowy](https://docs.microsoft.com/azure/cognitive-services/Speech) usługi z użyciem usługi LUIS. Dowiedz się więcej na temat zamiany [](../speech-service/how-to-recognize-intents-from-speech-csharp.md)mowy z samouczkiem.
+### <a name="intent-conversion-concepts"></a>Koncepcje konwersji intencji
+Konwersja mowy do tekstu w usłudze LUIS umożliwia wysyłanie wypowiedzi mówionych do punktu końcowego i odbieranie odpowiedzi przewidywania usługi LUIS. Proces jest integracją usługi [mowy](https://docs.microsoft.com/azure/cognitive-services/Speech) z usługą LUIS. Dowiedz się więcej o mowy do intencji z [samouczka](../speech-service/how-to-recognize-intents-from-speech-csharp.md).
 
 ### <a name="key-requirements"></a>Podstawowe wymagania
-Nie musisz utworzyć **modułu Speech API Bing** klucza dla tej integracji. A **Language Understanding** klucza utworzonego w portalu Azure działa w przypadku tej integracji. Nie używaj klucza początkowego LUIS.
+Nie trzeba tworzyć klucz **interfejsu API mowy Bing** dla tej integracji. Klucz **zrozumienia języka** utworzony w witrynie Azure portal działa dla tej integracji. Nie należy używać klucza startowego usługi LUIS.
 
 ### <a name="pricing-tier"></a>Warstwa cenowa
-Ta integracja korzysta z innego modelu [cen](luis-boundaries.md#key-limits) niż zwykle Language Understanding warstwy cenowe. 
+Ta integracja używa innego modelu [cenowego](luis-boundaries.md#key-limits) niż zwykłe warstwy cenowe opisu języka. 
 
 ### <a name="quota-usage"></a>Użycie przydziału
-Zobacz [klucza limity](luis-boundaries.md#key-limits) informacji. 
+Informacje [można znaleźć w zakresie limitów](luis-boundaries.md#key-limits) kluczy. 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
 > [Wyodrębnianie danych](luis-concept-data-extraction.md)

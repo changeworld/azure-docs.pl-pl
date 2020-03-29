@@ -1,7 +1,7 @@
 ---
-title: Miniatury inteligentne i przycięte — przetwarzanie obrazów
+title: Inteligentne przycięte miniatury - Wizja komputerowa
 titleSuffix: Azure Cognitive Services
-description: Pojęcia związane z generowaniem miniatur obrazów przy użyciu interfejs API przetwarzania obrazów.
+description: Pojęcia związane z generowaniem miniatur obrazów przy użyciu interfejsu API przetwarzania obrazów.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -12,42 +12,42 @@ ms.date: 03/11/2018
 ms.author: pafarley
 ms.custom: seodec18
 ms.openlocfilehash: 4874910f37b49990a659b48af0cf27921c3fcd5e
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/10/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "68945231"
 ---
-# <a name="generating-smart-cropped-thumbnails-with-computer-vision"></a>Generowanie miniatur inteligentnych z przyciętymi przetwarzanie obrazów
+# <a name="generating-smart-cropped-thumbnails-with-computer-vision"></a>Generowanie miniatur przyciętych inteligentnie za pomocą funkcji Wizja komputerowa
 
-Miniatura to skrócona reprezentacja obrazu. Miniatury służą do reprezentowania obrazów i innych danych w bardziej ekonomiczny, przyjazny dla układu. Interfejs API przetwarzania obrazów używa inteligentnego przycinania oraz zmiany rozmiarów obrazu w celu utworzenia intuicyjnych miniatur dla danego obrazu.
+Miniatura to reprezentacja obrazu o zmniejszonym rozmiarze. Miniatury są używane do reprezentowania obrazów i innych danych w bardziej ekonomiczny, przyjazny dla układu sposób. Interfejs API przetwarzania obrazów używa inteligentnego przycinania, wraz z jego rozmiarem, w celu utworzenia intuicyjnych miniatur dla danego obrazu.
 
-Przetwarzanie obrazów algorytm generowania miniatur działa następująco:
+Algorytm generowania miniatur wizji komputerowej działa w następujący sposób:
 
-1. Usuń rozpraszające się elementy z obrazu i zidentyfikuj _obszar zainteresowania_ &mdash;obrazu, w którym pojawiają się obiekty główne.
-1. Przytnij obraz na podstawie zidentyfikowanego _obszaru zainteresowania_ .
-1. Zmień współczynnik proporcji na wymiary miniatury docelowej.
+1. Usuń elementy rozpraszające z obrazu i zidentyfikuj _obszar zainteresowania_&mdash;obszaru obrazu, w którym pojawia się główny obiekt(-y).
+1. Przytnij obraz na podstawie zidentyfikowanego _obszaru zainteresowania_.
+1. Zmień współczynnik proporcji, aby dopasować je do docelowych wymiarów miniatur.
 
 ## <a name="area-of-interest"></a>Obszar zainteresowania
 
-Po przekazaniu obrazu interfejs API przetwarzania obrazów analizuje go w celu określenia *obszaru zainteresowania*. Może następnie użyć tego regionu do określenia sposobu przycinania obrazu. Operacja przycinania jest jednak zawsze zgodna z pożądanym współczynnikiem proporcji, jeśli jest określony.
+Podczas przesyłania obrazu interfejs API przetwarzania obrazów jest analizowy w celu określenia *obszaru zainteresowania*. Następnie można użyć tego regionu, aby określić, jak przyciąć obraz. Operacja przycinania zawsze będzie jednak odpowiadać żądanemu współczynnikowi proporcji, jeśli zostanie określona.
 
-Możesz również uzyskać współrzędne pola ograniczonego dla tego samego *obszaru zainteresowania* przez wywołanie interfejsu API **areaOfInterest** . Możesz następnie użyć tych informacji, aby zmodyfikować oryginalny obraz.
+Można również uzyskać współrzędne nieprzetworzone obwiedni tego samego *obszaru zainteresowania,* wywołując **areaOfInterest** INTERFEJSU API zamiast. Następnie można użyć tych informacji, aby zmodyfikować oryginalny obraz, jak chcesz.
 
 ## <a name="examples"></a>Przykłady
 
-Wygenerowane miniatury mogą się znacznie różnić w zależności od tego, co jest określane jako wysokość, Szerokość i inteligentne przycinanie, jak pokazano na poniższej ilustracji.
+Wygenerowana miniatura może się znacznie różnić w zależności od tego, co określisz dla wysokości, szerokości i inteligentnego przycinania, jak pokazano na poniższej ilustracji.
 
-![Obraz górski obok różnych konfiguracji przycinania](./Images/thumbnail-demo.png)
+![Obraz górski obok różnych konfiguracji kadrowania](./Images/thumbnail-demo.png)
 
-W poniższej tabeli przedstawiono typowe miniatury wygenerowane przez przetwarzanie obrazów dla przykładowych obrazów. Miniatury zostały wygenerowane dla określonej wartości docelowej wysokości i szerokości 50 pikseli, z włączonym funkcją inteligentnego przycinania.
+W poniższej tabeli przedstawiono typowe miniatury generowane przez wizję komputerową dla przykładowych obrazów. Miniatury zostały wygenerowane dla określonej wysokości docelowej i szerokości 50 pikseli, z włączonym inteligentnym przycinaniem.
 
-| Image | Miniatura |
+| Image (Obraz) | Miniaturę |
 |-------|-----------|
-|![Górski grunty na zachód słońca i Silhouette osoby](./Images/mountain_vista.png) | ![Miniatura górskiego góry o zachodzie słońca i Silhouette osoby](./Images/mountain_vista_thumbnail.png) |
-|![Biały kwiat z zielonym tłem](./Images/flower.png) | ![Vision Analizuj miniaturę kwiatów](./Images/flower_thumbnail.png) |
-|![Kobieta na dachu budynku apartamentu](./Images/woman_roof.png) | ![Miniatura kobieta na dachu budynku apartamentu](./Images/woman_roof_thumbnail.png) |
+|![Góra na świeżym powietrzu o zachodzie słońca, z sylwetką osoby](./Images/mountain_vista.png) | ![Miniatura Outdoor Mountain o zachodzie słońca, z sylwetką osoby](./Images/mountain_vista_thumbnail.png) |
+|![Biały kwiat z zielonym tłem](./Images/flower.png) | ![Miniatura analizy wizyjnej kwiatu](./Images/flower_thumbnail.png) |
+|![Kobieta na dachu budynku mieszkalnego](./Images/woman_roof.png) | ![miniatura kobiety na dachu budynku mieszkalnego](./Images/woman_roof_thumbnail.png) |
 
 ## <a name="next-steps"></a>Następne kroki
 
-Dowiedz się więcej na temat [tagowania obrazów](concept-tagging-images.md) i [kategoryzacji obrazów](concept-categorizing-images.md).
+Dowiedz się więcej o [oznaczaniu obrazów](concept-tagging-images.md) i [kategoryzowaniu obrazów](concept-categorizing-images.md).

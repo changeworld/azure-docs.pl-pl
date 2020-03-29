@@ -1,5 +1,5 @@
 ---
-title: Uaktualnij interfejs API automatycznego sugerowania Bing V5 do wersji 7
+title: Uaktualnianie interfejsu API automatycznego przełączania Bing w wersji 5 do wersji 7
 titleSuffix: Azure Cognitive Services
 description: Identyfikuje części aplikacji, które należy zaktualizować, aby użyć wersji 7.
 services: cognitive-services
@@ -11,64 +11,64 @@ ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: scottwhi
 ms.openlocfilehash: 5249a3a1f51eea2ecd0999d71c6b08fdacf37a34
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/23/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "68405418"
 ---
-# <a name="autosuggest-api-upgrade-guide"></a>Przewodnik uaktualniania interfejsu API automatycznego sugerowania
+# <a name="autosuggest-api-upgrade-guide"></a>Przewodnik po uaktualnieniu interfejsu API z automatycznymsuchodnieniem
 
-Ten przewodnik uaktualniania identyfikuje zmiany między wersjami 5 i 7 interfejs API automatycznego sugerowania Bing. Skorzystaj z tego przewodnika, aby zaktualizować aplikację do korzystania z wersji 7.
+Ten przewodnik uaktualnienia identyfikuje zmiany między wersją 5 i wersją 7 interfejsu API autosuggest Bing. Ten przewodnik ułatwia aktualizowanie aplikacji w celu użycia wersji 7.
 
-## <a name="breaking-changes"></a>Zmiany powodujące niezgodność
+## <a name="breaking-changes"></a>Fundamentalne zmiany
 
 ### <a name="endpoints"></a>Punkty końcowe
 
-- Numer wersji punktu końcowego został zmieniony z 5 na wersji 7. Na przykład https:\//API.Cognitive.Microsoft.com/Bing/\*\*v 7.0 * */Suggestions.
+- Numer wersji punktu końcowego zmieniono z v5 na v7. Na przykład https:\//api.cognitive.microsoft.com/bing/\*\*v7.0**/Sugestie.
 
-### <a name="error-response-objects-and-error-codes"></a>Obiekty odpowiedzi błędów i kody błędów
+### <a name="error-response-objects-and-error-codes"></a>Obiekty odpowiedzi na błędy i kody błędów
 
-- Wszystkie żądania zakończone niepowodzeniem powinny teraz `ErrorResponse` zawierać obiekt w treści odpowiedzi.
+- Wszystkie żądania nie powiodło `ErrorResponse` się powinny teraz zawierać obiekt w treści odpowiedzi.
 
-- Dodano następujące pola do `Error` obiektu.  
-  - `subCode`&mdash;Dzieli kod błędu do zasobników dyskretnych, o ile to możliwe
-  - `moreDetails`&mdash;Dodatkowe informacje na temat błędu opisanego w `message` polu
+- Dodano następujące pola `Error` do obiektu.  
+  - `subCode`&mdash;Dzieli kod błędu na dyskretne zasobniki, jeśli to możliwe
+  - `moreDetails`&mdash;Dodatkowe informacje o błędzie opisanym w `message` polu
 
-- Zamieniono kody błędów v5 z następującymi możliwymi `code` wartościami i. `subCode`
+- Zastąpiono kody błędów v5 następującymi możliwymi `code` i `subCode` wartościami.
 
-|Kod|Podkod|Opis
+|Code|Subcode|Opis
 |-|-|-
-|Błąd servererror|UnexpectedError<br/>ResourceError<br/>NotImplemented|Bing zwraca błąd servererror w każdym wystąpieniu kodu podrzędnego. Odpowiedź zawiera te błędy, jeśli kod stanu HTTP to 500.
-|InvalidRequest|ParameterMissing<br/>ParameterInvalidValue<br/>HttpNotAllowed<br/>Zablokowany|Bing zwraca InvalidRequest, gdy jakakolwiek część żądania jest nieprawidłowa. Na przykład brakuje wymaganego parametru lub wartość parametru jest nieprawidłowa.<br/><br/>Jeśli błąd to ParameterMissing lub ParameterInvalidValue, kod stanu HTTP to 400.<br/><br/>Jeśli błąd to HttpNotAllowed, kod stanu HTTP to 410.
-|RateLimitExceeded||Bing zwraca RateLimitExceeded za każdym razem, gdy przekroczą limit przydziału zapytań na sekundę (zapytań) lub zapytania miesięcznie (QPM).<br/><br/>Bing zwraca kod stanu HTTP 429 w przypadku przekroczenia zapytań i 403 w przypadku przekroczenia QPM.
-|InvalidAuthorization|AuthorizationMissing<br/>AuthorizationRedundancy|Bing zwraca InvalidAuthorization, gdy Bing nie może uwierzytelnić obiektu wywołującego. Na przykład `Ocp-Apim-Subscription-Key` brakuje nagłówka lub klucz subskrypcji jest nieprawidłowy.<br/><br/>Nadmiarowość występuje, jeśli określono więcej niż jedną metodę uwierzytelniania.<br/><br/>Jeśli błąd to InvalidAuthorization, kod stanu HTTP to 401.
-|InsufficientAuthorization|AuthorizationDisabled<br/>AuthorizationExpired|Usługa Bing zwraca InsufficientAuthorization, gdy obiekt wywołujący nie ma uprawnień dostępu do zasobu. Taka sytuacja może wystąpić, jeśli klucz subskrypcji został wyłączony lub wygasł. <br/><br/>Jeśli błąd to InsufficientAuthorization, kod stanu HTTP to 403.
+|Serwer Serwera|UnexpectedError (Nieoczekiwanyeror)<br/>Źródło zasobów<br/>Nienałożony|Bing zwraca ServerError zawsze, gdy wystąpi którykolwiek z warunków podkodu. Odpowiedź zawiera te błędy, jeśli kod stanu HTTP wynosi 500.
+|Prośba o unieważnienie|Odsuwanie parametrów<br/>Wartość parametruInvalidValue<br/>HttpNotallowed (Nieuwolna)<br/>Zablokowane|Bing zwraca InvalidRequest, gdy jakakolwiek część żądania jest nieprawidłowa. Na przykład brakuje wymaganego parametru lub wartość parametru jest nieprawidłowa.<br/><br/>Jeśli błąd to ParameterMissing lub ParameterInvalidValue, kod stanu HTTP wynosi 400.<br/><br/>Jeśli błąd jest HttpNotAllowed, kod stanu HTTP jest 410.
+|RateLimitExceeded (RateLimitExceeded)||Bing zwraca RateLimitExceeded zawsze, gdy przekraczasz zapytania na sekundę (QPS) lub zapytania miesięcznie (QPM) przydział.<br/><br/>Bing zwraca kod stanu HTTP 429, jeśli przekroczono QPS i 403, jeśli przekroczono QPM.
+|InvalidAuthorization (In invalidAuthorization)|AuthorizationMissing<br/>AutoryzacjaRedundancy|Bing zwraca InvalidAuthorization, gdy bing nie może uwierzytelnić wywołującego. Na przykład `Ocp-Apim-Subscription-Key` brakuje nagłówka lub klucz subskrypcji jest nieprawidłowy.<br/><br/>Nadmiarowość występuje, jeśli określisz więcej niż jedną metodę uwierzytelniania.<br/><br/>Jeśli błąd to InvalidAuthorization, kod stanu HTTP to 401.
+|Niewystarczająca autoryzacja|AuthorizationDisabled (Nie można wyjawić)<br/>AuthorizationExpired (Brak uprawnień)|Bing zwraca InsufficientAuthorization, gdy wywołujący nie ma uprawnień dostępu do zasobu. Taka możliwość może wystąpić, jeśli klucz subskrypcji został wyłączony lub wygasł. <br/><br/>Jeśli błąd jest InsufficientAuthorization, kod stanu HTTP jest 403.
 
-- Poniżej przedstawiono mapowanie poprzednich kodów błędów do nowych kodów. Jeśli pobrano zależność od kodów błędów w programie V5, zaktualizuj kod odpowiednio.
+- Poniżej przedstawiono mapy poprzednich kodów błędów do nowych kodów. Jeśli została podjęta zależność od kodów błędów v5, należy odpowiednio zaktualizować kod.
 
-|Kod w wersji 5|Kod w wersji 7. podkod
+|Kod w wersji 5|Wersja 7 code.subCode
 |-|-
-|RequestParameterMissing|InvalidRequest.ParameterMissing
+|RequestParameterMissing|Nieprawidłowyrequest.ParameterMissing
 RequestParameterInvalidValue|InvalidRequest.ParameterInvalidValue
-ResourceAccessDenied|InsufficientAuthorization
-ExceededVolume|RateLimitExceeded
-ExceededQpsLimit|RateLimitExceeded
-Wyłączone|InsufficientAuthorization.AuthorizationDisabled
-UnexpectedError|Błąd servererror. UnexpectedError
-DataSourceErrors|Błąd servererror. ResourceError
+ResourceAccessDenied|Niewystarczająca autoryzacja
+Przekroczonawolienie|RateLimitExceeded (RateLimitExceeded)
+ExceededQpsLimit|RateLimitExceeded (RateLimitExceeded)
+Disabled (Wyłączony)|InsufficientAuthorization.AuthorizationWydanie
+UnexpectedError (Nieoczekiwanyeror)|SerwerError.UnexpectedError
+Źródła danychErrory|SerwerError.ResourceError
 AuthorizationMissing|InvalidAuthorization.AuthorizationMissing
-HttpNotAllowed|InvalidRequest.HttpNotAllowed
-UserAgentMissing|InvalidRequest.ParameterMissing
-NotImplemented|ServerError.NotImplemented
-InvalidAuthorization|InvalidAuthorization
-InvalidAuthorizationMethod|InvalidAuthorization
-MultipleAuthorizationMethod|InvalidAuthorization.AuthorizationRedundancy
-ExpiredAuthorizationToken|InsufficientAuthorization.AuthorizationExpired
-InsufficientScope|InsufficientAuthorization
-Zablokowany|InvalidRequest. zablokowane
+HttpNotallowed (Nieuwolna)|InvalidRequest.httpNie wolno
+UserAgentMissing|Nieprawidłowyrequest.ParameterMissing
+Nienałożony|ServerError.NotImplemented (Niewlegiętym)
+InvalidAuthorization (In invalidAuthorization)|InvalidAuthorization (In invalidAuthorization)
+Nieprawidłowametoda autoryzacji|InvalidAuthorization (In invalidAuthorization)
+WieleautoryzacjiMetoda|InvalidAuthorization.AuthorizationRedundancy InvalidAuthorization.AuthorizationRedundancy InvalidAuthorization.AuthorizationRedundancy Invalid
+Wygasła autoryzacjaPokajła|InsufficientAuthorization.AuthorizationExpired
+InsufficientScope (niewystarczające skos|Niewystarczająca autoryzacja
+Zablokowane|InvalidRequest.Blocked (InvalidRequest.Blocked)
 
 ## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Use and display requirements (Wymagania dotyczące użycia i wyświetlania)](./UseAndDisplayRequirements.md)
+> [Wymagania dotyczące użytkowania i wyświetlania](./UseAndDisplayRequirements.md)

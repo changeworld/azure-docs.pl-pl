@@ -1,29 +1,29 @@
 ---
-title: Migrowanie z rozpoznawanie mowy Bing do usługi mowy
+title: Migracja z usługi mowy do mowy usługi Bing
 titleSuffix: Azure Cognitive Services
-description: Dowiedz się, jak przeprowadzić migrację z istniejącej subskrypcji rozpoznawanie mowy Bing do usługi mowy z platformy Azure Cognitive Services.
+description: Dowiedz się, jak przeprowadzić migrację z istniejącej subskrypcji mowy Bing do usługi Mowy z usług Azure Cognitive Services.
 services: cognitive-services
 author: wsturman
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 01/21/2020
+ms.date: 03/17/2020
 ms.author: nitinme
-ms.openlocfilehash: d6d9cb4dda93523b1136c8cc4cd307ae82c8b674
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.openlocfilehash: b95e16f2d8257bfffcaf2524fe7f8ce6be565689
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77560937"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80366590"
 ---
-# <a name="migrate-from-bing-speech-to-the-speech-service"></a>Migrowanie z rozpoznawanie mowy Bing do usługi mowy
+# <a name="migrate-from-bing-speech-to-the-speech-service"></a>Migracja z mowy bing do usługi mowy
 
-Ten artykuł służy do migrowania aplikacji z interfejs API rozpoznawania mowy Bing do usługi mowy.
+Ten artykuł służy do migracji aplikacji z interfejsu API mowy Bing do usługi mowy.
 
-W tym artykule opisano różnice między interfejsami API rozpoznawanie mowy Bing i usługą mowy oraz zaproponowano strategie migracji aplikacji. Klucz subskrypcji interfejs API rozpoznawania mowy Bing nie będzie działał z usługą mowy; będziesz potrzebować nowej subskrypcji usługi mowy.
+W tym artykule opisano różnice między interfejsami API mowy Bing a usługą mowy i sugeruje strategie migracji aplikacji. Klucz subskrypcji interfejsu API mowy Bing nie będzie działać z usługą Mowy; potrzebna jest nowa subskrypcja usługi mowy.
 
-Pojedynczy klucz subskrypcji usługi mowy umożliwia dostęp do następujących funkcji. Każda z tych funkcji jest mierzona oddzielnie, dlatego opłaty są naliczane tylko za funkcje, których używasz.
+Pojedynczy klucz subskrypcji usługi mowy zapewnia dostęp do następujących funkcji. Każda z tych funkcji jest mierzona oddzielnie, dlatego opłaty są naliczane tylko za funkcje, których używasz.
 
 * [Zamiana mowy na tekst](speech-to-text.md)
 * [Niestandardowa zamiana mowy na tekst](https://cris.ai)
@@ -31,68 +31,66 @@ Pojedynczy klucz subskrypcji usługi mowy umożliwia dostęp do następujących 
 * [Niestandardowe głosy funkcji zamiany tekstu na mowę](how-to-customize-voice-font.md)
 * [Tłumaczenie mowy](speech-translation.md) (nie obejmuje funkcji [Tłumaczenie tekstu](../translator/translator-info-overview.md))
 
-[Zestaw Speech SDK](speech-sdk.md) to funkcjonalne zastępowanie dla bibliotek klienta rozpoznawanie mowy Bing, ale używa innego interfejsu API.
+[SDK mowy](speech-sdk.md) jest funkcjonalne zastąpienie bibliotek klienta mowy Bing, ale używa innego interfejsu API.
 
 ## <a name="comparison-of-features"></a>Porównanie funkcji
 
-Usługa mowy jest w dużym stopniu podobna do rozpoznawanie mowy Bing, z następującymi różnicami.
+Usługa mowy jest w dużej mierze podobna do mowy Bing, z następującymi różnicami.
 
-Cecha | Rozpoznawanie mowy Bing | Usługa rozpoznawania mowy | Szczegóły
--|-|-|-
-C++ZESTAWIE | : heavy_minus_sign: | :heavy_check_mark: | Usługa Speech obsługuje systemy Windows i Linux.
-Zestaw SDK Java | :heavy_check_mark: | :heavy_check_mark: | Usługa Speech obsługuje urządzenia z systemem Android i Speech.
-Zestaw SDK języka C# | :heavy_check_mark: | :heavy_check_mark: | Usługa Speech obsługuje systemy Windows 10, platforma uniwersalna systemu Windows (platformy UWP) i .NET Standard 2,0.
-Ciągłe rozpoznawanie mowy | 10 minut | Bez ograniczeń (z zestawem SDK) | Protokoły usługi WebSockets rozpoznawanie mowy Bing i Speech obsługują do 10 minut na wywołanie. Jednak zestaw Speech SDK automatycznie ponownie nawiązuje połączenie po przekroczeniu limitu czasu lub rozłączenia.
-Wyniki częściowe lub pośrednie | :heavy_check_mark: | :heavy_check_mark: | Za pomocą protokołu WebSockets lub zestawu SDK.
-Niestandardowe modele mowy | :heavy_check_mark: | :heavy_check_mark: | Rozpoznawanie mowy Bing wymaga oddzielnej subskrypcji Custom Speech.
-Niestandardowe czcionki głosowe | :heavy_check_mark: | :heavy_check_mark: | Rozpoznawanie mowy Bing wymaga oddzielnej niestandardowej subskrypcji głosowej.
-głosy 24-KHz | : heavy_minus_sign: | :heavy_check_mark:
-Rozpoznawanie opcji mowy | Wymaga oddzielnego wywołania interfejsu API LUIS | Zintegrowany (z zestawem SDK) |  Za pomocą usługi mowy można użyć klucza LUIS.
-Proste rozpoznawanie intencji | : heavy_minus_sign: | :heavy_check_mark:
-Transkrypcja partii długich plików audio | : heavy_minus_sign: | :heavy_check_mark:
-Tryb rozpoznawania | Ręczne za pomocą identyfikatora URI punktu końcowego | Automatyczny | Tryb rozpoznawania nie jest dostępny w usłudze Speech.
-Miejscowość punktu końcowego | Globalny | Regionalne | Regionalne punkty końcowe poprawiają opóźnienia.
-Interfejsy API REST | :heavy_check_mark: | :heavy_check_mark: | Interfejsy API REST usługi Speech są zgodne z rozpoznawanie mowy Bing (inny punkt końcowy). Interfejsy API REST obsługują funkcję zamiany tekstu na mowę i ograniczoną funkcjonalność zamiany mowy na tekst.
-Protokoły WebSockets | :heavy_check_mark: | :heavy_check_mark: | Interfejs API usługi WebSockets w usłudze Speech jest zgodny z rozpoznawanie mowy Bing (inny punkt końcowy). W miarę możliwości Migruj do zestawu Speech SDK, aby uprościć swój kod.
-Wywołania interfejsu API między usługami | :heavy_check_mark: | : heavy_minus_sign: | Dostępne w rozpoznawanie mowy Bing za pośrednictwem biblioteki C# usług.
-Zestaw SDK open source | :heavy_check_mark: | : heavy_minus_sign: |
+| Funkcja | Rozpoznawanie mowy Bing | Usługa rozpoznawania mowy | Szczegóły |
+|--|--|--|--|
+| Zestaw SDK języka C# | :heavy_check_mark: | :heavy_check_mark: | Usługa mowy obsługuje system Windows 10, uniwersalną platformę systemu Windows (UWP) i .NET Standard 2.0. |
+| K.P.C. | :heavy_minus_sign: | :heavy_check_mark: | Usługa mowy obsługuje systemy Windows i Linux. |
+| Zestaw SDK Java | :heavy_check_mark: | :heavy_check_mark: | Usługa mowy obsługuje urządzenia z systemem Android i speech. |
+| Ciągłe rozpoznawanie mowy | 10 minut | Nieograniczony (z SDK) | Protokoły WebSockets usługi mowy i mowy Bing obsługują do 10 minut na wywołanie. Jednak SDK mowy automatycznie łączy się ponownie po przełączeniu limitu czasu lub rozłączyć. |
+| Wyniki częściowe lub okresowe | :heavy_check_mark: | :heavy_check_mark: | Z protokołem WebSockets lub SDK. |
+| Niestandardowe modele mowy | :heavy_check_mark: | :heavy_check_mark: | Bing Speech wymaga oddzielnej subskrypcji mowy niestandardowej. |
+| Niestandardowe czcionki głosowe | :heavy_check_mark: | :heavy_check_mark: | Bing Speech wymaga oddzielnej subskrypcji niestandardowego głosu. |
+| Głosy 24 kHz | :heavy_minus_sign: | :heavy_check_mark: |
+| Rozpoznawanie intencji mowy | Wymaga oddzielnego wywołania interfejsu API usługi LUIS | Zintegrowany (z SDK) | Klucz usługi LUIS można użyć z usługą mowy. |
+| Proste rozpoznawanie intencji | :heavy_minus_sign: | :heavy_check_mark: |
+| Transkrypcja wsadowa długich plików audio | :heavy_minus_sign: | :heavy_check_mark: |
+| Tryb rozpoznawania | Instrukcja za pomocą identyfikatora URI punktu końcowego | Automatyczny | Tryb rozpoznawania nie jest dostępny w usłudze Mowy. |
+| Lokalizacja punktu końcowego | Globalny | Regionalny | Regionalne punkty końcowe zwiększają opóźnienie. |
+| Interfejsy API REST | :heavy_check_mark: | :heavy_check_mark: | Interfejsy API REST usługi mowy są zgodne z Bing Speech (inny punkt końcowy). Interfejsy API REST obsługują zamianę tekstu na mowę i ograniczone funkcje zamiany mowy na tekst. |
+| Protokoły WebSockets | :heavy_check_mark: | :heavy_check_mark: | Usługa mowy WebSockets interfejs API jest zgodny z Bing Speech (inny punkt końcowy). Migracji do SDK mowy, jeśli to możliwe, aby uprościć kod. |
+| Wywołania interfejsu API usługi do usługi | :heavy_check_mark: | :heavy_minus_sign: | Dostępne w usłudze Bing Speech za pośrednictwem biblioteki usług języka C#. |
+| SDK typu open source | :heavy_check_mark: | :heavy_minus_sign: |
 
-Usługa mowy korzysta z modelu cenowego opartego na czasie (a nie modelu opartego na transakcji). Aby uzyskać szczegółowe informacje, zobacz [Cennik usługi Speech](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/) .
+Usługa Mowy używa modelu cenowego opartego na czasie (a nie modelu opartego na transakcjach). Szczegółowe informacje można znaleźć w [cenniku usługi mowy.](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/)
 
 ## <a name="migration-strategies"></a>Strategie migracji
 
-Jeśli ty lub Twoja organizacja ma aplikacje w programowaniu lub środowisku produkcyjnym, które używają interfejs API rozpoznawania mowy Bing, należy je zaktualizować tak szybko, jak to możliwe. Zobacz [dokumentację usługi Speech](index.yml) dla dostępnych zestawów SDK, przykłady kodu i samouczki.
+Jeśli ty lub Twoja organizacja masz aplikacje w rozwoju lub produkcji, które używają interfejsu API mowy Bing, należy zaktualizować je do korzystania z usługi mowy tak szybko, jak to możliwe. Zobacz [dokumentację usługi mowy,](index.yml) aby uzyskać dostępne zestawy SDK, przykłady kodu i samouczki.
 
-[Interfejsy API REST](rest-apis.md) usługi Speech są zgodne z interfejsami API rozpoznawanie mowy Bing. Jeśli obecnie używasz interfejsów API REST rozpoznawanie mowy Bing, musisz zmienić tylko punkt końcowy REST i przełączyć się na klucz subskrypcji usługi rozpoznawania mowy.
+Interfejsy API REST usługi mowy są zgodne z [interfejsami](rest-apis.md) API mowy Bing. Jeśli obecnie używasz interfejsów API odpoczynku mowy Bing, musisz tylko zmienić punkt końcowy REST i przełączyć się na klucz subskrypcji usługi mowy.
 
-Protokoły WebSockets usługi Speech są również zgodne z tymi używanymi przez rozpoznawanie mowy Bing. Zalecamy, aby w przypadku nowego programowania używać zestawu Speech SDK zamiast obiektów WebSockets. Dobrym pomysłem jest również migrowanie istniejącego kodu do zestawu SDK. Jednak, podobnie jak w przypadku interfejsów API REST, istniejący kod, który używa rozpoznawanie mowy Bing za pośrednictwem sieci WebSockets, wymaga tylko zmiany w punkcie końcowym i zaktualizowanym kluczu.
+Protokół WebSockets usługi mowy są również zgodne z protokołami używanymi przez usługę Bing Speech. Zaleca się, aby w przypadku nowego rozwoju używać SDK mowy, a nie WebSockets. Dobrym pomysłem jest również migracja istniejącego kodu do sdk. Jednak podobnie jak w przypadku interfejsów API REST, istniejący kod, który używa mowy Bing za pośrednictwem websockets wymaga tylko zmiany punktu końcowego i zaktualizowany klucz.
 
-Jeśli używasz biblioteki klienta rozpoznawanie mowy Bing dla określonego języka programowania, migracja do [zestawu Speech SDK](speech-sdk.md) wymaga wprowadzenia zmian w aplikacji, ponieważ interfejs API jest inny. Zestaw Speech SDK może uprościć kod, a jednocześnie zapewnia dostęp do nowych funkcji.
+Jeśli używasz biblioteki klienta mowy Bing dla określonego języka programowania, migracja do [SDK mowy](speech-sdk.md) wymaga zmian w aplikacji, ponieważ interfejs API jest inny. Zestaw SDK mowy może uprościć kod, a jednocześnie daje dostęp do nowych funkcji. Pakiet Speech SDK jest dostępny w wielu różnych językach programowania. Interfejsy API na wszystkich platformach są podobne, co ułatwia tworzenie wielu platform.
 
-Obecnie zestaw SDK mowy obsługuje C# ([tutaj szczegółowe informacje](https://aka.ms/csspeech)), Java (urządzenia z systemem Android i niestandardowymi), cel C C++ (iOS), (systemy Windows i Linux) i JavaScript. Interfejsy API na wszystkich platformach są podobne i ułatwiają programowanie wielu platform.
+Usługa Mowy nie oferuje globalnego punktu końcowego. Określ, czy aplikacja działa wydajnie, gdy używa jednego regionalnego punktu końcowego dla całego ruchu. Jeśli nie, użyj geolokalizacji, aby określić najbardziej efektywny punkt końcowy. Potrzebujesz oddzielnej subskrypcji usługi mowy w każdym regionie, którego używasz.
 
-Usługa mowy nie oferuje globalnego punktu końcowego. Ustal, czy aplikacja działa wydajniej, gdy używa jednego regionu punktu końcowego dla całego ruchu. W przeciwnym razie użyj geolokalizacji, aby określić najbardziej wydajny punkt końcowy. Wymagana jest osobna subskrypcja usługi mowy w każdym używanym regionie.
+Jeśli aplikacja używa połączeń długotrwałych i nie można użyć dostępnego sdk, można użyć połączenia WebSockets. Zarządzaj 10-minutowym limitem czasu, łącząc się ponownie w odpowiednim czasie.
 
-Jeśli aplikacja korzysta z długotrwałych połączeń i nie może użyć dostępnego zestawu SDK, możesz użyć połączenia z usługą WebSockets. Aby zarządzać limitem 10-minutowego limitu czasu, należy ponownie połączyć się w odpowiednim czasie.
+Aby rozpocząć korzystanie z sdk mowy:
 
-Aby rozpocząć pracę z zestawem Speech SDK:
-
-1. Pobierz [zestaw Speech SDK](speech-sdk.md).
-1. Przechodzenie do [przewodników szybki start](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=dotnet) i [samouczków](how-to-recognize-intents-from-speech-csharp.md)dotyczących usługi Speech. Zapoznaj się również z [przykładami kodu](samples.md) , aby uzyskać dostęp do nowych interfejsów API.
-1. Zaktualizuj aplikację, aby korzystać z usługi Speech.
+1. Pobierz [sdk mowy](speech-sdk.md).
+1. Pracuj nad [przewodnikami szybki startowymi](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=dotnet) usługi mowy i [samouczkami](how-to-recognize-intents-from-speech-csharp.md). Również spojrzeć na [przykłady kodu,](samples.md) aby uzyskać doświadczenie z nowych interfejsów API.
+1. Zaktualizuj aplikację, aby korzystać z usługi Mowy.
 
 ## <a name="support"></a>Pomoc techniczna
 
-Rozpoznawanie mowy Bing klienci powinni skontaktować się z działem pomocy technicznej, otwierając [bilet pomocy technicznej](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest). Możesz również skontaktować się z nami, jeśli zapotrzebowanie na pomoc techniczną wymaga [planu pomocy](https://azure.microsoft.com/support/plans/)technicznej.
+Klienci Bing Speech powinni skontaktować się z działem obsługi klienta, otwierając [bilet pomocy technicznej.](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) Możesz również skontaktować się z nami, jeśli twoja pomoc techniczna wymaga [planu pomocy technicznej.](https://azure.microsoft.com/support/plans/)
 
-Aby uzyskać pomoc techniczną dotyczącą usługi mowy, zestawu SDK i interfejsu API, odwiedź [stronę pomocy technicznej](support.md)usługi mowy.
+Aby uzyskać pomoc techniczną usługi mowy, SDK i interfejsu API, odwiedź [stronę pomocy technicznej](support.md)usługi mowy .
 
 ## <a name="next-steps"></a>Następne kroki
 
-* [Wypróbuj bezpłatnie usługę mowy](get-started.md)
-* [Szybki Start: Rozpoznawanie mowy w aplikacji platformy UWP przy użyciu zestawu Speech SDK](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=uwp)
+* [Wypróbuj usługę mowy za darmo](get-started.md)
+* [Szybki start: rozpoznawanie mowy w aplikacji platformy uniwersalnej systemu uniwersalnego przy użyciu sdk mowy](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=uwp)
 
 ## <a name="see-also"></a>Zobacz też
-* [Informacje o wersji usługi mowy](releasenotes.md)
+* [Informacje o wydaniu usługi mowy](releasenotes.md)
 * [Co to jest usługa mowy](overview.md)
-* [Dokumentacja usługi mowy i zestawu Speech SDK](speech-sdk.md#get-the-sdk)
+* [Dokumentacja usługi mowy i sdk mowy](speech-sdk.md#get-the-sdk)

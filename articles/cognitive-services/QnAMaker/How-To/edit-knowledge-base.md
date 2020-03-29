@@ -1,109 +1,79 @@
 ---
-title: Edytowanie wiedzy — QnA Maker
-titleSuffix: Azure Cognitive Services
-description: Usługa QnA Maker umożliwia zarządzanie zawartość bazy wiedzy, zapewniając łatwy w użyciu środowisko edycji.
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.service: cognitive-services
-ms.subservice: qna-maker
+title: Edytowanie bazy wiedzy - QnA Maker
+description: QnA Maker umożliwia zarządzanie zawartością bazy wiedzy, zapewniając łatwe w użyciu środowisko edycji.
 ms.topic: conceptual
-ms.date: 11/21/2019
-ms.author: diberry
-ms.custom: seodec18
-ms.openlocfilehash: b5ee7f60eab0349378767473c9c80f035a65c9a5
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.date: 03/19/2020
+ms.openlocfilehash: 223ad3a607adc20bbe608598da9742d56788b2c6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79220733"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80131655"
 ---
-# <a name="edit-a-knowledge-base-in-qna-maker"></a>Edytowanie wiedzy w usługi QnA Maker
+# <a name="edit-qna-sets-in-your-knowledge-base"></a>Edytuj zestawy QnA w swojej bazie wiedzy
 
-Usługa QnA Maker umożliwia zarządzanie zawartość bazy wiedzy, zapewniając łatwy w użyciu środowisko edycji.
+QnA Maker umożliwia zarządzanie zawartością bazy wiedzy, zapewniając łatwe w użyciu środowisko edycji.
 
-<a name="add-datasource"></a>
+Zestawy QnA są dodawane ze źródła danych, takiego jak plik lub adres URL, lub dodawane jako źródło redakcyjne. Źródło redakcyjne wskazuje, że zestaw QnA został dodany do portalu QnA ręcznie. Wszystkie zestawy QnA są dostępne do edycji.
 
-## <a name="edit-your-knowledge-base-content"></a>Edytuj zawartość bazy wiedzy
+## <a name="add-an-editorial-qna-set"></a>Dodawanie redakcyjnego zestawu QnA
+1. Zaloguj się do [portalu QnA](https://www.qnamaker.ai/), a następnie wybierz bazę wiedzy, do aby dodać zestaw QnA.
+1. Na stronie **EDIT** bazy wiedzy wybierz pozycję **Dodaj zestaw QnA,** aby dodać nowy zestaw QnA.
 
-1.  Na górnym pasku nawigacyjnym wybierz pozycję **Moje bazy wiedzy** . 
+1. W nowym wierszu zestawu QnA dodaj wymagane pola **Pytania** i **Odpowiedzi.** Pozostałe pola są opcjonalne. Wszystkie pola można zmienić w dowolnym momencie.
 
-    Wszystkie utworzone lub udostępnione przez Ciebie usługi można zobaczyć w kolejności malejącej według daty **ostatniej modyfikacji** .
+1. Opcjonalnie dodaj **alternatywne zwroty**. Alternatywne sformułowanie jest dowolną formą pytania, które znacznie różni się od pierwotnego pytania, ale powinno dostarczyć tej samej odpowiedzi.
 
-    ![Moje bazy wiedzy](../media/qnamaker-how-to-edit-kb/my-kbs.png)
+    Po opublikowaniu bazy wiedzy i włączeniu aktywnego uczenia się program QnA Maker zbiera alternatywne opcje frazowania, które możesz zaakceptować. Te opcje są wybierane w celu zwiększenia dokładności przewidywania.
 
-1. Wybierz określoną wiedzy, aby wprowadzić zmiany.
- 
-1. Wybierz pozycję **Ustawienia**. W tym miejscu można edytować wymaganym polem nazwy usługi.
-  
-    |Cel|Akcja|
-    |--|--|
-    |Dodawanie adresu URL|Możesz dodać nowe adresy URL, aby dodać nową zawartość często zadawanych pytań do bazy wiedzy, klikając pozycję **Zarządzaj bazą wiedzy — > "+ Dodaj adres URL"** .|
-    |Usuń adres URL|Możesz usunąć istniejące adresy URL, wybierając ikonę usuwania, Kosza.|
-    |Odśwież zawartość|Jeśli chcesz, aby baza wiedzy przeszukał najnowszą zawartość istniejących adresów URL, zaznacz pole wyboru **Odśwież** . Spowoduje to zaktualizowanie bazy wiedzy przy użyciu najnowszej zawartości adresu URL. Nie jest to ustawienie regularnego harmonogramu aktualizacji.|
-    |Dodaj plik|Możesz dodać obsługiwany dokument pliku, który będzie częścią bazy wiedzy, wybierając pozycję **Zarządzaj bazą wiedzy**, a następnie wybierając pozycję **+ Dodaj plik**|
-    |Import|Możesz również zaimportować każdą istniejącą bazę wiedzy, wybierając przycisk **Importuj bazę wiedzy** . |
-    |Aktualizacja|Aktualizacja bazy wiedzy zależy od **warstwy cenowej zarządzania** używanej podczas tworzenia usługi QNA Maker skojarzonej z bazą wiedzy. Możesz także zaktualizować warstwa zarządzania z witryny Azure portal, jeśli jest to wymagane.
+1. Opcjonalnie dodaj **metadane**. Aby wyświetlić metadane, wybierz opcję **Opcje widoku** w menu kontekstowym. Metadane zapewnia filtry odpowiedzi, które zapewnia aplikacja kliencka, takich jak bot czatu.
 
-1. Po zakończeniu wprowadzania zmian w bazie wiedzy wybierz pozycję **Zapisz i Wyszkol** w prawym górnym rogu strony, aby zachować zmiany.    
+1. Opcjonalnie dodaj **monity uzupełniające**. Monity uzupełniające zapewniają dodatkowe ścieżki konwersacji do aplikacji klienckiej do przedstawienia użytkownikowi.
 
-    ![Zapisz i uczenie](../media/qnamaker-how-to-edit-kb/save-and-train.png)
+1. Wybierz **zapisz i trenuj,** aby zobaczyć prognozy, w tym nowy zestaw QnA.
 
-    >[!CAUTION]
-    >Jeśli opuścisz stronę przed wybraniem opcji **Zapisz i pouczenie**, wszystkie zmiany zostaną utracone.
+## <a name="edit-a-qna-set"></a>Edytowanie zestawu QnA
 
-## <a name="add-a-qna-pair"></a>Dodawanie pary pytań i odpowiedzi
+Każde pole w dowolnym zestawie QnA można edytować, niezależnie od oryginalnego źródła danych. Niektóre pola mogą nie być widoczne ze względu na bieżące ustawienia **opcji widoku,** które można znaleźć na pasku narzędzi kontekstu.
 
-Na stronie **Edycja** wybierz pozycję **Dodaj parę QNA** , aby dodać nowy wiersz do tabeli bazy wiedzy.
+## <a name="delete-a-qna-set"></a>Usuwanie zestawu QnA
 
-![Dodaj parę pytań i odpowiedzi](../media/qnamaker-how-to-edit-kb/add-qnapair.png)
+Aby usunąć qnA, kliknij ikonę **usuwania** po prawej stronie wiersza QnA. Jest to stała operacja. Nie można go cofnąć. Rozważ wyeksportowanie bazy wiedzy ze strony **Publikowania** przed usunięciem zestawów.
 
-## <a name="delete-a-qna-pair"></a>Usuń parę pytań i odpowiedzi
+![Usuwanie zestawu QnA](../media/qnamaker-how-to-edit-kb/delete-qnapair.png)
 
-Aby usunąć QnA, kliknij ikonę **Usuń** znajdującą się po prawej stronie wiersza QNA. To jest operacją nieodwracalną. Nie można cofnąć. Przed usunięciem par Rozważ wyeksportowanie bazy wiedzy ze strony **publikowania** . 
+## <a name="find-the-qna-set-id"></a>Znajdowanie identyfikatora zestawu QnA
 
-![Usuń parę pytań i odpowiedzi](../media/qnamaker-how-to-edit-kb/delete-qnapair.png)
+Jeśli chcesz znaleźć identyfikator zestawu QnA, możesz go znaleźć w dwóch miejscach:
 
-## <a name="add-alternate-questions"></a>Dodaj alternatywne pytania
+* Umieść wskaźnik myszy na ikonie usuwania w wierszu zestawu QnA, który Cię interesuje. Tekst aktywowania pola zawiera identyfikator zestawu QnA.
+* Eksportuj bazę wiedzy. Każdy zestaw QnA w bazie wiedzy zawiera identyfikator zestawu QnA.
 
-Dodaj alternatywne pytania do istniejącej pary pytań i odpowiedzi, aby zwiększyć prawdopodobieństwo aby dopasowanie zakończyło się zapytania użytkownika.
+## <a name="add-alternate-questions"></a>Dodawanie pytań alternatywnych
 
-![Dodaj alternatywne pytania](../media/qnamaker-how-to-edit-kb/add-alternate-question.png)
+Dodaj alternatywne pytania do istniejącego zestawu QnA, aby zwiększyć prawdopodobieństwo dopasowania do kwerendy użytkownika.
+
+![Dodawanie pytań alternatywnych](../media/qnamaker-how-to-edit-kb/add-alternate-question.png)
+
+## <a name="linking-qna-sets"></a>Łączenie zestawów QnA
+
+Łączenie zestawów QnA jest dostarczane z [monitami uzupełniającymi](multiturn-conversation.md). Jest to logiczne połączenie między zestawami QnA, zarządzanymi na poziomie bazy wiedzy. Monity uzupełniające można edytować w portalu programu QnA Maker.
+
+Nie można połączyć zestawów QnA w metadanych odpowiedzi.
 
 ## <a name="add-metadata"></a>Dodawanie metadanych
 
-Dodaj pary metadanych, zaznaczając najpierw **Opcje widoku**, a następnie wybierając **Pokaż metadane**. Spowoduje to wyświetlenie kolumny metadanych. Następnie wybierz znak **+** , aby dodać parę metadanych. Ta para składa się z jednego klucza i jednej wartości.
+Dodaj zestawy metadanych, najpierw wybierając **opcje widoku,** a następnie wybierając pozycję **Pokaż metadane**. Spowoduje to wyświetlone kolumny metadanych. Następnie wybierz **+** znak, aby dodać zestaw metadanych. Ten zestaw składa się z jednego klucza i jednej wartości.
+
+## <a name="save-changes-to-the-qna-sets"></a>Zapisywanie zmian w zestawach QnA
+
+Okresowo **wybieraj pozycję Zapisz i trenuj** po dokonaniu zmian, aby uniknąć utraty zmian.
 
 ![Dodawanie metadanych](../media/qnamaker-how-to-edit-kb/add-metadata.png)
-
-> [!TIP]
-> Upewnij się okresowo zapisywać i uczenie bazy wiedzy knowledge base po wprowadzeniu zmian w celu uniknięcia utraty zmian.
-
-## <a name="manage-large-knowledge-bases"></a>Zarządzanie bazami wiedzy duże
-
-* **Grupy źródeł danych**: bazami są pogrupowane według źródła danych, z którego zostały wyodrębnione. Można rozwinąć lub zwinąć źródła danych.
-
-    ![Użyj paska źródła danych QnA Maker, aby zwinąć i rozwinąć pytania i odpowiedzi ze źródła danych](../media/qnamaker-how-to-edit-kb/data-source-grouping.png)
-
-* **Baza wiedzy wyszukiwania**: bazę wiedzy można wyszukać, wpisując w polu tekstowym w górnej części tabeli bazy wiedzy. Naciśnij klawisz enter, wyszukiwanie zawartości zapytania, odpowiedzi lub metadanych. Kliknij ikonę X, aby usunąć filtr wyszukiwania.
-
-    ![Użyj pola wyszukiwania QnA Maker powyżej pytań i odpowiedzi, aby zmniejszyć widok tylko do elementów zgodnych z filtrem](../media/qnamaker-how-to-edit-kb/search-paginate-group.png)
-
-* **Stronicowanie**: szybkie przechodzenie między źródłami danych w celu zarządzania dużymi bazami wiedzy
-
-    ![Użyj QnA Maker funkcji stronicowania nad pytaniami i odpowiedziami, aby poruszać się po stronach pytań i odpowiedzi](../media/qnamaker-how-to-edit-kb/pagination.png)
-
-## <a name="delete-knowledge-bases"></a>Usuń z bazy wiedzy
-
-Usuwanie bazy wiedzy (KB) jest operacją nieodwracalną. Nie można cofnąć. Przed usunięciem bazy wiedzy należy wyeksportować bazę wiedzy ze strony **Ustawienia** w portalu QNA Maker. 
-
-Jeśli udostępnisz swoją KB [współpracownikom](collaborate-knowledge-base.md) , a następnie usuniesz ją, wszyscy straci dostęp do bazy wiedzy. 
-
-## <a name="delete-azure-resources"></a>Usuwanie zasobów platformy Azure 
-
-Usunięcie wszystkich zasobów platformy Azure używane na potrzeby usługi QnA Maker baz danych, baz wiedzy przestaną działać. Przed usunięciem jakichkolwiek zasobów należy koniecznie wyeksportować bazy wiedzy na stronie **Ustawienia** . 
 
 ## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Współpracuj z bazą wiedzy](./collaborate-knowledge-base.md)
+> [Współpraca nad bazą wiedzy](./collaborate-knowledge-base.md)
+
+* [Zarządzanie zasobami platformy Azure używanymi przez program QnA Maker](set-up-qnamaker-service-azure.md)
