@@ -1,7 +1,7 @@
 ---
-title: Przykład uruchomienia kontenera dla polecenia Docker Run
+title: Uruchom przykład kontenera polecenia uruchamiania platformy docker
 titleSuffix: Azure Cognitive Services
-description: Polecenie Docker Run dla kontenera analiza tonacji
+description: Polecenie Uruchom docker dla kontenera Analiza tonacji
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
@@ -10,13 +10,13 @@ ms.topic: include
 ms.date: 09/12/2019
 ms.author: dapine
 ms.openlocfilehash: f0e587fc39fa2cc6f5275ae16834372a206b37d2
-ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/13/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "70966709"
 ---
-Aby uruchomić kontener *Analiza tonacji* , wykonaj następujące `docker run` polecenie.
+Aby uruchomić kontener *analizy tonacji,* wykonaj następujące `docker run` polecenie.
 
 ```bash
 docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 \
@@ -28,7 +28,7 @@ ApiKey={API_KEY}
 
 To polecenie:
 
-* Uruchamia *Analiza tonacji* kontener z obrazu kontenera
-* Przypisuje jedne rdzeń procesora CPU i 4 gigabajty (GB) pamięci
-* Uwidacznia TCP port 5000 i przydziela pseudo-TTY kontenera
-* Automatycznie usuwa kontener po zakończeniu. Obraz kontenera jest nadal dostępny na komputerze-hoście.
+* Uruchamia kontener *analizy tonacji* z obrazu kontenera
+* Przydziela jeden rdzeń procesora i 4 gigabajty (GB) pamięci
+* Udostępnia port TCP 5000 i przydziela pseudo-TTY dla kontenera
+* Automatycznie usuwa kontener po jego zamknięciu. Obraz kontenera jest nadal dostępny na komputerze-hoście.

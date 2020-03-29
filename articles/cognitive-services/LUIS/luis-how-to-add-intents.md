@@ -1,7 +1,7 @@
 ---
-title: Dodawanie intencji — LUIS
+title: Dodaj intencje — USŁUGA LUIS
 titleSuffix: Azure Cognitive Services
-description: Dodaj intencje do aplikacji LUIS, aby zidentyfikować grupy pytań lub poleceń, które mają takie same intencje.
+description: Dodaj intencje do aplikacji usługi LUIS, aby zidentyfikować grupy pytań lub poleceń, które mają te same intencje.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -12,76 +12,76 @@ ms.date: 11/08/2019
 ms.author: diberry
 ms.service: cognitive-services
 ms.openlocfilehash: 66a3350dee60772ce706af8995179dcd8c485b64
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/10/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "73904322"
 ---
-# <a name="add-intents-to-determine-user-intention-of-utterances"></a>Dodawanie intencji w celu określenia zamiaru użytkownika wyrażenia długości
+# <a name="add-intents-to-determine-user-intention-of-utterances"></a>Dodaj intencje w celu określenia intencji użytkownika wypowiedzi
 
-Dodaj [intencje](luis-concept-intent.md) do aplikacji Luis, aby zidentyfikować grupy pytań lub poleceń, które mają ten sam zamiar. 
+Dodaj [intencje](luis-concept-intent.md) do aplikacji usługi LUIS, aby zidentyfikować grupy pytań lub poleceń, które mają ten sam zamiar. 
 
-Intencje są zarządzane z sekcji **kompilacja** górnego paska nawigacyjnego, a następnie od **intencji**panelu po lewej stronie. 
+Intencje są zarządzane z górnej sekcji **Kompilacja** paska nawigacyjnego, a następnie z **intencji**lewego panelu . 
 
 [!INCLUDE [Uses preview portal](includes/uses-portal-preview.md)]
 
 ## <a name="add-intent"></a>Dodawanie intencji
 
-1. W [portalu Luis w wersji zapoznawczej](https://preview.luis.ai)wybierz pozycję **kompilacja** , aby wyświetlić jej intencje. 
-1. Na stronie **intencje** wybierz pozycję **+ Utwórz**.
-1. W oknie dialogowym **Tworzenie nowego zamiaru** wprowadź nazwę celu, na przykład `ModifyOrder`, i wybierz pozycję **gotowe**.
+1. W [portalu podglądu usługi LUIS](https://preview.luis.ai)wybierz pozycję **Buduj,** aby wyświetlić intencje. 
+1. Na stronie **Intencje** wybierz pozycję **+ Utwórz**.
+1. W oknie dialogowym **Tworzenie nowego zamiaru** wprowadź `ModifyOrder`na przykład nazwę intencji i wybierz pozycję **Gotowe**.
 
     > [!div class="mx-imgBorder"]
-    > ![Dodaj zamierzenia](./media/luis-how-to-add-intents/Addintent-dialogbox.png)
+    > ![Dodaj intencję](./media/luis-how-to-add-intents/Addintent-dialogbox.png)
 
-    Wymaga przykład wyrażenia długości.
+    Intencja potrzebuje wypowiedzi przykład.
 
-## <a name="add-an-example-utterance"></a>Dodawanie przykładu wypowiedź
+## <a name="add-an-example-utterance"></a>Dodawanie przykładowego wypowiedź
 
-Przykład wyrażenia długości to tekstowe przykłady pytań lub poleceń użytkownika. Aby nauczyć się Language Understanding (LUIS) w celu przewidywania tego celu, należy dodać przykład wyrażenia długości do celu. LUIS muszą mieć zakres od 15 do 30 przykład wyrażenia długości, aby rozpocząć zrozumienie zamiaru. Nie dodawaj przykładu wyrażenia długości zbiorczo. Każdy wypowiedź powinien być starannie wybierany w taki sposób, w jaki różni się od przykładów już w zamierzeniu. 
+Przykładowe wypowiedzi są przykładami tekstowymi pytań lub poleceń użytkownika. Aby nauczyć zrozumienie języka (LUIS), kiedy przewidzieć tę intencję, należy dodać wypowiedzi przykład do intencji. Usługa LUIS potrzebuje w zakresie od 15 do 30 wypowiedzi przykład, aby rozpocząć zrozumienie intencji. Nie należy dodawać wypowiedzi przykład zbiorczo. Każda wypowiedź powinna być starannie dobrana dla tego, jak jest inny niż przykłady już w intencji. 
 
-1. Na stronie Szczegóły zamiaru wprowadź odpowiednie wypowiedź od użytkowników, takie jak `Deliver a large cheese pizza` w polu tekstowym poniżej nazwy celu, a następnie naciśnij klawisz ENTER.
+1. Na stronie szczegółów intencji wprowadź odpowiedni wypowiedź oczekiwany `Deliver a large cheese pizza` od użytkowników, na przykład w polu tekstowym poniżej nazwy intencji, a następnie naciśnij klawisz Enter.
  
     > [!div class="mx-imgBorder"]
-    > ![zrzut ekranu strony Szczegóły dotyczącej intencji z wyróżnioną pozycją wypowiedź](./media/luis-how-to-add-intents/add-new-utterance-to-intent.png) 
+    > ![Zrzut ekranu przedstawiający stronę szczegółów intencji z wyróżnioną wypowiedź](./media/luis-how-to-add-intents/add-new-utterance-to-intent.png) 
 
-    LUIS konwertuje wszystkie wyrażenia długości na małe litery i dodaje spacje wokół [tokenów](luis-language-support.md#tokenization) , takich jak łączniki.
+    Usługa LUIS konwertuje wszystkie wypowiedzi na małe litery i dodaje spacje wokół [tokenów,](luis-language-support.md#tokenization) takich jak łączniki.
 
 <a name="#intent-prediction-discrepancy-errors"></a>
 
 ## <a name="intent-prediction-errors"></a>Błędy przewidywania intencji 
 
-Przykład wypowiedź w zamiarach może mieć błąd przewidywania intencji między zamiarem, a przykładem wypowiedź jest obecnie w i intencją określoną podczas szkolenia. 
+Wypowiedź przykład w intencji może mieć błąd przewidywania intencji między intencji wypowiedź przykład jest obecnie w i intencji określone podczas szkolenia. 
 
-Aby znaleźć błędy przewidywania wypowiedź i rozwiązać te problemy, użyj opcji **filtru** nieprawidłowych i niejasnych w połączeniu z opcją **Widok** **widoku szczegółowego**. 
+Aby znaleźć błędy przewidywania wypowiedzi i je naprawić, użyj opcji **Filtruj** niepoprawne i niejasne w połączeniu z opcją **Widok** **widoku szczegółowego**. 
 
-![Aby znaleźć błędy przewidywania wypowiedź i rozwiązać te problemy, użyj opcji filtrowania.](./media/luis-how-to-add-intents/find-intent-prediction-errors.png)
+![Aby znaleźć błędy przewidywania wypowiedź i je naprawić, należy użyć opcji Filtr.](./media/luis-how-to-add-intents/find-intent-prediction-errors.png)
 
-Gdy filtry i widok są stosowane i występuje przykład wyrażenia długości z błędami, przykładowa lista wypowiedź zawiera wyrażenia długości i problemy.
+Gdy filtry i widok są stosowane, a istnieją wypowiedzi przykład z błędami, lista wypowiedź przykład pokazuje wypowiedzi i problemy.
 
 > [!div class="mx-imgBorder"]
-> ![! [Kiedy filtry i widok są stosowane i występuje przykład wyrażenia długości z błędami, przykładowa lista wypowiedź zawiera wyrażenia długości i problemy.] (/Media/Luis-How-to-Add-Intents/Find-Errors-in-utterances.png)](./media/luis-how-to-add-intents/find-errors-in-utterances.png#lightbox)
+> ![! [Gdy filtry i widok są stosowane, a istnieją przykładowe wypowiedzi z błędami, na przykładowej liście wypowiedź pokazuje wypowiedzi i problemy.] (./media/luis-how-to-add-intents/find-errors-in-utterances.png)](./media/luis-how-to-add-intents/find-errors-in-utterances.png#lightbox)
 
-Każdy wiersz przedstawia ocenę bieżącego szkolenia dla przykładu wypowiedź, najbliższej oceny Rival, która jest różnicą w tych dwóch wskaźnikach. 
+Każdy wiersz pokazuje wynik przewidywania bieżącego szkolenia dla wypowiedź przykład, wynik najbliższego rywala, który jest różnica w tych dwóch wyników. 
 
-### <a name="fixing-intents"></a>Ustalanie intencji
+### <a name="fixing-intents"></a>Naprawianie intencji
 
-Aby dowiedzieć się, jak naprawić błędy prognozowania intencji, użyj [pulpitu nawigacyjnego podsumowanie](luis-how-to-use-dashboard.md). Pulpit nawigacyjny podsumowania zawiera analizę dla ostatniego szkolenia wersji aktywnej i oferuje najważniejsze sugestie dotyczące naprawienia modelu.  
+Aby dowiedzieć się, jak naprawić błędy przewidywania intencji, użyj [pulpitu nawigacyjnego podsumowania](luis-how-to-use-dashboard.md). Pulpit nawigacyjny podsumowania zawiera analizę ostatniego szkolenia w aktywnej wersji i oferuje najlepsze sugestie dotyczące naprawy modelu.  
 
 ## <a name="using-the-contextual-toolbar"></a>Korzystanie z kontekstowego paska narzędzi
 
-Pasek narzędzi kontekstowych zawiera inne akcje:
+Pasek narzędzi kontekstu zawiera inne akcje:
 
-* Edytuj lub Usuń przykład wypowiedź
-* Ponowne przypisanie przykładu wypowiedź do innego celu
-* Filtry i widoki: Pokaż tylko wyrażenia długości zawierające odfiltrowane jednostki lub Wyświetl opcjonalne szczegóły
-* Wyszukaj na przykład wyrażenia długości
+* Edytowanie lub usuwanie przykładowego wypowiedź
+* Ponowne przypisywanie przykładowej wypowiedzi do innej intencji
+* Filtry i widoki: pokaż tylko wypowiedzi zawierające filtrowane jednostki lub wyświetl szczegóły opcjonalne
+* Wyszukiwanie przykładowych wypowiedzi
 
-## <a name="train-your-app-after-changing-model-with-intents"></a>Uczenie aplikacji po zmianie modelu z intencjami
+## <a name="train-your-app-after-changing-model-with-intents"></a>Trenuj aplikację po zmianie modelu z intencjami
 
-Po dodaniu, przeprowadzeniu edycji lub usunięciu zamiarów możesz [nauczyć](luis-how-to-train.md) i [opublikować](luis-how-to-publish-app.md) aplikację, aby zmiany zostały zastosowane do zapytań punktów końcowych. Nie wolno uczenia się po każdej pojedynczej zmianie. Uczenie po grupie zmian. 
+Po dodaniu, edycji lub usuwaniu [intencji, trenuj](luis-how-to-train.md) i [publikuj](luis-how-to-publish-app.md) aplikację, aby zmiany były stosowane do zapytań o punkt końcowy. Nie trenuj po każdej zmianie. Trenuj po grupie zmian. 
 
 ## <a name="next-steps"></a>Następne kroki
 
-Dowiedz się więcej na temat dodawania [przykładowej wyrażenia długości](luis-how-to-add-example-utterances.md) z obiektami. 
+Dowiedz się więcej o [dodawaniu przykładowych wypowiedzi](luis-how-to-add-example-utterances.md) z jednostkami. 

@@ -1,5 +1,5 @@
 ---
-title: Kontenery Cognitive Services często zadawane pytania
+title: Kontenery usług Cognitive Services często zadawane pytania (CZĘSTO ZADAWANE PYTANIA)
 titleSuffix: Azure Cognitive Services
 description: Często zadawane pytania i odpowiedzi.
 services: cognitive-services
@@ -10,157 +10,157 @@ ms.topic: conceptual
 ms.date: 11/11/2019
 ms.author: dapine
 ms.openlocfilehash: 33b99d50db4384c7de818a7dd0bb8492c86bef97
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "73961890"
 ---
-# <a name="azure-cognitive-services-containers-frequently-asked-questions-faq"></a>Kontenery Cognitive Services platformy Azure — często zadawane pytania
+# <a name="azure-cognitive-services-containers-frequently-asked-questions-faq"></a>Kontenery usługi Azure Cognitive Services często zadawane pytania (często zadawane pytania)
 
 ## <a name="general-questions"></a>Pytania ogólne
 
-**P: co jest dostępne?**
+**P: Co jest dostępne?**
 
-Odp **.:** [Obsługa kontenerów na platformie Azure Cognitive Services](../cognitive-services-container-support.md) pozwala deweloperom korzystać z tych samych inteligentnych interfejsów API, które są dostępne na platformie Azure, ale z [korzyściami](../cognitive-services-container-support.md#features-and-benefits) z kontenerach. Obsługa kontenerów jest obecnie dostępna w wersji zapoznawczej dla podzestawu Cognitive Services platformy Azure, w tym części:
+**Odp.:** [Obsługa kontenerów w usłudze Azure Cognitive Services](../cognitive-services-container-support.md) umożliwia deweloperom korzystanie z tych samych inteligentnych interfejsów API, które są dostępne na platformie Azure, ale z [korzyściami](../cognitive-services-container-support.md#features-and-benefits) z konteneryzacji. Obsługa kontenerów jest obecnie dostępna w wersji zapoznawczej dla podzbioru usług Azure Cognitive Services, w tym części:
 
 > [!div class="checklist"]
-> * [Wykrywacz anomalii][ad-containers]
-> * [Przetwarzanie obrazów][cv-containers]
-> * [Twarzy][fa-containers]
-> * [Aparat rozpoznawania formularzy][fr-containers]
-> * [Language Understanding (LUIS)][lu-containers]
+> * [Narzędzie do wykrywania anomalii][ad-containers]
+> * [Wizja komputerowa][cv-containers]
+> * [Rozpoznawanie twarzy][fa-containers]
+> * [Rozpoznawanie formularzy][fr-containers]
+> * [Rozumienie języka (LUIS)][lu-containers]
 > * [Interfejs API usługi rozpoznawania mowy][sp-containers]
 > * [Analiza tekstu][ta-containers]
 
-**P: czy istnieje różnica między chmurą Cognitive Services i kontenerami?**
+**Pyt.: Czy istnieje jakaś różnica między chmurą usług Cognitive Services a kontenerami?**
 
-Odp **.:** Kontenery Cognitive Services są alternatywą dla chmury Cognitive Services. Kontenery oferują te same możliwości co odpowiednie usługi w chmurze. Klienci mogą wdrażać kontenery lokalnie lub na platformie Azure. Podstawowa technologia AI, warstwy cenowe, klucze interfejsu API i podpis interfejsu API są takie same, jak w przypadku kontenera i odpowiednich usług w chmurze. Poniżej przedstawiono [funkcje i korzyści wynikające](../cognitive-services-container-support.md#features-and-benefits) z wyboru kontenerów w ramach usługi w chmurze.
+**Odp.:** Kontenery usług Cognitive Services są alternatywą dla chmury usług Cognitive Services. Kontenery oferują takie same możliwości jak odpowiednie usługi w chmurze. Klienci mogą wdrażać kontenery lokalnie lub na platformie Azure. Podstawowa technologia AI, warstwy cenowe, klucze interfejsu API i podpis interfejsu API są takie same między kontenerem a odpowiednimi usługami w chmurze. Oto [funkcje i korzyści](../cognitive-services-container-support.md#features-and-benefits) związane z wybieraniem kontenerów w stosunku do ich odpowiednika usługi w chmurze.
 
-**P: czy kontenery będą dostępne dla wszystkich Cognitive Services i jakie są następne zestawy kontenerów, których oczekujemy?**
+**Pyt.: Czy kontenery będą dostępne dla wszystkich usług Cognitive Services i jakiego nowego zestawu kontenerów powinniśmy się spodziewać?**
 
-Odp **.:** Chcemy, aby więcej Cognitive Services dostępnych jako oferty kontenerów. Skontaktuj się z lokalnym menedżerem konto Microsoft, aby uzyskać aktualizacje dotyczące nowych wydań kontenerów i innych anonsów Cognitive Services.
+**Odp.:** Chcielibyśmy udostępnić więcej usług Cognitive Services jako oferty kontenerów. Skontaktuj się z lokalnym menedżerem konta Microsoft, aby uzyskać aktualizacje dotyczące nowych wersji kontenerów i innych ogłoszeń usług Cognitive Services.
 
-**P: jaka będzie umowa dotycząca poziomu usług (SLA) dla Cognitive Services kontenerów?**
+**Pyt.: Co będzie umowa na poziomie usług (SLA) dla kontenerów usług Cognitive Services?**
 
-Odp **.:** Kontenery Cognitive Services nie mają umowy SLA.
+**Odp.:** Kontenery usług Cognitive Services nie mają umowy SLA.
 
-Cognitive Services konfiguracjami kontenerów zasobów są kontrolowane przez klientów, dlatego firma Microsoft nie oferuje umowy SLA na potrzeby ogólnej dostępności. Klienci mogą bezpłatnie wdrażać kontenery w środowisku lokalnym, a tym samym definiować środowiska hosta.
+Konfiguracje kontenerów usług Cognitive Services są kontrolowane przez klientów, więc firma Microsoft nie będzie oferować umowy SLA dla ogólnej dostępności (GA). Klienci mogą swobodnie wdrażać kontenery lokalnie, w związku z czym definiują środowiska hosta.
 
 > [!IMPORTANT]
-> Aby dowiedzieć się więcej na temat Cognitive Services umów dotyczących poziomu usług, [odwiedź stronę umów SLA](https://azure.microsoft.com/support/legal/sla/cognitive-services/v1_1/).
+> Aby dowiedzieć się więcej o umowach dotyczących poziomu usług usług Cognitive Services, [odwiedź naszą stronę umowy SLA.](https://azure.microsoft.com/support/legal/sla/cognitive-services/v1_1/)
 
-**P: czy te kontenery są dostępne w ramach suwerennych chmur?**
+**Pyt.: Czy te kontenery są dostępne w suwerennych chmurach?**
 
-Odp **.:** Nie wszyscy znają termin "chmura suwerenna", więc zacznijmy od definicji:
+**Odp.:** Nie każdy zna termin "suwerenna chmura", więc zacznijmy od definicji:
 
-> "Suwerenna chmura" składa się z [Azure Government](../../azure-government/documentation-government-welcome.md), [platformy Azure (Niemcy](../../germany/germany-welcome.md)) i [platformy Azure z Chin](https://docs.microsoft.com/azure/china/overview-operations) .
+> "Suwerenna chmura" składa się z [chmur Azure Government](../../azure-government/documentation-government-welcome.md), Azure [Germany](../../germany/germany-welcome.md)i Azure [China 21Vianet.](https://docs.microsoft.com/azure/china/overview-operations)
 
-Niestety kontenery Cognitive Services *nie* są natywnie obsługiwane w przypadku suwerennych chmur. Kontenery można uruchamiać w tych chmurach, ale zostaną one pobrane z chmury publicznej i muszą wysyłać dane użycia do publicznego punktu końcowego.
+Niestety kontenery usług Cognitive Services *nie* są natywnie obsługiwane w suwerennych chmurach. Kontenery mogą być uruchamiane w tych chmurach, ale zostaną one pobrane z chmury publicznej i muszą wysyłać dane użycia do publicznego punktu końcowego.
 
-### <a name="versioning"></a>Obsługa wersji
+### <a name="versioning"></a>Przechowywanie wersji
 
-**P: w jaki sposób kontenery są aktualizowane do najnowszej wersji?**
+**Pyt.: Jak są kontenery aktualizowane do najnowszej wersji?**
 
-Odp **.:** Klienci mogą określić, kiedy mają być aktualizowane wdrożone kontenery. Kontenery zostaną oznaczone przy użyciu standardowych [tagów platformy Docker](https://docs.docker.com/engine/reference/commandline/tag/) , takich jak `latest`, aby wskazać najnowszą wersję. Zachęcamy klientów do ściągania najnowszej wersji kontenerów po ich wydaniu, wyewidencjonowywania [Azure Container Registry elementów webhook](../../container-registry/container-registry-webhook.md) w celu uzyskania szczegółowych informacji o tym, jak uzyskać powiadamianie o zaktualizowaniu obrazu.
+**Odp.:** Klienci mogą wybrać, kiedy zaktualizować kontenery, które wdrożyli. Kontenery będą oznaczone standardowymi [tagami platformy Docker,](https://docs.docker.com/engine/reference/commandline/tag/) takimi jak `latest` wskazanie najnowszej wersji. Zachęcamy klientów do ściągania najnowszej wersji kontenerów po ich wydaniu, wyewidencjonowywać [elementy webhook usługi Azure Container Registry,](../../container-registry/container-registry-webhook.md) aby uzyskać szczegółowe informacje na temat powiadamiania o aktualizacji obrazu.
  
 **P: Jakie wersje będą obsługiwane?**
 
-Odp **.:** Bieżąca i Ostatnia wersja główna kontenera będą obsługiwane. Zachęcamy jednak, aby klienci mogli zachować aktualność w celu uzyskania najnowszej technologii.
+**Odp.:** Obsługiwana będzie bieżąca i ostatnia wersja główna kontenera. Zachęcamy jednak klientów do utrzymania aktualności w celu uzyskania najnowszych technologii.
  
-**P: w jaki sposób są aktualizowane aktualizacje?**
+**P: Jak są wersjonetowane aktualizacje?**
 
-Odp **.:** Główne zmiany wersji wskazują na nieprzerwaną zmianę sygnatury interfejsu API. Przewidujemy, że zwykle będzie to zbieżne ze zmianami wersji głównych do odpowiedniej oferty w chmurze usługi poznawczej. Zmiany wersji pomocniczej wskazują poprawki błędów, aktualizacje modelu lub nowe funkcje, które nie wprowadzają istotnej zmiany w sygnaturze interfejsu API.
+**Odp.:** Główne zmiany wersji wskazują, że istnieje zmiana podziału do podpisu interfejsu API. Przewidujemy, że będzie to zazwyczaj pokrywać się z głównymi zmianami wersji do odpowiedniej oferty chmury usługi Cognitive Service. Drobne zmiany wersji wskazują poprawki błędów, aktualizacje modelu lub nowe funkcje, które nie wprowadzać przełomowej zmiany w podpisie interfejsu API.
 
 ## <a name="technical-questions"></a>Pytania techniczne
 
-**P: jak uruchamiać kontenery Cognitive Services na urządzeniach IoT?**
+**Pyt: Jak należy uruchomić kontenery usług Cognitive Services na urządzeniach IoT?**
 
-Bez względu na to, czy nie masz niezawodnego połączenia z Internetem, czy chcesz zaoszczędzić koszt przepustowości. Lub jeśli mają wymagania dotyczące małych opóźnień lub zawierają dane poufne, które należy analizować w witrynie, [Azure IoT Edge z kontenerami Cognitive Services](https://azure.microsoft.com/blog/running-cognitive-services-on-iot-edge/) zapewnia spójność z chmurą.
+Niezależnie od tego, czy nie masz niezawodnego połączenia z Internetem, czy chcesz zaoszczędzić na kosztach przepustowości. Lub jeśli mają wymagania o małym opóźnieniu lub mają do czynienia z poufnych danych, które muszą być analizowane na miejscu, [usługa Azure IoT Edge z kontenerów usług Cognitive Services](https://azure.microsoft.com/blog/running-cognitive-services-on-iot-edge/) zapewnia spójność z chmury.
 
-**P: Jak mogę zapewniać opinie o produkcie i zalecenia dotyczące funkcji?**
+**P: Jak przekazać opinie o produktach i rekomendacje funkcji?**
 
-Odp **.:** Zachęcamy klientów do [zagłosowania](https://cognitive.uservoice.com/) publicznie i popełnienia innych osób, które zrobiły to samo, gdzie potencjalne problemy nakładają się na siebie. Narzędzia głosowego użytkownika można używać zarówno w celu uzyskania opinii o produkcie, jak i zaleceń dotyczących funkcji.
+**Odp.:** Zachęcamy klientów do publicznego [wyrażania swoich obaw,](https://cognitive.uservoice.com/) a inni głosują w górę, którzy zrobili to samo tam, gdzie pojawiają się potencjalne problemy. Narzędzie głosowe użytkownika może być używane zarówno do opinii o produkcie, jak i rekomendacji funkcji.
 
-**P: kogo mogę się skontaktować w celu uzyskania pomocy technicznej?**
+**P: Z kim mam się skontaktować w celu uzyskania pomocy technicznej?**
 
-Odp **.:** Kanały obsługi klienta są takie same, jak oferta Cognitive Services w chmurze. Wszystkie kontenery Cognitive Services obejmują funkcje rejestrowania, które ułatwią nam i klientom pomoc techniczną. Aby uzyskać dodatkową pomoc techniczną, zobacz poniższe opcje.
+**Odp.:** Kanały obsługi klienta są takie same jak oferty chmury usług Cognitive Services. Wszystkie kontenery usług Cognitive Services obejmują funkcje rejestrowania, które pomogą nam i klientom pomocy technicznej społeczności. Aby uzyskać dodatkową pomoc techniczną, zobacz następujące opcje.
 
-### <a name="customer-support-plan"></a>Plan pomocy technicznej klienta
+### <a name="customer-support-plan"></a>Plan obsługi klienta
 
-Klienci powinni zapoznać się z [planem pomocy technicznej platformy Azure](https://azure.microsoft.com/support/plans/) , aby dowiedzieć się, komu skontaktować się z pomocą techniczną.
+Klienci powinni zapoznać się z [planem pomocy technicznej platformy Azure,](https://azure.microsoft.com/support/plans/) aby zobaczyć, z kim należy się skontaktować w celu uzyskania pomocy technicznej.
 
-### <a name="azure-knowledge-center"></a>Centrum wiedzy Azure
+### <a name="azure-knowledge-center"></a>Centrum wiedzy platformy Azure
 
-Klient jest bezpłatny, aby poznać [usługę Azure Knowledge Center](https://azure.microsoft.com/resources/knowledge-center/) w celu uzyskania odpowiedzi na pytania i pomoc techniczną.
+Klienci mogą bezpłatnie zapoznać się z [centrum wiedzy platformy Azure,](https://azure.microsoft.com/resources/knowledge-center/) aby odpowiedzieć na pytania i problemy z pomocą techniczną.
 
 ### <a name="stack-overflow"></a>Stack Overflow
 
-> [Stack Overflow](https://en.wikipedia.org/wiki/Stack_Overflow) jest witryną pytań i odpowiedzi dla programistów profesjonalnych i entuzjastą.
+> [Stack Overflow](https://en.wikipedia.org/wiki/Stack_Overflow) to strona z pytaniami i odpowiedziami dla profesjonalnych i entuzjastów programistów.
 
-Zapoznaj się z następującymi tagami, aby poznać potencjalne pytania i odpowiedzi, które są dostosowane do Twoich potrzeb.
+Zapoznaj się z poniższymi tagami, aby uzyskać potencjalne pytania i odpowiedzi, które są zgodne z Twoimi potrzebami.
 
 * [Azure Cognitive Services](https://stackoverflow.com/questions/tagged/azure-cognitive-services)
-* [Poznawcze firmy Microsoft](https://stackoverflow.com/questions/tagged/microsoft-cognitive)
+* [Microsoft Cognitive](https://stackoverflow.com/questions/tagged/microsoft-cognitive)
 
-**P: jak działa rozliczenia?**
+**P: Jak działa rozliczenie?**
 
-Odp **.:** Klienci są obciążani opłatami na podstawie zużycia, podobnie jak w przypadku chmury Cognitive Services. Kontenery muszą być skonfigurowane do wysyłania danych zliczania do platformy Azure, a transakcje będą rozliczane odpowiednio. Zasoby używane w ramach usług hostowanych i lokalnych zostaną dodane do pojedynczego przydziału przy użyciu cen warstwowych, licząc względem obu użycia. Aby uzyskać więcej informacji, zobacz stronę cennika odpowiedniej oferty.
+**Odp.:** Klienci są obciążani na podstawie zużycia, podobnie jak w chmurze usług Cognitive Services. Kontenery muszą być skonfigurowane do wysyłania danych pomiarowych na platformę Azure, a transakcje będą odpowiednio rozliczane. Zasoby używane w usługach hostowanych i lokalnych dodadzą do pojedynczego przydziału z warstwowymi cenami, licząc względem obu użycia. Aby uzyskać więcej informacji, zapoznaj się ze stroną z cenami odpowiedniej oferty.
 
-* [Wykrywacz anomalii][ad-containers-billing]
-* [Przetwarzanie obrazów][cv-containers-billing]
-* [Twarzy][fa-containers-billing]
-* [Aparat rozpoznawania formularzy][fr-containers-billing]
-* [Language Understanding (LUIS)][lu-containers-billing]
+* [Narzędzie do wykrywania anomalii][ad-containers-billing]
+* [Wizja komputerowa][cv-containers-billing]
+* [Rozpoznawanie twarzy][fa-containers-billing]
+* [Rozpoznawanie formularzy][fr-containers-billing]
+* [Rozumienie języka (LUIS)][lu-containers-billing]
 * [Interfejs API usługi rozpoznawania mowy][sp-containers-billing]
 * [Analiza tekstu][ta-containers-billing]
 
 > [!IMPORTANT]
-> Kontenery usługi cognitive Services nie są licencjonowane do uruchomienia bez połączenia z platformy Azure do zbierania danych. Klienci muszą włączyć kontener, aby komunikować informacje rozliczeniowe usłudze zliczania przez cały czas. Kontenery Cognitive Services nie wysyłają danych klienta do firmy Microsoft.
+> Kontenery usług Cognitive Services nie są licencjonowane do uruchamiania bez połączenia z platformą Azure w celu pomiaru. Klienci muszą włączyć kontenery do przekazywania informacji rozliczeniowych z usługą pomiaru przez cały czas. Kontenery usług Cognitive Services nie wysyłają danych klientów do firmy Microsoft.
  
-**P: Jaka jest bieżąca gwarancja pomocy technicznej dla kontenerów?**
+**P: Jaka jest aktualna gwarancja pomocy technicznej dla kontenerów?**
 
-Odp **.:** Nie ma gwarancji dla wersji zapoznawczych. Standardowa gwarancja firmy Microsoft dla oprogramowania dla przedsiębiorstw zostanie zastosowana, gdy kontenery są ogłoszone jako ogólnie dostępne.
+**Odp.:** Nie ma gwarancji na podglądy. Standardowa gwarancja firmy Microsoft na oprogramowanie dla przedsiębiorstw będzie obowiązywać, gdy kontenery zostaną formalnie ogłoszone jako ogólna dostępność (GA).
  
-**P: co się dzieje z kontenerami Cognitive Services po utracie połączenia z Internetem?**
+**Pyt.: Co się dzieje z kontenerami usług Cognitive Services po utracie łączności z Internetem?**
 
-Odp **.:** Kontenery Cognitive Services *nie są licencjonowane* do uruchamiania bez połączenia z platformą Azure w celu pomiaru. Klienci muszą włączyć kontenery do komunikowania się z usługą pomiaru przez cały czas.
+**Odp.:** Kontenery usług Cognitive Services nie są *licencjonowane* do uruchamiania bez połączenia z platformą Azure w celu pomiaru. Klienci muszą włączyć kontenery do komunikowania się z usługą pomiaru przez cały czas.
 
-**P: jak długo może działać kontener bez połączenia z platformą Azure?**
+**Pyt.: Jak długo kontener może działać bez połączenia z platformą Azure?**
 
-Odp **.:** Kontenery Cognitive Services *nie są licencjonowane* do uruchamiania bez połączenia z platformą Azure w celu pomiaru. Klienci muszą włączyć kontenery do komunikowania się z usługą pomiaru przez cały czas.
+**Odp.:** Kontenery usług Cognitive Services nie są *licencjonowane* do uruchamiania bez połączenia z platformą Azure w celu pomiaru. Klienci muszą włączyć kontenery do komunikowania się z usługą pomiaru przez cały czas.
  
-**P: co to jest bieżący sprzęt wymagany do uruchomienia tych kontenerów?**
+**Pyt.: Co to jest bieżący sprzęt wymagany do uruchomienia tych kontenerów?**
 
-Odp **.:** Kontenery Cognitive Services są kontenerami opartymi na architekturze x64, które mogą uruchamiać dowolne zgodne maszyny wirtualne z systemem Linux, maszynę wirtualną i Urządzenie brzegowe obsługujące kontenery platformy Docker x64 Wszystkie wymagają procesorów CPU. Minimalne i zalecane konfiguracje dla każdej oferty kontenera są dostępne poniżej:
+**Odp.:** Kontenery usług Cognitive Services to kontenery oparte na x64, które mogą uruchamiać dowolny zgodny węzeł systemu Linux, maszynę wirtualną i urządzenie brzegowe obsługujące kontenery platformy Docker systemu Linux x64. Wszystkie one wymagają procesorów CPU. Minimalne i zalecane konfiguracje dla każdej oferty kontenerów są dostępne poniżej:
 
-* [Wykrywacz anomalii][ad-containers-recommendations]
-* [Przetwarzanie obrazów][cv-containers-recommendations]
-* [Twarzy][fa-containers-recommendations]
-* [Aparat rozpoznawania formularzy][fr-containers-recommendations]
-* [Language Understanding (LUIS)][lu-containers-recommendations]
+* [Narzędzie do wykrywania anomalii][ad-containers-recommendations]
+* [Wizja komputerowa][cv-containers-recommendations]
+* [Rozpoznawanie twarzy][fa-containers-recommendations]
+* [Rozpoznawanie formularzy][fr-containers-recommendations]
+* [Rozumienie języka (LUIS)][lu-containers-recommendations]
 * [Interfejs API usługi rozpoznawania mowy][sp-containers-recommendations]
 * [Analiza tekstu][ta-containers-recommendations]
  
-**P: czy te kontenery są obecnie obsługiwane w systemie Windows?**
+**Pyt.: Czy te kontenery są obecnie obsługiwane w systemie Windows?**
 
-Odp **.:** Kontenery Cognitive Services to kontenery systemu Linux, ale w systemie Windows istnieje pewna obsługa kontenerów systemu Linux. Aby uzyskać więcej informacji na temat kontenerów systemu Linux w systemie Windows, zobacz [dokumentację platformy Docker](https://blog.docker.com/2017/09/preview-linux-containers-on-windows/).
+**Odp.:** Kontenery usług Cognitive Services są kontenerami systemu Linux, jednak istnieje pewna obsługa kontenerów systemu Linux w systemie Windows. Aby uzyskać więcej informacji na temat kontenerów systemu Linux w systemie Windows, zobacz [dokumentację platformy Docker](https://blog.docker.com/2017/09/preview-linux-containers-on-windows/).
  
-**P: Jak mogę odnajdywania kontenerów?**
+**Pyt.: Jak odnajdyć kontenery?**
 
-Odp **.:** Kontenery Cognitive Services są dostępne w różnych lokalizacjach, takich jak Azure Portal, Hub Docker i rejestry kontenerów platformy Azure. W przypadku najnowszych lokalizacji kontenera zapoznaj się z [repozytoriami i obrazami kontenerów](../cognitive-services-container-support.md#container-repositories-and-images).
+**Odp.:** Kontenery usług Cognitive Services są dostępne w różnych lokalizacjach, takich jak portal Azure, Centrum Platformy Docker i rejestry kontenerów platformy Azure. Najnowsze lokalizacje kontenerów można znaleźć w [repozytoriach kontenerów i obrazach](../cognitive-services-container-support.md#container-repositories-and-images).
 
-**P: jak Cognitive Services kontenery są porównywane z ofertami usługi AWS i Google?**
+**P: Jak kontenery usług Cognitive Services wypada w porównaniu z ofertami AWS i Google?**
 
-Odp **.:** Firma Microsoft jest pierwszym dostawcą usług w chmurze, który umożliwia przenoszenie wstępnie przeszkolonych modeli AI do kontenerów z prostymi rozliczeniami na transakcję, tak jakby klienci korzystali z usługi w chmurze. Firma Microsoft uważa, że chmura hybrydowa zapewnia klientom większy wybór.
+**Odp.:** Firma Microsoft jest pierwszym dostawcą chmury, który przenosi swoje wstępnie przeszkolone modele AI w kontenerach z prostymi rozliczeniami na transakcję, tak jakby klienci korzystali z usługi w chmurze. Firma Microsoft uważa, że chmura hybrydowa daje klientom większy wybór.
 
-**P: jakie certyfikaty zgodności są kontenerami?**
+**Pyt.: Jakie certyfikaty zgodności mają kontenery?**
 
-Odp **.:** Kontenery usług poznawczych nie mają żadnych certyfikatów zgodności
+**Odp.:** Kontenery usług cognitive services nie mają żadnych certyfikatów zgodności
 
-**P: jakie regiony są dostępne Cognitive Services kontenerów?**
+**Pyt.: W jakich regionach są dostępne kontenery usług Cognitive Services?**
 
-Odp **.:** Kontenery mogą być uruchamiane w dowolnym miejscu w dowolnym regionie, jednak potrzebują klucza i wywołania zwrotnego do platformy Azure w celu pomiaru. Wszystkie obsługiwane regiony dla usługi w chmurze są obsługiwane dla wywołania pomiaru kontenerów.
+**Odp.:** Kontenery można uruchomić w dowolnym miejscu w dowolnym regionie, jednak potrzebują klucza i wywołać z powrotem do platformy Azure do pomiaru. Wszystkie obsługiwane regiony usługi w chmurze są obsługiwane dla wywołania pomiaru kontenerów.
 
 [!INCLUDE [Containers next steps](includes/containers-next-steps.md)]
 
