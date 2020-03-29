@@ -1,6 +1,6 @@
 ---
-title: Rozwiązywanie problemów z wdrożeniem platformy OpenShift Container platform 3,11 na platformie Azure
-description: Rozwiązywanie problemów z wdrożeniem platformy OpenShift Container platform 3,11 na platformie Azure.
+title: Rozwiązywanie problemów z wdrożeniem platformy kontenerowej OpenShift 3.11 na platformie Azure
+description: Rozwiązywanie problemów z wdrożeniem platformy kontenerowej OpenShift 3.11 na platformie Azure.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: haroldwongms
@@ -14,36 +14,36 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 10/14/2019
 ms.author: haroldw
-ms.openlocfilehash: 1915cce1878b9b7ec058c13167e03c3c318f3668
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: bd83a1ca731d81edb76a3c1bc07113ce96adb9ec
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74035488"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80066587"
 ---
-# <a name="troubleshoot-openshift-container-platform-311-deployment-in-azure"></a>Rozwiązywanie problemów z wdrożeniem platformy OpenShift Container platform 3,11 na platformie Azure
+# <a name="troubleshoot-openshift-container-platform-311-deployment-in-azure"></a>Rozwiązywanie problemów z wdrożeniem platformy kontenerowej OpenShift 3.11 na platformie Azure
 
-Jeśli klaster OpenShift nie zostanie pomyślnie wdrożony, Azure Portal dostarczy danych wyjściowych błędu. Dane wyjściowe mogą być trudne do odczytania, co utrudnia zidentyfikowanie problemu. Szybko Skanuj dane wyjściowe dla kodu zakończenia 3, 4 lub 5. Poniżej znajdują się informacje dotyczące tych trzech kodów zakończenia:
+Jeśli klaster OpenShift nie wdroży pomyślnie, portal Azure zapewni dane wyjściowe błędów. Dane wyjściowe mogą być trudne do odczytania, co utrudnia identyfikację problemu. Szybko zeskanuj to dane wyjściowe w poszukiwaniu kodu wyjściowego 3, 4 lub 5. Poniżej przedstawiono informacje na temat tych trzech kodów zakończenia:
 
-- Kod zakończenia 3: Nazwa użytkownika lub hasło subskrypcji Red Hat lub identyfikator organizacji/klucz aktywacji są nieprawidłowe
-- Kod zakończenia 4: Identyfikator puli Red Hat jest niepoprawny lub nie ma uprawnień dostępnych
-- Kod zakończenia 5: nie można zainicjować obsługi woluminu elastycznej puli platformy Docker
+- Kod zakończenia 3: Nazwa użytkownika subskrypcji Red Hat / Hasło lub Identyfikator organizacji / Klucz aktywacyjny jest nieprawidłowy
+- Kod zakończenia 4: Twój identyfikator puli Red Hat jest nieprawidłowy lub nie ma dostępnych uprawnień
+- Kod zakończenia 5: Nie można aprowizować woluminu cienkiej puli platformy Docker
 
-W przypadku wszystkich innych kodów zakończenia Połącz się z hostami za pośrednictwem protokołu SSH, aby wyświetlić pliki dziennika.
+W przypadku wszystkich innych kodów zakończenia należy połączyć się z hostem za pośrednictwem ssh, aby wyświetlić pliki dziennika.
 
-**OpenShift kontenerów platformy 3,11**
+**OpenShift Container Platform 3.11**
 
-SSH z hostem rozwiązania ansible element PlayBook. W przypadku szablonu lub oferty portalu Marketplace Użyj hosta bastionu. Z bastionu można SSH do wszystkich innych węzłów w klastrze (Master, infrastruktura, CNS, COMPUTE). Musisz być katalogiem głównym, aby wyświetlić pliki dziennika. Katalog główny jest domyślnie wyłączony dla dostępu SSH, dlatego nie należy używać elementu głównego do połączeń SSH z innymi węzłami.
+SSH do hosta podręcznika. W przypadku szablonu lub oferty Marketplace użyj hosta bastionu. Z bastionu można SSH do wszystkich innych węzłów w klastrze (master, infra, CNS, compute). Aby wyświetlić pliki dziennika, musisz być rootem. Katalog główny jest domyślnie wyłączony dla dostępu SSH, więc nie należy używać katalogu głównego do SSH w innych węzłach.
 
 **OKD**
 
-SSH z hostem rozwiązania ansible element PlayBook. W przypadku szablonu OKD (wersja 3,9 i wcześniejsze) Użyj hosta Master-0. W przypadku szablonu OKD (wersja 3,10 i nowsze) Użyj hosta bastionu. Z hosta rozwiązania ansible element PlayBook można SSH do wszystkich innych węzłów w klastrze (Master, infrastruktura, CNS, COMPUTE). Musisz być głównym (sudo Su-), aby wyświetlić pliki dziennika. Katalog główny jest domyślnie wyłączony dla dostępu SSH, dlatego nie należy używać elementu głównego do połączeń SSH z innymi węzłami.
+SSH do hosta podręcznika. W przypadku szablonu OKD (wersja 3.9 i wcześniejsza) użyj hosta master-0. W przypadku szablonu OKD (wersja 3.10 i nowsza) użyj hosta bastionu. Z hosta podręcznika ansible, można SSH do wszystkich innych węzłów w klastrze (master, infra, CNS, compute). Musisz być root (sudo su -), aby wyświetlić pliki dziennika. Katalog główny jest domyślnie wyłączony dla dostępu SSH, więc nie należy używać katalogu głównego do SSH w innych węzłach.
 
 ## <a name="log-files"></a>Pliki dziennika
 
-Pliki dziennika (stderr i stdout) skryptów przygotowania hosta znajdują się w `/var/lib/waagent/custom-script/download/0` na wszystkich hostach. Jeśli wystąpił błąd podczas przygotowywania hosta, Wyświetl te pliki dziennika, aby określić błąd.
+Pliki dziennika (stderr i stdout) dla skryptów `/var/lib/waagent/custom-script/download/0` przygotowania hosta znajdują się na wszystkich hostach. Jeśli wystąpił błąd podczas przygotowywania hosta, wyświetl te pliki dziennika, aby określić błąd.
 
-Jeśli skrypty przygotowania zostały wykonane pomyślnie, należy sprawdzić pliki dziennika w katalogu `/var/lib/waagent/custom-script/download/1` hosta rozwiązania ansible element PlayBook. Jeśli wystąpił błąd podczas rzeczywistej instalacji OpenShift, zostanie wyświetlony komunikat o błędzie. Korzystając z tych informacji, skontaktuj się z pomocą techniczną, aby uzyskać dalszą pomoc.
+Jeśli skrypty przygotowania zostały pomyślnie uruchomiony, `/var/lib/waagent/custom-script/download/1` pliki dziennika w katalogu ansible hosta podręcznika będą musiały zostać zbadane. Jeśli wystąpił błąd podczas rzeczywistej instalacji OpenShift, plik stdout wyświetli błąd. Skorzystaj z tych informacji, aby skontaktować się z pomocą techniczną w celu uzyskania dalszej pomocy.
 
 Przykładowe dane wyjściowe
 
@@ -83,40 +83,40 @@ Failure summary:
      Message:  Failed without returning a message.
 ```
 
-Najczęstsze błędy podczas instalacji:
+Najczęstsze błędy podczas instalacji to:
 
 1. Klucz prywatny ma hasło
-2. Wpis tajny magazynu kluczy z kluczem prywatnym nie został poprawnie utworzony
-3. Poświadczenia jednostki usługi zostały wprowadzone nieprawidłowo
-4. Jednostka usługi nie ma dostępu współautora do grupy zasobów
+2. Klucz tajny magazynu kluczy z kluczem prywatnym nie został utworzony poprawnie
+3. Poświadczenia głównej usługi zostały wprowadzone niepoprawnie
+4. Podmiot zabezpieczeń usługi nie ma dostępu współautora do grupy zasobów
 
 ### <a name="private-key-has-a-passphrase"></a>Klucz prywatny ma hasło
 
-Zostanie wyświetlony komunikat o błędzie z powodu odmowy uprawnień dla protokołu SSH. Aby wyszukać hasło klucza prywatnego, Użyj protokołu SSH do hosta rozwiązania ansible element PlayBook.
+Zobaczysz błąd, że uprawnienie zostało odrzucone dla ssh. ssh do ansible playbook hosta, aby sprawdzić hasło na klucz prywatny.
 
-### <a name="key-vault-secret-with-private-key-wasnt-created-correctly"></a>Wpis tajny magazynu kluczy z kluczem prywatnym nie został poprawnie utworzony
+### <a name="key-vault-secret-with-private-key-wasnt-created-correctly"></a>Klucz tajny magazynu kluczy z kluczem prywatnym nie został utworzony poprawnie
 
-Klucz prywatny jest kopiowany do hosta rozwiązania ansible element PlayBook-~/.ssh/id_rsa. Potwierdź, że ten plik jest prawidłowy. Przetestuj, otwierając sesję SSH do jednego z węzłów klastra z hosta rozwiązania ansible element PlayBook.
+Klucz prywatny jest kopiowany do hosta podręcznika ansible - ~/.ssh/id_rsa. Upewnij się, że ten plik jest poprawny. Przetestuj, otwierając sesję SSH do jednego z węzłów klastra z hosta podręcznika ansible.
 
-### <a name="service-principal-credentials-were-entered-incorrectly"></a>Poświadczenia jednostki usługi zostały wprowadzone nieprawidłowo
+### <a name="service-principal-credentials-were-entered-incorrectly"></a>Poświadczenia głównej usługi zostały wprowadzone niepoprawnie
 
-Podczas przekazywania danych wejściowych do szablonu lub oferty w witrynie Marketplace podano nieprawidłowe informacje. Upewnij się, że używasz poprawnego identyfikatora appId (clientId) i hasła (clientSecret) dla jednostki usługi. Sprawdź, wydając następujące polecenie interfejsu wiersza polecenia platformy Azure.
+Podczas dostarczania danych wejściowych do szablonu lub oferty marketplace, niepoprawne informacje zostały dostarczone. Upewnij się, że używasz poprawne appId (clientId) i hasło (clientSecret) dla jednostki usługi. Sprawdź, wydając następujące polecenie interfejsu wiersza polecenia azure.
 
-```bash
+```azurecli
 az login --service-principal -u <client id> -p <client secret> -t <tenant id>
 ```
 
-### <a name="service-principal-doesnt-have-contributor-access-to-the-resource-group"></a>Jednostka usługi nie ma dostępu współautora do grupy zasobów
+### <a name="service-principal-doesnt-have-contributor-access-to-the-resource-group"></a>Podmiot zabezpieczeń usługi nie ma dostępu współautora do grupy zasobów
 
-Jeśli dostawca chmury platformy Azure jest włączony, użyta nazwa główna usługi musi mieć dostęp współautora do grupy zasobów. Sprawdź, wydając następujące polecenie interfejsu wiersza polecenia platformy Azure.
+Jeśli dostawca chmury platformy Azure jest włączony, a następnie jednostki usługi używane musi mieć dostęp współautora do grupy zasobów. Sprawdź, wydając następujące polecenie interfejsu wiersza polecenia azure.
 
-```bash
+```azurecli
 az group update -g <openshift resource group> --set tags.sptest=test
 ```
 
 ## <a name="additional-tools"></a>Dodatkowe narzędzia
 
-W przypadku niektórych błędów można także użyć następujących poleceń, aby uzyskać więcej informacji:
+W przypadku niektórych błędów można również użyć następujących poleceń, aby uzyskać więcej informacji:
 
-1. systemctl stanu usługi \<>
-2. journalctl — XE
+1. > usługi \<stanu systemctl
+2. journalctl -xe

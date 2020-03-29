@@ -1,6 +1,6 @@
 ---
-title: Kopiowanie danych ze źródeł OData przy użyciu Azure Data Factory
-description: Informacje o kopiowaniu danych ze źródeł OData do obsługiwanych magazynów danych ujścia przy użyciu działania kopiowania w potoku Azure Data Factory.
+title: Kopiowanie danych ze źródeł OData przy użyciu usługi Azure Data Factory
+description: Dowiedz się, jak skopiować dane ze źródeł OData do obsługiwanych magazynów danych ujścia przy użyciu działania kopiowania w potoku usługi Azure Data Factory.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -12,65 +12,65 @@ ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: jingwang
 ms.openlocfilehash: 17b78e03e330e342e9d558dd3ca5d9071bcd3c2f
-ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78163934"
 ---
-# <a name="copy-data-from-an-odata-source-by-using-azure-data-factory"></a>Kopiowanie danych ze źródła strumieniowego OData przy użyciu Azure Data Factory
+# <a name="copy-data-from-an-odata-source-by-using-azure-data-factory"></a>Kopiowanie danych ze źródła OData przy użyciu usługi Azure Data Factory
 
-> [!div class="op_single_selector" title1="Wybierz używaną wersję usługi Data Factory:"]
+> [!div class="op_single_selector" title1="Wybierz wersję używanej usługi Data Factory:"]
 > * [Wersja 1](v1/data-factory-odata-connector.md)
 > * [Bieżąca wersja](connector-odata.md)
 
-W tym artykule opisano sposób używania działania kopiowania w Azure Data Factory do kopiowania danych ze źródła strumieniowego OData. Artykuł jest oparty na [działaniu kopiowania w Azure Data Factory](copy-activity-overview.md), co przedstawia ogólne omówienie działania kopiowania.
+W tym artykule opisano, jak używać działania kopiowania w usłudze Azure Data Factory do kopiowania danych ze źródła OData. Artykuł opiera się na [copy activity w usłudze Azure Data Factory](copy-activity-overview.md), który przedstawia ogólne omówienie działania kopiowania.
 
-## <a name="supported-capabilities"></a>Obsługiwane funkcje
+## <a name="supported-capabilities"></a>Obsługiwane możliwości
 
 Ten łącznik OData jest obsługiwany dla następujących działań:
 
-- [Działanie kopiowania](copy-activity-overview.md) z [obsługiwaną macierzą źródłową/ujścia](copy-activity-overview.md)
-- [Działanie Lookup](control-flow-lookup-activity.md)
+- [Kopiowanie aktywności](copy-activity-overview.md) z [obsługiwaną macierzą źródło/ujście](copy-activity-overview.md)
+- [Działanie odnośnika](control-flow-lookup-activity.md)
 
-Możesz skopiować dane ze źródła danych OData do dowolnego obsługiwanego magazynu danych ujścia. Aby uzyskać listę magazynów danych obsługiwanych przez działanie kopiowania jako źródła i ujścia, zobacz [obsługiwane magazyny i formaty danych](copy-activity-overview.md#supported-data-stores-and-formats).
+Można skopiować dane ze źródła OData do dowolnego obsługiwanego magazynu danych ujścia. Aby uzyskać listę magazynów danych obsługiwanych przez działanie kopiowania jako źródła i pochłaniacze, zobacz [Obsługiwane magazyny danych i formaty](copy-activity-overview.md#supported-data-stores-and-formats).
 
-W przypadku tego łącznika OData obsługuje:
+W szczególności ten łącznik OData obsługuje:
 
-- OData w wersji 3,0 i 4,0.
-- Kopiowanie danych przy użyciu jednego z następujących uwierzytelnień: **Anonymous**, **Basic**, **Windows**i **nazwy głównej usługi AAD**.
+- OData w wersji 3.0 i 4.0.
+- Kopiowanie danych przy użyciu jednego z następujących uwierzytelniania: **Anonimowy**, **Podstawowy,** **Windows**i **AAD service principal**.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 [!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 
-## <a name="get-started"></a>Rozpoczynanie pracy
+## <a name="get-started"></a>Wprowadzenie
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
-Poniższe sekcje zawierają szczegółowe informacje o właściwościach, których można użyć do definiowania jednostek Data Factory, które są specyficzne dla łącznika OData.
+W poniższych sekcjach znajdują się szczegółowe informacje o właściwościach, których można użyć do zdefiniowania jednostek fabryki danych, które są specyficzne dla łącznika OData.
 
-## <a name="linked-service-properties"></a>Właściwości usługi połączonej
+## <a name="linked-service-properties"></a>Połączone właściwości usługi
 
-Dla połączonej usługi OData są obsługiwane następujące właściwości:
+Następujące właściwości są obsługiwane dla usługi połączonej OData:
 
 | Właściwość | Opis | Wymagany |
 |:--- |:--- |:--- |
-| type | Właściwość **Type** musi być ustawiona na wartość **OData**. |Yes |
-| url | Główny adres URL usługi OData. |Yes |
-| authenticationType | Typ uwierzytelniania używany do nawiązywania połączenia ze źródłem danych OData. Dozwolone wartości to **Anonymous**, **Basic**, **Windows**i **AadServicePrincipal**. Uwierzytelnianie OAuth oparte na użytkowniku nie jest obsługiwane. | Yes |
-| userName | Określ **nazwę użytkownika** , jeśli używasz uwierzytelniania podstawowego lub systemu Windows. | Nie |
-| hasło | Określ **hasło** dla konta użytkownika określonego w polu **Nazwa użytkownika**. Oznacz to pole jako typ **SecureString** , aby bezpiecznie przechowywać go w Data Factory. Można również [odwołać się do wpisu tajnego przechowywanego w Azure Key Vault](store-credentials-in-key-vault.md). | Nie |
-| servicePrincipalId | Określ identyfikator klienta aplikacji Azure Active Directory. | Nie |
-| aadServicePrincipalCredentialType | Określ typ poświadczeń, który ma być używany do uwierzytelniania nazwy głównej usługi. Dozwolone wartości to: `ServicePrincipalKey` lub `ServicePrincipalCert`. | Nie |
-| servicePrincipalKey | Określ klucz aplikacji Azure Active Directory. Oznacz to pole jako element **SecureString** , aby bezpiecznie przechowywać go w Data Factory, lub [odwoływać się do wpisu tajnego przechowywanego w Azure Key Vault](store-credentials-in-key-vault.md). | Nie |
-| servicePrincipalEmbeddedCert | Określ certyfikat kodowany algorytmem Base64 aplikacji zarejestrowanej w Azure Active Directory. Oznacz to pole jako element **SecureString** , aby bezpiecznie przechowywać go w Data Factory, lub [odwoływać się do wpisu tajnego przechowywanego w Azure Key Vault](store-credentials-in-key-vault.md). | Nie |
-| servicePrincipalEmbeddedCertPassword | Określ hasło certyfikatu, jeśli certyfikat jest zabezpieczony hasłem. Oznacz to pole jako element **SecureString** , aby bezpiecznie przechowywać go w Data Factory, lub [odwoływać się do wpisu tajnego przechowywanego w Azure Key Vault](store-credentials-in-key-vault.md).  | Nie|
-| tenant | Określ informacje dzierżawy (identyfikator nazwy lub dzierżawy domeny), w którym znajduje się aplikacja. Pobierz go przez umieszczenie nad nim kursora myszy w prawym górnym rogu witryny Azure Portal. | Nie |
-| aadResourceId | Określ zasób usługi AAD, którego żądasz do autoryzacji.| Nie |
-| connectVia | [Integration Runtime](concepts-integration-runtime.md) używany do nawiązywania połączenia z magazynem danych. Dowiedz się więcej z sekcji [wymagania wstępne](#prerequisites) . Jeśli nie zostanie określona, używana jest domyślna Azure Integration Runtime. |Nie |
+| type | Właściwość **typu** musi być ustawiona na **OData**. |Tak |
+| url | Główny adres URL usługi OData. |Tak |
+| authenticationType | Typ uwierzytelniania używanego do łączenia się ze źródłem OData. Dozwolone wartości to **Anonymous**, **Basic**, **Windows**i **AadServicePrincipal**. OAuth oparte na użytkownikach nie jest obsługiwane. | Tak |
+| userName | Określ **nazwę użytkownika,** jeśli używasz uwierzytelniania podstawowego lub uwierzytelniania systemu Windows. | Nie |
+| hasło | Określ **hasło** dla konta użytkownika określonego dla **użytkownika .** Oznacz to pole jako typ **SecureString,** aby bezpiecznie przechowywać go w fabryce danych. Można również [odwoływać się do klucza tajnego przechowywanego w usłudze Azure Key Vault](store-credentials-in-key-vault.md). | Nie |
+| servicePrincipalId | Określ identyfikator klienta aplikacji usługi Azure Active Directory. | Nie |
+| aadServicePrincipalCredentialType | Określ typ poświadczeń, który ma być używany do uwierzytelniania jednostkowego usługi. Dozwolone wartości `ServicePrincipalKey` to: `ServicePrincipalCert`lub . | Nie |
+| servicePrincipalKey | Określ klucz aplikacji usługi Azure Active Directory. Oznacz to pole jako **SecureString,** aby bezpiecznie przechowywać go w fabryce danych lub [odwołaj się do klucza tajnego przechowywanego w usłudze Azure Key Vault.](store-credentials-in-key-vault.md) | Nie |
+| servicePrincipalEmbeddedCert | Określ zakodowany certyfikat base64 aplikacji zarejestrowanej w usłudze Azure Active Directory. Oznacz to pole jako **SecureString,** aby bezpiecznie przechowywać go w fabryce danych lub [odwołaj się do klucza tajnego przechowywanego w usłudze Azure Key Vault.](store-credentials-in-key-vault.md) | Nie |
+| usługaPrincipalEmbeddedCertPassword | Określ hasło certyfikatu, jeśli certyfikat jest zabezpieczony hasłem. Oznacz to pole jako **SecureString,** aby bezpiecznie przechowywać go w fabryce danych lub [odwołaj się do klucza tajnego przechowywanego w usłudze Azure Key Vault.](store-credentials-in-key-vault.md)  | Nie|
+| Dzierżawy | Określ informacje o dzierżawie (nazwa domeny lub identyfikator dzierżawy), w którym znajduje się aplikacja. Pobierz go, najeżdżając myszą w prawym górnym rogu witryny Azure portal. | Nie |
+| aadResourceId | Określ zasób AAD, którego żądasz do autoryzacji.| Nie |
+| connectVia | [Środowisko wykonawcze integracji](concepts-integration-runtime.md) do nawiązywania połączenia z magazynem danych. Dowiedz się więcej z sekcji [Wymagania wstępne.](#prerequisites) Jeśli nie zostanie określony, używany jest domyślny środowiska wykonawczego integracji platformy Azure. |Nie |
 
-**Przykład 1: korzystanie z uwierzytelniania anonimowego**
+**Przykład 1: Korzystanie z uwierzytelniania anonimowego**
 
 ```json
 {
@@ -89,7 +89,7 @@ Dla połączonej usługi OData są obsługiwane następujące właściwości:
 }
 ```
 
-**Przykład 2: używanie uwierzytelniania podstawowego**
+**Przykład 2: Korzystanie z uwierzytelniania podstawowego**
 
 ```json
 {
@@ -113,7 +113,7 @@ Dla połączonej usługi OData są obsługiwane następujące właściwości:
 }
 ```
 
-**Przykład 3: używanie uwierzytelniania systemu Windows**
+**Przykład 3: Korzystanie z uwierzytelniania systemu Windows**
 
 ```json
 {
@@ -137,7 +137,7 @@ Dla połączonej usługi OData są obsługiwane następujące właściwości:
 }
 ```
 
-**Przykład 4: używanie uwierzytelniania klucza jednostki usługi**
+**Przykład 4: Korzystanie z uwierzytelniania klucza głównego usługi**
 
 ```json
 {
@@ -164,7 +164,7 @@ Dla połączonej usługi OData są obsługiwane następujące właściwości:
 }
 ```
 
-**Przykład 5: używanie uwierzytelniania certyfikatu jednostki usługi**
+**Przykład 5: Korzystanie z uwierzytelniania certyfikatu jednostki usługi**
 
 ```json
 {
@@ -197,16 +197,16 @@ Dla połączonej usługi OData są obsługiwane następujące właściwości:
 
 ## <a name="dataset-properties"></a>Właściwości zestawu danych
 
-Ta sekcja zawiera listę właściwości obsługiwanych przez zestaw danych OData.
+Ta sekcja zawiera listę właściwości, które obsługuje zestaw danych OData.
 
-Aby zapoznać się z pełną listą sekcji i właściwości, które są dostępne do definiowania zestawów danych, zobacz [zestawy danych i połączone usługi](concepts-datasets-linked-services.md). 
+Aby uzyskać pełną listę sekcji i właściwości, które są dostępne do definiowania zestawów danych, zobacz [Zestawy danych i połączone usługi](concepts-datasets-linked-services.md). 
 
-Aby skopiować dane z protokołu OData, ustaw właściwość **Type** zestawu danych na **ODataResource**. Obsługiwane są następujące właściwości:
+Aby skopiować dane z odata, ustaw właściwość **typu** zestawu danych na **ODataResource**. Obsługiwane są następujące właściwości:
 
 | Właściwość | Opis | Wymagany |
 |:--- |:--- |:--- |
-| type | Właściwość **Type** zestawu danych musi być ustawiona na wartość **ODataResource**. | Yes |
-| ścieżka | Ścieżka do zasobu OData. | Yes |
+| type | Właściwość **typu** zestawu danych musi być ustawiona na **ODataResource**. | Tak |
+| ścieżka | Ścieżka do zasobu OData. | Tak |
 
 **Przykład**
 
@@ -229,20 +229,20 @@ Aby skopiować dane z protokołu OData, ustaw właściwość **Type** zestawu da
 }
 ```
 
-## <a name="copy-activity-properties"></a>Właściwości działania kopiowania
+## <a name="copy-activity-properties"></a>Kopiowanie właściwości działania
 
-Ta sekcja zawiera listę właściwości obsługiwanych przez źródło OData.
+Ta sekcja zawiera listę właściwości, które obsługuje źródło OData.
 
-Aby zapoznać się z pełną listą sekcji i właściwości, które są dostępne do definiowania działań, zobacz [potoki](concepts-pipelines-activities.md). 
+Aby uzyskać pełną listę sekcji i właściwości, które są dostępne do definiowania działań, zobacz [Potoki](concepts-pipelines-activities.md). 
 
 ### <a name="odata-as-source"></a>OData jako źródło
 
-Aby skopiować dane z usługi OData, w sekcji **Źródło** działania kopiowania są obsługiwane następujące właściwości:
+Aby skopiować dane z odata, w sekcji **Źródło** działania kopiowania są obsługiwane następujące właściwości:
 
 | Właściwość | Opis | Wymagany |
 |:--- |:--- |:--- |
-| type | Właściwość **Type** źródła działania Copy musi być ustawiona na wartość **ODataSource**. | Yes |
-| query | Opcje zapytania OData dotyczące filtrowania danych. Przykład: `"$select=Name,Description&$top=5"`.<br/><br/>**Uwaga**: Łącznik OData kopiuje dane ze połączonego adresu URL: `[URL specified in linked service]/[path specified in dataset]?[query specified in copy activity source]`. Aby uzyskać więcej informacji, zobacz [składniki URL usługi OData](https://www.odata.org/documentation/odata-version-3-0/url-conventions/). | Nie |
+| type | Właściwość **typu** źródła działania kopiowania musi być ustawiona na **ODataSource**. | Tak |
+| query | Opcje kwerendy OData do filtrowania danych. Przykład: `"$select=Name,Description&$top=5"`.<br/><br/>**Uwaga:** Łącznik OData kopiuje dane `[URL specified in linked service]/[path specified in dataset]?[query specified in copy activity source]`z połączonego adresu URL: . Aby uzyskać więcej informacji, zobacz [Składniki adresu URL OData](https://www.odata.org/documentation/odata-version-3-0/url-conventions/). | Nie |
 
 **Przykład**
 
@@ -276,38 +276,38 @@ Aby skopiować dane z usługi OData, w sekcji **Źródło** działania kopiowani
 ]
 ```
 
-Jeśli używasz źródła z wpisaną `RelationalSource`, jest ono nadal obsługiwane w stanie takim, w jakim będziesz mieć możliwość korzystania z nowej usługi.
+Jeśli używasz `RelationalSource` wpisanego źródła, jest ono nadal obsługiwane w stanie as-is, podczas gdy zaleca się użycie nowego w przyszłości.
 
-## <a name="data-type-mapping-for-odata"></a>Mapowanie typu danych dla usługi OData
+## <a name="data-type-mapping-for-odata"></a>Mapowanie typu danych dla OData
 
-Podczas kopiowania danych z protokołu OData następujące mapowania są używane między typami danych OData i Azure Data Factory pośrednimi typami danych. Aby dowiedzieć się, jak działanie kopiowania mapuje schemat źródłowy i typ danych na ujścia, zobacz [Mapowanie schematu i typu danych](copy-activity-schema-and-type-mapping.md).
+Podczas kopiowania danych z OData, następujące mapowania są używane między typami danych OData i usługi Azure Data Factory tymczasowych typów danych. Aby dowiedzieć się, jak aktywność kopiowania mapuje schemat źródłowy i typ danych do ujścia, zobacz [Mapowanie schematu i typów danych](copy-activity-schema-and-type-mapping.md).
 
-| Typ danych OData | Typ danych tymczasowych fabryki danych |
+| Typ danych OData | Tymczasowy typ danych data factory |
 |:--- |:--- |
-| Edm.Binary | Byte[] |
-| Edm.Boolean | Bool |
-| Edm.Byte | Byte[] |
+| Edm.Binary (Edm.Binary) | Bajt[] |
+| Edm.Boolean | Wartość logiczna |
+| Edm.Byte (Edm.Byte) | Bajt[] |
 | Edm.DateTime | DateTime |
-| Edm.Decimal | Dziesiętna |
-| Edm.Double | Podwójne |
-| Edm.Single | Single |
-| Edm.Guid | Guid |
-| Edm.Int16 | Int16 |
+| Edm.Decimal (Edm.Decimal) | Wartość dziesiętna |
+| Edm.Double | Double |
+| Edm.Single (Edm.Pojedyncze) | Single |
+| Edm.Guid (Edm.Guid) | Guid (identyfikator GUID) |
+| Edm.Int16 (Edm.Int16) | Int16 |
 | Edm.Int32 | Int32 |
 | Edm.Int64 | Int64 |
-| Edm.SByte | Int16 |
+| Edm.SByte (Edm.SByte) | Int16 |
 | Edm.String | Ciąg |
-| Edm.Time | przedział_czasu |
-| Edm.DateTimeOffset | DateTimeOffset |
+| Edm.Time (Edm.Time) | przedział_czasu |
+| Edm.DateTimeOffset | Datetimeoffset |
 
 > [!NOTE]
-> Złożone typy danych OData (takie jak **Object**) nie są obsługiwane.
+> OData złożonych typów danych (takich jak **Object**) nie są obsługiwane.
 
 
-## <a name="lookup-activity-properties"></a>Właściwości działania Lookup
+## <a name="lookup-activity-properties"></a>Właściwości działania odnośnika
 
-Aby dowiedzieć się więcej o właściwościach, sprawdź [działanie Lookup (wyszukiwanie](control-flow-lookup-activity.md)).
+Aby dowiedzieć się więcej o właściwościach, sprawdź [działanie odnośnika](control-flow-lookup-activity.md).
 
 ## <a name="next-steps"></a>Następne kroki
 
-Aby uzyskać listę magazynów danych obsługiwanych przez działanie kopiowania jako źródła i ujścia w Azure Data Factory, zobacz [obsługiwane magazyny i formaty danych](copy-activity-overview.md#supported-data-stores-and-formats).
+Aby uzyskać listę magazynów danych, które działanie kopiowania obsługuje jako źródła i pochłaniacze w usłudze Azure Data Factory, zobacz [Obsługiwane magazyny danych i formaty](copy-activity-overview.md#supported-data-stores-and-formats).

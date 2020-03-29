@@ -1,5 +1,5 @@
 ---
-title: Architektura wypychana Notification Hubs Enterprise
+title: Architektura wypychania centrum powiadomień
 description: Dowiedz się więcej o korzystaniu z usługi Azure Notification Hubs w środowisku przedsiębiorstwa
 services: notification-hubs
 documentationcenter: ''
@@ -17,63 +17,63 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
 ms.openlocfilehash: 0104547a432f7f78d74731e11926bcd82088cef7
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/17/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76264037"
 ---
 # <a name="enterprise-push-architectural-guidance"></a>Wskazówki dotyczące architektury powiadomień wypychanych w przedsiębiorstwie
 
-Obecnie przedsiębiorstwa są stopniowo przenoszone do tworzenia aplikacji mobilnych dla użytkowników końcowych (zewnętrznych) lub dla pracowników (wewnętrznych). Mają one istniejące systemy zaplecza lub niektóre aplikacje biznesowe, które muszą być zintegrowane z architekturą aplikacji mobilnej. Ten przewodnik zawiera informacje o tym, jak najlepiej wykonać tę integrację, zalecanym rozwiązaniem dla typowych scenariuszy.
+Przedsiębiorstwa obecnie stopniowo dążą do tworzenia aplikacji mobilnych dla swoich użytkowników końcowych (zewnętrznych) lub dla pracowników (wewnętrznych). Mają istniejące systemy wewnętrznej bazy danych w miejscu, czy to mainframe lub niektórych aplikacji LoB, które muszą być zintegrowane z architekturą aplikacji mobilnych. W tym przewodniku o tym, jak najlepiej wykonać tę integrację zalecając możliwe rozwiązanie typowych scenariuszy.
 
-Częstym wymaganiem jest wysyłanie powiadomień wypychanych do użytkowników za pomocą ich aplikacji mobilnych w przypadku wystąpienia zainteresowania w systemach zaplecza. Na przykład odbiorca banku, który ma aplikację bankową banku na telefonie iPhone, chce otrzymywać powiadomienia, gdy kwota debetu zostanie wprowadzona powyżej określonej kwoty z konta lub intranetowego scenariusza, w którym pracownik z działu finansów, który ma aplikację do zatwierdzania budżetu na Windows Phone chce  otrzymywanie powiadomień o otrzymaniu żądania zatwierdzenia.
+Częstym wymaganiem jest wysyłanie powiadomień wypychanych do użytkowników za pośrednictwem aplikacji mobilnej, gdy wystąpi zdarzenie zainteresowania w systemach wewnętrznej bazy danych. Na przykład klient banku, który ma aplikację bankową banku na telefonie iPhone, chce otrzymywać powiadomienia o tym, że obciążenie jest dokonywane powyżej określonej kwoty z konta lub scenariusza intranetowego, w którym pracownik działu finansowego, który ma aplikację zatwierdzająca budżet na telefonie Windows Phone, chce zostać powiadomiony po otrzymaniu wniosku o zatwierdzenie.
 
-Konto bankowe lub przetwarzanie zatwierdzania jest prawdopodobnie wykonywane w niektórych systemach zaplecza, które muszą inicjować wypychanie do użytkownika. Może istnieć wiele systemów zaplecza, które muszą kompilować ten sam rodzaj logiki do wypychania, gdy zdarzenie wyzwala powiadomienie. Złożoność w tym miejscu polega na integrowaniu kilku systemów zaplecza z jednym systemem wypychania, w którym użytkownicy końcowi mogą mieć subskrypcję różnych powiadomień, a nawet wiele aplikacji mobilnych. Na przykład intranetowe aplikacje mobilne, w których jedna aplikacja mobilna może chcieć otrzymywać powiadomienia z wielu takich systemów zaplecza. Systemy wewnętrznej bazy danych nie znają lub nie muszą znać semantyki wypychania/technologii, więc w tym przypadku powszechnie stosowane jest wprowadzenie składnika, który sonduje systemy zaplecza pod kątem wszelkich interesujących wydarzeń i jest odpowiedzialny za wysyłanie komunikatów wypychanych do klienta.
+Konto bankowe lub przetwarzanie zatwierdzenia prawdopodobnie zostanie wykonane w jakimś systemie wewnętrznej bazy danych, który musi zainicjować wypychanie do użytkownika. Może istnieć wiele takich systemów wewnętrznej bazy danych, które muszą wszystkie budować tego samego rodzaju logiki wypychania, gdy zdarzenie wyzwala powiadomienie. Złożoność polega na integracji kilku systemów zaplecza z jednym systemem wypychania, w którym użytkownicy końcowi mogli subskrybować różne powiadomienia, a nawet może istnieć wiele aplikacji mobilnych. Na przykład intranetowe aplikacje mobilne, w których jedna aplikacja mobilna może chcieć otrzymywać powiadomienia z wielu takich systemów zaplecza. Systemy wewnętrznej bazy danych nie wiedzą lub muszą wiedzieć o semantyki push / technologii, więc wspólne rozwiązanie tutaj tradycyjnie było wprowadzenie składnika, który sonduje systemy wewnętrznej bazy danych dla wszelkich zdarzeń zainteresowania i jest odpowiedzialny za wysyłanie wiadomości push do klienta.
 
-Lepszym rozwiązaniem jest użycie modelu Azure Service Bus-tematu/subskrypcji, co zmniejsza złożoność podczas skalowalności rozwiązania.
+Lepszym rozwiązaniem jest użycie usługi Azure Service Bus — model tematu/subskrypcji, co zmniejsza złożoność podczas tworzenia rozwiązania skalowalnego.
 
-Poniżej znajduje się ogólna architektura rozwiązania (uogólniona wieloma aplikacjami mobilnymi, ale jest jednakowa w przypadku tylko jednej aplikacji mobilnej)
+Oto ogólna architektura rozwiązania (uogólniona z wieloma aplikacjami mobilnymi, ale równie stosowana, gdy istnieje tylko jedna aplikacja mobilna)
 
 ## <a name="architecture"></a>Architektura
 
 ![][1]
 
-Kluczowym elementem na tym diagramie architektury jest Azure Service Bus, w którym znajdują się tematy/model programowania subskrypcji (więcej informacji na ten temat znajduje się w [Service Bus programowanie/procedura podrzędna]). Odbiorca, który w tym przypadku jest zapleczem mobilnym (zazwyczaj [Azure Mobile Service], która inicjuje wypychanie do aplikacji mobilnych) nie odbiera komunikatów bezpośrednio z systemów zaplecza, ale zamiast tego, pośrednia warstwa abstrakcji udostępniana przez [Azure Service Bus], która umożliwia zapleczu mobilnego odbieranie komunikatów z jednego lub kilku systemów zaplecza. Należy utworzyć temat Service Bus dla każdego z systemów zaplecza, na przykład konto, HR, finanse, co jest zasadniczo "tematami", które inicjuje wysyłanie komunikatów jako powiadomień wypychanych. Systemy zaplecza wysyłają komunikaty do tych tematów. Zaplecze mobilne mogą subskrybować jeden lub więcej takich tematów, tworząc subskrypcję Service Bus. Uprawnia do korzystania z zaplecza mobilnego w celu otrzymywania powiadomień z odpowiedniego systemu zaplecza. Zaplecze Mobile w dalszym ciągu nasłuchuje komunikatów w swoich subskrypcjach i zaraz po nadejściu wiadomości zostanie przywrócony i wysłany jako powiadomienie do centrum powiadomień. Centra powiadomień ostatecznie dostarczają komunikat do aplikacji mobilnej. Oto lista kluczowych składników:
+Kluczowym elementem tego diagramu architektonicznego jest usługa Azure Service Bus, która udostępnia model programowania tematów/subskrypcji (więcej na ten temat w [programie Service Bus Pub/Sub).] Odbiornik, który w tym przypadku jest zaplecza mobilnego (zazwyczaj [usługi Azure Mobile Service], który inicjuje wypychanie do aplikacji mobilnych) nie odbiera wiadomości bezpośrednio z systemów wewnętrznej bazy danych, ale zamiast tego warstwy abstrakcji pośredniej dostarczonych przez usługę Azure Service [Bus], który umożliwia mobilnych zaplecza do odbierania wiadomości z jednego lub więcej systemów zaplecza. Temat usługi Service Bus musi zostać utworzony dla każdego z systemów wewnętrznej bazy danych, na przykład Konto, HR, Finanse, który jest w zasadzie "tematy" zainteresowania, który inicjuje wiadomości, które mają być wysyłane jako powiadomienie wypychania. Systemy wewnętrznej bazy danych wysyłają wiadomości do tych tematów. Zaplecze mobilne może subskrybować jeden lub więcej takich tematów, tworząc subskrypcję usługi Service Bus. Uprawnia on akces do mobilnego zaplecza do otrzymywania powiadomień z odpowiedniego systemu zaplecza. Zaplecze mobilne nadal nasłuchuje wiadomości w swoich subskrypcjach i jak tylko nadejdzie wiadomość, odwraca się i wysyła ją jako powiadomienie do centrum powiadomień. Centra powiadomień ostatecznie dostarczają wiadomość do aplikacji mobilnej. Oto lista kluczowych składników:
 
-1. Systemy zaplecza (systemy LoB/starsze)
-   * Tworzy temat Service Bus
+1. Systemy zaplecza (systemy LoB/Legacy)
+   * Tworzy temat magistrali usług
    * Wysyła wiadomość
 1. Zaplecze mobilne
    * Tworzy subskrypcję usługi
-   * Odbiera komunikat (z systemu zaplecza)
-   * Wysyła powiadomienie do klientów (za pośrednictwem Centrum powiadomień platformy Azure)
+   * Odbiera wiadomość (z systemu wewnętrznej bazy danych)
+   * Wysyła powiadomienia do klientów (za pośrednictwem usługi Azure Notification Hub)
 1. Aplikacja mobilna
-   * Odbiera i wyświetla powiadomienie
+   * Odbiera i wyświetla powiadomienia
 
 ### <a name="benefits"></a>Korzyści
 
-1. Rozdzielenie między odbiornikiem (aplikacją mobilną/usługą za pośrednictwem Centrum powiadomień) i nadawcą (systemy zaplecza) umożliwia integrację dodatkowych systemów zaplecza z minimalnymi zmianami.
-1. Ponadto scenariusz wielu aplikacji mobilnych może odbierać zdarzenia z co najmniej jednego systemu zaplecza.  
+1. Oddzielenie między odbiornikiem (aplikacja mobilna/usługa za pośrednictwem Centrum powiadomień) a operatorem (systemy wewnętrznej bazy danych) umożliwia zintegrowanie dodatkowych systemów wewnętrznej bazy danych przy minimalnych zmianach.
+1. To również sprawia, że scenariusz wielu aplikacji mobilnych jest w stanie odbierać zdarzenia z jednego lub więcej systemów wewnętrznej bazy danych.  
 
-## <a name="sample"></a>Przykład
+## <a name="sample"></a>Sample
 
 ### <a name="prerequisites"></a>Wymagania wstępne
 
-Aby zapoznać się z pojęciami oraz typowymi krokami tworzenia &, należy wykonać następujące samouczki:
+Wykonaj następujące samouczki, aby zapoznać się z pojęciami, a także typowe kroki tworzenia & konfiguracji:
 
-1. [Service Bus programowanie/procedura podrzędna] — w tym samouczku objaśniono szczegółowe informacje dotyczące pracy z Service Bus tematami/subskrypcjami, jak utworzyć obszar nazw zawierający tematy/subskrypcje, jak wysyłać & odbierać wiadomości z nich.
-2. [Notification Hubs — uniwersalny Samouczek systemu Windows] — w tym samouczku wyjaśniono, jak skonfigurować aplikację ze sklepu Windows i użyć Notification Hubs do rejestracji i otrzymywania powiadomień.
+1. [Programowanie pub/sub usługi Service Bus] — w tym samouczku wyjaśniono szczegóły pracy z tematami/subskrypcjami usługi Service Bus, jak utworzyć obszar nazw zawierający tematy/subskrypcje, jak wysyłać & odbierać od nich wiadomości.
+2. [Centra powiadomień — samouczek uniwersalny systemu Windows] — w tym samouczku wyjaśniono, jak skonfigurować aplikację ze Sklepu Windows i używać centrów powiadomień do rejestrowania, a następnie odbierania powiadomień.
 
 ### <a name="sample-code"></a>Przykładowy kod
 
-Pełny przykładowy kod jest dostępny w [Przykłady centrum powiadomień]. Jest on podzielony na trzy składniki:
+Pełny przykładowy kod jest dostępny w [centrum powiadomień Samples]. Jest podzielony na trzy składniki:
 
 1. **EnterprisePushBackendSystem**
 
-    a. Ten projekt używa pakietu NuGet **windowsazure. ServiceBus** i jest oparty na [Service Bus programowanie/procedura podrzędna].
+    a. Ten projekt używa pakietu **WindowsAzure.ServiceBus** NuGet i jest oparty na [programie Service Bus Pub/Sub].
 
-    b. Ta aplikacja jest prostą C# aplikacją konsolową służącą do symulowania systemu LOB, który inicjuje komunikat do dostarczenia do aplikacji mobilnej.
+    b. Ta aplikacja jest prosta aplikacja konsoli Języka C# do symulacji systemu LoB, który inicjuje komunikat, który ma być dostarczany do aplikacji mobilnej.
 
     ```csharp
     static void Main(string[] args)
@@ -89,7 +89,7 @@ Pełny przykładowy kod jest dostępny w [Przykłady centrum powiadomień]. Jest
     }
     ```
 
-    d. `CreateTopic` jest używany do utworzenia tematu Service Bus.
+    d. `CreateTopic`służy do tworzenia tematu usługi Service Bus.
 
     ```csharp
     public static void CreateTopic(string connectionString)
@@ -106,7 +106,7 @@ Pełny przykładowy kod jest dostępny w [Przykłady centrum powiadomień]. Jest
     }
     ```
 
-    d. `SendMessage` jest używany do wysyłania komunikatów do tego Service Bus temacie. Ten kod po prostu wysyła zestaw losowych komunikatów do tematu okresowo na potrzeby przykładu. Zwykle istnieje system zaplecza, który wysyła komunikaty po wystąpieniu zdarzenia.
+    d. `SendMessage`służy do wysyłania wiadomości do tego tematu usługi Service Bus. Ten kod po prostu wysyła zestaw losowych wiadomości do tematu okresowo na potrzeby przykładu. Zwykle istnieje system wewnętrznej bazy danych, który wysyła komunikaty, gdy wystąpi zdarzenie.
 
     ```csharp
     public static void SendMessage(string connectionString)
@@ -138,11 +138,11 @@ Pełny przykładowy kod jest dostępny w [Przykłady centrum powiadomień]. Jest
         }
     }
     ```
-2. **ReceiveAndSendNotification**
+2. **ReceiveAndSendNotification (Odbiór i potwierdzanie)**
 
-    a. Ten projekt używa pakietów NuGet *windowsazure. ServiceBus* i **Microsoft. Web. WebJobs. publish** i jest oparty na [Service Bus programowanie/procedura podrzędna].
+    a. W tym projekcie używane są pakiety *WindowsAzure.ServiceBus* i **Microsoft.Web.WebJobs.Publish** NuGet i są oparte na [programowaniu Pub/Sub usługi Service Bus].
 
-    b. Następująca aplikacja konsolowa jest uruchamiana jako [zadanie WebJob platformy Azure] , ponieważ musi działać w sposób ciągły, aby nasłuchiwać komunikatów z systemów LOB/zaplecza. Ta aplikacja jest częścią zaplecza mobilnego.
+    b. Następująca aplikacja konsoli działa jako [azure webjob,] ponieważ musi działać w sposób ciągły, aby nasłuchiwać wiadomości z systemów LoB/backend. Ta aplikacja jest częścią zaplecza mobile.
 
     ```csharp
     static void Main(string[] args)
@@ -158,7 +158,7 @@ Pełny przykładowy kod jest dostępny w [Przykłady centrum powiadomień]. Jest
     }
     ```
 
-    d. `CreateSubscription` służy do tworzenia subskrypcji Service Bus dla tematu, w którym system zaplecza wysyła komunikaty. W zależności od scenariusza biznesowego ten składnik tworzy co najmniej jedną subskrypcję z odpowiednimi tematami (na przykład niektóre mogą odbierać komunikaty z systemu kadr, niektóre z systemu finansowego itd.)
+    d. `CreateSubscription`służy do tworzenia subskrypcji usługi Service Bus dla tematu, w którym system wewnętrznej bazy danych wysyła wiadomości. W zależności od scenariusza biznesowego ten składnik tworzy jedną lub więcej subskrypcji do odpowiednich tematów (na przykład niektóre mogą odbierać wiadomości z systemu HR, niektóre z systemu finance i tak dalej)
 
     ```csharp
     static void CreateSubscription(string connectionString)
@@ -174,7 +174,7 @@ Pełny przykładowy kod jest dostępny w [Przykłady centrum powiadomień]. Jest
     }
     ```
 
-    d. `ReceiveMessageAndSendNotification` jest używany do odczytywania wiadomości z tematu przy użyciu jej subskrypcji, a jeśli odczyt powiedzie się, należy skierować powiadomienie (w przykładowym scenariuszu wyskakujące powiadomienie systemu Windows Native) do wysłania do aplikacji mobilnej przy użyciu usługi Azure Notification Hubs.
+    d. `ReceiveMessageAndSendNotification`służy do odczytywania wiadomości z tematu przy użyciu jego subskrypcji i jeśli odczyt zakończy się pomyślnie, a następnie spreparować powiadomienie (w przykładowym scenariuszu natywnego powiadomienia wyskakującego systemu Windows), które mają zostać wysłane do aplikacji mobilnej przy użyciu usługi Azure Notification Hubs.
 
     ```csharp
     static void ReceiveMessageAndSendNotification(string connectionString)
@@ -226,25 +226,25 @@ Pełny przykładowy kod jest dostępny w [Przykłady centrum powiadomień]. Jest
     }
     ```
 
-    e. Aby opublikować tę aplikację jako **zadanie WebJob**, kliknij prawym przyciskiem myszy rozwiązanie w programie Visual Studio i wybierz polecenie **Publikuj jako zadanie WebJob**
+    e. Aby opublikować tę aplikację jako **WebJob**, kliknij prawym przyciskiem myszy rozwiązanie w programie Visual Studio i wybierz pozycję **Publikuj jako WebJob**
 
     ![][2]
 
-    f. Wybierz swój profil publikowania i Utwórz nową witrynę sieci Web systemu Azure, jeśli jeszcze nie istnieje, która hostuje ten element WebJob i gdy witryna sieci Web zostanie **opublikowana**.
+    f. Wybierz swój profil publikowania i utwórz nową witrynę sieci Web platformy Azure, jeśli jeszcze nie istnieje, która obsługuje tę usługę WebJob, a gdy masz witrynę WebSite, a następnie **publikuj**.
 
     ![][3]
 
-    g. Skonfiguruj zadanie jako "Uruchom w sposób ciągły", aby podczas logowania się do [Azure Portal] powinna wyglądać podobnie do poniższego:
+    g. Skonfiguruj zadanie jako "Uruchom w sposób ciągły", tak aby po zalogowaniu się do [witryny Azure portal] powinien być widoczny w następujący sposób:
 
     ![][4]
 
 3. **EnterprisePushMobileApp**
 
-    a. Ta aplikacja jest aplikacją ze sklepu Windows, która odbiera wyskakujące powiadomienia z Zadania WebJob działającego w ramach zaplecza mobilnego i wyświetla je. Ten kod jest oparty na [Notification Hubs — uniwersalny Samouczek systemu Windows].  
+    a. Ta aplikacja jest aplikacją Ze Sklepu Windows, która odbiera wyskakujące powiadomienia z webjob uruchomiony jako część zaplecza mobile i wyświetlić go. Ten kod jest oparty na [Centrach powiadomień - Windows Universal tutorial].  
 
-    b. Upewnij się, że aplikacja jest włączona, aby otrzymywać wyskakujące powiadomienia.
+    b. Upewnij się, że aplikacja jest włączona do odbierania wyskakujących powiadomień.
 
-    d. Upewnij się, że następujący kod rejestracji Notification Hubs jest wywoływany podczas uruchamiania aplikacji (po zastąpieniu `HubName` i `DefaultListenSharedAccessSignature` wartości:
+    d. Upewnij się, że następujący kod rejestracji Centrum powiadomień jest wywoływany podczas uruchamiania aplikacji (po wymianie `HubName` wartości i: `DefaultListenSharedAccessSignature`
 
     ```csharp
     private async void InitNotificationsAsync()
@@ -266,13 +266,13 @@ Pełny przykładowy kod jest dostępny w [Przykłady centrum powiadomień]. Jest
 
 ### <a name="running-the-sample"></a>Uruchamianie przykładowej aplikacji
 
-1. Upewnij się, że zadanie WebJob działa prawidłowo i zaplanowane do ciągłego działania.
-2. Uruchom **EnterprisePushMobileApp**, który uruchamia aplikację ze sklepu Windows.
-3. Uruchom aplikację konsolową **EnterprisePushBackendSystem** , która symuluje zaplecze obiektów LOB i uruchamia wysyłanie komunikatów, a następnie zobaczysz wyskakujące powiadomienia, które są wyświetlane jak na poniższej ilustracji:
+1. Upewnij się, że twój webjob działa pomyślnie i zaplanowane do uruchomienia w sposób ciągły.
+2. Uruchom **aplikację EnterprisePushMobileApp,** która uruchamia aplikację ze Sklepu Windows.
+3. Uruchom aplikację konsoli **EnterprisePushBackendSystem,** która symuluje zaplecze LoB i rozpoczyna wysyłanie wiadomości, a powiadomienia wyskakujące powinny być wyświetlane w następujący sposób:
 
     ![][5]
 
-4. Wiadomości zostały pierwotnie wysłane do tematów Service Bus, które były monitorowane przez Service Bus subskrypcje w zadaniu sieci Web. Po odebraniu komunikatu zostało utworzone i wysłane powiadomienie do aplikacji mobilnej. Możesz przejrzeć dzienniki zadań WebJob, aby potwierdzić przetwarzanie po przejściu do linku dzienniki w [Azure Portal] zadania sieci Web:
+4. Wiadomości zostały pierwotnie wysłane do tematów usługi Service Bus, który był monitorowany przez subskrypcje usługi Service Bus w zadaniu sieci Web. Po odebraniu wiadomości zostanie utworzone powiadomienie i wysłane do aplikacji mobilnej. Można przeglądać dzienniki WebJob, aby potwierdzić przetwarzanie po przejściu do łącza Dzienniki w [witrynie Azure portal] dla zadania sieci Web:
 
     ![][6]
 
@@ -285,10 +285,10 @@ Pełny przykładowy kod jest dostępny w [Przykłady centrum powiadomień]. Jest
 [6]: ./media/notification-hubs-enterprise-push-architecture/WebJobsLog.png
 
 <!-- Links -->
-[Przykłady centrum powiadomień]: https://github.com/Azure/azure-notificationhubs-samples
-[Azure Mobile Service]: https://azure.microsoft.com/documentation/services/mobile-services/
+[Przykłady Centrum powiadomień]: https://github.com/Azure/azure-notificationhubs-samples
+[Usługa mobilna platformy Azure]: https://azure.microsoft.com/documentation/services/mobile-services/
 [Azure Service Bus]: https://azure.microsoft.com/documentation/articles/fundamentals-service-bus-hybrid-solutions/
-[Service Bus programowanie/procedura podrzędna]: https://azure.microsoft.com/documentation/articles/service-bus-dotnet-how-to-use-topics-subscriptions/
-[Zadanie WebJob platformy Azure]: ../app-service/webjobs-create.md
-[Notification Hubs — uniwersalny Samouczek systemu Windows]: https://azure.microsoft.com/documentation/articles/notification-hubs-windows-store-dotnet-get-started/
-[Azure Portal]: https://portal.azure.com/
+[Programowanie usługi Service Bus Pub/Sub]: https://azure.microsoft.com/documentation/articles/service-bus-dotnet-how-to-use-topics-subscriptions/
+[Azure WebJob]: ../app-service/webjobs-create.md
+[Centra powiadomień — samouczek systemu Windows Universal]: https://azure.microsoft.com/documentation/articles/notification-hubs-windows-store-dotnet-get-started/
+[Portal Azure]: https://portal.azure.com/

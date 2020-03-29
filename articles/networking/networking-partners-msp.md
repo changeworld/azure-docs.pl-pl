@@ -1,64 +1,64 @@
 ---
-title: 'Partnerzy sieci: Azure Networking | Microsoft Docs'
-description: Ten artykuł zawiera listę partnerów sieciowych MSP
+title: 'Partnerzy sieciowi: Sieć azure | Dokumenty firmy Microsoft'
+description: Ten artykuł zawiera listę partnerów msp networking
 services: networking
 author: skishen525
 ms.service: expressroute
 ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: sukishen
-ms.openlocfilehash: 14f9d698f36fd26563677ef5b3cb82fc8ecf3a4c
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: dc78f105d353a9a17af4b33dfc806eed91e7c6dc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77588964"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80063218"
 ---
-# <a name="about-azure-networking-msp-partners"></a>Informacje o partnerach MSP sieci platformy Azure
+# <a name="about-azure-networking-msp-partners"></a>Partnerzy MSP w sieci azure – informacje
 
-[Program partnerski dostawcy usług zarządzanych przez sieć Azure (msp)](https://azure.microsoft.com/blog/enhancing-the-customer-experience-with-the-azure-networking-msp-partner-program/) umożliwia aplikacjom opartym na msp, telcos i systemowym integratorom systemów (SIS) oferowanie usług sieciowych w chmurze i hybrydowych na platformie Azure.
+[Program partnerski azure networking managed service provider (MSP)](https://azure.microsoft.com/blog/enhancing-the-customer-experience-with-the-azure-networking-msp-partner-program/) umożliwia usługom sieciowym skoncentrowanym na programach MSP, telcos i integratorów systemów (SI) oferowanie usług sieciowych w chmurze i hybrydowych usługach skoncentrowanych na portfolio produktów i usług sieciowych platformy Azure.
 
-Usługa Azure Network msp to wyspecjalizowany zbiór dostawców usług zarządzanych, które zaspokajają potrzeby i wyzwania sieci w chmurze przedsiębiorstwa we wszystkich aspektach sieci chmurowej i hybrydowej. Zarządzane usługi sieciowe obejmują co najmniej jedną z następujących usług: Architektura sieci, planowanie, wdrażanie, operacje, konserwacja i optymalizacja.
+MsP usługi Azure Networking to wyspecjalizowany zestaw dostawców usług zarządzanych, którzy odpowiadają na potrzeby i wyzwania związane z siecią w chmurze przedsiębiorstwa we wszystkich aspektach sieci chmurowej i sieci hybrydowej. Zarządzane usługi sieciowe obejmują co najmniej jedną z następujących usług: architektura sieci, planowanie, wdrażanie, operacje, konserwacja i optymalizacja.
 
-![WYMIENIONE][0]
+![Msp][0]
 
-Klienci mogą kupić oferty usług zarządzanych przez MSP w portalu Azure Marketplace lub bezpośrednio z MSP. Usługa msp umożliwia wdrażanie zasobów sieciowych platformy Azure i zarządzanie nimi w ramach subskrypcji i grup zasobów klientów przy użyciu [usługi Azure Lighthouse](https://azure.microsoft.com/services/azure-lighthouse/).
+Klienci mogą kupować oferty usług zarządzanych przez usługę MSP w portalu Azure Marketplace lub bezpośrednio w witrynie MSP. Dostawcy usług msp mogą wdrażać zasoby sieci platformy Azure i zarządzać nimi w subskrypcjach i grupach zasobów klientów przy użyciu [latarni morskiej platformy Azure.](https://azure.microsoft.com/services/azure-lighthouse/)
 
-## <a name="msp"></a>Oferty w portalu Azure Marketplace według partnerów MSP sieci platformy Azure
+## <a name="azure-marketplace-offers-by-azure-networking-msp-partners"></a><a name="msp"></a>Usługi Azure Marketplace są oferty partnerów msp usługi Azure Networking
 
-Skorzystaj z linków w tej sekcji, aby uzyskać więcej informacji na temat zarządzanych usług sieciowych w chmurze oferowanych przez partnerów MSP dla sieci platformy Azure. Jeśli partner usług sieci w chmurze nie jest wymieniony w poniższej sekcji, skontaktuj się z nami. Mogą skontaktować się z nami, wysyłając wiadomość e-mail na adres ManagedVirtualWAN@microsoft.com. 
+Skorzystaj z łączy w tej sekcji, aby uzyskać więcej informacji na temat zarządzanych usług sieci w chmurze oferowanych przez partnerów msp usługi Azure Networking. Jeśli partnera usług sieci w chmurze nie ma na liście w poniższej sekcji, skontaktuj się z nami. Mogą się z nami skontaktować, wysyłając e-mail na adres ManagedVirtualWAN@microsoft.com. 
 
-| **WYMIENIONE** | **Usługi transformacji sieci w chmurze** | **Zarządzane ExpressRoute** | **Zarządzana wirtualna sieć WAN** |
+| **Msp** | **Usługi przekształcania sieci w chmurze** | **Zarządzana usługa ExpressRoute** | **Zarządzana wirtualna sieć WAN** |
 | ---| ---| ---| ---|
-|[ANS — Grupa UK](https://www.ans.co.uk/)|[Azure Managed svc i 10wk Glass](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/ans_group.glassms)|||||
-|[Sieci aryaka Networks](https://www.aryaka.com/azure-msp-vwan-managed-service-provider-launch-partner-aryaka/)||[Aryaka Networks Azure Connect](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/aryaka.cloudconnect_azure_19?tab=Overview)|[Wirtualna sieć WAN aryaka Networks Azure](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/aryaka.aryaka_azure_virtual_wan?tab=Overview) | | |
-|[TESTY](https://www.globalservices.bt.com/en/solutions/products/cloud-connect-azure)|[Konsulting transformacji sieci: 1-HR oceny](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/bt-americas-inc.network-transformation-consulting)|||||
-|[Rozwoje](https://www.coevolve.com/services/azure-networking-services/)|||[Zarządzana granica wirtualna oprogramowania VMware SD-WAN](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/coevolveptylimited1581027739259.managed-vmware-sdwan-edge?tab=Overview)|||
-|[Colt](https://www.colt.net/why-colt/strategic-alliances/microsoft-partnership/msp/)|[Optymalizacja sieci na platformie Azure: Ocena 2-HR](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/colttechnologyservices.azure_networking)|||||
-|[NTT dane](https://us.nttdata.com/en/digital/cloud-transformation)|[Zarządzane usługi: implementacja 10-tygodniowa](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/nttdata-2932930.managed_service)|||||
-|[Equinix](https://www.equinix.com/)|[Optymalizacja pod kątem chmury sieci WAN: 4-dniowa Ocena](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/equinix.cloud_optimized_wan_workshop)|[Strategia łączności ExpressRoute: 3-dniowa warsztat](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/equinix.eps_expressroute)||||
-|[IIJ](https://www.iij.ad.jp/biz/cloudex/)|[Implementacja ExpressRoute: 1-HR — krótkie](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/internet_initiative_japan_inc.iij_cxm_consulting)|[ExpressRoute: implementacja 2-tydz](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/internet_initiative_japan_inc.iij_cxmer_consulting)||||
-|[Infosys](https://www.infosys.com/services/microsoft-cloud-business/pages/index.aspx)|[Infosys Zintegruj + for Azure](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/infosysltd.infosys-integrate-for-azure?tab=Overview)|||||
-|[Interxion](https://www.interxion.com/products/interconnection/cloud-connect/support-your-cloud-strategy/)|[Ocena sieci platformy Azure — 5 dni](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/interxionhq.inxn_azure_networking_assessment)|||||
-|[Ciecz Telecom](https://liquidcloud.africa/azure-networking)|[Gotowość do chmury — Ocena 2 godzin](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/liquidtelecommunicationsoperationslimited.liquid_cloud_readiness_assessment)|||||
-|[Macquarie Telecom](https://macquariecloudservices.com/azure-managed-services/)|[Macquarie Cloud Services konsultacje: 2-HR warsztat](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/macquariecloudservices.clear_for_takeoff_consulting_service)||[Usługa SD-Sieć wirtualna z systemem Macquarie w chmurze](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/macquariecloudservices.nanaged_network_services?tab=Overview)|||
-|[Cloud Services oncore]( https://www.oncore.cloud/services/ue-for-expressroute/)||[UniversalEdge dla usługi Azure ExpressRoute](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/oncore_cloud_services-4944214.universaledge_for_expressroute?tab=Overview)||||
-|[Orixcom]( https://www.orixcom.com/cloud-solutions/)||[Orixcom zarządzane ExpressRoute](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/orixcom.orixcom_managed_expressroute?tab=Overview)|[Orixcom SD-WAN](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/orixcom.orixcom_sd_wan?tab=Overview)|||
-|[SoftBank]( https://www.softbank.jp/biz/nw/nwp/cloud_access/direct_access_for_az/)|[Azure Network Consulting Service: 1-tydz Assessment](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/sbmpn.softbank_nw_msp_service_azure); [Usługa Azure assessment: 1Week](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/sbmpn.softbank_msp_service_azure_01?tab=Overview&pub_source=email&pub_status=success)|||||
-|[TCTS](https://www.tatacommunications-ts.com/index.php)|[Migracja na platformę Azure: Ocena z 3 tygodni](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/tcs.azure_migration_assessment)|||||
-|[Komunikacja tata](https://www.tatacommunications.com/about/our-alliances/microsoft-alliance/)||[Zarządzane usługi Azure ExpressRoute](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/tata_communications.managed_expressroute?tab=Overview)|[Zarządzana wirtualna sieć WAN](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/tata_communications.managed_azure_vwan_for_sdwan?tab=Overview)|||
-|[Czujność](https://vigilant.it/manage-cloud-service/)|[Sprawdzenie kondycji platformy Azure: 5-dniowa Ocena](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/vigilant-it.ahc01)|[ExpressRoute: 5-dniowa implementacja](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/vigilant-it.erd01)|||
-|[Vandis](https://www.vandis.com/microsoft-azure-practice/)||[Vandis zarządzane ExpressRoute](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/vandis.vandis_managed_expressroute?tab=Overview)|[Vandis zarządzane VWAN obsługiwane przez Fortinet](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/vandis.vandis_managed_vwan_powered_by_fortinet?tab=Overview); [Vandis zarządzane VWAN obsługiwane przez Palo Alto Networks](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/vandis.vandis_managed_vwan_powered_by_palo_alto_networks?tab=Overview)|
+|[GRUPA ANS Polska](https://www.ans.co.uk/)|[Implementacja Azure Managed Svc + ANS Glass 10wk](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/ans_group.glassms)|||||
+|[Aryaka Networks](https://www.aryaka.com/azure-msp-vwan-managed-service-provider-launch-partner-aryaka/)||[Aryaka Azure Connect](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/aryaka.cloudconnect_azure_19?tab=Overview)|[Wirtualna sieć WAN platformy Aryaka Azure](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/aryaka.aryaka_azure_virtual_wan?tab=Overview) | | |
+|[BT](https://www.globalservices.bt.com/en/solutions/products/cloud-connect-azure)|[Doradztwo w zakresie transformacji sieci: ocena 1-hr](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/bt-americas-inc.network-transformation-consulting)|||||
+|[Coevolve ( Coevolve )](https://www.coevolve.com/services/azure-networking-services/)|||[Zarządzana krawędź wirtualna VMware SD-WAN](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/coevolveptylimited1581027739259.managed-vmware-sdwan-edge?tab=Overview)|||
+|[Colt](https://www.colt.net/why-colt/strategic-alliances/microsoft-partnership/msp/)|[Optymalizacja sieci na platformie Azure: ocena 2-godzinna](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/colttechnologyservices.azure_networking)|||||
+|[Dane NTT](https://us.nttdata.com/en/digital/cloud-transformation)|[Usługi zarządzane: 10-tygodniowa implementacja](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/nttdata-2932930.managed_service)|||||
+|[Equinix](https://www.equinix.com/)|[Zoptymalizowane pod kątem chmury zaangażowanie w sieci WAN: 4-dniowa ocena](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/equinix.cloud_optimized_wan_workshop)|[Strategia łączności usługi ExpressRoute: 3-dniowe warsztaty](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/equinix.eps_expressroute)||||
+|[IIJ (IIJ)](https://www.iij.ad.jp/biz/cloudex/)|[Implementacja usługi ExpressRoute: briefing 1-hr](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/internet_initiative_japan_inc.iij_cxm_consulting)|[Usługa ExpressRoute: implementacja 2-Wk](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/internet_initiative_japan_inc.iij_cxmer_consulting)||||
+|[Infosys](https://www.infosys.com/services/microsoft-cloud-business/pages/index.aspx)|[Infosys Integrate+ dla platformy Azure](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/infosysltd.infosys-integrate-for-azure?tab=Overview)|||||
+|[Interxion (Interxion)](https://www.interxion.com/products/interconnection/cloud-connect/support-your-cloud-strategy/)|[Ocena sieci platformy Azure — 5 dni](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/interxionhq.inxn_azure_networking_assessment)|||||
+|[Liquid Telecom](https://liquidcloud.africa/azure-networking)|[Gotowość do pracy w chmurze — 2-godzinna ocena](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/liquidtelecommunicationsoperationslimited.liquid_cloud_readiness_assessment)|||||
+|[Macquarie Telekomunikacja](https://macquariecloudservices.com/azure-managed-services/)|[Macquarie Cloud Services Skonsultuj się: Warsztaty 2-godzinne](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/macquariecloudservices.clear_for_takeoff_consulting_service)||[SD-WAN Virtual Edge Zainstaluj przez Macquarie Cloud](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/macquariecloudservices.nanaged_network_services?tab=Overview)|||
+|[Usługi w chmurze Oncore]( https://www.oncore.cloud/services/ue-for-expressroute/)||[UniversalEdge for Azure ExpressRoute](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/oncore_cloud_services-4944214.universaledge_for_expressroute?tab=Overview)||||
+|[Okręg wyborczy Orixcom]( https://www.orixcom.com/cloud-solutions/)||[Orixcom Managed ExpressRoute](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/orixcom.orixcom_managed_expressroute?tab=Overview)|[Orixcom SD-WAN](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/orixcom.orixcom_sd_wan?tab=Overview)|||
+|[Softbank]( https://www.softbank.jp/biz/nw/nwp/cloud_access/direct_access_for_az/)|[Usługa konsultingowa sieci Azure: ocena 1-Wk](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/sbmpn.softbank_nw_msp_service_azure); [Usługa oceny platformy Azure: 1Tygod](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/sbmpn.softbank_msp_service_azure_01?tab=Overview&pub_source=email&pub_status=success)|||||
+|[TCTS (włas inie tct](https://www.tatacommunications-ts.com/index.php)|[Migracja platformy Azure: ocena 3-tygodniowa](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/tcs.azure_migration_assessment)|||||
+|[Tata Communications](https://www.tatacommunications.com/about/our-alliances/microsoft-alliance/)||[Zarządzany zestaw Azure ExpressRoute](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/tata_communications.managed_expressroute?tab=Overview)|[Zarządzana wirtualna sieć WAN](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/tata_communications.managed_azure_vwan_for_sdwan?tab=Overview)|||
+|[Czujny IT](https://vigilant.it/manage-cloud-service/)|[Sprawdzanie kondycji platformy Azure: 5-dniowa ocena](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/vigilant-it.ahc01)|[Usługa ExpressRoute: 5-dniowa realizacja](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/vigilant-it.erd01)|||
+|[Vandis ( Vandis )](https://www.vandis.com/microsoft-azure-practice/)||[Vandis Zarządzany ExpressRoute](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/vandis.vandis_managed_expressroute?tab=Overview)|[Vandis Managed VWAN Powered by Fortinet](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/vandis.vandis_managed_vwan_powered_by_fortinet?tab=Overview); [Vandis Managed VWAN Zasilany przez Palo Alto Networks](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/vandis.vandis_managed_vwan_powered_by_palo_alto_networks?tab=Overview)|
 
-Oferty w portalu Azure Marketplace, w tym nowe zarządzane usługi zabezpieczeń i zarządzane usługi MEC, pochodzące z następujących partnerów usługi MSP sieci platformy Azure znajdują się w naszym planie: [Amdocs](https://www.amdocs.com/); [CenturyLink](https://www.centurylink.com/business/networking/cloud-connectivity.html);    [IX zasięg](https://www.ixreach.com/services/sdn-cloud-connect/);  Z [chmurą](https://intercloud.com/partners/microsoft-azure/);  [KINX](https://www.kinx.net/service/cloud/?lang=en); [Megaport](https://www.megaport.com/services/microsoft-expressroute/);  [OmniClouds](https://omniclouds.com/services/);  [Sejong Telecom](https://www.sejongtelecom.net/en/pages/service/cloud_ms);  [Tech Mahindra](https://networkservices.techmahindra.com/pages/default.aspx); [Federacyjna sieć bezprzewodowa](https://www.federatedwireless.com/caas/)
+Oferty portalu Azure Marketplace, w tym nowe usługi zarządzanych zabezpieczeń i zarządzane usługi MEC od następujących partnerów MSP platformy Azure Networking, znajdują się na naszej mapie drogowej: [Amdocs;](https://www.amdocs.com/) [AXESDN](https://www.axesdn.com/en/azure-msp.html); [CenturyLink](https://www.centurylink.com/business/networking/cloud-connectivity.html);    [IX Zasięg](https://www.ixreach.com/services/sdn-cloud-connect/);  [InterCloud](https://intercloud.com/partners/microsoft-azure/);  [KINX](https://www.kinx.net/service/cloud/?lang=en); [Megaport](https://www.megaport.com/services/microsoft-expressroute/);  [OmniClouds](https://omniclouds.com/services/);  [Sejong Telecom](https://www.sejongtelecom.net/en/pages/service/cloud_ms);  [Tech Mahindra](https://networkservices.techmahindra.com/pages/default.aspx); [Łączność bezprzewodowa federacyjne](https://www.federatedwireless.com/caas/)
 
-## <a name="expressroute"></a>Partnerzy ExpressRoute
+## <a name="expressroute-partners"></a><a name="expressroute"></a>Partnerzy usługi ExpressRoute
 
-Aby uzyskać informacje o partnerach, zobacz [ExpressRoute Partners and Locations](../expressroute/expressroute-locations-providers.md).
+Aby uzyskać informacje o partnerach, zobacz [Partnerzy i lokalizacje usługi ExpressRoute](../expressroute/expressroute-locations-providers.md).
 
-## <a name="vwan"></a>Partnerzy wirtualnej sieci WAN
+## <a name="virtual-wan-partners"></a><a name="vwan"></a>Wirtualni partnerzy WAN
 
-Aby uzyskać informacje o partnerach, zobacz [partnerzy i dostawcy wirtualnej sieci WAN](../virtual-wan/virtual-wan-locations-partners.md).
+Aby uzyskać informacje o partnerach, zobacz [Wirtualni partnerzy i dostawcy sieci WAN](../virtual-wan/virtual-wan-locations-partners.md).
 
 <!--Image References-->
 [0]: ./media/networking-partners-msp/msp.png "Opis programu MSP"

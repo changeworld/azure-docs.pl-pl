@@ -1,6 +1,6 @@
 ---
-title: Odtwarzanie przy użyciu Azure Media Player na platformie Azure | Microsoft Docs
-description: Azure Media Player to odtwarzacz wideo w sieci Web zbudowany w celu odtwarzania zawartości multimedialnej z Microsoft Azure Media Services w wielu różnych przeglądarkach i urządzeniach.
+title: Odtwarzanie za pomocą programu Azure Media Player — Azure | Dokumenty firmy Microsoft
+description: Azure Media Player to internetowy odtwarzacz wideo stworzony do odtwarzania zawartości multimedialnej z usługi Microsoft Azure Media Services na różnych przeglądarkach i urządzeniach.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -12,48 +12,48 @@ ms.topic: article
 ms.date: 07/17/2019
 ms.author: juliako
 ms.openlocfilehash: d9e42e809443a2dd6cdeb989f692b96d63269f79
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78673582"
 ---
-# <a name="azure-media-player-overview"></a>Przegląd Azure Media Player
+# <a name="azure-media-player-overview"></a>Omówienie usługi Azure Media Player
 
-Azure Media Player to odtwarzacz wideo w sieci Web zbudowany w celu odtwarzania zawartości multimedialnej z Microsoft Azure Media Services w wielu różnych przeglądarkach i urządzeniach. Azure Media Player wykorzystuje standardy branżowe, takie jak HTML5, rozszerzenia źródła nośników (MSE) i rozszerzenia nośników zaszyfrowanych (EME), aby zapewnić wzbogacone, adaptacyjne środowisko przesyłania strumieniowego. Jeśli te standardy nie są dostępne na urządzeniu lub w przeglądarce, Azure Media Player używa programu Flash i Silverlight jako technologii rezerwowej. Niezależnie od używanej technologii odtwarzania, deweloperzy będą mieli ujednolicony interfejs JavaScript do uzyskiwania dostępu do interfejsów API. Pozwala to na odtwarzanie zawartości obsługiwanej przez Azure Media Services na szeroką gamę urządzeń i w przeglądarkach bez dodatkowych nakładów pracy.
+Azure Media Player to internetowy odtwarzacz wideo stworzony do odtwarzania zawartości multimedialnej z usługi Microsoft Azure Media Services na różnych przeglądarkach i urządzeniach. Usługa Azure Media Player korzysta ze standardów branżowych, takich jak HTML5, Rozszerzenia źródeł multimediów (MSE) i Rozszerzenia zaszyfrowanych multimediów (EME), aby zapewnić wzbogacone środowisko adaptacyjnego przesyłania strumieniowego. Jeśli te standardy nie są dostępne na urządzeniu lub w przeglądarce, program Azure Media Player używa programów Flash i Silverlight jako technologii rezerwowej. Niezależnie od zastosowanej technologii odtwarzania deweloperzy będą mieli ujednolicony interfejs JavaScript, aby uzyskać dostęp do interfejsów API. Dzięki temu zawartość obsługiwana przez usługę Azure Media Services ma być odtwarzana na wielu różnych urządzeniach i przeglądarkach bez dodatkowego wysiłku.
 
-Microsoft Azure Media Services umożliwia obsługę zawartości przy użyciu HLS, ŁĄCZNIKów Smooth Streaming transmisji strumieniowych, aby odtwarzać zawartość. Azure Media Player uwzględnia te różne formaty i automatycznie odtwarza najlepsze łącze na podstawie możliwości platformy/przeglądarki. Media Services umożliwia również szyfrowanie dynamiczne zasobów za pomocą szyfrowania PlayReady lub szyfrowania koperty AES-128. Azure Media Player umożliwia odszyfrowywanie szyfrowanej zawartości w wersji PlayReady i AES-128, gdy zostanie odpowiednio skonfigurowana. 
+Usługa Microsoft Azure Media Services umożliwia przesyłanie zawartości w formatach strumieniowego HLS, DASH i Smooth Streaming w celu odtwarzania zawartości. Program Azure Media Player uwzględnia te różne formaty i automatycznie odtwarza najlepsze łącze oparte na możliwościach platformy/przeglądarki. Usługa Media Services umożliwia również dynamiczne szyfrowanie zasobów za pomocą szyfrowania PlayReady lub szyfrowania kopert AES-128 bitów. Usługa Azure Media Player umożliwia odszyfrowywanie zawartości zaszyfrowanej bitem PlayReady i AES-128, gdy jest odpowiednio skonfigurowana. 
 
 > [!NOTE]
-> Odtwarzanie HTTPS jest wymagane do zaszyfrowanej zawartości Widevine.
+> Odtwarzanie protokołu HTTPS jest wymagane dla zaszyfrowanej zawartości Widevine.
 
-## <a name="use-azure-media-player-demo-page"></a>Użyj Azure Media Player stronie demonstracyjnej
+## <a name="use-azure-media-player-demo-page"></a>Korzystanie ze strony demonstracyjnej programu Azure Media Player
 
-### <a name="start-using"></a>Rozpocznij korzystanie z
+### <a name="start-using"></a>Zacznij używać
 
-Korzystając ze [strony demonstracyjnej Azure Media Player](https://aka.ms/azuremediaplayer) , można odtwarzać Azure Media Services przykłady lub własny strumień.  
+Za pomocą [strony demonstracyjnej programu Azure Media Player](https://aka.ms/azuremediaplayer) można odtwarzać przykłady usługi Azure Media Services lub własny strumień.  
 
-Aby odtworzyć nowe wideo, wklej inny adres URL i naciśnij przycisk **Aktualizuj**.
+Aby odtworzyć nowy film, wklej inny adres URL i naciśnij **przycisk Aktualizuj**.
 
-Aby skonfigurować różne opcje odtwarzania (na przykład Tech, language lub Encryption), naciśnij przycisk **Zaawansowane opcje**.
+Aby skonfigurować różne opcje odtwarzania (na przykład technologię, język lub szyfrowanie), naciśnij przycisk **Opcje zaawansowane**.
 
 ![Azure Media Player](./media/azure-media-player/home-page.png)
 
 ### <a name="monitor-diagnostics-of-a-video-stream"></a>Monitorowanie diagnostyki strumienia wideo
 
-Możesz użyć [strony demonstracyjnej Azure Media Player](https://aka.ms/azuremediaplayer) do monitorowania diagnostyki strumienia wideo. 
+Za pomocą [strony demonstracyjnej programu Azure Media Player](https://aka.ms/azuremediaplayer) można monitorować diagnostykę strumienia wideo. 
 
-![Diagnostyka Azure Media Player](./media/azure-media-player/diagnostics.png)
+![Diagnostyka programu Azure Media Player](./media/azure-media-player/diagnostics.png)
 
-## <a name="set-up-azure-media-player-in-your-html"></a>Konfigurowanie Azure Media Player w kodzie HTML
+## <a name="set-up-azure-media-player-in-your-html"></a>Konfigurowanie programu Azure Media Player w kodzie HTML
 
-Azure Media Player można łatwo skonfigurować. Uzyskanie podstawowego odtwarzania zawartości multimedialnej z konta Media Services trwa zaledwie kilka minut. Szczegółowe informacje na temat konfigurowania i konfigurowania Azure Media Player można znaleźć w [dokumentacji Azure Media Player](https://aka.ms/ampdocs) . 
+Program Azure Media Player jest łatwy w konfiguracji. Uzyskanie podstawowego odtwarzania zawartości multimedialnej z konta usługi Media Services zajmuje tylko kilka chwil. Zobacz [dokumentację programu Azure Media Player,](https://aka.ms/ampdocs) aby uzyskać szczegółowe informacje na temat konfigurowania i konfigurowania programu Azure Media Player. 
 
 ## <a name="additional-notes"></a>Uwagi dodatkowe
 
-* Widevine to usługa świadczona przez firmę Google Inc. z zastrzeżeniem warunków użytkowania i zasad zachowania poufności informacji w firmie Google, Inc.
+* Widevine jest usługą świadczoną przez Google Inc. i podlega warunkom korzystania z usługi oraz Polityce prywatności Firmy Google, Inc.
 
 ## <a name="next-steps"></a>Następne kroki
 
 - [Dokumentacja usługi Azure Media Player](https://aka.ms/ampdocs)
-- [Przykłady Azure Media Player](https://aka.ms/ampsamples)
+- [Przykłady programu Azure Media Player](https://aka.ms/ampsamples)

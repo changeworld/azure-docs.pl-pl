@@ -1,6 +1,6 @@
 ---
-title: PowerShell — Dodawanie użytkownika zewnętrznego do laboratorium w Azure DevTest Labs
-description: Ten artykuł zawiera skrypt Azure PowerShell, który dodaje użytkownika zewnętrznego do laboratorium w Azure DevTest Labs.
+title: PowerShell — dodawanie użytkownika zewnętrznego do laboratorium w laboratorium usługi Azure DevTest Labs
+description: Ten artykuł zawiera skrypt programu Azure PowerShell, który dodaje użytkownika zewnętrznego do laboratorium w laboratorium usługi Azure DevTest Labs.
 services: lab-services
 author: spelluru
 manager: ''
@@ -13,22 +13,22 @@ ms.topic: article
 ms.date: 01/24/2020
 ms.author: spelluru
 ms.openlocfilehash: e9efe5476da051d905feff3d6803cb60ea0c4beb
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/26/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76760491"
 ---
-# <a name="use-powershell-to-add-an-external-user-to-a-lab-in-azure-devtest-labs"></a>Dodawanie użytkownika zewnętrznego do laboratorium w Azure DevTest Labs przy użyciu programu PowerShell
+# <a name="use-powershell-to-add-an-external-user-to-a-lab-in-azure-devtest-labs"></a>Dodawanie użytkownika zewnętrznego do laboratorium w laboratorium usługi Azure DevTest Labs za pomocą programu PowerShell
 
-Ten przykładowy skrypt programu PowerShell dodaje użytkownika zewnętrznego do laboratorium w Azure DevTest Labs. 
+Ten przykładowy skrypt programu PowerShell dodaje użytkownika zewnętrznego do laboratorium w laboratorium usługi Azure DevTest Labs. 
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh.md)]
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-* **Laboratorium**. Skrypt wymaga posiadania istniejącego laboratorium. 
+* **Laboratorium**. Skrypt wymaga istniejącego laboratorium. 
 
 ## <a name="sample-script"></a>Przykładowy skrypt
 
@@ -40,11 +40,11 @@ W tym skrypcie użyto następujących poleceń:
 
 | Polecenie | Uwagi |
 |---|---|
-| [Get-AzADUser](/powershell/module/az.resources/get-azaduser) | Ponawia próbę obiektu użytkownika z usługi Azure Active Directory. |
+| [Get-AzADUżycieli](/powershell/module/az.resources/get-azaduser) | Ponawia ponowny prób obiektu użytkownika z usługi Azure active directory. |
 | [New-AzRoleAssignment](/powershell/module/az.resources/new-azroleassignment) | Przypisuje określoną rolę do określonego podmiotu zabezpieczeń w określonym zakresie. |
 
 ## <a name="next-steps"></a>Następne kroki
 
 Aby uzyskać więcej informacji na temat programu Azure PowerShell, zobacz [dokumentację programu Azure PowerShell](https://docs.microsoft.com/powershell/).
 
-Dodatkowe przykłady skryptów programu Azure Lab Services PowerShell można znaleźć w [przykładach Azure Lab Services programu PowerShell](../samples-powershell.md).
+Dodatkowe przykłady skryptów programu Azure Lab Services PowerShell można znaleźć w [przykładach programu Azure Lab Services PowerShell.](../samples-powershell.md)

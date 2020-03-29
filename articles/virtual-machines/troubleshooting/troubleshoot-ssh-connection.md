@@ -1,7 +1,7 @@
 ---
-title: Rozwiązywanie problemów z połączeniami SSH z maszyną wirtualną platformy Azure | Microsoft Docs
-description: Jak rozwiązywać problemy, takie jak "połączenie SSH nie powiodło się" lub "odmowa połączenia SSH" dla maszyny wirtualnej platformy Azure z systemem Linux.
-keywords: odmówiono połączenia SSH, błąd SSH, usługa Azure SSH, Niepowodzenie połączenia SSH
+title: Rozwiązywanie problemów z połączeniem SSH z maszyną wirtualną platformy Azure | Dokumenty firmy Microsoft
+description: Jak rozwiązać problemy, takie jak "Połączenie SSH nie powiodło się" lub "Odmowa połączenia SSH" dla maszyny Wirtualnej Platformy Azure z systemem Linux.
+keywords: połączenie ssh odmówił, błąd ssh, azure ssh, połączenie SSH nie powiodło się
 services: virtual-machines-linux
 documentationcenter: ''
 author: genlin
@@ -13,121 +13,127 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: troubleshooting
 ms.date: 05/30/2017
 ms.author: genli
-ms.openlocfilehash: 1194b2d90e5a12b1ecf3664a48055ca763f31a4f
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: f221a0bdf579dbbf42ecf64e18803decfb718456
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77919451"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80060660"
 ---
-# <a name="troubleshoot-ssh-connections-to-an-azure-linux-vm-that-fails-errors-out-or-is-refused"></a>Rozwiązywanie problemów z połączeniami SSH z maszyną wirtualną platformy Azure z systemem Linux, która kończy się niepowodzeniem, zawiera błędy lub
-Ten artykuł ułatwia znajdowanie i rozwiązywanie problemów występujących w związku z błędami Secure Shell (SSH), niepowodzeń połączeń SSH lub odrzucanie protokołu SSH podczas próby nawiązania połączenia z maszyną wirtualną z systemem Linux. Możesz Azure Portal użyć rozszerzenia dostępu do interfejsu wiersza polecenia platformy Azure dla systemu Linux w celu rozwiązywania problemów z połączeniami i ich rozwiązywania.
+# <a name="troubleshoot-ssh-connections-to-an-azure-linux-vm-that-fails-errors-out-or-is-refused"></a>Troubleshoot SSH connections to an Azure Linux VM that fails, errors out, or is refused (Rozwiązywanie problemów dotyczących połączeń SSH z maszyną wirtualną z systemem Linux — niepowodzenia, błędy lub odmowa połączenia)
+Ten artykuł pomaga znaleźć i rozwiązać problemy, które występują z powodu błędów secure shell (SSH), błędy połączenia SSH lub SSH odmawia podczas próby połączenia z maszyną wirtualną systemu Linux (VM). Aby rozwiązać i rozwiązać problemy z połączeniem, można użyć usługi Azure portal, interfejsu wiersza polecenia interfejsu wiersza polecenia platformy Azure lub rozszerzenia programu VM Access dla systemu Linux.
 
 
-Jeśli potrzebujesz więcej pomocy w dowolnym punkcie tego artykułu, możesz skontaktować się z ekspertami platformy Azure na [forach MSDN i Stack Overflow](https://azure.microsoft.com/support/forums/). Alternatywnie mogą zgłaszać zdarzenia pomocy technicznej platformy Azure. Przejdź do [witryny pomocy technicznej systemu Azure](https://azure.microsoft.com/support/options/) i wybierz pozycję **Uzyskaj pomoc techniczną**. Aby uzyskać informacje o korzystaniu z pomocy technicznej platformy Azure, przeczytaj temat [Microsoft Azure support — często zadawane pytania](https://azure.microsoft.com/support/faq/).
+Jeśli potrzebujesz więcej pomocy w dowolnym momencie tego artykułu, możesz skontaktować się z ekspertami platformy Azure na [forach MSDN Azure i Stack Overflow](https://azure.microsoft.com/support/forums/). Alternatywnie można zgłosić zdarzenie pomocy technicznej platformy Azure. Przejdź do [witryny pomocy technicznej platformy Azure](https://azure.microsoft.com/support/options/) i wybierz pozycję Uzyskaj pomoc **techniczną**. Aby uzyskać informacje na temat korzystania z pomocy technicznej platformy Azure, przeczytaj często zadawane [pytania dotyczące pomocy technicznej platformy Microsoft Azure](https://azure.microsoft.com/support/faq/).
 
-## <a name="quick-troubleshooting-steps"></a>Szybkie rozwiązywanie problemów
-Po każdym kroku rozwiązywania problemów spróbuj ponownie nawiązać połączenie z maszyną wirtualną.
+## <a name="quick-troubleshooting-steps"></a>Szybkie kroki rozwiązywania problemów
+Po każdym kroku rozwiązywania problemów spróbuj ponownie połączyć się z maszyną wirtualną.
 
-1. [Zresetuj konfigurację protokołu SSH](#reset-config).
+1. [Zresetuj konfigurację SSH](#reset-config).
 2. [Zresetuj poświadczenia](#reset-credentials) dla użytkownika.
-3. Sprawdź, czy reguły [sieciowej grupy zabezpieczeń](../../virtual-network/security-overview.md) zezwalają na ruch protokołu SSH.
-   * Upewnij się, że istnieje [reguła sieciowej grupy zabezpieczeń](#security-rules) zezwalająca na ruch SSH (domyślnie port TCP 22).
-   * Nie można użyć przekierowania/mapowania portów bez użycia modułu równoważenia obciążenia platformy Azure.
-4. Sprawdź [kondycję zasobów maszyny wirtualnej](../../resource-health/resource-health-overview.md).
-   * Upewnij się, że maszyna wirtualna jest w dobrej kondycji.
-   * Jeśli [Diagnostyka rozruchu jest włączona](boot-diagnostics.md), upewnij się, że maszyna wirtualna nie zgłasza błędów rozruchu w dziennikach.
+3. Sprawdź, czy [reguły sieciowej grupy zabezpieczeń](../../virtual-network/security-overview.md) zezwalają na ruch SSH.
+   * Upewnij się, że istnieje [reguła sieciowej grupy zabezpieczeń](#security-rules) zezwalana na ruch SSH (domyślnie port TCP 22).
+   * Nie można użyć przekierowania /mapowania portów bez użycia modułu równoważenia obciążenia platformy Azure.
+4. Sprawdź [kondycję zasobu maszyny Wirtualnej](../../resource-health/resource-health-overview.md).
+   * Upewnij się, że maszyny Wirtualnej raportów jako w dobrej kondycji.
+   * Jeśli [masz włączoną diagnostykę rozruchu,](boot-diagnostics.md)sprawdź, czy maszyna wirtualna nie zgłasza błędów rozruchowych w dziennikach.
 5. [Uruchom ponownie maszynę wirtualną](#restart-vm).
-6. [Wdróż ponownie maszynę wirtualną](#redeploy-vm).
+6. [Ponowne wdrożenie maszyny Wirtualnej](#redeploy-vm).
 
-Kontynuuj odczytywanie, aby zapoznać się z bardziej szczegółowymi krokami rozwiązywania problemów.
+Kontynuuj czytanie, aby uzyskać bardziej szczegółowe kroki rozwiązywania problemów i wyjaśnienia.
 
-## <a name="available-methods-to-troubleshoot-ssh-connection-issues"></a>Dostępne metody rozwiązywania problemów z połączeniami SSH
-Możesz zresetować poświadczenia lub konfigurację protokołu SSH przy użyciu jednej z następujących metod:
+## <a name="available-methods-to-troubleshoot-ssh-connection-issues"></a>Dostępne metody rozwiązywania problemów z połączeniem SSH
+Poświadczenia lub konfigurację SSH można zresetować przy użyciu jednej z następujących metod:
 
-* [Azure Portal](#use-the-azure-portal) — doskonały, jeśli chcesz szybko zresetować konfigurację SSH lub klucz SSH i nie masz zainstalowanych narzędzi platformy Azure.
-* [Konsola szeregowa maszyny wirtualnej platformy Azure](https://aka.ms/serialconsolelinux) — konsola szeregowa maszyny wirtualnej będzie działała niezależnie od konfiguracji SSH i zapewnia interaktywną konsolę dla maszyny wirtualnej. W rzeczywistości sytuacje, w których zaprojektowano konsolę szeregową, aby pomóc w rozwiązaniu problemu. Więcej szczegółów poniżej.
-* [Interfejs wiersza polecenia platformy Azure](#use-the-azure-cli) — Jeśli jesteś już w wierszu poleceń, szybko Zresetuj konfigurację SSH lub poświadczenia. Jeśli pracujesz z klasyczną maszyną wirtualną, możesz użyć [klasycznego interfejsu wiersza polecenia platformy Azure](#use-the-azure-classic-cli).
-* [Rozszerzenie VMAccessForLinux platformy Azure](#use-the-vmaccess-extension) — tworzenie i ponowne używanie plików definicji JSON w celu zresetowania konfiguracji SSH lub poświadczeń użytkownika.
+* [Portal Azure](#use-the-azure-portal) — świetnie, jeśli chcesz szybko zresetować konfigurację SSH lub klucz SSH i nie masz zainstalowanych narzędzi platformy Azure.
+* [Konsola szeregowa maszyny Wirtualnej platformy Azure](https://aka.ms/serialconsolelinux) — konsola szeregowa maszyny Wirtualnej będzie działać niezależnie od konfiguracji SSH i zapewni ci interaktywną konsolę do maszyny Wirtualnej. W rzeczywistości sytuacje "nie mogą SSH" są w szczególności tym, co konsola seryjna została zaprojektowana, aby pomóc rozwiązać. Szczegółowe informacje można znaleźć poniżej.
+* [Interfejsu wiersza polecenia platformy Azure](#use-the-azure-cli) — jeśli jesteś już w wierszu polecenia, szybko zresetuj konfigurację lub poświadczenia SSH. Jeśli pracujesz z klasyczną maszyną wirtualną, możesz użyć [klasycznego interfejsu wiersza polecenia platformy Azure.](#use-the-azure-classic-cli)
+* [Rozszerzenie usługi Azure VMAccessForLinux](#use-the-vmaccess-extension) — tworzenie i ponowne używanie plików definicji json w celu zresetowania konfiguracji SSH lub poświadczeń użytkownika.
 
-Po każdym kroku rozwiązywania problemów spróbuj ponownie nawiązać połączenie z maszyną wirtualną. Jeśli nadal nie można nawiązać połączenia, wypróbuj następny krok.
+Po każdym kroku rozwiązywania problemów spróbuj ponownie połączyć się z maszyną wirtualną. Jeśli nadal nie możesz się połączyć, spróbuj wykonać następny krok.
 
 ## <a name="use-the-azure-portal"></a>Korzystanie z witryny Azure Portal
-Azure Portal umożliwia szybkie Resetowanie konfiguracji SSH lub poświadczeń użytkownika bez instalowania narzędzi na komputerze lokalnym.
+Portal Azure zawiera szybki sposób resetowania konfiguracji SSH lub poświadczeń użytkownika bez instalowania żadnych narzędzi na komputerze lokalnym.
 
-Aby rozpocząć, wybierz maszynę wirtualną w Azure Portal. Przewiń w dół do sekcji **Pomoc techniczna i rozwiązywanie problemów** , a następnie wybierz pozycję **zresetuj hasło** , jak w poniższym przykładzie:
+Aby rozpocząć, wybierz maszynę wirtualną w witrynie Azure portal. Przewiń w dół do sekcji **Pomoc techniczna + Rozwiązywanie problemów** i wybierz **pozycję Resetuj hasło,** jak w poniższym przykładzie:
 
-![Zresetuj konfigurację SSH lub poświadczenia w Azure Portal](./media/troubleshoot-ssh-connection/reset-credentials-using-portal.png)
+![Resetowanie konfiguracji ssh lub poświadczeń w witrynie Azure portal](./media/troubleshoot-ssh-connection/reset-credentials-using-portal.png)
 
-### <a name="a-idreset-config-reset-the-ssh-configuration"></a><a id="reset-config" />zresetować konfigurację SSH
-Aby zresetować konfigurację protokołu SSH, wybierz pozycję `Reset configuration only` w sekcji **tryb** , tak jak w poprzednim zrzucie ekranu, a następnie wybierz pozycję **Aktualizuj**. Po zakończeniu tej akcji spróbuj ponownie uzyskać dostęp do maszyny wirtualnej.
+### <a name="reset-the-ssh-configuration"></a><a id="reset-config" />Resetowanie konfiguracji SSH
+Aby zresetować konfigurację `Reset configuration only` SSH, wybierz w sekcji **Tryb,** jak na poprzednim zrzucie ekranu, a następnie wybierz pozycję **Aktualizuj**. Po zakończeniu tej akcji spróbuj ponownie uzyskać dostęp do maszyny Wirtualnej.
 
-### <a name="a-idreset-credentials-reset-ssh-credentials-for-a-user"></a><a id="reset-credentials" />resetowania poświadczeń SSH dla użytkownika
-Aby zresetować poświadczenia istniejącego użytkownika, wybierz opcję `Reset SSH public key` lub `Reset password` w sekcji **tryb** jak w poprzednim zrzucie ekranu. Określ nazwę użytkownika i klucz SSH lub nowe hasło, a następnie wybierz pozycję **Aktualizuj**.
+### <a name="reset-ssh-credentials-for-a-user"></a><a id="reset-credentials" />Reset SSH credentials for a user (Resetowanie poświadczeń protokołu SSH użytkownika)
+Aby zresetować poświadczenia istniejącego użytkownika, `Reset SSH public key` wybierz `Reset password` jedną lub w sekcji **Tryb,** jak w poprzednim zrzucie ekranu. Określ nazwę użytkownika i klucz SSH lub nowe hasło, a następnie wybierz pozycję **Aktualizuj**.
 
-Możesz również utworzyć użytkownika z uprawnieniami sudo na maszynie wirtualnej z tego menu. Wprowadź nową nazwę użytkownika i skojarzone hasło lub klucz SSH, a następnie wybierz pozycję **Aktualizuj**.
+Można również utworzyć użytkownika z uprawnieniami sudo na maszynie wirtualnej z tego menu. Wprowadź nową nazwę użytkownika i skojarzone hasło lub klucz SSH, a następnie wybierz pozycję **Aktualizuj**.
 
-### <a name="a-idsecurity-rules-check-security-rules"></a><a id="security-rules" />sprawdzić reguły zabezpieczeń
+### <a name="check-security-rules"></a><a id="security-rules" />Sprawdzanie reguł zabezpieczeń
 
-Użyj [weryfikacji przepływu IP](../../network-watcher/network-watcher-check-ip-flow-verify-portal.md) , aby potwierdzić, czy reguła w sieciowej grupie zabezpieczeń blokuje ruch do lub z maszyny wirtualnej. Możesz również przejrzeć obowiązujące zasady grupy zabezpieczeń, aby upewnić się, że przychodząca reguła sieciowej grupy zabezpieczeń "Zezwalaj" istnieje i ma priorytet dla portu SSH (domyślnie 22). Aby uzyskać więcej informacji, zobacz Używanie obowiązujących [reguł zabezpieczeń w celu rozwiązywania problemów z przepływem ruchu maszyn wirtualnych](../../virtual-network/diagnose-network-traffic-filter-problem.md).
+Sprawdź [przepływ ip,](../../network-watcher/network-watcher-check-ip-flow-verify-portal.md) aby potwierdzić, czy reguła w sieciowej grupie zabezpieczeń blokuje ruch do lub z maszyny wirtualnej. Można również przejrzeć reguły skutecznej grupy zabezpieczeń, aby upewnić się, że przychodząca reguła sieciowej grupy zabezpieczeń istnieje i jest priorytetowa dla portu SSH (domyślnie 22). Aby uzyskać więcej informacji, zobacz [Rozwiązywanie problemów z przepływem ruchu maszyn wirtualnych przy użyciu skutecznych reguł zabezpieczeń](../../virtual-network/diagnose-network-traffic-filter-problem.md).
 
-### <a name="check-routing"></a>Sprawdzanie routingu
+### <a name="check-routing"></a>Sprawdź routing
 
-Użyj funkcji [następnego przeskoku](../../network-watcher/network-watcher-check-next-hop-portal.md) Network Watcher, aby upewnić się, że trasa nie uniemożliwia kierowania ruchu do lub z maszyny wirtualnej. Możesz również przejrzeć obowiązujące trasy, aby zobaczyć wszystkie efektywne trasy dla interfejsu sieciowego. Aby uzyskać więcej informacji, zobacz [Korzystanie z efektywnych tras w celu rozwiązywania problemów z przepływem ruchu maszyn wirtualnych](../../virtual-network/diagnose-network-routing-problem.md).
+Użyj funkcji [następnego przeskoku](../../network-watcher/network-watcher-check-next-hop-portal.md) obserwatora sieci, aby potwierdzić, że trasa nie uniemożliwia kierowania ruchu do lub z maszyny wirtualnej. Można również przejrzeć efektywne trasy, aby wyświetlić wszystkie skuteczne trasy dla interfejsu sieciowego. Aby uzyskać więcej informacji, zobacz [Rozwiązywanie problemów z przepływem ruchu maszyn wirtualnych za pomocą skutecznych tras](../../virtual-network/diagnose-network-routing-problem.md).
 
-## <a name="use-the-azure-vm-serial-console"></a>Korzystanie z konsoli szeregowej maszyny wirtualnej platformy Azure
-[Konsola szeregowa maszyny wirtualnej platformy Azure](./serial-console-linux.md) zapewnia dostęp do konsoli opartej na tekście dla maszyn wirtualnych z systemem Linux. Konsoli programu można użyć do rozwiązywania problemów z połączeniem SSH w interakcyjnej powłoki. Upewnij się, że spełniono [wymagania wstępne](./serial-console-linux.md#prerequisites) dotyczące korzystania z konsoli szeregowej, i spróbuj użyć poniższych poleceń, aby jeszcze bardziej rozwiązać problemy z łącznością SSH.
+## <a name="use-the-azure-vm-serial-console"></a>Korzystanie z konsoli szeregowej maszyny Wirtualnej platformy Azure
+[Konsola szeregowa maszyny Wirtualnej Platformy Azure](./serial-console-linux.md) zapewnia dostęp do konsoli tekstowej dla maszyn wirtualnych systemu Linux. Za pomocą konsoli można rozwiązywać problemy z połączeniem SSH w interaktywnej powłoce. Upewnij się, że spełniasz [wymagania wstępne dotyczące](./serial-console-linux.md#prerequisites) korzystania z konsoli szeregowej i wypróbuj poniższe polecenia, aby dalej rozwiązywać problemy z łącznością SSH.
 
-### <a name="check-that-ssh-is-running"></a>Sprawdź, czy jest uruchomiony protokół SSH
-Aby sprawdzić, czy na maszynie wirtualnej jest uruchomiony protokół SSH, można użyć następującego polecenia:
+### <a name="check-that-ssh-is-running"></a>Sprawdź, czy SSH jest uruchomiony
+Aby sprawdzić, czy na maszynie wirtualnej jest uruchomiony następujący komunikat:
+
+```console
+ps -aux | grep ssh
 ```
-$ ps -aux | grep ssh
-```
-Jeśli istnieją jakieś dane wyjściowe, protokół SSH jest uruchomiony.
+
+Jeśli istnieje jakiekolwiek dane wyjściowe, SSH jest uruchomiony.
 
 ### <a name="check-which-port-ssh-is-running-on"></a>Sprawdź, który port SSH jest uruchomiony
-Możesz użyć następującego polecenia, aby sprawdzić, który port SSH jest uruchomiony:
+
+Za pomocą następującego polecenia można sprawdzić, na którym porcie działa SSH:
+
+```console
+sudo grep Port /etc/ssh/sshd_config
 ```
-$ sudo grep Port /etc/ssh/sshd_config
-```
-Dane wyjściowe będą wyglądać następująco:
-```
+
+Twoje dane wyjściowe będą wyglądać mniej więcej tak:
+
+```output
 Port 22
 ```
 
 ## <a name="use-the-azure-cli"></a>Używanie interfejsu wiersza polecenia platformy Azure
-Jeśli jeszcze tego nie zrobiono, zainstaluj najnowszy [interfejs wiersza polecenia platformy Azure](/cli/azure/install-az-cli2) i zaloguj się na konto platformy Azure za pomocą polecenia [AZ login](/cli/azure/reference-index).
+Jeśli jeszcze tego nie zrobiłeś, zainstaluj najnowszą [platformę Cli platformy Azure](/cli/azure/install-az-cli2) i zaloguj się do konta platformy Azure przy użyciu [logowania az.](/cli/azure/reference-index)
 
-Jeśli utworzono i przekazano niestandardowy obraz dysku systemu Linux, upewnij się, że jest zainstalowany [Agent Microsoft Azure Linux](../extensions/agent-linux.md) w wersji 2.0.5 lub nowszej. W przypadku maszyn wirtualnych utworzonych przy użyciu obrazów galerii to rozszerzenie dostępu jest już zainstalowane i skonfigurowane.
+Jeśli utworzono i udostępnino niestandardowy obraz dysku systemu Linux, upewnij się, że jest zainstalowany [agent Microsoft Azure Linux Agent](../extensions/agent-linux.md) w wersji 2.0.5 lub nowszej. W przypadku maszyn wirtualnych utworzonych przy użyciu obrazów galerii to rozszerzenie dostępu jest już zainstalowane i skonfigurowane.
 
 ### <a name="reset-ssh-configuration"></a>Resetowanie konfiguracji SSH
-Możesz najpierw spróbować zresetować konfigurację SSH do wartości domyślnych i ponownie uruchomić serwer SSH na maszynie wirtualnej. Nie powoduje to zmiany nazwy konta użytkownika, hasła lub kluczy SSH.
-Poniższy przykład używa [AZ VM User Reset-SSH](/cli/azure/vm/user) do resetowania konfiguracji SSH na maszynie wirtualnej o nazwie `myVM` w `myResourceGroup`. Użyj własnych wartości w następujący sposób:
+Początkowo można spróbować zresetować konfigurację SSH do wartości domyślnych i ponownie uruchomić serwer SSH na maszynie wirtualnej. Nie zmienia to nazwy konta użytkownika, hasła ani kluczy SSH.
+W poniższym przykładzie użyto [resetowania przez użytkownika az vm,](/cli/azure/vm/user) `myVM` aby `myResourceGroup`zresetować konfigurację SSH na maszynie wirtualnej o nazwie w programie . Użyj własnych wartości w następujący sposób:
 
 ```azurecli
 az vm user reset-ssh --resource-group myResourceGroup --name myVM
 ```
 
-### <a name="reset-ssh-credentials-for-a-user"></a>Resetowanie poświadczeń SSH dla użytkownika
-Poniższy przykład używa [AZ VM User Update](/cli/azure/vm/user) do resetowania poświadczeń dla `myUsername` do wartości określonej w `myPassword`na maszynie wirtualnej o nazwie `myVM` w `myResourceGroup`. Użyj własnych wartości w następujący sposób:
+### <a name="reset-ssh-credentials-for-a-user"></a>Reset SSH credentials for a user (Resetowanie poświadczeń protokołu SSH użytkownika)
+W poniższym przykładzie użyto [aktualizacji użytkownika az vm,](/cli/azure/vm/user) `myPassword`aby zresetować poświadczenia `myVM` `myResourceGroup` `myUsername` do wartości określonej w programie , na maszynie Wirtualnej o nazwie w programie . Użyj własnych wartości w następujący sposób:
 
 ```azurecli
 az vm user update --resource-group myResourceGroup --name myVM \
      --username myUsername --password myPassword
 ```
 
-W przypadku korzystania z uwierzytelniania za pomocą klucza SSH można zresetować klucz SSH dla danego użytkownika. Poniższy przykład używa **AZ VM Access Set-Linux-User** do aktualizowania klucza SSH przechowywanego w `~/.ssh/id_rsa.pub` dla użytkownika o nazwie `myUsername`, na maszynie wirtualnej o nazwie `myVM` w `myResourceGroup`. Użyj własnych wartości w następujący sposób:
+W przypadku korzystania z uwierzytelniania za pomocą klucza SSH można zresetować klucz SSH dla danego użytkownika. W poniższym przykładzie użyto **az vm access set-linux-user** do zaktualizowania klucza SSH przechowywanego `~/.ssh/id_rsa.pub` dla użytkownika o nazwie `myUsername`, na maszynie Wirtualnej o nazwie `myVM` w `myResourceGroup`. Użyj własnych wartości w następujący sposób:
 
 ```azurecli
 az vm user update --resource-group myResourceGroup --name myVM \
     --username myUsername --ssh-key-value ~/.ssh/id_rsa.pub
 ```
 
-## <a name="use-the-vmaccess-extension"></a>Użyj rozszerzenia VMAccess
-Rozszerzenie dostępu do maszyny wirtualnej dla systemu Linux odczytuje w pliku JSON, który definiuje akcje do wykonania. Te akcje obejmują Resetowanie SSHD, resetowanie klucza SSH lub Dodawanie użytkownika. Nadal używasz interfejsu wiersza polecenia platformy Azure, aby wywołać rozszerzenie VMAccess, ale w razie potrzeby możesz ponownie użyć plików JSON na wielu maszynach wirtualnych. Takie podejście umożliwia utworzenie repozytorium plików JSON, które następnie można wywołać dla danego scenariusza.
+## <a name="use-the-vmaccess-extension"></a>Korzystanie z rozszerzenia VMAccess
+Rozszerzenie dostępu do maszyn wirtualnych dla systemu Linux odczytuje w pliku json, który definiuje akcje do przeprowadzenia. Akcje te obejmują resetowanie dysków SSHD, resetowanie klucza SSH lub dodawanie użytkownika. Nadal używasz interfejsu wiersza polecenia platformy Azure do wywołania rozszerzenia VMAccess, ale w razie potrzeby można ponownie użyć plików json na wielu maszynach wirtualnych. Takie podejście umożliwia utworzenie repozytorium plików json, które następnie można wywołać dla danego scenariusza.
 
-### <a name="reset-sshd"></a>Resetuj SSHD
-Utwórz plik o nazwie `settings.json` z następującą zawartością:
+### <a name="reset-sshd"></a>Resetowanie dysków SSHD
+Utwórz plik `settings.json` o nazwie o następującej zawartości:
 
 ```json
 {
@@ -135,15 +141,15 @@ Utwórz plik o nazwie `settings.json` z następującą zawartością:
 }
 ```
 
-Korzystając z interfejsu wiersza polecenia platformy Azure, Wywołaj rozszerzenie `VMAccessForLinux`, aby zresetować połączenie SSHD, określając plik JSON. Poniższy przykład używa [AZ VM Extension Set](/cli/azure/vm/extension) do resetowania SSHD na maszynie wirtualnej o nazwie `myVM` w `myResourceGroup`. Użyj własnych wartości w następujący sposób:
+Za pomocą interfejsu wiersza `VMAccessForLinux` polecenia platformy Azure, następnie wywołać rozszerzenie, aby zresetować połączenie SSHD, określając plik json. W poniższym przykładzie użyto [zestawu rozszerzeń az vm,](/cli/azure/vm/extension) aby zresetować dysk SSHD na maszynie wirtualnej o nazwie `myVM` w `myResourceGroup`. Użyj własnych wartości w następujący sposób:
 
 ```azurecli
 az vm extension set --resource-group philmea --vm-name Ubuntu \
     --name VMAccessForLinux --publisher Microsoft.OSTCExtensions --version 1.2 --settings settings.json
 ```
 
-### <a name="reset-ssh-credentials-for-a-user"></a>Resetowanie poświadczeń SSH dla użytkownika
-Jeśli SSHD wydaje się działać prawidłowo, można zresetować poświadczenia dla użytkownika Giver. Aby zresetować hasło dla użytkownika, Utwórz plik o nazwie `settings.json`. Poniższy przykład resetuje poświadczenia dla `myUsername` do wartości określonej w `myPassword`. Wprowadź następujące wiersze do pliku `settings.json` przy użyciu własnych wartości:
+### <a name="reset-ssh-credentials-for-a-user"></a>Reset SSH credentials for a user (Resetowanie poświadczeń protokołu SSH użytkownika)
+Jeśli SSHD wydaje się działać poprawnie, można zresetować poświadczenia dla użytkownika daję. Aby zresetować hasło użytkownika, utwórz `settings.json`plik o nazwie . Poniższy przykład resetuje poświadczenia `myUsername` do wartości `myPassword`określonej w . Wprowadź następujące wiersze `settings.json` do pliku, używając własnych wartości:
 
 ```json
 {
@@ -151,7 +157,7 @@ Jeśli SSHD wydaje się działać prawidłowo, można zresetować poświadczenia
 }
 ```
 
-Aby zresetować klucz SSH dla użytkownika, należy najpierw utworzyć plik o nazwie `settings.json`. Poniższy przykład resetuje poświadczenia dla `myUsername` na wartość określoną w `myPassword`na maszynie wirtualnej o nazwie `myVM` w `myResourceGroup`. Wprowadź następujące wiersze do pliku `settings.json` przy użyciu własnych wartości:
+Lub aby zresetować klucz SSH dla użytkownika, `settings.json`najpierw utwórz plik o nazwie . Poniższy przykład resetuje poświadczenia `myUsername` do wartości `myPassword`określonej w programie `myVM` `myResourceGroup`Maszyny Wirtualnej o nazwie w programie . Wprowadź następujące wiersze `settings.json` do pliku, używając własnych wartości:
 
 ```json
 {
@@ -159,7 +165,7 @@ Aby zresetować klucz SSH dla użytkownika, należy najpierw utworzyć plik o na
 }
 ```
 
-Po utworzeniu pliku JSON Użyj interfejsu wiersza polecenia platformy Azure, aby wywołać rozszerzenie `VMAccessForLinux`, aby zresetować poświadczenia użytkownika SSH przez określenie pliku JSON. Poniższy przykład resetuje poświadczenia na maszynie wirtualnej o nazwie `myVM` w `myResourceGroup`. Użyj własnych wartości w następujący sposób:
+Po utworzeniu pliku json użyj interfejsu wiersza polecenia platformy Azure, aby wywołać `VMAccessForLinux` rozszerzenie, aby zresetować poświadczenia użytkownika SSH, określając plik json. Poniższy przykład resetuje poświadczenia na `myVM` maszynie wirtualnej o nazwie w `myResourceGroup`. Użyj własnych wartości w następujący sposób:
 
 ```azurecli
 az vm extension set --resource-group philmea --vm-name Ubuntu \
@@ -167,49 +173,49 @@ az vm extension set --resource-group philmea --vm-name Ubuntu \
 ```
 
 ## <a name="use-the-azure-classic-cli"></a>Korzystanie z klasycznego interfejsu wiersza polecenia platformy Azure
-Jeśli jeszcze tego nie zrobiono, [Zainstaluj klasyczny interfejs wiersza polecenia platformy Azure i nawiąż połączenie z subskrypcją platformy Azure](../../cli-install-nodejs.md). Upewnij się, że używasz trybu Menedżer zasobów w następujący sposób:
+Jeśli jeszcze tego nie zrobiłeś, [zainstaluj klasyczny interfejs wiersza polecenia platformy Azure i połącz się z subskrypcją platformy Azure.](../../cli-install-nodejs.md) Upewnij się, że w trybie Menedżera zasobów jest używany tryb:
 
 ```azurecli
 azure config mode arm
 ```
 
-Jeśli utworzono i przekazano niestandardowy obraz dysku systemu Linux, upewnij się, że jest zainstalowany [Agent Microsoft Azure Linux](../extensions/agent-linux.md) w wersji 2.0.5 lub nowszej. W przypadku maszyn wirtualnych utworzonych przy użyciu obrazów galerii to rozszerzenie dostępu jest już zainstalowane i skonfigurowane.
+Jeśli utworzono i udostępnino niestandardowy obraz dysku systemu Linux, upewnij się, że jest zainstalowany [agent Microsoft Azure Linux Agent](../extensions/agent-linux.md) w wersji 2.0.5 lub nowszej. W przypadku maszyn wirtualnych utworzonych przy użyciu obrazów galerii to rozszerzenie dostępu jest już zainstalowane i skonfigurowane.
 
 ### <a name="reset-ssh-configuration"></a>Resetowanie konfiguracji SSH
-Sama konfiguracja SSHD może być błędnie skonfigurowana lub usługa napotkała błąd. Możesz zresetować SSHD, aby upewnić się, że sama konfiguracja SSH jest prawidłowa. Resetowanie SSHD powinno być pierwszym krokiem rozwiązywania problemów.
+Sama konfiguracja SSHD może zostać błędnie skonfigurowana lub usługa napotkała błąd. Można zresetować dysk SSHD, aby upewnić się, że sama konfiguracja SSH jest prawidłowa. Resetowanie dysków SSHD powinno być pierwszym krokiem rozwiązywania problemów.
 
-Poniższy przykład resetuje SSHD na maszynie wirtualnej o nazwie `myVM` w grupie zasobów o nazwie `myResourceGroup`. Użyj własnych nazw maszyn wirtualnych i grup zasobów w następujący sposób:
+Poniższy przykład resetuje dysk SSHD `myVM` na maszynie `myResourceGroup`wirtualnej o nazwie w grupie zasobów o nazwie . Użyj własnych nazw maszyn wirtualnych i grup zasobów w następujący sposób:
 
 ```azurecli
 azure vm reset-access --resource-group myResourceGroup --name myVM \
     --reset-ssh
 ```
 
-### <a name="reset-ssh-credentials-for-a-user"></a>Resetowanie poświadczeń SSH dla użytkownika
-Jeśli SSHD wydaje się działać prawidłowo, można zresetować hasło dla użytkownika Giver. Poniższy przykład resetuje poświadczenia dla `myUsername` na wartość określoną w `myPassword`na maszynie wirtualnej o nazwie `myVM` w `myResourceGroup`. Użyj własnych wartości w następujący sposób:
+### <a name="reset-ssh-credentials-for-a-user"></a>Reset SSH credentials for a user (Resetowanie poświadczeń protokołu SSH użytkownika)
+Jeśli dysk SSHD wydaje się działać poprawnie, można zresetować hasło dla użytkownika daję. Poniższy przykład resetuje poświadczenia `myUsername` do wartości `myPassword`określonej w programie `myVM` `myResourceGroup`Maszyny Wirtualnej o nazwie w programie . Użyj własnych wartości w następujący sposób:
 
 ```azurecli
 azure vm reset-access --resource-group myResourceGroup --name myVM \
      --user-name myUsername --password myPassword
 ```
 
-W przypadku korzystania z uwierzytelniania za pomocą klucza SSH można zresetować klucz SSH dla danego użytkownika. Poniższy przykład aktualizuje klucz SSH zapisany w `~/.ssh/id_rsa.pub` dla użytkownika o nazwie `myUsername`na maszynie wirtualnej o nazwie `myVM` w `myResourceGroup`. Użyj własnych wartości w następujący sposób:
+W przypadku korzystania z uwierzytelniania za pomocą klucza SSH można zresetować klucz SSH dla danego użytkownika. Poniższy przykład aktualizuje klucz `~/.ssh/id_rsa.pub` SSH przechowywany `myUsername`dla użytkownika o `myVM` `myResourceGroup`nazwie , na maszynie Wirtualnej o nazwie w . Użyj własnych wartości w następujący sposób:
 
 ```azurecli
 azure vm reset-access --resource-group myResourceGroup --name myVM \
     --user-name myUsername --ssh-key-file ~/.ssh/id_rsa.pub
 ```
 
-## <a name="a-idrestart-vm-restart-a-vm"></a><a id="restart-vm" />uruchomić ponownie maszynę wirtualną
-Jeśli zresetowano konfigurację SSH i poświadczenia użytkownika lub wystąpił błąd podczas wykonywania tej czynności, możesz spróbować ponownie uruchomić maszynę wirtualną, aby rozwiązać podstawowe problemy z przetwarzaniem.
+## <a name="restart-a-vm"></a><a id="restart-vm" />Ponowne uruchamianie maszyny wirtualnej
+Jeśli zresetowano konfigurację SSH i poświadczenia użytkownika lub wystąpił błąd w ten sposób, możesz spróbować ponownie uruchomić maszynę wirtualną, aby rozwiązać podstawowe problemy obliczeniowe.
 
-### <a name="azure-portal"></a>Portalu Azure
-Aby ponownie uruchomić maszynę wirtualną przy użyciu Azure Portal, wybierz maszynę wirtualną, a następnie wybierz pozycję **Uruchom ponownie** tak, jak w poniższym przykładzie:
+### <a name="azure-portal"></a>Portal Azure
+Aby ponownie uruchomić maszynę wirtualną przy użyciu witryny Azure portal, wybierz maszynę wirtualną, a następnie wybierz **pozycję Uruchom ponownie,** jak w poniższym przykładzie:
 
-![Uruchom ponownie maszynę wirtualną w Azure Portal](./media/troubleshoot-ssh-connection/restart-vm-using-portal.png)
+![Ponowne uruchamianie maszyny wirtualnej w witrynie Azure portal](./media/troubleshoot-ssh-connection/restart-vm-using-portal.png)
 
 ### <a name="azure-cli"></a>Interfejs wiersza polecenia platformy Azure
-Poniższy przykład używa [AZ VM restart](/cli/azure/vm) , aby ponownie uruchomić maszynę wirtualną o nazwie `myVM` w grupie zasobów o nazwie `myResourceGroup`. Użyj własnych wartości w następujący sposób:
+W poniższym przykładzie użyto [ponownego uruchomienia az vm,](/cli/azure/vm) aby ponownie uruchomić maszynę wirtualną o nazwie `myVM` w grupie zasobów o nazwie `myResourceGroup`. Użyj własnych wartości w następujący sposób:
 
 ```azurecli
 az vm restart --resource-group myResourceGroup --name myVM
@@ -219,27 +225,27 @@ az vm restart --resource-group myResourceGroup --name myVM
 
 [!INCLUDE [classic-vm-deprecation](../../../includes/classic-vm-deprecation.md)]
 
-Poniższy przykład powoduje ponowne uruchomienie maszyny wirtualnej o nazwie `myVM` w grupie zasobów o nazwie `myResourceGroup`. Użyj własnych wartości w następujący sposób:
+Poniższy przykład ponownie uruchamia `myVM` maszynę wirtualną `myResourceGroup`o nazwie w grupie zasobów o nazwie . Użyj własnych wartości w następujący sposób:
 
-```azurecli
+```console
 azure vm restart --resource-group myResourceGroup --name myVM
 ```
 
-## <a name="a-idredeploy-vm-redeploy-a-vm"></a><a id="redeploy-vm" />ponownie wdrożyć maszynę wirtualną
-Możesz ponownie wdrożyć maszynę wirtualną w innym węźle na platformie Azure, co może poprawić wszystkie podstawowe problemy z siecią. Aby uzyskać informacje o ponownym wdrażaniu maszyny wirtualnej, zobacz [ponowne wdrażanie maszyny wirtualnej w nowym węźle platformy Azure](../windows/redeploy-to-new-node.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+## <a name="redeploy-a-vm"></a><a id="redeploy-vm" />Ponowne wdrożenie maszyny Wirtualnej
+Można ponownie wdrożyć maszynę wirtualną do innego węzła na platformie Azure, co może rozwiązać wszelkie podstawowe problemy z siecią. Aby uzyskać informacje dotyczące ponownego wdrożenia maszyny wirtualnej, zobacz [Ponowne wdrożenie maszyny wirtualnej do nowego węzła platformy Azure](../windows/redeploy-to-new-node.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
 > [!NOTE]
-> Po zakończeniu tej operacji dane o dyskach tymczasowych zostaną utracone i zostaną zaktualizowane dynamiczne adresy IP skojarzone z maszyną wirtualną.
+> Po zakończeniu tej operacji dane dysku efemerycznego zostaną utracone, a dynamiczne adresy IP skojarzone z maszyną wirtualną są aktualizowane.
 >
 >
 
-### <a name="azure-portal"></a>Portalu Azure
-Aby ponownie wdrożyć maszynę wirtualną przy użyciu Azure Portal, wybierz maszynę wirtualną i przewiń w dół do sekcji **Pomoc techniczna i rozwiązywanie problemów** . Wybierz pozycję **Wdróż** ponownie tak, jak w poniższym przykładzie:
+### <a name="azure-portal"></a>Portal Azure
+Aby ponownie wdrożyć maszynę wirtualną przy użyciu witryny Azure portal, wybierz maszynę wirtualną i przewiń w dół do sekcji **Pomoc techniczna + rozwiązywanie problemów.** Wybierz **pozycję Ponownie rozmieszczaj,** jak w poniższym przykładzie:
 
-![Ponowne wdrażanie maszyny wirtualnej w Azure Portal](./media/troubleshoot-ssh-connection/redeploy-vm-using-portal.png)
+![Ponowne wdrożenie maszyny Wirtualnej w witrynie Azure portal](./media/troubleshoot-ssh-connection/redeploy-vm-using-portal.png)
 
 ### <a name="azure-cli"></a>Interfejs wiersza polecenia platformy Azure
-W poniższym przykładzie użyto [AZ VM redeploy](/cli/azure/vm) , aby ponownie wdrożyć maszynę wirtualną o nazwie `myVM` w grupie zasobów o nazwie `myResourceGroup`. Użyj własnych wartości w następujący sposób:
+W [poniższym przykładzie użyto az vm ponownego rozmieszczenia,](/cli/azure/vm) aby ponownie wdrożyć maszynę wirtualną o nazwie `myVM` w grupie zasobów o nazwie `myResourceGroup`. Użyj własnych wartości w następujący sposób:
 
 ```azurecli
 az vm redeploy --resource-group myResourceGroup --name myVM
@@ -247,9 +253,9 @@ az vm redeploy --resource-group myResourceGroup --name myVM
 
 ### <a name="azure-classic-cli"></a>Klasyczny interfejs wiersza polecenia platformy Azure
 
-Poniższy przykład ponownie wdraża maszynę wirtualną o nazwie `myVM` w grupie zasobów o nazwie `myResourceGroup`. Użyj własnych wartości w następujący sposób:
+W poniższym przykładzie ponownie wcieli się maszyna wirtualna o nazwie `myVM` w grupie zasobów o nazwie `myResourceGroup`. Użyj własnych wartości w następujący sposób:
 
-```azurecli
+```console
 azure vm redeploy --resource-group myResourceGroup --name myVM
 ```
 
@@ -257,23 +263,23 @@ azure vm redeploy --resource-group myResourceGroup --name myVM
 
 [!INCLUDE [classic-vm-deprecation](../../../includes/classic-vm-deprecation.md)]
 
-Spróbuj wykonać poniższe kroki, aby rozwiązać najczęstsze błędy połączeń SSH dla maszyn wirtualnych, które zostały utworzone przy użyciu klasycznego modelu wdrażania. Po każdym kroku spróbuj ponownie nawiązać połączenie z maszyną wirtualną.
+Wypróbuj te kroki, aby rozwiązać najczęstsze błędy połączenia SSH dla maszyn wirtualnych, które zostały utworzone przy użyciu klasycznego modelu wdrażania. Po każdym kroku spróbuj ponownie połączyć się z maszyną wirtualną.
 
-* Zresetuj dostęp zdalny z [Azure Portal](https://portal.azure.com). Na Azure Portal wybierz maszynę wirtualną, a następnie wybierz pozycję **Zresetuj zdalny...** .
-* Uruchom ponownie maszynę wirtualną. Na [Azure Portal](https://portal.azure.com)wybierz maszynę wirtualną, a następnie wybierz pozycję **Uruchom ponownie**.
+* Resetowanie dostępu zdalnego z [witryny Azure portal](https://portal.azure.com). W witrynie Azure portal wybierz maszynę wirtualną, a następnie wybierz pozycję **Resetuj zdalne...**.
+* Uruchom ponownie maszynę wirtualną. W [witrynie Azure portal](https://portal.azure.com)wybierz maszynę wirtualną i wybierz pozycję **Uruchom ponownie**.
 
-* Wdróż ponownie maszynę wirtualną w nowym węźle platformy Azure. Aby uzyskać informacje o sposobie ponownego wdrażania maszyny wirtualnej, zobacz [ponowne wdrażanie maszyny wirtualnej w nowym węźle platformy Azure](../windows/redeploy-to-new-node.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+* Ponowne wdrożenie maszyny Wirtualnej do nowego węzła platformy Azure. Aby uzyskać informacje dotyczące ponownego rozmieszczenia maszyny wirtualnej, zobacz [Ponowne wdrożenie maszyny wirtualnej do nowego węzła platformy Azure](../windows/redeploy-to-new-node.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
-    Po zakończeniu tej operacji dane dysku tymczasowych zostaną utracone, a dynamiczne adresy IP skojarzone z maszyną wirtualną zostaną zaktualizowane.
-* Postępuj zgodnie z instrukcjami w temacie [jak zresetować hasło lub SSH dla maszyn wirtualnych opartych](../linux/classic/reset-access-classic.md) na systemie Linux, aby:
+    Po zakończeniu tej operacji dane dysku efemerycznego zostaną utracone, a dynamiczne adresy IP skojarzone z maszyną wirtualną zostaną zaktualizowane.
+* Postępuj zgodnie z instrukcjami w [jak zresetować hasło lub SSH dla maszyn wirtualnych opartych na systemie Linux,](../linux/classic/reset-access-classic.md) aby:
 
   * Zresetuj hasło lub klucz SSH.
-  * Utwórz konto użytkownika *sudo* .
-  * Zresetuj konfigurację protokołu SSH.
-* Sprawdź kondycję zasobów maszyny wirtualnej pod kątem problemów z platformą.<br>
-     Wybierz maszynę wirtualną i przewiń w dół **ustawienia** > **Sprawdź kondycję**.
+  * Utwórz konto użytkownika *sudo.*
+  * Zresetuj konfigurację SSH.
+* Sprawdź kondycję zasobów maszyny Wirtualnej pod kątem problemów z platformą.<br>
+     Wybierz maszynę wirtualną i przewiń w dół Sprawdź**kondycję** **ustawienia** > .
 
-## <a name="additional-resources"></a>Dodatkowe zasoby
-* Jeśli po wykonaniu kolejnych kroków nadal nie można SSH z maszyną wirtualną, zobacz [bardziej szczegółowe kroki rozwiązywania problemów](detailed-troubleshoot-ssh-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) , aby zapoznać się z dodatkowymi krokami w celu rozwiązania problemu.
+## <a name="additional-resources"></a>Zasoby dodatkowe
+* Jeśli nadal nie można SSH do maszyny Wirtualnej po wykonać następujące kroki, zobacz [bardziej szczegółowe kroki rozwiązywania problemów,](detailed-troubleshoot-ssh-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) aby przejrzeć dodatkowe kroki, aby rozwiązać problem.
 * Aby uzyskać więcej informacji na temat rozwiązywania problemów z dostępem do aplikacji, zobacz [Rozwiązywanie problemów z dostępem do aplikacji uruchomionej na maszynie wirtualnej platformy Azure](../windows/troubleshoot-app-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-* Aby uzyskać więcej informacji na temat rozwiązywania problemów z maszynami wirtualnymi utworzonymi przy użyciu klasycznego modelu wdrażania, zobacz [jak zresetować hasło lub SSH dla maszyn wirtualnych opartych](../linux/classic/reset-access-classic.md)na systemie Linux.
+* Aby uzyskać więcej informacji na temat rozwiązywania problemów z maszynami wirtualnymi utworzonymi przy użyciu klasycznego modelu wdrażania, zobacz [Jak zresetować hasło lub SSH dla maszyn wirtualnych opartych na systemie Linux](../linux/classic/reset-access-classic.md).

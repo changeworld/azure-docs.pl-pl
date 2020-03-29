@@ -1,6 +1,6 @@
 ---
-title: Zaimportuj środowisko programu Poster dla Azure Media Services wywołań REST
-description: Ten temat zawiera definicję środowiska programu Poster dla Azure Media Services wywołań REST.
+title: Importowanie środowiska listonosza dla wywołań REST usługi Azure Media Services
+description: Ten temat zawiera definicję środowiska Postman dla usługi Azure Media Services REST wywołania.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,18 +14,18 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.openlocfilehash: 8254d121c62a20de0a1593920b7793195f8eb50e
-ms.sourcegitcommit: 9cbd5b790299f080a64bab332bb031543c2de160
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/08/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78926711"
 ---
-# <a name="import-the-postman-environment"></a>Importowanie środowiska programu Poster  
+# <a name="import-the-postman-environment"></a>Importowanie środowiska Listonosza  
 
-Ten artykuł zawiera definicję zmiennych środowiskowych programu **Poster** , które są używane w [kolekcji programu Poster](postman-collection.md) , która zawiera zgrupowane żądania HTTP, które wywołują Media Services interfejsów API REST. Pliki środowiska i kolekcji są używane przez kreatora [konfigurowania programu do obsługi wywołań interfejsu API REST Media Services](media-rest-apis-with-postman.md) .
+Ten artykuł zawiera definicję zmiennych środowiskowych **listonosza,** które są używane [w kolekcji Postman,](postman-collection.md) która zawiera zgrupowane żądania HTTP, które wywołują interfejsy API REST usługi Media Services. Pliki środowiska i kolekcji są używane przez [konfigurowanie listonosza dla interfejsu API usługi Media Services REST wywołuje](media-rest-apis-with-postman.md) samouczek.
 
 > [!NOTE]
-> Wartość `AzureADSTSEndpoint ` = `https://login.microsoftonline.com/{{TenantId}}/oauth2/token`. Aby uzyskać identyfikator dzierżawy, możesz umieścić wskaźnik myszy nad nazwą użytkownika w portalu (w prawym górnym rogu) i będzie on znajdować się w katalogu "katalog: Microsoft ({{TENANTID}}").
+> Wartość . `AzureADSTSEndpoint `  =  `https://login.microsoftonline.com/{{TenantId}}/oauth2/token` Aby uzyskać identyfikator dzierżawy, możesz najechać kursorem myszy na nazwę użytkownika w portalu (w prawym górnym rogu) i będzie znajdować się w katalogu: Microsoft ( {{TENANTID}} ).
 
 ```
 {

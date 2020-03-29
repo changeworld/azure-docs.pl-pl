@@ -5,16 +5,16 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: yegu
 ms.openlocfilehash: 61e93e3700b9a396d2ac4fdcbb51fc5c874cf9cb
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/16/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68286303"
 ---
 Aplikacje platformy .NET mogą używać klienta pamięci podręcznej **StackExchange.Redis**, którego można skonfigurować w programie Visual Studio przy użyciu pakietu NuGet upraszczającego konfigurację aplikacji klienta pamięci podręcznej. 
 
 > [!NOTE]
-> Aby uzyskać więcej informacji, zobacz stronę usługi GitHub [stackexchange. Redis](https://github.com/StackExchange/StackExchange.Redis) i [stackexchange. Azure cache for Redis Client](https://github.com/StackExchange/StackExchange.Redis#documentation).
+> Aby uzyskać więcej informacji, zobacz [stronę StackExchange.Redis](https://github.com/StackExchange/StackExchange.Redis) GitHub i [StackExchange.Azure Cache for Redis client documentation](https://github.com/StackExchange/StackExchange.Redis#documentation).
 >
 >
 
@@ -31,10 +31,10 @@ Wpisz **StackExchange.Redis** lub **StackExchange.Redis.StrongName** w polu teks
 
 ![Pakiet NuGet StackExchange.Redis](media/redis-cache-configure-stackexchange-redis-nuget/redis-cache-stackexchange-redis.png)
 
-Pakiet NuGet pobiera i dodaje wymagane odwołania do zestawu umożliwiające aplikacji klienta uzyskiwać dostęp do usługi Azure Cache dla pamięci podręcznej Redis przy użyciu pamięci podręcznej StackExchange.Azure klienta pamięci podręcznej Redis.
+Pakiet NuGet pobiera i dodaje wymagane odwołania do zestawu umożliwiające aplikacji klienta uzyskanie dostępu do usługi Azure Cache for Redis przy użyciu klienta usługi Azure Cache for Redis StackExchange.
 
 > [!NOTE]
-> Jeśli wcześniej skonfigurowano projekt pod kątem pakietu StackExchange.Redis, można sprawdzić dostępność aktualizacji do pakietu z poziomu **Menedżera pakietów NuGet**. Aby wyszukać i zainstalować zaktualizowane wersje pakietu StackExchange.Redis NuGet, kliknij przycisk **aktualizacje** w **Menedżera pakietów NuGet** okna. Jeśli dostępna jest aktualizacja pakietu NuGet StackExchange.Redis, można zaktualizować projekt tak, aby korzystał ze zaktualizowanej wersji.
+> Jeśli wcześniej skonfigurowano projekt pod kątem pakietu StackExchange.Redis, można sprawdzić dostępność aktualizacji do pakietu z poziomu **Menedżera pakietów NuGet**. Aby sprawdzić i zainstalować zaktualizowane wersje pakietu StackExchange.Redis NuGet, kliknij pozycję **Aktualizacje** w oknie **Menedżera pakietów NuGet.** Jeśli dostępna jest aktualizacja pakietu NuGet StackExchange.Redis, można zaktualizować projekt tak, aby korzystał ze zaktualizowanej wersji.
 >
 >
 

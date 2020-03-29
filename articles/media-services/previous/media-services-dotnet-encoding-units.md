@@ -1,6 +1,6 @@
 ---
-title: Skalowanie przetwarzania multimediów przez dodawanie jednostek kodowania — Azure |  Microsoft Docs
-description: W tym artykule pokazano, jak dodać jednostki kodowania za pomocą Azure Media Services .NET.
+title: Skalowanie przetwarzania multimediów przez dodanie jednostek kodujących — Azure |  Dokumenty firmy Microsoft
+description: W tym artykule pokazano, jak dodać jednostki kodowania z usługą Azure Media Services .NET.
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -16,29 +16,29 @@ ms.date: 03/18/2019
 ms.author: juliako
 ms.reviewer: milangada
 ms.openlocfilehash: 86fd923c121b9d46109529f75bc3d0d040f1a7a9
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74887292"
 ---
 # <a name="how-to-scale-encoding-with-net-sdk"></a>Skalowanie kodowania za pomocą zestawu .NET SDK
 > [!div class="op_single_selector"]
 > * [Portal](media-services-portal-scale-media-processing.md)
 > * [.NET](media-services-dotnet-encoding-units.md)
-> * [REST](https://docs.microsoft.com/rest/api/media/operations/encodingreservedunittype)
+> * [Reszta](https://docs.microsoft.com/rest/api/media/operations/encodingreservedunittype)
 > * [Java](https://github.com/southworkscom/azure-sdk-for-media-services-java-samples)
 > * [PHP](https://github.com/Azure/azure-sdk-for-php/tree/master/examples/MediaServices)
 > 
 > 
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 > [!IMPORTANT]
-> Zapoznaj się z [omówieniem](media-services-scale-media-processing-overview.md) , aby uzyskać więcej informacji na temat skalowania przetwarzania multimediów.
+> Zapoznaj się z [omówieniem,](media-services-scale-media-processing-overview.md) aby uzyskać więcej informacji na temat skalowania przetwarzania multimediów.
 > 
 > 
 
-Aby zmienić typ jednostki zarezerwowanej i liczbę jednostek zarezerwowanych kodowania przy użyciu zestawu SDK platformy .NET, wykonaj następujące czynności:
+Aby zmienić typ jednostki zarezerwowanej i liczbę jednostek zarezerwowanych kodowania przy użyciu zestawu .NET SDK, wykonaj następujące czynności:
 
     IEncodingReservedUnit encodingS1ReservedUnit = _context.EncodingReservedUnits.FirstOrDefault();
     encodingS1ReservedUnit.ReservedUnitType = ReservedUnitType.Basic; // Corresponds to S1
@@ -52,11 +52,11 @@ Aby zmienić typ jednostki zarezerwowanej i liczbę jednostek zarezerwowanych ko
 
 ## <a name="opening-a-support-ticket"></a>Otwieranie biletu pomocy technicznej
 
-Domyślnie każde konto Media Services może być skalowane do 10 jednostek zarezerwowanych multimediów S2 lub S3 (MRUs) lub 25 S1 MRUs i 5 jednostek zarezerwowanych przesyłania strumieniowego na żądanie. Aby zażądać wyższego limitu, możesz otworzyć bilet pomocy technicznej.
+Domyślnie każde konto usługi Media Services można skalować do maksymalnie 10 jednostek zarezerwowanych nośników S2 lub S3 (MRU) lub 25 jednostek MRU S1 i 5 jednostek zarezerwowanych przesyłania strumieniowego na żądanie. Możesz poprosić o wyższy limit, otwierając bilet pomocy technicznej.
 
 ## <a name="media-services-learning-paths"></a>Ścieżki szkoleniowe dotyczące usługi Media Services
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Prześlij opinię
+## <a name="provide-feedback"></a>Przekazywanie opinii
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 

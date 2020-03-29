@@ -1,83 +1,83 @@
 ---
-title: Skonfiguruj Azure AD B2C jako element SAML dostawcy tożsamości dla aplikacji
+title: Konfigurowanie usługi Azure AD B2C jako identyfikatora SAML dla aplikacji
 title-suffix: Azure AD B2C
-description: Jak skonfigurować Azure AD B2C, aby zapewnić zatwierdzeń protokołu SAML dla aplikacji (usługodawców). Azure AD B2C będzie pełnić funkcję dostawcy pojedynczej tożsamości (dostawcy tożsamości) do aplikacji SAML.
+description: Jak skonfigurować usługę Azure AD B2C, aby zapewnić potwierdzenia protokołu SAML do aplikacji (dostawców usług). Usługa Azure AD B2C będzie działać jako dostawca tożsamości (IdP) do aplikacji SAML.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/27/2020
+ms.date: 03/20/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 4cf572b09f1e44faca002528fd00fe5be0b51bc5
-ms.sourcegitcommit: 3616b42a0d6bbc31b965995d861930e53d2cf0d3
+ms.openlocfilehash: a72b5b50daaae33336de9caab5202c2bf42f5c15
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78933031"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80051624"
 ---
-# <a name="register-a-saml-application-in-azure-ad-b2c"></a>Rejestrowanie aplikacji SAML w Azure AD B2C
+# <a name="register-a-saml-application-in-azure-ad-b2c"></a>Rejestrowanie aplikacji SAML w usłudze Azure AD B2C
 
-W tym artykule dowiesz się, jak skonfigurować Azure Active Directory B2C (Azure AD B2C) do działania jako SAML (SAML) dostawcy tożsamości (dostawcy tożsamości) w aplikacjach.
+W tym artykule dowiesz się, jak skonfigurować usługę Azure Active Directory B2C (Azure AD B2C) do działania jako dostawca tożsamości (SAML) (Security Assertion Markup Language, SAML) dla aplikacji.
 
 [!INCLUDE [active-directory-b2c-public-preview](../../includes/active-directory-b2c-public-preview.md)]
 
 ## <a name="scenario-overview"></a>Omówienie scenariusza
 
-Organizacje używające Azure AD B2C jako rozwiązania do zarządzania tożsamościami i dostępem klientów mogą wymagać interakcji z dostawcami tożsamości lub aplikacjami skonfigurowanymi do uwierzytelniania przy użyciu protokołu SAML.
+Organizacje korzystające z usługi Azure AD B2C jako rozwiązania do zarządzania tożsamością i dostępem klientów mogą wymagać interakcji z dostawcami tożsamości lub aplikacjami skonfigurowanym do uwierzytelniania przy użyciu protokołu SAML.
 
-Azure AD B2C realizuje współdziałanie SAML w jeden z dwóch sposobów:
+Usługa Azure AD B2C osiąga współdziałanie SAML na jeden z dwóch sposobów:
 
-* Działając jako *dostawca tożsamości* (dostawcy tożsamości) i uzyskując Logowanie jednokrotne (SSO) z dostawcami usług opartymi na protokole SAML (aplikacje)
-* Działając jako *dostawca usług* (SP) i współpracując z dostawcami tożsamości opartymi na protokole SAML, takimi jak SALESFORCE i ADFS
+* Działając jako *dostawca tożsamości* (IdP) i osiągając logowanie jednokrotne (Logowanie jednokrotne) u dostawców usług opartych na SAML (aplikacje)
+* Działając jako *dostawca usług* (SP) i współpracując z dostawcami tożsamości opartymi na SAML, takimi jak Salesforce i ADFS
 
-![Diagram z B2C jako dostawca tożsamości po lewej i B2C jako dostawca usługi po prawej](media/saml-identity-provider/saml-idp-diagram-01.jpg)
+![Diagram z B2C jako dostawcą tożsamości po lewej stronie i B2C jako dostawcą usług po prawej stronie](media/saml-identity-provider/saml-idp-diagram-01.jpg)
 
-Podsumowanie dwóch wyłącznych scenariuszy podstawowych przy użyciu protokołu SAML:
+Podsumowanie dwóch niewyłącznych scenariuszy podstawowych za pomocą SAML:
 
-| Scenariusz | Rola Azure AD B2C | Porady |
+| Scenariusz | Rola usługi Azure AD B2C | Porady |
 | -------- | ----------------- | ------- |
-| Moja aplikacja oczekuje potwierdzenia SAML do ukończenia uwierzytelniania. | **Azure AD B2C działa jako dostawca tożsamości (dostawcy tożsamości)**<br />Azure AD B2C działa jako dostawcy tożsamości SAML dla aplikacji. | Ten artykuł. |
-| Moi użytkownicy potrzebują logowania jednokrotnego za pomocą dostawcy tożsamości zgodnego z protokołem SAML, takiego jak ADFS, Salesforce lub Shibboleth.  | **Azure AD B2C działa jako dostawca usług (SP)**<br />Azure AD B2C działa jako dostawca usługi podczas nawiązywania połączenia z dostawcą tożsamości SAML. Jest to federacyjny serwer proxy między aplikacją i dostawcą tożsamości SAML.  | <ul><li>[Konfigurowanie logowania za pomocą usług AD FS jako dostawcy tożsamości języka SAML przy użyciu zasad niestandardowych](identity-provider-adfs2016-custom.md)</li><li>[Konfigurowanie logowania za pomocą dostawcy protokołu SAML usługi Salesforce przy użyciu zasad niestandardowych](identity-provider-salesforce-custom.md)</li></ul> |
+| Moja aplikacja oczekuje potwierdzenia SAML, aby zakończyć uwierzytelnianie. | **Usługa Azure AD B2C działa jako dostawca tożsamości (IdP)**<br />Usługa Azure AD B2C działa jako identyfikator SAML do aplikacji. | Ten artykuł. |
+| Moi użytkownicy potrzebują logowania jednokrotnego za pomocą dostawcy tożsamości zgodnego ze standardem SAML, takiego jak ADFS, Salesforce lub Shibboleth.  | **Usługa Azure AD B2C działa jako dostawca usług (SP)**<br />Usługa Azure AD B2C działa jako dostawca usług podczas łączenia się z dostawcą tożsamości SAML. Jest to serwer proxy federacji między aplikacją a dostawcą tożsamości SAML.  | <ul><li>[Konfigurowanie logowania się za pomocą usługi ADFS jako identyfikatora SAML przy użyciu zasad niestandardowych](identity-provider-adfs2016-custom.md)</li><li>[Konfigurowanie logowania się u dostawcy saml salesforce przy użyciu zasad niestandardowych](identity-provider-salesforce-custom.md)</li></ul> |
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Wykonaj kroki opisane w temacie Wprowadzenie [do zasad niestandardowych w Azure AD B2C](custom-policy-get-started.md). Zasady niestandardowe *SocialAndLocalAccounts* są potrzebne w ramach pakietu zasad niestandardowych, który został omówiony w artykule.
-* Podstawowe informacje o protokole SAML (SAML).
-* Aplikacja sieci Web skonfigurowana jako dostawca usługi SAML (SP). Na potrzeby tego samouczka możesz użyć [aplikacji testowej SAML][samltest] , którą udostępniamy.
+* Wykonaj kroki opisane w [wprowadzenie do niestandardowych zasad w usłudze Azure AD B2C.](custom-policy-get-started.md) Potrzebujesz *SocialAndLocalAccounts* zasady niestandardowe z pakietu startowego zasad niestandardowych omówione w artykule.
+* Podstawowa znajomość protokołu SAML (Security Assertion Markup Language).
+* Aplikacja sieci web skonfigurowana jako dostawca usług SAML (SP). W tym samouczku można użyć [aplikacji testowej SAML,][samltest] która zapewniamy.
 
-## <a name="components-of-the-solution"></a>Składniki rozwiązania
+## <a name="components-of-the-solution"></a>Elementy rozwiązania
 
-W tym scenariuszu są wymagane trzy główne składniki:
+Istnieją trzy główne składniki wymagane dla tego scenariusza:
 
-* **Dostawca usług** SAML umożliwiający wysyłanie żądań SAML oraz odbieranie, dekodowanie i odpowiadanie na potwierdzenia saml z Azure AD B2C. Jest to również nazywane jednostką uzależnioną.
-* Publicznie dostępny **punkt końcowy metadanych** SAML dla dostawcy usług.
-* [Dzierżawa Azure AD B2C](tutorial-create-tenant.md)
+* Dostawca **usług** SAML z możliwością wysyłania żądań SAML i odbierania, dekodowania i odpowiadania na potwierdzenia SAML z usługi Azure AD B2C. Jest to również znane jako jednostka uzależniająca.
+* Publicznie dostępny **punkt końcowy metadanych** SAML dla usługodawcy.
+* [Dzierżawa usługi Azure AD B2C](tutorial-create-tenant.md)
 
-Jeśli nie masz jeszcze dostawcy usługi SAML i skojarzonego z nim punktu końcowego metadanych, możesz użyć tej przykładowej aplikacji SAML, która została udostępniona do testowania:
+Jeśli nie masz jeszcze dostawcy usług SAML i skojarzonego punktu końcowego metadanych, możesz użyć tej przykładowej aplikacji SAML, która została udostępniona do testowania:
 
 [Aplikacja testowa SAML][samltest]
 
-## <a name="1-set-up-certificates"></a>1. Skonfiguruj certyfikaty
+## <a name="1-set-up-certificates"></a>1. Konfigurowanie certyfikatów
 
-Aby utworzyć relację zaufania między dostawcą usług i Azure AD B2C, musisz podać certyfikaty x509 aplikacji sieci Web.
+Aby utworzyć relację zaufania między dostawcą usług a usługą Azure AD B2C, należy dostarczyć certyfikaty X509 aplikacji sieci web.
 
-* **Certyfikaty dostawcy usług**
-  * Certyfikat z kluczem prywatnym przechowywanym w aplikacji sieci Web. Ten certyfikat jest używany przez dostawcę usługi do podpisywania żądania SAML wysłanego do Azure AD B2C. Azure AD B2C odczytuje klucz publiczny z metadanych dostawcy usług w celu zweryfikowania podpisu.
-  * Obowiązkowe Certyfikat z kluczem prywatnym przechowywanym w aplikacji sieci Web. Azure AD B2C odczytuje klucz publiczny z metadanych dostawcy usług w celu zaszyfrowania potwierdzenia SAML. Następnie dostawca usług używa klucza prywatnego do odszyfrowania potwierdzenia.
-* **Azure AD B2C certyfikaty**
-  * Certyfikat z kluczem prywatnym w Azure AD B2C. Ten certyfikat jest używany przez Azure AD B2C do podpisania odpowiedzi SAML wysyłanej do dostawcy usług. Dostawca usług odczytuje klucz publiczny metadanych Azure AD B2C, aby zweryfikować podpis odpowiedzi SAML.
+* **Certyfikaty usługodawcy**
+  * Certyfikat z kluczem prywatnym przechowywanym w aplikacji sieci Web. Ten certyfikat jest używany przez usługodawcę do podpisywania żądania SAML wysłanego do usługi Azure AD B2C. Usługa Azure AD B2C odczytuje klucz publiczny z metadanych dostawcy usług, aby sprawdzić poprawność podpisu.
+  * (Opcjonalnie) Certyfikat z kluczem prywatnym przechowywanym w aplikacji sieci Web. Usługa Azure AD B2C odczytuje klucz publiczny z metadanych dostawcy usług do szyfrowania potwierdzenia SAML. Dostawca usług następnie używa klucza prywatnego do odszyfrowania potwierdzenia.
+* **Certyfikaty usługi Azure AD B2C**
+  * Certyfikat z kluczem prywatnym w usłudze Azure AD B2C. Ten certyfikat jest używany przez usługę Azure AD B2C do podpisywania odpowiedzi SAML wysłanej do dostawcy usług. Usługodawca odczytuje klucz publiczny metadanych usługi Azure AD B2C w celu zweryfikowanie podpisu odpowiedzi SAML.
 
-Możesz użyć certyfikatu wystawionego przez publiczny urząd certyfikacji lub, w tym samouczku, certyfikatu z podpisem własnym.
+Można użyć certyfikatu wystawionego przez urząd certyfikacji publicznej lub, w tym samouczku, certyfikatu z podpisem własnym.
 
-### <a name="11-prepare-a-self-signed-certificate"></a>1,1 Przygotowanie certyfikatu z podpisem własnym
+### <a name="11-prepare-a-self-signed-certificate"></a>1.1 Przygotowanie certyfikatu z podpisem własnym
 
-Jeśli nie masz jeszcze certyfikatu, możesz użyć certyfikatu z podpisem własnym dla tego samouczka. W systemie Windows można użyć polecenia cmdlet [New-SelfSignedCertificate](https://docs.microsoft.com/powershell/module/pkiclient/new-selfsignedcertificate) programu PowerShell do wygenerowania certyfikatu.
+Jeśli nie masz jeszcze certyfikatu, możesz użyć certyfikatu z podpisem własnym dla tego samouczka. W systemie Windows można użyć polecenia cmdlet [New-SelfSignedCertificate programu](https://docs.microsoft.com/powershell/module/pkiclient/new-selfsignedcertificate) PowerShell do wygenerowania certyfikatu.
 
-1. Wykonaj to polecenie programu PowerShell, aby wygenerować certyfikat z podpisem własnym. Zmodyfikuj `-Subject` argument odpowiedni dla aplikacji i Azure AD B2C nazwę dzierżawy. Możesz również dostosować `-NotAfter` datę, aby określić inne wygaśnięcie certyfikatu.
+1. Wykonaj to polecenie programu PowerShell, aby wygenerować certyfikat z podpisem własnym. Zmodyfikuj `-Subject` argument odpowiednio dla aplikacji i nazwy dzierżawy usługi Azure AD B2C. Można również dostosować `-NotAfter` datę, aby określić inny wygaśnięcie certyfikatu.
 
     ```PowerShell
     New-SelfSignedCertificate `
@@ -90,36 +90,36 @@ Jeśli nie masz jeszcze certyfikatu, możesz użyć certyfikatu z podpisem włas
         -CertStoreLocation "Cert:\CurrentUser\My"
     ```
 
-1. Otwórz przystawkę **Zarządzanie certyfikatami użytkowników** > **bieżący użytkownik** > **osobistych** > **certyfikatów** > *yourappname.yourtenant.onmicrosoft.com*
-1. Wybierz **akcję** >ą > **wszystkie zadania** > **Eksportuj**
-1. Wybierz pozycję **tak** , > **dalej** > **tak, eksportuj klucz prywatny** > **dalej**
-1. Zaakceptuj wartości domyślne w **formacie pliku eksportu**
-1. Podaj hasło do certyfikatu
+1. Otwórz **zarządzanie certyfikatami** > użytkowników**Bieżące** > **certyfikaty** > **osobiste** > użytkowników*yourappname.yourtenant.onmicrosoft.com*
+1. Wybierz certyfikat > **akcja** > **eksportu** **wszystkich zadań** > 
+1. Wybierz **pozycję Tak** > **Dalej** > **Tak, wyeksportuj klucz** > prywatny**Dalej**
+1. Akceptowanie ustawień domyślnych **formatu pliku eksportu**
+1. Podaj hasło certyfikatu
 
-### <a name="12-upload-the-certificate"></a>1,2. Przekaż certyfikat
+### <a name="12-upload-the-certificate"></a>1.2 Prześlij certyfikat
 
-Następnie Przekaż potwierdzenie SAML i certyfikat podpisywania odpowiedzi do Azure AD B2C.
+Następnie przekaż certyfikat potwierdzenia SAML i podpisywania odpowiedzi do usługi Azure AD B2C.
 
-1. Zaloguj się do [Azure Portal](https://portal.azure.com) i przejdź do dzierżawy Azure AD B2C.
-1. W obszarze **zasady**wybierz opcję **Struktura środowiska tożsamości** , a następnie pozycję **klucze zasad**.
-1. Wybierz pozycję **Dodaj**, a następnie wybierz **Opcje** > **Przekaż**.
+1. Zaloguj się do [witryny Azure portal](https://portal.azure.com) i przejdź do dzierżawy usługi Azure AD B2C.
+1. W obszarze **Zasady**wybierz pozycję **Struktura środowiska tożsamości,** a następnie **klawisze zasad**.
+1. Wybierz pozycję **Dodaj**, a następnie wybierz pozycję **Opcje** > **przekazywania**.
 1. Wprowadź **nazwę**, na przykład *SamlIdpCert*. Prefiks *B2C_1A_* jest automatycznie dodawany do nazwy klucza.
-1. Przekaż certyfikat przy użyciu kontrolki przekazywania pliku.
+1. Przekaż certyfikat za pomocą formantu przekazywania pliku.
 1. Wprowadź hasło certyfikatu.
-1. Wybierz pozycję **Utwórz**.
+1. Wybierz **pozycję Utwórz**.
 1. Sprawdź, czy klucz jest wyświetlany zgodnie z oczekiwaniami. Na przykład *B2C_1A_SamlIdpCert*.
 
-## <a name="2-prepare-your-policy"></a>2. Przygotuj zasady
+## <a name="2-prepare-your-policy"></a>2. Przygotuj swoją politykę
 
-### <a name="21-create-the-saml-token-issuer"></a>2,1 Tworzenie wystawcy tokenów SAML
+### <a name="21-create-the-saml-token-issuer"></a>2.1 Tworzenie wystawcy tokenu SAML
 
-Teraz Dodaj możliwość dla dzierżawy, aby wystawiać tokeny SAML przy użyciu [wystawcy tokenów języka SAML](saml-issuer-technical-profile.md) i profilów technicznych [dostawcy sesji SAML](custom-policy-reference-sso.md#samlssosessionprovider) .
+Teraz dodaj możliwość wystawiania tokenów SAML przez dzierżawę przy użyciu [identyfikatora wystawcy tokenów SAML](saml-issuer-technical-profile.md) i profilów technicznych [dostawcy sesji SAML.](custom-policy-reference-sso.md#samlssosessionprovider)
 
-Otwórz **`TrustFrameworkExtensions.xml`** `SocialAndLocalAccounts\`w ramach pakietu zasad niestandardowych.
+Otwórz `SocialAndLocalAccounts\` **`TrustFrameworkExtensions.xml`** w pakiecie startowym niestandardowych zasad.
 
-Znajdź sekcję `<ClaimsProviders>` i Dodaj następujący fragment kodu XML.
+Znajdź `<ClaimsProviders>` sekcję i dodaj następujący fragment kodu XML.
 
-Można zmienić wartość metadanych `IssuerUri`. Jest to identyfikator URI wystawcy, który jest zwracany w odpowiedzi SAML z Azure AD B2C. Aplikacja jednostki uzależnionej powinna być skonfigurowana w taki sposób, aby akceptowała identyfikator URI wystawcy podczas walidacji potwierdzenia SAML.
+Można zmienić wartość `IssuerUri` metadanych. Jest to identyfikator URI wystawcy, który jest zwracany w odpowiedzi SAML z usługi Azure AD B2C. Aplikacja jednostki uzależniona powinna być skonfigurowana do akceptowania identyfikatora URI wystawcy podczas sprawdzania poprawności potwierdzenia SAML.
 
 ```XML
 <ClaimsProvider>
@@ -155,17 +155,17 @@ Można zmienić wartość metadanych `IssuerUri`. Jest to identyfikator URI wyst
 </ClaimsProvider>
 ```
 
-## <a name="3-add-the-saml-relying-party-policy"></a>3. Dodaj zasady jednostek uzależnionych SAML
+## <a name="3-add-the-saml-relying-party-policy"></a>3. Dodaj zasady jednostki uzależniającej SAML
 
-Teraz, gdy Dzierżawca może wystawiać potwierdzenia SAML, należy utworzyć zasady jednostek uzależnionych SAML i zmodyfikować drogę użytkownika, tak aby wystawić potwierdzenie SAML zamiast tokenu JWT.
+Teraz, gdy dzierżawa może wystawiać potwierdzenia SAML, należy utworzyć zasady jednostki uzależniającej SAML i zmodyfikować proces użytkownika, tak aby wystawiał asercja SAML zamiast JWT.
 
-### <a name="31-create-sign-up-or-sign-in-policy"></a>3,1 Tworzenie zasad tworzenia konta lub logowania
+### <a name="31-create-sign-up-or-sign-in-policy"></a>3.1 Tworzenie zasad rejestracji lub logowania
 
-1. Utwórz kopię pliku *SignUpOrSignin. XML* w katalogu roboczym pakietu startowego i Zapisz go przy użyciu nowej nazwy. Na przykład *SignUpOrSigninSAML. XML*. Jest to plik zasad jednostki uzależnionej.
+1. Utwórz kopię pliku *SignUpOrSignin.xml* w katalogu roboczym pakietu startowego i zapisz go pod nową nazwą. Na przykład *signuporsigninsaml.xml*. Jest to plik zasad jednostki uzależniającej.
 
-1. Otwórz plik *SignUpOrSigninSAML. XML* w preferowanym edytorze.
+1. Otwórz plik *SignUpOrSigninSAML.xml* w preferowanym edytorze.
 
-1. Zmień `PolicyId` i `PublicPolicyUri` zasad, aby _B2C_1A_signup_signin_saml_ i `http://tenant-name.onmicrosoft.com/B2C_1A_signup_signin_saml` jak pokazano poniżej.
+1. Zmień `PolicyId` zasady `PublicPolicyUri` na _B2C_1A_signup_signin_saml_ i `http://tenant-name.onmicrosoft.com/B2C_1A_signup_signin_saml` jak widać poniżej.
 
     ```XML
     <TrustFrameworkPolicy
@@ -178,7 +178,7 @@ Teraz, gdy Dzierżawca może wystawiać potwierdzenia SAML, należy utworzyć za
     PublicPolicyUri="http://tenant-name.onmicrosoft.com/B2C_1A_signup_signin_saml">
     ```
 
-1. Dodaj następujący fragment kodu XML tuż przed elementem `<RelyingParty>`. Ten plik XML zastępuje krok aranżacji nr 7 podróży użytkownika _SignUpOrSignIn_ . Jeśli rozpoczęto od innego folderu w pakiecie startowym lub dostosowałeś drogę użytkownika przez dodanie lub usunięcie kroków aranżacji, upewnij się, że liczba (w `order` elemencie) jest wyrównana z tą, którą określono w podróży użytkownika dla kroku wystawcy token (na przykład w innych folderach z pakietem startowym zostanie uruchomiony numer 4 dla `LocalAccounts`, 6 dla `SocialAccounts` i 9 dla `SocialAndLocalAccountsWithMfa`).
+1. Dodaj następujący fragment kodu XML `<RelyingParty>` tuż przed elementem. Ten xml zastępuje krok aranżacji numer 7 _rejestracji rejestracji._ Jeśli uruchomiono z innego folderu w pakiecie startowym lub dostosowano podróż użytkownika przez dodanie lub `order` usunięcie kroków aranżacji, upewnij się, że liczba (w elemencie) jest wyrównana z numerem określonym w podróży użytkownika dla kroku wystawcy tokenu (na przykład w innych folderach pakietu startowego jest to krok numer 4 dla `LocalAccounts`, 6 for `SocialAccounts` i 9 for `SocialAndLocalAccountsWithMfa`).
 
     ```XML
     <UserJourneys>
@@ -190,7 +190,7 @@ Teraz, gdy Dzierżawca może wystawiać potwierdzenia SAML, należy utworzyć za
     </UserJourneys>
     ```
 
-1. Zastąp cały element `<TechnicalProfile>` w elemencie `<RelyingParty>` następującym kodem XML profilu technicznego.
+1. Zastąp `<TechnicalProfile>` cały `<RelyingParty>` element w elemencie następującym profilem technicznym XML.
 
     ```XML
     <TechnicalProfile Id="PolicyProfile">
@@ -208,9 +208,9 @@ Teraz, gdy Dzierżawca może wystawiać potwierdzenia SAML, należy utworzyć za
     </TechnicalProfile>
     ```
 
-1. Zaktualizuj `tenant-name` przy użyciu nazwy dzierżawy Azure AD B2Cowej.
+1. Zaktualizuj `tenant-name` nazwę dzierżawy usługi Azure AD B2C.
 
-Końcowy plik zasad jednostki uzależnionej powinien wyglądać następująco:
+Ostateczny plik zasad jednostki uzależniającej powinien wyglądać następująco:
 
 ```XML
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
@@ -255,49 +255,49 @@ Końcowy plik zasad jednostki uzależnionej powinien wyglądać następująco:
 </TrustFrameworkPolicy>
 ```
 
-### <a name="32-upload-and-test-your-policy-metadata"></a>3,2 przekazywanie i testowanie metadanych zasad
+### <a name="32-upload-and-test-your-policy-metadata"></a>3.2 Przesyłanie i testowanie metadanych zasad
 
-Zapisz zmiany i przekaż nowy plik zasad. Po przekazaniu obu zasad (rozszerzenia i plików jednostek uzależnionych) Otwórz przeglądarkę internetową i przejdź do metadanych zasad.
+Zapisz zmiany i przekaż nowy plik zasad. Po przekazaniu obu zasad (rozszerzenia i plików jednostki uzależnionej) otwórz przeglądarkę internetową i przejdź do metadanych zasad.
 
-Metadane dostawcy tożsamości zasad Azure AD B2C są informacje używane w protokole SAML do ujawnienia konfiguracji dostawcy tożsamości SAML. Metadane określają lokalizację usług, takich jak logowanie i wylogowywanie, certyfikaty, metoda logowania itd. Metadane zasad Azure AD B2C są dostępne pod następującym adresem URL. Zastąp `tenant-name` nazwą dzierżawy Azure AD B2C i `policy-name` z nazwą (IDENTYFIKATORem) zasad:
+Metadane dpd zasad usługi Azure AD B2C to informacje używane w protokole SAML do udostępnienia konfiguracji dostawcy tożsamości SAML. Metadane definiują lokalizację usług, takich jak logowanie i wylogowywanie, certyfikaty, metoda logowania i inne. Metadane zasad usługi Azure AD B2C są dostępne pod następującym adresem URL. Zamień `tenant-name` na nazwę dzierżawy usługi Azure `policy-name` AD B2C i nazwę (ID) zasad:
 
 `https://tenant-name.b2clogin.com/tenant-name.onmicrosoft.com/policy-name/Samlp/metadata`
 
-Twoje zasady niestandardowe i dzierżawa Azure AD B2C są teraz gotowe. Następnie utwórz rejestrację aplikacji w Azure AD B2C.
+Twoje zasady niestandardowe i dzierżawa usługi Azure AD B2C są teraz gotowe. Następnie utwórz rejestrację aplikacji w usłudze Azure AD B2C.
 
-## <a name="4-setup-application-in-the-azure-ad-b2c-directory"></a>4. Skonfiguruj aplikację w katalogu Azure AD B2C
+## <a name="4-setup-application-in-the-azure-ad-b2c-directory"></a>4. Aplikacja instalacji w katalogu usługi Azure AD B2C
 
-### <a name="41-register-your-application-in-azure-active-directory"></a>4,1 Zarejestruj swoją aplikację w Azure Active Directory
+### <a name="41-register-your-application-in-azure-active-directory"></a>4.1 Rejestrowanie aplikacji w usłudze Azure Active Directory
 
-1. Zaloguj się do [Azure portal](https://portal.azure.com).
-1. Wybierz filtr **katalogów i subskrypcji** w górnym menu, a następnie wybierz katalog zawierający dzierżawę Azure AD B2C.
-1. W menu po lewej stronie wybierz pozycję **Azure AD B2C**. Lub wybierz pozycję **wszystkie usługi** i Wyszukaj i wybierz pozycję **Azure AD B2C**.
-1. Wybierz pozycję **rejestracje aplikacji (wersja zapoznawcza)** , a następnie wybierz pozycję **Nowa rejestracja**.
+1. Zaloguj się do [Portalu Azure](https://portal.azure.com).
+1. Wybierz filtr **subskrypcja katalog +** w górnym menu, a następnie wybierz katalog zawierający dzierżawę usługi Azure AD B2C.
+1. W menu po lewej stronie wybierz pozycję **Azure AD B2C**. Możesz też wybrać **wszystkie usługi** i wyszukać i wybrać pozycję Azure **AD B2C**.
+1. Wybierz **pozycję Rejestracje aplikacji (Wersja zapoznawcza),** a następnie wybierz pozycję **Nowa rejestracja**.
 1. Wprowadź **nazwę** aplikacji. Na przykład *SAMLApp1*.
-1. W obszarze **obsługiwane typy kont**wybierz opcję **konta tylko w tym katalogu organizacji**
-1. W obszarze **Identyfikator URI przekierowania**wybierz pozycję **Sieć Web**, a następnie wprowadź `https://localhost`. Tę wartość należy zmodyfikować później w manifeście rejestracji aplikacji.
+1. W obszarze **Obsługiwane typy kont**wybierz pozycję **Konta tylko w tym katalogu organizacyjnym**
+1. W obszarze **Przekierowanie identyfikatora URI**wybierz pozycję **Sieć Web**, a następnie wprowadź . `https://localhost` Zmodyfikujesz tę wartość w dalszej części manifestu rejestracji aplikacji.
 1. Wybierz pozycję **Zarejestruj**.
 
-### <a name="42-update-the-app-manifest"></a>4,2. Zaktualizuj manifest aplikacji
+### <a name="42-update-the-app-manifest"></a>4.2 Aktualizacja manifestu aplikacji
 
 W przypadku aplikacji SAML istnieje kilka właściwości, które należy skonfigurować w manifeście rejestracji aplikacji.
 
-1. W [Azure Portal](https://portal.azure.com)przejdź do rejestracji aplikacji utworzonej w poprzedniej sekcji.
-1. W obszarze **Zarządzaj**wybierz pozycję **manifest** , aby otworzyć Edytor manifestu. Modyfikujesz kilka właściwości w poniższych sekcjach.
+1. W [witrynie Azure portal](https://portal.azure.com)przejdź do rejestracji aplikacji utworzonej w poprzedniej sekcji.
+1. W obszarze **Zarządzaj**wybierz **pozycję Manifest,** aby otworzyć edytor manifestów. Zmodyfikuj kilka właściwości w poniższych sekcjach.
 
-#### <a name="identifieruris"></a>identifierUris
+#### <a name="identifieruris"></a>identyfikatorUris
 
-`identifierUris` to kolekcja ciągów zawierająca zdefiniowane przez użytkownika identyfikatory URI, które w unikatowy sposób identyfikują aplikację sieci Web w ramach dzierżawy Azure AD B2C. Dostawca usług musi ustawić tę wartość w `Issuer` elemencie żądania SAML.
+Jest `identifierUris` to kolekcja ciągów zawierająca zdefiniowane przez użytkownika identyfikatory URI, które jednoznacznie identyfikują aplikację sieci Web w dzierżawie usługi Azure AD B2C. Usługodawca musi ustawić tę `Issuer` wartość w elemencie żądania SAML.
 
 #### <a name="samlmetadataurl"></a>samlMetadataUrl
 
-Ta właściwość reprezentuje publicznie dostępny adres URL metadanych dostawcy usług. Adres URL metadanych może wskazywać na plik metadanych przekazany do dowolnego anonimowo dostępnego punktu końcowego, na przykład magazynu obiektów BLOB.
+Ta właściwość reprezentuje publicznie dostępny adres URL metadanych dostawcy usług. Adres URL metadanych może wskazywać plik metadanych przekazany do dowolnego anonimowo dostępnego punktu końcowego, na przykład magazynu obiektów blob.
 
-Metadane są informacje używane w protokole SAML do ujawnienia konfiguracji strony SAML, takiej jak dostawca usług. Metadane określają lokalizację usług, takich jak logowanie i wylogowywanie, certyfikaty, metoda logowania itd. Azure AD B2C odczytuje metadane dostawcy usługi i odpowiednio działa. Metadane nie są wymagane. Możesz również określić niektóre atrybuty, takie jak identyfikator URI odpowiedzi i identyfikator URI wylogowania, bezpośrednio w manifeście aplikacji.
+Metadane są informacjami używanymi w protokole SAML do udostępnienia konfiguracji strony SAML, takiej jak dostawca usług. Metadane definiują lokalizację usług, takich jak logowanie i wylogowywanie, certyfikaty, metoda logowania i inne. Usługa Azure AD B2C odczytuje metadane dostawcy usług i działa odpowiednio. Metadane nie są wymagane. Można również określić niektóre atrybuty, takie jak identyfikator URI odpowiedzi i identyfikator URI wylogowania bezpośrednio w manifeście aplikacji.
 
-Jeśli istnieją właściwości określone *zarówno* w adresie URL metadanych SAML, jak i w manifeście rejestracji aplikacji, zostaną one **scalone**. Właściwości określone w adresie URL metadanych są przetwarzane jako pierwsze i mają pierwszeństwo.
+Jeśli istnieją właściwości określone zarówno w adresie URL metadanych SAML, *jak* i w manifeście rejestracji aplikacji, są one **scalane**. Właściwości określone w adresie URL metadanych są przetwarzane jako pierwsze i mają pierwszeństwo.
 
-W tym samouczku, który używa aplikacji testowej SAML, należy użyć następującej wartości dla `samlMetadataUrl`:
+W tym samouczku, który używa aplikacji testowej SAML, użyj następującej wartości dla: `samlMetadataUrl`
 
 ```JSON
 "samlMetadataUrl":"https://samltestapp2.azurewebsites.net/Metadata",
@@ -305,11 +305,11 @@ W tym samouczku, który używa aplikacji testowej SAML, należy użyć następuj
 
 #### <a name="replyurlswithtype-optional"></a>replyUrlsWithType (opcjonalnie)
 
-Jeśli nie podasz identyfikatora URI metadanych, można jawnie określić adres URL odpowiedzi. Ta opcjonalna właściwość reprezentuje `AssertionConsumerServiceUrl` (`SingleSignOnService` adres URL w metadanych dostawcy usługi), a `BindingType` założono, że `HTTP POST`.
+Jeśli nie podasz identyfikatora URI metadanych, możesz jawnie określić adres URL odpowiedzi. Ta opcjonalna `AssertionConsumerServiceUrl` właściwość reprezentuje (`SingleSignOnService` adres URL `BindingType` w metadanych dostawcy usług) i zakłada `HTTP POST`się, że jest .
 
-Jeśli zdecydujesz się skonfigurować adres URL odpowiedzi i adres URL wylogowywania w manifeście aplikacji bez użycia metadanych dostawcy usług, Azure AD B2C nie zweryfikuje podpisu żądania SAML ani nie szyfruje odpowiedzi SAML.
+Jeśli zdecydujesz się skonfigurować adres URL odpowiedzi i adres URL wylogowania w manifeście aplikacji bez użycia metadanych dostawcy usług, usługa Azure AD B2C nie będzie sprawdzać poprawności podpisu żądania SAML ani szyfrować odpowiedzi SAML.
 
-W tym samouczku, w którym używasz aplikacji testowej SAML, ustaw właściwość `url` `replyUrlsWithType` na wartość pokazaną w poniższym fragmencie kodu JSON.
+W tym samouczku, w którym używasz aplikacji `url` testowej SAML, ustaw właściwość `replyUrlsWithType` wartości wyświetlanej w poniższym urywek JSON.
 
 ```JSON
 "replyUrlsWithType":[
@@ -322,9 +322,9 @@ W tym samouczku, w którym używasz aplikacji testowej SAML, ustaw właściwoś�
 
 #### <a name="logouturl-optional"></a>logoutUrl (opcjonalnie)
 
-Ta opcjonalna właściwość reprezentuje adres URL `Logout` (`SingleLogoutService` adres URL w metadanych jednostki uzależnionej), a `BindingType` dla tego celu przyjmuje się `Http-Redirect`.
+Ta opcjonalna `Logout` właściwość`SingleLogoutService` reprezentuje adres URL (URL w `BindingType` metadanych jednostki uzależniającej), a dla tego zakłada `Http-Redirect`się.
 
-W tym samouczku, który używa aplikacji testowej SAML, pozostaw `logoutUrl` ustawione na `https://samltestapp2.azurewebsites.net/logout`:
+W tym samouczku, który używa aplikacji `logoutUrl` testowej `https://samltestapp2.azurewebsites.net/logout`SAML, pozostaw ustawioną na:
 
 ```JSON
 "logoutUrl": "https://samltestapp2.azurewebsites.net/logout",
@@ -332,50 +332,51 @@ W tym samouczku, który używa aplikacji testowej SAML, pozostaw `logoutUrl` ust
 
 ## <a name="5-update-your-application-code"></a>5. Zaktualizuj kod aplikacji
 
-Ostatnim krokiem jest włączenie Azure AD B2C jako elementu SAML dostawcy tożsamości w aplikacji jednostki uzależnionej SAML. Każda aplikacja jest różna i czynności, które należy wykonać, są różne. Aby uzyskać szczegółowe informacje, zajrzyj do dokumentacji aplikacji.
+Ostatnim krokiem jest włączenie usługi Azure AD B2C jako identyfikator SAML w aplikacji jednostki uzależniającej SAML. Każda aplikacja jest inna, a kroki, aby to zrobić, różnią się. Szczegółowe informacje można znaleźć w dokumentacji aplikacji.
 
-Niektóre lub wszystkie następujące elementy są zwykle wymagane:
+Zazwyczaj wymagane są niektóre lub wszystkie z poniższych:
 
-* **Metadane**: `https://tenant-name.b2clogin.com/tenant-name.onmicrosoft.com/policy-name/Samlp/metadata`
-* **Wystawca**: `https://tenant-name.b2clogin.com/tenant-name.onmicrosoft.com/policy-name`
-* **Adres URL logowania/punkt końcowy SAML/adres URL SAML**: Sprawdź wartość w pliku metadanych
-* **Certyfikat**: jest to *B2C_1A_SamlIdpCert*, ale bez klucza prywatnego. Aby uzyskać klucz publiczny certyfikatu:
+* **Metadane**:`https://tenant-name.b2clogin.com/tenant-name.onmicrosoft.com/policy-name/Samlp/metadata`
+* **Wystawca**: Użyj identyfikatora jednostki w pliku metadanych
+* **Adres URL/SAML logowania/adres URL SAML:** Sprawdź wartość w pliku metadanych
+* **Certyfikat:** Jest to *B2C_1A_SamlIdpCert*, ale bez klucza prywatnego. Aby uzyskać klucz publiczny certyfikatu:
 
     1. Przejdź do adresu URL metadanych określonego powyżej.
-    1. Skopiuj wartość z elementu `<X509Certificate>`.
-    1. Wklej ją do pliku tekstowego.
-    1. Zapisz plik tekstowy jako plik *CER* .
+    1. Skopiuj `<X509Certificate>` wartość w elemencie.
+    1. Wklej go do pliku tekstowego.
+    1. Zapisz plik tekstowy jako plik *cer.*
 
-### <a name="51-test-with-the-saml-test-app-optional"></a>5,1 test z aplikacją testową SAML (opcjonalnie)
+### <a name="51-test-with-the-saml-test-app-optional"></a>5.1 Test z aplikacją testowej SAML (opcjonalnie)
 
-Aby ukończyć ten samouczek przy użyciu [aplikacji testowej SAML][samltest]:
+Aby ukończyć ten samouczek za pomocą naszej [aplikacji testowej SAML:][samltest]
 
-* Zaktualizuj nazwę dzierżawy
-* Nazwa zasad aktualizacji, na przykład *B2C_1A_signup_signin_saml*
-* Określ identyfikator URI wystawcy: `https://contoso.onmicrosoft.com/app-name`
+* Aktualizowanie nazwy dzierżawy
+* Aktualizuj nazwę zasad, na przykład *B2C_1A_signup_signin_saml*
+* Określ ten identyfikator URI wystawcy:`https://contoso.onmicrosoft.com/app-name`
 
-Wybierz pozycję **Zaloguj** , a następnie Wyświetl ekran logowania użytkownika końcowego. Po zalogowaniu potwierdzenie SAML jest wydawane z powrotem do przykładowej aplikacji.
+Wybierz **zaloguj się** i powinien zostać wyświetlony ekran logowania użytkownika. Po zalogowaniu potwierdzenia SAML jest wydawane z powrotem do przykładowej aplikacji.
 
 ## <a name="sample-policy"></a>Przykładowe zasady
 
-Oferujemy kompletne przykładowe zasady, których można użyć do testowania z aplikacją testową SAML.
+Zapewniamy pełną przykładową zasadę, której można użyć do testowania za pomocą aplikacji testowej SAML.
 
-1. Pobieranie [przykładowych zasad logowania zainicjowanych przez protokół SAML-Sp](https://github.com/azure-ad-b2c/saml-sp/tree/master/policy/SAML-SP-Initiated)
-1. Zaktualizuj `TenantId` tak, aby odpowiadała nazwie dzierżawy, na przykład *contoso.b2clogin.com*
+1. Pobieranie [przykładowych zasad logowania inicjowanych przez SAML-SP](https://github.com/azure-ad-b2c/saml-sp/tree/master/policy/SAML-SP-Initiated)
+1. Aktualizuj, `TenantId` aby dopasować nazwę dzierżawy, na przykład *contoso.b2clogin.com*
 1. Zachowaj nazwę zasad *B2C_1A_SAML2_signup_signin*
 
-## <a name="supported-and-unsupported-saml-modalities"></a>Obsługiwane i nieobsługiwane procedury SAML
+## <a name="supported-and-unsupported-saml-modalities"></a>Obsługiwane i nieobsługiwały modalności SAML
 
-Następujące scenariusze jednostki uzależnionej SAML (RP) są obsługiwane za pośrednictwem własnego punktu końcowego metadanych:
+Następujące scenariusze jednostki uzależniającej SAML (RP) są obsługiwane za pośrednictwem własnego punktu końcowego metadanych:
 
-* Wiele adresów URL wylogowywania lub po wprowadzeniu powiązania dla adresu URL wylogowania w obiekcie głównym aplikacji/usługi.
-* Określ klucz podpisywania, aby zweryfikować żądania RP w obiekcie głównym aplikacji/usługi.
-* Określ klucz szyfrowania tokenu w obiekcie aplikacji/jednostki usługi.
+* Wiele adresów URL wylogowania lub powiązania POST dla adresu URL wylogowania w obiekcie jednostki aplikacji/usługi.
+* Określ klucz podpisywania, aby zweryfikować żądania RP w obiekcie jednostkowym aplikacji/usługi.
+* Określ klucz szyfrowania tokenu w obiekcie jednostkowym aplikacji/usługi.
 * Logowania inicjowane przez dostawcę tożsamości nie są obecnie obsługiwane w wersji zapoznawczej.
 
 ## <a name="next-steps"></a>Następne kroki
 
-Więcej informacji na temat [protokołu SAML można znaleźć w witrynie sieci Web języka Oasis](https://www.oasis-open.org/).
+- Więcej informacji na temat [protokołu SAML](https://www.oasis-open.org/)można znaleźć na stronie internetowej OASIS .
+- Pobierz aplikację internetową testu SAML z [repozytorium społeczności Usługi Ad AD B2C GitHub](https://github.com/azure-ad-b2c/saml-sp-tester).
 
 <!-- LINKS - External -->
 [samltest]: https://aka.ms/samltestapp

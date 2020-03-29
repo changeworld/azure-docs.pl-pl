@@ -1,6 +1,6 @@
 ---
-title: Zarządzanie zasadami automatycznego zamykania w programie Azure DevTest Labs | Microsoft Docs
-description: Dowiedz się, jak ustawić zasady Autozamykania dla laboratorium, aby maszyny wirtualne były automatycznie zamykane, gdy nie są używane.
+title: Zarządzanie zasadami automatycznego zasłaniania w laboratoriach devtest platformy Azure | Dokumenty firmy Microsoft
+description: Dowiedz się, jak ustawić zasady autoshutdown dla laboratorium, tak aby maszyny wirtualne były automatycznie zamykane, gdy nie są używane.
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -15,108 +15,108 @@ ms.topic: article
 ms.date: 01/17/2020
 ms.author: spelluru
 ms.openlocfilehash: a2d0b9bdfba1b96ad42e45d54faf106b2361e29d
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/17/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76264795"
 ---
-# <a name="configure-autoshutdown-for-lab-and-compute-virtual-machines-in-azure-devtest-labs"></a>Konfigurowanie automatycznego zamykania dla maszyn wirtualnych w środowisku laboratoryjnym i obliczeniowym w Azure DevTest Labs
+# <a name="configure-autoshutdown-for-lab-and-compute-virtual-machines-in-azure-devtest-labs"></a>Konfigurowanie automatycznego usuwania maszyn wirtualnych w laboratorium i obliczaniu w laboratoriach devtest azure
 
-W tym artykule wyjaśniono, jak skonfigurować ustawienia automatycznego zamykania dla maszyn wirtualnych laboratorium w DevTest Labs i maszynach wirtualnych obliczeniowych. 
+W tym artykule wyjaśniono, jak skonfigurować ustawienia autoshutdown dla maszyn wirtualnych w laboratorium w DevTest Labs i maszyn wirtualnych obliczeniowych. 
 
-## <a name="configure-autoshutdown-for-lab-vms-devtest-labs"></a>Konfigurowanie automatycznego zamykania dla maszyn wirtualnych laboratorium (DevTest Labs)
-Azure DevTest Labs pozwala kontrolować koszt i zminimalizować liczbę odpadów w laboratoriach przez Zarządzanie zasadami (ustawieniami) dla każdego laboratorium. W tym artykule opisano sposób konfigurowania zasad Autozamykania dla konta laboratorium i konfigurowania ustawień automatycznego zamykania dla laboratorium na koncie laboratorium. Aby wyświetlić sposób ustawiania każdej zasady laboratorium, zobacz [Definiowanie zasad laboratorium w Azure DevTest Labs](devtest-lab-set-lab-policy.md).  
+## <a name="configure-autoshutdown-for-lab-vms-devtest-labs"></a>Konfigurowanie automatycznego usuwania maszyn wirtualnych w laboratorium (DevTest Labs)
+Laboratorium devtest platformy Azure umożliwia kontrolowanie kosztów i minimalizowanie odpadów w laboratoriach, zarządzając zasadami (ustawieniami) dla każdego laboratorium. W tym artykule pokazano, jak skonfigurować zasady autoshutdown dla konta laboratorium i skonfigurować ustawienia autoshutdown dla laboratorium na koncie laboratorium. Aby zobaczyć, jak ustawić wszystkie zasady laboratoryjne, zobacz [Definiowanie zasad laboratoryjnych w laboratoriach Azure DevTest Labs.](devtest-lab-set-lab-policy.md)  
 
-### <a name="set-auto-shut-down-policy-for-a-lab"></a>Ustawianie zasad Autozamykania dla laboratorium
-Jako właściciel laboratorium możesz skonfigurować harmonogram zamykania dla wszystkich maszyn wirtualnych w laboratorium. Dzięki temu można zaoszczędzić koszty z uruchomionych maszyn, które nie są używane (bezczynny). Zasady zamykania można wymusić na wszystkich maszynach wirtualnych laboratorium centralnie, ale także zaoszczędzić użytkownikom laboratorium nakłady pracy z konfigurowania harmonogramu dla poszczególnych maszyn. Ta funkcja umożliwia ustawienie zasad w harmonogramie laboratorium, rozpoczynając od oferty bez kontroli w celu uzyskania pełnej kontroli dla użytkowników laboratorium. Jako właściciel laboratorium możesz skonfigurować te zasady, wykonując następujące czynności:
+### <a name="set-auto-shut-down-policy-for-a-lab"></a>Ustawianie zasad automatycznego zamykania dla laboratorium
+Jako właściciel laboratorium możesz skonfigurować harmonogram zamykania dla wszystkich maszyn wirtualnych w laboratorium. W ten sposób można zaoszczędzić koszty z uruchomionych maszyn, które nie są używane (bezczynny). Zasady zamykania można wymusić na wszystkich maszynach wirtualnych w laboratorium centralnie, ale także zapisać użytkownikom laboratorium wysiłek z konfigurowania harmonogramu dla ich poszczególnych komputerów. Ta funkcja umożliwia ustawienie zasad w harmonogramie laboratorium, począwszy od oferowania żadnej kontroli do pełnej kontroli, dla użytkowników laboratorium. Jako właściciel laboratorium możesz skonfigurować tę zasadę, wykonując następujące kroki:
 
 1. Na stronie głównej laboratorium wybierz pozycję **Konfiguracja i zasady**.
-2. Wybierz pozycję **zasady automatycznego zamykania** w sekcji **harmonogramy** menu po lewej stronie.
-3. Wybierz jedną z opcji. Poniższe sekcje zawierają więcej informacji na temat tych opcji: zasady zestawu są stosowane tylko do nowych maszyn wirtualnych utworzonych w laboratorium, a nie do istniejących maszyn wirtualnych. 
+2. Wybierz **pozycję Zasady automatycznego zamykania** w sekcji **Harmonogramy** w menu po lewej stronie.
+3. Wybierz jedną z opcji. W poniższych sekcjach podano więcej szczegółów na temat tych opcji: Zasady zestawu dotyczą tylko nowych maszyn wirtualnych utworzonych w laboratorium, a nie już istniejących maszyn wirtualnych. 
 
-    ![Automatycznie Zamknij opcje zasad](./media/devtest-lab-set-lab-policy/auto-shutdown-policy-options.png)
+    ![Automatyczne zamykanie opcji zasad](./media/devtest-lab-set-lab-policy/auto-shutdown-policy-options.png)
 
-### <a name="configure-auto-shutdown-settings"></a>Skonfiguruj ustawienia automatycznego zamykania
-Zasady Autozamykania ułatwiają minimalizowanie odpadów laboratoryjnych przez umożliwienie określenia czasu, w którym maszyny wirtualne tego laboratorium zostały zamknięte.
+### <a name="configure-auto-shutdown-settings"></a>Konfigurowanie ustawień automatycznego zamykania
+Zasady autoshutdown pomaga zminimalizować straty w laboratorium, umożliwiając określenie czasu, przez który maszyny wirtualne tego laboratorium są zamykane.
 
 Aby wyświetlić (i zmienić) zasady dla laboratorium, wykonaj następujące kroki:
 
 1. Zaloguj się do [Portalu Azure](https://portal.azure.com).
-2. Wybierz pozycję **wszystkie usługi**, a następnie z listy wybierz pozycję **DevTest Labs** .
-3. Z listy laboratoriów wybierz odpowiednie laboratorium.   
-4. Wybierz pozycję **Konfiguracja i zasady**.
+2. Wybierz **pozycję Wszystkie usługi**, a następnie wybierz z listy pozycję **DevTest Labs.**
+3. Z listy laboratoriów wybierz żądane laboratorium.   
+4. Wybierz **opcję Konfiguracja i zasady**.
 
     ![Okienko ustawień zasad](./media/devtest-lab-set-lab-policy/policies-menu.png)
-5. W okienku **Konfiguracja i zasady** laboratorium wybierz pozycję **automatyczne zamykanie** w obszarze **harmonogramy**.
+5. W okienku **Konfiguracja i zasady** laboratorium wybierz pozycję **Automatyczne zamykanie w** obszarze **Harmonogramy**.
    
-    ![Automatyczne zamykanie](./media/devtest-lab-set-lab-policy/auto-shutdown.png)
-6. Wybierz **opcję Włącz,** aby włączyć tę zasadę i **wyłączyć** ją.
-7. Jeśli włączysz tę zasadę, określ czas (i strefę czasową), aby zamknąć wszystkie maszyny wirtualne w bieżącym laboratorium.
-8. Wybierz opcję **tak** lub **nie** , aby można było wysłać powiadomienie 30 minut przed określonym czasem automatycznego zamknięcia. Jeśli wybierzesz opcję **tak**, wprowadź punkt końcowy URL elementu webhook lub adres e-mail określający, gdzie ma być ogłaszane lub wysyłane. Użytkownik otrzymuje powiadomienie i otrzymuje opcję opóźnienia zamknięcia. Aby uzyskać więcej informacji, zobacz sekcję [powiadomienia](#notifications) . 
-9. Wybierz pozycję **Zapisz**.
+    ![Autoshutdown](./media/devtest-lab-set-lab-policy/auto-shutdown.png)
+6. **Wybierz włącz,** aby włączyć tę zasadę, i **Wyłącz,** aby ją wyłączyć.
+7. Jeśli ta zasada zostanie włączona, określ czas (i strefę czasową) do zamknięcia wszystkich maszyn wirtualnych w bieżącym laboratorium.
+8. Określ **tak** lub **nie** dla opcji wysyłania powiadomień 30 minut przed określonym czasem automatycznego zasnąć. Jeśli wybierzesz **opcję Tak,** wpisz punkt końcowy adresu URL elementu webhook lub adres e-mail, określając miejsce, w którym ma zostać opublikowane lub wysłane powiadomienie. Użytkownik otrzymuje powiadomienie i ma możliwość opóźnienia zamknięcia systemu. Aby uzyskać więcej informacji, zobacz sekcję [Powiadomienia.](#notifications) 
+9. Wybierz **pozycję Zapisz**.
 
-    Domyślnie po włączeniu te zasady mają zastosowanie do wszystkich maszyn wirtualnych w bieżącym laboratorium. Aby usunąć to ustawienie z określonej maszyny wirtualnej, Otwórz okienko zarządzania maszyną wirtualną i zmień jego ustawienie automatycznego **zamykania** .
+    Domyślnie po włączeniu ta zasada ma zastosowanie do wszystkich maszyn wirtualnych w bieżącym laboratorium. Aby usunąć to ustawienie z określonej maszyny Wirtualnej, otwórz okienko zarządzania maszyny Wirtualnej i zmień jego ustawienie **Autoshutdown.**
     
 > [!NOTE]
-> W przypadku zaktualizowania harmonogramu automatycznego zamykania dla laboratorium lub określonej maszyny wirtualnej laboratorium w ciągu 30 minut od bieżącego zaplanowanego czasu, zaktualizowany czas zamknięcia będzie stosowany do harmonogramu następnego dnia. 
+> Jeśli zaktualizujesz harmonogram automatycznego wyłączania dla laboratorium lub określonej maszyny wirtualnej laboratorium w ciągu 30 minut od bieżącego zaplanowanego czasu, zaktualizowany czas zamykania będzie miał zastosowanie do harmonogramu następnego dnia. 
 
-### <a name="user-sets-a-schedule-and-can-opt-out"></a>Użytkownik ustawia harmonogram i może zrezygnować
-Jeśli ustawisz laboratorium na te zasady, użytkownicy laboratorium mogą przesłonić lub zrezygnować z harmonogramu laboratorium. Ta opcja przyznaje użytkownikom laboratorium pełną kontrolę nad harmonogramem automatycznego zamykania maszyn wirtualnych. Użytkownicy laboratorium nie zmieniają żadnej zmiany na stronie harmonogramu automatycznego zamykania maszyny wirtualnej.
+### <a name="user-sets-a-schedule-and-can-opt-out"></a>Użytkownik ustala harmonogram i może zrezygnować
+Jeśli ustawisz laboratorium do tej zasady, użytkownicy laboratorium można zastąpić lub zrezygnować z harmonogramu laboratorium. Ta opcja zapewnia użytkownikom laboratorium pełną kontrolę nad harmonogramem automatycznego zamykania ich maszyn wirtualnych. Użytkownicy laboratorium nie widzą żadnych zmian na stronie harmonogramu automatycznego zamykania maszyn wirtualnych.
 
-![Opcja automatycznie Zamknij zasady-1](./media/devtest-lab-set-lab-policy/auto-shutdown-policy-option-1.png)
+![Opcja automatycznego wyłączania - 1](./media/devtest-lab-set-lab-policy/auto-shutdown-policy-option-1.png)
 
 ### <a name="user-sets-a-schedule-and-cannot-opt-out"></a>Użytkownik ustawia harmonogram i nie może zrezygnować
-Jeśli ustawisz laboratorium do tych zasad, użytkownicy laboratorium mogą przesłonić harmonogram laboratorium. Nie mogą jednak zrezygnować z zasad automatycznego zamykania. Ta opcja zapewnia, że każdy komputer w laboratorium jest objęty harmonogramem automatycznego zamykania. Użytkownicy laboratorium mogą zaktualizować harmonogram automatycznego zamykania dla swoich maszyn wirtualnych i skonfigurować powiadomienia o zamknięciu.
+Jeśli ustawisz laboratorium do tej zasady, użytkownicy laboratorium można zastąpić harmonogram laboratorium. Nie mogą jednak zrezygnować z zasad automatycznego zamykania. Ta opcja zapewnia, że każdy komputer w laboratorium jest w harmonogramie automatycznego zamykania. Użytkownicy laboratorium mogą aktualizować harmonogram automatycznego zamykania swoich maszyn wirtualnych i konfigurowania powiadomień o zamykaniu.
 
-![Opcja automatycznie Zamknij zasady-2](./media/devtest-lab-set-lab-policy/auto-shutdown-policy-option-2.png)
+![Opcja automatycznego wyłączania - 2](./media/devtest-lab-set-lab-policy/auto-shutdown-policy-option-2.png)
 
 ### <a name="user-has-no-control-over-the-schedule-set-by-lab-admin"></a>Użytkownik nie ma kontroli nad harmonogramem ustawionym przez administratora laboratorium
-Jeśli ustawisz laboratorium na te zasady, użytkownicy laboratorium nie mogą przesłonić ani zrezygnować z harmonogramu laboratorium. Ta opcja zapewnia administratorowi laboratorium pełną kontrolę nad harmonogramem dla każdej maszyny w laboratorium. Użytkownicy laboratorium mogą konfigurować tylko powiadomienia o automatycznym zamknięciu dla swoich maszyn wirtualnych.
+Jeśli ustawisz laboratorium na tę zasadę, użytkownicy laboratorium nie mogą zastąpić ani zrezygnować z harmonogramu laboratorium. Ta opcja oferuje administratorowi laboratorium pełną kontrolę zgodnie z harmonogramem dla każdego komputera w laboratorium. Użytkownicy laboratorium mogą konfigurowania tylko powiadomień o automatycznym zamykaniu dla swoich maszyn wirtualnych.
 
-![Opcja automatycznie Zamknij zasady-3](./media/devtest-lab-set-lab-policy/auto-shutdown-policy-option-3.png)
+![Opcja automatycznego wyłączania - 3](./media/devtest-lab-set-lab-policy/auto-shutdown-policy-option-3.png)
 
 ### <a name="notifications"></a>Powiadomienia
-Po skonfigurowaniu automatycznego wyłączania przez właściciela laboratorium powiadomienia będą wysyłane do użytkowników laboratorium 30 minut przed wyzwoleniem automatycznego wyłączenia, jeśli będzie to miało wpływ na dowolną z ich maszyn wirtualnych. Ta opcja daje użytkownikom laboratorium szansę na zapisanie pracy przed zamknięciem. Powiadomienie zawiera również linki dla każdej maszyny wirtualnej dla następujących akcji:
+Po autoshutdown skonfigurowane przez właściciela laboratorium, powiadomienia zostaną wysłane do użytkowników laboratorium 30 minut przed autoshutdown wyzwalane, jeśli którykolwiek z ich maszyn wirtualnych będzie dotyczyć. Ta opcja daje użytkownikom laboratorium możliwość zapisania swojej pracy przed zamknięciem. Powiadomienie zawiera również łącza dla każdej maszyny Wirtualnej dla następujących akcji:
 
-- Pomiń automatyczne zamykanie w tym czasie
-- Odłożyć Automatyczne zamknięcie przez godzinę lub 2 godziny, aby mogły pracować nad maszyną wirtualną.
+- Pomiń autoshutdown na ten czas
+- Odłożyć autoshutdown na godzinę lub 2 godziny, tak aby mogli kontynuować pracę na maszynie Wirtualnej.
 
-Powiadomienie jest wysyłane za pośrednictwem skonfigurowanego punktu końcowego elementu webhook lub adresu e-mail określonego przez właścicieli laboratorium w ustawieniach automatycznego zamykania. Elementy webhook umożliwiają kompilowanie lub Konfigurowanie integracji subskrybowanych przez pewne zdarzenia. Gdy jedno z tych zdarzeń zostanie wyzwolone, DevTest Labs wyśle ładunek HTTP POST do skonfigurowanego adresu URL elementu webhook. Aby uzyskać więcej informacji na temat elementów webhook, zobacz [Tworzenie elementu webhook lub interfejsu API platformy Azure](../azure-functions/functions-create-a-web-hook-or-api-function.md). 
+Powiadomienie jest wysyłane za pośrednictwem skonfigurowanego punktu końcowego haka sieci web lub adresu e-mail określonego przez właścicieli laboratorium w ustawieniach autoshutdown. Webhooks umożliwiają tworzenie lub konfigurowanie integracji, które subskrybują określone zdarzenia. Po wyzwoleniu jednego z tych zdarzeń DevTest Labs wyśle ładunek HTTP POST do skonfigurowanego adresu URL elementu webhook. Aby uzyskać więcej informacji na temat elementów webhook, zobacz [Tworzenie elementu webhook lub funkcji platformy Azure interfejsu API](../azure-functions/functions-create-a-web-hook-or-api-function.md). 
 
-Zalecamy używanie elementów webhook, ponieważ są one szeroko obsługiwane przez różne aplikacje (na przykład zapasy czasu, Azure Logic Apps itd.) i umożliwiają implementowanie własnych metod wysyłania powiadomień. W tym artykule przedstawiono na przykład, jak uzyskać powiadomienia o automatycznym zamknięciu z wiadomości e-mail przy użyciu Azure Logic Apps. Najpierw przejdź do sekcji podstawowe kroki, aby włączyć powiadomienia o automatycznym zamknięciu w laboratorium.   
+Firma Microsoft zaleca, aby używać haków sieci web, ponieważ są one szeroko obsługiwane przez różne aplikacje (na przykład Slack, Azure Logic Apps i tak dalej.) i umożliwia implementację własnego sposobu wysyłania powiadomień. Na przykład w tym artykule otrzymasz informacje o automatycznym wystyniu z wiadomości e-mail przy użyciu aplikacji Azure Logic Apps. Najpierw szybko przejdźmy przez podstawowe kroki, aby włączyć automatyczne powiadomienie o automatycznym wskrzeszaniu w laboratorium.   
 
 ### <a name="create-a-logic-app-that-receives-email-notifications"></a>Tworzenie aplikacji logiki, która odbiera powiadomienia e-mail
-[Azure Logic Apps](../logic-apps/logic-apps-overview.md) oferuje wiele wbudowanych łączników, które ułatwiają integrację usługi z innymi klientami, takimi jak Office 365 i Twitter. Na wysokim poziomie kroki konfigurowania aplikacji logiki na potrzeby powiadomień e-mail można podzielić na cztery etapy: 
+[Usługa Azure Logic Apps](../logic-apps/logic-apps-overview.md) udostępnia wiele gotowych łączników, które ułatwiają integrację usługi z innymi klientami, takimi jak Office 365 i twitter. Na wysokim poziomie kroki konfigurowania aplikacji logiki dla powiadomień e-mail można podzielić na cztery fazy: 
 
-- Utwórz aplikację logiki. 
+- Tworzenie aplikacji logiki. 
 - Skonfiguruj wbudowany szablon.
 - Integracja z klientem poczty e-mail
 - Pobierz adres URL elementu webhook.
 
 ### <a name="create-a-logic-app"></a>Tworzenie aplikacji logiki
-Aby rozpocząć, Utwórz aplikację logiki w ramach subskrypcji platformy Azure, wykonując następujące czynności:
+Aby rozpocząć, utwórz aplikację logiki w subskrypcji platformy Azure, wykonując następujące kroki:
 
-1. Wybierz pozycję **+ Utwórz zasób** w menu po lewej stronie, wybierz pozycję **integracja**i wybierz pozycję **aplikacja logiki**. 
+1. Wybierz **+ Utwórz zasób** w menu po lewej stronie, wybierz **pozycję Integracja**i wybierz pozycję Aplikacja **logiki**. 
 
     ![Nowe menu aplikacji logiki](./media/devtest-lab-auto-shutdown/new-logic-app.png)
-2. Na stronie **aplikacja logiki — tworzenie** wykonaj następujące kroki: 
+2. Na aplikacji **logiki — tworzenie** strony, wykonaj następujące kroki: 
     1. Wprowadź **nazwę** aplikacji logiki.
     2. Wybierz swoją **subskrypcję** platformy Azure.
-    3. Utwórz nową **grupy zasobów** lub wybierz istniejącą grupę zasobów. 
+    3. Utwórz nową **grupę zasobów** lub wybierz istniejącą grupę zasobów. 
     4. Wybierz **lokalizację** aplikacji logiki. 
 
-        ![Nowa aplikacja logiki — ustawienia](./media/devtest-lab-auto-shutdown/new-logic-app-page.png)
-3. W obszarze **powiadomienia**wybierz pozycję **Przejdź do zasobu** w powiadomieniu. 
+        ![Nowa aplikacja logiki - ustawienia](./media/devtest-lab-auto-shutdown/new-logic-app-page.png)
+3. W **powiadomieniach**wybierz **pozycję Przejdź do zasobu** w powiadomieniu. 
 
     ![Przechodzenie do zasobu](./media/devtest-lab-auto-shutdown/go-to-resource.png)
-4. Wybierz pozycję **Projektant aplikacji logiki** w kategorii **narzędzia wdrażania** .
+4. Wybierz **pozycję Projektant aplikacji logiki** w kategorii Narzędzia **wdrażania.**
 
-    ![Wybieranie żądania HTTP/odpowiedzi](./media/devtest-lab-auto-shutdown/select-http-request-response-option.png)
-5. Na stronie **żądanie HTTP-odpowiedź** wybierz pozycję **Użyj tego szablonu**. 
+    ![Wybierz żądanie/odpowiedź HTTP](./media/devtest-lab-auto-shutdown/select-http-request-response-option.png)
+5. Na stronie **Żądanie-Odpowiedź HTTP** wybierz pozycję **Użyj tego szablonu**. 
 
     ![Wybierz opcję Użyj tego szablonu](./media/devtest-lab-auto-shutdown/select-use-this-template.png)
-6. Skopiuj następujący kod JSON do sekcji **schematu JSON treści żądania** : 
+6. Skopiuj następujący JSON do sekcji **Schemat JSON treści żądania:** 
 
     ```json
     {
@@ -174,31 +174,31 @@ Aby rozpocząć, Utwórz aplikację logiki w ramach subskrypcji platformy Azure,
     ```
     
     ![Schemat JSON treści żądania](./media/devtest-lab-auto-shutdown/request-json.png)
-7. Wybierz pozycję **+ nowy krok** w projektancie, a następnie wykonaj następujące kroki:
-    1. Wyszukaj **pakiet Office 365 Outlook — Wyślij wiadomość e-mail**. 
-    2. Wybierz opcję **Wyślij wiadomość e-mail** z **akcji**. 
+7. Wybierz **+ Nowy krok** w projektancie i wykonaj następujące kroki:
+    1. Wyszukiwanie **w usłudze Office 365 Outlook — wysyłanie wiadomości e-mail**. 
+    2. Wybierz **pozycję Wyślij wiadomość e-mail** z **akcji**. 
     
-        ![Opcja wysyłania wiadomości e-mail](./media/devtest-lab-auto-shutdown/select-send-email.png)
-    3. Wybierz pozycję **Zaloguj** się, aby zalogować się na konto e-mail. 
-    4. Zaznacz **pole wyboru i wybierz pozycję** właściciel.
-    5. Wybierz pozycję **temat**i wprowadź temat powiadomienia e-mail. Na przykład: "Shutdown of Machine vmName for Lab: labName".
-    6. Wybierz pozycję **treść**i zdefiniuj treść wiadomości e-mail z powiadomieniem. Na przykład: "vmName jest zaplanowana do zamknięcia w ciągu 15 minut. Pomiń to zamknięcie, klikając pozycję: URL. Opóźnione zamykanie przez godzinę: delayUrl60. Opóźnione zamykanie przez 2 godziny: delayUrl120. "
+        ![Opcja Wyślij wiadomość e-mail](./media/devtest-lab-auto-shutdown/select-send-email.png)
+    3. Wybierz **pozycję Zaloguj się,** aby zalogować się na swoje konto e-mail. 
+    4. Wybierz pole **DO** i wybierz właściciela.
+    5. Wybierz **TEMAT**i wprowadź temat powiadomienia e-mail. Na przykład: "Zamknięcie maszyny vmName dla laboratorium: labName."
+    6. Wybierz **pozycję BODY**i zdefiniuj zawartość treści dla powiadomień e-mail. Na przykład: "vmName jest zaplanowane do zamknięcia w ciągu 15 minut. Pomiń to zamknięcie, klikając: adres URL. Opóźnij zamknięcie na godzinę: delayUrl60. Opóźnij wyłączenie o 2 godziny: opóźnienieUrl120."
 
         ![Schemat JSON treści żądania](./media/devtest-lab-auto-shutdown/email-options.png)
-1. Wybierz pozycję **Zapisz** na pasku narzędzi. Teraz można skopiować **adres URL post protokołu HTTP**. Wybierz przycisk Kopiuj, aby skopiować adres URL do Schowka. 
+1. Wybierz pozycję **Zapisz** na pasku narzędzi. Teraz możesz skopiować **adres URL HTTP POST**. Wybierz przycisk kopiowania, aby skopiować adres URL do schowka. 
 
-    ![Adres URL elementu webhook](./media/devtest-lab-auto-shutdown/webhook-url.png)
+    ![WebHook URL](./media/devtest-lab-auto-shutdown/webhook-url.png)
 
-## <a name="configure-autoshutdown-for-compute-vms"></a>Konfigurowanie automatycznego zamykania dla maszyn wirtualnych obliczeniowych
+## <a name="configure-autoshutdown-for-compute-vms"></a>Konfigurowanie automatycznego usuwania maszyn wirtualnych
 
-1. Na stronie **maszyna wirtualna** wybierz pozycję **automatyczne zamykanie** w menu po lewej stronie. 
-2. Na stronie **automatyczne zamykanie** **Wybierz opcję włączone,** aby włączyć tę zasadę i **wyłączyć** ją.
-3. Jeśli włączysz tę zasadę, określ **czas** (i **strefę czasową**), o której należy wyłączyć maszynę wirtualną.
-4. Wybierz opcję **tak** lub **nie** , aby można było wysłać powiadomienie 30 minut przed określonym czasem automatycznego zamknięcia. Jeśli wybierzesz opcję **tak**, wprowadź punkt końcowy URL elementu webhook lub adres e-mail określający, gdzie ma być ogłaszane lub wysyłane. Użytkownik otrzymuje powiadomienie i otrzymuje opcję opóźnienia zamknięcia. Aby uzyskać więcej informacji, zobacz sekcję [powiadomienia](#notifications) . 
-9. Wybierz pozycję **Zapisz**.
+1. Na stronie **Maszyna wirtualna** wybierz pozycję **Automatyczne zamykanie** w menu po lewej stronie. 
+2. Na stronie **Automatyczne zamykanie** wybierz pozycję **Włącz,** aby włączyć tę zasadę, i **wyłącz** ją, aby ją wyłączyć.
+3. Jeśli ta zasada zostanie włączona, określ **czas** (i **strefę czasową),** w którym maszyna wirtualna powinna zostać zamknięta.
+4. Określ **tak** lub **nie** dla opcji wysyłania powiadomień 30 minut przed określonym czasem automatycznego zasnąć. Jeśli wybierzesz **opcję Tak,** wpisz punkt końcowy adresu URL elementu webhook lub adres e-mail, określając miejsce, w którym ma zostać opublikowane lub wysłane powiadomienie. Użytkownik otrzymuje powiadomienie i ma możliwość opóźnienia zamknięcia systemu. Aby uzyskać więcej informacji, zobacz sekcję [Powiadomienia.](#notifications) 
+9. Wybierz **pozycję Zapisz**.
 
-    ![Konfigurowanie automatycznego zamykania maszyny wirtualnej obliczeniowej](./media/devtest-lab-auto-shutdown/comnpute-auto-shutdown.png)
+    ![Konfigurowanie automatycznego usuwania dla maszyny Wirtualnej obliczeniowej](./media/devtest-lab-auto-shutdown/comnpute-auto-shutdown.png)
 
 ## <a name="next-steps"></a>Następne kroki
-Aby dowiedzieć się, jak ustawić wszystkie zasady, zobacz [Definiowanie zasad laboratorium w Azure DevTest Labs](devtest-lab-set-lab-policy.md).
+Aby dowiedzieć się, jak ustawić wszystkie zasady, zobacz [Definiowanie zasad laboratoryjnych w laboratoriach Azure DevTest Labs](devtest-lab-set-lab-policy.md).
 

@@ -1,6 +1,6 @@
 ---
-title: Wykonywanie operacji usługi Azure Table Storage za pomocą programu PowerShell | Microsoft Docs
-description: Dowiedz się, jak uruchamiać typowe zadania, takie jak tworzenie, wykonywanie zapytań, usuwanie danych z konta usługi Azure Table Storage za pomocą programu PowerShell.
+title: Wykonywanie operacji magazynu tabel platformy Azure za pomocą programu PowerShell | Dokumenty firmy Microsoft
+description: Dowiedz się, jak uruchamiać typowe zadania, takie jak tworzenie, wykonywanie zapytań, usuwanie danych z konta magazynu tabel platformy Azure przy użyciu programu PowerShell.
 author: roygara
 ms.service: storage
 ms.topic: article
@@ -8,39 +8,39 @@ ms.date: 04/05/2019
 ms.author: rogarana
 ms.subservice: tables
 ms.openlocfilehash: f1846fae4cbf473df688a2b184c307d72ab2f8d0
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76721476"
 ---
-# <a name="perform-azure-table-storage-operations-with-azure-powershell"></a>Wykonywanie operacji usługi Azure Table Storage za pomocą Azure PowerShell 
+# <a name="perform-azure-table-storage-operations-with-azure-powershell"></a>Wykonywanie operacji magazynu tabel platformy Azure za pomocą programu Azure PowerShell 
 [!INCLUDE [storage-table-cosmos-db-tip-include](../../../includes/storage-table-cosmos-db-langsoon-tip-include.md)]
 
-Azure Table Storage to magazyn danych NoSQL, który służy do przechowywania i wykonywania zapytań dotyczących dużych zestawów strukturalnych danych nierelacyjnych. Głównymi składnikami usługi są tabele, jednostki i właściwości. Tabela jest kolekcją jednostek. Jednostka jest zestawem właściwości. Każda jednostka może mieć do 252 właściwości (wszystkie pary nazwa-wartość). W tym artykule przyjęto założenie, że znasz już pojęcia dotyczące usługi Azure Table Storage. Aby uzyskać szczegółowe informacje, zobacz [Omówienie modelu danych usługi Table Service](/rest/api/storageservices/Understanding-the-Table-Service-Data-Model) i rozpoczynanie [pracy z usługą Azure Table Storage przy użyciu platformy .NET](../../cosmos-db/table-storage-how-to-use-dotnet.md).
+Usługa Azure Table storage to magazyn danych NoSQL, którego można używać do przechowywania i wykonywania zapytań o ogromne zestawy ustrukturyzowanych, nierelacyjnych danych. Głównymi składnikami usługi są tabele, jednostki i właściwości. Tabela jest kolekcją jednostek. Jednostka jest zestawem właściwości. Każda jednostka może mieć maksymalnie 252 właściwości, które są parami nazwa-wartość. W tym artykule przyjęto założenie, że znasz już pojęcia usługi Azure Table Storage Service. Aby uzyskać szczegółowe informacje, zobacz [Opis modelu danych usługi tabel](/rest/api/storageservices/Understanding-the-Table-Service-Data-Model) i wprowadzenie do magazynu tabel platformy Azure przy użyciu platformy [.NET](../../cosmos-db/table-storage-how-to-use-dotnet.md).
 
-W tym artykule opisano typowe operacje usługi Azure Table Storage. Omawiane kwestie: 
+W tym artykule opisano typowe operacje magazynu tabel platformy Azure. Omawiane kwestie: 
 
 > [!div class="checklist"]
 > * Tworzenie tabeli
-> * Pobierz tabelę
-> * Dodaj jednostki tabeli
-> * Tworzenie zapytań względem tabeli
-> * Usuń jednostki tabeli
+> * Pobieranie tabeli
+> * Dodawanie encji tabeli
+> * Zapytanie o tabelę
+> * Usuwanie encji tabeli
 > * Usuwanie tabeli
 
-W tym artykule opisano sposób tworzenia nowego konta usługi Azure Storage w nowej grupie zasobów, dzięki czemu można łatwo usunąć go po zakończeniu. Jeśli wolisz korzystać z istniejącego konta magazynu, możesz to zrobić.
+W tym artykule przedstawiono sposób tworzenia nowego konta usługi Azure Storage w nowej grupie zasobów, dzięki czemu można je łatwo usunąć po zakończeniu. Jeśli wolisz używać istniejącego konta magazynu, możesz to zrobić.
 
-Przykłady wymagają AZ PowerShell modules `Az.Storage (1.1.0 or greater)` i `Az.Resources (1.2.0 or greater)`. W oknie programu PowerShell uruchom `Get-Module -ListAvailable Az*`, aby znaleźć wersję. Jeśli nic nie jest wyświetlane lub musisz przeprowadzić uaktualnienie, zobacz [Install Azure PowerShell module](/powershell/azure/install-az-ps).
-
-> [!IMPORTANT]
-> Korzystanie z tej funkcji platformy Azure z poziomu programu PowerShell wymaga zainstalowania modułu `Az`. Bieżąca wersja `AzTable` nie jest zgodna ze starszym modułem AzureRM.
-> Postępuj zgodnie z [najnowszymi instrukcjami dotyczącymi instalacji polecenia AZ module w](/powershell/azure/install-az-ps) razie potrzeby.
-
-Po zainstalowaniu lub zaktualizowaniu Azure PowerShell należy zainstalować moduł **AzTable**, który zawiera polecenia służące do zarządzania jednostkami. Aby zainstalować ten moduł, uruchom program PowerShell jako administrator i użyj polecenia **Install-module** .
+Przykłady wymagają modułów `Az.Storage (1.1.0 or greater)` Az PowerShell i `Az.Resources (1.2.0 or greater)`. W oknie programu PowerShell uruchom, `Get-Module -ListAvailable Az*` aby znaleźć wersję. Jeśli nic nie jest wyświetlane lub trzeba uaktualnić, zobacz [Instalowanie modułu programu Azure PowerShell](/powershell/azure/install-az-ps).
 
 > [!IMPORTANT]
-> Ze względów zgodności nazw modułów nadal publikujemy ten sam moduł pod starą nazwą `AzureRmStorageTables` w Galeria programu PowerShell. Ten dokument odwołuje się tylko do nowej nazwy.
+> Korzystanie z tej funkcji platformy Azure z `Az` programu PowerShell wymaga, że masz zainstalowany moduł. Bieżąca wersja `AzTable` nie jest zgodna ze starszym modułem AzureRM.
+> W razie potrzeby postępuj zgodnie z [najnowszymi instrukcjami instalacji modułu Az.](/powershell/azure/install-az-ps)
+
+Po zainstalowaniu lub zaktualizowaniu programu Azure PowerShell należy zainstalować moduł **AzTable**, który ma polecenia do zarządzania jednostkami. Aby zainstalować ten moduł, uruchom program PowerShell jako administrator i użyj polecenia **Install-Module.**
+
+> [!IMPORTANT]
+> Ze względu na zgodność nazwy modułu nadal publikujemy `AzureRmStorageTables` ten sam moduł pod starą nazwą w galerii programu PowerShell. Ten dokument będzie odwoływać się tylko do nowej nazwy.
 
 ```powershell
 Install-Module AzTable
@@ -54,9 +54,9 @@ Zaloguj się do subskrypcji platformy Azure za pomocą polecenia `Add-AzAccount`
 Add-AzAccount
 ```
 
-## <a name="retrieve-list-of-locations"></a>Pobierz listę lokalizacji
+## <a name="retrieve-list-of-locations"></a>Pobieranie listy lokalizacji
 
-Jeśli nie wiesz, której lokalizacji użyć, możesz wyświetlić listę dostępnych lokalizacji. Po wyświetleniu listy znajdź lokalizację, której chcesz użyć. W tych przykładach użyto **wschodniego**. Zapisz tę wartość w zmiennej **lokalizacji** do użycia w przyszłości.
+Jeśli nie wiesz, której lokalizacji użyć, możesz wyświetlić listę dostępnych lokalizacji. Po wyświetleniu listy znajdź lokalizację, której chcesz użyć. W tych przykładach użyto **pliku eastus**. Przechowuj tę wartość w **lokalizacji** zmiennej do wykorzystania w przyszłości.
 
 ```powershell
 Get-AzLocation | select Location
@@ -67,7 +67,7 @@ $location = "eastus"
 
 Utwórz grupę zasobów za pomocą polecenia [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup). 
 
-Grupa zasobów platformy Azure to logiczny kontener przeznaczony do wdrażania zasobów platformy Azure i zarządzania nimi. Zapisz nazwę grupy zasobów w zmiennej do użycia w przyszłości. W tym przykładzie grupa zasobów o nazwie *pshtablesrg* jest tworzona w regionie *wschodnim* .
+Grupa zasobów platformy Azure to logiczny kontener przeznaczony do wdrażania zasobów platformy Azure i zarządzania nimi. Przechowuj nazwę grupy zasobów w zmiennej do wykorzystania w przyszłości. W tym przykładzie grupa zasobów o nazwie *pshtablesrg* jest tworzony w regionie *eastus.*
 
 ```powershell
 $resourceGroup = "pshtablesrg"
@@ -76,7 +76,7 @@ New-AzResourceGroup -ResourceGroupName $resourceGroup -Location $location
 
 ## <a name="create-storage-account"></a>Tworzenie konta magazynu
 
-Utwórz standardowe konto magazynu ogólnego przeznaczenia z magazynem lokalnie nadmiarowy (LRS) przy użyciu polecenia [New-AzStorageAccount](/powershell/module/az.storage/New-azStorageAccount). Pamiętaj, aby określić unikatową nazwę konta magazynu. Następnie Pobierz kontekst reprezentujący konto magazynu. Gdy działa na koncie magazynu, można odwoływać się do kontekstu zamiast powtarzania podawania poświadczeń.
+Utwórz standardowe konto magazynu ogólnego przeznaczenia z lokalnie nadmiarowym magazynem (LRS) przy użyciu [funkcji New-AzStorageAccount](/powershell/module/az.storage/New-azStorageAccount). Pamiętaj, aby określić unikatową nazwę konta magazynu. Następnie pobierz kontekst, który reprezentuje konto magazynu. Działając na koncie magazynu, można odwoływać się do kontekstu zamiast wielokrotnie podaj poświadczeń.
 
 ```powershell
 $storageAccountName = "pshtablestorage"
@@ -89,9 +89,9 @@ $storageAccount = New-AzStorageAccount -ResourceGroupName $resourceGroup `
 $ctx = $storageAccount.Context
 ```
 
-## <a name="create-a-new-table"></a>Utwórz nową tabelę
+## <a name="create-a-new-table"></a>Tworzenie nowej tabeli
 
-Aby utworzyć tabelę, użyj polecenia cmdlet [New-AzStorageTable](/powershell/module/az.storage/New-AzStorageTable) . W tym przykładzie tabela jest nazywana `pshtesttable`.
+Aby utworzyć tabelę, użyj polecenia cmdlet [New-AzStorageTable.](/powershell/module/az.storage/New-AzStorageTable) W tym przykładzie tabela jest wywoływana `pshtesttable`.
 
 ```powershell
 $tableName = "pshtesttable"
@@ -100,26 +100,26 @@ New-AzStorageTable –Name $tableName –Context $ctx
 
 ## <a name="retrieve-a-list-of-tables-in-the-storage-account"></a>Pobieranie listy tabel na koncie magazynu
 
-Pobierz listę tabel na koncie magazynu za pomocą polecenia [Get-AzStorageTable](/powershell/module/azure.storage/Get-AzureStorageTable).
+Pobierz listę tabel na koncie magazynu przy użyciu [tabeli Get-AzStorageTable](/powershell/module/azure.storage/Get-AzureStorageTable).
 
 ```powershell
 Get-AzStorageTable –Context $ctx | select Name
 ```
 
-## <a name="retrieve-a-reference-to-a-specific-table"></a>Pobierz odwołanie do określonej tabeli
+## <a name="retrieve-a-reference-to-a-specific-table"></a>Pobieranie odwołania do określonej tabeli
 
-Aby wykonać operacje na tabeli, należy odwołać się do konkretnej tabeli. Pobierz odwołanie za pomocą polecenia [Get-AzStorageTable](/powershell/module/azure.storage/Get-AzureStorageTable).
+Aby wykonać operacje w tabeli, należy odwołać się do określonej tabeli. Uzyskaj odwołanie za pomocą [get-AzStorageTable](/powershell/module/azure.storage/Get-AzureStorageTable).
 
 ```powershell
 $storageTable = Get-AzStorageTable –Name $tableName –Context $ctx
 ```
 
-## <a name="reference-cloudtable-property-of-a-specific-table"></a>Odwołanie do właściwości chmury określonej tabeli
+## <a name="reference-cloudtable-property-of-a-specific-table"></a>Odwołanie do właściwości CloudTable określonej tabeli
 
 > [!IMPORTANT]
-> Użycie w chmurze jest obowiązkowe podczas pracy z modułem **AzTable** PowerShell. Wywołaj polecenie **Get-AzTableTable** , aby uzyskać odwołanie do tego obiektu. To polecenie tworzy również tabelę, jeśli jeszcze nie istnieje.
+> Użycie cloudtable jest obowiązkowe podczas pracy z **modułem AzTable** PowerShell. Wywołanie **polecenia Get-AzTableTable,** aby uzyskać odwołanie do tego obiektu. To polecenie tworzy również tabelę, jeśli jeszcze nie istnieje.
 
-Aby wykonać operacje na tabeli przy użyciu **AzTable**, należy odwołać się do właściwości w chmurze określonej tabeli.
+Aby wykonać operacje w tabeli przy użyciu **tabeli AzTable,** potrzebne jest odwołanie do właściwości CloudTable określonej tabeli.
 
 ```powershell
 $cloudTable = (Get-AzStorageTable –Name $tableName –Context $ctx).CloudTable
@@ -129,7 +129,7 @@ $cloudTable = (Get-AzStorageTable –Name $tableName –Context $ctx).CloudTable
 
 ## <a name="delete-a-table"></a>Usuwanie tabeli
 
-Aby usunąć tabelę, użyj polecenie [Remove-AzStorageTable](/powershell/module/az.storage/Remove-AzStorageTable). To polecenie cmdlet usuwa tabelę, w tym wszystkie jej dane.
+Aby usunąć tabelę, użyj opcji [Usuń—AzStorageTable](/powershell/module/az.storage/Remove-AzStorageTable). To polecenie cmdlet usuwa tabelę, łącznie ze wszystkimi jej danymi.
 
 ```powershell
 Remove-AzStorageTable –Name $tableName –Context $ctx
@@ -140,7 +140,7 @@ Get-AzStorageTable –Context $Ctx | select Name
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Jeśli utworzono nową grupę zasobów i konto magazynu na początku tej procedury, możesz usunąć wszystkie zasoby utworzone w tym ćwiczeniu, usuwając grupę zasobów. To polecenie usuwa wszystkie zasoby zawarte w grupie, a także samą grupę zasobów.
+Jeśli na początku tego sposobu działania utworzono nową grupę zasobów i konto magazynu, można usunąć wszystkie zasoby utworzone w tym ćwiczeniu, usuwając grupę zasobów. To polecenie usuwa wszystkie zasoby zawarte w grupie, a także samą grupę zasobów.
 
 ```powershell
 Remove-AzResourceGroup -Name $resourceGroup
@@ -148,20 +148,20 @@ Remove-AzResourceGroup -Name $resourceGroup
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym artykule poznasz sposób wykonywania typowych operacji w usłudze Azure Table Storage za pomocą programu PowerShell, w tym: 
+W tym artykule opisano informacje o typowych operacjach magazynu tabel platformy Azure z programem PowerShell, w tym o tym, jak to zrobić: 
 
 > [!div class="checklist"]
 > * Tworzenie tabeli
-> * Pobierz tabelę
-> * Dodaj jednostki tabeli
-> * Tworzenie zapytań względem tabeli
-> * Usuń jednostki tabeli
+> * Pobieranie tabeli
+> * Dodawanie encji tabeli
+> * Zapytanie o tabelę
+> * Usuwanie encji tabeli
 > * Usuwanie tabeli
 
 Aby uzyskać więcej informacji, zobacz następujące artykuły
 
 * [Polecenia cmdlet programu PowerShell usługi Storage](/powershell/module/az.storage#storage)
 
-* [Praca z tabelami platformy Azure z poziomu programu PowerShell — AzureRmStorageTable/AzTable PS module v 2.0](https://paulomarquesc.github.io/working-with-azure-storage-tables-from-powershell)
+* [Praca z tabelami platformy Azure z programu PowerShell — moduł AzureRmStorageTable/AzTable PS w wersji 2.0](https://paulomarquesc.github.io/working-with-azure-storage-tables-from-powershell)
 
 * [Microsoft Azure Storage Explorer](../../vs-azure-tools-storage-manage-with-storage-explorer.md) jest bezpłatną aplikacją autonomiczną oferowaną przez firmę Microsoft, która umożliwia wizualną pracę z danymi w usłudze Azure Storage w systemach Windows, macOS i Linux.

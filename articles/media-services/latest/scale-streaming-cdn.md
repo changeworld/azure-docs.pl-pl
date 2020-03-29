@@ -1,7 +1,7 @@
 ---
-title: Skalowanie przesyłania strumieniowego przy użyciu usługi CDN
+title: Przesyłanie strumieniowe zawartości za pomocą integracji z siecią CDN
 titleSuffix: Azure Media Services
-description: Dowiedz się więcej o usłudze przesyłania strumieniowego, która dostarcza zawartość bezpośrednio do aplikacji odtwarzacza klienta lub do Content Delivery Network (CDN).
+description: Dowiedz się więcej o przesyłaniu strumieniowego zawartości z integracją z siecią CDN, a także z dostępem do systemu prefching i z pomocą wstępną Origin-Assist.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -12,140 +12,149 @@ ms.workload: ''
 ms.topic: article
 ms.date: 02/13/2020
 ms.author: juliako
-ms.openlocfilehash: e918f7ee64d4bc49d5da80bf9a3e7595555296dc
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 4ed8ada306720b7a8b44ddd59cefe399238c906a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79203699"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80128066"
 ---
-# <a name="scaling-streaming-with-cdn"></a>Skalowanie przesyłania strumieniowego przy użyciu sieci CDN
+# <a name="stream-content-with-cdn-integration"></a>Przesyłanie strumieniowe zawartości za pomocą integracji z siecią CDN
 
 Usługa Azure Content Delivery Network (CDN) oferuje deweloperom globalne rozwiązanie umożliwiające szybkie dostarczanie użytkownikom zawartości wymagającej wysokiej przepustowości przez zapisywanie zawartości w pamięci podręcznej w węzłach fizycznych strategicznie rozmieszczonych na całym świecie.  
 
-Usługa CDN buforuje zawartość przesyłaną strumieniowo z [punktu końcowego Media Services streaming (Origin)](streaming-endpoint-concept.md) na koder-dekoder, na protokół przesyłania strumieniowego, za szybkość transmisji bitów na format kontenera oraz na szyfrowanie/DRM. Dla każdej kombinacji kodera-strumieniowego protokołu-Stream — format kontenera — szybkość transmisji bitów — szyfrowanie będzie mieć osobną pamięć podręczną usługi CDN. 
+Usługa CDN buforuje zawartość przesyłaną strumieniowo z [punktu końcowego przesyłania strumieniowego](streaming-endpoint-concept.md) usługi Media Services (pochodzenia) na kodek, na protokół przesyłania strumieniowego, szybkość transmisji bitów, format kontenera i na szyfrowanie/DRM. Dla każdej kombinacji kodek-streaming protokołu-kontener format-bitrate-encryption, będzie oddzielne pamięci podręcznej sieci CDN.
 
-Popularna zawartość będzie obsługiwana bezpośrednio z pamięci podręcznej usługi CDN, o ile fragment wideo jest buforowany. Zawartość na żywo jest prawdopodobnie w pamięci podręcznej, ponieważ zazwyczaj masz wiele osób oglądających dokładnie te same rzeczy. Zawartość na żądanie może być trickier bitowym, ponieważ istnieje pewna zawartość, która jest najbardziej popularna, a niektóre z nich nie są. Jeśli masz miliony zasobów wideo, które nie są popularne (tylko jeden lub dwa osoby przeglądające w tygodniu), ale masz tysiące osób oglądających wszystkie różne wideo, Sieć CDN jest znacznie mniej skuteczna. 
+Popularna zawartość będzie obsługiwana bezpośrednio z pamięci podręcznej CDN, o ile fragment wideo jest buforowany. Zawartość na żywo może być buforowana, ponieważ zazwyczaj wiele osób ogląda dokładnie to samo. Zawartość na żądanie może być nieco trudniejsza, ponieważ możesz mieć niektóre treści, które są popularne, a niektóre nie. Jeśli masz miliony zasobów wideo, gdzie żaden z nich nie jest popularny (tylko jeden lub dwóch widzów w tygodniu), ale masz tysiące ludzi oglądających wszystkie różne filmy, CDN staje się znacznie mniej skuteczne.
 
-Należy również wziąć pod uwagę sposób działania adaptacyjnego przesyłania strumieniowego. Każdy pojedynczy fragment wideo jest buforowany jako jego obiekt własny. Na przykład załóżmy, że po raz pierwszy oglądasz film wideo. Jeśli podgląd pominie około zaledwie kilku sekund, a tylko fragmenty wideo skojarzone z tym, co ktoś ogląda w pamięci podręcznej w usłudze CDN. Dzięki adaptacyjnemu przesyłaniu strumieniowym zazwyczaj masz od 5 do 7 różnych szybkości transmisji wideo. Jeśli jedna osoba ogląda jedną szybkość transmisji bitów, a inna osoba ogląda inną szybkość transmisji bitów, to każda z nich jest buforowana osobno w sieci CDN. Nawet jeśli dwie osoby oglądają tę samą szybkość transmisji bitów, mogą one być przesyłane strumieniowo za pośrednictwem różnych protokołów. Każdy protokół (HLS, MPEG-KRESKa, Smooth Streaming) jest buforowany osobno. Dlatego każda szybkość transmisji bitów i protokół są buforowane oddzielnie, a tylko te fragmenty wideo, które zostały żądane, są buforowane.
+Należy również wziąć pod uwagę, jak działa adaptacyjne przesyłanie strumieniowe. Każdy pojedynczy fragment wideo jest buforowany jako własną jednostkę. Wyobraźmy sobie na przykład, że po raz pierwszy oglądany jest określony film. Jeśli widz przeskakuje oglądając tylko kilka sekund tu i tam, tylko fragmenty wideo związane z tym, co osoba oglądana dostać w pamięci podręcznej w CDN. Dzięki adaptacyjnej transmisji strumieniowej zazwyczaj masz od 5 do 7 różnych bitów wideo. Jeśli jedna osoba obserwuje jedną szybkość transmisji bitów, a inna osoba ogląda inną szybkość transmisji bitów, każda z nich jest buforowana oddzielnie w sieci CDN. Nawet jeśli dwie osoby oglądają tę samą szybkość transmisji bitów, mogą przesyłać strumieniowo za różnych protokołów. Każdy protokół (HLS, MPEG-DASH, Smooth Streaming) jest buforowany oddzielnie. Tak więc każda szybkość transmisji bitów i protokół są buforowane oddzielnie i tylko te fragmenty wideo, które zostały wymagane są buforowane.
 
-Przy podejmowaniu decyzji o tym, czy włączyć usługę CDN w [punkcie końcowym przesyłania strumieniowego](streaming-endpoint-concept.md)Media Services, weź pod uwagę liczbę zaplanowanych osób przeglądających. Sieć CDN jest pomocna tylko w przypadku, gdy przewidujesz wiele podglądów zawartości. Jeśli maksymalne współbieżność podglądu jest mniejsze niż 500, zaleca się wyłączenie usługi CDN, ponieważ usługa CDN jest optymalna dla współbieżności. 
+Przy podejmowaniu decyzji, czy włączyć sieć CDN w [punkcie końcowym przesyłania strumieniowego](streaming-endpoint-concept.md)usługi Media Services, należy wziąć pod uwagę liczbę przewidywanych widzów. Usługa CDN pomaga tylko wtedy, gdy oczekujesz wielu widzów za treści. Jeśli maksymalna współbieżność widzów jest niższa niż 500, zaleca się wyłączenie sieci CDN, ponieważ sieć CDN najlepiej skaluje się ze współbieżnością.
 
-W tym temacie omówiono Włączanie integracji z siecią [CDN](#enable-azure-cdn-integration). Opisano w nim również wstępne pobieranie (aktywne buforowanie) i koncepcję z [wyprzedzeniem](#origin-assist-cdn-prefetch) dotyczącej usługi CDN.
+W tym temacie omówiono włączanie [integracji sieci CDN](#enable-azure-cdn-integration). Wyjaśniono również wstępnefching (aktywne buforowanie) i [origin-assist CDN-Prefetch](#origin-assist-cdn-prefetch) koncepcji.
 
 ## <a name="considerations"></a>Zagadnienia do rozważenia
 
-* [Punkt końcowy przesyłania strumieniowego](streaming-endpoint-concept.md) `hostname` i adres URL przesyłania strumieniowego pozostają takie same niezależnie od tego, czy jest włączona sieć CDN.
-* Jeśli potrzebujesz możliwości testowania zawartości z użyciem usługi CDN lub bez niej, Utwórz inny punkt końcowy przesyłania strumieniowego, który nie jest włączony w sieci CDN.
+* [Punkt](streaming-endpoint-concept.md) `hostname` końcowy przesyłania strumieniowego i adres URL przesyłania strumieniowego pozostają takie same, niezależnie od tego, czy włączysz sieć CDN.
+* Jeśli potrzebujesz możliwości testowania zawartości z siecią CDN lub bez niej, utwórz inny punkt końcowy przesyłania strumieniowego, który nie jest włączony.
 
-## <a name="enable-azure-cdn-integration"></a>Włącz integrację Azure CDN
+## <a name="enable-azure-cdn-integration"></a>Włączanie integracji usługi Azure CDN
 
 > [!IMPORTANT]
-> Nie można włączyć usługi CDN dla kont platformy Azure z wersji próbnej lub ucznia.
+> Nie można włączyć usługi CDN dla kont platformy próbnej lub studenckiej platformy Azure.
 >
-> Integracja z usługą CDN jest włączona we wszystkich centrach danych platformy Azure z wyjątkiem regionów federalnych i w Chinach.
+> Integracja usługi CDN jest włączona we wszystkich centrach danych platformy Azure z wyjątkiem regionów rządu federalnego i Chin.
 
-Po udostępnieniu punktu końcowego przesyłania strumieniowego z włączoną usługą CDN jest zdefiniowany czas oczekiwania na Media Services przed aktualizacją usługi DNS w celu zamapowania punktu końcowego przesyłania strumieniowego na punkt końcowy usługi CDN.
+Po zakończeniu przesyłania strumieniowego jest aprowizowana z włączoną siecią CDN, istnieje zdefiniowany czas oczekiwania w usłudze Media Services przed wykonaniem aktualizacji DNS w celu mapowania punktu końcowego przesyłania strumieniowego do punktu końcowego usługi CDN.
 
-Jeśli zechcesz później wyłączyć/włączyć usługę CDN, punkt końcowy przesyłania strumieniowego musi znajdować się w stanie **zatrzymanym** . Włączenie integracji Azure CDN może potrwać do dwóch godzin, a zmiany zostaną uaktywnione we wszystkich punktach pop usługi CDN. Można jednak uruchomić punkt końcowy przesyłania strumieniowego i strumień bez przerw w punkcie końcowym przesyłania strumieniowego, a po zakończeniu integracji zostanie dostarczony strumień z sieci CDN. W trakcie okresu aprowizacji punkt końcowy przesyłania strumieniowego będzie w stanie **uruchomienia** i może wystąpić spadek wydajności.
+Jeśli później chcesz wyłączyć/włączyć usługę CDN, punkt końcowy przesyłania strumieniowego musi być w stanie **zatrzymania.** Włączenie integracji usługi Azure w sieci CDN może potrwać do dwóch godzin, a zmiany będą aktywne we wszystkich usługach YKP usługi CDN. Można jednak uruchomić punkt końcowy przesyłania strumieniowego i przesyłać strumieniowo bez przerw z punktu końcowego przesyłania strumieniowego. Po zakończeniu integracji strumień jest dostarczany z sieci CDN. W okresie inicjowania obsługi administracyjnej punkt końcowy przesyłania strumieniowego będzie w stanie **początkowym** i można zaobserwować obniżoną wydajność.
 
-Po utworzeniu standardowego punktu końcowego przesyłania strumieniowego jest on konfigurowany domyślnie przy użyciu standardowego Verizon. Korzystając z interfejsów API REST, można skonfigurować Verizon Premium lub standardowego dostawcy Akamai.
+Po utworzeniu standardowego punktu końcowego przesyłania strumieniowego jest on domyślnie skonfigurowany w standardzie Verizon. Dostawców Premium Verizon lub Standard Akamai można skonfigurować przy użyciu interfejsów API REST.
 
-Integracja Azure Media Services z Azure CDN jest zaimplementowana w **Azure CDN z Verizon** dla standardowych punktów końcowych przesyłania strumieniowego. Punkty końcowe przesyłania strumieniowego w warstwie Premium można skonfigurować przy użyciu wszystkich **Azure CDN warstw cenowych i dostawców**. 
+Integracja usługi Azure Media Services z usługą Azure CDN jest implementowana w **usłudze Azure CDN firmy Verizon** dla standardowych punktów końcowych przesyłania strumieniowego. Punkty końcowe przesyłania strumieniowego w warstwie Premium można skonfigurować przy użyciu wszystkich **warstw i dostawców usług Azure CDN.**
 
 > [!NOTE]
-> Aby uzyskać szczegółowe informacje na temat Azure CDN, zobacz [Omówienie usługi CDN](../../cdn/cdn-overview.md).
+> Aby uzyskać szczegółowe informacje o usłudze Azure CDN, zobacz [omówienie usługi CDN](../../cdn/cdn-overview.md).
 
-## <a name="determine-if-a-dns-change-was-made"></a>Ustal, czy wprowadzono zmianę w systemie DNS
+## <a name="determine-if-a-dns-change-was-made"></a>Określanie, czy nastąpiła zmiana dns
 
-Można określić, czy zmiana DNS została wprowadzona w punkcie końcowym przesyłania strumieniowego (ruch jest kierowany do Azure CDN) przy użyciu https://www.digwebinterface.com. Jeśli w wynikach pojawią się azureedge.net nazwy domen, ruch jest teraz wskazywany do sieci CDN.
+Można określić, czy zmiana dns została wystosowana w punkcie końcowym przesyłania <https://www.digwebinterface.com>strumieniowego (ruch jest kierowany do usługi Azure CDN) za pomocą . Jeśli widzisz azureedge.net nazw domen w wynikach, ruch jest teraz wskazywany na sieć CDN.
 
-## <a name="origin-assist-cdn-prefetch"></a>Pochodzenie — pomoc w sieci CDN — pobieranie z wyprzedzeniem
+## <a name="origin-assist-cdn-prefetch"></a>Punkt z asystentem początkowym CDN-Prefetch
 
-Buforowanie sieci CDN jest procesem reaktywnym. Jeśli sieć CDN będzie mogła przewidzieć żądanie następnego obiektu, Sieć CDN może zażądać zażądania i przechować następny obiekt w pamięci podręcznej. Dzięki temu procesowi można uzyskać trafienie pamięci podręcznej dla wszystkich (lub większości) obiektów, a tym samym zwiększyć wydajność.
+Buforowanie CDN jest procesem reaktywnym. Jeśli usługa CDN może przewidzieć, jaki zostanie wymagany następny obiekt, usługa CDN może aktywnie żądać i buforować następny obiekt. Za pomocą tego procesu można osiągnąć cache-hit dla wszystkich (lub większość) obiektów, co zwiększa wydajność.
 
-Koncepcja pobierania z wyprzedzeniem dąży do położenia obiektów na "krawędzi Internetu" w przewidywaniu, że zostaną one zlecone przez odtwarzacz, co skraca czas na dostarczenie tego obiektu do odtwarzacza.
+Koncepcja wstępnego naciągania dąży do umieszczenia obiektów na "skraju internetu" w oczekiwaniu na to, że zostaną one wkrótce zamówione przez gracza, skracając w ten sposób czas dostarczenia tego przedmiotu graczowi.
 
-Aby osiągnąć ten cel, punkt końcowy przesyłania strumieniowego (Źródło) i sieć CDN muszą być dostępne prawidłowo: 
+Aby osiągnąć ten cel, punkt końcowy przesyłania strumieniowego (pochodzenie) i cdn muszą pracować ręka w rękę na kilka sposobów:
 
-- Pochodzenie Media Services musi mieć "inteligencję" (Źródło), aby poinformować sieć CDN o następnym obiekcie do pobrania z wyprzedzeniem, a 
-- Usługa CDN umożliwia pobieranie z wyprzedzeniem i buforowanie (część usługi CDN — pobieranie z wyprzedzeniem). Usługa CDN musi również mieć "inteligencję", aby poinformować o pochodzeniu niezależnie od tego, czy jest to pobieranie z wyprzedzeniem, czy regularne pobieranie, obsługa odpowiedzi 404 i sposób uniknięcia nieskończonej pętli pobierania z wyprzedzeniem.
+- Źródło usługi Media Services musi mieć "analizy" (Origin-Assist), aby poinformować cdn następnego obiektu do wstępnego wciąkania.
+- CDN wykonuje ziszczenie wstępne i buforowanie (część CDN-prefetch). CDN musi również mieć "inteligencję", aby poinformować pochodzenie, czy jest to pobieranie z góry, czy regularne pobieranie, obsługa odpowiedzi 404 i sposób na uniknięcie niekończącej się pętli pobierania z prefetch.
 
 ### <a name="benefits"></a>Korzyści
 
-Zalety funkcji pobierania z *wyprzedzeniem usługi CDN* to:
+Zalety funkcji *Origin-Assist CDN-Prefetch* obejmują:
 
-- Pobieranie z wyprzedzeniem poprawia jakość odtwarzania wideo przez: wstępne pozycjonowanie przewidywanych segmentów wideo na krawędzi podczas odtwarzania, zmniejszanie opóźnień do podglądu i ulepszanie czasów pobierania segmentów wideo. Powoduje to przyspieszenie czasu uruchamiania wideo i zmniejszenie wystąpień ponownego buforowania.
-- Koncepcja ta ma zastosowanie do ogólnego scenariusza sieci CDN, a nie do nośników.
-- Akamai dodał tę funkcję do usługi [Akamai Cloud embed (ACE)](https://learn.akamai.com/en-us/products/media_delivery/cloud_embed.html).
+- Pobieranie wstępne poprawia jakość odtwarzania wideo dzięki wstępnemu pozycjonowaniu przewidywanych segmentów wideo na krawędzi podczas odtwarzania, zmniejszając opóźnienia dla przeglądarki i skracając czas pobierania segmentu wideo. Powoduje to krótszy czas uruchamiania wideo i niższe wystąpienia ponownego zabufferingu.
+- Ta koncepcja ma zastosowanie do ogólnego scenariusza pochodzenia sieci CDN i nie ogranicza się do nośnika.
+- Akamai dodał tę funkcję do [Akamai Cloud Embed (ACE)](https://learn.akamai.com/en-us/products/media_delivery/cloud_embed.html).
 
 > [!NOTE]
-> Ta funkcja nie ma jeszcze zastosowania do usługi CDN Akamai zintegrowanej z punktem końcowym usługi Media Services Streaming. Jest to jednak dostępne dla Media Services klientów, którzy mają już istniejący kontrakt Akamai i wymagają niestandardowej integracji między Akamai CDN i pochodzeniem Media Services.
+> Ta funkcja nie ma jeszcze zastosowania do akamai CDN zintegrowanej z punktem końcowym przesyłania strumieniowego usługi Media Services. Jest jednak dostępna dla klientów usługi Media Services, którzy mają wcześniej istniejącą umowę Akamai i wymagają niestandardowej integracji między siecią CDN Akamai a źródłem usługi Media Services.
 
 ### <a name="how-it-works"></a>Jak to działa
 
-Obsługa sieci CDN dla nagłówków pobranych za pomocą *usługi CDN (* w przypadku przesyłania strumieniowego na żywo i wideo na żądanie) jest dostępna dla klientów z bezpośrednią umową z usługą Akamai CDN. Funkcja obejmuje następujące wymiany nagłówka HTTP między Akamai CDN i pochodzeniem Media Services:
+Obsługa sieci CDN dla `Origin-Assist CDN-Prefetch` nagłówków (zarówno do przesyłania strumieniowego na żywo, jak i wideo na żądanie) jest dostępna dla klientów, którzy mają bezpośredni kontrakt z Akamai CDN. Funkcja obejmuje następujące wymiany nagłówków HTTP między Akamai CDN i źródłem usługi Media Services:
 
 |Nagłówek HTTP|Wartości|Nadawca|Odbiornik|Przeznaczenie|
 | ---- | ---- | ---- | ---- | ----- |
-|Sieć CDN-pochodzenie-pomoc — z obsługą pobierania z wyprzedzeniem | 1 (wartość domyślna) lub 0 |CDN|Origin|Aby wskazać, że Usługa CDN jest włączona z wyprzedzeniem|
-|CDN-Origin-Assist-Prefetch-Path| Przykład: <br/>Fragmenty (wideo = 1400000000, format = MPD-Time-CMAF)|Origin|CDN|Aby zapewnić ścieżkę pobierania z wyprzedzeniem do sieci CDN|
-|Sieć CDN — pochodzenie-pomoc-pobieranie z wyprzedzeniem|1 (żądanie pobrania z wyprzedzeniem) lub 0 (regularne żądanie)|CDN|Origin|Aby wskazać żądanie z usługi CDN, należy wykonać pobieranie z wyprzedzeniem|
+|`CDN-Origin-Assist-Prefetch-Enabled` | 1 (domyślnie) lub 0 |CDN|Origin|Aby wskazać, że sieć CDN jest włączona z dostępem do ziwy.|
+|`CDN-Origin-Assist-Prefetch-Path`| Przykład: <br/>Fragmenty(wideo=1400000000,format=mpd-time-cmaf)|Origin|CDN|Aby zapewnić ścieżkę z przedsprzedażową do sieci CDN.|
+|`CDN-Origin-Assist-Prefetch-Request`|1 (żądanie z góry) lub 0 (zwykłe żądanie)|CDN|Origin|Aby wskazać żądanie z sieci CDN jest zwężeniem z góry.|
 
-Aby wyświetlić część działania wymiany nagłówka, możesz spróbować wykonać następujące czynności:
+Aby wyświetlić część wymiany nagłówka w akcji, możesz wykonać następujące czynności:
 
-1. Użyj programu Poster lub zwinięciea, aby wydać żądanie do pochodzenie Media Services dla segmentu audio lub wideo lub fragmentu. Pamiętaj o dodaniu nagłówka CDN-Origin-Assist-Prefetch-Enabled: 1 w żądaniu.
-2. W odpowiedzi powinna zostać wyświetlona nagłówek CDN-Origin-Assist-Prefetch-Path z ścieżką względną jako wartość.
+1. Użyj listonosza lub cURL, aby wysłać żądanie do źródła usługi Media Services dla segmentu lub fragmentu audio lub wideo. Upewnij się, aby `CDN-Origin-Assist-Prefetch-Enabled: 1` dodać nagłówek w żądaniu.
+2. W odpowiedzi powinien zostać wyświetlony `CDN-Origin-Assist-Prefetch-Path` nagłówek ze ścieżką względną jako jego wartość.
 
-### <a name="supported-streaming-protocols"></a>Obsługiwane protokoły przesyłania strumieniowego 
+### <a name="supported-streaming-protocols"></a>Obsługiwane protokoły przesyłania strumieniowego
 
-Funkcja *pochodzenie* w ramach usługi CDN jest dostępna do obsługi następujących protokołów przesyłania strumieniowego na żywo i przesyłania strumieniowego na żądanie:
+Ta `Origin-Assist CDN-Prefetch` funkcja obsługuje następujące protokoły przesyłania strumieniowego do przesyłania strumieniowego na żywo i na żądanie:
 
 * HLS v3
 * HLS v4
 * HLS CMAF
-* KRESKA (CSF)
-* KRESKA (CMAF)
-* Płynne przesyłanie strumieniowe
+* DASH (CSF)
+* DASH (CMAF)
+* Płynna transmisja strumieniowa
 
 ### <a name="faqs"></a>Często zadawane pytania
 
-* Co zrobić, jeśli adres URL ścieżki pobierania z wyprzedzeniem jest nieprawidłowy, dzięki czemu pobieranie z wyprzedzeniem przez usługę CDN jest 404? 
+* Co zrobić, jeśli adres URL ścieżki z fragmentem wstępnym jest nieprawidłowy, dzięki czemu zdobycz z przedpremierowy cdn otrzymuje 404?
 
-    Usługa CDN będzie buforować w pamięci podręcznej odpowiedź 404 przez 10 sekund (lub inną skonfigurowaną wartość).
-* Załóżmy, że masz wideo na żądanie. Jeśli Usługa CDN — pobieranie z wyprzedzeniem jest włączone, funkcja ta określa, że gdy klient zażąda pierwszego segmentu wideo, pobieranie z wyprzedzeniem spowoduje uruchomienie pętli dla wszystkich kolejnych segmentów wideo z tą samą szybkością transmisji bitów? 
+    Usługa CDN będzie buforować tylko odpowiedź 404 przez 10 sekund (lub inną skonfigurowaną wartość).
 
-    Nie, Usługa CDN — pobieranie z wyprzedzeniem jest wykonywane dopiero po zainicjowaniu żądania/odpowiedzi przez klienta. Usługa CDN — pobieranie z wyprzedzeniem nigdy nie jest wyzwalane przez pobieranie z wyprzedzeniem, aby uniknąć pętli pobierania z wyprzedzeniem. 
-* Czy funkcja pobierania z wyprzedzeniem usługi CDN jest zawsze włączona? Jak można ją włączyć/wyłączyć? 
+* Załóżmy, że masz film na żądanie. Jeśli funkcja z prefetch cdn jest włączona, czy ta funkcja oznacza, że gdy klient zażąda pierwszego segmentu wideo, zczep.
 
-    Ta funkcja jest domyślnie wyłączona. Klienci muszą ją włączyć za pośrednictwem interfejsu API Akamai.
-* W przypadku przesyłania strumieniowego na żywo, co się stało z pomocą, jeśli następny segment lub fragment nie jest jeszcze dostępny? 
+    Nie, cdn-prefetch odbywa się tylko po zainicjowane przez klienta żądanie/odpowiedź. Cdn-prefetch nigdy nie jest wyzwalany przez zwężone, aby uniknąć pętli z przedsprzedaży.
 
-    W takim przypadku pochodzenie Media Services nie będzie dostarczać nagłówka sieci CDN--------------------------
-* Jak działa *pochodzenie* z użyciem usługi CDN z dynamicznymi filtrami manifestu? 
+* Czy funkcja Origin-Assist CDN-Prefetch jest zawsze wskładka? Jak można go włączyć / wyłączyć?
 
-    Ta funkcja działa niezależnie od filtru manifestu. Gdy Następny fragment jest poza oknem filtru, jego adres URL będzie nadal znajdować się w manifeście pierwotnego klienta, a następnie zwracany jako nagłówek odpowiedzi pobierania z wyprzedzeniem usługi CDN. Oznacza to, że Usługa CDN pobierze adres URL fragmentu, który jest odfiltrowany od KRESKi/HLS/gładki manifest. Jednak odtwarzacz nigdy nie wyśle żądania GET do sieci CDN w celu pobrania tego fragmentu, ponieważ ten fragment nie jest uwzględniony w podzielce/HLS/gładkim manifeście przechowywanym przez odtwarzacz (gracz nie wie o istnieniu fragmentu).
-* Czy jest możliwe pobieranie z listy odtwarzania PAUZ/HLS/gładkiego manifestu?
+    Ta funkcja jest domyślnie wyłączona. Klienci muszą go włączyć za pośrednictwem interfejsu API Akamai.
 
-    Do nagłówka z wyprzedzeniem nie dodano ŁĄCZNIKa "No", "HLS Master Playlist", lista odtwarzania HLS Variant ani gładki adres URL manifestu.
-* Czy adresy URL pobierania z wyprzedzeniem względne czy bezwzględne? 
+* Co by się stało z Origin-Assist, jeśli następny segment lub fragment nie jest jeszcze dostępny?
 
-    Podczas gdy Usługa CDN Akamai umożliwia obu, pierwotne adresy URL są dostępne tylko dla ścieżki pobierania Media Services z wyprzedzeniem, ponieważ nie ma żadnej widocznej korzyści przy użyciu bezwzględnych adresów URL.
-* Czy ta funkcja działa z zawartością chronioną za pomocą technologii DRM?
+    W takim przypadku źródło usługi Media `CDN-Origin-Assist-Prefetch-Path` Services nie zapewni nagłówka i nie nastąpi dostęp do ziwy z wyprzedzeniem usługi CDN.
 
-    Tak, ponieważ ta funkcja działa na poziomie HTTP, nie dekoduje ani nie analizuje żadnego segmentu/fragmentu. Bez względu na to, czy zawartość jest zaszyfrowana, czy nie.
-* Czy ta funkcja działa wraz z wstawianiem AD po stronie serwera (SSAI)?
+* Jak `Origin-Assist CDN-Prefetch` działa z dynamicznymi filtrami manifestów?
+
+    Ta funkcja działa niezależnie od filtru manifestu. Gdy następny fragment jest poza oknem filtru, jego adres URL nadal będzie znajdować się, patrząc na manifest klienta pierwotnego, a następnie zwrócony jako nagłówek odpowiedzi z przedbrań sieci CDN. Więc CDN otrzyma adres URL fragmentu, który jest odfiltrowany z DASH/HLS/Smooth manifestu. Jednak odtwarzacz nigdy nie złoży żądania GET do cdn, aby pobrać ten fragment, ponieważ fragment ten nie jest uwzględniony w dash/HLS/Smooth manifestu posiadanych przez odtwarzacz (odtwarzacz nie wie, że fragment istnienia).
+
+* Czy dash MPD / HLS listy odtwarzania / Smooth manifest być prefetched?
+
+    Nie, DASH MPD, główna playlista HLS, playlista wariantu HLS lub gładki adres URL manifestu nie są dodawane do nagłówka z nadpremierowym.
+
+* Czy adresy URL z nadpremierowe są względne lub bezwzględne?
+
+    Podczas gdy Akamai CDN zezwala na oba, źródło usługi Media Services zapewnia tylko względne adresy URL dla ścieżki z wyprzedzeniem, ponieważ nie ma widocznych korzyści w użyciu bezwzględnych adresów URL.
+
+* Czy ta funkcja działa z zawartością chroniona przez drm?
+
+    Tak, ponieważ ta funkcja działa na poziomie HTTP, nie dekoduje ani nie analizuje żadnego segmentu/fragmentu. Nie obchodzi go, czy zawartość jest szyfrowana, czy nie.
+
+* Czy ta funkcja działa z wstawianiem reklam po stronie serwera (SSAI)?
     
-    W przypadku zawartości oryginalnej/głównej (oryginalna zawartość wideo przed wstawieniem AD) działa, ponieważ SSAI nie zmienia sygnatury czasowej zawartości źródłowej ze źródła Media Services. Czy ta funkcja działa z zawartością usługi AD, zależy od tego, czy pochodzenie usługi AD obsługuje funkcję pochodzenie. Na przykład, jeśli zawartość usługi AD jest również hostowana w Azure Media Services (tego samego lub oddzielnego pochodzenia), zawartość usługi AD również zostanie pobrana.
+    To działa dla oryginalnej / głównej zawartości (oryginalna zawartość wideo przed wstawieniem reklamy) działa, ponieważ SSAI nie zmienia sygnatury czasowej treści źródłowej z źródła usługi Media Services. To, czy ta funkcja działa z zawartością reklamy, zależy od tego, czy źródło reklamy obsługuje Origin-Assist. Jeśli na przykład zawartość reklamy jest również hostowana w usłudze Azure Media Services (tego samego lub innego pochodzenia), zawartość reklamy również zostanie naliczona z wyprzedzeniem.
+
 * Czy ta funkcja działa z zawartością UHD/HEVC?
 
     Tak.
 
-## <a name="ask-questions-give-feedback-get-updates"></a>Zadawaj pytania, Przekaż opinię, uzyskaj aktualizacje
+## <a name="ask-questions-give-feedback-get-updates"></a>Zadawaj pytania, przekazuj opinie, otrzyj aktualizacje
 
-Zapoznaj się z artykułem [community Azure Media Services](media-services-community.md) , aby zobaczyć różne sposoby zadawania pytań, przekazać Opinie i uzyskać aktualizacje dotyczące Media Services.
+Zapoznaj się z artykułem [społeczności usługi Azure Media Services,](media-services-community.md) aby zobaczyć różne sposoby zadawania pytań, przekazywania opinii i otrzymywać aktualizacje dotyczące usługi Media Services.
 
 ## <a name="next-steps"></a>Następne kroki
 
-* Pamiętaj, aby zapoznaj dokument [punktu końcowego przesyłania strumieniowego](streaming-endpoint-concept.md) .
-* W przykładzie [w tym repozytorium](https://github.com/Azure-Samples/media-services-v3-dotnet-quickstarts/blob/master/AMSV3Quickstarts/EncodeAndStreamFiles/Program.cs) przedstawiono sposób uruchamiania domyślnego punktu końcowego przesyłania strumieniowego przy użyciu platformy .NET.
+* Upewnij się, że przejrzyj dokument [punktu końcowego przesyłania strumieniowego (pochodzenia).](streaming-endpoint-concept.md)
+* Przykład [w tym repozytorium](https://github.com/Azure-Samples/media-services-v3-dotnet-quickstarts/blob/master/AMSV3Quickstarts/EncodeAndStreamFiles/Program.cs) pokazuje, jak uruchomić domyślny punkt końcowy przesyłania strumieniowego z .NET.

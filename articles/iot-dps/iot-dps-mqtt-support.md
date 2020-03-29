@@ -1,6 +1,6 @@
 ---
-title: Informacje o pomocy technicznej MQTT usługi Azure IoT Device Provisioning Service | Microsoft Docs
-description: Przewodnik dla deweloperów — obsługa urządzeń łączących się z punktem końcowym usługi Azure IoT Device Provisioning (DPS) dostępnym na urządzeniu przy użyciu protokołu MQTT.
+title: Poznaj obsługę usługi inicjowania obsługi urządzeń MQTT platformy Azure | Dokumenty firmy Microsoft
+description: Przewodnik dla deweloperów — obsługa urządzeń łączących się z punktem końcowym obsługującym urządzenia usługi Azure IoT (DPS) przy użyciu protokołu MQTT.
 author: rajeevmv
 ms.service: iot-dps
 services: iot-dps
@@ -8,79 +8,79 @@ ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: ravokkar
 ms.openlocfilehash: ea6ece7e34ddb9c25f9f8349239ab3a1c3405abf
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74973377"
 ---
-# <a name="communicate-with-your-dps-using-the-mqtt-protocol"></a>Komunikacja z usługą DPS przy użyciu protokołu MQTT
+# <a name="communicate-with-your-dps-using-the-mqtt-protocol"></a>Komunikowanie się z dps za pomocą protokołu MQTT
 
-Usługa DPS umożliwia urządzeniom komunikowanie się z punktem końcowym urządzenia usługi DPS przy użyciu:
+Dps umożliwia urządzeniom komunikowanie się z punktem końcowym urządzenia DPS za pomocą:
 
-* [MQTT v 3.1.1](https://mqtt.org/) na porcie 8883
-* [MQTT v 3.1.1](http://docs.oasis-open.org/mqtt/mqtt/v3.1.1/os/mqtt-v3.1.1-os.html#_Toc398718127) przy użyciu protokołu WebSocket na porcie 443.
+* [MQTT v3.1.1](https://mqtt.org/) na porcie 8883
+* [MQTT v3.1.1](http://docs.oasis-open.org/mqtt/mqtt/v3.1.1/os/mqtt-v3.1.1-os.html#_Toc398718127) przez WebSocket na porcie 443.
 
-Usługa DPS nie jest w pełni funkcjonalnym brokerem MQTT i nie obsługuje wszystkich zachowań określonych w standardzie MQTT v 3.1.1. W tym artykule opisano sposób, w jaki urządzenia mogą używać obsługiwanych zachowań MQTT do komunikowania się z usługą DPS.
+DPS nie jest w pełni funkcjonalnym brokerem MQTT i nie obsługuje wszystkich zachowań określonych w standardzie MQTT v3.1.1. W tym artykule opisano, jak urządzenia mogą używać obsługiwanych zachowań MQTT do komunikowania się z dps.
 
-Cała komunikacja urządzeń z usługą DPS musi być zabezpieczona przy użyciu protokołu TLS/SSL. W związku z tym usługa DPS nie obsługuje połączeń niezabezpieczonych przez port 1883.
+Cała komunikacja urządzenia z DPS musi być zabezpieczona za pomocą protokołu TLS/SSL. W związku z tym DPS nie obsługuje niezabezpieczonych połączeń przez port 1883.
 
  > [!NOTE] 
- > Usługa DPS nie obsługuje obecnie urządzeń korzystających z [mechanizmu zaświadczania](https://docs.microsoft.com/azure/iot-dps/concepts-device#attestation-mechanism) TPM za pośrednictwem protokołu MQTT.
+ > DPS obecnie nie obsługuje urządzeń korzystających z [mechanizmu zaświadczania](https://docs.microsoft.com/azure/iot-dps/concepts-device#attestation-mechanism) TPM za pośrednictwem protokołu MQTT.
 
-## <a name="connecting-to-dps"></a>Nawiązywanie połączenia z usługą DPS
+## <a name="connecting-to-dps"></a>Łączenie się z DPS
 
-Urządzenie może korzystać z protokołu MQTT do nawiązywania połączenia z usługą DPS przy użyciu dowolnej z poniższych opcji.
+Urządzenie może używać protokołu MQTT do łączenia się z dps przy użyciu dowolnej z następujących opcji.
 
-* Biblioteki w zestawach [SDK aprowizacji usługi Azure IoT](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-sdks#microsoft-azure-provisioning-sdks).
+* Biblioteki w zestawach [SDK inicjowania obsługi administracyjnej usługi Azure IoT](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-sdks#microsoft-azure-provisioning-sdks).
 * Protokół MQTT bezpośrednio.
 
-## <a name="using-the-mqtt-protocol-directly-as-a-device"></a>Bezpośrednie używanie protokołu MQTT (jako urządzenia)
+## <a name="using-the-mqtt-protocol-directly-as-a-device"></a>Bezpośrednie korzystanie z protokołu MQTT (jako urządzenia)
 
-Jeśli urządzenie nie może użyć zestawów SDK urządzeń, nadal może nawiązać połączenie z punktami końcowymi urządzeń publicznych przy użyciu protokołu MQTT na porcie 8883. W pakiecie **Connect** urządzenie powinno używać następujących wartości:
+Jeśli urządzenie nie może używać sdk urządzeń, nadal może łączyć się z punktami końcowymi urządzenia publicznego przy użyciu protokołu MQTT na porcie 8883. W pakiecie **CONNECT** urządzenie powinno używać następujących wartości:
 
-* Dla pola **ClientId** Użyj **Identyfikator rejestracji**.
+* W polu **Identyfikator klienta** należy użyć **identyfikatora rejestracji**.
 
-* W polu **Nazwa użytkownika** Użyj `{idScope}/registrations/{registration_id}/api-version=2019-03-31`, gdzie `{idScope}` jest [idScope](https://docs.microsoft.com/azure/iot-dps/concepts-device#id-scope) usługi DPS.
+* W polu **Nazwa** `{idScope}/registrations/{registration_id}/api-version=2019-03-31`użytkownika `{idScope}` należy użyć , gdzie znajduje [się idScope](https://docs.microsoft.com/azure/iot-dps/concepts-device#id-scope) dps.
 
-* W polu **hasło** Użyj tokenu SAS. Format tokenu sygnatury dostępu współdzielonego jest taki sam jak dla protokołów HTTPS i AMQP:
+* W polu **Hasło** użyj tokenu Sygnatury dostępu Współdzielonego. Format tokenu sygnatury dostępu Współdzielonego jest taki sam, jak w przypadku protokołów HTTPS i AMQP:
 
-  `SharedAccessSignature sr={URL-encoded-resourceURI}&sig={signature-string}&se={expiry}&skn=registration` resourceURI powinna mieć format `{idScope}/registrations/{registration_id}`. Nazwa zasad powinna być `registration`.
+  `SharedAccessSignature sr={URL-encoded-resourceURI}&sig={signature-string}&se={expiry}&skn=registration`Identyfikator RESOURCEURI powinien być `{idScope}/registrations/{registration_id}`w formacie . Nazwa zasad powinna `registration`być .
 
   > [!NOTE]
-  > Jeśli używasz uwierzytelniania certyfikatu X. 509, hasła tokenu sygnatury dostępu współdzielonego nie są wymagane.
+  > Jeśli używasz uwierzytelniania certyfikatu X.509, hasła tokenów sygnatury dostępu Współdzielonego nie są wymagane.
 
-  Więcej informacji o sposobach generowania tokenów SAS znajduje się w sekcji tokeny zabezpieczające [kontroli dostępu do usługi DPS](how-to-control-access.md#security-tokens).
+  Aby uzyskać więcej informacji na temat generowania tokenów sygnatury dostępu współdzielonego, zobacz sekcję tokeny zabezpieczające w sekcji [Kontrola dostępu do DPS](how-to-control-access.md#security-tokens).
 
-Poniżej znajduje się lista zachowań specyficznych dla implementacji programu DPS:
+Poniżej znajduje się lista zachowań specyficznych dla implementacji DPS:
 
- * Usługa DPS nie obsługuje funkcji flagi **CleanSession** ustawionej na **wartość 0**.
+ * DPS nie obsługuje funkcji **CleanSession** flaga jest ustawiona na **0**.
 
- * Gdy aplikacja urządzenia subskrybuje temat z **usługą QoS 2, usługa**DPS przyznaje maksymalny poziom jakości usług (QoS) 1 w pakiecie **SUBACK** . Następnie usługa DPS dostarcza komunikaty do urządzenia przy użyciu funkcji QoS 1.
+ * Gdy aplikacja urządzenia subskrybuje temat z **QoS 2,** DPS udziela maksymalnego poziomu QoS 1 w pakiecie **SUBACK.** Następnie DPS dostarcza wiadomości do urządzenia za pomocą QoS 1.
 
 ## <a name="tlsssl-configuration"></a>Konfiguracja protokołu TLS/SSL
 
-Aby bezpośrednio korzystać z protokołu MQTT, klient *musi* połączyć się przez protokół TLS 1,2. Próba pominięcia tego kroku kończy się niepowodzeniem z błędami połączenia.
+Aby bezpośrednio korzystać z protokołu MQTT, klient *musi połączyć* się za pomocą protokołu TLS 1.2. Próby pominięcia tego kroku nie powiodą się z błędami połączenia.
 
 
 ## <a name="registering-a-device"></a>Rejestrowanie urządzenia
 
-Aby zarejestrować urządzenie za pośrednictwem usługi DPS, urządzenie powinno subskrybować przy użyciu `$dps/registrations/res/#` jako **Filtr tematu**. Wielopoziomowa `#` w filtrze tematu służy tylko do zezwalania urządzeniu na odbieranie dodatkowych właściwości w nazwie tematu. Usługa DPS nie zezwala na użycie `#` lub `?` symboli wieloznacznych do filtrowania tematów podrzędnych. Ponieważ usługa DPS nie jest brokerem wysyłania komunikatów ogólnego przeznaczenia, obsługuje tylko udokumentowane nazwy tematów i filtry tematów.
+Aby zarejestrować urządzenie za pośrednictwem dps, `$dps/registrations/res/#` urządzenie powinno subskrybować przy użyciu jako **filtr tematu**. Wielopoziomowy `#` symbol wieloznaczny w filtrze tematu jest używany tylko w celu umożliwienia urządzeniu otrzymywania dodatkowych właściwości w nazwie tematu. DPS nie zezwala na `#` używanie `?` symboli wieloznacznych do filtrowania podtematów. Ponieważ DPS nie jest brokerem wiadomości typu pub-sub ogólnego przeznaczenia, obsługuje tylko udokumentowane nazwy tematów i filtry tematów.
 
-Urządzenie powinno opublikować komunikat rejestru w usłudze DPS przy użyciu `$dps/registrations/PUT/iotdps-register/?$rid={request_id}` jako **nazwę tematu**. Ładunek powinien zawierać obiekt [rejestracji urządzenia](https://docs.microsoft.com/rest/api/iot-dps/runtimeregistration/registerdevice#deviceregistration) w formacie JSON.
-W przypadku pomyślnego scenariusza urządzenie otrzyma odpowiedź na nazwę tematu `$dps/registrations/res/202/?$rid={request_id}&retry-after=x` gdzie x jest wartością retry-After (w sekundach). Ładunek odpowiedzi będzie zawierać obiekt [RegistrationOperationStatus](https://docs.microsoft.com/rest/api/iot-dps/runtimeregistration/registerdevice#registrationoperationstatus) w formacie JSON.
+Urządzenie powinno opublikować komunikat rejestru `$dps/registrations/PUT/iotdps-register/?$rid={request_id}` do DPS przy użyciu jako **nazwa tematu**. Ładunek powinien zawierać obiekt [rejestracji urządzenia](https://docs.microsoft.com/rest/api/iot-dps/runtimeregistration/registerdevice#deviceregistration) w formacie JSON.
+W pomyślnym scenariuszu urządzenie otrzyma odpowiedź `$dps/registrations/res/202/?$rid={request_id}&retry-after=x` na nazwę tematu, gdzie x jest wartością ponawiania ponawiania w sekundach. Ładunek odpowiedzi będzie zawierać [RegistrationOperationStatus](https://docs.microsoft.com/rest/api/iot-dps/runtimeregistration/registerdevice#registrationoperationstatus) obiektu w formacie JSON.
 
 ## <a name="polling-for-registration-operation-status"></a>Sondowanie stanu operacji rejestracji
 
-Urządzenie musi okresowo sondować usługę, aby otrzymać wynik operacji rejestracji urządzenia. Przy założeniu, że urządzenie już subskrybuje `$dps/registrations/res/#`, zgodnie z powyższym opisem, może opublikować komunikat Get operationstatus w nazwie tematu `$dps/registrations/GET/iotdps-get-operationstatus/?$rid={request_id}&operationId={operationId}`. Identyfikator operacji w tym komunikacie powinien być wartością odebraną w komunikacie odpowiedzi RegistrationOperationStatus w poprzednim kroku. W przypadku powodzenia usługa odpowie w temacie `$dps/registrations/res/200/?$rid={request_id}`. Ładunek odpowiedzi będzie zawierać obiekt RegistrationOperationStatus. Urządzenie powinno utrzymywać sondowanie usługi, jeśli kod odpowiedzi jest 202 po opóźnieniu równym ponowieniu okresu. Operacja rejestracji urządzenia zakończyła się pomyślnie, jeśli usługa zwróci kod stanu 200.
+Urządzenie musi okresowo sondować usługę, aby otrzymać wynik operacji rejestracji urządzenia. Zakładając, że urządzenie już subskrybowane do tematu, `$dps/registrations/res/#` jak wskazano powyżej, `$dps/registrations/GET/iotdps-get-operationstatus/?$rid={request_id}&operationId={operationId}` może opublikować komunikat get operationstatus do nazwy tematu. Identyfikator operacji w tym komunikacie powinien być wartością otrzymaną w komunikacie odpowiedzi RegistrationOperationStatus w poprzednim kroku. W przypadku pomyślnego usługi odpowie `$dps/registrations/res/200/?$rid={request_id}` na ten temat. Ładunek odpowiedzi będzie zawierać RegistrationOperationStatus obiektu. Urządzenie powinno utrzymywać sondowanie usługi, jeśli kod odpowiedzi jest 202 po opóźnieniu równym okresowi ponawiania. Operacja rejestracji urządzenia zakończy się pomyślnie, jeśli usługa zwraca kod stanu 200.
 
-## <a name="connecting-over-websocket"></a>Łączenie przy użyciu protokołu WebSocket
-Podczas nawiązywania połączenia za pośrednictwem protokołu WebSocket Określ podprotokół jako `mqtt`. Postępuj zgodnie ze [specyfikacją RFC 6455](https://tools.ietf.org/html/rfc6455).
+## <a name="connecting-over-websocket"></a>Łączenie się przez Websocket
+Podczas łączenia się przez Websocket, `mqtt`określ subprotocol jako . Śledź [RFC 6455](https://tools.ietf.org/html/rfc6455).
 
 ## <a name="next-steps"></a>Następne kroki
 
-Więcej informacji na temat protokołu MQTT można znaleźć w [dokumentacji MQTT](https://mqtt.org/documentation).
+Aby dowiedzieć się więcej o protokole MQTT, zapoznaj się z [dokumentacją MQTT](https://mqtt.org/documentation).
 
-Aby dowiedzieć się więcej o możliwościach punktu dystrybucji, zobacz:
+Aby dokładniej zbadać możliwości dps, zobacz:
 
 * [Informacje o IoT DPS](about-iot-dps.md)

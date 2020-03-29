@@ -1,6 +1,6 @@
 ---
 title: Wywoływanie interfejsu API sieci Web z aplikacji sieci Web — platforma tożsamości firmy Microsoft | Azure
-description: Dowiedz się, jak utworzyć aplikację sieci Web, która wywołuje interfejsy API sieci Web (wywołując chroniony internetowy interfejs API)
+description: Dowiedz się, jak utworzyć aplikację sieci Web, która wywołuje internetowe interfejsy API (wywoływanie chronionego interfejsu API sieci Web)
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -15,19 +15,19 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: 28b4be46dc686c6e1b55f1ab36e0607057ebdbbd
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/26/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76758975"
 ---
-# <a name="a-web-app-that-calls-web-apis-call-a-web-api"></a>Aplikacja sieci Web, która wywołuje interfejsy API sieci Web: wywoływanie interfejsu API sieci Web
+# <a name="a-web-app-that-calls-web-apis-call-a-web-api"></a>Aplikacja internetowa wywołująca internetowe interfejsy API: wywoływanie internetowego interfejsu API
 
-Teraz, gdy masz token, możesz wywołać chroniony internetowy interfejs API.
+Teraz, gdy masz token, można wywołać chroniony interfejs API sieci web.
 
-# <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
+# <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
-Oto uproszczony kod dla akcji `HomeController`. Ten kod pobiera token do wywołania Microsoft Graph. Dodano kod, aby pokazać, jak wywołać Microsoft Graph jako interfejs API REST. Adres URL Microsoft Graph interfejsu API jest dostępny w pliku appSettings. JSON i odczytywany w zmiennej o nazwie `webOptions`:
+Oto uproszczony kod działania `HomeController`. Ten kod pobiera token do wywołania programu Microsoft Graph. Kod został dodany, aby pokazać, jak wywołać Microsoft Graph jako interfejs API REST. Adres URL interfejsu API programu Microsoft Graph znajduje się w pliku appsettings.json i jest odczytywany w zmiennej o nazwie: `webOptions`
 
 ```JSon
 {
@@ -82,11 +82,11 @@ public async Task<IActionResult> Profile()
 ```
 
 > [!NOTE]
-> Tej samej zasady można użyć do wywołania dowolnego internetowego interfejsu API.
+> Można użyć tej samej zasady, aby wywołać dowolny internetowy interfejs API.
 >
-> Większość interfejsów API sieci Web platformy Azure udostępnia zestaw SDK, który upraszcza wywoływanie interfejsu API. Jest to również prawdziwe Microsoft Graph. W następnym artykule dowiesz się, gdzie znaleźć samouczek, który ilustruje użycie interfejsu API.
+> Większość interfejsów API sieci Web platformy Azure zapewniają zestaw SDK, który upraszcza wywoływanie interfejsu API. Dotyczy to również programu Microsoft Graph. W następnym artykule dowiesz się, gdzie znaleźć samouczek ilustruje użycie interfejsu API.
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 ```Java
 private String getUserInfoFromGraph(String accessToken) throws Exception {
@@ -112,7 +112,7 @@ private String getUserInfoFromGraph(String accessToken) throws Exception {
 
 ```
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 ```Python
 @app.route("/graphcall")
@@ -132,4 +132,4 @@ def graphcall():
 ## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Przenieś do środowiska produkcyjnego](scenario-web-app-call-api-production.md)
+> [Przenoszenie do środowiska produkcyjnego](scenario-web-app-call-api-production.md)

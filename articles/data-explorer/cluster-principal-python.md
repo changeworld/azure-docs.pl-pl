@@ -1,6 +1,6 @@
 ---
-title: Dodawanie podmiotów zabezpieczeń klastra dla usługi Azure Eksplorator danych przy użyciu języka Python
-description: W tym artykule dowiesz się, jak dodać podmioty zabezpieczeń klastra dla usługi Azure Eksplorator danych przy użyciu języka Python.
+title: Dodawanie podmiotów klastra dla Eksploratora danych platformy Azure przy użyciu języka Python
+description: W tym artykule dowiesz się, jak dodać podmioty klastra dla Usługi Azure Data Explorer przy użyciu języka Python.
 author: lucygoldbergmicrosoft
 ms.author: lugoldbe
 ms.reviewer: orspodek
@@ -8,29 +8,29 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.openlocfilehash: 637efdfe31d1f2eb0eaa5dd532dd9e9e67de5ce2
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/02/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76965140"
 ---
-# <a name="add-cluster-principals-for-azure-data-explorer-by-using-python"></a>Dodawanie podmiotów zabezpieczeń klastra dla usługi Azure Eksplorator danych przy użyciu języka Python
+# <a name="add-cluster-principals-for-azure-data-explorer-by-using-python"></a>Dodawanie podmiotów klastra dla Eksploratora danych platformy Azure przy użyciu języka Python
 
 > [!div class="op_single_selector"]
-> * [C#](cluster-principal-csharp.md)
+> * [C #](cluster-principal-csharp.md)
 > * [Python](cluster-principal-python.md)
 > * [Szablon usługi Azure Resource Manager](cluster-principal-resource-manager.md)
 
-Azure Data Explorer to szybka i wysoce skalowalna usługa eksploracji danych na potrzeby danych dziennika i telemetrycznych. W tym artykule opisano Dodawanie podmiotów zabezpieczeń klastra dla usługi Azure Eksplorator danych przy użyciu języka Python.
+Azure Data Explorer to szybka i wysoce skalowalna usługa eksploracji danych na potrzeby danych dziennika i telemetrycznych. W tym artykule można dodać podmioty klastra dla Usługi Azure Data Explorer przy użyciu języka Python.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto platformy Azure](https://azure.microsoft.com/free/).
-* [Utwórz klaster](create-cluster-database-python.md).
+* Jeśli nie masz subskrypcji platformy Azure, utwórz [bezpłatne konto platformy Azure](https://azure.microsoft.com/free/) przed rozpoczęciem.
+* [Tworzenie klastra](create-cluster-database-python.md).
 
-## <a name="install-python-package"></a>Zainstaluj pakiet języka Python
+## <a name="install-python-package"></a>Instalowanie pakietu Python
 
-Aby zainstalować pakiet języka Python dla usługi Azure Eksplorator danych (Kusto), Otwórz wiersz polecenia, który ma w swojej ścieżce Język Python. Uruchom następujące polecenie:
+Aby zainstalować pakiet Python dla usługi Azure Data Explorer (Kusto), otwórz wiersz polecenia, który ma Pythona w swojej ścieżce. Uruchom następujące polecenie:
 
 ```
 pip install azure-common
@@ -39,9 +39,9 @@ pip install azure-mgmt-kusto
 
 [!INCLUDE [data-explorer-authentication](../../includes/data-explorer-authentication.md)]
 
-## <a name="add-a-cluster-principal"></a>Dodawanie podmiotu zabezpieczeń klastra
+## <a name="add-a-cluster-principal"></a>Dodawanie głównego zobowiązanego klastra
 
-Poniższy przykład pokazuje, jak dodać podmiot zabezpieczeń klastra programowo.
+W poniższym przykładzie pokazano, jak programowo dodać jednostkę klastra.
 
 ```Python
 from azure.mgmt.kusto import KustoManagementClient
@@ -80,18 +80,18 @@ poller = kusto_management_client.cluster_principal_assignments.create_or_update(
 
 |**Ustawienie** | **Sugerowana wartość** | **Opis pola**|
 |---|---|---|
-| tenant_id | *XXXXXXXX-XXXXX-xxxx-xxxx-xxxxxxxxx* | Identyfikator dzierżawy. Znany również jako identyfikator katalogu.|
-| subscription_id | *XXXXXXXX-XXXXX-xxxx-xxxx-xxxxxxxxx* | Identyfikator subskrypcji używany do tworzenia zasobów.|
-| client_id | *XXXXXXXX-XXXXX-xxxx-xxxx-xxxxxxxxx* | Identyfikator klienta aplikacji, który może uzyskiwać dostęp do zasobów w dzierżawie.|
-| client_secret | *xxxxxxxxxxxxxx* | Wpis tajny klienta aplikacji, który może uzyskiwać dostęp do zasobów w dzierżawie. |
+| tenant_id | *xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx* | Identyfikator dzierżawy. Znany również jako identyfikator katalogu.|
+| subscription_id | *xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx* | Identyfikator subskrypcji używany do tworzenia zasobów.|
+| client_id | *xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx* | Identyfikator klienta aplikacji, która może uzyskać dostęp do zasobów w dzierżawie.|
+| client_secret | *xxxxxxxxxxxxxx* | Klucz tajny klienta aplikacji, która może uzyskać dostęp do zasobów w dzierżawie. |
 | resource_group_name | *testrg* | Nazwa grupy zasobów zawierającej klaster.|
 | cluster_name | *mykustocluster* | Nazwa klastra.|
-| principal_assignment_name | *clusterPrincipalAssignment1* | Nazwa głównego zasobu klastra.|
-| principal_id | *XXXXXXXX-XXXXX-xxxx-xxxx-xxxxxxxxx* | Identyfikator podmiotu zabezpieczeń, który może być adresem e-mail użytkownika, IDENTYFIKATORem aplikacji lub grupą zabezpieczeń.|
-| role (rola) | *AllDatabasesAdmin* | Rola podmiotu zabezpieczeń klastra, która może mieć wartość "AllDatabasesAdmin'" lub "AllDatabasesViewer".|
-| tenant_id_for_principal | *XXXXXXXX-XXXXX-xxxx-xxxx-xxxxxxxxx* | Identyfikator dzierżawy podmiotu zabezpieczeń.|
-| principal_type | *Aplikacja* | Typ podmiotu zabezpieczeń, który może mieć wartość "User", "App" lub "Group"|
+| principal_assignment_name | *clusterPrincipalAssignment1* | Nazwa zasobu głównego klastra.|
+| Principal_id | *xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx* | Główny identyfikator, który może być e-mail użytkownika, identyfikator aplikacji lub nazwa grupy zabezpieczeń.|
+| role (rola) | *AllDatabasesAdmin* | Rola głównego klastra, który może być "AllDatabasesAdmin" lub "AllDatabasesViewer".|
+| tenant_id_for_principal | *xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx* | Identyfikator dzierżawy głównego zobowiązanego.|
+| principal_type | *Aplikacja* | Typ podmiotu zabezpieczeń, który może być "Użytkownik", "Aplikacja" lub "Grupa"|
 
 ## <a name="next-steps"></a>Następne kroki
 
-* [Dodawanie podmiotów zabezpieczeń bazy danych](database-principal-python.md)
+* [Dodawanie podmiotów bazy danych](database-principal-python.md)

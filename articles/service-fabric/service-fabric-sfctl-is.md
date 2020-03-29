@@ -1,74 +1,74 @@
 ---
-title: Interfejs wiersza polecenia platformy Azure Service Fabric — sfctl
-description: Dowiedz się więcej na temat sfctl, interfejsu wiersza polecenia platformy Azure Service Fabric. Zawiera listę poleceń związanych z zarządzaniem infrastrukturą.
+title: Platforma Azure Service Fabric CLI- sfctl jest
+description: Dowiedz się więcej o sfctl, interfejsie wiersza polecenia sieci szkieletowej usługi Azure. Zawiera listę poleceń do zarządzania infrastrukturą.
 author: jeffj6123
 ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
 ms.openlocfilehash: a64aaca97c9df61d795c82d64e6048d6f9ae032f
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76906075"
 ---
 # <a name="sfctl-is"></a>sfctl is
-Wykonywanie zapytań i wysyłanie poleceń do usługi infrastruktury.
+Wysyłaj kwerendy i wysyłaj polecenia do usługi infrastruktury.
 
 ## <a name="commands"></a>Polecenia
 
 |Polecenie|Opis|
 | --- | --- |
 | command | Wywołuje polecenie administracyjne w danym wystąpieniu usługi infrastruktury. |
-| query | Wywołuje zapytanie tylko do odczytu dla danego wystąpienia usługi infrastruktury. |
+| query | Wywołuje kwerendę tylko do odczytu w danym wystąpieniu usługi infrastruktury. |
 
 ## <a name="sfctl-is-command"></a>sfctl jest poleceniem
 Wywołuje polecenie administracyjne w danym wystąpieniu usługi infrastruktury.
 
-W przypadku klastrów, dla których skonfigurowano co najmniej jedno wystąpienie usługi infrastruktury, ten interfejs API umożliwia wysyłanie poleceń specyficznych dla infrastruktury do określonego wystąpienia usługi infrastruktury. Dostępne polecenia i odpowiadające im formaty odpowiedzi różnią się w zależności od infrastruktury, w której działa klaster. Ten interfejs API obsługuje platformę Service Fabric. nie jest przeznaczona do użycia bezpośrednio w kodzie.
+W przypadku klastrów, które mają jedno lub więcej wystąpień usługi infrastruktury skonfigurowane, ten interfejs API umożliwia wysyłanie poleceń specyficznych dla infrastruktury do określonego wystąpienia usługi infrastruktury. Dostępne polecenia i odpowiadające im formaty odpowiedzi różnią się w zależności od infrastruktury, w której jest uruchomiony klaster. Ten interfejs API obsługuje platformę sieci szkieletowej usług; nie jest przeznaczony do użycia bezpośrednio z kodu.
 
 ### <a name="arguments"></a>Argumenty
 
 |Argument|Opis|
 | --- | --- |
-| --polecenie [wymagane] | Tekst polecenia, który ma zostać wywołany. Zawartość polecenia jest specyficzna dla infrastruktury. |
-| --service-id | Tożsamość usługi infrastruktury. <br><br> Jest to pełna nazwa usługi infrastruktury bez schematu identyfikatora URI "Fabric\:". Ten parametr jest wymagany tylko w przypadku klastra, na którym działa więcej niż jedno wystąpienie usługi infrastruktury. |
-| --timeout-t | Domyślne\: 60. |
+| --command [Wymagane] | Tekst polecenia, które ma zostać wywołane. Zawartość polecenia jest specyficzne dla infrastruktury. |
+| --service-id | Tożsamość usługi infrastruktury. <br><br> Jest to pełna nazwa usługi infrastruktury bez\:schematu URI "fabric". Ten parametr jest wymagany tylko dla klastra, który ma więcej niż jedno wystąpienie uruchomionej usługi infrastruktury. |
+| --timeout -t | Wartość\: domyślna 60. |
 
 ### <a name="global-arguments"></a>Argumenty globalne
 
 |Argument|Opis|
 | --- | --- |
-| --debug | Zwiększ Szczegółowość rejestrowania, aby pokazać wszystkie dzienniki debugowania. |
-| --help -h | Pokaż ten komunikat pomocy i Zakończ. |
-| --Wyjście-o | Format danych wyjściowych.  Dozwolone wartości\: JSON, jsonc, Table, TSV.  Domyślny\: JSON. |
-| --zapytanie | Ciąg zapytania JMESPath. Aby uzyskać więcej informacji i przykładów, zobacz http\://jmespath.org/. |
-| --verbose | Zwiększ Szczegółowość rejestrowania. Użyj--Debug dla pełnych dzienników debugowania. |
+| --debug | Zwiększ szczegółowość rejestrowania, aby wyświetlić wszystkie dzienniki debugowania. |
+| --help -h | Pokaż ten komunikat pomocy i zamknij. |
+| --wyjście -o | Format wyjściowy.  Dozwolone wartości\: json, jsonc, table, tsv.  Domyślny\: json. |
+| --zapytanie | Ciąg zapytania JMESPath. Zobacz\:http //jmespath.org/ aby uzyskać więcej informacji i przykładów. |
+| --pełne | Zwiększ szczegółowość rejestrowania. Użyj --debug dla pełnych dzienników debugowania. |
 
 ## <a name="sfctl-is-query"></a>sfctl jest kwerendą
-Wywołuje zapytanie tylko do odczytu dla danego wystąpienia usługi infrastruktury.
+Wywołuje kwerendę tylko do odczytu w danym wystąpieniu usługi infrastruktury.
 
-W przypadku klastrów, dla których skonfigurowano co najmniej jedno wystąpienie usługi infrastruktury, ten interfejs API umożliwia wysyłanie zapytań specyficznych dla infrastruktury do określonego wystąpienia usługi infrastruktury. Dostępne polecenia i odpowiadające im formaty odpowiedzi różnią się w zależności od infrastruktury, w której działa klaster. Ten interfejs API obsługuje platformę Service Fabric. nie jest przeznaczona do użycia bezpośrednio w kodzie.
+W przypadku klastrów, które mają co najmniej jedno wystąpienie usługi infrastruktury skonfigurowane, ten interfejs API umożliwia wysyłanie zapytań specyficznych dla infrastruktury do określonego wystąpienia usługi infrastruktury. Dostępne polecenia i odpowiadające im formaty odpowiedzi różnią się w zależności od infrastruktury, w której jest uruchomiony klaster. Ten interfejs API obsługuje platformę sieci szkieletowej usług; nie jest przeznaczony do użycia bezpośrednio z kodu.
 
 ### <a name="arguments"></a>Argumenty
 
 |Argument|Opis|
 | --- | --- |
-| --polecenie [wymagane] | Tekst polecenia, który ma zostać wywołany. Zawartość polecenia jest specyficzna dla infrastruktury. |
-| --service-id | Tożsamość usługi infrastruktury. <br><br> Jest to pełna nazwa usługi infrastruktury bez schematu identyfikatora URI "Fabric\:". Ten parametr jest wymagany tylko w przypadku klastra, na którym działa więcej niż jedno wystąpienie usługi infrastruktury. |
-| --timeout-t | Domyślne\: 60. |
+| --command [Wymagane] | Tekst polecenia, które ma zostać wywołane. Zawartość polecenia jest specyficzne dla infrastruktury. |
+| --service-id | Tożsamość usługi infrastruktury. <br><br> Jest to pełna nazwa usługi infrastruktury bez\:schematu URI "fabric". Ten parametr jest wymagany tylko dla klastra, który ma więcej niż jedno wystąpienie uruchomionej usługi infrastruktury. |
+| --timeout -t | Wartość\: domyślna 60. |
 
 ### <a name="global-arguments"></a>Argumenty globalne
 
 |Argument|Opis|
 | --- | --- |
-| --debug | Zwiększ Szczegółowość rejestrowania, aby pokazać wszystkie dzienniki debugowania. |
-| --help -h | Pokaż ten komunikat pomocy i Zakończ. |
-| --Wyjście-o | Format danych wyjściowych.  Dozwolone wartości\: JSON, jsonc, Table, TSV.  Domyślny\: JSON. |
-| --zapytanie | Ciąg zapytania JMESPath. Aby uzyskać więcej informacji i przykładów, zobacz http\://jmespath.org/. |
-| --verbose | Zwiększ Szczegółowość rejestrowania. Użyj--Debug dla pełnych dzienników debugowania. |
+| --debug | Zwiększ szczegółowość rejestrowania, aby wyświetlić wszystkie dzienniki debugowania. |
+| --help -h | Pokaż ten komunikat pomocy i zamknij. |
+| --wyjście -o | Format wyjściowy.  Dozwolone wartości\: json, jsonc, table, tsv.  Domyślny\: json. |
+| --zapytanie | Ciąg zapytania JMESPath. Zobacz\:http //jmespath.org/ aby uzyskać więcej informacji i przykładów. |
+| --pełne | Zwiększ szczegółowość rejestrowania. Użyj --debug dla pełnych dzienników debugowania. |
 
 
 ## <a name="next-steps"></a>Następne kroki
-- [Skonfiguruj](service-fabric-cli.md) interfejs wiersza polecenia Service Fabric.
-- Dowiedz się, jak używać interfejsu wiersza polecenia Service Fabric przy użyciu [przykładowych skryptów](/azure/service-fabric/scripts/sfctl-upgrade-application).
+- [Konfigurowanie](service-fabric-cli.md) interfejsu wiersza polecenia sieci szkieletowej usług.
+- Dowiedz się, jak używać interfejsu wiersza polecenia sieci szkieletowej usług przy użyciu [przykładowych skryptów.](/azure/service-fabric/scripts/sfctl-upgrade-application)

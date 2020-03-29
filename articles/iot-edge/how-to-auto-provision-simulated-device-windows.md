@@ -1,6 +1,6 @@
 ---
-title: Automatyczne Inicjowanie obsługi urządzeń z systemem Windows przy użyciu programu DPS — Azure IoT Edge | Microsoft Docs
-description: Korzystanie z symulowanego urządzenia na urządzeniu Windows do testowania, automatyczne aprowizowanie urządzeń Azure IoT Edge przy użyciu usługi Device Provisioning
+title: Automatyczne udostępnianie urządzeń z systemem Windows za pomocą dps — Usługa Azure IoT Edge | Dokumenty firmy Microsoft
+description: Używanie symulowanego urządzenia na komputerze z systemem Windows do testowania automatycznego inicjowania obsługi administracyjnej urządzeń dla usługi Azure IoT Edge z usługą inicjowania obsługi urządzeń
 author: kgremban
 manager: philmea
 ms.author: kgremban
@@ -9,106 +9,106 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: ee4f01c3ec57b0cf9e3ecf47254b57be95ea051a
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76510944"
 ---
-# <a name="create-and-provision-a-simulated-iot-edge-device-with-a-virtual-tpm-on-windows"></a>Tworzenie i Inicjowanie obsługi symulowanego urządzenia IoT Edge przy użyciu wirtualnego modułu TPM w systemie Windows
+# <a name="create-and-provision-a-simulated-iot-edge-device-with-a-virtual-tpm-on-windows"></a>Tworzenie i udostępnianie symulowanego urządzenia Usługi IoT Edge za pomocą wirtualnego modułu TPM w systemie Windows
 
-Urządzenia w usłudze Azure IoT Edge mogą być automatycznie aprowizowane za pomocą [usługi Device Provisioning](../iot-dps/index.yml) podobnie jak w przypadku urządzeń, których nie włączono usługi edge. Jeśli znasz procesu automatycznego aprowizowania, zapoznaj się z [automatycznej aprowizacji pojęcia](../iot-dps/concepts-auto-provisioning.md) przed kontynuowaniem.
+Urządzenia usługi Azure IoT Edge mogą być automatycznie aprowizacji przy użyciu [usługi inicjowania obsługi administracyjnej urządzeń,](../iot-dps/index.yml) podobnie jak urządzenia, które nie są włączone krawędzi. Jeśli nie znasz procesu automatycznego inicjowania obsługi administracyjnej, przejrzyj [pojęcia automatycznego inicjowania obsługi administracyjnej](../iot-dps/concepts-auto-provisioning.md) przed kontynuowaniem.
 
-Usługa DPS obsługuje zaświadczenie klucza symetrycznego dla IoT Edge urządzeń zarówno podczas rejestracji indywidualnej, jak i rejestracji grupowej. Jeśli w przypadku rejestracji grupowej opcja "is IoT Edge Device" ma wartość true w zaświadczeniu klucza symetrycznego, wszystkie urządzenia zarejestrowane w ramach tej grupy rejestracji zostaną oznaczone jako urządzenia IoT Edge.
+Dps obsługuje symetryczne zaświadczanie klucza dla urządzeń IoT Edge zarówno w rejestracji indywidualnej, jak i rejestracji grupowej. W przypadku rejestracji grupowej, jeśli zaznaczysz opcję "czy urządzenie IoT Edge" jest true w poświadczeniu klucza symetrycznego, wszystkie urządzenia, które są zarejestrowane w tej grupie rejestracji zostaną oznaczone jako urządzenia IoT Edge.
 
-W tym artykule pokazano, jak przetestować funkcję autoaprowizacji na symulowanym urządzeniu IoT Edge, wykonując następujące czynności:
+W tym artykule pokazano, jak przetestować automatyczne inicjowanie obsługi administracyjnej na symulowanym urządzeniu Z krawędzią IoT w następujących krokach:
 
-* Utwórz wystąpienie z IoT Hub urządzenia inicjowania obsługi usługi (DPS).
-* Utworzenie symulowanego urządzenia na urządzeniu Windows przy użyciu symulowanego Trusted Platform Module (TPM) dotyczące zabezpieczeń sprzętowych.
-* Utworzyć rejestrację indywidualną dla urządzenia.
-* Zainstalować środowisko uruchomieniowe usługi IoT Edge i połączyć to urządzenie do Centrum IoT Hub.
+* Utwórz wystąpienie usługi inicjowania obsługi administracyjnej urządzeń (DPS) centrum IoT.
+* Utwórz symulowane urządzenie na komputerze z systemem Windows za pomocą symulowanego modułu TPM (Trusted Platform Module) dla zabezpieczeń sprzętu.
+* Utwórz indywidualną rejestrację dla urządzenia.
+* Zainstaluj środowisko uruchomieniowe usługi IoT Edge i podłącz urządzenie do centrum IoT Hub.
 
 > [!TIP]
-> W tym artykule opisano testowanie samoobsługowego testowania przy użyciu zaświadczania modułu TPM na urządzeniach wirtualnych, ale większość jest stosowana w przypadku używania fizycznego sprzętu modułu TPM.
+> W tym artykule opisano testowanie automatycznej inicjowania obsługi administracyjnej przy użyciu zaświadczania modułu TPM na urządzeniach wirtualnych, ale wiele z nich ma zastosowanie również podczas korzystania z fizycznego sprzętu modułu TPM.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Komputera deweloperskiego z systemem Windows. W tym artykule używany jest system Windows 10.
-* Aktywnym Centrum IoT.
+* Komputer deweloperów systemu Windows. W tym artykule używa się systemu Windows 10.
+* Aktywne Centrum IoT.
 
 > [!NOTE]
-> Moduł TPM 2,0 jest wymagany w przypadku korzystania z zaświadczania TPM z usługą DPS i może być używany tylko do tworzenia pojedynczych, nie grup, rejestracji.
+> Moduł TPM 2.0 jest wymagany podczas korzystania z zaświadczania modułu TPM z dps i może być używany tylko do tworzenia rejestracji indywidualnych, a nie grupowych.
 
-## <a name="set-up-the-iot-hub-device-provisioning-service"></a>Konfigurowanie IoT Hub Device Provisioning Service
+## <a name="set-up-the-iot-hub-device-provisioning-service"></a>Konfigurowanie usługi inicjowania obsługi administracyjnej urządzeń usługi IoT Hub
 
-Utwórz nowe wystąpienie klasy IoT Hub Device Provisioning Service na platformie Azure i połączyć go z Centrum IoT hub. Możesz wykonać instrukcje w [Konfigurowanie usługi IoT Hub DPS](../iot-dps/quick-setup-auto-provision.md).
+Utwórz nowe wystąpienie usługi inicjowania obsługi administracyjnej urządzeń usługi Usługi obsługi urządzeń usługi Usługi IoT na platformie Azure i połącz je z centrum IoT hub. Postępuj zgodnie z instrukcjami w [konfigurowaniu dps centrum IoT](../iot-dps/quick-setup-auto-provision.md)Hub .
 
-Po użytkownik ma uruchomione usługi Device Provisioning, skopiuj wartość **zakres identyfikatorów** na stronie Przegląd. Będzie ona używana podczas konfigurowania środowiska uruchomieniowego usługi IoT Edge.
+Po uruchomieniu usługi inicjowania obsługi administracyjnej urządzeń skopiuj wartość **zakresu identyfikatora** ze strony przeglądowej. Ta wartość jest używana podczas konfigurowania środowiska wykonawczego usługi IoT Edge.
 
 > [!TIP]
-> W przypadku korzystania z fizycznego urządzenia TPM należy określić **Klucz poręczenia**, który jest unikatowy dla każdego mikroukładu modułu TPM i jest uzyskiwany z przypisanego do niego producenta mikroukładu modułu TPM. Można utworzyć unikatowy **Identyfikator rejestracji** dla urządzenia TPM, na przykład tworząc skrót SHA-256 klucza poręczenia.
+> Jeśli używasz fizycznego urządzenia TPM, musisz określić **klucz poręczenia,** który jest unikatowy dla każdego układu TPM i jest uzyskiwany od producenta układu TPM skojarzonego z nim. Unikatowy **identyfikator rejestracji** dla urządzenia TPM można uzyskać, na przykład tworząc skrót SHA-256 klucza poręczenia.
 >
-> Postępuj zgodnie z instrukcjami w artykule [jak zarządzać rejestracjami urządzeń za pomocą witryny Azure Portal](../iot-dps/how-to-manage-enrollments.md) , aby utworzyć rejestrację w usłudze DPS, a następnie przejdź do sekcji [Zainstaluj środowisko uruchomieniowe IoT Edge](#install-the-iot-edge-runtime) w tym artykule, aby kontynuować.
+> Postępuj zgodnie z instrukcjami w artykule [Jak zarządzać rejestracjami urządzeń za pomocą usługi Azure Portal,](../iot-dps/how-to-manage-enrollments.md) aby utworzyć rejestrację w dps, a następnie kontynuować instalowanie środowiska [wykonawczego usługi IoT Edge](#install-the-iot-edge-runtime) w tym artykule, aby kontynuować.
 
 ## <a name="simulate-a-tpm-device"></a>Symulowanie urządzenia TPM
 
-Tworzenie symulowanego urządzenia TPM na komputerze deweloperskim Windows. Pobierz **Identyfikator rejestracji** i **Klucz poręczenia** dla urządzenia i użyj go do utworzenia indywidualnego wpisu rejestracji w usłudze DPS.
+Utwórz symulowane urządzenie TPM na komputerze deweloperskim systemu Windows. Pobierz identyfikator **rejestracji** i **klucz poręczenia dla** urządzenia i użyj ich do utworzenia indywidualnego wpisu rejestracji w dps.
 
-Po utworzeniu rejestracji w usłudze DPS mają okazję do deklarowania **początkowy stan bliźniaczej reprezentacji urządzenia**. W bliźniaczej reprezentacji urządzenia można ustawić tagi grupowanie urządzeń według dowolnej metryki potrzebnych w rozwiązaniu, takich jak typ region, środowisko, lokalizacji lub urządzenia. Tagi te są używane do tworzenia [automatycznego wdrożenia](how-to-deploy-monitor.md).
+Podczas tworzenia rejestracji w dps, masz możliwość zadeklarowania **stanu bliźniaczej reprezentacji urządzenia początkowego**. W bliźniaczej reprezentacji urządzenia można ustawić znaczniki do grupowania urządzeń według dowolnej metryki, której potrzebujesz w rozwiązaniu, takiej jak region, środowisko, lokalizacja lub typ urządzenia. Tagi te są używane do tworzenia [wdrożeń automatycznych](how-to-deploy-monitor.md).
 
-Wybierz język zestawu SDK, który ma używać do tworzenia symulowanego urządzenia, a następnie postępuj zgodnie z instrukcjami, do czasu utworzenia rejestracji indywidualnej.
+Wybierz język SDK, którego chcesz użyć do utworzenia symulowanego urządzenia, i wykonaj kroki do momentu utworzenia indywidualnej rejestracji.
 
-Podczas tworzenia rejestracji indywidualnej wybierz **wartość true** , aby zadeklarować, że symulowane urządzenie TPM na komputerze deweloperskim systemu Windows jest **urządzeniem IoT Edge**.
+Podczas tworzenia rejestracji indywidualnej wybierz opcję **Wartość True,** aby zadeklarować, że symulowane urządzenie TPM na komputerze deweloperskim systemu Windows jest **urządzeniem usługi IoT Edge**.
 
-Symulowane urządzenie i przewodniki dotyczące rejestracji indywidualnej:
+Symulowane przewodniki dotyczące urządzeń i poszczególnych rejestracji:
 
 * [C](../iot-dps/quick-create-simulated-device.md)
 * [Java](../iot-dps/quick-create-simulated-device-tpm-java.md)
-* [C#](../iot-dps/quick-create-simulated-device-tpm-csharp.md)
+* [C #](../iot-dps/quick-create-simulated-device-tpm-csharp.md)
 * [Node.js](../iot-dps/quick-create-simulated-device-tpm-node.md)
 * [Python](../iot-dps/quick-create-simulated-device-tpm-python.md)
 
-Po utworzeniu rejestracji indywidualnej należy zapisać wartości **identyfikator rejestracji**. Będzie ona używana podczas konfigurowania środowiska uruchomieniowego usługi IoT Edge.
+Po utworzeniu rejestracji indywidualnej zapisz wartość identyfikatora **rejestracji**. Ta wartość jest używana podczas konfigurowania środowiska wykonawczego usługi IoT Edge.
 
-## <a name="install-the-iot-edge-runtime"></a>Zainstalować środowisko uruchomieniowe usługi IoT Edge
+## <a name="install-the-iot-edge-runtime"></a>Instalowanie środowiska wykonawczego usługi IoT Edge
 
-Środowisko uruchomieniowe usługi IoT Edge jest wdrożone na wszystkich urządzeniach usługi IoT Edge. Jego składniki działają w kontenerach i pozwalają wdrożyć dodatkowe kontenery na urządzeniu, aby uruchomić kod, na urządzeniach brzegowych.
+Środowisko uruchomieniowe usługi IoT Edge jest wdrożone na wszystkich urządzeniach usługi IoT Edge. Jego składniki są uruchamiane w kontenerach i umożliwiają wdrażanie dodatkowych kontenerów na urządzeniu, dzięki czemu można uruchomić kod na krawędzi.
 
-Podczas aprowizacji urządzenia potrzebne są następujące informacje:
+Podczas inicjowania obsługi administracyjnej urządzenia potrzebne są następujące informacje:
 
 * Wartość **zakresu identyfikatora** DPS
-* Utworzony **Identyfikator rejestracji** urządzenia
+* Identyfikator **rejestracji** urządzenia, który został utworzony
 
-Zainstaluj środowisko uruchomieniowe IoT Edge na urządzeniu, na którym działa symulowany moduł TPM. Skonfigurujesz środowisko uruchomieniowe IoT Edge automatyczne, nie ręczne, Inicjowanie obsługi administracyjnej.
+Zainstaluj środowisko uruchomieniowe usługi IoT Edge na urządzeniu z uruchomionym symulowanym modułem TPM. Środowiska wykonawczego IoT Edge można skonfigurować do automatycznego, a nie ręcznego inicjowania obsługi administracyjnej.
 
 > [!TIP]
-> Zachowaj okna, które działa symulatora modułu TPM, otwórz podczas instalacji programu i testowania.
+> Zachowaj otwarte okno z uruchomieniem symulatora modułu TPM podczas instalacji i testowania.
 
-Aby uzyskać bardziej szczegółowe informacje na temat instalowania IoT Edge w systemie Windows, w tym wymagania wstępne i instrukcje dotyczące zadań, takich jak Zarządzanie kontenerami i aktualizowanie IoT Edge, zobacz [Instalowanie środowiska uruchomieniowego Azure IoT Edge w systemie Windows](how-to-install-iot-edge-windows.md).
+Aby uzyskać bardziej szczegółowe informacje dotyczące instalowania usługi IoT Edge w systemie Windows, w tym wymagania wstępne i instrukcje dotyczące zadań, takich jak zarządzanie kontenerami i aktualizowanie usługi IoT Edge, zobacz [Instalowanie środowiska wykonawczego usługi Azure IoT Edge w systemie Windows](how-to-install-iot-edge-windows.md).
 
-1. Otwórz okno programu PowerShell w trybie administratora. Należy pamiętać, aby podczas instalowania IoT Edge używać sesji AMD64 programu PowerShell, a nie programu PowerShell (x86).
+1. Otwórz okno programu PowerShell w trybie administratora. Pamiętaj, aby podczas instalowania aplikacji IoT Edge, a nie programu PowerShell (x86), należy używać sesji programu AMD64 programu PowerShell.
 
-1. Polecenie **Deploy-IoTEdge** sprawdza, czy komputer z systemem Windows jest w obsługiwanej wersji, włącza funkcję Containers, a następnie pobiera środowisko uruchomieniowe Moby i środowisko uruchomieniowe IoT Edge. Polecenie domyślnie używa kontenerów systemu Windows.
+1. Polecenie **Deploy-IoTEdge** sprawdza, czy komputer z systemem Windows jest w obsługiwanej wersji, włącza funkcję kontenerów, a następnie pobiera środowisko uruchomieniowe moby i środowisko wykonawcze usługi IoT Edge. Polecenie domyślnie używa kontenerów systemu Windows.
 
    ```powershell
    . {Invoke-WebRequest -useb https://aka.ms/iotedge-win} | Invoke-Expression; `
    Deploy-IoTEdge
    ```
 
-1. W tym momencie urządzenia IoT Core mogą zostać automatycznie uruchomione ponownie. Inne urządzenia z systemem Windows 10 lub Windows Server mogą monitować o ponowne uruchomienie. Jeśli tak, ponownie uruchom urządzenie teraz. Gdy urządzenie jest gotowe, uruchom ponownie program PowerShell jako administrator.
+1. W tym momencie urządzenia IoT Core mogą zostać automatycznie ponownie uruchomione. Inne urządzenia z systemem Windows 10 lub Windows Server mogą monitować o ponowne uruchomienie. Jeśli tak, uruchom ponownie urządzenie teraz. Gdy urządzenie będzie gotowe, uruchom program PowerShell jako administrator ponownie.
 
-1. Polecenie **Initialize-IoTEdge** konfiguruje środowisko uruchomieniowe IoT Edge na komputerze. Polecenie domyślnie umożliwia ręczne Inicjowanie obsługi przy użyciu kontenerów systemu Windows. Użyj flagi `-Dps`, aby użyć usługi Device Provisioning zamiast ręcznego inicjowania obsługi.
+1. Polecenie **Initialize-IoTEdge** konfiguruje środowisko wykonawcze IoT Edge na komputerze. Polecenie domyślnie ręczne inicjowanie obsługi administracyjnej za pomocą kontenerów systemu Windows. Użyj `-Dps` flagi, aby użyć usługi inicjowania obsługi administracyjnej urządzeń zamiast ręcznego inicjowania obsługi administracyjnej.
 
-   Zamień wartości zastępcze dla `{scope_id}` i `{registration_id}` na zebrane wcześniej dane.
+   Zastąp wartości `{scope_id}` `{registration_id}` zastępcze dla i z danymi zebranymi wcześniej.
 
    ```powershell
    . {Invoke-WebRequest -useb https://aka.ms/iotedge-win} | Invoke-Expression; `
    Initialize-IoTEdge -Dps -ScopeId {scope ID} -RegistrationId {registration ID}
    ```
 
-## <a name="verify-successful-installation"></a>Sprawdź pomyślnej instalacji
+## <a name="verify-successful-installation"></a>Weryfikacja pomyślnej instalacji
 
-Jeśli środowisko wykonawcze został uruchomiony pomyślnie, możesz przejść do Centrum IoT Hub i zacząć wdrażać moduły usługi IoT Edge na urządzeniu. Użyj następujących poleceń na twoim urządzeniu, aby sprawdzić, czy środowisko uruchomieniowe zainstalowana i uruchomiona pomyślnie.  
+Jeśli środowisko wykonawcze rozpoczęło się pomyślnie, możesz przejść do centrum IoT Hub i rozpocząć wdrażanie modułów usługi IoT Edge na urządzeniu. Użyj następujących poleceń na urządzeniu, aby sprawdzić, czy środowisko wykonawcze zostało zainstalowane i uruchomione pomyślnie.  
 
 Sprawdź stan usługi IoT Edge.
 
@@ -122,7 +122,7 @@ Sprawdź dzienniki usługi z ostatnich 5 minut.
 . {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; Get-IoTEdgeLog
 ```
 
-Utwórz listę uruchomionych modułów.
+Lista uruchomionych modułów.
 
 ```powershell
 iotedge list
@@ -130,4 +130,4 @@ iotedge list
 
 ## <a name="next-steps"></a>Następne kroki
 
-Proces rejestracji usługi Device Provisioning pozwala ustawić identyfikator urządzenia i tagów bliźniaczych reprezentacji urządzeń w tym samym czasie, jak aprowizować nowe urządzenie. Pod kątem poszczególnych urządzeń lub grup urządzeń za pomocą urządzenia automatycznego zarządzania, można użyć tych wartości. Dowiedz się, jak [monitora usługi IoT Edge modułów na skalowanie przy użyciu witryny Azure portal i wdróż](how-to-deploy-monitor.md) lub [przy użyciu wiersza polecenia platformy Azure](how-to-deploy-monitor-cli.md)
+Proces rejestracji usługi inicjowania obsługi administracyjnej urządzeń umożliwia ustawienie identyfikatora urządzenia i bliźniaczych tagów urządzenia w tym samym czasie, co aprowizowanie nowego urządzenia. Za pomocą tych wartości można kierować reklamy na poszczególne urządzenia lub grupy urządzeń za pomocą automatycznego zarządzania urządzeniami. Dowiedz się, jak [wdrażać i monitorować moduły usługi IoT Edge na dużą skalę przy użyciu witryny Azure portal](how-to-deploy-monitor.md) lub [przy użyciu interfejsu wiersza polecenia platformy Azure](how-to-deploy-monitor-cli.md)

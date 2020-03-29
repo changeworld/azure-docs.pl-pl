@@ -1,6 +1,6 @@
 ---
-title: Konfigurowanie wielowartościowego routingu ruchu-Traffic Manager platformy Azure
-description: W tym artykule opisano sposób konfigurowania Traffic Manager w celu kierowania ruchu do punktów końcowych/AAAA.
+title: Konfigurowanie routingu ruchu wielowartościowego — usługa Azure Traffic Manager
+description: W tym artykule wyjaśniono, jak skonfigurować menedżera ruchu do kierowania ruchu do punktów końcowych A/AAAA.
 services: traffic-manager
 documentationcenter: ''
 author: rohinkoul
@@ -13,38 +13,38 @@ ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: rohink
 ms.openlocfilehash: daf7d09916d276130e337f7acea738228ee23707
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76938776"
 ---
-# <a name="configure-multivalue-routing-method-in-traffic-manager"></a>Konfigurowanie metody routingu z wieloma wartościami w Traffic Manager
+# <a name="configure-multivalue-routing-method-in-traffic-manager"></a>Konfigurowanie metody routingu MultiValue w usłudze Traffic Manager
 
-W tym artykule opisano sposób konfigurowania wielowartościowej metody routingu ruchu. **Wielowartościowa** Metoda routingu ruchu umożliwia zwracanie wielu prawidłowych punktów końcowych i pozwala zwiększyć niezawodność aplikacji, ponieważ klienci mają więcej opcji do ponawiania prób bez konieczności wykonywania kolejnego wyszukiwania DNS. Routing z wieloma wartościami jest włączony tylko dla profilów, dla których wszystkie punkty końcowe są określone przy użyciu adresów IPv4 lub IPv6. Po odebraniu zapytania dla tego profilu wszystkie zdrowe punkty końcowe są zwracane na podstawie podanej maksymalnej liczby zwracanych wartości. 
+W tym artykule opisano sposób konfigurowania metody routingu ruchu MultiValue. Metoda routingu ruchu **wielowartościowego** umożliwia zwracanie wielu zdrowych punktów końcowych i pomaga zwiększyć niezawodność aplikacji, ponieważ klienci mają więcej opcji ponowienia prób bez konieczności wykonywania innego wyszukiwania DNS. Routing wielowartościowy jest włączony tylko dla profilów, które mają wszystkie swoje punkty końcowe określone przy użyciu adresów IPv4 lub IPv6. Po odebraniu kwerendy dla tego profilu wszystkie punkty końcowe w dobrej kondycji są zwracane na podstawie określonej konfigurowalnej maksymalnej liczby zwracanych. 
 
 >[!NOTE]
-> W tym momencie Dodawanie punktów końcowych przy użyciu adresów IPv4 lub IPv6 jest obsługiwane tylko dla punktów końcowych typu **zewnętrznego** , dlatego Routing z wieloma wartościami jest również obsługiwany tylko dla tych punktów końcowych.
+> W tej chwili dodawanie punktów końcowych przy użyciu adresów IPv4 lub IPv6 jest obsługiwane tylko dla punktów końcowych typu **Zewnętrzne** i dlatego routing MultiValue jest również obsługiwany tylko dla takich punktów końcowych.
 
-## <a name="sign-in-to-azure"></a>Zaloguj się w usłudze Azure 
+## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure 
 
 Zaloguj się do witryny Azure Portal pod adresem https://portal.azure.com.
 ## <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
-Utwórz grupę zasobów dla profilu Traffic Manager.
-1. W lewym okienku Azure Portal wybierz pozycję **grupy zasobów**.
-2. W obszarze **grupy zasobów**w górnej części strony wybierz pozycję **Dodaj**.
-3. W polu **Nazwa grupy zasobów**wpisz nazwę *myResourceGroupTM1*. W obszarze **Lokalizacja grupy zasobów**wybierz pozycję **Wschodnie stany USA**, a następnie wybierz przycisk **OK**.
+Utwórz grupę zasobów dla profilu Usługi Traffic Manager.
+1. W lewym okienku witryny Azure portal wybierz pozycję **Grupy zasobów**.
+2. W **grupach zasobów**u góry strony wybierz pozycję **Dodaj**.
+3. W **pliku Nazwa grupy zasobów**wpisz nazwę *myResourceGroupTM1*. W obszarze **Lokalizacja grupy zasobów**wybierz pozycję **Wschodnie**stany USA , a następnie wybierz przycisk **OK**.
 
 ## <a name="create-a-traffic-manager-profile"></a>Tworzenie profilu usługi Traffic Manager
-Utwórz profil Traffic Manager, który kieruje ruchem użytkownika przez wysłanie ich do punktu końcowego z najniższym opóźnieniem.
+Utwórz profil usługi Traffic Manager, który kieruje ruch użytkowników, wysyłając go do punktu końcowego o najniższym opóźnieniu.
 
-1. W lewej górnej części ekranu wybierz pozycję **Utwórz zasób** > **Sieć** > **Profil usługi Traffic Manager** > **Utwórz**.
-2. W obszarze **Utwórz profil Traffic Manager**wprowadź lub wybierz poniższe informacje, zaakceptuj wartości domyślne pozostałych ustawień, a następnie wybierz pozycję **Utwórz**:
+1. W lewym górnym rogu ekranu wybierz pozycję **Utwórz** > **profil** > menedżera ruchu**sieciowego** > **Utwórz**.
+2. W **obszarze Tworzenie profilu usługi Traffic Manager**wprowadź lub wybierz następujące informacje, zaakceptuj ustawienia domyślne dla pozostałych ustawień, a następnie wybierz pozycję **Utwórz:**
     
     | Ustawienie                 | Wartość                                              |
     | ---                     | ---                                                |
     | Nazwa                   | Ta nazwa musi być unikatowa w obrębie strefy trafficmanager.net. Na jej podstawie zostanie utworzona nazwa DNS trafficmanager.net służąca do uzyskiwania dostępu do profilu usługi Traffic Manager.                                   |
-    | Metoda routingu          | Wybierz metodę routingu z **wieloma wartościami** .                                       |
+    | Metoda routingu          | Wybierz metodę **routingu wielowartościowego.**                                       |
     | Subskrypcja            | Wybierz subskrypcję.                          |
     | Grupa zasobów          | Wybierz pozycję *myResourceGroupTM1*. |
     | Lokalizacja                | To ustawienie dotyczy lokalizacji grupy zasobów i nie ma wpływu na profil usługi Traffic Manager, który będzie wdrażany globalnie.                              |
@@ -54,20 +54,20 @@ Utwórz profil Traffic Manager, który kieruje ruchem użytkownika przez wysłan
 
 ## <a name="add-traffic-manager-endpoints"></a>Dodawanie punktów końcowych usługi Traffic Manager
 
-Dodaj dwa adresy IP jako zewnętrzne punkty końcowe do wielowartościowego profilu Traffic Manager, który został utworzony w poprzednim kroku.
+Dodaj dwa adresy IP jako zewnętrzne punkty końcowe do profilu MultiValue Traffic Manager utworzonego w poprzednim kroku.
 
 1. Na pasku wyszukiwania portalu wyszukaj nazwę profilu usługi Traffic Manager, który został utworzony w poprzedniej sekcji, a następnie wybierz ten profil w wyświetlonych wynikach.
 2. W obszarze **Profil usługi Traffic Manager** w sekcji **Ustawienia** kliknij pozycję **Punkty końcowe**, a następnie kliknij pozycję **Dodaj**.
-3. Wprowadź lub wybierz poniższe informacje, zaakceptuj wartości domyślne pozostałych ustawień, a następnie wybierz przycisk **OK**:
+3. Wprowadź lub wybierz następujące informacje, zaakceptuj ustawienia domyślne dla pozostałych ustawień, a następnie wybierz **przycisk OK:**
 
     | Ustawienie                 | Wartość                                              |
     | ---                     | ---                                                |
     | Typ                    | Zewnętrzny punkt końcowy                                   |
     | Nazwa           | myEndpoint1                                        |
-    | W pełni kwalifikowana nazwa domeny (FQDN) lub adres IP           | Wpisz publiczny adres IP punktu końcowego, który chcesz dodać do tego profilu Traffic Manager                         |
+    | W pełni kwalifikowana nazwa domeny (FQDN) lub IP           | Wpisz publiczny adres IP punktu końcowego, który chcesz dodać do tego profilu usługi Traffic Manager                         |
     |        |           |
 
-4. Powtórz kroki 2 i 3, aby dodać kolejny punkt końcowy o nazwie *myEndpoint2*, dla w **pełni kwalifikowanej nazwy domeny (FQDN) lub adres IP**, wprowadź publiczny adres IP drugiego punktu końcowego.
+4. Powtórz kroki 2 i 3, aby dodać inny punkt końcowy o nazwie *myEndpoint2*, dla **w pełni kwalifikowanej nazwy domeny (FQDN) lub IP**, wprowadź publiczny adres IP drugiego punktu końcowego.
 5. Po zakończeniu dodawania obu punktów końcowych będą one wyświetlane w obszarze **Profil usługi Traffic Manager** ze stanem monitorowania **Online**.
 
    ![Dodawanie punktu końcowego usługi Traffic Manager](./media/traffic-manager-multivalue-routing-method/add-endpoint.png)
