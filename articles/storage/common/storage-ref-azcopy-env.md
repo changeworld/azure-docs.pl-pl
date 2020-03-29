@@ -1,6 +1,6 @@
 ---
-title: koperta AzCopy | Microsoft Docs
-description: Ten artykuł zawiera informacje referencyjne dotyczące AzCopy ENV polecenia.
+title: azcopy env | Dokumenty firmy Microsoft
+description: Ten artykuł zawiera informacje referencyjne dla polecenia env azcopy.
 author: normesta
 ms.service: storage
 ms.topic: reference
@@ -9,15 +9,15 @@ ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
 ms.openlocfilehash: cc0ed5f1eec76bedc21106c90e5e82332e27ce3c
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74033761"
 ---
 # <a name="azcopy-env"></a>azcopy env
 
-Pokazuje zmienne środowiskowe, które mogą konfigurować zachowanie AzCopy.
+Pokazuje zmienne środowiskowe, które można skonfigurować zachowanie AzCopy.Shows the environment variables that can configure AzCopy's behavior.
 
 ## <a name="synopsis"></a>Streszczenie
 
@@ -26,29 +26,29 @@ azcopy env [flags]
 ```
 
 > [!IMPORTANT]
-> W przypadku ustawienia zmiennej środowiskowej przy użyciu wiersza polecenia ta zmienna zostanie odczytana w historii wiersza polecenia. Rozważ wyczyszczenie zmiennych, które zawierają poświadczenia z historii wiersza polecenia. Aby zachować zmienne w historii, można użyć skryptu w celu wyświetlenia monitu o podanie poświadczeń użytkownika i ustawienia zmiennej środowiskowej.
+> Jeśli ustawisz zmienną środowiskową przy użyciu wiersza polecenia, ta zmienna będzie czytelna w historii wiersza polecenia. Należy wziąć pod uwagę wyczyszczenie zmiennych, które zawierają poświadczenia z historii wiersza polecenia. Aby zachować zmienne z pojawiających się w historii, można użyć skryptu, aby monitować użytkownika o ich poświadczenia i ustawić zmienną środowiskową.
 
-## <a name="related-conceptual-articles"></a>Pokrewne artykuły koncepcyjne
+## <a name="related-conceptual-articles"></a>Powiązane artykuły koncepcyjne
 
-- [Wprowadzenie do AzCopy](storage-use-azcopy-v10.md)
-- [Transferowanie danych za pomocą AzCopy i magazynu obiektów BLOB](storage-use-azcopy-blobs.md)
-- [Transferowanie danych za pomocą AzCopy i magazynu plików](storage-use-azcopy-files.md)
-- [Konfigurowanie, optymalizowanie i rozwiązywanie problemów z AzCopy](storage-use-azcopy-configure.md)
+- [Wprowadzenie do narzędzia AzCopy](storage-use-azcopy-v10.md)
+- [Przesyłanie danych za pomocą pamięci masowej AzCopy i Blob](storage-use-azcopy-blobs.md)
+- [Przesyłanie danych za pomocą AzCopy i przechowywania plików](storage-use-azcopy-files.md)
+- [Konfigurowanie, optymalizowanie i rozwiązywanie problemów z programem AzCopy](storage-use-azcopy-configure.md)
 
 ## <a name="options"></a>Opcje
 
 |Opcja|Opis|
 |--|--|
-|-h,--pomoc|Wyświetla zawartość pomocy dla polecenia ENV. |
-|--Pokaż-poufne|Pokazuje zmienne środowiskowe poufne/tajne.|
+|-h, --pomoc|Pokazuje zawartość pomocy dla polecenia env. |
+|--show-wrażliwe|Pokazuje zmienne środowiska poufne/tajne.|
 
 ## <a name="options-inherited-from-parent-commands"></a>Opcje dziedziczone z poleceń nadrzędnych
 
 |Opcja|Opis|
 |---|---|
-|--Cap-MB/s UInt32|Szybkość transferu w megabitach na sekundę. Przepływność czasu na chwilę może się nieco różnić od końca. Jeśli ta opcja jest ustawiona na zero lub zostanie pominięta, przepływność nie zostanie ograniczona.|
-|--ciąg typu wyjściowego|Format danych wyjściowych polecenia. Dostępne opcje to: text, JSON. Wartość domyślna to "text".|
+|--cap-mbps uint32|Limity szybkości transferu w megabitach na sekundę. Przepływność moment po chwili może się nieznacznie różnić od limitu. Jeśli ta opcja jest ustawiona na zero lub jest pomijana, przepływność nie jest ograniczona.|
+|Ciąg typu --output|Format danych wyjściowych polecenia. Do wyboru są: tekst, json. Wartością domyślną jest "tekst".|
 
 ## <a name="see-also"></a>Zobacz też
 
-- [AzCopy](storage-ref-azcopy.md)
+- [azcopy](storage-ref-azcopy.md)

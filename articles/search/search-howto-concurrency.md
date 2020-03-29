@@ -1,7 +1,7 @@
 ---
-title: Jak zarządzać jednoczesnymi zapisami do zasobów
+title: Jak zarządzać równoczesnymi zapisami w zasobach
 titleSuffix: Azure Cognitive Search
-description: Używaj optymistycznej współbieżności, aby uniknąć kolizji w połowie w przypadku aktualizacji lub usunięć do usługi Azure Wyszukiwanie poznawcze indexes, indeksatorów i źródeł danych.
+description: Użyj optymistycznej współbieżności, aby uniknąć kolizji w powietrzu na aktualizacjach lub usuwa do indeksów usługi Azure Cognitive Search, indeksatorów, źródeł danych.
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
@@ -9,42 +9,42 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: edfb2fe5cc37a00335ca7b5be851a88825b03eb1
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72792214"
 ---
-# <a name="how-to-manage-concurrency-in-azure-cognitive-search"></a>Jak zarządzać współbieżnością w usłudze Azure Wyszukiwanie poznawcze
+# <a name="how-to-manage-concurrency-in-azure-cognitive-search"></a>Jak zarządzać współbieżnością w usłudze Azure Cognitive Search
 
-Podczas zarządzania zasobami Wyszukiwanie poznawcze platformy Azure, takimi jak indeksy i źródła danych, ważne jest, aby bezpiecznie aktualizować zasoby, szczególnie w przypadku, gdy dostęp do zasobów odbywa się współbieżnie przez różne składniki aplikacji. Gdy dwaj klienci jednocześnie aktualizują zasób bez koordynacji, możliwe są sytuacje wyścigu. Aby tego uniknąć, usługa Azure Wyszukiwanie poznawcze oferuje *optymistyczny model współbieżności*. Nie ma blokad dla zasobu. Zamiast tego istnieje element ETag dla każdego zasobu, który identyfikuje wersję zasobu, aby można było tworzyć jednostki żądań, które unikają przypadkowego nadpisywania.
+Podczas zarządzania zasobami usługi Azure Cognitive Search, takimi jak indeksy i źródła danych, ważne jest bezpieczne aktualizowanie zasobów, zwłaszcza jeśli zasoby są dostępne jednocześnie przez różne składniki aplikacji. Gdy dwóch klientów jednocześnie aktualizować zasób bez koordynacji, warunki wyścigu są możliwe. Aby temu zapobiec, usługa Azure Cognitive Search oferuje *optymistyczny model współbieżności.* Nie ma żadnych blokad na zasobie. Zamiast tego istnieje ETag dla każdego zasobu, który identyfikuje wersję zasobu, dzięki czemu można tworzyć żądania, które unikają przypadkowych zastąpień.
 
 > [!Tip]
-> Kod koncepcyjny w [przykładowym C# rozwiązaniu](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetETagsExplainer) wyjaśnia, jak działa kontrola współbieżności w usłudze Azure wyszukiwanie poznawcze. Kod tworzy warunki, które wywołują kontrolę współbieżności. Odczytywanie [poniższego fragmentu kodu](#samplecode) jest prawdopodobnie wystarczające dla większości deweloperów, ale jeśli chcesz go uruchomić, edytuj plik appSettings. JSON, aby dodać nazwę usługi i klucz API-Key administratora. Podano adres URL usługi `http://myservice.search.windows.net`, nazwa usługi jest `myservice`.
+> Kod koncepcyjny w [przykładowym rozwiązaniu języka C#](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetETagsExplainer) wyjaśnia, jak działa kontrola współbieżności w usłudze Azure Cognitive Search. Kod tworzy warunki, które wywołują kontrolę współbieżności. Odczytanie [fragmentu kodu poniżej](#samplecode) jest prawdopodobnie wystarczające dla większości deweloperów, ale jeśli chcesz go uruchomić, edytuj appsettings.json, aby dodać nazwę usługi i klucz api administratora. Biorąc pod uwagę `http://myservice.search.windows.net`adres URL `myservice`usługi , nazwa usługi jest .
 
-## <a name="how-it-works"></a>Zasady działania
+## <a name="how-it-works"></a>Jak to działa
 
-Współbieżność optymistyczna jest implementowana za poorednictwem sprawdzania warunku dostępu w interfejsie API wywołuje zapis do indeksów, indeksatorów, źródeł danych i zasobów synonymMap.
+Optymistyczna współbieżność jest implementowana za pomocą kontroli warunków dostępu w wywołaniach interfejsu API do zapisywania indeksów, indeksatorów, źródeł danych i zasobów synonymMap.
 
-Wszystkie zasoby mają [*tag jednostki (ETag)* ](https://en.wikipedia.org/wiki/HTTP_ETag) , który zawiera informacje o wersji obiektu. Sprawdzając najpierw element ETag, można uniknąć współbieżnych aktualizacji w typowym przepływie pracy (Get, Modify lokalnie, Update), upewniając się, że element ETag zasobu jest zgodny z lokalną kopią.
+Wszystkie zasoby mają [*tag jednostki (ETag),*](https://en.wikipedia.org/wiki/HTTP_ETag) który zawiera informacje o wersji obiektu. Sprawdzając najpierw etag, można uniknąć równoczesnych aktualizacji w typowym przepływie pracy (get, modify locally, update), upewniając się, że etag zasobu jest zgodny z lokalną kopią.
 
-+ Interfejs API REST używa elementu [ETag](https://docs.microsoft.com/rest/api/searchservice/common-http-request-and-response-headers-used-in-azure-search) w nagłówku żądania.
-+ Zestaw SDK platformy .NET ustawia element ETag za pomocą obiektu accessCondition, ustawiając opcję [if-Match | Nagłówek if-Match-none](https://docs.microsoft.com/rest/api/searchservice/common-http-request-and-response-headers-used-in-azure-search) w zasobie. Każdy obiekt dziedziczenia z [IResourceWithETag (.NET SDK)](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.iresourcewithetag) ma obiekt accessCondition.
++ Interfejs API REST używa [znacznika ETag](https://docs.microsoft.com/rest/api/searchservice/common-http-request-and-response-headers-used-in-azure-search) w nagłówku żądania.
++ Zestaw SDK .NET ustawia znacznik ETag za pomocą obiektu accessCondition, ustawiając [if-match | If-Match-None nagłówka](https://docs.microsoft.com/rest/api/searchservice/common-http-request-and-response-headers-used-in-azure-search) w zasobie. Każdy obiekt dziedziczący z [IResourceWithETag (NET SDK)](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.iresourcewithetag) ma obiekt accessCondition.
 
-Za każdym razem, gdy aktualizujesz zasób, jego element ETag zmienia się automatycznie. W przypadku zaimplementowania zarządzania współbieżnością wszystkie wykonywane czynności są wykonywane w ramach żądania aktualizacji, które wymaga, aby zasób zdalny miał ten sam element ETag, jak kopia zasobu zmodyfikowanego na kliencie. Jeśli zasób zdalny został już zmieniony przez proces współbieżny, element ETag nie będzie zgodny z warunkiem wstępnym, a żądanie zakończy się niepowodzeniem z użyciem protokołu HTTP 412. Jeśli używasz zestawu SDK platformy .NET, te manifesty jako `CloudException`, w których Metoda rozszerzenia `IsAccessConditionFailed()` zwraca wartość true.
+Za każdym razem, gdy aktualizujesz zasób, jego etag zmienia się automatycznie. Po zaimplementowanie zarządzania współbieżnością, wszystko, co robisz, to wprowadzenie warunku wstępnego na żądanie aktualizacji, które wymaga zasobu zdalnego mieć ten sam ETag jako kopię zasobu, który został zmodyfikowany na kliencie. Jeśli proces równoczesnych zmienił już zasób zdalny, ETag nie będzie zgodny z warunkiem wstępnym, a żądanie zakończy się niepowodzeniem z protokołem HTTP 412. Jeśli używasz .NET SDK, to manifestuje `CloudException` jako, gdzie metoda `IsAccessConditionFailed()` rozszerzenia zwraca true.
 
 > [!Note]
-> Istnieje tylko jeden mechanizm współbieżności. Jest on zawsze używany niezależnie od tego, który interfejs API jest używany do aktualizacji zasobów.
+> Istnieje tylko jeden mechanizm współbieżności. Jest zawsze używany niezależnie od tego, który interfejs API jest używany do aktualizacji zasobów.
 
 <a name="samplecode"></a>
 ## <a name="use-cases-and-sample-code"></a>Przypadki użycia i przykładowy kod
 
-Poniższy kod demonstruje accessCondition checks dla operacji aktualizacji klucza:
+Poniższy kod pokazuje accessCondition sprawdza dla operacji aktualizacji klucza:
 
 + Niepowodzenie aktualizacji, jeśli zasób już nie istnieje
 + Niepowodzenie aktualizacji w przypadku zmiany wersji zasobu
 
-### <a name="sample-code-from-dotnetetagsexplainer-programhttpsgithubcomazure-samplessearch-dotnet-getting-startedtreemasterdotnetetagsexplainer"></a>Przykładowy kod z [programu DotNetETagsExplainer](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetETagsExplainer)
+### <a name="sample-code-from-dotnetetagsexplainer-program"></a>Przykładowy kod z [programu DotNetETagsExplainer](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetETagsExplainer)
 
 ```
     class Program
@@ -165,13 +165,13 @@ Poniższy kod demonstruje accessCondition checks dla operacji aktualizacji klucz
 }
 ```
 
-## <a name="design-pattern"></a>Wzorzec projektowy
+## <a name="design-pattern"></a>Wzór projektu
 
-Wzorzec projektowy służący do implementowania optymistycznej współbieżności powinien zawierać pętlę, która ponawia próbę sprawdzenia warunku dostępu, test dla warunku dostępu i opcjonalnie pobiera zaktualizowany zasób przed podjęciem próby ponownego zastosowania zmian.
+Wzorzec projektu do implementowania optymistycznej współbieżności powinien zawierać pętlę, która ponawia sprawdzanie warunku dostępu, test dla warunku dostępu i opcjonalnie pobiera zaktualizowany zasób przed próbą ponownego zastosowania zmian.
 
-Ten fragment kodu ilustruje Dodawanie synonymMap do indeksu, który już istnieje. Ten kod pochodzi z [przykładu C# synonimu dla usługi Azure wyszukiwanie poznawcze](search-synonyms-tutorial-sdk.md).
+Ten fragment kodu ilustruje dodanie synonimMap do indeksu, który już istnieje. Ten kod pochodzi z [przykładu Synonim C# dla usługi Azure Cognitive Search](search-synonyms-tutorial-sdk.md).
 
-Fragment kodu Pobiera indeks "Hotele", sprawdza wersję obiektu w operacji aktualizacji, zgłasza wyjątek, jeśli warunek nie powiedzie się, a następnie ponawia próbę wykonania operacji (maksymalnie trzy razy), rozpoczynając od pobierania indeksu z serwera w celu uzyskania najnowszej wersji.
+Fragment kodu pobiera indeks "hotele", sprawdza wersję obiektu w operacji aktualizacji, zgłasza wyjątek, jeśli warunek nie powiedzie się, a następnie ponawia operację (do trzech razy), począwszy od pobierania indeksu z serwera, aby uzyskać najnowszą wersję.
 
         private static void EnableSynonymsInHotelsIndexSafely(SearchServiceClient serviceClient)
         {
@@ -207,15 +207,15 @@ Fragment kodu Pobiera indeks "Hotele", sprawdza wersję obiektu w operacji aktua
 
 ## <a name="next-steps"></a>Następne kroki
 
-Zapoznaj się z [ C# przykładami synonimów](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowToSynonyms) , aby uzyskać więcej informacji na temat sposobu bezpiecznego aktualizowania istniejącego indeksu.
+Przejrzyj [przykład synonimów C#,](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowToSynonyms) aby uzyskać więcej kontekstu na temat bezpiecznego aktualizowania istniejącego indeksu.
 
-Spróbuj zmodyfikować jeden z poniższych przykładów, aby dołączyć elementy ETag lub AccessCondition.
+Spróbuj zmodyfikować jedną z następujących próbek, aby uwzględnić obiekty ETags lub AccessCondition.
 
-+ [Przykład interfejsu API REST w witrynie GitHub](https://github.com/Azure-Samples/search-rest-api-getting-started)
-+ [Przykład zestawu .NET SDK w witrynie GitHub](https://github.com/Azure-Samples/search-dotnet-getting-started). To rozwiązanie zawiera projekt "DotNetEtagsExplainer" zawierający kod przedstawiony w tym artykule.
++ [Przykład interfejsu API REST w usłudze GitHub](https://github.com/Azure-Samples/search-rest-api-getting-started)
++ [Przykład SDK .NET w usłudze GitHub](https://github.com/Azure-Samples/search-dotnet-getting-started). To rozwiązanie obejmuje projekt "DotNetEtagsExplainer" zawierający kod przedstawiony w tym artykule.
 
-## <a name="see-also"></a>Zobacz także
+## <a name="see-also"></a>Zobacz też
 
-[Typowe nagłówki żądań HTTP i odpowiedzi](https://docs.microsoft.com/rest/api/searchservice/common-http-request-and-response-headers-used-in-azure-search)
-[kodów stanu HTTP](https://docs.microsoft.com/rest/api/searchservice/http-status-codes)
-[operacji indeksu (interfejs API REST)](https://docs.microsoft.com/rest/api/searchservice/index-operations)
+[Typowe nagłówki](https://docs.microsoft.com/rest/api/searchservice/common-http-request-and-response-headers-used-in-azure-search)
+żądań HTTP i odpowiedzi[HTTP kody](https://docs.microsoft.com/rest/api/searchservice/http-status-codes)
+stanu[index operacji (REST API)](https://docs.microsoft.com/rest/api/searchservice/index-operations)

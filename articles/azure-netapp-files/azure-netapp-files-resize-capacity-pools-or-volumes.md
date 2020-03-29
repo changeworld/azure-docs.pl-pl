@@ -1,6 +1,6 @@
 ---
-title: Zmień rozmiar pojemności puli lub woluminu dla usługi Azure Files NetApp | Dokumentacja firmy Microsoft
-description: W tym artykule opisano, jak zmienić rozmiar puli pojemności lub woluminu.
+title: Zmiana rozmiaru puli pojemności lub woluminu dla plików NetApp platformy Azure | Dokumenty firmy Microsoft
+description: W tym artykule opisano sposób zmiany rozmiaru puli pojemności lub woluminu.
 services: azure-netapp-files
 documentationcenter: ''
 author: b-juche
@@ -15,28 +15,28 @@ ms.topic: conceptual
 ms.date: 05/14/2019
 ms.author: b-juche
 ms.openlocfilehash: c58ceef57b984f46b86bb2a8577c53b75082b78b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "65794613"
 ---
 # <a name="resize-a-capacity-pool-or-a-volume"></a>Zmienianie rozmiaru puli pojemności lub woluminu
-Można zmienić rozmiar puli pojemności lub woluminie zgodnie z potrzebami. 
+W razie potrzeby można zmienić rozmiar puli pojemności lub woluminu. 
 
-## <a name="resize-the-capacity-pool"></a>Zmień rozmiar pojemności puli 
+## <a name="resize-the-capacity-pool"></a>Ponowne rozmiary puli pojemności 
 
-Można zmienić rozmiar puli pojemności w 1 TiB zwiększa lub zmniejsza. Jednakże rozmiar pojemności w puli nie może być mniejszy niż 4 TiB. Zmiana rozmiaru puli pojemności zmienia zakupioną pojemność usługi Azure Files NetApp.
+Rozmiar puli pojemności można zmienić w przyrostach lub ubytkach 1-TiB. Jednak rozmiar puli pojemności nie może być mniejszy niż 4 TiB. Zmiana rozmiaru puli pojemności zmienia pojemność zakupionej usługi Azure NetApp Files.
 
-1. W bloku Zarządzanie konta NetApp kliknij przycisk puli pojemności, które chcesz zmienić. 
-2. Kliknij prawym przyciskiem myszy nazwę puli pojemność, lub kliknij ikonę "..." na końcu wiersza puli pojemności, aby wyświetlić menu kontekstowe. 
-3. Aby zmienić rozmiar lub usunąć pojemność puli, należy użyć opcje w menu kontekstowym.
+1. W bloku Zarządzanie kontem NetApp kliknij pulę pojemności, którą chcesz zmienić. 
+2. Kliknij prawym przyciskiem myszy nazwę puli pojemności lub kliknij "..." na końcu wiersza puli pojemności, aby wyświetlić menu kontekstowe. 
+3. Użyj opcji menu kontekstowego, aby zmienić rozmiar lub usunąć pulę pojemności.
 
-## <a name="resize-a-volume"></a>Zmień rozmiar woluminu
+## <a name="resize-a-volume"></a>Ponowne rozmiary woluminu
 
-Można zmienić rozmiar woluminu zgodnie z potrzebami. Użycie pojemności woluminu jest liczone jako użycie aprowizowanej pojemności puli.
+W razie potrzeby można zmienić rozmiar woluminu. Użycie pojemności woluminu jest liczone jako użycie aprowizowanej pojemności puli.
 
-1. W bloku Zarządzanie NetApp konta kliknij **woluminów**. 
-2. Kliknij prawym przyciskiem myszy nazwę woluminu, który chcesz zmienić rozmiar lub kliknij ikonę "..." na końcu wiersza dla woluminu, aby wyświetlić menu kontekstowe.
-3. Użyj opcji menu kontekstowe rozmiar lub usunąć wolumin.
+1. W bloku Zarządzanie kontem NetApp kliknij pozycję **Woluminy**. 
+2. Kliknij prawym przyciskiem myszy nazwę woluminu, którego rozmiar chcesz zmienić, lub kliknij polecenie "..." na końcu wiersza woluminu, aby wyświetlić menu kontekstowe.
+3. Użyj opcji menu kontekstowego, aby zmienić rozmiar lub usunąć wolumin.
 

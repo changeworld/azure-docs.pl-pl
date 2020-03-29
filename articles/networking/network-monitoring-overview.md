@@ -1,6 +1,6 @@
 ---
-title: Dotyczące monitorowania sieci w usłudze Azure Monitor dzienników | Dokumentacja firmy Microsoft
-description: Omówienie monitorowania rozwiązań, w tym Menedżer pakietów NPM oraz do zarządzania sieciami w środowiskach w chmurze, lokalne i hybrydowe sieci.
+title: Monitorowanie sieci w dziennikach usługi Azure Monitor — informacje | Dokumenty firmy Microsoft
+description: Omówienie rozwiązań do monitorowania sieci, w tym NPM, do zarządzania sieciami w chmurze, lokalnie i środowiskach hybrydowych.
 services: monitoring-and-diagnostics
 documentationcenter: na
 author: agummadi
@@ -16,112 +16,112 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2018
 ms.author: agummadi
 ms.openlocfilehash: 2912488286745bf8d2e567d09e445b0a44dc7c39
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67672183"
 ---
 # <a name="network-monitoring-solutions"></a>Rozwiązania do monitorowania sieci 
 
-Platforma Azure oferuje wiele rozwiązań do monitorowania zasobów sieciowych. Platforma Azure oferuje rozwiązania i narzędzia, aby monitorować łączność sieciową, kondycji obwodów usługi ExpressRoute i analizowania ruchu sieciowego w chmurze.
+Platforma Azure oferuje wiele rozwiązań do monitorowania zasobów sieciowych. Platforma Azure ma rozwiązania i narzędzia do monitorowania łączności sieciowej, kondycji obwodów usługi ExpressRoute i analizowania ruchu sieciowego w chmurze.
 
-## <a name="network-performance-monitor-npm"></a>Rozwiązanie Network Performance Monitor (NPM)
+## <a name="network-performance-monitor-npm"></a>Monitor wydajności sieci (NPM)
 
-Network Performance Monitor (NPM) to zestaw funkcji, z których każdy jest skierowana ku monitorowanie kondycji sieci, łączności sieciowej do aplikacji i zapewnia wgląd w wydajność sieci. NPM jest oparta na chmurze i zapewnia rozwiązanie monitorujące, które monitoruje łączność między sieci hybrydowych:
+Monitor wydajności sieci (NPM) to zestaw funkcji, z których każdy jest ukierunkowany na monitorowanie kondycji sieci, łączności sieciowej z aplikacjami i zapewnia wgląd w wydajność sieci. Serwer NPM jest oparty na chmurze i zapewnia rozwiązanie do monitorowania sieci hybrydowej, które monitoruje łączność między:
  
-* Lokalizacje wdrożeń lokalnych i w chmurze
-* Wiele centrów danych i biur oddziałów
-* Misja krytyczne wielowarstwowej aplikacji/mikrousługi
-* Lokalizacji użytkownika i aplikacji sieci web (HTTP/HTTPs) 
+* Wdrożenia w chmurze i lokalizacje lokalne
+* Wiele centrów danych i oddziałów
+* Krytyczne aplikacje wielowarstwowe/mikroserce
+* Lokalizacje użytkowników i aplikacje internetowe (HTTP/HTTPs) 
 
-Monitor wydajności, Monitor usługi ExpressRoute i Monitor łączności usługi monitorowanymi możliwości w ramach NPM i są opisane poniżej.
+Monitor wydajności, monitor usługi ExpressRoute i monitor łączności usługi są funkcje monitorowania w ramach npm i są opisane poniżej.
 
 ## <a name="performance-monitor"></a>Monitorowanie wydajności
 
-Monitor wydajności jest częścią NPM i jest monitorowania sieci w chmurze, hybrydowych i dla środowisk lokalnych. Można monitorować łączność sieciową w oddziałach zdalnych i biurach terenowych, lokalizacji magazynu, centrach danych i chmury. Można wykrywać problemy z siecią, zanim użytkownicy zaczną zgłaszać skargi. Dostępne są następujące kluczowe korzyści:
+Monitor wydajności jest częścią serwera NPM i jest monitorowaniem sieci dla środowisk chmurowych, hybrydowych i lokalnych. Możesz monitorować łączność sieciową w zdalnych oddziałach i biurach terenowych, lokalizacjach sklepów, centrach danych i chmurach. Możesz wykryć problemy z siecią, zanim użytkownicy zdasz skargę. Główne zalety to:
 
-* Monitorowanie strat i opóźnień w różnych podsieciach oraz ustawianie alertów
-* Monitorowanie wszystkich ścieżek (w tym nadmiarowe ścieżki) w sieci
-* Rozwiązywanie problemów przejściowych i w momencie problemów z siecią, które są trudne do replikacji
-* Ustalanie konkretnych segmentów w sieci, który jest odpowiedzialny za pogorszenie wydajności
-* Monitorowanie kondycji sieci bez potrzeby używania protokołu SNMP
+* Monitorowanie utraty i opóźnień w różnych podsieciach i ustawianie alertów
+* Monitorowanie wszystkich ścieżek (w tym ścieżek nadmiarowych) w sieci
+* Rozwiązywanie problemów z siecią przejściową i punktu w czasie, które są trudne do powtórzenia
+* Określ konkretny segment w sieci, który jest odpowiedzialny za spadek wydajności
+* Monitorowanie kondycji sieci bez konieczności stosowania
 
-![Mapy topologii NPM](./media/network-monitoring-overview/npm-topology-map.png) 
+![Mapa topologii NPM](./media/network-monitoring-overview/npm-topology-map.png) 
 
-Aby uzyskać więcej informacji Wyświetl następujące artykuły:
+Aby uzyskać więcej informacji, zobacz następujące artykuły:
 
-* [Konfigurowanie rozwiązania monitora wydajności sieci w dziennikach w usłudze Azure Monitor](../azure-monitor/insights/network-performance-monitor.md) 
-* [Przypadki użycia](https://blogs.technet.microsoft.com/msoms/2016/08/30/monitor-on-premises-cloud-iaas-and-hybrid-networks-using-oms-network-performance-monitor/)
+* [Konfigurowanie rozwiązania Monitora wydajności sieci w dziennikach usługi Azure Monitor](../azure-monitor/insights/network-performance-monitor.md) 
+* [Przypadki zastosowań](https://blogs.technet.microsoft.com/msoms/2016/08/30/monitor-on-premises-cloud-iaas-and-hybrid-networks-using-oms-network-performance-monitor/)
 * Aktualizacje produktów:
-  * [Lutego 2017 r.](https://blogs.technet.microsoft.com/msoms/2017/02/27/oms-network-performance-monitor-is-now-generally-available/)
-  * [Sierpnia 2017 r.](https://blogs.technet.microsoft.com/msoms/2017/08/14/improvements-to-oms-network-performance-monitor/)
+  * [Luty 2017](https://blogs.technet.microsoft.com/msoms/2017/02/27/oms-network-performance-monitor-is-now-generally-available/)
+  * [Sierpień 2017](https://blogs.technet.microsoft.com/msoms/2017/08/14/improvements-to-oms-network-performance-monitor/)
 
 ## <a name="expressroute-monitor"></a>ExpressRoute Monitor
 
-NPM dla usługi ExpressRoute oferuje kompleksowe usługi ExpressRoute monitorowania platformy Azure — prywatna komunikacja równorzędna i połączenia komunikacji równorzędnej firmy Microsoft. Możesz monitorować łączność E2E i wydajności między oddziałami i Azure za pośrednictwem usługi ExpressRoute. Do najważniejszych możliwości należą:
+Serwer NPM dla usługi ExpressRoute oferuje kompleksowe monitorowanie usługi ExpressRoute dla prywatnej komunikacji równorzędnej platformy Azure i połączeń równorzędnych firmy Microsoft. Możesz monitorować łączność i wydajność usługi E2E między oddziałami firmy a platformą Azure za pomocą usługi ExpressRoute. Kluczowe możliwości to:
 
 * Automatyczne wykrywanie obwodów ER skojarzonych z subskrypcją
-* Wykrywanie topologii sieci ze środowiska lokalnego do aplikacji w chmurze
+* Wykrywanie topologii sieci z lokalnych aplikacji do aplikacji w chmurze
 * Planowanie pojemności, analiza wykorzystania przepustowości
-* Monitorowanie i alerty w ścieżkach podstawowych i pomocniczych
-* Monitorowanie łączności na platformie Azure usług takich jak Office 365, Dynamics 365 za pośrednictwem usługi ExpressRoute
-* Wykrywanie obniżenia łączności z sieciami wirtualnymi
+* Monitorowanie i ostrzeganie zarówno na ścieżkach podstawowych, jak i pomocniczych
+* Monitorowanie łączności z usługami platformy Azure, takimi jak Office 365, Dynamics 365, ... nad programem ExpressRoute
+* Wykrywanie degradacji łączności z sieciami wirtualnymi
 
-![Ruch przedstawiający mapę geograficzną między regionami](./media/network-monitoring-overview/expressroute-topology-map.png) 
+![Mapa geograficzna pokazująca ruch w różnych regionach](./media/network-monitoring-overview/expressroute-topology-map.png) 
 
 Aby uzyskać więcej informacji zobacz następujące artykuły:
 
 * [Konfigurowanie monitora wydajności sieci dla usługi ExpressRoute](../expressroute/how-to-npm.md)
-* [Wpis w blogu](https://aka.ms/NPMExRmonitorGA)
+* [Blogu](https://aka.ms/NPMExRmonitorGA)
 
 ## <a name="service-connectivity-monitor"></a>Monitorowanie łączności usług
 
-Za pomocą łączność z usługą monitorowania, można przetestować dostępność aplikacji i wykrywać wąskie gardła wydajności w środowisku lokalnym, sieci i centrów danych w chmurze/prywatny.
+Dzięki monitorowaniu łączności usług można teraz testować osiągalność aplikacji i wykrywać wąskie gardła wydajności w lokalnych, sieciach operatorskich oraz chmurowych/prywatnych centrach danych.
 
-* Monitorować łączność sieciową end-to-end do aplikacji
-* Skorelowane dostarczanie aplikacji przy użyciu wydajność sieci, wykrywanie dokładną lokalizację na obniżenie wydajności wzdłuż ścieżki między użytkownikiem i aplikacji
-* Testowanie osiągalności aplikacji z wielu lokalizacji użytkownika na całym świecie
-* Określić czas oczekiwania i pakietów utrata połączenia sieciowego dla Twojego biznesowych i aplikacji SaaS
-* Określenia punktów aktywnych w sieci, który może powodować niską wydajność aplikacji
-* Monitoruj dostępność aplikacji usługi Office 365, przy użyciu wbudowanych testów dla Microsoft Office 365, Dynamics 365, Skype dla firm i innych usług firmy Microsoft
+* Monitorowanie kompleksowej łączności sieciowej z aplikacjami
+* Skorelowanie dostarczania aplikacji z wydajnością sieci, wykrywanie dokładnej lokalizacji degradacji wzdłuż ścieżki między użytkownikiem a aplikacją
+* Testowanie osiągów aplikacji z wielu lokalizacji użytkowników na całym świecie
+* Określanie opóźnień sieci i utraty pakietów dla swojej linii biznesowej i aplikacji SaaS
+* Określanie punktów zapalnych w sieci, które mogą powodować niską wydajność aplikacji
+* Monitorowanie osiągów aplikacji usługi Office 365 przy użyciu wbudowanych testów dla usług Microsoft Office 365, Dynamics 365, Skype dla firm i innych usług firmy Microsoft
 
 Aby uzyskać więcej informacji zobacz następujące artykuły:
 
-* [Konfigurowanie rozwiązania Network Performance Monitor do monitorowania punktów końcowych usługi](../azure-monitor/insights/network-performance-monitor-service-connectivity.md#configuration)
-* [Wpis w blogu](https://aka.ms/svcendptmonitor)
+* [Konfigurowanie Monitora wydajności sieci do monitorowania punktów końcowych usługi](../azure-monitor/insights/network-performance-monitor-service-connectivity.md#configuration)
+* [Blogu](https://aka.ms/svcendptmonitor)
 
 ## <a name="traffic-analytics"></a>Analiza ruchu
-Analiza ruchu jest oparta na chmurze rozwiązania, który zapewnia wgląd w aktywność użytkownika i aplikacji w sieciach w chmurze. Dzienniki przepływów sieciowych grup zabezpieczeń, są analizowane udostępniają szczegółowe dane:
+Usługa Traffic Analytics to rozwiązanie oparte na chmurze, które zapewnia wgląd w aktywność użytkowników i aplikacji w sieciach w chmurze. Dzienniki przepływu nsg są analizowane w celu zapewnienia wglądu w:
 
-* Ruch odbywa się za pośrednictwem sieci między platformą Azure i Internet, regionach chmury publicznej, sieci wirtualne i podsieci
-* Aplikacje i protokołów w sieci bez potrzeby ataki penetratorów lub urządzenia modułu zbierającego dedykowanych przepływu
-* Najważniejsze nadajniki aplikacje intensywnych konwersacji maszyny Wirtualnej w chmurze, ruchu hotspotami
-* Źródeł i miejsc docelowych ruchu między sieciami wirtualnymi, sieciami relacje między usług biznesowych i aplikacji
-* Otwórz zabezpieczenia — złośliwy ruch, porty do Internetu, aplikacji lub maszyny wirtualne, próby uzyskania dostępu do Internetu...
-* Wykorzystanie pojemności — pomaga wyeliminować problemy z konieczności nadmiernej aprowizacji lub zapobiec niedostatecznemu wykorzystaniu przez monitorowanie trendów wykorzystania bram sieci VPN i innych usług
+* Ruch przepływa przez sieci między platformą Azure a Internetem, regionami chmury publicznej, sieciami wirtualnymi i podsieciami
+* Aplikacje i protokoły w sieci, bez konieczności stosowania snifferów lub dedykowanych urządzeń modułu zbierającego przepływ
+* Top talkers, chatty aplikacji, rozmowy VM w chmurze, hotspoty ruchu
+* Źródła i miejsca docelowe ruchu w sieciach wirtualnych, wzajemnych relacjach między krytycznymi usługami biznesowymi a aplikacjami
+* Bezpieczeństwo — złośliwy ruch, porty otwarte dla Internetu, aplikacje lub maszyny wirtualne próbujące uzyskać dostęp do Internetu...
+* Wykorzystanie pojemności — pomaga wyeliminować problemy z nadmierną aprowizacją lub niepełną licencją, monitorując trendy wykorzystania bram SIECI VPN i innych usług
 
-Analiza ruchu wyposaża z możliwością wykonywania akcji informacji o inspekcji aktywności w sieci organizacji, bezpiecznych aplikacji i danych, pomaga zoptymalizować wydajność obciążenia i pozostają zgodne.
+Usługa Traffic Analytics zapewnia użyteczne informacje, które pomagają kontrolować aktywność sieciową organizacji, zabezpieczać aplikacje i dane, optymalizować wydajność obciążenia i zachować zgodność.
 
-![Ruch przedstawiający mapę geograficzną między regionami](../network-watcher/media/traffic-analytics/geo-map-view-showcasing-traffic-distribution-to-countries-and-continents.png) 
+![Mapa geograficzna pokazująca ruch w różnych regionach](../network-watcher/media/traffic-analytics/geo-map-view-showcasing-traffic-distribution-to-countries-and-continents.png) 
 
-Linki pokrewne:
-* [Wpis w blogu](https://aka.ms/trafficanalytics), [dokumentacji](https://aka.ms/trafficanalyticsdocs), [— często zadawane pytania](https://docs.microsoft.com/azure/network-watcher/traffic-analytics-faq)
+Powiązane linki:
+* [Wpis w blogu](https://aka.ms/trafficanalytics), [Dokumentacja](https://aka.ms/trafficanalyticsdocs), [Często zadawane pytania](https://docs.microsoft.com/azure/network-watcher/traffic-analytics-faq)
 
 ## <a name="dns-analytics"></a>Analiza DNS
-Wbudowane administratorów DNS, to rozwiązanie zbiera, analizuje i koreluje dzienniki DNS zapewnienie bezpieczeństwa, operacji i informacje związane z wydajnością.  Niektóre funkcje są:
+Stworzone z myślą o administratorach systemu DNS, to rozwiązanie zbiera, analizuje i koreluje dzienniki DNS w celu zapewnienia zabezpieczeń, operacji i szczegółowych informacji związanych z wydajnością.  Niektóre z możliwości to:
 
-* Identyfikacja klientów próbujących rozpoznać złośliwe domeny
-* Identyfikowanie starych rekordów
-* Wgląd w domenie często poszukiwanych nazw i próg klienci DNS
-* Wgląd w obciążenie żądaniami na serwerach DNS
-* Monitorowanie niepowodzeń rejestracji dynamicznych DNS
+* Identyfikacja klientów, którzy próbują rozpoznać złośliwe domeny
+* Identyfikacja starych rekordów zasobów
+* Wgląd w często poszukiwane nazwy domen i rozmownych klientów DNS
+* Wgląd w obciążenie żądania na serwerach DNS
+* Monitorowanie dynamicznych niepowodzeń rejestracji DNS
 
-![Pulpit nawigacyjny analiza DNS](./media/network-monitoring-overview/dns-analytics-overview.png) 
+![Pulpit nawigacyjny analizy DNS](./media/network-monitoring-overview/dns-analytics-overview.png) 
 
-Linki pokrewne:
+Powiązane linki:
 * [wpis w blogu](https://blogs.technet.microsoft.com/msoms/2017/04/19/introducing-oms-dns-analytics/), [dokumentacja](https://docs.microsoft.com/azure/log-analytics/log-analytics-dns)
 
 ## <a name="miscellaneous"></a>Różne
 
-* [Nowy cennik](https://docs.microsoft.com/azure/log-analytics/log-analytics-network-performance-monitor-pricing-faq)
+* [Nowe ceny](https://docs.microsoft.com/azure/log-analytics/log-analytics-network-performance-monitor-pricing-faq)

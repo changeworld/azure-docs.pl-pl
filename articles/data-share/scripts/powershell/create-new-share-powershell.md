@@ -1,5 +1,5 @@
 ---
-title: 'Skrypt programu PowerShell: Tworzenie nowego udziału danych platformy Azure | Microsoft Docs'
+title: 'Skrypt programu PowerShell: tworzenie nowego udziału danych platformy Azure | Dokumenty firmy Microsoft'
 description: Ten skrypt programu PowerShell tworzy nowy udział danych w ramach istniejącego konta udziału danych.
 services: data-share
 author: joannapea
@@ -10,13 +10,13 @@ ms.topic: article
 ms.date: 07/07/2019
 ms.author: joanpo
 ms.openlocfilehash: 54d5dc35cf230b62cbe5f8c3cb4a1dc81eccf1e3
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "70307259"
 ---
-# <a name="use-powershell-to-create-a-data-share-in-azure"></a>Tworzenie udziału danych na platformie Azure przy użyciu programu PowerShell
+# <a name="use-powershell-to-create-a-data-share-in-azure"></a>Tworzenie udziału danych na platformie Azure za pomocą programu PowerShell
 
 Ten skrypt programu PowerShell tworzy nowy udział danych w ramach istniejącego konta udziału danych.
 
@@ -41,11 +41,11 @@ W tym skrypcie użyto następujących poleceń:
 
 | Polecenie | Uwagi |
 |---|---|
-| [New-AzDataShare](/powershell/module/az.datashare/new-azdatashare?view=azps-2.6.0) | Tworzy udział danych. |
+| [Nowy-AzDataShare](/powershell/module/az.datashare/new-azdatashare?view=azps-2.6.0) | Tworzy udział danych. |
 |||
 
 ## <a name="next-steps"></a>Następne kroki
 
 Aby uzyskać więcej informacji na temat programu Azure PowerShell, zobacz [dokumentację programu Azure PowerShell](https://docs.microsoft.com/powershell/).
 
-Dodatkowe przykłady skryptów programu PowerShell dotyczące udziałów danych platformy Azure można znaleźć w [przykładach programu PowerShell w udziale danych platformy Azure](../../samples-powershell.md).
+Dodatkowe przykłady skryptów programu PowerShell udostępniania danych platformy Azure można znaleźć w [przykładach programu PowerShell udostępniania danych platformy Azure.](../../samples-powershell.md)

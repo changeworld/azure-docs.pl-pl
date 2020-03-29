@@ -1,6 +1,6 @@
 ---
-title: 'Program Azure AD Connect: Deklaratywne, inicjowanie obsługi administracyjnej wyrażeń | Dokumentacja firmy Microsoft'
-description: W tym artykule wyjaśniono deklaratywne wyrażenia inicjowania obsługi administracyjnej.
+title: 'Usługa Azure AD Connect: wyrażenia inicjowania obsługi administracyjnej deklaratywne | Dokumenty firmy Microsoft'
+description: W tym artykule wyjaśniono wyrażenia inicjujące inicjowanie obsługi administracyjnej.
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -17,87 +17,87 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: cdc7c9dba49bf37db1f039d43b0450c65884c74b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60245501"
 ---
-# <a name="azure-ad-connect-sync-understanding-declarative-provisioning-expressions"></a>Synchronizacja programu Azure AD Connect: Opis wyrażeń związanych z aprowizacją deklaratywną
-Synchronizacja programu Azure AD Connect opiera się na aprowizacja deklaratywna po raz pierwszy wprowadzone w programie Forefront Identity Manager 2010. Dzięki temu można zaimplementować logikę biznesową pełną tożsamość integracji bez konieczności pisania kodu skompilowanego.
+# <a name="azure-ad-connect-sync-understanding-declarative-provisioning-expressions"></a>Synchronizacja usługi Azure AD Connect: opis wyrażeń deklaratywnego inicjowania obsługi administracyjnej
+Synchronizacja usługi Azure AD Connect opiera się na deklaratywnym inicjowaniu obsługi administracyjnej wprowadzonym po raz pierwszy w programie Forefront Identity Manager 2010. Umożliwia zaimplementowanie logiki biznesowej integracji tożsamości bez konieczności pisania skompilowanego kodu.
 
-Integralną część aprowizacja deklaratywna to język wyrażeń w przepływach atrybutu. Język używany jest podzbiorem programu Microsoft® Visual Basic® Applications (VBA). Ten język jest używany w programie Microsoft Office, a użytkownicy mający doświadczenie VBScript również rozpozna go. Deklaratywne język wyrażeń aprowizacji wyłącznie przy użyciu funkcji i nie jest język structured. Brak metody i instrukcji. Funkcje zamiast tego są zagnieżdżone w celu przepływu programu express.
+Istotną częścią deklaratywnej inicjowania obsługi administracyjnej jest język wyrażenia używany w przepływach atrybutów. Używany język jest podzbiorem programu Microsoft® Visual Basic® for Applications (VBA). Ten język jest używany w pakiecie Microsoft Office, a użytkownicy z doświadczeniem w języku VBScript również go rozpoznają. Deklaratywny język wyrażenia inicjowania obsługi administracyjnej jest tylko przy użyciu funkcji i nie jest językiem strukturalnym. Nie ma żadnych metod ani instrukcji. Zamiast tego funkcje są zagnieżdżone do wyrażania przepływu programu.
 
-Aby uzyskać więcej informacji, zobacz [Witamy w języku Visual Basic for Skorowidz języka aplikacji pakietu Office 2013](https://msdn.microsoft.com/library/gg264383.aspx).
+Aby uzyskać więcej informacji, zobacz [Witamy w języku visual basic for applications— informacje dotyczące języka pakietu Office 2013](https://msdn.microsoft.com/library/gg264383.aspx).
 
-Atrybuty są silnie typizowane. Funkcja akceptuje tylko atrybuty poprawnego typu. Jest również wielkość liter. Zarówno nazwy funkcji, jak i nazwy atrybutu jest posiadanie odpowiedniej wielkości lub zostanie zgłoszony błąd.
+Atrybuty są silnie wpisane. Funkcja akceptuje tylko atrybuty poprawnego typu. Jest również rozróżniana wielkość liter. Zarówno nazwy funkcji, jak i nazwy atrybutów muszą mieć prawidłową wielkość liter lub zostanie zgłoszony błąd.
 
-## <a name="language-definitions-and-identifiers"></a>Język definicji i identyfikatory
-* Funkcje mają nazwę, oraz argumenty w nawiasach: FunctionName (argumentu 1, argument N).
-* Atrybuty są identyfikowane przez nawiasy kwadratowe: [attributeName]
-* Parametry są identyfikowane za pomocą procentu: ParameterName %
-* Stałe typu String są ujęte w cudzysłowy: Na przykład "Contoso" (Uwaga: należy użyć cudzysłowów prostych "" i nie inteligentne cudzysłowy "")
-* Wartości numeryczne są wyrażone bez znaków cudzysłowu i powinny być dziesiętną. Wartości szesnastkowe mają prefiks & H. Na przykład 98052 & HFF
-* Wartości logiczne są wyrażone za pomocą stałych: True, False.
-* Stałe wbudowanych i wszystkie literały są wyrażone za pomocą tylko nazwy: NULL, CRLF, IgnoreThisFlow
+## <a name="language-definitions-and-identifiers"></a>Definicje języków i identyfikatory
+* Funkcje mają nazwę, po której następują argumenty w nawiasach: FunctionName(argument 1, argument N).
+* Atrybuty są identyfikowane za pomocą nawiasów kwadratowych: [attributeName]
+* Parametry są identyfikowane przez znaki procentowe: %ParameterName%
+* Stałe ciągów są otoczone cudzysłowami: Na przykład "Contoso" (Uwaga: należy użyć cudzysłowów prostych "", a nie cudzysłowów inteligentnych "")
+* Wartości liczbowe są wyrażone bez cudzysłowów i oczekuje się, że będą dziesiętne. Wartości szesnastkowe są poprzedzone &H. Na przykład 98052, &HFF
+* Wartości logiczne są wyrażane za pomocą stałych: True, False.
+* Wbudowane stałe i literały są wyrażane tylko z ich nazwą: NULL, CRLF, IgnoreThisFlow
 
 ### <a name="functions"></a>Funkcje
-Aprowizacja deklaratywna używa wiele funkcji, aby umożliwić możliwość przekształcania wartości atrybutów. Te funkcje mogą być zagnieżdżane, wynikiem funkcji jest przekazywana do innej funkcji.
+Deklaratywny inicjowania obsługi administracyjnej używa wielu funkcji, aby włączyć możliwość przekształcania wartości atrybutów. Te funkcje mogą być zagnieżdżone, więc wynik z jednej funkcji jest przekazywany do innej funkcji.
 
 `Function1(Function2(Function3()))`
 
-Pełną listę funkcji można znaleźć w [funkcji odwołanie](reference-connect-sync-functions-reference.md).
+Pełną listę funkcji można znaleźć w [odwołaniu do funkcji](reference-connect-sync-functions-reference.md).
 
 ### <a name="parameters"></a>Parametry
-Parametr jest zdefiniowany przez łącznik lub przez administratora przy użyciu programu PowerShell. Parametry zwykle zawierają wartości, które różnią się od systemu, na przykład nazwa domeny użytkownika znajduje się w. Te parametry mogą być używane w ramach przepływów atrybutów.
+Parametr jest definiowany przez łącznik lub przez administratora korzystającego z programu PowerShell. Parametry zwykle zawierają wartości, które różnią się od systemu do systemu, na przykład nazwa domeny, w których znajduje się użytkownik. Parametry te mogą być używane w przepływach atrybutów.
 
-Łącznik usługi Active Directory dostępne następujące parametry dla reguły synchronizacji ruchu przychodzącego:
+Łącznik usługi Active Directory dostarczył następujące parametry reguł synchronizacji przychodzącej:
 
 | Nazwa parametru | Komentarz |
 | --- | --- |
-| Domain.Netbios |Format NetBIOS domeny obecnie importowany, na przykład FABRIKAMSALES |
-| Domain.FQDN |Format nazwy FQDN domeny, obecnie importowany, na przykład sales.fabrikam.com |
-| Domain.LDAP |Format LDAP obecnie importowany, na przykład kontrolera domeny = sprzedaż, DC = fabrikam, DC = com |
-| Forest.Netbios |Format nazwy lasu, obecnie importowany, na przykład FABRIKAMCORP NetBIOS |
-| Forest.FQDN |Format nazwy FQDN lasu nazwę aktualnie importowany, na przykład fabrikam.com |
-| Forest.LDAP |LDAP format nazwy lasu, obecnie importowany, na przykład DC = fabrikam, DC = com |
+| Domena.Netbios |Format Netbios domeny aktualnie importowanej, na przykład FABRIKAMSALES |
+| Nazwa domeny.FQDN |Format FQDN aktualnie importowanej domeny, na przykład sales.fabrikam.com |
+| Domena.LDAP |Format LDAP aktualnie importowanej domeny, na przykład DC=sales,DC=fabrikam,DC=com |
+| Forest.Netbios (Forest.Netbios) |Format Netbios aktualnie importowanej nazwy lasu, na przykład FABRIKAMCORP |
+| Forest.FQDN |Format nazwy FQDN aktualnie importowanej nazwy lasu, na przykład fabrikam.com |
+| Forest.LDAP |Format LDAP aktualnie importowanej nazwy lasu, na przykład DC=fabrikam,DC=com |
 
-System zawiera następujący parametr, który jest używany, aby uzyskać identyfikator łącznika, aktualnie uruchomione:  
+System zawiera następujący parametr, który jest używany do uzyskania identyfikatora łącznika aktualnie uruchomionego:  
 `Connector.ID`
 
-Oto przykład, który wypełnia domena atrybut metaverse z nazwą netbios domeny, w którym znajduje się użytkownik:  
+Oto przykład, który wypełnia domenę atrybutów metaverse nazwą netbios domeny, w której znajduje się użytkownik:  
 `domain` <- `%Domain.Netbios%`
 
 ### <a name="operators"></a>Operatory
-Można używać następujących operatorów:
+Można użyć następujących operatorów:
 
-* **Porównanie**: <, < = <>, =, >, > =
-* **Matematyce**: +, -, \*, -
-* **Ciąg**: & (konkatenacji)
-* **Logiczne**: & & (i), || (lub)
-* **Kolejność obliczania**:)
+* **Porównanie**: <, <=, <>, =, >, >=
+* **Matematyka**: +, \*-, , -
+* **Ciąg**: & (konkapacji)
+* **Logiczne**: && (i), || (lub)
+* **Kolejność oceny**: ( )
 
-Operatory są obliczane od lewej do prawej i mają ten sam priorytet oceny. Oznacza to, że \* (mnożnik) nie jest oceniany przed - (odejmowanie). 2\*(5 + 3) nie jest taka sama jak 2\*5 + 3. (Nawiasów) są używane do Zmień kolejność obliczania po lewej strony, aby kolejność obliczania prawo nie jest właściwe.
+Operatory są oceniane od lewej do prawej i mają ten sam priorytet oceny. Oznacza to, \* że (mnożnik) nie jest oceniany przed - (odejmowanie). 2\*(5+3) to nie to\*samo co 2 5+3. Nawiasy ( ) są używane do zmiany kolejności oceny, gdy kolejność oceny od lewej do prawej nie jest odpowiednia.
 
 ## <a name="multi-valued-attributes"></a>Atrybuty wielowartościowe
-Funkcje mogą działać na zarówno jedno- i wielowartościowych atrybutach. W przypadku atrybutów wielowartościowych funkcja działa przez każda wartość i stosuje taką samą funkcję do każdej wartości.
+Funkcje mogą działać zarówno na atrybuty o pojedynczej i wielu wartościach. W przypadku atrybutów wielowartościowych funkcja działa nad każdą wartością i stosuje tę samą funkcję do każdej wartości.
 
-Na przykład:  
-`Trim([proxyAddresses])` Czy Trim każdej wartości w atrybucie proxyAddress.  
-`Word([proxyAddresses],1,"@") & "@contoso.com"` Dla każdej wartości z @-sign, Zastąp domeny za pomocą @contoso.com.  
-`IIF(InStr([proxyAddresses],"SIP:")=1,NULL,[proxyAddresses])` Wyszukaj adres SIP i usunąć go z wartości.
+Przykład:  
+`Trim([proxyAddresses])`Wykonaj przycinanie każdej wartości w proxyAddress atrybutu.  
+`Word([proxyAddresses],1,"@") & "@contoso.com"`Dla każdej wartości @-signz domeną @contoso.comzastąp domenę .  
+`IIF(InStr([proxyAddresses],"SIP:")=1,NULL,[proxyAddresses])`Poszukaj adresu SIP i usuń go z wartości.
 
-## <a name="next-steps"></a>Kolejne kroki
-* Dowiedz się więcej o modelu konfiguracji w [Aprowizacja Deklaratywna opis](concept-azure-ad-connect-sync-declarative-provisioning.md).
-* Zobacz, jak deklaratywne Inicjowanie obsługi administracyjnej jest używane out-of-box w [opis konfiguracji domyślnej](concept-azure-ad-connect-sync-default-configuration.md).
-* Zobacz, jak zrobić praktyczne przy użyciu aprowizacja deklaratywna w [sposób wprowadzania zmian w domyślnej konfiguracji](how-to-connect-sync-change-the-configuration.md).
+## <a name="next-steps"></a>Następne kroki
+* Dowiedz się więcej o modelu konfiguracji w [opisie aprowizacji deklaratywnej](concept-azure-ad-connect-sync-declarative-provisioning.md).
+* Zobacz, jak deklaratywny inicjowania obsługi administracyjnej jest używany po wyjęciu z pudełka [w opisie konfiguracji domyślnej](concept-azure-ad-connect-sync-default-configuration.md).
+* Zobacz, jak wprowadzić praktyczną zmianę za pomocą deklaratywnych inicjowania obsługi administracyjnej w [jak wprowadzić zmiany w konfiguracji domyślnej](how-to-connect-sync-change-the-configuration.md).
 
-**Tematy poglądowe**
+**Tematy omówienie**
 
-* [Synchronizacja w programie Azure AD Connect: Zrozumienie i dostosowywanie synchronizacji](how-to-connect-sync-whatis.md)
+* [Synchronizacja usługi Azure AD Connect: zrozumienie i dostosowywanie synchronizacji](how-to-connect-sync-whatis.md)
 * [Integrowanie tożsamości lokalnych z usługą Azure Active Directory](whatis-hybrid-identity.md)
 
-**Tematy odwołań**
+**Tematy informacyjne**
 
-* [Synchronizacja w programie Azure AD Connect: Informacje ogólne o funkcjach](reference-connect-sync-functions-reference.md)
+* [Synchronizacja usługi Azure AD Connect: odwołanie do funkcji](reference-connect-sync-functions-reference.md)
 

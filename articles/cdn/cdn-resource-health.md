@@ -1,6 +1,6 @@
 ---
-title: Monitorowanie kondycji zasobów usługi Azure CDN | Dokumentacja firmy Microsoft
-description: Informacje o sposobie monitorowania kondycji zasobów usługi Azure CDN przy użyciu usługi Azure Resource Health.
+title: Monitorowanie kondycji zasobów usługi Azure cdn| Dokumenty firmy Microsoft
+description: Dowiedz się, jak monitorować kondycję zasobów usługi Azure CDN przy użyciu usługi Azure Resource Health.
 services: cdn
 documentationcenter: .net
 author: zhangmanling
@@ -15,53 +15,53 @@ ms.workload: integration
 ms.date: 01/23/2017
 ms.author: mazha
 ms.openlocfilehash: 6710f5e5b873f751ad21068acdc15d38574f8378
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67593436"
 ---
-# <a name="monitor-the-health-of-azure-cdn-resources"></a>Monitorowanie kondycji zasobów usługi Azure CDN
+# <a name="monitor-the-health-of-azure-cdn-resources"></a>Monitorowanie kondycji zasobów usługi Azure cdn
   
-Kondycja zasobów CDN Azure jest podzbiorem [usługa Azure resource health](../resource-health/resource-health-overview.md).  Usługa Azure resource health służy do monitorowania kondycji zasobów CDN i odbierania wiarygodne wskazówki dotyczące rozwiązywania problemów.
+Kondycja zasobów usługi Azure CDN jest podzbiorem [kondycji zasobów platformy Azure.](../resource-health/resource-health-overview.md)  Kondycja zasobów platformy Azure służy do monitorowania kondycji zasobów usługi CDN i otrzymywania wskazówek dotyczących rozwiązywania problemów.
 
 >[!IMPORTANT] 
->Kondycja zasobów w usłudze Azure CDN tylko obecnie kont kondycji globalne dostarczanie CDN i funkcje interfejsu API.  Kondycja zasobów w usłudze Azure CDN nie weryfikuje poszczególnych punktów końcowych usługi CDN.
+>Kondycja zasobów usługi Azure CDN tylko obecnie uwzględnia kondycję globalnej sieci dostarczania sieci CDN i możliwości interfejsu API.  Kondycja zasobów usługi Azure CDN nie weryfikuje poszczególnych punktów końcowych usługi CDN.
 >
->Sygnalizuje, że źródło danych kondycja zasobów Azure CDN może być opóźniona do 15 minut.
+>Sygnały, które zasilają kondycję zasobów usługi Azure CDN, mogą być opóźnione o maksymalnie 15 minut.
 
-## <a name="how-to-find-azure-cdn-resource-health"></a>Jak znaleźć kondycja zasobów Azure CDN
+## <a name="how-to-find-azure-cdn-resource-health"></a>Jak znaleźć kondycję zasobów usługi Azure CDN
 
-1. W [witryny Azure portal](https://portal.azure.com), przejdź do swojego profilu CDN.
+1. W [witrynie Azure portal](https://portal.azure.com)przejdź do swojego profilu usługi CDN.
 
-2. Kliknij przycisk **ustawienia** przycisku.
+2. Kliknij przycisk **Ustawienia.**
 
     ![Przycisk Ustawienia](./media/cdn-resource-health/cdn-profile-settings.png)
 
-3. W obszarze *pomoc techniczna i rozwiązywanie problemów z*, kliknij przycisk **Resource health**.
+3. W obszarze *Obsługa + rozwiązywanie problemów*kliknij pozycję **Kondycja zasobów**.
 
-    ![Kondycja zasobów w sieci CDN](./media/cdn-resource-health/cdn-resource-health3.png)
+    ![Kondycja zasobów sieci CDN](./media/cdn-resource-health/cdn-resource-health3.png)
 
 >[!TIP] 
->Możesz również znaleźć CDN zasobów wymienionych w *Resource health* Kafelek w *Pomoc i obsługa techniczna* bloku.  Szybki dostęp do *Pomoc i obsługa techniczna* , klikając kółku **?** w prawym górnym rogu portalu.
+>Można również znaleźć zasoby sieci CDN wymienione w kafelku *Kondycja zasobów* w bloku *Pomoc + pomoc.*  Możesz szybko dostać się do *Pomocy + wsparcie,* klikając zakreślone? **?** w prawym górnym rogu portalu.
 >
 > ![Pomoc i obsługa techniczna](./media/cdn-resource-health/cdn-help-support.png)
 
-## <a name="azure-cdn-specific-messages"></a>Usługa Azure komunikaty dotyczące usługi CDN
+## <a name="azure-cdn-specific-messages"></a>Komunikaty specyficzne dla usługi Azure cdn
 
-Stany dotyczące kondycji zasobów usługi Azure CDN można znaleźć poniżej.
+Stany związane z kondycją zasobów usługi Azure CDN można znaleźć poniżej.
 
-|Message | Zalecana akcja |
+|Komunikat | Zalecana akcja |
 |---|---|
 |Co najmniej jeden punkt końcowy sieci CDN mógł zostać zatrzymany, usunięty lub nieprawidłowo skonfigurowany | Co najmniej jeden punkt końcowy sieci CDN mógł zostać zatrzymany, usunięty lub nieprawidłowo skonfigurowany.|
-|Niestety, usługa zarządzania sieci CDN jest aktualnie niedostępna | Sprawdź tutaj aktualizacje stanu; Jeśli problem będzie nadal występować po oczekiwanym czasie rozwiązania problemu, skontaktuj się z pomocą techniczną.|
-|Niestety, na punkty końcowe sieci CDN mogą mieć wpływ trwające problemy z niektórymi z naszych dostawców sieci CDN | Sprawdź tutaj aktualizacje stanu; Użyj narzędzia do rozwiązywania problemów, aby dowiedzieć się jak testować pochodzenie i punkt końcowy usługi CDN; Jeśli problem będzie nadal występować po oczekiwanym czasie rozwiązania problemu, skontaktuj się z pomocą techniczną. |
-|Niestety, w przypadku zmiany konfiguracji punktu końcowego sieci CDN występują opóźnienia propagacji | Sprawdź tutaj aktualizacje stanu; Jeśli zmiany konfiguracji nie są w pełni rozpropagowane w oczekiwanym czasie, skontaktuj się z pomocą techniczną.|
-|Niestety, wystąpiły problemy z ładowaniem portalu dodatkowego | Sprawdź tutaj aktualizacje stanu; Jeśli problem będzie nadal występować po oczekiwanym czasie rozwiązania problemu, skontaktuj się z pomocą techniczną.|
-Niestety, występują problemy z niektórymi z naszych dostawców sieci CDN | Sprawdź tutaj aktualizacje stanu; Jeśli problem będzie nadal występować po oczekiwanym czasie rozwiązania problemu, skontaktuj się z pomocą techniczną. |
+|Niestety, usługa zarządzania sieci CDN jest aktualnie niedostępna | Sprawdź tutaj aktualizacje stanu; Jeśli problem będzie się powtarzał po oczekiwanym czasie rozwiązania, skontaktuj się z pomocą techniczną.|
+|Niestety, na punkty końcowe sieci CDN mogą mieć wpływ trwające problemy z niektórymi z naszych dostawców sieci CDN | Sprawdź tutaj aktualizacje stanu; Użyj narzędzia Rozwiązywanie problemów, aby dowiedzieć się, jak przetestować pochodzenie i punkt końcowy sieci CDN; Jeśli problem będzie się powtarzał po oczekiwanym czasie rozwiązania, skontaktuj się z pomocą techniczną. |
+|Niestety, w przypadku zmiany konfiguracji punktu końcowego sieci CDN występują opóźnienia propagacji | Sprawdź tutaj aktualizacje stanu; Jeśli zmiany konfiguracji nie są w pełni propagowane w oczekiwanym czasie, skontaktuj się z pomocą techniczną.|
+|Niestety, wystąpiły problemy z ładowaniem portalu dodatkowego | Sprawdź tutaj aktualizacje stanu; Jeśli problem będzie się powtarzał po oczekiwanym czasie rozwiązania, skontaktuj się z pomocą techniczną.|
+Niestety, występują problemy z niektórymi z naszych dostawców sieci CDN | Sprawdź tutaj aktualizacje stanu; Jeśli problem będzie się powtarzał po oczekiwanym czasie rozwiązania, skontaktuj się z pomocą techniczną. |
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-- [Zawiera omówienie usługi Azure resource health](../resource-health/resource-health-overview.md)
-- [Rozwiązywanie problemów z kompresją CDN](./cdn-troubleshoot-compression.md)
-- [Rozwiązywanie problemów z błędami 404](./cdn-troubleshoot-endpoint.md)
+- [Przeczytaj omówienie kondycji zasobów platformy Azure](../resource-health/resource-health-overview.md)
+- [Rozwiązywanie problemów z kompresją cdn](./cdn-troubleshoot-compression.md)
+- [Rozwiązywanie problemów z 404 błędami](./cdn-troubleshoot-endpoint.md)

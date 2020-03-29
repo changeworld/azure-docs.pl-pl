@@ -1,6 +1,6 @@
 ---
-title: Informacje o delegowaniu roli administratora — usługi Azure Active Directory | Dokumentacja firmy Microsoft
-description: Modele delegowanie, przykłady i roli zabezpieczeń w usłudze Azure Active Directory
+title: Opis delegowania ról administratora — usługa Azure Active Directory | Dokumenty firmy Microsoft
+description: Modele delegowania, przykłady i zabezpieczenia ról w usłudze Azure Active Directory
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -16,91 +16,91 @@ ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6fa3c6bf39dbef601fe64e125999f519f725f2e2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67083771"
 ---
-# <a name="delegate-administration-in-azure-active-directory"></a>Delegowanie administracji w usłudze Azure Active Directory
+# <a name="delegate-administration-in-azure-active-directory"></a>Delegowanie administrowania w usłudze Azure Active Directory
 
-Wzrost organizacji pochodzi złożoności. Jednej wspólnej odpowiedzi jest zmniejszyć obciążenie zarządzanie dostępem przy użyciu ról administratora w usłudze Azure Active Directory (AD). Najniższe możliwe uprawnienia można przypisać użytkownikom dostęp do swoich aplikacji i wykonywać swoje zadania. Nawet wtedy, gdy rola administratora globalnego nie przypisuj do każdego właściciela aplikacji, umieszczając aplikacji stanowiskach kierowniczych w istniejących administratorów globalnych. Istnieje wiele funkcji przemawiających za przeniesienie organizacji kierunku bardziej zdecentralizowane administracji. Ten artykuł może pomóc Ci zaplanować działania związane z delegowania w Twojej organizacji.
+Wraz ze wzrostem organizacyjnym przychodzi złożoność. Jedną z typowych odpowiedzi jest zmniejszenie niektórych obciążeń zarządzania dostępem za pomocą ról administratora usługi Azure Active Directory (AD). Można przypisać użytkownikom najmniejsze możliwe uprawnienia do uzyskiwania dostępu do swoich aplikacji i wykonywania zadań. Nawet jeśli rola administratora globalnego nie zostanie przypisana do każdego właściciela aplikacji, obowiązki związane z zarządzaniem aplikacjami są umieszczane na istniejących administratorach globalnych. Istnieje wiele powodów, dla organizacji przenieść w kierunku bardziej zdecentralizowanej administracji. Ten artykuł może pomóc w planowaniu delegowania w organizacji.
 
 <!--What about reporting? Who has which role and how do I audit?-->
 
-## <a name="centralized-versus-delegated-permissions"></a>Scentralizowane i delegowane uprawnienia
+## <a name="centralized-versus-delegated-permissions"></a>Uprawnienia scentralizowane i delegowane
 
-Wraz z rozwojem organizacji może być trudne do śledzenia użytkowników, którzy mają konkretny administrator ról. Jeśli pracownik ma uprawnienia administratora, które nie powinny one, Twoja organizacja może być bardziej narażony na naruszenia zabezpieczeń. Ogólnie rzecz biorąc, ile Administratorzy obsługujesz i ich uprawnienia szczegółowość zależy od rozmiaru i stopień złożoności wdrożenia.
+Wraz z rozwojem organizacji może być trudno śledzić, którzy użytkownicy mają określone role administratora. Jeśli pracownik ma prawa administratora, których nie powinien, twoja organizacja może być bardziej podatna na naruszenia zabezpieczeń. Ogólnie rzecz biorąc, liczba obsługiwanych administratorów i szczegółowe ich uprawnienia zależą od rozmiaru i złożoności wdrożenia.
 
-* W przypadku wdrożeń w małych i weryfikacji koncepcji Administratorzy jednego lub kilku dokładać; nie ma żadnych delegowania. W takim przypadku należy utworzyć każdy administrator z rolą administratora globalnego.
-* W przypadku większych wdrożeń za pomocą więcej maszyn, aplikacji i komputerów stacjonarnych więcej delegowania jest wymagana. Kilku administratorów może być bardziej szczegółowe obowiązki funkcjonalności (role). Na przykład niektóre mogą być uprzywilejowanych administratorów tożsamości, a inne mogą działać administratorów aplikacji. Ponadto administrator może zarządzać tylko określone grupy obiektów, takich jak urządzenia.
-* Nawet większych wdrożeń może wymagać, jeszcze bardziej szczegółowych uprawnień, oraz prawdopodobnie administratorom niekonwencjonalne lub hybrydowego ról.
+* W przypadku małych lub weryfikacji koncepcji jeden lub kilku administratorów robi wszystko; nie ma delegacji. W takim przypadku należy utworzyć każdego administratora z rolą administratora globalnego.
+* W większych wdrożeniach z większą liczą maszyn, aplikacji i komputerów stacjonarnych, więcej delegowania jest potrzebne. Kilku administratorów może mieć bardziej szczegółowe obowiązki funkcjonalne (role). Na przykład niektóre mogą być administratorami tożsamości uprzywilejowanych, a inne administratorami aplikacji. Ponadto administrator może zarządzać tylko niektórymi grupami obiektów, takimi jak urządzenia.
+* Nawet większe wdrożenia mogą wymagać jeszcze bardziej szczegółowych uprawnień, a także ewentualnie administratorów z rolami niekonwencjonalnymi lub hybrydowymi.
 
-W portalu usługi Azure AD możesz [Wyświetlanie członków dowolnej roli](directory-manage-roles-portal.md), które pomogą Ci szybko sprawdzić uprawnienia wdrożenia i delegata.
+W portalu usługi Azure AD można [wyświetlić wszystkich członków dowolnej roli,](directory-manage-roles-portal.md)co może pomóc szybko sprawdzić wdrożenia i delegować uprawnienia.
 
-Jeśli interesuje Cię Delegowanie dostępu do zasobów platformy Azure zamiast dostępem administracyjnym w usłudze Azure AD, zobacz [przypisania roli kontroli dostępu opartej na rolach](../../role-based-access-control/role-assignments-portal.md).
+Jeśli chcesz delegować dostęp do zasobów platformy Azure zamiast dostępu administracyjnego w usłudze Azure AD, zobacz [Przypisywanie roli kontroli dostępu opartej na rolach opartych na rolach kontroli dostępu opartej na rolach.](../../role-based-access-control/role-assignments-portal.md)
 
-## <a name="delegation-planning"></a>Planowanie delegowania
+## <a name="delegation-planning"></a>Planowanie delegacji
 
-Jego praca opracowanie modelu delegowania, który odpowiada Twoim potrzebom. Tworzenie modelu delegowania jest procesem iteracyjne projektowania i Sugerujemy, wykonaj następujące kroki:
+To praca nad opracowaniem modelu delegowania, który pasuje do Twoich potrzeb. Tworzenie modelu delegowania jest iteracyjnym procesem projektowania i zalecamy wykonać następujące kroki:
 
-* Definiowanie ról, których potrzebujesz
-* Delegowanie administracji w aplikacji
-* Zezwolić na rejestrowanie aplikacji
+* Definiowanie potrzebnych ról
+* Delegowanie administracji aplikacji
+* Możliwość rejestrowania wniosków
 * Delegowanie własności aplikacji
-* Opracowywanie planu zabezpieczeń
-* Zakładać kont awaryjnych
-* Zabezpieczanie usługi ról administratora
-* Wprowadzić tymczasowe uprzywilejowanych podniesienia uprawnień
+* Opracowanie planu bezpieczeństwa
+* Zakładanie kont awaryjnych
+* Zabezpiecz role administratora
+* Tymczasowe podniesienie uprzywilejowane
 
 ## <a name="define-roles"></a>Definiowanie ról
 
-Należy określić zadania usługi Active Directory, które są wykonywane przez administratorów oraz sposobu mapowania ich do ról. Możesz [wyświetlić opisy ról szczegółowe](directory-manage-roles-portal.md) w witrynie Azure portal.
+Określ zadania usługi Active Directory wykonywane przez administratorów oraz sposób ich mapowania do ról. Szczegółowe [opisy ról](directory-manage-roles-portal.md) można wyświetlić w witrynie Azure portal.
 
-Każde zadanie ma zostać obliczona dla częstotliwości, znaczenia i trudności. Te kryteria są kluczowe aspekty definicji zadania, ponieważ ich decydowania, czy mają być delegowane uprawnienia:
+Każde zadanie powinno być oceniane pod kątem częstotliwości, ważności i trudności. Kryteria te są istotnymi aspektami definicji zadań, ponieważ regulują, czy należy przekazać uprawnienie:
 
-* Zadania są regularnie, mają ograniczone ryzyko i są proste do pełną są doskonałymi kandydatami do delegowania.
-* Zadania są rzadko, ale mają duży wpływ na całą organizację i wymagają poziomów wysokie umiejętności należy rozważyć dokładnie przed przekazaniem. Zamiast tego można [tymczasowo podnieść poziom konta do roli wymagane](../active-directory-privileged-identity-management-configure.md) lub ponownym przypisaniu zadania.
+* Zadania, które wykonujesz rutynowo, mają ograniczone ryzyko i są banalne do wykonania, są doskonałymi kandydatami do delegowania.
+* Zadania, które są rzadko wykonywane, ale mają duży wpływ na całej organizacji i wymagają wysokiego poziomu umiejętności, należy rozważyć bardzo ostrożnie przed delegowaniem. Zamiast tego można [tymczasowo podnieść poziom konta do wymaganej roli](../active-directory-privileged-identity-management-configure.md) lub ponownie przypisać zadanie.
 
-## <a name="delegate-app-administration"></a>Delegowanie administracji w aplikacji
+## <a name="delegate-app-administration"></a>Delegowanie administracji aplikacji
 
-Powszechne stosowanie aplikacji w Twojej organizacji może być związana modelu delegowania. Jeśli obciążenie dla zarządzania dostępem do aplikacji umieszcza na administratora globalnego, prawdopodobnie modelu zwiększa jego obciążenie w. Jeśli przyznano osób rolę administratora globalnego dla elementów, takich jak konfigurowanie aplikacji dla przedsiębiorstw, możesz je teraz odciążyć do następujących ról mniej uprzywilejowane. To pomaga zwiększyć poziom bezpieczeństwa i zmniejsza ryzyko pomyłek niefortunne. Role administratorów aplikacji najbardziej uprzywilejowanych są:
+Rozprzestrzenianie się aplikacji w organizacji może obciążać model delegowania. Jeśli nakłada obciążenie dla zarządzania dostępem do aplikacji na administratora globalnego, jest prawdopodobne, że model zwiększa obciążenie w miarę upływu czasu. Jeśli przyznano osobom rolę administratora globalnego w takich działaniach, jak konfigurowanie aplikacji dla przedsiębiorstwa, można teraz odciążyć je do następujących ról o mniej uprzywilejowanych uprawnieniach. Pomaga to poprawić postawę bezpieczeństwa i zmniejsza ryzyko niefortunnych błędów. Najbardziej uprzywilejowane role administratora aplikacji to:
 
-* **Administrator aplikacji** roli, co daje możliwość zarządzania wszystkich aplikacji w katalogu, w tym rejestracji, ustawienia rejestracji jednokrotnej, użytkownika i przypisania grupy i licencjonowania, aplikacji ustawienia serwera Proxy i zgody. Go nie są przyznawane możliwość zarządzania dostępem warunkowym.
-* **Administrator aplikacji w chmurze** roli, która przyznaje wszystkie możliwości programu Administrator aplikacji, z wyjątkiem go nie przyznać dostęp do ustawień serwera Proxy aplikacji (ponieważ go nie ma lokalnych uprawnień).
+* Rola **Administrator aplikacji,** która umożliwia zarządzanie wszystkimi aplikacjami w katalogu, w tym rejestracjami, ustawieniami logowania jednokrotnego, przypisaniami użytkowników i grup oraz licencjonowaniem, ustawieniami serwera proxy aplikacji i zgodą. Nie daje możliwość zarządzania dostępem warunkowym.
+* Rola **Administrator aplikacji w chmurze,** która udziela wszystkich możliwości administratora aplikacji, z tą różnicą, że nie udziela dostępu do ustawień serwera proxy aplikacji (ponieważ nie ma uprawnień lokalnych).
 
 ## <a name="delegate-app-registration"></a>Delegowanie rejestracji aplikacji
 
-Domyślnie wszyscy użytkownicy mogą tworzyć rejestracje aplikacji. Aby selektywnie udzielić możliwość tworzenia rejestracji aplikacji:
+Domyślnie wszyscy użytkownicy mogą tworzyć rejestracje aplikacji. Aby wybiórczo przyznać możliwość tworzenia rejestracji aplikacji:
 
-* Ustaw **użytkownicy mogą rejestrować aplikacje** nie w **ustawień użytkownika**
-* Przypisz użytkownika do roli aplikacji dla deweloperów
+* Ustaw **użytkowników można zarejestrować aplikacje** nie w **ustawieniach użytkownika**
+* Przypisywanie użytkownika do roli dewelopera aplikacji
 
-Aby selektywnie udzielić możliwość zezwalać aplikacji na dostęp do danych:
+Aby wybiórczo udzielić zgody na zezwolenie aplikacji na dostęp do danych:
 
-* Ustaw **użytkownicy mogą wyrazić zgodę aplikacjom uzyskiwanie dostępu do danych firmy w ich imieniu** na nie w **ustawień użytkownika**
-* Przypisz użytkownika do roli aplikacji dla deweloperów
+* Ustaw **użytkowników można wyrazić zgodę na aplikacje uzyskujące dostęp do danych firmy w ich imieniu** Nie w **ustawieniach użytkownika**
+* Przypisywanie użytkownika do roli dewelopera aplikacji
 
-Gdy deweloper aplikacji powoduje utworzenie nowej rejestracji aplikacji, ich są automatycznie dodawane jako pierwszy właściciela.
+Gdy deweloper aplikacji tworzy nową rejestrację aplikacji, są one automatycznie dodawane jako pierwszy właściciel.
 
 ## <a name="delegate-app-ownership"></a>Delegowanie własności aplikacji
 
-Delegowanie dostępu nawet bardziej szczegółowej aplikacji można przypisać prawa własności do aplikacji przedsiębiorstwa poszczególnych. To uzupełnienie istniejących obsługę przypisywanie właścicieli rejestracji aplikacji. Na podstawie aplikacji dla przedsiębiorstw w bloku aplikacje w przedsiębiorstwie jest przypisany właściciel. Korzyścią jest, że właściciele mogą zarządzać tylko te aplikacje przedsiębiorstwa, które są właścicielami. Na przykład możesz przypisać właściciela aplikacji Salesforce i tego właściciela można zarządzać, dostęp do i Konfiguracja usługi Salesforce i żadne inne aplikacje. Aplikacja dla przedsiębiorstw mogą mieć wiele właścicieli, a użytkownik może być właścicielem, wiele aplikacji dla przedsiębiorstw. Dostępne są dwie role właściciela aplikacji:
+W przypadku delegowania dostępu do aplikacji o bardziej szczegółowym ziarnistym można przypisać własność poszczególnym aplikacjom korporacyjnym. Uzupełnia to istniejącą obsługę przypisywania właścicieli rejestracji aplikacji. Własność jest przypisywana na podstawie aplikacji dla przedsiębiorstw w bloku Aplikacje dla przedsiębiorstw. Korzyścią jest właściciele mogą zarządzać tylko aplikacje przedsiębiorstwa, które posiadają. Na przykład można przypisać właściciela dla aplikacji Salesforce, a ten właściciel może zarządzać dostępem i konfiguracją dla Salesforce i żadnych innych aplikacji. Aplikacja dla przedsiębiorstw może mieć wielu właścicieli, a użytkownik może być właścicielem wielu aplikacji dla przedsiębiorstw. Istnieją dwie role właściciela aplikacji:
 
-* **Właściciela aplikacji przedsiębiorstwa** rola zapewnia możliwość zarządzania "aplikacje dla przedsiębiorstw, które należą do użytkownika, takich jak ustawienia rejestracji jednokrotnej, użytkownika i przypisania grupy oraz dodawanie dodatkowych właścicieli. Go nie są przyznawane umożliwia zarządzanie ustawieniami serwera Proxy aplikacji lub dostępu warunkowego.
-* **Właściciel rejestracji aplikacji** rola zapewnia możliwość zarządzania rejestracji aplikacji dla aplikacji, które należą do użytkownika, łącznie z manifestu aplikacji i dodawanie dodatkowych właścicieli.
+* Rola **Właściciel aplikacji przedsiębiorstwa** umożliwia zarządzanie "aplikacjami dla przedsiębiorstw, które jest właścicielem, w tym ustawienia logowania jednokrotnego, przypisania użytkowników i grup oraz dodawanie dodatkowych właścicieli. Nie daje możliwość zarządzania ustawieniami serwera proxy aplikacji lub dostępu warunkowego.
+* Rola **właściciel rejestracji aplikacji** daje możliwość zarządzania rejestracjami aplikacji dla aplikacji, która jest właścicielem, w tym manifestu aplikacji i dodawanie dodatkowych właścicieli.
 
-## <a name="develop-a-security-plan"></a>Opracowywanie planu zabezpieczeń
+## <a name="develop-a-security-plan"></a>Opracowanie planu bezpieczeństwa
 
-Usługa Azure AD zapewnia rozbudowane przewodnik planowania i wykonywania plan ochrony na podstawie poszczególnych ról administratora usługi Azure AD [zabezpieczania uprzywilejowanego dostępu dla wdrożeń hybrydowych i w chmurze](directory-admin-roles-secure.md).
+Usługa Azure AD zawiera obszerny przewodnik po planowaniu i wykonywaniu planu zabezpieczeń w rolach administratorów usługi Azure AD, [zabezpieczanie uprzywilejowanego dostępu dla wdrożeń hybrydowych i chmurowych.](directory-admin-roles-secure.md)
 
-## <a name="establish-emergency-accounts"></a>Zakładać kont awaryjnych
+## <a name="establish-emergency-accounts"></a>Zakładanie kont awaryjnych
 
-Aby zachować dostęp do sklepu zarządzania tożsamościami, gdy pojawia się problem, należy przygotować kont dostępu awaryjnego zgodnie z opisem w [tworzenie kont administracyjnych dostępu awaryjnego](directory-emergency-access.md).
+Aby zachować dostęp do magazynu zarządzania tożsamościami w przypadku wystąpienia problemu, przygotuj konta dostępu awaryjnego zgodnie z [tworzeniem kont administracyjnych dostępu awaryjnego.](directory-emergency-access.md)
 
-## <a name="secure-your-administrator-roles"></a>Zabezpieczanie usługi ról administratora
+## <a name="secure-your-administrator-roles"></a>Zabezpiecz role administratora
 
-Osoby atakujące, które Pełna kontrola nad wykorzystaniem kont uprzywilejowanych można zrobić ogromną uszkodzenia, więc chronić te konta, za pomocą [zasad dostępu bazowego](https://cloudblogs.microsoft.com/enterprisemobility/2018/06/22/baseline-security-policy-for-azure-ad-admin-accounts-in-public-preview/) , jest dostępna domyślnie dla wszystkich dzierżaw usługi Azure AD (w publicznej wersji zapoznawczej). Zasada wymusza uwierzytelnianie wieloskładnikowe na uprzywilejowany kont usługi Azure AD. Następujące role usługi Azure AD są objęte zasad linii bazowej usługi Azure AD:
+Osoby atakujące, które uzyskują kontrolę nad kontami uprzywilejowanymi, mogą wyrządzić ogromne szkody, dlatego najpierw chroń te konta, korzystając z [zasad dostępu bazowego,](https://cloudblogs.microsoft.com/enterprisemobility/2018/06/22/baseline-security-policy-for-azure-ad-admin-accounts-in-public-preview/) które są domyślnie dostępne dla wszystkich dzierżaw usługi Azure AD (w publicznej wersji zapoznawczej). Zasada wymusza uwierzytelnianie wieloskładnikowe na uprzywilejowanych kontach usługi Azure AD. Następujące role usługi Azure AD są objęte zasadami planu bazowego usługi Azure AD:
 
 * Administrator globalny
 * Administrator programu SharePoint
@@ -108,10 +108,10 @@ Osoby atakujące, które Pełna kontrola nad wykorzystaniem kont uprzywilejowany
 * Administrator dostępu warunkowego
 * Administrator zabezpieczeń
 
-## <a name="elevate-privilege-temporarily"></a>Tymczasowo podniesienie poziomu uprawnień
+## <a name="elevate-privilege-temporarily"></a>Tymczasowe podniesienie uprawnień podniosły
 
-W przypadku większości codziennych działań nie wszyscy użytkownicy muszą mieć uprawnienia administratora globalnego i nie wszystkie z nich powinna zostać trwale przypisany do roli administratora globalnego. Gdy użytkownicy potrzebują uprawnień administratora globalnego, powinna być aktywowana się przypisanie roli w usłudze Azure AD [Privileged Identity Management](../active-directory-privileged-identity-management-configure.md) własnego konta lub alternatywnego konta administracyjnego.
+W przypadku większości codziennych działań nie wszyscy użytkownicy potrzebują praw administratora globalnego i nie wszystkie z nich powinny być trwale przypisane do roli administratora globalnego. Gdy użytkownicy potrzebują uprawnień administratora globalnego, powinni aktywować przypisanie roli w usłudze Azure AD [Privileged Identity Management](../active-directory-privileged-identity-management-configure.md) na własnym koncie lub alternatywnym koncie administracyjnym.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Aby uzyskać odwołanie do opisy ról usługi Azure AD, zobacz [przypisywanie ról administratora w usłudze Azure AD](directory-assign-admin-roles.md)
+Aby uzyskać odwołanie do opisów ról usługi Azure AD, zobacz [Przypisywanie ról administratora w usłudze Azure AD](directory-assign-admin-roles.md)

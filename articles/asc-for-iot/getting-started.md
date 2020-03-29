@@ -1,6 +1,6 @@
 ---
-title: Wprowadzenie do korzystania z Azure Security Center dla usługi IoT | Microsoft Docs
-description: Zacznij od zapoznania się z podstawowym przepływem pracy Azure Security Center dla funkcji i usług IoT.
+title: Wprowadzenie do korzystania z usługi Azure Security Center dla IoT| Dokumenty firmy Microsoft
+description: Rozpocznij zrozumienie podstawowego przepływu pracy usługi Azure Security Center dla funkcji i usługi IoT.
 services: asc-for-iot
 ms.service: asc-for-iot
 documentationcenter: na
@@ -16,36 +16,36 @@ ms.workload: na
 ms.date: 07/23/2019
 ms.author: mlottner
 ms.openlocfilehash: 86c6c0bac5caae0873d0067c6abcb5a8ac864c88
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/29/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68596420"
 ---
 # <a name="get-started-with-azure-security-center-for-iot"></a>Wprowadzenie do usługi Azure Security Center dla IoT
 
-Ten artykuł zawiera objaśnienie różnych bloków konstrukcyjnych Azure Security Center usługi IoT i wyjaśnia, jak rozpocząć pracę z usługą przy użyciu dwóch możliwych opcji wdrażania.  
+Ten artykuł zawiera wyjaśnienie różnych bloków konstrukcyjnych usługi Azure Security Center dla IoT i wyjaśniono, jak rozpocząć pracę z usługą przy użyciu dwóch możliwych opcji wdrażania.  
 
 ## <a name="deployment-options"></a>Opcje wdrożenia
 
-Wybierz scenariusz usługi, który najlepiej spełnia wymagania dotyczące urządzenia IoT i środowiska. 
+Wybierz scenariusz usługi, który najlepiej spełnia wymagania urządzenia IoT i środowiska. 
 
 ### <a name="built-in-deployment"></a>Wbudowane wdrożenie
-Korzystając z płynnej, wbudowanej opcji wdrażania, Azure Security Center dla usługi IoT można szybko zintegrować z IoT Hub i zapewniać analizę zabezpieczeń konfiguracji usługi IoT Hub, tożsamości i zarządzania urządzeniami oraz wzorców komunikacji urządzeń centralnych.
+Korzystając z bezproblemowej, wbudowanej opcji wdrażania, usługa Azure Security Center dla IoT można szybko zintegrować z centrum IoT Hub i zapewnić analizę zabezpieczeń konfiguracji centrum IoT, tożsamości urządzenia i zarządzania oraz wzorców komunikacji z urządzeniami centralnymi.
 
-Rozpocznij [wdrożenie wbudowane](iot-hub-integration.md) , które ma IoT Hub monitorowanie i zalecenia. 
+Uruchom [wbudowane wdrożenie](iot-hub-integration.md) z funkcją monitorowania i zaleceń usługi IoT Hub. 
     <br>
 
-### <a name="enhanced-deployment"></a>Ulepszone wdrożenie
-W celu zapewnienia zwiększonych możliwości zabezpieczeń wdrożenie Azure Security Center dla agentów IoT Oprócz włączenia zabezpieczeń IoT Hub zapewnia oparte na agentach zbieranie zdarzeń, analizowanie i wykrywanie zagrożeń najważniejszych danych zabezpieczeń z urządzeń IoT oraz kompleksowe funkcje zarządzania stanmi zabezpieczeń.
+### <a name="enhanced-deployment"></a>Ulepszone wdrażanie
+Aby zwiększyć możliwości zabezpieczeń, wdrażanie usługi Azure Security Center dla agentów IoT oprócz włączania zabezpieczeń usługi IoT Hub zapewnia zbieranie zdarzeń opartych na agentach, analizę i wykrywanie zagrożeń kluczowych danych zabezpieczeń z urządzeń IoT, a także kompleksowe zarządzania postawą bezpieczeństwa.
 
-Rozpocznij [wdrożenie rozszerzone](security-agents.md) , które zapewnia oparte na agencie kompleksowe rozwiązanie do zarządzania Stanami zagrożeń i zabezpieczeniami.
+Rozpocznij [rozszerzone wdrożenie](security-agents.md) z kompleksowym rozwiązaniem do zarządzania ochroną przed zagrożeniami i bezpieczeństwem opartym na agentach.
    
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-- Włącz [Azure Security Center IoT](quickstart-onboard-iot-hub.md)
-- Skonfiguruj [rozwiązanie](quickstart-configure-your-solution.md)
+- Włączanie [usługi Azure Security Center dla IoT](quickstart-onboard-iot-hub.md)
+- Konfigurowanie [rozwiązania](quickstart-configure-your-solution.md)
 - [Tworzenie modułów zabezpieczeń](quickstart-create-security-twin.md)
 - Konfigurowanie [alertów niestandardowych](quickstart-create-custom-alerts.md)
 - [Wdrażanie agenta zabezpieczeń](how-to-deploy-agent.md)

@@ -1,5 +1,5 @@
 ---
-title: Jak wymienić klucz dostępu dla usługi Azure SignalR Service
+title: Jak obrócić klucz dostępu do usługi Azure SignalR Service
 description: Informacje o tym, dlaczego klient powinien regularnie wymieniać klucze dostępu oraz jak to robić za pomocą witryny Azure Portal i interfejsu wiersza polecenia platformy Azure.
 author: sffamily
 ms.service: signalr
@@ -7,13 +7,13 @@ ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: zhshang
 ms.openlocfilehash: 133edc64ac2f858a397a4a184c24497dae8af333
-ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/04/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67565723"
 ---
-# <a name="how-to-rotate-access-key-for-azure-signalr-service"></a>Jak wymienić klucz dostępu dla usługi Azure SignalR Service
+# <a name="how-to-rotate-access-key-for-azure-signalr-service"></a>Jak obrócić klucz dostępu do usługi Azure SignalR Service
 
 Każde wystąpienie usługi Azure SignalR Service ma parę kluczy dostępu: podstawowy i pomocniczy. Są one używane do uwierzytelniania klientów usługi SignalR podczas wysyłania żądań do usługi. Klucze są skojarzone z adresem URL punktu końcowego wystąpienia. Należy dbać o bezpieczeństwo kluczy i wymieniać je regularnie. Otrzymujesz dwa klucze dostępu, więc możesz obsługiwać połączenia przy użyciu jednego klucza, a w tym czasie generować ponownie drugi.
 
@@ -23,7 +23,7 @@ Ze względu na wymogi bezpieczeństwa i zgodności należy regularnie wymieniać
 
 ## <a name="regenerate-access-keys"></a>Generowanie ponowne kluczy dostępu
 
-1. Przejdź do witryny [Azure Portal](https://portal.azure.com/) i zaloguj się przy użyciu swoich poświadczeń.
+1. Przejdź do [witryny Azure portal](https://portal.azure.com/)i zaloguj się przy użyciu poświadczeń.
 
 1. Znajdź sekcję **Klucze** wystąpienia usługi Azure SignalR Service dotyczącą kluczy, które chcesz wygenerować ponownie.
 
@@ -49,7 +49,7 @@ Klucze można także wygenerować ponownie za pomocą [interfejsu wiersza polece
 
 Usługa Azure SignalR Service może w niektórych sytuacjach wymuszać obowiązkowe generowanie ponowne klucza dostępu. Usługa powiadamia klientów za pośrednictwem poczty e-mail i powiadomienia w portalu. Jeśli otrzymasz taką wiadomość lub wystąpi błąd usługi spowodowany kluczem dostępu, wymień klucze, wykonując instrukcje przedstawione w tym przewodniku.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Regularne wymieniania kluczy dostępu to dobra praktyka.
 
@@ -59,4 +59,4 @@ W tym przewodniku opisano sposób generowania ponownego kluczy dostępu. Przejd�
 > [Integracja z tożsamością platformy ASP.NET Core](./signalr-concept-authenticate-oauth.md)
 
 > [!div class="nextstepaction"]
-> [Tworzenie bezserwerowej aplikacji czasu rzeczywistego z uwierzytelnianiem](./signalr-tutorial-authenticate-azure-functions.md)
+> [Tworzenie aplikacji w czasie rzeczywistym bezserwerowej za pomocą uwierzytelniania](./signalr-tutorial-authenticate-azure-functions.md)

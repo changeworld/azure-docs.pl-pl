@@ -1,6 +1,6 @@
 ---
-title: Usługa Azure Data Lake Storage Gen1 wydajności aparatu Spark wytyczne dotyczące dostosowywania | Dokumentacja firmy Microsoft
-description: Usługa Azure Data Lake Storage Gen1 wydajności aparatu Spark wytyczne dotyczące dostosowywania
+title: Wskazówki dotyczące dostrajania wydajności usługi Azure Data Lake Storage Gen1 Spark | Dokumenty firmy Microsoft
+description: Wskazówki dotyczące dostrajania wydajności usługi Azure Data Lake Storage Gen1 Spark
 services: data-lake-store
 documentationcenter: ''
 author: stewu
@@ -13,106 +13,106 @@ ms.topic: article
 ms.date: 12/19/2016
 ms.author: stewu
 ms.openlocfilehash: dc92e7d2fcc911aeb6d92b91dd2d430af3c502ad
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "61436515"
 ---
-# <a name="performance-tuning-guidance-for-spark-on-hdinsight-and-azure-data-lake-storage-gen1"></a>Wskazówki dotyczące platformy Spark w HDInsight i Azure Data Lake Storage Gen1 dostrajania wydajności
+# <a name="performance-tuning-guidance-for-spark-on-hdinsight-and-azure-data-lake-storage-gen1"></a>Wskazówki dotyczące dostrajania wydajności dla platformy Spark w usłudze HDInsight i usłudze Azure Data Lake Storage Gen1
 
-Podczas dostosowywania wydajności na platformie Spark, należy wziąć pod uwagę liczba aplikacji uruchomionych w klastrze.  Domyślnie program można uruchomić 4 aplikacji jednocześnie w klastrze usługi HDI (Uwaga: domyślne ustawienie to może ulec zmianie).  Użytkownik chce korzystać z mniejszej liczby aplikacji, dzięki czemu mogą zastąpić ustawienia domyślne i użycia klastra dla tych aplikacji.  
+Podczas dostrajania wydajności w programie Spark należy wziąć pod uwagę liczbę aplikacji, które będą uruchomione w klastrze.  Domyślnie można uruchomić 4 aplikacje jednocześnie w klastrze HDI (Uwaga: ustawienie domyślne może ulec zmianie).  Możesz zdecydować się na użycie mniejszej liczby aplikacji, aby zastąpić ustawienia domyślne i użyć większej liczby klastrów dla tych aplikacji.  
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 * **Subskrypcja platformy Azure**. Zobacz temat [Uzyskiwanie bezpłatnej wersji próbnej platformy Azure](https://azure.microsoft.com/pricing/free-trial/).
-* **Konto usługi Azure Data Lake Storage Gen1**. Aby uzyskać instrukcje na temat jej tworzenia, zobacz [Rozpoczynanie pracy z usługą Azure Data Lake Storage Gen1](data-lake-store-get-started-portal.md)
-* **Klaster usługi Azure HDInsight** dzięki dostępowi do konta Data Lake Storage Gen1. Zobacz [Tworzenie klastra HDInsight z usługą Data Lake Storage Gen1](data-lake-store-hdinsight-hadoop-use-portal.md). Upewnij się, że włączenie pulpitu zdalnego dla klastra.
-* **Systemem klastra Spark Data Lake Storage Gen1**.  Aby uzyskać więcej informacji, zobacz [klastra HDInsight korzystanie z platformy Spark do analizy danych Data Lake Storage Gen1](https://docs.microsoft.com/azure/hdinsight/hdinsight-apache-spark-use-with-data-lake-store)
-* **Wytyczne dotyczące Data Lake Storage Gen1 dostrajania wydajności**.  Pojęcia związane z ogólnej wydajności, zobacz [Data Lake Storage Gen1 dostrajania wskazówki dotyczące wydajności](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-performance-tuning-guidance) 
+* **Konto usługi Azure Data Lake Storage Gen1**. Aby uzyskać instrukcje dotyczące tworzenia jednego z nich, zobacz Wprowadzenie do [usługi Azure Data Lake Storage Gen1](data-lake-store-get-started-portal.md)
+* **Klaster usługi Azure HDInsight** z dostępem do konta Usługi Data Lake Storage Gen1. Zobacz [Tworzenie klastra HDInsight z pamięcią Data Lake Storage Gen1](data-lake-store-hdinsight-hadoop-use-portal.md). Upewnij się, że włączysz pulpit zdalny dla klastra.
+* **Uruchamianie klastra Platformy Spark w pamięci masowej data lake gen1**.  Aby uzyskać więcej informacji, zobacz Analizowanie danych w u źródła [danych Gen1 za pomocą klastra hdinsight Spark](https://docs.microsoft.com/azure/hdinsight/hdinsight-apache-spark-use-with-data-lake-store)
+* **Wskazówki dotyczące dostrajania wydajności w programie Data Lake Storage Gen1**.  Aby zapoznać się z ogólnymi pojęciami dotyczącymi wydajności, zobacz [Wskazówki dotyczące dostrajania wydajności magazynu danych Lake Gen1](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-performance-tuning-guidance) 
 
 ## <a name="parameters"></a>Parametry
 
-Uruchamiając zadania Spark, poniżej przedstawiono najważniejsze ustawienia, które mogą być dostosowane do zwiększenia wydajności na Data Lake Storage Gen1:
+Podczas uruchamiania zadań platformy Spark oto najważniejsze ustawienia, które można dostroić, aby zwiększyć wydajność w programie Data Lake Storage Gen1:
 
-* **Liczba programów przetwarzających** — liczbę współbieżnych zadań, które mogą być wykonywane.
+* **Num-executors** — liczba równoczesnych zadań, które mogą być wykonywane.
 
-* **Wykonawca pamięci** — ilość pamięci przydzielona do każdego wykonawcy.
+* **Executor-memory** — ilość pamięci przydzielonej do każdego wykonawcy.
 
-* **Rdzenie wykonawca** — liczby rdzeni, przydzielone do każdego wykonawcy.                     
+* **Executor-cores** - Liczba rdzeni przydzielonych do każdego wykonawcy.                     
 
-**Liczba programów przetwarzających** liczba programów przetwarzających ustawi maksymalną liczbę zadań, które mogą działać równolegle.  Rzeczywista liczba zadań, które mogą działać równolegle jest ograniczone przez pamięci i zasobów procesora CPU jest dostępne w klastrze.
+**Wykonawcy num** Num-executors ustawi maksymalną liczbę zadań, które można uruchomić równolegle.  Rzeczywista liczba zadań, które można uruchomić równolegle jest ograniczona przez zasoby pamięci i procesora CPU dostępne w klastrze.
 
-**Wykonawca pamięci** to ilość pamięci przydzielonej do każdej funkcji wykonawczej.  Pamięć wymagane dla każdego wykonawcy jest zależna od zadania.  W przypadku złożonych operacji pamięci musi być wyższa.  W przypadku prostych operacji takich jak Odczyt i zapis wymagania dotyczące pamięci będzie niższa.  Ilość pamięci dla każdego wykonawcy mogą być wyświetlane w Ambari.  W Ambari przejdź do platformy Spark, a następnie Wyświetl kartę konfiguracje.  
+**Wykonawca-pamięć** Jest to ilość pamięci, która jest przydzielana do każdego wykonawcy.  Pamięć wymagana dla każdego wykonawcy jest zależna od zadania.  W przypadku złożonych operacji pamięć musi być wyższa.  W przypadku prostych operacji, takich jak odczyt i zapis, wymagania dotyczące pamięci będą niższe.  Ilość pamięci dla każdego wykonawcy można wyświetlić w Ambari.  W Ambari przejdź do spark i wyświetl kartę Konfiguracje.  
 
-**Rdzenie wykonawca** to ustawia liczbę rdzeni używanych w ramach jednej funkcji wykonawczej, który określa liczby wątków równoległych, które mogą być uruchamiane na wykonawca.  Na przykład jeśli program wykonujący rdzeni = 2, następnie każdy program wykonujący uruchomić 2 zadań równoległych w wykonawcę.  Rdzenie wykonawca potrzebne będzie zależny od zadania.  Zadań samochodów We/Wy nie wymagają dużej ilości pamięci dla zadań, dzięki czemu każdy wykonawca może obsługiwać więcej zadań równoległych.
+**Rdzenie executor** To ustawia ilość rdzeni używanych na executor, który określa liczbę równoległych wątków, które mogą być uruchamiane na wykonawcę.  Na przykład jeśli executor-cores = 2, a następnie każdy wykonawca można uruchomić 2 równoległe zadania w wykonawcy.  Rdzenie wykonawcy potrzebne będą zależne od zadania.  Ciężkie zadania we/wy nie wymagają dużej ilości pamięci na zadanie, więc każdy wykonawca może obsługiwać więcej równoległych zadań.
 
-Domyślnie dwa rdzenie wirtualne YARN są definiowane na każdy rdzeń fizyczny uruchamianego na HDInsight Spark.  Liczba ta oferuje dobry kompromis między współbieżność i ilości z wielu wątków do przełączania kontekstu.  
+Domyślnie dwa wirtualne rdzenie YARN są definiowane dla każdego rdzenia fizycznego podczas uruchamiania programu Spark w programie HDInsight.  Liczba ta zapewnia dobrą równowagę współbieżności i ilość przełączania kontekstu z wielu wątków.  
 
 ## <a name="guidance"></a>Wskazówki
 
-Podczas uruchamiania aparatu Spark obciążeń wynikających z analizy do pracy z danymi w Data Lake Storage Gen1, zaleca się używać najnowszej wersji HDInsight w celu uzyskania najlepszej wydajności z Data Lake Storage Gen1. Gdy zadanie jest bardziej intensywne operacje We/Wy, niektóre parametry mogą być skonfigurowane do zwiększenia wydajności.  Data Lake Storage Gen1 to platforma magazyn o wysokim stopniu skalowalności, która może obsługiwać dużą przepływnością.  Jeśli zadanie składa się głównie z odczytu lub zapisu, następnie zwiększenia współbieżności dla operacji We/Wy do i z Data Lake Storage Gen1 może zwiększyć wydajność.
+Podczas uruchamiania obciążeń analitycznych platformy Spark do pracy z danymi w urozwoju danych Lake Storage Gen1 zaleca się użycie najnowszej wersji usługi HDInsight, aby uzyskać najlepszą wydajność z pamięcią masową Data Lake Gen1. Gdy zadanie jest bardziej intensywne we/wy, niektóre parametry można skonfigurować w celu zwiększenia wydajności.  Data Lake Storage Gen1 to wysoce skalowalna platforma pamięci masowej, która może obsługiwać wysoką przepustowość.  Jeśli zadanie składa się głównie z odczytu lub zapisu, zwiększenie współbieżności dla we/wy do i z usługi Data Lake Storage Gen1 może zwiększyć wydajność.
 
-Istnieje kilka sposobów ogólne w celu zwiększenia współbieżności zadań intensywnie korzystających z operacji We/Wy.
+Istnieje kilka ogólnych sposobów zwiększenia współbieżności dla zadań intensywnie korzystających z we/wy.
 
-**Krok 1. Określić, jak wiele aplikacji jest uruchomionych w klastrze** — należy wiedzieć, jak wiele aplikacji jest uruchomionych w klastrze, w tym bieżący.  Wartości domyślne dla każdej platformy Spark, ustawienia obowiązuje założenie, które są 4 aplikacji uruchomionych jednocześnie.  W związku z tym będzie mieć tylko 25% klastra, które są dostępne dla każdej aplikacji.  Aby uzyskać lepszą wydajność, można zastąpić ustawienia domyślne, zmieniając liczbie funkcji wykonawczych.  
+**Krok 1: Określ, ile aplikacji jest uruchomionych w klastrze** — powinieneś wiedzieć, ile aplikacji jest uruchomionych w klastrze, w tym bieżąca.  Wartości domyślne dla każdego ustawienia platformy Spark zakłada, że istnieją 4 aplikacje uruchomione jednocześnie.  W związku z tym będzie mieć tylko 25% klastra dostępne dla każdej aplikacji.  Aby uzyskać lepszą wydajność, można zastąpić wartości domyślne, zmieniając liczbę wykonawców.  
 
-**Krok 2. Ustaw program wykonujący pamięci** — pierwszą rzeczą, aby ustawić jest pamięci wykonawcy.  Pamięć będzie zależny od zadania, które zamierzasz uruchomić.  Możesz zwiększyć współbieżności, przydzielając mniejszą ilość pamięci na wykonawcy.  Jeśli widzisz poza wyjątki pamięci podczas uruchamiania zadania, należy zwiększyć wartość tego parametru.  Jeden alternatywa to uzyskanie większej ilości pamięci za pomocą klastra, który ma większej ilości pamięci lub zwiększenie rozmiaru klastra.  Większa ilość pamięci umożliwi więcej executors ma być używany, co oznacza, że uzyskać większą współbieżność.
+**Krok 2: Ustaw executor-memory** - pierwszą rzeczą, którą należy ustawić, jest wykonawca-pamięć.  Pamięć będzie zależna od zadania, które zamierzasz uruchomić.  Można zwiększyć współbieżność, przydzielając mniej pamięci na wykonawcę.  Jeśli widzisz wyjątki braku pamięci po uruchomieniu zadania, należy zwiększyć wartość tego parametru.  Jedną z alternatyw jest uzyskanie większej ilości pamięci przy użyciu klastra, który ma większe ilości pamięci lub zwiększenie rozmiaru klastra.  Więcej pamięci umożliwi użycie większej liczby executors, co oznacza większą współbieżność.
 
-**Krok 3. Ustaw program wykonujący rdzeni** — dla obciążeń wejścia/wyjścia o znacznym wykorzystaniu, które nie mają złożonych operacji, warto rozpocząć z dużą liczbą rdzeni wykonawcy, aby zwiększyć liczbę zadań równoległych na wykonawcy.  Ustawienie 4 rdzenie wykonawca stanowi dobry początek.   
+**Krok 3: Ustaw rdzenie executor** — dla obciążeń intensywnie we/wy, które nie mają złożonych operacji, dobrze jest zacząć od dużej liczby rdzeni executor, aby zwiększyć liczbę równoległych zadań na wykonawcę.  Ustawienie executor-cores do 4 jest dobry początek.   
 
     executor-cores = 4
-Zwiększenie liczby rdzeni wykonawca zapewni więcej równoległości, dzięki czemu możesz eksperymentować z różnych rdzeni wykonawcy.  Dla zadań, które mają bardziej złożonych operacji należy zmniejszyć liczbę rdzeni na wykonawcy.  Jeśli wykonawca rdzeni jest większa niż 4, następnie wyrzucania elementów bezużytecznych może być obsługiwane mało wydajnie i obniżyć wydajność.
+Zwiększenie liczby rdzeni executor daje więcej równoległości, dzięki czemu można eksperymentować z różnych rdzeni executor.  W przypadku zadań, które mają bardziej złożone operacje, należy zmniejszyć liczbę rdzeni na wykonawcę.  Jeśli executor-cores jest ustawiony wyższy niż 4, następnie wyrzucania elementów bezużytecznych może stać się nieefektywne i obniżyć wydajność.
 
-**Krok 4. Określić ilość pamięci usługi YARN w klastrze** — te informacje są dostępne w Ambari.  Przejdź do usługi YARN i wyświetlić kartę konfiguracje.  W tym oknie wyświetlane jest pamięci usługi YARN.  
-Należy pamiętać podczas pracy w tym oknie można również wyświetlić domyślny rozmiar kontenera YARN.  Rozmiar kontenera YARN jest taka sama jak ilość pamięci na parametr funkcji wykonawczej.
+**Krok 4: Określ ilość pamięci YARN w klastrze** — te informacje są dostępne w Ambari.  Przejdź do pozycji YARN i wyświetl kartę Konfiguracje.  Pamięć YARN jest wyświetlana w tym oknie.  
+Uwaga, gdy jesteś w oknie, można również zobaczyć domyślny rozmiar kontenera YARN.  Rozmiar kontenera YARN jest taki sam jak pamięć na parametr executor.
 
     Total YARN memory = nodes * YARN memory per node
-**Krok 5. Oblicz liczba programów przetwarzających**
+**Krok 5: Obliczanie num-executors**
 
-**Oblicz ograniczenia pamięci** — parametr liczba programów przetwarzających jest ograniczony przez pamięci lub procesora CPU.  Ograniczenie pamięci jest określany przez ilość dostępnej pamięci usługi YARN dla aplikacji.  Należy wykonać całkowity rozmiar pamięci usługi YARN i przez program wykonujący pamięci.  Ograniczenie musi być cofnąć skalowanych liczby aplikacji, więc możemy dzielnikiem liczby aplikacji.
+**Oblicz ograniczenie pamięci** — parametr num-executors jest ograniczony przez pamięć lub procesor CPU.  Ograniczenie pamięci zależy od ilości dostępnej pamięci YARN dla aplikacji.  Należy wziąć całkowitą pamięć YARN i podzielić, że przez executor-memory.  Ograniczenie musi zostać zdkalowane dla liczby aplikacji, aby śmy dzielili przez liczbę aplikacji.
 
     Memory constraint = (total YARN memory / executor memory) / # of apps   
-**Oblicz ograniczenie użycia Procesora** — ograniczenie procesora CPU jest obliczany jako łączna liczba rdzeni wirtualnych dzielona przez liczbę rdzeni na wykonawcy.  Istnieją 2 rdzeni wirtualnych na każdy rdzeń fizyczny.  Podobnie jak ograniczenia pamięci, mamy dzielenia według liczby aplikacji.
+**Oblicz ograniczenie procesora —** ograniczenie procesora jest obliczane jako całkowita liczba rdzeni wirtualnych podzielona przez liczbę rdzeni na wykonawcę.  Istnieją 2 rdzenie wirtualne dla każdego rdzenia fizycznego.  Podobnie jak w ograniczeniu pamięci, mamy podzielić przez liczbę aplikacji.
 
     virtual cores = (nodes in cluster * # of physical cores in node * 2)
     CPU constraint = (total virtual cores / # of cores per executor) / # of apps
-**Ustaw liczba programów przetwarzających** — parametr liczba programów przetwarzających jest określana przez pobranie wartości minimalnej ograniczenia pamięci i ograniczenia procesora CPU. 
+**Ustaw num-executors** — parametr num-executors jest określany przez przyjęcie minimalnego ograniczenia pamięci i ograniczenia procesora CPU. 
 
     num-executors = Min (total virtual Cores / # of cores per executor, available YARN memory / executor-memory)   
-Ustawienie większej liczby liczba programów przetwarzających nie zawsze poprawia wydajność.  Należy rozważyć, czy dodanie więcej executors spowoduje dodanie dodatkowych obciążenie dla każdego dodatkowego przetwarzania, które potencjalnie mogą obniżyć wydajność.  Liczba programów przetwarzających jest ograniczone przez zasoby klastra.    
+Ustawienie większej liczby num-executors nie musi zwiększyć wydajność.  Należy wziąć pod uwagę, że dodanie więcej executors doda dodatkowe obciążenie dla każdego dodatkowego wykonawcy, co może potencjalnie obniżyć wydajność.  Num-executors jest ograniczony przez zasoby klastra.    
 
-## <a name="example-calculation"></a>Przykład obliczania
+## <a name="example-calculation"></a>Przykładowe obliczenie
 
-Załóżmy, że masz już klaster składa się z 8 węzłów D4v2 uruchomionym 2 w tym co ma do uruchamiania aplikacji.  
+Załóżmy, że masz obecnie klaster składający się z 8 węzłów D4v2, w których są uruchomione 2 aplikacje, w tym ten, który zamierzasz uruchomić.  
 
-**Krok 1. Określić, jak wiele aplikacji jest uruchomionych w klastrze** — wiesz, że masz 2 aplikacji w klastrze, w tym alert zamierzasz uruchomić.  
+**Krok 1: Określ, ile aplikacji jest uruchomionych w klastrze** — wiesz, że masz w klastrze 2 aplikacje, w tym te, które zamierzasz uruchomić.  
 
-**Krok 2. Ustaw program wykonujący pamięci** — w tym przykładzie określamy, czy 6 GB pamięci funkcji wykonawczej są wystarczające dla zadania intensywnie korzystających z operacji We/Wy.  
+**Krok 2: Ustaw executor-memory** — w tym przykładzie ustalimy, że 6GB pamięci egzekutora będzie wystarczające dla zadania intensywnego we/wy.  
 
     executor-memory = 6GB
-**Krok 3. Ustaw program wykonujący rdzeni** — ponieważ jest to zadanie intensywnie korzystających z operacji We/Wy, możemy ustawić liczbę rdzeni dla każdego wykonawcy do 4.  Ustawianie rdzeni wykonawca większych niż 4 może spowodować problemy z kolekcji wyrzucania elementów.  
+**Krok 3: Ustaw rdzenie executor** - Ponieważ jest to zadanie intensywnie we/wy, możemy ustawić liczbę rdzeni dla każdego wykonawcy na 4.  Ustawienie rdzeni na wykonawcę na większe niż 4 może spowodować problemy z wyrzucaniem elementów bezużytecznych.  
 
     executor-cores = 4
-**Krok 4. Określić ilość pamięci usługi YARN w klastrze** — firma Microsoft, przejdź do narzędzia Ambari, aby dowiedzieć się, że każdy D4v2 ma 25 GB pamięci usługi YARN.  Ponieważ 8 węzłów, dostępnej pamięci usługi YARN jest mnożony przez 8.
+**Krok 4: Określ ilość pamięci YARN w klastrze** — przechodzimy do Ambari, aby dowiedzieć się, że każdy D4v2 ma 25 GB pamięci YARN.  Ponieważ istnieje 8 węzłów, dostępna pamięć YARN jest mnożona przez 8.
 
     Total YARN memory = nodes * YARN memory* per node
     Total YARN memory = 8 nodes * 25GB = 200GB
-**Krok 5. Oblicz liczba programów przetwarzających** — parametr liczba programów przetwarzających jest określana przez wykonanie co najmniej ograniczenia pamięci i ograniczenie użycia Procesora podzielona przez liczba aplikacji uruchomionych na platformie Spark.    
+**Krok 5: Oblicz num-executors** — parametr num-executors jest określany przez podjęcie minimum ograniczenia pamięci i ograniczenia procesora CPU podzielonego przez # aplikacji uruchomionych na spark.    
 
-**Oblicz ograniczenia pamięci** — ograniczenie pamięci jest obliczany jako podzielona przez ilość pamięci na wykonawca całkowitej ilości pamięci usługi YARN.
+**Oblicz ograniczenie pamięci** — ograniczenie pamięci jest obliczane jako całkowita pamięć YARN podzielona przez pamięć na wykonawcę.
 
     Memory constraint = (total YARN memory / executor memory) / # of apps   
     Memory constraint = (200GB / 6GB) / 2   
     Memory constraint = 16 (rounded)
-**Oblicz ograniczenie użycia Procesora** — ograniczenie procesora CPU jest obliczany jako rdzeni całkowita yarn dzielona przez liczbę rdzeni na wykonawcy.
+**Obliczanie ograniczenia procesora** — ograniczenie procesora jest obliczane jako całkowita liczba rdzeni przędzy podzielona przez liczbę rdzeni na wykonawcę.
     
     YARN cores = nodes in cluster * # of cores per node * 2   
     YARN cores = 8 nodes * 8 cores per D14 * 2 = 128
     CPU constraint = (total YARN cores / # of cores per executor) / # of apps
     CPU constraint = (128 / 4) / 2
     CPU constraint = 16
-**Liczba set-programów przetwarzających**
+**Ustawianie wykonawców num**
 
     num-executors = Min (memory constraint, CPU constraint)
     num-executors = Min (16, 16)

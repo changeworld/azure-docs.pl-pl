@@ -1,6 +1,6 @@
 ---
-title: Chiny dostarczanie zawartości z usługą Azure CDN | Dokumentacja firmy Microsoft
-description: Informacje o używaniu platformy Azure zawartości Delivery Network (CDN) do dostarczania zawartości do użytkowników w Chinach.
+title: Dostarczanie zawartości w Chinach za pomocą usługi Azure CDN | Dokumenty firmy Microsoft
+description: Dowiedz się więcej o używaniu usługi Azure Content Delivery Network (CDN) do dostarczania zawartości użytkownikom z Chin.
 services: cdn
 documentationcenter: ''
 author: mdgattuso
@@ -16,54 +16,54 @@ ms.date: 05/16/2018
 ms.author: magattus
 ms.custom: mvc
 ms.openlocfilehash: a63914116f5ef9922ac05745764e0ad505dc3c91
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67593949"
 ---
-# <a name="china-content-delivery-with-azure-cdn"></a>Chiny dostarczanie zawartości z usługą Azure CDN
+# <a name="china-content-delivery-with-azure-cdn"></a>Dostarczanie zawartości w Chinach za pomocą usługi Azure CDN
 
-Usługa Azure Content Delivery Network (CDN) globalnego może obsługiwać zawartość dla użytkowników w Chinach z lokalizacji punktu z obecności (POP) w pobliżu (Chiny) lub punktów POP, zapewnia najlepszą wydajność, aby żądania pochodzące z Chin. Jednak jeśli (Chiny) jest istotne rynek dla swoich klientów i potrzebują wysoka wydajność, rozważ użycie usługi CDN Azure (Chiny).
+Usługa Azure Content Delivery Network (CDN) global może wyświetlać zawartość użytkownikom w Chinach z lokalizacjami punktu obecności (POP) w pobliżu Chin lub dowolnym punktem obecności, który zapewnia najlepszą wydajność żądań pochodzących z Chin. Jeśli jednak Chiny są znaczącym rynkiem dla klientów i potrzebują szybkiej wydajności, rozważ użycie usługi Azure CDN China.
 
-Chińska wersja platformy Azure CDN różni się od globalnej usługi Azure CDN, w tym dostarcza zawartość z punktów obecności w Chinach, korzystając z wielu dostawców lokalnego. Ze względu na zgodność chiński i rozporządzenie należy zarejestrować oddzielną subskrypcję do użycia usługi CDN Azure (Chiny) i witryn sieci Web muszą mieć licencję usługi dostawcy ICP. Portal i interfejs API doświadczenia, Włącz i zarządzaniu zawartością dostarczania jest taka sama usługa Azure CDN globalne i sieć CDN Azure (Chiny).
+Usługa Azure CDN China różni się od globalnej usługi Azure CDN tym, że dostarcza zawartość z dostawców usług Y WZ w Chinach, współpracując z wieloma lokalnymi dostawcami. Ze względu na chińskie przestrzeganie i regulacje należy zarejestrować oddzielną subskrypcję, aby korzystać z usługi Azure CDN China, a witryny sieci Web muszą mieć licencję ICP. Środowisko portalu i interfejsu API umożliwiające dostarczanie zawartości i zarządzanie nim jest identyczne między globalną usługą Azure CDN a usługą Azure CDN w Chinach.
 
-## <a name="comparison-of-azure-cdn-global-and-azure-cdn-china"></a>Porównanie usługi Azure CDN globalne i CDN Azure (Chiny)
+## <a name="comparison-of-azure-cdn-global-and-azure-cdn-china"></a>Porównanie globalnej usługi Azure CDN i usługi Azure CDN w Chinach
 
-Usługa Azure CDN globalnych i CDN Azure (Chiny) oferują następujące funkcje:
+Usługa Azure CDN global i Azure CDN China mają następujące funkcje:
 
-- Usługa Azure CDN globalne:
+- Globalna usługa Azure CDN:
 
-     - Portal: https://portal.azure.com  
+     - Portal:https://portal.azure.com  
 
-     - Wykonuje dostarczania zawartości poza (Chiny)
+     - Realizuje dostarczanie treści poza Chinami
 
-     - Cztery warstwy cenowe: Standard firmy Microsoft, Verizon — standardowa, premium firmy Verizon i Akamai — standardowa
+     - Cztery warstwy cenowe: standard Microsoft, standard Verizon, verizon premium i standard Akamai
 
      - [Dokumentacja](https://docs.microsoft.com/azure/cdn/)
 
-- Sieć CDN systemu Azure (Chiny):
+- Usługi Azure CDN w Chinach:
 
-     - Portal: https://portal.azure.cn
+     - Portal:https://portal.azure.cn
 
-     - Wykonuje dostarczania zawartości w Chinach
+     - Wykonuje dostarczanie treści w Chinach
 
-     - Dwie warstwy cenowe: Standardowa i premium
+     - Dwie warstwy cenowe: Standard i premium
 
      - [Dokumentacja](https://docs.azure.cn/en-us/cdn/)
  
 
 ## <a name="next-steps"></a>Następne kroki
 
-Aby dowiedzieć się więcej na temat usługi CDN Azure (Chiny), zobacz:
+Aby dowiedzieć się więcej o usłudze Azure CDN w Chinach, zobacz:
 
 - [Funkcje sieci dostarczania zawartości](https://www.azure.cn/en-us/home/features/cdn/)
 
-- [Omówienie usługi Azure Content Delivery Network](https://docs.azure.cn/en-us/cdn/cdn-overview)
+- [Omówienie sieci dostarczania zawartości platformy Azure](https://docs.azure.cn/en-us/cdn/cdn-overview)
 
-- [Użyj usługi Azure Content Delivery Network](https://docs.azure.cn/en-us/cdn/cdn-how-to-use)
+- [Korzystanie z sieci dostarczania zawartości platformy Azure](https://docs.azure.cn/en-us/cdn/cdn-how-to-use)
 
-- [Dostępność usług Azure w Chinach](https://docs.microsoft.com/azure/china/concepts-service-availability)
+- [Dostępność usług platformy Azure w Chinach](https://docs.microsoft.com/azure/china/concepts-service-availability)
 
 
 

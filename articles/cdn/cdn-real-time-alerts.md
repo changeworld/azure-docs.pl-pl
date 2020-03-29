@@ -1,6 +1,6 @@
 ---
-title: Alerty w czasie rzeczywistym usługi Azure CDN | Dokumentacja firmy Microsoft
-description: Alerty w czasie rzeczywistym w usłudze Microsoft Azure CDN. W czasie rzeczywistym alerty zapewniają powiadomienia dotyczące wydajności do punktów końcowych w profilu sieci CDN.
+title: Alerty usługi Azure CDN w czasie rzeczywistym | Dokumenty firmy Microsoft
+description: Alerty w czasie rzeczywistym w sieci CDN platformy Microsoft Azure. Alerty w czasie rzeczywistym zapewniają powiadomienia o wydajności punktów końcowych w profilu sieci CDN.
 services: cdn
 documentationcenter: ''
 author: zhangmanling
@@ -15,17 +15,17 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
 ms.openlocfilehash: 4b8cbc27757cf6c321ea4b3c27720a129aa27c1b
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67593478"
 ---
-# <a name="real-time-alerts-in-microsoft-azure-cdn"></a>Alerty w czasie rzeczywistym w usłudze Microsoft Azure CDN
+# <a name="real-time-alerts-in-microsoft-azure-cdn"></a>Alerty w czasie rzeczywistym w sieci CDN platformy Microsoft Azure
 [!INCLUDE [cdn-premium-feature](../../includes/cdn-premium-feature.md)]
 
 ## <a name="overview"></a>Omówienie
-W tym dokumencie wyjaśniono alerty w czasie rzeczywistym w usłudze Microsoft Azure CDN. Ta funkcja udostępnia w czasie rzeczywistym powiadomienia dotyczące wydajności do punktów końcowych w profilu sieci CDN.  Można skonfigurować adres e-mail lub alerty HTTP na podstawie:
+W tym dokumencie opisano alerty w czasie rzeczywistym w sieci CDN platformy Microsoft Azure. Ta funkcja zapewnia powiadomienia w czasie rzeczywistym o wydajności punktów końcowych w profilu sieci CDN.  Alerty e-mail lub HTTP można skonfigurować na podstawie:
 
 * Przepustowość
 * Kody stanu
@@ -33,67 +33,67 @@ W tym dokumencie wyjaśniono alerty w czasie rzeczywistym w usłudze Microsoft A
 * Połączenia
 
 ## <a name="creating-a-real-time-alert"></a>Tworzenie alertu w czasie rzeczywistym
-1. W [witryny Azure portal](https://portal.azure.com), przejdź do swojego profilu CDN.
+1. W [witrynie Azure portal](https://portal.azure.com)przejdź do swojego profilu usługi CDN.
    
     ![Profil CDN](./media/cdn-real-time-alerts/cdn-profile-blade.png)
-1. Z poziomu bloku profil CDN kliknij **Zarządzaj** przycisku.
+1. W bloku profilu sieci CDN kliknij przycisk **Zarządzaj.**
    
-    ![Profil CDN Zarządzanie przycisku](./media/cdn-real-time-alerts/cdn-manage-btn.png)
+    ![Przycisk zarządzania profilem CDN](./media/cdn-real-time-alerts/cdn-manage-btn.png)
    
-    Zostanie otwarty w portalu zarządzania usługi CDN.
-3. Umieść kursor nad **Analytics** kartę, a następnie umieść kursor nad **statystyki w czasie rzeczywistym** okno wysuwane.  Kliknij pozycję **alerty w czasie rzeczywistym**.
+    Zostanie otwarty portal zarządzania siecią CDN.
+3. Umieść wskaźnik myszy na karcie **Analytics,** a następnie umieść wskaźnik myszy na **wysu wysu wysu** w czasie rzeczywistym.  Kliknij **alerty w czasie rzeczywistym**.
    
-    ![Portal zarządzania usługi CDN](./media/cdn-real-time-alerts/cdn-premium-portal.png)
+    ![Portal zarządzania siecią CDN](./media/cdn-real-time-alerts/cdn-premium-portal.png)
    
-    Zostanie wyświetlona lista istniejących konfiguracji alertu (jeśli istnieje).
-4. Kliknij przycisk **Dodaj Alert** przycisku.
+    Zostanie wyświetlona lista istniejących konfiguracji alertów (jeśli istnieją).
+4. Kliknij przycisk **Dodaj alert.**
    
-    ![Dodawanie przycisku alertu](./media/cdn-real-time-alerts/cdn-add-alert.png)
+    ![Przycisk Dodaj alert](./media/cdn-real-time-alerts/cdn-add-alert.png)
    
-    Zostanie wyświetlony formularz do tworzenia nowego alertu.
+    Zostanie wyświetlony formularz do utworzenia nowego alertu.
    
-    ![Formularz nowego alertu](./media/cdn-real-time-alerts/cdn-new-alert.png)
-5. Jeśli chcesz, aby ten alert na aktywny po kliknięciu **Zapisz**, sprawdź **Alert włączony** pola wyboru.
-6. Wpisz nazwę opisową dla alertu w **nazwa** pola.
-7. W **typ nośnika** listy rozwijanej wybierz **HTTP dużego obiektu**.
+    ![Nowy formularz alertu](./media/cdn-real-time-alerts/cdn-new-alert.png)
+5. Jeśli chcesz, aby ten alert był aktywny po **kliknięciu przycisku Zapisz,** zaznacz pole wyboru **Włączone alerty.**
+6. Wprowadź opisową nazwę alertu w polu **Nazwa.**
+7. Z listy rozwijanej **Typ nośnika** wybierz pozycję **Duży obiekt HTTP**.
    
-    ![Typ nośnika zaznaczony obiekt dużych HTTP](./media/cdn-real-time-alerts/cdn-http-large.png)
+    ![Typ nośnika z zaznaczonym dużym obiektem HTTP](./media/cdn-real-time-alerts/cdn-http-large.png)
    
    > [!IMPORTANT]
-   > Musisz wybrać **dużego obiektu HTTP** jako **typ nośnika**.  Inne opcje nie są używane przez **Azure CDN from Verizon**.  Nie można wybrać **dużego obiektu HTTP** powoduje, że Twój alert nigdy nie wyzwolone.
+   > Jako **typ nośnika**należy wybrać **duży obiekt HTTP** .  Inne opcje nie są używane przez **usługę Azure CDN firmy Verizon**.  Niepowodzenie wybrania **dużego obiektu HTTP** powoduje, że alert nigdy nie zostanie wyzwolony.
    > 
    > 
-8. Tworzenie **wyrażenie** do monitorowania, wybierając **metryki**, **Operator**, i **wyzwolić wartość**.
+8. Utwórz **wyrażenie** do monitorowania, wybierając **wartość metryki,** **operator**i **wyzwalacz.**
    
-   * Aby uzyskać **metryki**, wybierz typ warunku, które mają być monitorowane.  **MB/s przepustowości** ilość przepustowość w megabitach na sekundę.  **Łączna liczba połączeń** jest liczba równoczesnych połączeń HTTP z naszych serwerów granicznych.  Aby uzyskać definicje różne stany pamięci podręcznej i kodów stanu, zobacz [kodów stanu pamięci podręcznej usługi CDN Azure](/previous-versions/azure/mt759237(v=azure.100)) i [kodów stanu HTTP usługi CDN Azure](/previous-versions/azure/mt759238(v=azure.100))
-   * **Operator** jest operatorów matematycznych, która ustanawia relację między metrykę i wartości wyzwalacza.
-   * **Wyzwalanie wartość** jest wartość progowa, które muszą zostać spełnione przed wysłaniem powiadomienia.
+   * W przypadku **opcji Metryka**wybierz typ warunku, który ma być monitorowany.  **Przepustowość Mbps** to ilość wykorzystania przepustowości w megabitach na sekundę.  **Total Connections** to liczba równoczesnych połączeń HTTP z naszymi serwerami brzegowymi.  Definicje różnych stanów pamięci podręcznej i kodów stanu można znaleźć w [przykładach kodów stanu pamięci podręcznej usługi Azure CDN i](/previous-versions/azure/mt759237(v=azure.100)) [kodów stanu HTTP usługi Azure CDN](/previous-versions/azure/mt759238(v=azure.100))
+   * **Operator** jest operatorem matematycznym, który ustanawia relację między metryką a wartością wyzwalacza.
+   * **Wartość wyzwalacza** jest wartością progową, która musi zostać spełniona przed wysłaniem powiadomienia.
      
-     W poniższym przykładzie utworzono wyrażenie wskazuje na to, że powiadomienie jest wysyłane, gdy liczba kodów stanu 404 jest większy niż 25.
+     W poniższym przykładzie utworzone wyrażenie wskazuje, że powiadomienie jest wysyłane, gdy liczba kodów stanu 404 jest większa niż 25.
      
-     ![Wyrażenie przykładowe alertów w czasie rzeczywistym](./media/cdn-real-time-alerts/cdn-expression.png)
-9. Aby uzyskać **interwał**, wprowadź, jak często chcesz wyrażenia obliczonego.
-10. W **powiadomienie na** listy rozwijanej wybierz opcję, jeśli chcesz otrzymywać powiadomienia, gdy wyrażenie jest prawdziwe.
+     ![Przykładowe wyrażenie alertu w czasie rzeczywistym](./media/cdn-real-time-alerts/cdn-expression.png)
+9. W polu **Interval**należy wprowadzić sposób, w jakiej często ma być oceniane wyrażenie.
+10. Z listy rozwijanej **Powiadom** o tym wybierz, kiedy chcesz otrzymywać powiadomienia, kiedy wyrażenie jest prawdziwe.
     
-    * **Stan rozpoczęcia** wskazuje, że powiadomienie jest wysyłane po pierwszym wykryciu określonego warunku.
-    * **Warunku zakończenia** wskazuje, że powiadomienie jest wysyłane, gdy określony warunek nie zostanie wykryty. To powiadomienie może być uruchamiane wyłącznie po naszej sieci, monitorowanie system wykrył, że wystąpił określony warunek.
-    * **Ciągłe** wskazuje, że powiadomienie jest wysyłane każdym razem, że system monitorowania sieci wykrywa określony warunek. Należy pamiętać, sprawdzający system monitorowania sieci tylko raz na interwał dla określonego warunku.
-    * **Stan początkowy i końcowy** wskazuje, że powiadomienie jest wysyłane po raz pierwszy, czy określony warunek zostanie wykryte, i ponownie, gdy nie jest już zostanie wykryty warunek.
-1. Jeśli chcesz otrzymywać powiadomienia pocztą e-mail, sprawdź **powiadamiania pocztą E-mail** pola wyboru.  
+    * **Warunek Start** wskazuje, że powiadomienie jest wysyłane po pierwszym wykryciu określonego warunku.
+    * **Warunek End** wskazuje, że powiadomienie jest wysyłane, gdy określony warunek nie jest już wykrywany. To powiadomienie może zostać wyzwolone dopiero po wykryciu przez nasz system monitorowania sieci, że wystąpił określony warunek.
+    * **Ciągły** wskazuje, że powiadomienie jest wysyłane za każdym razem, gdy system monitorowania sieci wykrywa określony warunek. Należy pamiętać, że system monitorowania sieci sprawdza tylko raz na interwał dla określonego warunku.
+    * **Warunek Start i End** wskazuje, że powiadomienie jest wysyłane po raz pierwszy, że określony warunek jest wykrywany i ponownie, gdy warunek nie jest już wykrywany.
+1. Jeśli chcesz otrzymywać powiadomienia pocztą e-mail, zaznacz pole wyboru **Powiadom przez e-mail.**  
     
-    ![Powiadom za pomocą formularza wiadomości E-mail](./media/cdn-real-time-alerts/cdn-notify-email.png)
+    ![Powiadom za pomocą formularza e-mail](./media/cdn-real-time-alerts/cdn-notify-email.png)
     
-    W **do** wprowadź adres e-mail, której chcesz powiadomienia wysłane. Dla **podmiotu** i **treści**, można pozostawić domyślne lub możesz dostosować komunikat przy użyciu **dostępne słowa kluczowe** listy, aby dynamicznie wstawić dane alertów po wiadomości są wysyłane.
+    W polu **Do** wprowadź adres e-mail, na który chcesz wysłać powiadomienia. W przypadku **tematu** i **treści**możesz pozostawić wartość domyślną lub dostosować wiadomość za pomocą listy **Dostępne słowa kluczowe,** aby dynamicznie wstawiać dane alertu podczas wysyłania wiadomości.
     
     > [!NOTE]
-    > Powiadomienia e-mail można sprawdzić, klikając **testowe powiadomienie E-mail** przycisk, ale tylko po zapisaniu podczas konfigurowania alertu.
+    > Powiadomienie e-mail można przetestować, klikając przycisk **Testuj powiadomienie,** ale tylko po zapisaniu konfiguracji alertu.
     > 
     > 
-12. Jeśli chcesz, aby powiadomienia do opublikowania na serwerze sieci web, sprawdź **powiadamiania przez żądania HTTP Post** pola wyboru.
+12. Jeśli chcesz, aby powiadomienia były księgowane na serwerze sieci Web, zaznacz pole wyboru **Powiadom według protokołu HTTP.**
     
-    ![Powiadom za pomocą żądania HTTP Post formularza](./media/cdn-real-time-alerts/cdn-notify-http.png)
+    ![Powiadom za pomocą formularza wpisu HTTP](./media/cdn-real-time-alerts/cdn-notify-http.png)
     
-    W **adresu Url** wprowadź adres URL, którego komunikatu HTTP księgowania. W **nagłówki** polu tekstowym Wprowadź nagłówki HTTP, które mają być wysyłane w żądaniu.  Dla **treści**, może dostosować komunikat, używając **dostępne słowa kluczowe** listy, aby dynamicznie wstawić dane alertów po wysłaniu wiadomości.  **Nagłówki** i **treści** domyślnie ładunek XML, podobny do poniższego przykładu:
+    W polu **Adres URL** wprowadź adres URL, pod którym chcesz opublikować wiadomość HTTP. W polu tekstowym **Nagłówki** wprowadź nagłówki HTTP, które mają zostać wysłane w żądaniu.  W przypadku **treści**można dostosować wiadomość za pomocą listy **Dostępne słowa kluczowe,** aby dynamicznie wstawiać dane alertu podczas wysyłania wiadomości.  **Nagłówki** i **treść** domyślnie do ładunku XML podobne do następującego przykładu:
     
     ```
     <string xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
@@ -102,13 +102,13 @@ W tym dokumencie wyjaśniono alerty w czasie rzeczywistym w usłudze Microsoft A
     ```
     
     > [!NOTE]
-    > Powiadomienie Post protokołu HTTP można sprawdzić, klikając **testowe powiadomienie E-mail** przycisk, ale tylko po zapisaniu podczas konfigurowania alertu.
+    > Powiadomienie http post można przetestować, klikając przycisk **Testuj powiadomienie,** ale tylko po zapisaniu konfiguracji alertu.
     > 
     > 
-13. Kliknij przycisk **Zapisz** przycisk, aby zapisać konfigurację alertu.  Jeśli zaznaczono **Alert włączony** w kroku 5, Twój alert jest teraz aktywna.
+13. Kliknij przycisk **Zapisz,** aby zapisać konfigurację alertów.  Jeśli w kroku 5 zaznaczono **włączono alert,** alert jest teraz aktywny.
 
 ## <a name="next-steps"></a>Następne kroki
-* Analizowanie [statystyki w czasie rzeczywistym w usłudze Azure CDN](cdn-real-time-stats.md)
-* Postaraj się bardziej z [zaawansowane raporty HTTP](cdn-advanced-http-reports.md)
+* Analizowanie [statystyk czasu rzeczywistego w usłudze Azure CDN](cdn-real-time-stats.md)
+* Kopiuj głębiej dzięki [zaawansowanym raportom HTTP](cdn-advanced-http-reports.md)
 * Analizowanie [wzorców użycia](cdn-analyze-usage-patterns.md)
 

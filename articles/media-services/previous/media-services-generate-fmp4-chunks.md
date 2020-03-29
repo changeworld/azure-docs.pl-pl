@@ -1,6 +1,6 @@
 ---
-title: Tworzenie usługi Azure Media Services zadanie kodowania, które fragmenty fMP4 | Dokumentacja firmy Microsoft
-description: W tym temacie przedstawiono sposób tworzenia zadania kodowania, generującego fragmenty fMP4. Gdy to zadanie jest wykorzystywane przy użyciu usługi Media Encoder Standard lub kodera Media Encoder Premium Workflow, elementu zawartości wyjściowej będzie zawierać fragmenty fMP4 zamiast plików ISO MP4.
+title: Tworzenie zadania kodowania usługi Azure Media Services, które generuje fragmenty fMP4 | Dokumenty firmy Microsoft
+description: W tym temacie pokazano, jak utworzyć zadanie kodowania, które generuje fragmenty fMP4. Gdy to zadanie jest używane z koderem Media Encoder Standard lub Media Encoder Premium Workflow, zasób wyjściowy będzie zawierał fragmenty fMP4 zamiast plików ISO MP4.
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -14,17 +14,17 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: 48c09a6100586c0c99f3d54f9708c770488c681f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "61463871"
 ---
-#  <a name="create-an-encoding-task-that-generates-fmp4-chunks"></a>Utwórz zadanie kodowania, które fragmenty fMP4
+#  <a name="create-an-encoding-task-that-generates-fmp4-chunks"></a>Tworzenie zadania kodowania, które generuje fragmenty fMP4
 
 ## <a name="overview"></a>Omówienie
 
-W tym artykule przedstawiono sposób tworzenia zadania kodowania, która generuje plik MP4 fragmenty (fMP4) zamiast plików ISO MP4. Aby wygenerować fragmenty fMP4, należy użyć **Media Encoder Standard** lub **Media Encoder Premium Workflow** kodera, aby utworzyć zadanie kodowania, a także określić **AssetFormatOption.AdaptiveStreaming**  opcji, jak pokazano w poniższym przykładzie:  
+W tym artykule pokazano, jak utworzyć zadanie kodowania, które generuje fragmenty pofragmentowanego formatu MP4 (fMP4) zamiast plików ISO MP4. Aby wygenerować fragmenty fMP4, użyj **kodera Media Encoder Standard** lub **Media Encoder Premium Workflow,** aby utworzyć zadanie kodowania, a także określić opcję **AssetFormatOption.AdaptiveStreaming,** jak pokazano w tym fragmencie kodu:  
     
 ```csharp
     task.OutputAssets.AddNew(@"Output Asset containing fMP4 chunks", 
@@ -32,14 +32,14 @@ W tym artykule przedstawiono sposób tworzenia zadania kodowania, która generuj
             formatOption: AssetFormatOption.AdaptiveStreaming);
 ```
 
-## <a id="encoding_with_dotnet"></a>Kodowanie za pomocą usługi Media Services .NET SDK
+## <a name="encoding-with-media-services-net-sdk"></a><a id="encoding_with_dotnet"></a>Kodowanie za pomocą sdk usługi Media Services .NET
 
-Poniższy przykład kodu używa Media Services .NET SDK do wykonywania następujących zadań:
+Poniższy przykład kodu używa media services .NET SDK do wykonywania następujących zadań:
 
-- Utwórz zadania kodowania.
-- Pobierz odwołanie do **Media Encoder Standard** kodera.
-- Dodaj zadanie kodowania, zadania i określanie użycia **adaptacyjnego przesyłania strumieniowego** wstępnie zdefiniowane. 
-- Tworzenie zasobu danych wyjściowych, który będzie zawierać fragmenty fMP4 i plik .ism.
+- Utwórz zadanie kodowania.
+- Uzyskaj odwołanie do **kodera Media Encoder Standard.**
+- Dodaj zadanie kodowania do zadania i określ, aby użyć predefiniowanych **ustawień adaptacyjnego przesyłania strumieniowego.** 
+- Utwórz zasób wyjściowy, który będzie zawierał fragmenty fMP4 i plik .ism.
 - Dodaj program obsługi zdarzeń, aby sprawdzić postęp zadania.
 - Przesyłanie zadania.
 
@@ -177,5 +177,5 @@ namespace AdaptiveStreaming
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="see-also"></a>Zobacz też
-[Omówienie kodowania usługi Media Services](media-services-encode-asset.md)
+[Omówienie kodowania usług multimedialnych](media-services-encode-asset.md)
 

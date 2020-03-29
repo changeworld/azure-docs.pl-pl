@@ -1,6 +1,6 @@
 ---
-title: Przegląd symulacji urządzenia — Azure | Dokumentacja firmy Microsoft
-description: Opis akcelerator rozwiązań symulacji urządzenia i jego możliwości.
+title: Omówienie symulacji urządzeń — Platforma Azure | Dokumenty firmy Microsoft
+description: Opis akceleratora rozwiązań device simulation i jego możliwości.
 author: dominicbetts
 manager: philmea
 ms.service: iot-accelerators
@@ -10,57 +10,57 @@ ms.custom: mvc
 ms.date: 12/03/2018
 ms.author: dobett
 ms.openlocfilehash: f58eb05ed582cf18157a76f4d637d72a228f4e96
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "65464867"
 ---
 # <a name="device-simulation-solution-accelerator-overview"></a>Omówienie akceleratora rozwiązań do symulacji urządzeń
 
-Rozwiązania IoT opartych na chmurze urządzenia łączą się z punktu końcowego w chmurze do wysyłania danych telemetrycznych, takich jak temperatury, lokalizacja i stan. Rozwiązanie używa tych danych telemetrycznych, dzięki któremu można wykonać akcje lub dziedziczyć po nim szczegółowych informacji.
+W chmurowym rozwiązaniu IoT urządzenia łączą się z punktem końcowym chmury, aby wysyłać dane telemetryczne, takie jak temperatura, lokalizacja i stan. Rozwiązanie zużywa tę telemetrię, umożliwiając podjęcie działań lub uzyskanie szczegółowych informacji z niego.
 
-Podczas opracowywania rozwiązania IoT eksperymentowania i testowanie są podstawowe części procesu. Symulacja jest ważnym narzędziem w trakcie tego procesu. Za pomocą symulacji urządzenia możesz wykonywać następujące czynności:
+Podczas opracowywania rozwiązania IoT eksperymenty i testowanie są istotnymi elementami tego procesu. Symulacja jest ważnym narzędziem w całym tym procesie. Za pomocą symulacji urządzenia można:
 
-* Szybkie rozpoczęcie prototyp, działanie i wejść, dostosowując symulowane urządzenie zachowanie na bieżąco. Ten proces umożliwia okazać się koncepcja przed inwestowania w sprzęt kosztowne. Możesz utworzyć niestandardowe urządzeniami za pośrednictwem internetowego interfejsu użytkownika, aby wygenerować urządzenia prototypu w ciągu kilku sekund.
-* Sprawdź, czy urządzenie i rozwiązanie działają zgodnie z oczekiwaniami, symulując zachowania rzeczywistego urządzenia. Można tworzyć skrypty dla zachowania złożonych urządzenia, które można wygenerować realistyczne symulowanych danych telemetrycznych przy użyciu języka JavaScript.
-* Skala przetestowanie rozwiązania przez symulowanie szczytu normalne oraz wiele innych warunkach obciążenia szczytowego. Testy skalowania również pomóc wielkości zasobów platformy Azure potrzebnych do uruchomienia rozwiązania.
+* Szybko uruchamiaj prototyp, a następnie iteruj, dostosowując symulowane zachowanie urządzenia w locie. Ten proces pozwala udowodnić pomysł przed zainwestowaniem w kosztowny sprzęt. Urządzenia niestandardowe można tworzyć za pośrednictwem interfejsu użytkownika sieci Web, aby wygenerować urządzenie prototypowe w ciągu kilku sekund.
+* Sprawdź poprawność rozwiązania działa zgodnie z oczekiwaniami od urządzenia do rozwiązania, symulując rzeczywiste zachowania urządzeń. Można skryptować złożone zachowania urządzeń przy użyciu języka JavaScript do generowania realistycznych symulowanych danych telemetrycznych.
+* Skala testuje rozwiązanie, symulując normalne, szczytowe i wykraczające poza szczytowe warunki obciążenia. Testy skalowania pomagają również w odpowiednim rozmiarze zasobów platformy Azure potrzebnych do uruchomienia rozwiązania.
 
-![Symulacja drona próbki](media/iot-accelerators-device-simulation-overview/dronesimulation.png)
+![Przykładowa symulacja drona](media/iot-accelerators-device-simulation-overview/dronesimulation.png)
 
-Za pomocą symulacji urządzenia można zdefiniować modele urządzeń, aby symulować rzeczywiste urządzenia. Ten model zawiera formaty wiadomości, bliźniacza reprezentacja właściwości i metody. Można także symulować urządzenie złożonych zachowań za pomocą języka JavaScript.
+Za pomocą symulacji urządzenia można definiować modele urządzeń, aby symulować rzeczywiste urządzenia. Ten model zawiera formaty wiadomości, właściwości bliźniaczej reprezentacji i metody. Można również symulować złożone zachowania urządzeń za pomocą języka JavaScript.
 
-Możesz uruchomić symulacje, jednego do tysięcy urządzeń nawiązujących połączenie z dowolnej usługi IoT hub. Aby ułatwić testowanie, opcjonalnie można wdrożyć Centrum IoT, wraz z symulacji urządzenia środowisku autonomicznym.
+Można uruchomić symulacje dla jednego do tysięcy urządzeń łączących się z dowolnym centrum IoT hub. Aby ułatwić testowanie, można opcjonalnie wdrożyć centrum IoT hub wraz z symulacji urządzenia dla środowiska autonomicznego.
 
-Symulacja urządzenia jest bezpłatne. Jednak symulacji urządzenia wdraża do subskrypcji platformy Azure w chmurze i używanie zasobów platformy Azure. Jeśli symulacji urządzenia nie spełniają Twoich wymagań, [kod źródłowy jest również dostępna w witrynie GitHub](https://github.com/Azure/device-simulation-dotnet) skopiować i zmodyfikować.
+Symulacja urządzenia jest bezpłatna. Jednak device simulation wdraża do subskrypcji platformy Azure w chmurze i zużywają zasoby platformy Azure. Jeśli symulacja urządzenia nie spełnia twoich wymagań, [kod źródłowy jest również dostępny w usłudze GitHub,](https://github.com/Azure/device-simulation-dotnet) aby można było go skopiować i zmodyfikować.
 
-## <a name="sample-simulations"></a>Symulacje próbki
+## <a name="sample-simulations"></a>Przykładowe symulacje
 
-Podczas wdrażania symulacji urządzenia, możesz korzystać z niektórych przykładowej symulacji i przykładowe urządzenia. Te przykłady można użyć, aby dowiedzieć się, jak używać symulacji urządzenia. Aby rozpocząć pracę, należy uruchomić [przykładowy symulacji, która symuluje sieć 10 ciężarówek](quickstart-device-simulation-deploy.md). Możesz również [własne symulację przy użyciu jednego z wielu urządzeń próbki, pod warunkiem](iot-accelerators-device-simulation-create-simulation.md).
+Podczas wdrażania symulacji urządzenia, można uzyskać kilka przykładowych symulacji i przykładowych urządzeń. Możesz użyć tych przykładów, aby dowiedzieć się, jak korzystać z symulacji urządzenia. Aby rozpocząć, uruchom [przykładową symulację, która symuluje 10 ciężarówek.](quickstart-device-simulation-deploy.md) Można również [utworzyć własną symulację przy użyciu jednego z wielu przykładowych urządzeń.](iot-accelerators-device-simulation-create-simulation.md)
 
 ![Konfiguracja symulacji](media/iot-accelerators-device-simulation-overview/samplesimulation1.png)
 
-## <a name="custom-simulated-devices"></a>Niestandardowe symulowanych urządzeń
+## <a name="custom-simulated-devices"></a>Niestandardowe symulowane urządzenia
 
-Można użyć do symulacji urządzenia [tworzyć modele niestandardowe](iot-accelerators-device-simulation-create-custom-device.md) do użycia w swoje symulacje. Na przykład można zdefiniować nowego modelu urządzenia lodówki, który wysyła dane telemetryczne dotyczące temperatury i wilgotności. Niestandardowe symulowane urządzenia są idealne dla zachowania proste urządzenia za pomocą losowych, zwiększanie lub zmniejszanie wartości telemetryczne.
+Za pomocą symulacji urządzenia można [tworzyć niestandardowe modele urządzeń](iot-accelerators-device-simulation-create-custom-device.md) do użycia w symulacjach. Na przykład można zdefiniować nowy model urządzenia lodówki, który wysyła dane telemetryczne temperatury i wilgotności. Niestandardowe symulowane urządzenia są idealne do prostych zachowań urządzeń z losowymi, przyrostowymi lub dekrementującymi wartościami telemetrycznymi.
 
 ![Tworzenie modelu urządzenia](media/iot-accelerators-device-simulation-overview/adddevicemodel.png)
 
-## <a name="advanced-simulated-devices"></a>Zaawansowany symulowane urządzenia
+## <a name="advanced-simulated-devices"></a>Zaawansowane symulowane urządzenia
 
-Jeśli potrzebujesz większej kontroli nad wartości telemetryczne, które urządzenie wysyła, można użyć modelu urządzenia zaawansowane. Modele urządzeń zaawansowane Włącz obsługę języka JavaScript do manipulowania wartością wysłane dane telemetryczne. Na przykład można symulować posługiwanie się nimi temperatury samochodu zaparkowane w warstwie gorąca słoneczny dzień — jako wzrost temperatury zewnętrznej, posługiwanie się nimi temperatury zwiększa się wykładniczo.
+Jeśli potrzebujesz większej kontroli nad wartościami telemetrii wysyłanym przez urządzenie, można użyć zaawansowanego modelu urządzenia. Zaawansowane modele urządzeń umożliwiają obsługę języka JavaScript manipulowania wysłanymi wartościami telemetrycznymi. Na przykład, można symulować temperaturę wewnętrzną zaparkowanego samochodu w upalny słoneczny dzień - wraz ze wzrostem temperatury zewnętrznej temperatura w wewnętrzna wzrasta wykładniczo.
 
-Modele zaawansowanych urządzeń umożliwiają [utworzenia i przekazania własnych modeli urządzeń](iot-accelerators-device-simulation-advanced-device.md) składających się z definicji urządzenia JSON plików i odpowiadające im pliki JavaScript.
+Zaawansowane modele urządzeń umożliwiają [tworzenie i przesyłanie własnych modeli urządzeń,](iot-accelerators-device-simulation-advanced-device.md) które składają się z pliku definicji urządzenia JSON i odpowiednich plików JavaScript.
 
-Modele zaawansowanych urządzeń pozwalają na:
+Zaawansowane modele urządzeń umożliwiają:
 
-* Określ format wiadomości wysyłanych z urządzenia oraz typy telemetrii.
-* Użyj niestandardowego skryptu, aby wygenerować wartości telemetryczne, które zarządzania stanem urządzenia wraz z upływem czasu.
-* Użyj niestandardowych skryptów, aby określić, jak symulowane urządzenie odpowiada na metody.
+* Określ format wiadomości wysyłany z urządzenia wraz z typami telemetrii.
+* Użyj skryptów niestandardowych do generowania wartości telemetrycznych, które utrzymują stan urządzenia w czasie.
+* Użyj skryptów niestandardowych, aby określić, jak symulowane urządzenie reaguje na metody.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-W tym artykule omówiono akcelerator rozwiązań symulacji urządzenia i jego możliwości. Aby rozpocząć pracę, przy użyciu akcelerator rozwiązań, przejdź do przewodnika Szybki Start:
+W tym artykule dowiesz się o akceleratorze rozwiązań device simulation i jego możliwościach. Aby rozpocząć korzystanie z akceleratora rozwiązań, przejdź do szybkiego startu:
 
 > [!div class="nextstepaction"]
-> [Wdrażanie i uruchamianie symulacji urządzenia IoT na platformie Azure](quickstart-device-simulation-deploy.md)
+> [wdrażanie i uruchamianie symulacji urządzenia IoT na platformie Azure](quickstart-device-simulation-deploy.md)

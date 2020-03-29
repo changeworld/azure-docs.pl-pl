@@ -1,5 +1,5 @@
 ---
-title: HDInsight 4,0 — Omówienie — Azure
+title: Omówienie usługi HDInsight 4.0 — platforma Azure
 description: Porównanie funkcji i ograniczeń usług HDInsight 3.6 i HDInsight 4.0 oraz rekomendacje dotyczące uaktualniania.
 author: hrasheed-msft
 ms.author: hrasheed
@@ -8,17 +8,17 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/22/2019
 ms.openlocfilehash: 0463e3297bbb2fda50adfeefaa89f0a7a3ef8b0a
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72901533"
 ---
-# <a name="azure-hdinsight-40-overview"></a>Omówienie usługi Azure HDInsight 4,0
+# <a name="azure-hdinsight-40-overview"></a>Omówienie usługi Azure HDInsight 4.0
 
-Azure HDInsight jest jedną z najpopularniejszych usług używanych przez klientów korporacyjnych na potrzeby analizy w narzędziach typu open source Apache Hadoop i Apache Spark na platformie Azure. HDInsight 4,0 to dystrybucja w chmurze Apache Hadoop składników. Ten artykuł zawiera informacje o najnowszym wydaniu usługi Azure HDInsight i sposobie jej uaktualniania.
+Azure HDInsight jest jedną z najpopularniejszych usług używanych przez klientów korporacyjnych na potrzeby analizy w narzędziach typu open source Apache Hadoop i Apache Spark na platformie Azure. HDInsight 4.0 to rozkład w chmurze komponentów Apache Hadoop. Ten artykuł zawiera informacje o najnowszym wydaniu usługi Azure HDInsight i sposobie jej uaktualniania.
 
-## <a name="whats-new-in-hdinsight-40"></a>Co nowego w usłudze HDInsight 4,0?
+## <a name="whats-new-in-hdinsight-40"></a>Co nowego w HDInsight 4.0?
 
 ### <a name="apache-hive-30-and-llap"></a>Apache Hive 3.0 i LLAP
 
@@ -67,7 +67,7 @@ Platforma Apache Spark w usłudze HDInsight 4.0 obsługuje następujące scenari
 * Uruchamianie zadania przesyłania strumieniowego platformy Spark podczas zestawiania zmian z tabeli przesyłania strumieniowego Hive.
 * Tworzenie plików ORC bezpośrednio na podstawie zadania przesyłania strumieniowego ze strukturą platformy Spark.
 
-Nie musisz się już martwić przypadkowymi próbami uzyskania dostępu do tabel transakcyjnych Hive bezpośrednio z platformy Spark, co prowadziło do niespójności wyników, duplikowania danych lub ich uszkodzenia. W usłudze HDInsight 4,0 tabele i tabele Hive platformy Spark są przechowywane w oddzielnych magazynach. Za pomocą łącznika magazynu danych Hive możesz jawnie zarejestrować tabele transakcyjne programu Hive jako tabele zewnętrzne platformy Spark.
+Nie musisz się już martwić przypadkowymi próbami uzyskania dostępu do tabel transakcyjnych Hive bezpośrednio z platformy Spark, co prowadziło do niespójności wyników, duplikowania danych lub ich uszkodzenia. W umiań HDInsight 4.0 tabele Spark i tabele Hive są przechowywane w oddzielnych sklepach. Za pomocą łącznika magazynu danych Hive możesz jawnie zarejestrować tabele transakcyjne programu Hive jako tabele zewnętrzne platformy Spark.
 
 Dowiedz się więcej o platformie [Apache Spark](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.0/spark-overview/content/analyzing_data_with_apache_spark.html).
 
@@ -81,22 +81,22 @@ Usługa HDI 4.0 zawiera system Apache Oozie 4.3.1 z następującymi zmianami:
 
 Dowiedz się więcej o systemie [Apache Oozie](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.0/release-notes/content/patch_oozie.html).
 
-## <a name="how-to-upgrade-to-hdinsight-40"></a>Jak uaktualnić do usługi HDInsight 4,0
+## <a name="how-to-upgrade-to-hdinsight-40"></a>Jak uaktualnić do HDInsight 4.0
 
-Podobnie jak w przypadku każdego głównego wydania, przed zaimplementowaniem najnowszej wersji w środowisku produkcyjnym należy dokładnie przetestować składniki. Usługa HDInsight 4,0 jest dostępna, aby rozpocząć proces uaktualniania, ale HDInsight 3,6 jest opcją domyślną zapobiegającą przypadkowym Mishaps.
+Podobnie jak w przypadku każdego głównego wydania, przed zaimplementowaniem najnowszej wersji w środowisku produkcyjnym należy dokładnie przetestować składniki. HdInsight 4.0 jest dostępny, aby rozpocząć proces aktualizacji, ale HDInsight 3.6 jest domyślną opcją, aby zapobiec przypadkowym wpadek.
 
-Nie ma żadnej obsługiwanej ścieżki uaktualnienia z poprzednich wersji usługi HDInsight do usługi HDInsight 4,0. Ponieważ formaty magazynu metadanych i obiektów BLOB uległy zmianie, Usługa HDInsight 4,0 nie jest zgodna z poprzednimi wersjami. Ważne jest, aby zachować nowe środowisko usługi HDInsight 4,0 niezależnie od bieżącego środowiska produkcyjnego. W przypadku wdrożenia usługi HDInsight 4,0 w bieżącym środowisku magazyn metadanych zostanie uaktualniony i nie będzie można go cofnąć.  
+Nie ma obsługiwanej ścieżki uaktualnienia z poprzednich wersji programu HDInsight do programu HDInsight 4.0. Ponieważ formaty danych metastore i obiektów blob uległy zmianie, program HDInsight 4.0 nie jest zgodny z poprzednimi wersjami. Ważne jest, aby nowe środowisko HDInsight 4.0 było oddzielone od bieżącego środowiska produkcyjnego. Jeśli wdrożysz hdinsight 4.0 w bieżącym środowisku, metasklep zostanie uaktualniony i nie będzie można go cofnąć.  
 
 ## <a name="limitations"></a>Ograniczenia
 
-* Usługa HDInsight 4,0 nie obsługuje MapReduce dla Apache Hive. Zamiast tego należy użyć środowiska Apache Tez. Dowiedz się więcej o środowisku [Apache Tez](https://tez.apache.org/).
-* Usługa HDInsight 4,0 nie obsługuje Apache Storm.
-* Widok Hive nie jest już dostępny w usłudze HDInsight 4,0.
-* Interpreter powłoki w programie Apache Zeppelin nie jest obsługiwany w przypadku klastrów Spark i Interactive zapytania zapytań.
+* HdInsight 4.0 nie obsługuje MapReduce dla Apache Hive. Zamiast tego należy użyć środowiska Apache Tez. Dowiedz się więcej o środowisku [Apache Tez](https://tez.apache.org/).
+* HDInsight 4.0 nie obsługuje Apache Storm.
+* Widok gałęzi nie jest już dostępny w umiań HDInsight 4.0.
+* Interpreter powłoki w Apache Zeppelin nie jest obsługiwany w klastrach Spark i Interactive Query.
 * Nie można *wyłączyć* funkcji LLAP w klastrze Spark LLAP. Można tylko wyłączyć funkcję LLAP.
 * Usługa Azure Data Lake Storage Gen2 nie pozwala zapisywać notesów Juypter w klastrze Spark.
 
 ## <a name="next-steps"></a>Następne kroki
 
 * [Dokumentacja usługi Azure HDInsight](index.yml)
-* [Informacje o wersji](hdinsight-release-notes.md)
+* [Wersji](hdinsight-release-notes.md)

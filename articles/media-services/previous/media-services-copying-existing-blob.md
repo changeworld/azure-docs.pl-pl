@@ -1,6 +1,6 @@
 ---
-title: Kopiowanie obiektów blob z konta magazynu do zasobu usługi Azure Media Services | Dokumentacja firmy Microsoft
-description: W tym temacie pokazano, jak skopiować istniejący obiekt blob do zasobów usługi multimediów. W przykładzie użyto rozszerzenia SDK .NET usługi Azure Media Services.
+title: Kopiowanie obiektów blob z konta magazynu do zasobu usługi Azure Media Services | Dokumenty firmy Microsoft
+description: W tym temacie pokazano, jak skopiować istniejący obiekt blob do zasobu usługi Media Services. W przykładzie użyto rozszerzeń SDK usługi Azure Media Services .NET.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,45 +14,45 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: a1da207a295b40f8d455635d687083bf69e90fdf
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67068890"
 ---
-# <a name="copying-existing-blobs-into-a-media-services-asset"></a>Kopiowanie istniejących obiektów blob do zasobu usługi multimediów
+# <a name="copying-existing-blobs-into-a-media-services-asset"></a>Kopiowanie istniejących obiektów blob do zasobu usług media
 
 > [!NOTE]
-> Do usługi Media Services w wersji 2 nie są już dodawane żadne nowe funkcje. <br/>Zapoznaj się z najnowszą wersją, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Zobacz też [wskazówek dotyczących migracji od v2 do v3](../latest/migrate-from-v2-to-v3.md)
+> Do usługi Media Services w wersji 2 nie są już dodawane żadne nowe funkcje. <br/>Sprawdź najnowszą wersję usługi [Media Services w wersji 3](https://docs.microsoft.com/azure/media-services/latest/). Zobacz też [wskazówki dotyczące migracji z wersji 2 do v3](../latest/migrate-from-v2-to-v3.md)
 
-W tym artykule przedstawiono sposób kopiowania obiektów blob z konta magazynu do nowego zasobu usługi Azure Media Services (AMS), za pomocą [rozszerzenia SDK .NET usługi Azure Media Services](https://github.com/Azure/azure-sdk-for-media-services-extensions/).
+W tym artykule pokazano, jak kopiować obiekty blob z konta magazynu do nowego zasobu usługi Azure Media Services (AMS) przy użyciu [rozszerzeń SDK usługi Azure Media Services .NET](https://github.com/Azure/azure-sdk-for-media-services-extensions/).
 
-Nie należy próbować zmienić zawartość kontenerów obiektów blob, które zostały wygenerowane przez usługę Media Services bez korzystania z interfejsów API usługi Media.
+Nie należy podejmować prób zmiany zawartości kontenerów obiektów blob, które zostały wygenerowane przez usługę Media Services bez użycia interfejsów API usługi Media Service.
 
-Metody rozszerzające pracować:
+Metody rozszerzenia działają z:
 
-- Regularne zasoby.
-- Dynamiczne archiwum zasoby (w formacie FragBlob).
-- Źródłowe i docelowe zasoby należące do różnych kont usługi Media Services (nawet w różnych centrach danych). Jednak może być opłaty naliczone w ten sposób. Aby uzyskać więcej informacji o cenach, zobacz [transfery danych](https://azure.microsoft.com/pricing/#header-11).
+- Aktywa regularne.
+- Zasoby archiwum na żywo (format FragBlob).
+- Zasoby źródłowe i docelowe należące do różnych kont usługi Media Services (nawet w różnych centrach danych). Mogą jednak wystąpić opłaty. Aby uzyskać więcej informacji na temat cen, zobacz [Transfery danych](https://azure.microsoft.com/pricing/#header-11).
 
-W tym artykule opisano dwa przykłady kodu:
+W artykule przedstawiono dwa przykłady kodu:
 
-1. Kopiować obiekty BLOB z zasobu na jednym koncie usługi AMS do nowego zasobu w innym kontem usługi AMS.
-2. Skopiuj obiektów blob z niektóre konta magazynu do nowego elementu zawartości w ramach konta usługi AMS.
+1. Kopiowanie obiektów blob z zasobu na jednym koncie usługi AMS do nowego zasobu na innym koncie usługi AMS.
+2. Kopiowanie obiektów blob z niektórych kont magazynu do nowego zasobu na koncie usługi AMS.
 
-## <a name="copy-blobs-between-two-ams-accounts"></a>Kopiowanie obiektów blob między dwa konta usługi AMS  
+## <a name="copy-blobs-between-two-ams-accounts"></a>Kopiowanie obiektów blob między dwoma kontami usługi AMS  
 
 ### <a name="prerequisites"></a>Wymagania wstępne
 
-Dwa konta usługi Media Services. Zapoznaj się z artykułem [sposób tworzenia konta usługi Media Services](media-services-portal-create-account.md).
+Dwa konta usługi Media Services. Zobacz artykuł [Jak utworzyć konto usługi Media Services](media-services-portal-create-account.md).
 
-### <a name="download-sample"></a>Pobieranie przykładu
-Możesz wykonać kroki opisane w tym artykule można również pobrać próbkę, który zawiera kod, opisane w tym artykule [tutaj](https://azure.microsoft.com/documentation/samples/media-services-dotnet-copy-blob-into-asset/).
+### <a name="download-sample"></a>Pobieranie próbki
+Możesz wykonać kroki opisane w tym artykule lub pobrać przykład zawierający kod opisany w tym artykule [tutaj](https://azure.microsoft.com/documentation/samples/media-services-dotnet-copy-blob-into-asset/).
 
 ### <a name="set-up-your-project"></a>konfigurowanie projektu
 
-1. Konfigurowanie środowiska projektowego, zgodnie z opisem w [projektowanie usługi Media Services przy użyciu platformy .NET](media-services-dotnet-how-to-use.md). 
-2. Dodaj sekcję appSettings w pliku config i zaktualizuj wartości na podstawie konta usługi Media Services, docelowe konto magazynu i identyfikator zasobu źródłowej.  
+1. Skonfiguruj środowisko programistyczne zgodnie z opisem w [programie Media Services development za pomocą platformy .NET](media-services-dotnet-how-to-use.md). 
+2. Dodaj sekcję appSettings do pliku .config i zaktualizuj wartości na podstawie kont usługi Media Services, docelowego konta magazynu i identyfikatora zasobu źródłowego.  
 
 ```xml
 <appSettings>
@@ -76,9 +76,9 @@ Możesz wykonać kroki opisane w tym artykule można również pobrać próbkę,
 </appSettings>
 ```
 
-### <a name="copy-blobs-from-an-asset-in-one-ams-account-into-an-asset-in-another-ams-account"></a>Kopiować obiekty BLOB z zasobu na jednym koncie usługi AMS do elementu zawartości w innym kontem usługi AMS
+### <a name="copy-blobs-from-an-asset-in-one-ams-account-into-an-asset-in-another-ams-account"></a>Kopiowanie obiektów blob z zasobu na jednym koncie usługi AMS do zasobu na innym koncie usługi AMS
 
-W poniższym kodzie użyto rozszerzeń **IAsset.Copy** metody do skopiowania wszystkich plików w zasobie źródła do zasobu docelowego przy użyciu jednego rozszerzenia.
+Poniższy kod używa rozszerzenia **IAsset.Copy** metody kopiowania wszystkich plików w zasobie źródłowym do zasobu docelowego przy użyciu jednego rozszerzenia.
 
 ```csharp
 using System;
@@ -162,13 +162,13 @@ namespace CopyExistingBlobsIntoAsset
 
 ### <a name="prerequisites"></a>Wymagania wstępne
 
-- Jedno konto magazynu, z których chcesz kopiować obiekty BLOB.
-- Jedno konto usługi AMS, do którego chcesz kopiować obiekty BLOB.
+- Jedno konto magazynu, z którego mają zostać skopiowane obiekty blob.
+- Jedno konto usługi AMS, do którego mają być kopiowane obiekty blob.
 
 ### <a name="set-up-your-project"></a>konfigurowanie projektu
 
-1. Konfigurowanie środowiska projektowego, zgodnie z opisem w [projektowanie usługi Media Services przy użyciu platformy .NET](media-services-dotnet-how-to-use.md). 
-2. Dodaj sekcję appSettings w pliku config i zaktualizuj wartości na podstawie źródła kont usługi AMS magazynu i miejsce docelowe.
+1. Skonfiguruj środowisko programistyczne zgodnie z opisem w [programie Media Services development za pomocą platformy .NET](media-services-dotnet-how-to-use.md). 
+2. Dodaj sekcję appSettings do pliku .config i zaktualizuj wartości na podstawie magazynu źródłowego i docelowych kont USŁUGI AMS.
 
 ```xml
 <appSettings>
@@ -185,9 +185,9 @@ namespace CopyExistingBlobsIntoAsset
 </appSettings>
 ```
 
-### <a name="copy-blobs-from-some-storage-account-into-a-new-asset-in-an-ams-account"></a>Kopiować obiekty BLOB z niektóre konta magazynu do nowego elementu zawartości w ramach konta usługi AMS
+### <a name="copy-blobs-from-some-storage-account-into-a-new-asset-in-an-ams-account"></a>Kopiowanie obiektów blob z niektórych kont magazynu do nowego zasobu na koncie usługi AMS
 
-Poniższy kod kopiuje obiekty BLOB z konta magazynu do zasobu usługi Media Services. 
+Poniższy kod kopiuje obiekty blob z konta magazynu do zasobu usługi Media Services. 
 
 >[!NOTE]
 >Limit różnych zasad usługi AMS wynosi 1 000 000 (na przykład zasad lokalizatorów lub ContentKeyAuthorizationPolicy). Należy używać tego samego identyfikatora zasad, jeśli zawsze są używane uprawnienia dotyczące tych samych dni lub tego samego dostępu, na przykład dla lokalizatorów przeznaczonych do długotrwałego stosowania (nieprzekazywanych zasad). Więcej informacji znajduje się w [tym](media-services-dotnet-manage-entities.md#limit-access-policies) artykule.
@@ -375,7 +375,7 @@ namespace CopyExistingBlobsIntoAsset
 }
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Teraz możesz zakodować przekazane elementy zawartości. Więcej informacji znajduje się na stronie [Kodowanie elementów zawartości](media-services-portal-encode.md).
 

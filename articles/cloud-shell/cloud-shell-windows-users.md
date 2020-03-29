@@ -1,6 +1,6 @@
 ---
-title: Użytkownicy usługi Azure Cloud Shell dla Windows | Dokumentacja firmy Microsoft
-description: Przewodnik dla użytkowników, którzy nie są zaznajomieni z systemami Linux
+title: Usługa Azure Cloud Shell dla użytkowników systemu Windows | Dokumenty firmy Microsoft
+description: Przewodnik dla użytkowników, którzy nie znają systemów Linux
 services: azure
 documentationcenter: ''
 author: maertendMSFT
@@ -15,31 +15,31 @@ ms.topic: article
 ms.date: 08/03/2018
 ms.author: damaerte
 ms.openlocfilehash: 4fc4f6523eb19294cabdf6b5b910dd346a877502
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67204141"
 ---
-# <a name="powershell-in-azure-cloud-shell-for-windows-users"></a>Program PowerShell w użytkownicy usługi Azure Cloud Shell dla Windows
+# <a name="powershell-in-azure-cloud-shell-for-windows-users"></a>Program PowerShell w usłudze Azure Cloud Shell dla użytkowników systemu Windows
 
-W maju 2018 zmiany zostały wprowadzone [ogłosiła](https://azure.microsoft.com/blog/pscloudshellrefresh/) do programu PowerShell w usłudze Azure Cloud Shell.
-Środowisko programu PowerShell usługi Azure Cloud Shell teraz przebiegów [programu PowerShell Core 6](https://github.com/powershell/powershell) w środowisku systemu Linux.
-Dzięki tej zmianie może być występują pewne różnice w środowisku PowerShell w usłudze Cloud Shell w porównaniu do czego oczekuje się w programie Windows PowerShell.
+W maju 2018 r. [ogłoszono](https://azure.microsoft.com/blog/pscloudshellrefresh/) zmiany w programie PowerShell w usłudze Azure Cloud Shell.
+Środowisko programu PowerShell w usłudze Azure Cloud Shell uruchamia teraz [program PowerShell Core 6](https://github.com/powershell/powershell) w środowisku systemu Linux.
+Dzięki tej zmianie mogą występować pewne różnice w doświadczeniu programu PowerShell w usłudze Cloud Shell w porównaniu z oczekiwanymi w programie Windows PowerShell.
 
-## <a name="file-system-case-sensitivity"></a>Rozróżnianie wielkości liter systemu plików
+## <a name="file-system-case-sensitivity"></a>Wielkość liter w systemie plików
 
-W systemie plików jest rozróżniana wielkość liter w Windows, w systemie Linux, systemu plików jest rozróżniana wielkość liter.
-Wcześniej `file.txt` i `FILE.txt` uznano być tego samego pliku, ale teraz ich są uznawane za różne pliki.
-Należy użyć odpowiedniej wielkości podczas `tab-completing` w systemie plików.
-Określonego środowiska PowerShell środowisk, takich jak `tab-completing` nazwy poleceń cmdlet, parametry i wartości, nie jest rozróżniana wielkość liter.
+W systemie Windows jest niewrażliwy na wielkość liter, podczas gdy w systemie Linux system plików jest rozróżniany.
+Wcześniej `file.txt` i `FILE.txt` były uważane za ten sam plik, ale teraz są one uważane za różne pliki.
+W systemie plików należy `tab-completing` używać odpowiedniej obudowy.
+W programie PowerShell `tab-completing` określone środowiska, takie jak nazwy poleceń cmdlet, parametry i wartości, nie są rozróżniane wielkość liter.
 
-## <a name="windows-powershell-aliases-vs-linux-utilities"></a>Vs aliasy środowiska Windows PowerShell narzędzia systemu Linux
+## <a name="windows-powershell-aliases-vs-linux-utilities"></a>Aliasy programu Windows PowerShell i narzędzia systemu Linux
 
-Niektóre istniejące aliasy programu PowerShell mają takie same nazwy wbudowanego polecenia systemu Linux, takie jak `cat`,`ls`, `sort`, `sleep`itp. W programie PowerShell Core 6 zostały usunięte aliasy, które kolidują z wbudowanego polecenia systemu Linux.
-Poniżej przedstawiono typowe aliasy, które zostały usunięte, a także ich równoważne polecenia:  
+Niektóre istniejące aliasy programu PowerShell mają takie same nazwy `cat`jak`ls` `sort`wbudowane polecenia Linuksa, takie jak , , , `sleep`itp. W programie PowerShell Core 6 usunięto aliasy, które zderzają się z wbudowanymi poleceniami systemu Linux.
+Poniżej znajdują się typowe aliasy, które zostały usunięte, a także ich równoważne polecenia:  
 
-|Usunąć aliasu   |Equivalent Command   |
+|Usunięto alias   |Równoważne polecenie   |
 |---|---|
 |`cat`    | `Get-Content` |
 |`curl`   | `Invoke-WebRequest` |
@@ -51,22 +51,22 @@ Poniżej przedstawiono typowe aliasy, które zostały usunięte, a także ich r�
 |`sort`   | `Sort-Object` |
 |`wget`   | `Invoke-WebRequest` |
 
-## <a name="persisting-home"></a>Utrwalanie $HOME
+## <a name="persisting-home"></a>Utrzymujące się $HOME
 
-Wcześniej użytkownicy tylko można utrwalić, skrypty i inne pliki w dysku w chmurze.
-Teraz katalogu $HOME użytkownika również są utrwalane między sesjami.
+Wcześniej użytkownicy mogli utrwalić tylko skrypty i inne pliki na dysku w chmurze.
+Teraz $HOME katalogu użytkownika jest również zachowywane w sesjach.
 
 ## <a name="powershell-profile"></a>Profil programu PowerShell
 
-Domyślnie nie zostanie utworzony profil programu PowerShell.
-Aby utworzyć swój profil, Utwórz `PowerShell` katalogu w ramach `$HOME/.config`.
+Domyślnie profil programu PowerShell użytkownika nie jest tworzony.
+Aby utworzyć profil, `PowerShell` utwórz `$HOME/.config`katalog w obszarze .
 
 ```azurepowershell-interactive
 mkdir (Split-Path $profile.CurrentUserAllHosts)
 ```
 
-W obszarze `$HOME/.config/PowerShell`, można utworzyć pliki profilu — `profile.ps1` i/lub `Microsoft.PowerShell_profile.ps1`.
+W `$HOME/.config/PowerShell`obszarze , można utworzyć `profile.ps1` pliki `Microsoft.PowerShell_profile.ps1`profilowe - i/lub .
 
 ## <a name="whats-new-in-powershell-core-6"></a>Co nowego w programie PowerShell Core 6
 
-Aby uzyskać więcej informacji na temat nowości w programie PowerShell Core 6 [dokumentów dotyczących programu PowerShell](https://docs.microsoft.com/powershell/scripting/whats-new/what-s-new-in-powershell-core-60?view=powershell-6) i [rozpoczęcie korzystania z programu PowerShell Core](https://blogs.msdn.microsoft.com/powershell/2017/06/09/getting-started-with-powershell-core-on-windows-mac-and-linux/) wpis w blogu.
+Aby uzyskać więcej informacji na temat nowości w programie PowerShell Core 6, odwołaj się do [dokumentów programu PowerShell](https://docs.microsoft.com/powershell/scripting/whats-new/what-s-new-in-powershell-core-60?view=powershell-6) i wpisu w blogu Wprowadzenie do programu [PowerShell Core.](https://blogs.msdn.microsoft.com/powershell/2017/06/09/getting-started-with-powershell-core-on-windows-mac-and-linux/)

@@ -1,6 +1,6 @@
 ---
-title: Monit o Nieoczekiwane wyrażenie zgody podczas logowania się do aplikacji | Dokumentacja firmy Microsoft
-description: Jak rozwiązywać problemy z po użytkownik zobaczy monit o wyrażenie zgody dla aplikacji, które mają zintegrowany z usługą Azure AD, który użytkownik nie oczekiwano elementu
+title: Nieoczekiwany monit o zgodę podczas logowania się do aplikacji | Dokumenty firmy Microsoft
+description: Jak rozwiązywać problemy, gdy użytkownik zobaczy monit o zgodę dla aplikacji zintegrowanej z usługą Azure AD, której nie można się spodziewać
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -17,38 +17,38 @@ ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 83d043ecef152f977437e21e2caec40d1c40ce0d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "65781149"
 ---
-# <a name="unexpected-consent-prompt-when-signing-in-to-an-application"></a>Monit o Nieoczekiwane wyrażenie zgody podczas logowania się do aplikacji
+# <a name="unexpected-consent-prompt-when-signing-in-to-an-application"></a>Nieoczekiwany monit o zgodę podczas logowania się do aplikacji
 
-Wiele aplikacji, które integrują się z usługą Azure Active Directory wymaga uprawnień do różnych zasobów, aby można było uruchomić. Podczas tych zasobów są także zintegrowana z usługą Azure Active Directory, uprawnienia dostępu do nich jest wymagany przy użyciu usługi Azure AD platformy wyrażania zgody. 
+Wiele aplikacji, które integrują się z usługą Azure Active Directory wymagają uprawnień do różnych zasobów w celu uruchomienia. Gdy te zasoby są również zintegrowane z usługą Azure Active Directory, uprawnienia dostępu do nich jest wymagane przy użyciu platformy zgody usługi Azure AD. 
 
-Skutkuje to zgody monit jest wyświetlany przy pierwszym uruchomieniu aplikacji jest używany, co ma często miejsce to jednorazowa operacja. 
+Powoduje to wyświetlenie monitu zgody przy pierwszym użyciu aplikacji, która często jest operacją jednorazową. 
 
-## <a name="scenarios-in-which-users-see-consent-prompts"></a>Scenariusze, w których użytkownicy widzą zgody monity
+## <a name="scenarios-in-which-users-see-consent-prompts"></a>Scenariusze, w których użytkownicy widzą monity o zgodę
 
-Dodatkowe monity można spodziewać się w różnych scenariuszach:
+W różnych scenariuszach można spodziewać się dodatkowych monitów:
 
-* Zestaw uprawnień wymaganych przez aplikację został zmieniony.
+* Zmieniono zestaw uprawnień wymaganych przez aplikację.
 
-* Administrator nie jest użytkownik, który pierwotnie wyraża zgodę na aplikację, a teraz różne (użytkownik niebędący administratorem) używa aplikacji po raz pierwszy.
+* Użytkownik, który pierwotnie wyraził zgodę na aplikację, nie był administratorem, a teraz inny (nie-admin) Użytkownik korzysta z aplikacji po raz pierwszy.
 
-* Użytkownik, który pierwotnie wyraża zgodę na aplikację została administratora, ale nie wyraził zgody w imieniu całej organizacji.
+* Użytkownik, który pierwotnie wyraził zgodę na aplikację, był administratorem, ale nie wyraził zgody w imieniu całej organizacji.
 
-* Aplikacja używa [zgody przyrostowych i dynamiczne](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-compare#incremental-and-dynamic-consent) celu zażądania dodatkowych uprawnień po początkowym przyznaniu zgody. Jest to często używane, gdy funkcje opcjonalne dodatkowych aplikacji wymaga uprawnień poza tymi wymagane do obsługi funkcji linii bazowej.
+* Aplikacja używa [przyrostowej i dynamicznej zgody,](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-compare#incremental-and-dynamic-consent) aby zażądać dodatkowych uprawnień po udzieleniu zgody. Jest to często używane, gdy opcjonalne funkcje aplikacji dodatkowe wymagają uprawnień poza te wymagane dla funkcji linii bazowej.
 
-* Zgoda został odwołany po początkowym zostanie im przyznany.
+* Zgoda została cofnięta po udzieleniu początkowo.
 
-* Deweloper skonfigurował aplikacji, aby wymagać monit o zgodę za każdym razem, gdy jest używany (Uwaga: to nie jest zalecane).
+* Deweloper skonfigurował aplikację tak, aby wymagała monitu o zgodę za każdym razem, gdy jest używana (uwaga: nie jest to najlepsze rozwiązanie).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
--   [Aplikacje, uprawnienia i zgody w usłudze Azure Active Directory (punkt końcowy w wersji 1.0)](https://docs.microsoft.com/azure/active-directory/active-directory-apps-permissions-consent)
+-   [Aplikacje, uprawnienia i zgoda w usłudze Azure Active Directory (punkt końcowy w wersji 1.0)](https://docs.microsoft.com/azure/active-directory/active-directory-apps-permissions-consent)
 
--   [Zakresy, uprawnienia i zgody w usłudze Azure Active Directory (punktu końcowego v2.0)](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-scopes)
+-   [Zakresy, uprawnienia i zgody w usłudze Azure Active Directory (punkt końcowy w wersji 2.0)](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-scopes)
 
 

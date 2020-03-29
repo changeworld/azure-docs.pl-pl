@@ -1,6 +1,6 @@
 ---
 title: Omówienie szablonów
-description: Dowiedz się, jak używać wstępnie zdefiniowanego szablonu, aby szybko rozpocząć pracę z Azure Data Factory.
+description: Dowiedz się, jak szybko rozpocząć pracę z usługą Azure Data Factory za pomocą wstępnie zdefiniowanego szablonu.
 services: data-factory
 documentationcenter: ''
 ms.service: data-factory
@@ -12,81 +12,81 @@ manager: anandsub
 ms.custom: seo-lt-2019
 ms.date: 01/04/2019
 ms.openlocfilehash: f150234ecd3446858e8a6aa7d224eb3ad3d0efd3
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74927343"
 ---
 # <a name="templates"></a>Szablony
 
-Szablony są wstępnie zdefiniowanymi Azure Data Factory potoki, które umożliwiają szybkie rozpoczęcie pracy z Data Factory. Szablony są przydatne, gdy jesteś nowym do Data Factory i chcesz szybko rozpocząć pracę. Te szablony skracają czas opracowywania projektów integracji danych, a tym samym zwiększają produktywność deweloperów.
+Szablony są wstępnie zdefiniowane potoki usługi Azure Data Factory, które umożliwiają szybkie rozpoczęcie pracy z fabryką danych. Szablony są przydatne, gdy jesteś nowy w fabryce danych i chcesz szybko rozpocząć pracę. Szablony te skracają czas tworzenia projektów integracji danych, poprawiając w ten sposób produktywność deweloperów.
 
-## <a name="create-data-factory-pipelines-from-templates"></a>Tworzenie potoków Data Factory z szablonów
+## <a name="create-data-factory-pipelines-from-templates"></a>Tworzenie potoków fabryki danych na podstawie szablonów
 
-Możesz rozpocząć tworzenie potoku Data Factory na podstawie szablonu na dwa sposoby:
+Możesz rozpocząć tworzenie potoku fabryki danych z szablonu na dwa sposoby:
 
-1.  Wybierz pozycję **Utwórz potok na podstawie szablonu** na stronie Przegląd, aby otworzyć galerię szablonów.
+1.  Wybierz **pozycję Utwórz potok z szablonu** na stronie Przegląd, aby otworzyć galerię szablonów.
 
-    ![Otwórz galerię szablonów na stronie Przegląd](media/solution-templates-introduction/templates-intro-image1.png)
+    ![Otwieranie galerii szablonów na stronie Przegląd](media/solution-templates-introduction/templates-intro-image1.png)
 
-1.  Na karcie autor w Eksplorator zasobów wybierz pozycję **+** , a następnie pozycję **potok od szablonu** , aby otworzyć galerię szablonów.
+1.  Na karcie Autor w Eksploratorze zasobów wybierz pozycję **+** Potok z **szablonu,** aby otworzyć galerię szablonów.
 
-    ![Otwórz galerię szablonów na karcie autor](media/solution-templates-introduction/templates-intro-image2.png)
+    ![Otwieranie galerii szablonów na karcie Autor](media/solution-templates-introduction/templates-intro-image2.png)
 
 ## <a name="template-gallery"></a>Galeria szablonów
 
 ![Galeria szablonów](media/solution-templates-introduction/templates-intro-image3.png)
 
-### <a name="out-of-the-box-data-factory-templates"></a>Z Data Factory szablonów
+### <a name="out-of-the-box-data-factory-templates"></a>Szablony fabryki danych po wyjęciu z pudełka
 
-Data Factory używa szablonów Azure Resource Manager do zapisywania szablonów potoku usługi Fabryka danych. Wszystkie szablony Menedżer zasobów, wraz z plikiem manifestu używanym do wypełniania Data Factory szablonów, można zobaczyć w [oficjalnym repozytorium GitHub Azure Data Factory](https://github.com/Azure/Azure-DataFactory/tree/master/templates). Wstępnie zdefiniowane szablony udostępniane przez firmę Microsoft obejmują, ale nie są ograniczone do następujących elementów:
+Usługa Data Factory używa szablonów usługi Azure Resource Manager do zapisywania szablonów potoku fabryki danych. W oficjalnym repozytorezie [Usługi Azure Data Factory GitHub](https://github.com/Azure/Azure-DataFactory/tree/master/templates)można wyświetlić wszystkie szablony Menedżera zasobów wraz z plikiem manifestu używanym do szablonów fabryki danych po wyjęciu z pudełka. Wstępnie zdefiniowane szablony dostarczone przez firmę Microsoft zawierają między innymi następujące elementy:
 
--   Kopiuj szablony:
+-   Kopiowanie szablonów:
 
-    -   [Kopiowanie masowe z bazy danych](solution-template-bulk-copy-with-control-table.md)
+    -   [Kopiowanie zbiorcze z bazy danych](solution-template-bulk-copy-with-control-table.md)
     
-    -   [Kopiuj nowe pliki według LastModifiedDate](solution-template-copy-new-files-lastmodifieddate.md)
+    -   [Kopiowanie nowych plików według daty ostatniej modyfikacji](solution-template-copy-new-files-lastmodifieddate.md)
 
     -   [Kopiowanie wielu kontenerów plików między magazynami opartymi na plikach](solution-template-copy-files-multiple-containers.md)
 
     -   [Przenoszenie plików](solution-template-move-files.md)
 
-    -   [Kopiowanie przyrostowe z bazy danych](solution-template-delta-copy-with-control-table.md)
+    -   [Kopia delta z bazy danych](solution-template-delta-copy-with-control-table.md)
 
-    -   Kopiuj z\> źródłowej \<do lokalizacji docelowej \<\>
+    -   Kopiowanie \<\> ze \<źródła do miejsca docelowego\>
 
-        -   [Z usługi Amazon S3 do Azure Data Lake Store generacji 2](solution-template-migration-s3-azure.md)
+        -   [Od Amazon S3 do usługi Azure Data Lake Store Gen 2](solution-template-migration-s3-azure.md)
 
-        -   Z usługi Google Big Query do Azure Data Lake Store Gen 2
+        -   Od dużego zapytania Google do usługi Azure Data Lake Store Gen 2
 
-        -   Od HDF do Azure Data Lake Store Gen 2
+        -   Od hdf do usługi Azure Data Lake Store Gen 2
 
-        -   Od Netezza do Azure Data Lake Store Gen 1
+        -   Od Netezzy do usługi Azure Data Lake Store Gen 1
 
-        -   Od SQL Server lokalnych do Azure SQL Database
+        -   Od programu SQL Server lokalnie do bazy danych SQL Azure
 
-        -   Od SQL Server lokalnych do Azure SQL Data Warehouse
+        -   Od programu SQL Server lokalnie do usługi Azure SQL Data Warehouse
 
-        -   Z programu Oracle on premises do Azure SQL Data Warehouse
+        -   Od oracle lokalnie do usługi Azure SQL Data Warehouse
 
--   Szablony usług SSIS
+-   Szablony SSIS
 
-    -   Planowanie Azure-SSIS Integration Runtime wykonywania pakietów SSIS
+    -   Planowanie środowiska wykonawczego integracji platformy Azure-SSIS w celu wykonania pakietów SSIS
 
--   Przekształć szablony
+-   Przekształcanie szablonów
 
-    -   [ETL z Azure Databricks](solution-template-databricks-notebook.md)
+    -   [ETL z usługą Azure Databricks](solution-template-databricks-notebook.md)
 
 ### <a name="my-templates"></a>Moje szablony
 
-Możesz również zapisać potok jako szablon, wybierając pozycję **Zapisz jako szablon** na karcie potok.
+Potok można również zapisać jako szablon, wybierając pozycję **Zapisz jako szablon** na karcie Potok.
 
 ![Zapisywanie potoku jako szablonu](media/solution-templates-introduction/templates-intro-image4.png)
 
-Potoki zapisane jako szablony można wyświetlić w sekcji **Moje szablony** galerii szablonów. Można je również znaleźć w sekcji **Szablony** w Eksplorator zasobów.
+Potoki zapisane jako szablony można wyświetlić w sekcji Moje szablony w Galerii **szablonów.** Można je również wyświetlić w sekcji **Szablony** w Eksploratorze zasobów.
 
 ![Moje szablony](media/solution-templates-introduction/templates-intro-image5.png)
 
 > [!NOTE]
-> Aby można było korzystać z funkcji My templates, należy włączyć integrację z usługą GIT. Obsługiwane są zarówno usługi Azure DevOps GIT, jak i GitHub.
+> Aby korzystać z funkcji Moje szablony, należy włączyć integrację GIT. Obsługiwane są zarówno narzędzia Azure DevOps GIT, jak i GitHub.

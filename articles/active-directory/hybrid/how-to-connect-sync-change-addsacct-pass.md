@@ -1,8 +1,8 @@
 ---
-title: 'Synchronizacja programu Azure AD Connect:  Zmienianie hasła konta usług AD DS | Dokumentacja firmy Microsoft'
-description: W tym dokumencie tematu opisano, jak zaktualizować program Azure AD Connect po zmianie hasła konta usług AD DS.
+title: 'Synchronizacja usługi Azure AD Connect: zmiana hasła do konta usług AD DS | Dokumenty firmy Microsoft'
+description: W tym dokumencie tematu opisano sposób aktualizowania usługi Azure AD Connect po zmianie hasła do konta usług AD DS.
 services: active-directory
-keywords: Usługi AD DS konta, konto usługi Active Directory, hasło
+keywords: Konto usług AD DS, konto usługi Active Directory, hasło
 documentationcenter: ''
 author: billmath
 manager: daveba
@@ -18,43 +18,43 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 35e04be046e20883f60c576745a29342add68a81
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60241588"
 ---
 # <a name="changing-the-ad-ds-account-password"></a>Zmienianie hasła konta usług AD DS
-Konto usług AD DS odnosi się do konta użytkownika, używany przez program Azure AD Connect do komunikowania się z usługą Active Directory w środowisku lokalnym. Jeśli zmienisz hasło do konta usług AD DS, należy zaktualizować usługi Azure AD Connect synchronizacji przy użyciu nowego hasła. W przeciwnym razie synchronizacji może już nie są poprawnie synchronizowane z usługą Active Directory w środowisku lokalnym i można napotkać następujące błędy:
+Konto usług AD DS odnosi się do konta użytkownika używanego przez usługę Azure AD Connect do komunikowania się z lokalną usługą Active Directory. Jeśli zmienisz hasło konta usług AD DS, musisz zaktualizować usługę synchronizacji usługi Azure AD Connect za pomocą nowego hasła. W przeciwnym razie synchronizacja nie może już poprawnie synchronizować się z lokalną usługą Active Directory i wystąpią następujące błędy:
 
-* W operacji Synchronization Service Manager, wszelkie importu lub eksportu przy użyciu lokalnej usługi AD zakończy się niepowodzeniem z **nie-start-credentials** błędu.
+* W Menedżerze usług synchronizacji każda operacja importowania lub eksportowania z lokalną usługą AD kończy się niepowodzeniem z błędem **poświadczeń bez uruchomienia.**
 
-* W obszarze Windows podglądu zdarzeń, w dzienniku zdarzeń aplikacji zawiera błąd przy użyciu **6000 identyfikator zdarzenia** i komunikat **"agenta zarządzania"contoso.com"nie można uruchomić, ponieważ poświadczenia są nieprawidłowe"** .
+* W obszarze Podgląd zdarzeń systemu Windows dziennik zdarzeń aplikacji zawiera błąd o **identyfikatorze zdarzenia 6000** i komunikat **"Agent zarządzania "contoso.com" nie można uruchomić, ponieważ poświadczenia były nieprawidłowe.**
 
 
-## <a name="how-to-update-the-synchronization-service-with-new-password-for-ad-ds-account"></a>Jak zaktualizować usługę synchronizacji przy użyciu nowego hasła dla konta usługi AD DS
-Aby zaktualizować usługę synchronizacji przy użyciu nowego hasła:
+## <a name="how-to-update-the-synchronization-service-with-new-password-for-ad-ds-account"></a>Jak zaktualizować usługę synchronizacji za pomocą nowego hasła dla konta USŁUG AD DS
+Aby zaktualizować usługę synchronizacji za pomocą nowego hasła:
 
-1. Uruchom Menedżera usługi synchronizacji (usługa synchronizacji → START).
-</br>![Menedżera usługi synchronizacji](./media/how-to-connect-sync-change-addsacct-pass/startmenu.png)  
+1. Uruchom Menedżera usług synchronizacji (START → Usługa synchronizacji).
+</br>![Menedżer usługi synchronizacji](./media/how-to-connect-sync-change-addsacct-pass/startmenu.png)  
 
-2. Przejdź do **łączników** kartę.
+2. Przejdź do karty **Łączniki.**
 
-3. Wybierz **łącznika AD** odnosi się do konta usługi AD DS, dla których zmieniono jego hasło.
+3. Wybierz **łącznik usługi AD** odpowiadający kontu usług AD DS, dla którego jego hasło zostało zmienione.
 
-4. W obszarze **akcje**, wybierz opcję **właściwości**.
+4. W obszarze **Akcje**wybierz pozycję **Właściwości**.
 
-5. W oknie podręcznym wybierz **nawiązywanie połączenia z lasu usługi Active Directory**:
+5. W wyskakującym oknie dialogowym wybierz pozycję **Połącz z lasem usługi Active Directory:**
 
-6. Wprowadź nowe hasło konta usługi AD DS w **hasło** pola tekstowego.
+6. Wprowadź nowe hasło konta usług AD DS w polach tekstowych **Hasło.**
 
-7. Kliknij przycisk **OK** Aby zapisać nowe hasło i zamknąć okno podręczne.
+7. Kliknij **przycisk OK,** aby zapisać nowe hasło i zamknąć okno podręczne.
 
-8. Ponowne uruchomienie programu Azure AD Connect usługi synchronizacji w obszarze Menedżer sterowania usługami Windows. To, aby upewnić się, że wszystkie odwołania do stare hasło zostanie usunięty z pamięci podręcznej.
+8. Uruchom ponownie usługę synchronizacji usługi Azure AD Connect w menedżerze sterowania usługami systemu Windows. Ma to na celu zapewnienie, że wszelkie odwołania do starego hasła są usuwane z pamięci podręcznej.
 
-## <a name="next-steps"></a>Kolejne kroki
-**Tematy poglądowe**
+## <a name="next-steps"></a>Następne kroki
+**Tematy omówienie**
 
-* [Synchronizacja w programie Azure AD Connect: Zrozumienie i dostosowywanie synchronizacji](how-to-connect-sync-whatis.md)
+* [Synchronizacja usługi Azure AD Connect: zrozumienie i dostosowywanie synchronizacji](how-to-connect-sync-whatis.md)
 
 * [Integrowanie tożsamości lokalnych z usługą Azure Active Directory](whatis-hybrid-identity.md)

@@ -1,6 +1,6 @@
 ---
-title: 'Samouczek: Integracja usługi Azure Active Directory za pomocą E Sales Manager Remix | Dokumentacja firmy Microsoft'
-description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługi Azure Active Directory i E Sales Manager Remix.
+title: 'Samouczek: Integracja usługi Azure Active Directory z programem E Sales Manager Remix | Dokumenty firmy Microsoft'
+description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługą Azure Active Directory a programem E Sales Manager Remix.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -17,161 +17,161 @@ ms.date: 06/12/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 895fb0d83e383618818325263ac80c5919a0ee7b
-ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/17/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "65406948"
 ---
-# <a name="integrate-azure-active-directory-with-e-sales-manager-remix"></a>Integracja usługi Azure Active Directory z Remix kierownikiem ds. sprzedaży E
+# <a name="integrate-azure-active-directory-with-e-sales-manager-remix"></a>Integracja usługi Azure Active Directory z programem E Sales Manager Remix
 
-W tym samouczku dowiesz się, jak zintegrować usługi Azure Active Directory (Azure AD) przy użyciu E Sales Manager Remix.
+W tym samouczku dowiesz się, jak zintegrować usługę Azure Active Directory (Azure AD) z programem E Sales Manager Remix.
 
-Integrowanie usługi Azure AD z E Sales Manager Remix, możesz uzyskać następujące korzyści:
+Integrując usługę Azure AD z E Sales Manager Remix, można uzyskać następujące korzyści:
 
-- Możesz kontrolować, czy w usłudze Azure AD, kto ma dostęp do E Sales Manager Remix.
-- Aby umożliwić użytkownikom uzyskiwanie zalogowany automatycznie Remix Menedżer sprzedaży E, (logowanie jednokrotne, lub logowania jednokrotnego) przy użyciu konta usługi Azure AD.
+- W usłudze Azure AD można kontrolować, kto ma dostęp do programu E Sales Manager Remix.
+- Możesz włączyć użytkownikom automatyczne logowanie do E Sales Manager Remix (logowanie jednokrotne lub logowanie jednokrotne) za pomocą ich kont usługi Azure AD.
 - Możesz zarządzać kontami z jednej centralnej lokalizacji — witryny Azure Portal.
 
-Aby dowiedzieć się więcej o integracji aplikacji SaaS z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](../manage-apps/what-is-single-sign-on.md).
+Aby dowiedzieć się więcej o integracji aplikacji SaaS z usługą Azure AD, zobacz [Co to jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby skonfigurować integrację usługi Azure AD za pomocą E Sales Manager Remix, potrzebne są następujące elementy:
+Aby skonfigurować integrację usługi Azure AD z programem E Sales Manager Remix, potrzebne są następujące elementy:
 
 - Subskrypcji usługi Azure AD
-- Subskrypcję z obsługą E Sales Manager Remix Usługa rejestracji Jednokrotnej
+- Subskrypcja z obsługą programu E Sales Manager z obsługą SSO
 
 > [!NOTE]
-> Podczas testowania kroki opisane w tym samouczku, firma Microsoft zaleca wykonanie *nie* za pomocą środowiska produkcyjnego.
+> Podczas testowania kroków w tym samouczku, zaleca się, aby *nie* używać środowiska produkcyjnego.
 
 Aby przetestować kroki w tym samouczku, musisz mieć dostęp do następujących elementów:
 
-- Nie należy używać środowiska produkcyjnego, chyba że jest to konieczne.
-- Jeśli nie masz środowisko usługi Azure AD w wersji próbnej, możesz to zrobić [miesięczna wersja próbna](https://azure.microsoft.com/pricing/free-trial/).
+- Nie używaj środowiska produkcyjnego, chyba że jest to konieczne.
+- Jeśli nie masz środowiska usługi Azure AD w wersji próbnej, możesz skorzystać z [miesięcznej wersji próbnej](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Opis scenariusza
-W ramach tego samouczka można przetestować usługę Azure AD rejestracji jednokrotnej w środowisku testowym. 
+W tym samouczku testujesz logowanie jednokrotne usługi Azure AD w środowisku testowym. 
 
 Scenariusz opisany w tym samouczku składa się z dwóch głównych bloków konstrukcyjnych:
 
 * Dodawanie E Sales Manager Remix z galerii
-* Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
+* Konfigurowanie i testowanie logowania jednokrotnego usługi Azure AD
 
 ## <a name="add-e-sales-manager-remix-from-the-gallery"></a>Dodaj E Sales Manager Remix z galerii
-Aby skonfigurować integrację usługi Azure AD z E Sales Manager Remix, Dodaj E Sales Manager Remix z galerii z listą zarządzanych aplikacji SaaS, wykonując następujące czynności:
+Aby skonfigurować integrację usługi Azure AD z E Sales Manager Remix, dodaj E Sales Manager Remix z galerii do listy zarządzanych aplikacji SaaS, wykonując następujące czynności:
 
 1. W [witrynie Azure Portal](https://portal.azure.com) w okienku po lewej stronie wybierz pozycję **Azure Active Directory**. 
 
-    ![Przycisk usługi Azure Active Directory][1]
+    ![Przycisk Azure Active Directory][1]
 
-1. Wybierz pozycję **Aplikacje dla przedsiębiorstw** > **Wszystkie aplikacje**.
+1. Wybierz **aplikacje** > enterprise**Wszystkie aplikacje**.
 
-    ![W oknie "Aplikacje dla przedsiębiorstw"][2]
+    ![Okno "Aplikacje dla przedsiębiorstw"][2]
     
-1. Aby dodać nową aplikację, wybierz **nową aplikację** w górnej części okna.
+1. Aby dodać nową aplikację, wybierz **pozycję Nowa aplikacja** w górnej części okna.
 
-    ![Nowy przycisk aplikacji][3]
+    ![Przycisk Nowa aplikacja][3]
 
-1. W polu wyszukiwania wpisz **E Sales Manager Remix**, wybierz opcję **E Sales Manager Remix** w na liście wyników, a następnie wybierz **Dodaj**.
+1. W polu wyszukiwania wpisz **E Sales Manager Remix**, wybierz **pozycję E Sales Manager Remix** na liście wyników, a następnie wybierz pozycję **Dodaj**.
 
     ![E Sales Manager Remix na liście wyników](./media/esalesmanagerremix-tutorial/tutorial_esalesmanagerremix_addfromgallery.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurowanie i testowanie logowania jednokrotnego usługi Azure AD
 
-W tej sekcji możesz skonfigurować i przetestować usługi Azure AD logowanie jednokrotne za pomocą E Sales Manager Remix, oparte na użytkownika testu o nazwie "Britta Simon."
+W tej sekcji można skonfigurować i przetestować azure ad logowania jednokrotnego za pomocą E Sales Manager Remix, na podstawie użytkownika testowego o nazwie "Britta Simon".
 
-Dla logowania jednokrotnego do pracy usługa Azure AD wymaga do identyfikowania użytkownika E Sales Manager Remix i jego odpowiednika w usłudze Azure AD. Innymi słowy należy ustanowić relację łącza między użytkownika usługi Azure AD i tego samego użytkownika w E Sales Manager Remix.
+Aby usługa Azure AD działała z logiem pojedynczym, musi zidentyfikować użytkownika programu E Sales Manager Remix i jego odpowiednika w usłudze Azure AD. Innymi słowy należy ustanowić relację łącza między użytkownikiem usługi Azure AD a tym samym użytkownikiem w E Sales Manager Remix.
 
-Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne za pomocą E Sales Manager Remix, wykonaj bloki konstrukcyjne w pięć następnych sekcjach:
+Aby skonfigurować i przetestować logowanie jednokrotne usługi Azure AD za pomocą E Sales Manager Remix, wykonaj bloki konstrukcyjne w następnych pięciu sekcjach:
 
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD logowania jednokrotnego
+### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
 
-Włączanie usługi Azure AD logowania jednokrotnego w witrynie Azure portal i konfigurowanie logowania jednokrotnego w aplikacji E Sales Manager Remix, wykonując następujące czynności:
+Włącz logowanie jednokrotne usługi Azure AD w portalu Azure i skonfiguruj logowanie jednokrotne w aplikacji E Sales Manager Remix, wykonując następujące czynności:
 
-1. W witrynie Azure portal na **E Sales Manager Remix** strona integracji aplikacji, wybierz opcję **logowanie jednokrotne**.
+1. W witrynie Azure portal na stronie Integracja aplikacji **E Sales Manager remix** wybierz pozycję **Logowanie jednokrotne**.
 
-    ![Link "Logowanie jednokrotne"][4]
+    ![Łącze "Logowanie jednokrotne"][4]
 
-1. W **logowanie jednokrotne** okna w **tryb rejestracji jednokrotnej** wybierz opcję **opartej na SAML logowania jednokrotnego**.
+1. W oknie **Logowania jednokrotnego w** polu **Tryb logowania jednokrotnego** wybierz pozycję **Logowanie oparte na SAML**.
  
-    ![W oknie "Logowanie jednokrotne"](./media/esalesmanagerremix-tutorial/tutorial_esalesmanagerremix_samlbase.png)
+    ![Okno "Logowanie jednokrotne"](./media/esalesmanagerremix-tutorial/tutorial_esalesmanagerremix_samlbase.png)
 
-1. W obszarze **E Sales Manager Remix domena i adresy URL**, wykonaj następujące czynności:
+1. W obszarze **E Sales Manager Remix Domain and URL**wykonaj następujące czynności:
 
-    ![E Sales Manager Remix domena i adresy URL pojedynczego logowania jednokrotnego informacji](./media/esalesmanagerremix-tutorial/tutorial_esalesmanagerremix_url.png)
+    ![E Menedżer sprzedaży Remix Domeny i adresy URL — informacje o logowanie jednokrotnym](./media/esalesmanagerremix-tutorial/tutorial_esalesmanagerremix_url.png)
 
-    a. W **adres URL logowania** wpisz adres URL w następującym formacie: *https://\<Server-na podstawie-URL > /\<domeny podrzędnej > / esales-pc*.
+    a. W polu **Adres URL logowania** wpisz adres URL w następującym formacie: https:// *\<adres URL\<oparty na serwerze>/ poddomeny>/esales-pc*.
 
-    b. W **identyfikator** wpisz adres URL w następującym formacie: *https://\<Server-na podstawie-URL > /\<domeny podrzędnej > /* .
+    b. W polu **Identyfikator** wpisz adres URL w następującym formacie: *https://\<adres URL oparty\<na serwerze>/ poddomeny>/*.
 
-    c. Uwaga **identyfikator** wartości do późniejszego użycia w ramach tego samouczka.
+    d. Zanotuj wartość **identyfikatora** do późniejszego użycia w tym samouczku.
     
     > [!NOTE] 
-    > Podane wyżej wartości nie są rzeczywiste. Zaktualizuj je przy użyciu rzeczywistego adresu logowania i identyfikator. Aby uzyskać wartości, skontaktuj się z pomocą [zespołem pomocy technicznej klienta Remix E Sales Manager](mailto:esupport@softbrain.co.jp).
+    > Podane wyżej wartości nie są rzeczywiste. Zaktualizuj je za pomocą rzeczywistego adresu URL logowania i identyfikatora. Aby uzyskać wartości, skontaktuj się z [zespołem pomocy technicznej E Sales Manager Remix Client](mailto:esupport@softbrain.co.jp).
 
-1. W obszarze **certyfikat podpisywania SAML**, wybierz opcję **certyfikat (Base64)** , a następnie zapisz plik certyfikatu na komputerze.
+1. W obszarze **Certyfikat podpisywania SAML**wybierz **pozycję Certyfikat (Base64),** a następnie zapisz plik certyfikatu na komputerze.
 
-    ![Link pobierania certyfikat (Base64)](./media/esalesmanagerremix-tutorial/tutorial_esalesmanagerremix_certificate.png) 
+    ![Link do pobrania certyfikatu (Base64)](./media/esalesmanagerremix-tutorial/tutorial_esalesmanagerremix_certificate.png) 
 
-1. Wybierz **Wyświetl i Edytuj wszystkie inne atrybuty użytkownika** pole wyboru, a następnie wybierz pozycję **emailaddress** atrybutu.
+1. Zaznacz pole wyboru **Wyświetl i edytuj wszystkie inne atrybuty użytkownika,** a następnie wybierz atrybut adresu **e-mail.**
     
-    ![W oknie atrybutów użytkownika](./media/esalesmanagerremix-tutorial/configure1.png)
+    ![Okno Atrybuty użytkownika](./media/esalesmanagerremix-tutorial/configure1.png)
 
-    **Edytuj atrybut** zostanie otwarte okno.
+    Zostanie otwarte okno **Edytuj atrybut.**
 
-1. Kopiuj **Namespace** i **nazwa** wartości. Generowanie wartości we wzorcu  *\<Namespace > /\<Name >* i zapisz go do późniejszego użycia w ramach tego samouczka.
+1. Skopiuj wartości **Obszaru nazw** i **Nazwa.** Wygeneruj wartość w * \<wzorcu\<>/ Name>* i zapisz ją do późniejszego użycia w tym samouczku.
 
-    ![W oknie Edytowanie atrybutu](./media/esalesmanagerremix-tutorial/configure2.png)
+    ![Okno Edytowanie atrybutu](./media/esalesmanagerremix-tutorial/configure2.png)
 
-1. W obszarze **E Sales Manager Remix konfiguracji**, wybierz opcję **skonfigurować Remix Menedżer sprzedaży E**.
+1. W obszarze **Konfiguracja remiksu E Sales Managera**wybierz pozycję **Konfiguruj E Sales Manager Remix**.
 
-    ![Konfiguracja Remix kierownikiem ds. sprzedaży E](./media/esalesmanagerremix-tutorial/tutorial_esalesmanagerremix_configure.png) 
+    ![Konfiguracja remiksu e Sales Managera](./media/esalesmanagerremix-tutorial/tutorial_esalesmanagerremix_configure.png) 
 
-    **Konfigurowanie logowania jednokrotnego** zostanie otwarte okno.
+    Zostanie otwarte okno **Konfigurowanie logowania.**
 
-1. W **krótki** sekcji, skopiuj adres URL wylogowania i adres URL usługi rejestracji logowania jednokrotnego SAML.
+1. W sekcji **Podręczna dokumentacja** skopiuj adres URL wylogowania i adres URL usługi logowania jednokrotnego SAML.
 
-1. Wybierz pozycję **Zapisz**.
+1. Wybierz **pozycję Zapisz**.
 
     ![Przycisk Zapisz](./media/esalesmanagerremix-tutorial/tutorial_general_400.png)
 
 1. Zaloguj się do aplikacji E Sales Manager Remix jako administrator.
 
-1. W prawym górnym rogu, wybierz **do Menu administratora**.
+1. W prawym górnym rogu wybierz polecenie **Do menu administratora**.
 
-    ![Polecenie "Menu administratora"](./media/esalesmanagerremix-tutorial/configure4.png)
+    ![Polecenie "Do menu administratora"](./media/esalesmanagerremix-tutorial/configure4.png)
 
-1. W okienku po lewej stronie wybierz **ustawień systemowych** > **współpracę z zewnętrznym systemem**.
+1. W lewym okienku wybierz **pozycję Ustawienia systemowe** > **Współpraca z systemem zewnętrznym**.
 
-    !["Ustawienia systemowe" i "Współpracy z systemu zewnętrznego" linki](./media/esalesmanagerremix-tutorial/configure5.png)
+    ![Linki "Ustawienia systemowe" i "Współpraca z systemem zewnętrznym"](./media/esalesmanagerremix-tutorial/configure5.png)
     
-1. W **współpracę z zewnętrznym systemem** wybierz **SAML**.
+1. W oknie **Współpraca z systemem zewnętrznym** wybierz **SAML**.
 
-    ![W oknie "Współpracy z systemu zewnętrznego"](./media/esalesmanagerremix-tutorial/configure6.png)
+    ![Okno "Współpraca z systemem zewnętrznym"](./media/esalesmanagerremix-tutorial/configure6.png)
 
-1. W obszarze **ustawienia uwierzytelniania SAML**, wykonaj następujące czynności:
+1. W obszarze **Ustawienie uwierzytelniania SAML**wykonaj następujące czynności:
 
-    ![W sekcji "Ustawienia uwierzytelniania SAML"](./media/esalesmanagerremix-tutorial/configure3.png)
+    ![Sekcja "Ustawienie uwierzytelniania SAML"](./media/esalesmanagerremix-tutorial/configure3.png)
     
-    a. Wybierz **wersji** pole wyboru.
+    a. Zaznacz pole wyboru **Wersja pc.**
     
-    b. W **elementu współpracy** sekcji z listy rozwijanej wybierz **e-mail**.
+    b. W sekcji **Element współpracy** na liście rozwijanej wybierz pozycję **Poczta e-mail**.
 
-    c. W **elementu współpracy** pole, Wklej wartość oświadczenia, które wcześniej zostały skopiowane z witryny Azure portal (czyli **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress** ).
+    d. W **polu Element współpracy** wklej wartość oświadczenia skopiowaną wcześniej z witryny **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress**Azure Portal (czyli ).
 
-    d. W **wystawcy (identyfikator jednostki)** pole, Wklej wartość identyfikatora, który został wcześniej skopiowany z **E Sales Manager Remix domena i adresy URL** części witryny Azure portal.
+    d. W polu **Wystawca (identyfikator jednostki)** wklej wartość identyfikatora skopiowaną wcześniej z sekcji **E Sales Manager Remix Domain and URL** w witrynie Azure portal.
 
-    e. Aby przekazać certyfikat pobrany z witryny Azure portal, wybierz pozycję **wybór pliku**.
+    e. Aby przekazać pobrany certyfikat z witryny Azure portal, wybierz **pozycję Wybór pliku**.
 
-    f. W **adres URL logowania dostawcy identyfikator** pole, wklej adres URL Usługa rejestracji jednokrotnej SAML, który został skopiowany wcześniej w witrynie Azure portal.
+    f. W polu **adresu URL logowania dostawcy identyfikatora** wklej adres URL usługi logowania jednokrotnego SAML skopiowany wcześniej w witrynie Azure portal.
 
-    g. W **adres URL wylogowania dostawcy tożsamości** pole, Wklej wylogowania wartość adresu URL, który został skopiowany wcześniej w witrynie Azure portal.
+    g. W polu **Adresu URL wylogowania dostawcy tożsamości** wklej wartość adresu URL wylogowania skopiowaną wcześniej w witrynie Azure portal.
 
-    h. Wybierz **ustawienie pełne**.
+    h. Wybierz **pozycję Ustawienie zakończone**.
 
 > [!TIP]
-> Ponieważ konfigurujesz aplikacji może odczytywać zwięzłe wersję poprzednich instrukcji w [witryny Azure portal](https://portal.azure.com). Po dodaniu aplikacji w **usługi Active Directory** > **aplikacje dla przedsiębiorstw** zaznacz **logowania jednokrotnego** kartę, a następnie przejść osadzone w dokumentacji **konfiguracji** sekcji u dołu. Aby uzyskać więcej informacji na temat funkcji dokumentacja embedded zobacz [dokumentacja embedded usługi Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985).
+> Podczas konfigurowania aplikacji można przeczytać zwięzłą wersję poprzednich instrukcji w [witrynie Azure portal](https://portal.azure.com). Po dodaniu aplikacji w sekcji**Aplikacje przedsiębiorstwa** **usługi Active Directory** > wybierz kartę **Logowanie jednokrotne,** a następnie uzyskaj dostęp do osadzonej dokumentacji w sekcji **Konfiguracja** u dołu. Aby uzyskać więcej informacji na temat osadzonej funkcji dokumentacji, zobacz [Dokumentacja osadzona usługi Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985).
 > 
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
@@ -180,100 +180,100 @@ W tej sekcji utworzysz użytkownika testowego Britta Simon w witrynie Azure port
 
 ![Tworzenie użytkownika testowego usługi Azure AD][100]
 
-1. W witrynie Azure portal w okienku po lewej stronie wybierz **usługi Azure Active Directory**.
+1. W witrynie Azure portal w lewym okienku wybierz pozycję **Azure Active Directory**.
 
-    ![Połącz usługi Azure Active Directory](./media/paloaltoadmin-tutorial/create_aaduser_01.png)
+    ![Łącze usługi Azure Active Directory](./media/paloaltoadmin-tutorial/create_aaduser_01.png)
 
-1. Aby wyświetlić listę bieżących użytkowników, wybierz **użytkowników i grup** > **wszyscy użytkownicy**.
+1. Aby wyświetlić listę bieżących użytkowników, wybierz **pozycję Użytkownicy i grupy** > **Wszyscy użytkownicy**.
 
-    !["Użytkownicy i grupy" i "All users" linki](./media/paloaltoadmin-tutorial/create_aaduser_02.png)
+    ![Linki „Użytkownicy i grupy” i „Wszyscy użytkownicy”](./media/paloaltoadmin-tutorial/create_aaduser_02.png)
 
-1. W górnej części **wszyscy użytkownicy** wybierz **Dodaj**.
+1. U góry okna **Wszyscy użytkownicy** wybierz pozycję **Dodaj**.
 
     ![Przycisk Dodaj](./media/paloaltoadmin-tutorial/create_aaduser_03.png)
     
-    **Użytkownika** zostanie otwarte okno.
+    Zostanie otwarte okno **Użytkownik.**
 
-1. W **użytkownika** okna, wykonaj następujące czynności:
+1. W oknie **Użytkownik** wykonaj następujące czynności:
 
-    ![W oknie użytkownika](./media/paloaltoadmin-tutorial/create_aaduser_04.png)
+    ![Okno Użytkownik](./media/paloaltoadmin-tutorial/create_aaduser_04.png)
 
-    a. W **nazwa** wpisz **BrittaSimon**.
+    a. W polu **Nazwa** wpisz **BrittaSimon**.
 
-    b. W **nazwa_użytkownika** wpisz adres e-mail użytkownika Britta Simon.
+    b. W polu **Nazwa użytkownika** wpisz adres e-mail użytkownika Britta Simon.
 
-    c. Wybierz **Pokaż hasło** pole wyboru, a następnie zanotuj tę wartość, która jest wyświetlana w **hasło** pole.
+    d. Zaznacz pole wyboru **Pokaż hasło,** a następnie zanotuj wartość wyświetlaną w polu **Hasło.**
 
-    d. Wybierz pozycję **Utwórz**.
+    d. Wybierz **pozycję Utwórz**.
  
-### <a name="create-an-e-sales-manager-remix-test-user"></a>Tworzenie użytkownika testowego E Sales Manager Remix
+### <a name="create-an-e-sales-manager-remix-test-user"></a>Tworzenie użytkownika testowego E Sales Manager
 
 1. Zaloguj się do aplikacji E Sales Manager Remix jako administrator.
 
-1. Wybierz **do Menu administratora** menu w prawym górnym rogu.
+1. Z menu w prawym górnym rogu wybierz **polecenie Do menu administratora.**
 
-    ![Konfiguracja Remix kierownikiem ds. sprzedaży E](./media/esalesmanagerremix-tutorial/configure4.png)
+    ![Konfiguracja remiksu e Sales Managera](./media/esalesmanagerremix-tutorial/configure4.png)
 
-1. Wybierz **ustawienia firmy** > **konserwacji działów i pracowników**, a następnie wybierz pozycję **pracowników zarejestrowany**.
+1. Wybierz **ustawienia** > firmy**Konserwacja działów i pracowników,** a następnie wybierz **pozycję Zarejestrowani pracownicy.**
 
-    ![Na karcie "Zarejestrowano pracowników"](./media/esalesmanagerremix-tutorial/user1.png)
+    ![Karta "Zarejestrowani pracownicy"](./media/esalesmanagerremix-tutorial/user1.png)
 
-1. W **nowej rejestracji pracowników** sekcji, wykonaj następujące czynności:
+1. W sekcji **Nowa rejestracja pracowników** wykonaj następujące czynności:
     
-    !["Rejestracja nowych pracownika" sekcji](./media/esalesmanagerremix-tutorial/user2.png)
+    ![Sekcja "Nowa rejestracja pracowników"](./media/esalesmanagerremix-tutorial/user2.png)
 
-    a. W **nazwiska pracownika** wpisz nazwę użytkownika (na przykład **Britta**).
+    a. W polu **Nazwa pracownika** wpisz nazwę użytkownika (na przykład **Britta**).
 
-    b. Wykonaj pozostałe wymagane pola.
+    b. Uzupełnij pozostałe wymagane pola.
     
-    c. Włączenie protokołu SAML ze strony logowania administratora nie można się zalogować. Udziel uprawnienia administratora, logowania aby użytkownika, wybierając **identyfikator logowania administratora** pole wyboru.
+    d. Jeśli włączysz SAML, administrator nie może zalogować się ze strony logowania. Udziel użytkownikowi uprawnień logowania administratora, zaznaczając pole wyboru **Logowanie administratora.**
 
-    d. Wybierz **rejestracji**.
+    d. Wybierz **pozycję Rejestracja**.
 
-1. W przyszłości, aby zalogować się jako administrator, zaloguj się jako użytkownik, który ma uprawnienia administratora, a następnie w prawym górnym rogu, wybierz **do Menu administratora**.
+1. W przyszłości, aby zalogować się jako administrator, zaloguj się jako użytkownik, który ma uprawnienia administratora, a następnie, w prawym górnym rogu, wybierz opcję **Do menu administratora**.
 
-    ![Polecenie "Menu administratora"](./media/esalesmanagerremix-tutorial/configure4.png)
+    ![Polecenie "Do menu administratora"](./media/esalesmanagerremix-tutorial/configure4.png)
 
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
-W tej sekcji można włączyć użytkownika Britta Simon do używania usługi Azure logowanie jednokrotne za udzielanie dostępu do E Sales Manager Remix. Aby to zrobić, wykonaj następujące czynności: 
+W tej sekcji można włączyć użytkownika Britta Simon do korzystania z usługi Azure logowania jednokrotnego, udzielając dostępu do E Sales Manager Remix. Aby to zrobić, wykonaj następujące czynności: 
 
-![Przypisanie roli użytkownika][200] 
+![Przypisywanie roli użytkownika][200] 
 
-1. W witrynie Azure portal Otwórz **aplikacje** przejdź do widoku **katalogu** wyświetlić, a następnie wybierz **aplikacje dla przedsiębiorstw** > **wszystkie aplikacje**.
+1. W witrynie Azure portal otwórz widok **Aplikacje,** przejdź do widoku **Katalog,** a następnie wybierz **pozycję Aplikacje** > Enterprise**Wszystkie aplikacje**.
 
-    !["Aplikacje dla przedsiębiorstw" i "Wszystkie aplikacje" linki][201] 
+    ![Linki "Aplikacje dla przedsiębiorstw" i "Wszystkie aplikacje"][201] 
 
-1. W **aplikacje** listy wybierz **E Sales Manager Remix**.
+1. Na liście **Aplikacje** wybierz **pozycję E Sales Manager Remix**.
 
-    ![Link E Sales Manager Remix](./media/esalesmanagerremix-tutorial/tutorial_esalesmanagerremix_app.png)  
+    ![Link do Remiksu E Sales Manager](./media/esalesmanagerremix-tutorial/tutorial_esalesmanagerremix_app.png)  
 
-1. W okienku po lewej stronie wybierz **użytkowników i grup**.
+1. W lewym okienku wybierz pozycję **Użytkownicy i grupy**.
 
-    ![Link "Użytkownicy i grupy"][202]
+    ![Link „Użytkownicy i grupy”][202]
 
-1. Wybierz **Dodaj** a następnie w **Dodaj przydziału** okienku wybierz **użytkowników i grup**.
+1. Wybierz **pozycję Dodaj,** a następnie w okienku **Dodawanie przydziału** wybierz pozycję **Użytkownicy i grupy**.
 
     ![Okienko Dodawanie przypisania][203]
 
-1. W **użytkowników i grup** okna w **użytkowników** listy wybierz **Britta Simon**.
+1. W oknie **Użytkownicy i grupy** na liście **Użytkownicy** wybierz pozycję **Britta Simon**.
 
-1. Wybierz **wybierz** przycisku.
+1. Wybierz przycisk **Wybierz.**
 
-1. W **Dodaj przydziału** wybierz **przypisać**.
+1. W oknie **Dodaj przypisanie** wybierz pozycję **Przypisz**.
     
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
 
 W tej sekcji przetestujesz konfigurację logowania jednokrotnego usługi Azure AD przy użyciu panelu dostępu.
 
-Po wybraniu kafelka E Sales Manager Remix w panelu dostępu, możesz powinny być zalogowany automatycznie E Sales Manager Remix aplikacji.
+Po wybraniu kafelka E Sales Manager Remix w Panelu dostępu należy zalogować się automatycznie do aplikacji E Sales Manager Remix.
 
-Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie do panelu dostępu](../user-help/active-directory-saas-access-panel-introduction.md). 
+Aby uzyskać więcej informacji na temat Panelu dostępu, zobacz [Wprowadzenie do Panelu dostępu](../user-help/active-directory-saas-access-panel-introduction.md). 
 
-## <a name="additional-resources"></a>Dodatkowe zasoby
+## <a name="additional-resources"></a>Zasoby dodatkowe
 
-* [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
-* [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+* [Lista samouczków dotyczących integrowania aplikacji SaaS z usługą Azure Active Directory](tutorial-list.md)
+* [Co to jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

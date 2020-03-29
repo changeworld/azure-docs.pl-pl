@@ -1,6 +1,6 @@
 ---
-title: Usługa Azure Traffic Manager za pomocą usługi Azure Site Recovery | Dokumentacja firmy Microsoft
-description: Opisuje sposób używania usługi Azure Traffic Manager z usługą Azure Site Recovery na potrzeby odzyskiwania po awarii i migracji
+title: Usługa Azure Traffic Manager z usługą Azure Site Recovery | Dokumenty firmy Microsoft
+description: W tym artykule opisano, jak używać usługi Azure Traffic Manager z usługą Azure Site Recovery do odzyskiwania po awarii i migracji
 services: site-recovery
 author: mayurigupta13
 manager: rochakm
@@ -9,114 +9,114 @@ ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: mayg
 ms.openlocfilehash: 6c77cd43231d4596535c11564313a0fe90633cdb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60947806"
 ---
 # <a name="azure-traffic-manager-with-azure-site-recovery"></a>Usługa Azure Traffic Manager z usługą Azure Site Recovery
 
-Usługa Azure Traffic Manager umożliwia kontrolowanie dystrybucji ruchu między punktami końcowymi usługi aplikacji. Punkt końcowy to dowolna internetowa usługa hostowana wewnątrz platformy Azure lub poza nią.
+Usługa Azure Traffic Manager umożliwia kontrolowanie dystrybucji ruchu między punktami końcowymi aplikacji. Punkt końcowy to dowolna internetowa usługa hostowana wewnątrz platformy Azure lub poza nią.
 
-Usługi Traffic Manager używa systemu nazw domen (DNS), aby kierować żądania klientów do najbardziej odpowiednich punktów końcowych na podstawie metody routingu ruchu i kondycji punktów końcowych. Usługa Traffic Manager udostępnia szereg [metod routingu ruchu](../traffic-manager/traffic-manager-routing-methods.md) oraz [opcji monitorowania punktów końcowych](../traffic-manager/traffic-manager-monitoring.md), które zaspokoją potrzeby różnych aplikacji i modeli automatycznej pracy w trybie failover. Klienci łączą się z wybranego punktu końcowego bezpośrednio. Usługa Traffic Manager nie jest serwer proxy lub bramy, a nie widzi ruch przekazywanie między klientem a usługą.
+Usługa Traffic Manager używa systemu nazw domen (DNS) do kierowania żądań klientów do najbardziej odpowiedniego punktu końcowego, na podstawie metody routingu ruchu i kondycji punktów końcowych. Usługa Traffic Manager udostępnia szereg [metod routingu ruchu](../traffic-manager/traffic-manager-routing-methods.md) oraz [opcji monitorowania punktów końcowych](../traffic-manager/traffic-manager-monitoring.md), które zaspokoją potrzeby różnych aplikacji i modeli automatycznej pracy w trybie failover. Klienci bezpośrednio łączą się z wybranym punktem końcowym. Usługa Traffic Manager nie jest serwerem proxy ani bramą i nie widzi ruchu przechodzącego między klientem a usługą.
 
-W tym artykule opisano, jak łączenie, monitorowanie ruchu Azure inteligentnego routingu z odzyskiwaniem zaawansowane usługi Azure Site Recovery i możliwości migracji.
+W tym artykule opisano, jak połączyć inteligentne routingu usługi Azure Traffic Monitor z zaawansowanymi funkcjami odzyskiwania po awarii i migracji usługi Azure Site Recovery.
 
-## <a name="on-premises-to-azure-failover"></a>Środowiska lokalnego do trybu failover systemu Azure
+## <a name="on-premises-to-azure-failover"></a>Lokalne przejście awaryjne na platformie Azure
 
-Dla pierwszego scenariusza, należy wziąć pod uwagę **firmy A** ma swoją infrastrukturę aplikacji działające w jej w środowisku lokalnym. Ze względów biznesowych ciągłości i zgodności **firmy A** zdecyduje się użyć usługi Azure Site Recovery do ochrony jego aplikacji.
+W pierwszym scenariuszu należy wziąć pod uwagę **firmę A,** która ma całą swoją infrastrukturę aplikacji działającą w środowisku lokalnym. Ze względu na ciągłość działania i zgodność z **przepisami firma A** decyduje się na użycie usługi Azure Site Recovery w celu ochrony swoich aplikacji.
 
-**Firmy A** są uruchamiane aplikacje z publicznymi punktami końcowymi i chce możliwość bezproblemowo przekierowywania ruchu sieciowego na platformę Azure, w przypadku awarii. [Priorytet](../traffic-manager/traffic-manager-configure-priority-routing-method.md) metody routingu ruchu w usłudze Azure Traffic Manager umożliwia firmie A, aby łatwo zaimplementować ten wzorzec pracy awaryjnej.
+**Firma A** uruchamia aplikacje z publicznymi punktami końcowymi i chce mieć możliwość bezproblemowego przekierowania ruchu na platformę Azure w przypadku awarii. Metoda routingu ruchu [priorytetowego](../traffic-manager/traffic-manager-configure-priority-routing-method.md) w usłudze Azure Traffic Manager umożliwia firmie A łatwe wdrożenie tego wzorca trybu failover.
 
-Instalator jest w następujący sposób:
-- **Firmy A** tworzy [profilu usługi Traffic Manager](../traffic-manager/traffic-manager-create-profile.md).
-- Przy użyciu **priorytet** metody routingu **firmy A** tworzy dwa punkty końcowe — **podstawowego** lokalnych i **trybu Failover** dla platformy Azure. **Podstawowy** jest przypisany priorytet 1 i **trybu Failover** jest przypisany priorytet 2.
-- Ponieważ **podstawowego** punktu końcowego znajduje się poza systemem Azure, punkt końcowy zostanie utworzony jako [zewnętrznych](../traffic-manager/traffic-manager-endpoint-types.md#external-endpoints) punktu końcowego.
-- Usługa Azure Site Recovery usługi Azure site nie ma żadnych maszyn wirtualnych lub aplikacje uruchomione przed trybu failover. Dlatego **trybu Failover** punktu końcowego jest tworzona jako **zewnętrznych** punktu końcowego.
-- Domyślnie użytkownik ruch będzie kierowany do aplikacji lokalnych, ponieważ punkt końcowy ma najwyższy priorytet, które są skojarzone z nią. Żaden ruch będzie kierowany do platformy Azure, jeśli **głównej** punkt końcowy jest w dobrej kondycji.
+Konfiguracja jest następująca:
+- **Firma A** tworzy [profil usługi Traffic Manager](../traffic-manager/traffic-manager-create-profile.md).
+- Korzystając z metody routingu **priorytet,** **firma A** tworzy dwa punkty końcowe — **podstawowy** dla środowiska lokalnego i **pracy awaryjnej** dla platformy Azure. **Podstawowy** jest przypisany priorytet 1 i **pracy awaryjnej** jest przypisany priorytet 2.
+- Ponieważ **podstawowy** punkt końcowy jest obsługiwany poza platformą Azure, punkt końcowy jest tworzony jako [zewnętrzny](../traffic-manager/traffic-manager-endpoint-types.md#external-endpoints) punkt końcowy.
+- W usłudze Azure Site Recovery witryna platformy Azure nie ma żadnych maszyn wirtualnych ani aplikacji uruchomionych przed przeczesyniem pracy awaryjnej. Tak punkt końcowy **trybu failover** jest również tworzony jako **zewnętrzny** punkt końcowy.
+- Domyślnie ruch użytkownika jest kierowany do aplikacji lokalnej, ponieważ ten punkt końcowy ma najwyższy priorytet skojarzony z nim. Żaden ruch nie jest kierowany do platformy Azure, jeśli **podstawowy** punkt końcowy jest w dobrej kondycji.
 
-![W lokalnym — z platformą Azure przed włączeniem trybu failover](./media/concepts-traffic-manager-with-site-recovery/on-premises-failover-before.png)
+![Platforma lokalna na platformę Azure przed przełączeniem trybu failover](./media/concepts-traffic-manager-with-site-recovery/on-premises-failover-before.png)
 
-W przypadku awarii, możesz wyzwolić firmy A [trybu failover](site-recovery-failover.md) na platformie Azure i odzyskiwać swoje aplikacje na platformie Azure. Gdy usługi Azure Traffic Manager wykryje, że **podstawowego** punktu końcowego już nie jest w dobrej kondycji, automatycznie używa **trybu Failover** punktu końcowego w odpowiedzi DNS i użytkownicy łączą się odzyskać na Azure.
+W przypadku awarii firma A może wyzwolić [przebłażenie awaryjne](site-recovery-failover.md) na platformie Azure i odzyskać swoje aplikacje na platformie Azure. Gdy usługa Azure Traffic Manager wykryje, że **podstawowy** punkt końcowy nie jest już w dobrej kondycji, automatycznie używa punktu końcowego **trybu failover** w odpowiedzi DNS i użytkownicy łączą się z aplikacją odzyskaną na platformie Azure.
 
-![W lokalnym — z platformą Azure po włączeniu trybu failover](./media/concepts-traffic-manager-with-site-recovery/on-premises-failover-after.png)
+![Platforma Lokalna do platformy Azure po przemijenie awaryjne](./media/concepts-traffic-manager-with-site-recovery/on-premises-failover-after.png)
 
-W zależności od wymagań biznesowych **firmy A** można wybrać wyższe lub niższe [częstotliwość sondowania](../traffic-manager/traffic-manager-monitoring.md) przełączać się między lokalną na platformę Azure w przypadku awarii w celu zapewnienia minimalnym czasem przestojów dla użytkowników.
+W zależności od wymagań biznesowych **firma A** może wybrać wyższą lub niższą [częstotliwość sondowania,](../traffic-manager/traffic-manager-monitoring.md) aby przełączać się między lokalnymi na platformę Azure w przypadku awarii i zapewnić minimalny czas przestoju dla użytkowników.
 
-Gdy znajduje się po awarii, **firmy A** można przeprowadzić powrotu po awarii z platformy Azure do jej w środowisku lokalnym ([VMware](vmware-azure-failback.md) lub [funkcji Hyper-V](hyper-v-azure-failback.md)) przy użyciu usługi Azure Site Recovery. Teraz, gdy Traffic Manager wykryje, że **podstawowego** punkt końcowy jest w dobrej kondycji ponownie, automatycznie wykorzystuje **głównej** punktu końcowego w swojej odpowiedzi DNS.
+Gdy awaria jest zawarta, **firma A** może po awarii z platformy Azure do środowiska lokalnego[(VMware](vmware-azure-failback.md) lub [Hyper-V)](hyper-v-azure-failback.md)przy użyciu usługi Azure Site Recovery. Teraz, gdy usługa Traffic Manager wykryje, że **podstawowy** punkt końcowy jest w dobrej kondycji ponownie, automatycznie wykorzystuje **podstawowy** punkt końcowy w swoich odpowiedziach DNS.
 
-## <a name="on-premises-to-azure-migration"></a>Lokalnych do migracji na platformę Azure
+## <a name="on-premises-to-azure-migration"></a>Lokalna migracja do platformy Azure
 
-Oprócz odzyskiwania po awarii umożliwia również usługi Azure Site Recovery [migracji na platformę Azure](migrate-overview.md). Za pomocą usługi Azure Site Recovery zaawansowane testu trybu failover możliwości, klientów można ocenić wydajność aplikacji na platformie Azure bez wpływu na ich w środowisku lokalnym. A gdy klienci są gotowe do migracji, może wybrać migrowane razem całego obciążenia lub zdecydować się na migrację i stopniowo Skaluj.
+Oprócz odzyskiwania po awarii usługa Azure Site Recovery umożliwia również [migracje na platformę Azure.](migrate-overview.md) Korzystając z zaawansowanych funkcji trybu failover testowych usługi Azure Site Recovery, klienci mogą oceniać wydajność aplikacji na platformie Azure bez wpływu na ich środowisko lokalne. A gdy klienci są gotowi do migracji, mogą wybrać migrację całych obciążeń razem lub wybrać do migracji i skalowania stopniowo.
 
-Azure Traffic Manager [ważona](../traffic-manager/traffic-manager-configure-weighted-routing-method.md) metody routingu opartego na może służyć do kierowania część ruchu przychodzącego na platformie Azure podczas nakazywania większość do środowiska lokalnego. Takie podejście może pomóc w ocenie skalowanie wydajności, w miarę postępu, zwiększając waga przypisana do platformy Azure, jak migrować coraz większym obciążeń na platformie Azure.
+Metoda routingu [ważonego](../traffic-manager/traffic-manager-configure-weighted-routing-method.md) usługi Azure Traffic Manager może służyć do kierowania części ruchu przychodzącego na platformę Azure, jednocześnie kierując większość do środowiska lokalnego. Takie podejście może pomóc w ocenie wydajności skalowania, ponieważ można nadal zwiększać wagę przypisaną do platformy Azure podczas migracji coraz większej liczby obciążeń na platformę Azure.
 
-Na przykład **firmy B** wybierze do migracji w fazach, przeniesienie niektórych jego środowisko aplikacji przy zachowaniu rest w środowisku lokalnym. Podczas początkowych etapów w przypadku większości środowiska w środowisku lokalnym, większa waga jest przypisany do środowiska lokalnego. Usługi Traffic manager zwraca punkt końcowy, w oparciu o przypisane do punktów końcowych dostępne wagi.
+Na przykład **firma B** decyduje się na migrację w fazach, przenosząc niektóre swoje środowisko aplikacji, zachowując resztę lokalnie. Podczas początkowych etapów, gdy większość środowiska jest lokalnie, większa waga jest przypisywana do środowiska lokalnego. Menedżer ruchu zwraca punkt końcowy na podstawie wag przypisanych do dostępnych punktów końcowych.
 
-![Migracja na lokalnym — z platformą Azure](./media/concepts-traffic-manager-with-site-recovery/on-premises-migration.png)
+![Migracja lokalna do platformy Azure](./media/concepts-traffic-manager-with-site-recovery/on-premises-migration.png)
 
-Podczas migracji zarówno punkty końcowe są aktywne, a większość ruch będzie kierowany do środowiska lokalnego. W trakcie wykonywania migracji większa waga można przypisać do punktu końcowego na platformie Azure, a na koniec punktu końcowego w środowisku lokalnym mogą być wyłączone po migracji.
+Podczas migracji oba punkty końcowe są aktywne, a większość ruchu jest kierowana do środowiska lokalnego. W miarę migracji większą wagę można przypisać do punktu końcowego na platformie Azure i na koniec lokalnego punktu końcowego można dezaktywować po migracji.
 
-## <a name="azure-to-azure-failover"></a>Tryb failover do platformy
+## <a name="azure-to-azure-failover"></a>Azure do pracy awaryjnej platformy Azure
 
-W tym przykładzie należy wziąć pod uwagę **C firmy** ma swoją infrastrukturę aplikacji uruchomionych na platformie Azure. Ze względów biznesowych ciągłości i zgodności **C firmy** zdecyduje się użyć usługi Azure Site Recovery do ochrony jego aplikacji.
+W tym przykładzie należy wziąć pod uwagę **firma C,** która ma całą swoją infrastrukturę aplikacji z uruchomieniu platformy Azure. Ze względu na ciągłość działania i zgodność z przepisami **firma C** decyduje się na użycie usługi Azure Site Recovery do ochrony swoich aplikacji.
 
-**Firma C** są uruchamiane aplikacje z publicznymi punktami końcowymi i chce możliwość bezproblemowo przekierowywanie ruchu do innego regionu platformy Azure w przypadku awarii. [Priorytet](../traffic-manager/traffic-manager-configure-priority-routing-method.md) Metoda routingu ruchu pozwala **C firmy** łatwo zaimplementować ten wzorzec pracy awaryjnej.
+**Firma C** uruchamia aplikacje z publicznymi punktami końcowymi i chce mieć możliwość bezproblemowego przekierowania ruchu do innego regionu platformy Azure w przypadku awarii. Metoda routingu ruchu [priorytet](../traffic-manager/traffic-manager-configure-priority-routing-method.md) umożliwia **firmie C** łatwo zaimplementować ten wzorzec pracy awaryjnej.
 
-Instalator jest w następujący sposób:
-- **Firma C** tworzy [profilu usługi Traffic Manager](../traffic-manager/traffic-manager-create-profile.md).
-- Przy użyciu **priorytet** metody routingu **C firmy** tworzy dwa punkty końcowe — **podstawowego** dla regionu źródłowego (Azja Wschodnia platformy Azure) i **trybuFailover** w regionie odzyskiwania (Azja południowo-wschodnia platformy Azure). **Podstawowy** jest przypisany priorytet 1 i **trybu Failover** jest przypisany priorytet 2.
-- Ponieważ **podstawowego** punktu końcowego jest hostowany na platformie Azure, punkt końcowy może być jako [Azure](../traffic-manager/traffic-manager-endpoint-types.md#azure-endpoints) punktu końcowego.
-- Za pomocą usługi Azure Site Recovery usługi Azure site recovery nie ma wszystkie maszyny wirtualne lub aplikacje uruchomione przed trybu failover. Dlatego **trybu Failover** punktu końcowego mogą być tworzone jako [zewnętrznych](../traffic-manager/traffic-manager-endpoint-types.md#external-endpoints) punktu końcowego.
-- Domyślnie użytkownika ruch będzie kierowany do źródłowej aplikacji region (Azja Wschodnia), ponieważ punkt końcowy ma najwyższy priorytet, które są skojarzone z nią. Żaden ruch będzie kierowany do regionu odzyskiwania, jeśli **głównej** punkt końcowy jest w dobrej kondycji.
+Konfiguracja jest następująca:
+- **Firma C** tworzy [profil usługi Traffic Manager](../traffic-manager/traffic-manager-create-profile.md).
+- Korzystając z metody routingu **priorytetu,** **firma C** tworzy dwa punkty końcowe — podstawowy dla regionu **źródłowego** (Azure East Asia) i **pracy awaryjnej** dla regionu odzyskiwania (Azure Southeast Asia). **Podstawowy** jest przypisany priorytet 1 i **pracy awaryjnej** jest przypisany priorytet 2.
+- Ponieważ **podstawowy** punkt końcowy jest obsługiwany na platformie Azure, punkt końcowy może być jako punkt końcowy [platformy Azure.](../traffic-manager/traffic-manager-endpoint-types.md#azure-endpoints)
+- W usłudze Azure Site Recovery lokacja platformy Azure odzyskiwania nie ma żadnych maszyn wirtualnych lub aplikacji uruchomionych przed przeczesyniem pracy awaryjnej. Tak punkt końcowy **trybu failover** można utworzyć jako [zewnętrzny](../traffic-manager/traffic-manager-endpoint-types.md#external-endpoints) punkt końcowy.
+- Domyślnie ruch użytkownika jest kierowany do aplikacji regionu źródłowego (Azja Wschodnia), ponieważ ten punkt końcowy ma najwyższy priorytet skojarzony z nim. Żaden ruch nie jest kierowany do regionu odzyskiwania, jeśli **podstawowy** punkt końcowy jest w dobrej kondycji.
 
-![Azure – Azure przed włączeniem trybu failover](./media/concepts-traffic-manager-with-site-recovery/azure-failover-before.png)
+![Platforma Azure na platformę Azure przed przełączeniem awaryjnym](./media/concepts-traffic-manager-with-site-recovery/azure-failover-before.png)
 
-W przypadku awarii **C firmy** może wyzwalać [trybu failover](azure-to-azure-tutorial-failover-failback.md) i odzyskiwanie aplikacji niezbędnych do prowadzenia odzyskiwania region platformy Azure. Gdy usługa Azure Traffic Manager wykryje, że podstawowego punktu końcowego już nie jest w dobrej kondycji, automatycznie używa **trybu Failover** punktu końcowego w odpowiedzi DNS i użytkownicy łączą się odzyskać odzyskiwania (region platformy Azure Azja południowo-wschodnia).
+W przypadku awarii **firma C** może wyzwolić pracy [awaryjnej](azure-to-azure-tutorial-failover-failback.md) i odzyskać swoje aplikacje w regionie platformy Azure odzyskiwania. Gdy usługa Azure Traffic Manager wykryje, że podstawowy punkt końcowy nie jest już w dobrej kondycji, automatycznie używa punktu końcowego **trybu failover** w odpowiedzi DNS i użytkownicy łączą się z aplikacją odzyskaną w regionie platformy Azure odzyskiwania (Azja Południowo-Wschodnia).
 
-![Azure – Azure po włączeniu trybu failover](./media/concepts-traffic-manager-with-site-recovery/azure-failover-after.png)
+![Platforma Azure na platformę Azure po przemijenie awaryjne](./media/concepts-traffic-manager-with-site-recovery/azure-failover-after.png)
 
-W zależności od wymagań biznesowych **C firmy** można wybrać wyższe lub niższe [częstotliwość sondowania](../traffic-manager/traffic-manager-monitoring.md) przełączać się między regiony źródłowy i odzyskiwania w celu zapewnienia minimalnym czasem przestojów dla użytkowników.
+W zależności od wymagań biznesowych **firma C** może wybrać wyższą lub niższą [częstotliwość sondowania,](../traffic-manager/traffic-manager-monitoring.md) aby przełączać się między regionami źródłowymi i odzyskiwania i zapewnić minimalny czas przestoju dla użytkowników.
 
-Gdy znajduje się po awarii, **C firmy** można powrotu po awarii z odzyskiwania region platformy Azure do źródła region platformy Azure przy użyciu usługi Azure Site Recovery. Teraz, gdy Traffic Manager wykryje, że **podstawowego** punkt końcowy jest w dobrej kondycji ponownie, automatycznie wykorzystuje **głównej** punktu końcowego w swojej odpowiedzi DNS.
+Gdy awaria jest zawarta, **firma C** może po awarii z odzyskiwania regionu platformy Azure do źródłowego regionu platformy Azure przy użyciu usługi Azure Site Recovery. Teraz, gdy usługa Traffic Manager wykryje, że **podstawowy** punkt końcowy jest w dobrej kondycji ponownie, automatycznie wykorzystuje **podstawowy** punkt końcowy w swoich odpowiedziach DNS.
 
-## <a name="protecting-multi-region-enterprise-applications"></a>Ochrona aplikacji dla przedsiębiorstw w wielu regionach
+## <a name="protecting-multi-region-enterprise-applications"></a>Ochrona wieloregionowych aplikacji dla przedsiębiorstw
 
-Często przedsiębiorstw poprawy jakości obsługi klienta, dopasowując swoje aplikacje, aby spełniać potrzeby regionalnego. Lokalizacja i zmniejszenia opóźnień może prowadzić do infrastruktury aplikacji, które podzielone między regionami. Przedsiębiorstwa również są kierowane przez przepisy dane regionalne w niektórych obszarach i możliwość izolowania część infrastruktury aplikacji w granicach regionalnych.  
+Globalne przedsiębiorstwa często poprawiają jakość obsługi klienta, dostosowując swoje aplikacje do potrzeb regionalnych. Lokalizacja i zmniejszenie opóźnienia może prowadzić do infrastruktury aplikacji podzielone między regiony. Przedsiębiorstwa są również związane regionalnymi przepisami dotyczącymi danych w niektórych obszarach i decydują się na odizolowanie części infrastruktury aplikacji w granicach regionalnych.  
 
-Rozważmy przykład gdzie **D firmy** został podzielony na jego punktów końcowych aplikacji do udostępniania oddzielnie, Niemcy i reszta świata. **Firma D** korzysta z usługi Azure Traffic Manager [Geographic](../traffic-manager/traffic-manager-configure-geographic-routing-method.md) metody routingu, aby skonfigurować tę funkcjonalność. Cały ruch pochodzący z Niemiec zostaje skierowany do **punkt końcowy 1** i cały ruch pochodzący spoza Niemczech zostaje skierowany do **punkt końcowy 2**.
+Rozważmy przykład, w którym **firma D** podzieliła swoje punkty końcowe aplikacji, aby oddzielnie obsługiwać Niemcy i resztę świata. **Firma D** korzysta z metody routingu [geograficznego](../traffic-manager/traffic-manager-configure-geographic-routing-method.md) usługi Azure Traffic Manager, aby to skonfigurować. Każdy ruch pochodzący z Niemiec jest kierowany do **punktu końcowego 1,** a każdy ruch pochodzący spoza Niemiec jest kierowany do **punktu końcowego 2**.
 
-Problem z tej konfiguracji jest że jeśli **punkt końcowy 1** przestaje działać z jakiegokolwiek powodu, nie ma żadnych przekierowywanie ruchu do **punkt końcowy 2**. Ruch pochodzący z Niemiec w dalszym ciągu być kierowane do **punkt końcowy 1** niezależnie od tego, kondycja punktu końcowego, pozostawiając niemieckiego użytkowników bez dostępu do **D firmy**w aplikacji. Podobnie jeśli **punkt końcowy 2** przechodzi do trybu offline, nie ma żadnych przekierowywanie ruchu do **punkt końcowy 1**.
+Problem z tą konfiguracją polega na tym, że jeśli **punkt końcowy 1** przestanie działać z jakiegokolwiek powodu, nie ma przekierowania ruchu do **punktu końcowego 2**. Ruch pochodzący z Niemiec jest nadal kierowany do **punktu końcowego 1,** niezależnie od kondycji punktu końcowego, pozostawiając niemieckich użytkowników bez dostępu do aplikacji firmy D.Traffic originating from Germany continues to be directed to Endpoint 1 regardless of the health of the endpoint, leaving German users without access to **Company D's**application. Podobnie, jeśli **punkt końcowy 2** przejdzie w tryb offline, nie ma przekierowania ruchu do **punktu końcowego 1**.
 
-![Aplikacja w wielu regionach przed](./media/concepts-traffic-manager-with-site-recovery/geographic-application-before.png)
+![Aplikacja wieloregiona przed](./media/concepts-traffic-manager-with-site-recovery/geographic-application-before.png)
 
-Aby uniknąć uruchamiania tego problemu i zapewnić odporność aplikacji **D firmy** używa [zagnieżdżone profile usługi Traffic Manager](../traffic-manager/traffic-manager-nested-profiles.md) za pomocą usługi Azure Site Recovery. W przypadku instalacji profilu zagnieżdżone jest nie przekierowywany ruch do poszczególnych punktów końcowych, ale zamiast innych profilów usługi Traffic Manager. Poniżej przedstawiono, jak działa ta konfiguracja:
-- Zamiast przy użyciu geograficznego routingu za pomocą poszczególne punkty końcowe, **D firmy** używa geograficznego routingu przy użyciu profilów usługi Traffic Manager.
-- Korzysta z każdego elementu podrzędnego profilu usługi Traffic Manager **priorytet** routingu za pomocą podstawowy i punkt końcowy odzyskiwania, dlatego zagnieżdżanie **priorytet** routingu w ramach **Geographic** routingu.
-- Aby włączyć odporność aplikacji, każdej dystrybucji obciążenia korzysta z usługi Azure Site Recovery do trybu failover w regionie odzyskiwania na podstawie przypadku zdarzenia awarii.
-- Nadrzędny usługi Traffic Manager odbiera zapytanie DNS, są kierowane do odpowiedniego elementu podrzędnego usługi Traffic Manager, który odpowiada na kwerendę z dostępnego punktu końcowego.
+Aby uniknąć wystąpienia tego problemu i zapewnić odporność aplikacji, **firma D** używa [zagnieżdżonych profilów usługi Traffic Manager](../traffic-manager/traffic-manager-nested-profiles.md) za pomocą usługi Azure Site Recovery. W konfiguracji profilu zagnieżdżonego ruch nie jest kierowany do poszczególnych punktów końcowych, ale do innych profilów usługi Traffic Manager. Oto jak działa ta konfiguracja:
+- Zamiast korzystać z routingu geograficznego z poszczególnymi punktami końcowymi, **firma D** używa routingu geograficznego z profilami usługi Traffic Manager.
+- Każdy podrzędny profil usługi Traffic Manager korzysta z routingu **priorytetu** z punktem końcowym podstawowym i odzyskiwania, a tym samym zagnieżdżanie routingu **priorytetu** w ramach routingu **geograficznego.**
+- Aby włączyć odporność aplikacji, każda dystrybucja obciążenia korzysta z usługi Azure Site Recovery do pracy awaryjnej w regionie odzyskiwania na podstawie przypadku awarii.
+- Gdy nadrzędny Menedżer ruchu odbiera kwerendę DNS, jest on kierowany do odpowiedniego podrzędnego menedżera ruchu, który odpowiada na kwerendę z dostępnym punktem końcowym.
 
-![Aplikacja w wielu regionach po](./media/concepts-traffic-manager-with-site-recovery/geographic-application-after.png)
+![Aplikacja wieloregiona po](./media/concepts-traffic-manager-with-site-recovery/geographic-application-after.png)
 
-Na przykład w przypadku awarii punktu końcowego w Niemcy środkowe aplikacji można szybko odzyskać do Niemcy północno-wschodnie. Nowy punkt końcowy obsługuje ruch pochodzący z Niemiec przy minimalnych przestojach dla użytkowników. Podobnie awarii punktu końcowego w regionie Europa Zachodnia może być obsługiwany przez odzyskiwanie obciążenia aplikacji do Europa Północna, z obsługą usługi Azure Traffic Manager, który przekierowuje DNS dostępnego punktu końcowego.
+Na przykład jeśli punkt końcowy w Niemczech Central nie powiedzie się, aplikacja może być szybko odzyskane do Niemiec północno-wschodniej. Nowy punkt końcowy obsługuje ruch pochodzący z Niemiec przy minimalnym przestoju dla użytkowników. Podobnie awaria punktu końcowego w Europie Zachodniej może być obsługiwana przez odzyskiwanie obciążenia aplikacji w Europie Północnej, przy czym usługa Azure Traffic Manager obsługuje przekierowania DNS do dostępnego punktu końcowego.
 
-Powyższe ustawienia można rozszerzyć, aby obejmują liczbę kombinacji region i punktu końcowego wymagana. Usługa Traffic Manager umożliwia maksymalnie 10 poziomów zagnieżdżonych profilów i nie zezwala na pętli w ramach konfiguracji zagnieżdżonych.
+Powyższą konfigurację można rozszerzyć, aby uwzględnić dowolną liczbę wymaganych kombinacji regionu i punktu końcowego. Usługa Traffic Manager umożliwia maksymalnie 10 poziomów profili zagnieżdżonych i nie zezwala na pętle w konfiguracji zagnieżdżonej.
 
-## <a name="recovery-time-objective-rto-considerations"></a>Zagadnienia dotyczące odzyskiwania cel czasu (RTO)
+## <a name="recovery-time-objective-rto-considerations"></a>Zagadnienia dotyczące celu czasu odzyskiwania (RTO)
 
-W większości organizacji Dodawanie lub modyfikowanie rekordów DNS jest obsługiwane przez oddzielny zespół lub osoby spoza organizacji. Dzięki temu zmiany rekordów DNS jest bardzo trudne zadanie. Czas potrzebny do aktualizowania rekordów DNS przez inne zespoły lub organizacje zarządzania infrastrukturą DNS różni się od organizacji, a ma wpływ na cel czasu odzyskiwania aplikacji.
+W większości organizacji dodawanie lub modyfikowanie rekordów DNS jest obsługiwane przez oddzielny zespół lub przez osobę spoza organizacji. To sprawia, że zadanie zmiany rekordów DNS jest bardzo trudne. Czas aktualizacji rekordów DNS przez inne zespoły lub organizacje zarządzające infrastrukturą DNS różni się w zależności od organizacji i ma wpływ na czas pracy aplikacji.
 
-Przy użyciu usługi Traffic Manager, możesz to zrobić frontload pracy wymaganej dla aktualizacji DNS. W czasie rzeczywistego uruchamiania trybu failover jest wymagana żadna akcja ręcznie lub za pomocą skryptu. Takie podejście pomaga szybkie przełączanie (i tym samym obniżenie RTO), a także unikanie kosztownych czasochłonne błędów DNS zmiany w zdarzeniu po awarii. Za pomocą usługi Traffic Manager nawet kroku podczas powrotu po awarii jest zautomatyzowane, które w przeciwnym razie musi odbywać się oddzielnie.
+Korzystając z usługi Traffic Manager, można ładować z przodu pracę wymaganą dla aktualizacji DNS. W czasie rzeczywistego trybu failover nie jest wymagana żadna akcja ręczna ani skryptowa. Takie podejście pomaga w szybkim przełączaniu (a tym samym obniżaniu RTO), a także unikaniu kosztownych czasochłonnych błędów zmiany DNS w przypadku awarii. W usłudze Traffic Manager nawet krok powrotu po awarii jest zautomatyzowany, co w przeciwnym razie musiałoby być zarządzane oddzielnie.
 
-Ustawianie prawidłowych [interwał sondowania](../traffic-manager/traffic-manager-monitoring.md) za pośrednictwem podstawowych lub szybkie kondycji kontroli może znacznie obniżyć czas RTO, podczas trybu failover i ograniczyć czas przestoju dla użytkowników.
+Ustawienie prawidłowego [interwału sondowania](../traffic-manager/traffic-manager-monitoring.md) za pomocą podstawowych lub szybkich kontroli kondycji interwału może znacznie obniżyć czas pracy wdrówce podczas pracy awaryjnej i skrócić czas przestoju użytkowników.
 
-Ponadto można optymalizować DNS czas wygaśnięcia (TTL) wartości dla profilu usługi Traffic Manager. Czas wygaśnięcia wynosi wartość, dla której będzie buforowana wpis DNS przez klienta. Dla rekordu DNS nie jest monitowany dwukrotnie w ramach zakresu czasu wygaśnięcia. Każdy rekord DNS ma czasu wygaśnięcia skojarzonych z nim. Zmniejszenie tej wartości powoduje więcej zapytań DNS do usługi Traffic Manager, ale mogą zmniejszyć czas RTO, szybsze wykrywanie awarii.
+Można dodatkowo zoptymalizować wartość czasu wygaśnięcia dns (TTL) dla profilu usługi Traffic Manager. TTL jest wartością, dla której wpis DNS będzie buforowany przez klienta. Dla rekordu DNS nie będzie wyszukiwany dwa razy w zakresie czasu wygaśnięcia. Z każdym rekordem DNS jest skojarzony czas wygaśnięcia. Zmniejszenie tej wartości powoduje więcej zapytań DNS do Usługi Traffic Manager, ale można zmniejszyć RTO, odnajdując awarie szybciej.
 
-Czas wygaśnięcia odczuwalnych u klienta również nie zwiększa Jeśli zwiększa się liczba rozpoznawania nazw DNS między klientem i autorytatywny serwer DNS. Rozpoznawania nazw DNS "odliczanie" czas wygaśnięcia i przekazywać tylko na podstawie wartości TTL, która odzwierciedla czas, który upłynął, ponieważ rekord był buforowany. Gwarantuje to, że rekord DNS zostanie odświeżony po stronie klienta po czas wygaśnięcia, niezależnie od liczby rozpoznawania nazw DNS w łańcuchu.
+Czas wygaśnięcia doświadczany przez klienta również nie zwiększa się, jeśli liczba programów rozpoznawania nazw DNS między klientem a autorytatywnym serwerem DNS wzrasta. Programy rozpoznawania nazw DNS "odliczają" czas wygaśnięcia i przekazują tylko wartość czasu wygaśnięcia, która odzwierciedla czas, jaki upłynął od momentu buforowania rekordu. Gwarantuje to, że rekord DNS zostanie odświeżony na kliencie po czasie wygaśnięcia, niezależnie od liczby programów rozpoznawania nazw DNS w łańcuchu.
 
-## <a name="next-steps"></a>Kolejne kroki
-- Dowiedz się więcej o usłudze Traffic Manager [metod routingu](../traffic-manager/traffic-manager-routing-methods.md).
-- Dowiedz się więcej o [zagnieżdżone profile usługi Traffic Manager](../traffic-manager/traffic-manager-nested-profiles.md).
-- Dowiedz się więcej o [monitorowania punktu końcowego](../traffic-manager/traffic-manager-monitoring.md).
-- Dowiedz się więcej o [planów odzyskiwania](site-recovery-create-recovery-plans.md) do automatyzowania trybu failover w aplikacji.
+## <a name="next-steps"></a>Następne kroki
+- Dowiedz się więcej o [metodach routingu](../traffic-manager/traffic-manager-routing-methods.md)usługi Traffic Manager .
+- Dowiedz się więcej o [zagnieżdżonych profilach usługi Traffic Manager](../traffic-manager/traffic-manager-nested-profiles.md).
+- Dowiedz się więcej o [monitorowaniu punktów końcowych](../traffic-manager/traffic-manager-monitoring.md).
+- Dowiedz się więcej o [planach odzyskiwania](site-recovery-create-recovery-plans.md) w celu zautomatyzowania pracy awaryjnej aplikacji.

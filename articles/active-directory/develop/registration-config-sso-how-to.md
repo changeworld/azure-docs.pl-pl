@@ -1,6 +1,6 @@
 ---
-title: Konfigurowanie logowania jednokrotnego aplikacji | Microsoft Docs
-description: Jak skonfigurować Logowanie jednokrotne dla aplikacji niestandardowej, którą tworzysz i rejestrujesz w usłudze Azure AD.
+title: Konfigurowanie logowania jednokrotnego aplikacji | Dokumenty firmy Microsoft
+description: Jak skonfigurować logowanie jednokrotne dla aplikacji niestandardowej, którą tworzysz i rejestrujesz w usłudze Azure AD.
 services: active-directory
 documentationcenter: ''
 author: rwike77
@@ -16,34 +16,34 @@ ms.topic: conceptual
 ms.date: 07/15/2019
 ms.author: ryanwi
 ms.openlocfilehash: bb77f376e22428e9259ff3efc84cf6f1cb3491fe
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76702645"
 ---
-# <a name="how-to-configure-single-sign-on-for-an-application"></a>Jak skonfigurować Logowanie jednokrotne dla aplikacji
+# <a name="how-to-configure-single-sign-on-for-an-application"></a>Jak skonfigurować logowanie jednokrotne dla aplikacji
 
-Włączenie federacyjnego logowania jednokrotnego w aplikacji jest automatycznie włączane, gdy federowanie za pomocą usługi Azure AD dla OpenID Connect Connect, SAML 2,0 lub WS-karmione. Jeśli użytkownicy końcowi będą mogli się zalogować pomimo posiadania już istniejącej sesji z usługą Azure AD, prawdopodobnie aplikacja może być błędnie skonfigurowana.
+Włączenie federacyjnego logowania jednokrotnego (SSO) w aplikacji jest automatycznie włączane podczas federowania za pośrednictwem usługi Azure AD dla OpenID Connect, SAML 2.0 lub WS-Fed. Jeśli użytkownicy końcowi muszą się zalogować, mimo że już istniejącą sesję w usłudze Azure AD, prawdopodobnie aplikacja może zostać błędnie skonfigurowana.
 
-* Jeśli używasz biblioteki ADAL/MSAL, upewnij się, że masz **PromptBehavior** ustawioną na wartość **Autostart** , a nie **zawsze**.
+* Jeśli używasz ADAL/MSAL, upewnij się, że **promptbehavior** jest ustawiony na **Auto,** a nie **Zawsze**.
 
-* W przypadku kompilowania aplikacji mobilnej może być konieczne dodanie dodatkowych konfiguracji w celu włączenia obsługi rejestracji Jednokrotnej dla brokera lub nieobsługiwanego przez brokera.
+* Jeśli budujesz aplikację mobilną, może być konieczne dodatkowe konfiguracje, aby włączyć brokered lub non-brokered SSO.
 
-W przypadku systemu Android zobacz [Włączanie logowania jednokrotnego aplikacji w systemie Android](https://docs.microsoft.com/azure/active-directory/develop/active-directory-sso-android).<br>
+W systemie Android zobacz [Włączanie funkcji SSO aplikacji krzyżowej w systemie Android](https://docs.microsoft.com/azure/active-directory/develop/active-directory-sso-android).<br>
 
-W przypadku systemu iOS zobacz [Włączanie logowania jednokrotnego aplikacji w systemie iOS](https://docs.microsoft.com/azure/active-directory/develop/active-directory-sso-ios).
+W przypadku systemu iOS zobacz Włączanie funkcji [SSO aplikacji krzyżowej w iOS](https://docs.microsoft.com/azure/active-directory/develop/active-directory-sso-ios).
 
 ## <a name="next-steps"></a>Następne kroki
 
-[Logowanie jednokrotne usługi Azure AD](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)<br>
+[Azure AD SSO](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)<br>
 
-[Włączanie logowania jednokrotnego aplikacji w systemie Android](https://docs.microsoft.com/azure/active-directory/develop/active-directory-sso-android)<br>
+[Włączanie funkcji SSO aplikacji krzyżowej w systemie Android](https://docs.microsoft.com/azure/active-directory/develop/active-directory-sso-android)<br>
 
-[Włączanie logowania jednokrotnego aplikacji w systemie iOS](https://docs.microsoft.com/azure/active-directory/develop/active-directory-sso-ios)<br>
+[Włączanie funkcji SSO aplikacji krzyżowej w iOS](https://docs.microsoft.com/azure/active-directory/develop/active-directory-sso-ios)<br>
 
 [Integrowanie aplikacji z usługą AzureAD](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications)<br>
 
-[Wyrażanie zgody i uprawnień dla aplikacji AzureAD v 2.0 z zbieżnością](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-scopes)<br>
+[Zgoda i uprawnienia dla aplikacji konwergentnych usługi AzureAD w wersji 2.0](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-scopes)<br>
 
-[AzureAD StackOverflow](https://stackoverflow.com/questions/tagged/azure-active-directory)
+[Przepływ stosu azuread](https://stackoverflow.com/questions/tagged/azure-active-directory)

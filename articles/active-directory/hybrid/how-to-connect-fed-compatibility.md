@@ -1,6 +1,6 @@
 ---
 title: Lista zgodności usługi Azure AD z usługami federacyjnymi
-description: Ta strona zawiera dostawców tożsamości firm innych niż Microsoft, które mogą służyć do implementowania logowania jednokrotnego.
+description: Ta strona zawiera dostawców tożsamości innych niż Microsoft, które mogą służyć do implementowania logowania jednokrotnego.
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -17,22 +17,22 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 54f5090101c486562e33de56402db348c6038c8a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60244756"
 ---
 # <a name="azure-ad-federation-compatibility-list"></a>Lista zgodności usługi Azure AD z usługami federacyjnymi
-Usługa Azure Active Directory zawiera logowania jednokrotnego i rozszerzone zabezpieczenia dostępu do aplikacji dla usługi Office 365 i innych usług Online firmy Microsoft dla implementacji tylko w chmurze i hybrydowych, bez konieczności dowolnego rozwiązania innych firm. Usługi Office 365, takich jak większość usług Online firmy Microsoft, jest zintegrowana z usługą Azure Active Directory dla usług katalogowych, uwierzytelniania i autoryzacji. Usługa Azure Active Directory udostępnia logowanie jednokrotne do tysięcy aplikacji SaaS i aplikacje sieci web w środowisku lokalnym. Zobacz Azure Active Directory [galerii aplikacji](https://azuremarketplace.microsoft.com/marketplace/apps/category/azure-active-directory-apps) obsługiwanych aplikacji SaaS. 
+Usługa Azure Active Directory zapewnia logowanie jednokrotne i rozszerzone zabezpieczenia dostępu do aplikacji dla usługi Office 365 i innych usług Microsoft Online dla implementacji hybrydowych i tylko w chmurze bez konieczności stosowania rozwiązania innych firm. Usługa Office 365, podobnie jak większość usług Online firmy Microsoft, jest zintegrowana z usługą Azure Active Directory dla usług katalogowych, uwierzytelniania i autoryzacji. Usługa Azure Active Directory zapewnia również logowanie jednokrotne do tysięcy aplikacji SaaS i lokalnych aplikacji sieci Web. Zobacz [galerię aplikacji](https://azuremarketplace.microsoft.com/marketplace/apps/category/azure-active-directory-apps) usługi Azure Active Directory dla obsługiwanych aplikacji SaaS. 
 
-## <a name="idp-validation"></a>Weryfikacja tożsamości
-Jeśli Twoja organizacja korzysta z rozwiązania Federacji innej firmy, możesz skonfigurować logowanie jednokrotne dla lokalnych użytkowników usługi Active Directory za pomocą usług Online firmy Microsoft, takich jak Office 365 rozwiązania do Federacji innej firmy jest zgodna z platformą Azure Usługi Active Directory.  Masz pytania dotyczące zgodności skontaktuj się z dostawcą tożsamości.  Jeśli chcesz wyświetlić listę dostawców tożsamości, które wcześniej zostały przetestowane na zgodność z usługą Azure AD przez firmę Microsoft, kliknij przycisk [tutaj](https://www.microsoft.com/download/details.aspx?id=56843). 
+## <a name="idp-validation"></a>Sprawdzanie poprawności IDP
+Jeśli twoja organizacja korzysta z rozwiązania federacyjnego innej firmy, możesz skonfigurować logowanie jednokrotne dla lokalnych użytkowników usługi Active Directory za pomocą usług Microsoft Online, takich jak Office 365, pod warunkiem że rozwiązanie federacyjne innej firmy jest zgodne z platformą Azure Active Directory.  W przypadku pytań dotyczących zgodności skontaktuj się z dostawcą tożsamości.  Jeśli chcesz wyświetlić listę dostawców tożsamości, którzy wcześniej zostali przetestowani pod kątem zgodności z usługą Azure AD, microsoft, kliknij [tutaj](https://www.microsoft.com/download/details.aspx?id=56843). 
 
 >[!NOTE]
->Firma Microsoft udostępnia już testy poprawności w celu dostawców niezależnych tożsamości dla zgodności z usługą Azure Active Directory. Jeśli chcesz przetestować współdziałania w ramach produktu można znaleźć te [wytycznych](https://www.microsoft.com/download/details.aspx?id=56843). 
+>Firma Microsoft nie zapewnia już testowania sprawdzania poprawności niezależnym dostawcom tożsamości w celu zapewnienia zgodności z usługą Azure Active Directory. Jeśli chcesz przetestować swój produkt pod kątem interoperacyjności, zapoznaj się z tymi [wytycznymi.](https://www.microsoft.com/download/details.aspx?id=56843) 
 
 ## <a name="next-steps"></a>Następne kroki
 
 - [Integrowanie katalogów lokalnych z usługą Azure Active Directory](whatis-hybrid-identity.md)
-- [Program Azure AD Connect a federacja](how-to-connect-fed-whatis.md)
+- [Usługa Azure AD Connect i federacja](how-to-connect-fed-whatis.md)

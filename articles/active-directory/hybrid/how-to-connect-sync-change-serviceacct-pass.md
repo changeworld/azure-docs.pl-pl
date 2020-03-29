@@ -1,8 +1,8 @@
 ---
-title: 'Synchronizacja programu Azure AD Connect:  Zmiana konta usługi ADSync | Dokumentacja firmy Microsoft'
-description: W tym dokumencie tematu opisano klucza szyfrowania oraz jak je porzucić, po zmianie hasła.
+title: 'Synchronizacja usługi Azure AD Connect: zmienianie konta usługi ADSync | Dokumenty firmy Microsoft'
+description: W tym dokumencie tematu opisano klucz szyfrowania i sposób porzucenia go po zmianie hasła.
 services: active-directory
-keywords: Konto usługi synchronizacji programu Azure AD, hasło
+keywords: Konto usługi Azure AD sync, hasło
 documentationcenter: ''
 author: billmath
 manager: daveba
@@ -18,110 +18,110 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 077671ab4e964d7641aa3a0f0b435b39117eb6aa
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "65139391"
 ---
-# <a name="changing-the-adsync-service-account-password"></a>Zmienianie hasła konta usługi ADSync
-Jeśli zmienisz hasło do konta usługi ADSync, usługa synchronizacji nie będzie możliwe start poprawnie dopiero po przeprowadzeniu zostały porzucone klucza szyfrowania i ponownie zainicjować hasło do konta usługi ADSync. 
+# <a name="changing-the-adsync-service-account-password"></a>Zmienianie hasła do konta usługi ADSync
+Jeśli zmienisz hasło konta usługi ADSync, usługa synchronizacji nie będzie mogła poprawnie uruchomić, dopóki klucz szyfrowania nie zostanie porzucony i ponownie zostanie ponownie uruchomiony hasło konta usługi ADSync. 
 
-Azure AD Connect, jako część usługi synchronizacji przechowuje klucz szyfrowania hasła konta usługi AD DS łącznika i konto usługi ADSync.  Te konta są szyfrowane, zanim są przechowywane w bazie danych. 
+Usługa Azure AD Connect w ramach usług synchronizacji używa klucza szyfrowania do przechowywania haseł konta łącznika usług AD DS i konta usługi ADSync.  Te konta są szyfrowane, zanim zostaną zapisane w bazie danych. 
 
-Klucz szyfrowania używany jest zabezpieczone przy użyciu [Windows ochrony danych (DPAPI)](https://msdn.microsoft.com/library/ms995355.aspx). DPAPI chroni do szyfrowania klucza przy użyciu **konta usługi ADSync**. 
+Używany klucz szyfrowania jest zabezpieczony za pomocą [systemu Windows Data Protection (DPAPI)](https://msdn.microsoft.com/library/ms995355.aspx). DPAPI chroni klucz szyfrowania przy użyciu **konta usługi ADSync**. 
 
-Jeśli musisz zmienić hasło do konta usługi można użyć procedury opisane w [porzucenie klucz szyfrowania konta usługi ADSync](#abandoning-the-adsync-service-account-encryption-key) w tym celu.  Te procedury również należy używać, gdy musisz porzucić klucza szyfrowania dla jakiegokolwiek powodu.
+Jeśli chcesz zmienić hasło konta usługi, możesz użyć procedur w [porzuceniu klucza szyfrowania konta usługi ADSync,](#abandoning-the-adsync-service-account-encryption-key) aby to osiągnąć.  Procedury te powinny być również używane, jeśli trzeba zrezygnować z klucza szyfrowania z jakiegokolwiek powodu.
 
-## <a name="issues-that-arise-from-changing-the-password"></a>Problemy, które wynikają z zmiana hasła
-Istnieją dwie czynności, które należy wykonać, gdy zmienisz hasło do konta usługi.
+## <a name="issues-that-arise-from-changing-the-password"></a>Problemy wynikające ze zmiany hasła
+Istnieją dwie rzeczy, które należy wykonać po zmianie hasła konta usługi.
 
-Najpierw należy zmienić hasło w obszarze Menedżer sterowania usługami Windows.  Dopóki ten problem zostanie rozwiązany, zostaną wyświetlone następujące błędy:
+Najpierw należy zmienić hasło w Menedżerze sterowania usługami systemu Windows.  Dopóki ten problem nie zostanie rozwiązany, zobaczysz następujące błędy:
 
 
-- Jeśli spróbujesz uruchomić usługi synchronizacji w Menedżerze kontroli usług Windows, wystąpi błąd "**Windows nie można uruchomić usługi Microsoft Azure AD Sync na komputerze lokalnym**". **Błąd 1069: Usługa nie została uruchomiona z powodu niepowodzenia logowania.** "
-- W obszarze podglądu zdarzeń Windows, w dzienniku zdarzeń systemu zawiera błąd **7038 identyfikator zdarzenia** i komunikatem "**usługa ADSync nie może zalogować się podobnie jak w przypadku aktualnie skonfigurowanym hasłem z powodu następującego błędu: Nazwa użytkownika lub hasło jest niepoprawne.** "
+- Jeśli spróbujesz uruchomić usługę synchronizacji w Menedżerze sterowania usługami systemu Windows, zostanie wyświetlony komunikat "**System Windows nie może uruchomić usługi Microsoft Azure AD Sync na komputerze lokalnym**". **Błąd 1069: Usługa nie została uruchomię z powodu błędu logowania.**"
+- W obszarze Podgląd zdarzeń systemu Windows dziennik zdarzeń systemowych zawiera błąd o **identyfikatorze zdarzenia 7038** i komunikat **"Usługa ADSync nie może zalogować się tak, jak w przypadku aktualnie skonfigurowanego hasła z powodu następującego błędu: Nazwa użytkownika lub hasło jest niepoprawna.**"
 
-Po drugie w określonych warunkach, jeśli hasło zostanie zaktualizowane, usługa synchronizacji można już pobierać klucz szyfrowania za pośrednictwem interfejsu DPAPI. Bez klucza szyfrowania usługi synchronizacji nie może odszyfrować hasła wymagane do synchronizacji z lokalnej usługi AD i Azure AD.
-Pojawią się błędy takie jak:
+Po drugie, w określonych warunkach, jeśli hasło zostanie zaktualizowane, usługa synchronizacji nie może już pobrać klucza szyfrowania za pośrednictwem dpapi. Bez klucza szyfrowania usługa synchronizacji nie może odszyfrować haseł wymaganych do synchronizacji z lokalnymi usługami AD i usługi Azure AD.
+Zostaną wyświetlenie błędów, takich jak:
 
-- W obszarze Menedżer sterowania usługami Windows Jeśli użytkownik próbuje uruchomić usługi synchronizacji i nie może pobrać klucza szyfrowania go zakończy się niepowodzeniem z powodu błędu "<strong>Windows Microsoft Azure AD Sync nie można uruchomić na komputerze lokalnym. Aby uzyskać więcej informacji przejrzyj dziennik zdarzeń systemu. Jeśli jest to usługa firmy Microsoft, skontaktuj się z dostawcą usługi i odwołać się do kodu błędu usługi-21451857952</strong>. "
-- W obszarze Windows podglądu zdarzeń, w dzienniku zdarzeń aplikacji zawiera błąd przy użyciu **6028 identyfikator zdarzenia** i komunikat o błędzie *"nie można uzyskać dostępu do klucza szyfrowania serwera."*
+- W menedżerze sterowania usługami systemu Windows, jeśli spróbujesz uruchomić usługę synchronizacji i nie można pobrać klucza szyfrowania, nie powiedzie się z błędem "<strong>System Windows nie może uruchomić microsoft azure ad sync na komputerze lokalnym. Aby uzyskać więcej informacji, zapoznaj się z dziennikiem zdarzeń systemowych. Jeśli jest to usługa firmy inne niż Microsoft, skontaktuj się z dostawcą usługi i zapoznaj się z kodem błędu specyficznym dla usługi -21451857952</strong>."
+- W obszarze Podgląd zdarzeń systemu Windows dziennik zdarzeń aplikacji zawiera błąd o **identyfikatorze zdarzenia 6028** i komunikat o błędzie *"Nie można uzyskać dostępu do klucza szyfrowania serwera".*
 
-Aby upewnić się, że nie będą odbierać te błędy, wykonaj procedury opisane w [porzucenie klucz szyfrowania konta usługi ADSync](#abandoning-the-adsync-service-account-encryption-key) podczas zmiany hasła.
+Aby upewnić się, że te błędy nie są odbierane, postępuj zgodnie z procedurami [w porzuceniu klucza szyfrowania konta usługi ADSync](#abandoning-the-adsync-service-account-encryption-key) podczas zmiany hasła.
  
-## <a name="abandoning-the-adsync-service-account-encryption-key"></a>Porzucanie klucz szyfrowania konta usługi ADSync
+## <a name="abandoning-the-adsync-service-account-encryption-key"></a>Porzucenie klucza szyfrowania konta usługi ADSync
 >[!IMPORTANT]
->Poniższe procedury dotyczą tylko usługi Azure AD Connect kompilacji 1.1.443.0 lub starszy.
+>Poniższe procedury dotyczą tylko kompilacji usługi Azure AD Connect 1.1.443.0 lub starszej.
 
-Użyj poniższych procedur można porzucić klucza szyfrowania.
+Użyj następujących procedur, aby porzucić klucz szyfrowania.
 
-### <a name="what-to-do-if-you-need-to-abandon-the-encryption-key"></a>Co zrobić, jeśli chcesz porzucić klucz szyfrowania
+### <a name="what-to-do-if-you-need-to-abandon-the-encryption-key"></a>Co zrobić, jeśli trzeba zrezygnować z klucza szyfrowania
 
-Jeśli musisz porzucić klucz szyfrowania, w tym celu należy użyć poniższych procedur.
+Jeśli musisz zrezygnować z klucza szyfrowania, użyj następujących procedur, aby to osiągnąć.
 
-1. [Zatrzymaj usługę synchronizacji](#stop-the-synchronization-service)
+1. [Zatrzymywać usługę synchronizacji](#stop-the-synchronization-service)
 
-1. [Porzuć istniejący klucz szyfrowania](#abandon-the-existing-encryption-key)
+1. [Porzucenie istniejącego klucza szyfrowania](#abandon-the-existing-encryption-key)
 
-2. [Podaj hasło konta usługi AD DS łącznika](#provide-the-password-of-the-ad-ds-connector-account)
+2. [Podaj hasło konta łącznika usług AD DS](#provide-the-password-of-the-ad-ds-connector-account)
 
-3. [Zainicjuj ponownie hasło do konta usługi ADSync](#reinitialize-the-password-of-the-adsync-service-account)
+3. [Ponowne zainicjowanie hasła konta usługi ADSync](#reinitialize-the-password-of-the-adsync-service-account)
 
-4. [Uruchom usługę synchronizacji](#start-the-synchronization-service)
+4. [Uruchamianie usługi synchronizacji](#start-the-synchronization-service)
 
-#### <a name="stop-the-synchronization-service"></a>Zatrzymaj usługę synchronizacji
-Najpierw należy zatrzymać usługę w Menedżerze sterowania usługami Windows.  Upewnij się, że usługa nie działa podczas próby zatrzymania go.  Jeśli tak jest, poczekaj, aż zakończy, a następnie Zatrzymaj go.
+#### <a name="stop-the-synchronization-service"></a>Zatrzymywać usługę synchronizacji
+Najpierw można zatrzymać usługę w Menedżerze sterowania usługami systemu Windows.  Upewnij się, że usługa nie jest uruchomiona podczas próby jej zatrzymania.  Jeśli tak, poczekaj, aż się zakończy, a następnie zatrzymaj go.
 
 
-1. Przejdź do Windows Menedżer sterowania usługami (usługi → START).
-2. Wybierz **Microsoft Azure AD Sync** i kliknij przycisk Zatrzymaj.
+1. Przejdź do Menedżera sterowania usługami systemu Windows (START → Usługi).
+2. Wybierz pozycję **Microsoft Azure AD Sync** i kliknij pozycję Zatrzymaj.
 
-#### <a name="abandon-the-existing-encryption-key"></a>Porzuć istniejący klucz szyfrowania
-Porzuć istniejący klucz szyfrowania, dzięki czemu można utworzyć tego nowego klucza szyfrowania:
+#### <a name="abandon-the-existing-encryption-key"></a>Porzucenie istniejącego klucza szyfrowania
+Porzuć istniejący klucz szyfrowania, aby można było utworzyć nowy klucz szyfrowania:
 
-1. Zaloguj się do platformy Azure AD Connect serwera jako administrator.
+1. Zaloguj się do serwera Azure AD Connect Server jako administrator.
 
 2. Rozpocznij nową sesję programu PowerShell.
 
-3. Przejdź do folderu: `$env:Program Files\Microsoft Azure AD Sync\bin\`
+3. Przejdź do folderu:`$env:Program Files\Microsoft Azure AD Sync\bin\`
 
-4. Uruchom polecenie: `./miiskmu.exe /a`
+4. Uruchom polecenie:`./miiskmu.exe /a`
 
-![Narzędzie klucza szyfrowania synchronizacji programu Azure AD Connect](./media/how-to-connect-sync-change-serviceacct-pass/key5.png)
+![Narzędzie klucza szyfrowania usługi Azure AD Connect](./media/how-to-connect-sync-change-serviceacct-pass/key5.png)
 
-#### <a name="provide-the-password-of-the-ad-ds-connector-account"></a>Podaj hasło konta usługi AD DS łącznika
-Ponieważ nie można odszyfrować istniejących haseł przechowywanych w bazie danych, musisz podać usługi synchronizacji przy użyciu hasła konta usługi AD DS łącznika. Usługa synchronizacji szyfruje hasła przy użyciu nowego klucza szyfrowania:
+#### <a name="provide-the-password-of-the-ad-ds-connector-account"></a>Podaj hasło konta łącznika usług AD DS
+Ponieważ istniejące hasła przechowywane w bazie danych nie mogą być już odszyfrowywane, należy podać usługę synchronizacji z hasłem konta łącznika usług AD DS. Usługa synchronizacji szyfruje hasła przy użyciu nowego klucza szyfrowania:
 
-1. Uruchom Menedżera usługi synchronizacji (usługa synchronizacji → START).
-</br>![Menedżera usługi synchronizacji](./media/how-to-connect-sync-change-serviceacct-pass/startmenu.png)  
-2. Przejdź do **łączników** kartę.
-3. Wybierz **łącznika AD** odnosi się do lokalnej usługi AD. Jeśli masz więcej niż jeden łącznik usługi AD, powtórz czynności dla każdego z nich.
-4. W obszarze **akcje**, wybierz opcję **właściwości**.
-5. W oknie podręcznym wybierz **nawiązywanie połączenia z lasu usługi Active Directory**:
-6. Wprowadź hasło do konta usługi AD DS w **hasło** pola tekstowego. Jeśli nie znasz jego hasło, należy ustawić go do żadnej znanej wartości, przed wykonaniem tego kroku.
-7. Kliknij przycisk **OK** Aby zapisać nowe hasło i zamknąć okno podręczne.
-![Narzędzie klucza szyfrowania synchronizacji programu Azure AD Connect](./media/how-to-connect-sync-change-serviceacct-pass/key6.png)
+1. Uruchom Menedżera usług synchronizacji (START → Usługa synchronizacji).
+</br>![Menedżer usługi synchronizacji](./media/how-to-connect-sync-change-serviceacct-pass/startmenu.png)  
+2. Przejdź do karty **Łączniki.**
+3. Wybierz łącznik **usługi AD** odpowiadający lokalnej ucho. Jeśli masz więcej niż jeden łącznik usługi AD, powtórz następujące kroki dla każdego z nich.
+4. W obszarze **Akcje**wybierz pozycję **Właściwości**.
+5. W wyskakującym oknie dialogowym wybierz pozycję **Połącz z lasem usługi Active Directory:**
+6. Wprowadź hasło konta usług AD DS w polach tekstowych **Hasło.** Jeśli nie znasz jego hasła, należy ustawić je na znaną wartość przed wykonaniem tego kroku.
+7. Kliknij **przycisk OK,** aby zapisać nowe hasło i zamknąć okno podręczne.
+![Narzędzie klucza szyfrowania usługi Azure AD Connect](./media/how-to-connect-sync-change-serviceacct-pass/key6.png)
 
-#### <a name="reinitialize-the-password-of-the-adsync-service-account"></a>Zainicjuj ponownie hasło do konta usługi ADSync
-Nie można bezpośrednio Podaj hasło konta usługi Azure AD z usługą synchronizacji. Zamiast tego należy użyć polecenia cmdlet **ADSyncAADServiceAccount Dodaj** ponowne zainicjowanie konto usługi Azure AD. Polecenia cmdlet resetuje hasło konta i udostępnia je zadaniom usługi synchronizacji:
+#### <a name="reinitialize-the-password-of-the-adsync-service-account"></a>Ponowne zainicjowanie hasła konta usługi ADSync
+Nie można bezpośrednio podać hasła konta usługi Azure AD do usługi synchronizacji. Zamiast tego należy użyć polecenia **cmdlet Add-ADSyncAADServiceAccount** do ponownego zainicjowania konta usługi Azure AD. Polecenie cmdlet resetuje hasło konta i udostępnia je usłudze synchronizacji:
 
-1. Rozpocznij nową sesję programu PowerShell na serwerze programu Azure AD Connect.
-2. Uruchom polecenie cmdlet `Add-ADSyncAADServiceAccount`.
-3. W podręcznym oknie dialogowym podaj poświadczenia administratora globalnego usługi Azure AD dla dzierżawy usługi Azure AD.
-![Narzędzie klucza szyfrowania synchronizacji programu Azure AD Connect](./media/how-to-connect-sync-change-serviceacct-pass/key7.png)
-4. Jeśli to się powiodło, pojawi się wiersz polecenia programu PowerShell.
+1. Uruchom nową sesję programu PowerShell na serwerze usługi Azure AD Connect.
+2. Uruchom polecenie `Add-ADSyncAADServiceAccount`cmdlet .
+3. W oknie podręcznym podaj poświadczenia administratora usługi Azure AD Global dla dzierżawy usługi Azure AD.
+![Narzędzie klucza szyfrowania usługi Azure AD Connect](./media/how-to-connect-sync-change-serviceacct-pass/key7.png)
+4. Jeśli to się powiedzie, zostanie wyświetlony wiersz polecenia programu PowerShell.
 
-#### <a name="start-the-synchronization-service"></a>Uruchom usługę synchronizacji
-Skoro Usługa synchronizacji ma dostęp do klucza szyfrowania i hasła, które są niezbędne, można ponownym uruchomieniu usługi w Menedżerze sterowania usługami Windows:
+#### <a name="start-the-synchronization-service"></a>Uruchamianie usługi synchronizacji
+Teraz, gdy usługa synchronizacji ma dostęp do klucza szyfrowania i wszystkich haseł, których potrzebuje, możesz ponownie uruchomić usługę w Menedżerze sterowania usługami systemu Windows:
 
 
-1. Przejdź do Windows Menedżer sterowania usługami (usługi → START).
-2. Wybierz **Microsoft Azure AD Sync** i kliknij przycisk Uruchom ponownie.
+1. Przejdź do Menedżera sterowania usługami systemu Windows (START → Usługi).
+2. Wybierz pozycję **Microsoft Azure AD Sync** i kliknij przycisk Uruchom ponownie.
 
-## <a name="next-steps"></a>Kolejne kroki
-**Tematy poglądowe**
+## <a name="next-steps"></a>Następne kroki
+**Tematy omówienie**
 
-* [Synchronizacja w programie Azure AD Connect: Zrozumienie i dostosowywanie synchronizacji](how-to-connect-sync-whatis.md)
+* [Synchronizacja usługi Azure AD Connect: zrozumienie i dostosowywanie synchronizacji](how-to-connect-sync-whatis.md)
 
 * [Integrowanie tożsamości lokalnych z usługą Azure Active Directory](whatis-hybrid-identity.md)

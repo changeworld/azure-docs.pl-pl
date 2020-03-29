@@ -1,6 +1,6 @@
 ---
 title: pozyskiwanie danych z usługi Logstash do usługi Azure Data Explorer
-description: W tym artykule dowiesz się, jak można pozyskać danych (załaduj) w Eksploratorze danych platformy Azure z programu Logstash
+description: W tym artykule dowiesz się, jak pozyskiwania (ładowania) danych do Usługi Azure Data Explorer z Logstash
 author: tamirkamara
 ms.author: takamara
 ms.reviewer: orspodek
@@ -8,15 +8,15 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 06/03/2019
 ms.openlocfilehash: 86f6732cbf2409d3c79a3d7709100e8af24988a0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "66494539"
 ---
 # <a name="ingest-data-from-logstash-to-azure-data-explorer"></a>pozyskiwanie danych z usługi Logstash do usługi Azure Data Explorer
 
-[Logstash](https://www.elastic.co/products/logstash) to potok przetwarzania danych po stronie serwera typu open source, który pozyskuje dane z wielu źródeł jednocześnie, przekształca dane, a następnie wysyła dane do Twojej ulubionej „przechowalni”. W tym artykule będzie wysyłać dane do Eksploratora danych platformy Azure, czyli usługi eksploracji danych szybka i wysoce skalowalnych danych dzienników i danych telemetrycznych. Na początku utworzysz tabelę i mapowanie danych w klastrze testowym, a następnie przekierujesz usługę Logstash w celu wysłania danych do tabeli, a następnie zweryfikowania wyników.
+[Logstash](https://www.elastic.co/products/logstash) to potok przetwarzania danych po stronie serwera typu open source, który pozyskuje dane z wielu źródeł jednocześnie, przekształca dane, a następnie wysyła dane do Twojej ulubionej „przechowalni”. W tym artykule wyślesz te dane do usługi Azure Data Explorer, która jest szybką i wysoce skalowalną usługą eksploracji danych dla danych dziennika i telemetrii. Na początku utworzysz tabelę i mapowanie danych w klastrze testowym, a następnie przekierujesz usługę Logstash w celu wysłania danych do tabeli, a następnie zweryfikowania wyników.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -108,10 +108,10 @@ output {
 
 | Nazwa parametru | Opis |
 | --- | --- |
-| **path** | Dodatek usługi Logstash zapisuje zdarzenia w plikach tymczasowych przed ich wysłaniem do usługi Azure Data Explorer. Ten parametr zawiera ścieżkę, w której należy zapisać pliki, oraz wyrażenie czasu na potrzeby rotacji pliku. Pozwolą one na wyzwalanie przekazywania w usłudze Azure Data Explorer.|
+| **Ścieżka** | Dodatek usługi Logstash zapisuje zdarzenia w plikach tymczasowych przed ich wysłaniem do usługi Azure Data Explorer. Ten parametr zawiera ścieżkę, w której należy zapisać pliki, oraz wyrażenie czasu na potrzeby rotacji pliku. Pozwolą one na wyzwalanie przekazywania w usłudze Azure Data Explorer.|
 | **ingest_url** | Punkt końcowy Kusto na potrzeby komunikacji dotyczącej pozyskiwania.|
 | **app_id**, **app_key** i **app_tenant**| Poświadczenia wymagane do połączenia z usługą Azure Data Explorer. Pamiętaj, aby używać aplikacji z uprawnieniami do pozyskiwania. |
-| **database**| Nazwa bazy danych, w której zostaną umieszczone zdarzenia. |
+| **Bazy danych**| Nazwa bazy danych, w której zostaną umieszczone zdarzenia. |
 | **table** | Nazwa docelowej tabeli, w której zostaną umieszczone zdarzenia. |
 | **mapping** | Mapowanie jest używane do mapowania ciągu JSON przychodzącego zdarzenia w prawidłowym formacie wiersza (definiuje, która właściwość przechodzi w którą kolumnę). |
 
@@ -144,6 +144,6 @@ Uruchom następujące polecenie w bazie danych, aby wyczyścić tabelę `logs`:
 .drop table logs
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * [Pisanie zapytań](write-queries.md)

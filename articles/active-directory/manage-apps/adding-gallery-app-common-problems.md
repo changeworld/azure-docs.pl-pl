@@ -1,6 +1,6 @@
 ---
-title: Problem podczas dodawania aplikacji galerii usługi Azure AD | Dokumentacja firmy Microsoft
-description: Zrozumienie typowych twarzy osób problemy podczas dodawania aplikacji galerii usługi Azure AD i sposoby ich rozwiązywania
+title: Problem z dodawaniem aplikacji usługi Azure AD Gallery | Dokumenty firmy Microsoft
+description: Poznaj typowe problemy, z jakimi borykają się użytkownicy podczas dodawania aplikacji usługi Azure AD Gallery i co możesz zrobić, aby je rozwiązać
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -16,119 +16,119 @@ ms.date: 09/11/2018
 ms.author: mimart
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b2b42880f99f3e87d75854166047896860f9eb14
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "65784424"
 ---
-# <a name="problem-adding-an-azure-ad-gallery-application"></a>Problem podczas dodawania aplikacji galerii usługi Azure AD
+# <a name="problem-adding-an-azure-ad-gallery-application"></a>Problem z dodawaniem aplikacji usługi Azure AD Gallery
 
-Ten artykuł zawiera omówienie typowych twarzy osób problemów podczas dodawania aplikacji galerii usługi Azure AD i co można zrobić, aby je rozwiązać.
+Ten artykuł pomaga zrozumieć typowe problemy, z którymi borykają się użytkownicy podczas dodawania aplikacji usługi Azure AD Gallery i co można zrobić, aby je rozwiązać.
 
-## <a name="i-clicked-the-add-button-and-my-application-took-a-long-time-to-appear"></a>Po kliknięciu przycisku "Dodaj" i zajęło dużo czasu na pojawiają się w mojej aplikacji
+## <a name="i-clicked-the-add-button-and-my-application-took-a-long-time-to-appear"></a>Kliknąłem przycisk "dodaj", a moja aplikacja długo się pojawiała
 
-W pewnych okolicznościach może potrwać 1 – 2 minutach (i czasami dłużej) do pojawiają się po dodaniu go do katalogu aplikacji. Chociaż nie jest to normalne oczekiwanej wydajności widać, dodanie aplikacji jest w toku, klikając **powiadomienia** ikonę (dzwonek) w prawym górnym rogu [witryny Azure portal](https://portal.azure.com/) i wyszukiwanie dla **w toku** lub **Ukończono** powiadomień etykietą **dodawania aplikacji.**
+W pewnych okolicznościach może upłynąć 1-2 minuty (a czasami dłużej) dla aplikacji pojawiają się po dodaniu go do katalogu. Chociaż nie jest to normalna oczekiwana wydajność, możesz zobaczyć dodawanie aplikacji jest w toku, klikając na ikonę **powiadomień** (dzwonek) w prawym górnym rogu [witryny Azure portal](https://portal.azure.com/) i wyszukując **w toku** lub **zakończone** powiadomienie o nazwie **Dodawanie aplikacji.**
 
-Aplikacja nigdy nie zostanie dodany, czy w przypadku wystąpienia błędu podczas klikania **Dodaj** przycisk, zobaczysz **powiadomień** w **błąd** stanu. Jeśli chcesz więcej szczegółów o błędzie, aby dowiedzieć się więcej na temat lub udostępnienia innym specjalistą pomocy technicznej, widać więcej informacji na temat błędu, wykonując kroki opisane w [sposobu wyświetlania szczegółów powiadomienia portalu](#how-to-see-the-details-of-a-portal-notification) sekcji.
+Jeśli aplikacja nigdy nie zostanie dodana lub podczas klikania przycisku **Dodaj** wystąpi błąd, zostanie **wyświetlone powiadomienie** w stanie **Błąd.** Jeśli chcesz uzyskać więcej szczegółów na temat błędu, aby dowiedzieć się więcej lub udostępnić inżynierowi pomocy technicznej, możesz zobaczyć więcej informacji na temat błędu, wykonując kroki opisane w sekcji [Jak wyświetlić szczegóły powiadomienia portalu.](#how-to-see-the-details-of-a-portal-notification)
 
-## <a name="i-clicked-the-add-button-and-my-application-didnt-appear"></a>Po kliknięciu przycisku "Dodaj" i pojawił się w mojej aplikacji
+## <a name="i-clicked-the-add-button-and-my-application-didnt-appear"></a>Kliknąłem przycisk "Dodaj", a moja aplikacja nie pojawiła się
 
-Czasami ze względu na problemy przejściowe problemy z siecią lub usterkę, dodawania aplikacji nie powiedzie się. Można stwierdzić, dzieje się po kliknięciu **powiadomienia** ikonę (dzwonek) w prawym górnym rogu witryny Azure portal i wyświetlana jest ikona red (!) obok swojej **Dodawanie aplikacji** powiadomień. Oznacza to, że wystąpił błąd podczas tworzenia aplikacji.
+Czasami z powodu przejściowych problemów, problemów z siecią lub błędu dodawanie aplikacji kończy się niepowodzeniem. Można powiedzieć, że dzieje się tak po kliknięciu **ikony powiadomień** (dzwonek) w prawym górnym rogu witryny Azure portal i zobaczysz czerwoną (!) ikonę obok powiadomienia **dodaj aplikacji.** Oznacza to, że wystąpił błąd podczas tworzenia aplikacji.
 
-Jeśli wystąpi błąd, podczas klikania **Dodaj** przycisk, zobaczysz **powiadomień** w **błąd** stanu. Jeśli chcesz więcej szczegółów o błędzie, aby dowiedzieć się więcej na temat lub udostępnienia innym specjalistą pomocy technicznej, widać więcej informacji na temat błędu, wykonując kroki opisane w [sposobu wyświetlania szczegółów powiadomienia portalu](#how-to-see-the-details-of-a-portal-notification) sekcji.
+Jeśli podczas klikania przycisku **Dodaj** wystąpi błąd, zostanie **wyświetlone powiadomienie** w stanie **Błąd.** Jeśli chcesz uzyskać więcej szczegółów na temat błędu, aby dowiedzieć się więcej lub udostępnić inżynierowi pomocy technicznej, możesz zobaczyć więcej informacji na temat błędu, wykonując kroki opisane w sekcji [Jak wyświetlić szczegóły powiadomienia portalu.](#how-to-see-the-details-of-a-portal-notification)
 
-## <a name="i-dont-know-how-to-set-up-my-application-once-ive-added-it"></a>Nie wiem, jak skonfigurować aplikację, gdy został dodany
+## <a name="i-dont-know-how-to-set-up-my-application-once-ive-added-it"></a>Nie wiem, jak skonfigurować aplikację po dodaniu jej
 
-Jeśli potrzebujesz pomocy przy zapoznaniu się z aplikacjami, [listę samouczków dotyczących integracji aplikacji SaaS w usłudze Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list) artykuł jest dobrym miejscem do rozpoczęcia.
+Jeśli potrzebujesz pomocy w poznawaniu aplikacji, dobrym miejscem do rozpoczęcia jest [lista samouczków dotyczących integracji aplikacji SaaS z usługą Azure Active Directory.](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-Oprócz tego [biblioteki dokumentów aplikacji w usłudze Azure AD](https://docs.microsoft.com/azure/active-directory/active-directory-apps-index) pomoże Ci dowiedzieć się więcej o logowanie jednokrotne z usługą Azure AD i jak działa.
+Oprócz tego [biblioteka dokumentów aplikacji usługi Azure AD](https://docs.microsoft.com/azure/active-directory/active-directory-apps-index) pomaga dowiedzieć się więcej o logowanie jednokrotne za pomocą usługi Azure AD i jak to działa.
 
-## <a name="how-to-see-the-details-of-a-portal-notification"></a>Jak wyświetlić szczegóły powiadomieniu portalu
+## <a name="how-to-see-the-details-of-a-portal-notification"></a>Jak wyświetlić szczegóły powiadomienia portalu
 
-Możesz zobaczyć szczegółowe informacje o wszystkich powiadomień portalu, wykonując poniższe kroki:
+Możesz zobaczyć szczegóły dowolnego powiadomienia portalu, wykonując poniższe czynności:
 
-1.  Wybierz **powiadomienia** ikonę (dzwonek) w prawym górnym rogu witryny Azure portal
+1.  Wybierz ikonę **Powiadomienia** (dzwonek) w prawym górnym rogu witryny Azure portal
 
-2.  Wybierz powiadomienia w **błąd** stanu (te z czerwonym (!) obok nich).
+2.  Wybierz dowolne powiadomienie w stanie **Błąd** (te z czerwonym (!) obok nich).
 
     >[!NOTE]
-    >Nie można kliknąć powiadomienia w **pomyślnie** lub **w toku** stanu.
+    >Nie można kliknąć powiadomień w stanie **Pomyślny** lub **W toku.**
     >
     >
 
-4.  Skorzystaj z informacji w ramach **szczegóły powiadomienia** Aby poznać więcej szczegółów o problemie.
+4.  Użyj informacji w obszarze **Szczegóły powiadomień,** aby uzyskać więcej szczegółów na temat problemu.
 
-5.  Jeśli nadal potrzebujesz pomocy, możesz również udostępniać tych informacji, inżynier pomocy technicznej lub grupę produktu, aby uzyskać pomoc dotyczącą danego problemu.
+5.  Jeśli nadal potrzebujesz pomocy, możesz również udostępnić te informacje inżynierowi pomocy technicznej lub grupie produktów, aby uzyskać pomoc dotyczącą problemu.
 
-6.  Kliknij przycisk **kopiowania** **ikonę** po prawej stronie **błąd kopiowania** skopiuj wszystkie szczegóły powiadomienia na udostępnianie pomocy technicznej lub produktu inżynier grupy w polu tekstowym.
+6.  Kliknij **ikonę** **kopiowania** po prawej stronie pola tekstowego **Błąd kopiowania,** aby skopiować wszystkie szczegóły powiadomienia, aby udostępnić je pomocy technicznej lub inżynierowi grupy produktów.
 
-## <a name="how-to-get-help-by-sending-notification-details-to-a-support-engineer"></a>Jak uzyskać pomoc, wysyłając powiadomienia, szczegółowe informacje ze specjalistą pomocy technicznej
+## <a name="how-to-get-help-by-sending-notification-details-to-a-support-engineer"></a>Jak uzyskać pomoc, wysyłając szczegóły powiadomień do inżyniera pomocy technicznej
 
-Bardzo ważne jest, że udostępniasz **poniższymi szczegółami** z inżynierem pomocy technicznej, jeśli potrzebujesz pomocy, dzięki czemu mogą one pomóc szybko. Możesz to zrobić w prosty sposób przez **zrobieniem zrzutu ekranu,** lub przez kliknięcie przycisku **ikona błędu kopiowania**, liczba znalezionych na prawo od **błąd kopiowania** pola tekstowego.
+Bardzo ważne jest, aby udostępnić **wszystkie poniższe dane** inżynierowi pomocy technicznej, jeśli potrzebujesz pomocy, aby mogły ci szybko pomóc. Można to łatwo **zrobić, robiąc zrzut ekranu** lub klikając **ikonę błędu kopiowania**, znajdującą się po prawej stronie pola tekstowego **błędu kopiowania.**
 
-## <a name="notification-details-explained"></a>Szczegóły powiadomienia wyjaśniono
+## <a name="notification-details-explained"></a>Szczegóły powiadomienia Wyjaśnione
 
-Zobacz następujące opisy, aby uzyskać więcej informacji na temat powiadomień.
+Zobacz poniższe opisy, aby uzyskać więcej informacji na temat powiadomień.
 
-### <a name="essential-notification-items"></a>Essential Notification Items
+### <a name="essential-notification-items"></a>Podstawowe elementy powiadomień
 
-- **Tytuł** — opisowy tytuł powiadomienia
+- **Tytuł** – opisowy tytuł zgłoszenia
 
   * Przykład — **ustawienia serwera proxy aplikacji**
 
-- **Opis** — opisu co nastąpiło w wyniku operacji
+- **Opis** – opis tego, co nastąpiło w wyniku operacji
 
-  -   Przykład — **wprowadzony wewnętrzny adres url jest już używana przez inną aplikację**
+  -   Przykład — **wprowadzony wewnętrzny adres URL jest już używany przez inną aplikację**
 
-- **Identyfikator powiadomienia** — Unikatowy identyfikator powiadomienia
+- **Identyfikator powiadomienia** – unikatowy identyfikator powiadomienia
 
-  -   Przykład — **clientNotification-2adbfc06-2073-4678-a69f-7eb78d96b068**
+  -   Przykład – **clientNotification-2adbfc06-2073-4678-a69f-7eb78d96b068**
 
-- **Identyfikator żądania klienta** — identyfikator określonego żądania przez przeglądarkę
+- **Identyfikator żądania klienta** — identyfikator żądania określonego złożony przez przeglądarkę
 
-  -   Przykład — **302fd775-3329-4670-a9f3-bea37004f0bc**
+  -   Przykład – **302fd775-3329-4670-a9f3-bea37004f0bc**
 
-- **Czas UTC sygnatury** — sygnatura czasowa, w którym wystąpił powiadomienia, w formacie UTC
+- **Time Stamp UTC** – sygnatura czasowa, podczas której wystąpiło powiadomienie, w utc
 
-  -   Przykład — **2017-03-23T19:50:43.7583681Z**
+  -   Przykład – **2017-03-23T19:50:43.7583681Z**
 
-- **Wewnętrzny identyfikator transakcji** — wewnętrzny identyfikator, możemy użyć, aby wyszukać błąd w naszych systemach
+- **Identyfikator transakcji wewnętrznej** – wewnętrzny identyfikator, którego możemy użyć do wyszukania błędu w naszych systemach
 
-  -   Przykład — **71a2f329-ca29-402f-aa72-bc00a7aca603**
+  -   Przykład – **71a2f329-ca29-402f-aa72-bc00a7aca603**
 
-- **Nazwa UPN** — użytkownik, który wykonał operację
+- **UPN** – użytkownik, który wykonał operację
 
-  -   Przykład — **tperkins\@f128.info**
+  -   Przykład – **tperkins\@f128.info**
 
-- **Identyfikator dzierżawy** — Unikatowy identyfikator dzierżawy, który był użytkownika, który wykonał operację
+- **Identyfikator dzierżawy** — unikatowy identyfikator dzierżawy, którego użytkownik, który wykonał operację, był członkiem
 
-  -   Przykład — **7918d4b5-0442-4a97-be2d-36f9f9962ece**
+  -   Przykład – **7918d4b5-0442-4a97-be2d-36f9f9962ece**
 
-- **Identyfikator obiektu użytkownika** — Unikatowy identyfikator użytkownika, który wykonał operację
+- **Identyfikator obiektu użytkownika** – unikatowy identyfikator użytkownika, który wykonał operację
 
-  -   Przykład — **17f84be4-51f8-483a-b533-383791227a99**
+  -   Przykład – **17f84be4-51f8-483a-b533-383791227a99**
 
-### <a name="detailed-notification-items"></a>Elementy szczegółowe powiadomienia
+### <a name="detailed-notification-items"></a>Szczegółowe elementy powiadomień
 
--   **Nazwa wyświetlana** — **(może być pusta)** bardziej szczegółowe nazwy wyświetlane dla błędu
+-   **Nazwa wyświetlana** – **(może być pusta)** bardziej szczegółowa nazwa wyświetlana błędu
 
     -   Przykład — **ustawienia serwera proxy aplikacji**
 
--   **Stan** — określonych stan powiadomienia
+-   **Status** – szczególny status zgłoszenia
 
-    -   Przykład — **nie powiodło się**
+    -   Przykład – **Nie powiodło się**
 
--   **Obiekt o identyfikatorze** — **(może być pusta)** identyfikator obiektu, dla której wykonano operację
+-   **Identyfikator obiektu** – **(może być pusty)** identyfikator obiektu, na którym wykonano operację
 
-    -   Example – **8e08161d-f2fd-40ad-a34a-a9632d6bb599**
+    -   Przykład – **8e08161d-f2fd-40ad-a34a-a9632d6bb599**
 
--   **Szczegóły** — szczegółowy opis co nastąpiło w wyniku operacji
+-   **Szczegóły** – szczegółowy opis tego, co wydarzyło się w wyniku operacji
 
-    -   Przykład — **wewnętrzny adres url `https://bing.com/` jest nieprawidłowy, ponieważ jest już używana**
+    -   Przykład — **wewnętrzny adres URL `https://bing.com/` jest nieprawidłowy, ponieważ jest już używany**
 
--   **Błąd kopiowania** — kliknij przycisk **ikonę kopiowania** po prawej stronie **błąd kopiowania** skopiuj wszystkie szczegóły powiadomienia na udostępnianie z grupą pomocy technicznej lub produktów w polu tekstowym 
+-   **Błąd kopiowania** — kliknij **ikonę kopiowania** po prawej stronie pola tekstowego **błędu Kopiowania,** aby skopiować wszystkie szczegóły powiadomienia, aby udostępnić je pomocy technicznej lub grupie produktów 
 -   inżynier ds
 
-    -   Przykład ```{"errorCode":"InternalUrl\_Duplicate","localizedErrorDetails":{"errorDetail":"Internal url 'https://google.com/' is invalid since it is already in use"},"operationResults":\[{"objectId":null,"displayName":null,"status":0,"details":"Internal url 'https://bing.com/' is invalid since it is already in use"}\],"timeStampUtc":"2017-03-23T19:50:26.465743Z","clientRequestId":"302fd775-3329-4670-a9f3-bea37004f0bb","internalTransactionId":"ea5b5475-03b9-4f08-8e95-bbb11289ab65","upn":"tperkins@f128.info","tenantId":"7918d4b5-0442-4a97-be2d-36f9f9962ece","userObjectId":"17f84be4-51f8-483a-b533-383791227a99"}```
+    -   Przykład```{"errorCode":"InternalUrl\_Duplicate","localizedErrorDetails":{"errorDetail":"Internal url 'https://google.com/' is invalid since it is already in use"},"operationResults":\[{"objectId":null,"displayName":null,"status":0,"details":"Internal url 'https://bing.com/' is invalid since it is already in use"}\],"timeStampUtc":"2017-03-23T19:50:26.465743Z","clientRequestId":"302fd775-3329-4670-a9f3-bea37004f0bb","internalTransactionId":"ea5b5475-03b9-4f08-8e95-bbb11289ab65","upn":"tperkins@f128.info","tenantId":"7918d4b5-0442-4a97-be2d-36f9f9962ece","userObjectId":"17f84be4-51f8-483a-b533-383791227a99"}```
 

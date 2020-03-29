@@ -1,6 +1,6 @@
 ---
-title: Projektowania tożsamości hybrydowej — wymagania dotyczące synchronizacji katalogu usługi Azure | Dokumentacja firmy Microsoft
-description: Zidentyfikuj, jakie wymagania są wymagane do zsynchronizowania wszystkich użytkowników między on = lokalnie i w chmurze dla przedsiębiorstw.
+title: Projekt tożsamości hybrydowej — wymagania dotyczące synchronizacji katalogów Platformy Azure | Dokumenty firmy Microsoft
+description: Określ, jakie wymagania są potrzebne do synchronizacji wszystkich użytkowników między on=lokalnie i chmury dla przedsiębiorstwa.
 documentationcenter: ''
 services: active-directory
 author: billmath
@@ -18,63 +18,63 @@ ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 21558c4eccf0cd1f4e9e1d630f0e89dbb6f01c51
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60381165"
 ---
-# <a name="determine-directory-synchronization-requirements"></a>Określić wymagania dotyczące synchronizacji katalogu
-Synchronizacja jest udostępnianie użytkownikom tożsamość w chmurze, na podstawie ich tożsamości w środowisku lokalnym. Czy używają zsynchronizowane konta do uwierzytelniania lub uwierzytelnianie federacyjne, użytkownicy nadal będą musieli miał tożsamość w chmurze.  Tej tożsamości, musisz być utrzymywane i okresowo aktualizowana.  Aktualizacje mogą mieć wiele form, od zmian tytuł do zmiany hasła.  
+# <a name="determine-directory-synchronization-requirements"></a>Określanie wymagań dotyczących synchronizacji katalogów
+Synchronizacja polega na dostarczaniu użytkownikom tożsamości w chmurze na podstawie ich tożsamości lokalnej. Niezależnie od tego, czy będą używać zsynchronizowanego konta do uwierzytelniania lub uwierzytelniania federacyjnego, użytkownicy nadal będą musieli mieć tożsamość w chmurze.  Ta tożsamość będzie musiała być utrzymywana i okresowo aktualizowana.  Aktualizacje mogą przybierać wiele formularzy, od zmian tytułu po zmiany hasła.  
 
-Rozpocznij od oceny organizacje lokalne wymagania dotyczące rozwiązania i użytkownika tożsamości. Ocena ważne jest, aby zdefiniować wymagania techniczne dotyczące sposobu tworzenia i przechowywane w chmurze tożsamości użytkowników.  W przypadku większości organizacji usługi Active Directory działa lokalnie i będą katalogu lokalnego, który użytkownicy będą przez synchronizowane z, jednak w niektórych przypadkach nie będzie tak.  
+Zacznij od oceny lokalnych rozwiązań tożsamości organizacji i wymagań użytkownika. Ta ocena jest ważne, aby zdefiniować wymagania techniczne dotyczące sposobu tworzenia i obsługi tożsamości użytkowników w chmurze.  W większości organizacji usługa Active Directory jest lokalna i będzie katalogiem lokalnym, z których użytkownicy będą synchronizowani, jednak w niektórych przypadkach tak nie będzie.  
 
-Pamiętaj odpowiedzieć na następujące pytania:
+Pamiętaj, aby odpowiedzieć na następujące pytania:
 
-* Masz jeden las usługi AD, wiele lub Brak?
+* Czy masz jeden las AD, wiele lub żaden?
   
-  * Jak wiele katalogów usługi Azure AD będzie można być synchronizowany z?
+  * Ile katalogów usługi Azure AD będzie synchronizować?
     
-    1. Używasz filtrowania?
-    2. Masz wiele serwerów usługi Azure AD Connect planowana?
-* Obecnie masz synchronizacji narzędzia w środowisku lokalnym?
+    1. Czy korzystasz z filtrowania?
+    2. Czy planowane jest wiele serwerów usługi Azure AD Connect?
+* Czy obecnie masz narzędzie do synchronizacji lokalnie?
   
-  * Jeśli tak, czy użytkownicy, jeśli użytkownicy mają wirtualnego katalogu/integracja tożsamości?
-* Masz żadnych innych katalogu lokalnego, które chcesz synchronizować (np. katalogu LDAP, bazy danych działu HR, itp.)?
-  * Czy będą wykonywać czynności wszelkie GALSync?
-  * Co to jest bieżący stan nazwy UPN w swojej organizacji? 
-  * Czy masz inny katalog, który użytkownicy są uwierzytelniani względem?
-  * Firma używa programu Microsoft Exchange?
-    * Czy planują wdrożenie hybrydowe programu exchange o?
+  * Jeśli tak, czy użytkownicy, jeśli użytkownicy mają katalog wirtualny/integrację tożsamości?
+* Czy masz inny katalog lokalny, który chcesz zsynchronizować (np. katalog LDAP, baza danych HR itp.)?
+  * Czy zamierzasz robić jakieś GALSync?
+  * Jaki jest aktualny stan sieci UPN w organizacji? 
+  * Czy masz inny katalog, na który użytkownicy uwierzytelniają?
+  * Czy Twoja firma korzysta z programu Microsoft Exchange?
+    * Czy planują wdrożenie wymiany hybrydowej?
 
-Teraz, gdy masz pomysł o wymaganiach dotyczących usługi synchronizacji, należy określić, które narzędzie jest właściwy, aby spełnić te wymagania.  Firma Microsoft udostępnia kilka narzędzi, aby osiągnąć Integracja katalogu i synchronizacji.  Zobacz [Tabela porównawcza narzędzi integracji katalogu tożsamości hybrydowej](plan-hybrid-identity-design-considerations-tools-comparison.md) Aby uzyskać więcej informacji. 
+Teraz, gdy masz pomysł na temat wymagań synchronizacji, należy określić, które narzędzie jest poprawne, aby spełnić te wymagania.  Firma Microsoft udostępnia kilka narzędzi do wykonywania integracji i synchronizacji katalogów.  Zobacz [tabelę porównawczą narzędzi integracji katalogów tożsamości hybrydowej,](plan-hybrid-identity-design-considerations-tools-comparison.md) aby uzyskać więcej informacji. 
 
-Teraz, gdy masz wymagań synchronizacji i narzędzia które będzie to zrobić dla Twojej firmy, należy ocenić aplikacje, które używają tych usług katalogowych. Ocena ważne jest, aby zdefiniować wymagania techniczne, aby zintegrować te aplikacje do chmury. Pamiętaj odpowiedzieć na następujące pytania:
+Teraz, gdy masz wymagania dotyczące synchronizacji i narzędzie, które osiągnie to dla twojej firmy, musisz ocenić aplikacje korzystające z tych usług katalogowych. Ta ocena jest ważne, aby zdefiniować wymagania techniczne, aby zintegrować te aplikacje do chmury. Pamiętaj, aby odpowiedzieć na następujące pytania:
 
-* Zostaną przeniesione te aplikacje do chmury i korzystają z katalogu?
-* Istnieją specjalne atrybuty, które muszą zostać zsynchronizowane z chmurą, więc aplikacje te można ich używać?
-* Te aplikacje będą ponownego zapisania może korzystać z uwierzytelniania w chmurze?
-* Te aplikacje będą na żywo w środowisku lokalnym, podczas gdy użytkownicy uzyskiwać do nich dostęp przy użyciu tożsamości chmury?
+* Czy te aplikacje zostaną przeniesione do chmury i będą korzystać z katalogu?
+* Czy istnieją specjalne atrybuty, które muszą być zsynchronizowane z chmurą, aby te aplikacje mogły z nich korzystać pomyślnie?
+* Czy te aplikacje muszą być ponownie napisane, aby skorzystać z auth chmury?
+* Czy te aplikacje będą nadal występować lokalnie, podczas gdy użytkownicy uzyskują do nich dostęp przy użyciu tożsamości w chmurze?
 
-Należy również określić synchronizacji katalogów wymagań i ograniczeń zabezpieczeń. Ocena ważne jest, aby uzyskać listę wymagań, które będą potrzebne w celu tworzenia i zarządzania tożsamościami użytkowników w chmurze. Pamiętaj odpowiedzieć na następujące pytania:
+Należy również określić wymagania dotyczące zabezpieczeń i ograniczenia synchronizacji katalogów. Ta ocena jest ważne, aby uzyskać listę wymagań, które będą potrzebne w celu utworzenia i utrzymania tożsamości użytkownika w chmurze. Pamiętaj, aby odpowiedzieć na następujące pytania:
 
-* Której zostaną umieszczone serwera synchronizacji?
-* Czy będzie przyłączony do domeny?
-* Serwer zostanie umieszczony w sieci z ograniczeniami za zaporą, takich jak sieć obwodowa?
-  * Użytkownik będzie mógł otworzyć porty zapory wymagane, aby możliwa była synchronizacja?
+* Gdzie będzie znajdować się serwer synchronizacji?
+* Czy zostanie przyłączona do domeny?
+* Czy serwer będzie zlokalizowany w sieci z ograniczeniami za zaporą, takiej jak strefa DMZ?
+  * Czy będzie można otworzyć wymagane porty zapory do obsługi synchronizacji?
 * Czy masz plan odzyskiwania po awarii dla serwera synchronizacji?
-* Czy masz konto z odpowiednimi uprawnieniami dla wszystkich lasów, chcesz zsynchronizować z?
-  * Jeśli Twoja firma nie znasz odpowiedzi na to pytanie, zapoznaj się z sekcją "Uprawnienia do synchronizacji haseł" w artykule [Instalowanie usługi Azure Active Directory Sync](https://msdn.microsoft.com/library/azure/dn757602.aspx#BKMK_CreateAnADAccountForTheSyncService) i określić, jeśli masz już konto za pomocą tych uprawnień, czy muszę ją utworzyć.
-* Jeśli masz lasu odpowiednie synchronizacja jest serwer synchronizacji mogła uzyskać dostęp do wszystkich lasów?
+* Czy masz konto z odpowiednimi uprawnieniami dla wszystkich lasów, z których chcesz zsynchronizować?
+  * Jeśli Twoja firma nie zna odpowiedzi na to pytanie, przejrzyj sekcję "Uprawnienia do synchronizacji haseł" w artykule [Instalowanie usługi synchronizacji usługi Azure Active Directory](https://msdn.microsoft.com/library/azure/dn757602.aspx#BKMK_CreateAnADAccountForTheSyncService) i określ, czy masz już konto z tymi uprawnieniami lub jeśli musisz je utworzyć.
+* Jeśli masz mutli-forest sync jest serwer synchronizacji w stanie dostać się do każdego lasu?
 
 > [!NOTE]
-> Pamiętaj zanotować wszystkie odpowiedzi i zrozumieć uzasadnienie. [Określanie wymagań dotyczących odpowiedzi na zdarzenia](plan-hybrid-identity-design-considerations-incident-response-requirements.md) zostanie umieszczona nad dostępnych opcji. Po udzieleniu odpowiedzi na te pytania można wybrać opcję, która najlepiej pasujące do działalności potrzebuje.
+> Pamiętaj, aby zanotować wszystkie odpowiedzi i zrozumieć ich uzasadnienie. [Określ wymagania dotyczące reagowania na zdarzenia](plan-hybrid-identity-design-considerations-incident-response-requirements.md) zostaną przejmą dostępne opcje. Odpowiadając na te pytania, wybierzesz opcję, która najlepiej odpowiada Twoim potrzebom biznesowym.
 > 
 > 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 [Określanie wymagań dotyczących uwierzytelniania wieloskładnikowego](plan-hybrid-identity-design-considerations-multifactor-auth-requirements.md)
 
-## <a name="see-also"></a>Zobacz także
-[Omówienie zagadnień dotyczących projektowania](plan-hybrid-identity-design-considerations-overview.md)
+## <a name="see-also"></a>Zobacz też
+[Omówienie zagadnień projektowych](plan-hybrid-identity-design-considerations-overview.md)
 

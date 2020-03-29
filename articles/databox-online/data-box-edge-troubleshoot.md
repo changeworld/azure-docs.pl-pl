@@ -1,6 +1,6 @@
 ---
-title: Rozwiązywanie problemów krawędź pola danych Azure przy użyciu witryny Azure portal | Dokumentacja firmy Microsoft
-description: W tym artykule opisano, jak rozwiązywać problemy dotyczące usługi Azure Data Box Edge.
+title: Rozwiązywanie problemów z usługą Azure Data Box Edge za pomocą witryny Azure Portal | Dokumenty firmy Microsoft
+description: W tym artykule opisano sposób rozwiązywania problemów z usługą Azure Data Box Edge.
 services: databox
 author: alkohli
 ms.service: databox
@@ -9,15 +9,15 @@ ms.topic: article
 ms.date: 03/15/2019
 ms.author: alkohli
 ms.openlocfilehash: 3a8d1f93930d2b298eeb7d10a73624b9a19bcc0e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60756261"
 ---
-# <a name="troubleshoot-your-azure-data-box-edge-issues"></a>Rozwiązywanie problemów związanych z usługi Azure Data Box Edge 
+# <a name="troubleshoot-your-azure-data-box-edge-issues"></a>Rozwiązywanie problemów dotyczących usługi Azure Data Box Edge 
 
-W tym artykule opisano sposób rozwiązywania problemów na krawędzi sieci Azure Data Box. 
+W tym artykule opisano sposób rozwiązywania problemów z usługą Azure Data Box Edge. 
 
 W tym artykule omówiono sposób wykonywania następujących zadań:
 
@@ -37,11 +37,11 @@ Diagnozowanie i rozwiązywanie problemów związanych z błędami urządzenia je
  
 2. Po zakończeniu wykonywania testów zostaną wyświetlone wyniki. 
 
-    ![Przejrzyj wyniki testu](media/data-box-edge-troubleshoot/run-diag-2.png)
+    ![Przeglądanie wyników testów](media/data-box-edge-troubleshoot/run-diag-2.png)
 
     Jeśli test zakończy się niepowodzeniem, zostanie wyświetlony adres URL zalecanej akcji. Możesz kliknąć adres URL, aby wyświetlić zalecaną akcję.
  
-    ![Przejrzyj ostrzeżenia dla testów zakończonych niepowodzeniem](media/data-box-edge-troubleshoot/run-diag-3.png)
+    ![Przejrzyj ostrzeżenia dotyczące nieudanych testów](media/data-box-edge-troubleshoot/run-diag-3.png)
 
 
 ## <a name="collect-support-package"></a>Zbieranie pakietu dla pomocy technicznej
@@ -64,9 +64,9 @@ Wszelkie błędy występujące podczas procesów przekazywania i odświeżania s
 
 1. Aby wyświetlić pliki błędów, przejdź do udziału i kliknij go w celu wyświetlenia jego zawartości. 
 
-      ![Nawiązywanie połączenia i wyświetlanie zawartości udziału](media/data-box-edge-troubleshoot/troubleshoot-logs-1.png)
+      ![Łączenie się z zawartością udziału i wyświetlanie ich](media/data-box-edge-troubleshoot/troubleshoot-logs-1.png)
 
-2. Kliknij przycisk _folderu Microsoft Edge pole danych_. Ten folder zawiera dwa podfoldery:
+2. Kliknij _folder Microsoft Data Box Edge_. Ten folder zawiera dwa podfoldery:
 
     - Folder przekazywania zawierający pliki dziennika w przypadku błędów przekazywania.
     - Folder odświeżania dla błędów podczas odświeżania.
@@ -84,6 +84,6 @@ Wszelkie błędy występujące podczas procesów przekazywania i odświeżania s
     [!INCLUDE [data-box-edge-edge-upload-error-reference](../../includes/data-box-edge-gateway-upload-error-reference.md)]
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - Dowiedz się więcej o [znanych problemach w tej wersji](data-box-gateway-release-notes.md).

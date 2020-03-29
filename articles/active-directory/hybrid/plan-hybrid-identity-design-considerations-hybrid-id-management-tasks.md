@@ -1,6 +1,6 @@
 ---
-title: Zadania zarządzania projektowania tożsamości hybrydowej — Azure | Dokumentacja firmy Microsoft
-description: Kontrola dostępu warunkowego usługi Azure Active Directory sprawdza, czy określonych warunków, wybranego podczas uwierzytelniania użytkownika, a jeśli tak, to przed zezwoleniem na dostęp do aplikacji. Po spełnieniu tych warunków, użytkownik jest uwierzytelniony i zezwolenie na dostęp do aplikacji.
+title: Projekt tożsamości hybrydowej — zadania zarządzania Azure | Dokumenty firmy Microsoft
+description: Dzięki kontroli dostępu warunkowego usługa Azure Active Directory sprawdza określone warunki, które można wybrać podczas uwierzytelniania użytkownika i przed zezwoleniem na dostęp do aplikacji. Po spełnieniu tych warunków użytkownik jest uwierzytelniony i ma dostęp do aplikacji.
 documentationcenter: ''
 services: active-directory
 author: billmath
@@ -18,57 +18,57 @@ ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8a829d39ff21a1abeafd3b4362747894d196d9d4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67109382"
 ---
 # <a name="plan-for-hybrid-identity-lifecycle"></a>Planowanie cyklu życia tożsamości hybrydowej
-Tożsamość jest jedną z podstaw enterprise mobility i aplikacji strategii dostępu. Czy logujesz się Twoje urządzenie przenośne lub aplikacji SaaS, swoją tożsamość jest kluczem do uzyskania dostępu do wszystkich. Na najwyższym poziomie rozwiązanie do zarządzania tożsamościami obejmuje, ujednolicając naukę i synchronizacja między repozytoriami tożsamości w tym automatyzacji i centralizowanie proces aprowizacji zasobów. Rozwiązanie tożsamości powinien być scentralizowane tożsamości lokalnych i w chmurze i również użyć jakiegoś Federację tożsamości do utrzymywania scentralizowanego uwierzytelniania i bezpiecznego udostępniania i współpracować z zewnętrznych użytkowników i firm. Zasoby do zakresu od systemów operacyjnych i aplikacji do osób w lub powiązane z organizacji. Może się zmienić strukturę organizacyjną aby pomieścić inicjowania obsługi zasad i procedur.
+Tożsamość jest jednym z fundamentów strategii mobilności i dostępu do aplikacji w przedsiębiorstwie. Niezależnie od tego, czy logujesz się na urządzeniu przenośnym, czy w aplikacji SaaS, Twoja tożsamość jest kluczem do uzyskania dostępu do wszystkiego. Na najwyższym poziomie rozwiązanie do zarządzania tożsamościami obejmuje ujednolicenie i synchronizację między repozytoriami tożsamości, co obejmuje automatyzację i centralizację procesu inicjowania obsługi administracyjnej zasobów. Rozwiązanie tożsamości powinno być scentralizowaną tożsamością w środowisku lokalnym i w chmurze, a także używać jakiejś formy federacji tożsamości do obsługi scentralizowanego uwierzytelniania i bezpiecznego udostępniania i współpracy z zewnętrznymi użytkownikami i firmami. Zasoby obejmują systemy operacyjne i aplikacje po osoby w organizacji lub z nią powiązane. Struktura organizacyjna może być zmieniona w celu uwzględnienia zasad i procedur inicjowania obsługi administracyjnej.
 
-Jest również posiadanie rozwiązanie tożsamości zapewniające obsługę wysokowydajnych zwiększać możliwości użytkowników przez zapewnienie im z samoobsługi środowiska, aby zachować produktywność. Rozwiązanie tożsamości jest bardziej niezawodne, jeśli włączenie logowania jednokrotnego dla użytkowników wszystkich zasobów potrzebują dostępu. Administratorzy na wszystkich poziomach standardowe procedury służą do zarządzania poświadczeniami użytkownika. Niektóre poziomy administracji można zredukować lub usunięte, w zależności od zakresu inicjowania obsługi administracyjnej rozwiązania do zarządzania. Ponadto można bezpiecznie rozpowszechniać możliwości administrowania ręcznie lub automatycznie wśród różnych organizacji. Na przykład administrator domeny może obsługiwać tylko osoby i zasobów w tej domenie. Ten użytkownik może wykonywać zadania administracyjne i inicjowania obsługi administracyjnej, ale nie ma uprawnień do wykonywania zadań konfiguracji, takich jak tworzenie przepływów pracy.
+Ważne jest również, aby mieć rozwiązanie tożsamości ukierunkowane na wzmocnienie pozycji użytkowników, zapewniając im samoobsługowe doświadczenia, aby zapewnić im produktywność. Rozwiązanie tożsamości jest bardziej niezawodne, jeśli umożliwia logowanie jednokrotne dla użytkowników we wszystkich zasobach, do których mają dostęp. Administratorzy na wszystkich poziomach mogą używać standardowych procedur zarządzania poświadczeniami użytkownika. Niektóre poziomy administracji można zmniejszyć lub wyeliminować, w zależności od zakresu rozwiązania do zarządzania inicjowania obsługi administracyjnej. Ponadto można bezpiecznie dystrybuować możliwości administracyjne, ręcznie lub automatycznie, między różnymi organizacjami. Na przykład administrator domeny może obsługiwać tylko osoby i zasoby w tej domenie. Ten użytkownik może wykonywać zadania administracyjne i inicjowania obsługi administracyjnej, ale nie jest autoryzowany do wykonywania zadań konfiguracyjnych, takich jak tworzenie przepływów pracy.
 
-## <a name="determine-hybrid-identity-management-tasks"></a>Określić zadania związane z zarządzaniem tożsamości hybrydowej
-Przesyłanie zadań administracyjnych w Twojej organizacji zwiększa dokładność i efektywności administracji i poprawia Równoważenie obciążenia organizacji. Poniżej przedstawiono tabele przestawne, które zdefiniować systemu zarządzania tożsamościami niezawodne.
+## <a name="determine-hybrid-identity-management-tasks"></a>Określanie zadań zarządzania tożsamościami hybrydowymi
+Dystrybucja zadań administracyjnych w organizacji zwiększa dokładność i skuteczność administracji oraz poprawia równowagę obciążenia organizacji. Poniżej znajdują się przestawne, które definiują niezawodny system zarządzania tożsamościami.
 
- ![zagadnienia dotyczące zarządzania tożsamościami](./media/plan-hybrid-identity-design-considerations/Identity_management_considerations.png)
+ ![zagadnienia związane z zarządzaniem tożsamościami](./media/plan-hybrid-identity-design-considerations/Identity_management_considerations.png)
 
-Aby zdefiniować zadania związane z zarządzaniem tożsamościami hybrydowe, musisz poznać niektóre podstawowe właściwości organizacji, która zostanie przyjęty tożsamości hybrydowej. Należy zrozumieć bieżące repozytoriów, używanych na potrzeby źródła tożsamości. Znajomość tych podstawowych elementów, można będzie miał podstawowe wymagania i na podstawie należy zadać bardziej szczegółowe pytania, które prowadzą do lepszego decyzja projektowa rozwiązania tożsamości.  
+Aby zdefiniować zadania zarządzania tożsamościami hybrydowymi, należy zrozumieć niektóre podstawowe cechy organizacji, która będzie przyjmować tożsamość hybrydową. Ważne jest, aby zrozumieć bieżące repozytoria używane dla źródeł tożsamości. Znając te podstawowe elementy, będziesz mieć podstawowe wymagania i na podstawie tego trzeba będzie zadać bardziej szczegółowe pytania, które doprowadzą Cię do lepszej decyzji projektowej dla rozwiązania tożsamości.  
 
-Podczas definiowania tych wymagań, upewnij się, że co najmniej odpowiedzi na następujące pytania
+Definiując te wymogi, należy zapewnić, aby co najmniej następujące pytania były
 
-* Opcje inicjowania obsługi: 
+* Opcje inicjowania obsługi administracyjnej: 
   
-  * Rozwiązania z tożsamością hybrydową obsługuje niezawodne konta zarządzania dostępem i aprowizacji systemu?
-  * Jak są użytkowników, grup i haseł, które mają być zarządzane?
-  * Zarządzanie cyklem życia tożsamości jest elastyczny? 
-    * Jak zawieszenie konta aktualizacji hasła długo?
+  * Czy rozwiązanie tożsamości hybrydowej obsługuje niezawodny system zarządzania dostępem do konta i inicjowania obsługi administracyjnej?
+  * W jaki sposób będą zarządzane użytkownicy, grupy i hasła?
+  * Czy zarządzanie cyklem życia tożsamości jest responsywne? 
+    * Jak długo trwa zawieszenie konta aktualizacji haseł?
 * Zarządzanie licencjami: 
   
-  * Czy hybrydowe rozwiązanie obsługuje licencji Zarządzanie tożsamościami?
-    * Jeśli tak, jakie funkcje są dostępne?
-  * Rozwiązanie obsługuje zarządzanie licencjami na podstawie grupy? 
+  * Czy rozwiązanie tożsamości hybrydowej obsługuje zarządzanie licencjami?
+    * Jeśli tak, jakie możliwości są dostępne?
+  * Czy rozwiązanie obsługuje zarządzanie licencjami opartymi na grupach? 
   
-    * Jeśli tak, czy jest możliwe do przypisania grupy zabezpieczeń? 
-    * Jeśli tak, katalog w chmurze automatycznie przypisze licencji wszystkich członków grupy? 
-    * Co się stanie, jeśli użytkownik jest następnie dodawane do lub usunięte z grupy, będzie licencji można automatycznie przypisywane lub usuwane odpowiednio? 
-* Integracja z innymi dostawcami tożsamości innych firm:
-  * Można zintegrować to rozwiązanie hybrydowego za pomocą dostawców tożsamości innych firm do implementowania logowania jednokrotnego?
-  * Jest możliwe, o ujednolicenie wszystkich dostawców innej tożsamości w systemie spójnych tożsamości?
-  * Jeśli tak, jak i które są one i jakie funkcje są dostępne?
+    * Jeśli tak, czy można przypisać do niej grupę zabezpieczeń? 
+    * Jeśli tak, czy katalog w chmurze automatycznie przypisze licencje do wszystkich członków grupy? 
+    * Co się stanie, jeśli użytkownik zostanie następnie dodany lub usunięty z grupy, licencja zostanie automatycznie przypisana lub usunięta w razie potrzeby? 
+* Integracja z innymi zewnętrznymi dostawcami tożsamości:
+  * Czy to rozwiązanie hybrydowe można zintegrować z zewnętrznymi dostawcami tożsamości w celu wdrożenia logowania jednokrotnego?
+  * Czy możliwe jest ujednolicenie wszystkich różnych dostawców tożsamości w spójny system tożsamości?
+  * Jeśli tak, to jak i jakie są i jakie możliwości są dostępne?
 
-## <a name="synchronization-management"></a>Zarządzanie synchronizacji
-Jednym z celów programu identity manager, aby można było przenieść wszystkich dostawców tożsamości i przechowywać je zsynchronizować. Zachowaj dane synchronizowane oparte na dostawcy tożsamości wzorca autorytatywne. Scenariusza z tożsamością hybrydową, przy użyciu modelu zsynchronizowane zarządzania służy do zarządzania wszystkie tożsamości użytkowników i urządzeń na serwerze lokalnym i zsynchronizować konta i, opcjonalnie, hasła do chmury. Użytkownik wprowadza tego samego hasła lokalnie, jak robią w chmurze, a przy logowaniu, hasło jest weryfikowane przez rozwiązanie tożsamości. Ten model wykorzystuje narzędzia do synchronizacji katalogów.
+## <a name="synchronization-management"></a>Zarządzanie synchronizacją
+Jednym z celów menedżera tożsamości, aby móc przynieść wszystkich dostawców tożsamości i zachować je zsynchronizowane. Dane są synchronizowane na podstawie autorytatywnego dostawcy tożsamości wzorca. W scenariuszu tożsamości hybrydowej z zsynchronizowanym modelem zarządzania można zarządzać wszystkimi tożsamościami użytkowników i urządzeń na serwerze lokalnym i synchronizować konta i opcjonalnie hasła do chmury. Użytkownik wprowadza to samo hasło lokalnie, co w chmurze, a podczas logowania hasło jest weryfikowane przez rozwiązanie tożsamości. Ten model używa narzędzia do synchronizacji katalogów.
 
-![Synchronizacja katalogów](./media/plan-hybrid-identity-design-considerations/Directory_synchronization.png) odpowiedniego projektu synchronizacji rozwiązania z tożsamością hybrydową upewnij się, że należy odpowiedzieć na następujące pytania:
-*    Jakie są dostępne dla rozwiązania tożsamości hybrydowej rozwiązań synchronizacji?
+![synchronizacja](./media/plan-hybrid-identity-design-considerations/Directory_synchronization.png) katalogów Aby prawidłowo zaprojektować synchronizację rozwiązania tożsamości hybrydowej, należy odpowiedzieć na następujące pytania:
+*    Jakie rozwiązania do synchronizacji są dostępne dla rozwiązania tożsamości hybrydowej?
 *    Jakie są możliwości logowania jednokrotnego?
-*    Jakie są opcje dla Federację tożsamości między B2B i B2C?
+*    Jakie są opcje federacji tożsamości między B2B i B2C?
 
-## <a name="next-steps"></a>Kolejne kroki
-[Określenia strategii wdrażania zarządzania tożsamości hybrydowej](plan-hybrid-identity-design-considerations-lifecycle-adoption-strategy.md)
+## <a name="next-steps"></a>Następne kroki
+[Określanie strategii wdrażania zarządzania tożsamościami hybrydowymi](plan-hybrid-identity-design-considerations-lifecycle-adoption-strategy.md)
 
 ## <a name="see-also"></a>Zobacz też
-[Omówienie zagadnień dotyczących projektowania](plan-hybrid-identity-design-considerations-overview.md)
+[Omówienie zagadnień projektowych](plan-hybrid-identity-design-considerations-overview.md)
 
