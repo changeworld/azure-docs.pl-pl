@@ -5,16 +5,16 @@ ms.topic: include
 ms.date: 10/25/2018
 ms.author: alkohli
 ms.openlocfilehash: 6172570ad541dee10473d222f79fc1ba1ce19dea
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67183677"
 ---
-Poniżej przedstawiono listę kont magazynu obsługiwanych dla Twojego urządzenia.
+Oto lista obsługiwanych kont magazynu dla twojego urządzenia.
 
 | **Konto magazynu** | **Uwagi** |
 | --- | --- |
-| Wdrożenie klasyczne | Standardowa (Standard) |
-| Ogólne zastosowanie  |Standardowe; obsługiwane są zarówno V1 i V2. Obsługiwane są zarówno gorące i chłodne warstwy. |
+| Wdrożenie klasyczne | Standardowa |
+| Ogólnego przeznaczenia  |Standardowe; obsługiwane są wersje V1 i V2. Obsługiwane są warstwy Gorąca i Chłodna. |
 

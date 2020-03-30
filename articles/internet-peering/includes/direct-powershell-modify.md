@@ -9,23 +9,23 @@ ms.topic: include
 ms.date: 11/27/2019
 ms.author: prmitiki
 ms.openlocfilehash: 03c67ccf88a8c73fe04f062c6af9520115c185a1
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75774265"
 ---
-W tej sekcji opisano sposób wykonywania następujących operacji modyfikacji dla bezpośredniej komunikacji równorzędnej:
+W tej sekcji opisano sposób wykonywania następujących operacji modyfikacji dla komunikacji bezpośredniej komunikacji równorzędnej:
 
-* Dodaj bezpośrednie połączenia komunikacji równorzędnej
-* Usuń bezpośrednie połączenia komunikacji równorzędnej
-* Uaktualnij lub obniżaj poziom przepustowości dla aktywnych połączeń.
-* Dodaj sesję IPv4/IPv6 dla aktywnych połączeń.
-* Usuń sesję IPv4/IPv6 dla aktywnych połączeń.
+* Dodawanie bezpośrednich połączeń komunikacji równorzędnej
+* Usuwanie bezpośrednich połączeń komunikacji równorzędnej
+* Uaktualnianie lub obniżanie przepustowości w połączeniach aktywnych.
+* Dodaj sesję IPv4/IPv6 w aktywnych połączeniach.
+* Usuń sesję IPv4/IPv6 w aktywnych połączeniach.
 
-### <a name="add-direct-peering-connections"></a>Dodaj bezpośrednie połączenia komunikacji równorzędnej
+### <a name="add-direct-peering-connections"></a>Dodawanie bezpośrednich połączeń komunikacji równorzędnej
 
-W poniższym przykładzie opisano sposób dodawania połączeń do istniejącej bezpośredniej komunikacji równorzędnej
+W poniższym przykładzie opisano sposób dodawania połączeń do istniejącej komunikacji bezpośredniej komunikacji równorzędnej
 
 ```powershell
 
@@ -44,9 +44,9 @@ $directPeering.Connections.Add($connection)
 $directPeering | Update-AzPeering
 ```
 
-### <a name="remove-direct-peering-connections"></a>Usuń bezpośrednie połączenia komunikacji równorzędnej
+### <a name="remove-direct-peering-connections"></a>Usuwanie bezpośrednich połączeń komunikacji równorzędnej
 
-Usuwanie połączenia nie jest obecnie obsługiwane w programie PowerShell. Skontaktuj się z pomocą techniczną [firmy Microsoft](mailto:peeringexperience@microsoft.com).
+Usuwanie połączenia nie jest obecnie obsługiwane w programie PowerShell. Skontaktuj się z [programem Microsoft w komunikacji równorzędnej](mailto:peeringexperience@microsoft.com).
 
 <!--
 ```powershell
@@ -56,9 +56,9 @@ $directPeering | Update-AzPeering
 ```
 -->
 
-### <a name="upgrade-or-downgrade-bandwidth-on-active-connections"></a>Przepustowość uaktualnienia lub obniżenia poziomu aktywnych połączeń
+### <a name="upgrade-or-downgrade-bandwidth-on-active-connections"></a>Uaktualnianie lub obniżanie przepustowości połączeń aktywnych
 
-W poniższym przykładzie opisano sposób dodawania 10Gbps do istniejącego połączenia bezpośredniego.
+W poniższym przykładzie opisano sposób dodawania 10 Gb/s do istniejącego połączenia bezpośredniego.
 
 ```powershell
 
@@ -68,9 +68,9 @@ $directPeering | Update-AzPeering
 
 ```
 
-### <a name="add-ipv4ipv6-session-on-active-connections"></a>Dodaj sesję IPv4/IPv6 dla aktywnych połączeń.
+### <a name="add-ipv4ipv6-session-on-active-connections"></a>Dodaj sesję IPv4/IPv6 w aktywnych połączeniach.
 
-W poniższym przykładzie opisano sposób dodawania sesji IPv6 na istniejącym połączeniu bezpośrednim z tylko sesją IPv4. 
+W poniższym przykładzie opisano sposób dodawania sesji IPv6 do istniejącego połączenia bezpośredniego tylko z sesją IPv4. 
 
 ```powershell
 
@@ -80,6 +80,6 @@ $directPeering | Update-AzPeering
 
 ```
 
-### <a name="remove-ipv4ipv6-session-on-active-connections"></a>Usuń sesję IPv4/IPv6 dla aktywnych połączeń.
+### <a name="remove-ipv4ipv6-session-on-active-connections"></a>Usuń sesję IPv4/IPv6 w aktywnych połączeniach.
 
-Usuwanie sesji IPv4/IPv6 z istniejącego połączenia nie jest obecnie obsługiwane w programie PowerShell. Skontaktuj się z pomocą techniczną [firmy Microsoft](mailto:peeringexperience@microsoft.com).
+Usuwanie sesji IPv4/IPv6 z istniejącego połączenia nie jest obecnie obsługiwane w programie PowerShell. Skontaktuj się z [programem Microsoft w komunikacji równorzędnej](mailto:peeringexperience@microsoft.com).

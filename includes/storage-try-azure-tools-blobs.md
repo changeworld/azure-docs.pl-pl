@@ -5,15 +5,15 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: tamram
 ms.openlocfilehash: 54cf1ba9648625e843ca6f4d9244c25d2d55d878
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67182907"
 ---
 > [!TIP]
 > 
 > Zarządzanie zasobami magazynu obiektów Blob platformy Azure za pomocą Eksploratora usługi Azure Storage. 
-> [Eksplorator usługi Azure Storage](https://azure.microsoft.com/features/storage-explorer/) jest bezpłatną, autonomiczną aplikacją oferowaną przez firmę Microsoft, która pozwala na [zarządzanie zasobami usługi Azure Blob storage](../articles/vs-azure-tools-storage-explorer-blobs.md). Za pomocą Eksploratora usługi Azure Storage, możesz można wizualnie tworzenia, odczytu, aktualizacji i usuwanie kontenerów obiektów blob oraz obiekty BLOB, a także zarządzanie dostępem do usługi obiektów blob kontenerów i obiektów blob.
+> [Usługa Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) to bezpłatna, autonomiczna aplikacja firmy Microsoft, która umożliwia [zarządzanie zasobami magazynu obiektów Blob platformy Azure.](../articles/vs-azure-tools-storage-explorer-blobs.md) Za pomocą Eksploratora usługi Azure Storage można wizualnie tworzyć, odczytywać, aktualizować i usuwać kontenery obiektów blob i obiekty BLOB, a także zarządzać dostępem do kontenerów obiektów blob i obiektów blob.
 
 

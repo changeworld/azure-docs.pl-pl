@@ -5,19 +5,19 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 02/13/2019
+ms.date: 03/19/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: afd4836229c60ebef1536d4fa1ca4206a492e56d
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: d2dba0f657b418267db90c07014dc8996ed12a10
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67183107"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80059921"
 ---
-Po utworzeniu certyfikatu głównego z podpisem własnym, należy wyeksportować plik cer klucza publicznego certyfikatu głównego (nie klucz prywatny). Ten plik zostanie później przekazany na platformę Azure. Poniższe kroki pomogą Ci wyeksportować plik cer dla certyfikatu głównego z podpisem własnym:
+Po utworzeniu certyfikatu głównego z podpisem własnym wyeksportuj plik .cer klucza głównego (nie klucz prywatny). Później przekażesz ten plik na platformę Azure. Poniższe kroki pomagają wyeksportować plik cer dla certyfikatu głównego z podpisem własnym:
 
-1. Aby uzyskać plik cer z certyfikatu, otwórz okno **Zarządzaj certyfikatami użytkowników**. Zlokalizuj certyfikat główny z podpisem własnym — zwykle znajduje się w katalogu „Certyfikaty - bieżący użytkownik\Osobisty\Certyfikat” — a następnie kliknij go prawym przyciskiem myszy. Kliknij pozycję **Wszystkie zadania**, a następnie kliknij pozycję **Eksportuj**. Spowoduje to otwarcie **Kreatora eksportu certyfikatów**. Jeśli nie możesz znaleźć certyfikat w obszarze bieżący użytkownik\osobisty\certyfikat, być może przypadkowo otwarto "Certyfikatów — lokalny komputer", a nie "Certyfikaty — bieżący użytkownik"). Jeśli chcesz otworzyć Menedżera certyfikatów w bieżącym zakresie użytkownika przy użyciu programu PowerShell, możesz wpisać *certmgr* w oknie konsoli.
+1. Aby uzyskać plik cer z certyfikatu, otwórz okno **Zarządzaj certyfikatami użytkowników**. Zlokalizuj certyfikat główny z podpisem własnym — zwykle znajduje się w katalogu „Certyfikaty - bieżący użytkownik\Osobisty\Certyfikat” — a następnie kliknij go prawym przyciskiem myszy. Kliknij pozycję **Wszystkie zadania**, a następnie kliknij pozycję **Eksportuj**. Spowoduje to otwarcie **Kreatora eksportu certyfikatów**. Jeśli nie możesz znaleźć certyfikatu w obszarze Bieżący użytkownik\Osobiste\Certyfikaty, być może przypadkowo otwarto "Certyfikaty — komputer lokalny", a nie "Certyfikaty — bieżący użytkownik"). Jeśli chcesz otworzyć Menedżera certyfikatów w bieżącym zakresie użytkownika przy użyciu programu PowerShell, wpisz *certmgr* w oknie konsoli.
 
    ![Eksportowanie](./media/vpn-gateway-certificates-export-public-key-include/export.png)
 2. W Kreatorze kliknij pozycję **Dalej**.
@@ -25,22 +25,22 @@ Po utworzeniu certyfikatu głównego z podpisem własnym, należy wyeksportować
    ![Eksportowanie certyfikatu](./media/vpn-gateway-certificates-export-public-key-include/exportwizard.png)
 3. Wybierz pozycję **Nie eksportuj klucza prywatnego**, a następnie kliknij pozycję **Dalej**.
 
-   ![Nie eksportuj klucza prywatnego](./media/vpn-gateway-certificates-export-public-key-include/notprivatekey.png)
-4. Na stronie **Format pliku eksportu** wybierz pozycję **Certyfikat X.509 szyfrowany algorytmem Base-64 (.CER)** , a następnie kliknij pozycję **Dalej**.
+   ![Nie należy eksportować klucza prywatnego](./media/vpn-gateway-certificates-export-public-key-include/notprivatekey.png)
+4. Na stronie **Format pliku eksportu** wybierz pozycję **Certyfikat X.509 szyfrowany algorytmem Base-64 (.CER)**, a następnie kliknij pozycję **Dalej**.
 
-   ![Kodowanie Base-64](./media/vpn-gateway-certificates-export-public-key-include/base64.png)
-5. Aby uzyskać **Eksport pliku**, **Przeglądaj** do lokalizacji, do którego chcesz wyeksportować certyfikat. Do pola **Nazwa pliku** wprowadź nazwę pliku certyfikatu. Następnie kliknij przycisk **Dalej**.
+   ![Zakodowane w bazie-64](./media/vpn-gateway-certificates-export-public-key-include/base64.png)
+5. W przypadku **eksportu pliku** **przejdź** do lokalizacji, do której chcesz wyeksportować certyfikat. Do pola **Nazwa pliku** wprowadź nazwę pliku certyfikatu. Następnie kliknij przycisk **Dalej**.
 
    ![Browse](./media/vpn-gateway-certificates-export-public-key-include/browse.png)
 6. Kliknij przycisk **Zakończ**, aby wyeksportować certyfikat.
 
    ![Zakończ](./media/vpn-gateway-certificates-export-public-key-include/finish.png)
-7. Twój certyfikat jest został pomyślnie wyeksportowany.
+7. Certyfikat został pomyślnie wyeksportowany.
 
    ![Powodzenie](./media/vpn-gateway-certificates-export-public-key-include/success.png)
-8. Wyeksportowany certyfikat wygląda podobnie do poniższego:
+8. Wyeksportowany certyfikat wygląda podobnie do następującego:
 
-   ![Wyeksportowane](./media/vpn-gateway-certificates-export-public-key-include/exported.png)
-9. Jeśli otworzysz wyeksportowany certyfikat za pomocą Notatnika, zostanie wyświetlony podobny do tego przykładu. Sekcja w kolorze niebieskim zawiera informacje, które zostanie przekazany na platformę Azure. Jeśli Otwórz swój certyfikat przy użyciu programu Notepad, a nie wygląda podobnie do poniższego, zwykle oznacza, że nie wyeksportowano go przy użyciu Base-64 certyfikat x.509 szyfrowany algorytmem (. Format CER). Ponadto jeśli chcesz użyć w innym edytorze tekstu, Dowiedz się, że niektóre edytory może prowadzić do niezamierzonych formatowania w tle. To jest utworzenie problemy podczas przekazywania tekst z tego certyfikatu do platformy Azure.
+   ![Eksportowane](./media/vpn-gateway-certificates-export-public-key-include/exported.png)
+9. Jeśli wyeksportowany certyfikat zostanie otwarty przy użyciu Notatnika, zobaczysz coś podobnego do tego przykładu. Sekcja na niebiesko zawiera informacje, które są przekazywane na platformę Azure. Jeśli otworzysz certyfikat za pomocą Notatnika i nie wygląda on podobnie do tego, zazwyczaj oznacza to, że nie wyeksportowałeś go przy użyciu zakodowanego X.509 base-64(. CER). Ponadto jeśli chcesz użyć innego edytora tekstu, należy zrozumieć, że niektóre edytory mogą wprowadzać niezamierzone formatowanie w tle. Może to spowodować problemy po przekazaniu tekstu z tego certyfikatu na platformę Azure.
 
-   ![Otwórz w Notatniku](./media/vpn-gateway-certificates-export-public-key-include/notepad.png)
+   ![Otwórz za pomocą Notatnika](./media/vpn-gateway-certificates-export-public-key-include/notepad.png)

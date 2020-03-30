@@ -1,18 +1,18 @@
 ---
 title: Tworzenie kopii zapasowej plików w usłudze Azure Files — często zadawane pytania
-description: W tym artykule znajdują się odpowiedzi na często zadawane pytania dotyczące ochrony udziałów plików platformy Azure za pomocą usługi Azure Backup.
+description: W tym artykule odnajduj odpowiedzi na typowe pytania dotyczące ochrony udziałów plików platformy Azure za pomocą usługi Azure Backup.
 ms.date: 07/29/2019
 ms.topic: conceptual
 ms.openlocfilehash: c69d4642aefbd599d3783dcdfa059a0cd9d129d9
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78302546"
 ---
 # <a name="questions-about-backing-up-azure-files"></a>Pytania dotyczące tworzenia kopii zapasowej plików w usłudze Azure Files
 
-Ten artykuł zawiera odpowiedzi na często zadawane pytania dotyczące tworzenia kopii zapasowej plików usługi Azure Files. W niektórych odpowiedziach znajdują się linki do artykułów zawierających szczegółowe informacje. Pytania dotyczące usługi Azure Backup można również zadawać na [forum dyskusyjnym](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup).
+Ten artykuł zawiera odpowiedzi na często zadawane pytania dotyczące tworzenia kopii zapasowej plików usługi Azure Files. W niektórych odpowiedziach znajdują się linki do artykułów zawierających szczegółowe informacje. Pytania dotyczące usługi Azure Backup można zadawać także na [forum dyskusyjnym](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup).
 
 Aby szybko przeskanować sekcje znajdujące się w tym artykule, użyj linków z prawej strony w obszarze **W tym artykule**.
 
@@ -34,11 +34,11 @@ Tak. Ochrona udziałów plików platformy Azure połączonych z grupami synchron
 
 Wybranie konta usługi Storage w celu odnalezienia udziałów plików podczas próby utworzenia kopii zapasowej powoduje zarejestrowanie konta usługi Storage w obrębie magazynu, z poziomu którego wykonano tę czynność. Jeśli chcesz chronić udziały plików przy użyciu innego magazynu, [wyrejestruj](troubleshoot-azure-files.md#configuring-backup) wybrane konto usługi Storage z tego magazynu.
 
-### <a name="can-i-change-the-vault-to-which-i-back-up-my-file-shares"></a>Czy mogę zmienić magazyn, do którego należy utworzyć kopię zapasową moich udziałów plików?
+### <a name="can-i-change-the-vault-to-which-i-back-up-my-file-shares"></a>Czy mogę zmienić Vault, do którego mogę wywrzeć zapas ową dziele zapasowe udziałów plików?
 
-Tak. Należy jednak [zatrzymać ochronę udziału plików](manage-afs-backup.md#stop-protection-on-a-file-share) z połączonego magazynu, [wyrejestrować](troubleshoot-azure-files.md#configuring-backup) to konto magazynu, a następnie chronić je w innym magazynie.
+Tak. Musisz jednak [zatrzymać ochronę w udziale plików](manage-afs-backup.md#stop-protection-on-a-file-share) z podłączonego magazynu, [Wyrejestrować](troubleshoot-azure-files.md#configuring-backup) to konto magazynu, a następnie chronić je przed innym skarbcem.
 
-### <a name="in-which-geos-can-i-back-up-azure-file-shares"></a>W jakich Georegiony można tworzyć kopie zapasowe udziałów plików platformy Azure?
+### <a name="in-which-geos-can-i-back-up-azure-file-shares"></a>W jakich formatach geograficznych można nawładnia kopii zapasowej udziałów plików platformy Azure?
 
 Kopie zapasowe udziałów plików usługi Azure Files są obecnie dostępne w wersji zapoznawczej tylko w następujących obszarach geograficznych:
 
@@ -70,20 +70,20 @@ Kopie zapasowe udziałów plików usługi Azure Files są obecnie dostępne w we
 - US Gov Arizona (UGA)
 - US Gov Teksas (UGT)
 - US Gov Wirginia (UGV)
-- Australia Środkowa (ACL)
-- Indie Zachodnie (INW)
-- Północna Republika Południowej Afryki (SAN)
-- Północne Zjednoczone Emiraty Arabskie (UAN)
-- Francja Środkowa (FRC)
+- Australia Central (ACL)
+- Indie Zachód (INW)
+- Republika Południowej Afryki Północna (SAN)
+- Zjednoczone Emiraty Zjednoczone Emiraty Zjednoczone (UAN)
+- Francja Centralna (FRC)
 - Niemcy Północne (GN)                       
-- Niemcy Środkowo-Zachodnie (GWC)
-- Zachodnia Republika Południowej Afryki (piły)
-- Europa Środkowa (UAC)
+- Niemcy Zachodnio-Środkowe (GWC)
+- Republika Południowej Afryki Zachodnia (SAW)
+- Zjednoczone Emiraty Zjednoczone Emiraty Zjednoczone (UAC)
 - NWE (Norwegia Wschodnia)     
 - NWW (Norwegia Zachodnia)
 - SZN (Szwajcaria Północna)
 
-Napisz na adres [AskAzureBackupTeam@microsoft.com](mailto:askazurebackupteam@microsoft.com), jeśli chcesz używać tej usługi w określonym obszarze geograficznym, którego nie ma na powyższej liście.
+Napisz [AskAzureBackupTeam@microsoft.com](mailto:askazurebackupteam@microsoft.com) do, jeśli chcesz go użyć w określonym geo, który nie jest wymieniony powyżej.
 
 ### <a name="how-many-azure-file-shares-can-i-protect-in-a-vault"></a>Ile udziałów plików platformy Azure można chronić w magazynie?
 
@@ -93,11 +93,11 @@ W wersji zapoznawczej można chronić w jednym magazynie udziały plików platfo
 
 Nie. Wszystkie udziały plików na koncie usługi Storage mogą być chronione tylko przez ten sam magazyn.
 
-## <a name="backup"></a>Backup
+## <a name="backup"></a>Tworzenie kopii zapasowych
 
-### <a name="how-many-scheduled-backups-can-i-configure-per-file-share"></a>Ile zaplanowanych kopii zapasowych można skonfigurować dla każdego udziału plików?
+### <a name="how-many-scheduled-backups-can-i-configure-per-file-share"></a>Ile zaplanowanych kopii zapasowych można skonfigurować na udział plików?
 
-Azure Backup obecnie obsługuje Konfigurowanie zaplanowanych raz dziennie kopii zapasowych udziałów plików platformy Azure.
+Usługa Azure Backup obsługuje obecnie konfigurowanie zaplanowanych kopii zapasowych raz dziennie udziałów plików platformy Azure.
 
 ### <a name="how-many-on-demand-backups-can-i-take-per-file-share"></a>Ile kopii zapasowych na żądanie można utworzyć na jeden udział plików?
 
@@ -113,11 +113,11 @@ Podczas usuwania udziału plików platformy Azure zostanie wyświetlona lista ko
 
 Tak. Jeśli podczas zatrzymywania ochrony została wybrana opcja **Zachowaj dane kopii zapasowej**, można przywrócić dane z wszystkich istniejących punktów przywracania.
 
-### <a name="what-happens-if-i-cancel-an-ongoing-restore-job"></a>Co się stanie w przypadku anulowania trwającego zadania przywracania?
+### <a name="what-happens-if-i-cancel-an-ongoing-restore-job"></a>Co się stanie, jeśli anuluję trwające zadanie przywracania?
 
-Jeśli trwające zadanie przywracania zostanie anulowane, proces przywracania zostanie zatrzymany i wszystkie pliki zostaną przywrócone przed anulowaniem, pozostać w skonfigurowanym miejscu docelowym (w lokalizacji oryginalnej lub alternatywnej) bez żadnych wycofywania.
+Jeśli trwające zadanie przywracania zostanie anulowane, proces przywracania zostanie zatrzymany, a wszystkie pliki przywrócone przed anulowaniem, pozostanie w skonfigurowanym miejscu docelowym (oryginalna lub alternatywna lokalizacja) bez wycofywania.
 
-## <a name="manage-backup"></a>Zarządzanie kopią zapasową
+## <a name="manage-backup"></a>Zarządzanie tworzeniem kopii zapasowych
 
 ### <a name="can-i-use-powershell-to-configuremanagerestore-backups-of-azure-file-shares"></a>Czy można konfigurować i przywracać kopie zapasowe udziałów plików platformy Azure oraz zarządzać nimi za pomocą programu PowerShell?
 
@@ -127,7 +127,7 @@ Tak. Zapoznaj się ze szczegółową dokumentacją [tutaj](backup-azure-afs-auto
 
 Do wszystkich migawek wykonanych przez usługę Azure Backup możesz uzyskać dostęp, wyświetlając migawki w portalu, w programie PowerShell lub przy użyciu interfejsu wiersza polecenia. Aby dowiedzieć się więcej na temat udostępniania migawek udziału usługi Azure Files, zobacz [Omówienie migawek udziału dla usługi Azure Files (wersja zapoznawcza)](../storage/files/storage-snapshots-files.md).
 
-### <a name="what-is-the-maximum-retention-i-can-configure-for-backups"></a>Jaki jest maksymalny czas przechowywania, który można skonfigurować dla kopii zapasowych?
+### <a name="what-is-the-maximum-retention-i-can-configure-for-backups"></a>Jaki jest maksymalny retencji można skonfigurować dla kopii zapasowych?
 
 Kopia zapasowa udziałów plików platformy Azure umożliwia konfigurowanie w zasadach okresu przechowywania do 180 dni. Jednak przy użyciu [opcji „Kopia zapasowa na żądanie” w programie PowerShell](backup-azure-afs-automation.md#trigger-an-on-demand-backup) można przechowywać punkt odzyskiwania nawet przez 10 lat.
 
@@ -137,7 +137,7 @@ Po zastosowaniu nowych zasad do udziału plików będzie obowiązywał harmonogr
 
 ## <a name="next-steps"></a>Następne kroki
 
-Aby dowiedzieć się więcej o innych obszarach Azure Backup, zobacz niektóre z tych innych często zadawanych pytań dotyczących tworzenia kopii zapasowych:
+Aby dowiedzieć się więcej o innych obszarach usługi Azure Backup, zobacz niektóre z tych często zadawanych pytań dotyczących tworzenia kopii zapasowych:
 
 - [Recovery Services vault FAQ (Magazyn usługi Recovery Services — często zadawane pytania)](backup-azure-backup-faq.md)
 - [Azure VM backup FAQ (Tworzenie kopii zapasowych maszyn wirtualnych — często zadawane pytania)](backup-azure-vm-backup-faq.md)

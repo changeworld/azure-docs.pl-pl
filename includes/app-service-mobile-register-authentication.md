@@ -5,13 +5,13 @@ ms.topic: include
 ms.date: 08/23/2018
 ms.author: crdun
 ms.openlocfilehash: d5557ce1dda7bb36b8b0a6a44fcaca50e0667bb7
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/15/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67183723"
 ---
-Najpierw należy zarejestrować aplikację w lokacji dostawcy tożsamości, a następnie skonfigurować poświadczenia wygenerowane przez dostawcę w Mobile Apps zaplecza.
+Najpierw musisz zarejestrować aplikację w witrynie dostawcy tożsamości, a następnie ustawisz poświadczenia wygenerowane przez dostawcę w zapleczu aplikacji mobilnych.
 
 1. Skonfiguruj preferowanego dostawcę tożsamości, postępując zgodnie z instrukcjami specyficznymi dla dostawcy:
 
@@ -20,7 +20,7 @@ Najpierw należy zarejestrować aplikację w lokacji dostawcy tożsamości, a na
    * [Google](../articles/app-service/configure-authentication-provider-google.md)
    * [Microsoft](../articles/app-service/configure-authentication-provider-microsoft.md)
    * [Twitter](../articles/app-service/configure-authentication-provider-twitter.md)
-2. Powtórz poprzednie kroki dla każdego dostawcy, który ma być obsługiwany w aplikacji.
+2. Powtórz poprzednie kroki dla każdego dostawcy, którego chcesz obsługiwać w aplikacji.
 
 <!-- URLs. -->
 [Azure portal]: https://portal.azure.com/

@@ -9,24 +9,24 @@ ms.date: 03/28/2018
 ms.author: wesmc
 ms.custom: include file
 ms.openlocfilehash: 7f03072c2b7ee1f08fc5fa306da6c5b8368742ae
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67183801"
 ---
 Jeśli nie pamięć podręczna nie została przypięta do pulpitu nawigacyjnego, znajdź ją w witrynie [Azure Portal](https://portal.azure.com) przy użyciu pozycji **Wszystkie usługi**.
 
-![Pamięć podręczna systemu Azure dla blok przeglądania usługi Redis](media/redis-cache-browse/redis-cache-browse.png)
+![Skrzynka ładowa dla przeglądarki Redis Browse Cache dla przeglądarki Redis](media/redis-cache-browse/redis-cache-browse.png)
 
-Aby wyświetlić pamięci podręczne, kliknij przycisk **wszystkich usług** i wyszukaj **pamięci podręcznej Redis Azure**. 
+Aby wyświetlić pamięci podręczne, kliknij pozycję **Wszystkie usługi** i wyszukaj pozycję Azure Cache **for Redis**. 
 
 Wybierz odpowiednią pamięć podręczną, aby wyświetlić i skonfigurować ustawienia dla tej pamięci.
 
-![Pamięć podręczna systemu Azure na liście pamięci podręcznej przeglądania usługi Redis](media/redis-cache-browse/redis-caches.png)
+![Lista pamięci podręcznej usługi Azure Cache for Redis Browse](media/redis-cache-browse/redis-caches.png)
 
-Możesz wyświetlić i skonfigurować pamięć podręczną z **pamięci podręcznej Redis Azure** bloku.
+Można wyświetlić i skonfigurować pamięć podręczną z **usługi Azure Cache dla redis** bloku.
 
-![Pamięć podręczna systemu Azure dla usługi Redis wszystkie ustawienia](media/redis-cache-browse/redis-cache-blade.png)
+![Pamięć podręczna platformy Azure dla wszystkich ustawień redis](media/redis-cache-browse/redis-cache-blade.png)
 
 

@@ -1,6 +1,6 @@
 ---
-title: Kopiowanie danych z Cassandra za pomocą Azure Data Factory
-description: Informacje o kopiowaniu danych z programu Cassandra do obsługiwanych magazynów danych ujścia przy użyciu działania kopiowania w potoku Azure Data Factory.
+title: Kopiowanie danych z firmy Cassandra przy użyciu usługi Azure Data Factory
+description: Dowiedz się, jak skopiować dane z Cassandra do obsługiwanych magazynów danych ujścia przy użyciu działania kopiowania w potoku usługi Azure Data Factory.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -12,64 +12,64 @@ ms.topic: conceptual
 ms.date: 08/12/2019
 ms.author: jingwang
 ms.openlocfilehash: 9339fff820c0a0d915258ce3a0bc5371242ad50d
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75892832"
 ---
-# <a name="copy-data-from-cassandra-using-azure-data-factory"></a>Kopiowanie danych z Cassandra za pomocą Azure Data Factory
-> [!div class="op_single_selector" title1="Wybierz używaną wersję usługi Data Factory:"]
+# <a name="copy-data-from-cassandra-using-azure-data-factory"></a>Kopiowanie danych z firmy Cassandra przy użyciu usługi Azure Data Factory
+> [!div class="op_single_selector" title1="Wybierz wersję używanej usługi Data Factory:"]
 > * [Wersja 1](v1/data-factory-onprem-cassandra-connector.md)
 > * [Bieżąca wersja](connector-cassandra.md)
 
-W tym artykule opisano sposób używania działania kopiowania w Azure Data Factory do kopiowania danych z bazy danych Cassandra. Opiera się na [omówienie działania kopiowania](copy-activity-overview.md) artykułu, który przedstawia ogólne omówienie działania kopiowania.
+W tym artykule opisano, jak używać działania kopiowania w usłudze Azure Data Factory do kopiowania danych z bazy danych Cassandra. Opiera się na [omówienie działania kopiowania](copy-activity-overview.md) artykuł, który przedstawia ogólny przegląd działania kopiowania.
 
-## <a name="supported-capabilities"></a>Obsługiwane funkcje
+## <a name="supported-capabilities"></a>Obsługiwane możliwości
 
 Ten łącznik Cassandra jest obsługiwany dla następujących działań:
 
-- [Działanie kopiowania](copy-activity-overview.md) z [obsługiwaną macierzą źródłową/ujścia](copy-activity-overview.md)
-- [Działanie Lookup](control-flow-lookup-activity.md)
+- [Kopiowanie aktywności](copy-activity-overview.md) z [obsługiwaną macierzą źródło/ujście](copy-activity-overview.md)
+- [Działanie odnośnika](control-flow-lookup-activity.md)
 
-Dane z bazy danych Cassandra można kopiować do dowolnego obsługiwanego magazynu danych ujścia. Aby uzyskać listę magazynów danych, obsługiwane przez działanie kopiowania jako źródła/ujścia, zobacz [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats) tabeli.
+Można skopiować dane z bazy danych Cassandra do dowolnego obsługiwanego magazynu danych ujścia. Aby uzyskać listę magazynów danych, które są obsługiwane jako źródła/pochłaniacze przez działanie kopiowania, zobacz tabelę [Obsługiwane magazyny danych.](copy-activity-overview.md#supported-data-stores-and-formats)
 
-Ten łącznik Cassandra obsługuje:
+W szczególności to złącze Cassandra obsługuje:
 
-- Cassandra **w wersji 2. x i 3. x**.
-- Kopiowanie danych przy użyciu uwierzytelniania **podstawowego** lub **anonimowego** .
+- Wersje Cassandra **2.x i 3.x**.
+- Kopiowanie danych przy użyciu uwierzytelniania **podstawowego** lub **anonimowego.**
 
 >[!NOTE]
->W przypadku działania uruchomionego na samoobsługowym Integration Runtime Cassandra 3. x jest obsługiwany przez środowisko IR w wersji 3,7 lub nowszej.
+>W przypadku działań uruchomionych w czasie wykonywania integracji hostowanego samodzielnie cassandra 3.x jest obsługiwana od czasu podczerwonych wersji 3.7 lub nowszych.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 [!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 
-Integration Runtime udostępnia wbudowany sterownik Cassandra, dlatego nie trzeba ręcznie instalować żadnego sterownika podczas kopiowania danych z/do Cassandra.
+Integration Runtime zapewnia wbudowany sterownik Cassandra, dlatego nie trzeba ręcznie instalować żadnego sterownika podczas kopiowania danych z/do Cassandra.
 
 ## <a name="getting-started"></a>Wprowadzenie
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
-Poniższe sekcje zawierają szczegółowe informacje o właściwościach, które są używane do definiowania jednostek Data Factory specyficznych dla łącznika Cassandra.
+W poniższych sekcjach znajdują się szczegółowe informacje o właściwościach, które są używane do definiowania jednostek fabryki danych specyficznych dla łącznika Cassandra.
 
-## <a name="linked-service-properties"></a>Właściwości usługi połączonej
+## <a name="linked-service-properties"></a>Połączone właściwości usługi
 
-Dla połączonej usługi Cassandra są obsługiwane następujące właściwości:
+Następujące właściwości są obsługiwane dla usługi połączonej Cassandra:
 
-| Właściwość | Opis | Wymagane |
+| Właściwość | Opis | Wymagany |
 |:--- |:--- |:--- |
-| type |Właściwość Type musi mieć wartość: **Cassandra** |Tak |
-| host |Co najmniej jeden adres IP lub nazwa hosta serwerów Cassandra.<br/>Określ rozdzieloną przecinkami listę adresów IP lub nazw hostów, które mają być połączone jednocześnie ze wszystkimi serwerami. |Tak |
-| port |Port TCP, którego serwer Cassandra używa do nasłuchiwania połączeń klientów. |Nie (domyślnie 9042) |
-| authenticationType | Typ uwierzytelniania używany do łączenia się z bazą danych Cassandra.<br/>Dozwolone wartości to: **Basic**i **Anonymous**. |Tak |
-| nazwa użytkownika |Określ nazwę użytkownika dla konta użytkownika. |Tak, Jeśli AuthenticationType ma wartość Basic. |
-| hasło |Określ hasło dla konta użytkownika. Oznacz to pole jako SecureString, aby bezpiecznie przechowywać w usłudze Data Factory lub [odwołanie wpisu tajnego przechowywanych w usłudze Azure Key Vault](store-credentials-in-key-vault.md). |Tak, Jeśli AuthenticationType ma wartość Basic. |
-| connectVia | [Środowiska Integration Runtime](concepts-integration-runtime.md) ma być używany do łączenia się z magazynem danych. Dowiedz się więcej z sekcji [wymagania wstępne](#prerequisites) . Jeśli nie zostanie określony, używa domyślnego środowiska Azure Integration Runtime. |Nie |
+| type |Właściwość typu musi być ustawiona na: **Cassandra** |Tak |
+| host |Co najmniej jeden adres IP lub nazwy hostów serwerów Cassandra.<br/>Określ oddzieloną przecinkami listę adresów IP lub nazw hostów, aby połączyć się ze wszystkimi serwerami jednocześnie. |Tak |
+| port |Port TCP używany przez serwer Cassandra do nasłuchiwać połączeń klientów. |Nie (wartość domyślna to 9042) |
+| authenticationType | Typ uwierzytelniania używany do łączenia się z bazą danych Cassandra.<br/>Dozwolone wartości to: **Podstawowe**i **Anonimowe**. |Tak |
+| nazwa użytkownika |Określ nazwę użytkownika dla konta użytkownika. |Tak, jeśli authenticationType jest ustawiony na Podstawowy. |
+| hasło |Określ hasło dla konta użytkownika. Oznacz to pole jako SecureString, aby bezpiecznie przechowywać go w fabryce danych lub [odwołaj się do klucza tajnego przechowywanego w usłudze Azure Key Vault.](store-credentials-in-key-vault.md) |Tak, jeśli authenticationType jest ustawiony na Podstawowy. |
+| connectVia | [Środowisko wykonawcze integracji,](concepts-integration-runtime.md) które mają być używane do łączenia się z magazynem danych. Dowiedz się więcej z sekcji [Wymagania wstępne.](#prerequisites) Jeśli nie zostanie określony, używa domyślnego środowiska wykonawczego integracji platformy Azure. |Nie |
 
 >[!NOTE]
->Obecnie połączenie z usługą Cassandra przy użyciu protokołu SSL nie jest obsługiwane.
+>Obecnie połączenie z cassandra przy użyciu SSL nie jest obsługiwane.
 
 **Przykład:**
 
@@ -97,15 +97,15 @@ Dla połączonej usługi Cassandra są obsługiwane następujące właściwości
 
 ## <a name="dataset-properties"></a>Właściwości zestawu danych
 
-Aby uzyskać pełną listę sekcje i właściwości dostępne Definiowanie zestawów danych, zobacz [zestawów danych](concepts-datasets-linked-services.md) artykułu. Ta sekcja zawiera listę właściwości obsługiwanych przez zestaw danych Cassandra.
+Aby uzyskać pełną listę sekcji i właściwości dostępnych do definiowania zestawów danych, zobacz artykuł [o zestawach danych.](concepts-datasets-linked-services.md) Ta sekcja zawiera listę właściwości obsługiwanych przez zestaw danych Cassandra.
 
-Aby skopiować dane z Cassandra, ustaw właściwość Type zestawu danych na **CassandraTable**. Obsługiwane są następujące właściwości:
+Aby skopiować dane z cassandra, ustaw właściwość typu zestawu danych na **CassandraTable**. Obsługiwane są następujące właściwości:
 
-| Właściwość | Opis | Wymagane |
+| Właściwość | Opis | Wymagany |
 |:--- |:--- |:--- |
-| type | Właściwość Type zestawu danych musi być ustawiona na wartość: **CassandraTable** | Tak |
-| przestrzeń kluczy |Nazwa przestrzeni kluczy lub schematu w bazie danych Cassandra. |Nie (Jeśli określono "Query" dla "CassandraSource") |
-| tableName |Nazwa tabeli w bazie danych Cassandra. |Nie (Jeśli określono "Query" dla "CassandraSource") |
+| type | Właściwość typu zestawu danych musi być ustawiona na: **CassandraTable** | Tak |
+| przestrzeń kluczy |Nazwa przestrzeni kluczy lub schematu w bazie danych Cassandra. |Nie (jeśli określono "zapytanie" dla "CassandraSource") |
+| tableName |Nazwa tabeli w bazie danych Cassandra. |Nie (jeśli określono "zapytanie" dla "CassandraSource") |
 
 **Przykład:**
 
@@ -130,17 +130,17 @@ Aby skopiować dane z Cassandra, ustaw właściwość Type zestawu danych na **C
 ## <a name="copy-activity-properties"></a>Właściwości działania kopiowania
 
 
-Aby uzyskać pełną listę sekcje i właściwości dostępne do definiowania działań zobacz [potoki](concepts-pipelines-activities.md) artykułu. Ta sekcja zawiera listę właściwości obsługiwanych przez źródło Cassandra.
+Aby uzyskać pełną listę sekcji i właściwości dostępnych do definiowania działań, zobacz [Pipelines](concepts-pipelines-activities.md) artykułu. Ta sekcja zawiera listę właściwości obsługiwanych przez źródło Cassandra.
 
 ### <a name="cassandra-as-source"></a>Cassandra jako źródło
 
-Aby skopiować dane z Cassandra, ustaw typ źródła w działaniu Copy na **CassandraSource**. Następujące właściwości są obsługiwane w działaniu kopiowania **źródła** sekcji:
+Aby skopiować dane z kasandry, ustaw typ źródła w działaniu kopiowania na **CassandraSource**. Następujące właściwości są obsługiwane w sekcji **źródła** działania kopiowania:
 
-| Właściwość | Opis | Wymagane |
+| Właściwość | Opis | Wymagany |
 |:--- |:--- |:--- |
-| type | Właściwość Type źródła działania Copy musi być ustawiona na wartość: **CassandraSource** | Tak |
-| query |Użyj zapytania niestandardowego do odczytywania danych. Zapytanie SQL-92 zapytania lub CQL. Zobacz [CQL Reference](https://docs.datastax.com/en/cql/3.1/cql/cql_reference/cqlReferenceTOC.html). <br/><br/>W przypadku korzystania z zapytania SQL określ **nazwę przestrzeni kluczy. nazwa tabeli** do reprezentowania tabeli, którą chcesz zbadać. |Nie (Jeśli określono "TableName" i "przestrzeń kluczy" w zestawie danych). |
-| consistencyLevel |Poziom spójności określa, ile replik musi odpowiedzieć na żądanie odczytu przed zwróceniem danych do aplikacji klienckiej. Cassandra sprawdza określoną liczbę replik dla danych, aby spełnić żądanie odczytu. Aby uzyskać szczegółowe informacje, zobacz [Konfigurowanie spójności danych](https://docs.datastax.com/en/cassandra/2.1/cassandra/dml/dml_config_consistency_c.html) .<br/><br/>Dozwolone wartości to: **jeden**, **dwa**, **trzy**, **kworum**, **wszystkie**, **LOCAL_QUORUM**, **EACH_QUORUM**i **LOCAL_ONE**. |Nie (wartość domyślna to `ONE`) |
+| type | Właściwość typu źródła działania kopiowania musi być ustawiona na: **CassandraSource** | Tak |
+| query |Użyj kwerendy niestandardowej, aby odczytać dane. Kwerenda SQL-92 lub kwerenda CQL. Zobacz [odwołanie CQL](https://docs.datastax.com/en/cql/3.1/cql/cql_reference/cqlReferenceTOC.html). <br/><br/>Podczas korzystania z kwerendy SQL określ **nazwę name.table obszaru kluczowego,** aby reprezentować tabelę, którą chcesz zbadać. |Nie (jeśli określono "tableName" i "keyspace" w zestawie danych). |
+| spójnośćPoziom |Poziom spójności określa, ile replik musi odpowiedzieć na żądanie odczytu przed zwróceniem danych do aplikacji klienckiej. Cassandra sprawdza określoną liczbę replik danych w celu spełnienia żądania odczytu. Zobacz [Konfigurowanie spójności danych,](https://docs.datastax.com/en/cassandra/2.1/cassandra/dml/dml_config_consistency_c.html) aby uzyskać szczegółowe informacje.<br/><br/>Dozwolone wartości to: **JEDEN,** **DWA,** **TRZY,** **KWORUM,** **ALL,** **LOCAL_QUORUM,** **EACH_QUORUM**i **LOCAL_ONE.** |Nie (domyślnie jest) `ONE` |
 
 **Przykład:**
 
@@ -174,66 +174,66 @@ Aby skopiować dane z Cassandra, ustaw typ źródła w działaniu Copy na **Cass
 ]
 ```
 
-## <a name="data-type-mapping-for-cassandra"></a>Mapowanie typu danych dla Cassandra
+## <a name="data-type-mapping-for-cassandra"></a>Mapowanie typu danych dla cassandra
 
-Podczas kopiowania danych z Cassandra następujące mapowania są używane z typów danych Cassandra do Azure Data Factory danych pośrednich. Zobacz [schemat i dane mapowanie typu](copy-activity-schema-and-type-mapping.md) Aby poznać sposób działania kopiowania mapowania typ schematu i danych źródła do ujścia.
+Podczas kopiowania danych z Cassandra, następujące mapowania są używane z typów danych Cassandra do usługi Azure Data Factory tymczasowych typów danych. Zobacz [Mapowania schematu i typu danych,](copy-activity-schema-and-type-mapping.md) aby dowiedzieć się, jak aktywność kopiowania mapuje schemat źródłowy i typ danych do ujścia.
 
-| Cassandra — typ danych | Typ danych tymczasowych fabryki danych |
+| Typ danych Cassandra | Tymczasowy typ danych fabryki danych |
 |:--- |:--- |
 | ASCII |Ciąg |
-| BIGINT |Int64 |
-| BLOB |Byte[] |
-| BOOLEAN |Wartość logiczna |
-| DECIMAL |Decimal |
-| DOUBLE |Double |
-| FLOAT |Pojedyncze |
-| INET |Ciąg |
+| Bigint |Int64 |
+| Blob |Bajt[] |
+| Boolean |Wartość logiczna |
+| Dziesiętnych |Wartość dziesiętna |
+| Podwójne |Double |
+| Float |Single |
+| Inet |Ciąg |
 | INT |Int32 |
-| TEXT |Ciąg |
-| TIMESTAMP |Data i godzina |
-| TIMEUUID |Identyfikator GUID |
-| UUID |Identyfikator GUID |
-| VARCHAR |Ciąg |
-| VARINT |Decimal |
+| TEKST |Ciąg |
+| Sygnatury czasowej |DateTime |
+| TIMEUUID |Guid (identyfikator GUID) |
+| Uuid |Guid (identyfikator GUID) |
+| Varchar |Ciąg |
+| Funkcja VARINT |Wartość dziesiętna |
 
 > [!NOTE]
-> W przypadku typów kolekcji (map, Set, list itp.) zapoznaj się z sekcją [Work with Cassandra Types using przy użyciu tabeli wirtualnej](#work-with-collections-using-virtual-table) .
+> W przypadku typów kolekcji (mapa, zestaw, lista itp.) zobacz [Praca z typami kolekcji Cassandra przy użyciu sekcji tabeli wirtualnej.](#work-with-collections-using-virtual-table)
 >
 > Typy zdefiniowane przez użytkownika nie są obsługiwane.
 >
-> Długość kolumny binarnej i długości kolumny ciągu nie może być większa niż 4000.
+> Długość kolumn binarnych i długości kolumny ciąg nie może być większa niż 4000.
 >
 
-## <a name="work-with-collections-using-virtual-table"></a>Pracuj z kolekcjami przy użyciu tabeli wirtualnej
+## <a name="work-with-collections-using-virtual-table"></a>Praca z kolekcjami przy użyciu tabeli wirtualnej
 
-Azure Data Factory używa wbudowanego sterownika ODBC do nawiązywania połączenia i kopiowania danych z bazy danych Cassandra. W przypadku typów kolekcji, w tym map, Set i list, sterownik ponownie normalizuje dane do odpowiednich tabel wirtualnych. W przypadku, gdy tabela zawiera wszystkie kolumny kolekcji, sterownik generuje następujące tabele wirtualne:
+Usługa Azure Data Factory używa wbudowanego sterownika ODBC do łączenia się z bazą danych Cassandra i kopiowania ich z bazy danych Cassandra. W przypadku typów kolekcji, w tym mapy, zestawu i listy, sterownik renormalizuje dane do odpowiednich tabel wirtualnych. W szczególności jeśli tabela zawiera kolumny kolekcji, sterownik generuje następujące tabele wirtualne:
 
-* **Tabela podstawowa**, która zawiera te same dane, co rzeczywista tabela z wyjątkiem kolumn kolekcji. Tabela podstawowa używa takiej samej nazwy jak rzeczywista tabela, która reprezentuje.
-* **Tabela wirtualna** dla każdej kolumny kolekcji, która rozszerza zagnieżdżone dane. Tabele wirtualne reprezentujące kolekcje są nazwane przy użyciu nazwy rzeczywistej tabeli, separatora "*VT*" i nazwy kolumny.
+* **Tabela bazowa**, która zawiera te same dane co tabela rzeczywista, z wyjątkiem kolumn kolekcji. Tabela bazowa używa tej samej nazwy co rzeczywista tabela, którą reprezentuje.
+* **Tabela wirtualna** dla każdej kolumny kolekcji, która rozwija zagnieżdżone dane. Tabele wirtualne reprezentujące kolekcje są nazywane przy użyciu nazwy tabeli rzeczywistej, separatora "*vt*" i nazwy kolumny.
 
-Tabele wirtualne odwołują się do danych w rzeczywistej tabeli, umożliwiając sterownikowi dostęp do nieznormalizowanych danych. Aby uzyskać szczegółowe informacje, zobacz sekcję dotyczącą przykładu. Możesz uzyskać dostęp do zawartości kolekcji Cassandra, wykonując zapytania i dołączając do tabel wirtualnych.
+Tabele wirtualne odnoszą się do danych w rzeczywistej tabeli, umożliwiając kierowcy dostęp do danych denormalized. Zobacz przykład sekcji, aby uzyskać szczegółowe informacje. Dostęp do zawartości kolekcji Cassandra można uzyskać, odpytując i dołączając do tabel wirtualnych.
 
 ### <a name="example"></a>Przykład
 
-Na przykład następująca "przykładowy" jest tabelą bazy danych Cassandra, która zawiera kolumnę klucza podstawowego Integer o nazwie "pk_int", kolumna tekstowa o nazwie Value, kolumnie listy, kolumnie mapy i kolumnie zestawu (o nazwie "StringSet").
+Na przykład następująca "ExampleTable" to tabela bazy danych Cassandra zawierająca kolumnę klucza podstawowego o nazwie "pk_int", kolumnę tekstową o nazwie value, kolumnę listy, kolumnę mapy i kolumnę zestawu (o nazwie "StringSet").
 
-| pk_int | Wartość | Lista | Mapa | StringSet |
+| pk_int | Wartość | List | Mapa | Zestaw ciągów |
 | --- | --- | --- | --- | --- |
-| 1 |"przykładowa wartość 1" |["1", "2", "3"] |{"S1": "a", "S2": "b"} |{"A", "B", "C"} |
-| 3 |"przykładowa wartość 3" |["100", "101", "102", "105"] |{"S1": "t"} |{"A", "E"} |
+| 1 |"wartość próbki 1" |["1", "2", "3"] |{"S1": "a", "S2": "b"} |{"A", "B", "C"} |
+| 3 |"wartość próbki 3" |["100", "101", "102", "105"] |{"S1": "t"} |{"A", "E"} |
 
-Sterownik generuje wiele tabel wirtualnych do reprezentowania tej pojedynczej tabeli. Kolumny klucza obcego w tabelach wirtualnych odwołują się do kolumn klucza podstawowego w rzeczywistej tabeli i wskazują, który wiersz tabeli w rzeczywistości odpowiada wiersz tabeli wirtualnej.
+Sterownik wygeneruje wiele tabel wirtualnych do reprezentowania tej pojedynczej tabeli. Kolumny klucza obcego w tabelach wirtualnych odwołują się do kolumn klucza podstawowego w tabeli rzeczywistej i wskazują, który wiersz tabeli rzeczywistej odpowiada wierszowi tabeli wirtualnej.
 
-Pierwsza tabela wirtualna jest tabelą podstawową o nazwie "Przykładowe" przedstawiono w poniższej tabeli: 
+Pierwsza tabela wirtualna to tabela bazowa o nazwie "ExampleTable" jest wyświetlana w poniższej tabeli: 
 
 | pk_int | Wartość |
 | --- | --- |
-| 1 |"przykładowa wartość 1" |
-| 3 |"przykładowa wartość 3" |
+| 1 |"wartość próbki 1" |
+| 3 |"wartość próbki 3" |
 
-Tabela podstawowa zawiera te same dane, co oryginalna tabela bazy danych, z wyjątkiem kolekcji, które zostały pominięte w tej tabeli i rozwinięte w innych tabelach wirtualnych.
+Tabela bazowa zawiera te same dane co oryginalna tabela bazy danych, z wyjątkiem kolekcji, które są pomijane w tej tabeli i rozwijane w innych tabelach wirtualnych.
 
-W poniższych tabelach przedstawiono tabelę wirtualną, która ponownie normalizuje dane z kolumn list, map i StringSet. Kolumny z nazwami kończącymi się znakiem "_index" lub "_key" wskazują pozycję danych w oryginalnej liście lub mapie. Kolumny z nazwami kończącymi się znakiem "_value" zawierają rozwinięte dane z kolekcji.
+W poniższych tabelach przedstawiono tabele wirtualne, które ponownie znormalizują dane z kolumn Lista, Mapa i StringSet. Kolumny z nazwami, które kończą się na "_index" lub "_key" wskazują położenie danych na oryginalnej liście lub mapie. Kolumny z nazwami, które kończą się na "_value" zawierają rozszerzone dane z kolekcji.
 
 **Tabela "ExampleTable_vt_List":**
 
@@ -265,9 +265,9 @@ W poniższych tabelach przedstawiono tabelę wirtualną, która ponownie normali
 | 3 |A |
 | 3 |E |
 
-## <a name="lookup-activity-properties"></a>Właściwości działania Lookup
+## <a name="lookup-activity-properties"></a>Właściwości działania odnośnika
 
-Aby dowiedzieć się więcej o właściwościach, sprawdź [działanie Lookup (wyszukiwanie](control-flow-lookup-activity.md)).
+Aby dowiedzieć się więcej o właściwościach, sprawdź [działanie odnośnika](control-flow-lookup-activity.md).
 
 ## <a name="next-steps"></a>Następne kroki
-Aby uzyskać listę magazynów danych obsługiwanych jako źródła i ujścia działania kopiowania w usłudze Azure Data Factory, zobacz [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats).
+Aby uzyskać listę magazynów danych obsługiwanych jako źródła i pochłaniacze przez działanie kopiowania w usłudze Azure Data Factory, zobacz [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats).

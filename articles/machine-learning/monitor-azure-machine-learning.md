@@ -1,6 +1,6 @@
 ---
-title: Azure Machine Learning monitorowania | Microsoft Docs
-description: Dowiedz się, jak używać Azure Monitor do wyświetlania, analizowania i tworzenia alertów w oparciu o metryki z Azure Machine Learning.
+title: Monitorowanie usługi Azure Machine Learning | Dokumenty firmy Microsoft
+description: Dowiedz się, jak używać usługi Azure Monitor do wyświetlania, analizowania i tworzenia alertów dotyczących metryk z usługi Azure Machine Learning.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,112 +10,112 @@ ms.author: aashishb
 author: aashishb
 ms.date: 03/05/2020
 ms.openlocfilehash: eb4f46322bec57fb4412d3ddebb345640556ca5c
-ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78399109"
 ---
-# <a name="monitoring-azure-machine-learning"></a>Azure Machine Learning monitorowania
+# <a name="monitoring-azure-machine-learning"></a>Monitorowanie usługi Azure Machine Learning
 
-W tym artykule opisano dane monitorowania wygenerowane przez Azure Machine Learning. Opisano w nim również, jak można użyć Azure Monitor do analizowania danych i definiowania alertów.
+W tym artykule opisano dane monitorowania generowane przez usługę Azure Machine Learning. Opisano w nim również, jak można używać usługi Azure Monitor do analizowania danych i definiowania alertów.
 
 > [!TIP]
-> Informacje przedstawione w tym dokumencie są przeznaczone głównie dla administratorów, ponieważ opisują monitorowanie Azure Machine Learning. Jeśli jesteś analitykiem danych lub deweloperem, a chcesz monitorować informacje specyficzne dla przebiegów szkoleniowych modelu, zobacz następujące dokumenty:
+> Informacje zawarte w tym dokumencie są przeznaczone głównie dla administratorów, ponieważ opisano monitorowanie usługi Azure Machine Learning. Jeśli jesteś analitykiem danych lub deweloperem i chcesz monitorować informacje specyficzne dla przebiegów szkolenia modelu, zobacz następujące dokumenty:
 >
 > * [Uruchamianie, monitorowanie i anulowanie przebiegów szkoleniowych](how-to-manage-runs.md)
-> * [Metryki dzienników dla przebiegów szkoleniowych](how-to-track-experiments.md)
-> * [Śledzenie eksperymentów za pomocą MLflow](how-to-use-mlflow.md)
-> * [Wizualizacja jest uruchamiana z TensorBoard](how-to-monitor-tensorboard.md)
+> * [Rejestrowanie metryk dla przebiegów treningowych](how-to-track-experiments.md)
+> * [Śledzenie eksperymentów za pomocą platformy MLflow](how-to-use-mlflow.md)
+> * [Wizualizacja przebiegów za pomocą narzędzia TensorBoard](how-to-monitor-tensorboard.md)
 
 ## <a name="azure-monitor"></a>Azure Monitor
 
-Usługa Azure Machine Learning rejestruje dane monitorowania przy użyciu usługi Azure Monitor, która jest usługą monitorowania pełnego stosu na platformie Azure. Azure Monitor zapewnia pełen zestaw funkcji do monitorowania zasobów platformy Azure. Może również monitorować zasoby w innych chmurach i lokalnie.
+Usługa Azure Machine Learning rejestruje dane monitorowania przy użyciu usługi Azure Monitor, która jest usługą monitorowania pełnego stosu na platformie Azure. Usługa Azure Monitor udostępnia kompletny zestaw funkcji do monitorowania zasobów platformy Azure. Może również monitorować zasoby w innych chmurach i lokalnie.
 
-Rozpocznij od artykułu [Azure monitor przegląd](/azure/azure-monitor/overview), który zawiera przegląd możliwości monitorowania. Poniższe sekcje zawierają informacje dotyczące korzystania z Azure Monitor z Azure Machine Learning.
+Zacznij od artykułu [Omówienie usługi Azure Monitor](/azure/azure-monitor/overview), który zawiera omówienie możliwości monitorowania. Poniższe sekcje opierają się na tych informacjach, podając szczegółowe informacje dotyczące korzystania z usługi Azure Monitor za pomocą usługi Azure Machine Learning.
 
-Aby zrozumieć koszty związane z Azure Monitor, zobacz [użycie i szacowane koszty](/azure/azure-monitor/platform/usage-estimated-costs). Aby zrozumieć czas, w jakim dane mają być wyświetlane w Azure Monitor, zobacz czas pozyskiwania [danych dziennika](/azure/azure-monitor/platform/data-ingestion-time).
+Aby zrozumieć koszty związane z usługą Azure Monitor, zobacz [Użycie i szacowane koszty](/azure/azure-monitor/platform/usage-estimated-costs). Aby zrozumieć czas potrzebny na wyświetlenie danych w usłudze Azure Monitor, zobacz [Rejestrowanie czasu pozyskiwania danych.](/azure/azure-monitor/platform/data-ingestion-time)
 
-## <a name="monitoring-data-from-azure-machine-learning"></a>Monitorowanie danych z Azure Machine Learning
+## <a name="monitoring-data-from-azure-machine-learning"></a>Monitorowanie danych z usługi Azure Machine Learning
 
-Usługa Azure Machine Learning zbiera dane monitorowania tego samego typu co inne zasoby platformy Azure, tak jak opisano w artykule [Monitorowanie danych na podstawie zasobów platformy Azure](/azure/azure-monitor/insights/monitor-azure-resource#monitoring-data). Aby uzyskać szczegółowe informacje o dziennikach i metrykach utworzonych przez Azure Machine Learning, zobacz [Informacje o danych monitorowania Azure Machine Learning](monitor-resource-reference.md) .
+Usługa Azure Machine Learning zbiera te same rodzaje danych monitorowania, co inne zasoby platformy Azure, które są opisane w [obszarze Monitorowanie danych z zasobów platformy Azure.](/azure/azure-monitor/insights/monitor-azure-resource#monitoring-data) Zobacz [odwołanie do danych monitorowania usługi Azure Machine Learning, aby](monitor-resource-reference.md) uzyskać szczegółowe informacje na temat dzienników i metryk utworzonych przez usługę Azure Machine Learning.
 
-## <a name="analyzing-metric-data"></a>Analizowanie danych metryki
+## <a name="analyzing-metric-data"></a>Analizowanie danych metrycznych
 
-Metryki dla Azure Machine Learning można analizować, otwierając **metryki** z menu **Azure monitor** . Aby uzyskać szczegółowe informacje na temat korzystania z tego narzędzia, zobacz [Rozpoczynanie pracy z usługą Azure Eksplorator metryk](/azure/azure-monitor/platform/metrics-getting-started) .
+Możesz analizować metryki usługi Azure Machine Learning, otwierając **metryki** z menu **Monitor platformy Azure.** Zobacz [Wprowadzenie do Eksploratora metryk platformy Azure, aby](/azure/azure-monitor/platform/metrics-getting-started) uzyskać szczegółowe informacje na temat korzystania z tego narzędzia.
 
-Wszystkie metryki dla Azure Machine Learning znajdują się w **obszarze roboczym usługi**przestrzeń nazw Machine Learning.
+Wszystkie metryki usługi Azure Machine Learning znajdują się w obszarze roboczym **usługi uczenia maszynowego.**
 
-![Eksplorator metryk z wybranym obszarem roboczym usługi Machine Learning](./media/monitor-azure-machine-learning/metrics.png)
+![Eksplorator metryk z wybraną przestrzenią roboczą usługi uczenia maszynowego](./media/monitor-azure-machine-learning/metrics.png)
 
 ### <a name="filtering-and-splitting"></a>Filtrowanie i dzielenie
 
-W przypadku metryk, które obsługują wymiary, można zastosować filtry przy użyciu wartości wymiaru. Na przykład filtrowanie **aktywnych rdzeni** dla **nazwy klastra** `cpu-cluster`. 
+W przypadku metryk obsługujących wymiary można zastosować filtry przy użyciu wartości wymiaru. Na przykład filtrowanie **aktywnych rdzeni** dla `cpu-cluster`nazwy **klastra** . 
 
-Możesz również podzielić metrykę według wymiaru, aby wizualizować różne segmenty porównania z innymi. Na przykład należy podzielić **Typ etapu potoku** , aby zobaczyć liczbę typów kroków użytych w potoku.
+Można również podzielić metrykę według wymiaru, aby wizualizować porównanie różnych segmentów metryki ze sobą. Na przykład dzielenie **się typem kroku potoku,** aby wyświetlić liczbę typów kroków używanych w potoku.
 
-Więcej informacji o filtrowaniu i dzieleniu można znaleźć w temacie [Advanced Features of Azure monitor](/azure/azure-monitor/platform/metrics-charts).
+Aby uzyskać więcej informacji na temat filtrowania i dzielenia, zobacz [Zaawansowane funkcje usługi Azure Monitor](/azure/azure-monitor/platform/metrics-charts).
 
 ## <a name="alerts"></a>Alerty
 
-Możesz uzyskać dostęp do alertów dla Azure Machine Learning, otwierając **alerty** z menu **Azure monitor** . Aby uzyskać szczegółowe informacje na temat tworzenia alertów, zobacz [Tworzenie i wyświetlanie alertów metryk oraz zarządzanie nimi za pomocą Azure monitor](/azure/azure-monitor/platform/alerts-metric) .
+Dostęp do alertów dla usługi Azure Machine Learning można uzyskać, otwierając **alerty** z menu **Monitor platformy Azure.** Zobacz [Tworzenie, wyświetlanie i zarządzanie alertami metryk przy użyciu usługi Azure Monitor, aby](/azure/azure-monitor/platform/alerts-metric) uzyskać szczegółowe informacje na temat tworzenia alertów.
 
-Poniższa tabela zawiera listę typowych i zalecanych reguł alertów dotyczących metryk dla Azure Machine Learning:
+W poniższej tabeli wymieniono typowe i zalecane reguły alertów metryki dla usługi Azure Machine Learning:
 
 | Typ alertu | Warunek | Opis |
 |:---|:---|:---|
-| Wdrażanie modelu nie powiodło się | Typ agregacji: łącznie, operator: większy niż, wartość progowa: 0 | Gdy co najmniej jedno wdrożenie modelu nie powiodło się |
-| Procent wykorzystania przydziałów | Typ agregacji: Average, operator: większe niż, wartość progowa: 90| Gdy wartość procentowa wykorzystania przydziałów jest większa niż 90% |
-| Węzły niezdatne do użytku | Typ agregacji: łącznie, operator: większy niż, wartość progowa: 0 | Gdy istnieje co najmniej jeden niezdatny do użytku węzeł |
+| Wdrażanie modelu nie powiodło się | Typ agregacji: Suma, Operator: Większa niż, Wartość progu: 0 | Gdy co najmniej jedno wdrożenie modelu nie powiodło się |
+| Procent wykorzystania przydziału | Typ agregacji: Średnia, Operator: Większa niż, Wartość progowa: 90| Gdy procent wykorzystania przydziału jest większy niż 90% |
+| Niezniszalne węzły | Typ agregacji: Suma, Operator: Większa niż, Wartość progu: 0 | Gdy istnieje jeden lub więcej węzłów bezużytecznych |
 
-## <a name="configuration"></a>Konfiguracja
+## <a name="configuration"></a>Konfigurowanie
 
 > [!IMPORTANT]
-> __Nie trzeba konfigurować metryk dla Azure Machine Learning__, są one zbierane automatycznie i są dostępne w Eksplorator metryk do monitorowania i wysyłania alertów.
+> __Metryki usługi Azure Machine Learning nie muszą być skonfigurowane,__ są zbierane automatycznie i są dostępne w Eksploratorze metryk do monitorowania i alertów.
 
-Możesz dodać ustawienie diagnostyczne, aby skonfigurować następujące funkcje:
+Można dodać ustawienie diagnostyczne, aby skonfigurować następujące funkcje:
 
-* Archiwizuj informacje o dziennikach i metrykach na koncie usługi Azure Storage.
-* Przesyłaj strumieniowo informacje o dziennikach i metrykach do centrum zdarzeń platformy Azure.
-* Wyślij informacje o dziennikach i metrykach do Log Analytics Azure Monitor.
+* Archiwizuj informacje o dzienniku i metrykach na koncie magazynu platformy Azure.
+* Przesyłanie strumieniowe informacji dziennika i metryki do usługi Azure Event Hub.
+* Wysyłanie informacji o dziennikach i metrykach do usługi Azure Monitor Log Analytics.
 
-Włączenie tych ustawień wymaga dodatkowych usług platformy Azure (konta magazynu, centrum zdarzeń lub Log Analytics), co może zwiększyć koszt. Aby obliczyć szacowany koszt, odwiedź [Kalkulator cen platformy Azure](https://azure.microsoft.com/pricing/calculator).
+Włączenie tych ustawień wymaga dodatkowych usług platformy Azure (konta magazynu, centrum zdarzeń lub usługi Log Analytics), co może zwiększyć koszt. Aby obliczyć szacowany koszt, odwiedź [kalkulator cen platformy Azure](https://azure.microsoft.com/pricing/calculator).
 
-Aby uzyskać więcej informacji na temat tworzenia ustawień diagnostycznych, zobacz [Tworzenie ustawień diagnostycznych w celu zbierania dzienników platformy i metryk na platformie Azure](/azure/azure-monitor/platform/diagnostic-settings).
+Aby uzyskać więcej informacji na temat tworzenia ustawienia diagnostycznego, zobacz [Tworzenie ustawień diagnostycznych do zbierania dzienników i metryk platformy](/azure/azure-monitor/platform/diagnostic-settings)na platformie Azure .
 
-Następujące dzienniki można skonfigurować dla Azure Machine Learning:
+Można skonfigurować następujące dzienniki dla usługi Azure Machine Learning:
 
 | Kategoria | Opis |
 |:---|:---|
-| AmlComputeClusterEvent | Zdarzenia z Azure Machine Learning klastrów obliczeniowych. |
-| AmlComputeClusterNodeEvent | Zdarzenia z węzłów w klastrze obliczeniowym Azure Machine Learning. |
-| AmlComputeJobEvent | Zdarzenia z zadań uruchomionych na Azure Machine Learning COMPUTE. |
+| AmlComputeClusterEvent | Zdarzenia z klastrów obliczeniowych usługi Azure Machine Learning. |
+| AmlComputeClusterNodeevent | Zdarzenia z węzłów w klastrze obliczeniowym usługi Azure Machine Learning. |
+| AmlComputeJobevent | Zdarzenia z zadań uruchomionych na podstawie obliczeń usługi Azure Machine Learning. |
 
 > [!NOTE]
-> Po włączeniu metryk w ustawieniu diagnostycznym informacje o wymiarach nie są obecnie uwzględniane jako część informacji wysyłanych do konta magazynu, centrum zdarzeń lub usługi log Analytics.
+> Po włączeniu metryki w ustawieniach diagnostycznych informacje o wymiarach nie są obecnie uwzględniane jako część informacji wysyłanych do konta magazynu, centrum zdarzeń lub analizy dzienników.
 
 ## <a name="analyzing-log-data"></a>Analizowanie danych dziennika
 
-Użycie Log Analytics Azure Monitor wymaga utworzenia konfiguracji diagnostycznej i włączenia __informacji wysyłanych do log Analytics__. Aby uzyskać więcej informacji, zobacz sekcję [Konfiguracja](#configuration) .
+Korzystanie z usługi Azure Monitor Log Analytics wymaga utworzenia konfiguracji diagnostycznej i włączenia __wysyłania informacji do usługi Log Analytics.__ Aby uzyskać więcej informacji, zobacz [sekcję Konfiguracja.](#configuration)
 
-Dane w dziennikach Azure Monitor są przechowywane w tabelach, w których każda tabela ma swój własny zestaw unikatowych właściwości. Azure Machine Learning przechowuje dane w następujących tabelach:
+Dane w dziennikach usługi Azure Monitor są przechowywane w tabelach, a każda tabela ma własny zestaw unikatowych właściwości. Usługa Azure Machine Learning przechowuje dane w następujących tabelach:
 
 | Tabela | Opis |
 |:---|:---|
-| AmlComputeClusterEvent | Zdarzenia z Azure Machine Learning klastrów obliczeniowych. |
-| AmlComputeClusterNodeEvent | Zdarzenia z węzłów w klastrze obliczeniowym Azure Machine Learning. |
-| AmlComputeJobEvent | Zdarzenia z zadań uruchomionych na Azure Machine Learning COMPUTE. |
+| AmlComputeClusterEvent | Zdarzenia z klastrów obliczeniowych usługi Azure Machine Learning. |
+| AmlComputeClusterNodeevent | Zdarzenia z węzłów w klastrze obliczeniowym usługi Azure Machine Learning. |
+| AmlComputeJobevent | Zdarzenia z zadań uruchomionych na podstawie obliczeń usługi Azure Machine Learning. |
 
 > [!IMPORTANT]
-> Po wybraniu opcji **dzienniki** z menu Azure Machine Learning, log Analytics zostanie otwarty z zakresem zapytania ustawionym na bieżący obszar roboczy. Oznacza to, że zapytania dziennika będą zawierać tylko dane z tego zasobu. Jeśli chcesz uruchomić zapytanie, które zawiera dane z innych baz danych lub danych z innych usług platformy Azure, wybierz pozycję **dzienniki** z menu **Azure monitor** . Aby uzyskać szczegółowe informacje [, zobacz zakres zapytań dzienników i zakres czasu w Azure Monitor Log Analytics](/azure/azure-monitor/log-query/scope/) .
+> Po wybraniu **dzienników** z menu azure machine learning usługa Log Analytics jest otwierana z ustawionym zakresem zapytania na bieżący obszar roboczy. Oznacza to, że kwerendy dziennika będzie zawierać tylko dane z tego zasobu. Jeśli chcesz uruchomić kwerendę, która zawiera dane z innych baz danych lub danych z innych usług platformy Azure, wybierz **dzienniki** z menu **Usługi Azure Monitor.** Zobacz [zakres zapytań dziennika i zakres czasu w usłudze Azure Monitor Log Analytics, aby](/azure/azure-monitor/log-query/scope/) uzyskać szczegółowe informacje.
 
-Aby uzyskać szczegółowe informacje na temat dzienników i metryk, zobacz [Azure Machine Learning informacje o monitorowaniu danych](monitor-resource-reference.md).
+Aby uzyskać szczegółowe informacje na temat dzienników i metryk, zobacz [odwołanie do danych monitorowania usługi Azure Machine Learning](monitor-resource-reference.md).
 
 ### <a name="sample-queries"></a>Przykładowe zapytania
 
-Poniżej przedstawiono zapytania, których można użyć w celu ułatwienia monitorowania zasobów Azure Machine Learning: 
+Poniżej przedstawiono kwerendy, których można użyć, aby ułatwić monitorowanie zasobów usługi Azure Machine Learning: 
 
-+ Pobierz zadania zakończone niepowodzeniem w ciągu ostatnich pięciu dni:
++ Uzyskaj zadania nie powiodło się w ciągu ostatnich pięciu dni:
 
     ```Kusto
     AmlComputeJobEvent
@@ -131,7 +131,7 @@ Poniżej przedstawiono zapytania, których można użyć w celu ułatwienia moni
     | project  TimeGenerated , ClusterId , EventType , ExecutionState , ToolType
     ```
 
-+ Pobierz zdarzenia klastra w ciągu ostatnich pięciu dni dla klastrów, w których Standard_D1_V2 rozmiaru maszyny wirtualnej:
++ Pobierz zdarzenia klastra w ciągu ostatnich pięciu dni dla klastrów, w których rozmiar maszyny Wirtualnej jest Standard_D1_V2:
 
     ```Kusto
     AmlComputeClusterEvent
@@ -139,7 +139,7 @@ Poniżej przedstawiono zapytania, których można użyć w celu ułatwienia moni
     | project  ClusterName , InitialNodeCount , MaximumNodeCount , QuotaAllocated , QuotaUtilized
     ```
 
-+ Pobierz węzły przydzieloną w ciągu ostatnich ośmiu dni:
++ Pobierz węzły przydzielone w ciągu ostatnich ośmiu dni:
 
     ```Kusto
     AmlComputeClusterNodeEvent
@@ -149,6 +149,6 @@ Poniżej przedstawiono zapytania, których można użyć w celu ułatwienia moni
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Aby uzyskać informacje na temat informacji o dziennikach i metrykach, zobacz [Azure Machine Learning informacje dotyczące monitorowania](monitor-resource-reference.md).
-- Aby uzyskać informacje na temat pracy z przydziałami związanymi z Azure Machine Learning, zobacz [Zarządzanie przydziałami zasobów platformy Azure i ich żądania](how-to-manage-quotas.md).
-- Aby uzyskać szczegółowe informacje na temat monitorowania zasobów platformy Azure, zobacz [monitorowanie zasobów platformy Azure za pomocą Azure monitor](/azure/azure-monitor/insights/monitor-azure-resource).
+- Aby uzyskać odwołanie do dzienników i metryk, zobacz [odwołanie do danych monitorowania usługi Azure Machine Learning](monitor-resource-reference.md).
+- Aby uzyskać informacje dotyczące pracy z przydziałami powiązanymi z usługą Azure Machine Learning, zobacz [Zarządzanie przydziałami i żądaniawanie zasobów platformy Azure.](how-to-manage-quotas.md)
+- Aby uzyskać szczegółowe informacje na temat monitorowania zasobów platformy Azure, zobacz [Monitorowanie zasobów platformy Azure za pomocą usługi Azure Monitor.](/azure/azure-monitor/insights/monitor-azure-resource)

@@ -1,6 +1,6 @@
 ---
-title: Odświeżanie asynchroniczne dla modeli Azure Analysis Services | Microsoft Docs
-description: Opisuje sposób używania interfejsu API REST Azure Analysis Services do kodu asynchronicznego odświeżania danych modelu.
+title: Odświeżanie asynchroniczne dla modeli usług Azure Analysis Services | Dokumenty firmy Microsoft
+description: W tym artykule opisano, jak używać interfejsu API REST usług Azure Analysis Services do kodowania asynchronicznej odświeżania danych modelu.
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
@@ -8,49 +8,49 @@ ms.date: 01/14/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: 6457f062a40e60a491220fcf977585e8b07445b2
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78273717"
 ---
 # <a name="asynchronous-refresh-with-the-rest-api"></a>Odświeżanie asynchroniczne za pomocą interfejsu API REST
 
-Używając dowolnego języka programowania, który obsługuje wywołania REST, można wykonywać asynchroniczne operacje odświeżania danych na Azure Analysis Services modeli tabelarycznych. Obejmuje to synchronizację replik tylko do odczytu dla skalowania zapytań w poziomie. 
+Przy użyciu dowolnego języka programowania, który obsługuje wywołania REST, można wykonać asynchroniczne operacje odświeżania danych na modelach tabelaryczne usług Azure Analysis Services. Obejmuje to synchronizację replik tylko do odczytu dla kwerendy skalowane w poziomie. 
 
-Operacje odświeżania danych mogą zająć trochę czasu w zależności od liczby czynników, w tym ilości danych, poziomu optymalizacji przy użyciu partycji itd. Te operacje są tradycyjnie wywoływane z istniejącymi metodami, takimi jak użycie metody " [Tomasz](https://docs.microsoft.com/analysis-services/tom/introduction-to-the-tabular-object-model-tom-in-analysis-services-amo) " (model obiektów tabelarycznych), poleceń cmdlet [programu PowerShell](https://docs.microsoft.com/analysis-services/powershell/analysis-services-powershell-reference) lub [TMSL](https://docs.microsoft.com/analysis-services/tmsl/tabular-model-scripting-language-tmsl-reference) (język skryptów modelu tabelarycznego). Jednak te metody mogą wymagać często niezawodnych, długotrwałych połączeń HTTP.
+Operacje odświeżania danych mogą zająć trochę czasu w zależności od wielu czynników, w tym ilości danych, poziomu optymalizacji przy użyciu partycji itp. Te operacje zostały tradycyjnie wywołane przy użyciu istniejących metod, takich jak przy użyciu [TOM](https://docs.microsoft.com/analysis-services/tom/introduction-to-the-tabular-object-model-tom-in-analysis-services-amo) (model obiektu tabelarycznego), polecenia cmdlet [programu PowerShell](https://docs.microsoft.com/analysis-services/powershell/analysis-services-powershell-reference) lub [TMSL](https://docs.microsoft.com/analysis-services/tmsl/tabular-model-scripting-language-tmsl-reference) (język skryptów modelu tabelarycznego). Jednak te metody mogą wymagać często zawodne, długotrwałe połączenia HTTP.
 
-Interfejs API REST dla Azure Analysis Services umożliwia wykonywanie operacji odświeżania danych asynchronicznie. Za pomocą interfejsu API REST, długotrwałe połączenia HTTP z aplikacji klienckich nie są konieczne. Istnieją również inne wbudowane funkcje zapewniające niezawodność, takie jak autoponawianie prób i zatwierdzanie wsadowe.
+Interfejs API REST dla usług Azure Analysis Services umożliwia wykonywanie operacji odświeżania danych asynchronicznie. Za pomocą interfejsu API REST długotrwałe połączenia HTTP z aplikacji klienckich nie są konieczne. Istnieją również inne wbudowane funkcje niezawodności, takie jak automatyczne ponownych prób i zatwierdzeń wsadowych.
 
 ## <a name="base-url"></a>Podstawowy adres URL
 
-Podstawowy adres URL jest następujący:
+Podstawowy adres URL jest zgodny z następującym formatem:
 
 ```
 https://<rollout>.asazure.windows.net/servers/<serverName>/models/<resource>/
 ```
 
-Rozważmy na przykład model o nazwie AdventureWorks na serwerze o nazwie `myserver`, który znajduje się w regionie usługi Azure zachodnie stany USA. Nazwa serwera:
+Rozważmy na przykład model o nazwie `myserver`AdventureWorks na serwerze o nazwie , znajduje się w regionie West US Azure. Nazwa serwera to:
 
 ```
 asazure://westus.asazure.windows.net/myserver 
 ```
 
-Podstawowy adres URL dla tej nazwy serwera:
+Podstawowy adres URL dla tej nazwy serwera to:
 
 ```
 https://westus.asazure.windows.net/servers/myserver/models/AdventureWorks/ 
 ```
 
-Korzystając z podstawowego adresu URL, można dołączać zasoby i operacje w oparciu o następujące parametry: 
+Za pomocą podstawowego adresu URL zasoby i operacje można dołączać na podstawie następujących parametrów: 
 
-![Odświeżanie asynchroniczne](./media/analysis-services-async-refresh/aas-async-refresh-flow.png)
+![Odświeżanie asynchronii](./media/analysis-services-async-refresh/aas-async-refresh-flow.png)
 
-- Wszystkie elementy, które kończą się w **s** , są kolekcjami.
-- Wszystkie elementy kończące się znakiem **()** są funkcją.
-- Coś innego jest zasób/obiekt.
+- Wszystko, co kończy się w **s** jest zbiorem.
+- Wszystko, co kończy się **()** jest funkcją.
+- Wszystko inne jest zasobem/obiektem.
 
-Na przykład możesz użyć zlecenia POST w kolekcji rerefreshs, aby wykonać operację odświeżania:
+Na przykład można użyć zlecenia POST w kolekcji Odświeża, aby wykonać operację odświeżania:
 
 ```
 https://westus.asazure.windows.net/servers/myserver/models/AdventureWorks/refreshes
@@ -58,22 +58,22 @@ https://westus.asazure.windows.net/servers/myserver/models/AdventureWorks/refres
 
 ## <a name="authentication"></a>Uwierzytelnianie
 
-Wszystkie wywołania muszą zostać uwierzytelnione z prawidłowym tokenem Azure Active Directory (OAuth 2) w nagłówku autoryzacji i muszą spełniać następujące wymagania:
+Wszystkie wywołania muszą być uwierzytelnione przy użyciu prawidłowego tokenu usługi Azure Active Directory (OAuth 2) w nagłówku autoryzacji i muszą spełniać następujące wymagania:
 
-- Token musi być tokenem użytkownika lub podmiotem usługi aplikacji.
-- Token musi mieć ustawionych odpowiednich odbiorców, aby `https://*.asazure.windows.net`.
-- Użytkownik lub aplikacja musi mieć wystarczające uprawnienia na serwerze lub modelu, aby wykonać żądane wywołanie. Poziom uprawnień jest określany przez role należące do modelu lub grupy administratorów na serwerze.
+- Token musi być tokenem użytkownika lub jednostką usługi aplikacji.
+- Token musi mieć ustawioną `https://*.asazure.windows.net`właściwą grupę odbiorców na .
+- Użytkownik lub aplikacja musi mieć wystarczające uprawnienia na serwerze lub modelu, aby nawiązać żądane wywołanie. Poziom uprawnień jest określany przez role w modelu lub grupie administracyjnej na serwerze.
 
     > [!IMPORTANT]
-    > Obecnie wymagane są uprawnienia roli **administratora serwera** .
+    > Obecnie wymagane są uprawnienia do roli **administratora serwera.**
 
-## <a name="post-refreshes"></a>Opublikuj/refreshes
+## <a name="post-refreshes"></a>POST /odświeża
 
-Aby wykonać operację odświeżania, użyj zlecenia POST w kolekcji/refreshes, aby dodać nowy element Refresh do kolekcji. Nagłówek lokalizacji w odpowiedzi zawiera identyfikator odświeżenia. Aplikacja kliencka może odłączać i sprawdzać stan później, jeśli jest to wymagane, ponieważ jest asynchroniczna.
+Aby wykonać operację odświeżania, użyj zlecenia POST w /refreshes kolekcji, aby dodać nowy element odświeżania do kolekcji. Nagłówek Lokalizacja w odpowiedzi zawiera identyfikator odświeżania. Aplikacja kliencka może rozłączyć i sprawdzić stan później, jeśli jest to wymagane, ponieważ jest asynchroniczne.
 
-Tylko jedna operacja odświeżania jest akceptowana jednocześnie dla modelu. Jeśli jest aktualnie uruchomiona operacja odświeżania i zostanie przesłana inna, zwracany jest kod stanu HTTP 409.
+Tylko jedna operacja odświeżania jest akceptowana w czasie dla modelu. Jeśli istnieje bieżąca operacja uruchamiania odświeżania i przesłana jest inna, zwracany jest kod stanu 409 Konflikt HTTP.
 
-Treść może wyglądać następująco:
+Ciało może przypominać następujące:
 
 ```
 {
@@ -95,35 +95,35 @@ Treść może wyglądać następująco:
 
 ### <a name="parameters"></a>Parametry
 
-Określanie parametrów nie jest wymagane. Ustawienie domyślne jest stosowane.
+Określanie parametrów nie jest wymagane. Zostanie zastosowana wartość domyślna.
 
-| Name (Nazwa)             | Typ  | Opis  |Domyślne  |
+| Nazwa             | Typ  | Opis  |Domyślne  |
 |------------------|-------|--------------|---------|
-| `Type`           | Wyliczenie  | Typ przetwarzania do wykonania. Typy są wyrównane z typami [poleceń Refresh](https://docs.microsoft.com/analysis-services/tmsl/refresh-command-tmsl) TMSL: Full, clearValues, Oblicz, dataonly, Automatic i defragmentowania. Dodawanie typu nie jest obsługiwane.      |   Automatyczne      |
-| `CommitMode`     | Wyliczenie  | Określa, czy obiekty będą zatwierdzane w partiach, czy tylko po zakończeniu. Tryby to: default, transakcyjna, partialBatch.  |  transakcyjna       |
-| `MaxParallelism` | Int   | Ta wartość określa maksymalną liczbę wątków, w których uruchamianie poleceń przetwarzania jest równoległe. Ta wartość jest wyrównana z właściwością MaxParallelism, którą można ustawić w TMSL [Sequence polecenia](https://docs.microsoft.com/analysis-services/tmsl/sequence-command-tmsl) lub przy użyciu innych metod.       | 10        |
-| `RetryCount`     | Int   | Wskazuje liczbę ponownych prób wykonania operacji przed zakończeniem się niepowodzeniem.      |     0    |
-| `Objects`        | Tablica | Tablica obiektów do przetworzenia. Każdy obiekt zawiera: "Tabela" podczas przetwarzania całej tabeli lub "tabeli" i "partycji" podczas przetwarzania partycji. Jeśli nie określono żadnych obiektów, cały model zostanie odświeżony. |   Przetwórz cały model      |
+| `Type`           | Wyliczenie  | Typ przetwarzania do wykonania. Typy są wyrównane z typami [poleceń odświeżania](https://docs.microsoft.com/analysis-services/tmsl/refresh-command-tmsl) TMSL: pełna, clearValues, calculate, dataOnly, automatic i defragmentacja. Dodaj typ nie jest obsługiwany.      |   automatyczne      |
+| `CommitMode`     | Wyliczenie  | Określa, czy obiekty zostaną zatwierdzone w partiach lub tylko po zakończeniu. Tryby obejmują: domyślne, transakcyjne, częścioweBatch.  |  Transakcyjnych       |
+| `MaxParallelism` | int   | Ta wartość określa maksymalną liczbę wątków, na których mają być uruchamiane polecenia przetwarzania równolegle. Ta wartość wyrównana z właściwością MaxParallelism, którą można ustawić w [poleceniu Sekwencja](https://docs.microsoft.com/analysis-services/tmsl/sequence-command-tmsl) TMSL lub przy użyciu innych metod.       | 10        |
+| `RetryCount`     | int   | Wskazuje, ile razy operacja zostanie ponowić próbę przed niepowodzeniem.      |     0    |
+| `Objects`        | Tablica | Tablica obiektów do przetworzenia. Każdy obiekt zawiera: "table" podczas przetwarzania całej tabeli lub "tabela" i "partycja" podczas przetwarzania partycji. Jeśli nie określono żadnych obiektów, cały model jest odświeżany. |   Przetwarzanie całego modelu      |
 
-Wartość CommitMode jest równa partialBatch. Jest on używany podczas wstępnego ładowania dużych zestawów danych, które mogą zająć kilka godzin. Jeśli operacja odświeżania nie powiedzie się po pomyślnym zatwierdzeniu jednej lub większej liczby partii, pomyślnie przekazane partie pozostaną zatwierdzone (nie zostaną wycofane pomyślnie przekazane partie).
+CommitMode jest równa partialBatch. Jest on używany podczas wykonywania początkowego obciążenia dużych zestawów danych, które mogą potrwać wiele godzin. Jeśli operacja odświeżania nie powiedzie się po pomyślnym załączeniu jednej lub więcej partii, pomyślnie zatwierdzone partie pozostaną zatwierdzone (nie wycofa pomyślnie zatwierdzonych partii).
 
 > [!NOTE]
-> W czasie pisania rozmiar wsadu jest wartością MaxParallelism, ale można zmienić tę wartość.
+> W momencie pisania rozmiar partii jest MaxParallelism wartość, ale ta wartość może ulec zmianie.
 
 ### <a name="status-values"></a>Wartości stanu
 
 |Wartość stanu  |Opis  |
 |---------|---------|
-|`notStarted`    |   Operacja nie została jeszcze uruchomiona.      |
+|`notStarted`    |   Operacja jeszcze się nie rozpoczęła.      |
 |`inProgress`     |   Operacja w toku.      |
-|`timedOut`     |    Przekroczono limit czasu operacji na podstawie określonego przez użytkownika limitu czasu.     |
-|`cancelled`     |   Operacja została anulowana przez użytkownika lub system.      |
+|`timedOut`     |    Limit czasu operacji na podstawie limitu czasu określonego przez użytkownika.     |
+|`cancelled`     |   Operacja anulowana przez użytkownika lub system.      |
 |`failed`     |   Operacja nie powiodła się.      |
-|`succeeded`      |   Operacja zakończyła się pomyślnie.      |
+|`succeeded`      |   Operacja zakończyła się sukcesem.      |
 
-## <a name="get-refreshesrefreshid"></a>Pobierz/refreshes/\<refreshId >
+## <a name="get-refreshesrefreshid"></a>POBIERZ /refreshes/\<refreshId>
 
-Aby sprawdzić stan operacji odświeżania, użyj zlecenia GET dla identyfikatora odświeżania. Oto przykład treści odpowiedzi. Jeśli operacja jest w toku, `inProgress` jest zwracana w stanie.
+Aby sprawdzić stan operacji odświeżania, użyj zlecenia GET w identyfikatorze odświeżania. Oto przykład treści odpowiedzi. Jeśli operacja jest w `inProgress` toku, jest zwracany w stanie.
 
 ```
 {
@@ -147,12 +147,12 @@ Aby sprawdzić stan operacji odświeżania, użyj zlecenia GET dla identyfikator
 }
 ```
 
-## <a name="get-refreshes"></a>Pobierz/refreshes
+## <a name="get-refreshes"></a>POBIERZ /odświeża
 
-Aby uzyskać listę operacji odświeżania historycznego dla modelu, użyj zlecenia GET w kolekcji/refreshes. Oto przykład treści odpowiedzi. 
+Aby uzyskać listę historycznych operacji odświeżania dla modelu, należy użyć zlecenia GET w /refreshes kolekcji. Oto przykład treści odpowiedzi. 
 
 > [!NOTE]
-> W momencie zapisu ostatnie 30 dni operacji odświeżania są przechowywane i zwracane, ale ta liczba może ulec zmianie.
+> W momencie pisania ostatnich 30 dni operacji odświeżania są przechowywane i zwracane, ale ta liczba może ulec zmianie.
 
 ```
 [
@@ -171,17 +171,17 @@ Aby uzyskać listę operacji odświeżania historycznego dla modelu, użyj zlece
 ]
 ```
 
-## <a name="delete-refreshesrefreshid"></a>Usuń/refreshes/\<refreshId >
+## <a name="delete-refreshesrefreshid"></a>USUŃ /refreshes/\<refreshId>
 
-Aby anulować operację odświeżania w toku, użyj czasownika DELETE dla identyfikatora odświeżania.
+Aby anulować operację odświeżania w toku, użyj zlecenia DELETE w identyfikatorze odświeżania.
 
-## <a name="post-sync"></a>Opublikuj/Sync
+## <a name="post-sync"></a>POST /synchronizacja
 
-Po wykonaniu operacji odświeżania może być konieczne zsynchronizowanie nowych danych z replikami w celu skalowania zapytań w poziomie. Aby wykonać operację synchronizacji dla modelu, należy użyć czasownika POST dla funkcji/Sync. Nagłówek lokalizacji w odpowiedzi zawiera identyfikator operacji synchronizacji.
+Po wykonaniu operacji odświeżania może być konieczne zsynchronizowanie nowych danych z replikami dla skalowanych w poziomie kwerend. Aby wykonać operację synchronizacji dla modelu, należy użyć zlecenia POST w funkcji /sync. Nagłówek Lokalizacja w odpowiedzi zawiera identyfikator operacji synchronizacji.
 
-## <a name="get-sync-status"></a>Pobierz stan/Sync
+## <a name="get-sync-status"></a>GET /stan synchronizacji
 
-Aby sprawdzić stan operacji synchronizacji, użyj metody GET, która przekazuje identyfikator operacji jako parametr. Oto przykład treści odpowiedzi:
+Aby sprawdzić stan operacji synchronizacji, należy użyć zlecenia GET przekazującego identyfikator operacji jako parametr. Oto przykład treści odpowiedzi:
 
 ```
 {
@@ -194,37 +194,37 @@ Aby sprawdzić stan operacji synchronizacji, użyj metody GET, która przekazuje
 }
 ```
 
-Wartości dla `syncstate`:
+Wartości `syncstate`dla:
 
 - 0: Replikowanie. Pliki bazy danych są replikowane do folderu docelowego.
-- 1: ponownego wypełniania. Baza danych jest usuwana w wystąpieniach serwera tylko do odczytu.
-- 2: ukończono. Operacja synchronizacji zakończyła się pomyślnie.
-- 3: nie powiodło się. Operacja synchronizacji nie powiodła się.
-- 4: finalizowanie. Operacja synchronizacji została ukończona, ale wykonuje kroki czyszczenia.
+- 1: Nawadnianie. Baza danych jest nawodniona na serwerach tylko do odczytu.
+- 2: Zakończono. Operacja synchronizacji została pomyślnie ukończona.
+- 3: Nie powiodło się. Operacja synchronizacji nie powiodła się.
+- 4: Finalizacja. Operacja synchronizacji została ukończona, ale wykonuje kroki oczyszczania.
 
 ## <a name="code-sample"></a>Przykład kodu
 
-Oto przykład C# kodu, aby rozpocząć pracę, [RestApiSample w witrynie GitHub](https://github.com/Microsoft/Analysis-Services/tree/master/RestApiSample).
+Oto przykład kodu C#, aby rozpocząć, [RestApiSample na GitHub](https://github.com/Microsoft/Analysis-Services/tree/master/RestApiSample).
 
 ### <a name="to-use-the-code-sample"></a>Aby użyć przykładu kodu
 
-1.  Klonuj lub Pobierz repozytorium. Otwórz rozwiązanie RestApiSample.
-2.  Znajdź klienta wiersza **. BaseAddress =...** wprowadź [podstawowy adres URL](#base-url).
+1.  Klonuj lub pobieraj repozytorium. Otwórz rozwiązanie RestApiSample.
+2.  Znajdź **klienta linii. BaseAddress = ...** i podaj [podstawowy adres URL](#base-url).
 
-Przykładowy kod używa uwierzytelniania [nazwy głównej usługi](#service-principal) .
+Przykładowy kod używa uwierzytelniania [jednostkowego usługi.](#service-principal)
 
-### <a name="service-principal"></a>Nazwa główna usługi
+### <a name="service-principal"></a>Jednostka usługi
 
-Aby uzyskać więcej informacji na temat konfigurowania nazwy głównej usługi i przypisywania do niej wymaganych uprawnień na platformie Azure, zobacz [Tworzenie jednostki usługi — Azure Portal](../active-directory/develop/howto-create-service-principal-portal.md) i [Dodawanie jednostki usługi do roli administratora serwera](analysis-services-addservprinc-admins.md) . Po wykonaniu kroków wykonaj następujące dodatkowe czynności:
+Zobacz [Tworzenie jednostki usługi — witryna Azure portal](../active-directory/develop/howto-create-service-principal-portal.md) i dodawanie [jednostki usługi do roli administratora serwera,](analysis-services-addservprinc-admins.md) aby uzyskać więcej informacji na temat konfigurowania jednostki usługi i przypisywania niezbędnych uprawnień w usłudze Azure AS. Po wykonaniu tych czynności wykonaj następujące czynności:
 
-1.  W przykładzie kodu Znajdź **ciąg Authority =...** , Zamień **wspólny** z identyfikatorem dzierżawy w Twojej organizacji.
-2.  Comment/uncomment, aby Klasa ClientCredential była używana do tworzenia wystąpienia obiektu poświadczeń. Upewnij się, że identyfikator \<aplikacji > i \<wartości > klucza aplikacji są dostępne w bezpieczny sposób lub Użyj uwierzytelniania opartego na certyfikatach dla podmiotów usługi.
+1.  W przykładzie kodu znajdź **urząd ciąg = ...**, zastąpić **wspólne** z identyfikatorem dzierżawy organizacji.
+2.  Komentarz/uncomment więc ClientCredential klasy jest używany do tworzenia wystąpienia obiektu cred. Upewnij \<się, że> \<identyfikatora aplikacji i> wartości klucza aplikacji są dostępne w bezpieczny sposób lub użyj uwierzytelniania opartego na certyfikatach dla podmiotów korzystających z usługi.
 3.  Uruchom przykład.
 
 
 ## <a name="see-also"></a>Zobacz też
 
-[Przykłady](analysis-services-samples.md)   
-[Interfejs API REST](https://docs.microsoft.com/rest/api/analysisservices/servers)   
+[Próbki](analysis-services-samples.md)   
+[INTERFEJS API ODPOCZYNKU](https://docs.microsoft.com/rest/api/analysisservices/servers)   
 
 

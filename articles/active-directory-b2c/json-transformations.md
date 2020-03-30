@@ -1,7 +1,7 @@
 ---
-title: Przykłady transformacji oświadczeń JSON dla zasad niestandardowych
+title: JSON twierdzi, że przykłady transformacji dla zasad niestandardowych
 titleSuffix: Azure AD B2C
-description: Przykłady transformacji oświadczeń JSON dla schematu programu Identity Experience Framework (IEF) Azure Active Directory B2C.
+description: JSON twierdzi, że przykłady transformacji dla schematu struktury środowiska tożsamości (IEF) usługi Azure Active Directory B2C.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -12,29 +12,29 @@ ms.date: 12/10/2019
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: ad8fcf578ae1c89856a9d7929af0aec813cb4082
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78187597"
 ---
-# <a name="json-claims-transformations"></a>Przekształcenia oświadczeń JSON
+# <a name="json-claims-transformations"></a>JSON żąda przekształceń
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-W tym artykule przedstawiono przykłady użycia przekształceń oświadczeń JSON schematu platformy Identity Experience w Azure Active Directory B2C (Azure AD B2C). Aby uzyskać więcej informacji, zobacz [ClaimsTransformations](claimstransformations.md).
+W tym artykule przedstawiono przykłady użycia przekształceń oświadczeń JSON schematu struktury środowiska tożsamości w usłudze Azure Active Directory B2C (Azure AD B2C). Aby uzyskać więcej informacji, zobacz [ClaimsTransformations](claimstransformations.md).
 
-## <a name="generatejson"></a>GenerateJson
+## <a name="generatejson"></a>Generowanie Json
 
-Aby wygenerować ciąg JSON, użyj wartości lub stałych. Ciąg ścieżki następujący zapis kropki jest używany do wskazania, gdzie wstawić dane do ciągu JSON. Po podzieleniu według kropek wszystkie liczby całkowite są interpretowane jako indeks tablicy JSON, a wartości inne niż liczby całkowite są interpretowane jako indeks obiektu JSON.
+Użyj wartości oświadczeń lub stałych do wygenerowania ciągu JSON. Ciąg ścieżki po notacji kropki służy do wskazania, gdzie należy wstawić dane do ciągu JSON. Po podzieleniu przez kropki, wszelkie liczby całkowite są interpretowane jako indeks tablicy JSON i liczby inne niż liczby całkowite są interpretowane jako indeks obiektu JSON.
 
-| Element | TransformationClaimType | Typ danych | Uwagi |
+| Element | TransformClaimType (Typ transformacji) | Typ danych | Uwagi |
 | ---- | ----------------------- | --------- | ----- |
-| Oświadczenie inputclaim | Dowolny ciąg następujący po kropce | ciąg | Wykryto pliku JSON, w którym zostanie wstawiona wartość żądania. |
-| InputParameter | Dowolny ciąg następujący po kropce | ciąg | Wykryto w formacie JSON, w którym zostanie wstawiona stała wartość ciągu. |
-| Oświadczenie outputclaim | Oświadczenie outputclaim | ciąg | Wygenerowany ciąg JSON. |
+| InputClaim (własnach wejściowych) | Dowolny ciąg następujący po notacji kropkowej | ciąg | JsonPath JSON, gdzie wartość oświadczenia zostaną wstawione do. |
+| Inputparameter | Dowolny ciąg następujący po notacji kropkowej | ciąg | JsonPath JSON, gdzie stała wartość ciągu zostaną wstawione do. |
+| WynikClaim | outputClaim | ciąg | Wygenerowany ciąg JSON. |
 
-Poniższy przykład generuje ciąg JSON na podstawie wartości "e-mail" i "OTP" oraz ciągów stałych.
+Poniższy przykład generuje ciąg JSON na podstawie wartości oświadczenia "e-mail" i "otp", a także ciągów stałych.
 
 ```XML
 <ClaimsTransformation Id="GenerateRequestBody" TransformationMethod="GenerateJson">
@@ -55,17 +55,17 @@ Poniższy przykład generuje ciąg JSON na podstawie wartości "e-mail" i "OTP" 
 
 ### <a name="example"></a>Przykład
 
-Następujące przekształcanie oświadczeń wyprowadza oświadczenie ciągu JSON, które będzie treścią żądania wysłanego do SendGrid (dostawca poczty e-mail innej firmy). Struktura obiektu JSON jest definiowana przez identyfikatory w notacji kropkowej obiektu InputParameters i TransformationClaimTypes InputClaims. Liczby w zapisie kropkowym oznaczają tablice. Wartości pochodzą z wartości InputClaims i właściwości InputParameters "".
+Następujące żądania transformacji wyprowadza oświadczenie ciągu JSON, który będzie treści żądania wysyłane do SendGrid (dostawcy poczty e-mail innej firmy). Struktura obiektu JSON jest zdefiniowana przez identyfikatory w notacji punktowej InputParameters i TransformationClaimTypes z InputClaims. Liczby w notacji kropkowej implikują tablice. Wartości pochodzą z InputClaims' wartości i InputParameters "Value" właściwości.
 
 - Oświadczenia wejściowe:
-  - **adres e-mail**, personalizacje typów zgłaszanych roszczeń **. 0. do. 0. adres e-mail**: "someone@example.com"
-  - personalizacje **OTP**, typy zgłaszania typu odszkodowania **. 0. dynamic_template_data. OTP** "346349"
+  - **email**, konwersja typu oświadczenia **personalizacji.0.to.0.email**: " "someone@example.com
+  - **otp**, personalizacja typu oświadczeń **transformacji.0.dynamic_template_data.otp** "346349"
 - Parametr wejściowy:
   - **template_id**: "d-4c56ffb40fa648b1aa6822283df94f60"
-  - **z adresu e-mail**: "service@contoso.com"
-  - **personalizacje. 0. podmiot** "kod weryfikacyjny E-mail konta Contoso"
-- Zgłoszenie wyjściowe:
-  - **elemencie requestbody**: wartość JSON
+  - **from.email**:service@contoso.com" "
+  - **personalizations.0.subject** "Kod weryfikacyjny konta Contoso"
+- Oświadczenie wyjściowe:
+  - **requestBody**: Wartość JSON
 
 ```JSON
 {
@@ -90,17 +90,17 @@ Następujące przekształcanie oświadczeń wyprowadza oświadczenie ciągu JSON
 }
 ```
 
-## <a name="getclaimfromjson"></a>GetClaimFromJson
+## <a name="getclaimfromjson"></a>GetClaimFromJson ( GetClaimFromJson )
 
 Pobierz określony element z danych JSON.
 
-| Element | TransformationClaimType | Typ danych | Uwagi |
+| Element | TransformClaimType (Typ transformacji) | Typ danych | Uwagi |
 | ---- | ----------------------- | --------- | ----- |
-| Oświadczenie inputclaim | inputJson | ciąg | Elementy Claims, które są używane przez transformację oświadczeń do pobrania elementu. |
-| InputParameter | claimToExtract | ciąg | Nazwa elementu JSON, który ma zostać wyodrębniony. |
-| Oświadczenie outputclaim | extractedClaim | ciąg | Element ClaimType, który jest generowany po wywołaniu tej transformacji oświadczeń, jest wartością elementu określoną w parametrze wejściowym _claimToExtract_ . |
+| InputClaim (własnach wejściowych) | inputJson (wejścieJson) | ciąg | ClaimTypes, które są używane przez transformację oświadczeń, aby uzyskać element. |
+| Inputparameter | claimToExtract | ciąg | nazwę elementu JSON, który ma zostać wyodrębniony. |
+| WynikClaim | wyodrębnioneClaim | ciąg | ClaimType, który jest produkowany po tym transformacji oświadczeń został wywołany, wartość elementu określona w _claimToExtract_ parametru wejściowego. |
 
-W poniższym przykładzie transformacja oświadczeń wyekstrahowana element `emailAddress` z danych JSON: `{"emailAddress": "someone@example.com", "displayName": "Someone"}`
+W poniższym przykładzie transformacja `emailAddress` oświadczeń wyodrębniła element z danych JSON:`{"emailAddress": "someone@example.com", "displayName": "Someone"}`
 
 ```XML
 <ClaimsTransformation Id="GetEmailClaimFromJson" TransformationMethod="GetClaimFromJson">
@@ -119,27 +119,27 @@ W poniższym przykładzie transformacja oświadczeń wyekstrahowana element `ema
 ### <a name="example"></a>Przykład
 
 - Oświadczenia wejściowe:
-  - **inputJson**: {"EmailAddress": "someone@example.com", "DisplayName": "ktoś"}
+  - **inputJson**: {"emailAddress": "someone@example.com", "displayName": "Someone"}
 - Parametr wejściowy:
-    - **claimToExtract**: EmailAddress
+    - **claimToExtract**: emailAddress
 - Oświadczenia wyjściowe:
-  - **extractedClaim**: someone@example.com
+  - **wyodrębnioneKlam:**someone@example.com
 
 
 ## <a name="getclaimsfromjsonarray"></a>GetClaimsFromJsonArray
 
-Pobierz listę określonych elementów z danych JSON.
+Pobierz listę określonych elementów z danych Json.
 
-| Element | TransformationClaimType | Typ danych | Uwagi |
+| Element | TransformClaimType (Typ transformacji) | Typ danych | Uwagi |
 | ---- | ----------------------- | --------- | ----- |
-| Oświadczenie inputclaim | jsonSourceClaim | ciąg | Oświadczenia są używane przez transformację oświadczeń do pobierania oświadczeń. |
-| InputParameter | errorOnMissingClaims | wartość logiczna | Określa, czy zgłosić błąd, jeśli brakuje jednego z oświadczeń. |
-| InputParameter | includeEmptyClaims | ciąg | Określ, czy mają być dołączane puste oświadczenia. |
-| InputParameter | jsonSourceKeyName | ciąg | Nazwa klucza elementu |
-| InputParameter | jsonSourceValueName | ciąg | Nazwa wartości elementu |
-| Oświadczenie outputclaim | Collection | String, int, Boolean i DateTime |Lista oświadczeń do wyodrębnienia. Nazwa żądania powinna być taka sama jak określona w _jsonSourceClaim_ wejściowym. |
+| InputClaim (własnach wejściowych) | jsonSourceClaim | ciąg | ClaimTypes, które są używane przez transformację oświadczeń, aby uzyskać oświadczenia. |
+| Inputparameter | błądOnMissingClaims | wartość logiczna | Określa, czy błąd ma być zgłaszany, jeśli brakuje jednego z oświadczeń. |
+| Inputparameter | obejmująmemptyClaims | ciąg | Określ, czy mają być uwzględniane puste oświadczenia. |
+| Inputparameter | jsonSourceKeyName | ciąg | Nazwa klucza elementu |
+| Inputparameter | jsonSourceValueName | ciąg | Nazwa wartości elementu |
+| WynikClaim | Collection | ciąg, int, logiczny i datetime |Lista roszczeń do wyodrębnienia. Nazwa oświadczenia powinna być równa nazwa określona w _jsonSourceClaim_ oświadczenia wejściowego. |
 
-W poniższym przykładzie transformacja oświadczeń wyodrębnia następujące oświadczenia: adres e-mail (ciąg), displayName (String), membershipNum (int), Active (Boolean) i DataUrodzenia (DateTime) z danych JSON.
+W poniższym przykładzie transformacja oświadczeń wyodrębnia następujące oświadczenia: e-mail (ciąg), displayName (ciąg), membershipNum (int), active (boolean) i data urodzenia (datetime) z danych JSON.
 
 ```JSON
 [{"key":"email","value":"someone@example.com"}, {"key":"displayName","value":"Someone"}, {"key":"membershipNum","value":6353399}, {"key":"active","value":true}, {"key":"birthdate","value":"1980-09-23T00:00:00Z"}]
@@ -167,30 +167,30 @@ W poniższym przykładzie transformacja oświadczeń wyodrębnia następujące o
 ```
 
 - Oświadczenia wejściowe:
-  - **jsonSourceClaim**: [{"Key": "e-mail", "value": "someone@example.com"}, {"Key": "DisplayName", "value": "ktoś"}, {"Key": "membershipNum", "value": 6353399}, {"Key": "Active", "value": true}, {"Key": "DataUrodzenia", "value": "1980-09-23T00:00:00Z"}]
+  - **jsonSourceClaim**: [{"key":"email","value":"someone@example.com"}, {"key":"displayName","value":"Someone"}, {"key":"membershipNum","value":6353399}, {"key":"active","value": true}, {"key":"birthdate","value":"1980-09-23T00:00:00Z"}]
 - Parametry wejściowe:
-    - **errorOnMissingClaims**: FAŁSZ
-    - **includeEmptyClaims**: FAŁSZ
+    - **errorOnMissingClaims**: false
+    - **obejmująEmptyClaims**: false
     - **jsonSourceKeyName**: klucz
     - **jsonSourceValueName**: wartość
 - Oświadczenia wyjściowe:
-  - **adres e-mail**: "someone@example.com"
-  - **DisplayName**: "ktoś"
-  - **membershipNum**: 6353399
-  - **aktywne**: prawda
-  - **dataurodzenie**: 1980-09-23T00:00:00Z
+  - **adres e-mail**: " "someone@example.com
+  - **nazwa displayName**: "Ktoś"
+  - **członkostwoNum**: 6353399
+  - **aktywny**: prawda
+  - **data urodzenia**: 1980-09-23T00:00:00Z
 
 ## <a name="getnumericclaimfromjson"></a>GetNumericClaimFromJson
 
-Pobiera określony liczbowy (Long) element z danych JSON.
+Pobiera określony element numeryczny (długi) z danych JSON.
 
-| Element | TransformationClaimType | Typ danych | Uwagi |
+| Element | TransformClaimType (Typ transformacji) | Typ danych | Uwagi |
 | ---- | ----------------------- | --------- | ----- |
-| Oświadczenie inputclaim | inputJson | ciąg | Oświadczenia są używane przez transformację oświadczeń do uzyskania oświadczenia. |
-| InputParameter | claimToExtract | ciąg | Nazwa elementu JSON do wyodrębnienia. |
-| Oświadczenie outputclaim | extractedClaim | long | Element ClaimType wygenerowany po tym ClaimsTransformation został wywołany, wartość elementu określona w parametrach wejściowych _claimToExtract_ . |
+| InputClaim (własnach wejściowych) | inputJson (wejścieJson) | ciąg | ClaimTypes, które są używane przez transformację oświadczeń, aby uzyskać oświadczenie. |
+| Inputparameter | claimToExtract | ciąg | Nazwa elementu JSON do wyodrębnienia. |
+| WynikClaim | wyodrębnioneClaim | long | ClaimType, który jest produkowany po tym ClaimsTransformation został wywołany, wartość elementu określony w _claimToExtract_ parametrów wejściowych. |
 
-W poniższym przykładzie transformacja oświadczeń Wyodrębnia element `id` z danych JSON.
+W poniższym przykładzie transformacja `id` oświadczeń wyodrębnia element z danych JSON.
 
 ```JSON
 {
@@ -217,22 +217,22 @@ W poniższym przykładzie transformacja oświadczeń Wyodrębnia element `id` z 
 ### <a name="example"></a>Przykład
 
 - Oświadczenia wejściowe:
-  - **inputJson**: {"EmailAddress": "someone@example.com", "DisplayName": "ktoś", "ID": 6353399}
+  - **inputJson**: {"emailAddress": "someone@example.com", "displayName": "Someone", "id" : 6353399}
 - Parametry wejściowe
-    - **claimToExtract**: Identyfikator
+    - **claimToExtract**: id
 - Oświadczenia wyjściowe:
-    - **extractedClaim**: 6353399
+    - **wyodrębnioneClaim**: 6353399
 
 ## <a name="getsinglevaluefromjsonarray"></a>GetSingleValueFromJsonArray
 
 Pobiera pierwszy element z tablicy danych JSON.
 
-| Element | TransformationClaimType | Typ danych | Uwagi |
+| Element | TransformClaimType (Typ transformacji) | Typ danych | Uwagi |
 | ---- | ----------------------- | --------- | ----- |
-| Oświadczenie inputclaim | inputJsonClaim | ciąg | Elementy Claims, które są używane przez transformację oświadczeń do pobierania elementu z tablicy JSON. |
-| Oświadczenie outputclaim | extractedClaim | ciąg | Element ClaimType, który jest generowany po wywołaniu tego ClaimsTransformation, jest pierwszym elementem w tablicy JSON. |
+| InputClaim (własnach wejściowych) | inputJsonClaim | ciąg | ClaimTypes, które są używane przez transformację oświadczeń, aby uzyskać element z tablicy JSON. |
+| WynikClaim | wyodrębnioneClaim | ciąg | ClaimType, który jest produkowany po wywołaniu tego ClaimsTransformation, pierwszy element w tablicy JSON. |
 
-W poniższym przykładzie transformacja oświadczeń wyodrębnia pierwszy element (adres e-mail) z tablicy JSON `["someone@example.com", "Someone", 6353399]`.
+W poniższym przykładzie transformacja oświadczeń wyodrębnia pierwszy element (adres `["someone@example.com", "Someone", 6353399]`e-mail) z tablicy JSON .
 
 ```XML
 <ClaimsTransformation Id="GetEmailFromJson" TransformationMethod="GetSingleValueFromJsonArray">
@@ -248,18 +248,18 @@ W poniższym przykładzie transformacja oświadczeń wyodrębnia pierwszy elemen
 ### <a name="example"></a>Przykład
 
 - Oświadczenia wejściowe:
-  - **inputJsonClaim**: ["someone@example.com", "ktoś", 6353399]
+  - **inputJsonClaim**:someone@example.com[" ", "Ktoś", 6353399]
 - Oświadczenia wyjściowe:
-  - **extractedClaim**: someone@example.com
+  - **wyodrębnioneKlam:**someone@example.com
 
 ## <a name="xmlstringtojsonstring"></a>XmlStringToJsonString
 
-Konwertuje dane XML do formatu JSON.
+Konwertuje dane XML na format JSON.
 
-| Element | TransformationClaimType | Typ danych | Uwagi |
+| Element | TransformClaimType (Typ transformacji) | Typ danych | Uwagi |
 | ---- | ----------------------- | --------- | ----- |
-| Oświadczenie inputclaim | xml | ciąg | Oświadczenia są używane przez transformację oświadczeń do konwersji danych z formatu XML na format JSON. |
-| Oświadczenie outputclaim | kodu | ciąg | W formacie JSON jest wywoływana wartość oświadczenia, która jest generowana po wywołaniu tej ClaimsTransformation. |
+| InputClaim (własnach wejściowych) | xml | ciąg | ClaimTypes, które są używane przez transformację oświadczeń do konwersji danych z XML do formatu JSON. |
+| WynikClaim | json | ciąg | ClaimType, który jest produkowany po wywołaniu tego ClaimsTransformation, dane w formacie JSON. |
 
 ```XML
 <ClaimsTransformation Id="ConvertXmlToJson" TransformationMethod="XmlStringToJsonString">
@@ -275,7 +275,7 @@ Konwertuje dane XML do formatu JSON.
 W poniższym przykładzie transformacja oświadczeń konwertuje następujące dane XML do formatu JSON.
 
 #### <a name="example"></a>Przykład
-Dane wejściowe:
+Oświadczenie wejściowe:
 
 ```XML
 <user>
@@ -284,7 +284,7 @@ Dane wejściowe:
 </user>
 ```
 
-Zgłoszenie wyjściowe:
+Oświadczenie wyjściowe:
 
 ```JSON
 {

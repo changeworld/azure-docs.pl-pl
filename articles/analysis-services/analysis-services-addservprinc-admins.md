@@ -1,6 +1,6 @@
 ---
-title: Dodaj nazwę główną usługi do roli administratora Azure Analysis Services | Microsoft Docs
-description: Dowiedz się, jak dodać nazwę główną usługi Automation do roli administratora serwera Azure Analysis Services
+title: Dodawanie jednostki usługi do roli administratora usług Azure Analysis Services | Dokumenty firmy Microsoft
+description: Dowiedz się, jak dodać jednostkę usługi automatyzacji do roli administratora serwera usług Azure Analysis Services
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
@@ -9,44 +9,44 @@ ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: fasttrack-edit
 ms.openlocfilehash: 1370f65405963ebf825e986e6801607a0d96156e
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78298092"
 ---
 # <a name="add-a-service-principal-to-the-server-administrator-role"></a>Dodawanie jednostki usługi do roli administratora serwera 
 
- Aby zautomatyzować nienadzorowane zadania programu PowerShell, jednostka usługi musi mieć uprawnienia **administratora serwera** na zarządzanym serwerze Analysis Services. W tym artykule opisano sposób dodawania nazwy głównej usługi do roli Administratorzy serwera na platformie Azure jako serwer. Można to zrobić przy użyciu SQL Server Management Studio lub szablonu Menedżer zasobów.
+ Aby zautomatyzować zadania programu PowerShell nienadzorowane, podmiot usługi musi mieć uprawnienia **administratora serwera** na zarządzanym serwerze usług Analysis Services. W tym artykule opisano sposób dodawania jednostki usługi do roli administratorów serwera na serwerze usługi Azure AS. Można to zrobić za pomocą programu SQL Server Management Studio lub szablonu Menedżera zasobów.
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
-Przed ukończeniem tego zadania musisz mieć nazwę główną usługi zarejestrowaną w Azure Active Directory.
+Przed wykonaniem tego zadania musisz mieć jednostkę usługi zarejestrowaną w usłudze Azure Active Directory.
 
-[Tworzenie jednostki usługi —  Azure Portal](../active-directory/develop/howto-create-service-principal-portal.md)  
+[Tworzenie jednostki usługi — witryna Azure portal](../active-directory/develop/howto-create-service-principal-portal.md)   
 [Tworzenie jednostki usługi — PowerShell](../active-directory/develop/howto-authenticate-service-principal-powershell.md)
 
 ## <a name="using-sql-server-management-studio"></a>Używanie programu SQL Server Management Studio
 
-Administratorów serwera można skonfigurować przy użyciu SQL Server Management Studio (SSMS). Aby wykonać to zadanie, musisz mieć uprawnienia [administratora serwera](analysis-services-server-admins.md) na platformie Azure jako serwer. 
+Administratorzy serwerów można skonfigurować przy użyciu programu SQL Server Management Studio (SSMS). Aby wykonać to zadanie, musisz mieć uprawnienia [administratora serwera](analysis-services-server-admins.md) na serwerze usługi Azure AS. 
 
-1. W programie SSMS Połącz się z platformą Azure jako serwerem.
-2. W obszarze **Właściwości serwera** > **zabezpieczenia**kliknij przycisk **Dodaj**.
-3. W obszarze **Wybierz użytkownika lub grupę**Wyszukaj zarejestrowaną aplikację według nazwy, wybierz pozycję, a następnie kliknij przycisk **Dodaj**.
+1. W systemie SSMS połącz się z serwerem usługi Azure AS.
+2. W oknie**Zabezpieczenia** **właściwości** > serwera kliknij pozycję **Dodaj**.
+3. W **obszarze Wybierz użytkownika lub grupę**wyszukaj zarejestrowaną aplikację według nazwy, wybierz pozycję, a następnie kliknij pozycję **Dodaj**.
 
-    ![Wyszukaj konto jednostki usługi](./media/analysis-services-addservprinc-admins/aas-add-sp-ssms-picker.png)
+    ![Wyszukiwanie konta głównego dostawcy usługi](./media/analysis-services-addservprinc-admins/aas-add-sp-ssms-picker.png)
 
-4. Sprawdź identyfikator konta nazwy głównej usługi, a następnie kliknij przycisk **OK**.
+4. Sprawdź identyfikator konta jednostki usługi, a następnie kliknij przycisk **OK**.
     
-    ![Wyszukaj konto jednostki usługi](./media/analysis-services-addservprinc-admins/aas-add-sp-ssms-add.png)
+    ![Wyszukiwanie konta głównego dostawcy usługi](./media/analysis-services-addservprinc-admins/aas-add-sp-ssms-add.png)
 
-## <a name="using-a-resource-manager-template"></a>Używanie szablonu usługi Resource Manager
+## <a name="using-a-resource-manager-template"></a>Używanie szablonu Menedżera zasobów
 
-Administratorzy serwera można również skonfigurować, wdrażając serwer Analysis Services przy użyciu szablonu Azure Resource Manager. Tożsamość, w której działa wdrożenie, musi należeć do roli **współautor** dla zasobu w [Access Control opartej na rolach (RBAC) na platformie Azure](../role-based-access-control/overview.md).
+Administratorzy serwera można również skonfigurować, wdrażając serwer usług Analysis Services przy użyciu szablonu usługi Azure Resource Manager. Tożsamość uruchomionego wdrożenia musi należeć do roli **współautora** zasobu w [kontroli dostępu opartej na rolach platformy Azure (RBAC).](../role-based-access-control/overview.md)
 
 > [!IMPORTANT]
-> Nazwę główną usługi należy dodać przy użyciu `app:{service-principal-client-id}@{azure-ad-tenant-id}`format.
+> Podmiot usługi należy dodać przy `app:{service-principal-client-id}@{azure-ad-tenant-id}`użyciu formatu .
 
-Poniższy szablon Menedżer zasobów wdraża serwer Analysis Services z określoną jednostką usługi dodaną do roli administratora Analysis Services:
+Następujący szablon Menedżera zasobów wdraża serwer usług Analysis Services z określoną jednostką usługi dodaną do roli Administrator usług Analysis Services:
 
 ```json
 {
@@ -96,25 +96,25 @@ Poniższy szablon Menedżer zasobów wdraża serwer Analysis Services z określo
 
 ## <a name="using-managed-identities"></a>Korzystanie z tożsamości zarządzanych
 
-Tożsamość zarządzaną można również dodać do listy Administratorzy Analysis Services. Przykładowo może istnieć [aplikacja logiki z tożsamością zarządzaną przez system](../logic-apps/create-managed-service-identity.md)i chcesz udzielić jej uprawnień do administrowania serwerem Analysis Services.
+Tożsamość zarządzaną można również dodać do listy Administratorzy usług Analysis Services. Na przykład może mieć [aplikację logiki z tożsamością zarządzaną przypisaną do systemu](../logic-apps/create-managed-service-identity.md)i chcesz udzielić jej możliwości administrowania serwerem usług Analysis Services.
 
-W większości części Azure Portal i interfejsów API tożsamości zarządzane są identyfikowane przy użyciu identyfikatora obiektu nazwy głównej usługi. Jednak Analysis Services wymaga ich zidentyfikowania przy użyciu identyfikatora klienta. Aby uzyskać identyfikator klienta dla jednostki usługi, możesz użyć interfejsu wiersza polecenia platformy Azure:
+W większości części witryny Azure portal i interfejsów API tożsamości zarządzane są identyfikowane przy użyciu ich identyfikator obiektu jednostki usługi. Jednak Analysis Services wymaga, aby były identyfikowane przy użyciu ich identyfikator klienta. Aby uzyskać identyfikator klienta dla jednostki usługi, można użyć interfejsu wiersza polecenia platformy Azure:
 
 ```bash
 az ad sp show --id <ManagedIdentityServicePrincipalObjectId> --query appId -o tsv
 ```
 
-Alternatywnie możesz użyć programu PowerShell:
+Alternatywnie można użyć programu PowerShell:
 
 ```powershell
 (Get-AzureADServicePrincipal -ObjectId <ManagedIdentityServicePrincipalObjectId>).AppId
 ```
 
-Tego identyfikatora klienta można następnie użyć w połączeniu z IDENTYFIKATORem dzierżawy, aby dodać zarządzaną tożsamość do listy administratorów Analysis Services, zgodnie z powyższym opisem.
+Następnie można użyć tego identyfikatora klienta w połączeniu z identyfikatorem dzierżawy, aby dodać tożsamość zarządzana do listy Administratorzy usług Analysis Services, jak opisano powyżej.
 
 ## <a name="related-information"></a>Informacje pokrewne
 
-* [Pobierz moduł SQL Server PowerShell](https://docs.microsoft.com/sql/ssms/download-sql-server-ps-module)   
-* [Pobierz narzędzie SSMS](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)   
+* [Pobieranie modułu programu SQL Server PowerShell](https://docs.microsoft.com/sql/ssms/download-sql-server-ps-module)   
+* [Pobieranie SSMS](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)   
 
 

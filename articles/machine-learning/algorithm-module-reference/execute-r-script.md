@@ -1,7 +1,7 @@
 ---
-title: 'Wykonaj skrypt języka R: odwołanie do modułu'
+title: 'Wykonanie skryptu R: odwołanie do modułu'
 titleSuffix: Azure Machine Learning
-description: Dowiedz się, jak uruchomić kod języka R przy użyciu modułu uruchamiania skryptu języka R w Azure Machine Learning.
+description: Dowiedz się, jak użyć modułu Wykonywanie skryptu R w usłudze Azure Machine Learning do uruchamiania kodu języka R.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,31 +9,31 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 03/10/2020
-ms.openlocfilehash: 1cf8c208e83950706278e2cff5d13951393eec8f
-ms.sourcegitcommit: d322d0a9d9479dbd473eae239c43707ac2c77a77
+ms.openlocfilehash: f038293b48956ac89314e426df3f5dc491954df3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2020
-ms.locfileid: "79140777"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80064219"
 ---
 # <a name="execute-r-script"></a>Wykonywanie skryptu języka R
 
-W tym artykule opisano, jak używać modułu **skryptu języka r** do uruchamiania kodu języka r w potoku programu Azure Machine Learning Designer (wersja zapoznawcza).
+W tym artykule opisano, jak używać modułu **Wykonywanie skryptu języka R** do uruchamiania kodu języka R w potoku projektanta usługi Azure Machine Learning (w wersji zapoznawczej).
 
-Za pomocą języka R można wykonywać zadania, które nie są obecnie obsługiwane przez istniejące moduły, takie jak: 
-- Tworzenie niestandardowych transformacji danych
-- Używanie własnych metryk do szacowania prognoz
-- Tworzenie modeli przy użyciu algorytmów, które nie są zaimplementowane jako moduły autonomiczne w projektancie
+Za pomocą r można wykonywać zadania, które nie są obecnie obsługiwane przez istniejące moduły, takie jak: 
+- Tworzenie niestandardowych przekształceń danych
+- Użyj własnych wskaźników do oceny prognoz
+- Tworzenie modeli przy użyciu algorytmów, które nie są implementowane jako autonomiczne moduły w projektancie
 
-## <a name="r-version-support"></a>Obsługa wersji języka R
+## <a name="r-version-support"></a>Obsługa wersji R
 
-Program Azure Machine Learning Designer używa dystrybucji CRAN (kompleksowa sieć R archiwum) języka R. Obecnie używana wersja to CRAN 3.5.1.
+Projektant usługi Azure Machine Learning używa dystrybucji języka R (Comprehensive R Archive Network) w usłudze Cran (Comprehensive R Archive Network). Obecnie używana wersja to CRAN 3.5.1.
 
 ## <a name="supported-r-packages"></a>Obsługiwane pakiety języka R
 
-Środowisko języka R jest wstępnie instalowane z ponad 100 pakietów. Aby uzyskać pełną listę, zapoznaj się z sekcją [wstępnie zainstalowanych pakietów języka R](#pre-installed-r-packages).
+Środowisko R jest wstępnie zainstalowane z ponad 100 pakietami. Aby uzyskać pełną listę, zobacz sekcję [Wstępnie zainstalowane pakiety R](#pre-installed-r-packages).
 
-Możesz również dodać następujący kod do dowolnego modułu **skryptu języka R** i zobaczyć zainstalowane pakiety.
+Można również dodać następujący kod do dowolnego **modułu Wykonywanie skryptu R** i wyświetlić zainstalowane pakiety.
 
 ```R
 azureml_main <- function(dataframe1, dataframe2){
@@ -43,10 +43,10 @@ azureml_main <- function(dataframe1, dataframe2){
 }
 ```
 
-## <a name="installing-r-packages"></a>Instalowanie pakietów języka R
-Aby zainstalować dodatkowe pakiety języka R, użyj metody `install.packages()`. Pamiętaj, aby określić repozytorium CRAN. Pakiety są instalowane dla każdego modułu **wykonywania skryptu języka r** i nie są współużytkowane przez inne moduły **wykonywania skryptów języka r** .
+## <a name="installing-r-packages"></a>Instalowanie pakietów R
+Aby zainstalować dodatkowe pakiety `install.packages()` R, należy użyć metody. Pamiętaj, aby określić repozytorium CRAN. Pakiety są instalowane dla każdego **modułu skryptu wykonywanie języka R** i nie są współużytkowane przez inne moduły **skryptu wykonywanie języka R.**
 
-Ten przykład pokazuje, jak zainstalować system ZOO:
+W tym przykładzie pokazano, jak zainstalować Zoo:
 ```R
 # R version: 3.5.1
 # The script MUST contain a function named azureml_main
@@ -65,12 +65,12 @@ azureml_main <- function(dataframe1, dataframe2){
 }
 ```
  > [!NOTE]
-  > Sprawdź, czy pakiet już istnieje przed zainstalowaniem go, aby uniknąć powtarzania instalacji. Jak `  if(!require(zoo)) install.packages("zoo",repos = "http://cran.us.r-project.org")` w powyższym przykładowym kodzie. Powtórzenie instalacji może spowodować przekroczenie limitu czasu żądania usługi sieci Web.     
+  > Sprawdź, czy pakiet już istnieje przed zainstalowaniem go, aby uniknąć ponownej instalacji. Podobnie `  if(!require(zoo)) install.packages("zoo",repos = "http://cran.us.r-project.org")` jak w powyższym przykładowym kodzie. Ponowna instalacja może spowodować przesunienie limitu czasu żądania usługi sieci web.     
 
 ## <a name="upload-files"></a>Przekazywanie plików
-**Skrypt Execute języka r** obsługuje przekazywanie plików przy użyciu Azure Machine Learning języka r SDK.
+**Skrypt Wykonywanie języka R** obsługuje przekazywanie plików przy użyciu narzędzia Azure Machine Learning RDK.
 
-Poniższy przykład pokazuje, jak przekazać plik obrazu w **skrypcie Execute języka R**:
+W poniższym przykładzie pokazano, jak przekazać plik obrazu w **skrypcie Wykonywanie języka R:**
 ```R
 
 # R version: 3.5.1
@@ -97,34 +97,34 @@ azureml_main <- function(dataframe1, dataframe2){
 }
 ```
 
-Po pomyślnym przesłaniu potoku można wyświetlić podgląd obrazu w prawym panelu modułu
+Po zakończeniu przebiegu potoku można wyświetlić podgląd obrazu w prawym panelu modułu
 
-[!div class="mx-imgBorder"]
-![przekazane —](media/module/upload-image-in-r-script.png) obrazu
+> [!div class="mx-imgBorder"]
+> ![Przesłany obraz](media/module/upload-image-in-r-script.png)
 
-## <a name="how-to-configure-execute-r-script"></a>Jak skonfigurować skrypt wykonywania skryptu języka R
+## <a name="how-to-configure-execute-r-script"></a>Jak skonfigurować skrypt wykonywania języka R
 
-Moduł **wykonywania skryptu języka R** zawiera przykładowy kod, którego można użyć jako punktu wyjścia. Aby skonfigurować moduł **wykonywania skryptu języka R** , podaj zestaw wejść i kod do wykonania.
+Moduł **Wykonaj skrypt R** zawiera przykładowy kod, którego można użyć jako punktu wyjścia. Aby skonfigurować moduł **Wykonywanie skryptu R,** podaj zestaw danych wejściowych i kodu do wykonania.
 
-![R-module](media/module/execute-r-script.png)
+![Moduł R](media/module/execute-r-script.png)
 
-Zestawy danych przechowywane w projektancie są automatycznie konwertowane na ramkę z danymi języka R po załadowaniu tego modułu.
+Zestawy danych przechowywane w projektancie są automatycznie konwertowane na ramkę danych R po załadowaniu z tym modułem.
 
-1.  Dodaj moduł **wykonywania skryptu języka R** do potoku.
+1.  Dodaj moduł **Wykonaj skrypt R** do potoku.
 
   
 
-1. Połącz wszystkie dane wejściowe, które są potrzebne przez skrypt. Wejścia są opcjonalne i mogą zawierać dane oraz dodatkowy kod R.
+1. Połącz wszystkie dane wejściowe wymagane przez skrypt. Dane wejściowe są opcjonalne i mogą zawierać dane i dodatkowy kod R.
 
-    * **Pozycję DataSet1**: odwołuje się do pierwszego danych wejściowych jako `dataframe1`. Wejściowy zestaw danych musi być sformatowany jako CSV, TSV, ARFF lub połączony z zestawem danych Azure Machine Learning.
+    * **Zestaw danych1**: Odwołanie `dataframe1`się do pierwszego wejścia jako . Wejściowy zestaw danych musi być sformatowany jako zestaw DANYCH CSV, TSV, ARFF lub można połączyć zestaw danych usługi Azure Machine Learning.
 
-    * **Dataset2**: odwołuje się do drugiego danych wejściowych jako `dataframe2`. Ten zestaw danych musi być również sformatowany jako plik CSV, TSV, ARFF lub jako zestaw danych Azure Machine Learning.
+    * **Zestaw danych2**: Odwołanie `dataframe2`się do drugiego wejścia jako . Ten zestaw danych musi być również sformatowany jako plik CSV, TSV, ARFF lub jako zestaw danych usługi Azure Machine Learning.
 
-    * **Pakiet skryptu**: trzecia wejściowa akceptuje pliki zip. Spakowany plik może zawierać wiele plików i wiele typów plików.
+    * **Pakiet skryptów:** Trzecie dane wejściowe akceptują pliki ZIP. Spakowany plik może zawierać wiele plików i wiele typów plików.
 
-1. W polu tekstowym **skrypt języka r** wpisz lub wklej prawidłowy skrypt języka r.
+1. W polu tekstowym **skryptu R** wpisz lub wklej prawidłowy skrypt R.
 
-    Aby ułatwić rozpoczęcie pracy, pole tekstowe **skryptu języka R** jest wstępnie wypełnione z przykładowym kodem, który można edytować lub zamienić.
+    Aby ułatwić rozpoczęcie pracy, pole tekstowe **Skrypt R** jest wstępnie wypełnione przykładowym kodem, który można edytować lub zastąpić.
     
     ```R
     # R version: 3.5.1
@@ -146,50 +146,50 @@ Zestawy danych przechowywane w projektancie są automatycznie konwertowane na ra
     }
     ```
 
- * Skrypt musi zawierać funkcję o nazwie `azureml_main`, która jest punktem wejścia dla tego modułu.
+ * Skrypt musi zawierać funkcję `azureml_main`o nazwie , która jest punktem wejścia dla tego modułu.
 
- * Funkcja punktu wejścia może zawierać maksymalnie dwa argumenty wejściowe: `Param<dataframe1>` i `Param<dataframe2>`
+ * Funkcja punktu wejścia może zawierać maksymalnie `Param<dataframe1>` dwa argumenty wejściowe:`Param<dataframe2>`
  
    > [!NOTE]
-    > Dane przesłane do modułu **wykonywania skryptu języka R** są przywoływane jako `dataframe1` i `dataframe2`, które różnią się od projektanta Azure Machine Learning (odwołanie projektanta jako `dataset1`, `dataset2`). Upewnij się, że dane wejściowe są poprawnie referneced w skrypcie.  
+    > Dane przekazywane do modułu **Wykonywanie skryptu R** są odwoływane jako `dataframe1` i `dataframe2`, który `dataset1` `dataset2`różni się od projektanta usługi Azure Machine Learning (odwołanie projektanta jako , ). Sprawdź, czy dane wejściowe są poprawnie odnajdowane w skrypcie.  
  
     > [!NOTE]
-    >  Istniejący kod R może potrzebować drobnych zmian do uruchomienia w potoku projektanta. Na przykład dane wejściowe, które podano w formacie CSV, powinny być jawnie konwertowane na zestaw danych, zanim będzie można używać go w kodzie. Typy danych i kolumn używane w języku R również różnią się w zależności od typu danych i kolumn używanych w projektancie.
+    >  Istniejący kod R może wymagać drobnych zmian do uruchomienia w potoku projektanta. Na przykład dane wejściowe podane w formacie CSV powinny być jawnie konwertowane na zestaw danych, zanim będzie można go użyć w kodzie. Typy danych i kolumn używane w języku Języka Języka R również różnią się pod pewnymi względami od typów danych i kolumn używanych w projektancie.
 
-1.  **Losowy inicjator**: wpisz wartość, która ma być używana w środowisku języka R jako wartość losowego inicjatora. Ten parametr jest równoznaczny z wywołaniem `set.seed(value)` w kodzie R.  
+1.  **Losowy materiał siewny:** Wpisz wartość do użycia w środowisku R jako losową wartość materiału siewnego. Ten parametr jest `set.seed(value)` odpowiednikiem wywołania w kodzie R.  
 
-1. Uruchamianie potoku.  
+1. Prześlij potok.  
 
 ## <a name="results"></a>Wyniki
 
-Moduły **Execute skryptu języka R** mogą zwracać wiele danych wyjściowych, ale muszą one być podane jako ramki z danymi języka r. Ramki danych są automatycznie konwertowane na zestawy DataSet w projektancie w celu zapewnienia zgodności z innymi modułami.
+Moduły **Skryptu wykonywania języka R** mogą zwracać wiele wyjść, ale muszą być dostarczane jako ramki danych języka R. Ramki danych są automatycznie konwertowane na zestawy danych w projektancie w celu zapewnienia zgodności z innymi modułami.
 
-Standardowe komunikaty i błędy w języku R są zwracane do dziennika modułu.
+Standardowe komunikaty i błędy z R są zwracane do dziennika modułu.
 
-Jeśli chcesz wydrukować wyniki w skrypcie języka R, możesz znaleźć wyniki wydrukowane w **70_driver_log** na karcie dane **wyjściowe i dzienniki** na prawym panelu modułu.
+Jeśli chcesz wydrukować wyniki w skrypcie R, Można znaleźć wydrukowane wyniki w **70_driver_log** w obszarze **Wyjścia + dzienniki** kartę w prawym panelu modułu.
 
 ## <a name="sample-scripts"></a>Przykładowe skrypty
 
-Istnieje wiele sposobów na rozbudowanie potoku za pomocą niestandardowego skryptu języka R.  Ta sekcja zawiera przykładowy kod dla typowych zadań.
+Istnieje wiele sposobów, które można rozszerzyć potoku przy użyciu niestandardowego skryptu Języka R.  Ta sekcja zawiera przykładowy kod dla typowych zadań.
 
 
-### <a name="add-r-script-as-an-input"></a>Dodaj skrypt języka R jako dane wejściowe
+### <a name="add-r-script-as-an-input"></a>Dodawanie skryptu R jako danych wejściowych
 
-Moduł **wykonywania skryptu języka r** obsługuje dowolne pliki skryptów języka r jako dane wejściowe. W tym celu należy przekazać je do obszaru roboczego jako część pliku ZIP.
+Moduł **Execute R Script** obsługuje dowolne pliki skryptów Języka R jako dane wejściowe. Aby to zrobić, należy je przekazać do obszaru roboczego jako część pliku ZIP.
 
-1. Aby przekazać plik ZIP zawierający kod R do obszaru roboczego, przejdź do strony zasobów **zestawy** danych, kliknij pozycję **Utwórz zestaw danych**, a następnie wybierz pozycję **z pliku lokalnego** i opcję **Typ zestawu danych** .  
+1. Aby przekazać plik ZIP zawierający kod R do obszaru roboczego, przejdź do strony zasobów **Zestawów danych,** kliknij pozycję **Utwórz zestaw danych**, a następnie wybierz opcję **Z pliku lokalnego** i opcję Typ zestawu danych **Plik.**  
 
-1. Sprawdź, czy spakowany plik jest dostępny na liście **Moje zestawy danych** w obszarze Kategorie **zestawy danych** w lewym drzewie modułu.
+1. Sprawdź, czy spakowany plik jest dostępny na liście **Moje zestawy danych** w obszarze Zestawy **danych** w drzewie lewego modułu.
 
-1.  Połącz zestaw danych z portem wejściowym **pakietu skryptu** .
+1.  Podłącz zestaw danych do portu wejściowego **pakietu skryptów.**
 
-1. Wszystkie pliki znajdujące się w pliku ZIP są dostępne podczas wykonywania potoku. 
+1. Wszystkie pliki, które są zawarte w pliku ZIP są dostępne w czasie wykonywania potoku. 
 
-    Jeśli plik pakietu skryptu zawierał strukturę katalogów, struktura jest zachowywana. Należy jednak zmienić kod, aby dołączyć do niego pakiet Directory **./Script** .
+    Jeśli plik pakietu skryptów zawierał strukturę katalogów, struktura jest zachowywana. Należy jednak zmienić kod, aby dołączyć katalog **./Script Bundle** do ścieżki.
 
 ### <a name="process-data"></a>Przetwarzanie danych
 
-Poniższy przykład pokazuje, jak skalować i znormalizować dane wejściowe:
+W poniższym przykładzie pokazano, jak skalować i normalizować dane wejściowe:
 
 ```R
 # R version: 3.5.1
@@ -218,15 +218,15 @@ azureml_main <- function(dataframe1, dataframe2){
 }
  ```
 
-### <a name="read-a-zip-file-as-input"></a>Odczytaj plik ZIP jako dane wejściowe
+### <a name="read-a-zip-file-as-input"></a>Odczytywanie pliku ZIP jako danych wejściowych
 
-Ten przykład pokazuje, jak używać zestawu danych w pliku ZIP jako dane wejściowe do modułu **wykonywania skryptu języka R** .
+W tym przykładzie pokazano, jak używać zestawu danych w pliku ZIP jako dane wejściowe do modułu **Wykonywanie skryptu R.**
 
-1. Utwórz plik danych w formacie CSV, a następnie nadaj mu nazwę "plik. csv".
-1. Utwórz plik ZIP i Dodaj plik CSV do archiwum.
-1. Przekaż spakowany plik do obszaru roboczego Azure Machine Learning. 
-1. Połącz zestaw danych z danymi wejściowymi z **ScriptBundleem** **wykonywania modułu skryptu języka R** .
-1. Użycie poniższego kodu w celu odczytania danych CSV z pliku spakowanego.
+1. Utwórz plik danych w formacie CSV i nazwij go "mydatafile.csv".
+1. Utwórz plik ZIP i dodaj plik CSV do archiwum.
+1. Przekaż spakowany plik do obszaru roboczego usługi Azure Machine Learning. 
+1. Połącz wynikowy zestaw danych z wejściem **ScriptBundle** modułu **Skryptu wykonywania języka R.**
+1. Używanie następującego kodu do odczytu danych CSV z pliku spakowanym.
 
 ```R
 azureml_main <- function(dataframe1, dataframe2){
@@ -237,9 +237,9 @@ azureml_main <- function(dataframe1, dataframe2){
 }
 ```
 
-### <a name="replicate-rows"></a>Replikuj wiersze
+### <a name="replicate-rows"></a>Replikowanie wierszy
 
-Ten przykład pokazuje, jak replikować rekordy pozytywne w zestawie danych, aby zrównoważyć przykład:
+W tym przykładzie pokazano, jak replikować rekordy dodatnie w zestawie danych, aby zrównoważyć próbkę:
 
 ```R
 azureml_main <- function(dataframe1, dataframe2){
@@ -254,11 +254,11 @@ azureml_main <- function(dataframe1, dataframe2){
 }
 ```
 
-### <a name="pass-r-objects-between-execute-r-script-modules"></a>Przekazywanie obiektów R między modułami wykonywania skryptu języka R
+### <a name="pass-r-objects-between-execute-r-script-modules"></a>Przekazywanie obiektów R między modułami skryptu Wykonywanie języka R
 
-Można przekazać obiekty R między wystąpieniami modułu **wykonywania skryptu języka r** przy użyciu wewnętrznego mechanizmu serializacji. W tym przykładzie przyjęto założenie, że chcesz przenieść obiekt R o nazwie `A` między dwoma modułami **wykonywania skryptu języka r** .
+Obiekty języka R można przekazać między wystąpieniami modułu **Wykonywanie skryptu R** przy użyciu wewnętrznego mechanizmu serializacji. W tym przykładzie przyjęto założenie, `A` że chcesz przenieść R obiektu o nazwie między dwoma **wykonać skrypt R** modułów.
 
-1. Dodaj do potoku pierwszy moduł **skryptu wykonania R** , a następnie wpisz następujący kod w polu tekstowym **skryptu języka r** , aby utworzyć serializowany obiekt `A` jako kolumnę w tabeli danych wyjściowych modułu:  
+1. Dodaj pierwszy moduł **Wykonaj skrypt R** do potoku i wpisz następujący kod w polu tekstowym Skrypt **R,** aby utworzyć obiekt `A` szeregowy jako kolumnę w wyjściowej tabeli danych modułu:  
   
     ```R
     azureml_main <- function(dataframe1, dataframe2){
@@ -272,11 +272,11 @@ Można przekazać obiekty R między wystąpieniami modułu **wykonywania skryptu
     }
     ```
 
-    Jawna konwersja na typ Integer jest wykonywana, ponieważ funkcja serializacji wyprowadza dane w formacie R `Raw`, który nie jest obsługiwany przez projektanta.
+    Jawna konwersja do typu liczby całkowitej odbywa się, ponieważ `Raw` funkcja serializacji wyprowadza dane w formacie R, który nie jest obsługiwany przez projektanta.
 
-1. Dodaj drugie wystąpienie modułu **wykonywania skryptu języka R** i połącz je z portem wyjściowym poprzedniego modułu.
+1. Dodaj drugie wystąpienie modułu **Wykonaj skrypt R** i podłącz go do portu wyjściowego poprzedniego modułu.
 
-1. Wpisz następujący kod w polu tekstowym **skryptu języka R** , aby wyodrębnić `A` obiektów z tabeli danych wejściowych. 
+1. Wpisz następujący kod w polu tekstowym `A` **Skrypt R,** aby wyodrębnić obiekt z wejściowej tabeli danych. 
 
     ```R
     azureml_main <- function(dataframe1, dataframe2){
@@ -287,9 +287,9 @@ Można przekazać obiekty R między wystąpieniami modułu **wykonywania skryptu
     }
     ```
 
-## <a name="pre-installed-r-packages"></a>Wstępnie zainstalowane pakiety języka R
+## <a name="pre-installed-r-packages"></a>Wstępnie zainstalowane pakiety R
 
-Bieżąca lista wstępnie zainstalowanych pakietów języka R dostępnych do użycia:
+Aktualna lista wstępnie zainstalowanych pakietów R dostępnych do użycia:
 
 |              |            | 
 |--------------|------------| 
@@ -297,146 +297,146 @@ Bieżąca lista wstępnie zainstalowanych pakietów języka R dostępnych do uż
 | askpass      | 1.1        | 
 | assertthat   | 0.2.1      | 
 | backports    | 1.1.4      | 
-| opiera         | 3.5.1      | 
-| base64enc    | 0,1 – 3      | 
+| base         | 3.5.1      | 
+| base64enc    | 0.1-3      | 
 | BH           | 1.69.0-1   | 
-| powiązanie        | 0.1.1      | 
+| bindr        | 0.1.1      | 
 | bindrcpp     | 0.2.2      | 
-| co górne       | 1.0-6      | 
-| rozruch         | 1.3 — 22     | 
+| bitops       | 1.0-6      | 
+| rozruch         | 1.3-22     | 
 | broom        | 0.5.2      | 
-| wywołujący        | 3.2.0      | 
-| użyciu        | 6.0 — 84     | 
+| callr        | 3.2.0      | 
+| caret        | 6.0-84     | 
 | caTools      | 1.17.1.2   | 
 | cellranger   | 1.1.0      | 
-| Klasa        | 7.3-15     | 
-| Interfejs          | 1.1.0      | 
-| Program Cliper        | 0.6.0      | 
-| hosta      | 2.0.7-1    | 
-| codetools    | 0,2 – 16     | 
+| class        | 7.3-15     | 
+| interfejs wiersza polecenia          | 1.1.0      | 
+| suwnik        | 0.6.0      | 
+| cluster      | 2.0.7-1    | 
+| codetools    | 0.2-16     | 
 | colorspace   | 1.4-1      | 
-| Compiler     | 3.5.1      | 
+|  — kompilator     | 3.5.1      | 
 | crayon       | 1.3.4      | 
-| Odsłon         | 3.3        | 
-| Data. Table   | 1.12.2     | 
-| zbiory danych     | 3.5.1      | 
+| curl         | 3.3        | 
+| data.table   | 1.12.2     | 
+| zestawy danych     | 3.5.1      | 
 | DBI          | 1.0.0      | 
 | dbplyr       | 1.4.1      | 
 | digest       | 0.6.19     | 
 | dplyr        | 0.7.6      | 
 | e1071        | 1.7-2      | 
-| evaluate     | 0,14       | 
+| evaluate     | 0.14       | 
 | fansi        | 0.4.0      | 
 | forcats      | 0.3.0      | 
 | foreach      | 1.4.4      | 
-| obcy      | 0,8-71     | 
-| systemu           | 1.3.1      | 
+| foreign      | 0.8-71     | 
+| Fs           | 1.3.1      | 
 | gdata        | 2.18.0     | 
-| typy ogólne     | 0.0.2      | 
+| Generyczne     | 0.0.2      | 
 | ggplot2      | 3.2.0      | 
-| glmnet       | 2.0 – 18     | 
-| Glue         | 1.3.1      | 
+| glmnet       | 2.0-18     | 
+| glue         | 1.3.1      | 
 | gower        | 0.2.1      | 
 | gplots       | 3.0.1.1    | 
 | grafika     | 3.5.1      | 
 | grDevices    | 3.5.1      | 
-| siatka         | 3.5.1      | 
+| grid         | 3.5.1      | 
 | gtable       | 0.3.0      | 
 | gtools       | 3.8.1      | 
 | haven        | 2.1.0      | 
-| duża        | 0,8        | 
+| highr        | 0,8        | 
 | hms          | 0.4.2      | 
 | htmltools    | 0.3.6      | 
 | httr         | 1.4.0      | 
 | ipred        | 0.9-9      | 
-| iteratory    | 1.0.10     | 
+| iterators    | 1.0.10     | 
 | jsonlite     | 1.6        | 
-| KernSmooth   | 2.23 — 15    | 
+| KernSmooth   | 2.23-15    | 
 | knitr        | 1,23       | 
-| etykietowania     | 0,3        | 
-| kratowych      | 0,20-38    | 
+| labeling     | 0.3        | 
+| lattice      | 0.20-38    | 
 | lava         | 1.6.5      | 
 | lazyeval     | 0.2.2      | 
 | lubridate    | 1.7.4      | 
 | magrittr     | 1.5        | 
-| promocji     | 1          | 
-| MASOWA         | 7.3 — 51.4   | 
-| Matrix       | 1.2 – 17     | 
-| metody      | 3.5.1      | 
-| mgcv         | 1.8 — 28     | 
-| MIME         | 0,7        | 
+| markdown     | 1          | 
+| MASS         | 7.3-51.4   | 
+| Matrix       | 1.2-17     | 
+| methods      | 3.5.1      | 
+| mgcv         | 1.8-28     | 
+| mime         | 0.7        | 
 | ModelMetrics | 1.2.2      | 
-| Modeler       | 0.1.4      | 
+| modelr       | 0.1.4      | 
 | munsell      | 0.5.0      | 
-| nlme         | 3.1 – 140    | 
-| nnet         | 7.3 — 12     | 
-| numDeriv     | 2016.8 — 1.1 | 
-| OpenSSL      | 1.4        | 
+| nlme         | 3.1-140    | 
+| nnet         | 7.3-12     | 
+| numDeriv     | 2016.8-1.1 | 
+| openssl      | 1.4        | 
 | parallel     | 3.5.1      | 
-| słup       | 1.4.1      | 
+| pillar       | 1.4.1      | 
 | pkgconfig    | 2.0.2      | 
 | plogr        | 0.2.0      | 
 | plyr         | 1.8.4      | 
 | prettyunits  | 1.0.2      | 
 | processx     | 3.3.1      | 
 | prodlim      | 2018.04.18 | 
-| postęp     | 1.2.2      | 
-| iloczyn           | 1.3.0      | 
+| progress     | 1.2.2      | 
+| Ps           | 1.3.0      | 
 | purrr        | 0.3.2      | 
-| quadprog     | 1,5 – 7      | 
-| quantmod     | 0.4 — 15     | 
+| quadprog     | 1.5-7      | 
+| quantmod     | 0.4-15     | 
 | R6           | 2.4.0      | 
-| randomForest | 4.6 — 14     | 
-| RColorBrewer | 1.1 — 2      | 
+| randomForest | 4.6-14     | 
+| RColorBrewer | 1.1-2      | 
 | Rcpp         | 1.0.1      | 
 | RcppRoll     | 0.3.0      | 
-| element odczytujący        | 1.3.1      | 
+| readr        | 1.3.1      | 
 | readxl       | 1.3.1      | 
-| przepisami      | 0.1.5      | 
-| dopasowanie      | 1.0.1      | 
+| recipes      | 0.1.5      | 
+| rematch      | 1.0.1      | 
 | reprex       | 0.3.0      | 
 | reshape2     | 1.4.3      | 
-| reticulate   | 1,12       | 
+| reticulate   | 1.12       | 
 | rlang        | 0.4.0      | 
-| rmarkdown    | 1,13       | 
-| ROCR         | 1.0 — 7      | 
+| rmarkdown    | 1.13       | 
+| ROCR         | 1.0-7      | 
 | rpart        | 4.1-15     | 
 | rstudioapi   | 0.1        | 
 | rvest        | 0.3.4      | 
-| skalowany       | 1.0.0      | 
-| Selektor      | 0.4-1      | 
-| przestrzennych      | 7.3 — 11     | 
-| krzywe      | 3.5.1      | 
+| scales       | 1.0.0      | 
+| selectr      | 0.4-1      | 
+| spatial      | 7.3-11     | 
+| splines      | 3.5.1      | 
 | SQUAREM      | 2017.10-1  | 
-| Statystyki        | 3.5.1      | 
+| stats        | 3.5.1      | 
 | stats4       | 3.5.1      | 
 | stringi      | 1.4.3      | 
-| ciąg tekstowy      | 1.3.1      | 
-| ratownicz     | 2.44 — 1.1   | 
-| widoku          | 3,2        | 
+| stringr      | 1.3.1      | 
+| survival     | 2.44-1.1   | 
+| sys          | 3,2        | 
 | tcltk        | 3.5.1      | 
 | tibble       | 2.1.3      | 
 | tidyr        | 0.8.3      | 
 | tidyselect   | 0.2.5      | 
 | tidyverse    | 1.2.1      | 
-| timeDate     | 3043,102   | 
-| tinytex      | 0,13       | 
+| timeDate     | 3043.102   | 
+| tinytex ( tinytex )      | 0.13       | 
 | narzędzia        | 3.5.1      | 
 | tseries      | 0.10-47    | 
-| REMEDIATE          | 0.23-4     | 
-| kodowania         | 1.1.4      | 
-| uaktualniania        | 3.5.1      | 
+| TTR          | 0.23-4     | 
+| utf8         | 1.1.4      | 
+| utils        | 3.5.1      | 
 | vctrs        | 0.1.0      | 
 | viridisLite  | 0.3.0      | 
-| whisker      | 0,3-2      | 
-| z usługą        | 2.1.2      | 
-| xfun         | 0,8        | 
+| whisker      | 0.3-2      | 
+| withr        | 2.1.2      | 
+| xfun (1000         | 0,8        | 
 | xml2         | 1.2.0      | 
-| XTS          | 0,11-2     | 
-| YAML         | 2.2.0      | 
+| xts          | 0.11-2     | 
+| yaml         | 2.2.0      | 
 | zeallot      | 0.1.0      | 
-| Zoo          | 1.8 – 6      | 
+| zoo          | 1.8-6      | 
 
 ## <a name="next-steps"></a>Następne kroki
 
-Zapoznaj się z [zestawem modułów dostępnych](module-reference.md) do Azure Machine Learning. 
+Zobacz [zestaw modułów dostępnych dla](module-reference.md) usługi Azure Machine Learning. 

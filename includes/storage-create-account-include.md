@@ -9,10 +9,10 @@ ms.date: 11/20/2018
 ms.author: tamram
 ms.custom: include file
 ms.openlocfilehash: 83d1804aaebb20439f40cc0516b03f436837855c
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "75968304"
 ---
 ## <a name="create-an-azure-storage-account"></a>Tworzenie konta usługi Azure Storage
@@ -21,5 +21,5 @@ Najprościej jest utworzyć pierwsze konto usługi Azure Storage przy użyciu wi
 
 Można również utworzyć konto usługi Azure Storage przy użyciu programu [Azure PowerShell](../articles/storage/common/storage-powershell-guide-full.md), [interfejsu wiersza polecenia Azure](../articles/storage/common/storage-azure-cli.md) lub [dostawcy zasobów usługi Azure Storage dla platformy .NET](https://azure.microsoft.com/resources/samples/storage-dotnet-resource-provider-getting-started/).
 
-Jeśli wolisz nie tworzyć konta magazynu na platformie Azure, możesz również użyć emulatora usługi Azure Storage do uruchomienia i przetestowania kodu w środowisku lokalnym. Więcej informacji można znaleźć w temacie [Use the Azure Storage Emulator for Development and Testing](../articles/storage/common/storage-use-emulator.md) (Używanie emulatora usługi Azure Storage do programowania i testowania).
+Jeśli nie chcesz tworzyć konta magazynu na platformie Azure w tej chwili, można również użyć emulatora magazynu platformy Azure do uruchamiania i testowania kodu w środowisku lokalnym. Więcej informacji można znaleźć w temacie [Use the Azure Storage Emulator for Development and Testing](../articles/storage/common/storage-use-emulator.md) (Używanie emulatora usługi Azure Storage do programowania i testowania).
 

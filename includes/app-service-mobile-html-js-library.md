@@ -5,20 +5,20 @@ ms.topic: include
 ms.date: 08/23/2018
 ms.author: crdun
 ms.openlocfilehash: ff7ba04271c150018f2c55b62e40542a686608cf
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67183741"
 ---
-## <a name="create-client"></a>Tworzenie połączenia klienta
+## <a name="create-a-client-connection"></a><a name="create-client"></a>Tworzenie połączenia klienta
 Utwórz połączenie klienta, tworząc obiekt `WindowsAzure.MobileServiceClient`.  Zastąp ciąg `appUrl` adresem URL Twojej aplikacji Mobile App.
 
 ```javascript
 var client = WindowsAzure.MobileServiceClient(appUrl);
 ```
 
-## <a name="table-reference"></a>Praca z tabelami
+## <a name="work-with-tables"></a><a name="table-reference"></a>Praca z tabelami
 Aby uzyskać dostęp do danych lub je zaktualizować, utwórz odwołanie do tabeli zaplecza. Zastąp ciąg `tableName` nazwą tabeli
 
 ```javascript
@@ -35,7 +35,7 @@ Po utworzeniu odwołania do tabeli możesz kontynuować pracę z tabelą:
 * [Modyfikowanie danych](#modifying)
 * [Usuwanie danych](#deleting)
 
-### <a name="querying"></a>Jak: Odpytywanie odwołania do tabeli
+### <a name="how-to-query-a-table-reference"></a><a name="querying"></a>Instrukcje: odpytywanie odwołania do tabeli
 Po utworzeniu odwołania do tabeli możesz przy jego użyciu wysłać zapytanie o dane na serwerze.  Zapytania są tworzone w języku przypominającym LINQ.
 Aby zwrócić wszystkie dane z tabeli, użyj następującego kodu:
 
@@ -69,7 +69,7 @@ Funkcja success jest wywoływana z użyciem wyników.  Nie umieszczaj w funkcji 
 
 Aby dowiedzieć się więcej o składni zapytań, zobacz [dokumentację obiektu Query].
 
-#### <a name="table-filter"></a>Filtrowanie danych na serwerze
+#### <a name="filtering-data-on-the-server"></a><a name="table-filter"></a>Filtrowanie danych na serwerze
 W przypadku odwołania do tabeli możesz użyć klauzuli `where`:
 
 ```javascript
@@ -92,7 +92,7 @@ table
     .then(success, failure);
 ```
 
-#### <a name="table-paging"></a>Stronicowanie danych
+#### <a name="paging-through-data"></a><a name="table-paging"></a>Stronicowanie danych
 Skorzystaj z metod `take()` i `skip()`.  Na przykład jeśli chcesz podzielić tabelę na rekordy składające się ze 100 wierszy:
 
 ```javascript
@@ -120,7 +120,7 @@ Metoda `.includeTotalCount()` powoduje dodanie pola totalCount do obiektu result
 
 Następnie możesz udostępnić listę stron za pomocą zmiennej pages i przycisków interfejsu użytkownika. Aby załadować nowe rekordy na każdą stronę, użyj metody `loadPage()`.  Zaimplementuj buforowanie, aby przyspieszyć dostęp do już załadowanych rekordów.
 
-#### <a name="sorting-data"></a>Jak: Zwróć posortowane dane
+#### <a name="how-to-return-sorted-data"></a><a name="sorting-data"></a>Instrukcje: zwracanie posortowanych danych
 Użyj metody zapytania `.orderBy()` lub `.orderByDescending()`:
 
 ```javascript
@@ -132,7 +132,7 @@ table
 
 Aby uzyskać informacje o obiekcie Query, zobacz [dokumentację obiektu Query].
 
-### <a name="inserting"></a>Jak: Wstawianie danych
+### <a name="how-to-insert-data"></a><a name="inserting"></a>Instrukcje: wstawianie danych
 Utwórz obiekt JavaScript z odpowiednimi danymi i asynchronicznie wywołaj metodę `table.insert()`:
 
 ```javascript
@@ -152,7 +152,7 @@ Pomyślnie wstawiony element zostaje zwrócony z dodatkowymi polami, które są 
 
 Zestaw Azure Mobile Apps Node.js Server SDK obsługuje schemat dynamiczny dla celów deweloperskich.  Schemat dynamiczny umożliwia dodawanie kolumn do tabeli przez podanie ich w operacji wstawiania lub aktualizacji.  Zalecamy wyłączenie schematu dynamicznego przed przeniesieniem aplikacji na etap produkcji.
 
-### <a name="modifying"></a>Jak: Modyfikowanie danych
+### <a name="how-to-modify-data"></a><a name="modifying"></a>Instrukcje: modyfikowanie danych
 Podobnie jak w przypadku metody `.insert()` należy utworzyć obiekt aktualizacji, a następnie wywołać metodę `.update()`.  Obiekt aktualizacji musi zawierać identyfikator rekordu do zaktualizowania — identyfikator ten uzyskuje się podczas odczytu rekordu bądź wywoływania metody `.insert()`.
 
 ```javascript
@@ -168,7 +168,7 @@ table
     }, failure);
 ```
 
-### <a name="deleting"></a>Jak: Usuwanie danych
+### <a name="how-to-delete-data"></a><a name="deleting"></a>Instrukcje: usuwanie danych
 Aby usunąć rekord, wywołaj metodę `.del()`.  Przekaż identyfikator w odwołaniu do obiektu:
 
 ```javascript

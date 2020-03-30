@@ -1,64 +1,64 @@
 ---
-title: Common Interfaces — wersja zapoznawcza IoT Plug and Play | Microsoft Docs
-description: Opis wspólnych interfejsów dla deweloperów Plug and Play IoT
+title: Typowe interfejsy - IoT Plug and Play Preview | Dokumenty firmy Microsoft
+description: Opis wspólnych interfejsów dla deweloperów IoT Plug and Play
 author: ChrisGMsft
 ms.author: chrisgre
 ms.date: 12/26/2019
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: f697a0d6aba4f137b75faa2a200424c72aa78c3b
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: c6ac90f917b9afc37b3a39d8da679fbcad091778
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75531415"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80234704"
 ---
-# <a name="iot-plug-and-play-preview-common-interfaces"></a>Popularne interfejsy Plug and Play IoT
+# <a name="iot-plug-and-play-preview-common-interfaces"></a>IoT Plug and Play Preview — wspólne interfejsy
 
-Wszystkie urządzenia Plug and Play IoT powinny implementować niektóre typowe interfejsy. Popularne interfejsy korzystają z rozwiązań IoT, ponieważ zapewniają spójne funkcje. [Certyfikacja](tutorial-build-device-certification.md) wymaga, aby urządzenie zaimplementował kilka typowych interfejsów. Można pobrać typowe definicje interfejsów z repozytorium modelu publicznego.
+Oczekuje się, że wszystkie urządzenia IoT Plug and Play zaimplementują niektóre typowe interfejsy. Typowe interfejsy korzystają z rozwiązań IoT, ponieważ zapewniają spójne funkcje. [Certyfikacja](tutorial-build-device-certification.md) wymaga, aby urządzenie zaimplementować kilka wspólnych interfejsów. Typowe definicje interfejsu można pobrać z repozytorium modelu publicznego.
 
-## <a name="summary-of-common-interfaces"></a>Podsumowanie typowych interfejsów
+## <a name="summary-of-common-interfaces"></a>Podsumowanie wspólnych interfejsów
 
-| Nazwa | ID | Opis | Zaimplementowane przez zestaw SDK usługi Azure IoT | Musi być zadeklarowany w modelu możliwości |
+| Nazwa | ID | Opis | Zaimplementowano przez zestaw SDK usługi Azure IoT | Musi być zadeklarowany w modelu zdolności |
 | -------- | -------- | -------- | -------- | -------- | -------- |
-| Informacje o modelu | urn: azureiot: ModelDiscovery: ModelInformation: 1 | W przypadku urządzeń, które zadeklarują Identyfikator modelu możliwości i interfejsy. Wymagany dla wszystkich urządzeń Plug and Play IoT. | Tak | Nie |
-| Informacje o zestawie SDK klienta Digital bliźniaczy | urn: azureiot: Client: SDKInformation: 1 | Zestaw SDK klienta do łączenia urządzenia z platformą Azure. Wymagane na potrzeby [certyfikacji](tutorial-build-device-certification.md) | Tak | Nie |
-| Informacje o urządzeniu | urn: azureiot: DeviceManagement: DeviceInformation: 1 | Informacje o urządzeniu i systemie operacyjnym. Wymagane na potrzeby [certyfikacji](tutorial-build-device-certification.md) | Nie | Tak |
-| Definicja modelu | urn: azureiot: ModelDiscovery: ModelDefinition: 1 | W przypadku urządzeń Zadeklaruj pełną definicję dla modelu możliwości i interfejsów. Musi być zaimplementowany, gdy definicje modeli nie są hostowane w repozytorium modelu. | Nie | Tak |
-| Cyfrowe sznurki | urn: azureiot: ModelDiscovery: DigitalTwin: 1 | Aby deweloperzy rozwiązań mogli pobrać identyfikator modelu możliwości i identyfikatory interfejsów dla dwucyfrowego sznurka. Ten interfejs nie jest zadeklarowany ani zaimplementowany przez urządzenie Plug and Play IoT. | Nie | Nie |
+| Informacje o modelu | urn:azureiot:ModelWykrywanie:ModelInformacja:1 | Dla urządzeń, aby zadeklarować identyfikator modelu możliwości i interfejsów. Wymagane dla wszystkich urządzeń IoT Plug and Play. | Tak | Nie |
+| Informacje o sdku cyfrowego klienta bliźniaczego | urn:azureiot:Klient:SDKInformacja:1 | Zestaw SDK klienta do łączenia urządzenia z platformą Azure. Wymagane do [certyfikacji](tutorial-build-device-certification.md) | Tak | Nie |
+| Informacje o urządzeniu | urn:azureiot:DeviceManagement:DeviceInformation:1 | Informacje o sprzęcie i systemie operacyjnym o urządzeniu. Wymagane do [certyfikacji](tutorial-build-device-certification.md) | Nie | Tak |
+| Definicja modelu | urn:azureiot:ModelDiscovery:ModelDefinition:1 | Dla urządzeń, aby zadeklarować pełną definicję jego modelu możliwości i interfejsów. Należy zaimplementować, gdy definicje modelu nie są hostowane w repozytorium modelu. | Nie | Tak |
+| Cyfrowa bliźniacza reprezentacja | urn:azureiot:ModelDiscovery:DigitalTwin:1 | Dla deweloperów rozwiązań, aby pobrać identyfikator modelu możliwości i identyfikatory interfejsu dla cyfrowego bliźniaczego. Ten interfejs nie jest zadeklarowany ani zaimplementowany przez urządzenie Typu Plug and Play IoT. | Nie | Nie |
 
-- Zaimplementowane przez zestaw SDK usługi Azure IoT — czy zestaw SDK usługi Azure IoT implementuje możliwości zadeklarowane w interfejsach. Urządzenia Plug and Play IoT korzystające z zestawu Azure IoT SDK nie muszą implementować tego interfejsu.
-- Musi być zadeklarowany w modelu możliwości — Jeśli tak, ten interfejs musi być zadeklarowany w sekcji `"implements":` modelu możliwości urządzenia dla tego urządzenia IoT Plug and Play.
+- Implementowane przez zestaw SDK usługi Azure IoT — czy zestaw SDK usługi Azure IoT implementuje możliwości zadeklarowane w interfejsach. Urządzenia typu Plug and Play usługi IoT korzystające z zestawu Azure IoT SDK nie muszą implementować tego interfejsu.
+- Musi być zadeklarowany w modelu możliwości — jeśli "tak", `"implements":` ten interfejs musi być zadeklarowany w sekcji modelu możliwości urządzenia dla tego urządzenia IoT Plug and Play.
 
-## <a name="retrieve-interface-definitions-from-the-public-repository"></a>Pobierz definicje interfejsu z repozytorium publicznego
+## <a name="retrieve-interface-definitions-from-the-public-repository"></a>Pobieranie definicji interfejsu z publicznego repozytorium
 
-### <a name="cli"></a>Interfejs CLI
+### <a name="cli"></a>Interfejs wiersza polecenia
 
-Przy użyciu rozszerzenia Azure IoT dla interfejsu wiersza polecenia platformy Azure można pobrać typowe interfejsy z repozytorium modelu publicznego.
+Rozszerzenia IoT platformy Azure dla platformy Azure CLI można użyć do pobierania wspólnych interfejsów z repozytorium modelu publicznego.
 
-```cmd/sh
+```azurecli
 az iot pnp interface show --interface {InterfaceID}
 ```
 
-```cmd/sh
+```azurecli
 az iot pnp capability-model show --model {ModelID}
 ```
 
 ### <a name="vs-code"></a>VS Code
 
-1. **Naciśnij klawisze Ctrl + Shift + P** , aby otworzyć paletę poleceń.
+1. Użyj **klawiszy Ctrl+Shift+P,** aby otworzyć paletę poleceń.
 
-1. Wprowadź **Plug and Play** a następnie wybierz polecenie **IoT Plug and Play: Open model Repository** . Wybierz pozycję **repozytorium publiczne**. Repozytorium modelu publicznego zostanie otwarte w VS Code.
+1. Wprowadź **pozycję Plug and Play,** a następnie wybierz polecenie **IoT Plug and Play: Otwórz repozytorium modelu.** Wybierz **pozycję Repozytorium publiczne**. Publiczne repozytorium modelu otwiera się w programie VS Code.
 
 1. W repozytorium modelu publicznego wprowadź nazwę interfejsu w polu wyszukiwania.
 
-1. Aby utworzyć lokalną kopię interfejsu, wybierz ją w wynikach wyszukiwania, a następnie wybierz pozycję **Pobierz**.
+1. Aby utworzyć lokalną kopię interfejsu, zaznacz ją w wynikach wyszukiwania, a następnie wybierz pozycję **Pobierz**.
 
 ## <a name="next-steps"></a>Następne kroki
 
-Teraz, gdy znasz już typowe interfejsy, Oto kilka dodatkowych zasobów:
+Teraz, gdy dowiedziałeś się o wspólnych interfejsach, oto kilka dodatkowych zasobów:
 
-- [Język definicji Digital bliźniaczy (DTDL)](https://aka.ms/DTDL)
+- [Cyfrowy język podwójnej definicji (DTDL)](https://aka.ms/DTDL)
 - [Zestaw SDK urządzenia dla języka C](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/)
-- [Interfejs API REST usługi IoT](https://docs.microsoft.com/rest/api/iothub/device)
+- [IoT REST API](https://docs.microsoft.com/rest/api/iothub/device)

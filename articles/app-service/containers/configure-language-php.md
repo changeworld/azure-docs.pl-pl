@@ -1,68 +1,68 @@
 ---
 title: Konfigurowanie aplikacji PHP
-description: Dowiedz się, jak skonfigurować wstępnie zbudowany kontener PHP dla swojej aplikacji. W tym artykule przedstawiono najczęstsze zadania konfiguracyjne.
+description: Dowiedz się, jak skonfigurować wstępnie utworzony kontener PHP dla aplikacji. W tym artykule przedstawiono najczęstsze zadania konfiguracyjne.
 ms.devlang: php
 ms.topic: article
 ms.date: 03/28/2019
 ms.openlocfilehash: ad121d605e521704597471b446fa79cb43dfccc7
-ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78255849"
 ---
-# <a name="configure-a-linux-php-app-for-azure-app-service"></a>Konfigurowanie aplikacji PHP w systemie Linux dla Azure App Service
+# <a name="configure-a-linux-php-app-for-azure-app-service"></a>Konfigurowanie aplikacji PHP systemu Linux dla usługi Azure App Service
 
-W tym przewodniku pokazano, jak skonfigurować wbudowane środowisko uruchomieniowe PHP dla aplikacji sieci Web, zaplecza mobilnego i API Apps w Azure App Service.
+W tym przewodniku pokazano, jak skonfigurować wbudowany czas pracy PHP dla aplikacji sieci web, tylnych linii mobilnych i aplikacji interfejsu API w usłudze Azure App Service.
 
-Ten przewodnik zawiera najważniejsze pojęcia i instrukcje dla deweloperów języka PHP, którzy używają wbudowanego kontenera systemu Linux w App Service. Jeśli nie korzystasz z Azure App Service, najpierw postępuj zgodnie [z samouczkiem dotyczącym](tutorial-php-mysql-app.md) języka [php](quickstart-php.md) i środowiska php z programem MySQL.
+Ten przewodnik zawiera kluczowe pojęcia i instrukcje dla programistów PHP, którzy używają wbudowanego kontenera Linuksa w usłudze App Service. Jeśli nigdy nie korzystałeś z usługi Azure App Service, wykonaj najpierw [szybki start PHP](quickstart-php.md) i [PHP za pomocą samouczka MySQL.](tutorial-php-mysql-app.md)
 
-## <a name="show-php-version"></a>Pokaż wersję języka PHP
+## <a name="show-php-version"></a>Pokaż wersję PHP
 
-Aby wyświetlić bieżącą wersję PHP, uruchom następujące polecenie w [Cloud Shell](https://shell.azure.com):
+Aby wyświetlić bieżącą wersję PHP, uruchom następujące polecenie w [przyłówku Chmury:](https://shell.azure.com)
 
 ```azurecli-interactive
 az webapp config show --resource-group <resource-group-name> --name <app-name> --query linuxFxVersion
 ```
 
-Aby wyświetlić wszystkie obsługiwane wersje języka PHP, uruchom następujące polecenie w [Cloud Shell](https://shell.azure.com):
+Aby wyświetlić wszystkie obsługiwane wersje PHP, uruchom następujące polecenie w [usłudze Cloud Shell:](https://shell.azure.com)
 
 ```azurecli-interactive
 az webapp list-runtimes --linux | grep PHP
 ```
 
-## <a name="set-php-version"></a>Ustaw wersję języka PHP
+## <a name="set-php-version"></a>Ustawianie wersji PHP
 
-Uruchom następujące polecenie w [Cloud Shell](https://shell.azure.com) , aby ustawić wersję PHP na 7,2:
+Uruchom następujące polecenie w [usłudze Cloud Shell,](https://shell.azure.com) aby ustawić wersję PHP na 7.2:
 
 ```azurecli-interactive
 az webapp config set --name <app-name> --resource-group <resource-group-name> --linux-fx-version "PHP|7.2"
 ```
 
-## <a name="customize-build-automation"></a>Dostosuj automatyzację kompilacji
+## <a name="customize-build-automation"></a>Dostosowywanie automatyzacji kompilacji
 
-Jeśli aplikacja zostanie wdrożona za pomocą usługi Git lub zip z włączonym automatyzacją kompilacji, App Service kroki automatyzacji kompilacji w następującej kolejności:
+Jeśli wdrożysz aplikację przy użyciu pakietów Git lub zip z włączoną automatyzacją kompilacji, kroki automatyzacji kompilacji usługi App Service w następującej kolejności:
 
-1. Uruchom skrypt niestandardowy, jeśli został określony przez `PRE_BUILD_SCRIPT_PATH`.
+1. Uruchom skrypt niestandardowy, jeśli jest określony przez `PRE_BUILD_SCRIPT_PATH`plik .
 1. Uruchom polecenie `php composer.phar install`.
-1. Uruchom skrypt niestandardowy, jeśli został określony przez `POST_BUILD_SCRIPT_PATH`.
+1. Uruchom skrypt niestandardowy, jeśli jest określony przez `POST_BUILD_SCRIPT_PATH`plik .
 
-`PRE_BUILD_COMMAND` i `POST_BUILD_COMMAND` są zmiennymi środowiskowymi, które są domyślnie puste. Aby uruchomić polecenia przed kompilacją, zdefiniuj `PRE_BUILD_COMMAND`. Aby uruchomić polecenia po kompilacji, zdefiniuj `POST_BUILD_COMMAND`.
+`PRE_BUILD_COMMAND`i `POST_BUILD_COMMAND` są zmienne środowiskowe, które są domyślnie puste. Aby uruchomić polecenia przed kompilacją, zdefiniuj `PRE_BUILD_COMMAND`plik . Aby uruchomić polecenia po kompilacji, zdefiniuj `POST_BUILD_COMMAND`plik .
 
-W poniższym przykładzie określono dwie zmienne do szeregu poleceń, oddzielone przecinkami.
+Poniższy przykład określa dwie zmienne do serii poleceń, oddzielone przecinkami.
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings PRE_BUILD_COMMAND="echo foo, scripts/prebuild.sh"
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings POST_BUILD_COMMAND="echo foo, scripts/postbuild.sh"
 ```
 
-Aby uzyskać dodatkowe zmienne środowiskowe umożliwiające dostosowanie automatyzacji kompilacji, zobacz [Konfiguracja Oryx](https://github.com/microsoft/Oryx/blob/master/doc/configuration.md).
+Aby uzyskać dodatkowe zmienne środowiskowe w celu dostosowania automatyzacji kompilacji, zobacz [Konfiguracja Oryx](https://github.com/microsoft/Oryx/blob/master/doc/configuration.md).
 
-Aby uzyskać więcej informacji na temat sposobu uruchamiania i kompilowania aplikacji PHP w systemie Linux przez App Service, zobacz [dokumentację Oryx: jak wykrywane są i kompilowane aplikacje PHP](https://github.com/microsoft/Oryx/blob/master/doc/runtimes/php.md).
+Aby uzyskać więcej informacji na temat sposobu działania i tworzenia aplikacji PHP w systemie Linux, zobacz [dokumentację Oryx: Jak aplikacje PHP są wykrywane i budowane.](https://github.com/microsoft/Oryx/blob/master/doc/runtimes/php.md)
 
 ## <a name="customize-start-up"></a>Dostosowywanie uruchamiania
 
-Domyślnie wbudowany kontener PHP uruchamia serwer Apache. Na początku działa `apache2ctl -D FOREGROUND"`. Jeśli chcesz, możesz uruchomić inne polecenie podczas uruchamiania, uruchamiając następujące polecenie w [Cloud Shell](https://shell.azure.com):
+Domyślnie wbudowany kontener PHP uruchamia serwer Apache. Przy uruchomieniu działa `apache2ctl -D FOREGROUND"`. Jeśli chcesz, możesz uruchomić inne polecenie podczas uruchamiania, uruchamiając następujące polecenie w [usłudze Cloud Shell:](https://shell.azure.com)
 
 ```azurecli-interactive
 az webapp config set --resource-group <resource-group-name> --name <app-name> --startup-file "<custom-command>"
@@ -70,17 +70,17 @@ az webapp config set --resource-group <resource-group-name> --name <app-name> --
 
 ## <a name="access-environment-variables"></a>Uzyskiwanie dostępu do zmiennych środowiskowych
 
-W App Service można [ustawić ustawienia aplikacji](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings) poza kodem aplikacji. Następnie możesz uzyskać do nich dostęp przy użyciu standardowego wzorca [getenv ()](https://secure.php.net/manual/function.getenv.php) . Aby na przykład uzyskać dostęp do ustawienia aplikacji o nazwie `DB_HOST`, użyj następującego kodu:
+W usłudze App Service możesz [ustawić ustawienia aplikacji](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings) poza kodem aplikacji. Następnie można uzyskać do nich dostęp za pomocą standardowego wzorca [getenv().](https://secure.php.net/manual/function.getenv.php) Aby na przykład uzyskać dostęp do ustawienia aplikacji o nazwie `DB_HOST`, użyj następującego kodu:
 
 ```php
 getenv("DB_HOST")
 ```
 
-## <a name="change-site-root"></a>Zmień katalog główny witryny
+## <a name="change-site-root"></a>Zmienianie katalogu głównego witryny
 
-Wybrana platforma sieci Web może używać podkatalogu jako katalogu głównego witryny. Na przykład [platformy laravel](https://laravel.com/)używa podkatalogu `public/` jako katalogu głównego witryny.
+Wybrane przez użytkownika struktury sieci Web mogą używać podkatalogu jako katalogu głównego witryny. Na przykład [Laravel](https://laravel.com/), `public/` używa podkatalogu jako katalogu głównego witryny.
 
-Domyślny obraz PHP dla App Service korzysta z platformy Apache i nie pozwala na dostosowywanie katalogu głównego witryny dla aplikacji. Aby obejść to ograniczenie, należy dodać plik *. htaccess* do katalogu głównego repozytorium o następującej zawartości:
+Domyślny obraz PHP dla usługi App Service używa Apache i nie pozwala dostosować katalogu głównego witryny dla aplikacji. Aby obejść to ograniczenie, dodaj plik *.htaccess* do katalogu głównego repozytorium z następującą zawartością:
 
 ```
 <IfModule mod_rewrite.c>
@@ -104,19 +104,19 @@ if (isset($_SERVER['X-Forwarded-Proto']) && $_SERVER['X-Forwarded-Proto'] === 'h
 
 Popularne platformy internetowe umożliwiają dostęp do informacji `X-Forwarded-*` w standardowym wzorcu aplikacji. Na platformie [CodeIgniter](https://codeigniter.com/) element [is_https()](https://github.com/bcit-ci/CodeIgniter/blob/master/system/core/Common.php#L338-L365) domyślnie sprawdza wartość `X_FORWARDED_PROTO`.
 
-## <a name="customize-phpini-settings"></a>Dostosuj ustawienia PHP. ini
+## <a name="customize-phpini-settings"></a>Dostosowywanie ustawień php.ini
 
-Jeśli konieczne jest wprowadzenie zmian w instalacji PHP, można zmienić dowolne z [dyrektyw php. ini](https://www.php.net/manual/ini.list.php) , wykonując następujące kroki.
+Jeśli chcesz wprowadzić zmiany w instalacji PHP, możesz zmienić dowolną z [dyrektyw php.ini,](https://www.php.net/manual/ini.list.php) wykonując następujące kroki.
 
 > [!NOTE]
-> Najlepszym sposobem wyświetlenia wersji języka PHP i bieżącej konfiguracji *php. ini* jest wywołanie [phpinfo ()](https://php.net/manual/function.phpinfo.php) w aplikacji.
+> Najlepszym sposobem, aby zobaczyć wersję PHP i aktualną konfigurację *php.ini* jest [wywołanie phpinfo()](https://php.net/manual/function.phpinfo.php) w aplikacji.
 >
 
-### <a name="Customize-non-PHP_INI_SYSTEM directives"></a>Dostosowywanie — dyrektywy inne niż PHP_INI_SYSTEM
+### <a name="customize-non-php_ini_system-directives"></a><a name="Customize-non-PHP_INI_SYSTEM directives"></a>Dostosowywanie dyrektyw PHP_INI_SYSTEM innych niż PHP_INI_SYSTEM
 
-Aby dostosować dyrektywy PHP_INI_USER, PHP_INI_PERDIR i PHP_INI_ALL (zobacz [dyrektywy php. ini](https://www.php.net/manual/ini.list.php)), Dodaj plik *. htaccess* do katalogu głównego aplikacji.
+Aby dostosować PHP_INI_USER, PHP_INI_PERDIR i PHP_INI_ALL (zobacz [dyrektywy php.ini](https://www.php.net/manual/ini.list.php)), dodaj plik *.htaccess* do katalogu głównego aplikacji.
 
-W pliku *. htaccess* Dodaj dyrektywy przy użyciu składni `php_value <directive-name> <value>`. Na przykład:
+W pliku *.htaccess* dodaj dyrektywy przy `php_value <directive-name> <value>` użyciu składni. Przykład:
 
 ```
 php_value upload_max_filesize 1000M
@@ -128,31 +128,31 @@ php_value display_errors On
 php_value upload_max_filesize 10M
 ```
 
-Ponownie Wdróż aplikację ze zmianami, a następnie uruchom ją. Jeśli zostanie wdrożony za pomocą kudu (na przykład przy użyciu usługi [git](../deploy-local-git.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)), zostanie on automatycznie uruchomiony ponownie po wdrożeniu.
+Ponownie rozmieszcz aplikację ze zmianami i uruchom ją ponownie. Jeśli wdrożysz go z Kudu (na przykład za pomocą [Git](../deploy-local-git.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)), zostanie automatycznie uruchomiony ponownie po wdrożeniu.
 
-Jako alternatywę dla korzystania z *. htaccess*można użyć [ini_set ()](https://www.php.net/manual/function.ini-set.php) w aplikacji, aby dostosować te dyrektywy niePHP_INI_SYSTEMowe.
+Jako alternatywę dla korzystania *z .htaccess*, można użyć [ini_set()](https://www.php.net/manual/function.ini-set.php) w aplikacji, aby dostosować te dyrektywy PHP_INI_SYSTEM.
 
-### <a name="customize-php_ini_system-directives"></a>Dostosuj dyrektywy PHP_INI_SYSTEM
+### <a name="customize-php_ini_system-directives"></a><a name="customize-php_ini_system-directives"></a>Dostosowywanie dyrektyw PHP_INI_SYSTEM
 
-Aby dostosować dyrektywy PHP_INI_SYSTEM (zobacz sekcję [php. ini dyrektywy](https://www.php.net/manual/ini.list.php)), nie można użyć metody *. htaccess* . App Service zapewnia oddzielny mechanizm przy użyciu ustawienia aplikacji `PHP_INI_SCAN_DIR`.
+Aby dostosować PHP_INI_SYSTEM dyrektyw (patrz [php.ini dyrektyw),](https://www.php.net/manual/ini.list.php)nie można użyć *.htaccess* podejście. Usługa App Service udostępnia `PHP_INI_SCAN_DIR` oddzielny mechanizm przy użyciu ustawienia aplikacji.
 
-Najpierw uruchom następujące polecenie w [Cloud Shell](https://shell.azure.com) , aby dodać ustawienie aplikacji o nazwie `PHP_INI_SCAN_DIR`:
+Najpierw uruchom następujące polecenie w [aplikacji Cloud Shell,](https://shell.azure.com) aby dodać ustawienie aplikacji o nazwie: `PHP_INI_SCAN_DIR`
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings PHP_INI_SCAN_DIR="/usr/local/etc/php/conf.d:/home/site/ini"
 ```
 
-`/usr/local/etc/php/conf.d` jest domyślnym katalogiem, w którym znajduje się *plik php. ini* . `/home/site/ini` jest katalogiem niestandardowym, w którym dodasz niestandardowy plik *. ini* . Wartości są oddzielane za pomocą `:`.
+`/usr/local/etc/php/conf.d`jest domyślnym katalogiem, w którym istnieje *php.ini.* `/home/site/ini`to katalog niestandardowy, w którym dodasz niestandardowy plik *.ini.* Oddzielasz wartości za `:`pomocą pliku .
 
-Przejdź do sesji protokołu SSH sieci Web przy użyciu kontenera systemu Linux (`https://<app-name>.scm.azurewebsites.net/webssh/host`).
+Przejdź do sesji SSH w sieci`https://<app-name>.scm.azurewebsites.net/webssh/host`Web za pomocą kontenera Linuksa ( ).
 
-Utwórz katalog w `/home/site` o nazwie `ini`, a następnie utwórz plik *. ini* w katalogu `/home/site/ini` (na przykład *Settings. ini)* z dyrektywami, które chcesz dostosować. Użyj tej samej składni, która będzie używana w pliku *php. ini* . 
+Utwórz katalog `/home/site` w `ini`wywoływanym , a następnie `/home/site/ini` utwórz plik *.ini* w katalogu (na przykład *settings.ini)* z dyrektywami, które chcesz dostosować. Użyj tej samej składni, której użyjesz w pliku *php.ini.* 
 
 > [!TIP]
-> W wbudowanych kontenerach systemu Linux w App Service */Home* jest używany jako utrwalony magazyn udostępniony. 
+> We wbudowanych kontenerach systemu Linux w usłudze App Service */home* jest używany jako utrwalony udostępniony magazyn. 
 >
 
-Na przykład aby zmienić wartość [expose_php](https://php.net/manual/ini.core.php#ini.expose-php) Uruchom następujące polecenia:
+Na przykład, aby zmienić wartość [expose_php](https://php.net/manual/ini.core.php#ini.expose-php) uruchomić następujące polecenia:
 
 ```bash
 cd /home/site
@@ -160,30 +160,30 @@ mkdir ini
 echo "expose_php = Off" >> ini/setting.ini
 ```
 
-Aby zmiany zaczęły obowiązywać, należy ponownie uruchomić aplikację.
+Aby zmiany zostały wprowadzone, uruchom ponownie aplikację.
 
-## <a name="enable-php-extensions"></a>Włącz rozszerzenia PHP
+## <a name="enable-php-extensions"></a>Włączanie rozszerzeń PHP
 
-Wbudowane instalacje języka PHP zawierają najczęściej używane rozszerzenia. Dodatkowe rozszerzenia można włączyć w taki sam sposób, w jaki [dostosowuje się dyrektywy php. ini](#customize-php_ini_system-directives).
+Wbudowane instalacje PHP zawierają najczęściej używane rozszerzenia. Można włączyć dodatkowe rozszerzenia w taki sam sposób, w jaki [można dostosować dyrektywy php.ini](#customize-php_ini_system-directives).
 
 > [!NOTE]
-> Najlepszym sposobem wyświetlenia wersji języka PHP i bieżącej konfiguracji *php. ini* jest wywołanie [phpinfo ()](https://php.net/manual/function.phpinfo.php) w aplikacji.
+> Najlepszym sposobem, aby zobaczyć wersję PHP i aktualną konfigurację *php.ini* jest [wywołanie phpinfo()](https://php.net/manual/function.phpinfo.php) w aplikacji.
 >
 
-Aby włączyć dodatkowe rozszerzenia, wykonaj następujące czynności:
+Aby włączyć dodatkowe rozszerzenia, wykonaj następujące kroki:
 
-Dodaj katalog `bin` do katalogu głównego aplikacji i umieść w nim pliki rozszerzeń `.so` (na przykład *MongoDB.so*). Upewnij się, że rozszerzenia są zgodne z wersją języka PHP na platformie Azure i są zgodne z VC9 i niebezpiecznym wątkem (nkty przerwania).
+Dodaj `bin` katalog do katalogu głównego aplikacji i umieść `.so` w nim pliki rozszerzeń (na przykład *mongodb.so*). Upewnij się, że rozszerzenia są zgodne z wersją PHP na platformie Azure i są zgodne z VC9 i niebezgłębowymi (nts).
 
-Wdróż zmiany.
+Wdrażaj zmiany.
 
-Wykonaj kroki opisane w sekcji [dostosowywanie PHP_INI_SYSTEM dyrektyw](#customize-php_ini_system-directives), Dodaj rozszerzenia do pliku Custom *. ini* z [rozszerzeniem](https://www.php.net/manual/ini.core.php#ini.extension) lub [zend_extension](https://www.php.net/manual/ini.core.php#ini.zend-extension) dyrektyw.
+Wykonaj kroki opisane w [obszarze Dostosuj PHP_INI_SYSTEM dyrektyw](#customize-php_ini_system-directives), dodaj rozszerzenia do niestandardowego pliku *.ini* z dyrektywami [rozszerzenia](https://www.php.net/manual/ini.core.php#ini.extension) lub [zend_extension.](https://www.php.net/manual/ini.core.php#ini.zend-extension)
 
 ```ini
 extension=/home/site/wwwroot/bin/mongodb.so
 zend_extension=/home/site/wwwroot/bin/xdebug.so
 ```
 
-Aby zmiany zaczęły obowiązywać, należy ponownie uruchomić aplikację.
+Aby zmiany zostały wprowadzone, uruchom ponownie aplikację.
 
 ## <a name="access-diagnostic-logs"></a>Uzyskiwanie dostępu do dzienników diagnostycznych
 
@@ -195,21 +195,21 @@ Aby zmiany zaczęły obowiązywać, należy ponownie uruchomić aplikację.
 
 ## <a name="troubleshooting"></a>Rozwiązywanie problemów
 
-Gdy działająca aplikacja PHP działa inaczej w App Service lub zawiera błędy, spróbuj wykonać następujące czynności:
+Gdy działająca aplikacja PHP zachowuje się inaczej w usłudze App Service lub ma błędy, spróbuj wykonać następujące czynności:
 
-- [Dostęp do strumienia dzienników](#access-diagnostic-logs).
-- Przetestuj aplikację lokalnie w trybie produkcyjnym. App Service uruchamia aplikacje Node. js w trybie produkcyjnym, dlatego należy się upewnić, że projekt działa zgodnie z oczekiwaniami w trybie produkcyjnym lokalnie. Na przykład:
-    - W zależności od pliku *Composer. JSON*można zainstalować różne pakiety dla trybu produkcyjnego (`require` a `require-dev`).
-    - Niektóre platformy sieci Web mogą wdrażać pliki statyczne inaczej w trybie produkcyjnym.
-    - Niektóre platformy sieci Web mogą używać niestandardowych skryptów uruchamiania podczas pracy w trybie produkcyjnym.
-- Uruchom aplikację w App Service w trybie debugowania. Na przykład w [platformy laravel](https://meanjs.org/)można skonfigurować aplikację do wyprowadzania komunikatów debugowania w środowisku produkcyjnym, [ustawiając ustawienie aplikacji `APP_DEBUG` na `true`](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings).
+- [Dostęp do strumienia dziennika](#access-diagnostic-logs).
+- Przetestuj aplikację lokalnie w trybie produkcyjnym. Usługa App Service uruchamia aplikacje Node.js w trybie produkcyjnym, dlatego należy upewnić się, że projekt działa zgodnie z oczekiwaniami w trybie produkcji lokalnie. Przykład:
+    - W zależności od *pliku composer.json,* różne pakiety mogą być instalowane w trybie produkcji (w`require` porównaniu z. `require-dev`).
+    - Niektóre struktury sieci web mogą inaczej wdrażać pliki statyczne w trybie produkcyjnym.
+    - Niektóre struktury sieci web mogą używać niestandardowych skryptów startowych podczas pracy w trybie produkcyjnym.
+- Uruchom aplikację w usłudze App Service w trybie debugowania. Na przykład w [laravel](https://meanjs.org/), można skonfigurować aplikację do wyprowadzania komunikatów debugowania w [ `APP_DEBUG` środowisku produkcyjnym, ustawiając ustawienie aplikacji na `true` ](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings).
 
 [!INCLUDE [robots933456](../../../includes/app-service-web-configure-robots933456.md)]
 
 ## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Samouczek: aplikacja PHP z bazą danych MySQL](tutorial-php-mysql-app.md)
+> [Samouczek: aplikacja PHP z MySQL](tutorial-php-mysql-app.md)
 
 > [!div class="nextstepaction"]
-> [App Service Linux — często zadawane pytania](app-service-linux-faq.md)
+> [Często zadawane pytania dotyczące usługi aplikacji Linux](app-service-linux-faq.md)

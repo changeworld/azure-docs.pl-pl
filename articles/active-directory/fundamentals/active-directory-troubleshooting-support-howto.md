@@ -1,6 +1,6 @@
 ---
-title: Znajdowanie pomocy i otworzyć bilet pomocy technicznej — usługi Azure Active Directory | Dokumentacja firmy Microsoft
-description: Dowiedzieć się, jak uzyskać pomoc, a następnie otwórz bilet pomocy technicznej usługi Azure Active Directory.
+title: Znajdowanie pomocy i otwieranie biletu pomocy technicznej — usługa Azure Active Directory | Dokumenty firmy Microsoft
+description: Instrukcje dotyczące sposobu uzyskania pomocy i otwarcia biletu pomocy technicznej dla usługi Azure Active Directory.
 services: active-directory
 documentationcenter: na
 author: msaburnley
@@ -15,79 +15,90 @@ ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9dce9b93dfe4ddfca370d1d3131d1d12cb6f121d
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 1193bfc08ccbd86d4da09c4de472f09bb49208f6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68561768"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80049933"
 ---
-# <a name="find-help-and-open-a-support-ticket-for-azure-active-directory"></a>Znajdowanie pomocy i otworzyć bilet pomocy technicznej usługi Azure Active Directory
-Firma Microsoft zapewnia globalne technicznych, przedsprzedaży, rozliczeń i pomoc techniczna dla subskrypcji usługi Azure Active Directory (Azure AD). Obsługa jest dostępna online i telefonicznie w przypadku Microsoft Azure płatnych subskrypcji i wersji próbnej. Telefoniczna pomoc techniczna i online pomocy technicznej dotyczącej rozliczeń są dostępne w dodatkowych językach. 
+# <a name="find-help-and-open-a-support-ticket-for-azure-active-directory"></a>Znajdowanie pomocy i otwieranie biletu pomocy technicznej dla usługi Azure Active Directory
+Firma Microsoft zapewnia globalną pomoc techniczną, przedsprzedażną, rozliczenia i subskrypcję usługi Azure Active Directory (Azure AD). Pomoc techniczna jest dostępna zarówno w trybie online, jak i telefonicznie w przypadku płatnych i próbnych subskrypcji platformy Microsoft Azure. Telefoniczna pomoc techniczna i pomoc online związana z rozliczeniami są dostępne w dodatkowych językach. 
 
 ## <a name="find-help-without-opening-a-support-ticket"></a>Uzyskiwanie pomocy bez konieczności otwierania biletu pomocy technicznej
 
-Przed utworzeniem biletu pomocy technicznej, zapoznaj się z poniższymi zasobami, aby uzyskać odpowiedzi i informacje. 
+Przed utworzeniem biletu pomocy technicznej zapoznaj się z poniższymi zasobami, aby uzyskać odpowiedzi i informacje. 
 
-* Dla zawartości, takich jak uzyskać instrukcje i przykłady kodu dla informatyków i deweloperów, zobacz [dokumentacji technicznej w witrynie docs.microsoft.com](https://docs.microsoft.com/azure/active-directory/).
+* Informacje na temat zawartości, takiej jak informacje insyceny lub przykłady kodu dla specjalistów IT i programistów, można znaleźć [w dokumentacji technicznej docs.microsoft.com](https://docs.microsoft.com/azure/active-directory/).
 
-* [Społeczność techniczna firmy Microsoft](https://techcommunity.microsoft.com/) jest miejscem, w którym partnerzy IT i klienci działu IT mogą współpracować, udostępniać i uczyć się. [Centrum informacyjne społeczności technicznej firmy Microsoft](https://techcommunity.microsoft.com/t5/Community-Info-Center/ct-p/Community-Info-Center) jest używane w przypadku anonsów, wpisów w blogu, interakcji z pytaniami (AMA) z ekspertami i nie tylko. Możesz również [Dołącz do społeczności, aby przesłać pomysły](https://techcommunity.microsoft.com/t5/Communities/ct-p/communities).
+* [Społeczność techniczna firmy Microsoft](https://techcommunity.microsoft.com/) to miejsce, w które nasi partnerzy it i klienci mogą współpracować, udostępniać i uczyć się. [Centrum informacyjne społeczności technicznej firmy Microsoft](https://techcommunity.microsoft.com/t5/Community-Info-Center/ct-p/Community-Info-Center) służy do ogłoszeń, wpisów na blogu, interakcji ask-me-anything (AMA) z ekspertami i nie tylko. Możesz również [dołączyć do społeczności, aby przesłać swoje pomysły.](https://techcommunity.microsoft.com/t5/Communities/ct-p/communities)
 
 
-## <a name="open-a-support-ticket"></a>Otwórz bilet pomocy technicznej
+## <a name="open-a-support-ticket"></a>Otwieranie biletu pomocy technicznej
 
-Jeśli nie możesz znaleźć odpowiedzi przy użyciu zasobów samodzielnej pomocy, możesz otworzyć bilet pomocy technicznej online. Każdy bilet pomocy technicznej dla tylko jednego problemu, należy otworzyć, dzięki czemu możemy połączyć Cię do inżynierów pomocy technicznej, którzy są ekspertami merytorycznymi dla danego problemu. Ponadto zespoły inżynierów usługi Azure Active Directory priorytety pracy oparte na zdarzenia, które są generowane, więc jest często przyczyniające się do poprawy usługi.
+Jeśli nie możesz znaleźć odpowiedzi za pomocą zasobów samopomocy, możesz otworzyć bilet pomocy technicznej online. Należy otworzyć każdy bilet pomocy technicznej tylko dla jednego problemu, abyśmy mogli połączyć Cię z inżynierami pomocy technicznej, którzy są ekspertami w danej dziedzinie dla Twojego problemu. Ponadto zespoły inżynierów usługi Azure Active Directory nadają priorytet swojej pracy na podstawie generowanych incydentów, więc często przyczyniasz się do ulepszeń usług.
 
 ### <a name="how-to-open-a-support-ticket-for-azure-ad-in-the-azure-portal"></a>Jak otworzyć bilet pomocy technicznej dla usługi Azure AD w witrynie Azure portal
 
 > [!NOTE]
-> W przypadku problemów dotyczących rozliczeń lub subskrypcji należy użyć [Centrum administracyjnego Microsoft 365](https://admin.microsoft.com).
+> W przypadku problemów z rozliczeniami lub subskrypcją należy użyć [centrum administracyjnego usługi Microsoft 365](https://admin.microsoft.com).
 > 
 
-1. Zaloguj się do [witryny Azure portal](https://portal.azure.com) , a następnie otwórz **usługi Azure Active Directory**.
+1. Zaloguj się do [witryny Azure portal](https://portal.azure.com) i otwórz **usługę Azure Active Directory**.
    
-2. Przewiń w dół do **Rozwiązywanie problemów i obsługa techniczna** i wybierz **nowe żądanie obsługi**.
+2. Przewiń w dół do **opcji Rozwiązywanie problemów + Obsługa i** wybierz pozycję Nowe żądanie pomocy **technicznej**.
    
-3. Na **podstawy** bloku dla **typ problemu**, wybierz opcję **techniczne**.
-   
-4. Dla **usługi**, wybierz opcję **usługi Azure Active Directory**, a następnie wybierz pozycję **dalej**.
+3. Na bloku **Podstawy** dla **typu problem**wybierz opcję **Techniczne**.
 
-5. W bloku **problem** wybierz [ważność](https://azure.microsoft.com/support/plans/response/).
+4. Wybierz **subskrypcję**.
+
+5. W **przypadku usługi**wybierz pozycję Azure Active **Directory**.
+
+6. Utwórz **podsumowanie** dla żądania. Podsumowanie musi mieć mniej niż 140 znaków.
   
-6. Wybierz **typ problemu**, a następnie wybierz pozycję **kategorii** dla tego typu. W tym momencie możesz również oferowana informacje o samodzielnej pomocy dla kategorii problemu.
+7. Wybierz **typ problemu**, a następnie wybierz kategorię dla tego typu. W tym momencie, są również oferowane informacje samopomocy dla swojej kategorii problemu.
   
-7. Dodaj pozostałe informacje dotyczące Twojego problemu, a następnie kliknij przycisk **dalej**.
-  
-8. Podaj swoje informacje kontaktowe, a następnie wybierz pozycję **Utwórz**.
+7. Dodaj resztę informacji o problemie i kliknij przycisk **Dalej**. 
+
+8. W tym momencie oferowane są rozwiązania samopomocy i dokumentację w bloku **Solutions.** Jeśli żadne z rozwiązań problemu nie rozwiąże problemu, kliknij przycisk **Dalej**. 
+
+9. Na bloku **Szczegóły** wypełnij wymagane szczegóły i wybierz [ważność](https://azure.microsoft.com/support/plans/response/). 
+ 
+![image](https://user-images.githubusercontent.com/13383753/76565580-1c284900-6468-11ea-8c0f-85af98097b6f.png)
+ 
+10. Podaj swoje dane kontaktowe i wybierz **przycisk Dalej**. 
+
+
+8. Podaj informacje kontaktowe i wybierz pozycję **Utwórz**.
   ![Zrzut ekranu przedstawiający kategorię problemu](./media/active-directory-troubleshooting-support-howto/open-support-ticket.png)
 
-### <a name="how-to-open-a-support-ticket-for-azure-ad-in-the-microsoft-365-admin-center"></a>Jak otworzyć bilet pomocy technicznej dla usługi Azure AD w centrum administracyjnym Microsoft 365
+### <a name="how-to-open-a-support-ticket-for-azure-ad-in-the-microsoft-365-admin-center"></a>Jak otworzyć bilet pomocy technicznej dla usługi Azure AD w centrum administracyjnym usługi Microsoft 365
 
 > [!NOTE]
-> Obsługa usługi Azure AD w [centrum administracyjnym Microsoft 365](https://admin.microsoft.com) jest dostępna tylko dla administratorów. 
+> Obsługa usługi Azure AD w [centrum administracyjnym usługi Microsoft 365](https://admin.microsoft.com) jest oferowana tylko dla administratorów. 
 
-1. Zaloguj się do [Centrum administracyjnego Microsoft 365](https://admin.microsoft.com) przy użyciu konta z licencją Enterprise Mobility + Security (EMS).
+1. Zaloguj się do [centrum administracyjnego usługi Microsoft 365](https://admin.microsoft.com) przy za pomocą konta z licencją Enterprise Mobility + Security (EMS).
 
-2. Na kafelku **Pomoc techniczna** wybierz pozycję **nowe żądanie obsługi**:
+2. Na kafelku **Pomoc techniczna** wybierz pozycję **Nowe żądanie usługi:**
 
-3. Na stronie **Przegląd pomocy technicznej** wybierz pozycję **Zarządzanie tożsamościami** lub **Zarządzanie użytkownikami i domeną**:
+3. Na stronie **Przegląd pomocy technicznej** wybierz pozycję Zarządzanie **tożsamościami** lub **Zarządzanie użytkownikami i domenami:**
 
-4. Aby uzyskać **funkcji**, wybierz funkcję usługi Azure AD, dla którego chcesz pomocy technicznej.
+4. W przypadku **funkcji**wybierz funkcję usługi Azure AD, dla której chcesz uzyskać pomoc techniczną.
 
-5. Dla **objaw**, wybierz odpowiednią objaw, Podsumuj swój problem i podaj odpowiednie szczegóły, a następnie wybierz **dalej**.
+5. W przypadku **symptomu**wybierz odpowiedni objaw, podsumuj problem i podaj odpowiednie szczegóły, a następnie wybierz przycisk **Dalej**.
 
-6. Wybierz jeden z zasobów oferowanych samodzielnej pomocy lub **tak, kontynuuj** lub **nie, Anuluj żądanie**.
+6. Wybierz jedną z oferowanych zasobów samopomocy lub wybierz pozycję **Tak, kontynuuj** lub **Nie, anuluj żądanie**.
 
-7. Jeśli będziesz kontynuować, użytkownik jest pytany, aby uzyskać więcej informacji. Możesz dołączyć wszystkie pliki, które reprezentują ten problem, a następnie wybierz masz **dalej**.
+7. Jeśli będziesz kontynuować, zostaniesz poproszony o więcej szczegółów. Można dołączyć wszystkie pliki, które reprezentują problem, a następnie wybrać **przycisk Dalej**.
 
-8. Podaj swoje informacje kontaktowe, a następnie wybierz pozycję **Prześlij żądanie**.
+8. Podaj swoje informacje kontaktowe i wybierz **opcję Prześlij żądanie**.
 
 ## <a name="get-phone-support"></a>Uzyskiwanie pomocy telefonicznej
 
-Zobacz [kontakt z firmą Microsoft pomocy technicznej](https://portal.office.com/Support/ContactUs.aspx) strony, aby uzyskać numerów telefonów pomocy technicznej.
+Aby uzyskać numery telefonów pomocy technicznej, zobacz stronę [Kontakt firmy Microsoft.](https://portal.office.com/Support/ContactUs.aspx)
 
-##  <a name="next-steps"></a>Kolejne kroki
+##  <a name="next-steps"></a>Następne kroki
 
 * [Społeczność techniczna firmy Microsoft](https://techcommunity.microsoft.com/)
 
-* [Dokumentacja techniczna w witrynie docs.microsoft.com](https://docs.microsoft.com/azure/active-directory/)
+* [Dokumentacja techniczna w docs.microsoft.com](https://docs.microsoft.com/azure/active-directory/)
