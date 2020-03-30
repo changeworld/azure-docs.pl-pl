@@ -1,5 +1,5 @@
 ---
-title: Wskaż domenę internetową, aby Traffic Manager na platformie Azure Traffic Manager
+title: Wskaż domenę internetową do usługi Traffic Manager — Usługa Azure Traffic Manager
 description: Ten artykuł pomoże Ci skonfigurować nazwę domeny firmowej w taki sposób, aby wskazywała nazwę domeny usługi Traffic Manager.
 services: traffic-manager
 author: rohinkoul
@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/11/2016
 ms.author: rohink
-ms.openlocfilehash: d56e3fe759d2c9dbee9a8f19a6f1a030565c8e4e
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 6c5c5c185063caf8ca258ad70a70903c9b583e07
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76938486"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80294840"
 ---
 # <a name="point-a-company-internet-domain-to-an-azure-traffic-manager-domain"></a>Ustawianie firmowej domeny internetowej tak, aby wskazywała domenę usługi Azure Traffic Manager
 
@@ -23,9 +23,9 @@ Podczas tworzenia profilu usługi Traffic Manager platforma Azure automatycznie 
 
 Na przykład aby nazwa domeny `www.contoso.com` wskazywała nazwę DNS `contoso.trafficmanager.net` usługi Traffic Manager, należy utworzyć następujący rekord zasobu DNS:
 
-    www.contoso.com IN CNAME contoso.trafficmanager.net
+    `www.contoso.com IN CNAME contoso.trafficmanager.net`
 
-Wszystkie żądania ruchu do *sieci www\.contoso.com* kierowane do *contoso.trafficmanager.NET*.
+Wszystkie wnioski o ruch na *\.www contoso.com* są kierowane do *contoso.trafficmanager.net*.
 
 > [!IMPORTANT]
 > Domena drugiego poziomu, na przykład *contoso.com*, nie może wskazywać domeny usługi Traffic Manager. Standardy protokołu DNS nie zezwalają na ustanawianie rekordów CNAME dla nazw domen drugiego poziomu.
@@ -33,5 +33,5 @@ Wszystkie żądania ruchu do *sieci www\.contoso.com* kierowane do *contoso.traf
 ## <a name="next-steps"></a>Następne kroki
 
 * [Metody routingu w usłudze Traffic Manager](traffic-manager-routing-methods.md)
-* [Traffic Manager — wyłączanie, włączanie lub usuwanie profilu](disable-enable-or-delete-a-profile.md)
+* [Menedżer ruchu — wyłączanie, włączanie lub usuwanie profilu](disable-enable-or-delete-a-profile.md)
 * [Traffic Manager — wyłączanie lub włączanie punktu końcowego](disable-or-enable-an-endpoint.md)

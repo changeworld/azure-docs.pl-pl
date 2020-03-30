@@ -1,6 +1,6 @@
 ---
-title: Udostępnianie obrazów galerii między dzierżawcami na platformie Azure
-description: Dowiedz się, jak udostępniać obrazy maszyn wirtualnych w dzierżawach platformy Azure przy użyciu udostępnionych galerii obrazów.
+title: Udostępnianie obrazów galerii wśród dzierżawców platformy Azure
+description: Dowiedz się, jak udostępniać obrazy maszyn wirtualnych w dzierżawach platformy Azure przy użyciu galerii obrazów udostępnionych.
 services: virtual-machines-linux
 author: cynthn
 manager: gwallace
@@ -11,24 +11,24 @@ ms.topic: article
 ms.date: 04/05/2019
 ms.author: cynthn
 ms.openlocfilehash: 18337620a6f9506e402149909667026e4a8ba7eb
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74034970"
 ---
-# <a name="share-gallery-vm-images-across-azure-tenants"></a>Udostępnianie obrazów maszyn wirtualnych z galerii w ramach dzierżawców platformy Azure
+# <a name="share-gallery-vm-images-across-azure-tenants"></a>Udostępnianie obrazów maszyn wirtualnych galerii w dzierżawach platformy Azure
 
-Udostępnione Galerie obrazów umożliwiają udostępnianie obrazów przy użyciu RBAC. RBAC można używać do udostępniania obrazów w dzierżawie, a nawet do osób poza dzierżawcą. Aby uzyskać więcej informacji na temat tej prostej opcji udostępniania, zobacz [udostępnianie galerii](/azure/virtual-machines/linux/shared-images-portal#share-the-gallery).
+Udostępnione galerie obrazów umożliwiają udostępnianie obrazów za pomocą funkcji RBAC. Za pomocą funkcji RBAC można udostępniać obrazy w obrębie dzierżawy, a nawet osobom spoza dzierżawy. Aby uzyskać więcej informacji na temat tej prostej opcji udostępniania, zobacz [udostępnianie galerii](/azure/virtual-machines/linux/shared-images-portal#share-the-gallery).
 
 [!INCLUDE [virtual-machines-share-images-across-tenants](../../../includes/virtual-machines-share-images-across-tenants.md)]
 
 > [!IMPORTANT]
-> Nie można użyć portalu do wdrożenia maszyny wirtualnej na podstawie obrazu w innej dzierżawie platformy Azure. Aby utworzyć maszynę wirtualną na podstawie obrazu udostępnianego między dzierżawcami, musisz użyć interfejsu wiersza polecenia platformy Azure lub [programu PowerShell](../windows/share-images-across-tenants.md).
+> Nie można użyć portalu do wdrożenia maszyny Wirtualnej z obrazu w innej dzierżawie platformy Azure. Aby utworzyć maszynę wirtualną na podstawie obrazu udostępnionego przez dzierżawców, należy użyć interfejsu wiersza polecenia platformy Azure lub [programu Powershell](../windows/share-images-across-tenants.md).
 
-## <a name="create-a-vm-using-azure-cli"></a>Tworzenie maszyny wirtualnej przy użyciu interfejsu wiersza polecenia platformy Azure
+## <a name="create-a-vm-using-azure-cli"></a>Tworzenie maszyny Wirtualnej przy użyciu interfejsu wiersza polecenia platformy Azure
 
-Zaloguj się do jednostki usługi dla dzierżawy 1 przy użyciu identyfikatora appID, klucz aplikacji i identyfikator dzierżawy 1. W razie potrzeby można użyć `az account show --query "tenantId"` w celu uzyskania identyfikatorów dzierżawy.
+Zaloguj się do jednostki usługi dla dzierżawy 1 przy użyciu identyfikatora aplikacji, klucza aplikacji i identyfikatora dzierżawy 1. Można użyć, `az account show --query "tenantId"` aby uzyskać identyfikatory dzierżawy w razie potrzeby.
 
 ```azurecli-interactive
 az account clear
@@ -36,14 +36,14 @@ az login --service-principal -u '<app ID>' -p '<Secret>' --tenant '<tenant 1 ID>
 az account get-access-token 
 ```
  
-Zaloguj się do jednostki usługi dla dzierżawy 2 przy użyciu identyfikatora appID, klucz aplikacji i identyfikator dzierżawy 2:
+Zaloguj się jednostki usługi dla dzierżawy 2 przy użyciu appID, klucz aplikacji i identyfikator dzierżawy 2:
 
 ```azurecli-interactive
 az login --service-principal -u '<app ID>' -p '<Secret>' --tenant '<tenant 2 ID>'
 az account get-access-token
 ```
 
-Utwórz maszynę wirtualną. Zastąp informacje w podanym przykładzie własnym.
+Utwórz maszynę wirtualną. Zastąp informacje w przykładzie własnymi.
 
 ```azurecli-interactive
 az vm create \
@@ -56,4 +56,4 @@ az vm create \
 
 ## <a name="next-steps"></a>Następne kroki
 
-Jeśli napotkasz jakiekolwiek problemy, możesz [rozwiązać problemy z udostępnionymi galeriami obrazów](troubleshooting-shared-images.md).
+Jeśli napotkasz jakiekolwiek problemy, możesz [rozwiązać problem z udostępnionymi galeriami obrazów](troubleshooting-shared-images.md).

@@ -1,31 +1,30 @@
 ---
-title: Zagadnienia dotyczące interfejsów API | Portal Azure Marketplace
-description: Przechowywanie wersji, obsługa błędów i problemy z autoryzacją w przypadku korzystania z interfejsów API portalu Marketplace.
-services: Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+title: Zagadnienia dotyczące api | Azure Marketplace
+description: Problemy z przechowywaniem wersji, obsługą błędów i autoryzacją podczas korzystania z interfejsów API portalu marketplace.
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/13/2018
-ms.author: pabutler
-ms.openlocfilehash: 07cdb5e44dde0ca655191111d0a23dbab85b4cb2
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 4e04f521ed2023dfb9cd562549cb2e1bcd319b8c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73819738"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80288635"
 ---
-# <a name="api-considerations"></a>Zagadnienia dotyczące interfejsów API
+# <a name="api-considerations"></a>Zagadnienia dotyczące interfejsu API
 
 
-<a name="api-versioning"></a>Obsługa wersji interfejsu API
+<a name="api-versioning"></a>Przechowywanie wersji interfejsu API
 --------------
 
-Może istnieć wiele wersji interfejsu API, które są dostępne w tym samym czasie. Klienci muszą wskazać, której wersji chcesz wywołać, podając parametr `api-version` w ramach ciągu zapytania.
+Może istnieć wiele wersji interfejsu API, które są dostępne w tym samym czasie. Klienci muszą wskazać, która wersja, którą `api-version` chcą wywołać, użyj, podając parametr jako część ciągu zapytania.
 
    `GET https://cloudpartner.azure.com/api/offerTypes?api-version=2017-10-31`
 
-Odpowiedź na żądanie z nieznaną lub nieprawidłową wersją interfejsu API to kod HTTP 400. Ten błąd zwraca kolekcję znanych wersji interfejsu API w treści odpowiedzi.
+Odpowiedzią na żądanie z nieznaną lub nieprawidłową wersją interfejsu API jest kod HTTP 400. Ten błąd zwraca kolekcję znanych wersji interfejsu API w treści odpowiedzi.
 
 ``` json
     {
@@ -36,16 +35,16 @@ Odpowiedź na żądanie z nieznaną lub nieprawidłową wersją interfejsu API t
     }
 ```            
 
-<a name="errors"></a>Błędy
+<a name="errors"></a>Errors
 ------
 
-Interfejs API reaguje na błędy przy użyciu odpowiednich kodów stanu HTTP i opcjonalnie dodatkowe informacje w przypadku serializacji odpowiedzi jako dane JSON.
-Po otrzymaniu błędu, szczególnie błędu klasy 400, nie należy ponawiać próby żądania przed ustaleniem przyczyny podstawowej. Na przykład w powyższej odpowiedzi przykładowo Popraw parametr wersji interfejsu API przed ponownym wysłaniem żądania.
+Interfejs API reaguje na błędy za pomocą odpowiednich kodów stanu HTTP i opcjonalnie dodatkowe informacje w odpowiedzi serializowanej jako JSON.
+Po wyświetleniu błędu, zwłaszcza błąd klasy 400, nie ponowić próbę żądania przed naprawieniem przyczyny. Na przykład w powyższej odpowiedzi przykładowej naprawić parametr wersji interfejsu API przed ponownym wysłaniem żądania.
 
 <a name="authorization-header"></a>Nagłówek autoryzacji
 --------------------
 
-Dla wszystkich interfejsów API w tym odwołaniu należy przekazać nagłówek autoryzacji wraz z tokenem okaziciela uzyskanym z Azure Active Directory (Azure AD). Ten nagłówek jest wymagany do otrzymania prawidłowej odpowiedzi; Jeśli nie istnieje, zwracany jest błąd `401 Unauthorized`. 
+Dla wszystkich interfejsów API w tym odwołaniu należy przekazać nagłówek autoryzacji wraz z tokenem nośnika uzyskanym z usługi Azure Active Directory (Azure AD). Ten nagłówek jest wymagany do otrzymania prawidłowej odpowiedzi; jeśli nie jest `401 Unauthorized` obecny, zwracany jest błąd. 
 
 ``` HTTP
   GET https://cloudpartner.azure.com/api/offerTypes?api-version=2016-08-01-preview

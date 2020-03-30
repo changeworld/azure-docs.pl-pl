@@ -1,55 +1,55 @@
 ---
-title: Jak monitorować udział danych platformy Azure
-description: Dowiedz się, jak monitorować stan zaproszenia, udostępniać subskrypcje i historię migawek w udziale danych platformy Azure
+title: Jak monitorować udostępnianie danych platformy Azure
+description: Dowiedz się, jak monitorować stan zaproszenia, współużytkować subskrypcje i historię migawek w usłudze Azure Data Share
 author: joannapea
 ms.author: joanpo
 ms.service: data-share
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.openlocfilehash: 15089dd99de0471c244a6c0d93931438442599a7
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73490512"
 ---
 # <a name="monitor-azure-data-share"></a>Monitorowanie usługi Azure Data Share  
 
-W tym artykule wyjaśniono, jak można monitorować udziały danych za pomocą udziału danych platformy Azure. Jako dostawca danych możesz monitorować różne aspekty relacji udostępniania danych. Szczegóły, takie jak to, czy konsumenci danych zaakceptowali zaproszenie do udziału danych, a także czy utworzyły subskrypcję udziału i rozpoczęto korzystanie z danych, są dostępne do monitorowania. 
+W tym artykule wyjaśniono, jak można monitorować udziały danych przy użyciu usługi Azure Data Share. Jako dostawca danych możesz monitorować różne aspekty relacji udostępniania danych. Szczegóły, takie jak to, czy konsumenci danych zaakceptowali twoje zaproszenie do udziału danych, a także czy utworzyli subskrypcję udostępniania i zaczęli używać twoich danych, są dostępne do monitorowania. 
 
-Jako odbiorca danych możesz monitorować migawki, które zostały wyzwolone w ramach subskrypcji platformy Azure. 
+Jako konsument danych możesz monitorować migawki, które zostały wyzwolone w ramach subskrypcji platformy Azure. 
 
 ## <a name="monitor-invitation-status"></a>Monitoruj stan zaproszenia
 
-Wyświetl stan zaproszeń udziału danych, przechodząc do obszaru wysłane udziały — > zaproszenia. 
+Wyświetl stan zaproszeń do udostępniania danych, przechodząc do folderu Wysłane udziały -> Zaproszenia. 
 
 ![Stan zaproszenia](./media/invitation-status.png "Stan zaproszenia") 
 
-Istnieją trzy stany, w których może znajdować się zaproszenie:
+Istnieją trzy stany, w których zaproszenie może być dostępne:
 
-* Oczekiwanie — odbiorca udziału danych nie zaakceptował jeszcze zaproszenia.
-* Zaakceptowano — odbiorca udziału danych zaakceptował zaproszenie.
+* Oczekujące — odbiorca udostępniania danych nie zaakceptował jeszcze zaproszenia.
+* Zaakceptowane — odbiorca udostępniania danych zaakceptował zaproszenie.
 * Odrzucone — odbiorca udziału danych odrzucił zaproszenie.
 
 > [!IMPORTANT]
-> Po usunięciu zaproszenia, które już zostało zaakceptowane, nie jest równoznaczne z cofnięciem dostępu. Jeśli chcesz zatrzymać kopiowanie przyszłych migawek do konta magazynu odbiorców danych, musisz odwołać dostęp za pośrednictwem karty *udostępnianie subskrypcji* . 
+> Jeśli usuniesz zaproszenie po jego zaakceptowaniu, nie jest to równoznaczne z odwołaniem dostępu. Jeśli chcesz zatrzymać przyszłe migawki przed kopiowaniem do konta magazynu danych konsumentów, należy odwołać dostęp za pośrednictwem karty *Udostępnij subskrypcje.* 
 
-## <a name="monitor-share-subscriptions"></a>Monitoruj subskrypcje udziałów
+## <a name="monitor-share-subscriptions"></a>Monitorowanie subskrypcji udziałów
 
-Wyświetl stan subskrypcji udziałów, przechodząc do obszaru wysłane udziały — > udostępnić subskrypcje. Umożliwi to podanie szczegółowych informacji o aktywnych subskrypcjach utworzonych przez odbiorców danych po zaakceptowaniu zaproszenia. Możesz zatrzymać przyszłe aktualizacje dla konsumenta danych, wybierając pozycję Udostępnij subskrypcję i wybierając pozycję *odwołaj*. 
+Wyświetl stan subskrypcji udziałów, przechodząc do sekcji Wysłane udziały -> Subskrypcje akcji. Spowoduje to podanie szczegółowych informacji o aktywnych subskrypcjach utworzonych przez konsumentów danych po zaakceptowaniu zaproszenia. Możesz zatrzymać przyszłe aktualizacje dla konsumenta danych, wybierając subskrypcję udziału i wybierając *pozycję Odwołaj*. 
 
 ## <a name="snapshot-history"></a>Historia migawek 
 
-Na karcie Historia można wyświetlić migawki, które zostały skopiowane do dzierżawy użytkownika danych. Można monitorować częstotliwość i czas trwania każdego interwału migawek. 
+Na karcie historia można wyświetlić migawki, które zostały skopiowane do dzierżawy konsumenta danych. Można monitorować częstotliwość i czas trwania każdego interwału migawki. 
 
 ![Historia migawek](./media/sent-shares.png "Historia migawek") 
 
-Aby wyświetlić więcej szczegółów na temat poszczególnych migawek, kliknij datę rozpoczęcia przebiegu. 
+Możesz wyświetlić więcej szczegółów na temat każdej migawki uruchomionej, klikając datę rozpoczęcia biegu. 
 
-Domyślnie zostanie wyświetlona historia migawek do 30 dni. Jeśli potrzebujesz więcej niż 30 dni historii, przejdź do obszaru monitorowanie — > Ustawienia diagnostyczne i wybierz pozycję **Dodaj ustawienie diagnostyczne**. Użytkownik musi wybrać konto magazynu, w którym będą przechowywane te dzienniki. 
+Domyślnie wyświetlana jest do 30 dni historii migawek. Jeśli chcesz zobaczyć historię o wartości ponad 30 dni, przejdź do pozycji Monitorowanie -> Ustawienia diagnostyczne i wybierz **pozycję Dodaj ustawienie diagnostyczne**. Musisz wybrać konto magazynu, aby przechowywać te dzienniki. 
 
 ![Historia migawek](./media/diagnostic-settings.png "Ustawienia diagnostyczne") 
 
 ## <a name="next-steps"></a>Następne kroki 
 
-Dowiedz się więcej o [terminologii dotyczącej udziałów danych platformy Azure](terminology.md)
+Dowiedz się więcej o [terminologii udostępniania danych platformy Azure](terminology.md)

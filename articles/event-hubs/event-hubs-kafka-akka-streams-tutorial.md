@@ -1,6 +1,6 @@
 ---
-title: Korzystanie z Akka strumieni dla Apache Kafka platformy Azure Event Hubs | Microsoft Docs
-description: Ten artykuł zawiera informacje dotyczące sposobu łączenia strumieni Akka Apache Kafka z włączonym centrum zdarzeń platformy Azure.
+title: Korzystanie ze strumieni Akka dla platformy Apache Kafka — usługi Azure Event Hubs| Dokumenty firmy Microsoft
+description: Ten artykuł zawiera informacje dotyczące sposobu łączenia strumieni Akka z apache Platformy Kafka włączone Centrum zdarzeń platformy Azure.
 services: event-hubs
 documentationcenter: ''
 author: ShubhaVijayasarathy
@@ -13,22 +13,22 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: ba81ce88bcdf039d020dcd945e45a11cf603c114
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 729e78959f93b1aa1563a049a64c553929c4f97e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72555752"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80283637"
 ---
-# <a name="using-akka-streams-with-event-hubs-for-apache-kafka"></a>Używanie strumieni Akka z Event Hubs dla Apache Kafka
-W tym samouczku pokazano, jak połączyć strumienie Akka z centrami zdarzeń z obsługą Kafka bez zmiany klientów protokołu lub uruchamiania własnych klastrów. Event Hubs platformy Azure dla usługi Kafka obsługuje [Apache Kafka w wersji 1,0.](https://kafka.apache.org/10/documentation.html)
+# <a name="using-akka-streams-with-event-hubs-for-apache-kafka"></a>Używanie programu Akka Streams z usługą Event Hubs dla platformy Apache Kafka
+W tym samouczku pokazano, jak połączyć strumienie Akka z centrum zdarzeń bez zmiany klientów protokołu lub uruchamiania własnych klastrów. Usługa Azure Event Hubs for the Kafka obsługuje [apache kafka w wersji 1.0.](https://kafka.apache.org/10/documentation.html)
 
-Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
+Niniejszy samouczek zawiera informacje na temat wykonywania następujących czynności:
 > [!div class="checklist"]
 > * Tworzenie przestrzeni nazw usługi Event Hubs
 > * Klonowanie projektu przykładowego
 > * Uruchom producenta strumieni Akka 
-> * Uruchom odbiorcę strumieni Akka
+> * Uruchom konsumenta strumieni Akka
 
 > [!NOTE]
 > Ten przykład jest dostępny w witrynie [GitHub](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/akka/java)
@@ -42,18 +42,18 @@ Aby ukończyć ten samouczek, upewnij się, że masz następujące wymagania wst
 * [Zestaw Java Development Kit (JDK) 1.8+](https://aka.ms/azure-jdks)
     * W systemie Ubuntu uruchom polecenie `apt-get install default-jdk`, aby zainstalować zestaw JDK.
     * Upewnij się, że zmienna środowiskowa JAVA_HOME wskazuje folder, w którym zainstalowano zestaw JDK.
-* [Pobieranie](https://maven.apache.org/download.cgi) i [Instalowanie](https://maven.apache.org/install.html) archiwum binarnego Maven
+* [Pobierz](https://maven.apache.org/download.cgi) i [zainstaluj](https://maven.apache.org/install.html) archiwum binarne Maven
     * W systemie Ubuntu możesz uruchomić polecenie `apt-get install maven`, aby zainstalować narzędzie Maven.
-* [Usługa Git](https://www.git-scm.com/downloads)
+* [Git](https://www.git-scm.com/downloads)
     * W systemie Ubuntu możesz uruchomić polecenie `sudo apt-get install git`, aby zainstalować usługę Git.
 
 ## <a name="create-an-event-hubs-namespace"></a>Tworzenie przestrzeni nazw usługi Event Hubs
 
-Przestrzeń nazw Event Hubs jest wymagana do wysyłania lub odbierania z dowolnej usługi Event Hubs. Aby uzyskać informacje na temat pobierania punktu końcowego Event Hubs Kafka, zobacz temat [Tworzenie Kafka włączonych Event Hubs](event-hubs-create-kafka-enabled.md) . Skopiuj Event Hubs parametry połączenia do późniejszego użycia.
+Obszar nazw centrum zdarzeń jest wymagany do wysyłania lub odbierania z dowolnej usługi Centrum zdarzeń. Zobacz [Tworzenie centrów zdarzeń z włączoną platformą Kafka, aby](event-hubs-create.md) uzyskać informacje na temat uzyskiwania punktu końcowego usługi Event Hubs Platformy Kafka. Pamiętaj, aby skopiować parametry połączenia usługi Event Hubs do późniejszego użycia.
 
 ## <a name="clone-the-example-project"></a>Klonowanie projektu przykładowego
 
-Teraz, gdy masz Event Hubs parametry połączenia z włączoną obsługą Kafka, Sklonuj Event Hubs platformy Azure dla repozytorium Kafka i przejdź do podfolderu `akka`:
+Teraz, gdy masz parametry połączenia usługi Event Hubs, sklonuj usługi Azure Event `akka` Hubs dla repozytorium platformy Kafka i przejdź do podfolderu:
 
 ```shell
 git clone https://github.com/Azure/azure-event-hubs-for-kafka.git
@@ -62,13 +62,13 @@ cd azure-event-hubs-for-kafka/tutorials/akka/java
 
 ## <a name="run-akka-streams-producer"></a>Uruchom producenta strumieni Akka
 
-Korzystając z podanego przykładowego strumienia Akka, Wysyłaj komunikaty do usługi Event Hubs.
+Za pomocą podanego przykładu producenta strumieni Akka, wysyłaj wiadomości do usługi Event Hubs.
 
-### <a name="provide-an-event-hubs-kafka-endpoint"></a>Podaj Event Hubs punkt końcowy Kafka
+### <a name="provide-an-event-hubs-kafka-endpoint"></a>Podaj punkt końcowy usługi Event Hubs Platformy Kafka
 
-#### <a name="producer-applicationconf"></a>Aplikacja producenta. conf
+#### <a name="producer-applicationconf"></a>Wniosek producenta.conf
 
-Zaktualizuj `bootstrap.servers` i `sasl.jaas.config` wartości w `producer/src/main/resources/application.conf`, aby skierować producenta do punktu końcowego Event Hubs Kafka z prawidłowym uwierzytelnianiem.
+Zaktualizuj `bootstrap.servers` wartości i `sasl.jaas.config` wartości, `producer/src/main/resources/application.conf` aby skierować producenta do punktu końcowego usługi Event Hubs Platformy Kafka z poprawnym uwierzytelnianiem.
 
 ```xml
 akka.kafka.producer {
@@ -88,24 +88,24 @@ akka.kafka.producer {
 
 ### <a name="run-producer-from-the-command-line"></a>Uruchom producenta z wiersza polecenia
 
-Aby uruchomić producenta z wiersza polecenia, wygeneruj plik JAR, a następnie uruchom go z poziomu Maven (lub wygeneruj plik JAR przy użyciu Maven, a następnie uruchom polecenie w języku Java, dodając wymagane Kafka JAR (y) do ścieżki klasy):
+Aby uruchomić producenta z wiersza polecenia, wygenerować JAR, a następnie uruchomić z wewnątrz Maven (lub wygenerować JAR przy użyciu Maven, a następnie uruchomić w języku Java, dodając niezbędne Kafka JAR(s) do ścieżki klasy):
 
 ```shell
 mvn clean package
 mvn exec:java -Dexec.mainClass="AkkaTestProducer"
 ```
 
-Producent rozpoczyna wysyłanie zdarzeń do centrum zdarzeń z włączonym Kafka w temacie `test` i drukuje zdarzenia do stdout.
+Producent rozpoczyna wysyłanie wydarzeń do `test`centrum zdarzeń na temat i drukuje wydarzenia do stdout.
 
-## <a name="run-akka-streams-consumer"></a>Uruchom odbiorcę strumieni Akka
+## <a name="run-akka-streams-consumer"></a>Uruchom konsumenta strumieni Akka
 
-Korzystając z podanego przykładu konsumenta, odbieraj komunikaty z centrów zdarzeń z obsługą Kafka.
+Korzystając z podanego przykładu konsumenta, odbieraj wiadomości z Centrum zdarzeń.
 
-### <a name="provide-an-event-hubs-kafka-endpoint"></a>Podaj Event Hubs punkt końcowy Kafka
+### <a name="provide-an-event-hubs-kafka-endpoint"></a>Podaj punkt końcowy usługi Event Hubs Platformy Kafka
 
-#### <a name="consumer-applicationconf"></a>Aplikacja konsumencka. conf
+#### <a name="consumer-applicationconf"></a>Aplikacja dla konsumentów.conf
 
-Zaktualizuj `bootstrap.servers` i `sasl.jaas.config` wartości w `consumer/src/main/resources/application.conf`, aby skierować odbiorcę do Event Hubs punktu końcowego Kafka z prawidłowym uwierzytelnianiem.
+Zaktualizuj `bootstrap.servers` wartości i `sasl.jaas.config` wartości, `consumer/src/main/resources/application.conf` aby skierować konsumenta do punktu końcowego usługi Event Hubs Platformy Kafka z poprawnym uwierzytelnianiem.
 
 ```xml
 akka.kafka.consumer {
@@ -126,36 +126,36 @@ akka.kafka.consumer {
 }
 ```
 
-### <a name="run-consumer-from-the-command-line"></a>Uruchom klienta z wiersza polecenia
+### <a name="run-consumer-from-the-command-line"></a>Uruchamianie konsumenta z wiersza polecenia
 
-Aby uruchomić konsumenta z wiersza polecenia, wygeneruj plik JAR, a następnie uruchom go z poziomu Maven (lub wygeneruj plik JAR przy użyciu Maven, a następnie uruchom polecenie w języku Java, dodając wymagane Kafka JAR (y) do ścieżki klasy):
+Aby uruchomić konsumenta z wiersza polecenia, wygenerować JAR, a następnie uruchomić z wewnątrz Maven (lub wygenerować JAR przy użyciu Maven, a następnie uruchomić w języku Java, dodając niezbędne Kafka JAR(s) do ścieżki klasy):
 
 ```shell
 mvn clean package
 mvn exec:java -Dexec.mainClass="AkkaTestConsumer"
 ```
 
-Jeśli centrum zdarzeń z obsługą Kafka ma zdarzenia (na przykład jeśli producent jest również uruchomiony), konsument rozpoczyna otrzymywanie zdarzeń z tematu `test`. 
+Jeśli centrum zdarzeń zawiera zdarzenia (na przykład, jeśli producent jest również uruchomiony), `test`konsument rozpoczyna odbieranie zdarzeń z tematu . 
 
-Aby uzyskać bardziej szczegółowe informacje na temat strumieni Akka, zapoznaj się z [instrukcją Akka strumienie Kafka](https://doc.akka.io/docs/akka-stream-kafka/current/home.html) .
+Zapoznaj się z [Akka Strumienie Kafka Przewodnik](https://doc.akka.io/docs/akka-stream-kafka/current/home.html) bardziej szczegółowe informacje na temat Strumieni Akka.
 
 ## <a name="next-steps"></a>Następne kroki
-W ramach tego samouczka nauczysz się łączyć strumienie Akka z centrami zdarzeń z obsługą Kafkau bez konieczności zmiany klientów protokołu lub uruchamiania własnych klastrów. Event Hubs platformy Azure dla usługi Kafka obsługuje [Apache Kafka w wersji 1,0.](https://kafka.apache.org/10/documentation.html). Następujące czynności zostały wykonane w ramach tego samouczka: 
+W tym samouczku dowiesz się, jak połączyć strumienie Akka z centrum zdarzeń bez zmiany klientów protokołu lub uruchamiania własnych klastrów. Usługa Azure Event Hubs for the Kafka obsługuje [apache kafka w wersji 1.0.](https://kafka.apache.org/10/documentation.html). W ramach tego samouczka wykonaliśmy następujące czynności: 
 
 > [!div class="checklist"]
 > * Tworzenie przestrzeni nazw usługi Event Hubs
 > * Klonowanie projektu przykładowego
 > * Uruchom producenta strumieni Akka 
-> * Uruchom odbiorcę strumieni Akka
+> * Uruchom konsumenta strumieni Akka
 
 Aby dowiedzieć się więcej na temat usługi Event Hubs i usługi Event Hubs dla platformy Kafka, zobacz następujący temat:  
 
 - [Dowiedz się więcej na temat usługi Event Hubs](event-hubs-what-is-event-hubs.md)
 - [Usługa Event Hubs dla platformy Apache Kafka](event-hubs-for-kafka-ecosystem-overview.md)
-- [Jak utworzyć centra Event Hubs z obsługą platformy Kafka](event-hubs-create-kafka-enabled.md)
+- [Jak utworzyć centrum zdarzeń](event-hubs-create.md)
 - [Przesyłanie strumieniowe do usługi Event Hubs z aplikacji platformy Kafka](event-hubs-quickstart-kafka-enabled-event-hubs.md)
-- [Dublowanie brokera platformy Kafka w centrum zdarzeń z obsługą platformy Kafka](event-hubs-kafka-mirror-maker-tutorial.md)
-- [Łączenie platformy Apache Spark z centrum zdarzeń z obsługą platformy Kafka](event-hubs-kafka-spark-tutorial.md)
-- [Łączenie platformy Apache Flink z centrum zdarzeń z obsługą platformy Kafka](event-hubs-kafka-flink-tutorial.md)
-- [Integrowanie narzędzia Kafka Connect z centrum zdarzeń z obsługą platformy Kafka](event-hubs-kafka-connect-tutorial.md)
+- [Dublowanie brokera platformy Kafka w centrum zdarzeń](event-hubs-kafka-mirror-maker-tutorial.md)
+- [Łączenie platformy Apache Spark z centrum zdarzeń](event-hubs-kafka-spark-tutorial.md)
+- [Łączenie platformy Apache Flink z centrum zdarzeń](event-hubs-kafka-flink-tutorial.md)
+- [Integracja platformy Kafka Connect z centrum zdarzeń](event-hubs-kafka-connect-tutorial.md)
 - [Eksplorowanie przykładów w witrynie GitHub](https://github.com/Azure/azure-event-hubs-for-kafka)

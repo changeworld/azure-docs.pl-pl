@@ -1,100 +1,98 @@
 ---
-title: Azure Monitor konfigurację klucza zarządzanego przez klienta
-description: Informacje i kroki służące do konfigurowania klucza zarządzanego przez klienta (CMK) w celu szyfrowania danych w obszarach roboczych Log Analytics przy użyciu klucza Azure Key Vault.
+title: Konfiguracja klucza zarządzanego przez klienta usługi Azure Monitor
+description: Informacje i kroki konfigurowania klucza zarządzanego przez klienta (CMK) do szyfrowania danych w obszarach roboczych usługi Log Analytics przy użyciu klucza usługi Azure Key Vault.
 ms.subservice: logs
 ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
-ms.date: 02/24/2020
-ms.openlocfilehash: d14b4a3f4c3fdddac64596760fdbbfefce49036a
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.date: 03/26/2020
+ms.openlocfilehash: 563a50d4589a83f710caa8ff2d2d95065909fc5f
+ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78364398"
+ms.lasthandoff: 03/29/2020
+ms.locfileid: "80384181"
 ---
-# <a name="azure-monitor-customer-managed-key-configuration"></a>Azure Monitor konfigurację klucza zarządzanego przez klienta 
+# <a name="azure-monitor-customer-managed-key-configuration"></a>Konfiguracja klucza zarządzanego przez klienta usługi Azure Monitor 
 
-Ten artykuł zawiera ogólne informacje i instrukcje dotyczące konfigurowania kluczy zarządzanych przez klienta (CMK) dla obszarów roboczych Log Analytics i składników Application Insights. Po skonfigurowaniu wszystkie dane wysyłane do obszarów roboczych lub składników są szyfrowane za pomocą klucza Azure Key Vault.
+Ten artykuł zawiera podstawowe informacje i kroki konfigurowania kluczy zarządzanych przez klienta (CMK) dla obszarów roboczych usługi Log Analytics i składników usługi Application Insights. Po skonfigurowaniu wszystkie dane wysyłane do obszarów roboczych lub składników są szyfrowane za pomocą klucza usługi Azure Key Vault.
 
-Zalecamy przejrzenie [ograniczeń i ograniczeń](#limitations-and-constraints) poniżej przed rozpoczęciem konfiguracji.
+Zalecamy [zapoznanie się z ograniczeniami i ograniczeniami](#limitations-and-constraints) poniżej przed konfiguracją.
 
 ## <a name="disclaimers"></a>Zastrzeżenia
 
-- Azure Monitor CMK to funkcja wczesnego dostępu i włączona dla zarejestrowanej subskrypcji.
+- Usługa Azure Monitor CMK jest funkcją wczesnego dostępu i jest włączona dla zarejestrowanych subskrypcji.
 
-- Wdrożenie CMK opisane w tym artykule jest dostarczane w jakości produkcyjnej i obsługiwane w taki sposób, że jest to funkcja wczesnego dostępu.
+- Wdrożenie cmk opisane w tym artykule jest dostarczane w jakości produkcji i obsługiwane jako takie, chociaż jest to funkcja wczesnego dostępu.
 
-- Funkcja CMK jest dostarczana w dedykowanym klastrze magazynów danych, który jest klastrem usługi Azure Eksplorator danych (ADX) i jest przeznaczony dla klientów wysyłających 1 TB dziennie. 
+- Funkcja CMK jest dostarczana w dedykowanym klastrze magazynu danych, który jest klastrem usługi Azure Data Explorer (ADX) i jest odpowiedni dla klientów wysyłających 1 TB dziennie lub więcej. 
 
-- Model cen CMK jest obecnie niedostępny i nie został uwzględniony w tym artykule. Model cenowy dedykowanego klastra ADX jest oczekiwany w drugim kwartale roku kalendarzowego (CY) 2020 i będzie miał zastosowanie do wszystkich istniejących wdrożeń CMK.
+- Model cenowy CMK nie jest obecnie dostępny i nie jest uwzględniony w tym artykule. Model cenowy dedykowanego klastra ADX jest oczekiwany w drugim kwartale roku kalendarzowego (CY) 2020 i będzie miał zastosowanie do wszystkich istniejących wdrożeń CMK.
 
-- W tym artykule opisano konfigurację CMK dla obszarów roboczych Log Analytics. Program CMK for Application Insights Components jest również obsługiwany przy użyciu tego artykułu, podczas gdy różnice są wymienione w dodatku.
+- W tym artykule opisano konfigurację cmk dla obszarów roboczych usługi Log Analytics. Składniki CMK for Application Insights są również obsługiwane przy użyciu tego artykułu, podczas gdy różnice są wymienione w dodatku.
 
 > [!NOTE]
-> Log Analytics i Application Insights używają tej samej platformy do przechowywania danych i aparatu zapytań.
-> Te dwa magazyny są przełączane przez integrację Application Insights w Log Analytics, aby utworzyć pojedynczy magazyn ujednoliconych dzienników w Azure Monitor. Ta zmiana jest planowana w drugim kwartale roku kalendarzowego 2020. Jeśli nie musisz wdrażać CMK dla danych Application Insights, zalecamy oczekiwanie na zakończenie konsolidacji, ponieważ takie wdrożenia zostaną zakłócone przez konsolidację i konieczne będzie ponowne skonfigurowanie CMK po migracji do dziennika Obszar roboczy analizy. Wartość 1 TB na dzień jest stosowana na poziomie klastra i do momentu ukończenia konsolidacji w drugim kwartale Application Insights i Log Analytics wymagają oddzielnych klastrów.
+> Usługa Log Analytics i usługa Application Insights korzystają z tej samej platformy magazynu danych i aparatu zapytań.
+> Łączymy te dwa sklepy za pośrednictwem integracji usługi Application Insights z usługą Log Analytics w celu utworzenia pojedynczego magazynu dzienników ujednoliconych w usłudze Azure Monitor. Zmiana ta planowana jest na drugi kwartał roku kalendarzowego 2020. Jeśli nie musisz do tego czasu wdrażać cmk dla danych usługi Application Insights, zalecamy oczekiwanie na zakończenie konsolidacji, ponieważ takie wdrożenia zostaną zakłócone przez konsolidację i trzeba będzie ponownie skonfigurować cmk po migracji do dziennika Obszar roboczy analizy. Minimum 1 TB dziennie ma zastosowanie na poziomie klastra i do czasu zakończenia konsolidacji w drugim kwartale usługa Application Insights i usługa Log Analytics wymagają oddzielnych klastrów.
 
-## <a name="customer-managed-key-cmk-overview"></a>Klucz zarządzany przez klienta (CMK) — Omówienie
+## <a name="customer-managed-key-cmk-overview"></a>Omówienie klucza zarządzanego przez klienta (CMK)
 
-[Szyfrowanie w spoczynku](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest) to wspólne wymagania w zakresie ochrony prywatności i bezpieczeństwa w organizacjach. Możesz pozwolić, aby platforma Azure całkowicie zarządzała szyfrowaniem w stanie spoczynku, podczas gdy masz różne opcje, aby dokładnie zarządzać szyfrowaniem lub kluczami szyfrowania.
+[Szyfrowanie w spoczynku](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest) jest powszechnym wymogiem prywatności i bezpieczeństwa w organizacjach. Możesz pozwolić platformie Azure całkowicie zarządzać szyfrowaniem w spoczynku, podczas gdy masz różne opcje ścisłego zarządzania kluczami szyfrowania lub szyfrowania.
 
-Magazyn danych Azure Monitor zapewnia, że wszystkie dane zaszyfrowane przy użyciu kluczy zarządzanych przez platformę Azure są przechowywane w usłudze Azure Storage. Azure Monitor udostępnia również opcję szyfrowania danych przy użyciu własnego klucza przechowywanego w [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview), do którego uzyskuje się dostęp przy użyciu uwierzytelniania [tożsamości zarządzanej](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) przypisanego przez system. Ten klucz może być [chroniony przez oprogramowanie lub sprzęt-moduł HSM](https://docs.microsoft.com/azure/key-vault/key-vault-overview).
-Azure Monitor korzystania z szyfrowania jest taka sama jak w sposobie działania [szyfrowania usługi Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-service-encryption#about-azure-storage-encryption) .
+Magazyn danych usługi Azure Monitor zapewnia, że wszystkie dane zaszyfrowane w spoczynku przy użyciu kluczy zarządzanych przez platformę Azure podczas przechowywania w usłudze Azure Storage. Usługa Azure Monitor udostępnia również opcję szyfrowania danych przy użyciu własnego klucza, który jest przechowywany w [usłudze Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview), do którego uzyskuje się dostęp przy użyciu uwierzytelniania [tożsamości zarządzanej](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) przypisanego przez system. Ten klucz może być [chroniony przez oprogramowanie lub sprzętowy moduł HSM.](https://docs.microsoft.com/azure/key-vault/key-vault-overview)
+Użycie szyfrowania w usłudze Azure Monitor jest identyczne ze sposobem obsługi [szyfrowania usługi Azure Storage.](https://docs.microsoft.com/azure/storage/common/storage-service-encryption#about-azure-storage-encryption)
 
-Częstotliwość, z jaką Azure Monitor dostęp do magazynu Key Vault dla operacji zawijania i rozwinięcia, wynosi od 6 do 60 sekund. Azure Monitor Storage zawsze uwzględnia zmiany w uprawnieniach klucza w ciągu godziny.
+Częstotliwość, że usługa Azure Monitor Storage uzyskuje dostęp do magazynu kluczy dla operacji zawijania i odwijania wynosi od 6 do 60 sekund.Usługa Azure Monitor Storage zawsze uwzględnia zmiany w uprawnieniach kluczy w ciągu godziny.
 
-Dane odebrane w ciągu ostatnich 14 dni również są przechowywane w pamięci podręcznej (dysk SSD) w celu wydajnej operacji aparatu zapytań. Te dane pozostają zaszyfrowane przy użyciu kluczy firmy Microsoft bez względu na konfigurację CMK, ale pracujemy nad zaszyfrowaniem SSD z CMK wczesne 2020.
+Połkniętych danych w ciągu ostatnich 14 dni jest również przechowywany w gorącej pamięci podręcznej (SSD-backed) dla wydajnej pracy aparatu zapytań. Te dane pozostają zaszyfrowane za pomocą kluczy firmy Microsoft niezależnie od konfiguracji CMK, ale pracujemy nad zaszyfrowaniem dysków SSD za pomocą cmk na początku 2020 roku.
 
-## <a name="how-cmk-works-in-azure-monitor"></a>Jak działa CMK w Azure Monitor
+## <a name="how-cmk-works-in-azure-monitor"></a>Jak działa cmk w usłudze Azure Monitor
 
-Azure Monitor korzysta z zarządzanej tożsamości przypisanej do systemu, aby udzielić dostępu do Azure Key Vault. Tożsamość zarządzana przypisana przez system może być skojarzona tylko z pojedynczym zasobem platformy Azure. Tożsamość Azure Monitorgo magazynu danych (klastra ADX) jest obsługiwana na poziomie klastra, co oznacza, że funkcja CMK jest dostarczana w dedykowanym klastrze ADX. Aby obsługiwać CMK w wielu obszarach roboczych, nowy zasób Log Analytics (*klaster*) pełni rolę pośredniego połączenia tożsamości między Key Vault i obszarami roboczymi log Analytics. Pojęcie to jest zgodne z ograniczeniem tożsamości przypisanym do systemu, a tożsamość jest utrzymywana między klastrem ADX i zasobem *klastra* log Analytics, podczas gdy dane wszystkich skojarzonych obszarów roboczych są chronione za pomocą klucza Key Vault. Magazyn klastra underlay ADX używa zarządzanej tożsamości, która\'s skojarzona z zasobem *klastra* do uwierzytelniania i uzyskiwania dostępu do Azure Key Vault za pośrednictwem Azure Active Directory.
+Usługa Azure Monitor wykorzystuje przypisaną do systemu tożsamość zarządzaną, aby udzielić dostępu do usługi Azure Key Vault.Tożsamości zarządzanej przypisanej do systemu można skojarzyć tylko z jednym zasobem platformy Azure. Tożsamość magazynu danych usługi Azure Monitor (klaster ADX) jest obsługiwana na poziomie klastra i nakazuje to, że funkcja CMK jest dostarczana w dedykowanym klastrze ADX. Aby obsługiwać cmk w wielu obszarach roboczych, nowy zasób usługi Log Analytics *(Klaster)* wykonuje jako pośrednie połączenie tożsamości między magazynem kluczy a obszarami roboczymi usługi Log Analytics. Ta koncepcja jest zgodna z ograniczeniem tożsamości przypisanym przez system, a tożsamość jest zachowywana między klastrem ADX a zasobem *klastra analizy* dzienników, podczas gdy dane wszystkich skojarzonych obszarów roboczych są chronione za pomocą klucza Usługi Key Vault. Podkładanie magazynu klastra ADX używa\'tożsamości zarządzanej skojarzonej z zasobem *klastra* do uwierzytelniania usługi Azure Key Vault za pośrednictwem usługi Azure Active Directory i uzyskiwania do niego dostępu.
 
-![CMK — Omówienie](media/customer-managed-keys/cmk-overview.png)
-1.  Key Vault klienta.
-2.  Zasób klastra Log Analytics klienta mającego zarządzaną tożsamość z uprawnieniami do Key Vault — tożsamość jest obsługiwana na poziomie magazynu danych (ADX klaster).
-3.  Azure Monitor dedykowany klaster ADX.
-4.  Obszary robocze klientów skojarzone z zasobem klastra na potrzeby szyfrowania CMK.
+![Przegląd CMK](media/customer-managed-keys/cmk-overview.png)
+1.  Magazyn kluczy klienta.
+2.  Zasób *klastra* analizy dzienników klienta, który zarządzał tożsamością z uprawnieniami do usługi Key Vault — tożsamość jest obsługiwana na poziomie magazynu danych (klaster ADX).
+3.  Dedykowany klaster ADX usługi Azure Monitor.
+4.  Obszary robocze klienta skojarzone z zasobem klastra do szyfrowania CMK.
 
 ## <a name="encryption-keys-management"></a>Zarządzanie kluczami szyfrowania
 
-Istnieją trzy typy kluczy, które wiążą się z szyfrowaniem danych magazynu:
+Istnieją 3 typy kluczy zaangażowanych w szyfrowanie danych magazynu:
 
-- Klucz szyfrowania klucza **KEK** w Key Vault (CMK)
-- Klucz szyfrowania konta **AEK**
-- Klucz szyfrowania danych
+- **KEK** - Klucz szyfrowania klucza w magazynie kluczy (CMK)
+- **AEK** - Klucz szyfrowania konta
+- **DEK** — klucz szyfrowania danych
 
-Mają zastosowanie następujące reguły:
+Mają zastosowanie następujące zasady:
 
 - Konto magazynu ADX generuje unikatowy klucz szyfrowania dla każdego konta magazynu, który jest znany jako AEK.
 
-- AEK jest używany do wyprowadzania DEKs, które są kluczami, które są używane do szyfrowania poszczególnych bloków danych zapisywana na dysku.
+- AEK służy do wyprowadzania deks, które są klucze, które są używane do szyfrowania każdego bloku danych zapisanych na dysku.
 
-- Podczas konfigurowania klucza w Key Vault i odwoływania się do niego w ramach zasobu *klastra* usługa Azure Storage zawija AEK z KEK w Azure Key Vault.
+- Po skonfigurowaniu klucza w magazynie kluczy i odwoływaniu się do niego w zasobie *klastra* usługa Azure Storage wysyła żądania do usługi Azure Key Vault w celu zawijania i odwijania AEK w celu wykonania operacji szyfrowania i odszyfrowywania danych.
 
-- KEK nigdy nie opuści Key Vault i w przypadku klucza HSM nigdy nie opuszcza sprzętu.
+- KEK nigdy nie opuszcza magazynu kluczy, a w przypadku klucza HSM nigdy nie opuszcza sprzętu.
 
-- Usługa Azure Storage korzysta z zarządzanej tożsamości skojarzonej z zasobem *klastra* w celu uwierzytelniania i dostępu do Azure Key Vault za pośrednictwem Azure Active Directory.
+- Usługa Azure Storage używa tożsamości zarządzanej skojarzonej z zasobem *klastra* do uwierzytelniania i dostępu do usługi Azure Key Vault za pośrednictwem usługi Azure Active Directory.
 
-- W przypadku operacji odczytu/zapisu usługa Azure Storage wysyła żądania do Azure Key Vault, aby otoczyć i odszyfrować AEK w celu wykonania operacji szyfrowania i odszyfrowywania.
+## <a name="cmk-provisioning-procedure"></a>Procedura tworzenia inicjowania obsługi administracyjnej cmk
 
-## <a name="cmk-provisioning-procedure"></a>Procedura inicjowania obsługi CMK
+W przypadku konfiguracji CMK usługi Application Insights postępuj zgodnie z zawartością dodatku dla kroków 3 i 6.
 
-Aby uzyskać Application Insights konfigurację CMK, postępuj zgodnie z zawartością dodatku dla kroków 3 i 6.
-
-1. Listy dozwolonych subskrypcji — jest to wymagane w przypadku tej funkcji wczesnego dostępu
-2. Tworzenie Azure Key Vault i przechowywanie klucza
+1. Biała lista subskrypcji — jest to wymagane dla tej funkcji wczesnego dostępu
+2. Tworzenie usługi Azure Key Vault i przechowywanie klucza
 3. Tworzenie zasobu *klastra*
-4. Inicjowanie obsługi Azure Monitor magazynu danych (klastra ADX)
-5. Udziel uprawnień do Key Vault
-6. Skojarzenie obszarów roboczych Log Analytics
+4. Inicjowanie obsługi administracyjnej magazynu danych usługi Azure Monitor (klaster ADX)
+5. Udzielanie uprawnień do magazynu kluczy
+6. Kojarzenie obszarów roboczych usługi Log Analytics
 
-Procedura nie jest obecnie obsługiwana w interfejsie użytkownika, a proces aprowizacji jest wykonywany za pośrednictwem interfejsu API REST.
+Procedura nie jest obsługiwana w interfejsie użytkownika obecnie i proces inicjowania obsługi administracyjnej jest wykonywany za pośrednictwem interfejsu API REST.
 
 > [!IMPORTANT]
-> Wszystkie żądania interfejsu API muszą zawierać Token autoryzacji okaziciela w nagłówku żądania.
+> Każde żądanie interfejsu API musi zawierać token autoryzacji na okaziciela w nagłówku żądania.
 
-Na przykład:
+Przykład:
 
 ```rst
 GET
@@ -102,43 +100,43 @@ https://management.azure.com/subscriptions/<subscriptionId>/resourcegroups/<reso
 Authorization: Bearer eyJ0eXAiO....
 ```
 
-Gdzie *eyJ0eXAiO....* reprezentuje token pełnej autoryzacji. 
+Gdzie *eyJ0eXAiO....* reprezentuje pełny token autoryzacji. 
 
-Token można uzyskać, korzystając z jednej z następujących metod:
+Token można uzyskać przy użyciu jednej z następujących metod:
 
-1. Użyj metody [rejestracje aplikacji](https://docs.microsoft.com/graph/auth/auth-concepts#access-tokens) .
+1. Użyj metody [rejestracji aplikacji.](https://docs.microsoft.com/graph/auth/auth-concepts#access-tokens)
 
 2. W witrynie Azure Portal
-    1. Przejdź do Azure Portal w narzędziu deweloperskim (F12)
-    1. Wyszukaj ciąg autoryzacji w obszarze "nagłówki żądania" w jednym z wystąpień "Batch? API-Version". Wygląda na to: "Authorization: Bearer \<token\>". 
-    1. Skopiuj i dodaj go do wywołania interfejsu API zgodnie z poniższymi przykładami.
+    1. Przejdź do witryny Azure portal w "narzędziu dla deweloperów (F12)
+    1. Poszukaj ciągu autoryzacji w obszarze "Nagłówki żądań" w jednym z wystąpień "batch?api-version". Wygląda na to: "autoryzacja: token na okaziciela \<\>". 
+    1. Skopiuj i dodaj go do wywołania interfejsu API według poniższych przykładów.
 
-3. Przejdź do witryny dokumentacji REST platformy Azure. Naciśnij pozycję "Wypróbuj" w dowolnym interfejsie API i skopiuj token okaziciela.
+3. Przejdź do witryny dokumentacji usługi Azure REST. Naciśnij przycisk "Wypróbuj" na dowolnym interfejsie API i skopiuj token na okaziciela.
 
-### <a name="subscription-whitelisting"></a>Listy dozwolonych subskrypcji
+### <a name="subscription-whitelisting"></a>Biała lista subskrypcji
 
-CMK to funkcja wczesnego dostępu. Subskrypcje, w których planujesz utworzyć zasoby *klastra* , muszą być listy dozwolonych wcześniej przez grupę produktów platformy Azure. Użyj swoich kontaktów do firmy Microsoft, aby podać identyfikatory subskrypcji.
+Funkcja CMK jest funkcją wczesnego dostępu. Subskrypcje, w których planujesz utworzyć zasoby *klastra,* muszą być wcześniej wpisane na białą listę przez grupę produktów platformy Azure. Użyj kontaktów w firmie Microsoft, aby podać identyfikatory subskrypcji.
 
 > [!IMPORTANT]
-> Funkcja CMK jest regionalna. Twoje Azure Key Vault, konto magazynu, zasób *klastra* i skojarzone log Analytics obszary robocze muszą znajdować się w tym samym regionie, ale mogą znajdować się w różnych subskrypcjach.
+> Możliwości CMK mają regionalny rozwój. Obszary robocze usługi Azure Key Vault, *cluster* resource i associated Log Analytics muszą znajdować się w tym samym regionie, ale mogą znajdować się w różnych subskrypcjach.
 
 ### <a name="storing-encryption-key-kek"></a>Przechowywanie klucza szyfrowania (KEK)
 
-Utwórz zasób Azure Key Vault, a następnie Wygeneruj lub zaimportuj klucz, który ma być używany do szyfrowania danych.
+Utwórz lub użyj usługi Azure Key Vault, który już musisz wygenerować, lub zaimportuj klucz do szyfrowania danych. Usługa Azure Key Vault musi być skonfigurowana jako generowana w celu ochrony klucza i dostępu do danych w usłudze Azure Monitor. Tę konfigurację można zweryfikować w obszarze właściwości w magazynie kluczy, należy włączyć zarówno *ochronę usuwania nietrwałego,* jak i *oczyszczania.*
 
-Azure Key Vault należy skonfigurować jako możliwy do odzyskania, aby chronić klucz i dostęp do danych Azure Monitor.
+Te ustawienia są dostępne za pośrednictwem interfejsu WIERSZA i programu PowerShell:
+- [Usuwanie nietrwałe](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete)
+- [Przeczyścić osłony ochronne](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete#purge-protection) przed usunięciem siły z sekret / skarbiec nawet po miękkim usunięciu
 
-Te ustawienia są dostępne za pośrednictwem interfejsu wiersza polecenia i programu PowerShell:
-- [Usuwanie nietrwałe](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete) musi być włączone
-- [Ochrona przed przeczyszczeniem](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete#purge-protection) powinna być włączona, aby zabezpieczyć przed wymuszeniem usunięcia wpisu tajnego lub magazynu nawet po usunięciu nietrwałego
+### <a name="create-cluster-resource"></a>Tworzenie *zasobu klastra*
 
-### <a name="create-cluster-resource"></a>Utwórz zasób *klastra*
+Ten zasób jest używany jako pośrednie połączenie tożsamości między magazynem kluczy a obszarami roboczymi. Po otrzymaniu potwierdzenia, że subskrypcje zostały umieszczone na białej liście, utwórz zasób *klastra analizy* dzienników w regionie, w którym znajdują się obszary robocze. Usługa Application Insights i usługa Log Analytics wymagają oddzielnych typów zasobów *klastra.* Typ zasobu *klastra* jest definiowany w czasie tworzenia przez ustawienie właściwości "clusterType" na "LogAnalytics" lub "ApplicationInsights". Nie można zmienić typu zasobu klastra.
 
-Ten zasób jest używany jako połączenie tożsamości pośredniej między Key Vault i obszarami roboczymi. Po otrzymaniu potwierdzenia, że subskrypcje zostały listy dozwolonyche, utwórz zasób *klastra* log Analytics w regionie, w którym znajdują się obszary robocze. Application Insights i Log Analytics wymagają oddzielnych zasobów klastra. Typ zasobu *klastra* jest definiowany w czasie tworzenia przez ustawienie właściwości "clustertype" na wartość "LogAnalytics" lub "ApplicationInsights". Nie można zmienić typu zasobu klastra.
+W przypadku konfiguracji CMK usługi Application Insights należy postępować zgodnie z zawartością dodatku.
 
-Aby uzyskać Application Insights konfigurację CMK, postępuj zgodnie z zawartością dodatku dla tego kroku.
+Podczas tworzenia zasobu *klastra* należy określić poziom rezerwacji zdolności produkcyjnych (sku) zasobu *klastra.* Poziom rezerwacji pojemności może być w zakresie od 1000 do 2000 i można go zaktualizować w krokach 100 później. Jeśli potrzebujesz poziomu rezerwacji pojemności wyższego niż 2000, skontaktuj się z kontaktem firmy Microsoft, aby go włączyć. Ta właściwość nie ma obecnie wpływu na rozliczenia — po wprowadzeniu modelu cenowego dla dedykowanego klastra rozliczenia będą miały zastosowanie do wszystkich istniejących wdrożeń CMK.
 
-**Tworzenie**
+**Utwórz**
 
 ```rst
 PUT https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2019-08-01-preview
@@ -146,39 +144,38 @@ Authorization: Bearer <token>
 Content-type: application/json
 
 {
-  "location": "<region-name>",
-   "properties": {
-      "clusterType": "LogAnalytics"
+  "identity": {
+    "type": "systemAssigned"
     },
-   "identity": {
-      "type": "systemAssigned"
-   }
+  "sku": {
+    "name": "capacityReservation",
+    "Capacity": 1000
+    },
+  "properties": {
+    "clusterType": "LogAnalytics",
+    },
+  "location": "<region-name>",
 }
 ```
-Tożsamość jest przypisywana do zasobu *klastra* podczas tworzenia.
-wartość "clustertype" to "ApplicationInsights" dla Application Insights CMK.
+Tożsamość jest przypisywana do zasobu *klastra* w czasie tworzenia.
 
-**Odpowiedź**
+**Odpowiedzi**
 
-202 zostało zaakceptowane. Jest to standardowa Menedżer zasobówa odpowiedź dla operacji asynchronicznych.
+202 Zaakceptowane. Jest to standardowa odpowiedź Menedżera zasobów dla operacji asynchronicznych.
 
-Jeśli chcesz usunąć zasób *klastra* z dowolnego powodu — na przykład utwórz go przy użyciu innej nazwy lub typu klastra, użyj tego interfejsu API REST:
+### <a name="azure-monitor-data-store-adx-cluster-provisioning"></a>Inicjowanie obsługi administracyjnej magazynu danych usługi Azure Monitor (klaster ADX)
 
-```rst
-DELETE
-https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2019-08-01-preview
-```
-
-### <a name="azure-monitor-data-store-adx-cluster-provisioning"></a>Inicjowanie obsługi Azure Monitor magazynu danych (klastra ADX)
-
-W okresie wczesnego dostępu do funkcji klaster ADX jest inicjowany ręcznie przez zespół produktu po zakończeniu poprzednich kroków. Użyj kanału firmy Microsoft, aby podać szczegóły zasobu *klastra* . Skopiuj odpowiedź JSON z interfejsu API REST zasobu *klastra* :
+W okresie wczesnego dostępu funkcji klaster ADX jest aprowizowany ręcznie przez zespół produktu po wykonaniu poprzednich kroków. Użyj kanału firmy Microsoft do inicjowania obsługi administracyjnej podczas dostarczania odpowiedzi zasobów *klastra.* 
 
 ```rst
 GET https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2019-08-01-preview
 Authorization: Bearer <token>
 ```
 
-**Odpowiedź**
+> [!IMPORTANT]
+> Skopiuj i zapisz odpowiedź, ponieważ te szczegóły będą potrzebne w późniejszych krokach
+
+**Odpowiedzi**
 ```json
 {
   "identity": {
@@ -186,8 +183,13 @@ Authorization: Bearer <token>
     "tenantId": "tenant-id",
     "principalId": "principal-id"
     },
+  "sku": {
+    "name": "capacityReservation",
+    "capacity": 1000,
+    "lastSkuUpdate": "Sun, 22 Mar 2020 15:39:29 GMT"
+    },
   "properties": {
-    "provisioningState": "Succeeded",
+    "provisioningState": "ProvisioningAccount",
     "clusterType": "LogAnalytics", 
     "clusterId": "cluster-id"
     },
@@ -195,39 +197,38 @@ Authorization: Bearer <token>
   "name": "cluster-name",
   "type": "Microsoft.OperationalInsights/clusters",
   "location": "region-name"
-  }
+}
 ```
 
-"nazwa podmiotu zabezpieczeń" to identyfikator GUID generowany przez zarządzaną usługę tożsamości dla zasobu *klastra* .
+>[!Important]
+> Trwa inicjowanie obsługi administracyjnej klastra underly ADX kilka minut, aby zakończyć. Wartość *provisioningState* wskazuje jego stan, jest *aprowizowanieKonta* podczas inicjowania obsługi administracyjnej i "Powiodło się" po zakończeniu inicjowania obsługi administracyjnej.
+> Identyfikator GUID "principalId" jest generowany przez usługę tożsamości zarządzanej dla zasobu *klastra.*
 
-> [!IMPORTANT]
-> Skopiuj i Zachowaj wartość "Principal-ID", ponieważ będzie ona potrzebna w następnych krokach.
+### <a name="grant-key-vault-permissions"></a>Udziel uprawnień Magazynu kluczy
 
+Zaktualizuj magazyn kluczy o nową zasadę dostępu, która przyznaje uprawnienia do zasobu *klastra.* Te uprawnienia są używane przez podkładanie usługi Azure Monitor Storage do szyfrowania danych. Otwórz magazyn kluczy w witrynie Azure portal i kliknij przycisk "Zasady dostępu", a następnie "+ Dodaj zasady dostępu", aby utworzyć zasady z tymi ustawieniami:
 
-### <a name="grant-key-vault-permissions"></a>Przyznawanie uprawnień Key Vault
+- Uprawnienia klucza: wybierz uprawnienia "Get", "Wrap Key" i "Unwrap Key".
+- Wybierz jednostkę: wprowadź wartość identyfikatora głównego, który zwrócił w odpowiedzi w poprzednim kroku.
 
-> [!IMPORTANT]
-> Ten krok należy wykonać po otrzymaniu potwierdzenia od grupy produktów za pośrednictwem kanału firmy Microsoft, że zainicjowano Inicjowanie obsługi administracyjnej magazynu danych Azure Monitor (ADX). Aktualizacja zasad dostępu Key Vault przed tą obsługą może zakończyć się niepowodzeniem.
+![udzielanie uprawnień Usługi Magazynu kluczy](media/customer-managed-keys/grant-key-vault-permissions.png)
 
-Zaktualizuj Key Vault przy użyciu nowych zasad dostępu, które przyznają uprawnienia do zasobu *klastra* . Te uprawnienia są używane przez podnieśenie Azure Monitor magazynu na potrzeby szyfrowania danych.
-Otwórz Key Vault w Azure Portal, a następnie kliknij pozycję "zasady dostępu" i "+ Dodaj zasady dostępu", aby utworzyć nowe zasady z następującymi ustawieniami:
+Uprawnienie *Pobierz* jest wymagane, aby sprawdzić, czy magazyn kluczy jest skonfigurowany jako możliwe do odzyskania w celu ochrony klucza i dostępu do danych usługi Azure Monitor.
 
-- Uprawnienia klucza: Wybierz uprawnienia "Pobierz", "Zawijanie klucza" i "Cofnij Zawijanie klucza".
-- Wybierz podmiot zabezpieczeń: wprowadź wartość identyfikatora podmiotu zabezpieczeń, która została zwrócona w odpowiedzi w poprzednim kroku.
+### <a name="update-cluster-resource-with-key-identifier-details"></a>Aktualizowanie zasobu klastra za pomocą szczegółów identyfikatora klucza
 
-![Przyznawanie uprawnień Key Vault](media/customer-managed-keys/grant-key-vault-permissions.png)
+Ten krok ma zastosowanie do aktualizacji wersji klucza początkowego i przyszłego w magazynie kluczy. Informuje usługę Azure Monitor Storage o nowej wersji klucza.
 
-Uprawnienie *Get* jest wymagane do sprawdzenia, czy Key Vault jest skonfigurowany jako możliwy do odzyskania w celu ochrony klucza i dostępu do danych Azure monitor.
+Aby zaktualizować zasób *klastra* o szczegóły *identyfikatora klucza przechowalni* kluczy, wybierz bieżącą wersję klucza w usłudze Azure Key Vault, aby uzyskać szczegółowe informacje o identyfikatorze klucza.
 
-### <a name="update-cluster-resource-with-key-identifier-details"></a>Aktualizowanie zasobu klastra przy użyciu szczegółów identyfikatora klucza
+![Udziel uprawnień Magazynu kluczy](media/customer-managed-keys/key-identifier-8bit.png)
 
-Ten krok ma zastosowanie w przypadku aktualizacji z kolejnej wersji klucza w Key Vault. Zaktualizuj zasób *klastra* za pomocą Key Vault szczegóły *identyfikatora klucza* , aby umożliwić usłudze Azure monitor Storage używanie nowej wersji klucza. Wybierz bieżącą wersję klucza w Azure Key Vault, aby uzyskać szczegółowe informacje o identyfikatorze klucza.
-
-![Przyznawanie uprawnień Key Vault](media/customer-managed-keys/key-identifier-8bit.png)
-
-Zaktualizuj KeyVaultProperties zasobów *klastra* przy użyciu szczegółów identyfikatora klucza.
+Zaktualizuj właściwości keyvaultproperties *zasobu klastra* o szczegóły identyfikatora klucza.
 
 **Aktualizacja**
+
+>[!Warning]
+> W aktualizacji zasobów *klastra* należy podać pełną treść, która zawiera *tożsamość,* *sku,* *KeyVaultProperties* i *lokalizację.* Brak szczegółów *KeyVaultProperties* spowoduje usunięcie identyfikatora klucza z zasobu *klastra* i [spowodowanie odwołania klucza](#cmk-kek-revocation).
 
 ```rst
 PUT https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2019-08-01-preview
@@ -235,6 +236,13 @@ Authorization: Bearer <token>
 Content-type: application/json
 
 {
+   "identity": { 
+     "type": "systemAssigned" 
+     },
+   "sku": {
+     "name": "capacityReservation",
+     "capacity": 1000
+     },
    "properties": {
      "KeyVaultProperties": {
        KeyVaultUri: "https://<key-vault-name>.vault.azure.net",
@@ -242,15 +250,12 @@ Content-type: application/json
        KeyVersion: "<current-version>"
        },
    },
-   "location":"<region-name>",
-   "identity": { 
-     "type": "systemAssigned" 
-     }
+   "location":"<region-name>"
 }
 ```
-"KeyVaultProperties" zawiera szczegóły identyfikatora klucza Key Vault.
+"KeyVaultProperties" zawiera szczegóły identyfikatora klucza magazynu kluczy.
 
-**Odpowiedź**
+**Odpowiedzi**
 
 ```json
 {
@@ -258,13 +263,18 @@ Content-type: application/json
     "type": "SystemAssigned",
     "tenantId": "tenant-id",
     "principalId": "principle-id"
-  },
+    },
+  "sku": {
+    "name": "capacityReservation",
+    "capacity": 1000,
+    "lastSkuUpdate": "Sun, 22 Mar 2020 15:39:29 GMT"
+    },
   "properties": {
-       "KeyVaultProperties": {
-            KeyVaultUri: "https://key-vault-name.vault.azure.net",
-            KeyName: "key-name",
-            KeyVersion: "current-version"
-            },
+    "KeyVaultProperties": {
+      KeyVaultUri: "https://key-vault-name.vault.azure.net",
+      KeyName: "key-name",
+      KeyVersion: "current-version"
+      },
     "provisioningState": "Succeeded",
     "clusterType": "LogAnalytics", 
     "clusterId": "cluster-id"
@@ -278,16 +288,18 @@ Content-type: application/json
 
 ### <a name="workspace-association-to-cluster-resource"></a>Skojarzenie obszaru roboczego z zasobem *klastra*
 
-> [!NOTE]
-> Ten krok należy wykonać **dopiero** po otrzymaniu potwierdzenia od grupy produktów za pośrednictwem kanału firmy Microsoft, że **zainicjowano Inicjowanie obsługi administracyjnej magazynu danych Azure monitor (ADX)** . W przypadku kojarzenia obszarów roboczych i pozyskiwania danych przed rozpoczęciem **aprowizacji**dane zostaną usunięte i nie będzie można ich odzyskać.
+W przypadku konfiguracji CMK usługi Application Insights postępuj zgodnie z zawartością dodatku dla tego kroku.
 
-Aby uzyskać Application Insights konfigurację CMK, postępuj zgodnie z zawartością dodatku dla tego kroku.
+> [!IMPORTANT]
+> Ten krok należy wykonać tylko po inicjowaniu obsługi administracyjnej klastra ADX. Jeśli skojarzone obszary robocze i pozyskiwania danych przed inicjowania obsługi administracyjnej, pochłonięte dane zostaną usunięte i nie będzie można odzyskać.
+> Aby sprawdzić, czy klaster ADX jest aprowidyfikowany, wykonaj interfejs API Pobierz rest *zasobu klastra* i sprawdź, czy wartość *aprowizowaniaState* *powiodła się*.
 
-Aby wykonać tę operację, musisz mieć uprawnienia "Write" dotyczące obszaru roboczego i zasobu *klastra* , co obejmuje następujące akcje:
+Aby wykonać tę operację, musisz mieć uprawnienia "zapisu" zarówno do obszaru roboczego, jak i *zasobu klastra,* które obejmują następujące akcje:
 
-- W obszarze roboczym: Microsoft. OperationalInsights/Workspaces/Write
-- W obszarze zasób *klastra* : Microsoft. OperationalInsights/klastrów/Write
+- W obszarze roboczym: Microsoft.OperationalInsights/workspaces/write
+- W *zasobie klastra:* Microsoft.OperationalInsights/clusters/write
 
+**Kojarzenie obszaru roboczego**
 ```rst
 PUT https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>/linkedservices/cluster?api-version=2019-08-01-preview 
 Authorization: Bearer <token>
@@ -300,7 +312,7 @@ Content-type: application/json
 }
 ```
 
-**Odpowiedź**
+**Odpowiedzi**
 
 ```json
 {
@@ -313,16 +325,16 @@ Content-type: application/json
 }
 ```
 
-Po skojarzeniu dane wysyłane do obszarów roboczych są przechowywane w postaci zaszyfrowanej przy użyciu klucza zarządzanego.
+Po skojarzeniu obszarów roboczych dane pozyskiwania do obszarów roboczych są przechowywane szyfrowane przy pomocą klucza zarządzanego.
 
 ### <a name="workspace-association-verification"></a>Weryfikacja skojarzenia obszaru roboczego
-Możesz sprawdzić, czy obszar roboczy jest skojarzony z zasobem *Custer* , przeglądając [obszary robocze — Pobierz](https://docs.microsoft.com/rest/api/loganalytics/workspaces/get) odpowiedź. Skojarzony obszar roboczy będzie miał Właściwość "clusterResourceId" z IDENTYFIKATORem zasobu *klastra* .
+Można sprawdzić, czy obszar roboczy jest skojarzony z zasobem *Custer,* patrząc na [obszary robocze — Pobierz](https://docs.microsoft.com/rest/api/loganalytics/workspaces/get) odpowiedź. Skojarzony obszar roboczy będzie miał właściwość "clusterResourceId" o identyfikatorze zasobu *klastra.*
 
 ```rest
 GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalInsights/workspaces/<workspace-name>?api-version=2015-11-01-preview
 ```
 
-**Odpowiedź**
+**Odpowiedzi**
 
 ```json
 {
@@ -338,7 +350,7 @@ GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/
     "features": {
       "legacy": 0,
       "searchVersion": 1,
-      "enableLogAccessUsingOnlyResourcePermissions": true/false,
+      "enableLogAccessUsingOnlyResourcePermissions": true,
       "clusterResourceId": "/subscriptions/subscription-id/resourceGroups/resource-group-name/providers/Microsoft.OperationalInsights/clusters/cluster-name"
     },
     "workspaceCapping": {
@@ -354,66 +366,65 @@ GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/
 }
 ```
 
-## <a name="cmk-kek-revocation"></a>CMK (KEK) — odwołanie
+## <a name="cmk-kek-revocation"></a>Odwołanie CMK (KEK)
 
-Azure Monitor Storage zawsze będzie uwzględniać zmiany w uprawnieniach klucza w ciągu godziny, zwykle wcześniej, a magazyn stanie się niedostępny. Wszelkie dane pozyskane do obszarów roboczych skojarzonych z zasobem *klastra* zostaną usunięte, a zapytania zakończą się niepowodzeniem. Wcześniej pozyskiwane dane pozostają niedostępne w magazynie Azure Monitor, dopóki klucz zostanie odwołany, a obszary robocze nie zostaną usunięte. Dane niedostępne podlegają zasadom przechowywania danych i zostaną usunięte po osiągnięciu okresu przechowywania.
+Dostęp do danych można odwołać, wyłączając klucz lub usuwając zasady dostępu do zasobów *klastra* w magazynie kluczy. Usługa Azure Monitor Storage zawsze będzie respektować zmiany w uprawnieniach kluczy w ciągu godziny, zwykle wcześniej, a magazyn magazynowy stanie się niedostępny. Wszystkie dane przynajmowane do obszarów roboczych skojarzonych z zasobem *klastra* są odrzucane, a kwerendy nie powiodą się. Wcześniej pojęte dane pozostają niedostępne w usłudze Azure Monitor Storage, o ile klucz zostanie odwołany, a obszary robocze nie zostaną usunięte. Niedostępne dane podlegają zasadom przechowywania danych i zostaną usunięte po osiągnięciu zasad przechowywania.
 
-Magazyn będzie okresowo sondował Key Vault, aby próbować odszyfrować klucz szyfrowania, a następnie uzyskać dostęp do pozyskiwania danych i wznowienia zapytania w ciągu 30 minut.
+Magazyn będzie okresowo sondować magazyn kluczy, aby spróbować odwinąć klucz szyfrowania i po uzyskaniu dostępu, wznawianie pozyskiwania danych i zapytań w ciągu 30 minut.
 
-## <a name="cmk-kek-rotation"></a>CMK (KEK)
+## <a name="cmk-kek-rotation"></a>Obrót CMK (KEK)
 
-Obrót CMK wymaga jawnej aktualizacji zasobu *klastra* przy użyciu nowej wersji klucza Azure Key Vault. Aby zaktualizować Azure Monitor przy użyciu nowej wersji klucza, postępuj zgodnie z instrukcjami w kroku "Aktualizowanie zasobu *klastra* z *identyfikatorem klucza* szczegóły".
-
-Jeśli klucz zostanie zaktualizowany w Key Vault i nie zostanie zaktualizowany nowy *Identyfikator klucza* w zasobie *klastra* *, Azure monitor magazyn będzie nadal korzystać z poprzedniego klucza.
+Obrót cmk wymaga jawnej aktualizacji zasobu *klastra* z nową wersją klucza w usłudze Azure Key Vault. Aby zaktualizować usługę Azure Monitor za pomocą nowej wersji klucza, postępuj zgodnie z instrukcjami w kroku "Aktualizuj zasób *klastra* ze szczegółami identyfikatora klucza". Jeśli zaktualizujesz wersję klucza w magazynie kluczy i nie zaktualizujesz nowych szczegółów identyfikatora klucza w zasobie *klastra,* usługa Azure Monitor Storage będzie nadal używać poprzedniego klucza.
+Wszystkie dane są dostępne po operacji rotacji kluczy, w tym dane ponawione przed rotacją i po nim, ponieważ wszystkie dane pozostają zaszyfrowane przez klucz szyfrowania konta (AEK), podczas gdy są teraz szyfrowane przez nową wersję klucza szyfrowania klucza (KEK).
 
 ## <a name="limitations-and-constraints"></a>Ograniczenia i ograniczenia
 
-- Funkcja CMK jest obsługiwana na poziomie klastra ADX i wymaga dedykowanego klastra Azure Monitor ADX
+- Funkcja CMK jest obsługiwana na poziomie klastra ADX i wymaga dedykowanego klastra ADX usługi Azure Monitor
 
-- Maksymalna liczba zasobów *klastra* na subskrypcję jest ograniczona do 5
+- Maksymalna liczba zasobów *klastra* na subskrypcję jest ograniczona do 2
 
-- Skojarzenie zasobów *klastra* z obszarem roboczym należy wykonać dopiero po otrzymaniu potwierdzenia od grupy produktów, że inicjowanie obsługi klastra ADX zostało spełnione. Dane wysyłane przed przystąpieniem do tej aprowizacji zostaną usunięte i nie będzie można ich odzyskać.
+- *Skojarzenie* zasobów klastra z obszarem roboczym powinno być przenoszone TYLKO po otrzymaniu potwierdzenia od grupy produktów, że aprowizacji klastra ADX została spełniona. Dane wysyłane przed rozpoczęciem tej inicjowania obsługi administracyjnej zostaną usunięte i nie będą możliwe do odzyskania.
 
-- Szyfrowanie CMK ma zastosowanie do nowo wprowadzonych danych po konfiguracji CMK. Dane, które zostały pozyskiwane przed konfiguracją CMK, pozostawały zaszyfrowane za pomocą klucza firmy Microsoft. Dane można badać przed bezproblemową konfiguracją i po niej.
+- Szyfrowanie CMK ma zastosowanie do nowo pogoń za danymi po konfiguracji CMK. Dane, które zostały pojętone przed konfiguracją CMK, pozostają zaszyfrowane za pomocą klucza firmy Microsoft. Można bezproblemowo wysyłać zapytania do danych przed i po konfiguracji cmk.
 
-- Po skojarzeniu obszaru roboczego z zasobem *klastra* nie można go usunąć z zasobu *klastra* , ponieważ dane są szyfrowane za pomocą klucza i nie są dostępne bez KEK w Azure Key Vault.
+- Po skojarzeniu obszaru roboczego z zasobem *klastra* nie można go odłączyć od zasobu *klastra,* ponieważ dane są szyfrowane za pomocą klucza i nie są dostępne bez narzędzia KEK w usłudze Azure Key Vault.
 
-- Azure Key Vault musi być skonfigurowany jako możliwy do odzyskania. Te właściwości nie są domyślnie włączone i należy je skonfigurować przy użyciu interfejsu wiersza polecenia i programu PowerShell:
+- Usługa Azure Key Vault musi być skonfigurowana jako możliwe do odzyskania. Te właściwości nie są domyślnie włączone i powinny być konfigurowane przy użyciu interfejsu wiersza polecenia i programu PowerShell:
 
   - [Usuwanie nietrwałe](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete) musi być włączone
-  - [Ochrona przed przeczyszczeniem](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete#purge-protection) powinna być włączona, aby zabezpieczyć przed wymuszeniem usunięcia wpisu tajnego lub magazynu nawet po usunięciu nietrwałego
+  - [Ochrona przed przeczyszczaniem](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete#purge-protection) powinna być włączona, aby chronić przed usunięciem siły tajnego / skarbca nawet po usunięciu
 
-- Application Insights i Log Analytics wymagają oddzielnych zasobów *klastra* . Typ zasobu *klastra* jest definiowany w czasie tworzenia przez ustawienie właściwości "clustertype" na wartość "LogAnalytics" lub "ApplicationInsights". Nie można zmienić typu zasobu *klastra* .
+- Usługa Application Insights i log Analytics wymagają oddzielnych zasobów *klastra.* Typ zasobu *klastra* jest definiowany w czasie tworzenia przez ustawienie właściwości "clusterType" na "LogAnalytics" lub "ApplicationInsights". Nie można zmienić typu zasobu *klastra.*
 
-- Zasób *klastra* przeniesiony do innej grupy zasobów lub subskrypcji nie jest obecnie obsługiwany.
+- *Przenoszenie* zasobów klastra do innej grupy zasobów lub subskrypcja nie jest obecnie obsługiwana.
 
-- Azure Key Vault, zasób *klastra* i powiązane obszary robocze muszą znajdować się w tym samym regionie i w tej samej dzierżawie Azure Active Directory (Azure AD), ale mogą znajdować się w różnych subskrypcjach.
+- Usługa Azure Key Vault, zasób *klastra* i skojarzone obszary robocze muszą znajdować się w tym samym regionie i w tej samej dzierżawie usługi Azure Active Directory (Azure AD), ale mogą znajdować się w różnych subskrypcjach.
 
-- Skojarzenie obszaru roboczego z zasobem *klastra* zakończy się niepowodzeniem, jeśli jest ono skojarzone z innym zasobem *klastra*
+- Skojarzenie obszaru roboczego z zasobem *klastra* zakończy się niepowodzeniem, jeśli jest skojarzone z innym zasobem *klastra*
 
-## <a name="troubleshooting-and-management"></a>Rozwiązywanie problemów i zarządzanie
+## <a name="troubleshooting-and-management"></a>Rozwiązywanie problemów i zarządzanie nimi
 
-- Dostępność Key Vault
-    - W przypadku normalnego działania pamięć podręczna magazynu AEK przez krótkie okresy czasu są okresowo przywracane do Key Vault w celu odpakowania.
+- Dostępność magazynu kluczy
+    - W normalnej pracy magazyn buforuje AEK przez krótki okres czasu okresowo wraca do magazynu kluczy, aby rozpakować.
     
-    - Błędy połączeń przejściowych. Magazyn obsługuje błędy przejściowe (przekroczenia limitu czasu, błędy połączeń, problemy z usługą DNS), dzięki czemu klucze mogą pozostać w pamięci podręcznej przez krótki czas i jest to zbyt małe Blips w dostępności. Możliwości zapytań i pozyskiwania kontynuują działanie bez przeszkód.
+    - Błędy połączenia przejściowego. Magazyn obsługuje błędy przejściowe (limity czasu, awarie połączeń, problemy z systemem DNS), umożliwiając kluczom pozostanie w pamięci podręcznej przez krótki czas dłużej, co pokonuje wszelkie małe blips w dostępności. Funkcje zapytania i pozyskiwania są kontynuowane bez przerw.
     
-    - Aktywna witryna, niedostępność przez około 30 minut, spowoduje, że konto magazynu stanie się niedostępne. Funkcja zapytania jest niedostępna, a dane pozyskiwane są buforowane przez kilka godzin przy użyciu klawisza Microsoft, aby uniknąć utraty danych. Po przywróceniu dostępu do Key Vault jest on dostępny, a tymczasowe dane przechowywane w pamięci podręcznej są przechowywane w magazynie danych i szyfrowane za pomocą CMK.
+    - Niedostępność witryny na żywo, niedostępność około 30 minut spowoduje, że konto magazynu stanie się niedostępne. Funkcja kwerendy jest niedostępna, a pochłonięte dane są buforowane przez kilka godzin przy użyciu klucza firmy Microsoft, aby uniknąć utraty danych. Po przywróceniu dostępu do usługi Key Vault kwerenda staje się dostępna, a tymczasowe dane w pamięci podręcznej są pozyskiwania do magazynu danych i szyfrowane za pomocą cmk.
 
-- Jeśli utworzysz zasób *klastra* i natychmiast określisz KeyVaultProperties, operacja może zakończyć się niepowodzeniem, ponieważ nie można zdefiniować zasad dostępu do momentu przypisania tożsamości systemu do zasobu *klastra* .
+- Jeśli utworzysz zasób *klastra* i natychmiast określisz właściwości KeyVaultProperties, operacja może zakończyć się niepowodzeniem, ponieważ zasady dostępu nie można zdefiniować, dopóki tożsamość systemu nie zostanie przypisana do zasobu *klastra.*
 
-- W przypadku zaktualizowania istniejącego zasobu *klastra* przy użyciu KeyVaultProperties i braku zasad dostępu do klucza "Get" w Key Vault operacja zakończy się niepowodzeniem.
+- Jeśli w magazynie kluczy klucza Kluczy zostanie *zaktualizowany istniejący* zasób klastra za pomocą właściwości KeyVaultProperties i "Get" klucz Access Policy, operacja zakończy się niepowodzeniem.
 
-- Próba usunięcia zasobu *klastra* skojarzonego z obszarem roboczym spowoduje niepowodzenie operacji usuwania.
+- Jeśli spróbujesz usunąć zasób *klastra* skojarzony z obszarem roboczym, operacja usuwania zakończy się niepowodzeniem.
 
-- Użyj tego interfejsu API, aby pobrać wszystkie zasoby *klastra* dla grupy zasobów:
+- Pobierz wszystkie zasoby *klastra* dla grupy zasobów:
 
   ```rst
   GET https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters?api-version=2019-08-01-preview
   Authorization: Bearer <token>
   ```
     
-  **Odpowiedź**
+  **Odpowiedzi**
   
   ```json
   {
@@ -443,18 +454,18 @@ Jeśli klucz zostanie zaktualizowany w Key Vault i nie zostanie zaktualizowany n
   }
   ```
 
-- Użyj tego wywołania interfejsu API, aby pobrać wszystkie zasoby *klastra* dla subskrypcji:
+- Pobierz wszystkie zasoby *klastra* dla subskrypcji:
 
   ```rst
   GET https://management.azure.com/subscriptions/<subscription-id>/providers/Microsoft.OperationalInsights/clusters?api-version=2019-08-01-preview
   Authorization: Bearer <token>
   ```
     
-  **Odpowiedź**
+  **Odpowiedzi**
     
-  Taka sama odpowiedź jak dla "zasobów*klastra* dla grupy zasobów", ale w zakresie subskrypcji.
+  Ta sama odpowiedź, co w przypadku "zasobów*klastra* dla grupy zasobów", ale w zakresie subskrypcji.
     
-- Użyj tego wywołania interfejsu API, aby usunąć zasób *klastra* — należy usunąć wszystkie skojarzone obszary robocze, aby można było usunąć zasób *klastra* :
+- Usuń zasób *klastra* — operacja usuwania nietrwałego jest wykonywana w celu umożliwienia odzyskania zasobu *klastra,* danych i skojarzonych obszarów roboczych w ciągu 14 dni, niezależnie od tego, czy usunięcie było przypadkowe, czy zamierzone. Po okresie usuwania nietrwałego zasób i dane *klastra* nie można odzyskać. Nazwa zasobu *klastra* pozostaje zarezerwowana w okresie usuwania nietrwałego i nie można utworzyć nowego klastra o tej nazwie.
 
   ```rst
   DELETE
@@ -462,35 +473,37 @@ Jeśli klucz zostanie zaktualizowany w Key Vault i nie zostanie zaktualizowany n
   Authorization: Bearer <token>
   ```
 
-  **Odpowiedź**
+  **Odpowiedzi**
 
-  200 OK
+  200 ok.
+
+- Odzyskaj zasób *klastra* i dane — w okresie usuwania nietrwałego utwórz zasób *klastra* o tej samej nazwie i w tej samej subskrypcji, grupie zasobów i regionie. Postępuj zgodnie z krokiem **Utwórz zasób *klastra,* ** aby odzyskać zasób *klastra.*
 
 
 ## <a name="appendix"></a>Dodatek
 
-Application Insights jest również obsługiwany klucz zarządzany przez klienta (CMK), jednak należy wziąć pod uwagę następujące zmiany, aby ułatwić Planowanie wdrożenia CMK dla składników usługi Application Insights.
+Usługa Application Insights Customer Managed Key (CMK) jest również obsługiwana, chociaż należy rozważyć następującą zmianę, aby ułatwić planowanie wdrażania cmk dla składników usługi Application Insight.
 
-Log Analytics i Application Insights używają tej samej platformy do przechowywania danych i aparatu zapytań. Te dwa magazyny są przełączane za pośrednictwem integracji Application Insights w Log Analytics, aby zapewnić jeden ujednolicony magazyn dzienników w Azure Monitor w drugim kwartale
-2020. Ta zmiana spowoduje przełączenie danych usługi Application Insights do obszarów roboczych Log Analytics i przeprowadzenie zapytań, szczegółowych informacji i innych ulepszeń w czasie, gdy konfiguracja CMK w obszarze roboczym zostanie również zastosowana do Application Insights danych.
+Usługa Log Analytics i usługa Application Insights korzystają z tej samej platformy magazynu danych i aparatu zapytań. Łączymy te dwa sklepy poprzez integrację usługi Application Insights z usługą Log Analytics, aby zapewnić pojedynczy ujednolicony magazyn dzienników w usłudze Azure Monitor w drugim kwartale
+2020. Ta zmiana spowoduje, że dane usługi Application Insight zostaną wprowadzone do obszarów roboczych usługi Log Analytics i umożliwią kwerendy, szczegółowe informacje i inne ulepszenia, podczas gdy konfiguracja cmk w obszarze roboczym będzie również stosowana do danych usługi Application Insights.
 
 > [!NOTE]
-> Jeśli nie musisz wdrażać CMK dla danych usługi Application Insights przed integracją, zalecamy oczekiwanie na Application Insights CMK, ponieważ takie wdrożenia zostaną zakłócone przez integrację i konieczne będzie ponowne skonfigurowanie CMK po migracji do dziennika Obszar roboczy analizy. Wartość 1 TB na dzień jest stosowana na poziomie klastra i do momentu ukończenia konsolidacji w drugim kwartale Application Insights i Log Analytics wymagają oddzielnych klastrów.
+> Jeśli nie trzeba wdrożyć CMK dla danych usługi Application Insight przed integracją, zalecamy oczekiwanie z application insights CMK, ponieważ takie wdrożenia zostaną zakłócone przez integrację i trzeba będzie ponownie skonfigurować CMK po migracji do dziennika Obszar roboczy analizy. Minimum 1 TB dziennie ma zastosowanie na poziomie klastra i do czasu zakończenia konsolidacji w drugim kwartale usługa Application Insights i usługa Log Analytics wymagają oddzielnych klastrów.
 
-## <a name="application-insights-cmk-configuration"></a>Application Insights konfiguracja CMK
+## <a name="application-insights-cmk-configuration"></a>Konfiguracja cmk usługi Application Insights
 
-Konfiguracja Application Insights CMK jest identyczna z procesem przedstawionym w tym artykule, w tym ograniczenia i rozwiązywanie problemów, z wyjątkiem następujących kroków:
+Konfiguracja usługi CMK usługi Application Insights jest identyczna z procesem zilustrowanym w tym artykule, w tym ograniczeniami i rozwiązywaniem problemów, z wyjątkiem następujących kroków:
 
 - Tworzenie zasobu *klastra*
 - Kojarzenie składnika z zasobem *klastra*
 
-Podczas konfigurowania CMK dla Application Insights należy wykonać te czynności zamiast wymienionych powyżej.
+Podczas konfigurowania cmk dla usługi Application Insights, należy użyć tych kroków zamiast tych wymienionych powyżej.
 
 ### <a name="create-a-cluster-resource"></a>Tworzenie zasobu *klastra*
 
-Ten zasób jest używany jako połączenie tożsamości pośredniej między Key Vault i składnikami. Po otrzymaniu potwierdzenia, że subskrypcje zostały listy dozwolonyche, utwórz zasób *klastra* log Analytics w regionie, w którym znajdują się składniki. Typ zasobu *klastra* jest definiowany w czasie tworzenia przez ustawienie właściwości *clustertype* na wartość *LogAnalytics*lub *ApplicationInsights*. Powinien być *ApplicationInsights* dla Application Insights CMK. Nie można zmienić ustawienia *klastratype* po konfiguracji.
+Ten zasób jest używany jako pośrednie połączenie tożsamości między magazynem kluczy a składnikami. Po otrzymaniu potwierdzenia, że subskrypcje zostały umieszczone na białej liście, utwórz zasób *klastra analizy* dzienników w regionie, w którym znajdują się składniki. Typ zasobu *klastra* jest definiowany w czasie tworzenia przez ustawienie *właściwości clusterType* na *LogAnalytics*lub *ApplicationInsights*. Powinien to być *ApplicationInsights* dla usługi Application Insights CMK. Nie można zmienić ustawienia *clusterType* po zakończeniu konfiguracji.
 
-**Tworzenie**
+**Utwórz**
 
 ```rst
 PUT https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2019-08-01-preview
@@ -508,9 +521,9 @@ Content-type: application/json
 }
 ```
 
-**Odpowiedź**
+**Odpowiedzi**
 
-Tożsamość jest przypisana do zasobu *klastra* podczas jego tworzenia.
+Tożsamość jest przypisywana do zasobu *klastra* w czasie tworzenia.
 
 ```json
 
@@ -520,28 +533,73 @@ Tożsamość jest przypisana do zasobu *klastra* podczas jego tworzenia.
     "tenantId": "tenant-id",
     "principalId": "principle-id"
   },
+  "sku": {
+    "name": "capacityReservation",
+    "Capacity": 1000
+    },
   "properties": {
     "provisioningState": "Succeeded",
-    "clusterType": "ApplicationInsights",    //The value is ‘ApplicationInsights’ for Application Insights CMK
+    "clusterType": "ApplicationInsights", 
     "clusterId": "cluster-id" 
-  },
-  "id": "/subscriptions/subscription-id/resourceGroups/resource-group-name/providers/Microsoft.OperationalInsights/clusters/cluster-name", //The cluster resource Id
+    },
+  "id": "/subscriptions/subscription-id/resourceGroups/resource-group-name/providers/Microsoft.OperationalInsights/clusters/cluster-name",
   "name": "cluster-name",
   "type": "Microsoft.OperationalInsights/clusters",
   "location": "region-name"
 }
 ```
-"zasada-ID" jest identyfikatorem GUID, który został wygenerowany przez zarządzaną usługę tożsamości.
+"principle-id" to identyfikator GUID, który został wygenerowany przez usługę tożsamości zarządzanej.
 
 > [!IMPORTANT]
-> Skopiuj i Zachowaj wartość "zasada-identyfikator", ponieważ będzie ona potrzebna w następnych krokach.
+> Skopiuj i zachowaj wartość "zasada-id", ponieważ będziesz jej potrzebować w następnych krokach.
 
-### <a name="associate-a-component-to-a-cluster-resource-using-components---create-or-update-api"></a>Kojarzenie składnika z zasobem *klastra* przy użyciu [składników — Tworzenie lub aktualizowanie](https://docs.microsoft.com/rest/api/application-insights/components/createorupdate) interfejsu API
+### <a name="associate-a-component-to-a-cluster-resource-using-components---create-or-update-api"></a>Kojarzenie składnika z zasobem *klastra* przy użyciu [interfejsu Components — tworzenie lub aktualizowanie](https://docs.microsoft.com/rest/api/application-insights/components/createorupdate) interfejsu API
 
-Aby można było wykonać tę operację, musisz mieć uprawnienia "Write" zarówno dla składnika, jak i zasobu *klastra* , co obejmuje następujące akcje:
+Aby wykonać tę operację, musisz mieć uprawnienia "zapisu" zarówno do składnika, jak i *zasobu klastra,* które obejmują następujące akcje:
 
-- W składniku: Microsoft. Insights/Component/Write
-- W obszarze zasób *klastra* : Microsoft. OperationalInsights/klastrów/Write
+- W składniku: Microsoft.Insights/component/write
+- W *zasobie klastra:* Microsoft.OperationalInsights/clusters/write
+
+> [!IMPORTANT]
+> Ten krok należy wykonać tylko po inicjowaniu obsługi administracyjnej klastra ADX. Jeśli skojarzysz składniki i pozyskujesz dane przed inicjowania obsługi administracyjnej, pogoń danych zostanie porzucona i nie będzie można odzyskać.
+> Aby sprawdzić, czy klaster ADX jest aprowidyfikowany, wykonaj interfejs API Pobierz rest *zasobu klastra* i sprawdź, czy wartość *aprowizowaniaState* *powiodła się*.
+
+```rst
+GET https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2019-08-01-preview
+Authorization: Bearer <token>
+```
+
+**Odpowiedzi**
+```json
+{
+  "identity": {
+    "type": "SystemAssigned",
+    "tenantId": "tenant-id",
+    "principalId": "principal-id"
+    },
+  "sku": {
+    "name": "capacityReservation",
+    "capacity": 1000,
+    "lastSkuUpdate": "Sun, 22 Mar 2020 15:39:29 GMT"
+    },
+  "properties": {
+    "KeyVaultProperties": {
+      KeyVaultUri: "https://key-vault-name.vault.azure.net",
+      KeyName: "key-name",
+      KeyVersion: "current-version"
+      },
+    "provisioningState": "Succeeded",
+    "clusterType": "ApplicationInsights", 
+    "clusterId": "cluster-id"
+    },
+  "id": "/subscriptions/subscription-id/resourceGroups/resource-group-name/providers/Microsoft.OperationalInsights/clusters/cluster-name",
+  "name": "cluster-name",
+  "type": "Microsoft.OperationalInsights/clusters",
+  "location": "region-name"
+  }
+```
+
+**Kojarzenie komponentu**
 
 ```rst
 PUT https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.Insights/components/<component-name>?api-version=2015-05-01
@@ -556,10 +614,10 @@ Content-type: application/json
   "kind": "<component-type>"
 }
 ```
-"clusterDefinitionId" jest wartością "clusterId" podaną w odpowiedzi z poprzedniego kroku.
-przykład "Kind" to "Web".
+"clusterDefinitionId" jest wartością "clusterId" podana w odpowiedzi z poprzedniego kroku.
+"miły" przykład to "web".
 
-**Odpowiedź**
+**Odpowiedzi**
 
 ```json
 {
@@ -590,6 +648,6 @@ przykład "Kind" to "Web".
   }
 }
 ```
-"clusterDefinitionId" jest IDENTYFIKATORem zasobu *klastra* skojarzonym z tym składnikiem.
+"clusterDefinitionId" to identyfikator zasobu *klastra* skojarzony z tym składnikiem.
 
-Po skojarzeniu dane wysyłane do składników są przechowywane w postaci zaszyfrowanej przy użyciu klucza zarządzanego.
+Po skojarzeniu dane wysyłane do składników są przechowywane szyfrowane za pomocą klucza zarządzanego.

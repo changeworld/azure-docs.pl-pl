@@ -1,27 +1,27 @@
 ---
-title: Dodawanie formantów do mapy | Mapy Microsoft Azure
-description: Jak dodać kontrolkę powiększenia, kontrolkę gęstość, obrócić formant i selektor stylu do mapy w Microsoft Azure Maps.
-author: farah-alyasari
-ms.author: v-faalya
+title: Dodawanie kontrolek do mapy | Mapy platformy Microsoft Azure
+description: Jak dodać formant powiększania, kontrolkę skoku, sterowanie obracaniem i selektor stylu do mapy w Usługach Microsoft Azure Maps.
+author: philmea
+ms.author: philmea
 ms.date: 07/29/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: e386c136e7d0258d00c22c627dfa5047ba803169
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: 094dc9fd01ec71f378a173a2b4fa64cc672d7c97
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77209770"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80334560"
 ---
-# <a name="add-controls-to-a-map"></a>Dodawanie formantów do mapy
+# <a name="add-controls-to-a-map"></a>Dodawanie kontrolek do mapy
 
-W tym artykule opisano sposób dodawania formantów do mapy. Dowiesz się również, jak utworzyć mapę ze wszystkimi kontrolkami i [selektorem stylów](https://docs.microsoft.com/azure/azure-maps/choose-map-style).
+W tym artykule pokazano, jak dodać formanty do mapy. Dowiesz się również, jak utworzyć mapę ze wszystkimi kontrolkami i [selektorem stylu.](https://docs.microsoft.com/azure/azure-maps/choose-map-style)
 
-## <a name="add-zoom-control"></a>Dodaj kontrolkę powiększenia
+## <a name="add-zoom-control"></a>Dodawanie kontrolki powiększenia
 
-Kontrolka powiększenia dodaje przyciski umożliwiające powiększanie mapy w i na zewnątrz. Poniższy przykład kodu tworzy wystąpienie klasy [ZoomControl](/javascript/api/azure-maps-control/atlas.control.zoomcontrol) i dodaje ją do prawego dolnego rogu mapy.
+Kontrolka powiększenia dodaje przyciski służące do powiększania i pomniejszania mapy. Poniższy przykład kodu tworzy wystąpienie [Klasy ZoomControl](/javascript/api/azure-maps-control/atlas.control.zoomcontrol) i dodaje go w prawym dolnym rogu mapy.
 
 ```javascript
 //Construct a zoom control and add it to the map.
@@ -30,16 +30,16 @@ map.controls.add(new atlas.control.ZoomControl(), {
 });
 ```
 
-Poniżej znajduje się kompletny przykładowy kod wykonywany z powyższymi funkcjami.
+Poniżej znajduje się kompletny przykładowy kod uruchomiony powyższej funkcji.
 
 <br/>
 
-<iframe height='500' scrolling='no' title='Dodawanie kontrolki powiększenia' src='//codepen.io/azuremaps/embed/WKOQyN/?height=265&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zobacz pióro, <a href='https://codepen.io/azuremaps/pen/WKOQyN/'>dodając kontrolkę powiększenia</a> Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>CodePen</a>.
+<iframe height='500' scrolling='no' title='Dodawanie kontrolki powiększenia' src='//codepen.io/azuremaps/embed/WKOQyN/?height=265&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zobacz <a href='https://codepen.io/azuremaps/pen/WKOQyN/'>pióro Dodawanie kontrolki powiększenia</a> przez usługi Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na funkcji <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
-## <a name="add-pitch-control"></a>Dodaj kontrolkę gęstość
+## <a name="add-pitch-control"></a>Dodawanie kontroli wysokości
 
-Kontrolka gęstość dodaje przyciski umożliwiające przechylenie skoku na mapę względem zakresu. Poniższy przykład kodu tworzy wystąpienie klasy [PitchControl](/javascript/api/azure-maps-control/atlas.control.pitchcontrol) . Dodaje PitchControl do prawego górnego rogu mapy.
+Regulacja wysokości dodaje przyciski do przechylania skoku do mapy względem horyzontu. Poniższy przykład kodu tworzy wystąpienie [PitchControl](/javascript/api/azure-maps-control/atlas.control.pitchcontrol) klasy. Dodaje PitchControl do prawego górnego rogu mapy.
 
 ```javascript
 //Construct a pitch control and add it to the map.
@@ -48,16 +48,16 @@ map.controls.add(new atlas.control.PitchControl(), {
 });
 ```
 
-Poniżej znajduje się kompletny przykładowy kod wykonywany z powyższymi funkcjami.
+Poniżej znajduje się kompletny przykładowy kod uruchomiony powyższej funkcji.
 
 <br/>
 
-<iframe height='500' scrolling='no' title='Dodawanie kontrolki skoku' src='//codepen.io/azuremaps/embed/xJrwaP/?height=265&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zobacz pióro, <a href='https://codepen.io/azuremaps/pen/xJrwaP/'>dodając kontrolkę gęstość</a> przez Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>CodePen</a>.
+<iframe height='500' scrolling='no' title='Dodawanie kontrolki skoku' src='//codepen.io/azuremaps/embed/xJrwaP/?height=265&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zobacz pióro <a href='https://codepen.io/azuremaps/pen/xJrwaP/'>Dodawanie formantu skoku</a> przez usługi Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na funkcji <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
-## <a name="add-compass-control"></a>Dodaj kontrolkę kompas
+## <a name="add-compass-control"></a>Dodawanie kontrolki kompasu
 
-Kontrolka kompas dodaje przycisk służący do obracania mapy. Poniższy przykład kodu tworzy wystąpienie klasy [kontrolki kompasu](/javascript/api/azure-maps-control/atlas.control.compasscontrol) i dodaje ją do lewego dolnego rogu mapy.
+Kontrolka kompasu dodaje przycisk do obracania mapy. Poniższy przykład kodu tworzy wystąpienie [Compass Control](/javascript/api/azure-maps-control/atlas.control.compasscontrol) klasy i dodaje go w lewym dolnym rogu mapy.
 
 ```javascript
 //Construct a compass control and add it to the map.
@@ -66,66 +66,79 @@ map.controls.add(new atlas.control.Compass(), {
 });
 ```
 
-Poniżej znajduje się kompletny przykładowy kod wykonywany z powyższymi funkcjami.
+Poniżej znajduje się kompletny przykładowy kod uruchomiony powyższej funkcji.
 
 <br/>
 
-<iframe height='500' scrolling='no' title='Dodawanie kontrolki Obróć' src='//codepen.io/azuremaps/embed/GBEoRb/?height=265&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zobacz pióro, <a href='https://codepen.io/azuremaps/pen/GBEoRb/'>dodając kontrolkę obróć</a> Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>CodePen</a>.
+<iframe height='500' scrolling='no' title='Dodawanie kontrolki obrotu' src='//codepen.io/azuremaps/embed/GBEoRb/?height=265&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zobacz <a href='https://codepen.io/azuremaps/pen/GBEoRb/'>pióro Dodawanie sterowania obracania</a> przez usługę Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na funkcji <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
-## <a name="a-map-with-all-controls"></a>Mapa ze wszystkimi kontrolkami
+## <a name="a-map-with-all-controls"></a>Mapa ze wszystkimi elementami sterującymi
 
-Poniższy przykład kodu dodaje kontrolki selektor stylu, powiększenie, gęstość i kompas do prawego dolnego rogu mapy. Zwróć uwagę, jak automatycznie stosują się do nich stosy. Kolejność obiektów formantów w skrypcie określa kolejność, w jakiej są wyświetlane na mapie. Aby zmienić kolejność formantów na mapie, można zmienić ich kolejność w skrypcie.
+Wiele formantów można umieścić w tablicy i dodać do mapy wszystkie na raz i umieszczone w tym samym obszarze mapy, aby uprościć rozwój. Poniżej dodaje standardowe formanty nawigacji do mapy przy użyciu tej metody.
+
+```javascript
+map.controls.add([
+    new atlas.control.ZoomControl(),
+    new atlas.control.CompassControl(),
+    new atlas.control.PitchControl(),
+    new atlas.control.StyleControl()
+], {
+    position: "top-right"
+});
+```
+
+Poniższy przykład kodu dodaje powiększenie, kompas, podziałka i styl kontrolki selektora w prawym górnym rogu mapy. Zwróć uwagę, jak automatycznie stosują się. Kolejność obiektów kontrolnych w skrypcie decyduje o kolejności, w jakiej pojawiają się na mapie. Aby zmienić kolejność formantów na mapie, można zmienić ich kolejność w tablicy.
 
 <br/>
 
-<iframe height='500' scrolling='no' title='Mapa ze wszystkimi kontrolkami' src='//codepen.io/azuremaps/embed/qyjbOM/?height=265&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zobacz pióro <a href='https://codepen.io/azuremaps/pen/qyjbOM/'>Mapa ze wszystkimi kontrolkami</a> według Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) w <a href='https://codepen.io'>CodePen</a>.
+<iframe height='500' scrolling='no' title='Mapa ze wszystkimi elementami sterującymi' src='//codepen.io/azuremaps/embed/qyjbOM/?height=265&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zobacz <a href='https://codepen.io/azuremaps/pen/qyjbOM/'>mapę Pióro A ze wszystkimi formantami</a> azure maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na funkcji <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
-Kontrolka selektora stylów jest definiowana przez klasę [StyleControl](/javascript/api/azure-maps-control/atlas.control.stylecontrol) . Aby uzyskać więcej informacji na temat używania kontrolki selektora stylów, zobacz [Wybieranie stylu mapy](choose-map-style.md).
+Formant selektora stylu jest definiowany przez [klasę StyleControl.](/javascript/api/azure-maps-control/atlas.control.stylecontrol) Aby uzyskać więcej informacji na temat używania kontrolki selektora stylów, zobacz [wybieranie stylu mapy](choose-map-style.md).
 
-## <a name="customize-controls"></a>Dostosuj kontrolki
+## <a name="customize-controls"></a>Dostosowywanie kontrolek
 
-Oto narzędzie do testowania różnych opcji dostosowywania kontrolek.
+Oto narzędzie do testowania różnych opcji dostosowywania formantów.
 
 <br/>
 
-<iframe height="700" style="width: 100%;" scrolling="no" title="Opcje kontrolki nawigacji" src="//codepen.io/azuremaps/embed/LwBZMx/?height=700&theme-id=0&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true">
-Zobacz <a href='https://codepen.io/azuremaps/pen/LwBZMx/'>Opcje kontrolki Nawigacja</a> piórem Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>CodePen</a>.
+<iframe height="700" style="width: 100%;" scrolling="no" title="Opcje sterowania nawigacją" src="//codepen.io/azuremaps/embed/LwBZMx/?height=700&theme-id=0&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+Zobacz <a href='https://codepen.io/azuremaps/pen/LwBZMx/'>opcje sterowania nawigacją</a> piórem według usługi Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na funkcji <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
-Jeśli chcesz utworzyć niestandardowe kontrolki nawigacji, Utwórz klasę, która rozciąga się od klasy `atlas.Control` lub Utwórz element HTML i umieść go powyżej bloku DIV mapy. Ta kontrolka interfejsu użytkownika wywołuje funkcję Maps `setCamera`, aby przenieść mapę. 
+Jeśli chcesz utworzyć niestandardowe formanty nawigacji, należy `atlas.Control` utworzyć klasę, która rozciąga się od klasy lub utworzyć element HTML i umieścić go nad div mapy. Czy ten interfejs użytkownika `setCamera` kontroli wywołać funkcję map, aby przenieść mapę. 
 
 ## <a name="next-steps"></a>Następne kroki
 
-Dowiedz się więcej na temat klas i metod używanych w tym artykule:
+Dowiedz się więcej o klasach i metodach użytych w tym artykule:
 
 > [!div class="nextstepaction"]
-> [Kontrolka kompasu](/javascript/api/azure-maps-control/atlas.control.compasscontrol)
+> [Sterowanie kompasem](/javascript/api/azure-maps-control/atlas.control.compasscontrol)
 
 > [!div class="nextstepaction"]
-> [PitchControl](/javascript/api/azure-maps-control/atlas.control.pitchcontrol) 
+> [PitchControl (Kontrola pitchcontrol)](/javascript/api/azure-maps-control/atlas.control.pitchcontrol) 
 
 > [!div class="nextstepaction"]
-> [StyleControl](/javascript/api/azure-maps-control/atlas.control.stylecontrol) 
+> [Kontrola stylu](/javascript/api/azure-maps-control/atlas.control.stylecontrol) 
 
 > [!div class="nextstepaction"]
-> [ZoomControl](/javascript/api/azure-maps-control/atlas.control.zoomcontrol) 
+> [Kontrola zoomu](/javascript/api/azure-maps-control/atlas.control.zoomcontrol) 
 
 Pełny kod można znaleźć w następujących artykułach:
 
 > [!div class="nextstepaction"]
-> [Dodaj numer PIN](./map-add-pin.md)
+> [Dodawanie numeru PIN](./map-add-pin.md)
 
 > [!div class="nextstepaction"]
-> [Dodawanie okna podręcznego](./map-add-popup.md)
+> [Dodawanie menu podręcznego](./map-add-popup.md)
 
 > [!div class="nextstepaction"]
-> [Dodaj warstwę linii](map-add-line-layer.md)
+> [Dodawanie warstwy linii](map-add-line-layer.md)
 
 > [!div class="nextstepaction"]
-> [Dodaj warstwę wielokątów](map-add-shape.md)
+> [Dodawanie warstwy wielokąta](map-add-shape.md)
 
 > [!div class="nextstepaction"]
-> [Dodaj warstwę bąbelkową](map-add-bubble-layer.md)
+> [Dodawanie warstwy bąbelkowej](map-add-bubble-layer.md)
 

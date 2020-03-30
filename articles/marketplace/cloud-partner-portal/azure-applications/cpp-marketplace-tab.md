@@ -1,48 +1,47 @@
 ---
-title: Karta Marketplace z ofertą aplikacji platformy Azure
+title: Karta Marketplace oferty aplikacji platformy Azure
 description: Karta Marketplace służy do identyfikowania zasobów marketingowych dla oferty aplikacji platformy Azure.
-services: Azure, Marketplace, Cloud Partner Portal,
-author: dan-wesley
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/23/2019
-ms.author: pabutler
-ms.openlocfilehash: 967b66a67d51b3a79bcf930ce977af48acc3dd63
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 94bbfb16a967a97b1ee6f6d51a5f55bc8ba13227
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73827576"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80281769"
 ---
-# <a name="azure-application-marketplace-tab"></a>Karta Marketplace aplikacji platformy Azure
+# <a name="azure-application-marketplace-tab"></a>Karta Witryna portalu Azure w portalu Marketplace aplikacji
 
-Skorzystaj z karty Marketplace, aby opisać aplikację platformy Azure i udostępnić zasoby marketingowe. Ta karta zawiera następujące formy: przegląd, artefakty marketingowe, zarządzanie potencjalnymi klientami i informacje prawne.
+Karta Marketplace służy do opisywania aplikacji platformy Azure i dostarczania zasobów marketingowych. Ta karta zawiera następujące formularze: Przegląd, Artefakty marketingowe, Zarządzanie potencjalnymi klientami i Prawne.
 
-## <a name="overview-form"></a>Formularz przeglądu
+## <a name="overview-form"></a>Formularz przeglądowy
 
-Formularz przeglądu zawiera pola wymagane i opcjonalne wyświetlane w następnym przechwyceniu ekranu. Wymagane pola są indicted przez gwiazdkę (*).
+Formularz Przegląd zawiera pola wymagane i opcjonalne wyświetlane w następnym przechwytywaniu ekranu. Wymagane pola są oskarżane gwiazdką (*).
 
-![Formularz przeglądu](./media/azureapp-marketplace-overview.png)
+![Formularz przeglądowy](./media/azureapp-marketplace-overview.png)
 
-W poniższej tabeli opisano ustawienia do użycia podczas tworzenia witryny sklepu dla oferty.   Pola dołączone do gwiazdki są wymagane.
+W poniższej tabeli opisano ustawienia używane do tworzenia witryny sklepowej dla oferty.   Pola dołączone do gwiazdki są wymagane.
 
 |      Pole         |    Opis    |
 |  ---------------   |  ---------------  |
-| **\* tytułu**        | Tytuł oferty. Zostanie ona wyświetlona w widocznym miejscu w portalu Marketplace. Maksymalna długość to 50 znaków. |
-| **\* podsumowania**      | Krótkie podsumowanie oferty. Maksymalna długość to 100 znaków.           |
-| **Długi\* podsumowujący** | Dłuższe podsumowanie oferty (chociaż może być takie samo, jak w przypadku podsumowania). Maksymalna długość to 256 znaków.           |
-| **\* opisu**  | Opis oferty. Maksymalna długość to 3000 znaków. Proste formatowanie HTML jest dozwolone, w tym &lt;p&gt;, &lt;em&gt;, &lt;ul&gt;, &lt;li&gt;, &lt;olu&gt; i tagi nagłówków.  |
-| **\* identyfikatora marketingu** | Unikatowy adres URL do skojarzenia z ofertą zwykle zawiera nazwę organizacji i rozwiązania, maksymalną długość 50 znaków. Wybierz krótki, przyjazny identyfikator marketingu dla usługi. Ta oferta zostanie użyta w adresach URL portalu Marketplace. Na przykład jeśli identyfikator wydawcy to "contoso", a identyfikator marketingu to "sampleApp", adres URL oferty w witrynie Azure Marketplace zostanie https://azuremarketplace.microsoft.com/marketplace/apps/contoso.sampleApp  
-| **Zapodgląd identyfikatorów subskrypcji\*** | Dodaj od jednego do 100 identyfikatorów subskrypcji dla recenzentów. Te białe subskrypcje będą miały dostęp do oferty, gdy będzie ona dostępna w wersji zapoznawczej po jej opublikowaniu.          |
-| **Przydatne linki**    | Opcjonalnie możesz udostępnić linki do różnych zasobów użytkownikom oferty, takie jak pomoc techniczna, dokumentacja, fora itp.  Zaleca się dodanie co najmniej jednego linku do dokumentacji.            |
-| **Sugerowane kategorie (maksymalnie 5)\*** | Wybierz jedną z pięciu kategorii. Wybrane kategorie są używane do mapowania oferty do kategorii produktów dostępnych w witrynie Azure Marketplace i witrynie Azure Portal. Będą one wyświetlane na stronach przeglądania i na stronie szczegółów produktu. |
+| **Tytuł\***        | Tytuł oferty. Będzie on wyświetlany w widocznym miejscu na rynku. Maksymalna długość wynosi 50 znaków. |
+| **Podsumowanie\***      | Krótkie podsumowanie oferty. Maksymalna długość wynosi 100 znaków.           |
+| **Długie podsumowanie\*** | Dłuższe podsumowanie oferty (choć może być takie samo jak podsumowanie). Maksymalna długość wynosi 256 znaków.           |
+| **Opis\***  | Opis oferty. Maksymalna długość wynosi 3000 znaków. Dozwolone jest proste formatowanie &lt;HTML, w tym&gt; &lt;p&gt;&gt; &lt;,&gt; &lt;em&gt;, &lt;ul , li , ol i tagi nagłówka.  |
+| **Identyfikator marketingowy\*** | Unikatowy adres URL do skojarzenia z tą ofertą, zazwyczaj obejmuje nazwę organizacji i rozwiązania, maksymalną długość 50 znaków. Wybierz krótki, przyjazny identyfikator marketingowy dla swojej usługi. Będzie to używane w adresach URL marketplace dla tej oferty. Jeśli na przykład identyfikator wydawcy to "contoso", a identyfikator marketingowy to "sampleApp", adres URL oferty w portalu Azure Marketplace zostaniehttps://azuremarketplace.microsoft.com/marketplace/apps/contoso.sampleApp  
+| **Identyfikatory subskrypcji w wersji zapoznawczej\*** | Dodaj od jednego do 100 identyfikatorów subskrypcji podglądu. Te subskrypcje z białą listą będą miały dostęp do Twojej oferty, gdy będzie ona dostępna w wersji zapoznawczej po jej opublikowaniu, zanim zostanie udostępniona.          |
+| **Przydatne linki**    | Opcjonalnie można podać łącza do różnych zasobów dla użytkowników oferty, takich jak pomoc techniczna, dokumentacja, fora itp.  Zaleca się dodanie co najmniej jednego łącza do dokumentacji.            |
+| **Sugerowane kategorie (maksymalnie 5)\*** | Wybierz jedną do pięciu kategorii. Wybrane kategorie są używane do mapowania oferty na kategorie produktów dostępne w witrynie Azure Marketplace i witrynie Azure Portal. Będą one wyświetlane na stronach przeglądania oraz na stronie szczegółów produktu. |
 |  |  |
 
 
 ## <a name="marketing-artifacts"></a>Artefakty marketingowe
 
-Formularz artefaktów marketingowych zawiera pola wymagane i opcjonalne wyświetlane w następnym przechwyceniu ekranu. Wymagane pola są indicted przez gwiazdkę (*).
+Formularz Artefakty marketingowe ma pola wymagane i opcjonalne wyświetlane w następnym przechwytywaniu ekranu. Wymagane pola są oskarżane gwiazdką (*).
 
 ![Formularz artefaktów marketingowych](./media/azureapp-marketplace-artifacts.png)
 
@@ -50,46 +49,46 @@ W poniższej tabeli opisano artefakty marketingowe.
 
 |      Pole         |    Opis    |
 |  ---------------   |  ---------------  |
-| **Małe\***        | Małe logo: 40x40 pikseli w formacie PNG     |
+| **Small\***        | Małe logo: 40x40 pikseli w formacie PNG     |
 | **Średni\***       | Średnie logo: 90x90 pikseli w formacie PNG    |
-| **Duże\***        | Duże logo: 115x115 pikseli w formacie PNG   |
-| **Szerokie\***         | Szerokie logo: 255x115 pikseli w formacie PNG    |
-| **Hero**           | Opcjonalne logo Hero: 815x290 pikseli w formacie PNG. **Uwaga:** Po przekazaniu nie można usunąć ikony Hero. |
-| **Zrzuty ekranu (maks. 5)** |        Zrzuty ekranu są wyświetlane na stronie ze szczegółowymi informacjami o produkcie. Są one dobrym sposobem na wizualną komunikację z aplikacją i jej działaniem. Na przykład można wyświetlić diagramy architektury lub ilustracje przypadków użycia. Zrzuty ekranu są opcjonalne i ograniczone do 5 dla jednostki SKU. Aby dodać zrzut ekranu:<ul><li>Wybierz pozycję **+ Dodaj zrzut ekranu** , aby otworzyć okno zrzut ekranu</li><li>**Nazwa** — wprowadź nazwę/tytuł (maksymalną długość wynoszącą 100 znaków).</li><li>**Przekaż** — Przekaż obraz. Musi być w formacie PNG, a rozmiar wynosi 533 x 324 pikseli.</li></ul>           |
-| **Dodaj wideo**      | Opcjonalnie na stronie szczegółów produktu są wyświetlane wideo. Są one dobrym sposobem na wizualną komunikację z aplikacją i jej działaniem. Aby dodać film wideo: <ul><li>Wybierz pozycję **+ Dodaj film wideo** , aby otworzyć okno wideo</li><li>**Nazwa** — wprowadź nazwę/tytuł (maksymalną długość wynoszącą 100 znaków).</li><li>**Link** — wprowadź adres URL witryny, która jest hostem wideo (YouTube lub Vimeo)</li><li>**Miniatura** — Przekaż miniaturę. Musi być w formacie PNG, a rozmiar wynosi 533 x 324 pikseli.</li></ul>          |
+| **Large\***        | Duże logo: 115x115 pikseli w formacie PNG   |
+| **Szeroki\***         | Szerokie logo: 255x115 pikseli w formacie PNG    |
+| **Bohater**           | Opcjonalne logo bohatera: 815x290 pikseli w formacie PNG. **Uwaga:** Ikony bohatera nie można usunąć po przesłaniu. |
+| **Zrzuty ekranu (Maks. 5)** |        Zrzuty ekranu są wyświetlane na stronie szczegółów produktu. To dobry sposób na wizualne komunikowanie tego, co robi twoja aplikacja i jak działa. Na przykład można wyświetlić diagramy architektury lub ilustracje przypadków użycia. Zrzuty ekranu są opcjonalne i są ograniczone do 5 na jednostkę SKU. Aby dodać zrzut ekranu:<ul><li>Wybierz **+ Dodaj zrzut ekranu,** aby otworzyć okno Zrzut ekranu</li><li>**Nazwa** — wprowadź nazwę/tytuł (maksymalna długość 100 znaków).</li><li>**Upload** - Prześlij obraz. Musi być w formacie PNG, a rozmiar wynosi 533 x 324 piksele.</li></ul>           |
+| **Dodawanie klipu wideo**      | Opcjonalnie filmy są wyświetlane na stronie szczegółów produktu. Są one dobrym sposobem, aby wizualnie komunikować, co robi aplikacja i jak to działa. Aby dodać film: <ul><li>Wybierz **+ Dodaj wideo,** aby otworzyć okno Wideo</li><li>**Nazwa** — wprowadź nazwę/tytuł (maksymalna długość 100 znaków).</li><li>**Link** - Wpisz adres URL witryny, na której znajduje się film (YouTube lub Vimeo)</li><li>**Miniatura** — prześlij miniaturę. Musi być w formacie PNG, a rozmiar wynosi 533 x 324 piksele.</li></ul>          |
 |  |  |
 
 
 ### <a name="artifact-examples-in-azure-marketplace"></a>Przykłady artefaktów w portalu Azure Marketplace
 
-Następny zrzut ekranu przedstawia przykład wyniku wyszukiwania w portalu Marketplace.
+Następne przechwytywanie ekranu pokazuje przykład wyniku wyszukiwania w Marketplace.
 
-![Wynik wyszukiwania oferty w witrynie Marketplace](./media/azureapp-marketplace-example-browse.png)
+![Wynik wyszukiwania oferty w Marketplace](./media/azureapp-marketplace-example-browse.png)
 
-Na poniższej ilustracji przedstawiono sposób wyświetlania oferty w portalu Marketplace po kliknięciu przez klienta kafelka oferty w wyniku wyszukiwania.
+Na poniższej ilustracji pokazano, jak oferta jest wyświetlana w portalu Marketplace po kliknięciu kafelka oferty w wynikach wyszukiwania.
 
-![Szczegóły wyników wyszukiwania oferty w witrynie Marketplace](./media/azureapp-marketplace-example-details.png)
+![Szczegóły wyników wyszukiwania oferty w Marketplace](./media/azureapp-marketplace-example-details.png)
 
 
 ### <a name="artifact-examples-in-azure-portal"></a>Przykłady artefaktów w witrynie Azure Portal
 
-Na poniższym ekranie przedstawiono sposób wyświetlania oferty w witrynie Azure Portal. Ofertę aplikacji w tym przykładzie można znaleźć, przechodząc do **witryny Marketplace > wszystko > Dev + Test > Jenkins**. Oferta Jenkins zawiera logo, tytuł i nazwę wyświetlaną wydawcy.
+Następujące zrzuty ekranu pokazują, jak oferta jest wyświetlana w witrynie Azure Portal. Oferta aplikacji w tym przykładzie znajduje się przez przejście do **Marketplace>Wszystko>Dev + Test>Jenkins**. Oferta Jenkins zawiera logo, tytuł i nazwę wyświetlaną wydawcy.
 
-![Przeglądaj oferty w Azure Portal](./media/azureapp-portalbrowse-artifacts-jenkins.png)
+![Przeglądaj oferty w witrynie Azure portal](./media/azureapp-portalbrowse-artifacts-jenkins.png)
 
-Przechwytywanie następnego ekranu pokazuje szczegółowe informacje o aplikacji, gdy użytkownik wybierze Jenkins.
+Przechwytywanie następnego ekranu zawiera szczegółowe informacje o aplikacji, gdy użytkownik wybierze jenkins.
 
-![Szczegóły oferty w Azure Portal](./media/azureapp-portal-artifacts-jenkins-details.png)
+![Szczegóły oferty w witrynie Azure portal](./media/azureapp-portal-artifacts-jenkins-details.png)
 
 
 ### <a name="logo-guidelines"></a>Wytyczne dotyczące logo
 
-Wszystkie logo przekazane do portal Cloud Partner powinny postępować zgodnie z wytycznymi:
+Wszystkie logo przesłane do portalu Cloud Partner Portal powinny być zgodne z wytycznymi:
 
-- Projekt platformy Azure ma prostą paletę kolorów. Zachowaj niewielką liczbę kolorów podstawowych i pomocniczych w logo.
-- Kolory motywu w witrynie Azure Portal są białe i czarne. Należy unikać używania tych kolorów jako koloru tła logo. Użyj koloru, który spowoduje, że logo zostanie uwidocznione w Azure Portal. Zalecamy proste kolory podstawowe. Jeśli używasz przezroczystego tła, upewnij się, że logo/tekst nie są białe, czarne lub niebieskie.
-- Nie używaj tła gradientu w logo.
-- Unikaj umieszczania tekstu, nawet nazwy firmy lub marki, w logo. Wygląd i zachowanie logo powinny być "płaskie" i nie powinno się unikać gradientów.
+- Projekt platformy Azure ma prostą paletę kolorów. Zachowaj niską liczbę kolorów podstawowych i pomocniczych na logo.
+- Kolory motywu usługi Azure Portal są białe i czarne. Unikaj używania tych kolorów jako koloru tła logo. Użyj koloru, który sprawi, że twoje logo będzie widoczne w witrynie Azure portal. Zalecamy proste kolory podstawowe. Jeśli używasz przezroczystego tła, upewnij się, że logo/tekst nie są białe, czarne lub niebieskie.
+- Nie używaj gradientowego tła na logo.
+- Unikaj umieszczania tekstu, nawet firmy lub nazwy marki, na logo. Wygląd i działanie logo powinno być "płaskie" i powinno unikać gradientów.
 - Nie rozciągaj logo.
 
 
@@ -98,26 +97,26 @@ Wszystkie logo przekazane do portal Cloud Partner powinny postępować zgodnie z
 Logo Hero jest opcjonalne.
 
 >[!IMPORTANT]
->Po przekazaniu nie można usunąć logo Hero.
+>Nie możesz usunąć logo bohatera po jego przesłaniu.
 
-W przypadku logo Hero należy stosować następujące wytyczne:
+Użyj następujących wskazówek dotyczących logo bohatera:
 
-- Czarne, białe i przezroczyste tła są niedozwolone.
-- Należy unikać używania żadnego jasnego koloru jako tła logo. Nazwa wyświetlana wydawcy, tytuł planu i długi podsumowanie oferty są wyświetlane w białym kolorze czcionki i muszą zostać wystawione w tle.
-- Unikaj używania większości tekstu podczas projektowania logo. Nazwa wydawcy, tytuł planu, podsumowanie oferty długiej i przycisk Utwórz są osadzane programowo w logo, gdy zostanie wyświetlona.
-- Uwzględnij nieużywane prostokątne miejsce po prawej stronie logo Hero. To puste miejsce to 415x100 pikseli i przesunięcie od lewej do 370 pikseli.
+- Czarne, białe i przezroczyste tła nie są dozwolone.
+- Unikaj używania światła jako tła dla logo. Nazwa wyświetlana wydawcy, tytuł planu i długie podsumowanie oferty są wyświetlane w kolorze białej czcionki i muszą wyróżniać się na tle.
+- Unikaj używania większości tekstu podczas projektowania logo. Nazwa wydawcy, tytuł planu, długie podsumowanie oferty i przycisk tworzenia są osadzone programowo wewnątrz logo, gdy oferta jest wyświetlana na liście.
+- Dołącz nieużywane prostokątne miejsce po prawej stronie logo bohatera. To puste miejsce to 415x100 pikseli i odsunięte od lewej o 370 pikseli.
 
 
 ## <a name="lead-management"></a>Zarządzanie potencjalnymi klientami
 
-Formularz zarządzanie potencjalnymi klientami zawiera opcjonalne pole umożliwiające skonfigurowanie zarządzania liderem. Aby skonfigurować zarządzanie potencjalnymi klientami, wybierz z listy rozwijanej element docelowy potencjalnego klienta. Przechwytywanie następnego ekranu pokazuje dostępne miejsca docelowe.
+Formularz Zarządzanie potencjalnymi klientami zawiera opcjonalne pole do konfigurowania zarządzania potencjalnymi klientami. Aby skonfigurować zarządzanie potencjalnymi klientami, wybierz miejsce docelowe potencjalnego klienta z listy rozwijanej. Następne przechwytywanie ekranu pokazuje dostępne miejsca docelowe.
 
-![Wybierz miejsce docelowe zarządzania liderem](./media/azureapp-marketplace-leadmgmt.png)
+![Wybierz miejsce docelowe zarządzania potencjalnymi klientami](./media/azureapp-marketplace-leadmgmt.png)
 
 >[!TIP]
->Wybierz ikonę informacji, aby wyświetlić ten komunikat: "Wybierz system, w którym będą przechowywane potencjalni klienci. Dowiedz się, jak połączyć się z systemem CRM w [tym miejscu](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-get-customer-leads) .
+>Wybierz ikonę informacji, aby wyświetlić ten komunikat: "Wybierz system, w którym będą przechowywane twoi potencjalni klienci. Dowiedz się, jak połączyć się z systemem CRM [tutaj](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-get-customer-leads) ."
 
-Aby uzyskać więcej informacji, zobacz [Konfigurowanie potencjalnych](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-get-customer-leads)klientów.
+Aby uzyskać więcej informacji, zobacz [Konfigurowanie potencjalnych klientów](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-get-customer-leads).
 
 
 ## <a name="legal"></a>Informacje prawne
@@ -126,10 +125,10 @@ Użyj formularza prawnego, aby dostarczyć dokumentację prawną wymaganą dla k
 
 Podaj następujące informacje:
 
-- **Adres URL zasad ochrony prywatności\*** — wprowadź link do zasad zachowania poufności informacji aplikacji.
-- **Warunki użytkowania\*** — wprowadź warunki użytkowania aplikacji. Aby móc wypróbować aplikację, klienci muszą zaakceptować te warunki.
+- **Adres URL\* zasad prywatności** — wpisz link do zasad ochrony prywatności aplikacji.
+- **Warunki użytkowania\* ** — wprowadź warunki użytkowania aplikacji. Klienci muszą zaakceptować te warunki, zanim będą mogli wypróbować aplikację.
 
-![Formularz prawny](./media/azureapp-marketplace-legal.png)
+![Forma prawna](./media/azureapp-marketplace-legal.png)
 
 
 ## <a name="next-steps"></a>Następne kroki

@@ -1,6 +1,6 @@
 ---
-title: Narzędzia do diagnostyki do Rozwiązywanie problemów z urządzeniem StorSimple 8000 | Dokumentacja firmy Microsoft
-description: W tym artykule opisano tryby urządzenia StorSimple i wyjaśniono, jak zmienianie trybu urządzenia za pomocą programu Windows PowerShell dla usługi StorSimple.
+title: Narzędzie diagnostyczne do rozwiązywania problemów z urządzeniem StorSimple 8000 | Dokumenty firmy Microsoft
+description: W tym artykule opisano tryby urządzenia StorSimple i wyjaśniono, jak zmienić tryb urządzenia za pomocą programu Windows PowerShell for StorSimple.
 services: storsimple
 documentationcenter: ''
 author: alkohli
@@ -14,87 +14,87 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/09/2018
 ms.author: alkohli
-ms.openlocfilehash: 5cce4337e3ef95c6407d46d9b8b6401fe4f6600b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 48bd909eefbaea15cf6ca2427e106ad9bc0ffbb4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60576190"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80298742"
 ---
-# <a name="use-the-storsimple-diagnostics-tool-to-troubleshoot-8000-series-device-issues"></a>Używanie narzędzia do diagnostyki usługi StorSimple, aby rozwiązać problemy dotyczące urządzeń z serii 8000
+# <a name="use-the-storsimple-diagnostics-tool-to-troubleshoot-8000-series-device-issues"></a>Narzędzie diagnostyki StorSimple umożliwia rozwiązywanie problemów z urządzeniami serii 8000
 
 ## <a name="overview"></a>Omówienie
 
-Narzędzia do diagnostyki usługi StorSimple diagnozuje problemy związane z systemu, wydajności, sieci i sprzętu kondycja składników dla urządzenia StorSimple. Narzędzia do diagnostyki może służyć w różnych scenariuszach. Te scenariusze obejmują obciążenia planowania, wdrażania urządzenia StorSimple, oceny środowiska sieciowego i określanie wydajność działającego urządzenia. Ten artykuł zawiera omówienie narzędzia do diagnostyki i w tym artykule opisano, jak używać narzędzia z urządzeniem StorSimple.
+Narzędzie Diagnostyka StorSimple diagnozuje problemy związane ze zdrowiem systemu, wydajności, sieci i sprzętu dla urządzenia StorSimple. Narzędzie diagnostyczne może być używane w różnych scenariuszach. Scenariusze te obejmują planowanie obciążenia, wdrażanie urządzenia StorSimple, ocenę środowiska sieciowego i określanie wydajności urządzenia operacyjnego. W tym artykule przedstawiono omówienie narzędzia diagnostycznego i opisano, jak narzędzie może być używane z urządzeniem StorSimple.
 
-Narzędzia do diagnostyki jest przeznaczone głównie dla urządzeń StorSimple serii 8000 w środowisku lokalnym (8100 i 8600).
+Narzędzie diagnostyczne jest przeznaczone przede wszystkim dla urządzeń lokalnych serii StorSimple 8000 (8100 i 8600).
 
-## <a name="run-diagnostics-tool"></a>Uruchamianie narzędzia do diagnostyki
+## <a name="run-diagnostics-tool"></a>Uruchom narzędzie diagnostyczne
 
-To narzędzie można uruchomić za pomocą interfejsu programu Windows PowerShell urządzenia StorSimple. Istnieją dwa sposoby dostępu lokalnego interfejsu urządzenia:
+To narzędzie można uruchomić za pośrednictwem interfejsu programu Windows PowerShell urządzenia StorSimple. Istnieją dwa sposoby uzyskiwania dostępu do interfejsu lokalnego urządzenia:
 
-* [Łączenie z konsolą szeregową urządzenia przy użyciu programu PuTTY](storsimple-8000-deployment-walkthrough-u2.md#use-putty-to-connect-to-the-device-serial-console).
-* [Zdalny dostęp do narzędzia, za pomocą programu Windows PowerShell dla usługi StorSimple](storsimple-8000-remote-connect.md).
+* [Użyj PuTTY, aby połączyć się z konsolą szeregową urządzenia](storsimple-8000-deployment-walkthrough-u2.md#use-putty-to-connect-to-the-device-serial-console).
+* [Zdalny dostęp do narzędzia za pośrednictwem programu Windows PowerShell for StorSimple](storsimple-8000-remote-connect.md).
 
-W tym artykule przyjęto założenie, że łączysz się z konsolą szeregową urządzenia przy użyciu programu PuTTY.
+W tym artykule zakładamy, że masz podłączony do konsoli szeregowej urządzenia za pośrednictwem PuTTY.
 
-#### <a name="to-run-the-diagnostics-tool"></a>Aby uruchomić narzędzia do diagnostyki
+#### <a name="to-run-the-diagnostics-tool"></a>Aby uruchomić narzędzie diagnostyczne
 
-Po połączeniu się z interfejsu programu Windows PowerShell urządzenia, wykonaj następujące kroki, aby uruchomić polecenie cmdlet.
-1. Zaloguj się do konsoli szeregowej urządzenia, wykonując kroki opisane w [przy użyciu programu PuTTY, aby nawiązać połączenie z konsolą szeregową urządzenia](storsimple-8000-deployment-walkthrough-u2.md#use-putty-to-connect-to-the-device-serial-console).
+Po nawiązaniu połączenia z interfejsem programu Windows PowerShell urządzenia wykonaj następujące czynności, aby uruchomić polecenie cmdlet.
+1. Zaloguj się do konsoli szeregowej urządzenia, wykonując czynności opisane w [aplikacji Użyj putty, aby połączyć się z konsolą szeregową urządzenia](storsimple-8000-deployment-walkthrough-u2.md#use-putty-to-connect-to-the-device-serial-console).
 
 2. Wpisz następujące polecenie:
 
     `Invoke-HcsDiagnostics`
 
-    Jeśli parametr zakresu nie jest określony, polecenie cmdlet wykonuje testy diagnostyczne. Te testy obejmują systemu, kondycja składników sprzętowych, sieci i wydajności. 
+    Jeśli parametr zakresu nie jest określony, polecenie cmdlet wykonuje wszystkie testy diagnostyczne. Testy te obejmują system, kondycję składnika sprzętowego, sieć i wydajność. 
     
-    Aby uruchomić określonego testu, określ parametr zakresu. Na przykład aby uruchomić tylko testy sieci, wpisz
+    Aby uruchomić tylko określony test, należy określić parametr zakresu. Na przykład, aby uruchomić tylko test sieci, wpisz
 
     `Invoke-HcsDiagnostics -Scope Network`
 
-3. Zaznacz i skopiuj dane wyjściowe z okna programu PuTTY w pliku tekstowym w celu dalszej analizy.
+3. Zaznacz i skopiuj dane wyjściowe z okna PuTTY do pliku tekstowego w celu dalszej analizy.
 
-## <a name="scenarios-to-use-the-diagnostics-tool"></a>Scenariusze korzystania z narzędzia do diagnostyki
+## <a name="scenarios-to-use-the-diagnostics-tool"></a>Scenariusze użycia narzędzia diagnostycznego
 
-Używanie narzędzia do diagnostyki rozwiązywać problemy z sieci, wydajność, system i sprzętu kondycji systemu. Poniżej przedstawiono kilka możliwych scenariuszy:
+Narzędzie diagnostyczne służy do rozwiązywania problemów z siecią, wydajnością, kondycją systemu i sprzętu systemu. Oto kilka możliwych scenariuszy:
 
-* **Urządzenie w trybie offline** — urządzenia Your StorSimple 8000 series jest w trybie offline. Z poziomu interfejsu programu Windows PowerShell wydaje czy oba kontrolery są gotowe do działania.
-    * To narzędzie służy do następnie ustalenia stanu sieci.
+* **Urządzenie w trybie offline** — urządzenie z serii StorSimple 8000 jest w trybie offline. Jednak z interfejsu programu Windows PowerShell wydaje się, że oba kontrolery są uruchomione.
+    * Za pomocą tego narzędzia można określić stan sieci.
          
          > [!NOTE]
-         > Nie należy używać tego narzędzia do oceny wydajności oraz ustawienia sieci na urządzeniu, przed przystąpieniem do rejestracji (lub konfigurowanie za pomocą Kreatora instalacji). Prawidłowy adres IP jest przypisany do urządzenia podczas Kreator instalacji i rejestracji. To polecenie cmdlet można uruchomić na urządzeniu, która nie jest zarejestrowana dla kondycja sprzętu i systemu. Użyj parametru zakresu, na przykład:
+         > Nie należy używać tego narzędzia do oceny wydajności i ustawień sieciowych na urządzeniu przed rejestracją (lub konfigurowaniem za pomocą kreatora konfiguracji). Prawidłowy adres IP jest przypisany do urządzenia podczas kreatora konfiguracji i rejestracji. Można uruchomić to polecenie cmdlet, na urządzeniu, które nie jest zarejestrowane, dla kondycji sprzętu i systemu. Użyj parametru scope, na przykład:
          >
          > `Invoke-HcsDiagnostics -Scope Hardware`
          >
          > `Invoke-HcsDiagnostics -Scope System`
 
-* **Problemy z urządzeniem trwałego** — występują problemy dotyczące urządzeń, które wydaje się, że utrwalanie. Na przykład kończy się niepowodzeniem rejestracji. Możesz może również występować problemy z urządzeniem po urządzenia został pomyślnie zarejestrowany i operacyjne od pewnego czasu.
-    * W tym przypadku to narzędzie do wstępnego rozwiązywania problemów przed zalogowaniem się żądania obsługi przy użyciu Microsoft Support. Firma Microsoft zaleca, możesz uruchomić to narzędzie i Przechwyć dane wyjściowe tego narzędzia. Te dane wyjściowe mogą udzielić im pomocy technicznej, aby przyspieszyć, rozwiązywania problemów.
-    * W przypadku wszelkich awarii składnika lub klastra sprzętu należy rejestrować się w żądaniu pomocy technicznej.
+* **Trwałe problemy z urządzeniem** — występują problemy z urządzeniem, które wydają się być nadal. Na przykład rejestracja nie jest w stanie. Mogą również występować problemy z urządzeniem po pomyślnym zarejestrowaniu urządzenia i uruchomieniu przez pewien czas.
+    * W takim przypadku należy użyć tego narzędzia do wstępnego rozwiązywania problemów przed zalogowaniem żądania usługi za pomocą pomocy technicznej firmy Microsoft. Zaleca się uruchomienie tego narzędzia i przechwycenie danych wyjściowych tego narzędzia. Następnie można podać to dane wyjściowe do pomocy technicznej, aby przyspieszyć rozwiązywanie problemów.
+    * Jeśli występują błędy dowolnego składnika sprzętowego lub klastra, należy zalogować się do żądania pomocy technicznej.
 
-* **Niską wydajność urządzenia** — urządzenia z usługi StorSimple działa wolno.
-    * W takim przypadku należy uruchomić to polecenie cmdlet z parametrem zakresu równa wydajności. Analizuj dane wyjściowe. Możesz uzyskać chmury opóźnienia odczytu i zapisu. Użyj opóźnień zawartych w raporcie jako maksymalną osiągalny cel, wziąć pod uwagę pewne nadmiarowe obciążenie do wewnętrznego przetwarzania danych, a następnie wdrażania obciążeń w systemie. Aby uzyskać więcej informacji, przejdź do [Użyj testu sieci, aby rozwiązywać problemy z wydajnością urządzeń](#network-test).
+* **Niska wydajność urządzenia** — urządzenie StorSimple jest powolne.
+    * W takim przypadku uruchom to polecenie cmdlet z parametrem zakresu ustawionym na wydajność. Analizowanie danych wyjściowych. Otrzymasz opóźnienia odczytu i zapisu w chmurze. Użyj zgłoszonych opóźnień jako maksymalnego osiągalne gołym celem, czynnik pewne obciążenie dla wewnętrznego przetwarzania danych, a następnie wdrożyć obciążeń w systemie. Aby uzyskać więcej informacji, przejdź do strony [Użyj testu sieciowego, aby rozwiązać problem z wydajnością urządzenia](#network-test).
 
 
-## <a name="diagnostics-test-and-sample-outputs"></a>Diagnostyka testów i przykładowych danych wyjściowych
+## <a name="diagnostics-test-and-sample-outputs"></a>Testy diagnostyczne i wyjścia próbek
 
-### <a name="hardware-test"></a>Testu sprzętu
+### <a name="hardware-test"></a>Test sprzętu
 
-Ten test określa stan składników sprzętowych, USM oprogramowanie układowe i oprogramowanie układowe dysku w systemie.
+Ten test określa stan składników sprzętowych, oprogramowania układowego USM i oprogramowania układowego dysku uruchomionego w systemie.
 
-* Składniki sprzętowe, zgłaszane są tych składników, które test nie powiódł się lub nie są obecne w systemie.
-* Wersje oprogramowania układowego i oprogramowania układowego dysku USM są zgłaszane dla kontrolera 0 i Controller 1 i udostępnionych składników w systemie. Aby uzyskać pełną listę składników sprzętowych przejdź do:
+* Zgłoszone składniki sprzętowe to składniki, które nie przeszły testu lub nie są obecne w systemie.
+* Wersje oprogramowania układowego i oprogramowania układowego USM są zgłaszane dla kontrolera 0, kontrolera 1 i współużytkowanych składników w systemie. Aby uzyskać pełną listę składników sprzętu, przejdź do:
 
-    * [Składniki w obudowie podstawowego](storsimple-8000-monitor-hardware-status.md#component-list-for-primary-enclosure-of-storsimple-device)
-    * [Składniki w obudowie EBOD](storsimple-8000-monitor-hardware-status.md#component-list-for-ebod-enclosure-of-storsimple-device)
+    * [Komponenty w obudowie podstawowej](storsimple-8000-monitor-hardware-status.md#component-list-for-primary-enclosure-of-storsimple-device)
+    * [Komponenty w obudowie EBOD](storsimple-8000-monitor-hardware-status.md#component-list-for-ebod-enclosure-of-storsimple-device)
 
 > [!NOTE]
-> Jeśli zgłasza testu sprzętu, składników, [Zaloguj żądania obsługi przy użyciu Microsoft Support](storsimple-8000-contact-microsoft-support.md).
+> Jeśli raporty testów sprzętu nie powiodły się, [zaloguj się do żądania usługi za pomocą pomocy technicznej firmy Microsoft](storsimple-8000-contact-microsoft-support.md).
 
-#### <a name="sample-output-of-hardware-test-run-on-an-8100-device"></a>Przykładowe dane wyjściowe testu sprzętu do urządzenia 8100
+#### <a name="sample-output-of-hardware-test-run-on-an-8100-device"></a>Przykładowe dane wyjściowe testu sprzętowego na urządzeniu 8100
 
-Oto przykładowe dane wyjściowe z urządzenia StorSimple 8100. W polu urządzenia model 8100 obudowy EBOD nie występuje. W związku z tym składniki kontrolera EBOD nie są zgłaszane.
+Oto przykładowe dane wyjściowe z urządzenia StorSimple 8100. W urządzeniu modelu 8100 obudowa EBOD nie jest obecna. W związku z tym składniki sterownika EBOD nie są zgłaszane.
 
 ```
 Controller0>Invoke-HcsDiagnostics -Scope Hardware
@@ -206,15 +206,15 @@ DisksFirmware       : SmrtStor:TXA2D20400GA6XYR:KZ50
 
 ### <a name="system-test"></a>Test systemu
 
-Ten test raportuje informacje o systemie, dostępne aktualizacje, informacje o klastrze i informacji usługi dla urządzenia.
+Ten test raportuje informacje o systemie, dostępne aktualizacje, informacje klastra i informacje o usłudze urządzenia.
 
-* Informacje o systemie obejmuje model, numer seryjny urządzenia, strefę czasową, stan kontrolera i wersji oprogramowania szczegółowe uruchomionych w systemie. Aby zapoznać się z różnych parametrami systemu, które są zgłaszane jako dane wyjściowe, przejdź do [interpretowanie informacje o systemie](#appendix-interpreting-system-information).
+* Informacje o systemie obejmują model, numer seryjny urządzenia, strefę czasową, stan kontrolera i szczegółową wersję oprogramowania działającą w systemie. Aby zrozumieć różne parametry systemu zgłaszane jako dane [wyjściowe,](#appendix-interpreting-system-information)przejdź do strony Interpreting system information .
 
-* Dostępność aktualizacji, raporty, czy dostępne są trybami zwykłych i konserwacji i ich nazwy skojarzonych pakietów. Jeśli `RegularUpdates` i `MaintenanceModeUpdates` są `false`, oznacza to, że aktualizacje nie są dostępne. Urządzenie jest aktualne.
-* Informacje o klastrze zawiera informacje na temat różnych składników logicznych wszystkie grupy klastra magazynu HCS i ich odpowiednie stany. Jeśli widzisz grupy klastra w trybie offline, w tej sekcji raportu, [skontaktuj się z Microsoft Support](storsimple-8000-contact-microsoft-support.md).
-* Informacje o usłudze obejmuje nazwy i Stanami wszystkich usług magazynu HCS lub CiS działających na urządzeniu z systemem. Te informacje są przydatne w przypadku Support firmy Microsoft w rozwiązaniu problemu urządzenia.
+* Dostępność aktualizacji informuje, czy tryby regularne i konserwacji są dostępne i ich nazwy skojarzonych pakietów. Jeśli `RegularUpdates` `MaintenanceModeUpdates` i `false`są , oznacza to, że aktualizacje nie są dostępne. Urządzenie jest aktualne.
+* Informacje klastra zawierają informacje o różnych składnikach logicznych wszystkich grup klastra HCS i ich odpowiednich stanach. Jeśli w tej sekcji raportu jest widoczna grupa klastrów trybu offline, [skontaktuj się z pomocą techniczną firmy Microsoft](storsimple-8000-contact-microsoft-support.md).
+* Informacje o usłudze obejmują nazwy i stany wszystkich usług HCS i CiS uruchomionych na urządzeniu. Te informacje są przydatne dla pomocy technicznej firmy Microsoft w rozwiązywaniu problemu z urządzeniem.
 
-#### <a name="sample-output-of-system-test-run-on-an-8100-device"></a>Przykładowe dane wyjściowe testu systemu do urządzenia 8100
+#### <a name="sample-output-of-system-test-run-on-an-8100-device"></a>Przykładowe wyjście testu systemowego na urządzeniu 8100
 
 Oto przykładowe dane wyjściowe testu systemu na urządzeniu 8100.
 
@@ -323,22 +323,22 @@ hcs_startup                                   Stopped hcs_startup
 
 ### <a name="network-test"></a>Test sieci
 
-Ten test sprawdza stan interfejsów sieciowych, portów, DNS i NTP łączność z serwerem, SSL certyfikatów, poświadczeń konta magazynu, łączność z serwerami aktualizacji i łączności serwera proxy sieci web na urządzeniu StorSimple.
+Ten test sprawdza stan interfejsów sieciowych, portów, łączności z serwerem DNS i NTP, certyfikatu TLS/SSL, poświadczeń konta magazynu, łączności z serwerami aktualizacji i łączności serwera proxy sieci Web na urządzeniu StorSimple.
 
-#### <a name="sample-output-of-network-test-when-only-data0-is-enabled"></a>Przykładowe dane wyjściowe sieci testów, gdy jest włączona tylko DATA0
+#### <a name="sample-output-of-network-test-when-only-data0-is-enabled"></a>Przykładowe dane wyjściowe testu sieciowego, gdy włączono tylko funkcję DATA0
 
-Oto przykładowe dane wyjściowe do urządzenia 8100. Widoczne w danych wyjściowych który:
-* Tylko DATA 0 i 1 dane interfejsy sieciowe są włączone i skonfigurowane.
-* DANE 2 – 5 nie są włączone w portalu.
-* Konfiguracja serwera DNS jest prawidłowa, a urządzenie może połączyć się za pośrednictwem serwera DNS.
-* Łączność z serwerem NTP jest również dobrym rozwiązaniem.
-* Porty 80 i 443 są otwarte. Jednak port 9354 jest zablokowany. Na podstawie [wymagania sieciowe systemu](storsimple-system-requirements.md), musisz otworzyć ten port komunikacji usługi Service bus.
-* Certyfikat SSL jest prawidłowy.
-* Urządzenie może połączyć się z kontem usługi storage: _myss8000storageacct_.
+Oto przykładowe dane wyjściowe urządzenia 8100. Możesz zobaczyć na wyjściu, że:
+* Tylko interfejsy sieciowe DATA 0 i DATA 1 są włączone i skonfigurowane.
+* DATA 2 - 5 nie są włączone w portalu.
+* Konfiguracja serwera DNS jest prawidłowa, a urządzenie może łączyć się za pośrednictwem serwera DNS.
+* Łączność z serwerem NTP jest również w porządku.
+* Porty 80 i 443 są otwarte. Jednak port 9354 jest zablokowany. W zależności od [wymagań sieci systemowej](storsimple-system-requirements.md)należy otworzyć ten port dla komunikacji magistrali usług.
+* Certyfikat TLS/SSL jest ważny.
+* Urządzenie może połączyć się z kontem pamięci masowej: _myss8000storageacct_.
 * Łączność z serwerami aktualizacji jest prawidłowa.
-* Nie skonfigurowano serwer proxy sieci web na tym urządzeniu.
+* Serwer proxy sieci Web nie jest skonfigurowany na tym urządzeniu.
 
-#### <a name="sample-output-of-network-test-when-data0-and-data1-are-enabled"></a>Przykładowe dane wyjściowe testu sieci po włączeniu DATA0 i dane1
+#### <a name="sample-output-of-network-test-when-data0-and-data1-are-enabled"></a>Przykładowe dane wyjściowe testu sieciowego po włączeniu funkcji DATA0 i DATA1
 
 ```
 Controller0>Invoke-HcsDiagnostics -Scope Network
@@ -368,31 +368,31 @@ Web proxy                               Not enabled         Web proxy is not...
 
 ### <a name="performance-test"></a>Test wydajnościowy
 
-Ten test raportów wydajności chmury, za pośrednictwem opóźnienia odczytu i zapisu chmury dla Twojego urządzenia. To narzędzie można ustalić punkt odniesienia wydajności chmury, który można osiągnąć za pomocą usługi StorSimple. Zgłaszanej przez narzędzie maksymalnej wydajności (Scenariusz najlepszego przypadku dla opóźnienia odczytu i zapisu) można uzyskać w celu nawiązania połączenia.
+Ten test raportuje wydajność chmury za pośrednictwem opóźnienia odczytu i zapisu w chmurze dla urządzenia. To narzędzie może służyć do ustanowienia linii bazowej wydajności chmury, które można osiągnąć za pomocą StorSimple. Narzędzie raportuje maksymalną wydajność (najlepszy scenariusz dla opóźnień odczytu i zapisu), które można uzyskać dla połączenia.
 
-Zgodnie z maksymalną wydajność osiągalna zgłaszanej przez narzędzie, możemy użyć zgłoszonych opóźnienia odczytu i zapisu jako elementy docelowe, w przypadku wdrażania obciążeń.
+Ponieważ narzędzie raportuje maksymalną osiągalną wydajność, możemy użyć zgłoszonych opóźnień odczytu i zapisu jako obiektów docelowych podczas wdrażania obciążeń.
 
-Zasymulowano rozmiarów obiektów blob skojarzony z typami inny wolumin na urządzeniu. Zwykłych warstwowe i kopie zapasowe woluminów przypiętych lokalnie, użyj obiektu blob o rozmiarze 64 KB. Woluminy warstwowe z zaznaczoną opcją archiwum Użyj rozmiar danych obiektu blob 512 KB. Jeśli urządzenie ma woluminy warstwowe i przypiętego lokalnie skonfigurowana, tylko testy, odpowiadający blob 64 KB, rozmiar danych jest uruchomiony.
+Test symuluje rozmiary obiektów blob skojarzone z różnymi typami woluminów na urządzeniu. Regularne warstwowe i kopie zapasowe woluminów przypiętych lokalnie używają rozmiaru obiektu blob 64 KB. Woluminy warstwowe z zaznaczoną opcją archiwum używają rozmiaru danych obiektów blob o rozmiarze 512 KB. Jeśli urządzenie ma warstwowe i lokalnie przypięte woluminy skonfigurowane, tylko test odpowiadający rozmiarowi danych obiektów blob 64 KB jest uruchamiany.
 
 Aby użyć tego narzędzia, wykonaj następujące czynności:
 
-1.  Najpierw utwórz kombinacji woluminy warstwowe woluminy warstwowe z zaznaczoną opcją zarchiwizowane. Ta akcja zagwarantuje, że to narzędzie uruchamia testy dla 64 KB i 512 KB rozmiarów obiektów blob.
+1.  Najpierw utwórz kombinację woluminów warstwowych i woluminów warstwowych z zaznaczoną opcją zarchiwizowanej. Ta akcja gwarantuje, że narzędzie uruchamia testy dla rozmiarów obiektów blob 64 KB i 512 KB.
 
-2. Uruchom polecenie cmdlet, po użytkownik utworzeniu i skonfigurowaniu woluminów. Wpisz:
+2. Uruchom polecenie cmdlet po utworzeniu i skonfigurowaniu woluminów. Wpisz:
 
     `Invoke-HcsDiagnostics -Scope Performance`
 
-3. Zanotuj opóźnienia odczytu i zapisu, zgłoszonej przez narzędzie. Ten test może potrwać kilka minut przed zgłasza wyniki.
+3. Zanotuj opóźnienia odczytu i zapisu zgłoszone przez narzędzie. Ten test może potrwać kilka minut, zanim zgłosi wyniki.
 
-4. Jeśli wszystko dzieje się w oczekiwanym zakresem opóźnienia połączenia, następnie opóźnienia zgłoszonej przez narzędzie może służyć jako maksymalną osiągalny cel podczas wdrażania obciążeń. Wziąć pod uwagę pewne nadmiarowe obciążenie do wewnętrznego przetwarzania danych.
+4. Jeśli opóźnienia połączenia są w oczekiwanym zakresie, a następnie opóźnienia zgłaszane przez narzędzie może służyć jako maksymalny osiągalny cel podczas wdrażania obciążeń. Uwzględnij pewne obciążenie związane z wewnętrznym przetwarzaniem danych.
 
-    W przypadku wysokiej wartości opóźnienia odczytu i zapisu, zgłoszonej przez narzędzie Diagnostyka:
+    Jeśli opóźnienia odczytu i zapisu zgłaszane przez narzędzie diagnostyczne są wysokie:
 
-    1. Skonfigurowanie usługi Storage Analytics do usług obiektów blob i analizowanie danych wyjściowych, aby zrozumieć opóźnień dla konta usługi Azure storage. Aby uzyskać szczegółowe instrukcje, przejdź do [włączyć i skonfigurować usługi Storage Analytics](../storage/common/storage-enable-and-view-metrics.md). Jeśli te wartości opóźnienia są również wysoką i porównywalne do numerów otrzymany od narzędzia do diagnostyki usługi StorSimple, należy się żądanie usługi z usługą Azure storage.
+    1. Skonfiguruj usługę Analizy magazynu dla usług obiektów blob i przeanalizuj dane wyjściowe, aby zrozumieć opóźnienia dla konta magazynu platformy Azure. Aby uzyskać szczegółowe instrukcje, przejdź do [włączania i konfigurowania analizy pamięci masowej](../storage/common/storage-enable-and-view-metrics.md). Jeśli te opóźnienia są również wysokie i porównywalne z liczbami otrzymanymi z narzędzia Diagnostyka StorSimple, należy zarejestrować żądanie usługi za pomocą magazynu platformy Azure.
 
-    2. W przypadku niskie opóźnienia konta magazynu, skontaktuj się z administratorem sieci, aby zbadać wszelkie problemy opóźnienie w sieci.
+    2. Jeśli opóźnienia na koncie magazynu są małe, skontaktuj się z administratorem sieci, aby zbadać wszelkie problemy z opóźnieniami w sieci.
 
-#### <a name="sample-output-of-performance-test-run-on-an-8100-device"></a>Przykładowe dane wyjściowe testu wydajności uruchamiania na urządzeniu 8100
+#### <a name="sample-output-of-performance-test-run-on-an-8100-device"></a>Przykładowe wyjście testu wydajności na urządzeniu 8100
 
 ```
 Controller0>Invoke-HcsDiagnostics -Scope Performance
@@ -410,36 +410,36 @@ Cloud read latency: 4924 ms using credential 'myss8000storageacct', blob size '5
 Controller0>
 ```
 
-## <a name="appendix-interpreting-system-information"></a>Dodatek: interpretowanie informacje o systemie
+## <a name="appendix-interpreting-system-information"></a>Załącznik: informacje o systemie tłumaczeń ustnych
 
-Poniżej przedstawiono tabelę opisującą różne parametry programu Windows PowerShell na mapie informacje systemowe, aby. 
+Oto tabela opisująca, co różne parametry programu Windows PowerShell w mapie informacji o systemie. 
 
-| Parametr środowiska PowerShell    | Opis  |
+| Parametr programu PowerShell    | Opis  |
 |-------------------------|------------------|
 | Identyfikator wystąpienia             | Każdy kontroler ma unikatowy identyfikator lub identyfikator GUID skojarzony z nim.|
-| Name (Nazwa)                    | Przyjazna nazwa urządzenia, zgodnie z konfiguracją w witrynie Azure portal podczas wdrażania urządzenia. Przyjazna nazwa domyślna jest numer seryjny urządzenia. |
-| Modelowanie                   | Model urządzenia serii StorSimple 8000. Może on być 8100 lub 8600.|
-| numer seryjny            | Numer seryjny urządzenia jest przypisywany w fabryce i jest 15 znaków. Wskazuje, na przykład 8600 SHX0991003G44HT:<br> 8600 — jest to model urządzenia.<br>SHX — to witryna produkcji.<br> 0991003 - jest określony produkt. <br> G44HT-5 ostatnich cyfr są zwiększane, aby utworzyć unikatowe numery seryjne. To może nie być sekwencyjne zestawu.|
-| Strefa czasowa                | Strefę czasową urządzenia, zgodnie z konfiguracją w witrynie Azure portal podczas wdrażania urządzenia.|
-| CurrentController       | Kontroler, że nawiązano połączenie za pośrednictwem interfejsu programu Windows PowerShell urządzenia StorSimple.|
-| ActiveController        | Kontroler, który jest aktywna na twoim urządzeniu i kontroluje wszystkie operacje dysku i sieci. Może to być kontrolera 0 i kontrolera 1.  |
-| Controller0Status       | Stan kontrolera 0 na urządzeniu. Stan kontrolera może być normalne, w trybie odzyskiwania lub jest niedostępny.|
-| Controller1Status       | Stan kontrolera 1 na urządzeniu.  Stan kontrolera może być normalne, w trybie odzyskiwania lub jest niedostępny.|
-| SystemMode              | Ogólny stan urządzenia StorSimple. Stan urządzenia może być normalne, konserwacji lub zlikwidowane (odpowiada dezaktywowane w witrynie Azure portal).|
-| FriendlySoftwareVersion | Przyjazne ciąg, który odnosi się do wersji oprogramowania urządzenia. W przypadku systemu uruchomić aktualizację Update 4 wersja oprogramowania przyjazna będzie StorSimple 8000 Series Update 4.0.|
-| HcsSoftwareVersion      | Wersja oprogramowania magazynu HCS uruchomiony na twoim urządzeniu. Na przykład wersja oprogramowania magazynu HCS odpowiadający StorSimple 8000 Series Update 4.0 jest 6.3.9600.17820. |
-| ApiVersion              | Wersja oprogramowania interfejsu API programu Windows PowerShell urządzenia magazynu HCS.|
-| VhdVersion              | Wersja oprogramowania obrazu fabryki, dostarczanej urządzenia z programem. W przypadku zresetowania urządzenia do ustawień fabrycznych, działa ta wersja oprogramowania.|
-| OSVersion               | Wersja oprogramowania systemu operacyjnego Windows Server uruchomionej na urządzeniu. Windows Server 2012 R2, który odpowiada 6.3.9600 na podstawie urządzenia StorSimple.|
-| CisAgentVersion         | Wersja agenta konfiguracji (ci) uruchomione na urządzeniu StorSimple. Ten agent pomaga komunikować się z usługą StorSimple Manager, działające na platformie Azure.|
-| MdsAgentVersion         | Wersja odpowiadający agenta usług Mds uruchomionego na urządzeniu StorSimple. Ten agent jest przeniesienie danych do monitorowania i diagnostyki usługi (MDS).|
-| Lsisas2Version          | Wersja odpowiadający sterowniki LSI na urządzeniu StorSimple.|
+| Nazwa                    | Przyjazna nazwa urządzenia skonfigurowana za pośrednictwem witryny Azure portal podczas wdrażania urządzenia. Domyślną przyjazną nazwą jest numer seryjny urządzenia. |
+| Model                   | Model urządzenia z serii StorSimple 8000. Model może być 8100 lub 8600.|
+| SerialNumber            | Numer seryjny urządzenia jest przypisany fabrycznie i ma 15 znaków. Na przykład 8600-SHX0991003G44HT wskazuje:<br> 8600 – Czy model urządzenia.<br>SHX – Jest zakładem produkcyjnym.<br> 0991003 - Jest to produkt szczególny. <br> G44HT- ostatnie 5 cyfr są zwiększane, aby utworzyć unikalne numery seryjne. Może to nie być zestaw sekwencyjny.|
+| TimeZone                | Strefa czasowa urządzenia skonfigurowana w witrynie Azure portal podczas wdrażania urządzenia.|
+| PrądKontroler       | Kontroler, z którego masz połączenie za pośrednictwem interfejsu programu Windows PowerShell urządzenia StorSimple.|
+| Aktywny kontroler        | Kontroler, który jest aktywny na urządzeniu i kontroluje wszystkie operacje sieciowe i dyskowe. Może to być kontroler 0 lub kontroler 1.  |
+| Controller0Status (Sterownik0Status)       | Stan kontrolera 0 na urządzeniu. Stan kontrolera może być normalny, w trybie odzyskiwania lub nieosiągalny.|
+| Controller1Status (Status)       | Stan kontrolera 1 w urządzeniu.  Stan kontrolera może być normalny, w trybie odzyskiwania lub nieosiągalny.|
+| Tryb systemowy              | Ogólny stan urządzenia StorSimple. Stan urządzenia może być normalny, konserwacji lub likwidowane (odpowiada dezaktywowane w witrynie Azure portal).|
+| Wersja friendlysoftware | Przyjazny ciąg odpowiadający wersji oprogramowania urządzenia. W przypadku systemu z aktualizacją 4 przyjazną wersją oprogramowania będzie StorSimple 8000 Series Update 4.0.|
+| HcsSoftwareVersion      | Wersja oprogramowania HCS działająca na urządzeniu. Na przykład wersja oprogramowania HCS odpowiadająca aktualizacji 4.0 z serii StorSimple 8000 to 6.3.9600.17820. |
+| ApiVersion (Wersja apiwersa              | Wersja oprogramowania interfejsu API programu Windows PowerShell urządzenia HCS.|
+| VhdVersion ( VhdVersion )              | Wersja oprogramowania obrazu fabrycznego, z którą urządzenie zostało dostarczone. Jeśli urządzenie zostanie zresetowane do ustawień fabrycznych, spowoduje to przekroczeniu tej wersji oprogramowania.|
+| OSVersion               | Wersja oprogramowania systemu operacyjnego Windows Server działającego na urządzeniu. Urządzenie StorSimple jest oparte na systemie Windows Server 2012 R2, który odpowiada wartości 6.3.9600.|
+| CisAgentVersion (Wersja cisagent)         | Wersja dla twojego agenta Cis działającego na urządzeniu StorSimple. Ten agent pomaga komunikować się z usługą StorSimple Manager działającą na platformie Azure.|
+| MdsAgentVersion         | Wersja odpowiadająca agentowi Mds uruchomionemu na urządzeniu StorSimple. Ten agent przenosi dane do usługi monitorowania i diagnostyki (MDS).|
+| Lsisas2Wersja          | Wersja odpowiadająca sterownikom LSI na urządzeniu StorSimple.|
 | Pojemność                | Całkowita pojemność urządzenia w bajtach.|
-| RemoteManagementMode    | Wskazuje, czy urządzenia mogą być zarządzane zdalnie za pośrednictwem jego interfejsu programu Windows PowerShell. |
-| FipsMode                | Wskazuje, czy tryb Stanów Zjednoczonych informacji przetwarzania Standard FIPS (Federal) jest włączony na twoim urządzeniu. Standard FIPS 140 definiuje zatwierdzone do użycia przez nas federalnych instytucji rządowych systemów komputerowych ochrony poufnych danych algorytmów kryptograficznych. W przypadku urządzeń z aktualizacją Update 4 lub nowszego trybu FIPS jest domyślnie włączona. |
+| RemoteManagementMode    | Wskazuje, czy urządzenie może być zdalnie zarządzane za pośrednictwem interfejsu programu Windows PowerShell. |
+| Tryb FipsMode                | Wskazuje, czy w urządzeniu jest włączony tryb FIPS (Federal Information Processing Standard) Stanów Zjednoczonych. Standard FIPS 140 definiuje algorytmy kryptograficzne zatwierdzone do użytku przez amerykańskie systemy komputerowe rządu federalnego w celu ochrony poufnych danych. W przypadku urządzeń z aktualizacją 4 lub nowszą tryb FIPS jest domyślnie włączony. |
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-* Dowiedz się, [składni polecenia cmdlet Invoke-HcsDiagnostics](https://technet.microsoft.com/library/mt795371.aspx).
+* Poznaj [składnię polecenia cmdlet Invoke-HcsDiagnostics](https://technet.microsoft.com/library/mt795371.aspx).
 
-* Dowiedz się więcej na temat [Rozwiązywanie problemów z wdrożeniem](storsimple-troubleshoot-deployment.md) na urządzeniu StorSimple.
+* Dowiedz się więcej o [rozwiązywaniu problemów z wdrażaniem](storsimple-troubleshoot-deployment.md) na urządzeniu StorSimple.

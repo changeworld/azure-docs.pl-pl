@@ -1,46 +1,46 @@
 ---
-title: Nie wylogowuj mnie w Azure Active Directory B2C
-description: Dowiedz się, jak skonfigurować rejestrowanie nadal zalogowane (KMSI) w Azure Active Directory B2C.
+title: Zachowaj zalogowanie się w usłudze Azure Active Directory B2C
+description: Dowiedz się, jak skonfigurować usługę Keep Me Signed In (KMSI) w usłudze Azure Active Directory B2C.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 02/27/2020
+ms.date: 03/26/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 9a27487fa69888b02883c3d9a2151887f41afc45
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: a0de94cdce1d7f0e9da9d2844b300956ad6f6970
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78189382"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80330835"
 ---
-# <a name="enable-keep-me-signed-in-kmsi-in-azure-active-directory-b2c"></a>Włącz opcję Nie wylogowuj mnie (KMSI) w Azure Active Directory B2C
+# <a name="enable-keep-me-signed-in-kmsi-in-azure-active-directory-b2c"></a>Włącz opcję Zachowaj zalogowanie się (KMSI) w usłudze Azure Active Directory B2C
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Możesz włączyć funkcje Zachowaj zalogowany (KMSI) dla użytkowników sieci Web i aplikacji natywnych, które mają konta lokalne w katalogu Azure Active Directory B2C (Azure AD B2C). Ta funkcja udziela dostępu do użytkowników, którzy powracają do aplikacji bez monitowania o wprowadzenie nazwy użytkownika i hasła. Ten dostęp jest odwoływany po wylogowaniu się użytkownika.
+Funkcję keep me signed in (KMSI) można włączyć dla użytkowników aplikacji sieci web i aplikacji natywnych, którzy mają konta lokalne w katalogu usługi Azure Active Directory B2C (Azure AD B2C). Ta funkcja udziela dostępu użytkownikom powracającym do aplikacji bez monitowania ich o ponowne wniesienie nazwy użytkownika i hasła. Ten dostęp jest odwoływany, gdy użytkownik się wyloguje.
 
 Użytkownicy nie powinni włączać tej opcji na komputerach publicznych.
 
-![Przykładowa strona logowania z zalogowaniem, która wyświetla pole wyboru nie wylogowuj mnie](./media/custom-policy-keep-me-signed-in/kmsi.PNG)
+![Przykładowa strona logowania do rejestracji z polem wyboru Keep me signed in](./media/custom-policy-keep-me-signed-in/kmsi.PNG)
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Dzierżawa Azure AD B2C skonfigurowana do zezwalania na logowanie przy użyciu konta lokalnego. KMSI nie jest obsługiwane dla kont zewnętrznych dostawców tożsamości.
-- Wykonaj kroki opisane w temacie Wprowadzenie [do zasad niestandardowych](custom-policy-get-started.md).
+- Dzierżawa usługi Azure AD B2C skonfigurowana tak, aby zezwalała na logowanie do konta lokalnego. Usługa KMSI nie jest chy <2> pod względem liczby kont zewnętrznych dostawców tożsamości.
+- Wykonaj kroki opisane w [wprowadzenie do zasad niestandardowych](custom-policy-get-started.md).
 
-## <a name="configure-the-page-identifier"></a>Skonfiguruj identyfikator strony
+## <a name="configure-the-page-identifier"></a>Konfigurowanie identyfikatora strony
 
-Aby włączyć KMSI, ustaw definicję zawartości `DataUri` elementu na [Identyfikator strony](contentdefinitions.md#datauri) `unifiedssp` i w [wersji strony](page-layout.md) *1.1.0* lub nowszej.
+Aby włączyć funkcję KMSI, `DataUri` ustaw element definicji zawartości na [identyfikator](contentdefinitions.md#datauri) `unifiedssp` strony i stronę w wersji *1.1.0* lub [nowszej.](page-layout.md)
 
-1. Otwórz plik rozszerzenia zasad. Na przykład <em>`SocialAndLocalAccounts/` **`TrustFrameworkExtensions.xml`** </em>  . Ten plik rozszerzenia jest jednym z plików zasad uwzględnionych w pakiecie początkowym zasad niestandardowych, który powinien zostać uzyskany w wymaganiu wstępnym, [Rozpocznij od zasad niestandardowych](custom-policy-get-started.md).
-1. Wyszukaj element **BuildingBlocks** . Jeśli element nie istnieje, Dodaj go.
-1. Dodaj element **ContentDefinitions** do elementu **BuildingBlocks** zasad.
+1. Otwórz plik rozszerzenia zasad. Na przykład <em> `SocialAndLocalAccounts/` </em>. Ten plik rozszerzenia jest jednym z plików zasad zawartych w pakiecie startowym zasad niestandardowych, które powinny być uzyskane w wymagania wstępne, [Wprowadzenie do zasad niestandardowych](custom-policy-get-started.md).
+1. Wyszukaj **element BuildingBlocks.** Jeśli element nie istnieje, dodaj go.
+1. Dodaj **ContentDefinitions** element do **BuildingBlocks** element zasad.
 
-    Zasady niestandardowe powinny wyglądać podobnie do następującego fragmentu kodu:
+    Zasady niestandardowe powinny wyglądać następująco:
 
     ```xml
     <BuildingBlocks>
@@ -52,17 +52,35 @@ Aby włączyć KMSI, ustaw definicję zawartości `DataUri` elementu na [Identyf
     </BuildingBlocks>
     ```
 
+## <a name="add-the-metadata-to-the-self-asserted-technical-profile"></a>Dodawanie metadanych do samodzielnie potwierdzonego profilu technicznego
+
+Aby dodać pole wyboru KMSI do strony rejestracji i logowania, ustaw metadane na `setting.enableRememberMe` false. Zastąp profile techniczne SelfAsserted-LocalAcCountSignin-Email w pliku rozszerzenia.
+
+1. Znajdź ClaimsProviders element. Jeśli element nie istnieje, dodaj go.
+1. Dodaj następującego dostawcę oświadczeń do elementu ClaimsProviders:
+
+```XML
+<ClaimsProvider>
+  <DisplayName>Local Account</DisplayName>
+  <TechnicalProfiles>
+    <TechnicalProfile Id="SelfAsserted-LocalAccountSignin-Email">
+      <Metadata>
+        <Item Key="setting.enableRememberMe">True</Item>
+      </Metadata>
+    </TechnicalProfile>
+  </TechnicalProfiles>
+</ClaimsProvider>
+```
+
 1. Zapisz plik rozszerzeń.
 
+## <a name="configure-a-relying-party-file"></a>Konfigurowanie pliku jednostki uzależniającej
 
+Zaktualizuj plik jednostki uzależniającej (RP), który inicjuje proces użytkownika, który został utworzony.
 
-## <a name="configure-a-relying-party-file"></a>Konfigurowanie pliku jednostki uzależnionej
-
-Zaktualizuj plik jednostki uzależnionej (RP), który inicjuje utworzoną przez Ciebie podróż użytkownika.
-
-1. Otwórz plik zasad niestandardowych. Na przykład *SignUpOrSignin. XML*.
-1. Jeśli jeszcze nie istnieje, Dodaj `<UserJourneyBehaviors>` węzeł podrzędny do węzła `<RelyingParty>`. Musi ona znajdować się bezpośrednio po `<DefaultUserJourney ReferenceId="User journey Id" />`, na przykład: `<DefaultUserJourney ReferenceId="SignUpOrSignIn" />`.
-1. Dodaj następujący węzeł jako element podrzędny elementu `<UserJourneyBehaviors>`.
+1. Otwórz niestandardowy plik zasad. Na przykład *signuporsignin.xml*.
+1. Jeśli jeszcze nie istnieje, dodaj `<UserJourneyBehaviors>` węzeł podrzędny do węzła. `<RelyingParty>` Musi znajdować się `<DefaultUserJourney ReferenceId="User journey Id" />`bezpośrednio po `<DefaultUserJourney ReferenceId="SignUpOrSignIn" />`, na przykład: .
+1. Dodaj następujący węzeł jako element `<UserJourneyBehaviors>` podrzędny elementu.
 
     ```XML
     <UserJourneyBehaviors>
@@ -72,15 +90,15 @@ Zaktualizuj plik jednostki uzależnionej (RP), który inicjuje utworzoną przez 
     </UserJourneyBehaviors>
     ```
 
-    - **SessionExpiryType** — wskazuje, jak sesja jest rozszerzona o czas określony w `SessionExpiryInSeconds` i `KeepAliveInDays`. Wartość `Rolling` (domyślnie) wskazuje, że sesja jest rozszerzana za każdym razem, gdy użytkownik wykonuje uwierzytelnianie. Wartość `Absolute` wskazuje, że użytkownik jest zmuszony do ponownego uwierzytelnienia po upływie określonego czasu.
+    - **SessionExpiryType** - Wskazuje, jak sesja jest rozszerzana `SessionExpiryInSeconds` `KeepAliveInDays`o czas określony w i . Wartość `Rolling` (domyślna) wskazuje, że sesja jest rozszerzana za każdym razem, gdy użytkownik wykonuje uwierzytelnianie. Wartość `Absolute` wskazuje, że użytkownik jest zmuszony do ponownego uwierzytelnienia po określonym czasie.
 
-    - **SessionExpiryInSeconds** — okres istnienia plików cookie sesji, gdy nie włączono *logowania* , nie jest włączony lub jeśli użytkownik nie wybierze opcji nie *wylogowuj mnie*. Sesja wygasa po przejściu `SessionExpiryInSeconds` lub zamknięto przeglądarkę.
+    - **SessionExpiryInSeconds** - Okres istnienia plików cookie sesji podczas *utrzymywanie mnie zalogować* nie jest włączona, lub jeśli użytkownik nie wybierz *zachowaj mnie zalogowany*. Sesja wygasa po `SessionExpiryInSeconds` minięciu lub przeglądarka jest zamknięta.
 
-    - **KeepAliveInDays** — okres istnienia plików cookie sesji, gdy jest włączone *Logowanie* , a użytkownik wybierze opcję Nie wylogowuj *mnie*.  Wartość `KeepAliveInDays` ma pierwszeństwo przed wartością `SessionExpiryInSeconds` i określa czas wygaśnięcia sesji. Jeśli użytkownik zamknie przeglądarkę i ponownie otworzy ją później, nadal może się zalogować w trybie dyskretnym, o ile jest w okresie KeepAliveInDays czasu.
+    - **KeepAliveInDays** - Okres istnienia plików cookie sesji, gdy *mnie zalogować* jest włączona, a użytkownik wybiera *zachować mnie zalogować*.  Wartość `KeepAliveInDays` ma pierwszeństwo przed `SessionExpiryInSeconds` wartością i dyktuje czas wygaśnięcia sesji. Jeśli użytkownik zamknie przeglądarkę i ponownie ją ponownie otworzy później, nadal może po cichu zalogować się tak długo, jak jest w okresie keepaliveInDays.
 
-    Aby uzyskać więcej informacji, zobacz [zachowań podróży użytkownika](relyingparty.md#userjourneybehaviors).
+    Aby uzyskać więcej informacji, zobacz [zachowania podróży użytkownika](relyingparty.md#userjourneybehaviors).
 
-Firma Microsoft zaleca, aby wartość SessionExpiryInSeconds była krótszym okresem (1200 sekund), podczas gdy wartość KeepAliveInDays może być ustawiona na stosunkowo długi okres (30 dni), jak pokazano w następującym przykładzie:
+Zaleca się ustawienie wartości SessionExpiryInSeconds jako krótkiego okresu (1200 sekund), podczas gdy wartość KeepAliveInDays można ustawić na stosunkowo długi okres (30 dni), jak pokazano w poniższym przykładzie:
 
 ```XML
 <RelyingParty>
@@ -107,7 +125,15 @@ Firma Microsoft zaleca, aby wartość SessionExpiryInSeconds była krótszym okr
 </RelyingParty>
 ```
 
-4. Zapisz zmiany, a następnie Przekaż plik.
-5. Aby przetestować przekazane zasady niestandardowe, w Azure Portal przejdź do strony zasady, a następnie wybierz pozycję **Uruchom teraz**.
+## <a name="test-your-policy"></a>Testowanie zasad
 
-Przykładowe zasady można znaleźć [tutaj](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/keep%20me%20signed%20in).
+1. Zapisz zmiany, a następnie przekaż plik.
+1. Aby przetestować przekazane zasady niestandardowe, przejdź do strony zasad w portalu Azure, a następnie wybierz pozycję **Uruchom teraz**.
+1. Wpisz **swoją nazwę użytkownika** i **hasło**, wybierz **pozycję Niech mnie zalogowano,** a następnie kliknij przycisk **Zaloguj**się .
+1. Wróć do witryny Azure Portal. Przejdź do strony zasad, a następnie wybierz pozycję **Kopiuj,** aby skopiować adres URL logowania.
+1. Na pasku adresu przeglądarki `&prompt=login` usuń parametr ciągu zapytania, który zmusza użytkownika do wprowadzenia poświadczeń w tym żądaniu.
+1. W przeglądarce kliknij przycisk **Przejdź**. Teraz usługa Azure AD B2C wystawi token dostępu bez monitowania o ponowne zalogowanie się. 
+
+## <a name="next-steps"></a>Następne kroki
+
+Znajdź przykładowe zasady [tutaj](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/keep%20me%20signed%20in).

@@ -1,52 +1,51 @@
 ---
-title: Oferta usług konsultingowych Azure i Dynamics 365 | Portal Azure Marketplace
-description: Przewodnik dotyczący definiowania i publikowania oferty usługi konsultingowej platformy Azure lub Dynamics 365 w portal Cloud Partner.
-services: Azure, Marketplace, Cloud Partner Portal,
+title: Oferta usług konsultingowych Azure i Dynamics 365 | Azure Marketplace
+description: Przewodnik dotyczący definiowania i publikowania oferty usług konsultingowych platformy Azure lub Dynamics 365 w portalu cloud partnerów.
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 02/27/2020
-ms.author: evansma
-ms.openlocfilehash: d744c0bdcae177ca5cee5617622f04da7312e15f
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.author: dsindona
+ms.openlocfilehash: 1015734ac0da6b4641c0bf32049146e3820f4616
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78268311"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80278539"
 ---
-# <a name="azure-and-dynamics-365-consulting-service-offer"></a>Oferta usług konsultingowych Azure i Dynamics 365
+# <a name="azure-and-dynamics-365-consulting-service-offer"></a>Oferta usługi konsultingowej Azure i Dynamics 365
 
-W tym artykule opisano sposób publikowania oferty usługi konsultingowej w witrynie Microsoft <a href="https://azuremarketplace.microsoft.com">Azure Marketplace</a> lub <a href="https://appsource.microsoft.com">AppSource</a>. Rozwiązania oparte na systemie Microsoft <a href="https://dynamics.microsoft.com">Dynamics 365</a>, <a href="https://powerbi.microsoft.com">Power BI</a>i <a href="https://powerapps.microsoft.com">aplikacjach zaawansowanych</a> można znaleźć w witrynie AppSource. Inne oferty oparte na innych <a href="https://azure.microsoft.com/services">usługach platformy Microsoft Azure</a> można znaleźć w witrynie Azure Marketplace.
+W tym artykule wyjaśniono, jak opublikować ofertę usługi konsultingowej w <a href="https://azuremarketplace.microsoft.com">witrynie</a> Microsoft Azure Marketplace lub <a href="https://appsource.microsoft.com">AppSource.</a> Rozwiązania oparte na systemach Microsoft <a href="https://dynamics.microsoft.com">Dynamics 365,</a> <a href="https://powerbi.microsoft.com">Power BI</a>i <a href="https://powerapps.microsoft.com">Power Apps</a> można wymienić w usłudze AppSource. Inne oferty oparte na innych <a href="https://azure.microsoft.com/services">usługach platformy</a> Microsoft Azure można wymienić w portalu Azure Marketplace.
 
-## <a name="publishing-benefits"></a>Korzyści z publikowania
+## <a name="publishing-benefits"></a>Korzyści związane z publikowaniem
 
-Publikowanie na dowolnym z rynków Microsoft Marketplace ma następujące zalety:
+Publikowanie w jednym z rynków firmy Microsoft ma następujące zalety:
 
 - Promuj swoją firmę, wykorzystując markę Microsoft.
-- Może dotrzeć do ponad 100 000 000 użytkowników pakietu Office 365 i Dynamics 365 w systemie AppSource i dotrzeć do ponad 200 000 organizacji w witrynie Azure Marketplace.
-- Uzyskuj wysokiej jakości potencjalni klienci z tych rynków.
-- Zyskaj swoje usługi przez zespoły pól i telesprzedaży firmy Microsoft.
+- Potencjalnie dotrzeć do ponad 100 milionów użytkowników usługi Office 365 i Dynamics 365 w usłudze AppSource i dotrzeć do ponad 200 000 organizacji za pośrednictwem portalu Azure Marketplace.
+- Uzyskaj wysokiej jakości potencjalnych klientów z tych rynków.
+- Uzyskaj usługi promowane przez zespoły firmy Microsoft i telesprzedaży.
 
-## <a name="publish-a-consulting-service-offer"></a>Publikowanie oferty usługi konsultingowej
+## <a name="publish-a-consulting-service-offer"></a>Publikowanie oferty usług konsultingowych
 
-W tej sekcji opisano elementy publikowania oferty usługi konsultingowej. Publikowanie jest podzielone na następujące główne części:
+W tej sekcji przedstawiono elementy publikowania oferty usług konsultingowych. Publikowanie jest podzielone na następujące główne części:
 
-- Wymagania [wstępne dotyczące usługi konsultingowej](./cpp-consulting-service-prerequisites.md) wymieniają wymagania dotyczące publikowania oferty usługi konsultingowej dla:
+- [Wymagania wstępne usługi konsultingowej](./cpp-consulting-service-prerequisites.md) zawierają listę wymagań dotyczących publikowania oferty usług konsultingowych dla:
  
     - Microsoft Azure
-    - Dynamics 365 — zaangażowanie klienta 
-    - Operacje & finansowe w usłudze Dynamics 365 
+    - Dynamics 365 Zaangażowanie klientów 
+    - Dynamics 365 Operacje & finansowe 
     - Dynamics 365 Customer Insights
     - Dynamics 365 Business Central 
     - Power BI 
     - Power Apps
     - Power Automate
-- [Utwórz nową ofertę](./cpp-consulting-service-create-offer.md) zawierającą kroki wymagane do utworzenia wpisu oferty usługi konsultingowej przy użyciu Portal Cloud Partner:
+- [Utwórz nową ofertę](./cpp-consulting-service-create-offer.md) zawiera listę kroków wymaganych do utworzenia wpisu oferty usługi konsultingowej przy użyciu portalu Cloud Partner Portal:
     - [Zdefiniuj ustawienia oferty](./cpp-consulting-service-define-offer-settings.md).
-    - [Wprowadź szczegóły witryny Marketplace i zdecyduj, czy chcesz publikować w witrynie Azure Portal, czy w witrynie AppSource.](./cpp-consulting-service-storefront-details.md)
-- [Opublikowanie oferty](./cpp-consulting-service-publish-offer.md) wyjaśnia, jak przesłać ofertę do publikacji.
+    - [Wprowadź szczegóły witryny sklepu i czy mają być publikowane w portalu Azure Marketplace lub w usłudze AppSource.](./cpp-consulting-service-storefront-details.md)
+- [Opublikuj ofertę,](./cpp-consulting-service-publish-offer.md) wyjaśniając, jak przesłać ofertę do publikacji.
 
 ## <a name="next-steps"></a>Następne kroki
 
-Przed wykonaniem tych kroków w celu opublikowania oferty usługi konsultingowej musisz spełnić [wymagania wstępne](./cpp-consulting-service-prerequisites.md) dotyczące publikowania oferty usługi konsultingowej.
+Przed podjęciem tych kroków, aby opublikować ofertę usługi konsultingowej, należy spełnić [wymagania wstępne](./cpp-consulting-service-prerequisites.md) dotyczące publikowania oferty usług konsultingowych.

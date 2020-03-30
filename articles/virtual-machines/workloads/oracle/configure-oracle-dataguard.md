@@ -1,6 +1,6 @@
 ---
-title: Implementowanie funkcji Oracle Data Guard na maszynie wirtualnej platformy Azure z systemem Linux | Microsoft Docs
-description: Szybko Uzyskaj funkcję ochrony danych firmy Oracle w środowisku platformy Azure.
+title: Wdrażanie oracle data guard na maszynie wirtualnej systemu Azure Linux | Dokumenty firmy Microsoft
+description: Szybko uruchamiaj oracle data guard w środowisku platformy Azure.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: romitgirdhar
@@ -14,32 +14,32 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: rogirdh
-ms.openlocfilehash: 52723ca53b9156dd8e8183d92d8d4a350750c936
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 7a165935e2c232167a0752272d244ce98bf6aff2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70100112"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79534409"
 ---
-# <a name="implement-oracle-data-guard-on-an-azure-linux-virtual-machine"></a>Implementowanie funkcji Oracle Data Guard na maszynie wirtualnej platformy Azure z systemem Linux 
+# <a name="implement-oracle-data-guard-on-an-azure-linux-virtual-machine"></a>Wdrażanie oracle data guard na maszynie wirtualnej systemu Azure Linux 
 
-Interfejs wiersza polecenia platformy Azure umożliwia tworzenie zasobów Azure i zarządzanie nimi z poziomu wiersza polecenia lub skryptów. W tym artykule opisano, jak używać interfejsu wiersza polecenia platformy Azure do Oracle Database wdrażania bazy danych 12c Database z poziomu obrazu portalu Azure Marketplace. W tym artykule przedstawiono krok po kroku, jak zainstalować i skonfigurować funkcję ochrony danych na maszynie wirtualnej platformy Azure.
+Interfejs wiersza polecenia platformy Azure umożliwia tworzenie zasobów Azure i zarządzanie nimi z poziomu wiersza polecenia lub skryptów. W tym artykule opisano sposób używania interfejsu wiersza polecenia platformy Azure do wdrażania bazy danych Oracle Database 12c z obrazu portalu Azure Marketplace. W tym artykule przedstawiono krok po kroku, jak zainstalować i skonfigurować usługę Data Guard na maszynie wirtualnej platformy Azure (VM).
 
-Przed rozpoczęciem upewnij się, że jest zainstalowany interfejs wiersza polecenia platformy Azure. Aby uzyskać więcej informacji, zobacz [Przewodnik instalacji interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli).
+Przed rozpoczęciem upewnij się, że jest zainstalowany zestaw wiersza polecenia platformy Azure. Aby uzyskać więcej informacji, zobacz [podręcznik instalacji interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli).
 
 ## <a name="prepare-the-environment"></a>Przygotowywanie środowiska
 ### <a name="assumptions"></a>Założenia
 
-Aby zainstalować funkcję Oracle Data Guard, należy utworzyć dwie maszyny wirtualne platformy Azure w tym samym zestawie dostępności:
+Aby zainstalować oracle data guard, należy utworzyć dwie maszyny wirtualne platformy Azure na tym samym zestawie dostępności:
 
-- Podstawowa maszyna wirtualna (myVM1) ma uruchomione wystąpienie programu Oracle.
-- Maszyna wirtualna w stanie gotowości (myVM2) ma zainstalowane oprogramowanie Oracle.
+- Podstawowa maszyna wirtualna (myVM1) ma uruchomione wystąpienie Oracle.
+- Maszyna wirtualna w trybie gotowości (myVM2) ma tylko zainstalowane oprogramowanie Oracle.
 
-Obraz portalu Marketplace używany do tworzenia maszyn wirtualnych to Oracle: Oracle-Database-EE: 12.1.0.2: Najnowsze.
+Obraz portalu Marketplace używany do tworzenia maszyn wirtualnych to Oracle:Oracle-Database-Ee:12.1.0.2:latest.
 
 ### <a name="sign-in-to-azure"></a>Logowanie do platformy Azure 
 
-Zaloguj się do subskrypcji platformy Azure za pomocą polecenia [AZ login](/cli/azure/reference-index) i postępuj zgodnie z instrukcjami wyświetlanymi na ekranie.
+Zaloguj się do subskrypcji platformy Azure przy użyciu polecenia [az logowania](/cli/azure/reference-index) i postępuj zgodnie ze wskazówkami wyświetlanymi na ekranie.
 
 ```azurecli
 az login
@@ -47,7 +47,7 @@ az login
 
 ### <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
 
-Utwórz grupę zasobów za pomocą polecenia [az group create](/cli/azure/group). Grupa zasobów platformy Azure to logiczny kontener, w którym są wdrażane i zarządzane zasoby platformy Azure. 
+Utwórz grupę zasobów za pomocą polecenia [az group create](/cli/azure/group). Grupa zasobów platformy Azure to kontener logiczny, w którym zasoby platformy Azure są wdrażane i zarządzane. 
 
 Poniższy przykład obejmuje tworzenie grupy zasobów o nazwie `myResourceGroup` w lokalizacji `westus`:
 
@@ -57,7 +57,7 @@ az group create --name myResourceGroup --location westus
 
 ### <a name="create-an-availability-set"></a>Tworzenie zestawu dostępności
 
-Tworzenie zestawu dostępności jest opcjonalne, ale zalecamy go. Aby uzyskać więcej informacji, zobacz [wytyczne dotyczące zestawów dostępności platformy Azure](https://docs.microsoft.com/azure/virtual-machines/windows/infrastructure-availability-sets-guidelines).
+Tworzenie zestawu dostępności jest opcjonalne, ale zalecamy. Aby uzyskać więcej informacji, zobacz [wskazówki dotyczące dostępności platformy Azure](https://docs.microsoft.com/azure/virtual-machines/windows/infrastructure-availability-sets-guidelines).
 
 ```azurecli
 az vm availability-set create \
@@ -67,13 +67,13 @@ az vm availability-set create \
     --platform-update-domain-count 2
 ```
 
-### <a name="create-a-virtual-machine"></a>Utwórz maszynę wirtualną
+### <a name="create-a-virtual-machine"></a>Tworzenie maszyny wirtualnej
 
 Utwórz maszynę wirtualną za pomocą polecenia [az vm create](/cli/azure/vm). 
 
-Poniższy przykład tworzy dwie maszyny wirtualne o `myVM1` nazwach i `myVM2`. Program tworzy również klucze SSH, jeśli jeszcze nie istnieją w domyślnej lokalizacji klucza. Aby użyć określonego zestawu kluczy, użyj opcji `--ssh-key-value`.
+Poniższy przykład tworzy dwie `myVM1` maszyny `myVM2`wirtualne o nazwie i . Tworzy również klucze SSH, jeśli jeszcze nie istnieją w domyślnej lokalizacji klucza. Aby użyć określonego zestawu kluczy, użyj opcji `--ssh-key-value`.
 
-Utwórz myVM1 (podstawowy):
+Tworzenie myVM1 (podstawowy):
 ```azurecli
 az vm create \
      --resource-group myResourceGroup \
@@ -85,9 +85,9 @@ az vm create \
      --generate-ssh-keys \
 ```
 
-Po utworzeniu maszyny wirtualnej interfejs wiersza polecenia platformy Azure wyświetli informacje podobne do poniższego przykładu. Zwróć uwagę na wartość `publicIpAddress`. Ten adres jest używany do uzyskiwania dostępu do maszyny wirtualnej.
+Po utworzeniu maszyny Wirtualnej interfejsu wiersza polecenia platformy Azure pokazuje informacje podobne do poniższego przykładu. Zanotuj `publicIpAddress`wartość . Ten adres służy do uzyskiwania dostępu do maszyny Wirtualnej.
 
-```azurecli
+```output
 {
   "fqdns": "",
   "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM",
@@ -100,7 +100,8 @@ Po utworzeniu maszyny wirtualnej interfejs wiersza polecenia platformy Azure wy�
 }
 ```
 
-Utwórz myVM2 (w stanie wstrzymania):
+Tworzenie myVM2 (w trybie gotowości):
+
 ```azurecli
 az vm create \
      --resource-group myResourceGroup \
@@ -112,11 +113,11 @@ az vm create \
      --generate-ssh-keys \
 ```
 
-Zwróć uwagę na wartość `publicIpAddress` po utworzeniu myVM2.
+Zwróć uwagę `publicIpAddress` na wartość po utworzeniu myVM2.
 
-### <a name="open-the-tcp-port-for-connectivity"></a>Otwórz port TCP na potrzeby łączności
+### <a name="open-the-tcp-port-for-connectivity"></a>Otwieranie portu TCP w celu uzyskania łączności
 
-Ten krok umożliwia skonfigurowanie zewnętrznych punktów końcowych, które zezwalają na dostęp zdalny do bazy danych Oracle.
+Ten krok konfiguruje zewnętrzne punkty końcowe, które umożliwiają zdalny dostęp do bazy danych Oracle.
 
 Otwórz port dla myVM1:
 
@@ -130,7 +131,7 @@ az network nsg rule create --resource-group myResourceGroup\
 
 Wynik powinien wyglądać podobnie do następującej odpowiedzi:
 
-```bash
+```output
 {
   "access": "Allow",
   "description": null,
@@ -161,23 +162,23 @@ az network nsg rule create --resource-group myResourceGroup\
 
 ### <a name="connect-to-the-virtual-machine"></a>Nawiązywanie połączenia z maszyną wirtualną
 
-Użyj następującego polecenia, aby utworzyć sesję SSH z maszyną wirtualną. Zastąp adres `publicIpAddress` IP wartością dla swojej maszyny wirtualnej.
+Użyj następującego polecenia, aby utworzyć sesję SSH z maszyną wirtualną. Zastąp adres `publicIpAddress` IP wartością maszyny wirtualnej.
 
 ```bash 
 $ ssh azureuser@<publicIpAddress>
 ```
 
-### <a name="create-the-database-on-myvm1-primary"></a>Tworzenie bazy danych na myVM1 (podstawowa)
+### <a name="create-the-database-on-myvm1-primary"></a>Tworzenie bazy danych na myVM1 (podstawowy)
 
-Oprogramowanie Oracle jest już zainstalowane w obrazie portalu Marketplace, dlatego następnym krokiem jest zainstalowanie bazy danych. 
+Oprogramowanie Oracle jest już zainstalowane na obrazie Marketplace, więc następnym krokiem jest zainstalowanie bazy danych. 
 
-Przejdź do administratora firmy Oracle:
+Przełącz się na superużytnika Oracle:
 
 ```bash
 $ sudo su - oracle
 ```
 
-Utwórz bazę danych:
+Tworzenie bazy danych:
 
 ```bash
 $ dbca -silent \
@@ -198,9 +199,10 @@ $ dbca -silent \
    -storageType FS \
    -ignorePreReqs
 ```
-Dane wyjściowe powinny wyglądać podobnie do następującej:
 
-```bash
+Dane wyjściowe powinny wyglądać podobnie do następującej odpowiedzi:
+
+```output
 Copying database files
 1% complete
 2% complete
@@ -237,7 +239,7 @@ $ ORACLE_HOME=/u01/app/oracle/product/12.1.0/dbhome_1; export ORACLE_HOME
 $ ORACLE_SID=cdb1; export ORACLE_SID
 ```
 
-Opcjonalnie można dodać ORACLE_HOME i ORACLE_SID do pliku/Home/Oracle/.bashrc, aby te ustawienia zostały zapisane dla przyszłych logowań:
+Opcjonalnie można dodać ORACLE_HOME i ORACLE_SID do pliku /home/oracle/.bashrc, aby te ustawienia były zapisywane dla przyszłych loginów:
 
 ```bash
 # add oracle home
@@ -246,9 +248,9 @@ export ORACLE_HOME=/u01/app/oracle/product/12.1.0/dbhome_1
 export ORACLE_SID=cdb1
 ```
 
-## <a name="configure-data-guard"></a>Konfigurowanie ochrony danych
+## <a name="configure-data-guard"></a>Konfigurowanie osłony danych
 
-### <a name="enable-archive-log-mode-on-myvm1-primary"></a>Włącz tryb dziennika archiwizacji w myVM1 (podstawowy)
+### <a name="enable-archive-log-mode-on-myvm1-primary"></a>Włącz tryb dziennika archiwum na myVM1 (podstawowy)
 
 ```bash
 $ sqlplus / as sysdba
@@ -263,14 +265,15 @@ SQL> STARTUP MOUNT;
 SQL> ALTER DATABASE ARCHIVELOG;
 SQL> ALTER DATABASE OPEN;
 ```
-Włącz wymuszanie rejestrowania i upewnij się, że istnieje co najmniej jeden plik dziennika:
+
+Włącz rejestrowanie siłowe i upewnij się, że jest obecny co najmniej jeden plik dziennika:
 
 ```bash
 SQL> ALTER DATABASE FORCE LOGGING;
 SQL> ALTER SYSTEM SWITCH LOGFILE;
 ```
 
-Utwórz dzienniki ponownego wykonywania w trybie wstrzymania:
+Tworzenie dzienników ponawiania w trybie czuwania:
 
 ```bash
 SQL> ALTER DATABASE ADD STANDBY LOGFILE ('/u01/app/oracle/oradata/cdb1/standby_redo01.log') SIZE 50M;
@@ -279,7 +282,7 @@ SQL> ALTER DATABASE ADD STANDBY LOGFILE ('/u01/app/oracle/oradata/cdb1/standby_r
 SQL> ALTER DATABASE ADD STANDBY LOGFILE ('/u01/app/oracle/oradata/cdb1/standby_redo04.log') SIZE 50M;
 ```
 
-Włącz usługę Flashback (dzięki czemu odzyskiwanie jest łatwiejsze) i ustaw funkcję zarządzania\_plikami\_w trybie wstrzymania na wartość Auto. Wyjdź z programu SQL * Plus.
+Włącz Flashback (co sprawia, że odzyskiwanie o\_wiele\_łatwiejsze) i ustawić zarządzanie plikami wstrzymania do auto. Po tym dź.1.exit SQL*Plus after that.
 
 ```bash
 SQL> ALTER DATABASE FLASHBACK ON;
@@ -287,9 +290,9 @@ SQL> ALTER SYSTEM SET STANDBY_FILE_MANAGEMENT=AUTO;
 SQL> EXIT;
 ```
 
-### <a name="set-up-service-on-myvm1-primary"></a>Konfigurowanie usługi na myVM1 (podstawowa)
+### <a name="set-up-service-on-myvm1-primary"></a>Konfigurowanie usługi na myVM1 (podstawowy)
 
-Edytuj lub Utwórz plik pliku tnsnames. ora, który znajduje się w folderze $ORACLE _HOME \ Network \ admin.
+Edytuj lub utwórz plik tnsnames.ora, który znajduje się w folderze $ORACLE_HOME\network\admin.
 
 Dodaj następujące wpisy:
 
@@ -315,7 +318,7 @@ cdb1_stby =
   )
 ```
 
-Edytuj lub Utwórz plik Listener. ora, który znajduje się w folderze $ORACLE _HOME \ Network \ admin.
+Edytuj lub utwórz plik listener.ora, który znajduje się w folderze $ORACLE_HOME\network\admin.
 
 Dodaj następujące wpisy:
 
@@ -340,12 +343,14 @@ SID_LIST_LISTENER =
 ADR_BASE_LISTENER = /u01/app/oracle
 ```
 
-Włącz brokera funkcji Data Guard:
+Włącz brokera ochrony danych:
+
 ```bash
 $ sqlplus / as sysdba
 SQL> ALTER SYSTEM SET dg_broker_start=true;
 SQL> EXIT;
 ```
+
 Uruchom odbiornik:
 
 ```bash
@@ -353,9 +358,9 @@ $ lsnrctl stop
 $ lsnrctl start
 ```
 
-### <a name="set-up-service-on-myvm2-standby"></a>Konfigurowanie usługi na myVM2 (w stanie wstrzymania)
+### <a name="set-up-service-on-myvm2-standby"></a>Konfigurowanie usługi na myVM2 (w trybie gotowości)
 
-Protokół SSH do myVM2:
+SSH do myVM2:
 
 ```bash 
 $ ssh azureuser@<publicIpAddress>
@@ -367,7 +372,7 @@ Zaloguj się jako Oracle:
 $ sudo su - oracle
 ```
 
-Edytuj lub Utwórz plik pliku tnsnames. ora, który znajduje się w folderze $ORACLE _HOME \ Network \ admin.
+Edytuj lub utwórz plik tnsnames.ora, który znajduje się w folderze $ORACLE_HOME\network\admin.
 
 Dodaj następujące wpisy:
 
@@ -393,7 +398,7 @@ cdb1_stby =
   )
 ```
 
-Edytuj lub Utwórz plik Listener. ora, który znajduje się w folderze $ORACLE _HOME \ Network \ admin.
+Edytuj lub utwórz plik listener.ora, który znajduje się w folderze $ORACLE_HOME\network\admin.
 
 Dodaj następujące wpisy:
 
@@ -426,9 +431,10 @@ $ lsnrctl start
 ```
 
 
-### <a name="restore-the-database-to-myvm2-standby"></a>Przywróć bazę danych do myVM2 (w stanie wstrzymania)
+### <a name="restore-the-database-to-myvm2-standby"></a>Przywracanie bazy danych do myVM2 (w trybie gotowości)
 
-Utwórz plik parametrów/tmp/initcdb1_stby.ora z następującą zawartością:
+Utwórz plik parametrów /tmp/initcdb1_stby.ora z następującą zawartością:
+
 ```bash
 *.db_name='cdb1'
 ```
@@ -447,7 +453,8 @@ Utwórz plik hasła:
 ```bash
 $ orapwd file=/u01/app/oracle/product/12.1.0/dbhome_1/dbs/orapwcdb1 password=OraPasswd1 entries=10
 ```
-Uruchom bazę danych w systemie myVM2:
+
+Uruchom bazę danych na myVM2:
 
 ```bash
 $ export ORACLE_SID=cdb1
@@ -463,7 +470,8 @@ Przywróć bazę danych za pomocą narzędzia RMAN:
 $ rman TARGET sys/OraPasswd1@cdb1 AUXILIARY sys/OraPasswd1@cdb1_stby
 ```
 
-Uruchom następujące polecenia w RMAN:
+Uruchom następujące polecenia w programze RMAN:
+
 ```bash
 DUPLICATE TARGET DATABASE
   FOR STANDBY
@@ -474,16 +482,19 @@ DUPLICATE TARGET DATABASE
   NOFILENAMECHECK;
 ```
 
-Po zakończeniu polecenia powinny być wyświetlane komunikaty podobne do następujących. Zakończ RMAN.
-```bash
+Po zakończeniu polecenia powinny być widoczne komunikaty podobne do następujących. Wyjdź z RMAN.
+
+```output
 media recovery complete, elapsed time: 00:00:00
 Finished recover at 29-JUN-17
 Finished Duplicate Db at 29-JUN-17
+```
 
+```bash
 RMAN> EXIT;
 ```
 
-Opcjonalnie można dodać ORACLE_HOME i ORACLE_SID do pliku/Home/Oracle/.bashrc, aby te ustawienia zostały zapisane dla przyszłych logowań:
+Opcjonalnie można dodać ORACLE_HOME i ORACLE_SID do pliku /home/oracle/.bashrc, aby te ustawienia były zapisywane dla przyszłych loginów:
 
 ```bash
 # add oracle home
@@ -492,16 +503,16 @@ export ORACLE_HOME=/u01/app/oracle/product/12.1.0/dbhome_1
 export ORACLE_SID=cdb1
 ```
 
-Włącz brokera funkcji Data Guard:
+Włącz brokera ochrony danych:
 ```bash
 $ sqlplus / as sysdba
 SQL> ALTER SYSTEM SET dg_broker_start=true;
 SQL> EXIT;
 ```
 
-### <a name="configure-data-guard-broker-on-myvm1-primary"></a>Konfigurowanie brokera funkcji Data Guard w systemie myVM1 (podstawowy)
+### <a name="configure-data-guard-broker-on-myvm1-primary"></a>Konfigurowanie brokera ochrony danych w myVM1 (podstawowy)
 
-Uruchom program Data Guard Manager i zaloguj się przy użyciu wykazu SYS i hasła. (Nie używaj uwierzytelniania systemu operacyjnego). Wykonaj poniższe kroki:
+Uruchom Menedżera ochrony danych i zaloguj się za pomocą SYS i hasła. (Nie należy używać uwierzytelniania systemu operacyjnego). Wykonaj następujące czynności:
 
 ```bash
 $ dgmgrl sys/OraPasswd1@cdb1
@@ -520,6 +531,7 @@ Enabled.
 ```
 
 Sprawdź konfigurację:
+
 ```bash
 DGMGRL> SHOW CONFIGURATION;
 
@@ -536,13 +548,13 @@ Configuration Status:
 SUCCESS   (status updated 26 seconds ago)
 ```
 
-Konfiguracja funkcji Oracle Data Guard została ukończona. W następnej sekcji pokazano, jak przetestować łączność i przełączyć się.
+Ukończono konfigurację Oracle Data Guard. W następnej sekcji pokazano, jak przetestować łączność i przełączyć się.
 
 ### <a name="connect-the-database-from-the-client-machine"></a>Łączenie bazy danych z komputera klienckiego
 
-Zaktualizuj lub Utwórz plik pliku tnsnames. ora na komputerze klienckim. Ten plik jest zwykle w $ORACLE _HOME \ Network \ admin.
+Zaktualizuj lub utwórz plik tnsnames.ora na komputerze klienckim. Ten plik jest zwykle w $ORACLE_HOME\network\admin.
 
-Zastąp adresy `publicIpAddress` IP wartościami dla myVM1 i myVM2:
+Zastąp adresy IP `publicIpAddress` wartościami dla myVM1 i myVM2:
 
 ```bash
 cdb1=
@@ -572,7 +584,7 @@ cdb1_stby=
   )
 ```
 
-Uruchom SQL * Plus:
+Uruchom SQL*Plus:
 
 ```bash
 $ sqlplus sys/OraPasswd1@cdb1
@@ -586,11 +598,12 @@ With the Partitioning, OLAP, Advanced Analytics and Real Application Testing opt
 
 SQL>
 ```
-## <a name="test-the-data-guard-configuration"></a>Testowanie konfiguracji funkcji Data Guard
 
-### <a name="switch-over-the-database-on-myvm1-primary"></a>Przełącz bazę danych na myVM1 (podstawowa)
+## <a name="test-the-data-guard-configuration"></a>Testowanie konfiguracji ochrony danych
 
-Aby przełączyć się z podstawowego do stanu wstrzymania (cdb1 do cdb1_stby):
+### <a name="switch-over-the-database-on-myvm1-primary"></a>Przełączanie bazy danych na myVM1 (podstawowy)
+
+Aby przełączyć się z podstawowego na stan wstrzymania (cdb1 na cdb1_stby):
 
 ```bash
 $ dgmgrl sys/OraPasswd1@cdb1
@@ -614,9 +627,9 @@ Switchover succeeded, new primary is "cdb1_stby"
 DGMGRL>
 ```
 
-Teraz możesz nawiązać połączenie z niegotową bazą danych.
+Teraz można połączyć się z rezerwowej bazy danych.
 
-Uruchom SQL * Plus:
+Uruchom SQL*Plus:
 
 ```bash
 
@@ -632,9 +645,10 @@ With the Partitioning, OLAP, Advanced Analytics and Real Application Testing opt
 SQL>
 ```
 
-### <a name="switch-over-the-database-on-myvm2-standby"></a>Przełączenie bazy danych na myVM2 (w stanie wstrzymania)
+### <a name="switch-over-the-database-on-myvm2-standby"></a>Przełączanie bazy danych na myVM2 (w trybie gotowości)
 
-Aby przełączyć się do trybu failover, uruchom następujące polecenie w myVM2:
+Aby przełączyć się, uruchom na myVM2 następujące czynności:
+
 ```bash
 $ dgmgrl sys/OraPasswd1@cdb1_stby
 DGMGRL for Linux: Version 12.1.0.2.0 - 64bit Production
@@ -656,9 +670,9 @@ Database mounted.
 Switchover succeeded, new primary is "cdb1"
 ```
 
-Teraz powinno być możliwe nawiązanie połączenia z podstawową bazą danych.
+Po raz kolejny powinieneś teraz mieć możliwość nawiązania połączenia z podstawową bazą danych.
 
-Uruchom SQL * Plus:
+Uruchom SQL*Plus:
 
 ```bash
 
@@ -674,12 +688,12 @@ With the Partitioning, OLAP, Advanced Analytics and Real Application Testing opt
 SQL>
 ```
 
-Zakończono instalację i konfigurację ochrony danych na Oracle Linux.
+Zakończono instalację i konfigurację Data Guard w systemie Oracle Linux.
 
 
 ## <a name="delete-the-virtual-machine"></a>Usuń maszynę wirtualną
 
-Jeśli maszyna wirtualna nie jest już potrzebna, możesz użyć następującego polecenia, aby usunąć grupę zasobów, maszynę wirtualną i wszystkie powiązane zasoby:
+Jeśli maszyna wirtualna nie jest już potrzebna, można użyć następującego polecenia, aby usunąć grupę zasobów, maszynę wirtualną i wszystkie powiązane zasoby:
 
 ```azurecli
 az group delete --name myResourceGroup
@@ -689,4 +703,4 @@ az group delete --name myResourceGroup
 
 [Samouczek: Tworzenie maszyn wirtualnych o wysokiej dostępności](../../linux/create-cli-complete.md)
 
-[Eksplorowanie przykładów interfejsu wiersza polecenia platformy Azure wdrożenia maszyny wirtualnej](../../linux/cli-samples.md)
+[Zapoznaj się z przykładami interfejsu wiersza polecenia platformy Azure dotyczące wdrażania maszyn wirtualnych](../../linux/cli-samples.md)

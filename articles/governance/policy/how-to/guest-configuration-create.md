@@ -1,45 +1,57 @@
 ---
-title: Jak utworzyć zasady konfiguracji gościa
-description: Dowiedz się, jak utworzyć Azure Policy zasady konfiguracji gościa dla maszyn wirtualnych z systemem Windows lub Linux przy użyciu Azure PowerShell.
-ms.date: 12/16/2019
+title: Jak utworzyć zasady konfiguracji gościa dla systemu Windows
+description: Dowiedz się, jak utworzyć zasady konfiguracji gościa zasad platformy Azure dla systemu Windows.
+ms.date: 03/20/2020
 ms.topic: how-to
-ms.openlocfilehash: 8bd769b61ed87c9ded45ceca11586cfe105740c9
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 24069ff6518c4244026378e48216d4568fffeb8a
+ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79264585"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80365470"
 ---
-# <a name="how-to-create-guest-configuration-policies"></a>Jak utworzyć zasady konfiguracji gościa
+# <a name="how-to-create-guest-configuration-policies-for-windows"></a>Jak utworzyć zasady konfiguracji gościa dla systemu Windows
 
-Konfiguracja gościa używa modułu zasobów [Konfiguracja żądanego stanu](/powershell/scripting/dsc/overview/overview) (DSC) do tworzenia konfiguracji inspekcji maszyn platformy Azure. Konfiguracja DSC definiuje warunek, w którym maszyna powinna znajdować się w programie. Jeśli Ocena konfiguracji nie powiedzie się, zostanie wyzwolony efekt zasad **auditIfNotExists** i maszyna zostanie uznana za **niezgodną**.
+Przed utworzeniem zasad niestandardowych warto zapoznać się z informacjami o omówieniu koncepcyjnym na stronie [Konfiguracja gościa zasad azure.](../concepts/guest-configuration.md)
+ 
+Aby dowiedzieć się więcej o tworzeniu zasad konfiguracji gościa dla systemu Linux, zobacz stronę [Jak utworzyć zasady konfiguracji gościa dla systemu Linux](./guest-configuration-create-linux.md)
 
-[Azure Policy konfiguracja gościa](../concepts/guest-configuration.md) może być używana tylko do inspekcji ustawień wewnątrz maszyn. Korygowanie ustawień wewnątrz maszyn nie jest jeszcze dostępne.
+Podczas inspekcji systemu Windows konfiguracja gościa używa modułu zasobu [żądanej konfiguracji stanu](/powershell/scripting/dsc/overview/overview) (DSC) do pliku konfiguracyjnego i. Konfiguracja DSC definiuje warunek, w który powinien znajdować się komputer.
+Jeśli ocena konfiguracji nie powiedzie się, audyt efektu **zasadIfIfNotExists** jest wyzwalany i maszyna jest uważana za **niezgodną**.
 
-Aby utworzyć własną konfigurację weryfikacji stanu maszyny platformy Azure, należy wykonać następujące czynności.
+[Konfiguracja gościa zasad azure](../concepts/guest-configuration.md) może służyć tylko do inspekcji ustawień wewnątrz komputerów. Korygowanie ustawień wewnątrz maszyn nie jest jeszcze dostępne.
+
+Poniższe akcje można utworzyć w celu sprawdzenia poprawności stanu komputera platformy Azure lub komputera platformy innych niż Azure.
 
 > [!IMPORTANT]
-> Zasady niestandardowe z konfiguracją gościa są funkcją w wersji zapoznawczej.
+> Zasady niestandardowe z konfiguracją gościa to funkcja podglądu.
 
-## <a name="add-the-guestconfiguration-resource-module"></a>Dodawanie modułu zasobów GuestConfiguration
+## <a name="install-the-powershell-module"></a>Instalowanie modułu programu PowerShell
 
-Aby utworzyć zasady konfiguracji gościa, należy dodać moduł zasobów. Tego modułu zasobów można używać z zainstalowanym lokalnie programem PowerShell z programem [Azure Cloud Shell](https://shell.azure.com)lub z [obrazem Azure PowerShell Core Docker](https://hub.docker.com/r/azuresdk/azure-powershell-core).
+Tworzenie artefaktu konfiguracji gościa, automatyczne testowanie artefaktu, tworzenie definicji zasad i publikowanie zasad jest całkowicie zautomatyzowane przy użyciu modułu konfiguracji gościa w programie PowerShell. Moduł można zainstalować na komputerze z systemem Windows, macOS lub Linux z programem PowerShell 6.2 lub nowszym działającym lokalnie, z [usługą Azure Cloud Shell](https://shell.azure.com)lub z [obrazem platformy Azure PowerShell Core Docker](https://hub.docker.com/r/azuresdk/azure-powershell-core).
 
 > [!NOTE]
-> Gdy moduł **GuestConfiguration** działa w powyższych środowiskach, należy wykonać kroki w celu skompilowania konfiguracji DSC w programie Windows PowerShell 5,1.
+> Kompilacja konfiguracji nie jest jeszcze obsługiwana w systemie Linux.
 
 ### <a name="base-requirements"></a>Wymagania podstawowe
 
+Systemy operacyjne, w których można zainstalować moduł:
+
+- Linux
+- macOS
+- Windows
+
 Moduł zasobów konfiguracji gościa wymaga następującego oprogramowania:
 
-- Narzędzia. Jeśli jeszcze go nie zainstalowano, postępuj zgodnie z [tymi instrukcjami](/powershell/scripting/install/installing-powershell).
-- Azure PowerShell 1.5.0 lub wyższy. Jeśli jeszcze go nie zainstalowano, postępuj zgodnie z [tymi instrukcjami](/powershell/azure/install-az-ps).
+- Program PowerShell 6.2 lub nowszy. Jeśli jeszcze go nie zainstalowano, postępuj zgodnie z [tymi instrukcjami](/powershell/scripting/install/installing-powershell).
+- Program Azure PowerShell 1.5.0 lub nowszy. Jeśli jeszcze go nie zainstalowano, postępuj zgodnie z [tymi instrukcjami](/powershell/azure/install-az-ps).
+  - Wymagane są tylko moduły AZ 'Az.Accounts' i 'Az.Resources'.
 
 ### <a name="install-the-module"></a>Instalowanie modułu
 
-Konfiguracja gościa używa modułu zasobów **GuestConfiguration** do tworzenia konfiguracji DSC i publikowania ich w celu Azure Policy:
+Aby zainstalować moduł **GuestConfiguration** w programie PowerShell:
 
-1. W wierszu polecenia programu PowerShell uruchom następujące polecenie:
+1. Z monitu programu PowerShell uruchom następujące polecenie:
 
    ```azurepowershell-interactive
    # Install the Guest Configuration DSC resource module from PowerShell Gallery
@@ -53,36 +65,32 @@ Konfiguracja gościa używa modułu zasobów **GuestConfiguration** do tworzenia
    Get-Command -Module 'GuestConfiguration'
    ```
 
-## <a name="create-custom-guest-configuration-configuration-and-resources"></a>Utwórz niestandardową konfigurację i zasoby konfiguracji gościa
+## <a name="guest-configuration-artifacts-and-policy-for-windows"></a>Artefakty i zasady konfiguracji gościa dla systemu Windows
 
-Pierwszym krokiem tworzenia zasad niestandardowych dla konfiguracji gościa jest utworzenie konfiguracji DSC. Omówienie pojęć i terminologii DSC można znaleźć w temacie [Omówienie DSC programu PowerShell](/powershell/scripting/dsc/overview/overview).
+Konfiguracja gościa używa konfiguracji żądanego stanu programu PowerShell jako abstrakcji języka do pisania, co należy przeprowadzić inspekcję w systemie Windows. Agent ładuje autonomiczne wystąpienie programu PowerShell 6.2, więc nie ma konfliktu z użyciem programu PowerShell DSC w programie Windows PowerShell 5.1 i nie ma wymogu wstępnej instalacji programu PowerShell 6.2 lub nowszego.
 
-Jeśli konfiguracja wymaga tylko zasobów, które są wbudowane z instalacją agenta konfiguracji gościa, wystarczy tylko utworzyć plik MOF konfiguracji. Jeśli musisz uruchomić dodatkowy skrypt, musisz utworzyć niestandardowy moduł zasobów.
+Aby zapoznać się z omówieniem pojęć i terminologii DSC dsc, zobacz [Omówienie dsc programu PowerShell](/powershell/scripting/dsc/overview/overview).
 
-### <a name="requirements-for-guest-configuration-custom-resources"></a>Wymagania dotyczące zasobów niestandardowych konfiguracji gościa
+### <a name="how-guest-configuration-modules-differ-from-windows-powershell-dsc-modules"></a>Czym różnią się moduły konfiguracji gościa od modułów DSC programu Windows PowerShell
 
-Gdy konfiguracja gościa przeprowadza inspekcję maszyny, najpierw działa `Test-TargetResource`, aby określić, czy jest w poprawnym stanie. Wartość logiczna zwrócona przez funkcję określa, czy stan Azure Resource Manager dla przypisania gościa powinien być zgodny/niezgodny. Jeśli wartość logiczna jest `$false` dla dowolnego zasobu w konfiguracji, dostawca zostanie uruchomiony `Get-TargetResource`. Jeśli wartość logiczna jest `$true`, `Get-TargetResource` nie jest wywoływana.
+Gdy konfiguracja gościa przeprowadza inspekcje komputera, najpierw uruchamia `Test-TargetResource` się w celu ustalenia, czy jest w prawidłowym stanie. Wartość logiczna zwracana przez funkcję określa, czy stan usługi Azure Resource Manager dla przypisania gościa powinien być zgodny/niezgodny. Następnie dostawca `Get-TargetResource` uruchamia się, aby zwrócić bieżący stan każdego ustawienia, więc dostępne są szczegółowe informacje zarówno o tym, dlaczego komputer nie jest zgodny, jak i w celu potwierdzenia, że bieżący stan jest zgodny.
 
-#### <a name="configuration-requirements"></a>Wymagania dotyczące konfiguracji
+### <a name="get-targetresource-requirements"></a>Wymagania dotyczące źródła danych typu Get-TargetResource
 
-Jedyną wymogiem dla konfiguracji gościa do korzystania z konfiguracji niestandardowej jest nazwa konfiguracji, która będzie spójna wszędzie tam, gdzie jest używana. To wymaganie dotyczące nazwy obejmuje nazwę pliku zip pakietu zawartości, nazwę konfiguracji w pliku MOF przechowywanego w pakiecie zawartości oraz nazwę konfiguracji używaną w szablonie Menedżer zasobów jako nazwę przydziału gościa.
+Funkcja `Get-TargetResource` ma specjalne wymagania dotyczące konfiguracji gościa, które nie były potrzebne dla konfiguracji żądanego stanu systemu Windows.
 
-#### <a name="get-targetresource-requirements"></a>Wymagania Get-TargetResource
+- Skrót, który jest zwracany musi zawierać właściwość o nazwie **Przyczyny**.
+- Właściwość Reasons musi być tablicą.
+- Każdy element w tablicy powinien być hashtable z kluczami o nazwie **Kod** i **Fraza**.
 
-Funkcja `Get-TargetResource` ma specjalne wymagania dotyczące konfiguracji gościa, która nie jest wymagana w przypadku konfiguracji żądanego stanu systemu Windows.
+Właściwość Reasons jest używana przez usługę do standaryzacji sposobu przedstawiania informacji, gdy maszyna jest niezgodna. Każdy element w uzasadnieniu można potraktować jako "powód", że zasób nie jest zgodny. Właściwość jest tablicą, ponieważ zasób może być niezgodny z więcej niż jedną przyczyną.
 
-- Zwracana tablica skrótów musi zawierać właściwość o nazwie **powody**.
-- Właściwość przyczyn musi być tablicą.
-- Każdy element w tablicy powinien być tablicą skrótów z kluczami o nazwie **Code** i **phrase**.
+Właściwości **Kod** i **Fraza** są oczekiwane przez usługę. Podczas tworzenia zasobu niestandardowego ustaw tekst (zazwyczaj stdout), który chcesz pokazać jako przyczynę, dla której zasób nie jest zgodny jako wartość **frazy**. **Kod** ma określone wymagania dotyczące formatowania, dzięki czemu raportowanie może wyraźnie wyświetlać informacje o zasobie używanym do inspekcji. To rozwiązanie sprawia, że konfiguracja gościa jest rozszerzalna. Każde polecenie może być uruchomione tak długo, jak dane wyjściowe mogą być zwracane jako wartość ciągu dla **Phrase** właściwości.
 
-Właściwość powody jest używana przez usługę do standaryzacji sposobu prezentowania informacji, gdy maszyna nie jest zgodna. Każdy element może być uważany za "powód", że zasób nie jest zgodny. Właściwość jest tablicą, ponieważ zasób może być niezgodny z więcej niż jedną przyczyną.
-
-**Kod** właściwości i **frazy** są oczekiwane przez usługę. Podczas tworzenia zasobu niestandardowego Ustaw tekst (zazwyczaj stdout), który ma być pokazywany jako powód, w którym zasób nie jest zgodny jako wartość **frazy**. **Kod** ma określone wymagania dotyczące formatowania, dlatego raportowanie może jasno wyświetlić informacje o zasobie, który został użyty do przeprowadzenia inspekcji. To rozwiązanie sprawia, że konfiguracja gościa jest rozszerzalna. Każde polecenie można uruchomić w celu inspekcji maszyny, o ile dane wyjściowe mogą być przechwytywane i zwracane jako wartość ciągu dla właściwości **phrase** .
-
-- **Kod** (ciąg): nazwa zasobu, powtórzona i krótka nazwa bez spacji jako identyfikator przyczyny. Te trzy wartości powinny być rozdzielane średnikami bez spacji.
-  - Przykładem może być `registry:registry:keynotpresent`
-- **Phrase** (ciąg): czytelny dla człowieka tekst objaśniający, dlaczego ustawienie nie jest zgodne.
-  - Przykładem może być `The registry key $key is not present on the machine.`
+- **Kod** (ciąg): Nazwa zasobu, powtórzone, a następnie krótka nazwa bez spacji jako identyfikator z tego powodu. Te trzy wartości powinny być dwukropkiem bez spacji.
+  - Przykładem może być`registry:registry:keynotpresent`
+- **Fraza** (ciąg): tekst czytelny dla człowieka, aby wyjaśnić, dlaczego ustawienie nie jest zgodne.
+  - Przykładem może być`The registry key $key is not present on the machine.`
 
 ```powershell
 $reasons = @()
@@ -94,40 +102,39 @@ return @{
     reasons = $reasons
 }
 ```
+### <a name="configuration-requirements"></a>Wymagania konfiguracyjne
 
-#### <a name="scaffolding-a-guest-configuration-project"></a>Tworzenie szkieletu projektu konfiguracji gościa
+Nazwa konfiguracji niestandardowej musi być spójna wszędzie. Nazwa pliku zip dla pakietu zawartości, nazwa konfiguracji w pliku MOF i nazwa przypisania gościa w szablonie Menedżera zasobów muszą być takie same.
 
-Dla deweloperów, którzy chcą skrócić proces rozpoczynania pracy i korzystania z przykładowego kodu, projekt społecznościowy o nazwie " **Projekt konfiguracji gościa** " istnieje jako szablon modułu [gips](https://github.com/powershell/plaster) PowerShell. To narzędzie może służyć do tworzenia szkieletu projektu, w tym konfiguracji roboczej i przykładowego zasobu, oraz zestawu testów [szkodników](https://github.com/pester/pester) do sprawdzania poprawności projektu. Szablon zawiera również moduły uruchamiające zadania dla Visual Studio Code do automatyzacji kompilowania i weryfikowania pakietu konfiguracji gościa. Aby uzyskać więcej informacji, zobacz [Projekt konfiguracji gościa](https://github.com/microsoft/guestconfigurationproject)projektu GitHub.
+### <a name="scaffolding-a-guest-configuration-project"></a>Rusztowania projektu konfiguracji gościa
 
-### <a name="custom-guest-configuration-configuration-on-linux"></a>Konfiguracja niestandardowej konfiguracji gościa w systemie Linux
+Deweloperzy, którzy chcieliby przyspieszyć proces rozpoczynania pracy i pracy z przykładowego kodu, mogą zainstalować projekt społeczności o nazwie **Guest Configuration Project**. Projekt instaluje szablon dla modułu [Plaster](https://github.com/powershell/plaster) PowerShell. To narzędzie może służyć do szkieletowania projektu, w tym konfiguracji roboczej i przykładowego zasobu oraz zestawu testów [Pester,](https://github.com/pester/pester) aby sprawdzić poprawność projektu. Szablon zawiera również narzędzia zadań dla programu Visual Studio Code do automatyzacji tworzenia i sprawdzania poprawności pakietu konfiguracji gościa. Aby uzyskać więcej informacji, zobacz [projekt konfiguracji gościa projektu](https://github.com/microsoft/guestconfigurationproject)GitHub .
 
-Konfiguracja DSC dla konfiguracji gościa w systemie Linux używa zasobu `ChefInSpecResource`, aby zapewnić aparatowi nazwę definicji [specyfikacji Chef](https://www.chef.io/inspec/) . **Nazwa** jest jedyną wymaganą właściwością zasobu.
+Aby uzyskać więcej informacji na temat pracy z konfiguracjami w ogóle, zobacz [Zapis, kompilowanie i Stosowanie konfiguracji](/powershell/scripting/dsc/configurations/write-compile-apply-configuration).
 
-W poniższym przykładzie jest tworzona konfiguracja o nazwie **linia bazowa**, importuje moduł zasobów **GuestConfiguration** i używa zasobu `ChefInSpecResource` Ustaw nazwę definicji specyfikacji na **Linux-patch-Baseline**:
+### <a name="expected-contents-of-a-guest-configuration-artifact"></a>Oczekiwana zawartość artefaktu konfiguracji gościa
 
-```powershell
-# Define the DSC configuration and import GuestConfiguration
-Configuration baseline
-{
-    Import-DscResource -ModuleName 'GuestConfiguration'
+Ukończony pakiet jest używany przez konfigurację gościa do tworzenia definicji zasad platformy Azure. Pakiet składa się z:
 
-    ChefInSpecResource 'Audit Linux patch baseline'
-    {
-        Name = 'linux-patch-baseline'
-    }
-}
+- Skompilowana konfiguracja DSC jako MOF
+- Folder Moduły
+  - Moduł konfiguracji gościa
+  - Moduł DscNativeResources
+  - (Windows) Moduły zasobów DSC wymagane przez MOF
 
-# Compile the configuration to create the MOF files
-baseline
-```
+Polecenia cmdlet programu PowerShell pomagają w tworzeniu pakietu.
+Nie jest wymagany folder ani folder wersji na poziomie głównym.
+Format pakietu musi być plikiem zip.
 
-Aby uzyskać więcej informacji, zobacz [Zapisywanie, kompilowanie i stosowanie konfiguracji](/powershell/scripting/dsc/configurations/write-compile-apply-configuration).
+### <a name="storing-guest-configuration-artifacts"></a>Przechowywanie artefaktów konfiguracji gościa
 
-### <a name="custom-guest-configuration-configuration-on-windows"></a>Konfiguracja niestandardowej konfiguracji gościa w systemie Windows
+Pakiet .zip musi być przechowywany w lokalizacji, która jest dostępna dla zarządzanych maszyn wirtualnych.
+Przykłady obejmują repozytoria GitHub, repozytorium platformy Azure lub magazynu platformy Azure. Jeśli wolisz nie upubliczniać pakietu, możesz dołączyć [token sygnatury dostępu Współdzielonego](../../../storage/common/storage-dotnet-shared-access-signature-part-1.md) w adresie URL.
+Można również zaimplementować [punkt końcowy usługi](../../../storage/common/storage-network-security.md#grant-access-from-a-virtual-network) dla komputerów w sieci prywatnej, chociaż ta konfiguracja dotyczy tylko dostępu do pakietu i nie komunikuje się z usługą.
 
-Konfiguracja DSC Azure Policy konfiguracji gościa jest używana tylko przez agenta konfiguracji gościa, nie powoduje konfliktu z konfiguracją żądanego stanu programu Windows PowerShell.
+## <a name="step-by-step-creating-a-custom-guest-configuration-audit-policy-for-windows"></a>Krok po kroku tworzenie niestandardowych zasad inspekcji konfiguracji gościa dla systemu Windows
 
-Poniższy przykład tworzy konfigurację o nazwie **AuditBitLocker**, importuje moduł zasobów **GuestConfiguration** i używa tego zasobu `Service` do inspekcji dla uruchomionej usługi:
+Utwórz konfigurację DSC. Poniższy przykład skryptu programu PowerShell tworzy konfigurację o nazwie **AuditBitLocker**, importuje `Service` moduł zasobów **PsDscResources** i używa zasobu do inspekcji uruchomionej usługi. Skrypt konfiguracyjny może być wykonywany z komputera z systemem Windows lub macOS.
 
 ```powershell
 # Define the DSC configuration and import GuestConfiguration
@@ -135,114 +142,197 @@ Configuration AuditBitLocker
 {
     Import-DscResource -ModuleName 'PSDscResources'
 
-    Service 'Ensure BitLocker service is present and running'
-    {
-        Name = 'BDESVC'
-        Ensure = 'Present'
-        State = 'Running'
+    Node AuditBitlocker {
+      Service 'Ensure BitLocker service is present and running'
+      {
+          Name = 'BDESVC'
+          Ensure = 'Present'
+          State = 'Running'
+      }
     }
 }
 
 # Compile the configuration to create the MOF files
-AuditBitLocker
+AuditBitLocker -out ./Config
 ```
 
-Aby uzyskać więcej informacji, zobacz [Zapisywanie, kompilowanie i stosowanie konfiguracji](/powershell/scripting/dsc/configurations/write-compile-apply-configuration).
+Polecenie `Node AuditBitlocker` nie jest technicznie wymagane, ale tworzy plik `AuditBitlocker.mof` o nazwie, `localhost.mof`a nie domyślny, . Posiadanie nazwy pliku .mof zgodnie z konfiguracją ułatwia organizowanie wielu plików podczas pracy na dużą skalę.
 
-## <a name="create-guest-configuration-custom-policy-package"></a>Utwórz niestandardowy pakiet zasad konfiguracji gościa
+Po skompilowaniu MOF pliki pomocnicze muszą być spakowane razem. Ukończony pakiet jest używany przez konfigurację gościa do tworzenia definicji zasad platformy Azure.
 
-Po skompilowaniu pliku MOF pliki pomocnicze muszą być spakowane razem. Ukończony pakiet jest używany przez konfigurację gościa do tworzenia definicji Azure Policy. Pakiet składa się z:
-
-- Skompilowana Konfiguracja DSC jako plik MOF
-- Folder modułów
-  - Moduł GuestConfiguration
-  - Moduł DscNativeResources
-  - System Folder z definicją Chef niespecyfikacją i dodatkową zawartością
-  - Systemy Moduły zasobów DSC, które nie są wbudowane
-
-Polecenie cmdlet `New-GuestConfigurationPackage` tworzy pakiet. Następujący format służy do tworzenia pakietu niestandardowego:
-
-```azurepowershell-interactive
-New-GuestConfigurationPackage -Name '{PackageName}' -Configuration '{PathToMOF}' `
-    -Path '{OutputFolder}' -Verbose
-```
-
-Parametry polecenia cmdlet `New-GuestConfigurationPackage`:
+Polecenie `New-GuestConfigurationPackage` cmdlet tworzy pakiet. Parametry polecenia `New-GuestConfigurationPackage` cmdlet podczas tworzenia zawartości systemu Windows:
 
 - **Nazwa**: Nazwa pakietu konfiguracji gościa.
-- **Konfiguracja**: pełna ścieżka do skompilowanego dokumentu konfiguracji DSC.
-- **Ścieżka**: ścieżka folderu wyjściowego. Ten parametr jest opcjonalny. Jeśli nie zostanie określony, pakiet zostanie utworzony w bieżącym katalogu.
-- **ChefProfilePath**: pełna ścieżka do profilu INSPEC. Ten parametr jest obsługiwany tylko podczas tworzenia zawartości do inspekcji systemu Linux.
+- **Konfiguracja**: Skompilowana ścieżka dokumentu konfiguracyjnego DSC.
+- **Ścieżka**: Ścieżka folderu wyjściowego. Ten parametr jest opcjonalny. Jeśli nie zostanie określony, pakiet jest tworzony w bieżącym katalogu.
 
-Ukończony pakiet musi być przechowywany w lokalizacji dostępnej dla zarządzanych maszyn wirtualnych. Przykłady obejmują repozytoria GitHub, repozytorium platformy Azure lub usługę Azure Storage. Jeśli wolisz nie udostępniać pakietu publicznie, możesz dołączyć [token sygnatury dostępu współdzielonego](../../../storage/common/storage-dotnet-shared-access-signature-part-1.md) w adresie URL.
-Można również zaimplementować [punkt końcowy usługi](../../../storage/common/storage-network-security.md#grant-access-from-a-virtual-network) dla maszyn w sieci prywatnej, chociaż ta konfiguracja ma zastosowanie tylko do uzyskiwania dostępu do pakietu i nie komunikuje się z usługą.
-
-## <a name="test-a-guest-configuration-package"></a>Testowanie pakietu konfiguracji gościa
-
-Po utworzeniu pakietu konfiguracyjnego, ale przed opublikowaniem go na platformie Azure, można przetestować funkcjonalność pakietu ze stacji roboczej lub środowiska CI/CD. Moduł GuestConfiguration zawiera `Test-GuestConfigurationPackage` polecenia cmdlet, który ładuje tego samego agenta w środowisku deweloperskim, jak jest używany wewnątrz maszyn platformy Azure. Korzystając z tego rozwiązania, można przeprowadzić testowanie integracji lokalnie przed wydaniem do rozliczanego testu/pytań i odpowiedzi/środowisk produkcyjnych.
+Uruchom następujące polecenie, aby utworzyć pakiet przy użyciu konfiguracji podanej w poprzednim kroku:
 
 ```azurepowershell-interactive
-Test-GuestConfigurationPackage -Path .\package\AuditWindowsService\AuditWindowsService.zip -Verbose
+New-GuestConfigurationPackage `
+  -Name 'AuditBitlocker' `
+  -Configuration './Config/AuditBitlocker.mof'
 ```
 
-Parametry polecenia cmdlet `Test-GuestConfigurationPackage`:
+Po utworzeniu pakietu konfiguracji, ale przed opublikowaniem go na platformie Azure, można przetestować pakiet ze stacji roboczej lub środowiska ciągłej integracji/ciągłego wdrażania. Polecenie cmdlet `Test-GuestConfigurationPackage` guestconfiguration zawiera tego samego agenta w środowisku programistycznym, który jest używany na komputerach platformy Azure. Korzystając z tego rozwiązania, można wykonać testowanie integracji lokalnie przed zwolnieniem do środowisk chmury rozliczane.
+
+Ponieważ agent faktycznie ocenia środowisko lokalne, w większości przypadków należy uruchomić polecenie cmdlet testowe na tej samej platformie systemu operacyjnego, co planujesz przeprowadzić inspekcję.
+
+Parametry polecenia `Test-GuestConfigurationPackage` cmdlet:
 
 - **Nazwa**: Nazwa zasad konfiguracji gościa.
-- **Parameter**: parametry zasad podane w formacie Hashtable.
-- **Ścieżka**: pełna ścieżka pakietu konfiguracji gościa.
+- **Parametr**: Parametry zasad podane w formacie mieszalalnym.
+- **Ścieżka:** Pełna ścieżka pakietu konfiguracji gościa.
 
-Polecenie cmdlet obsługuje również dane wejściowe z potoku programu PowerShell. Potoku dane wyjściowe polecenia cmdlet `New-GuestConfigurationPackage` do polecenia cmdlet `Test-GuestConfigurationPackage`.
+Uruchom następujące polecenie, aby przetestować pakiet utworzony przez poprzedni krok:
 
 ```azurepowershell-interactive
-New-GuestConfigurationPackage -Name AuditWindowsService -Configuration .\DSCConfig\localhost.mof -Path .\package -Verbose | Test-GuestConfigurationPackage -Verbose
+Test-GuestConfigurationPackage `
+  -Path ./AuditBitlocker.zip
 ```
 
-Więcej informacji o testowaniu z parametrami znajduje się w sekcji poniżej [przy użyciu parametrów w niestandardowych zasadach konfiguracji gościa](#using-parameters-in-custom-guest-configuration-policies).
-
-## <a name="create-the-azure-policy-definition-and-initiative-deployment-files"></a>Tworzenie plików wdrożenia definicji Azure Policy i inicjatywy
-
-Gdy niestandardowy pakiet zasad konfiguracji gościa został utworzony i przekazany do lokalizacji dostępnej dla maszyn, Utwórz definicję zasad konfiguracji gościa dla Azure Policy. `New-GuestConfigurationPolicy` polecenie cmdlet pobiera publicznie dostępny pakiet zasad konfiguracji gościa i tworzy definicję zasad **auditIfNotExists** i **deployIfNotExists** . Zostanie również utworzona definicja inicjatywy zasad, która obejmuje zarówno definicje zasad.
-
-Poniższy przykład tworzy definicje zasad i inicjatyw w określonej ścieżce z pakietu zasad niestandardowych konfiguracji gościa dla systemu Windows i zawiera nazwę, opis i wersję:
+Polecenie cmdlet obsługuje również dane wejściowe z potoku programu PowerShell. Przesuń `New-GuestConfigurationPackage` wyjście polecenia `Test-GuestConfigurationPackage` cmdlet do polecenia cmdlet.
 
 ```azurepowershell-interactive
-New-GuestConfigurationPolicy
+New-GuestConfigurationPackage -Name AuditBitlocker -Configuration ./Config/AuditBitlocker.mof | Test-GuestConfigurationPackage
+```
+
+Następnym krokiem jest opublikowanie pliku do magazynu obiektów blob. Poniższy skrypt zawiera funkcję, której można użyć do zautomatyzowania tego zadania. Polecenia używane w `publish` funkcji wymagają `Az.Storage` modułu.
+
+```azurepowershell-interactive
+function publish {
+    param(
+    [Parameter(Mandatory=$true)]
+    $resourceGroup,
+    [Parameter(Mandatory=$true)]
+    $storageAccountName,
+    [Parameter(Mandatory=$true)]
+    $storageContainerName,
+    [Parameter(Mandatory=$true)]
+    $filePath,
+    [Parameter(Mandatory=$true)]
+    $blobName
+    )
+
+    # Get Storage Context
+    $Context = Get-AzStorageAccount -ResourceGroupName $resourceGroup `
+        -Name $storageAccountName | `
+        ForEach-Object { $_.Context }
+
+    # Upload file
+    $Blob = Set-AzStorageBlobContent -Context $Context `
+        -Container $storageContainerName `
+        -File $filePath `
+        -Blob $blobName `
+        -Force
+
+    # Get url with SAS token
+    $StartTime = (Get-Date)
+    $ExpiryTime = $StartTime.AddYears('3')  # THREE YEAR EXPIRATION
+    $SAS = New-AzStorageBlobSASToken -Context $Context `
+        -Container $storageContainerName `
+        -Blob $blobName `
+        -StartTime $StartTime `
+        -ExpiryTime $ExpiryTime `
+        -Permission rl `
+        -FullUri
+
+    # Output
+    return $SAS
+}
+
+# replace the $storageAccountName value below, it must be globally unique
+$resourceGroup        = 'policyfiles'
+$storageAccountName   = 'youraccountname'
+$storageContainerName = 'artifacts'
+
+$uri = publish `
+  -resourceGroup $resourceGroup `
+  -storageAccountName $storageAccountName `
+  -storageContainerName $storageContainerName `
+  -filePath ./AuditBitlocker.zip `
+  -blobName 'AuditBitlocker'
+```
+
+Po utworzeniu i przekazaniu niestandardowego pakietu zasad konfiguracji gościa utwórz definicję zasad konfiguracji gościa. Polecenie `New-GuestConfigurationPolicy` cmdlet przyjmuje niestandardowy pakiet zasad i tworzy definicję zasad.
+
+Parametry polecenia `New-GuestConfigurationPolicy` cmdlet:
+
+- **ContentUri**: Publiczne http(s) uri pakietu zawartości konfiguracji gościa.
+- **DisplayName**: Nazwa wyświetlana zasad.
+- **Opis**: Opis zasad.
+- **Parametr**: Parametry zasad podane w formacie mieszalalnym.
+- **Wersja**: Wersja zasad.
+- **Ścieżka:** Ścieżka docelowa, w której tworzone są definicje zasad.
+- **Platforma:** Platforma docelowa (Windows/Linux) dla zasad konfiguracji gościa i pakietu zawartości.
+
+Poniższy przykład tworzy definicje zasad w określonej ścieżce z niestandardowego pakietu zasad:
+
+```azurepowershell-interactive
+New-GuestConfigurationPolicy `
     -ContentUri 'https://storageaccountname.blob.core.windows.net/packages/AuditBitLocker.zip?st=2019-07-01T00%3A00%3A00Z&se=2024-07-01T00%3A00%3A00Z&sp=rl&sv=2018-03-28&sr=b&sig=JdUf4nOCo8fvuflOoX%2FnGo4sXqVfP5BYXHzTl3%2BovJo%3D' `
     -DisplayName 'Audit BitLocker Service.' `
     -Description 'Audit if BitLocker is not enabled on Windows machine.' `
-    -Path '.\policyDefinitions' `
+    -Path './policies' `
     -Platform 'Windows' `
-    -Version 1.2.3.4 `
+    -Version 1.0.0 `
     -Verbose
 ```
 
-Parametry polecenia cmdlet `New-GuestConfigurationPolicy`:
+Następujące pliki są `New-GuestConfigurationPolicy`tworzone przez:
 
-- **ContentUri**: publiczny identyfikator URI http (s) dla pakietu zawartości konfiguracji gościa.
-- **DisplayName**: Nazwa wyświetlana zasad.
-- **Opis**: Opis zasad.
-- **Parameter**: parametry zasad podane w formacie Hashtable.
-- **Wersja**: wersja zasad.
-- **Ścieżka**: ścieżka docelowa, w której są tworzone definicje zasad.
-- **Platforma**: platforma docelowa (Windows/Linux) dla zasad konfiguracji gościa i pakietu zawartości.
+- **audytIfNotExists.json**
+- **deployIfNotExists.json**
+- **Inicjatywa.json**
 
-Następujące pliki są tworzone przez `New-GuestConfigurationPolicy`:
+Wyjście polecenia cmdlet zwraca obiekt zawierający nazwę wyświetlaną inicjatywy i ścieżkę plików zasad.
 
-- **auditIfNotExists. JSON**
-- **deployIfNotExists. JSON**
-- **Initiative. JSON**
+Na koniec opublikuj definicje zasad `Publish-GuestConfigurationPolicy` przy użyciu polecenia cmdlet. Polecenie cmdlet ma tylko parametr **Path,** który wskazuje lokalizację `New-GuestConfigurationPolicy`plików JSON utworzonych przez program .
 
-Dane wyjściowe polecenia cmdlet zwracają obiekt zawierający nazwę wyświetlaną inicjatywy i ścieżkę plików zasad.
+Aby uruchomić polecenie Publikuj, potrzebujesz dostępu do tworzenia zasad na platformie Azure. Określone wymagania dotyczące autoryzacji są udokumentowane na stronie [Omówienie zasad platformy Azure.](../overview.md) Najlepszą wbudowaną rolą jest **współautor zasad zasobów**.
 
-Jeśli chcesz użyć tego polecenia do tworzenia szkieletu niestandardowego projektu zasad, możesz wprowadzić zmiany w tych plikach. Przykładem może być modyfikacja sekcji "If", aby sprawdzić, czy określony tag jest obecny dla maszyn. Aby uzyskać szczegółowe informacje na temat tworzenia zasad, zobacz programowe [Tworzenie zasad](./programmatically-create.md).
+```azurepowershell-interactive
+Publish-GuestConfigurationPolicy -Path '.\policyDefinitions'
+```
 
-### <a name="using-parameters-in-custom-guest-configuration-policies"></a>Używanie parametrów w niestandardowych zasadach konfiguracji gościa
+Polecenie `Publish-GuestConfigurationPolicy` cmdlet akceptuje ścieżkę z potoku programu PowerShell. Ta funkcja oznacza, że można utworzyć pliki zasad i opublikować je w jednym zestawie poleceń potoku.
 
-Konfiguracja gościa obsługuje Zastępowanie właściwości konfiguracji w czasie wykonywania. Ta funkcja oznacza, że wartości w pliku MOF w pakiecie nie muszą być uznawane za statyczne. Wartości przesłonięć są udostępniane za pomocą Azure Policy i nie mają wpływu na sposób tworzenia lub kompilowania konfiguracji.
+```azurepowershell-interactive
+New-GuestConfigurationPolicy `
+ -ContentUri 'https://storageaccountname.blob.core.windows.net/packages/AuditBitLocker.zip?st=2019-07-01T00%3A00%3A00Z&se=2024-07-01T00%3A00%3A00Z&sp=rl&sv=2018-03-28&sr=b&sig=JdUf4nOCo8fvuflOoX%2FnGo4sXqVfP5BYXHzTl3%2BovJo%3D' `
+  -DisplayName 'Audit BitLocker service.' `
+  -Description 'Audit if the BitLocker service is not enabled on Windows machine.' `
+  -Path './policies' `
+ | Publish-GuestConfigurationPolicy
+```
 
-Polecenia cmdlet `New-GuestConfigurationPolicy` i `Test-GuestConfigurationPolicyPackage` zawierają parametr o nazwie **Parameters**. Ten parametr przyjmuje definicję obiektu Hashtable obejmującą wszystkie szczegóły każdego z parametrów i automatycznie tworzy wszystkie wymagane sekcje plików użytych do utworzenia każdej definicji Azure Policy.
+W ramach zasad utworzonych na platformie Azure ostatnim krokiem jest przypisanie inicjatywy. Zobacz, jak przypisać inicjatywę za pomocą [portalu,](../assign-policy-portal.md) [interfejsu wiersza polecenia platformy Azure](../assign-policy-azurecli.md)i programu Azure [PowerShell.](../assign-policy-powershell.md)
 
-Poniższy przykład tworzy Azure Policy do inspekcji usługi, gdzie użytkownik wybiera z listy usług w momencie przypisywania zasad.
+> [!IMPORTANT]
+> Zasady konfiguracji gościa muszą być **zawsze** przypisane przy użyciu inicjatywy, która łączy _auditIfNotExists_ i _DeployIfNotExists_ zasad. Jeśli przypisano tylko zasady _AuditIfNotExists,_ wymagania wstępne nie są wdrażane, a zasady zawsze pokazują, że serwery "0" są zgodne.
+
+Przypisywanie definicji zasad za pomocą _efektu DeployIfNotExists_ wymaga dodatkowego poziomu dostępu. Aby przyznać najmniejsze uprawnienia, można utworzyć niestandardową definicję roli, która rozszerza **współautora zasad zasobów**. W poniższym przykładzie utworzy się rolę o nazwie **Dine współautora zasad zasobów** z dodatkowym uprawnieniem _Microsoft.Authorization/roleAssignments/write_.
+
+```azurepowershell-interactive
+$subscriptionid = '00000000-0000-0000-0000-000000000000'
+$role = Get-AzRoleDefinition "Resource Policy Contributor"
+$role.Id = $null
+$role.Name = "Resource Policy Contributor DINE"
+$role.Description = "Can assign Policies that require remediation."
+$role.Actions.Clear()
+$role.Actions.Add("Microsoft.Authorization/roleAssignments/write")
+$role.AssignableScopes.Clear()
+$role.AssignableScopes.Add("/subscriptions/$subscriptionid")
+New-AzRoleDefinition -Role $role
+```
+
+### <a name="using-parameters-in-custom-guest-configuration-policies"></a>Korzystanie z parametrów w niestandardowych zasadach konfiguracji gościa
+
+Konfiguracja gościa obsługuje nadrzędne właściwości konfiguracji w czasie wykonywania. Ta funkcja oznacza, że wartości w pliku MOF w pakiecie nie muszą być uważane za statyczne. Wartości zastępowania są dostarczane za pośrednictwem usługi Azure Policy i nie mają wpływu na sposób tworzenia lub kompilowania konfiguracji.
+
+Polecenia cmdlet `New-GuestConfigurationPolicy` `Test-GuestConfigurationPolicyPackage` i zawierają parametr o nazwie **Parametry**. Ten parametr przyjmuje definicję mieszania zawierającą wszystkie szczegóły dotyczące każdego parametru i tworzy wymagane sekcje każdego pliku używanego dla definicji zasad platformy Azure.
+
+Poniższy przykład tworzy definicję zasad do inspekcji usługi, gdzie użytkownik wybiera z listy w czasie przypisywania zasad.
 
 ```azurepowershell-interactive
 $PolicyParameterInfo = @(
@@ -264,126 +354,62 @@ New-GuestConfigurationPolicy
     -Description 'Audit if a Windows Service is not enabled on Windows machine.' `
     -Path '.\policyDefinitions' `
     -Parameters $PolicyParameterInfo `
-    -Platform 'Windows' `
-    -Version 1.2.3.4 `
-    -Verbose
+    -Version 1.0.0
 ```
-
-W przypadku zasad systemu Linux Uwzględnij Właściwość **AttributesYmlContent** w konfiguracji i Zastąp wartości zgodnie z potrzebami. Agent konfiguracji gościa automatycznie tworzy plik YAML używany przez specyfikację do przechowywania atrybutów. Zobacz przykład poniżej.
-
-```powershell
-Configuration FirewalldEnabled {
-
-    Import-DscResource -ModuleName 'GuestConfiguration'
-
-    Node FirewalldEnabled {
-
-        ChefInSpecResource FirewalldEnabled {
-            Name = 'FirewalldEnabled'
-            AttributesYmlContent = "DefaultFirewalldProfile: [public]"
-        }
-    }
-}
-```
-
-Dla każdego dodatkowego parametru Dodaj tablicę skrótów do tablicy. W plikach zasad zostaną wyświetlone właściwości dodawane do konfiguracji gościa ConfigurationName, które identyfikują typ zasobu, nazwę, właściwość i wartość.
-
-```json
-{
-    "apiVersion": "2018-11-20",
-    "type": "Microsoft.Compute/virtualMachines/providers/guestConfigurationAssignments",
-    "name": "[concat(parameters('vmName'), '/Microsoft.GuestConfiguration/', parameters('configurationName'))]",
-    "location": "[parameters('location')]",
-    "properties": {
-        "guestConfiguration": {
-            "name": "[parameters('configurationName')]",
-            "version": "1.*",
-            "configurationParameter": [{
-                "name": "[Service]windowsService;Name",
-                "value": "[parameters('ServiceName')]"
-            }]
-        }
-    }
-}
-```
-
-## <a name="publish-to-azure-policy"></a>Publikuj w Azure Policy
-
-Moduł zasobów **GuestConfiguration** oferuje sposób tworzenia definicji zasad i definicji inicjatywy na platformie Azure z jednym krokiem za pomocą polecenia cmdlet `Publish-GuestConfigurationPolicy`.
-Polecenie cmdlet ma tylko parametr **Path** wskazujący lokalizację trzech plików JSON utworzonych przez `New-GuestConfigurationPolicy`.
-
-```azurepowershell-interactive
-Publish-GuestConfigurationPolicy -Path '.\policyDefinitions' -Verbose
-```
-
-Polecenie cmdlet `Publish-GuestConfigurationPolicy` akceptuje ścieżkę z potoku programu PowerShell. Ta funkcja oznacza, że można tworzyć pliki zasad i publikować je w pojedynczym zestawie poleceń potokowych.
-
-```azurepowershell-interactive
-New-GuestConfigurationPolicy -ContentUri 'https://storageaccountname.blob.core.windows.net/packages/AuditBitLocker.zip?st=2019-07-01T00%3A00%3A00Z&se=2024-07-01T00%3A00%3A00Z&sp=rl&sv=2018-03-28&sr=b&sig=JdUf4nOCo8fvuflOoX%2FnGo4sXqVfP5BYXHzTl3%2BovJo%3D' -DisplayName 'Audit BitLocker service.' -Description 'Audit if the BitLocker service is not enabled on Windows machine.' -Path '.\policyDefinitions' -Platform 'Windows' -Version 1.2.3.4 -Verbose | ForEach-Object {$_.Path} | Publish-GuestConfigurationPolicy -Verbose
-```
-
-W przypadku definicji zasad i inicjatyw utworzonych na platformie Azure ostatni krok to przypisanie inicjatywy. Zobacz, jak przypisać inicjatywę przy użyciu [portalu](../assign-policy-portal.md), [interfejsu wiersza polecenia platformy Azure](../assign-policy-azurecli.md)i [Azure PowerShell](../assign-policy-powershell.md).
-
-> [!IMPORTANT]
-> Zasady konfiguracji gościa muszą być **zawsze** przypisywane przy użyciu inicjatywy, która łączy zasady _AuditIfNotExists_ i _DeployIfNotExists_ . Jeśli tylko zasady _AuditIfNotExists_ są przypisane, wymagania wstępne nie są wdrażane, a zasady zawsze pokazują, że serwery "0" są zgodne.
 
 ## <a name="policy-lifecycle"></a>Cykl życia zasad
 
-Po opublikowaniu niestandardowego Azure Policy przy użyciu niestandardowego pakietu zawartości istnieją dwa pola, które należy zaktualizować, jeśli chcesz opublikować nową wersję.
+Jeśli chcesz zwolnić aktualizację zasad, istnieją dwa pola, które wymagają uwagi.
 
-- **Wersja**: po uruchomieniu polecenia cmdlet `New-GuestConfigurationPolicy` należy określić numer wersji większy niż aktualnie opublikowany. Właściwość aktualizuje wersję przypisania konfiguracji gościa w nowym pliku zasad, więc rozszerzenie rozpozna, że pakiet został zaktualizowany.
-- **contentHash**: Ta właściwość jest automatycznie aktualizowana przez polecenie cmdlet `New-GuestConfigurationPolicy`. Jest to wartość skrótu pakietu utworzonego przez `New-GuestConfigurationPackage`. Właściwość musi być poprawna dla publikowanego pliku `.zip`. Jeśli zostanie zaktualizowana tylko właściwość **contentUri** , na przykład w przypadku, gdy ktoś mógłby wprowadzić ręczną zmianę definicji zasad z portalu, rozszerzenie nie zaakceptuje pakietu zawartości.
+- **Wersja:** Po uruchomieniu `New-GuestConfigurationPolicy` polecenia cmdlet należy określić numer wersji większy niż aktualnie opublikowany. Właściwość aktualizuje wersję przypisania konfiguracji gościa, dzięki czemu agent rozpoznaje zaktualizowany pakiet.
+- **contentHash:** Ta właściwość jest `New-GuestConfigurationPolicy` aktualizowana automatycznie przez polecenie cmdlet. Jest to wartość skrótu pakietu utworzonego przez `New-GuestConfigurationPackage`. Właściwość musi być `.zip` poprawna dla pliku, który publikujesz. Jeśli tylko **contentUri** właściwość jest aktualizowana, rozszerzenie nie akceptuje pakietu zawartości.
 
-Najprostszym sposobem zwolnienia zaktualizowanego pakietu jest powtórzenie procesu opisanego w tym artykule i udostępnienie zaktualizowanego numeru wersji. Ten proces gwarantuje, że wszystkie właściwości zostały prawidłowo zaktualizowane.
+Najprostszym sposobem wydania zaktualizowanego pakietu jest powtórzenie procesu opisanego w tym artykule i podanie zaktualizowanego numeru wersji. Ten proces gwarantuje, że wszystkie właściwości zostały poprawnie zaktualizowane.
 
-## <a name="converting-windows-group-policy-content-to-azure-policy-guest-configuration"></a>Konwertowanie zawartości systemu Windows zasady grupy na konfigurację Azure Policy gościa
+## <a name="converting-windows-group-policy-content-to-azure-policy-guest-configuration"></a>Konwertowanie zawartości zasad grupy systemu Windows na konfigurację gościa zasad platformy Azure
 
-Konfiguracja gościa podczas inspekcji maszyn z systemem Windows jest implementacją składni konfiguracji żądanego stanu programu PowerShell. Społeczność DSC opublikowała narzędzia do konwertowania wyeksportowanych szablonów zasady grupy w formacie DSC. Korzystając z tego narzędzia wraz z poleceniami cmdlet konfiguracji gościa opisanymi powyżej, można skonwertować zawartość systemu Windows zasady grupy i pakiet/opublikować ją Azure Policy do inspekcji. Aby uzyskać szczegółowe informacje na temat korzystania z tego narzędzia, zobacz artykuł [Szybki Start: konwertowanie zasady grupy na DSC](/powershell/scripting/dsc/quickstarts/gpo-quickstart).
-Po przeprowadzeniu konwersji zawartości należy wykonać kroki opisane powyżej, aby utworzyć pakiet i opublikować go jako Azure Policy będzie taka sama jak w przypadku dowolnej zawartości DSC.
+Konfiguracja gościa podczas inspekcji maszyn z systemem Windows jest implementacją składni konfiguracji żądanego stanu programu PowerShell. Społeczność DSC opublikowała narzędzia do konwersji eksportowanych szablonów zasad grupy na format DSC. Za pomocą tego narzędzia wraz z poleceń cmdlet konfiguracji gościa opisane powyżej, można przekonwertować zawartość zasad grupy systemu Windows i pakiet/publikować go dla zasad platformy Azure do inspekcji. Aby uzyskać szczegółowe informacje na temat korzystania z narzędzia, zobacz artykuł [Szybki start: Konwertowanie zasad grupy na DSC](/powershell/scripting/dsc/quickstarts/gpo-quickstart).
+Po przekonwertowaniu zawartości powyższe kroki, aby utworzyć pakiet i opublikować go jako zasady platformy Azure są takie same, jak dla każdej zawartości DSC.
 
-## <a name="optional-signing-guest-configuration-packages"></a>OPCJONALNE: podpisywanie pakietów konfiguracji gościa
+## <a name="optional-signing-guest-configuration-packages"></a>Opcjonalnie: Podpisywanie pakietów konfiguracyjnych gościa
 
-Zasady niestandardowe konfiguracji gościa domyślnie używają skrótu SHA256, aby sprawdzić, czy pakiet zasad nie został zmieniony z momentu, gdy został on opublikowany przez serwer, który jest poddany inspekcji.
+Niestandardowe zasady konfiguracji gościa używają skrótu SHA256 do sprawdzania poprawności pakietu zasad nie uległy zmianie.
 Opcjonalnie klienci mogą również używać certyfikatu do podpisywania pakietów i wymuszania rozszerzenia konfiguracji gościa, aby zezwalać tylko na podpisaną zawartość.
 
-Aby włączyć ten scenariusz, należy wykonać dwa kroki. Uruchom polecenie cmdlet, aby podpisać pakiet zawartości, i Dołącz tag do maszyn, które powinny wymagać podpisania kodu.
+Aby włączyć ten scenariusz, istnieją dwa kroki, które należy wykonać. Uruchom polecenie cmdlet, aby podpisać pakiet zawartości i dołączyć znacznik do maszyn, które powinny wymagać podpisania kodu.
 
-Aby skorzystać z funkcji walidacji podpisu, uruchom polecenie cmdlet `Protect-GuestConfigurationPackage`, aby podpisać pakiet przed jego opublikowaniem. To polecenie cmdlet wymaga certyfikatu "podpisywanie kodu".
+Aby użyć funkcji sprawdzania poprawności `Protect-GuestConfigurationPackage` podpisu, uruchom polecenie cmdlet, aby podpisać pakiet przed jego opublikowaniem. To polecenie cmdlet wymaga certyfikatu "Podpisywanie kodu".
 
 ```azurepowershell-interactive
 $Cert = Get-ChildItem -Path cert:\LocalMachine\My | Where-Object {($_.Subject-eq "CN=mycert") }
 Protect-GuestConfigurationPackage -Path .\package\AuditWindowsService\AuditWindowsService.zip -Certificate $Cert -Verbose
 ```
 
-Parametry polecenia cmdlet `Protect-GuestConfigurationPackage`:
+Parametry polecenia `Protect-GuestConfigurationPackage` cmdlet:
 
-- **Ścieżka**: pełna ścieżka pakietu konfiguracji gościa.
-- **Certyfikat**: certyfikat podpisywania kodu w celu podpisania pakietu. Ten parametr jest obsługiwany tylko podczas podpisywania zawartości dla systemu Windows.
-- **PrivateGpgKeyPath**: Private GPG Key Path. Ten parametr jest obsługiwany tylko w przypadku podpisywania zawartości dla systemu Linux.
-- **PublicGpgKeyPath**: Public GPG Key Path. Ten parametr jest obsługiwany tylko w przypadku podpisywania zawartości dla systemu Linux.
+- **Ścieżka:** Pełna ścieżka pakietu konfiguracji gościa.
+- **Certyfikat**: Certyfikat podpisywania kodu do podpisania pakietu. Ten parametr jest obsługiwany tylko podczas podpisywania zawartości dla systemu Windows.
 
-Agent GuestConfiguration oczekuje, że klucz publiczny certyfikatu ma być obecny w "zaufanych głównych urzędach certyfikacji" na maszynach z systemem Windows i w ścieżce `/usr/local/share/ca-certificates/extra` na komputerach z systemem Linux. Aby węzeł mógł zweryfikować podpisaną zawartość, przed zastosowaniem zasad niestandardowych Zainstaluj klucz publiczny certyfikatu na komputerze. Ten proces można wykonać przy użyciu dowolnej techniki wewnątrz maszyny wirtualnej lub za pomocą Azure Policy. Przykładowy szablon jest [dostępny tutaj](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-push-certificate-windows).
-Zasady dostępu Key Vault muszą zezwalać dostawcy zasobów obliczeniowych na dostęp do certyfikatów podczas wdrożeń. Aby uzyskać szczegółowe instrukcje, zobacz [konfigurowanie Key Vault dla maszyn wirtualnych w programie Azure Resource Manager](../../../virtual-machines/windows/key-vault-setup.md#use-templates-to-set-up-key-vault).
+Agent konfiguracji guestconfiguration oczekuje, że klucz publiczny certyfikatu będzie obecny w "Zaufanych urzędach certyfikacji głównej" na komputerach z systemem Windows i w ścieżce `/usr/local/share/ca-certificates/extra` na komputerach z systemem Linux. Aby węzeł weryfikował podpisaną zawartość, zainstaluj klucz publiczny certyfikatu na komputerze przed zastosowaniem zasad niestandardowych. Ten proces można wykonać przy użyciu dowolnej techniki wewnątrz maszyny Wirtualnej lub przy użyciu zasad platformy Azure. Przykładowy szablon znajduje [się tutaj](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-push-certificate-windows).
+Zasady dostępu usługi Key Vault muszą umożliwiać dostawcy zasobów obliczeniowych dostęp do certyfikatów podczas wdrożeń. Aby uzyskać szczegółowe kroki, zobacz [Konfigurowanie magazynu kluczy dla maszyn wirtualnych w usłudze Azure Resource Manager](../../../virtual-machines/windows/key-vault-setup.md#use-templates-to-set-up-key-vault).
 
-Poniżej znajduje się przykład eksportowania klucza publicznego z certyfikatu podpisywania w celu zaimportowania go do maszyny.
+Poniżej przedstawiono przykład wyeksportowania klucza publicznego z certyfikatu podpisywania w celu zaimportowania go do komputera.
 
 ```azurepowershell-interactive
 $Cert = Get-ChildItem -Path cert:\LocalMachine\My | Where-Object {($_.Subject-eq "CN=mycert3") } | Select-Object -First 1
 $Cert | Export-Certificate -FilePath "$env:temp\DscPublicKey.cer" -Force
 ```
 
-Odpowiednie informacje na temat tworzenia kluczy GPG do użycia z maszynami z systemem Linux są dostępne w artykule w witrynie GitHub, [generując nowy klucz GPG](https://help.github.com/en/articles/generating-a-new-gpg-key).
+Po opublikowaniu zawartości dołącz tag o `GuestConfigPolicyCertificateValidation` nazwie `enabled` i wartości do wszystkich maszyn wirtualnych, na których powinno być wymagane podpisywanie kodu. Zobacz [przykłady tagów,](../samples/built-in-policies.md#tags) jak tagi mogą być dostarczane na dużą skalę przy użyciu usługi Azure Policy. Po wprowadzeniu tego tagu definicja zasad `New-GuestConfigurationPolicy` wygenerowana przy użyciu polecenia cmdlet umożliwia wymaganie za pośrednictwem rozszerzenia konfiguracji gościa.
 
-Po opublikowaniu zawartości Dodaj tag o nazwie `GuestConfigPolicyCertificateValidation` i wartości `enabled` do wszystkich maszyn wirtualnych, gdzie podpisywanie kodu powinno być wymagane. Zapoznaj się z [przykładami znaczników](../samples/built-in-policies.md#tags) , w jaki sposób można dostarczyć Tagi na dużą skalę przy użyciu Azure Policy. Po zastosowaniu tego tagu definicja zasad wygenerowana przy użyciu polecenia cmdlet `New-GuestConfigurationPolicy` włącza wymaganie za pośrednictwem rozszerzenia konfiguracji gościa.
+## <a name="troubleshooting-guest-configuration-policy-assignments-preview"></a>Rozwiązywanie problemów z przypisaniami zasad konfiguracji gościa (wersja zapoznawcza)
 
-## <a name="troubleshooting-guest-configuration-policy-assignments-preview"></a>Rozwiązywanie problemów z przypisaniami zasad konfiguracji gościa (Podgląd)
+Narzędzie jest dostępne w wersji zapoznawczej, aby pomóc w rozwiązywaniu problemów z przypisaniami konfiguracji gościa usługi Azure Policy. Narzędzie znajduje się w wersji zapoznawczej i zostało opublikowane w Galerii programu PowerShell jako narzędzie do rozwiązywania problemów [z konfiguracją gościa](https://www.powershellgallery.com/packages/GuestConfigurationTroubleshooter/)o nazwie modułu.
 
-Narzędzie jest dostępne w wersji zapoznawczej, aby pomóc w rozwiązywaniu problemów z przypisaniami konfiguracji gościa Azure Policy. Narzędzie jest w wersji zapoznawczej i zostało opublikowane w Galeria programu PowerShell jako nazwa modułu [Narzędzia do rozwiązywania problemów z konfiguracją gościa](https://www.powershellgallery.com/packages/GuestConfigurationTroubleshooter/).
-
-Aby uzyskać więcej informacji na temat poleceń cmdlet w tym narzędziu, użyj polecenia Get-Help w programie PowerShell, aby wyświetlić wbudowane wskazówki. Ponieważ narzędzie pobiera częste aktualizacje, to najlepszy sposób uzyskiwania najnowszych informacji.
+Aby uzyskać więcej informacji na temat poleceń cmdlet w tym narzędziu, użyj polecenia Get-Help w programie PowerShell, aby wyświetlić wbudowane wskazówki. Ponieważ narzędzie jest coraz częste aktualizacje, jest to najlepszy sposób, aby uzyskać najnowsze informacje.
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Dowiedz się więcej na temat inspekcji maszyn wirtualnych z [konfiguracją gościa](../concepts/guest-configuration.md).
-- Dowiedz się, jak [programowo utworzyć zasady](programmatically-create.md).
-- Dowiedz się, jak [uzyskać dane zgodności](get-compliance-data.md).
+- Dowiedz się więcej o inspekcji maszyn wirtualnych za pomocą [konfiguracji gościa](../concepts/guest-configuration.md).
+- Dowiedz się, jak [programowo tworzyć zasady](programmatically-create.md).
+- Dowiedz się, jak [uzyskać dane dotyczące zgodności](get-compliance-data.md).

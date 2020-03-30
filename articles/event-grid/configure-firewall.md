@@ -1,6 +1,6 @@
 ---
-title: Konfigurowanie zapory IP dla tematów Azure Event Grid lub domen (wersja zapoznawcza)
-description: W tym artykule opisano sposób konfigurowania ustawień zapory dla Event Grid tematów lub domen.
+title: Konfigurowanie zapory IP dla tematów lub domen usługi Azure Event Grid (wersja zapoznawcza)
+description: W tym artykule opisano sposób konfigurowania ustawień zapory dla tematów lub domen w siatce zdarzeń.
 services: event-grid
 author: spelluru
 ms.service: event-grid
@@ -8,53 +8,53 @@ ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: spelluru
 ms.openlocfilehash: b195872ca1002970fa96ae133d5eb47a9267796d
-ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79299870"
 ---
-# <a name="configure-ip-firewall-for-azure-event-grid-topics-or-domains-preview"></a>Konfigurowanie zapory IP dla tematów Azure Event Grid lub domen (wersja zapoznawcza)
-Domyślnie temat i domena są dostępne z Internetu, o ile żądanie zawiera prawidłowe uwierzytelnianie i autoryzację. Za pomocą zapory IP można ograniczyć ją do tylko zestawu adresów IPv4 lub zakresów adresów IPv4 w notacji [CIDR (bez klas routingu między domenami)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) . Wydawcy pochodzące z dowolnego innego adresu IP będą odrzucani i otrzymają odpowiedź 403 (zabroniony). Aby uzyskać więcej informacji na temat funkcji zabezpieczeń sieci obsługiwanych przez Event Grid, zobacz [zabezpieczenia sieci dla Event Grid](network-security.md).
+# <a name="configure-ip-firewall-for-azure-event-grid-topics-or-domains-preview"></a>Konfigurowanie zapory IP dla tematów lub domen usługi Azure Event Grid (wersja zapoznawcza)
+Domyślnie temat i domena są dostępne z Internetu, o ile żądanie jest wyposażone w prawidłowe uwierzytelnianie i autoryzację. Zaporą IP można ją ograniczyć do tylko zestawu adresów IPv4 lub zakresów adresów IPv4 w notacji [CIDR (Classless Inter-Domain Routing).](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) Wydawcy pochodzący z innego adresu IP zostaną odrzuceni i otrzymają odpowiedź 403 (zabronione). Aby uzyskać więcej informacji na temat funkcji zabezpieczeń sieci obsługiwanych przez siatkę zdarzeń, zobacz [Zabezpieczenia sieci dla siatki zdarzeń](network-security.md).
 
-W tym artykule opisano sposób konfigurowania ustawień zapory adresów IP dla tematów Azure Event Grid lub domen.
+W tym artykule opisano sposób konfigurowania ustawień zapory IP dla tematów lub domen usługi Azure Event Grid.
 
 ## <a name="use-azure-portal"></a>Korzystanie z witryny Azure Portal
-W tej sekcji pokazano, jak za pomocą Azure Portal utworzyć reguły zapory dla ruchu przychodzącego IP. Kroki przedstawione w tej sekcji dotyczą tematów. Możesz użyć podobnych kroków, aby utworzyć reguły protokołu IP dla ruchu przychodzącego dla **domen**. 
+W tej sekcji pokazano, jak używać witryny Azure Portal do tworzenia reguł zapory przychodzącej zapory IP. Kroki przedstawione w tej sekcji są dla tematów. Podobne kroki można wykonać do tworzenia reguł przychodzących **adresów**IP dla domen . 
 
-1. W [Azure Portal](https://portal.azure.com)przejdź do tematu lub domeny w usłudze Event Grid i przejdź do karty **Sieć** .
-2. Wybierz opcję **sieci publiczne** , aby zezwolić na dostęp do zasobu do wszystkich sieci, w tym Internetu. 
+1. W [witrynie Azure portal](https://portal.azure.com)przejdź do tematu lub domeny siatki zdarzeń i przełącz się do karty **Sieć.**
+2. Wybierz **sieci publiczne,** aby umożliwić dostęp do zasobu całej sieci, w tym Internetu. 
 
-    Ruch można ograniczyć przy użyciu reguł zapory opartych na protokole IP. Określ pojedynczy adres IPv4 lub zakres adresów IP w notacji CIDR (Classless Inter-Domain Routing). 
+    Ruch można ograniczyć przy użyciu reguł zapory opartej na protokãoła IP. Określ pojedynczy adres IPv4 lub zakres adresów IP w notacji CIDR (Classless inter-domain routingu). 
 
-    ![Strona sieci publiczne](./media/configure-firewall/public-networks-page.png)
-3. Wybierz **tylko prywatne punkty końcowe** , aby zezwolić na dostęp do tego zasobu tylko prywatnym połączeniem punktu końcowego. Za pomocą karty **połączenia prywatne punktu końcowego** na tej stronie można zarządzać połączeniami. 
+    ![Strona sieci publicznych](./media/configure-firewall/public-networks-page.png)
+3. Wybierz **prywatne punkty końcowe tylko,** aby zezwolić tylko na prywatne połączenia punktów końcowych, aby uzyskać dostęp do tego zasobu. Użyj **karty Prywatne połączenia punktów końcowych** na tej stronie, aby zarządzać połączeniami. 
 
-    ![Strona sieci publiczne](./media/configure-firewall/private-endpoints-page.png)
+    ![Strona sieci publicznych](./media/configure-firewall/private-endpoints-page.png)
 4. Wybierz pozycję **Zapisz** na pasku narzędzi. 
 
 
 
 ## <a name="use-azure-cli"></a>Interfejs wiersza polecenia platformy Azure
-W tej sekcji pokazano, jak za pomocą poleceń interfejsu wiersza polecenia platformy Azure utworzyć tematy z regułami adresów IP dla ruchu przychodzącego. Kroki przedstawione w tej sekcji dotyczą tematów. Możesz użyć podobnych kroków, aby utworzyć reguły protokołu IP dla ruchu przychodzącego dla **domen**. 
+W tej sekcji pokazano, jak używać poleceń interfejsu wiersza polecenia platformy Azure do tworzenia tematów z przychodzącymi regułami IP. Kroki przedstawione w tej sekcji są dla tematów. Podobne kroki można wykonać do tworzenia reguł przychodzących **adresów**IP dla domen . 
 
 
-### <a name="enable-public-network-access-for-an-existing-topic"></a>Włącz dostęp do sieci publicznej dla istniejącego tematu
-Domyślnie dostęp do sieci publicznej jest włączony dla tematów i domen. Ruch można ograniczyć przez skonfigurowanie reguł zapory adresów IP dla ruchu przychodzącego. 
+### <a name="enable-public-network-access-for-an-existing-topic"></a>Włączanie dostępu do sieci publicznej dla istniejącego tematu
+Domyślnie dostęp do sieci publicznej jest włączony dla tematów i domen. Ruch można ograniczyć, konfigurując przychodzące reguły zapory IP. 
 
 ```azurecli-interactive
 az rest --method patch --uri "/subscriptions/<AZURE SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.EventGrid/topics/<EVENT GRID TOPIC NAME>?api-version=2020-04-01-preview" --body "{\""properties\"": {\""publicNetworkAccess\"": \""Enabled\""}}"
 ```
 
-### <a name="disable-public-network-access-for-an-existing-topic"></a>Wyłącz dostęp do sieci publicznej dla istniejącego tematu
-Gdy dostęp do sieci publicznej jest wyłączony dla tematu lub domeny, ruch przez publiczny Internet nie jest dozwolony. Tylko połączenia z prywatnymi punktami końcowymi będą mogły uzyskiwać dostęp do tych zasobów. 
+### <a name="disable-public-network-access-for-an-existing-topic"></a>Wyłączanie dostępu do sieci publicznej dla istniejącego tematu
+Gdy dostęp do sieci publicznej jest wyłączony dla tematu lub domeny, ruch za pośrednictwem publicznego Internetu jest niedozwolony. Dostęp do tych zasobów będą mogły uzyskać tylko połączenia prywatnych punktów końcowych. 
 
 ```azurecli-interactive
 az rest --method patch --uri "/subscriptions/<AZURE SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.EventGrid/topics/<EVENT GRID TOPIC NAME>?api-version=2020-04-01-preview" --body "{\""properties\"": {\""publicNetworkAccess\"": \""Disabled\""}}"
 ```
 
-### <a name="create-topic-with-inbound-ip-rules"></a>Utwórz temat z regułami adresów IP dla ruchu przychodzącego
-Następujące przykładowe polecenie interfejsu wiersza polecenia tworzy temat siatka zdarzeń z regułami adresów IP dla ruchu przychodzącego w jednym kroku. 
+### <a name="create-topic-with-inbound-ip-rules"></a>Tworzenie tematu z przychodzącymi regułami ip
+Następujące przykładowe polecenie interfejsu wiersza polecenia tworzy temat siatki zdarzeń z przychodzącymi regułami IP w jednym kroku. 
 
 ```azurecli-interactive
 az rest --method put \
@@ -62,8 +62,8 @@ az rest --method put \
     --body {\""location\"":\""<LOCATION>\", \""properties\"" :{\""publicNetworkAccess\"":\""enabled\"",\""InboundIpRules\"": [ {\""ipMask\"": \""<IP ADDRESS or IP ADDRESS RANGE in CIDR notation>\"", \""action\"": \""allow\""} ]}}
 ```
 
-### <a name="create-topic-first-and-then-add-inbound-ip-rules"></a>Najpierw utwórz temat, a następnie Dodaj reguły przychodzącego adresu IP
-Ten przykład tworzy najpierw temat usługi Event Grid, a następnie dodaje reguły adresów IP dla ruchu przychodzącego dla tematu w osobnym poleceniu. Aktualizuje także reguły protokołu IP dla ruchu przychodzącego, które zostały ustawione w drugim poleceniu. 
+### <a name="create-topic-first-and-then-add-inbound-ip-rules"></a>Najpierw utwórz temat, a następnie dodaj przychodzące reguły ip
+W tym przykładzie najpierw tworzy temat siatki zdarzeń, a następnie dodaje przychodzące reguły IP dla tematu w osobnym poleceniu. Aktualizuje również przychodzące reguły IP, które zostały ustawione w drugim poleceniu. 
 
 ```azurecli-interactive
 
@@ -85,17 +85,17 @@ az rest --method put \
 
 
 ## <a name="use-powershell"></a>Korzystanie z programu PowerShell
-W tej sekcji pokazano, jak za pomocą poleceń Azure PowerShell utworzyć tematy Azure Event Grid z regułami zapory protokołu IP dla ruchu przychodzącego. Kroki przedstawione w tej sekcji dotyczą tematów. Możesz użyć podobnych kroków, aby utworzyć reguły protokołu IP dla ruchu przychodzącego dla **domen**. 
+W tej sekcji pokazano, jak używać poleceń programu Azure PowerShell do tworzenia tematów usługi Azure Event Grid z przychodzącymi regułami zapory IP. Kroki przedstawione w tej sekcji są dla tematów. Podobne kroki można wykonać do tworzenia reguł przychodzących **adresów**IP dla domen . 
 
 ### <a name="prerequisite"></a>Wymagania wstępne
-Postępuj zgodnie z instrukcjami, [Aby utworzyć aplikację usługi Azure AD i nazwę główną usługi, która może uzyskiwać dostęp do zasobów](../active-directory/develop/howto-create-service-principal-portal.md) w celu utworzenia aplikacji Azure Active Directory i zanotować następujące wartości:
+Postępuj zgodnie z instrukcjami [dotyczącymi jak: Użyj portalu, aby utworzyć aplikację i jednostkę usługi Azure AD, która może uzyskiwać dostęp](../active-directory/develop/howto-create-service-principal-portal.md) do zasobów w celu utworzenia aplikacji usługi Azure Active Directory i zanotowania następujących wartości:
 
 - Identyfikator katalogu (dzierżawcy)
 - Identyfikator aplikacji (klienta)
-- Wpis tajny aplikacji (klienta)
+- Klucz tajny aplikacji (klienta)
 
-### <a name="prepare-token-and-headers-for-rest-api-calls"></a>Przygotuj token i nagłówki dla wywołań interfejsu API REST 
-Uruchom następujące polecenia dotyczące wymagań wstępnych, aby uzyskać token uwierzytelniania do użycia z wywołaniami interfejsu API REST oraz informacje o autoryzacji i innych nagłówkach. 
+### <a name="prepare-token-and-headers-for-rest-api-calls"></a>Przygotowywanie tokenu i nagłówków dla wywołań interfejsu API REST 
+Uruchom następujące polecenia wymagane, aby uzyskać token uwierzytelniania do użycia z wywołaniami interfejsu API REST i autoryzacji i innych informacji nagłówka. 
 
 ```azurepowershell-interactive
 # replace <CLIENT ID> and <CLIENT SECRET>
@@ -113,8 +113,8 @@ $Headers.Add("Authorization","$($Token.token_type) "+ " " + "$($Token.access_tok
 $Headers.Add("Content-Type","application/json")
 ```
 
-### <a name="enable-public-network-access-for-an-existing-topic"></a>Włącz dostęp do sieci publicznej dla istniejącego tematu
-Domyślnie dostęp do sieci publicznej jest włączony dla tematów i domen. Ruch można ograniczyć przez skonfigurowanie reguł zapory adresów IP dla ruchu przychodzącego. 
+### <a name="enable-public-network-access-for-an-existing-topic"></a>Włączanie dostępu do sieci publicznej dla istniejącego tematu
+Domyślnie dostęp do sieci publicznej jest włączony dla tematów i domen. Ruch można ograniczyć, konfigurując przychodzące reguły zapory IP. 
 
 ```azurepowershell-interactive
 $body = @{"properties"=@{"publicNetworkAccess"="enabled"}} | ConvertTo-Json -Depth 5
@@ -126,8 +126,8 @@ Invoke-RestMethod -Method 'Patch' `
     | ConvertTo-Json -Depth 5
 ```
 
-### <a name="disable-public-network-access-for-an-existing-topic"></a>Wyłącz dostęp do sieci publicznej dla istniejącego tematu
-Gdy dostęp do sieci publicznej jest wyłączony dla tematu lub domeny, ruch przez publiczny Internet nie jest dozwolony. Tylko połączenia z prywatnymi punktami końcowymi będą mogły uzyskiwać dostęp do tych zasobów. 
+### <a name="disable-public-network-access-for-an-existing-topic"></a>Wyłączanie dostępu do sieci publicznej dla istniejącego tematu
+Gdy dostęp do sieci publicznej jest wyłączony dla tematu lub domeny, ruch za pośrednictwem publicznego Internetu jest niedozwolony. Dostęp do tych zasobów będą mogły uzyskać tylko połączenia prywatnych punktów końcowych. 
 
 ```azurepowershell-interactive
 $body = @{"properties"=@{"publicNetworkAccess"="disabled"}} | ConvertTo-Json -Depth 5
@@ -139,7 +139,7 @@ Invoke-RestMethod -Method 'Patch' `
     | ConvertTo-Json -Depth 5
 ```
 
-### <a name="create-an-event-grid-topic-with-inbound-rules-in-one-step"></a>Tworzenie tematu siatki zdarzeń z regułami ruchu przychodzącego w jednym kroku
+### <a name="create-an-event-grid-topic-with-inbound-rules-in-one-step"></a>Tworzenie tematu siatki zdarzeń z regułami przychodzącymi w jednym kroku
 
 ```azurepowershell-interactive
 
@@ -160,7 +160,7 @@ Invoke-RestMethod -Method 'Get' `
 ```
 
 
-### <a name="create-event-grid-topic-first-and-then-add-inbound-ip-rules"></a>Utwórz najpierw temat z siatką zdarzeń, a następnie Dodaj reguły przychodzącego adresu IP
+### <a name="create-event-grid-topic-first-and-then-add-inbound-ip-rules"></a>Najpierw utwórz temat siatki zdarzeń, a następnie dodaj przychodzące reguły ip
 
 ```azurepowershell-interactive
 
@@ -198,6 +198,6 @@ Invoke-RestMethod -Method 'Get'
 
 ## <a name="next-steps"></a>Następne kroki
 
-* Aby uzyskać informacje na temat monitorowania dostarczania zdarzeń, zobacz [monitorowanie Event Grid dostarczania komunikatów](monitor-event-delivery.md).
-* Aby uzyskać więcej informacji na temat klucza uwierzytelniania, zobacz [Event Grid zabezpieczenia i uwierzytelnianie](security-authentication.md).
-* Aby uzyskać więcej informacji na temat tworzenia subskrypcji Azure Event Grid, zobacz [Event Grid schematu subskrypcji](subscription-creation-schema.md).
+* Aby uzyskać informacje dotyczące monitorowania dostaw zdarzeń, zobacz [Monitorowanie dostarczania komunikatów w sieci zdarzeń](monitor-event-delivery.md).
+* Aby uzyskać więcej informacji na temat klucza uwierzytelniania, zobacz [Zabezpieczenia i uwierzytelnianie w siatce zdarzeń](security-authentication.md).
+* Aby uzyskać więcej informacji na temat tworzenia subskrypcji usługi Azure Event Grid, zobacz [schemat subskrypcji usługi Event Grid](subscription-creation-schema.md).

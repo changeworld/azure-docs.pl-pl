@@ -1,6 +1,6 @@
 ---
-title: Jak skonfigurować komputer dla Programowanie przy użyciu platformy .NET usługi Media Services
-description: Dowiedz się więcej o wymaganiach wstępnych usługi Media Services za pomocą zestawu Media Services SDK dla platformy .NET. Poznasz również sposób tworzenia aplikacji programu Visual Studio.
+title: Jak skonfigurować komputer do tworzenia usług multimedialnych za pomocą platformy .NET
+description: Dowiedz się więcej o wymaganiach wstępnych dla usługi Media Services przy użyciu sdk usług multimedialnych dla platformy .NET. Dowiedz się również, jak utworzyć aplikację programu Visual Studio.
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -15,57 +15,57 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: 51fffbd170daecfec6fcea95caa0526e6d881407
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "64724119"
 ---
-# <a name="media-services-development-with-net"></a>Projektowanie usługi Media Services przy użyciu platformy .NET 
+# <a name="media-services-development-with-net"></a>Program rozwoju usługi Media Services z usługą .NET 
 
 > [!NOTE]
-> Do usługi Media Services w wersji 2 nie są już dodawane żadne nowe funkcje. <br/>Zapoznaj się z najnowszą wersją, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Zobacz też [wskazówek dotyczących migracji od v2 do v3](../latest/migrate-from-v2-to-v3.md)
+> Do usługi Media Services w wersji 2 nie są już dodawane żadne nowe funkcje. <br/>Sprawdź najnowszą wersję usługi [Media Services w wersji 3](https://docs.microsoft.com/azure/media-services/latest/). Zobacz też [wskazówki dotyczące migracji z wersji 2 do v3](../latest/migrate-from-v2-to-v3.md)
 
-W tym artykule omówiono sposób rozpoczęcia tworzenia aplikacji usługi Media Services przy użyciu platformy .NET.
+W tym artykule omówiono sposób uruchamiania tworzenia aplikacji usługi Media Services przy użyciu platformy .NET.
 
-**Usługi Azure Media Services .NET SDK** biblioteki pozwala programować przy użyciu usługi Media Services przy użyciu platformy .NET. Aby jeszcze bardziej ułatwiał tworzyć aplikacje za pomocą platformy .NET, **rozszerzenia SDK .NET usługi Azure Media Services** podano biblioteki. Ta biblioteka zawiera zestaw metod rozszerzeń i funkcji pomocnika, które upraszczają kod .NET. Zarówno biblioteki są dostępne za pośrednictwem **NuGet** i **GitHub**.
+Biblioteka **zestawów SDK usługi Azure Media Services .NET** umożliwia program przeciwko usługie Media Services przy użyciu platformy .NET. Aby jeszcze bardziej ułatwić tworzenie za pomocą platformy .NET, dostępna jest biblioteka **rozszerzeń SDK usługi Azure Media Services .NET.** Ta biblioteka zawiera zestaw metod rozszerzenia i funkcje pomocnicze, które upraszczają kod .NET. Obie biblioteki są dostępne za pośrednictwem **NuGet** i **GitHub.**
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-* Konto usługi Media Services w nowej lub istniejącej subskrypcji platformy Azure. Zapoznaj się z artykułem [sposób tworzenia konta usługi Media Services](media-services-portal-create-account.md).
-* Operating Systems (Systemy operacyjne): System Windows 10, Windows 7, Windows 2008 R2 lub Windows 8.
-* .NET framework 4.5 lub nowszej.
+* Konto usługi Media Services w nowej lub istniejącej subskrypcji platformy Azure. Zobacz artykuł [Jak utworzyć konto usługi Media Services](media-services-portal-create-account.md).
+* Systemy operacyjne: Windows 10, Windows 7, Windows 2008 R2 lub Windows 8.
+* .NET Framework 4.5 lub nowszych.
 * Program Visual Studio.
 
 ## <a name="create-and-configure-a-visual-studio-project"></a>Tworzenie i konfigurowanie projektu programu Visual Studio
-W tej sekcji pokazano, jak utworzyć projekt w programie Visual Studio i skonfigurować go do tworzenia usługi Media Services.  W tym przypadku projekt jest C# Windows aplikacji konsoli, ale te same kroki instalacji, pokazano poniżej dotyczą innych rodzajów projektów można utworzyć aplikacji usługi Media Services (na przykład aplikacji Windows Forms lub aplikacji internetowej ASP.NET).
+W tej sekcji pokazano, jak utworzyć projekt w programie Visual Studio i skonfigurować go do programowania usługi Media Services.  W takim przypadku projekt jest aplikacją konsoli systemu Windows w języku C#, ale te same kroki konfiguracji przedstawione w tym miejscu dotyczą innych typów projektów, które można utworzyć dla aplikacji usługi Media Services (na przykład aplikacji Windows Forms lub ASP.NET aplikacji sieci Web).
 
-W tej sekcji pokazano, jak używać **NuGet** można dodać rozszerzenia zestawu SDK .NET usługi Media Services i inne zależne biblioteki.
+W tej sekcji pokazano, jak używać **nuget** do dodawania rozszerzeń SDK usługi Media Services .NET i innych bibliotek zależnych.
 
-Alternatywnie, można uzyskać najnowsze elementy Media Services .NET SDK z usługi GitHub ([github.com/Azure/azure-sdk-for-media-services](https://github.com/Azure/azure-sdk-for-media-services) lub [github.com/Azure/azure-sdk-for-media-services-extensions](https://github.com/Azure/azure-sdk-for-media-services-extensions)), a następnie skompilować rozwiązanie i dodaj odwołania do projektu klienta. Wszystkie niezbędne zależności Pobierz pobrane i wyodrębnione automatycznie.
+Alternatywnie można uzyskać najnowsze bity SDK usługi Media Services .NET z usługi GitHub[(github.com/Azure/azure-sdk-for-media-services](https://github.com/Azure/azure-sdk-for-media-services) lub [github.com/Azure/azure-sdk-for-media-services-extensions](https://github.com/Azure/azure-sdk-for-media-services-extensions)), utworzyć rozwiązanie i dodać odwołania do projektu klienta. Wszystkie niezbędne zależności są pobierane i wyodrębniane automatycznie.
 
-1. Utwórz nową aplikację konsoli języka C# w programie Visual Studio. Wprowadź **nazwa**, **lokalizacji**, i **Nazwa rozwiązania**, a następnie kliknij przycisk OK.
+1. Utwórz nową aplikację konsoli języka C# w programie Visual Studio. Wprowadź **nazwę,** **lokalizację**i **nazwę rozwiązania**, a następnie kliknij przycisk OK.
 2. Skompiluj rozwiązanie.
-3. Użyj **NuGet** na zainstalowanie i dodanie **rozszerzenia SDK .NET usługi Azure Media Services** (**windowsazure.mediaservices.extensions**). Podczas instalacji tego pakietu instalowany jest również zestaw **.NET SDK usługi Media Services** oraz dodawane są wszystkie inne wymagane zależności.
+3. Użyj **nuGet,** aby zainstalować i dodać **rozszerzenia SDK usługi Azure Media Services .NET** **(windowsazure.mediaservices.extensions).** Podczas instalacji tego pakietu instalowany jest również zestaw **.NET SDK usługi Media Services** oraz dodawane są wszystkie inne wymagane zależności.
    
-    Upewnij się, że masz najnowszą wersję zainstalowanego Menedżera NuGet. Aby uzyskać więcej informacji i instalacji instrukcji, zobacz [NuGet](https://nuget.codeplex.com/).
+    Upewnij się, że masz zainstalowaną najnowszą wersję programu NuGet. Aby uzyskać więcej informacji i instrukcje instalacji, zobacz [NuGet](https://nuget.codeplex.com/).
 
-    1. W Eksploratorze rozwiązań kliknij prawym przyciskiem myszy nazwę projektu, a następnie wybierz **Zarządzaj pakietami NuGet**.
+    1. W Eksploratorze rozwiązań kliknij prawym przyciskiem myszy nazwę projektu i wybierz polecenie **Zarządzaj pakietami NuGet**.
 
     2. Zostanie wyświetlone okno dialogowe Zarządzanie pakietami NuGet.
 
-    3. W galerii w trybie Online, wyszukiwanie rozszerzeń MediaServices platformy Azure, wybierz **rozszerzenia SDK .NET usługi Azure Media Services** (**windowsazure.mediaservices.extensions**), a następnie kliknij przycisk  **Zainstaluj** przycisku.
+    3. W galerii Online wyszukaj rozszerzenia usługi Azure MediaServices, wybierz pozycję **Rozszerzenia SDK usługi Azure Media Services** **(windowsazure.mediaservices.extensions),** a następnie kliknij przycisk **Zainstaluj.**
    
-    4. Projekt jest zmodyfikowany i odwołania do rozszerzenia SDK .NET usługi Media Services, Media Services .NET SDK i inne zależne zestawy są dodawane.
-4. Aby wspierać bardziej przejrzyste środowisko programistyczne, należy rozważyć włączenie, przywracanie pakietów NuGet. Aby uzyskać więcej informacji, zobacz [Przywracanie pakietów NuGet "](https://docs.nuget.org/consume/package-restore).
-5. Dodaj odwołanie do **System.Configuration** zestawu. Ten zestaw zawiera System.Configuration. **ConfigurationManager** klasę, która umożliwia dostęp do plików konfiguracji (np. App.config).
+    4. Projekt jest modyfikowany i dodawane są odwołania do rozszerzeń SDK usługi Media Services .NET, programu Media Services .NET SDK i innych zestawów zależnych.
+4. Aby promować środowisko programistyczne czystsze, należy rozważyć włączenie przywracania pakietu NuGet. Aby uzyskać więcej informacji, zobacz [NuGet Package Restore"](https://docs.nuget.org/consume/package-restore).
+5. Dodaj odwołanie do **zestawu System.Configuration.** Ten zestaw zawiera system.Configuration. **ConfigurationManager** klasa, która jest używana do uzyskiwania dostępu do plików konfiguracyjnych (na przykład App.config).
    
-    1. Aby dodać odwołania za pomocą okna dialogowego Zarządzanie odwołania, kliknij prawym przyciskiem myszy nazwę projektu w Eksploratorze rozwiązań. Następnie kliknij przycisk **Dodaj**, następnie kliknij przycisk **odwołanie...** .
+    1. Aby dodać odwołania za pomocą okna dialogowego Zarządzaj odwołaniami, kliknij prawym przyciskiem myszy nazwę projektu w Eksploratorze rozwiązań. Następnie kliknij przycisk **Dodaj**, a następnie kliknij pozycję **Odwołanie...**.
    
-    2. Pojawi się okno dialogowe Zarządzanie odwołania.
-    3. W obszarze zestawy .NET framework, Znajdź i zaznacz zestawu System.Configuration, a następnie naciśnij klawisz **OK**.
-6. Otwórz plik App.config i Dodaj **appSettings** sekcji w pliku. Ustaw wartości, które są wymagane do połączenia interfejsu API usług Media Services. Aby uzyskać więcej informacji, zobacz [dostęp do interfejsu API usługi multimediów Azure przy użyciu uwierzytelniania usługi Azure AD](media-services-use-aad-auth-to-access-ams-api.md). 
+    2. Zostanie wyświetlone okno dialogowe Zarządzaj odwołaniami.
+    3. W obszarze Zestawy .NET framework znajdź i wybierz zestaw System.Configuration i naciśnij **przycisk OK**.
+6. Otwórz plik App.config i dodaj do pliku sekcję **appSettings.** Ustaw wartości potrzebne do nawiązania połączenia z interfejsem API usługi Media Services. Aby uzyskać więcej informacji, zobacz [Dostęp do interfejsu API usługi Azure Media Services za pomocą uwierzytelniania usługi Azure AD](media-services-use-aad-auth-to-access-ams-api.md). 
 
-    Ustaw wartości, które są wymagane do połączenia za pomocą **nazwy głównej usługi** metodę uwierzytelniania.
+    Ustaw wartości, które są potrzebne do nawiązania połączenia przy użyciu metody uwierzytelniania **głównego usługi.**
 
         ```csharp
                 <configuration>
@@ -79,8 +79,8 @@ Alternatywnie, można uzyskać najnowsze elementy Media Services .NET SDK z usł
                 </configuration>
         ```
 
-7. Dodaj **System.Configuration** odwołanie do projektu.
-8. Zastąp istniejące **przy użyciu** instrukcji na początku pliku Program.cs następującym kodem:
+7. Dodaj odwołanie **system.configuration** do projektu.
+8. Zastąp istniejące **instrukcje przy użyciu** na początku pliku Program.cs następującym kodem:
 
     ```csharp      
             using System;
@@ -92,11 +92,11 @@ Alternatywnie, można uzyskać najnowsze elementy Media Services .NET SDK z usł
             using System.Linq;
     ```
 
-    W tym momencie możesz przystąpić do rozpoczęcia tworzenia aplikacji usługi Media Services.    
+    W tym momencie można przystąpić do rozpoczęcia tworzenia aplikacji usługi Media Services.    
 
 ## <a name="example"></a>Przykład
 
-Poniżej przedstawiono krótki przykład, który nawiązuje połączenie z interfejsem API usługi AMS i wymieniono wszystkie dostępne procesory multimediów.
+Oto mały przykład, który łączy się z interfejsem API usługi AMS i wyświetla listę wszystkich dostępnych procesorów multimediów.
 
 ```csharp
         class Program
@@ -133,9 +133,9 @@ Poniżej przedstawiono krótki przykład, który nawiązuje połączenie z inter
             }
  ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Teraz [można połączyć z interfejsem API usługi AMS](media-services-use-aad-auth-to-access-ams-api.md) i Rozpocznij [tworzenia](media-services-dotnet-get-started.md).
+Teraz [możesz połączyć się z interfejsem API AMS](media-services-use-aad-auth-to-access-ams-api.md) i rozpocząć [tworzenie](media-services-dotnet-get-started.md).
 
 
 ## <a name="media-services-learning-paths"></a>Ścieżki szkoleniowe dotyczące usługi Media Services

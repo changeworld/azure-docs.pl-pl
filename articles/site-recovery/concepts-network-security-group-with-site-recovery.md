@@ -1,78 +1,78 @@
 ---
-title: Sieciowe grupy zabezpieczeń usługi Azure Site Recovery | Dokumentacja firmy Microsoft
-description: Opisuje, jak za pomocą sieciowych grup zabezpieczeń usługi Azure Site Recovery na potrzeby odzyskiwania po awarii i migracji
+title: Sieciowe grupy zabezpieczeń z funkcją Azure Site Recovery | Dokumenty firmy Microsoft
+description: W tym artykule opisano, jak używać sieciowych grup zabezpieczeń z funkcją Azure Site Recovery do odzyskiwania po awarii i migracji
 author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: mayg
-ms.openlocfilehash: 0c06283080a4ee51f863714e4c515672299b420d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: eb5ba99133f5726c44164b0ba45b7ab5d94e292f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60773033"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80292358"
 ---
-# <a name="network-security-groups-with-azure-site-recovery"></a>Sieciowe grupy zabezpieczeń usługi Azure Site Recovery
+# <a name="network-security-groups-with-azure-site-recovery"></a>Sieciowe grupy zabezpieczeń z funkcją Azure Site Recovery
 
-Sieciowe grupy zabezpieczeń służą do ograniczania ruchu sieciowego do zasobów w sieci wirtualnej. A [grupy zabezpieczeń sieci (NSG)](../virtual-network/security-overview.md#network-security-groups) zawiera listę reguł zabezpieczeń, które blokują lub zezwalają na ruch sieciowy przychodzący lub wychodzący, w oparciu o źródłowy lub docelowy adres IP, portu i protokołu.
+Sieciowe grupy zabezpieczeń służą do ograniczania ruchu sieciowego do zasobów w sieci wirtualnej. [Sieciowa grupa zabezpieczeń (NSG)](../virtual-network/security-overview.md#network-security-groups) zawiera listę reguł zabezpieczeń, które zezwalają lub odmawiają przychodzącego lub wychodzącego ruchu sieciowego na podstawie źródłowego lub docelowego adresu IP, portu i protokołu.
 
-W modelu wdrażania usługi Resource Manager sieciowe grupy zabezpieczeń można skojarzyć z podsieciami lub poszczególnymi interfejsami sieciowymi. Jeśli sieciowa grupa zabezpieczeń jest skojarzona z podsiecią, te reguły są stosowane do wszystkich zasobów połączonych z tą podsiecią. Ruch można ograniczyć jeszcze bardziej przez również skojarzenie sieciowej grupy zabezpieczeń z poszczególnymi interfejsami sieciowymi w obrębie podsieci, który ma już skojarzonej sieciowej grupy zabezpieczeń.
+W modelu wdrażania Menedżera zasobów sieciowe sieciowe mogą być skojarzone z podsieciami lub poszczególnymi interfejsami sieciowymi. Jeśli sieciowa grupa zabezpieczeń jest skojarzona z podsiecią, te reguły są stosowane do wszystkich zasobów połączonych z tą podsiecią. Ruch może być dodatkowo ograniczony przez skojarzenie sieciowej grupy sieciowej z poszczególnymi interfejsami sieciowymi w podsieci, która ma już skojarzoną sieć sieciową.
 
-W tym artykule opisano, jak za pomocą sieciowych grup zabezpieczeń usługi Azure Site Recovery.
+W tym artykule opisano, jak używać sieciowych grup zabezpieczeń z usługą Azure Site Recovery.
 
-## <a name="using-network-security-groups"></a>Za pomocą sieciowych grup zabezpieczeń
+## <a name="using-network-security-groups"></a>Korzystanie z grup zabezpieczeń sieci
 
-Poszczególnych podsieci może mieć zero lub jedną skojarzonej sieciowej grupy zabezpieczeń. Pojedynczego interfejsu sieciowego może także zawierać wartość zero lub jedną skojarzonej sieciowej grupy zabezpieczeń. Tak efektywnie może mieć ograniczeń podwójną ruchu sieciowego dla maszyny wirtualnej przez skojarzenie sieciowej grupy zabezpieczeń najpierw podsieci i następnie inne sieciowej grupy zabezpieczeń do interfejsu sieciowego maszyny Wirtualnej. Stosowania reguły sieciowej grupy zabezpieczeń w tym przypadku zależy od kierunku ruchu i priorytet reguł zastosowano zabezpieczenia.
+Pojedyncza podsieć może mieć zero lub jedną skojarzoną siecię szkopułców sieciowych. Pojedynczy interfejs sieciowy może również mieć zero lub jeden skojarzony nsg. Dzięki tej rzeczywistości można skutecznie mieć podwójne ograniczenie ruchu dla maszyny wirtualnej, kojarząc nsg najpierw do podsieci, a następnie innego nsg do interfejsu sieciowego maszyny wirtualnej. Stosowanie reguł sieciowej grupy zabezpieczeń w tym przypadku zależy od kierunku ruchu i priorytetu stosowanych reguł bezpieczeństwa.
 
-Należy wziąć pod uwagę prosty przykład z jedną maszyną wirtualną w następujący sposób:
--   Maszyna wirtualna jest umieszczona wewnątrz **podsieci Contoso**.
--   **Podsieci contoso** jest skojarzony z **sieciowa grupa zabezpieczeń podsieci**.
--   Interfejsu sieciowego maszyny Wirtualnej jest również skojarzony **sieciowa grupa zabezpieczeń maszyny Wirtualnej**.
+Rozważmy prosty przykład z jednej maszyny wirtualnej w następujący sposób:
+-    Maszyna wirtualna jest umieszczana wewnątrz podsieci **Contoso**.
+-    **Podsieć Contoso** jest skojarzona z **siecią sieciowej podsieci**.
+-    Interfejs sieciowy maszyny Wirtualnej jest dodatkowo skojarzony z **siecią NSG maszyny Wirtualnej**.
 
-![Sieciowa grupa zabezpieczeń z usługą Site Recovery](./media/concepts-network-security-group-with-site-recovery/site-recovery-with-network-security-group.png)
+![NSG z odzyskiwaniem witryny](./media/concepts-network-security-group-with-site-recovery/site-recovery-with-network-security-group.png)
 
-W tym przykładzie dla ruchu przychodzącego sieciowej grupy zabezpieczeń z podsiecią jest stosowana jako pierwsza. Cały ruch dozwolony przez sieciową grupę zabezpieczeń z podsiecią jest następnie oceniany przez sieciową grupę zabezpieczeń z maszyną Wirtualną. Odwrotna ma zastosowanie dla ruchu wychodzącego z sieciowymi grupami zabezpieczeń maszyny Wirtualnej jest stosowana jako pierwsza. Cały ruch dozwolony przez sieciową grupę zabezpieczeń maszyny Wirtualnej jest następnie oceniany przez sieciową grupę zabezpieczeń w podsieci.
+W tym przykładzie dla ruchu przychodzącego podsieci sieciowej jest oceniane jako pierwszy. Każdy ruch dozwolony za pośrednictwem sieciowej sieciowej podsieci jest następnie oceniany przez sieci nsg maszyny wirtualnej. Odwrotna ma zastosowanie do ruchu wychodzącego, z VM NSG są oceniane jako pierwszy. Każdy ruch dozwolony za pośrednictwem sieciowej sieciowej maszyny Wirtualnej jest następnie oceniany przez siecią sieciowej podsieci.
 
-Umożliwia to szczegółowe reguły aplikacji. Na przykład można zezwolić na dostęp do Internetu dla ruchu przychodzącego do kilku maszyn wirtualnych aplikacji (na przykład frontonu maszyn wirtualnych) w ramach podsieci, ale ograniczyć dostęp do Internetu dla ruchu przychodzącego do innych maszyn wirtualnych (takich jak bazy danych i innych maszyn wirtualnych zaplecza). W takim przypadku można mieć regułę bardziej łagodne na podsieci sieciową grupę zabezpieczeń, dzięki czemu ruch internetowy i ograniczyć dostęp dla konkretnych maszyn wirtualnych przy odmowie dostępu w sieciowej grupie zabezpieczeń maszyny Wirtualnej. Taki sam, mogą być stosowane dla ruchu wychodzącego.
+Pozwala to na szczegółowe aplikacji reguły zabezpieczeń. Na przykład można zezwolić przychodzącemu dostępowi do Internetu na kilka maszyn wirtualnych aplikacji (takich jak maszyny wirtualne frontendu) w podsieci, ale ograniczyć przychodzący dostęp do Internetu do innych maszyn wirtualnych (takich jak bazy danych i innych maszyn wirtualnych wewnętrznej bazy danych). W takim przypadku można mieć bardziej łagodną regułę w podsieci sieciowej sieciowej, zezwalając na ruch internetowy i ograniczyć dostęp do określonych maszyn wirtualnych, odmawiając dostępu na maszynie wirtualnej sieciowej. To samo można zastosować do ruchu wychodzącego.
 
-Podczas konfigurowania tych konfiguracji sieciowej grupy zabezpieczeń, upewnij się, że prawidłowe priorytety są stosowane do [reguły zabezpieczeń](../virtual-network/security-overview.md#security-rules). Reguły są przetwarzane w kolejności priorytetów. Im niższy numer, tym wyższy priorytet, więc te o niższych numerach są przetwarzane przed tymi o wyższych numerach. Kiedy ruch jest zgodny z regułą, przetwarzanie zostaje zatrzymane. W związku z tym żadne istniejące reguły o niższych priorytetach (wyższych numerach), które mają takie same atrybuty jak reguły o wyższych priorytetach, nie będą przetwarzane.
+Podczas konfigurowania takich konfiguracji sieciowej grupy zabezpieczeń należy upewnić się, że do [reguł bezpieczeństwa](../virtual-network/security-overview.md#security-rules)stosowane są odpowiednie priorytety. Reguły są przetwarzane w kolejności priorytetów. Im niższy numer, tym wyższy priorytet, więc te o niższych numerach są przetwarzane przed tymi o wyższych numerach. Kiedy ruch jest zgodny z regułą, przetwarzanie zostaje zatrzymane. W związku z tym żadne istniejące reguły o niższych priorytetach (wyższych numerach), które mają takie same atrybuty jak reguły o wyższych priorytetach, nie będą przetwarzane.
 
-Możesz czasami nie wiedzieć, że grupy zabezpieczeń sieci są stosowane do interfejsu sieciowego i podsieci. Można zweryfikować reguły agregowane stosowane do interfejsu sieciowego, wyświetlając [obowiązujących reguł zabezpieczeń](../virtual-network/virtual-network-network-interface.md#view-effective-security-rules) dla interfejsu sieciowego. Można również użyć [weryfikowanie przepływu protokołu IP](../network-watcher/diagnose-vm-network-traffic-filtering-problem.md) możliwości są dostępne w [Azure Network Watcher](../network-watcher/network-watcher-monitoring-overview.md) do określenia, czy komunikacja jest dozwolona na lub z interfejsem sieciowym. Narzędzie informuje, czy komunikacja jest dozwolona, oraz która reguła zabezpieczeń sieci zezwala lub nie zezwala na ruch.
+Możesz czasami nie wiedzieć, że grupy zabezpieczeń sieci są stosowane do interfejsu sieciowego i podsieci. Reguły zagregowane zastosowane do interfejsu sieciowego można zweryfikować, wyświetlając [skuteczne reguły zabezpieczeń](../virtual-network/virtual-network-network-interface.md#view-effective-security-rules) dla interfejsu sieciowego. Można również użyć możliwości [weryfikacji przepływu IP](../network-watcher/diagnose-vm-network-traffic-filtering-problem.md) w [usłudze Azure Network Watcher,](../network-watcher/network-watcher-monitoring-overview.md) aby określić, czy komunikacja jest dozwolona do lub z interfejsu sieciowego. Narzędzie informuje, czy komunikacja jest dozwolona, oraz która reguła zabezpieczeń sieci zezwala lub nie zezwala na ruch.
 
-## <a name="on-premises-to-azure-replication-with-nsg"></a>Środowiska lokalnego do replikacji platformy Azure z sieciowymi grupami zabezpieczeń
+## <a name="on-premises-to-azure-replication-with-nsg"></a>Lokalna replikacja do platformy Azure za pomocą sieciowej grupy sieciowej
 
-Usługa Azure Site Recovery umożliwia odzyskiwanie po awarii i migracji na platformę Azure dla lokalnych [maszyn wirtualnych funkcji Hyper-V](hyper-v-azure-architecture.md), [maszyn wirtualnych VMware](vmware-azure-architecture.md), i [serwerów fizycznych](physical-azure-architecture.md). Dla całego środowiska lokalnego do platformy Azure scenariuszy dane replikacji są wysyłane do i przechowywane na koncie usługi Azure Storage. Podczas replikacji nie płać opłatami związanymi z maszyny wirtualnej. Po uruchomieniu trybu failover na platformie Azure Site Recovery automatycznie tworzy maszyny wirtualne IaaS platformy Azure.
+Usługa Azure Site Recovery umożliwia odzyskiwanie po awarii i migrację na platformę Azure dla lokalnych [maszyn wirtualnych hyper-V,](hyper-v-azure-architecture.md) [maszyn wirtualnych VMware](vmware-azure-architecture.md)i [serwerów fizycznych.](physical-azure-architecture.md) W przypadku wszystkich scenariuszy lokalnych do platformy Azure dane replikacji są wysyłane do konta usługi Azure Storage i przechowywane na nich. Podczas replikacji nie płacisz żadnych opłat za maszynę wirtualną. Po uruchomieniu pracy awaryjnej na platformie Azure usługa Site Recovery automatycznie tworzy maszyny wirtualne usługi Azure IaaS.
 
-Po utworzeniu maszyn wirtualnych po przejściu w tryb failover Azure sieciowych grup zabezpieczeń może służyć do ograniczania ruchu sieciowego do sieci wirtualnej i maszynach wirtualnych. Usługa Site Recovery nie tworzy sieciowe grupy zabezpieczeń w ramach operacji trybu failover. Zaleca się utworzenie wymaganych sieciowych grup zabezpieczeń platformy Azure, przed rozpoczęciem pracy awaryjnej. Następnie można skojarzyć sieciowych grup zabezpieczeń do przełączone w tryb failover maszyny wirtualne automatycznie podczas pracy w trybie failover przy użyciu zaawansowanych skryptów automatyzacji za pomocą usługi Site Recovery [planów odzyskiwania](site-recovery-create-recovery-plans.md).
+Po utworzeniu maszyn wirtualnych po przetwórz pracy awaryjnej na platformie Azure, sieciowych grup zabezpieczeń można użyć do ograniczenia ruchu sieciowego do sieci wirtualnej i maszyn wirtualnych. Odzysk lokacji nie tworzy grup NSG w ramach operacji pracy awaryjnej. Firma Microsoft zaleca utworzenie wymaganych witryn nsgs platformy Azure przed zainicjowaniem pracy awaryjnej. Następnie można skojarzyć sieciowe sieciowe sieciowych z automatycznymi maszynami wirtualnymi po awarii podczas pracy awaryjnej przy użyciu skryptów automatyzacji z potężnymi [planami odzyskiwania](site-recovery-create-recovery-plans.md)usługi Site Recovery.
 
-Na przykład, jeśli konfiguracja maszyny Wirtualnej po przejściu do trybu failover jest podobny do [przykładowy scenariusz](concepts-network-security-group-with-site-recovery.md#using-network-security-groups) powyższym opisem:
--   Możesz utworzyć **sieci wirtualnej firmy Contoso** i **podsieci Contoso** w ramach planowania dla elementu docelowego regionu świadczenia usługi Azure odzyskiwania po awarii.
--   Możesz również utworzyć i skonfigurować zarówno **sieciowa grupa zabezpieczeń podsieci** także **sieciowa grupa zabezpieczeń maszyny Wirtualnej** jako część tego samego odzyskiwania po awarii planowania.
--   **Sieciowa grupa zabezpieczeń podsieci** może następnie zostać natychmiast skojarzony **podsieci Contoso**, podsieci i sieciowej grupy zabezpieczeń są już dostępne.
--   **Sieciowa grupa zabezpieczeń maszyny Wirtualnej** może być skojarzony z maszyn wirtualnych podczas trybu failover przy użyciu planów odzyskiwania.
+Na przykład jeśli konfiguracja maszyny wirtualnej po pracy awaryjnej jest podobna do [przykładowego scenariusza](concepts-network-security-group-with-site-recovery.md#using-network-security-groups) opisanego powyżej:
+-    Sieć **wirtualną Contoso** i **podsieć Contoso** można utworzyć w ramach planowania odzyskiwania po awarii w docelowym regionie platformy Azure.
+-    Można również utworzyć i skonfigurować zarówno **sieciowe sieciowe podsieci,** jak i **sieć sieciowa maszyny Wirtualnej** jako część tego samego planowania odzyskiwania po awarii.
+-    **Sieciowe sieciowe podsieci** można następnie natychmiast skojarzyć z **podsiecią Contoso**, ponieważ zarówno sieciowej sieciowej sieciowej, jak i podsieci są już dostępne.
+-    **NSG maszyn wirtualnych** może być skojarzony z maszynami wirtualnymi podczas pracy awaryjnej przy użyciu planów odzyskiwania.
 
-Po utworzeniu i skonfigurowaniu sieciowych grup zabezpieczeń zaleca się uruchamianie [testowanie trybu failover](site-recovery-test-failover-to-azure.md) Aby zweryfikować inicjowanych przez skrypty skojarzenia sieciowej grupy zabezpieczeń i łączność maszyn wirtualnych po przejściu do trybu failover.
+Po utworzeniu i skonfigurowaniu grup zabezpieczeń sieciowych zaleca się uruchomienie [testowego trybu failover](site-recovery-test-failover-to-azure.md) w celu zweryfikowania skryptowych skojarzeń sieciowych grup zabezpieczeń i łączności maszyny wirtualnej po pracy awaryjnej.
 
-## <a name="azure-to-azure-replication-with-nsg"></a>Replikacji Azure – Azure z sieciowymi grupami zabezpieczeń
+## <a name="azure-to-azure-replication-with-nsg"></a>Replikacja platformy Azure na platformę Azure z nsg
 
-Usługa Azure Site Recovery umożliwia odzyskiwanie po awarii [maszyn wirtualnych platformy Azure](azure-to-azure-architecture.md). Po włączeniu replikacji dla maszyn wirtualnych platformy Azure, Usługa Site Recovery można utworzyć repliki sieci wirtualnych (w tym podsieci i podsieć bramy) w regionie docelowym i Utwórz wymagane mapowania między źródłem i docelowych, sieciami wirtualnymi. Można również wstępnie utworzyć sieci po stronie docelowej i podsieci i używać tego samego podczas włączania replikacji. Usługa Site Recovery nie tworzy żadnych maszyn wirtualnych na przed region platformy Azure docelowego [trybu failover](azure-to-azure-tutorial-failover-failback.md).
+Usługa Azure Site Recovery umożliwia odzyskiwanie po awarii [maszyn wirtualnych platformy Azure.](azure-to-azure-architecture.md) Podczas włączania replikacji dla maszyn wirtualnych platformy Azure usługa Site Recovery może tworzyć sieci wirtualne replik (w tym podsieci i podsieci bramy) w regionie docelowym i tworzyć wymagane mapowania między źródłowymi i docelowymi sieciami wirtualnymi. Można również wstępnie utworzyć docelowe sieci boczne i podsieci i używać tego samego podczas włączania replikacji. Usługa Site Recovery nie tworzy żadnych maszyn wirtualnych w docelowym regionie platformy Azure przed [przebładaniem w stan failover](azure-to-azure-tutorial-failover-failback.md).
 
-Replikacja maszyny Wirtualnej platformy Azure, upewnij się, że reguły sieciowej grupy zabezpieczeń na region platformy Azure "source" Zezwalaj na [łączności wychodzącej](azure-to-azure-about-networking.md#outbound-connectivity-for-ip-address-ranges) dla ruchu związanego z replikacją. Można też testować i weryfikować tych reguł wymagany przez to [przykładowej konfiguracji sieciowej grupy zabezpieczeń](azure-to-azure-about-networking.md#example-nsg-configuration).
+W przypadku replikacji maszyny wirtualnej platformy Azure upewnij się, że reguły sieciowej grupy danych sieciowych w źródłowym regionie platformy Azure zezwalają na [łączność wychodzącą](azure-to-azure-about-networking.md#outbound-connectivity-using-service-tags) dla ruchu replikacji. Można również przetestować i zweryfikować te wymagane reguły za pomocą tej [przykładowej konfiguracji sieciowej grupy zabezpieczeń](azure-to-azure-about-networking.md#example-nsg-configuration).
 
-Usługa Site Recovery nie tworzy ani nie Replikuj sieciowych grup zabezpieczeń w ramach operacji trybu failover. Zaleca się utworzenie wymaganych grup zabezpieczeń sieci w miejscu docelowym regionem świadczenia usługi Azure, przed rozpoczęciem pracy awaryjnej. Następnie można skojarzyć sieciowych grup zabezpieczeń do przełączone w tryb failover maszyny wirtualne automatycznie podczas pracy w trybie failover przy użyciu zaawansowanych skryptów automatyzacji za pomocą usługi Site Recovery [planów odzyskiwania](site-recovery-create-recovery-plans.md).
+Usługa Site Recovery nie tworzy ani nie replikuje grup NSG w ramach operacji pracy awaryjnej. Firma Microsoft zaleca utworzenie wymaganych grup zabezpieczeń w docelowym regionie platformy Azure przed rozpoczęciem pracy awaryjnej. Następnie można skojarzyć sieciowe sieciowe sieciowych z automatycznymi maszynami wirtualnymi po awarii podczas pracy awaryjnej przy użyciu skryptów automatyzacji z potężnymi [planami odzyskiwania](site-recovery-create-recovery-plans.md)usługi Site Recovery.
 
-Biorąc pod uwagę [przykładowy scenariusz](concepts-network-security-group-with-site-recovery.md#using-network-security-groups) opisanej wcześniej:
--   Usługa Site Recovery można utworzyć repliki **sieci wirtualnej firmy Contoso** i **podsieci Contoso** dla elementu docelowego regionu platformy Azure po włączeniu replikacji dla maszyny Wirtualnej.
--   Można utworzyć żądanego replik **sieciowa grupa zabezpieczeń podsieci** i **sieciowa grupa zabezpieczeń maszyny Wirtualnej** (o nazwie, na przykład **sieciowej grupy zabezpieczeń w podsieci docelowej** i **sieciowej grupy zabezpieczeń docelowej maszyny Wirtualnej**, odpowiednio) w elemencie docelowym regionie platformy Azure, pozwalając na wszelkie dodatkowe reguły wymagane w regionie docelowym.
--   **Sieciowa grupa zabezpieczeń podsieci docelowej** może następnie być natychmiast skojarzoną z podsiecią regionu docelowego, podsieci i sieciowej grupy zabezpieczeń są już dostępne.
--   **Docelowa maszyna wirtualna sieciowej grupy zabezpieczeń** może być skojarzony z maszyn wirtualnych podczas trybu failover przy użyciu planów odzyskiwania.
+Biorąc pod uwagę [przykładowy scenariusz](concepts-network-security-group-with-site-recovery.md#using-network-security-groups) opisany wcześniej:
+-    Usługa Site Recovery może tworzyć repliki sieci **wirtualnej Contoso** i **podsieci Contoso** w docelowym regionie platformy Azure, gdy replikacja jest włączona dla maszyny Wirtualnej.
+-    Można utworzyć żądane repliki **sieciowej sieciowej podsieci** i sieciowej grupy **wirtualnej maszyny wirtualnej** (o nazwie, na przykład **sieciowej sieciowej podsieci docelowej** i **docelowej sieci owej grupy wirtualnej,** odpowiednio) w docelowym regionie platformy Azure, umożliwiając wszelkie dodatkowe reguły wymagane w regionie docelowym.
+-    **Grupa sieciowa podsieci docelowej** może być natychmiast skojarzona z podsiecią regionu docelowego, ponieważ zarówno siecinasku sieciowego, jak i podsieci są już dostępne.
+-    **Docelowa grupa NSG maszyny wirtualnej** może być skojarzona z maszynami wirtualnymi podczas pracy awaryjnej przy użyciu planów odzyskiwania.
 
-Po utworzeniu i skonfigurowaniu sieciowych grup zabezpieczeń zaleca się uruchamianie [testowanie trybu failover](azure-to-azure-tutorial-dr-drill.md) Aby zweryfikować inicjowanych przez skrypty skojarzenia sieciowej grupy zabezpieczeń i łączność maszyn wirtualnych po przejściu do trybu failover.
+Po utworzeniu i skonfigurowaniu grup zabezpieczeń sieciowych zaleca się uruchomienie [testowego trybu failover](azure-to-azure-tutorial-dr-drill.md) w celu zweryfikowania skryptowych skojarzeń sieciowych grup zabezpieczeń i łączności maszyny wirtualnej po pracy awaryjnej.
 
-## <a name="next-steps"></a>Kolejne kroki
--   Dowiedz się więcej o [sieciowych grup zabezpieczeń](../virtual-network/security-overview.md#network-security-groups).
--   Dowiedz się więcej na temat sieciowych grup zabezpieczeń [reguły zabezpieczeń](../virtual-network/security-overview.md#security-rules).
--   Dowiedz się więcej o [obowiązujących reguł zabezpieczeń](../virtual-network/diagnose-network-traffic-filter-problem.md) dla sieciowej grupy zabezpieczeń.
--   Dowiedz się więcej o [planów odzyskiwania](site-recovery-create-recovery-plans.md) do automatyzowania trybu failover w aplikacji.
+## <a name="next-steps"></a>Następne kroki
+-    Dowiedz się więcej o [sieciowych grupach zabezpieczeń](../virtual-network/security-overview.md#network-security-groups).
+-    Dowiedz się więcej o [regułach zabezpieczeń](../virtual-network/security-overview.md#security-rules)sieciowych sieciowych .
+-    Dowiedz się więcej o [skutecznych regułach zabezpieczeń](../virtual-network/diagnose-network-traffic-filter-problem.md) sieciowych sieci.
+-    Dowiedz się więcej o [planach odzyskiwania](site-recovery-create-recovery-plans.md) w celu zautomatyzowania pracy awaryjnej aplikacji.

@@ -1,6 +1,6 @@
 ---
-title: Aktualizowanie warstwy cenowej tematu Azure Event Grid lub domeny
-description: W tym artykule opisano sposób aktualizacji warstwy cenowej tematu Azure Event Grid lub domeny (Basic to Premium, Premium to Basic) przy użyciu Azure Portal, interfejsu wiersza polecenia platformy Azure i Azure PowerShell.
+title: Aktualizowanie warstwy cenowej tematu lub domeny usługi Azure Event Grid
+description: W tym artykule opisano sposób aktualizowania warstwy cenowej tematu lub domeny usługi Azure Event Grid (od wersji premium od wersji premium do podstawowej) przy użyciu witryny Azure portal, interfejsu wiersza polecenia platformy Azure i programu Azure PowerShell.
 services: event-grid
 author: spelluru
 ms.service: event-grid
@@ -8,56 +8,56 @@ ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: spelluru
 ms.openlocfilehash: 1e92a9f0b9ba007b289c634995b04f4f1575310a
-ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79300143"
 ---
 # <a name="update-pricing-tier"></a>Aktualizowanie warstwy cenowej 
-W tym artykule opisano sposób aktualizacji warstwy cenowej tematu Azure Event Grid lub domeny przy użyciu Azure Portal, interfejsu wiersza polecenia platformy Azure i Azure PowerShell. 
+W tym artykule pokazano, jak zaktualizować warstwę cenową tematu lub domeny usługi Azure Event Grid przy użyciu witryny Azure portal, interfejsu wiersza polecenia platformy Azure i programu Azure PowerShell. 
 
 ## <a name="use-azure-portal"></a>Korzystanie z witryny Azure Portal
-W tej sekcji przedstawiono sposób zmiany warstwy cenowej tematu lub domeny w Azure Portal. 
+W tej sekcji pokazano, jak zmienić warstwę cenową tematu lub domeny w witrynie Azure portal. 
 
-### <a name="overview-page"></a>Strona przeglądu
-Warstwę cenową tematu lub domeny można zmienić na stronie **Przegląd** . Poniższy przykład pokazuje, jak uaktualnić temat z warstwy Podstawowa do warstwy Premium. Kroki prowadzące do obniżenia poziomu warstwy Premium do warstwy Podstawowa są podobne.
+### <a name="overview-page"></a>Strona przeglądowa
+Warstwę cenową tematu lub domeny można zmienić na stronie **Przegląd.** W poniższym przykładzie pokazano, jak uaktualnić temat z warstwy podstawowej do warstwy premium. Kroki, aby przejść na dół z warstwy premium do warstwy podstawowej są podobne.
 
-1. W [Azure Portal](https://portal.azure.com)przejdź do strony tematu lub domeny. 
-2. Na stronie **Przegląd** wybierz bieżącą warstwę cenową (w poniższym przykładzie jest to **podstawowa**).
+1. W [witrynie Azure portal](https://portal.azure.com)przejdź do tematu lub strony domeny. 
+2. Na stronie **Przegląd** wybierz bieżącą warstwę cenową (w poniższym przykładzie jest **to podstawowe).**
     
     ![Wybierz bieżącą warstwę cenową](./media/update-tier/select-tier.png)
-3. Na stronie **warstwa cenowa** Zmień warstwę, a następnie wybierz przycisk **OK**. 
+3. Na stronie **Warstwa cenowa** zmień warstwę i wybierz przycisk **OK**. 
 
     ![Aktualizowanie warstwy cenowej](./media/update-tier/change-tier.png)
-4. Sprawdź stan operacji na stronie **powiadomienia** .
+4. Sprawdź stan operacji na stronie **Powiadomienia.**
 
     ![Stan aktualizacji](./media/update-tier/status.png)    
-5. Upewnij się, że zaktualizowana warstwa została wyświetlona na stronie **Przegląd** . 
+5. Upewnij się, że na stronie Przegląd jest widoczna zaktualizowana **warstwa.** 
 
     ![Stan aktualizacji](./media/update-tier/changed-tier.png)
 
-### <a name="networking-page"></a>Strona sieci
-Możesz **przeprowadzić uaktualnienie** z warstwy Podstawowa do warstwy Premium na stronie **Sieć** . Nie można przeprowadzić obniżenia poziomu warstwy Premium do warstwy Podstawowa na tej stronie. 
+### <a name="networking-page"></a>Strona sieciowa
+Możesz **uaktualnić** z warstwy podstawowej do warstwy premium na stronie **Sieci.** Nie możesz jednak przejść z warstwy premium do warstwy podstawowej na tej stronie. 
 
-1. W [Azure Portal](https://portal.azure.com)przejdź do strony tematu lub domeny. 
-2. Na stronie **Sieć** przejdź do karty **prywatne połączenia punktu końcowego (wersja zapoznawcza)** . 
-3. Jeśli bieżąca warstwa cenowa jest **podstawowa**, zostanie wyświetlony następujący komunikat. Wybierz go. 
+1. W [witrynie Azure portal](https://portal.azure.com)przejdź do tematu lub strony domeny. 
+2. Na stronie **Sieć** przełącz się na kartę **Prywatne połączenia punktów końcowych (podgląd).** 
+3. Jeśli bieżąca warstwa cenowa jest **podstawowa,** zostanie wyświetlony następujący komunikat. Wybierz ją. 
 
-    ![Strona aktualizacji warstwy na połączeniach prywatnych punktów końcowych](./media/update-tier/private-endpoint-connections-page.png)
-4. Na stronie **Aktualizuj do warstwy cenowej Premium** wybierz pozycję **tak**. 
+    ![Aktualizacja warstwy na stronie połączenia prywatnych punktów końcowych](./media/update-tier/private-endpoint-connections-page.png)
+4. Na stronie **Warstwa cenowa Aktualizacja do wersji premium** wybierz pozycję **Tak**. 
     
-    ![Potwierdzenie uaktualnienia](./media/update-tier/message-private-endpoint-connection.png)
-5. Sprawdź stan operacji na stronie **powiadomienia** .
+    ![Potwierdź uaktualnienie](./media/update-tier/message-private-endpoint-connection.png)
+5. Sprawdź stan operacji na stronie **Powiadomienia.**
 
     ![Stan aktualizacji](./media/update-tier/status.png)
 
 
 
 ## <a name="use-azure-cli"></a>Interfejs wiersza polecenia platformy Azure
-W tej sekcji przedstawiono sposób użycia poleceń interfejsu wiersza polecenia platformy Azure do zmiany warstwy cenowej tematu lub domeny. 
+W tej sekcji pokazano, jak używać poleceń interfejsu wiersza polecenia platformy Azure do zmiany warstwy cenowej tematu lub domeny. 
 
-### <a name="upgrade-a-topic-from-basic-to-premium"></a>Uaktualnianie tematu z warstwy Podstawowa do Premium
+### <a name="upgrade-a-topic-from-basic-to-premium"></a>Uaktualnianie tematu z podstawowego do premium
 
 ```azurecli-interactive
 az rest --method patch \
@@ -65,7 +65,7 @@ az rest --method patch \
         --body "{\""sku\"": {\""name\"": \""premium\""}}"
 ```
 
-### <a name="downgrade-a-topic-from-premium-to-basic"></a>Obniżenie poziomu tematu z warstwy Premium do warstwy Podstawowa
+### <a name="downgrade-a-topic-from-premium-to-basic"></a>Obniż poziom tematyki z premium na podstawową
 
 ```azurecli-interactive
 az rest --method patch \
@@ -73,7 +73,7 @@ az rest --method patch \
         --body "{\""sku\"": {\""name\"": \""basic\""}}"
 ```
 
-### <a name="upgrade-a-domain-from-basic-to-premium"></a>Uaktualnianie domeny z warstwy Podstawowa do Premium
+### <a name="upgrade-a-domain-from-basic-to-premium"></a>Uaktualnianie domeny z podstawowej do premium
 
 ```azurecli-interactive
 az rest --method patch \
@@ -81,7 +81,7 @@ az rest --method patch \
         --body "{\""sku\"": {\""name\"": \""premium\""}}"
 ```
 
-### <a name="downgrade-a-domain-from-premium-to-basic"></a>Obniżanie poziomu domeny z warstwy Premium do warstwy Podstawowa
+### <a name="downgrade-a-domain-from-premium-to-basic"></a>Obniżanie poziomu domeny z wersji premium na podstawową
 
 ```azurecli-interactive
 az rest --method patch \
@@ -92,10 +92,10 @@ az rest --method patch \
 
 
 ## <a name="use-azure-powershell"></a>Korzystanie z programu Azure PowerShell
-W tej sekcji przedstawiono sposób użycia poleceń programu PowerShell do zmiany warstwy cenowej tematu lub domeny. 
+W tej sekcji pokazano, jak za pomocą poleceń programu PowerShell zmienić warstwę cenową tematu lub domeny. 
 
-### <a name="prepare-token-and-headers-for-rest-api-calls"></a>Przygotuj token i nagłówki dla wywołań interfejsu API REST 
-Uruchom następujące polecenia dotyczące wymagań wstępnych, aby uzyskać token uwierzytelniania do użycia z wywołaniami interfejsu API REST oraz informacje o autoryzacji i innych nagłówkach. 
+### <a name="prepare-token-and-headers-for-rest-api-calls"></a>Przygotowywanie tokenu i nagłówków dla wywołań interfejsu API REST 
+Uruchom następujące polecenia wymagane, aby uzyskać token uwierzytelniania do użycia z wywołaniami interfejsu API REST i autoryzacji i innych informacji nagłówka. 
 
 ```azurepowershell-interactive
 # replace <CLIENT ID> and <CLIENT SECRET>
@@ -113,7 +113,7 @@ $Headers.Add("Authorization","$($Token.token_type) "+ " " + "$($Token.access_tok
 $Headers.Add("Content-Type","application/json")
 ```
 
-### <a name="upgrade-a-topic-from-basic-to-premium"></a>Uaktualnianie tematu z warstwy Podstawowa do Premium
+### <a name="upgrade-a-topic-from-basic-to-premium"></a>Uaktualnianie tematu z podstawowego do premium
 
 ```azurepowershell-interactive
 $body = @{"sku"=@{"name"="premium"}} | ConvertTo-Json -Depth 5
@@ -125,7 +125,7 @@ Invoke-RestMethod -Method 'Patch' `
     | ConvertTo-Json -Depth 5
 ```
 
-### <a name="downgrade-a-topic-from-premium-to-basic"></a>Obniżenie poziomu tematu z warstwy Premium do warstwy Podstawowa
+### <a name="downgrade-a-topic-from-premium-to-basic"></a>Obniż poziom tematyki z premium na podstawową
 
 ```azurepowershell-interactive
 $body = @{"sku"=@{"name"="basic"}} | ConvertTo-Json -Depth 5
@@ -137,7 +137,7 @@ Invoke-RestMethod -Method 'Patch' `
     | ConvertTo-Json -Depth 5
 ```
 
-### <a name="upgrade-a-domain-from-basic-to-premium"></a>Uaktualnianie domeny z warstwy Podstawowa do Premium
+### <a name="upgrade-a-domain-from-basic-to-premium"></a>Uaktualnianie domeny z podstawowej do premium
 
 ```azurepowershell-interactive
 $body = @{"sku"=@{"name"="premium"}} | ConvertTo-Json -Depth 5
@@ -149,7 +149,7 @@ Invoke-RestMethod -Method 'Patch' `
     | ConvertTo-Json -Depth 5
 ```
 
-### <a name="downgrade-a-domain-from-premium-to-basic"></a>Obniżanie poziomu domeny z warstwy Premium do warstwy Podstawowa
+### <a name="downgrade-a-domain-from-premium-to-basic"></a>Obniżanie poziomu domeny z wersji premium na podstawową
 
 ```azurepowershell-interactive
 $body = @{"sku"=@{"name"="basic"}} | ConvertTo-Json -Depth 5
@@ -162,4 +162,4 @@ Invoke-RestMethod -Method 'Patch' `
 ```
 
 ## <a name="next-steps"></a>Następne kroki
-W przypadku tematów i domen w warstwie Premium można skonfigurować prywatne punkty końcowe, aby ograniczyć dostęp tylko z wybranych sieci wirtualnych. Aby uzyskać instrukcje krok po kroku, zobacz [Konfigurowanie prywatnych punktów końcowych](configure-private-endpoints.md).
+W przypadku tematów i domen warstwy premium można skonfigurować prywatne punkty końcowe, aby ograniczyć dostęp tylko z wybranych sieci wirtualnych. Aby uzyskać instrukcje krok po kroku, zobacz [Konfigurowanie prywatnych punktów końcowych](configure-private-endpoints.md).

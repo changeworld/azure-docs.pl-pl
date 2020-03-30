@@ -1,28 +1,28 @@
 ---
-title: Pobieranie danych z kształtów na mapie | Mapy Microsoft Azure
-description: W tym artykule dowiesz się, jak uzyskać dane kształtu rysowane na mapie przy użyciu zestawu Microsoft Azure Web SDK Maps.
-author: farah-alyasari
-ms.author: v-faalya
+title: Pobierz dane z kształtów na mapie | Mapy platformy Microsoft Azure
+description: W tym artykule dowiesz się, jak uzyskać dane kształtu rysowane na mapie przy użyciu microsoft azure maps web SDK.
+author: philmea
+ms.author: philmea
 ms.date: 09/04/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 63d947b85e75e3809445c5bc65577aeaed38caa1
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: 88db018575f92e777223f383c65cd6db51ba515a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77209668"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80334409"
 ---
 # <a name="get-shape-data"></a>Pobieranie danych kształtów
 
-W tym artykule pokazano, jak uzyskać dane kształtów, które są rysowane na mapie. Używamy funkcji **drawingmanager. GetSource ()** wewnątrz [Menedżera rysowania](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.drawing.drawingmanager?view=azure-node-latest#getsource--). Istnieją różne scenariusze, w których można wyodrębnić dane GEOJSON rysowanego kształtu i korzystać z niego w innym miejscu.  
+W tym artykule pokazano, jak uzyskać dane kształtów rysowane na mapie. Używamy funkcji **drawingManager.getSource()** wewnątrz [menedżera rysunku](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.drawing.drawingmanager?view=azure-node-latest#getsource--). Istnieją różne scenariusze, w których chcesz wyodrębnić dane geojson rysowanego kształtu i użyć go w innym miejscu.  
 
 
-## <a name="get-data-from-drawn-shape"></a>Pobierz dane z rysowanego kształtu
+## <a name="get-data-from-drawn-shape"></a>Pobierz dane z rysowanych kształtów
 
-Poniższa funkcja pobiera dane źródłowe rysowanego kształtu i wyprowadza je na ekranie. 
+Następująca funkcja pobiera dane źródłowe rysowane kształtu i wyprowadza go na ekranie. 
 
 ```Javascript
 function getDrawnShapes() {
@@ -32,17 +32,17 @@ function getDrawnShapes() {
 }
 ```
 
-Poniżej znajduje się kompletny przykładowy kod, w którym można narysować kształt w celu przetestowania funkcjonalności:
+Poniżej znajduje się kompletny przykład kodu uruchamiania, gdzie można narysować kształt, aby przetestować funkcjonalność:
 
 <br/>
 
-<iframe height="686" title="Pobieranie danych kształtów" src="//codepen.io/azuremaps/embed/xxKgBVz/?height=265&theme-id=0&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true" style='width: 100%;'>Zobacz pióro <a href='https://codepen.io/azuremaps/pen/xxKgBVz/'>Pobierz dane kształtu</a> według Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) w <a href='https://codepen.io'>CodePen</a>.
+<iframe height="686" title="Pobieranie danych kształtów" src="//codepen.io/azuremaps/embed/xxKgBVz/?height=265&theme-id=0&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true" style='width: 100%;'>Zobacz pióro Pobierz dane<a href='https://codepen.io/azuremaps'>@azuremaps</a> <a href='https://codepen.io/azuremaps/pen/xxKgBVz/'>kształtu</a> przez usługi Azure Maps ( ) na funkcji <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 
 ## <a name="next-steps"></a>Następne kroki
 
-Dowiedz się, jak używać dodatkowych funkcji modułu narzędzi do rysowania:
+Dowiedz się, jak korzystać z dodatkowych funkcji modułu narzędzi do rysowania:
 
 > [!div class="nextstepaction"]
 > [Reagowanie na zdarzenia rysowania](drawing-tools-events.md)
@@ -50,13 +50,13 @@ Dowiedz się, jak używać dodatkowych funkcji modułu narzędzi do rysowania:
 > [!div class="nextstepaction"]
 > [Typy interakcji i skróty klawiaturowe](drawing-tools-interactions-keyboard-shortcuts.md)
 
-Dowiedz się więcej na temat klas i metod używanych w tym artykule:
+Dowiedz się więcej o klasach i metodach użytych w tym artykule:
 
 > [!div class="nextstepaction"]
-> [Zmapować](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)
+> [Mapę](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)
 
 > [!div class="nextstepaction"]
-> [Menedżer rysowania](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.drawing.drawingmanager?view=azure-node-latest)
+> [Kierownik rysunku](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.drawing.drawingmanager?view=azure-node-latest)
 
 > [!div class="nextstepaction"]
-> [Rysowanie paska narzędzi](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.control.drawingtoolbar?view=azure-node-latest)
+> [Pasek narzędzi rysowania](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.control.drawingtoolbar?view=azure-node-latest)

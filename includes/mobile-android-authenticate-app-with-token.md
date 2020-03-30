@@ -5,20 +5,20 @@ ms.topic: include
 ms.date: 11/25/2018
 ms.author: crdun
 ms.openlocfilehash: deb94cab97bd9a402676cdc5c0239da8d07ed8b2
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67183919"
 ---
-W poprzednim przykładzie pokazano standardowy logowania, która wymaga od klienta do kontaktowania się z dostawcy tożsamości i zaplecza usług platformy Azure przy każdym uruchomieniu aplikacji. Ta metoda jest nieefektywne i może mieć problemy związane z użycia, jeśli wielu klientów próbuje uruchomić aplikacji jednocześnie. Lepszym rozwiązaniem jest pamięci podręcznej tokenu autoryzacji zwracane przez usługę Azure, a następnie spróbuj użyć to najpierw przed rozpoczęciem korzystania z opartą na dostawcy logowania.
+W poprzednim przykładzie pokazano standardowe logowanie, które wymaga od klienta, aby skontaktować się zarówno z dostawcą tożsamości, jak i usługą platformy Azure zaplecza przy każdym uruchomieniu aplikacji. Ta metoda jest nieefektywne i może mieć problemy związane z użyciem, jeśli wielu klientów próbuje uruchomić aplikację jednocześnie. Lepszym rozwiązaniem jest buforowanie tokenu autoryzacji zwróconego przez usługę platformy Azure i spróbuj użyć tego najpierw przed użyciem logowania opartego na dostawcy.
 
 > [!NOTE]
-> Może buforować token wystawiony przez ten serwer zaplecza usługi platformy Azure, niezależnie od tego, czy używasz zarządzanych przez klienta lub zarządzane przez usługę uwierzytelniania. W tym samouczku korzysta z zarządzanego przez usługę uwierzytelniania.
+> Token wystawiony przez usługę back-end azure można buforować, niezależnie od tego, czy używasz uwierzytelniania zarządzanego przez klienta, czy z usługą. W tym samouczku użyto uwierzytelniania zarządzanego przez usługę.
 >
 >
 
-1. Otwórz pliku ToDoActivity.java i dodaj następujące instrukcje importu:
+1. Otwórz plik ToDoActivity.java i dodaj następujące instrukcje importu:
 
     ```java
     import android.content.Context;
@@ -26,7 +26,7 @@ W poprzednim przykładzie pokazano standardowy logowania, która wymaga od klien
     import android.content.SharedPreferences.Editor;
     ```
 
-2. Dodaj następujące elementy członkowskie do `ToDoActivity` klasy.
+2. Dodaj następujące elementy `ToDoActivity` członkowskie do klasy.
 
     ```java
     public static final String SHAREDPREFFILE = "temp";
@@ -34,7 +34,7 @@ W poprzednim przykładzie pokazano standardowy logowania, która wymaga od klien
     public static final String TOKENPREF = "tkn";
     ```
 
-3. W pliku ToDoActivity.java, dodaj następującą definicję dla `cacheUserToken` metody.
+3. W pliku ToDoActivity.java dodaj następującą `cacheUserToken` definicję metody.
 
     ```java
     private void cacheUserToken(MobileServiceUser user)
@@ -47,14 +47,14 @@ W poprzednim przykładzie pokazano standardowy logowania, która wymaga od klien
     }
     ```
 
-    Ta metoda identyfikator użytkownika i token są przechowywane w pliku preferencji, który jest oznaczony prywatnych. Należy chronić dostęp do pamięci podręcznej, tak aby inne aplikacje na urządzeniu nie mają dostępu do tokenu. Preferencje jest w trybie piaskownicy, dla aplikacji. Jednak jeśli osoba uzyska dostęp do urządzenia, jest to możliwe, że może uzyskają dostęp do pamięci podręcznej tokenu w inny sposób.
+    Ta metoda przechowuje identyfikator użytkownika i token w pliku preferencji, który jest oznaczony jako prywatny. Powinno to chronić dostęp do pamięci podręcznej, tak aby inne aplikacje na urządzeniu nie miały dostępu do tokenu. Preferencja jest w trybie piaskownicy dla aplikacji. Jednak jeśli ktoś uzyska dostęp do urządzenia, jest możliwe, że mogą uzyskać dostęp do pamięci podręcznej tokenu za pomocą innych środków.
 
    > [!NOTE]
-   > Można dodatkowo zabezpieczyć token z szyfrowaniem, jeśli token dostępu do danych jest uznawany za poufne, a ktoś może uzyskać dostęp do urządzenia. Całkowicie bezpieczna wykracza poza zakres tego samouczka, jednak i zależy od wymagań dotyczących zabezpieczeń.
+   > Możesz dodatkowo chronić token za pomocą szyfrowania, jeśli dostęp tokenu do danych jest uważany za wysoce poufny i ktoś może uzyskać dostęp do urządzenia. Całkowicie bezpieczne rozwiązanie wykracza jednak poza zakres tego samouczka i zależy od wymagań dotyczących zabezpieczeń.
    >
    >
 
-4. W pliku ToDoActivity.java, dodaj następującą definicję dla `loadUserTokenCache` metody.
+4. W pliku ToDoActivity.java dodaj następującą `loadUserTokenCache` definicję metody.
 
     ```java
     private boolean loadUserTokenCache(MobileServiceClient client)
@@ -75,7 +75,7 @@ W poprzednim przykładzie pokazano standardowy logowania, która wymaga od klien
     }
     ```
 
-5. W *ToDoActivity.java* pliku, Zastąp `authenticate` i `onActivityResult` metody przy użyciu następujących te, które wykorzystuje pamięć podręczną tokenu. Zmień dostawcy logowania, jeśli chcesz użyć innego konta niż Google.
+5. W pliku *ToDoActivity.java* zastąp `authenticate` metody i `onActivityResult` metody następującymi, które używają pamięci podręcznej tokenu. Zmień dostawcę logowania, jeśli chcesz korzystać z konta innego niż Google.
 
     ```java
     private void authenticate() {
@@ -114,4 +114,4 @@ W poprzednim przykładzie pokazano standardowy logowania, która wymaga od klien
     }
     ```
 
-6. Tworzenie aplikacji i testowanie uwierzytelnianie przy użyciu prawidłowego konta. Uruchom co najmniej dwa razy. Przy pierwszym uruchomieniu powinien otrzymywać monitu o logowanie i Tworzenie pamięci podręcznej tokenu. Po tym poszczególnymi uruchomieniami próbuje załadować pamięć podręczną tokenu uwierzytelniania. Nie należy wymagać do logowania.
+6. Tworzenie aplikacji i testowanie uwierzytelniania przy użyciu prawidłowego konta. Uruchom go co najmniej dwa razy. Podczas pierwszego uruchomienia powinien pojawić się monit o zalogowanie się i utworzenie pamięci podręcznej tokenu. Następnie każde uruchomienie próbuje załadować pamięć podręczną tokenu do uwierzytelniania. Nie musisz się logować.

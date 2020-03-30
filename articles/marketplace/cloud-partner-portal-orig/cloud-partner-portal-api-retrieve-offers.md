@@ -1,24 +1,23 @@
 ---
-title: Pobieranie interfejsu API ofert | Portal Azure Marketplace
-description: Interfejs API pobiera podsumowującą listę ofert w przestrzeni nazw wydawcy.
-services: Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+title: Pobieranie ofert INTERFEJSU API | Azure Marketplace
+description: Interfejs API pobiera podsumowaną listę ofert w obszarze nazw wydawcy.
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
 ms.date: 09/13/2018
-ms.author: pabutler
-ms.openlocfilehash: 5c94c03a63936be2b086085a1e52064dedf214b0
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: a1f15e269481b9706f81fd02f19effc9ad37df32
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73819624"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80280494"
 ---
 <a name="retrieve-offers"></a>Pobieranie oferty
 ===============
 
-Pobiera podsumowującą listę ofert w przestrzeni nazw wydawcy.
+Pobiera podsumowaną listę ofert w obszarze nazw wydawcy.
 
  `GET https://cloudpartner.azure.com/api/publishers/<publisherId>/offers?api-version=2017-10-31`
 
@@ -28,8 +27,8 @@ Pobiera podsumowującą listę ofert w przestrzeni nazw wydawcy.
 
 | **Nazwa**         |  **Opis**                         |  **Typ danych** |
 | -------------    |  ------------------------------------    |  -----------   |
-|  publisherId     | Identyfikator wydawcy, na przykład `contoso` |   Ciąg    |
-|  wersja interfejsu API     | Najnowsza wersja interfejsu API                    |    Date        |
+|  identyfikator wydawcy     | Identyfikator wydawcy, na przykład`contoso` |   Ciąg    |
+|  api-version     | Najnowsza wersja interfejsu API                    |    Data        |
 |  |  |
 
 
@@ -43,7 +42,7 @@ Pobiera podsumowującą listę ofert w przestrzeni nazw wydawcy.
 |  |  |
 
 
-<a name="body-example"></a>Przykład treści
+<a name="body-example"></a>Przykład ciała
 ------------
 
 ### <a name="response"></a>Odpowiedź
@@ -69,24 +68,24 @@ Pobiera podsumowującą listę ofert w przestrzeni nazw wydawcy.
 
 |  **Nazwa**       |       **Opis**                                                                                                  |
 |  -------------  |      --------------------------------------------------------------------------------------------------------------    |
-|  offerTypeId    | Identyfikuje typ oferty                                                                                           |
-|  publisherId    | Identyfikator, który jednoznacznie identyfikuje wydawcę                                                                      |
-|  status         | Stan oferty. Aby uzyskać listę możliwych wartości, zobacz temat [status oferty](#offer-status) poniżej.                         |
-|  id             | Identyfikator GUID, który jednoznacznie identyfikuje ofertę w przestrzeni nazw wydawcy.                                                    |
-|  version        | Bieżąca wersja oferty. Nie można zmodyfikować właściwości Version przez klienta. Zwiększa się po każdej publikacji. |
-|  Definicji     | Zawiera sumaryczny widok rzeczywistej definicji obciążenia. Aby uzyskać szczegółową definicję, użyj interfejsu API [pobierania określonej oferty](./cloud-partner-portal-api-retrieve-specific-offer.md) . |
-|  changedTime    | Czas UTC ostatniej modyfikacji oferty                                                                              |
+|  offerTypeId    | Określa typ oferty                                                                                           |
+|  identyfikator wydawcy    | Identyfikator, który jednoznacznie identyfikuje wydawcę                                                                      |
+|  status         | Status oferty. Aby uzyskać listę możliwych wartości, zobacz [Stan oferty](#offer-status) poniżej.                         |
+|  id             | Identyfikator GUID, który jednoznacznie identyfikuje ofertę w obszarze nazw wydawcy.                                                    |
+|  version        | Aktualna wersja oferty. Właściwość version nie może być modyfikowana przez klienta. Jest zwiększany po każdym publikowaniu. |
+|  definicja     | Zawiera podsumowany widok rzeczywistej definicji obciążenia. Aby uzyskać szczegółową definicję, należy użyć interfejsu API [pobierania określonej oferty.](./cloud-partner-portal-api-retrieve-specific-offer.md) |
+|  zmienionaCzas    | Czas UTC, kiedy oferta została ostatnio zmodyfikowana                                                                              |
 |  |  |
 
 
 ### <a name="response-status-codes"></a>Kody stanu odpowiedzi
 
-| **Kodu**  |  **Opis**                                                                                                   |
+| **Code**  |  **Opis**                                                                                                   |
 | -------   |  ----------------------------------------------------------------------------------------------------------------- |
-|  200      | `OK` — żądanie zostało pomyślnie przetworzone i wszystkie oferty w ramach wydawcy zostały zwrócone do klienta.  |
-|  400      | `Bad/Malformed request` — treść odpowiedzi błędu może zawierać więcej informacji.                                    |
-|  403      | `Forbidden` — klient nie ma dostępu do określonego obszaru nazw.                                          |
-|  404      | `Not found` — określona jednostka nie istnieje.                                                                 |
+|  200      | `OK`- Żądanie zostało pomyślnie przetworzone, a wszystkie oferty pod wydawcą zostały zwrócone klientowi.  |
+|  400      | `Bad/Malformed request`- Treść odpowiedzi na błędy może zawierać więcej informacji.                                    |
+|  403      | `Forbidden`- Klient nie ma dostępu do określonego obszaru nazw.                                          |
+|  404      | `Not found`- Określona jednostka nie istnieje.                                                                 |
 |  |  |
 
 
@@ -94,11 +93,11 @@ Pobiera podsumowującą listę ofert w przestrzeni nazw wydawcy.
 
 |  **Nazwa**                    | **Opis**                                  |
 |  ------------------------    | -----------------------------------------------  |
-|  NeverPublished              | Oferta nie została nigdy opublikowana.                  |
-|  NotStarted                  | Oferta jest nowa, ale nie została uruchomiona.                 |
-|  WaitingForPublisherReview   | Oferta oczekuje na zatwierdzenie przez wydawcę.         |
-|  Działanie                     | Przesyłanie oferty jest przetwarzane.             |
-|  Powodzenie                   | Przesyłanie oferty zostało zakończone.       |
-|  Anulowane                    | Przesyłanie oferty zostało anulowane.                   |
-|  Niepowodzenie                      | Nie można przesłać oferty.                         |
+|  NeverPublished (NigdyPublished)              | Oferta nigdy nie została opublikowana.                  |
+|  NotStarted (Nierozpoczęcie)                  | Oferta jest nowa, ale nie została uruchomiona.                 |
+|  OczekiwanieforPublisherReview   | Oferta czeka na zatwierdzenie przez wydawcę.         |
+|  Działanie                     | Rozpatrywane jest składanie ofert.             |
+|  Powodzenie                   | Złożenie oferty zakończyło się przetwarzaniem.       |
+|  Anulowane                    | Składanie ofert zostało anulowane.                   |
+|  Niepowodzenie                      | Składanie ofert nie powiodło się.                         |
 |  |  |

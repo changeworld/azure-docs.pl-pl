@@ -1,42 +1,41 @@
 ---
-title: Ustawienia oferty dla modułu Azure IoT Edge | Portal Azure Marketplace
+title: Ustawienia oferty dla modułu usługi Azure IoT Edge | Azure Marketplace
 description: Skonfiguruj ustawienia oferty dla modułu IoT Edge.
-services: Azure, Marketplace, Cloud Partner Portal,
-author: dan-wesley
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/24/2019
-ms.author: pabutler
-ms.openlocfilehash: 1043f467a7363bc0e3eedba40fd2246015592276
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 0fb15a6d71278be9b380f793d39732e763d6447d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73814094"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80286578"
 ---
 # <a name="iot-edge-module-offer-settings-tab"></a>Karta Ustawienia oferty modułu IoT Edge
 
-**IoT Edge modułów >** zostanie otwarta strona Nowa oferta z fokusem na karcie **Ustawienia oferty** . 
+Zostanie otwarta strona **Moduły brzegowe IoT > Nowa oferta** z naciskiem na kartę **Ustawienia oferty.** 
 
 ![Nowa strona oferty dla modułów IoT Edge](./media/iot-edge-module-offer-settings-tab.png)
 
 
 ## <a name="offer-identity-settings"></a>Ustawienia tożsamości oferty
 
-W obszarze **tożsamość oferty**musisz podać informacje dotyczące pól opisanych w poniższej tabeli. Gwiazdka (*) dołączona do nazwy pola wskazuje, że jest to wymagane. 
+W obszarze **Tożsamość oferty**należy podać informacje dotyczące pól opisanych w poniższej tabeli. Gwiazdka (*) dołączona do nazwy pola wskazuje, że jest ona wymagana. 
 
 |  **Pole**       |     **Opis**                                                          |
 |  ---------       |     ---------------                                                          |
-| **Identyfikator oferty\***       | Unikatowy identyfikator (w ramach profilu wydawcy) oferty. Ten identyfikator będzie widoczny w raportach dotyczących adresów URL produktów i szczegółowych informacji. Ma maksymalną długość 50 znaków i może zawierać małe litery alfanumeryczne i kreski (-). (Identyfikator nie może kończyć się znakiem kreski). **Uwaga:** Nie można zmienić tego pola po zakończeniu oferty. <br> Na przykład jeśli firma Contoso publikuje ofertę z IDENTYFIKATORem oferty **przykładem — IoT-Edge-module**, przypiszemy adres URL witryny Azure Marketplace `https://azuremarketplace.microsoft.com/marketplace/apps/contoso.sample-iot-edge-module?tab=Overview`. |
-| **\* wydawcy**     | Unikatowy identyfikator organizacji w witrynie Azure Marketplace. Wszystkie oferty powinny być skojarzone z IDENTYFIKATORem wydawcy. Tej wartości nie można zmienić po zapisaniu oferty. |
-| **Nazwa\***          | Nazwa wyświetlana oferty. Ta nazwa jest wyświetlana w portalu Azure Marketplace i w portal Cloud Partner. Może zawierać maksymalnie 50 znaków. Zalecamy użycie rozpoznawalnej nazwy marki dla produktu. Nie dołączaj nazwy organizacji, chyba że jest to produkt sprzedawany na rynku. W przypadku wprowadzania tej oferty w innych witrynach sieci Web i publikacjach upewnij się, że nazwa jest dokładnie taka sama dla wszystkich publikacji. |
+| **Identyfikator oferty\***       | Unikatowy identyfikator (w profilu wydawcy) dla oferty. Ten identyfikator będzie widoczny w adresach URL produktów i raportach szczegółowych. Ma maksymalną długość 50 znaków i może używać małych liter alfanumeryczne znaki i myślniki (-). (Identyfikator nie może zakończyć się kreską). **Uwaga:** Tego pola nie można zmienić po uruchomieniu oferty. <br> Jeśli na przykład firma Contoso opublikuje ofertę z **modułem próbkowania iot-edge**identyfikatora `https://azuremarketplace.microsoft.com/marketplace/apps/contoso.sample-iot-edge-module?tab=Overview`oferty, zostanie przypisany adres URL portalu Azure Marketplace . |
+| **Wydawca\***     | Unikatowy identyfikator twojej organizacji w portalu Azure Marketplace. Wszystkie oferty powinny być powiązane z identyfikatorem wydawcy. Tej wartości nie można zmienić po zapisaniu oferty. |
+| **Nazwa\***          | Wyświetlana nazwa oferty. Ta nazwa jest wyświetlana w portalu Azure Marketplace i w portalu cloud partnerów. Może zawierać maksymalnie 50 znaków. Zalecamy używanie rozpoznawalnej nazwy marki dla twojego produktu. Nie podawaj nazwy organizacji, chyba że w ten sposób produkt jest sprzedawany. Jeśli sprzedajesz tę ofertę w innych witrynach internetowych i publikacjach, upewnij się, że nazwa jest dokładnie taka sama we wszystkich publikacjach. |
 |  |  |
 
 
-Wybierz pozycję **Zapisz** , aby zapisać ustawienia oferty.
+Wybierz **pozycję Zapisz,** aby zapisać ustawienia oferty.
 
 
 ## <a name="next-steps"></a>Następne kroki
 
-Użyj karty [jednostki SKU](./cpp-skus-tab.md) , aby skonfigurować jednostki SKU oferty.
+Karta [Jednostki SKU](./cpp-skus-tab.md) służy do konfigurowania jednostek SKU dla oferty.

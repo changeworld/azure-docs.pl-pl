@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.date: 10/09/2018
 ms.author: robinsh
 ms.openlocfilehash: e4e6a60f893108f8fa58d84dabb50c88afcf774c
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73929604"
 ---
-# <a name="internet-of-things-iot-security-architecture"></a>Architektura zabezpieczeń Internet rzeczy (IoT)
+# <a name="internet-of-things-iot-security-architecture"></a>Architektura zabezpieczeń Internetu rzeczy (IoT)
 
 [!INCLUDE [iot-security-architecture](../../includes/iot-security-architecture.md)]
 
 ## <a name="see-also"></a>Zobacz też
-Aby dowiedzieć się więcej na temat zabezpieczania rozwiązania utworzonego przez akcelerator rozwiązań IoT, zobacz temat [Zabezpieczanie wdrożenia IoT](iot-security-deployment.md).
+Aby dowiedzieć się więcej o zabezpieczaniu rozwiązania utworzonego przez akcelerator rozwiązań IoT, zobacz [Zabezpieczanie wdrożenia IoT.](iot-security-deployment.md)
 
-Przeczytaj informacje o IoT Hub zabezpieczeniach w programie [kontroli dostępu do IoT Hub](../iot-hub/iot-hub-devguide-security.md) w przewodniku dewelopera IoT Hub.
+Przeczytaj o zabezpieczeniach usługi IoT Hub w [uchronienie się usługi Control do usługi IoT Hub](../iot-hub/iot-hub-devguide-security.md) w przewodniku dla deweloperów usługi IoT Hub.

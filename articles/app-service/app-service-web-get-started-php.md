@@ -1,16 +1,16 @@
 ---
-title: 'Szybki Start: Tworzenie aplikacji sieci Web w języku PHP'
-description: Wdróż swoje pierwsze Hello world w języku PHP do Azure App Service w ciągu kilku minut. Wdrażasz program przy użyciu narzędzia Git, który jest jednym z wielu sposobów wdrażania w App Service.
+title: 'Szybki start: tworzenie aplikacji internetowej PHP'
+description: Wdrażaj swój pierwszy program PHP Hello World w usłudze Azure App Service w ciągu kilku minut. Wdrażanie przy użyciu git, który jest jednym z wielu sposobów wdrażania w usłudze App Service.
 ms.assetid: 6feac128-c728-4491-8b79-962da9a40788
 ms.topic: quickstart
 ms.date: 08/24/2018
-ms.custom: seodec18
-ms.openlocfilehash: 59e59fdf7fc6207a77bbe9923899570eeaa06a87
-ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
+ms.custom: mvc, cli-validate, seodec18
+ms.openlocfilehash: 2813d96fdd9fcd588b78cbfb58fe57bf58a4fe68
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77500140"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80047347"
 ---
 # <a name="create-a-php-web-app-in-azure"></a>Tworzenie aplikacji internetowej w języku PHP na platformie Azure
 
@@ -18,7 +18,7 @@ ms.locfileid: "77500140"
 > W tym artykule opisano wdrażanie aplikacji w usłudze App Service w systemie Windows. Aby wdrożyć aplikację w usłudze App Service w systemie _Linux_, zobacz [Tworzenie aplikacji internetowej w języku PHP w usłudze App Service w systemie Linux](./containers/quickstart-php.md).
 >
 
-Usługa [Azure App Service](overview.md) oferuje wysoce skalowalną i samonaprawialną usługę hostingu w Internecie.  Ten samouczek Szybki start przedstawia sposób wdrażania aplikacji PHP w usłudze Azure App Service. Aplikacja internetowa zostanie utworzona przy użyciu [interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) w usłudze Cloud Shell, a przykład kodu w języku PHP zostanie wdrożony w aplikacji internetowej za pomocą usługi Git.
+[Usługa Azure App Service](overview.md) zapewnia wysoce skalowalną, samoładującą się usługę hostingu.  Ten samouczek Szybki start przedstawia sposób wdrażania aplikacji PHP w usłudze Azure App Service. Aplikacja internetowa zostanie utworzona przy użyciu [interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) w usłudze Cloud Shell, a przykład kodu w języku PHP zostanie wdrożony w aplikacji internetowej za pomocą usługi Git.
 
 ![Przykładowa aplikacja działająca na platformie Azure](media/app-service-web-get-started-php/hello-world-in-browser.png)
 
@@ -28,10 +28,10 @@ Poniższe kroki możesz wykonać przy użyciu komputera z systemem Mac, Windows 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby ukończyć ten przewodnik Szybki Start:
+Aby ukończyć ten przewodnik Szybki start:
 
 * <a href="https://git-scm.com/" target="_blank">Zainstaluj oprogramowanie Git</a>
-* <a href="https://php.net/manual/install.php" target="_blank">Zainstaluj środowisko PHP</a>
+* <a href="https://php.net/manual/install.php" target="_blank">Instalowanie PHP</a>
 
 ## <a name="download-the-sample-locally"></a>Pobieranie przykładu na maszynę lokalną
 
@@ -68,9 +68,9 @@ W oknie terminalu naciśnij kombinację klawiszy **Ctrl + C**, aby zamknąć ser
 
 ## <a name="create-a-web-app"></a>Tworzenie aplikacji internetowej
 
-W usłudze Cloud Shell utwórz aplikację internetową w planie usługi App Service `myAppServicePlan` za pomocą polecenia [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create). 
+W aplikacji Cloud Shell utwórz `myAppServicePlan` aplikację internetową w [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) planie usługi app service za pomocą polecenia. 
 
-W poniższym przykładzie zastąp ciąg `<app_name>` globalnie unikatową nazwą aplikacji (prawidłowe znaki to `a-z`, `0-9` i `-`). Środowisko uruchomieniowe ma ustawioną wartość `PHP|7.0`. Aby wyświetlić wszystkie obsługiwane środowiska uruchomieniowe, uruchom polecenie [`az webapp list-runtimes`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-list-runtimes). 
+W poniższym przykładzie zastąp ciąg `<app_name>` globalnie unikatową nazwą aplikacji (prawidłowe znaki to `a-z`, `0-9` i `-`). Środowisko uruchomieniowe ma ustawioną wartość `PHP|7.0`. Aby wyświetlić wszystkie obsługiwane środowiska [`az webapp list-runtimes`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-list-runtimes)wykonawcze, uruchom plik . 
 
 ```azurecli-interactive
 # Bash
@@ -95,13 +95,13 @@ Local git is configured with url of 'https://<username>@<app_name>.scm.azurewebs
   < JSON data removed for brevity. >
 }
 ```
-Utworzona została nowa pusta aplikacja internetowa z włączonym wdrażaniem git.
+Utworzono pustą nową aplikację internetową z włączoną obsługą git.
 
 > [!NOTE]
 > Adres URL zdalnego repozytorium Git jest wyświetlany we właściwości `deploymentLocalGitUrl` w formacie `https://<username>@<app_name>.scm.azurewebsites.net/<app_name>.git`. Zapisz ten adres URL, ponieważ będzie on potrzebny później.
 >
 
-Przejdź do nowo utworzonej aplikacji internetowej. Zastąp element _&lt;nazwa_aplikacji>_ unikatową nazwą aplikacji utworzonej w poprzednim kroku.
+Przejdź do nowo utworzonej aplikacji internetowej. Zamień _ &lt;nazwę aplikacji>_ unikatową nazwą aplikacji utworzoną w poprzednim kroku.
 
 ```bash
 http://<app name>.azurewebsites.net
@@ -173,15 +173,15 @@ Po zakończeniu wdrożenia wróć do okna przeglądarki otwartego w kroku **prze
 
 ## <a name="manage-your-new-azure-app"></a>Zarządzanie nową aplikacją platformy Azure
 
-1. Przejdź do witryny <a href="https://portal.azure.com" target="_blank">Azure Portal</a>, aby zarządzać utworzoną aplikacją internetową. Wyszukaj i wybierz **App Services**.
+1. Przejdź do witryny <a href="https://portal.azure.com" target="_blank">Azure Portal</a>, aby zarządzać utworzoną aplikacją internetową. Wyszukaj i wybierz **pozycję Usługi aplikacji**.
 
-    ![Wyszukiwanie App Services, Azure Portal, tworzenie aplikacji sieci Web w języku PHP](media/app-service-web-get-started-php/navigate-to-app-services-in-the-azure-portal.png)
+    ![Wyszukiwanie usług aplikacji, witryny Azure portal, tworzenie aplikacji internetowej PHP](media/app-service-web-get-started-php/navigate-to-app-services-in-the-azure-portal.png)
 
 2. Wybierz nazwę aplikacji platformy Azure.
 
     ![Nawigacja w portalu do aplikacji platformy Azure](./media/app-service-web-get-started-php/php-docs-hello-world-app-service-list.png)
 
-    Zostanie wyświetlona strona **przeglądu** aplikacji sieci Web. W tym miejscu można wykonywać podstawowe zadania zarządzania, takie jak **przeglądanie**, **Zatrzymywanie**, **Ponowne uruchamianie**i **usuwanie**.
+    Zostanie wyświetlona strona **Przegląd** aplikacji internetowej. W tym miejscu można wykonywać podstawowe zadania zarządzania, takie jak **Przeglądaj,** **Zatrzymaj,** **Uruchom ponownie**i **Usuń**.
 
     ![Strona usługi App Service w witrynie Azure Portal](media/app-service-web-get-started-php/php-docs-hello-world-app-service-detail.png)
 
