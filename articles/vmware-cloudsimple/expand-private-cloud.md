@@ -1,6 +1,6 @@
 ---
-title: Rozwiń chmurę prywatną Azure VMware Solutions (Automatyczna synchronizacja)
-description: Zawiera opis sposobu rozszerzania istniejącej chmury prywatnej do automatycznej synchronizacji w celu dodania pojemności w istniejącym lub nowym klastrze.
+title: Rozwiń rozwiązanie Azure VMware według chmury cloudsimple private cloud
+description: W tym artykule opisano sposób rozwijania istniejącej chmury prywatnej CloudSimple w celu zwiększenia pojemności w istniejącym lub nowym klastrze
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 06/06/2019
@@ -8,53 +8,53 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 3286b7537056a6c2f282533aa629ebbe47612690
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: a82ba1b433e62ed1c4b72b8e942d4ade29f26c4a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77025303"
 ---
-# <a name="expand-an-avs-private-cloud"></a>Rozwiń chmurę prywatną w wersji zaautomatycznej
+# <a name="expand-a-cloudsimple-private-cloud"></a>Rozwiń chmurę prywatną CloudSimple
 
-Funkcja automatycznej synchronizacji zapewnia elastyczność umożliwiającą dynamiczne rozszerzanie chmury prywatnej o automatycznej synchronizacji. Możesz zacząć od mniejszej konfiguracji, a następnie rozwijać ją, gdy potrzebujesz większej pojemności. Możesz też utworzyć chmurę prywatną do automatycznej synchronizacji na podstawie bieżących potrzeb, a następnie rozwijać ją w miarę wzrostu zużycia.
+CloudSimple zapewnia elastyczność dynamicznego rozszerzania chmury prywatnej. Można rozpocząć od mniejszej konfiguracji, a następnie rozwinąć, ponieważ potrzebujesz większej pojemności. Możesz też utworzyć chmurę prywatną na podstawie bieżących potrzeb, a następnie rozwinąć ją wraz ze wzrostem zużycia.
 
-Chmura prywatna do automatycznej synchronizacji składa się z co najmniej jednego klastra vSphere. Każdy klaster może zawierać od 3 do 16 węzłów. Podczas rozszerzania chmury prywatnej o automatycznej synchronizacji należy dodać węzły do istniejącego klastra lub utworzyć nowy klaster. Aby rozszerzyć istniejący klaster, dodatkowe węzły muszą być tego samego typu (SKU) jak istniejące węzły. W przypadku tworzenia nowego klastra węzły mogą być innego typu. Aby uzyskać więcej informacji na temat synchronizacji limitów chmur prywatnych, zobacz sekcję limity w artykule [Omówienie automatycznej synchronizacji chmury prywatnej](cloudsimple-private-cloud.md) .
+Chmura prywatna składa się z jednego lub więcej klastrów vSphere. Każdy klaster może mieć od 3 do 16 węzłów.  Podczas rozwijania chmury prywatnej należy dodać węzły do istniejącego klastra lub utworzyć nowy klaster. Aby rozwinąć istniejący klaster, dodatkowe węzły muszą być tego samego typu (SKU) co istniejące węzły. Do tworzenia nowego klastra, węzły mogą być innego typu. Aby uzyskać więcej informacji na temat limitów chmury prywatnej, zobacz sekcję limitów w [cloudSimple chmura prywatna omówienie](cloudsimple-private-cloud.md) artykułu.
 
-Chmura prywatna w wersji zaautomatycznej jest tworzona przy użyciu domyślnego **centrum** danych w programie vCenter. Każde centrum danych służy jako jednostka zarządzania najwyższego poziomu. W przypadku nowego klastra narzędzie do automatycznej synchronizacji oferuje możliwość dodania do istniejącego centrum danych lub utworzenia nowego centrum danych.
+Chmura prywatna jest tworzona z domyślnym **centrum danych** w vCenter.  Każde centrum danych służy jako jednostka zarządzania najwyższego poziomu.  W przypadku nowego klastra CloudSimple umożliwia dodawanie do istniejącego centrum danych lub tworzenie nowego centrum danych.
 
-W ramach nowej konfiguracji klastra automatyczna konfiguracja systemu pozwala skonfigurować infrastrukturę VMware. Ustawienia obejmują ustawienia magazynu dla grup dysków sieci vSAN, wysokiej dostępności VMware i Distributed Resource Scheduler (DRS).
+W ramach nowej konfiguracji klastra CloudSimple konfiguruje infrastrukturę VMware.  Ustawienia obejmują ustawienia magazynu dla grup dysków vSAN, wysokiej dostępności VMware i harmonogramu zasobów rozproszonych (DRS).
 
-Chmurę prywatną do automatycznej synchronizacji można rozszerzyć wiele razy. Rozszerzanie można wykonać tylko wtedy, gdy użytkownik pozostaje w ogólnym limicie węzłów. Za każdym razem, gdy rozszerzasz chmurę prywatną, którą chcesz dodać do istniejącego klastra, lub Utwórz nową.
+Chmura prywatna może być rozszerzana wiele razy. Rozszerzeń można wykonać tylko wtedy, gdy pozostaniesz w ogólnych granicach węzła. Za każdym razem, gdy rozwijasz chmurę prywatną, którą dodajesz do istniejącego klastra lub tworzysz nowy.
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
-Aby można było rozszerzyć chmurę prywatną automatycznej synchronizacji, węzły muszą być obsługiwane. Aby uzyskać więcej informacji o węzłach aprowizacji, zobacz temat [Inicjowanie obsługi węzłów dla rozwiązań VMware przez narzędzie do automatycznej synchronizacji — artykuł platformy Azure](create-nodes.md) . Do utworzenia nowego klastra potrzebne są co najmniej trzy dostępne węzły tej samej jednostki SKU.
+Węzły muszą być aprowizowane, zanim będzie można rozwinąć chmurę prywatną.  Aby uzyskać więcej informacji na temat inicjowania obsługi administracyjnej węzłów, zobacz [inicjowanie obsługi administracyjnej węzłów rozwiązania VMware przez CloudSimple —](create-nodes.md) artykuł platformy Azure.  Do utworzenia nowego klastra musi mieć co najmniej trzy dostępne węzły tej samej jednostki SKU.
 
-## <a name="sign-in-to-azure"></a>Zaloguj się w usłudze Azure
+## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
 
-Zaloguj się do witryny Azure Portal pod adresem [https://portal.azure.com](https://portal.azure.com).
+Zaloguj się do witryny Azure portal w [https://portal.azure.com](https://portal.azure.com).
 
-## <a name="expand-an-avs-private-cloud"></a>Rozwiń chmurę prywatną w wersji zaautomatycznej
+## <a name="expand-a-private-cloud"></a>Rozszerzanie chmury prywatnej
 
-1. [Uzyskaj dostęp do portalu automatycznej synchronizacji](access-cloudsimple-portal.md).
+1. [Uzyskaj dostęp do portalu CloudSimple](access-cloudsimple-portal.md).
 
-2. Otwórz stronę **zasoby** i wybierz chmurę prywatną do automatycznej synchronizacji, dla której chcesz rozwinąć.
+2. Otwórz stronę **Zasoby** i wybierz chmurę prywatną, dla której chcesz się rozwinąć.
 
-3. W sekcji Podsumowanie kliknij przycisk **Rozwiń**.
+3. W sekcji Podsumowanie kliknij pozycję **Rozwiń**.
 
-    ![Rozwiń listę automatyczna synchronizacja chmurę prywatną](media/resources-expand-private-cloud.png)
+    ![Rozwiń chmurę prywatną](media/resources-expand-private-cloud.png)
 
-4. Wybierz, czy chcesz rozszerzyć istniejący klaster, czy utworzyć nowy klaster vSphere. Podczas wprowadzania zmian informacje podsumowujące na stronie zostaną zaktualizowane.
+4. Wybierz, czy chcesz rozwinąć istniejący klaster, czy utworzyć nowy klaster vSphere. Po wprowadzaniu zmian informacje podsumowujące na stronie są aktualizowane.
 
-    * Aby rozwinąć istniejący klaster, kliknij przycisk **Rozwiń istniejący klaster**. Wybierz klaster, który chcesz rozwinąć, a następnie wprowadź liczbę węzłów do dodania. Każdy klaster może zawierać maksymalnie 16 węzłów.
-    * Aby dodać nowy klaster, kliknij przycisk **Utwórz nowy klaster**. Wprowadź nazwę klastra. Wybierz istniejące centrum danych lub wprowadź nazwę, aby utworzyć nowe centrum danych. Wybierz typ węzła. Możesz wybrać inny typ węzła podczas tworzenia nowego klastra vSphere, ale nie podczas rozszerzania istniejącego klastra vSphere. Wybierz liczbę węzłów. Każdy nowy klaster musi mieć co najmniej trzy węzły.
+    * Aby rozwinąć istniejący klaster, kliknij pozycję **Rozwiń istniejący klaster**. Wybierz klaster, który chcesz rozwinąć, i wprowadź liczbę węzłów do dodania. Każdy klaster może mieć maksymalnie 16 węzłów.
+    * Aby dodać nowy klaster, kliknij pozycję **Utwórz nowy klaster**. Wprowadź nazwę klastra. Wybierz istniejące centrum danych lub wprowadź nazwę, aby utworzyć nowe centrum danych. Wybierz typ węzła. Podczas tworzenia nowego klastra vSphere można wybrać inny typ węzła, ale nie podczas rozszerzania istniejącego klastra vSphere. Wybierz liczbę węzłów. Każdy nowy klaster musi mieć co najmniej trzy węzły.
 
-    ![Rozwiń listę automatyczna synchronizacja chmur prywatnych — Dodaj węzły](media/resources-expand-private-cloud-add-nodes.png)
+    ![Rozwiń chmurę prywatną - dodawanie węzłów](media/resources-expand-private-cloud-add-nodes.png)
 
-5. Kliknij pozycję **Prześlij** , aby rozwinąć chmurę prywatną do automatycznej synchronizacji.
+5. Kliknij **przycisk Prześlij,** aby rozwinąć chmurę prywatną.
 
 ## <a name="next-steps"></a>Następne kroki
 
-* [Korzystanie z maszyn wirtualnych VMware na platformie Azure](quickstart-create-vmware-virtual-machine.md)
-* Dowiedz się więcej o [automatycznej synchronizacji chmur prywatnych](cloudsimple-private-cloud.md)
+* [Używanie maszyn wirtualnych VMware na platformie Azure](quickstart-create-vmware-virtual-machine.md)
+* Dowiedz się więcej o [chmurach prywatnych](cloudsimple-private-cloud.md)

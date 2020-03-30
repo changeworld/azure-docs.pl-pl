@@ -5,40 +5,40 @@ ms.topic: include
 ms.date: 03/05/2019
 ms.author: cshoe
 ms.openlocfilehash: 438e3166e27511780dd871b5076a7b28ebade052
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77589716"
 ---
-Użyj wyzwalacza funkcji, aby odpowiedzieć na zdarzenie wysłane do strumienia zdarzeń centrum zdarzeń. Aby skonfigurować wyzwalacz, musisz mieć dostęp do odczytu do odpowiedniego centrum zdarzeń. Gdy funkcja jest wyzwalana, komunikat przeszedł do funkcji jest wpisywany jako ciąg.
+Użyj wyzwalacza funkcji, aby odpowiedzieć na zdarzenie wysłane do strumienia zdarzeń centrum zdarzeń. Aby skonfigurować wyzwalacz, musisz mieć dostęp do odczytu do centrum zdarzeń źródłowych. Po wyzwoleniu funkcji komunikat przekazany do funkcji jest wpisywany jako ciąg.
 
 ## <a name="scaling"></a>Skalowanie
 
-Każde wystąpienie funkcji wyzwalanej przez zdarzenie jest obsługiwane przez pojedyncze wystąpienie [klasy eventprocessorhost](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.processor) . Wyzwalacz (obsługiwany przez Event Hubs) gwarantuje, że tylko jedno wystąpienie [klasy eventprocessorhost](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.processor) może uzyskać dzierżawę dla danej partycji.
+Każde wystąpienie funkcji wyzwalanej zdarzeniem jest wspierane przez pojedyncze [wystąpienie EventProcessorHost.](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.processor) Wyzwalacz (zasilany przez centra zdarzeń) zapewnia, że tylko jedno [wystąpienie EventProcessorHost](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.processor) może uzyskać dzierżawę na danej partycji.
 
-Rozważmy na przykład centrum zdarzeń w następujący sposób:
+Na przykład należy wziąć pod uwagę Centrum zdarzeń w następujący sposób:
 
 * 10 partycji
-* zdarzenia 1 000 równomiernie rozłożone na wszystkie partycje, z 100 komunikatami w każdej partycji
+* 1000 zdarzeń rozmieszczonych równomiernie na wszystkich partycjach, przy 100 wiadomościach na każdej partycji
 
-Gdy funkcja jest włączona po raz pierwszy, istnieje tylko jedno wystąpienie funkcji. Wywołajmy pierwsze wystąpienie funkcji `Function_0`. Funkcja `Function_0` ma pojedyncze wystąpienie [klasy eventprocessorhost](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.processor) , które przechowuje dzierżawę na wszystkich dziesięciu partycjach. To wystąpienie odczytuje zdarzenia z partycji 0-9. Od tego momentu następuje jedna z następujących sytuacji:
+Gdy funkcja jest po raz pierwszy włączona, istnieje tylko jedno wystąpienie funkcji. Nazwijmy pierwsze wystąpienie `Function_0`funkcji . Funkcja `Function_0` ma jedno wystąpienie [EventProcessorHost,](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.processor) który posiada dzierżawy na wszystkich dziesięciu partycji. To wystąpienie odczytuje zdarzenia z partycji 0-9. Od tego momentu dzieje się jedna z następujących sytuacji:
 
-* **Nowe wystąpienia funkcji nie są konieczne**: `Function_0` może przetwarzać wszystkie zdarzenia 1 000, zanim zacznie obowiązywać logika skalowania funkcji. W takim przypadku wszystkie komunikaty 1 000 są przetwarzane przez `Function_0`.
+* **Nowe wystąpienia funkcji nie są potrzebne:** `Function_0` jest w stanie przetworzyć wszystkie zdarzenia 1000 przed funkcje skalowania logiki efektu. W takim przypadku wszystkie 1000 wiadomości są `Function_0`przetwarzane przez .
 
-* **Dodawane jest dodatkowe wystąpienie funkcji**: jeśli logika skalowania funkcji określa, że `Function_0` ma więcej komunikatów niż może przetworzyć, tworzone jest nowe wystąpienie aplikacji funkcji (`Function_1`). Ta nowa funkcja ma również skojarzone wystąpienie elementu [klasy eventprocessorhost](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.processor). Ponieważ podstawowe Event Hubs wykrywają, że nowe wystąpienie hosta próbuje odczytywać komunikaty, równoważenie obciążenia partycji w wystąpieniach hosta. Na przykład partycje 0-4 mogą być przypisane do `Function_0` i partycji 5-9 do `Function_1`.
+* **Dodatkowe wystąpienie funkcji jest dodawany:** Jeśli funkcje skalowania logiki określa, że `Function_0` ma`Function_1`więcej komunikatów niż może przetwarzać, nowe wystąpienie aplikacji funkcji ( ) jest tworzony. Ta nowa funkcja ma również skojarzone wystąpienie [EventProcessorHost](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.processor). Gdy podstawowe centra zdarzeń wykrywają, że nowe wystąpienie hosta próbuje odczytać wiadomości, ładuje partycje między wystąpieniami hosta. Na przykład partycje 0-4 mogą `Function_0` być przypisane do partycji `Function_1`5-9 do .
 
-* **Dodano więcej wystąpień funkcji**: jeśli logika skalowania funkcji określa, że zarówno `Function_0`, jak i `Function_1` mają więcej komunikatów niż można przetwarzać, tworzone są nowe wystąpienia aplikacji funkcji `Functions_N`.  Aplikacje są tworzone w punkcie, w którym `N` jest większa niż liczba partycji centrum zdarzeń. W naszym przykładzie Event Hubs ponownie równoważenia obciążenia partycji, w tym przypadku między wystąpieniami `Function_0`...`Functions_9`.
+* **N więcej wystąpień funkcji są dodawane:** Jeśli funkcje `Function_1` skalowania logiki określa, `Functions_N` że zarówno `Function_0` i mają więcej komunikatów niż mogą przetwarzać, nowe wystąpienia aplikacji funkcji są tworzone.  Aplikacje są tworzone `N` do punktu, w którym jest większa niż liczba partycji centrum zdarzeń. W naszym przykładzie Usługi zdarzeń ponownie równoważy obciążenia partycji, `Function_0`w tym przypadku w wystąpieniach ... `Functions_9`.
 
-Skalowanie jest wykonywane, `N` wystąpienia są większe niż liczba partycji centrum zdarzeń. Ten wzorzec służy do upewniania się, że wystąpienia [klasy eventprocessorhost](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.processor) są dostępne do uzyskania blokad w partycjach, gdy staną się dostępne z innych wystąpień. Opłata jest naliczana tylko za zasoby używane, gdy wystąpienie funkcji jest wykonywane. Innymi słowy, nie jest naliczana opłata za tę nadmierną obsługę.
+W miarę `N` skalowania wystąpień jest liczba większa niż liczba partycji centrum zdarzeń. Ten wzorzec jest używany w celu zapewnienia [EventProcessorHost](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.processor) wystąpienia są dostępne do uzyskania blokad na partycjach, ponieważ stają się one dostępne z innych wystąpień. Opłaty są naliczane tylko za zasoby używane podczas wykonywania wystąpienia funkcji. Innymi słowy nie są pobierane za to nadmierne inicjowanie obsługi administracyjnej.
 
-Po zakończeniu wykonywania wszystkich funkcji (z błędami lub bez nich) punkty kontrolne są dodawane do skojarzonego konta magazynu. Po pomyślnym sprawdzeniu, wszystkie komunikaty 1 000 nigdy nie są pobierane ponownie.
+Po zakończeniu wykonywania wszystkich funkcji (z błędami lub bez), punkty kontrolne są dodawane do skojarzonego konta magazynu. Po pomyślnym wskazywaniem zaznaczenia wszystkie 1000 wiadomości nigdy nie zostaną pobrane ponownie.
 
 <a id="example" name="example"></a>
 
-# <a name="c"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C #](#tab/csharp)
 
-Poniższy przykład pokazuje [ C# funkcję](../articles/azure-functions/functions-dotnet-class-library.md) , która rejestruje treść komunikatu wyzwalacza centrum zdarzeń.
+W poniższym przykładzie pokazano [funkcję Języka C#,](../articles/azure-functions/functions-dotnet-class-library.md) która rejestruje treść komunikatu wyzwalacza centrum zdarzeń.
 
 ```csharp
 [FunctionName("EventHubTriggerCSharp")]
@@ -48,7 +48,7 @@ public static void Run([EventHubTrigger("samples-workitems", Connection = "Event
 }
 ```
 
-Aby uzyskać dostęp do [metadanych zdarzenia](#event-metadata) w kodzie funkcji, powiąż z obiektem [EVENTDATA](/dotnet/api/microsoft.servicebus.messaging.eventdata) (wymaga instrukcji using dla `Microsoft.Azure.EventHubs`). Możesz również uzyskać dostęp do tych samych właściwości przy użyciu wyrażeń powiązania w podpisie metody.  W poniższym przykładzie pokazano dwa sposoby uzyskania tych samych danych:
+Aby uzyskać dostęp do [metadanych zdarzeń](#event-metadata) w kodzie funkcji, należy `Microsoft.Azure.EventHubs`powiązać z obiektem [EventData](/dotnet/api/microsoft.servicebus.messaging.eventdata) (wymaga instrukcji using). Można również uzyskać dostęp do tych samych właściwości przy użyciu wyrażeń wiązania w podpisie metody.  Poniższy przykład pokazuje oba sposoby, aby uzyskać te same dane:
 
 ```csharp
 [FunctionName("EventHubTriggerCSharp")]
@@ -71,10 +71,10 @@ public static void Run(
 }
 ```
 
-Aby odbierać zdarzenia w partii, należy wprowadzić `string` lub `EventData` tablicy.  
+Aby odbierać zdarzenia w `string` `EventData` partii, zrobić lub tablicy.  
 
 > [!NOTE]
-> W przypadku odbierania w partii nie można powiązać parametrów metody, takich jak w powyższym przykładzie z `DateTime enqueuedTimeUtc` i muszą otrzymać te dane z każdego obiektu `EventData`  
+> Podczas odbierania w partii nie można powiązać z `DateTime enqueuedTimeUtc` parametrami metody, `EventData` jak w powyższym przykładzie z i musi otrzymać je z każdego obiektu  
 
 ```cs
 [FunctionName("EventHubTriggerCSharp")]
@@ -88,13 +88,13 @@ public static void Run([EventHubTrigger("samples-workitems", Connection = "Event
 }
 ```
 
-# <a name="c-script"></a>[C#Napisy](#tab/csharp-script)
+# <a name="c-script"></a>[Skrypt języka C#](#tab/csharp-script)
 
-Poniższy przykład przedstawia powiązanie wyzwalacza centrum zdarzeń w pliku *Function. JSON* i [ C# funkcji skryptu](../articles/azure-functions/functions-reference-csharp.md) , która używa powiązania. Funkcja rejestruje treść komunikatu wyzwalacza centrum zdarzeń.
+W poniższym przykładzie pokazano powiązanie wyzwalacza centrum zdarzeń w pliku *function.json* i [funkcję skryptu Języka C#,](../articles/azure-functions/functions-reference-csharp.md) która używa powiązania. Funkcja rejestruje treść komunikatu wyzwalacza centrum zdarzeń.
 
-W poniższych przykładach pokazano Event Hubs powiązania danych w pliku *Function. JSON* .
+Poniższe przykłady pokazują dane powiązania centrum zdarzeń w pliku *function.json.*
 
-### <a name="version-2x-and-higher"></a>Wersja 2. x lub nowsza
+### <a name="version-2x-and-higher"></a>Wersja 2.x lub nowsza
 
 ```json
 {
@@ -106,7 +106,7 @@ W poniższych przykładach pokazano Event Hubs powiązania danych w pliku *Funct
 }
 ```
 
-### <a name="version-1x"></a>Wersja 1. x
+### <a name="version-1x"></a>Wersja 1.x
 
 ```json
 {
@@ -118,7 +118,7 @@ W poniższych przykładach pokazano Event Hubs powiązania danych w pliku *Funct
 }
 ```
 
-Poniżej przedstawiono kod skryptu języka C#:
+Oto kod skryptu języka C#:
 
 ```cs
 using System;
@@ -129,7 +129,7 @@ public static void Run(string myEventHubMessage, TraceWriter log)
 }
 ```
 
-Aby uzyskać dostęp do [metadanych zdarzenia](#event-metadata) w kodzie funkcji, powiąż z obiektem [EVENTDATA](/dotnet/api/microsoft.servicebus.messaging.eventdata) (wymaga instrukcji using dla `Microsoft.Azure.EventHubs`). Możesz również uzyskać dostęp do tych samych właściwości przy użyciu wyrażeń powiązania w podpisie metody.  W poniższym przykładzie pokazano dwa sposoby uzyskania tych samych danych:
+Aby uzyskać dostęp do [metadanych zdarzeń](#event-metadata) w kodzie funkcji, należy `Microsoft.Azure.EventHubs`powiązać z obiektem [EventData](/dotnet/api/microsoft.servicebus.messaging.eventdata) (wymaga instrukcji using). Można również uzyskać dostęp do tych samych właściwości przy użyciu wyrażeń wiązania w podpisie metody.  Poniższy przykład pokazuje oba sposoby, aby uzyskać te same dane:
 
 ```cs
 #r "Microsoft.Azure.EventHubs"
@@ -157,7 +157,7 @@ public static void Run(EventData myEventHubMessage,
 }
 ```
 
-Aby odbierać zdarzenia w partii, należy wprowadzić `string` lub `EventData` tablicy:
+Aby odbierać zdarzenia w `string` `EventData` partii, make lub tablicy:
 
 ```cs
 public static void Run(string[] eventHubMessages, TraceWriter log)
@@ -169,13 +169,13 @@ public static void Run(string[] eventHubMessages, TraceWriter log)
 }
 ```
 
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[Javascript](#tab/javascript)
 
-W poniższym przykładzie pokazano powiązanie wyzwalacza centrum zdarzeń w pliku *Function. JSON* oraz [funkcja języka JavaScript](../articles/azure-functions/functions-reference-node.md) , która używa powiązania. Funkcja odczytuje [metadane zdarzeń](#event-metadata) i rejestruje komunikat.
+W poniższym przykładzie pokazano powiązanie wyzwalacza centrum zdarzeń w pliku *function.json* i [funkcję JavaScript,](../articles/azure-functions/functions-reference-node.md) która używa powiązania. Funkcja odczytuje [metadane zdarzeń](#event-metadata) i rejestruje komunikat.
 
-W poniższych przykładach pokazano Event Hubs powiązania danych w pliku *Function. JSON* .
+Poniższe przykłady pokazują dane powiązania centrum zdarzeń w pliku *function.json.*
 
-### <a name="version-2x-and-higher"></a>Wersja 2. x lub nowsza
+### <a name="version-2x-and-higher"></a>Wersja 2.x lub nowsza
 
 ```json
 {
@@ -187,7 +187,7 @@ W poniższych przykładach pokazano Event Hubs powiązania danych w pliku *Funct
 }
 ```
 
-### <a name="version-1x"></a>Wersja 1. x
+### <a name="version-1x"></a>Wersja 1.x
 
 ```json
 {
@@ -199,7 +199,7 @@ W poniższych przykładach pokazano Event Hubs powiązania danych w pliku *Funct
 }
 ```
 
-Poniżej przedstawiono kod JavaScript:
+Oto kod JavaScript:
 
 ```javascript
 module.exports = function (context, myEventHubMessage) {
@@ -212,9 +212,9 @@ module.exports = function (context, myEventHubMessage) {
 };
 ```
 
-Aby odbierać zdarzenia w partii, należy ustawić `cardinality` na `many` w pliku *Function. JSON* , jak pokazano w poniższych przykładach.
+Aby odbierać zdarzenia w `cardinality` `many` partii, należy ustawić w pliku *function.json,* jak pokazano w poniższych przykładach.
 
-### <a name="version-2x-and-higher"></a>Wersja 2. x lub nowsza
+### <a name="version-2x-and-higher"></a>Wersja 2.x lub nowsza
 
 ```json
 {
@@ -227,7 +227,7 @@ Aby odbierać zdarzenia w partii, należy ustawić `cardinality` na `many` w pli
 }
 ```
 
-### <a name="version-1x"></a>Wersja 1. x
+### <a name="version-1x"></a>Wersja 1.x
 
 ```json
 {
@@ -240,7 +240,7 @@ Aby odbierać zdarzenia w partii, należy ustawić `cardinality` na `many` w pli
 }
 ```
 
-Poniżej przedstawiono kod JavaScript:
+Oto kod JavaScript:
 
 ```javascript
 module.exports = function (context, eventHubMessages) {
@@ -259,9 +259,9 @@ module.exports = function (context, eventHubMessages) {
 
 # <a name="python"></a>[Python](#tab/python)
 
-Poniższy przykład przedstawia powiązanie wyzwalacza centrum zdarzeń w pliku *Function. JSON* i [funkcji języka Python](../articles/azure-functions/functions-reference-python.md) , która używa powiązania. Funkcja odczytuje [metadane zdarzeń](#event-metadata) i rejestruje komunikat.
+W poniższym przykładzie pokazano powiązanie wyzwalacza centrum zdarzeń w pliku *function.json* i [funkcję Języka Python,](../articles/azure-functions/functions-reference-python.md) która używa powiązania. Funkcja odczytuje [metadane zdarzeń](#event-metadata) i rejestruje komunikat.
 
-W poniższych przykładach pokazano Event Hubs powiązania danych w pliku *Function. JSON* .
+Poniższe przykłady pokazują dane powiązania centrum zdarzeń w pliku *function.json.*
 
 ```json
 {
@@ -273,7 +273,7 @@ W poniższych przykładach pokazano Event Hubs powiązania danych w pliku *Funct
 }
 ```
 
-Oto kod języka Python:
+Oto kod Pythona:
 
 ```python
 import logging
@@ -289,7 +289,7 @@ def main(event: func.EventHubEvent):
 
 # <a name="java"></a>[Java](#tab/java)
 
-Poniższy przykład pokazuje powiązanie wyzwalacza centrum zdarzeń, które rejestruje treść komunikatu wyzwalacza centrum zdarzeń.
+W poniższym przykładzie pokazano powiązanie wyzwalacza centrum zdarzeń, które rejestruje treść komunikatu wyzwalacza Centrum zdarzeń.
 
 ```java
 @FunctionName("ehprocessor")
@@ -303,17 +303,17 @@ public void eventHubProcessor(
  }
 ```
 
- W [bibliotece środowiska uruchomieniowego funkcji Java](/java/api/overview/azure/functions/runtime)Użyj adnotacji `EventHubTrigger` w przypadku parametrów, których wartość pochodzi z centrum zdarzeń. Parametry z tymi adnotacjami powodują, że funkcja jest uruchamiana po nadejściu zdarzenia.  Tej adnotacji można używać w przypadku natywnych typów Java, Pojo lub wartości null przy użyciu `Optional<T>`.
+ W [bibliotece środowiska wykonawczego](/java/api/overview/azure/functions/runtime)funkcji `EventHubTrigger` Java użyj adnotacji na temat parametrów, których wartość pochodziłaby z Centrum zdarzeń. Parametry z tymi adnotacjami powodują, że funkcja jest uruchamiana po nadejściu zdarzenia.  Ta adnotacja może być używana z natywnymi typami `Optional<T>`Java, POJO lub wartościami nullable przy użyciu .
 
  ---
 
 ## <a name="attributes-and-annotations"></a>Atrybuty i adnotacje
 
-# <a name="c"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C #](#tab/csharp)
 
-W [ C# bibliotekach klas](../articles/azure-functions/functions-dotnet-class-library.md)Użyj atrybutu [EventHubTriggerAttribute](https://github.com/Azure/azure-functions-eventhubs-extension/blob/master/src/Microsoft.Azure.WebJobs.Extensions.EventHubs/EventHubTriggerAttribute.cs) .
+W [bibliotekach klas języka C#](../articles/azure-functions/functions-dotnet-class-library.md)użyj atrybutu [EventHubTriggerAttribute.](https://github.com/Azure/azure-functions-eventhubs-extension/blob/master/src/Microsoft.Azure.WebJobs.Extensions.EventHubs/EventHubTriggerAttribute.cs)
 
-Konstruktor atrybutu przyjmuje nazwę centrum zdarzeń, nazwę grupy odbiorców i nazwę ustawienia aplikacji, które zawiera parametry połączenia... Więcej informacji o tych ustawieniach znajduje się w [sekcji Konfiguracja wyzwalacza](#configuration). Oto przykład `EventHubTriggerAttribute` atrybutu:
+Konstruktor atrybutu przyjmuje nazwę centrum zdarzeń, nazwę grupy odbiorców i nazwę ustawienia aplikacji zawierającego parametry połączenia. Aby uzyskać więcej informacji na temat tych ustawień, zobacz [sekcję konfiguracji wyzwalacza](#configuration). Oto przykład `EventHubTriggerAttribute` atrybutu:
 
 ```csharp
 [FunctionName("EventHubTriggerCSharp")]
@@ -323,61 +323,61 @@ public static void Run([EventHubTrigger("samples-workitems", Connection = "Event
 }
 ```
 
-Aby zapoznać się z kompletnym przykładem, zobacz [wyzwalacz- C# example](#example).
+Aby uzyskać pełny przykład, zobacz [Trigger - C# przykład](#example).
 
-# <a name="c-script"></a>[C#Napisy](#tab/csharp-script)
+# <a name="c-script"></a>[Skrypt języka C#](#tab/csharp-script)
 
-Atrybuty nie są obsługiwane przez C# skrypt.
+Atrybuty nie są obsługiwane przez skrypt języka C#.
 
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[Javascript](#tab/javascript)
 
-Atrybuty nie są obsługiwane przez język JavaScript.
+Atrybuty nie są obsługiwane przez javascript.
 
 # <a name="python"></a>[Python](#tab/python)
 
-Atrybuty nie są obsługiwane przez język Python.
+Atrybuty nie są obsługiwane przez Pythona.
 
 # <a name="java"></a>[Java](#tab/java)
 
-W [bibliotece środowiska uruchomieniowego usługi Java Functions](https://docs.microsoft.com/java/api/overview/azure/functions/runtime)Użyj adnotacji [EventHubTrigger](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.annotation.eventhubtrigger) w przypadku parametrów, których wartość pochodzi z centrum zdarzeń. Parametry z tymi adnotacjami powodują, że funkcja jest uruchamiana po nadejściu zdarzenia. Tej adnotacji można używać w przypadku natywnych typów Java, Pojo lub wartości null przy użyciu `Optional<T>`.
+Z [biblioteki środowiska wykonawczego funkcji](https://docs.microsoft.com/java/api/overview/azure/functions/runtime)Java użyj adnotacji [EventHubTrigger](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.annotation.eventhubtrigger) na temat parametrów, których wartość będzie pochodzić z Centrum zdarzeń. Parametry z tymi adnotacjami powodują, że funkcja jest uruchamiana po nadejściu zdarzenia. Ta adnotacja może być używana z natywnymi typami `Optional<T>`Java, POJO lub wartościami nullable przy użyciu .
 
 ---
 
-## <a name="configuration"></a>Konfiguracja
+## <a name="configuration"></a>Konfigurowanie
 
-W poniższej tabeli objaśniono właściwości konfiguracji powiązań ustawiane w pliku *Function. JSON* i `EventHubTrigger` atrybutu.
+W poniższej tabeli opisano właściwości konfiguracji powiązania, które można `EventHubTrigger` ustawić w pliku *function.json* i atrybut.
 
-|Właściwość Function.JSON | Właściwość atrybutu |Opis|
+|właściwość function.json | Właściwość atrybutu |Opis|
 |---------|---------|----------------------|
-|**type** | Nie dotyczy | musi być ustawiony na `eventHubTrigger`. Ta właściwość jest ustawiana automatycznie po utworzeniu wyzwalacza w witrynie Azure portal.|
-|**direction** | Nie dotyczy | musi być ustawiony na `in`. Ta właściwość jest ustawiana automatycznie po utworzeniu wyzwalacza w witrynie Azure portal. |
-|**Nazwij** | Nie dotyczy | Nazwa zmiennej, która reprezentuje element zdarzenia w kodzie funkcji. |
-|**path** |**EventHubName** | Tylko funkcje 1. x. Nazwa centrum zdarzeń. Gdy nazwa centrum zdarzeń jest również obecna w parametrach połączenia, ta wartość zastępuje tę właściwość w czasie wykonywania. |
-|**eventHubName** |**EventHubName** | Funkcje 2. x i nowsze. Nazwa centrum zdarzeń. Gdy nazwa centrum zdarzeń jest również obecna w parametrach połączenia, ta wartość zastępuje tę właściwość w czasie wykonywania. Można odwoływać się za pomocą ustawień aplikacji% eventHubName% |
-|**odbiorca** |**Odbiorca** | Opcjonalna właściwość, która ustawia [grupę odbiorców](../articles/event-hubs/event-hubs-features.md#event-consumers) służącą do subskrybowania zdarzeń w centrum. W przypadku pominięcia zostanie użyta Grupa konsumentów `$Default`. |
-|**kardynalności** | Nie dotyczy | Dla języka JavaScript. Ustaw wartość `many`, aby umożliwić przetwarzanie wsadowe.  W przypadku pominięcia lub ustawienia wartości `one`do funkcji zostaje przekazana jedna wiadomość. |
-|**połączenia** |**Połączenie** | Nazwa ustawienia aplikacji, które zawiera parametry połączenia z przestrzenią nazw centrum zdarzeń. Skopiuj te parametry połączenia, klikając przycisk **Informacje o połączeniu** dla [obszaru nazw](../articles/event-hubs/event-hubs-create.md#create-an-event-hubs-namespace), a nie samego centrum zdarzeń. Te parametry połączenia muszą mieć co najmniej uprawnienia do odczytu w celu aktywowania wyzwalacza.|
+|**Typu** | Nie dotyczy | Musi być `eventHubTrigger`ustawiona na . Ta właściwość jest ustawiana automatycznie podczas tworzenia wyzwalacza w witrynie Azure portal.|
+|**Kierunku** | Nie dotyczy | Musi być `in`ustawiona na . Ta właściwość jest ustawiana automatycznie podczas tworzenia wyzwalacza w witrynie Azure portal. |
+|**Nazwa** | Nie dotyczy | Nazwa zmiennej reprezentującej element zdarzenia w kodzie funkcji. |
+|**Ścieżka** |**Nazwa eventhubname** | Funkcje tylko 1.x. Nazwa centrum zdarzeń. Gdy nazwa centrum zdarzeń jest również obecny w ciągu połączenia, ta wartość zastępuje tę właściwość w czasie wykonywania. |
+|**eventHubName** |**Nazwa eventhubname** | Funkcje 2.x lub wyższe. Nazwa centrum zdarzeń. Gdy nazwa centrum zdarzeń jest również obecny w ciągu połączenia, ta wartość zastępuje tę właściwość w czasie wykonywania. Można odwoływać się za pomocą ustawień aplikacji %eventHubName% |
+|**grupa konsumentów** |**Grupa konsumentów** | Opcjonalna właściwość, która ustawia [grupę odbiorców](../articles/event-hubs/event-hubs-features.md#event-consumers) używaną do subskrybowania zdarzeń w centrum. W przypadku pominięcia `$Default` używana jest grupa odbiorców. |
+|**Kardynalność** | Nie dotyczy | Dla Javascript. Ustaw `many` na, aby włączyć przetwarzanie wsadowe.  Jeśli pominięto lub `one`ustawiono na , do funkcji jest przekazywana pojedyncza wiadomość. |
+|**Połączenia** |**Połączenia** | Nazwa ustawienia aplikacji zawierającego parametry połączenia z obszarem nazw centrum zdarzeń. Skopiuj ten ciąg połączenia, klikając przycisk **Informacje o połączeniu** dla obszaru [nazw,](../articles/event-hubs/event-hubs-create.md#create-an-event-hubs-namespace)a nie sam koncentrator zdarzeń. Ten ciąg połączenia musi mieć co najmniej uprawnienia do odczytu, aby aktywować wyzwalacz.|
 
 [!INCLUDE [app settings to local.settings.json](../articles/azure-functions/../../includes/functions-app-settings-local.md)]
 
-## <a name="event-metadata"></a>Metadane zdarzenia
+## <a name="event-metadata"></a>Metadane zdarzeń
 
-Wyzwalacz Event Hubs zawiera kilka [właściwości metadanych](../articles/azure-functions/./functions-bindings-expressions-patterns.md). Właściwości metadanych mogą służyć jako część wyrażeń powiązań w innych powiązaniach lub jako parametry w kodzie. Właściwości pochodzą z klasy [EVENTDATA](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.eventdata) .
+Wyzwalacz Centrum zdarzeń udostępnia kilka [właściwości metadanych.](../articles/azure-functions/./functions-bindings-expressions-patterns.md) Właściwości metadanych mogą być używane jako część wyrażeń wiązania w innych powiązaniach lub jako parametry w kodzie. Właściwości pochodzą z [EventData](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.eventdata) klasy.
 
 |Właściwość|Typ|Opis|
 |--------|----|-----------|
-|`PartitionContext`|[PartitionContext](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.partitioncontext)|Wystąpienie elementu `PartitionContext`.|
-|`EnqueuedTimeUtc`|`DateTime`|Godzina umieszczonych w kolejce w formacie UTC.|
-|`Offset`|`string`|Przesunięcie danych względem strumienia partycji centrum zdarzeń. Przesunięcie jest znacznikiem lub identyfikatorem zdarzenia w strumieniu Event Hubs. Identyfikator jest unikatowy w obrębie partycji Event Hubs strumienia.|
+|`PartitionContext`|[Kontekst partycji](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.partitioncontext)|Wystąpienie elementu `PartitionContext`.|
+|`EnqueuedTimeUtc`|`DateTime`|Czas w kolejce w utc.|
+|`Offset`|`string`|Przesunięcie danych względem strumienia partycji Usługi Event Hub. Przesunięcie jest znacznikiem lub identyfikatorem zdarzenia w strumieniu Usługi zdarzeń. Identyfikator jest unikatowy w obrębie partycji strumienia Usługi event hubów.|
 |`PartitionKey`|`string`|Partycja, do której mają być wysyłane dane zdarzeń.|
 |`Properties`|`IDictionary<String,Object>`|Właściwości użytkownika danych zdarzenia.|
-|`SequenceNumber`|`Int64`|Numer sekwencji logicznej zdarzenia.|
+|`SequenceNumber`|`Int64`|Logiczny numer sekwencyjny zdarzenia.|
 |`SystemProperties`|`IDictionary<String,Object>`|Właściwości systemu, w tym dane zdarzenia.|
 
-Zobacz [przykłady kodu](#example) , które używają tych właściwości wcześniej w tym artykule.
+Zobacz [przykłady kodu,](#example) które używają tych właściwości wcześniej w tym artykule.
 
-## <a name="hostjson-properties"></a>Właściwości pliku host. JSON
+## <a name="hostjson-properties"></a>właściwości host.json
 
-Plik [host. JSON](../articles/azure-functions/functions-host-json.md#eventhub) zawiera ustawienia sterujące zachowaniem wyzwalacza Event Hubs.
+Plik [host.json](../articles/azure-functions/functions-host-json.md#eventhub) zawiera ustawienia sterujące zachowaniem wyzwalania centrów zdarzeń.
 
 [!INCLUDE [functions-host-json-event-hubs](../articles/azure-functions/../../includes/functions-host-json-event-hubs.md)]

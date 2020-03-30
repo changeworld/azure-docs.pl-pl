@@ -1,6 +1,6 @@
 ---
-title: Szybki Start — tworzenie zasobów Azure Cosmos DB z poziomu Azure Portal
-description: Ten przewodnik Szybki Start przedstawia sposób tworzenia bazy danych, kontenera i elementów usługi Azure Cosmos przy użyciu Azure Portal.
+title: Szybki start — tworzenie zasobów usługi Azure Cosmos DB z witryny Azure portal
+description: W tym przewodniku Szybki start pokazano, jak utworzyć bazę danych, kontener i elementy usługi Azure Cosmos przy użyciu witryny Azure portal.
 author: SnehaGunda
 ms.author: sngun
 ms.service: cosmos-db
@@ -9,16 +9,16 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 01/05/2020
 ms.openlocfilehash: bc7e77cc498958b2f8f0c5b2d5ab2d59db97a235
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "79240408"
 ---
-# <a name="quickstart-create-an-azure-cosmos-account-database-container-and-items-from-the-azure-portal"></a>Szybki Start: Tworzenie konta, bazy danych, kontenera i elementów usługi Azure Cosmos w Azure Portal
+# <a name="quickstart-create-an-azure-cosmos-account-database-container-and-items-from-the-azure-portal"></a>Szybki start: tworzenie konta, bazy danych, kontenerów i elementów usługi Azure Cosmos z witryny Azure portal
 
 > [!div class="op_single_selector"]
-> * [Azure Portal](create-cosmosdb-resources-portal.md)
+> * [Portal Azure](create-cosmosdb-resources-portal.md)
 > * [.NET](create-sql-api-dotnet.md)
 > * [Java](create-sql-api-java.md)
 > * [Node.js](create-sql-api-nodejs.md)
@@ -26,13 +26,13 @@ ms.locfileid: "79240408"
 > * [Xamarin](create-sql-api-xamarin-dotnet.md)
 >  
 
-Azure Cosmos DB to rozproszona globalnie wielomodelowa usługa bazy danych firmy Microsoft. Za pomocą Azure Cosmos DB można szybko tworzyć i wykonywać zapytania dotyczące baz danych typu klucz/wartość, baz danych dokumentów i baz danych grafów, a wszystkie korzyści wynikające z dystrybucji globalnej i możliwości skalowania poziomego w ramach rdzenia Azure Cosmos DB. 
+Azure Cosmos DB to rozproszona globalnie wielomodelowa usługa bazy danych firmy Microsoft. Usługi Azure Cosmos DB można używać do szybkiego tworzenia i wykonywania zapytań o bazy danych klucz/wartość, bazy danych dokumentów i baz danych wykresów, z których wszystkie korzystają z możliwości dystrybucji globalnej i skali poziomej w rdzeniu usługi Azure Cosmos DB. 
 
-W tym przewodniku szybki start pokazano, jak używać Azure Portal do tworzenia Azure Cosmos DB konta [interfejsu API SQL](sql-api-introduction.md) , tworzenia bazy danych dokumentów i kontenera oraz dodawania danych do kontenera. 
+Ten przewodnik Szybki start pokazuje, jak używać portalu Azure portal do tworzenia konta [interfejsu API SQL](sql-api-introduction.md) usługi Azure Cosmos DB, tworzenia bazy danych dokumentów i kontenera oraz dodawania danych do kontenera. 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Subskrypcja platformy Azure lub bezpłatne Azure Cosmos DB konto wersji próbnej
+Subskrypcja platformy Azure lub bezpłatne konto próbne usługi Azure Cosmos DB
 - [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)] 
 
 - [!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]  
@@ -45,37 +45,37 @@ Subskrypcja platformy Azure lub bezpłatne Azure Cosmos DB konto wersji próbnej
 <a id="create-container-database"></a>
 ## <a name="add-a-database-and-a-container"></a>Dodawanie bazy danych i kontenera 
 
-Możesz użyć Eksplorator danych w Azure Portal, aby utworzyć bazę danych i kontener. 
+Eksploratora danych w witrynie Azure portal można utworzyć bazę danych i kontener. 
 
-1.  Wybierz pozycję **Eksplorator danych** w lewym obszarze nawigacji na stronie konta Azure Cosmos DB, a następnie wybierz pozycję **nowy kontener**. 
+1.  Wybierz **Eksploratora danych** z lewej strony nawigacji na stronie konta usługi Azure Cosmos DB, a następnie wybierz pozycję **Nowy kontener**. 
     
-    Może być konieczne przewinięcie w prawo, aby wyświetlić okno **Dodawanie kontenera** .
+    Może być konieczne przewinięcie w prawo, aby wyświetlić okno **Dodaj kontener.**
     
-    ![Azure Portal Eksplorator danych, Dodaj okienko kontenera](./media/create-sql-api-dotnet/azure-cosmosdb-data-explorer-dotnet.png)
+    ![Eksplorator danych w witrynie Azure Portal, okienko Dodawanie kontenera](./media/create-sql-api-dotnet/azure-cosmosdb-data-explorer-dotnet.png)
     
-1.  W okienku **Dodaj kontener** wprowadź ustawienia dla nowego kontenera.
+1.  W okienku **Dodawanie kontenera** wprowadź ustawienia nowego kontenera.
     
     |Ustawienie|Sugerowana wartość|Opis
     |---|---|---|
-    |**Identyfikator bazy danych**|ToDoList|Wprowadź *todolist* jako nazwę nowej bazy danych. Nazwy baz danych muszą zawierać od 1 do 255 znaków i nie mogą zawierać znaków `/, \\, #, ?` ani mieć spacji na końcu. Sprawdź opcję **zainicjuj przepływność bazy danych** , która umożliwia udostępnianie przepływności dla bazy danych we wszystkich kontenerach w bazie danych. Ta opcja pomaga również w obniżyć kosztów. |
+    |**Identyfikator bazy danych**|ToDoList|Wprowadź *Listę DoDon jako* nazwę nowej bazy danych. Nazwy baz danych muszą zawierać od 1 do 255 znaków i nie mogą zawierać znaków `/, \\, #, ?` ani mieć spacji na końcu. Sprawdź opcję **przepływność bazy danych aprowizuj,** umożliwia udostępnianie przepływności aprowizowanej do bazy danych we wszystkich kontenerach w bazie danych. Ta opcja pomaga również w oszczędzaniu kosztów. |
     |**Przepływność**|400|Pozostaw przepływność na 400 jednostek żądań na sekundę (RU/s). Jeśli chcesz zmniejszyć opóźnienie, możesz później przeskalować przepływność w górę.| 
-    |**Identyfikator kontenera**|Items|Wprowadź *elementy* jako nazwę nowego kontenera. Identyfikatory kontenerów mają takie same wymagania dotyczące znaków jak nazwy baz danych.|
-    |**Klucz partycji**| /category| W przykładzie opisanym w tym artykule jest stosowany */Category* jako klucz partycji.|
+    |**Identyfikator kontenera**|Items|Wprowadź *elementy* jako nazwę nowego kontenera. W przypadku identyfikatorów kontenerów obowiązują takie same wymagania dotyczące znaków jak dla nazw baz danych.|
+    |**Klucz partycji**| /category| Przykład opisany w tym artykule używa */category* jako klucz partycji.|
 
     
-    Nie dodawaj **unikatowych kluczy** dla tego przykładu. Klucze unikatowe umożliwiają dodanie warstwy integralności danych do bazy danych, zapewniając unikatowość jednej lub więcej wartości na klucz partycji. Aby uzyskać więcej informacji, zobacz [unikalne klucze w Azure Cosmos DB](unique-keys.md).
+    Nie **dodawaj unikatowych kluczy** w tym przykładzie. Unikatowe klucze umożliwiają dodanie warstwy integralności danych do bazy danych, zapewniając unikatowość jednej lub więcej wartości na klucz partycji. Aby uzyskać więcej informacji, zobacz [Unikatowe klucze w usłudze Azure Cosmos DB](unique-keys.md).
     
-1.  Kliknij przycisk **OK**. W Eksplorator danych zostanie wyświetlona nowa baza danych i kontener, który został utworzony.
+1.  Kliknij przycisk **OK**. Eksplorator danych wyświetla nową bazę danych i utworzony kontener.
 
 ## <a name="add-data-to-your-database"></a>Dodawanie danych do bazy danych
 
-Dodaj dane do nowej bazy danych przy użyciu Eksplorator danych.
+Dodawanie danych do nowej bazy danych za pomocą Eksploratora danych.
 
-1. W **Eksplorator danych**rozwiń bazę danych **todolist** i rozwiń kontener **elementów** . Następnie wybierz pozycję **elementy**, a następnie wybierz pozycję **nowy element**. 
+1. W **Eksploratorze danych**rozwiń bazę danych **ToDoList** i rozwiń kontener **Elementy.** Następnie wybierz pozycję **Elementy**, a następnie wybierz pozycję **Nowy element**. 
    
    ![Tworzenie nowych dokumentów w Eksploratorze danych w witrynie Azure Portal](./media/create-sql-api-dotnet/azure-cosmosdb-new-document.png)
    
-1. Dodaj następującą strukturę do dokumentu po prawej stronie okienka **dokumenty** :
+1. Dodaj następującą strukturę do dokumentu po prawej stronie okienka **Dokumenty:**
 
      ```json
      {
@@ -87,11 +87,11 @@ Dodaj dane do nowej bazy danych przy użyciu Eksplorator danych.
      }
      ```
 
-1. Wybierz pozycję **Zapisz**.
+1. Wybierz **pozycję Zapisz**.
    
-   ![Kopiuj w danych JSON i wybierz pozycję Zapisz w Eksplorator danych w Azure Portal](./media/create-sql-api-dotnet/azure-cosmosdb-save-document.png)
+   ![Kopiowanie w json danych i wybierz Zapisz w Eksploratorze danych w witrynie Azure portal](./media/create-sql-api-dotnet/azure-cosmosdb-save-document.png)
    
-1. Ponownie wybierz pozycję **Nowy dokument** i Utwórz i Zapisz inny dokument z unikatowym `id`oraz wszystkie inne właściwości i wartości. Dokumenty mogą mieć dowolną strukturę, ponieważ Azure Cosmos DB nie nakłada żadnych schematów na dane.
+1. Ponownie wybierz **pozycję Nowy dokument,** a następnie `id`utwórz i zapisz inny dokument z unikatowym i dowolnymi innymi właściwościami i wartościami. Dokumenty mogą mieć dowolną strukturę, ponieważ usługa Azure Cosmos DB nie nakłada żadnego schematu na dane.
 
 ## <a name="query-your-data"></a>Wysyłanie zapytań dotyczących danych
 
@@ -101,15 +101,15 @@ Dodaj dane do nowej bazy danych przy użyciu Eksplorator danych.
 
 [!INCLUDE [cosmosdb-delete-resource-group](../../includes/cosmos-db-delete-resource-group.md)]
 
-Jeśli chcesz usunąć tylko bazę danych i korzystać z konta usługi Azure Cosmos w przyszłości, możesz usunąć tę bazę danych, wykonując następujące czynności:
+Jeśli chcesz usunąć tylko bazy danych i użyć konta usługi Azure Cosmos w przyszłości, można usunąć bazę danych z następujących kroków:
 
-* Masz konto usługi Azure Cosmos.
-* Otwórz **Eksplorator danych**, kliknij prawym przyciskiem myszy bazę danych, którą chcesz usunąć, a następnie wybierz polecenie **Usuń bazę danych**.
-* Wprowadź identyfikator bazy danych/nazwę bazy danych, aby potwierdzić operację usuwania. 
+* Masz do swojego konta usługi Azure Cosmos.
+* Otwórz **Eksploratora danych**, kliknij prawym przyciskiem myszy bazę danych, którą chcesz usunąć, a następnie wybierz pozycję **Usuń bazę danych**.
+* Wprowadź nazwę identyfikatora/bazy danych bazy danych, aby potwierdzić operację usuwania. 
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym przewodniku szybki start przedstawiono sposób tworzenia konta Azure Cosmos DB, tworzenia bazy danych i kontenera przy użyciu Eksplorator danych. Teraz możesz zaimportować dodatkowe dane do swojego konta usługi Azure Cosmos DB. 
+W tym przewodniku Szybki start dowiesz się, jak utworzyć konto usługi Azure Cosmos DB, utworzyć bazę danych i kontener przy użyciu Eksploratora danych. Teraz możesz zaimportować dodatkowe dane do swojego konta usługi Azure Cosmos DB. 
 
 > [!div class="nextstepaction"]
 > [Importowanie danych do usługi Azure Cosmos DB](import-data.md)

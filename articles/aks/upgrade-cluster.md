@@ -1,77 +1,77 @@
 ---
 title: Uaktualnianie klastra usługi Azure Kubernetes Service (AKS)
-description: Dowiedz się, jak uaktualnić klaster usługi Azure Kubernetes Service (AKS)
+description: Dowiedz się, jak uaktualnić klaster usługi Azure Kubernetes (AKS)
 services: container-service
 ms.topic: article
 ms.date: 05/31/2019
 ms.openlocfilehash: 4520297e83f96f95b10ecafd5af52a913dc5f450
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77621974"
 ---
 # <a name="upgrade-an-azure-kubernetes-service-aks-cluster"></a>Uaktualnianie klastra usługi Azure Kubernetes Service (AKS)
 
-W ramach cyklu życia klastra AKS często konieczne jest uaktualnienie do najnowszej wersji programu Kubernetes. Ważne jest, aby zastosować najnowsze wersje zabezpieczeń Kubernetes lub uaktualnić je w celu uzyskania najnowszych funkcji. W tym artykule opisano sposób uaktualniania składników głównych lub pojedynczej, domyślnej puli węzłów w klastrze AKS.
+W ramach cyklu życia klastra AKS często trzeba uaktualnić do najnowszej wersji kubernetes. Ważne jest, aby zastosować najnowsze wersje zabezpieczeń firmy Kubernetes lub uaktualnić, aby uzyskać najnowsze funkcje. W tym artykule pokazano, jak uaktualnić składniki główne lub pojedynczą, domyślną pulę węzłów w klastrze AKS.
 
-W przypadku klastrów AKS, które korzystają z wielu pul węzłów lub węzłów systemu Windows Server (obecnie w wersji zapoznawczej w AKS), zobacz [uaktualnianie puli węzłów w AKS][nodepool-upgrade].
+W przypadku klastrów AKS, które używają wielu pul węzłów lub węzłów systemu Windows Server (obecnie w wersji zapoznawczej w systemie AKS), zobacz [Uaktualnianie puli węzłów w usłudze AKS][nodepool-upgrade].
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
-Ten artykuł wymaga uruchomienia interfejsu wiersza polecenia platformy Azure w wersji 2.0.65 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure][azure-cli-install].
+Ten artykuł wymaga, aby ślić wersję interfejsu wiersza polecenia platformy Azure w wersji 2.0.65 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure][azure-cli-install].
 
 > [!WARNING]
-> Uaktualnienie klastra AKS wyzwala Cordon i opróżnia węzły. W przypadku braku dostępnego limitu przydziału obliczeń uaktualnienie może zakończyć się niepowodzeniem. Aby uzyskać więcej informacji, zobacz [zwiększenie limitów przydziału](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request) .
-> Jeśli używasz własnego wdrożenia automatycznego skalowania klastra, wyłącz je (można je skalować do replik zerowych) podczas uaktualniania, ponieważ będzie to miało wpływ na problem z procesem uaktualniania. Zarządzane automatyczne skalowanie jest automatycznie obsługiwane. 
+> Uaktualnienie klastra AKS wyzwala kordon i drenaż węzłów. Jeśli masz niski przydział obliczeń dostępne, uaktualnienie może zakończyć się niepowodzeniem. Aby uzyskać więcej informacji, zobacz [zwiększanie przydziałów.](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request)
+> Jeśli używasz własnego wdrożenia skalowania automatycznego klastra, wyłącz go (można skalować do zera replik) podczas uaktualniania, ponieważ istnieje szansa, że będzie kolidować z procesem uaktualniania. Zarządzany skalowanie automatyczne automatycznie obsługuje to. 
 
-## <a name="check-for-available-aks-cluster-upgrades"></a>Sprawdź dostępność dostępnych uaktualnień klastrów AKS
+## <a name="check-for-available-aks-cluster-upgrades"></a>Sprawdzanie dostępności uaktualnień klastra AKS
 
-Aby sprawdzić, które wersje Kubernetes są dostępne dla klastra, użyj polecenia [AZ AKS Get-Upgrades][az-aks-get-upgrades] . Poniższy przykład sprawdza dostępność dostępnych uaktualnień do klastra o nazwie *myAKSCluster* w grupie zasobów o nazwie Moja *resourceName*:
+Aby sprawdzić, które wersje kubernetes są dostępne dla klastra, użyj polecenia [az aks get-upgrades.][az-aks-get-upgrades] Poniższy przykład sprawdza dostępność uaktualnień do klastra o nazwie *myAKSCluster* w grupie zasobów o nazwie *myResourceGroup:*
 
 ```azurecli-interactive
 az aks get-upgrades --resource-group myResourceGroup --name myAKSCluster --output table
 ```
 
 > [!NOTE]
-> W przypadku uaktualniania klastra AKS wersje pomocnicze Kubernetes nie mogą być pomijane. Na przykład uaktualnienia między *1.12. x* -> *1.13. x* lub *1.13. x* -> *1.14. x* są dozwolone, jednak *1.12. x* -> *1.14. x* nie jest.
+> Podczas uaktualniania klastra AKS nie można pominąć wersji pomocniczych usługi Kubernetes. Na przykład aktualizacje między *1.12.x* -> *1.13.x* lub *1.13.x* -> *1.14.x* są dozwolone, jednak *1.12.x* -> *1.14.x* nie jest.
 >
-> Aby przeprowadzić uaktualnienie, z wersji *1.12. x* -> *1.14. x*, najpierw Uaktualnij z wersji *1.12. x* -> *1.13. x*, a następnie Uaktualnij z *1.13. x* -> *1.14. x*.
+> Aby uaktualnić, z *1.12.x* -> *1.14.x*, najpierw uaktualnić z *1.12.x* -> *1.13.x*, a następnie uaktualnić z *1.13.x* -> *1.14.x*.
 
-Następujące przykładowe dane wyjściowe pokazują, że klaster można uaktualnić do wersji *1.13.9* i *1.13.10*:
+Poniższe przykładowe dane wyjściowe pokazują, że klaster można uaktualnić do wersji *1.13.9* i *1.13.10:*
 
 ```console
 Name     ResourceGroup     MasterVersion    NodePoolVersion    Upgrades
 -------  ----------------  ---------------  -----------------  ---------------
 default  myResourceGroup   1.12.8           1.12.8             1.13.9, 1.13.10
 ```
-Jeśli uaktualnienie nie jest dostępne, uzyskasz następujące korzyści:
+Jeśli uaktualnienie nie jest dostępne, otrzymasz:
 ```console
 ERROR: Table output unavailable. Use the --query option to specify an appropriate query. Use --debug for more info.
 ```
 
 ## <a name="upgrade-an-aks-cluster"></a>Uaktualnianie klastra AKS
 
-Mając listę dostępnych wersji klastra AKS, użyj polecenia [AZ AKS upgrade][az-aks-upgrade] , aby przeprowadzić uaktualnienie. W trakcie procesu uaktualniania program AKS dodaje nowy węzeł do klastra, na którym działa określona wersja Kubernetes, a następnie uważnie [Cordon i opróżnia][kubernetes-drain] jeden ze starych węzłów w celu zminimalizowania przerw w działaniu aplikacji. Gdy nowy węzeł zostanie potwierdzony jako uruchomiony program ApplicationManager, stary węzeł zostanie usunięty. Ten proces jest powtarzany do momentu uaktualnienia wszystkich węzłów w klastrze.
+Aby uaktualnić, z listą dostępnych wersji dla klastra AKS, użyj polecenia [az aks upgrade.][az-aks-upgrade] Podczas procesu uaktualniania usługa AKS dodaje nowy węzeł do klastra, który uruchamia określoną wersję usługi Kubernetes, a następnie ostrożnie [kordon i opróżnia][kubernetes-drain] jeden ze starych węzłów, aby zminimalizować zakłócenia w uruchamianiu aplikacji. Gdy nowy węzeł zostanie potwierdzony jako uruchomione zasobników aplikacji, stary węzeł jest usuwany. Ten proces powtarza się, dopóki wszystkie węzły w klastrze nie zostały uaktualnione.
 
-Poniższy przykład uaktualnia klaster do wersji *1.13.10*:
+Poniższy przykład uaktualnia klaster do wersji *1.13.10:*
 
 ```azurecli-interactive
 az aks upgrade --resource-group myResourceGroup --name myAKSCluster --kubernetes-version 1.13.10
 ```
 
-Uaktualnienie klastra trwa kilka minut, w zależności od liczby posiadanych węzłów. 
+Uaktualnienie klastra zajmuje kilka minut, w zależności od liczby posiadanych węzłów. 
 
 > [!NOTE]
-> Istnieje łączny czas trwania uaktualniania klastra. Ten czas jest obliczany przez pobranie iloczynu `10 minutes * total number of nodes in the cluster`. Na przykład w klastrze 20 węzłów operacje uaktualniania muszą się powieść w ciągu 200 minut, a operacja nie powiedzie się, aby uniknąć nieodwracalnego stanu klastra. Aby odzyskać sprawność po błędzie uaktualnienia, ponów próbę wykonania operacji uaktualniania po osiągnięciu limitu czasu.
+> Istnieje całkowity dozwolony czas na ukończenie uaktualnienia klastra. Czas ten jest obliczany `10 minutes * total number of nodes in the cluster`przez biorąc produkt . Na przykład w klastrze 20 węzłów operacje uaktualniania muszą zakończyć się pomyślnie w ciągu 200 minut lub usługa AKS zakończy się niepowodzeniem operacji, aby uniknąć nieodwracalnego stanu klastra. Aby odzyskać po awarii uaktualnienia, ponów próbę uaktualnienia operacji po upływie limitu czasu.
 
-Aby upewnić się, że uaktualnienie zakończyło się pomyślnie, użyj polecenia [AZ AKS show][az-aks-show] :
+Aby potwierdzić, że uaktualnienie zakończyło się pomyślnie, użyj polecenia [az aks show:][az-aks-show]
 
 ```azurecli-interactive
 az aks show --resource-group myResourceGroup --name myAKSCluster --output table
 ```
 
-Następujące przykładowe dane wyjściowe pokazują, że klaster działa teraz *1.13.10*:
+Poniższe przykładowe dane wyjściowe pokazują, że klaster działa teraz *1.13.10:*
 
 ```json
 Name          Location    ResourceGroup    KubernetesVersion    ProvisioningState    Fqdn
@@ -81,7 +81,7 @@ myAKSCluster  eastus      myResourceGroup  1.13.10               Succeeded      
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym artykule pokazano, jak uaktualnić istniejący klaster AKS. Aby dowiedzieć się więcej o wdrażaniu klastrów AKS i zarządzaniu nimi, zobacz zestaw samouczków.
+W tym artykule pokazano, jak uaktualnić istniejący klaster AKS. Aby dowiedzieć się więcej na temat wdrażania klastrów AKS i zarządzania nimi, zobacz zestaw samouczków.
 
 > [!div class="nextstepaction"]
 > [Samouczki AKS][aks-tutorial-prepare-app]

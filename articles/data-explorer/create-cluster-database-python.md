@@ -1,6 +1,6 @@
 ---
-title: Tworzenie klastra usługi Azure Eksplorator danych & bazy danych przy użyciu języka Python
-description: Dowiedz się, jak utworzyć klaster Eksplorator danych i bazę danych platformy Azure przy użyciu języka Python.
+title: Tworzenie klastra usługi Azure Data Explorer & bazy danych przy użyciu języka Python
+description: Dowiedz się, jak utworzyć klaster i bazę danych usługi Azure Data Explorer przy użyciu języka Python.
 author: lucygoldbergmicrosoft
 ms.author: lugoldbe
 ms.reviewer: orspodek
@@ -8,42 +8,42 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 06/03/2019
 ms.openlocfilehash: 8425058c9f6ac5b90c37a99f749a810672b406fc
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/22/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77560511"
 ---
-# <a name="create-an-azure-data-explorer-cluster-and-database-by-using-python"></a>Tworzenie klastra Eksplorator danych i bazy danych platformy Azure przy użyciu języka Python
+# <a name="create-an-azure-data-explorer-cluster-and-database-by-using-python"></a>Tworzenie klastra i bazy danych usługi Azure Data Explorer przy użyciu języka Python
 
 > [!div class="op_single_selector"]
 > * [Portal](create-cluster-database-portal.md)
-> * [Interfejs wiersza polecenia](create-cluster-database-cli.md)
-> * [PowerShell](create-cluster-database-powershell.md)
-> * [C#](create-cluster-database-csharp.md)
+> * [Cli](create-cluster-database-cli.md)
+> * [Powershell](create-cluster-database-powershell.md)
+> * [C #](create-cluster-database-csharp.md)
 > * [Python](create-cluster-database-python.md)
-> * [Szablon usługi ARM](create-cluster-database-resource-manager.md)
+> * [Szablon ARM](create-cluster-database-resource-manager.md)
 
-W tym artykule opisano tworzenie klastra Eksplorator danych i bazy danych platformy Azure przy użyciu języka Python. Usługa Azure Data Explorer to szybka, w pełni zarządzana usługa do analizy danych, która pozwala w czasie rzeczywistym analizować duże woluminy danych przesyłanych strumieniowo z aplikacji, witryn internetowych, urządzeń IoT i nie tylko. Aby użyć usługi Azure Eksplorator danych, należy najpierw utworzyć klaster i utworzyć co najmniej jedną bazę danych w tym klastrze. Następnie pozyskiwanie i ładowanie danych do bazy danych, dzięki czemu można uruchamiać zapytania względem tego programu.
+W tym artykule utworzysz klaster i bazę danych usługi Azure Data Explorer przy użyciu języka Python. Usługa Azure Data Explorer to szybka, w pełni zarządzana usługa do analizy danych, która pozwala w czasie rzeczywistym analizować duże woluminy danych przesyłanych strumieniowo z aplikacji, witryn internetowych, urządzeń IoT i nie tylko. Aby użyć Usługi Azure Data Explorer, najpierw utwórz klaster i utwórz jedną lub więcej baz danych w tym klastrze. Następnie pozyskiwania lub ładowania danych do bazy danych, dzięki czemu można uruchamiać kwerendy przeciwko niemu.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Konto platformy Azure z aktywną subskrypcją. [Utwórz je bezpłatnie](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+* Konto platformy Azure z aktywną subskrypcją. [Utwórz jeden za darmo](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 
-* [Python 3.4 +](https://www.python.org/downloads/).
+* [Python 3.4+](https://www.python.org/downloads/).
 
-* [Aplikacja usługi Azure AD i nazwa główna usługi, która może uzyskiwać dostęp do zasobów](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal). Pobierz wartości dla `Directory (tenant) ID`, `Application ID`i `Client Secret`.
+* [Usługa Azure AD Aplikacji i jednostki usługi, które mogą uzyskać dostęp do zasobów](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal). Pobierz wartości `Directory (tenant) ID` `Application ID`dla `Client Secret`, i .
 
-## <a name="install-python-package"></a>Zainstaluj pakiet języka Python
+## <a name="install-python-package"></a>Instalowanie pakietu Python
 
-Aby zainstalować pakiet języka Python dla usługi Azure Eksplorator danych (Kusto), Otwórz wiersz polecenia, który ma w swojej ścieżce Język Python. Uruchom następujące polecenie:
+Aby zainstalować pakiet Python dla usługi Azure Data Explorer (Kusto), otwórz wiersz polecenia, który ma Pythona w swojej ścieżce. Uruchom następujące polecenie:
 
 ```
 pip install azure-common
 pip install azure-mgmt-kusto
 ```
 ## <a name="authentication"></a>Uwierzytelnianie
-Aby uruchomić przykłady z tego artykułu, potrzebujemy aplikacji usługi Azure AD i nazwy głównej usługi, która może uzyskać dostęp do zasobów. Zaznacz opcję [Utwórz aplikację usługi Azure AD](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal) , aby utworzyć bezpłatną aplikację usługi Azure AD, a następnie Dodaj przypisanie roli do zakresu subskrypcji. Przedstawiono w nim również, jak uzyskać `Directory (tenant) ID`, `Application ID`i `Client Secret`.
+Aby uruchomić przykłady w tym artykule, potrzebujemy usługi Azure AD aplikacji i jednostki usługi, które mogą uzyskać dostęp do zasobów. Sprawdź [tworzenie aplikacji usługi Azure AD,](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal) aby utworzyć bezpłatną aplikację usługi Azure AD i dodać przypisanie roli w zakresie subskrypcji. Pokazuje również, jak `Directory (tenant) ID`uzyskać `Application ID`, `Client Secret`, i .
 
 ## <a name="create-the-azure-data-explorer-cluster"></a>Tworzenie klastra usługi Azure Data Explorer
 
@@ -85,13 +85,13 @@ Aby uruchomić przykłady z tego artykułu, potrzebujemy aplikacji usługi Azure
    |**Ustawienie** | **Sugerowana wartość** | **Opis pola**|
    |---|---|---|
    | cluster_name | *mykustocluster* | Wybrana nazwa klastra.|
-   | sku_name | *Standard_D13_v2* | Jednostka SKU, która będzie używana na potrzeby klastra. |
-   | tier | *Standard* | Warstwa SKU. |
-   | capacity | *Liczba* | Liczba wystąpień klastra. |
+   | sku_name | *Standardowa_D13_v2* | Jednostka SKU, która będzie używana na potrzeby klastra. |
+   | tier | *Standardowa* | Warstwa SKU. |
+   | capacity | *numer* | Liczba wystąpień klastra. |
    | resource_group_name | *testrg* | Nazwa grupy zasobów, w której zostanie utworzony klaster. |
 
     > [!NOTE]
-    > **Tworzenie klastra** jest długotrwałą operacją. Metoda **create_or_update** zwraca wystąpienie elementu LROPoller, zobacz [LROPoller Class](/python/api/msrest/msrest.polling.lropoller?view=azure-python) , aby uzyskać więcej informacji.
+    > **Tworzenie klastra** jest długotrwałą operacją. Metoda **create_or_update** zwraca wystąpienie LROPoller, zobacz [LROPoller klasy,](/python/api/msrest/msrest.polling.lropoller?view=azure-python) aby uzyskać więcej informacji.
 
 1. Uruchom następujące polecenie, aby sprawdzić, czy klaster został utworzony pomyślnie:
 
@@ -128,7 +128,7 @@ Jeśli wynik zawiera element `provisioningState` o wartości `Succeeded`, klaste
    |**Ustawienie** | **Sugerowana wartość** | **Opis pola**|
    |---|---|---|
    | cluster_name | *mykustocluster* | Nazwa klastra, w którym zostanie utworzona baza danych.|
-   | database_name | *mykustodatabase* | Nazwa bazy danych.|
+   | Nazwa_bazy_danych | *mykustodatabase* | Nazwa bazy danych.|
    | resource_group_name | *testrg* | Nazwa grupy zasobów, w której zostanie utworzony klaster. |
    | soft_delete_period | *3650 dni, 0:00:00* | Okres przechowywania danych na potrzeby zapytań. |
    | hot_cache_period | *3650 dni, 0:00:00* | Okres przechowywania danych w pamięci podręcznej. |
@@ -143,7 +143,7 @@ Masz teraz klaster i bazę danych.
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-* Jeśli planujesz postępować zgodnie z innymi artykułami, Zachowaj utworzone zasoby.
+* Jeśli planujesz śledzić nasze inne artykuły, zachowaj utworzone zasoby.
 * Aby wyczyścić zasoby, usuń klaster. Usunięcie klastra powoduje również usunięcie znajdujących się w nim baz danych. Użyj następującego polecenia, aby usunąć klaster:
 
     ```Python
@@ -152,4 +152,4 @@ Masz teraz klaster i bazę danych.
 
 ## <a name="next-steps"></a>Następne kroki
 
-* [Pozyskiwanie danych przy użyciu biblioteki języka Python Eksplorator danych platformy Azure](python-ingest-data.md)
+* [pozyskiwanie danych przy użyciu biblioteki języka Python w usłudze Azure Data Explorer](python-ingest-data.md)

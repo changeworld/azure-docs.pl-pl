@@ -1,6 +1,6 @@
 ---
-title: Wysyłanie i odbieranie zdarzeń z usługi Azure Event Hubs przy użyciu platformy .NET (stary)
-description: Ten artykuł zawiera Przewodnik dotyczący tworzenia aplikacji .NET Core, która wysyła/odbiera zdarzenia do/z usługi Azure Event Hubs przy użyciu starego pakietu Microsoft. Azure. EventHubs.
+title: Wysyłanie i odbieranie zdarzeń z usługi Azure Event Hubs przy użyciu platformy .NET (stare)
+description: Ten artykuł zawiera przewodnik do tworzenia aplikacji .NET Core, która wysyła/odbiera zdarzenia do/z usługi Azure Event Hubs przy użyciu starego pakietu Microsoft.Azure.EventHubs.
 services: event-hubs
 documentationcenter: na
 author: spelluru
@@ -14,44 +14,44 @@ ms.workload: na
 ms.date: 02/11/2020
 ms.author: spelluru
 ms.openlocfilehash: 1d399ffec2cd702dcfa39310803bc780b85bfde1
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77187457"
 ---
-# <a name="send-events-to-or-receive-events-from-azure-event-hubs-using-net-core-microsoftazureeventhubs"></a>Wysyłanie zdarzeń do i odbieranie zdarzeń z usługi Azure Event Hubs przy użyciu platformy .NET Core (Microsoft. Azure. EventHubs)
-Ten przewodnik Szybki Start przedstawia sposób wysyłania zdarzeń do i odbierania zdarzeń z centrum zdarzeń za pomocą biblioteki **Microsoft. Azure. EventHubs** .NET Core.
+# <a name="send-events-to-or-receive-events-from-azure-event-hubs-using-net-core-microsoftazureeventhubs"></a>Wysyłanie zdarzeń do centrów zdarzeń platformy Azure lub odbieranie ich przy użyciu usługi .NET Core (Microsoft.Azure.EventHubs)
+Ten przewodnik Szybki start pokazuje sposób wysyłania zdarzeń do centrum zdarzeń i odbierania ich z usługi przy użyciu biblioteki **Microsoft.Azure.EventHubs** .NET Core.
 
 > [!WARNING]
-> Ten przewodnik Szybki Start używa starego pakietu **Microsoft. Azure. EventHubs** . Przewodnik Szybki Start, który używa najnowszej biblioteki **Azure. Messaging. EventHubs** , znajduje się w temacie [wysyłanie i odbieranie zdarzeń przy użyciu biblioteki Azure. Messaging. EventHubs](get-started-dotnet-standard-send-v2.md). Aby przenieść aplikację z używania starej biblioteki do nowej, zapoznaj się z [przewodnikiem migrowania z Microsoft. Azure. EventHubs do platformy Azure. Messaging. EventHubs](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/migration-guide-from-v4.md).
+> Ten przewodnik Szybki start używa starego pakietu **Microsoft.Azure.EventHubs.** Aby uzyskać przewodnik Szybki start korzystający z najnowszej biblioteki **Azure.Messaging.EventHubs,** zobacz [Wysyłanie i odbieranie zdarzeń przy użyciu biblioteki Azure.Messaging.EventHubs](get-started-dotnet-standard-send-v2.md). Aby przenieść aplikację ze starej biblioteki na nową, zobacz [Przewodnik do migracji z witryny Microsoft.Azure.EventHubs do usługi Azure.Messaging.EventHubs.](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/migration-guide-from-v4.md)
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-Jeśli dopiero zaczynasz w usłudze Azure Event Hubs, zapoznaj się z tematem [Event Hubs Overview](event-hubs-about.md) przed wykonaniem tego przewodnika Szybki Start. 
+Jeśli jesteś nowy w usłudze Azure Event Hubs, zobacz [Centrum zdarzeń omówienie](event-hubs-about.md) przed rozpoczęciem tego przewodnika Szybki start. 
 
 Do wykonania kroków tego przewodnika Szybki start niezbędne jest spełnienie następujących wymagań wstępnych:
 
-- **Subskrypcja Microsoft Azure**. Do korzystania z usług platformy Azure, w tym usługi Azure Event Hubs, potrzebna jest subskrypcja.  Jeśli nie masz istniejącego konta platformy Azure, możesz zarejestrować się w celu korzystania z [bezpłatnej wersji próbnej](https://azure.microsoft.com/free/) lub skorzystać z korzyści dla subskrybentów MSDN podczas [tworzenia konta](https://azure.microsoft.com).
+- **Subskrypcja platformy Microsoft Azure**. Aby korzystać z usług platformy Azure, w tym usługi Azure Event Hubs, potrzebujesz subskrypcji.  Jeśli nie masz istniejącego konta platformy Azure, możesz zarejestrować się w celu [uzyskania bezpłatnej wersji próbnej](https://azure.microsoft.com/free/) lub skorzystać z korzyści dla subskrybenta MSDN podczas [tworzenia konta.](https://azure.microsoft.com)
 - [Microsoft Visual Studio 2019](https://www.visualstudio.com).
 - [Narzędzia platformy .NET Core dla programu Visual Studio 2015 lub 2017](https://www.microsoft.com/net/core). 
-- **Utwórz przestrzeń nazw Event Hubs i centrum zdarzeń**. Pierwszym krokiem jest skorzystanie z witryny [Azure Portal](https://portal.azure.com) w celu utworzenia przestrzeni nazw typu Event Hubs i uzyskania poświadczeń zarządzania wymaganych przez aplikację do komunikacji z centrum zdarzeń. Aby utworzyć przestrzeń nazw i centrum zdarzeń, wykonaj procedurę opisaną w [tym artykule](event-hubs-create.md). Następnie Pobierz **Parametry połączenia dla przestrzeni nazw centrum zdarzeń** , wykonując instrukcje podane w artykule: [pobieranie parametrów połączenia](event-hubs-get-connection-string.md#get-connection-string-from-the-portal). Parametry połączenia są używane w dalszej części tego przewodnika Szybki Start.
+- **Utwórz obszar nazw Centrów zdarzeń i centrum zdarzeń**. Pierwszym krokiem jest użycie [witryny Azure Portal](https://portal.azure.com) do utworzenia obszaru nazw typu Event Hubs i uzyskania poświadczeń zarządzania, których aplikacja potrzebuje do komunikowania się z centrum zdarzeń. Aby utworzyć przestrzeń nazw i centrum zdarzeń, wykonaj procedurę opisaną w [tym artykule](event-hubs-create.md). Następnie pobierz **ciąg połączenia dla obszaru nazw centrum zdarzeń,** postępując zgodnie z instrukcjami z artykułu: [Pobierz ciąg połączenia](event-hubs-get-connection-string.md#get-connection-string-from-the-portal). Ciąg połączenia należy użyć w dalszej części tego przewodnika Szybki start.
 
 ## <a name="send-events"></a>Wysyłanie zdarzeń 
-W tej sekcji przedstawiono sposób tworzenia aplikacji konsolowej .NET Core w celu wysyłania zdarzeń do centrum zdarzeń. 
+W tej sekcji pokazano, jak utworzyć aplikację konsoli .NET Core do wysyłania zdarzeń do centrum zdarzeń. 
 
 > [!NOTE]
-> Ten przewodnik Szybki start możesz pobrać jako przykład z witryny [GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/SampleSender), zastąpić ciągi `EventHubConnectionString` i `EventHubName` wartościami swojego centrum zdarzeń, a następnie uruchomić go. Alternatywnie możesz wykonać kroki opisane w tym przewodniku Szybki Start, aby utworzyć własne.
+> Ten przewodnik Szybki start możesz pobrać jako przykład z witryny [GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/SampleSender), zastąpić ciągi `EventHubConnectionString` i `EventHubName` wartościami swojego centrum zdarzeń, a następnie uruchomić go. Alternatywnie można wykonać kroki opisane w tym przewodniku Szybki start, aby utworzyć własne.
 
 
 ### <a name="create-a-console-application"></a>Tworzenie aplikacji konsolowej
 
-Uruchom program Visual Studio. W menu **File** (Plik) kliknij pozycję **New** (Nowe), a następnie kliknij pozycję **Project** (Projekt). Utwórz aplikację konsolową platformy .NET Core.
+Uruchom program Visual Studio. W menu **Plik** kliknij polecenie **Nowy**, a następnie kliknij polecenie **Projekt**. Utwórz aplikację konsolową platformy .NET Core.
 
 ![Nowy projekt](./media/event-hubs-dotnet-standard-getstarted-send/netcoresnd.png)
 
 ### <a name="add-the-event-hubs-nuget-package"></a>Dodawanie pakietu NuGet usługi Event Hubs
 
-Dodaj pakiet NuGet [`Microsoft.Azure.EventHubs`](https://www.nuget.org/packages/Microsoft.Azure.EventHubs/) biblioteki .NET Core do projektu, wykonując następujące czynności: 
+Dodaj [`Microsoft.Azure.EventHubs`](https://www.nuget.org/packages/Microsoft.Azure.EventHubs/) pakiet NuGet biblioteki .NET Core do projektu, wykonując następujące kroki: 
 
 1. Kliknij prawym przyciskiem myszy nowo utworzony projekt i wybierz pozycję **Zarządzaj pakietami NuGet**.
 2. Kliknij kartę **Przeglądaj**, a następnie wyszukaj ciąg „Microsoft.Azure.EventHubs” i wybierz pakiet **Microsoft.Azure.EventHubs**. Kliknij przycisk **Zainstaluj**, aby ukończyć instalację, a następnie zamknij to okno dialogowe.
@@ -199,15 +199,15 @@ Dodaj pakiet NuGet [`Microsoft.Azure.EventHubs`](https://www.nuget.org/packages/
 6. Uruchom program i upewnij się, że nie ma w nim żadnych błędów.
 
 ## <a name="receive-events"></a>Odbieranie zdarzeń
-W tej sekcji pokazano, jak napisać aplikację konsolową .NET Core, która odbiera komunikaty z centrum zdarzeń za pomocą [hosta procesora zdarzeń](event-hubs-event-processor-host.md). [Host procesora zdarzeń](event-hubs-event-processor-host.md) jest klasą .NET, która upraszcza odbieranie zdarzeń z centrów zdarzeń przez zarządzanie trwałymi punktami kontrolnymi i równoległymi odbiorami z tych centrów zdarzeń. Za pomocą hosta procesora zdarzeń można podzielić zdarzenia między wieloma odbiornikami, nawet w przypadku hostowania w różnych węzłach. W tym przykładzie przedstawiono, jak używać hosta procesora zdarzeń dla jednego odbiornika.
+W tej sekcji pokazano, jak napisać aplikację konsoli .NET Core, która odbiera wiadomości z centrum zdarzeń przy użyciu [hosta procesora zdarzeń](event-hubs-event-processor-host.md). [Host procesora zdarzeń](event-hubs-event-processor-host.md) jest klasą .NET, która upraszcza odbieranie zdarzeń z centrów zdarzeń przez zarządzanie trwałymi punktami kontrolnymi i równoległymi odbiorami z tej usługi. Za pomocą hosta procesora zdarzeń można podzielić zdarzenia między wieloma odbiornikami, nawet w przypadku hostowania w różnych węzłach. W tym przykładzie przedstawiono, jak używać hosta procesora zdarzeń dla jednego odbiornika.
 > [!NOTE]
-> Ten przewodnik Szybki start możesz pobrać jako przykład z witryny [GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/SampleEphReceiver), zastąpić ciągi `EventHubConnectionString`, `EventHubName`, `StorageAccountName`, `StorageAccountKey` i `StorageContainerName` wartościami swojego centrum zdarzeń, a następnie uruchomić go. Alternatywnie możesz utworzyć własne rozwiązanie, wykonując kroki opisane w tym samouczku.
+> Ten przewodnik Szybki start można pobrać jako przykład `EventHubConnectionString` z `EventHubName` `StorageAccountName` [githhub](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/SampleEphReceiver), replace i , `StorageAccountKey`, i `StorageContainerName` ciągów z wartościami centrum zdarzeń i uruchomić go. Alternatywnie możesz utworzyć własne rozwiązanie, wykonując kroki opisane w tym samouczku.
 
 [!INCLUDE [event-hubs-create-storage](../../includes/event-hubs-create-storage.md)]
 
 ### <a name="create-a-console-application"></a>Tworzenie aplikacji konsolowej
 
-Uruchom program Visual Studio. W menu **File** (Plik) kliknij pozycję **New** (Nowe), a następnie kliknij pozycję **Project** (Projekt). Utwórz aplikację konsolową platformy .NET Core.
+Uruchom program Visual Studio. W menu **Plik** kliknij polecenie **Nowy**, a następnie kliknij polecenie **Projekt**. Utwórz aplikację konsolową platformy .NET Core.
 
 ![Nowy projekt](./media/event-hubs-dotnet-standard-getstarted-receive-eph/netcorercv.png)
 
@@ -371,9 +371,9 @@ Dodaj do swojego projektu pakiety NuGet biblioteki .NET Standard [**Microsoft.Az
 ## <a name="next-steps"></a>Następne kroki
 Przeczytaj następujące artykuły:
 
-- [Przykłady kontroli dostępu opartej na rolach (RBAC)](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/Rbac). 
+- [Przykłady kontroli dostępu opartej na rolach (RBAC).](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/Rbac) 
     
-    Te przykłady używają starej biblioteki **Microsoft. Azure. EventHubs** , ale można ją łatwo zaktualizować do korzystania z najnowszej biblioteki **Azure. Messaging. EventHubs** . Aby przenieść przykład z używania starej biblioteki do nowej, zapoznaj się z [przewodnikiem migrowania z Microsoft. Azure. EventHubs do platformy Azure. Messaging. EventHubs](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/migration-guide-from-v4.md).
+    Te przykłady używają starej biblioteki **Microsoft.Azure.EventHubs,** ale można łatwo zaktualizować go do korzystania z najnowszej biblioteki **Azure.Messaging.EventHubs.** Aby przenieść przykład ze starej biblioteki do nowej, zobacz [Przewodnik do migracji z witryny Microsoft.Azure.EventHubs do usługi Azure.Messaging.EventHubs.)](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/migration-guide-from-v4.md)
 - [EventProcessorHost](event-hubs-event-processor-host.md)
 - [Funkcje i terminologia w usłudze Azure Event Hubs](event-hubs-features.md)
 - [Event Hubs — często zadawane pytania](event-hubs-faq.md)

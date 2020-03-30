@@ -1,6 +1,6 @@
 ---
-title: Korzystanie z portalu do wdrażania maszyn wirtualnych usługi Azure spot
-description: Dowiedz się, w jaki sposób używać Azure PowerShell do wdrażania maszyn wirtualnych w celu oszczędzania kosztów.
+title: Wdrażanie maszyn wirtualnych platformy Azure spot za pomocą portalu
+description: Dowiedz się, jak używać programu Azure PowerShell do wdrażania maszyn wirtualnych w miejscu, aby zaoszczędzić na kosztach.
 services: virtual-machines-windows
 author: cynthn
 manager: gwallace
@@ -10,40 +10,40 @@ ms.topic: article
 ms.date: 02/11/2020
 ms.author: cynthn
 ms.openlocfilehash: 8845d0f9277384c1cc32b31b5ea5151cd0668c79
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77158982"
 ---
-# <a name="preview-deploy-spot-vms-using-the-azure-portal"></a>Wersja zapoznawcza: wdrażanie maszyn wirtualnych przy użyciu Azure Portal
+# <a name="preview-deploy-spot-vms-using-the-azure-portal"></a>Wersja zapoznawcza: wdrażanie maszyn wirtualnych w miejscu przy użyciu witryny Azure portal
 
-Korzystanie z [maszyn wirtualnych na miejscu](spot-vms.md) pozwala korzystać z nieużywanej pojemności przy znaczącym obciążeniu kosztów. W dowolnym momencie, gdy platforma Azure wymaga przywrócenia pojemności, infrastruktura platformy Azure wyłączy maszyny wirtualne. W związku z tym maszyny wirtualne są doskonałe dla obciążeń, które mogą obsłużyć przerwy, takie jak zadania przetwarzania wsadowego, środowiska deweloperskie/testowe, duże obciążenia obliczeniowe i inne.
+Korzystanie z [maszyn wirtualnych spot](spot-vms.md) pozwala na wykorzystanie naszej niewykorzystanej pojemności przy znacznych oszczędnościach kosztów. W dowolnym momencie, gdy platforma Azure potrzebuje pojemności z powrotem, infrastruktura platformy Azure będzie eksmitować maszyny wirtualne spot. W związku z tym maszyny wirtualne spot są idealne dla obciążeń, które mogą obsługiwać przerwy, takie jak zadania przetwarzania wsadowego, środowiska deweloperów/testów, duże obciążenia obliczeniowe i inne.
 
-Ceny maszyn wirtualnych na miejscu są zmienne, na podstawie regionu i jednostki SKU. Aby uzyskać więcej informacji, zobacz cennik maszyn wirtualnych dla [systemów](https://azure.microsoft.com/pricing/details/virtual-machines/windows/) [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) i Windows. Aby uzyskać więcej informacji na temat ustawiania ceny maksymalnej, zobacz [punkt maszyny wirtualne — Cennik](spot-vms.md#pricing).
+Ceny maszyn wirtualnych punktowych są zmienne na podstawie regionu i jednostki SKU. Aby uzyskać więcej informacji, zobacz Ceny maszyn wirtualnych dla [systemów Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) i [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows/). Aby uzyskać więcej informacji na temat ustawiania ceny maksymalnej, zobacz [Maszyny wirtualne spot - Cennik](spot-vms.md#pricing).
 
-Dla maszyny wirtualnej można ustawić maksymalną cenę, która ma być płacona za godzinę. Maksymalna cena maszyny wirtualnej na miejscu może być ustawiona w dolarach amerykańskich (USD) przy użyciu maksymalnie 5 miejsc dziesiętnych. Na przykład wartość `0.05701`będzie cena maksymalna $0,05701 USD za godzinę. Jeśli ustawisz maksymalną wartość `-1`, maszyna wirtualna nie zostanie wykluczona na podstawie ceny. Cena maszyny wirtualnej to aktualna cena za ilość miejsca lub cena standardowej maszyny wirtualnej, która kiedykolwiek jest mniejsza, o ile jest dostępna pojemność i przydział.
+Masz możliwość, aby ustawić maksymalną cenę jesteś gotów zapłacić, za godzinę, dla maszyny Wirtualnej. Maksymalna cena maszyny Wirtualnej spot można ustawić w dolarach amerykańskich (USD), przy użyciu miejsc po przecinku do 5. Na przykład wartość `0.05701`będzie maksymalna cena $0.05701 USD za godzinę. Jeśli ustawisz maksymalną `-1`cenę, maszyna wirtualna nie zostanie eksmitowana na podstawie ceny. Cena za maszynę wirtualną będzie bieżącą ceną spot lub ceną standardowej maszyny Wirtualnej, która kiedykolwiek jest mniejsza, o ile dostępna jest pojemność i przydział.
 
 > [!IMPORTANT]
-> Wystąpienia punktowe są obecnie dostępne w publicznej wersji zapoznawczej.
-> Ta wersja zapoznawcza nie jest zalecana w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą być nieobsługiwane lub ograniczone. Aby uzyskać więcej informacji, zobacz [Uzupełniające warunki korzystania z wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Wystąpienia spot są obecnie w publicznej wersji zapoznawczej.
+> Ta wersja zapoznawcza nie jest zalecana dla obciążeń produkcyjnych. Niektóre funkcje mogą być nieobsługiwane lub ograniczone. Aby uzyskać więcej informacji, zobacz [Uzupełniające warunki korzystania z wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 >
 
 
 ## <a name="create-the-vm"></a>Tworzenie maszyny wirtualnej
 
-Proces tworzenia maszyny wirtualnej korzystającej z maszyn wirtualnych jest taki sam jak szczegółowy w [przewodniku szybki start](quick-create-portal.md). Podczas wdrażania maszyny wirtualnej możesz użyć wystąpienia usługi Azure spot.
+Proces tworzenia maszyny wirtualnej korzystającej z maszyn wirtualnych punktowych jest taki sam, jak opisano w [przewodniku Szybki start](quick-create-portal.md). Podczas wdrażania maszyny Wirtualnej, można użyć wystąpienia spot platformy Azure.
 
 
-Na karcie **podstawowe** w sekcji **szczegóły wystąpienia** **nie** jest domyślnie używana usługa Azure Spot instance.
+Na karcie **Podstawy** w sekcji **Szczegóły wystąpienia** **nie** jest ustawieniem domyślnym dla korzystania z wystąpienia spot platformy Azure.
 
-![Przechwytywanie ekranu w celu wybrania opcji nie, nie używaj wystąpienia usługi Azure spot](media/spot-portal/no.png)
+![Przechwytywanie ekranu w celu wybrania nie, nie używaj wystąpienia spot platformy Azure](media/spot-portal/no.png)
 
-Wybranie opcji **tak**powoduje, że sekcja zostanie rozwinięta i można wybrać [Typ wykluczenia i zasady wykluczania](spot-vms.md#eviction-policy). 
+Wybierz opcję **Tak**, sekcja rozwija się i możesz wybrać [typ eksmisji i zasady eksmisji.](spot-vms.md#eviction-policy) 
 
-![Przechwytywanie ekranu w celu wybrania opcji tak, użyj wystąpienia usługi Azure spot](media/spot-portal/yes.png)
+![Przechwytywanie ekranu w celu wybrania tak, użyj wystąpienia spot platformy Azure](media/spot-portal/yes.png)
 
 
 ## <a name="next-steps"></a>Następne kroki
 
-Możesz również tworzyć maszyny wirtualne na miejscu przy użyciu [programu PowerShell](spot-powershell.md).
+Maszyny wirtualne punktowe można również tworzyć za pomocą programu [PowerShell](spot-powershell.md).

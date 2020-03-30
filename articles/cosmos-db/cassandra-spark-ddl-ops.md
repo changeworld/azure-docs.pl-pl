@@ -1,6 +1,6 @@
 ---
-title: Operacje języka DDL w Azure Cosmos DB interfejs API Cassandra z platformy Spark
-description: W tym artykule opisano operacje dotyczące przestrzeni kluczy i języka DDL w tabeli dotyczącej Azure Cosmos DB interfejs API Cassandra z platformy Spark.
+title: Operacje DDL w interfejsie API Cassandra usługi Azure Cosmos DB firmy Spark
+description: W tym artykule opisano operacje przestrzeni kluczy i tabeli DDL względem interfejsu API Cassandra usługi Azure Cosmos DB z platformy Spark.
 author: kanshiG
 ms.author: govindk
 ms.reviewer: sngun
@@ -9,17 +9,17 @@ ms.subservice: cosmosdb-cassandra
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.openlocfilehash: c0df05eff5dc84ef24e1ed5afcaf705d99f447ef
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77622575"
 ---
-# <a name="ddl-operations-in-azure-cosmos-db-cassandra-api-from-spark"></a>Operacje języka DDL w Azure Cosmos DB interfejs API Cassandra z platformy Spark
+# <a name="ddl-operations-in-azure-cosmos-db-cassandra-api-from-spark"></a>Operacje DDL w interfejsie API Cassandra usługi Azure Cosmos DB firmy Spark
 
-W tym artykule opisano operacje dotyczące przestrzeni kluczy i języka DDL w tabeli dotyczącej Azure Cosmos DB interfejs API Cassandra z platformy Spark.
+W tym artykule opisano operacje przestrzeni kluczy i tabeli DDL względem interfejsu API Cassandra usługi Azure Cosmos DB z platformy Spark.
 
-## <a name="cassandra-api-related-configuration"></a>Konfiguracja związana z interfejs API Cassandra 
+## <a name="cassandra-api-related-configuration"></a>Konfiguracja związana z api cassandra 
 
 ```scala
 import org.apache.spark.sql.cassandra._
@@ -48,9 +48,9 @@ spark.conf.set("spark.cassandra.output.batch.grouping.buffer.size", "1000")
 spark.conf.set("spark.cassandra.connection.keep_alive_ms", "600000000")
 ```
 
-## <a name="keyspace-ddl-operations"></a>Operacje języka DDL dotyczące przestrzeni kluczy
+## <a name="keyspace-ddl-operations"></a>Operacje DDL przestrzeni kluczy
 
-### <a name="create-a-keyspace"></a>Utwórz miejsce na dysku
+### <a name="create-a-keyspace"></a>Tworzenie przestrzeni kluczy
 
 ```scala
 //Cassandra connector instance
@@ -60,31 +60,31 @@ val cdbConnector = CassandraConnector(sc)
 cdbConnector.withSessionDo(session => session.execute("CREATE KEYSPACE IF NOT EXISTS books_ks WITH REPLICATION = {'class': 'SimpleStrategy', 'replication_factor': 1 } "))
 ```
 
-#### <a name="validate-in-cqlsh"></a>Weryfikuj w cqlsh
+#### <a name="validate-in-cqlsh"></a>Sprawdź poprawność w cqlsh
 
-Uruchom następujące polecenie w cqlsh i zobaczysz wcześniej utworzoną przestrzeń kluczy.
+Uruchom następujące polecenie w cqlsh i powinieneś zobaczyć przestrzeń kluczy utworzoną wcześniej.
 
 ```bash
 DESCRIBE keyspaces;
 ```
 
-### <a name="drop-a-keyspace"></a>Porzuć miejsce na dysku
+### <a name="drop-a-keyspace"></a>Upuść przestrzeń kluczy
 
 ```scala
 val cdbConnector = CassandraConnector(sc)
 cdbConnector.withSessionDo(session => session.execute("DROP KEYSPACE books_ks"))
 ```
 
-#### <a name="validate-in-cqlsh"></a>Weryfikuj w cqlsh
+#### <a name="validate-in-cqlsh"></a>Sprawdź poprawność w cqlsh
 
 ```bash
 DESCRIBE keyspaces;
 ```
-## <a name="table-ddl-operations"></a>Operacje na tabelach w języku DDL
+## <a name="table-ddl-operations"></a>Operacje DDL tabeli
 
-**Zagadnienia dotyczące**  
+**Zagadnienia do rozważenia:**  
 
-- Przepływność można przypisywać na poziomie tabeli przy użyciu instrukcji CREATE TABLE.  
+- Przepływność można przypisać na poziomie tabeli przy użyciu instrukcji tworzenie tabeli.  
 - Jeden klucz partycji może przechowywać 20 GB danych.  
 - Jeden rekord może przechowywać maksymalnie 2 MB danych.  
 - Jeden zakres kluczy partycji może przechowywać wiele kluczy partycji.
@@ -96,40 +96,40 @@ val cdbConnector = CassandraConnector(sc)
 cdbConnector.withSessionDo(session => session.execute("CREATE TABLE IF NOT EXISTS books_ks.books(book_id TEXT PRIMARY KEY,book_author TEXT, book_name TEXT,book_pub_year INT,book_price FLOAT) WITH cosmosdb_provisioned_throughput=4000 , WITH default_time_to_live=630720000;"))
 ```
 
-#### <a name="validate-in-cqlsh"></a>Weryfikuj w cqlsh
+#### <a name="validate-in-cqlsh"></a>Sprawdź poprawność w cqlsh
 
-Uruchom następujące polecenie w cqlsh i Wyświetl tabelę o nazwie "Books: 
+Uruchom następujące polecenie w cqlsh i powinien zobaczyć tabelę o nazwie "książki: 
 
 ```bash
 USE books_ks;
 DESCRIBE books;
 ```
 
-W danych wyjściowych poprzedniego polecenia nie są wyświetlane wartości przepływności aprowizacji i domyślne ustawienia czasu wygaśnięcia, ale te wartości można uzyskać z portalu.
+Aprowizowana przepływność i domyślne wartości czasu wygaśnięcia nie są wyświetlane w danych wyjściowych poprzedniego polecenia, można uzyskać te wartości z portalu.
 
-### <a name="alter-table"></a>ALTER TABLE
+### <a name="alter-table"></a>Zmienianie tabeli
 
-Poniższe wartości można zmienić za pomocą polecenia ALTER TABLE:
+Następujące wartości można zmienić za pomocą polecenia alter table:
 
-* Elastyczna przepływność 
-* wartość czasu wygaśnięcia
-<br>Zmiany w kolumnach nie są obecnie obsługiwane.
+* aprowizowana przepływność 
+* wartość czasu do żywo
+<br>Zmiany kolumn nie są obecnie obsługiwane.
 
 ```scala
 val cdbConnector = CassandraConnector(sc)
 cdbConnector.withSessionDo(session => session.execute("ALTER TABLE books_ks.books WITH cosmosdb_provisioned_throughput=8000, WITH default_time_to_live=0;"))
 ```
 
-### <a name="drop-table"></a>Usuń tabelę
+### <a name="drop-table"></a>Tabela upuszczania
 
 ```scala
 val cdbConnector = CassandraConnector(sc)
 cdbConnector.withSessionDo(session => session.execute("DROP TABLE IF EXISTS books_ks.books;"))
 ```
 
-#### <a name="validate-in-cqlsh"></a>Weryfikuj w cqlsh
+#### <a name="validate-in-cqlsh"></a>Sprawdź poprawność w cqlsh
 
-Uruchom następujące polecenie w cqlsh i sprawdź, czy tabela "książki" nie jest już dostępna:
+Uruchom następujące polecenie w cqlsh i powinieneś zobaczyć, że tabela "książki" nie jest już dostępna:
 
 ```bash
 USE books_ks;
@@ -138,11 +138,11 @@ DESCRIBE tables;
 
 ## <a name="next-steps"></a>Następne kroki
 
-Po utworzeniu przestrzeni kluczy i tabeli należy wykonać czynności opisane w następujących artykułach CRUD i nie tylko:
+Po utworzeniu przestrzeni kluczy i tabeli przejdź do następujących artykułów dla operacji CRUD i nie tylko:
  
-* [Operacje tworzenia/wstawiania](cassandra-spark-create-ops.md)  
+* [Tworzenie/wstawianie operacji](cassandra-spark-create-ops.md)  
 * [Operacje odczytu](cassandra-spark-read-ops.md)  
 * [Operacje upsert](cassandra-spark-upsert-ops.md)  
-* [Operacje usuwania](cassandra-spark-delete-ops.md)  
+* [Usuwanie operacji](cassandra-spark-delete-ops.md)  
 * [Operacje agregacji](cassandra-spark-aggregation-ops.md)  
-* [Operacje kopiowania tabel](cassandra-spark-table-copy-ops.md)  
+* [Operacje kopiowania tabeli](cassandra-spark-table-copy-ops.md)  

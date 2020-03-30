@@ -1,6 +1,6 @@
 ---
-title: Kopiowanie danych z programu MySQL przy użyciu Azure Data Factory
-description: Więcej informacji na temat łącznika MySQL w programie Azure Data Factory umożliwia kopiowanie danych z bazy danych MySQL do magazynu danych obsługiwanego jako ujścia.
+title: Kopiowanie danych z mysql przy użyciu usługi Azure Data Factory
+description: Dowiedz się więcej o łączniku MySQL w usłudze Azure Data Factory, który umożliwia kopiowanie danych z bazy danych MySQL do magazynu danych obsługiwanego jako ujście.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -12,61 +12,61 @@ ms.topic: conceptual
 ms.date: 02/19/2020
 ms.author: jingwang
 ms.openlocfilehash: 0bfae10d3b3b491c3662385055b23cc585a6e24d
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77471163"
 ---
-# <a name="copy-data-from-mysql-using-azure-data-factory"></a>Kopiowanie danych z programu MySQL przy użyciu Azure Data Factory
-> [!div class="op_single_selector" title1="Wybierz używaną wersję usługi Data Factory:"]
+# <a name="copy-data-from-mysql-using-azure-data-factory"></a>Kopiowanie danych z mysql przy użyciu usługi Azure Data Factory
+> [!div class="op_single_selector" title1="Wybierz wersję używanej usługi Data Factory:"]
 > * [Wersja 1](v1/data-factory-onprem-mysql-connector.md)
 > * [Bieżąca wersja](connector-mysql.md)
 
-W tym artykule opisano sposób używania działania kopiowania w Azure Data Factory do kopiowania danych z bazy danych MySQL. Jest ona oparta na [przeglądzie działania kopiowania](copy-activity-overview.md) , która przedstawia ogólne omówienie działania kopiowania.
+W tym artykule opisano, jak używać działania kopiowania w usłudze Azure Data Factory do kopiowania danych z bazy danych MySQL. Opiera się na [omówienie działania kopiowania](copy-activity-overview.md) artykuł, który przedstawia ogólny przegląd działania kopiowania.
 
 >[!NOTE]
->Aby skopiować dane z usługi lub do [Azure Database for MySQL](../mysql/overview.md) , użyj [łącznika](connector-azure-database-for-mysql.md)wyspecjalizowane Azure Database for MySQL.
+>Aby skopiować dane z lub do usługi [Azure Database for MySQL,](../mysql/overview.md) użyj specjalistycznego [łącznika usługi Azure Database for MySQL.](connector-azure-database-for-mysql.md)
 
-## <a name="supported-capabilities"></a>Obsługiwane funkcje
+## <a name="supported-capabilities"></a>Obsługiwane możliwości
 
 Ten łącznik MySQL jest obsługiwany dla następujących działań:
 
-- [Działanie kopiowania](copy-activity-overview.md) z [obsługiwaną macierzą źródłową/ujścia](copy-activity-overview.md)
-- [Działanie Lookup](control-flow-lookup-activity.md)
+- [Kopiowanie aktywności](copy-activity-overview.md) z [obsługiwaną macierzą źródło/ujście](copy-activity-overview.md)
+- [Działanie odnośnika](control-flow-lookup-activity.md)
 
-Dane z bazy danych MySQL można kopiować do dowolnego obsługiwanego magazynu danych ujścia. Listę magazynów danych obsługiwanych jako źródła/ujścia przez działanie kopiowania można znaleźć w tabeli [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats) .
+Dane z bazy danych MySQL można skopiować do dowolnego obsługiwanego magazynu danych ujścia. Aby uzyskać listę magazynów danych, które są obsługiwane jako źródła/pochłaniacze przez działanie kopiowania, zobacz tabelę [Obsługiwane magazyny danych.](copy-activity-overview.md#supported-data-stores-and-formats)
 
-W przypadku tego łącznika MySQL obsługuje program MySQL w **wersji 5,6 i 5,7**.
+W szczególności to złącze MySQL obsługuje MySQL **w wersji 5.6 i 5.7.**
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 [!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 
-Integration Runtime udostępnia wbudowany sterownik MySQL, począwszy od wersji 3,7, dlatego nie trzeba ręcznie instalować żadnego sterownika.
+Integration Runtime zapewnia wbudowany sterownik MySQL, począwszy od wersji 3.7, dlatego nie trzeba ręcznie zainstalować żadnego sterownika.
 
 ## <a name="getting-started"></a>Wprowadzenie
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
-Poniższe sekcje zawierają szczegółowe informacje o właściwościach, które są używane do definiowania jednostek Data Factory specyficznych dla łącznika MySQL.
+W poniższych sekcjach znajdują się szczegółowe informacje o właściwościach, które są używane do definiowania jednostek fabryki danych specyficznych dla łącznika MySQL.
 
-## <a name="linked-service-properties"></a>Właściwości usługi połączonej
+## <a name="linked-service-properties"></a>Połączone właściwości usługi
 
-Następujące właściwości są obsługiwane w przypadku usługi połączonej MySQL:
+Dla połączonej usługi MySQL są obsługiwane następujące właściwości:
 
-| Właściwość | Opis | Wymagane |
+| Właściwość | Opis | Wymagany |
 |:--- |:--- |:--- |
-| typ | Właściwość Type musi być ustawiona na wartość: **MySQL** | Tak |
-| connectionString | Określ informacje, które są konieczne do nawiązania połączenia z wystąpieniem Azure Database for MySQL.<br/> Możesz również wprowadzić hasło w Azure Key Vault i ściągnąć konfigurację `password` z parametrów połączenia. Zapoznaj się z poniższymi przykładami i [Zapisz poświadczenia w Azure Key Vault](store-credentials-in-key-vault.md) artykule, aby uzyskać więcej szczegółów. | Tak |
-| connectVia | [Integration Runtime](concepts-integration-runtime.md) używany do nawiązywania połączenia z magazynem danych. Dowiedz się więcej z sekcji [wymagania wstępne](#prerequisites) . Jeśli nie zostanie określony, używa domyślnego środowiska Azure Integration Runtime. |Nie |
+| type | Właściwość typu musi być ustawiona na: **MySql** | Tak |
+| Parametry połączenia | Określ informacje potrzebne do nawiązania połączenia z usługą Azure Database dla wystąpienia MySQL.<br/> Można również umieścić hasło w usłudze `password` Azure Key Vault i wyciągnąć konfigurację z ciągu połączenia. Więcej informacji można znaleźć w poniższych przykładach i [poświadczeniach sklepu w usłudze Azure Key Vault.](store-credentials-in-key-vault.md) | Tak |
+| connectVia | [Środowisko wykonawcze integracji,](concepts-integration-runtime.md) które mają być używane do łączenia się z magazynem danych. Dowiedz się więcej z sekcji [Wymagania wstępne.](#prerequisites) Jeśli nie zostanie określony, używa domyślnego środowiska wykonawczego integracji platformy Azure. |Nie |
 
-Typowe parametry połączenia to `Server=<server>;Port=<port>;Database=<database>;UID=<username>;PWD=<password>`. Więcej właściwości, które można ustawić dla tej sprawy:
+Typowym ciągiem `Server=<server>;Port=<port>;Database=<database>;UID=<username>;PWD=<password>`połączenia jest . Więcej właściwości, które można ustawić w przypadku:
 
-| Właściwość | Opis | Opcje | Wymagane |
+| Właściwość | Opis | Opcje | Wymagany |
 |:--- |:--- |:--- |:--- |
-| SSLMode | Ta opcja określa, czy sterownik używa szyfrowania SSL i weryfikacji podczas łączenia z bazą danych MySQL. Np., `SSLMode=<0/1/2/3/4>`| WYŁĄCZONE (0)/PREFEROWANe (1) **(wartość domyślna)** /wymagane (2)/VERIFY_CA (3)/VERIFY_IDENTITY (4) | Nie |
-| UseSystemTrustStore | Ta opcja umożliwia określenie, czy certyfikat urzędu certyfikacji ma być używany z magazynu zaufania systemu, czy z określonego pliku PEM. Na przykład `UseSystemTrustStore=<0/1>;`| Włączone (1)/wyłączone (0) **(wartość domyślna)** | Nie |
+| Tryb SSL | Ta opcja określa, czy sterownik używa szyfrowania SSL i weryfikacji podczas łączenia się z MySQL. Przykład.`SSLMode=<0/1/2/3/4>`| WYŁĄCZONE (0) / PREFEROWANE (1) **(domyślnie)** / WYMAGANE (2) / VERIFY_CA (3) / VERIFY_IDENTITY (4) | Nie |
+| Użyj SystemuTrustStore | Ta opcja określa, czy certyfikat urzędu certyfikacji ma być używany z magazynu zaufania systemu, czy z określonego pliku PEM. Na przykład `UseSystemTrustStore=<0/1>;`| Włączone (1) / Wyłączone (0) **(domyślnie)** | Nie |
 
 **Przykład:**
 
@@ -86,7 +86,7 @@ Typowe parametry połączenia to `Server=<server>;Port=<port>;Database=<database
 }
 ```
 
-**Przykład: Przechowuj hasło w Azure Key Vault**
+**Przykład: hasło magazynu w usłudze Azure Key Vault**
 
 ```json
 {
@@ -112,9 +112,9 @@ Typowe parametry połączenia to `Server=<server>;Port=<port>;Database=<database
 }
 ```
 
-Jeśli używasz połączonej usługi MySQL z następującym ładunkiem, nadal jest ona obsługiwana w stanie takim, w jakim będziesz mieć możliwość użycia nowego.
+Jeśli używasz usługi połączonej MySQL z następującym ładunkiem, nadal jest obsługiwana w stanie as-is, podczas gdy sugeruje się użycie nowej usługi w przyszłości.
 
-**Poprzedni ładunek:**
+**Poprzednia ładowność:**
 
 ```json
 {
@@ -140,14 +140,14 @@ Jeśli używasz połączonej usługi MySQL z następującym ładunkiem, nadal je
 
 ## <a name="dataset-properties"></a>Właściwości zestawu danych
 
-Aby uzyskać pełną listę sekcji i właściwości dostępnych do definiowania zestawów danych, zobacz artykuł [zestawy danych](concepts-datasets-linked-services.md) . Ta sekcja zawiera listę właściwości obsługiwanych przez zestaw danych MySQL.
+Aby uzyskać pełną listę sekcji i właściwości dostępnych do definiowania zestawów danych, zobacz artykuł [o zestawach danych.](concepts-datasets-linked-services.md) Ta sekcja zawiera listę właściwości obsługiwanych przez zestaw danych MySQL.
 
-Aby skopiować dane z programu MySQL, obsługiwane są następujące właściwości:
+Aby skopiować dane z MySQL, obsługiwane są następujące właściwości:
 
-| Właściwość | Opis | Wymagane |
+| Właściwość | Opis | Wymagany |
 |:--- |:--- |:--- |
-| typ | Właściwość Type zestawu danych musi być ustawiona na: **MySQL** | Tak |
-| tableName | Nazwa tabeli w bazie danych MySQL. | Nie (Jeśli określono parametr "query" w źródle działania) |
+| type | Właściwość typu zestawu danych musi być ustawiona na: **MySqlTable** | Tak |
+| tableName | Nazwa tabeli w bazie danych MySQL. | Nie (jeśli określono "zapytanie" w źródle działania) |
 
 **Przykład**
 
@@ -167,20 +167,20 @@ Aby skopiować dane z programu MySQL, obsługiwane są następujące właściwo�
 }
 ```
 
-Jeśli używasz zestawu danych `RelationalTable` z określonym typem, nadal jest on obsługiwany w przypadku, gdy zamierzasz korzystać z nowego.
+Jeśli używasz `RelationalTable` wpisanego zestawu danych, jest on nadal obsługiwany w stanie gotowym do użycia, podczas gdy zaleca się użycie nowego w przyszłości.
 
 ## <a name="copy-activity-properties"></a>Właściwości działania kopiowania
 
-Aby uzyskać pełną listę sekcji i właściwości dostępnych do definiowania działań, zobacz artykuł [potoki](concepts-pipelines-activities.md) . Ta sekcja zawiera listę właściwości obsługiwanych przez źródło MySQL.
+Aby uzyskać pełną listę sekcji i właściwości dostępnych do definiowania działań, zobacz [Pipelines](concepts-pipelines-activities.md) artykułu. Ta sekcja zawiera listę właściwości obsługiwanych przez źródło MySQL.
 
 ### <a name="mysql-as-source"></a>MySQL jako źródło
 
-Aby skopiować dane z programu MySQL, w sekcji **Źródło** działania kopiowania są obsługiwane następujące właściwości:
+Aby skopiować dane z MySQL, w sekcji **źródła** działania kopiowania obsługiwane są następujące właściwości:
 
-| Właściwość | Opis | Wymagane |
+| Właściwość | Opis | Wymagany |
 |:--- |:--- |:--- |
-| typ | Właściwość Type źródła działania Copy musi być ustawiona na wartość: **MySqlSource** | Tak |
-| zapytanie | Umożliwia odczytywanie danych niestandardowe zapytania SQL. Na przykład: `"SELECT * FROM MyTable"`. | Nie (Jeśli określono parametr "tableName" w zestawie danych) |
+| type | Właściwość typu źródła działania kopiowania musi być ustawiona na: **MySqlSource** | Tak |
+| query | Użyj niestandardowej kwerendy SQL, aby odczytać dane. Na przykład: `"SELECT * FROM MyTable"`. | Nie (jeśli określono "nazwa tabela" w zestawie danych) |
 
 **Przykład:**
 
@@ -214,13 +214,13 @@ Aby skopiować dane z programu MySQL, w sekcji **Źródło** działania kopiowan
 ]
 ```
 
-Jeśli używasz źródła z wpisaną `RelationalSource`, jest ono nadal obsługiwane w stanie takim, w jakim będziesz mieć możliwość korzystania z nowej usługi.
+Jeśli używasz `RelationalSource` wpisanego źródła, jest ono nadal obsługiwane w stanie as-is, podczas gdy zaleca się użycie nowego w przyszłości.
 
-## <a name="data-type-mapping-for-mysql"></a>Mapowanie typu danych dla programu MySQL
+## <a name="data-type-mapping-for-mysql"></a>Mapowanie typów danych dla MySQL
 
-Podczas kopiowania danych z programu MySQL następujące mapowania są używane z typów danych MySQL do Azure Data Factory danych pośrednich. Zobacz [Mapowanie schematu i typu danych](copy-activity-schema-and-type-mapping.md) , aby dowiedzieć się, jak działanie kopiowania mapuje schemat źródłowy i typ danych do ujścia.
+Podczas kopiowania danych z MySQL, następujące mapowania są używane z typów danych MySQL do usługi Azure Data Factory tymczasowych typów danych. Zobacz [Mapowania schematu i typu danych,](copy-activity-schema-and-type-mapping.md) aby dowiedzieć się, jak aktywność kopiowania mapuje schemat źródłowy i typ danych do ujścia.
 
-| Typ danych MySQL | Typ danych tymczasowych fabryki danych |
+| Typ danych MySQL | Tymczasowy typ danych fabryki danych |
 |:--- |:--- |
 | `bigint` |`Int64` |
 | `bigint unsigned` |`Decimal` |
@@ -264,9 +264,9 @@ Podczas kopiowania danych z programu MySQL następujące mapowania są używane 
 | `year` |`Int` |
 
 
-## <a name="lookup-activity-properties"></a>Właściwości działania Lookup
+## <a name="lookup-activity-properties"></a>Właściwości działania odnośnika
 
-Aby dowiedzieć się więcej o właściwościach, sprawdź [działanie Lookup (wyszukiwanie](control-flow-lookup-activity.md)).
+Aby dowiedzieć się więcej o właściwościach, sprawdź [działanie odnośnika](control-flow-lookup-activity.md).
 
 ## <a name="next-steps"></a>Następne kroki
-Listę magazynów danych obsługiwanych jako źródła i ujścia przez działanie kopiowania w Azure Data Factory można znaleźć w temacie [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats).
+Aby uzyskać listę magazynów danych obsługiwanych jako źródła i pochłaniacze przez działanie kopiowania w usłudze Azure Data Factory, zobacz [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats).

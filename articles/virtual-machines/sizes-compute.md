@@ -1,6 +1,6 @@
 ---
-title: Rozmiary maszyn wirtualnych platformy Azure — zoptymalizowane pod kątem obliczeń | Microsoft Docs
-description: Wyświetla listę różnych rozmiarów zoptymalizowanych pod kątem obliczeń dostępnych dla maszyn wirtualnych na platformie Azure. Wyświetla listę informacji o liczbie procesorów wirtualnych vCPU, dyskach danych i kartach sieciowych, a także przepływności magazynu i przepustowości sieci dla rozmiarów w tej serii.
+title: Rozmiary maszyn wirtualnych platformy Azure — zoptymalizowane pod kątem obliczeń | Dokumenty firmy Microsoft
+description: Wyświetla listę różnych rozmiarów zoptymalizowanych pod kątem obliczeń dostępnych dla maszyn wirtualnych na platformie Azure. Wyświetla informacje o liczbie procesorów wirtualnych, dysków danych i kart sieciowych, a także przepustowości magazynu i przepustowości sieci dla rozmiarów w tej serii.
 services: virtual-machines
 documentationcenter: ''
 author: jonbeck7
@@ -15,19 +15,19 @@ ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: jonbeck
 ms.openlocfilehash: d709d621341ef14ec158ed5af1c2df4297d66b8b
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77493633"
 ---
-# <a name="compute-optimized-virtual-machine-sizes"></a>Rozmiary maszyn wirtualnych zoptymalizowane pod kątem obliczeń
+# <a name="compute-optimized-virtual-machine-sizes"></a>Oblicz optymalizację rozmiarów maszyn wirtualnych
 
-Rozmiary maszyn wirtualnych zoptymalizowane pod kątem obliczeń mają duży stosunek procesora CPU do pamięci. Te rozmiary są dobre dla serwerów sieci Web o średnim ruchu, urządzeń sieciowych, procesów wsadowych i serwerów aplikacji. Ten artykuł zawiera informacje na temat liczby procesorów wirtualnych vCPU, dysków danych i kart interfejsu sieciowego. Zawiera również informacje o przepływności magazynu i przepustowości sieci dla każdego rozmiaru w ramach tego grupowania.
+Rozmiary zoptymalizowanych maszyn wirtualnych mają wysoki współczynnik procesora CPU do pamięci. Te rozmiary są dobre dla serwerów sieci web o średnim natężeniu ruchu, urządzeń sieciowych, procesów wsadowych i serwerów aplikacji. Ten artykuł zawiera informacje o liczbie procesorów wirtualnych, dysków z danymi i kart sieciowych. Zawiera również informacje o przepływności magazynu i przepustowości sieci dla każdego rozmiaru w tej grupie.
 
-[Seria Fsv2](fsv2-series.md) jest oparta na procesorze Intel® Xeon® Platinum 8168. Oferuje on stałą prędkość zegara Turbo o częstotliwości 3,4 GHz i maksymalną jednordzeniową częstotliwość Turbo 3,7 GHz. Instrukcje Intel® AVX-512 są nowe w skalowalnych procesorach Intel. Te instrukcje umożliwiają zwiększenie wydajności do obciążeń przetwarzania wektorowego zarówno w przypadku operacji zmiennoprzecinkowych o pojedynczej, jak i podwójnej precyzji. Innymi słowy, są one bardzo szybkie w przypadku obciążeń obliczeniowych.
+[Seria Fsv2](fsv2-series.md) jest oparta na procesorze Intel® Xeon® Platinum 8168. Posiada trwałą prędkość zegara Turbo całego rdzenia 3,4 GHz i maksymalną jednordzeniową częstotliwość turbo 3,7 GHz. Instrukcje Intel® AVX-512 są nowe w przypadku procesorów Intel Scalable. Te instrukcje zapewniają maksymalnie 2-krotny wzrost wydajności do obciążeń przetwarzania wektorowego zarówno w operacjach zmiennoprzecinkowych pojedynczej, jak i podwójnej precyzji. Innymi słowy, są one bardzo szybkie dla każdego obciążenia obliczeniowego.
 
-Na niższą cenę za godzinę cennika seria Fsv2 jest najlepszą wartością wydajności w portfolio Azure w oparciu o jednostkę obliczeniową platformy Azure (ACU) na vCPU.
+Przy niższej cenie katalogowej za godzinę seria Fsv2 jest najlepszą wartością w wydajności cenowej w portfolio platformy Azure na podstawie jednostki obliczeniowej azure (ACU) na procesor wirtualny.
 
 ## <a name="other-sizes"></a>Inne rozmiary
 
@@ -40,4 +40,4 @@ Na niższą cenę za godzinę cennika seria Fsv2 jest najlepszą wartością wyd
 
 ## <a name="next-steps"></a>Następne kroki
 
-Dowiedz się więcej o tym, jak [usługa Azure COMPUTE units (ACU)](acu.md) może pomóc w porównaniu wydajności obliczeniowej w ramach jednostek SKU platformy Azure.
+Dowiedz się więcej o tym, jak [jednostki obliczeniowe platformy Azure (ACU)](acu.md) mogą pomóc w porównywaniu wydajności obliczeniowej w jednostkach SKU platformy Azure.

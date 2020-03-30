@@ -1,25 +1,25 @@
 ---
-title: Dokumentacja interfejsu API usługi Azure Application Insights Agent
-description: Dokumentacja interfejsu API agenta Application Insights. Disable-ApplicationInsightsMonitoring. Monitorowanie wydajności witryny sieci Web bez ponownego wdrażania witryny sieci Web. Współpracuje z usługą ASP.NET Web Apps hostowaną lokalnie, na maszynach wirtualnych lub na platformie Azure.
+title: Odwołanie do interfejsu API agenta usługi Azure Application Insights
+description: Odwołanie do interfejsu API agenta usługi Application Insights. Disable-ApplicationInsightsMonitoring. Monitoruj działanie witryny bez ponownego rozmieszczania witryny. Współpracuje ze ASP.NET aplikacjami sieci web hostowanymi lokalnie, na maszynach wirtualnych lub na platformie Azure.
 ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
 ms.openlocfilehash: 0678186012678a68fa80a23685f8b346c8c5b859
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77671294"
 ---
-# <a name="application-insights-agent-api-disable-applicationinsightsmonitoring"></a>Interfejs API agenta Application Insights: Disable-ApplicationInsightsMonitoring
+# <a name="application-insights-agent-api-disable-applicationinsightsmonitoring"></a>Interfejs API agenta usługi Application Insights: Monitorowanie funkcji Disable-ApplicationInsightsMonitoring
 
-W tym artykule opisano polecenie cmdlet, które jest członkiem [modułu programu PowerShell AZ. ApplicationMonitor](https://www.powershellgallery.com/packages/Az.ApplicationMonitor/).
+W tym artykule opisano polecenie cmdlet, który jest członkiem [modułu Az.ApplicationMonitor PowerShell](https://www.powershellgallery.com/packages/Az.ApplicationMonitor/).
 
 ## <a name="description"></a>Opis
 
 Wyłącza monitorowanie na komputerze docelowym.
-To polecenie cmdlet spowoduje usunięcie zmian w pliku applicationHost. config usług IIS i usunięciu kluczy rejestru.
+To polecenie cmdlet usunie zmiany w aplikacji IISHost.config i usunie klucze rejestru.
 
 > [!IMPORTANT] 
 > To polecenie cmdlet wymaga sesji programu PowerShell z uprawnieniami administratora.
@@ -32,13 +32,13 @@ PS C:\> Disable-ApplicationInsightsMonitoring
 
 ## <a name="parameters"></a>Parametry 
 
-### <a name="-verbose"></a>-Verbose
-**Wspólny parametr.** Użyj tego przełącznika, aby wyświetlić szczegółowe dzienniki.
+### <a name="-verbose"></a>-Pełne
+**Wspólny parametr.** Ten przełącznik służy do wyświetlania szczegółowych dzienników.
 
 ## <a name="output"></a>Dane wyjściowe
 
 
-#### <a name="example-output-from-successfully-disabling-monitoring"></a>Przykładowe dane wyjściowe z pomyślnym wyłączeniem monitorowania
+#### <a name="example-output-from-successfully-disabling-monitoring"></a>Przykładowy wynik z pomyślnego wyłączania monitorowania
 
 ```
 Initiating Disable Process
@@ -64,5 +64,5 @@ Successfully disabled Application Insights Status Monitor
 
 ## <a name="next-steps"></a>Następne kroki
 
- Zrób więcej dzięki Application Insights agentowi:
- - Skorzystaj z naszego przewodnika, aby [rozwiązać problemy z](status-monitor-v2-troubleshoot.md) agentem Application Insights.
+ Więcej informacji za pomocą agenta usługi Application Insights:
+ - Skorzystaj z naszego [przewodnika,](status-monitor-v2-troubleshoot.md) aby rozwiązać problem z agentem aplikacji Insights.

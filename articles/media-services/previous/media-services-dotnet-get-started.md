@@ -15,10 +15,10 @@ ms.topic: conceptual
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: 7dd49df782115c8c328eed819395209ee7217fd3
-ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/23/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77566067"
 ---
 # <a name="get-started-with-delivering-content-on-demand-using-net-sdk"></a>Wprowadzenie do dostarczania zawartości na żądanie przy użyciu zestawu .NET SDK  
@@ -31,7 +31,7 @@ W tym samouczku przedstawiono kolejne kroki wdrażania podstawowej usługi do do
 
 Do wykonania czynności przedstawionych w tym samouczku są niezbędne następujące elementy:
 
-* Konto platformy Azure. Aby uzyskać szczegółowe informacje, zobacz temat [Bezpłatna wersja próbna systemu Azure](https://azure.microsoft.com/pricing/free-trial/).
+* Konto platformy Azure. Aby uzyskać szczegółowe informacje, zobacz [Bezpłatna wersja próbna platformy Azure](https://azure.microsoft.com/pricing/free-trial/).
 * Konto usługi Media Services. Aby utworzyć konto usługi Media Services, zobacz temat [Jak utworzyć konto usługi Media Services](media-services-portal-create-account.md).
 * .NET Framework 4.0 lub nowszy.
 * Program Visual Studio.
@@ -70,7 +70,7 @@ Podczas pracy w usłudze Azure Media Services jednym z najbardziej typowych scen
 
 Aby uruchomić punkt końcowy przesyłania strumieniowego, wykonaj następujące czynności:
 
-1. Zaloguj się w [portalu Azure](https://portal.azure.com/).
+1. Zaloguj się w [witrynie Azure portal](https://portal.azure.com/).
 2. W oknie Ustawienia kliknij pozycję Punkty końcowe przesyłania strumieniowego.
 3. Kliknij domyślny punkt końcowy przesyłania strumieniowego.
 
@@ -152,7 +152,7 @@ Funkcja **Main** wywołuje metody, które będą zdefiniowane w dalszej części
 
 ## <a name="create-a-new-asset-and-upload-a-video-file"></a>Tworzenie nowego elementu zawartości i przekazywanie pliku wideo
 
-Za pomocą usługi Media Services można przekazać (lub pozyskać) pliki cyfrowe do elementu zawartości. Jednostka **zasobu** może zawierać wideo, audio, obrazy, kolekcje miniatur, ścieżki tekstowe i pliki napisów (oraz metadane dotyczące tych plików).  Po przekazaniu plików zawartość jest bezpiecznie przechowywana w chmurze w celu dalszej przetwarzania i przesyłania strumieniowego. Pliki w elementach zawartości są nazywane **plikami elementów zawartości**.
+Za pomocą usługi Media Services można przekazać (lub pozyskać) pliki cyfrowe do elementu zawartości. Encja **Zasobów** może zawierać pliki wideo, audio, obrazy, kolekcje miniatur, ścieżki tekstowe i pliki podpisów kodowanych (oraz metadane dotyczące tych plików).  Po przesłaniu plików zawartość jest bezpiecznie przechowywana w chmurze w celu dalszego przetwarzania i przesyłania strumieniowego. Pliki w elementach zawartości są nazywane **plikami elementów zawartości**.
 
 Zdefiniowana poniżej metoda **UploadFile** wywołuje metodę **CreateFromFile** (zdefiniowaną w rozszerzeniach zestawu SDK programu .NET). Metoda **CreateFromFile** tworzy nowy element zawartości, do którego jest przekazywany określony plik źródłowy.
 
@@ -380,14 +380,14 @@ Aby uzyskać więcej informacji, zobacz następujące tematy:
 - [Odtwarzanie zawartości w istniejących odtwarzaczach](media-services-playback-content-with-existing-players.md)
 - [Osadzanie plików wideo adaptacyjnego przesyłania strumieniowego MPEG-DASH w aplikacji HTML5 z implementacją DASH.js](media-services-embed-mpeg-dash-in-html5.md)
 
-## <a name="download-sample"></a>Pobieranie przykładu
+## <a name="download-sample"></a>Pobieranie próbki
 Następujący przykład kodu zawiera kod utworzony w tym samouczku: [przykład](https://azure.microsoft.com/documentation/samples/media-services-dotnet-on-demand-encoding-with-media-encoder-standard/).
 
 ## <a name="next-steps"></a>Następne kroki
 
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Przekaż opinię
+## <a name="provide-feedback"></a>Przekazywanie opinii
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 

@@ -1,6 +1,6 @@
 ---
 title: Wysyłanie lub odbieranie zdarzeń z usługi Azure Event Hubs przy użyciu platformy .NET (najnowsze)
-description: Ten artykuł zawiera Przewodnik dotyczący tworzenia aplikacji .NET Core, która wysyła/odbiera zdarzenia do/z usługi Azure Event Hubs przy użyciu najnowszego pakietu Azure. Messaging. EventHubs.
+description: Ten artykuł zawiera przewodnik do utworzenia aplikacji .NET Core, która wysyła/odbiera zdarzenia do/z usługi Azure Event Hubs przy użyciu najnowszego pakietu Azure.Messaging.EventHubs.
 services: event-hubs
 documentationcenter: na
 author: spelluru
@@ -14,51 +14,51 @@ ms.workload: na
 ms.date: 02/11/2020
 ms.author: spelluru
 ms.openlocfilehash: d7d697e3ea4b1b683275d53f6e407396f474b37b
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77462024"
 ---
-# <a name="send-events-to-and-receive-events-from-azure-event-hubs---net-core-azuremessagingeventhubs"></a>Wysyłanie zdarzeń do i odbieranie zdarzeń z usługi Azure Event Hubs — .NET Core (Azure. Messaging. EventHubs) 
-W tym przewodniku szybki start pokazano, jak wysyłać zdarzenia do i odbierać zdarzenia z centrum zdarzeń przy użyciu biblioteki podstawowej platformy .NET **Azure. Messaging. EventHubs** . 
+# <a name="send-events-to-and-receive-events-from-azure-event-hubs---net-core-azuremessagingeventhubs"></a>Wysyłanie zdarzeń do i odbieranie zdarzeń z usługi Azure Event Hubs — .NET Core (Azure.Messaging.EventHubs) 
+Ten przewodnik Szybki start pokazuje sposób wysyłania zdarzeń do centrum zdarzeń i odbierania ich z usługi **Azure.Messaging.EventHubs** .NET Core. 
 
 > [!IMPORTANT]
-> Ten przewodnik Szybki Start używa nowej biblioteki **Azure. Messaging. EventHubs** . Aby uzyskać szybki Start, który używa starej biblioteki **Microsoft. Azure. EventHubs** , zobacz [wysyłanie i odbieranie zdarzeń za pomocą biblioteki Microsoft. Azure. EventHubs](event-hubs-dotnet-standard-getstarted-send.md). 
+> Ten przewodnik Szybki start korzysta z nowej biblioteki **Azure.Messaging.EventHubs.** Aby uzyskać przewodnik Szybki start, który korzysta ze starej biblioteki **Microsoft.Azure.EventHubs,** zobacz [Wysyłanie i odbieranie zdarzeń przy użyciu biblioteki Microsoft.Azure.EventHubs](event-hubs-dotnet-standard-getstarted-send.md). 
 
 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-Jeśli dopiero zaczynasz w usłudze Azure Event Hubs, zapoznaj się z tematem [Event Hubs Overview](event-hubs-about.md) przed wykonaniem tego przewodnika Szybki Start. 
+Jeśli jesteś nowy w usłudze Azure Event Hubs, zobacz [Centrum zdarzeń omówienie](event-hubs-about.md) przed rozpoczęciem tego przewodnika Szybki start. 
 
 Do wykonania kroków tego przewodnika Szybki start niezbędne jest spełnienie następujących wymagań wstępnych:
 
-- **Subskrypcja Microsoft Azure**. Do korzystania z usług platformy Azure, w tym usługi Azure Event Hubs, potrzebna jest subskrypcja.  Jeśli nie masz istniejącego konta platformy Azure, możesz zarejestrować się w celu korzystania z [bezpłatnej wersji próbnej](https://azure.microsoft.com/free/) lub skorzystać z korzyści dla subskrybentów MSDN podczas [tworzenia konta](https://azure.microsoft.com).
-- **Microsoft Visual Studio 2019**. Biblioteka klienta Event Hubs platformy Azure korzysta z nowych funkcji wprowadzonych w C# 8,0.  Nadal można używać biblioteki ze starszymi wersjami programu C#, ale niektóre jej funkcje nie będą dostępne.  Aby włączyć te funkcje, należy [wskazać .NET Core 3,0](/dotnet/standard/frameworks#how-to-specify-target-frameworks) lub [określić wersję językową](/dotnet/csharp/language-reference/configure-language-version#override-a-default) , która ma być używana (8,0 lub nowsza). Jeśli używasz programu Visual Studio, wersje starsze niż Visual Studio 2019 nie są zgodne z narzędziami wymaganymi do C# kompilowania projektów 8,0. Program Visual Studio 2019, w tym bezpłatna wersja Community, można pobrać [tutaj](https://visualstudio.microsoft.com/vs/)
-- **Utwórz przestrzeń nazw Event Hubs i centrum zdarzeń**. Pierwszym krokiem jest skorzystanie z witryny [Azure Portal](https://portal.azure.com) w celu utworzenia przestrzeni nazw typu Event Hubs i uzyskania poświadczeń zarządzania wymaganych przez aplikację do komunikacji z centrum zdarzeń. Aby utworzyć przestrzeń nazw i centrum zdarzeń, wykonaj procedurę opisaną w [tym artykule](event-hubs-create.md). Następnie Pobierz **Parametry połączenia dla przestrzeni nazw Event Hubs** , wykonując instrukcje z artykułu: [pobieranie parametrów połączenia](event-hubs-get-connection-string.md#get-connection-string-from-the-portal). Parametry połączenia są używane w dalszej części tego przewodnika Szybki Start.
+- **Subskrypcja platformy Microsoft Azure**. Aby korzystać z usług platformy Azure, w tym usługi Azure Event Hubs, potrzebujesz subskrypcji.  Jeśli nie masz istniejącego konta platformy Azure, możesz zarejestrować się w celu [uzyskania bezpłatnej wersji próbnej](https://azure.microsoft.com/free/) lub skorzystać z korzyści dla subskrybenta MSDN podczas [tworzenia konta.](https://azure.microsoft.com)
+- **Microsoft Visual Studio 2019**. Biblioteka klienta usługi Azure Event Hubs korzysta z nowych funkcji, które zostały wprowadzone w języku C# 8.0.  Nadal można używać biblioteki ze starszymi wersjami języka C#, ale niektóre z jego funkcji nie będą dostępne.  Aby włączyć te funkcje, należy [kierować .NET Core 3.0](/dotnet/standard/frameworks#how-to-specify-target-frameworks) lub [określić wersję językową,](/dotnet/csharp/language-reference/configure-language-version#override-a-default) której chcesz użyć (8.0 lub powyżej). Jeśli używasz programu Visual Studio, wersje przed Visual Studio 2019 nie są zgodne z narzędziami potrzebnymi do tworzenia projektów języka C# 8.0. Visual Studio 2019, w tym bezpłatna edycja społecznościowa, można pobrać [tutaj](https://visualstudio.microsoft.com/vs/)
+- **Utwórz obszar nazw Centrów zdarzeń i centrum zdarzeń**. Pierwszym krokiem jest użycie [witryny Azure Portal](https://portal.azure.com) do utworzenia obszaru nazw typu Event Hubs i uzyskania poświadczeń zarządzania, których aplikacja potrzebuje do komunikowania się z centrum zdarzeń. Aby utworzyć przestrzeń nazw i centrum zdarzeń, wykonaj procedurę opisaną w [tym artykule](event-hubs-create.md). Następnie pobierz **ciąg połączenia dla obszaru nazw Centrum zdarzeń,** postępując zgodnie z instrukcjami z artykułu: [Pobierz parametry połączenia](event-hubs-get-connection-string.md#get-connection-string-from-the-portal). Ciąg połączenia należy użyć w dalszej części tego przewodnika Szybki start.
 
 ## <a name="send-events"></a>Wysyłanie zdarzeń 
-W tej sekcji przedstawiono sposób tworzenia aplikacji konsolowej .NET Core w celu wysyłania zdarzeń do centrum zdarzeń. 
+W tej sekcji pokazano, jak utworzyć aplikację konsoli .NET Core do wysyłania zdarzeń do centrum zdarzeń. 
 
 ### <a name="create-a-console-application"></a>Tworzenie aplikacji konsolowej
 
-1. Start Visual Studio 2019. 
-1. Wybierz pozycję **Utwórz nowy projekt**. 
-1. W oknie dialogowym **Tworzenie nowego projektu** wykonaj następujące czynności: Jeśli to okno dialogowe nie jest widoczne, wybierz pozycję **plik** w menu, wybierz pozycję **Nowy**, a następnie wybierz pozycję **projekt**. 
-    1. Wybierz **C#** pozycję dla języka programowania.
-    1. Wybierz pozycję **konsola** dla typu aplikacji. 
-    1. Wybierz pozycję **aplikacja konsoli (.NET Core)** z listy wyników. 
-    1. Następnie wybierz opcję **Dalej**. 
+1. Uruchom program Visual Studio 2019. 
+1. Wybierz **pozycję Utwórz nowy projekt**. 
+1. W oknie **dialogowym Tworzenie nowego projektu** wykonaj następujące czynności: Jeśli nie widzisz tego okna dialogowego, wybierz pozycję **Plik** w menu, wybierz pozycję **Nowy**, a następnie wybierz pozycję **Projekt**. 
+    1. Wybierz **C#** dla języka programowania.
+    1. Wybierz **konsolę** dla typu aplikacji. 
+    1. Wybierz **aplikację konsoli (.NET Core)** z listy wyników. 
+    1. Następnie wybierz przycisk **Dalej**. 
 
         ![Okno dialogowe Nowy projekt](./media/getstarted-dotnet-standard-send-v2/new-send-project.png)    
-1. Wprowadź **EventHubsSender** dla nazwy projektu, **EventHubsQuickStart** dla nazwy rozwiązania, a następnie wybierz przycisk **OK** , aby utworzyć projekt. 
+1. Wprowadź **EventHubsSender** dla nazwy projektu, **EventHubsQuickStart** dla nazwy rozwiązania, a następnie wybierz **OK,** aby utworzyć projekt. 
 
-    ![C#Aplikacja konsolowa >](./media/getstarted-dotnet-standard-send-v2/project-solution-names.png)
+    ![Aplikacja > Konsola języka C#](./media/getstarted-dotnet-standard-send-v2/project-solution-names.png)
 
 ### <a name="add-the-event-hubs-nuget-package"></a>Dodawanie pakietu NuGet usługi Event Hubs
 
-1. Wybierz kolejno pozycje **narzędzia** > **menedżer pakietów NuGet** > **konsola Menedżera pakietów** z menu. 
-1. Uruchom następujące polecenie, aby zainstalować pakiet NuGet **Azure. Messaging. EventHubs** :
+1. Z menu wybierz polecenie **Narzędzia** > **NuGet Package Manager** > **Package Manager Console.** 
+1. Uruchom następujące polecenie, aby zainstalować pakiet **Azure.Messaging.EventHubs** NuGet:
 
     ```cmd
     Install-Package Azure.Messaging.EventHubs
@@ -67,7 +67,7 @@ W tej sekcji przedstawiono sposób tworzenia aplikacji konsolowej .NET Core w ce
 
 ### <a name="write-code-to-send-messages-to-the-event-hub"></a>Pisanie kodu w celu wysyłania komunikatów do centrum zdarzeń
 
-1. Dodaj następujące instrukcje `using` na początku pliku **program.cs** :
+1. Dodaj następujące `using` instrukcje w górnej części pliku **Program.cs:**
 
     ```csharp
     using System.Text;
@@ -76,14 +76,14 @@ W tej sekcji przedstawiono sposób tworzenia aplikacji konsolowej .NET Core w ce
     using Azure.Messaging.EventHubs.Producer;
     ```
 
-2. Dodaj stałe do klasy `Program` dla parametrów połączenia Event Hubs i nazwy centrum zdarzeń. Zastąp symbole zastępcze w nawiasach odpowiednimi wartościami uzyskanymi podczas tworzenia centrum zdarzeń. Upewnij się, że `{Event Hubs namespace connection string}` jest parametrem połączenia na poziomie przestrzeni nazw, a nie parametrem centrum zdarzeń. 
+2. Dodaj stałe do `Program` klasy dla ciągu połączenia usługi Event Hubs i nazwy centrum zdarzeń. Zastąp symbole zastępcze w nawiasach odpowiednimi wartościami, które zostały dodane podczas tworzenia centrum zdarzeń. Upewnij się, że `{Event Hubs namespace connection string}` jest parametrem połączenia na poziomie przestrzeni nazw, a nie parametrem centrum zdarzeń. 
 
     ```csharp
     private const string connectionString = "<EVENT HUBS NAMESPACE - CONNECTION STRING>";
     private const string eventHubName = "<EVENT HUB NAME>";
     ```
 
-3. Zastąp metodę `Main` poniższymi metodami `async Main`. Szczegóły można znaleźć w komentarzach do kodu. 
+3. Zastąp `Main` metodę `async Main` następującą metodą. Zobacz komentarze do kodu, aby uzyskać szczegółowe informacje. 
 
     ```csharp
         static async Task Main()
@@ -106,51 +106,51 @@ W tej sekcji przedstawiono sposób tworzenia aplikacji konsolowej .NET Core w ce
         }
     ```
 5. Skompiluj projekt i upewnij się, że nie ma żadnych błędów.
-6. Uruchom program i poczekaj na komunikat potwierdzenia. 
-7. W Azure Portal można sprawdzić, czy centrum zdarzeń odebrało komunikaty. Przejdź do widoku **komunikaty** w sekcji **metryki** . Odśwież stronę, aby zaktualizować wykres. Wyświetlenie komunikatów zostało odebrane może potrwać kilka sekund. 
+6. Uruchom program i poczekaj na komunikat potwierdzający. 
+7. W witrynie Azure portal można sprawdzić, czy centrum zdarzeń odebrało wiadomości. Przełącz się do widoku **Wiadomości** w sekcji **Metryki.** Odśwież stronę, aby zaktualizować wykres. Może upłynąć kilka sekund, aby pokazać, że wiadomości zostały odebrane. 
 
-    [![sprawdzić, czy centrum zdarzeń odebrało komunikaty](./media/getstarted-dotnet-standard-send-v2/verify-messages-portal.png)](./media/getstarted-dotnet-standard-send-v2/verify-messages-portal.png#lightbox)
+    [![Sprawdź, czy centrum zdarzeń odebrało wiadomości](./media/getstarted-dotnet-standard-send-v2/verify-messages-portal.png)](./media/getstarted-dotnet-standard-send-v2/verify-messages-portal.png#lightbox)
 
     > [!NOTE]
-    > Aby uzyskać więcej informacji o pełnym kodzie źródłowym, zobacz [ten plik w witrynie GitHub](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/samples/Sample03_PublishAnEventBatch.cs)
+    > Pełny kod źródłowy z bardziej informacyjnymi komentarzami można znaleźć [w tym pliku w usłudze GitHub](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/samples/Sample03_PublishAnEventBatch.cs)
 
 ## <a name="receive-events"></a>Odbieranie zdarzeń
-W tej sekcji pokazano, jak napisać aplikację konsolową .NET Core, która odbiera komunikaty z centrum zdarzeń przy użyciu procesora zdarzeń. Procesor zdarzeń upraszcza odbieranie zdarzeń z centrów zdarzeń przez zarządzanie trwałymi punktami kontrolnymi i równoległymi odbiorami z tych centrów zdarzeń. Procesor zdarzeń jest skojarzony z określonym centrum zdarzeń i grupą konsumentów. Odbiera zdarzenia z wielu partycji w centrum zdarzeń, przekazując je do delegata procedury obsługi na potrzeby przetwarzania za pomocą podania kodu. 
+W tej sekcji pokazano, jak napisać aplikację konsoli .NET Core, która odbiera wiadomości z centrum zdarzeń przy użyciu procesora zdarzeń. Procesor zdarzeń upraszcza odbieranie zdarzeń z centrów zdarzeń, zarządzając trwałymi punktami kontrolnymi i równoległymi odbierami z tych centrów zdarzeń. Procesor zdarzeń jest skojarzony z centrum zdarzeń określonego zdarzenia i grupy konsumentów. Odbiera zdarzenia z wielu partycji w Centrum zdarzeń, przekazując je do pełnomocnika obsługi do przetwarzania przy użyciu kodu, który podałeś. 
 
 
-### <a name="create-an-azure-storage-and-a-blob-container"></a>Tworzenie usługi Azure Storage i kontenera obiektów BLOB
-W tym przewodniku szybki start użyjesz usługi Azure Storage jako magazynu punktów kontrolnych. Wykonaj następujące kroki, aby utworzyć konto usługi Azure Storage. 
+### <a name="create-an-azure-storage-and-a-blob-container"></a>Tworzenie usługi Azure Storage i kontenera obiektów blob
+W tym przewodniku Szybki start używasz usługi Azure Storage jako magazynu punktów kontrolnych. Wykonaj następujące kroki, aby utworzyć konto usługi Azure Storage. 
 
-1. [Utwórz konto usługi Azure Storage](/azure/storage/common/storage-account-create?tabs=azure-portal)
-2. [Tworzenie kontenera obiektów BLOB](../storage/blobs/storage-quickstart-blobs-portal.md#create-a-container)
-3. [Pobierz parametry połączenia z kontem magazynu](../storage/common/storage-configure-connection-string.md?#view-and-copy-a-connection-string)
+1. [Tworzenie konta usługi Azure Storage](/azure/storage/common/storage-account-create?tabs=azure-portal)
+2. [Tworzenie kontenera obiektów blob](../storage/blobs/storage-quickstart-blobs-portal.md#create-a-container)
+3. [Pobierz ciąg połączenia z kontem magazynu](../storage/common/storage-configure-connection-string.md?#view-and-copy-a-connection-string)
 
-    Zanotuj parametry połączenia i nazwę kontenera. Będziesz ich używać w kodzie Receive. 
+    Zanotuj w dół ciąg połączenia i nazwę kontenera. Użyjesz ich w kodzie odbierania. 
 
 
-### <a name="create-a-project-for-the-receiver"></a>Tworzenie projektu dla odbiorcy
+### <a name="create-a-project-for-the-receiver"></a>Tworzenie projektu dla odbiornika
 
-1. W oknie Eksplorator rozwiązań kliknij prawym przyciskiem myszy rozwiązanie **EventHubQuickStart** , wskaż polecenie **Dodaj**, a następnie wybierz pozycję **Nowy projekt**. 
-1. Wybierz pozycję **aplikacja konsoli (.NET Core)** , a **następnie**wybierz pozycję Dalej. 
-1. Wprowadź **EventHubsReceiver** jako **nazwę projektu**, a następnie wybierz pozycję **Utwórz**. 
+1. W oknie Eksplorator rozwiązań kliknij prawym przyciskiem myszy rozwiązanie **EventHubQuickStart,** wskaż polecenie **Dodaj**i wybierz polecenie **Nowy projekt**. 
+1. Wybierz **pozycję Aplikacja konsoli (.NET Core)** i wybierz pozycję **Dalej**. 
+1. Wprowadź **EventHubsReceiver** dla **nazwy projektu**i wybierz pozycję **Utwórz**. 
 
 ### <a name="add-the-event-hubs-nuget-package"></a>Dodawanie pakietu NuGet usługi Event Hubs
 
-1. Wybierz kolejno pozycje **narzędzia** > **menedżer pakietów NuGet** > **konsola Menedżera pakietów** z menu. 
-1. Uruchom następujące polecenie, aby zainstalować pakiet NuGet **Azure. Messaging. EventHubs** :
+1. Z menu wybierz polecenie **Narzędzia** > **NuGet Package Manager** > **Package Manager Console.** 
+1. Uruchom następujące polecenie, aby zainstalować pakiet **Azure.Messaging.EventHubs** NuGet:
 
     ```cmd
     Install-Package Azure.Messaging.EventHubs
     ```
-1. Uruchom następujące polecenie, aby zainstalować pakiet NuGet **platformy Azure. Messaging. EventHubs. Processor** :
+1. Uruchom następujące polecenie, aby zainstalować pakiet **NuGet usługi Azure.Messaging.EventHubs.Processor:**
 
     ```cmd
     Install-Package Azure.Messaging.EventHubs.Processor
     ```    
 
-### <a name="update-the-main-method"></a>Aktualizowanie metody Main 
+### <a name="update-the-main-method"></a>Aktualizacja Metody głównej 
 
-1. Dodaj następujące instrukcje `using` w górnej części pliku **program.cs** .
+1. Dodaj następujące `using` instrukcje w górnej części pliku **Program.cs.**
 
     ```csharp
     using System.Text;
@@ -160,7 +160,7 @@ W tym przewodniku szybki start użyjesz usługi Azure Storage jako magazynu punk
     using Azure.Messaging.EventHubs.Consumer;
     using Azure.Messaging.EventHubs.Processor;
     ```
-1. Dodaj stałe do klasy `Program` dla parametrów połączenia Event Hubs i nazwy centrum zdarzeń. Zastąp symbole zastępcze w nawiasach odpowiednimi wartościami uzyskanymi podczas tworzenia centrum zdarzeń. Zastąp symbole zastępcze w nawiasach odpowiednimi wartościami uzyskanymi podczas tworzenia centrum zdarzeń i konta magazynu (klucze dostępu — podstawowe parametry połączenia). Upewnij się, że `{Event Hubs namespace connection string}` jest parametrem połączenia na poziomie przestrzeni nazw, a nie parametrem centrum zdarzeń.
+1. Dodaj stałe do `Program` klasy dla ciągu połączenia usługi Event Hubs i nazwy centrum zdarzeń. Zastąp symbole zastępcze w nawiasach odpowiednimi wartościami, które zostały dodane podczas tworzenia centrum zdarzeń. Zastąp symbole zastępcze w nawiasach odpowiednimi wartościami, które zostały dodane podczas tworzenia centrum zdarzeń i konta magazynu (klucze dostępu — podstawowy ciąg połączenia). Upewnij się, że `{Event Hubs namespace connection string}` jest parametrem połączenia na poziomie przestrzeni nazw, a nie parametrem centrum zdarzeń.
 
     ```csharp
         private const string ehubNamespaceConnectionString = "<EVENT HUBS NAMESPACE - CONNECTION STRING>";
@@ -168,7 +168,7 @@ W tym przewodniku szybki start użyjesz usługi Azure Storage jako magazynu punk
         private const string blobStorageConnectionString = "<AZURE STORAGE CONNECTION STRING>";
         private const string blobContainerName = "<BLOB CONTAINER NAME>";
     ```
-3. Zastąp metodę `Main` poniższymi metodami `async Main`. Szczegóły można znaleźć w komentarzach do kodu. 
+3. Zastąp `Main` metodę `async Main` następującą metodą. Zobacz komentarze do kodu, aby uzyskać szczegółowe informacje. 
 
     ```csharp
         static async Task Main()
@@ -196,7 +196,7 @@ W tym przewodniku szybki start użyjesz usługi Azure Storage jako magazynu punk
             await processor.StopProcessingAsync();
         }    
     ```
-1. Teraz Dodaj następujące metody obsługi zdarzeń i błędów do klasy. 
+1. Teraz dodaj następujące metody obsługi zdarzeń i błędów do klasy. 
 
     ```csharp
         static Task ProcessEventHandler(ProcessEventArgs eventArgs)
@@ -217,18 +217,18 @@ W tym przewodniku szybki start użyjesz usługi Azure Storage jako magazynu punk
 1. Skompiluj projekt i upewnij się, że nie ma żadnych błędów.
 
     > [!NOTE]
-    > Aby uzyskać więcej informacji, zobacz [ten plik w witrynie GitHub](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs.Processor/samples/Sample01_HelloWorld.cs).
+    > Pełny kod źródłowy z bardziej informacyjnymi komentarzami można znaleźć [w tym pliku w usłudze GitHub](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs.Processor/samples/Sample01_HelloWorld.cs).
 6. Uruchom aplikację odbiornika. 
-1. Powinien zostać wyświetlony komunikat informujący o odebraniu zdarzenia. 
+1. Powinien zostać wyświetlony komunikat, że zdarzenie zostało odebrane. 
 
-    ![Odebrane zdarzenie](./media/getstarted-dotnet-standard-send-v2/event-received.png)
+    ![Odebrano zdarzenie](./media/getstarted-dotnet-standard-send-v2/event-received.png)
 
-    Te zdarzenia to trzy zdarzenia, które zostały wysłane do centrum zdarzeń wcześniej przez uruchomienie programu nadawcy. 
+    Te zdarzenia są trzy zdarzenia wysłane do centrum zdarzeń wcześniej przez uruchomienie programu nadawcy. 
 
 
 ## <a name="next-steps"></a>Następne kroki
-Zapoznaj się z przykładami w witrynie GitHub. 
+Zapoznaj się z przykładami na GitHub. 
 
-- [Przykłady Event Hubs w witrynie GitHub](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Azure.Messaging.EventHubs/samples)
-- [Przykłady procesora zdarzeń w witrynie GitHub](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Azure.Messaging.EventHubs.Processor/samples)
+- [Przykłady centrów zdarzeń w usłudze GitHub](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Azure.Messaging.EventHubs/samples)
+- [Przykłady procesora zdarzeń w usłudze GitHub](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Azure.Messaging.EventHubs.Processor/samples)
 - [Przykład kontroli dostępu opartej na rolach (RBAC)](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Azure.Messaging.EventHubs/ManagedIdentityWebApp)

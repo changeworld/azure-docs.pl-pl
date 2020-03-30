@@ -1,6 +1,6 @@
 ---
-title: Uzyskaj token do wywoływania internetowego interfejsu API (aplikacje jednostronicowe) — Microsoft Identity platform | Azure
-description: Dowiedz się, jak utworzyć aplikację jednostronicową (uzyskać token, aby wywołać interfejs API)
+title: Uzyskiwanie tokenu do wywoływania internetowego interfejsu API (aplikacji jednostronicowych) — platforma tożsamości firmy Microsoft | Azure
+description: Dowiedz się, jak utworzyć aplikację jednostronicową (uzyskać token do wywołania interfejsu API)
 services: active-directory
 documentationcenter: dev-center-name
 author: negoe
@@ -15,36 +15,36 @@ ms.date: 08/20/2019
 ms.author: negoe
 ms.custom: aaddev
 ms.openlocfilehash: d5d48a2fc7aca184cf8b6e7761584a8800ca5151
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77160070"
 ---
-# <a name="single-page-application-acquire-a-token-to-call-an-api"></a>Aplikacja jednostronicowa: uzyskiwanie tokenu do wywoływania interfejsu API
+# <a name="single-page-application-acquire-a-token-to-call-an-api"></a>Aplikacja jednostronicowa: uzyskaj token do wywoływania interfejsu API
 
-Wzorcem uzyskiwania tokenów dla interfejsów API z MSAL. js jest najpierw próba żądania tokenu dyskretnego za pomocą metody `acquireTokenSilent`. Po wywołaniu tej metody Biblioteka najpierw sprawdza pamięć podręczną w magazynie przeglądarki, aby sprawdzić, czy istnieje prawidłowy token i zwraca go. Gdy w pamięci podręcznej nie ma prawidłowego tokenu, wysyła żądanie tokenu dyskretnego do Azure Active Directory (Azure AD) z ukrytego elementu iframe. Ta metoda umożliwia również bibliotece odnawianie tokenów. Aby uzyskać więcej informacji na temat sesji logowania jednokrotnego i okresu istnienia tokenu w usłudze Azure AD, zobacz [okresy istnienia tokenu](active-directory-configurable-token-lifetimes.md).
+Wzorzec do pozyskiwania tokenów dla interfejsów API z MSAL.js jest `acquireTokenSilent` najpierw spróbować cichego żądania tokenu przy użyciu metody. Gdy ta metoda jest wywoływana, biblioteka najpierw sprawdza pamięć podręczną w magazynie przeglądarki, aby sprawdzić, czy istnieje prawidłowy token i zwraca go. Gdy w pamięci podręcznej nie ma prawidłowego tokenu, wysyła on żądanie cichego tokenu do usługi Azure Active Directory (Azure AD) z ukrytego elementu iframe. Ta metoda umożliwia również biblioteki do odnawiania tokenów. Aby uzyskać więcej informacji na temat sesji logowania jednokrotnego i wartości okresu istnienia tokenu w usłudze Azure AD, zobacz [Okresy istnienia tokenu.](active-directory-configurable-token-lifetimes.md)
 
-Żądania tokenu dyskretnego do usługi Azure AD mogą się nie powieść z przyczyn takich jak wygasła sesja usługi Azure AD lub zmiana hasła. W takim przypadku można wywołać jedną z metod interaktywnych (co spowoduje wyświetlenie monitu użytkownika) o uzyskanie tokenów:
+Żądania cichego tokenu do usługi Azure AD mogą zakończyć się niepowodzeniem z powodów, takich jak wygasła sesja usługi Azure AD lub zmiana hasła. W takim przypadku można wywołać jedną z interaktywnych metod (która poprosi użytkownika) o uzyskanie tokenów:
 
-* [Okno podręczne](#acquire-a-token-with-a-pop-up-window), przy użyciu `acquireTokenPopup`
-* [Przekieruj](#acquire-a-token-with-a-redirect)przy użyciu `acquireTokenRedirect`
+* [Wyskakujące okno](#acquire-a-token-with-a-pop-up-window), za pomocą`acquireTokenPopup`
+* [Przekierowanie](#acquire-a-token-with-a-redirect), za pomocą`acquireTokenRedirect`
 
-## <a name="choose-between-a-pop-up-or-redirect-experience"></a>Wybierz między podręcznym lub przekierowaniami
+## <a name="choose-between-a-pop-up-or-redirect-experience"></a>Wybierz między wyskakującym okienkiem lub przekierowaniem
 
- W aplikacji nie można używać obu metod podręcznych i przekierowania. Wybór między podręcznym i przekierowaniami zależy od przepływu aplikacji:
+ Nie można używać zarówno wyskakujących i przekierowywania metod w aplikacji. Wybór między wyskakującym okienkiem lub przekierowaniem zależy od przepływu aplikacji:
 
-* Jeśli nie chcesz, aby użytkownicy przechodzą poza główną stronę aplikacji podczas uwierzytelniania, zalecamy wyskakującą metodę. Ponieważ przekierowanie uwierzytelniania odbywa się w oknie podręcznym, stan głównej aplikacji jest zachowywany.
+* Jeśli nie chcesz, aby użytkownicy odeszli od głównej strony aplikacji podczas uwierzytelniania, zaleciliśmy metodę wyskakunia. Ponieważ przekierowanie uwierzytelniania odbywa się w wyskakującym oknie, stan aplikacji głównej jest zachowywany.
 
-* Jeśli użytkownicy mają ograniczenia przeglądarki lub zasady, w których okna wyskakujące są wyłączone, można użyć metody redirect. Użyj metody redirect w przeglądarce Internet Explorer, ponieważ występują [znane problemy z wyskakującymi oknami w programie Internet Explorer](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki/Known-issues-on-IE-and-Edge-Browser).
+* Jeśli użytkownicy mają ograniczenia przeglądarki lub zasady, w których okna podręczne są wyłączone, można użyć metody przekierowania. Użyj metody przekierowania w przeglądarce Internet Explorer, ponieważ istnieją [znane problemy z wyskakuwaniem okien w programie Internet Explorer](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki/Known-issues-on-IE-and-Edge-Browser).
 
-Można ustawić zakresy interfejsów API, które mają być uwzględniane przez token dostępu podczas kompilowania żądania tokenu dostępu. Należy zauważyć, że wszystkie żądane zakresy mogą nie zostać przyznane w tokenie dostępu. Jest to zależne od zgody użytkownika.
+Można ustawić zakresy interfejsu API, które mają token dostępu do uwzględnienia podczas tworzenia żądania tokenu dostępu. Należy zauważyć, że wszystkie żądane zakresy mogą nie być przyznane w tokenie dostępu. To zależy od zgody użytkownika.
 
-## <a name="acquire-a-token-with-a-pop-up-window"></a>Uzyskiwanie tokenu za pomocą okna podręcznego
+## <a name="acquire-a-token-with-a-pop-up-window"></a>Uzyskiwanie tokenu z wyskakującym oknem
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[Javascript](#tab/javascript)
 
-Poniższy kod łączy opisany wcześniej wzorzec z metodami podręcznych czynności:
+Poniższy kod łączy wcześniej opisany wzorzec z metodami wyskakujących wyskakujących pojęć:
 
 ```javascript
 const accessTokenRequest = {
@@ -69,11 +69,11 @@ userAgentApplication.acquireTokenSilent(accessTokenRequest).then(function(access
 });
 ```
 
-# <a name="angulartabangular"></a>[Angular](#tab/angular)
+# <a name="angular"></a>[Angular](#tab/angular)
 
-Otoka kątowa MSAL zapewnia Interceptor HTTP, który automatycznie uzyskuje tokeny dostępu w trybie dyskretnym i dołącza je do żądań HTTP do interfejsów API.
+Otoka kątowa MSAL udostępnia interceptor HTTP, który automatycznie uzyskuje tokeny dostępu w trybie dyskretnym i dołącza je do żądań HTTP do interfejsów API.
 
-W opcji konfiguracji `protectedResourceMap` można określić zakresy interfejsów API. `MsalInterceptor` będzie żądać tych zakresów podczas automatycznego uzyskiwania tokenów.
+Zakresy interfejsów API można określić `protectedResourceMap` w opcji konfiguracji. `MsalInterceptor`zażąda tych zakresów podczas automatycznego pozyskiwania tokenów.
 
 ```javascript
 //In app.module.ts
@@ -92,7 +92,7 @@ providers: [ ProductService, {
    ],
 ```
 
-W przypadku powodzenia i niepowodzenia pozyskiwania tokenów dyskretnych MSAL kątowy zapewnia wywołania zwrotne, które można subskrybować. Ważne jest również, aby pamiętać o anulowaniu subskrypcji.
+Dla powodzenia i niepowodzenia nabycia cichego tokenu MSAL Angular zapewnia wywołania zwrotne, które można subskrybować. Ważne jest również, aby pamiętać o rezygnacji z subskrypcji.
 
 ```javascript
 // In app.component.ts
@@ -109,15 +109,15 @@ ngOnDestroy() {
  }
 ```
 
-Alternatywnie można jawnie uzyskać tokeny przy użyciu metod pozyskiwania tokenów, zgodnie z opisem w podstawowej bibliotece MSAL. js.
+Alternatywnie można jawnie uzyskać tokeny przy użyciu metod pozyskiwania tokenu, zgodnie z opisem w podstawowej bibliotece MSAL.js.
 
 ---
 
-## <a name="acquire-a-token-with-a-redirect"></a>Pozyskiwanie tokenu z przekierowaniem
+## <a name="acquire-a-token-with-a-redirect"></a>Zdobądź token z przekierowaniem
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[Javascript](#tab/javascript)
 
-Poniższy wzorzec jest opisany wcześniej, ale przedstawia metodę Redirect, która umożliwia interaktywną pozyskiwanie tokenów. Należy zarejestrować wywołanie zwrotne przekierowania jak wspomniano wcześniej.
+Poniższy wzorzec jest opisany wcześniej, ale pokazano za pomocą metody przekierowania do nabycia tokenów interaktywnie. Musisz zarejestrować wywołanie zwrotne przekierowania, jak wspomniano wcześniej.
 
 ```javascript
 function authCallback(error, response) {
@@ -143,15 +143,15 @@ userAgentApplication.acquireTokenSilent(accessTokenRequest).then(function(access
 });
 ```
 
-## <a name="request-optional-claims"></a>Żądaj opcjonalnych oświadczeń
+## <a name="request-optional-claims"></a>Żądanie oświadczeń opcjonalnych
 
-Możesz użyć opcjonalnych oświadczeń do następujących celów:
+Oświadczenia opcjonalne można używać do następujących celów:
 
-- Uwzględnij dodatkowe oświadczenia w tokenach aplikacji.
-- Zmień zachowanie niektórych oświadczeń zwracanych przez usługę Azure AD w tokenach.
-- Dodawanie niestandardowych oświadczeń do aplikacji i uzyskiwanie do nich dostępu. 
+- Dołącz dodatkowe oświadczenia w tokenach dla aplikacji.
+- Zmień zachowanie niektórych oświadczeń, które usługa Azure AD zwraca w tokenach.
+- Dodawanie i uzyskiwanie dostępu do oświadczeń niestandardowych dla aplikacji. 
 
-Aby zażądać opcjonalnych oświadczeń w `IdToken`, można wysłać obiekt oświadczeń skonwertowanej do pola `claimsRequest` klasy `AuthenticationParameters.ts`.
+Aby zażądać `IdToken`opcjonalnych oświadczeń w programie , `claimsRequest` można `AuthenticationParameters.ts` wysłać obiekt oświadczeń ciągnionych do pola klasy.
 
 ```javascript
 "optionalClaims":  
@@ -171,9 +171,9 @@ var request = {
 myMSALObj.acquireTokenPopup(request);
 ```
 
-Aby dowiedzieć się więcej, zobacz [opcjonalne oświadczenia](active-directory-optional-claims.md).
+Aby dowiedzieć się więcej, zobacz [Oświadczenia opcjonalne](active-directory-optional-claims.md).
 
-# <a name="angulartabangular"></a>[Angular](#tab/angular)
+# <a name="angular"></a>[Angular](#tab/angular)
 
 Ten kod jest taki sam, jak opisano wcześniej.
 
@@ -182,4 +182,4 @@ Ten kod jest taki sam, jak opisano wcześniej.
 ## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Wywoływanie interfejsu API sieci Web](scenario-spa-call-api.md)
+> [Wywoływanie internetowego interfejsu API](scenario-spa-call-api.md)

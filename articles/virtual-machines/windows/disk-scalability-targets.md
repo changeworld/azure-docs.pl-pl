@@ -1,6 +1,6 @@
 ---
-title: Elementy docelowe skalowalności i wydajności dla dysków maszyn wirtualnych w systemie Windows
-description: Dowiedz się więcej o skalowalności i wydajności dla dysków maszyn wirtualnych podłączonych do maszyn wirtualnych z systemem Windows.
+title: Cele dotyczące skalowalności i wydajności dysków maszyn wirtualnych w systemie Windows
+description: Dowiedz się więcej o skalowalności i wydajności dysków maszyn wirtualnych podłączonych do maszyn wirtualnych z systemem Windows.
 author: roygara
 ms.author: rogarana
 ms.date: 11/15/2017
@@ -8,25 +8,25 @@ ms.topic: conceptual
 ms.service: virtual-machines-windows
 ms.subservice: disks
 ms.openlocfilehash: dee3da6b6aa38a60ed1109009ba5a292a131ce97
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79243356"
 ---
-# <a name="scalability-and-performance-targets-for-vm-disks-on-windows"></a>Elementy docelowe skalowalności i wydajności dla dysków maszyn wirtualnych w systemie Windows
+# <a name="scalability-and-performance-targets-for-vm-disks-on-windows"></a>Cele dotyczące skalowalności i wydajności dysków maszyn wirtualnych w systemie Windows
 
 [!INCLUDE [azure-storage-limits-vm-disks](../../../includes/azure-storage-limits-vm-disks.md)]
 
-Dodatkowe szczegóły można znaleźć w temacie [rozmiary maszyn wirtualnych z systemem Windows](../../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) .
+Zobacz [rozmiary maszyn wirtualnych systemu Windows, aby](../../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) uzyskać dodatkowe informacje.
 
-## <a name="managed-virtual-machine-disks"></a>Zarządzane dyski maszyny wirtualnej
+## <a name="managed-virtual-machine-disks"></a>Zarządzane dyski maszyn wirtualnych
 
-Rozmiary oznaczone gwiazdką są obecnie dostępne w wersji zapoznawczej. Zobacz nasze [często zadawane pytania](faq-for-disks.md#new-disk-sizes-managed-and-unmanaged) , aby dowiedzieć się, które regiony są dostępne w programie.
+Rozmiary oznaczone gwiazdką są obecnie w wersji zapoznawczej. Zapoznaj się [z często zadawanymi pytaniami,](faq-for-disks.md#new-disk-sizes-managed-and-unmanaged) aby dowiedzieć się, w jakich regionach są one dostępne.
 
 [!INCLUDE [azure-storage-limits-vm-disks-managed](../../../includes/azure-storage-limits-vm-disks-managed.md)]
 
-## <a name="unmanaged-virtual-machine-disks"></a>Niezarządzane dyski maszyny wirtualnej
+## <a name="unmanaged-virtual-machine-disks"></a>Niezarządzane dyski maszyn wirtualnych
 [!INCLUDE [azure-storage-limits-vm-disks-standard](../../../includes/azure-storage-limits-vm-disks-standard.md)]
 
 [!INCLUDE [azure-storage-limits-vm-disks-premium](../../../includes/azure-storage-limits-vm-disks-premium.md)]

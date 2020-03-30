@@ -10,10 +10,10 @@ ms.tgt_pltfrm: na
 ms.date: 03/25/2018
 ms.author: yushwang
 ms.openlocfilehash: 3917101ee7ac151cf624e5be0f51ccf01c8cb1cc
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77161889"
 ---
 # <a name="configure-vpn-gateway-transit-for-virtual-network-peering"></a>Konfigurowanie tranzytu bramy sieci VPN na potrzeby wirtualnych sieci równorzędnych
@@ -48,7 +48,7 @@ Instrukcje można znaleźć w następujących dokumentach:
 2. [Create virtual network peering with the same deployment model](../virtual-network/tutorial-connect-virtual-networks-portal.md) (Tworzenie wirtualnych sieci równorzędnych w tych samych modelu wdrażania)
 3. [Create virtual network peering with different deployment models](../virtual-network/create-peering-different-deployment-models.md) (Tworzenie wirtualnych sieci równorzędnych w różnych modelach wdrażania)
 
-## <a name="permissions"></a>Uprawnienia
+## <a name="permissions"></a><a name="permissions"></a>Uprawnienia
 
 Konta używane do tworzenia wirtualnych sieci równorzędnych muszą mieć niezbędne role lub uprawnienia. W poniższym przykładzie w celu nawiązania połączenia równorzędnego między dwiema sieciami wirtualnymi o nazwie Hub-RM i Spoke-Classic konto musi mieć następujące role lub uprawnienia dla każdej sieci wirtualnej:
     

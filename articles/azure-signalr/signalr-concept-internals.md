@@ -1,16 +1,16 @@
 ---
 title: Wewnętrzne elementy usługi Azure SignalR
-description: Dowiedz się więcej na temat wewnętrznych usług sygnałów platformy Azure, architektury, połączeń i sposobu przesyłania danych.
+description: Dowiedz się więcej o wewnętrznych usługach Azure SignalR, architekturze, połączeniach i sposobie przesyłania danych.
 author: sffamily
 ms.service: signalr
 ms.topic: conceptual
 ms.date: 11/13/2019
 ms.author: zhshang
 ms.openlocfilehash: 62afa5ee6993aa1bb3c7b5926e5320ab1fa510a2
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74157600"
 ---
 # <a name="azure-signalr-service-internals"></a>Wewnętrzne elementy usługi Azure SignalR

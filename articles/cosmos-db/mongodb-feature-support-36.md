@@ -1,6 +1,6 @@
 ---
-title: Interfejs API Azure Cosmos DB dla MongoDB (wersja 3,6) obsługiwane funkcje i składnia
-description: Dowiedz się więcej o obsługiwanych funkcjach i składni interfejsu API Azure Cosmos DB (wersja 3,6).
+title: Interfejs API usługi Azure Cosmos DB dla mongodb (wersja 3.6) obsługiwane funkcje i składni
+description: Dowiedz się więcej o interfejsie API usługi Azure Cosmos DB dla obsługiwanych funkcji i składni usługi MongoDB (wersja 3.6).
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: overview
@@ -8,25 +8,25 @@ ms.date: 01/15/2020
 author: sivethe
 ms.author: sivethe
 ms.openlocfilehash: cde731f9d9e673446bc4d08117004b028db2a7f9
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77462466"
 ---
-# <a name="azure-cosmos-dbs-api-for-mongodb-36-version-supported-features-and-syntax"></a>Azure Cosmos DB API for MongoDB (wersja 3,6): obsługiwane funkcje i składnia
+# <a name="azure-cosmos-dbs-api-for-mongodb-36-version-supported-features-and-syntax"></a>Interfejs API usługi Azure Cosmos DB dla bazy danych MongoDB (wersja 3.6): obsługiwane funkcje i składnia
 
-Azure Cosmos DB to rozproszona globalnie, wielomodelowa usługa bazy danych firmy Microsoft. Można komunikować się z interfejsem API Azure Cosmos DB dla MongoDB przy użyciu dowolnego ze [sterowników](https://docs.mongodb.org/ecosystem/drivers)klienta MongoDB typu open source. Interfejs API usługi Azure Cosmos DB dla bazy danych MongoDB umożliwia korzystanie z istniejących sterowników klienta dzięki przestrzeganiu [protokołu przewodowego](https://docs.mongodb.org/manual/reference/mongodb-wire-protocol) MongoDB.
+Azure Cosmos DB to rozproszona globalnie, wielomodelowa usługa bazy danych firmy Microsoft. Interfejs API usługi Azure Cosmos DB dla bazy danych MongoDB można komunikować się przy użyciu dowolnego [sterownika](https://docs.mongodb.org/ecosystem/drivers)klienta mongodb typu open source. Interfejs API usługi Azure Cosmos DB dla bazy danych MongoDB umożliwia korzystanie z istniejących sterowników klienta dzięki przestrzeganiu [protokołu przewodowego](https://docs.mongodb.org/manual/reference/mongodb-wire-protocol) MongoDB.
 
-Za pomocą interfejsu API Azure Cosmos DB dla MongoDB można korzystać z zalet MongoDB, z których korzystasz, ze wszystkimi możliwościami przedsiębiorstwa, które Cosmos DB oferuje: [globalna dystrybucja](distribute-data-globally.md), [Automatyczna fragmentowania](partition-data.md), dostępność i gwarancje opóźnienia, szyfrowanie w spoczynku, tworzenie kopii zapasowych i wiele innych.
+Korzystając z interfejsu API usługi Azure Cosmos DB dla mongodb, można korzystać z zalet MongoDB, który jesteś przyzwyczajony do, ze wszystkimi możliwościami przedsiębiorstwa, które zapewnia usługi Cosmos DB: [dystrybucja](distribute-data-globally.md) [globalna, automatyczne dzielenie na fragmenty,](partition-data.md)gwarancje dostępności i opóźnienia, szyfrowanie w spoczynku, kopie zapasowe i wiele więcej.
 
 ## <a name="protocol-support"></a>Obsługa protokołu
 
-Interfejs API Azure Cosmos DB dla MongoDB jest domyślnie zgodny z serwerem MongoDB w wersji **3,6** dla nowych kont. Poniżej wymieniono obsługiwane operacje wraz z ewentualnymi ograniczeniami lub wyjątkami. Dowolny sterownik klienta działający zgodnie z tymi protokołami umożliwia połączenie z interfejsem API usługi Azure Cosmos DB dla bazy danych MongoDB. Należy pamiętać, że w przypadku korzystania z interfejsu API Azure Cosmos DB dla kont MongoDB wersja 3,6 kont ma punkt końcowy w formacie, `*.mongo.cosmos.azure.com` natomiast 3,2 wersja konta ma punkt końcowy w formacie `*.documents.azure.com`.
+Interfejs API usługi Azure Cosmos DB dla bazy danych MongoDB jest domyślnie zgodny z serwerem MongoDB w wersji **3.6** dla nowych kont. Poniżej wymieniono obsługiwane operacje wraz z ewentualnymi ograniczeniami lub wyjątkami. Dowolny sterownik klienta działający zgodnie z tymi protokołami umożliwia połączenie z interfejsem API usługi Azure Cosmos DB dla bazy danych MongoDB. Należy zauważyć, że podczas korzystania z interfejsu API usługi Azure Cosmos DB dla kont MongoDB, wersja 3.6 kont mają punkt końcowy w formacie, `*.mongo.cosmos.azure.com` podczas gdy wersja 3.2 kont mają punkt końcowy w formacie `*.documents.azure.com`.
 
 ## <a name="query-language-support"></a>Obsługa języka zapytań
 
-Interfejs API usługi Azure Cosmos DB dla bazy danych MongoDB zapewnia niemal pełną obsługę konstrukcji języka zapytań bazy danych MongoDB. Poniżej znajdziesz szczegółową listę obecnie obsługiwanych operacji, operatorów, etapów, poleceń i opcji.
+Interfejs API usługi Azure Cosmos DB dla bazy danych MongoDB zapewnia niemal pełną obsługę konstrukcji języka zapytań bazy danych MongoDB. Poniżej znajduje się szczegółowa lista aktualnie obsługiwanych operacji, operatorów, etapów, poleceń i opcji.
 
 ## <a name="database-commands"></a>Polecenia bazy danych
 
@@ -36,75 +36,75 @@ Interfejs API usługi Azure Cosmos DB dla bazy danych MongoDB obsługuje następ
 
 |Polecenie  |Obsługiwane |
 |---------|---------|
-|delete | Yes |
-|find | Yes     |
-|findAndModify | Yes  |
-|getLastError|   Yes |
-|getMore  |  Yes  |
+|delete | Tak |
+|find | Tak     |
+|findAndModify | Tak  |
+|getLastError|   Tak |
+|getMore  |  Tak  |
 |getPrevError | Nie  |
-|insert  |   Yes  |
-|parallelCollectionScan  | Yes   |
+|insert  |   Tak  |
+|parallelCollectionScan  | Tak   |
 |resetError |   Nie  |
-|update  |   Yes  |
-|[Zmień strumienie](mongodb-change-streams.md)  |  Yes  |
-|GridFS |   Yes  |
+|update  |   Tak  |
+|[Zmiana strumieni](mongodb-change-streams.md)  |  Tak  |
+|GridFS (FS) |   Tak  |
 
 ### <a name="authentication-commands"></a>Polecenia uwierzytelniania
 
 |Polecenie  |Obsługiwane |
 |---------|---------|
-|authenticate    |   Yes      |
-|logout    |      Yes   |
-|getnonce   |    Yes     |
+|authenticate    |   Tak      |
+|logout    |      Tak   |
+|getnonce   |    Tak     |
 
 
 ### <a name="administration-commands"></a>Polecenia administracyjne
 
 |Polecenie  |Obsługiwane |
 |---------|---------|
-|Kolekcje z ograniczeniami   |   Nie      |
+|Kolekcje ograniczone   |   Nie      |
 |cloneCollectionAsCapped     |   Nie      |
-|collMod     |   Nie      |
+|collMod (collMod)     |   Nie      |
 |collMod: expireAfterSeconds   |   Nie      |
-|convertToCapped   |  Nie       |
-|copydb     |  Nie       |
-|create   |    Yes     |
-|createIndexes     |  Yes       |
-|currentOp     |  Yes       |
-|drop     |   Yes      |
-|dropDatabase     |  Yes       |
-|dropIndexes     |   Yes      |
-|filemd5    |   Yes      |
-|killCursors    |  Yes       |
-|killOp     |   Nie      |
-|listCollections     |  Yes       |
-|listDatabases     |  Yes       |
-|listIndexes     |  Yes       |
-|reIndex     |    Yes     |
-|Nazwa nazwy     |    Nie     |
+|convertToCaped (ConvertToCaped)   |  Nie       |
+|copydb (kopia db)     |  Nie       |
+|create   |    Tak     |
+|createIndexes     |  Tak       |
+|currentOp     |  Tak       |
+|drop     |   Tak      |
+|dropDatabase     |  Tak       |
+|dropIndexes     |   Tak      |
+|filemd5    |   Tak      |
+|killCursors ( killCursors )    |  Tak       |
+|killOp (zabijOp)     |   Nie      |
+|listCollections     |  Tak       |
+|listDatabases     |  Tak       |
+|listIndexes     |  Tak       |
+|reIndex     |    Tak     |
+|renameCollection (zmiana nazwy)     |    Nie     |
 |connectionStatus    |     Nie    |
 
 ### <a name="diagnostics-commands"></a>Polecenia diagnostyki
 
 |Polecenie  |Obsługiwane |
 |---------|---------|
-|buildInfo       |   Yes      |
-|collStats    |  Yes       |
-|connPoolStats     |  Nie       |
+|buildInfo       |   Tak      |
+|collStats    |  Tak       |
+|connPoolStats (connPoolStats)     |  Nie       |
 |connectionStatus     |  Nie       |
-|dataSize     |   Nie      |
-|dbhash    |    Nie     |
-|dbStats     |   Yes      |
-|uzasadnieni     | Nie        |
-|Wyjaśnij: executionStats     |     Nie    |
+|Datasize     |   Nie      |
+|dbHash (dbHash)    |    Nie     |
+|dbStats     |   Tak      |
+|Wyjaśnić     | Nie        |
+|wyjaśnić: executionStats     |     Nie    |
 |funkcje     |    Nie     |
 |hostInfo     |   Nie      |
-|listDatabases       |   Yes      |
-|listCommands     |  Nie       |
-|profiler     |  Nie       |
-|serverStatus     |  Nie       |
+|listDatabases       |   Tak      |
+|listaZakłady     |  Nie       |
+|Profiler     |  Nie       |
+|status serwera     |  Nie       |
 |top     |    Nie     |
-|whatsmyuri     |   Yes      |
+|whatsmyuri     |   Tak      |
 
 <a name="aggregation-pipeline"/>
 
@@ -114,36 +114,36 @@ Interfejs API usługi Azure Cosmos DB dla bazy danych MongoDB obsługuje następ
 
 |Polecenie  |Obsługiwane |
 |---------|---------|
-|aggregate |   Yes  |
-|count     |   Yes  |
-|distinct  | Yes |
-|mapReduce | Nie |
+|aggregate |   Tak  |
+|count     |   Tak  |
+|distinct  | Tak |
+|mapaReduce | Nie |
 
 ### <a name="aggregation-stages"></a>Etapy agregacji
 
 |Polecenie  |Obsługiwane |
 |---------|---------|
 |$collStats |Nie|
-|$project   |Yes|
-|$match |Yes|
-|$redact|   Yes|
-|$limit |Yes|
-|$skip  |Yes|
-|$unwind|   Yes|
-|$group |   Yes|
-|$sample|       Yes|
-|$sort  |Yes|
+|$project   |Tak|
+|$match |Tak|
+|$redact|   Tak|
+|$limit |Tak|
+|$skip  |Tak|
+|$unwind|   Tak|
+|$group |   Tak|
+|$sample|       Tak|
+|$sort  |Tak|
 |$geoNear|  Nie|
-|$lookup    |   Yes|
-|$out       |Yes|
+|$lookup    |   Tak|
+|$out       |Tak|
 |$indexStats|       Nie|
 |$facet |Nie|
 |$bucket|   Nie|
 |$bucketAuto|   Nie|
-|$sortByCount|  Yes|
-|$addFields |Yes|
-|$replaceRoot|  Yes|
-|$count |Yes|
+|$sortByCount|  Tak|
+|$addFields |Tak|
+|$replaceRoot|  Tak|
+|$count |Tak|
 |$currentOp|    Nie|
 |$listLocalSessions |Nie|
 |$listSessions  |Nie|
@@ -153,72 +153,72 @@ Interfejs API usługi Azure Cosmos DB dla bazy danych MongoDB obsługuje następ
 
 |Polecenie  |Obsługiwane |
 |---------|---------|
-|$and| Yes|
-|$or|Yes|
-|$not|Yes|
+|$and| Tak|
+|$or|Tak|
+|$not|Tak|
 
 ### <a name="set-expressions"></a>Stałe wyrażenia
 
 |Polecenie  |Obsługiwane |
 |---------|---------|
-| $setEquals | Yes|
-|$setIntersection|Yes|
-| $setUnion|Yes|
-| $setDifference|Yes|
-| $setIsSubset|Yes|
-| $anyElementTrue|Yes|
-| $allElementsTrue|Yes|
+| $setEquals | Tak|
+|$setIntersection|Tak|
+| $setUnion|Tak|
+| $setDifference|Tak|
+| $setIsSubset|Tak|
+| $anyElementTrue|Tak|
+| $allElementsTrue|Tak|
 
 ### <a name="comparison-expressions"></a>Wyrażenia porównania
 
 |Polecenie  |Obsługiwane |
 |---------|---------|
-|$cmp     |  Yes       |
-|$eq|   Yes| 
-|$gt |  Yes| 
-|$gte|  Yes| 
-|$lt    |Yes|
-|$lte|  Yes| 
-|$ne    |   Yes| 
-|$in    |   Yes| 
-|$nin   |   Yes| 
+|$cmp     |  Tak       |
+|$eq|   Tak| 
+|$gt |  Tak| 
+|$gte|  Tak| 
+|$lt    |Tak|
+|$lte|  Tak| 
+|$ne    |   Tak| 
+|$in    |   Tak| 
+|$nin   |   Tak| 
 
 ### <a name="arithmetic-expressions"></a>Wyrażenia arytmetyczne
 
 |Polecenie  |Obsługiwane |
 |---------|---------|
-|$abs |  Yes       |
-| $add |  Yes       |
-| $ceil |  Yes       |
-| $divide |  Yes       |
-| $exp |  Yes       |
-| $floor |  Yes       |
-| $ln |  Yes       |
-| $log |  Yes       |
-| $log10 |  Yes       |
-| $mod |  Yes       |
-| $multiply |  Yes       |
-| $pow |  Yes       |
-| $sqrt |  Yes       |
-| $subtract |  Yes       |
-| $trunc |  Yes       |
+|$abs |  Tak       |
+| $add |  Tak       |
+| $ceil |  Tak       |
+| $divide |  Tak       |
+| $exp |  Tak       |
+| $floor |  Tak       |
+| $ln |  Tak       |
+| $log |  Tak       |
+| $log10 |  Tak       |
+| $mod |  Tak       |
+| $multiply |  Tak       |
+| $pow |  Tak       |
+| $sqrt |  Tak       |
+| $subtract |  Tak       |
+| $trunc |  Tak       |
 
 ### <a name="string-expressions"></a>Wyrażenia ciągu
 
 |Polecenie  |Obsługiwane |
 |---------|---------|
-|$concat |  Yes       |
-| $indexOfBytes|  Yes       |
-| $indexOfCP|  Yes       |
-| $split|  Yes       |
-| $strLenBytes|  Yes       |
-| $strLenCP|  Yes       |
-| $strcasecmp|  Yes       |
-| $substr|  Yes       |
-| $substrBytes|  Yes       |
-| $substrCP|  Yes       |
-| $toLower|  Yes       |
-| $toUpper|  Yes       |
+|$concat |  Tak       |
+| $indexOfBytes|  Tak       |
+| $indexOfCP|  Tak       |
+| $split|  Tak       |
+| $strLenBytes|  Tak       |
+| $strLenCP|  Tak       |
+| $strcasecmp|  Tak       |
+| $substr|  Tak       |
+| $substrBytes|  Tak       |
+| $substrCP|  Tak       |
+| $toLower|  Tak       |
+| $toUpper|  Tak       |
 
 ### <a name="text-search-operator"></a>Operator wyszukiwania tekstu
 
@@ -230,93 +230,93 @@ Interfejs API usługi Azure Cosmos DB dla bazy danych MongoDB obsługuje następ
 
 |Polecenie  |Obsługiwane |
 |---------|---------|
-|$arrayElemAt   |   Yes|
-|$arrayToObject|    Yes|
-|$concatArrays  |   Yes|
-|$filter    |   Yes|
-|$indexOfArray  |Yes|
-|$isArray   |   Yes|
-|$objectToArray |Yes|
-|$range |Yes|
-|$reverseArray  |   Yes|
-|$reduce|   Yes|
-|$size  |   Yes|
-|$slice |   Yes|
-|$zip   |   Yes|
-|$in    |   Yes|
+|$arrayElemAt   |   Tak|
+|$arrayToObject|    Tak|
+|$concatArrays  |   Tak|
+|$filter    |   Tak|
+|$indexOfArray  |Tak|
+|$isArray   |   Tak|
+|$objectToArray |Tak|
+|$range |Tak|
+|$reverseArray  |   Tak|
+|$reduce|   Tak|
+|$size  |   Tak|
+|$slice |   Tak|
+|$zip   |   Tak|
+|$in    |   Tak|
 
 ### <a name="variable-operators"></a>Operatory zmiennych
 
 |Polecenie  |Obsługiwane |
 |---------|---------|
 |$map   |Nie|
-|$let   |Yes|
+|$let   |Tak|
 
 ### <a name="system-variables"></a>Zmienne systemu
 
 |Polecenie  |Obsługiwane |
 |---------|---------|
-|$ $CURRENT| Yes|
-|$ $DESCEND|     Yes|
-|$ $KEEP     |Yes|
-|$ $PRUNE    |   Yes|
-|$ $REMOVE   |Yes|
-|$ $ROOT     |Yes|
+|$CURRENT usd| Tak|
+|$DESCEND usd|     Tak|
+|$KEEP usd     |Tak|
+|$PRUNE usd    |   Tak|
+|$REMOVE usd   |Tak|
+|$ROOT usd     |Tak|
 
-### <a name="literal-operator"></a>Operator literału
+### <a name="literal-operator"></a>Operator dosłowny
 
 |Polecenie  |Obsługiwane |
 |---------|---------|
-|$literal   |Yes|
+|$literal   |Tak|
 
 ### <a name="date-expressions"></a>Wyrażenia daty
 
 |Polecenie  |Obsługiwane |
 |---------|---------|
-|$dayOfYear |Yes    |
-|$dayOfMonth|   Yes |
-|$dayOfWeek |Yes    |
-|$year  |Yes    |
-|$month |Yes|   
-|$week  |Yes    |
-|$hour  |Yes    |
-|$minute|   Yes|    
-|$second    |Yes    |
-|$millisecond|  Yes|    
-|$dateToString  |Yes    |
-|$isoDayOfWeek  |Yes    |
-|$isoWeek   |Yes    |
+|$dayOfYear |Tak    |
+|$dayOfMonth|   Tak |
+|$dayOfWeek |Tak    |
+|$year  |Tak    |
+|$month |Tak|   
+|$week  |Tak    |
+|$hour  |Tak    |
+|$minute|   Tak|    
+|$second    |Tak    |
+|$millisecond|  Tak|    
+|$dateToString  |Tak    |
+|$isoDayOfWeek  |Tak    |
+|$isoWeek   |Tak    |
 |$dateFromParts|    Nie| 
 |$dateToParts   |Nie |
 |$dateFromString|   Nie|
-|$isoWeekYear   |Yes    |
+|$isoWeekYear   |Tak    |
 
 ### <a name="conditional-expressions"></a>Wyrażenia warunkowe
 
 |Polecenie  |Obsługiwane |
 |---------|---------|
-| $cond| Yes|
-| $ifNull| Yes|
-| $switch |Yes|
+| $cond| Tak|
+| $ifNull| Tak|
+| $switch |Tak|
 
 ### <a name="data-type-operator"></a>Operator typu danych
 
 |Polecenie  |Obsługiwane |
 |---------|---------|
-| $type| Yes|
+| $type| Tak|
 
-### <a name="accumulator-expressions"></a>Wyrażenia akumulowana
+### <a name="accumulator-expressions"></a>Wyrażenia akumulatora
 
 |Polecenie  |Obsługiwane |
 |---------|---------|
-|$sum   |Yes    |
-|$avg   |Yes    |
-|$first|    Yes|
-|$last  |Yes    |
-|$max   |Yes    |
-|$min   |Yes    |
-|$push| Yes|
-|$addToSet| Yes|
+|$sum   |Tak    |
+|$avg   |Tak    |
+|$first|    Tak|
+|$last  |Tak    |
+|$max   |Tak    |
+|$min   |Tak    |
+|$push| Tak|
+|$addToSet| Tak|
 |$stdDevPop|    Nie  |
 |$stdDevSamp|   Nie|
 
@@ -324,31 +324,31 @@ Interfejs API usługi Azure Cosmos DB dla bazy danych MongoDB obsługuje następ
 
 |Polecenie  |Obsługiwane |
 |---------|---------|
-| $mergeObjects | Yes|
+| $mergeObjects | Tak|
 
 ## <a name="data-types"></a>Typy danych
 
 |Polecenie  |Obsługiwane |
 |---------|---------|
-|Podwójne |Yes    |
-|Ciąg |Yes    |
-|Obiekt |Yes    |
-|Tablica  |Yes    |
-|Binary Data    |Yes|   
-|ObjectId   |Yes    |
-|Wartość logiczna    |Yes    |
-|Date   |Yes    |
-|Null   |Yes    |
-|32-bitowa liczba całkowita (int)   |Yes    |
-|Znacznik czasu  |Yes    |
-|64-bitowa liczba całkowita (Long)  |Yes    |
-|MinKey |Yes    |
-|MaxKey |Yes    |
-|Decimal128 |Yes|   
-|Wyrażenie regularne |Yes|
-|JavaScript |Yes|
-|JavaScript (z zakresem)|   Yes |
-|Niezdefiniowane  |Yes    |
+|Double |Tak    |
+|Ciąg |Tak    |
+|Obiekt |Tak    |
+|Tablica  |Tak    |
+|Dane binarne    |Tak|   
+|ObjectId   |Tak    |
+|Wartość logiczna    |Tak    |
+|Data   |Tak    |
+|Null   |Tak    |
+|32-bitowa ćda (int)   |Tak    |
+|Znacznik czasu  |Tak    |
+|64-bitowa ć całkowita (długa)  |Tak    |
+|MinKey (Klucz min.) |Tak    |
+|Klawisz MaxKey |Tak    |
+|Dziesiętny128 |Tak|   
+|Wyrażenie regularne |Tak|
+|JavaScript |Tak|
+|JavaScript (z zakresem)|   Tak |
+|Niezdefiniowane  |Tak    |
 
 ## <a name="indexes-and-index-properties"></a>Indeksy i właściwości indeksu
 
@@ -356,24 +356,24 @@ Interfejs API usługi Azure Cosmos DB dla bazy danych MongoDB obsługuje następ
 
 |Polecenie  |Obsługiwane |
 |---------|---------|
-|Indeks jednego pola |Yes    |
-|Indeks złożony |Yes    |
-|Indeks MultiKey |Yes    |
+|Indeks pojedynczego pola |Tak    |
+|Indeks złożony |Tak    |
+|Indeks multikey |Tak    |
 |Indeks tekstu |Nie|
-|2dsphere   |Yes    |
-|Indeks 2D   |Nie |
-|Indeks z wartością skrótu   | Yes|
+|Sfera 2dsphere   |Tak    |
+|Indeks 2d   |Nie |
+|Indeks mieszania   | Tak|
 
 ### <a name="index-properties"></a>Właściwości indeksu
 
 |Polecenie  |Obsługiwane |
 |---------|---------|
-|TTL|   Yes |
-|Unikatowe |Yes|
+|TTL|   Tak |
+|Unikatowe |Tak|
 |Częściowo|   Nie|
 |Bez uwzględniania wielkości liter   |Nie|
 |Rozrzedzone |Nie |
-|Tło|    Yes |
+|Tło|    Tak |
 
 ## <a name="operators"></a>Operatory
 
@@ -381,58 +381,58 @@ Interfejs API usługi Azure Cosmos DB dla bazy danych MongoDB obsługuje następ
 
 |Polecenie  |Obsługiwane |
 |---------|---------|
-|$or    |   Yes|
-|$and   |   Yes|
-|$not   |   Yes|
-|$nor   |   Yes| 
+|$or    |   Tak|
+|$and   |   Tak|
+|$not   |   Tak|
+|$nor   |   Tak| 
 
-### <a name="element-operators"></a>Operatory elementu
+### <a name="element-operators"></a>Operatory elementów
 
 |Polecenie  |Obsługiwane |
 |---------|---------|
-|$exists|   Yes|
-|$type  |   Yes|
+|$exists|   Tak|
+|$type  |   Tak|
 
-### <a name="evaluation-query-operators"></a>Operatory zapytań oceny
+### <a name="evaluation-query-operators"></a>Operatory zapytań ewaluacyjnych
 
 |Polecenie  |Obsługiwane |
 |---------|---------|
 |$expr  |   Nie|
 |$jsonSchema    |   Nie|
-|$mod   |   Yes|
-|$regex |   Yes|
-|$text  | Nie (nieobsługiwane. Użyj zamiast tego $regex.)| 
+|$mod   |   Tak|
+|$regex |   Tak|
+|$text  | Nie (nie jest obsługiwany. Zamiast tego użyj $regex).)| 
 |$where |Nie| 
 
-W zapytaniach $regex wyrażenia zakotwiczone w lewo umożliwiają wyszukiwanie indeksu. Jednak użycie modyfikatora „i” (wielkość liter nie ma znaczenia) oraz modyfikatora „m” (wiele wierszy) powoduje skanowanie kolekcji we wszystkich wyrażeniach.
+W kwerendach $regex wyrażenia zakotwiczone w lewo umożliwiają wyszukiwanie indeksu. Jednak użycie modyfikatora „i” (wielkość liter nie ma znaczenia) oraz modyfikatora „m” (wiele wierszy) powoduje skanowanie kolekcji we wszystkich wyrażeniach.
 
-Jeśli istnieje potrzeba dołączenia „$” lub „|”, najlepiej utworzyć dwa lub więcej zapytań regex. Na przykład, uwzględniając następujące oryginalne zapytanie: ```find({x:{$regex: /^abc$/})```, należy je zmodyfikować w następujący sposób:
+Jeśli istnieje potrzeba dołączenia „$” lub „|”, najlepiej utworzyć dwa lub więcej zapytań regex. Na przykład, biorąc pod ```find({x:{$regex: /^abc$/})```uwagę następujące oryginalne zapytanie: , musi być modyfikowany w następujący sposób:
 
 ```find({x:{$regex: /^abc/, x:{$regex:/^abc$/}})```.
 
 Pierwsza część użyje indeksu, aby ograniczyć wyszukiwanie do dokumentów, które rozpoczynają się od ^abc, a druga część będzie dokładnie dopasowywana do wpisów. Operator kreski „|” działa jako funkcja „or” — zapytanie ```find({x:{$regex: /^abc|^def/})``` pasuje do dokumentów, w których pole „x” ma wartości zaczynające się od „abc” lub „def”. Aby korzystać z indeksu, zaleca się podzielenie zapytania na dwa różne zapytania połączone operatorem $or: ```find( {$or : [{x: $regex: /^abc/}, {$regex: /^def/}] })```.
 
-### <a name="array-operators"></a>Operatory tablic
+### <a name="array-operators"></a>Operatory macierzy
 
 |Polecenie  |Obsługiwane | 
 |---------|---------|
-| $all | Yes| 
-| $elemMatch | Yes| 
-| $size | Yes | 
+| $all | Tak| 
+| $elemMatch | Tak| 
+| $size | Tak | 
 
 ### <a name="comment-operator"></a>Operator komentarza
 
 |Polecenie  |Obsługiwane | 
 |---------|---------|
-$comment |Yes| 
+$comment |Tak| 
 
-### <a name="projection-operators"></a>Operatory projekcji
+### <a name="projection-operators"></a>Operatory projekcyjne
 
 |Polecenie  |Obsługiwane |
 |---------|---------|
-|$elemMatch |Yes|
+|$elemMatch |Tak|
 |$meta| Nie|
-|$slice | Yes|
+|$slice | Tak|
 
 ### <a name="update-operators"></a>Operatory aktualizacji
 
@@ -440,45 +440,45 @@ $comment |Yes|
 
 |Polecenie  |Obsługiwane |
 |---------|---------|
-|$inc   |   Yes|
-|$mul   |   Yes|
-|$rename    |   Yes|
-|$setOnInsert|  Yes|
-|$set   |Yes|
-|$unset| Yes|
-|$min   |Yes|
-|$max   |Yes|
-|$currentDate   | Yes|
+|$inc   |   Tak|
+|$mul   |   Tak|
+|$rename    |   Tak|
+|$setOnInsert|  Tak|
+|$set   |Tak|
+|$unset| Tak|
+|$min   |Tak|
+|$max   |Tak|
+|$currentDate   | Tak|
 
 #### <a name="array-update-operators"></a>Operatory do aktualizacji tablic
 
 |Polecenie  |Obsługiwane |
 |---------|---------|
-|$  |Yes|
-|$[]|   Yes|
-|$ [<identifier>]|   Yes|
-|$addToSet  |Yes|
-|$pop   |Yes|
-|$pullAll|  Yes|
-|$pull  |Yes|
-|$push  |Yes|
-|$pushAll| Yes|
+|$  |Tak|
+|$[]|   Tak|
+|$[<identifier>]|   Tak|
+|$addToSet  |Tak|
+|$pop   |Tak|
+|$pullAll|  Tak|
+|$pull  |Tak|
+|$push  |Tak|
+|$pushAll| Tak|
 
 
-#### <a name="update-modifiers"></a>Aktualizuj Modyfikatory
+#### <a name="update-modifiers"></a>Modyfikatory aktualizacji
 
 |Polecenie  |Obsługiwane |
 |---------|---------|
-|$each  |   Yes|
-|$slice |Yes|
-|$sort  |Yes|
-|$position  |Yes|
+|$each  |   Tak|
+|$slice |Tak|
+|$sort  |Tak|
+|$position  |Tak|
 
 #### <a name="bitwise-update-operator"></a>Operator do aktualizacji Bitwise
 
 |Polecenie  |Obsługiwane |
 |---------|---------|
-| $bit  |   Yes|    
+| $bit  |   Tak|    
 |$bitsAllSet    |   Nie|
 |$bitsAnySet    |   Nie|
 |$bitsAllClear  |Nie|
@@ -488,53 +488,53 @@ $comment |Yes|
 
 Operator | Obsługiwane| 
 --- | --- |
-$geoWithin | Yes |
-$geoIntersects | Yes | 
-$near |  Yes |
-$nearSphere |  Yes |
-$geometry |  Yes |
-$minDistance | Yes |
-$maxDistance | Yes |
-$center | Yes |
-$centerSphere | Yes |
-$box | Yes |
-$polygon |  Yes |
+$geoWithin | Tak |
+$geoIntersects | Tak | 
+$near |  Tak |
+$nearSphere |  Tak |
+$geometry |  Tak |
+$minDistance | Tak |
+$maxDistance | Tak |
+$center | Tak |
+$centerSphere | Tak |
+$box | Tak |
+$polygon |  Tak |
 
 ## <a name="cursor-methods"></a>Metody kursora
 
 |Polecenie  |Obsługiwane |
 |---------|---------|
-|Cursor. batchSize () |   Yes|
-|Cursor. Close () |Yes|
-|Cursor. IsClosed ()|     Yes|
-|Cursor. Collation ()|    Nie|
-|Cursor. comment ()   |Yes|
-|Cursor. Count () |Yes|
-|Cursor. Wyjaśnij ()|  Nie|
-|Cursor. forEach ()   |Yes|
-|Cursor. hasNext ()   |Yes|
-|Cursor. Hint ()  |Yes|
-|Cursor. iswyczerpaład ()|  Yes|
-|Cursor. itcount ()   |Yes|
-|Cursor. limit () |Yes|
-|Cursor. map ()   |Yes|
-|Cursor. maxScan ()   |Yes|
-|Cursor. maxTimeMS ()|    Yes|
-|Cursor. max ()   |Yes|
-|Cursor. min ()   |Yes|
-|Cursor. Next ()| Yes|
-|Cursor. noCursorTimeout ()   |Nie|
-|Cursor. objsLeftInBatch ()   |Yes|
-|Cursor. dość ()|   Yes|
-|Cursor. readConcern ()|  Yes|
-|Cursor. readPref ()      |Yes|
-|Cursor. returnKey () |Nie|
-|Cursor. showRecordId ()| Nie|
-|Cursor. size ()  |Nes|
-|Cursor. Skip ()  |Yes|
-|cursor.sort()  |   Yes|
-|Cursor. Add()| Nie|
-|Cursor. ToArray — ()   |Yes|
+|cursor.batchSize() |   Tak|
+|kursor.close() |Tak|
+|kursor.isClosed()|     Tak|
+|kursor.sortation()|    Nie|
+|kursor.comment()   |Tak|
+|kursor.count() |Tak|
+|kursor.explain()|  Nie|
+|kursor.forEach()   |Tak|
+|kursor.hasNastępny()   |Tak|
+|kursor.hint()  |Tak|
+|kursor.isWyczesane()|  Tak|
+|kursor.itcount()   |Tak|
+|kursor.limit() |Tak|
+|kursor.map()   |Tak|
+|cursor.maxScan()   |Tak|
+|cursor.maxTimeMS()|    Tak|
+|kursor.max()   |Tak|
+|kursor.min()   |Tak|
+|kursor.next()| Tak|
+|plik cursor.noCursorTimeout()   |Nie|
+|kursor.objsLeftInBatch()   |Tak|
+|kursor.pretty()|   Tak|
+|kursor.readConcern()|  Tak|
+|plik cursor.readPref()      |Tak|
+|plik cursor.returnKey() |Nie|
+|kursor.showRecordId()| Nie|
+|kursor.size()  |Nes|
+|kursor.skip()  |Tak|
+|cursor.sort()  |   Tak|
+|kursor.tailable()| Nie|
+|kurs.toArray()   |Tak|
 
 ## <a name="sort-operations"></a>Operacje sortowania
 
@@ -550,7 +550,7 @@ Usługa Cosmos DB obsługuje czas wygaśnięcia (TTL) na podstawie znacznika cza
 
 ## <a name="user-and-role-management"></a>Zarządzanie użytkownikami i rolami
 
-Usługa Cosmos DB nie obsługuje jeszcze użytkowników i ról. Jednakże Cosmos DB obsługuje funkcję kontroli dostępu opartej na rolach (RBAC) oraz hasła do odczytu i zapisu oraz klucze, które można uzyskać za pośrednictwem [Azure Portal](https://portal.azure.com) (strona parametrów połączenia).
+Usługa Cosmos DB nie obsługuje jeszcze użytkowników i ról. Jednak usługa Cosmos DB obsługuje sterowanie dostępem oparte na rolach (RBAC) oraz hasła/klucze tylko do odczytu i do odczytu, które można uzyskać za pośrednictwem [witryny Azure portal](https://portal.azure.com) (strona Parametry połączenia).
 
 ## <a name="replication"></a>Replikacja
 
@@ -562,17 +562,17 @@ Niektóre aplikacje polegają na ustawieniu [Write Concern](https://docs.mongodb
 
 ## <a name="sharding"></a>Dzielenie na fragmenty
 
-Usługa Azure Cosmos DB obsługuje automatyczne dzielenie na fragmenty po stronie serwera. Zarządza on fragmentu tworzeniem, umieszczaniem i zrównoważeniem automatycznie. Azure Cosmos DB nie obsługuje ręcznych poleceń fragmentowania, co oznacza, że nie trzeba Wywoływanie poleceń takich jak addShard, balancerStart, moveChunk itp. Wystarczy określić klucz fragmentu podczas tworzenia kontenerów lub wykonywania zapytań dotyczących danych.
+Usługa Azure Cosmos DB obsługuje automatyczne dzielenie na fragmenty po stronie serwera. Automatycznie zarządza tworzeniem, umieszczaniem i równoważeniem fragmentów. Usługa Azure Cosmos DB nie obsługuje ręcznych poleceń dzielenia na fragmenty, co oznacza, że nie trzeba wywoływać poleceń, takich jak addShard, balancerStart, moveChunk itp. Wystarczy określić klucz niezależnego fragmentu podczas tworzenia kontenerów lub wykonywania zapytań o dane.
 
 ## <a name="sessions"></a>Sesje
 
-Azure Cosmos DB nie obsługuje jeszcze poleceń sesji po stronie serwera.
+Usługa Azure Cosmos DB nie obsługuje jeszcze poleceń sesji po stronie serwera.
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Aby uzyskać więcej informacji, zobacz [funkcje wersji Mongo 3,6](https://devblogs.microsoft.com/cosmosdb/azure-cosmos-dbs-api-for-mongodb-now-supports-server-version-3-6/)
+- Aby uzyskać więcej informacji, sprawdź [funkcje wersji Mongo 3.6](https://devblogs.microsoft.com/cosmosdb/azure-cosmos-dbs-api-for-mongodb-now-supports-server-version-3-6/)
 - Dowiedz się, jak [korzystać z programu Studio 3T](mongodb-mongochef.md) za pomocą interfejsu API usługi Azure Cosmos DB dla bazy danych MongoDB.
 - Dowiedz się, jak [korzystać z programu Robo 3T](mongodb-robomongo.md) za pomocą interfejsu API usługi Azure Cosmos DB dla bazy danych MongoDB.
 - Eksploruj [przykłady](mongodb-samples.md) bazy danych MongoDB za pomocą interfejsu API usługi Azure Cosmos DB dla bazy danych MongoDB.
 
-<sup>Uwaga: w tym artykule opisano funkcję Azure Cosmos DB, która zapewnia zgodność protokołu telekomunikacyjnych z bazami danych MongoDB. Firma Microsoft nie uruchamia MongoDB baz danych w celu zapewnienia tej usługi. Azure Cosmos DB nie jest powiązany z MongoDB, Inc.</sup>
+<sup>Uwaga: W tym artykule opisano funkcję usługi Azure Cosmos DB, która zapewnia zgodność protokołu przewodowego z bazami danych MongoDB. Firma Microsoft nie uruchamia baz danych MongoDB w celu świadczenia tej usługi. Usługa Azure Cosmos DB nie jest powiązana z mongodb, inc.</sup>

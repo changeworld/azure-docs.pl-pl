@@ -1,99 +1,99 @@
 ---
-title: Przegląd Istio
-description: Uzyskaj przegląd Istio
+title: Przegląd istio
+description: Uzyskaj przegląd istio
 author: paulbouwer
 ms.topic: article
 ms.date: 10/09/2019
 ms.author: pabouwer
 ms.openlocfilehash: 8518e30a54c2486abf84cd9ac026cc4dccb3fa84
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77593904"
 ---
-# <a name="istio"></a>Istio
+# <a name="istio"></a>Istio (istio)
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
-[Istio][istio] to w pełni funkcjonalna, dostosowywać i rozszerzalna siatka usług.
+[Istio][istio] to w pełni funkcjonalna, konfigurowalna i rozszerzalna siatka serwisowa.
 
 ## <a name="architecture"></a>Architektura
 
-Istio udostępnia płaszczyznę danych, która składa się z przyczepek opartych na [wysłannika][envoy-proxy]. Te inteligentne serwery proxy kontrolują cały ruch sieciowy do i z sieci i obciążeń z siatką.
+Istio udostępnia płaszczyznę danych, która składa się z [wózków][envoy-proxy]bocznych opartych na wysłanniku. Te inteligentne serwery proxy kontrolują cały ruch sieciowy w aplikacjach i obciążeniach z siatki.
 
-Płaszczyzna kontroli zarządza konfiguracją, zasadami i telemetrii za pośrednictwem następujących [składników][what-is-istio]:
+Płaszczyzna sterowania zarządza konfiguracją, zasadami i danymi telemetrycznymi za pomocą następujących [składników:][what-is-istio]
 
-- **Mikser** — wymusza kontrolę dostępu i zasady użytkowania. Zbiera dane telemetryczne z serwerów proxy, które są wypychane do [Prometheus][prometheus].
+- **Mikser** — wymusza zasady kontroli dostępu i użycia. Zbiera dane telemetryczne z serwerów proxy, które są wypychane do [Prometheus][prometheus].
 
-- **Pilotaż** — zapewnia odnajdywanie i zasady zarządzania ruchem i konfigurację dla serwerów proxy.
+- **Pilot** — zapewnia odnajdowanie usług i zarządzanie ruchem zasady/konfigurację dla serwerów proxy.
 
-- **Cytadeli** — zapewnia funkcje tożsamości i zabezpieczeń, które umożliwiają mTLS między usługami.
+- **Cytadela** — zapewnia funkcje tożsamości i zabezpieczeń, które umożliwiają mTLS między usługami.
 
-- I zapewnia konfigurację dla składników.
+- **Kambuz** - streszczenia i zapewnia konfigurację składników.
 
-Na poniższym diagramie architektury pokazano, jak działa różne składniki w płaszczyźnie danych i płaszczyzny kontroli.
+Na poniższym diagramie architektury pokazano, jak różne składniki w płaszczyźnie danych i płaszczyzny sterującej współdziałają.
 
 
-![Omówienie składników i architektury Istio.](media/servicemesh/istio/about-architecture.png)
+![Omówienie komponentów i architektury Istio.](media/servicemesh/istio/about-architecture.png)
 
 
 ## <a name="selection-criteria"></a>Kryteria wyboru
 
-Ważne jest zrozumienie i rozważenie następujących zagadnień podczas oceniania Istio obciążeń:
+Podczas oceny istio dla obciążeń należy zrozumieć i wziąć pod uwagę następujące obszary:
 
-- [Cele projektu](#design-goals)
-- [Możliwość](#capabilities)
-- [Scenariusze](#scenarios)
+- [Cele projektowe](#design-goals)
+- [Możliwości](#capabilities)
+- [Scenariuszy](#scenarios)
 
 
 ### <a name="design-goals"></a>Cele projektu
 
-Następujące cele projektowe [dotyczą][design-goals] projektu Istio:
+Projekt Istio [wyznacza][design-goals] następujące cele projektowe:
 
-- **Maksymalizowanie przejrzystości** — Zezwalanie na wdrażanie z minimalną ilością pracy w celu uzyskania wartości rzeczywistej z systemu.
+- **Maksymalizuj przejrzystość** — zezwalaj na przyjęcie z minimalną ilością pracy, aby uzyskać rzeczywistą wartość z systemu.
 
-- **Rozszerzalność** — musi być w stanie rozwijać i dostosowywać się do zmieniających się potrzeb.
+- **Rozszerzalność** - Musi być w stanie rosnąć i dostosowywać się do zmieniających się potrzeb.
 
-- **Przenośność** — łatwe uruchamianie w różnych środowiskach — w chmurze i lokalnie.
+- **Przenośność** — łatwo uruchamiaj w różnych środowiskach — w chmurze, lokalnie.
 
-- **Ujednolicenie zasad** — spójność w definicji zasad między różnymi zasobami.
+- **Jednolitość zasad** — spójność w definiowaniu zasad w różnych zasobach.
 
 
 ### <a name="capabilities"></a>Możliwości
 
-Istio zapewnia następujący zestaw możliwości:
+Istio udostępnia następujący zestaw możliwości:
 
-- **Siatka** — bramy (wiele klastrów), maszyny wirtualne (rozszerzenie siatki)
+- **Siatka** – bramy (wielotereterasowe), maszyny wirtualne (rozszerzenie siatki)
 
-- **Zarządzanie ruchem** — Routing, podział, przekroczenia limitu czasu, wyłączniki, ponowne próby, ruch przychodzący, ruch wychodzący
+- **Zarządzanie ruchem** – routing, podział, limity czasu, wyłączniki, ponownych prób, ruch przychodzący, wyjście
 
-- **Zasady** — kontrola dostępu, Limit szybkości, przydział, niestandardowe karty zasad
+- **Zasady** — kontrola dostępu, limit szybkości, przydział, niestandardowe karty zasad
 
-- **Zabezpieczenia** — uwierzytelnianie (JWT), autoryzacja, szyfrowanie (mTLS), zewnętrzny urząd certyfikacji (magazyn HashiCorp)
+- **Bezpieczeństwo** – uwierzytelnianie (jwt), autoryzacja, szyfrowanie (mTLS), zewnętrzny urząd certyfikacji (HashiCorp Vault)
 
-- **Zauważalność** — złote metryki, dublowanie, śledzenie, karty niestandardowe, Prometheus, grafana
+- **Observability** – złote metryki, lustro, śledzenie, niestandardowe adaptery, prometeusz, grafana
 
 ### <a name="scenarios"></a>Scenariusze
 
-Istio jest dobrze dostosowane do i sugerowane dla następujących scenariuszy:
+Istio jest dobrze nadaje się do i zasugerował dla następujących scenariuszy:
 
-- Wymagaj rozszerzalności i bogaty zestaw funkcji
+- Wymagaj rozszerzalności i bogatego zestawu funkcji
 
-- Rozszerzanie siatki w celu uwzględnienia obciążeń opartych na maszynach wirtualnych
+- Rozszerzenie siatki w celu uwzględnienia obciążeń opartych na maszynach wirtualnych
 
-- Siatka usługi z obsługą wiele klastrów
+- Siatka usługi wielu klastrów
 
 ## <a name="next-steps"></a>Następne kroki
 
-W poniższej dokumentacji opisano, jak można zainstalować usługę Istio w usłudze Azure Kubernetes Service (AKS):
+W poniższej dokumentacji opisano sposób instalowania programu Istio w usłudze Azure Kubernetes Service (AKS):
 
 > [!div class="nextstepaction"]
-> [Instalowanie Istio w usłudze Azure Kubernetes Service (AKS)][istio-install]
+> [Instalowanie programu Istio w usłudze Azure Kubernetes (AKS)][istio-install]
 
-Możesz również poznać koncepcje Istio i dodatkowe modele wdrażania:
+Można również dalej badać koncepcje Istio i dodatkowe modele wdrażania:
 
-- [Pojęcia Istio][what-is-istio]
+- [Koncepcje Istio][what-is-istio]
 - [Modele wdrażania Istio][deployment-models]
 
 <!-- LINKS - external -->

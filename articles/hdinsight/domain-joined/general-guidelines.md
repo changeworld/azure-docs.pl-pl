@@ -1,6 +1,6 @@
 ---
-title: Ogólne wytyczne dotyczące zabezpieczeń przedsiębiorstwa w usłudze Azure HDInsight
-description: Niektóre najlepsze rozwiązania, które ułatwiają pakiet Enterprise Security wdrażania i zarządzania.
+title: Ogólne wskazówki dotyczące zabezpieczeń przedsiębiorstwa w usłudze Azure HDInsight
+description: Niektóre najlepsze rozwiązania, które powinny ułatwić wdrażanie i zarządzanie pakietem zabezpieczeń przedsiębiorstwa.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -8,160 +8,160 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 02/13/2020
 ms.openlocfilehash: be6c1fdc5deb6d541656c198469822dae0a5f7c5
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77463208"
 ---
 # <a name="enterprise-security-general-information-and-guidelines-in-azure-hdinsight"></a>Ogólne informacje i wskazówki dotyczące zabezpieczeń przedsiębiorstwa w usłudze Azure HDInsight
 
-W przypadku wdrażania bezpiecznego klastra usługi HDInsight istnieją pewne najlepsze rozwiązania, które ułatwiają zarządzanie wdrażaniem i klastrem. Niektóre ogólne informacje i wskazówki zostały omówione tutaj.
+Podczas wdrażania bezpiecznego klastra HDInsight, istnieją pewne najlepsze rozwiązania, które powinny ułatwić wdrażanie i zarządzanie klastrem. Niektóre ogólne informacje i wytyczne są omówione tutaj.
 
 ## <a name="use-of-secure-cluster"></a>Korzystanie z bezpiecznego klastra
 
 ### <a name="recommended"></a>Zalecane
 
-* Klaster będzie używany przez wielu użytkowników jednocześnie.
+* Klaster będzie używany przez wielu użytkowników w tym samym czasie.
 * Użytkownicy mają różne poziomy dostępu do tych samych danych.
 
-### <a name="not-necessary"></a>Niepotrzebne
+### <a name="not-necessary"></a>Nie jest konieczne
 
-* Będzie można uruchamiać tylko zadania automatyczne (takie jak konto pojedynczego użytkownika), więc klaster standardowy jest wystarczająco dobry.
-* Importowanie danych można wykonać przy użyciu klastra standardowego i korzystać z tego samego konta magazynu w innym bezpiecznym klastrze, w którym użytkownicy mogą uruchamiać zadania analityczne.
+* Będziesz uruchamiać tylko zadania automatyczne (takie jak konto pojedynczego użytkownika), standardowy klaster jest wystarczająco dobry.
+* Importowanie danych można wykonać przy użyciu standardowego klastra i używać tego samego konta magazynu w innym bezpiecznym klastrze, w którym użytkownicy mogą uruchamiać zadania analizy.
 
-## <a name="use-of-local-account"></a>Użycie konta lokalnego
+## <a name="use-of-local-account"></a>Korzystanie z konta lokalnego
 
-* Jeśli używasz konta użytkownika udostępnionego lub konta lokalnego, będzie trudno zidentyfikować, kto użył konta, aby zmienić konfigurację lub usługę.
+* Jeśli korzystasz z udostępnionego konta użytkownika lub konta lokalnego, trudno będzie określić, kto użył konta do zmiany konfiguracji lub usługi.
 * Korzystanie z kont lokalnych jest problematyczne, gdy użytkownicy nie są już częścią organizacji.
 
 ## <a name="ranger"></a>Ranger
 
 ### <a name="policies"></a>Zasady
 
-* Domyślnie Ranger używa **odmowy** jako zasady.
+* Domyślnie Ranger używa **Deny** jako zasady.
 
-* Gdy dostęp do danych odbywa się za pomocą usługi, w której włączono autoryzację:
-  * Wtyczka autoryzacji Ranger jest wywoływana i ma kontekst żądania.
-  * Ranger stosuje zasady skonfigurowane dla usługi. Jeśli zasady Ranger zakończą się niepowodzeniem, sprawdzanie dostępu zostanie odroczone do systemu plików. Niektóre usługi, takie jak MapReduce, sprawdzają, czy plik/folder należy do tego samego użytkownika, który przesyła żądanie. Usługi, takie jak Hive, sprawdzają zgodność własności lub odpowiednie uprawnienia systemu plików (`rwx`).
+* Gdy dostęp do danych odbywa się za pośrednictwem usługi, w której autoryzacja jest włączona:
+  * Wtyczka autoryzacji Ranger jest wywoływana i biorąc pod uwagę kontekst żądania.
+  * Ranger stosuje zasady skonfigurowane dla usługi. Jeśli zasady Ranger nie powiodą się, sprawdzanie dostępu zostanie odroczone do systemu plików. Niektóre usługi, takie jak MapReduce tylko sprawdzić, czy plik / folder jest własnością tego samego użytkownika, który przesyła żądanie. Usługi takie jak Hive, sprawdź, czy są zgodne`rwx`z własnością lub odpowiednie uprawnienia systemu plików ( ).
 
-* W przypadku programu Hive oprócz uprawnień do tworzenia/aktualizowania/usuwania uprawnień użytkownik powinien mieć uprawnienia `rwx`do katalogu w magazynie i wszystkich podkatalogach.
+* Dla Hive, oprócz posiadania uprawnień do tworzenia / aktualizacji / usuwania `rwx`uprawnień, użytkownik powinien mieć uprawnienia do katalogu w magazynie i wszystkich podkatasi.
 
-* Zasady mogą być stosowane do grup (preferowany), a nie do poszczególnych użytkowników.
+* Zasady mogą być stosowane do grup (preferowanych) zamiast do osób.
 
-* Ranger autoryzowany oceni wszystkie zasady Ranger dla tej usługi dla każdego żądania. Ta ocena może mieć wpływ na czas zaakceptowania zadania lub zapytania.
+* Autoryzujący Ranger oceni wszystkie zasady Ranger dla tej usługi dla każdego żądania. Ta ocena może mieć wpływ na czas, aby zaakceptować zadanie lub kwerendę.
 
-### <a name="storage-access"></a>Dostęp do magazynu
+### <a name="storage-access"></a>Dostęp do pamięci masowej
 
-* Jeśli typ magazynu to WASB, nie ma żadnego tokenu OAuth.
-* Jeśli Ranger przeprowadził autoryzację, dostęp do magazynu odbywa się przy użyciu tożsamości zarządzanej.
-* Jeśli Ranger nie wykonywał żadnej autoryzacji, dostęp do magazynu odbywa się przy użyciu tokenu OAuth użytkownika.
+* Jeśli typem magazynu jest WASB, nie jest zaangażowany token OAuth.
+* Jeśli Ranger wykonał autoryzację, dostęp do magazynu odbywa się przy użyciu tożsamości zarządzanej.
+* Jeśli Ranger nie wykonać żadnej autoryzacji, a następnie dostęp do magazynu odbywa się przy użyciu tokenu OAuth użytkownika.
 
 ### <a name="hierarchical-name-space"></a>Hierarchiczna przestrzeń nazw
 
-Gdy hierarchiczna przestrzeń nazw nie jest włączona:
+Gdy hierarchiczne miejsce na nazwy nie jest włączone:
 
-* Brak dziedziczonych uprawnień.
-* Tylko uprawnienie systemu plików, które działa, to **dane magazynu xxxx** roli RBAC, które mają być przypisane do użytkownika bezpośrednio w Azure Portal.
+* Nie ma żadnych uprawnień dziedziczonych.
+* Tylko uprawnienie systemu plików, które działa, to rola **RBAC danych magazynu XXXX,** która ma być przypisana do użytkownika bezpośrednio w witrynie Azure portal.
 
-### <a name="default-hdfs-permissions"></a>Domyślne uprawnienia systemu HDFS
+### <a name="default-hdfs-permissions"></a>Domyślne uprawnienia HDFS
 
-* Domyślnie użytkownicy nie mają dostępu do folderu **/** w systemie plików HDFS (muszą one znajdować się w roli właściciela obiektu blob magazynu, aby uzyskać dostęp do programu).
-* Dla katalogu przemieszczania dla MapReduce i innych, katalog specyficzny dla użytkownika jest tworzony i udostępniany `sticky _wx` uprawnienia. Użytkownicy mogą tworzyć pliki i foldery poniżej, ale nie mogą przeglądać innych elementów.
+* Domyślnie użytkownicy nie mają dostępu **/** do folderu w usłudze HDFS (muszą znajdować się w roli właściciela obiektu blob magazynu, aby uzyskać dostęp do pomyślnego).
+* W przypadku katalogu przemieszczania dla mapreduce i innych, katalog `sticky _wx` specyficzny dla użytkownika jest tworzony i pod warunkiem uprawnień. Użytkownicy mogą tworzyć pliki i foldery pod spodem, ale nie mogą patrzeć na inne elementy.
 
-### <a name="url-auth"></a>Uwierzytelnianie adresów URL
+### <a name="url-auth"></a>Auth adresu URL
 
-Jeśli jest włączone uwierzytelnianie adresu URL:
+Jeśli auth url jest włączony:
 
-* Konfiguracja będzie zawierać informacje o tym, jakie prefiksy są objęte uwierzytelnianiem adresu URL (na przykład `adl://`).
-* Jeśli dostęp jest przeznaczony dla tego adresu URL, Ranger sprawdzi, czy użytkownik znajduje się na liście dozwolonych.
-* Ranger nie sprawdza żadnych szczegółowych zasad.
+* Config będzie zawierać, jakie prefiksy są objęte `adl://`w auth url (jak ).
+* Jeśli dostęp jest dla tego adresu URL, a następnie Ranger sprawdzi, czy użytkownik znajduje się na liście dozwolonych.
+* Ranger nie sprawdzi żadnej z zasad drobnoziarnistych.
 
 ## <a name="resource-groups"></a>Grupy zasobów
 
 Użyj nowej grupy zasobów dla każdego klastra, aby można było rozróżnić zasoby klastra.
 
-## <a name="nsgs-firewalls-and-internal-gateway"></a>Sieciowych grup zabezpieczeń, zapory i Brama wewnętrzna
+## <a name="nsgs-firewalls-and-internal-gateway"></a>Sieciowe sieciowe, zapory sieciowe i brama wewnętrzna
 
-* Użyj sieciowych grup zabezpieczeń (sieciowych grup zabezpieczeń) do blokowania sieci wirtualnych.
-* Używanie zapory do obsługi zasad dostępu wychodzącego.
-* Użyj wewnętrznej bramy, która nie jest otwarta w publicznym Internecie.
+* Użyj sieciowych grup zabezpieczeń (NSG), aby zablokować sieci wirtualne.
+* Użyj zapory do obsługi zasad dostępu wychodzącego.
+* Użyj bramy wewnętrznej, która nie jest otwarta dla publicznego internetu.
 
-## <a name="azure-active-directory"></a>Azure Active Directory
+## <a name="azure-active-directory"></a>Usługa Azure Active Directory
 
-[Azure Active Directory](../../active-directory/fundamentals/active-directory-whatis.md) (Azure AD) to usługa zarządzania tożsamościami i dostępem opartymi na chmurze firmy Microsoft.
+[Usługa Azure Active Directory](../../active-directory/fundamentals/active-directory-whatis.md) (Azure AD) to chmurowa usługa zarządzania tożsamościami i dostępami firmy Microsoft.
 
 ### <a name="policies"></a>Zasady
 
-* Wyłącz zasady dostępu warunkowego przy użyciu zasad opartych na adresie IP. Wymaga to włączenia punktów końcowych usługi na sieci wirtualnych, w którym są wdrażane klastry. Jeśli używasz zewnętrznej usługi na potrzeby uwierzytelniania wieloskładnikowego (innego niż AAD), zasady oparte na adresie IP nie będą działały
+* Wyłącz zasady dostępu warunkowego przy użyciu zasad opartych na adresie IP. Wymaga to włączenia punktów końcowych usługi na sieci wirtualnych, w których są wdrażane klastry. Jeśli korzystasz z usługi zewnętrznej dla usługi MFA (innej niż usługa AAD), zasady oparte na adresach IP nie będą działać
 
-* zasady `AllowCloudPasswordValidation` są wymagane dla użytkowników federacyjnych. Ponieważ Usługa HDInsight używa nazwy użytkownika/hasła bezpośrednio do uzyskiwania tokenów z usługi Azure AD, te zasady należy włączyć dla wszystkich użytkowników federacyjnych.
+* `AllowCloudPasswordValidation`jest wymagana dla użytkowników federowanych. Ponieważ usługa HDInsight używa nazwy użytkownika/ hasła bezpośrednio do uzyskania tokenów z usługi Azure AD, ta zasada musi być włączona dla wszystkich użytkowników federowanych.
 
-* Włącz punkty końcowe usługi, jeśli wymagane jest obejście dostępu warunkowego przy użyciu zaufanych adresów IP.
+* Włącz punkty końcowe usługi, jeśli wymagane jest obejście dostępu warunkowego przy użyciu zaufanych usług IP.
 
 ### <a name="groups"></a>Grupy
 
-* Należy zawsze wdrażać klastry z grupą.
-* Zarządzanie członkostwem w grupach przy użyciu usługi Azure AD (łatwiejsze niż próba zarządzania indywidualnymi usługami w klastrze).
+* Zawsze wdrażaj klastry z grupą.
+* Użyj usługi Azure AD do zarządzania członkostwem w grupach (łatwiejsze niż próby zarządzania poszczególnych usług w klastrze).
 
 ### <a name="user-accounts"></a>Konta użytkowników
 
-* Użyj unikatowego konta użytkownika dla każdego scenariusza. Na przykład użyj konta do zaimportowania, użyj innego dla zapytań lub innych zadań przetwarzania.
-* Używaj opartych na grupach zasad Ranger zamiast poszczególnych zasad.
-* Zaplanuj, jak zarządzać użytkownikami, którzy nie mają już dostępu do klastrów.
+* Użyj unikatowego konta użytkownika dla każdego scenariusza. Na przykład użyj konta do importu, użyj innego do kwerendy lub innych zadań przetwarzania.
+* Użyj zasad Ranger opartych na grupach zamiast poszczególnych zasad.
+* Mieć plan, jak zarządzać użytkownikami, którzy nie powinni mieć już dostępu do klastrów.
 
 ## <a name="azure-active-directory-domain-services"></a>Azure Active Directory Domain Services
 
-[Azure Active Directory Domain Services](../../active-directory-domain-services/overview.md) (Azure AD DS) oferuje zarządzane usługi domenowe, takie jak przyłączanie do domeny, zasady grupy, protokół LDAP (Lightweight Directory Access Protocol) oraz uwierzytelnianie Kerberos/NTLM, które jest w pełni zgodne z systemem Windows Server Active Directory.
+[Usługi domenowe Usługi Active Directory (Azure](../../active-directory-domain-services/overview.md) AD DS) zapewniają usługi domeny zarządzanej, takie jak dołączanie do domeny, zasady grupy, protokół LDAP (Lightweight Directory Access Protocol) i uwierzytelnianie Kerberos / NTLM, które jest w pełni zgodne z usługą Active Directory systemu Windows Server.
 
-Aby można było przyłączyć się do domeny, wymagane jest AD DS platformy Azure.
-Usługa HDInsight nie może zależeć od lokalnych kontrolerów domeny ani niestandardowych kontrolerów domeny, ponieważ wprowadza zbyt wiele punktów błędów, udostępniania poświadczeń, uprawnień DNS i tak dalej. Aby uzyskać więcej informacji, zobacz temat [często zadawane pytania dotyczące usługi Azure AD DS](../../active-directory-domain-services/faqs.md).
+Usługi Azure AD DS jest wymagane dla bezpiecznych klastrów do przyłączenia się do domeny.
+Usługa HDInsight nie może zależeć od lokalnych kontrolerów domeny ani niestandardowych kontrolerów domeny, ponieważ wprowadza zbyt wiele punktów błędów, udostępniania poświadczeń, uprawnień DNS itd. Aby uzyskać więcej informacji, zobacz Często zadawane pytania [dotyczące usług Azure AD DS](../../active-directory-domain-services/faqs.md).
 
-### <a name="azure-ad-ds-instance"></a>Wystąpienie usługi Azure AD DS
+### <a name="azure-ad-ds-instance"></a>Wystąpienie usług Ad DS usługi Azure
 
-* Utwórz wystąpienie z `.onmicrosoft.com domain`. W ten sposób nie będzie można obsługiwać domeny wielu serwerów DNS.
-* Utwórz certyfikat z podpisem własnym dla usług LDAPs i przekaż go do usługi Azure AD DS.
-* Używanie równorzędnej sieci wirtualnej do wdrażania klastrów (w przypadku wielu zespołów, które wdrażają klastry usługi HDInsight ESP, będzie to pomocne). Dzięki temu nie trzeba otwierać portów (sieciowych grup zabezpieczeń) w sieci wirtualnej z kontrolerem domeny.
-* Odpowiednio skonfiguruj system DNS dla sieci wirtualnej (nazwa domeny usługi Azure AD DS powinna zostać rozpoznana bez żadnych wpisów w pliku hosts).
-* W przypadku ograniczenia ruchu wychodzącego upewnij się, że zainstalowano w usłudze [HDInsight obsługę zapory](../hdinsight-restrict-outbound-traffic.md)
+* Utwórz wystąpienie `.onmicrosoft.com domain`za pomocą pliku . W ten sposób nie będzie wielu serwerów DNS obsługujących domenę.
+* Utwórz certyfikat z podpisem własnym dla usługi LDAPS i przekaż go do usługi Azure AD DS.
+* Użyj sieci wirtualnej równorzędnej do wdrażania klastrów (jeśli masz wiele zespołów wdrażających klastry USŁUGI HDInsight ESP, będzie to przydatne). Dzięki temu nie trzeba otwierać portów (NSG) w sieci wirtualnej za pomocą kontrolera domeny.
+* Poprawnie skonfiguruj system DNS dla sieci wirtualnej (nazwa domeny usług Azure AD DS powinna zostać rozwiązana bez żadnych wpisów pliku hosts).
+* Jeśli ograniczasz ruch wychodzący, upewnij się, że przeczytałeś [przez obsługę zapory w umiaśnieniu HDInsight](../hdinsight-restrict-outbound-traffic.md)
 
-### <a name="properties-synced-from-azure-ad-to-azure-ad-ds"></a>Właściwości zsynchronizowane z usługi Azure AD do usługi Azure AD DS
+### <a name="properties-synced-from-azure-ad-to-azure-ad-ds"></a>Właściwości zsynchronizowane z usługi Azure AD do usług Azure AD DS
 
-* Usługa Azure AD Connect synchronizuje się z lokalnego do usługi Azure AD.
-* Usługa Azure AD DS synchronizuje się z usługą Azure AD.
+* Synchronizacja połączenia usługi Azure AD z lokalnego do usługi Azure AD.
+* Synchronizacja usług Ad DS platformy Azure z usługi Azure AD.
 
-Usługa Azure AD DS synchronizuje obiekty z usługi Azure AD okresowo. W bloku Azure AD DS w Azure Portal zostanie wyświetlony stan synchronizacji. Podczas każdego etapu synchronizacji unikatowe właściwości mogą ulec zmianie i zmienić ich nazwę. Zwróć uwagę na mapowanie właściwości z usługi Azure AD do AD DS platformy Azure.
+Okresowo usługi Azure AD DS synchronizuje obiekty z usługi Azure AD. Bloku usług AD DS w witrynie Azure Portal wyświetla stan synchronizacji. Na każdym etapie synchronizacji unikatowe właściwości mogą wpaść w konflikt i zmienić jego nazwę. Zwróć uwagę na mapowanie właściwości z usługi Azure AD na usługi Azure AD DS.
 
-Aby uzyskać więcej informacji, zobacz [populacja userPrincipalName usługi Azure AD](../../active-directory/hybrid/plan-connect-userprincipalname.md)i [sposób działania synchronizacji usługi Azure AD DS](../../active-directory-domain-services/synchronization.md).
+Aby uzyskać więcej informacji, zobacz [Populacja użytkownika usługi Azure ADPrincipalName](../../active-directory/hybrid/plan-connect-userprincipalname.md)i jak działa [synchronizacja usług Azure AD DS](../../active-directory-domain-services/synchronization.md).
 
-### <a name="password-hash-sync"></a>Synchronizacja skrótów haseł
+### <a name="password-hash-sync"></a>Synchronizacja skrótu hasła
 
-* Hasła są synchronizowane inaczej niż inne typy obiektów. Tylko nieodwracalne skróty haseł są synchronizowane w usłudze Azure AD i na platformie Azure AD DS
-* Lokalna usługa Azure AD musi być włączona za pomocą programu AD Connect
-* Usługa Azure AD do usługi Azure AD DS Sync jest automatyczna (opóźnienia są poniżej 20 minut).
-* Skróty haseł są synchronizowane tylko w przypadku zmiany hasła. Po włączeniu synchronizacji skrótów haseł wszystkie istniejące hasła nie są synchronizowane automatycznie, ponieważ są one zapisywane nieodwracalnie. Gdy zmienisz hasło, skróty haseł są synchronizowane.
+* Hasła są synchronizowane inaczej niż inne typy obiektów. Tylko nie odwracalne skróty haseł są synchronizowane w usługach Azure AD i usługach Azure AD DS
+* Lokalnie do usługi Azure AD musi być włączona za pośrednictwem usługi AD Connect
+* Synchronizacja usług Ad do usługi Azure AD DS jest automatyczna (opóźnienia są poniżej 20 minut).
+* Skróty haseł są synchronizowane tylko wtedy, gdy jest zmienione hasło. Po włączeniu synchronizacji skrótów haseł wszystkie istniejące hasła nie są synchronizowane automatycznie, ponieważ są przechowywane nieodwracalnie. Po zmianie hasła skróty haseł są synchronizowane.
 
 ### <a name="computer-objects-location"></a>Lokalizacja obiektów komputera
 
-Każdy klaster jest skojarzony z pojedynczą jednostką organizacyjną. Wewnętrzny użytkownik jest zainicjowany w jednostce organizacyjnej. Wszystkie węzły są przyłączone do tej samej jednostki organizacyjnej.
+Każdy klaster jest skojarzony z pojedynczą jednostką organizacyjną. Użytkownik wewnętrzny jest aprowizowana w o.o. Wszystkie węzły są domeną przyłączone do tej samej grupy organizacyjnej.
 
-### <a name="active-directory-administrative-tools"></a>Active Directory narzędzia administracyjne
+### <a name="active-directory-administrative-tools"></a>Narzędzia administracyjne usługi Active Directory
 
-Aby uzyskać informacje na temat sposobu instalowania narzędzi administracyjnych Active Directory na maszynie wirtualnej z systemem Windows Server, zobacz [Instalowanie narzędzi do zarządzania](../../active-directory-domain-services/tutorial-create-management-vm.md).
+Aby uzyskać instrukcje dotyczące instalowania narzędzi administracyjnych usługi Active Directory na maszynie wirtualnej systemu Windows Server, zobacz [Instalowanie narzędzi do zarządzania](../../active-directory-domain-services/tutorial-create-management-vm.md).
 
 ## <a name="troubleshooting"></a>Rozwiązywanie problemów
 
-### <a name="cluster-creation-fails-repeatedly"></a>Tworzenie klastra kończy się niepowodzeniem
+### <a name="cluster-creation-fails-repeatedly"></a>Tworzenie klastra kończy się niepowodzeniem wielokrotnie
 
 Najczęstsze przyczyny:
 
-* Konfiguracja DNS jest nieprawidłowa, przyłączanie do domeny węzłów klastra kończy się niepowodzeniem.
-* Sieciowych grup zabezpieczeń są zbyt restrykcyjne, uniemożliwiając przyłączanie do domeny.
+* Konfiguracja DNS nie jest poprawna, sprzężenie domeny węzłów klastra nie powiedzie się.
+* NsGs są zbyt restrykcyjne, uniemożliwiając sprzężenie do domeny.
 * Tożsamość zarządzana nie ma wystarczających uprawnień.
-* Nazwa klastra nie jest unikatowa w pierwszych sześciu znakach (z innym klastrem na żywo lub z usuniętym klastrem).
+* Nazwa klastra nie jest unikatowa dla pierwszych sześciu znaków (w innym klastrze na żywo lub z usuniętym klastrem).
 
 ## <a name="next-steps"></a>Następne kroki
 
-* [pakiet Enterprise Security konfiguracji z Azure Active Directory Domain Services w usłudze HDInsight](./apache-domain-joined-configure-using-azure-adds.md)
+* [Konfiguracje pakietów zabezpieczeń przedsiębiorstwa z usługami domenowymi Active Directory platformy Azure w usłudze HDInsight](./apache-domain-joined-configure-using-azure-adds.md)
 
-* [Synchronizuj Azure Active Directory użytkowników z klastrem usługi HDInsight](../hdinsight-sync-aad-users-to-cluster.md).
+* [Synchronizowanie użytkowników usługi Azure Active Directory z klastrem USŁUGI HDInsight](../hdinsight-sync-aad-users-to-cluster.md).

@@ -1,6 +1,6 @@
 ---
-title: 'ExpressRoute: filtry tras — Komunikacja równorzędna firmy Microsoft: Azure PowerShell'
-description: W tym artykule opisano sposób konfigurowania filtrów tras dla Peering firmy Microsoft przy użyciu programu PowerShell
+title: 'Usługa ExpressRoute: filtry marszruty — komunikacja równorzędna firmy Microsoft:program Azure PowerShell'
+description: W tym artykule opisano sposób konfigurowania filtrów tras dla komunikacji równorzędnej firmy Microsoft przy użyciu programu PowerShell
 services: expressroute
 author: ganesr
 ms.service: expressroute
@@ -9,68 +9,68 @@ ms.date: 02/25/2019
 ms.author: ganesr
 ms.custom: seodec18
 ms.openlocfilehash: cade33e77eb0d3ddd818a6ce3dbd7c6cf72811d4
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74037402"
 ---
-# <a name="configure-route-filters-for-microsoft-peering-powershell"></a>Konfigurowanie filtrów tras dla komunikacji równorzędnej firmy Microsoft: PowerShell
+# <a name="configure-route-filters-for-microsoft-peering-powershell"></a>Konfigurowanie filtrów tras dla komunikacji równorzędnej firmy Microsoft: Program PowerShell
 > [!div class="op_single_selector"]
 > * [Azure Portal](how-to-routefilter-portal.md)
 > * [Azure PowerShell](how-to-routefilter-powershell.md)
 > * [Interfejs wiersza polecenia platformy Azure](how-to-routefilter-cli.md)
 > 
 
-Filtry tras to sposób na korzystanie z podzestawu obsługiwanych usług przy użyciu komunikacji równorzędnej firmy Microsoft. Kroki, które w tym artykule ułatwiają konfigurowanie i zarządzanie nimi filtrów tras dla obwodów usługi ExpressRoute.
+Filtry tras to sposób na korzystanie z podzestawu obsługiwanych usług przy użyciu komunikacji równorzędnej firmy Microsoft. Kroki opisane w tym artykule ułatwiają konfigurowanie filtrów tras dla obwodów usługi ExpressRoute i zarządzanie nimi.
 
-Usługi Office 365, takie jak Exchange Online, SharePoint Online, Skype dla firm i usługi publiczne platformy Azure, takie jak Storage i SQL DB, są dostępne za pomocą komunikacji równorzędnej firmy Microsoft. Usługi publiczne platformy Azure można wybrać na podstawie poszczególnych regionów i nie może być zdefiniowana dla usługi publicznej.
+Usługi Office 365, takie jak Exchange Online, SharePoint Online i Skype dla firm oraz usługi publiczne platformy Azure, takie jak magazyn i baza danych SQL, są dostępne za pośrednictwem komunikacji równorzędnej firmy Microsoft. Usługi publiczne platformy Azure można wybierać na podstawie regionu i nie można ich zdefiniować dla usługi publicznej.
 
-Podczas komunikacji równorzędnej firmy Microsoft jest skonfigurowany na obwód usługi ExpressRoute, a następnie filtr tras jest dołączona, wszystkie prefiksy, które są wybrane dla tych usług są anonsowane za pośrednictwem sesji protokołu BGP, które są ustanowione. Wartość atrybutu Community protokołu BGP jest dołączana do każdego prefiksu w celu zidentyfikowania usługi oferowanej za pośrednictwem prefiksu. Aby uzyskać listę wartości społeczności BGP i usług mapowania ich na zobacz [społeczności BGP](expressroute-routing.md#bgp).
+Gdy komunikacja równorzędna firmy Microsoft jest skonfigurowana w obwodzie usługi ExpressRoute i jest dołączony filtr trasy, wszystkie prefiksy wybrane dla tych usług są anonsowane za pośrednictwem sesji BGP, które są ustanawiane. Wartość atrybutu Community protokołu BGP jest dołączana do każdego prefiksu w celu zidentyfikowania usługi oferowanej za pośrednictwem prefiksu. Aby uzyskać listę wartości społeczności BGP i usług, które mapują, zobacz [społeczności BGP](expressroute-routing.md#bgp).
 
-Jeśli potrzebujesz łączności z wszystkich usług, dużej liczby prefiksy są anonsowane za pośrednictwem protokołu BGP. To znacznie zwiększa rozmiar tabel tras, obsługiwane przez routery w sieci. Jeśli planujesz korzystanie z podzestawu usługi oferowane za pośrednictwem komunikacji równorzędnej firmy Microsoft, można zmniejszyć rozmiar tabelach tras na dwa sposoby. Możesz:
+Jeśli wymagana jest łączność ze wszystkimi usługami, duża liczba prefiksów są anonsowane za pośrednictwem protokołu BGP. Znacznie zwiększa to rozmiar tabel tras obsługiwanych przez routery w sieci. Jeśli planujesz korzystać tylko z podzbioru usług oferowanych za pośrednictwem komunikacji równorzędnej firmy Microsoft, można zmniejszyć rozmiar tabel tras na dwa sposoby. Możesz:
 
-- Odfiltruj prefiksy niepożądane, stosując filtry tras na społeczności BGP. To jest standardową praktyką sieci i jest często używany w wielu sieciach.
+- Odfiltruj niechciane prefiksy, stosując filtry tras w społecznościach BGP. Jest to standardowa praktyka sieciowa i jest powszechnie używana w wielu sieciach.
 
-- Zdefiniuj filtry tras i zastosować je na obwód usługi ExpressRoute. Filtr trasy jest nowy zasób, który pozwala wybrać listę usług, które planujesz korzystać za pośrednictwem komunikacji równorzędnej firmy Microsoft. Usługa ExpressRoute routery przesyłają tylko listę prefiksów, które należą do usług określonych w filtrze trasy.
+- Zdefiniuj filtry tras i zastosuj je do obwodu usługi ExpressRoute. Filtr marszruty to nowy zasób, który umożliwia wybranie listy usług, które mają być używane za pośrednictwem komunikacji równorzędnej firmy Microsoft. Routery usługi ExpressRoute wysyłają tylko listę prefiksów, które należą do usług określonych w filtrze trasy.
 
-### <a name="about"></a>Informacje o filtrach trasy
+### <a name="about-route-filters"></a><a name="about"></a>Informacje o filtrach tras
 
-W przypadku skonfigurowania komunikacji równorzędnej firmy Microsoft w obwodzie usługi ExpressRoute routery brzegowe sieci firmy Microsoft tworzą parę sesji BGP z routerami brzegowymi (usługodawcą). Żadne trasy nie są ogłaszane w sieci. Aby włączyć ogłaszanie tras w sieci, należy skojarzyć filtr tras.
+Gdy komunikacja równorzędna firmy Microsoft jest skonfigurowana w obwodzie usługi ExpressRoute, routery brzegowe sieci firmy Microsoft ustanawiają parę sesji BGP z routerami brzegowymi (twoimi lub dostawcą łączności). Żadne trasy nie są ogłaszane w sieci. Aby włączyć ogłaszanie tras w sieci, należy skojarzyć filtr tras.
 
-Filtr tras umożliwia zidentyfikowanie usług, które mają być używane za pośrednictwem komunikacji równorzędnej firmy Microsoft w ramach obwodu usługi ExpressRoute. Zasadniczo jest to lista dozwolonych wszystkich wartości społeczności protokołu BGP. Gdy zasób filtru tras jest zdefiniowany i dołączony do obwodu usługi ExpressRoute, wszystkie prefiksy zamapowane do wartości atrybutu Community protokołu BGP są ogłaszane w sieci.
+Filtr tras umożliwia zidentyfikowanie usług, które mają być używane za pośrednictwem komunikacji równorzędnej firmy Microsoft w ramach obwodu usługi ExpressRoute. Jest to zasadniczo lista dozwolonych wszystkich wartości społeczności BGP. Gdy zasób filtru tras jest zdefiniowany i dołączony do obwodu usługi ExpressRoute, wszystkie prefiksy zamapowane do wartości atrybutu Community protokołu BGP są ogłaszane w sieci.
 
-Aby móc Dołącz filtry tras z usługami Office 365 na nich musi mieć zezwolenie na korzystanie z usług Office 365 za pośrednictwem usługi ExpressRoute. Jeśli nie masz uprawnień do korzystania z usług Office 365 za pośrednictwem usługi ExpressRoute, Dołącz filtry tras operacja kończy się niepowodzeniem. Aby uzyskać więcej informacji na temat procesu autoryzacji, zobacz [usługi Azure ExpressRoute dla usługi Office 365](https://support.office.com/article/Azure-ExpressRoute-for-Office-365-6d2534a2-c19c-4a99-be5e-33a0cee5d3bd).
+Aby móc dołączać filtry tras z usługami Office 365, musisz mieć autoryzację korzystania z usług Office 365 za pośrednictwem usługi ExpressRoute. Jeśli nie masz autoryzacji do korzystania z usług Office 365 za pośrednictwem usługi ExpressRoute, operacja dołączania filtrów marszruty nie powiedzie się. Aby uzyskać więcej informacji na temat procesu autoryzacji, zobacz [Azure ExpressRoute for Office 365](https://support.office.com/article/Azure-ExpressRoute-for-Office-365-6d2534a2-c19c-4a99-be5e-33a0cee5d3bd).
 
 > [!IMPORTANT]
-> Obwodów usługi ExpressRoute, które zostały skonfigurowane przed 1 sierpnia 2017 r. komunikacji równorzędnej firmy Microsoft będzie miał wszystkie prefiksy usługi anonsowanego za pośrednictwem komunikacji równorzędnej firmy Microsoft, nawet jeśli nie zdefiniowano filtry tras. Komunikacja równorzędna firmy Microsoft obwodów usługi ExpressRoute, skonfigurowanych po 1 sierpnia 2017 r. nie będzie miał wszelkie prefiksy anonsowane do czasu podłączenia filtru tras do obwodu.
+> Komunikacja równorzędna obwodów usługi ExpressRoute skonfigurowana przed 1 sierpnia 2017 r. będzie miała wszystkie prefiksy usługi anonsowane za pośrednictwem komunikacji równorzędnej firmy Microsoft, nawet jeśli filtry tras nie są zdefiniowane. Komunikacja równorzędna obwodów usługi ExpressRoute skonfigurowana 1 sierpnia 2017 r. lub później nie będzie miała żadnych prefiksów anonsowanych, dopóki filtr trasy nie zostanie dołączony do obwodu.
 > 
 > 
 
-### <a name="workflow"></a>Przepływ pracy
+### <a name="workflow"></a><a name="workflow"></a>Przepływ pracy
 
-Aby móc nawiązywać połączeń z usługami za pośrednictwem komunikacji równorzędnej firmy Microsoft, należy wykonać poniższe czynności konfiguracyjne:
+Aby można było pomyślnie połączyć się z usługami za pośrednictwem komunikacji równorzędnej firmy Microsoft, należy wykonać następujące kroki konfiguracji:
 
-- Musisz mieć aktywny obwód usługi ExpressRoute, zawierającej komunikacji równorzędnej elastycznie firmy Microsoft. Można użyć zgodnie z poniższymi instrukcjami, aby wykonać te zadania:
-  - [Utwórz obwód usługi ExpressRoute](expressroute-howto-circuit-arm.md) i który powinien zostać włączony przez dostawcę połączenia przed kontynuowaniem. Obwód usługi ExpressRoute musi być w stanie zainicjowany i włączony.
-  - [Tworzenie komunikacji równorzędnej firmy Microsoft](expressroute-circuit-peerings.md) Jeśli zarządzasz bezpośrednio za pomocą sesji protokołu BGP. Lub Poproś dostawcę połączenia aprowizacji komunikację równorzędną Microsoft dla obwodu.
+- Musisz mieć aktywny obwód usługi ExpressRoute, który ma aprowizowaną komunikację równorzędną firmy Microsoft. Aby wykonać następujące zadania, można użyć następujących instrukcji:
+  - [Utwórz obwód usługi ExpressRoute](expressroute-howto-circuit-arm.md) i włącz obwód przez dostawcę łączności przed kontynuowaniem. Obwód usługi ExpressRoute musi być w stanie aprowidywizacji i włączone.
+  - [Utwórz komunikację równorzędną firmy Microsoft,](expressroute-circuit-peerings.md) jeśli bezpośrednio zarządzasz sesją BGP. Możesz też udostępnić dostawcę łączności Microsoft w komunikacji równorzędnej dla obwodu.
 
--  Należy utworzyć i skonfigurować filtr tras.
-    - Zidentyfikuj usługi Ci korzystać za pośrednictwem komunikacji równorzędnej firmy Microsoft
-    - Identyfikowanie listę wartości społeczności BGP skojarzone z usługami
-    - Utwórz regułę zezwalającą na listę prefiksów pasujących wartości społeczności BGP
+-  Należy utworzyć i skonfigurować filtr trasy.
+    - Identyfikowanie usług, z których możesz korzystać za pośrednictwem komunikacji równorzędnej firmy Microsoft
+    - Identyfikowanie listy wartości społeczności BGP skojarzonych z usługami
+    - Tworzenie reguły zezwalającej na listę prefiksów pasującą do wartości społeczności BGP
 
--  Należy dołączyć filtru tras do obwodu usługi ExpressRoute.
+-  Filtr trasy należy dołączyć do obwodu usługi ExpressRoute.
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
-Przed rozpoczęciem konfiguracji upewnij się, że spełniają następujące kryteria:
+Przed rozpoczęciem konfiguracji upewnij się, że spełniasz następujące kryteria:
 
- - Przegląd [wymagania wstępne](expressroute-prerequisites.md) i [przepływy pracy](expressroute-workflows.md) przed rozpoczęciem konfiguracji.
+ - Przejrzyj [wymagania wstępne](expressroute-prerequisites.md) i [przepływy pracy](expressroute-workflows.md) przed rozpoczęciem konfiguracji.
 
- - Musisz mieć aktywny obwód usługi ExpressRoute. Zanim przejdziesz dalej, postępuj zgodnie z instrukcjami, aby [utworzyć obwód usługi ExpressRoute](expressroute-howto-circuit-arm.md), który powinien zostać włączony przez dostawcę połączenia. Obwód usługi ExpressRoute musi być w stanie zainicjowany i włączony.
+ - Musisz mieć aktywny obwód usługi ExpressRoute. Zanim przejdziesz dalej, postępuj zgodnie z instrukcjami, aby [utworzyć obwód usługi ExpressRoute](expressroute-howto-circuit-arm.md), który powinien zostać włączony przez dostawcę połączenia. Obwód usługi ExpressRoute musi być w stanie aprowidywizacji i włączone.
 
- - Konieczne jest posiadanie aktywnej komunikacji równorzędnej firmy Microsoft. Postępuj zgodnie z instrukcjami w [tworzenie i modyfikowanie konfiguracji komunikacji równorzędnej](expressroute-circuit-peerings.md) artykułu.
+ - Musisz mieć aktywną komunikację równorzędną firmy Microsoft. Postępuj zgodnie z instrukcjami w [artykule Tworzenie i modyfikowanie konfiguracji komunikacji równorzędnej.](expressroute-circuit-peerings.md)
 
 
 ### <a name="working-with-azure-powershell"></a>Praca z programem Azure PowerShell
@@ -83,7 +83,7 @@ Przed rozpoczęciem konfiguracji upewnij się, że spełniają następujące kry
 
 Przed rozpoczęciem tej konfiguracji musisz zalogować się na koncie platformy Azure. Polecenie cmdlet wyświetla monit o podanie poświadczeń logowania dla konta platformy Azure. Po zalogowaniu pobiera ono ustawienia konta, aby były dostępne dla programu Azure PowerShell.
 
-Otwórz konsolę programu PowerShell z podwyższonym poziomem uprawnień i połącz się ze swoim kontem. Skorzystaj z następującego przykładu w celu łatwiejszego nawiązania połączenia. Jeśli używasz usługi Azure Cloud Shell, nie trzeba uruchomić to polecenie cmdlet, jak użytkownik zostanie automatycznie zarejestrowany w.
+Otwórz konsolę programu PowerShell z podwyższonym poziomem uprawnień i połącz się ze swoim kontem. Użyj poniższego przykładu, aby pomóc ci się połączyć. Jeśli używasz usługi Azure Cloud Shell, nie musisz uruchamiać tego polecenia cmdlet, ponieważ zostaniesz automatycznie zalogowany.
 
 ```azurepowershell
 Connect-AzAccount
@@ -101,40 +101,40 @@ Wskaż subskrypcję, której chcesz użyć.
 Select-AzSubscription -SubscriptionName "Replace_with_your_subscription_name"
 ```
 
-## <a name="prefixes"></a>Krok 1: Pobierz listę prefiksów i wartości społeczności BGP
+## <a name="step-1-get-a-list-of-prefixes-and-bgp-community-values"></a><a name="prefixes"></a>Krok 1: Pobierz listę prefiksów i wartości społeczności BGP
 
-### <a name="1-get-a-list-of-bgp-community-values"></a>1. Pobierz listę wartości społeczności BGP
+### <a name="1-get-a-list-of-bgp-community-values"></a>1. Uzyskaj listę wartości społeczności BGP
 
-Aby uzyskać listę wartości społeczności BGP skojarzone z usługami za pośrednictwem komunikacji równorzędnej firmy Microsoft i listę prefiksów skojarzonych z nimi, należy użyć następującego polecenia cmdlet:
+Użyj następującego polecenia cmdlet, aby uzyskać listę wartości społeczności BGP skojarzonych z usługami dostępnymi za pośrednictwem komunikacji równorzędnej firmy Microsoft oraz listę skojarzonych z nimi prefiksów:
 
 ```azurepowershell-interactive
 Get-AzBgpServiceCommunity
 ```
-### <a name="2-make-a-list-of-the-values-that-you-want-to-use"></a>2. Utwórz listę wartości, których chcesz użyć
+### <a name="2-make-a-list-of-the-values-that-you-want-to-use"></a>2. Zrób listę wartości, których chcesz użyć
 
-Tworzenie listy wartości społeczności BGP, którego chcesz użyć do filtru trasy.
+Poskonuj listę wartości społeczności BGP, których chcesz użyć w filtrze trasy.
 
-## <a name="filter"></a>Krok 2: Tworzenie filtru tras i regułę filtru
+## <a name="step-2-create-a-route-filter-and-a-filter-rule"></a><a name="filter"></a>Krok 2: Tworzenie filtru trasy i reguły filtru
 
-Filtr trasy może mieć tylko jedną regułę, a reguła musi być typu "Zezwalaj". Ta zasada może mieć listę wartości społeczności BGP skojarzonych z nim.
+Filtr trasy może mieć tylko jedną regułę, a reguła musi mieć typ "Zezwalaj". Ta reguła może mieć listę wartości społeczności BGP skojarzonych z nią.
 
-### <a name="1-create-a-route-filter"></a>1. Tworzenie filtru tras
+### <a name="1-create-a-route-filter"></a>1. Tworzenie filtru trasy
 
-Najpierw utwórz filtr tras. Polecenie "New-AzRouteFilter" tworzy tylko zasób filtru tras. Po utworzeniu zasobu, należy utworzyć regułę i dołącz je do obiektu filtru trasy. Uruchom następujące polecenie, aby utworzyć zasób filtru trasy:
+Najpierw utwórz filtr trasy. Polecenie "New-AzRouteFilter" tworzy tylko zasób filtru trasy. Po utworzeniu zasobu należy utworzyć regułę i dołączyć ją do obiektu filtru trasy. Uruchom następujące polecenie, aby utworzyć zasób filtru trasy:
 
 ```azurepowershell-interactive
 New-AzRouteFilter -Name "MyRouteFilter" -ResourceGroupName "MyResourceGroup" -Location "West US"
 ```
 
-### <a name="2-create-a-filter-rule"></a>2. Utwórz regułę filtru
+### <a name="2-create-a-filter-rule"></a>2. Tworzenie reguły filtrowania
 
-Można określić zbiór społeczności BGP jako listę rozdzielaną przecinkami, jak pokazano w przykładzie. Uruchom następujące polecenie, aby utworzyć nową regułę:
+Można określić zestaw społeczności BGP jako listę oddzieloną przecinkami, jak pokazano w przykładzie. Uruchom następujące polecenie, aby utworzyć nową regułę:
  
 ```azurepowershell-interactive
 $rule = New-AzRouteFilterRuleConfig -Name "Allow-EXO-D365" -Access Allow -RouteFilterRuleType Community -CommunityList 12076:5010,12076:5040
 ```
 
-### <a name="3-add-the-rule-to-the-route-filter"></a>3. Dodaj regułę do filtru tras
+### <a name="3-add-the-rule-to-the-route-filter"></a>3. Dodaj regułę do filtru trasy
 
 Uruchom następujące polecenie, aby dodać regułę filtru do filtru trasy:
  
@@ -144,9 +144,9 @@ $routefilter.Rules.Add($rule)
 Set-AzRouteFilter -RouteFilter $routefilter
 ```
 
-## <a name="attach"></a>Krok 3: Dołącz filtru tras do obwodu usługi ExpressRoute
+## <a name="step-3-attach-the-route-filter-to-an-expressroute-circuit"></a><a name="attach"></a>Krok 3: Podłącz filtr trasy do obwodu usługi ExpressRoute
 
-Uruchom następujące polecenie, aby dołączyć filtru tras do obwodu usługi ExpressRoute, przy założeniu, że tylko komunikacji równorzędnej firmy Microsoft:
+Uruchom następujące polecenie, aby dołączyć filtr trasy do obwodu usługi ExpressRoute, przy założeniu, że masz tylko komunikację równorzędną firmy Microsoft:
 
 ```azurepowershell-interactive
 $ckt = Get-AzExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "ExpressRouteResourceGroup"
@@ -154,27 +154,27 @@ $ckt.Peerings[0].RouteFilter = $routefilter
 Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
 ```
 
-## <a name="tasks"></a>Typowe zadania
+## <a name="common-tasks"></a><a name="tasks"></a>Typowe zadania
 
-### <a name="getproperties"></a>Aby uzyskać właściwości filtru tras
+### <a name="to-get-the-properties-of-a-route-filter"></a><a name="getproperties"></a>Aby uzyskać właściwości filtru trasy
 
-Można pobrać właściwości filtru tras, wykonaj następujące kroki:
+Aby uzyskać właściwości filtru trasy, należy wykonać następujące czynności:
 
-1. Uruchom następujące polecenie, aby pobrać zasób filtru trasy:
+1. Uruchom następujące polecenie, aby uzyskać zasób filtru trasy:
 
    ```azurepowershell-interactive
    $routefilter = Get-AzRouteFilter -Name "RouteFilterName" -ResourceGroupName "ExpressRouteResourceGroupName"
    ```
-2. Pobierz reguły filtru trasy dla zasobu filtru tras, uruchamiając następujące polecenie:
+2. Pobierz reguły filtru trasy dla zasobu filtru trasy, uruchamiając następujące polecenie:
 
    ```azurepowershell-interactive
    $routefilter = Get-AzRouteFilter -Name "RouteFilterName" -ResourceGroupName "ExpressRouteResourceGroupName"
    $rule = $routefilter.Rules[0]
    ```
 
-### <a name="updateproperties"></a>Aby zaktualizować właściwości filtru tras
+### <a name="to-update-the-properties-of-a-route-filter"></a><a name="updateproperties"></a>Aby zaktualizować właściwości filtru trasy
 
-Jeśli filtr tras jest już dołączony do obwodu, aktualizacje do listy społeczności BGP automatycznie rozpropagowane zmiany anonsowania prefiksu za pośrednictwem ustanowionych sesji protokołu BGP. Można zaktualizować listy społeczności BGP filtru tras za pomocą następującego polecenia:
+Jeśli filtr trasy jest już dołączony do obwodu, aktualizacje listy społeczności BGP automatycznie propagują odpowiednie zmiany anonsu prefiksów za pośrednictwem ustalonych sesji BGP. Listę społeczności BGP filtru trasy można zaktualizować za pomocą następującego polecenia:
 
 ```azurepowershell-interactive
 $routefilter = Get-AzRouteFilter -Name "RouteFilterName" -ResourceGroupName "ExpressRouteResourceGroupName"
@@ -182,18 +182,18 @@ $routefilter.rules[0].Communities = "12076:5030", "12076:5040"
 Set-AzRouteFilter -RouteFilter $routefilter
 ```
 
-### <a name="detach"></a>Aby odłączyć filtr tras z obwodem usługi ExpressRoute
+### <a name="to-detach-a-route-filter-from-an-expressroute-circuit"></a><a name="detach"></a>Aby odłączyć filtr trasy od obwodu usługi ExpressRoute
 
-Gdy filtr tras jest odłączona od obwodu usługi ExpressRoute, nie prefiksy są anonsowane za pośrednictwem sesji BGP. Możesz odłączyć filtr tras z obwodem usługi ExpressRoute, korzystając z następującego polecenia:
+Po odłączeniu filtru trasy od obwodu usługi ExpressRoute nie są anonsowane przez sesję BGP. Filtr trasy można odłączyć od obwodu usługi ExpressRoute za pomocą następującego polecenia:
   
 ```azurepowershell-interactive
 $ckt.Peerings[0].RouteFilter = $null
 Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
 ```
 
-### <a name="delete"></a>Można usunąć filtru tras
+### <a name="to-delete-a-route-filter"></a><a name="delete"></a>Aby usunąć filtr trasy
 
-Filtr tras można usunąć tylko wtedy, jeśli nie jest dołączony do dowolnego obwodu. Upewnij się, że filtr tras nie jest dołączony do dowolnego obwodu przed próbą usunięcia go. Można usunąć filtru tras, używając następującego polecenia:
+Filtr trasy można usunąć tylko wtedy, gdy nie jest on dołączony do żadnego obwodu. Upewnij się, że filtr trasy nie jest dołączony do żadnego obwodu przed próbą jego usunięcia. Filtr trasy można usunąć za pomocą następującego polecenia:
 
 ```azurepowershell-interactive
 Remove-AzRouteFilter -Name "MyRouteFilter" -ResourceGroupName "MyResourceGroup"
@@ -201,4 +201,4 @@ Remove-AzRouteFilter -Name "MyRouteFilter" -ResourceGroupName "MyResourceGroup"
 
 ## <a name="next-steps"></a>Następne kroki
 
-Więcej informacji na temat usługi ExpressRoute znajduje się w artykule [ExpressRoute FAQ](expressroute-faqs.md) (Usługa ExpressRoute — często zadawane pytania).
+Aby uzyskać więcej informacji na temat usługi ExpressRoute, zobacz [często zadawane pytania dotyczące usługi ExpressRoute](expressroute-faqs.md).

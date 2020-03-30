@@ -1,50 +1,50 @@
 ---
-title: Za pomocą interfejsu API REST alertów usługi Log Analytics
-description: Interfejs API REST alertów Log Analytics umożliwia tworzenie i zarządzanie alertami w Log Analytics, które są częścią Log Analytics.  Ten artykuł zawiera szczegółowe informacje o interfejsie API i przykłady do wykonywania różnych operacji.
+title: Korzystanie z interfejsu API REST alertów usługi Log Analytics
+description: Interfejs API REST alertów usługi Log Analytics umożliwia tworzenie alertów i zarządzanie nimi w usłudze Log Analytics, która jest częścią usługi Log Analytics.  Ten artykuł zawiera szczegółowe informacje na temat interfejsu API i kilka przykładów wykonywania różnych operacji.
 ms.subservice: logs
 ms.topic: conceptual
 ms.date: 07/29/2018
 ms.openlocfilehash: a85dad2ba638505233e5df769e55fa5bd7b8dafd
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77665004"
 ---
-# <a name="create-and-manage-alert-rules-in-log-analytics-with-rest-api"></a>Tworzenie i zarządzanie nimi reguły alertów w usłudze Log Analytics przy użyciu interfejsu API REST 
+# <a name="create-and-manage-alert-rules-in-log-analytics-with-rest-api"></a>Tworzenie reguł alertów i zarządzanie nimi w usłudze Log Analytics za pomocą interfejsu REST API 
 
-Log Analytics alertu interfejsu API REST umożliwia tworzenie i Zarządzanie alertami w usłudze Log Analytics.  Ten artykuł zawiera szczegółowe informacje o interfejsie API i przykłady do wykonywania różnych operacji.
+Interfejs API REST alertów usługi Log Analytics umożliwia tworzenie alertów i zarządzanie nimi w usłudze Log Analytics.  Ten artykuł zawiera szczegółowe informacje na temat interfejsu API i kilka przykładów wykonywania różnych operacji.
 
 > [!IMPORTANT]
-> Jak [ogłoszono wcześniej](https://azure.microsoft.com/updates/switch-api-preference-log-alerts/)obszary robocze usługi log Analytics utworzone po *1 czerwca 2019* — będą mogły zarządzać regułami alertów przy użyciu **tylko** usługi Azure scheduledQueryRules [rest](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/), [szablonu](../../azure-monitor/platform/alerts-log.md#managing-log-alerts-using-azure-resource-template) i [polecenia cmdlet programu PowerShell](../../azure-monitor/platform/alerts-log.md#managing-log-alerts-using-powershell)platformy Azure. Klienci mogą łatwo [przełączać swoje preferowane środki zarządzania regułami alertów](../../azure-monitor/platform/alerts-log-api-switch.md#process-of-switching-from-legacy-log-alerts-api) dla starszych obszarów roboczych, aby korzystać z Azure monitor scheduledQueryRules jako domyślne i uzyskiwać wiele [nowych korzyści](../../azure-monitor/platform/alerts-log-api-switch.md#benefits-of-switching-to-new-azure-api) , takich jak możliwość używania natywnych poleceń cmdlet programu PowerShell, zwiększonych lookback okresów czasu w regułach, tworzenie reguł w osobnej grupie zasobów lub subskrypcji i wiele innych.
+> Zgodnie [z wcześniejszymi zapowiedziami,](https://azure.microsoft.com/updates/switch-api-preference-log-alerts/)obszary robocze analizy dzienników utworzone po *1 czerwca 2019* r. — będą mogły zarządzać regułami alertów przy użyciu **tylko** interfejsu [API REST](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/)platformy Azure scheduledQueryRules , [szablonu manangera zasobów platformy Azure](../../azure-monitor/platform/alerts-log.md#managing-log-alerts-using-azure-resource-template) i polecenia [cmdlet programu PowerShell](../../azure-monitor/platform/alerts-log.md#managing-log-alerts-using-powershell). Klienci mogą łatwo [przełączyć preferowane środki zarządzania regułami alertów](../../azure-monitor/platform/alerts-log-api-switch.md#process-of-switching-from-legacy-log-alerts-api) dla starszych obszarów roboczych, aby wykorzystać usługę Azure Monitor scheduledQueryRules jako domyślną i uzyskać wiele [nowych korzyści,](../../azure-monitor/platform/alerts-log-api-switch.md#benefits-of-switching-to-new-azure-api) takich jak możliwość używania natywnych poleceń cmdlet programu PowerShell, wydłużony okres odnośnego okresu w regułach, tworzenie reguł w oddzielnej grupie zasobów lub subskrypcji i wiele więcej.
 
-Interfejsu API do REST wyszukiwania usługi Log Analytics jest zgodne ze specyfikacją REST i możliwy za pośrednictwem interfejsu REST API usługi Azure Resource Manager. W tym dokumencie znajdują się przykłady, do których dostęp do interfejsu API uzyskuje się za pomocą wiersza polecenia programu PowerShell przy użyciu [ARMClient](https://github.com/projectkudu/ARMClient), narzędzia wiersza polecenia typu open source, które upraszcza wywoływanie interfejsu API Azure Resource Manager. Korzystanie z programu PowerShell i ARMClient jest jedną z wielu opcji, aby dostęp do interfejsu API wyszukiwania usługi Log Analytics. Za pomocą tych narzędzi może korzystać z usługi Azure Resource Manager interfejsu API RESTful do wykonywania wywołań do obszarów roboczych usługi Log Analytics i wykonywania poleceń wyszukiwania w nich. Interfejs API zwróci wyniki wyszukiwania dla użytkownika w formacie JSON, co pozwala na wykorzystanie wyniki wyszukiwania na wiele różnych sposobów programowo.
+Interfejs API REST wyszukiwania usługi Log Analytics jest restful i można uzyskać dostęp za pośrednictwem interfejsu API REST usługi Azure Resource Manager. W tym dokumencie znajdziesz przykłady, gdzie interfejs API jest dostępny z wiersza polecenia programu PowerShell przy użyciu [ARMClient](https://github.com/projectkudu/ARMClient), narzędzia wiersza polecenia open source, które upraszcza wywoływanie interfejsu API usługi Azure Resource Manager. Korzystanie z ARMClient i PowerShell jest jedną z wielu opcji dostępu do interfejsu API wyszukiwania usługi Log Analytics. Dzięki tym narzędziom można korzystać z interfejsu API restful usługi Azure Resource Manager do nawiązywać wywołania obszarów roboczych usługi Log Analytics i wykonywać polecenia wyszukiwania w nich. Interfejs API będzie wyprowadzać wyniki wyszukiwania w formacie JSON, co pozwala na korzystanie z wyników wyszukiwania na wiele różnych sposobów programowo.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-Obecnie alertów można tworzyć tylko za pomocą zapisanego kryterium wyszukiwania w usłudze Log Analytics.  Aby uzyskać więcej informacji, możesz zapoznać się z [interfejsem API REST przeszukiwania dzienników](../../azure-monitor/log-query/log-query-overview.md) .
+Obecnie alerty można tworzyć tylko przy użyciu zapisanego wyszukiwania w usłudze Log Analytics.  Aby uzyskać więcej informacji, można znaleźć się w [interfejsie API REST wyszukiwania dziennika.](../../azure-monitor/log-query/log-query-overview.md)
 
 ## <a name="schedules"></a>Harmonogramy
-Zapisane wyszukiwanie może mieć co najmniej jeden harmonogram. Harmonogram definiuje, jak często wyszukiwanie jest uruchamiania i przedział czasu, przez który jest identyfikowany kryteria.
-Harmonogramy mają właściwości podane w poniższej tabeli.
+Zapisane wyszukiwanie może mieć jeden lub więcej harmonogramów. Harmonogram określa, jak często wyszukiwanie jest uruchamiane i przedział czasu, w którym kryteria są identyfikowane.
+Harmonogramy mają właściwości w poniższej tabeli.
 
 | Właściwość | Opis |
 |:--- |:--- |
-| Interval |Jak często jest uruchamiany podczas wyszukiwania. Mierzony w ciągu kilku minut. |
-| QueryTimeSpan |Przedział czasu, w którym jest oceniana kryteria. Musi być równy lub większy niż interwał. Mierzony w ciągu kilku minut. |
-| Wersja |Używana wersja interfejsu API.  Obecnie to powinno być zawsze ustawiony na 1. |
+| Interval |Jak często wyszukiwanie jest uruchamiane. Mierzona w minutach. |
+| Program QueryTimeSpan |Przedział czasu, w którym kryteria są oceniane. Musi być równa lub większa niż Interwał. Mierzona w minutach. |
+| Wersja |Używana wersja interfejsu API.  Obecnie należy to zawsze ustawić na 1. |
 
-Rozważmy na przykład zapytania dotyczącego zdarzenia z odstępie 15 minut i przedziału czasu 30 minut. W tym przypadku zapytanie będzie uruchamiany co 15 minut, a alert może zostać wyzwolony, jeśli kryteria nadal prowadzić do przez wartość true, zakres 30 minut.
+Rozważmy na przykład kwerendę zdarzeń z interwałem 15 minut i przedział czasu 30 minut. W takim przypadku kwerenda będzie uruchamiana co 15 minut, a alert zostanie wyzwolony, jeśli kryteria nadal będą spełniać wartość true w ciągu 30-minutowego zakresu.
 
-### <a name="retrieving-schedules"></a>Trwa pobieranie harmonogramów
-Aby pobrać wszystkie harmonogramy dla zapisanego kryterium wyszukiwania, należy użyć metody Get.
+### <a name="retrieving-schedules"></a>Pobieranie harmonogramów
+Użyj Get metody, aby pobrać wszystkie harmonogramy dla zapisanego wyszukiwania.
 
     armclient get /subscriptions/{Subscription ID}/resourceGroups/{ResourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search  ID}/schedules?api-version=2015-03-20
 
-Za pomocą metody Get identyfikator harmonogramu można pobrać konkretny harmonogram dla zapisanego wyszukiwania.
+Użyj Get metody z identyfikatorem harmonogramu, aby pobrać określony harmonogram dla zapisanego wyszukiwania.
 
     armclient get /subscriptions/{Subscription ID}/resourceGroups/{ResourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Subscription ID}/schedules/{Schedule ID}?api-version=2015-03-20
 
-Oto przykładowa odpowiedź dla harmonogramu.
+Poniżej znajduje się przykładowa odpowiedź dla harmonogramu.
 
 ```json
 {
@@ -61,88 +61,88 @@ Oto przykładowa odpowiedź dla harmonogramu.
 ```
 
 ### <a name="creating-a-schedule"></a>Tworzenie harmonogramu
-Za pomocą metody Put identyfikator unikatowy harmonogram do utworzenia nowego harmonogramu.  Dwa harmonogramy nie mogą mieć tego samego identyfikatora, nawet jeśli są skojarzone z różnymi zapisanymi wyszukiwaniami.  Podczas tworzenia harmonogramu w konsoli usługi Log Analytics, identyfikator GUID jest tworzona dla identyfikator harmonogramu.
+Użyj Put metody z unikatowym identyfikatorem harmonogramu, aby utworzyć nowy harmonogram.  Dwa harmonogramy nie mogą mieć tego samego identyfikatora, nawet jeśli są skojarzone z różnymi zapisanymi wyszukiwaniami.  Podczas tworzenia harmonogramu w konsoli usługi Log Analytics tworzony jest identyfikator GUID dla identyfikatora harmonogramu.
 
 > [!NOTE]
-> Nazwy wszystkich zapisanych wyszukiwań, harmonogramy i działań utworzonych za pomocą interfejsu API programu Log Analytics musi być pisane małymi literami.
+> Nazwa wszystkich zapisanych wyszukiwań, harmonogramów i akcji utworzonych za pomocą interfejsu API usługi Log Analytics musi być mała literą.
 
     $scheduleJson = "{'properties': { 'Interval': 15, 'QueryTimeSpan':15, 'Enabled':'true' } }"
     armclient put /subscriptions/{Subscription ID}/resourceGroups/{ResourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/mynewschedule?api-version=2015-03-20 $scheduleJson
 
 ### <a name="editing-a-schedule"></a>Edytowanie harmonogramu
-Użyj metody PUT z istniejącym IDENTYFIKATORem harmonogramu dla tego samego zapisanego wyszukiwania, aby zmodyfikować ten harmonogram. w przykładzie poniżej harmonogram jest wyłączony. Treść żądania musi zawierać element *ETag* harmonogramu.
+Użyj Put metody z istniejącym identyfikatorem harmonogramu dla tego samego zapisanego wyszukiwania, aby zmodyfikować ten harmonogram; w poniższym harmonogramie jest wyłączony. Treść wniosku musi zawierać *etag* harmonogramu.
 
       $scheduleJson = "{'etag': 'W/\"datetime'2016-02-25T20%3A54%3A49.8074679Z'\""','properties': { 'Interval': 15, 'QueryTimeSpan':15, 'Enabled':'false' } }"
       armclient put /subscriptions/{Subscription ID}/resourceGroups/{ResourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/mynewschedule?api-version=2015-03-20 $scheduleJson
 
 
 ### <a name="deleting-schedules"></a>Usuwanie harmonogramów
-Za pomocą metody Delete identyfikator harmonogramu można usunąć harmonogramu.
+Użyj metody Usuń z identyfikatorem harmonogramu, aby usunąć harmonogram.
 
     armclient delete /subscriptions/{Subscription ID}/resourceGroups/{ResourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Subscription ID}/schedules/{Schedule ID}?api-version=2015-03-20
 
 
 ## <a name="actions"></a>Akcje
-Harmonogram może mieć wiele akcji. Akcja może zdefiniować jeden lub więcej procesów do wykonywania takich jak wysłanie wiadomości e-mail lub uruchamianie elementu runbook lub mogą definiować, próg, która określa, kiedy wyniki wyszukiwania pasują do kryteriów.  Niektóre akcje definiują zarówno tak, aby procesy są wykonywane po osiągnięciu wartości progowej.
+Harmonogram może mieć wiele akcji. Akcja może zdefiniować jeden lub więcej procesów do wykonania, takich jak wysyłanie poczty lub uruchamianie elementu runbook, lub może zdefiniować próg, który określa, kiedy wyniki wyszukiwania odpowiadają niektórym kryteriom.  Niektóre akcje zdefiniują oba tak, aby procesy były wykonywane po osiągnięciu progu.
 
-Wszystkie działania mają właściwości podane w poniższej tabeli.  Różne typy alertów mają różne dodatkowe właściwości, które zostały opisane poniżej.
+Wszystkie akcje mają właściwości w poniższej tabeli.  Różne typy alertów mają różne dodatkowe właściwości, które są opisane poniżej.
 
 | Właściwość | Opis |
 |:--- |:--- |
-| `Type` |Typ akcji.  Obecnie możliwe wartości to Alert i elementów Webhook. |
-| `Name` |Nazwa wyświetlana alertu. |
-| `Version` |Używana wersja interfejsu API.  Obecnie to powinno być zawsze ustawiony na 1. |
+| `Type` |Typ akcji.  Obecnie możliwe wartości to Alert i Webhook. |
+| `Name` |Wyświetlana nazwa alertu. |
+| `Version` |Używana wersja interfejsu API.  Obecnie należy to zawsze ustawić na 1. |
 
 ### <a name="retrieving-actions"></a>Pobieranie akcji
 
-Aby pobrać wszystkie akcje w przypadku harmonogramu, należy użyć metody Get.
+Użyj Get metody, aby pobrać wszystkie akcje dla harmonogramu.
 
     armclient get /subscriptions/{Subscription ID}/resourceGroups/{ResourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search  ID}/schedules/{Schedule ID}/actions?api-version=2015-03-20
 
-Za pomocą metody Get ID akcji można pobrać określoną akcję dla harmonogramu.
+Użyj Get metody z identyfikatorem akcji, aby pobrać określoną akcję dla harmonogramu.
 
     armclient get /subscriptions/{Subscription ID}/resourceGroups/{ResourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Subscription ID}/schedules/{Schedule ID}/actions/{Action ID}?api-version=2015-03-20
 
 ### <a name="creating-or-editing-actions"></a>Tworzenie lub edytowanie akcji
-Za pomocą Identyfikatora akcji, która jest unikatowa w harmonogramie, aby utworzyć nową akcję, należy użyć metody Put.  Podczas tworzenia akcji w konsoli usługi Log Analytics, jest identyfikator GUID dla identyfikatora akcji.
+Użyj Put metody o identyfikatorze akcji, który jest unikatowy dla harmonogramu, aby utworzyć nową akcję.  Podczas tworzenia akcji w konsoli usługi Log Analytics identyfikator GUID jest dla identyfikatora akcji.
 
 > [!NOTE]
-> Nazwy wszystkich zapisanych wyszukiwań, harmonogramy i działań utworzonych za pomocą interfejsu API programu Log Analytics musi być pisane małymi literami.
+> Nazwa wszystkich zapisanych wyszukiwań, harmonogramów i akcji utworzonych za pomocą interfejsu API usługi Log Analytics musi być mała literą.
 
-Za pomocą metody Put istniejący identyfikator akcji dla tego samego zapisanego wyszukiwania do modyfikowania tego harmonogramu.  Treść żądania musi zawierać element etag harmonogramu.
+Użyj Put metody z istniejącym identyfikatorem akcji dla tego samego zapisanego wyszukiwania, aby zmodyfikować ten harmonogram.  Treść wniosku musi zawierać etag harmonogramu.
 
-Format żądania do tworzenia nowej akcji zależy od typu akcji, dzięki czemu te przykłady znajdują się w poniższych sekcjach.
+Format żądania do tworzenia nowej akcji różni się w zależności od typu akcji, więc te przykłady znajdują się w poniższych sekcjach.
 
 ### <a name="deleting-actions"></a>Usuwanie akcji
 
-Za pomocą metody Delete ID akcji można usunąć danej akcji.
+Użyj Metody Usuń z identyfikatorem akcji, aby usunąć akcję.
 
     armclient delete /subscriptions/{Subscription ID}/resourceGroups/{ResourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Subscription ID}/schedules/{Schedule ID}/Actions/{Action ID}?api-version=2015-03-20
 
-### <a name="alert-actions"></a>Akcje alertu
-Harmonogram powinien mieć jeden i tylko jeden Akcja alertu.  Akcje alertu mają co najmniej jeden z sekcji w poniższej tabeli.  Każdy opisano szczegółowo poniżej.
+### <a name="alert-actions"></a>Akcje alertów
+Harmonogram powinien mieć jedną i tylko jedną akcję alertu.  Akcje alertu mają jedną lub więcej sekcji w poniższej tabeli.  Każdy z nich jest opisany bardziej szczegółowo poniżej.
 
 | Sekcja | Opis | Sposób użycia |
 |:--- |:--- |:--- |
-| Próg |Kryteria dla uruchomienia działania.| Wymagane dla każdego alertu przed lub po ich zostały rozszerzone na platformę Azure. |
-| Ważność |Etykieta służy do klasyfikowania alertów po ich wyzwoleniu.| Wymagane dla każdego alertu przed lub po ich zostały rozszerzone na platformę Azure. |
-| Pomiń |Opcję, aby wyłączyć powiadomienia z alertu. | Opcjonalne dla każdego alertu przed lub po ich zostały rozszerzone na platformę Azure. |
-| Grupy akcji |Identyfikatory ActionGroup platformy Azure, w których akcje wymagane są określone, takie jak - wiadomości E-mail, Menedżer SMSs, połączenia głosowe, elementy Webhook, elementy Runbook usługi Automation, łączniki ITSM itd.| Wymagane, gdy alerty zostały rozszerzone na platformę Azure|
-| Dostosuj akcje|Modyfikowanie standardowe dane wyjściowe akcji select z ActionGroup| Można opcjonalnie dla każdego alertu, po alerty zostały rozszerzone na platformę Azure. |
+| Próg |Kryteria dotyczące uruchomienia akcji.| Wymagane dla każdego alertu, przed lub po ich rozszer. |
+| Ważność |Etykieta używana do klasyfikowania alertu po wyzwoleniu.| Wymagane dla każdego alertu, przed lub po ich rozszer. |
+| Pomiń |Opcja zatrzymania powiadomień z alertu. | Opcjonalnie dla każdego alertu, przed lub po ich rozszer. |
+| Grupy akcji |Identyfikatory usługi Azure ActionGroup, w których określono wymagane akcje, takie jak - Wiadomości e-mail, SMSs, połączenia głosowe, elementy webhook, elementy runbook automatyzacji, łączniki ITSM itp.| Wymagane po rozszerym rozszerzaniu alertów na platformę Azure|
+| Dostosowywanie akcji|Modyfikowanie standardowego wyjścia dla wybranych akcji z grupy ActionGroup| Opcjonalnie dla każdego alertu, może służyć po alerty są rozszerzone na platformę Azure. |
 
 ### <a name="thresholds"></a>Progi
-Akcji alertu powinna mieć tylko jedną wartość progową.  Gdy wyniki zapisanego kryterium wyszukiwania są zgodne próg w akcji skojarzonej z tym wyszukiwaniem, są uruchamiane inne procesy, w tym działaniu.  Akcji może również zawierać tylko wartości progowej, dzięki czemu można z działaniami innych typów, które nie zawierają wartości progowe.
+Akcja alertu powinna mieć jeden i tylko jeden próg.  Gdy wyniki zapisanego wyszukiwania odpowiadają progu w akcji skojarzonej z tym wyszukiwaniem, uruchamiane są inne procesy w tej akcji.  Akcja może również zawierać tylko próg, dzięki czemu może być używana z akcjami innych typów, które nie zawierają progów.
 
-Progi mają właściwości podane w poniższej tabeli.
+Progi mają właściwości w poniższej tabeli.
 
 | Właściwość | Opis |
 |:--- |:--- |
-| `Operator` |Operator porównania wartości progowej. <br> gt = większe niż <br> lt = mniej niż |
+| `Operator` |Operator dla porównania progów. <br> gt = większa niż <br> lt = mniej niż |
 | `Value` |Wartość progu. |
 
-Rozważmy na przykład zapytania dotyczącego zdarzenia w odstępie 15 minut, przedział czasu, 30 minut i próg większe niż 10. W tym przypadku zapytanie będzie uruchamiany co 15 minut, a alert może zostać wyzwolony, jeśli zwrócony 10 zdarzenia, które zostały utworzone w okresie 30-minutowe.
+Rozważmy na przykład kwerendę zdarzeń z interwałem 15 minut, przedział czasu 30 minut i próg większy niż 10. W takim przypadku kwerenda będzie uruchamiana co 15 minut, a alert zostanie wyzwolony, jeśli zwróci 10 zdarzeń, które zostały utworzone w ciągu 30-minutowego zakresu.
 
-Oto przykładowa odpowiedź dla akcji o tylko progu.  
+Poniżej przedstawiono przykładową odpowiedź dla akcji z tylko próg.  
 
     "etag": "W/\"datetime'2016-02-25T20%3A54%3A20.1302566Z'\"",
     "properties": {
@@ -155,26 +155,26 @@ Oto przykładowa odpowiedź dla akcji o tylko progu.
         "Version": 1
     }
 
-Za pomocą metody Put identyfikator unikatowy akcji do utworzenia nowej akcji próg dla harmonogramu.  
+Użyj Put metody z unikatowym identyfikatorem akcji, aby utworzyć nową akcję progową dla harmonogramu.  
 
     $thresholdJson = "{'properties': { 'Name': 'My Threshold', 'Version':'1', 'Type':'Alert', 'Threshold': { 'Operator': 'gt', 'Value': 10 } } }"
     armclient put /subscriptions/{Subscription ID}/resourceGroups/{ResourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/mythreshold?api-version=2015-03-20 $thresholdJson
 
-Za pomocą metody Put istniejący identyfikator akcji do modyfikowania akcją próg dla harmonogramu.  Treść żądania musi zawierać element etag akcji.
+Użyj Put metody z istniejącym identyfikatorem akcji, aby zmodyfikować akcję progową dla harmonogramu.  Treść wniosku musi zawierać etag działania.
 
     $thresholdJson = "{'etag': 'W/\"datetime'2016-02-25T20%3A54%3A20.1302566Z'\"','properties': { 'Name': 'My Threshold', 'Version':'1', 'Type':'Alert', 'Threshold': { 'Operator': 'gt', 'Value': 10 } } }"
     armclient put /subscriptions/{Subscription ID}/resourceGroups/{ResourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/mythreshold?api-version=2015-03-20 $thresholdJson
 
 #### <a name="severity"></a>Ważność
-Usługa log Analytics umożliwia klasyfikowanie alertów w kategorie, aby umożliwić łatwiejsze zarządzanie i klasyfikacji. Ważność alertu zdefiniowane jest: informacyjny, ostrzegawczy i krytyczny. Te są mapowane na skalę znormalizowane ważność alertów platformy Azure w postaci:
+Usługa Log Analytics umożliwia klasyfikowanie alertów do kategorii, aby ułatwić zarządzanie i klasyfikowanie. Zdefiniowana ważność alertu to: informacje, ostrzeżenie i krytyczne. Są one mapowane do znormalizowanej skali ważności alertów platformy Azure w następujący sposób:
 
 |Poziom ważności analizy dzienników  |Poziom ważności alertów platformy Azure  |
 |---------|---------|
-|`critical` |Ważność 0|
-|`warning` |Ważność 1|
+|`critical` |Sev 0 (Sev) 0|
+|`warning` |Sev 1 (Włask.)|
 |`informational` | Ważność 2|
 
-Oto przykładowa odpowiedź dla akcji przy użyciu progu i ważności. 
+Poniżej przedstawiono przykładową odpowiedź dla akcji z tylko próg i ważność. 
 
     "etag": "W/\"datetime'2016-02-25T20%3A54%3A20.1302566Z'\"",
     "properties": {
@@ -187,22 +187,22 @@ Oto przykładowa odpowiedź dla akcji przy użyciu progu i ważności.
         "Severity": "critical",
         "Version": 1    }
 
-Za pomocą metody Put identyfikator unikatowy akcji do utworzenia nowej akcji dla harmonogramu o ważności.  
+Użyj Put metody z unikatowym identyfikatorem akcji, aby utworzyć nową akcję dla harmonogramu z ważnością.  
 
     $thresholdWithSevJson = "{'properties': { 'Name': 'My Threshold', 'Version':'1','Severity': 'critical', 'Type':'Alert', 'Threshold': { 'Operator': 'gt', 'Value': 10 } } }"
     armclient put /subscriptions/{Subscription ID}/resourceGroups/{ResourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/mythreshold?api-version=2015-03-20 $thresholdWithSevJson
 
-Za pomocą metody Put istniejący identyfikator akcji do modyfikowania akcją ważności dla harmonogramu.  Treść żądania musi zawierać element etag akcji.
+Użyj Put metody z istniejącym identyfikatorem akcji, aby zmodyfikować akcję ważności dla harmonogramu.  Treść wniosku musi zawierać etag działania.
 
     $thresholdWithSevJson = "{'etag': 'W/\"datetime'2016-02-25T20%3A54%3A20.1302566Z'\"','properties': { 'Name': 'My Threshold', 'Version':'1','Severity': 'critical', 'Type':'Alert', 'Threshold': { 'Operator': 'gt', 'Value': 10 } } }"
     armclient put /subscriptions/{Subscription ID}/resourceGroups/{ResourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/mythreshold?api-version=2015-03-20 $thresholdWithSevJson
 
 #### <a name="suppress"></a>Pomiń
-Usługa log Analytics na podstawie zapytania, które alerty będą uruchamiane za każdym razem, gdy spełnione lub przekroczeniu progu. Oparte na logice podany w kwerendzie, może to spowodować wprowadzenie wyzwolony w przypadku serii interwałów alert i dlatego powiadomienia również wysyłane stale. Aby zapobiec taki scenariusz, użytkownik może ustawić opcję Pomiń poinstruowanie usługi Log Analytics poczekaj, aż określony przedział czasu, po którym powiadomień jest uruchamiany po raz drugi dla reguły alertu. Pomiń więc jeśli jest ustawiona na 30 minut; alert będą uruchamiane po raz pierwszy i wysyłać powiadomienia skonfigurowane. Ale Zaczekaj 30 minut, zanim zostaną ponownie użyte powiadomień dla reguły alertu. W okresie przejściowym będzie kontynuował działanie reguły alertu — tylko powiadomienia są pomijane przez usługę Log Analytics określony czas, niezależnie od tego, ile razy regułę alertu są uruchamiane w tym okresie.
+Alerty zapytań oparte na usłudze Log Analytics będą uruchamiane za każdym razem, gdy próg zostanie osiągnięty lub przekroczony. Na podstawie logiki implikowane w kwerendzie, może to spowodować alert jest uruchamiany dla serii interwałów, a tym samym powiadomienia również wysyłane stale. Aby zapobiec takiemu scenariuszowi, użytkownik może ustawić opcję Pomijanie instruując usługi Log Analytics, aby czekała na określoną ilość czasu, zanim powiadomienie zostanie wyzwany po raz drugi dla reguły alertu. Więc jeśli wygasić jest ustawiony na 30 minut; alert zostanie wyzrzel za pierwszym razem i wyśle skonfigurowane powiadomienia. Ale następnie odczekaj 30 minut, zanim ponownie zostanie ponownie użyte powiadomienie o regule alertu. W okresie przejściowym reguła alertu będzie nadal działać — tylko powiadomienie jest pomijane przez usługi Log Analytics przez określony czas, niezależnie od tego, ile razy reguła alertu została odpalona w tym okresie.
 
-Właściwość pomijania reguły alertu Log Analytics jest określana przy użyciu wartości *ograniczenia* i okresu pomijania przy użyciu wartości *DurationInMinutes* .
+Pomiń właściwość reguły alertu usługi Log Analytics jest określona przy użyciu wartości *ograniczania* przepustowości i okresu pomijania przy użyciu wartości *DurationInMinutes.*
 
-Poniżej znajduje się Przykładowa odpowiedź dla akcji z tylko wartością progową, ważność i Właściwość pomijania
+Poniżej przedstawiono przykładową odpowiedź dla akcji z tylko progiem, ważnością i właściwością pomijania
 
     "etag": "W/\"datetime'2016-02-25T20%3A54%3A20.1302566Z'\"",
     "properties": {
@@ -218,22 +218,22 @@ Poniżej znajduje się Przykładowa odpowiedź dla akcji z tylko wartością pro
         "Severity": "critical",
         "Version": 1    }
 
-Za pomocą metody Put identyfikator unikatowy akcji do utworzenia nowej akcji dla harmonogramu o ważności.  
+Użyj Put metody z unikatowym identyfikatorem akcji, aby utworzyć nową akcję dla harmonogramu z ważnością.  
 
     $AlertSuppressJson = "{'properties': { 'Name': 'My Threshold', 'Version':'1','Severity': 'critical', 'Type':'Alert', 'Throttling': { 'DurationInMinutes': 30 },'Threshold': { 'Operator': 'gt', 'Value': 10 } } }"
     armclient put /subscriptions/{Subscription ID}/resourceGroups/{ResourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/myalert?api-version=2015-03-20 $AlertSuppressJson
 
-Za pomocą metody Put istniejący identyfikator akcji do modyfikowania akcją ważności dla harmonogramu.  Treść żądania musi zawierać element etag akcji.
+Użyj Put metody z istniejącym identyfikatorem akcji, aby zmodyfikować akcję ważności dla harmonogramu.  Treść wniosku musi zawierać etag działania.
 
     $AlertSuppressJson = "{'etag': 'W/\"datetime'2016-02-25T20%3A54%3A20.1302566Z'\"','properties': { 'Name': 'My Threshold', 'Version':'1','Severity': 'critical', 'Type':'Alert', 'Throttling': { 'DurationInMinutes': 30 },'Threshold': { 'Operator': 'gt', 'Value': 10 } } }"
     armclient put /subscriptions/{Subscription ID}/resourceGroups/{ResourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/myalert?api-version=2015-03-20 $AlertSuppressJson
 
 #### <a name="action-groups"></a>Grupy akcji
-Wszystkie alerty na platformie Azure, użyj akcji grupy jako domyślnego mechanizmu do obsługi akcji. Grupy akcji możesz określić swoje działania raz i skojarz grupę akcji do wielu alertów — na platformie Azure. Bez konieczności wielokrotnego wielokrotnie zadeklarować te same akcje. Grupy akcji obsługują wiele akcji — w tym wiadomości e-mail, wiadomości SMS, połączenie głosowe, połączenia narzędzia ITSM, element Runbook usługi Automation, identyfikator URI elementu Webhook i innych. 
+Wszystkie alerty na platformie Azure, użyj grupy akcji jako domyślny mechanizm obsługi akcji. Za pomocą grupy akcji można określić akcje raz, a następnie skojarzyć grupę akcji z wieloma alertami — na platformie Azure. Bez konieczności, wielokrotnie deklarować te same działania w kółko. Grupy akcji obsługują wiele działań — w tym pocztę e-mail, SMS, połączenie głosowe, połączenie ITSM, system y runbook automatyzacji, identyfikator URI typu webhook i inne. 
 
-W przypadku użytkowników, którzy rozszerzyły swoje alerty na platformę Azure — harmonogram powinien teraz zawierać szczegóły grupy akcji, które są przesyłane wraz z progiem, aby można było utworzyć alert. Szczegóły poczty E-mail, adresy URL elementu webhook, szczegóły automatyzacji elementu Runbook i inne akcje muszą być zdefiniowane w grupie akcji najpierw przed utworzeniem alertu. jeden może utworzyć [grupę akcji na podstawie Azure monitor](../../azure-monitor/platform/action-groups.md) w portalu lub użyć [interfejsu API grupy akcji](https://docs.microsoft.com/rest/api/monitor/actiongroups).
+Dla użytkowników, którzy rozszerzyli swoje alerty na platformie Azure — harmonogram powinien teraz mieć szczegóły grupy akcji przekazywane wraz z progiem, aby móc utworzyć alert. Szczegóły wiadomości e-mail, adresy URL elementu webhook, szczegóły automatyzacji elementu runbook i inne akcje muszą zostać zdefiniowane w grupie akcji najpierw po stronie grupy akcji przed utworzeniem alertu; można utworzyć [grupę akcji z usługi Azure Monitor](../../azure-monitor/platform/action-groups.md) w portalu lub użyć interfejsu API grupy [akcji](https://docs.microsoft.com/rest/api/monitor/actiongroups).
 
-Aby dodać skojarzenia grupy akcji alertu, należy określić unikatowy identyfikator usługi Azure Resource Manager do grupy akcji w definicji alertu. Ilustracja przykładowa znajduje się poniżej:
+Aby dodać skojarzenie grupy akcji do alertu, określ unikatowy identyfikator usługi Azure Resource Manager grupy akcji w definicji alertu. Przykładowa ilustracja znajduje się poniżej:
 
      "etag": "W/\"datetime'2017-12-13T10%3A52%3A21.1697364Z'\"",
       "properties": {
@@ -253,21 +253,21 @@ Aby dodać skojarzenia grupy akcji alertu, należy określić unikatowy identyfi
         "Version": 1
       },
 
-Za pomocą metody Put identyfikator unikatowy akcji do skojarzenia z istniejącej grupy akcji dla harmonogramu.  Poniżej przedstawiono ilustracji przykład użycia.
+Użyj Put metody z unikatowym identyfikatorem akcji, aby skojarzyć już istniejącą grupę akcji dla harmonogramu.  Poniżej przedstawiono przykładową ilustrację użycia.
 
     $AzNsJson = "{'properties': { 'Name': 'test-alert', 'Version':'1', 'Type':'Alert', 'Threshold': { 'Operator': 'gt', 'Value': 12 },'Severity': 'critical', 'AzNsNotification': {'GroupIds': ['subscriptions/1234a45-123d-4321-12aa-123b12a5678/resourcegroups/my-resource-group/providers/microsoft.insights/actiongroups/test-actiongroup']} } }"
     armclient put /subscriptions/{Subscription ID}/resourceGroups/{Resource Group Name}/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/myAzNsaction?api-version=2015-03-20 $AzNsJson
 
-Za pomocą metody Put istniejący identyfikator akcji do modyfikowania grupy akcji skojarzony z harmonogramem.  Treść żądania musi zawierać element etag akcji.
+Użyj Put metody z istniejącym identyfikatorem akcji, aby zmodyfikować grupę akcji skojarzoną z harmonogramem.  Treść wniosku musi zawierać etag działania.
 
     $AzNsJson = "{'etag': 'datetime'2017-12-13T10%3A52%3A21.1697364Z'\"', 'properties': { 'Name': 'test-alert', 'Version':'1', 'Type':'Alert', 'Threshold': { 'Operator': 'gt', 'Value': 12 },'Severity': 'critical', 'AzNsNotification': { 'GroupIds': ['subscriptions/1234a45-123d-4321-12aa-123b12a5678/resourcegroups/my-resource-group/providers/microsoft.insights/actiongroups/test-actiongroup'] } } }"
     armclient put /subscriptions/{Subscription ID}/resourceGroups/{Resource Group Name}/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/myAzNsaction?api-version=2015-03-20 $AzNsJson
 
-#### <a name="customize-actions"></a>Dostosuj akcje
-Akcje domyślne, wykonując standardowego szablonu i format dla powiadomień. Jednak użytkownik może dostosować pewne działania, nawet wtedy, gdy są one kontrolowane przez grupy akcji. Obecnie Dostosowywanie jest temat wiadomości E-mail i ładunek elementu Webhook.
+#### <a name="customize-actions"></a>Dostosowywanie akcji
+Domyślnie akcje należy przestrzegać standardowego szablonu i formatu powiadomień. Ale użytkownik może dostosować niektóre akcje, nawet jeśli są one kontrolowane przez grupy akcji. Obecnie dostosowywanie jest możliwe dla tematu poczty e-mail i ładunku webhook.
 
-##### <a name="customize-e-mail-subject-for-action-group"></a>Dostosowywanie temat wiadomości E-Mail do grupy akcji
-Domyślnie temat wiadomości e-mail dotyczący alertów to: powiadomienia o alertach `<AlertName>` `<WorkspaceName>`. Ale to można dostosowywać, aby można było konkretnych słów lub tagi — pozwala łatwo stosować reguły filtrowania w Twojej skrzynce odbiorczej. Szczegółowe informacje o nagłówku Dostosuj wiadomości e-mail należy wysyłać wraz ze szczegółami ActionGroup, tak jak w poniższym przykładzie.
+##### <a name="customize-e-mail-subject-for-action-group"></a>Dostosowywanie tematu wiadomości e-mail do grupy działań
+Domyślnie tematem wiadomości e-mail dla `<AlertName>` alertów jest: Powiadomienie o alertach dla `<WorkspaceName>`. Ale to można dostosować, dzięki czemu można konkretne słowa lub tagi - aby umożliwić łatwe stosowanie reguł filtrowania w skrzynce odbiorczej. Szczegóły nagłówka niestandardowego adresu e-mail muszą być wysyłane wraz ze szczegółami ActionGroup, jak w poniższym przykładzie.
 
      "etag": "W/\"datetime'2017-12-13T10%3A52%3A21.1697364Z'\"",
       "properties": {
@@ -288,20 +288,20 @@ Domyślnie temat wiadomości e-mail dotyczący alertów to: powiadomienia o aler
         "Version": 1
       },
 
-Za pomocą metody Put identyfikator unikatowy akcji do skojarzenia z istniejącej grupy akcji z dostosowywaniem dla harmonogramu.  Poniżej przedstawiono ilustracji przykład użycia.
+Użyj Put metody z unikatowym identyfikatorem akcji, aby skojarzyć już istniejącą grupę akcji z dostosowaniem harmonogramu.  Poniżej przedstawiono przykładową ilustrację użycia.
 
     $AzNsJson = "{'properties': { 'Name': 'test-alert', 'Version':'1', 'Type':'Alert', 'Threshold': { 'Operator': 'gt', 'Value': 12 },'Severity': 'critical', 'AzNsNotification': {'GroupIds': ['subscriptions/1234a45-123d-4321-12aa-123b12a5678/resourcegroups/my-resource-group/providers/microsoft.insights/actiongroups/test-actiongroup'], 'CustomEmailSubject': 'Azure Alert fired'} } }"
     armclient put /subscriptions/{Subscription ID}/resourceGroups/{Resource Group Name}/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/myAzNsaction?api-version=2015-03-20 $AzNsJson
 
-Za pomocą metody Put istniejący identyfikator akcji do modyfikowania grupy akcji skojarzony z harmonogramem.  Treść żądania musi zawierać element etag akcji.
+Użyj Put metody z istniejącym identyfikatorem akcji, aby zmodyfikować grupę akcji skojarzoną z harmonogramem.  Treść wniosku musi zawierać etag działania.
 
     $AzNsJson = "{'etag': 'datetime'2017-12-13T10%3A52%3A21.1697364Z'\"', 'properties': { 'Name': 'test-alert', 'Version':'1', 'Type':'Alert', 'Threshold': { 'Operator': 'gt', 'Value': 12 },'Severity': 'critical', 'AzNsNotification': {'GroupIds': ['subscriptions/1234a45-123d-4321-12aa-123b12a5678/resourcegroups/my-resource-group/providers/microsoft.insights/actiongroups/test-actiongroup']}, 'CustomEmailSubject': 'Azure Alert fired' } }"
     armclient put /subscriptions/{Subscription ID}/resourceGroups/{Resource Group Name}/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/myAzNsaction?api-version=2015-03-20 $AzNsJson
 
-##### <a name="customize-webhook-payload-for-action-group"></a>Dostosowywanie ładunek elementu Webhook dla grupy akcji
-Domyślnie element webhook, który został wysłany za pośrednictwem grupy akcji dla usługi log analytics ma stałą strukturę. Jednak jeden dostosować ładunek w formacie JSON przy użyciu określonych zmiennych obsługiwane pod kątem wymagań punktem końcowym elementu webhook. Aby uzyskać więcej informacji, zobacz [Akcja elementu webhook dla reguł alertów dziennika](../../azure-monitor/platform/alerts-log-webhook.md). 
+##### <a name="customize-webhook-payload-for-action-group"></a>Dostosowywanie ładunku elementu Webhook dla grupy akcji
+Domyślnie element webhook wysłany za pośrednictwem grupy akcji do analizy dzienników ma stałą strukturę. Ale można dostosować ładunek JSON przy użyciu określonych zmiennych obsługiwanych, aby spełnić wymagania punktu końcowego elementu webhook. Aby uzyskać więcej informacji, zobacz [Akcja elementu Webhook dla reguł alertów dziennika](../../azure-monitor/platform/alerts-log-webhook.md). 
 
-Dostosuj szczegóły elementu webhook należy wysyłać wraz ze szczegółami ActionGroup i będzie można zastosować do wszystkich elementów Webhook identyfikatora URI określonego wewnątrz grupy akcji; tak jak w poniższym przykładzie.
+Szczegóły dostosowywania elementu webhook muszą zostać wysłane wraz ze szczegółami ActionGroup i zostaną zastosowane do wszystkich identyfikatorów URI elementu webhook określonych wewnątrz grupy akcji; jak w poniższej próbce.
 
      "etag": "W/\"datetime'2017-12-13T10%3A52%3A21.1697364Z'\"",
       "properties": {
@@ -323,12 +323,12 @@ Dostosuj szczegóły elementu webhook należy wysyłać wraz ze szczegółami Ac
         "Version": 1
       },
 
-Za pomocą metody Put identyfikator unikatowy akcji do skojarzenia z istniejącej grupy akcji z dostosowywaniem dla harmonogramu.  Poniżej przedstawiono ilustracji przykład użycia.
+Użyj Put metody z unikatowym identyfikatorem akcji, aby skojarzyć już istniejącą grupę akcji z dostosowaniem harmonogramu.  Poniżej przedstawiono przykładową ilustrację użycia.
 
     $AzNsJson = "{'properties': { 'Name': 'test-alert', 'Version':'1', 'Type':'Alert', 'Threshold': { 'Operator': 'gt', 'Value': 12 },'Severity': 'critical', 'AzNsNotification': {'GroupIds': ['subscriptions/1234a45-123d-4321-12aa-123b12a5678/resourcegroups/my-resource-group/providers/microsoft.insights/actiongroups/test-actiongroup'], 'CustomEmailSubject': 'Azure Alert fired','CustomWebhookPayload': '{\"field1\":\"value1\",\"field2\":\"value2\"}'} } }"
     armclient put /subscriptions/{Subscription ID}/resourceGroups/{Resource Group Name}/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/myAzNsaction?api-version=2015-03-20 $AzNsJson
 
-Za pomocą metody Put istniejący identyfikator akcji do modyfikowania grupy akcji skojarzony z harmonogramem.  Treść żądania musi zawierać element etag akcji.
+Użyj Put metody z istniejącym identyfikatorem akcji, aby zmodyfikować grupę akcji skojarzoną z harmonogramem.  Treść wniosku musi zawierać etag działania.
 
     $AzNsJson = "{'etag': 'datetime'2017-12-13T10%3A52%3A21.1697364Z'\"', 'properties': { 'Name': 'test-alert', 'Version':'1', 'Type':'Alert', 'Threshold': { 'Operator': 'gt', 'Value': 12 },'Severity': 'critical', 'AzNsNotification': {'GroupIds': ['subscriptions/1234a45-123d-4321-12aa-123b12a5678/resourcegroups/my-resource-group/providers/microsoft.insights/actiongroups/test-actiongroup']}, 'CustomEmailSubject': 'Azure Alert fired','CustomWebhookPayload': '{\"field1\":\"value1\",\"field2\":\"value2\"}' } }"
     armclient put /subscriptions/{Subscription ID}/resourceGroups/{Resource Group Name}/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/myAzNsaction?api-version=2015-03-20 $AzNsJson
@@ -336,7 +336,7 @@ Za pomocą metody Put istniejący identyfikator akcji do modyfikowania grupy akc
 
 ## <a name="next-steps"></a>Następne kroki
 
-* Użyj [interfejsu API REST do przeszukiwania dzienników](../../azure-monitor/log-query/log-query-overview.md) w log Analytics.
-* Informacje o [alertach dzienników w usłudze Azure monitor](../../azure-monitor/platform/alerts-unified-log.md)
-* Jak [tworzyć, edytować i zarządzać regułami alertów dziennika w usłudze Azure monitor](../../azure-monitor/platform/alerts-log.md)
+* Użyj [interfejsu API REST do wykonywania wyszukiwania dzienników](../../azure-monitor/log-query/log-query-overview.md) w usłudze Log Analytics.
+* Dowiedz się więcej o [alertach dziennika na monitorze platformy Azure](../../azure-monitor/platform/alerts-unified-log.md)
+* Jak [tworzyć, edytować lub zarządzać regułami alertów dziennika na monitorze platformy Azure](../../azure-monitor/platform/alerts-log.md)
 

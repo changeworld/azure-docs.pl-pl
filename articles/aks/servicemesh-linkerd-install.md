@@ -1,45 +1,45 @@
 ---
-title: Instalowanie konsolidatora w usłudze Azure Kubernetes Service (AKS)
-description: Dowiedz się, jak zainstalować i użyć konsolidatora, aby utworzyć siatkę usługi w klastrze usługi Azure Kubernetes Service (AKS)
+title: Instalowanie usługi Linkerd w usłudze Azure Kubernetes (AKS)
+description: Dowiedz się, jak zainstalować i używać usługi Linkerd do tworzenia siatki usługi w klastrze usługi Azure Kubernetes Service (AKS)
 author: paulbouwer
 ms.topic: article
 ms.date: 10/09/2019
 ms.author: pabouwer
 zone_pivot_groups: client-operating-system
 ms.openlocfilehash: 419b61527b68299c82dec4f2f5da6b0220859cc1
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77593739"
 ---
-# <a name="install-linkerd-in-azure-kubernetes-service-aks"></a>Instalowanie konsolidatora w usłudze Azure Kubernetes Service (AKS)
+# <a name="install-linkerd-in-azure-kubernetes-service-aks"></a>Instalowanie usługi Linkerd w usłudze Azure Kubernetes (AKS)
 
-[Konsolidator][linkerd-github] jest siatką usługi Open Source i [CNCFą do inkubacji projektu][linkerd-cncf]. Konsolidator jest siatką usługi Ultralight, która udostępnia funkcje, które obejmują zarządzanie ruchem, tożsamość usługi i bezpieczeństwo, niezawodność i możliwości przestrzegania. Aby uzyskać więcej informacji na temat konsolidatora, zapoznaj się [z oficjalną][linkerd-faq] i dołączoną dokumentacją [architektury][linkerd-architecture] .
+[Linkerd][linkerd-github] to siatka usług open source i [projekt inkubacji CNCF.][linkerd-cncf] Linkerd to ultralekka siatka usługi, która zapewnia funkcje, które obejmują zarządzanie ruchem, tożsamość usługi i bezpieczeństwo, niezawodność i zauważalność. Aby uzyskać więcej informacji na temat linkerd, zobacz oficjalne [Linkerd CZĘSTO zadawane pytania][linkerd-faq] i [konsolid architecture][linkerd-architecture] dokumentacji.
 
-W tym artykule opisano sposób instalowania konsolidatora. `linkerd` dane binarne klienta konsolidatora są instalowane na komputerze klienckim, a wbudowane składniki są instalowane w klastrze Kubernetes na AKS.
+W tym artykule pokazano, jak zainstalować Linkerd. Plik binarny klienta Linkerd `linkerd` jest zainstalowany na komputerze klienckim, a składniki Linkerd są instalowane w klastrze Kubernetes w u usługi AKS.
 
 > [!NOTE]
-> Te instrukcje odwołują się do konsolidatora `stable-2.6.0`wersji.
+> Te instrukcje odwołują się do wersji `stable-2.6.0`Linkerd .
 >
-> `stable-2.6.x` konsolidatora można uruchomić w odniesieniu do wersji Kubernetes `1.13+`. Dodatkowe wersje systemów stabilnych i brzegowych można znaleźć w wersjach [z konsolidatorem GitHub][linkerd-github-releases].
+> Linkerd `stable-2.6.x` można uruchomić przeciwko wersji `1.13+`Kubernetes . Dodatkowe wersje stabilne i edge Linkerd można znaleźć w [GitHub - Linkerd Releases][linkerd-github-releases].
 
 W tym artykule omówiono sposób wykonywania następujących zadań:
 
 > [!div class="checklist"]
-> * Pobieranie i Instalowanie konsolidatora dwuskładnikowego klienta konsolidatora
-> * Instalacja konsolidatora na AKS
-> * Weryfikowanie instalacji konsolidatora
-> * Dostęp do pulpitu nawigacyjnego
-> * Odinstalowano z AKS
+> * Pobierz i zainstaluj plik binarny klienta linkerd
+> * Instalowanie Linkerd na AKS
+> * Sprawdzanie poprawności instalacji linkerd
+> * Uzyskiwanie dostępu do pulpitu nawigacyjnego
+> * Odinstalowywanie linkerd z AKS
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
-Kroki opisane w tym artykule założono, że utworzono klaster AKS (Kubernetes `1.13` lub nowszy z włączoną funkcją RBAC) i nastąpiło połączenie `kubectl` z klastrem. Jeśli potrzebujesz pomocy z dowolnym z tych elementów, zobacz [Przewodnik Szybki Start AKS][aks-quickstart].
+Kroki opisane w tym artykule założono, że utworzono klaster AKS (Kubernetes `1.13` i `kubectl` powyżej, z włączoną funkcją RBAC) i nawiązałeś połączenie z klastrem. Jeśli potrzebujesz pomocy w przypadku któregokolwiek z tych elementów, zobacz [przewodnik Szybki start usługi AKS][aks-quickstart].
 
-Aby można było uruchomić wszystkie Konsolidatory, muszą być zaplanowane do uruchomienia w węzłach systemu Linux — ta konfiguracja jest domyślnie opisana poniżej i nie wymaga dodatkowej konfiguracji.
+Wszystkie zasobniki Linkerd muszą być zaplanowane do uruchomienia w węzłach systemu Linux - ta konfiguracja jest domyślna w metodzie instalacji wyszczególnionej poniżej i nie wymaga dodatkowej konfiguracji.
 
-Ten artykuł oddziela wskazówki dotyczące instalacji konsolidatora do kilku dyskretnych kroków. Wynik jest taki sam w strukturze co oficjalne [wskazówki dotyczące][linkerd-getting-started]rozpoczynania konsolidatora.
+W tym artykule dzieli wskazówki dotyczące instalacji konsoli Linkerd na kilka dyskretnych kroków. Wynik jest taki sam w strukturze jak oficjalne Linkerd pierwsze [wskazówki][linkerd-getting-started].
 
 ::: zone pivot="client-operating-system-linux"
 
@@ -59,15 +59,15 @@ Ten artykuł oddziela wskazówki dotyczące instalacji konsolidatora do kilku dy
 
 ::: zone-end
 
-## <a name="install-linkerd-on-aks"></a>Instalacja konsolidatora na AKS
+## <a name="install-linkerd-on-aks"></a>Instalowanie Linkerd na AKS
 
-Przed zainstalowaniem konsolidatora zostaną uruchomione testy przed instalacją, aby określić, czy na tym klastrze AKS można zainstalować płaszczyznę kontroli:
+Zanim zainstalujemy Linkerd, uruchomimy kontrole przed instalacją, aby ustalić, czy płaszczyzna sterowania może być zainstalowana w naszym klastrze AKS:
 
 ```console
 linkerd check --pre
 ```
 
-Aby wskazać, że klaster AKS jest prawidłowym miejscem docelowym instalacji dla konsolidatora:
+Powinien zostać wyświetlony coś takiego, aby wskazać, że klaster AKS jest prawidłowym celem instalacji dla konsoli Linkerd:
 
 ```console
 kubernetes-api
@@ -117,26 +117,26 @@ linkerd-version
 Status check results are √
 ```
 
-Teraz czas na zainstalowanie elementów konsolidatora. Użyj `linkerd` i `kubectl` plików binarnych, aby zainstalować wbudowane składniki w klastrze AKS. Przestrzeń nazw `linkerd` zostanie utworzona automatycznie, a składniki zostaną zainstalowane w tej przestrzeni nazw.
+Teraz nadszedł czas, aby zainstalować składniki Linkerd. Użyj `linkerd` plików `kubectl` binarnych, aby zainstalować składniki Linkerd w klastrze AKS. Obszar `linkerd` nazw zostanie utworzony automatycznie, a składniki zostaną zainstalowane w tym obszarze nazw.
 
 ```console
 linkerd install | kubectl apply -f -
 ```
 
-Konsolidator rozmieszcza wiele obiektów. Zostanie wyświetlona lista z danych wyjściowych powyższego polecenia `linkerd install`. Wdrożenie konsolidatora składników powinno trwać około 1 minuty, w zależności od środowiska klastra.
+Linkerd wdraża wiele obiektów. Zobaczysz listę z danych wyjściowych `linkerd install` polecenia powyżej. Wdrożenie składników konsoli Linkerd powinno potrwać około 1 minuty, w zależności od środowiska klastra.
 
-W tym momencie wdrożono konsolidator do klastra AKS. Aby upewnić się, że istnieje pomyślne wdrożenie konsolidatora, przejdź do następnej sekcji, aby [sprawdzić poprawność instalacji konsolidatora](#validate-the-linkerd-installation).
+W tym momencie wdrożono linkerd do klastra AKS. Aby upewnić się, że mamy pomyślne wdrożenie Linkerd, przejdźmy do następnej sekcji, aby [sprawdzić poprawność instalacji linkerd](#validate-the-linkerd-installation).
 
-## <a name="validate-the-linkerd-installation"></a>Weryfikowanie instalacji konsolidatora
+## <a name="validate-the-linkerd-installation"></a>Sprawdzanie poprawności instalacji linkerd
 
-Upewnij się, że zasoby zostały pomyślnie utworzone. Użyj poleceń [polecenia kubectl Get SVC][kubectl-get] i [polecenia kubectl Get pod][kubectl-get] , aby wykonać zapytanie dotyczące przestrzeni nazw `linkerd`, w której elementy konsolidatora zostały zainstalowane przez polecenie `linkerd install`:
+Upewnij się, że zasoby zostały pomyślnie utworzone. Użyj [kubectl get svc][kubectl-get] i [kubectl get poleceń zasobnika][kubectl-get] do kwerendy obszaru `linkerd` `linkerd install` nazw, gdzie składniki Linkerd zostały zainstalowane przez polecenie:
 
 ```console
 kubectl get svc --namespace linkerd --output wide
 kubectl get pod --namespace linkerd --output wide
 ```
 
-Następujące przykładowe dane wyjściowe pokazują usługi i zasobniki (zaplanowane na węzłach systemu Linux), które powinny być teraz uruchomione:
+Poniższe przykładowe dane wyjściowe pokazują usługi i zasobników (zaplanowane w węzłach systemu Linux), które powinny być teraz uruchomione:
 
 ```console
 NAME                     TYPE        CLUSTER-IP     EXTERNAL-IP   PORT(S)             AGE  SELECTOR
@@ -163,13 +163,13 @@ linkerd-tap-5cd9fc566-ct988               2/2     Running   0          64s   10.
 linkerd-web-774c79b6d5-dhhwf              2/2     Running   0          65s   10.240.0.70   aks-linux-16165125-vmss000002   <none>           <none>
 ```
 
-Konsolidator udostępnia polecenie za pośrednictwem pliku binarnego klienta `linkerd`, aby sprawdzić, czy przykonsolidatora płaszczyzna kontroli została pomyślnie zainstalowana i skonfigurowana.
+Linkerd udostępnia polecenie `linkerd` za pośrednictwem pliku binarnego klienta, aby sprawdzić, czy płaszczyzna sterowania Linkerd została pomyślnie zainstalowana i skonfigurowana.
 
 ```console
 linkerd check
 ```
 
-Aby wskazać, że instalacja zakończyła się pomyślnie, powinien zostać wyświetlony następujący element:
+Powinieneś zobaczyć coś takiego, aby wskazać, że instalacja zakończyła się pomyślnie:
 
 ```console
 kubernetes-api
@@ -224,15 +224,15 @@ control-plane-version
 Status check results are √
 ```
 
-## <a name="access-the-dashboard"></a>Dostęp do pulpitu nawigacyjnego
+## <a name="access-the-dashboard"></a>Uzyskiwanie dostępu do pulpitu nawigacyjnego
 
-Łączący się z pulpitem nawigacyjnym, który zapewnia wgląd w siatkę i obciążenia usługi. Aby uzyskać dostęp do pulpitu nawigacyjnego, użyj polecenia `linkerd dashboard`. To polecenie wykorzystuje [port polecenia kubectl do przodu][kubectl-port-forward] w celu utworzenia bezpiecznego połączenia między komputerem klienckim i odpowiednimi modułami w klastrze AKS. Następnie zostanie automatycznie otwarty pulpit nawigacyjny w domyślnej przeglądarce.
+Linkerd jest wyposażony w pulpit nawigacyjny, który zapewnia wgląd w siatki usług i obciążeń. Aby uzyskać dostęp do `linkerd dashboard` pulpitu nawigacyjnego, użyj polecenia. To polecenie wykorzystuje [port kubectl][kubectl-port-forward] do przodu, aby utworzyć bezpieczne połączenie między komputerem klienckim a odpowiednimi zasobnikami w klastrze AKS. Następnie automatycznie otworzy pulpit nawigacyjny w domyślnej przeglądarce.
 
 ```console
 linkerd dashboard
 ```
 
-Polecenie spowoduje również utworzenie portu do przodu i zwrócenie linku do pulpitów nawigacyjnych Grafana.
+Polecenie utworzy również port do przodu i zwróci łącze dla pulpitów nawigacyjnych Grafana.
 
 ```console
 Linkerd dashboard available at:
@@ -242,14 +242,14 @@ http://127.0.0.1:50750/grafana
 Opening Linkerd dashboard in the default browser
 ```
 
-## <a name="uninstall-linkerd-from-aks"></a>Odinstalowano z AKS
+## <a name="uninstall-linkerd-from-aks"></a>Odinstalowywanie linkerd z AKS
 
 > [!WARNING]
-> Usunięcie konsolidatora z działającego systemu może skutkować problemami związanymi z ruchem między usługami. Upewnij się, że zostały wprowadzone przepisy dotyczące systemu, aby nadal działały prawidłowo bez konsolidatora przed kontynuowaniem.
+> Usunięcie linkerd z uruchomionego systemu może spowodować problemy związane z ruchem między usługami. Upewnij się, że zostały wprowadzone przepisy dla systemu nadal działać poprawnie bez Linkerd przed kontynuowaniem.
 
-Najpierw musisz usunąć serwery proxy płaszczyzny danych. Usuń wszystkie automatyczne [Adnotacje][linkerd-automatic-proxy-injection] iniekcji serwera proxy z przestrzeni nazw obciążeń i wdrażaj wdrożenia obciążeń. Obciążenia nie powinny już mieć żadnych powiązanych składników płaszczyzny danych.
+Najpierw musisz usunąć serwery proxy płaszczyzny danych. Usuń wszystkie [adnotacje automatycznego][linkerd-automatic-proxy-injection] wtrysku serwera proxy z obszarów nazw obciążenia i wdrożyć wdrożenia obciążenia. Obciążenia nie powinny już mieć żadnych skojarzonych składników płaszczyzny danych.
 
-Na koniec Usuń płaszczyznę kontroli w następujący sposób:
+Na koniec zdejmij płaszczyznę sterowania w następujący sposób:
 
 ```console
 linkerd install --ignore-cluster | kubectl delete -f -
@@ -257,15 +257,15 @@ linkerd install --ignore-cluster | kubectl delete -f -
 
 ## <a name="next-steps"></a>Następne kroki
 
-Aby zapoznać się z dodatkowymi opcjami instalacji i konfiguracji dla konsolidatora, zobacz następujące oficjalne wskazówki dotyczące konsolidatora:
+Aby zapoznać się z większą liczesz liczniejszy instalacja i konfiguracja opcje pod kątem Linkerd, zobacz ten kolejne urzędowy Połączerd wytyczne:
 
-- [Instalacja z konsolidatorem-Helm][linkerd-install-with-helm]
-- [Z konsolidatorem — instalacja wieloetapowa w celu zapewnienia uprawnień roli][linkerd-multi-stage-installation]
+- [Linkerd - Instalacja steru][linkerd-install-with-helm]
+- [Linkerd - Instalacja wieloetapowa w celu uwzględnienia przywilejów ról][linkerd-multi-stage-installation]
 
-Możesz również postępować zgodnie z dodatkowymi scenariuszami przy użyciu:
+Można również wykonać dodatkowe scenariusze za pomocą:
 
-- [Demonstracja emojivoto z konsolidatorem][linkerd-demo-emojivoto]
-- [Demonstracja książek z konsolidatorem][linkerd-demo-books]
+- [Linkerd emojivoto demo][linkerd-demo-emojivoto]
+- [Prezentacja książek Linkerd][linkerd-demo-books]
 
 <!-- LINKS - external -->
 

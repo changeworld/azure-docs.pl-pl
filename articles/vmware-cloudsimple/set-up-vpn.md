@@ -1,6 +1,6 @@
 ---
-title: Azure VMware Solutions (Automatyczna synchronizacja) — Konfigurowanie sieci VPN między chmurą prywatną i automatyczna synchronizacja
-description: Opisuje sposób konfigurowania połączenia sieci VPN typu lokacja-lokacja lub punkt-lokacja między siecią lokalną a chmurą prywatną do automatycznej synchronizacji
+title: Rozwiązanie Azure VMware by CloudSimple — konfigurowanie sieci VPN między usługą lokalną a chmurą prywatną
+description: W tym artykule opisano sposób konfigurowania połączenia sieci VPN między lokacją a siecią VPN typu lokacja-lokacja między siecią lokalną a chmurą CloudSimple Private Cloud
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/14/2019
@@ -8,113 +8,113 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 8188fac270eadb6e09cc3561ddefb05aa59ba661
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.openlocfilehash: d000d8390375466232c7daac2a4a056ef424be79
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/08/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77087130"
 ---
-# <a name="configure-a-vpn-connection-to-your-avs-private-cloud"></a>Skonfiguruj połączenie sieci VPN z chmurą prywatną do automatycznej synchronizacji
+# <a name="configure-a-vpn-connection-to-your-cloudsimple-private-cloud"></a>Konfigurowanie połączenia sieci VPN z chmurą prywatną CloudSimple
 
-Bramy sieci VPN umożliwiają łączenie się z siecią lokalną i zdalnie z komputera klienckiego. W tym artykule znajdują się informacje dotyczące konfigurowania bram sieci VPN w portalu automatycznej synchronizacji. Połączenie sieci VPN między siecią lokalną a siecią o automatycznej synchronizacji zapewnia dostęp do programu vCenter i obciążeń w chmurze prywatnej automatycznej synchronizacji. Automatyczna synchronizacja obsługuje zarówno bramę sieci VPN typu punkt-lokacja, jak i bramy sieci VPN typu lokacja-lokacja.
+Bramy sieci VPN umożliwiają zdalne łączenie się z siecią CloudSimple z sieci lokalnej i z komputera klienckiego.  W tym artykule można znaleźć informacje na temat konfigurowania bram sieci VPN z portalu CloudSimple.  Połączenie sieci VPN między siecią lokalną a siecią CloudSimple zapewnia dostęp do centrum wirtualnego i obciążeń w chmurze prywatnej. CloudSimple obsługuje zarówno sieci VPN typu punkt-lokacja, jak i bramy sieci VPN typu lokacja lokacja.
 
 ## <a name="vpn-gateway-types"></a>Typy bram sieci VPN
 
-* Połączenie **sieci VPN typu punkt-lokacja** to najprostszy sposób nawiązywania połączenia z chmurą prywatną automatycznej synchronizacji z komputera. Za pomocą połączenia sieci VPN typu punkt-lokacja można zdalnie łączyć się z chmurą prywatną.
-* Połączenie **sieci VPN typu lokacja-lokacja** umożliwia skonfigurowanie obciążeń chmur prywatnych w celu uzyskania dostępu do usług lokalnych. Możesz również użyć Active Directory lokalnego jako źródła tożsamości do uwierzytelniania w ramach programu vCenter w chmurze prywatnej chmury. Obecnie jest obsługiwany **oparty na zasadach typ sieci VPN** .
+* Połączenie **sieci VPN typu "point-to-Site"** to najprostszy sposób na połączenie z chmurą prywatną z komputera. Użyj łączności sieci VPN typu punkt-lokacja, aby zdalnie łączyć się z chmurą prywatną.
+* Połączenie **sieci VPN między lokacjami** umożliwia skonfigurowanie obciążeń chmury prywatnej w celu uzyskania dostępu do usług lokalnych. Lokalna usługa Active Directory służy również jako źródło tożsamości do uwierzytelniania w centrum vCenter usługi Private Cloud.  Obecnie obsługiwany jest typ **sieci VPN oparty na zasadach.**
 
-W regionie można utworzyć jedną bramę sieci VPN typu lokacja-lokacja i jedną bramę sieci VPN typu punkt-lokacja.
+W regionie można utworzyć jedną bramę sieci VPN lokacja lokacja i jedną bramę sieci VPN typu punkt-lokacja.
 
-## <a name="point-to-site-vpn"></a>Sieci VPN typu punkt lokacja
+## <a name="point-to-site-vpn"></a>Sieć VPN typu punkt-lokacja
 
 Aby utworzyć bramę sieci VPN typu punkt-lokacja, zobacz [Tworzenie bramy sieci VPN typu punkt-lokacja](vpn-gateway.md#create-point-to-site-vpn-gateway).
 
-### <a name="connect-to-avs-using-point-to-site-vpn"></a>Nawiązywanie połączenia z programem synchronizacji przy użyciu sieci VPN typu punkt-lokacja
+### <a name="connect-to-cloudsimple-using-point-to-site-vpn"></a>Łączenie się z cloudsimple przy użyciu sieci VPN typu punkt-lokacja
 
-Klient sieci VPN jest wymagany do nawiązywania połączenia z komputerem. Pobierz [klienta OpenVPN](https://openvpn.net/community-downloads/) dla systemu Windows lub [lepkości](https://www.sparklabs.com/viscosity/download/) dla macOS i OS X.
+Klient sieci VPN jest potrzebny do łączenia się z cloudsimple z komputera.  Pobierz [klienta OpenVPN](https://openvpn.net/community-downloads/) dla Windows lub [Lepkości](https://www.sparklabs.com/viscosity/download/) dla systemów macOS i OS X.
 
-1. Uruchom Portal automatycznej synchronizacji i wybierz pozycję **Sieć**.
-2. Wybierz **VPN Gateway**.
-3. Na liście bram sieci VPN kliknij pozycję Brama sieci VPN typu punkt-lokacja.
+1. Uruchom portal CloudSimple i wybierz pozycję **Sieć**.
+2. Wybierz **bramę sieci VPN**.
+3. Z listy bram sieci VPN kliknij bramę sieci VPN typu punkt-lokacja.
 4. Wybierz pozycję **Użytkownicy**.
-5. Kliknij pozycję **Pobierz moją konfigurację sieci VPN**
+5. Kliknij pobierz **konfigurację sieci VPN**
 
     ![Pobieranie konfiguracji sieci VPN](media/download-p2s-vpn-configuration.png)
 
 6. Importowanie konfiguracji na kliencie sieci VPN
 
-    * Instrukcje dotyczące [importowania konfiguracji w kliencie systemu Windows](https://openvpn.net/vpn-server-resources/connecting-to-access-server-with-windows/#openvpn-open-source-openvpn-gui-program)
-    * Instrukcje dotyczące [importowania konfiguracji w systemie macOS lub OS X](https://www.sparklabs.com/support/kb/article/getting-started-with-viscosity-mac/#creating-your-first-connection)
+    * Instrukcje [dotyczące importowania konfiguracji na kliencie systemu Windows](https://openvpn.net/vpn-server-resources/connecting-to-access-server-with-windows/#openvpn-open-source-openvpn-gui-program)
+    * Instrukcje [importowania konfiguracji w systemie macOS lub OS X](https://www.sparklabs.com/support/kb/article/getting-started-with-viscosity-mac/#creating-your-first-connection)
 
-7. Nawiąż połączenie z usługą automatycznej synchronizacji z bramą sieci VPN.
+7. Połącz się z bramą sieci VPN CloudSimple.
 
-W poniższym przykładzie pokazano Importowanie połączenia za pomocą **klienta lepkości**.
+Poniższy przykład przedstawia importowanie połączenia przy użyciu **klienta lepkości**.
 
-#### <a name="import-connection-on-viscosity-client"></a>Importuj połączenie na kliencie z lepką
+#### <a name="import-connection-on-viscosity-client"></a>Importowanie połączenia na kliencie lepkości
 
-1. Wyodrębnij zawartość konfiguracji sieci VPN z pobranego pliku zip.
+1. Wyodrębnij zawartość konfiguracji sieci VPN z pobranego pliku .zip.
 
-2. Otwórz na komputerze.
+2. Otwórz lepkość na komputerze.
 
-3. Kliknij ikonę **+** i wybierz pozycję **Importuj połączenie** > **z pliku**.
+3. Kliknij **+** ikonę i wybierz pozycję **Importuj połączenie** > **z pliku**.
 
-    ![Importuj konfigurację sieci VPN z pliku](media/import-p2s-vpn-config.png)
+    ![Importowanie konfiguracji sieci VPN z pliku](media/import-p2s-vpn-config.png)
 
-4. Wybierz plik konfiguracji OpenVPN (. ovpn) dla protokołu, którego chcesz użyć, a następnie kliknij przycisk **Otwórz**.
+4. Wybierz plik konfiguracyjny OpenVPN (.ovpn) dla protokołu, którego chcesz użyć, i kliknij przycisk **Otwórz**.
 
     ![Sieć VPN](media/import-p2s-vpn-config-choose-ovpn.png)
 
-Połączenie zostanie wyświetlone w menu lepkość.
+Połączenie pojawi się teraz w menu Lepkość.
 
 #### <a name="connect-to-the-vpn"></a>Połącz się z siecią VPN
 
-Aby nawiązać połączenie z siecią VPN za pomocą OpenVPNego, wybierz połączenie z menu. Ikona menu jest aktualizowana w celu wskazania, że połączenie zostało nawiązane.
+Aby połączyć się z siecią VPN za pomocą klienta Viscosity OpenVPN, wybierz połączenie z menu. Ikona menu zostanie zaktualizowana, aby wskazać, że połączenie zostało nawiązane.
 
 ![Sieć VPN](media/vis03.png)
 
-### <a name="connecting-to-multiple-avs-private-clouds"></a>Łączenie z wieloma chmurami prywatnymi automatycznej synchronizacji
+### <a name="connecting-to-multiple-private-clouds"></a>Łączenie się z wieloma chmurami prywatnymi
 
-Połączenie sieci VPN typu punkt-lokacja rozwiązuje nazwy DNS pierwszej utworzonej chmury prywatnej automatycznej wersji. Jeśli chcesz uzyskać dostęp do innych chmur prywatnych automatycznej synchronizacji, musisz zaktualizować serwer DNS na kliencie sieci VPN.
+Połączenie sieci VPN typu punkt-lokacja rozwiązuje nazwy DNS pierwszej utworzonej chmury prywatnej. Aby uzyskać dostęp do innych chmur prywatnych, należy zaktualizować serwer DNS na kliencie sieci VPN.
 
-1. Uruchom [Portal automatycznej synchronizacji](access-cloudsimple-portal.md).
+1. Uruchom [portal CloudSimple](access-cloudsimple-portal.md).
 
-2. Przejdź do **zasobów** > **automatycznej synchronizacji chmur prywatnych** i wybierz chmurę prywatną do automatycznej synchronizacji, z którą chcesz nawiązać połączenie.
+2. Przejdź do chmury**prywatnej** **zasobów** > i wybierz chmurę prywatną, z którą chcesz się połączyć.
 
-3. Na stronie **Podsumowanie** w chmurze prywatnej automatyczna synchronizacja Skopiuj adres IP serwera DNS w chmurze automatycznej synchronizacji w obszarze **podstawowe informacje**.
+3. Na stronie **Podsumowanie** chmury prywatnej skopiuj adres IP serwera DNS private cloud w obszarze **Informacje podstawowe**.
 
-    ![Automatyczna synchronizacja serwerów DNS w chmurze prywatnej](media/private-cloud-dns-server.png)
+    ![Serwery DNS w chmurze prywatnej](media/private-cloud-dns-server.png)
 
-4. Kliknij prawym przyciskiem myszy ikonę lepkość na pasku systemowym komputera i wybierz pozycję **Preferencje**.
+4. Kliknij prawym przyciskiem myszy ikonę Lepkość w zasobniku systemowym komputera i wybierz polecenie **Preferencje**.
 
     ![Sieć VPN](media/vis00.png)
 
-5. Wybierz połączenie sieci VPN do automatycznej synchronizacji.
+5. Wybierz połączenie CloudSimple VPN.
 
     ![Połączenie sieci VPN](media/viscosity-client.png)
 
-6. Kliknij przycisk **Edytuj** , aby zmienić właściwości połączenia.
+6. Kliknij **przycisk Edytuj,** aby zmienić właściwości połączenia.
 
     ![Edytowanie połączenia sieci VPN](media/viscosity-edit-connection.png)
 
-7. Kliknij kartę **Sieć** , a następnie wprowadź adres IP serwera DNS w chmurze automatycznej synchronizacji rozdzielony przecinkami lub spacją i domeną jako ```az.cloudsimple.io```. Wybierz opcję **Ignoruj ustawienia DNS wysyłane przez serwer sieci VPN**.
+7. Kliknij kartę **Sieć** i wprowadź adresy IP serwera DNS w chmurze prywatnej ```cloudsimple.io```oddzielone przecinkiem lub spacją, a domena jako domena jako .  Wybierz **pozycję Ignoruj ustawienia DNS wysyłane przez serwer sieci VPN**.
 
-    ![Sieci VPN](media/viscosity-edit-connection-networking.png)
+    ![Sieć VPN](media/viscosity-edit-connection-networking.png)
 
 > [!IMPORTANT]
-> Aby nawiązać połączenie z pierwszą chmurą prywatną w wersji zaautomatycznej, usuń te ustawienia i Połącz się z serwerem sieci VPN.
+> Aby połączyć się z pierwszą chmurą prywatną, usuń te ustawienia i połącz się z serwerem sieci VPN.
 
-## <a name="site-to-site-vpn"></a>Sieci VPN typu lokacja lokacja
+## <a name="site-to-site-vpn"></a>Sieć VPN typu lokacja-lokacja
 
-Aby utworzyć bramę sieci VPN typu lokacja-lokacja, zobacz [Tworzenie bramy sieci VPN typu lokacja-lokacja](vpn-gateway.md#set-up-a-site-to-site-vpn-gateway). Połączenia sieci VPN typu lokacja-lokacja z sieci lokalnej do chmury prywatnej automatycznej synchronizacji zapewniają te korzyści. 
+Aby utworzyć bramę sieci VPN typu lokacja lokacja, zobacz [Tworzenie bramy sieci VPN między lokacjami](vpn-gateway.md#set-up-a-site-to-site-vpn-gateway).  Połączenie sieci VPN lokacja-lokacja z sieci lokalnej z usługą Private Cloud zapewnia te korzyści.  
 
-* Dostępność narzędzia do automatycznej synchronizacji w chmurze prywatnej dla programu vCenter z dowolnej stacji roboczej w sieci lokalnej
-* Używanie Active Directory lokalnego jako źródła tożsamości programu vCenter
-* Wygodny transfer szablonów maszyn wirtualnych, obrazów ISO i innych plików z zasobów lokalnych do swojej automatycznej synchronizacji w chmurze prywatnej programu vCenter
-* Dostępność obciążeń działających w chmurze prywatnej automatycznej synchronizacji z sieci lokalnej
+* Dostępność usługi Private Cloud vCenter z dowolnej stacji roboczej w sieci lokalnej
+* Korzystanie z lokalnej usługi Active Directory jako źródła tożsamości vCenter
+* Wygodne przesyłanie szablonów maszyn wirtualnych, obiektów ISO i innych plików z zasobów lokalnych do usługi Private Cloud vCenter
+* Dostępność obciążeń działających w chmurze prywatnej z sieci lokalnej
 
 Aby skonfigurować lokalną bramę sieci VPN w trybie wysokiej dostępności, zobacz [Konfigurowanie połączenia sieci VPN o wysokiej dostępności](high-availability-vpn-connection.md).
 
 > [!IMPORTANT]
->    1. Na urządzeniu sieci VPN ustaw wartość opcji ograniczania TCP = 1200. Lub jeśli urządzenia sieci VPN nie obsługują funkcji ograniczania, można zamiast tego ustawić jednostkę MTU w interfejsie tunelu na 1240 bajtów.
-> 2. Po skonfigurowaniu sieci VPN typu lokacja-lokacja Prześlij dalej żądania DNS dla *. cloudsimple.io do serwerów DNS chmury prywatnej w chmurze automatycznej. Postępuj zgodnie z instrukcjami w [lokalnej konfiguracji DNS](on-premises-dns-setup.md).
+>    1. Ustaw TCP MSS Clamping na 1200 na urządzeniu VPN. Lub jeśli urządzenia sieci VPN nie obsługują zaciskania MSS, możesz alternatywnie ustawić jednostkę MTU w interfejsie tunelu na 1240 bajtów.
+> 2. Po skonfigurowaniu sieci VPN między lokacjami należy przekazywać żądania DNS dla *.cloudsimple.io do serwerów DNS w chmurze prywatnej.  Postępuj zgodnie z instrukcjami w [lokalnej instalacji DNS](on-premises-dns-setup.md).
