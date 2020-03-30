@@ -1,18 +1,18 @@
 ---
-title: Utwórz definicję aplikacji zarządzanej
+title: Tworzenie definicji aplikacji zarządzanej
 description: Przedstawia sposób tworzenia aplikacji zarządzanej platformy Azure przeznaczonej dla członków Twojej organizacji.
 author: tfitzmac
 ms.topic: quickstart
 ms.date: 09/13/2019
 ms.author: tomfitz
-ms.openlocfilehash: 11d4eb396d332327addcd85ed7badd36ef8f1d10
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 5168dab7501cdb2907b3eede5877dce39e9e5c97
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75650345"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79473051"
 ---
-# <a name="publish-an-azure-managed-application-definition"></a>Publikowanie definicji aplikacji zarządzanej platformy Azure
+# <a name="quickstart-publish-an-azure-managed-application-definition"></a>Szybki start: publikowanie definicji aplikacji zarządzanej platformy Azure
 
 Ten przewodnik Szybki start zawiera wprowadzenie dotyczące pracy z aplikacjami zarządzanymi. Możesz dodać definicję aplikacji zarządzanej do katalogu wewnętrznego dla użytkowników w organizacji. Aby uprościć wprowadzenie, utworzyliśmy już pliki dla aplikacji zarządzanej. Te pliki są dostępne w serwisie GitHub. Dzięki samouczkowi [Tworzenie aplikacji w katalogu usług](publish-service-catalog-app.md) możesz dowiedzieć się, jak utworzyć te pliki.
 

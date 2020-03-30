@@ -1,18 +1,18 @@
 ---
 title: Porównywanie usługi AppSource i portalu Azure Marketplace | Azure
 description: W tym artykule opisano witryny sklepu w witrynie Microsoft AppSource i portalu Azure Marketplace.
-author: jm-aditi-ms
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 06/05/2018
 ms.author: dsindona
-ms.openlocfilehash: c07bba7340a1934fc422598c798022602e7c046a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bd6c375231facc3d7afb35df74210d26b5f50ba8
+ms.sourcegitcommit: d0fd35f4f0f3ec71159e9fb43fcd8e89d653f3f2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80281616"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80387788"
 ---
 # <a name="comparing-appsource-and-the-azure-marketplace"></a>Porównanie usługi AppSource i witryny Azure Marketplace
 Witryny sklepów w [portalu Azure Marketplace](https://azuremarketplace.microsoft.com) i microsoft [AppSource](https://appsource.microsoft.com) obsługują unikatowe wymagania klientów. Użyj witryn sklepowych, aby kierować reklamy do klientów według roli. Możesz zaoferować odpowiednie rozwiązanie lub usługę w oparciu o klienta.

@@ -1,6 +1,6 @@
 ---
-title: Komunikaty z chmury do urządzenia za pomocą usługi Azure IoT Hub (Python) | Microsoft Docs
-description: Jak wysyłać komunikaty z chmury do urządzenia z usługi Azure IoT Hub za pomocą zestawów SDK usługi Azure IoT dla języka Python. Zmodyfikuj aplikację symulowanego urządzenia, aby odbierać komunikaty z chmury do urządzenia i modyfikować aplikację zaplecza w celu wysyłania komunikatów z chmury do urządzenia.
+title: Komunikaty między chmurami a urządzeniem za pomocą usługi Azure IoT Hub (Python) | Dokumenty firmy Microsoft
+description: Jak wysyłać komunikaty z chmury do urządzenia do urządzenia z centrum Usługi Azure IoT przy użyciu zestawów SDK usługi Azure IoT dla języka Python. Zmodyfikowana aplikacja urządzenia jest modyfikowana w celu odbierania komunikatów z chmury do urządzenia i modyfikowania aplikacji zaplecza w celu wysyłania komunikatów z chmury do urządzenia.
 author: robinsh
 ms.service: iot-hub
 services: iot-hub
@@ -9,35 +9,35 @@ ms.topic: conceptual
 ms.date: 07/30/2019
 ms.author: robinsh
 ms.openlocfilehash: 3613062cf8765a4aec3327b660bb5818898f2dd1
-ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77110421"
 ---
-# <a name="send-cloud-to-device-messages-with-iot-hub-python"></a>Wysyłanie komunikatów z chmury do urządzeń za pomocą IoT Hub (Python)
+# <a name="send-cloud-to-device-messages-with-iot-hub-python"></a>Wysyłanie wiadomości z chmury do urządzenia za pomocą usługi IoT Hub (Python)
 
 [!INCLUDE [iot-hub-selector-c2d](../../includes/iot-hub-selector-c2d.md)]
 
-Azure IoT Hub to w pełni zarządzana usługa, która pomaga zapewnić niezawodne i niezawodną komunikację dwukierunkową między milionami urządzeń i zapleczem rozwiązania. [Wysyłanie danych telemetrycznych z urządzenia do centrum IoT Hub](quickstart-send-telemetry-python.md) pokazuje, jak utworzyć Centrum IoT, zainicjować w nim tożsamość urządzenia i kod aplikacji symulowanego urządzenia, która wysyła komunikaty z urządzenia do chmury.
+Usługa Azure IoT Hub to w pełni zarządzana usługa, która pomaga umożliwić niezawodną i bezpieczną dwukierunkową komunikację między milionami urządzeń i zaplecza rozwiązania. Wyślij [dane telemetryczne z urządzenia do centrum IoT Hub](quickstart-send-telemetry-python.md) Szybki start pokazuje, jak utworzyć centrum IoT hub, aprowizować tożsamość urządzenia w nim i kod symulowanej aplikacji urządzenia, która wysyła komunikaty urządzenia do chmury.
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
-Ten samouczek kompiluje na temat [wysyłania danych telemetrycznych z urządzenia do centrum IoT Hub](quickstart-send-telemetry-python.md). Pokazano, jak:
+Ten samouczek opiera się na [wysyłaniu danych telemetrycznych z urządzenia do centrum IoT](quickstart-send-telemetry-python.md)hub . To pokazuje, jak:
 
-* Z zaplecza rozwiązania Wyślij komunikaty z chmury do urządzenia do jednego urządzenia za pośrednictwem IoT Hub.
+* Z zaplecza rozwiązania wysyłaj komunikaty z chmury do urządzenia do jednego urządzenia za pośrednictwem usługi IoT Hub.
 
-* Odbieraj komunikaty z chmury do urządzenia na urządzeniu.
+* Odbieranie komunikatów z chmury do urządzenia na urządzeniu.
 
-* Z zaplecza rozwiązania Poproś o potwierdzenie dostarczenia (*Opinie*) o komunikatach wysyłanych do urządzenia z IoT Hub.
+* W rozwiązaniu zaplecza, żądanie potwierdzenia dostarczania *(opinie)* dla wiadomości wysyłanych do urządzenia z Usługi IoT Hub.
 
-Więcej informacji na temat komunikatów z chmury do urządzeń można znaleźć w [przewodniku dewelopera IoT Hub](iot-hub-devguide-messaging.md).
+Więcej informacji na temat komunikatów z chmury do urządzenia można znaleźć w [przewodniku dla deweloperów usługi IoT Hub](iot-hub-devguide-messaging.md).
 
-Na końcu tego samouczka uruchamiasz dwie aplikacje konsolowe języka Python:
+Na końcu tego samouczka uruchomisz dwie aplikacje konsoli Python:
 
-* **SimulatedDevice.py**, zmodyfikowana wersja aplikacji utworzona w wysyłanie danych [telemetrycznych z urządzenia do centrum IoT](quickstart-send-telemetry-python.md), która łączy się z Centrum IoT Hub i odbiera komunikaty z chmury do urządzenia.
+* **SimulatedDevice.py**, zmodyfikowanej wersji aplikacji utworzonej w [aplikacji Wyślij dane telemetryczne z urządzenia do centrum IoT hub](quickstart-send-telemetry-python.md), który łączy się z centrum IoT hub i odbiera komunikaty z chmury do urządzenia.
 
-* **SendCloudToDeviceMessage.py**, który wysyła komunikat z chmury do urządzenia do aplikacji symulowanego urządzenia za pomocą IoT Hub, a następnie otrzymuje potwierdzenie dostarczenia.
+* **SendCloudToDeviceMessage.py**, który wysyła komunikat chmury do urządzenia do aplikacji symulowanego urządzenia za pośrednictwem usługi IoT Hub, a następnie odbiera potwierdzenie dostarczenia.
 
 [!INCLUDE [iot-hub-include-python-sdk-note](../../includes/iot-hub-include-python-sdk-note.md)]
 
@@ -45,15 +45,15 @@ Na końcu tego samouczka uruchamiasz dwie aplikacje konsolowe języka Python:
 
 [!INCLUDE [iot-hub-include-python-installation-notes](../../includes/iot-hub-include-python-installation-notes.md)]
 
-* Upewnij się, że port 8883 jest otwarty w zaporze. W przykładzie urządzenia w tym artykule jest używany protokół MQTT, który komunikuje się przez port 8883. Ten port może być blokowany w niektórych firmowych i edukacyjnych środowiskach sieciowych. Aby uzyskać więcej informacji i sposobów obejścia tego problemu, zobacz [nawiązywanie połączenia z IoT Hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
+* Upewnij się, że port 8883 jest otwarty w zaporze. Przykład urządzenia w tym artykule używa protokołu MQTT, który komunikuje się za pomocą portu 8883. Ten port może być zablokowany w niektórych środowiskach sieci firmowych i edukacyjnych. Aby uzyskać więcej informacji i sposobów obejść ten problem, zobacz [Łączenie się z centrum IoT Hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
 
-## <a name="receive-messages-in-the-simulated-device-app"></a>Odbieraj komunikaty w aplikacji symulowanego urządzenia
+## <a name="receive-messages-in-the-simulated-device-app"></a>Odbieranie wiadomości w aplikacji symulowanego urządzenia
 
-W tej sekcji utworzysz aplikację konsolową języka Python w celu symulowania urządzenia i otrzymywania komunikatów z chmury do urządzeń z Centrum IoT.
+W tej sekcji utworzysz aplikację konsoli Języka Python, aby symulować urządzenie i odbierać komunikaty z chmury do urządzenia z centrum IoT hub.
 
-1. Za pomocą edytora tekstów Utwórz plik **SimulatedDevice.py** .
+1. Za pomocą edytora tekstu utwórz plik **SimulatedDevice.py.**
 
-2. Dodaj następujące `import` instrukcje i zmienne na początku pliku **SimulatedDevice.py** :
+2. Dodaj następujące `import` instrukcje i zmienne na początku pliku **SimulatedDevice.py:**
 
    ```python
     import threading
@@ -62,13 +62,13 @@ W tej sekcji utworzysz aplikację konsolową języka Python w celu symulowania u
     RECEIVED_MESSAGES = 0
     ```
 
-3. Dodaj następujący kod do pliku **SimulatedDevice.py** . Zastąp wartość symbolu zastępczego "{deviceConnectionString}" parametrami połączenia urządzenia dla urządzenia utworzonego w polu [Wyślij dane telemetryczne z urządzenia do](quickstart-send-telemetry-python.md) przewodnika Szybki Start dotyczącego usługi IoT Hub:
+3. Dodaj następujący kod do **pliku SimulatedDevice.py.** Zastąp wartość zastępczą "{deviceConnectionString}" ciągiem połączenia urządzenia dla urządzenia utworzonego w programie [Wyślij dane telemetryczne z urządzenia do szybkiego startu centrum IoT Hub:](quickstart-send-telemetry-python.md)
 
     ```python
     CONNECTION_STRING = "{deviceConnectionString}"
     ```
 
-4. Dodaj następującą funkcję, aby wydrukować odebrane komunikaty do konsoli:
+4. Dodaj następującą funkcję, aby wydrukować odebrane wiadomości do konsoli:
 
     ```python
     def message_listener(client):
@@ -110,21 +110,21 @@ W tej sekcji utworzysz aplikację konsolową języka Python w celu symulowania u
         iothub_client_sample_run()
     ```
 
-7. Zapisz i zamknij plik **SimulatedDevice.py** .
+7. Zapisz i zamknij **plik SimulatedDevice.py.**
 
-## <a name="get-the-iot-hub-connection-string"></a>Pobierz parametry połączenia usługi IoT Hub
+## <a name="get-the-iot-hub-connection-string"></a>Pobierz ciąg połączenia koncentratora IoT
 
-W tym artykule opisano tworzenie usługi zaplecza do wysyłania komunikatów z chmury do urządzenia za pośrednictwem Centrum IoT utworzonego w artykule [wysyłanie danych telemetrycznych z urządzenia do centrum IoT Hub](quickstart-send-telemetry-python.md). Aby można było wysyłać komunikaty z chmury do urządzenia, usługa wymaga uprawnień do **połączenia z usługą** . Domyślnie każdy IoT Hub jest tworzony przy użyciu zasad dostępu współdzielonego o nazwie **Usługa** , która przyznaje to uprawnienie.
+W tym artykule utworzysz usługę wewnętrznej bazy danych do wysyłania komunikatów z chmury do urządzenia za pośrednictwem centrum IoT utworzonego w [aplikacji Wyślij dane telemetryczne z urządzenia do centrum IoT hub](quickstart-send-telemetry-python.md). Aby wysyłać komunikaty z chmury do urządzenia, usługa wymaga uprawnienia **do połączenia usługi.** Domyślnie każdy Centrum IoT jest tworzony przy pomocą zasady dostępu współdzielonego o nazwie **usługi,** która udziela tego uprawnienia.
 
 [!INCLUDE [iot-hub-include-find-service-connection-string](../../includes/iot-hub-include-find-service-connection-string.md)]
 
-## <a name="send-a-cloud-to-device-message"></a>Wysyłanie komunikatu z chmury do urządzenia
+## <a name="send-a-cloud-to-device-message"></a>Wysyłanie wiadomości z chmury do urządzenia
 
-W tej sekcji utworzysz aplikację konsolową w języku Python, która wysyła komunikaty z chmury do urządzenia do aplikacji symulowanego urządzenia. Potrzebujesz identyfikatora urządzenia dodanego w polu [Wyślij telemetrię z urządzenia do](quickstart-send-telemetry-python.md) przewodnika Szybki Start dotyczącego usługi IoT Hub. Potrzebne są również parametry połączenia usługi IoT Hub, które zostały wcześniej skopiowane w polu [Pobierz parametry połączenia usługi IoT Hub](#get-the-iot-hub-connection-string).
+W tej sekcji utworzysz aplikację konsoli Języka Python, która wysyła komunikaty z chmury do urządzenia do symulowanej aplikacji urządzenia. Potrzebny jest identyfikator urządzenia dodanego w danych [telemetrycznych wysyłania z urządzenia do szybkiego startu centrum IoT Hub.](quickstart-send-telemetry-python.md) Potrzebny jest również ciąg połączenia centrum IoT skopiowany wcześniej w [pliku Pobierz ciąg połączenia centrum IoT](#get-the-iot-hub-connection-string).
 
-1. Za pomocą edytora tekstów Utwórz plik **SendCloudToDeviceMessage.py** .
+1. Za pomocą edytora tekstu utwórz plik **SendCloudToDeviceMessage.py.**
 
-2. Dodaj następujące `import` instrukcje i zmienne na początku pliku **SendCloudToDeviceMessage.py** :
+2. Dodaj następujące `import` instrukcje i zmienne na początku pliku **SendCloudToDeviceMessage.py:**
 
     ```python
     import random
@@ -139,14 +139,14 @@ W tej sekcji utworzysz aplikację konsolową w języku Python, która wysyła ko
     MSG_TXT = "{\"service client sent a message\": %.2f}"
     ```
 
-3. Dodaj następujący kod do pliku **SendCloudToDeviceMessage.py** . Zastąp wartości symboli zastępczych "{ciąg połączenia usługi IoT Hub}" i "{Device ID}" parametrami połączenia usługi IoT Hub i zanotowanym wcześniej IDENTYFIKATORem urządzenia:
+3. Dodaj następujący kod do **pliku SendCloudToDeviceMessage.py.** Zastąp wartości zastępcze symboli zastępczych "{iot hub connection string}" i "{device id}" ciągiem połączenia i identyfikatorem urządzenia:
 
     ```python
     CONNECTION_STRING = "{IoTHubConnectionString}"
     DEVICE_ID = "{deviceId}"
     ```
 
-4. Dodaj następującą funkcję, aby wydrukować wiadomości z opiniami do konsoli:
+4. Dodaj następującą funkcję, aby wydrukować wiadomości zwrotne do konsoli:
 
     ```python
     def open_complete_callback(context):
@@ -158,7 +158,7 @@ W tej sekcji utworzysz aplikację konsolową w języku Python, która wysyła ko
         print ( 'messagingResult : {0}'.format(messaging_result) )
     ```
 
-5. Dodaj następujący kod, aby wysłać wiadomość na urządzenie i obsłużyć komunikat o opinii, gdy urządzenie potwierdzi komunikat z chmury do urządzenia:
+5. Dodaj następujący kod, aby wysłać wiadomość do urządzenia i obsłużyć wiadomość zwrotną, gdy urządzenie potwierdzi komunikat z chmury do urządzenia:
 
     ```python
     def iothub_messaging_sample_run():
@@ -210,19 +210,19 @@ W tej sekcji utworzysz aplikację konsolową w języku Python, która wysyła ko
         iothub_messaging_sample_run()
     ```
 
-7. Zapisz i zamknij plik **SendCloudToDeviceMessage.py** .
+7. Zapisz i zamknij **plik SendCloudToDeviceMessage.py.**
 
 ## <a name="run-the-applications"></a>Uruchamianie aplikacji
 
 Teraz można uruchomić aplikacje.
 
-1. Otwórz wiersz polecenia i zainstaluj **zestaw SDK urządzeń IoT Hub platformy Azure dla języka Python**.
+1. Otwórz wiersz polecenia i zainstaluj **zestaw SDK urządzenia usługi Azure IoT Hub dla języka Python**.
 
     ```shell
     pip install azure-iothub-device-client
     ```
 
-2. W wierszu polecenia Uruchom następujące polecenie, aby nasłuchiwać komunikatów z chmury do urządzenia:
+2. W wierszu polecenia uruchom następujące polecenie, aby nasłuchiwać komunikatów z chmury do urządzenia:
 
     ```shell
     python SimulatedDevice.py
@@ -236,22 +236,22 @@ Teraz można uruchomić aplikacje.
     pip install azure-iothub-service-client
     ```
 
-4. W wierszu polecenia Uruchom następujące polecenie, aby wysłać komunikat z chmury do urządzenia i zaczekaj na odpowiedź na komunikat:
+4. W wierszu polecenia uruchom następujące polecenie, aby wysłać wiadomość z chmury do urządzenia i poczekać na opinię o wiadomości:
 
     ```shell
     python SendCloudToDeviceMessage.py
     ```
 
-    ![Uruchom aplikację, aby wysłać polecenie z chmury do urządzenia](./media/iot-hub-python-python-c2d/send-command.png)
+    ![Uruchamianie aplikacji w celu wysłania polecenia chmury do urządzenia](./media/iot-hub-python-python-c2d/send-command.png)
 
-5. Zwróć uwagę na komunikat otrzymany przez urządzenie.
+5. Zanotuj wiadomość odebraną przez urządzenie.
 
-    ![Odebrano komunikat](./media/iot-hub-python-python-c2d/message-received.png)
+    ![Odebrano wiadomość](./media/iot-hub-python-python-c2d/message-received.png)
 
 ## <a name="next-steps"></a>Następne kroki
 
-W ramach tego samouczka nauczysz się wysyłać i odbierać komunikaty z chmury do urządzenia.
+W tym samouczku dowiesz się, jak wysyłać i odbierać komunikaty z chmury do urządzenia.
 
-Aby zapoznać się z przykładami kompletnych kompleksowych rozwiązań, które używają IoT Hub, zobacz [Akcelerator rozwiązania do monitorowania zdalnego usługi Azure IoT](https://azure.microsoft.com/documentation/suites/iot-suite/).
+Aby zobaczyć przykłady kompletnych kompleksowych rozwiązań korzystających z usługi IoT Hub, zobacz [akcelerator rozwiązań zdalnego monitorowania usługi Azure IoT.](https://azure.microsoft.com/documentation/suites/iot-suite/)
 
-Aby dowiedzieć się więcej na temat opracowywania rozwiązań za pomocą IoT Hub, zobacz [przewodnik dewelopera IoT Hub](iot-hub-devguide.md).
+Aby dowiedzieć się więcej na temat opracowywania rozwiązań za pomocą usługi IoT Hub, zobacz [przewodnik dla deweloperów usługi IoT Hub.](iot-hub-devguide.md)

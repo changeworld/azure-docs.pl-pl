@@ -1,6 +1,6 @@
 ---
-title: Nie można odczytać dziennika usługi Apache przędzy w usłudze Azure HDInsight
-description: Kroki rozwiązywania problemów i możliwe rozwiązania problemów podczas pracy z klastrami usługi Azure HDInsight.
+title: Nie można odczytać dziennika usługi Apache Yarn w usłudze Azure HDInsight
+description: Rozwiązywanie problemów z instrukcjami i możliwymi rozwiązaniami problemów podczas interakcji z klastrami usługi Azure HDInsight.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -8,19 +8,19 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 01/23/2020
 ms.openlocfilehash: f7861ae4980f13fbd87780ab2d26fa3376f33532
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/28/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76776198"
 ---
-# <a name="scenario-unable-to-read-apache-yarn-log-in-azure-hdinsight"></a>Scenariusz: nie można odczytać dziennika usługi Apache przędz w usłudze Azure HDInsight
+# <a name="scenario-unable-to-read-apache-yarn-log-in-azure-hdinsight"></a>Scenariusz: Nie można odczytać dziennika przędzy Apache w usłudze Azure HDInsight
 
-W tym artykule opisano kroki rozwiązywania problemów oraz możliwe rozwiązania problemów występujących w przypadku współpracy z klastrami usługi Azure HDInsight.
+W tym artykule opisano kroki rozwiązywania problemów i możliwe rozwiązania problemów podczas interakcji z klastrami usługi Azure HDInsight.
 
 ## <a name="issue"></a>Problem
 
-Dzienniki przędzy usługi Apache, które znajdują się na koncie magazynu, nie można odczytać przez człowieka. Analizator plików nie działa i generuje następujący komunikat o błędzie:
+Dzienniki Przędza Apache znalezione z konta pamięci masowej nie są czytelne dla człowieka. Analizator plików nie działa i generuje następujący komunikat o błędzie:
 
 ```
 java.io.IOException: Not a valid BCFile.
@@ -28,26 +28,26 @@ java.io.IOException: Not a valid BCFile.
 
 ## <a name="cause"></a>Przyczyna
 
-Dziennik przędzy Apache jest agregowany do formatu `IndexFile`, który nie jest obsługiwany przez parser plików.
+Dziennik Przędza Apache jest agregowany do `IndexFile` formatu, który nie jest obsługiwany przez analizator plików.
 
-## <a name="resolution"></a>Rozdzielczość
+## <a name="resolution"></a>Rozwiązanie
 
-1. W przeglądarce sieci Web przejdź do `https://CLUSTERNAME.azurehdinsight.net`, gdzie `CLUSTERNAME` jest nazwą klastra.
+1. W przeglądarce internetowej `https://CLUSTERNAME.azurehdinsight.net`przejdź `CLUSTERNAME` do miejsca , gdzie jest nazwa klastra.
 
-1. W interfejsie użytkownika Ambari przejdź do lokalizacji ** > konfiguracje** > **zaawansowanej** > **zaawansowanej przędzy**.
+1. Z interfejsu użytkownika Ambari przejdź do witryny **YARN** > **Configs** > **Advanced** > **YARN Advanced yarn-site**.
 
-1. W przypadku magazynu WASB: wartość domyślna dla `yarn.log-aggregation.file-formats` jest `IndexedFormat,TFile`. Zmień wartość na `TFile`.
+1. Dla magazynu WASB: Domyślną wartością `yarn.log-aggregation.file-formats` jest `IndexedFormat,TFile`. Zmień wartość `TFile`na .
 
-1. W przypadku magazynu ADLS: wartość domyślna dla `yarn.nodemanager.log-aggregation.compression-type` jest `gz`. Zmień wartość na `none`.
+1. W przypadku magazynu ADLS: `yarn.nodemanager.log-aggregation.compression-type` `gz`wartością domyślną jest . Zmień wartość `none`na .
 
-1. Zapisz zmiany i uruchom ponownie wszystkie usługi, których to dotyczy.
+1. Zapisz zmianę i uruchom ponownie wszystkie usługi, których dotyczy problem.
 
 ## <a name="next-steps"></a>Następne kroki
 
-Jeśli problem nie został wyświetlony lub nie można rozwiązać problemu, odwiedź jeden z następujących kanałów, aby uzyskać więcej pomocy:
+Jeśli nie widzisz problemu lub nie możesz rozwiązać problemu, odwiedź jeden z następujących kanałów, aby uzyskać więcej pomocy technicznej:
 
-* Uzyskaj odpowiedzi od ekspertów platformy Azure za pośrednictwem [pomocy technicznej dla społeczności platformy Azure](https://azure.microsoft.com/support/community/).
+* Uzyskaj odpowiedzi od ekspertów platformy Azure za pośrednictwem [pomocy technicznej platformy Azure Community.](https://azure.microsoft.com/support/community/)
 
-* Połącz się z [@AzureSupport](https://twitter.com/azuresupport) — oficjalnego Microsoft Azure konta, aby zwiększyć komfort obsługi klienta. Połączenie społeczności platformy Azure z właściwymi zasobami: odpowiedziami, wsparciem i ekspertami.
+* Połącz [@AzureSupport](https://twitter.com/azuresupport) się z — oficjalnym kontem platformy Microsoft Azure w celu poprawy jakości obsługi klienta. Łączenie społeczności platformy Azure z odpowiednimi zasobami: odpowiedziami, pomocą techniczną i ekspertami.
 
-* Jeśli potrzebujesz więcej pomocy, możesz przesłać żądanie pomocy technicznej z [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Na pasku menu wybierz pozycję **Obsługa** , a następnie otwórz Centrum **pomocy i obsługi technicznej** . Aby uzyskać szczegółowe informacje, zapoznaj [się z tematem jak utworzyć żądanie pomocy technicznej platformy Azure](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request). Dostęp do pomocy w zakresie zarządzania subskrypcjami i rozliczeń jest dostępny w ramach subskrypcji Microsoft Azure, a pomoc techniczna jest świadczona za pomocą jednego z [planów pomocy technicznej systemu Azure](https://azure.microsoft.com/support/plans/).
+* Jeśli potrzebujesz więcej pomocy, możesz przesłać żądanie pomocy z [witryny Azure portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Wybierz **pozycję Obsługa z** paska menu lub otwórz centrum pomocy + pomocy **technicznej.** Aby uzyskać bardziej szczegółowe informacje, zapoznaj [się z instrukcjami tworzenia żądania pomocy technicznej platformy Azure.](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request) Dostęp do obsługi zarządzania subskrypcjami i rozliczeń jest dołączony do subskrypcji platformy Microsoft Azure, a pomoc techniczna jest świadczona za pośrednictwem jednego z [planów pomocy technicznej platformy Azure.](https://azure.microsoft.com/support/plans/)

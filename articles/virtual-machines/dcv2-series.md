@@ -1,49 +1,49 @@
 ---
-title: Seria DC-Virtual Machines platformy Azure
-description: Specyfikacje dotyczące maszyn wirtualnych z serii DC.
+title: Seria DC — maszyny wirtualne platformy Azure
+description: Dane techniczne maszyn wirtualnych serii DC.
 services: virtual-machines
 author: susaxen
 ms.service: virtual-machines
 ms.topic: article
 ms.date: 02/20/2020
 ms.author: lahugh
-ms.openlocfilehash: fd8f01f0fc7180d271404ffee4496ff9cbac7222
-ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
+ms.openlocfilehash: 7834c8a32d4d85fc354bac209e13f19f3b8315fe
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/01/2020
-ms.locfileid: "78205929"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80256933"
 ---
-# <a name="preview-dcv2-series"></a>Wersja zapoznawcza: Seria DCv2
+# <a name="preview-dcsv2-series"></a>Podgląd: seria DCsv2
 
 
-Seria DCv2 może pomóc w ochronie poufności i integralności danych oraz kodu podczas przetwarzania w chmurze publicznej. Te maszyny są obsługiwane przez najnowszą generację procesora Intel XEON E-2288G z technologią SGX. Dzięki technologii zwiększania procesora Intel Turbo te maszyny mogą mieć wartość do 5,0 GHz. Wystąpienia serii DCv2 umożliwiają klientom tworzenie bezpiecznych aplikacji opartych na enklawy w celu ochrony kodu i danych, gdy jest używany.
+Seria DCsv2 może pomóc chronić poufność i integralność danych i kodu podczas przetwarzania w chmurze publicznej. Maszyny te są wspierane przez najnowszą generację procesora Intel XEON E-2288G z technologią SGX. Dzięki technologii Intel Turbo Boost maszyny te mogą zwiększyć 5,0 GHz. Wystąpienia serii DCsv2 umożliwiają klientom tworzenie bezpiecznych aplikacji opartych na enklawie w celu ochrony ich kodu i danych, gdy są używane.
 
-Przykładowe przypadki użycia obejmują poufne udostępnianie danych wieloczęściowych, wykrywanie oszustw, pranie antypieniężne, łańcucha bloków, poufne analizy użycia, analizę analizy oraz poufne Uczenie maszynowe.
+Przykładowe przypadki użycia obejmują poufne wielopartyjne udostępnianie danych, wykrywanie oszustw, przeciwdziałanie praniu pieniędzy, blockchain, analizę poufnych zastosowań, analizę danych wywiadowczych i poufne uczenie maszynowe.
 
-Premium Storage: obsługiwane *
+Pamięć masowa w wersji Premium: obsługiwana*
 
-Buforowanie Premium Storage: obsługiwane *
+Buforowanie pamięci masowej w wersji premium: obsługiwane*
 
-Migracja na żywo: nieobsługiwane
+Migracja na żywo: nie jest obsługiwana
 
-Aktualizacje z zachowaniem pamięci: nieobsługiwane
+Aktualizacje zachowywania pamięci: nie są obsługiwane
 
-\* Z wyjątkiem Standard_DC8_v2
+*Z wyjątkiem Standard_DC8_v2
 
 
 
-| Rozmiar             | Procesor wirtualny | Pamięć: GiB | Magazyn tymczasowy (SSD): GiB | Maks. liczba dysków danych | Maksymalna przepływność magazynu buforowanego i tymczasowego: liczba operacji we/wy na sekundę / MB/s (rozmiar pamięci podręcznej w GiB) | Maksymalna przepływność niebuforowanych dysków: liczba operacji we/wy na sekundę / MB/s | Maksymalna liczba kart sieciowych/oczekiwana przepustowość sieci (MB/s) |
+| Rozmiar             | Procesor wirtualny | Pamięć: GiB | Magazyn tymczasowy (SSD): GiB | Maks. liczba dysków danych | Maksymalna przepływność magazynu buforowanego i tymczasowego: liczba operacji we/wy na sekundę / MB/s (rozmiar pamięci podręcznej w GiB) | Maksymalna przepływność niebuforowanych dysków: liczba operacji we/wy na sekundę / MB/s | Maksymalna karta sieciowa / oczekiwana przepustowość sieci (MB/s) |
 |------------------|------|-------------|------------------------|----------------|-------------------------------------------------------------------------|-------------------------------------------|----------------------------------------------|
 | Standard_DC1s_v2 | 1    | 4           | 50                     | 1              | 2000/16 (21)                                                            | 1600/24                                   | 2                                            |
 | Standard_DC2s_v2 | 2    | 8           | 100                    | 2              | 4000/32 (43)                                                            | 3200/48                                   | 2                                            |
 | Standard_DC4s_v2 | 4    | 16          | 200                    | 4              | 8000/64 (86)                                                            | 6400/96                                   | 2                                            |
 | Standard_DC8_v2  | 8   | 32          | 400                    | 8              | 16000/128 (172)                                                         | 12800/192                                 | 2                                            |
 
-- Maszyny wirtualne z serii DCv2 to [maszyny wirtualne 2. generacji](./linux/generation-2.md#creating-a-generation-2-vm) i obsługują tylko obrazy `Gen2`.
-- Obecnie dostępne tylko w Południowe Zjednoczone Królestwo.
-- Poprzednia generacja poufnych maszyn wirtualnych obliczeń: [Seria DC](sizes-previous-gen.md)
-- Tworzenie maszyn wirtualnych DCv2 przy użyciu witryny Azure Portal [Tworzenie maszyny wirtualnej — Portal](./linux/quick-create-portal.md)
+- Maszyny wirtualne z serii DCsv2 są [generacjami maszyn wirtualnych 2](./linux/generation-2.md#creating-a-generation-2-vm) i obsługują `Gen2` tylko obrazy.
+- Obecnie dostępne tylko w Wielkiej Brytanii Południowej i Kanadzie Środkowej.
+- Poprzednia generacja poufnych maszyn wirtualnych obliczeniowych: [seria DC](sizes-previous-gen.md)
+- Tworzenie maszyn wirtualnych DCsv2 przy użyciu maszyny [wirtualnej](./linux/quick-create-portal.md) Azure Portal Create — portal
 
 
 
@@ -58,4 +58,4 @@ Aktualizacje z zachowaniem pamięci: nieobsługiwane
 
 ## <a name="next-steps"></a>Następne kroki
 
-Dowiedz się więcej o tym, jak [usługa Azure COMPUTE units (ACU)](acu.md) może pomóc w porównaniu wydajności obliczeniowej w ramach jednostek SKU platformy Azure.
+Dowiedz się więcej o tym, jak [jednostki obliczeniowe platformy Azure (ACU)](acu.md) mogą pomóc w porównywaniu wydajności obliczeniowej w jednostkach SKU platformy Azure.

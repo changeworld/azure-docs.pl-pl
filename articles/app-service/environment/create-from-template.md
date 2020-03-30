@@ -1,56 +1,56 @@
 ---
-title: Tworzenie środowiska ASE przy użyciu ARM
-description: Dowiedz się, jak utworzyć zewnętrzne lub ILB środowisko App Service przy użyciu szablonu Azure Resource Manager.
+title: Tworzenie ASE za pomocą ARM
+description: Dowiedz się, jak utworzyć zewnętrzne środowisko usługi app service lub równoważenia obciążenia przy użyciu szablonu Usługi Azure Resource Manager.
 author: ccompy
 ms.assetid: 6eb7d43d-e820-4a47-818c-80ff7d3b6f8e
 ms.topic: article
 ms.date: 06/13/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: ce51c6415389ee52cf0371dfbddb98cb48747b05
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 1212e77db5e0ec83f8dd966a14872a682b3e0202
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75430461"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80295550"
 ---
-# <a name="create-an-ase-by-using-an-azure-resource-manager-template"></a>Tworzenie środowiska ASE przy użyciu szablonu Azure Resource Manager
+# <a name="create-an-ase-by-using-an-azure-resource-manager-template"></a>Tworzenie ase przy użyciu szablonu usługi Azure Resource Manager
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Środowiska Azure App Service (środowisk ASE) można utworzyć za pomocą punktu końcowego dostępnego z Internetu lub punktu końcowego na adresie wewnętrznym w sieci wirtualnej platformy Azure. Po utworzeniu z wewnętrznym punktem końcowym ten punkt końcowy jest dostarczany przez składnik platformy Azure o nazwie wewnętrzny moduł równoważenia obciążenia (ILB). Środowisko ASE na wewnętrznym adresie IP nosi nazwę ILB ASE. Środowisko ASE z publicznym punktem końcowym jest nazywane zewnętrznym środowiskiem ASE. 
+Środowiska usługi Azure App Service (ASE) można tworzyć za pomocą punktu końcowego dostępnego dla Internetu lub punktu końcowego na adres wewnętrzny w sieci wirtualnej platformy Azure (sieć wirtualna). Po utworzeniu z wewnętrznym punktem końcowym ten punkt końcowy jest dostarczany przez składnik platformy Azure o nazwie wewnętrzny moduł równoważenia obciążenia (ILB). ASE na wewnętrznym adresie IP jest nazywany ASE RÓWNOWAżenia obciążenia. ASE z publicznym punktem końcowym jest nazywany zewnętrznego ASE. 
 
-Środowisko ASE można utworzyć przy użyciu szablonu Azure Portal lub Azure Resource Manager. W tym artykule przedstawiono kroki i składnię, które należy wykonać, aby utworzyć zewnętrzne środowisko ASE lub ILB ASE z szablonami Menedżer zasobów. Aby dowiedzieć się, jak utworzyć środowisko ASE w Azure Portal, zobacz [Tworzenie zewnętrznego środowiska ASE][MakeExternalASE] lub [Tworzenie ILB środowiska ASE][MakeILBASE].
+Ase można utworzyć przy użyciu witryny Azure portal lub szablonu usługi Azure Resource Manager. W tym artykule ominiao o krokach i składni potrzebnej do utworzenia zewnętrznego ase ase lub ilb iwymiaru z szablonami Menedżera zasobów. Aby dowiedzieć się, jak utworzyć ase w witrynie Azure portal, zobacz [Tworzenie zewnętrznego ase][MakeExternalASE] lub [Tworzenie ASE ILB.][MakeILBASE]
 
-Podczas tworzenia środowiska ASE w Azure Portal można utworzyć sieć wirtualną w tym samym czasie lub wybrać istniejącą sieć wirtualną do wdrożenia. Podczas tworzenia środowiska ASE na podstawie szablonu należy zacząć od: 
+Podczas tworzenia ase w witrynie Azure portal, można utworzyć sieć wirtualną w tym samym czasie lub wybrać istniejącą sieć wirtualną do wdrożenia w. Podczas tworzenia ase z szablonu, należy zacząć od: 
 
-* Menedżer zasobów sieci wirtualnej.
-* Podsieć w tej sieci wirtualnej. Zalecamy, aby rozmiar podsieci środowiska ASE `/24` z 256 adresami w celu uwzględnienia przyszłych potrzeb wzrostu i skalowania. Po utworzeniu środowiska ASE nie można zmienić jego rozmiaru.
-* Identyfikator zasobu z sieci wirtualnej. Te informacje można uzyskać z Azure Portal w obszarze właściwości sieci wirtualnej.
-* Subskrypcja, w ramach której ma zostać wdrożone.
-* Lokalizacja, w której ma zostać wdrożone.
+* Sieci wirtualnej Menedżera zasobów.
+* Podsieć w tej sieci wirtualnej. Firma Microsoft zaleca rozmiar podsieci ASE `/24` z 256 adresów, aby zaspokoić przyszłe potrzeby wzrostu i skalowania. Po utworzeniu ase nie można zmienić rozmiaru.
+* Identyfikator zasobu z sieci wirtualnej. Te informacje można uzyskać z witryny Azure portal w ramach właściwości sieci wirtualnej.
+* Subskrypcja, w której chcesz wdrożyć.
+* Lokalizacja, w której chcesz wdrożyć.
 
-Aby zautomatyzować tworzenie środowiska ASE:
+Aby zautomatyzować tworzenie ASE:
 
-1. Utwórz środowisko ASE na podstawie szablonu. Jeśli tworzysz zewnętrzny środowisko ASE, po wykonaniu tego kroku skończysz pracę. Jeśli tworzysz ILB ASE, możesz wykonać kilka czynności.
+1. Utwórz ase na podstawie szablonu. Jeśli utworzysz zewnętrznego ASE, po tym kroku zostanie zakończona. Jeśli utworzysz ASE ILB, istnieje kilka innych rzeczy do zrobienia.
 
-2. Po utworzeniu ILB ASE zostanie przekazany certyfikat SSL zgodny z domeną ILB ASE.
+2. Po utworzeniu ase ILB, certyfikat SSL, który pasuje do domeny ASE ILB jest przekazyany.
 
-3. Przekazany certyfikat SSL jest przypisywany do ILB ASE jako "domyślny" certyfikat protokołu SSL.  Ten certyfikat jest używany na potrzeby ruchu SSL do aplikacji w ILB ASE, gdy używają wspólnej domeny głównej przypisanej do środowiska ASE (na przykład https://someapp.mycustomrootdomain.com).
+3. Przekazany certyfikat SSL jest przypisany do ASE równoważenia obciążenia sieciowego jako "domyślny" certyfikat SSL.  Ten certyfikat jest używany do ruchu SSL do aplikacji na ASE ILB, gdy używają wspólnej domeny `https://someapp.mycustomrootdomain.com`głównej, która jest przypisana do ASE (na przykład).
 
 
-## <a name="create-the-ase"></a>Tworzenie środowiska ASE
-Menedżer zasobów szablon, który tworzy środowisko ASE i skojarzony z nim plik parametrów, jest dostępny na [przykład][quickstartasev2create] w witrynie GitHub.
+## <a name="create-the-ase"></a>Tworzenie ase
+Szablon Menedżera zasobów, który tworzy ASE i skojarzony z nim plik parametrów jest dostępny [w przykładzie][quickstartasev2create] w usłudze GitHub.
 
-Jeśli chcesz utworzyć ILB ASE, Użyj tych [przykładów][quickstartilbasecreate]szablonu Menedżer zasobów. Są one stosowane do tego przypadku użycia. Większość parametrów w pliku *azuredeploy. Parameters. JSON* jest wspólna dla tworzenia ILB środowisk ASE i zewnętrznego środowisk ASE. Poniższa lista wywołuje Parametry specjalne uwagi lub są unikatowe, gdy tworzysz ILB ASE:
+Jeśli chcesz stworzyć ASE równoważenia obciążenia, użyj tych [przykładów szablonów][quickstartilbasecreate]Menedżera zasobów . Zaspokajają one ten przypadek użycia. Większość parametrów w pliku *azuredeploy.parameters.json* są wspólne dla tworzenia ases i zewnętrznych ases i zewnętrznych. Poniższa lista wywołuje parametry specjalnej notatki lub które są unikatowe podczas tworzenia ASE ILB:
 
-* *internalLoadBalancingMode*: w większości przypadków należy ustawić tę wartość na 3, co oznacza, że zarówno ruch http/https na portach 80/443, jak i porty kontroli/kanału danych nasłuchune przez usługę FTP w środowisku ASE, będą powiązane z adresem wewnętrznym sieci wirtualnej przydzielonej przez ILB. Jeśli ta właściwość ma wartość 2, tylko porty powiązane z usługą FTP (zarówno kanały kontroli i danych) są powiązane z adresem ILB. Ruch HTTP/HTTPS pozostaje w publicznym wirtualnym adresie IP.
-* *dnsSuffix*: ten parametr definiuje domyślną domenę główną, która jest przypisana do środowiska ASE. W publicznej odmianie Azure App Service domyślną domeną główną dla wszystkich aplikacji sieci Web jest *azurewebsites.NET*. Ponieważ ILB ASE jest wewnętrzny dla sieci wirtualnej klienta, nie ma sensu używania domyślnej domeny głównej usługi publicznej. Zamiast tego, ILB ASE powinien mieć domyślną domenę główną, która ma Sense w przypadku użycia w wewnętrznej sieci wirtualnej firmy. Na przykład firma Contoso Corporation może używać domyślnej domeny głównej *Internal-contoso.com* dla aplikacji, które mają być rozpoznawalne i dostępne tylko w sieci wirtualnej firmy Contoso. 
-* *ipSslAddressCount*: ten parametr automatycznie przyjmuje wartość 0 w pliku *azuredeploy. JSON* , ponieważ środowisk ASE ILB ma tylko jeden adres ILB. Brak jawnych adresów IP-SSL dla ILB ASE. W związku z tym Pula adresów IP-SSL dla ILB ASE musi mieć wartość zero. W przeciwnym razie wystąpi błąd aprowizacji. 
+* *internalLoadBalancingMode*: W większości przypadków należy ustawić to na 3, co oznacza, że zarówno ruch HTTP/HTTPS na portach 80/443, jak i porty kanału sterowania/transmisji danych słuchane przez usługę FTP na ase, będą powiązane z adresem wewnętrznym sieci wirtualnej przydzielonej przez przynajście ILB. Jeśli ta właściwość jest ustawiona na 2, tylko porty związane z usługą FTP (zarówno kanały sterowania, jak i kanałów danych) są powiązane z adresem równoważenia obciążenia sieciowego. Ruch HTTP/HTTPS pozostaje w publicznym adresie VIP.
+* *dnsSuffix*: Ten parametr definiuje domyślną domenę główną przypisaną do ASE. W publicznej odmianie usługi Azure App Service domyślną domeną główną dla wszystkich aplikacji internetowych jest *azurewebsites.net*. Ponieważ środowisko ASE równoważenia obciążenia sieciowego jest wewnętrzne w sieci wirtualnej klienta, nie ma sensu używać domyślnej domeny głównej usługi publicznej. Zamiast tego środowisko ASE równoważenia obciążenia sieciowego powinno mieć domyślną domenę główną, która ma sens do użycia w wewnętrznej sieci wirtualnej firmy. Na przykład contoso Corporation może używać domyślnej domeny głównej *internal-contoso.com* dla aplikacji, które mają być rozwiązywalne i dostępne tylko w sieci wirtualnej firmy Contoso. 
+* *ipSslAddressCount*: Ten parametr automatycznie domyślnie wartość 0 w pliku *azuredeploy.json,* ponieważ ases ILB mają tylko jeden adres równoważenia obciążenia. Nie ma żadnych jawnych adresów IP-SSL dla ASE równoważenia obciążenia. W związku z tym puli adresów IP-SSL dla ase ILB musi być ustawiona na zero. W przeciwnym razie wystąpi błąd inicjowania obsługi administracyjnej. 
 
-Po wypełnieniu pliku *azuredeploy. Parameters. JSON* Utwórz środowisko ASE przy użyciu fragmentu kodu programu PowerShell. Zmień ścieżki plików tak, aby były zgodne z lokalizacjami plików szablonu Menedżer zasobów na komputerze. Pamiętaj, aby podać własne wartości nazwy wdrożenia Menedżer zasobów i nazwy grupy zasobów:
+Po *wypełnieniu pliku azuredeploy.parameters.json* utwórz program ASE przy użyciu fragmentu kodu programu PowerShell. Zmień ścieżki plików, aby były zgodne z lokalizacjami plików szablonów Menedżera zasobów na komputerze. Pamiętaj, aby podać własne wartości dla nazwy wdrożenia Menedżera zasobów i nazwy grupy zasobów:
 
 ```powershell
 $templatePath="PATH\azuredeploy.json"
@@ -59,28 +59,28 @@ $parameterPath="PATH\azuredeploy.parameters.json"
 New-AzResourceGroupDeployment -Name "CHANGEME" -ResourceGroupName "YOUR-RG-NAME-HERE" -TemplateFile $templatePath -TemplateParameterFile $parameterPath
 ```
 
-Tworzenie środowiska ASE trwa około godzinę. Następnie środowisko ASE zostanie wyświetlone w portalu na liście środowisk ASE dla subskrypcji, która wyzwoliła wdrożenie.
+Utworzenie ase zajmuje około godziny. Następnie ASE pojawia się w portalu na liście ASES dla subskrypcji, która wyzwoliła wdrożenia.
 
-## <a name="upload-and-configure-the-default-ssl-certificate"></a>Przekazywanie i Konfigurowanie certyfikatu protokołu SSL "default"
-Certyfikat SSL musi być skojarzony z środowiskiem ASE jako "domyślny" certyfikat protokołu SSL używany do nawiązywania połączeń SSL z aplikacjami. Jeśli domyślny sufiks DNS środowiska ASE to *Internal-contoso.com*, połączenie z https://some-random-app.internal-contoso.com wymaga certyfikatu SSL, który jest prawidłowy dla * *. Internal-contoso.com*. 
+## <a name="upload-and-configure-the-default-ssl-certificate"></a>Przekazywanie i konfigurowanie "domyślnego" certyfikatu SSL
+Certyfikat SSL musi być skojarzony z ASE jako "domyślny" certyfikat SSL używany do ustanawiania połączeń SSL z aplikacjami. Jeśli domyślny sufiks DNS ase jest *internal-contoso.com,* `https://some-random-app.internal-contoso.com` połączenie wymaga certyfikatu SSL, który jest ważny dla **.internal-contoso.com*. 
 
-Uzyskaj prawidłowy certyfikat SSL przy użyciu wewnętrznych urzędów certyfikacji, kupując certyfikat od zewnętrznego wystawcy lub korzystając z certyfikatu z podpisem własnym. Niezależnie od źródła certyfikatu SSL należy prawidłowo skonfigurować następujące atrybuty certyfikatu:
+Uzyskaj ważny certyfikat SSL przy użyciu wewnętrznych urzędów certyfikacji, zakupu certyfikatu od zewnętrznego wystawcy lub przy użyciu certyfikatu z podpisem własnym. Niezależnie od źródła certyfikatu SSL następujące atrybuty certyfikatu muszą być poprawnie skonfigurowane:
 
-* **Podmiot**: ten atrybut musi być ustawiony na * *. your-root-Domain-here.com*.
-* **Alternatywna nazwa podmiotu**: ten atrybut musi zawierać zarówno * *. your-root-Domain-here.com* , jak i * *. SCM.your-root-Domain-here.com*. Połączenia SSL z witryną SCM/kudu skojarzoną z każdą aplikacją używają adresu formularza *Your-App-Name.SCM.your-root-Domain-here.com*.
+* **Temat:** Ten atrybut musi być ustawiony na **.your-root-domain-here.com*.
+* **Alternatywna nazwa podmiotu:** Ten atrybut musi zawierać zarówno **.your-root-domain-here.com* i **.scm.your-root-domain-here.com*. Połączenia SSL z witryną SCM/Kudu skojarzoną z każdą aplikacją używają adresu formularza *your-app-name.scm.your-root-domain-here.com*.
 
-Mając na ręką prawidłowy certyfikat SSL, wymagane są dwa dodatkowe kroki przygotowawcze. Przekonwertuj lub zapisz certyfikat SSL jako plik pfx. Należy pamiętać, że plik PFX musi zawierać wszystkie certyfikaty pośrednie i główne. Zabezpiecz go przy użyciu hasła.
+Z ważnym certyfikatem SSL w ręku, potrzebne są dwa dodatkowe kroki przygotowawcze. Przekonwertuj lub zapisz certyfikat SSL jako plik pfx. Należy pamiętać, że plik .pfx musi zawierać wszystkie certyfikaty pośrednie i główne. Zabezpiecz go przy użyciu hasła.
 
-Plik. pfx należy przekonwertować na ciąg Base64, ponieważ certyfikat SSL jest przekazywany przy użyciu szablonu Menedżer zasobów. Ponieważ szablony Menedżer zasobów są plikami tekstowymi, plik PFX musi być konwertowany na ciąg w formacie base64. W ten sposób można go uwzględnić jako parametr szablonu.
+Plik .pfx musi zostać przekonwertowany na ciąg base64, ponieważ certyfikat SSL jest przekazywał przy użyciu szablonu Menedżera zasobów. Ponieważ szablony Menedżera zasobów są plikami tekstowymi, plik .pfx musi zostać przekonwertowany na ciąg base64. W ten sposób może być dołączony jako parametr szablonu.
 
 Użyj następującego fragmentu kodu programu PowerShell, aby:
 
-* Wygeneruj certyfikat z podpisem własnym.
-* Wyeksportuj certyfikat jako plik PFX.
-* Przekonwertuj plik pfx na ciąg szyfrowany algorytmem Base64.
-* Zapisz ciąg szyfrowany algorytmem Base64 w oddzielnym pliku. 
+* Generowanie certyfikatu z podpisem własnym.
+* Wyeksportuj certyfikat jako plik pfx.
+* Konwertuj plik pfx na ciąg zakodowany w base64.
+* Zapisz ciąg zakodowany base64 w oddzielnym pliku. 
 
-Ten kod programu PowerShell dla kodowania base64 został dostosowany z [blogu skrypty programu PowerShell][examplebase64encoding]:
+Ten kod programu PowerShell do kodowania base64 został zaadaptowany z [bloga skryptów programu PowerShell:][examplebase64encoding]
 
 ```powershell
 $certificate = New-SelfSignedCertificate -certstorelocation cert:\localmachine\my -dnsname "*.internal-contoso.com","*.scm.internal-contoso.com"
@@ -96,18 +96,18 @@ $fileContentEncoded = [System.Convert]::ToBase64String($fileContentBytes)
 $fileContentEncoded | set-content ($fileName + ".b64")
 ```
 
-Po pomyślnym wygenerowaniu i przekonwertowaniu certyfikatu SSL na ciąg szyfrowany algorytmem Base64 Użyj przykładowego szablonu Menedżer zasobów [konfigurowania domyślnego certyfikatu protokołu SSL][quickstartconfiguressl] w serwisie GitHub. 
+Po pomyślnym wygenerowaniu certyfikatu SSL i przekonwertowaniu go na ciąg zakodowany w programie base64 użyj przykładowego szablonu Menedżera zasobów [Skonfiguruj domyślny certyfikat SSL][quickstartconfiguressl] w usłudze GitHub. 
 
-Parametry w pliku *azuredeploy. Parameters. JSON* są wymienione tutaj:
+Parametry w pliku *azuredeploy.parameters.json* są wymienione tutaj:
 
-* *appServiceEnvironmentName*: Nazwa KONFIGUROWANEgo ILB środowiska ASE.
-* *existingAseLocation*: ciąg tekstowy zawierający region platformy Azure, w którym WDROŻONO ILB ASE.  Na przykład: "Południowo-środkowe stany USA".
-* *pfxBlobString*: zakodowany w based64 ciąg reprezentacji pliku PFX. Użyj podanego wcześniej fragmentu kodu i skopiuj ciąg zawarty w pliku "exportedcert. pfx. B64". Wklej ją jako wartość atrybutu *pfxBlobString* .
-* *hasło*: hasło użyte do zabezpieczenia pliku PFX.
-* *certificateThumbprint*: odcisk palca certyfikatu. Jeśli ta wartość zostanie pobrana z programu PowerShell (na przykład *$Certificate. Odcisk palca* ze starszego fragmentu kodu), można użyć wartości jako. Jeśli skopiujesz wartość z okna dialogowego certyfikat systemu Windows, pamiętaj, aby rozdzielić spacje. *CertificateThumbprint* powinna wyglądać podobnie do AF3143EB61D43F6727842115BB7F17BBCECAECAE.
-* *certificateName*: przyjazny identyfikator ciągu używany do wybrania tożsamości certyfikatu. Nazwa jest używana jako część unikatowego identyfikatora Menedżer zasobów jednostki *Microsoft. Web/Certificates* , która reprezentuje certyfikat protokołu SSL. Nazwa *musi* kończyć się następującym sufiksem: \_yourASENameHere_InternalLoadBalancingASE. Azure Portal używa tego sufiksu jako wskaźnika, który służy do zabezpieczania środowiska ASE z włączoną obsługą ILB.
+* *appServiceEnvironmentName*: Nazwa skonfigurowanego środowiska ASE równoważenia obciążenia równoważącego.
+* *existingAseLocation:* Ciąg tekstowy zawierający region platformy Azure, w którym wdrożono ase równoważenia obciążenia.  Na przykład: "Południowo-środkowe stany USA".
+* *pfxBlobString*: Na podstawie64-zakodowana reprezentacja ciągu pliku .pfx. Użyj fragmentu kodu pokazanego wcześniej i skopiuj ciąg zawarty w pliku "exportedcert.pfx.b64". Wklej go jako wartość atrybutu *pfxBlobString.*
+* *hasło*: Hasło używane do zabezpieczenia pliku .pfx.
+* *certificateThumbprint*: odcisk palca certyfikatu. Jeśli pobrać tę wartość z programu PowerShell (na przykład *$certificate. Odcisk palca* z wcześniejszego fragmentu kodu), można użyć wartości, jak jest. Jeśli wartość zostanie skopiowana z okna dialogowego certyfikatu systemu Windows, pamiętaj, aby usunąć obce spacje. *CertyfikatThumbprint* powinien wyglądać jak AF3143EB61D43F6727842115BB7F17BBCECAECAE.
+* *certificateName*: Przyjazny identyfikator ciągu według własnego wyboru używany do identyfikacji certyfikatu. Nazwa jest używana jako część unikatowego identyfikatora Menedżera zasobów dla jednostki *Microsoft.Web/certificates* reprezentującej certyfikat SSL. Nazwa *musi kończyć się* następującym \_sufiksem: yourASENameHere_InternalLoadBalancingASE. Portal Azure używa tego sufiksu jako wskaźnika, że certyfikat jest używany do zabezpieczania ase z włączoną funkcją równoważenia obciążenia sieciowego.
 
-Poniżej przedstawiono skrócony przykład pliku *azuredeploy. Parameters. JSON* :
+W tym miejscu pokazano skrócony przykład *pliku azuredeploy.parameters.json:*
 
 ```json
 {
@@ -136,7 +136,7 @@ Poniżej przedstawiono skrócony przykład pliku *azuredeploy. Parameters. JSON*
 }
 ```
 
-Po wypełnieniu pliku *azuredeploy. Parameters. JSON* Skonfiguruj domyślny certyfikat SSL przy użyciu fragmentu kodu programu PowerShell. Zmień ścieżki plików tak, aby pasowały do lokalizacji plików szablonów Menedżer zasobów znajdujących się na komputerze. Pamiętaj, aby podać własne wartości nazwy wdrożenia Menedżer zasobów i nazwy grupy zasobów:
+Po *wypełnieniu pliku azuredeploy.parameters.json* skonfiguruj domyślny certyfikat SSL przy użyciu fragmentu kodu programu PowerShell. Zmień ścieżki plików, aby dopasować pliki szablonów Menedżera zasobów na komputerze. Pamiętaj, aby podać własne wartości dla nazwy wdrożenia Menedżera zasobów i nazwy grupy zasobów:
 
 ```powershell
 $templatePath="PATH\azuredeploy.json"
@@ -145,20 +145,20 @@ $parameterPath="PATH\azuredeploy.parameters.json"
 New-AzResourceGroupDeployment -Name "CHANGEME" -ResourceGroupName "YOUR-RG-NAME-HERE" -TemplateFile $templatePath -TemplateParameterFile $parameterPath
 ```
 
-Zastosowanie zmiany trwa około 40 minut na fronton środowiska ASE. Na przykład w przypadku domyślnego rozmiaru ASE, który używa dwóch frontonów, szablon zajmuje około godziny i 20 minut. Gdy szablon jest uruchomiony, środowisko ASE nie może skalować.  
+Zastosowanie zmiany zajmuje około 40 minut na przednim końcu ASE. Na przykład dla domyślnego rozmiaru ASE, który używa dwóch front ends, szablon trwa około godziny i 20 minut, aby zakończyć. Gdy szablon jest uruchomiony, ASE nie można skalować.  
 
-Po zakończeniu szablonu aplikacje w ILB ASE mogą być dostępne za pośrednictwem protokołu HTTPS. Połączenia są zabezpieczane przy użyciu domyślnego certyfikatu protokołu SSL. Domyślny certyfikat SSL jest używany, gdy aplikacje na ILB ASE są rozkierowane przy użyciu kombinacji nazwy aplikacji i domyślnej nazwy hosta. Na przykład https://mycustomapp.internal-contoso.com używa domyślnego certyfikatu SSL dla * *. Internal-contoso.com*.
+Po zakończeniu szablonu aplikacje na ASE równoważenia obciążenia są dostępne za pośrednictwem protokołu HTTPS. Połączenia są zabezpieczone przy użyciu domyślnego certyfikatu SSL. Domyślny certyfikat SSL jest używany, gdy aplikacje na ase ILB są adresowane przy użyciu kombinacji nazwy aplikacji i domyślnej nazwy hosta. Na przykład `https://mycustomapp.internal-contoso.com` używa domyślnego certyfikatu SSL dla **.internal-contoso.com*.
 
-Jednak podobnie jak aplikacje działające w publicznej usłudze wielodostępnej, deweloperzy mogą konfigurować niestandardowe nazwy hostów dla poszczególnych aplikacji. Mogą również konfigurować unikatowe powiązania certyfikatów SNI SSL dla poszczególnych aplikacji.
+Jednak podobnie jak aplikacje, które działają w publicznej usłudze wielodostępnych, deweloperzy mogą konfigurować niestandardowe nazwy hostów dla poszczególnych aplikacji. Mogą również konfigurować unikatowe powiązania certyfikatów SSL SNI dla poszczególnych aplikacji.
 
 ## <a name="app-service-environment-v1"></a>Środowisko usługi App Service — wersja 1 ##
 Środowisko App Service Environment występuje w dwóch wersjach: ASEv1 i ASEv2. Podane wcześniej informacje dotyczyły wersji 2 — ASEv2. W tej sekcji przedstawiono różnice między środowiskami ASEv1 i ASEv2.
 
-W programie środowiska asev1 wszystkie zasoby są zarządzane ręcznie. Obejmuje to frontony, procesy robocze oraz adresy IP używane do obsługi połączeń SSL opartych na protokole IP. Aby można było skalować plan App Service, należy skalować pulę procesów roboczych, w której ma być hostowana.
+W ASEv1 zarządzasz wszystkimi zasobami ręcznie. Obejmuje to frontony, procesy robocze oraz adresy IP używane do obsługi połączeń SSL opartych na protokole IP. Aby można było skalować w poziomie plan usługi app service, należy skalować w poziomie puli procesów roboczych, które chcesz go hostować.
 
-W przypadku środowiska ASEv1 używany jest inny model cenowy niż w przypadku środowiska ASEv2. W przypadku środowiska ASEv1 płacisz za każdy przydzielony procesor vCPU. Obejmuje to procesorów wirtualnych vCPU, które są używane dla frontonów lub procesów roboczych, które nie obsługują żadnych obciążeń. W przypadku środowiska ASEv1 domyślny rozmiar w skali maksymalnej środowiska ASE to 55 hostów łącznie. Obejmuje to frontony i procesy robocze. Jedną z zalet środowiska ASEv1 jest to, że można je wdrożyć w klasycznej sieci wirtualnej oraz w sieci wirtualnej usługi Resource Manager. Aby dowiedzieć się więcej na temat środowiska asev1, zobacz [wprowadzenie do App Service Environment V1][ASEv1Intro].
+W przypadku środowiska ASEv1 używany jest inny model cenowy niż w przypadku środowiska ASEv2. W przypadku środowiska ASEv1 płacisz za każdy przydzielony procesor vCPU. Obejmuje to procesory wirtualne, które są używane dla front ends lub pracowników, którzy nie obsługują żadnych obciążeń. W przypadku środowiska ASEv1 domyślny rozmiar w skali maksymalnej środowiska ASE to 55 hostów łącznie. Obejmuje to frontony i procesy robocze. Jedną z zalet środowiska ASEv1 jest to, że można je wdrożyć w klasycznej sieci wirtualnej oraz w sieci wirtualnej usługi Resource Manager. Aby dowiedzieć się więcej na temat środowiska ASEv1, zobacz [App Service Environment v1 introduction][ASEv1Intro] (Wprowadzenie do środowiska App Service Environment w wersji 1).
 
-Aby utworzyć środowiska asev1 za pomocą szablonu Menedżer zasobów, zobacz [Tworzenie ILB ASE V1 z szablonem Menedżer zasobów][ILBASEv1Template].
+Aby utworzyć ASEv1 przy użyciu szablonu Menedżera zasobów, zobacz [Tworzenie ase ase ilb z szablonem Menedżera zasobów][ILBASEv1Template].
 
 
 <!--Links-->

@@ -1,6 +1,6 @@
 ---
-title: Wizualizacja danych Eksplorator danych platformy Azure
-description: Dowiedz się więcej na temat różnych sposobów wizualizacji danych Eksplorator danych platformy Azure
+title: Wizualizacja danych usługi Azure Data Explorer
+description: Dowiedz się więcej o różnych sposobach wizualizacji danych Eksploratora danych platformy Azure
 services: data-explorer
 author: orspod
 ms.author: orspodek
@@ -9,62 +9,62 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 01/30/2020
 ms.openlocfilehash: 7b1c7825beb769b610d661cb9644fc3f3919d548
-ms.sourcegitcommit: d322d0a9d9479dbd473eae239c43707ac2c77a77
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79139066"
 ---
-# <a name="data-visualization-with-azure-data-explorer"></a>Wizualizacja danych za pomocą usługi Azure Eksplorator danych 
+# <a name="data-visualization-with-azure-data-explorer"></a>Wizualizacja danych za pomocą Eksploratora danych platformy Azure 
 
-Azure Eksplorator danych to szybka i wysoce skalowalna usługa eksploracji danych służąca do tworzenia złożonych rozwiązań analitycznych w przypadku dużych ilości danych. Platforma Azure Eksplorator danych integruje się z różnymi narzędziami do wizualizacji, dzięki czemu możesz wizualizować dane i udostępniać wyniki w całej organizacji. Te dane można przekształcać w szczegółowe informacje umożliwiające podejmowanie działań, aby mieć wpływ na działalność firmy.
+Usługa Azure Data Explorer to szybka i wysoce skalowalna usługa eksploracji danych dla danych dziennika i telemetrii, która jest używana do tworzenia złożonych rozwiązań analitycznych dla ogromnych ilości danych. Usługa Azure Data Explorer integruje się z różnymi narzędziami do wizualizacji, dzięki czemu można wizualizować dane i udostępniać wyniki w całej organizacji. Te dane można przekształcić w użyteczne informacje, aby mieć wpływ na Twoją firmę.
 
-Wizualizacja i raportowanie danych to krytyczny krok w procesie analizy danych. Usługa Azure Eksplorator danych obsługuje wiele usług analizy biznesowej, dzięki czemu możesz użyć tego, który najlepiej pasuje do Twojego scenariusza i budżetu.
+Wizualizacja i raportowanie danych jest krytycznym krokiem w procesie analizy danych. Usługa Azure Data Explorer obsługuje wiele usług analizy biznesowej, dzięki czemu można użyć tego, który najlepiej pasuje do twojego scenariusza i budżetu.
 
 ## <a name="kusto-query-language-visualizations"></a>Wizualizacje języka zapytań Kusto
 
-Język zapytania Kusto [`render operator`](/azure/kusto/query/renderoperator) oferuje różne wizualizacje, takie jak tabele, wykresy kołowe i wykresy słupkowe, aby przedstawić wyniki zapytania. Wizualizacje zapytań są przydatne w przypadku wykrywania anomalii i prognozowania, uczenia maszynowego i innych.
+Język [`render operator`](/azure/kusto/query/renderoperator) zapytania Kusto oferuje różne wizualizacje, takie jak tabele, wykresy kołowe i wykresy słupkowe, aby przedstawić wyniki kwerendy. Wizualizacje zapytań są przydatne w wykrywaniu anomalii i prognozowaniu, uczeniu maszynowym i innych.
 
 ## <a name="power-bi"></a>Power BI
 
-Usługa Azure Eksplorator danych oferuje możliwość nawiązywania połączeń z [Power BI](https://powerbi.microsoft.com) przy użyciu różnych metod: 
+Usługa Azure Data Explorer umożliwia łączenie się z [usługą Power BI](https://powerbi.microsoft.com) przy użyciu różnych metod: 
 
-  * [Wbudowany natywny łącznik Power BI](/azure/data-explorer/power-bi-connector)
+  * [Wbudowane natywne złącze usługi Power BI](/azure/data-explorer/power-bi-connector)
 
-  * [Zaimportuj zapytania z usługi Azure Eksplorator danych do Power BI](/azure/data-explorer/power-bi-imported-query)
+  * [Importowanie kwerend z Eksploratora danych platformy Azure do usługi Power BI](/azure/data-explorer/power-bi-imported-query)
  
   * [Zapytanie SQL](/azure/data-explorer/power-bi-sql-query)
 
 ## <a name="microsoft-excel"></a>Microsoft Excel
 
-Usługa Azure Eksplorator danych oferuje możliwość nawiązywania połączenia z [programem Microsoft Excel](https://products.office.com/excel) przy użyciu [wbudowanego natywnego łącznika programu Excel](excel-connector.md)lub [importowania zapytania](excel-blank-query.md) z usługi Azure Eksplorator danych do programu Excel.
+Eksplorator danych platformy Azure umożliwia łączenie się z [programem Microsoft Excel](https://products.office.com/excel) przy użyciu [wbudowanego natywnego łącznika programu Excel](excel-connector.md)lub [importowanie kwerendy](excel-blank-query.md) z Eksploratora danych platformy Azure do programu Excel.
 
 ## <a name="grafana"></a>Grafana
 
-[Grafana](https://grafana.com) zapewnia wtyczkę Eksplorator danych platformy Azure, która umożliwia wizualizację danych z usługi Azure Eksplorator danych. Należy [skonfigurować Eksplorator danych platformy Azure jako źródło danych dla Grafana, a następnie wizualizować dane](/azure/data-explorer/grafana). 
+[Grafana](https://grafana.com) udostępnia wtyczkę Usługi Azure Data Explorer, która umożliwia wizualizację danych z Eksploratora danych platformy Azure. Konfigurowanie [Usługi Azure Data Explorer jako źródła danych dla grawany, a następnie wizualizowanie danych](/azure/data-explorer/grafana). 
 
 ## <a name="kibana"></a>Kibana
 
-Usługa Azure Eksplorator danych oferuje możliwość nawiązywania połączenia z usługą [Kibana (strona odnajdowania)](https://www.elastic.co/guide/en/kibana/6.8/discover.html) przy użyciu łącznika programu K2Bridge o postaci Open Source. Należy [skonfigurować Eksplorator danych platformy Azure jako źródło danych dla Kibana, a następnie wizualizować dane](/azure/data-explorer/k2bridge).
+Usługa Azure Data Explorer umożliwia łączenie się z [Kibaną (stroną Discover)](https://www.elastic.co/guide/en/kibana/6.8/discover.html) przy użyciu K2Bridge, łącznika open source. Konfigurowanie [Usługi Azure Data Explorer jako źródła danych dla kibana, a następnie wizualizować dane](/azure/data-explorer/k2bridge).
 
 ## <a name="odbc-connector"></a>Łącznik ODBC
 
-Usługa Azure Eksplorator danych udostępnia [łącznik Open Database Connectivity (ODBC)](connect-odbc.md) , dzięki czemu dowolna aplikacja obsługująca ODBC może łączyć się z usługą Azure Eksplorator danych.
+Usługa Azure Data Explorer udostępnia [łącznik łączności otwartej bazy danych (ODBC),](connect-odbc.md) dzięki czemu każda aplikacja obsługująca odbc może łączyć się z Eksploratorem danych platformy Azure.
 
 ## <a name="tableau"></a>Tableau
 
-Usługa Azure Eksplorator danych oferuje możliwość nawiązywania połączenia z usługą [Tableau](https://www.tableau.com) przy użyciu [łącznika ODBC](/azure/data-explorer/connect-odbc) , a następnie [wizualizowania danych w Tableau](tableau.md).
+Usługa Azure Data Explorer umożliwia łączenie się z [Tableau](https://www.tableau.com) przy użyciu [łącznika ODBC,](/azure/data-explorer/connect-odbc) a następnie [wizualizowanie danych w tableau](tableau.md).
 
 ## <a name="qlik"></a>Qlik
 
-Usługa Azure Eksplorator danych oferuje możliwość nawiązywania połączenia z usługą [Qlik](https://www.qlik.com) przy użyciu [łącznika ODBC](/azure/data-explorer/connect-odbc) , a następnie tworzenia pulpitów nawigacyjnych wykrywania Qlik i wizualizacji danych. Korzystając z poniższego wideo, możesz dowiedzieć się, jak wizualizować dane Eksplorator danych platformy Azure za pomocą Qlik. 
+Usługa Azure Data Explorer umożliwia łączenie się z [funkcją Qlik](https://www.qlik.com) przy użyciu [łącznika ODBC,](/azure/data-explorer/connect-odbc) a następnie tworzenie pulpitów nawigacyjnych Qlik Sense i wizualizowanie danych. Korzystając z poniższego klipu wideo, możesz nauczyć się wizualizować dane usługi Azure Data Explorer za pomocą qlik. 
 
 > [!VIDEO https://www.youtube.com/embed/nhWIiBwxjjU]  
 
 ## <a name="sisense"></a>Sisense
 
-Usługa Azure Eksplorator danych oferuje możliwość nawiązywania połączenia z usługą [SiSense](https://www.sisense.com) przy użyciu łącznika JDBC. Należy [skonfigurować Eksplorator danych platformy Azure jako źródło danych dla SiSense, a następnie wizualizować dane](/azure/data-explorer/sisense).
+Usługa Azure Data Explorer udostępnia możliwość łączenia się z [Sisense](https://www.sisense.com) przy użyciu łącznika JDBC. Konfigurowanie [Usługi Azure Data Explorer jako źródła danych dla Sisense, a następnie wizualizowanie danych](/azure/data-explorer/sisense).
 
 ## <a name="redash"></a>Redash
 
-Aby tworzyć pulpity nawigacyjne i wizualizować dane, można użyć pozostałego [łącznika](https://redash.io/) . [Skonfiguruj Eksplorator danych platformy Azure jako źródło danych do oddzielenia, a następnie Wizualizuj dane](/azure/data-explorer/redash).
+Redash [Redash](https://redash.io/) służy do tworzenia pulpitów nawigacyjnych i wizualizacji danych. [Skonfiguruj Eksploratora danych platformy Azure jako źródło danych dla programu Redash, a następnie wizualizuj dane](/azure/data-explorer/redash).

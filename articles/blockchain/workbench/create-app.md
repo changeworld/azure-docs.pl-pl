@@ -1,17 +1,17 @@
 ---
-title: Tworzenie aplikacji łańcucha bloków — Azure łańcucha bloków Workbench
-description: Samouczek dotyczący sposobu tworzenia aplikacji łańcucha bloków dla usługi Azure łańcucha bloków Workbench Preview.
+title: Tworzenie aplikacji blockchain — Azure Blockchain Workbench
+description: Samouczek dotyczący tworzenia aplikacji blockchain dla usługi Azure Blockchain Workbench Preview.
 ms.date: 10/14/2019
 ms.topic: tutorial
 ms.reviewer: brendal
 ms.openlocfilehash: 33a9e9c10c07d0808626353a7edfd505e0f60bc9
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/22/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74324809"
 ---
-# <a name="tutorial-create-a-blockchain-application-for-azure-blockchain-workbench"></a>Samouczek: Tworzenie aplikacji łańcucha bloków dla usługi Azure łańcucha bloków Workbench
+# <a name="tutorial-create-a-blockchain-application-for-azure-blockchain-workbench"></a>Samouczek: Tworzenie aplikacji blockchain dla programu Azure Blockchain Workbench
 
 Usługa Azure Blockchain Workbench umożliwia tworzenie aplikacji łańcucha bloków reprezentujących przepływy pracy dla wielu podmiotów zdefiniowane za pomocą konfiguracji i kodu kontraktu inteligentnego.
 
@@ -321,9 +321,9 @@ Aby dodać aplikację łańcucha bloków do usługi Blockchain Workbench, należ
 
 1. W przeglądarce internetowej przejdź na adres internetowy usługi Blockchain Workbench. Na przykład `https://{workbench URL}.azurewebsites.net/`. Aplikacja internetowa zostanie utworzona po wdrożeniu usługi Blockchain Workbench. Aby uzyskać informacje na temat znajdowania adresu internetowego usługi Blockchain Workbench, zobacz [Internetowy adres URL usługi Blockchain Workbench](deploy.md#blockchain-workbench-web-url)
 2. Zaloguj się jako [administrator usługi Blockchain Workbench](manage-users.md#manage-blockchain-workbench-administrators).
-3. Wybierz pozycję **Aplikacje** > **Nowa**. Zostanie wyświetlone okienko **Nowa aplikacja**.
-4. Wybierz pozycję **Przekaż konfigurację kontraktu** > **Przeglądaj**, aby wskazać utworzony plik konfiguracji **HelloBlockchain.json**. Zostanie wykonana automatyczna walidacja pliku konfiguracji. Wybierz link **Pokaż**, aby wyświetlić błędy walidacji. Usuń błędy walidacji przed wdrożeniem aplikacji.
-5. Wybierz pozycję **Przekaż kod kontraktu** > **Przeglądaj**, aby wskazać plik kodu kontraktu inteligentnego **HelloBlockchain.sol**. Zostanie wykonana automatyczna walidacja pliku kodu. Wybierz link **Pokaż**, aby wyświetlić błędy walidacji. Usuń błędy walidacji przed wdrożeniem aplikacji.
+3. Wybierz **nowe aplikacje** > **.** Zostanie wyświetlone okienko **Nowa aplikacja**.
+4. Wybierz **pozycję Przekaż konfigurację** > kontraktu**Przeglądaj,** aby zlokalizować utworzony plik konfiguracyjny **HelloBlockchain.json.** Zostanie wykonana automatyczna walidacja pliku konfiguracji. Wybierz link **Pokaż**, aby wyświetlić błędy walidacji. Usuń błędy walidacji przed wdrożeniem aplikacji.
+5. Wybierz **opcję Przekaż kod** > umowy**Przeglądaj,** aby zlokalizować plik kodu inteligentnego kontraktu **HelloBlockchain.sol.** Zostanie wykonana automatyczna walidacja pliku kodu. Wybierz link **Pokaż**, aby wyświetlić błędy walidacji. Usuń błędy walidacji przed wdrożeniem aplikacji.
 6. Wybierz pozycję **Wdróż**, aby utworzyć aplikację łańcucha bloków na podstawie plików konfiguracji i kontraktu inteligentnego.
 
 Wdrażanie aplikacji łańcucha bloków zajmuje kilka minut. Po zakończeniu wdrażania nowa aplikacja zostanie wyświetlona w sekcji **Aplikacje**. 
@@ -335,7 +335,7 @@ Wdrażanie aplikacji łańcucha bloków zajmuje kilka minut. Po zakończeniu wdr
 
 Dodaj do aplikacji członków, którzy będą inicjować kontrakty i wykonywać w ramach nich akcje. Aby dodać członków aplikacji, musisz być [administratorem usługi Blockchain Workbench](manage-users.md#manage-blockchain-workbench-administrators).
 
-1. Wybierz pozycję **Aplikacje** > **Hello, Blockchain!** .
+1. Wybierz **aplikacje** > **Hello, Blockchain!**.
 2. Liczba członków skojarzonych z aplikacją jest wyświetlana w prawym górnym rogu strony. W przypadku nowej aplikacji liczba członków będzie równa zero.
 3. Wybierz link **członkowie** w prawym górnym rogu strony. Zostanie wyświetlona bieżąca lista członków aplikacji.
 4. Na liście członkostwa wybierz pozycję **Dodaj członków**.

@@ -1,18 +1,18 @@
 ---
-title: 'Szybki Start: Tworzenie aplikacji sieci Web w języku Node. js'
-description: Wdróż pierwszy Hello world środowiska Node. js, aby Azure App Service w ciągu kilku minut. Wdrażasz przy użyciu pakietu ZIP, który jest jednym z wielu sposobów wdrożenia do App Service.
+title: 'Szybki start: tworzenie aplikacji sieci Web Node.js'
+description: Wdrożenie pierwszego node.js Hello World w usłudze Azure App Service w ciągu kilku minut. Wdrażanie przy użyciu pakietu ZIP, który jest jednym z wielu sposobów wdrażania w usłudze App Service.
 ms.assetid: 582bb3c2-164b-42f5-b081-95bfcb7a502a
 ms.topic: quickstart
 ms.date: 08/23/2019
-ms.custom: seodec18
+ms.custom: mvc, devcenter, seodec18
 experimental: false
 experiment_id: a231f2b4-2625-4d
-ms.openlocfilehash: 585eb1f11a285722e34c6dd084f4c6cb26a06249
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 84953c79093ebd4e53e7e7feef5ab72b8afce002
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78247619"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80047542"
 ---
 # <a name="create-a-nodejs-web-app-in-azure"></a>Tworzenie aplikacji internetowej Node.js na platformie Azure
 
@@ -20,7 +20,7 @@ ms.locfileid: "78247619"
 > W tym artykule opisano wdrażanie aplikacji w usłudze App Service w systemie Windows. Aby wdrożyć aplikację w usłudze App Service w systemie _Linux_, zobacz [Tworzenie aplikacji internetowej środowiska Node.js w usłudze Azure App Service w systemie Linux](./containers/quickstart-nodejs.md).
 >
 
-Usługa [Azure App Service](overview.md) oferuje wysoce skalowalną i samonaprawialną usługę hostingu w Internecie.  Ten samouczek Szybki start przedstawia sposób wdrażania aplikacji Node.js w usłudze Azure App Service. Aplikacja internetowa jest tworzona w usłudze [Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview), ale można te polecenia uruchomić również lokalnie za pomocą [interfejsu wiersza polecenia platformy Azure](/cli/azure/install-azure-cli). Przykładowy kod Node.js jest wdrażany w aplikacji internetowej przy użyciu polecenia [az webapp deployment source config-zip](/cli/azure/webapp/deployment/source?view=azure-cli-latest#az-webapp-deployment-source-config-zip).  
+[Usługa Azure App Service](overview.md) zapewnia wysoce skalowalną, samoładującą się usługę hostingu.  Ten samouczek Szybki start przedstawia sposób wdrażania aplikacji Node.js w usłudze Azure App Service. Aplikacja internetowa jest tworzona w usłudze [Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview), ale można te polecenia uruchomić również lokalnie za pomocą [interfejsu wiersza polecenia platformy Azure](/cli/azure/install-azure-cli). Przykładowy kod Node.js jest wdrażany w aplikacji internetowej przy użyciu polecenia [az webapp deployment source config-zip](/cli/azure/webapp/deployment/source?view=azure-cli-latest#az-webapp-deployment-source-config-zip).  
 
 ![Przykładowa aplikacja działająca na platformie Azure](media/app-service-web-get-started-nodejs-poc/hello-world-in-browser.png)
 
@@ -66,7 +66,7 @@ Checking connectivity... done.
 
 ## <a name="create-a-web-app"></a>Tworzenie aplikacji internetowej
 
-W usłudze Cloud Shell utwórz aplikację internetową w planie usługi App Service `myAppServicePlan` za pomocą polecenia [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create).
+W aplikacji Cloud Shell utwórz `myAppServicePlan` aplikację internetową w [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) planie usługi app service za pomocą polecenia.
 
 W poniższym przykładzie zastąp ciąg `<app_name>` globalnie unikatową nazwą aplikacji (prawidłowe znaki to `a-z`, `0-9` i `-`).
 
@@ -93,7 +93,7 @@ Po utworzeniu aplikacji internetowej w interfejsie wiersza polecenia platformy A
 
 ### <a name="set-nodejs-runtime"></a>Ustawianie środowiska uruchomieniowego platformy Node.js
 
-Ustaw środowisko uruchomieniowe Node na wersję 10.14.1. Aby wyświetlić wszystkie obsługiwane środowiska uruchomieniowe, uruchom polecenie [`az webapp list-runtimes`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-list-runtimes).
+Ustaw środowisko uruchomieniowe Node na wersję 10.14.1. Aby wyświetlić wszystkie obsługiwane środowiska [`az webapp list-runtimes`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-list-runtimes)wykonawcze, uruchom plik .
 
 ```azurecli-interactive
 # Bash and Powershell
@@ -106,7 +106,7 @@ Przejdź do nowo utworzonej aplikacji internetowej. Zastąp `<app_name>` unikato
 http://<app_name>.azurewebsites.net
 ```
 
-Oto, jak powinna wyglądać Nowa aplikacja sieci Web: ![pustą stronę aplikacji sieci Web](media/app-service-web-get-started-nodejs-poc/app-service-web-service-created.png)
+Oto, jak powinna wyglądać Twoja ![nowa aplikacja internetowa: Pusta strona aplikacji internetowej](media/app-service-web-get-started-nodejs-poc/app-service-web-service-created.png)
 
 ## <a name="deploy-zip-file"></a>Wdrażanie plików ZIP
 
@@ -155,7 +155,7 @@ Wprowadź niewielką zmianę w tekście w wywołaniu metody `response.end`:
 response.end("Hello Azure!");
 ```
 
-Zapisz zmiany i zamknij edytor. Użyj polecenia `^S` do zapisania i `^Q`, aby zakończyć program.
+Zapisz zmiany i zamknij edytor. Użyj polecenia `^S` w celu zapisania i polecenia `^Q` w celu zamknięcia programu.
 
 Utwórz plik ZIP i wdróż go przy użyciu polecenia [az webapp deployment source config-zip](/cli/azure/webapp/deployment/source?view=azure-cli-latest#az-webapp-deployment-source-config-zip).  
 

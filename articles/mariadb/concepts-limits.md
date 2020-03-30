@@ -1,204 +1,204 @@
 ---
-title: Ograniczenia — Azure Database for MariaDB
-description: W tym artykule opisano ograniczenia w Azure Database for MariaDB, takie jak liczba opcji połączenia i aparatu magazynu.
+title: Ograniczenia — usługa Azure Database dla mariadb
+description: W tym artykule opisano ograniczenia w usłudze Azure Database dla MariaDB, takie jak liczba opcji aparatu połączeń i magazynu.
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 3/9/2020
-ms.openlocfilehash: c982181dee34a7eb0715d5e1271ef5ed794f3809
-ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
+ms.date: 3/18/2020
+ms.openlocfilehash: bb907ee59891e5a9a1ffc9c8c6eee34d3e71ad2f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79296748"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79531944"
 ---
-# <a name="limitations-in-azure-database-for-mariadb"></a>Ograniczenia w Azure Database for MariaDB
-Poniżej opisano pojemności, obsługa aparatu magazynu, uprawnień obsługę, dane manipulowania instrukcji oraz ograniczenia funkcjonalności w usłudze bazy danych.
+# <a name="limitations-in-azure-database-for-mariadb"></a>Ograniczenia w usłudze Azure Database dla mariadb
+W poniższych sekcjach opisano pojemność, obsługę aparatu magazynu, obsługę uprawnień, obsługę instrukcji manipulowania danymi i limity funkcjonalności w usłudze bazy danych.
 
 ## <a name="server-parameters"></a>Parametry serwera
 
-Minimalne i maksymalne wartości kilku popularnych parametrów serwera są określane przez warstwę cenową i rdzeni wirtualnych. Limity można znaleźć w poniższych tabelach.
+Minimalne i maksymalne wartości kilku popularnych parametrów serwera są określane przez warstwę cenową i pole wirtualne. Limity znajdują się w poniższych tabelach.
 
-### <a name="max_connections"></a>max_connections
+### <a name="max_connections"></a>Max_connections
 
-|**Warstwa cenowa**|**Rdzeń wirtualny**|**Wartość domyślna**|**Wartość minimalna**|**Wartość maksymalna**|
+|**Warstwa cenowa**|**vCore(s)**|**Wartość domyślna**|**Wartość min.**|**Wartość maksymalna**|
 |---|---|---|---|---|
-|Podstawowa|1|50|10|50|
-|Podstawowa|2|100|10|100|
+|Podstawowa (Basic)|1|50|10|50|
+|Podstawowa (Basic)|2|100|10|100|
 |Ogólnego przeznaczenia|2|300|10|600|
 |Ogólnego przeznaczenia|4|625|10|1250|
 |Ogólnego przeznaczenia|8|1250|10|2500|
 |Ogólnego przeznaczenia|16|2500|10|5000|
 |Ogólnego przeznaczenia|32|5000|10|10 000|
 |Ogólnego przeznaczenia|64|10 000|10|20000|
-|Pamięć|2|600|10|800|
-|Pamięć|4|1250|10|2500|
-|Pamięć|8|2500|10|5000|
-|Pamięć|16|5000|10|10 000|
-|Pamięć|32|10 000|10|20000|
+|Optymalizacja pod kątem pamięci|2|600|10|800|
+|Optymalizacja pod kątem pamięci|4|1250|10|2500|
+|Optymalizacja pod kątem pamięci|8|2500|10|5000|
+|Optymalizacja pod kątem pamięci|16|5000|10|10 000|
+|Optymalizacja pod kątem pamięci|32|10 000|10|20000|
 
-Po przekroczeniu limitu połączeń może zostać wyświetlony następujący błąd:
-> Błąd 1040 (08004): Zbyt wiele połączeń
+Gdy połączenia przekraczają limit, może pojawić się następujący błąd:
+> BŁĄD 1040 (08004): Zbyt wiele połączeń
 
 > [!IMPORTANT]
-> W celu uzyskania najlepszego środowiska zalecamy użycie połączenia pulę, takiego jak ProxySQL, aby efektywnie zarządzać połączeniami.
+> Aby uzyskać najlepsze wrażenia, zaleca się używanie puli połączeń, takiej jak ProxySQL, do efektywnego zarządzania połączeniami.
 
-Tworzenie nowych połączeń klientów do MariaDB trwa po upływie czasu i po jego ustanowieniu te połączenia zajmują zasoby bazy danych, nawet jeśli są bezczynne. Większość aplikacji żąda wielu krótkich połączeń, które są związane z tą sytuacją. Wynikiem jest mniej zasobów dostępnych dla rzeczywistego obciążenia, co prowadzi do zmniejszenia wydajności. Pulę połączenia, który zmniejsza bezczynne połączenia i ponownie używa istniejących połączeń, będzie pomóc w uniknięciu tego działania. Aby dowiedzieć się więcej o konfigurowaniu ProxySQL, odwiedź nasz [wpis w blogu](https://techcommunity.microsoft.com/t5/azure-database-for-mysql/load-balance-read-replicas-using-proxysql-in-azure-database-for/ba-p/880042).
+Tworzenie nowych połączeń klientów z MariaDB wymaga czasu i po ustanowieniu, te połączenia zajmują zasoby bazy danych, nawet wtedy, gdy bezczynny. Większość aplikacji żąda wielu krótkotrwałych połączeń, co potęguje tę sytuację. Rezultatem jest mniej zasobów dostępnych dla rzeczywistego obciążenia, co prowadzi do zmniejszenia wydajności. Pooler połączenia, który zmniejsza bezczynne połączenia i ponownie używa istniejących połączeń pomoże uniknąć tego. Aby dowiedzieć się więcej o konfigurowaniu pliku ProxySQL, odwiedź nasz [wpis na blogu.](https://techcommunity.microsoft.com/t5/azure-database-for-mysql/load-balance-read-replicas-using-proxysql-in-azure-database-for/ba-p/880042)
 
-## <a name="query_cache_size"></a>query_cache_size
+### <a name="query_cache_size"></a>query_cache_size
 
-Pamięć podręczna zapytań jest domyślnie wyłączona. Aby włączyć pamięć podręczną zapytań, należy skonfigurować parametr `query_cache_type`. 
+Pamięć podręczna kwerend jest domyślnie wyłączona. Aby włączyć pamięć podręczną `query_cache_type` kwerend, skonfiguruj parametr. 
 
-Zapoznaj się z [dokumentacją MariaDB](https://mariadb.com/kb/en/server-system-variables/#query_cache_size) , aby dowiedzieć się więcej o tym parametrze.
+Przejrzyj [dokumentację MariaDB,](https://mariadb.com/kb/en/server-system-variables/#query_cache_size) aby dowiedzieć się więcej o tym parametrze.
 
-|**Warstwa cenowa**|**Rdzeń wirtualny**|**Wartość domyślna**|**Wartość minimalna**|**Wartość maksymalna**|
+|**Warstwa cenowa**|**vCore(s)**|**Wartość domyślna**|**Wartość min.**|**Wartość maksymalna**|
 |---|---|---|---|---|
-|Podstawowa|1|Nie można skonfigurować w warstwie Podstawowa|N/D|N/D|
-|Podstawowa|2|Nie można skonfigurować w warstwie Podstawowa|N/D|N/D|
+|Podstawowa (Basic)|1|Nie można konfigurować w warstwie Podstawowa|Nie dotyczy|Nie dotyczy|
+|Podstawowa (Basic)|2|Nie można konfigurować w warstwie Podstawowa|Nie dotyczy|Nie dotyczy|
 |Ogólnego przeznaczenia|2|0|0|16777216|
 |Ogólnego przeznaczenia|4|0|0|33554432|
 |Ogólnego przeznaczenia|8|0|0|67108864|
 |Ogólnego przeznaczenia|16|0|0|134217728|
 |Ogólnego przeznaczenia|32|0|0|134217728|
 |Ogólnego przeznaczenia|64|0|0|134217728|
-|Pamięć|2|0|0|33554432|
-|Pamięć|4|0|0|67108864|
-|Pamięć|8|0|0|134217728|
-|Pamięć|16|0|0|134217728|
-|Pamięć|32|0|0|134217728|
+|Optymalizacja pod kątem pamięci|2|0|0|33554432|
+|Optymalizacja pod kątem pamięci|4|0|0|67108864|
+|Optymalizacja pod kątem pamięci|8|0|0|134217728|
+|Optymalizacja pod kątem pamięci|16|0|0|134217728|
+|Optymalizacja pod kątem pamięci|32|0|0|134217728|
 
-## <a name="sort_buffer_size"></a>sort_buffer_size
+### <a name="sort_buffer_size"></a>sort_buffer_size
 
-Zapoznaj się z [dokumentacją MariaDB](https://mariadb.com/kb/en/server-system-variables/#sort_buffer_size) , aby dowiedzieć się więcej o tym parametrze.
+Przejrzyj [dokumentację MariaDB,](https://mariadb.com/kb/en/server-system-variables/#sort_buffer_size) aby dowiedzieć się więcej o tym parametrze.
 
-|**Warstwa cenowa**|**Rdzeń wirtualny**|**Wartość domyślna**|**Wartość minimalna**|**Wartość maksymalna**|
+|**Warstwa cenowa**|**vCore(s)**|**Wartość domyślna**|**Wartość min.**|**Wartość maksymalna**|
 |---|---|---|---|---|
-|Podstawowa|1|Nie można skonfigurować w warstwie Podstawowa|N/D|N/D|
-|Podstawowa|2|Nie można skonfigurować w warstwie Podstawowa|N/D|N/D|
+|Podstawowa (Basic)|1|Nie można konfigurować w warstwie Podstawowa|Nie dotyczy|Nie dotyczy|
+|Podstawowa (Basic)|2|Nie można konfigurować w warstwie Podstawowa|Nie dotyczy|Nie dotyczy|
 |Ogólnego przeznaczenia|2|524288|32768|4194304|
 |Ogólnego przeznaczenia|4|524288|32768|8388608|
 |Ogólnego przeznaczenia|8|524288|32768|16777216|
 |Ogólnego przeznaczenia|16|524288|32768|33554432|
 |Ogólnego przeznaczenia|32|524288|32768|33554432|
 |Ogólnego przeznaczenia|64|524288|32768|33554432|
-|Pamięć|2|524288|32768|8388608|
-|Pamięć|4|524288|32768|16777216|
-|Pamięć|8|524288|32768|33554432|
-|Pamięć|16|524288|32768|33554432|
-|Pamięć|32|524288|32768|33554432|
+|Optymalizacja pod kątem pamięci|2|524288|32768|8388608|
+|Optymalizacja pod kątem pamięci|4|524288|32768|16777216|
+|Optymalizacja pod kątem pamięci|8|524288|32768|33554432|
+|Optymalizacja pod kątem pamięci|16|524288|32768|33554432|
+|Optymalizacja pod kątem pamięci|32|524288|32768|33554432|
 
-## <a name="join_buffer_size"></a>join_buffer_size
+### <a name="join_buffer_size"></a>join_buffer_size
 
-Zapoznaj się z [dokumentacją MariaDB](https://mariadb.com/kb/en/server-system-variables/#join_buffer_size) , aby dowiedzieć się więcej o tym parametrze.
+Przejrzyj [dokumentację MariaDB,](https://mariadb.com/kb/en/server-system-variables/#join_buffer_size) aby dowiedzieć się więcej o tym parametrze.
 
-|**Warstwa cenowa**|**Rdzeń wirtualny**|**Wartość domyślna**|**Wartość minimalna**|**Wartość maksymalna**|
+|**Warstwa cenowa**|**vCore(s)**|**Wartość domyślna**|**Wartość min.**|**Wartość maksymalna**|
 |---|---|---|---|---|
-|Podstawowa|1|Nie można skonfigurować w warstwie Podstawowa|N/D|N/D|
-|Podstawowa|2|Nie można skonfigurować w warstwie Podstawowa|N/D|N/D|
+|Podstawowa (Basic)|1|Nie można konfigurować w warstwie Podstawowa|Nie dotyczy|Nie dotyczy|
+|Podstawowa (Basic)|2|Nie można konfigurować w warstwie Podstawowa|Nie dotyczy|Nie dotyczy|
 |Ogólnego przeznaczenia|2|262144|128|268435455|
 |Ogólnego przeznaczenia|4|262144|128|536870912|
 |Ogólnego przeznaczenia|8|262144|128|1073741824|
 |Ogólnego przeznaczenia|16|262144|128|2147483648|
 |Ogólnego przeznaczenia|32|262144|128|4294967295|
 |Ogólnego przeznaczenia|64|262144|128|4294967295|
-|Pamięć|2|262144|128|536870912|
-|Pamięć|4|262144|128|1073741824|
-|Pamięć|8|262144|128|2147483648|
-|Pamięć|16|262144|128|4294967295|
-|Pamięć|32|262144|128|4294967295|
+|Optymalizacja pod kątem pamięci|2|262144|128|536870912|
+|Optymalizacja pod kątem pamięci|4|262144|128|1073741824|
+|Optymalizacja pod kątem pamięci|8|262144|128|2147483648|
+|Optymalizacja pod kątem pamięci|16|262144|128|4294967295|
+|Optymalizacja pod kątem pamięci|32|262144|128|4294967295|
 
-## <a name="max_heap_table_size"></a>max_heap_table_size
+### <a name="max_heap_table_size"></a>max_heap_table_size
 
-Zapoznaj się z [dokumentacją MariaDB](https://mariadb.com/kb/en/server-system-variables/#max_heap_table_size) , aby dowiedzieć się więcej o tym parametrze.
+Przejrzyj [dokumentację MariaDB,](https://mariadb.com/kb/en/server-system-variables/#max_heap_table_size) aby dowiedzieć się więcej o tym parametrze.
 
-|**Warstwa cenowa**|**Rdzeń wirtualny**|**Wartość domyślna**|**Wartość minimalna**|**Wartość maksymalna**|
+|**Warstwa cenowa**|**vCore(s)**|**Wartość domyślna**|**Wartość min.**|**Wartość maksymalna**|
 |---|---|---|---|---|
-|Podstawowa|1|Nie można skonfigurować w warstwie Podstawowa|N/D|N/D|
-|Podstawowa|2|Nie można skonfigurować w warstwie Podstawowa|N/D|N/D|
+|Podstawowa (Basic)|1|Nie można konfigurować w warstwie Podstawowa|Nie dotyczy|Nie dotyczy|
+|Podstawowa (Basic)|2|Nie można konfigurować w warstwie Podstawowa|Nie dotyczy|Nie dotyczy|
 |Ogólnego przeznaczenia|2|16777216|16384|268435455|
 |Ogólnego przeznaczenia|4|16777216|16384|536870912|
 |Ogólnego przeznaczenia|8|16777216|16384|1073741824|
 |Ogólnego przeznaczenia|16|16777216|16384|2147483648|
 |Ogólnego przeznaczenia|32|16777216|16384|4294967295|
 |Ogólnego przeznaczenia|64|16777216|16384|4294967295|
-|Pamięć|2|16777216|16384|536870912|
-|Pamięć|4|16777216|16384|1073741824|
-|Pamięć|8|16777216|16384|2147483648|
-|Pamięć|16|16777216|16384|4294967295|
-|Pamięć|32|16777216|16384|4294967295|
+|Optymalizacja pod kątem pamięci|2|16777216|16384|536870912|
+|Optymalizacja pod kątem pamięci|4|16777216|16384|1073741824|
+|Optymalizacja pod kątem pamięci|8|16777216|16384|2147483648|
+|Optymalizacja pod kątem pamięci|16|16777216|16384|4294967295|
+|Optymalizacja pod kątem pamięci|32|16777216|16384|4294967295|
 
-## <a name="tmp_table_size"></a>tmp_table_size
+### <a name="tmp_table_size"></a>tmp_table_size
 
-Zapoznaj się z [dokumentacją MariaDB](https://mariadb.com/kb/en/server-system-variables/#tmp_table_size) , aby dowiedzieć się więcej o tym parametrze.
+Przejrzyj [dokumentację MariaDB,](https://mariadb.com/kb/en/server-system-variables/#tmp_table_size) aby dowiedzieć się więcej o tym parametrze.
 
-|**Warstwa cenowa**|**Rdzeń wirtualny**|**Wartość domyślna**|**Wartość minimalna**|**Wartość maksymalna**|
+|**Warstwa cenowa**|**vCore(s)**|**Wartość domyślna**|**Wartość min.**|**Wartość maksymalna**|
 |---|---|---|---|---|
-|Podstawowa|1|Nie można skonfigurować w warstwie Podstawowa|N/D|N/D|
-|Podstawowa|2|Nie można skonfigurować w warstwie Podstawowa|N/D|N/D|
+|Podstawowa (Basic)|1|Nie można konfigurować w warstwie Podstawowa|Nie dotyczy|Nie dotyczy|
+|Podstawowa (Basic)|2|Nie można konfigurować w warstwie Podstawowa|Nie dotyczy|Nie dotyczy|
 |Ogólnego przeznaczenia|2|16777216|1024|67108864|
 |Ogólnego przeznaczenia|4|16777216|1024|134217728|
 |Ogólnego przeznaczenia|8|16777216|1024|268435456|
 |Ogólnego przeznaczenia|16|16777216|1024|536870912|
 |Ogólnego przeznaczenia|32|16777216|1024|1073741824|
 |Ogólnego przeznaczenia|64|16777216|1024|1073741824|
-|Pamięć|2|16777216|1024|134217728|
-|Pamięć|4|16777216|1024|268435456|
-|Pamięć|8|16777216|1024|536870912|
-|Pamięć|16|16777216|1024|1073741824|
-|Pamięć|32|16777216|1024|1073741824|
+|Optymalizacja pod kątem pamięci|2|16777216|1024|134217728|
+|Optymalizacja pod kątem pamięci|4|16777216|1024|268435456|
+|Optymalizacja pod kątem pamięci|8|16777216|1024|536870912|
+|Optymalizacja pod kątem pamięci|16|16777216|1024|1073741824|
+|Optymalizacja pod kątem pamięci|32|16777216|1024|1073741824|
 
-## <a name="storage-engine-support"></a>Obsługa aparatu magazynu
+## <a name="storage-engine-support"></a>Obsługa silnika pamięci masowej
 
 ### <a name="supported"></a>Obsługiwane
-- [InnoDB](https://mariadb.com/kb/en/library/xtradb-and-innodb/)
-- [ROZMIAR](https://mariadb.com/kb/en/library/memory-storage-engine/)
+- [Innodb](https://mariadb.com/kb/en/library/xtradb-and-innodb/)
+- [Pamięci](https://mariadb.com/kb/en/library/memory-storage-engine/)
 
 ### <a name="unsupported"></a>Nieobsługiwane
-- [MyISAM](https://mariadb.com/kb/en/library/myisam-storage-engine/)
-- [BLACKHOLE](https://mariadb.com/kb/en/library/blackhole/)
-- [FOLDERU](https://mariadb.com/kb/en/library/archive/)
+- [Myisam](https://mariadb.com/kb/en/library/myisam-storage-engine/)
+- [Blackhole](https://mariadb.com/kb/en/library/blackhole/)
+- [Archiwum](https://mariadb.com/kb/en/library/archive/)
 
 ## <a name="privilege-support"></a>Obsługa uprawnień
 
 ### <a name="unsupported"></a>Nieobsługiwane
-- Rola Administrator: wiele parametrów serwera i ustawienia mogą przypadkowo obniżają wydajność serwerów lub odwrócić właściwości ACID systemu DBMS. Jako takie utrzymanie integralności usługi i umowa SLA na poziomie produktu, ta usługa nie ujawnia roli Administrator. Domyślne konto użytkownika, który jest tworzony, gdy tworzone jest nowe wystąpienie bazy danych, umożliwia użytkownikowi wykonać większość instrukcji DDL i DML w wystąpieniu zarządzanym bazy danych.
-- Uprawnienie "noprivileged": podobne [nieuprzywilejowane](https://mariadb.com/kb/en/library/grant/#global-privileges) również jest ograniczone.
-- Zdefiniuj: wymagane są uprawnienia administratora do tworzenia i jest ograniczone. W przypadku importowania danych przy użyciu kopii zapasowej Usuń `CREATE DEFINER` polecenia ręcznie lub przy użyciu polecenia `--skip-definer` podczas wykonywania mysqldump.
+- Rola DBA: Wiele parametrów i ustawień serwera może przypadkowo obniżyć wydajność serwera lub zanegować właściwości ACID systemu DBMS. W związku z tym, aby zachować integralność usługi i umowy SLA na poziomie produktu, ta usługa nie udostępnia roli DBA. Domyślne konto użytkownika, które jest tworzone podczas tworzenia nowego wystąpienia bazy danych, umożliwia użytkownikowi wykonywanie większości instrukcji DDL i DML w wystąpieniu zarządzanej bazy danych.
+- Super privilege: Podobnie [przywilej SUPER](https://mariadb.com/kb/en/library/grant/#global-privileges) jest również ograniczony.
+- DEFINER: Wymaga super uprawnień do tworzenia i jest ograniczona. Jeśli importowanie danych przy użyciu `CREATE DEFINER` kopii zapasowej, usunąć `--skip-definer` polecenia ręcznie lub za pomocą polecenia podczas wykonywania mysqldump.
 
-## <a name="data-manipulation-statement-support"></a>Obsługa instrukcji manipulacji danych
+## <a name="data-manipulation-statement-support"></a>Obsługa instrukcji manipulowania danymi
 
 ### <a name="supported"></a>Obsługiwane
-- `LOAD DATA INFILE` jest obsługiwana, ale parametr `[LOCAL]` musi być określony i kierowany do ścieżki UNC (usługa Azure Storage zainstalowana za pomocą protokołu SMB).
+- `LOAD DATA INFILE`jest obsługiwany, ale `[LOCAL]` parametr musi być określony i skierowany do ścieżki UNC (magazyn platformy Azure zainstalowany za pośrednictwem SMB).
 
 ### <a name="unsupported"></a>Nieobsługiwane
 - `SELECT ... INTO OUTFILE`
 
-## <a name="functional-limitations"></a>Ograniczenia funkcjonalności
+## <a name="functional-limitations"></a>Ograniczenia funkcjonalne
 
 ### <a name="scale-operations"></a>Operacje skalowania
-- Dynamiczne skalowanie do i z warstw cenowych podstawowa nie jest obecnie obsługiwane.
-- Zmniejsza rozmiar magazynu serwera nie jest obsługiwane.
+- Dynamiczne skalowanie do i z podstawowych warstw cenowych nie jest obecnie obsługiwane.
+- Zmniejszanie rozmiaru magazynu serwera nie jest obsługiwane.
 
 ### <a name="server-version-upgrades"></a>Uaktualnienia wersji serwera
-- Automatycznej migracji między wersjami aparatu głównej bazy danych nie jest obecnie obsługiwane.
+- Automatyczna migracja między głównymi wersjami aparatu bazy danych nie jest obecnie obsługiwana.
 
 ### <a name="point-in-time-restore"></a>Przywracanie do punktu w czasie
-- Podczas korzystania z funkcji Odzyskiwanie, nowy serwer jest tworzony przy użyciu tej samej konfiguracji, co serwer, który opiera się na.
-- Przywracanie usuniętych serwera nie jest obsługiwana.
+- Podczas korzystania z funkcji PITR nowy serwer jest tworzony z tymi samymi konfiguracjami co serwer, na którym jest oparty.
+- Przywracanie usuniętego serwera nie jest obsługiwane.
 
 ### <a name="subscription-management"></a>Zarządzanie subskrypcjami
-- Dynamiczne przeniesienie wstępnie utworzonych serwerów między subskrypcją i grupą zasobów nie jest obecnie obsługiwane.
+- Dynamicznie przenoszenie wstępnie utworzonych serwerów w ramach subskrypcji i grupy zasobów nie jest obecnie obsługiwane.
 
 ### <a name="vnet-service-endpoints"></a>Punkty końcowe usługi sieci wirtualnej
-- Obsługa punktów końcowych usługi sieci wirtualnej jest tylko w przypadku serwerów ogólnego przeznaczenia i zoptymalizowana pod kątem pamięci.
+- Obsługa punktów końcowych usługi sieci wirtualnej jest dostępna tylko dla serwerów ogólnego przeznaczenia i zoptymalizowanych pod kątem pamięci.
 
 ### <a name="storage-size"></a>Rozmiar magazynu
-- Zapoznaj się z [warstwami cenowymi](concepts-pricing-tiers.md) dla limitów rozmiaru magazynu dla warstwy cenowej.
+- Aby uzyskać limity rozmiaru magazynu dla warstwy cenowej, zapoznaj się z [warstwami cenowymi.](concepts-pricing-tiers.md)
 
-## <a name="current-known-issues"></a>Obecnie znane problemy
-- Wystąpienie serwera MariaDB wyświetla nieprawidłową wersję serwera po nawiązaniu połączenia. Aby uzyskać poprawną wersję aparatu wystąpienia serwera, użyj polecenia `select version();`.
+## <a name="current-known-issues"></a>Bieżące znane problemy
+- Wystąpienie serwera MariaDB wyświetla niepoprawną wersję serwera po nawiązaniu połączenia. Aby uzyskać poprawną wersję aparatu `select version();` wystąpienia serwera, użyj polecenia.
 
 ## <a name="next-steps"></a>Następne kroki
-- [Co jest dostępne w poszczególnych warstwach usług](concepts-pricing-tiers.md)
+- [Co jest dostępne w każdej warstwie usług](concepts-pricing-tiers.md)
 - [Obsługiwane wersje bazy danych MariaDB](concepts-supported-versions.md)

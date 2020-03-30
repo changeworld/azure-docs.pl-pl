@@ -1,53 +1,53 @@
 ---
-title: Dane lokalizacji geograficznej i GEOJSON w Azure Cosmos DB
-description: Dowiedz się, jak tworzyć obiekty przestrzenne za pomocą Azure Cosmos DB i interfejsu API SQL.
+title: Dane lokalizacji geoprzestrzennej i geojson w usłudze Azure Cosmos DB
+description: Dowiedz się, jak tworzyć obiekty przestrzenne za pomocą usługi Azure Cosmos DB i interfejsu API SQL.
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 02/20/2020
 ms.author: tisande
 ms.openlocfilehash: 59c8b31dcc8594d2cafb2db7832e290b01026f60
-ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/14/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79367588"
 ---
-# <a name="geospatial-and-geojson-location-data-in-azure-cosmos-db"></a>Dane lokalizacji geograficznej i GEOJSON w Azure Cosmos DB
+# <a name="geospatial-and-geojson-location-data-in-azure-cosmos-db"></a>Dane lokalizacji geoprzestrzennej i geojson w usłudze Azure Cosmos DB
 
-Ten artykuł stanowi wprowadzenie do funkcji geoprzestrzennych w usłudze Azure Cosmos DB. Obecnie przechowywanie i dostęp do danych geoprzestrzennych jest obsługiwane tylko przez Azure Cosmos DB kont interfejsu API SQL. Po zapoznaniu się z naszą dokumentacją dotyczącą indeksowania geograficznego można odpowiedzieć na następujące pytania:
+Ten artykuł jest wprowadzeniem do funkcji geoprzestrzennych w usłudze Azure Cosmos DB. Obecnie przechowywanie danych geoprzestrzennych i uzyskiwanie do nich dostępu jest obsługiwane tylko przez konta interfejsu API usługi Azure Cosmos DB SQL. Po zapoznaniu się z naszą dokumentacją dotyczącą indeksowania geoprzestrzennego będziesz mógł odpowiedzieć na następujące pytania:
 
 * Jak przechowywać dane przestrzenne w usłudze Azure Cosmos DB?
-* Jak tworzyć zapytania dane geograficzne w usłudze Azure Cosmos DB SQL i LINQ
-* Jak włączyć lub wyłączyć indeksowania przestrzennego w usłudze Azure Cosmos DB?
+* Jak można wysyłać zapytania do danych geoprzestrzennych w usłudze Azure Cosmos DB w językach SQL i LINQ?
+* Jak włączyć lub wyłączyć indeksowanie przestrzenne w usłudze Azure Cosmos DB?
 
 ## <a name="introduction-to-spatial-data"></a>Wprowadzenie do danych przestrzennych
 
-Dane przestrzenne w tym artykule opisano położenie i kształt obiektów w przestrzeni. W większości aplikacji te odnoszą się do obiektów na ziemi i dane geograficzne danych. Dane przestrzenne może służyć do reprezentowania lokalizacji osoby, miejsca lub granic mieście lub usługi Data lake. Typowe przypadki użycia często obejmują zapytań dotyczących odległości, na przykład, "Znajdź wszystkich kawiarnie blisko swojej bieżącej lokalizacji."
+Dane przestrzenne opisują położenie i kształt obiektów w przestrzeni. W większości zastosowań odpowiadają one obiektom na ziemi i danym geoprzestrzennym. Dane przestrzenne mogą być używane do reprezentowania lokalizacji osoby, miejsca zainteresowania lub granicy miasta lub jeziora. Typowe przypadki użycia często dotyczą zapytań zbliżeniowych, na przykład "znajdź wszystkie kawiarnie w pobliżu mojej obecnej lokalizacji".
 
-Interfejs API SQL Azure Cosmos DB obsługuje dwa typy danych przestrzennych: typ danych **geometrii** i typ danych **Geografia** .
+Interfejs API SQL usługi Azure Cosmos DB obsługuje dwa typy danych przestrzennych: typ danych **geometrii** i typ danych **geografii.**
 
-- Typ **geometrii** reprezentuje dane w układzie współrzędnych Euclidean (płaski)
-- Typ **geografii** reprezentuje dane w układzie współrzędnych rundy-ziemi.
+- Typ **geometrii** reprezentuje dane w układzie współrzędnych euklidesowych (płaskich)
+- Typ **geografii** reprezentuje dane w układzie współrzędnych okrągłego.
 
 ## <a name="supported-data-types"></a>Obsługiwane typy danych
 
-Azure Cosmos DB obsługuje indeksowanie i wykonywanie zapytań dotyczących danych punktów geoprzestrzennych, które są reprezentowane przy użyciu [specyfikacji GEOJSON](https://tools.ietf.org/html/rfc7946). GeoJSON struktury danych są zawsze prawidłowe obiekty JSON, dzięki czemu mogą być przechowywane i wyświetlić przy użyciu usługi Azure Cosmos DB bez specjalistycznych narzędzi i bibliotek.
+Usługa Azure Cosmos DB obsługuje indeksowanie i wykonywanie zapytań o dane punktów geoprzestrzennych reprezentowanych przy użyciu [specyfikacji GeoJSON.](https://tools.ietf.org/html/rfc7946) Struktury danych GeoJSON są zawsze prawidłowe obiekty JSON, dzięki czemu mogą być przechowywane i przeszukiwane przy użyciu usługi Azure Cosmos DB bez żadnych specjalistycznych narzędzi lub bibliotek.
 
-Azure Cosmos DB obsługuje następujące typy danych przestrzennych:
+Usługa Azure Cosmos DB obsługuje następujące typy danych przestrzennych:
 
-- Moment
-- LineString
-- Tworząc
-- MultiPolygon
+- Punkt
+- Linestring
+- Wielokąt
+- Multipolygon
 
 ### <a name="points"></a>Punkty
 
-**Punkt** oznacza pojedynczą pozycję w miejscu. W danych geoprzestrzennych punkt reprezentuje dokładnej lokalizacji, co może być adres magazynu połówce, kiosku, samochodów i Miasto.  Punkt jest reprezentowana w parę GeoJSON (i usługi Azure Cosmos DB) przy użyciu jego współrzędnych lub długość i szerokość geograficzną.
+**Punkt** oznacza pojedynczą pozycję w przestrzeni. W danych geoprzestrzennych punkt reprezentuje dokładną lokalizację, która może być adresem ulicy sklepu spożywczego, kiosku, samochodu lub miasta.  Punkt jest reprezentowany w GeoJSON (i Azure Cosmos DB) przy użyciu jego pary współrzędnych lub długości geograficznej i szerokości geograficznej.
 
 Oto przykład JSON dla punktu:
 
-**Punkty w Azure Cosmos DB**
+**Punkty w usłudze Azure Cosmos DB**
 
 ```json
 {
@@ -56,9 +56,9 @@ Oto przykład JSON dla punktu:
 }
 ```
 
-Typy danych przestrzennych można osadzić w dokumencie Azure Cosmos DB, jak pokazano w tym przykładzie profilu użytkownika zawierającego dane lokalizacji:
+Typy danych przestrzennych mogą być osadzone w dokumencie usługi Azure Cosmos DB, jak pokazano w tym przykładzie profilu użytkownika zawierającego dane lokalizacji:
 
-**Użyj profilu z lokalizacją przechowywaną w Azure Cosmos DB**
+**Używanie profilu z lokalizacją przechowywaną w usłudze Azure Cosmos DB**
 
 ```json
 {
@@ -75,19 +75,19 @@ Typy danych przestrzennych można osadzić w dokumencie Azure Cosmos DB, jak pok
 
 ### <a name="points-in-a-geometry-coordinate-system"></a>Punkty w układzie współrzędnych geometrii
 
-W przypadku typu danych **geometria** Specyfikacja GEOJSON określa najpierw oś poziomą i drugą oś pionową.
+Dla typu danych **geometrii** specyfikacja GeoJSON określa oś poziomą jako pierwszą i drugą oś pionową.
 
-### <a name="points-in-a-geography-coordinate-system"></a>Punkty w układzie współrzędnych geograficznych
+### <a name="points-in-a-geography-coordinate-system"></a>Punkty układu współrzędnych geografii
 
-W przypadku typu danych **Geografia** Specyfikacja GEOJSON określa długość i szerokość geograficzną. Podobnie jak w innych aplikacjach mapowania długości i szerokości geograficznej są kąty i reprezentowane w stopniach. Wartości długości geograficznej jest mierzony od południków Prime należą do zakresu od stopni-180 i 180.0 stopni i wartości szerokości geograficznej jest mierzony od równika i należą do zakresu od stopni-90.0 i 90.0 stopni.
+Dla typu danych **geografii** specyfikacja GeoJSON określa długość geograficzną pierwszy i szerokość geograficzną drugi. Podobnie jak w innych aplikacjach mapowania, długość geograficzna i szerokość geograficzna są kątami i są reprezentowane pod względem stopni. Wartości długości geograficznej są mierzone od południka głównego i są od -180 stopni do 180,0 stopni, a wartości szerokości geograficznej są mierzone od równika i są od -90,0 stopni do 90,0 stopni.
 
-Usługa Azure Cosmos DB interpretuje współrzędne reprezentowane na WGS 84 systemu odniesienia. Poniżej zamieszczono więcej informacji na temat systemów współrzędnych odniesienia.
+Usługa Azure Cosmos DB interpretuje współrzędne zgodnie z systemem referencyjnym WGS-84. Poniżej znajdziesz więcej informacji na temat układów odniesienia współrzędnych.
 
-### <a name="linestrings"></a>LineStrings
+### <a name="linestrings"></a>Linestrings
 
-**LineStrings** reprezentuje serię dwóch lub więcej punktów w miejscu i segmentów linii, które je łączą. W danych geoprzestrzennych LineStrings są często używane do reprezentowania drogami lub rzek.
+**LineStrings** reprezentują serię dwóch lub więcej punktów w przestrzeni i segmentów linii, które je łączą. W danych geoprzestrzennych LineStrings są powszechnie używane do reprezentowania autostrad lub rzek.
 
-**LineStrings w GeoJSON**
+**Sznurki liniowe w geojson**
 
 ```json
     "type":"LineString",
@@ -97,9 +97,9 @@ Usługa Azure Cosmos DB interpretuje współrzędne reprezentowane na WGS 84 sys
     ] ]
 ```
 
-### <a name="polygons"></a>Wielokąty
+### <a name="polygons"></a>Wielokątów
 
-**Wielokąt** jest granicą połączonych punktów, które tworzą zamkniętą LineString. Wielokąty są często używane do reprezentowania formacji fizyczne, takie jak lakes lub polityczną jurysdykcjach, takich jak miast i stanów. Oto przykład wielokąta w Azure Cosmos DB:
+**Wielokąt** jest granicą połączonych punktów, która tworzy zamknięty LineString. Wielokąty są powszechnie używane do reprezentowania naturalnych formacji, takich jak jeziora lub jurysdykcje polityczne, takie jak miasta i państwa. Oto przykład wielokąta w usłudze Azure Cosmos DB:
 
 **Wielokąty w GeoJSON**
 
@@ -117,17 +117,17 @@ Usługa Azure Cosmos DB interpretuje współrzędne reprezentowane na WGS 84 sys
 ```
 
 > [!NOTE]
-> Specyfikacją GeoJSON wymaga, aby uzyskać prawidłowy wielokątów ostatnią parę współrzędnych podane powinien taka sama jak pierwsza, aby utworzyć kształt zamknięty.
+> Specyfikacja GeoJSON wymaga, aby w przypadku prawidłowych wielokątów ostatnia podana para współrzędnych była taka sama jak pierwsza, aby utworzyć zamknięty kształt.
 >
-> Punkty, w ramach Wielokąt musi być określona w kolejności przeciwnie do ruchu wskazówek zegara. Wielokąt podane w kolejności do ruchu wskazówek zegara reprezentuje odwrotność region znajdujący się w nim.
+> Punkty w wielokątach muszą być określone w kolejności odwrotnej do ruchu wskazówek zegara. Wielokąt określony w kolejności zgodnie z ruchem wskazówek zegara reprezentuje odwrotność regionu w nim.
 >
 >
 
-### <a name="multipolygons"></a>Wielowielokąty
+### <a name="multipolygons"></a>MultiPolygony
 
-**MultiPolygon** jest tablicą z zero lub więcej wielokątów. **Wielowielokąty** nie mogą nakładać się na strony ani mieć żadnego wspólnego obszaru. Mogą one stykać się z jednym lub wieloma punktami.
+**MultiPolygon** jest tablicą zero lub więcej wielokątów. **MultiPolygony** nie mogą nakładać się na boki ani mieć żadnego wspólnego obszaru. Mogą dotykać w jednym lub więcej punktach.
 
-**Wielowielokątne w GeoJSON**
+**MultiPolygony w GeoJSON**
 
 ```json
 {
@@ -149,16 +149,16 @@ Usługa Azure Cosmos DB interpretuje współrzędne reprezentowane na WGS 84 sys
 }
 ```
 
-## <a name="coordinate-reference-systems"></a>Koordynowanie systemów odniesienia
+## <a name="coordinate-reference-systems"></a>Układy odniesienia współrzędnych
 
-Ze względu na to, że kształt ziemi jest nieregularny, współrzędne danych geoprzestrzennych są reprezentowane w wielu systemach odniesienia współrzędnych (KSR), z których każdy ma własne ramki referencyjne i jednostki miary. Na przykład "National siatki z Brytanii" jest systemu odniesienia dokładne dla Wielkiej Brytanii, ale nie poza nim.
+Ponieważ kształt ziemi jest nieregularny, współrzędne geograficznych danych geoprzestrzennych geograficznych geograficznych są reprezentowane w wielu układach odniesienia współrzędnych (CRS), każdy z własnymi ramkami odniesienia i jednostkami miary. Na przykład "National Grid of Britain" jest systemem referencyjnym jest dokładny dla Zjednoczonego Królestwa, ale nie poza nim.
 
-Najbardziej popularnym KSR w korzystaniu z dzisiaj jest świat Geodetic System [WGS-84](https://earth-info.nga.mil/GandG/update/index.php). Urządzenia GPS i wieloma usługami mapowania, w tym map Google i interfejsów API usługi mapy Bing używają WGS 84. Azure Cosmos DB obsługuje indeksowanie i wykonywanie zapytań dotyczących danych geoprzestrzennych geograficznych tylko przy użyciu WGS-84 KSR.
+Najbardziej popularnym CRS w użyciu obecnie jest World Geodetic System [WGS-84](https://earth-info.nga.mil/GandG/update/index.php). Urządzenia GPS i wiele usług mapowania, w tym Google Maps i interfejsów API Map Bing, korzysta z programu WGS-84. Usługa Azure Cosmos DB obsługuje indeksowanie i wykonywanie zapytań o dane geoprzestrzenne geografii przy użyciu tylko programu WGS-84 CRS.
 
 ## <a name="creating-documents-with-spatial-data"></a>Tworzenie dokumentów z danymi przestrzennymi
-Podczas tworzenia dokumentów, które zawierają wartości GeoJSON one są zgodnie z zasad indeksowania kontenera automatycznie indeksowane za pomocą indeksu przestrzennego. Jeśli pracujesz za pomocą usługi Azure Cosmos DB zestawu SDK w języku o typach określanych dynamicznie, takich jak Python lub Node.js, należy utworzyć prawidłowy GeoJSON.
+Podczas tworzenia dokumentów, które zawierają wartości GeoJSON, są one automatycznie indeksowane z indeksem przestrzennym zgodnie z zasadami indeksowania kontenera. Jeśli pracujesz z zestawem SDK usługi Azure Cosmos DB w dynamicznie wpisanym języku, takim jak Python lub Node.js, musisz utworzyć prawidłową usługę GeoJSON.
 
-**Tworzenie dokumentu z danymi geograficznymi w języku Node. js**
+**Tworzenie dokumentu z danymi geoprzestrzanymi w pliku Node.js**
 
 ```javascript
 var userProfileDocument = {
@@ -174,9 +174,9 @@ client.createDocument(`dbs/${databaseName}/colls/${collectionName}`, userProfile
 });
 ```
 
-Jeśli pracujesz z interfejsami API SQL, możesz użyć klas `Point`, `LineString`, `Polygon`i `MultiPolygon` w przestrzeni nazw `Microsoft.Azure.Cosmos.Spatial`, aby osadzić informacje o lokalizacji w obiektach aplikacji. W ramach tych zajęć ułatwiają serializacji i deserializacji danych przestrzennych w GeoJSON.
+Jeśli pracujesz z interfejsami API SQL, możesz `Point` `LineString`użyć `Polygon`programu `MultiPolygon` , `Microsoft.Azure.Cosmos.Spatial` i klas w obszarze nazw, aby osadzać informacje o lokalizacji w obiektach aplikacji. Te klasy ułatwiają serializacji i deserializacji danych przestrzennych do GeoJSON.
 
-**Tworzenie dokumentu z danymi geograficznymi w programie .NET**
+**Tworzenie dokumentu z danymi geoprzestrzanymi w .NET**
 
 ```csharp
 using Microsoft.Azure.Cosmos.Spatial;
@@ -199,12 +199,12 @@ await container.CreateItemAsync( new UserProfile
     });
 ```
 
-Jeśli nie masz informacji o szerokości geograficznej i długości geograficznej, ale masz adresy fizyczne lub lokalizacje, takie jak miasto lub kraj/region, można wyszukiwać rzeczywiste współrzędne przy użyciu usługi geokodowania, takiej jak usługi w usłudze mapy Bing. Dowiedz się więcej o geokodowania map Bing [tutaj](https://msdn.microsoft.com/library/ff701713.aspx).
+Jeśli nie masz informacji o szerokości i długości geograficznej, ale masz adresy fizyczne lub nazwę lokalizacji, takie jak miasto lub kraj/region, możesz wyszukać rzeczywiste współrzędne, korzystając z usługi geokodowania, takiej jak usługi REST Mapy Bing. Dowiedz się więcej o geokodowaniu map Bing [tutaj](https://msdn.microsoft.com/library/ff701713.aspx).
 
 ## <a name="next-steps"></a>Następne kroki
 
-Teraz, gdy wiesz jak rozpocząć pracę z obsługą dane geograficzne w usłudze Azure Cosmos DB, następnie można wykonywać następujące czynności:
+Teraz, gdy dowiesz się, jak rozpocząć korzystanie z pomocy technicznej geoprzestrzennej w usłudze Azure Cosmos DB, możesz następnie:
 
-* Dowiedz się więcej o [Azure Cosmos DB Query](sql-query-getting-started.md)
-* Dowiedz się więcej o wysyłaniu [zapytań do danych przestrzennych za pomocą Azure Cosmos DB](sql-query-geospatial-query.md)
-* Dowiedz się więcej o [indeksowaniu danych przestrzennych za pomocą Azure Cosmos DB](sql-query-geospatial-index.md)
+* Dowiedz się więcej o [zapytaniu usługi Azure Cosmos DB](sql-query-getting-started.md)
+* Dowiedz się więcej o [wyszukiwaniu danych przestrzennych za pomocą usługi Azure Cosmos DB](sql-query-geospatial-query.md)
+* Dowiedz się więcej o [indeksowaniu danych przestrzennych za pomocą usługi Azure Cosmos DB](sql-query-geospatial-index.md)

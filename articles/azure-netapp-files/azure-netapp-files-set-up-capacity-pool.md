@@ -15,10 +15,10 @@ ms.topic: conceptual
 ms.date: 02/15/2019
 ms.author: b-juche
 ms.openlocfilehash: 8f50b2ad34c705c8d3831d8243f136c41d750dc0
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60691102"
 ---
 # <a name="set-up-a-capacity-pool"></a>Konfigurowanie puli pojemności
@@ -45,9 +45,9 @@ Potrzebujesz utworzonego konta usługi NetApp.
      Określ nazwę puli pojemności.  
      Nazwa puli pojemności musi być unikatowa na tym koncie usługi NetApp.
 
-   * **Poziom usługi**   
+   * **Poziom usług**   
      To pole wskazuje docelową wydajność puli pojemności.  
-     Określ poziom usługi dla puli pojemności: [**Premium**](azure-netapp-files-service-levels.md#Premium) lub [**Standardowa**](azure-netapp-files-service-levels.md#Standard).
+     Określ poziom usług dla puli pojemności: [**Premium**](azure-netapp-files-service-levels.md#Premium) lub [**Standard**](azure-netapp-files-service-levels.md#Standard).
 
    * **Rozmiar**     
      Określ rozmiar kupowanej puli pojemności.        
@@ -57,7 +57,7 @@ Potrzebujesz utworzonego konta usługi NetApp.
 
 4. Kliknij przycisk **OK**.
 
-## <a name="next-steps"></a>Kolejne kroki 
+## <a name="next-steps"></a>Następne kroki 
 
 - [Poziomy usług dla usługi Azure NetApp Files](azure-netapp-files-service-levels.md)
 - Informacje o różnych poziomach usługi można uzyskać na [stronie z cennikiem dla usługi Azure NetApp Files](https://azure.microsoft.com/pricing/details/storage/netapp/)

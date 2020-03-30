@@ -1,46 +1,51 @@
 ---
 title: Wdrażanie zasobów w ramach subskrypcji
-description: Opisuje sposób tworzenia grupy zasobów w szablonie Azure Resource Manager. Przedstawiono w nim również sposób wdrażania zasobów w zakresie subskrypcji platformy Azure.
+description: W tym artykule opisano sposób tworzenia grupy zasobów w szablonie usługi Azure Resource Manager. Pokazano również, jak wdrożyć zasoby w zakresie subskrypcji platformy Azure.
 ms.topic: conceptual
-ms.date: 03/09/2020
-ms.openlocfilehash: 1a76e41b4b2264bc535752e8f765b3303080abbd
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.date: 03/23/2020
+ms.openlocfilehash: 65cc220d32d1e1149b7026fc438f5e34262511dd
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79248413"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80131955"
 ---
 # <a name="create-resource-groups-and-resources-at-the-subscription-level"></a>Tworzenie grup zasobów i zasobów na poziomie subskrypcji
 
-Aby uprościć zarządzanie zasobami w ramach subskrypcji platformy Azure, możesz definiować i przypisywać [zasady](../../governance/policy/overview.md) lub [mechanizmy kontroli dostępu oparte na rolach](../../role-based-access-control/overview.md) w ramach subskrypcji. Szablony na poziomie subskrypcji umożliwiają deklaratywne stosowanie zasad i przypisywanie ról w ramach subskrypcji. Można także tworzyć grupy zasobów i wdrażać zasoby.
+Aby uprościć zarządzanie zasobami w ramach subskrypcji platformy Azure, można zdefiniować i przypisać [zasady](../../governance/policy/overview.md) lub [formanty dostępu oparte na rolach](../../role-based-access-control/overview.md) w całej subskrypcji. Za pomocą szablonów poziomu subskrypcji można deklaratywnie zastosować zasady i przypisać role w subskrypcji. Można również tworzyć grupy zasobów i wdrażać zasoby.
 
-Aby wdrażać szablony na poziomie subskrypcji, użyj interfejsu wiersza polecenia platformy Azure, programu PowerShell lub API REST. Azure Portal nie obsługuje wdrażania na poziomie subskrypcji.
+Aby wdrożyć szablony na poziomie subskrypcji, użyj interfejsu API platformy Azure, programu PowerShell lub REST. Witryna Azure portal nie obsługuje wdrażania na poziomie subskrypcji.
 
 ## <a name="supported-resources"></a>Obsługiwane zasoby
 
 Na poziomie subskrypcji można wdrożyć następujące typy zasobów:
 
-* [budżetów](/azure/templates/microsoft.consumption/budgets)
-* [wdrożenia](/azure/templates/microsoft.resources/deployments) — dla szablonów zagnieżdżonych wdrażanych w grupach zasobów.
-* [peerAsns](/azure/templates/microsoft.peering/peerasns)
-* [policyAssignments](/azure/templates/microsoft.authorization/policyassignments)
-* [policyDefinitions](/azure/templates/microsoft.authorization/policydefinitions)
-* [policySetDefinitions](/azure/templates/microsoft.authorization/policysetdefinitions)
-* [resourceGroups](/azure/templates/microsoft.resources/resourcegroups)
+* [Budżetów](/azure/templates/microsoft.consumption/budgets)
+* [wdrożenia](/azure/templates/microsoft.resources/deployments) — dla szablonów zagnieżdżonych, które wdrażają w grupach zasobów.
+* [eventSubscriptions](/azure/templates/microsoft.eventgrid/eventsubscriptions)
+* [peerAsns (równorzędny)](/azure/templates/microsoft.peering/peerasns)
+* [zmiany zasadAssignments](/azure/templates/microsoft.authorization/policyassignments)
+* [Policydefinitions](/azure/templates/microsoft.authorization/policydefinitions)
+* [zasadySetDefinitions](/azure/templates/microsoft.authorization/policysetdefinitions)
+* [środki zaradcze](/azure/templates/microsoft.policyinsights/remediations)
+* [zasobyGrupy](/azure/templates/microsoft.resources/resourcegroups)
 * [roleAssignments](/azure/templates/microsoft.authorization/roleassignments)
-* [roleDefinitions](/azure/templates/microsoft.authorization/roledefinitions)
+* [definicje ról](/azure/templates/microsoft.authorization/roledefinitions)
+* [zakresPodpisy](/azure/templates/microsoft.managednetwork/scopeassignments)
+* [supportPlanTypes](/azure/templates/microsoft.addons/supportproviders/supportplantypes)
+* [tagów](/azure/templates/microsoft.resources/tags)
 
 ### <a name="schema"></a>Schemat
 
 Schemat używany do wdrożeń na poziomie subskrypcji różni się od schematu dla wdrożeń grup zasobów.
 
-W przypadku szablonów Użyj:
+W przypadku szablonów użyj:
 
 ```json
 https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#
 ```
 
-Schemat pliku parametrów jest taki sam dla wszystkich zakresów wdrożenia. W przypadku plików parametrów należy użyć:
+Schemat pliku parametrów jest taki sam dla wszystkich zakresów wdrażania. W przypadku plików parametrów należy użyć:
 
 ```json
 https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#
@@ -48,49 +53,48 @@ https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json
 
 ## <a name="deployment-commands"></a>Polecenia wdrażania
 
-Polecenia dla wdrożeń na poziomie subskrypcji są inne niż polecenia dla wdrożeń grup zasobów.
+Polecenia dla wdrożeń na poziomie subskrypcji różnią się od poleceń dla wdrożeń grup zasobów.
 
-W przypadku interfejsu wiersza polecenia platformy Azure Użyj polecenia [AZ Deployment Create](/cli/azure/deployment?view=azure-cli-latest#az-deployment-create). Poniższy przykład wdraża szablon w celu utworzenia grupy zasobów:
+W przypadku interfejsu wiersza polecenia platformy Azure należy użyć [sub create wdrożenia az](/cli/azure/deployment/sub?view=azure-cli-latest#az-deployment-sub-create). Poniższy przykład wdraża szablon w celu utworzenia grupy zasobów:
 
 ```azurecli-interactive
-az deployment create \
-  --name demoDeployment \
+az deployment sub create \
+  --name demoSubDeployment \
   --location centralus \
-  --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/emptyRG.json \
+  --template-uri "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/emptyRG.json" \
   --parameters rgName=demoResourceGroup rgLocation=centralus
 ```
 
-
-W przypadku polecenia wdrażania programu PowerShell Użyj poleceń [New-AzDeployment](/powershell/module/az.resources/new-azdeployment) i **New-AzSubscriptionDeployment**. Poniższy przykład wdraża szablon w celu utworzenia grupy zasobów:
+W przypadku polecenia wdrażania programu PowerShell należy użyć polecenia [New-AzDeployment](/powershell/module/az.resources/new-azdeployment) lub **New-AzSubscriptionDeployment**. Poniższy przykład wdraża szablon w celu utworzenia grupy zasobów:
 
 ```azurepowershell-interactive
 New-AzSubscriptionDeployment `
-  -Name demoDeployment `
+  -Name demoSubDeployment `
   -Location centralus `
-  -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/emptyRG.json `
+  -TemplateUri "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/emptyRG.json" `
   -rgName demoResourceGroup `
   -rgLocation centralus
 ```
 
-W przypadku interfejsu API REST Użyj [wdrożeń — Utwórz zakres subskrypcji](/rest/api/resources/deployments/createorupdateatsubscriptionscope).
+W przypadku interfejsu API REST użyj [wdrożeń — tworzenie w zakresie subskrypcji](/rest/api/resources/deployments/createorupdateatsubscriptionscope).
 
 ## <a name="deployment-location-and-name"></a>Lokalizacja i nazwa wdrożenia
 
-W przypadku wdrożeń na poziomie subskrypcji należy podać lokalizację wdrożenia. Lokalizacja wdrożenia jest oddzielona od lokalizacji wdrażanych zasobów. Lokalizacja wdrożenia określa miejsce przechowywania danych wdrożenia.
+W przypadku wdrożeń na poziomie subskrypcji należy podać lokalizację wdrożenia. Lokalizacja wdrożenia jest oddzielona od lokalizacji wydrążenych zasobów. Lokalizacja wdrożenia określa, gdzie mają być przechowywane dane wdrożenia.
 
-Możesz podać nazwę wdrożenia lub użyć domyślnej nazwy wdrożenia. Nazwa domyślna to nazwa pliku szablonu. Na przykład wdrożenie szablonu o nazwie **azuredeploy. JSON** tworzy domyślną nazwę wdrożenia **azuredeploy**.
+Można podać nazwę wdrożenia lub użyć domyślnej nazwy wdrożenia. Domyślna nazwa to nazwa pliku szablonu. Na przykład wdrożenie szablonu o nazwie **azuredeploy.json** tworzy domyślną nazwę wdrożenia **azuredeploy**.
 
-Dla każdej nazwy wdrożenia lokalizacja jest niezmienna. Nie można utworzyć wdrożenia w jednej lokalizacji, gdy istnieje wdrożenie o tej samej nazwie w innej lokalizacji. Jeśli zostanie wyświetlony kod błędu `InvalidDeploymentLocation`, użyj innej nazwy lub tej samej lokalizacji co poprzednie wdrożenie dla tej nazwy.
+Dla każdej nazwy wdrożenia lokalizacja jest niezmienna. Nie można utworzyć wdrożenia w jednej lokalizacji, gdy istnieje istniejące wdrożenie o tej samej nazwie w innej lokalizacji. Jeśli zostanie wyświetlony `InvalidDeploymentLocation`kod błędu, użyj innej nazwy lub tej samej lokalizacji co poprzednie wdrożenie dla tej nazwy.
 
 ## <a name="use-template-functions"></a>Korzystanie z funkcji szablonu
 
-W przypadku wdrożeń na poziomie subskrypcji istnieją pewne ważne zagadnienia dotyczące korzystania z funkcji szablonu:
+W przypadku wdrożeń na poziomie subskrypcji, istnieją pewne ważne zagadnienia podczas korzystania z funkcji szablonu:
 
-* Funkcja [przesourceing ()](template-functions-resource.md#resourcegroup) **nie** jest obsługiwana.
-* Obsługiwane są funkcje [Reference ()](template-functions-resource.md#reference) i [list ()](template-functions-resource.md#list) .
-* Użyj funkcji [subscriptionResourceId ()](template-functions-resource.md#subscriptionresourceid) , aby uzyskać identyfikator zasobu dla zasobów wdrożonych na poziomie subskrypcji.
+* Funkcja [resourceGroup()](template-functions-resource.md#resourcegroup) **nie** jest obsługiwana.
+* Obsługiwane są funkcje [reference()](template-functions-resource.md#reference) i [list().](template-functions-resource.md#list)
+* Użyj funkcji [subscriptionResourceId(),](template-functions-resource.md#subscriptionresourceid) aby uzyskać identyfikator zasobu dla zasobów, które są wdrażane na poziomie subskrypcji.
 
-  Aby na przykład uzyskać identyfikator zasobu definicji zasad, należy użyć:
+  Na przykład, aby uzyskać identyfikator zasobu dla definicji zasad, należy użyć:
   
   ```json
   subscriptionResourceId('Microsoft.Authorization/roleDefinitions/', parameters('roleDefinition'))
@@ -104,7 +108,7 @@ W przypadku wdrożeń na poziomie subskrypcji istnieją pewne ważne zagadnienia
 
 ## <a name="create-resource-groups"></a>Tworzenie grup zasobów
 
-Aby utworzyć grupę zasobów w szablonie Azure Resource Manager, zdefiniuj zasób [Microsoft. resources/resourceGroups](/azure/templates/microsoft.resources/allversions) z nazwą i lokalizacją grupy zasobów. Można utworzyć grupę zasobów i wdrożyć zasoby w tej grupie zasobów w tym samym szablonie.
+Aby utworzyć grupę zasobów w szablonie usługi Azure Resource Manager, należy zdefiniować [zasób Microsoft.Resources/resourceGroups](/azure/templates/microsoft.resources/allversions) o nazwie i lokalizacji dla grupy zasobów. Można utworzyć grupę zasobów i wdrożyć zasoby do tej grupy zasobów w tym samym szablonie.
 
 Poniższy szablon tworzy pustą grupę zasobów.
 
@@ -134,7 +138,7 @@ Poniższy szablon tworzy pustą grupę zasobów.
 }
 ```
 
-Użyj [kopiowania elementu](copy-resources.md) z grupami zasobów, aby utworzyć więcej niż jedną grupę zasobów.
+Użyj [elementu kopiowania](copy-resources.md) z grupami zasobów, aby utworzyć więcej niż jedną grupę zasobów.
 
 ```json
 {
@@ -169,13 +173,13 @@ Użyj [kopiowania elementu](copy-resources.md) z grupami zasobów, aby utworzyć
 }
 ```
 
-Aby uzyskać informacje o iteracji zasobów, zobacz [wdrażanie więcej niż jednego wystąpienia zasobu w szablonach Azure Resource Manager](./copy-resources.md)i [Samouczek: Tworzenie wielu wystąpień zasobów przy użyciu szablonów Menedżer zasobów](./template-tutorial-create-multiple-instances.md).
+Aby uzyskać informacje na temat iteracji zasobów, zobacz [Wdrażanie więcej niż jednego wystąpienia zasobu w szablonach usługi Azure Resource Manager](./copy-resources.md)i [samouczek: Tworzenie wielu wystąpień zasobów za pomocą szablonów Menedżera zasobów](./template-tutorial-create-multiple-instances.md).
 
 ## <a name="resource-group-and-resources"></a>Grupa zasobów i zasoby
 
-Aby utworzyć grupę zasobów i wdrożyć do niej zasoby, użyj szablonu zagnieżdżonego. Szablon zagnieżdżony definiuje zasoby, które mają zostać wdrożone w grupie zasobów. Ustaw szablon zagnieżdżony jako zależny od grupy zasobów, aby upewnić się, że grupa zasobów istnieje przed wdrożeniem zasobów.
+Aby utworzyć grupę zasobów i wdrożyć do niej zasoby, użyj szablonu zagnieżdżonego. Szablon zagnieżdżony definiuje zasoby do wdrożenia w grupie zasobów. Ustaw szablon zagnieżdżony jako zależny od grupy zasobów, aby upewnić się, że grupa zasobów istnieje przed wdrożeniem zasobów.
 
-Poniższy przykład tworzy grupę zasobów i wdraża konto magazynu w grupie zasobów.
+Poniższy przykład tworzy grupę zasobów i wdraża konto magazynu do grupy zasobów.
 
 ```json
 {
@@ -227,8 +231,8 @@ Poniższy przykład tworzy grupę zasobów i wdraża konto magazynu w grupie zas
               "location": "[parameters('rgLocation')]",
               "sku": {
                 "name": "Standard_LRS"
-              }
-              "kind": "StorageV2",
+              },
+              "kind": "StorageV2"
             }
           ],
           "outputs": {}
@@ -244,7 +248,7 @@ Poniższy przykład tworzy grupę zasobów i wdraża konto magazynu w grupie zas
 
 ### <a name="assign-policy"></a>Przypisywanie zasad
 
-Poniższy przykład przypisuje istniejącą definicję zasad do subskrypcji. Jeśli zasady pobierają parametry, podaj je jako obiekt. Jeśli zasady nie przyjmują parametrów, Użyj domyślnego pustego obiektu.
+Poniższy przykład przypisuje istniejącą definicję zasad do subskrypcji. Jeśli zasady przyjmuje parametry, podaj je jako obiekt. Jeśli zasady nie przyjmują parametrów, należy użyć domyślnego pustego obiektu.
 
 ```json
 {
@@ -278,20 +282,20 @@ Poniższy przykład przypisuje istniejącą definicję zasad do subskrypcji. Je�
 }
 ```
 
-Aby wdrożyć ten szablon przy użyciu interfejsu wiersza polecenia platformy Azure, użyj polecenia:
+Aby wdrożyć ten szablon za pomocą interfejsu wiersza polecenia platformy Azure, należy użyć:
 
 ```azurecli-interactive
 # Built-in policy that accepts parameters
 definition=$(az policy definition list --query "[?displayName=='Allowed locations'].id" --output tsv)
 
-az deployment create \
+az deployment sub create \
   --name demoDeployment \
   --location centralus \
-  --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/policyassign.json \
+  --template-uri "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/policyassign.json" \
   --parameters policyDefinitionID=$definition policyName=setLocation policyParameters="{'listOfAllowedLocations': {'value': ['westus']} }"
 ```
 
-Aby wdrożyć ten szablon przy użyciu programu PowerShell, użyj polecenia:
+Aby wdrożyć ten szablon za pomocą programu PowerShell, należy użyć:
 
 ```azurepowershell-interactive
 $definition = Get-AzPolicyDefinition | Where-Object { $_.Properties.DisplayName -eq 'Allowed locations' }
@@ -302,7 +306,7 @@ $policyParams =@{listOfAllowedLocations = @{ value = $locations}}
 New-AzSubscriptionDeployment `
   -Name policyassign `
   -Location centralus `
-  -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/policyassign.json `
+  -TemplateUri "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/policyassign.json" `
   -policyDefinitionID $definition.PolicyDefinitionId `
   -policyName setLocation `
   -policyParameters $policyParams
@@ -310,7 +314,7 @@ New-AzSubscriptionDeployment `
 
 ### <a name="define-and-assign-policy"></a>Definiowanie i przypisywanie zasad
 
-Zasady można [definiować](../../governance/policy/concepts/definition-structure.md) i przypisywać w tym samym szablonie.
+Można [zdefiniować](../../governance/policy/concepts/definition-structure.md) i przypisać zasadę w tym samym szablonie.
 
 ```json
 {
@@ -353,32 +357,32 @@ Zasady można [definiować](../../governance/policy/concepts/definition-structur
 }
 ```
 
-Aby utworzyć definicję zasad w ramach subskrypcji, a następnie zastosować ją do subskrypcji, użyj następującego polecenia CLI:
+Aby utworzyć definicję zasad w ramach subskrypcji i zastosować ją do subskrypcji, użyj następującego polecenia CLI:
 
 ```azurecli
-az deployment create \
+az deployment sub create \
   --name demoDeployment \
   --location centralus \
-  --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/policydefineandassign.json
+  --template-uri "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/policydefineandassign.json"
 ```
 
-Aby wdrożyć ten szablon przy użyciu programu PowerShell, użyj polecenia:
+Aby wdrożyć ten szablon za pomocą programu PowerShell, należy użyć:
 
 ```azurepowershell
 New-AzSubscriptionDeployment `
   -Name definePolicy `
   -Location centralus `
-  -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/policydefineandassign.json
+  -TemplateUri "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/policydefineandassign.json"
 ```
 
 ## <a name="template-samples"></a>Przykłady szablonów
 
-* [Utwórz grupę zasobów, Zablokuj ją i nadaj jej uprawnienia](https://github.com/Azure/azure-quickstart-templates/tree/master/subscription-level-deployments/create-rg-lock-role-assignment).
-* [Tworzenie grupy zasobów, zasad i przypisania zasad](https://github.com/Azure/azure-docs-json-samples/blob/master/subscription-level-deployment/azuredeploy.json).
+* [Utwórz grupę zasobów, zablokuj ją i nadaj jej uprawnienia](https://github.com/Azure/azure-quickstart-templates/tree/master/subscription-level-deployments/create-rg-lock-role-assignment).
+* [Tworzenie grupy zasobów, zasad i przypisań zasad](https://github.com/Azure/azure-docs-json-samples/blob/master/subscription-level-deployment/azuredeploy.json).
 
 ## <a name="next-steps"></a>Następne kroki
 
-* Aby dowiedzieć się więcej na temat przypisywania ról, zobacz [Zarządzanie dostępem do zasobów platformy Azure przy użyciu usług RBAC i Azure Resource Manager templates](../../role-based-access-control/role-assignments-template.md).
-* Przykład wdrażania ustawień obszaru roboczego dla Azure Security Center można znaleźć w pliku [deployASCwithWorkspaceSettings. JSON](https://github.com/krnese/AzureDeploy/blob/master/ARM/deployments/deployASCwithWorkspaceSettings.json).
-* Przykładowe szablony można znaleźć w witrynie [GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/subscription-level-deployments).
-* Szablony można także wdrażać na poziomie [grupy zarządzania](deploy-to-management-group.md) i na [poziomie dzierżawy](deploy-to-tenant.md).
+* Aby dowiedzieć się więcej o przypisywaniu ról, zobacz [Zarządzanie dostępem do zasobów platformy Azure przy użyciu szablonów RBAC i Usługi Azure Resource Manager](../../role-based-access-control/role-assignments-template.md).
+* Na przykład wdrażania ustawień obszaru roboczego dla usługi Azure Security Center zobacz [deployASCwithWorkspaceSettings.json](https://github.com/krnese/AzureDeploy/blob/master/ARM/deployments/deployASCwithWorkspaceSettings.json).
+* Przykładowe szablony można znaleźć w [usłudze GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/subscription-level-deployments).
+* Szablony można również wdrażać na [poziomie grupy zarządzania](deploy-to-management-group.md) i [dzierżawy](deploy-to-tenant.md).

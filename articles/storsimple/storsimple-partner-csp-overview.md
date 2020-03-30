@@ -1,6 +1,6 @@
 ---
-title: Omówienie programu Microsoft Azure StorSimple i rozwiązań w chmurze | Dokumentacja firmy Microsoft
-description: Omówienie magazynu StorSimple i dostawcy usług Kryptograficznych dla partnerów usługi StorSimple.
+title: Omówienie programu Microsoft Azure StorSimple i Cloud Solutions | Dokumenty firmy Microsoft
+description: Omówienie StorSimple i CSP dla partnerów StorSimple.
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -15,32 +15,32 @@ ms.workload: TBD
 ms.date: 02/08/2017
 ms.author: alkohli
 ms.openlocfilehash: e2adccaf1371cf322b5a50b0e1f6ef64dde14b66
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60628663"
 ---
-# <a name="what-is-storsimple-for-cloud-solutions-providers-program"></a>Co to jest StorSimple dla programu dostawców rozwiązań chmury?
+# <a name="what-is-storsimple-for-cloud-solutions-providers-program"></a>Co to jest program StorSimple for Cloud Solutions Providers?
 
 
 ## <a name="overview"></a>Omówienie
 
-Usługa Microsoft Azure StorSimple to unikatowe podejście do magazynowania przy użyciu możliwości magazynu w chmurze hybrydowej dla przedsiębiorstw. Go umożliwia klientom, aby móc korzystać z niedrogiego magazynu w chmurze dla nieaktywnych danych, przy jednoczesnym zachowaniu danych o kluczowym znaczeniu lokalnych dla zapewnienia najwyższej wydajności. 
+Microsoft Azure StorSimple to unikalne podejście do magazynu korporacyjnego z prawdziwymi hybrydowymi funkcjami przechowywania w chmurze. Umożliwia klientom korzystanie z ekonomicznego magazynu w chmurze dla nieaktywnych danych, przy jednoczesnym zachowaniu danych o znaczeniu krytycznym w środowisku lokalnym w celu uzyskania najwyższego poziomu wydajności. 
 
-Macierz wirtualna StorSimple Cloud Solutions Provider (CSP) umożliwia partnerom korzystaj z tej możliwości. Partnerzy właścicielem cyklu życia end-to-end klienta za pomocą bezpośredniego inicjowania obsługi administracyjnej, rozliczeń i pomocy technicznej usług w chmurze firmy Microsoft. Krótko mówiąc partnerzy mogą teraz języka transact StorSimple wraz z ich usług dla klientów.
+StorSimple Virtual Array for Cloud Solutions Provider (CSP) umożliwia partnerom wykorzystanie tej możliwości. Partnerzy są właścicielami kompleksowego cyklu życia klienta z bezpośrednim inicjowaniu obsługi administracyjnej, fakturowania i obsługi usług firmy Microsoft w chmurze. Krótko mówiąc, partnerzy mogą teraz dokonywać transakcji StorSimple wraz ze swoimi usługami dla klientów.
 
-Aby uzyskać więcej informacji na temat rozwiązania StorSimple dla dostawców CSP, odwiedź stronę [Omówienie programu Azure CSP](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-overview) strony.
+Aby uzyskać więcej informacji na temat StorSimple dla dostawcy usług kryptograficznych, odwiedź stronę [omówienie usługi Azure CSP.](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-overview)
 
-Aby uzyskać więcej informacji na temat rozliczeń, cen, premie i uzyskiwanie pomocy technicznej w programie CSP, przejdź do [StorSimple w programie CSP: CZĘSTO ZADAWANE PYTANIA DOTYCZĄCE](storsimple-partner-csp-faq.md). 
+Aby uzyskać więcej informacji na temat rozliczeń, cen, zachęt i uzyskiwania wsparcia w dostawcy usług kryptograficznych, przejdź do [strony StorSimple w CSP: FAQ](storsimple-partner-csp-faq.md). 
 
-## <a name="deploy-and-manage-storsimple-for-csp"></a>Wdrażanie i zarządzanie nimi StorSimple dla dostawców CSP
+## <a name="deploy-and-manage-storsimple-for-csp"></a>Wdrażanie usługi StorSimple i zarządzanie nim
 
-Usługa StorSimple dla dostawców CSP jest dostępna jako na podstawie użycia usługi na wszystkich rynkach, gdzie StorSimple jest dostępny dzisiaj. Usługa StorSimple dla dostawcy usług Kryptograficznych korzysta z witryny Azure portal i usługi Menedżer urządzeń StorSimple. Partner programu CSP, można utworzyć Menedżera urządzeń StorSimple do zarządzania macierzach wirtualnych StorSimple, udziałów, woluminów i kopii zapasowych. Można administrować macierzy wirtualnych zarejestrowane w usłudze Menedżer urządzeń StorSimple w witrynie Azure portal.
+StorSimple for CSP jest dostępna jako usługa oparta na użyciu na wszystkich rynkach, na których StorSimple jest już dostępna. StorSimple dla dostawcy usług kryptograficznych używa witryny Azure portal i usługi StorSimple Device Manager. Partner dostawcy usług kryptograficznych może utworzyć Menedżera urządzeń StorSimple do zarządzania tablicami wirtualnymi StorSimple, udziałami, woluminami i kopiami zapasowymi. Można administrować wszystkie tablice wirtualne zarejestrowane w usłudze StorSimple Device Manager za pośrednictwem witryny Azure portal.
 
-Aby uzyskać więcej informacji, przejdź do [wdrażanie i zarządzanie nimi macierz wirtualna StorSimple dla dostawców CSP](storsimple-partner-csp-deploy.md).
+Aby uzyskać więcej informacji, przejdź do [wdrażania i zarządzania tablicą wirtualną StorSimple dla dostawcy usług kryptograficznych](storsimple-partner-csp-deploy.md).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-- Jeśli masz więcej pytań dotyczących StorSimple w programie CSP, przejdź do strony [StorSimple dla dostawców CSP: Często zadawane pytania dotyczące](storsimple-partner-csp-faq.md).
-- Jeśli wszystko jest gotowe do wdrożenia usługi StorSimple, przejdź do strony [wdrażanie rozwiązania StorSimple dla dostawców CSP](storsimple-partner-csp-deploy.md).
+- Jeśli masz więcej pytań dotyczących StorSimple w CSP, przejdź do [StorSimple dla CSP: Często zadawane pytania](storsimple-partner-csp-faq.md).
+- Jeśli jesteś gotowy do wdrożenia StorSimple, przejdź do [wdrażania StorSimple dla dostawcy usług kryptograficznych](storsimple-partner-csp-deploy.md).

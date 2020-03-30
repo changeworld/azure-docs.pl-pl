@@ -1,6 +1,6 @@
 ---
-title: 'Szybki Start: dołączanie na platformie Azure — wskaźnik'
-description: Dowiedz się, jak zbierać dane na platformie Azure — zgodnie z tym dokumentem szybkiego startu.
+title: 'Szybki start: wbudowany w usłudze Azure Sentinel'
+description: Dowiedz się, jak zbierać dane w usłudze Azure Sentinel, wykonując ten dokument przewodnika Szybki start.
 services: sentinel
 author: yelevin
 ms.author: yelevin
@@ -10,71 +10,71 @@ ms.subservice: azure-sentinel
 ms.topic: quickstart
 ms.date: 12/05/2019
 ms.openlocfilehash: 11fecd875385d8ba044cbe44e2270eed11d61ce1
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77581553"
 ---
-# <a name="quickstart-on-board-azure-sentinel"></a>Szybki Start: tablica wskaźnikowa platformy Azure
+# <a name="quickstart-on-board-azure-sentinel"></a>Szybki start: wbudowany program Azure Sentinel
 
-W tym przewodniku szybki start dowiesz się, jak dołączyć wskaźnik do platformy Azure. 
+W tym przewodniku Szybki start dowiedz się, jak ować na pokładzie usługi Azure Sentinel. 
 
-Aby przenieść wskaźnik na platformę Azure, musisz najpierw włączyć wskaźnik na platformie Azure, a następnie połączyć źródła danych. Wskaźnik platformy Azure obejmuje wiele łączników dla rozwiązań firmy Microsoft, dostępnych poza platformą i zapewniania integracji w czasie rzeczywistym, w tym rozwiązań ochrony przed zagrożeniami firmy Microsoft, źródeł Microsoft 365, takich jak Office 365, Azure AD, Azure ATP i Microsoft Cloud App Security i nie tylko. Ponadto istnieją wbudowane łączniki do szerszego ekosystemu zabezpieczeń dla rozwiązań firm innych niż Microsoft. Możesz również użyć typowego formatu zdarzeń, dziennika systemowego lub REST-API, aby połączyć źródła danych z platformą Azure.  
+Aby urządzenie Azure Sentinel było wbudowane, należy najpierw włączyć usługę Azure Sentinel, a następnie połączyć źródła danych. Usługa Azure Sentinel jest dostępna z wieloma łącznikami dla rozwiązań firmy Microsoft, dostępnymi po wyjęciu z pudełka i zapewniającymi integrację w czasie rzeczywistym, w tym rozwiązaniami microsoft threat protection, źródłami usługi Microsoft 365, w tym usługą Office 365, usługą Azure AD, platformą Azure ATP i Microsoft Cloud App Security i nie tylko. Ponadto istnieją wbudowane łączniki do szerszego ekosystemu zabezpieczeń dla rozwiązań innych firm. Można również użyć wspólnego formatu zdarzeń, Syslog lub REST-API, aby połączyć źródła danych z usługą Azure Sentinel.  
 
-Po nawiązaniu połączenia ze źródłami danych wybierz jedną z galerii ze szczegółowymi skoroszytami utworzonymi na podstawie danych. Te skoroszyty mogą być łatwo dostosowane do Twoich potrzeb.
+Po połączeniu źródeł danych wybierz z galerii profesjonalnie utworzonych skoroszytów, które powierzchniowe są oparte na danych. Te skoroszyty można łatwo dostosować do twoich potrzeb.
 
 >[!IMPORTANT] 
-> Aby uzyskać informacje o opłatach naliczanych podczas korzystania z platformy Azure, zobacz [Cennik usługi Azure — wskaźnik](https://azure.microsoft.com/pricing/details/azure-sentinel/).
+> Aby uzyskać informacje na temat opłat poniesionych podczas korzystania z usługi Azure Sentinel, zobacz [Cennik wartowania platformy Azure](https://azure.microsoft.com/pricing/details/azure-sentinel/).
   
 
-## <a name="global-prerequisites"></a>Ogólne wymagania wstępne
+## <a name="global-prerequisites"></a>Globalne wymagania wstępne
 
-- Aktywną subskrypcję platformy Azure, jeśli jej nie masz, przed rozpoczęciem Utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
+- Aktywna subskrypcja platformy Azure, jeśli jej nie masz, utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) przed rozpoczęciem.
 
-- Log Analytics obszar roboczy. Dowiedz się [, jak utworzyć obszar roboczy log Analytics](../log-analytics/log-analytics-quick-create-workspace.md). Aby uzyskać więcej informacji na temat Log Analytics obszarów roboczych, zobacz [projektowanie Azure monitor dzienników wdrożenia](../azure-monitor/platform/design-logs-deployment.md).
+- Obszar roboczy analizy dzienników. Dowiedz się, jak [utworzyć obszar roboczy usługi Log Analytics](../log-analytics/log-analytics-quick-create-workspace.md). Aby uzyskać więcej informacji na temat obszarów roboczych usługi Log Analytics, zobacz [Projektowanie wdrożenia dzienników usługi Azure Monitor](../azure-monitor/platform/design-logs-deployment.md).
 
-- Aby włączyć wskaźnik na platformie Azure, musisz mieć uprawnienia współautora do subskrypcji, w której znajduje się obszar roboczy wskaźnik platformy Azure. 
-- Aby korzystać z platformy Azure, musisz mieć uprawnienia współautora lub czytelnika w grupie zasobów, do której należy obszar roboczy.
-- Do nawiązania połączenia z określonymi źródłami danych mogą być konieczne dodatkowe uprawnienia.
-- Azure — Wskaźnikowanie jest płatną usługą. Aby uzyskać informacje o cenach, zobacz [Informacje o wskaźniku platformy Azure](https://go.microsoft.com/fwlink/?linkid=2104058).
+- Aby włączyć usługę Azure Sentinel, potrzebujesz uprawnień współautora do subskrypcji, w której znajduje się obszar roboczy usługi Azure Sentinel. 
+- Aby korzystać z usługi Azure Sentinel, potrzebujesz uprawnień współautora lub czytelnika do grupy zasobów, do której należy obszar roboczy.
+- Dodatkowe uprawnienia mogą być potrzebne do łączenia określonych źródeł danych.
+- Usługa Azure Sentinel to płatna usługa. Aby uzyskać informacje o cenach, zobacz [Informacje o usłudze Azure Sentinel](https://go.microsoft.com/fwlink/?linkid=2104058).
  
-## Włącz platformę Azure — wskaźnik<a name="enable"></a>
+## <a name="enable-azure-sentinel"></a>Włącz usługę Azure Sentinel<a name="enable"></a>
 
-1. Zaloguj się do Portalu Azure. Upewnij się, że wybrano subskrypcję, w której tworzony jest wskaźnik "Azure".
+1. Zaloguj się do Portalu Azure. Upewnij się, że jest zaznaczona subskrypcja, w której jest tworzony program Azure Sentinel.
 
-1. Wyszukaj i wybierz pozycję **wskaźnik na platformie Azure**.
+1. Wyszukaj i wybierz **usługę Azure Sentinel**.
 
    ![search](./media/quickstart-onboard/search-product.png)
 
 1. Wybierz pozycję **Dodaj**.
 
-1. Wybierz obszar roboczy, którego chcesz użyć, lub Utwórz nowy. Możesz uruchomić wskaźnik platformy Azure na więcej niż jednym obszarze roboczym, ale dane są izolowane do jednego obszaru roboczego.
+1. Wybierz obszar roboczy, którego chcesz użyć, lub utwórz nowy. Usługę Azure Sentinel można uruchomić w więcej niż jednym obszarze roboczym, ale dane są izolowane do pojedynczego obszaru roboczego.
 
    ![search](./media/quickstart-onboard/choose-workspace.png)
 
    >[!NOTE] 
-   > - Domyślne obszary robocze utworzone przez Azure Security Center nie będą wyświetlane na liście; nie można zainstalować na nich wskaźnikiem na platformie Azure.
-   > - Wskaźnik "Azure" może działać w obszarach roboczych w dowolnym [regionie log Analytics](https://azure.microsoft.com/global-infrastructure/services/?products=monitor) z wyjątkiem Chin, niemiec i Azure Government regionów. Dane generowane przez wskaźnik na platformie Azure (takie jak zdarzenia, zakładki i reguły alertów, które mogą zawierać niektóre dane klienta pochodzące z tych obszarów roboczych) są zapisywane w Europie Zachodniej (dla obszarów roboczych znajdujących się w Europie) lub Wschodnie stany USA (dla wszystkich obszarów roboczych opartych na USA, a także Każdy inny region z wyjątkiem Europy).
+   > - Domyślne obszary robocze utworzone przez usługę Azure Security Center nie będą wyświetlane na liście; nie można zainstalować na nich usługi Azure Sentinel.
+   > - Usługa Azure Sentinel może działać w obszarach roboczych w dowolnym [regionie ga usługi Log Analytics](https://azure.microsoft.com/global-infrastructure/services/?products=monitor) z wyjątkiem regionów Chiny, Niemcy i Azure Government. Dane generowane przez usługę Azure Sentinel (takie jak zdarzenia, zakładki i reguły alertów, które mogą zawierać niektóre dane klientów pochodzące z tych obszarów roboczych) są zapisywane w Europie Zachodniej (dla obszarów roboczych zlokalizowanych w Europie) lub we wschodnich stanach USA (dla wszystkich obszarów roboczych opartych na STANACH ZJEDNOCZONYCH, a także innego regionu z wyjątkiem Europy).
 
-1. Wybierz pozycję **Dodaj wskaźnik platformy Azure**.
+1. Wybierz **pozycję Dodaj wartownika platformy Azure**.
   
 
 ## <a name="connect-data-sources"></a>Łączenie ze źródłami danych
 
-Usługa Azure wskaźnikowego tworzy połączenie z usługami i aplikacjami przez połączenie się z usługą i przekazanie zdarzeń i dzienników do funkcji wskaźnikowej platformy Azure. W przypadku maszyn i maszyn wirtualnych można zainstalować agenta wskaźnikowego platformy Azure, który zbiera dzienniki i przekazuje je do usługi Azure wskaźnikowej. W przypadku zapór i serwerów proxy usługa Azure użytks wykorzystuje serwer dziennika systemu Linux. Agent jest zainstalowany na nim i z którego Agent zbiera pliki dziennika i przekazuje je do usługi Azure wskaźnikowej. 
+Usługa Azure Sentinel tworzy połączenie z usługami i aplikacjami, łącząc się z usługą i przesyłając dalej zdarzenia i dzienniki do usługi Azure Sentinel. W przypadku maszyn i maszyn wirtualnych można zainstalować agenta wartownika platformy Azure, który zbiera dzienniki i przekazuje je do usługi Azure Sentinel. W przypadku zapór i serwerów proxy usługa Azure Sentinel korzysta z serwera Syslog systemu Linux. Agent jest zainstalowany na nim i z którego agent zbiera pliki dziennika i przekazuje je do usługi Azure Sentinel. 
  
-1. Kliknij pozycję **zbieranie danych**.
+1. Kliknij **pozycję Zbieranie danych**.
 2. Istnieje kafelek dla każdego źródła danych, które można połączyć.<br>
-Na przykład kliknij pozycję **Azure Active Directory**. Jeśli połączysz to źródło danych, przesyłasz strumieniowo wszystkie dzienniki z usługi Azure AD do usługi Azure wskaźnikowej. Możesz wybrać typ dzienników sieci WAN do pobrania i/lub dzienników inspekcji. <br>
-Na dole wskaźnik na platformie Azure obejmuje zalecenia dotyczące tego, które skoroszyty należy zainstalować dla każdego łącznika, dzięki czemu można natychmiast uzyskać interesujące informacje w danych. <br> Postępuj zgodnie z instrukcjami instalacji lub [zapoznaj się z odpowiednim przewodnikiem połączenia](connect-data-sources.md) , aby uzyskać więcej informacji. Aby uzyskać informacje na temat łączników danych, zobacz [łączenie usług firmy Microsoft](connect-data-sources.md).
+Na przykład kliknij pozycję **Azure Active Directory**. Jeśli połączysz to źródło danych, przesyłasz strumieniowo wszystkie dzienniki z usługi Azure AD do usługi Azure Sentinel. Można wybrać typ dzienników, które wan, aby uzyskać - logi logowania i/lub inspekcji dzienników. <br>
+U dołu usługi Azure Sentinel zawiera zalecenia dotyczące skoroszytów, które należy zainstalować dla każdego łącznika, dzięki czemu można natychmiast uzyskać interesujące informacje na temat danych. <br> Aby uzyskać więcej informacji, należy postępować zgodnie z instrukcjami instalacji lub [zapoznać się z odpowiednim przewodnikiem po połączeniu.](connect-data-sources.md) Aby uzyskać informacje o łącznikach danych, zobacz [Łączenie usług firmy Microsoft](connect-data-sources.md).
 
-Po nawiązaniu połączenia ze źródłami danych rozpocznie się przesyłanie strumieniowe danych do platformy Azure. Możesz wyświetlić dzienniki na [wbudowanych pulpitach nawigacyjnych](quickstart-get-visibility.md) i rozpocząć tworzenie zapytań w log Analytics, aby [zbadać dane](tutorial-investigate-cases.md).
+Po nawiązaniu połączenia źródeł danych dane rozpoczynają przesyłanie strumieniowe do usługi Azure Sentinel i są gotowe do rozpoczęcia pracy. Można wyświetlić dzienniki we [wbudowanych pulpitach nawigacyjnych](quickstart-get-visibility.md) i rozpocząć tworzenie zapytań w usłudze Log Analytics w celu [zbadania danych.](tutorial-investigate-cases.md)
 
 
 
 ## <a name="next-steps"></a>Następne kroki
-Ten dokument zawiera informacje o łączeniu źródeł danych z platformą Azure — wskaźnikiem. Aby dowiedzieć się więcej na temat platformy Azure, zobacz następujące artykuły:
-- Dowiedz się [, jak uzyskać wgląd w dane oraz potencjalne zagrożenia](quickstart-get-visibility.md).
-- Rozpocznij [wykrywanie zagrożeń za pomocą platformy Azure — wskaźnik](tutorial-detect-threats-built-in.md).
-- Przesyłaj strumieniowo dane ze [wspólnych urządzeń w formacie zdarzenia](connect-common-event-format.md) do platformy Azure.
+W tym dokumencie dowiesz się o łączeniu źródeł danych z usługą Azure Sentinel. Aby dowiedzieć się więcej o usłudze Azure Sentinel, zobacz następujące artykuły:
+- Dowiedz się, jak [uzyskać wgląd w dane i potencjalne zagrożenia.](quickstart-get-visibility.md)
+- Rozpocznij [wykrywanie zagrożeń za pomocą usługi Azure Sentinel](tutorial-detect-threats-built-in.md).
+- Przesyłaj strumieniowo dane z [urządzeń common event format](connect-common-event-format.md) do usługi Azure Sentinel.

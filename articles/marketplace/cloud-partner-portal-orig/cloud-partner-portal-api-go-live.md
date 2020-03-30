@@ -1,24 +1,23 @@
 ---
-title: Przejdź na żywo | Portal Azure Marketplace
-description: Interfejs API przejdź na żywo inicjuje proces oferty na żywo.
-services: Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+title: Idź na żywo | Azure Marketplace
+description: Interfejs API Go Live inicjuje proces aukcji na żywo oferty.
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
 ms.date: 09/13/2018
-ms.author: pabutler
-ms.openlocfilehash: 30500e9dfae9411563fc727290d0569998ba3550
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: bf7bebf6e72e373811879a311d70255c29988ed6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73819680"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80288584"
 ---
 <a name="go-live"></a>Przejdź na żywo
 =======
 
-Ten interfejs API uruchamia proces wypychania aplikacji do środowiska produkcyjnego. Ta operacja jest zwykle długotrwała. To wywołanie używa listy wiadomości e-mail powiadomień z operacji [publikowania](./cloud-partner-portal-api-publish-offer.md) interfejsu API.
+Ten interfejs API uruchamia proces wypychania aplikacji do produkcji. Ta operacja jest zwykle długotrwałe. To wywołanie używa listy wiadomości e-mail z listy [publikowania](./cloud-partner-portal-api-publish-offer.md) interfejsu API operacji.
 
  `POST  https://cloudpartner.azure.com/api/publishers/<publisherId>/offers/<offerId>/golive?api-version=2017-10-31` 
 
@@ -27,9 +26,9 @@ Ten interfejs API uruchamia proces wypychania aplikacji do środowiska produkcyj
 
 |  **Nazwa**      |   **Opis**                                                           | **Typ danych** |
 |  --------      |   ---------------                                                           | ------------- |
-| publisherId    | Identyfikator wydawcy dla oferty do pobrania, na przykład `contoso`       |  Ciąg       |
-| OfferId        | Identyfikator oferty oferty do pobrania                                   |  Ciąg       |
-| wersja interfejsu API    | Najnowsza wersja interfejsu API                                                   |  Date         |
+| identyfikator wydawcy    | Identyfikator wydawcy dla oferty do pobrania, na przykład`contoso`       |  Ciąg       |
+| offerId        | Identyfikator oferty do pobrania                                   |  Ciąg       |
+| api-version    | Najnowsza wersja interfejsu API                                                   |  Data         |
 |  |  |  |
 
 
@@ -43,7 +42,7 @@ Ten interfejs API uruchamia proces wypychania aplikacji do środowiska produkcyj
 |  |  |
 
 
-<a name="body-example"></a>Przykład treści
+<a name="body-example"></a>Przykład ciała
 ------------
 
 ### <a name="response"></a>Odpowiedź
@@ -55,15 +54,15 @@ Ten interfejs API uruchamia proces wypychania aplikacji do środowiska produkcyj
 
 |  **Nazwa**             |      **Wartość**                                                            |
 |  --------             |      ----------                                                           |
-| Lokalizacja operacji    |  Adres URL do zapytania w celu określenia bieżącego stanu operacji            |
+| Operacja-lokalizacja    |  Adres URL do kwerendy w celu określenia bieżącego stanu operacji            |
 |  |  |
 
 
 ### <a name="response-status-codes"></a>Kody stanu odpowiedzi
 
-| **Kodu** |  **Opis**                                                                        |
+| **Code** |  **Opis**                                                                        |
 | -------- |  ----------------                                                                        |
-|  202     | `Accepted` — żądanie zostało pomyślnie zaakceptowane. Odpowiedź zawiera lokalizację do śledzenia stanu operacji. |
-|  400     | `Bad/Malformed request` — w treści odpowiedzi znajdują się dodatkowe informacje o błędzie. |
-|  404     |  `Not found` — określona jednostka nie istnieje.                                       |
+|  202     | `Accepted`- Wniosek został pomyślnie przyjęty. Odpowiedź zawiera lokalizację do śledzenia stanu operacji. |
+|  400     | `Bad/Malformed request`- W treści odpowiedzi znajdują się dodatkowe informacje o błędzie. |
+|  404     |  `Not found`- Określona jednostka nie istnieje.                                       |
 |  |  |

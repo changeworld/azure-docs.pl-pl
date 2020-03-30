@@ -1,6 +1,6 @@
 ---
-title: Używanie aparatu reguł do wymuszania protokołu HTTPS w standardowej Azure CDN | Microsoft Docs
-description: Użyj aparatu reguł dla programu Microsoft Standard Azure Content Delivery Network (Azure CDN), aby dostosować sposób, w jaki Azure CDN obsługuje żądania HTTP, w tym blokowanie dostarczania określonych typów zawartości, definiowanie zasad buforowania i modyfikowanie nagłówków HTTP. W tym artykule dowiesz się, jak utworzyć regułę przekierowania użytkowników do protokołu HTTPS.
+title: Użyj aparatu reguł, aby wymusić https w standardowej sieci CDN platformy Azure | Dokumenty firmy Microsoft
+description: Użyj aparatu reguł dla usługi Microsoft Standard Azure Content Delivery Network (Azure CDN), aby dostosować sposób obsługi żądań protokołu HTTP w usłudze Azure, w tym blokowanie dostarczania niektórych typów zawartości, definiowanie zasad buforowania i modyfikowanie nagłówków HTTP. W tym artykule dowiesz się, jak utworzyć regułę, aby przekierować użytkowników do protokołu HTTPS.
 services: cdn
 author: mdgattuso
 ms.service: azure-cdn
@@ -8,72 +8,72 @@ ms.topic: article
 ms.date: 11/01/2019
 ms.author: magattus
 ms.openlocfilehash: 724861305d7a25db409072200ac2bc3bd83f0682
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/19/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74171587"
 ---
-# <a name="set-up-the-standard-rules-engine-for-azure-cdn"></a>Skonfiguruj aparat reguł standardowych dla Azure CDN
+# <a name="set-up-the-standard-rules-engine-for-azure-cdn"></a>Konfigurowanie aparatu reguł standardowych dla usługi Azure CDN
 
-W tym artykule opisano sposób konfigurowania standardowego aparatu reguł dla platformy Azure Content Delivery Network (Azure CDN) i korzystania z niego.
+W tym artykule opisano sposób konfigurowania i używania aparatu reguł standardowych dla usługi Azure Content Delivery Network (Azure CDN).
 
-## <a name="standard-rules-engine"></a>Aparat reguł standardowych
+## <a name="standard-rules-engine"></a>Silnik reguł standardowych
 
-Aby dostosowywać sposób obsługi żądań HTTP, można użyć aparatu reguł standardowych dla Azure CDN. Można na przykład użyć aparatu reguł, aby wymusić dostarczanie zawartości przy użyciu określonych protokołów, zdefiniować zasady buforowania lub zmodyfikować nagłówek HTTP. W tym artykule pokazano, jak utworzyć regułę, która automatycznie przekierowuje użytkowników do protokołu HTTPS. 
+Aparat reguł standardowych dla usługi Azure CDN służy do dostosowywania sposobu obsługi żądań HTTP. Na przykład można użyć aparatu reguł, aby wymusić dostarczanie zawartości, aby używać określonych protokołów, definiować zasady buforowania lub zmodyfikować nagłówek HTTP. W tym artykule pokazano, jak utworzyć regułę, która automatycznie przekierowuje użytkowników do protokołu HTTPS. 
 
 > [!NOTE]
-> Aparat reguł opisany w tym artykule jest dostępny tylko dla standardowej Azure CDN firmy Microsoft. 
+> Aparat reguł opisany w tym artykule jest dostępny tylko dla standardowej usługi Azure CDN firmy Microsoft. 
 
 ## <a name="redirect-users-to-https"></a>Przekierowywanie użytkowników do protokołu HTTPS
 
-1. W swoich profilach firmy Microsoft przejdź do pozycji Azure Content Delivery Network.
+1. W swoich profilach firmy Microsoft przejdź do usługi Azure Content Delivery Network.
 
-1. Na stronie **profil usługi CDN** wybierz punkt końcowy, dla którego chcesz utworzyć reguły.
+1. Na stronie **profilu sieci CDN** wybierz punkt końcowy, dla którego chcesz utworzyć reguły.
   
-1. Wybierz kartę **Aparaty reguł** .
+1. Wybierz kartę **Aparat reguł.**
    
-    Zostanie otwarte okienko **reguły aparatu** i zostanie wyświetlona lista dostępnych reguł globalnych. 
+    Zostanie otwarte **okienko Aparat reguł** i zostanie wyświetlona lista dostępnych reguł globalnych. 
    
-    [Strona ![Azure CDN nowych reguł](./media/cdn-standard-rules-engine/cdn-new-rule.png)](./media/cdn-standard-rules-engine/cdn-new-rule.png#lightbox)
+    [![Strona nowych reguł usługi Azure CDN](./media/cdn-standard-rules-engine/cdn-new-rule.png)](./media/cdn-standard-rules-engine/cdn-new-rule.png#lightbox)
    
    > [!IMPORTANT]
-   > Kolejność, w której są wyświetlane wiele reguł, ma wpływ na sposób obsługi reguł. Akcje określone w regule mogą zostać zastąpione przez kolejną regułę.
+   > Kolejność, w której wiele reguł są wymienione wpływa na sposób obsługi reguł. Akcje określone w regule mogą zostać zastąpione przez kolejną regułę.
    >
 
-1. Wybierz pozycję **Dodaj regułę** i wprowadź nazwę reguły. Nazwy reguł muszą zaczynać się literą i mogą zawierać tylko cyfry i litery.
+1. Wybierz **pozycję Dodaj regułę** i wprowadź nazwę reguły. Nazwy reguł muszą zaczynać się od litery i zawierać tylko cyfry i litery.
 
-1. Aby zidentyfikować typ żądań, których dotyczy reguła, Utwórz warunek dopasowania:
-    1. Wybierz pozycję **Dodaj warunek**, a następnie wybierz warunek dopasowania **protokołu żądania** .
-    1. Dla **operatora**wybierz opcję **Equals**.
-    1. W obszarze **wartość**wybierz pozycję **http**.
+1. Aby zidentyfikować typ żądań, do które ma zastosowanie reguła, utwórz warunek dopasowania:
+    1. Wybierz **pozycję Dodaj warunek**, a następnie wybierz warunek dopasowania protokołu **żądania.**
+    1. W polu **Operator**wybierz pozycję **Równa się**.
+    1. W polu **Wartość**wybierz **HTTP**.
    
-   [warunek dopasowania reguły Azure CDN ![](./media/cdn-standard-rules-engine/cdn-match-condition.png)](./media/cdn-standard-rules-engine/cdn-match-condition.png#lightbox)
+   [![Warunek dopasowania reguły usługi Azure CDN](./media/cdn-standard-rules-engine/cdn-match-condition.png)](./media/cdn-standard-rules-engine/cdn-match-condition.png#lightbox)
    
    > [!NOTE]
-   > Z listy rozwijanej **Dodaj warunek** można wybrać spośród wielu warunków dopasowywania. Aby uzyskać szczegółową listę warunków dopasowania, zobacz [warunki dopasowania w aparacie standardowych reguł](cdn-standard-rules-engine-match-conditions.md).
+   > Na liście rozwijanej Dodaj **warunek** można wybrać jedną z wielu warunków dopasowania. Aby uzyskać szczegółową listę warunków dopasowania, zobacz [Dopasowywki w silniku reguł standardowych](cdn-standard-rules-engine-match-conditions.md).
    
-1. Wybierz akcję, która ma zostać zastosowana do żądań, które spełniają warunek dopasowania:
-   1. Wybierz pozycję **Dodaj akcję**, a następnie wybierz pozycję **Przekierowywanie adresu URL**.
-   1. W obszarze **Typ**wybierz pozycję **znaleziono (302)** .
+1. Wybierz akcję, która ma być stosowana do żądań spełniających warunek dopasowania:
+   1. Wybierz **pozycję Dodaj akcję**, a następnie wybierz polecenie **Przekierowanie adresu URL**.
+   1. W przypadku **opcji Typ**wybierz pozycję **Znaleziono (302)**.
    1. W polu **Protocol** (Protokół) wybierz pozycję **HTTPS**.
-   1. Pozostaw puste pole, aby użyć wartości przychodzących.
+   1. Pozostaw wszystkie inne pola puste, aby użyć wartości przychodzących.
    
-   [Akcja reguły Azure CDN ![](./media/cdn-standard-rules-engine/cdn-action.png)](./media/cdn-standard-rules-engine/cdn-action.png#lightbox)
+   [![Akcja reguły usługi Azure CDN](./media/cdn-standard-rules-engine/cdn-action.png)](./media/cdn-standard-rules-engine/cdn-action.png#lightbox)
    
    > [!NOTE]
-   > Z listy rozwijanej **Dodaj akcję** można wybrać jedną z wielu akcji. Aby uzyskać szczegółową listę akcji, zobacz [Akcje w aparacie standardowych reguł](cdn-standard-rules-engine-actions.md).
+   > Na liście rozwijanej **Dodaj akcję** można wybrać jedną z wielu akcji. Aby uzyskać szczegółową listę akcji, zobacz [Akcje w silniku reguł standardowych](cdn-standard-rules-engine-actions.md).
 
-6. Wybierz pozycję **Zapisz** , aby zapisać nową regułę. Ta reguła jest teraz dostępna do użycia.
+6. Wybierz **pozycję Zapisz,** aby zapisać nową regułę. Reguła jest teraz dostępna do użycia.
    
    > [!IMPORTANT]
-   > Propagowanie zmian zasad może potrwać do 15 minut w Azure CDN.
+   > Propagowanie zmian reguł może potrwać do 15 minut za pośrednictwem usługi Azure CDN.
    >
    
 
 ## <a name="next-steps"></a>Następne kroki
 
-- [Przegląd Azure CDN](cdn-overview.md)
+- [Omówienie usługi Azure CDN](cdn-overview.md)
 - [Dokumentacja aparatu reguł standardowych](cdn-standard-rules-engine-reference.md)
-- [Warunki dopasowania w aparacie standardowych reguł](cdn-standard-rules-engine-match-conditions.md)
-- [Akcje w aparacie reguł standardowych](cdn-standard-rules-engine-actions.md)
+- [Warunki dopasowania w silniku reguł standardowych](cdn-standard-rules-engine-match-conditions.md)
+- [Akcje w silniku reguł standardowych](cdn-standard-rules-engine-actions.md)
