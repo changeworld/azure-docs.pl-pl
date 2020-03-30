@@ -1,65 +1,64 @@
 ---
-title: Konfigurowanie usługi WinRM po utworzeniu maszyny wirtualnej platformy Azure | Portal Azure Marketplace
-description: Wyjaśnia, jak skonfigurować Windows Remote Management (WinRM) po utworzeniu maszyny wirtualnej hostowanej na platformie Azure.
-services: Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+title: Konfigurowanie usługi WinRM po utworzeniu maszyny wirtualnej platformy Azure | Azure Marketplace
+description: W tym artykule wyjaśniono, jak skonfigurować usługę Windows Remote Management (WinRM) po utworzeniu maszyny wirtualnej hostowanego na platformie Azure.
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/27/2018
-ms.author: pabutler
-ms.openlocfilehash: 7d050b32b212f66623a24bcf87d40111fc5973a5
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.author: dsindona
+ms.openlocfilehash: 673fe1f31f6a8602225e7cde3bf1eb4c3b28b8a3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77481378"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80278148"
 ---
 # <a name="configure-winrm-after-virtual-machine-creation"></a>Konfigurowanie usługi WinRM po utworzeniu maszyny wirtualnej
 
-W tym artykule opisano sposób konfigurowania istniejącej maszyny wirtualnej hostowanej na platformie Azure w celu włączenia usługi WinRM za pośrednictwem protokołu HTTPS.  Ta konfiguracja dotyczy tylko maszyn wirtualnych z systemem Windows i wymaga następującego dwuetapowego procesu:
+W tym artykule wyjaśniono, jak skonfigurować istniejącą maszynę wirtualną hostowane na platformie Azure (VM), aby włączyć usługę WinRM za pośrednictwem protokołu HTTPS.  Ta konfiguracja dotyczy tylko maszyn wirtualnych z systemem Windows i wymaga następującego dwuetapowego procesu:
 
-1. Włącz ruch portów dla protokołu WinRM przez HTTPS.  To ustawienie należy skonfigurować dla maszyny wirtualnej w Azure Portal.
+1. Włącz ruch portowy dla protokołu WinRM za pośrednictwem protokołu HTTPS.  To ustawienie zostanie skonfigurowane dla maszyny Wirtualnej w witrynie Azure portal.
 2. Skonfiguruj maszynę wirtualną, aby włączyć usługę WinRM, uruchamiając dostarczone skrypty programu PowerShell.
 
 
-## <a name="enabling-port-traffic"></a>Włączanie ruchu portu
+## <a name="enabling-port-traffic"></a>Włączanie ruchu portowego
 
-Protokół WinRM przez HTTPS używa portu 5986, który nie jest domyślnie włączony w przypadku wstępnie skonfigurowanych maszyn wirtualnych z systemem Windows oferowanych w witrynie Azure Marketplace. Aby włączyć ten protokół, wykonaj następujące kroki, aby dodać nową regułę do sieciowej grupy zabezpieczeń (sieciowej grupy zabezpieczeń) z [Azure Portal](https://portal.azure.com).  Aby uzyskać więcej informacji na temat sieciowych grup zabezpieczeń, zobacz [grupy zabezpieczeń](https://docs.microsoft.com/azure/virtual-network/security-overview).
+Protokół WinRM over HTTPS używa portu 5986, który nie jest domyślnie włączony na wstępnie skonfigurowanych maszynach wirtualnych systemu Windows oferowanych w portalu Azure Marketplace. Aby włączyć ten protokół, należy wykonać następujące czynności, aby dodać nową regułę do sieciowej grupy zabezpieczeń (NSG) za pomocą [witryny Azure portal](https://portal.azure.com).  Aby uzyskać więcej informacji na temat sieciowych grup zabezpieczeń, zobacz [Grupy zabezpieczeń](https://docs.microsoft.com/azure/virtual-network/security-overview).
 
-1.  Przejdź do kart **Virtual machines >**   <*vm-Name*>   **> Settings/Networking**.
-2.  Kliknij nazwę sieciowej grupy zabezpieczeń (w tym przykładzie **testvm11002**), aby wyświetlić jej właściwości:
+1.  Przejdź do bloku **Maszyny wirtualne >**   < *nazwa* >   wirtualna>** Ustawienia/Sieć**.
+2.  Kliknij nazwę sieciowej sieciowej sieciowej (w tym przykładzie **testvm11002**), aby wyświetlić jej właściwości:
 
     ![Właściwości sieciowej grupy zabezpieczeń](./media/nsg-properties.png)
  
-3. W obszarze **Ustawienia**wybierz pozycję **reguły zabezpieczeń ruchu przychodzącego** , aby wyświetlić ten blok.
-4. Kliknij pozycję **+ Dodaj** , aby utworzyć nową regułę o nazwie `WinRM_HTTPS` dla portu TCP 5986.
+3. W obszarze **Ustawienia**wybierz pozycję **Reguły zabezpieczeń ruchu przychodzącego,** aby wyświetlić ten blok.
+4. Kliknij **przycisk +Dodaj,** aby `WinRM_HTTPS` utworzyć nową regułę wywołaną dla portu TCP 5986.
 
-    ![Dodaj regułę zabezpieczeń sieci dla ruchu przychodzącego](./media/nsg-new-rule.png)
+    ![Dodawanie reguły zabezpieczeń sieci przychodzącej](./media/nsg-new-rule.png)
 
-5. Po zakończeniu podawania wartości kliknij przycisk **OK** .  Lista reguł zabezpieczeń dla ruchu przychodzącego powinna zawierać następujące nowe wpisy.
+5. Po zakończeniu dostarczania wartości kliknij **przycisk OK.**  Lista przychodzących reguł zabezpieczeń powinna zawierać następujące nowe wpisy.
 
-    ![Lista reguł zabezpieczeń sieci dla ruchu przychodzącego](./media/nsg-new-inbound-listing.png)
+    ![Lista reguł zabezpieczeń sieci przychodzącej](./media/nsg-new-inbound-listing.png)
 
 
 ## <a name="configure-vm-to-enable-winrm"></a>Konfigurowanie maszyny wirtualnej w celu włączenia usługi WinRM 
 
-Wykonaj następujące kroki, aby włączyć i skonfigurować funkcję Windows Remote Management na maszynie wirtualnej z systemem Windows.   
+Aby włączyć i skonfigurować funkcję Zdalnego zarządzania systemem Windows na maszynie Wirtualnej systemu Windows, należy wykonać następujące czynności.   
 
-1. Ustanów Pulpit zdalny połączenie z maszyną wirtualną hostowaną na platformie Azure.  Aby uzyskać więcej informacji, zobacz [jak nawiązać połączenie i zalogować się do maszyny wirtualnej platformy Azure z systemem Windows](https://docs.microsoft.com/azure/virtual-machines/windows/connect-logon).  Pozostałe kroki zostaną uruchomione na maszynie wirtualnej.
-2. Pobierz następujące pliki i Zapisz je w folderze na maszynie wirtualnej:
-    - [ConfigureWinRM. ps1](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-vm-winrm-windows/ConfigureWinRM.ps1)
-    - [MakeCert. exe](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-vm-winrm-windows/makecert.exe)
-    - [winrmconf. cmd](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-vm-winrm-windows/winrmconf.cmd)
-3. Otwórz **konsolę programu PowerShell** z podniesionymi uprawnieniami (**Uruchom jako administrator**). 
-4. Uruchom następujące polecenie, podając wymagany parametr: w pełni kwalifikowana nazwa domeny (FQDN) dla maszyny wirtualnej: <br/>
+1. Ustanawianie połączenia pulpitu zdalnego z maszyną wirtualną hostowanym na platformie Azure.  Aby uzyskać więcej informacji, zobacz [Jak połączyć się i zalogować się do maszyny wirtualnej platformy Azure z systemem Windows](https://docs.microsoft.com/azure/virtual-machines/windows/connect-logon).  Pozostałe kroki zostaną uruchomione na maszynie wirtualnej.
+2. Pobierz następujące pliki i zapisz je w folderze na maszynie Wirtualnej:
+    - [Konfigurowanie plikuWinRM.ps1](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-vm-winrm-windows/ConfigureWinRM.ps1)
+    - [Makecert.exe](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-vm-winrm-windows/makecert.exe)
+    - [winrmconf.cmd](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-vm-winrm-windows/winrmconf.cmd)
+3. Otwórz **konsolę programu PowerShell** z podwyższonymi uprawnieniami **(Uruchom jako administrator).** 
+4. Uruchom następujące polecenie, podając wymagany parametr: w pełni kwalifikowaną nazwę domeny (FQDN) dla maszyny Wirtualnej: <br/>
    `ConfigureWinRM.ps1 <vm-domain-name>`
 
     ![Skrypt konfiguracji programu PowerShell 1](./media/powershell-file1.png)
 
-    Ten skrypt zależy od innych dwóch plików znajdujących się w tym samym folderze.
+    Ten skrypt zależy od pozostałych dwóch plików w tym samym folderze.
 
 
 ## <a name="next-steps"></a>Następne kroki
 
-Po skonfigurowaniu usługi WinRM możesz przystąpić do [wdrożenia maszyny wirtualnej ze swoich wirtualnych dysków twardych](./cpp-deploy-vm-vhd.md).
+Po skonfigurowaniu usługi WinRM można przystąpić do [wdrażania maszyny wirtualnej z jej elementów VHD.](./cpp-deploy-vm-vhd.md)
