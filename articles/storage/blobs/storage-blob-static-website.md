@@ -1,6 +1,6 @@
 ---
-title: Hosting statycznej witryny sieci Web w usłudze Azure Storage
-description: Hostowanie statycznej witryny sieci Web usługi Azure Storage, które zapewnia ekonomiczne i skalowalne rozwiązanie do hostowania nowoczesnych aplikacji sieci Web.
+title: Hostowanie statycznej witryny internetowej w usłudze Azure Storage
+description: Hosting statycznej witryny usługi Azure Storage, zapewniający ekonomiczne, skalowalne rozwiązanie do obsługi nowoczesnych aplikacji sieci Web.
 author: normesta
 ms.service: storage
 ms.topic: conceptual
@@ -9,112 +9,112 @@ ms.reviewer: dineshm
 ms.date: 05/29/2019
 ms.subservice: blobs
 ms.openlocfilehash: 848fd89444281d82d6d0d1bfc4df15d499c09ee0
-ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/14/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79370495"
 ---
-# <a name="static-website-hosting-in-azure-storage"></a>Hosting statycznej witryny sieci Web w usłudze Azure Storage
+# <a name="static-website-hosting-in-azure-storage"></a>Hostowanie statycznej witryny internetowej w usłudze Azure Storage
 
-Zawartości statycznej (HTML, CSS, JavaScript i plików obrazów) można obsłużyć bezpośrednio w kontenerze magazynu o nazwie *$Web*. Hosting zawartości w usłudze Azure Storage umożliwia korzystanie z architektur bezserwerowych, które obejmują [Azure Functions](/azure/azure-functions/functions-overview) i innych usług platformy jako usługi (PaaS).
+Zawartość statyczną (HTML, CSS, JavaScript i pliki obrazów) można wyświetlać bezpośrednio z kontenera magazynu o nazwie *$web*. Hostowanie zawartości w usłudze Azure Storage umożliwia korzystanie z architektur bezserwerowych, które obejmują [usługi Azure Functions](/azure/azure-functions/functions-overview) i inne usługi platformy jako usługi (PaaS).
 
 [!INCLUDE [updated-for-az](../../../includes/storage-data-lake-gen2-support.md)]
 
 > [!NOTE]
-> Jeśli lokacja jest zależna od kodu po stronie serwera, należy zamiast tego użyć [Azure App Service](/azure/app-service/overview) .
+> Jeśli witryna zależy od kodu po stronie serwera, użyj [usługi Azure App Service.](/azure/app-service/overview)
 
 ## <a name="setting-up-a-static-website"></a>Konfigurowanie statycznej witryny sieci Web
 
-Hostowanie statycznej witryny sieci Web to funkcja, którą należy włączyć na koncie magazynu.
+Statyczny hosting stron internetowych to funkcja, którą musisz włączyć na koncie pamięci masowej.
 
-Aby włączyć obsługę statycznej witryny sieci Web, wybierz nazwę pliku domyślnego, a następnie Opcjonalnie podaj ścieżkę do niestandardowej strony 404. Jeśli kontener usługi BLOB Storage o nazwie **$Web** nie istnieje już na koncie, zostanie on utworzony. Dodaj pliki witryny do tego kontenera.
+Aby włączyć statyczny hosting witryny sieci Web, wybierz nazwę pliku domyślnego, a następnie opcjonalnie podaj ścieżkę do niestandardowej strony 404. Jeśli kontener magazynu obiektów blob o nazwie **$web** jeszcze nie istnieje na koncie, jeden jest tworzony dla Ciebie. Dodaj pliki witryny do tego kontenera.
 
-Aby uzyskać wskazówki krok po kroku, zobacz [hostowanie statycznej witryny sieci Web w usłudze Azure Storage](storage-blob-static-website-how-to.md).
+Aby uzyskać wskazówki krok po kroku, zobacz [Hostowanie statycznej witryny sieci Web w usłudze Azure Storage.](storage-blob-static-website-how-to.md)
 
-![Metryka statycznych witryn sieci Web usługi Azure Storage](./media/storage-blob-static-website/storage-blob-static-website-blob-container.png)
+![Metryka metryk statycznych witryn sieci Web usługi Azure Storage](./media/storage-blob-static-website/storage-blob-static-website-blob-container.png)
 
-Pliki w kontenerze **$Web** są rozróżniane wielkości liter, obsługiwane przez żądania dostępu anonimowego i są dostępne tylko za pomocą operacji odczytu.
+W plikach w kontenerze **$web** rozróżniana jest wielkość liter, jest obsługiwana za pośrednictwem żądań dostępu anonimowego i jest dostępna tylko za pośrednictwem operacji odczytu.
 
-## <a name="uploading-content"></a>Przekazywanie zawartości
+## <a name="uploading-content"></a>Przesyłanie zawartości
 
-Aby przekazać zawartość do kontenera **$Web** , można użyć dowolnego z tych narzędzi:
+Za pomocą dowolnego z tych narzędzi można przesyłać zawartość do kontenera **$web:**
 
 > [!div class="checklist"]
 > * [Interfejs wiersza polecenia platformy Azure](storage-blob-static-website-how-to.md#cli)
-> * [Moduł Azure PowerShell](storage-blob-static-website-how-to.md#powershell)
-> * [Narzędzie AzCopy](../common/storage-use-azcopy-v10.md)
-> * [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/)
-> * [Azure Pipelines](https://azure.microsoft.com/services/devops/pipelines/)
-> * [Visual Studio Code rozszerzenie](/azure/javascript/tutorial-vscode-static-website-node-01)
+> * [Moduł programu Azure PowerShell](storage-blob-static-website-how-to.md#powershell)
+> * [AzCopy (Polski)](../common/storage-use-azcopy-v10.md)
+> * [Eksplorator usługi Azure Storage](https://azure.microsoft.com/features/storage-explorer/)
+> * [Potoki platformy Azure](https://azure.microsoft.com/services/devops/pipelines/)
+> * [Rozszerzenie programu Visual Studio Code](/azure/javascript/tutorial-vscode-static-website-node-01)
 
 ## <a name="viewing-content"></a>Wyświetlanie zawartości
 
-Użytkownicy mogą wyświetlać zawartość witryny z przeglądarki przy użyciu publicznego adresu URL witryny sieci Web. Adres URL można znaleźć za pomocą Azure Portal, interfejsu wiersza polecenia platformy Azure lub programu PowerShell. Użyj tej tabeli jako przewodnika.
+Użytkownicy mogą wyświetlać zawartość witryny z przeglądarki przy użyciu publicznego adresu URL witryny. Adres URL można znaleźć przy użyciu witryny Azure portal, interfejsu wiersza polecenia platformy Azure lub programu PowerShell. Użyj tej tabeli jako przewodnika.
 
 |Narzędzie| Wskazówki |
 |----|----|
-|**Azure Portal** | [Znajdź adres URL witryny sieci Web przy użyciu Azure Portal](storage-blob-static-website-how-to.md#portal-find-url) |
+|**Portal Azure** | [Znajdź adres URL witryny sieci Web za pomocą witryny Azure portal](storage-blob-static-website-how-to.md#portal-find-url) |
 |**Interfejs wiersza polecenia platformy Azure** | [Znajdowanie adresu URL witryny sieci Web przy użyciu interfejsu wiersza polecenia platformy Azure](storage-blob-static-website-how-to.md#cli-find-url) |
-|**Moduł Azure PowerShell** | [Znajdowanie adresu URL witryny sieci Web przy użyciu programu PowerShell](storage-blob-static-website-how-to.md#powershell-find-url) |
+|**Moduł programu Azure PowerShell** | [Znajdowanie adresu URL witryny sieci Web przy użyciu programu PowerShell](storage-blob-static-website-how-to.md#powershell-find-url) |
 
-Adres URL witryny zawiera kod regionalny. Na przykład adres URL `https://contosoblobaccount.z22.web.core.windows.net/` zawiera kod regionalny `z22`.
+Adres URL witryny zawiera kod regionalny. Na przykład `https://contosoblobaccount.z22.web.core.windows.net/` adres URL `z22`zawiera kod regionalny .
 
-Chociaż kod ten musi pozostawać w adresie URL, jest używany tylko do użytku wewnętrznego i nie będzie konieczne używanie tego kodu w żaden inny sposób.
+Chociaż ten kod musi pozostać w adresie URL, jest tylko do użytku wewnętrznego i nie trzeba używać tego kodu w inny sposób.
 
-Dokument indeksu określony po włączeniu hostingu statycznej witryny sieci Web jest wyświetlany, gdy użytkownicy otworzą lokację i nie określą określonego pliku (na przykład: `https://contosoblobaccount.z22.web.core.windows.net`).  
+Dokument indeksu określony po włączeniu statycznego hostingu witryny sieci Web pojawia się, gdy `https://contosoblobaccount.z22.web.core.windows.net`użytkownicy otwierają witrynę i nie określają określonego pliku (na przykład: ).  
 
-Jeśli serwer zwróci błąd 404 i nie został określony dokument błędu po włączeniu witryny sieci Web, do użytkownika zostanie zwrócona domyślna strona 404.
+Jeśli serwer zwraca błąd 404 i nie określono dokumentu błędu po włączeniu witryny sieci Web, domyślna strona 404 jest zwracana do użytkownika.
 
 > [!NOTE]
-> Mechanizm [CORS](https://docs.microsoft.com/rest/api/storageservices/cross-origin-resource-sharing--cors--support-for-the-azure-storage-services) nie jest obsługiwany w przypadku statycznej witryny sieci Web.
+> [CORS](https://docs.microsoft.com/rest/api/storageservices/cross-origin-resource-sharing--cors--support-for-the-azure-storage-services) nie jest obsługiwany w statycznej witrynie sieci Web.
 
-## <a name="impact-of-the-setting-the-public-access-level-of-the-web-container"></a>Wpływ ustawienia publicznego poziomu dostępu kontenera sieci Web
+## <a name="impact-of-the-setting-the-public-access-level-of-the-web-container"></a>Wpływ ustawienia poziomu dostępu publicznego kontenera sieci web
 
-Możesz zmodyfikować poziom dostępu publicznego kontenera **$Web** , ale nie ma to wpływu na podstawowy statyczny punkt końcowy witryny sieci Web, ponieważ te pliki są obsługiwane za pomocą żądań dostępu anonimowego. Oznacza to, że dostęp publiczny (tylko do odczytu) do wszystkich plików.
+Można zmodyfikować poziom dostępu publicznego **kontenera $web,** ale nie ma to wpływu na podstawowy statyczny punkt końcowy witryny sieci Web, ponieważ te pliki są obsługiwane za pośrednictwem żądań dostępu anonimowego. Oznacza to publiczny (tylko do odczytu) dostęp do wszystkich plików.
 
-Poniższy zrzut ekranu przedstawia ustawienia poziomu dostępu publicznego w Azure Portal:
+Poniższy zrzut ekranu przedstawia ustawienie poziomu dostępu publicznego w witrynie Azure portal:
 
-![Zrzut ekranu przedstawiający sposób ustawiania poziomu dostępu publicznego w portalu](./media/storage-manage-access-to-resources/storage-manage-access-to-resources-0.png)
+![Zrzut ekranu przedstawiający ustawianie poziomu dostępu publicznego w portalu](./media/storage-manage-access-to-resources/storage-manage-access-to-resources-0.png)
 
-Gdy nie ma to wpływu na podstawowy punkt końcowy statycznej witryny internetowej, zmiana poziomu dostępu publicznego ma wpływ na podstawowy punkt końcowy usługi BLOB.
+Chociaż nie ma to wpływu na podstawowy statyczny punkt końcowy witryny sieci Web, zmiana poziomu dostępu publicznego ma wpływ na podstawowy punkt końcowy usługi obiektu blob.
 
-Na przykład w przypadku zmiany publicznego poziomu dostępu kontenera **$Web** z **prywatnego (brak dostępu anonimowego)** do **obiektu BLOB (Anonimowy dostęp do odczytu tylko dla obiektów BLOB)** , poziom dostępu publicznego do podstawowego statycznej witryny sieci Web nie `https://contosoblobaccount.z22.web.core.windows.net/index.html` zmieniany.
+Na przykład jeśli zmienisz poziom dostępu publicznego **kontenera $web** z **Private (bez dostępu anonimowego)** na **obiekt Blob (anonimowy dostęp do odczytu tylko dla obiektów blob),** poziom publicznego dostępu do podstawowego statycznego punktu końcowego `https://contosoblobaccount.z22.web.core.windows.net/index.html` witryny sieci Web nie ulegnie zmianie.
 
-Jednak publiczny dostęp do podstawowego punktu końcowego usługi BLOB Service `https://contosoblobaccount.blob.core.windows.net/$web/index.html` zmienia się z prywatnego na publiczny. Teraz użytkownicy mogą otwierać ten plik za pomocą jednego z tych dwóch punktów końcowych.
+Jednak publiczny dostęp do punktu końcowego `https://contosoblobaccount.blob.core.windows.net/$web/index.html` podstawowej usługi obiektu blob zmienia się z prywatnego na publiczny. Teraz użytkownicy mogą otworzyć ten plik przy użyciu jednego z tych dwóch punktów końcowych.
 
-## <a name="mapping-a-custom-domain-to-a-static-website-url"></a>Mapowanie domeny niestandardowej na adres URL statycznej witryny internetowej
+## <a name="mapping-a-custom-domain-to-a-static-website-url"></a>Mapowanie domeny niestandardowej na statyczny adres URL witryny sieci Web
 
-Możesz udostępnić statyczną witrynę sieci Web za pośrednictwem domeny niestandardowej. 
+Możesz udostępnić swoją statyczną stronę internetową za pośrednictwem domeny niestandardowej. 
 
-Łatwiej jest włączyć dostęp do protokołu HTTP dla domeny niestandardowej, ponieważ usługa Azure Storage natywnie obsługuje ją. Aby włączyć protokół HTTPS, musisz użyć Azure CDN, ponieważ usługa Azure Storage nie obsługuje jeszcze natywnie protokołu HTTPS z domenami niestandardowymi. Aby uzyskać wskazówki krok po kroku, zobacz [Mapowanie domeny niestandardowej na punkt końcowy usługi Azure Blob Storage](storage-custom-domain-name.md) .
+Łatwiej jest włączyć dostęp HTTP dla domeny niestandardowej, ponieważ usługa Azure Storage natywnie ją obsługuje. Aby włączyć protokół HTTPS, musisz użyć usługi Azure CDN, ponieważ usługa Azure Storage nie obsługuje jeszcze natywnie protokołu HTTPS z domenami niestandardowymi. Zobacz [Mapowanie domeny niestandardowej do punktu końcowego usługi Azure Blob Storage, aby](storage-custom-domain-name.md) uzyskać wskazówki krok po kroku.
 
-Jeśli konto magazynu jest skonfigurowane tak, aby [wymagało bezpiecznego transferu](../common/storage-require-secure-transfer.md) za pośrednictwem protokołu HTTPS, użytkownicy muszą używać punktu końcowego HTTPS. 
+Jeśli konto magazynu jest skonfigurowane tak, aby [wymagało bezpiecznego transferu](../common/storage-require-secure-transfer.md) za pośrednictwem protokołu HTTPS, użytkownicy muszą użyć punktu końcowego HTTPS. 
 
 > [!TIP]
-> Rozważ Hostowanie domeny na platformie Azure. Aby uzyskać więcej informacji, zobacz [Hostowanie domeny w Azure DNS](../../dns/dns-delegate-domain-azure-dns.md).
+> Rozważ hostowanie domeny na platformie Azure. Aby uzyskać więcej informacji, zobacz [Hostuj swoją domenę w usłudze Azure DNS](../../dns/dns-delegate-domain-azure-dns.md).
 
 ## <a name="adding-http-headers"></a>Dodawanie nagłówków HTTP
 
-Nie ma możliwości skonfigurowania nagłówków w ramach funkcji statycznej witryny sieci Web. Można jednak użyć Azure CDN do dodawania nagłówków i dołączania (lub zastępowania) wartości nagłówka. Zobacz [Dokumentacja aparatu reguł standardowych dla Azure CDN](https://docs.microsoft.com/azure/cdn/cdn-standard-rules-engine-reference).
+Nie ma możliwości skonfigurowania nagłówków jako części funkcji statycznej witryny sieci Web. Jednak można użyć usługi Azure CDN, aby dodać nagłówki i dołączyć (lub zastąpić) wartości nagłówka. Zobacz [Odwołanie do aparatu reguł standardowych dla usługi Azure CDN](https://docs.microsoft.com/azure/cdn/cdn-standard-rules-engine-reference).
 
-Jeśli chcesz użyć nagłówków do sterowania buforowaniem, zobacz temat [kontrola Azure CDN buforowania przy użyciu reguł buforowania](https://docs.microsoft.com/azure/cdn/cdn-caching-rules).
+Jeśli chcesz używać nagłówków do kontrolowania buforowania, zobacz [Kontrolowanie zachowania buforowania usługi Azure CDN za pomocą reguł buforowania](https://docs.microsoft.com/azure/cdn/cdn-caching-rules).
 
-## <a name="pricing"></a>Ceny
+## <a name="pricing"></a>Cennik
 
-Bezpłatnie możesz włączyć hosting statycznej witryny sieci Web. Opłaty są naliczane tylko za magazyn obiektów BLOB wykorzystywany przez lokację i koszty operacji. Aby uzyskać więcej informacji na temat cen usługi Azure Blob Storage, zapoznaj się z [cennikiem usługi azure BLOB Storage](https://azure.microsoft.com/pricing/details/storage/blobs/).
+Możesz bezpłatnie włączyć hosting statycznej strony internetowej. Opłaty są naliczane tylko za magazyn obiektów blob, który wykorzystuje witryna i koszty operacyjne. Aby uzyskać więcej informacji na temat cen usługi Azure Blob Storage, zapoznaj się ze [stroną cennik usługi Azure Blob Storage](https://azure.microsoft.com/pricing/details/storage/blobs/).
 
 ## <a name="metrics"></a>Metryki
 
-Metryki można włączyć na stronach statycznej witryny internetowej. Po włączeniu metryk statystyki ruchu dla plików w kontenerze **$Web** są raportowane na pulpicie nawigacyjnym metryk.
+Możesz włączyć dane na statycznych stronach witryny. Po włączeniu metryki statystyki ruchu plików w kontenerze **$web** są zgłaszane na pulpicie nawigacyjnym metryk.
 
-Aby włączyć metryki na stronach statycznej witryny sieci Web, zobacz temat [Włączanie metryk na stronach statycznej witryny internetowej](storage-blob-static-website-how-to.md#metrics).
+Aby włączyć dane na statycznych stronach witryny, zobacz [Włączanie danych na statycznych stronach witryny](storage-blob-static-website-how-to.md#metrics).
 
 ## <a name="next-steps"></a>Następne kroki
 
 * [Hostowanie statycznej witryny sieci Web w usłudze Azure Storage](storage-blob-static-website-how-to.md)
-* [Mapowanie domeny niestandardowej na punkt końcowy usługi Azure Blob Storage](storage-custom-domain-name.md)
+* [Mapowanie domeny niestandardowej do punktu końcowego usługi Azure Blob Storage](storage-custom-domain-name.md)
 * [Azure Functions](/azure/azure-functions/functions-overview)
-* [Azure App Service](/azure/app-service/overview)
-* [Tworzenie pierwszej aplikacji sieci Web bezserwerowej](https://docs.microsoft.com/azure/functions/tutorial-static-website-serverless-api-with-database)
-* [Samouczek: Hostowanie domeny w Azure DNS](../../dns/dns-delegate-domain-azure-dns.md)
+* [Usługa aplikacji platformy Azure](/azure/app-service/overview)
+* [Zbuduj pierwszą bezserwerowa aplikację internetową](https://docs.microsoft.com/azure/functions/tutorial-static-website-serverless-api-with-database)
+* [Samouczek: hostowanie własnej domeny w usłudze Azure DNS](../../dns/dns-delegate-domain-azure-dns.md)

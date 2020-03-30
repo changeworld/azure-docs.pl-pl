@@ -1,31 +1,31 @@
 ---
-title: Application Insights platformy Azure dla aplikacji konsolowych | Microsoft Docs
-description: Monitoruj aplikacje sieci Web pod kątem dostępności, wydajności i użycia.
+title: Usługa Azure Application Insights dla aplikacji konsoli | Dokumenty firmy Microsoft
+description: Monitoruj aplikacje internetowe pod kątem dostępności, wydajności i użycia.
 ms.topic: conceptual
 ms.date: 12/02/2019
 ms.reviewer: lmolkova
 ms.openlocfilehash: baaea0f8055eeff0314fcf5fde00729ea8091d12
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77655433"
 ---
-# <a name="application-insights-for-net-console-applications"></a>Application Insights aplikacji konsolowych .NET
+# <a name="application-insights-for-net-console-applications"></a>Usługa Application Insights dla aplikacji konsoli .NET
 
-[Application Insights](../../azure-monitor/app/app-insights-overview.md) umożliwia monitorowanie aplikacji sieci Web pod kątem dostępności, wydajności i użycia.
+[Usługa Application Insights](../../azure-monitor/app/app-insights-overview.md) umożliwia monitorowanie aplikacji sieci web pod kątem dostępności, wydajności i użycia.
 
-Potrzebna jest subskrypcja z [Microsoft Azure](https://azure.com). Zaloguj się przy użyciu konto Microsoft, który może być używany w przypadku systemu Windows, usługi Xbox Live lub innych usług firmy Microsoft w chmurze. Twój zespół może mieć subskrypcję organizacyjną na platformie Azure: poproszenie właściciela o dodanie Cię do niego przy użyciu konto Microsoft.
+Potrzebujesz subskrypcji za pomocą [platformy Microsoft Azure](https://azure.com). Zaloguj się za pomocą konta Microsoft, które może mieć dla systemu Windows, Xbox Live lub innych usług w chmurze firmy Microsoft. Twój zespół może mieć subskrypcję organizacyjną platformy Azure: poproś właściciela, aby dodał Cię do niego przy użyciu konta Microsoft.
 
 > [!NOTE]
-> Istnieje nowy Application Insights SDK o nazwie [Microsoft. ApplicationInsights. WorkerService](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WorkerService) , który może służyć do włączania Application Insights dla każdej aplikacji konsolowej. Zalecane jest korzystanie z tego pakietu i powiązanych instrukcji w [tym miejscu](../../azure-monitor/app/worker-service.md). Ten pakiet jest przeznaczony dla [`NetStandard2.0`](https://docs.microsoft.com/dotnet/standard/net-standard)i dlatego może być używany w środowisku .net Core 2,0 lub nowszym, a .NET Framework 4.7.2 lub wyższy.
+> Istnieje nowy SDK usługi Application Insights o nazwie [Microsoft.ApplicationInsights.WorkerService,](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WorkerService) który może służyć do włączania usługi Application Insights dla dowolnych aplikacji konsoli. Zaleca się użycie tego pakietu i powiązanych instrukcji [stąd](../../azure-monitor/app/worker-service.md). Ten pakiet [`NetStandard2.0`](https://docs.microsoft.com/dotnet/standard/net-standard)jest przeznaczony dla osób docelowych i dlatego może być używany w .NET Core 2.0 lub nowszym oraz .NET Framework 4.7.2 lub nowszym.
 
 ## <a name="getting-started"></a>Wprowadzenie
 
-* W witrynie [Azure Portal](https://portal.azure.com)[utwórz zasób usługi Application Insights](../../azure-monitor/app/create-new-resource.md). W obszarze Typ aplikacji wybierz pozycję **Ogólne**.
-* Wykonaj kopię klucza instrumentacji. Znajdź klucz na liście rozwijanej **podstawowe** informacje o utworzonym nowym zasobie.
-* Zainstaluj najnowszy pakiet [Microsoft. ApplicationInsights](https://www.nuget.org/packages/Microsoft.ApplicationInsights) .
-* Ustaw klucz Instrumentacji w kodzie przed śledzeniem danych telemetrycznych (lub Ustaw zmienną środowiskową APPINSIGHTS_INSTRUMENTATIONKEY). Następnie powinno być możliwe ręczne śledzenie danych telemetrycznych i wyświetlanie ich w Azure Portal
+* W witrynie [Azure Portal](https://portal.azure.com)[utwórz zasób usługi Application Insights](../../azure-monitor/app/create-new-resource.md). W przypadku typu aplikacji wybierz opcję **Ogólne**.
+* Wykonaj kopię klucza instrumentacji. Znajdź klucz z listy rozwijanej **Essentials** nowego zasobu, który został utworzony.
+* Zainstaluj najnowszy pakiet [Microsoft.ApplicationInsights.](https://www.nuget.org/packages/Microsoft.ApplicationInsights)
+* Ustaw klucz instrumentacji w kodzie przed śledzeniem danych telemetrycznych (lub ustaw APPINSIGHTS_INSTRUMENTATIONKEY zmienną środowiskową). Następnie powinieneś mieć możliwość ręcznego śledzenia danych telemetrycznych i wyświetlanie jej w witrynie Azure portal
 
 ```csharp
 // you may use different options to create configuration as shown later in this article
@@ -36,25 +36,25 @@ telemetryClient.TrackTrace("Hello World!");
 ```
 
 > [!NOTE]
-> Dane telemetryczne nie są wysyłane natychmiast. Elementy telemetrii są wsadowe i wysyłane przez zestaw ApplicationInsights SDK. W aplikacjach konsolowych, które opuszczają bezpośrednio po wywołaniu metod `Track()`, dane telemetryczne mogą nie być wysyłane, chyba że `Flush()` i `Sleep` wykonywane przed zakończeniem działania aplikacji, jak pokazano w [pełnym przykładzie](#full-example) w dalszej części tego artykułu.
+> Telemetria nie jest wysyłana natychmiast. Elementy telemetrii są wsadowe i wysyłane przez applicationinsights SDK. W aplikacjach konsoli, która `Track()` kończy się zaraz po wywołaniu metod, telemetria nie może być wysyłana, chyba że `Flush()` i `Sleep` jest wykonywana przed zamknięciem aplikacji, jak pokazano w pełnym [przykładzie](#full-example) w dalszej części tego artykułu.
 
 
-* Zainstaluj najnowszą wersję pakietu [Microsoft. ApplicationInsights. DependencyCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DependencyCollector) — automatycznie śledzi protokół http, SQL lub inne zewnętrzne wywołania zależności.
+* Zainstaluj najnowszą wersję pakietu [Microsoft.ApplicationInsights.DependencyCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DependencyCollector) — automatycznie śledzi http, SQL lub inne wywołania zależności zewnętrznych.
 
-Możesz inicjować i konfigurować Application Insights z kodu lub przy użyciu pliku `ApplicationInsights.config`. Upewnij się, że inicjalizacja odbywa się tak wcześnie, jak to możliwe. 
+Można zainicjować i skonfigurować usługi Application `ApplicationInsights.config` Insights z kodu lub przy użyciu pliku. Upewnij się, że inicjowanie odbywa się tak wcześnie, jak to możliwe. 
 
 > [!NOTE]
-> Instrukcje odwołujące się do **ApplicationInsights. config** mają zastosowanie tylko do aplikacji, które są przeznaczone dla .NET Framework i nie mają zastosowania do aplikacji .NET Core.
+> Instrukcje odnoszące się do **ApplicationInsights.config** mają zastosowanie tylko do aplikacji, które są przeznaczone dla programu .NET Framework i nie mają zastosowania do aplikacji .NET Core.
 
-### <a name="using-config-file"></a>Korzystanie z pliku konfiguracji
+### <a name="using-config-file"></a>Korzystanie z pliku konfiguracyjnego
 
-Domyślnie Application Insights SDK szuka pliku `ApplicationInsights.config` w katalogu roboczym podczas tworzenia `TelemetryConfiguration`
+Domyślnie SDK usługi Application `ApplicationInsights.config` Insights wyszukuje `TelemetryConfiguration` plik w katalogu roboczym podczas tworzenia
 
 ```csharp
 TelemetryConfiguration config = TelemetryConfiguration.Active; // Reads ApplicationInsights.config file if present
 ```
 
-Możesz również określić ścieżkę do pliku konfiguracji.
+Można również określić ścieżkę do pliku konfiguracyjnego.
 
 ```csharp
 using System.IO;
@@ -62,9 +62,9 @@ TelemetryConfiguration configuration = TelemetryConfiguration.CreateFromConfigur
 var telemetryClient = new TelemetryClient(configuration);
 ```
 
-Aby uzyskać więcej informacji, zobacz [Dokumentacja pliku konfiguracji](configuration-with-applicationinsights-config.md).
+Aby uzyskać więcej informacji, zobacz [odwołanie do pliku konfiguracji](configuration-with-applicationinsights-config.md).
 
-Pełny przykład pliku konfiguracji można uzyskać, instalując najnowszą wersję pakietu [Microsoft. ApplicationInsights. WindowsServer](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WindowsServer) . Poniżej znajduje się **minimalna** konfiguracja kolekcji zależności, która jest równoważna z przykładem kodu.
+Możesz uzyskać pełny przykład pliku konfiguracyjnego, instalując najnowszą wersję pakietu [Microsoft.ApplicationInsights.WindowsServer.](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WindowsServer) Oto **minimalna** konfiguracja dla kolekcji zależności, która jest równoważna przykładowi kodu.
 
 ```XML
 <?xml version="1.0" encoding="utf-8"?>
@@ -94,11 +94,11 @@ Pełny przykład pliku konfiguracji można uzyskać, instalując najnowszą wers
 
 ```
 
-### <a name="configuring-telemetry-collection-from-code"></a>Konfigurowanie zbierania danych telemetrycznych z kodu
+### <a name="configuring-telemetry-collection-from-code"></a>Konfigurowanie kolekcji telemetrii na podstawie kodu
 > [!NOTE]
-> Odczytywanie pliku konfiguracji nie jest obsługiwane w programie .NET Core. Możesz rozważyć użycie [zestawu SDK Application Insights dla ASP.NET Core](../../azure-monitor/app/asp-net-core.md)
+> Odczyt pliku konfiguracyjnego nie jest obsługiwany w programie .NET Core. Można rozważyć użycie [SDK usługi Application Insights dla ASP.NET Core](../../azure-monitor/app/asp-net-core.md)
 
-* Podczas uruchamiania aplikacji Utwórz i skonfiguruj wystąpienie `DependencyTrackingTelemetryModule` — musi być ono pojedyncze i musi być zachowane w okresie istnienia aplikacji.
+* Podczas uruchamiania aplikacji tworzenie `DependencyTrackingTelemetryModule` i konfigurowanie wystąpienia — musi być singleton i muszą być zachowane przez okres istnienia aplikacji.
 
 ```csharp
 var module = new DependencyTrackingTelemetryModule();
@@ -118,20 +118,20 @@ module.IncludeDiagnosticSourceActivities.Add("Microsoft.Azure.EventHubs");
 module.Initialize(configuration);
 ```
 
-* Dodaj typowe inicjatory telemetrii
+* Dodawanie typowych inicjatorów telemetrii
 
 ```csharp
 // ensures proper DependencyTelemetry.Type is set for Azure RESTful API calls
 configuration.TelemetryInitializers.Add(new HttpDependenciesParsingTelemetryInitializer());
 ```
 
-Jeśli konfiguracja została utworzona za pomocą zwykłego konstruktora `TelemetryConfiguration()`, należy również włączyć obsługę korelacji. **Nie jest to konieczne** , jeśli odczytasz konfigurację z pliku, użyto `TelemetryConfiguration.CreateDefault()` lub `TelemetryConfiguration.Active`.
+Jeśli utworzono `TelemetryConfiguration()` konfigurację z konstruktorem zwykły, należy włączyć obsługę korelacji dodatkowo. **Nie jest to potrzebne,** jeśli odczytujesz konfigurację z pliku, używane `TelemetryConfiguration.CreateDefault()` lub `TelemetryConfiguration.Active`.
 
 ```csharp
 configuration.TelemetryInitializers.Add(new OperationCorrelationTelemetryInitializer());
 ```
 
-* Możesz również zainstalować i zainicjować moduł zbierający licznik wydajności, jak opisano [tutaj](https://apmtips.com/blog/2017/02/13/enable-application-insights-live-metrics-from-code/)
+* Można również zainstalować i zainicjować moduł kolektora Licznik wydajności, jak opisano [tutaj](https://apmtips.com/blog/2017/02/13/enable-application-insights-live-metrics-from-code/)
 
 
 #### <a name="full-example"></a>Pełny przykład
@@ -206,5 +206,5 @@ namespace ConsoleApp
 ```
 
 ## <a name="next-steps"></a>Następne kroki
-* [Monitoruj zależności](../../azure-monitor/app/asp-net-dependencies.md) , aby zobaczyć, czy REST, SQL lub inne zasoby zewnętrzne spowalniają pracę.
-* [Użyj interfejsu API,](../../azure-monitor/app/api-custom-events-metrics.md) aby wysyłać własne zdarzenia i metryki w celu uzyskania bardziej szczegółowego widoku wydajności i użycia aplikacji.
+* [Monitorowanie zależności,](../../azure-monitor/app/asp-net-dependencies.md) aby sprawdzić, czy REST, SQL lub inne zasoby zewnętrzne spowalniają.
+* [Użyj interfejsu API,](../../azure-monitor/app/api-custom-events-metrics.md) aby wysłać własne zdarzenia i metryki, aby uzyskać bardziej szczegółowy widok wydajności i użycia aplikacji.

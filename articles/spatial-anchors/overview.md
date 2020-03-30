@@ -9,10 +9,10 @@ ms.date: 02/24/2019
 ms.topic: overview
 ms.service: azure-spatial-anchors
 ms.openlocfilehash: 5ebd29b5fb6fdedcdfbc434209b350512c4cd5dc
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77657311"
 ---
 # <a name="azure-spatial-anchors-overview"></a>Omówienie usługi Azure Spatial Anchors
@@ -20,7 +20,7 @@ ms.locfileid: "77657311"
 Witamy w usłudze Azure Spatial Anchors. Usługa Azure Spatial Anchors udostępnia deweloperom podstawowe funkcje umożliwiające tworzenie aplikacji rzeczywistości mieszanej z obsługą orientacji przestrzennej. Te aplikacje mogą obsługiwać urządzenia Microsoft HoloLens, urządzenia z systemem iOS wspierające platformę ARKit i urządzenia z systemem Android wspierające platformę ARCore. Usługa Azure Spatial Anchors umożliwia deweloperom pracę z platformami rzeczywistości mieszanej w celu obserwowania przestrzeni, wyznaczania dokładnych punktów orientacyjnych i przywoływania tych punktów orientacyjnych z obsługiwanych urządzeń.
 Te dokładne punkty orientacyjne są określane jako kotwice przestrzenne.
 
-![Obsługa wielu platform](./media/cross-platform.png)
+![Wiele platform](./media/cross-platform.png)
 
 ## <a name="examples"></a>Przykłady
 
@@ -39,13 +39,13 @@ Usługa Azure Spatial Anchors składa się z usługi zarządzanej i zestawów SD
 Tworzenie pierwszej aplikacji z użyciem usługi Spatial Anchors.
 
 > [!div class="nextstepaction"]
-> [Unity (HoloLens)](quickstarts/get-started-unity-hololens.md)
+> [Jedność (HoloLens)](quickstarts/get-started-unity-hololens.md)
 
 > [!div class="nextstepaction"]
-> [Unity (iOS)](quickstarts/get-started-unity-ios.md)
+> [Jedność (iOS)](quickstarts/get-started-unity-ios.md)
 
 > [!div class="nextstepaction"]
-> [Unity (Android)](quickstarts/get-started-unity-android.md)
+> [Jedność (Android)](quickstarts/get-started-unity-android.md)
 
 > [!div class="nextstepaction"]
 > [iOS](quickstarts/get-started-ios.md)

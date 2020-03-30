@@ -1,5 +1,5 @@
 ---
-title: Kontrola zabezpieczeń Azure — Zabezpieczenia sieci
+title: Kontrola zabezpieczeń platformy Azure — zabezpieczenia sieciowe
 description: Zabezpieczenia sieci kontroli zabezpieczeń
 author: msmbaldwin
 manager: rkarlin
@@ -9,219 +9,219 @@ ms.date: 12/30/2019
 ms.author: mbaldwin
 ms.custom: security-recommendations
 ms.openlocfilehash: 7916bbb28602d64e0916fce7badf16a65c242227
-ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77251876"
 ---
-# <a name="security-control-network-security"></a>Kontrola zabezpieczeń: zabezpieczenia sieci
+# <a name="security-control-network-security"></a>Kontrola bezpieczeństwa: Bezpieczeństwo sieci
 
-Zalecenia dotyczące zabezpieczeń sieci koncentrują się na określaniu, które protokoły sieciowe, porty TCP/UDP i usługi połączone z siecią są dozwolone lub odrzucane dostępu do usług platformy Azure.
+Zalecenia dotyczące zabezpieczeń sieci koncentrują się na określaniu protokołów sieciowych, portów TCP/UDP i usług połączonych z siecią, które są dozwolone lub odmawiane dostępu do usług platformy Azure.
 
-## <a name="11-protect-resources-using-network-security-groups-or-azure-firewall-on-your-virtual-network"></a>1,1: Ochrona zasobów przy użyciu sieciowych grup zabezpieczeń lub zapory platformy Azure na Virtual Network
+## <a name="11-protect-resources-using-network-security-groups-or-azure-firewall-on-your-virtual-network"></a>1.1: Ochrona zasobów przy użyciu sieciowych grup zabezpieczeń lub zapory platformy Azure w sieci wirtualnej
 
-| Identyfikator platformy Azure | Identyfikatory WNP | Odpowiedzialność za |
+| Identyfikator platformy Azure | Identyfikatory SIC | Odpowiedzialność |
 |--|--|--|
-| 1.1 | 9,2, 9,4, 14,1-14.3 | Klient |
+| 1.1 | 9.2, 9.4, 14.1-14.3 | Klient |
 
-Upewnij się, że wszystkie wdrożenia podsieci Virtual Network mają grupę zabezpieczeń sieci stosowaną z kontrolami dostępu do sieci, które są specyficzne dla zaufanych portów i źródeł aplikacji. Korzystaj z usług platformy Azure z włączonym linkiem prywatnym, Wdrażaj usługę w sieci wirtualnej lub łącz się prywatnie przy użyciu prywatnych punktów końcowych. Wymagania dotyczące konkretnych usług zapoznaj się z zaleceniami dotyczącymi zabezpieczeń tej konkretnej usługi.
+Upewnij się, że wszystkie wdrożenia podsieci sieci wirtualnej mają zastosowaną grupę zabezpieczeń sieci z kontrolkami dostępu do sieci specyficznymi dla zaufanych portów i źródeł aplikacji. Użyj usługi Azure Services z włączoną łączem prywatnym, wdrożyć usługę wewnątrz sieci wirtualnej lub połączyć się prywatnie przy użyciu prywatnych punktów końcowych. Aby zapoznać się z wymaganiami dotyczącymi specyficznych usług, zapoznaj się z zaleceniem zabezpieczeń dla tej konkretnej usługi.
 
-Alternatywnie, jeśli masz określony przypadek użycia, wymagania mogą być spełnione przez zaimplementowanie zapory platformy Azure.
+Alternatywnie, jeśli masz określony przypadek użycia, wymagania mogą być spełnione przez implementowanie zapory platformy Azure.
 
-Informacje ogólne o łączu prywatnym:
+Ogólne informacje na temat prywatnego linku:
 
 https://docs.microsoft.com/azure/private-link/private-link-overview
 
-Jak utworzyć Virtual Network:
+Jak utworzyć sieć wirtualną:
 
 https://docs.microsoft.com/azure/virtual-network/quick-create-portal
 
-Jak utworzyć sieciowej grupy zabezpieczeń z konfiguracją zabezpieczeń:
+Jak utworzyć sieć sieciową z konfiguracją zabezpieczeń:
 
 https://docs.microsoft.com/azure/virtual-network/tutorial-filter-network-traffic
 
-Jak wdrożyć i skonfigurować zaporę platformy Azure:
+Jak wdrożyć i skonfigurować Zaporę platformy Azure:
 
 https://docs.microsoft.com/azure/firewall/tutorial-firewall-deploy-portal
 
-## <a name="12-monitor-and-log-the-configuration-and-traffic-of-vnets-subnets-and-nics"></a>1,2: Monitoruj i Rejestruj konfigurację oraz ruch sieci wirtualnych, podsieci i kart sieciowych
+## <a name="12-monitor-and-log-the-configuration-and-traffic-of-vnets-subnets-and-nics"></a>1.2: Monitorowanie i rejestrowanie konfiguracji i ruchu sieci wirtualnych, podsieci i kart sieciowych
 
-| Identyfikator platformy Azure | Identyfikatory WNP | Odpowiedzialność za |
+| Identyfikator platformy Azure | Identyfikatory SIC | Odpowiedzialność |
 |--|--|--|
-| 1.2 | 9,3, 12,2 | Klient |
+| 1.2 | 9.3, 12.2 | Klient |
 
-Użyj Azure Security Center i postępuj zgodnie z zaleceniami dotyczącymi ochrony sieci, aby pomóc w zabezpieczeniu zasobów sieciowych na platformie Azure. Włącz dzienniki przepływu sieciowej grupy zabezpieczeń i Wyślij dzienniki do konta magazynu na potrzeby inspekcji ruchu.
+Skorzystaj z usługi Azure Security Center i postępuj zgodnie z zaleceniami dotyczącymi ochrony sieci, aby zabezpieczyć zasoby sieciowe na platformie Azure. Włącz dzienniki przepływu nsg i wysyłaj dzienniki do konta magazynu dla inspekcji ruchu.
 
-Jak włączyć dzienniki przepływu sieciowej grupy zabezpieczeń:
+Jak włączyć dzienniki przepływu nsg:
 
 https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal
 
-Informacje o zabezpieczeniach sieci zapewnianych przez Azure Security Center:
+Poznaj zabezpieczenia sieci udostępniane przez usługę Azure Security Center:
 
 https://docs.microsoft.com/azure/security-center/security-center-network-recommendations
 
-## <a name="13-protect-critical-web-applications"></a>1,3: Ochrona krytycznych aplikacji sieci Web
+## <a name="13-protect-critical-web-applications"></a>1.3: Ochrona krytycznych aplikacji internetowych
 
-| Identyfikator platformy Azure | Identyfikatory WNP | Odpowiedzialność za |
+| Identyfikator platformy Azure | Identyfikatory SIC | Odpowiedzialność |
 |--|--|--|
 | 1.3 | 9.5 | Klient |
 
-Wdróż zaporę aplikacji sieci Web platformy Azure (WAF) przed krytycznymi aplikacjami sieci Web, aby uzyskać dodatkową inspekcję ruchu przychodzącego. Włącz ustawienie diagnostyczne dla WAF i pobierania dzienników do konta magazynu, centrum zdarzeń lub Log Analytics obszaru roboczego.
+Wdrażanie zapory aplikacji sieci Web platformy Azure (WAF) przed krytycznymi aplikacjami sieci Web w celu dodatkowego sprawdzania ruchu przychodzącego. Włącz ustawienie diagnostyczne dla waf i pozyskiwania logów do konta magazynu, Centrum zdarzeń lub obszaru roboczego analizy dzienników.
 
 Jak wdrożyć usługę Azure WAF:
 
 https://docs.microsoft.com/azure/web-application-firewall/ag/create-waf-policy-ag
 
-## <a name="14-deny-communications-with-known-malicious-ip-addresses"></a>1,4: odmowa komunikacji ze znanymi złośliwymi adresami IP
+## <a name="14-deny-communications-with-known-malicious-ip-addresses"></a>1.4: Odmowa komunikacji ze znanymi złośliwymi adresami IP
 
-| Identyfikator platformy Azure | Identyfikatory WNP | Odpowiedzialność za |
+| Identyfikator platformy Azure | Identyfikatory SIC | Odpowiedzialność |
 |--|--|--|
-| 1.4 | 12,3 | Klient |
+| 1.4 | 12.3 | Klient |
 
-Włącz ochronę standardową DDoS w sieciach wirtualnych platformy Azure, aby chronić przed atakami DDoS. Użyj Azure Security Center zintegrowanej analizy zagrożeń, aby odmówić komunikacji ze znanymi złośliwymi adresami IP.
+Włącz standardową ochronę DDoS w sieciach wirtualnych platformy Azure, aby chronić się przed atakami DDoS. Usługa Azure Security Center Integrated Threat Intelligence umożliwia odmawianie komunikacji ze znanymi złośliwymi adresami IP.
 
-Wdróż zaporę platformy Azure w każdej z granic sieci organizacji z włączoną analizą zagrożeń i skonfigurowaną do &quot;alertu i Odmów&quot; w przypadku złośliwego ruchu sieciowego.
+Wdrażanie zapory platformy Azure w każdej z granic sieci organizacji &quot;z włączoną analizą zagrożeń i skonfigurowane jako Alert i odmowa&quot; dla złośliwego ruchu sieciowego.
 
-Użyj Azure Security Center dostęp do sieci w czasie w celu skonfigurowania sieciowych grup zabezpieczeń w celu ograniczenia narażenia punktów końcowych na zatwierdzone adresy IP przez ograniczony okres.
+Użyj usługi Azure Security Center Just In Time Network dostęp do konfigurowania sieciowych grup zabezpieczeń, aby ograniczyć narażenie punktów końcowych na zatwierdzone adresy IP przez ograniczony okres.
 
-Aby zalecać sieciowej grupy zabezpieczeń konfiguracje, które ograniczają porty i źródłowe adresy IP w oparciu o rzeczywisty ruch i analizę zagrożeń, należy użyć Azure Security Center.
+Użyj narzędzia Azure Security Center Adaptive Network Hardening, aby zalecić konfiguracje sieciowej grupy zabezpieczeń, które ograniczają porty i źródłowe odpowiedzi na stany IP na podstawie analizy rzeczywistego ruchu i zagrożeń.
 
-Jak skonfigurować ochronę DDoS:
+Jak skonfigurować ochronę przed atakami DDoS:
 
 https://docs.microsoft.com/azure/virtual-network/manage-ddos-protection
 
-Jak wdrożyć zaporę platformy Azure:
+Jak wdrożyć Zaporę platformy Azure:
 
 https://docs.microsoft.com/azure/firewall/tutorial-firewall-deploy-portal
 
-Opis Azure Security Center zintegrowanej analizy zagrożeń:
+Poznaj zintegrowaną analizę zagrożeń w centrum zabezpieczeń platformy Azure:
 
 https://docs.microsoft.com/azure/security-center/security-center-alerts-service-layer
 
-Informacje o Azure Security Center adaptacyjnej ograniczania przepustowości sieci:
+Poznaj program platformy Azure Security Center Adaptacyjne wzmocnienie sieci:
 
 https://docs.microsoft.com/azure/security-center/security-center-adaptive-network-hardening
 
-Informacje o tym, Azure Security Center Access Control sieci w czasie:
+Poznaj kontrolę dostępu do sieci w usłudze Azure Security Center:
 
 https://docs.microsoft.com/azure/security-center/security-center-just-in-time
 
-## <a name="15-record-network-packets-and-flow-logs"></a>1,5: rejestrowanie pakietów sieciowych i dzienników przepływów
+## <a name="15-record-network-packets-and-flow-logs"></a>1.5: Rejestrowanie pakietów sieciowych i dzienników przepływu
 
-| Identyfikator platformy Azure | Identyfikatory WNP | Odpowiedzialność za |
+| Identyfikator platformy Azure | Identyfikatory SIC | Odpowiedzialność |
 |--|--|--|
-| 1.5 | 12,5, 15,8 | Klient |
+| 1.5 | 12.5, 15.8 | Klient |
 
-Zarejestruj dzienniki przepływu sieciowej grupy zabezpieczeń na koncie magazynu w celu wygenerowania rekordów przepływu. Jeśli jest to wymagane do badania nietypowego działania, Włącz funkcję przechwytywania pakietów Network Watcher.
+Rejestrowanie przepływu nsg loguje się do konta magazynu w celu wygenerowania rekordów przepływu. Jeśli jest to wymagane do badania nietypowej aktywności, włącz przechwytywanie pakietów Obserwatora sieci.
 
-Jak włączyć dzienniki przepływu sieciowej grupy zabezpieczeń:
+Jak włączyć dzienniki przepływu nsg:
 
 https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal
 
-Jak włączyć Network Watcher:
+Jak włączyć funkcję Obserwatora sieciowego:
 
 https://docs.microsoft.com/azure/network-watcher/network-watcher-create
 
-## <a name="16-deploy-network-based-intrusion-detectionintrusion-prevention-systems-idsips"></a>1,6: Wdróż systemy zapobiegania wykrywaniu dostępu do sieci/dostępu intruzów (identyfikatory/adresy IP)
+## <a name="16-deploy-network-based-intrusion-detectionintrusion-prevention-systems-idsips"></a>1.6: Wdrażanie opartych na sieci systemów wykrywania włamań/włamań (IDS/IPS)
 
-| Identyfikator platformy Azure | Identyfikatory WNP | Odpowiedzialność za |
+| Identyfikator platformy Azure | Identyfikatory SIC | Odpowiedzialność |
 |--|--|--|
-| 1.6 | 12,6, 12,7 | Klient |
+| 1.6 | 12.6, 12.7 | Klient |
 
-Wdróż zaporę platformy Azure w każdej z granic sieci organizacji z włączoną analizą zagrożeń i skonfigurowaną do &quot;alertu i Odmów&quot; w przypadku złośliwego ruchu sieciowego.
+Wdrażanie zapory platformy Azure w każdej z granic sieci organizacji &quot;z włączoną analizą zagrożeń i skonfigurowane jako Alert i odmowa&quot; dla złośliwego ruchu sieciowego.
 
-Jak wdrożyć zaporę platformy Azure: https://docs.microsoft.com/azure/firewall/tutorial-firewall-deploy-portal
+Jak wdrożyć Zaporę platformy Azure:https://docs.microsoft.com/azure/firewall/tutorial-firewall-deploy-portal
 
-Jak skonfigurować alerty za pomocą zapory platformy Azure: https://docs.microsoft.com/azure/firewall/threat-intel
+Jak skonfigurować alerty za pomocą Zapory platformy Azure:https://docs.microsoft.com/azure/firewall/threat-intel
 
-## <a name="17-manage-traffic-to-web-applications"></a>1,7: zarządzanie ruchem do aplikacji sieci Web
+## <a name="17-manage-traffic-to-web-applications"></a>1.7: Zarządzanie ruchem do aplikacji internetowych
 
-| Identyfikator platformy Azure | Identyfikatory WNP | Odpowiedzialność za |
+| Identyfikator platformy Azure | Identyfikatory SIC | Odpowiedzialność |
 |--|--|--|
-| 1.7 | 12,9, 12,10 | Klient |
+| 1.7 | 12.9, 12.10 | Klient |
 
-Wdróż Application Gateway platformy Azure dla aplikacji sieci Web z włączonym protokołem HTTPS/SSL dla zaufanych certyfikatów.
+Wdrażanie bramy aplikacji platformy Azure dla aplikacji sieci web z włączoną protokołem HTTPS/SSL dla zaufanych certyfikatów.
 
-Jak wdrożyć Application Gateway:
+Jak wdrożyć bramę aplikacji:
 
 https://docs.microsoft.com/azure/application-gateway/quick-create-portal
 
-Jak skonfigurować Application Gateway do korzystania z protokołu HTTPS:
+Jak skonfigurować bramę aplikacji do używania protokołu HTTPS:
 
 https://docs.microsoft.com/azure/application-gateway/create-ssl-portal
 
-Informacje na temat równoważenia obciążenia warstwy 7 za pomocą bram aplikacji sieci Web platformy Azure:
+Poznaj równoważenie obciążenia warstwy 7 za pomocą bram aplikacji sieci Web platformy Azure:
 
 https://docs.microsoft.com/azure/application-gateway/overview
 
-## <a name="18-minimize-complexity-and-administrative-overhead-of-network-security-rules"></a>1,8: Minimalizacja złożoności i kosztów administracyjnych reguł zabezpieczeń sieci
+## <a name="18-minimize-complexity-and-administrative-overhead-of-network-security-rules"></a>1.8: Minimalizowanie złożoności i administracyjnych narzutów administracyjnych dotyczących zasad bezpieczeństwa sieci
 
-| Identyfikator platformy Azure | Identyfikatory WNP | Odpowiedzialność za |
+| Identyfikator platformy Azure | Identyfikatory SIC | Odpowiedzialność |
 |--|--|--|
 | 1.8 | 1.5 | Klient |
 
-Użyj tagów usługi Virtual Network, aby zdefiniować kontrolę dostępu do sieci dla sieciowych grup zabezpieczeń lub zapory platformy Azure. Podczas tworzenia reguł zabezpieczeń można użyć tagów usługi zamiast konkretnych adresów IP. Określając nazwę tagu usługi (np. ApiManagement) w odpowiednim polu źródłowym lub docelowym reguły, można zezwolić na ruch dla odpowiedniej usługi lub go odrzucić. Firma Microsoft zarządza prefiksami adresów, które obejmują tag usługi, i automatycznie aktualizuje tag usługi jako adresy.
+Znaczniki usługi sieci wirtualnej służy do definiowania kontroli dostępu do sieci w sieciowych grupach zabezpieczeń lub Zaporze platformy Azure. Podczas tworzenia reguł zabezpieczeń można użyć tagów usługi zamiast konkretnych adresów IP. Określając nazwę tagu usługi (np. ApiManagement) w odpowiednim polu źródłowym lub docelowym reguły, można zezwolić lub odmówić ruchu dla odpowiedniej usługi. Firma Microsoft zarządza prefiksami adresów objętymi tagiem usługi i automatycznie aktualizuje tag usługi w miarę zmiany adresów.
 
-Zrozumienie i używanie tagów usługi:
+Zrozumienie i używanie tagów serwisowych:
 
 https://docs.microsoft.com/azure/virtual-network/service-tags-overview
 
-## <a name="19-maintain-standard-security-configurations-for-network-devices"></a>1,9: Obsługa standardowych konfiguracji zabezpieczeń dla urządzeń sieciowych
+## <a name="19-maintain-standard-security-configurations-for-network-devices"></a>1.9: Obsługa standardowych konfiguracji zabezpieczeń dla urządzeń sieciowych
 
-| Identyfikator platformy Azure | Identyfikatory WNP | Odpowiedzialność za |
+| Identyfikator platformy Azure | Identyfikatory SIC | Odpowiedzialność |
 |--|--|--|
-| 1.9 | 11,1 | Klient |
+| 1.9 | 11.1 | Klient |
 
-Zdefiniuj i Implementuj standardowe konfiguracje zabezpieczeń dla zasobów sieciowych za pomocą Azure Policy.
+Definiowanie i implementowanie standardowych konfiguracji zabezpieczeń dla zasobów sieciowych za pomocą usługi Azure Policy.
 
-Możesz również użyć planów platformy Azure, aby uprościć duże wdrożenia platformy Azure przez spakowanie kluczowych artefaktów środowiska, takich jak szablony Azure Resource Manager, kontrolki RBAC i zasady, w ramach jednej definicji planu. Możesz zastosować plan do nowych subskrypcji i dostosować kontrolę i zarządzanie przy użyciu wersji.
+Można również użyć planów platformy Azure, aby uprościć wdrożenia platformy Azure na dużą skalę przez artefakty kluczowe środowisko pakowania, takie jak szablony usługi Azure Resource Manager, formanty RBAC i zasady, w jednej definicji planu. Można zastosować plan do nowych subskrypcji i dostosować kontroli i zarządzania poprzez przechowywanie wersji.
 
-Jak skonfigurować Azure Policy i zarządzać nimi:
+Jak skonfigurować zasady platformy Azure i zarządzać nimi:
 
 https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
-Przykłady Azure Policy dla sieci:
+Przykłady zasad platformy Azure dla sieci:
 
 https://docs.microsoft.com/azure/governance/policy/samples/built-in-policies#network
 
-Jak utworzyć Azure Blueprint:
+Jak utworzyć plan platformy Azure:
 
 https://docs.microsoft.com/azure/governance/blueprints/create-blueprint-portal
 
-## <a name="110-document-traffic-configuration-rules"></a>1,10: udokumentowanie reguł konfiguracji ruchu
+## <a name="110-document-traffic-configuration-rules"></a>1.10: Przepisy konfiguracji ruchu dokumentów
 
-| Identyfikator platformy Azure | Identyfikatory WNP | Odpowiedzialność za |
+| Identyfikator platformy Azure | Identyfikatory SIC | Odpowiedzialność |
 |--|--|--|
 | 1.1 | 11.2 | Klient |
 
-Używaj tagów dla sieciowych grup zabezpieczeń i innych zasobów związanych z zabezpieczeniami sieci i przepływem ruchu. W przypadku poszczególnych reguł sieciowej grupy zabezpieczeń Użyj pola &quot;opis&quot;, aby określić potrzeby biznesowe i/lub czas trwania (itp.) dla reguł zezwalających na ruch do/z sieci.
+Użyj tagów dla sieciowych grup zabezpieczeń i innych zasobów związanych z bezpieczeństwem sieci i przepływem ruchu. W przypadku poszczególnych reguł &quot;sieciowej grupy danych sieciowych należy użyć pola Opis,&quot; aby określić potrzeby biznesowe i/lub czas trwania (itp.) dla reguł umożliwiających ruch do/z sieci.
 
-Tworzenie i używanie tagów:
+Jak tworzyć i używać tagów:
 
 https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
 
-Jak utworzyć Virtual Network:
+Jak utworzyć sieć wirtualną:
 
 https://docs.microsoft.com/azure/virtual-network/quick-create-portal
 
-Jak utworzyć sieciowej grupy zabezpieczeń z konfiguracją zabezpieczeń:
+Jak utworzyć nsg z configiem zabezpieczeń:
 
 https://docs.microsoft.com/azure/virtual-network/tutorial-filter-network-traffic
 
-## <a name="111-use-automated-tools-to-monitor-network-resource-configurations-and-detect-changes"></a>1,11: Użyj zautomatyzowanych narzędzi do monitorowania konfiguracji zasobów sieciowych i wykrywania zmian
+## <a name="111-use-automated-tools-to-monitor-network-resource-configurations-and-detect-changes"></a>1.11: Użyj zautomatyzowanych narzędzi do monitorowania konfiguracji zasobów sieciowych i wykrywania zmian
 
-| Identyfikator platformy Azure | Identyfikatory WNP | Odpowiedzialność za |
+| Identyfikator platformy Azure | Identyfikatory SIC | Odpowiedzialność |
 |--|--|--|
-| 1,11 | 11,3 | Klient |
+| 1.11 | 11.3 | Klient |
 
-Użyj Azure Policy, aby sprawdzić poprawność konfiguracji (i/lub skorygować) dla zasobów sieciowych.
+Użyj usługi Azure Policy, aby sprawdzić poprawność (i/lub skorygować) konfigurację zasobów sieciowych.
 
-Jak skonfigurować Azure Policy i zarządzać nimi:
+Jak skonfigurować zasady platformy Azure i zarządzać nimi:
 
 https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
-Przykłady Azure Policy dla sieci:
+Przykłady zasad platformy Azure dla sieci:
 
 https://docs.microsoft.com/azure/governance/policy/samples/built-in-policies#network
 

@@ -1,16 +1,16 @@
 ---
-title: Wprowadzenie do aplikacji platformy Xamarin. Android
-description: Postępuj zgodnie z tym samouczkiem, aby rozpocząć korzystanie z usługi Azure Mobile Apps na potrzeby projektowania aplikacji dla systemu Android
+title: Wprowadzenie do aplikacji Xamarin.Android
+description: Wykonaj ten samouczek, aby rozpocząć korzystanie z usługi Azure Mobile Apps dla tworzenia systemu Android platformy Xamarin.
 ms.assetid: 81649dd3-544f-40ff-b9b7-60c66d683e60
 ms.tgt_pltfrm: mobile-xamarin-android
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 06/25/2019
 ms.openlocfilehash: b42205436c88f9075423bfcaf9e5a9fd931ee4f4
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77461372"
 ---
 # <a name="create-a-xamarinandroid-app"></a>Tworzenie aplikacji platformy Xamarin.Android
@@ -28,7 +28,7 @@ Wykonanie czynności opisanych w tym samouczku jest wymaganiem wstępnym dla wsz
 ## <a name="prerequisites"></a>Wymagania wstępne
 Do wykonania kroków tego samouczka niezbędne jest spełnienie następujących wymagań wstępnych:
 
-* Aktywne konto platformy Azure. Jeśli nie masz konta, skorzystaj z bezpłatnej wersji próbnej platformy Azure i uzyskaj maksymalnie 10 bezpłatnych aplikacji mobilnych. Aby uzyskać szczegółowe informacje, zobacz temat [Bezpłatna wersja próbna systemu Azure](https://azure.microsoft.com/pricing/free-trial/).
+* Aktywne konto platformy Azure. Jeśli nie masz konta, skorzystaj z bezpłatnej wersji próbnej platformy Azure i uzyskaj maksymalnie 10 bezpłatnych aplikacji mobilnych. Aby uzyskać szczegółowe informacje, zobacz [Bezpłatna wersja próbna platformy Azure](https://azure.microsoft.com/pricing/free-trial/).
 * Visual Studio z programem Xamarin. Instrukcje można znaleźć w temacie [Setup and install for Visual Studio and Xamarin](/visualstudio/cross-platform/setup-and-install) (Konfigurowanie i instalowanie dla programów Visual Studio i Xamarin).
 
 ## <a name="create-an-azure-mobile-app-backend"></a>Tworzenie zaplecza Aplikacji mobilnej Azure
@@ -38,21 +38,21 @@ Wykonaj te kroki, aby utworzyć zaplecze aplikacji mobilnej.
 
 W ten sposób zainicjowano obsługę zaplecza Aplikacji mobilnej Azure, które może być używane przez aplikacje mobilne klientów. Następnie należy pobrać projekt serwera dla prostego zaplecza typu „lista czynności do wykonania” i opublikować go na platformie Azure.
 
-## <a name="create-a-database-connection-and-configure-the-client-and-server-project"></a>Tworzenie połączenia z bazą danych i Konfigurowanie projektu klienta i serwera
+## <a name="create-a-database-connection-and-configure-the-client-and-server-project"></a>Tworzenie połączenia z bazą danych i konfigurowanie projektu klienta i serwera
 [!INCLUDE [app-service-mobile-configure-new-backend.md](../../includes/app-service-mobile-configure-new-backend.md)]
 
-## <a name="run-the-xamarinandroid-app"></a>Uruchamianie aplikacji platformy Xamarin. Android
-1. Otwórz projekt Xamarin. Android.
+## <a name="run-the-xamarinandroid-app"></a>Uruchamianie aplikacji Xamarin.Android
+1. Otwórz projekt Xamarin.Android.
 
-2. Przejdź do [Azure Portal](https://portal.azure.com/) i przejdź do utworzonej aplikacji mobilnej. W bloku `Overview` Wyszukaj adres URL, który jest publicznym punktem końcowym aplikacji mobilnej. Przykład — nazwa sitename dla mojej aplikacji "test123" zostanie https://test123.azurewebsites.net.
+2. Przejdź do [witryny Azure portal](https://portal.azure.com/) i przejdź do utworzonej aplikacji mobilnej. Na `Overview` bloku poszukaj adresu URL, który jest publicznym punktem końcowym aplikacji mobilnej. Przykład - nazwa witryny dla mojej nazwy aplikacji "test123" będzie https://test123.azurewebsites.net.
 
-3. Otwórz plik `ToDoActivity.cs` w tym folderze — Xamarin. Android/ZUMOAPPNAME/do zrobienia. cs. Nazwa aplikacji jest `ZUMOAPPNAME`.
+3. Otwórz plik `ToDoActivity.cs` w tym folderze - xamarin.android/ZUMOAPPNAME/ToDoActivity.cs. Nazwa aplikacji `ZUMOAPPNAME`to .
 
-4. W klasie `ToDoActivity` Zastąp zmienną `ZUMOAPPURL` z publicznym punktem końcowym powyżej.
+4. W `ToDoActivity` klasie `ZUMOAPPURL` zamień zmienną na publiczny punkt końcowy powyżej.
 
     `const string applicationURL = @"ZUMOAPPURL";`
 
-    stanowi
+    Staje się
     
     `const string applicationURL = @"https://test123.azurewebsites.net";`
     
@@ -62,7 +62,7 @@ W ten sposób zainicjowano obsługę zaplecza Aplikacji mobilnej Azure, które m
 
     ![][10]
 
-    Dane z żądania zostaną wstawione do tabeli TodoItem. Elementy przechowywane w tabeli są zwracane przez zaplecze aplikacji mobilnej, a dane są wyświetlane na liście.
+    Dane z żądania zostaną wstawione do tabeli czynności do wykonania. Elementy przechowywane w tabeli są zwracane przez zaplecze aplikacji mobilnej, a dane są wyświetlane na liście.
 
    > [!NOTE]
    > Możesz przejrzeć kod uzyskujący dostęp do zaplecza aplikacji mobilnej w celu wyszukiwania i wstawiania danych. Znajduje się on w pliku C# ToDoActivity.cs.

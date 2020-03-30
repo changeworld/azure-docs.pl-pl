@@ -1,6 +1,6 @@
 ---
 title: Wprowadzenie do interfejsu API Cassandra usługi Azure Cosmos DB
-description: Dowiedz się, jak można użyć Azure Cosmos DB do istniejących aplikacji "Unieś-and-Shift" i utworzyć nowe aplikacje za pomocą sterowników Cassandra i CQL
+description: Dowiedz się, jak za pomocą usługi Azure Cosmos DB do "lift-and-shift" istniejących aplikacji i tworzenia nowych aplikacji przy użyciu sterowników Cassandra i CQL
 author: kanshiG
 ms.author: govindk
 ms.reviewer: sngun
@@ -9,15 +9,15 @@ ms.subservice: cosmosdb-cassandra
 ms.topic: overview
 ms.date: 05/21/2019
 ms.openlocfilehash: 075b55b5a798924b55ef9d901e4d2e9ecfc9dc1e
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77597579"
 ---
 # <a name="introduction-to-the-azure-cosmos-db-cassandra-api"></a>Wprowadzenie do interfejsu API Cassandra usługi Azure Cosmos DB
 
-Interfejs API Cassandra usługi Azure Cosmos DB może być używany jako magazyn danych dla aplikacji napisanych dla na potrzeby usługi [Apache Cassandra](https://cassandra.apache.org). Oznacza to, że używając istniejących [sterowników Apache](https://cassandra.apache.org/doc/latest/getting_started/drivers.html?highlight=driver) zgodnych z językiem CQL w wersji 4, aplikacja napisana dla platformy Cassandra może teraz komunikować się z interfejsem API Cassandra usługi Azure Cosmos DB. W wielu przypadkach można przełączać się za pomocą platformy Apache Cassandra w celu użycia interfejs API Cassandra Azure Cosmos DB, zmieniając tylko parametry połączenia. 
+Interfejs API Cassandra usługi Azure Cosmos DB może być używany jako magazyn danych dla aplikacji napisanych dla na potrzeby usługi [Apache Cassandra](https://cassandra.apache.org). Oznacza to, że używając istniejących [sterowników Apache](https://cassandra.apache.org/doc/latest/getting_started/drivers.html?highlight=driver) zgodnych z językiem CQL w wersji 4, aplikacja napisana dla platformy Cassandra może teraz komunikować się z interfejsem API Cassandra usługi Azure Cosmos DB. W wielu przypadkach można przełączyć się z przy użyciu Apache Cassandra do korzystania z interfejsu API Cassandra usługi Azure Cosmos DB, po prostu zmieniając ciąg połączenia. 
 
 Interfejs API Cassandra pozwala na interakcję z danymi przechowywanymi w usłudze Azure Cosmos DB za pomocą języka Cassandra Query Language (CQL), narzędzi opartych na platformie Cassandra (takich jak cqlsh) i sterowników klienta platformy Cassandra, które już znasz.
 
@@ -44,7 +44,7 @@ Interfejs API Cassandra pozwala na interakcję z danymi przechowywanymi w usłud
   - [Aplikacja platformy .NET](create-cassandra-dotnet.md)
   - [Aplikacja w języku Python](create-cassandra-python.md)
 
-* Rozpocznij od [utworzenia konta, bazy danych i tabeli interfejsu API Cassandra](create-cassandra-api-account-java.md) przy użyciu aplikacji w języku Java.
+* Wprowadzenie do [tworzenia konta interfejsu API Cassandra, bazy danych i tabeli](create-cassandra-api-account-java.md) przy użyciu aplikacji Java.
 
 * [Ładowanie przykładowych danych do tabeli interfejsu API Cassandra](cassandra-api-load-data.md) przy użyciu aplikacji w języku Java.
 

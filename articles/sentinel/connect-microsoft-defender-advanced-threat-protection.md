@@ -1,6 +1,6 @@
 ---
-title: Łączenie danych usługi Microsoft Defender ATP z platformą Azure — wskaźnikiem Microsoft Docs
-description: Dowiedz się, jak połączyć dane z zaawansowanej ochrony przed zagrożeniami w usłudze Microsoft Defender do platformy Azure.
+title: Łączenie danych usługi Microsoft Defender ATP z usługą Azure Sentinel| Dokumenty firmy Microsoft
+description: Dowiedz się, jak połączyć dane zaawansowanej ochrony przed zagrożeniami usługi Microsoft Defender z usługą Azure Sentinel.
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -15,42 +15,42 @@ ms.workload: na
 ms.date: 10/13/2019
 ms.author: yelevin
 ms.openlocfilehash: ee2c917d02a442ebabc0e1b40bc245982af794f8
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77588216"
 ---
-# <a name="connect-alerts-from-microsoft-defender-advanced-threat-protection"></a>Łączenie alertów z poziomu zaawansowanej ochrony przed zagrożeniami w usłudze Microsoft Defender 
+# <a name="connect-alerts-from-microsoft-defender-advanced-threat-protection"></a>Połącz alerty z zaawansowanej ochrony przed zagrożeniami usługi Microsoft Defender 
 
 
 > [!IMPORTANT]
-> Pozyskiwanie dzienników zaawansowanej ochrony przed zagrożeniami w usłudze Microsoft Defender jest obecnie dostępne w publicznej wersji zapoznawczej.
-> Ta funkcja jest dostępna bez umowy dotyczącej poziomu usług i nie jest zalecana w przypadku obciążeń produkcyjnych.
+> Połknienie dzienników zaawansowanej ochrony przed zagrożeniami usługi Microsoft Defender jest obecnie dostępne w publicznej wersji zapoznawczej.
+> Ta funkcja jest dostępna bez umowy dotyczącej poziomu usług i nie jest zalecana dla obciążeń produkcyjnych.
 > Aby uzyskać więcej informacji, zobacz [Uzupełniające warunki korzystania z wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
  
 
-Alerty z usługi [Microsoft Defender Advanced Threat Protection](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/microsoft-defender-advanced-threat-protection) można przesyłać za pomocą jednego kliknięcia. To połączenie umożliwia przesyłanie strumieniowe alertów z usługi Microsoft Defender Advanced Threat Protection na platformę Azure. 
+Alerty z [zaawansowanej ochrony przed zagrożeniami](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/microsoft-defender-advanced-threat-protection) usługi Microsoft Defender można przesyłać strumieniowo za pomocą jednego kliknięcia. To połączenie umożliwia przesyłanie strumieniowe alertów z zaawansowanej ochrony przed zagrożeniami usługi Microsoft Defender do usługi Azure Sentinel. 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Ważna licencja na usługę Microsoft Defender Advanced Threat Protection, która została włączona zgodnie z opisem w temacie [Sprawdzanie aprowizacji licencjonowania i kompletna konfiguracja usługi Microsoft Defender Advanced Threat Protection](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/licensing). 
-- Musisz być administratorem lub administratorem zabezpieczeń w dzierżawie wskaźnikowej platformy Azure.
+- Prawidłowa licencja dla zaawansowanej ochrony przed zagrożeniami usługi Microsoft Defender, która jest włączona zgodnie z opisem w [poprawność obsługi administracyjnej licencjonowania i pełna konfiguracja zaawansowanej ochrony przed zagrożeniami usługi Microsoft Defender](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/licensing). 
+- Musisz być administratorem lub administratorem zabezpieczeń w dzierżawie usługi Azure Sentinel.
 
 
-## <a name="connect-to-microsoft-defender-advanced-threat-protection"></a>Łączenie z usługą Microsoft Defender Advanced Threat Protection
+## <a name="connect-to-microsoft-defender-advanced-threat-protection"></a>Połącz się z zaawansowaną ochroną przed zagrożeniami w usłudze Microsoft Defender
 
-Jeśli Zaawansowana ochrona przed zagrożeniami w usłudze Microsoft Defender zostanie wdrożona i pozyskuje dane, alerty mogą być łatwo przesyłane strumieniowo do platformy Azure.
+Jeśli usługa Microsoft Defender Advanced Threat Protection zostanie wdrożona i pochłonie twoje dane, alerty można łatwo przesyłać strumieniowo do usługi Azure Sentinel.
 
 
-1. W obszarze wskaźnik platformy Azure wybierz pozycję **Łączniki danych**, kliknij kafelek **Microsoft Defender Advanced Threat Protection** , a następnie wybierz **stronę Otwórz łącznik**.
-1. Kliknij przycisk **Connect** (Połącz). 
-1. Aby użyć odpowiedniego schematu w Log Analytics dla alertów usługi Defender ATP, wyszukaj ciąg **SecurityAlert** , a **Nazwa dostawcy** to **MDATP**.
+1. W usłudze Azure Sentinel wybierz **pozycję Łączniki danych**, kliknij kafelek **Zaawansowane zabezpieczenia przed zagrożeniami usługi Microsoft Defender** i wybierz pozycję Otwórz stronę **łącznika**.
+1. Kliknij pozycję **Połącz**. 
+1. Aby użyć odpowiedniego schematu w usłudze Log Analytics dla alertów usługi Defender ATP, wyszukaj **securityalert,** a **nazwą dostawcy** jest **MDATP**.
 
 
 
 
 ## <a name="next-steps"></a>Następne kroki
-W tym dokumencie przedstawiono sposób nawiązywania połączenia z usługą Microsoft Defender ATP do usługi Azure wskaźnikowej. Aby dowiedzieć się więcej na temat platformy Azure, zobacz następujące artykuły:
-- Dowiedz się [, jak uzyskać wgląd w dane oraz potencjalne zagrożenia](quickstart-get-visibility.md).
-- Rozpocznij [wykrywanie zagrożeń za pomocą platformy Azure — wskaźnik](tutorial-detect-threats.md).
+W tym dokumencie opisano, jak połączyć usługę Microsoft Defender ATP z usługą Azure Sentinel. Aby dowiedzieć się więcej o usłudze Azure Sentinel, zobacz następujące artykuły:
+- Dowiedz się, jak [uzyskać wgląd w dane i potencjalne zagrożenia.](quickstart-get-visibility.md)
+- Rozpocznij [wykrywanie zagrożeń za pomocą usługi Azure Sentinel](tutorial-detect-threats.md).

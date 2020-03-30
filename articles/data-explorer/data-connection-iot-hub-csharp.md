@@ -1,6 +1,6 @@
 ---
-title: Tworzenie IoT Hub połączenia danych dla usługi Azure Eksplorator danych za pomocąC#
-description: W tym artykule dowiesz się, jak utworzyć IoT Hub połączenie danych dla Eksplorator danych platformy Azure przy użyciu C#programu.
+title: 'Tworzenie połączenia danych usługi IoT Hub dla Eksploratora danych platformy Azure przy użyciu języka C #'
+description: W tym artykule dowiesz się, jak utworzyć połączenie danych usługi IoT Hub dla Usługi Azure Data Explorer przy użyciu języka C#.
 author: lucygoldbergmicrosoft
 ms.author: lugoldbe
 ms.reviewer: orspodek
@@ -8,38 +8,38 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 10/07/2019
 ms.openlocfilehash: 0cac03e50bf46910f8430b745803107b60905769
-ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/02/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74667383"
 ---
-# <a name="create-an-iot-hub-data-connection-for-azure-data-explorer-by-using-c-preview"></a>Tworzenie IoT Hub połączenia danych dla usługi Azure Eksplorator danych przy użyciu C# programu (wersja zapoznawcza)
+# <a name="create-an-iot-hub-data-connection-for-azure-data-explorer-by-using-c-preview"></a>Tworzenie połączenia danych usługi IoT Hub dla Eksploratora danych platformy Azure przy użyciu języka C# (Wersja zapoznawcza)
 
 > [!div class="op_single_selector"]
 > * [Portal](ingest-data-iot-hub.md)
-> * [C#](data-connection-iot-hub-csharp.md)
+> * [C #](data-connection-iot-hub-csharp.md)
 > * [Python](data-connection-iot-hub-python.md)
 > * [Szablon usługi Azure Resource Manager](data-connection-iot-hub-resource-manager.md)
 
-Azure Data Explorer to szybka i wysoce skalowalna usługa eksploracji danych na potrzeby danych dziennika i telemetrycznych. Usługa Azure Eksplorator danych oferuje pozyskiwanie (ładowanie danych) z Event Hubs, centrów IoT i obiektów blob, które są zapisywane do kontenerów obiektów BLOB. W tym artykule opisano tworzenie IoT Hub połączenia danych dla usługi Azure Eksplorator danych przy użyciu programu C#.
+Azure Data Explorer to szybka i wysoce skalowalna usługa eksploracji danych na potrzeby danych dziennika i telemetrycznych. Usługa Azure Data Explorer oferuje pozyskiwania (ładowanie danych) z centrów zdarzeń, usługi IoT Hubs i obiektów blob zapisanych w kontenerach obiektów blob. W tym artykule utworzysz połączenie danych usługi IoT Hub dla Eksploratora danych platformy Azure przy użyciu języka C#.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Jeśli nie masz zainstalowanego programu Visual Studio 2019, możesz pobrać i korzystać **bezpłatnie** z programu [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/). Podczas instalacji programu Visual Studio upewnij się, że jest włączona opcja **Programowanie na platformie Azure**.
-* Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto platformy Azure](https://azure.microsoft.com/free/).
+* Jeśli nie masz zainstalowanego programu Visual Studio 2019, możesz pobrać **bezpłatną** [wersję programu Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/)i korzystać z niej. Podczas instalacji programu Visual Studio upewnij się, że jest włączona opcja **Programowanie na platformie Azure**.
+* Jeśli nie masz subskrypcji platformy Azure, utwórz [bezpłatne konto platformy Azure](https://azure.microsoft.com/free/) przed rozpoczęciem.
 * Tworzenie [klastra i bazy danych](create-cluster-database-csharp.md)
-* Tworzenie [mapowania tabeli i kolumny](net-standard-ingest-data.md#create-a-table-on-your-test-cluster)
-* Ustawianie [zasad bazy danych i tabeli](database-table-policies-csharp.md) (opcjonalnie)
-* Utwórz [IoT Hub ze skonfigurowanymi zasadami dostępu współdzielonego](ingest-data-iot-hub.md#create-an-iot-hub).
+* Tworzenie [mapowania tabel i kolumn](net-standard-ingest-data.md#create-a-table-on-your-test-cluster)
+* Ustawianie [zasad bazy danych i tabel](database-table-policies-csharp.md) (opcjonalnie)
+* Utwórz [Centrum IoT z skonfigurowaną zasadą dostępu współdzielonego](ingest-data-iot-hub.md#create-an-iot-hub).
 
 [!INCLUDE [data-explorer-data-connection-install-nuget-csharp](../../includes/data-explorer-data-connection-install-nuget-csharp.md)]
 
 [!INCLUDE [data-explorer-authentication](../../includes/data-explorer-authentication.md)]
 
-## <a name="add-an-iot-hub-data-connection"></a>Dodawanie połączenia danych IoT Hub 
+## <a name="add-an-iot-hub-data-connection"></a>Dodawanie połączenia danych usługi IoT Hub 
 
-W poniższym przykładzie pokazano, jak w programie programowo dodać połączenie danych IoT Hub. IoT Hub aby dowiedzieć się, jak dodać połączenie danych usługi IoT Hub przy użyciu Azure Portal, zobacz temat [łączenie tabeli Eksplorator danych Azure](ingest-data-iot-hub.md#connect-azure-data-explorer-table-to-iot-hub) .
+W poniższym przykładzie pokazano, jak programowo dodać połączenie danych usługi IoT Hub. Zobacz [łączenie tabeli Usługi Azure Data Explorer z usługą IoT Hub](ingest-data-iot-hub.md#connect-azure-data-explorer-table-to-iot-hub) w celu dodania połączenia danych usługi Iot Hub przy użyciu witryny Azure portal.
 
 ```csharp
 var tenantId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Directory (tenant) ID
@@ -78,20 +78,20 @@ await kustoManagementClient.DataConnections.CreateOrUpdate(resourceGroupName, cl
 
 |**Ustawienie** | **Sugerowana wartość** | **Opis pola**|
 |---|---|---|
-| tenantId | *XXXXXXXX-XXXXX-xxxx-xxxx-xxxxxxxxx* | Identyfikator dzierżawy. Znany również jako identyfikator katalogu.|
-| subscriptionId | *XXXXXXXX-XXXXX-xxxx-xxxx-xxxxxxxxx* | Identyfikator subskrypcji używany do tworzenia zasobów.|
-| clientId | *XXXXXXXX-XXXXX-xxxx-xxxx-xxxxxxxxx* | Identyfikator klienta aplikacji, który może uzyskiwać dostęp do zasobów w dzierżawie.|
-| clientSecret | *xxxxxxxxxxxxxx* | Wpis tajny klienta aplikacji, który może uzyskiwać dostęp do zasobów w dzierżawie. |
+| identyfikator dzierżawy | *xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx* | Identyfikator dzierżawy. Znany również jako identyfikator katalogu.|
+| subscriptionId | *xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx* | Identyfikator subskrypcji używany do tworzenia zasobów.|
+| clientId | *xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx* | Identyfikator klienta aplikacji, która może uzyskać dostęp do zasobów w dzierżawie.|
+| clientSecret | *xxxxxxxxxxxxxx* | Klucz tajny klienta aplikacji, która może uzyskać dostęp do zasobów w dzierżawie. |
 | resourceGroupName | *testrg* | Nazwa grupy zasobów zawierającej klaster.|
 | clusterName | *mykustocluster* | Nazwa klastra.|
-| Bazy | *mykustodatabase* | Nazwa docelowej bazy danych w klastrze.|
-| ConnectionName | *myeventhubconnect* | Wymagana nazwa połączenia danych.|
-| tableName | *StormEvents* | Nazwa tabeli docelowej w docelowej bazie danych.|
-| mappingRuleName | *StormEvents_CSV_Mapping* | Nazwa mapowania kolumny powiązanej z tabelą docelową.|
-| Format | *CSV* | Format danych wiadomości.|
-| iotHubResourceId | *Identyfikator zasobu* | Identyfikator zasobu Centrum IoT, który przechowuje dane do pozyskiwania. |
-| sharedAccessPolicyName | *iothubforread* | Nazwa zasad dostępu współdzielonego, które definiują uprawnienia dla urządzeń i usług w celu nawiązania połączenia z IoT Hub. |
-| odbiorca | *$Default* | Grupa konsumentów centrum zdarzeń.|
+| Databasename | *mykustodatabase* | Nazwa docelowej bazy danych w klastrze.|
+| dataConnectionName | *połączenie myeventhub* | Żądana nazwa połączenia danych.|
+| tableName | *StormEvents (Burza)* | Nazwa tabeli docelowej w docelowej bazie danych.|
+| nazwa mapowaniaRuleName | *StormEvents_CSV_Mapping* | Nazwa mapowania kolumn powiązana z tabelą docelową.|
+| Dataformat | *Csv* | Format danych wiadomości.|
+| identyfikator iotHubResourceId | *Identyfikator zasobu* | Identyfikator zasobu centrum IoT hub, który przechowuje dane do pozyskiwania. |
+| sharedAccessPolcyName | *iothubforread* | Nazwa zasady dostępu współdzielonego, która definiuje uprawnienia dla urządzeń i usług do łączenia się z Centrum IoT Hub. |
+| grupa konsumentów | *$Default* | Grupa odbiorców centrum zdarzeń.|
 | location | *Środkowe stany USA* | Lokalizacja zasobu połączenia danych.|
 
 [!INCLUDE [data-explorer-data-connection-clean-resources-csharp](../../includes/data-explorer-data-connection-clean-resources-csharp.md)]

@@ -1,43 +1,43 @@
 ---
-title: Pobieranie danych z pamięci podręcznej platformy Azure HPC — kopia ręczna
-description: Jak używać poleceń CP do przenoszenia danych do docelowego magazynu obiektów BLOB w pamięci podręcznej Azure HPC
+title: Pozyskiwania danych usługi Azure HPC Cache — kopiowanie ręczne
+description: Jak używać poleceń cp do przenoszenia danych do miejsca docelowego magazynu obiektów Blob w pamięci podręcznej HPC usługi Azure
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: rohogue
 ms.openlocfilehash: fc397088e46f0d2b623080f3deed24c386e7d8b4
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/19/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74168480"
 ---
-# <a name="azure-hpc-cache-data-ingest---manual-copy-method"></a>Pobieranie danych z pamięci podręcznej platformy Azure HPC — metoda kopiowania ręcznego
+# <a name="azure-hpc-cache-data-ingest---manual-copy-method"></a>Pozyskiwania danych usługi Azure HPC Cache — metoda ręcznego kopiowania
 
-Ten artykuł zawiera szczegółowe instrukcje dotyczące ręcznego kopiowania danych do kontenera magazynu obiektów BLOB do użycia z pamięcią podręczną platformy Azure HPC. Używa wielowątkowych operacji równoległych do optymalizowania szybkości kopiowania.
+Ten artykuł zawiera szczegółowe instrukcje dotyczące ręcznego kopiowania danych do kontenera magazynu obiektów Blob do użytku z pamięcią podręczną HPC usługi Azure. Używa wielowątkowy operacji równoległych w celu optymalizacji szybkości kopiowania.
 
-Aby dowiedzieć się więcej na temat przenoszenia danych do magazynu obiektów BLOB w pamięci podręcznej platformy Azure HPC, przeczytaj temat [przenoszenie danych do usługi Azure Blob Storage](hpc-cache-ingest.md).
+Aby dowiedzieć się więcej o przenoszeniu danych do magazynu obiektów Blob dla pamięci podręcznej HPC platformy Azure, przeczytaj artykuł [Przenoszenie danych do magazynu obiektów Blob platformy Azure.](hpc-cache-ingest.md)
 
-## <a name="simple-copy-example"></a>Przykład prostego kopiowania
+## <a name="simple-copy-example"></a>Przykład prostej kopii
 
-Można ręcznie utworzyć kopię wielowątkową na kliencie, uruchamiając więcej niż jedno polecenie kopiowania jednocześnie w tle względem wstępnie zdefiniowanych zestawów plików lub ścieżek.
+Kopię wielowątkową można utworzyć na kliencie, uruchamiając więcej niż jedno polecenie kopiowania jednocześnie w tle względem wstępnie zdefiniowanych zestawów plików lub ścieżek.
 
-Polecenie ``cp`` systemu Linux/UNIX zawiera argument ``-p``, aby zachować własność i mtime metadane. Dodanie tego argumentu do poniższych poleceń jest opcjonalne. (Dodanie argumentu zwiększa liczbę wywołań systemu plików wysyłanych z klienta do docelowego systemu plików na potrzeby modyfikacji metadanych).
+Polecenie Linux/UNIX ``cp`` zawiera ``-p`` argument, aby zachować własność i metadane mtime. Dodanie tego argumentu do poniższych poleceń jest opcjonalne. (Dodanie argumentu zwiększa liczbę wywołań systemu plików wysyłanych z klienta do docelowego systemu plików w celu modyfikacji metadanych).
 
-Ten prosty przykład kopiuje jednocześnie dwa pliki:
+W tym prostym przykładzie kopiuje dwa pliki równolegle:
 
 ```bash
 cp /mnt/source/file1 /mnt/destination1/ & cp /mnt/source/file2 /mnt/destination1/ &
 ```
 
-Po wydaniu tego polecenia `jobs` polecenie pokazuje, że dwa wątki są uruchomione.
+Po wydaniu `jobs` tego polecenia polecenie pokaże, że dwa wątki są uruchomione.
 
 ## <a name="copy-data-with-predictable-file-names"></a>Kopiowanie danych z przewidywalnymi nazwami plików
 
 Jeśli nazwy plików są przewidywalne, można użyć wyrażeń do tworzenia równoległych wątków kopiowania. 
 
-Na przykład, jeśli katalog zawiera 1000 plików, które są numerowane sekwencyjnie od `0001` do `1000`, można użyć następujących wyrażeń, aby utworzyć dziesięć równoległych wątków, które każdy z nich skopiuje (100):
+Na przykład, jeśli katalog zawiera 1000 plików, które są `0001` ponumerowane sekwencyjnie od do `1000`, można użyć następujących wyrażeń, aby utworzyć dziesięć równoległych wątków, które każdy kopiuje 100 plików:
 
 ```bash
 cp /mnt/source/file0* /mnt/destination1/ & \
@@ -52,11 +52,11 @@ cp /mnt/source/file8* /mnt/destination1/ & \
 cp /mnt/source/file9* /mnt/destination1/
 ```
 
-## <a name="copy-data-with-unstructured-file-names"></a>Kopiowanie danych z nazwami plików bez struktury
+## <a name="copy-data-with-unstructured-file-names"></a>Kopiowanie danych z nieustrukturyzowanymi nazwami plików
 
 Jeśli struktura nazewnictwa plików nie jest przewidywalna, można grupować pliki według nazw katalogów. 
 
-Ten przykład zbiera wszystkie katalogi do wysłania do ``cp`` polecenia uruchamiane jako zadania w tle:
+W tym przykładzie zbiera całe ``cp`` katalogi do wysłania do poleceń uruchamianych jako zadania w tle:
 
 ```bash
 /root
@@ -68,7 +68,7 @@ Ten przykład zbiera wszystkie katalogi do wysłania do ``cp`` polecenia urucham
 |-/dir1d
 ```
 
-Po zebraniu plików można uruchomić polecenia kopiowania równoległego w celu rekursywnego skopiowania podkatalogów i całej zawartości:
+Po zebraniu plików można uruchamiać polecenia kopiowania równoległego w celu cyklicznego kopiowania podkatalogów i całej ich zawartości:
 
 ```bash
 cp /mnt/source/* /mnt/destination/
@@ -79,11 +79,11 @@ cp -R /mnt/source/dir1/dir1c /mnt/destination/dir1/ & # this command copies dir1
 cp -R /mnt/source/dir1/dir1d /mnt/destination/dir1/ &
 ```
 
-## <a name="when-to-add-mount-points"></a>Kiedy należy dodać punkty instalacji
+## <a name="when-to-add-mount-points"></a>Kiedy dodać punkty instalacji
 
-Po dodaniu wystarczającej liczby równoległych wątków do jednego docelowego punktu instalacji systemu plików będzie dostępny punkt, w którym Dodawanie kolejnych wątków nie zapewnia większej przepływności. (Przepływność będzie mierzona w plikach/s lub bajtach na sekundę, w zależności od typu danych). Lub gorsze, nadmierne wątki może czasami spowodować spadek przepływności.  
+Po dość równoległych wątków będzie względem jednego punktu instalacji systemu plików docelowych, będzie punkt, w którym dodanie większej liczby wątków nie daje większą przepływność. (Przepływność będzie mierzona w plikach/sekundzie lub bajtach/sekundę, w zależności od typu danych). Lub co gorsza, nadmierne wątki może czasami spowodować degradacji przepływności.  
 
-W takim przypadku można dodać punkty instalacji po stronie klienta do innych adresów instalacji pamięci podręcznej platformy Azure HPC przy użyciu tej samej ścieżki instalacji systemu plików zdalnych:
+W takim przypadku można dodać punkty instalacji po stronie klienta do innych adresów instalacji usługi Azure HPC Cache przy użyciu tej samej ścieżki zdalnego instalowania systemu plików:
 
 ```bash
 10.1.0.100:/nfs on /mnt/sourcetype nfs (rw,vers=3,proto=tcp,addr=10.1.0.100)
@@ -92,9 +92,9 @@ W takim przypadku można dodać punkty instalacji po stronie klienta do innych a
 10.1.1.103:/nfs on /mnt/destination3type nfs (rw,vers=3,proto=tcp,addr=10.1.1.103)
 ```
 
-Dodanie punktów instalacji po stronie klienta umożliwia rozwidlenie dodatkowych poleceń kopiowania do dodatkowych punktów instalacji `/mnt/destination[1-3]`, co zapewnia dalsze równoległość.  
+Dodanie punktów instalacji po stronie klienta umożliwia wydłużenie dodatkowych poleceń kopiowania do dodatkowych `/mnt/destination[1-3]` punktów instalacji, co pozwala osiągnąć dalsze równoległości.  
 
-Na przykład, jeśli pliki są bardzo duże, możesz zdefiniować polecenia kopiowania, aby użyć odrębnych ścieżek docelowych, a następnie wysłać więcej poleceń równolegle od klienta wykonującego kopię.
+Na przykład jeśli pliki są bardzo duże, można zdefiniować polecenia kopiowania, aby użyć różnych ścieżek docelowych, wysyłając więcej poleceń równolegle od klienta wykonującego kopię.
 
 ```bash
 cp /mnt/source/file0* /mnt/destination1/ & \
@@ -108,11 +108,11 @@ cp /mnt/source/file7* /mnt/destination2/ & \
 cp /mnt/source/file8* /mnt/destination3/ & \
 ```
 
-W powyższym przykładzie wszystkie trzy docelowe punkty instalacji są wskazywane przez procesy kopiowania plików przez klienta.
+W powyższym przykładzie wszystkie trzy punkty instalacji docelowej są kierowane przez procesy kopiowania plików klienta.
 
-## <a name="when-to-add-clients"></a>Kiedy należy dodać klientów
+## <a name="when-to-add-clients"></a>Kiedy dodać klientów
 
-Na koniec po osiągnięciu możliwości klienta dodanie większej liczby wątków kopiowania lub dodatkowych punktów instalacji nie spowoduje wzrostu jakichkolwiek dodatkowych plików/s lub bajtów/s. W takiej sytuacji można wdrożyć innego klienta z tym samym zestawem punktów instalacji, na których będą uruchomione własne zestawy procesów kopiowania plików. 
+Wreszcie po osiągnięciu możliwości klienta, dodanie większej liczby wątków kopiowania lub dodatkowych punktów instalacji nie przyniesie żadnych dodatkowych plików/s lub bajtów/s zwiększa. W takiej sytuacji można wdrożyć innego klienta z tym samym zestawem punktów instalacji, który będzie uruchamiał własne zestawy procesów kopiowania plików. 
 
 Przykład:
 
@@ -136,9 +136,9 @@ Client4: cp -R /mnt/source/dir3/dir3d /mnt/destination/dir3/ &
 
 ## <a name="create-file-manifests"></a>Tworzenie manifestów plików
 
-Po zrozumieniu powyższych metod (wielu wątków kopiowania na miejsce docelowe, wielu miejsc docelowych na klienta, wielu klientów na system plików źródłowych dostępnych dla sieci) należy wziąć pod uwagę następujące zalecenie: Kompiluj manifesty plików, a następnie użyj ich razem z kopią polecenia na wielu klientach.
+Po zrozumieniu powyższych metod (wiele wątków kopiowania na miejsce docelowe, wiele miejsc docelowych na klienta, wielu klientów na system plików źródłowych dostępnych dla sieci), rozważ to zalecenie: Zbuduj manifesty plików, a następnie użyj ich z kopią polecenia na wielu klientach.
 
-W tym scenariuszu do tworzenia manifestów plików lub katalogów służy polecenie ``find`` UNIX:
+W tym scenariuszu ``find`` użyto polecenia UNIX do tworzenia manifestów plików lub katalogów:
 
 ```bash
 user@build:/mnt/source > find . -mindepth 4 -maxdepth 4 -type d
@@ -153,9 +153,9 @@ user@build:/mnt/source > find . -mindepth 4 -maxdepth 4 -type d
 ./atj5b55c53be6-02/support/trace/rolling
 ```
 
-Przekieruj ten wynik do pliku: `find . -mindepth 4 -maxdepth 4 -type d > /tmp/foo`
+Przekieruj ten wynik do pliku:`find . -mindepth 4 -maxdepth 4 -type d > /tmp/foo`
 
-Następnie można wykonać iterację w manifeście przy użyciu poleceń BASH do zliczania plików i określania rozmiarów podkatalogów:
+Następnie można iterować za pomocą manifestu, za pomocą poleceń BASH do zliczania plików i określania rozmiarów podkatalogów:
 
 ```bash
 ben@xlcycl1:/sps/internal/atj5b5ab44b7f > for i in $(cat /tmp/foo); do echo " `find ${i} |wc -l`    `du -sh ${i}`"; done
@@ -194,7 +194,7 @@ ben@xlcycl1:/sps/internal/atj5b5ab44b7f > for i in $(cat /tmp/foo); do echo " `f
 33     2.8G    ./atj5b5ab44b7f-03/support/trace/rolling
 ```
 
-Na koniec należy porównać do klientów rzeczywiste polecenia kopiowania plików.  
+Na koniec należy spreparować rzeczywiste polecenia kopiowania plików do klientów.  
 
 Jeśli masz czterech klientów, użyj tego polecenia:
 
@@ -202,26 +202,26 @@ Jeśli masz czterech klientów, użyj tego polecenia:
 for i in 1 2 3 4 ; do sed -n ${i}~4p /tmp/foo > /tmp/client${i}; done
 ```
 
-Jeśli masz pięć klientów, użyj podobnej do tego:
+Jeśli masz pięciu klientów, użyj czegoś takiego:
 
 ```bash
 for i in 1 2 3 4 5; do sed -n ${i}~5p /tmp/foo > /tmp/client${i}; done
 ```
 
-I przez sześć.... Ekstrapolacja w razie konieczności.
+I dla sześciu.... Ekstrapolować w razie potrzeby.
 
 ```bash
 for i in 1 2 3 4 5 6; do sed -n ${i}~6p /tmp/foo > /tmp/client${i}; done
 ```
 
-Otrzymasz *n* pliki wynikowe, po jednym dla każdego z *N* klientów, którzy mają nazwy ścieżek do katalogów o poziomie do czterech uzyskanych jako część danych wyjściowych polecenia `find`. 
+Otrzymasz *N* wynikowe pliki, po jednym dla każdego z klientów *N,* który ma nazwy ścieżki do `find` poziomu cztery katalogi uzyskane jako część danych wyjściowych z polecenia. 
 
-Użyj każdego pliku do skompilowania polecenia COPY:
+Użyj każdego pliku, aby utworzyć polecenie kopiowania:
 
 ```bash
 for i in 1 2 3 4 5 6; do for j in $(cat /tmp/client${i}); do echo "cp -p -R /mnt/source/${j} /mnt/destination/${j}" >> /tmp/client${i}_copy_commands ; done; done
 ```
 
-Powyższe dane będą zawierać *N* plików, z których każda zawiera polecenie copy w poszczególnych wierszach, które można uruchomić jako skrypt bash na kliencie. 
+Powyżej daje pliki *N,* każdy z polecenia kopiowania w wierszu, które mogą być uruchamiane jako skrypt BASH na kliencie. 
 
-Celem jest jednoczesne uruchamianie wielu wątków tych skryptów na kliencie równolegle na wielu klientach.
+Celem jest uruchomienie wielu wątków tych skryptów jednocześnie na klienta równolegle na wielu klientach.

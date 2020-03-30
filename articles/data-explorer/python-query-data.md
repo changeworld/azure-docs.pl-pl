@@ -1,6 +1,6 @@
 ---
 title: wykonywanie zapytań o dane przy użyciu biblioteki języka Python w usłudze Azure Data Explorer
-description: W tym artykule dowiesz się, jak wykonywać zapytania dotyczące danych z platformy Azure Eksplorator danych przy użyciu języka Python.
+description: W tym artykule dowiesz się, jak zbadać dane z usługi Azure Data Explorer przy użyciu języka Python.
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
@@ -8,23 +8,23 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 08/05/2019
 ms.openlocfilehash: ebd65f2dcbb0040b764290627bbfd2901aa9a7d3
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/18/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77443979"
 ---
 # <a name="query-data-using-the-azure-data-explorer-python-library"></a>wykonywanie zapytań o dane przy użyciu biblioteki języka Python w usłudze Azure Data Explorer
 
-W tym artykule opisano zapytania dotyczące danych przy użyciu usługi Azure Eksplorator danych. Azure Data Explorer to szybka i wysoce skalowalna usługa eksploracji danych na potrzeby danych dziennika i telemetrycznych.
+W tym artykule zapytania danych przy użyciu Eksploratora danych platformy Azure. Azure Data Explorer to szybka i wysoce skalowalna usługa eksploracji danych na potrzeby danych dziennika i telemetrycznych.
 
-Usługa Azure Data Explorer udostępnia [bibliotekę danych klienta dla języka Python](https://github.com/Azure/azure-kusto-python/tree/master/azure-kusto-data). Ta biblioteka umożliwia wykonywanie zapytań o dane z poziomu kodu. Połącz się z tabelą w *klastrze pomocy* , który został skonfigurowany do uczenia się. Można wysłać zapytanie do tabeli w tym klastrze i zwrócić wyniki.
+Usługa Azure Data Explorer udostępnia [bibliotekę danych klienta dla języka Python](https://github.com/Azure/azure-kusto-python/tree/master/azure-kusto-data). Ta biblioteka umożliwia wykonywanie zapytań o dane z poziomu kodu. Połącz się z tabelą w *klastrze pomocy,* który utworzyliśmy w celu ułatwienia nauki. Można zbadać tabelę w tym klastrze i zwrócić wyniki.
 
-Ten artykuł jest również dostępny jako [Notes platformy Azure](https://notebooks.azure.com/ManojRaheja/libraries/KustoPythonSamples/html/QueryKusto.ipynb).
+Ten artykuł jest również dostępny jako [notes platformy Azure](https://notebooks.azure.com/ManojRaheja/libraries/KustoPythonSamples/html/QueryKusto.ipynb).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* [Python 3.4 +](https://www.python.org/downloads/)
+* [Python 3.4+](https://www.python.org/downloads/)
 
 * Konto e-mail organizacji, która jest członkiem usługi Azure Active Directory (AAD)
 
@@ -77,7 +77,7 @@ KCSB.authority_id = AAD_TENANT_ID
 
 ## <a name="connect-to-azure-data-explorer-and-execute-a-query"></a>Nawiązywanie połączenia z usługą Azure Data Explorer i wykonywanie zapytania
 
-Wykonaj zapytanie do klastra i zapisz dane wyjściowe w ramce danych. Uruchomiony kod zwraca komunikat podobny do następującego: *To sign in, use a web browser to open the page https://microsoft.com/devicelogin and enter the code F3W4VWZDM to authenticate* (Aby się zalogować, użyj przeglądarki internetowej, aby otworzyć stronę https://microsoft.com/devicelogin, i wprowadź kod F3W4VWZDM w celu uwierzytelnienia). Postępuj zgodnie z instrukcjami, aby się zalogować, a następnie wróć, aby uruchomić kolejny blok kodu.
+Wykonaj zapytanie do klastra i zapisz dane wyjściowe w ramce danych. Po uruchomieniu tego kodu zwraca komunikat w następujący sposób: *Aby się zalogować, użyj przeglądarki https://microsoft.com/devicelogin internetowej, aby otworzyć stronę i wprowadzić kod F3W4VWZDM do uwierzytelnienia*. Postępuj zgodnie z instrukcjami, aby się zalogować, a następnie wróć, aby uruchomić kolejny blok kodu.
 
 ```python
 KUSTO_CLIENT = KustoClient(KCSB)
@@ -100,4 +100,4 @@ Powinno zostać wyświetlonych dziesięć najlepszych wyników z tabeli StormEve
 ## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Pozyskiwanie danych przy użyciu biblioteki języka Python Eksplorator danych platformy Azure](python-ingest-data.md)
+> [pozyskiwanie danych przy użyciu biblioteki języka Python w usłudze Azure Data Explorer](python-ingest-data.md)

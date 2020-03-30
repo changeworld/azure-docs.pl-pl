@@ -1,6 +1,6 @@
 ---
-title: Tworzenie IoT Hub połączenia danych dla Eksplorator danych platformy Azure przy użyciu szablonu Azure Resource Manager
-description: W tym artykule dowiesz się, jak utworzyć IoT Hub połączenie danych dla Eksplorator danych platformy Azure przy użyciu szablonu Azure Resource Manager.
+title: Tworzenie połączenia danych usługi IoT Hub dla Eksploratora danych platformy Azure przy użyciu szablonu usługi Azure Resource Manager
+description: W tym artykule dowiesz się, jak utworzyć połączenie danych usługi IoT Hub dla Eksploratora danych platformy Azure przy użyciu szablonu usługi Azure Resource Manager.
 author: lucygoldbergmicrosoft
 ms.author: lugoldbe
 ms.reviewer: orspodek
@@ -8,32 +8,32 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 11/28/2019
 ms.openlocfilehash: 42b9f34802b8e6344f9008bf26a8bcc9f554adfb
-ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/02/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74669222"
 ---
-# <a name="create-an-iot-hub-data-connection-for-azure-data-explorer-by-using-azure-resource-manager-template"></a>Tworzenie IoT Hub połączenia danych dla Eksplorator danych platformy Azure przy użyciu szablonu Azure Resource Manager
+# <a name="create-an-iot-hub-data-connection-for-azure-data-explorer-by-using-azure-resource-manager-template"></a>Tworzenie połączenia danych usługi IoT Hub dla Eksploratora danych platformy Azure przy użyciu szablonu usługi Azure Resource Manager
 
 > [!div class="op_single_selector"]
 > * [Portal](ingest-data-iot-hub.md)
-> * [C#](data-connection-iot-hub-csharp.md)
+> * [C #](data-connection-iot-hub-csharp.md)
 > * [Python](data-connection-iot-hub-python.md)
 > * [Szablon usługi Azure Resource Manager](data-connection-iot-hub-resource-manager.md)
 
-Azure Data Explorer to szybka i wysoce skalowalna usługa eksploracji danych na potrzeby danych dziennika i telemetrycznych. Usługa Azure Eksplorator danych oferuje pozyskiwanie (ładowanie danych) z Event Hubs, centrów IoT i obiektów blob, które są zapisywane do kontenerów obiektów BLOB. W tym artykule opisano tworzenie IoT Hub połączenia danych dla usługi Azure Eksplorator danych przy użyciu szablonu Azure Resource Manager.
+Azure Data Explorer to szybka i wysoce skalowalna usługa eksploracji danych na potrzeby danych dziennika i telemetrycznych. Usługa Azure Data Explorer oferuje pozyskiwania (ładowanie danych) z centrów zdarzeń, usługi IoT Hubs i obiektów blob zapisanych w kontenerach obiektów blob. W tym artykule utworzysz połączenie danych usługi IoT Hub dla Eksploratora danych platformy Azure przy użyciu szablonu Usługi Azure Resource Manager.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto platformy Azure](https://azure.microsoft.com/free/).
+* Jeśli nie masz subskrypcji platformy Azure, utwórz [bezpłatne konto platformy Azure](https://azure.microsoft.com/free/) przed rozpoczęciem.
 * Tworzenie [klastra i bazy danych](create-cluster-database-portal.md)
-* Tworzenie [mapowania tabeli i kolumny](ingest-data-iot-hub.md#create-a-target-table-in-azure-data-explorer)
-* Utwórz [IoT Hub ze skonfigurowanymi zasadami dostępu współdzielonego](ingest-data-iot-hub.md#create-an-iot-hub).
+* Tworzenie [mapowania tabel i kolumn](ingest-data-iot-hub.md#create-a-target-table-in-azure-data-explorer)
+* Utwórz [Centrum IoT z skonfigurowaną zasadą dostępu współdzielonego](ingest-data-iot-hub.md#create-an-iot-hub).
 
-## <a name="azure-resource-manager-template-for-adding-an-iot-hub-data-connection"></a>Azure Resource Manager szablon służący do dodawania połączenia danych usługi IoT Hub
+## <a name="azure-resource-manager-template-for-adding-an-iot-hub-data-connection"></a>Szablon usługi Azure Resource Manager do dodawania połączenia danych usługi Iot Hub
 
-Poniższy przykład przedstawia szablon Azure Resource Manager służący do dodawania połączenia danych IoT Hub.  Można [edytować i wdrażać szablon w Azure Portal](/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal#edit-and-deploy-the-template) przy użyciu formularza.
+W poniższym przykładzie przedstawiono szablon usługi Azure Resource Manager do dodawania połączenia danych usługi IoT Hub.  Szablon można [edytować i wdrażać w witrynie Azure portal](/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal#edit-and-deploy-the-template) przy użyciu formularza.
 
 ```json
 {

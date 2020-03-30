@@ -9,10 +9,10 @@ ms.date: 02/18/2020
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: 26e76731f663ac9038bc87182d52c4bd245f1b6e
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77471706"
 ---
 ## <a name="limitations"></a>Ograniczenia
@@ -25,12 +25,12 @@ ms.locfileid: "77471706"
 
 ## <a name="deploy-an-azure-shared-disk"></a>Wdrażanie udostępnionego dysku platformy Azure
 
-Aby wdrożyć dysk zarządzany z włączoną funkcją udostępnionego dysku, użyj nowej właściwości `maxShares` i zdefiniuj `>1`wartości. Dzięki temu dysk jest współużytkowany na wielu maszynach wirtualnych.
+Aby wdrożyć dysk zarządzany z włączoną funkcją `maxShares` dysku udostępnionego, użyj nowej właściwości i zdefiniuj wartość `>1`. Dzięki temu dysk można udostępnić na wielu maszynach wirtualnych.
 
 > [!IMPORTANT]
-> Wartość `maxShares` można ustawić lub zmienić tylko wtedy, gdy dysk zostanie odinstalowany ze wszystkich maszyn wirtualnych. Sprawdź [rozmiary dysków](#disk-sizes) dla dozwolonych wartości `maxShares`.
+> Wartość `maxShares` można ustawić lub zmienić tylko wtedy, gdy dysk jest odinstalowany ze wszystkich maszyn wirtualnych. Zobacz [rozmiary dysku](#disk-sizes) dla dozwolonych `maxShares`wartości dla .
 
-Przed użyciem następującego szablonu Zastąp `[parameters('dataDiskName')]`, `[resourceGroup().location]`, `[parameters('dataDiskSizeGB')]`i `[parameters('maxShares')]` własnymi wartościami.
+Przed użyciem następującego `[parameters('dataDiskName')]` `[resourceGroup().location]`szablonu zastąp , `[parameters('dataDiskSizeGB')]`, i `[parameters('maxShares')]` własnymi wartościami.
 
 ```json
 { 
@@ -71,12 +71,12 @@ Przed użyciem następującego szablonu Zastąp `[parameters('dataDiskName')]`, 
 }
 ```
 
-### <a name="using-azure-shared-disks-with-your-vms"></a>Używanie dysków udostępnionych platformy Azure z maszynami wirtualnymi
+### <a name="using-azure-shared-disks-with-your-vms"></a>Korzystanie z dysków udostępnionych platformy Azure z maszynami wirtualnymi
 
-Po wdrożeniu udostępnionego dysku z `maxShares>1`można zainstalować ten dysk na co najmniej jednej z maszyn wirtualnych.
+Po wdrożeniu udostępnionego `maxShares>1`dysku z programem można zainstalować dysk na jednej lub kilku maszynach wirtualnych.
 
 > [!IMPORTANT]
-> Wszystkie maszyny wirtualne, które udostępniają dysk, muszą być wdrożone w tej samej [grupie umieszczania sąsiedztwa](../articles/virtual-machines/windows/proximity-placement-groups.md).
+> Wszystkie maszyny wirtualne współużytkowane na dysku muszą być wdrożone w tej samej [grupie miejsc docelowych zbliżeniowych](../articles/virtual-machines/windows/proximity-placement-groups.md).
 
 ```azurepowershell-interactive
 
@@ -98,11 +98,11 @@ $vm = Add-AzVMDataDisk -VM $vm -Name "mySharedDisk" -CreateOption Attach -Manage
 update-AzVm -VM $vm -ResourceGroupName $resourceGroup
 ```
 
-## <a name="supported-scsi-pr-commands"></a>Obsługiwane polecenia SCSI PR
+## <a name="supported-scsi-pr-commands"></a>Obsługiwane polecenia PR SCSI
 
-Po zainstalowaniu dysku udostępnionego na maszynach wirtualnych w klastrze można ustanowić kworum i odczyt/zapis na dysku przy użyciu żądania ściągnięcia SCSI. Następujące polecenia żądania ściągnięcia są dostępne w przypadku korzystania z dysków udostępnionych platformy Azure:
+Po zamontowaniu udostępnionego dysku na maszynach wirtualnych w klastrze można ustanowić kworum i odczyt/zapis na dysku przy użyciu funkcji PR SCSI. Następujące polecenia PR są dostępne podczas korzystania z dysków udostępnionych platformy Azure:
 
-Aby współdziałać z dyskiem, należy zacząć od listy Akcja zastrzeżenia trwałego:
+Aby wchodzić w interakcje z dyskiem, zacznij od listy akcji trwała rezerwacja:
 
 ```
 PR_REGISTER_KEY 
@@ -120,7 +120,7 @@ PR_CLEAR_RESERVATION
 PR_RELEASE_RESERVATION 
 ```
 
-W przypadku korzystania z PR_RESERVE, PR_PREEMPT_RESERVATION lub PR_RELEASE_RESERVATION Podaj jeden z następujących typów trwałych:
+W przypadku korzystania z PR_RESERVE, PR_PREEMPT_RESERVATION lub PR_RELEASE_RESERVATION podaj jeden z następujących typów rezerwacji trwałej:
 
 ```
 PR_NONE 
@@ -138,9 +138,9 @@ PR_WRITE_EXCLUSIVE_ALL_REGISTRANTS
 PR_EXCLUSIVE_ACCESS_ALL_REGISTRANTS 
 ```
 
-W przypadku korzystania z PR_RESERVE, PR_REGISTER_AND_IGNORE, PR_REGISTER_KEY, PR_PREEMPT_RESERVATION, PR_CLEAR_RESERVATION lub PR_RELEASE-rezerwacji należy również podać klucz trwały.
+Należy również podać klucz trwałej rezerwacji podczas korzystania z PR_RESERVE, PR_REGISTER_AND_IGNORE, PR_REGISTER_KEY, PR_PREEMPT_RESERVATION, PR_CLEAR_RESERVATION lub PR_RELEASE-RESERVATION.
 
 
 ## <a name="next-steps"></a>Następne kroki
 
-Jeśli interesuje Cię próbę przeprowadzenia udostępniania dysków, [Utwórz konto w wersji zapoznawczej](https://aka.ms/AzureSharedDiskPreviewSignUp).
+Jeśli chcesz spróbować dysków udostępnionych, zarejestruj się w [naszej wersji zapoznawczej.](https://aka.ms/AzureSharedDiskPreviewSignUp)

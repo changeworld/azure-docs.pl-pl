@@ -1,6 +1,6 @@
 ---
-title: Informacje o laboratoriach zajęć w Azure Lab Services | Microsoft Docs
-description: Dowiedz się, jak szybko skonfigurować środowisko laboratoryjne w chmurze — Skonfiguruj laboratorium z szablonową maszyną wirtualną przy użyciu oprogramowania wymaganego dla klasy i Utwórz kopię maszyny wirtualnej dla każdego ucznia w klasie.
+title: Informacje o laboratoriach szkolnych w usługach Azure Lab | Dokumenty firmy Microsoft
+description: Dowiedz się, jak szybko skonfigurować środowisko laboratorium w klasie w chmurze — skonfiguruj laboratorium z szablonem maszyny Wirtualnej z oprogramowaniem wymaganym dla klasy i udostępnij kopię maszyny Wirtualnej każdemu uczniowi w klasie.
 services: lab-services
 documentationcenter: na
 author: spelluru
@@ -14,10 +14,10 @@ ms.topic: overview
 ms.date: 11/26/2019
 ms.author: spelluru
 ms.openlocfilehash: bbbea0c943758c2682f7b166e461807d2914f790
-ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/27/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "74561680"
 ---
 # <a name="introduction-to-classroom-labs"></a>Wprowadzenie do laboratoriów na potrzeby zajęć
@@ -35,7 +35,7 @@ Użytkownicy, którzy są zapraszani do Twojego środowiska laboratoryjnego, uzy
 Ogranicz zwiększanie budżetu, kontrolując dokładną liczbę godzin, przez które użytkownicy laboratorium mogą używać maszyn wirtualnych. Skonfiguruj harmonogramy w środowisku laboratoryjnym, aby pozwolić użytkownikom używać maszyn wirtualnych tylko w wyznaczonym czasie, lub skonfiguruj cykliczne czasy automatycznego zamykania i uruchamiania. Śledź użycie poszczególnych użytkowników i ustaw limity.
 
 ## <a name="example-class-types"></a>Przykładowe typy klas
-Laboratoria można skonfigurować dla kilku typów klas z Azure Lab Services. Zapoznaj się z [przykładowymi typami klas w Azure Lab Services](class-types.md) artykule dla kilku przykładowych typów klas, dla których można skonfigurować laboratoria z Azure Lab Services. 
+Można skonfigurować laboratoria dla kilku typów klas za pomocą usługi Azure Lab Services. Zobacz [przykładowe typy klas w usłudze Azure Lab Services](class-types.md) artykuł na kilka przykładowych typów klas, dla których można skonfigurować laboratoria z usługami Azure Lab Services. 
 
 ## <a name="next-steps"></a>Następne kroki
 Rozpocznij pracę od skonfigurowania konta laboratorium wymaganego do utworzenia laboratorium na potrzeby zajęć przy użyciu usługi Azure Lab Services:

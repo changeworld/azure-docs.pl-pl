@@ -1,6 +1,6 @@
 ---
-title: Tworzenie połączenia danych centrum zdarzeń dla usługi Azure Eksplorator danych przy użyciuC#
-description: W tym artykule dowiesz się, jak utworzyć połączenie danych centrum zdarzeń dla usługi Azure Eksplorator danych przy użyciu C#programu.
+title: 'Tworzenie połączenia danych usługi Event Hub dla Eksploratora danych platformy Azure przy użyciu języka C #'
+description: W tym artykule dowiesz się, jak utworzyć połączenie danych usługi Event Hub dla Usługi Azure Data Explorer przy użyciu języka C#.
 author: lucygoldbergmicrosoft
 ms.author: lugoldbe
 ms.reviewer: orspodek
@@ -8,30 +8,30 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 10/07/2019
 ms.openlocfilehash: cf2a274b4f48b31739d6abba5cf87fa2a10d4ca1
-ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/02/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74667691"
 ---
-# <a name="create-an-event-hub-data-connection-for-azure-data-explorer-by-using-c"></a>Tworzenie połączenia danych centrum zdarzeń dla usługi Azure Eksplorator danych przy użyciuC#
+# <a name="create-an-event-hub-data-connection-for-azure-data-explorer-by-using-c"></a>Tworzenie połączenia danych usługi Event Hub dla Eksploratora danych platformy Azure przy użyciu języka C #
 
 > [!div class="op_single_selector"]
 > * [Portal](ingest-data-event-hub.md)
-> * [C#](data-connection-event-hub-csharp.md)
+> * [C #](data-connection-event-hub-csharp.md)
 > * [Python](data-connection-event-hub-python.md)
 > * [Szablon usługi Azure Resource Manager](data-connection-event-hub-resource-manager.md)
 
-Azure Data Explorer to szybka i wysoce skalowalna usługa eksploracji danych na potrzeby danych dziennika i telemetrycznych. Usługa Azure Eksplorator danych oferuje pozyskiwanie (ładowanie danych) z Event Hubs, centrów IoT i obiektów blob, które są zapisywane do kontenerów obiektów BLOB. W tym artykule opisano tworzenie połączenia danych centrum zdarzeń dla usługi Azure Eksplorator danych przy użyciu programu C#.
+Azure Data Explorer to szybka i wysoce skalowalna usługa eksploracji danych na potrzeby danych dziennika i telemetrycznych. Usługa Azure Data Explorer oferuje pozyskiwania (ładowanie danych) z centrów zdarzeń, usługi IoT Hubs i obiektów blob zapisanych w kontenerach obiektów blob. W tym artykule utworzysz połączenie danych Usługi Event Hub dla Eksploratora danych platformy Azure przy użyciu języka C#.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Jeśli nie masz zainstalowanego programu Visual Studio 2019, możesz pobrać i korzystać **bezpłatnie** z programu [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/). Podczas instalacji programu Visual Studio upewnij się, że jest włączona opcja **Programowanie na platformie Azure**.
-* Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto platformy Azure](https://azure.microsoft.com/free/).
+* Jeśli nie masz zainstalowanego programu Visual Studio 2019, możesz pobrać **bezpłatną** [wersję programu Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/)i korzystać z niej. Podczas instalacji programu Visual Studio upewnij się, że jest włączona opcja **Programowanie na platformie Azure**.
+* Jeśli nie masz subskrypcji platformy Azure, utwórz [bezpłatne konto platformy Azure](https://azure.microsoft.com/free/) przed rozpoczęciem.
 * Tworzenie [klastra i bazy danych](create-cluster-database-csharp.md)
-* Tworzenie [mapowania tabeli i kolumny](net-standard-ingest-data.md#create-a-table-on-your-test-cluster)
-* Ustawianie [zasad bazy danych i tabeli](database-table-policies-csharp.md) (opcjonalnie)
-* Utwórz [centrum zdarzeń z danymi do](ingest-data-event-hub.md#create-an-event-hub)pozyskiwania. 
+* Tworzenie [mapowania tabel i kolumn](net-standard-ingest-data.md#create-a-table-on-your-test-cluster)
+* Ustawianie [zasad bazy danych i tabel](database-table-policies-csharp.md) (opcjonalnie)
+* Utwórz [Centrum zdarzeń z danymi do pozyskiwania](ingest-data-event-hub.md#create-an-event-hub). 
 
 [!INCLUDE [data-explorer-data-connection-install-nuget-csharp](../../includes/data-explorer-data-connection-install-nuget-csharp.md)]
 
@@ -39,7 +39,7 @@ Azure Data Explorer to szybka i wysoce skalowalna usługa eksploracji danych na 
 
 ## <a name="add-an-event-hub-data-connection"></a>Dodawanie połączenia danych centrum zdarzeń
 
-W poniższym przykładzie pokazano, jak programowo dodać połączenie danych centrum zdarzeń. Aby dodać połączenie danych centrum zdarzeń przy użyciu Azure Portal, zobacz [nawiązywanie połączenia z centrum zdarzeń](ingest-data-event-hub.md#connect-to-the-event-hub) .
+W poniższym przykładzie pokazano, jak programowo dodać połączenie danych usługi Event Hub. Zobacz [łączenie się z Centrum zdarzeń, aby](ingest-data-event-hub.md#connect-to-the-event-hub) dodać połączenie danych usługi Event Hub za pomocą witryny Azure portal.
 
 ```csharp
 var tenantId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Directory (tenant) ID
@@ -76,19 +76,19 @@ await kustoManagementClient.DataConnections.CreateOrUpdateAsync(resourceGroupNam
 
 |**Ustawienie** | **Sugerowana wartość** | **Opis pola**|
 |---|---|---|
-| tenantId | *XXXXXXXX-XXXXX-xxxx-xxxx-xxxxxxxxx* | Identyfikator dzierżawy. Znany również jako identyfikator katalogu.|
-| subscriptionId | *XXXXXXXX-XXXXX-xxxx-xxxx-xxxxxxxxx* | Identyfikator subskrypcji używany do tworzenia zasobów.|
-| clientId | *XXXXXXXX-XXXXX-xxxx-xxxx-xxxxxxxxx* | Identyfikator klienta aplikacji, który może uzyskiwać dostęp do zasobów w dzierżawie.|
-| clientSecret | *xxxxxxxxxxxxxx* | Wpis tajny klienta aplikacji, który może uzyskiwać dostęp do zasobów w dzierżawie.|
+| identyfikator dzierżawy | *xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx* | Identyfikator dzierżawy. Znany również jako identyfikator katalogu.|
+| subscriptionId | *xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx* | Identyfikator subskrypcji używany do tworzenia zasobów.|
+| clientId | *xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx* | Identyfikator klienta aplikacji, która może uzyskać dostęp do zasobów w dzierżawie.|
+| clientSecret | *xxxxxxxxxxxxxx* | Klucz tajny klienta aplikacji, która może uzyskać dostęp do zasobów w dzierżawie.|
 | resourceGroupName | *testrg* | Nazwa grupy zasobów zawierającej klaster.|
 | clusterName | *mykustocluster* | Nazwa klastra.|
-| Bazy | *mykustodatabase* | Nazwa docelowej bazy danych w klastrze.|
-| ConnectionName | *myeventhubconnect* | Wymagana nazwa połączenia danych.|
-| tableName | *StormEvents* | Nazwa tabeli docelowej w docelowej bazie danych.|
-| mappingRuleName | *StormEvents_CSV_Mapping* | Nazwa mapowania kolumny powiązanej z tabelą docelową.|
-| Format | *CSV* | Format danych wiadomości.|
-| eventHubResourceId | *Identyfikator zasobu* | Identyfikator zasobu centrum zdarzeń, który przechowuje dane do pozyskiwania. |
-| odbiorca | *$Default* | Grupa konsumentów centrum zdarzeń.|
+| Databasename | *mykustodatabase* | Nazwa docelowej bazy danych w klastrze.|
+| dataConnectionName | *połączenie myeventhub* | Żądana nazwa połączenia danych.|
+| tableName | *StormEvents (Burza)* | Nazwa tabeli docelowej w docelowej bazie danych.|
+| nazwa mapowaniaRuleName | *StormEvents_CSV_Mapping* | Nazwa mapowania kolumn powiązana z tabelą docelową.|
+| Dataformat | *Csv* | Format danych wiadomości.|
+| identyfikator eventHubResourceId | *Identyfikator zasobu* | Identyfikator zasobu centrum zdarzeń, który przechowuje dane do pozyskiwania. |
+| grupa konsumentów | *$Default* | Grupa odbiorców Centrum zdarzeń.|
 | location | *Środkowe stany USA* | Lokalizacja zasobu połączenia danych.|
 
 [!INCLUDE [data-explorer-data-connection-clean-resources-csharp](../../includes/data-explorer-data-connection-clean-resources-csharp.md)]

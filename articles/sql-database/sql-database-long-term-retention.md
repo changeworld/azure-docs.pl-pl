@@ -1,6 +1,6 @@
 ---
-title: Przechowywanie kopii zapasowych przez maksymalnie 10 lat
-description: Dowiedz się, jak Azure SQL Database obsługuje przechowywanie pełnych kopii zapasowych bazy danych przez maksymalnie 10 lat.
+title: Przechowuj kopie zapasowe przez okres do 10 lat
+description: Dowiedz się, jak usługa Azure SQL Database obsługuje przechowywanie pełnych kopii zapasowych bazy danych przez okres do 10 lat.
 services: sql-database
 ms.service: sql-database
 ms.subservice: backup-restore
@@ -12,77 +12,77 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 05/18/2019
 ms.openlocfilehash: 15a2d58d2fc14c370c41d5454d62c74a5b66ad42
-ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77499978"
 ---
-# <a name="store-azure-sql-database-backups-for-up-to-10-years"></a>Przechowywanie Azure SQL Database kopii zapasowych przez maksymalnie 10 lat
+# <a name="store-azure-sql-database-backups-for-up-to-10-years"></a>Przechowywanie kopii zapasowych bazy danych Azure SQL Database przez maksymalnie 10 lat
 
-Wiele aplikacji ma przepisy prawne, zgodność lub inne cele biznesowe, które wymagają zachowania kopii zapasowych bazy danych ponad 7-35 dni udostępnionych przez Azure SQL Database [Automatyczne kopie zapasowe](sql-database-automated-backups.md). Za pomocą funkcji długoterminowego przechowywania (LTR) można przechowywać określone pełne kopie zapasowe bazy danych SQL w usłudze Azure Blob Storage za pomocą magazynu geograficznie nadmiarowego do odczytu przez maksymalnie 10 lat. Następnie można przywrócić wszystkie kopie zapasowe jako nową bazę danych. Aby uzyskać więcej informacji o nadmiarowości usługi Azure Storage, zobacz [nadmiarowość usługi Azure Storage](../storage/common/storage-redundancy.md).
+Wiele aplikacji ma cele regulacyjne, zgodne z przepisami lub inne cele biznesowe, które wymagają przechowywania kopii zapasowych bazy danych po 7-35 dniach dostarczonych przez [automatyczne kopie zapasowe](sql-database-automated-backups.md)usługi Azure SQL Database. Korzystając z funkcji długoterminowego przechowywania (LTR), można przechowywać określone bazy danych SQL pełne kopie zapasowe w magazynie obiektów Blob platformy Azure z dostępem do odczytu magazynu geograficznego nadmiarowego przez okres do 10 lat. Następnie można przywrócić dowolną kopię zapasową jako nową bazę danych. Aby uzyskać więcej informacji na temat nadmiarowości usługi Azure Storage, zobacz [Nadmiarowość usługi Azure Storage](../storage/common/storage-redundancy.md).
 
 > [!NOTE]
-> Można włączyć funkcję LTR dla jednej bazy danych i puli. Nie jest jeszcze dostępna dla baz danych wystąpień w zarządzanych wystąpieniach. Zadań programu SQL Agent można użyć do zaplanowania [kopii zapasowych bazy danych tylko do kopiowania](https://docs.microsoft.com/sql/relational-databases/backup-restore/copy-only-backups-sql-server) jako alternatywy dla listy odwołującej więcej niż 35 dni.
+> LTR można włączyć dla pojedynczych i pulowych baz danych. Nie jest jeszcze dostępna dla baz danych wystąpień w wystąpieniach zarządzanych. Za pomocą zadań programu SQL Agent można zaplanować [tworzenie kopii zapasowych bazy danych tylko](https://docs.microsoft.com/sql/relational-databases/backup-restore/copy-only-backups-sql-server) do kopiowania jako alternatywę dla LTR po upływie 35 dni.
 > 
 
-## <a name="how-sql-database-long-term-retention-works"></a>Jak działa długoterminowe przechowywanie danych SQL Database
+## <a name="how-sql-database-long-term-retention-works"></a>Jak działa długoterminowe przechowywanie bazy danych SQL Database
 
-Długoterminowe przechowywanie kopii zapasowych (LTR) wykorzystuje pełne kopie zapasowe bazy danych, które są [tworzone automatycznie](sql-database-automated-backups.md) , aby włączyć przywracanie do punktu w czasie (kopie). Jeśli skonfigurowano zasady LTR, te kopie zapasowe są kopiowane do różnych obiektów BLOB w celu przechowywania długoterminowego. Kopia to zadanie w tle, które nie ma wpływu na wydajność bazy danych. Zasady LTR dla każdej bazy danych SQL mogą również określać częstotliwość tworzenia kopii zapasowych LTR.
+Długoterminowe przechowywanie kopii zapasowych (LTR) wykorzystuje pełne kopie zapasowe bazy danych, które są [tworzone automatycznie,](sql-database-automated-backups.md) aby włączyć przywracanie w czasie punktu (PITR). Jeśli skonfigurowano zasady LTR, te kopie zapasowe są kopiowane do różnych obiektów blob dla długoterminowego magazynu. Kopia jest zadanie w tle, które nie ma wpływu na wydajność obciążenia bazy danych. Zasady LTR dla każdej bazy danych SQL można również określić, jak często tworzone są kopie zapasowe LTR.
 
-Aby włączyć funkcję LTR, można zdefiniować zasady przy użyciu kombinacji czterech parametrów: cotygodniowe przechowywanie kopii zapasowych (W), miesięczne przechowywanie kopii zapasowych (M), roczne przechowywanie kopii zapasowych (Y) i tydzień roku (WeekOfYear). Jeśli określisz W, jedna kopia zapasowa co tydzień zostanie skopiowana do magazynu długoterminowego. W przypadku określenia typu M pierwsza kopia zapasowa każdego miesiąca zostanie skopiowana do magazynu długoterminowego. Jeśli określisz wartość Y, jedna kopia zapasowa w tygodniu określona przez WeekOfYear zostanie skopiowana do magazynu długoterminowego. Jeśli określona WeekOfYear jest w przeszłości podczas konfigurowania zasad, pierwsza kopia zapasowa LTR zostanie utworzona w następnym roku. Każda kopia zapasowa będzie przechowywana w magazynie długoterminowym zgodnie z parametrami zasad skonfigurowanymi podczas tworzenia kopii zapasowej LTR.
+Aby włączyć funkcję LTR, można zdefiniować zasadę przy użyciu kombinacji czterech parametrów: tygodniowego przechowywania kopii zapasowych (W), miesięcznego przechowywania kopii zapasowych (M), rocznego przechowywania kopii zapasowych (Y) i tygodnia roku (WeekOfYear). Jeśli określisz W, jedna kopia zapasowa co tydzień zostanie skopiowana do magazynu długoterminowego. Jeśli określisz M, pierwsza kopia zapasowa każdego miesiąca zostanie skopiowana do magazynu długoterminowego. Jeśli określisz Y, jedna kopia zapasowa w ciągu tygodnia określonego przez WeekOfYear zostanie skopiowana do magazynu długoterminowego. Jeśli określony WeekOfYear jest w przeszłości, gdy zasady są skonfigurowane, pierwsza kopia zapasowa LTR zostanie utworzona w następnym roku. Każda kopia zapasowa będzie przechowywana w długoterminowym magazynie zgodnie z parametrami zasad, które są skonfigurowane podczas tworzenia kopii zapasowej LTR.
 
 > [!NOTE]
-> Wszelkie zmiany zasad odliczenia odnoszą się tylko do przyszłych kopii zapasowych. Na przykład jeśli cotygodniowe przechowywanie kopii zapasowych (W), miesięczne przechowywanie kopii zapasowych (M) lub coroczne przechowywanie kopii zapasowych (Y) jest modyfikowane, nowe ustawienie przechowywania będzie stosowane tylko do nowych kopii zapasowych. Przechowywanie istniejących kopii zapasowych nie będzie modyfikowane. Jeśli zachodzi potrzeba usunięcia starych kopii zapasowych w celu wygaśnięcia okresu przechowywania, należy [ręcznie usunąć kopie zapasowe](https://docs.microsoft.com/azure/sql-database/sql-database-long-term-backup-retention-configure#delete-ltr-backups).
+> Wszelkie zmiany zasad LTR mają zastosowanie tylko do przyszłych kopii zapasowych. Na przykład jeśli tygodniowe przechowywanie kopii zapasowych (W), miesięczne przechowywanie kopii zapasowych (M) lub roczne przechowywanie kopii zapasowych (Y) zostanie zmodyfikowane, nowe ustawienie przechowywania będzie miało zastosowanie tylko do nowych kopii zapasowych. Przechowywanie istniejących kopii zapasowych nie zostanie zmodyfikowane. Jeśli twoim zamiarem jest usunięcie starych kopii zapasowych LTR przed upływem okresu przechowywania, należy [ręcznie usunąć kopie zapasowe](https://docs.microsoft.com/azure/sql-database/sql-database-long-term-backup-retention-configure#delete-ltr-backups).
 > 
 
 Przykłady zasad LTR:
 
 -  W=0, M=0, Y=5, WeekOfYear=3
 
-   Trzecia pełna kopia zapasowa każdego roku będzie utrzymywana przez pięć lat.
+   Trzecia pełna kopia zapasowa każdego roku będzie przechowywana przez pięć lat.
    
 - W=0, M=3, Y=0
 
-   Pierwsza pełna kopia zapasowa każdego miesiąca będzie utrzymywana przez trzy miesiące.
+   Pierwsza pełna kopia zapasowa każdego miesiąca będzie przechowywana przez trzy miesiące.
 
 - W=12, M=0, Y=0
 
-   Każde cotygodniowe pełne kopie zapasowe będą przechowywane przez 12 tygodni.
+   Każda cotygodniowa pełna kopia zapasowa będzie przechowywana przez 12 tygodni.
 
-- W = 6, M = 12, Y = 10, WeekOfYear = 16
+- W=6, M=12, Y=10, WeekOfYear=16
 
-   Każde cotygodniowe pełne kopie zapasowe będą przechowywane przez sześć tygodni. Oprócz pierwszej pełnej kopii zapasowej każdego miesiąca, która będzie przechowywana przez 12 miesięcy. Z wyjątkiem pełnej kopii zapasowej wykonanej w szesnastym tygodniu roku, która będzie przechowywana przez 10 lat. 
+   Każda cotygodniowa pełna kopia zapasowa będzie przechowywana przez sześć tygodni. Z wyjątkiem pierwszej pełnej kopii zapasowej każdego miesiąca, która będzie przechowywana przez 12 miesięcy. Z wyjątkiem pełnej kopii zapasowej wykonanej 16 tydzień roku, która będzie przechowywana przez 10 lat. 
 
-W poniższej tabeli przedstawiono erze i okres ważności długoterminowych kopii zapasowych dla następujących zasad:
+W poniższej tabeli przedstawiono rytm i wygaśnięcie długoterminowych kopii zapasowych dla następujących zasad:
 
-W = 12 tygodni (84 dni), M = 12 miesięcy (365 dni), Y = 10 lat (3650 dni), WeekOfYear = 15 (tydzień po 15 kwietnia)
+W=12 tygodni (84 dni), M=12 miesięcy (365 dni), Y=10 lat (3650 dni), WeekOfYear=15 (tydzień po 15 kwietnia)
 
    ![przykład ltr](./media/sql-database-long-term-retention/ltr-example.png)
 
 
 
-Jeśli zmodyfikujesz powyższe zasady i ustawisz wartość z = 0 (bez cotygodniowych kopii zapasowych), erze kopii zapasowych zmienią się tak, jak pokazano w powyższej tabeli według wyróżnionych dat. Ilość miejsca do magazynowania wymagana do zachowania tych kopii zapasowych zostanie odpowiednio zredukowana. 
+Jeśli zmodyfikujesz powyższe zasady i ustawisz W=0 (bez cotygodniowych kopii zapasowych), rytm kopii zapasowych zmieni się zgodnie z powyższą tabelą o podświetlone daty. Ilość magazynu potrzebna do przechowywania tych kopii zapasowych zmniejszyłaby się odpowiednio. 
 
 > [!IMPORTANT]
-> Chronometraż poszczególnych kopii zapasowych w odróżnieniu jest kontrolowany przez Azure SQL Database. Nie można ręcznie utworzyć kopii zapasowej LTR ani kontrolować chronometrażu tworzenia kopii zapasowej. Po skonfigurowaniu zasad LTR może upłynąć do 7 dni, zanim pierwsza kopia zapasowa LTR zostanie wyświetlona na liście dostępnych kopii zapasowych.  
+> Czas poszczególnych kopii zapasowych LTR jest kontrolowany przez usługę Azure SQL Database. Nie można ręcznie utworzyć kopii zapasowej LTR ani kontrolować czasu tworzenia kopii zapasowej. Po skonfigurowaniu zasad LTR może upłynąć do 7 dni, zanim pierwsza kopia zapasowa LTR pojawi się na liście dostępnych kopii zapasowych.  
 > 
 
 ## <a name="geo-replication-and-long-term-backup-retention"></a>Replikacja geograficzna i długoterminowe przechowywanie kopii zapasowych
 
-Jeśli używasz aktywnej replikacji geograficznej lub grup trybu failover jako rozwiązania do ciągłej ciągłości biznesowej, należy przygotować się do przejścia do trybu failover i skonfigurować te same zasady LTR w pomocniczej bazie danych geograficznych. Koszt magazynu LTR nie zostanie zwiększony, ponieważ kopie zapasowe nie są generowane na podstawie serwerów pomocniczych. Tylko wtedy, gdy pomocniczy staną się podstawowe, tworzone są kopie zapasowe. Zapewnia to nieprzerwaną generację kopii zapasowych w przypadku wyzwolenia trybu failover, a podstawowy przenosi do regionu pomocniczego. 
+Jeśli używasz aktywnej replikacji geograficznej lub grup pracy awaryjnej jako rozwiązania ciągłości biznesowej, należy przygotować się na ewentualne tryb failover i skonfigurować te same zasady LTR w bazie danych geo pomocniczej. Koszt magazynu LTR nie wzrośnie, ponieważ kopie zapasowe nie są generowane z pomocniczych. Tylko wtedy, gdy pomocniczy staje się podstawowym kopie zapasowe zostaną utworzone. Zapewnia nie przerwane generowanie kopii zapasowych LTR po wyzwoleniu pracy awaryjnej i przeniesienie podstawowej do regionu pomocniczego. 
 
 > [!NOTE]
-> Gdy pierwotna podstawowa baza danych odzyska się z awarii, która spowodowała przejście w tryb failover, stanie się nowym serwerem pomocniczym. W związku z tym tworzenie kopii zapasowej nie zostanie wznowione, a istniejące zasady LTR nie zaczną obowiązywać, dopóki nie staną się pierwotne. 
+> Gdy oryginalna podstawowa baza danych odzyskuje z awarii, która spowodowała przełącze w błąd, stanie się nowym pomocniczym. W związku z tym tworzenie kopii zapasowej nie zostanie wznowione i istniejące zasady LTR nie zacznie obowiązywać, dopóki nie stanie się podstawowym ponownie. 
 
 ## <a name="configure-long-term-backup-retention"></a>Konfigurowanie długoterminowego przechowywania kopii zapasowych
 
-Aby dowiedzieć się, jak skonfigurować przechowywanie długoterminowe przy użyciu Azure Portal lub programu PowerShell, zobacz [Zarządzanie usługą Azure SQL Database długoterminowe przechowywanie kopii zapasowych](sql-database-long-term-backup-retention-configure.md).
+Aby dowiedzieć się, jak skonfigurować długoterminowe przechowywanie przy użyciu portalu Azure lub programu PowerShell, zobacz [Zarządzanie długoterminową przechowywaniem kopii zapasowych usługi Azure SQL Database.](sql-database-long-term-backup-retention-configure.md)
 
 ## <a name="restore-database-from-ltr-backup"></a>Przywracanie bazy danych z kopii zapasowej LTR
 
-Aby przywrócić bazę danych z magazynu LTR, można wybrać określoną kopię zapasową w oparciu o sygnaturę czasową. Bazę danych można przywrócić na dowolnym istniejącym serwerze w ramach tej samej subskrypcji, w której znajduje się oryginalna baza danych. Aby dowiedzieć się, jak przywrócić bazę danych z kopii zapasowej LTR przy użyciu Azure Portal lub programu PowerShell, zobacz [zarządzanie Azure SQL Database długoterminowym przechowywaniem kopii zapasowych](sql-database-long-term-backup-retention-configure.md).
+Aby przywrócić bazę danych z magazynu LTR, można wybrać określoną kopię zapasową na podstawie jej sygnatury czasowej. Bazy danych można przywrócić do dowolnego istniejącego serwera w ramach tej samej subskrypcji jako oryginalnej bazy danych. Aby dowiedzieć się, jak przywrócić bazę danych z kopii zapasowej LTR przy użyciu portalu Azure lub programu PowerShell, zobacz [Zarządzanie długoterminową przechowywaniem kopii zapasowych usługi Azure SQL Database.](sql-database-long-term-backup-retention-configure.md)
 
 ## <a name="next-steps"></a>Następne kroki
 
-Ponieważ kopie zapasowe bazy danych chronią dane przed przypadkowym uszkodzeniem lub usunięciem, są one istotną częścią strategii ciągłości działania i odzyskiwania po awarii. Aby dowiedzieć się więcej na temat innych SQL Database rozwiązań zapewniających ciągłość działania firmy, zobacz temat [ciągłość](sql-database-business-continuity.md)działania — Omówienie.
+Ponieważ kopie zapasowe bazy danych chronią dane przed przypadkowym uszkodzeniem lub usunięciem, są one istotną częścią każdej strategii ciągłości biznesowej i odzyskiwania po awarii. Aby dowiedzieć się więcej o innych rozwiązaniach ciągłości biznesowej bazy danych SQL, zobacz [Omówienie ciągłości biznesowej](sql-database-business-continuity.md).

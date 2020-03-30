@@ -9,19 +9,19 @@ ms.date: 10/06/2019
 ms.author: mbaldwin
 ms.custom: include file
 ms.openlocfilehash: 0aa62a76727f6f913c277100d8c5b36ed1b00110
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77618466"
 ---
-## <a name="create-a-resource-group"></a>Utwórz grupę zasobów
+## <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
 
-*Jeśli masz już grupę zasobów, możesz pominąć, aby [utworzyć magazyn kluczy](#create-a-key-vault).*
+*Jeśli masz już grupę zasobów, możesz przejść do [programu Utwórz magazyn kluczy](#create-a-key-vault).*
 
 Grupa zasobów to logiczny kontener przeznaczony do wdrażania zasobów platformy Azure i zarządzania nimi. 
 
-Utwórz grupę zasobów za pomocą polecenia [AZ Group Create](/cli/azure/group?view=azure-cli-latest#az-group-create) Azure CLI, polecenia [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) Azure PowerShell lub z [Azure Portal](https://portal.azure.com).
+Utwórz grupę zasobów przy użyciu [grupy az utwórz](/cli/azure/group?view=azure-cli-latest#az-group-create) polecenie interfejsu wiersza polecenia Platformy Azure, polecenie [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) Azure PowerShell lub z [witryny Azure portal](https://portal.azure.com).
 
 ### <a name="azure-cli"></a>Interfejs wiersza polecenia platformy Azure
 
@@ -35,18 +35,18 @@ New-AzResourceGroup -Name "myResourceGroup" -Location "EastUS"
 
 ## <a name="create-a-key-vault"></a>Tworzenie magazynu kluczy
 
-*Jeśli masz już Magazyn kluczy, możesz pominąć, aby [ustawić zaawansowane zasady dostępu magazynu kluczy](#set-key-vault-advanced-access-policies).*
+*Jeśli masz już magazyn kluczy, możesz przejść do [ustawienia zasad zaawansowanego dostępu magazynu kluczy](#set-key-vault-advanced-access-policies).*
 
-Utwórz magazyn kluczy za pomocą polecenia [AZ Key magazyn Create](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-create) Azure CLI, polecenia [New-AzKeyvault](/powershell/module/az.keyvault/new-azkeyvault) programu Azure PowerShell, [Azure Portal](https://portal.azure.com)lub [szablonu Menedżer zasobów](https://github.com/Azure/azure-quickstart-templates/tree/master/101-key-vault-create).
+Utwórz magazyn kluczy przy użyciu [az keyvault utworzyć](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-create) polecenie interfejsu wiersza polecenia platformy Azure, [new-AzKeyvault](/powershell/module/az.keyvault/new-azkeyvault) Azure Powershell polecenia, [witryny Azure portal](https://portal.azure.com), lub [szablonu Menedżera zasobów](https://github.com/Azure/azure-quickstart-templates/tree/master/101-key-vault-create).
 
 >[!WARNING]
-> Aby zapewnić, że wpisy tajne szyfrowania nie przekraczają granic regionalnych, Azure Disk Encryption wymaga, aby Key Vault i maszyny wirtualne znajdowały się w tym samym regionie. Utwórz i użyj Key Vault, który znajduje się w tym samym regionie co maszyny wirtualne do zaszyfrowania. 
+> Aby upewnić się, że wpisy tajne szyfrowania nie przekraczają granic regionalnych, szyfrowanie dysków platformy Azure wymaga, aby magazyn kluczy i maszyny wirtualne były zlokalizowane w tym samym regionie. Tworzenie i używanie magazynu kluczy, który znajduje się w tym samym regionie co maszyny wirtualne, które mają być szyfrowane. 
 
-Każdy Key Vault musi mieć unikatową nazwę. Zastąp < unikatowym identyfikatorem magazynu kluczy > nazwą magazynu klucza w poniższych przykładach.
+Każda przechowalnia kluczy musi mieć unikatową nazwę. W poniższych przykładach <> nazwa <nazwa magazynu kluczy.
 
 ### <a name="azure-cli"></a>Interfejs wiersza polecenia platformy Azure
 
-Podczas tworzenia magazynu kluczy przy użyciu interfejsu wiersza polecenia platformy Azure Dodaj flagę "--Enabled-for-Disk-Encryption".
+Podczas tworzenia magazynu kluczy przy użyciu interfejsu wiersza polecenia platformy Azure dodaj flagę "--enabled-for-disk-encryption".
 
 ```azurecli-interactive
 az keyvault create --name "<your-unique-keyvault-name>" --resource-group "myResourceGroup" --location "eastus" --enabled-for-disk-encryption
@@ -54,106 +54,106 @@ az keyvault create --name "<your-unique-keyvault-name>" --resource-group "myReso
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
-Podczas tworzenia magazynu kluczy przy użyciu Azure PowerShell należy dodać flagę "-EnabledForDiskEncryption".
+Podczas tworzenia magazynu kluczy przy użyciu programu Azure PowerShell dodaj flagę "-EnabledForDiskEncryption".
 
 ```azurepowershell-interactive
 New-AzKeyvault -name "<your-unique-keyvault-name>" -ResourceGroupName "myResourceGroup" -Location "eastus" -EnabledForDiskEncryption
 ```
 ### <a name="resource-manager-template"></a>Szablon usługi Resource Manager
 
-Możesz również utworzyć magazyn kluczy przy użyciu [szablonu Menedżer zasobów](https://github.com/Azure/azure-quickstart-templates/tree/master/101-key-vault-create).
+Przechowalnia kluczy można również utworzyć za pomocą [szablonu Menedżera zasobów](https://github.com/Azure/azure-quickstart-templates/tree/master/101-key-vault-create).
 
-1. W szablonie szybkiego startu platformy Azure kliknij pozycję **Wdróż na platformie Azure**.
-2. Wybierz subskrypcję, grupę zasobów, lokalizację grupy zasobów, nazwę Key Vault, identyfikator obiektu, postanowienia prawne i umowę, a następnie kliknij przycisk **Kup**. 
+1. W szablonie szybki start platformy Azure kliknij pozycję **Wdrażanie na platformie Azure**.
+2. Wybierz subskrypcję, grupę zasobów, lokalizację grupy zasobów, nazwę magazynu kluczy, identyfikator obiektu, warunki prawne i umowę, a następnie kliknij pozycję **Zakup**. 
 
 
 ##  <a name="set-key-vault-advanced-access-policies"></a>Ustawianie zaawansowanych zasad dostępu magazynu kluczy
 
-Platforma Azure wymaga dostępu do kluczy szyfrowania i wpisy tajne w magazynie kluczy, aby udostępnić je do maszyny Wirtualnej do rozruchu i odszyfrowywania woluminów. 
+Platforma Azure potrzebuje dostępu do kluczy szyfrowania lub wpisów tajnych w magazynie kluczy, aby udostępnić je maszynie Wirtualnej do uruchamiania i odszyfrowywania woluminów. 
 
-Jeśli nie włączono magazynu kluczy na potrzeby wdrożenia szyfrowania dysku, wdrożenia lub szablonu w momencie tworzenia (jak pokazano w poprzednim kroku), należy zaktualizować zaawansowane zasady dostępu.  
+Jeśli magazyn kluczy nie został włączona do szyfrowania dysków, wdrażania lub wdrażania szablonów w momencie tworzenia (jak pokazano w poprzednim kroku), należy zaktualizować jego zaawansowane zasady dostępu.  
 
 ### <a name="azure-cli"></a>Interfejs wiersza polecenia platformy Azure
 
-Użyj [AZ Key Update](/cli/azure/keyvault#az-keyvault-update) , aby włączyć szyfrowanie dysków dla magazynu kluczy. 
+Użyj [aktualizacji az keyvault,](/cli/azure/keyvault#az-keyvault-update) aby włączyć szyfrowanie dysku dla magazynu kluczy. 
 
- - **Włącz Key Vault szyfrowania dysku:** Szyfrowanie włączone dla dysku jest wymagane. 
+ - **Włącz magazyn kluczy do szyfrowania dysku:** Wymagane jest włączone szyfrowanie dysku. 
 
      ```azurecli-interactive
      az keyvault update --name "<your-unique-keyvault-name>" --resource-group "MyResourceGroup" --enabled-for-disk-encryption "true"
      ```  
 
- - **W razie potrzeby włącz Key Vault wdrożenia:** Umożliwia dostawcy zasobów Microsoft. COMPUTE pobieranie wpisów tajnych z tego magazynu kluczy, gdy ten magazyn kluczy jest przywoływany podczas tworzenia zasobu, na przykład podczas tworzenia maszyny wirtualnej.
+ - **Włącz magazyn kluczy do wdrożenia, jeśli to konieczne:** Umożliwia dostawcy zasobów Microsoft.Compute pobieranie wpisów tajnych z tego magazynu kluczy, gdy ten magazyn kluczy odwołuje się w tworzeniu zasobów, na przykład podczas tworzenia maszyny wirtualnej.
 
      ```azurecli-interactive
      az keyvault update --name "<your-unique-keyvault-name>" --resource-group "MyResourceGroup" --enabled-for-deployment "true"
      ``` 
 
- - **W razie potrzeby włącz Key Vault wdrożenia szablonów:** Zezwól Menedżer zasobów na pobieranie wpisów tajnych z magazynu.
+ - **Włącz magazyn kluczy do wdrożenia szablonów, jeśli to konieczne:** Zezwalaj Menedżerowi zasobów na pobieranie wpisów tajnych z magazynu.
      ```azurecli-interactive  
      az keyvault update --name "<your-unique-keyvault-name>" --resource-group "MyResourceGroup" --enabled-for-template-deployment "true"
      ```
 
 ###  <a name="azure-powershell"></a>Azure PowerShell
- Aby włączyć szyfrowanie dysków dla magazynu kluczy, należy użyć polecenia cmdlet programu PowerShell magazynu kluczy [Set-AzKeyVaultAccessPolicy](/powershell/module/az.keyvault/set-azkeyvaultaccesspolicy) .
+ Użyj polecenia cmdlet [Set-AzKeyVaultAccessPolicy](/powershell/module/az.keyvault/set-azkeyvaultaccesspolicy) magazynu kluczy, aby włączyć szyfrowanie dysku dla magazynu kluczy.
 
-  - **Włącz Key Vault szyfrowania dysku:** Usługa EnabledForDiskEncryption jest wymagana do szyfrowania dysków Azure.
+  - **Włącz magazyn kluczy do szyfrowania dysku:** EnabledForDiskEncryption jest wymagany do szyfrowania dysku Azure.
       
      ```azurepowershell-interactive 
      Set-AzKeyVaultAccessPolicy -VaultName "<your-unique-keyvault-name>" -ResourceGroupName "MyResourceGroup" -EnabledForDiskEncryption
      ```
 
-  - **W razie potrzeby włącz Key Vault wdrożenia:** Umożliwia dostawcy zasobów Microsoft. COMPUTE pobieranie wpisów tajnych z tego magazynu kluczy, gdy ten magazyn kluczy jest przywoływany podczas tworzenia zasobu, na przykład podczas tworzenia maszyny wirtualnej.
+  - **Włącz magazyn kluczy do wdrożenia, jeśli to konieczne:** Umożliwia dostawcy zasobów Microsoft.Compute pobieranie wpisów tajnych z tego magazynu kluczy, gdy ten magazyn kluczy odwołuje się w tworzeniu zasobów, na przykład podczas tworzenia maszyny wirtualnej.
 
      ```azurepowershell-interactive
       Set-AzKeyVaultAccessPolicy -VaultName "<your-unique-keyvault-name>" -ResourceGroupName "MyResourceGroup" -EnabledForDeployment
      ```
 
-  - **W razie potrzeby włącz Key Vault wdrożenia szablonów:** Umożliwia Azure Resource Manager pobierania wpisów tajnych z tego magazynu kluczy, gdy do tego magazynu kluczy odwołuje się wdrożenie szablonu.
+  - **Włącz magazyn kluczy do wdrożenia szablonów, jeśli to konieczne:** Umożliwia usługi Azure Resource Manager, aby uzyskać wpisy tajne z tego magazynu kluczy, gdy ten magazyn kluczy odwołuje się do wdrożenia szablonu.
 
      ```azurepowershell-interactive             
      Set-AzKeyVaultAccessPolicy -VaultName "<your-unique-keyvault-name>" -ResourceGroupName "MyResourceGroup" -EnabledForTemplateDeployment
      ```
 
-### <a name="azure-portal"></a>Portalu Azure
+### <a name="azure-portal"></a>Portal Azure
 
-1. Wybierz magazyn kluczy, przejdź do pozycji **zasady dostępu**, a **następnie kliknij, aby wyświetlić zaawansowane zasady dostępu**.
-2. Zaznacz pole o nazwie **Włącz dostęp do Azure Disk Encryption na potrzeby szyfrowania woluminów**.
-3. Wybierz pozycję **Włącz dostęp do usługi Azure Virtual Machines w celu wdrożenia** i/lub **włącz dostęp do Azure Resource Manager na potrzeby wdrożenia szablonu**, jeśli jest to konieczne. 
-4. Kliknij przycisk **Save** (Zapisz).
+1. Wybierz magazyn kluczy, przejdź do **opcji Zasady dostępu**i **Kliknij, aby wyświetlić zaawansowane zasady dostępu.**
+2. Zaznacz pole oznaczone jako **Włącz dostęp do szyfrowania dysków platformy Azure w celu szyfrowania woluminów**.
+3. Wybierz **włącz dostęp do maszyn wirtualnych platformy Azure do wdrożenia** i/lub Włącz dostęp do usługi Azure Resource Manager do wdrożenia **szablonu,** jeśli to konieczne. 
+4. Kliknij przycisk **Zapisz**.
 
-    ![Zaawansowane zasady dostępu magazynu kluczy Azure](../articles/virtual-machines/media/disk-encryption/keyvault-portal-fig4.png)
+    ![Zaawansowane zasady dostępu magazynu kluczy platformy Azure](../articles/virtual-machines/media/disk-encryption/keyvault-portal-fig4.png)
 
 
-## <a name="set-up-a-key-encryption-key-kek"></a>Skonfiguruj klucz szyfrowania klucza (KEK)
+## <a name="set-up-a-key-encryption-key-kek"></a>Konfigurowanie klucza szyfrowania klucza (KEK)
 
-Jeśli chcesz użyć klucz szyfrowania klucza (KEK) Aby uzyskać dodatkową warstwę zabezpieczeń dla kluczy szyfrowania, należy dodać KEK do magazynu kluczy. Jeśli klucz szyfrowania jest określony, usługi Azure Disk Encryption używa tego klucza do opakowania wpisów tajnych szyfrowania przed zapisaniem w usłudze Key Vault.
+Jeśli chcesz użyć klucza szyfrowania klucza (KEK) dla dodatkowej warstwy zabezpieczeń kluczy szyfrowania, dodaj KEK do magazynu kluczy. Po określeniu klucza szyfrowania klucza szyfrowanie platformy Azure Disk Encryption używa tego klucza do zawijania klucza tajne szyfrowania przed zapisaniem do usługi Key Vault.
 
-Nowy KEK można wygenerować przy użyciu interfejsu wiersza polecenia platformy Azure [AZ Key magazynu create](/cli/azure/keyvault/key?view=azure-cli-latest#az-keyvault-key-create) Azure PowerShell, polecenie cmdlet [Add-AzKeyVaultKey](/powershell/module/az.keyvault/add-azkeyvaultkey) lub [Azure Portal](https://portal.azure.com/). Musisz wygenerować typ klucza RSA; Azure Disk Encryption nie obsługuje jeszcze kluczy krzywej eliptycznej.
+Można wygenerować nowy KEK przy użyciu [polecenia tworzenia klucza klucza az języka azure az,](/cli/azure/keyvault/key?view=azure-cli-latest#az-keyvault-key-create) polecenia cmdlet dodatku Azure PowerShell [Add-AzKeyVaultKey](/powershell/module/az.keyvault/add-azkeyvaultkey) lub [portalu Azure.](https://portal.azure.com/) Należy wygenerować typ klucza RSA; Szyfrowanie dysków platformy Azure nie obsługuje jeszcze przy użyciu kluczy krzywej eliptycznej.
 
-Zamiast tego możesz zaimportować KEK z lokalnego modułu HSM zarządzania kluczami. Aby uzyskać więcej informacji, zobacz [dokumentację Key Vault](/azure/key-vault/key-vault-hsm-protected-keys).
+Zamiast tego można zaimportować KEK z lokalnego modułu HSM zarządzania kluczami. Aby uzyskać więcej informacji, zobacz [Dokumentacja magazynu kluczy](/azure/key-vault/key-vault-hsm-protected-keys).
 
-Adresy URL KEK magazynu kluczy muszą być w wersji. Azure wymusza to ograniczenie wersji. Nieprawidłowy klucz tajny i adresy URL KEK zobacz następujące przykłady:
+Adresy URL KEK magazynu kluczy muszą być wersjonetowane. Platforma Azure wymusza to ograniczenie przechowywania wersji. W przypadku prawidłowych adresów URL kluczy tajnych i KEK zobacz następujące przykłady:
 
-* Przykładowy prawidłowy tajny adres URL: *https://contosovault.vault.azure.net/secrets/EncryptionSecretWithKek/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx*
-* Przykład prawidłowego adresu URL KEK: *https://contosovault.vault.azure.net/keys/diskencryptionkek/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx*
+* Przykład prawidłowego tajnego adresu URL:*https://contosovault.vault.azure.net/secrets/EncryptionSecretWithKek/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx*
+* Przykład prawidłowego adresu URL KEK:*https://contosovault.vault.azure.net/keys/diskencryptionkek/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx*
 
-Usługa Azure Disk Encryption nie obsługuje określania numerów portów jako część wpisy tajne usługi key vault i KEK adresów URL. Aby zapoznać się z przykładami adresów URL obsługiwane i nieobsługiwane key vault zobacz następujące przykłady:
+Szyfrowanie dysków platformy Azure nie obsługuje określania numerów portów jako części wpisów tajnych magazynu kluczy i adresów URL KEK. Przykłady nieobjętych i obsługiwanych adresów URL magazynu kluczy można znaleźć w następujących przykładach:
 
-  * Akceptowalny adres URL magazynu kluczy: *https://contosovault.vault.azure.net/secrets/contososecret/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx*
-  * Nieakceptowalny adres URL magazynu kluczy: *https://contosovault.vault.azure.net:443/secrets/contososecret/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx*
+  * Akceptowalny adres URL magazynu kluczy:*https://contosovault.vault.azure.net/secrets/contososecret/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx*
+  * Niedopuszczalny adres URL magazynu kluczy:*https://contosovault.vault.azure.net:443/secrets/contososecret/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx*
 
 ### <a name="azure-cli"></a>Interfejs wiersza polecenia platformy Azure
 
-Użyj interfejsu wiersza polecenia platformy Azure [AZ Key magazynu Create](/cli/azure/keyvault/key?view=azure-cli-latest#az-keyvault-key-create) , aby wygenerować nowy KEK i zapisać go w magazynie kluczy.
+Użyj polecenia [tworzenia klucza azure az keyvault,](/cli/azure/keyvault/key?view=azure-cli-latest#az-keyvault-key-create) aby wygenerować nowy kek i przechowywać go w magazynie kluczy.
 
 ```azurecli-interactive
 az keyvault key create --name "myKEK" --vault-name "<your-unique-keyvault-name>" --kty RSA-HSM
 ```
 
-Zamiast tego możesz zaimportować klucz prywatny przy użyciu interfejsu wiersza polecenia platformy Azure [AZ Key magazynu klucz import](/cli/azure/keyvault/key?view=azure-cli-latest#az-keyvault-key-import) :
+Zamiast tego można zaimportować klucz prywatny przy użyciu polecenia [importowania klucza klucza az języka Azure az:](/cli/azure/keyvault/key?view=azure-cli-latest#az-keyvault-key-import)
 
-W obu przypadkach należy podać nazwę KEK w interfejsie wiersza polecenia platformy Azure [AZ VM Encryption Enable](/cli/azure/vm/encryption?view=azure-cli-latest#az-vm-encryption-enable) --Key-Encryption-Key. 
+W obu przypadkach zostanie podaj nazwę pliku KEK do szyfrowania platformy Azure [CLI az vm enable](/cli/azure/vm/encryption?view=azure-cli-latest#az-vm-encryption-enable) --key-encryption-key parametr. 
 
 ```azurecli-interactive
 az vm encryption enable -g "MyResourceGroup" --name "myVM" --disk-encryption-keyvault "<your-unique-keyvault-name>" --key-encryption-key "myKEK"
@@ -161,15 +161,15 @@ az vm encryption enable -g "MyResourceGroup" --name "myVM" --disk-encryption-key
 
 ###  <a name="azure-powershell"></a>Azure PowerShell 
 
-Użyj polecenia cmdlet Azure PowerShell [Add-AzKeyVaultKey](/powershell/module/az.keyvault/add-azkeyvaultkey?view=azps-2.5.0) , aby wygenerować nowy KEK i zapisać go w magazynie kluczy.
+Użyj polecenia cmdlet [dodatku AzKeyVaultKey](/powershell/module/az.keyvault/add-azkeyvaultkey?view=azps-2.5.0) platformy Azure, aby wygenerować nowy kek i przechowywać go w magazynie kluczy.
 
  ```powershell-interactive
 Add-AzKeyVaultKey -Name "myKEK" -VaultName "<your-unique-keyvault-name>" -Destination "HSM"
 ```
 
-Zamiast tego możesz zaimportować klucz prywatny przy użyciu polecenia Azure PowerShell [AZ Key magazynu klucz import](/cli/azure/keyvault/key?view=azure-cli-latest#az-keyvault-key-import) .
+Zamiast tego można zaimportować klucz prywatny przy użyciu polecenia [importu klucza programu Azure PowerShell az keyvault.](/cli/azure/keyvault/key?view=azure-cli-latest#az-keyvault-key-import)
 
-W obu przypadkach należy podać identyfikator magazynu kluczy KEK oraz adres URL KEK do parametrów Azure PowerShell [Set-AzVMDiskEncryptionExtension](/powershell/module/az.compute/set-azvmdiskencryptionextension?view=azps-2.5.0) -KeyEncryptionKeyVaultId i-KeyEncryptionKeyUrl. Należy pamiętać, że w tym przykładzie założono, że używasz tego samego magazynu kluczy zarówno dla klucza szyfrowania dysku, jak i dla KEK.
+W obu przypadkach zostanie podana identyfikator magazynu kluczy KEK i adres URL kek do usługi Azure PowerShell [Set-AzVMDiskEncryptionExtension](/powershell/module/az.compute/set-azvmdiskencryptionextension?view=azps-2.5.0) -KeyEncryptionKeyVaultId i -KeyEncryptionKeyUrl parametrów. Należy zauważyć, że w tym przykładzie przyjęto założenie, że używasz tego samego magazynu kluczy zarówno dla klucza szyfrowania dysku, jak i klucza KEK.
 
  ```powershell-interactive
 $KeyVault = Get-AzKeyVault -VaultName "<your-unique-keyvault-name>" -ResourceGroupName "myResourceGroup"

@@ -1,41 +1,41 @@
 ---
-title: Szybki Start — używanie programu Terraform do tworzenia kompletnej maszyny wirtualnej z systemem Linux na platformie Azure
-description: W tym przewodniku szybki start użyjesz Terraform do tworzenia i zarządzania kompletnym środowiskiem maszyn wirtualnych z systemem Linux na platformie Azure
-keywords: Maszyna wirtualna maszyn wirtualnych z systemem Azure DevOps Terraform Linux
+title: Szybki start — tworzenie kompletnej maszyny Wirtualnej z systemem Linux na platformie Azure za pomocą programu Terraform
+description: W tym przewodniku Szybki start można użyć Terraform do tworzenia i zarządzania kompletnym środowiskiem maszyny wirtualnej systemu Linux na platformie Azure
+keywords: azure devops terraform linux vm maszyna wirtualna
 ms.topic: quickstart
-ms.date: 03/09/2020
-ms.openlocfilehash: 03974d68477855d4ff55b7179312c91ba7d0d055
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.date: 03/15/2020
+ms.openlocfilehash: f262734cc16d97e4d73af371410403a4cbb8815e
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78943518"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79415465"
 ---
-# <a name="quickstart-create-a-complete-linux-virtual-machine-infrastructure-in-azure-with-terraform"></a>Szybki Start: Tworzenie kompletnej infrastruktury maszyn wirtualnych z systemem Linux na platformie Azure przy użyciu usługi Terraform
+# <a name="quickstart-create-a-complete-linux-virtual-machine-infrastructure-in-azure-with-terraform"></a>Szybki start: tworzenie kompletnej infrastruktury maszyn wirtualnych systemu Linux na platformie Azure za pomocą programu Terraform
 
-Terraform umożliwia definiowanie i Tworzenie pełnych wdrożeń infrastruktury na platformie Azure. Szablony Terraform można tworzyć w formacie czytelnym dla człowieka, który umożliwia tworzenie i Konfigurowanie zasobów platformy Azure w spójny, powtarzalny sposób. W tym artykule opisano sposób tworzenia kompletnego środowiska systemu Linux i obsługi zasobów przy użyciu programu Terraform. Możesz również dowiedzieć się, jak [zainstalować i skonfigurować Terraform](terraform-install-configure.md).
+Terraform umożliwia definiowanie i tworzenie kompletnych wdrożeń infrastruktury na platformie Azure. Szablony Terraform są tworzone w formacie czytelnym dla człowieka, które tworzą i konfigurują zasoby platformy Azure w spójny, powtarzalny sposób. W tym artykule pokazano, jak utworzyć kompletne środowisko systemu Linux i obsługi zasobów z Terraform. Można również dowiedzieć się, jak [zainstalować i skonfigurować Terraform](terraform-install-configure.md).
 
 > [!NOTE]
-> Aby uzyskać pomoc techniczną Terraform, skontaktuj się z Terraform bezpośrednio przy użyciu jednego z kanałów społeczności:
+> Aby uzyskać wsparcie specyficzne dla terraform, skontaktuj się bezpośrednio z Terraform, korzystając z jednego z kanałów społeczności:
 >
->    * [Sekcja Terraform](https://discuss.hashicorp.com/c/terraform-core) portalu Community zawiera pytania, przypadki użycia i przydatne wzorce.
+>    * [Sekcja Terraform](https://discuss.hashicorp.com/c/terraform-core) w portalu społeczności zawiera pytania, przypadki użycia i przydatne wzorce.
 >
->    * Pytania dotyczące dostawcy można znaleźć w sekcji [dostawcy Terraform](https://discuss.hashicorp.com/c/terraform-providers) w portalu społeczności.
+>    * Pytania związane z dostawcą można znaleźć w sekcji [Dostawcy Terraform](https://discuss.hashicorp.com/c/terraform-providers) w portalu społecznościowym.
 
 
-## <a name="create-azure-connection-and-resource-group"></a>Utwórz połączenie platformy Azure i grupę zasobów
+## <a name="create-azure-connection-and-resource-group"></a>Tworzenie połączenia i grupy zasobów platformy Azure
 
-Przejdźmy do każdej sekcji szablonu Terraform. Możesz również wyświetlić pełną wersję [szablonu Terraform](#complete-terraform-script) , który można skopiować i wkleić.
+Przejdźmy przez każdą sekcję szablonu Terraform. Możesz również zobaczyć pełną wersję [szablonu Terraform,](#complete-terraform-script) który można kopiować i wklejać.
 
-Sekcja `provider` informuje Terraform o konieczności użycia dostawcy platformy Azure. Aby uzyskać wartości *subscription_id*, *client_id*, *Client_secret*i *tenant_id*, zobacz [Install and configure Terraform](terraform-install-configure.md). 
+W `provider` sekcji informuje Terraform do korzystania z dostawcy platformy Azure. Aby uzyskać `subscription_id`wartości `client_id` `client_secret`dla `tenant_id`, , i , zobacz [Instalowanie i konfigurowanie terraform](terraform-install-configure.md). 
 
 > [!TIP]
-> Jeśli tworzysz zmienne środowiskowe dla wartości lub używają [Azure Cloud Shell środowiska bash](/azure/cloud-shell/overview) , nie musisz uwzględniać deklaracji zmiennych w tej sekcji.
+> Jeśli tworzysz zmienne środowiskowe dla wartości lub korzystasz z [usługi Azure Cloud Shell Bash,](/azure/cloud-shell/overview) nie musisz dołączać deklaracji zmiennych w tej sekcji.
 
 ```hcl
 provider "azurerm" {
     # The "feature" block is required for AzureRM provider 2.x. 
-    # If you are using version 1.x, the "features" block is not allowed.
+    # If you're using version 1.x, the "features" block is not allowed.
     version = "~>2.0"
     features {}
     
@@ -46,7 +46,7 @@ provider "azurerm" {
 }
 ```
 
-W poniższej sekcji została utworzona grupa zasobów o nazwie `myResourceGroup` w lokalizacji `eastus`:
+W poniższej sekcji utworzy się grupę zasobów o nazwie `myResourceGroup` w `eastus` lokalizacji:
 
 ```hcl
 resource "azurerm_resource_group" "myterraformgroup" {
@@ -59,10 +59,10 @@ resource "azurerm_resource_group" "myterraformgroup" {
 }
 ```
 
-W dodatkowych sekcjach należy odwołać się do grupy zasobów przy użyciu *$ {azurerm_resource_group. myterraformgroup. Name}* .
+W sekcjach dodatkowych odwołujesz się `${azurerm_resource_group.myterraformgroup.name}`do grupy zasobów za pomocą pliku .
 
 ## <a name="create-virtual-network"></a>Tworzenie sieci wirtualnej
-W poniższej sekcji została utworzona sieć wirtualna o nazwie *myVnet* w przestrzeni adresowej *10.0.0.0/16* :
+W poniższej sekcji utworzy się sieć wirtualną o nazwie `myVnet` w przestrzeni `10.0.0.0/16` adresowej:
 
 ```hcl
 resource "azurerm_virtual_network" "myterraformnetwork" {
@@ -77,7 +77,7 @@ resource "azurerm_virtual_network" "myterraformnetwork" {
 }
 ```
 
-W poniższej sekcji przedstawiono Tworzenie podsieci o nazwie Moja *podsieć* w sieci wirtualnej *myVnet* :
+W poniższej sekcji utworzy się podsieć o nazwie `mySubnet` w sieci wirtualnej: `myVnet`
 
 ```hcl
 resource "azurerm_subnet" "myterraformsubnet" {
@@ -89,8 +89,8 @@ resource "azurerm_subnet" "myterraformsubnet" {
 ```
 
 
-## <a name="create-public-ip-address"></a>Utwórz publiczny adres IP
-Aby uzyskać dostęp do zasobów za pośrednictwem Internetu, Utwórz i przypisz publiczny adres IP do maszyny wirtualnej. W poniższej sekcji został utworzony publiczny adres IP o nazwie *myPublicIP*:
+## <a name="create-public-ip-address"></a>Tworzenie publicznego adresu IP
+Aby uzyskać dostęp do zasobów w Internecie, utwórz i przypisz publiczny adres IP do maszyny Wirtualnej. W poniższej sekcji utworzy `myPublicIP`się publiczny adres IP o nazwie:
 
 ```hcl
 resource "azurerm_public_ip" "myterraformpublicip" {
@@ -106,8 +106,8 @@ resource "azurerm_public_ip" "myterraformpublicip" {
 ```
 
 
-## <a name="create-network-security-group"></a>Utwórz sieciową grupę zabezpieczeń
-Sieciowe grupy zabezpieczeń kontrolują przepływ ruchu sieciowego do i z maszyny wirtualnej. W poniższej sekcji przedstawiono tworzenie sieciowej grupy zabezpieczeń o nazwie *myNetworkSecurityGroup* i definiuje regułę zezwalającą na ruch SSH na porcie TCP 22:
+## <a name="create-network-security-group"></a>Tworzenie sieciowej grupy zabezpieczeń
+Sieciowe grupy zabezpieczeń kontrolują przepływ ruchu sieciowego do i z maszyny Wirtualnej. W poniższej sekcji utworzy `myNetworkSecurityGroup` się sieciową grupę zabezpieczeń o nazwie i definiuje regułę zezwalaną na ruch SSH na porcie TCP 22:
 
 ```hcl
 resource "azurerm_network_security_group" "myterraformnsg" {
@@ -134,8 +134,8 @@ resource "azurerm_network_security_group" "myterraformnsg" {
 ```
 
 
-## <a name="create-virtual-network-interface-card"></a>Utwórz kartę sieci wirtualnej
-Karta interfejsu sieci wirtualnej łączy MASZYNę wirtualną z daną siecią wirtualną, publicznym adresem IP i sieciową grupą zabezpieczeń. Poniższa sekcja w szablonie Terraform tworzy wirtualną kartę sieciową o nazwie *myNIC* połączoną z utworzonymi przez siebie zasobami sieci wirtualnej:
+## <a name="create-virtual-network-interface-card"></a>Tworzenie karty interfejsu sieci wirtualnej
+Karta wirtualnego interfejsu sieciowego (NIC) łączy maszynę wirtualną z daną siecią wirtualną, publicznym adresem IP i sieciową grupą zabezpieczeń. W poniższej sekcji szablonu Terraform `myNIC` utworzono wirtualną kartę sieciową o nazwie połączoną z utworzonymi zasobami sieci wirtualnej:
 
 ```hcl
 resource "azurerm_network_interface" "myterraformnic" {
@@ -163,8 +163,8 @@ resource "azurerm_network_interface_security_group_association" "example" {
 ```
 
 
-## <a name="create-storage-account-for-diagnostics"></a>Utwórz konto magazynu na potrzeby diagnostyki
-Aby można było przechowywać diagnostykę rozruchu dla maszyny wirtualnej, musisz mieć konto magazynu. Te diagnostyki rozruchu mogą pomóc w rozwiązywaniu problemów i monitorowaniu stanu maszyny wirtualnej. Utworzone konto magazynu służy tylko do przechowywania danych diagnostycznych rozruchowych. Ponieważ każde konto magazynu musi mieć unikatową nazwę, Poniższa sekcja generuje losowy tekst:
+## <a name="create-storage-account-for-diagnostics"></a>Tworzenie konta magazynu dla diagnostyki
+Do przechowywania diagnostyki rozruchu maszyny Wirtualnej potrzebne jest konto magazynu. Te diagnostyki rozruchu może pomóc w rozwiązywaniu problemów i monitorować stan maszyny Wirtualnej. Utworzone konto magazynu służy tylko do przechowywania danych diagnostyki rozruchu. Ponieważ każde konto magazynu musi mieć unikatową nazwę, w poniższej sekcji wygeneruje się losowy tekst:
 
 ```hcl
 resource "random_id" "randomId" {
@@ -177,7 +177,7 @@ resource "random_id" "randomId" {
 }
 ```
 
-Teraz można utworzyć konto magazynu. W poniższej sekcji utworzono konto magazynu o nazwie na podstawie losowego tekstu wygenerowanego w poprzednim kroku:
+Teraz możesz utworzyć konto magazynu. W poniższej sekcji utworzono konto magazynu o nazwie na podstawie losowego tekstu wygenerowanego w poprzednim kroku:
 
 ```hcl
 resource "azurerm_storage_account" "mystorageaccount" {
@@ -196,9 +196,9 @@ resource "azurerm_storage_account" "mystorageaccount" {
 
 ## <a name="create-virtual-machine"></a>Tworzenie maszyny wirtualnej
 
-Ostatnim krokiem jest utworzenie maszyny wirtualnej i użycie wszystkich utworzonych zasobów. Poniższa sekcja tworzy MASZYNę wirtualną o nazwie *myVM* i dołącza wirtualną kartę sieciową o nazwie *myNIC*. Jest używany najnowszy obraz *Ubuntu 16,04-LTS* , a użytkownik o nazwie *azureuser* jest tworzony z wyłączonym uwierzytelnianiem przy użyciu hasła.
+Ostatnim krokiem jest utworzenie maszyny Wirtualnej i użycie wszystkich utworzonych zasobów. W poniższej sekcji utworzy się maszynę wirtualną o nazwie `myVM` i dołącza wirtualną kartę sieciową o nazwie `myNIC`. Używany `Ubuntu 16.04-LTS` jest najnowszy obraz, a `azureuser` użytkownik o nazwie jest tworzony z wyłączonym uwierzytelnianiem hasłem.
 
- Dane klucza SSH znajdują się w sekcji *ssh_keys* . Podaj prawidłowy publiczny klucz SSH w polu *key_data* .
+ Dane klucza SSH `ssh_keys` znajdują się w sekcji. Podaj publiczny klucz `key_data` SSH w tej dziedzinie.
 
 ```hcl
 resource "azurerm_linux_virtual_machine" "myterraformvm" {
@@ -214,7 +214,7 @@ resource "azurerm_linux_virtual_machine" "myterraformvm" {
         storage_account_type = "Premium_LRS"
     }
 
-    storage_image_reference {
+    source_image_reference {
         publisher = "Canonical"
         offer     = "UbuntuServer"
         sku       = "16.04.0-LTS"
@@ -240,15 +240,15 @@ resource "azurerm_linux_virtual_machine" "myterraformvm" {
 }
 ```
 
-## <a name="complete-terraform-script"></a>Ukończ skrypt Terraform
+## <a name="complete-terraform-script"></a>Kompletny skrypt Terraform
 
-Aby przenieść wszystkie te sekcje i zobaczyć Terraform w działaniu, Utwórz plik o nazwie *terraform_azure. TF* i wklej następującą zawartość:
+Aby połączyć wszystkie te sekcje i wyświetlić terraform w akcji, utwórz plik o nazwie `terraform_azure.tf` i wklej następującą zawartość:
 
 ```hcl
 # Configure the Microsoft Azure Provider
 provider "azurerm" {
     # The "feature" block is required for AzureRM provider 2.x. 
-    # If you are using version 1.x, the "features" block is not allowed.
+    # If you're using version 1.x, the "features" block is not allowed.
     version = "~>2.0"
     features {}
 
@@ -411,20 +411,20 @@ resource "azurerm_linux_virtual_machine" "myterraformvm" {
 ```
 
 
-## <a name="build-and-deploy-the-infrastructure"></a>Kompilowanie i wdrażanie infrastruktury
-Po utworzeniu szablonu Terraform pierwszym krokiem jest zainicjowanie Terraform. Ten krok zapewnia, że Terraform ma wszystkie wymagania wstępne dotyczące kompilowania szablonu na platformie Azure.
+## <a name="build-and-deploy-the-infrastructure"></a>Tworzenie i wdrażanie infrastruktury
+Po utworzeniu szablonu Terraform pierwszym krokiem jest zainicjowanie terraformu. Ten krok gwarantuje, że Terraform ma wszystkie wymagania wstępne do tworzenia szablonu na platformie Azure.
 
 ```bash
 terraform init
 ```
 
-Następnym krokiem jest sprawdzenie Terraform i zweryfikowanie szablonu. Ten krok umożliwia porównanie żądanych zasobów z informacjami o stanie zapisywanymi przez Terraform, a następnie wyjściem z zaplanowanego wykonania. Zasoby *nie* są tworzone na platformie Azure.
+Następnym krokiem jest sprawdzenie terraform i sprawdzenie poprawności szablonu. Ten krok porównuje żądane zasoby do informacji o stanie zapisanych przez Terraform, a następnie wyprowadza planowane wykonanie. Zasoby platformy Azure nie są tworzone w tym momencie.
 
 ```bash
 terraform plan
 ```
 
-Po wykonaniu poprzedniego polecenia powinien wyglądać podobnie do następującego ekranu:
+Po wykonaniu poprzedniego polecenia powinien zostać wyświetlony następujący ekran:
 
 ```console
 Refreshing Terraform state in-memory prior to plan...
@@ -453,19 +453,19 @@ Note: You didn't specify an "-out" parameter to save this plan, so when
 Plan: 7 to add, 0 to change, 0 to destroy.
 ```
 
-Jeśli wszystko wygląda poprawnie i wszystko jest gotowe do skompilowania infrastruktury na platformie Azure, Zastosuj szablon w Terraform:
+Jeśli wszystko wygląda poprawnie i jesteś gotowy do tworzenia infrastruktury na platformie Azure, zastosuj szablon w Terraform:
 
 ```bash
 terraform apply
 ```
 
-Po zakończeniu Terraform infrastruktura maszyn wirtualnych będzie gotowa. Uzyskaj publiczny adres IP maszyny wirtualnej za pomocą [AZ VM show](/cli/azure/vm):
+Po zakończeniu terraform infrastruktury maszyny Wirtualnej jest gotowy. Uzyskaj publiczny adres IP maszyny Wirtualnej za pomocą [programu AZ VM Show:](/cli/azure/vm)
 
 ```azurecli-interactive
 az vm show --resource-group myResourceGroup --name myVM -d --query [publicIps] --o tsv
 ```
 
-Następnie można obsłużyć protokół SSH na maszynie wirtualnej:
+Następnie można SSH do maszyny Wirtualnej:
 
 ```bash
 ssh azureuser@<publicIps>
@@ -473,4 +473,4 @@ ssh azureuser@<publicIps>
 
 ## <a name="next-steps"></a>Następne kroki
 > [!div class="nextstepaction"]
-> [Dowiedz się więcej o korzystaniu z Terraform na platformie Azure](/azure/terraform)
+> [Dowiedz się więcej o korzystaniu z programu Terraform na platformie Azure](/azure/terraform)

@@ -1,41 +1,41 @@
 ---
-title: Jak zintegrować wspólny schemat alertów z Logic Apps
+title: Jak zintegrować wspólny schemat alertów z aplikacjami logiki
 description: Dowiedz się, jak utworzyć aplikację logiki, która wykorzystuje wspólny schemat alertów do obsługi wszystkich alertów.
 ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 05/27/2019
 ms.openlocfilehash: 9042ed8ddbb698192e638fa7538f74561574c262
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77668234"
 ---
-# <a name="how-to-integrate-the-common-alert-schema-with-logic-apps"></a>Jak zintegrować wspólny schemat alertów z Logic Apps
+# <a name="how-to-integrate-the-common-alert-schema-with-logic-apps"></a>Jak zintegrować wspólny schemat alertów z aplikacjami logiki
 
 W tym artykule pokazano, jak utworzyć aplikację logiki, która wykorzystuje wspólny schemat alertów do obsługi wszystkich alertów.
 
 ## <a name="overview"></a>Omówienie
 
-[Typowy schemat alertów](https://aka.ms/commonAlertSchemaDocs) zawiera znormalizowany i rozszerzalny schemat JSON dla wszystkich różnych typów alertów. Typowy schemat alertów jest najbardziej przydatny, gdy jest używany programowo — za pomocą elementów webhook, Runbook i Logic Apps. W tym artykule pokazano, jak można utworzyć pojedynczą aplikację logiki do obsługi wszystkich alertów. Te same zasady można stosować do innych metod programistycznych. Aplikacja logiki opisana w tym artykule tworzy dobrze zdefiniowane zmienne dla [pól "Essential"](alerts-common-schema-definitions.md#essentials), a także opisuje, jak można obsłużyć logikę specyficzną dla [typu alertu](alerts-common-schema-definitions.md#alert-context) .
+[Wspólny schemat alertu](https://aka.ms/commonAlertSchemaDocs) zapewnia znormalizowany i rozszerzalny schemat JSON we wszystkich różnych typach alertów. Wspólny schemat alertów jest najbardziej przydatne, gdy wykorzystuje się programowo — za pośrednictwem webhooks, runbooks i aplikacji logiki. W tym artykule zademonstrujemy, jak można tworzyć pojedynczą aplikację logiki do obsługi wszystkich alertów. Te same zasady mogą być stosowane do innych metod programowych. Aplikacja logiki opisana w tym artykule tworzy dobrze zdefiniowane zmienne dla [pól "istotne",](alerts-common-schema-definitions.md#essentials)a także opisuje, jak można obsługiwać logikę [określonego typu alertu.](alerts-common-schema-definitions.md#alert-context)
 
 
 ## <a name="prerequisites"></a>Wymagania wstępne 
 
-W tym artykule przyjęto założenie, że czytelnik zna 
-* Konfigurowanie reguł alertów ([Metryka](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric), [Dziennik](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-log), [Dziennik aktywności](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log))
+W tym artykule założono, że czytelnik jest zaznajomiony z 
+* Konfigurowanie reguł alertów[(metryka,](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric) [dziennik,](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-log) [dziennik aktywności)](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log)
 * Konfigurowanie [grup akcji](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups)
-* Włączanie [wspólnego schematu alertu](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-common-schema#how-do-i-enable-the-common-alert-schema) z poziomu grup akcji
+* Włączanie [wspólnego schematu alertów](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-common-schema#how-do-i-enable-the-common-alert-schema) z poziomu grup akcji
 
-## <a name="create-a-logic-app-leveraging-the-common-alert-schema"></a>Tworzenie aplikacji logiki wykorzystującej wspólny schemat alertów
+## <a name="create-a-logic-app-leveraging-the-common-alert-schema"></a>Tworzenie aplikacji logiki z wykorzystaniem wspólnego schematu alertu
 
-1. Postępuj zgodnie z [instrukcjami, aby utworzyć aplikację logiki](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups-logic-app). 
+1. Wykonaj [opisane kroki, aby utworzyć aplikację logiki](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups-logic-app). 
 
 1.  Wybierz wyzwalacz: **po odebraniu żądania HTTP**.
 
     ![Wyzwalacze aplikacji logiki](media/action-groups-logic-app/logic-app-triggers.png "Wyzwalacze aplikacji logiki")
 
-1.  Wybierz pozycję **Edytuj** , aby zmienić wyzwalacz żądania HTTP.
+1.  Wybierz **edytuj,** aby zmienić wyzwalacz żądania HTTP.
 
     ![Wyzwalacze żądań HTTP](media/action-groups-logic-app/http-request-trigger-shape.png "Wyzwalacze żądań HTTP")
 
@@ -109,34 +109,34 @@ W tym artykule przyjęto założenie, że czytelnik zna
         }
     ```
 
-1. Wybierz pozycję **+** **nowy krok** , a następnie wybierz pozycję **Dodaj akcję**.
+1. Wybierz **+** **pozycję Nowy krok,** a następnie wybierz pozycję Dodaj **akcję**.
 
-    ![Dodaj akcję](media/action-groups-logic-app/add-action.png "Dodawanie akcji")
+    ![Dodawanie akcji](media/action-groups-logic-app/add-action.png "Dodawanie akcji")
 
-1. Na tym etapie można dodać różne łączniki (Microsoft Teams, zapasowe, Salesforce itp.) na podstawie określonych wymagań firmy. Możesz użyć nieaktualnego pola "Essential Fields". 
+1. Na tym etapie można dodać różne łączniki (Microsoft Teams, Slack, Salesforce itp.) na podstawie określonych wymagań biznesowych. Możesz użyć "podstawowych pól" out-of-the-box. 
 
     ![Podstawowe pola](media/alerts-common-schema-integrations/logic-app-essential-fields.png "Podstawowe pola")
     
-    Alternatywnie można utworzyć logikę warunkową opartą na typie alertu przy użyciu opcji "Expression".
+    Alternatywnie można tworzyć logikę warunkową na podstawie typu alertu przy użyciu opcji "Wyrażenie".
 
     ![Wyrażenie aplikacji logiki](media/alerts-common-schema-integrations/logic-app-expressions.png "Wyrażenie aplikacji logiki")
     
      [Pole "monitoringService"](alerts-common-schema-definitions.md#alert-context) umożliwia jednoznaczną identyfikację typu alertu, na podstawie którego można utworzyć logikę warunkową.
 
     
-    Na przykład poniższy fragment kodu sprawdza, czy alert jest oparty na Application Insights alertu dziennika, a następnie drukuje wyniki wyszukiwania. W przeciwnym razie drukuje "NA".
+    Na przykład poniższy urywek sprawdza, czy alert jest alertem dziennika opartym na usłudze Application Insights, a jeśli tak, drukuje wyniki wyszukiwania. W przeciwnym razie drukuje "NA".
 
     ```text
       if(equals(triggerBody()?['data']?['essentials']?['monitoringService'],'Application Insights'),triggerBody()?['data']?['alertContext']?['SearchResults'],'NA')
     ```
     
-     Dowiedz się więcej na temat [pisania wyrażeń aplikacji logiki](https://docs.microsoft.com/azure/logic-apps/workflow-definition-language-functions-reference#logical-comparison-functions).
+     Dowiedz się więcej o [pisaniu wyrażeń aplikacji logiki](https://docs.microsoft.com/azure/logic-apps/workflow-definition-language-functions-reference#logical-comparison-functions).
 
     
 
 
 ## <a name="next-steps"></a>Następne kroki
 
-* [Dowiedz się więcej na temat grup akcji](../../azure-monitor/platform/action-groups.md).
-* [Dowiedz się więcej o typowym schemacie alertów](https://aka.ms/commonAlertSchemaDocs).
+* [Dowiedz się więcej o grupach akcji](../../azure-monitor/platform/action-groups.md).
+* [Dowiedz się więcej o wspólnym schemacie alertów](https://aka.ms/commonAlertSchemaDocs).
 

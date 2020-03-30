@@ -1,19 +1,19 @@
 ---
-title: Przechowywanie danych niestrukturalnych przy użyciu Azure Cosmos DB i funkcji
+title: Przechowywanie danych nieustrukturyzowanych przy użyciu usługi Azure Cosmos DB i funkcji
 description: Przechowywanie danych niestrukturalnych przy użyciu usług Azure Functions i Cosmos DB
 ms.topic: quickstart
 ms.date: 10/01/2018
 ms.custom: mvc
 ms.openlocfilehash: bae5e82bfe9091c2b2003b4f1735f51e3d37222d
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "74230563"
 ---
 # <a name="store-unstructured-data-using-azure-functions-and-azure-cosmos-db"></a>Przechowywanie danych niestrukturalnych przy użyciu usług Azure Functions i Azure Cosmos DB
 
-Usługa [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) to doskonały sposób przechowywania danych bez struktury i danych JSON. Dzięki połączeniu usług Azure Functions i Cosmos DB przechowywanie danych staje się szybkie i proste oraz wymaga znacznie krótszego kodu niż w przypadku przechowywania danych w relacyjnej bazie danych.
+[Usługa Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) to świetny sposób na przechowywanie danych nieustrukturyzowanych i JSON. Dzięki połączeniu usług Azure Functions i Cosmos DB przechowywanie danych staje się szybkie i proste oraz wymaga znacznie krótszego kodu niż w przypadku przechowywania danych w relacyjnej bazie danych.
 
 > [!NOTE]
 > W tej chwili wyzwalacz usługi Azure Cosmos DB, powiązania danych wejściowych i powiązania danych wyjściowych współpracują tylko z kontami interfejsu API SQL i interfejsu API programu Graph.
@@ -65,7 +65,7 @@ Do utworzenia powiązania danych wyjściowych konieczne jest posiadanie konta us
 
 Zastąp istniejący kod funkcji w następującym kodem w wybranym języku:
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C #](#tab/csharp)
 
 Zastąp istniejącą funkcję w języku C# następującym kodem:
 
@@ -102,7 +102,7 @@ public static IActionResult Run(HttpRequest req, out object taskDocument, ILogge
 }
 ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[Javascript](#tab/javascript)
 
 Zastąp istniejącą funkcję w języku JavaScript następującym kodem:
 

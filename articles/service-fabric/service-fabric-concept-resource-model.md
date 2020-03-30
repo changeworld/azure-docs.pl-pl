@@ -1,93 +1,105 @@
 ---
-title: Model zasobów aplikacji Service Fabric platformy Azure
-description: Ten artykuł zawiera omówienie zarządzania aplikacją Service Fabric platformy Azure przy użyciu Azure Resource Manager
+title: Model zasobów aplikacji sieci szkieletowej usługi Azure
+description: Ten artykuł zawiera omówienie zarządzania aplikacją usługi Azure Service Fabric przy użyciu usługi Azure Resource Manager.
 ms.topic: conceptual
 ms.date: 10/21/2019
 ms.custom: sfrev
-ms.openlocfilehash: 44073967730d95e803f57d504aa9d8c529250a8d
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 69c10b0e9d3b7c29122c8432ab1e4bc06d3a3120
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75751195"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79481120"
 ---
-# <a name="service-fabric-application-resource-model"></a>Model zasobów aplikacji Service Fabric
+# <a name="service-fabric-application-resource-model"></a>Model zasobów aplikacji sieci szkieletowej usług
 
-Zaleca się, aby Service Fabric aplikacje zostały wdrożone w klastrze Service Fabric za pośrednictwem Azure Resource Manager. Dzięki tej metodzie można opisać aplikacje i usługi w formacie JSON i wdrożyć je w tym samym szablonie Menedżer zasobów co klaster. W przeciwieństwie do wdrażania aplikacji i zarządzania nimi za pomocą programu PowerShell lub interfejsu wiersza polecenia platformy Azure nie trzeba czekać, aż klaster będzie gotowy. Proces rejestracji, aprowizacji i wdrażania aplikacji może obejmować tylko jeden krok. Jest to najlepsze rozwiązanie w zakresie zarządzania cyklem życiowym aplikacji w klastrze. Aby uzyskać więcej informacji, zobacz [najlepsze rozwiązania: infrastruktura jako kod](https://docs.microsoft.com/azure/service-fabric/service-fabric-best-practices-infrastructure-as-code#azure-service-fabric-resources).
+Masz wiele opcji wdrażania aplikacji sieci szkieletowej usługi Azure w klastrze sieci szkieletowej usług. Zalecamy korzystanie z usługi Azure Resource Manager. Jeśli używasz Menedżera zasobów, można opisać aplikacje i usługi w JSON, a następnie wdrożyć je w tym samym szablonie Menedżera zasobów co klaster. W przeciwieństwie do korzystania z programu PowerShell lub interfejsu wiersza polecenia platformy Azure do wdrażania aplikacji i zarządzania nimi, jeśli używasz Menedżera zasobów, nie trzeba czekać na klaster, aby być gotowym; rejestracja aplikacji, inicjowanie obsługi administracyjnej i wdrażanie może się zdarzyć w jednym kroku. Korzystanie z Menedżera zasobów jest najlepszym sposobem zarządzania cyklem życia aplikacji w klastrze. Aby uzyskać więcej informacji, zobacz [Najważniejsze wskazówki: Infrastruktura jako kod](service-fabric-best-practices-infrastructure-as-code.md#azure-service-fabric-resources).
 
-W razie potrzeby Zarządzaj aplikacjami jako zasobami Menedżer zasobów, aby zwiększyć:
+Zarządzanie aplikacjami jako zasobami w Menedżerze zasobów może pomóc w uzyskaniu ulepszeń w następujących obszarach:
 
-* Dziennik inspekcji: Menedżer zasobów przeprowadza inspekcję każdej operacji i utrzymuje szczegółowy *Dziennik aktywności* , który może pomóc w śledzeniu wszelkich zmian wprowadzonych w tych aplikacjach i w klastrze.
-* Kontrola dostępu oparta na rolach: zarządzanie dostępem do klastrów oraz aplikacji wdrożonych w klastrze można wykonać za pomocą tego samego szablonu Menedżer zasobów.
-* Azure Resource Manager (za pośrednictwem Azure Portal) stanie się jednym zatrzymywaniem do zarządzania klastrem i krytycznymi wdrożeniami aplikacji.
-
-## <a name="service-fabric-application-life-cycle-with-azure-resource-manager"></a>Cykl życia aplikacji Service Fabric z Azure Resource Manager
+* Dziennik inspekcji: Menedżer zasobów przeprowadza inspekcje każdej operacji i przechowuje szczegółowy dziennik działań. Dziennik aktywności może pomóc w śledzeniu wszelkich zmian wprowadzonych w aplikacjach i klastrze.
+* Kontrola dostępu oparta na rolach: można zarządzać dostępem do klastrów i aplikacji wdrożonych w klastrze przy użyciu tego samego szablonu Menedżera zasobów.
+* Wydajność zarządzania: korzystanie z Menedżera zasobów zapewnia jedną lokalizację (witrynę Azure portal) do zarządzania klastrem i wdrożeniami aplikacji krytycznych.
 
 W tym dokumencie dowiesz się, jak:
 
 > [!div class="checklist"]
 >
-> * Wdrażanie zasobów aplikacji przy użyciu Azure Resource Manager
-> * Uaktualnianie zasobów aplikacji przy użyciu Azure Resource Manager
-> * Usuwanie zasobów aplikacji
+> * Wdrażanie zasobów aplikacji przy użyciu Menedżera zasobów.
+> * Uaktualnianie zasobów aplikacji przy użyciu Menedżera zasobów.
+> * Usuwanie zasobów aplikacji.
 
-## <a name="deploy-application-resources-using-azure-resource-manager"></a>Wdrażanie zasobów aplikacji przy użyciu Azure Resource Manager
+## <a name="deploy-application-resources"></a>Wdrażanie zasobów aplikacji
 
-Aby wdrożyć aplikację i jej usługi przy użyciu Azure Resource Manager modelu zasobów aplikacji, należy spakować kod aplikacji, przekazać pakiet, a następnie odwołać się do lokalizacji pakietu w szablonie Azure Resource Manager jako aplikacji zasoby. Aby uzyskać więcej informacji, zobacz [pakowanie aplikacji](https://docs.microsoft.com/azure/service-fabric/service-fabric-package-apps#create-an-sfpkg).
+Kroki wysokiego poziomu, które można wykonać w celu wdrożenia aplikacji i jej usług przy użyciu modelu zasobów aplikacji Menedżera zasobów są:
+1. Pakiet kodu aplikacji.
+1. Prześlij pakiet.
+1. Odwoływać się do lokalizacji pakietu w szablonie Menedżera zasobów jako zasobu aplikacji. 
 
-Następnie Utwórz szablon Azure Resource Manager, zaktualizuj plik parametrów przy użyciu szczegółów aplikacji i Wdróż go w klastrze Service Fabric. W [tym miejscu](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/tree/master/ARM)zapoznaj się z przykładami.
+Aby uzyskać więcej informacji, zobacz [Pakiet aplikacji](service-fabric-package-apps.md#create-an-sfpkg).
+
+Następnie należy utworzyć szablon Menedżera zasobów, zaktualizować plik parametrów ze szczegółami aplikacji i wdrożyć szablon w klastrze sieci szkieletowej usług. [Zapoznaj się z przykładami](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/tree/master/ARM).
 
 ### <a name="create-a-storage-account"></a>Tworzenie konta magazynu
 
-Wdrożenie aplikacji na podstawie szablonu Menedżer zasobów wymaga konta magazynu na potrzeby przygotowania obrazu aplikacji. Możesz ponownie użyć istniejącego konta magazynu lub utworzyć nowe konto magazynu w celu przygotowania aplikacji. Jeśli chcesz użyć istniejącego konta magazynu, możesz pominąć ten krok. 
+Aby wdrożyć aplikację z szablonu Menedżera zasobów, musisz mieć konto magazynu. Konto magazynu służy do wystawiania obrazu aplikacji. 
+
+Można ponownie użyć istniejącego konta magazynu lub utworzyć nowe konto magazynu dla przemieszczania aplikacji. Jeśli używasz istniejącego konta magazynu, możesz pominąć ten krok. 
 
 ![Tworzenie konta magazynu][CreateStorageAccount]
 
-### <a name="configure-storage-account"></a>Skonfiguruj konto magazynu
+### <a name="configure-your-storage-account"></a>Konfigurowanie konta magazynu
 
-Po utworzeniu konta magazynu należy utworzyć kontener obiektów blob, w którym można przemieszczać aplikacje. W Azure Portal przejdź do konta magazynu, na którym chcesz przechowywać aplikacje. Wybierz blok **obiekty blob** , a następnie kliknij przycisk **Dodaj kontener** . Zasoby w klastrze mogą być zabezpieczone przez ustawienie publicznego poziomu dostępu do prywatnego. Dostęp można udzielić na wiele sposobów:
+Po utworzeniu konta magazynu należy utworzyć kontener obiektów blob, w którym można przemieszczać aplikacje. W witrynie Azure portal przejdź do konta usługi Azure Storage, na którym chcesz przechowywać aplikacje. Wybierz **pozycję Obiekty blob** > **Dodaj kontener**. 
 
-* [Autoryzuj dostęp do obiektów blob i kolejek przy użyciu Azure Active Directory](../storage/common/storage-auth-aad-app.md)
-* [Udzielanie dostępu do danych w obiektach blob i kolejkach na platformie Azure za pomocą kontroli dostępu opartej na rolach w witrynie Azure Portal](../storage/common/storage-auth-aad-rbac-portal.md)
-* [Delegowanie dostępu za pomocą sygnatury dostępu współdzielonego (SAS)](https://docs.microsoft.com/rest/api/storageservices/delegate-access-with-shared-access-signature
-)
+Zasoby w klastrze można zabezpieczyć, ustawiając publiczny poziom dostępu na **prywatny**. Dostęp można udzielić na wiele sposobów:
 
- Na potrzeby tego przykładu będziemy korzystać z anonimowego dostępu do odczytu dla obiektów BLOB.
+* Autoryzuj dostęp do obiektów blob i kolejek przy użyciu [usługi Azure Active Directory](../storage/common/storage-auth-aad-app.md).
+* Udziel dostępu do danych obiektów blob i kolejek platformy Azure przy użyciu [funkcji RBAC w witrynie Azure portal](../storage/common/storage-auth-aad-rbac-portal.md).
+* Delegowanie dostępu przy użyciu [sygnatury dostępu współdzielonego](https://docs.microsoft.com/rest/api/storageservices/delegate-access-with-shared-access-signature).
 
-![Utwórz obiekt BLOB][CreateBlob]
+Przykład na poniższym zrzucie ekranu używa anonimowego dostępu do odczytu dla obiektów blob.
 
-### <a name="stage-application-in-a-storage-account"></a>Przygotowanie aplikacji na koncie magazynu
+![Tworzenie obiektu blob][CreateBlob]
 
-Aby można było wdrożyć aplikację, należy ją przemieszczać w usłudze BLOB Storage. W tym samouczku utworzysz pakiet aplikacji ręcznie, jednak ten krok będzie można zautomatyzować.  Aby uzyskać więcej informacji, zobacz [pakowanie aplikacji](https://docs.microsoft.com/azure/service-fabric/service-fabric-package-apps#create-an-sfpkg). W poniższych krokach zostanie użyta [Przykładowa aplikacja do głosowania](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart) .
+### <a name="stage-the-application-in-your-storage-account"></a>Etap aplikacji na koncie magazynu
 
-1. W programie Visual Studio kliknij prawym przyciskiem myszy projekt głosowania i wybierz polecenie pakiet.
-][PackageApplication] aplikacji pakietu ![  
-2. Otwórz katalog **.\Service-Fabric-dotnet-quickstart\Voting\pkg\Debug** , który został właśnie utworzony, i zanotuj zawartość do pliku o nazwie **głosu. zip** , tak że ApplicationManifest. XML znajduje się w katalogu głównym pliku zip.  
-![][ZipApplication] aplikacji zip  
-3. Zmień nazwę rozszerzenia pliku z. zip na **. sfpkg**.
-4. W Azure Portal, w kontenerze **aplikacje** konta magazynu, kliknij przycisk **Przekaż** i przekaż **głosu. sfpkg**.  
-![przekaż pakiet aplikacji][UploadAppPkg]
+Przed wdrożeniem aplikacji należy zorganizować aplikację w magazynie obiektów blob. W tym samouczku tworzymy pakiet aplikacji ręcznie. Należy pamiętać, że ten krok można zautomatyzować. Aby uzyskać więcej informacji, zobacz [Pakowanie aplikacji](service-fabric-package-apps.md#create-an-sfpkg). 
 
-Aplikacja jest teraz przygotowana. Teraz można utworzyć szablon Azure Resource Manager, aby wdrożyć aplikację.
+W tym samouczku używamy [przykładowej aplikacji głosowania](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart).
 
-### <a name="create-the-azure-resource-manager-template"></a>Tworzenie szablonu Azure Resource Manager
+1. W programie Visual Studio kliknij prawym przyciskiem myszy projekt **głosowania,** a następnie wybierz pozycję **Pakiet**.
 
-Przykładowa aplikacja zawiera [szablony Azure Resource Manager](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/tree/master/ARM) , których można użyć do wdrożenia aplikacji. Pliki szablonów mają nazwę **UserApp. JSON** i **UserApp. Parameters. JSON**.
+   ![Aplikacja pakietu][PackageApplication]  
+1. Przejdź do katalogu *.\service-fabric-dotnet-quickstart\Voting\pkg\Debug.* Skompresuj zawartość do pliku o nazwie *Voting.zip*. *Plik ApplicationManifest.xml* powinien znajdować się w katalogu głównym w pliku zip.
+
+   ![Aplikacja zip][ZipApplication]  
+1. Zmień nazwę pliku, aby zmienić rozszerzenie z .zip na *.sfpkg*.
+
+1. W witrynie Azure portal w kontenerze **aplikacji** dla konta magazynu wybierz pozycję **Przekaż**, a następnie przekaż **plik Voting.sfpkg**. 
+
+   ![Przekaż pakiet aplikacji][UploadAppPkg]
+
+Teraz aplikacja jest teraz przemieszczana i można utworzyć szablon Menedżera zasobów, aby wdrożyć aplikację.
+
+### <a name="create-the-resource-manager-template"></a>Tworzenie szablonu usługi Resource Manager
+
+Przykładowa aplikacja zawiera [szablony usługi Azure Resource Manager,](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/tree/master/ARM) których można użyć do wdrożenia aplikacji. Nazwy plików szablonów to *UserApp.json* i *UserApp.Parameters.json*.
 
 > [!NOTE]
-> Plik **UserApp. Parameters. JSON** należy zaktualizować nazwą klastra.
+> Plik *UserApp.Parameters.json* musi zostać zaktualizowany o nazwę klastra.
 >
 >
 
 | Parametr              | Opis                                 | Przykład                                                      | Komentarze                                                     |
 | ---------------------- | ------------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| clusterName            | Nazwa klastra, na którym jest wdrażana | SF-cluster123                                                |                                                              |
-| aplikacja            | Nazwa aplikacji                 | Wybor                                                       |
-| applicationTypeName    | Nazwa typu aplikacji           | VotingType                                                   | Musi być zgodna z ApplicationManifest. XML                 |
-| applicationTypeVersion | Wersja typu aplikacji         | 1.0.0                                                        | Musi być zgodna z ApplicationManifest. XML                 |
-| serviceName            | Nazwa usługi, która jest usługą         | Głosowanie ~ VotingWeb                                             | Musi być w formacie ApplicationName ~ Service            |
-| Typ ServiceTypeName        | Nazwa typu usługi                | VotingWeb                                                    | Musi być zgodna z danymi w pliku servicemanifest. XML                 |
-| appPackageUrl          | Adres URL magazynu obiektów BLOB aplikacji     | https://servicefabricapps.blob.core.windows.net/apps/Voting.sfpkg | Adres URL pakietu aplikacji w usłudze BLOB Storage (Procedura ustawiania tego ustawienia została opisana poniżej). |
+| clusterName            | Nazwa klastra, w który wdrażasz | sf-klaster123                                                |                                                              |
+| aplikacja            | Nazwa aplikacji                 | Voting (Głosowanie)                                                       |
+| nazwa typu aplikacji    | Nazwa typu aplikacji           | Rodzaj głosowania                                                   | Musi być zgodny z applicationmanifest.xml                 |
+| aplikacjaTypeVersion | Wersja typu aplikacji         | 1.0.0                                                        | Musi być zgodny z applicationmanifest.xml                 |
+| Servicename            | Nazwa usługi         | Głosowanie ~ VotingWeb                                             | Musi być w formacie ApplicationName~ServiceType            |
+| nazwa typu usługi        | Nazwa typu usługi                | VotingWeb                                                    | Musi być zgodny z servicemanifest.xml                 |
+| aplikacjaPackageUrl          | Adres URL magazynu obiektów blob aplikacji     | https://servicefabricapps.blob.core.windows.net/apps/Voting.sfpkg | Adres URL pakietu aplikacji w magazynie obiektów blob (procedura ustawiania adresu URL jest opisana w dalszej części artykułu) |
 
 ```json
 {
@@ -118,17 +130,17 @@ Przykładowa aplikacja zawiera [szablony Azure Resource Manager](https://github.
 
 ### <a name="deploy-the-application"></a>Wdrażanie aplikacji
 
-Aby wdrożyć aplikację, uruchom polecenie New-AzResourceGroupDeployment w celu wdrożenia w grupie zasobów, która zawiera klaster.
+Uruchom polecenie cmdlet **New-AzResourceGroupDeployment,** aby wdrożyć aplikację w grupie zasobów zawierającej klaster:
 
 ```powershell
 New-AzResourceGroupDeployment -ResourceGroupName "sf-cluster-rg" -TemplateParameterFile ".\UserApp.Parameters.json" -TemplateFile ".\UserApp.json" -Verbose
 ```
 
-## <a name="upgrade-service-fabric-application-using-azure-resource-manager"></a>Uaktualnij aplikację Service Fabric przy użyciu Azure Resource Manager
+## <a name="upgrade-the-service-fabric-application-by-using-resource-manager"></a>Uaktualnianie aplikacji sieci szkieletowej usług przy użyciu Menedżera zasobów
 
-Aplikacje wdrożone już w klastrze Service Fabric zostaną uaktualnione z następujących powodów:
+Możesz uaktualnić aplikację, która jest już wdrożona do klastra sieci szkieletowej usług z jednego z następujących powodów:
 
-1. Nowa usługa zostanie dodana do aplikacji. Definicję usługi należy dodać do pliku Service-manifest. XML i Application-manifest. XML. Następnie aby odzwierciedlić nową wersję aplikacji, należy zaktualizować wersję typu aplikacji z 1.0.0 do 1.0.1 [UserApp. Parameters. JSON](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/blob/master/ARM/UserApp.Parameters.json).
+* Nowa usługa jest dodawana do aplikacji. Definicja usługi musi zostać dodana do plików *service-manifest.xml* i *application-manifest.xml,* gdy usługa jest dodawana do aplikacji. Aby odzwierciedlić nową wersję aplikacji, należy również zmienić wersję typu aplikacji z 1.0.0 na 1.0.1 w [Aplikacji UserApp.Parameters.json](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/blob/master/ARM/UserApp.Parameters.json):
 
     ```json
     "applicationTypeVersion": {
@@ -142,7 +154,7 @@ Aplikacje wdrożone już w klastrze Service Fabric zostaną uaktualnione z nast�
     }
     ```
 
-2. Nowa wersja istniejącej usługi zostanie dodana do aplikacji. Dotyczy to zmian w kodzie aplikacji oraz aktualizacji wersji i nazwy typu aplikacji.
+* Nowa wersja istniejącej usługi jest dodawany do aplikacji. Przykłady obejmują zmiany kodu aplikacji i aktualizacje wersji i nazwy typu aplikacji. W przypadku tego uaktualnienia zaktualizuj plik UserApp.Parameters.json w ten sposób:
 
     ```json
      "applicationTypeVersion": {
@@ -152,15 +164,15 @@ Aplikacje wdrożone już w klastrze Service Fabric zostaną uaktualnione z nast�
 
 ## <a name="delete-application-resources"></a>Usuwanie zasobów aplikacji
 
-Aplikacje wdrożone przy użyciu modelu zasobów aplikacji w Azure Resource Manager można usunąć z klastra, wykonując poniższe kroki
+Aby usunąć aplikację wdrożoną przy użyciu modelu zasobów aplikacji w Menedżerze zasobów:
 
-1) Pobierz identyfikator zasobu dla aplikacji za pomocą polecenia [Get-AzResource](https://docs.microsoft.com/powershell/module/az.resources/get-azresource?view=azps-2.5.0):
+1. Użyj polecenia cmdlet [Get-AzResource,](https://docs.microsoft.com/powershell/module/az.resources/get-azresource?view=azps-2.5.0) aby uzyskać identyfikator zasobu dla aplikacji:
 
     ```powershell
     Get-AzResource  -Name <String> | f1
     ```
 
-2) Usuń zasoby aplikacji za pomocą polecenia [Remove-AzResource](https://docs.microsoft.com/powershell/module/az.resources/remove-azresource?view=azps-2.5.0):
+1. Użyj polecenia cmdlet [Usuń-AzResource,](https://docs.microsoft.com/powershell/module/az.resources/remove-azresource?view=azps-2.5.0) aby usunąć zasoby aplikacji:
 
     ```powershell
     Remove-AzResource  -ResourceId <String> [-Force] [-ApiVersion <String>]
@@ -168,15 +180,13 @@ Aplikacje wdrożone przy użyciu modelu zasobów aplikacji w Azure Resource Mana
 
 ## <a name="next-steps"></a>Następne kroki
 
-Pobierz informacje o modelu zasobów aplikacji:
+Uzyskaj informacje o modelu zasobów aplikacji:
 
-* [Modelowanie aplikacji w Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-application-model)
-* [Service Fabric manifesty aplikacji i usług](https://docs.microsoft.com/azure/service-fabric/service-fabric-application-and-service-manifests)
+* [Modelowanie aplikacji w sieci szkieletowej usług](service-fabric-application-model.md)
+* [Manifesty aplikacji i usług sieci szkieletowej usług](service-fabric-application-and-service-manifests.md)
+* [Najważniejsze wskazówki: Infrastruktura jako kod](service-fabric-best-practices-infrastructure-as-code.md#azure-service-fabric-resources)
+* [Zarządzanie aplikacjami i usługami jako zasobami platformy Azure](service-fabric-best-practices-infrastructure-as-code.md)
 
-## <a name="see-also"></a>Zobacz też
-
-* [Najlepsze praktyki](https://docs.microsoft.com/azure/service-fabric/service-fabric-best-practices-infrastructure-as-code)
-* [Zarządzanie aplikacjami i usługami jako zasobami platformy Azure](https://docs.microsoft.com/azure/service-fabric/service-fabric-best-practices-infrastructure-as-code)
 
 <!--Image references-->
 [CreateStorageAccount]: ./media/service-fabric-application-model/create-storage-account.png

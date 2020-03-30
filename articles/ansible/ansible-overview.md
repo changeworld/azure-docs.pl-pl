@@ -5,31 +5,31 @@ keywords: ansible, azure, devops, overview, cloud provision, configuration manag
 ms.topic: overview
 ms.date: 04/30/2019
 ms.openlocfilehash: e9d5b8858f052083b157c7d4809fe21018518bcd
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77193569"
 ---
 # <a name="using-ansible-with-azure"></a>Używanie rozwiązania Ansible z platformą Azure
 
-[Ansible](https://www.ansible.com) jest produktem typu open source, które automatyzuje aprowizowanie chmury, zarządzanie konfiguracją i wdrożenia aplikacji. Korzystając z rozwiązania Ansible, można aprowizować maszyny wirtualne, kontenery, sieć oraz infrastruktury chmury. Ponadto rozwiązania ansible umożliwia automatyzację wdrażania i konfigurowania zasobów w środowisku.
+[Ansible](https://www.ansible.com) jest produktem typu open source, które automatyzuje aprowizowanie chmury, zarządzanie konfiguracją i wdrożenia aplikacji. Korzystając z rozwiązania Ansible, można aprowizować maszyny wirtualne, kontenery, sieć oraz infrastruktury chmury. Ponadto ansible umożliwia automatyzację wdrażania i konfiguracji zasobów w środowisku.
 
 Ten artykuł zawiera ogólne omówienie niektórych korzyści wynikających z używania rozwiązania Ansible z platformą Azure.
 
 ## <a name="ansible-playbooks"></a>Elementy playbook rozwiązania Ansible
 
-[Rozwiązania ansible elementy PlayBook](https://docs.ansible.com/ansible/latest/playbooks.html) umożliwia bezpośrednią konfigurację środowiska. Elementy PlayBook są kodowane przy użyciu YAML, aby można było je odczytać przez człowieka. Sekcja samouczków zawiera wiele przykładów korzystania z elementy PlayBook w celu instalowania i konfigurowania zasobów platformy Azure. 
+[Czytelne podręczniki](https://docs.ansible.com/ansible/latest/playbooks.html) umożliwiają kierowanie programu Ansible w celu skonfigurowania środowiska. Podręczniki są kodowane przy użyciu YAML, tak aby były czytelne dla człowieka. W sekcji Samouczki przedstawiono wiele przykładów instalowania i konfigurowania zasobów platformy Azure za pomocą podręczników. 
 
 ## <a name="ansible-modules"></a>Moduły rozwiązania Ansible
 
-Rozwiązania ansible zawiera zestaw [modułów rozwiązania ansible](https://docs.ansible.com/ansible/latest/modules_by_category.html) , które są uruchamiane bezpośrednio na hostach zdalnych lub za pośrednictwem [elementy PlayBook](https://docs.ansible.com/ansible/latest/playbooks.html). Użytkownicy mogą tworzyć własne moduły. Moduły służą do kontrolowania zasobów systemowych, takich jak usługi, pakiety lub pliki, lub wykonywanie poleceń systemu.
+Ansible zawiera zestaw [modułów Ansible,](https://docs.ansible.com/ansible/latest/modules_by_category.html) które są uruchamiane bezpośrednio na zdalnych hostach lub za pośrednictwem [podręczników.](https://docs.ansible.com/ansible/latest/playbooks.html) Użytkownicy mogą tworzyć własne moduły. Moduły są używane do kontrolowania zasobów systemowych — takich jak usługi, pakiety lub pliki — lub wykonywania poleceń systemowych.
 
-W przypadku korzystania z usług platformy Azure rozwiązania ansible obejmuje pakiet [modułów chmurowych rozwiązania ansible](https://docs.ansible.com/ansible/list_of_cloud_modules.html#azure). Te moduły umożliwiają tworzenie i organizowanie infrastruktury na platformie Azure. 
+Do interakcji z usługami platformy Azure Ansible zawiera zestaw [modułów chmury Ansible.](https://docs.ansible.com/ansible/list_of_cloud_modules.html#azure) Te moduły umożliwiają tworzenie i organizowanie infrastruktury na platformie Azure. 
 
 ## <a name="migrate-existing-workload-to-azure"></a>Migrowanie istniejących obciążeń na platformę Azure
 
-Po użyciu rozwiązania ansible do zdefiniowania infrastruktury możesz zastosować element PlayBook aplikacji, dzięki czemu platforma Azure automatycznie skaluje swoje środowisko w miarę potrzeb. 
+Po użyciu Ansible do definiowania infrastruktury, można zastosować podręcznik aplikacji, dzięki czemu platforma Azure automatycznie skalować środowisko w razie potrzeby. 
 
 ## <a name="automate-cloud-native-application-in-azure"></a>Automatyzacja aplikacji natywnych dla chmury na platformie Azure
 
@@ -41,20 +41,20 @@ Rozwiązanie Ansible, za pośrednictwem funkcji [spisu dynamicznego](https://doc
 
 ## <a name="additional-azure-marketplace-options"></a>Dodatkowe opcje w witrynie Azure Marketplace
 
-[Rozwiązania ansible Tower](https://azuremarketplace.microsoft.com/marketplace/apps/redhat.ansible-tower) to obraz portalu Azure Marketplace, który Red Hat. 
+[Ansible Tower](https://azuremarketplace.microsoft.com/marketplace/apps/redhat.ansible-tower) to obraz portalu Azure Marketplace autorstwa Red Hat. 
 
-Rozwiązania ansible Tower to oparty na sieci Web interfejs użytkownika i pulpit nawigacyjny dla rozwiązania ansible, który ma następujące funkcje:
+Ansible Tower to internetowy interfejs użytkownika i pulpit nawigacyjny dla programu Ansible, który ma następujące funkcje:
 
-* Umożliwia zdefiniowanie kontroli dostępu opartej na rolach, planowania zadań i zarządzania zapasami graficznymi. 
-* Obejmuje interfejs API REST i interfejsu wiersza polecenia, dzięki czemu można wstawiać wieża do istniejących narzędzi i procesów. 
-* Obsługuje dane wyjściowe przebiegów element PlayBook w czasie rzeczywistym. 
-* Szyfruje poświadczenia — takie jak Azure i klucze SSH — umożliwia delegowanie zadań bez ujawniania poświadczeń.
+* Umożliwia definiowanie kontroli dostępu opartej na rolach, planowania zadań i graficznego zarządzania zapasami. 
+* Zawiera interfejs API REST i interfejs wiersza polecenia, dzięki czemu można wstawić wieżę do istniejących narzędzi i procesów. 
+* Obsługuje wydruki w czasie rzeczywistym. 
+* Szyfruje poświadczenia — takie jak azure i klucze SSH — dzięki czemu można delegować zadania bez ujawniania poświadczeń.
 
 ## <a name="ansible-module-and-version-matrix-for-azure"></a>Moduł rozwiązania Ansible i macierz wersji dla platformy Azure
 
-Rozwiązania ansible zawiera zestaw modułów do użycia podczas aprowizacji i konfigurowania zasobów platformy Azure. Do tych zasobów należą maszyny wirtualne, zestawy skalowania, usługi sieciowe i usługi kontenera. [Macierz rozwiązania ansible](./ansible-matrix.md) zawiera moduły rozwiązania ansible dla platformy Azure i wersje rozwiązania ansible, w których są dostarczane.
+Ansible zawiera zestaw modułów do użycia w inicjowaniu obsługi administracyjnej i konfigurowania zasobów platformy Azure. Zasoby te obejmują maszyny wirtualne, zestawy skalowania, usługi sieciowe i usługi kontenerów. [Macierz Ansible](./ansible-matrix.md) zawiera listę modułów Ansible dla platformy Azure i wersji Ansible, w których są dostarczane.
 
 ## <a name="next-steps"></a>Następne kroki
 
-- [Szybki Start: Wdrażanie szablonu rozwiązania rozwiązania ansible dla platformy Azure w usłudze CentOS](./ansible-deploy-solution-template.md)
-- [Szybki Start: Konfigurowanie maszyn wirtualnych z systemem Linux na platformie Azure przy użyciu rozwiązania ansible](./ansible-install-configure.md)
+- [Szybki start: wdrażanie szablonu rozwiązania Ansible dla platformy Azure w centos](./ansible-deploy-solution-template.md)
+- [Szybki start: konfigurowanie maszyn wirtualnych systemu Linux na platformie Azure przy użyciu aplikacji Ansible](./ansible-install-configure.md)

@@ -1,6 +1,6 @@
 ---
-title: Przykład Przewodnik dotyczący infrastruktury platformy Azure
-description: Poznaj wytyczne dotyczące projektowania i wdrażania przykładowej infrastruktury na platformie Azure.
+title: Przykładowa instruktaż infrastruktury platformy Azure
+description: Dowiedz się więcej o kluczowych wskazówki dotyczące projektowania i implementacji dotyczące wdrażania przykładowej infrastruktury na platformie Azure.
 documentationcenter: ''
 services: virtual-machines-windows
 author: cynthn
@@ -16,101 +16,101 @@ ms.date: 12/15/2017
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: ab6f304d78357e261c68ebbcfcb3746844edce8a
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74038564"
 ---
-# <a name="example-azure-infrastructure-walkthrough-for-windows-vms"></a>Przykład Przewodnik dotyczący infrastruktury platformy Azure dla maszyn wirtualnych z systemem Windows
-W tym artykule omówiono Tworzenie przykładowej infrastruktury aplikacji. Szczegółowo projektujemy infrastrukturę dla prostego sklepu online, który łączy wszystkie wytyczne i decyzje dotyczące konwencji nazewnictwa, zestawów dostępności, sieci wirtualnych i modułów równoważenia obciążenia, a także faktycznie wdrażają maszyny wirtualne.
+# <a name="example-azure-infrastructure-walkthrough-for-windows-vms"></a>Przykładowy przewodnik po infrastrukturze platformy Azure dla maszyn wirtualnych systemu Windows
+W tym artykule o wiele więcej niż w artykule. Szczegółowo projektujemy infrastrukturę dla prostego sklepu internetowego, który łączy wszystkie wytyczne i decyzje dotyczące konwencji nazewnictwa, zestawów dostępności, sieci wirtualnych i modułów równoważenia obciążenia, a także faktycznie wdraża maszyny wirtualne.We detailing an infrastructure for a simple online store that brings together all the guidelines and decisions around naming conventions, availability sets, virtual networks and load balancebalrs, and actually deploying your virtual machines (VMs).
 
-## <a name="example-workload"></a>Przykładowe obciążenie
-Cykle Adventure Works chcą utworzyć aplikację ze sklepu online na platformie Azure, która składa się z:
+## <a name="example-workload"></a>Przykładowe obciążenie pracą
+Adventure Works Cycles chce utworzyć aplikację sklepu internetowego na platformie Azure, która składa się z:
 
-* Dwa serwery IIS z frontonem klienta w warstwie sieci Web
-* Dwa serwery IIS przetwarzające dane i zamówienia w warstwie aplikacji
-* Dwa Microsoft SQL Server wystąpienia z grupami dostępności AlwaysOn (dwa serwery SQL i monitor z większością węzłów) do przechowywania danych i zamówień produktów w warstwie bazy danych
-* Dwa Active Directory kontrolery domeny dla kont klientów i dostawców w warstwie uwierzytelniania
+* Dwa serwery usług IIS z front-endem klienta w warstwie sieci web
+* Dwa serwery usług IIS przetwarzają dane i zamówienia w warstwie aplikacji
+* Dwa wystąpienia programu Microsoft SQL Server z grupami dostępności AlwaysOn (dwa serwery SQL i monitor węzła większościowego) do przechowywania danych produktów i zamówień w warstwie bazy danych
+* Dwa kontrolery domeny usługi Active Directory dla kont klientów i dostawców w warstwie uwierzytelniania
 * Wszystkie serwery znajdują się w dwóch podsieciach:
-  * podsieć frontonu dla serwerów sieci Web 
+  * podsieci front-end dla serwerów sieci web 
   * podsieć zaplecza dla serwerów aplikacji, klastra SQL i kontrolerów domeny
 
-![Diagram różnych warstw dla infrastruktury aplikacji](./media/infrastructure-example/example-tiers.png)
+![Diagram różnych warstw infrastruktury aplikacji](./media/infrastructure-example/example-tiers.png)
 
-Przychodzący bezpieczny ruch internetowy musi być zrównoważony obciążenie między serwerami sieci Web, gdy klienci przeglądają sklep online. Ruch przetwarzania zamówień w formie żądań HTTP z serwerów sieci Web musi być zrównoważony między serwerami aplikacji. Dodatkowo infrastruktura musi być zaprojektowana w celu zapewnienia wysokiej dostępności.
+Przychodzący bezpieczny ruch internetowy musi być równoważący obciążenie między serwerami sieci web, ponieważ klienci przeglądają sklep internetowy. Ruch przetwarzania zamówień w postaci żądań HTTP z serwerów sieci web musi być zrównoważony między serwerami aplikacji. Ponadto infrastruktura musi być zaprojektowana z myślą o wysokiej dostępności.
 
-Projekt wynikający z tego musi zawierać:
+Powstały wzór musi zawierać:
 
 * Subskrypcja i konto platformy Azure
-* Jedna grupa zasobów
+* Pojedyncza grupa zasobów
 * Dyski zarządzane platformy Azure
 * Sieć wirtualna z dwiema podsieciami
-* Zestawy dostępności dla maszyn wirtualnych z podobną rolą
+* Zestawy dostępności dla maszyn wirtualnych o podobnej roli
 * Maszyny wirtualne
 
-Wszystkie powyższe zasady nazewnictwa są następujące:
+Wszystkie powyższe są zgodne z tymi konwencjami nazewnictwa:
 
-* Cykle Adventure Works używają **[obciążenia IT]-[lokalizacja]-[zasób platformy Azure]** jako prefiks
-  * W tym przykładzie "**Azos**" (magazyn online Azure) jest nazwą obciążenia IT i "**use**" (Wschodnie stany USA 2) jest lokalizacją
-* Sieci wirtualne używają AZOS.-VN **[Number]**
-* Zestawy dostępności używają Azos-use-AS- **[role]**
-* Nazwy maszyn wirtualnych używają Azos-use-VM- **[VMName]**
+* Adventure Works Cycles używa **[obciążenia IT]-[lokalizacja]-[Zasób platformy Azure]** jako prefiksu
+  * W tym przykładzie **"azos**" (Sklep internetowy platformy Azure) jest nazwą obciążenia IT i "**use**" (East US 2) jest lokalizacją
+* Sieci wirtualne używają AZOS-USE-VN **[numer]**
+* Zestawy dostępności używają azos-use-as-**[rola]**
+* Nazwy maszyn wirtualnych używają azos-use-vm-**[vmname]**
 
 ## <a name="azure-subscriptions-and-accounts"></a>Subskrypcje i konta platformy Azure
-Cykle Adventure Works korzystają z subskrypcji przedsiębiorstwa o nazwie Adventure Works Enterprise Subscription, aby zapewnić rozliczenia dla tego obciążenia.
+Adventure Works Cycles używa subskrypcji Enterprise o nazwie Adventure Works Enterprise Subscription, aby zapewnić rozliczenia za to obciążenie IT.
 
 ## <a name="storage"></a>Magazyn
-Cykle Adventure Works ustaliły, że powinni używać platformy Azure Managed Disks. Podczas tworzenia maszyn wirtualnych są używane obie dostępne warstwy magazynowania:
+Adventure Works Cycles określa, że należy używać dysków zarządzanych platformy Azure. Podczas tworzenia maszyn wirtualnych używane są obie dostępne warstwy magazynu:
 
-* **Magazyn w warstwie Standardowa** dla serwerów sieci Web, serwerów aplikacji i kontrolerów domeny oraz ich dysków z danymi.
-* Usługa **Premium Storage** dla maszyn wirtualnych SQL Server i ich dysków z danymi.
+* **Standardowy magazyn** dla serwerów sieci web, serwerów aplikacji i kontrolerów domeny oraz ich dysków danych.
+* **Magazyn w wersji premium** dla maszyn wirtualnych programu SQL Server i ich dysków z danymi.
 
 ## <a name="virtual-network-and-subnets"></a>Sieć wirtualna i podsieci
-Ponieważ sieć wirtualna nie wymaga ciągłej łączności z siecią firmy Adventure Work Cycles, decyduje się ona w sieci wirtualnej tylko w chmurze.
+Ponieważ sieć wirtualna nie wymaga ciągłej łączności z siecią lokalną Adventure Work Cycles, zdecydowali się na sieć wirtualną tylko w chmurze.
 
-Tworzą one sieć wirtualną tylko w chmurze o następujących ustawieniach przy użyciu Azure Portal:
+Utworzyli sieć wirtualną tylko w chmurze z następującymi ustawieniami przy użyciu witryny Azure portal:
 
-* Name: AZOS-USE-VN01
+* Nazwa: AZOS-USE-VN01
 * Lokalizacja: Wschodnie stany USA 2
 * Przestrzeń adresowa sieci wirtualnej: 10.0.0.0/8
 * Pierwsza podsieć:
-  * Nazwa: fronton
+  * Nazwa: FrontEnd
   * Przestrzeń adresowa: 10.0.1.0/24
 * Druga podsieć:
-  * Nazwa: zaplecze
+  * Nazwa: BackEnd
   * Przestrzeń adresowa: 10.0.2.0/24
 
 ## <a name="availability-sets"></a>Zestawy dostępności
-Aby zachować wysoką dostępność wszystkich czterech warstw swojego sklepu online, firma Adventure Works Cycles zdecydowała się na czterech zestawach dostępności:
+Aby utrzymać wysoką dostępność wszystkich czterech warstw swojego sklepu internetowego, Adventure Works Cycles zdecydowało się na cztery zestawy dostępności:
 
-* **Azos — użycie jako sieci Web** dla serwerów sieci Web
-* **Azos — użycie jako aplikacji** dla serwerów aplikacji
-* **Azos — użycie jako SQL** dla serwerów SQL
-* **Azos-as-DC** dla kontrolerów domeny
+* **azos-use-as-web** dla serwerów internetowych
+* **azos-use-as-app** dla serwerów aplikacji
+* **azos-use-as-sql** dla serwerów SQL
+* **azos-use-as-dc** dla kontrolerów domeny
 
 ## <a name="virtual-machines"></a>Maszyny wirtualne
-Cykle firmy Adventure Works decydują o następujących nazwach maszyn wirtualnych platformy Azure:
+Adventure Works Cycles zdecydował o następujących nazwach dla swoich maszyn wirtualnych platformy Azure:
 
-* **Azos-use-VM-web01** dla pierwszego serwera sieci Web
-* **Azos-use-VM-web02** dla drugiego serwera sieci Web
-* **Azos-use-app01-VM** dla pierwszego serwera aplikacji
-* **Azos-use-VM-app02** dla drugiego serwera aplikacji
-* **Azos-use-sql01-VM** dla pierwszego serwera SQL Server w klastrze
-* **Azos-use-sql02-VM** dla drugiego serwera SQL Server w klastrze
-* **Azos-use-DC01-VM** dla pierwszego kontrolera domeny
-* **Azos-use-VM-dc02** dla drugiego kontrolera domeny
+* **azos-use-vm-web01** dla pierwszego serwera www
+* **azos-use-vm-web02** dla drugiego serwera www
+* **azos-use-vm-app01** dla pierwszego serwera aplikacji
+* **azos-use-vm-app02** dla drugiego serwera aplikacji
+* **azos-use-vm-sql01** dla pierwszego serwera SQL Server w klastrze
+* **azos-use-vm-sql02** dla drugiego serwera SQL Server w klastrze
+* **azos-use-vm-dc01** dla pierwszego kontrolera domeny
+* **azos-use-vm-dc02** dla drugiego kontrolera domeny
 
-Poniżej przedstawiono konfigurację powstającą.
+Oto wynikowa konfiguracja.
 
-![Ostatnia infrastruktura aplikacji wdrożona na platformie Azure](./media/infrastructure-example/example-config.png)
+![Ostateczna infrastruktura aplikacji wdrożona na platformie Azure](./media/infrastructure-example/example-config.png)
 
-Ta konfiguracja obejmuje:
+Ta konfiguracja zawiera:
 
-* Sieć wirtualna tylko w chmurze z dwiema podsieciami (frontonu i zaplecza)
-* Managed Disks platformy Azure z dyskami Standard i Premium
-* Cztery zestawy dostępności — jeden dla każdej warstwy sklepu online
+* Sieć wirtualna tylko w chmurze z dwiema podsieciami (FrontEnd i BackEnd)
+* Dyski zarządzane platformy Azure z dyskami standardowymi i premium
+* Cztery zestawy dostępności, po jednym dla każdej warstwy sklepu internetowego
 * Maszyny wirtualne dla czterech warstw
-* Zewnętrzny zestaw o zrównoważonym obciążeniu oparty na protokole HTTPS dla ruchu internetowego z Internetu do serwerów sieci Web
-* Wewnętrzny zestaw o zrównoważonym obciążeniu dla nieszyfrowanego ruchu internetowego z serwerów sieci Web do serwerów aplikacji
-* Jedna grupa zasobów
+* Zestaw z równoważeniem obciążenia zewnętrznego dla ruchu internetowego opartego na protokoi https z Internetu do serwerów sieci web
+* Wewnętrzny zestaw z równoważeniem obciążenia dla niezaszyfrowanego ruchu sieci web z serwerów sieci web do serwerów aplikacji
+* Pojedyncza grupa zasobów
