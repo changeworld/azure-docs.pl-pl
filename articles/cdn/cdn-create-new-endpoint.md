@@ -16,10 +16,10 @@ ms.date: 05/24/2018
 ms.author: magattus
 ms.custom: mvc
 ms.openlocfilehash: 2a3325217c1ec854e4f6cef3facce5580fb06a57
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "79240268"
 ---
 # <a name="quickstart-create-an-azure-cdn-profile-and-endpoint"></a>Szybki start: tworzenie profilu i punktu końcowego usługi Azure CDN
@@ -43,7 +43,7 @@ Utworzony profil usługi CDN może służyć do tworzenia punktu końcowego.
    
     Zostanie wyświetlona strona profilu usługi CDN.
 
-2. Wybierz pozycję **Punkt końcowy**.
+2. Wybierz **punkt końcowy**.
    
     ![Profil CDN](./media/cdn-create-new-endpoint/cdn-select-endpoint.png)
    
@@ -53,8 +53,8 @@ Utworzony profil usługi CDN może służyć do tworzenia punktu końcowego.
 
     | Ustawienie | Wartość |
     | ------- | ----- |
-    | **Nazwa** | Wprowadź ciąg *my-endpoint-123* jako nazwę hosta punktu końcowego. Ta nazwa musi być globalnie unikatowa; jeśli jest już używana, można wprowadzić inną nazwę. Ta nazwa jest używana do uzyskiwania dostępu do buforowanych zasobów w domenie _&lt;nazwa punktu końcowego&gt;_ .azureedge.net.|
-    | **Typ źródła** | Wybierz pozycję **Magazyn**. | 
+    | **Nazwa** | Wprowadź ciąg *my-endpoint-123* jako nazwę hosta punktu końcowego. Ta nazwa musi być globalnie unikatowa; jeśli jest już używana, można wprowadzić inną nazwę. Ta nazwa jest używana do uzyskiwania dostępu do buforowanych zasobów w _ &lt;nazwie&gt;punktu końcowego_domeny .azureedge.net.|
+    | **Typ źródła** | Wybierz **opcję Magazyn**. | 
     | **Nazwa hosta źródła** | Wprowadź ciąg *mystorageacct123.blob.core.windows.net* jako nazwę hosta. Ta nazwa musi być globalnie unikatowa; jeśli jest już używana, można wprowadzić inną nazwę. |
     | **Ścieżka do źródła** | Pozostaw to pole puste. |
     | **Nagłówek hosta źródła** | Pozostaw wygenerowaną wartość domyślną. |  

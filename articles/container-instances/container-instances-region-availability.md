@@ -1,71 +1,71 @@
 ---
 title: Dostępność zasobów według regionów
-description: Dostępność zasobów obliczeniowych i pamięci dla usługi Azure Container Instances w różnych regionach świadczenia usługi Azure.
+description: Dostępność zasobów obliczeniowych i pamięci dla usługi Wystąpienia kontenerów platformy Azure w różnych regionach platformy Azure.
 ms.topic: article
 ms.date: 02/19/2020
 ms.author: danlep
 ms.openlocfilehash: f429a165fe26cc9fc7aa973231f5a77163feef4a
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79247139"
 ---
-# <a name="resource-availability-for-azure-container-instances-in-azure-regions"></a>Dostępność zasobów dla Azure Container Instances w regionach świadczenia usługi Azure
+# <a name="resource-availability-for-azure-container-instances-in-azure-regions"></a>Dostępność zasobów dla wystąpień kontenerów platformy Azure w regionach platformy Azure
 
-Ten artykuł zawiera szczegółowe informacje o dostępności zasobów obliczeniowych, pamięci i magazynu Azure Container Instances w regionach platformy Azure oraz w docelowym systemie operacyjnym. 
+W tym artykule opisano dostępność zasobów obliczeniowych, pamięci i magazynu wystąpień kontenerów platformy Azure w regionach platformy Azure i według docelowego systemu operacyjnego. 
 
-Podane wartości to maksymalne zasoby dostępne na wdrożenie [grupy kontenerów](container-instances-container-groups.md). Wartości są aktualne w momencie publikacji. 
+Przedstawione wartości to maksymalne zasoby dostępne na wdrożenie [grupy kontenerów](container-instances-container-groups.md). Wartości są aktualne w momencie publikacji. 
 
 > [!NOTE]
-> Grupy kontenerów utworzone w ramach tych limitów zasobów podlegają dostępności w obszarze wdrożenia. Gdy region jest mocno obciążony, wdrażanie wystąpień może zakończyć się niepowodzeniem. Aby wyeliminować takie niepowodzenie wdrożenia, spróbuj wdrożyć wystąpienia z niższymi ustawieniami zasobów lub spróbuj przeprowadzić wdrożenie w późniejszym czasie.
+> Grupy kontenerów utworzone w ramach tych limitów zasobów są zależne od dostępności w regionie wdrażania. Gdy region jest mocno obciążony, wdrażanie wystąpień może zakończyć się niepowodzeniem. Aby zmniejszyć awarię takiego wdrożenia, spróbuj wdrożyć wystąpienia z niższymi ustawieniami zasobów lub spróbuj wdrożyć w późniejszym czasie.
 
-Aby uzyskać informacje na temat przydziałów i innych limitów wdrożenia, zobacz [limity przydziału i limity dla Azure Container Instances](container-instances-quotas.md).
+Aby uzyskać informacje o przydziałach i innych limitach we wdrożeniach, zobacz [Przydziały i limity dla wystąpień kontenerów platformy Azure](container-instances-quotas.md).
 
-## <a name="availability---general"></a>Dostępność — ogólne
+## <a name="availability---general"></a>Dostępność - Ogólne
 
-Następujące regiony i maksymalne zasoby są dostępne dla grup kontenerów z systemem Linux i [obsługiwanymi](container-instances-faq.md#what-windows-base-os-images-are-supported) kontenerami systemu Windows Server 2016.
+Następujące regiony i maksymalne zasoby są dostępne dla grup kontenerów z systemem Linux i [obsługiwanymi kontenerami](container-instances-faq.md#what-windows-base-os-images-are-supported) opartymi na systemie Windows Server 2016.
 
-| Regiony | System operacyjny | CPU (maksymalnie) | Maksymalna ilość pamięci (GB) | Magazyn (GB) |
+| Regiony | System operacyjny | CPU (maksymalnie) | Maksymalna ilość pamięci (GB) | Pamięć masowa (GB) |
 | -------- | -- | :---: | :-----------: | :---: |
-| Brazylia Południowa, Kanada środkowa, Indie Środkowe, środkowe stany USA, Azja Wschodnia, Wschodnie stany USA, Wschodnie stany USA 2, Europa Północna, Południowo-środkowe stany USA, Azja Południowo-Wschodnia, Indie Południowe, Kanada, Południowe Zjednoczone Królestwo, Europa Zachodnia, zachodnie stany USA, zachodnie stany USA 2 | Linux | 4 | 16 | 50 |
+| Brazylia Południowa, Kanada Środkowa, Indie Środkowe, Środkowe Stany Zjednoczone, Azja Wschodnia, Wschodnie stany USA, Wschodnie stany USA 2, Europa Północna, Południowo-Środkowe STANY USA, Azja Południowo-Wschodnia, Indie Południowe, Europa Zachodnia, Zachodnie Stany Usa, Zachodnie stany USA 2 | Linux | 4 | 16 | 50 |
 | Australia Wschodnia, Japonia Wschodnia | Linux | 2 | 8 | 50 |
 | Północno-środkowe stany USA | Linux | 2 | 3,5 | 50 |
 | Brazylia Południowa, Japonia Wschodnia, Europa Zachodnia | Windows | 4 | 16 | 20 |
 | Wschodnie stany USA, zachodnie stany USA | Windows | 4 | 14 | 20 |
-| Australia Wschodnia, Kanada środkowa, Indie Środkowe, środkowe stany USA, Azja Wschodnia, Wschodnie stany USA 2, Północno-środkowe stany USA, Europa Północna, Południowo-środkowe stany USA, Azja Południowo-Wschodnia, Indie Południowe, Kanada, Południowe Zjednoczone Królestwo, zachodnie stany USA 2 | Windows | 2 | 3,5 | 20 |
+| Australia Wschodnia, Kanada Środkowa, Indie Środkowe, Środkowe Stany Zjednoczone, Azja Wschodnia, Wschodnie STANY USA 2, Północno-środkowe stany USA, Europa Północna, Południowo-Środkowe STANY USA, Azja Południowo-Wschodnia, Indie Południowe, Zachodnie Stany Usa 2 | Windows | 2 | 3,5 | 20 |
 
-## <a name="availability---windows-server-2019-ltsc-1809-deployments-preview"></a>Dostępność — wdrożenia systemu Windows Server 2019 LTSC, 1809 (wersja zapoznawcza)
+## <a name="availability---windows-server-2019-ltsc-1809-deployments-preview"></a>Dostępność — wdrożenia LTSC dla systemu Windows Server 2019, 1809 (wersja zapoznawcza)
 
 Następujące regiony i maksymalne zasoby są dostępne dla grup kontenerów z kontenerami opartymi na systemie Windows Server 2019 (wersja zapoznawcza).
 
-| Regiony | System operacyjny | CPU (maksymalnie) | Maksymalna ilość pamięci (GB) | Magazyn (GB) |
+| Regiony | System operacyjny | CPU (maksymalnie) | Maksymalna ilość pamięci (GB) | Pamięć masowa (GB) |
 | -------- | -- | :---: | :-----------: | :---: |
-| Australia Wschodnia, Brazylia Południowa, Kanada środkowa, Indie Środkowe, środkowe stany USA, Azja Wschodnia, Wschodnie stany USA, Japonia Wschodnia, Północna środkowe stany USA, Europa Północna, Południowo-środkowe stany USA, Azja Południowo-Wschodnia, Indie Południowe, Południowe Zjednoczone Królestwo, Europa Zachodnia | Windows | 4 | 16 | 20 |
+| Australia Wschodnia, Brazylia Południowa, Kanada Środkowa, Indie Środkowe, Środkowe Stany Zjednoczone, Azja Wschodnia, Wschodnie STANY USA, Japonia Wschodnia, Północno-Środkowe STANY USA, Europa Północna, Południowo-Środkowe STANY USA, Azja Południowo-Wschodnia, Zjednoczone Ameryki Południowej, Europa Zachodnia | Windows | 4 | 16 | 20 |
 | Wschodnie stany USA 2, zachodnie stany USA 2 | Windows | 2 | 3,5 | 20 |
 
 
 ## <a name="availability---virtual-network-deployment"></a>Dostępność — wdrażanie sieci wirtualnej
 
-Następujące regiony i maksymalne zasoby są dostępne dla grupy kontenerów wdrożonej w [sieci wirtualnej platformy Azure](container-instances-vnet.md).
+Następujące regiony i maksymalne zasoby są dostępne dla grupy kontenerów wdrożonych w [sieci wirtualnej platformy Azure.](container-instances-vnet.md)
 
 [!INCLUDE [container-instances-vnet-limits](../../includes/container-instances-vnet-limits.md)]
 
-## <a name="availability---gpu-resources-preview"></a>Dostępność — zasoby procesora GPU (wersja zapoznawcza)
+## <a name="availability---gpu-resources-preview"></a>Dostępność — zasoby GPU (wersja zapoznawcza)
 
-Następujące regiony i maksymalne zasoby są dostępne dla grupy kontenerów wdrożonej z [zasobami procesora GPU](container-instances-gpu.md) (wersja zapoznawcza).
+Następujące regiony i maksymalne zasoby są dostępne dla grupy kontenerów wdrożonych z [zasobami GPU](container-instances-gpu.md) (wersja zapoznawcza).
 
 > [!IMPORTANT]
-> Zasoby procesora GPU są dostępne tylko na żądanie. Aby zażądać dostępu do zasobów procesora GPU, Prześlij [żądanie pomocy technicznej systemu Azure][azure-support].
+> Zasoby GPU są dostępne tylko na życzenie. Aby zażądać dostępu do zasobów gpu, prześlij [żądanie pomocy technicznej platformy Azure][azure-support].
 
 [!INCLUDE [container-instances-gpu-regions](../../includes/container-instances-gpu-regions.md)]
 [!INCLUDE [container-instances-gpu-limits](../../includes/container-instances-gpu-limits.md)]
 
 ## <a name="next-steps"></a>Następne kroki
 
-Skontaktuj się z zespołem, jeśli chcesz widzieć dodatkowe regiony lub zwiększyć dostępność zasobów w [aka.MS/ACI/feedback](https://aka.ms/aci/feedback).
+Poinformuj zespół, czy chcesz zobaczyć dodatkowe regiony lub zwiększoną dostępność zasobów w [aka.ms/aci/feedback](https://aka.ms/aci/feedback).
 
-Informacje o rozwiązywaniu problemów z wdrażaniem wystąpienia kontenera znajdują się w temacie [Rozwiązywanie problemów z wdrażaniem w Azure Container Instances](container-instances-troubleshooting.md).
+Aby uzyskać informacje na temat rozwiązywania problemów z wdrażaniem wystąpienia [kontenera, zobacz Rozwiązywanie problemów z wdrażaniem za pomocą wystąpień kontenerów platformy Azure](container-instances-troubleshooting.md).
 
 
 [azure-support]: https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest

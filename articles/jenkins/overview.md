@@ -5,10 +5,10 @@ keywords: jenkins, azure, devops, omówienie
 ms.topic: overview
 ms.date: 10/23/2019
 ms.openlocfilehash: a9297ebc116d75cfe1d4f37d4e9ada7d5198beae
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77620179"
 ---
 # <a name="azure-and-jenkins"></a>Platforma Azure i serwer Jenkins
@@ -22,18 +22,18 @@ Ten artykuł stanowi wprowadzenie do zagadnień dotyczących używania platformy
 Hostowanie serwera Jenkins na platformie Azure pozwala na centralizowanie automatyzacji kompilacji i skalowanie wdrożenia w miarę wzrostu potrzeb projektów dotyczących oprogramowania. Narzędzie Jenkins można wdrożyć na platformie Azure za pomocą:
  
 - [Szablonu rozwiązania Jenkins](install-jenkins-solution-template.md) dostępnego w witrynie Azure Marketplace.
-- [Maszyn wirtualnych platformy Azure](/azure/virtual-machines/linux/overview). Zobacz nasz [samouczek](tutorial-jenkins-github-docker-cicd.md), aby utworzyć wystąpienie serwera Jenkins na maszynie wirtualnej.
+- [Maszyny wirtualne platformy Azure](/azure/virtual-machines/linux/overview). Zobacz nasz [samouczek](tutorial-jenkins-github-docker-cicd.md), aby utworzyć wystąpienie serwera Jenkins na maszynie wirtualnej.
 - Aby uzyskać informacje na temat klastra Kubernetes działającego w usłudze [Azure Container Service](/azure/container-service/kubernetes/container-service-kubernetes-walkthrough), zobacz nasze [instrukcje](/azure/container-service/kubernetes/container-service-kubernetes-jenkins).
 
-Monitoruj wdrożenie usługi Azure Jenkins i zarządzaj nimi za pomocą [dzienników Azure monitor](/azure/log-analytics/log-analytics-overview) i [interfejsu wiersza polecenia platformy Azure](/cli/azure).
+Monitoruj wdrożenie usługi Azure Jenkins i zarządzaj nim przy użyciu [dzienników usługi Azure Monitor](/azure/log-analytics/log-analytics-overview) i [interfejsu wiersza polecenia platformy Azure.](/cli/azure)
 
 ## <a name="scale-your-build-automation-on-demand"></a>Skalowanie automatyzacji kompilacji na żądanie
 
-Dodawanie agentów kompilacji do istniejącego wdrożenia serwera Jenkins umożliwia skalowanie pojemności kompilacji narzędzia Jenkins w miarę wzrostu liczby kompilacji oraz stopnia złożoności zadań i potoków. Tych agentów kompilacji można uruchamiać na maszynach wirtualnych platformy Azure przy użyciu [wtyczki agentów maszyny wirtualnej platformy Azure](https://plugins.jenkins.io/azure-vm-agents). Zobacz nasz [samouczek](/azure/jenkins/jenkins-azure-vm-agents), aby uzyskać więcej informacji.
+Dodawanie agentów kompilacji do istniejącego wdrożenia serwera Jenkins umożliwia skalowanie pojemności kompilacji narzędzia Jenkins w miarę wzrostu liczby kompilacji oraz stopnia złożoności zadań i potoków. Te agentów kompilacji można uruchomić na maszynach wirtualnych platformy Azure przy użyciu [wtyczki Agentów maszyn wirtualnych platformy Azure.](https://plugins.jenkins.io/azure-vm-agents) Zobacz nasz [samouczek](/azure/jenkins/jenkins-azure-vm-agents), aby uzyskać więcej informacji.
 
 Po skonfigurowaniu przy użyciu [jednostki usługi platformy Azure](/azure/azure-resource-manager/resource-group-overview) potoki i zadania serwera Jenkins mogą korzystać z tego poświadczenia w celu:
 
-- Bezpiecznie Przechowuj i Archiwizuj artefakty kompilacji w [usłudze Azure Storage](/azure/storage/common/storage-introduction) przy użyciu [wtyczki usługi Azure Storage](https://plugins.jenkins.io/windows-azure-storage). Aby dowiedzieć się więcej, zapoznaj się z [instrukcjami dotyczącymi magazynu serwera Jenkins](storage-java-jenkins-continuous-integration-solution.md).
+- Bezpiecznie przechowuj i archiwizuj artefakty kompilacji w [usłudze Azure Storage](/azure/storage/common/storage-introduction) przy użyciu [wtyczki Usługi Azure Storage.](https://plugins.jenkins.io/windows-azure-storage) Aby dowiedzieć się więcej, zapoznaj się z [instrukcjami dotyczącymi magazynu serwera Jenkins](storage-java-jenkins-continuous-integration-solution.md).
 - Zarządzania zasobami platformy Azure i konfigurowania ich za pomocą [interfejsu wiersza polecenia platformy Azure](/azure/jenkins/execute-cli-jenkins-pipeline).
 
 ## <a name="deploy-your-code-into-azure-services"></a>Wdrażanie swojego kodu w usługach platformy Azure

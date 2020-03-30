@@ -1,7 +1,7 @@
 ---
-title: Zarządzanie publicznym dostępem do odczytu dla kontenerów i obiektów BLOB
+title: Zarządzanie publicznym dostępem do odczytu kontenerów i obiektów blob
 titleSuffix: Azure Storage
-description: Dowiedz się, jak udostępniać kontenery i obiekty blob dostępowi Anonimowemu oraz jak korzystać z nich programistycznie.
+description: Dowiedz się, jak udostępnić kontenery i obiekty BLOB dla dostępu anonimowego i jak uzyskać do nich programowy dostęp.
 services: storage
 author: tamram
 ms.service: storage
@@ -10,60 +10,60 @@ ms.date: 12/04/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.openlocfilehash: 4d9a54c220861b19d67b07998e609ee72897446a
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79255485"
 ---
 # <a name="manage-anonymous-read-access-to-containers-and-blobs"></a>Zarządzanie dostępem anonimowym w trybie odczytu do kontenerów i obiektów blob
 
-Można włączyć anonimowy, publiczny dostęp do odczytu do kontenera i jego obiektów BLOB w usłudze Azure Blob Storage. Dzięki temu można przyznać dostęp tylko do odczytu do tych zasobów bez udostępniania klucza konta, a nie wymagając sygnatury dostępu współdzielonego (SAS).
+Możesz włączyć anonimowy, publiczny dostęp do odczytu do kontenera i jego obiektów blob w usłudze Azure Blob Storage. W ten sposób możesz przyznać dostęp tylko do odczytu do tych zasobów bez udostępniania klucza konta i konieczności wymagania sygnatury dostępu współdzielonego.
 
-Publiczny dostęp do odczytu jest najlepszy dla scenariuszy, w których niektóre obiekty blob mają zawsze być dostępne do anonimowego dostępu do odczytu. Aby uzyskać bardziej szczegółowy formant, możesz utworzyć sygnaturę dostępu współdzielonego. Sygnatury dostępu współdzielonego umożliwiają zapewnienie ograniczonego dostępu przy użyciu różnych uprawnień w określonym przedziale czasu. Aby uzyskać więcej informacji na temat tworzenia sygnatur dostępu współdzielonego, zobacz [Używanie sygnatur dostępu współdzielonego (SAS) w usłudze Azure Storage](../common/storage-sas-overview.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
+Publiczny dostęp do odczytu jest najlepszy dla scenariuszy, w których chcesz, aby niektóre obiekty blob były zawsze dostępne dla anonimowego dostępu do odczytu. Aby uzyskać bardziej szczegółową kontrolę, można utworzyć podpis dostępu współdzielonego. Podpisy dostępu współdzielonego umożliwiają zapewnienie ograniczonego dostępu przy użyciu różnych uprawnień przez określony czas. Aby uzyskać więcej informacji na temat tworzenia podpisów dostępu współdzielonego, zobacz [Korzystanie z sygnatur dostępu współdzielonego (SAS) w usłudze Azure Storage](../common/storage-sas-overview.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
 
-## <a name="grant-anonymous-users-permissions-to-containers-and-blobs"></a>Przyznaj anonimowym użytkownikom uprawnienia do kontenerów i obiektów BLOB
+## <a name="grant-anonymous-users-permissions-to-containers-and-blobs"></a>Udzielanie użytkownikom anonimowym uprawnień do kontenerów i obiektów blob
 
-Domyślnie kontener i wszystkie obiekty blob w ramach niego mogą być dostępne tylko dla użytkownika, który ma odpowiednie uprawnienia. Aby udzielić anonimowym użytkownikom dostępu do odczytu do kontenera i jego obiektów blob, można ustawić poziom dostępu publicznego kontenera. Po udzieleniu publicznego dostępu do kontenera Użytkownicy anonimowi mogą odczytywać obiekty blob w ramach dostępnego publicznie kontenera bez autoryzowania żądania.
+Domyślnie kontener i wszystkie jego obiekty blob mogą być dostępne tylko dla użytkownika, który otrzymał odpowiednie uprawnienia. Aby przyznać anonimowym użytkownikom prawa dostępu do odczytu do kontenera i jego obiektów blob, można ustawić poziom dostępu publicznego do kontenera. Po przyznaniu praw dostępu publicznego do kontenera użytkownicy anonimowi mogą odczytywać obiekty blob w ramach dostępnego publicznie kontenera bez autoryzowania żądania.
 
-Można skonfigurować kontener z następującymi uprawnieniami:
+Kontener można skonfigurować z następującymi uprawnieniami:
 
-- **Brak publicznego dostępu do odczytu:** Do kontenera i jego obiektów BLOB można uzyskać dostęp tylko przez właściciela konta magazynu. Jest to wartość domyślna dla wszystkich nowych kontenerów.
-- **Publiczny dostęp do odczytu tylko dla obiektów blob:** Obiekty blob w kontenerze mogą być odczytywane przez żądanie anonimowe, ale dane kontenera nie są dostępne. Klienci anonimowi nie mogą wyliczyć obiektów BLOB w kontenerze.
-- **Publiczny dostęp do odczytu dla kontenera i jego obiektów blob:** Wszystkie dane kontenera i obiektu BLOB mogą być odczytywane przez żądanie anonimowe. Klienci mogą wyliczać obiekty blob w kontenerze przez żądanie anonimowe, ale nie mogą wyliczać kontenerów na koncie magazynu.
+- **Brak publicznego dostępu do odczytu:** Kontener i jego obiekty blob są dostępne tylko przez właściciela konta magazynu. Jest to wartość domyślna dla wszystkich nowych kontenerów.
+- **Publiczny dostęp do odczytu tylko dla obiektów blob:** Obiekty BLOB w kontenerze mogą być odczytywane przez żądanie anonimowe, ale dane kontenera nie są dostępne. Klienci anonimowi nie mogą wyliczyć obiektów blob w kontenerze.
+- **Publiczny dostęp do odczytu kontenera i jego obiektów blob:** Wszystkie dane kontenera i obiektu blob można odczytać za pomocą anonimowego żądania. Klienci mogą wyliczać obiekty BLOB w kontenerze według żądania anonimowego, ale nie można wyliczyć kontenerów w ramach konta magazynu.
 
-### <a name="set-container-public-access-level-in-the-azure-portal"></a>Ustaw poziom dostępu publicznego kontenera w Azure Portal
+### <a name="set-container-public-access-level-in-the-azure-portal"></a>Ustawianie poziomu dostępu publicznego kontenera w witrynie Azure portal
 
-W [Azure Portal](https://portal.azure.com)można zaktualizować poziom dostępu publicznego dla jednego lub kilku kontenerów:
+Z [witryny Azure portal](https://portal.azure.com)można zaktualizować poziom dostępu publicznego dla jednego lub więcej kontenerów:
 
-1. Przejdź do omówienia konta magazynu w Azure Portal.
-1. W obszarze **BLOB Service** w bloku menu wybierz pozycję **obiekty blob**.
+1. Przejdź do przeglądu konta magazynu w witrynie Azure portal.
+1. W obszarze **Usługa obiektów Blob** na bloku menu wybierz pozycję **Blobs**.
 1. Wybierz kontenery, dla których chcesz ustawić poziom dostępu publicznego.
-1. Użyj przycisku **Zmień poziom dostępu** , aby wyświetlić ustawienia dostępu publicznego.
-1. Wybierz żądany poziom dostępu publicznego z listy rozwijanej **poziom dostępu publicznego** , a następnie kliknij przycisk OK, aby zastosować zmianę do wybranych kontenerów.
+1. Użyj przycisku **Zmień poziom dostępu,** aby wyświetlić ustawienia dostępu publicznego.
+1. Wybierz żądany poziom dostępu publicznego z listy rozwijanej **Poziom dostępu publicznego** i kliknij przycisk OK, aby zastosować zmianę do wybranych kontenerów.
 
-Poniższy zrzut ekranu przedstawia sposób zmiany publicznego poziomu dostępu dla wybranych kontenerów.
+Poniższy zrzut ekranu pokazuje, jak zmienić poziom dostępu publicznego dla wybranych kontenerów.
 
-![Zrzut ekranu przedstawiający sposób ustawiania poziomu dostępu publicznego w portalu](./media/storage-manage-access-to-resources/storage-manage-access-to-resources-0.png)
+![Zrzut ekranu przedstawiający ustawianie poziomu dostępu publicznego w portalu](./media/storage-manage-access-to-resources/storage-manage-access-to-resources-0.png)
 
 > [!NOTE]
-> Nie można zmienić publicznego poziomu dostępu dla pojedynczego obiektu BLOB. Poziom dostępu publicznego jest ustawiany tylko na poziomie kontenera.
+> Nie można zmienić poziomu dostępu publicznego dla pojedynczego obiektu blob. Poziom dostępu publicznego jest ustawiony tylko na poziomie kontenera.
 
-### <a name="set-container-public-access-level-with-net"></a>Ustawianie publicznego poziomu dostępu kontenera za pomocą platformy .NET
+### <a name="set-container-public-access-level-with-net"></a>Ustawianie poziomu dostępu publicznego kontenera za pomocą platformy .NET
 
-Aby ustawić uprawnienia dla kontenera przy użyciu biblioteki klienta usługi Azure Storage dla platformy .NET, najpierw Pobierz istniejące uprawnienia kontenera, wywołując jedną z następujących metod:
+Aby ustawić uprawnienia dla kontenera przy użyciu biblioteki klienta usługi Azure Storage dla platformy .NET, najpierw pobierz istniejące uprawnienia kontenera, wywołując jedną z następujących metod:
 
-- [GetPermissions](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.getpermissions)
+- [Getpermissions](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.getpermissions)
 - [GetPermissionsAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.getpermissionsasync)
 
-Następnie ustaw właściwość **PublicAccess** obiektu [BlobContainerPermissions](/dotnet/api/microsoft.azure.storage.blob.blobcontainerpermissions) , który jest zwracany przez metodę **getpermissionss** .
+Następnie ustaw **właściwość PublicAccess** na obiekcie [BlobContainerPermissions,](/dotnet/api/microsoft.azure.storage.blob.blobcontainerpermissions) który jest zwracany przez metodę **GetPermissions.**
 
-Na koniec Wywołaj jedną z następujących metod, aby zaktualizować uprawnienia kontenera:
+Na koniec wywołać jedną z następujących metod, aby zaktualizować uprawnienia kontenera:
 
-- [SetPermissions](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.setpermissions)
+- [Setpermissions](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.setpermissions)
 - [SetPermissionsAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.setpermissionsasync)
 
-Poniższy przykład ustawia uprawnienia kontenera na pełny publiczny dostęp do odczytu. Aby ustawić uprawnienia publicznego dostępu do odczytu tylko dla obiektów blob, ustaw właściwość **PublicAccess** na **BlobContainerPublicAccessType. blob**. Aby usunąć wszystkie uprawnienia dla użytkowników anonimowych, należy ustawić właściwość na **BlobContainerPublicAccessType. off**.
+W poniższym przykładzie ustawia uprawnienia kontenera do pełnego publicznego dostępu do odczytu. Aby ustawić uprawnienia do publicznego dostępu do odczytu tylko dla obiektów blob, ustaw właściwość **PublicAccess** na **BlobContainerPublicAccessType.Blob**. Aby usunąć wszystkie uprawnienia dla użytkowników anonimowych, ustaw właściwość na **BlobContainerPublicAccessType.Off**.
 
 ```csharp
 private static async Task SetPublicContainerPermissions(CloudBlobContainer container)
@@ -76,13 +76,13 @@ private static async Task SetPublicContainerPermissions(CloudBlobContainer conta
 }
 ```
 
-## <a name="access-containers-and-blobs-anonymously"></a>Anonimowe dostęp do kontenerów i obiektów BLOB
+## <a name="access-containers-and-blobs-anonymously"></a>Anonimowy dostęp do kontenerów i obiektów blob
 
-Klient, który uzyskuje dostęp do kontenerów i obiektów BLOB anonimowo, może używać konstruktorów, które nie wymagają poświadczeń. W poniższych przykładach przedstawiono kilka różnych sposobów anonimowego odwoływania się do kontenerów i obiektów BLOB.
+Klient, który uzyskuje dostęp do kontenerów i obiektów blob anonimowo można użyć konstruktorów, które nie wymagają poświadczeń. Poniższe przykłady pokazują kilka różnych sposobów odwoływania się do kontenerów i obiektów blob anonimowo.
 
 ### <a name="create-an-anonymous-client-object"></a>Tworzenie anonimowego obiektu klienta
 
-Nowy obiekt klienta usługi dla dostępu anonimowego można utworzyć, dostarczając punkt końcowy magazynu obiektów BLOB dla konta. Należy jednak znać nazwę kontenera na tym koncie, który jest dostępny dla dostępu anonimowego.
+Można utworzyć nowy obiekt klienta usługi dla dostępu anonimowego, podając punkt końcowy magazynu obiektów Blob dla konta. Jednak należy również znać nazwę kontenera na tym koncie, który jest dostępny dla dostępu anonimowego.
 
 ```csharp
 public static void CreateAnonymousBlobClient()
@@ -102,9 +102,9 @@ public static void CreateAnonymousBlobClient()
 }
 ```
 
-### <a name="reference-a-container-anonymously"></a>Anonimowe odwołanie do kontenera
+### <a name="reference-a-container-anonymously"></a>Anonimowy odwołów się do kontenera
 
-Jeśli masz adres URL do kontenera, który jest anonimowym dostępnym, możesz go użyć do bezpośredniego odwoływania się do kontenera.
+Jeśli masz adres URL do kontenera, który jest anonimowo dostępny, można go użyć do odwołania się bezpośrednio do kontenera.
 
 ```csharp
 public static void ListBlobsAnonymously()
@@ -122,9 +122,9 @@ public static void ListBlobsAnonymously()
 }
 ```
 
-### <a name="reference-a-blob-anonymously"></a>Anonimowe odwołanie do obiektu BLOB
+### <a name="reference-a-blob-anonymously"></a>Anonimowo odwoływanie się do obiektu blob
 
-Jeśli masz adres URL do obiektu BLOB, który jest dostępny dla dostępu anonimowego, możesz odwołać się do obiektu BLOB bezpośrednio przy użyciu tego adresu URL:
+Jeśli masz adres URL obiektu blob, który jest dostępny dla dostępu anonimowego, możesz odwoływać się do obiektu blob bezpośrednio przy użyciu tego adresu URL:
 
 ```csharp
 public static void DownloadBlobAnonymously()
@@ -138,5 +138,5 @@ public static void DownloadBlobAnonymously()
 ## <a name="next-steps"></a>Następne kroki
 
 - [Autoryzowanie dostępu do usługi Azure Storage](../common/storage-auth.md)
-- [Udzielanie ograniczonego dostępu do zasobów usługi Azure Storage za pomocą sygnatur dostępu współdzielonego (SAS)](../common/storage-sas-overview.md)
-- [Interfejs API REST usługi BLOB Service](/rest/api/storageservices/blob-service-rest-api)
+- [Udzielanie ograniczonego dostępu do zasobów usługi Azure Storage przy użyciu sygnatur dostępu współdzielonego (SAS)](../common/storage-sas-overview.md)
+- [Interfejs API REST usługi Blob Service](/rest/api/storageservices/blob-service-rest-api)

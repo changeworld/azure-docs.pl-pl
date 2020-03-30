@@ -1,6 +1,6 @@
 ---
-title: Wyświetlanie listy kontenerów obiektów BLOB przy użyciu platformy .NET — Azure Storage
-description: Dowiedz się, jak wyświetlać listę kontenerów obiektów BLOB na koncie usługi Azure Storage za pomocą biblioteki klienckiej platformy .NET.
+title: Wyświetlanie listy kontenerów obiektów blob za pomocą usługi .NET — usługa Azure Storage
+description: Dowiedz się, jak wyświetlić listę kontenerów obiektów blob na koncie usługi Azure Storage przy użyciu biblioteki klienta platformy .NET.
 services: storage
 author: tamram
 ms.service: storage
@@ -9,44 +9,44 @@ ms.date: 01/06/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.openlocfilehash: 155b8f5d50c7b106daff8dab4df17200b844c988
-ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79135908"
 ---
-# <a name="list-blob-containers-with-net"></a>Wyświetlanie listy kontenerów obiektów BLOB przy użyciu platformy .NET
+# <a name="list-blob-containers-with-net"></a>Wyświetlanie listy kontenerów obiektów blob z zasadą .NET
 
-Po wyświetleniu listy kontenerów na koncie usługi Azure Storage w kodzie możesz określić szereg opcji zarządzania wynikami zwracanymi z usługi Azure Storage. W tym artykule przedstawiono sposób wyświetlania listy kontenerów przy użyciu [biblioteki klienta usługi Azure Storage dla platformy .NET](/dotnet/api/overview/azure/storage?view=azure-dotnet).  
+Podczas listy kontenerów na koncie usługi Azure Storage z kodu, można określić szereg opcji, aby zarządzać, jak wyniki są zwracane z usługi Azure Storage. W tym artykule pokazano, jak wyświetlić listę kontenerów przy użyciu [biblioteki klienta usługi Azure Storage dla platformy .NET](/dotnet/api/overview/azure/storage?view=azure-dotnet).  
 
-## <a name="understand-container-listing-options"></a>Informacje o opcjach wyświetlania kontenera
+## <a name="understand-container-listing-options"></a>Opis opcji wyświetlania kontenerów
 
-Aby wyświetlić listę kontenerów na koncie magazynu, wywołaj jedną z następujących metod:
+Aby wyświetlić listę kontenerów na koncie magazynu, wywołanie jednej z następujących metod:
 
-- [ListContainersSegmented](/dotnet/api/microsoft.azure.storage.blob.cloudblobclient.listcontainerssegmented)
-- [ListContainersSegmentedAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblobclient.listcontainerssegmentedasync)
+- [ListaZasegmentowane](/dotnet/api/microsoft.azure.storage.blob.cloudblobclient.listcontainerssegmented)
+- [ListaKontenersegmentedasync](/dotnet/api/microsoft.azure.storage.blob.cloudblobclient.listcontainerssegmentedasync)
 
-Przeciążenia tych metod zawierają dodatkowe opcje zarządzania kontenerami zwracanymi przez operację tworzenia listy. Te opcje są opisane w poniższych sekcjach.
+Przeciążenia dla tych metod zapewniają dodatkowe opcje zarządzania, jak kontenery są zwracane przez operację aukcji. Te opcje są opisane w poniższych sekcjach.
 
-### <a name="manage-how-many-results-are-returned"></a>Zarządzanie liczbą zwracanych wyników
+### <a name="manage-how-many-results-are-returned"></a>Zarządzanie zwracanymi wynikami
 
-Domyślnie operacja tworzenia listy zwraca do 5000 wyników jednocześnie. Aby zwrócić mniejszy zestaw wyników, podaj wartość różną od zera dla `maxresults` parametru podczas wywoływania jednej z metod **ListContainerSegmented** .
+Domyślnie operacja aukcji zwraca maksymalnie 5000 wyników naraz. Aby zwrócić mniejszy zestaw wyników, podaj wartość `maxresults` niezerową dla parametru podczas wywoływania jednej z **metod ListContainerSegmented.**
 
-Jeśli konto magazynu zawiera więcej niż 5000 kontenerów lub jeśli określono wartość `maxresults` w taki sposób, że operacja tworzenia listy zwróci podzestaw kontenerów na koncie magazynu, usługa Azure Storage zwraca *token kontynuacji* z listą kontenerów. Token kontynuacji jest wartością nieprzezroczystą, która służy do pobierania następnego zestawu wyników z usługi Azure Storage.
+Jeśli konto magazynu zawiera więcej niż 5000 kontenerów lub `maxresults` jeśli określono wartość dla takiej, że operacja listy zwraca podzbiór kontenerów na koncie magazynu, a następnie usługa Azure Storage zwraca *token kontynuacji* z listą kontenerów. Token kontynuacji jest nieprzezroczystą wartością, której można użyć do pobrania następnego zestawu wyników z usługi Azure Storage.
 
-W kodzie Sprawdź wartość tokenu kontynuacji, aby określić, czy ma ona wartość null. Gdy token kontynuacji ma wartość null, zestaw wyników jest zakończony. Jeśli token kontynuacji nie ma wartości null, ponownie wywołaj **ListContainersSegmented** lub **ListContainersSegmentedAsync** , przekazując token kontynuacji, aby pobrać następny zestaw wyników, dopóki token kontynuacji nie będzie miał wartości null.
+W kodzie sprawdź wartość tokenu kontynuacji, aby ustalić, czy jest null. Gdy token kontynuacji jest null, a następnie zestaw wyników jest zakończona. Jeśli token kontynuacji nie jest null, a następnie wywołać **ListContainersSegmented** lub **ListContainersSegmentedAsync** ponownie, przekazywanie w token kontynuacji, aby pobrać następny zestaw wyników, dopóki token kontynuacji jest null.
 
-### <a name="filter-results-with-a-prefix"></a>Filtruj wyniki przy użyciu prefiksu
+### <a name="filter-results-with-a-prefix"></a>Filtrowanie wyników z prefiksem
 
-Aby odfiltrować listę kontenerów, Określ ciąg dla parametru `prefix`. Ciąg prefiksu może zawierać jeden lub więcej znaków. Usługa Azure Storage zwraca tylko te kontenery, których nazwy rozpoczynają się od tego prefiksu.
+Aby filtrować listę kontenerów, należy `prefix` określić ciąg parametru. Ciąg prefiksu może zawierać jeden lub więcej znaków. Usługa Azure Storage zwraca tylko kontenery, których nazwy zaczynają się od tego prefiksu.
 
-### <a name="return-metadata"></a>Metadane zwrotne
+### <a name="return-metadata"></a>Zwracanie metadanych
 
-Aby zwrócić metadane kontenera z wynikami, określ wartość **metadanych** dla wyliczenia [ContainerListingDetails](/dotnet/api/microsoft.azure.storage.blob.containerlistingdetails) . Usługa Azure Storage obejmuje metadane z każdym zwracanym kontenerem, dlatego nie trzeba również wywoływać jednej z metod **FetchAttributes** , aby pobrać metadane kontenera.
+Aby zwrócić metadane kontenera z wynikami, określ wartość **metadanych** dla [wyliczenia ContainerListingDetails.](/dotnet/api/microsoft.azure.storage.blob.containerlistingdetails) Usługa Azure Storage zawiera metadane z każdego zwracanego kontenera, więc nie trzeba również wywoływać jedną z **metod FetchAttributes,** aby pobrać metadane kontenera.
 
-## <a name="example-list-containers"></a>Przykład: kontenery list
+## <a name="example-list-containers"></a>Przykład: Kontenery listy
 
-Poniższy przykład asynchronicznie wyświetla listę kontenerów na koncie magazynu, które zaczynają się od określonego prefiksu. Przykład zawiera listę kontenerów z przyrostem 5 wyników w czasie i używa tokenu kontynuacji w celu uzyskania następnego segmentu wyników. Przykład zwraca również metadane kontenera z wynikami.
+Poniższy przykład asynchronicznie wyświetla listę kontenerów na koncie magazynu, które zaczynają się od określonego prefiksu. Przykład zawiera listę kontenerów w przyrostach 5 wyników w czasie i używa tokenu kontynuacji, aby uzyskać następny segment wyników. W przykładzie zwraca również metadane kontenera z wynikami.
 
 ```csharp
 private static async Task ListContainersWithPrefixAsync(CloudBlobClient blobClient,
@@ -101,4 +101,4 @@ private static async Task ListContainersWithPrefixAsync(CloudBlobClient blobClie
 ## <a name="see-also"></a>Zobacz też
 
 [Lista kontenerów](/rest/api/storageservices/list-containers2)
-[wyliczanie zasobów obiektów BLOB](/rest/api/storageservices/enumerating-blob-resources)
+[wyliczających zasoby obiektów blob](/rest/api/storageservices/enumerating-blob-resources)

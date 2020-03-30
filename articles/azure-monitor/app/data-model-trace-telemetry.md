@@ -1,29 +1,29 @@
 ---
-title: Model danych Application Insights platformy Azure — dane telemetryczne śledzenia
-description: Application Insights model danych na potrzeby telemetrii śledzenia
+title: Model danych usługi Azure Application Insights — dane śledzenia danych
+description: Model danych usługi Application Insights dla telemetrii śledzenia
 ms.topic: conceptual
 ms.date: 04/25/2017
 ms.reviewer: sergkanz
 ms.openlocfilehash: 31958b26cdb8a7897cf0051af6600014c07949fd
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77671957"
 ---
-# <a name="trace-telemetry-application-insights-data-model"></a>Dane telemetryczne śledzenia: Application Insights model danych
+# <a name="trace-telemetry-application-insights-data-model"></a>Śledzenie danych telemetrycznych: model danych usługi Application Insights
 
-Dane telemetryczne śledzenia (w [Application Insights](../../azure-monitor/app/app-insights-overview.md)) reprezentują `printf`e instrukcje dotyczące śledzenia stylów, które są przeszukiwane przez tekst. `Log4Net`, `NLog`i inne wpisy pliku dziennika na podstawie tekstu są tłumaczone na wystąpienia tego typu. Ślad nie ma pomiarów jako rozszerzalności.
+Śledzenie danych telemetrycznych (w [usłudze Application Insights)](../../azure-monitor/app/app-insights-overview.md)reprezentuje `printf` instrukcje śledzenia stylu, które są przeszukiwane tekstem. `Log4Net`, `NLog`a inne tekstowe wpisy plików dziennika są tłumaczone na wystąpienia tego typu. Ślad nie ma pomiarów jako rozszerzalność.
 
 ## <a name="message"></a>Komunikat
 
-Komunikat śledzenia.
+Śledzenie wiadomości.
 
 Maksymalna długość: 32768 znaków
 
 ## <a name="severity-level"></a>Poziom ważności
 
-Poziom ważności śledzenia. Wartość może być `Verbose`, `Information`, `Warning`, `Error`, `Critical`.
+Śledzenie poziomu ważności. Wartość może `Verbose` `Information`być `Warning` `Error`, `Critical`, , , .
 
 ## <a name="custom-properties"></a>Właściwości niestandardowe
 
@@ -31,8 +31,8 @@ Poziom ważności śledzenia. Wartość może być `Verbose`, `Information`, `Wa
 
 ## <a name="next-steps"></a>Następne kroki
 
-- [Poznaj dzienniki śledzenia .NET w Application Insights](../../azure-monitor/app/asp-net-trace-logs.md).
-- [Poznaj dzienniki śledzenia środowiska Java w Application Insights](../../azure-monitor/app/java-trace-logs.md).
-- Zobacz [model danych](data-model.md) dla typów Application Insights i modelu danych.
-- [Napisz niestandardowe dane telemetryczne śledzenia](../../azure-monitor/app/api-custom-events-metrics.md#tracktrace)
-- Sprawdź [platformy](../../azure-monitor/app/platforms.md) obsługiwane przez Application Insights.
+- [Eksploruj dzienniki śledzenia .NET w usłudze Application Insights](../../azure-monitor/app/asp-net-trace-logs.md).
+- [Eksploruj dzienniki śledzenia języka Java w usłudze Application Insights](../../azure-monitor/app/java-trace-logs.md).
+- Zobacz [model danych](data-model.md) dla typów usługi Application Insights i modelu danych.
+- [Pisanie niestandardowych danych telemetrycznych śledzenia](../../azure-monitor/app/api-custom-events-metrics.md#tracktrace)
+- Zapoznaj się z [platformami](../../azure-monitor/app/platforms.md) obsługiwanymi przez usługa Application Insights.

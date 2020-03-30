@@ -1,6 +1,6 @@
 ---
-title: Nawiązywanie połączenia z urządzeniem Data Box Edge Microsoft Azure i zarządzanie nim za pomocą interfejsu programu Windows PowerShell | Microsoft Docs
-description: Opisuje sposób nawiązywania połączenia z Data Box Edge i zarządzania nim za pomocą interfejsu programu Windows PowerShell.
+title: Łączenie się z urządzeniem Microsoft Azure Data Box Edge i zarządzanie nim za pośrednictwem interfejsu programu Windows PowerShell | Dokumenty firmy Microsoft
+description: W tym artykule opisano sposób łączenia się z urządzeniem Data Box Edge, z którymi można się połączyć za pośrednictwem interfejsu programu Windows PowerShell, a następnie z nią zarządzać.
 services: databox
 author: alkohli
 ms.service: databox
@@ -9,33 +9,33 @@ ms.topic: article
 ms.date: 06/25/2019
 ms.author: alkohli
 ms.openlocfilehash: f49396331a31f7ca9eaf453dc8bf6880da2e0da8
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79265482"
 ---
-# <a name="manage-an-azure-data-box-edge-device-via-windows-powershell"></a>Zarządzanie urządzeniem Azure Data Box Edge za pomocą programu Windows PowerShell
+# <a name="manage-an-azure-data-box-edge-device-via-windows-powershell"></a>Zarządzanie urządzeniem usługi Azure Data Box Edge za pośrednictwem programu Windows PowerShell
 
-Rozwiązanie Azure Data Box Edge pozwala przetwarzać dane i wysyłać je za pośrednictwem sieci do platformy Azure. W tym artykule opisano niektóre zadania związane z konfiguracją i zarządzaniem dla urządzenia Data Box Edge. Aby zarządzać urządzeniem, można użyć Azure Portal, lokalnego interfejsu użytkownika sieci Web lub interfejsu programu Windows PowerShell.
+Rozwiązanie usługi Azure Data Box Edge umożliwia przetwarzanie danych i wysyłanie ich za pośrednictwem sieci na platformę Azure. W tym artykule opisano niektóre zadania konfiguracji i zarządzania urządzenia data box edge. Do zarządzania urządzeniem można użyć witryny Azure portal, lokalnego interfejsu użytkownika sieci Web lub interfejsu programu Windows PowerShell.
 
-Ten artykuł koncentruje się na zadaniach, które można wykonać za pomocą interfejsu programu PowerShell.
+W tym artykule skupiono się na zadaniach wykonywanych przy użyciu interfejsu programu PowerShell.
 
 Ten artykuł zawiera następujące procedury:
 
-- Nawiązywanie połączenia z interfejsem programu PowerShell
-- Tworzenie pakietu dla pomocy technicznej
+- Łączenie się z interfejsem programu PowerShell
+- Tworzenie pakietu pomocy technicznej
 - Przekazywanie certyfikatu
-- Zresetuj urządzenie
-- Wyświetl informacje o urządzeniu
-- Pobieranie dzienników obliczeniowych
+- Resetowanie urządzenia
+- Wyświetlanie informacji o urządzeniu
+- Pobierz dzienniki obliczeniowe
 - Monitorowanie i rozwiązywanie problemów z modułami obliczeniowymi
 
-## <a name="connect-to-the-powershell-interface"></a>Nawiązywanie połączenia z interfejsem programu PowerShell
+## <a name="connect-to-the-powershell-interface"></a>Łączenie się z interfejsem programu PowerShell
 
 [!INCLUDE [Connect to admin runspace](../../includes/data-box-edge-gateway-connect-minishell.md)]
 
-## <a name="create-a-support-package"></a>Tworzenie pakietu dla pomocy technicznej
+## <a name="create-a-support-package"></a>Tworzenie pakietu pomocy technicznej
 
 [!INCLUDE [Create a support package](../../includes/data-box-edge-gateway-create-support-package.md)]
 
@@ -43,54 +43,54 @@ Ten artykuł zawiera następujące procedury:
 
 [!INCLUDE [Upload certificate](../../includes/data-box-edge-gateway-upload-certificate.md)]
 
-Można również przekazać certyfikaty IoT Edge, aby umożliwić bezpieczne połączenie między urządzeniem IoT Edge i urządzeniami podrzędnymi, które mogą się z nim połączyć. Istnieją trzy IoT Edge certyfikaty (format*PEM* ), które należy zainstalować:
+Można również przekazać certyfikaty usługi IoT Edge, aby włączyć bezpieczne połączenie między urządzeniem Usługi IoT Edge a urządzeniami podrzędnymi, które mogą się z nim łączyć. Istnieją trzy certyfikaty usługi IoT Edge (format*pem),* które należy zainstalować:
 
-- Certyfikat głównego urzędu certyfikacji lub urząd certyfikacji właściciela
-- Certyfikat dostępu Warunkowego do urządzeń
+- Główny certyfikat urzędu certyfikacji lub właściciel urzędu certyfikacji
+- Certyfikat urzędu certyfikacji urządzenia
 - Certyfikat klucza urządzenia
 
-W poniższym przykładzie pokazano użycie tego polecenia cmdlet w celu zainstalowania IoT Edge certyfikatów:
+W poniższym przykładzie przedstawiono użycie tego polecenia cmdlet do zainstalowania certyfikatów usługi IoT Edge:
 
 ```
 Set-HcsCertificate -Scope IotEdge -RootCACertificateFilePath "\\hcfs\root-ca-cert.pem" -DeviceCertificateFilePath "\\hcfs\device-ca-cert.pem\" -DeviceKeyFilePath "\\hcfs\device-key-cert.pem" -Credential "username"
 ```
-Po uruchomieniu tego polecenia cmdlet zostanie wyświetlony monit o podanie hasła dla udziału sieciowego.
+Po uruchomieniu tego polecenia cmdlet zostanie wyświetlony monit o podanie hasła do udziału sieciowego.
 
-Aby uzyskać więcej informacji na temat certyfikatów, przejdź do pozycji [Azure IoT Edge Certificates](https://docs.microsoft.com/azure/iot-edge/iot-edge-certs) lub [Zainstaluj certyfikaty na bramie](https://docs.microsoft.com/azure/iot-edge/how-to-create-transparent-gateway).
+Aby uzyskać więcej informacji na temat certyfikatów, przejdź do [certyfikatów usługi Azure IoT Edge](https://docs.microsoft.com/azure/iot-edge/iot-edge-certs) lub [zainstaluj certyfikaty na bramie](https://docs.microsoft.com/azure/iot-edge/how-to-create-transparent-gateway).
 
-## <a name="view-device-information"></a>Wyświetl informacje o urządzeniu
+## <a name="view-device-information"></a>Wyświetlanie informacji o urządzeniu
  
 [!INCLUDE [View device information](../../includes/data-box-edge-gateway-view-device-info.md)]
 
-## <a name="reset-your-device"></a>Zresetuj urządzenie
+## <a name="reset-your-device"></a>Resetowanie urządzenia
 
 [!INCLUDE [Reset your device](../../includes/data-box-edge-gateway-deactivate-device.md)]
 
-## <a name="get-compute-logs"></a>Pobieranie dzienników obliczeniowych
+## <a name="get-compute-logs"></a>Pobierz dzienniki obliczeniowe
 
-Jeśli na urządzeniu skonfigurowano rolę obliczeniową, można także uzyskać dzienniki obliczeń za pomocą interfejsu programu PowerShell.
+Jeśli rola obliczeniowa jest skonfigurowana na urządzeniu, można również uzyskać dzienniki obliczeniowe za pośrednictwem interfejsu programu PowerShell.
 
-1. [Nawiąż połączenie z interfejsem programu PowerShell](#connect-to-the-powershell-interface).
-2. Użyj `Get-AzureDataBoxEdgeComputeRoleLogs`, aby pobrać dzienniki obliczeniowe dla Twojego urządzenia.
+1. [Połącz się z interfejsem programu PowerShell](#connect-to-the-powershell-interface).
+2. Użyj, `Get-AzureDataBoxEdgeComputeRoleLogs` aby uzyskać dzienniki obliczeniowe dla urządzenia.
 
-    W poniższym przykładzie pokazano użycie tego polecenia cmdlet:
+    W poniższym przykładzie przedstawiono użycie tego polecenia cmdlet:
 
     ```powershell
     Get-AzureDataBoxEdgeComputeRoleLogs -Path "\\hcsfs\logs\myacct" -Credential "username" -FullLogCollection
     ```
 
-    Poniżej znajduje się opis parametrów używanych dla polecenia cmdlet:
-    - `Path`: Podaj ścieżkę sieciową do udziału, w którym chcesz utworzyć pakiet dziennika obliczeń.
-    - `Credential`: Podaj nazwę użytkownika dla udziału sieciowego. Po uruchomieniu tego polecenia cmdlet konieczne będzie podanie hasła udziału.
-    - `FullLogCollection`: ten parametr zapewnia, że pakiet dziennika będzie zawierać wszystkie dzienniki obliczeń. Domyślnie pakiet dziennika zawiera tylko podzestaw dzienników.
+    Oto opis parametrów używanych dla polecenia cmdlet:
+    - `Path`: Podaj ścieżkę sieciową do udziału, w którym chcesz utworzyć pakiet dziennika obliczeniowego.
+    - `Credential`: Podaj nazwę użytkownika udziału sieciowego. Po uruchomieniu tego polecenia cmdlet należy podać hasło udziału.
+    - `FullLogCollection`: Ten parametr gwarantuje, że pakiet dziennika będzie zawierać wszystkie dzienniki obliczeniowe. Domyślnie pakiet dziennika zawiera tylko podzbiór dzienników.
 
 ## <a name="monitor-and-troubleshoot-compute-modules"></a>Monitorowanie i rozwiązywanie problemów z modułami obliczeniowymi
 
 [!INCLUDE [Monitor and troubleshoot compute modules](../../includes/data-box-edge-monitor-troubleshoot-compute.md)]
 
-## <a name="exit-the-remote-session"></a>Zakończ sesję zdalną
+## <a name="exit-the-remote-session"></a>Zamykanie sesji zdalnej
 
-Aby wyjść z zdalnej sesji programu PowerShell, Zamknij okno programu PowerShell.
+Aby zakończyć zdalną sesję programu PowerShell, zamknij okno programu PowerShell.
 
 ## <a name="next-steps"></a>Następne kroki
 

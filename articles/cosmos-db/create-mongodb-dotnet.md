@@ -9,13 +9,13 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 05/21/2019
 ms.openlocfilehash: 55f40e8f22b39caa3527a378f33982276bed597d
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "79240184"
 ---
-# <a name="quickstart-build-a-net-web-app-using-azure-cosmos-dbs-api-for-mongodb"></a>Szybki Start: Tworzenie aplikacji sieci Web platformy .NET przy użyciu interfejsu API Azure Cosmos DB dla MongoDB 
+# <a name="quickstart-build-a-net-web-app-using-azure-cosmos-dbs-api-for-mongodb"></a>Szybki start: tworzenie aplikacji sieci web platformy .NET przy użyciu interfejsu API usługi Azure Cosmos DB dla usługi MongoDB 
 
 > [!div class="op_single_selector"]
 > * [.NET](create-mongodb-dotnet.md)
@@ -34,7 +34,7 @@ Ten przewodnik Szybki start opisuje sposób tworzenia konta usługi Cosmos przy 
 
 Aby uruchomić przykład, musisz mieć program [Visual Studio](https://www.visualstudio.com/downloads/) i ważne konto usługi Microsoft Azure Cosmos DB.
 
-Jeśli nie masz jeszcze programu Visual Studio, Pobierz [program Visual studio 2019 Community Edition](https://www.visualstudio.com/downloads/) z obciążeniem **ASP.NET i programowaniem aplikacji sieci Web** instalowanym z instalatorem.
+Jeśli nie masz jeszcze programu Visual Studio, pobierz [program Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/) z ASP.NET i obciążenia tworzenia sieci **Web** zainstalowanego z instalatorem.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)] 
 
@@ -55,13 +55,13 @@ Najpierw pobierz przykładową aplikację z usługi GitHub.
     md "C:\git-samples"
     ```
 
-2. Otwórz okno terminalu usługi Git, na przykład git bash, i użyj polecenia `cd`, aby przejść do nowego folderu instalacji aplikacji przykładowej.
+2. Otwórz okno terminala usługi Git, np. git bash, i użyj polecenia `cd`, aby przejść do nowego folderu instalacji aplikacji przykładowej.
 
     ```bash
     cd "C:\git-samples"
     ```
 
-3. Uruchom następujące polecenie w celu sklonowania przykładowego repozytorium. To polecenie tworzy kopię przykładowej aplikacji na komputerze. 
+3. Uruchom następujące polecenie w celu sklonowania przykładowego repozytorium. To polecenie tworzy kopię aplikacji przykładowej na komputerze. 
 
     ```bash
     git clone https://github.com/Azure-Samples/azure-cosmos-db-mongodb-dotnet-getting-started.git
@@ -71,7 +71,7 @@ Jeśli nie chcesz korzystać z usługi Git, możesz [pobrać projekt jako plik Z
 
 ## <a name="review-the-code"></a>Przeglądanie kodu
 
-Ten krok jest opcjonalny. Jeśli chcesz dowiedzieć się, jak zasoby bazy danych są tworzone w kodzie, możesz przejrzeć poniższe fragmenty kodu. W przeciwnym razie możesz od razu przejść do sekcji [Aktualizacja parametrów połączenia](#update-your-connection-string). 
+Ten krok jest opcjonalny. Jeśli chcesz się dowiedzieć, jak zasoby bazy danych są tworzone w kodzie, możesz przejrzeć poniższe fragmenty kodu. W przeciwnym razie możesz od razu przejść do sekcji [Aktualizacja parametrów połączenia](#update-your-connection-string). 
 
 Wszystkie poniższe fragmenty kodu pochodzą z pliku Dal.cs znajdującego się w katalogu DAL.
 
@@ -140,7 +140,7 @@ Teraz wróć do witryny Azure Portal, aby uzyskać informacje o parametrach poł
 
 5. Na końcu skopiuj wartość **password** z portalu i przypisz ją do klucza **password** w Twoim pliku **Dal.cs**. 
 
-Aplikacja została zaktualizowana i zawiera teraz wszystkie informacje potrzebne do nawiązania komunikacji z usługą Cosmos DB. 
+Aplikacja została zaktualizowana i zawiera teraz wszystkie informacje potrzebne do komunikowania się z usługą Cosmos DB. 
     
 ## <a name="run-the-web-app"></a>Uruchamianie aplikacji internetowej
 
@@ -167,4 +167,4 @@ Aplikacja została zaktualizowana i zawiera teraz wszystkie informacje potrzebne
 W tym przewodniku Szybki start wyjaśniono sposób tworzenia konta usługi Cosmos, tworzenia kolekcji i uruchamiania aplikacji konsolowej. Teraz możesz zaimportować dodatkowe dane do swojej bazy danych usługi Cosmos. 
 
 > [!div class="nextstepaction"]
-> [Importuj dane usługi MongoDB do usługi Azure Cosmos DB](mongodb-migrate.md)
+> [Importowanie danych z bazy danych MongoDB do usługi Azure Cosmos DB](mongodb-migrate.md)

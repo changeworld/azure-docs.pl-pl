@@ -1,6 +1,6 @@
 ---
-title: Kopiowanie danych ze źródeł ODBC przy użyciu Azure Data Factory
-description: Informacje o kopiowaniu danych ze źródeł OData do obsługiwanych magazynów danych ujścia przy użyciu działania kopiowania w potoku Azure Data Factory.
+title: Kopiowanie danych ze źródeł ODBC przy użyciu usługi Azure Data Factory
+description: Dowiedz się, jak skopiować dane ze źródeł OData do obsługiwanych magazynów danych ujścia przy użyciu działania kopiowania w potoku usługi Azure Data Factory.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -12,58 +12,58 @@ ms.topic: conceptual
 ms.date: 01/09/2020
 ms.author: jingwang
 ms.openlocfilehash: 6513cfc5432e969fc53aa72b075af194a064d178
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79244370"
 ---
-# <a name="copy-data-from-and-to-odbc-data-stores-using-azure-data-factory"></a>Kopiowanie danych z i do magazynów danych ODBC przy użyciu Azure Data Factory
-> [!div class="op_single_selector" title1="Wybierz używaną wersję usługi Data Factory:"]
+# <a name="copy-data-from-and-to-odbc-data-stores-using-azure-data-factory"></a>Kopiowanie danych z i do magazynów danych ODBC przy użyciu usługi Azure Data Factory
+> [!div class="op_single_selector" title1="Wybierz wersję używanej usługi Data Factory:"]
 > * [Wersja 1](v1/data-factory-odbc-connector.md)
 > * [Bieżąca wersja](connector-odbc.md)
 
-W tym artykule opisano sposób używania działania kopiowania w Azure Data Factory do kopiowania danych z i do magazynu danych ODBC. Jest ona oparta na [przeglądzie działania kopiowania](copy-activity-overview.md) , która przedstawia ogólne omówienie działania kopiowania.
+W tym artykule opisano, jak używać działania kopiowania w usłudze Azure Data Factory do kopiowania danych z i do magazynu danych ODBC. Opiera się na [omówienie działania kopiowania](copy-activity-overview.md) artykuł, który przedstawia ogólny przegląd działania kopiowania.
 
-## <a name="supported-capabilities"></a>Obsługiwane funkcje
+## <a name="supported-capabilities"></a>Obsługiwane możliwości
 
 Ten łącznik ODBC jest obsługiwany dla następujących działań:
 
-- [Działanie kopiowania](copy-activity-overview.md) z [obsługiwaną macierzą źródłową/ujścia](copy-activity-overview.md)
-- [Działanie Lookup](control-flow-lookup-activity.md)
+- [Kopiowanie aktywności](copy-activity-overview.md) z [obsługiwaną macierzą źródło/ujście](copy-activity-overview.md)
+- [Działanie odnośnika](control-flow-lookup-activity.md)
 
-Możesz skopiować dane ze źródła ODBC do dowolnego obsługiwanego magazynu danych ujścia lub skopiować z dowolnego obsługiwanego źródłowego magazynu danych do ujścia ODBC. Listę magazynów danych obsługiwanych jako źródła/ujścia przez działanie kopiowania można znaleźć w tabeli [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats) .
+Można skopiować dane ze źródła ODBC do dowolnego obsługiwanego magazynu danych ujścia lub skopiować z dowolnego obsługiwanego magazynu danych źródłowych do ujścia ODBC. Aby uzyskać listę magazynów danych, które są obsługiwane jako źródła/pochłaniacze przez działanie kopiowania, zobacz tabelę [Obsługiwane magazyny danych.](copy-activity-overview.md#supported-data-stores-and-formats)
 
-Ten łącznik ODBC obsługuje kopiowanie danych z/do **wszelkich magazynów danych zgodnych z ODBC** przy użyciu uwierzytelniania **podstawowego** lub **anonimowego** . Wymagany jest **64-bitowy sterownik ODBC** .
+W szczególności ten łącznik ODBC obsługuje kopiowanie danych z/do **dowolnego magazynów danych zgodnych z ODBC** przy użyciu uwierzytelniania **podstawowego** lub **anonimowego.** Wymagany jest **64-bitowy sterownik ODBC.**
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby użyć tego łącznika ODBC, należy wykonać następujące:
+Aby korzystać z tego złącza ODBC, należy:
 
-- Skonfiguruj samodzielny Integration Runtime. Aby uzyskać szczegółowe informacje, zobacz artykuł [Integration Runtime samodzielny](create-self-hosted-integration-runtime.md) .
-- Zainstaluj 64-bitowy sterownik ODBC dla magazynu danych na maszynie Integration Runtime.
+- Konfigurowanie środowiska wykonawczego integracji hostowanego samodzielnie. Zobacz [self-hosted Integration Runtime](create-self-hosted-integration-runtime.md) artykułu, aby uzyskać szczegółowe informacje.
+- Zainstaluj 64-bitowy sterownik ODBC dla magazynu danych na komputerze integration runtime.
 
 ## <a name="getting-started"></a>Wprowadzenie
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
-Poniższe sekcje zawierają szczegółowe informacje o właściwościach, które są używane do definiowania jednostek Data Factory specyficznych dla łącznika ODBC.
+W poniższych sekcjach znajdują się szczegółowe informacje o właściwościach, które są używane do definiowania jednostek fabryki danych specyficznych dla łącznika ODBC.
 
-## <a name="linked-service-properties"></a>Właściwości usługi połączonej
+## <a name="linked-service-properties"></a>Połączone właściwości usługi
 
-Dla połączonej usługi ODBC są obsługiwane następujące właściwości:
+Następujące właściwości są obsługiwane dla usługi połączonej ODBC:
 
 | Właściwość | Opis | Wymagany |
 |:--- |:--- |:--- |
-| type | Właściwość Type musi być ustawiona na wartość: **ODBC** | Yes |
-| connectionString | Parametry połączenia z wyjątkiem części poświadczenia. Można określić parametry połączenia z wzorcem, takie jak `"Driver={SQL Server};Server=Server.database.windows.net; Database=TestDatabase;"`, lub użyć nazwy DSN systemu (nazwa źródła danych) skonfigurowanej na maszynie Integration Runtime z `"DSN=<name of the DSN on IR machine>;"` (należy odpowiednio określić część poświadczeń w połączonej usłudze).<br>Możesz również wprowadzić hasło w Azure Key Vault i ściągnąć konfigurację   `password`z parametrów połączenia. Aby uzyskać więcej informacji, zapoznaj się z [poświadczeniami przechowywania w Azure Key Vault](store-credentials-in-key-vault.md) .| Yes |
-| authenticationType | Typ uwierzytelniania używany do nawiązywania połączenia z magazynem danych ODBC.<br/>Dozwolone wartości to: **podstawowe** i **anonimowe**. | Yes |
-| userName | Określ nazwę użytkownika w przypadku korzystania z uwierzytelniania podstawowego. | Nie |
-| hasło | Określ hasło dla konta użytkownika określonego dla nazwy użytkownika. Oznacz to pole jako element SecureString, aby bezpiecznie przechowywać go w Data Factory, lub [odwoływać się do wpisu tajnego przechowywanego w Azure Key Vault](store-credentials-in-key-vault.md). | Nie |
-| poświadczenia | Część poświadczeń dostępu do parametrów połączenia określona w formacie wartości właściwości specyficznej dla sterownika. Przykład: `"RefreshToken=<secret refresh token>;"`. Oznacz to pole jako element SecureString. | Nie |
-| connectVia | [Integration Runtime](concepts-integration-runtime.md) używany do nawiązywania połączenia z magazynem danych. Samodzielna Integration Runtime jest wymagana, jak wspomniano w [wymaganiach wstępnych](#prerequisites). |Yes |
+| type | Właściwość typu musi być ustawiona na: **Odbc** | Tak |
+| Parametry połączenia | Parametry połączenia z wyłączeniem części poświadczeń. Można określić ciąg połączenia `"Driver={SQL Server};Server=Server.database.windows.net; Database=TestDatabase;"`z wzorcem, takim jak , lub użyć systemu DSN `"DSN=<name of the DSN on IR machine>;"` (nazwa źródła danych), który został skonfigurowany na komputerze środowiska wykonawczego integracji (nadal należy odpowiednio określić część poświadczeń w połączonej usłudze).<br>Można również umieścić hasło w usłudze `password` Azure Key Vault i wyciągnąć konfigurację z ciągu połączenia.Więcej informacji można znaleźć [w witrynie Store credentials w usłudze Azure Key Vault.](store-credentials-in-key-vault.md) | Tak |
+| authenticationType | Typ uwierzytelniania używany do łączenia się z magazynem danych ODBC.<br/>Dozwolone wartości to: **Podstawowe** i **Anonimowe**. | Tak |
+| userName | Określ nazwę użytkownika, jeśli używasz uwierzytelniania podstawowego. | Nie |
+| hasło | Określ hasło dla konta użytkownika określonego dla nazwy użytkownika. Oznacz to pole jako SecureString, aby bezpiecznie przechowywać go w fabryce danych lub [odwołaj się do klucza tajnego przechowywanego w usłudze Azure Key Vault.](store-credentials-in-key-vault.md) | Nie |
+| poświadczenia | Część poświadczeń dostępu ciągu połączenia określona w formacie właściwości-wartość specyficzne dla sterownika. Przykład: `"RefreshToken=<secret refresh token>;"`. Oznacz to pole jako SecureString. | Nie |
+| connectVia | [Środowisko wykonawcze integracji,](concepts-integration-runtime.md) które mają być używane do łączenia się z magazynem danych. Środowisko wykonawcze integracji hostowane samodzielnie jest wymagane, jak wspomniano w [wymaganiach wstępnych.](#prerequisites) |Tak |
 
-**Przykład 1: używanie uwierzytelniania podstawowego**
+**Przykład 1: korzystanie z uwierzytelniania podstawowego**
 
 ```json
 {
@@ -112,14 +112,14 @@ Dla połączonej usługi ODBC są obsługiwane następujące właściwości:
 
 ## <a name="dataset-properties"></a>Właściwości zestawu danych
 
-Aby uzyskać pełną listę sekcji i właściwości dostępnych do definiowania zestawów danych, zobacz artykuł [zestawy danych](concepts-datasets-linked-services.md) . Ta sekcja zawiera listę właściwości obsługiwanych przez zestaw danych ODBC.
+Aby uzyskać pełną listę sekcji i właściwości dostępnych do definiowania zestawów danych, zobacz artykuł [o zestawach danych.](concepts-datasets-linked-services.md) Ta sekcja zawiera listę właściwości obsługiwanych przez zestaw danych ODBC.
 
-Aby skopiować dane z magazynu danych zgodnego ze standardem ODBC, obsługiwane są następujące właściwości:
+Aby skopiować dane z/do magazynu danych zgodnych z ODBC, obsługiwane są następujące właściwości:
 
 | Właściwość | Opis | Wymagany |
 |:--- |:--- |:--- |
-| type | Właściwość Type zestawu danych musi być ustawiona na: **ODBC** | Yes |
-| tableName | Nazwa tabeli w magazynie danych ODBC. | Nie dla źródła (Jeśli określono "zapytanie" w źródle aktywności);<br/>Tak dla ujścia |
+| type | Właściwość typu zestawu danych musi być ustawiona na: **OdbcTable** | Tak |
+| tableName | Nazwa tabeli w magazynie danych ODBC. | Nie dla źródła (jeśli określono "zapytanie" w źródle działania);<br/>Tak dla zlewu |
 
 **Przykład**
 
@@ -140,20 +140,20 @@ Aby skopiować dane z magazynu danych zgodnego ze standardem ODBC, obsługiwane 
 }
 ```
 
-Jeśli używasz zestawu danych `RelationalTable` z określonym typem, nadal jest on obsługiwany w przypadku, gdy zamierzasz korzystać z nowego.
+Jeśli używasz `RelationalTable` wpisanego zestawu danych, jest on nadal obsługiwany w stanie gotowym do użycia, podczas gdy zaleca się użycie nowego w przyszłości.
 
 ## <a name="copy-activity-properties"></a>Właściwości działania kopiowania
 
-Aby uzyskać pełną listę sekcji i właściwości dostępnych do definiowania działań, zobacz artykuł [potoki](concepts-pipelines-activities.md) . Ta sekcja zawiera listę właściwości obsługiwanych przez źródło ODBC.
+Aby uzyskać pełną listę sekcji i właściwości dostępnych do definiowania działań, zobacz [Pipelines](concepts-pipelines-activities.md) artykułu. Ta sekcja zawiera listę właściwości obsługiwanych przez źródło ODBC.
 
 ### <a name="odbc-as-source"></a>ODBC jako źródło
 
-Aby skopiować dane z magazynu danych zgodnego z ODBC, w sekcji **Źródło** działania kopiowania są obsługiwane następujące właściwości:
+Aby skopiować dane z magazynu danych zgodnych z ODBC, w sekcji **źródła** działania kopiowania obsługiwane są następujące właściwości:
 
 | Właściwość | Opis | Wymagany |
 |:--- |:--- |:--- |
-| type | Właściwość Type źródła działania Copy musi być ustawiona na wartość: **OdbcSource** | Yes |
-| query | Umożliwia odczytywanie danych niestandardowe zapytania SQL. Na przykład: `"SELECT * FROM MyTable"`. | Nie (Jeśli określono parametr "tableName" w zestawie danych) |
+| type | Właściwość typu źródła działania kopiowania musi być ustawiona na: **OdbcSource** | Tak |
+| query | Użyj niestandardowej kwerendy SQL, aby odczytać dane. Na przykład: `"SELECT * FROM MyTable"`. | Nie (jeśli określono "nazwa tabela" w zestawie danych) |
 
 **Przykład:**
 
@@ -187,21 +187,21 @@ Aby skopiować dane z magazynu danych zgodnego z ODBC, w sekcji **Źródło** dz
 ]
 ```
 
-Jeśli używasz źródła z wpisaną `RelationalSource`, jest ono nadal obsługiwane w stanie takim, w jakim będziesz mieć możliwość korzystania z nowej usługi.
+Jeśli używasz `RelationalSource` wpisanego źródła, jest ono nadal obsługiwane w stanie as-is, podczas gdy zaleca się użycie nowego w przyszłości.
 
-### <a name="odbc-as-sink"></a>ODBC jako ujścia
+### <a name="odbc-as-sink"></a>ODBC jako zlew
 
-Aby skopiować dane do magazynu danych zgodnego ze standardem ODBC, ustaw typ ujścia w działaniu Copy na **OdbcSink**. W sekcji **ujścia** działania kopiowania są obsługiwane następujące właściwości:
+Aby skopiować dane do magazynu danych zgodnych z ODBC, ustaw typ ujścia w działaniu kopiowania na **OdbcSink**. Następujące właściwości są obsługiwane w sekcji **ujście** działania kopiowania:
 
 | Właściwość | Opis | Wymagany |
 |:--- |:--- |:--- |
-| type | Właściwość Type ujścia działania Copy musi być ustawiona na wartość: **OdbcSink** | Yes |
-| writeBatchTimeout |Czas oczekiwania na zakończenie operacji wstawiania partii przed upływem limitu czasu.<br/>Dozwolone wartości to: TimeSpan. Przykład: "00: 30:00" (30 minut). |Nie |
-| writeBatchSize |Wstawia dane do tabeli SQL, gdy rozmiar buforu osiągnie writeBatchSize.<br/>Dozwolone wartości to: Integer (liczba wierszy). |Nie (domyślnie: 0 — wykryto Autowykrywanie) |
-| preCopyScript |Określ zapytanie SQL dla działania kopiowania, które ma zostać wykonane przed zapisaniem danych w magazynie danych w każdym przebiegu. Ta właściwość służy do czyszczenia wstępnie załadowanych danych. |Nie |
+| type | Właściwość typu ujścia działania kopiowania musi być ustawiona na: **OdbcSink** | Tak |
+| writeBatchTimeout |Czas oczekiwania na zakończenie operacji wstawiania partii przed jej limitem czasu.<br/>Dozwolone wartości to: timespan. Przykład: "00:30:00" (30 minut). |Nie |
+| writeBatchSize |Wstawia dane do tabeli SQL, gdy rozmiar buforu osiągnie writeBatchSize.<br/>Dozwolone wartości to: liczba całkowita (liczba wierszy). |Nie (wartość domyślna to 0 - wykryto automatycznie) |
+| preCopyScript |Określ kwerendę SQL dla działania kopiowania do wykonania przed zapisaniem danych do magazynu danych w każdym uruchomieniu. Ta właściwość służy do czyszczenia wstępnie załadowanych danych. |Nie |
 
 > [!NOTE]
-> W przypadku elementu "writeBatchSize", jeśli nie jest ustawiony (Autowykrywanie), działanie kopiowania najpierw wykrywa, czy sterownik obsługuje operacje wsadowe, i ustawia go na 10000, jeśli tak, lub jeśli nie, ustawia go na 1. Jeśli jawnie ustawisz wartość inną niż 0, działanie kopiowania uznaje wartość i kończy się niepowodzeniem w czasie wykonywania, jeśli sterownik nie obsługuje operacji wsadowych.
+> Dla "writeBatchSize", jeśli nie jest ustawiona (automatycznie wykryte), działanie kopiowania najpierw wykrywa, czy sterownik obsługuje operacje wsadowe i ustawić go na 10000, jeśli nie, lub ustawić go na 1, jeśli nie. Jeśli jawnie ustawić wartość inną niż 0, działanie kopiowania honoruje wartość i kończy się niepowodzeniem w czasie wykonywania, jeśli sterownik nie obsługuje operacji wsadowych.
 
 **Przykład:**
 
@@ -235,19 +235,19 @@ Aby skopiować dane do magazynu danych zgodnego ze standardem ODBC, ustaw typ uj
 ]
 ```
 
-## <a name="sap-hana-sink"></a>SAP HANA ujścia
+## <a name="sap-hana-sink"></a>ZlewOZmywak SAP HANA
 
 >[!NOTE]
->Aby skopiować dane z SAP HANA magazynu danych, zapoznaj się z łącznikiem macierzystym [SAP HANA](connector-sap-hana.md). Aby skopiować dane do SAP HANA, wykonaj następującą instrukcję, aby użyć łącznika ODBC. Zwróć uwagę, że połączone usługi dla łącznika SAP HANA i łącznika ODBC są z różnymi rodzajami, więc nie mogą być ponownie używane.
+>Aby skopiować dane z magazynu danych SAP HANA, zapoznaj się z macierzystym [łącznika SAP HANA](connector-sap-hana.md). Aby skopiować dane do sap HANA, postępuj zgodnie z tą instrukcją, aby użyć łącznika ODBC. Należy zauważyć, że połączone usługi dla łącznika SAP HANA i łącznika ODBC są innego typu, dlatego nie można ponownie używać.
 >
 
-Dane można kopiować do SAP HANA bazy danych przy użyciu uniwersalnego łącznika ODBC.
+Dane można kopiować do bazy danych SAP HANA przy użyciu ogólnego łącznika ODBC.
 
-Skonfiguruj własne Integration Runtime na komputerze z dostępem do magazynu danych. Aby nawiązać połączenie z magazynem danych, Integration Runtime używa sterownika ODBC dla SAP HANA. W związku z tym Zainstaluj sterownik, jeśli nie został jeszcze zainstalowany na tym samym komputerze. Szczegółowe informacje znajdują się w sekcji [wymagania wstępne](#prerequisites) .
+Skonfiguruj własny środowisko wykonawcze integracji na komputerze z dostępem do magazynu danych. Środowisko wykonawcze integracji używa sterownika ODBC dla sap HANA do łączenia się z magazynem danych. W związku z tym należy zainstalować sterownik, jeśli nie jest jeszcze zainstalowany na tym samym komputerze. Szczegółowe informacje można znaleźć w sekcji [Wymagania wstępne.](#prerequisites)
 
-Przed użyciem ujścia SAP HANA w rozwiązaniu Data Factory Sprawdź, czy Integration Runtime może nawiązać połączenie z magazynem danych, korzystając z instrukcji w sekcji [Rozwiązywanie problemów z łącznością](#troubleshoot-connectivity-issues) .
+Przed użyciem ujścia SAP HANA w rozwiązaniu fabryki danych sprawdź, czy środowisko wykonawcze integracji może łączyć się z magazynem danych, korzystając z instrukcji w sekcji [Rozwiązywanie problemów z łącznością.](#troubleshoot-connectivity-issues)
 
-Utwórz połączoną usługę ODBC, aby połączyć SAP HANA magazyn danych z usługą Azure Data Factory, jak pokazano w następującym przykładzie:
+Utwórz usługę połączoną ODBC, aby połączyć magazyn danych SAP HANA z fabryką danych platformy Azure, jak pokazano w poniższym przykładzie:
 
 ```json
 {
@@ -271,22 +271,22 @@ Utwórz połączoną usługę ODBC, aby połączyć SAP HANA magazyn danych z us
 }
 ```
 
-Zapoznaj się z artykułem od początku, aby zapoznać się z szczegółowym omówieniem używania magazynów danych ODBC jako magazynów danych źródłowych/ujścia w operacji kopiowania.
+Przeczytaj artykuł od początku, aby uzyskać szczegółowy przegląd przy użyciu magazynów danych ODBC jako magazynów danych źródła/ujścia w operacji kopiowania.
 
-## <a name="lookup-activity-properties"></a>Właściwości działania Lookup
+## <a name="lookup-activity-properties"></a>Właściwości działania odnośnika
 
-Aby dowiedzieć się więcej o właściwościach, sprawdź [działanie Lookup (wyszukiwanie](control-flow-lookup-activity.md)).
+Aby dowiedzieć się więcej o właściwościach, sprawdź [działanie odnośnika](control-flow-lookup-activity.md).
 
 
 ## <a name="troubleshoot-connectivity-issues"></a>Rozwiązywanie problemów z łącznością
 
-Aby rozwiązać problemy z połączeniem, Użyj karty **Diagnostyka** w **Integration Runtime Configuration Manager**.
+Aby rozwiązać problemy z połączeniem, użyj karty **Diagnostyka** **programu Integration Runtime Configuration Manager**.
 
-1. Uruchom **Configuration Manager Integration Runtime**.
-2. Przejdź na kartę **Diagnostyka** .
-3. W sekcji "Testuj połączenie" Wybierz **Typ** magazynu danych (połączona usługa).
-4. Określ **Parametry połączenia** , które są używane do nawiązywania połączenia z magazynem danych, **Wybierz uwierzytelnianie** i wprowadź **nazwę użytkownika**, **hasło**i/lub **poświadczenia**.
-5. Kliknij przycisk **Test connection** , aby przetestować połączenie z magazynem danych.
+1. Uruchom **program Integration Runtime Configuration Manager**.
+2. Przełącz się do karty **Diagnostyka.**
+3. W sekcji "Połączenie testowe" wybierz **typ** magazynu danych (usługa połączona).
+4. Określ **parametry połączenia** używane do łączenia się z magazynem danych, wybierz **uwierzytelnianie** i wprowadź **nazwę użytkownika,** **hasło**i/lub **poświadczenia**.
+5. Kliknij **przycisk Testuj połączenie,** aby przetestować połączenie z magazynem danych.
 
 ## <a name="next-steps"></a>Następne kroki
-Listę magazynów danych obsługiwanych jako źródła i ujścia przez działanie kopiowania w Azure Data Factory można znaleźć w temacie [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats).
+Aby uzyskać listę magazynów danych obsługiwanych jako źródła i pochłaniacze przez działanie kopiowania w usłudze Azure Data Factory, zobacz [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats).
