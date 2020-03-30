@@ -1,5 +1,5 @@
 ---
-title: USŁUGI RADIUS i serwer usługi Azure MFA — Azure Active Directory
+title: USŁUGI RADIUS i usługi Azure MFA Server — usługa Azure Active Directory
 description: Wdrażanie uwierzytelniania usługi RADIUS i serwera Azure Multi-Factor Authentication.
 services: multi-factor-authentication
 ms.service: active-directory
@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b38341613c98bf85df8cb47ccafc3df5709a1fd4
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75425213"
 ---
 # <a name="integrate-radius-authentication-with-azure-multi-factor-authentication-server"></a>Integrowanie uwierzytelniania usługi RADIUS z serwerem usługi Azure Multi-Factor Authentication
@@ -23,16 +23,16 @@ ms.locfileid: "75425213"
 RADIUS jest standardowym protokołem, który umożliwia akceptowanie i przetwarzanie żądań uwierzytelniania. Serwer usługi Azure Multi-Factor Authentication może działać jako serwer RADIUS. Wstaw go między klientem RADIUS (urządzeniem sieci VPN) i celem uwierzytelniania, aby dodać weryfikację dwuetapową. Celem uwierzytelniania może być usługa Active Directory, katalog LDAP lub inny serwer RADIUS. Aby możliwe było działanie usługi Azure Multi-Factor Authentication (MFA), serwer usługi Azure MFA musi zostać skonfigurowany pod kątem komunikacji zarówno z serwerami klientów, jak i obiektem docelowym uwierzytelniania. Serwer usługi Azure MFA odbiera żądania od klienta usługi RADIUS, przeprowadza walidację poświadczeń względem obiektu docelowego uwierzytelniania, dodaje usługę Azure Multi-Factor Authentication i wysyła odpowiedź do klienta usługi RADIUS. Żądanie uwierzytelniania powiedzie się tylko w przypadku pomyślnego przebiegu zarówno uwierzytelniania podstawowego, jak i uwierzytelniania usługi Azure Multi-Factor Authentication.
 
 > [!IMPORTANT]
-> Ten artykuł jest przeznaczony tylko dla użytkowników serwera usługi Azure MFA. Jeśli używasz opartej na chmurze usługi Azure MFA, zobacz jak [zintegrować z uwierzytelnianiem za pomocą usługi RADIUS dla usługi Azure MFA](howto-mfa-nps-extension.md).
+> Ten artykuł jest przeznaczony tylko dla użytkowników usługi Azure MFA Server. Jeśli używasz usługi Azure MFA opartej na chmurze, zamiast tego zobacz, jak [zintegrować z uwierzytelnianiem RADIUS dla usługi Azure MFA.](howto-mfa-nps-extension.md)
 >
-> Od 1 lipca 2019 firma Microsoft nie będzie już oferować serwera MFA dla nowych wdrożeń. Nowi klienci, którzy chcą wymagać uwierzytelniania wieloskładnikowego od użytkowników, powinni korzystać z usługi Azure Multi-Factor Authentication opartej na chmurze. Istniejący klienci, którzy aktywowali serwer usługi MFA przed 1 lipca, będą mogli pobrać najnowszą wersję, przyszłe aktualizacje i generować poświadczenia aktywacji w zwykły sposób.
+> Od 1 lipca 2019 r. firma Microsoft nie będzie już oferować serwera usługi MFA dla nowych wdrożeń. Nowi klienci, którzy chcieliby wymagać uwierzytelniania wieloskładnikowego od swoich użytkowników, powinni korzystać z uwierzytelniania wieloskładnikowego platformy Azure w chmurze. Obecni klienci, którzy aktywowali serwer usługi MFA przed 1 lipca, będą mogli pobrać najnowszą wersję, przyszłe aktualizacje i wygenerować poświadczenia aktywacji w zwykły sposób.
 
 > [!NOTE]
 > Gdy serwer usługi MFA działa jako serwer usługi RADIUS, obsługuje tylko protokoły usługi RADIUS: PAP (protokół uwierzytelniania haseł) i MSCHAPv2 (protokół uwierzytelniania typu Challenge Handshake firmy Microsoft).  Inne protokoły, np. protokół uwierzytelniania rozszerzonego (EAP, Extensible Authentication Protocol), mogą być używane, jeśli serwer usługi MFA działa jako serwer proxy usługi RADIUS połączony z innym serwerem usługi RADIUS, który obsługuje taki protokół.
 >
 > W tej konfiguracji jednokierunkowe tokeny SMS i OATH nie działają, ponieważ serwer usługi MFA nie może zainicjować pomyślnej odpowiedzi na żądanie usługi RADIUS przy użyciu alternatywnych protokołów.
 
-![Uwierzytelnianie usługi RADIUS na serwerze MFA](./media/howto-mfaserver-dir-radius/radius.png)
+![Uwierzytelnianie promieniowe na serwerze usługi MFA](./media/howto-mfaserver-dir-radius/radius.png)
 
 ## <a name="add-a-radius-client"></a>Dodawanie klienta usługi RADIUS
 
@@ -41,7 +41,7 @@ Aby skonfigurować uwierzytelnianie usługi RADIUS, zainstaluj serwer usługi Az
 1. Na serwerze usługi Azure Multi-Factor Authentication kliknij ikonę Uwierzytelnianie usługi RADIUS w menu po lewej stronie.
 2. Zaznacz pole wyboru **Włącz uwierzytelnianie usługi RADIUS**.
 3. Na karcie Klienci zmień porty uwierzytelniania i ewidencjonowania aktywności, jeśli usługa Azure MFA RADIUS musi nasłuchiwać żądań usługi RADIUS na niestandardowych portach.
-4. Kliknij pozycję **Dodaj**.
+4. Kliknij przycisk **Dodaj**.
 5. Wprowadź adres IP urządzenia/serwera, które będą uwierzytelniane na serwerze usługi Azure Multi-Factor Authentication, nazwę aplikacji (opcjonalnie) i wspólny klucz tajny.
 
    Nazwa aplikacji jest widoczna w raportach i może być wyświetlana w uwierzytelniających wiadomościach SMS lub wiadomościach uwierzytelniających aplikacji mobilnej.
@@ -57,10 +57,10 @@ Powtarzaj kroki od 4 do 8, aby dodać tylu klientów usługi RADIUS, ilu potrzeb
 ## <a name="configure-your-radius-client"></a>Konfigurowanie klienta usługi RADIUS
 
 1. Kliknij kartę **Cel**.
-   * Jeśli serwer usługi Azure MFA jest zainstalowany na serwerze przyłączonym do domeny w środowisku Active Directory, wybierz pozycję **domena systemu Windows**.
+   * Jeśli serwer usługi Azure MFA jest zainstalowany na serwerze przyłączanym do domeny w środowisku usługi Active Directory, wybierz **domenę systemu Windows**.
    * Jeśli użytkownicy mają być uwierzytelniani względem katalogu LDAP, wybierz pozycję **Powiązanie z protokołem LDAP**.
       Wybierz ikonę Integracja katalogu i zmień konfigurację protokołu LDAP na karcie Ustawienia, tak aby serwer mógł utworzyć powiązanie z katalogiem. Instrukcje dotyczące konfigurowania protokołu LDAP można znaleźć w [przewodniku po konfiguracji serwera proxy LDAP](howto-mfaserver-dir-ldap.md).
-   * Jeśli użytkownicy mają być uwierzytelniani na innym serwerze RADIUS, wybierz opcję **serwery RADIUS**.
+   * Jeśli użytkownicy powinni być uwierzytelnieni na innym serwerze **RADIUS, wybierz serwery RADIUS**.
 1. Kliknij przycisk **Dodaj**, aby skonfigurować serwer, który będzie działał jako serwer proxy dla żądań usługi RADIUS przesyłanych przez serwer usługi Azure MFA.
 1. W oknie dialogowym Dodawanie serwera usługi RADIUS wprowadź adres IP serwera RADIUS i wspólny klucz tajny.
 

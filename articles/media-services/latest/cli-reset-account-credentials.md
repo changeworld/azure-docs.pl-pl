@@ -14,18 +14,18 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 08/20/2019
 ms.author: juliako
-ms.openlocfilehash: 09c93e2d851bea22e9d54dde35398f36335eb896
-ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
+ms.openlocfilehash: 63f2abe7a3890efbaf4c79186467a3eb20d8afda
+ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70967586"
+ms.lasthandoff: 03/29/2020
+ms.locfileid: "80382991"
 ---
-# <a name="cli-example-reset-the-account-credentials"></a>Przykład użycia interfejsu wiersza polecenia: Resetowanie poświadczeń konta
+# <a name="azure-cli-example-reset-the-account-credentials"></a>Przykład interfejsu wiersza polecenia platformy Azure: resetowanie poświadczeń konta
 
 Skrypt interfejsu wiersza polecenia platformy Azure pokazuje sposób resetowania poświadczeń konta i przywracania ustawień pliku app.config.
 
-## <a name="prerequisites"></a>Wymagania wstępne 
+## <a name="prerequisites"></a>Wymagania wstępne
 
 [Utwórz konto usługi Media Services](create-account-cli-how-to.md).
 
@@ -33,17 +33,17 @@ Skrypt interfejsu wiersza polecenia platformy Azure pokazuje sposób resetowania
 
 ## <a name="example-script"></a>Przykładowy skrypt
 
-```
+```azurecli-interactive
 # Update the following variables for your own settings:
 resourceGroup=amsResourceGroup
 amsAccountName=amsmediaaccountname
 
 az ams account sp reset-credentials \
   --account-name $amsAccountName \
-  --resource-group $resourceGroup 
+  --resource-group $resourceGroup
  ```
 
 ## <a name="next-steps"></a>Następne kroki
 
-* [AZ AMS](https://docs.microsoft.com/cli/azure/ams?view=azure-cli-latest)
-* [Resetuj poświadczenia](https://docs.microsoft.com/cli/azure/ams/account/sp?view=azure-cli-latest#az-ams-account-sp-reset-credentials)
+* [az ams](/cli/azure/ams)
+* [Resetowanie poświadczeń](/cli/azure/ams/account/sp#az-ams-account-sp-reset-credentials)

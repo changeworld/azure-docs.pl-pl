@@ -1,6 +1,6 @@
 ---
-title: Adaptacyjne Zabezpieczanie sieci w Azure Security Center | Microsoft Docs
-description: Dowiedz się, jak używać rzeczywistych wzorców ruchu do ochrony reguł sieciowych grup zabezpieczeń (sieciowej grupy zabezpieczeń), a także ulepszania stan zabezpieczeń.
+title: Adaptacyjne utwardzanie sieci w usłudze Azure Security Center | Dokumenty firmy Microsoft
+description: Dowiedz się, jak używać rzeczywistych wzorców ruchu, aby wzmocnić reguły sieciowych grup zabezpieczeń i jeszcze bardziej poprawić stan bezpieczeństwa.
 services: security-center
 documentationcenter: na
 author: memildin
@@ -13,200 +13,130 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/11/2020
 ms.author: memildin
-ms.openlocfilehash: bc610fa1d7a5fa1a10db3298164404b92d5d9f85
-ms.sourcegitcommit: d322d0a9d9479dbd473eae239c43707ac2c77a77
+ms.openlocfilehash: a75be23e2e8215d86aebcfd7f4317f2f597d3c5b
+ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2020
-ms.locfileid: "79139593"
+ms.lasthandoff: 03/29/2020
+ms.locfileid: "80385082"
 ---
-# <a name="adaptive-network-hardening-in-azure-security-center"></a>Adaptacyjne Zabezpieczanie sieci w Azure Security Center
-Dowiedz się, jak konfigurować adaptacyjną ochronę sieci w Azure Security Center.
+# <a name="adaptive-network-hardening-in-azure-security-center"></a>Adaptacyjne uostrzanie sieci w usłudze Azure Security Center
+Dowiedz się, jak skonfigurować adaptacyjne wzmocnienie sieci w usłudze Azure Security Center.
 
-## <a name="what-is-adaptive-network-hardening"></a>Co to jest adaptacyjna Funkcja ograniczania przepustowości sieci?
-Zastosowanie [sieciowych grup zabezpieczeń (sieciowej grupy zabezpieczeń)](https://docs.microsoft.com/azure/virtual-network/security-overview) do filtrowania ruchu do i z zasobów, usprawnia stan zabezpieczeń sieci. Nadal jednak mogą istnieć sytuacje, w których rzeczywisty ruch przepływający przez sieciowej grupy zabezpieczeń jest podzbiorem zdefiniowanych reguł sieciowej grupy zabezpieczeń. W takich przypadkach dalsze ulepszanie stan zabezpieczeń można osiągnąć przez zaostrzonie reguł sieciowej grupy zabezpieczeń na podstawie rzeczywistych wzorców ruchu.
+## <a name="what-is-adaptive-network-hardening"></a>Co to jest adaptacyjne hartowanie sieci?
+Stosowanie [sieciowych grup zabezpieczeń (NSG)](https://docs.microsoft.com/azure/virtual-network/security-overview) do filtrowania ruchu do i z zasobów poprawia stan bezpieczeństwa sieci. Jednak nadal może być kilka przypadków, w których rzeczywisty ruch przepływający przez nsg jest podzbiorem reguł sieciowej grupy płciowych zdefiniowanych. W takich przypadkach dalsze poprawienie postawy bezpieczeństwa można osiągnąć poprzez zaostrzenie reguł sieciowej sieciowej ochrony sieciowej w oparciu o rzeczywiste wzorce ruchu.
 
-Adaptacyjne zwiększanie przepustowości sieci zapewnia rekomendacje w celu dalszej ochrony reguł sieciowej grupy zabezpieczeń. Używa algorytmu uczenia maszynowego, który ma czynniki w rzeczywistym ruchu, znanej zaufanej konfiguracji, analizie zagrożeń i innych wskaźnikach naruszenia, a następnie udostępnia zalecenia zezwalające na ruch tylko z konkretnych krotek IP/portów.
+Adaptacyjne hartowanie sieci zawiera zalecenia dotyczące dalszego zaostrzenia reguł sieciowej sieciowej. Używa algorytmu uczenia maszynowego, który uwzględnia rzeczywisty ruch, znaną zaufaną konfigurację, analizę zagrożeń i inne wskaźniki naruszenia zabezpieczeń, a następnie udostępnia zalecenia, aby zezwolić na ruch tylko z określonych krotek IP/portu.
 
-Załóżmy na przykład, że istniejąca reguła sieciowej grupy zabezpieczeń ma zezwalać na ruch z 140.20.30.10/24 na porcie 22. Zalecane zalecenie dotyczące ograniczania przepustowości sieci oparte na analizie zawęża zakres i zezwala na ruch z 140.23.30.10/29 — który jest węższym zakresem adresów IP i odmówi cały ruch do tego portu.
+Załóżmy na przykład, że istniejącą regułą nsg jest zezwalanie na ruch z 140.20.30.10/24 na porcie 22. Zalecenie Adaptive Network Hardening, oparte na analizie, byłoby zawężenie zakresu i umożliwienie ruchu z 140.23.30.10/29 - który jest węższym zakresem IP i odmówić wszelkiego innego ruchu do tego portu.
 
 >[!TIP]
-> Zalecenia dotyczące zabezpieczania sieci adaptacyjnej są obsługiwane tylko na określonych portach. Aby uzyskać pełną listę, zobacz, [które porty są obsługiwane?](#which-ports-are-supported) poniżej. 
+> Adaptacyjne zalecenia dotyczące hartowania sieci są obsługiwane tylko w następujących określonych portach (zarówno dla UDP, jak i TCP): 13, 17, 19, 22, 23, 53, 69, 81, 111, 119, 123, 135, 137, 138, 139, 161, 162, 389, 445, 512, 514, 593, 636, 873, 1433, 1434, 1900, 2049, 2301 , 2323, 2381, 3268, 3306, 3389, 4333, 5353, 5432, 5555, 5800, 5900, 5900, 5985, 5986, 6379, 6379, 7000, 7001, 7199, 8081, 8089, 8545, 9042, 9160, 9300, 11211, 16379, 26379, 27017, 37215
 
 
-![Widok ograniczania funkcjonalności sieci](./media/security-center-adaptive-network-hardening/traffic-hardening.png)
+![Widok hartowania sieci](./media/security-center-adaptive-network-hardening/traffic-hardening.png)
 
 
-## <a name="view-adaptive-network-hardening-alerts-and-rules"></a>Wyświetl alerty i reguły ograniczania przepustowości sieci
+## <a name="view-adaptive-network-hardening-alerts-and-rules"></a>Wyświetlanie alertów i reguł adaptacyjnego hartowania sieci
 
-1. W Security Center wybierz pozycję **sieć** -> **adaptacyjne Zabezpieczanie sieci**. Sieci maszyn wirtualnych są wymienione na trzech oddzielnych kartach:
-   * **Zasoby w złej kondycji**: maszyny wirtualne, które aktualnie mają zalecenia i alerty, które zostały wyzwolone przez uruchomienie adaptacyjnego algorytmu ograniczania przepustowości sieci. 
-   * **Dobra kondycja**: maszyny wirtualne bez alertów i zaleceń.
-   * **Niezeskanowane zasoby**: maszyny wirtualne, na których algorytm ograniczania funkcjonalności sieci nie może zostać uruchomiony z jednego z następujących powodów:
-      * **Maszyny wirtualne są klasycznymi maszynami wirtualnymi**: obsługiwane są tylko Azure Resource Manager maszyny wirtualne.
-      * Brak **wystarczającej ilości danych**: w celu wygenerowania dokładnego zalecenia dotyczącego ograniczania ruchu, Security Center wymaga co najmniej 30 dni danych ruchu.
-      * **Maszyna wirtualna nie jest chroniona przez Standard ASC**: tylko maszyny wirtualne, które są ustawione na standardową warstwę cenową Security Center, kwalifikują się do tej funkcji.
+1. W centrum zabezpieczeń **wybierz** -> pozycję**Adaptacyjne utwardzanie sieci adaptacyjnej sieci.** Maszyny wirtualne sieci są wymienione w trzech oddzielnych kartach:
+   * **Zasoby w złej kondycji:** maszyny wirtualne, które obecnie mają zalecenia i alerty, które zostały wyzwolone przez uruchomienie algorytmu adaptacyjnego hartowania sieci. 
+   * **Zdrowe zasoby:** maszyny wirtualne bez alertów i zaleceń.
+   * **Nieskanowane zasoby:** maszyny wirtualne, na których nie można uruchomić algorytmu adaptacyjnego hartowania sieci z jednego z następujących powodów:
+      * **Maszyny wirtualne są klasycznymi maszynami wirtualnymi:** obsługiwane są tylko maszyny wirtualne usługi Azure Resource Manager.
+      * **Za mało danych jest dostępna**: Aby wygenerować dokładne zalecenia dotyczące hartowania ruchu, usługa Security Center wymaga co najmniej 30 dni danych o ruchu drogowym.
+      * **Maszyna wirtualna nie jest chroniona przez standard ASC:** tylko maszyny wirtualne, które są ustawione na standardową warstwę cenową Centrum zabezpieczeń, kwalifikują się do korzystania z tej funkcji.
 
-     ![zasoby w złej kondycji](./media/security-center-adaptive-network-hardening/unhealthy-resources.png)
+     ![niezdrowe zasoby](./media/security-center-adaptive-network-hardening/unhealthy-resources.png)
 
-2. Na karcie **zasoby w złej kondycji** wybierz maszynę wirtualną, aby wyświetlić jej alerty i zalecane reguły ograniczania funkcjonalności, które mają zostać zastosowane.
+2. Na karcie **Zasoby w złej kondycji** wybierz maszynę wirtualną, aby wyświetlić jej alerty i zalecane reguły zaostrzenia do zastosowania.
 
-    ![Ograniczanie funkcjonalności alertów](./media/security-center-adaptive-network-hardening/anh-recommendation-rules.png)
+    ![alerty twardnienia](./media/security-center-adaptive-network-hardening/anh-recommendation-rules.png)
 
 
-## <a name="review-and-apply-adaptive-network-hardening-recommended-rules"></a>Przeglądanie i stosowanie zalecanych reguł ograniczania funkcjonalności sieci
+## <a name="review-and-apply-adaptive-network-hardening-recommended-rules"></a>Przegląd i stosowanie zalecanych zasad adaptacyjnego hartowania sieci
 
-1. Na karcie **zasoby w złej kondycji** wybierz maszynę wirtualną. Są wyświetlane alerty i zalecane reguły ograniczania funkcjonalności.
+1. Na karcie **Zasoby w złej kondycji** wybierz maszynę wirtualną. Alerty i zalecane reguły hartowania są wymienione.
 
-     ![zasady ograniczania funkcjonalności](./media/security-center-adaptive-network-hardening/hardening-alerts.png)
+     ![zasady utwardzania](./media/security-center-adaptive-network-hardening/hardening-alerts.png)
 
    > [!NOTE]
-   > Na karcie **reguły** znajduje się lista reguł, które zaleca się dodanie. Na karcie **alerty** znajduje się lista alertów, które zostały wygenerowane z powodu ruchu, przepływających do zasobu, który nie należy do zakresu adresów IP dozwolony w zalecanych regułach.
+   > Karta **Reguły** zawiera listę reguł zalecanych przez adaptacyjne hartowanie sieci. Karta **Alerty** zawiera listę alertów, które zostały wygenerowane z powodu ruchu, który przepływa do zasobu, który nie mieści się w zakresie IP dozwolonym w zalecanych regułach.
 
-2. Jeśli chcesz zmienić niektóre parametry reguły, możesz ją zmodyfikować, zgodnie z opisem w [Modyfikuj regułę](#modify-rule).
+2. Jeśli chcesz zmienić niektóre parametry reguły, możesz ją zmodyfikować, jak wyjaśniono w [obszarze Modyfikuj regułę](#modify-rule).
    > [!NOTE]
-   > Możesz również [usunąć](#delete-rule) lub [dodać](#add-rule) regułę.
+   > Można również [usunąć](#delete-rule) lub [dodać](#add-rule) regułę.
 
-3. Wybierz reguły, które chcesz zastosować w sieciowej grupy zabezpieczeń, a następnie kliknij pozycję **Wymuszaj**.
+3. Wybierz reguły, które chcesz zastosować w sieciowej sieciowej, a następnie kliknij przycisk **Wymuś**.
 
       > [!NOTE]
-      > Zasady wymuszane są dodawane do sieciowej grupy ZABEZPIECZEŃów chroniących maszynę wirtualną. (Maszyna wirtualna może być chroniona przez sieciowej grupy zabezpieczeń, która jest skojarzona z kartą sieciową lub podsieć, w której znajduje się maszyna wirtualna, lub obie)
+      > Wymuszone reguły są dodawane do sieciowej ochrony maszyny wirtualnej. (Maszyna wirtualna może być chroniona przez sieciowej grupy sieciowej skojarzonej z jego kartą sieciową lub podsieci, w której znajduje się maszyna wirtualna lub obie)
 
-    ![Wymuś reguły](./media/security-center-adaptive-network-hardening/enforce-hard-rule2.png)
+    ![egzekwowanie przepisów](./media/security-center-adaptive-network-hardening/enforce-hard-rule2.png)
 
 
-### Modyfikowanie reguły <a name ="modify-rule"> </a>
+### <a name="modify-a-rule"></a>Modyfikowanie <a name ="modify-rule"> </a> reguły
 
-Możesz chcieć zmodyfikować parametry reguły, która została zalecana. Na przykład możesz chcieć zmienić zalecane zakresy adresów IP.
+Można zmodyfikować parametry reguły, która została zalecona. Na przykład można zmienić zalecane zakresy adresów IP.
 
-Niektóre ważne wskazówki dotyczące modyfikowania reguły ograniczania funkcjonalności sieci:
+Kilka ważnych wskazówek dotyczących modyfikowania reguły adaptacyjnego hartowania sieci:
 
-* Można modyfikować parametry tylko dla reguł "Zezwalaj". 
-* Nie można zmienić reguł "Zezwalaj" na "Odmów" reguł. 
+* Można zmodyfikować tylko parametry reguł "zezwalaj". 
+* Nie można zmienić reguł "zezwalaj", aby stały się regułami "odmów". 
 
   > [!NOTE]
-  > Tworzenie i modyfikowanie reguł "Odmów" jest wykonywane bezpośrednio w sieciowej grupy zabezpieczeń. Aby uzyskać więcej informacji, zobacz [Tworzenie, zmienianie lub usuwanie sieciowej grupy zabezpieczeń](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group).
+  > Tworzenie i modyfikowanie reguł "odmów" odbywa się bezpośrednio na sieciowej sieciowej sieciowej. Aby uzyskać więcej informacji, zobacz [Tworzenie, zmienianie lub usuwanie sieciowej grupy zabezpieczeń](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group).
 
-* Reguła **Odmów całego ruchu** jest jedynym typem reguły "Odmów", która będzie wyświetlana w tym miejscu, i nie może być modyfikowana. Można jednak go usunąć (zobacz [Usuwanie reguły](#delete-rule)).
+* Reguła **Odmów wszystkich ruchu** jest jedynym typem reguły "odmów", która zostanie wyświetlona w tym miejscu i nie może zostać zmodyfikowana. Można go jednak usunąć (zobacz [Usuwanie reguły](#delete-rule)).
   > [!NOTE]
-  > Reguła **Odmów całego ruchu** jest zalecana, gdy w wyniku uruchomienia algorytmu Security Center nie zidentyfikuje ruchu, który powinien być dozwolony, na podstawie istniejącej konfiguracji sieciowej grupy zabezpieczeń. W związku z tym zalecaną regułą jest odmowa całego ruchu kierowanego do określonego portu. Nazwa tego typu reguły jest wyświetlana jako "*wygenerowany przez system*". Po wymuszeniu tej reguły jej rzeczywista nazwa w sieciowej grupy zabezpieczeń będzie ciągiem zawierającym Protokół, kierunek ruchu, "Odmów" i liczbę losową.
+  > A **Odmów wszystkie reguły ruchu** jest zalecane, gdy w wyniku uruchomienia algorytmu Usługa Security Center nie identyfikuje ruchu, który powinien być dozwolony, na podstawie istniejącej konfiguracji sieciowej grupy zabezpieczeń. W związku z tym zalecana reguła jest odmowa całego ruchu do określonego portu. Nazwa tego typu reguły jest wyświetlana jako "*Wygenerowany system*". Po wyegzekwowaniu tej reguły jej rzeczywista nazwa w nsg będzie ciąg składający się z protokołu, kierunku ruchu, "ODMÓW" i liczby losowej.
 
-*Aby zmodyfikować adaptacyjną zasadę ograniczania funkcjonalności sieci:*
+*Aby zmodyfikować regułę adaptacyjnego hartowania sieci, należy:*
 
-1. Aby zmodyfikować niektóre parametry reguły, na karcie **reguły** kliknij trzy kropki (...) na końcu wiersza reguły, a następnie kliknij pozycję **Edytuj**.
+1. Aby zmodyfikować niektóre parametry reguły, na karcie **Reguły** kliknij trzy kropki (...) na końcu wiersza reguły i kliknij przycisk **Edytuj**.
 
-   ![Edytuj regułę](./media/security-center-adaptive-network-hardening/edit-hard-rule.png)
+   ![reguła edycji](./media/security-center-adaptive-network-hardening/edit-hard-rule.png)
 
-1. W oknie **Edytowanie reguły** Zaktualizuj szczegóły, które chcesz zmienić, a następnie kliknij przycisk **Zapisz**.
+1. W oknie **Edytuj regułę** zaktualizuj szczegóły, które chcesz zmienić, a następnie kliknij przycisk **Zapisz**.
 
    > [!NOTE]
-   > Po kliknięciu przycisku **Zapisz**pomyślnie zmieniono regułę. *Nie została jednak zastosowana do sieciowej grupy zabezpieczeń.* Aby go zastosować, należy wybrać regułę z listy, a następnie kliknąć pozycję **Wymuszaj** (zgodnie z opisem w następnym kroku).
+   > Po kliknięciu przycisku **Zapisz**reguła została pomyślnie zmieniona. *Jednak nie zastosowano go do nsg.* Aby ją zastosować, należy zaznaczyć regułę na liście i kliknąć przycisk **Wymuś** (jak wyjaśniono w następnym kroku).
 
-   ![Edytuj regułę](./media/security-center-adaptive-network-hardening/edit-hard-rule3.png)
+   ![reguła edycji](./media/security-center-adaptive-network-hardening/edit-hard-rule3.png)
 
-3. Aby zastosować zaktualizowaną regułę, wybierz ją z listy, a następnie kliknij pozycję **Wymuszaj**.
+3. Aby zastosować zaktualizowaną regułę, z listy wybierz zaktualizowaną regułę i kliknij przycisk **Wymuś**.
 
-    ![Wymuś regułę](./media/security-center-adaptive-network-hardening/enforce-hard-rule.png)
+    ![wymuszanie reguły](./media/security-center-adaptive-network-hardening/enforce-hard-rule.png)
 
-### Dodaj nową regułę <a name ="add-rule"> </a>
+### <a name="add-a-new-rule"></a>Dodawanie nowej <a name ="add-rule"> </a> reguły
 
-Można dodać regułę "Zezwalaj", która nie jest zalecana przez Security Center.
+Można dodać regułę "zezwalaj", która nie była zalecana przez Centrum zabezpieczeń.
 
 > [!NOTE]
-> Tutaj można dodawać tylko reguły "Zezwalaj". Jeśli chcesz dodać reguły "Odmów", możesz to zrobić bezpośrednio w sieciowej grupy zabezpieczeń. Aby uzyskać więcej informacji, zobacz [Tworzenie, zmienianie lub usuwanie sieciowej grupy zabezpieczeń](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group).
+> W tym miejscu można dodać tylko reguły "zezwalaj". Jeśli chcesz dodać reguły "odmów", możesz to zrobić bezpośrednio w sieciowej sieciowej. Aby uzyskać więcej informacji, zobacz [Tworzenie, zmienianie lub usuwanie sieciowej grupy zabezpieczeń](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group).
 
-*Aby dodać zasadę ograniczania funkcjonalności sieci:*
+*Aby dodać regułę adaptacyjnego hartowania sieci:*
 
 1. Kliknij pozycję **Dodaj regułę** (znajdującą się w lewym górnym rogu).
 
-   ![Dodaj regułę](./media/security-center-adaptive-network-hardening/add-hard-rule.png)
+   ![dodaj regułę](./media/security-center-adaptive-network-hardening/add-hard-rule.png)
 
-1. W oknie **Nowa reguła** wprowadź szczegóły, a następnie kliknij przycisk **Dodaj**.
+1. W oknie **Nowa reguła** wprowadź szczegóły i kliknij przycisk **Dodaj**.
 
    > [!NOTE]
-   > Po kliknięciu przycisku **Dodaj**reguła została pomyślnie dodana i zostanie wyświetlona na liście z innymi zalecanymi regułami. Nie została jednak zastosowana w sieciowej grupy zabezpieczeń. Aby go uaktywnić, należy wybrać regułę z listy, a następnie kliknąć pozycję **Wymuszaj** (zgodnie z opisem w następnym kroku).
+   > Po kliknięciu przycisku **Dodaj**reguła została pomyślnie dodana i zostanie wyświetlona wraz z innymi zalecanymi regułami. Jednak nie zastosowano go na nsg. Aby ją aktywować, należy wybrać regułę na liście i kliknąć **przycisk Wymuś** (jak wyjaśniono w następnym kroku).
 
-3. Aby zastosować nową regułę, z listy wybierz nową regułę, a następnie kliknij pozycję **Wymuszaj**.
+3. Aby zastosować nową regułę, z listy wybierz nową regułę i kliknij przycisk **Wymuś**.
 
-    ![Wymuś regułę](./media/security-center-adaptive-network-hardening/enforce-hard-rule.png)
+    ![wymuszanie reguły](./media/security-center-adaptive-network-hardening/enforce-hard-rule.png)
 
 
-### Usuwanie reguły <a name ="delete-rule"> </a>
+### <a name="delete-a-rule"></a>Usuwanie reguły <a name ="delete-rule"> </a>
 
-W razie potrzeby można usunąć zalecaną regułę dla bieżącej sesji. Na przykład można określić, że stosowanie sugerowanej reguły może blokować wiarygodny ruch.
+W razie potrzeby można usunąć zalecaną regułę dla bieżącej sesji. Na przykład można ustalić, że zastosowanie sugerowanej reguły może blokować legalny ruch.
 
-*Aby usunąć regułę adaptacyjnej ochrony sieci dla bieżącej sesji:*
+*Aby usunąć regułę adaptacyjnego hartowania sieci dla bieżącej sesji:*
 
-1. Na karcie **reguły** kliknij trzy kropki (...) na końcu wiersza reguły, a następnie kliknij pozycję **Usuń**.  
+1. Na karcie **Reguły** kliknij trzy kropki (...) na końcu wiersza reguły, a następnie kliknij przycisk **Usuń**.  
 
-    ![zasady ograniczania funkcjonalności](./media/security-center-adaptive-network-hardening/delete-hard-rule.png)
-
- 
-
-## <a name="which-ports-are-supported"></a>Które porty są obsługiwane?
-
-Zalecenia dotyczące zabezpieczania sieci adaptacyjnej są obsługiwane tylko na określonych portach. W tej tabeli przedstawiono pełną listę:
-
-|Port|Protokół|Skojarzona usługa|
-|:---:|:----:|:----|
-|13|UDP|Usługa Daytime|
-|17|UDP|QOTD — protokół|
-|19|UDP|Protokół CHARGEN|
-|22|TCP|Protokół SSH|
-|23|TCP|Program|
-|53|UDP|DNS|
-|69|UDP|TFTP|
-|81|TCP|Potencjalnie złośliwe (węzeł wyjścia sieci TOR)|
-|111|TCP/UDP|RPC|
-|119|TCP|SERWERÓW|
-|123|UDP|NTP|
-|135|TCP/UDP|Mapowanie punktów końcowych; RPC DCE|
-|137|TCP/UDP|Usługa nazw NetBIOS|
-|138|TCP/UDP|Usługa datagramów NetBIOS|
-|139|TCP|Usługa sesji NetBIOS|
-|161|TCP/UDP|SNMP|
-|162|TCP/UDP|SNMP|
-|389|TCP|LDAP|
-|445|TCP|SMB|
-|512|TCP|Rexec|
-|514|TCP|Powłoka zdalna|
-|593|TCP/UDP|HTTP RPC|
-|636|TCP|LDAP|
-|873|TCP|rsync|
-|1433|TCP|MS SQL|
-|1434|UDP|MS SQL|
-|1900|UDP|Użycie SSDP|
-|1900|UDP|Użycie SSDP|
-|2049|TCP/UDP|NFS|
-|2301|TCP|Usługa zarządzania Compaq|
-|2323|TCP|3W — nfsd|
-|2381|TCP|Usługa zarządzania Compaq|
-|3268|TCP|LDAP|
-|3306|TCP|MySQL|
-|3389|TCP|RDP|
-|4333|TCP|mSQL|
-|5353|UDP|mDNS|
-|5432|TCP|PostgreSQL|
-|5555|TCP|Agent osobisty; HP OmniBack|
-|5800|TCP|VNC|
-|5900|TCP|Bufor ramki zdalnego; VNC|
-|5900|TCP|VNC|
-|5985|TCP|Windows PowerShell|
-|5986|TCP|Windows PowerShell|
-|6379|TCP|Redis|
-|6379|TCP|Redis|
-|7000|TCP|Cassandra|
-|7001|TCP|Cassandra|
-|7199|TCP|Cassandra|
-|8081|TCP|CosmosDB Administrator Sun proxy|
-|8089|TCP|Splunk|
-|8545|TCP|Potencjalnie złośliwe (Cryptominer)|
-|9042|TCP|Cassandra|
-|9160|TCP|Cassandra|
-|9300|TCP|Elasticsearch|
-|11211|UDP|Memcached|
-|16379|TCP|Redis|
-|26379|TCP|Redis|
-|27017|TCP|MongoDB|
-|37215|TCP|Potencjalnie złośliwe|
-||||
+    ![zasady utwardzania](./media/security-center-adaptive-network-hardening/delete-hard-rule.png)

@@ -1,18 +1,18 @@
 ---
 title: Tworzenie strony docelowej w portalu Azure Marketplace | Azure
 description: Dowiedz się, jak utworzyć stronę docelową w portalu Azure Marketplace i microsoft appsource dla wydawców aplikacji i usług.
-author: jm-aditi-ms
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 06/04/2018
 ms.author: dsindona
-ms.openlocfilehash: 6959e7ba7fbf7d9afca84a803f8df588ac9149f4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0952c1d4b6955ff20f06afc6eaded18fbd105708
+ms.sourcegitcommit: d0fd35f4f0f3ec71159e9fb43fcd8e89d653f3f2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80280596"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80387805"
 ---
 # <a name="build-your-landing-page"></a>Zbuduj stronę docelową
 

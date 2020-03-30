@@ -1,23 +1,23 @@
 ---
-title: Szybki Start — tworzenie rejestru — interfejs wiersza polecenia platformy Azure
+title: Szybki start — tworzenie rejestru — narzędzie interfejsu wiersza polecenia platformy Azure
 description: Szybka nauka tworzenia rejestru prywatnego platformy Docker przy użyciu interfejsu wiersza polecenia platformy Azure.
 ms.topic: quickstart
 ms.date: 01/22/2019
 ms.custom: seodec18, H1Hack27Feb2017, mvc
 ms.openlocfilehash: 551a3659feb39943c9f794484abb6f2da4367f39
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/24/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "74455156"
 ---
-# <a name="quickstart-create-a-private-container-registry-using-the-azure-cli"></a>Szybki Start: Tworzenie prywatnego rejestru kontenerów za pomocą interfejsu wiersza polecenia platformy Azure
+# <a name="quickstart-create-a-private-container-registry-using-the-azure-cli"></a>Szybki start: tworzenie rejestru kontenerów prywatnych przy użyciu interfejsu wiersza polecenia platformy Azure
 
 Usługa Azure Container Registry to zarządzana usługa rejestru kontenerów platformy Docker używana do przechowywania prywatnych obrazów kontenerów Docker. W tym przewodniku znajdują się szczegółowe informacje dotyczące tworzenia wystąpienia usługi Azure Container Registry przy użyciu interfejsu wiersza polecenia platformy Azure. Następnie za pomocą poleceń platformy Docker wypchniesz obraz kontenera do rejestru, a na koniec ściągniesz i uruchomisz obraz z rejestru.
 
 Ten przewodnik Szybki start wymaga interfejsu wiersza polecenia platformy Azure (zalecana jest wersja 2.0.55 lub nowsza). Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure][azure-cli].
 
-Musisz mieć również zainstalowane lokalnie środowisko Docker. Platforma Docker zawiera pakiety, które umożliwiają łatwe konfigurowanie platformy Docker w systemie [macOS][docker-mac], [Windows][docker-windows]lub [Linux][docker-linux] .
+Musisz mieć również zainstalowane lokalnie środowisko Docker. Środowisko Docker zawiera pakiety, które umożliwiają łatwe konfigurowanie platformy Docker w systemie [macOS][docker-mac], [Windows][docker-windows] lub [Linux][docker-linux].
 
 Ze względu na to, że usługa Azure Cloud Shell nie zawiera wszystkich wymaganych składników platformy Docker (demon `dockerd`), nie można używać usługi Cloud Shell na potrzeby tego przewodnika Szybki start.
 
@@ -33,7 +33,7 @@ az group create --name myResourceGroup --location eastus
 
 ## <a name="create-a-container-registry"></a>Tworzenie rejestru kontenerów
 
-W tym przewodniku Szybki start utworzysz rejestr *Podstawowy*, który jest zoptymalizowaną pod względem kosztów opcją dla deweloperów poznających usługę Azure Container Registry. Aby uzyskać szczegółowe informacje o dostępnych warstwach usług, zobacz [jednostki SKU rejestru kontenerów][container-registry-skus].
+W tym przewodniku Szybki start utworzysz rejestr *Podstawowy*, który jest zoptymalizowaną pod względem kosztów opcją dla deweloperów poznających usługę Azure Container Registry. Aby uzyskać szczegółowe informacje na temat dostępnych warstw usług, zobacz [Jednostki SKU rejestru kontenerów][container-registry-skus].
 
 Utwórz wystąpienie usługi ACR za pomocą polecenia [az acr create][az-acr-create]. Nazwa rejestru musi być unikatowa w obrębie platformy Azure i może zawierać od 5 do 50 znaków alfanumerycznych. W poniższym przykładzie użyto nazwy *myContainerRegistry007*. Zaktualizuj ją do unikatowej wartości.
 
@@ -94,7 +94,7 @@ Result
 hello-world
 ```
 
-Poniższy przykład zawiera listę tagów w repozytorium **Hello-World** .
+Poniższy przykład zawiera listę tagów w repozytorium **hello-world.**
 
 ```azurecli
 az acr repository show-tags --name <acrName> --repository hello-world --output table
@@ -112,7 +112,7 @@ v1
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Gdy nie jest już potrzebne, można użyć polecenia [AZ Group Delete][az-group-delete] , aby usunąć grupę zasobów, rejestr kontenerów i przechowywane tam obrazy kontenerów.
+Gdy grupa zasobów, rejestr kontenerów i przechowywane w nim obrazy kontenerów nie będą już potrzebne, można je usunąć za pomocą polecenia [az group delete][az-group-delete].
 
 ```azurecli
 az group delete --name myResourceGroup
@@ -123,7 +123,7 @@ az group delete --name myResourceGroup
 W tym przewodniku Szybki start utworzono usługę Azure Container Registry za pomocą interfejsu wiersza polecenia platformy Azure, wypchnięto obraz kontenera do rejestru oraz ściągnięto i uruchomiono obraz z rejestru. Przejdź do samouczków usługi Azure Container Registry, aby dowiedzieć się więcej o tej usłudze.
 
 > [!div class="nextstepaction"]
-> [Samouczki Azure Container Registry][container-registry-tutorial-quick-task]
+> [Samouczki dotyczące usługi Azure Container Registry][container-registry-tutorial-quick-task]
 
 <!-- LINKS - external -->
 [docker-linux]: https://docs.docker.com/engine/installation/#supported-platforms

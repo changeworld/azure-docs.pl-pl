@@ -18,10 +18,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 62f0d82a543c0ae4e629eda3bca18b0a06322f2c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60381255"
 ---
 # <a name="azure-ad-connect-in-microsoft-cloud-germany---public-preview"></a>Program Azure AD Connect w usłudze Microsoft Cloud w Niemczech — publiczna wersja zapoznawcza
@@ -38,7 +38,7 @@ Obecnie wiele scenariuszy w usłudze [Microsoft Cloud w Niemczech](https://azure
 * Po zalogowaniu do katalogu usługi Azure AD należy używać konta w domenie onmicrosoft.de.
 
  
-## <a name="download"></a>Do pobrania
+## <a name="download"></a>Pobierz
 Usługę Azure AD Connect można pobrać z bloku programu Azure AD Connect w portalu.  Znajdź blok programu Azure AD Connect, korzystając z poniższych instrukcji.
 
 ### <a name="the-azure-ad-connect-blade"></a>Blok programu Azure AD Connect

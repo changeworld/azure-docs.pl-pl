@@ -4,19 +4,19 @@ ms.service: cost-management-billing
 ms.topic: include
 ms.date: 04/29/2019
 ms.author: magattus
-ms.openlocfilehash: f5cef027dfa38bfb68f24c990047719e540ff0a1
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 7dd97fa49931168b9a42b5c9ac7887b84298a5f0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74224504"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80335046"
 ---
-| Zasób | Limit domyślny |
+| Zasób | Limit |
 | --- | --- |
 | Profile usługi Azure Content Delivery Network |25 |
-| Content Delivery Network punkty końcowe na profil |25 |
+| Punkty końcowe sieci dostarczania zawartości na profil |25 |
 | Domeny niestandardowe na punkt końcowy |25 |
 
-Subskrypcja Content Delivery Network może zawierać co najmniej jeden profil Content Delivery Network. Profil Content Delivery Network może zawierać jeden lub więcej Content Delivery Network punktów końcowych. Możesz chcieć użyć wielu profilów, aby zorganizować Content Delivery Network punkty końcowe przez domenę internetową, aplikację sieci Web lub inne kryteria. 
+Subskrypcja sieci dostarczania zawartości może zawierać jeden lub więcej profilów sieci dostarczania zawartości. Profil sieci dostarczania zawartości może zawierać jeden lub więcej punktów końcowych sieci dostarczania zawartości. Można użyć wielu profilów do organizowania punktów końcowych sieci dostarczania zawartości według domeny internetowej, aplikacji sieci web lub innych kryteriów. 
 
 

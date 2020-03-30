@@ -1,9 +1,9 @@
 ---
 ms.openlocfilehash: 18f76ea4acc99038939a2653bb66875154529126
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "67182924"
 ---
-Jeśli zachodzi potrzeba wykonania zadań asynchronicznych w programu obsługi, może odroczyć ustawienie tokenu, wysyłając żądanie `deferral` obiektu, a następnie kończąc, jak w poniższym przykładzie.
+Jeśli trzeba wykonać pracę asynchronizacjową w programie obsługi, można `deferral` odroczyć ustawienie tokenu, żądając obiektu, a następnie wypełniając go, jak w poniższym przykładzie.

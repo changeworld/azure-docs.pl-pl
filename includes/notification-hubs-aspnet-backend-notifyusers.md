@@ -9,10 +9,10 @@ ms.date: 09/11/2019
 ms.author: spelluru
 ms.custom: include file
 ms.openlocfilehash: 6911f769b95967aac933dd9762263e7506aef4b5
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77192738"
 ---
 ## <a name="create-the-webapi-project"></a>Tworzenie projektu interfejsu WebAPI
@@ -33,14 +33,14 @@ Utwórz nowe zaplecze interfejsu WebAPI na platformie ASP.NET, wykonując nastę
 ![][B4]
 
 > [!NOTE]
-> Upewnij się, że masz zainstalowany [zestaw Azure SDK](https://azure.microsoft.com/downloads/) programu Visual Studio na potrzeby wdrażania witryny internetowej.
+> Upewnij się, że zainstalowano [zestaw SDK platformy Azure](https://azure.microsoft.com/downloads/) programu Visual Studio do wdrożenia witryny sieci Web.
 
 1. Uruchom program Visual Studio lub Visual Studio Express.
 
 2. Wybierz pozycję **Eksplorator serwera** i zaloguj się do konta platformy Azure. Aby tworzyć zasoby witryny internetowej na swoim koncie, musisz się zalogować.
 
 3. W programie Visual Studio kliknij prawym przyciskiem myszy rozwiązanie programu Visual Studio, wskaż polecenie **Dodaj** i kliknij pozycję **Nowy projekt**.
-4. Rozwiń węzeł **Visual C#** , wybierz pozycję **Internet**i kliknij pozycję **Aplikacja internetowa ASP.NET**.
+4. Rozwiń węzeł **Visual C#**, wybierz pozycję **Internet**i kliknij pozycję **Aplikacja internetowa ASP.NET**.
 
 5. W polu **Nazwa** wpisz ciąg **AppBackend**, a następnie wybierz przycisk **OK**.
 
@@ -59,7 +59,7 @@ Utwórz nowe zaplecze interfejsu WebAPI na platformie ASP.NET, wykonując nastę
 
     ![Okno Konfigurowanie aplikacji internetowej platformy Microsoft Azure][B5]
 
-    Jeśli nie widzisz tej strony na potrzeby konfigurowania planu usługi App Service, przejdź do samouczka. Można go skonfigurować podczas późniejszego publikowania aplikacji. 
+    Jeśli nie widzisz tej strony do konfigurowania planu usługi aplikacji, przejdź do samouczka. Można go skonfigurować podczas publikowania aplikacji później. 
 
 ## <a name="authenticate-clients-to-the-webapi-backend"></a>Uwierzytelnianie klientów w zapleczu interfejsu WebAPI
 
@@ -186,7 +186,7 @@ W tej sekcji dodajesz nowy kontroler do zaplecza interfejsu WebAPI w celu obsłu
     }
     ```
     > [!IMPORTANT]
-    > Aby kontynuować, wprowadź **nazwę** i **DefaultFullSharedAccessSignature** centrum. 
+    > Wprowadź **nazwę** i **defaultfullsharedaccesssignature** centrum przed kontynuowaniem dalszych. 
     
 7. Następnie utwórz nowy kontroler o nazwie **RegisterController**. W Eksploratorze rozwiązań kliknij prawym przyciskiem myszy folder **Kontrolery**, wybierz polecenie **Dodaj**, a następnie kliknij pozycję **Kontroler**.
 
@@ -390,9 +390,9 @@ Następnie wdrożysz tę aplikację w witrynie internetowej platformy Azure, aby
 
     ![Kafelek usługi Microsoft Azure App Service][B15]
 
-3. W oknie **Tworzenie usługi App Service** wybierz swoje konto platformy Azure. Wybierz kolejno pozycje **Zmień typ** > **Aplikacja internetowa**. Zachowaj wartość domyślną w polu **Nazwa aplikacji internetowej** i wybierz wartości w polach **Subskrypcja**, **Grupa zasobów** i **Plan usługi App Service**.
+3. W oknie **Tworzenie usługi App Service** wybierz swoje konto platformy Azure. Wybierz **pozycję Zmień typ** > **aplikacji sieci Web**. Zachowaj wartość domyślną w polu **Nazwa aplikacji internetowej** i wybierz wartości w polach **Subskrypcja**, **Grupa zasobów** i **Plan usługi App Service**.
 
-4. Wybierz pozycję **Utwórz**.
+4. Wybierz **pozycję Utwórz**.
 
 5. Zanotuj wartość właściwości **Adres URL witryny** w sekcji **Podsumowanie**. Ten adres URL jest Twoim *punktem końcowym zaplecza* w dalszej części samouczka.
 

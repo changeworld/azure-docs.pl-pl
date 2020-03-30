@@ -1,74 +1,41 @@
 ---
-title: Korzystanie z tożsamości zarządzanych w usłudze Azure Kubernetes Service
+title: Używanie tożsamości zarządzanych w usłudze Azure Kubernetes
 description: Dowiedz się, jak używać tożsamości zarządzanych w usłudze Azure Kubernetes Service (AKS)
 services: container-service
 author: saudas
 manager: saudas
 ms.topic: article
-ms.date: 09/11/2019
+ms.date: 03/10/2019
 ms.author: saudas
-ms.openlocfilehash: 6d00fd72c338fc101420bf78b5608516715d44ad
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 85efc6d9d203ca06c5f7566376993b4c13950788
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77592972"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80369965"
 ---
-# <a name="preview---use-managed-identities-in-azure-kubernetes-service"></a>Wersja zapoznawcza — używanie zarządzanych tożsamości w usłudze Azure Kubernetes Service
+# <a name="use-managed-identities-in-azure-kubernetes-service"></a>Używanie tożsamości zarządzanych w usłudze Azure Kubernetes
 
-Obecnie klaster usługi Azure Kubernetes Service (AKS) (w odróżnieniu od dostawcy usług w chmurze Kubernetes) wymaga jednostki *usługi* , aby utworzyć dodatkowe zasoby, takie jak moduły równoważenia obciążenia i dyski zarządzane na platformie Azure. Należy podać nazwę główną usługi lub AKS, która jest tworzona w Twoim imieniu. Nazwy główne usług zazwyczaj mają datę wygaśnięcia. Klastry ostatecznie osiągną stan, w którym należy przeprowadzić odnowienie jednostki usługi w celu zachowania działania klastra. Zarządzanie jednostkami usługi zwiększa złożoność.
+Obecnie klaster usługi Azure Kubernetes Service (AKS) (w szczególności dostawca chmury Kubernetes) wymaga *jednostki usługi* do tworzenia dodatkowych zasobów, takich jak moduły równoważenia obciążenia i dyski zarządzane na platformie Azure. Musisz podać jednostkę usługi lub AKS tworzy jeden w Twoim imieniu. Jednostki usługi zazwyczaj mają datę wygaśnięcia. Klastry po pewnym czasie osiągną stan, w którym podmiot zabezpieczeń usługi musi zostać odnowiony, aby klaster działał. Zarządzanie jednostkami usługi zwiększa złożoność.
 
-*Tożsamości zarządzane* są zasadniczo otoką dla podmiotów usługi i upraszczają zarządzanie nimi. Aby dowiedzieć się więcej, Przeczytaj o [zarządzanych tożsamościach dla zasobów platformy Azure](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview).
+*Tożsamości zarządzane* są zasadniczo otoki wokół podmiotów usługi i uczynić ich zarządzanie prostsze. Aby dowiedzieć się więcej, przeczytaj o [tożsamościach zarządzanych dla zasobów platformy Azure](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview).
 
-AKS tworzy dwie zarządzane tożsamości:
+Usługa AKS tworzy dwie tożsamości zarządzane:
 
-- **Tożsamość zarządzana przypisana przez system**: tożsamość wykorzystywana przez dostawcę chmury Kubernetes do tworzenia zasobów platformy Azure w imieniu użytkownika. Cykl życia tożsamości przypisanej do systemu jest powiązany z tym klastrem. Tożsamość jest usuwana po usunięciu klastra.
-- **Tożsamość zarządzana przypisana przez użytkownika**: tożsamość, która jest używana na potrzeby autoryzacji w klastrze. Na przykład tożsamość przypisana przez użytkownika służy do autoryzacji AKS do używania rekordów kontroli dostępu (rekordami ACR) lub do autoryzacji kubelet do uzyskiwania metadanych z platformy Azure.
+- **Tożsamość zarządzana przypisana do systemu:** tożsamość używana przez dostawcę chmury Kubernetes do tworzenia zasobów platformy Azure w imieniu użytkownika. Cykl życia tożsamości przypisanej do systemu jest powiązany z cyklem życia klastra. Tożsamość jest usuwana po usunięciu klastra.
+- **Tożsamość zarządzana przypisana przez użytkownika:** tożsamość używana do autoryzacji w klastrze. Na przykład tożsamość przypisana przez użytkownika jest używana do autoryzowania usługi AKS do używania rejestratorów kontenerów platformy Azure (ARS) lub do autoryzowania kubelet w celu uzyskania metadanych z platformy Azure.
 
-W tym okresie korzystania z wersji zapoznawczej nadal wymagana jest jednostka usługi. Jest on używany do autoryzacji dodatków, takich jak monitorowanie, węzły wirtualne, Azure Policy i Routing aplikacji protokołu HTTP. Działa w trakcie usuwania zależności dodatków w głównej nazwie usługi (SPN). Ostatecznie wymóg nazwy SPN w AKS zostanie całkowicie usunięty.
-
-> [!IMPORTANT]
-> Funkcje w wersji zapoznawczej AKS są dostępne w ramach samoobsługowego i samodzielnego wyboru. Wersje zapoznawcze są udostępniane w postaci "AS-IS" i "jako dostępne" i są wykluczone z umów dotyczących poziomu usług i ograniczonej rękojmi. Wersje zapoznawcze AKS są częściowo objęte obsługą klienta na podstawie najlepszego wysiłku. W związku z tym te funkcje nie są przeznaczone do użytku produkcyjnego. Aby uzyskać więcej informacji, zobacz następujące artykuły pomocy technicznej:
->
-> - [Zasady pomocy technicznej AKS](support-policies.md)
-> - [Pomoc techniczna platformy Azure — często zadawane pytania](faq.md)
+Dodatki są również uwierzytelniane przy użyciu tożsamości zarządzanej. Dla każdego dodatku zarządzana tożsamość jest tworzona przez usługi AKS i trwa przez cały okres ważności dodatku. Aby utworzyć własną sieć wirtualną, statyczny adres IP lub dołączony dysk platformy Azure, na którym zasoby znajdują się poza grupą zasobów MC_*, użyj identyfikatora głównego klastra, aby wykonać przypisanie roli. Aby uzyskać więcej informacji na temat przypisywania ról, zobacz [Delegowanie dostępu do innych zasobów platformy Azure](kubernetes-service-principal.md#delegate-access-to-other-azure-resources).
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
-Wymagane są następujące zasoby:
+Musi być zainstalowany następujący zasób:
 
-- Interfejs wiersza polecenia platformy Azure w wersji 2.0.70 lub nowszej
-- Rozszerzenie AKS-Preview 0.4.14
-
-Aby zainstalować rozszerzenie AKS-Preview 0.4.14 lub nowsze, użyj następujących poleceń interfejsu wiersza polecenia platformy Azure:
-
-```azurecli
-az extension add --name aks-preview
-az extension list
-```
-
-> [!CAUTION]
-> Po zarejestrowaniu funkcji w ramach subskrypcji nie można obecnie wyrejestrować tej funkcji. Po włączeniu niektórych funkcji w wersji zapoznawczej mogą być stosowane wartości domyślne dla wszystkich klastrów AKS utworzonych później w ramach subskrypcji. Nie włączaj funkcji w wersji zapoznawczej w ramach subskrypcji produkcyjnych. Zamiast tego należy użyć oddzielnej subskrypcji do testowania funkcji w wersji zapoznawczej i zebrania opinii.
-
-```azurecli-interactive
-az feature register --name MSIPreview --namespace Microsoft.ContainerService
-```
-
-Wyświetlenie stanu jako **zarejestrowanego**może potrwać kilka minut. Stan rejestracji można sprawdzić za pomocą polecenia [AZ Feature list](https://docs.microsoft.com/cli/azure/feature?view=azure-cli-latest#az-feature-list) :
-
-```azurecli-interactive
-az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/MSIPreview')].{Name:name,State:properties.state}"
-```
-
-Gdy stan jest wyświetlany jako zarejestrowane, Odśwież rejestrację dostawcy zasobów `Microsoft.ContainerService` przy użyciu polecenia [AZ Provider Register](https://docs.microsoft.com/cli/azure/provider?view=azure-cli-latest#az-provider-register) :
-
-```azurecli-interactive
-az provider register --namespace Microsoft.ContainerService
-```
+- Interfejsu wiersza polecenia platformy Azure w wersji 2.2.0 lub nowszej
 
 ## <a name="create-an-aks-cluster-with-managed-identities"></a>Tworzenie klastra AKS z tożsamościami zarządzanymi
 
-Można teraz utworzyć klaster AKS z tożsamościami zarządzanymi przy użyciu następujących poleceń interfejsu wiersza polecenia.
+Teraz można utworzyć klaster AKS z zarządzanymi tożsamościami przy użyciu następujących poleceń interfejsu wiersza polecenia.
 
 Najpierw utwórz grupę zasobów platformy Azure:
 
@@ -77,21 +44,30 @@ Najpierw utwórz grupę zasobów platformy Azure:
 az group create --name myResourceGroup --location westus2
 ```
 
-Następnie utwórz klaster AKS:
+Następnie utwórz klaster usługi AKS:
 
 ```azurecli-interactive
 az aks create -g MyResourceGroup -n MyManagedCluster --enable-managed-identity
 ```
 
-Na koniec Uzyskaj poświadczenia, aby uzyskać dostęp do klastra:
+Pomyślne utworzenie klastra przy użyciu tożsamości zarządzanych zawiera informacje o profilu jednostki usługi:
+
+```json
+"servicePrincipalProfile": {
+    "clientId": "msi",
+    "secret": null
+  }
+```
+
+Na koniec uzyskaj poświadczenia dostępu do klastra:
 
 ```azurecli-interactive
 az aks get-credentials --resource-group myResourceGroup --name MyManagedCluster
 ```
 
-Klaster zostanie utworzony w ciągu kilku minut. Następnie można wdrożyć obciążenia aplikacji w nowym klastrze i korzystać z nich w taki sam sposób, jak w przypadku klastrów AKS opartych na głównej usłudze.
+Klaster zostanie utworzony w ciągu kilku minut. Następnie można wdrożyć obciążenia aplikacji do nowego klastra i współdziałać z nim tak samo, jak to zrobić z klastrów AKS opartych na jednostkach usług.
 
 > [!IMPORTANT]
 >
-> - Klastry AKS z tożsamościami zarządzanymi można włączać tylko podczas tworzenia klastra.
-> - Istniejących klastrów AKS nie można zaktualizować ani uaktualnić, aby umożliwić zarządzanie tożsamościami.
+> - Klastry AKS z tożsamościami zarządzanymi można włączyć tylko podczas tworzenia klastra.
+> - Istniejących klastrów AKS nie można zaktualizować ani uaktualnić, aby włączyć tożsamości zarządzane.

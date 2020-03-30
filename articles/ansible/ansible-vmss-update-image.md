@@ -1,30 +1,30 @@
 ---
-title: Samouczek — aktualizowanie niestandardowego obrazu zestawów skalowania maszyn wirtualnych platformy Azure przy użyciu rozwiązania ansible
-description: Dowiedz się, jak używać rozwiązania ansible do aktualizowania zestawów skalowania maszyn wirtualnych na platformie Azure przy użyciu obrazu niestandardowego
+title: Samouczek — aktualizowanie niestandardowego obrazu zestawów skalowania maszyny wirtualnej platformy Azure przy użyciu ansible
+description: Dowiedz się, jak zaktualizować zestawy skalowania maszyny wirtualnej na platformie Azure za pomocą obrazu niestandardowego
 keywords: ansible, azure, devops, bash, playbook, virtual machine, virtual machine scale set, vmss
 ms.topic: tutorial
 ms.date: 04/30/2019
 ms.openlocfilehash: b7d3053c09d2dcb667a4fc407035f4814f786932
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74155853"
 ---
-# <a name="tutorial-update-the-custom-image-of-azure-virtual-machine-scale-sets-using-ansible"></a>Samouczek: aktualizowanie niestandardowego obrazu zestawów skalowania maszyn wirtualnych platformy Azure za pomocą rozwiązania ansible
+# <a name="tutorial-update-the-custom-image-of-azure-virtual-machine-scale-sets-using-ansible"></a>Samouczek: Aktualizowanie niestandardowego obrazu zestawów skalowania maszyny wirtualnej platformy Azure przy użyciu ansible
 
 [!INCLUDE [ansible-27-note.md](../../includes/ansible-28-note.md)]
 
 [!INCLUDE [open-source-devops-intro-vmss.md](../../includes/open-source-devops-intro-vmss.md)]
 
-Po wdrożeniu maszyny wirtualnej należy ją skonfigurować przy użyciu oprogramowania wymaganego przez aplikację. Zamiast tego zadania konfiguracji dla każdej maszyny wirtualnej można utworzyć niestandardowy obraz. Obraz niestandardowy to migawka istniejącej maszyny wirtualnej, która zawiera dowolne zainstalowane oprogramowanie. Podczas [konfigurowania zestawu skalowania](./ansible-create-configure-vmss.md)należy określić obraz do użycia dla maszyn wirtualnych zestawu skalowania. Przy użyciu obrazu niestandardowego każde wystąpienie maszyny wirtualnej jest identycznie skonfigurowane dla Twojej aplikacji. Czasami może być konieczne zaktualizowanie niestandardowego obrazu zestawu skalowania. To zadanie jest skoncentrowane na tym samouczku.
+Po wdrożeniu maszyny Wirtualnej można skonfigurować maszynę wirtualną za pomocą oprogramowania, którego potrzebuje aplikacja. Zamiast wykonywać to zadanie konfiguracji dla każdej maszyny Wirtualnej, można utworzyć obraz niestandardowy. Obraz niestandardowy jest migawką istniejącej maszyny Wirtualnej, która zawiera zainstalowane oprogramowanie. Podczas [konfigurowania zestawu skalowania](./ansible-create-configure-vmss.md)można określić obraz, który ma być używany dla maszyn wirtualnych tego zestawu skalowania. Za pomocą obrazu niestandardowego, każde wystąpienie maszyny Wirtualnej jest identycznie skonfigurowany dla aplikacji. Czasami może być konieczne zaktualizowanie niestandardowego obrazu zestawu skalowania. To zadanie jest przedmiotem tego samouczka.
 
 [!INCLUDE [ansible-tutorial-goals.md](../../includes/ansible-tutorial-goals.md)]
 
 > [!div class="checklist"]
 >
-> * Skonfiguruj dwie maszyny wirtualne przy użyciu protokołu HTTP
-> * Tworzenie obrazu niestandardowego na podstawie istniejącej maszyny wirtualnej
+> * Konfigurowanie dwóch maszyn wirtualnych za pomocą protokołu HTTPD
+> * Tworzenie obrazu niestandardowego na istniejącej maszynie wirtualnej
 > * Tworzenie zestawu skalowania na podstawie obrazu
 > * Aktualizowanie obrazu niestandardowego
 
@@ -35,19 +35,19 @@ Po wdrożeniu maszyny wirtualnej należy ją skonfigurować przy użyciu oprogra
 
 ## <a name="configure-two-vms"></a>Konfigurowanie dwóch maszyn wirtualnych
 
-Kod element PlayBook w tej sekcji tworzy dwie maszyny wirtualne z zainstalowanym protokołem HTTP. 
+Kod podręcznika w tej sekcji tworzy dwie maszyny wirtualne z HTTPD zainstalowany na obu. 
 
-Na stronie `index.html` dla każdej maszyny wirtualnej jest wyświetlany ciąg testowy:
+Na `index.html` stronie dla każdej maszyny Wirtualnej jest wyświetlany ciąg testowy:
 
-* Pierwsza maszyna wirtualna wyświetla wartość `Image A`
-* Druga maszyna wirtualna wyświetla wartość `Image B`
+* Pierwsza maszyna wirtualna wyświetla wartość`Image A`
+* Druga maszyna wirtualna wyświetla wartość`Image B`
 
-Ten ciąg jest przeznaczony do naśladowania konfiguracji każdej maszyny wirtualnej przy użyciu innego oprogramowania.
+Ten ciąg jest przeznaczony do naśladowania konfigurowania każdej maszyny Wirtualnej z innego oprogramowania.
 
-Istnieją dwa sposoby uzyskania element PlayBook przykładu:
+Przykładowy podręcznik można uzyskać na dwa sposoby:
 
-* [Pobierz element PlayBook](https://github.com/Azure-Samples/ansible-playbooks/blob/master/vmss_images/01-create-vms.yml) i Zapisz go w `create_vms.yml`.
-* Utwórz nowy plik o nazwie `create_vms.yml` i skopiuj do niego następującą zawartość:
+* [Pobierz podręcznik](https://github.com/Azure-Samples/ansible-playbooks/blob/master/vmss_images/01-create-vms.yml) i zapisz `create_vms.yml`go w pliku .
+* Utwórz nowy `create_vms.yml` plik o nazwie i skopiuj do niego następującą zawartość:
 
 ```yml
 - name: Create two VMs (A and B) with HTTPS
@@ -163,39 +163,39 @@ Istnieją dwa sposoby uzyskania element PlayBook przykładu:
       msg: "Public IP Address B: {{ pip_output.results[1].state.ip_address }}"
 ```
 
-Uruchom element PlayBook przy użyciu polecenia `ansible-playbook`, zastępując `myrg` nazwą grupy zasobów:
+Uruchom podręcznik za `ansible-playbook` pomocą polecenia, zastępując `myrg` nazwą grupy zasobów:
 
 ```bash
 ansible-playbook create-vms.yml --extra-vars "resource_group=myrg"
 ```
 
-Ze względu na `debug` sekcje element PlayBook polecenie `ansible-playbook` drukuje adres IP każdej maszyny wirtualnej. Skopiuj te adresy IP do późniejszego użycia.
+Ze względu `debug` na sekcje podręcznika `ansible-playbook` polecenie wydrukuje adres IP każdej maszyny Wirtualnej. Skopiuj te adresy IP do późniejszego użycia.
 
-![Adresy IP maszyn wirtualnych](media/ansible-vmss-update-image/vmss-update-vms-ip-addresses.png)
+![Adresy IP maszyny wirtualnej](media/ansible-vmss-update-image/vmss-update-vms-ip-addresses.png)
 
-## <a name="connect-to-the-two-vms"></a>Nawiązywanie połączenia z dwiema maszynami wirtualnymi
+## <a name="connect-to-the-two-vms"></a>Łączenie się z dwiema maszynami wirtualnymi
 
-W tej sekcji połączysz się z każdą maszyną wirtualną. Jak wspomniano w poprzedniej sekcji, ciągi `Image A` i `Image B` naśladowania mają dwie odrębne maszyny wirtualne z różnymi konfiguracjami.
+W tej sekcji łączysz się z każdą maszyną wirtualną. Jak wspomniano w poprzedniej sekcji, `Image A` ciągi i `Image B` naśladować o dwa różne maszyny wirtualne z różnych konfiguracji.
 
-Korzystając z adresów IP z poprzedniej sekcji, Połącz się z obiema maszynami wirtualnymi:
+Korzystając z adresów IP z poprzedniej sekcji, połącz się z obiema maszynami wirtualnymi:
 
 ![Zrzut ekranu z maszyny wirtualnej A](media/ansible-vmss-update-image/vmss-update-browser-vma.png)
 
 ![Zrzut ekranu z maszyny wirtualnej B](media/ansible-vmss-update-image/vmss-update-browser-vmb.png)
 
-## <a name="create-images-from-each-vm"></a>Tworzenie obrazów z każdej maszyny wirtualnej
+## <a name="create-images-from-each-vm"></a>Tworzenie obrazów z każdej maszyny Wirtualnej
 
-W tym momencie masz dwie maszyny wirtualne z nieco różnymi konfiguracjami (ich `index.html` pliki).
+W tym momencie masz dwie maszyny wirtualne z `index.html` nieco innych konfiguracji (ich pliki).
 
-Kod element PlayBook w tej sekcji tworzy niestandardowy obraz dla każdej maszyny wirtualnej:
+Kod podręcznika w tej sekcji tworzy niestandardowy obraz dla każdej maszyny Wirtualnej:
 
-* `image_vmforimageA` — obraz niestandardowy utworzony dla maszyny wirtualnej, która wyświetla `Image A` na stronie głównej.
-* `image_vmforimageB` — obraz niestandardowy utworzony dla maszyny wirtualnej, która wyświetla `Image B` na stronie głównej.
+* `image_vmforimageA`- Niestandardowy obraz utworzony dla `Image A` maszyny Wirtualnej, który jest wyświetlany na jego stronie głównej.
+* `image_vmforimageB`- Niestandardowy obraz utworzony dla `Image B` maszyny Wirtualnej, który jest wyświetlany na jego stronie głównej.
 
-Istnieją dwa sposoby uzyskania element PlayBook przykładu:
+Przykładowy podręcznik można uzyskać na dwa sposoby:
 
-* [Pobierz element PlayBook](https://github.com/Azure-Samples/ansible-playbooks/blob/master/vmss_images/02-capture-images.yml) i Zapisz go w `capture-images.yml`.
-* Utwórz nowy plik o nazwie `capture-images.yml` i skopiuj do niego następującą zawartość:
+* [Pobierz podręcznik](https://github.com/Azure-Samples/ansible-playbooks/blob/master/vmss_images/02-capture-images.yml) i zapisz `capture-images.yml`go w pliku .
+* Utwórz nowy `capture-images.yml` plik o nazwie i skopiuj do niego następującą zawartość:
 
 ```yml
 - name: Capture VM Images
@@ -224,7 +224,7 @@ Istnieją dwa sposoby uzyskania element PlayBook przykładu:
       - B
 ```
 
-Uruchom element PlayBook przy użyciu polecenia `ansible-playbook`, zastępując `myrg` nazwą grupy zasobów:
+Uruchom podręcznik za `ansible-playbook` pomocą polecenia, zastępując `myrg` nazwą grupy zasobów:
 
 ```bash
 ansible-playbook capture-images.yml --extra-vars "resource_group=myrg"
@@ -232,16 +232,16 @@ ansible-playbook capture-images.yml --extra-vars "resource_group=myrg"
 
 ## <a name="create-scale-set-using-image-a"></a>Tworzenie zestawu skalowania przy użyciu obrazu A
 
-W tej sekcji element PlayBook służy do konfigurowania następujących zasobów platformy Azure:
+W tej sekcji podręcznik jest używany do konfigurowania następujących zasobów platformy Azure:
 
 * Publiczny adres IP
 * Moduł równoważenia obciążenia
-* Zestaw skalowania, który odwołuje się `image_vmforimageA`
+* Zestaw skalowania, który odwołuje się`image_vmforimageA`
 
-Istnieją dwa sposoby uzyskania element PlayBook przykładu:
+Przykładowy podręcznik można uzyskać na dwa sposoby:
 
-* [Pobierz element PlayBook](https://github.com/Azure-Samples/ansible-playbooks/blob/master/vmss_images/03-create-vmss.yml) i Zapisz go w `create-vmss.yml`.
-* Utwórz nowy plik o nazwie `create-vmss.yml` i skopiuj do niego następującą zawartość: "
+* [Pobierz podręcznik](https://github.com/Azure-Samples/ansible-playbooks/blob/master/vmss_images/03-create-vmss.yml) i zapisz `create-vmss.yml`go w pliku .
+* Utwórz nowy `create-vmss.yml` plik o nazwie i skopiuj do niego następującą zawartość:"
 
 ```yml
 ---
@@ -307,40 +307,40 @@ Istnieją dwa sposoby uzyskania element PlayBook przykładu:
         msg: "Scale set public IP address: {{ pip_output.state.ip_address }}"
 ```
 
-Uruchom element PlayBook przy użyciu polecenia `ansible-playbook`, zastępując `myrg` nazwą grupy zasobów:
+Uruchom podręcznik za `ansible-playbook` pomocą polecenia, zastępując `myrg` nazwą grupy zasobów:
 
 ```bash
 ansible-playbook create-vmss.yml --extra-vars "resource_group=myrg"
 ```
 
-Ze względu na `debug` sekcji element PlayBook polecenie `ansible-playbook` drukuje adres IP zestawu skalowania. Skopiuj ten adres IP do późniejszego użycia.
+Ze względu `debug` na sekcję podręcznika `ansible-playbook` polecenie wydrukuje adres IP zestawu skalowania. Skopiuj ten adres IP do późniejszego użycia.
 
 ![Publiczny adres IP](media/ansible-vmss-update-image/vmss-update-vmss-public-ip.png)
 
-## <a name="connect-to-the-scale-set"></a>Połącz z zestawem skalowania
+## <a name="connect-to-the-scale-set"></a>Łączenie się z zestawem skalowania
 
-W tej sekcji połączysz się z zestawem skalowania. 
+W tej sekcji można połączyć się z zestawem skalowania. 
 
-Korzystając z adresu IP z poprzedniej sekcji, Połącz się z zestawem skalowania.
+Korzystając z adresu IP z poprzedniej sekcji, połącz się z zestawem skalowania.
 
-Jak wspomniano w poprzedniej sekcji, ciągi `Image A` i `Image B` naśladowania mają dwie odrębne maszyny wirtualne z różnymi konfiguracjami.
+Jak wspomniano w poprzedniej sekcji, `Image A` ciągi i `Image B` naśladować o dwa różne maszyny wirtualne z różnych konfiguracji.
 
-Zestaw skalowania odwołuje się do obrazu niestandardowego o nazwie `image_vmforimageA`. `image_vmforimageA` obrazu niestandardowego został utworzony na podstawie maszyny wirtualnej, której Strona główna wyświetla `Image A`.
+Zestaw skalowania odwołuje się `image_vmforimageA`do niestandardowego obrazu o nazwie . Obraz `image_vmforimageA` niestandardowy został utworzony na maszynie wirtualnej, której strona główna jest wyświetlana `Image A`.
 
-W efekcie zostanie wyświetlona strona główna wyświetlająca `Image A`:
+W rezultacie zostanie wyświetlona strona `Image A`główna z wyświetlonym:
 
 ![Zestaw skalowania jest skojarzony z pierwszą maszyną wirtualną.](media/ansible-vmss-update-image/vmss-update-browser-initial-vmss.png)
 
-Pozostaw otwarte okno przeglądarki, aby przejść do następnej sekcji.
+Pozostaw otwarte okno przeglądarki podczas dalszej pracy w następnej sekcji.
 
-## <a name="change-custom-image-in-scale-set-and-upgrade-instances"></a>Zmienianie obrazu niestandardowego w zestawie skalowania i wystąpieniach uaktualnienia
+## <a name="change-custom-image-in-scale-set-and-upgrade-instances"></a>Zmienianie obrazu niestandardowego w wystąpieniach zestawu skalowania i uaktualniania
 
-Kod element PlayBook w tej sekcji zmienia obraz zestawu skalowania z `image_vmforimageA` na `image_vmforimageB`. Ponadto zostaną zaktualizowane wszystkie bieżące maszyny wirtualne wdrożone przez zestaw skalowania.
+Kod podręcznika w tej sekcji zmienia obraz zestawu `image_vmforimageA` `image_vmforimageB`skalowania — z do . Ponadto wszystkie bieżące maszyny wirtualne wdrożone przez zestaw skalowania są aktualizowane.
 
-Istnieją dwa sposoby uzyskania element PlayBook przykładu:
+Przykładowy podręcznik można uzyskać na dwa sposoby:
 
-* [Pobierz element PlayBook](https://github.com/Azure-Samples/ansible-playbooks/blob/master/vmss_images/04-update-vmss-image.yml) i Zapisz go w `update-vmss-image.yml`.
-* Utwórz nowy plik o nazwie `update-vmss-image.yml` i skopiuj do niego następującą zawartość:
+* [Pobierz podręcznik](https://github.com/Azure-Samples/ansible-playbooks/blob/master/vmss_images/04-update-vmss-image.yml) i zapisz `update-vmss-image.yml`go w pliku .
+* Utwórz nowy `update-vmss-image.yml` plik o nazwie i skopiuj do niego następującą zawartość:
 
 ```yml
 - name: Update scale set image reference
@@ -391,23 +391,23 @@ Istnieją dwa sposoby uzyskania element PlayBook przykładu:
     with_items: "{{ instances.instances }}"
 ```
 
-Uruchom element PlayBook przy użyciu polecenia `ansible-playbook`, zastępując `myrg` nazwą grupy zasobów:
+Uruchom podręcznik za `ansible-playbook` pomocą polecenia, zastępując `myrg` nazwą grupy zasobów:
 
 ```bash
 ansible-playbook update-vmss-image.yml --extra-vars "resource_group=myrg"
 ```
 
-Wróć do przeglądarki i Odśwież stronę. 
+Wróć do przeglądarki i odśwież stronę. 
 
-Zobaczysz, że obraz obrazu niestandardowego jest zaktualizowany dla tej maszyny wirtualnej.
+Widać, że podstawowy obraz niestandardowy maszyny wirtualnej jest aktualizowany.
 
 ![Zestaw skalowania jest skojarzony z drugą maszyną wirtualną](media/ansible-vmss-update-image/vmss-update-browser-updated-vmss.png)
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Gdy nie jest już potrzebne, Usuń zasoby utworzone w tym artykule. 
+Gdy nie są już potrzebne, usuń zasoby utworzone w tym artykule. 
 
-Zapisz następujący kod jako `cleanup.yml`:
+Zapisz następujący kod `cleanup.yml`jako:
 
 ```yml
 - hosts: localhost
@@ -421,7 +421,7 @@ Zapisz następujący kod jako `cleanup.yml`:
         state: absent
 ```
 
-Uruchom element PlayBook przy użyciu polecenia `ansible-playbook`:
+Uruchom podręcznik za `ansible-playbook` pomocą polecenia:
 
 ```bash
 ansible-playbook cleanup.yml

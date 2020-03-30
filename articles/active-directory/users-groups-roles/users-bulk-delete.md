@@ -1,6 +1,6 @@
 ---
-title: Zbiorcze usuwanie użytkowników (wersja zapoznawcza) w portalu Azure Active Directory | Microsoft Docs
-description: Usuń użytkowników zbiorczo w centrum administracyjnym platformy Azure w Azure Active Directory
+title: Zbiorcze usuwanie użytkowników (wersja zapoznawcza) w portalu usługi Azure Active Directory | Dokumenty firmy Microsoft
+description: Zbiorcze usuwanie użytkowników w centrum administracyjnym platformy Azure w usłudze Azure Active Directory
 services: active-directory
 author: curtand
 ms.author: curtand
@@ -14,51 +14,51 @@ ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d7c47887c12c8bf9be7a0c5b11dfb3f099965cb7
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/09/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72174385"
 ---
-# <a name="bulk-delete-users-preview-in-azure-active-directory"></a>Zbiorcze usuwanie użytkowników (wersja zapoznawcza) w Azure Active Directory
+# <a name="bulk-delete-users-preview-in-azure-active-directory"></a>Zbiorcze usuwanie użytkowników (wersja zapoznawcza) w usłudze Azure Active Directory
 
-Za pomocą portalu usługi Azure Active Directory (Azure AD) można usunąć dużą liczbę elementów członkowskich do grupy przy użyciu pliku wartości rozdzielanych przecinkami (CSV) do zbiorczego usuwania użytkowników.
+Korzystając z portalu usługi Azure Active Directory (Azure AD), można usunąć dużą liczbę członków do grupy za pomocą pliku csv (usytuowanych przecinkami) do zbiorczego usuwania użytkowników.
 
-## <a name="to-bulk-delete-users"></a>Aby usunąć zbiorczo użytkowników
+## <a name="to-bulk-delete-users"></a>Aby zbiorczo usuwać użytkowników
 
-1. [Zaloguj się do swojej organizacji usługi Azure AD](https://aad.portal.azure.com) przy użyciu konta, które jest administratorem użytkownika w organizacji.
-1. W usłudze Azure AD wybierz pozycję **użytkownicy** > **usuwanie zbiorcze**.
-1. Na stronie **usuwania zbiorczego użytkownika** wybierz pozycję **Pobierz** , aby otrzymać prawidłowy plik CSV właściwości użytkownika.
+1. [Zaloguj się do organizacji usługi Azure AD](https://aad.portal.azure.com) przy za pomocą konta, które jest administratorem użytkownika w organizacji.
+1. W usłudze Azure AD wybierz pozycję **Użytkownicy** > **usuwania zbiorczego**.
+1. Na stronie **Zbiorcze usuwanie użytkownika** wybierz pozycję **Pobierz,** aby otrzymać prawidłowy plik CSV właściwości użytkownika.
 
-   ![Wybierz lokalny plik CSV, w którym chcesz wyświetlić listę użytkowników do usunięcia](./media/users-bulk-delete/bulk-delete.png)
+   ![Wybierz lokalny plik CSV, w którym wyświetlisz listę użytkowników, których chcesz usunąć](./media/users-bulk-delete/bulk-delete.png)
 
-1. Otwórz plik CSV i Dodaj wiersz dla każdego użytkownika, który chcesz usunąć. Jedyną wymaganą wartością jest **główna nazwa użytkownika**. Następnie Zapisz plik.
+1. Otwórz plik CSV i dodaj wiersz dla każdego użytkownika, którego chcesz usunąć. Jedyną wymaganą wartością jest **nazwa główna użytkownika**. Następnie zapisz plik.
 
    ![Plik CSV zawiera nazwy i identyfikatory użytkowników do usunięcia](./media/users-bulk-delete/delete-csv-file.png)
 
-1. Na stronie **usuwania zbiorczego użytkownika (wersja zapoznawcza)** w obszarze **Przekaż plik CSV**przejdź do pliku. Po wybraniu pliku i kliknięciu przycisku Prześlij zostanie uruchomiony Walidacja pliku CSV.
-1. Gdy zawartość pliku zostanie sprawdzona, zostanie wyświetlony **plik przekazany pomyślnie**. Jeśli występują błędy, należy je usunąć przed przesłaniem zadania.
-1. Gdy plik zostanie pomyślnie zweryfikowany, wybierz pozycję **Prześlij** , aby rozpocząć operację zbiorczą platformy Azure, która spowoduje usunięcie użytkowników.
-1. Po zakończeniu operacji usuwania zobaczysz powiadomienie, że operacja zbiorcza zakończyła się pomyślnie.
+1. Na stronie **Usuwanie zbiorcze (Podgląd)** w obszarze **Przekazywanie pliku csv**przejdź do pliku. Po wybraniu pliku i kliknięciu przycisku Prześlij rozpocznie się sprawdzanie poprawności pliku CSV.
+1. Po sprawdzeniu poprawności zawartości pliku zostanie **wyświetlony folder Plik przekazany pomyślnie**. Jeśli występują błędy, należy je naprawić, zanim będzie można przesłać zadanie.
+1. Gdy plik przechodzi weryfikacji, wybierz **prześlij,** aby rozpocząć operację zbiorczą platformy Azure, która usuwa użytkowników.
+1. Po zakończeniu operacji usuwania zostanie wyświetlone powiadomienie, że operacja zbiorcza powiodła się.
 
-W przypadku wystąpienia błędów można pobrać i wyświetlić plik wyników na stronie **wyników operacji zbiorczej** . Plik zawiera przyczynę każdego błędu.
+Jeśli występują błędy, można pobrać i wyświetlić plik wyników na stronie **Wyniki operacji zbiorczej.** Plik zawiera przyczynę każdego błędu.
 
-## <a name="check-status"></a>Sprawdź stan
+## <a name="check-status"></a>Sprawdzanie stanu
 
-Stan wszystkich oczekujących żądań zbiorczych można zobaczyć na stronie **wyniki operacji zbiorczej (wersja zapoznawcza)** .
+Stan wszystkich oczekujących żądań zbiorczych można zobaczyć na stronie **Wyniki operacji zbiorczej (wersja zapoznawcza).**
 
-   ![Sprawdź stan przekazywania na stronie wyników operacji zbiorczych](./media/users-bulk-delete/bulk-center.png)
+   ![Sprawdź stan przekazywania na stronie Wyniki operacji zbiorczych](./media/users-bulk-delete/bulk-center.png)
 
-Następnie możesz sprawdzić, czy usunięte użytkownicy znajdują się w organizacji usługi Azure AD w Azure Portal lub przy użyciu programu PowerShell.
+Następnie można sprawdzić, czy usunięto użytkowników istnieje w organizacji usługi Azure AD albo w witrynie Azure portal lub przy użyciu programu PowerShell.
 
-## <a name="verify-deleted-users-in-the-azure-portal"></a>Weryfikowanie usuniętych użytkowników w Azure Portal
+## <a name="verify-deleted-users-in-the-azure-portal"></a>Weryfikowanie usuniętych użytkowników w portalu Azure
 
-1. Zaloguj się do Azure Portal przy użyciu konta, które jest administratorem użytkownika w organizacji.
+1. Zaloguj się do witryny Azure portal przy za pomocą konta, które jest administratorem użytkownika w organizacji.
 1. W okienku nawigacji wybierz pozycję **Azure Active Directory**.
-1. W obszarze **Zarządzaj**wybierz pozycję **Użytkownicy**.
-1. W obszarze **Pokaż**zaznacz opcję tylko **Wszyscy użytkownicy** i sprawdź, czy usunięte użytkownicy nie są już wyświetlani.
+1. W obszarze **Zarządzaj** wybierz pozycję **Użytkownicy**.
+1. W obszarze **Pokaż**wybierz pozycję **Wszyscy użytkownicy** i sprawdź, czy usunięci użytkownicy nie są już na liście.
 
-### <a name="verify-deleted-users-with-powershell"></a>Weryfikowanie usuniętych użytkowników przy użyciu programu PowerShell
+### <a name="verify-deleted-users-with-powershell"></a>Weryfikowanie usuniętych użytkowników za pomocą programu PowerShell
 
 Uruchom następujące polecenie:
 
@@ -66,10 +66,10 @@ Uruchom następujące polecenie:
 Get-AzureADUser -Filter "UserType eq 'Member'"
 ```
 
-Upewnij się, że usunięci użytkownicy nie są już wyświetlani.
+Sprawdź, czy usunięci użytkownicy nie są już na liście.
 
 ## <a name="next-steps"></a>Następne kroki
 
 - [Zbiorcze dodawanie użytkowników](users-bulk-add.md)
-- [Pobierz listę użytkowników](users-bulk-download.md)
+- [Lista użytkowników do pobrania](users-bulk-download.md)
 - [Użytkownicy przywracania zbiorczego](users-bulk-restore.md)

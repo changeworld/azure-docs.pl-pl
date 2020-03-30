@@ -1,5 +1,5 @@
 ---
-title: Łączenie sieci wirtualnych za pomocą komunikacji równorzędnej VNet — samouczek Azure Portal
+title: Łączenie sieci wirtualnych za pomocą komunikacji równorzędnej sieci wirtualnej — samouczek — witryna Azure portal
 description: W tym samouczku dowiesz się, jak połączyć sieci wirtualne za pomocą komunikacji równorzędnej sieci wirtualnych z użyciem witryny Azure Portal.
 services: virtual-network
 documentationcenter: virtual-network
@@ -14,15 +14,15 @@ ms.date: 01/22/2020
 ms.author: kumud
 ms.custom: ''
 ms.openlocfilehash: e95441aab6c8ce7de37ba5f6b08d5f7d54e13347
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77201302"
 ---
 # <a name="tutorial-connect-virtual-networks-with-virtual-network-peering-using-the-azure-portal"></a>Samouczek: łączenie sieci wirtualnych za pomocą komunikacji równorzędnej sieci wirtualnych z użyciem witryny Azure Portal
 
-Sieci wirtualne możesz łączyć ze sobą za pomocą komunikacji równorzędnej sieci wirtualnych. Te sieci wirtualne mogą znajdować się w tym samym regionie lub w różnych regionach (określane także jako globalne wirtualne sieci równorzędne). Po połączeniu sieci wirtualnych za pomocą komunikacji równorzędnej zasoby w obu sieciach wirtualnych mogą komunikować się ze sobą przy takim samym opóźnieniu i z taką samą przepustowością, jakby zasoby były w tej samej sieci wirtualnej. Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
+Sieci wirtualne możesz łączyć ze sobą za pomocą komunikacji równorzędnej sieci wirtualnych. Te sieci wirtualne mogą znajdować się w tym samym regionie lub w różnych regionach (określane także jako globalne wirtualne sieci równorzędne). Po połączeniu sieci wirtualnych za pomocą komunikacji równorzędnej zasoby w obu sieciach wirtualnych mogą komunikować się ze sobą przy takim samym opóźnieniu i z taką samą przepustowością, jakby zasoby były w tej samej sieci wirtualnej. Niniejszy samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
 > * Tworzenie dwóch sieci wirtualnych
@@ -32,9 +32,9 @@ Sieci wirtualne możesz łączyć ze sobą za pomocą komunikacji równorzędnej
 
 Jeśli chcesz, możesz wykonać ten samouczek przy użyciu [interfejsu wiersza polecenia platformy Azure](tutorial-connect-virtual-networks-cli.md) lub [programu Azure PowerShell](tutorial-connect-virtual-networks-powershell.md).
 
-Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Jeśli nie masz subskrypcji platformy Azure, utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) przed rozpoczęciem.
 
-## <a name="log-in-to-azure"></a>Logowanie się do platformy Azure
+## <a name="log-in-to-azure"></a>Zaloguj się do platformy Azure.
 
 Zaloguj się do witryny Azure Portal na stronie https://portal.azure.com.
 
@@ -42,23 +42,23 @@ Zaloguj się do witryny Azure Portal na stronie https://portal.azure.com.
 
 1. W witrynie Azure Portal wybierz pozycję **Utwórz zasób**.
 2. Wybierz pozycję **Sieć**, a następnie wybierz pozycję **Sieć wirtualna**.
-3. Na karcie **podstawowe** wprowadź lub wybierz poniższe informacje, a następnie zaakceptuj ustawienia domyślne dla pozostałych ustawień:
+3. Na karcie **Podstawy** wprowadź lub wybierz następujące informacje i zaakceptuj ustawienia domyślne dla pozostałych ustawień:
 
     |Ustawienie|Wartość|
     |---|---|
     |Subskrypcja| Wybierz subskrypcję.|
     |Grupa zasobów| Wybierz pozycję **Utwórz nową**, a następnie wprowadź nazwę *myResourceGroup*.|
     |Region| Wybierz pozycję **Wschodnie stany USA**.|
-    |Name (Nazwa)|myVirtualNetwork1|
+    |Nazwa|myVirtualNetwork1|
 
-4. Na karcie **adresy IP** wprowadź wartość 10.0.0.0/16 dla pola **przestrzeń adresowa** . Kliknij przycisk **Dodaj podsieć** poniżej i wprowadź *Subnet1* dla **nazwy podsieci** i 10.0.0.0/24 dla **zakresu adresów podsieci**.
-5. Wybierz pozycję **Recenzja + Utwórz** , a następnie wybierz pozycję **Utwórz**.
+4. Na karcie **Adresy IP** wprowadź 10.0.0.0/16 dla pola **Przestrzeń adresowa.** Kliknij przycisk **Dodaj podsieć** poniżej i wprowadź *podsieć1* dla **nazwy podsieci** i 10.0.0.0/24 dla **zakresu adresów podsieci**.
+5. Wybierz **pozycję Recenzja + Utwórz,** a następnie wybierz pozycję **Utwórz**.
    
 5. Wykonaj ponownie kroki 1–5 z następującymi zmianami:
 
     |Ustawienie|Wartość|
     |---|---|
-    |Name (Nazwa)|myVirtualNetwork2|
+    |Nazwa|myVirtualNetwork2|
     |Przestrzeń adresowa|10.1.0.0/16|
     |Grupa zasobów| Wybierz pozycję **Użyj istniejącej** i wybierz grupę **myResourceGroup**.|
     |Nazwa podsieci | Subnet2|
@@ -67,7 +67,7 @@ Zaloguj się do witryny Azure Portal na stronie https://portal.azure.com.
 ## <a name="peer-virtual-networks"></a>Tworzenia komunikacji równorzędnej sieci wirtualnych
 
 1. W polu wyszukiwania w górnej części witryny Azure Portal rozpocznij wpisywanie ciągu *myVirtualNetwork1*. Gdy pozycja **myVirtualNetwork1** pojawi się w wynikach wyszukiwania, wybierz ją.
-2. Wybierz pozycję **Komunikacja równorzędna**, w obszarze **Ustawienia**, a następnie wybierz pozycję **Dodaj**, jak pokazano na poniższej ilustracji:
+2. Wybierz **pozycję Peerings**, w obszarze **Ustawienia**, a następnie wybierz pozycję **Dodaj**, jak pokazano na poniższym rysunku:
 
     ![Tworzenie komunikacji równorzędnej](./media/tutorial-connect-virtual-networks-portal/create-peering.png)
 
@@ -75,14 +75,14 @@ Zaloguj się do witryny Azure Portal na stronie https://portal.azure.com.
 
     |Ustawienie|Wartość|
     |---|---|
-    |Nazwa komunikacji równorzędnej z myVirtualNetwork1 do zdalnej sieci wirtualnej|myVirtualNetwork1-myVirtualNetwork2 — po pierwszym załadowaniu strony w tym miejscu zobaczysz frazę "zdalna Sieć wirtualna". Po wybraniu zdalnej sieci wirtualnej fraza "zdalna Sieć wirtualna" zostanie zastąpiona nazwą zdalnej sieci wirtualnej.|
+    |Nazwa komunikacji równorzędnej z myVirtualNetwork1 do zdalnej sieci wirtualnej|myVirtualNetwork1-myVirtualNetwork2 - Gdy strona zostanie załadowana po raz pierwszy, zobaczysz tutaj frazę "zdalna sieć wirtualna". Po wybraniu zdalnej sieci wirtualnej fraza "zdalna sieć wirtualna" zostanie zastąpiona nazwą zdalnej sieci wirtualnej.|
     |Subskrypcja| Wybierz subskrypcję.|
-    |Sieć wirtualna|myVirtualNetwork2 — aby wybrać sieć wirtualną *myVirtualNetwork2* , wybierz pozycję **Sieć wirtualna**, a następnie wybierz pozycję **myVirtualNetwork2 (moja ResourceName)** . Możesz wybrać sieć wirtualną znajdującą się w tym samym regionie lub w innym regionie.|
-    |Nazwa komunikacji równorzędnej z myVirtualNetwork2 do myVirtualNetwork1|myVirtualNetwork2-myVirtualNetwork1|
+    |Sieć wirtualna|myVirtualNetwork2 - Aby wybrać sieć wirtualną *myVirtualNetwork2,* wybierz **sieć wirtualną**, a następnie wybierz **myVirtualNetwork2 (myResourceGroup).** Możesz wybrać sieć wirtualną znajdującą się w tym samym regionie lub w innym regionie.|
+    |Nazwa peeringu z myVirtualNetwork2 do myVirtualNetwork1|myVirtualNetwork2-myVirtualNetwork1|
 
     ![Ustawienia komunikacji równorzędnej](./media/tutorial-connect-virtual-networks-portal/peering-settings-bidirectional.png)
 
-    **Stan komunikacji równorzędnej** jest *połączony*, jak pokazano na poniższej ilustracji:
+    **Stan komunikacji równorzędnej** jest *połączony,* jak pokazano na poniższej ilustracji:
 
     ![Stan komunikacji równorzędnej](./media/tutorial-connect-virtual-networks-portal/peering-status-connected.png)
 
@@ -101,22 +101,22 @@ Utwórz maszynę wirtualną w każdej sieci wirtualnej, dzięki czemu będzie mo
     |Ustawienie|Wartość|
     |---|---|
     |Grupa zasobów| Wybierz pozycję **Użyj istniejącej** i wybierz grupę **myResourceGroup**.|
-    |Name (Nazwa)|myVm1|
+    |Nazwa|myVm1|
     |Lokalizacja| Wybierz pozycję **Wschodnie stany USA**.|
     |Nazwa użytkownika| Wprowadź wybraną nazwę użytkownika.|
     |Hasło| Wprowadź wybrane hasło. Hasło musi mieć co najmniej 12 znaków i spełniać [zdefiniowane wymagania dotyczące złożoności](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).|
    
-4. Wybierz rozmiar maszyny wirtualnej dla opcji **rozmiar** .
-5. Wybierz następujące wartości w obszarze **Sieć**:
+4. Wybierz rozmiar maszyny Wirtualnej dla opcji **Rozmiar.**
+5. Wybierz następujące wartości w obszarze **Sieć:**
 
     |Ustawienie|Wartość|
     |---|---|
-    |Sieć wirtualna| myVirtualNetwork1 — Jeśli nie została jeszcze wybrana, wybierz pozycję **Sieć wirtualna** , a następnie wybierz pozycję **myVirtualNetwork1**.|
-    |Podsieć| Subnet1 — Jeśli nie została jeszcze wybrana, wybierz pozycję **podsieć** , a następnie wybierz pozycję **Subnet1**.|
+    |Sieć wirtualna| myVirtualNetwork1 - Jeśli nie jest jeszcze zaznaczona, wybierz **sieć wirtualną,** a następnie wybierz **myVirtualNetwork1**.|
+    |Podsieć| Podsieć1 — jeśli nie jest jeszcze zaznaczona, wybierz **podsieć,** a następnie wybierz pozycję **Podsieć1**.|
    
-6. Wybierz pozycję **Sieć**. Wybierz opcję **Zezwalaj na wybrane porty** dla **publicznych portów przychodzących** . Wybierz pozycję **RDP** dla opcji **Wybierz porty przychodzące** poniżej. 
+6. Wybierz pozycję **Sieć**. Wybierz **pozycję Zezwalaj na wybrane porty** dla opcji **Publiczne porty przychodzące.** Wybierz **opcję PROW** dla opcji **Wybierz porty przychodzące** poniżej tej opcji. 
 
-7. Wybierz przycisk **Recenzja + Utwórz** w dolnym lewym rogu, aby rozpocząć wdrażanie maszyny wirtualnej.
+7. Wybierz przycisk **Recenzja + Utwórz** w lewym dolnym rogu, aby rozpocząć wdrażanie maszyny Wirtualnej.
 
 ### <a name="create-the-second-vm"></a>Tworzenie drugiej maszyny wirtualnej
 
@@ -124,7 +124,7 @@ Wykonaj ponownie kroki 1–6 z następującymi zmianami:
 
 |Ustawienie|Wartość|
 |---|---|
-|Name (Nazwa) | myVm2|
+|Nazwa | myVm2|
 |Sieć wirtualna | myVirtualNetwork2|
 
 Proces tworzenia maszyny wirtualnej może potrwać kilka minut. Nie kontynuuj wykonywania pozostałych kroków, dopóki obie maszyny wirtualne nie zostaną utworzone.
@@ -167,7 +167,7 @@ Gdy grupa zasobów nie będzie już potrzebna, usuń ją wraz ze wszystkimi zaso
 
 1. Wprowadź ciąg *myResourceGroup* w polu **Szukaj** w górnej części portalu. Gdy pozycja **myResourceGroup** pojawi się w wynikach wyszukiwania, wybierz ją.
 2. Wybierz pozycję **Usuń grupę zasobów**.
-3. W polu *WPISZ NAZWĘ GRUPY ZASOBÓW:* wprowadź nazwę **myResourceGroup**, a następnie wybierz pozycję **Usuń**.
+3. Wprowadź *myResourceGroup* dla **TYPU NAZWA GRUPY ZASOBÓW:** i wybierz pozycję **Usuń**.
 
 ## <a name="next-steps"></a>Następne kroki
 

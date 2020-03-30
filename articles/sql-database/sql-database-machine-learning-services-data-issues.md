@@ -1,7 +1,7 @@
 ---
-title: Współpraca z typami danych R i SQL oraz obiektami
+title: Praca z typami i obiektami danych języka R i SQL
 titleSuffix: Azure SQL Database Machine Learning Services (preview)
-description: Dowiedz się, jak korzystać z typów danych i obiektów danych w języku R z Azure SQL Database przy użyciu Machine Learning Services (wersja zapoznawcza), w tym typowych problemów, które mogą wystąpić.
+description: Dowiedz się, jak pracować z typami danych i obiektami danych w języku R za pomocą usługi Azure SQL Database przy użyciu usług uczenia maszynowego (wersja zapoznawcza), w tym typowe problemy, które mogą wystąpić.
 services: sql-database
 ms.service: sql-database
 ms.subservice: machine-learning
@@ -13,41 +13,41 @@ ms.author: garye
 ms.reviewer: davidph
 manager: cgronlun
 ms.date: 04/11/2019
-ms.openlocfilehash: 7dfd12729c5697d1935d098cbd4ed863a4551acd
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 0bb3abc7b7102da55c9ededcadd7a301f74065ab
+ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76719878"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80349338"
 ---
-# <a name="work-with-r-and-sql-data-in-azure-sql-database-machine-learning-services-preview"></a>Pracuj z danymi języka R i SQL w Azure SQL Database Machine Learning Services (wersja zapoznawcza)
+# <a name="work-with-r-and-sql-data-in-azure-sql-database-machine-learning-services-preview"></a>Praca z danymi języka R i SQL w usługach azure SQL Database Machine Learning Services (wersja zapoznawcza)
 
-W tym artykule omówiono niektóre typowe problemy, które mogą wystąpić podczas przemieszczania danych między językiem R i SQL Database w [Machine Learning Services (z językiem r) w Azure SQL Database](sql-database-machine-learning-services-overview.md). Środowisko zdobyte w tym ćwiczeniu zapewnia podstawowe tło podczas pracy z danymi w swoim skrypcie.
-
-Typowe problemy, które mogą wystąpić, to m.in.:
-
-- Typy danych czasami nie są zgodne
-- Niejawne konwersje mogą mieć miejsce
-- Operacje Cast i Convert są czasami wymagane
-- Język R i SQL używają różnych obiektów danych
+W tym artykule omówiono niektóre z typowych problemów, które mogą wystąpić podczas przenoszenia danych między bazą danych R i SQL w [usługach uczenia maszynowego (z R) w bazie danych SQL azure.](sql-database-machine-learning-services-overview.md) Doświadczenie zdobyte w tym ćwiczeniu zapewnia podstawowe tło podczas pracy z danymi we własnym skrypcie.
 
 [!INCLUDE[ml-preview-note](../../includes/sql-database-ml-preview-note.md)]
+
+Typowe problemy, które mogą wystąpić obejmują:
+
+- Typy danych czasami nie są zgodne
+- Mogą mieć miejsce konwersje niejawne
+- Operacje rzutowania i konwertowania są czasami wymagane
+- R i SQL używają różnych obiektów danych
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 - Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz konto](https://azure.microsoft.com/free/).
 
-- Aby uruchomić przykładowy kod w tych ćwiczeniach, musisz najpierw mieć bazę danych SQL Azure z włączoną Machine Learning Services (z R). W okresie publicznej wersji zapoznawczej firma Microsoft dołączy Cię i włączy usługę Machine Learning dla Twojej istniejącej lub nowej bazy danych. Postępuj zgodnie z instrukcjami w części [Tworzenie konta na potrzeby korzystania z wersji zapoznawczej](sql-database-machine-learning-services-overview.md#signup).
+- Aby uruchomić przykładowy kod w tych ćwiczeniach, musisz najpierw mieć bazę danych SQL platformy Azure z włączonymi usługami uczenia maszynowego (z włączoną funkcją R). W okresie publicznej wersji zapoznawczej firma Microsoft dołączy Cię i włączy usługę Machine Learning dla Twojej istniejącej lub nowej bazy danych. Postępuj zgodnie z instrukcjami w części [Tworzenie konta na potrzeby korzystania z wersji zapoznawczej](sql-database-machine-learning-services-overview.md#signup).
 
-- Upewnij się, że zainstalowano najnowszą [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms) (SSMS). Skrypty języka R można uruchamiać przy użyciu innych narzędzi do zarządzania bazami danych lub zapytań, ale w tym przewodniku szybki start będziesz używać programu SSMS.
+- Upewnij się, że zainstalowano najnowsze [program SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms) (SSMS). Skrypty języka R można uruchamiać przy użyciu innych narzędzi do zarządzania bazami danych lub zapytań, ale w tym przewodniku Szybki start użyjesz programu SSMS.
 
 ## <a name="working-with-a-data-frame"></a>Praca z ramką danych
 
-Gdy skrypt zwróci wyniki z języka R do SQL, musi zwrócić dane jako **dane. Frame**. Każdy inny typ obiektu, który został wygenerowany w skrypcie — czy jest to lista, współczynnik, wektor lub dane binarne — muszą zostać przekonwertowane na ramkę danych, jeśli chcesz, aby dane wyjściowe były wyprowadzane jako część wyników procedury składowanej. Na szczęście istnieje wiele funkcji R do obsługi zmieniania innych obiektów na ramkę danych. Można nawet serializować model binarny i zwrócić go w ramce danych, którą wykonasz w dalszej części tego artykułu.
+Gdy skrypt zwraca wyniki z języka R do SQL, musi zwrócić dane jako **data.frame**. Każdy inny typ obiektu, który można wygenerować w skrypcie — czy to lista, czynnik, wektor lub dane binarne - musi być przekonwertowany na ramkę danych, jeśli chcesz wyprowadzić go jako część wyników procedury składowanej. Na szczęście istnieje wiele funkcji R do obsługi zmiany innych obiektów do ramki danych. Można nawet serializować model binarny i zwracać go w ramce danych, co zrobisz w dalszej części tego artykułu.
 
-Najpierw Poeksperymentuj z niektórymi podstawowymi obiektami R — wektorami, macierzami i listami — i zobacz, jak konwersja na ramkę danych zmienia dane wyjściowe przesłane do SQL.
+Najpierw poeksperymentujmy z niektórymi podstawowymi obiektami Języka R — wektorami, macierzami i listami — i zobaczmy, jak konwersja do ramki danych zmienia dane wyjściowe przekazane do języka SQL.
 
-Porównaj te dwa skrypty "Hello world" w języku R. Skrypty wyglądają niemal identycznie, ale pierwszy zwraca jedną kolumnę trzech wartości, a druga zwraca trzy kolumny z pojedynczą wartością.
+Porównaj te dwa skrypty "Hello World" w R. Skrypty wyglądają prawie identycznie, ale pierwsza zwraca pojedynczą kolumnę trzech wartości, podczas gdy druga zwraca trzy kolumny z pojedynczą wartością.
 
 **Przykład 1**
 
@@ -67,11 +67,11 @@ EXECUTE sp_execute_external_script @language = N'R'
     , @input_data_1 = N'';
 ```
 
-Dlaczego wyniki są różne?
+Dlaczego wyniki są tak różne?
 
-Odpowiedź można zwykle znaleźć za pomocą polecenia R `str()`. Dodaj funkcję `str(object_name)` gdziekolwiek w skrypcie języka R, aby schemat danych określonego obiektu R został zwrócony jako komunikat informacyjny. Komunikaty można przeglądać na karcie **wiadomości** w programie SSMS.
+Odpowiedź można zwykle znaleźć za `str()` pomocą polecenia R. Dodaj funkcję `str(object_name)` w dowolnym miejscu skryptu Języka R, aby schemat danych określonego obiektu R został zwrócony jako komunikat informacyjny. Wiadomości można wyświetlać na karcie **Wiadomości** w ssms.
 
-Aby ustalić, dlaczego przykład 1 i przykład 2 mają takie różne wyniki, Wstaw wiersz `str(OutputDataSet)` na końcu definicji zmiennej `@script` w każdej instrukcji, takiej jak:
+Aby dowiedzieć się, dlaczego przykład 1 i przykład `str(OutputDataSet)` 2 mają `@script` takie różne wyniki, wstaw wiersz na końcu definicji zmiennej w każdej instrukcji, w tym stylu:
 
 **Przykład 1 z dodaną funkcją str**
 
@@ -96,38 +96,38 @@ str(OutputDataSet);
     , @input_data_1 = N'  ';
 ```
 
-Teraz Przejrzyj tekst w **komunikatach** , aby zobaczyć, dlaczego dane wyjściowe różnią się od siebie.
+Teraz przejrzyj tekst w **wiadomościach,** aby zobaczyć, dlaczego dane wyjściowe są różne.
 
 **Wyniki — przykład 1**
 
 ```text
 STDOUT message(s) from external script:
-'data.frame':   3 obs. of  1 variable:
+'data.frame':    3 obs. of  1 variable:
 $ mytextvariable: Factor w/ 3 levels " ","hello","world": 2 1 3
 ```
 
-**Wyniki — przykład 2**
+**Wyniki - Przykład 2**
 
 ```text
 STDOUT message(s) from external script:
-'data.frame':   1 obs. of  3 variables:
+'data.frame':    1 obs. of  3 variables:
 $ c..hello..: Factor w/ 1 level "hello": 1
 $ X...      : Factor w/ 1 level " ": 1
 $ c..world..: Factor w/ 1 level "world": 1
 ```
 
-Jak widać, niewielka zmiana składni języka R miała duży wpływ na schemat wyników. Ze względu na wszystkie szczegóły różnice w typach danych R są objaśnione szczegółowo w sekcji *struktury danych* w artykule ["Advanced R" przez Hadley Wickham](http://adv-r.had.co.nz).
+Jak widać, niewielka zmiana składni R miała duży wpływ na schemat wyników. Dla wszystkich szczegółów, różnice w typach danych R są wyjaśnione w szczegółach w sekcji *Struktury danych* w ["Zaawansowane R" przez Hadley Wickham](http://adv-r.had.co.nz).
 
-Na razie Wystarczy pamiętać, że po przeniesieniu obiektów R do ramek danych należy sprawdzić oczekiwane wyniki.
+Na razie należy tylko pamiętać, że należy sprawdzić oczekiwane wyniki podczas wymuszania R obiektów do ramek danych.
 
 > [!TIP]
-> Można również użyć funkcji tożsamości języka R, takich jak `is.matrix`, `is.vector`, aby zwrócić informacje o wewnętrznej strukturze danych.
+> Można również użyć funkcji tożsamości `is.matrix`R, takich jak , `is.vector`aby zwrócić informacje o wewnętrznej strukturze danych.
 
 ## <a name="implicit-conversion-of-data-objects"></a>Niejawna konwersja obiektów danych
 
-Każdy obiekt danych R ma własne reguły dotyczące sposobu obsługi wartości w połączeniu z innymi obiektami danych, jeśli dwa obiekty danych mają tę samą liczbę wymiarów lub jeśli którykolwiek obiekt danych zawiera heterogeniczne typy danych.
+Każdy obiekt danych R ma własne reguły obsługi wartości w połączeniu z innymi obiektami danych, jeśli dwa obiekty danych mają taką samą liczbę wymiarów lub jeśli dowolny obiekt danych zawiera heterogeniczne typy danych.
 
-Załóżmy na przykład, że chcesz przeprowadzić mnożenie macierzy przy użyciu języka R. Chcesz pomnożyć macierz jednokolumnową o trzy wartości przez tablicę z czterema wartościami i spodziewać się, że w wyniku 4x3 macierz.
+Załóżmy na przykład, że chcesz wykonać mnożenie macierzy przy użyciu języka R. Chcesz pomnożyć macierz jednokolumnową z trzema wartościami przez tablicę z czterema wartościami i oczekiwać w rezultacie macierzy 4x3.
 
 Najpierw utwórz małą tabelę danych testowych.
 
@@ -163,17 +163,17 @@ WITH RESULT SETS((
             ));
 ```
 
-W obszarze okładek kolumna trzech wartości jest konwertowana na tablicę z jedną kolumną. Ponieważ macierz jest tylko szczególnym przypadkiem tablicy w języku R, tablica `y` jest niejawnie przenikająca do macierzy jednokolumnowej, aby oba argumenty były zgodne.
+W obszarze obejmuje kolumna trzech wartości jest konwertowana na macierz jednokolumnową. Ponieważ macierz jest tylko specjalny przypadek tablicy `y` w R, tablica jest niejawnie wymuszane do macierzy jednokolumnowej, aby dwa argumenty są zgodne.
 
 **Results**
 
-|Col1|Col2|Col3|Col4|
+|Col1|Col2|Okręg wyborczy Col3|Okręg wyborczy Col4|
 |---|---|---|---|
 |12|13|14|15|
 |120|130|140|150|
 |1200|1300|1400|1500|
 
-Należy jednak zwrócić uwagę na to, co się dzieje, gdy zmienisz rozmiar tablicy `y`.
+Należy jednak zwrócić uwagę na to, `y`co się stanie po zmianie rozmiaru tablicy .
 
 ```sql
 EXECUTE sp_execute_external_script @language = N'R'
@@ -194,13 +194,13 @@ Teraz R zwraca pojedynczą wartość jako wynik.
 |---|
 |1542|
 
-Dlaczego? W tym przypadku, ponieważ dwa argumenty mogą być obsługiwane jako wektory o tej samej długości, R zwraca wewnętrzny produkt jako macierz.  Jest to oczekiwane zachowanie zgodnie z regułami algebry liniowych. Jednak może to spowodować problemy, jeśli aplikacja wyjściowa oczekuje, że schemat wyjściowy nie zmieni się.
+Dlaczego? W takim przypadku, ponieważ dwa argumenty mogą być obsługiwane jako wektory o tej samej długości, R zwraca produkt wewnętrzny jako macierz.  Jest to oczekiwane zachowanie zgodnie z zasadami algebry liniowej. Jednak może to spowodować problemy, jeśli aplikacja podrzędna oczekuje, że schemat danych wyjściowych nigdy się nie zmieni!
 
 ## <a name="merge-or-multiply-columns-of-different-length"></a>Scalanie lub mnożenie kolumn o różnej długości
 
-Język R zapewnia dużą elastyczność pracy z wektorami o różnych rozmiarach, a także do łączenia tych struktur takich jak te struktury kolumn z ramkami danych. Listy wektorów mogą wyglądać jak tabela, ale nie przestrzegają wszystkich reguł rządzących tabelami baz danych.
+R zapewnia dużą elastyczność pracy z wektorami o różnych rozmiarach i łączenia tych struktur podobnych do kolumn w ramki danych. Listy wektorów może wyglądać jak tabela, ale nie są zgodne ze wszystkimi regułami, które regulują tabele bazy danych.
 
-Na przykład poniższy skrypt definiuje tablicę liczbową o długości 6 i zapisuje ją w zmiennej R `df1`. Tablica liczbowa jest następnie połączona z liczbami całkowitymi tabeli RTestData (utworzona powyżej), która zawiera trzy (3) wartości, aby utworzyć nową ramkę danych `df2`.
+Na przykład poniższy skrypt definiuje tablicę numeryczną o długości 6 `df1`i przechowuje ją w zmiennej R . Tablica numeryczna jest następnie łączona z liczbami całkowitymi tabeli RTestData (utworzonej powyżej), która zawiera `df2`trzy (3) wartości, aby utworzyć nową ramkę danych, .
 
 ```sql
 EXECUTE sp_execute_external_script @language = N'R'
@@ -216,11 +216,11 @@ WITH RESULT SETS((
             ));
 ```
 
-Aby wypełnić ramkę danych, R powtarza elementy pobierane z RTestData tyle razy, ile jest to konieczne, aby dopasować liczbę elementów w tablicy `df1`.
+Aby wypełnić ramkę danych, R powtarza elementy pobrane z RTestData tyle razy, ile `df1`potrzeba, aby dopasować liczbę elementów w tablicy .
 
 **Results**
     
-|*Col2*|*Col3*|
+|*Col2*|*Okręg wyborczy Col3*|
 |----|----|
 |1|1|
 |10|2|
@@ -229,18 +229,18 @@ Aby wypełnić ramkę danych, R powtarza elementy pobierane z RTestData tyle raz
 |10|5|
 |100|6|
 
-Należy pamiętać, że ramka danych wygląda tylko na tabelę, ale jest w rzeczywistości listą wektorów.
+Należy pamiętać, że ramka danych wygląda tylko jak tabela, ale w rzeczywistości jest listą wektorów.
 
 ## <a name="cast-or-convert-sql-data"></a>Rzutowanie lub konwertowanie danych SQL
 
-Język r i SQL nie używają tych samych typów danych, więc w przypadku uruchamiania zapytania w języku SQL w celu pobrania danych, a następnie przekazania ich do środowiska uruchomieniowego języka R, niektóre typy niejawnej konwersji zwykle odbywają się. Po powrocie danych z języka R do SQL są wykonywane inne zestawy konwersji.
+R i SQL nie używają tych samych typów danych, więc po uruchomieniu kwerendy w języku SQL, aby uzyskać dane, a następnie przekazać je do środowiska wykonawczego języka R, zwykle ma miejsce pewnego rodzaju konwersji niejawnej. Inny zestaw konwersji odbywa się po powrocie danych z języka R do SQL.
 
-- SQL wypychanie danych z zapytania do procesu R i konwertuje je na wewnętrzną reprezentację w celu zwiększenia wydajności.
-- Środowisko uruchomieniowe języka R ładuje dane do zmiennej danych. Frame i wykonuje własne operacje na danych.
-- Aparat bazy danych zwraca dane do bazy danych SQL przy użyciu zabezpieczonego połączenia wewnętrznego i przedstawia dane pod kątem typów danych SQL.
-- Dane można uzyskać, łącząc się z SQL za pomocą klienta lub biblioteki sieciowej, która może wydawać zapytania SQL i obsługiwać zestawy danych tabelarycznych. Ta aplikacja kliencka może potencjalnie wpływać na dane na inne sposoby.
+- SQL wypycha dane z kwerendy do procesu języka R i konwertuje je na wewnętrzną reprezentację w celu zwiększenia wydajności.
+- Środowisko wykonawcze R ładuje dane do zmiennej data.frame i wykonuje własne operacje na danych.
+- Aparat bazy danych zwraca dane do sql przy użyciu zabezpieczonego połączenia wewnętrznego i przedstawia dane pod względem typów danych SQL.
+- Dane można uzyskać, łącząc się z sql przy użyciu biblioteki klienta lub sieci, które mogą wydawać zapytania SQL i obsługiwać tabelaryczne zestawy danych. Ta aplikacja kliencka może potencjalnie wpłynąć na dane w inny sposób.
 
-Aby zobaczyć, jak to działa, uruchom zapytanie, takie jak ten, w magazynie danych [AdventureWorksDW](https://github.com/Microsoft/sql-server-samples/releases/tag/adventureworks) . Ten widok zwraca dane sprzedaży używane podczas tworzenia prognoz.
+Aby zobaczyć, jak to działa, uruchom kwerendę, taką jak ta w magazynie danych [AdventureWorksDW.](https://github.com/Microsoft/sql-server-samples/releases/tag/adventureworks) Ten widok zwraca dane sprzedaży używane do tworzenia prognoz.
 
 ```sql
 USE AdventureWorksDW
@@ -255,9 +255,9 @@ ORDER BY ReportingDate ASC
 ```
 
 > [!NOTE]
-> Możesz użyć dowolnej wersji usługi AdventureWorks lub utworzyć inne zapytanie przy użyciu własnej bazy danych. Punkt jest próbować obsługiwać niektóre dane zawierające tekst, DateTime i wartości liczbowe.
+> Można użyć dowolnej wersji AdventureWorks lub utworzyć inną kwerendę przy użyciu własnej bazy danych. Chodzi o to, aby spróbować obsłużyć niektóre dane, które zawierają tekst, datetime i wartości liczbowe.
 
-Teraz spróbuj użyć tego zapytania jako danych wejściowych procedury składowanej.
+Teraz spróbuj użyć tej kwerendy jako dane wejściowe do procedury składowanej.
 
 ```sql
 EXECUTE sp_execute_external_script @language = N'R'
@@ -275,9 +275,9 @@ OutputDataSet <- InputDataSet;
 WITH RESULT SETS undefined;
 ```
 
-Jeśli wystąpi błąd, prawdopodobnie trzeba będzie wprowadzić pewne zmiany do tekstu zapytania. Na przykład predykat ciągu w klauzuli WHERE musi być ujęty w dwa zestawy znaków pojedynczego cudzysłowu.
+Jeśli zostanie wyświetlony błąd, prawdopodobnie musisz wprowadzić pewne zmiany w tekście kwerendy. Na przykład predykat ciągu w klauzuli WHERE musi być ujęty w dwa zestawy pojedynczych cudzysłowów.
 
-Po otrzymaniu zapytania Sprawdź wyniki funkcji `str`, aby zobaczyć, jak R traktuje dane wejściowe.
+Po zakończeniu kwerendy przejrzyj `str` wyniki funkcji, aby zobaczyć, jak R traktuje dane wejściowe.
 
 **Results**
 
@@ -288,16 +288,16 @@ STDOUT message(s) from external script: $ ProductSeries: Factor w/ 1 levels "M20
 STDOUT message(s) from external script: $ Amount       : num  3400 16925 20350 16950 16950
 ```
 
-- Kolumna DateTime została przetworzona przy użyciu typu danych języka R, **POSIXct**.
-- Kolumna tekstowa "ProductSeries" została zidentyfikowana jako **współczynnik**, co oznacza zmienną kategorii. Wartości ciągów są domyślnie obsługiwane jako czynniki. Jeśli przekażesz ciąg do języka R, zostanie on przekonwertowany na liczbę całkowitą do użytku wewnętrznego, a następnie zmapowany z powrotem do ciągu w danych wyjściowych.
+- Kolumna datetime została przetworzona przy użyciu typu danych R, **POSIXct**.
+- Kolumna tekstowa "ProductSeries" została zidentyfikowana jako **czynnik,** co oznacza zmienną kategoryczną. Wartości ciągów są domyślnie traktowane jako czynniki. Jeśli przekażesz ciąg do R, jest konwertowany na liczę całkowitą do użytku wewnętrznego, a następnie mapowane z powrotem do ciągu na dane wyjściowe.
 
 ## <a name="summary"></a>Podsumowanie
 
-Nawet z tych krótkich przykładów można zobaczyć, że zachodzi potrzeba sprawdzenia efektów konwersji danych podczas przekazywania zapytań SQL jako danych wejściowych. Ponieważ niektóre typy danych SQL nie są obsługiwane przez język R, należy wziąć pod uwagę następujące sposoby uniknięcia błędów:
+Nawet z tych krótkich przykładów można zobaczyć potrzebę sprawdzenia skutków konwersji danych podczas przekazywania zapytań SQL jako dane wejściowe. Ponieważ niektóre typy danych SQL nie są obsługiwane przez R, należy wziąć pod uwagę następujące sposoby, aby uniknąć błędów:
 
-- Przetestuj swoje dane z wyprzedzeniem i Sprawdź kolumny lub wartości w schemacie, które mogą być problemem podczas przekazywania do kodu języka R.
-- Określ kolumny w wejściowym źródle danych, a nie przy użyciu `SELECT *`i Dowiedz się, w jaki sposób każda kolumna będzie obsługiwana.
-- W razie potrzeby należy wykonać Jawne rzutowania w czasie przygotowywania danych wejściowych, aby uniknąć niepotrzebnych.
-- Unikaj przekazywania kolumn danych (takich jak identyfikatory GUID lub ROWGUID), które powodują błędy i nie są przydatne do modelowania.
+- Przetestuj dane z wyprzedzeniem i sprawdź kolumny lub wartości w schemacie, które mogą być problemem po przekazaniu do kodu R.
+- Określ kolumny w wejściowym źródle danych `SELECT *`indywidualnie, a nie za pomocą programu i dowiedz się, jak każda kolumna będzie obsługiwana.
+- Podczas przygotowywania danych wejściowych należy wykonać jawne rzutowania, aby uniknąć niespodzianek.
+- Unikaj przekazywania kolumn danych (takich jak guids lub rowguids), które powodują błędy i nie są przydatne do modelowania.
 
-Aby uzyskać więcej informacji na temat obsługiwanych i nieobsługiwanych typów danych języka R, zobacz sekcję [biblioteki i typy danych języka r](/sql/advanced-analytics/r/r-libraries-and-data-types).
+Aby uzyskać więcej informacji na temat obsługiwanych i nieobsługiconych typów danych języka R, zobacz [Biblioteki języka R i typy danych](/sql/advanced-analytics/r/r-libraries-and-data-types).

@@ -1,6 +1,6 @@
 ---
-title: Błąd interpretera Zeppelin Apache Hive — usługa Azure HDInsight
-description: Interpreter JDBCa Apache Zeppelin Hive wskazuje na nieprawidłowy adres URL w usłudze Azure HDInsight
+title: Błąd interpretera Apache Hive Zeppelin — usługa Azure HDInsight
+description: Apache Zeppelin Hive JDBC Interpreter wskazuje niewłaściwy adres URL w usłudze Azure HDInsight
 ms.service: hdinsight
 ms.topic: troubleshooting
 author: hrasheed-msft
@@ -8,19 +8,19 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 07/30/2019
 ms.openlocfilehash: 20309babb9ece0ae20e7442543b0d378f9a51060
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75895056"
 ---
-# <a name="scenario-apache-hive-zeppelin-interpreter-gives-a-zookeeper-error-in-azure-hdinsight"></a>Scenariusz: Apache Hive interpreter Zeppelin daje błąd dozorcy w usłudze Azure HDInsight
+# <a name="scenario-apache-hive-zeppelin-interpreter-gives-a-zookeeper-error-in-azure-hdinsight"></a>Scenariusz: Apache Hive Zeppelin Interpreter daje błąd Zookeeper w usłudze Azure HDInsight
 
-W tym artykule opisano kroki rozwiązywania problemów oraz możliwe rozwiązania problemów występujących w przypadku używania interakcyjnych składników zapytań w klastrach usługi Azure HDInsight.
+W tym artykule opisano kroki rozwiązywania problemów i możliwe rozwiązania problemów podczas korzystania ze składników zapytania interaktywnego w klastrach usługi Azure HDInsight.
 
 ## <a name="issue"></a>Problem
 
-W klastrze programu Apache Hive LLAP interpreter Zeppelin wyświetla następujący komunikat o błędzie podczas próby wykonania zapytania:
+W klastrze Apache Hive LLAP interpreter zeppelinu udostępnia następujący komunikat o błędzie podczas próby wykonania kwerendy:
 
 ```
 java.sql.SQLException: org.apache.hive.jdbc.ZooKeeperHiveClientException: Unable to read HiveServer2 configs from ZooKeeper
@@ -28,24 +28,24 @@ java.sql.SQLException: org.apache.hive.jdbc.ZooKeeperHiveClientException: Unable
 
 ## <a name="cause"></a>Przyczyna
 
-Interpreter JDBCa Zeppelin Hive wskazuje na nieprawidłowy adres URL.
+Tłumacz JDBC Hive Hive zeppelin wskazuje niewłaściwy adres URL.
 
-## <a name="resolution"></a>Rozdzielczość
+## <a name="resolution"></a>Rozwiązanie
 
-1. Przejdź do podsumowania składnika Hive i skopiuj adres URL "Hive JDBC" do Schowka.
+1. Przejdź do podsumowania składnika Hive i skopiuj "Hive JDBC Url" do schowka.
 
-1. Przejdź do `https://clustername.azurehdinsight.net/zeppelin/#/interpreter`
+1. Przejdź do`https://clustername.azurehdinsight.net/zeppelin/#/interpreter`
 
-1. Edytuj ustawienia JDBC: zaktualizuj wartość Hive. URL do adresu URL JDBC programu Hive skopiowanego w kroku 1
+1. Edytowanie ustawień JDBC: aktualizowanie wartości hive.url do adresu URL JDBC hive skopiowanego w kroku 1
 
-1. Zapisz, a następnie ponów próbę wykonania zapytania
+1. Zapisz, a następnie ponów próbę kwerendy
 
 ## <a name="next-steps"></a>Następne kroki
 
-Jeśli problem nie został wyświetlony lub nie można rozwiązać problemu, odwiedź jeden z następujących kanałów, aby uzyskać więcej pomocy:
+Jeśli nie widzisz problemu lub nie możesz rozwiązać problemu, odwiedź jeden z następujących kanałów, aby uzyskać więcej pomocy technicznej:
 
-* Uzyskaj odpowiedzi od ekspertów platformy Azure za pośrednictwem [pomocy technicznej dla społeczności platformy Azure](https://azure.microsoft.com/support/community/).
+* Uzyskaj odpowiedzi od ekspertów platformy Azure za pośrednictwem [pomocy technicznej platformy Azure Community.](https://azure.microsoft.com/support/community/)
 
-* Połącz się z [@AzureSupport](https://twitter.com/azuresupport) — oficjalne Microsoft Azure konto, aby usprawnić obsługę klienta, łącząc społeczność platformy Azure z właściwymi zasobami: odpowiedziami, pomocą techniczną i ekspertami.
+* Połącz [@AzureSupport](https://twitter.com/azuresupport) się z — oficjalnym kontem platformy Microsoft Azure w celu poprawy jakości obsługi klienta, łącząc społeczność platformy Azure z odpowiednimi zasobami: odpowiedziami, pomocą techniczną i ekspertami.
 
-* Jeśli potrzebujesz więcej pomocy, możesz przesłać żądanie pomocy technicznej z [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Na pasku menu wybierz pozycję **Obsługa** , a następnie otwórz Centrum **pomocy i obsługi technicznej** . Aby uzyskać szczegółowe informacje, zobacz [jak utworzyć żądanie pomocy technicznej platformy Azure](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request). Dostęp do pomocy w zakresie zarządzania subskrypcjami i rozliczeń jest dostępny w ramach subskrypcji Microsoft Azure, a pomoc techniczna jest świadczona za pomocą jednego z [planów pomocy technicznej systemu Azure](https://azure.microsoft.com/support/plans/).
+* Jeśli potrzebujesz więcej pomocy, możesz przesłać żądanie pomocy z [witryny Azure portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Wybierz **pozycję Obsługa z** paska menu lub otwórz centrum pomocy + pomocy **technicznej.** Aby uzyskać bardziej szczegółowe informacje, zapoznaj się z [instrukcjami tworzenia żądania pomocy technicznej platformy Azure.](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request) Dostęp do obsługi zarządzania subskrypcjami i rozliczeń jest dołączony do subskrypcji platformy Microsoft Azure, a pomoc techniczna jest świadczona za pośrednictwem jednego z [planów pomocy technicznej platformy Azure.](https://azure.microsoft.com/support/plans/)

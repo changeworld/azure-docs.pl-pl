@@ -9,12 +9,12 @@ ms.author: vanto
 ms.topic: article
 ms.date: 02/20/2020
 ms.reviewer: ''
-ms.openlocfilehash: c18e1b1a1feba5c528a692b7d63287b3751b62cf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9c1260bb1fab23ede2d1a96725c3086dc128fffc
+ms.sourcegitcommit: d0fd35f4f0f3ec71159e9fb43fcd8e89d653f3f2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77506216"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80387652"
 ---
 # <a name="playbook-for-addressing-common-security-requirements-with-azure-sql-database"></a>Podręcznik do rozwiązywania typowych wymagań dotyczących zabezpieczeń za pomocą usługi Azure SQL Database
 
@@ -657,7 +657,7 @@ Zaawansowana ochrona przed zagrożeniami umożliwia wykrywanie potencjalnych zag
 **Najważniejsze wskazówki:**
 
 - Konfigurując [inspekcję bazy danych SQL](sql-database-auditing.md) na serwerze bazy danych w celu inspekcji zdarzeń, wszystkie istniejące i nowo utworzone bazy danych na tym serwerze zostaną poddane inspekcji.
-- Domyślnie zasady inspekcji obejmują wszystkie akcje (zapytania, procedury przechowywane oraz pomyślne i nieudane logowania) w bazach danych, co może spowodować dużą liczbę dzienników inspekcji. Zaleca się, aby klienci [konfigurują inspekcję dla różnych typów akcji i grup akcji przy użyciu programu PowerShell](sql-database-auditing.md#subheading-7). Skonfigurowanie to pomoże kontrolować liczbę skontrolowanych akcji i zminimalizować ryzyko utraty zdarzeń. Konfiguracja inspekcji niestandardowej umożliwia klientom przechwytywanie tylko potrzebnych danych inspekcji.
+- Domyślnie zasady inspekcji obejmują wszystkie akcje (zapytania, procedury przechowywane oraz pomyślne i nieudane logowania) w bazach danych, co może spowodować dużą liczbę dzienników inspekcji. Zaleca się, aby klienci [konfigurują inspekcję dla różnych typów akcji i grup akcji przy użyciu programu PowerShell](sql-database-auditing.md#manage-auditing). Skonfigurowanie to pomoże kontrolować liczbę skontrolowanych akcji i zminimalizować ryzyko utraty zdarzeń. Konfiguracja inspekcji niestandardowej umożliwia klientom przechwytywanie tylko potrzebnych danych inspekcji.
 - Dzienniki inspekcji mogą być używane bezpośrednio w [witrynie Azure portal](https://portal.azure.com/)lub z lokalizacji magazynu, który został skonfigurowany. 
 
 

@@ -1,16 +1,16 @@
 ---
-title: Omówienie aplikacji zarządzanych
-description: Opisuje koncepcje Azure Managed Applications, które oferują rozwiązania w chmurze, które są łatwe do wdrożenia i obsługi przez klientów.
+title: Przegląd zarządzanych aplikacji
+description: W tym artykule opisano pojęcia dotyczące aplikacji zarządzanych platformy Azure, która zapewnia rozwiązania w chmurze, które są łatwe dla konsumentów do wdrożenia i obsługi.
 author: tfitzmac
 ms.topic: overview
 ms.date: 07/12/2019
 ms.author: tomfitz
-ms.openlocfilehash: 4508b69261cd7b1fb5e400eaf7ffaae67d5cb476
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: b4aa5dfd288819930da2f7af36b7d70df709e638
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75650359"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79473034"
 ---
 # <a name="azure-managed-applications-overview"></a>Omówienie usługi Azure Managed Applications
 
@@ -19,7 +19,7 @@ Usługa Azure Managed Applications pozwala tworzyć rozwiązania w chmurze, któ
 Aplikacja zarządzana jest podobna do szablonu rozwiązania w witrynie Marketplace. Najważniejsza różnica między nimi polega na tym, że w aplikacji zarządzanej zasoby są wdrażane w grupie zasobów zarządzanej przez wydawcę aplikacji. Grupa zasobów znajduje się w subskrypcji klienta, ale tożsamość w dzierżawie wydawcy ma dostęp do tej grupy zasobów. Wydawca określa koszt bieżącej obsługi rozwiązania.
 
 > [!NOTE]
-> Wcześniej dokumentacja dotycząca dostawców klientów platformy Azure została uwzględniona w dokumentacji aplikacji zarządzanych. Ta dokumentacja została przeniesiona. Teraz Zobacz temat [Dostawcy niestandardowi platformy Azure](../custom-providers/overview.md).
+> Wcześniej dokumentacja dla dostawców niestandardowych platformy Azure została dołączona do dokumentacji aplikacji zarządzanych. Dokumentacja ta została przeniesiona. Teraz zobacz [Dostawców niestandardowych platformy Azure](../custom-providers/overview.md).
 
 ## <a name="advantages-of-managed-applications"></a>Zalety związane z używaniem aplikacji zarządzanych
 
@@ -31,7 +31,7 @@ Klienci wdrażają aplikacje zarządzane w swoich subskrypcjach, ale nie muszą 
 
 Aplikacje zarządzane umożliwiają zespołom IT udostępnianie wstępnie zatwierdzonych rozwiązań użytkownikom w organizacji. Wiesz, że te rozwiązania są zgodne ze standardami używanymi w organizacji.
 
-Zarządzane aplikacje obsługują [zarządzane tożsamości dla zasobów platformy Azure](./publish-managed-identity.md).
+Aplikacje zarządzane obsługują [tożsamości zarządzane dla zasobów platformy Azure](./publish-managed-identity.md).
 
 ## <a name="types-of-managed-applications"></a>Typy aplikacji zarządzanych
 
@@ -53,7 +53,7 @@ Aby uzyskać informacje dotyczące publikowania aplikacji zarządzanych w witryn
 
 ## <a name="resource-groups-for-managed-applications"></a>Grupy zasobów aplikacji zarządzanych
 
-Zazwyczaj zasoby dla aplikacji zarządzanej znajdują się w dwóch grupach zasobów. Jedną z nich zarządza użytkownik, a drugą — wydawca. Podczas definiowania aplikacji zarządzanej wydawca określa poziomy dostępu. Wydawca może zażądać trwałego przypisania roli lub [dostępu just in Time](request-just-in-time-access.md) do przypisania, które jest ograniczone do przedziału czasu.
+Zazwyczaj zasoby dla aplikacji zarządzanej znajdują się w dwóch grupach zasobów. Jedną z nich zarządza użytkownik, a drugą — wydawca. Podczas definiowania aplikacji zarządzanej wydawca określa poziomy dostępu. Wydawca może zażądać stałego przypisania roli lub [dostępu just-in-time](request-just-in-time-access.md) dla przypisania, które jest ograniczone do okresu.
 
 Ograniczanie dostępu do [operacji na danych](../../role-based-access-control/role-definitions.md) nie jest obecnie obsługiwane dla wszystkich dostawców danych na platformie Azure.
 
@@ -69,9 +69,9 @@ Klient, który ma pełny dostęp do grupy zasobów, zarządza cyklem życia apli
 
 ### <a name="managed-resource-group"></a>Zarządzana grupa zasobów
 
-Ta grupa zasobów zawiera wszystkie zasoby, które są wymagane przez aplikację zarządzaną. Na przykład może ona obejmować maszyny wirtualne, konta magazynu i sieci wirtualne używane przez rozwiązanie. Klient ma ograniczony dostęp do tej grupy zasobów, ponieważ nie zarządza on poszczególnymi zasobami aplikacji zarządzanej. Dostęp wydawcy do grupy zasobów odpowiada roli określonej w definicji aplikacji zarządzanej. Na przykład wydawca może zażądać roli właściciela lub współautora dla tej grupy zasobów. Dostęp jest trwały lub ograniczony do określonego czasu.
+Ta grupa zasobów zawiera wszystkie zasoby, które są wymagane przez aplikację zarządzaną. Na przykład może ona obejmować maszyny wirtualne, konta magazynu i sieci wirtualne używane przez rozwiązanie. Klient ma ograniczony dostęp do tej grupy zasobów, ponieważ nie zarządza on poszczególnymi zasobami aplikacji zarządzanej. Dostęp wydawcy do grupy zasobów odpowiada roli określonej w definicji aplikacji zarządzanej. Na przykład wydawca może zażądać roli właściciela lub współautora dla tej grupy zasobów. Dostęp jest stały lub ograniczony do określonego czasu.
 
-W przypadku publikowania [aplikacji zarządzanej w portalu Marketplace](publish-marketplace-app.md)Wydawca może udzielić konsumentom możliwości wykonywania określonych akcji na zasobach w zarządzanej grupie zasobów. Na przykład Wydawca może określić, że klienci mogą ponownie uruchamiać maszyny wirtualne. Wszystkie inne akcje poza akcją odczytu nadal są odrzucane.
+Podczas publikowania [aplikacji zarządzanej na rynku](publish-marketplace-app.md)wydawca może przyznać konsumentom możliwość wykonywania określonych akcji na zasobach w zarządzanej grupie zasobów. Na przykład wydawca można określić, że konsumenci mogą ponownie uruchomić maszyny wirtualne. Wszystkie inne działania poza odczytu działania są nadal odrzucane.
 
 Usunięcie aplikacji zarządzanej powoduje również usunięcie zarządzanej grupy zasobów.
 

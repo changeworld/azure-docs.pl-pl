@@ -1,6 +1,6 @@
 ---
-title: Tworzenie Azure Service Bus przestrzeni nazw i kolejki przy użyciu szablonu platformy Azure
-description: 'Szybki Start: tworzenie przestrzeni nazw Service Bus i kolejki przy użyciu szablonu Azure Resource Manager'
+title: Tworzenie obszaru nazw usługi Azure Service Bus i kolejki przy użyciu szablonu platformy Azure
+description: 'Szybki start: tworzenie obszaru nazw usługi Service Bus i kolejki przy użyciu szablonu usługi Azure Resource Manager'
 services: service-bus-messaging
 documentationcenter: .net
 author: spelluru
@@ -10,141 +10,73 @@ ms.assetid: a6bfb5fd-7b98-4588-8aa1-9d5f91b599b6
 ms.service: service-bus-messaging
 ms.devlang: tbd
 ms.topic: quickstart
+ms.custom: subject-armqs
 ms.tgt_pltfrm: dotnet
 ms.workload: na
 ms.date: 12/20/2019
 ms.author: spelluru
-ms.openlocfilehash: 978111596330d7d6b324c1ecc07fd424c7fd47b7
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 8605dae05b7f5270513b645367248090006c04a8
+ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75427009"
+ms.lasthandoff: 03/29/2020
+ms.locfileid: "80384912"
 ---
-# <a name="quickstart-create-a-service-bus-namespace-and-a-queue-using-an-azure-resource-manager-template"></a>Szybki Start: tworzenie Service Bus przestrzeni nazw i kolejki przy użyciu szablonu Azure Resource Manager
+# <a name="quickstart-create-a-service-bus-namespace-and-a-queue-using-an-azure-resource-manager-template"></a>Szybki start: tworzenie obszaru nazw usługi Service Bus i kolejki przy użyciu szablonu usługi Azure Resource Manager
 
-W tym artykule pokazano, jak używać szablonu Azure Resource Manager, który tworzy przestrzeń nazw Service Bus i kolejkę w tej przestrzeni nazw. W tym artykule wyjaśniono, jak określić, które zasoby są wdrażane, oraz jak definiować parametry, które są określone podczas wdrażania. Można użyć tego szablonu na potrzeby własnych wdrożeń lub dostosować go do konkretnych potrzeb.
+W tym artykule pokazano, jak używać szablonu usługi Azure Resource Manager, który tworzy obszar nazw usługi Service Bus i kolejki w tym obszarze nazw. W tym artykule wyjaśniono, jak określić, które zasoby są wdrażane i jak zdefiniować parametry, które są określone podczas wdrażania. Można użyć tego szablonu na potrzeby własnych wdrożeń lub dostosować go do konkretnych potrzeb.
 
-Aby uzyskać więcej informacji na temat tworzenia szablonów, zobacz [Tworzenie szablonów Azure Resource Manager][Authoring Azure Resource Manager templates].
+[!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-Aby zapoznać się z pełnym szablonem, zapoznaj się z [obszarem nazw Service Bus i szablonem kolejki][Service Bus namespace and queue template] w witrynie GitHub.
+Jeśli nie masz subskrypcji platformy Azure, [utwórz bezpłatne konto](https://azure.microsoft.com/free/) przed rozpoczęciem.
+
+## <a name="prerequisites"></a>Wymagania wstępne
+
+Brak
+
+## <a name="create-a-service-bus-namespace-and-a-queue"></a>Tworzenie obszaru nazw usługi Service Bus i kolejki
+
+### <a name="review-the-template"></a>Przejrzyj szablon
+
+Szablon używany w tym przewodniku Szybki start pochodzi z [szablonów szybki start platformy Azure](https://azure.microsoft.com/resources/templates/201-servicebus-create-queue).
+
+:::code language="json" source="~/quickstart-templates/201-servicebus-create-queue/azuredeploy.json" range="1-75" highlight="31-63":::
+
+Zasoby zdefiniowane w szablonie obejmują:
+
+- [**Microsoft.ServiceBus/przestrzenie nazw**](/azure/templates/microsoft.servicebus/namespaces)
+- [**Microsoft.ServiceBus/przestrzenie nazw/kolejki**](/azure/templates/microsoft.servicebus/namespaces/queues)
 
 > [!NOTE]
-> Następujące szablony Azure Resource Manager są dostępne do pobrania i wdrożenia.
-> 
-> * [Tworzenie przestrzeni nazw Service Bus przy użyciu reguły kolejki i autoryzacji](service-bus-resource-manager-namespace-auth-rule.md)
-> * [Tworzenie przestrzeni nazw Service Bus przy użyciu tematu i subskrypcji](service-bus-resource-manager-namespace-topic.md)
-> * [Tworzenie przestrzeni nazw Service Bus](service-bus-resource-manager-namespace.md)
-> * [Tworzenie przestrzeni nazw Service Bus z tematem, subskrypcją i regułą](service-bus-resource-manager-namespace-topic-with-rule.md)
-> 
-> Aby sprawdzić najnowsze szablony, odwiedź Galerię [szablonów szybkiego startu platformy Azure][Azure Quickstart Templates] i Wyszukaj **Service Bus**.
+> Następujące szablony usługi Azure Resource Manager są dostępne do pobrania i wdrożenia.
+>
+> * [Tworzenie obszaru nazw usługi Service Bus z regułą kolejki i autoryzacji](service-bus-resource-manager-namespace-auth-rule.md)
+> * [Tworzenie obszaru nazw usługi Service Bus z tematem i subskrypcją](service-bus-resource-manager-namespace-topic.md)
+> * [Tworzenie przestrzeni nazw usługi Service Bus](service-bus-resource-manager-namespace.md)
+> * [Tworzenie obszaru nazw usługi Service Bus z tematem, subskrypcją i regułą](service-bus-resource-manager-namespace-topic-with-rule.md)
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+Więcej szablonów można znaleźć w [szablonach szybki start platformy Azure](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Servicebus&pageNumber=1&sort=Popular)
 
-## <a name="what-will-you-deploy"></a>Co chcesz wdrożyć?
+### <a name="deploy-the-template"></a>Wdrożenie szablonu
 
-Za pomocą tego szablonu należy wdrożyć przestrzeń nazw Service Bus z kolejką.
+Za pomocą tego szablonu można wdrożyć obszar nazw usługi Service Bus z kolejką.
 
-[Kolejki Service Bus](service-bus-queues-topics-subscriptions.md#queues) oferują dostarczanie komunikatów First In, First Out (FIFO) do jednego lub większej liczby konkurujących klientów.
+[Kolejki usługi Service Bus](service-bus-queues-topics-subscriptions.md#queues) oferują dostarczanie wiadomości FIFO (First In, First Out) jednemu lub większej liczbie konkurujących konsumentów.
 
 Aby automatycznie uruchomić wdrożenie, kliknij poniższy przycisk:
 
 [![Wdrażanie na platformie Azure](./media/service-bus-resource-manager-namespace-queue/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-servicebus-create-queue%2Fazuredeploy.json)
 
-## <a name="parameters"></a>Parametry
-
-Przy użyciu usługi Azure Resource Manager można zdefiniować parametry dla wartości, które mają zostać uwzględnione podczas wdrażania szablonu. Szablon zawiera sekcję o nazwie `Parameters`, która zawiera wszystkie wartości parametrów. Należy zdefiniować parametr dla tych wartości, które będą się różnić w zależności od wdrażanego projektu lub w oparciu o środowisko, w którym wdrażasz. Nie należy definiować parametrów dla wartości, które zawsze pozostają takie same. Każda wartość parametru używana w szablonie definiuje wdrażane zasoby.
-
-Szablon zawiera definicje następujących parametrów.
-
-### <a name="servicebusnamespacename"></a>serviceBusNamespaceName
-Nazwa przestrzeni nazw Service Bus, która ma zostać utworzona.
-
-```json
-"serviceBusNamespaceName": {
-"type": "string",
-"metadata": { 
-    "description": "Name of the Service Bus namespace" 
-    }
-}
-```
-
-### <a name="servicebusqueuename"></a>serviceBusQueueName
-Nazwa kolejki utworzonej w przestrzeni nazw Service Bus.
-
-```json
-"serviceBusQueueName": {
-"type": "string"
-}
-```
-
-### <a name="servicebusapiversion"></a>serviceBusApiVersion
-Wersja szablonu interfejsu API Service Bus.
-
-```json
-"serviceBusApiVersion": { 
-       "type": "string", 
-       "defaultValue": "2017-04-01", 
-       "metadata": { 
-           "description": "Service Bus ApiVersion used by the template" 
-       }
-```
-
-## <a name="resources-to-deploy"></a>Zasoby wymagające wdrożenia
-Tworzy standardową przestrzeń nazw Service Bus typu **Messaging**z kolejką.
-
-```json
-{
-    "resources": [{
-        "apiVersion": "2017-04-01",
-        "name": "[parameters('serviceBusNamespaceName')]",
-        "type": "Microsoft.ServiceBus/namespaces",
-        "location": "[parameters('location')]",
-        "sku": {
-            "name": "Standard"
-        },
-        "properties": {},
-        "resources": [{
-            "apiVersion": "[variables('sbVersion')]",
-            "name": "[parameters('serviceBusQueueName')]",
-            "type": "Queues",
-            "dependsOn": [
-                "[concat('Microsoft.ServiceBus/namespaces/', parameters('serviceBusNamespaceName'))]"
-            ],
-            "properties": {
-                "path": "[parameters('serviceBusQueueName')]"
-            }
-        }]
-    }]
-}
-```
-
-Aby poznać składnię i właściwości JSON, zobacz [przestrzenie nazw](/azure/templates/microsoft.servicebus/namespaces) i [kolejki](/azure/templates/microsoft.servicebus/namespaces/queues).
-
-## <a name="commands-to-run-deployment"></a>Polecenia umożliwiające uruchomienie wdrożenia
-[!INCLUDE [app-service-deploy-commands](../../includes/app-service-deploy-commands.md)]
-
-## <a name="powershell"></a>PowerShell
-
-```powershell
-New-AzResourceGroupDeployment -ResourceGroupName \<resource-group-name\> -TemplateFile <https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/201-servicebus-create-queue/azuredeploy.json>
-```
-
-## <a name="azure-cli"></a>Interfejs wiersza polecenia platformy Azure
-
-```azurecli
-azure config mode arm
-
-azure group deployment create \<my-resource-group\> \<my-deployment-name\> --template-uri <https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/201-servicebus-create-queue/azuredeploy.json>
-```
-
 ## <a name="next-steps"></a>Następne kroki
-Zapoznaj się z poniższym tematem, który pokazuje, jak utworzyć regułę autoryzacji dla przestrzeni nazw/kolejki: [Tworzenie reguły autoryzacji Service Bus dla przestrzeni nazw i kolejki przy użyciu szablonu Azure Resource Manager](service-bus-resource-manager-namespace-auth-rule.md)
 
-Dowiedz się, jak zarządzać tymi zasobami, wyświetlając następujące artykuły:
+Zobacz następujący temat, który pokazuje, jak utworzyć regułę autoryzacji dla obszaru nazw/kolejki:
 
-* [Zarządzanie usługą Service Bus za pomocą programu PowerShell](service-bus-manage-with-ps.md)
-* [Zarządzanie zasobami Service Bus za pomocą Eksploratora Service Bus](https://github.com/paolosalvatori/ServiceBusExplorer/releases)
+[Tworzenie reguły autoryzacji usługi Service Bus dla obszaru nazw i kolejki przy użyciu szablonu usługi Azure Resource Manager](service-bus-resource-manager-namespace-auth-rule.md)
+
+Dowiedz się, jak zarządzać tymi zasobami, przeglądając następujące artykuły:
+
+* [Zarządzanie magistralą usług za pomocą programu PowerShell](service-bus-manage-with-ps.md)
+* [Zarządzanie zasobami usługi Service Bus za pomocą Eksploratora magistrali usług](https://github.com/paolosalvatori/ServiceBusExplorer/releases)
 
 [Authoring Azure Resource Manager templates]: ../azure-resource-manager/templates/template-syntax.md
 [Service Bus namespace and queue template]: https://github.com/Azure/azure-quickstart-templates/blob/master/201-servicebus-create-queue/
