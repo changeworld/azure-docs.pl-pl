@@ -1,6 +1,6 @@
 ---
-title: Opis identyfikatorów wystąpień maszyn wirtualnych zestawu skalowania maszyn wirtualnych platformy Azure
-description: Informacje o identyfikatorach wystąpień dla maszyn wirtualnych usługi Azure VM Scale Sets i różne sposoby ich powierzchni.
+title: Opis identyfikatorów wystąpień dla maszyn wirtualnych z zestawem skalowania maszyn wirtualnych platformy Azure
+description: Zrozumienie identyfikatorów wystąpień dla skali maszyny wirtualnej platformy Azure ustawia maszyny wirtualne i różne sposoby, które są one powierzchni.
 author: mayanknayar
 tags: azure-resource-manager
 ms.assetid: e229664e-ee4e-4f12-9d2e-a4f456989e5d
@@ -8,40 +8,43 @@ ms.service: virtual-machine-scale-sets
 ms.topic: conceptual
 ms.date: 02/22/2018
 ms.author: manayar
-ms.openlocfilehash: aa2b0013818f897f01945d394266a57016ecb0bb
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 99ad4249a4134bcc1b1cf5aba92b8a95a034db33
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79250766"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79534426"
 ---
-# <a name="understand-instance-ids-for-azure-vm-scale-set-vms"></a>Opis identyfikatorów wystąpień maszyn wirtualnych zestawu skalowania maszyn wirtualnych platformy Azure
+# <a name="understand-instance-ids-for-azure-vm-scale-set-vms"></a>Opis identyfikatorów wystąpień dla maszyn wirtualnych z zestawem skalowania maszyn wirtualnych platformy Azure
 W tym artykule opisano identyfikatory wystąpień dla zestawów skalowania i różne sposoby ich powierzchni.
 
 ## <a name="scale-set-instance-ids"></a>Identyfikatory wystąpień zestawu skalowania
 
-Każda maszyna wirtualna w zestawie skalowania Pobiera identyfikator wystąpienia, który jednoznacznie identyfikuje go. Ten identyfikator wystąpienia jest używany w interfejsach API zestawu skalowania do wykonywania operacji na określonej maszynie wirtualnej w zestawie skalowania. Na przykład można określić identyfikator określonego wystąpienia do odobrazowania podczas korzystania z interfejsu API odobrazu:
+Każda maszyna wirtualna w zestawie skalowania otrzymuje identyfikator wystąpienia, który jednoznacznie ją identyfikuje. Ten identyfikator wystąpienia jest używany w interfejsach API zestawu skalowania do wykonywania operacji na określonej maszynie Wirtualnej w zestawie skalowania. Na przykład można określić identyfikator określonego wystąpienia, aby ponownie zamówić podczas korzystania z interfejsu API reimage:
 
-Interfejs API REST: `POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/reimage?api-version={apiVersion}` (Aby uzyskać więcej informacji, zobacz [dokumentację interfejsu API REST](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesets/reimage)).
+INTERFEJS API `POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/reimage?api-version={apiVersion}` REST: (aby uzyskać więcej informacji, zobacz [dokumentację interfejsu API REST)](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesets/reimage)
 
-PowerShell: `Set-AzVmssVM -ResourceGroupName {resourceGroupName} -VMScaleSetName {vmScaleSetName} -InstanceId {instanceId} -Reimage` (Aby uzyskać więcej informacji, zobacz [dokumentację programu PowerShell](https://docs.microsoft.com/powershell/module/az.compute/set-azvmssvm)).
+Powershell: `Set-AzVmssVM -ResourceGroupName {resourceGroupName} -VMScaleSetName {vmScaleSetName} -InstanceId {instanceId} -Reimage` (aby uzyskać więcej informacji, zobacz [dokumentację programu Powershell)](https://docs.microsoft.com/powershell/module/az.compute/set-azvmssvm)
 
-Interfejs wiersza polecenia: `az vmss reimage -g {resourceGroupName} -n {vmScaleSetName} --instance-id {instanceId}` (Aby uzyskać więcej informacji, zobacz [dokumentację interfejsu wiersza polecenia](https://docs.microsoft.com/cli/azure/vmss?view=azure-cli-latest)).
+CLI: `az vmss reimage -g {resourceGroupName} -n {vmScaleSetName} --instance-id {instanceId}` (aby uzyskać więcej informacji, zobacz [dokumentację interfejsu wiersza polecenia).](https://docs.microsoft.com/cli/azure/vmss?view=azure-cli-latest)
 
-Listę identyfikatorów wystąpień można pobrać, wyświetlając listę wszystkich wystąpień w zestawie skalowania:
+Listę identyfikatorów wystąpień można uzyskać, wymieniając wszystkie wystąpienia w zestawie skalowania:
 
-Interfejs API REST: `GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines?api-version={apiVersion}` (Aby uzyskać więcej informacji, zobacz [dokumentację interfejsu API REST](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesetvms/list)).
+INTERFEJS API `GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines?api-version={apiVersion}` REST: (aby uzyskać więcej informacji, zobacz [dokumentację interfejsu API REST)](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesetvms/list)
 
-PowerShell: `Get-AzVmssVM -ResourceGroupName {resourceGroupName} -VMScaleSetName {vmScaleSetName}` (Aby uzyskać więcej informacji, zobacz [dokumentację programu PowerShell](https://docs.microsoft.com/powershell/module/az.compute/get-azvmssvm)).
+Powershell: `Get-AzVmssVM -ResourceGroupName {resourceGroupName} -VMScaleSetName {vmScaleSetName}` (aby uzyskać więcej informacji, zobacz [dokumentację programu Powershell)](https://docs.microsoft.com/powershell/module/az.compute/get-azvmssvm)
 
-Interfejs wiersza polecenia: `az vmss list-instances -g {resourceGroupName} -n {vmScaleSetName}` (Aby uzyskać więcej informacji, zobacz [dokumentację interfejsu wiersza polecenia](https://docs.microsoft.com/cli/azure/vmss?view=azure-cli-latest)).
+CLI: `az vmss list-instances -g {resourceGroupName} -n {vmScaleSetName}` (aby uzyskać więcej informacji, zobacz [dokumentację interfejsu wiersza polecenia).](https://docs.microsoft.com/cli/azure/vmss?view=azure-cli-latest)
 
-Możesz również użyć [resources.Azure.com](https://resources.azure.com) lub [zestawów Azure SDK](https://azure.microsoft.com/downloads/) , aby wyświetlić listę maszyn wirtualnych w zestawie skalowania.
+Można również użyć [resources.azure.com](https://resources.azure.com) lub [zestawów SDK platformy Azure](https://azure.microsoft.com/downloads/) do listy maszyn wirtualnych w zestawie skalowania.
 
-Dokładna prezentacja danych wyjściowych zależy od opcji podanych w poleceniu, ale Oto kilka przykładowych danych wyjściowych z interfejsu wiersza polecenia:
+Dokładna prezentacja danych wyjściowych zależy od opcji, które podasz do polecenia, ale oto kilka przykładowych danych wyjściowych z interfejsu wiersza polecenia:
 
+```azurecli
+az vmss show -g {resourceGroupName} -n {vmScaleSetName}
 ```
-$ az vmss show -g {resourceGroupName} -n {vmScaleSetName}
+
+```output
 [
   {
     "instanceId": "85",
@@ -53,24 +56,24 @@ $ az vmss show -g {resourceGroupName} -n {vmScaleSetName}
     .
 ```
 
-Jak widać, właściwość "instanceId" ma tylko liczbę dziesiętną. Identyfikatory wystąpień mogą być ponownie używane dla nowych wystąpień po usunięciu starych wystąpień.
+Jak widać, właściwość "instanceId" jest tylko liczbą dziesiętną. Identyfikatory wystąpień mogą być ponownie używane dla nowych wystąpień po usunięciu starych wystąpień.
 
 >[!NOTE]
-> Nie ma **żadnej gwarancji** dotyczącej sposobu, w jaki identyfikatory wystąpień są przypisane do maszyn wirtualnych w zestawie skalowania. Mogą wydawać się sekwencyjnie zwiększać, ale nie zawsze jest to przypadek. Nie należy podejmować zależności od konkretnego sposobu, w jaki identyfikatory wystąpień są przypisane do maszyn wirtualnych.
+> Nie **ma żadnej gwarancji,** że identyfikatory wystąpienia sposobu są przypisywane do maszyn wirtualnych w zestawie skalowania. Czasami mogą wydawać się one coraz bardziej niż się zdarzały, ale nie zawsze tak jest. Nie należy przyjmować zależności od określonego sposobu, w którym identyfikatory wystąpień są przypisywane do maszyn wirtualnych.
 
 ## <a name="scale-set-vm-names"></a>Nazwy maszyn wirtualnych zestawu skalowania
 
-W przykładowych danych wyjściowych powyżej istnieje również "nazwa" dla maszyny wirtualnej. Ta nazwa przyjmuje postać "{Scale-Set-Name} _ {instance-ID}". Ta nazwa jest wyświetlana w Azure Portal podczas wyświetlania listy wystąpień w zestawie skalowania:
+W danych wyjściowych próbki powyżej istnieje również "nazwa" dla maszyny Wirtualnej. Ta nazwa ma postać "{scale-set-name}_{instance-id}". Ta nazwa jest tym, który jest widoczny w witrynie Azure portal, gdy lista wystąpień w zestawie skalowania:
 
 ![](./media/virtual-machine-scale-sets-instance-ids/vmssInstances.png)
 
-Część nazwy {instance-ID} jest tą samą liczbą dziesiętną, która została omówiona wcześniej przez właściwość "instanceId".
+Część nazwy {instance-id} jest tą samą liczbą dziesiętną, co wcześniej omówiona właściwość "instanceId".
 
-## <a name="instance-metadata-vm-name"></a>Nazwa maszyny wirtualnej metadanych wystąpienia
+## <a name="instance-metadata-vm-name"></a>Nazwa maszyny Wirtualnej metadanych wystąpienia
 
-W przypadku wykonywania zapytań dotyczących [metadanych wystąpienia](../virtual-machines/windows/instance-metadata-service.md) z poziomu maszyny wirtualnej zestawu skalowania zobaczysz w danych wyjściowych ciąg "name":
+Jeśli kwerendy [metadane wystąpienia](../virtual-machines/windows/instance-metadata-service.md) z poziomu zestawu skalowania maszyny Wirtualnej, pojawi się "nazwa" w danych wyjściowych:
 
-```
+```output
 {
   "compute": {
     "location": "westus",
@@ -82,11 +85,11 @@ W przypadku wykonywania zapytań dotyczących [metadanych wystąpienia](../virtu
 
 Ta nazwa jest taka sama jak nazwa omówiona wcześniej.
 
-## <a name="scale-set-vm-computer-name"></a>Nazwa komputera maszyny wirtualnej zestawu skalowania
+## <a name="scale-set-vm-computer-name"></a>Nazwa komputera zestawu skalowania maszyny Wirtualnej
 
-Każda maszyna wirtualna w zestawie skalowania również pobiera przypisaną do niej nazwę komputera. Ta nazwa komputera jest nazwą hosta maszyny wirtualnej w [ramach rozpoznawania nazw DNS udostępnianej przez platformę Azure w sieci wirtualnej](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md). Ta nazwa komputera ma postać "{Computer-name-prefix} {Base-36-instance-ID}".
+Każda maszyna wirtualna w zestawie skalowania pobiera również przypisaną do niej nazwę komputera. Ta nazwa komputera jest nazwą hosta maszyny Wirtualnej w [rozpoznawaniu nazw DNS dostarczonych przez platformę Azure w sieci wirtualnej](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md). Ta nazwa komputera ma formę "{computer-name-prefix}{base-36-instance-id}".
 
-{Base-36-instance-ID} ma wartość [base 36](https://en.wikipedia.org/wiki/Base36) i ma zawsze sześć cyfr. Jeśli reprezentacja podstawowa 36 liczby ma mniej niż sześć cyfr, wartość {Base-36-instance-ID} jest uzupełniona zerami, aby zapewnić jej sześć cyfr. Na przykład wystąpienie z {Computer-name-prefix} "nsgvmss" i IDENTYFIKATORem wystąpienia 85 będzie mieć nazwę komputera "nsgvmss00002D".
+{base-36-instance-id} znajduje się w [bazie 36](https://en.wikipedia.org/wiki/Base36) i ma zawsze sześć cyfr długości. Jeśli podstawowa reprezentacja 36 liczby przyjmuje mniej niż sześć cyfr, {base-36-instance-id} jest wyściełana zerami, aby mieć sześć cyfr długości. Na przykład wystąpienie z {computer-name-prefix} "nsgvmss" i identyfikatorem wystąpienia 85 będzie miało nazwę komputera "nsgvmsss00002D".
 
 >[!NOTE]
-> Prefiks nazwy komputera jest właściwością modelu zestawu skalowania, który można ustawić, aby można go było różnić od samej nazwy zestawu skalowania.
+> Prefiks nazwy komputera jest właściwością modelu zestawu skalowania, który można ustawić, dzięki czemu może się różnić od samej nazwy zestawu skalowania.

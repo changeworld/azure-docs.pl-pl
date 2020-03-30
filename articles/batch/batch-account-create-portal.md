@@ -15,15 +15,15 @@ ms.date: 02/26/2019
 ms.author: labrenne
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 3723631609a04f6d12abcaac1f9d7733bf3caa01
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79247646"
 ---
 # <a name="create-a-batch-account-with-the-azure-portal"></a>Tworzenie konta usługi Batch w witrynie Azure Portal
 
-Dowiedz się, jak utworzyć konto Azure Batch w [Azure Portal][azure_portal]i wybrać właściwości konta pasujące do scenariusza obliczeniowego. Dowiedz się, gdzie znaleźć ważne właściwości konta, takie jak klucze dostępu i adresy URL konta.
+Dowiedz się, jak utworzyć konto usługi Azure Batch w witrynie [Azure Portal][azure_portal] i wybrać właściwości konta pasujące do scenariusza obliczeniowego. Dowiedz się, gdzie znaleźć ważne właściwości konta, takie jak klucze dostępu i adresy URL konta.
 
 Ogólne informacje o kontach usługi Batch i scenariuszach można znaleźć w [omówieniu funkcji](batch-api-basics.md).
 
@@ -31,9 +31,9 @@ Ogólne informacje o kontach usługi Batch i scenariuszach można znaleźć w [o
 
 [!INCLUDE [batch-account-mode-include](../../includes/batch-account-mode-include.md)]
 
-1. Zaloguj się do [Azure portal][azure_portal].
+1. Zaloguj się do [Portalu Azure][azure_portal].
 
-1. Wybierz pozycję **Utwórz zasób** > **Compute** > **Usługa Batch**.
+1. Wybierz pozycję Utwórz**usługę wsadową****obliczeniową** >  **zasobu** > .
 
     ![Usługa Batch w witrynie Marketplace][marketplace_portal]
 
@@ -45,15 +45,15 @@ Ogólne informacje o kontach usługi Batch i scenariuszach można znaleźć w [o
 
     b. **Grupa zasobów**: wybierz istniejącą grupę zasobów dla nowego konta usługi Batch. Opcjonalnie można utworzyć nową grupę zasobów.
 
-    c. **Nazwa konta**: wybrana nazwa musi być unikatowa w obrębie regionu świadczenia usługi Azure, w którym konto zostanie utworzone (zobacz **Lokalizacja** poniżej). Nazwa konta może zawierać tylko małe litery lub cyfry i musi mieć od 3 do 24 znaków.
+    d. **Nazwa konta**: wybrana nazwa musi być unikatowa w obrębie regionu świadczenia usługi Azure, w którym konto zostanie utworzone (zobacz **Lokalizacja** poniżej). Nazwa konta może zawierać tylko małe litery lub cyfry i musi mieć od 3 do 24 znaków.
 
     d. **Lokalizacja**: region świadczenia usługi Azure, w którym ma zostać utworzone konto usługi Batch. Tylko regiony obsługiwane przez subskrypcję i grupę zasobów są wyświetlane jako opcje.
 
-    e. **Konto magazynu**: opcjonalne konto magazynu platformy Azure skojarzone z kontem usługi Batch. Aby uzyskać najlepszą wydajność, zaleca się użycie konta magazynu ogólnego przeznaczenia w wersji 2. Opis wszystkich opcji konta magazynu w usłudze Batch można znaleźć w temacie [Omówienie funkcji usługi Batch](batch-api-basics.md#azure-storage-account). W portalu wybierz istniejące konto magazynu lub utwórz nowe.
+    e. **Konto magazynu:** opcjonalne konto usługi Azure Storage skojarzone z kontem usługi Batch. Aby uzyskać najlepszą wydajność, zaleca się użycie konta magazynu ogólnego przeznaczenia w wersji 2. Opis wszystkich opcji konta magazynu w usłudze Batch można znaleźć w temacie [Omówienie funkcji usługi Batch](batch-api-basics.md#azure-storage-account). W portalu wybierz istniejące konto magazynu lub utwórz nowe.
 
       ![Tworzenie konta magazynu][storage_account]
 
-    f. **Tryb alokacji puli**: na karcie Ustawienia **Zaawansowane** można określić tryb alokacji puli jako **usługę Batch** lub **subskrypcję użytkownika**. w przypadku większości scenariuszy zaakceptuj wartość domyślną **Usługa Batch**.
+    f. **Tryb alokacji puli:** Na karcie Ustawienia **zaawansowane** można określić tryb alokacji puli jako **usługę wsadową** lub **subskrypcję użytkownika**. w przypadku większości scenariuszy zaakceptuj wartość domyślną **Usługa Batch**.
 
       ![Tryb alokacji puli usługi Batch][pool_allocation]
 
@@ -83,15 +83,15 @@ Jeśli wybrano tworzenie konta usługi Batch w trybie subskrypcji użytkownika, 
 
 Podczas tworzenia pierwszego konta usługi Batch w trybie subskrypcji użytkownika należy zarejestrować subskrypcję w usłudze Batch. (Jeśli wcześniej zostało to już zrobione, przejdź do następnej sekcji).
 
-1. Zaloguj się do [Azure portal][azure_portal].
+1. Zaloguj się do [Portalu Azure][azure_portal].
 
-1. Wybierz pozycję **Wszystkie usługi** > **Subskrypcje**, a następnie wybierz subskrypcję, której chcesz użyć dla konta usługi Batch.
+1. Wybierz **pozycję Wszystkie usługi** > **Subskrypcje**i wybierz subskrypcję, której chcesz użyć dla konta usługi Batch.
 
 1. Na stronie **Subskrypcja** wybierz pozycję **Dostawcy zasobów** i wyszukaj dostawcę **Microsoft.Batch**. Sprawdź, czy dostawca zasobów **Microsoft.Batch** został zarejestrowany w subskrypcji. Jeśli nie, wybierz link **Zarejestruj**.
 
     ![Rejestrowanie dostawcy Microsoft.Batch][register_provider]
 
-1. Na stronie **Subskrypcja** wybierz pozycję **Kontrola dostępu (IAM)**  > **Przypisania ról** > **Dodaj przypisanie roli**.
+1. Na stronie **Subskrypcja** wybierz pozycję **Kontrola dostępu (IAM)** > **Przypisania ról** > **Dodaj przypisanie roli**.
 
     ![Kontrola dostępu do subskrypcji][subscription_access]
 
@@ -108,21 +108,21 @@ Podczas tworzenia pierwszego konta usługi Batch w trybie subskrypcji użytkowni
 
 W trybie subskrypcji użytkownika wymagana jest usługa Azure Key Vault należąca do tej samej grupy zasobów, co konto usługi Batch, które ma zostać utworzone. Upewnij się, że grupa zasobów znajduje się w regionie, gdzie usługa Batch jest [dostępna](https://azure.microsoft.com/regions/services/) i który obsługuje Twoja subskrypcja.
 
-1. W [Azure Portal][azure_portal]wybierz pozycję **nowy** > **zabezpieczenia** > **Key Vault**.
+1. W witrynie [Azure Portal][azure_portal] wybierz pozycję **Nowy** > **Bezpieczeństwo** > **Key Vault**.
 
 1. Na stronie **Tworzenie magazynu Key Vault** wprowadź nazwę magazynu Key Vault i utwórz grupę zasobów w wymaganym regionie konta usługi Batch. Pozostaw wartości domyślne pozostałych ustawień, a następnie wybierz przycisk **Utwórz**.
 
-Podczas tworzenia konta usługi Batch w trybie subskrypcji użytkownika należy użyć grupy zasobów magazynu kluczy. Określ **subskrypcję użytkownika** jako tryb alokacji puli, wybierz magazyn kluczy i zaznacz pole wyboru w celu udzielenia Azure Batch dostępu do magazynu kluczy. 
+Podczas tworzenia konta usługi Batch w trybie subskrypcji użytkownika należy użyć grupy zasobów dla magazynu kluczy. Określ **subskrypcję użytkownika** jako tryb alokacji puli, wybierz magazyn kluczy i zaznacz pole wyboru, aby udzielić usługi Azure Batch dostępu do magazynu kluczy. 
 
-Jeśli wolisz udzielić dostępu do magazynu kluczy ręcznie, przejdź do sekcji **zasady dostępu** w magazynie kluczy i wybierz pozycję **Dodaj zasady dostępu** i Wyszukaj **Microsoft Azure Batch**. Po wybraniu tej opcji należy skonfigurować **uprawnienia klucza tajnego** za pomocą menu rozwijanego. Azure Batch musi mieć co najmniej uprawnienia **Get**, **list**, **Set**i **delete** .
+Jeśli wolisz ręcznie udzielić dostępu do magazynu kluczy, przejdź do sekcji **Zasady dostępu** w magazynie kluczy i wybierz pozycję Dodaj **zasady dostępu** i wyszukaj usługę Microsoft **Azure Batch**. Po wybraniu, należy skonfigurować **tajne uprawnienia** za pomocą menu rozwijanego. Usługa Azure Batch musi mieć uprawnienia **Get**, **List**, **Set**i **Delete.**
 
-![Uprawnienia klucza tajnego dla Azure Batch](./media/batch-account-create-portal/secret-permissions.png)
+![Tajne uprawnienia dla usługi Azure Batch](./media/batch-account-create-portal/secret-permissions.png)
 
 
 > [!NOTE]
-> Upewnij się, że pola wyboru **Virtual Machines platformy Azure do wdrożenia** i **Azure Resource Manager dla wdrożenia szablonu** są zaznaczone w obszarze **zasady dostępu** dla połączonego zasobu **Key Vault** .
+> Upewnij się, że **maszyny wirtualne platformy Azure do wdrożenia** i usługi Azure Resource Manager dla wdrożenia **szablonu** są zaznaczone w obszarze **zasady programu Access** dla połączonego zasobu usługi Key **Vault.**
 > 
-> ![obowiązkowe zasady dostępu Key Vault](./media/batch-account-create-portal/key-vault-access-policy.png) nie jest to wymagane podczas tworzenia konta wsadowego w Azure Portal. Opcja jest domyślnie zaznaczona.
+> ![Obowiązkowe zasady](./media/batch-account-create-portal/key-vault-access-policy.png) dostępu do magazynu kluczy Nie jest to obowiązkowe podczas tworzenia konta usługi Batch w witrynie Azure portal. Opcja jest zaznaczona domyślnie.
 
 
 
@@ -130,7 +130,7 @@ Jeśli wolisz udzielić dostępu do magazynu kluczy ręcznie, przejdź do sekcji
 
 Limity przydziału rdzeni nie są ustawiane domyślnie na kontach usługi Batch subskrypcji użytkownika. Limity przydziału rdzeni trzeba ustawić ręcznie, ponieważ standardowe limity przydziału rdzeni usługi Batch nie dotyczą kont w trybie subskrypcji użytkownika.
 
-1. W [Azure Portal][azure_portal]wybierz konto usługi Batch w trybie subskrypcji użytkownika, aby wyświetlić jego ustawienia i właściwości.
+1. W [witrynie Azure Portal][azure_portal] wybierz konto usługi Batch trybu subskrypcji użytkownika, aby wyświetlić jego ustawienia i właściwości.
 
 1. Z menu po lewej stronie wybierz pozycję **Limity przydziału**, aby wyświetlić i skonfigurować limity przydziału rdzeni skojarzone z kontem usługi Batch.
 
@@ -140,7 +140,7 @@ Zapoznaj się z [limitami przydziału i limitami usługi Batch](batch-quota-limi
 
 Poza korzystaniem z witryny Azure Portal można tworzyć konta usługi Batch i zarządzać nimi za pomocą narzędzi, takich jak:
 
-* [Polecenia cmdlet programu PowerShell usługi Batch](batch-powershell-cmdlets-get-started.md)
+* [Polecenia cmdlet programu PowerShell wsadowe](batch-powershell-cmdlets-get-started.md)
 * [Interfejs wiersza polecenia platformy Azure](batch-cli-get-started.md)
 * [Batch Management .NET](batch-management-dotnet.md)
 

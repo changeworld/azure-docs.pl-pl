@@ -1,44 +1,43 @@
 ---
-title: Oferta publikowania obrazu kontenerów platformy Azure | Portal Azure Marketplace
+title: Publikowanie oferty obrazów kontenerów platformy Azure | Azure Marketplace
 description: Jak opublikować ofertę kontenera platformy Azure.
-services: Azure, Marketplace, Cloud Partner Portal,
-author: dan-wesley
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/01/2018
-ms.author: pabutler
-ms.openlocfilehash: cf422e3d77fa0722fe10a52073cf89ab2a76dcc0
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: c612d2234e6c3c4e93c3c984242bb283ed85c27f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73823172"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80279984"
 ---
 # <a name="publish-container-offer"></a>Publikowanie oferty kontenera
 
- Po utworzeniu nowej oferty przy użyciu nowej strony **oferty** można opublikować tę ofertę. Wybierz pozycję **Publikuj** , aby rozpocząć proces publikowania.
+ Po utworzeniu nowej oferty na stronie **Nowa oferta** można ją opublikować. Wybierz **pozycję Publikuj,** aby rozpocząć proces publikowania.
 
-Na poniższym diagramie przedstawiono główne kroki w procesie publikowania dla oferty "go Live".
+Na poniższym diagramie przedstawiono główne kroki w procesie publikowania dla oferty "go live".
 
-![Kroki publikowania dla oferty kontenera](./media/offer-publishing-steps.png)
+![Kroki publikowania dla oferty kontenerów](./media/offer-publishing-steps.png)
 
 ## <a name="detailed-description-of-publishing-steps"></a>Szczegółowy opis kroków publikowania
 
-W poniższej tabeli opisano każdy krok publikacji. Podano również szacowany czas na zakończenie każdego kroku.
+W poniższej tabeli opisano każdy krok publikowania. Podano również szacowany czas zakończenia każdego kroku.
 
 
-|  **Etap publikowania**           | **Pierwszym**    | **Opis**                                                            |
+|  **Krok publikowania**           | **Czas**    | **Opis**                                                            |
 |  -------------------           | --------    | ---------------                                                            |
-| Sprawdzanie wymagań wstępnych         | 15 minut   | Informacje o ofercie i ustawienia oferty są weryfikowane.                        |
-| Certyfikacja                  | 1 tydzień | Oferta jest analizowana przez zespół certyfikacji platformy Azure. Oferta jest skanowana w poszukiwaniu wirusów, złośliwego oprogramowania, zgodności z bezpieczeństwem i problemów z zabezpieczeniami. Oferta jest sprawdzana, aby sprawdzić, czy spełnia ona wszystkie kryteria kwalifikacyjne. Aby uzyskać więcej informacji, zobacz [wymagania wstępne](./cpp-prerequisites.md) i [Przygotowywanie zasobów technicznych](./cpp-create-technical-assets.md). Opinie podane w przypadku znalezienia problemu. |
-| Tworzenie pakietów | 1 godzina  | Zasoby techniczne oferty są pakowane do użytku przez klienta, a systemy liderów są skonfigurowane i konfigurowane. |
-|  Wylogowanie wydawcy             |  -        | Końcowe przeglądy i potwierdzenie wydawcy przed rozpoczęciem oferty. Ofertę można wdrożyć w wybranych subskrypcjach (w krokach dotyczących informacji o ofercie), aby sprawdzić, czy spełnia ona wszystkie wymagania.  Wybierz pozycję **Przejdź na żywo** , aby Twoja oferta mogła przejść do następnego kroku. |
-| Tworzenie pakietów                 | 1 godzina | Zakończona oferta jest replikowana w systemach i regionach produkcyjnych w portalu Marketplace. | 
-| Na żywo                           | 4 dni |Oferta jest wydana, replikowana do wymaganych regionów i udostępniona publicznie. |
+| Sprawdzanie poprawności wymagań wstępnych         | 15 min.   | Informacje o ofercie i ustawienia oferty są sprawdzane.                        |
+| Certyfikacja                  | 1 tydzień | Oferta jest analizowana przez zespół certyfikacji platformy Azure. Oferta jest skanowana pod kątem wirusów, złośliwego oprogramowania, zgodności z zasadami bezpieczeństwa i problemów z zabezpieczeniami. Oferta jest sprawdzana, czy spełnia wszystkie kryteria kwalifikacyjne. Aby uzyskać więcej informacji, zobacz [wymagania wstępne](./cpp-prerequisites.md) i przygotowanie [zasobów technicznych](./cpp-create-technical-assets.md). Informacje zwrotne są dostarczane w przypadku znalezienia problemu. |
+| Tworzenie pakietów | 1 godzina  | Zasoby techniczne oferty są pakowane do użytku klienta, a systemy ołowiane są konfigurowane i konfigurowane. |
+|  Rejestracja wydawcy             |  -        | Ostateczna recenzja wydawcy i potwierdzenie przed rozpoczęciem oferty. Możesz wdrożyć ofertę w wybranych subskrypcjach (w krokach informacji o ofercie), aby sprawdzić, czy spełnia ona wszystkie twoje wymagania.  Wybierz **opcję Przejdź na żywo,** aby Twoja oferta mogła przejść do następnego kroku. |
+| Tworzenie pakietów                 | 1 godzina | Gotowa oferta jest replikowana w systemach produkcyjnych i regionach marketplace. | 
+| Na żywo                           | 4 dni |Oferta jest zwalniana, replikowana do wymaganych regionów i udostępniana publicznie. |
 
-Zezwalaj na zakończenie procesu publikowania przez maksymalnie 10 dni roboczych i oferowana jest oferta. Po zakończeniu procesu publikowania w [Microsoft Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/internet-of-things?page=1&subcategories=iot-edge-modules)zostanie wyświetlona oferta kontenera.
+Poczekaj do 10 dni roboczych na zakończenie procesu publikowania i wydanie oferty. Po zakończeniu procesu publikowania oferta kontenera zostanie wyświetlona w portalu [Microsoft Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/internet-of-things?page=1&subcategories=iot-edge-modules).
 
 ## <a name="next-steps"></a>Następne kroki
 
-[Aktualizowanie istniejącej oferty kontenera w witrynie Azure Marketplace](./cpp-update-existing-offer.md)
+[Aktualizowanie istniejącej oferty kontenerów w portalu Azure Marketplace](./cpp-update-existing-offer.md)

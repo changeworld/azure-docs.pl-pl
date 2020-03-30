@@ -2,25 +2,25 @@
 title: Obsługa oceny VMware w usłudze Azure Migrate
 description: Dowiedz się więcej o obsłudze oceny maszyn wirtualnych VMware za pomocą oceny serwera migracji usługi Azure.
 ms.topic: conceptual
-ms.date: 03/23/2020
-ms.openlocfilehash: 03d07adb6f19346901286bdae148f95e68290e4e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 03/29/2020
+ms.openlocfilehash: e0172656d06075f89a7c3a06e8d4e9be94e6f5d0
+ms.sourcegitcommit: 0553a8b2f255184d544ab231b231f45caf7bbbb0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80336873"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80389311"
 ---
 # <a name="support-matrix-for-vmware-assessment"></a>Macierz wsparcia dla oceny VMware 
 
-W tym artykule podsumowano wymagania wstępne i wymagania dotyczące pomocy technicznej dotyczące oceny maszyn wirtualnych VMware w ramach przygotowań do migracji na platformę Azure. Jeśli chcesz przeprowadzić migrację maszyn wirtualnych VMware na platformę Azure, przejrzyj [macierz pomocy technicznej migracji](migrate-support-matrix-vmware-migration.md).
+W tym artykule podsumowano wymagania wstępne i wymagania dotyczące pomocy technicznej podczas oceny maszyn wirtualnych VMware do migracji na platformę Azure przy użyciu narzędzia Azure Migrate:Server Assessment](migrate-services-overview.md#azure-migrate-server-assessment-tool). Jeśli chcesz przeprowadzić migrację maszyn wirtualnych VMware na platformę Azure, przejrzyj [macierz pomocy technicznej migracji](migrate-support-matrix-vmware-migration.md).
 
-Oceny serwerów fizycznych za pomocą narzędzia [Azure Migrate:Server Assessment.](migrate-services-overview.md#azure-migrate-server-assessment-tool) Utwórz projekt migracji platformy Azure, a następnie dodaj narzędzie do projektu. Po dodaniu narzędzia można wdrożyć [urządzenie migracji platformy Azure](migrate-appliance.md). Urządzenie stale odnajduje maszyny lokalne i wysyła metadane maszyny i dane o wydajności na platformę Azure. Po odnajdowaniu maszyn można zebrać odnalezione maszyny do grup i uruchomić ocenę dla grupy.
+Aby ocenić maszyny wirtualne VMware, należy utworzyć projekt migracji platformy Azure, a następnie dodać narzędzie oceny serwera do projektu. Po dodaniu narzędzia można wdrożyć [urządzenie migracji platformy Azure](migrate-appliance.md). Urządzenie stale odnajduje maszyny lokalne i wysyła metadane maszyny i dane o wydajności na platformę Azure. Po zakończeniu odnajdywania można zebrać odnalezione maszyny do grup i uruchomić ocenę dla grupy.
 
 ## <a name="limitations"></a>Ograniczenia
 
 **Pomoc techniczna** | **Szczegóły**
 --- | ---
-**Limity projektów** | Można utworzyć wiele projektów w ramach subskrypcji platformy Azure.<br/><br/> W jednym [projekcie](migrate-support-matrix.md#azure-migrate-projects)można odkryć i ocenić do 35 000 maszyn wirtualnych VMware. Projekt może zawierać maszyny wirtualne VMware, serwery fizyczne i maszyny wirtualne funkcji Hyper-V, do limitów oceny dla każdego z nich.
+**Limity projektów** | Można utworzyć wiele projektów w ramach subskrypcji platformy Azure.<br/><br/> W jednym [projekcie](migrate-support-matrix.md#azure-migrate-projects)można odkryć i ocenić do 35 000 maszyn wirtualnych VMware. Projekt może również zawierać serwery fizyczne i maszyny wirtualne funkcji Hyper-V, do limitów oceny dla każdego z nich.
 **Odnajdywania** | Urządzenie migracji platformy Azure może odnajdować do 10 000 maszyn wirtualnych VMware na serwerze vCenter.
 **Ocena** | W jednej grupie można dodać do 35 000 maszyn.<br/><br/> W jednej ocenie można ocenić do 35 000 maszyn wirtualnych.
 
@@ -29,11 +29,11 @@ Oceny serwerów fizycznych za pomocą narzędzia [Azure Migrate:Server Assessmen
 
 ## <a name="application-discovery"></a>Odnajdywanie aplikacji
 
-Oprócz odnajdywania maszyn usługa Azure Migrate: Server Assessment umożliwia odnajdowanie aplikacji, ról i funkcji uruchomionych na komputerach. Odnajdowanie zasobów reklamowych aplikacji umożliwia identyfikowanie i planowanie ścieżki migracji dostosowanej do obciążeń lokalnych. 
+Oprócz odnajdowania maszyn, Ocena serwera może odnajdywać aplikacje, rolę i funkcje uruchomione na komputerach. Odnajdowanie zasobów reklamowych aplikacji umożliwia identyfikowanie i planowanie ścieżki migracji dostosowanej do obciążeń lokalnych. 
 
 **Pomoc techniczna** | **Szczegóły**
 --- | ---
-**Obsługiwane maszyny** | Odnajdowanie aplikacji jest obecnie obsługiwane tylko dla lokalnych maszyn wirtualnych VMware.
+**Obsługiwane maszyny** | Odnajdowanie aplikacji jest obecnie obsługiwane tylko dla maszyn wirtualnych VMware.
 **Odnajdywania** | Odnajdowanie aplikacji jest bez agenta. Używa poświadczeń gościa komputera i zdalnie uzyskuje dostęp do maszyn przy użyciu wywołań WMI i SSH.
 **Obsługa maszyn wirtualnych** | Odnajdowanie aplikacji jest obsługiwane dla wszystkich wersji systemu Windows i Linux.
 **Poświadczenia vCenter** | Odnajdowanie aplikacji wymaga konta serwera vCenter z dostępem tylko do odczytu i uprawnieniami włączonymi dla maszyn wirtualnych > operacji gościa.
@@ -58,7 +58,7 @@ Oprócz odnajdywania maszyn usługa Azure Migrate: Server Assessment umożliwia 
 
 ## <a name="azure-migrate-appliance-requirements"></a>Wymagania urządzenia usługi Azure Migrate
 
-Usługa Azure Migrate używa [urządzenia migracji platformy Azure](migrate-appliance.md) do odnajdowania i oceny. Urządzenie VMware jest wdrażane przy użyciu szablonu OVA, importowanego do serwera vCenter Server. 
+Usługa Azure Migrate używa [urządzenia migracji platformy Azure](migrate-appliance.md) do odnajdowania i oceny. Urządzenie można wdrożyć jako maszynę wirtualną VMWare przy użyciu szablonu OVA, zaimportowanego do serwera vCenter Server lub [skryptu programu PowerShell](deploy-appliance-script.md).
 
 - Dowiedz się więcej o [wymaganiach dotyczących urządzeń](migrate-appliance.md#appliance---vmware) dla VMware.
 - Dowiedz się więcej o [adresach URL,](migrate-appliance.md#url-access) do które urządzenie musi uzyskać dostęp.
@@ -77,7 +77,7 @@ Hosty ESXi (analiza zależności od odnajdywania aplikacji/bezgentowa) | Jeśli 
 
 **Wymaganie** | **Szczegóły**
 --- | --- 
-**Przed wdrożeniem** | Powinieneś mieć projekt migracji platformy Azure w miejscu, z narzędzia Azure Migrate: Server Assessment dodane do projektu.<br/><br/>  Wizualizacja zależności jest wdrażana po skonfigurowaniu urządzenia migracji platformy Azure w celu odnajdowania lokalnych komputerów VMWare.<br/><br/> [Dowiedz się, jak](create-manage-projects.md) utworzyć projekt po raz pierwszy.<br/> [Dowiedz się, jak](how-to-assess.md) dodać narzędzie do oceny do istniejącego projektu.<br/> [Dowiedz się, jak](how-to-set-up-appliance-vmware.md) skonfigurować urządzenie migracji platformy Azure do oceny maszyn wirtualnych VMware.
+**Przed wdrożeniem** | Powinieneś mieć projekt migracji platformy Azure w miejscu, z narzędzia oceny serwera dodane do projektu.<br/><br/>  Wizualizacja zależności jest wdrażana po skonfigurowaniu urządzenia migracji platformy Azure w celu odnajdowania lokalnych komputerów VMWare.<br/><br/> [Dowiedz się, jak](create-manage-projects.md) utworzyć projekt po raz pierwszy.<br/> [Dowiedz się, jak](how-to-assess.md) dodać narzędzie do oceny do istniejącego projektu.<br/> [Dowiedz się, jak](how-to-set-up-appliance-vmware.md) skonfigurować urządzenie migracji platformy Azure do oceny maszyn wirtualnych VMware.
 **Obsługa maszyn wirtualnych** | Obecnie obsługiwane tylko dla maszyn wirtualnych VMware.
 **Maszyny wirtualne z systemem Windows** | Windows Server 2016<br/> Windows Server 2012 R2<br/> Windows Server 2012<br/> Windows Server 2008 R2 (64-bitowy).
 **Konto systemu Windows** |  Do analizy zależności urządzenie migracji platformy Azure potrzebuje konta administratora lokalnego lub domeny, aby uzyskać dostęp do maszyn wirtualnych systemu Windows.

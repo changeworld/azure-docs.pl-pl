@@ -8,19 +8,18 @@ ms.topic: include
 ms.date: 04/08/2019
 ms.author: alkohli
 ms.custom: include file
-ms.openlocfilehash: 5972f5745a2a01cbb7f23cc0523b2aef75e08a61
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 7ecc36218df23d81c4646612b5474a1465f428eb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67673451"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80282481"
 ---
-FedEx, UPS lub przez firmę DHL może służyć do wysłania pakietu do centrum danych platformy Azure. Jeśli chcesz użyć operatora innego niż FedEx/DHL w sprawie, skontaktuj się z zespołem operacje pole danych platformy Azure w `adbops@microsoft.com`
+FedEx, UPS lub DHL może służyć do wysyłki pakietu do centrum danych platformy Azure. Jeśli chcesz użyć przewoźnika innego niż FedEx/DHL, skontaktuj się z działem obsługi danych platformy Azure`adbops@microsoft.com`
 
-- Podaj prawidłowy operatora FedEx, UPS lub przez firmę DHL numer, firma Microsoft użyje należy wysłać ponownie dyski konta. 
-    
-    - FedEx, UPS lub przez firmę DHL numer konta jest wymagany do wysłania dysków powrót po awarii z lokalizacji w Stanach Zjednoczonych i Europie. 
-    - Numer konta przez firmę DHL jest preferowane w przypadku wysyłania dysków powrót po awarii z lokalizacji Azja Wschodnia i Australia. 
-    - Jeśli nie masz numeru konta, Utwórz [FedEx](https://www.fedex.com/us/oadr/) lub [przez firmę DHL](http://www.dhl.com/) konto przewoźnika.
-- Podczas wysyłania pakietów, należy przestrzegać [usługi Microsoft Azure — warunki dotyczące](https://azure.microsoft.com/support/legal/services-terms/).
-- Poprawnie pakietu należy do Ciebie dysków w celu uniknięcia potencjalnego uszkodzenia i opóźnienia w przetwarzaniu.
+* Podaj prawidłowy numer konta fedex, ups lub dhl przewoźnika, który microsoft będzie używał do wysyłki dysków z powrotem.
+  * Numer konta FedEx, UPS lub DHL jest wymagany do wysyłki dysków z lokalizacji w USA i Europie.
+    * Numer konta DHL jest preferowany w przypadku dysków wysyłkowych z lokalizacji w Azji i Australii.
+    * Jeśli nie masz numeru konta, utwórz konto [fedex](https://www.fedex.com/us/oadr/) lub [dhl](http://www.dhl.com/) przewoźnika.
+* Podczas wysyłania paczek należy przestrzegać warunków korzystania z [usługi Platformy Microsoft Azure.](https://azure.microsoft.com/support/legal/services-terms/)
+* Prawidłowo zapakuj dyski, aby uniknąć potencjalnych uszkodzeń i opóźnień w przetwarzaniu.

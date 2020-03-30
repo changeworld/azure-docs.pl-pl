@@ -9,12 +9,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 03/12/2020
-ms.openlocfilehash: 8b471dd509dca02ab2a66d70dbc7fac9988f1afe
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 0488002352d222abb0166737f9a042060b1a1bb1
+ms.sourcegitcommit: 0553a8b2f255184d544ab231b231f45caf7bbbb0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79472241"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80389430"
 ---
 # <a name="tutorial-predict-automobile-price-with-the-designer-preview"></a>Samouczek: Przewiduj cenę samochodu z projektantem (wersja zapoznawcza)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -103,7 +103,7 @@ Możesz wizualizować dane, aby zrozumieć zestaw danych, którego będziesz uż
 
 1. Wybierz **moduł Dane o cenie samochodu (Raw).**
 
-1. W okienku szczegółów modułu po prawej stronie obszaru roboczego wybierz pozycję **Wyjścia**.
+1. W okienku szczegółów modułu po prawej stronie kanwy wybierz pozycję **Wyjścia + dziennik**.
 
 1. Wybierz ikonę wykresu, aby zwizualizować dane.
 
@@ -269,7 +269,7 @@ Użyj **oceń model** modułu, aby ocenić, jak dobrze model ocenił zestaw dany
 
 ## <a name="submit-the-pipeline"></a>Prześlij potok
 
-Teraz, gdy potok jest skonfigurowany, można przesłać przebieg potoku, aby nauczyć modelu uczenia maszynowego. Można przesłać przebieg potoku w dowolnym momencie podczas tworzenia potoków w projektancie. Można to zrobić, aby sprawdzić swoją pracę, jak przejść do sprawdzenia działania potoku zgodnie z oczekiwaniami.
+Teraz, gdy potok jest skonfigurowany, można przesłać przebieg potoku, aby nauczyć modelu uczenia maszynowego. Można przesłać prawidłowe uruchomienie potoku w dowolnym momencie, który może służyć do przeglądania zmian w potoku podczas tworzenia.
 
 1. U góry obszaru roboczego wybierz pozycję **Prześlij**.
 
@@ -283,6 +283,8 @@ Teraz, gdy potok jest skonfigurowany, można przesłać przebieg potoku, aby nau
     1. Wybierz pozycję **Prześlij**.
     
     Stan uruchomienia i szczegóły można wyświetlić w prawym górnym rogu kanwy.
+    
+    Jeśli jest to pierwsze uruchomienie, może upłynąć do 20 minut, aby zakończyć uruchamianie potoku. Domyślne ustawienia obliczeniowe mają minimalny rozmiar węzła 0, co oznacza, że projektant musi przydzielić zasoby po bezczynności. Powtarzające się przebiegi potoku zajmie mniej czasu, ponieważ zasoby obliczeniowe są już przydzielone. Ponadto projektant używa buforowanych wyników dla każdego modułu, aby jeszcze bardziej zwiększyć wydajność.
 
 ### <a name="view-scored-labels"></a>Wyświetlanie etykiet z ocenami
 
@@ -290,7 +292,7 @@ Po zakończeniu uruchamiania można wyświetlić wyniki uruchomienia potoku. Naj
 
 1. Wybierz moduł **Score Model,** aby wyświetlić jego dane wyjściowe.
 
-1. W okienku szczegółów modułu po prawej **Outputs** stronie obszaru roboczego wybierz ![pozycję Wyjścia](./media/tutorial-designer-automobile-price-train-score/visualize-icon.png) > ikona wykresu wizualizuj ikonę, aby wyświetlić wyniki.
+1. W okienku szczegółów modułu po prawej stronie obszaru roboczego wybierz pozycję ![Wyjścia +](./media/tutorial-designer-automobile-price-train-score/visualize-icon.png) **dzienniki** > ikona wykresu wizualizuj ikonę, aby wyświetlić wyniki.
 
     Tutaj możesz zobaczyć przewidywane ceny i rzeczywiste ceny z danych testowych.
 
@@ -302,7 +304,7 @@ Użyj **Oceń model,** aby zobaczyć, jak dobrze przeszkolony model wykonywane n
 
 1. Wybierz moduł **Oceń model,** aby wyświetlić jego dane wyjściowe.
 
-1. W okienku szczegółów modułu po prawej stronie kanwy wybierz **pozycję Wyjście** > ikona ![wykresu wizualizuj ikonę,](./media/tutorial-designer-automobile-price-train-score/visualize-icon.png) aby wyświetlić wyniki.
+1. W okienku szczegółów modułu po prawej stronie obszaru roboczego wybierz pozycję ![Wyjścia +](./media/tutorial-designer-automobile-price-train-score/visualize-icon.png) **dzienniki** > ikona wykresu wizualizuj ikonę, aby wyświetlić wyniki.
 
 Dla modelu wyświetlane są następujące statystyki:
 

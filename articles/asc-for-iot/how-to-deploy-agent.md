@@ -1,6 +1,6 @@
 ---
-title: Wybierz i Wdróż Azure Security Center dla agenta IoT | Microsoft Docs
-description: Dowiedz się, jak wybierać i wdrażać Azure Security Center dla agentów zabezpieczeń IoT na urządzeniach IoT.
+title: Wybierz i wdrażaj usługę Azure Security Center dla agenta IoT| Dokumenty firmy Microsoft
+description: Dowiedz się, jak wybierać i wdrażać usługi Azure Security Center dla agentów zabezpieczeń IoT na urządzeniach IoT.
 services: asc-for-iot
 ms.service: asc-for-iot
 documentationcenter: na
@@ -16,85 +16,85 @@ ms.workload: na
 ms.date: 07/23/2019
 ms.author: mlottner
 ms.openlocfilehash: d70f2f3ec87c8673013bcf7b6f70ebcbb8d06f08
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75770020"
 ---
 # <a name="select-and-deploy-a-security-agent-on-your-iot-device"></a>Wybieranie i wdrażanie agenta zabezpieczeń na urządzeniu IoT
 
-Azure Security Center dla usługi IoT zawiera architektury referencyjne dla agentów zabezpieczeń, które monitorują i zbierają dane z urządzeń IoT.
+Usługa Azure Security Center dla IoT udostępnia architektury referencyjne dla agentów zabezpieczeń, które monitorują i zbierają dane z urządzeń IoT.
 Aby dowiedzieć się więcej, zobacz [Architektura referencyjna agenta zabezpieczeń](security-agent-architecture.md).
 
-Agenci są opracowani jako projekty open source i są dostępne w dwóch wersjach: <br> [C](https://aka.ms/iot-security-github-c)i [C#](https://aka.ms/iot-security-github-cs).
+Agenci są opracowywane jako projekty open source i są dostępne w dwóch smakach: <br> [C](https://aka.ms/iot-security-github-c)i [C#](https://aka.ms/iot-security-github-cs).
 
 W tym artykule omówiono sposób wykonywania następujących zadań: 
 > [!div class="checklist"]
-> * Porównanie wersji agentów zabezpieczeń
+> * Porównaj smaki agentów zabezpieczeń
 > * Odkryj obsługiwane platformy agentów
-> * Wybieranie odpowiedniego elementu agenta dla rozwiązania
+> * Wybierz odpowiedni smak środka dla swojego rozwiązania
 
-## <a name="understand-security-agent-options"></a>Omówienie opcji agenta zabezpieczeń
+## <a name="understand-security-agent-options"></a>Opis opcji agenta zabezpieczeń
 
-Każda Azure Security Center dla usługi IoT Security Agent oferuje ten sam zestaw funkcji i obsługuje podobne opcje konfiguracji. 
+Każdy format agenta zabezpieczeń usługi Azure Security Center for IoT oferuje ten sam zestaw funkcji i obsługuje podobne opcje konfiguracji. 
 
-Agent zabezpieczeń oparty na języku C ma mniejszą ilość pamięci i jest idealnym wyborem dla urządzeń z mniejszą liczbą dostępnych zasobów. 
+Agent zabezpieczeń oparty na języku C ma mniejszą ilość pamięci i jest idealnym wyborem dla urządzeń z mniejszą ilością dostępnych zasobów. 
 
-|     | Agent zabezpieczeń oparty na języku C | C#Agent zabezpieczeń oparty na usłudze |
+|     | Agent zabezpieczeń oparty na języku C | Agent zabezpieczeń oparty na języku C# |
 | --- | ----------- | --------- |
-| Open Source | Dostępne w ramach [licencji MIT](https://en.wikipedia.org/wiki/MIT_License) w serwisie [GitHub](https://aka.ms/iot-security-github-cs) | Dostępne w ramach [licencji MIT](https://en.wikipedia.org/wiki/MIT_License) w serwisie [GitHub](https://aka.ms/iot-security-github-c) |
-| Język programowania    | C | C# |
+| Open source | Dostępne na [licencji MIT](https://en.wikipedia.org/wiki/MIT_License) w [GitHub](https://aka.ms/iot-security-github-cs) | Dostępne na [licencji MIT](https://en.wikipedia.org/wiki/MIT_License) w [GitHub](https://aka.ms/iot-security-github-c) |
+| Języka programowania    | C | C# |
 | Obsługiwane platformy Windows? | Nie | Tak |
 | Wymagania wstępne systemu Windows | --- | [WMI](https://docs.microsoft.com/windows/desktop/wmisdk/) |
 | Obsługiwane platformy Linux? | Tak, x64 i x86 | Tak, tylko x64 |
-| Wymagania wstępne systemu Linux | libunwind8, libcurl3, UUID-Runtime, auditd, audispd-plugins | libunwind8, libcurl3, UUID-Runtime, auditd, audispd-plugins, sudo, netstat, dołączenie iptables |
-| Miejsce na dysku | 10,5 MB | 90 MB |
-| Rozmiar pamięci (średnio) | 5,5 MB | 33 MB |
-| [Uwierzytelnianie](concept-security-agent-authentication-methods.md) do IoT Hub | Tak | Tak |
-| [Zbieranie](how-to-agent-configuration.md#supported-security-events) danych zabezpieczeń | Tak | Tak |
+| Wymagania wstępne systemu Linux | libunwind8, libcurl3, uuid-runtime, kontrolowane, audispd-pluginy | libunwind8, libcurl3, uuid-runtime, audytowane, audispd-pluginy, sudo, netstat, iptables |
+| Ślad dysku | 10,5 MB | 90 MB |
+| Ilość pamięci (średnio) | 5,5 MB | 33 MB |
+| [Uwierzytelnianie](concept-security-agent-authentication-methods.md) w Centrum IoT | Tak | Tak |
+| Gromadzenie danych [zabezpieczających](how-to-agent-configuration.md#supported-security-events) | Tak | Tak |
 | Agregacja zdarzeń | Tak | Tak |
-| Konfiguracja zdalna za poorednictwem [sznurka modułu zabezpieczeń](concept-security-module.md) | Tak | Tak |
+| Konfiguracja zdalna za pośrednictwem [bliźniaczej reprezentacji modułu zabezpieczeń](concept-security-module.md) | Tak | Tak |
 |
 
 ## <a name="security-agent-installation-guidelines"></a>Wskazówki dotyczące instalacji agenta zabezpieczeń
 
-Dla **systemu Windows**: skrypt install SecurityAgent. ps1 musi zostać wykonany z okna programu PowerShell administratora. 
+W **systemie Windows**: Skrypt Install SecurityAgent.ps1 musi być wykonywany z okna programu PowerShell administratora. 
 
-Dla systemu **Linux**: InstallSecurityAgent.sh musi być uruchomiona jako administratora. Zalecamy prefiks polecenia instalacji z "sudo".
+Dla **Linuksa:** InstallSecurityAgent.sh musi być uruchamiany jako superużyt. Zalecamy prefiksowanie polecenia instalacji za pomocą "sudo".
 
 
-## <a name="choose-an-agent-flavor"></a>Wybierz wersję agenta 
+## <a name="choose-an-agent-flavor"></a>Wybierz smak środka 
 
-Aby wybrać odpowiedniego agenta, Odpowiedz na następujące pytania dotyczące urządzeń IoT:
+Odpowiedz na następujące pytania dotyczące urządzeń IoT, aby wybrać odpowiedniego agenta:
 
-- Czy używasz _systemu Windows Server_ lub _Windows IoT Core_? 
+- Czy używasz _systemu Windows Server_ lub Windows _IoT Core?_ 
 
-    [Wdróż agenta zabezpieczeń opartego na systemie Windows. C#](how-to-deploy-windows-cs.md)
+    [Wdrażanie agenta zabezpieczeń opartego na języku C#dla systemu Windows](how-to-deploy-windows-cs.md).
 
-- Czy używasz dystrybucji systemu Linux z architekturą x86? 
+- Czy korzystasz z dystrybucji Linuksa z architekturą x86? 
 
-    [Wdróż agenta zabezpieczeń opartego na języku C dla systemu Linux](how-to-deploy-linux-c.md).
+    [Wdrażanie agenta zabezpieczeń opartego na języku C dla systemu Linux](how-to-deploy-linux-c.md).
 
-- Czy używasz dystrybucji systemu Linux z architekturą x64?
+- Czy korzystasz z dystrybucji Linuksa z architekturą x64?
 
-    Można używać obu rodzajów agentów. <br>
-    [Wdróż agenta zabezpieczeń opartego na języku C dla systemu Linux](how-to-deploy-linux-c.md) i/lub [Wdróż C#agenta zabezpieczeń opartego](how-to-deploy-linux-cs.md)na systemie Linux.
+    Można użyć obu aromatów agenta. <br>
+    [Wdrażanie agenta zabezpieczeń opartego na języku C dla systemu Linux](how-to-deploy-linux-c.md) i/lub [wdrażanie agenta zabezpieczeń opartego na języku C dla systemu Linux](how-to-deploy-linux-cs.md).
 
-Oba typy agentów oferują ten sam zestaw funkcji i obsługują podobne opcje konfiguracji.
-Zobacz [porównanie agentów zabezpieczeń](how-to-deploy-agent.md#understand-security-agent-options) , aby dowiedzieć się więcej.
+Oba smaki agenta oferują ten sam zestaw funkcji i obsługują podobne opcje konfiguracji.
+Zobacz [Porównanie agentów zabezpieczeń,](how-to-deploy-agent.md#understand-security-agent-options) aby dowiedzieć się więcej.
 
 ## <a name="supported-platforms"></a>Obsługiwane platformy
 
 Poniższa lista zawiera wszystkie aktualnie obsługiwane platformy.
 
-|Azure Security Center dla agenta IoT |System operacyjny |Architektura |
+|Usługa Azure Security Center dla agenta IoT |System operacyjny |Architektura |
 |--------------|------------|--------------|
 |C|Ubuntu 16.04 |   x64|
-|C|Ubuntu 18.04 |   x64, architektury ARMv7|
+|C|Ubuntu 18.04 |   x64, ARMv7|
 |C|Debian 9 |   x64, x86|
 |C#|Ubuntu 16.04    |x64|
-|C#|Ubuntu 18.04    |x64, architektury ARMv7|
+|C#|Ubuntu 18.04    |x64, ARMv7|
 |C#|Debian 9    |x64|
 |C#|Windows Server 2016|    X64|
 |C#|Windows 10 IoT Core, kompilacja 17763    |x64|
@@ -102,6 +102,6 @@ Poniższa lista zawiera wszystkie aktualnie obsługiwane platformy.
 
 ## <a name="next-steps"></a>Następne kroki
 
-Aby dowiedzieć się więcej o opcjach konfiguracji, przejdź do przewodnika krok po kroku dotyczący konfiguracji agenta. 
+Aby dowiedzieć się więcej o opcjach konfiguracji, przejdź do przewodnika infiguracyjnego dla konfiguracji agenta. 
 > [!div class="nextstepaction"]
-> [Konfiguracja agenta — Przewodnik](./how-to-agent-configuration.md)
+> [Konfiguracja agenta, jak prowadzić](./how-to-agent-configuration.md)

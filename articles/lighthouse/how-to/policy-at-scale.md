@@ -1,24 +1,24 @@
 ---
-title: Wdrażanie Azure Policy do delegowanych subskrypcji na dużą skalę
-description: Dowiedz się, jak zarządzanie zasobami delegowanymi przez platformę Azure umożliwia wdrożenie definicji zasad i przypisania zasad dla wielu dzierżawców.
+title: Wdrażanie zasad platformy Azure w przypadku delegowanych subskrypcji na dużą skalę
+description: Dowiedz się, jak zarządzanie zasobami delegowanymi platformy Azure umożliwia wdrażanie definicji zasad i przypisywania zasad w wielu dzierżawach.
 ms.date: 11/8/2019
 ms.topic: conceptual
 ms.openlocfilehash: 9e061995b728e2864d1bd33a32d530634ab794d8
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75456843"
 ---
-# <a name="deploy-azure-policy-to-delegated-subscriptions-at-scale"></a>Wdrażanie Azure Policy do delegowanych subskrypcji na dużą skalę
+# <a name="deploy-azure-policy-to-delegated-subscriptions-at-scale"></a>Wdrażanie zasad platformy Azure w przypadku delegowanych subskrypcji na dużą skalę
 
-Jako dostawca usług możesz dołączyć wielu dzierżawców klientów do zarządzania zasobami delegowanymi przez platformę Azure. Usługa [Azure Lighthouse](../overview.md) umożliwia dostawcom usług wykonywanie operacji na dużą skalę w wielu dzierżawcach, co sprawia, że zadania zarządzania są bardziej wydajne.
+Jako dostawca usług może mieć wbudowane wielu dzierżawców klientów do zarządzania zasobami delegowanymi platformy Azure. [Latarnia morska platformy Azure](../overview.md) umożliwia dostawcom usług wykonywanie operacji na dużą skalę w kilku dzierżawach jednocześnie, dzięki czemu zadania zarządzania są bardziej wydajne.
 
-W tym temacie przedstawiono sposób użycia [Azure Policy](../../governance/policy/index.yml) do wdrożenia definicji zasad i przypisania zasad dla wielu dzierżawców przy użyciu poleceń programu PowerShell. W tym przykładzie definicja zasad gwarantuje, że konta magazynu są zabezpieczone przez umożliwienie tylko ruchu HTTPS.
+W tym temacie pokazano, jak używać [zasad platformy Azure](../../governance/policy/index.yml) do wdrażania definicji zasad i przypisywania zasad w wielu dzierżawach przy użyciu poleceń programu PowerShell. W tym przykładzie definicja zasad zapewnia, że konta magazynu są zabezpieczone, zezwalając tylko na ruch HTTPS.
 
-## <a name="use-azure-resource-graph-to-query-across-customer-tenants"></a>Korzystanie z grafu zasobów platformy Azure do wykonywania zapytań w dzierżawach klientów
+## <a name="use-azure-resource-graph-to-query-across-customer-tenants"></a>Używanie programu Azure Resource Graph do wykonywania zapytań między dzierżawcami klientów
 
-Korzystając z [grafu zasobów platformy Azure](../../governance/resource-graph/index.yml) , można wykonywać zapytania dotyczące wszystkich subskrypcji w dzierżawach klientów, którymi zarządzasz. W tym przykładzie określimy wszystkie konta magazynu w tych subskrypcjach, które nie wymagają obecnie ruchu HTTPS.  
+Za pomocą [usługi Azure Resource Graph](../../governance/resource-graph/index.yml) można przeszukiwać wszystkie subskrypcje w dzierżawach klientów, którymi zarządzasz. W tym przykładzie zidentyfikujemy wszystkie konta magazynu w tych subskrypcjach, które obecnie nie wymagają ruchu HTTPS.  
 
 ```powershell
 $MspTenant = "insert your managing tenantId here"
@@ -30,9 +30,9 @@ $ManagedSubscriptions = Search-AzGraph -Query "ResourceContainers | where type =
 Search-AzGraph -Query "Resources | where type =~ 'Microsoft.Storage/storageAccounts' | project name, location, subscriptionId, tenantId, properties.supportsHttpsTrafficOnly" -subscription $ManagedSubscriptions.subscriptionId | convertto-json
 ```
 
-## <a name="deploy-a-policy-across-multiple-customer-tenants"></a>Wdrażanie zasad dla wielu dzierżawców klientów
+## <a name="deploy-a-policy-across-multiple-customer-tenants"></a>Wdrażanie zasad w wielu dzierżawach klientów
 
-W poniższym przykładzie pokazano, jak użyć [szablonu Azure Resource Manager](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/Azure-Delegated-Resource-Management/templates/policy-enforce-https-storage/enforceHttpsStorage.json) do wdrożenia definicji zasad i przypisania zasad w ramach delegowanych subskrypcji w wielu dzierżawach klientów. Ta definicja zasad wymaga, aby wszystkie konta magazynu używały ruchu HTTPS, uniemożliwiając tworzenie nowych kont magazynu, które nie spełniają wymagań i oznacza istniejące konta magazynu bez ustawienia jako niezgodne.
+W poniższym przykładzie pokazano, jak używać [szablonu usługi Azure Resource Manager](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/Azure-Delegated-Resource-Management/templates/policy-enforce-https-storage/enforceHttpsStorage.json) do wdrażania definicji zasad i przypisania zasad w delegowanych subskrypcjach w wielu dzierżawach klientów. Ta definicja zasad wymaga, aby wszystkie konta magazynu używały ruchu HTTPS, uniemożliwiając tworzenie nowych kont magazynu, które nie są zgodne, i oznaczanie istniejących kont magazynu bez ustawienia jako niezgodnego.
 
 ```powershell
 Write-Output "In total, there are $($ManagedSubscriptions.Count) delegated customer subscriptions to be managed"
@@ -48,9 +48,9 @@ foreach ($ManagedSub in $ManagedSubscriptions)
 }
 ```
 
-## <a name="validate-the-policy-deployment"></a>Weryfikowanie wdrożenia zasad
+## <a name="validate-the-policy-deployment"></a>Sprawdzanie poprawności wdrażania zasad
 
-Po wdrożeniu szablonu Azure Resource Manager można potwierdzić, że definicja zasad została pomyślnie zastosowana, próbując utworzyć konto magazynu z **EnableHttpsTrafficOnly** ustawionym na **wartość false** w jednej z delegowanych subskrypcji. W związku z przypisaniem zasad nie powinno być możliwe utworzenie tego konta magazynu.  
+Po wdrożeniu szablonu usługi Azure Resource Manager można potwierdzić, że definicja zasad została pomyślnie zastosowana, próbując utworzyć konto magazynu z **włączhttpsTrafficOnly ustawiona** na **false** w jednej z delegowanych subskrypcji. Ze względu na przypisanie zasad nie można utworzyć tego konta magazynu.  
 
 ```powershell
 New-AzStorageAccount -ResourceGroupName (New-AzResourceGroup -name policy-test -Location eastus -Force).ResourceGroupName `
@@ -90,5 +90,5 @@ foreach ($ManagedSub in $ManagedSubscriptions)
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Dowiedz się więcej na temat [Azure Policy](../../governance/policy/index.yml).
-- Dowiedz się więcej na temat [środowisk zarządzania między dzierżawcami](../concepts/cross-tenant-management-experience.md).
+- Dowiedz się więcej o [zasadach platformy Azure](../../governance/policy/index.yml).
+- Dowiedz się więcej o [środowiskach zarządzania między dzierżawcami](../concepts/cross-tenant-management-experience.md).

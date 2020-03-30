@@ -1,18 +1,18 @@
 ---
 title: Promuj swoją firmę za pomocą firmy Microsoft | Azure Marketplace
 description: Promuj swoją firmę za pomocą portalu Azure Marketplace i usługi AppSource dla wydawców aplikacji i usług
-author: jm-aditi-ms
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 06/04/2018
 ms.author: dsindona
-ms.openlocfilehash: 89309bc09559d205fd9b8826749def6d98dd43bd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 63708f426ced01fc7b837cc7c82ef178e4e78f95
+ms.sourcegitcommit: d0fd35f4f0f3ec71159e9fb43fcd8e89d653f3f2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80285031"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80387754"
 ---
 # <a name="promote-your-business-with-microsoft"></a>Promuj swoją firmę za pomocą firmy Microsoft 
 

@@ -1,38 +1,38 @@
 ---
-title: Dołączanie do portalu usługi Azure Certified for IoT | Microsoft Docs
-description: Dołączanie do portalu Azure Certified for IoT.
+title: Wbudowany portal z certyfikatem platformy Azure dla IoT | Dokumenty firmy Microsoft
+description: Dołączanie do portalu certyfikatu platformy Azure dla IoT.
 author: Philmea
 manager: philmea
 ms.service: iot-pnp
 services: iot-pnp
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/26/2019
 ms.author: philmea
-ms.openlocfilehash: c73848af299f87edf60ab36713d09ad4421b18fd
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 4969c4f10787fa9b2d601d5b12edf823d1987301
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75531234"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80159136"
 ---
 # <a name="onboard-to-the-azure-certified-for-iot-portal"></a>Dołączanie do portalu certyfikatów platformy Microsoft Azure dla IoT
 
-Możesz użyć [portalu Azure Certified for IoT](https://aka.ms/ACFI) , aby:
+Portal Certyfikat [platformy Azure dla IoT](https://aka.ms/ACFI) umożliwia:
 
-- Ukończ proces certyfikacji urządzenia IoT.
-- Znajdź modele możliwości urządzeń w wersji zapoznawczej IoT Plug and Play. Za pomocą tych modeli można szybko tworzyć urządzenia gotowe do użycia w usłudze IoT i integrować je z rozwiązaniami.
-- Opublikuj model możliwości urządzenia w repozytorium publicznym.
+- Zakończ proces certyfikacji urządzenia IoT.
+- Znajdź modele urządzeń IoT Plug and Play Preview. Za pomocą tych modeli można szybko tworzyć urządzenia gotowe do IoT i integrować je z rozwiązaniami.
+- Opublikuj model możliwości urządzenia w publicznym repozytorium.
 
-## <a name="sign-in"></a>Zaloguj
+## <a name="sign-in"></a>Logowanie
 
-Użyj swojego _konta służbowego_ firmy Microsoft, aby zalogować się do portalu [Azure Certified for IoT Portal](https://aka.ms/ACFI) . Portal sprawdzi członkostwo w centrum partnerskim firmy Microsoft po zalogowaniu:
+Zaloguj się do portalu Azure [Certified for IoT](https://aka.ms/ACFI) portal za pomocą _konta służbowego_ Microsoft. Portal sprawdza twoje członkostwo w Centrum partnerów firmy Microsoft po zalogowaniu się:
 
-- Jeśli Twoja organizacja jest już członkiem [Centrum partnerskiego firmy Microsoft](https://docs.microsoft.com/partner-center/), masz udzielony dostęp do wszystkich funkcji w portalu.
-- Jeśli Twoja organizacja nie jest członkiem [Centrum partnerskiego firmy Microsoft](https://docs.microsoft.com/partner-center/), możesz uruchomić testy certyfikacji i przeglądać repozytoria modelu możliwości urządzeń. Nie można opublikować urządzenia w wykazie certyfikowanych urządzeń IoT.
-- Jeśli zostanie wyświetlony komunikat z powiadomieniem o braku identyfikatora Microsoft Partner Network, należy [utworzyć konto Centrum partnerskiego](https://docs.microsoft.com/partner-center/mpn-create-a-partner-center-account). Po zatwierdzeniu konta możesz wrócić do portalu i opublikować swoje urządzenie. Aby uzyskać więcej informacji, zobacz [często zadawane pytania dotyczące usługi Partner Center](https://support.microsoft.com/help/4340639/partner-center-account-faqs).
+- Jeśli twoja organizacja jest już członkiem [Centrum partnerów firmy Microsoft,](https://docs.microsoft.com/partner-center/)masz dostęp do wszystkich funkcji w portalu.
+- Jeśli twoja organizacja nie jest członkiem [Centrum partnerów firmy Microsoft,](https://docs.microsoft.com/partner-center/)możesz przeprowadzić testy certyfikacji i przeglądać repozytoria modeli możliwości urządzenia. Nie można opublikować urządzenia w wykazie urządzeń certyfikowanych do ioT.
+- Jeśli zostanie wyświetlony komunikat z powiadomieniem o braku identyfikatora sieci partnerów firmy Microsoft, należy [utworzyć konto Centrum partnerów](https://docs.microsoft.com/partner-center/mpn-create-a-partner-center-account). Po zatwierdzeniu konta możesz wrócić do portalu i opublikować urządzenie. Aby uzyskać więcej informacji, zobacz Często zadawane [pytania dotyczące Centrum partnerów](https://support.microsoft.com/help/4340639/partner-center-account-faqs).
 
-Przed opublikowaniem urządzenia w wykazie certyfikowanych urządzeń IoT Przeczytaj i zaakceptuj umowę programu. Umowę można znaleźć na stronie Ustawienia w portalu Azure Certified for IoT.
+Przed opublikowaniem urządzenia w wykazie urządzeń certyfikowanych IoT należy przeczytać i zaakceptować umowę z programem. Umowę można znaleźć na stronie ustawień w portalu Certyfikat platformy Azure dla IoT.
 
 ## <a name="next-steps"></a>Następne kroki
 
-Sugerowany następny krok to Dowiedz się, jak [przesłać urządzenie usługi IoT Plug and Play do certyfikacji](tutorial-certification-test.md).
+Sugerowanym następnym krokiem jest nauczenie się [przesyłania urządzenia IoT Plug and Play do certyfikacji.](tutorial-certification-test.md)

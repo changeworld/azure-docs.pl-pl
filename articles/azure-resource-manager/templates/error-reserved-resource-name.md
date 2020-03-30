@@ -1,22 +1,22 @@
 ---
-title: Błędy nazw zarezerwowanych zasobów
-description: Opisuje sposób rozwiązywania błędów podczas podawania nazwy zasobu zawierającej słowo zastrzeżone.
+title: Błędy nazwy zasobu zarezerwowanego
+description: W tym artykule opisano sposób rozwiązywania błędów podczas podawania nazwy zasobu, która zawiera słowo zastrzeżone.
 ms.topic: troubleshooting
 ms.date: 11/08/2017
 ms.openlocfilehash: e76f4bf9bfee7de6e7523d69acf1388d2dd80e93
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75477631"
 ---
-# <a name="resolve-reserved-resource-name-errors"></a>Rozwiązywanie błędów zarezerwowanych nazw zasobów
+# <a name="resolve-reserved-resource-name-errors"></a>Rozwiązywanie problemów z nazwami zarezerwowanych zasobów
 
-W tym artykule opisano błąd występujący podczas wdrażania zasobu zawierającego słowo zastrzeżone w nazwie.
+W tym artykule opisano błąd napotkany podczas wdrażania zasobu, który zawiera słowo zastrzeżone w jego nazwie.
 
 ## <a name="symptom"></a>Objaw
 
-Podczas wdrażania zasobu, który jest dostępny za pomocą publicznego punktu końcowego, może zostać wyświetlony następujący błąd:
+Podczas wdrażania zasobu, który jest dostępny za pośrednictwem publicznego punktu końcowego, może pojawić się następujący błąd:
 
 ```
 Code=ReservedResourceName;
@@ -25,47 +25,47 @@ Message=The resource name <resource-name> or a part of the name is a trademarked
 
 ## <a name="cause"></a>Przyczyna
 
-Zasoby, które mają publiczny punkt końcowy nie mogą używać słów zarezerwowanych ani znaków towarowych w nazwie.
+Zasoby, które mają publiczny punkt końcowy, nie mogą używać słów zastrzeżonych ani znaków towarowych w nazwie.
 
 Następujące słowa są zastrzeżone:
 
 * DOSTĘP
-* AZURE
-* PRZEGLĄDARCE
-* BIZSPARK
-* DOKUMENT
-* CORTANA
-* DIRECTX
-* DOTNET
-* DYNAMICS
+* Azure
+* Bing
+* Bizspark
+* Biztalk
+* Cortana
+* Directx
+* Dotnet
+* Dynamics
 * EXCEL
-* ZAMIAN
-* FOREFRONT
-* GROOVE
-* HOLOLENS
-* HYPERV
-* URZĄDZENIA Kinect
-* LYNC
+* Exchange
+* Forefront
+* Groove
+* Hololens
+* Funkcja HYPERV
+* Sensora kinect
+* Lync
 * MSDN
 * O365
-* OFFICE
-* OFFICE365
-* USŁUDZE
-* #B0
-* PROGRAMIE
-* POWERPOINT
-* SHAREPOINT
-* ROZMOWY
-* ?
-* VISUALSTUDIO
+* Office
+* USŁUGA OFFICE365
+* Onedrive
+* Programu onenote
+* Programu outlook
+* Powerpoint
+* Programu sharepoint
+* Skype
+* Visio
+* Visualstudio
 
-Następujących słów nie można używać jako całego wyrazu lub podciągu w nazwie:
+Następujące słowa nie mogą być używane jako całe słowo lub podciąg w nazwie:
 
-* IDENTYFIKATORÓW
-* MICROSOFT
-* Systemy
-* XBOX
+* Logowania
+* Microsoft
+* Windows
+* Konsoli xbox
 
 ## <a name="solution"></a>Rozwiązanie
 
-Podaj nazwę, która nie używa jednego z wyrazów zastrzeżonych.
+Podaj nazwę, która nie używa jednego ze słów zastrzeżonych.

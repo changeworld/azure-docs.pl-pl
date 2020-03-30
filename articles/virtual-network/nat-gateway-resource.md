@@ -1,7 +1,7 @@
 ---
-title: Projektowanie sieci wirtualnych z użyciem zasobów bramy translatora adresów sieciowych
+title: Projektowanie sieci wirtualnych przy za pomocą zasobów bramy NAT
 titleSuffix: Azure Virtual Network NAT
-description: Dowiedz się, jak projektować sieci wirtualne przy użyciu zasobów bramy translatora adresów sieciowych.
+description: Dowiedz się, jak projektować sieci wirtualne za pomocą zasobów bramy NAT.
 services: virtual-network
 documentationcenter: na
 author: asudbring
@@ -12,355 +12,311 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/12/2020
+ms.date: 03/14/2020
 ms.author: allensu
-ms.openlocfilehash: 3cc459b7f4b81b14f57bbb702f0b0d988654189f
-ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
+ms.openlocfilehash: 48fd4b0e6f0351cd46fc4063785d961867637e0c
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79298658"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80060647"
 ---
-# <a name="designing-virtual-networks-with-nat-gateway-resources"></a>Projektowanie sieci wirtualnych z użyciem zasobów bramy translatora adresów sieciowych
+# <a name="designing-virtual-networks-with-nat-gateway-resources"></a>Projektowanie sieci wirtualnych z zasobami bramy NAT
 
-Zasoby bramy translatora adresów sieciowych są częścią [Virtual Network NAT](nat-overview.md) i zapewniają wychodzącą łączność z Internetem dla jednej lub kilku podsieci sieci wirtualnej. Podsieć stanów sieci wirtualnej, która będzie używana przez bramę translatora adresów sieciowych. Translator adresów sieciowych udostępnia translację adresów sieci (Resources) dla podsieci.  Zasoby bramy translatora adresów sieciowych określają, które statyczne adresy IP będą używane przez maszyny wirtualne podczas tworzenia przepływów wychodzących. Statyczne adresy IP pochodzą z zasobów publicznych adresów IP, zasobów prefiksu publicznego adresu IP lub obu. Zasób bramy NAT może korzystać z maksymalnie 16 statycznych adresów IP z obu.
+Zasoby bramy TRANSLATOR są częścią [translatora adresów sieci wirtualnych](nat-overview.md) i zapewniają wychodzącą łączność z Internetem dla co najmniej jednej podsieci sieci wirtualnej. Podsieć sieci wirtualnej określa, która brama NAT będzie używana. Translator adresów sieciowych zapewnia translację adresów sieci źródłowych (SNAT) dla podsieci.  Zasoby bramy TRANSLATORa określają, które statyczne adresy IP są używane przez maszyny wirtualne podczas tworzenia przepływów wychodzących. Statyczne adresy IP pochodzą z publicznych zasobów adresów IP, publicznych zasobów prefiksu IP lub obu tych podstawowych. Zasób bramy NAT może używać maksymalnie 16 statycznych adresów IP z obu.
 
 
 <p align="center">
-  <img src="media/nat-overview/flow-direction1.svg" width="256" title="Virtual Network translator adresów sieciowych dla ruchu wychodzącego do Internetu">
+  <img src="media/nat-overview/flow-direction1.svg" width="256" title="Virtual Network NAT dla wychodzących do Internetu">
 </p>
 
-*Rysunek: Virtual Network translator adresów sieciowych dla ruchu wychodzącego do Internetu*
+*Rysunek: Virtual Network NAT dla wychodzących do Internetu*
 
-## <a name="how-to-deploy-nat"></a>Jak wdrożyć translator adresów sieciowych
+## <a name="how-to-deploy-nat"></a>Jak wdrożyć translatora i odpowiedzi na temat
 
-Konfigurowanie i używanie bramy translatora adresów sieciowych jest celowo proste:  
+Konfigurowanie i używanie bramy NAT jest celowo proste:  
 
-Zasób bramy translatora adresów sieciowych:
-- Utwórz regionalną lub strefowo (izolowaną od strefy) zasób bramy translatora adresów sieciowych,
+Zasób bramy TRANSLATOR:
+- Tworzenie zasobów bramy NAT regionalnej lub strefowej (izolowanej strefą),
 - Przypisywanie adresów IP,
-- Modyfikuj limit czasu bezczynności (opcjonalnie).
+- Modyfikowanie limitu czasu bezczynnego TCP (opcjonalnie).
 
 Sieć wirtualna:
-- Skonfiguruj podsieć sieci wirtualnej tak, aby korzystała z bramy translatora adresów sieciowych.
+- Skonfiguruj podsieć sieci wirtualnej do używania bramy TRANSLATORA.
 
-Trasy zdefiniowane przez użytkownika nie są wymagane.
+Trasy zdefiniowane przez użytkownika nie są konieczne.
 
 ## <a name="resource"></a>Zasób
 
-Zasób został zaprojektowany tak, aby można było go zobaczyć w następującym Azure Resource Manager przykładzie w formacie przypominającym szablon.  Ten format podobny do szablonu jest przedstawiony tutaj, aby zilustrować koncepcje i strukturę.  Zmodyfikuj przykład swoich potrzeb.  Ten dokument nie jest przeznaczony dla samouczka.
+Zasób został zaprojektowany tak, aby był prosty, jak widać na poniższym przykładzie usługi Azure Resource Manager w formacie przypominającym szablon.  Ten format podobny do szablonu jest pokazany tutaj, aby zilustrować pojęcia i strukturę.  Zmodyfikuj przykład dla swoich potrzeb.  Ten dokument nie jest przeznaczony jako samouczek.
 
-Na poniższym diagramie przedstawiono zapisywalne odwołania między różnymi zasobami Azure Resource Manager.  Strzałka wskazuje kierunek odniesienia pochodzący z lokalizacji, w której jest zapisywalny. Recenzja 
+Na poniższym diagramie przedstawiono zapisywalne odwołania między różnymi zasobami usługi Azure Resource Manager.  Strzałka wskazuje kierunek odniesienia, pochodzący z miejsca, z którego można go zapisać. Przegląd 
 
 <p align="center">
-  <img src="media/nat-overview/flow-map.svg" width="256" title="Model obiektów Virtual Network NAT">
+  <img src="media/nat-overview/flow-map.svg" width="256" title="Model obiektu TRANSLATORA sieci wirtualnej">
 </p>
 
-*Rysunek: Virtual Network model obiektów NAT*
+*Rysunek: Model obiektu NAT sieci wirtualnej*
 
-Translacja adresów sieciowych jest zalecana w przypadku większości obciążeń, chyba że jest to zależne od [puli Load Balancer łączności wychodzącej](../load-balancer/load-balancer-outbound-connections.md).  
+Translator z translatora i odpowiedzi jest zalecany dla większości obciążeń, chyba że istnieje określona zależność od [łączności wychodzącej modułu równoważenia obciążenia opartego](../load-balancer/load-balancer-outbound-connections.md)na puli.  
 
-Można migrować ze standardowych scenariuszy równoważenia obciążenia, w tym [reguł wychodzących](../load-balancer/load-balancer-outbound-rules-overview.md), do bramy translatora adresów sieciowych. Aby przeprowadzić migrację, Przenieś publiczny adres IP i zasoby prefiksu publicznego adresu IP z frontonów modułu równoważenia obciążenia do bramy translatora adresów sieciowych. Nowe adresy IP dla bramy translatora adresów sieciowych nie są wymagane. Można ponownie użyć standardowego publicznego adresu IP i prefiksu, o ile łączna wartość nie przekracza 16 adresów IP. Zaplanuj migrację z przerwaniem działania usługi na uwadze podczas przejścia.  Możesz zminimalizować przerwy, automatyzując proces. Najpierw Przetestuj migrację w środowisku przejściowym.  W trakcie przejścia nie ma to wpływu na przepływy pochodzące przychodzące.
+Można migrować ze standardowych scenariuszy modułu równoważenia obciążenia, w tym [reguł ruchu wychodzącego,](../load-balancer/load-balancer-outbound-rules-overview.md)do bramy NAT. Aby przeprowadzić migrację, przenieś publiczne zasoby prefiksu ip i publicznego adresu IP z frontendów modułu równoważenia obciążenia do bramy NAT. Nowe adresy IP bramy NAT nie są wymagane. Standardowe publiczne adresy IP i prefiks mogą być ponownie użyte, o ile suma nie przekracza 16 adresów IP. Planowanie migracji z przerwą w świadczeniu usług na uwadze w okresie przejściowym.  Przerwę można zminimalizować, automatyzując proces. Najpierw przetestuj migrację w środowisku przejściowym.  Podczas przejścia nie ma to wpływu na przychodzące przepływy pochodzące.
 
-Poniższy przykład utworzy zasób bramy NAT o nazwie _myNATGateway_ jest tworzony w regionie _Wschodnie stany USA 2, AZ 1_ i _4-minutowe_ przekroczenie limitu czasu bezczynności. Podane adresy IP wychodzącego:
-- Zbiór zasobów publicznych adresów IP _myIP1_ i _myIP2_ oraz 
-- Zbiór publicznych adresów IP _myPrefix1_ i _myPrefix2_. 
+Poniższy przykład jest fragment z szablonu usługi Azure Resource Manager.  Ten szablon wdraża kilka zasobów, w tym bramę NAT.  Szablon ma następujące parametry w tym przykładzie:
 
-Łączna liczba adresów IP dostarczonych przez wszystkie cztery zasoby adresów IP nie może przekroczyć 16 adresów IP. Dozwolona jest dowolna liczba adresów IP z zakresu od 1 do 16.
+- **natgatewayname** - Nazwa bramy NAT.
+- **lokalizacja** — region platformy Azure, w którym znajduje się zasób.
+- **publicipname** — nazwa wychodzącego publicznego adresu IP skojarzonego z bramą NAT.
+- **publicipprefixname** — nazwa wychodzącego prefiksu publicznego adresu IP skojarzonego z bramą NAT.
+- **vnetname** - Nazwa sieci wirtualnej.
+- **podsieci** — nazwa podsieci skojarzonej z bramą NAT.
 
-```json
-{
-"name": "myNATGateway",
-   "type": "Microsoft.Network/natGateways",
-   "apiVersion": "2018-11-01",
-   "location": "East US 2",
-   "sku": { "name": "Standard" },
-   "zones": [ "1" ],
-   "properties": {
-      "idleTimeoutInMinutes": 4, 
-      "publicIPPrefixes": [
-         {
-            "id": "ref to myPrefix1"
-         },
-         {
-            "id": "ref to myPrefix2"
-         }
-      ],
-      "publicIPAddresses": [
-         {
-            "id": "ref to myIP1"
-         },
-         {
-            "id": "ref to myIP2"
-         }
-      ]
-   }
-}
-```
+Całkowita liczba adresów IP podanych przez wszystkie zasoby adresów IP i prefiksów nie może przekroczyć 16 adresów IP. Dozwolona jest dowolna liczba adresów IP z zakresu od 1 do 16.
 
-Po utworzeniu zasobu bramy NAT można go użyć w jednej lub kilku podsieciach sieci wirtualnej. Określ, które podsieci używają tego zasobu bramy NAT. Brama translatora adresów sieciowych nie może obejmować więcej niż jednej sieci wirtualnej. Nie jest wymagane przypisanie tej samej bramy NAT do wszystkich podsieci sieci wirtualnej. Poszczególne podsieci można skonfigurować przy użyciu różnych zasobów bramy translatora adresów sieciowych.
+:::code language="json" source="~/quickstart-templates/101-nat-gateway-1-vm/azuredeploy.json" range="256-281":::
 
-Scenariusze, które nie korzystają ze stref dostępności, będą regionalne (nie określono strefy). Jeśli używasz stref dostępności, możesz określić strefę, aby odizolować translator adresów sieciowych do określonej strefy. Nadmiarowość stref nie jest obsługiwana. Przejrzyj [strefy dostępności](#availability-zones)translatora adresów sieciowych.
+Po utworzeniu zasobu bramy NAT można go używać w jednej lub kilku podsieciach sieci wirtualnej. Określ, które podsieci używają tego zasobu bramy TRANSLATORA. Brama NAT nie może obejmować więcej niż jednej sieci wirtualnej. Nie jest wymagane przypisanie tej samej bramy NAT do wszystkich podsieci sieci wirtualnej. Poszczególne podsieci można skonfigurować z różnymi zasobami bramy NAT.
 
+Scenariusze, które nie używają stref dostępności będą regionalne (nie określono strefy). Jeśli używasz stref dostępności, możesz określić strefę, która ma być izolowana dla translatora z translatora i ciągłego ładowania do określonej strefy. Nadmiarowość stref nie jest obsługiwana. Przejrzyj [strefy dostępności](#availability-zones)NAT .
 
-```json
-{
-   "name": "myVNet",
-   "apiVersion": "2018-11-01",
-   "type": "Microsoft.Network/virtualNetworks",
-   "location": "myRegion", 
-   "properties": {
-      "addressSpace": {
-          "addressPrefixes": [
-           "192.168.0.0/16"
-          ]
-      },
-      "subnets": [
-         {
-            "name": "mySubnet1",
-            "properties": {
-               "addressPrefix": "192.168.0.0/24",
-               "natGateway": {
-                  "id": "ref to myNATGateway"
-               }
-            }
-         } 
-      ]
-   }
-}
-```
-Bramy translatora adresów sieciowych są definiowane za pomocą właściwości w podsieci w sieci wirtualnej. Przepływy utworzone przez maszyny wirtualne w podsieci _mySubnet1_ sieci wirtualnej _myVNet_ będą korzystać z bramy translatora adresów sieciowych. Wszystkie połączenia wychodzące będą używać adresów IP skojarzonych z _myNatGateway_ jako źródłowego adresu IP.
+:::code language="json" source="~/quickstart-templates/101-nat-gateway-1-vm/azuredeploy.json" range="225-255" highlight="239-251":::
 
+Bramy NAT są definiowane za pomocą właściwości w podsieci w sieci wirtualnej. Przepływy utworzone przez maszyny wirtualne **podsieci podsieci** nazwy **sieci wirtualnej** sieci wirtualnej będą używać bramy NAT. Wszystkie połączenia wychodzące będą używać adresów IP skojarzonych z **natgatewayname** jako źródłowego adresu IP.
 
-## <a name="design-guidance"></a>Wskazówki dotyczące projektowania
+Aby uzyskać więcej informacji na temat szablonu usługi Azure Resource Manager używanego w tym przykładzie, zobacz:
 
-Przejrzyj tę sekcję, aby zapoznać się z zagadnieniami dotyczącymi projektowania sieci wirtualnych przy użyciu translatora adresów sieciowych.  
+- [Szybki start: tworzenie bramy NAT — szablon Menedżera zasobów](quickstart-create-nat-gateway-template.md)
+- [Nat sieci wirtualnej](https://azure.microsoft.com/resources/templates/101-nat-gateway-1-vm/)
+
+## <a name="design-guidance"></a>Wskazówki dotyczące projektu
+
+Przejrzyj tę sekcję, aby zapoznać się z zagadnieniami związanymi z projektowaniem sieci wirtualnych za pomocą translatora adresów sieciowych.  
 
 1. [Optymalizacja kosztów](#cost-optimization)
-1. [Współistnienie ruchu przychodzącego i wychodzącego](#coexistence-of-inbound-and-outbound)
-2. [Zarządzanie zasobami podstawowymi](#managing-basic-resources)
+1. [Współistnienie przychodzących i wychodzących](#coexistence-of-inbound-and-outbound)
+2. [Zarządzanie podstawowymi zasobami](#managing-basic-resources)
 3. [Strefy dostępności](#availability-zones)
 
 ### <a name="cost-optimization"></a>Optymalizacja kosztów
 
-[Punkty końcowe usługi](virtual-network-service-endpoints-overview.md) i [link prywatny](../private-link/private-link-overview.md) są opcjami, które należy wziąć pod uwagę w przypadku optymalizacji kosztów. Translator adresów sieciowych nie jest wymagany w przypadku tych usług. Ruch kierowany do punktów końcowych usługi lub link prywatny nie jest przetwarzany przez translator adresów sieciowych sieci wirtualnej.  
+[Punkty końcowe usługi](virtual-network-service-endpoints-overview.md) i [łącze prywatne](../private-link/private-link-overview.md) to opcje, które należy wziąć pod uwagę w celu optymalizacji kosztów. Translator z translatora i obsługi klienta nie jest potrzebny dla tych usług. Ruch kierowany do punktów końcowych usługi lub łącza prywatnego nie jest przetwarzany przez translatora adresów sieci wirtualnej.  
 
-Punkty końcowe usługi wiążą zasoby usługi platformy Azure z siecią wirtualną i kontrolują dostęp do zasobów usługi platformy Azure. Na przykład podczas uzyskiwania dostępu do usługi Azure Storage należy użyć punktu końcowego dla magazynu, aby uniknąć naliczania opłat za dane dotyczące translatora adresów sieciowych. Punkty końcowe usługi są bezpłatne.
+Punkty końcowe usługi wiążą zasoby usługi platformy Azure z siecią wirtualną i kontrolują dostęp do zasobów usługi platformy Azure. Na przykład podczas uzyskiwania dostępu do magazynu platformy Azure użyj punktu końcowego usługi dla magazynu, aby uniknąć opłat za przetworzone nat danych. Punkty końcowe usługi są bezpłatne.
 
-Link prywatny udostępnia usługę Azure PaaS Service (lub inne usługi hostowane za pomocą linku prywatnego) jako prywatny punkt końcowy wewnątrz sieci wirtualnej.  Połączenie prywatne jest rozliczane na podstawie czasu trwania i przetworzonych danych.
+Łącze prywatne udostępnia usługę PaaS platformy Azure (lub inne usługi hostowane przy łączu prywatnym) jako prywatny punkt końcowy w sieci wirtualnej.  Łącze prywatne jest rozliczane na podstawie czasu trwania i przetwarzanych danych.
 
-Oceń, czy jedno lub oba te podejścia są dobrym dopasowaniem do scenariusza i użycia w razie potrzeby.
+Oceń, czy jedno lub oba z tych podejść są dobre dopasowanie do scenariusza i używać w razie potrzeby.
 
-### <a name="coexistence-of-inbound-and-outbound"></a>Współistnienie ruchu przychodzącego i wychodzącego
+### <a name="coexistence-of-inbound-and-outbound"></a>Współistnienie przychodzących i wychodzących
 
-Brama translatora adresów sieciowych jest zgodna z:
+Brama NAT jest zgodna z:
 
- - Moduł równoważenia obciążenia w warstwie Standardowa
+ - Standardowy moduł równoważenia obciążenia
  - Standardowy publiczny adres IP
- - Standardowy prefiks publicznego adresu IP
+ - Standardowy publiczny prefiks IP
 
-Podczas tworzenia nowego wdrożenia Zacznij od standardowych jednostek SKU.
-
-<p align="center">
-  <img src="media/nat-overview/flow-direction1.svg" width="256" title="Virtual Network translator adresów sieciowych dla ruchu wychodzącego do Internetu">
-</p>
-
-*Rysunek: Virtual Network translator adresów sieciowych dla ruchu wychodzącego do Internetu*
-
-Internetowy scenariusz tylko dla ruchu wychodzącego udostępniony przez bramę translatora adresów sieciowych można rozszerzyć przy użyciu ruchu przychodzącego z funkcji internetowych. Każdy zasób jest świadomy kierunku, w którym pochodzi przepływ. W podsieci z bramą NAT wszystkie scenariusze połączeń wychodzących do Internetu są zastępowane przez bramę translatora adresów sieciowych. Przychodzące ze scenariuszy internetowych są udostępniane przez odpowiednie zasoby.
-
-#### <a name="nat-and-vm-with-instance-level-public-ip"></a>Translator adresów sieciowych i maszyna wirtualna z publicznym adresem IP na poziomie wystąpienia
+Podczas opracowywania nowego wdrożenia, zacznij od standardowych jednostek SKU.
 
 <p align="center">
-  <img src="media/nat-overview/flow-direction2.svg" width="300" title="Virtual Network NAT i VM z publicznym adresem IP na poziomie wystąpienia">
+  <img src="media/nat-overview/flow-direction1.svg" width="256" title="Virtual Network NAT dla wychodzących do Internetu">
 </p>
 
-*Ilustracja: Virtual Network NAT i VM z publicznym adresem IP na poziomie wystąpienia*
+*Rysunek: Virtual Network NAT dla wychodzących do Internetu*
+
+Internet wychodzących tylko scenariusz dostarczony przez bramę NAT można rozszerzyć z przychodzących z internetu funkcji. Każdy zasób jest świadomy kierunku, w którym przepływ pochodzi. W podsieci z bramą NAT wszystkie scenariusze wychodzące do Internetu są zastępowane przez bramę NAT. Przychodzące ze scenariuszy internetowych są dostarczane przez odpowiedni zasób.
+
+#### <a name="nat-and-vm-with-instance-level-public-ip"></a>Translator adresów sieciowych i maszyny wirtualnej z publicznym adresem IP na poziomie wystąpienia
+
+<p align="center">
+  <img src="media/nat-overview/flow-direction2.svg" width="300" title="Translator adresów sieci wirtualnej i maszyny wirtualnej z publicznym adresem IP na poziomie wystąpienia">
+</p>
+
+*Rysunek: Translator adresów sieci wirtualnych i maszyna wirtualna z publicznym adresem IP na poziomie wystąpienia*
 
 | Kierunek | Zasób |
 |:---:|:---:|
 | Przychodzący | Maszyna wirtualna z publicznym adresem IP na poziomie wystąpienia |
 | Wychodzący | Brama translatora adresów sieciowych |
 
-Maszyna wirtualna będzie używać bramy translatora adresów sieciowych dla ruchu wychodzącego.  Nie ma to żadnego oddziaływania na przychodzące.
+Maszyna wirtualna użyje bramy NAT do ruchu wychodzącego.  Nie ma to wpływu na przychodzące pochodzi.
 
-#### <a name="nat-and-vm-with-public-load-balancer"></a>Translator adresów sieciowych i maszyna wirtualna z Load Balancer publiczny
+#### <a name="nat-and-vm-with-public-load-balancer"></a>NAT i maszyna wirtualna z publicznym modułem równoważenia obciążenia
 
 <p align="center">
-  <img src="media/nat-overview/flow-direction3.svg" width="350" title="Virtual Network translatora adresów sieciowych i maszyn wirtualnych z Load Balancerami publicznymi">
+  <img src="media/nat-overview/flow-direction3.svg" width="350" title="Translator adresów sieci wirtualnej i maszyny wirtualnej z publicznym modułem równoważenia obciążenia">
 </p>
 
-*Rysunek: Virtual Network translatora adresów sieciowych i maszyn wirtualnych z Load Balancerami publicznymi*
+*Rysunek: Translator adresów sieci wirtualnych i maszyna wirtualna z publicznym modułem równoważenia obciążenia*
 
 | Kierunek | Zasób |
 |:---:|:---:|
-| Przychodzący | Load Balancer publiczny |
+| Przychodzący | publiczny moduł równoważenia obciążenia |
 | Wychodzący | Brama translatora adresów sieciowych |
 
-Każda konfiguracja wychodząca z reguły równoważenia obciążenia lub reguł wychodzących jest zastępowana przez bramę translatora adresów sieciowych.  Nie ma to żadnego oddziaływania na przychodzące.
+Każda konfiguracja wychodząca z reguły równoważenia obciążenia lub reguł wychodzących jest zastępowana przez bramę NAT.  Nie ma to wpływu na przychodzące pochodzi.
 
-#### <a name="nat-and-vm-with-instance-level-public-ip-and-public-load-balancer"></a>NAT i VM z publicznym adresem IP na poziomie wystąpienia i publicznym Load Balancer
+#### <a name="nat-and-vm-with-instance-level-public-ip-and-public-load-balancer"></a>Translator adresów sieciowych i maszyn wirtualnych z publicznym ipem na poziomie wystąpienia i publicznym modułem równoważenia obciążenia
 
 <p align="center">
-  <img src="media/nat-overview/flow-direction4.svg" width="425" title="Virtual Network translatora adresów sieciowych i maszyn wirtualnych z publicznym adresem IP na poziomie wystąpienia i publicznym Load Balancer">
+  <img src="media/nat-overview/flow-direction4.svg" width="425" title="Translator adresów sieci wirtualnej i maszyny wirtualnej z publicznym ipem na poziomie wystąpienia i publicznym modułem równoważenia obciążenia">
 </p>
 
-*Ilustracja: Virtual Network NAT i VM z publicznym adresem IP na poziomie wystąpienia i publicznym Load Balancer*
+*Rysunek: Translator adresów sieci wirtualnych i maszyna wirtualna z publicznym ipem na poziomie wystąpienia i publicznym modułem równoważenia obciążenia*
 
 | Kierunek | Zasób |
 |:---:|:---:|
-| Przychodzący | Maszyna wirtualna z publicznym adresem IP na poziomie wystąpienia i publicznym Load Balancer |
+| Przychodzący | Maszyna wirtualna z publicznym adresem IP na poziomie wystąpienia i publicznym modułem równoważenia obciążenia |
 | Wychodzący | Brama translatora adresów sieciowych |
 
-Każda konfiguracja wychodząca z reguły równoważenia obciążenia lub reguł wychodzących jest zastępowana przez bramę translatora adresów sieciowych.  Maszyna wirtualna będzie również używać bramy translatora adresów sieciowych dla ruchu wychodzącego.  Nie ma to żadnego oddziaływania na przychodzące.
+Każda konfiguracja wychodząca z reguły równoważenia obciążenia lub reguł wychodzących jest zastępowana przez bramę NAT.  Maszyna wirtualna będzie również używać bramy NAT dla ruchu wychodzącego.  Nie ma to wpływu na przychodzące pochodzi.
 
-### <a name="managing-basic-resources"></a>Zarządzanie zasobami podstawowymi
+### <a name="managing-basic-resources"></a>Zarządzanie podstawowymi zasobami
 
-Standardowy moduł równoważenia obciążenia, publiczny adres IP i publiczny prefiks adresu IP są zgodne z bramą translatora adresów sieciowych. Bramy translatora adresów sieciowych działają w zakresie podsieci. Podstawowa jednostka SKU tych usług należy wdrożyć w podsieci bez bramy translatora adresów sieciowych. Ta separacja umożliwia współistnienie wariantów jednostki SKU w tej samej sieci wirtualnej.
+Standardowy moduł równoważenia obciążenia, publiczny adres IP i publiczny prefiks IP są zgodne z bramą NAT. Bramy TRANSLATORA działają w zakresie podsieci. Podstawowa jednostka SKU tych usług musi zostać wdrożona w podsieci bez bramy TRANSLATORA. Ta separacja umożliwia obu wariantów SKU współistnieć w tej samej sieci wirtualnej.
 
-Bramy translatora adresów sieciowych mają wyższy priorytet niż scenariusze wychodzące podsieci. Nie można dostosować modułu równoważenia obciążenia podstawowego lub publicznego adresu IP (i wszystkich utworzonych przez nie usług zarządzanych) przy użyciu prawidłowych tłumaczeń. Brama translatora adresów sieciowych przejmuje kontrolę nad ruchem internetowym w podsieci. Ruch przychodzący do podstawowego modułu równoważenia obciążenia i publiczny adres IP jest niedostępny. Ruch przychodzący do podstawowego modułu równoważenia obciążenia i lub publiczny adres IP skonfigurowany na maszynie wirtualnej nie będzie dostępny.
+Bramy TRANSLATORA mają pierwszeństwo przed wychodzącymi scenariuszami podsieci. Podstawowy moduł równoważenia obciążenia lub publiczny adres IP (i żadna usługa zarządzana zbudowana za ich pomocą) nie może być dostosowana za pomocą prawidłowych tłumaczeń. Brama NAT przejmuje kontrolę nad ruchem wychodzącym w podsieci. Ruch przychodzący do podstawowego modułu równoważenia obciążenia i publicznego adresu IP jest niedostępny. Ruch przychodzący do podstawowego modułu równoważenia obciążenia lub publiczne ip skonfigurowane na maszynie wirtualnej nie będą dostępne.
 
 ### <a name="availability-zones"></a>Strefy dostępności
 
-Nawet bez stref dostępności translator adresów sieciowych jest odporny na awarie i może przetrwać wiele awarii składników infrastruktury. Gdy strefy dostępności są częścią tego scenariusza, należy skonfigurować translator adresów sieciowych dla określonej strefy.  Operacje płaszczyzny kontroli i płaszczyzny danych są ograniczone do określonej strefy. Niepowodzenie w strefie innej niż lokalizacja, w której istnieje scenariusz, nie ma wpływu na translatora adresów sieciowych. Ruch wychodzący z maszyn wirtualnych znajdujących się w tej samej strefie nie powiedzie się z powodu izolacji strefy.
+Nawet bez stref dostępności translator adresów sieciowych jest odporny i może przetrwać wiele awarii składników infrastruktury. Gdy strefy dostępności są częścią scenariusza, należy skonfigurować translatora i ciągłego opisu dla określonej strefy.  Operacje płaszczyzny sterowania i płaszczyzny danych są powiązane z określoną strefą. Błąd w strefie innej niż istnieje scenariusz oczekuje się bez wpływu na TRANSLATORA. Ruch wychodzący z maszyn wirtualnych w tej samej strefie zakończy się niepowodzeniem z powodu izolacji strefy.
 
 <p align="center">
-  <img src="media/nat-overview/az-directions.svg" width="425" title="Virtual Network translator adresów sieciowych ze strefami dostępności">
+  <img src="media/nat-overview/az-directions.svg" width="425" title="Virtual Network NAT ze strefami dostępności">
 </p>
 
-*Rysunek: Virtual Network translator adresów sieciowych ze strefami dostępności*
+*Rysunek: Virtual Network NAT ze strefami dostępności*
 
-Izolowana od strefy Brama NAT wymaga, aby adresy IP odpowiadały strefie bramy translatora adresów sieciowych. Zasoby bramy translatora adresów sieciowych z adresami IP z innej strefy lub bez strefy nie są obsługiwane.
+Brama NAT izolowana w strefie wymaga adresów IP, aby dopasować go do strefy bramy NAT. Zasoby bramy TRANSLATORa z adresami IP z innej strefy lub bez strefy nie są obsługiwane.
 
-Sieci wirtualne i podsieci są regionalne i nie są wyrównane do warstwy. Maszyna wirtualna musi znajdować się w tej samej strefie co Brama translatora adresów sieciowych w celu zapewnienia strefowego obietnicy połączeń wychodzących. Izolacja strefy jest tworzona przez utworzenie zona "Stack" na strefę dostępności. Nie będzie można użyć obietnicy strefy w przypadku przekroczenia stref bramy translatora adresów sieciowych lub korzystania z regionalnej bramy NAT z strefami maszyn wirtualnych.
+Sieci wirtualne i podsieci są regionalne i nie są wyrównane. Maszyna wirtualna musi znajdować się w tej samej strefie co brama NAT dla obietnicy strefowej połączeń wychodzących. Izolacja strefy jest tworzona przez utworzenie strefowego "stosu" na strefę dostępności. Obietnica strefowa nie będzie istnieć podczas przekraczania stref bramy strefowej nat lub przy użyciu regionalnej bramy NAT z maszynami wirtualnymi strefowymi.
 
-Wdrażając zestawy skalowania maszyn wirtualnych do użycia z translatorem adresów sieciowych, należy wdrożyć zestaw skalowania strefowego w jego własnej podsieci i dołączyć do tej podsieci zgodną z bramą translatora adresów sieciowych. W przypadku korzystania z zestawów skalowania obejmujących strefy (zestaw skalowania w co najmniej dwóch strefach) translator adresów sieciowych nie będzie zapewniać strefowej obietnicy.  Translator adresów sieciowych nie obsługuje nadmiarowości strefy.  Obsługiwane jest tylko izolacja regionalna lub strefy.
+Podczas wdrażania zestawów skalowania maszyny wirtualnej do użycia z translatorem adresów sieciowych można wdrożyć zestaw skalowania strefowego we własnej podsieci i dołączyć pasującą bramę NAT strefy do tej podsieci. Jeśli używasz zestawów skalowania obejmujących strefę (skala ustawiona w dwóch lub więcej strefach), translator wartości nat nie zapewni obietnicy strefowej.  Translator z translatora i wydajności nie obsługuje nadmiarowości strefy.  Obsługiwane jest tylko izolacja regionalna lub strefa.
 
 <p align="center">
-  <img src="media/nat-overview/az-directions2.svg" width="425" title="Łączenie Virtual Network translatora adresów sieciowych">
+  <img src="media/nat-overview/az-directions2.svg" width="425" title="strefa obejmująca virtual network NAT">
 </p>
 
-*Ilustracja: łączenie Virtual Network translatora adresów sieciowych*
+*Rysunek: Strefa obejmująca virtual network NAT*
 
-Właściwość Zones nie jest modyfikowalna.  Wdróż ponownie zasób bramy translatora adresów sieciowych z zamierzonym preferencjami regionalnymi lub strefy.
+Właściwość zones nie jest modyfikowalna.  Ponowne wdrożenie zasobu bramy NAT z zamierzonymi preferencjami regionalnymi lub strefami.
 
 >[!NOTE] 
->Adresy IP same przez siebie nie są strefowo nadmiarowe, jeśli nie określono żadnej strefy.  Fronton [Usługa Load Balancer w warstwie Standardowa jest strefowo nadmiarowy](../load-balancer/load-balancer-standard-availability-zones.md#frontend) , jeśli adres IP nie został utworzony w określonej strefie.  Nie dotyczy to translatora adresów sieciowych.  Obsługiwane jest tylko izolacja regionalna lub strefy.
+>Adresy IP same w sobie nie są nadmiarowe strefy, jeśli nie określono strefy.  Frontend [standardowego modułu równoważenia obciążenia jest nadmiarowy strefowo,](../load-balancer/load-balancer-standard-availability-zones.md#frontend) jeśli adres IP nie jest tworzony w określonej strefie.  Nie dotyczy to translatora i odpowiedzi na dzieci.  Obsługiwane jest tylko izolacja regionalna lub strefa.
 
-## <a name="source-network-address-translation"></a>Translacja adresów sieci źródłowej
+## <a name="source-network-address-translation"></a>Translacja źródłowego adresu sieciowego
 
-Translator adresów sieciowych (Resources Address Translation) ponownie zapisuje źródło przepływu, aby pochodził z innego adresu IP.  Zasoby bramy translatora adresów sieciowych wykorzystują odmianę przywoływaną zwykle do translacji adresów portu (źródła). Źródło ponownie zapisuje adres źródłowy i port źródłowy. Za pomocą elementu SubPrivate nie istnieje stała relacja między liczbą prywatnych adresów i ich przetłumaczonymi adresami publicznymi.  
+Źródłowe translacji adresów sieciowych (SNAT) przepisuje źródło przepływu, aby pochodzić z innego adresu IP.  Zasoby bramy NAT używają wariantu SNAT powszechnie odwoływanego do tłumaczenia adresów portów (PAT). PAT przepisuje adres źródłowy i port źródłowy. W przypadku SNAT nie ma stałej relacji między liczbą prywatnych adresów a ich przetłumaczonymi adresami publicznymi.  
 
 ### <a name="fundamentals"></a>Podstawy
 
-Spójrzmy na przykład cztery przepływy, aby wyjaśnić podstawową koncepcję.  Brama translatora adresów sieciowych korzysta z 65.52.0.2 zasobów publicznego adresu IP.
+Spójrzmy na przykład czterech przepływów, aby wyjaśnić podstawową koncepcję.  Brama NAT używa zasobu publicznego adresu IP 65.52.0.2.
 
-| Ruch | Krotka źródłowa | Kolekcja docelowa |
+| Ruch | Krotka źródła | Krotka docelowa |
 |:---:|:---:|:---:|
 | 1 | 192.168.0.16:4283 | 65.52.0.1:80 |
 | 2 | 192.168.0.16:4284 | 65.52.0.1:80 |
 | 3 | 192.168.0.17.5768 | 65.52.0.1:80 |
 | 4 | 192.168.0.16:4285 | 65.52.0.2:80 |
 
-Te przepływy mogą wyglądać następująco po przejściu z lokalizacji:
+Przepływy te mogą wyglądać następująco po pat miało miejsce:
 
-| Ruch | Krotka źródłowa | Spójna kolekcja Source SNAT'ed | Kolekcja docelowa | 
+| Ruch | Krotka źródła | Krotka źródła SNAT | Krotka docelowa | 
 |:---:|:---:|:---:|:---:|
 | 1 | 192.168.0.16:4283 | 65.52.0.2:234 | 65.52.0.1:80 |
 | 2 | 192.168.0.16:4284 | 65.52.0.2:235 | 65.52.0.1:80 |
 | 3 | 192.168.0.17.5768 | 65.52.0.2:236 | 65.52.0.1:80 |
 | 4 | 192.168.0.16:4285 | 65.52.0.2:237 | 65.52.0.2:80 |
 
-Lokalizacja docelowa będzie widziała źródło przepływu jako 65.52.0.2 (krotka źródłowa źródła danych) ze pokazywanym przypisanym portem.  Dane o pokazanej w powyższej tabeli nazywa się również przystawcy reportcy adresów sieciowych.  Wiele źródeł prywatnych jest zamaskowanych za adresem IP i portem.
+Miejsce docelowe zobaczy źródło przepływu jako 65.52.0.2 (krotka źródła SNAT) z pokazanym przypisanym portem.  PAT, jak pokazano w powyższej tabeli jest również nazywany port maskarady SNAT.  Wiele źródeł prywatnych jest maskowanych za adresem IP i portem.
 
-Nie należy polegać na określonym sposobie przypisywania portów źródłowych.  Powyższym jest ilustracja wyłącznie koncepcji podstawowej.
+Nie należy przyjmować zależności od określonego sposobu portów źródłowych są przypisane.  Powyższe jest jedynie ilustracją pojęcia fundamentalnego.
 
-Przystawka NAT określona przez translatora adresów sieciowych różni się od [Load Balancer](../load-balancer/load-balancer-outbound-connections.md) w kilku aspektach.
+SNAT dostarczone przez NAT różni się od [Load Balancer](../load-balancer/load-balancer-outbound-connections.md) w kilku aspektach.
 
 ### <a name="on-demand"></a>Na żądanie
 
-Translacja adresów sieciowych na żądanie umożliwia obsługę nowych przepływów ruchu wychodzącego. Wszystkie dostępne porty protokołu Subnet w spisie są używane przez dowolną maszynę wirtualną w podsieciach skonfigurowanych przy użyciu translatora adresów sieciowych. 
+TRANSLATOR IT udostępnia porty SNAT na żądanie dla nowych przepływów ruchu wychodzącego. Wszystkie dostępne porty SNAT w magazynie są używane przez dowolną maszynę wirtualną w podsieciach skonfigurowanych z translatorem adresów sieciowych. 
 
 <p align="center">
-  <img src="media/nat-overview/lb-vnnat-chart.svg" width="550" title="Virtual Network translator adresów sieciowych dla ruchu wychodzącego na żądanie">
+  <img src="media/nat-overview/lb-vnnat-chart.svg" width="550" title="Sieć wirtualna NAT na żądanie wychodzących SNAT">
 </p>
 
-*Rysunek: Virtual Network translator adresów sieciowych na żądanie*
+*Rysunek: Sieć wirtualna NAT na żądanie wychodzących SNAT*
 
-Dowolna konfiguracja adresu IP maszyny wirtualnej może tworzyć przepływy wychodzące na żądanie w razie potrzeby.  Alokacja wstępna, na wystąpienie w przypadku wystąpienia na najgorszy przypadek, nie jest wymagana.  
+Każda konfiguracja IP maszyny wirtualnej może tworzyć przepływy wychodzące na żądanie zgodnie z potrzebami.  Alokacja wstępna, na planowanie wystąpienia, w tym na wystąpienie najgorszego przypadku nadmiernego obsługi administracyjnej, nie jest wymagane.  
 
 <p align="center">
   <img src="media/nat-overview/exhaustion-threshold.svg" width="550" title="Różnice w scenariuszach wyczerpania">
 </p>
 
-*Ilustracja: różnice w scenariuszach wyczerpania*
+*Rysunek: Różnice w scenariuszach wyczerpania*
 
-Po wydaniach portów dla tego elementu jest on dostępny do użycia przez dowolną maszynę wirtualną w podsieciach skonfigurowanych przy użyciu translatora adresów sieciowych.  Alokacja na żądanie umożliwia dynamiczne i niezależne obciążenia w podsieciach, w których są wymagane.  O ile jest dostępny spis portów współistnienia, przepływy adresów sieciowych będą się kończyć pomyślnie. Aktywne punkty dostępu portów przyłączania () mogą korzystać z większej ilości zasobów. Porty z przydziałami nie są pozostawiane niepotrzebnym maszynom wirtualnym.
+Po wydaniu portu SNAT jest on dostępny do użycia przez dowolną maszynę wirtualną w podsieciach skonfigurowanych z translatorem adresów sieciowych.  Alokacja na żądanie umożliwia dynamiczne i rozbieżne obciążenia w podsieci do używania portów SNAT zgodnie z potrzebami.  Tak długo, jak nie ma zapasów portów SNAT dostępne, przepływy SNAT zakończy się pomyślnie. Zamiast tego punkty hot spoty portów SNAT korzystają z większych zapasów. Porty SNAT nie są nieużywane dla maszyn wirtualnych, które nie są aktywnie ich potrzebujące.
 
 ### <a name="scaling"></a>Skalowanie
 
-Translator adresów sieciowych wymaga wystarczającej ilości spisu portów dla pełnego scenariusza wychodzącego. Skalowanie translatora adresów sieciowych jest głównie funkcją zarządzania udostępnionym spisem portów przydziałów adresów sieciowych. Wystarczające zapasy muszą istnieć, aby zająć się szczytowym przepływem wychodzącym dla wszystkich podsieci podłączonych do zasobu bramy translatora adresów sieciowych.
+NAT potrzebuje wystarczającej ilości zapasów portów SNAT dla pełnego scenariusza wychodzącego. Skalowanie NAT jest przede wszystkim funkcją zarządzania udostępnionym, dostępnym zapasem portów SNAT. Musi istnieć wystarczająca ilość zapasów, aby zaradzić szczytowy przepływ wychodzący dla wszystkich podsieci dołączonych do zasobu bramy TRANSLATORA.
 
-Podzbiory adresów sieciowych mapują wiele adresów prywatnych na jeden adres publiczny i używają wielu publicznych adresów IP do skalowania.
+SNAT mapuje wiele adresów prywatnych na jeden adres publiczny i używa wielu publicznych adresów IP do skalowania.
 
-Zasób bramy translatora adresów sieciowych będzie używać portów 64 000 (porty IP) dla publicznego adresu IP.  Te porty przydziałania są dostępne w ramach mapowania przepływów prywatnych do publicznych. Dodanie większej liczby publicznych adresów IP spowoduje zwiększenie dostępnych portów źródłowego translatora adresów sieciowych. Zasoby bramy translatora adresów sieciowych można skalować do maksymalnie 16 adresów IP i 1 – 1 portów.  Protokoły TCP i UDP są oddzielnymi spisami portów i niezwiązanych z nimi.
+Zasób bramy NAT użyje 64 000 portów (portów SNAT) publicznego adresu IP.  Te porty SNAT stają się dostępnym zapasem dla mapowania przepływu prywatnego i publicznego. A dodanie większej liczby publicznych adresów IP zwiększa dostępne porty SNAT zapasów. Zasoby bramy TRANSLATORA mogą skalować do 16 adresów IP i portów 1M SNAT.  TCP i UDP są oddzielnymi zapasami portów SNAT i niepowiązanych.
 
-Zasoby bramy translatora adresów sieciowych odpowiednio Uzgodnij ponownie używać portów źródłowych. W celu skalowania należy założyć, że każdy przepływ wymaga nowego portu i przeskaluje łączną liczbę dostępnych adresów IP dla ruchu wychodzącego.
+Zasoby bramy NAT oportunistycznie ponownie użyć portów źródłowych. Do celów skalowania należy założyć, że każdy przepływ wymaga nowego portu SNAT i skalować całkowitą liczbę dostępnych adresów IP dla ruchu wychodzącego.
 
 ### <a name="protocols"></a>Protokoły
 
-Zasoby bramy translatora adresów sieciowych współpracują z nagłówkami transportu IP i IP przepływów UDP i TCP oraz są niezależny od do ładunków warstwy aplikacji.  Inne protokoły IP nie są obsługiwane.
+Zasoby bramy NAT współdziałają z nagłówkami transportu IP i IP przepływów UDP i TCP i są niezależni od ładunków warstw aplikacji.  Inne protokoły IP nie są obsługiwane.
 
 ### <a name="timers"></a>Czasomierze
 
-Limit czasu bezczynności można dostosować z 4 minut (domyślnie) do 120 minut (2 godziny) dla wszystkich przepływów.  Dodatkowo można zresetować czasomierz bezczynności z ruchem w przepływie.  Zalecany wzorzec odświeżania długich połączeń bezczynnych i wykrywania aktywności punktu końcowego to ruch TCP.  Utrzymywanie aktywności protokołu TCP jest wyświetlane jako zduplikowane potwierdzenia do punktów końcowych, są niskie obciążenie i niewidoczne dla warstwy aplikacji.
+Limit czasu bezczynnego TCP można dostosować z 4 minut (domyślnie) do 120 minut (2 godziny) dla wszystkich przepływów.  Ponadto można zresetować czasomierz bezczynny z ruchem w przepływie.  Zalecanym wzorcem do odświeżania długich bezczynności połączeń i wykrywania żywotności punktu końcowego jest tcp keepalives.  TCP keepalives są wyświetlane jako zduplikowane punkty połączenia sieciowego do punktów końcowych, są niskie obciążenie i niewidoczne dla warstwy aplikacji.
 
-Następujące czasomierze są używane dla wydania portu reportów adresów sieciowych:
+Następujące czasomierze są używane do zwalniania portów SNAT:
 
 | Czasomierz | Wartość |
 |---|---|
-| PAKIET TCP FIN | 60 sekund |
-| PARAMETR RST PROTOKOŁU TCP | 10 sekund |
-| Otwarta połowa TCP | 30 sekund |
+| PŁETŻNIE TCP | 60 sekund |
+| TCP RST | 10 sekund |
+| TCP pół otwarty | 30 sekund |
 
-Port dla tego elementu jest dostępny do ponownego użycia w tym samym docelowym adresie IP i porcie docelowym po 5 sekundach.
+Port SNAT jest dostępny do ponownego użycia do tego samego docelowego adresu IP i portu docelowego po 5 sekundach.
 
 >[!NOTE] 
->Te ustawienia czasomierza mogą ulec zmianie. Te wartości są dostarczane w celu ułatwienia rozwiązywania problemów i nie należy w tym momencie podejmować zależności od określonych czasomierzy.
+>Te ustawienia czasomierza mogą ulec zmianie. Wartości są dostarczane w celu pomocy w rozwiązywaniu problemów i nie należy przyjmować zależności od określonych czasomierzy w tej chwili.
 
 ## <a name="limitations"></a>Ograniczenia
 
-- Translator adresów sieciowych jest zgodny z publicznym adresem IP jednostki SKU, publicznym prefiksem adresu IP i zasobami modułu równoważenia obciążenia.   Zasoby podstawowe (na przykład podstawowa usługa równoważenia obciążenia) i wszelkie produkty pochodzące z nich nie są zgodne z translatorem adresów sieciowych.  Zasoby podstawowe muszą być umieszczone w podsieci, która nie jest skonfigurowana przy użyciu translatora adresów sieciowych.
-- Rodzina adresów IPv4 jest obsługiwana.  Translator adresów sieciowych nie współdziała z rodziną adresów IPv6.  Nie można wdrożyć translatora adresów sieciowych w podsieci z prefiksem IPv6.
-- Rejestrowanie przepływu sieciowej grupy zabezpieczeń nie jest obsługiwane w przypadku korzystania z translatora adresów sieciowych.
+- Translator adresów sieciowych jest zgodny ze standardowymi publicznymi zasobami ip, publicznymi adresami IP i modułem równoważenia obciążenia.   Podstawowe zasoby (na przykład podstawowy moduł równoważenia obciążenia) i wszystkie produkty z nich uzyskane nie są zgodne z translatorem z treścią nat.  Podstawowe zasoby muszą być umieszczone w podsieci, która nie jest skonfigurowana z translatorem z napisem NAT.
+- Rodzina adresów IPv4 jest obsługiwana.  Translator adresów nawigacyjnej nie wchodzi w interakcje z rodziną adresów IPv6.  Nie można wdrożyć translatora i uporządkowanej maryi w podsieci z prefiksem IPv6.
+- Rejestrowanie przepływu nsg nie jest obsługiwane podczas korzystania z translatora z translatorem ludzi.
 - Translator adresów sieciowych nie może obejmować wielu sieci wirtualnych.
 
 
-## <a name="feedback"></a>Opinie
+## <a name="feedback"></a>Opinia
 
-Chcemy wiedzieć, jak możemy ulepszyć usługę. Zaproponuj i zagłosuj na to, co będziemy kompilować dalej w usłudze [UserVoice dla translatora adresów sieciowych](https://aka.ms/natuservoice).
+Chcemy wiedzieć, w jaki sposób możemy ulepszyć usługę. Zaproponować i głosować na to, co powinniśmy budować dalej w [UserVoice dla NAT](https://aka.ms/natuservoice).
 
 ## <a name="next-steps"></a>Następne kroki
 
-* Dowiedz się więcej o [translatorze adresów sieciowych sieci wirtualnych](nat-overview.md).
-* Informacje o [metrykach i alertach dotyczących zasobów bramy translatora adresów sieciowych](nat-metrics.md).
-* Informacje o [rozwiązywaniu problemów z zasobami bramy translatora adresów sieciowych](troubleshoot-nat.md).
-* Samouczek dotyczący weryfikowania bramy translatora adresów sieciowych
+* Dowiedz się więcej o [sieci wirtualnej NAT](nat-overview.md).
+* Dowiedz się więcej o [metrykach i alertach dotyczących zasobów bramy TRANSLATORA](nat-metrics.md).
+* Dowiedz się więcej o [rozwiązywaniu problemów z zasobami bramy NAT](troubleshoot-nat.md).
+* Samouczek sprawdzania poprawności bramy NAT
   - [Interfejs wiersza polecenia platformy Azure](tutorial-create-validate-nat-gateway-cli.md)
-  - [PowerShell](tutorial-create-validate-nat-gateway-cli.md)
+  - [Powershell](tutorial-create-validate-nat-gateway-cli.md)
   - [Portal](tutorial-create-validate-nat-gateway-cli.md)
-* Przewodnik Szybki Start dotyczący wdrażania zasobu bramy translatora adresów sieciowych
+* Szybki start do wdrażania zasobu bramy NAT
   - [Interfejs wiersza polecenia platformy Azure](./quickstart-create-nat-gateway-cli.md)
-  - [PowerShell](./quickstart-create-nat-gateway-powershell.md)
+  - [Powershell](./quickstart-create-nat-gateway-powershell.md)
   - [Portal](./quickstart-create-nat-gateway-portal.md)
-  - [Szablon](./quickstart-create-nat-gateway-template.md)
-* Informacje o interfejsie API zasobów bramy translatora adresów sieciowych
-  - [Interfejs API REST](https://docs.microsoft.com/rest/api/virtualnetwork/natgateways)
+  - [Szablonu](./quickstart-create-nat-gateway-template.md)
+* Dowiedz się więcej o interfejsie API zasobów bramy NAT
+  - [INTERFEJS API ODPOCZYNKU](https://docs.microsoft.com/rest/api/virtualnetwork/natgateways)
   - [Interfejs wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/network/nat/gateway?view=azure-cli-latest)
-  - [PowerShell](https://docs.microsoft.com/powershell/module/az.network/new-aznatgateway)
+  - [Powershell](https://docs.microsoft.com/powershell/module/az.network/new-aznatgateway)
 
 * Dowiedz się więcej o [strefach dostępności](../availability-zones/az-overview.md).
-* Dowiedz się więcej na temat usługi [równoważenia obciążenia w warstwie Standardowa](../load-balancer/load-balancer-standard-overview.md).
-* Dowiedz się więcej na temat [stref dostępności i standardowego modułu równoważenia obciążenia](../load-balancer/load-balancer-standard-availability-zones.md).
+* Dowiedz się więcej o [standardowym równoważącym obciążenia](../load-balancer/load-balancer-standard-overview.md).
+* Dowiedz się więcej o [strefach dostępności i standardowym równoważącym obciążenia](../load-balancer/load-balancer-standard-availability-zones.md).
 
 

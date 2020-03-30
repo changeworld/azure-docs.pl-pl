@@ -1,6 +1,6 @@
 ---
-title: Korzystanie z interfejsu API REST usługi Azure Import/Export | Microsoft Docs
-description: Dowiedz się, gdzie znaleźć zasoby do użycia interfejsu API REST usługi Azure Import/Export, w tym informacje o tym, jak i materiałach referencyjnych.
+title: Korzystanie z interfejsu API REST usługi importu/eksportowania platformy Azure | Dokumenty firmy Microsoft
+description: Dowiedz się, gdzie można znaleźć zasoby do korzystania z interfejsu API REST usługi Azure Import/Export, w tym materiałów inkoncyzowych i referencyjnych.
 author: twooley
 services: storage
 ms.service: storage
@@ -9,31 +9,31 @@ ms.date: 01/15/2017
 ms.author: twooley
 ms.subservice: common
 ms.openlocfilehash: 833b8c79fba57b7129092e084381c0671c396496
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74978870"
 ---
 # <a name="using-the-azure-importexport-service-rest-api"></a>Korzystanie z interfejsu API REST usługi Azure Import/Export
 
-Usługa Microsoft Azure Import/Export udostępnia interfejs API REST umożliwiający programowe sterowanie zadaniami importu/eksportu. Za pomocą interfejsu API REST można wykonać wszystkie operacje importu/eksportu, które można wykonać przy użyciu [Azure Portal](https://portal.azure.com/). Ponadto można użyć interfejsu API REST do wykonywania określonych operacji szczegółowych, takich jak zapytanie o procent wykonania zadania, które nie jest obecnie dostępne w Azure Portal.
+Usługa Import/Eksport microsoft Azure udostępnia interfejs API REST, aby włączyć programową kontrolę zadań importowania/eksportowania. Za pomocą interfejsu API REST można wykonać wszystkie operacje importowania/eksportowania, które można wykonać za pomocą [witryny Azure portal](https://portal.azure.com/). Ponadto można użyć interfejsu API REST do wykonywania niektórych szczegółowych operacji, takich jak wykonywanie zapytań procentowego ukończenia zadania, które nie jest obecnie dostępne w witrynie Azure portal.
 
-Zapoznaj się z tematem [Korzystanie z usługi Microsoft Azure Import/Export do transferowania danych do BLOB Storage](../storage-import-export-service.md) w celu omówienia usługi Import/Export oraz samouczka, w którym pokazano, jak za pomocą portalu tworzyć i zarządzać zadaniami importu i eksportu.
+Zobacz [Korzystanie z usługi Importowanie/eksportowanie platformy Microsoft Azure w celu przeniesienia danych do magazynu obiektów blob, aby zapoznać](../storage-import-export-service.md) się z omówieniem usługi importu/eksportu oraz samouczkiem, który pokazuje, jak używać portalu do tworzenia zadań importowania i eksportowania oraz zarządzania nimi.
 
 ## <a name="service-endpoints"></a>Punkty końcowe usługi
 
-Usługa Azure Import/Export jest dostawcą zasobów dla Azure Resource Manager i udostępnia zestaw interfejsów API REST w następującym punkcie końcowym HTTPS do zarządzania zadaniami importu/eksportu:
+Usługa importu/eksportu platformy Azure jest dostawcą zasobów dla usługi Azure Resource Manager i udostępnia zestaw interfejsów API REST w następującym punkcie końcowym HTTPS do zarządzania zadaniami importu/eksportu:
 
 ```
 https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group>/providers/Microsoft.ImportExport/jobs/<job-name>
 ```
 
-## <a name="versioning"></a>Obsługa wersji
+## <a name="versioning"></a>Przechowywanie wersji
 
-Żądania do usługi Import/Export muszą określać parametr `api-version` i ustawić jego wartość na `2016-11-01`.
+Żądania do usługi Import/Eksport `api-version` należy określić parametr `2016-11-01`i ustawić jego wartość na .
 
-## <a name="importexport-service-operations"></a>Operacje usługi Import/Export
+## <a name="importexport-service-operations"></a>Importowanie/eksportowanie operacji serwisowych
 
 [Tworzenie zadania importu](../storage-import-export-creating-an-import-job.md)
 
@@ -45,10 +45,10 @@ https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<res
 
 [Anulowanie i usuwanie zadań](storage-import-export-cancelling-and-deleting-jobs.md)
 
-[Tworzenie kopii zapasowej manifestów dysków](../storage-import-export-backing-up-drive-manifests.md)
+[Tworzenie kopii zapasowych manifestów dysku](../storage-import-export-backing-up-drive-manifests.md)
 
 [Diagnostyka i odzyskiwanie po błędach zadań usługi Import/Export](../storage-import-export-diagnostics-and-error-recovery.md)
 
 ## <a name="next-steps"></a>Następne kroki
 
-* [REST importowania/eksportowania magazynu](/rest/api/storageimportexport)
+* [Magazyn Import/Eksport REST](/rest/api/storageimportexport)

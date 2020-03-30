@@ -7,18 +7,20 @@ ms.service: site-recovery
 ms.topic: tutorial
 ms.date: 11/12/2019
 ms.author: raynew
-ms.custom: MVC
-ms.openlocfilehash: 24015810a295ef88b7d3e63bfc464ddddef6b55f
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: b978190776aee3c89d3beadde76d20c4327b012f
+ms.sourcegitcommit: 0553a8b2f255184d544ab231b231f45caf7bbbb0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73939634"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80388920"
 ---
 # <a name="migrate-on-premises-machines-to-azure"></a>Migrowanie maszyn lokalnych do platformy Azure
 
 
-W tym artykule opisano sposób migracji komputerów lokalnych na platformę Azure przy użyciu [usługi Azure Site Recovery.](site-recovery-overview.md) Ogólnie rzecz biorąc usługa Odzysk lokacji służy do zarządzania odzyskiwaniem po awarii na komputerach lokalnych i maszynach wirtualnych platformy Azure i organizowania odzyskiwania po awarii. Jednak może być również używany do migracji. Migracja używa tych samych kroków co odzyskiwanie po awarii z jednym wyjątkiem. W przypadku migracji niepowodzenie maszyn z lokacji lokalnej jest ostatnim krokiem. W przeciwieństwie do odzyskiwania po awarii nie można zakończyć się niepowodzeniem z powrotem do lokalnego w scenariuszu migracji.
+W tym artykule opisano sposób migracji komputerów lokalnych na platformę Azure przy użyciu [usługi Azure Site Recovery.](site-recovery-overview.md) 
+
+> [!TIP]
+> Teraz należy użyć usługi Azure Migrate do migracji komputerów lokalnych na platformę Azure, zamiast usługi Azure Site Recovery. [Dowiedz się więcej](../migrate/migrate-services-overview.md).
 
 
 Ten samouczek pokazuje, jak przeprowadzić migrację lokalnych maszyn wirtualnych i serwerów fizycznych na platformę Azure. Omawiane kwestie:
@@ -36,7 +38,7 @@ Ten samouczek pokazuje, jak przeprowadzić migrację lokalnych maszyn wirtualnyc
 
 ## <a name="before-you-start"></a>Przed rozpoczęciem
 
-Należy pamiętać, że urządzenia eksportowane przez parawirtualizowane sterowniki nie są obsługiwane.
+Urządzenia eksportowane przez sterowniki parawirtualne nie są obsługiwane.
 
 
 ## <a name="prepare-azure-and-on-premises"></a>Przygotowywanie platformy Azure i lokalnie
@@ -132,8 +134,8 @@ Niektóre czynności można zautomatyzować w ramach procesu migracji przy użyc
 - Wykonaj dla zmigrowanej aplikacji uruchomionej na platformie Azure testy końcowe aplikacji i akceptacji migracji.
 - [Agent maszyny wirtualnej platformy Azure](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows) umożliwia zarządzanie interakcją maszyny wirtualnej z usługą Azure Fabric Controller. Jest to wymagane w przypadku niektórych usług platformy Azure, takich jak Azure Backup, Site Recovery i Azure Security.
     - Podczas migrowania maszyn VMware i serwerów fizycznych razem z usługą mobilności na maszynach z systemem Windows jest instalowany dostępny agent maszyny wirtualnej platformy Azure. Na maszynach wirtualnych z systemem Linux zaleca się zainstalowanie agenta po włączeniu trybu failover.
-    - Podczas migrowania maszyn wirtualnych platformy Azure do regionu pomocniczego agenta maszyny Wirtualnej platformy Azure należy ustanowić na maszynie wirtualnej przed migracją.
-    - Podczas migrowania maszyn wirtualnych funkcji Hyper-V do platformy Azure agenta maszyny wirtualnej platformy Azure na maszynie wirtualnej platformy Azure instaluje się po zakończeniu migracji.
+    - Jeśli przeprowadzasz migrację maszyn wirtualnych platformy Azure do regionu pomocniczego, agent maszyny wirtualnej platformy Azure musi zostać aprowizowany na maszynie wirtualnej przed migracją.
+    - Jeśli przeprowadzasz migrację maszyn wirtualnych funkcji Hyper-V na platformę Azure, zainstaluj agenta maszyny wirtualnej platformy Azure na maszynie wirtualnej platformy Azure po migracji.
 - Usuń ręcznie z maszyny wirtualnej wszelkie programy typu dostawca/agent usługi Site Recovery. W przypadku migracji maszyn wirtualnych lub serwerów fizycznych należy odinstalować usługę mobilności z maszyny Wirtualnej.
 - Aby zwiększyć elastyczność:
     - Zapewnij bezpieczeństwo danych – utwórz kopie zapasowe maszyn wirtualnych platformy Azure przy użyciu usługi Azure Backup. [Dowiedz się więcej]( https://docs.microsoft.com/azure/backup/quick-backup-vm-portal).

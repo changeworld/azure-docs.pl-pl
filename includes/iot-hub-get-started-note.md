@@ -5,11 +5,11 @@ ms.service: iot-hub
 ms.topic: include
 ms.date: 10/26/2018
 ms.openlocfilehash: e6ae89c8b14cfdcd1ac63863448d143b486be07b
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67183340"
 ---
 > [!NOTE]
-> Przed rozpoczęciem tego samouczka, wykonaj [symulatora w trybie online urządzenia Raspberry Pi](../articles/iot-hub/iot-hub-raspberry-pi-web-simulator-get-started.md) samouczka lub jednym z samouczków urządzenia; na przykład [Raspberry Pi w środowisku node.js](../articles/iot-hub/iot-hub-raspberry-pi-kit-node-get-started.md). W tych artykułach skonfiguruj swoje urządzenia Azure IoT i Centrum IoT hub i wdrożysz przykładową aplikację do uruchamiania na urządzeniu z systemem. Aplikacja wysyła dane zebrane czujnika do usługi IoT hub.
+> Przed rozpoczęciem tego samouczka, należy ukończyć samouczek [symulatora online Raspberry Pi](../articles/iot-hub/iot-hub-raspberry-pi-web-simulator-get-started.md) lub jeden z samouczków urządzenia; na przykład [Raspberry Pi z node.js](../articles/iot-hub/iot-hub-raspberry-pi-kit-node-get-started.md). W tych artykułach skonfigurujesz urządzenie IoT platformy Azure i centrum IoT hub i wdrożysz przykładową aplikację do uruchomienia na urządzeniu. Aplikacja wysyła zebrane dane z czujników do centrum IoT hub.

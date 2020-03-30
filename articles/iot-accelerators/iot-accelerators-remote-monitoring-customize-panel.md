@@ -1,6 +1,6 @@
 ---
-title: Dodawanie panelu z rozwiązaniem monitorowania zdalnego interfejsu użytkownika — Azure | Dokumentacja firmy Microsoft
-description: W tym artykule przedstawiono sposób dodawania nowego panelu do pulpitu nawigacyjnego w zdalne monitorowanie rozwiązań akceleratora internetowego interfejsu użytkownika.
+title: Dodawanie panelu do interfejsu użytkownika rozwiązania do zdalnego monitorowania — Azure | Dokumenty firmy Microsoft
+description: W tym artykule pokazano, jak dodać nowy panel do pulpitu nawigacyjnego w interfejsie użytkownika sieci Web akceleratora rozwiązania zdalnego monitorowania.
 author: dominicbetts
 manager: timlt
 ms.author: dobett
@@ -9,47 +9,47 @@ services: iot-accelerators
 ms.date: 10/05/2018
 ms.topic: conceptual
 ms.openlocfilehash: 3b855c3bed75945f44b55463bdacd049b7930aa7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "61447067"
 ---
-# <a name="add-a-custom-panel-to-the-dashboard-in-the-remote-monitoring-solution-accelerator-web-ui"></a>Dodawanie panelu niestandardowe do pulpitu nawigacyjnego w zdalne monitorowanie rozwiązań akceleratora internetowego interfejsu użytkownika
+# <a name="add-a-custom-panel-to-the-dashboard-in-the-remote-monitoring-solution-accelerator-web-ui"></a>Dodawanie panelu niestandardowego do pulpitu nawigacyjnego w interfejsie użytkownika sieci Web akceleratora rozwiązania zdalnego monitorowania
 
-W tym artykule pokazano, jak dodać nowy panel na stronie pulpitu nawigacyjnego w zdalne monitorowanie rozwiązań akceleratora internetowego interfejsu użytkownika. W artykule opisano:
+W tym artykule pokazano, jak dodać nowy panel do strony pulpitu nawigacyjnego w interfejsie użytkownika sieci Web akceleratora rozwiązania zdalnego monitorowania. W artykule opisano:
 
-- Jak przygotować lokalne Środowisko deweloperskie.
-- Jak dodać nowy panel do strony pulpitu nawigacyjnego w internetowym interfejsie użytkownika.
+- Jak przygotować lokalne środowisko programistyczne.
+- Jak dodać nowy panel do strony pulpitu nawigacyjnego w interfejsie użytkownika sieci Web.
 
-Panel przykład, w tym artykule, wyświetla się na istniejącej strony pulpitu nawigacyjnego.
+Przykładowy panel w tym artykule jest wyświetlany na istniejącej stronie pulpitu nawigacyjnego.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby wykonać kroki opisane w tym przewodniku z instrukcjami, potrzebne są następujące oprogramowanie zainstalowane na lokalnej maszynie do programowania:
+Aby wykonać kroki opisane w tym przewodniku, na lokalnym komputerze deweloperskim należy zainstalować następujące oprogramowanie:
 
-- [Usługa Git](https://git-scm.com/downloads)
+- [Git](https://git-scm.com/downloads)
 - [Node.js](https://nodejs.org/download/)
 
 ## <a name="before-you-start"></a>Przed rozpoczęciem
 
-Należy wykonać czynności opisane w [dodawania niestandardowej strony do monitorowania zdalnego rozwiązania akceleratora internetowego interfejsu użytkownika](iot-accelerators-remote-monitoring-customize-page.md) artykuł, aby kontynuować.
+Przed kontynuowaniem należy wykonać kroki opisane na stronie Dodawanie niestandardowego do artykułu [interfejsu użytkownika sieci web akceleratora rozwiązania zdalnego monitorowania.](iot-accelerators-remote-monitoring-customize-page.md)
 
 ## <a name="add-a-panel"></a>Dodawanie panelu
 
-Aby dodać panel do interfejsu użytkownika sieci web, należy dodać pliki źródłowe, które definiują panelu, a następnie zmodyfikuj pulpitu nawigacyjnego, aby wyświetlić panel.
+Aby dodać panel do interfejsu użytkownika sieci Web, należy dodać pliki źródłowe definiujące panel, a następnie zmodyfikować pulpit nawigacyjny, aby wyświetlić panel.
 
-### <a name="add-the-new-files-that-define-the-panel"></a>Dodaj nowe pliki, które definiują panelu
+### <a name="add-the-new-files-that-define-the-panel"></a>Dodawanie nowych plików definiujących panel
 
-Ułatwią Ci rozpoczęcie pracy, **src/wskazówki/składniki/stron/pulpit nawigacyjny/panele/examplePanel** folder zawiera pliki, które definiują panelu, w tym:
+Aby rozpocząć, **src /instruktaż/składniki/strony/deska rozdzielcza/panele/przykładPanel** folder zawiera pliki definiujące panel, w tym:
 
-**examplePanel.js**
+**przykładPanel.js**
 
 [!code-javascript[Example panel](~/remote-monitoring-webui/src/walkthrough/components/pages/dashboard/panels/examplePanel/examplePanel.js?name=panel "Example panel")]
 
-Kopiowanie **src/wskazówki/składniki/stron/pulpit nawigacyjny/panele/examplePanel** folder do **src/składniki/stron/pulpit nawigacyjny/paneli** folderu.
+Skopiuj folder **src/walkthrough/components/pages/dashboard/panels/examplePanel** do folderu **src/components/pages/dashboard/panels** folder.
 
-Dodawanie następującej operacji eksportowania do **src/walkthrough/components/pages/dashboard/panels/index.js** pliku:
+Dodaj następujący eksport do pliku **src/instruktażowy/składniki/strony/dashboard/panele/index.js:**
 
 ```js
 export * from './examplePanel';
@@ -57,9 +57,9 @@ export * from './examplePanel';
 
 ### <a name="add-the-panel-to-the-dashboard"></a>Dodawanie panelu do pulpitu nawigacyjnego
 
-Modyfikowanie **src/components/pages/dashboard/dashboard.js** dodać panel.
+Zmodyfikuj **src/components/pages/dashboard/dashboard.js,** aby dodać panel.
 
-Dodaj panel przykład do listy importów z paneli:
+Dodaj przykładowy panel do listy importów z paneli:
 
 ```js
 import {
@@ -82,18 +82,18 @@ Dodaj następującą definicję komórki do siatki w zawartości strony:
           </Cell>
 ```
 
-## <a name="test-the-flyout"></a>Testowanie okno wysuwane
+## <a name="test-the-flyout"></a>Testowanie wysuwu wysuwu
 
-Jeśli internetowy interfejs użytkownika nie jest jeszcze uruchomiona lokalnie, uruchom następujące polecenie w folderze głównym lokalnej kopii repozytorium:
+Jeśli interfejs użytkownika sieci Web nie jest jeszcze uruchomiony lokalnie, uruchom następujące polecenie w katalogu głównym lokalnej kopii repozytorium:
 
 ```cmd/sh
 npm start
 ```
 
-Poprzednie polecenie uruchamia interfejsu użytkownika lokalnie [ http://localhost:3000/dashboard ](http://localhost:3000/dashboard). Przejdź do **pulpit nawigacyjny** strony, aby wyświetlić nowy panel.
+Poprzednie polecenie uruchamia interfejs użytkownika [http://localhost:3000/dashboard](http://localhost:3000/dashboard)lokalnie w pliku . Przejdź do strony **pulpitu nawigacyjnego,** aby wyświetlić nowy panel.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-W tym artykule opisano dostępnych zasobów umożliwiających można dodawać lub dostosowywać pulpity nawigacyjne w internetowym interfejsie użytkownika w akceleratora rozwiązania monitorowania zdalnego.
+W tym artykule dowiesz się o dostępnych zasobach ułatwiające dodawanie lub dostosowywanie pulpitów nawigacyjnych w interfejsie użytkownika sieci Web w akceleratorze rozwiązań do zdalnego monitorowania.
 
-Aby uzyskać obszerniejszych informacji koncepcyjnych związanych akceleratora rozwiązania monitorowania zdalnego, zobacz [Architektura zdalnego monitorowania](iot-accelerators-remote-monitoring-sample-walkthrough.md).
+Aby uzyskać więcej informacji koncepcyjnych dotyczących akceleratora rozwiązań do zdalnego monitorowania, zobacz [Architektura zdalnego monitorowania](iot-accelerators-remote-monitoring-sample-walkthrough.md).

@@ -5,22 +5,22 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: 28aab15dc67e051190e8d4e35e92240a56fe54a6
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67183179"
 ---
-Następnie, jeśli wszystkie serwery w klastrze są uruchomione w systemie Windows Server 2008 R2 lub Windows Server 2012, należy sprawdzić, czy poprawka [KB2854082](https://support.microsoft.com/kb/2854082) jest zainstalowany na każdym z serwerów lokalnych lub maszyn wirtualnych platformy Azure, które są częścią klastra. Dowolny serwer lub maszynę Wirtualną, która jest w klastrze, ale nie w grupie dostępności powinny mieć również po zainstalowaniu tej poprawki.
+Następnie jeśli na serwerach klastra są uruchomione systemy Windows Server 2008 R2 lub Windows Server 2012, należy sprawdzić, czy poprawka [KB2854082](https://support.microsoft.com/kb/2854082) jest zainstalowana na każdym z serwerów lokalnych lub maszyn wirtualnych platformy Azure, które są częścią klastra. Każdy serwer lub maszyna wirtualna, który znajduje się w klastrze, ale nie w grupie dostępności, również powinien mieć zainstalowaną tę poprawkę.
 
-W sesji usług pulpitu zdalnego dla każdego z węzłów klastra, Pobierz [KB2854082](https://support.microsoft.com/kb/2854082) do katalogu lokalnego. Następnie należy zainstalować poprawkę w każdym węźle klastra po kolei. Jeśli usługa klastrowania jest aktualnie uruchomione w węźle klastra, ponownym uruchomieniu serwera po zakończeniu instalacji poprawki.
+W sesji pulpitu zdalnego dla każdego z węzłów klastra pobierz [plik KB2854082](https://support.microsoft.com/kb/2854082) do katalogu lokalnego. Następnie zainstaluj poprawkę w każdym węźle klastra sekwencyjnie. Jeśli usługa klastrowania jest aktualnie uruchomiona w węźle klastra, serwer zostanie ponownie uruchomiony po zakończeniu instalacji poprawki.
 
 > [!WARNING]
-> Zatrzymanie usługi klastrowania lub ponowne uruchomienie serwera wpływa na kondycji kworum klastra i grupy dostępności i może dojść do klastra, aby przejść do trybu offline. Aby zapewnić wysoką dostępność klastra podczas instalacji, upewnij się, że:
+> Zatrzymanie usługi klastrowania lub ponowne uruchomienie serwera wpływa na kondycję kworum klastra i grupy dostępności i może spowodować przejażenie klastra w trybie offline. Aby zachować wysoką dostępność klastra podczas instalacji, upewnij się, że:
 > 
-> * Klaster znajduje się w optymalny kworum kondycji. 
-> * Przed zainstalowaniem poprawki na dowolnym węźle wszystkie węzły klastra są w trybie online.
-> * Przed zainstalowaniem poprawki na jednym z węzłów w klastrze, Zezwalaj na instalację poprawkę do uruchomienia do ukończenia na jednym węźle, w tym w pełni ponowne uruchomienie serwera.
+> * Klaster jest w optymalnym stanie zdrowia kworum. 
+> * Przed zainstalowaniem poprawki w dowolnym węźle wszystkie węzły klastra są w trybie online.
+> * Przed zainstalowaniem poprawki w dowolnym innym węźle w klastrze należy zezwolić na uruchomienie instalacji poprawki w celu ukończenia jednego węzła, w tym pełnego ponownego uruchomienia serwera.
 > 
 > 
 

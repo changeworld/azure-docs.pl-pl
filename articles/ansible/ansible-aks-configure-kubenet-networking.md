@@ -1,35 +1,35 @@
 ---
-title: Samouczek — Konfigurowanie sieci korzystającą wtyczki kubenet w usłudze Azure Kubernetes Service (AKS) za pomocą rozwiązania ansible
-description: Informacje dotyczące konfigurowania sieci korzystającą wtyczki kubenet w klastrze usługi Azure Kubernetes Service (AKS) za pomocą rozwiązania ansible
-keywords: rozwiązania ansible, Azure, DevOps, bash, cloudshell, element PlayBook, AKS, kontener, AKS, Kubernetes
+title: Samouczek — konfigurowanie sieci kubenet w usłudze Azure Kubernetes (AKS) przy użyciu usługi Ansible
+description: Dowiedz się, jak skonfigurować sieć kubenet w klastrze usługi Azure Kubernetes Service (AKS) za pomocą ansible
+keywords: ansible, azure, devops, bash, cloudshell, playbook, aks, kontener, aks, kubernetes
 ms.topic: tutorial
 ms.date: 10/23/2019
 ms.openlocfilehash: bfb19371ad651439c087cebd03023d48852ee2df
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74156878"
 ---
-# <a name="tutorial-configure-kubenet-networking-in-azure-kubernetes-service-aks-using-ansible"></a>Samouczek: Konfigurowanie sieci korzystającą wtyczki kubenet w usłudze Azure Kubernetes Service (AKS) za pomocą rozwiązania ansible
+# <a name="tutorial-configure-kubenet-networking-in-azure-kubernetes-service-aks-using-ansible"></a>Samouczek: Konfigurowanie sieci kubenet w usłudze Azure Kubernetes (AKS) przy użyciu usługi Ansible
 
 [!INCLUDE [ansible-28-note.md](../../includes/ansible-28-note.md)]
 
 [!INCLUDE [open-source-devops-intro-aks.md](../../includes/open-source-devops-intro-aks.md)]
 
-Za pomocą AKS można wdrożyć klaster przy użyciu następujących modeli sieci:
+Za pomocą usługi AKS można wdrożyć klaster przy użyciu następujących modeli sieciowych:
 
-- [Korzystającą wtyczki kubenet Networking](/azure/aks/configure-kubenet) — zasoby sieciowe są zwykle tworzone i konfigurowane jako wdrożony klaster AKS.
-- [Sieć Azure Container Network Interface (CNI) Networking](/azure/aks/configure-azure-cni) — klaster AKS jest połączony z istniejącymi zasobami i konfiguracjami sieci wirtualnej.
+- [Sieć Kubenet](/azure/aks/configure-kubenet) — zasoby sieciowe są zazwyczaj tworzone i konfigurowane podczas wdrażania klastra AKS.
+- [Sieci interfejsu CNI (Azure Container Networking Interface)](/azure/aks/configure-azure-cni) — klaster AKS jest połączony z istniejącymi zasobami i konfiguracjami sieci wirtualnej.
 
-Aby uzyskać więcej informacji na temat sieci do aplikacji w AKS, zobacz [pojęcia dotyczące sieci dla aplikacji w AKS](/azure/aks/concepts-network).
+Aby uzyskać więcej informacji na temat sieci do aplikacji w aks, zobacz [Pojęcia sieci dla aplikacji w AKS](/azure/aks/concepts-network).
 
 [!INCLUDE [ansible-tutorial-goals.md](../../includes/ansible-tutorial-goals.md)]
 
 > [!div class="checklist"]
 >
 > * Tworzenie klastra AKS
-> * Konfigurowanie sieci korzystającą wtyczki kubenet Azure
+> * Konfigurowanie sieci kubenet platformy Azure
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -39,10 +39,10 @@ Aby uzyskać więcej informacji na temat sieci do aplikacji w AKS, zobacz [poję
 
 ## <a name="create-a-virtual-network-and-subnet"></a>Tworzenie sieci wirtualnej i podsieci
 
-Kod element PlayBook w tej sekcji tworzy następujące zasoby platformy Azure:
+Kod podręcznika w tej sekcji tworzy następujące zasoby platformy Azure:
 
 - Sieć wirtualna
-- Podsieć w sieci wirtualnej
+- Podsieć w ramach sieci wirtualnej
 
 Zapisz następujący podręcznik jako `vnet.yml`:
 
@@ -65,7 +65,7 @@ Zapisz następujący podręcznik jako `vnet.yml`:
 
 ## <a name="create-an-aks-cluster-in-the-virtual-network"></a>Tworzenie klastra AKS w sieci wirtualnej
 
-Kod element PlayBook w tej sekcji tworzy klaster AKS w sieci wirtualnej. 
+Kod podręcznika w tej sekcji tworzy klaster AKS w sieci wirtualnej. 
 
 Zapisz następujący podręcznik jako `aks.yml`:
 
@@ -101,18 +101,18 @@ Zapisz następujący podręcznik jako `aks.yml`:
   register: aks
 ```
 
-Poniżej przedstawiono niektóre kluczowe uwagi, które należy wziąć pod uwagę podczas pracy z przykładową element PlayBook:
+Oto kilka kluczowych uwag, które należy wziąć pod uwagę podczas pracy z przykładowym podręcznikiem:
 
-- Użyj modułu `azure_rm_aks_version`, aby znaleźć obsługiwaną wersję.
-- `vnet_subnet_id` to podsieć utworzona w poprzedniej sekcji.
-- `network_profile` definiuje właściwości wtyczki sieciowej korzystającą wtyczki kubenet.
-- `service_cidr` służy do przypisywania wewnętrznych usług w klastrze AKS na adres IP. Ten zakres adresów IP powinien być przestrzenią adresową, która nie jest używana w innym miejscu w sieci. 
-- Adres `dns_service_ip` powinien być adresem ". 10" zakresu adresów IP usługi.
-- `pod_cidr` powinna być dużą przestrzenią adresową, która nie jest używana w innym miejscu w środowisku sieciowym. Zakres adresów musi być wystarczająco duży, aby pomieścić liczbę węzłów, do których można skalować w górę. Nie można zmienić tego zakresu adresów po wdrożeniu klastra.
-- Zakres adresów IP pod jest używany do przypisywania przestrzeni adresowej/24 do każdego węzła w klastrze. W poniższym przykładzie `pod_cidr` 192.168.0.0/16 przypisuje pierwszy węzeł 192.168.0.0/24, drugi węzeł 192.168.1.0/24 i trzeci węzeł 192.168.2.0/24.
-- W miarę skalowania lub uaktualniania klastra platforma Azure nadal przypisuje zakres adresów IP pod każdym nowym węzłem.
-- Element PlayBook ładuje `ssh_key` z `~/.ssh/id_rsa.pub`. Jeśli zmodyfikujesz go, użyj formatu jednowierszowego — rozpoczynając od "SSH-RSA" (bez cudzysłowów).
-- Wartości `client_id` i `client_secret` są ładowane z `~/.azure/credentials`, czyli domyślnego pliku poświadczeń. Można ustawić te wartości jako nazwę główną usługi lub załadować te wartości ze zmiennych środowiskowych:
+- Użyj `azure_rm_aks_version` modułu, aby znaleźć obsługiwana wersja.
+- Jest `vnet_subnet_id` to podsieć utworzona w poprzedniej sekcji.
+- Definiuje `network_profile` właściwości wtyczki sieci kubenet.
+- Służy `service_cidr` do przypisywania usług wewnętrznych w klastrze AKS do adresu IP. Ten zakres adresów IP powinien być przestrzenią adresową, która nie jest używana w innym miejscu w sieci. 
+- Adres `dns_service_ip` powinien być adresem ".10" zakresu adresów IP usługi.
+- Powinna `pod_cidr` to być duża przestrzeń adresowa, która nie jest używana w innym miejscu w środowisku sieciowym. Zakres adresów musi być wystarczająco duży, aby pomieścić liczbę węzłów, które mają być skalowane do. Nie można zmienić tego zakresu adresów po wdrożeniu klastra.
+- Zakres adresów IP zasobnika służy do przypisywania /24 przestrzeni adresowej do każdego węzła w klastrze. W `pod_cidr` poniższym przykładzie 192.168.0.0/16 przypisuje pierwszy węzeł 192.168.0.0/24, drugi węzeł 192.168.1.0/24 i trzeci węzeł 192.168.2.0/24.
+- W miarę skalowania lub uaktualniania klastra platforma Azure nadal przypisuje zakres adresów IP zasobnika do każdego nowego węzła.
+- Podręcznik ładuje `ssh_key` się `~/.ssh/id_rsa.pub`z . Jeśli go zmodyfikujesz, użyj formatu jednowierszowego - zaczynając od "ssh-rsa" (bez cudzysłowów).
+- I `client_id` `client_secret` wartości są `~/.azure/credentials`ładowane z , który jest domyślnym plikiem poświadczeń. Można ustawić te wartości na jednostkę usługi lub załadować te wartości ze zmiennych środowiskowych:
 
     ```yml
     client_id: "{{ lookup('env', 'AZURE_CLIENT_ID') }}"
@@ -121,9 +121,9 @@ Poniżej przedstawiono niektóre kluczowe uwagi, które należy wziąć pod uwag
 
 ## <a name="associate-the-network-resources"></a>Kojarzenie zasobów sieciowych
 
-Podczas tworzenia klastra AKS są tworzone sieciowe grupy zabezpieczeń i trasy. Te zasoby są zarządzane przez usługę AKS i aktualizowane podczas tworzenia i uwidaczniania usług. Skojarz sieciową grupę zabezpieczeń i tabelę tras z podsiecią sieci wirtualnej w następujący sposób. 
+Podczas tworzenia klastra AKS tworzone są sieciowe grupy zabezpieczeń i tabela tras. Te zasoby są zarządzane przez usługi AKS i aktualizowane podczas tworzenia i uwidaczniania usług. Skojarzyć grupę zabezpieczeń sieci i tabelę tras z podsiecią sieci wirtualnej w następujący sposób. 
 
-Zapisz następujący element PlayBook jako `associate.yml`.
+Zapisz poniższy podręcznik `associate.yml`jako .
 
 ```yml
 - name: Get route table
@@ -155,15 +155,15 @@ Zapisz następujący element PlayBook jako `associate.yml`.
       route_table: "{{ routetable.route_tables[0].id }}"
 ```
 
-Poniżej przedstawiono niektóre kluczowe uwagi, które należy wziąć pod uwagę podczas pracy z przykładową element PlayBook:
+Oto kilka kluczowych uwag, które należy wziąć pod uwagę podczas pracy z przykładowym podręcznikiem:
 
-- `node_resource_group` to nazwa grupy zasobów, w której są tworzone węzły AKS.
-- `vnet_subnet_id` to podsieć utworzona w poprzedniej sekcji.
+- Jest `node_resource_group` to nazwa grupy zasobów, w której tworzone są węzły AKS.
+- Jest `vnet_subnet_id` to podsieć utworzona w poprzedniej sekcji.
 
 
-## <a name="run-the-sample-playbook"></a>Uruchamianie przykładowej element PlayBook
+## <a name="run-the-sample-playbook"></a>Uruchamianie przykładowego podręcznika
 
-W tej sekcji znajduje się kompletna Przykładowa element PlayBook, która wywołuje zadania utworzone w tym artykule. 
+W tej sekcji wymieniono pełny przykładowy podręcznik, który wywołuje zadania tworzenia w tym artykule. 
 
 Zapisz następujący podręcznik jako `aks-kubenet.yml`:
 
@@ -206,19 +206,19 @@ Zapisz następujący podręcznik jako `aks-kubenet.yml`:
            var: output.aks[0]
 ```
 
-W sekcji `vars` wprowadź następujące zmiany:
+W `vars` sekcji wejmij następujące zmiany:
 
-- Dla klucza `resource_group` Zmień wartość `aksansibletest` na nazwę grupy zasobów.
-- Dla klucza `name` Zmień wartość `aksansibletest` na nazwę AKS.
-- Dla klucza `Location` Zmień wartość `eastus` na lokalizację grupy zasobów.
+- W `resource_group` przypadku klucza `aksansibletest` zmień wartość na nazwę grupy zasobów.
+- W `name` przypadku klucza `aksansibletest` zmień wartość na nazwę usługi AKS.
+- W `Location` przypadku klucza `eastus` zmień wartość na lokalizację grupy zasobów.
 
-Uruchom kompletną element PlayBook za pomocą polecenia `ansible-playbook`:
+Uruchom kompletny podręcznik za `ansible-playbook` pomocą polecenia:
 
 ```bash
 ansible-playbook aks-kubenet.yml
 ```
 
-Uruchomienie element PlayBook pokazuje wyniki podobne do następujących:
+Uruchomienie podręcznika pokazuje wyniki podobne do następujących danych wyjściowych:
 
 ```Output
 PLAY [localhost] 
@@ -325,9 +325,9 @@ localhost                  : ok=15   changed=2    unreachable=0    failed=0    s
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Gdy nie jest już potrzebne, Usuń zasoby utworzone w tym artykule. 
+Gdy nie są już potrzebne, usuń zasoby utworzone w tym artykule. 
 
-Zapisz następujący kod jako `cleanup.yml`:
+Zapisz następujący kod `cleanup.yml`jako:
 
 ```yml
 ---
@@ -342,9 +342,9 @@ Zapisz następujący kod jako `cleanup.yml`:
             force: yes
 ```
 
-W sekcji `vars` Zamień symbol zastępczy `{{ resource_group_name }}` na nazwę grupy zasobów.
+W `vars` sekcji zastąp `{{ resource_group_name }}` symbol zastępczy nazwą grupy zasobów.
 
-Uruchom element PlayBook przy użyciu polecenia `ansible-playbook`:
+Uruchom podręcznik za `ansible-playbook` pomocą polecenia:
 
 ```bash
 ansible-playbook cleanup.yml
@@ -353,4 +353,4 @@ ansible-playbook cleanup.yml
 ## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Samouczek — Konfigurowanie sieci Azure Container Networking Interface (CNI) w AKS przy użyciu rozwiązania ansible](./ansible-aks-configure-cni-networking.md)
+> [Samouczek — konfigurowanie sieci CNI (Azure Container Networking Interface) w usłudze AKS przy użyciu usługi Ansible](./ansible-aks-configure-cni-networking.md)

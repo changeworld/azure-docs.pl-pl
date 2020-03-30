@@ -6,12 +6,12 @@ ms.author: sudbalas
 ms.date: 03/08/2020
 ms.service: key-vault
 ms.topic: quickstart
-ms.openlocfilehash: c24be648e4ca1433c7c2af3d659bf4520a7a188c
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 53036a43cbb0fe3c3a1e61f7124fe7dcbef228f3
+ms.sourcegitcommit: 0553a8b2f255184d544ab231b231f45caf7bbbb0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79457291"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80388937"
 ---
 # <a name="integrate-key-vault-with-azure-private-link"></a>Integracja usługi Key Vault z usługą Azure Private Link
 
@@ -57,7 +57,7 @@ Po skonfigurowaniu podstaw magazynu kluczy wybierz kartę Sieć i wykonaj nastę
 1. Pozostaw opcję "integruj się z systemem DNS strefy prywatnej" bez zmian.  
 1. Wybierz "Ok".
 
-    ![Image (Obraz)](./media/private-link-service-2.png)
+    ![Image (Obraz)](./media/private-link-service-8.png)
  
 Teraz będzie można zobaczyć skonfigurowany prywatny punkt końcowy. Teraz masz możliwość usunięcia i edycji tego prywatnego punktu końcowego. Wybierz przycisk "Recenzja + Utwórz" i utwórz przechowalnię kluczy. Wdrożenie potrwa od 5 do 10 minut. 
 

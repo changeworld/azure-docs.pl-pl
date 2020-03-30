@@ -1,30 +1,29 @@
 ---
-title: Cennik ofert dla maszyn wirtualnych | Portal Azure Marketplace
-description: Wyjaśnia trzy metody określania cen ofert maszyn wirtualnych.
-services: Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+title: Ceny ofert maszyn wirtualnych | Azure Marketplace
+description: W tym artykule wyjaśniono trzy metody określania cen ofert maszyn wirtualnych.
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/13/2018
-ms.author: pabutler
-ms.openlocfilehash: c7ea5afeb46c30837c2ae53e871bb64f5d8cf292
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: b96dcfa6a140d5c16208fd8183003a7462b1aa56
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73827336"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80280443"
 ---
 <a name="pricing-for-virtual-machine-offers"></a>Cennik ofert maszyn wirtualnych
 ==================================
 
-Istnieją trzy sposoby określania cen dla ofert maszyn wirtualnych: niestandardowe ceny podstawowe, ceny za podstawowe i Cennik arkusza kalkulacyjnego.
+Istnieją trzy sposoby określania cen dla ofert maszyn wirtualnych: dostosowane ceny podstawowe, ceny za rdzeń i ceny arkuszy kalkulacyjnych.
 
 
 <a name="customized-core-pricing"></a>Dostosowane ceny podstawowe
 -----------------------
 
-Cennik jest specyficzny dla każdej kombinacji regionów i podstawowych. Każdy region na liście Sprzedaj musi być określony w sekcji **virtualMachinePricing**/**regionPrices** definicji.  Użyj poprawnych kodów walut dla każdego [regionu](#regions) w żądaniu.  Poniższy przykład ilustruje następujące wymagania:
+Ceny są specyficzne dla każdego regionu i kombinacji rdzenia. Każdy region na liście sprzedaży musi być określony w **virtualMachinePricing**/**regionuceny** sekcji definicji.  Użyj odpowiednich kodów walut dla każdego [regionu](#regions) w swoim żądaniu.  W poniższym przykładzie przedstawiono następujące wymagania:
 
 ``` json
     "virtualMachinePricing": 
@@ -67,10 +66,10 @@ Cennik jest specyficzny dla każdej kombinacji regionów i podstawowych. Każdy 
 ```
 
 
-<a name="per-core-pricing"></a>Cennik na rdzeń
+<a name="per-core-pricing"></a>Ceny za rdzeń
 ----------------
 
-W takim przypadku wydawcy określają jedną cenę w USD dla swojej jednostki SKU, a wszystkie inne ceny są generowane automatycznie. Cena za rdzeń jest określona w **pojedynczym** parametrze żądania.
+W takim przypadku wydawcy określają jedną cenę w USD za jednostkę SKU, a wszystkie inne ceny są generowane automatycznie. Cena za rdzeń jest określona w **pojedynczym** parametrze w żądaniu.
 
 ``` json
      "virtualMachinePricing": 
@@ -85,10 +84,10 @@ W takim przypadku wydawcy określają jedną cenę w USD dla swojej jednostki SK
 ```
 
 
-<a name="spreadsheet-pricing"></a>Cennik arkusza kalkulacyjnego
+<a name="spreadsheet-pricing"></a>Ceny arkuszy kalkulacyjnych
 -------------------
 
-Wydawca może również przekazać swój arkusz cen do tymczasowej lokalizacji przechowywania, a następnie dołączyć identyfikator URI w żądaniu, jak inne artefakty plików. Arkusz kalkulacyjny zostanie następnie przekazany, przetłumaczony w celu oszacowania określonego harmonogramu cen, a wreszcie aktualizuje ofertę przy użyciu informacji o cenach. Kolejne żądania GET dla oferty zwracają identyfikator URI arkusza kalkulacyjnego oraz ocenione ceny dla regionu.
+Wydawca może również przekazać arkusz kalkulacyjny cen do tymczasowej lokalizacji przechowywania, a następnie uwzględnić identyfikator URI w żądaniu, podobnie jak inne artefakty plików. Arkusz kalkulacyjny jest następnie przesyłany, tłumaczony w celu oceny określonego harmonogramu cen, a na koniec aktualizuje ofertę informacjami o cenach. Kolejne żądania GET dla oferty zwróci identyfikator URI arkusza kalkulacyjnego i ocenione ceny dla regionu.
 
 ``` json
      "virtualMachinePricing": 
@@ -101,89 +100,89 @@ Wydawca może również przekazać swój arkusz cen do tymczasowej lokalizacji p
      }
 ```
 
-<a name="new-core-sizes-added-on-722019"></a>Nowe rozmiary podstawowe dodane do 7/2/2019
+<a name="new-core-sizes-added-on-722019"></a>Dodano nowe rozmiary rdzeni 7/2/2019
 ---------------------------
 
-Wydawca maszyn wirtualnych został powiadomiony 2 lipca 2019 o dodawaniu nowych cen dla nowych rozmiarów maszyn wirtualnych platformy Azure (na podstawie liczby rdzeni).  Nowe ceny są dla wielkości rdzeni 10, 44, 48, 60, 120, 208 i 416.  W przypadku istniejącej maszyny wirtualnej nowe ceny dla tych rozmiarów rdzeni zostały automatycznie obliczone na podstawie bieżących cen.  Wydawcy mają do 1 sierpnia 2019 w celu przejrzenia dodatkowych cen i wprowadzenia wymaganych zmian.  Po tej dacie, jeśli nie została jeszcze ponownie opublikowana przez wydawcę, automatycznie obliczone ceny dla tych nowych rozmiarów podstawowych zaczną obowiązywać.
+Wydawcy maszyn wirtualnych zostali powiadomieni 2 lipca 2019 r. o dodaniu nowych cen nowych rozmiarów maszyn wirtualnych platformy Azure (na podstawie liczby rdzeni).  Nowe ceny są dla podstawowych rozmiarów 10, 44, 48, 60, 120, 208 i 416.  W przypadku istniejących ofert maszyn wirtualnych nowe ceny dla tych rozmiarów rdzeni zostały automatycznie obliczone na podstawie cen bieżących.  Wydawcy mają czas do 1 sierpnia 2019 r., aby przejrzeć dodatkowe ceny i wprowadzić wszelkie pożądane zmiany.  Po tej dacie, jeśli wydawca nie został jeszcze ponownie opublikowany, automatycznie obliczone ceny dla tych nowych rozmiarów rdzenia zostaną zastosowane.
 
 
 <a name="regions"></a>Regiony
 -------
 
-W poniższej tabeli przedstawiono różne regiony, które można określić dla dostosowywanych podstawowych cen i ich kodów walutowych.
+W poniższej tabeli przedstawiono różne regiony, które można określić dla podstawowych cen podstawowych, oraz odpowiadające im kody walut.
 
 | **Region** | **Nazwa**             | **Kod waluty** |
 |------------|----------------------|-------------------|
-| DZ         | Algieria              | DZD               |
+| DZ         | Algieria              | Dzd               |
 | AR         | Argentyna            | ARS               |
 | AU         | Australia            | AUD               |
 | AT         | Austria              | EUR               |
-| BH         | Bahrajn              | BHD               |
+| BH         | Bahrajn              | Bhd               |
 | BY         | Białoruś              | RUB               |
 | BE         | Belgia              | EUR               |
 | BR         | Brazylia               | USD               |
-| BG         | Bułgaria             | BGN               |
+| BG         | Bułgaria             | Bgn               |
 | CA         | Kanada               | CAD               |
-| CL         | Chile                | CLP               |
-| CO         | Kolumbia             | WPROWADZANE               |
-| CR         | Kostaryka           | CRC               |
-| HR         | Chorwacja              | HRK               |
+| CL         | Chile                | Clp               |
+| CO         | Kolumbia             | Cop               |
+| CR         | Kostaryka           | Crc               |
+| HR         | Chorwacja              | Hrk               |
 | CY         | Cypr               | EUR               |
-| CZ         | Czechy       | CZK               |
+| CZ         | Czechy       | Czk               |
 | DK         | Dania              | DKK               |
 | DO         | Dominikana   | USD               |
 | EC         | Ekwador              | USD               |
-| EG         | Egipt                | EGP               |
+| EG         | Egipt                | Egp               |
 | SV         | Salwador          | USD               |
 | EE         | Estonia              | EUR               |
 | FI         | Finlandia              | EUR               |
 | PW         | Francja               | EUR               |
 | DE         | Niemcy              | EUR               |
 | GR         | Grecja               | EUR               |
-| GT         | Gwatemala            | GTQ               |
-| HK         | Hongkong SAR        | HKD               |
-| HU         | Węgry              | HUF               |
-| IS         | Islandia              | Alokacja               |
+| GT         | Gwatemala            | z o.o.               |
+| HK         | SRA Hongkong        | HKD               |
+| HU         | Węgry              | Huf               |
+| IS         | Islandia              | Isk               |
 | IN         | Indie                | INR               |
 | ID         | Indonezja            | IDR               |
 | IE         | Irlandia              | EUR               |
-| IL         | Izrael               | ILS               |
+| IL         | Izrael               | Ils               |
 | IT         | Włochy                | EUR               |
 | JP         | Japonia                | JPY               |
-| JO         | Jordania               | JOD               |
-| KZ         | Kazachstan           | KZT               |
-| KE         | Kenia                | KES               |
+| JO         | Jordania               | JOD (jod)               |
+| KZ         | Kazachstan           | Kzt               |
+| KE         | Kenia                | Kes               |
 | KR         | Korea                | KRW               |
-| KW         | Kuwejt               | KWD               |
+| KW         | Kuwejt               | Kwd               |
 | LV         | Łotwa               | EUR               |
 | LI         | Liechtenstein        | CHF               |
 | LT         | Litwa            | EUR               |
 | LU         | Luksemburg           | EUR               |
-| MK         | Macedonia Północna      | MKD               |
+| MK         | Macedonia Północna      | Mkd               |
 | MY         | Malezja             | MYR               |
 | MT         | Malta                | EUR               |
 | MX         | Meksyk               | MXN               |
-| Pamiętaj         | Czarnogóra           | EUR               |
-| MA         | Maroko              | Mad —               |
+| ME         | Czarnogóra           | EUR               |
+| MA         | Maroko              | Mad               |
 | NL         | Holandia          | EUR               |
 | NZ         | Nowa Zelandia          | NZD               |
-| NG         | Nigeria              | NGN               |
+| NG         | Nigeria              | Ngn               |
 | NO         | Norwegia               | NOK               |
-| OM         | Oman                 | OMR               |
-| PK         | Pakistan             | PKR               |
+| OM         | Oman                 | Omr               |
+| PK         | Pakistan             | Pkr               |
 | PA         | Panama               | USD               |
-| PY         | Paragwaj             | PYG               |
-| PE         | Peru                 | ZA               |
+| PY         | Paragwaj             | Pyg               |
+| PE         | Peru                 | Pióro               |
 | PH         | Filipiny          | PHP               |
-| PL         | Polska               | PLN               |
+| PL         | Polska               | Pln               |
 | PT         | Portugalia             | EUR               |
 | PR         | Portoryko          | USD               |
-| QA         | Katar                | QAR               |
-| RO         | Rumunia              | Piotr               |
+| QA         | Katar                | Qar               |
+| RO         | Rumunia              | Ron               |
 | RU         | Rosja               | RUB               |
 | SA         | Arabia Saudyjska         | SAR               |
-| RS         | Serbia               | RSD               |
-| SG         | Singapur            | SGD               |
+| RS         | Serbia               | Rsd               |
+| SG         | Singapur            | Stochastyczny spadek gradientu               |
 | SK         | Słowacja             | EUR               |
 | SI         | Słowenia             | EUR               |
 | ZA         | Republika Południowej Afryki         | ZAR               |
@@ -192,14 +191,14 @@ W poniższej tabeli przedstawiono różne regiony, które można określić dla 
 | SE         | Szwecja               | SEK               |
 | CH         | Szwajcaria          | CHF               |
 | TW         | Tajwan               | TWD               |
-| TH         | Tajlandia             | THB               |
-| TT         | Trynidad i Tobago  | DOCELOWY               |
-| TN         | Tunezja              | TND               |
+| TH         | Tajlandia             | Thb               |
+| TT         | Trynidad i Tobago  | Ttd               |
+| TN         | Tunezja              | Tnd               |
 | TR         | Turcja               | TRY               |
-| UA         | Ukraina              | UAH               |
+| UA         | Ukraina              | Uah               |
 | AE         | Zjednoczone Emiraty Arabskie | EUR               |
 | GB         | Wielka Brytania       | GBP               |
 | USA         | Stany Zjednoczone        | USD               |
-| UY         | Urugwaj              | UYU               |
+| UY         | Urugwaj              | Uyu               |
 | VE         | Wenezuela            | USD               |
 |  |  |  |
