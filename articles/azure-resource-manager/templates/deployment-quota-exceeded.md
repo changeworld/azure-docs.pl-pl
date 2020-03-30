@@ -1,60 +1,60 @@
 ---
-title: Przekroczono limit przydziału wdrożenia
-description: Opisuje sposób rozwiązywania problemów z więcej niż 800 wdrożeniami w historii grupy zasobów.
+title: Przekroczono przydział wdrożenia
+description: W tym artykule opisano sposób rozwiązywania problemu z posiadaniem więcej niż 800 wdrożeń w historii grupy zasobów.
 ms.topic: troubleshooting
 ms.date: 10/04/2019
-ms.openlocfilehash: 7f389827513562a3add67f022fec360081754b02
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 919cd9a3482401cd47516e2677b0bf58387488b0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75477826"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80245093"
 ---
-# <a name="resolve-error-when-deployment-count-exceeds-800"></a>Usuń błąd, gdy liczba wdrożeń przekracza 800
+# <a name="resolve-error-when-deployment-count-exceeds-800"></a>Rozwiązywanie problemów, gdy liczba wdrożeń przekracza 800
 
-Każda grupa zasobów jest ograniczona do 800 wdrożeń w swojej historii wdrażania. W tym artykule opisano błąd pojawiający się w przypadku niepowodzenia wdrożenia, ponieważ spowodowałoby to przekroczenie dozwolonych wdrożeń 800. Aby rozwiązać ten problem, Usuń wdrożenia z historii grupy zasobów. Usunięcie wdrożenia z historii nie ma wpływu na żadne wdrożone zasoby.
+Każda grupa zasobów jest ograniczona do 800 wdrożeń w historii wdrażania. W tym artykule opisano błąd, który pojawia się, gdy wdrożenie nie powiedzie się, ponieważ przekracza dozwolone 800 wdrożeń. Aby rozwiązać ten problem, usuń wdrożenia z historii grupy zasobów. Usunięcie wdrożenia z historii nie ma wpływu na żadne zasoby, które zostały wdrożone.
 
 ## <a name="symptom"></a>Objaw
 
-Podczas wdrażania zostanie wyświetlony komunikat o błędzie informujący o tym, że bieżące wdrożenie przekroczy przydział 800 wdrożeń.
+Podczas wdrażania pojawia się błąd informujący, że bieżące wdrożenie przekroczy przydział 800 wdrożeń.
 
 ## <a name="solution"></a>Rozwiązanie
 
 ### <a name="azure-cli"></a>Interfejs wiersza polecenia platformy Azure
 
-Użyj polecenia [AZ Group Deployment Delete](/cli/azure/group/deployment#az-group-deployment-delete) , aby usunąć wdrożenia z historii.
+Użyj polecenia [usuń grupy wdrażania AZ,](/cli/azure/group/deployment) aby usunąć wdrożenia z historii.
 
 ```azurecli-interactive
-az group deployment delete --resource-group exampleGroup --name deploymentName
+az deployment group delete --resource-group exampleGroup --name deploymentName
 ```
 
-Aby usunąć wszystkie wdrożenia starsze niż pięć dni, użyj:
+Aby usunąć wszystkie wdrożenia starsze niż pięć dni, należy użyć:
 
 ```azurecli-interactive
 startdate=$(date +%F -d "-5days")
-deployments=$(az group deployment list --resource-group exampleGroup --query "[?properties.timestamp<'$startdate'].name" --output tsv)
+deployments=$(az deployment group list --resource-group exampleGroup --query "[?properties.timestamp<'$startdate'].name" --output tsv)
 
 for deployment in $deployments
 do
-  az group deployment delete --resource-group exampleGroup --name $deployment
+  az deployment group delete --resource-group exampleGroup --name $deployment
 done
 ```
 
-Bieżącą liczbę można uzyskać w historii wdrożenia za pomocą następującego polecenia:
+Bieżącą liczbę w historii wdrażania można uzyskać za pomocą następującego polecenia:
 
 ```azurecli-interactive
-az group deployment list --resource-group exampleGroup --query "length(@)"
+az deployment group list --resource-group exampleGroup --query "length(@)"
 ```
 
-### <a name="azure-powershell"></a>Program Azure PowerShell
+### <a name="azure-powershell"></a>Azure PowerShell
 
-Użyj polecenia [Remove-AzResourceGroupDeployment](/powershell/module/az.resources/remove-azresourcegroupdeployment) , aby usunąć wdrożenia z historii.
+Użyj polecenia [Usuń-AzResourceGroupDeployment,](/powershell/module/az.resources/remove-azresourcegroupdeployment) aby usunąć wdrożenia z historii.
 
 ```azurepowershell-interactive
 Remove-AzResourceGroupDeployment -ResourceGroupName exampleGroup -Name deploymentName
 ```
 
-Aby usunąć wszystkie wdrożenia starsze niż pięć dni, użyj:
+Aby usunąć wszystkie wdrożenia starsze niż pięć dni, należy użyć:
 
 ```azurepowershell-interactive
 $deployments = Get-AzResourceGroupDeployment -ResourceGroupName exampleGroup | Where-Object Timestamp -lt ((Get-Date).AddDays(-5))
@@ -64,7 +64,7 @@ foreach ($deployment in $deployments) {
 }
 ```
 
-Bieżącą liczbę można uzyskać w historii wdrożenia za pomocą następującego polecenia:
+Bieżącą liczbę w historii wdrażania można uzyskać za pomocą następującego polecenia:
 
 ```azurepowershell-interactive
 (Get-AzResourceGroupDeployment -ResourceGroupName exampleGroup).Count
@@ -72,7 +72,7 @@ Bieżącą liczbę można uzyskać w historii wdrożenia za pomocą następując
 
 ## <a name="third-party-solutions"></a>Rozwiązania innych firm
 
-Poniższe scenariusze dotyczące adresów zewnętrznych:
+Następujące rozwiązania zewnętrzne dotyczą określonych scenariuszy:
 
-* [Rozwiązania Azure Logic Apps i programu PowerShell](https://devkimchi.com/2018/05/30/managing-excessive-arm-deployment-histories-with-logic-apps/)
+* [Usługi Azure Logic Apps i rozwiązania powershell](https://devkimchi.com/2018/05/30/managing-excessive-arm-deployment-histories-with-logic-apps/)
 * [Rozszerzenie AzDevOps](https://github.com/christianwaha/AzureDevOpsExtensionCleanRG)

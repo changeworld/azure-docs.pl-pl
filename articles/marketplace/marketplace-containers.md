@@ -1,50 +1,49 @@
 ---
-title: Przewodnik publikowania oferty kontenerów dla portalu Azure Marketplace
+title: Przewodnik publikowania ofert kontenerów dla portalu Azure Marketplace
 description: W tym artykule opisano wymagania dotyczące publikowania kontenerów w portalu Marketplace
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
-author: ellacroi
-manager: nunoc
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/09/2018
-ms.author: ellacroi
-ms.openlocfilehash: ffdc6b22209c1d334ac7b75c7079e755a7405154
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 882d428d7a8a9b56408aaa68964fa1e36c7cc7c2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73822990"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80277310"
 ---
 # <a name="containers-offer-publishing-guide"></a>Przewodnik publikowania oferty kontenerów
 
-Kontener oferuje pomoc w publikowaniu obrazu kontenera w witrynie Azure Marketplace. Skorzystaj z tego przewodnika, aby poznać wymagania dotyczące tej oferty. 
+Oferty kontenerów ułatwią publikowanie obrazu kontenera w portalu Azure Marketplace. Skorzystaj z tego przewodnika, aby zrozumieć wymagania dotyczące tej oferty. 
 
-Są to oferty transakcji, które są wdrażane i rozliczane za pomocą witryny Marketplace. Wywołanie akcji, którą widzi użytkownik, to "Pobierz teraz".
+Są to oferty transakcji, które są wdrażane i rozliczane za pośrednictwem portalu Marketplace. Wywołanie działania, które użytkownik widzi jest "Get It Now".
 
-Użyj typu oferty kontenera, gdy rozwiązanie jest obrazem kontenera Docker, który został zainicjowany jako usługa kontenera platformy Azure oparta na Kubernetes.
+Użyj typu oferty kontenera, gdy rozwiązanie jest obraz kontenera platformy Docker aprowizowana jako usługa kontenera platformy Azure oparta na usłudze Platformy Azure opartej na usłudze Kubernetes.
 
 >[!NOTE]
->Na przykład oparta na Kubernetes usługa Azure Container Service, taka jak Azure Kubernetes Service lub Azure Container Instances, wybór klientów platformy Azure dla środowiska uruchomieniowego kontenera opartego na Kubernetes.  
+>Na przykład usługa kontenera platformy Azure oparta na usłudze platformy Azure oparta na usłudze platformy Kubernetes, taka jak usługa Azure Kubernetes Service lub Wystąpienia kontenerów platformy Azure, wybór klientów platformy Azure dla środowiska wykonawczego kontenera opartego na usłudze Kubernetes.  
 
-Firma Microsoft obsługuje obecnie bezpłatne modele licencjonowania (BYOL).
+Firma Microsoft obsługuje obecnie modele licencjonowania bezpłatnej i własnej licencji (BYOL).
 
 ## <a name="containers-offer"></a>Oferta kontenerów
 
 | Wymaganie | Szczegóły |  
 |:--- |:--- |  
-| Rozliczenia i pomiary | Obsługuj model rozliczeń bezpłatny lub BYOL. |  
-| Obraz skompilowany z pliku dockerfile | Obrazy kontenerów muszą być oparte na specyfikacji obrazu platformy Docker i muszą być zbudowane z pliku dockerfile.<ul> <li>Aby uzyskać więcej informacji na temat tworzenia obrazów platformy Docker, odwiedź sekcję użycie znajdującą się w witrynie [docs.docker.com/engine/reference/builder/#usage](https://docs.docker.com/engine/reference/builder/#usage).</li> </ul> |  
-| Hosting w ACR | Obrazy kontenerów muszą być hostowane w repozytorium Azure Container Registry (ACR).<ul> <li>Aby uzyskać więcej informacji na temat pracy z usługą ACR, odwiedź stronę szybki start: tworzenie rejestru kontenerów za pomocą strony Azure Portal znajdującej się w witrynie [docs.Microsoft.com/Azure/Container-Registry/Container-Registry-Get-Started-Portal](https://docs.microsoft.com/azure/container-registry/container-registry-get-started-portal).</li> </ul> |  
-| Tagowanie obrazu | Obrazy kontenerów muszą zawierać co najmniej 1 tag (maksymalna liczba tagów: 16).<ul> <li>Aby uzyskać więcej informacji na temat tagowania obrazu, odwiedź stronę tag platformy Docker znajdującą się pod adresem [docs.Docker.com/Engine/Reference/CommandLine/tag](https://docs.docker.com/engine/reference/commandline/tag).</li> </ul> |  
+| Rozliczenia i pomiary | Obsługa bezpłatnego lub byolowego modelu rozliczeniowego. |  
+| Obraz zbudowany z pliku Dockerfile | Obrazy kontenerów muszą być oparte na specyfikacji obrazu platformy Docker i muszą być zbudowane z pliku Dockerfile.<ul> <li>Aby uzyskać więcej informacji na temat tworzenia obrazów dok [docs.docker.com/engine/reference/builder/#usage.](https://docs.docker.com/engine/reference/builder/#usage)</li> </ul> |  
+| Hosting w ACR | Obrazy kontenerów muszą być hostowane w repozytorium rejestru kontenerów platformy Azure (ACR).<ul> <li>Aby uzyskać więcej informacji na temat pracy z usługą ACR, odwiedź przewodnik Szybki start: Tworzenie rejestru kontenerów przy użyciu strony portalu Azure znajdującej się w [docs.microsoft.com/azure/container-registry/container-registry-get-started-portal](https://docs.microsoft.com/azure/container-registry/container-registry-get-started-portal).</li> </ul> |  
+| Tagowanie obrazów | Obrazy kontenerów muszą zawierać co najmniej 1 znacznik (maksymalna liczba tagów: 16).<ul> <li>Aby uzyskać więcej informacji na temat oznaczania obrazu, odwiedź stronę tagu docker znajdującą się w [docs.docker.com/engine/reference/commandline/tag](https://docs.docker.com/engine/reference/commandline/tag).</li> </ul> |  
 
 ## <a name="next-steps"></a>Następne kroki
 
-Jeśli jeszcze tego nie zrobiono, 
+Jeśli jeszcze tego nie zrobiłeś, 
 
-- [Zarejestruj](https://azuremarketplace.microsoft.com/sell) się w portalu Marketplace.
+- [Zarejestruj się](https://azuremarketplace.microsoft.com/sell) na rynku.
 
-Jeśli jesteś zarejestrowanym użytkownikiem i tworzysz nową ofertę lub pracujesz nad istniejącym,
+Jeśli jesteś zarejestrowany i tworzysz nową ofertę lub pracujesz nad istniejącą,
 
-- [Zaloguj się do Portal Cloud partner](https://cloudpartner.azure.com) , aby utworzyć lub zakończyć swoją ofertę.
-- Aby uzyskać więcej informacji, zobacz [kontenery](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/containers/cpp-containers-offer) .
+- [Zaloguj się do portalu cloud partner,](https://cloudpartner.azure.com) aby utworzyć lub uzupełnić ofertę.
+- Zobacz [kontenery,](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/containers/cpp-containers-offer) aby uzyskać więcej informacji.

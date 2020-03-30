@@ -1,7 +1,7 @@
 ---
-title: Przegląd konfiguracji stanu Azure Automation
-description: Omówienie konfiguracji stanu Azure Automation (DSC), jej warunków i znanych problemów
-keywords: PowerShell DSC, Konfiguracja żądanego stanu, środowisko PowerShell DSC Azure
+title: Omówienie konfiguracji stanu automatyzacji platformy Azure
+description: Omówienie konfiguracji stanu automatyzacji platformy Azure (DSC), jej warunków i znanych problemów
+keywords: powershell dsc, konfiguracja żądanego stanu, powershell dsc azure
 services: automation
 ms.service: automation
 ms.subservice: dsc
@@ -10,40 +10,38 @@ ms.author: magoedte
 ms.date: 11/06/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 787cade13a0636bb25afa1d4043a977f512484f9
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 46cf0d6a12ffbc836db7bd79c0f2738a94e23085
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79278924"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80283195"
 ---
-# <a name="azure-automation-state-configuration-overview"></a>Przegląd konfiguracji stanu Azure Automation
+# <a name="azure-automation-state-configuration-overview"></a>Omówienie konfiguracji stanu automatyzacji platformy Azure
 
-Azure Automation konfiguracja stanu to usługa platformy Azure, która umożliwia pisanie i kompilowanie konfiguracji konfiguracji żądanego stanu ( [DSC) programu PowerShell, zarządzanie](/powershell/scripting/dsc/configurations/configurations)nimi oraz przypisywanie konfiguracji do węzłów [docelowych, a](/powershell/scripting/dsc/resources/resources)wszystko to w chmurze.
+Konfiguracja stanu automatyzacji platformy Azure to usługa platformy Azure, która umożliwia [pisanie,](/powershell/scripting/dsc/configurations/configurations)zarządzanie i kompilowanie konfiguracji konfiguracji żądanego stanu programu PowerShell (DSC). Usługa importuje również [zasoby DSC](/powershell/scripting/dsc/resources/resources)i przypisuje konfiguracje do węzłów docelowych, wszystkie w chmurze.
 
-## <a name="why-use-azure-automation-state-configuration"></a>Dlaczego warto używać konfiguracji stanu Azure Automation
+## <a name="why-use-azure-automation-state-configuration"></a>Dlaczego warto korzystać z konfiguracji stanu automatyzacji platformy Azure
 
-Azure Automation konfiguracja stanu zapewnia kilka korzyści z używania DSC poza platformą Azure.
+Konfiguracja stanu automatyzacji platformy Azure zapewnia kilka zalet w stosunku do korzystania z dsc poza platformą Azure.
 
 ### <a name="built-in-pull-server"></a>Wbudowany serwer ściągania
 
-Azure Automation konfiguracja stanu udostępnia serwer ściągania DSC podobny do [usługi Windows Feature DSC-Service](/powershell/scripting/dsc/pull-server/pullserver) , dzięki czemu węzły docelowe automatycznie odbierają konfiguracje, są zgodne z żądanym stanem i raportują zgodność z powrotem. Wbudowany serwer ściągania w programie Azure Automation eliminuje konieczność skonfigurowania i utrzymania własnego serwera ściągania. Azure Automation mogą kierować wirtualne lub fizyczne maszyny z systemem Windows lub Linux, w chmurze lub w środowisku lokalnym.
+Konfiguracja stanu automatyzacji platformy Azure udostępnia serwer ściągania DSC podobny do [usługi DSC funkcji systemu Windows.](/powershell/scripting/dsc/pull-server/pullserver) Węzły docelowe mogą automatycznie odbierać konfiguracje, być zgodne z żądanym stanem i raportować ich zgodność. Wbudowany serwer ściągania w usłudze Azure Automation eliminuje konieczność konfigurowania i utrzymywania własnego serwera ściągania. Usługa Azure Automation może być kierowana na maszyny z systemem Windows lub Linux, w chmurze lub lokalnie.
 
 ### <a name="management-of-all-your-dsc-artifacts"></a>Zarządzanie wszystkimi artefaktami DSC
 
-Azure Automation konfiguracja stanu umożliwia korzystanie z tej samej warstwy zarządzania do [konfiguracji żądanego stanu programu PowerShell](/powershell/scripting/dsc/overview/overview) jako Azure Automation ofert dla skryptów programu PowerShell.
+Konfiguracja stanu automatyzacji platformy Azure przynosi tę samą warstwę zarządzania do [konfiguracji żądanego stanu programu PowerShell,](/powershell/scripting/dsc/overview/overview) jak oferuje dla skryptów programu PowerShell. Z witryny Azure portal lub z programu PowerShell można zarządzać wszystkie konfiguracje DSC, zasoby i węzły docelowe.
 
-Za pomocą Azure Portal lub z programu PowerShell można zarządzać wszystkimi konfiguracjami DSC, zasobami i węzłami docelowymi.
+![Zrzut ekranu przedstawiający stronę usługi Azure Automation](./media/automation-dsc-overview/azure-automation-blade.png)
 
-![Zrzut ekranu przedstawiający stronę Azure Automation](./media/automation-dsc-overview/azure-automation-blade.png)
+### <a name="import-of-reporting-data-into-azure-monitor-logs"></a>Importowanie danych raportowania do dzienników usługi Azure Monitor
 
-### <a name="import-reporting-data-into-azure-monitor-logs"></a>Importowanie danych raportowania do dzienników Azure Monitor
+Węzły, które są zarządzane za pomocą konfiguracji stanu automatyzacji usługi Azure wysyłają szczegółowe dane o stanie raportowania do wbudowanego serwera ściągania. Można skonfigurować konfigurację stanu automatyzacji platformy Azure, aby wysłać te dane do obszaru roboczego usługi Log Analytics. Zobacz [Forward Azure Automation State state reporting data to Azure Monitor logs](automation-dsc-diagnostics.md).
 
-Węzły, które są zarządzane za pomocą Azure Automation stanu Configuration, wysyłają szczegółowe dane stanu raportowania do wbudowanego serwera ściągania. Konfigurację stanu Azure Automation można skonfigurować w celu wysłania tych danych do Log Analytics obszaru roboczego. Aby dowiedzieć się, jak wysyłać dane stanu konfiguracji stanu do obszaru roboczego Log Analytics, zobacz [przesyłanie dalej Azure Automation dane konfiguracji stanu do dzienników Azure monitor](automation-dsc-diagnostics.md).
+## <a name="prerequisites-for-using-azure-automation-state-configuration"></a>Wymagania wstępne dotyczące korzystania z konfiguracji stanu automatyzacji platformy Azure
 
-## <a name="prerequisites"></a>Wymagania wstępne
-
-Podczas korzystania z konfiguracji stanu Azure Automation (DSC) należy wziąć pod uwagę poniższe wymagania.
+Należy wziąć pod uwagę następujące wymagania podczas korzystania z konfiguracji stanu automatyzacji platformy Azure dla DSC.
 
 ### <a name="operating-system-requirements"></a>Wymagania dotyczące systemu operacyjnego
 
@@ -51,57 +49,55 @@ W przypadku węzłów z systemem Windows obsługiwane są następujące wersje:
 
 - Windows Server 2019
 - Windows Server 2016
-- 2012R2 systemu Windows Server
+- System Windows Server 2012R2
 - Windows Server 2012
 - Windows Server 2008 R2 SP1
 - Windows 10
 - Windows 8.1
 - Windows 7
 
-Autonomiczna jednostka SKU produktu [Microsoft Hyper-V Server](/windows-server/virtualization/hyper-v/hyper-v-server-2016) nie zawiera implementacji żądanego stanu konfiguracją, więc nie może być zarządzana przez program PowerShell DSC lub konfigurację stanu Azure Automation.
+>[!NOTE]
+>Samodzielna jednostka SKU produktu microsoft [Hyper-V Server](/windows-server/virtualization/hyper-v/hyper-v-server-2016) nie zawiera implementacji dsc. W związku z tym nie może być zarządzany przez program PowerShell DSC lub konfiguracji stanu automatyzacji platformy Azure.
 
-W przypadku węzłów z systemem Linux obsługiwane są następujące dystrybucje/wersje:
-
-Rozszerzenie DSC systemu Linux obsługuje wszystkie dystrybucje systemu Linux wymienione w obszarze [obsługiwane dystrybucje systemu Linux](https://github.com/Azure/azure-linux-extensions/tree/master/DSC#4-supported-linux-distributions).
+W przypadku węzłów z systemem Linux rozszerzenie DSC Linux obsługuje wszystkie dystrybucje Linuksa wymienione w obszarze [Obsługiwane dystrybucje Linuksa](https://github.com/Azure/azure-linux-extensions/tree/master/DSC#4-supported-linux-distributions).
 
 ### <a name="dsc-requirements"></a>Wymagania DSC
 
-W przypadku wszystkich węzłów systemu Windows działających na platformie Azure podczas dołączania zostanie zainstalowany program [WMF 5,1](https://docs.microsoft.com/powershell/scripting/wmf/setup/install-configure) .  W przypadku węzłów z systemami Windows Server 2012 i Windows 7 [usługa WinRM zostanie włączona](https://docs.microsoft.com/powershell/scripting/dsc/troubleshooting/troubleshooting#winrm-dependency).
+Dla wszystkich węzłów systemu Windows uruchomionych na platformie Azure [WMF 5.1](https://docs.microsoft.com/powershell/scripting/wmf/setup/install-configure) jest zainstalowany podczas dołączania. W przypadku węzłów z systemem Windows Server 2012 i Windows 7 usługa [WinRM](https://docs.microsoft.com/powershell/scripting/dsc/troubleshooting/troubleshooting#winrm-dependency) jest włączona.
 
-W przypadku wszystkich węzłów systemu Linux działających na platformie Azure podczas dołączania zostanie zainstalowana [Konfiguracja DSC programu PowerShell dla systemu Linux](https://github.com/Microsoft/PowerShell-DSC-for-Linux) .
+Dla wszystkich węzłów systemu Linux uruchomionych na platformie Azure [program PowerShell DSC dla systemu Linux](https://github.com/Microsoft/PowerShell-DSC-for-Linux) jest zainstalowany podczas dołączania.
 
-### <a name="network-planning"></a>Konfigurowanie sieci prywatnych
+### <a name="configuration-of-private-networks"></a><a name="network-planning"></a>Konfiguracja sieci prywatnych
 
-Jeśli węzły znajdują się w sieci prywatnej, do komunikacji z automatyzacją (DSC) wymagane są następujące porty i adresy URL:
+Jeśli węzły znajdują się w sieci prywatnej, wymagane są następujące porty i adresy URL. Te zasoby zapewniają łączność sieciową dla węzła zarządzanego i umożliwiają dsc do komunikowania się z usługą Azure Automation.
 
-* Port: dla wychodzącego dostępu do Internetu wymagany jest tylko protokół TCP 443.
-* Globalny adres URL: *. azure-automation.net
-* Globalny adres URL US Gov Wirginia: *. azure-automation.us
-* Usługa agenta: https://\<identyfikator obszaru roboczego\>. agentsvc.azure-automation.net
+* Port: Tylko TCP 443 wymagany do wychodzącego dostępu do Internetu
+* Globalny adres URL: ***.azure-automation.net**
+* Globalny adres URL us Gov Virginia: ***.azure-automation.us**
+* Usługa agenta: **https://\<obszar\>roboczyId .agentsvc.azure-automation.net**
 
-Zapewnia to łączność sieciową dla węzła zarządzanego w celu komunikowania się z Azure Automation.
-W przypadku korzystania z zasobów DSC, które komunikują się między węzłami, takimi jak [* zasoby](https://docs.microsoft.com/powershell/scripting/dsc/reference/resources/windows/waitForAllResource), należy również zezwolić na ruch między węzłami.
-Zapoznaj się z dokumentacją poszczególnych zasobów DSC, aby poznać te wymagania sieciowe.
+Jeśli używasz zasobów DSC, które komunikują się między węzłami, takich jak [WaitFor* zasobów,](https://docs.microsoft.com/powershell/scripting/dsc/reference/resources/windows/waitForAllResource)należy również zezwolić na ruch między węzłami. Zapoznaj się z dokumentacją dla każdego zasobu DSC, aby zrozumieć te wymagania sieciowe.
 
 #### <a name="proxy-support"></a>Obsługa serwera proxy
 
-Obsługa serwera proxy dla agenta DSC jest dostępna w systemie Windows w wersji 1809 i nowszych.
-Aby skonfigurować tę opcję, należy ustawić wartość **ProxyURL** i **ProxyCredential** w [skrypcie konfiguracji](automation-dsc-onboarding.md#generating-dsc-metaconfigurations) kodera używanym do rejestrowania węzłów.
-Serwer proxy nie jest dostępny w usłudze DSC dla wcześniejszych wersji systemu Windows.
+Obsługa serwera proxy dla agenta DSC jest dostępna w systemie Windows w wersji 1809 i nowszej. Ta opcja jest włączona przez `ProxyURL` `ProxyCredential` ustawienie wartości dla i w [skrypcie metakonfiguracji](automation-dsc-onboarding.md#generating-dsc-metaconfigurations) używanym do rejestrowania węzłów.
 
-W przypadku węzłów systemu Linux Agent DSC obsługuje serwer proxy i użyje zmiennej http_proxy, aby określić adres URL.
+>[!NOTE]
+>Konfiguracja stanu automatyzacji platformy Azure nie zapewnia obsługi serwera proxy DSC dla poprzednich wersji systemu Windows.
 
-#### <a name="azure-state-configuration-network-ranges-and-namespace"></a>Zakresy i przestrzeń nazw sieci konfiguracji stanu platformy Azure
+W przypadku węzłów systemu Linux agent DSC `http_proxy` obsługuje serwer proxy i używa zmiennej do określenia adresu URL.
 
-Zaleca się użycie adresów wymienionych podczas definiowania wyjątków. Dla adresów IP można pobrać zakresy adresów [IP centrum danych Microsoft Azure](https://www.microsoft.com/download/details.aspx?id=41653). Ten plik jest aktualizowany co tydzień i ma aktualnie wdrożone zakresy oraz wszystkie nadchodzące zmiany w zakresach adresów IP.
+#### <a name="azure-automation-state-configuration-network-ranges-and-namespace"></a>Zakresy sieci konfiguracji stanu automatyzacji platformy Azure i obszar nazw
 
-Jeśli masz konto usługi Automation zdefiniowane dla określonego regionu, możesz ograniczyć komunikację z tym regionalnym centrum danych. Poniższa tabela zawiera rekord DNS dla każdego regionu:
+Zaleca się używanie adresów wymienionych poniżej podczas definiowania wyjątków. W przypadku adresów IP można pobrać [zakresy adresów IP centrum danych platformy Microsoft Azure](https://www.microsoft.com/download/details.aspx?id=41653). Ten plik jest aktualizowany co tydzień i ma aktualnie wdrożone zakresy i wszelkie nadchodzące zmiany w zakresach adresów IP.
+
+Jeśli masz konto automatyzacji, które jest zdefiniowane dla określonego regionu, można ograniczyć komunikację do tego regionalnego centrum danych. Poniższa tabela zawiera rekord DNS dla każdego regionu:
 
 | **Region** | **Rekord DNS** |
 | --- | --- |
 | Zachodnio-środkowe stany USA | wcus-jobruntimedata-prod-su1.azure-automation.net</br>wcus-agentservice-prod-1.azure-automation.net |
 | Południowo-środkowe stany USA |scus-jobruntimedata-prod-su1.azure-automation.net</br>scus-agentservice-prod-1.azure-automation.net |
-| Wschodnie stany USA   | eus-jobruntimedata-prod-su1.azure-automation.net</br>eus-agentservice-prod-1.azure-automation.net |
+| Wschodnie stany USA    | eus-jobruntimedata-prod-su1.azure-automation.net</br>eus-agentservice-prod-1.azure-automation.net |
 | Wschodnie stany USA 2 |eus2-jobruntimedata-prod-su1.azure-automation.net</br>eus2-agentservice-prod-1.azure-automation.net |
 | Kanada Środkowa |cc-jobruntimedata-prod-su1.azure-automation.net</br>cc-agentservice-prod-1.azure-automation.net |
 | Europa Zachodnia |we-jobruntimedata-prod-su1.azure-automation.net</br>we-agentservice-prod-1.azure-automation.net |
@@ -113,20 +109,20 @@ Jeśli masz konto usługi Automation zdefiniowane dla określonego regionu, moż
 | Południowe Zjednoczone Królestwo | uks-jobruntimedata-prod-su1.azure-automation.net</br>uks-agentservice-prod-1.azure-automation.net |
 | US Gov Wirginia | usge-jobruntimedata-prod-su1.azure-automation.us<br>usge-agentservice-prod-1.azure-automation.us |
 
-Aby uzyskać listę adresów IP regionów zamiast nazw regionów, Pobierz plik XML [adresu IP centrum danych platformy Azure](https://www.microsoft.com/download/details.aspx?id=41653) z centrum pobierania Microsoft.
+Aby uzyskać listę adresów IP regionu zamiast nazw regionów, pobierz plik XML [adresu IP centrum danych platformy Azure](https://www.microsoft.com/download/details.aspx?id=41653) z Centrum pobierania Firmy Microsoft.
 
 > [!NOTE]
-> Plik XML adresu IP centrum danych platformy Azure zawiera zakresy adresów IP, które są używane w centrach danych Microsoft Azure. Plik zawiera zakresy obliczeń, SQL i magazynu.
+> Plik XML adresu IP centrum danych platformy Azure zawiera listę zakresów adresów IP, które są używane w centrach danych platformy Microsoft Azure. Plik zawiera zakresy obliczeniowe, SQL i magazynowe.
 >
->Zaktualizowany plik jest publikowany co tydzień. Plik odzwierciedla aktualnie wdrożone zakresy i wszystkie nadchodzące zmiany w zakresach adresów IP. Nowe zakresy, które pojawiają się w pliku nie są używane w centrach danych przez co najmniej jeden tydzień.
->
-> Dobrym pomysłem jest pobranie nowego pliku XML co tydzień. Następnie zaktualizuj swoją witrynę, aby prawidłowo identyfikować usługi działające na platformie Azure. Użytkownicy usługi Azure ExpressRoute powinni pamiętać, że ten plik jest używany do aktualizacji anonsu usługi Border Gateway Protocol (BGP) w pierwszym tygodniu każdego miesiąca.
+>Zaktualizowany plik jest publikowany co tydzień. Plik odzwierciedla aktualnie wdrożone zakresy i wszelkie nadchodzące zmiany w zakresach adresów IP. Nowe zakresy, które pojawiają się w pliku nie są używane w centrach danych przez co najmniej jeden tydzień. Warto pobrać nowy plik XML co tydzień. Następnie zaktualizuj witrynę, aby poprawnie identyfikować usługi uruchomione na platformie Azure. 
+
+Użytkownicy usługi Azure ExpressRoute powinni pamiętać, że ten plik jest używany do aktualizowania reklamy usługi Azure (Border Gateway Protocol) w pierwszym tygodniu każdego miesiąca.
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Aby rozpocząć, zobacz [wprowadzenie do konfiguracji stanu Azure Automation](automation-dsc-getting-started.md)
-- Aby dowiedzieć się, jak dołączyć węzły, zobacz sekcję dołączanie [maszyn w celu zarządzania według konfiguracji stanu Azure Automation](automation-dsc-onboarding.md)
-- Aby dowiedzieć się więcej na temat kompilowania konfiguracji DSC, aby można było przypisać je do węzłów docelowych, zobacz [Kompilowanie konfiguracji w konfiguracji stanu Azure Automation](automation-dsc-compile.md)
-- Aby uzyskać informacje dotyczące poleceń cmdlet programu PowerShell, zobacz temat [polecenia cmdlet konfiguracji stanu Azure Automation](/powershell/module/azurerm.automation/#automation)
-- Aby uzyskać informacje o cenach, zobacz [Cennik konfiguracji stanu Azure Automation](https://azure.microsoft.com/pricing/details/automation/)
-- Aby zapoznać się z przykładem użycia konfiguracji stanu Azure Automation w potoku ciągłego wdrażania, zobacz [wdrażanie ciągłe przy użyciu konfiguracji stanu Azure Automation i czekolady](automation-dsc-cd-chocolatey.md)
+- Aby rozpocząć korzystanie z usługi DSC w konfiguracji stanu automatyzacji platformy Azure, zobacz [Wprowadzenie do konfiguracji stanu automatyzacji platformy Azure.](automation-dsc-getting-started.md)
+- Aby dowiedzieć się, jak dołączać węzły, zobacz [Maszyny dołączające do zarządzania przez konfigurację stanu automatyzacji platformy Azure](automation-dsc-onboarding.md).
+- Aby dowiedzieć się więcej o kompilowaniu konfiguracji DSC, aby można je było przypisać do węzłów docelowych, zobacz [Kompilowanie konfiguracji w konfiguracji stanu automatyzacji platformy Azure](automation-dsc-compile.md).
+- Aby uzyskać informacje o poleceniach cmdlet programu PowerShell, zobacz [polecenia cmdlet konfiguracji stanu automatyzacji platformy Azure](/powershell/module/azurerm.automation/#automation).
+- Aby uzyskać informacje o cenach, zobacz [Cennik konfiguracji stanu usługi Azure Automation .](https://azure.microsoft.com/pricing/details/automation/)
+- Aby zobaczyć przykład użycia konfiguracji stanu automatyzacji platformy Azure w potoku ciągłego wdrażania, zobacz [Ciągłe wdrażanie przy użyciu konfiguracji stanu automatyzacji platformy Azure i chocolatey.](automation-dsc-cd-chocolatey.md)

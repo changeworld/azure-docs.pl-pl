@@ -1,40 +1,40 @@
 ---
-title: Tworzenie maszyny wirtualnej z systemem Windows przy użyciu programu Azure Image Builder (wersja zapoznawcza)
-description: Tworzenie maszyny wirtualnej z systemem Windows przy użyciu programu Azure Image Builder.
+title: Tworzenie maszyny Wirtualnej systemu Windows za pomocą programu Azure Image Builder (wersja zapoznawcza)
+description: Utwórz maszynę wirtualną systemu Windows za pomocą programu Azure Image Builder.
 author: cynthn
 ms.author: cynthn
 ms.date: 07/31/2019
 ms.topic: article
 ms.service: virtual-machines-windows
 manager: gwallace
-ms.openlocfilehash: 9dc4909db5560be6eb082dbad85d4b2d42113bdd
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: e82d82dac833f7455e3d83d7e11c0c57c4eea816
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68828695"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80238802"
 ---
-# <a name="preview-create-a-windows-vm-with-azure-image-builder"></a>Wersja zapoznawcza: Tworzenie maszyny wirtualnej z systemem Windows przy użyciu programu Azure Image Builder
+# <a name="preview-create-a-windows-vm-with-azure-image-builder"></a>Wersja zapoznawcza: tworzenie maszyny Wirtualnej systemu Windows za pomocą programu Azure Image Builder
 
-W tym artykule przedstawiono sposób tworzenia niestandardowego obrazu systemu Windows przy użyciu narzędzia Azure VM Image Builder. W przykładzie w tym artykule opisano [](../linux/image-builder-json.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#properties-customize) sposób dostosowywania obrazu przy użyciu konfiguratorów:
-- PowerShell (ScriptUri) — pobiera i uruchamia [skrypt programu PowerShell](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/testPsScript.ps1).
-- Ponowne uruchomienie systemu Windows — ponowne uruchomienie maszyny wirtualnej.
-- PowerShell (wbudowane) — Uruchom określone polecenie. W tym przykładzie tworzy katalog na maszynie wirtualnej przy użyciu `mkdir c:\\buildActions`.
-- Skopiuj plik z witryny GitHub na maszynę wirtualną. Ten przykład kopiuje [index.MD](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/exampleArtifacts/buildArtifacts/index.html) do `c:\buildArtifacts\index.html` maszyny wirtualnej.
+W tym artykule pokazano, jak można utworzyć dostosowany obraz systemu Windows przy użyciu konstruktora obrazów maszyny Wirtualnej platformy Azure. W tym artykule użyto [konfiguratorów](../linux/image-builder-json.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#properties-customize) do dostosowywania obrazu:
+- PowerShell (ScriptUri) - pobierz i uruchom [skrypt programu PowerShell](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/testPsScript.ps1).
+- Ponowne uruchomienie systemu Windows — ponownie uruchamia maszynę wirtualną.
+- Program PowerShell (wbudowany) — uruchom określone polecenie. W tym przykładzie tworzy katalog na maszynie wirtualnej przy użyciu `mkdir c:\\buildActions`.
+- Plik - skopiuj plik z gitHub na maszynę wirtualną. W tym przykładzie kopiuje [index.md](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/exampleArtifacts/buildArtifacts/index.html) `c:\buildArtifacts\index.html` na maszynie wirtualnej.
 
-Można również określić `buildTimeoutInMinutes`. Wartość domyślna to 240 minut i można zwiększyć czas kompilacji, aby umożliwić dłuższe wykonywanie kompilacji.
+Można również określić plik `buildTimeoutInMinutes`. Wartość domyślna to 240 minut i można zwiększyć czas kompilacji, aby umożliwić dłuższe uruchamianie kompilacji.
 
-Aby skonfigurować obraz, będziemy używać szablonu przykład. JSON. Używany plik JSON jest tutaj: [helloImageTemplateWin. JSON](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/0_Creating_a_Custom_Windows_Managed_Image/helloImageTemplateWin.json). 
+Będziemy używać przykładowego szablonu .json do skonfigurowania obrazu. Plik .json, z których korzystamy, jest tutaj: [helloImageTemplateWin.json](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/0_Creating_a_Custom_Windows_Managed_Image/helloImageTemplateWin.json). 
 
 
 > [!IMPORTANT]
-> Usługa Azure Image Builder jest obecnie dostępna w publicznej wersji zapoznawczej.
+> Usługa Azure Image Builder jest obecnie w publicznej wersji zapoznawczej.
 > Ta wersja zapoznawcza nie jest objęta umową dotyczącą poziomu usług i nie zalecamy korzystania z niej w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą być nieobsługiwane lub ograniczone. Aby uzyskać więcej informacji, zobacz [Uzupełniające warunki korzystania z wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 
-## <a name="register-the-features"></a>Rejestrowanie funkcji
+## <a name="register-the-features"></a>Zarejestruj funkcje
 
-Aby korzystać z usługi Azure Image Builder w wersji zapoznawczej, należy zarejestrować nową funkcję.
+Aby korzystać z usługi Azure Image Builder podczas podglądu, należy zarejestrować nową funkcję.
 
 ```azurecli-interactive
 az feature register --namespace Microsoft.VirtualMachineImages --name VirtualMachineTemplatePreview
@@ -54,7 +54,7 @@ az provider show -n Microsoft.VirtualMachineImages | grep registrationState
 az provider show -n Microsoft.Storage | grep registrationState
 ```
 
-Jeśli nie powiedzie się, uruchom następujące polecenie:
+Jeśli nie mówią zarejestrowane, uruchom następujące czynności:
 
 ```azurecli-interactive
 az provider register -n Microsoft.VirtualMachineImages
@@ -62,9 +62,9 @@ az provider register -n Microsoft.VirtualMachineImages
 az provider register -n Microsoft.Storage
 ```
 
-## <a name="set-variables"></a>Ustaw zmienne
+## <a name="set-variables"></a>Ustawianie zmiennych
 
-Będziemy wielokrotnie używać niektórych informacji, więc utworzymy pewne zmienne do przechowywania tych informacji.
+Będziemy wielokrotnie wykorzystywać niektóre informacje, więc utworzymy pewne zmienne do przechowywania tych informacji.
 
 
 ```azurecli-interactive
@@ -80,7 +80,7 @@ runOutputName=aibWindows
 imageName=aibWinImage
 ```
 
-Utwórz zmienną dla identyfikatora subskrypcji. Można to zrobić za pomocą `az account show | grep id`polecenia.
+Utwórz zmienną dla identyfikatora subskrypcji. Można to uzyskać `az account show | grep id`za pomocą programu .
 
 ```azurecli-interactive
 subscriptionID=<Your subscription ID>
@@ -95,9 +95,9 @@ az group create -n $imageResourceGroup -l $location
 
 ## <a name="set-permissions-on-the-resource-group"></a>Ustawianie uprawnień do grupy zasobów
 
-Nadaj elementowi "Współautor" konstruktora obrazu uprawnienia do tworzenia obrazu w grupie zasobów. Nie spowoduje to, że kompilacja obrazu zakończy się niepowodzeniem. 
+Nadaj kreatorowi obrazów uprawnienie "współautor" do utworzenia obrazu w grupie zasobów. Bez tego kompilacja obrazu zakończy się niepowodzeniem. 
 
-`--assignee` Wartość to identyfikator rejestracji aplikacji dla usługi Image Builder. 
+Wartość `--assignee` jest identyfikatorem rejestracji aplikacji dla usługi Image Builder. 
 
 ```azurecli-interactive
 az role assignment create \
@@ -109,7 +109,7 @@ az role assignment create \
 
 ## <a name="download-the-image-configuration-template-example"></a>Pobierz przykład szablonu konfiguracji obrazu
 
-Utworzono szablon konfiguracji obrazu sparametryzowanego, który można wypróbować. Pobierz przykładowy plik JSON i skonfiguruj go przy użyciu ustawionych wcześniej zmiennych.
+Do wypróbowania został utworzony szablon konfiguracji obrazu sparametryzowany. Pobierz przykładowy plik .json i skonfiguruj go przy tak z ustawionymi wcześniej zmiennymi.
 
 ```azurecli-interactive
 curl https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/0_Creating_a_Custom_Windows_Managed_Image/helloImageTemplateWin.json -o helloImageTemplateWin.json
@@ -122,19 +122,19 @@ sed -i -e "s/<runOutputName>/$runOutputName/g" helloImageTemplateWin.json
 
 ```
 
-Możesz zmodyfikować ten przykład w terminalu przy użyciu edytora tekstu, takiego jak `vi`.
+W tym przykładzie można zmodyfikować w `vi`terminalu za pomocą edytora tekstu, takiego jak .
 
 ```azurecli-interactive
 vi helloImageTemplateLinux.json
 ```
 
 > [!NOTE]
-> W przypadku obrazu źródłowego należy zawsze [określić wersję](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#image-version-failure), której nie można użyć `latest`.
-> W przypadku dodania lub zmiany grupy zasobów, do której jest dystrybuowany obraz, należy [ustawić uprawnienia](#set-permissions-on-the-resource-group) dla grupy zasobów.
+> W przypadku obrazu [źródłowego](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#image-version-failure)należy zawsze określić `latest`wersję , której nie można użyć .
+> Jeśli dodasz lub zmienisz grupę zasobów, do której obraz jest dystrybuowany, należy ustawić [uprawnienia](#set-permissions-on-the-resource-group) w grupie zasobów.
  
 ## <a name="create-the-image"></a>Tworzenie obrazu
 
-Prześlij konfigurację obrazu do usługi Konstruktor obrazów maszyn wirtualnych
+Przesyłanie konfiguracji obrazu do usługi Konstruktora obrazów maszyn wirtualnych
 
 ```azurecli-interactive
 az resource create \
@@ -145,16 +145,16 @@ az resource create \
     -n helloImageTemplateWin01
 ```
 
-Po zakończeniu spowoduje to zwrócenie komunikatu o powodzeniu z powrotem do konsoli i utworzenie `Image Builder Configuration Template` `$imageResourceGroup`w. Możesz zobaczyć ten zasób w grupie zasobów w Azure Portal, jeśli włączysz opcję "Pokaż ukryte typy".
+Po zakończeniu spowoduje to powrót wiadomości o powodach `Image Builder Configuration Template` do `$imageResourceGroup`konsoli i utworzenie w pliku . Ten zasób można zobaczyć w grupie zasobów w witrynie Azure portal, jeśli włączysz "Pokaż ukryte typy".
 
-W tle Konstruktor obrazów utworzy również tymczasową grupę zasobów w ramach subskrypcji. Ta grupa zasobów jest używana do kompilowania obrazu. Będzie w tym formacie:`IT_<DestinationResourceGroup>_<TemplateName>`
+W tle Konstruktor obrazów utworzy również grupę zasobów przejściowych w ramach subskrypcji. Ta grupa zasobów jest używana dla kompilacji obrazu. Będzie w tym formacie:`IT_<DestinationResourceGroup>_<TemplateName>`
 
 > [!Note]
-> Nie można bezpośrednio usunąć grupy zasobów tymczasowych. Najpierw usuń artefakt szablonu obrazu, co spowoduje usunięcie tymczasowej grupy zasobów.
+> Nie można usunąć bezpośrednio grupy zasobów przemieszczania. Najpierw usuń artefakt szablonu obrazu, co spowoduje usunięcie grupy zasobów przemieszczania.
 
-Jeśli usługa zgłasza błąd podczas przesłania szablonu konfiguracji obrazu:
--  Zapoznaj się z tymi krokami [rozwiązywania problemów](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#template-submission-errors--troubleshooting) . 
-- Przed ponownym przesłaniem należy usunąć szablon przy użyciu poniższego fragmentu kodu.
+Jeśli usługa zgłasza błąd podczas przesyłania szablonu konfiguracji obrazu:
+-  Zapoznaj się z tymi krokami [rozwiązywania problemów.](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#template-submission-errors--troubleshooting) 
+- Przed ponowieniem próbą przesłania należy usunąć szablon przy użyciu następującego fragmentu kodu.
 
 ```azurecli-interactive
 az resource delete \
@@ -163,8 +163,8 @@ az resource delete \
     -n helloImageTemplateLinux01
 ```
 
-## <a name="start-the-image-build"></a>Uruchom kompilację obrazu
-Rozpocznij proces kompilowania obrazu za pomocą polecenia [AZ Resource Invoke-Action](/cli/azure/resource#az-resource-invoke-action).
+## <a name="start-the-image-build"></a>Uruchamianie kompilacji obrazu
+Rozpocznij proces tworzenia obrazu przy użyciu [az resource invoke-action](/cli/azure/resource#az-resource-invoke-action).
 
 ```azurecli-interactive
 az resource invoke-action \
@@ -176,12 +176,12 @@ az resource invoke-action \
 
 Poczekaj, aż kompilacja zostanie ukończona. Może to potrwać około 15 minut.
 
-W przypadku wystąpienia błędów zapoznaj się z tymi krokami [rozwiązywania problemów](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#image-build-errors--troubleshooting) .
+Jeśli wystąpią jakiekolwiek błędy, zapoznaj się z tymi krokami [rozwiązywania problemów.](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#image-build-errors--troubleshooting)
 
 
 ## <a name="create-the-vm"></a>Tworzenie maszyny wirtualnej
 
-Utwórz maszynę wirtualną przy użyciu skompilowanego obrazu. Zastąp  *\<hasło >* `aibuser` własnym hasłem dla maszyny wirtualnej.
+Utwórz maszynę wirtualną przy użyciu utworzonego obrazu. Zastąp * \<hasło>* własnym hasłem `aibuser` na maszynie wirtualnej.
 
 ```azurecli-interactive
 az vm create \
@@ -193,23 +193,24 @@ az vm create \
   --location $location
 ```
 
-## <a name="verify-the-customization"></a>Sprawdzanie dostosowania
+## <a name="verify-the-customization"></a>Weryfikowanie dostosowywania
 
-Utwórz połączenie Pulpit zdalny z maszyną wirtualną przy użyciu nazwy użytkownika i hasła ustawione podczas tworzenia maszyny wirtualnej. Na maszynie wirtualnej Otwórz wiersz polecenia i wpisz:
+Utwórz połączenie pulpitu zdalnego z maszyną wirtualną przy użyciu nazwy użytkownika i hasła ustawionego podczas tworzenia maszyny Wirtualnej. Wewnątrz maszyny Wirtualnej otwórz monit cmd i wpisz:
 
 ```console
 dir c:\
 ```
 
-Powinny zostać wyświetlone te dwa katalogi, które zostały utworzone podczas dostosowywania obrazu:
-- buildActions
+Powinny być widoczne te dwa katalogi utworzone podczas dostosowywania obrazu:
+- buildActions (akcją)
 - buildArtifacts
 
 ## <a name="clean-up"></a>Czyszczenie
 
-Gdy wszystko będzie gotowe, Usuń zasoby.
+Po zakończeniu usuń zasoby.
 
 ### <a name="delete-the-image-builder-template"></a>Usuwanie szablonu konstruktora obrazów
+
 ```azurecli-interactive
 az resource delete \
     --resource-group $imageResourceGroup \
@@ -218,11 +219,12 @@ az resource delete \
 ```
 
 ### <a name="delete-the-image-resource-group"></a>Usuwanie grupy zasobów obrazu
+
 ```azurecli-interactive
 az group delete -n $imageResourceGroup
 ```
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Aby dowiedzieć się więcej o składnikach pliku JSON używanego w tym artykule, zobacz [Dokumentacja szablonu konstruktora obrazów](../linux/image-builder-json.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+Aby dowiedzieć się więcej o składnikach pliku .json użytego w tym artykule, zobacz [Odwołanie do szablonu konstruktora obrazów](../linux/image-builder-json.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).

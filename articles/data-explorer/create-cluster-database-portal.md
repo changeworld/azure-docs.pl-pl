@@ -1,5 +1,5 @@
 ---
-title: 'Szybki Start: Tworzenie klastra usługi Azure Eksplorator danych & bazy danych'
+title: 'Szybki start: tworzenie klastra usługi Azure Data Explorer & DB'
 description: Z tego przewodnika Szybki start dowiesz się, jak utworzyć klaster i bazę danych usługi Azure Data Explorer oraz pozyskiwać (ładować) dane.
 author: orspod
 ms.author: orspodek
@@ -7,37 +7,37 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 07/22/2019
-ms.openlocfilehash: e97a712664a5864062fef2bba36dda76175af715
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: ed0c570449a0c21e9eace1273228539db7c208da
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78199856"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80238651"
 ---
 # <a name="quickstart-create-an-azure-data-explorer-cluster-and-database"></a>Szybki start: tworzenie klastra i bazy danych usługi Azure Data Explorer
 
 > [!div class="op_single_selector"]
 > * [Portal](create-cluster-database-portal.md)
-> * [Interfejs wiersza polecenia](create-cluster-database-cli.md)
-> * [PowerShell](create-cluster-database-powershell.md)
-> * [C#](create-cluster-database-csharp.md)
+> * [Cli](create-cluster-database-cli.md)
+> * [Powershell](create-cluster-database-powershell.md)
+> * [C #](create-cluster-database-csharp.md)
 > * [Python](create-cluster-database-python.md)
-> * [Szablon usługi ARM](create-cluster-database-resource-manager.md)
+> * [Szablon ARM](create-cluster-database-resource-manager.md)
 
 
 Azure Data Explorer to szybka i wysoce skalowalna usługa eksploracji danych na potrzeby danych dziennika i telemetrycznych. Aby używać usługi Azure Data Explorer, najpierw utwórz klaster, a następnie utwórz w tym klastrze co najmniej jedną bazę danych. Następnie pozyskaj (załaduj) dane do bazy danych, aby uruchamiać w niej zapytania. W tym przewodniku Szybki start utworzysz klaster i bazę danych.
 
-Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto platformy Azure](https://azure.microsoft.com/free/).
+Jeśli nie masz subskrypcji platformy Azure, utwórz [bezpłatne konto platformy Azure](https://azure.microsoft.com/free/) przed rozpoczęciem.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Logowanie się do witryny Azure Portal
 
-Zaloguj się do [Azure portal](https://portal.azure.com/).
+Zaloguj się do [Portalu Azure](https://portal.azure.com/).
 
 ## <a name="create-a-cluster"></a>Tworzenie klastra
 
 W grupie zasobów platformy Azure utwórz klaster usługi Azure Data Explorer, korzystając ze zdefiniowanego zestawu zasobów obliczeniowych i magazynowych.
 
-1. Wybierz przycisk **Utwórz zasób** (+) w lewym górnym rogu portalu.
+1. Wybierz przycisk **+ Utwórz zasób** w lewym górnym rogu portalu.
 
 1. Wyszukaj pozycję *Azure Data Explorer*.
 
@@ -54,8 +54,8 @@ W grupie zasobów platformy Azure utwórz klaster usługi Azure Data Explorer, k
     | Subskrypcja | Twoja subskrypcja | Wybierz subskrypcję platformy Azure, która ma być używana dla klastra.|
     | Grupa zasobów | Twoja grupa zasobów | Użyj istniejącej grupy zasobów lub utwórz nową. |
     | Nazwa klastra | Unikatowa nazwa klastra | Wybierz unikatową nazwę, która identyfikuje Twój klaster. Do podanej nazwy klastra jest dołączana nazwa domeny *[region].kusto.windows.net*. Nazwa może zawierać tylko małe litery i cyfry. Musi zawierać od 4 do 22 znaków.
-    | Region | *Zachodnie stany USA* lub *zachodnie stany USA 2* | Wybierz pozycję *zachodnie stany USA* lub *zachodnie stany USA 2* (Jeśli używane są strefy dostępności) dla tego przewodnika Szybki Start. W przypadku systemu produkcyjnego wybierz region, który najlepiej odpowiada Twoim potrzebom.
-    | Strefy dostępności | *1*, *2*i/lub *3* | Umieść wystąpienia klastra w różnych strefach dostępności w tym samym regionie (opcjonalnie). [Strefy dostępności platformy Azure](/azure/availability-zones/az-overview) są unikatowymi lokalizacjami fizycznymi w tym samym regionie świadczenia usługi Azure. Chronią one klaster Eksplorator danych platformy Azure i dane ze względu na awarię części regionu. Węzły klastra są tworzone domyślnie w tym samym centrum danych. Wybierając kilka stref dostępności, można wyeliminować single point of failure i zapewnić wysoką dostępność. Wdrożenie w strefach dostępności jest możliwe tylko podczas tworzenia klastra i nie można go modyfikować w późniejszym czasie.
+    | Region | *Zachodnie stany USA* lub *zachodnie stany USA 2* | Wybierz *zachodnie stany USA* lub zachodnie stany USA *2* (jeśli używasz stref dostępności) dla tego szybkiego startu. W przypadku systemu produkcyjnego wybierz region, który najlepiej odpowiada Twoim potrzebom.
+    | Strefy dostępności | *1*, *2*i/lub *3* | Umieść wystąpienia klastra w różnych strefach dostępności w tym samym regionie (opcjonalnie). [Strefy dostępności platformy Azure](/azure/availability-zones/az-overview) są unikatowymi lokalizacjami fizycznymi w tym samym regionie platformy Azure. Chronią one klaster usługi Azure Data Explorer i dane przed częściowym błędem regionu. Węzły klastra są tworzone domyślnie w tym samym centrum danych. Wybierając kilka stref dostępności można wyeliminować pojedynczy punkt awarii i zapewnić wysoką dostępność. Wdrożenie stref dostępności jest możliwe tylko podczas tworzenia klastra i nie można ich zmodyfikować w późniejszym terminie.
     | Specyfikacja środowiska obliczeniowego | *D13_v2* | Na potrzeby tego przewodnika Szybki start wybierz najtańszą specyfikację. W przypadku systemu produkcyjnego wybierz specyfikację, która najlepiej odpowiada Twoim potrzebom.
     | | | |
 

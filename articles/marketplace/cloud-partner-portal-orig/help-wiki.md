@@ -1,25 +1,23 @@
 ---
-title: Dynamics 365 for Operations — pomoc typu wiki
-description: Ten artykuł został uznany za przestarzały i połączony z artykułem KOMPUTERowym; was "Dynamics 365 for Operations — Strona informacji o wiki"
-services: Azure, Marketplace, Cloud Partner Portal,
-author: ChJenk
-manager: Ricardo.Villalobos
+title: Dynamics 365 for Operations Pomoc Wiki
+description: Przestarzały ten artykuł i połączony z artykułem na komputerze; było "Dynamics 365 for Operations Help Wiki information page" (Strona informacyjna Dynamics 365 for Operations Help Wiki"
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/30/2019
-ms.author: v-chjen
-ms.openlocfilehash: 27680824a4586a8bd3174eb28ce2ddb3604c014b
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 19043397cc31e089cc77e732485ade61ef4b4e30
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73824219"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80275989"
 ---
-# <a name="dynamics-365-for-operations-help-wiki"></a>Dynamics 365 for Operations — pomoc typu wiki
+# <a name="dynamics-365-for-operations-help-wiki"></a>Dynamics 365 for Operations Pomoc Wiki
 
-Microsoft Dynamics 365 for Operations to aplikacja biznesowa firmy Microsoft dla przedsiębiorstw. Dzięki temu użytkownicy mogą szybko podejmować bardziej przemyślane decyzje dzięki inteligentnemu interfejsowi użytkownika, który zapewnia dostęp do szczegółowych informacji i danych w czasie rzeczywistym. Umożliwia ona firmom przekształcanie i wprowadzanie innowacji przez dostarczanie sprawdzonej logiki biznesowej, która umożliwia im szybsze Projektowanie procesów biznesowych. Dzięki temu firmy mogą elastycznie wzrosnąć w swoim własnym tempie i pracować niemal wszędzie, umożliwiając im skalowanie swoich operacji globalnie w celu zaspokajania potrzeb biznesowych.
+Microsoft Dynamics 365 for Operations to aplikacja biznesowa firmy Microsoft dla przedsiębiorstw. Umożliwia użytkownikom szybkie podejmowanie mądrzejszych decyzji za pośrednictwem inteligentnego interfejsu użytkownika, który zapewnia dostęp do szczegółowych informacji i danych w czasie rzeczywistym. Umożliwia firmom transformację i innowacje dzięki sprawdzonej logice biznesowej, która pozwala im szybciej przeprojektować procesy biznesowe. Daje to firmom elastyczność w rozwoju we własnym tempie i prowadzenia działalności niemal wszędzie i czasie, co pozwala im skalować działalność na całym świecie w celu zaspokojenia potrzeb biznesowych.
 
-Ten przewodnik użytkownika może pomóc Ci dowiedzieć się, jak zapewnić działanie usługi Dynamics 365 na potrzeby operacji dla Twojej firmy.
+Ten podręcznik użytkownika pomoże Ci dowiedzieć się, jak sprawić, by dynamics 365 for Operations działał dla Twojej firmy.
 
-Aby uzyskać więcej informacji, zobacz [Dynamics 365 for Operations wiki](https://docs.microsoft.com/dynamics365/operations/) .
+Zobacz [Dynamics 365 dla Operacji Pomoc Wiki, aby](https://docs.microsoft.com/dynamics365/operations/) uzyskać więcej informacji.

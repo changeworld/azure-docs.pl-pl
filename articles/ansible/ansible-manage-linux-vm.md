@@ -1,6 +1,6 @@
 ---
-title: Szybki Start — zarządzanie maszynami wirtualnymi z systemem Linux na platformie Azure przy użyciu rozwiązania ansible
-description: W tym przewodniku szybki start dowiesz się, jak zarządzać maszyną wirtualną z systemem Linux na platformie Azure przy użyciu rozwiązania ansible
+title: Szybki start — zarządzanie maszynami wirtualnymi systemu Linux na platformie Azure przy użyciu aplikacji Ansible
+description: W tym przewodniku Szybki start dowiedz się, jak zarządzać maszyną wirtualną systemu Linux na platformie Azure przy użyciu funkcji Ansible
 keywords: ansible, azure, devops, bash, cloudshell, playbook, bash
 ms.topic: quickstart
 ms.service: ansible
@@ -8,33 +8,33 @@ author: tomarchermsft
 manager: gwallace
 ms.author: tarcher
 ms.date: 04/30/2019
-ms.openlocfilehash: 90113373535c835e5cddf707bcb520789e596aec
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: d94858391951aaf9387394afeb5ad2ae373fa7b5
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77202403"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80239531"
 ---
-# <a name="quickstart-manage-linux-virtual-machines-in-azure-using-ansible"></a>Szybki Start: Zarządzanie maszynami wirtualnymi z systemem Linux na platformie Azure przy użyciu rozwiązania ansible
+# <a name="quickstart-manage-linux-virtual-machines-in-azure-using-ansible"></a>Szybki start: zarządzanie maszynami wirtualnymi systemu Linux na platformie Azure przy użyciu aplikacji Ansible
 
-Rozwiązanie Ansible umożliwia zautomatyzowanie wdrażania i konfigurowania zasobów w Twoim środowisku. W tym artykule opisano uruchamianie i zatrzymywanie maszyny wirtualnej z systemem Linux przy użyciu rozwiązania ansible element PlayBook. 
+Rozwiązanie Ansible umożliwia zautomatyzowanie wdrażania i konfigurowania zasobów w Twoim środowisku. W tym artykule użyjesz podręcznika Ansible, aby uruchomić i zatrzymać maszynę wirtualną systemu Linux. 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 [!INCLUDE [open-source-devops-prereqs-azure-sub.md](../../includes/open-source-devops-prereqs-azure-subscription.md)]
 [!INCLUDE [ansible-prereqs-cloudshell-use-or-vm-creation2.md](../../includes/ansible-prereqs-cloudshell-use-or-vm-creation2.md)]
 
-## <a name="stop-a-virtual-machine"></a>Zatrzymaj maszynę wirtualną
+## <a name="stop-a-virtual-machine"></a>Zatrzymywanie maszyny wirtualnej
 
-W tej sekcji użyto rozwiązania ansible do dealokacji (zatrzymania) maszyny wirtualnej platformy Azure.
+W tej sekcji można użyć Ansible do deallocate (stop) maszyny wirtualnej platformy Azure.
 
-1. Zaloguj się do [Azure portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
+1. Zaloguj się do [Portalu Azure](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 
-1. Otwórz usługę [Cloud Shell](/azure/cloud-shell/overview).
+1. Otwórz [powłokę chmury](/azure/cloud-shell/overview).
 
-1. Utwórz plik o nazwie `azure-vm-stop.yml`i otwórz go w edytorze:
+1. Utwórz plik `azure-vm-stop.yml`o nazwie i otwórz go w edytorze:
 
-    ```azurecli-interactive
+    ```bash
     code azure-vm-stop.yml
     ```
 
@@ -52,17 +52,17 @@ W tej sekcji użyto rozwiązania ansible do dealokacji (zatrzymania) maszyny wir
             allocated: no
     ```
 
-1. Zastąp symbole zastępcze `{{ resource_group_name }}` i `{{ vm_name }}` wartościami.
+1. Zastąp `{{ resource_group_name }}` i `{{ vm_name }}` symbole zastępcze wartościami.
 
-1. Zapisz plik i Zamknij Edytor.
+1. Zapisz plik i zamknij edytor.
 
-1. Uruchom element PlayBook przy użyciu polecenia `ansible-playbook`:
+1. Uruchom podręcznik za `ansible-playbook` pomocą polecenia:
 
     ```bash
     ansible-playbook azure-vm-stop.yml
     ```
 
-1. Po uruchomieniu element PlayBook są wyświetlane dane wyjściowe podobne do następujących:
+1. Po uruchomieniu podręcznika zobaczysz dane wyjściowe podobne do następujących wyników:
 
     ```bash
     PLAY [Stop Azure VM] ********************************************************
@@ -77,17 +77,17 @@ W tej sekcji użyto rozwiązania ansible do dealokacji (zatrzymania) maszyny wir
     localhost                  : ok=2    changed=1    unreachable=0    failed=0
     ```
 
-## <a name="start-a-virtual-machine"></a>Uruchom maszynę wirtualną
+## <a name="start-a-virtual-machine"></a>Uruchamianie maszyny wirtualnej
 
-W tej sekcji użyjesz rozwiązania ansible, aby uruchomić cofniętą alokację (zatrzymaną) maszynę wirtualną platformy Azure.
+W tej sekcji można użyć Ansible, aby uruchomić cofniętą (zatrzymaną) maszynę wirtualną platformy Azure.
 
-1. Zaloguj się do [Azure portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
+1. Zaloguj się do [Portalu Azure](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 
-1. Otwórz usługę [Cloud Shell](/azure/cloud-shell/overview).
+1. Otwórz [powłokę chmury](/azure/cloud-shell/overview).
 
-1. Utwórz plik o nazwie `azure-vm-start.yml`i otwórz go w edytorze:
+1. Utwórz plik `azure-vm-start.yml`o nazwie i otwórz go w edytorze:
 
-    ```azurecli-interactive
+    ```bash
     code azure-vm-start.yml
     ```
 
@@ -104,17 +104,17 @@ W tej sekcji użyjesz rozwiązania ansible, aby uruchomić cofniętą alokację 
             name: {{ vm_name }}
     ```
 
-1. Zastąp symbole zastępcze `{{ resource_group_name }}` i `{{ vm_name }}` wartościami.
+1. Zastąp `{{ resource_group_name }}` i `{{ vm_name }}` symbole zastępcze wartościami.
 
-1. Zapisz plik i Zamknij Edytor.
+1. Zapisz plik i zamknij edytor.
 
-1. Uruchom element PlayBook przy użyciu polecenia `ansible-playbook`:
+1. Uruchom podręcznik za `ansible-playbook` pomocą polecenia:
 
     ```bash
     ansible-playbook azure-vm-start.yml
     ```
 
-1. Po uruchomieniu element PlayBook są wyświetlane dane wyjściowe podobne do następujących:
+1. Po uruchomieniu podręcznika zobaczysz dane wyjściowe podobne do następujących wyników:
 
     ```bash
     PLAY [Start Azure VM] ********************************************************
@@ -132,4 +132,4 @@ W tej sekcji użyjesz rozwiązania ansible, aby uruchomić cofniętą alokację 
 ## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"] 
-> [Samouczek: Zarządzanie spisami dynamicznymi platformy Azure za pomocą rozwiązania ansible](./ansible-manage-azure-dynamic-inventories.md)
+> [Samouczek: Zarządzanie dynamicznymi zapasami platformy Azure przy użyciu ansible](./ansible-manage-azure-dynamic-inventories.md)

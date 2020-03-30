@@ -1,120 +1,120 @@
 ---
-title: Opracowywanie Azure Functions przy użyciu programu Visual Studio
-description: Dowiedz się, jak opracowywać i testować Azure Functions przy użyciu narzędzi Azure Functions Tools for Visual Studio 2019.
+title: Opracowywanie funkcji usługi Azure Functions przy użyciu programu Visual Studio
+description: Dowiedz się, jak tworzyć i testować usługi Azure Functions przy użyciu narzędzi Azure Functions Tools for Visual Studio 2019.
 ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 08/21/2019
 ms.openlocfilehash: b3d683153a1e70f4c65dcc5e401f4ee702af8b49
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79277104"
 ---
-# <a name="develop-azure-functions-using-visual-studio"></a>Opracowywanie Azure Functions przy użyciu programu Visual Studio  
+# <a name="develop-azure-functions-using-visual-studio"></a>Opracowywanie funkcji usługi Azure Functions przy użyciu programu Visual Studio  
 
-Program Visual Studio umożliwia tworzenie, testowanie i wdrażanie C# funkcji biblioteki klas na platformie Azure. Jeśli to środowisko jest pierwsze dzięki Azure Functions, możesz dowiedzieć się więcej na temat [wprowadzenia do Azure Functions](functions-overview.md).
+Visual Studio umożliwia tworzenie, testowanie i wdrażanie funkcji biblioteki klas języka C# na platformie Azure. Jeśli to środowisko jest twoje pierwsze z usługami Azure Functions, możesz dowiedzieć się więcej na [wprowadzenie do usługi Azure Functions.](functions-overview.md)
 
-Program Visual Studio oferuje następujące korzyści podczas opracowywania funkcji: 
+Visual Studio zapewnia następujące korzyści podczas opracowywania funkcji: 
 
-* Edytuj, Kompiluj i uruchamiaj funkcje na lokalnym komputerze deweloperskim. 
-* Opublikuj projekt Azure Functions bezpośrednio na platformie Azure i Utwórz zasoby platformy Azure zgodnie z potrzebami. 
-* Użyj C# atrybutów, aby zadeklarować powiązania funkcji bezpośrednio C# w kodzie.
-* Opracowywanie i wdrażanie wstępnie skompilowanych C# funkcji. Funkcje wstępnie spełnione zapewniają lepszą wydajność w zimnym miejscu niż C# funkcje oparte na skryptach. 
-* Zakoduj funkcje C# w programie, gdy masz wszystkie zalety programowania w programie Visual Studio. 
+* Edytuj, skompiluj i uruchom funkcje na lokalnym komputerze deweloperskim. 
+* Opublikuj swój projekt usługi Azure Functions bezpośrednio na platformie Azure i utwórz zasoby platformy Azure w razie potrzeby. 
+* Użyj atrybutów C#, aby zadeklarować powiązania funkcji bezpośrednio w kodzie języka C#.
+* Tworzenie i wdrażanie wstępnie skompilowanych funkcji języka C#. Wstępnie spełnione funkcje zapewniają lepszą wydajność zimnego rozruchu niż funkcje oparte na skryptach języka C#. 
+* Kod funkcji w języku C# mając jednocześnie wszystkie korzyści z rozwoju programu Visual Studio. 
 
-Ten artykuł zawiera szczegółowe informacje dotyczące sposobu użycia programu Visual Studio do C# opracowywania funkcji biblioteki klas i publikowania ich na platformie Azure. Przed przeczytaniem tego artykułu należy wykonać [funkcje szybkiego startu dla programu Visual Studio](functions-create-your-first-function-visual-studio.md). 
+Ten artykuł zawiera szczegółowe informacje na temat sposobu korzystania z programu Visual Studio do tworzenia funkcji biblioteki klas języka C# i publikowania ich na platformie Azure. Przed przeczytaniem tego artykułu należy ukończyć [przewodnik Szybki start funkcji programu Visual Studio](functions-create-your-first-function-visual-studio.md). 
 
-O ile nie wskazano inaczej, przedstawione procedury i przykłady dotyczą programu Visual Studio 2019. 
+O ile nie zaznaczono inaczej, procedury i przykłady pokazane są dla programu Visual Studio 2019. 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Narzędzia Azure Functions są dołączone do obciążeń programistycznych platformy Azure programu Visual Studio, począwszy od programu Visual Studio 2017. Upewnij się, że dołączysz obciążenie **Programowanie na platformie Azure** w instalacji programu Visual Studio.
+Narzędzia funkcji platformy Azure są zawarte w obciążeniu deweloperów platformy Azure programu Visual Studio, począwszy od programu Visual Studio 2017. Upewnij się, że uwzględnisz obciążenie **deweloperskie platformy Azure** w instalacji programu Visual Studio.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 Inne zasoby, które są potrzebne, takie jak konto usługi Azure Storage, są tworzone w ramach subskrypcji podczas procesu publikowania.
 
 > [!NOTE]
-> W programie Visual Studio 2017 obciążenie Programowanie na platformie Azure instaluje Azure Functions narzędzia jako oddzielne rozszerzenie. Podczas aktualizowania programu Visual Studio 2017 upewnij się również, że używasz najnowszej [wersji](#check-your-tools-version) narzędzi Azure Functions. W poniższych sekcjach pokazano, jak sprawdzić i (w razie potrzeby) zaktualizować rozszerzenie narzędzi Azure Functions w programie Visual Studio 2017. 
+> W programie Visual Studio 2017 obciążenie deweloperskie platformy Azure instaluje narzędzia azure functions jako oddzielne rozszerzenie. Podczas aktualizowania programu Visual Studio 2017 upewnij się również, że używasz [najnowszej wersji](#check-your-tools-version) narzędzi usługi Azure Functions. W poniższych sekcjach pokazano, jak sprawdzić i (w razie potrzeby) zaktualizować rozszerzenie narzędzia Azure Functions Tools w programie Visual Studio 2017. 
 >
-> Pomiń tę sekcję w przypadku korzystania z programu Visual Studio 2019.
+> Pomiń tę sekcję podczas korzystania z programu Visual Studio 2019.
 
-### <a name="check-your-tools-version"></a>Sprawdź wersję narzędzi w programie Visual Studio 2017
+### <a name="check-your-tools-version-in-visual-studio-2017"></a><a name="check-your-tools-version"></a>Sprawdzanie wersji narzędzi w programie Visual Studio 2017
 
-1. W menu **Narzędzia** wybierz pozycję **rozszerzenia i aktualizacje**. Rozwiń węzeł **zainstalowane** > **Narzędzia** i wybierz pozycję **Narzędzia do Azure Functions i zadania w sieci Web**.
+1. Z menu **Narzędzia** wybierz polecenie **Rozszerzenia i aktualizacje**. Rozwiń węzeł **Zainstalowane** > **narzędzia** i wybierz pozycję Azure Functions and Web **Jobs Tools**.
 
-    ![Weryfikowanie wersji narzędzi funkcji](./media/functions-develop-vs/functions-vstools-check-functions-tools.png)
+    ![Sprawdzanie wersji narzędzi funkcji](./media/functions-develop-vs/functions-vstools-check-functions-tools.png)
 
-1. Zanotuj zainstalowaną **wersję**. Tę wersję można porównać z najnowszą wersją wymienioną [w informacjach o wersji](https://github.com/Azure/Azure-Functions/blob/master/VS-AzureTools-ReleaseNotes.md). 
+1. Zanotuj **zainstalowaną wersję**. Możesz porównać tę wersję z najnowszą wersją [wymienioną w informacjach o wersji](https://github.com/Azure/Azure-Functions/blob/master/VS-AzureTools-ReleaseNotes.md). 
 
-1. W przypadku starszych wersji aktualizacji z narzędzi w programie Visual Studio, jak pokazano w poniższej sekcji.
+1. Jeśli wersja jest starsza, zaktualizuj narzędzia w programie Visual Studio, jak pokazano w poniższej sekcji.
 
 ### <a name="update-your-tools-in-visual-studio-2017"></a>Aktualizowanie narzędzi w programie Visual Studio 2017
 
-1. W oknie dialogowym **rozszerzenia i aktualizacje** rozwiń węzeł **aktualizacje** > **Visual Studio Marketplace**, wybierz **Azure Functions i narzędzia zadań sieci Web** , a następnie wybierz pozycję **Aktualizuj**.
+1. W oknie dialogowym **Rozszerzenia i aktualizacje** rozwiń pozycję **Aktualizuje** > **witrynę Visual Studio Marketplace**, wybierz pozycję Azure Functions and Web Jobs **Tools** i select **Update**.
 
     ![Aktualizowanie wersji narzędzi funkcji](./media/functions-develop-vs/functions-vstools-update-functions-tools.png)   
 
-1. Po pobraniu aktualizacji narzędzi, zamknij program Visual Studio, aby wywoływany narzędzia aktualizacji za pomocą Instalatora VSIX.
+1. Po pobraniu aktualizacji narzędzi zamknij program Visual Studio, aby wyzwolić aktualizację narzędzi przy użyciu instalatora VSIX.
 
-1. W instalatorze wybierz **przycisk OK** , aby rozpocząć, a następnie **zmodyfikuj** , aby zaktualizować narzędzia. 
+1. W instalatorze wybierz przycisk **OK,** aby rozpocząć, a następnie **zmodyfikuj,** aby zaktualizować narzędzia. 
 
 1. Po zakończeniu aktualizacji wybierz pozycję **Zamknij** i uruchom ponownie program Visual Studio.
 
 > [!NOTE]  
-> W programie Visual Studio 2019 i nowszych rozszerzenie narzędzi Azure Functions zostało zaktualizowane w ramach programu Visual Studio.  
+> W programie Visual Studio 2019 i nowszych rozszerzenie narzędzi usługi Azure Functions jest aktualizowane w ramach programu Visual Studio.  
 
 ## <a name="create-an-azure-functions-project"></a>Tworzenie projektu usługi Azure Functions
 
 [!INCLUDE [Create a project using the Azure Functions](../../includes/functions-vstools-create.md)]
 
-Szablon projektu tworzy C# projekt, instaluje pakiet NuGet `Microsoft.NET.Sdk.Functions` i ustawia platformę docelową. Nowy projekt zawiera następujące pliki:
+Szablon projektu tworzy projekt języka C#, instaluje pakiet `Microsoft.NET.Sdk.Functions` NuGet i ustawia platformę docelową. Nowy projekt ma następujące pliki:
 
-* plik **host. JSON**: umożliwia skonfigurowanie hosta funkcji. Te ustawienia są stosowane zarówno w przypadku uruchamiania lokalnego, jak i na platformie Azure. Aby uzyskać więcej informacji, zobacz [Dokumentacja pliku host. JSON](functions-host-json.md).
+* **host.json**: Umożliwia skonfigurowanie hosta funkcji. Te ustawienia mają zastosowanie zarówno podczas uruchamiania lokalnie, jak i na platformie Azure. Aby uzyskać więcej informacji, zobacz [host.json reference](functions-host-json.md).
 
-* **Local. Settings. JSON**: utrzymuje ustawienia używane lokalnie do uruchamiania funkcji. Te ustawienia nie są używane podczas uruchamiania na platformie Azure. Aby uzyskać więcej informacji, zobacz [plik ustawień lokalnych](#local-settings-file).
+* **local.settings.json**: Zachowuje ustawienia używane podczas uruchamiania funkcji lokalnie. Te ustawienia nie są używane podczas uruchamiania na platformie Azure. Aby uzyskać więcej informacji, zobacz [Plik ustawień lokalnych](#local-settings-file).
 
     >[!IMPORTANT]
-    >Ponieważ plik Local. Settings. JSON może zawierać wpisy tajne, należy go wykluczyć z kontroli źródła projektu. Ustawienie **Kopiuj do katalogu wyjściowego** dla tego pliku powinno być zawsze **kopiowane, jeśli nowsze**. 
+    >Ponieważ plik local.settings.json może zawierać wpisy tajne, należy wykluczyć go z kontroli źródła projektu. Ustawienie **Kopiuj do katalogu wyjściowego** dla tego pliku powinno być zawsze **kopiuj, jeśli jest nowsze**. 
 
-Aby uzyskać więcej informacji, zobacz [Functions Library Project](functions-dotnet-class-library.md#functions-class-library-project).
+Aby uzyskać więcej informacji, zobacz [Projekt biblioteki klas funkcji](functions-dotnet-class-library.md#functions-class-library-project).
 
 [!INCLUDE [functions-local-settings-file](../../includes/functions-local-settings-file.md)]
 
-Ustawienia w pliku Local. Settings. JSON nie są przekazywane automatycznie przy publikowaniu projektu. Aby upewnić się, że te ustawienia istnieją także w aplikacji funkcji na platformie Azure, należy je przekazać po opublikowaniu projektu. Aby dowiedzieć się więcej, zobacz [Funkcja ustawienia aplikacji](#function-app-settings).
+Ustawienia w local.settings.json nie są przekazywane automatycznie podczas publikowania projektu. Aby upewnić się, że te ustawienia istnieją również w aplikacji funkcji na platformie Azure, należy przekazać je po opublikowaniu projektu. Aby dowiedzieć się więcej, zobacz [Ustawienia aplikacji Funkcji](#function-app-settings).
 
-Wartości w **connectionStrings** nigdy nie są publikowane.
+Wartości w **ConnectionStrings** nigdy nie są publikowane.
 
-Wartości ustawień aplikacji funkcji można także odczytać w kodzie jako zmienne środowiskowe. Aby uzyskać więcej informacji, zobacz [zmienne środowiskowe](functions-dotnet-class-library.md#environment-variables).
+Wartości ustawień aplikacji funkcji można również odczytać w kodzie jako zmienne środowiskowe. Aby uzyskać więcej informacji, zobacz [Zmienne środowiskowe](functions-dotnet-class-library.md#environment-variables).
 
-## <a name="configure-the-project-for-local-development"></a>Konfigurowanie projektu na potrzeby lokalnego projektowania
+## <a name="configure-the-project-for-local-development"></a>Konfigurowanie projektu do rozwoju lokalnego
 
-Środowisko uruchomieniowe funkcji używa wewnętrznego konta usługi Azure Storage. Dla wszystkich typów wyzwalaczy innych niż HTTP i webhook, należy ustawić wartość **. AzureWebJobsStorage** klucza jako prawidłowe parametry połączenia konta usługi Azure Storage. Aplikacja funkcji może również użyć [emulatora usługi Azure Storage](../storage/common/storage-use-emulator.md) dla ustawienia połączenia **AzureWebJobsStorage** , które jest wymagane przez projekt. Aby użyć emulatora, ustaw wartość **AzureWebJobsStorage** na `UseDevelopmentStorage=true`. Zmień to ustawienie na rzeczywiste parametry połączenia konta magazynu przed wdrożeniem.
+Środowisko wykonawcze Functions używa konta usługi Azure Storage wewnętrznie. Dla wszystkich typów wyzwalaczy innych niż HTTP i webhooks należy ustawić **values.AzureWebJobsStorage** klucz prawidłowego ciągu połączenia konta usługi Azure Storage. Aplikacja funkcji można również użyć [emulatora magazynu platformy Azure](../storage/common/storage-use-emulator.md) dla ustawienia połączenia **AzureWebJobsStorage,** które jest wymagane przez projekt. Aby użyć emulatora, ustaw wartość **usługi AzureWebJobsStorage** na `UseDevelopmentStorage=true`. Zmień to ustawienie na rzeczywisty ciąg połączenia konta magazynu przed wdrożeniem.
 
 Aby ustawić parametry połączenia konta magazynu:
 
-1. W programie Visual Studio Otwórz program **Cloud Explorer**, rozwiń węzeł **konto magazynu** > **konto magazynu**, a następnie na karcie **Właściwości** skopiuj wartość **podstawowe parametry połączenia** .
+1. W programie Visual Studio otwórz **Cloud Explorer**, rozwiń pozycję **Konto** > magazynu**Twoje konto magazynu**, a następnie na karcie Właściwości skopiuj wartość **podstawowego ciągu połączenia.** **Properties**
 
-2. W projekcie Otwórz plik Local. Settings. JSON i ustaw wartość klucza **AzureWebJobsStorage** na skopiowane parametry połączenia.
+2. W projekcie otwórz plik local.settings.json i ustaw wartość klucza **AzureWebJobsStorage** na skopiowany ciąg połączenia.
 
-3. Powtórz poprzedni krok, aby dodać unikatowe klucze do tablicy **wartości** dla innych połączeń wymaganych przez funkcje. 
+3. Powtórz poprzedni krok, aby dodać unikatowe klucze do **tablicy Wartości** dla innych połączeń wymaganych przez funkcje. 
 
 ## <a name="add-a-function-to-your-project"></a>Dodawanie funkcji do projektu
 
-W C# funkcjach biblioteki klas powiązania używane przez funkcję są definiowane przez zastosowanie atrybutów w kodzie. Gdy tworzysz wyzwalacze funkcji z dostarczonych szablonów, zostaną zastosowane atrybuty wyzwalacza. 
+W c# funkcje biblioteki klasy powiązania używane przez funkcję są definiowane przez zastosowanie atrybutów w kodzie. Podczas tworzenia wyzwalaczy funkcji z podanych szablonów atrybuty wyzwalacza są stosowane dla Ciebie. 
 
-1. W **Eksploratorze rozwiązań** kliknij prawym przyciskiem myszy węzeł projektu i wybierz polecenie **Dodaj** > **Nowy element**. Wybierz pozycję **Funkcja platformy Azure**, wpisz **nazwę** klasy, a następnie kliknij przycisk **Dodaj**.
+1. W **Eksploratorze rozwiązań** kliknij prawym przyciskiem myszy węzeł projektu i wybierz polecenie **Dodaj** > **Nowy element**. Wybierz **pozycję Funkcja platformy Azure**, wpisz **nazwę** klasy i kliknij przycisk **Dodaj**.
 
-2. Wybierz wyzwalacz, ustaw właściwości powiązania, a następnie kliknij przycisk **Utwórz**. Poniższy przykład przedstawia ustawienia podczas tworzenia funkcji wyzwalanej przez magazyn kolejek. 
+2. Wybierz wyzwalacz, ustaw właściwości powiązania i kliknij przycisk **Utwórz**. W poniższym przykładzie przedstawiono ustawienia podczas tworzenia funkcji wyzwalanego magazynu kolejki. 
 
-    ![Tworzenie funkcji wyzwalanej przez kolejkę](./media/functions-develop-vs/functions-vstools-create-queuetrigger.png)
+    ![Tworzenie funkcji wyzwalania kolejki](./media/functions-develop-vs/functions-vstools-create-queuetrigger.png)
 
-    Ten przykład wyzwalacza używa parametrów połączenia z kluczem o nazwie **QueueStorage**. To ustawienie parametrów połączenia musi być zdefiniowane w [pliku Local. Settings. JSON](functions-run-local.md#local-settings-file).
+    W tym przykładzie wyzwalania użyto ciągu połączenia z kluczem o nazwie **QueueStorage**. To ustawienie ciągu połączenia musi być zdefiniowane w [pliku local.settings.json](functions-run-local.md#local-settings-file).
 
-3. Zapoznaj się z nowo dodaną klasą. Zostanie wyświetlona statyczna metoda **Run** , która ma atrybut **FunctionName** . Ten atrybut wskazuje, że metoda jest punktem wejścia dla funkcji.
+3. Sprawdź nowo dodanej klasy. Zostanie wyświetloną statyczną metodę **Run,** która jest przypisywana z atrybutem **FunctionName.** Ten atrybut wskazuje, że metoda jest punktem wejścia dla funkcji.
 
-    Na przykład następująca C# Klasa reprezentuje funkcję wyzwalaną przez podstawowy magazyn kolejek:
+    Na przykład następująca klasa Języka C# reprezentuje podstawową funkcję wyzwalania magazynu kolejki:
 
     ```csharp
     using System;
@@ -136,21 +136,21 @@ W C# funkcjach biblioteki klas powiązania używane przez funkcję są definiowa
     }
     ```
 
-    Atrybut specyficzny dla powiązania jest stosowany do każdego parametru powiązania dostarczonego do metody punktu wejścia. Ten atrybut przyjmuje informacje o powiązaniu jako parametry. W poprzednim przykładzie pierwszy parametr ma zastosowany atrybut **QueueTrigger** , wskazujący funkcję wyzwalaną przez kolejkę. Nazwa kolejki i ustawienia parametrów połączenia są przenoszone jako parametry do atrybutu **QueueTrigger** . Aby uzyskać więcej informacji, zobacz [powiązania usługi Azure queue storage dla Azure Functions](functions-bindings-storage-queue-trigger.md).
+    Atrybut specyficzne dla powiązania jest stosowany do każdego parametru wiązania dostarczonego do metody punktu wejścia. Atrybut przyjmuje informacje wiązania jako parametry. W poprzednim przykładzie pierwszy parametr ma zastosowany atrybut **QueueTrigger,** wskazując funkcję wyzwalaną kolejką. Nazwa kolejki i nazwa ustawienia ciągu połączenia są przekazywane jako parametry do atrybutu **QueueTrigger.** Aby uzyskać więcej informacji, zobacz [Powiązania magazynu kolejki platformy Azure dla usług Azure Functions](functions-bindings-storage-queue-trigger.md).
 
-Korzystając z powyższej procedury, można dodać więcej funkcji do projektu aplikacji funkcji. Każda funkcja w projekcie może mieć inny wyzwalacz, ale funkcja musi mieć dokładnie jeden wyzwalacz. Aby uzyskać więcej informacji, zobacz temat [Azure Functions wyzwalacze i koncepcje powiązań](functions-triggers-bindings.md).
+Powyższa procedura służy do dodawania większej liczby funkcji do projektu aplikacji funkcji. Każda funkcja w projekcie może mieć inny wyzwalacz, ale funkcja musi mieć dokładnie jeden wyzwalacz. Aby uzyskać więcej informacji, zobacz [Usługi Azure Functions wyzwalania i pojęć powiązań](functions-triggers-bindings.md).
 
 ## <a name="add-bindings"></a>Dodawanie powiązań
 
-Podobnie jak w przypadku wyzwalaczy, powiązania wejściowe i wyjściowe są dodawane do funkcji jako atrybuty powiązania. Dodaj powiązania do funkcji w następujący sposób:
+Podobnie jak w odniesieniu do wyzwalaczy, powiązania danych wejściowych i wyjściowych są dodawane do funkcji jako atrybuty powiązania. Dodaj powiązania do funkcji w następujący sposób:
 
-1. Upewnij się, że [projekt został skonfigurowany do lokalnego projektowania](#configure-the-project-for-local-development).
+1. Upewnij się, że [projekt został skonfigurowany do rozwoju lokalnego](#configure-the-project-for-local-development).
 
-2. Dodaj odpowiedni pakiet rozszerzenia NuGet dla określonego powiązania. Aby uzyskać więcej informacji, [Zobacz C# lokalne Programowanie przy użyciu programu Visual Studio](./functions-bindings-register.md#local-csharp) w artykule wyzwalacze i powiązania. Wymagania pakietu NuGet dotyczące powiązań są dostępne w artykule referencyjnym dla powiązania. Na przykład Znajdź wymagania dotyczące pakietu dla wyzwalacza Event Hubs w [artykule Event Hubs powiązania](functions-bindings-event-hubs.md).
+2. Dodaj odpowiedni pakiet rozszerzenia NuGet dla określonego powiązania. Aby uzyskać więcej informacji, zobacz [lokalne tworzenie języka C# przy użyciu programu Visual Studio](./functions-bindings-register.md#local-csharp) w wyzwalacza i powiązania artykułu. Wymagania pakietu NuGet specyficzne dla powiązania znajdują się w artykule referencyjnym dla powiązania. Na przykład znajdź wymagania dotyczące pakietu dla wyzwalacza Usługi zdarzeń w [artykule odwołania do powiązania Usługi zdarzeń](functions-bindings-event-hubs.md).
 
-3. Jeśli istnieją ustawienia aplikacji wymagane przez powiązanie, Dodaj je do kolekcji **wartości** w [lokalnym pliku ustawień](functions-run-local.md#local-settings-file). Te wartości są używane, gdy funkcja jest uruchamiana lokalnie. Gdy funkcja jest uruchamiana w aplikacji funkcji na platformie Azure, zostaną użyte [Ustawienia aplikacji funkcji](#function-app-settings) .
+3. Jeśli istnieją ustawienia aplikacji, których wymaga powiązanie, dodaj je do kolekcji **Wartości** w [pliku ustawień lokalnych](functions-run-local.md#local-settings-file). Wartości te są używane, gdy funkcja działa lokalnie. Gdy funkcja jest uruchamiana w aplikacji funkcji na platformie Azure, używane są [ustawienia aplikacji funkcji.](#function-app-settings)
 
-4. Dodaj odpowiedni atrybut powiązania do sygnatury metody. W poniższym przykładzie komunikat kolejki wyzwala funkcję, a powiązanie danych wyjściowych tworzy nowy komunikat kolejki z tym samym tekstem w innej kolejce.
+4. Dodaj odpowiedni atrybut powiązania do podpisu metody. W poniższym przykładzie komunikat kolejki wyzwala funkcję, a powiązanie danych wyjściowych tworzy nową wiadomość kolejki z tym samym tekstem w innej kolejce.
 
     ```csharp
     public static class SimpleExampleWithOutput
@@ -166,7 +166,7 @@ Podobnie jak w przypadku wyzwalaczy, powiązania wejściowe i wyjściowe są dod
         }
     }
     ```
-   Połączenie z usługą queue storage jest uzyskiwane z ustawienia `AzureWebJobsStorage`. Aby uzyskać więcej informacji, zobacz artykuł referencyjny dla określonego powiązania. 
+   Połączenie z magazynem kolejki `AzureWebJobsStorage` jest uzyskiwane z tego ustawienia. Aby uzyskać więcej informacji, zobacz artykuł referencyjny dla określonego powiązania. 
 
 [!INCLUDE [Supported triggers and bindings](../../includes/functions-bindings.md)]
 
@@ -176,60 +176,60 @@ Podstawowe narzędzia usługi Azure Functions umożliwiają uruchamianie projekt
 
 Aby przetestować funkcję, naciśnij klawisz F5. Po wyświetleniu monitu zaakceptuj żądanie programu Visual Studio dotyczące pobrania i zainstalowania podstawowych narzędzi usługi Azure Functions (CLI). Może także być konieczne włączenie wyjątku zapory, aby umożliwić narzędziom obsługę żądań HTTP.
 
-Po uruchomieniu projektu można testować kod tak jak w przypadku testowania wdrożonej funkcji. Aby uzyskać więcej informacji, zobacz [strategie testowania kodu w Azure Functions](functions-test-a-function.md). Podczas działania w trybie debugowania punkty przerwania są trafień w programie Visual Studio zgodnie z oczekiwaniami. 
+Po uruchomieniu projektu można przetestować kod, jak przetestować wdrożoną funkcję. Aby uzyskać więcej informacji, zobacz [Strategie testowania kodu w usłudze Azure Functions.](functions-test-a-function.md) Podczas uruchamiania w trybie debugowania punkty przerwania są trafione w programie Visual Studio zgodnie z oczekiwaniami. 
 
 <!---
 For an example of how to test a queue triggered function, see the [queue triggered function quickstart tutorial](functions-create-storage-queue-triggered-function.md#test-the-function).  
 -->
 
-Aby dowiedzieć się więcej o korzystaniu z Azure Functions Core Tools, zobacz temat [kod i testowanie usługi Azure Functions lokalnie](functions-run-local.md).
+Aby dowiedzieć się więcej na temat korzystania z podstawowych narzędzi azure functions, zobacz [Kodowanie i testowanie funkcji platformy Azure lokalnie.](functions-run-local.md)
 
 ## <a name="publish-to-azure"></a>Publikowanie na platformie Azure
 
-Podczas publikowania z programu Visual Studio są używane jedną z dwóch metod wdrażania:
+Podczas publikowania z programu Visual Studio używana jest jedna z dwóch metod wdrażania:
 
-* [Web Deploy](functions-deployment-technologies.md#web-deploy-msdeploy): pakiety i wdrożenia aplikacji systemu Windows na dowolnym serwerze usług IIS.
-* [Wdrożenie pliku zip z włączonym uruchamianiem pakietu](functions-deployment-technologies.md#zip-deploy): zalecane w przypadku wdrożeń Azure Functions.
+* [Wdrażanie w sieci Web:](functions-deployment-technologies.md#web-deploy-msdeploy)pakiety i wdraża aplikacje systemu Windows na dowolnym serwerze usług IIS.
+* [Zip Deploy z włączoną funkcją Uruchamianie od pakietu:](functions-deployment-technologies.md#zip-deploy)zalecane dla wdrożeń usługi Azure Functions.
 
-Wykonaj następujące kroki, aby opublikować projekt w aplikacji funkcji na platformie Azure.
+Skorzystaj z poniższych kroków, aby opublikować projekt w aplikacji funkcji na platformie Azure.
 
 [!INCLUDE [Publish the project to Azure](../../includes/functions-vstools-publish.md)]
 
 ## <a name="function-app-settings"></a>Ustawienia aplikacji funkcji
 
-Wszystkie ustawienia dodane w pliku Local. Settings. JSON należy również dodać do aplikacji funkcji na platformie Azure. Te ustawienia nie są przekazywane automatycznie przy publikowaniu projektu.
+Wszystkie ustawienia dodane w local.settings.json muszą również zostać dodane do aplikacji funkcji na platformie Azure. Te ustawienia nie są przekazywane automatycznie podczas publikowania projektu.
 
-Najprostszym sposobem przekazania wymaganych ustawień do aplikacji funkcji na platformie Azure jest użycie linku **Zarządzaj ustawieniami aplikacji...** , który jest wyświetlany po pomyślnym opublikowaniu projektu.
+Najprostszym sposobem przekazania wymaganych ustawień do aplikacji funkcji na platformie Azure jest użycie łącza **Zarządzaj ustawieniami aplikacji...** wyświetlanym po pomyślnym opublikowaniu projektu.
 
 ![](./media/functions-develop-vs/functions-vstools-app-settings.png)
 
-Spowoduje to wyświetlenie okna dialogowego **Ustawienia aplikacji** dla aplikacji funkcji, w którym można dodać nowe ustawienia aplikacji lub zmodyfikować istniejące.
+Spowoduje to **wyświetlenie** okna dialogowego Ustawienia aplikacji dla aplikacji funkcyjnej, w którym można dodawać nowe ustawienia aplikacji lub modyfikować istniejące.
 
 ![](./media/functions-develop-vs/functions-vstools-app-settings2.png)
 
-**Local** reprezentuje wartość ustawienia w pliku Local. Settings. JSON, a dla opcji **Remote** to bieżące ustawienie w aplikacji funkcji na platformie Azure.  Wybierz pozycję **Dodaj ustawienie** , aby utworzyć nowe ustawienie aplikacji. Użyj linku **Wstaw wartość z lokalnego** , aby skopiować wartość ustawienia do pola **zdalnego** . Oczekujące zmiany są zapisywane w pliku ustawień lokalnych i aplikacji funkcji po wybraniu **przycisku OK**.
+**Local** reprezentuje wartość ustawienia w pliku local.settings.json, a **Remote** jest bieżącym ustawieniem w aplikacji funkcji na platformie Azure.  Wybierz **pozycję Dodaj ustawienie,** aby utworzyć nowe ustawienie aplikacji. Użyj **łącza Wstaw z lokalnego** łącza, aby skopiować wartość ustawienia do pola **Zdalne.** Oczekujące zmiany są zapisywane w pliku ustawień lokalnych i aplikacji funkcji po **wybraniu przycisku OK**.
 
 > [!NOTE]
-> Domyślnie plik Local. Settings. JSON nie jest sprawdzany w kontroli źródła. Oznacza to, że w przypadku klonowania projektu funkcji lokalnych z kontroli źródła projekt nie ma pliku Local. Settings. JSON. W takim przypadku należy ręcznie utworzyć plik Local. Settings. JSON w katalogu głównym projektu, aby okno dialogowe **Ustawienia aplikacji** działało zgodnie z oczekiwaniami. 
+> Domyślnie plik local.settings.json nie jest sprawdzany w formancie źródła. Oznacza to, że po sklonowanie lokalnego projektu funkcji z kontroli źródła, projekt nie ma pliku local.settings.json. W takim przypadku należy ręcznie utworzyć plik local.settings.json w katalogu głównym projektu, aby okno dialogowe **Ustawienia aplikacji** działało zgodnie z oczekiwaniami. 
 
-Można również zarządzać ustawieniami aplikacji w jeden z następujących sposobów:
+Ustawienia aplikacji można również zarządzać w jeden z następujących sposobów:
 
-* [Przy użyciu Azure Portal](functions-how-to-use-azure-function-app-settings.md#settings).
-* [Użycie opcji publikowania `--publish-local-settings` w Azure Functions Core Tools](functions-run-local.md#publish).
-* [Przy użyciu interfejsu wiersza polecenia platformy Azure](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set).
+* [Korzystanie z witryny Azure portal](functions-how-to-use-azure-function-app-settings.md#settings).
+* [Korzystanie `--publish-local-settings` z opcji publikowania w narzędziach podstawowe usług Azure Functions](functions-run-local.md#publish).
+* [Korzystanie z interfejsu wiersza polecenia platformy Azure](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set).
 
 ## <a name="monitoring-functions"></a>Funkcje monitorowania
 
-Zalecanym sposobem monitorowania wykonywania funkcji jest zintegrowanie aplikacji funkcji z usługą Azure Application Insights. Po utworzeniu aplikacji funkcji w Azure Portal Ta integracja jest domyślnie wykonywana. Jednak podczas tworzenia aplikacji funkcji podczas publikowania programu Visual Studio nie jest przeprowadzana integracja w aplikacji funkcji na platformie Azure.
+Zalecanym sposobem monitorowania wykonywania funkcji jest integrowanie aplikacji funkcji z usługą Azure Application Insights. Podczas tworzenia aplikacji funkcji w witrynie Azure portal, ta integracja jest wykonywana domyślnie. Jednak podczas tworzenia aplikacji funkcji podczas publikowania programu Visual Studio integracja w aplikacji funkcji na platformie Azure nie jest wykonywana.
 
-Aby włączyć Application Insights aplikacji funkcji:
+Aby włączyć usługę Application Insights dla aplikacji funkcji:
 
 [!INCLUDE [functions-connect-new-app-insights.md](../../includes/functions-connect-new-app-insights.md)]
 
-Aby dowiedzieć się więcej, zobacz [Monitor Azure Functions](functions-monitoring.md).
+Aby dowiedzieć się więcej, zobacz [Monitorowanie funkcji platformy Azure](functions-monitoring.md).
 
 ## <a name="next-steps"></a>Następne kroki
 
-Aby dowiedzieć się więcej na temat Azure Functions Core Tools, zobacz temat [kod i testowanie usługi Azure Functions lokalnie](functions-run-local.md).
+Aby dowiedzieć się więcej o podstawowych narzędziach usługi Azure Functions, zobacz [Kodowanie i testowanie funkcji platformy Azure lokalnie.](functions-run-local.md)
 
-Aby dowiedzieć się więcej na temat opracowywania funkcji jako bibliotek klas .NET, zobacz [Azure Functions C# ](functions-dotnet-class-library.md)Dokumentacja dla deweloperów. Ten artykuł zawiera również linki do przykładów użycia atrybutów do deklarowania różnych typów powiązań obsługiwanych przez Azure Functions.    
+Aby dowiedzieć się więcej na temat tworzenia funkcji jako bibliotek klas .NET, zobacz [odwołanie dewelopera usługi Azure Functions C#.](functions-dotnet-class-library.md) W tym artykule zawiera również łącza do przykładów, jak używać atrybutów do deklarowania różnych typów powiązań obsługiwanych przez usługi Azure Functions.    

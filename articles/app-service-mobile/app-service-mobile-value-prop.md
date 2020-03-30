@@ -1,18 +1,18 @@
 ---
-title: Informacje o Mobile Apps
+title: Informacje o aplikacjach mobilnych
 description: Dowiedz się, jakie korzyści z usługi App Service można osiągać podczas pracy z aplikacjami mobilnymi w przedsiębiorstwie.
 ms.assetid: 4e96cb9d-a632-4cf6-8219-0810d8ade3f9
 ms.tgt_pltfrm: mobile-multiple
-ms.topic: conceptual
+ms.topic: overview
 ms.date: 06/25/2019
-ms.openlocfilehash: 73fdf7f09ebb5073829f9787917946e8053f8e12
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.openlocfilehash: 33548f202046310b91fc79d38ac7d8fb18a8727e
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77461440"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79499428"
 ---
-# <a name="getting-started"> </a>Informacje o Mobile Apps w Azure App Service
+# <a name="about-mobile-apps-in-azure-app-service"></a><a name="getting-started"> </a>Informacje o funkcji Mobile Apps w usłudze Azure App Service
 
 Usługa Azure App Service to oferta w pełni zarządzanej [platformy jako usługi](https://azure.microsoft.com/overview/what-is-paas/) (PaaS) dla profesjonalnych deweloperów. Usługa ta oferuje bogaty zestaw funkcji na potrzeby scenariuszy internetowych, mobilnych i dotyczących integracji. 
 
@@ -68,34 +68,34 @@ Poniższe funkcje platformy są przydatne w przypadku witryn produkcyjnych aplik
 
 * **Środowiska izolowane i dedykowane**: usługę App Service można uruchamiać w dedykowanym, w pełni izolowanym środowisku, aby bezpiecznie pracować z aplikacjami usługi Azure App Service. To środowisko jest idealne w przypadku obciążeń aplikacji wymagających dużej skali, izolacji lub bezpiecznego dostępu do sieci.
 
-  Dowiedz się więcej na temat [środowiska usługi App Service].
+  Dowiedz się więcej o [środowiskach usługi App Service].
 
 ## <a name="next-steps"></a>Następne kroki
 
 Aby rozpocząć pracę z funkcją Mobile Apps w usłudze Azure App Service, wykonaj kroki samouczka z [wprowadzeniem]. Samouczek zawiera podstawowe informacje na temat tworzenia wybranego klienta i zaplecza mobilnego. Obejmuje on również zagadnienia, takie jak integrowanie uwierzytelniania, synchronizacji w trybie offline i powiadomień wypychanych. Kroki samouczka można wykonać wielokrotnie, jeden raz dla każdej aplikacji klienta.
 
 Aby uzyskać więcej informacji o funkcji Mobile Apps, zapoznaj się z naszą [mapą nauki].
-Aby uzyskać więcej informacji o platformie Azure App Service, zobacz temat [Azure App Service].
+Aby uzyskać więcej informacji na temat platformy Usługi azure app service, zobacz [Usługa Azure App Service].
 
 <!-- URLs. -->
 [Migrate your mobile service to App Service]: app-service-mobile-migrating-from-mobile-services.md
-[wprowadzeniem]: app-service-mobile-ios-get-started.md
+[Wprowadzenie]: app-service-mobile-ios-get-started.md
 [Azure Table storage]:../cosmos-db/table-storage-how-to-use-dotnet.md
 [Azure Cosmos DB]: ../cosmos-db/sql-api-get-started.md
-[funkcji uwierzytelniania]: ./app-service-mobile-auth.md
-[funkcji związanych z danymi]: ./app-service-mobile-offline-data-sync.md
-[funkcji powiadomień wypychanych]: ../notification-hubs/notification-hubs-push-notification-overview.md
+[authentication features]: ./app-service-mobile-auth.md
+[funkcje związane z danymi]: ./app-service-mobile-offline-data-sync.md
+[funkcje powiadomień wypychanych]: ../notification-hubs/notification-hubs-push-notification-overview.md
 [iOS]: ./app-service-mobile-ios-how-to-use-client-library.md
 [Android]: ./app-service-mobile-android-how-to-use-client-library.md
 [Windows]: ./app-service-mobile-dotnet-how-to-use-client-library.md
 [Xamarin.iOS i Xamarin.Android]: ./app-service-mobile-dotnet-how-to-use-client-library.md
 [Xamarin.Forms]: ./app-service-mobile-xamarin-forms-get-started.md
 [Apache Cordova]: ./app-service-mobile-cordova-how-to-use-client-library.md
-[skalowania automatycznego]: ../app-service/manage-scale-up.md
+[skalowanie automatyczne]: ../app-service/manage-scale-up.md
 [środowiska przejściowe]: ../app-service/deploy-staging-slots.md
 [połączenia hybrydowe]: ../biztalk-services/integration-hybrid-connection-overview.md
 [sieci wirtualnych]: ../app-service/web-sites-integrate-with-vnet.md
-[ExpressRoute]: ../app-service/environment/app-service-app-service-environment-network-configuration-expressroute.md
-[środowiska usługi App Service]: ../app-service/environment/intro.md
+[Expressroute]: ../app-service/environment/app-service-app-service-environment-network-configuration-expressroute.md
+[Środowiska usługi app service]: ../app-service/environment/intro.md
 [mapą nauki]: https://azure.microsoft.com/documentation/learning-paths/appservice-mobileapps/
-[Azure App Service]: ../app-service/overview.md
+[Usługa aplikacji platformy Azure]: ../app-service/overview.md

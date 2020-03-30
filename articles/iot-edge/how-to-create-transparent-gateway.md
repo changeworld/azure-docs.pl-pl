@@ -1,6 +1,6 @@
 ---
-title: Tworzenie przezroczystej bramy urządzenia — usługi Azure IoT Edge | Dokumentacja firmy Microsoft
-description: Używanie usługi Azure IoT Edge urządzenia rolę przezroczystej bramy, która może przetwarzać informacje z urządzeń podrzędne
+title: Tworzenie przezroczystego urządzenia bramy — usługa Azure IoT Edge | Dokumenty firmy Microsoft
+description: Używanie urządzenia usługi Azure IoT Edge jako przezroczystej bramy, która może przetwarzać informacje z urządzeń podrzędnych
 author: kgremban
 manager: philmea
 ms.author: kgremban
@@ -8,67 +8,67 @@ ms.date: 11/30/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: bf60bfb41e48220845e9aa26dc26f20e6ed60d16
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 6069e0782f69d0dfb73d9be2998cbb11d59d7d22
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76510689"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79529173"
 ---
-# <a name="configure-an-iot-edge-device-to-act-as-a-transparent-gateway"></a>Konfigurowanie urządzenia usługi IoT Edge, aby pełnić rolę przezroczystej bramy
+# <a name="configure-an-iot-edge-device-to-act-as-a-transparent-gateway"></a>Konfigurowanie urządzenia usługi IoT Edge, aby działało jako przezroczysta brama
 
-Ten artykuł zawiera szczegółowe instrukcje dotyczące konfigurowania urządzenia IoT Edge jako przezroczystej bramy dla innych urządzeń w celu komunikowania się z IoT Hub. W tym artykule jest wykorzystywana *IoT Edge Brama* do odwoływania się do urządzenia IoT Edge skonfigurowanego jako nieprzezroczysta brama. Aby uzyskać więcej informacji, zobacz [jak urządzenie IoT Edge może być używane jako brama](./iot-edge-as-gateway.md).
+Ten artykuł zawiera szczegółowe instrukcje konfigurowania urządzenia usługi IoT Edge do działania jako przezroczysta brama dla innych urządzeń do komunikowania się z Centrum IoT Hub. W tym artykule użyto terminu *Brama usługi IoT Edge* w odniesieniu do urządzenia usługi IoT Edge skonfigurowanego jako brama przezroczysta. Aby uzyskać więcej informacji, zobacz [Jak urządzenie Usługi IoT Edge może być używane jako brama](./iot-edge-as-gateway.md).
 
 >[!NOTE]
 >Obecnie:
 >
-> * Urządzenia z włączoną obsługą usługi Edge nie można nawiązać połączenia bramy usługi IoT Edge.
-> * Podrzędne urządzenia nie mogą używać przekazywania plików.
+> * Urządzenia z obsługą krawędzi nie mogą łączyć się z bramami usługi IoT Edge.
+> * Urządzenia podrzędne nie mogą używać przekazywania plików.
 
-Należy wykonać trzy ogólne kroki, aby skonfigurować pomyślne, przezroczyste połączenie bramy. W tym artykule omówiono pierwszy krok:
+Istnieją trzy ogólne kroki konfigurowania pomyślnego połączenia bramy przezroczystej. Ten artykuł obejmuje pierwszy krok:
 
-1. **Urządzenie bramy musi być w stanie bezpiecznie łączyć się z urządzeniami podrzędnymi, odbierać komunikaty z urządzeń podrzędnych i kierować komunikaty do odpowiednich miejsc docelowych.**
-2. Urządzenie podrzędne musi mieć tożsamość urządzenia, aby można było uwierzytelnić się przy użyciu IoT Hub i wiedzieć o komunikacji za pomocą swojego urządzenia bramy. Aby uzyskać więcej informacji, zobacz [uwierzytelnianie urządzenia podrzędnego w usłudze Azure IoT Hub](how-to-authenticate-downstream-device.md).
-3. Urządzenie podrzędne musi bezpiecznie połączyć się z urządzeniem bramy. Aby uzyskać więcej informacji, zobacz [połączyć podrzędny urządzenie bramy usługi Azure IoT Edge](how-to-connect-downstream-device.md).
+1. **Urządzenie bramy musi mieć możliwość bezpiecznego łączenia się z urządzeniami podrzędnymi, odbierania komunikacji z urządzeń podrzędnych i kierowania wiadomości do właściwego miejsca docelowego.**
+2. Urządzenie podrzędne musi mieć tożsamość urządzenia, aby móc uwierzytelniać się za pomocą usługi IoT Hub i wiedzieć, aby komunikować się za pośrednictwem urządzenia bramy. Aby uzyskać więcej informacji, zobacz [Uwierzytelnianie urządzenia podrzędnego w centrum Usługi Azure IoT Hub](how-to-authenticate-downstream-device.md).
+3. Urządzenie podrzędne musi bezpiecznie połączyć się z urządzeniem bramy. Aby uzyskać więcej informacji, zobacz [Łączenie urządzenia podrzędnego z bramą usługi Azure IoT Edge](how-to-connect-downstream-device.md).
 
-Aby urządzenie działało jako brama, musi być w stanie bezpiecznie połączyć się z jego urządzeniami podrzędnymi. Usługa Azure IoT Edge umożliwia użycie infrastruktury kluczy publicznych (PKI) do skonfigurowania bezpiecznych połączeń między urządzeniami. W tym przypadku możemy zezwolenie podrzędnym urządzenia połączyć się z urządzenia usługi IoT Edge, działając jako przezroczystej bramy. Aby zachować uzasadnione zabezpieczenia, urządzenie podrzędne powinno potwierdzić tożsamość urządzenia bramy. To sprawdzenie tożsamości uniemożliwia urządzeniom łączenie się z potencjalnie złośliwymi bramami.
+Aby urządzenie działało jako brama, musi mieć możliwość bezpiecznego łączenia się z jego urządzeniami podrzędnymi. Usługa Azure IoT Edge umożliwia konfigurowanie bezpiecznych połączeń między urządzeniami za pomocą infrastruktury kluczy publicznych (PKI). W takim przypadku zezwalamy urządzeniu podrzędnemu na łączenie się z urządzeniem usługi IoT Edge działającym jako przezroczysta brama. Aby zachować odpowiednie bezpieczeństwo, urządzenie podrzędne powinno potwierdzić tożsamość urządzenia bramy. Ta kontrola tożsamości uniemożliwia urządzeniom łączenie się z potencjalnie złośliwymi bramami.
 
-W przypadku niejawnego scenariusza bramy może być dowolna aplikacja lub platforma, która ma tożsamość utworzoną za pomocą usługi [Azure IoT Hub](https://docs.microsoft.com/azure/iot-hub) w chmurze. W wielu przypadkach te aplikacje korzystają [zestaw SDK urządzeń Azure IoT](../iot-hub/iot-hub-devguide-sdks.md). Praktycznego podrzędne urządzenia można nawet aplikację działającą na samym urządzeniu bramy usługi IoT Edge. Jednak urządzenie IoT Edge nie może być niższe niż Brama IoT Edge.
+Urządzenie podrzędne w scenariuszu bramy przezroczystej może być dowolną aplikacją lub platformą, która ma tożsamość utworzoną za pomocą usługi w chmurze [usługi Azure IoT Hub.](https://docs.microsoft.com/azure/iot-hub) W wielu przypadkach te aplikacje używają [SDK urządzenia Usługi Azure IoT.](../iot-hub/iot-hub-devguide-sdks.md) Ze wszystkich praktycznych względów urządzenie podrzędne może być nawet aplikacją działającą na samym urządzeniu bramy usługi IoT Edge. Jednak urządzenie Usługi IoT Edge nie może znajdować się za bramą usługi IoT Edge.
 
-Można utworzyć żadnej infrastruktury certyfikatów, umożliwiająca zaufania wymagane dla topologii urządzenia bramy. W tym artykule przyjęto założenie, że ta sama konfiguracja certyfikatu zostanie użyta do włączenia [zabezpieczeń urzędu certyfikacji x. 509](../iot-hub/iot-hub-x509ca-overview.md) w IoT Hub, co obejmuje certyfikat certyfikatu x. 509 skojarzony z określonym Centrum IoT Hub (główny urząd certyfikacji usługi IoT Hub), szereg certyfikatów podpisanych za pomocą tego urzędu certyfikacji oraz Urząd certyfikacji dla IoT Edge urządzenia.
+Można utworzyć dowolną infrastrukturę certyfikatów, która umożliwia zaufanie wymagane dla topologii bramy urządzenia. W tym artykule zakładamy tę samą konfigurację certyfikatu, której użyjesz do włączenia [zabezpieczeń urzędu certyfikacji X.509](../iot-hub/iot-hub-x509ca-overview.md) w centrum IoT Hub, która obejmuje certyfikat urzędu certyfikacji X.509 skojarzony z określonym centrum IoT hub (głównym urzędem certyfikacji IoT), serię certyfikatów podpisanych z tym urzędem certyfikacji i urząd certyfikacji dla urządzenia Usługi IoT Edge.
 
 ![Konfiguracja certyfikatu bramy](./media/how-to-create-transparent-gateway/gateway-setup.png)
 
 >[!NOTE]
->Termin "główny urząd certyfikacji" używany w tym artykule odnosi się do certyfikatu publicznego urzędu certyfikacji PKI, a nie musi być certyfikatem głównym urzędu certyfikacji. W wielu przypadkach jest to pośredni certyfikat publiczny urzędu certyfikacji.
+>Termin "główny urząd certyfikacji" używany w tym artykule odnosi się do najwyższego certyfikatu urzędu publicznego łańcucha certyfikatów infrastruktury kluczy publicznych, a niekoniecznie do katalogu głównego certyfikatu syndykatu urzędu certyfikacji. W wielu przypadkach jest to w rzeczywistości pośredni certyfikat publiczny urzędu certyfikacji.
 
-Podczas inicjowania połączenia Brama przedstawia certyfikat urzędu certyfikacji urządzenia IoT Edge do urządzenia podrzędnego. Urządzenie podrzędne sprawdza, czy certyfikat urzędu certyfikacji urządzenia IoT Edge jest podpisany przez certyfikat głównego urzędu certyfikacji. Ten proces umożliwia urządzeniu podrzędnemu potwierdzenie, że brama pochodzi z zaufanego źródła.
+Brama przedstawia swój certyfikat urzędu certyfikacji urządzenia usługi IoT Edge do urządzenia podrzędnego podczas inicjowania połączenia. Urządzenie podrzędne sprawdza, czy certyfikat urzędu certyfikacji urządzenia IoT Edge jest podpisany przez główny certyfikat urzędu certyfikacji. Ten proces umożliwia urządzeniu podrzędnemu potwierdzenie, że brama pochodzi z zaufanego źródła.
 
-Poniższe kroki przeprowadzą Cię przez proces tworzenia certyfikatów i instalowania ich w odpowiednich miejscach na bramie. Można użyć dowolnej maszyny do generowania certyfikatów, a następnie skopiuj je do urządzenia usługi IoT Edge.
+Poniższe kroki przebiegają przez proces tworzenia certyfikatów i instalowania ich we właściwych miejscach na bramie. Do wygenerowania certyfikatów można użyć dowolnego komputera, a następnie skopiować je na urządzenie usługi IoT Edge.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Urządzenie Azure IoT Edge skonfigurowane przy użyciu [certyfikatów produkcyjnych](how-to-install-production-certificates.md).
+Urządzenie usługi Azure IoT Edge skonfigurowane z [certyfikatami produkcyjnymi](how-to-manage-device-certificates.md).
 
-## <a name="deploy-edgehub-to-the-gateway"></a>Wdróż edgeHub na bramie
+## <a name="deploy-edgehub-to-the-gateway"></a>Wdrażanie usługi edgeHub w bramie
 
-Podczas pierwszej instalacji IoT Edge na urządzeniu zostanie automatycznie uruchomiony tylko jeden moduł systemowy: Agent IoT Edge. Po utworzeniu pierwszego wdrożenia więcej urządzenia jest również uruchamiany drugi moduł systemu IoT Edge centrum.
+Podczas pierwszej instalacji usługi IoT Edge na urządzeniu automatycznie uruchamia się tylko jeden moduł systemowy: agent usługi IoT Edge. Po utworzeniu pierwszego wdrożenia więcej urządzenia, drugi moduł systemowy, Centrum Usługi IoT Edge, jest również uruchamiany.
 
-Centrum IoT Edge jest odpowiedzialne za odbieranie komunikatów przychodzących z urządzeń podrzędnych i kierowanie ich do kolejnego miejsca docelowego. Jeśli moduł **edgeHub** nie jest uruchomiony na urządzeniu, Utwórz początkowe wdrożenie dla urządzenia. Wdrożenie będzie wyglądało puste, ponieważ nie dodasz żadnych modułów, ale upewni się, że oba moduły systemowe są uruchomione.
+Usługa IoT Edge hub jest odpowiedzialny za odbieranie wiadomości przychodzących z urządzeń podrzędnych i routingu ich do następnego miejsca docelowego. Jeśli moduł **edgeHub** nie jest uruchomiony na urządzeniu, utwórz wdrożenie początkowe dla urządzenia. Wdrożenie będzie wyglądać puste, ponieważ nie dodać żadnych modułów, ale upewnij się, że oba moduły systemowe są uruchomione.
 
-Możesz sprawdzić, które moduły są uruchomione na urządzeniu, sprawdzając jego szczegóły dotyczące urządzeń w Azure Portal, wyświetlając stan urządzenia w Visual Studio lub Visual Studio Code lub uruchamiając polecenie `iotedge list` na samym urządzeniu.
+Można sprawdzić, które moduły są uruchomione na urządzeniu, sprawdzając jego szczegóły urządzenia w witrynie Azure portal, wyświetlanie `iotedge list` stanu urządzenia w programie Visual Studio lub Visual Studio Code lub uruchamiając polecenie na samym urządzeniu.
 
-Jeśli moduł **edgeAgent** jest uruchomiony bez modułu **edgeHub** , wykonaj następujące czynności:
+Jeśli moduł **edgeAgent** działa bez modułu **edgeHub,** należy wykonać następujące kroki:
 
 1. W witrynie Azure Portal przejdź do centrum IoT Hub.
 
-2. Przejdź do **usługi IoT Edge** i wybierz urządzenia usługi IoT Edge, która ma być używany jako brama.
+2. Przejdź do **usługi IoT Edge** i wybierz urządzenie Usługi IoT Edge, którego chcesz użyć jako bramy.
 
 3. Wybierz pozycję **Ustaw moduły**.
 
-4. Wybierz opcję **Dalej**.
+4. Wybierz **pozycję Dalej**.
 
-5. W **określić trasy** strony powinny mieć domyślną trasę, która przesyła wszystkie komunikaty z wszystkich modułów do usługi IoT Hub. Jeśli tak nie jest, dodaj następujący kod, a następnie wybierz przycisk **Dalej**.
+5. Na stronie **Określ trasy** powinna być domyślna trasa, która wysyła wszystkie wiadomości ze wszystkich modułów do Centrum IoT Hub. Jeśli tak nie jest, dodaj następujący kod, a następnie wybierz przycisk **Dalej**.
 
    ```JSON
    {
@@ -78,27 +78,27 @@ Jeśli moduł **edgeAgent** jest uruchomiony bez modułu **edgeHub** , wykonaj n
    }
    ```
 
-6. W **szablon przeglądu** wybierz opcję **przesyłania**.
+6. Na stronie **Szablon recenzji** wybierz pozycję **Prześlij**.
 
-## <a name="open-ports-on-gateway-device"></a>Otwórz porty na urządzeniu bramy
+## <a name="open-ports-on-gateway-device"></a>Otwieranie portów na urządzeniu bramy
 
-Standardowe urządzenia IoT Edge nie potrzebują żadnej łączności przychodzącej z funkcją, ponieważ cała komunikacja z IoT Hub odbywa się za pośrednictwem połączeń wychodzących. Urządzenia bramy różnią się, ponieważ muszą odbierać komunikaty z urządzeń podrzędnych. Jeśli Zapora jest między urządzeniami podrzędnymi a urządzeniem bramy, komunikacja musi być również możliwa za pomocą zapory.
+Standardowe urządzenia Usługi IoT Edge nie potrzebują żadnej łączności przychodzącej do działania, ponieważ cała komunikacja z centrum IoT Hub odbywa się za pośrednictwem połączeń wychodzących. Urządzenia bramy są różne, ponieważ muszą odbierać wiadomości z ich urządzeń podrzędnych. Jeśli zapora znajduje się między urządzeniami podrzędnymi a urządzeniem bramy, komunikacja musi być również możliwa za pośrednictwem zapory.
 
-Aby scenariusz bramy działał prawidłowo, należy otworzyć co najmniej jeden z obsługiwanych protokołów IoT Edge Hub dla ruchu przychodzącego z urządzeń podrzędnych. Obsługiwane protokoły to MQTT, AMQP, HTTPS, MQTT za pośrednictwem obiektów WebSockets oraz AMQP za pośrednictwem obiektów WebSockets.
+Aby scenariusz bramy działał, co najmniej jeden z obsługiwanych protokołów usługi IoT Edge musi być otwarty dla ruchu przychodzącego z urządzeń podrzędnych. Obsługiwane protokoły to MQTT, AMQP, HTTPS, MQTT over WebSockets i AMQP over WebSockets.
 
 | Port | Protocol (Protokół) |
 | ---- | -------- |
 | 8883 | MQTT |
 | 5671 | AMQP |
-| 443 | HTTPS <br> MQTT + WS <br> AMQP+WS |
+| 443 | HTTPS <br> MQTT+WS <br> AMQP+WS |
 
-## <a name="route-messages-from-downstream-devices"></a>Routing komunikatów z urządzeń podrzędne
+## <a name="route-messages-from-downstream-devices"></a>Rozsyłanie wiadomości z urządzeń podrzędnych
 
-Komunikaty wysyłane z urządzeń podrzędne, podobnie jak komunikaty wysyłane przez moduły można kierować do środowiska uruchomieniowego usługi IoT Edge. Ta funkcja umożliwia wykonywanie analiz w module uruchomionym w bramie przed wysłaniem danych do chmury.
+Środowisko wykonawcze IoT Edge może rozsyłać wiadomości wysyłane z urządzeń podrzędnych, podobnie jak wiadomości wysyłane przez moduły. Ta funkcja umożliwia wykonywanie analizy w module uruchomionym na bramie przed wysłaniem jakichkolwiek danych do chmury.
 
-Obecnie sposobem, w który trasy wiadomości wysyłanych przez urządzenia podrzędnego jest różnicując je na wiadomości wysłane przez moduły. Komunikaty wysyłane przez wszystkie moduły zawierają właściwość systemu o nazwie **connectionModuleId** , ale nie obsługują komunikaty wysyłane przez urządzenia podrzędnego. Aby wykluczyć wszystkie komunikaty, które zawierają tę właściwość systemu, można użyć klauzuli WHERE trasy.
+Obecnie sposób, w jaki rozsyłasz wiadomości wysyłane przez urządzenia podrzędne, polega na odróżnieniu ich od wiadomości wysyłanych przez moduły. Wszystkie komunikaty wysyłane przez moduły zawierają właściwość systemową o nazwie **connectionModuleId,** ale wiadomości wysyłane przez urządzenia podrzędne nie. Klauzula WHERE trasy służy do wykluczania wszelkich komunikatów, które zawierają tę właściwość systemu.
 
-Poniższa trasa to przykład, który wyśle komunikaty z dowolnego urządzenia podrzędnego do modułu o nazwie `ai_insights`, a następnie z `ai_insights` do IoT Hub.
+Poniższa trasa jest przykładem, który wysyłałby wiadomości z `ai_insights`dowolnego urządzenia `ai_insights` podrzędnego do modułu o nazwie , a następnie z centrum IoT Hub.
 
 ```json
 {
@@ -109,16 +109,16 @@ Poniższa trasa to przykład, który wyśle komunikaty z dowolnego urządzenia p
 }
 ```
 
-Aby uzyskać więcej informacji na temat routingu wiadomości zobacz [wdrażać moduły i trasy ustanowić](./module-composition.md#declare-routes).
+Aby uzyskać więcej informacji na temat routingu wiadomości, zobacz [Wdrażanie modułów i ustanawianie tras](./module-composition.md#declare-routes).
 
-## <a name="enable-extended-offline-operation"></a>Włącz rozszerzoną operację offline
+## <a name="enable-extended-offline-operation"></a>Włącz rozszerzoną obsługę w trybie offline
 
-Począwszy od [wersji v 1.0.4](https://github.com/Azure/azure-iotedge/releases/tag/1.0.4) środowiska uruchomieniowego IoT Edge, urządzenie bramy i urządzenia podrzędne łączące się z nim można skonfigurować do przedłużonej operacji w trybie offline.
+Począwszy od [wersji 1.0.4](https://github.com/Azure/azure-iotedge/releases/tag/1.0.4) środowiska wykonawczego usługi IoT Edge, urządzenie bramy i urządzenia podrzędne łączące się z nim można skonfigurować do rozszerzonej pracy w trybie offline.
 
-Dzięki tej możliwości lokalne moduły lub urządzenia podrzędne mogą ponownie uwierzytelniać się przy użyciu urządzenia z systemem IoT Edge i komunikować się ze sobą za pomocą komunikatów i metod nawet po rozłączeniu z Centrum IoT Hub. Aby uzyskać więcej informacji, zobacz [opis rozszerzony możliwości w trybie offline dla usługi IoT Edge, urządzeń, moduły i urządzeń podrzędnych](offline-capabilities.md).
+Dzięki tej funkcji moduły lokalne lub urządzenia podrzędne mogą ponownie uwierzytelniać się za pomocą urządzenia Usługi IoT Edge w razie potrzeby i komunikować się ze sobą za pomocą wiadomości i metod, nawet po odłączeniu od centrum IoT hub. Aby uzyskać więcej informacji, zobacz [Opis rozszerzonych funkcji offline dla urządzeń, modułów i urządzeń podrzędnych usługi IoT Edge.](offline-capabilities.md)
 
-Aby włączyć rozszerzone możliwości trybu offline, należy ustanowić relację nadrzędny-podrzędny między urządzeniem bramy IoT Edge a urządzeniami podrzędnymi, które będą się z nim połączyć. Te kroki zostały omówione bardziej szczegółowo w temacie [uwierzytelnianie urządzenia podrzędnego w usłudze Azure IoT Hub](how-to-authenticate-downstream-device.md).
+Aby włączyć rozszerzone możliwości w trybie offline, należy ustanowić relację nadrzędny-podrzędny między urządzeniem bramy usługi IoT Edge a urządzeniami podrzędnymi, które będą się z nim łączyć. Te kroki są wyjaśnione bardziej szczegółowo w [uwierzytelnij urządzenie podrzędne do usługi Azure IoT Hub.](how-to-authenticate-downstream-device.md)
 
 ## <a name="next-steps"></a>Następne kroki
 
-Teraz, gdy masz urządzenia usługi IoT Edge działa jako przezroczystej bramy, należy skonfigurować podrzędne urządzenia, aby ufać bramy i wysyłanie komunikatów do niego. Kontynuuj, aby [uwierzytelnić urządzenie podrzędne w usłudze Azure IoT Hub](how-to-authenticate-downstream-device.md) w celu wykonania następnych kroków w celu skonfigurowania niejawnego scenariusza bramy.
+Teraz, gdy masz urządzenie usługi IoT Edge działające jako przezroczysta brama, musisz skonfigurować urządzenia podrzędne, aby ufały bramie i wysyłały do niej wiadomości. Kontynuuj [uwierzytelnienie urządzenia podrzędnego do usługi Azure IoT Hub, aby](how-to-authenticate-downstream-device.md) uzyskać kolejne kroki konfigurowania scenariusza bramy przezroczystej.

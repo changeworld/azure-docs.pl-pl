@@ -1,43 +1,42 @@
 ---
-title: Informacje o kontaktach dla oferty aplikacji Power BI | Portal Azure Marketplace
-description: Skonfiguruj pola kontaktów dla oferty aplikacji Power BI dla witryny Microsoft AppSource Marketplace.
-services: Azure, AppSource, Marketplace, Cloud Partner Portal, Power BI
-author: v-miclar
+title: Informacje o kontaktach dotyczące oferty aplikacji Power BI | Azure Marketplace
+description: Konfigurowanie pól Kontaktów dla oferty aplikacji Usługi Power BI dla witryny Microsoft AppSource Marketplace.
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/24/2019
-ms.author: pabutler
-ms.openlocfilehash: ec1ed23b253f705e1830c1c014492fe52b2133f0
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 79cdd12359a0d781b51db2632bc9d534e0d88c6d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73826538"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80285235"
 ---
-# <a name="power-bi-app-contacts-tab"></a>Karta kontakty aplikacji Power BI
+# <a name="power-bi-app-contacts-tab"></a>Karta Kontakty aplikacji Power BI
 
-Skorzystaj z karty **kontakty** na stronie **Nowa oferta** , aby udostępnić zasoby techniczne i pomoc techniczną dla swojej oferty. Jest podzielony na dwie sekcje: obsługa **inżynierów** i **obsługi klienta**.
+Karta **Kontakty** na stronie **Nowa oferta** umożliwia dostarczanie zasobów technicznych i pomocy technicznej dla oferty. Jest on podzielony na dwie sekcje: **Inżynieria** i **Obsługa Klienta**.
 
 ![Karta kontaktów](media/contacts-tab.png)
 
 
-## <a name="contacts-fields"></a>Pola kontaktów 
+## <a name="contacts-fields"></a>Pola Kontakty 
 
-W poniższej tabeli opisano przeznaczenie każdego pola.  Wymagane pola są indicted przez gwiazdkę (*). 
+W poniższej tabeli opisano przeznaczenie każdego pola.  Wymagane pola są oskarżane gwiazdką (*). 
 
 |   Pole               |   Opis                                                            |
 |-----------------------|--------------------------------------------------------------------------|
-| *Kontakt inżynieryjny* | Służy jako kontakt techniczny między AppSource i organizacją.    |
-| **Nazwa\***              | Nazwa osoby lub grupy, która służy jako pomoc techniczna lub inżynieria. |
-| **\* e-mail**             | Adres e-mail tej osoby kontaktowej.                                  |
-| **\* telefonu**             | Numer telefonu pomocy technicznej.                                       |
-| *Skontaktuj się z pomocą techniczną*     | Odbiera bilety pomocy technicznej otwarte przez klientów w ramach AppSource.            |
+| *Kontakt techniczny* | Służy jako kontakt techniczny między AppSource i organizacji.    |
+| **Nazwa\***              | Nazwa osoby lub grupy, która służy jako wsparcie techniczne lub inżynieryjne. |
+| **Adres e-mail\***             | Adres e-mail tego kontaktu technicznego.                                  |
+| **Telefon\***             | Numer telefonu pomocy technicznej.                                       |
+| *Kontakt pomocy technicznej*     | Odbiera bilety pomocy technicznej otwarte przez klientów w u źródła aplikacji AppSource.            |
 | **Nazwa\***              | Nazwa osoby lub grupy, która służy jako obsługa klienta.              |
-| **\* e-mail**             | Adres e-mail działu obsługi klienta.                                        |
+| **Adres e-mail\***             | Adres e-mail działu obsługi klienta.                                        |
 |   |   |
 
 
 ## <a name="next-steps"></a>Następne kroki
 
-Po ukończeniu oferty aplikacji Power BI upewnij się, że zostały utworzone wszystkie skojarzone [zasoby techniczne](./cpp-create-technical-assets.md) dla oferty.
+Po zakończeniu oferty aplikacji Usługi Power BI upewnij się, że utworzono wszystkie [skojarzone zasoby techniczne](./cpp-create-technical-assets.md) dla oferty.

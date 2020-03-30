@@ -1,6 +1,6 @@
 ---
 title: Tworzenie alertu metryki za pomocą szablonu usługi Resource Manager
-description: Dowiedz się, jak utworzyć alert dotyczący metryki przy użyciu szablonu Menedżer zasobów.
+description: Dowiedz się, jak utworzyć alert metryki za pomocą szablonu Menedżera zasobów.
 author: harelbr
 ms.author: harelbr
 services: azure-monitor
@@ -8,33 +8,33 @@ ms.topic: conceptual
 ms.date: 2/24/2020
 ms.subservice: alerts
 ms.openlocfilehash: 2f6e9cd4e7a035e6555b2241613cb9c46c3be550
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79274985"
 ---
 # <a name="create-a-metric-alert-with-a-resource-manager-template"></a>Tworzenie alertu metryki za pomocą szablonu usługi Resource Manager
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-W tym artykule pokazano, jak można użyć [szablonu Azure Resource Manager](../../azure-resource-manager/templates/template-syntax.md) , aby skonfigurować [nowsze alerty metryk](../../azure-monitor/platform/alerts-metric-near-real-time.md) w programie Azure monitor. Szablony Menedżer zasobów umożliwiają programistyczne Konfigurowanie alertów w sposób spójny i powtarzalny w środowiskach. Nowsze alerty metryk są obecnie dostępne dla [tego zestawu typów zasobów](../../azure-monitor/platform/alerts-metric-near-real-time.md#metrics-and-dimensions-supported).
+W tym artykule pokazano, jak można użyć [szablonu usługi Azure Resource Manager](../../azure-resource-manager/templates/template-syntax.md) do konfigurowania [nowszych alertów metryki](../../azure-monitor/platform/alerts-metric-near-real-time.md) w usłudze Azure Monitor. Szablony Menedżera zasobów umożliwiają programowe konfigurowanie alertów w spójny i powtarzalny sposób w różnych środowiskach. Nowsze alerty metryki są obecnie dostępne w [tym zestawie typów zasobów](../../azure-monitor/platform/alerts-metric-near-real-time.md#metrics-and-dimensions-supported).
 
 > [!IMPORTANT]
-> Szablon zasobu do tworzenia alertów metryk dla typu zasobu: `Microsoft.OperationalInsights/workspaces`obszaru roboczego platformy Azure Log Analytics (tj.) wymaga wykonania dodatkowych czynności. Aby uzyskać szczegółowe informacje, zobacz artykuł dotyczący [alertu dotyczącego metryk dla dzienników zasobów](../../azure-monitor/platform/alerts-metric-logs.md#resource-template-for-metric-alerts-for-logs).
+> Szablon zasobu do tworzenia alertów metryk dla typu zasobu: `Microsoft.OperationalInsights/workspaces`Obszar roboczy usługi Azure Log Analytics (tj.) wymaga dodatkowych kroków. Aby uzyskać szczegółowe informacje, zobacz artykuł [o alert metryki dla dzienników — szablon zasobu](../../azure-monitor/platform/alerts-metric-logs.md#resource-template-for-metric-alerts-for-logs).
 
 Podstawowe kroki są następujące:
 
 1. Użyj jednego z poniższych szablonów jako pliku JSON, który opisuje sposób tworzenia alertu.
-2. Edytuj odpowiedni plik parametrów w formacie JSON i używaj go w celu dostosowania alertu.
-3. `metricName` parametru można znaleźć w temacie dostępne metryki w [Azure monitor obsługiwane metryki](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported).
-4. Wdróż szablon przy użyciu [dowolnej metody wdrażania](../../azure-resource-manager/templates/deploy-powershell.md).
+2. Edytuj i użyj odpowiedniego pliku parametrów jako JSON, aby dostosować alert.
+3. Aby `metricName` uzyskać parametr, zobacz dostępne metryki w [metrykach obsługiwanych przez usługę Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported).
+4. Wdrażanie szablonu przy użyciu [dowolnej metody wdrażania](../../azure-resource-manager/templates/deploy-powershell.md).
 
-## <a name="template-for-a-simple-static-threshold-metric-alert"></a>Szablon prostego alertu dotyczącego metryki statycznej progu
+## <a name="template-for-a-simple-static-threshold-metric-alert"></a>Szablon prostego alertu metryki progu statycznego
 
-Aby utworzyć alert przy użyciu szablonu Menedżer zasobów, utworzysz zasób typu `Microsoft.Insights/metricAlerts` i Wypełnij wszystkie powiązane właściwości. Poniżej znajduje się przykładowy szablon, który tworzy regułę alertu metryki.
+Aby utworzyć alert przy użyciu szablonu Menedżera zasobów, należy utworzyć zasób typu `Microsoft.Insights/metricAlerts` i wypełnić wszystkie powiązane właściwości. Poniżej znajduje się przykładowy szablon, który tworzy regułę alertu metryki.
 
-Zapisz Poniższy kod JSON jako simplestaticmetricalert. JSON na potrzeby tego przewodnika.
+Zapisz json poniżej jako simplestaticmetricalert.json dla celów tego przewodnika.
 
 ```json
 {
@@ -204,11 +204,11 @@ Zapisz Poniższy kod JSON jako simplestaticmetricalert. JSON na potrzeby tego pr
 }
 ```
 
-Informacje o schemacie i właściwościach reguły alertu [są dostępne tutaj](https://docs.microsoft.com/rest/api/monitor/metricalerts/createorupdate).
+Wyjaśnienie schematu i właściwości reguły alertu [jest dostępne w tym miejscu](https://docs.microsoft.com/rest/api/monitor/metricalerts/createorupdate).
 
-Można ustawić wartości parametrów w wierszu polecenia lub za pomocą pliku parametrów. Poniżej przedstawiono przykładowy plik parametrów.
+Wartości parametrów można ustawić w wierszu polecenia lub za pomocą pliku parametrów. Przykładowy plik parametrów znajduje się poniżej.
 
-Zapisz Poniższy kod JSON jako simplestaticmetricalert. Parameters. JSON i zmodyfikuj go zgodnie z potrzebami.
+Zapisz json poniżej jako simplestaticmetricalert.parameters.json i zmodyfikuj go zgodnie z wymaganiami.
 
 ```json
 {
@@ -250,7 +250,7 @@ Zapisz Poniższy kod JSON jako simplestaticmetricalert. Parameters. JSON i zmody
 ```
 
 
-Alert dotyczący metryki można utworzyć przy użyciu pliku szablonu i parametrów przy użyciu programu PowerShell lub interfejsu wiersza polecenia platformy Azure.
+Alert metryki można utworzyć przy użyciu pliku szablonu i parametrów przy użyciu programu PowerShell lub interfejsu wiersza polecenia platformy Azure.
 
 Korzystanie z programu Azure PowerShell
 
@@ -277,13 +277,13 @@ az group deployment create \
 
 > [!NOTE]
 >
-> Alert dotyczący metryki można utworzyć w innej grupie zasobów dla zasobu docelowego, dlatego zalecamy użycie tej samej grupy zasobów co zasób docelowy.
+> Chociaż alert metryki można utworzyć w innej grupie zasobów do zasobu docelowego, zaleca się przy użyciu tej samej grupy zasobów jako zasobu docelowego.
 
-## <a name="template-for-a-simple-dynamic-thresholds-metric-alert"></a>Szablon prostego alertu metryki dynamicznych wartości progowych
+## <a name="template-for-a-simple-dynamic-thresholds-metric-alert"></a>Szablon prostego alertu metryki Progi dynamiczne
 
-Aby utworzyć alert przy użyciu szablonu Menedżer zasobów, utworzysz zasób typu `Microsoft.Insights/metricAlerts` i Wypełnij wszystkie powiązane właściwości. Poniżej znajduje się przykładowy szablon, który tworzy regułę alertu metryki.
+Aby utworzyć alert przy użyciu szablonu Menedżera zasobów, należy utworzyć zasób typu `Microsoft.Insights/metricAlerts` i wypełnić wszystkie powiązane właściwości. Poniżej znajduje się przykładowy szablon, który tworzy regułę alertu metryki.
 
-Zapisz Poniższy kod JSON jako simpledynamicmetricalert. JSON na potrzeby tego przewodnika.
+Zapisz json poniżej jako simpledynamicmetricalert.json dla celów tego przewodnika.
 
 ```json
 {
@@ -477,11 +477,11 @@ Zapisz Poniższy kod JSON jako simpledynamicmetricalert. JSON na potrzeby tego p
 }
 ```
 
-Informacje o schemacie i właściwościach reguły alertu [są dostępne tutaj](https://docs.microsoft.com/rest/api/monitor/metricalerts/createorupdate).
+Wyjaśnienie schematu i właściwości reguły alertu [jest dostępne w tym miejscu](https://docs.microsoft.com/rest/api/monitor/metricalerts/createorupdate).
 
-Można ustawić wartości parametrów w wierszu polecenia lub za pomocą pliku parametrów. Poniżej przedstawiono przykładowy plik parametrów. 
+Wartości parametrów można ustawić w wierszu polecenia lub za pomocą pliku parametrów. Przykładowy plik parametrów znajduje się poniżej. 
 
-Zapisz Poniższy kod JSON jako simpledynamicmetricalert. Parameters. JSON i zmodyfikuj go zgodnie z potrzebami.
+Zapisz json poniżej jako simpledynamicmetricalert.parameters.json i zmodyfikuj go zgodnie z wymaganiami.
 
 ```json
 {
@@ -532,7 +532,7 @@ Zapisz Poniższy kod JSON jako simpledynamicmetricalert. Parameters. JSON i zmod
 ```
 
 
-Alert dotyczący metryki można utworzyć przy użyciu pliku szablonu i parametrów przy użyciu programu PowerShell lub interfejsu wiersza polecenia platformy Azure.
+Alert metryki można utworzyć przy użyciu pliku szablonu i parametrów przy użyciu programu PowerShell lub interfejsu wiersza polecenia platformy Azure.
 
 Korzystanie z programu Azure PowerShell
 
@@ -559,20 +559,20 @@ az group deployment create \
 
 > [!NOTE]
 >
-> Alert dotyczący metryki można utworzyć w innej grupie zasobów dla zasobu docelowego, dlatego zalecamy użycie tej samej grupy zasobów co zasób docelowy.
+> Chociaż alert metryki można utworzyć w innej grupie zasobów do zasobu docelowego, zaleca się przy użyciu tej samej grupy zasobów jako zasobu docelowego.
 
-## <a name="template-for-a-static-threshold-metric-alert-that-monitors-multiple-criteria"></a>Szablon alertu metryki statycznej o wartości progowej, który monitoruje wiele kryteriów
+## <a name="template-for-a-static-threshold-metric-alert-that-monitors-multiple-criteria"></a>Szablon alertu metryki progu statycznego, który monitoruje wiele kryteriów
 
-Nowsze alerty metryk obsługują alerty dotyczące wielowymiarowych metryk, a także obsługują wiele kryteriów. Przy użyciu następującego szablonu można utworzyć bardziej zaawansowaną regułę alertu metryki dla metryk wymiarowych i określić wiele kryteriów.
+Nowsze alerty metryki obsługują alerty dotyczące metryk wielowymiarowych, a także obsługuje wiele kryteriów. Za pomocą następującego szablonu można utworzyć bardziej zaawansowaną regułę alertu metryki dotyczące metryk wymiarowych i określić wiele kryteriów.
 
-Należy pamiętać o następujących ograniczeniach w przypadku używania wymiarów w regule alertu, która zawiera wiele kryteriów:
-- W każdym kryterium można wybrać tylko jedną wartość dla każdego wymiaru.
-- Nie można użyć "\*" jako wartości wymiaru.
-- Gdy metryki, które są skonfigurowane w różnych kryterium obsługują ten sam wymiar, skonfigurowana wartość wymiaru musi być jawnie ustawiona w taki sam sposób dla wszystkich metryk (w odpowiednich kryteriach).
-    - W poniższym przykładzie, ponieważ metryki **transakcji** i **SuccessE2ELatency** mają wymiar **ApiName** , a *criterion1* określa wartość *"GetBlob"* dla wymiaru **ApiName** , a następnie *criterion2* musi także ustawić wartość *"GetBlob* " dla wymiaru **ApiName** .
+Należy zwrócić uwagę na następujące ograniczenia podczas używania wymiarów w regule alertu zawierającej wiele kryteriów:
+- Można wybrać tylko jedną wartość na wymiar w ramach każdego kryterium.
+- Nie można\*użyć " " jako wartości wymiaru.
+- Gdy metryki, które są skonfigurowane w różnych kryteriów obsługują ten sam wymiar, a następnie skonfigurowany wartość wymiaru musi być jawnie ustawiona w taki sam sposób dla wszystkich tych metryk (w odpowiednich kryteriów).
+    - W poniższym przykładzie, ponieważ zarówno **transakcje** i **SuccessE2ELatency** metryki mają wymiar **ApiName** i *criterion1* określa *wartość "GetBlob"* dla wymiaru **ApiName,** a następnie *criterion2* musi również ustawić *wartość "GetBlob"* dla wymiaru **ApiName.**
 
 
-Zapisz Poniższy kod JSON jako advancedstaticmetricalert. JSON na potrzeby tego przewodnika.
+Zapisz json poniżej jako advancedstaticmetricalert.json na potrzeby tego przewodnika.
 
 ```json
 {
@@ -705,9 +705,9 @@ Zapisz Poniższy kod JSON jako advancedstaticmetricalert. JSON na potrzeby tego 
 }
 ```
 
-Możesz użyć powyższego szablonu wraz z plikiem parametru podanym poniżej. 
+Możesz użyć powyższego szablonu wraz z plikiem parametrów podanym poniżej. 
 
-Zapisz i zmodyfikuj poniższy kod JSON jako advancedstaticmetricalert. Parameters. JSON na potrzeby tego instruktażu.
+Zapisz i zmodyfikuj json poniżej jako advancedstaticmetricalert.parameters.json na potrzeby tego przewodnika.
 
 ```json
 {
@@ -774,7 +774,7 @@ Zapisz i zmodyfikuj poniższy kod JSON jako advancedstaticmetricalert. Parameter
 ```
 
 
-Alert dotyczący metryki można utworzyć przy użyciu pliku szablonu i parametrów przy użyciu programu PowerShell lub interfejsu wiersza polecenia platformy Azure z bieżącego katalogu roboczego.
+Alert metryki można utworzyć przy użyciu pliku szablonu i parametrów przy użyciu programu PowerShell lub interfejsu wiersza polecenia platformy Azure z bieżącego katalogu roboczego.
 
 Korzystanie z programu Azure PowerShell
 ```powershell
@@ -802,21 +802,21 @@ az group deployment create \
 
 ## <a name="template-for-a-static-metric-alert-that-monitors-multiple-dimensions"></a>Szablon alertu metryki statycznej, który monitoruje wiele wymiarów
 
-Przy użyciu następującego szablonu można utworzyć statyczną regułę alertu metryki dla metryk wymiarowych.
+Za pomocą następującego szablonu można utworzyć regułę alertu statycznego alertu metryki na metrykach wymiarowych.
 
-Pojedyncza reguła alertu może monitorować wiele szeregów czasowych, co pozwala na zarządzanie nimi za pomocą mniejszej liczby reguł alertów.
+Pojedyncza reguła alertów może monitorować wiele szeregów czasowych metryk naraz, co powoduje mniejszą liczbę reguł alertów do zarządzania.
 
-W poniższym przykładzie reguła alertu służy do monitorowania kombinacji wartości wymiarów obiektu **responsetype** i **ApiName** dla metryki **transakcji** :
-1. **ResponsType** — użycie symbolu wieloznacznego "\*" oznacza, że dla każdej wartości wymiaru **responsetype** , w tym przyszłych wartości, różne serie czasowe są monitorowane pojedynczo.
-2. **ApiName** — inna seria czasowa jest monitorowana tylko dla wartości wymiarów **GetBlob** i **PutBlob** .
+W poniższym przykładzie reguła alertu monitoruje kombinacje wartości wymiarów **responsetype** i **apiName** wymiarów dla metryki **Transakcje:**
+1. **ResponsType** — użycie symbolu wieloznacznego "\*oznacza, że dla każdej wartości wymiaru **ResponseType,** w tym przyszłych wartości, różne szeregi czasowe są monitorowane indywidualnie.
+2. **ApiName** — różne serie czasowe są monitorowane tylko dla wartości wymiarów **GetBlob** i **PutBlob.**
 
-Przykładowo kilka potencjalnych szeregów czasowych monitorowanych przez tę regułę alertu są następujące:
-- Metric = *Transactions*, responsetype = *Success*, ApiName = *GetBlob*
-- Metric = *Transactions*, responsetype = *Success*, ApiName = *PutBlob*
-- Metric = *Transactions*, responsetype = *limit czasu serwera*, ApiName = *GetBlob*
-- Metric = *Transactions*, responsetype = *limit czasu serwera*, ApiName = *PutBlob*
+Na przykład kilka potencjalnych szeregów czasowych, które są monitorowane przez tę regułę alertu są:
+- Metric = *Transakcje*, ResponseType = *Sukces*, ApiName = *GetBlob*
+- Metryka = *Transakcje*, ResponseType = *Sukces*, ApiName = *PutBlob*
+- Metric = *Transakcje*, ResponseType = *Limit czasu serwera*, ApiName = *GetBlob*
+- Metric = *Transakcje*, ResponseType = *Limit czasu serwera*, ApiName = *PutBlob*
 
-Zapisz Poniższy kod JSON jako multidimensionalstaticmetricalert. JSON na potrzeby tego przewodnika.
+Zapisz json poniżej jako wielowymiarowealstaticmetricalert.json na potrzeby tego przewodnika.
 
 ```json
 {
@@ -941,9 +941,9 @@ Zapisz Poniższy kod JSON jako multidimensionalstaticmetricalert. JSON na potrze
 }
 ```
 
-Możesz użyć powyższego szablonu wraz z plikiem parametru podanym poniżej. 
+Możesz użyć powyższego szablonu wraz z plikiem parametrów podanym poniżej. 
 
-Zapisz i zmodyfikuj poniższy kod JSON jako multidimensionalstaticmetricalert. Parameters. JSON na potrzeby tego instruktażu.
+Zapisz i zmodyfikuj json poniżej jako wielowymiarowąalstaticmetricalert.parameters.json na potrzeby tego przewodnika.
 
 ```json
 {
@@ -994,7 +994,7 @@ Zapisz i zmodyfikuj poniższy kod JSON jako multidimensionalstaticmetricalert. P
 ```
 
 
-Alert dotyczący metryki można utworzyć przy użyciu pliku szablonu i parametrów przy użyciu programu PowerShell lub interfejsu wiersza polecenia platformy Azure z bieżącego katalogu roboczego.
+Alert metryki można utworzyć przy użyciu pliku szablonu i parametrów przy użyciu programu PowerShell lub interfejsu wiersza polecenia platformy Azure z bieżącego katalogu roboczego.
 
 Korzystanie z programu Azure PowerShell
 ```powershell
@@ -1020,23 +1020,23 @@ az group deployment create \
 ```
 
 
-## <a name="template-for-a-dynamic-thresholds-metric-alert-that-monitors-multiple-dimensions"></a>Szablon alertu metryki dotyczącej progów dynamicznych, który monitoruje wiele wymiarów
+## <a name="template-for-a-dynamic-thresholds-metric-alert-that-monitors-multiple-dimensions"></a>Szablon alertu metryki Progi dynamiczne, który monitoruje wiele wymiarów
 
-Przy użyciu następującego szablonu można utworzyć bardziej zaawansowane reguły alertu metryki dynamicznych dla metryk wymiarowych.
+Za pomocą następującego szablonu można utworzyć bardziej zaawansowaną regułę alertu alertu metryki dynamiczne progi dotyczące metryk wymiarowych.
 
-Reguła alertu o pojedynczej liczbie progowej może tworzyć dostosowane progi dla setek szeregów czasowych metryk (nawet różne typy) w danym momencie, co skutkuje mniejszą regułą alertów do zarządzania.
+Pojedyncza reguła alertów progów dynamicznych może tworzyć dostosowane progi dla setek szeregów czasowych metryk (nawet różnych typów) naraz, co powoduje mniejszą liczbę reguł alertów do zarządzania.
 
-W poniższym przykładzie reguła alertu służy do monitorowania kombinacji wartości wymiarów obiektu **responsetype** i **ApiName** dla metryki **transakcji** :
-1. **ResponsType** — dla każdej wartości wymiaru **responsetype** , w tym przyszłych wartości, różne serie czasowe są monitorowane pojedynczo.
-2. **ApiName** — inna seria czasowa jest monitorowana tylko dla wartości wymiarów **GetBlob** i **PutBlob** .
+W poniższym przykładzie reguła alertu monitoruje kombinacje wartości wymiarów **responsetype** i **apiName** wymiarów dla metryki **Transakcje:**
+1. **ResponsType** — dla każdej wartości **responseType** wymiaru, w tym przyszłych wartości, różne szeregi czasowe są monitorowane indywidualnie.
+2. **ApiName** — różne serie czasowe są monitorowane tylko dla wartości wymiarów **GetBlob** i **PutBlob.**
 
-Przykładowo kilka potencjalnych szeregów czasowych monitorowanych przez tę regułę alertu są następujące:
-- Metric = *Transactions*, responsetype = *Success*, ApiName = *GetBlob*
-- Metric = *Transactions*, responsetype = *Success*, ApiName = *PutBlob*
-- Metric = *Transactions*, responsetype = *limit czasu serwera*, ApiName = *GetBlob*
-- Metric = *Transactions*, responsetype = *limit czasu serwera*, ApiName = *PutBlob*
+Na przykład kilka potencjalnych szeregów czasowych, które są monitorowane przez tę regułę alertu są:
+- Metric = *Transakcje*, ResponseType = *Sukces*, ApiName = *GetBlob*
+- Metryka = *Transakcje*, ResponseType = *Sukces*, ApiName = *PutBlob*
+- Metric = *Transakcje*, ResponseType = *Limit czasu serwera*, ApiName = *GetBlob*
+- Metric = *Transakcje*, ResponseType = *Limit czasu serwera*, ApiName = *PutBlob*
 
-Zapisz Poniższy kod JSON jako advanceddynamicmetricalert. JSON na potrzeby tego przewodnika.
+Zapisz json poniżej jako advanceddynamicmetricalert.json dla celów tego przewodnika.
 
 ```json
 {
@@ -1156,9 +1156,9 @@ Zapisz Poniższy kod JSON jako advanceddynamicmetricalert. JSON na potrzeby tego
 }
 ```
 
-Możesz użyć powyższego szablonu wraz z plikiem parametru podanym poniżej. 
+Możesz użyć powyższego szablonu wraz z plikiem parametrów podanym poniżej. 
 
-Zapisz i zmodyfikuj poniższy kod JSON jako advanceddynamicmetricalert. Parameters. JSON na potrzeby tego instruktażu.
+Zapisz i zmodyfikuj json poniżej jako advanceddynamicmetricalert.parameters.json na potrzeby tego przewodnika.
 
 ```json
 {
@@ -1214,7 +1214,7 @@ Zapisz i zmodyfikuj poniższy kod JSON jako advanceddynamicmetricalert. Paramete
 ```
 
 
-Alert dotyczący metryki można utworzyć przy użyciu pliku szablonu i parametrów przy użyciu programu PowerShell lub interfejsu wiersza polecenia platformy Azure z bieżącego katalogu roboczego.
+Alert metryki można utworzyć przy użyciu pliku szablonu i parametrów przy użyciu programu PowerShell lub interfejsu wiersza polecenia platformy Azure z bieżącego katalogu roboczego.
 
 Korzystanie z programu Azure PowerShell
 ```powershell
@@ -1241,18 +1241,18 @@ az group deployment create \
 
 >[!NOTE]
 >
-> W przypadku reguł alertów dotyczących metryk korzystających z progów dynamicznych nie są obecnie obsługiwane różne kryteria.
+> Wiele kryteriów nie są obecnie obsługiwane dla reguł alertów metryki, które używają dynamicznych progów.
 
 
-## <a name="template-for-a-static-threshold-metric-alert-that-monitors-a-custom-metric"></a>Szablon alertu metryki statycznej o wartości progowej, który monitoruje metrykę niestandardową
+## <a name="template-for-a-static-threshold-metric-alert-that-monitors-a-custom-metric"></a>Szablon alertu metryki progu statycznego, który monitoruje metrykę niestandardową
 
-Za pomocą poniższego szablonu można utworzyć bardziej zaawansowaną regułę alertu metryki statycznej progu dla metryki niestandardowej.
+Za pomocą następującego szablonu można utworzyć bardziej zaawansowaną regułę alertu alertu statycznego wskaźnika progu na metryki niestandardowej.
 
-Aby dowiedzieć się więcej na temat metryk niestandardowych w Azure Monitor, zobacz [metryki niestandardowe w Azure monitor](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-custom-overview).
+Aby dowiedzieć się więcej o metrykach niestandardowych w usłudze Azure Monitor, zobacz [Metryki niestandardowe w usłudze Azure Monitor.](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-custom-overview)
 
-Podczas tworzenia reguły alertu dla metryki niestandardowej należy określić zarówno nazwę metryki, jak i przestrzeń nazw metryki. Należy również upewnić się, że Metryka niestandardowa jest już raportowana, ponieważ nie można utworzyć reguły alertu na niestandardową metrykę, która jeszcze nie istnieje.
+Podczas tworzenia reguły alertu na metryki niestandardowej, należy określić zarówno nazwę metryki i obszaru nazw metryki. Należy również upewnić się, że metryka niestandardowa jest już zgłaszane, ponieważ nie można utworzyć reguły alertu na metryki niestandardowej, która jeszcze nie istnieje.
 
-Zapisz Poniższy kod JSON jako customstaticmetricalert. JSON na potrzeby tego przewodnika.
+Zapisz json poniżej jako customstaticmetricalert.json dla celów tego przewodnika.
 
 ```json
 {
@@ -1430,9 +1430,9 @@ Zapisz Poniższy kod JSON jako customstaticmetricalert. JSON na potrzeby tego pr
 }
 ```
 
-Możesz użyć powyższego szablonu wraz z plikiem parametru podanym poniżej. 
+Możesz użyć powyższego szablonu wraz z plikiem parametrów podanym poniżej. 
 
-Zapisz i zmodyfikuj poniższy kod JSON jako customstaticmetricalert. Parameters. JSON na potrzeby tego instruktażu.
+Zapisz i zmodyfikuj json poniżej jako customstaticmetricalert.parameters.json na potrzeby tego przewodnika.
 
 ```json
 {
@@ -1477,7 +1477,7 @@ Zapisz i zmodyfikuj poniższy kod JSON jako customstaticmetricalert. Parameters.
 ```
 
 
-Alert dotyczący metryki można utworzyć przy użyciu pliku szablonu i parametrów przy użyciu programu PowerShell lub interfejsu wiersza polecenia platformy Azure z bieżącego katalogu roboczego.
+Alert metryki można utworzyć przy użyciu pliku szablonu i parametrów przy użyciu programu PowerShell lub interfejsu wiersza polecenia platformy Azure z bieżącego katalogu roboczego.
 
 Korzystanie z programu Azure PowerShell
 ```powershell
@@ -1504,26 +1504,26 @@ az group deployment create \
 
 >[!NOTE]
 >
-> Przestrzeń nazw metryki konkretnej metryki niestandardowej można znaleźć, [przeglądając niestandardowe metryki za pomocą Azure Portal](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-custom-overview#browse-your-custom-metrics-via-the-azure-portal)
+> Obszar nazw metryki określonej metryki niestandardowej można znaleźć, [przeglądając metryki niestandardowe za pośrednictwem portalu Azure](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-custom-overview#browse-your-custom-metrics-via-the-azure-portal)
 
 
-## <a name="template-for-a-metric-alert-that-monitors-multiple-resources"></a>Szablon alertu dotyczącego metryki, który monitoruje wiele zasobów
+## <a name="template-for-a-metric-alert-that-monitors-multiple-resources"></a>Szablon alertu metryki monitorującej wiele zasobów
 
-W poprzednich sekcjach opisano przykładowe szablony Azure Resource Manager do tworzenia alertów metryk, które monitorują pojedynczy zasób. Azure Monitor teraz obsługuje monitorowanie wielu zasobów (tego samego typu) z pojedynczą regułą alertu metryki dla zasobów istniejących w tym samym regionie świadczenia usługi Azure. Ta funkcja jest obecnie obsługiwana tylko w chmurze publicznej platformy Azure i tylko dla maszyn wirtualnych, baz danych programu SQL Server, pul elastycznych programu SQL Server i urządzeń brzegowych DATAbox. Ponadto ta funkcja jest dostępna tylko dla metryk platformy i nie jest obsługiwana w przypadku metryk niestandardowych.
+W poprzednich sekcjach opisano przykładowe szablony usługi Azure Resource Manager w celu utworzenia alertów metryk monitorujących pojedynczy zasób. Usługa Azure Monitor obsługuje teraz monitorowanie wielu zasobów (tego samego typu) za pomocą jednej reguły alertu metryki dla zasobów, które istnieją w tym samym regionie platformy Azure. Ta funkcja jest obecnie obsługiwana tylko w chmurze publicznej platformy Azure i tylko dla maszyn wirtualnych, baz danych serwera SQL, pul elastycznych serwerów SQL i urządzeń brzegowych databox. Ponadto ta funkcja jest dostępna tylko dla metryk platformy i nie jest obsługiwana dla metryk niestandardowych.
 
-Reguła alertów dotyczących progów dynamicznych może również pomóc w tworzeniu dostosowanych progów dla setek serii metrycznych (nawet różnych typów) w danym momencie, co skutkuje mniejszą regułą alertów do zarządzania.
+Reguła alertów progów dynamicznych może również pomóc w tworzeniu dostosowanych progów dla setek serii metryk (nawet różnych typów) naraz, co powoduje mniejszą liczbę reguł alertów do zarządzania.
 
-W tej sekcji opisano Azure Resource Manager szablonów dla trzech scenariuszy służących do monitorowania wielu zasobów przy użyciu jednej reguły.
+W tej sekcji opisano szablony usługi Azure Resource Manager dla trzech scenariuszy do monitorowania wielu zasobów za pomocą jednej reguły.
 
-- Monitorowanie wszystkich maszyn wirtualnych (w jednym regionie świadczenia usługi Azure) w co najmniej jednej grupie zasobów.
-- Monitorowanie wszystkich maszyn wirtualnych (w jednym regionie świadczenia usługi Azure) w ramach subskrypcji.
-- Monitorowanie listy maszyn wirtualnych (w jednym regionie świadczenia usługi Azure) w ramach subskrypcji.
+- Monitorowanie wszystkich maszyn wirtualnych (w jednym regionie platformy Azure) w jednej lub większej liczbie grup zasobów.
+- Monitorowanie wszystkich maszyn wirtualnych (w jednym regionie platformy Azure) w ramach subskrypcji.
+- Monitorowanie listy maszyn wirtualnych (w jednym regionie platformy Azure) w ramach subskrypcji.
 
-### <a name="static-threshold-alert-on-all-virtual-machines-in-one-or-more-resource-groups"></a>Alert dotyczący progu statycznego na wszystkich maszynach wirtualnych w co najmniej jednej grupie zasobów
+### <a name="static-threshold-alert-on-all-virtual-machines-in-one-or-more-resource-groups"></a>Alert progu statycznego na wszystkich maszynach wirtualnych w co najmniej jednej grupie zasobów
 
-Ten szablon spowoduje utworzenie reguły alertu metryki statycznej progowej, która monitoruje procentowe użycie procesora dla wszystkich maszyn wirtualnych (w jednym regionie świadczenia usługi Azure) w co najmniej jednej grupie zasobów.
+Ten szablon utworzy regułę alertu statycznego alertu metryki progu, która monitoruje procent procesora CPU dla wszystkich maszyn wirtualnych (w jednym regionie platformy Azure) w jednej lub kilku grupach zasobów.
 
-Zapisz Poniższy kod JSON jako wszystkie-VM-in-Resource-Group-static. JSON na potrzeby tego przewodnika.
+Zapisz json poniżej jako all-vms-in-resource-group-static.json na potrzeby tego przejścia.
 
 ```json
 {
@@ -1756,7 +1756,7 @@ Zapisz Poniższy kod JSON jako wszystkie-VM-in-Resource-Group-static. JSON na po
 ```
 
 Możesz użyć powyższego szablonu z plikiem parametrów poniżej.
-Zapisz i zmodyfikuj poniższy kod JSON jako wszystkie-VM-in-Resource-Group-static. Parameters. JSON na potrzeby tego instruktażu.
+Zapisz i zmodyfikuj json poniżej jako wszystkie maszyny wirtualne w zasobie-group-static.parameters.json na potrzeby tego przewodnika.
 
 ```json
 {
@@ -1806,7 +1806,7 @@ Zapisz i zmodyfikuj poniższy kod JSON jako wszystkie-VM-in-Resource-Group-stati
 }
 ```
 
-Możesz utworzyć statyczny alert metryki przy użyciu pliku szablonu i parametrów przy użyciu programu PowerShell lub interfejsu wiersza polecenia platformy Azure z bieżącego katalogu roboczego.
+Alert metryki statycznej można utworzyć przy użyciu pliku szablonu i parametrów przy użyciu programu PowerShell lub interfejsu wiersza polecenia platformy Azure z bieżącego katalogu roboczego.
 
 Korzystanie z programu Azure PowerShell
 
@@ -1831,11 +1831,11 @@ az group deployment create \
     --parameters @all-vms-in-resource-group-static.parameters.json
 ```
 
-### <a name="dynamic-thresholds-alert-on-all-virtual-machines-in-one-or-more-resource-groups"></a>Alert dynamicznych progów dla wszystkich maszyn wirtualnych w co najmniej jednej grupie zasobów
+### <a name="dynamic-thresholds-alert-on-all-virtual-machines-in-one-or-more-resource-groups"></a>Alert progów dynamicznych na wszystkich maszynach wirtualnych w co najmniej jednej grupie zasobów
 
-Ten szablon spowoduje utworzenie reguły alertu metryki dynamicznej progu, która monitoruje procentowe użycie procesora dla wszystkich maszyn wirtualnych (w jednym regionie świadczenia usługi Azure) w co najmniej jednej grupie zasobów.
+Ten szablon utworzy regułę alertu alertu metryki dynamiczne progi, która monitoruje procent procesora CPU dla wszystkich maszyn wirtualnych (w jednym regionie platformy Azure) w jednej lub kilku grupach zasobów.
 
-Zapisz Poniższy kod JSON jako wszystkie-VM-in-Resource-Group-Dynamic. JSON na potrzeby tego przewodnika.
+Zapisz json poniżej jako all-vms-in-resource-group-dynamic.json na potrzeby tego przejścia.
 
 ```json
 {
@@ -2085,7 +2085,7 @@ Zapisz Poniższy kod JSON jako wszystkie-VM-in-Resource-Group-Dynamic. JSON na p
 ```
 
 Możesz użyć powyższego szablonu z plikiem parametrów poniżej.
-Zapisz i zmodyfikuj poniższy kod JSON jako wszystkie-VM-in-Resource-Group-Dynamic. Parameters. JSON na potrzeby tego instruktażu.
+Zapisz i zmodyfikuj json poniżej jako wszystkie maszyny wirtualne w zasobie-group-dynamic.parameters.json na potrzeby tego przewodnika.
 
 ```json
 {
@@ -2141,7 +2141,7 @@ Zapisz i zmodyfikuj poniższy kod JSON jako wszystkie-VM-in-Resource-Group-Dynam
 }
 ```
 
-Alert dotyczący metryki można utworzyć przy użyciu pliku szablonu i parametrów przy użyciu programu PowerShell lub interfejsu wiersza polecenia platformy Azure z bieżącego katalogu roboczego.
+Alert metryki można utworzyć przy użyciu pliku szablonu i parametrów przy użyciu programu PowerShell lub interfejsu wiersza polecenia platformy Azure z bieżącego katalogu roboczego.
 
 Korzystanie z programu Azure PowerShell
 
@@ -2166,11 +2166,11 @@ az group deployment create \
     --parameters @all-vms-in-resource-group-dynamic.parameters.json
 ```
 
-### <a name="static-threshold-alert-on-all-virtual-machines-in-a-subscription"></a>Alert dotyczący progu statycznego na wszystkich maszynach wirtualnych w ramach subskrypcji
+### <a name="static-threshold-alert-on-all-virtual-machines-in-a-subscription"></a>Alert progu statycznego na wszystkich maszynach wirtualnych w ramach subskrypcji
 
-Ten szablon spowoduje utworzenie reguły alertu metryki statycznej progowej, która monitoruje procentowe użycie procesora dla wszystkich maszyn wirtualnych (w jednym regionie świadczenia usługi Azure) w ramach subskrypcji.
+Ten szablon utworzy regułę alertu statycznego progu metryki, która monitoruje procent procesora CPU dla wszystkich maszyn wirtualnych (w jednym regionie platformy Azure) w ramach subskrypcji.
 
-Zapisz Poniższy kod JSON jako wszystkie-VM-in-Subscription-static. JSON na potrzeby tego przewodnika.
+Zapisz json poniżej jako all-vms-in-subscription-static.json na potrzeby tego przejścia.
 
 ```json
 {
@@ -2404,7 +2404,7 @@ Zapisz Poniższy kod JSON jako wszystkie-VM-in-Subscription-static. JSON na potr
 ```
 
 Możesz użyć powyższego szablonu z plikiem parametrów poniżej.
-Zapisz i zmodyfikuj kod JSON poniżej jako All-VM-in-Subscription-static. Parameters. JSON na potrzeby tego instruktażu.
+Zapisz i zmodyfikuj json poniżej jako wszystkie maszyny wirtualne w ramach subskrypcji-static.parameters.json na potrzeby tego przewodnika.
 
 ```json
 {
@@ -2451,7 +2451,7 @@ Zapisz i zmodyfikuj kod JSON poniżej jako All-VM-in-Subscription-static. Parame
 }
 ```
 
-Alert dotyczący metryki można utworzyć przy użyciu pliku szablonu i parametrów przy użyciu programu PowerShell lub interfejsu wiersza polecenia platformy Azure z bieżącego katalogu roboczego.
+Alert metryki można utworzyć przy użyciu pliku szablonu i parametrów przy użyciu programu PowerShell lub interfejsu wiersza polecenia platformy Azure z bieżącego katalogu roboczego.
 
 Korzystanie z programu Azure PowerShell
 
@@ -2476,11 +2476,11 @@ az group deployment create \
     --parameters @all-vms-in-subscription.parameters-static.json
 ```
 
-### <a name="dynamic-thresholds-alert-on-all-virtual-machines-in-a-subscription"></a>Alert dynamicznych progów dla wszystkich maszyn wirtualnych w ramach subskrypcji
+### <a name="dynamic-thresholds-alert-on-all-virtual-machines-in-a-subscription"></a>Alert progów dynamicznych na wszystkich maszynach wirtualnych w ramach subskrypcji
 
-Ten szablon spowoduje utworzenie reguły alertu metryki dynamicznej progu, która monitoruje procentowy procesor CPU dla wszystkich maszyn wirtualnych (w jednym regionie świadczenia usługi Azure) w ramach subskrypcji.
+Ten szablon utworzy regułę alertu alertu metryki dynamiczne, która monitoruje procent procesora CPU dla wszystkich maszyn wirtualnych (w jednym regionie platformy Azure) w ramach subskrypcji.
 
-Zapisz Poniższy kod JSON jako wszystkie-VM-in-Subscription-Dynamic. JSON na potrzeby tego przewodnika.
+Zapisz json poniżej jako all-vms-in-subscription-dynamic.json na potrzeby tego przejścia.
 
 ```json
 {
@@ -2730,7 +2730,7 @@ Zapisz Poniższy kod JSON jako wszystkie-VM-in-Subscription-Dynamic. JSON na pot
 ```
 
 Możesz użyć powyższego szablonu z plikiem parametrów poniżej.
-Zapisz i zmodyfikuj poniższy kod JSON jako wszystkie-VM-in-Subscription-Dynamic. Parameters. JSON na potrzeby tego instruktażu.
+Zapisz i zmodyfikuj json poniżej jako wszystkie maszyny wirtualne w ramach subskrypcji-dynamic.parameters.json na potrzeby tego przewodnika.
 
 ```json
 {
@@ -2783,7 +2783,7 @@ Zapisz i zmodyfikuj poniższy kod JSON jako wszystkie-VM-in-Subscription-Dynamic
 }
 ```
 
-Alert dotyczący metryki można utworzyć przy użyciu pliku szablonu i parametrów przy użyciu programu PowerShell lub interfejsu wiersza polecenia platformy Azure z bieżącego katalogu roboczego.
+Alert metryki można utworzyć przy użyciu pliku szablonu i parametrów przy użyciu programu PowerShell lub interfejsu wiersza polecenia platformy Azure z bieżącego katalogu roboczego.
 
 Korzystanie z programu Azure PowerShell
 
@@ -2808,11 +2808,11 @@ az group deployment create \
     --parameters @all-vms-in-subscription-dynamic.parameter-dynamics.json
 ```
 
-### <a name="static-threshold-alert-on-a-list-of-virtual-machines"></a>Alert dotyczący progu statycznego na liście maszyn wirtualnych
+### <a name="static-threshold-alert-on-a-list-of-virtual-machines"></a>Alert progu statycznego na liście maszyn wirtualnych
 
-Ten szablon spowoduje utworzenie reguły alertu metryki statycznej progowej, która monitoruje procentowe użycie procesora dla listy maszyn wirtualnych (w jednym regionie świadczenia usługi Azure) w ramach subskrypcji.
+Ten szablon utworzy regułę alertu statycznego progu metryki, która monitoruje procent procesora CPU dla listy maszyn wirtualnych (w jednym regionie platformy Azure) w ramach subskrypcji.
 
-Zapisz Poniższy kod JSON jako listę listy maszyn wirtualnych-static. JSON na potrzeby tego przewodnika.
+Zapisz json poniżej jako list-of-vms-static.json na potrzeby tego przejścia.
 
 ```json
 {
@@ -3046,7 +3046,7 @@ Zapisz Poniższy kod JSON jako listę listy maszyn wirtualnych-static. JSON na p
 ```
 
 Możesz użyć powyższego szablonu z plikiem parametrów poniżej.
-Zapisz i zmodyfikuj poniższy kod JSON jako listę listy maszyn wirtualnych — static. Parameters. JSON na potrzeby tego przewodnika.
+Zapisz i zmodyfikuj json poniżej jako list-of-vms-static.parameters.json na potrzeby tego przewodnika.
 
 ```json
 {
@@ -3096,7 +3096,7 @@ Zapisz i zmodyfikuj poniższy kod JSON jako listę listy maszyn wirtualnych — 
 }
 ```
 
-Alert dotyczący metryki można utworzyć przy użyciu pliku szablonu i parametrów przy użyciu programu PowerShell lub interfejsu wiersza polecenia platformy Azure z bieżącego katalogu roboczego.
+Alert metryki można utworzyć przy użyciu pliku szablonu i parametrów przy użyciu programu PowerShell lub interfejsu wiersza polecenia platformy Azure z bieżącego katalogu roboczego.
 
 Korzystanie z programu Azure PowerShell
 
@@ -3121,11 +3121,11 @@ az group deployment create \
     --parameters @list-of-vms-static.parameters.json
 ```
 
-### <a name="dynamic-thresholds-alert-on-a-list-of-virtual-machines"></a>Alert dynamicznych progów na liście maszyn wirtualnych
+### <a name="dynamic-thresholds-alert-on-a-list-of-virtual-machines"></a>Alert progów dynamicznych na liście maszyn wirtualnych
 
-Ten szablon spowoduje utworzenie reguły alertu metryki dynamicznej progu, która monitoruje procentowy procesor CPU w celu wyświetlenia listy maszyn wirtualnych (w jednym regionie świadczenia usługi Azure) w ramach subskrypcji.
+Ten szablon utworzy regułę alertu alertu metryki dynamiczne progi, która monitoruje procent procesora CPU dla listy maszyn wirtualnych (w jednym regionie platformy Azure) w ramach subskrypcji.
 
-Zapisz Poniższy kod JSON jako listę z maszyn wirtualnych — Dynamic. JSON na potrzeby tego przewodnika.
+Zapisz json poniżej jako list-of-vms-dynamic.json na potrzeby tego przejścia.
 
 ```json
 {
@@ -3375,7 +3375,7 @@ Zapisz Poniższy kod JSON jako listę z maszyn wirtualnych — Dynamic. JSON na 
 ```
 
 Możesz użyć powyższego szablonu z plikiem parametrów poniżej.
-Zapisz i zmodyfikuj poniższy kod JSON jako listę listy maszyn wirtualnych — Dynamic. Parameters. JSON na potrzeby tego przewodnika.
+Zapisz i zmodyfikuj json poniżej jako list-of-vms-dynamic.parameters.json na potrzeby tego przewodnika.
 
 ```json
 {
@@ -3431,7 +3431,7 @@ Zapisz i zmodyfikuj poniższy kod JSON jako listę listy maszyn wirtualnych — 
 }
 ```
 
-Alert dotyczący metryki można utworzyć przy użyciu pliku szablonu i parametrów przy użyciu programu PowerShell lub interfejsu wiersza polecenia platformy Azure z bieżącego katalogu roboczego.
+Alert metryki można utworzyć przy użyciu pliku szablonu i parametrów przy użyciu programu PowerShell lub interfejsu wiersza polecenia platformy Azure z bieżącego katalogu roboczego.
 
 Korzystanie z programu Azure PowerShell
 
@@ -3456,12 +3456,12 @@ az group deployment create \
     --parameters @list-of-vms-dynamic.parameters.json
 ```
 
-## <a name="template-for-an-availability-test-along-with-a-metric-alert"></a>Szablon testu dostępności wraz z alertem metryki
+## <a name="template-for-an-availability-test-along-with-a-metric-alert"></a>Szablon testu dostępności wraz z alertem metrycznym
 
-[Application Insights testy dostępności](../../azure-monitor/app/monitor-web-app-availability.md) ułatwiają monitorowanie dostępności witryny sieci Web lub aplikacji z różnych lokalizacji na całym świecie. Alerty testu dostępności powiadamiają użytkownika, gdy testy dostępności zakończą się niepowodzeniem z określonej liczby lokalizacji.
-Alerty testów dostępności tego samego typu zasobu co alerty metryk (Microsoft. Insights/metricAlerts). Następujący przykładowy szablon Azure Resource Manager można użyć do skonfigurowania prostego testu dostępności i powiązanego alertu.
+[Testy dostępności usługi Application Insights](../../azure-monitor/app/monitor-web-app-availability.md) pomagają monitorować dostępność witryny sieci Web/aplikacji z różnych lokalizacji na całym świecie. Alerty testów dostępności powiadamiają o niepowodzeniach testów dostępności z określonej liczby lokalizacji.
+Alerty testu dostępności tego samego typu zasobu co alerty metryki (Microsoft.Insights/metricAlerts). Poniższy przykładowy szablon usługi Azure Resource Manager może służyć do konfigurowania prostego testu dostępności i skojarzonego alertu.
 
-Zapisz Poniższy kod JSON jako availabilityalert. JSON na potrzeby tego przewodnika.
+Zapisz json poniżej jako dostępnośćalert.json na potrzeby tego przewodnika.
 
 ```json
 {
@@ -3563,14 +3563,14 @@ Zapisz Poniższy kod JSON jako availabilityalert. JSON na potrzeby tego przewodn
 }
 ```
 
-Można ustawić wartości parametrów w wierszu polecenia lub za pomocą pliku parametrów. Poniżej przedstawiono przykładowy plik parametrów.
+Wartości parametrów można ustawić w wierszu polecenia lub za pomocą pliku parametrów. Przykładowy plik parametrów znajduje się poniżej.
 
 
 > [!NOTE]
 >
-> `&amp`; jest odwołaniem do jednostki HTML dla &. Parametry adresu URL są nadal oddzielone pojedynczym &, ale jeśli adres URL jest wymieniany w formacie HTML, należy go zakodować. Tak więc, jeśli masz jakiekolwiek "&" w wartości parametru pingURL, musisz je zmienić na "`&amp`;"
+> `&amp`; jest odwołaniem do encji HTML dla &. Parametry adresu URL są nadal oddzielone pojedynczym &, ale jeśli wspomnisz o adresie URL w html, musisz go zakodować. Tak więc, jeśli masz jakieś "&" w wartości parametru pingURL,`&amp`musisz uciec z " ;"
 
-Zapisz Poniższy kod JSON jako availabilityalert. Parameters. JSON i zmodyfikuj go zgodnie z potrzebami.
+Zapisz json poniżej jako availabilityalert.parameters.json i zmodyfikuj go zgodnie z wymaganiami.
 
 ```json
 {
@@ -3593,7 +3593,7 @@ Zapisz Poniższy kod JSON jako availabilityalert. Parameters. JSON i zmodyfikuj 
 }
 ```
 
-Test dostępności i skojarzony alert można utworzyć przy użyciu pliku szablonu i parametrów przy użyciu programu PowerShell lub interfejsu wiersza polecenia platformy Azure.
+Można utworzyć test dostępności i skojarzony alert przy użyciu pliku szablonu i parametrów przy użyciu programu PowerShell lub interfejsu wiersza polecenia platformy Azure.
 
 Korzystanie z programu Azure PowerShell
 
@@ -3620,6 +3620,6 @@ az group deployment create \
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Przeczytaj więcej [na temat alertów na platformie Azure](alerts-overview.md)
-- Dowiedz się, jak [utworzyć grupę akcji z szablonami Menedżer zasobów](action-groups-create-resource-manager-template.md)
-- Aby poznać składnię i właściwości JSON, zobacz [Microsoft. Insights/metricAlerts](/azure/templates/microsoft.insights/metricalerts) Template Reference.
+- Dowiedz się więcej o [alertach na platformie Azure](alerts-overview.md)
+- Dowiedz się, jak [utworzyć grupę akcji z szablonami Menedżera zasobów](action-groups-create-resource-manager-template.md)
+- Aby zapoznać się ze składnią i właściwościami JSON, zobacz [Microsoft.Insights/metricAlerts](/azure/templates/microsoft.insights/metricalerts) template reference.
