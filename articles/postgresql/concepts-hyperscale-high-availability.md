@@ -1,6 +1,6 @@
 ---
-title: Wysoka dostępność — funkcja do skalowania (Citus) — Azure Database for PostgreSQL
-description: Pojęcia dotyczące wysokiej dostępności i odzyskiwania po awarii
+title: Wysoka dostępność — hiperskala (Citus) — usługa Azure Database for PostgreSQL
+description: Wysoka dostępność i koncepcje odzyskiwania po awarii
 author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
@@ -8,21 +8,21 @@ ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 10679ab02826fb606af65c72621f2afb609bc81b
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74975537"
 ---
-# <a name="high-availability-in-azure-database-for-postgresql--hyperscale-citus"></a>Wysoka dostępność w Azure Database for PostgreSQL — skalowanie (Citus)
+# <a name="high-availability-in-azure-database-for-postgresql--hyperscale-citus"></a>Wysoka dostępność w usłudze Azure Database dla postgreSQL — hiperskala (Citus)
 
-Duża dostępność zapobiega przerwom w działaniu baz danych dzięki przechowywaniu rezerwowych replik każdego węzła w grupie serwerów. Jeśli węzeł ulegnie awarii, Hiperskala przełączy połączenia przychodzące z uszkodzonego węzła na jego rezerwę. Przez kilka minut węzeł będzie działał w trybie failover, a dzięki synchronicznej replikacji przesyłania strumieniowego PostgreSQL awansowane węzły zawsze będą zawierały świeże dane.
+Wysoka dostępność (HA) pozwala uniknąć przestojów bazy danych, utrzymując repliki wstrzymania każdego węzła w grupie serwerów. Jeśli węzeł ulegnie awarii, hiperskala przełącza połączenia przychodzące z węzła, który uległ awarii, do jego gotowości. Tryb failover odbywa się w ciągu kilku minut, a promowane węzły zawsze mają świeże dane za pośrednictwem synchronicznym przesyłania strumieniowego replikacji PostgreSQL.
 
-Aby korzystać z wysokiej dostępności na węźle koordynatora, aplikacje bazy danych muszą wykrywać i ponawiać próby porzucenia połączeń i transakcji zakończonych niepowodzeniem. Nowo podwyższony koordynator będzie dostępny z tymi samymi parametrami połączenia.
+Aby skorzystać z usługi wysokiej jakości w węźle koordynatora, aplikacje bazy danych muszą wykrywać i ponawiać próby porzucania połączeń i nieudanych transakcji. Nowo promowany koordynator będzie dostępny z tym samym ciągiem połączenia.
 
-Odzyskiwanie można podzielić na trzy etapy: wykrywanie, przełączanie do trybu failover i pełne odzyskiwanie.  Funkcja wieloskalowania uruchamia okresowe kontrole kondycji w każdym węźle, a po czterech nieprawidłowych sprawdzeniach określa, że węzeł nie działa. Skalowanie następnie promuje stan wstrzymania do stanu węzła podstawowego (tryb failover) i Inicjuje nowe wstrzymanie.
-Rozpocznie się replikacja przesyłania strumieniowego, co spowoduje, że nowy węzeł jest aktualny.  Gdy wszystkie dane zostały zreplikowane, węzeł osiągnął pełne odzyskiwanie.
+Odzyskiwanie można podzielić na trzy etapy: wykrywanie, praca awaryjna i pełne odzyskiwanie.  Hiperskala przebiega okresowe kontrole kondycji w każdym węźle, a po czterech nieudanych sprawdzeniach określa, że węzeł jest w dół. Hiperskala następnie promuje stan węzła podstawowego (pracy awaryjnej) i przepisuje nowy tryb gotowości.
+Rozpoczyna się replikacja przesyłania strumieniowego, dzięki którym nowy węzeł jest aktualny.  Po zrepliknięciu wszystkich danych węzeł osiągnął pełne odzyskiwanie.
 
 ### <a name="next-steps"></a>Następne kroki
 
-- Dowiedz się, jak [włączyć wysoką dostępność](howto-hyperscale-high-availability.md) w grupie serwerów w skali.
+- Dowiedz się, jak [włączyć wysoką dostępność](howto-hyperscale-high-availability.md) w grupie serwerów w hiperskali.

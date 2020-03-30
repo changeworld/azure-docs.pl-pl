@@ -1,6 +1,6 @@
 ---
-title: Integracja Microsoft Azure z usługą Oracle Cloud Infrastructure | Microsoft Docs
-description: Informacje o rozwiązaniach, które integrują aplikacje Oracle działające w Microsoft Azure z bazami danych w infrastrukturze chmury firmy Oracle (OCI).
+title: Integracja platformy Microsoft Azure z infrastrukturą Oracle Cloud | Dokumenty firmy Microsoft
+description: Dowiedz się więcej o rozwiązaniach, które integrują aplikacje Oracle działające na platformie Microsoft Azure z bazami danych w oracle cloud infrastructure (OCI).
 services: virtual-machines-linux
 documentationcenter: ''
 author: romitgirdhar
@@ -15,69 +15,69 @@ ms.date: 06/04/2019
 ms.author: rogirdh
 ms.custom: ''
 ms.openlocfilehash: e1249913300be532cc6514f1478bbc6f4183c001
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78300557"
 ---
-# <a name="oracle-application-solutions-integrating-microsoft-azure-and-oracle-cloud-infrastructure-preview"></a>Rozwiązania aplikacji Oracle integrujące Microsoft Azure i infrastrukturę chmurową Oracle (wersja zapoznawcza)
+# <a name="oracle-application-solutions-integrating-microsoft-azure-and-oracle-cloud-infrastructure-preview"></a>Rozwiązania oracle z aplikacjami integrujące microsoft azure i oracle cloud infrastructure (wersja zapoznawcza)
 
-Firmy Microsoft i Oracle współpracują w celu zapewnienia małych opóźnień i wysokiej przepływności łączności między chmurami, co pozwala korzystać z zalet najlepszych chmur. 
+Firmy Microsoft i Oracle nawiązały współpracę w celu zapewnienia łączności między chmurami o niskich opóźnieniach i dużej przepustowości, co pozwala na korzystanie z najlepszych z obu chmur. 
 
-Korzystając z tej łączności między chmurami, można podzielić aplikację wielowarstwową w celu uruchomienia warstwy bazy danych w infrastrukturze chmury firmy Oracle (OCI) oraz aplikacji i innych warstw na Microsoft Azure. Środowisko jest podobne do uruchamiania całego stosu rozwiązań w pojedynczej chmurze. 
+Korzystając z tej łączności między chmurami, można podzielić wielowarstwową aplikację do uruchamiania warstwy bazy danych w oracle cloud infrastructure (OCI) i aplikacji i innych warstw na platformie Microsoft Azure. Środowisko jest podobne do uruchamiania całego stosu rozwiązań w jednej chmurze. 
 
 > [!IMPORTANT]
-> Ta funkcja między chmurami jest obecnie dostępna w wersji zapoznawczej i [obowiązują ograniczenia](#region-availability). Aby zapewnić łączność z niską opóźnieniami między platformą Azure a OCI, należy najpierw włączyć tę subskrypcję platformy Azure. Musisz zarejestrować się w wersji zapoznawczej, wykonując ten krótki [formularz ankiety](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRyzVVsi364tClw522rL9tkpUMVFGVVFWRlhMNUlRQTVWSTEzT0dXMlRUTyQlQCN0PWcu). Gdy subskrypcja zostanie zarejestrowana, otrzymasz wiadomość e-mail. Nie możesz korzystać z tej możliwości, dopóki nie otrzymasz wiadomości e-mail z potwierdzeniem. Możesz również skontaktować się z przedstawicielem firmy Microsoft w celu włączenia tej wersji zapoznawczej. Dostęp do funkcji wersji zapoznawczej podlega dostępności i jest ograniczony przez firmę Microsoft w ramach własnego uznania. Zakończenie ankiety nie gwarantuje dostępu. Ta wersja zapoznawcza jest świadczona bez umowy dotyczącej poziomu usług i nie powinna być używana na potrzeby obciążeń produkcyjnych. Niektóre funkcje mogą nie być obsługiwane, mogą mieć ograniczone możliwości lub mogą nie być dostępne we wszystkich lokalizacjach platformy Azure. Aby uzyskać szczegółowe informacje, zobacz [dodatkowe warunki użytkowania wersji](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) zapoznawczych Microsoft Azure. Niektóre cechy funkcji mogą ulec zmianie, zanim stanie się ona ogólnie dostępna.
+> Ta funkcja między chmurami jest obecnie w wersji zapoznawczej i [obowiązują ograniczenia.](#region-availability) Aby ustanowić łączność o małym opóźnieniu między platformą Azure i OCI, twoja subskrypcja platformy Azure musi najpierw zostać włączona dla tej możliwości. Aby zapisać się do wersji zapoznawczej, należy wypełnić ten krótki [formularz ankiety](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRyzVVsi364tClw522rL9tkpUMVFGVVFWRlhMNUlRQTVWSTEzT0dXMlRUTyQlQCN0PWcu). Gdy subskrypcja zostanie zarejestrowana, otrzymasz wiadomość e-mail. Nie możesz korzystać z tej funkcji, dopóki nie otrzymasz wiadomości e-mail z potwierdzeniem. Możesz również skontaktować się z przedstawicielem firmy Microsoft, aby włączyć tę wersję zapoznawczą. Dostęp do możliwości w wersji zapoznawczej jest zależny od dostępności i ograniczony przez firmę Microsoft według własnego uznania. Wypełnienie ankiety nie gwarantuje dostępu. Ta wersja zapoznawcza jest dostarczana bez umowy dotyczącej poziomu usług i nie powinna być używana dla obciążeń produkcyjnych. Niektóre funkcje mogą nie być obsługiwane, mogą mieć ograniczone możliwości lub mogą nie być dostępne we wszystkich lokalizacjach platformy Azure. Szczegółowe informacje można znaleźć w [dodatkowych warunkach użytkowania](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) w wersji zapoznawczej platformy Microsoft Azure. Niektóre cechy funkcji mogą ulec zmianie, zanim stanie się ona ogólnie dostępna.
 
-Jeśli interesuje się wdrażanie rozwiązań Oracle w całości w infrastrukturze platformy Azure, zobacz [obrazy maszyn wirtualnych Oracle i ich wdrożenie na Microsoft Azure](oracle-vm-solutions.md).
+Jeśli chcesz wdrożyć rozwiązania Oracle w całości w infrastrukturze platformy Azure, zobacz [obrazy maszyn wirtualnych Oracle i ich wdrożenie na platformie Microsoft Azure.](oracle-vm-solutions.md)
 
 ## <a name="scenario-overview"></a>Omówienie scenariusza
 
-Łączność między chmurami zapewnia rozwiązanie umożliwiające uruchamianie aplikacji wiodących w branży firmy Oracle oraz własnych aplikacji niestandardowych na maszynach wirtualnych platformy Azure, a jednocześnie korzysta z zalet hostowanych usług bazy danych w systemie OCI. 
+Łączność między chmurami zapewnia rozwiązanie do uruchamiania wiodących w branży aplikacji Oracle i własnych aplikacji niestandardowych na maszynach wirtualnych platformy Azure, a jednocześnie korzysta z zalet hostowanych usług baz danych w OCI. 
 
-Aplikacje, które można uruchomić w konfiguracji obejmującej wiele chmur, obejmują:
+Aplikacje, które można uruchamiać w konfiguracji między chmurami obejmują:
 
-* Pakiet E-Business
+* Pakiet e-biznesowy
 * JD Edwards EnterpriseOne
-* PeopleSoft
-* Aplikacje sieci sprzedaży firmy Oracle
-* Zarządzanie finansowe Oracle Hyperion
+* Peoplesoft
+* Aplikacje Oracle Retail
+* Zarządzanie finansami Oracle Hyperion
 
-Poniższy diagram przedstawia ogólny przegląd połączonego rozwiązania. Dla uproszczenia diagram pokazuje tylko warstwę aplikacji i warstwę danych. W zależności od architektury aplikacji rozwiązanie może zawierać dodatkowe warstwy, takie jak warstwa sieci Web na platformie Azure. Aby uzyskać więcej informacji zobacz następujące sekcje.
+Poniższy diagram jest omówienie wysokiego poziomu połączonego rozwiązania. Dla uproszczenia diagram pokazuje tylko warstwę aplikacji i warstwę danych. W zależności od architektury aplikacji rozwiązanie może zawierać dodatkowe warstwy, takie jak warstwa sieci web na platformie Azure. Aby uzyskać więcej informacji, zobacz następujące sekcje.
 
-![Omówienie rozwiązania OCI na platformie Azure](media/oracle-oci-overview/crosscloud.png)
+![Omówienie rozwiązania OCI platformy Azure](media/oracle-oci-overview/crosscloud.png)
 
 ## <a name="region-availability"></a>Dostępność regionów 
 
-Łączność między różnymi lokalizacjami w chmurze jest ograniczona do następujących regionów:
-* Azure Wschodnie stany USA (Wschodnie) & OCI Ashburn (Wschodnie stany USA)
-* Azure Południowe Zjednoczone Królestwo (uksouth) & OCI Londyn (Południowe Zjednoczone Królestwo)
-* Azure Kanada Środkowa (canadacentral) & OCI Toronto (Kanada Południowo-Wschodnia)
-* Azure Europa Zachodnia (westeurope) & OCI Amsterdam (Holandia zachodni)
+Łączność między chmurami jest ograniczona do następujących regionów:
+* Azure East US (eastus) & OCI Ashburn (Stany Zjednoczone Na wschodzie)
+* Azure UK South (uksouth) & OCI London (Wielka Brytania Południowa)
+* Azure Canada Central (canadacentral) & OCI Toronto (Kanada Południowo-Wschodnia)
+* Azure Europa Zachodnia (westeurope) & OCI Amsterdam (Holandia Północno-Zachodnia)
 
-## <a name="networking"></a>Sieć
+## <a name="networking"></a>Obsługa sieci
 
-Klienci korporacyjni często decydują się na zróżnicowanie i wdrażaniu obciążeń dla wielu chmur w różnych sytuacjach firmy i operacyjnych. W celu zróżnicowania klienci korzystają z Internetu, sieci VPN IPSec lub bezpośredniego rozwiązania do łączności dostawcy w chmurze za pośrednictwem sieci lokalnej. Połączenia między sieciami w chmurze mogą wymagać znaczących inwestycji w miarę czasu, pieniędzy, projektowania, zaopatrzenia, instalacji, testowania i operacji. 
+Klienci korporacyjni często decydują się na dywersyfikację i wdrażanie obciążeń w wielu chmurach z różnych powodów biznesowych i operacyjnych. Aby zdywersyfikować, klienci łączą sieci w chmurze za pomocą Internetu, sieci VPN IPSec lub korzystania z rozwiązania do łączności bezpośredniej dostawcy chmury za pośrednictwem sieci lokalnej. Wzajemne połączenia z sieciami w chmurze mogą wymagać znacznych inwestycji w czas, pieniądze, projektowanie, zaopatrzenie, instalację, testowanie i operacje. 
 
-Aby rozwiązać te problemy dla klientów, oprogramowanie Oracle i firma Microsoft umożliwiły zintegrowane środowisko z obsługą chmury. Sieci w chmurze są nawiązywane przez połączenie obwodu usługi [ExpressRoute](../../../expressroute/expressroute-introduction.md) w Microsoft Azure z obwodem usługi [FASTCONNECT](https://docs.cloud.oracle.com/iaas/Content/Network/Concepts/fastconnectoverview.htm) w systemie OCI. To połączenie jest możliwe, gdy lokalizacja komunikacji równorzędnej usługi Azure ExpressRoute znajduje się w pobliżu lub w tej samej lokalizacji komunikacji równorzędnej co OCI FastConnect. Ta konfiguracja umożliwia bezpieczną i szybką łączność między dwiema chmurami bez konieczności pośredniego dostawcy usług.
+Aby sprostać tym wyzwaniom klientów, firmy Oracle i Microsoft umożliwiły zintegrowane środowisko wielochmurowe. Sieć między chmurami jest ustanawiana przez połączenie obwodu [usługi ExpressRoute](../../../expressroute/expressroute-introduction.md) na platformie Microsoft Azure z obwodem [FastConnect](https://docs.cloud.oracle.com/iaas/Content/Network/Concepts/fastconnectoverview.htm) w OCI. Ta łączność jest możliwa, gdy lokalizacja komunikacji równorzędnej usługi Azure ExpressRoute znajduje się w pobliżu lub w tej samej lokalizacji komunikacji równorzędnej co usługa OCI FastConnect. Ta konfiguracja umożliwia bezpieczną i szybką łączność między dwiema chmurami bez konieczności korzystania z pośredniego dostawcy usług.
 
-Korzystając z ExpressRoute i FastConnect, klienci mogą połączyć się z siecią wirtualną na platformie Azure z wirtualną siecią chmurową w systemie OCI, pod warunkiem, że przestrzeń prywatnych adresów IP nie nakłada się na siebie. Komunikacja równorzędna dwóch sieci umożliwia zasobom w sieci wirtualnej komunikowanie się z zasobem w sieci wirtualnej OCI, tak jakby znajdowały się one w tej samej sieci.
+Za pomocą usługi ExpressRoute i FastConnect klienci mogą równorzędować sieć wirtualną na platformie Azure z wirtualną siecią w chmurze w OCI, pod warunkiem że prywatna przestrzeń adresowa IP nie nakłada się na siebie. Komunikacja równorzędna dwóch sieci umożliwia zasobom w sieci wirtualnej komunikowanie się z zasobem w sieci wirtualnej chmury OCI tak, jakby były one w tej samej sieci.
 
 ## <a name="network-security"></a>Bezpieczeństwo sieci
 
-Zabezpieczenia sieci to kluczowy składnik dowolnej aplikacji korporacyjnej, który stanowi centralne rozwiązanie w chmurze. Każdy ruch przechodzący przez ExpressRoute i FastConnect przechodzi przez sieć prywatną. Ta konfiguracja umożliwia bezpieczną komunikację między siecią wirtualną platformy Azure a siecią chmurą wirtualną firmy Oracle. Nie musisz podawać publicznego adresu IP do żadnych maszyn wirtualnych na platformie Azure. Podobnie nie jest potrzebna Brama internetowa w OCI. Cała komunikacja odbywa się za pośrednictwem prywatnego adresu IP maszyn.
+Bezpieczeństwo sieci jest kluczowym elementem każdej aplikacji korporacyjnej i ma kluczowe znaczenie dla tego rozwiązania z wieloma chmurami. Każdy ruch przechodzący przez usługi ExpressRoute i FastConnect przechodzi przez sieć prywatną. Ta konfiguracja umożliwia bezpieczną komunikację między siecią wirtualną platformy Azure a siecią chmury wirtualnej Oracle. Nie trzeba podawać publiczny adres IP do żadnych maszyn wirtualnych na platformie Azure. Podobnie, nie potrzebujesz bramy internetowej w OCI. Cała komunikacja odbywa się za pośrednictwem prywatnego adresu IP maszyn.
 
-Ponadto można skonfigurować [listy zabezpieczeń](https://docs.cloud.oracle.com/iaas/Content/Network/Concepts/securitylists.htm) w sieci i reguł zabezpieczeń w chmurze wirtualnej OCI (dołączone do [sieciowych grup zabezpieczeń](../../../virtual-network/security-overview.md)platformy Azure). Za pomocą tych reguł można kontrolować ruch przepływający między maszynami w sieciach wirtualnych. Reguły zabezpieczeń sieci można dodawać na poziomie komputera, na poziomie podsieci, a także na poziomie sieci wirtualnej.
+Ponadto można skonfigurować [listy zabezpieczeń](https://docs.cloud.oracle.com/iaas/Content/Network/Concepts/securitylists.htm) w wirtualnej sieci w chmurze OCI i reguły zabezpieczeń (dołączone do [grup zabezpieczeń sieci](../../../virtual-network/security-overview.md)platformy Azure). Użyj tych reguł do kontrolowania ruchu przepływającego między komputerami w sieciach wirtualnych. Reguły zabezpieczeń sieci mogą być dodawane na poziomie komputera, na poziomie podsieci, a także na poziomie sieci wirtualnej.
  
 ## <a name="identity"></a>Tożsamość
 
-Tożsamość jest jednym z podstawowych filarów powiązania między firmą Microsoft i bazą danych Oracle. W celu zintegrowania [usługi Oracle Identity Cloud Service](https://docs.oracle.com/en/cloud/paas/identity-cloud/index.html) (IDCS) z usługą [Azure Active Directory](../../../active-directory/index.yml) (Azure AD) została wykonana znaczna pracy. Azure AD to usługa zarządzania tożsamościami i dostępem opartymi na chmurze firmy Microsoft. Ułatwia użytkownikom logowanie się i dostęp do różnych zasobów. Usługa Azure AD umożliwia również zarządzanie użytkownikami i ich uprawnieniami.
+Tożsamość jest jednym z głównych filarów partnerstwa między Microsoft i Oracle. Wykonano znaczną pracę w celu zintegrowania [usługi Oracle Identity Cloud Service](https://docs.oracle.com/en/cloud/paas/identity-cloud/index.html) (IDCS) z [usługą Azure Active Directory](../../../active-directory/index.yml) (Azure AD). Usługa Azure AD to chmurowa usługa zarządzania tożsamościami i dostępem firmy Microsoft w chmurze. Pomaga użytkownikom zalogować się i uzyskać dostęp do różnych zasobów. Usługa Azure AD umożliwia również zarządzanie użytkownikami i ich uprawnieniami.
 
-Obecnie ta Integracja umożliwia zarządzanie w jednej centralnej lokalizacji, która jest Azure Active Directory. Usługa Azure AD synchronizuje wszelkie zmiany w katalogu z odpowiednim katalogiem Oracle i służy do logowania jednokrotnego do wielochmurowych rozwiązań firmy Oracle.
+Obecnie ta integracja umożliwia zarządzanie w jednej centralnej lokalizacji, która jest usługa Azure Active Directory. Usługa Azure AD synchronizuje wszelkie zmiany w katalogu z odpowiednim katalogiem Oracle i jest używana do logowania jednokrotnego do rozwiązań Oracle w różnych chmurach.
 
 ## <a name="next-steps"></a>Następne kroki
 
-Rozpocznij pracę z [międzychmurową siecią](configure-azure-oci-networking.md) między platformą Azure a OCI. 
+Wprowadzenie do [sieci między chmurami](configure-azure-oci-networking.md) między platformą Azure a OCI. 
 
-Aby uzyskać więcej informacji i oficjalny dokument dotyczący OCI, zobacz dokumentację w [chmurze firmy Oracle](https://docs.cloud.oracle.com/iaas/Content/home.htm) .
+Aby uzyskać więcej informacji i oficjalnych dokumentów na temat OCI, zobacz dokumentację [Oracle Cloud.](https://docs.cloud.oracle.com/iaas/Content/home.htm)

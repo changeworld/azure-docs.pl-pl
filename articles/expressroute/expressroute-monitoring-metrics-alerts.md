@@ -1,6 +1,6 @@
 ---
-title: 'Azure ExpressRoute: monitorowanie, metryki i alerty'
-description: Ta strona zawiera informacje dotyczące monitorowania usługi ExpressRoute
+title: 'Usługa Azure ExpressRoute: monitorowanie, metryki i alerty'
+description: Ta strona zawiera informacje o monitorowaniu usługi ExpressRoute
 services: expressroute
 author: mialdrid
 ms.service: expressroute
@@ -8,131 +8,131 @@ ms.topic: conceptual
 ms.date: 08/22/2019
 ms.author: cherylmc
 ms.openlocfilehash: 268a7e7c94285d3c4fdcb0c5fb91b685c09b58c8
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75436912"
 ---
 # <a name="expressroute-monitoring-metrics-and-alerts"></a>Monitorowanie, metryki i alerty usługi ExpressRoute
 
-Ten artykuł zawiera omówienie usługi ExpressRoute, monitorowanie, alerty i metryki za pomocą usługi Azure Monitor. Usługa Azure Monitor jest jedno centralne miejsce dla wszystkich metryk, alerty i dzienniki diagnostyczne na platformie Azure.
+Ten artykuł ułatwia zrozumienie monitorowania usługi ExpressRoute, metryk i alertów przy użyciu usługi Azure Monitor. Usługa Azure Monitor to jeden sklep kompleksowej obsługi dla wszystkich metryk, alertów, dzienników diagnostycznych na całej platformie Azure.
  
 >[!NOTE]
->Za pomocą **klasycznego metryki** nie jest zalecane.
+>Nie zaleca się **używania metryk klasycznych.**
 >
 
-## <a name="expressroute-metrics"></a>Metryki ExpressRoute
+## <a name="expressroute-metrics"></a>Metryki usługi ExpressRoute
 
-Aby wyświetlić **metryki**, przejdź do strony *Azure monitor* i kliknij pozycję *metryki*. Aby wyświetlić metryki **ExpressRoute** , odfiltruj według typu zasobu *ExpressRoute obwody*. Aby wyświetlić metryki **Global REACH** , odfiltrować według typów zasobów *ExpressRoute obwody* i wybrać zasób obwodu usługi ExpressRoute, który ma Global REACH włączony. Aby wyświetlić metryki **ExpressRoute Direct** , należy filtrować typ zasobu według *portów ExpressRoute*. 
+Aby wyświetlić **metryki,** przejdź do strony *Monitor platformy Azure* i kliknij pozycję *Metryki*. Aby wyświetlić metryki **usługi ExpressRoute,** filtruj według *obwodów usługi ExpressRoute*typu zasobu . Aby wyświetlić metryki **globalnego zasięgu,** filtruj według *obwodów usługi ExpressRoute* typu zasobu i wybierz zasób obwodu usługi ExpressRoute z włączonym zasięgiem globalnym. Aby wyświetlić metryki **Direct usługi ExpressRoute,** przefiltruj typ zasobu według *portów usługi ExpressRoute*. 
 
-Po wybraniu metryki zostanie zastosowana domyślna agregacja. Opcjonalnie można zastosować podział, który będzie zawierać metrykę z różnymi wymiarami.
+Po wybraniu metryki zostanie zastosowana domyślna agregacja. Opcjonalnie można zastosować dzielenie, które pokaże metrykę o różnych wymiarach.
 
 ### <a name="available-metrics"></a>Dostępne metryki
-|**Metryka**|**Kategoria**|**Wymiary**|**Funkcje:**|
+|**Metryka**|**Kategoria**|**Wymiary(-a)**|**Funkcje(-a)**|
 | --- | --- | --- | --- |
-|Dostępność protokołu ARP|Dostępność|<ui><li>Węzeł równorzędny (podstawowy/pomocniczy router ExpressRoute)</ui></li><ui><li> Typ komunikacji równorzędnej (prywatny/publiczny/Microsoft)</ui></li>|ExpressRoute|
-|Dostępność protokołu BGP|Dostępność|<ui><li> Węzeł równorzędny (podstawowy/pomocniczy router ExpressRoute)</ui></li><ui><li> Typ komunikacji równorzędnej</ui></li>|ExpressRoute|
-|BitsInPerSecond|Ruch|<ui><li> Typ komunikacji równorzędnej (ExpressRoute)</ui></li><ui><li>Link (ExpressRoute Direct)</ui></li>| <li> ExpressRoute</li><li>ExpressRoute Direct|
-|BitsOutPerSecond|Ruch| <ui><li>Typ komunikacji równorzędnej (ExpressRoute)</ui></li><ui><li> Link (ExpressRoute Direct) | <ui><li>ExpressRoute<ui><li>ExpressRoute bezpośrednie</ui></li> |
-|GlobalReachBitsInPerSecond|Ruch|<ui><li>Skey obwodu równorzędnego (klucz usługi)</ui></li>|Globalny zasięg|
-|GlobalReachBitsOutPerSecond|Ruch|<ui><li>Skey obwodu równorzędnego (klucz usługi)</ui></li>|Globalny zasięg|
-|AdminState|Łączność fizyczna|Link|ExpressRoute Direct|
-|LineProtocol|Łączność fizyczna|Link|ExpressRoute Direct|
-|RxLightLevel|Łączność fizyczna|<ui><li></ui> łącza</li><ui><li></ui> Lane</li>|ExpressRoute Direct|
-|TxLightLevel|Łączność fizyczna|<ui><li></ui> łącza</li><ui><li></ui> Lane</li>|ExpressRoute Direct|
+|Dostępność ARP|Dostępność|<ui><li>Peer (podstawowy/pomocniczy router usługi ExpressRoute)</ui></li><ui><li> Typ komunikacji równorzędnej (prywatny/publiczny/Microsoft)</ui></li>|ExpressRoute|
+|Dostępność BGP|Dostępność|<ui><li> Peer (podstawowy/pomocniczy router usługi ExpressRoute)</ui></li><ui><li> Typ komunikacji równorzędnej</ui></li>|ExpressRoute|
+|BitsInPerSekund|Ruch|<ui><li> Typ komunikacji równorzędnej (usługa ExpressRoute)</ui></li><ui><li>Łącze (ExpressRoute Direct)</ui></li>| <li> ExpressRoute</li><li>Usługa ExpressRoute Direct|
+|BitsOutPerSekunda|Ruch| <ui><li>Typ komunikacji równorzędnej (usługa ExpressRoute)</ui></li><ui><li> Łącze (ExpressRoute Direct) | <ui><li>Expressroute<ui><li>Usługa ExpressRoute Direct</ui></li> |
+|GlobalReachBitsInPerSecond|Ruch|<ui><li>Klucz Skey obwodu równorzędnego (klucz usługi)</ui></li>|Globalny zasięg|
+|GlobalReachBitsOutPerSekunda|Ruch|<ui><li>Klucz Skey obwodu równorzędnego (klucz usługi)</ui></li>|Globalny zasięg|
+|Stan administracyjny|Łączność fizyczna|Link|Usługa ExpressRoute Direct|
+|LiniaProtocol|Łączność fizyczna|Link|Usługa ExpressRoute Direct|
+|RxLightPoziom|Łączność fizyczna|<ui><li>Link</ui></li><ui><li>Lane</ui></li>|Usługa ExpressRoute Direct|
+|Poziom TxLight|Łączność fizyczna|<ui><li>Link</ui></li><ui><li>Lane</ui></li>|Usługa ExpressRoute Direct|
 >[!NOTE]
->Użycie *GlobalGlobalReachBitsInPerSecond* i *GlobalGlobalReachBitsOutPerSecond* będzie widoczne tylko wtedy, gdy zostanie nawiązane co najmniej jedno połączenie Global REACH.
+>Za pomocą *GlobalGlobalReachBitsInPerSecond* i *GlobalGlobalReachBitsOutPerSecond* będzie widoczny tylko wtedy, gdy zostanie nawiązane co najmniej jedno połączenie globalnego zasięgu.
 >
 
 ## <a name="circuits-metrics"></a>Metryki obwodów
 
-### <a name="bits-in-and-out---metrics-across-all-peerings"></a>Bity w i out-Metrics dla wszystkich komunikacji równorzędnych
+### <a name="bits-in-and-out---metrics-across-all-peerings"></a>Bity w i na zewnątrz - metryki we wszystkich komunikacji równorzędnej
 
-Możesz wyświetlić metryki dla wszystkich komunikacji równorzędnych w danym obwodzie ExpressRoute.
+Metryki można wyświetlać we wszystkich komunikacji równorzędnej w danym obwodzie usługi ExpressRoute.
 
-![Metryki obwodu](./media/expressroute-monitoring-metrics-alerts/ermetricspeering.jpg)
+![metryki obwodu](./media/expressroute-monitoring-metrics-alerts/ermetricspeering.jpg)
 
-### <a name="bits-in-and-out---metrics-per-peering"></a>Bity w i out — metryki na komunikację równorzędną
+### <a name="bits-in-and-out---metrics-per-peering"></a>Bity w i na zewnątrz - metryki na komunikację równorzędną
 
-Możesz wyświetlić metryki dla usługi prywatnej, publicznej i firmy Microsoft komunikacji równorzędnej w bitach na sekundę.
+Można wyświetlać metryki dla prywatnych, publicznych i komunikacji równorzędnej firmy Microsoft w bitach/sekundę.
 
-![Metryki dla komunikacji równorzędnej](./media/expressroute-monitoring-metrics-alerts/erpeeringmetrics.jpg) 
+![metryki na komunikację równorzędnej](./media/expressroute-monitoring-metrics-alerts/erpeeringmetrics.jpg) 
 
-### <a name="bgp-availability---split-by-peer"></a>Dostępność protokołu BGP — dzielenie przez element równorzędny  
+### <a name="bgp-availability---split-by-peer"></a>Dostępność BGP — podział według elementu równorzędnego  
 
-Możesz przeglądać w czasie rzeczywistym dostępność protokołu BGP w przypadku komunikacji równorzędnej i elementów równorzędnych (podstawowych i pomocniczych routerów ExpressRoute). Ten pulpit nawigacyjny pokazuje podstawową sesję protokołu BGP dla prywatnej komunikacji równorzędnej, a druga sesja BGP dla prywatnej komunikacji równorzędnej. 
+Dostępność protokołu BGP w czasie zbliżonym do rzeczywistego można wyświetlać w komunikacji równorzędnej i równorzędnej (routery podstawowe i pomocnicze usługi ExpressRoute). Ten pulpit nawigacyjny pokazuje podstawową sesję BGP do prywatnej komunikacji równorzędnej i drugą sesję BGP w dół dla prywatnej komunikacji równorzędnej. 
 
 ![Dostępność protokołu BGP na element równorzędny](./media/expressroute-monitoring-metrics-alerts/erBgpAvailabilityMetrics.jpg) 
 
-### <a name="arp-availability---split-by-peering"></a>Dostępność protokołu ARP — dzielenie według komunikacji równorzędnej  
+### <a name="arp-availability---split-by-peering"></a>Dostępność ARP — dzielenie według komunikacji równorzędnej  
 
-Możesz przeglądać w czasie rzeczywistym dostępność [protokołu ARP](https://docs.microsoft.com/azure/expressroute/expressroute-troubleshooting-arp-resource-manager) między komunikacjami równorzędnymi i równorzędnymi (podstawowymi i pomocniczymi routerami ExpressRoute). Ten pulpit nawigacyjny pokazuje prywatną komunikację równorzędną ARP w ramach obu elementów równorzędnych, ale kończy się w przypadku komunikacji równorzędnej firmy Microsoft między różnymi elementami równorzędnymi. Agregacja domyślna (średnia) została wykorzystana w obu elementach równorzędnych.  
+Dostępność [usługi ARP w](https://docs.microsoft.com/azure/expressroute/expressroute-troubleshooting-arp-resource-manager) czasie rzeczywistym można wyświetlać w trybie zbliżonym do dostępności WER w trybie komunikacji równorzędnej i równorzędnej (routery podstawowe i pomocnicze usługi ExpressRoute). Ten pulpit nawigacyjny pokazuje private peering sesji ARP w górę w obu elementów równorzędnych, ale zakończyć w dół dla komunikacji równorzędnej firmy Microsoft między komunikacją równorzędną. Domyślna agregacja (średnia) została wykorzystana w obu elementach równorzędnych.  
 
-![Dostępność protokołu ARP na element równorzędny](./media/expressroute-monitoring-metrics-alerts/erArpAvailabilityMetrics.jpg) 
+![Dostępność ARP na element równorzędny](./media/expressroute-monitoring-metrics-alerts/erArpAvailabilityMetrics.jpg) 
 
-## <a name="expressroute-direct-metrics"></a>Metryki bezpośrednie ExpressRoute
+## <a name="expressroute-direct-metrics"></a>Bezpośrednie dane usługi ExpressRoute
 
-### <a name="admin-state---split-by-link"></a>Stan administratora — dzielenie przez łącze
-Można wyświetlić stan administratora dla każdego linku pary portów ExpressRoute Direct.
+### <a name="admin-state---split-by-link"></a>Stan administratora — podziel według linku
+Stan administratora dla każdego łącza pary portów Direct usługi ExpressRoute.
 
-![stan administratora w usłudze er Direct](./media/expressroute-monitoring-metrics-alerts/adminstate-per-link.jpg)
+![er bezpośredni stan administratora](./media/expressroute-monitoring-metrics-alerts/adminstate-per-link.jpg)
 
-### <a name="bits-in-per-second---split-by-link"></a>Bity w przedziale na sekundę przez łącze
-Bity można wyświetlić w ciągu sekundy dla obu linków pary portów bezpośredniego ExpressRoute. 
+### <a name="bits-in-per-second---split-by-link"></a>Bity w sekundzie — dzielenie według łącza
+Bity w sekundzie można wyświetlać w obu łączach pary portów Direct usługi ExpressRoute. 
 
-![Liczba bitów bezpośrednich usługi er w ciągu sekundy](./media/expressroute-monitoring-metrics-alerts/bits-in-per-second-per-link.jpg)
+![er bezpośrednie bity w na sekundę](./media/expressroute-monitoring-metrics-alerts/bits-in-per-second-per-link.jpg)
 
-### <a name="bits-out-per-second---split-by-link"></a>Bity wychodzące z dzielenia na sekundę przez łącze
-Istnieje również możliwość wyświetlenia bitów na sekundę dla obu linków pary portów bezpośredniego ExpressRoute. 
+### <a name="bits-out-per-second---split-by-link"></a>Bity na sekundę - Podziel według łącza
+Bity na sekundę można również wyświetlać w obu łączach pary portów Direct usługi ExpressRoute Direct. 
 
-![Liczba bitów na sekundę w s](./media/expressroute-monitoring-metrics-alerts/bits-out-per-second-per-link.jpg)
+![er bezpośrednie bity na sekundę](./media/expressroute-monitoring-metrics-alerts/bits-out-per-second-per-link.jpg)
 
-### <a name="line-protocol---split-by-link"></a>Protokół wiersza — dzielenie przez łącze
-Możesz wyświetlić protokół wiersza dla każdego łącza pary portów ExpressRoute Direct.
+### <a name="line-protocol---split-by-link"></a>Protokół liniowy — dzielenie według łącza
+Protokół wiersza można wyświetlić na każdym łączu pary portów Direct usługi ExpressRoute.
 
-![Protokół er Direct line](./media/expressroute-monitoring-metrics-alerts/line-protocol-per-link.jpg)
+![protokół linii bezpośredniej](./media/expressroute-monitoring-metrics-alerts/line-protocol-per-link.jpg)
 
-### <a name="rx-light-level---split-by-link"></a>Poziom oświetlenia odbierania — dzielenie przez łącze
-Możesz wyświetlić poziom światła RX (poziom jasny, który **odbiera**port bezpośredni ExpressRoute) dla każdego portu. Poziomy światła RX w dobrej kondycji zwykle mieszczą się w zakresie od-10 do 0 dBm
+### <a name="rx-light-level---split-by-link"></a>Rx Light Level - Podziel przez link
+Dla każdego portu można wyświetlić poziom światła Rx (poziom światła **odbierany**przez port Direct usługi ExpressRoute). Zdrowy poziom światła Rx zazwyczaj mieści się w zakresie od -10 do 0 dBm
 
-![Poziom oświetlenia bezpośredniego odbierania wierszy w wierszu](./media/expressroute-monitoring-metrics-alerts/rxlight-level-per-link.jpg)
+![er linia bezpośrednia Rx Poziom światła](./media/expressroute-monitoring-metrics-alerts/rxlight-level-per-link.jpg)
 
-### <a name="tx-light-level---split-by-link"></a>Poziom oświetlenia wysyłania — dzielenie przez łącze
-Możesz wyświetlić poziom światła TX (poziom jasny, który jest **przesyłany**przez port bezpośredni ExpressRoute) dla każdego portu. Poziom oświetlenia w dobrej kondycji zwykle mieści się w zakresie od-10 do 0 dBm
+### <a name="tx-light-level---split-by-link"></a>Poziom światła Tx - Podziel przez link
+Dla każdego portu można wyświetlić poziom oświetlenia Tx (poziom światła **przesyłany przez**port Direct usługi ExpressRoute) dla każdego portu. Zdrowy poziom światła Tx zazwyczaj mieści się w zakresie od -10 do 0 dBm
 
-![Poziom oświetlenia bezpośredniego odbierania wierszy w wierszu](./media/expressroute-monitoring-metrics-alerts/txlight-level-per-link.jpg)
+![er linia bezpośrednia Rx Poziom światła](./media/expressroute-monitoring-metrics-alerts/txlight-level-per-link.jpg)
 
-## <a name="expressroute-gateway-connections-in-bitsseconds"></a>Połączenia bramy usługi ExpressRoute w bity/s
+## <a name="expressroute-gateway-connections-in-bitsseconds"></a>Połączenia bramy usługi ExpressRoute w bitach/sekundach
 
 ![połączenia bramy](./media/expressroute-monitoring-metrics-alerts/erconnections.jpg )
 
-## <a name="alerts-for-expressroute-gateway-connections"></a>Alerty dla połączeń bramy usługi ExpressRoute
+## <a name="alerts-for-expressroute-gateway-connections"></a>Alerty dotyczące połączeń bramy usługi ExpressRoute
 
-1. Aby skonfigurować alerty, przejdź do **usługi Azure Monitor**, następnie kliknij przycisk **alerty**.
+1. Aby skonfigurować alerty, przejdź do **usługi Azure Monitor**, a następnie kliknij pozycję **Alerty**.
 
    ![alerts](./media/expressroute-monitoring-metrics-alerts/eralertshowto.jpg)
 
-2. Kliknij przycisk **+ wybierz element docelowy** i wybierz zasób połączenia bramy usługi ExpressRoute.
+2. Kliknij **pozycję +Wybierz miejsce docelowe** i wybierz zasób połączenia bramy usługi ExpressRoute.
 
-   ![target]( ./media/expressroute-monitoring-metrics-alerts/alerthowto2.jpg)
+   ![Docelowego]( ./media/expressroute-monitoring-metrics-alerts/alerthowto2.jpg)
 3. Zdefiniuj szczegóły alertu.
 
-   ![grupy akcji](./media/expressroute-monitoring-metrics-alerts/alerthowto3.jpg)
+   ![grupa akcji](./media/expressroute-monitoring-metrics-alerts/alerthowto3.jpg)
 
-4. Definiowanie i Dodaj grupę akcji.
+4. Zdefiniuj i dodaj grupę akcji.
 
-   ![Dodaj grupę akcji](./media/expressroute-monitoring-metrics-alerts/actiongroup.png)
+   ![dodawanie grupy akcji](./media/expressroute-monitoring-metrics-alerts/actiongroup.png)
 
-## <a name="alerts-based-on-each-peering"></a>Alerty oparte na każdego wystąpienia komunikacji równorzędnej
+## <a name="alerts-based-on-each-peering"></a>Alerty oparte na poszczególnych elementach komunikacji równorzędnej
 
- ![Co to](./media/expressroute-monitoring-metrics-alerts/basedpeering.jpg)
+ ![Co](./media/expressroute-monitoring-metrics-alerts/basedpeering.jpg)
 
-## <a name="configure-alerts-for-activity-logs-on-circuits"></a>Konfigurowanie alertów dotyczących dzienników aktywności dla obwodów
+## <a name="configure-alerts-for-activity-logs-on-circuits"></a>Konfigurowanie alertów dla dzienników aktywności w obwodach
 
-W **kryteriów alertu**, możesz wybrać **dziennika aktywności** typu sygnału i wybierz sygnał.
+W **kryteriach alertu**można wybrać **dziennik aktywności** dla typu sygnału i wybrać sygnał.
 
-  ![inny](./media/expressroute-monitoring-metrics-alerts/alertshowto6activitylog.jpg)
+  ![Innego](./media/expressroute-monitoring-metrics-alerts/alertshowto6activitylog.jpg)
   
 ## <a name="next-steps"></a>Następne kroki
 

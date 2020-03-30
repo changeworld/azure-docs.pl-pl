@@ -1,6 +1,6 @@
 ---
-title: Kompleksowe pozyskiwanie obiektów BLOB na platformie Azure Eksplorator danych za pomocą języka Python
-description: W tym artykule dowiesz się, jak pozyskiwanie obiektów BLOB w usłudze Azure Eksplorator danych przy użyciu kompleksowego przykładu korzystającego z języka Python.
+title: Kompleksowe pozyskiwania obiektów blob do usługi Azure Data Explorer za pośrednictwem języka Python
+description: W tym artykule dowiesz się, jak pozyskiwania obiektów blob do usługi Azure Data Explorer za pomocą przykładu end-to-end, który używa języka Python.
 author: lucygoldbergmicrosoft
 ms.author: lugoldbe
 ms.reviewer: orspodek
@@ -8,30 +8,30 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.openlocfilehash: 61864c51c2ab99e5266e39f2c9a7344aaf7413c1
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/02/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76964308"
 ---
-# <a name="end-to-end-blob-ingestion-into-azure-data-explorer-through-python"></a>Kompleksowe pozyskiwanie obiektów BLOB na platformie Azure Eksplorator danych za pomocą języka Python
+# <a name="end-to-end-blob-ingestion-into-azure-data-explorer-through-python"></a>Kompleksowe pozyskiwania obiektów blob do usługi Azure Data Explorer za pośrednictwem języka Python
 
 > [!div class="op_single_selector"]
-> * [C#](end-to-end-csharp.md)
+> * [C #](end-to-end-csharp.md)
 > * [Python](end-to-end-python.md)
 >
 
-Azure Eksplorator danych to szybka i skalowalna usługa eksploracji danych dla danych dzienników i telemetrii. Ten artykuł zawiera kompleksowy przykład sposobu pozyskiwania danych z usługi Azure Blob Storage do usługi Azure Eksplorator danych. 
+Usługa Azure Data Explorer to szybka i skalowalna usługa eksploracji danych dla danych dziennika i telemetrii. W tym artykule przedstawiono kompleksowy przykład pozyskiwania danych z magazynu obiektów Blob platformy Azure do Eksploratora danych platformy Azure. 
 
-Dowiesz się, jak programowo utworzyć grupę zasobów, konto magazynu i kontener, centrum zdarzeń oraz klaster Eksplorator danych platformy Azure i bazę danych. Dowiesz się również, jak programowo skonfigurować usługę Azure Eksplorator danych w celu pozyskiwania danych z nowego konta magazynu.
+Dowiesz się, jak programowo utworzyć grupę zasobów, konto magazynu i kontener, centrum zdarzeń oraz klaster i bazę danych usługi Azure Data Explorer. Dowiesz się również, jak programowo skonfigurować Eksploratora danych platformy Azure do pozyskiwania danych z nowego konta magazynu.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto platformy Azure](https://azure.microsoft.com/free/).
+Jeśli nie masz subskrypcji platformy Azure, utwórz [bezpłatne konto platformy Azure](https://azure.microsoft.com/free/) przed rozpoczęciem.
 
 ## <a name="install-the-python-package"></a>Instalacja pakietu języka Python
 
-Aby zainstalować pakiet języka Python dla usługi Azure Eksplorator danych (Kusto), Otwórz wiersz polecenia, który ma w swojej ścieżce Język Python. Uruchom następujące polecenia:
+Aby zainstalować pakiet Python dla usługi Azure Data Explorer (Kusto), otwórz wiersz polecenia, który ma Pythona w swojej ścieżce. Uruchom te polecenia:
 
 ```
 pip install azure-common
@@ -47,9 +47,9 @@ pip install azure-storage-blob
 
 ## <a name="code-example"></a>Przykładowy kod 
 
-Poniższy przykład kodu udostępnia proces krok po kroku, który powoduje pozyskiwanie danych na platformie Azure Eksplorator danych. 
+Poniższy przykład kodu zawiera proces krok po kroku, który powoduje pozyskiwania danych do Usługi Azure Data Explorer. 
 
-Najpierw należy utworzyć grupę zasobów. Możesz również tworzyć zasoby platformy Azure, takie jak konto magazynu i kontener, centrum zdarzeń oraz klaster Eksplorator danych i baza danych platformy Azure, a także dodawać podmioty zabezpieczeń. Następnie utworzysz subskrypcję Azure Event Grid wraz z mapowaniem tabeli i kolumn w bazie danych Azure Eksplorator danych. Na koniec Utwórz połączenie danych w celu skonfigurowania usługi Azure Eksplorator danych w celu pozyskiwania danych z nowego konta magazynu.
+Najpierw należy utworzyć grupę zasobów. Można również utworzyć zasoby platformy Azure, takie jak konto magazynu i kontener, centrum zdarzeń i klastra i bazy danych usługi Azure Data Explorer i dodać podmioty. Następnie należy utworzyć subskrypcję usługi Azure Event Grid wraz z mapowaniem tabel i kolumn w bazie danych Usługi Azure Data Explorer. Na koniec utworzysz połączenie danych, aby skonfigurować Eksploratora danych platformy Azure do pozyskiwania danych z nowego konta magazynu.
 
 ```python
 from azure.common.credentials import ServicePrincipalCredentials
@@ -192,14 +192,14 @@ poller.wait()
 ```
 |**Ustawienie** | **Opis pola**|
 |---|---|---|
-| tenant_id | Identyfikator dzierżawy. Jest on również znany jako identyfikator katalogu.|
+| tenant_id | Identyfikator dzierżawy. Jest również znany jako identyfikator katalogu.|
 | subscription_id | Identyfikator subskrypcji używany do tworzenia zasobów.|
-| client_id | Identyfikator klienta aplikacji, który może uzyskiwać dostęp do zasobów w dzierżawie.|
-| client_secret | Wpis tajny klienta aplikacji, który może uzyskiwać dostęp do zasobów w dzierżawie. |
+| client_id | Identyfikator klienta aplikacji, która może uzyskać dostęp do zasobów w dzierżawie.|
+| client_secret | Klucz tajny klienta aplikacji, która może uzyskać dostęp do zasobów w dzierżawie. |
 
-## <a name="test-the-code-example"></a>Testowanie przykładu kodu
+## <a name="test-the-code-example"></a>Przetestuj przykład kodu
 
-1. Przekaż plik do konta magazynu.
+1. Przekaż plik na konto magazynu.
 
     ```python
     account_key = "xxxxxxxxxxxxxx"
@@ -211,9 +211,9 @@ poller.wait()
     ```
     |**Ustawienie** | **Opis pola**|
     |---|---|---|
-    | account_key | Klucz dostępu programistycznie utworzonego konta magazynu.|
+    | account_key | Klucz dostępu programowo utworzonego konta magazynu.|
 
-2. Uruchom kwerendę testową w usłudze Azure Eksplorator danych.
+2. Uruchom kwerendę testową w Eksploratorze danych platformy Azure.
 
     ```python
     kusto_uri = "https://{}.{}.kusto.windows.net".format(kusto_cluster_name, location_small_case)
@@ -226,7 +226,7 @@ poller.wait()
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Aby usunąć grupę zasobów i wyczyścić zasoby, użyj następującego polecenia:
+Aby usunąć grupę zasobów i oczyścić zasoby, użyj następującego polecenia:
 
 ```python
 #Returns an instance of LROPoller; see https://docs.microsoft.com/python/api/msrest/msrest.polling.lropoller?view=azure-python
@@ -236,7 +236,7 @@ poller.wait()
 
 ## <a name="next-steps"></a>Następne kroki
 
-*  Aby dowiedzieć się więcej o innych sposobach tworzenia klastra i bazy danych, zobacz [Tworzenie klastra Eksplorator danych i bazy danych platformy Azure](create-cluster-database-python.md).
-* Aby dowiedzieć się więcej o metodach pozyskiwania, zobacz [Azure Eksplorator danych Data](ingest-data-overview.md)pozyskiwania danych.
-* Aby dowiedzieć się więcej o aplikacji sieci Web, zobacz [Szybki Start: wykonywanie zapytań dotyczących danych w interfejsie użytkownika sieci Web usługi Azure Eksplorator danych](web-query-data.md).
-* [Zapisuj zapytania](write-queries.md) w języku zapytań Kusto.
+*  Aby dowiedzieć się więcej o innych sposobach tworzenia klastra i bazy danych, zobacz [Tworzenie klastra i bazy danych Usługi Azure Data Explorer](create-cluster-database-python.md).
+* Aby dowiedzieć się więcej o metodach pozyskiwania, zobacz [Pozyskiwania danych w Eksploratorze danych platformy Azure](ingest-data-overview.md).
+* Aby dowiedzieć się więcej o aplikacji sieci Web, zobacz [Szybki start: Zapytanie o dane w internetowym UI eksploratora danych platformy Azure](web-query-data.md).
+* [Pisanie zapytań](write-queries.md) za pomocą języka zapytania Kusto.

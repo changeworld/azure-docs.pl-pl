@@ -1,19 +1,19 @@
 ---
-title: Interfejs wiersza polecenia platformy Azure Service Fabric — Brama siatki sfctl
-description: Dowiedz się więcej na temat sfctl, interfejsu wiersza polecenia platformy Azure Service Fabric. Zawiera listę poleceń pobierania i usuwania zasobów bramy Service Fabric siatki.
+title: Brama siatki sieci szkieletowej usługi Azure Azure
+description: Dowiedz się więcej o sfctl, interfejsie wiersza polecenia sieci szkieletowej usługi Azure. Zawiera listę poleceń służących do uzyskiwania i usuwania zasobów bramy sieci szkieletowej usług.
 author: jeffj6123
 ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
 ms.openlocfilehash: 3e398ff8a1a0a28fd9d0650a7c9d18ba04817d33
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76906022"
 ---
 # <a name="sfctl-mesh-gateway"></a>sfctl mesh gateway
-Pobierz i Usuń zasoby bramy siatki.
+Pobierz i usuń zasoby bramy siatki.
 
 ## <a name="commands"></a>Polecenia
 
@@ -21,9 +21,9 @@ Pobierz i Usuń zasoby bramy siatki.
 | --- | --- |
 | delete | Usuwa zasób bramy. |
 | list | Wyświetla listę wszystkich zasobów bramy. |
-| pokaż | Pobiera zasób bramy o podaną nazwę. |
+| pokaż | Pobiera zasób bramy o podanej nazwie. |
 
-## <a name="sfctl-mesh-gateway-delete"></a>Usuwanie bramy sieci sfctl
+## <a name="sfctl-mesh-gateway-delete"></a>Usuwanie bramy siatki sfctl
 Usuwa zasób bramy.
 
 Usuwa zasób bramy identyfikowany przez nazwę.
@@ -32,19 +32,19 @@ Usuwa zasób bramy identyfikowany przez nazwę.
 
 |Argument|Opis|
 | --- | --- |
-| --Name-n [wymagane] | Nazwa zasobu bramy. |
+| --name -n [Wymagane] | Nazwa zasobu bramy. |
 
 ### <a name="global-arguments"></a>Argumenty globalne
 
 |Argument|Opis|
 | --- | --- |
-| --debug | Zwiększ Szczegółowość rejestrowania, aby pokazać wszystkie dzienniki debugowania. |
-| --help -h | Pokaż ten komunikat pomocy i Zakończ. |
-| --Wyjście-o | Format danych wyjściowych.  Dozwolone wartości\: JSON, jsonc, Table, TSV.  Domyślny\: JSON. |
-| --zapytanie | Ciąg zapytania JMESPath. Aby uzyskać więcej informacji i przykładów, zobacz http\://jmespath.org/. |
-| --verbose | Zwiększ Szczegółowość rejestrowania. Użyj--Debug dla pełnych dzienników debugowania. |
+| --debug | Zwiększ szczegółowość rejestrowania, aby wyświetlić wszystkie dzienniki debugowania. |
+| --help -h | Pokaż ten komunikat pomocy i zamknij. |
+| --wyjście -o | Format wyjściowy.  Dozwolone wartości\: json, jsonc, table, tsv.  Domyślny\: json. |
+| --zapytanie | Ciąg zapytania JMESPath. Zobacz\:http //jmespath.org/ aby uzyskać więcej informacji i przykładów. |
+| --pełne | Zwiększ szczegółowość rejestrowania. Użyj --debug dla pełnych dzienników debugowania. |
 
-## <a name="sfctl-mesh-gateway-list"></a>Lista bram siatki sfctl
+## <a name="sfctl-mesh-gateway-list"></a>lista bram siatki sfctl
 Wyświetla listę wszystkich zasobów bramy.
 
 Pobiera informacje o wszystkich zasobach bramy w danej grupie zasobów. Informacje obejmują opis i inne właściwości bramy.
@@ -53,14 +53,14 @@ Pobiera informacje o wszystkich zasobach bramy w danej grupie zasobów. Informac
 
 |Argument|Opis|
 | --- | --- |
-| --debug | Zwiększ Szczegółowość rejestrowania, aby pokazać wszystkie dzienniki debugowania. |
-| --help -h | Pokaż ten komunikat pomocy i Zakończ. |
-| --Wyjście-o | Format danych wyjściowych.  Dozwolone wartości\: JSON, jsonc, Table, TSV.  Domyślny\: JSON. |
-| --zapytanie | Ciąg zapytania JMESPath. Aby uzyskać więcej informacji i przykładów, zobacz http\://jmespath.org/. |
-| --verbose | Zwiększ Szczegółowość rejestrowania. Użyj--Debug dla pełnych dzienników debugowania. |
+| --debug | Zwiększ szczegółowość rejestrowania, aby wyświetlić wszystkie dzienniki debugowania. |
+| --help -h | Pokaż ten komunikat pomocy i zamknij. |
+| --wyjście -o | Format wyjściowy.  Dozwolone wartości\: json, jsonc, table, tsv.  Domyślny\: json. |
+| --zapytanie | Ciąg zapytania JMESPath. Zobacz\:http //jmespath.org/ aby uzyskać więcej informacji i przykładów. |
+| --pełne | Zwiększ szczegółowość rejestrowania. Użyj --debug dla pełnych dzienników debugowania. |
 
-## <a name="sfctl-mesh-gateway-show"></a>Pokaż bramę siatki sfctl
-Pobiera zasób bramy o podaną nazwę.
+## <a name="sfctl-mesh-gateway-show"></a>sfctl siatki bramy pokaż
+Pobiera zasób bramy o podanej nazwie.
 
 Pobiera informacje o zasobie bramy o podanej nazwie. Informacje obejmują opis i inne właściwości bramy.
 
@@ -68,19 +68,19 @@ Pobiera informacje o zasobie bramy o podanej nazwie. Informacje obejmują opis i
 
 |Argument|Opis|
 | --- | --- |
-| --Name-n [wymagane] | Nazwa zasobu bramy. |
+| --name -n [Wymagane] | Nazwa zasobu bramy. |
 
 ### <a name="global-arguments"></a>Argumenty globalne
 
 |Argument|Opis|
 | --- | --- |
-| --debug | Zwiększ Szczegółowość rejestrowania, aby pokazać wszystkie dzienniki debugowania. |
-| --help -h | Pokaż ten komunikat pomocy i Zakończ. |
-| --Wyjście-o | Format danych wyjściowych.  Dozwolone wartości\: JSON, jsonc, Table, TSV.  Domyślny\: JSON. |
-| --zapytanie | Ciąg zapytania JMESPath. Aby uzyskać więcej informacji i przykładów, zobacz http\://jmespath.org/. |
-| --verbose | Zwiększ Szczegółowość rejestrowania. Użyj--Debug dla pełnych dzienników debugowania. |
+| --debug | Zwiększ szczegółowość rejestrowania, aby wyświetlić wszystkie dzienniki debugowania. |
+| --help -h | Pokaż ten komunikat pomocy i zamknij. |
+| --wyjście -o | Format wyjściowy.  Dozwolone wartości\: json, jsonc, table, tsv.  Domyślny\: json. |
+| --zapytanie | Ciąg zapytania JMESPath. Zobacz\:http //jmespath.org/ aby uzyskać więcej informacji i przykładów. |
+| --pełne | Zwiększ szczegółowość rejestrowania. Użyj --debug dla pełnych dzienników debugowania. |
 
 
 ## <a name="next-steps"></a>Następne kroki
-- [Skonfiguruj](service-fabric-cli.md) interfejs wiersza polecenia Service Fabric.
-- Dowiedz się, jak używać interfejsu wiersza polecenia Service Fabric przy użyciu [przykładowych skryptów](/azure/service-fabric/scripts/sfctl-upgrade-application).
+- [Konfigurowanie](service-fabric-cli.md) interfejsu wiersza polecenia sieci szkieletowej usług.
+- Dowiedz się, jak używać interfejsu wiersza polecenia sieci szkieletowej usług przy użyciu [przykładowych skryptów.](/azure/service-fabric/scripts/sfctl-upgrade-application)

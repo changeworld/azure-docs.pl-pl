@@ -1,6 +1,6 @@
 ---
-title: Lokalizatory przesyłania strumieniowego w Azure Media Services | Microsoft Docs
-description: Ten artykuł zawiera wyjaśnienie, co to są lokalizatory przesyłania strumieniowego i jak są używane przez Azure Media Services.
+title: Lokalizatory przesyłania strumieniowego w usłudze Azure Media Services | Dokumenty firmy Microsoft
+description: W tym artykule wyjaśniono, czym są lokalizatory przesyłania strumieniowego i jak są one używane przez usługę Azure Media Services.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -12,37 +12,37 @@ ms.topic: article
 ms.date: 03/04/2020
 ms.author: juliako
 ms.openlocfilehash: 3a9568e1a0307cd1713c511ef42c065424306548
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78302886"
 ---
 # <a name="streaming-locators"></a>Lokalizatory przesyłania strumieniowego
 
-Aby udostępnić klientom filmy wideo w wyjściowym elemencie zawartości w celu odtwarzania, trzeba utworzyć [lokalizator przesyłania strumieniowego](https://docs.microsoft.com/rest/api/media/streaminglocators) i skompilować adresy URL przesyłania strumieniowego. Aby utworzyć adres URL, należy połączyć nazwę hosta punktu końcowego przesyłania strumieniowego i ścieżkę lokalizatora przesyłania strumieniowego. Aby uzyskać przykład platformy .NET, zobacz [Pobieranie lokalizatora przesyłania strumieniowego](stream-files-tutorial-with-api.md#get-a-streaming-locator).
+Aby udostępnić klientom filmy wideo w wyjściowym elemencie zawartości w celu odtwarzania, trzeba utworzyć [lokalizator przesyłania strumieniowego](https://docs.microsoft.com/rest/api/media/streaminglocators) i skompilować adresy URL przesyłania strumieniowego. Aby utworzyć adres URL, musisz połączyć nazwę hosta punktu końcowego przesyłania strumieniowego i ścieżkę lokalizatora przesyłania strumieniowego. Aby uzyskać przykład platformy .NET, zobacz [Pobieranie lokalizatora przesyłania strumieniowego](stream-files-tutorial-with-api.md#get-a-streaming-locator).
 
 Proces tworzenia **lokalizatora przesyłania strumieniowego** jest nazywany publikowaniem. Domyślnie **lokalizator przesyłania strumieniowego** jest ważny natychmiast po wykonaniu wywołań interfejsu API i aż do jego usunięcia, chyba że skonfigurujesz opcjonalne czasy rozpoczęcia i zakończenia. 
 
-Podczas tworzenia **lokalizatora przesyłania strumieniowego**należy określić nazwę **zasobu** i nazwę **zasad przesyłania strumieniowego** . Aby uzyskać więcej informacji, zobacz następujące tematy:
+Podczas tworzenia **lokalizatora przesyłania strumieniowego**należy określić nazwę **zasobu** i nazwę **zasad przesyłania strumieniowego.** Aby uzyskać więcej informacji, zobacz następujące tematy:
 
 * [Elementy zawartości](assets-concept.md)
 * [Zasady przesyłania strumieniowego](streaming-policy-concept.md)
-* [Zasady kluczy zawartości](content-key-policy-concept.md)
+* [Zasady klucza zawartości](content-key-policy-concept.md)
 
-Możesz również określić godzinę rozpoczęcia i zakończenia w usłudze przesyłania strumieniowego, która będzie umożliwiać użytkownikowi odtwarzanie zawartości między tymi godzinami (na przykład od 5/1/2019 do 5/5/2019).  
+Możesz również określić godzinę rozpoczęcia i zakończenia lokalizatora przesyłania strumieniowego, która pozwoli użytkownikowi odtwarzać zawartość tylko między tymi czasami (na przykład między 5/1/2019 a 5/5/2019).  
 
 ## <a name="considerations"></a>Zagadnienia do rozważenia
 
-* **Lokalizatory przesyłania strumieniowego** nie są aktualizowalne. 
-* Właściwości **lokalizatorów przesyłania strumieniowego** , które są typu DateTime, są zawsze w formacie UTC.
-* Należy zapoznać się z ograniczonym zestawem zasad dla konta usługi multimediów i użyć ich ponownie dla lokalizatorów przesyłania strumieniowego, gdy są potrzebne te same opcje. Aby uzyskać więcej informacji, zobacz [przydziały i ograniczenia](limits-quotas-constraints.md).
+* **Lokalizatory przesyłania strumieniowego** nie można aktualizować. 
+* Właściwości **lokalizatorów przesyłania strumieniowego,** które są typu Datetime są zawsze w formacie UTC.
+* Należy zaprojektować ograniczony zestaw zasad dla konta usługi Media Service i użyć ich ponownie dla lokalizatorów przesyłania strumieniowego, gdy są potrzebne te same opcje. Aby uzyskać więcej informacji, zobacz [Przydziały i ograniczenia](limits-quotas-constraints.md).
 
-## <a name="create-streaming-locators"></a>Utwórz lokalizatory przesyłania strumieniowego  
+## <a name="create-streaming-locators"></a>Tworzenie lokalizatorów przesyłania strumieniowego  
 
-### <a name="not-encrypted"></a>Nieszyfrowane
+### <a name="not-encrypted"></a>Nie zaszyfrowane
 
-Jeśli chcesz przesłać strumieniowo plik z niezaszyfrowanym (nieszyfrowanym), ustaw wstępnie zdefiniowane zasady wyznaczania strumienia: na "Predefined_ClearStreamingOnly" (w programie .NET można użyć wyliczenia PredefinedStreamingPolicy. ClearStreamingOnly).
+Jeśli chcesz przesyłać strumieniowo plik w postaci przezroczystej (niezaszyfrowanej), ustaw wstępnie zdefiniowaną, przejrzystą zasadę przesyłania strumieniowego: na "Predefined_ClearStreamingOnly" (w .NET możesz użyć wyliczenia PredefinedStreamingPolicy.ClearStreamingOnly).
 
 ```csharp
 StreamingLocator locator = await client.StreamingLocators.CreateAsync(
@@ -58,7 +58,7 @@ StreamingLocator locator = await client.StreamingLocators.CreateAsync(
 
 ### <a name="encrypted"></a>Zaszyfrowane 
 
-Jeśli zachodzi potrzeba zaszyfrowania zawartości przy użyciu szyfrowania CENC, ustaw zasady na "Predefined_MultiDrmCencStreaming". Szyfrowanie Widevine zostanie zastosowane do strumienia PAUZ i oprogramowania PlayReady do wygładzania. Klucz zostanie dostarczony do klienta odtwarzania na podstawie skonfigurowanych licencji DRM.
+Jeśli chcesz zaszyfrować zawartość za pomocą szyfrowania CENC, ustaw swoje zasady na "Predefined_MultiDrmCencStreaming". Szyfrowanie Widevine zostanie zastosowane do strumienia DASH i PlayReady do Smooth. Klucz zostanie dostarczony do klienta odtwarzania na podstawie skonfigurowanych licencji DRM.
 
 ```csharp
 StreamingLocator locator = await client.StreamingLocators.CreateAsync(
@@ -76,35 +76,35 @@ StreamingLocator locator = await client.StreamingLocators.CreateAsync(
 Jeśli chcesz również zaszyfrować strumień HLS za pomocą CBCS (FairPlay), użyj "Predefined_MultiDrmStreaming".
 
 > [!NOTE]
-> Widevine to usługa świadczona przez firmę Google Inc. z zastrzeżeniem warunków użytkowania i zasad zachowania poufności informacji w firmie Google, Inc.
+> Widevine jest usługą świadczoną przez Google Inc. i podlega warunkom korzystania z usługi oraz Polityce prywatności Firmy Google, Inc.
 
-## <a name="associate-filters-with-streaming-locators"></a>Skojarz filtry z lokalizatorami przesyłania strumieniowego
+## <a name="associate-filters-with-streaming-locators"></a>Kojarzenie filtrów z lokalizatorami przesyłania strumieniowego
 
-Zobacz [filtry: Skojarz z lokalizatorami przesyłania strumieniowego](filters-concept.md#associating-filters-with-streaming-locator).
+Zobacz [Filtry: skojarzyć z lokalizatorów przesyłania strumieniowego](filters-concept.md#associating-filters-with-streaming-locator).
 
-## <a name="filter-order-page-streaming-locator-entities"></a>Filtrowanie, kolejność, przesyłanie strumieniowe jednostek lokalizatora stron
+## <a name="filter-order-page-streaming-locator-entities"></a>Filtrowanie, kolejność, strona Streaming Locator jednostek
 
-Zobacz [filtrowanie, porządkowanie, stronicowanie jednostek Media Services](entities-overview.md).
+Zobacz [Filtrowanie, zamawianie, stronicowanie jednostek usługi Media Services](entities-overview.md).
 
-## <a name="list-streaming-locators-by-asset-name"></a>Wyświetl listę lokalizatorów przesyłania strumieniowego według nazwy zasobu
+## <a name="list-streaming-locators-by-asset-name"></a>Lista lokalizatorów przesyłania strumieniowego według nazwy zasobu
 
-Aby uzyskać lokalizatory przesyłania strumieniowego na podstawie nazwy skojarzonego elementu zawartości, należy wykonać następujące operacje:
+Aby uzyskać lokalizatory przesyłania strumieniowego na podstawie skojarzonej nazwy zasobu, należy użyć następujących operacji:
 
-|Język|Interfejs API|
+|Język|interfejs API|
 |---|---|
-|REST|[liststreaminglocators](https://docs.microsoft.com/rest/api/media/assets/liststreaminglocators)|
-|Interfejs wiersza polecenia|[AZ AMS Asset list-remisjeers-Locators](https://docs.microsoft.com/cli/azure/ams/asset?view=azure-cli-latest#az-ams-asset-list-streaming-locators)|
-|.NET|[ListStreamingLocators](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.assetsoperationsextensions.liststreaminglocators?view=azure-dotnet#Microsoft_Azure_Management_Media_AssetsOperationsExtensions_ListStreamingLocators_Microsoft_Azure_Management_Media_IAssetsOperations_System_String_System_String_System_String_)|
-|Java|[AssetStreamingLocator](https://docs.microsoft.com/rest/api/media/assets/liststreaminglocators#assetstreaminglocator)|
-|Node.js|[listStreamingLocators](https://docs.microsoft.com/javascript/api/@azure/arm-mediaservices/assets#liststreaminglocators-string--string--string--msrest-requestoptionsbase-)|
+|REST|[lokalizatory liststreamingu](https://docs.microsoft.com/rest/api/media/assets/liststreaminglocators)|
+|Interfejs wiersza polecenia|[az ams asset list-streaming-lokalizatory](https://docs.microsoft.com/cli/azure/ams/asset?view=azure-cli-latest#az-ams-asset-list-streaming-locators)|
+|.NET|[Lokalizatory liststreamingu](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.assetsoperationsextensions.liststreaminglocators?view=azure-dotnet#Microsoft_Azure_Management_Media_AssetsOperationsExtensions_ListStreamingLocators_Microsoft_Azure_Management_Media_IAssetsOperations_System_String_System_String_System_String_)|
+|Java|[Lokalizator zasobów](https://docs.microsoft.com/rest/api/media/assets/liststreaminglocators#assetstreaminglocator)|
+|Node.js|[listSlodatory lokalizatorów](https://docs.microsoft.com/javascript/api/@azure/arm-mediaservices/assets#liststreaminglocators-string--string--string--msrest-requestoptionsbase-)|
 
 ## <a name="see-also"></a>Zobacz też
 
 * [Elementy zawartości](assets-concept.md)
 * [Zasady przesyłania strumieniowego](streaming-policy-concept.md)
-* [Zasady kluczy zawartości](content-key-policy-concept.md)
-* [Samouczek: przekazywanie, kodowanie i przesyłanie strumieniowe filmów wideo przy użyciu platformy .NET](stream-files-tutorial-with-api.md)
+* [Zasady klucza zawartości](content-key-policy-concept.md)
+* [Samouczek: Przesyłanie, kodowanie i przesyłanie strumieniowe filmów za pomocą platformy .NET](stream-files-tutorial-with-api.md)
 
 ## <a name="next-steps"></a>Następne kroki
 
-[Jak utworzyć lokalizator przesyłania strumieniowego i adresy URL kompilacji](create-streaming-locator-build-url.md)
+[Jak utworzyć lokalizator przesyłania strumieniowego i utworzyć adresy URL](create-streaming-locator-build-url.md)

@@ -5,17 +5,17 @@ ms.topic: include
 ms.date: 08/23/2018
 ms.author: crdun
 ms.openlocfilehash: 5fe9fe8ced675f68161f0df9f2665b47f9d47ac5
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67183742"
 ---
-### <a name="server-auth"></a>Jak: Uwierzytelnianie za pomocą dostawcy (przepływ serwera)
+### <a name="how-to-authenticate-with-a-provider-server-flow"></a><a name="server-auth"></a>Instrukcje: uwierzytelnianie za pomocą dostawcy (przepływ serwera)
 Aby usługa Mobile Apps zarządzała procesem uwierzytelniania w aplikacji, musisz zarejestrować swoją aplikację u dostawcy tożsamości. Następnie w usłudze Azure App Service musisz skonfigurować identyfikator aplikacji oraz wpis tajny udostępniony przez dostawcę.
 Aby uzyskać więcej informacji, zapoznaj się z samouczkiem [Dodawanie uwierzytelniania do aplikacji](../articles/app-service-mobile/app-service-mobile-cordova-get-started-users.md).
 
-Po zarejestrowaniu dostawcy tożsamości wywołaj metodę `.login()` z nazwą dostawcy. Na przykład logowania się za pomocą usługi Facebook, użyj następującego kodu:
+Po zarejestrowaniu dostawcy tożsamości wywołaj metodę `.login()` z nazwą dostawcy. Aby na przykład zalogować się za pomocą Facebooka, użyj następującego kodu:
 
 ```javascript
 client.login("facebook").done(function (results) {
@@ -30,9 +30,9 @@ Prawidłowe wartości dla dostawcy to „aad”, „facebook”, „google”, �
 > [!NOTE]
 > Obecnie uwierzytelnianie za pomocą konta Google nie działa za pośrednictwem przepływu serwera.  Aby uwierzytelnić się za pomocą konta Google, musisz użyć [metody przepływu klienta](#client-auth).
 
-W tym przypadku usługa Azure App Service zarządza przepływem uwierzytelniania OAuth 2.0.  On wyświetla stronę logowania wybranego dostawcy i generuje token uwierzytelniania usługi App Service po pomyślnym zalogowaniu za pomocą dostawcy tożsamości. Po zakończeniu swojego działania funkcja logowania zwraca obiekt JSON, który udostępnia zarówno identyfikator użytkownika, jak i token uwierzytelniania usługi App Service, odpowiednio w polach userId oraz authenticationToken. Ten token można zapisać w pamięci podręcznej i ponownie go używać, dopóki nie wygaśnie.
+W tym przypadku usługa Azure App Service zarządza przepływem uwierzytelniania OAuth 2.0.  Wyświetla stronę logowania wybranego dostawcy i generuje token uwierzytelniania usługi app service po pomyślnym zalogowaniu się u dostawcy tożsamości. Po zakończeniu swojego działania funkcja logowania zwraca obiekt JSON, który udostępnia zarówno identyfikator użytkownika, jak i token uwierzytelniania usługi App Service, odpowiednio w polach userId oraz authenticationToken. Ten token można zapisać w pamięci podręcznej i ponownie go używać, dopóki nie wygaśnie.
 
-### <a name="client-auth"></a>Jak: Uwierzytelnianie za pomocą dostawcy (przepływ klienta)
+### <a name="how-to-authenticate-with-a-provider-client-flow"></a><a name="client-auth"></a>Instrukcje: uwierzytelnianie za pomocą dostawcy (przepływ klienta)
 
 Aplikacja może również niezależnie skontaktować się z dostawcą tożsamości, a następnie udostępnić zwrócony token usłudze App Service na potrzeby uwierzytelniania. Ten przepływ klienta pozwala zapewnić środowisko logowania jednokrotnego dla użytkowników bądź pobrać dodatkowe dane użytkownika od dostawcy tożsamości.
 
@@ -53,7 +53,7 @@ client.login(
 ```
 W tym przykładzie założono, że token udostępniony przez zestaw SDK danego dostawcy jest przechowywany w zmiennej token.
 
-### <a name="auth-getinfo"></a>Jak: Uzyskaj informacje o uwierzytelnionym użytkowniku
+### <a name="how-to-obtain-information-about-the-authenticated-user"></a><a name="auth-getinfo"></a>Instrukcje: pozyskiwanie informacji o uwierzytelnionym użytkowniku
 
 Dane uwierzytelniania można pobrać z punktu końcowego `/.auth/me` przy użyciu wywołania HTTP z dowolną biblioteką AJAX.  Pamiętaj, aby dla nagłówka `X-ZUMO-AUTH` ustawić swój token uwierzytelniania.  Token uwierzytelniania jest przechowywany w elemencie `client.currentUser.mobileServiceAuthenticationToken`.  Na przykład aby użyć interfejsu API Fetch:
 

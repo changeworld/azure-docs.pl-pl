@@ -1,234 +1,234 @@
 ---
-title: Tworzenie kopii zapasowych maszyn wirtualnych funkcji Hyper-V za pomocą serwera usługi MAB
-description: Ten artykuł zawiera procedury tworzenia kopii zapasowych i odzyskiwania maszyn wirtualnych przy użyciu programu Microsoft Azure Backup Server (serwera usługi MAB).
+title: Czelokrotnianie kopii zapasowych maszyn wirtualnych funkcji Hyper-V za pomocą usługi MABS
+description: Ten artykuł zawiera procedury tworzenia kopii zapasowych i odzyskiwania maszyn wirtualnych przy użyciu programu Microsoft Azure Backup Server (MABS).
 ms.topic: conceptual
 ms.date: 07/18/2019
 ms.openlocfilehash: 00d1dd04522c51e4d68450a7b8f25d7159d63724
-ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78255061"
 ---
-# <a name="back-up-hyper-v-virtual-machines-with-azure-backup-server"></a>Tworzenie kopii zapasowych maszyn wirtualnych funkcji Hyper-V za pomocą Azure Backup Server
+# <a name="back-up-hyper-v-virtual-machines-with-azure-backup-server"></a>Tworzenie kopii zapasowych maszyn wirtualnych funkcji Hyper-V za pomocą serwera kopii zapasowych platformy Azure
 
-W tym artykule opisano sposób tworzenia kopii zapasowych maszyn wirtualnych funkcji Hyper-V przy użyciu serwera Microsoft Azure Backup (serwera usługi MAB).
+W tym artykule wyjaśniono, jak wykonać kopię zapasową maszyn wirtualnych funkcji Hyper-V przy użyciu programu Microsoft Azure Backup Server (MABS).
 
 ## <a name="supported-scenarios"></a>Obsługiwane scenariusze
 
-SERWERA usługi MAB może tworzyć kopie zapasowe maszyn wirtualnych działających na serwerach hostów funkcji Hyper-V w następujących scenariuszach:
+Firma MABS może w następujących scenariuszach na łącze zapasowe maszyn wirtualnych działających na serwerach hosta funkcji Hyper-V:
 
-- **Maszyny wirtualne z magazynem lokalnym lub bezpośrednim** — tworzenie kopii zapasowych maszyn wirtualnych hostowanych na autonomicznych serwerach hosta funkcji Hyper-V z lokalnym lub bezpośrednio dołączonym magazynem. Na przykład: dysk twardy, urządzenie sieci magazynowania (SAN) lub urządzenie magazynu podłączonego do sieci (NAS). Na wszystkich hostach musi być zainstalowany agent ochrony serwera usługi MAB.
+- **Maszyny wirtualne z magazynem lokalnym lub podłączonym bezpośrednio** — wykonywanie kopii zapasowych maszyn wirtualnych hostowanych na autonomicznych serwerach hosta funkcji Hyper-V mających lokalną lub podłączoną bezpośrednio pamięć masową. Na przykład: dysk twardy, urządzenie sieciowej sieci magazynowej (SAN) lub urządzenie sieciowej pamięci masowej (NAS). Agent ochrony MABS musi być zainstalowany na wszystkich hostach.
 
-- **Maszyny wirtualne w klastrze z magazynem CSV** — tworzenie kopii zapasowych maszyn wirtualnych hostowanych w klastrze funkcji Hyper-V z magazynem udostępniony wolumin klastra (CSV). Agent ochrony serwera usługi MAB jest instalowany na każdym węźle klastra.
+- **Maszyny wirtualne w klastrze z magazynem CSV** — wykonywanie kopii zapasowych maszyn wirtualnych hostowanych w klastrze funkcji Hyper-V z woluminem udostępnionym klastra (CSV). Agent ochrony MABS jest zainstalowany w każdym węźle klastra.
 
-## <a name="host-versus-guest-backup"></a>Tworzenie kopii zapasowej hosta i gościa
+## <a name="host-versus-guest-backup"></a>Kopia zapasowa hosta a gość
 
-SERWERA usługi MAB może wykonywać kopie zapasowe maszyn wirtualnych funkcji Hyper-V na poziomie hosta lub gościa. Na poziomie hosta agent ochrony serwera usługi MAB jest instalowany na serwerze lub klastrze hosta funkcji Hyper-V i chroni całe maszyny wirtualne i pliki danych uruchomione na tym hoście.   Na poziomie gościa Agent jest instalowany na każdej maszynie wirtualnej i chroni obciążenie obecne na tym komputerze.
+Firma MABS może wykonać kopię zapasową maszyn wirtualnych typu Hyper V na poziomie hosta lub gościa. Na poziomie hosta agent ochrony MABS jest zainstalowany na serwerze hosta lub klastrze hosta funkcji Hyper-V i chroni całe maszyny wirtualne i pliki danych uruchomione na tym hoście.   Na poziomie gościa agent jest zainstalowany na każdej maszynie wirtualnej i chroni obciążenie obecne na tym komputerze.
 
-Obie metody mają wady i zalety:
+Obie metody mają swoje zalety i wady:
 
-- Tworzenie kopii zapasowych na poziomie hosta jest elastyczne, ponieważ działają niezależnie od typu systemu operacyjnego działającego na maszynach gościa i nie wymagają instalacji agenta ochrony serwera usługi MAB na każdej maszynie wirtualnej. W przypadku wdrożenia kopii zapasowej na poziomie hosta możliwe jest odzyskanie całej maszyny wirtualnej lub plików i folderów (odzyskiwanie na poziomie elementu).
+- Kopie zapasowe na poziomie hosta są elastyczne, ponieważ działają niezależnie od typu systemu operacyjnego uruchomionego na komputerach gościa i nie wymagają instalacji agenta ochrony MABS na każdej maszynie wirtualnej. Jeśli wdrożysz kopię zapasową na poziomie hosta, można odzyskać całą maszynę wirtualną lub pliki i foldery (odzyskiwanie na poziomie elementu).
 
-- Tworzenie kopii zapasowej na poziomie gościa jest przydatne, jeśli chcesz chronić określone obciążenia działające na maszynie wirtualnej. Na poziomie hosta możliwe jest odzyskanie całej maszyny wirtualnej lub określonych plików, ale nie zapewnia to odzyskiwania w kontekście określonej aplikacji. Na przykład w celu odzyskania określonych elementów programu SharePoint z kopii zapasowej maszyny wirtualnej należy wykonać kopię zapasową tej maszyny wirtualnej na poziomie gościa. Jeśli chcesz chronić dane przechowywane na dyskach przekazujących, użyj kopii zapasowej na poziomie gościa. Przekazywanie umożliwia maszynie wirtualnej bezpośredni dostęp do urządzenia magazynującego i nie przechowuje danych woluminu wirtualnego w pliku VHD.
+- Kopia zapasowa na poziomie gościa jest przydatna, jeśli chcesz chronić określone obciążenia uruchomione na maszynie wirtualnej. Na poziomie hosta można odzyskać całą maszynę wirtualną lub określone pliki, ale nie zapewni odzyskiwania w kontekście określonej aplikacji. Na przykład, aby odzyskać określone elementy programu SharePoint z kopii zapasowej maszyny Wirtualnej, należy wykonać kopię zapasową na poziomie gościa tej maszyny Wirtualnej. Użyj kopii zapasowej na poziomie gościa, jeśli chcesz chronić dane przechowywane na dyskach przekazu. Przekazywanie umożliwia maszynie wirtualnej bezpośredni dostęp do urządzenia magazynującego i nie przechowuje danych woluminu wirtualnego w pliku VHD.
 
 ## <a name="how-the-backup-process-works"></a>Jak działa proces tworzenia kopii zapasowej
 
-SERWERA usługi MAB wykonuje kopię zapasową za pomocą usługi VSS w następujący sposób. Kroki opisane w tym opisie są numerowane w celu ułatwienia przejrzystości.
+Mabs wykonuje kopię zapasową z usługą VSS w następujący sposób. Kroki znajdujące się w tym opisie są ponumerowane w celu zwiększenia przejrzystości.
 
-1. Aparat synchronizacji oparty na blokach serwera usługi MAB tworzy początkową kopię chronionej maszyny wirtualnej i gwarantuje, że kopia maszyny wirtualnej jest kompletna i spójna.
+1. Aparat synchronizacji bloków mabs sprawia, że początkowa kopia chronionej maszyny wirtualnej i zapewnia, że kopia maszyny wirtualnej jest kompletna i spójna.
 
-2. Po utworzeniu i sprawdzeniu kopii początkowej serwera usługi MAB używa składnika zapisywania usługi VSS funkcji Hyper-V do przechwytywania kopii zapasowych. Składnik zapisywania usługi VSS zawiera zestaw bloków dysków spójnych z danymi, które są synchronizowane z serwerem serwera usługi MAB. Takie podejście umożliwia korzystanie z "pełnej kopii zapasowej" przy użyciu serwera serwera usługi MAB, jednocześnie minimalizując dane kopii zapasowej, które muszą być przesyłane przez sieć.
+2. Po wykonaniu i zweryfikowaniu kopii początkowej program MABS używa modułu zapisującego usługi VSS funkcji Hyper-V do przechwytywania kopii zapasowych. Moduł zapisujący usługi VSS udostępnia spójny z danymi zestaw bloków dysków, które są synchronizowane z serwerem MABS. Takie podejście zapewnia korzyści z "pełnej kopii zapasowej" z serwerem MABS, minimalizując jednocześnie dane kopii zapasowej, które muszą być przesyłane przez sieć.
 
-3. Agent ochrony serwera usługi MAB na serwerze z uruchomioną funkcją Hyper-V korzysta z istniejących interfejsów API funkcji Hyper-V, aby określić, czy chroniona maszyna wirtualna również obsługuje usługę VSS.
+3. Agent ochrony MABS na serwerze z uruchomionym funkcji Hyper-V używa istniejących interfejsów API funkcji Hyper-V w celu ustalenia, czy chroniona maszyna wirtualna obsługuje również usługi VSS.
 
-   - Jeśli maszyna wirtualna spełnia wymagania kopii zapasowej online i ma zainstalowany składnik usług integracji funkcji Hyper-V, składnik zapisywania usługi VSS funkcji Hyper-V rekursywnie przekazuje żądanie VSS do wszystkich procesów obsługujących usługę VSS na maszynie wirtualnej. Ta operacja jest wykonywana bez instalacji agenta ochrony serwera usługi MAB na maszynie wirtualnej. Cykliczne żądanie usługi VSS umożliwia składnik zapisywania usługi VSS funkcji Hyper-V, aby zapewnić synchronizację operacji zapisu na dysku, co umożliwia przechwycenie migawki usługi VSS bez utraty danych.
+   - Jeśli maszyna wirtualna spełnia wymagania kopii zapasowej online i ma zainstalowany składnik usług integracji funkcji Hyper-V, to element zapisujący usług VSS funkcji Hyper-V rekursywnie przekazuje żądania usług VSS do wszystkich procesów obsługujących takie żądania na maszynie wirtualnej. Ta operacja występuje bez agenta ochrony MABS jest zainstalowany na maszynie wirtualnej. Dzięki tym cyklicznym żądaniom składnik zapisywania usługi VSS funkcji Hyper-V może się upewnić, że operacje zapisu na dysku są zsynchronizowane, aby przechwycić migawkę usługi VSS bez utraty danych.
 
-     Składnik usług integracji funkcji Hyper-V wywołuje składnik zapisywania usługi VSS funkcji Hyper-V w ramach usług kopiowania woluminów w tle (VSS) na maszynach wirtualnych, aby upewnić się, że ich dane aplikacji są w spójnym stanie.
+     Składnik usług integracji funkcji Hyper-V wywołuje składnik zapisywania usługi VSS funkcji Hyper-V w ramach usług kopiowania woluminów w tle (VSS) w maszynach wirtualnych, aby sprawdzić, czy dane aplikacji są spójne.
 
-   - Jeśli maszyna wirtualna nie jest zgodna z wymaganiami dotyczącymi kopii zapasowych online, program serwera usługi MAB automatycznie używa interfejsów API funkcji Hyper-V, aby wstrzymać maszynę wirtualną przed przechwyceniem plików danych.
+   - Jeśli maszyna wirtualna nie spełnia wymagań dotyczących tworzenia kopii zapasowych online, usługa MABS automatycznie używa interfejsów API funkcji Hyper-V do wstrzymania maszyny wirtualnej przed przechwyceniem plików danych.
 
-4. Po zsynchronizowaniu początkowej bazowej kopii maszyny wirtualnej z serwerem serwera usługi MAB wszystkie zmiany wprowadzone w zasobach maszyny wirtualnej są przechwytywane w nowym punkcie odzyskiwania. Punkt odzyskiwania przedstawia spójny stan maszyny wirtualnej w określonym czasie. Przechwytywanie w ramach punktu odzyskiwania może odbywać się co najmniej raz dziennie. Po utworzeniu nowego punktu odzyskiwania program serwera usługi MAB korzysta z replikacji na poziomie bloku w połączeniu ze składnikiem zapisywania usługi VSS funkcji Hyper-V, aby określić, które bloki zostały zmienione na serwerze z uruchomioną funkcją Hyper-V po utworzeniu ostatniego punktu odzyskiwania. Te bloki danych zostają następnie przetransferowane na serwer serwera usługi MAB i są stosowane do repliki chronionych danych.
+4. Po początkowej kopii linii bazowej maszyny wirtualnej synchronizuje się z serwerem MABS, wszystkie zmiany, które są wprowadzane do zasobów maszyny wirtualnej są przechwytywane w nowym punkcie odzyskiwania. Punkt odzyskiwania przedstawia stan spójności maszyny wirtualnej w określonym czasie. Przechwytywanie w ramach punktu odzyskiwania może odbywać się co najmniej raz dziennie. Po utworzeniu nowego punktu odzyskiwania program MABS używa replikacji na poziomie bloku w połączeniu z modułem zapisującym usługi VSS funkcji Hyper-V, aby określić, które bloki zostały zmienione na serwerze z uruchomionym funkcją Hyper-V po utworzeniu ostatniego punktu odzyskiwania. Te bloki danych są następnie przesyłane do serwera MABS i są stosowane do repliki chronionych danych.
 
-5. Serwer serwera usługi MAB używa usługi VSS na woluminach, które obsługują dane odzyskiwania, aby można było korzystać z wielu kopii w tle. Każda z tych kopii w tle zapewnia osobne odzyskiwanie. Punkty odzyskiwania usługi VSS są przechowywane na serwerze serwera usługi MAB. Kopia tymczasowa wprowadzona na serwerze z uruchomioną funkcją Hyper-V jest przechowywana tylko na czas trwania synchronizacji serwera usługi MAB.
+5. Serwer MABS używa usługi VSS na woluminach, które hostują dane odzyskiwania, dzięki czemu dostępnych jest wiele kopii w tle. Każda z tych kopii w tle zapewnia osobne zadania odzyskiwania. Punkty odzyskiwania usługi VSS są przechowywane na serwerze MABS. Tymczasowa kopia, która jest wykonana na serwerze z uruchomiona funkcja Hyper-V, jest przechowywana tylko przez czas trwania synchronizacji MABS.
 
 >[!NOTE]
 >
->Począwszy od systemu Windows Server 2016 wirtualne dyski twarde funkcji Hyper-V mają wbudowane śledzenie zmian znane jako odporne śledzenie zmian (RCT). SERWERA usługi MAB korzysta z RCT (natywne śledzenie zmian w funkcji Hyper-V), co zmniejsza potrzebę czasochłonnych kontroli spójności w scenariuszach, takich jak awarie maszyn wirtualnych. RCT zapewnia lepszą odporność niż śledzenie zmian zapewniane przez kopie zapasowe oparte na migawce usługi VSS. SERWERA usługi MAB v3 optymalizuje użycie sieci i magazynu przez transfer tylko zmienionych danych podczas kontroli spójności.
+>Począwszy od systemu Windows Server 2016 wirtualne dyski twarde funkcji Hyper-V mają wbudowane śledzenie zmian znane jako odporne śledzenie zmian (RCT). Mabs używa RCT (natywne śledzenie zmian w funkcji Hyper-V), co zmniejsza potrzebę czasochłonnej kontroli spójności w scenariuszach, takich jak awarie maszyn wirtualnych. Śledzenie RCT zapewnia większą odporność niż śledzenie zmian w opartych na migawkach kopiach zapasowych usługi VSS. MABS V3 dodatkowo optymalizuje zużycie sieci i pamięci masowej, przesyłając tylko zmienione dane podczas sprawdzania spójności.
 
-## <a name="backup-prerequisites"></a>Wymagania wstępne dotyczące kopii zapasowych
+## <a name="backup-prerequisites"></a>Wymagania wstępne dotyczące kopii zapasowej
 
-Poniżej przedstawiono wymagania wstępne dotyczące tworzenia kopii zapasowych maszyn wirtualnych funkcji Hyper-V za pomocą serwera usługi MAB:
+Są to warunki wstępne do tworzenia kopii zapasowych maszyn wirtualnych funkcji Hyper-V za pomocą usługi MABS:
 
 |Wymagania wstępne|Szczegóły|
 |------------|-------|
-|Wymagania wstępne serwera usługi MAB|— Jeśli chcesz przeprowadzić odzyskiwanie na poziomie elementu dla maszyn wirtualnych (odzyskanie plików, folderów, woluminów), musisz zainstalować rolę funkcji Hyper-V na serwerze serwera usługi MAB.  Jeśli chcesz tylko odzyskać maszynę wirtualną, a nie na poziomie elementu, rola nie jest wymagana.<br />— Można chronić maksymalnie 800 maszyn wirtualnych z 100 GB każdego na jednym serwerze serwera usługi MAB i zezwalać na wiele serwerów serwera usługi MAB obsługujących większe klastry.<br />-SERWERA usługi MAB wyklucza plik stronicowania z przyrostowych kopii zapasowych w celu zwiększenia wydajności kopii zapasowej maszyny wirtualnej.<br />-SERWERA usługi MAB może utworzyć kopię zapasową serwera lub klastra funkcji Hyper-V w tej samej domenie co serwer serwera usługi MAB lub w domenie podrzędnej lub zaufanej. Jeśli chcesz utworzyć kopię zapasową funkcji Hyper-V w grupie roboczej lub niezaufanej domenie, musisz skonfigurować uwierzytelnianie. W przypadku pojedynczego serwera funkcji Hyper-V można użyć uwierzytelniania NTLM lub certyfikatu. W przypadku klastra można używać tylko uwierzytelniania certyfikatów.<br />— Używanie kopii zapasowej na poziomie hosta do wykonywania kopii zapasowych danych maszyny wirtualnej na dyskach przekazujących nie jest obsługiwane. W tym scenariuszu zalecamy użycie kopii zapasowej na poziomie hosta do wykonywania kopii zapasowych plików VHD i kopii zapasowej na poziomie gościa w celu utworzenia kopii zapasowej innych danych, które nie są widoczne na hoście.<br />   — Można utworzyć kopię zapasową maszyn wirtualnych przechowywanych na deduplikowanych woluminach.|
-|Wymagania wstępne dotyczące maszyn wirtualnych funkcji Hyper-V|-Wersja składników integracji uruchamiana na maszynie wirtualnej powinna być taka sama jak wersja hosta funkcji Hyper-V. <br />-Dla każdej kopii zapasowej maszyny wirtualnej będzie wymagane wolne miejsce na woluminie obsługującym pliki wirtualnego dysku twardego w celu umożliwienia funkcji Hyper-V wystarczającej ilości miejsca na dyski różnicowe (AVHD) podczas tworzenia kopii zapasowej. Przestrzeń musi być co najmniej równa **rozmiarowi początkowego rozmiaru dysku,\*współczynnik zmian\*czasu okna kopii zapasowej** . Jeśli uruchamiasz wiele kopii zapasowych w klastrze, potrzebujesz wystarczającej pojemności magazynu, aby obsłużyć magazynowania dysków AVHD dla każdej maszyny wirtualnej korzystającej z tego obliczenia.<br />— Aby utworzyć kopię zapasową maszyn wirtualnych znajdujących się na serwerach hosta funkcji Hyper-V z systemem Windows Server 2012 R2, maszyna wirtualna powinna mieć określony kontroler SCSI, nawet jeśli nie jest połączony z żadnymi elementami. (W usłudze Kopia zapasowa online systemu Windows Server 2012 R2, host funkcji Hyper-V instaluje nowy wirtualny dysk twardy w maszynie wirtualnej, a następnie Odinstalowuje go później. Może to obsługiwać tylko kontroler SCSI i dlatego jest wymagany do tworzenia kopii zapasowych online maszyny wirtualnej.  Bez tego ustawienia zostanie wygenerowane zdarzenie o IDENTYFIKATORze 10103 podczas próby utworzenia kopii zapasowej maszyny wirtualnej.|
-|Wymagania wstępne systemu Linux|— Można utworzyć kopię zapasową maszyn wirtualnych z systemem Linux za pomocą serwera usługi MAB. Obsługiwane są tylko migawki zgodne z plikami.|
-|Tworzenie kopii zapasowych maszyn wirtualnych z magazynem CSV|-Dla magazynu CSV zainstaluj dostawcę sprzętowego usługi kopiowania woluminów w tle (VSS) na serwerze funkcji Hyper-V. Skontaktuj się z dostawcą sieci magazynowania (SAN) dla dostawcy sprzętowego usługi VSS.<br />— Jeśli pojedynczy węzeł zostanie nieoczekiwanie zamknięty w klastrze CSV, serwera usługi MAB przeprowadzi sprawdzanie spójności dla maszyn wirtualnych, które były uruchomione w tym węźle.<br />— Jeśli musisz ponownie uruchomić serwer funkcji Hyper-V, który ma szyfrowanie dysków funkcją BitLocker włączony w klastrze CSV, musisz uruchomić sprawdzanie spójności dla maszyn wirtualnych funkcji Hyper-V.|
-|Tworzenie kopii zapasowych maszyn wirtualnych przy użyciu magazynu SMB|-Włącz funkcję automatycznego instalowania na serwerze z uruchomioną funkcją Hyper-V, aby włączyć ochronę maszyny wirtualnej.<br />   -Wyłącz odciążanie w technologii TCP Chimney.<br />— Upewnij się, że wszystkie konta komputera z funkcją Hyper-V mają pełne uprawnienia do określonych udziałów zdalnych plików SMB.<br />-Upewnij się, że ścieżka pliku dla wszystkich składników maszyny wirtualnej podczas odzyskiwania do lokalizacji alternatywnej jest krótsza niż 260 znaków. W przeciwnym razie odzyskiwanie może zakończyć się pomyślnie, ale funkcja Hyper-V nie będzie mogła zainstalować maszyny wirtualnej.<br />— Następujące scenariusze nie są obsługiwane:<br />     Wdrożenia, w których niektóre składniki maszyny wirtualnej znajdują się na woluminach lokalnych, a niektóre składniki znajdują się na woluminach zdalnych; adres IPv4 lub IPv6 dla serwera plików lokalizacji magazynu oraz odzyskiwanie maszyny wirtualnej na komputerze, który używa zdalnych udziałów SMB.<br />— Należy włączyć usługę agenta VSS serwera plików na każdym serwerze SMB — Dodaj ją w obszarze **Dodaj role i funkcje,**  > **wybierz role serwera** > usługi plików **i magazynowania** > usługi **PLIKOWE** ** > usługi plików > ** **usługi agenta VSS serwera plików**.|
+|Wymagania wstępne MABS|- Jeśli chcesz wykonać odzyskiwanie na poziomie elementu dla maszyn wirtualnych (odzyskać pliki, foldery, woluminy), musisz zainstalować rolę Funkcji Hyper-V na serwerze MABS.  Jeśli chcesz tylko odzyskać maszynę wirtualną, a nie na poziomie elementu, rola nie jest wymagana.<br />- Można chronić do 800 maszyn wirtualnych po 100 GB każdy na jednym serwerze MABS i zezwolić na wiele serwerów MABS, które obsługują większe klastry.<br />- MABS wyklucza plik stronicowania z przyrostowych kopii zapasowych w celu poprawy wydajności kopii zapasowych maszyny wirtualnej.<br />- Mabs może kopii zapasowej serwera hyper-V lub klastra w tej samej domenie co serwer MABS lub w domenie podrzędnej lub zaufanej. Jeśli chcesz wykonać wykonanie kopii zapasowej funkcji Hyper-V w grupie roboczej lub niezaufanej domenie, musisz skonfigurować uwierzytelnianie. W przypadku pojedynczego serwera funkcji Hyper-V można użyć uwierzytelniania NTLM lub certyfikatu. W przypadku klastra można używać tylko uwierzytelniania certyfikatów.<br />— Przy tworzeniu kopii zapasowej danych maszyny wirtualnej na dyskach przekazujących nie jest obsługiwane korzystanie z kopii zapasowych na poziomie hosta. W tym scenariuszu zaleca się użycie kopii zapasowej na poziomie hosta do tworzenia kopii zapasowych plików VHD i kopii zapasowej na poziomie gościa w celu utworzenia kopii zapasowej innych danych, które nie są widoczne na hoście.<br />   -Można kopii zapasowej maszyn wirtualnych przechowywanych na deduplikowanych woluminach.|
+|Wymagania wstępne maszyny wirtualnej funkcji Hyper-V|- Wersja integration components, która jest uruchomiona na maszynie wirtualnej powinny być takie same jak wersja hosta funkcji Hyper-V. <br />— Dla każdej kopii zapasowej maszyny wirtualnej będzie wymagane wolne miejsce na woluminie obsługującym pliki wirtualnego dysku twardego, aby dostarczyć funkcji Hyper-V wystarczającą ilość miejsca na dyski różnicowe (AVHD) podczas wykonywania kopii zapasowej. Miejsce musi być co najmniej równe obliczeniu **Początkowy rozmiar dysku Współczynnik\*zmian Czas\*** okna kopii zapasowej. Jeśli używasz wielu kopii zapasowych w klastrze, konieczna będzie obliczona w ten sposób wystarczająca ilość miejsca do magazynowania dysków AVHD dla poszczególnych maszyn wirtualnych.<br />- Aby zrobić kopii zapasowej maszyn wirtualnych znajdujących się na serwerach hosta funkcji Hyper-V z systemem Windows Server 2012 R2, maszyna wirtualna powinna mieć określony kontroler SCSI, nawet jeśli nie jest do niczego połączona. (W kopii zapasowej online systemu Windows Server 2012 R2 host funkcji Hyper-V montuje nowy dysk VHD na maszynie wirtualnej, a następnie odinstalowuje go. Tylko kontroler SCSI może to obsługiwać i dlatego jest wymagany do tworzenia kopii zapasowych online maszyny wirtualnej.  Bez tego ustawienia identyfikator zdarzenia 10103 zostanie wystawiony podczas próby utworzenia kopii zapasowej maszyny wirtualnej.)|
+|Wymagania wstępne systemu Linux|- Możesz kopii zapasowej maszyn wirtualnych Linuksa za pomocą MABS. Obsługiwane są tylko migawki zgodne z plikami.|
+|Tworzenie kopii zapasowej maszyn wirtualnych z magazynem CSV|— Na potrzeby magazynu CSV należy zainstalować na serwerze funkcji Hyper-V dostawcę sprzętowego usługi kopiowania woluminów w tle (VSS). W sprawie dostawcy sprzętowego usługi VSS skontaktuj się z dostawcą swojej sieci magazynowania (SAN).<br />- Jeśli pojedynczy węzeł zostanie nieoczekiwanie zamknięty w klastrze CSV, mabs wykona sprawdzanie spójności względem maszyn wirtualnych, które były uruchomione w tym węźle.<br />— Jeśli potrzebujesz uruchomić ponownie serwer funkcji Hyper-V z włączoną funkcją szyfrowania dysków BitLocker w klastrze CSV, musisz uruchomić sprawdzenie spójności dla maszyn wirtualnych funkcji Hyper-V.|
+|Tworzenie kopii zapasowej maszyn wirtualnych z magazynem SMB|— Aby włączyć ochronę maszyny wirtualnej, włącz funkcję automatycznej instalacji na serwerze z uruchomioną funkcją Hyper-V.<br />   — Wyłącz odciążanie przy użyciu technologii TCP Chimney.<br />— Upewnij się, że wszystkie konta machine$ funkcji Hyper-V mają pełne uprawnienia w określonych udziałach zdalnych plików SMB.<br />- Upewnij się, że ścieżka pliku dla wszystkich składników maszyny wirtualnej podczas odzyskiwania do lokalizacji alternatywnej jest mniejsza niż 260 znaków. Jeśli nie, odzyskiwanie może zakończyć się pomyślnie, ale funkcja Hyper-V nie będzie mogła zainstalować maszyny wirtualnej.<br />- Następujące scenariusze nie są obsługiwane:<br />     Wdrożenia, w których niektóre składniki maszyny wirtualnej znajdują się na woluminach lokalnych, a niektóre składniki znajdują się na woluminach zdalnych; adres IPv4 lub IPv6 dla serwera plików lokalizacji magazynu oraz odzyskiwanie maszyny wirtualnej na komputerze korzystającym ze zdalnych udziałów SMB.<br />- Musisz włączyć usługę Agent VSS serwera plików na każdym serwerze SMB — dodaj ją w **Dodaj role i funkcje** > **Wybierz role** > serwera Usługi plików**usługi** > plików usługi**plików** > usługi plików usługi**plików** > **USŁUGI PLIKÓW USŁUGI VSS Agent Service**.|
 
 ## <a name="back-up-virtual-machines"></a>Tworzenie kopii zapasowych maszyn wirtualnych
 
-1. Skonfiguruj [serwer serwera usługi MAB](backup-azure-microsoft-azure-backup.md) i [Magazyn](backup-mabs-add-storage.md). Podczas konfigurowania magazynu należy użyć tych wytycznych dotyczących pojemności magazynu.
+1. Skonfiguruj [serwer MABS](backup-azure-microsoft-azure-backup.md) i [pamięć masową](backup-mabs-add-storage.md). Podczas konfigurowania magazynu użyj następujących wytycznych dotyczących pojemności magazynu.
    - Średni rozmiar maszyny wirtualnej — 100 GB
-   - Liczba maszyn wirtualnych na serwer serwera usługi MAB — 800
-   - Łączny rozmiar 800 maszyn wirtualnych — 80 TB
-   - Wymagane miejsce dla magazynu kopii zapasowych — 80 TB
+   - Liczba maszyn wirtualnych na serwer MABS - 800
+   - Całkowity rozmiar 800 maszyn wirtualnych — 80 TB
+   - Wymagane miejsce na magazyn kopii zapasowych — 80 TB
 
-2. Skonfiguruj agenta ochrony serwera usługi MAB na serwerze funkcji Hyper-V lub w węzłach klastra funkcji Hyper-V. Jeśli wykonujesz kopię zapasową na poziomie gościa, Zainstaluj agenta na maszynach wirtualnych, dla których chcesz utworzyć kopię zapasową na poziomie gościa.
+2. Skonfiguruj agenta ochrony MABS na serwerze funkcji Hyper-V lub węzłach klastra funkcji Hyper-V. Jeśli wykonujesz kopię zapasową na poziomie gościa, zainstalujesz agenta na maszynach wirtualnych, których kopię zapasową chcesz utworzyć na poziomie gościa.
 
-3. W konsoli administratora serwera usługi MAB kliknij pozycję **ochrona** > **Utwórz grupę ochrony** , aby otworzyć kreatora **tworzenia nowej grupy ochrony** .
+3. W konsoli Administrator systemu MABS kliknij pozycję **Grupa** > **Ochrony utwórz ochronę,** aby otworzyć **kreatora Tworzenie nowej grupy ochrony.**
 
-4. Na stronie **Wybierz członków grupy** Wybierz Maszyny wirtualne, które mają być chronione przez serwery hosta funkcji Hyper-V, na których się znajdują. Zalecamy umieszczenie wszystkich maszyn wirtualnych, które będą miały te same zasady ochrony, w jednej grupie ochrony. Aby efektywnie wykorzystać miejsce, Włącz Współtworzenie lokalizacji. Współlokalizacja umożliwia lokalizowanie danych z różnych grup ochrony na tym samym dysku lub na taśmach, dzięki czemu wiele źródeł danych ma jedną replikę i wolumin punktu odzyskiwania.
+4. Na stronie **Wybierz członków grupy** wybierz maszyny wirtualne, które chcesz chronić za pomocą serwerów hostów funkcji Hyper-V, na których się znajdują. Zalecane jest umieszczenie wszystkich maszyn wirtualnych, które będą miały te same zasady ochrony, w jednej grupie ochrony. W celu efektywnego wykorzystania miejsca włącz wspólną lokalizację. Przekazywanie danych do wspólnej lokalizacji umożliwia umieszczanie danych pochodzących z różnych grup ochrony w tym samym magazynie dyskowym lub taśmowym, tak aby różne źródła danych miały jedną replikę i wolumin punktu odzyskiwania.
 
-5. Na stronie **Wybierz metodę ochrony danych** Podaj nazwę grupy ochrony. Wybierz opcję **Chcę uzyskać krótkoterminową ochronę za pomocą dysku** i wybierz opcję **Chcę chronić w trybie online** , jeśli chcesz utworzyć kopię zapasową danych na platformie Azure przy użyciu usługi Azure Backup.
+5. Na stronie **Wybierz metodę ochrony danych** podaj nazwę grupy ochrony. Wybierz opcję **Chcę uzyskać krótkoterminową ochronę za pomocą dysku** oraz opcję **Chcę uzyskać ochronę online** , aby tworzyć kopie zapasowe danych na platformie Azure za pomocą usługi Kopia zapasowa Azure.
 
-6. W obszarze **Określ cele krótkoterminowe** > **Zakres przechowywania**Określ, jak długo mają być przechowywane dane dysku. W obszarze **częstotliwość synchronizacji**Określ, jak często mają być uruchamiane przyrostowe kopie zapasowe danych. Alternatywnie, zamiast wybierać interwał tworzenia przyrostowych kopii zapasowych, możesz włączyć **bezpośrednio przed punktem odzyskiwania**. Po włączeniu tego ustawienia serwera usługi MAB będzie uruchamiać ekspresową pełną kopię zapasową tuż przed każdym zaplanowanym punktem odzyskiwania.
+6. W obszarze Określanie**zakresu przechowywania** **celów** > krótkoterminowych określ, jak długo mają być przechowywane dane dysku. W **obszarze Częstotliwość synchronizacji**określ, jak często należy uruchamiać przyrostowe kopie zapasowe danych. Zamiast określać interwał tworzenia przyrostowych kopii zapasowych, możesz włączyć opcję **Bezpośrednio przed punktem odzyskiwania**. Po włączeniu tego ustawienia usługa MABS uruchomi ekspresową pełną kopię zapasową tuż przed każdym zaplanowanym punktem odzyskiwania.
 
     > [!NOTE]
     >
-    >W przypadku ochrony obciążeń aplikacji punkty odzyskiwania są tworzone zgodnie z częstotliwością synchronizacji, pod warunkiem, że aplikacja obsługuje przyrostowe kopie zapasowe. Jeśli tak nie jest, serwera usługi MAB uruchamia ekspresową pełną kopię zapasową zamiast przyrostowej kopii zapasowej i tworzy punkty odzyskiwania zgodnie z harmonogramem ekspresowego tworzenia kopii zapasowych.
+    >W przypadku ochrony obciążeń aplikacji punkty odzyskiwania są tworzone zgodnie z opcją Częstotliwość synchronizacji, przy założeniu, że aplikacja obsługuje przyrostowe kopie zapasowe. Jeśli tak nie jest, następnie mabs uruchamia ekspresowe pełnej kopii zapasowej, zamiast przyrostowej kopii zapasowej i tworzy punkty odzyskiwania zgodnie z harmonogramem ekspresowej kopii zapasowej.
 
-7. Na stronie **Przejrzyj przydział dysku** Przejrzyj miejsce na dysku w puli magazynów przydzielone danej grupie ochrony.
+7. Na stronie **Przeglądanie alokacji dysku** przejrzyj miejsce na dysku puli magazynów przydzielone dla grupy ochrony.
 
-   **Łączny rozmiar danych** to rozmiar danych, których kopia zapasowa ma zostać utworzona, oraz miejsce na dysku, które ma **zostać zainicjowane w systemie serwera usługi MAB** , to miejsce, które serwera usługi MAB zaleca dla grupy ochrony. SERWERA usługi MAB wybiera idealny wolumin kopii zapasowej na podstawie ustawień. Można jednak edytować opcje woluminu kopii zapasowej w **szczegółach alokacji dysku**. W przypadku obciążeń wybierz preferowany magazyn z menu rozwijanego. Twoje zmiany zmieniają wartości **łącznego magazynu** i **wolnego magazynu** w okienku **dostępne Disk Storage** . Zajęte miejsce to ilość serwera usługi MAB magazynu sugerująca dodanie do woluminu, co pozwala na płynne wykonywanie kopii zapasowych w przyszłości.
+   **Całkowity rozmiar danych** to rozmiar danych, których kopii zapasowej chcesz uzyskać, a miejsce na dysku, które **ma być aprowizowane w u usługACH MABS,** jest miejscem zalecanym przez program MABS dla grupy ochrony. Mabs wybiera idealny wolumin kopii zapasowej, na podstawie ustawień. Opcje wielkości kopii zapasowej można jednak edytować w obszarze **Szczegóły przydziału dysku**. W przypadku obciążeń wybierz z menu rozwijanego preferowany magazyn. Edycja zmienia wartości pozycji **Całkowita ilość miejsca dla magazynu** i **Wolne miejsce w magazynie** w okienku **Dostępny magazyn dyskowy**. Niedostatecznie poparte dorozumie miejsca jest ilość pamięci masowej, którą MABS sugeruje dodanie do woluminu, aby kontynuować tworzenie kopii zapasowych płynnie w przyszłości.
 
-8. Na stronie **Wybierz metodę tworzenia repliki** Określ, jak będzie wykonywana początkowa replikacja danych w grupie ochrony. Jeśli wybierzesz **automatyczną replikację za pośrednictwem sieci**, zalecamy wybranie czasu poza godzinami szczytu. W przypadku dużych ilości danych lub mniej niż optymalnych warunków sieciowych Rozważ **Ręczne**wybranie, które wymaga replikacji danych w trybie offline przy użyciu nośnika wymiennego.
+8. Na stronie **Wybierz metodę tworzenia repliki** określ sposób, w jaki ma zostać wykonana początkowa replikacja danych w grupie ochrony. Jeśli **wybierzesz opcję Automatycznie replikuj przez sieć, zalecamy**wybranie godziny poza szczytem. W przypadku dużych ilości danych lub mniejszych niż optymalne warunki sieciowe należy rozważyć wybranie opcji **Ręczne**, które wymaga replikowania danych w trybie offline przy użyciu nośników wymiennych.
 
-9. Na stronie **Opcje sprawdzania spójności** wybierz sposób automatyzacji sprawdzania spójności. Uruchomienie sprawdzania można włączyć tylko wtedy, gdy dane repliki staną się niespójne lub zgodnie z harmonogramem. Jeśli nie chcesz konfigurować automatycznego sprawdzania spójności, w dowolnym momencie możesz uruchomić sprawdzanie ręczne, klikając prawym przyciskiem myszy grupę ochrony i wybierając polecenie **Przeprowadź sprawdzanie spójności**.
+9. Na stronie **Opcje sprawdzania spójności** wybierz odpowiedni sposób automatyzacji sprawdzania spójności. Można włączyć uruchamianie sprawdzania tylko wtedy, gdy dane są niespójne, lub zgodnie z harmonogramem. Jeśli nie chcesz konfigurować automatycznego sprawdzania spójności, w dowolnym momencie możesz uruchomić sprawdzanie ręczne, klikając prawym przyciskiem myszy grupę ochrony i wybierając polecenie **Przeprowadź sprawdzanie spójności**.
 
-    Po utworzeniu grupy ochrony następuje Replikacja początkowa danych zgodnie z wybraną metodą. Po replikacji początkowej każda kopia zapasowa jest wykonywana zgodnie z ustawieniami grupy ochrony. Aby odzyskać kopię zapasową danych, należy pamiętać o następujących kwestiach:
+    Po utworzeniu grupy ochrony następuje replikacja początkowa danych zgodnie z wybraną metodą. Po replikacji początkowej tworzone są poszczególne kopie zapasowe zgodnie z ustawieniami grupy ochrony. Jeśli chcesz odzyskać kopie zapasowe danych, zwróć uwagę na następujące kwestie:
 
 ## <a name="back-up-virtual-machines-configured-for-live-migration"></a>Tworzenie kopii zapasowych maszyn wirtualnych skonfigurowanych do migracji na żywo
 
-Gdy maszyny wirtualne są związane z migracją na żywo, serwera usługi MAB nadal chronią maszyny wirtualne, o ile Agent ochrony serwera usługi MAB jest zainstalowany na hoście funkcji Hyper-V. Sposób, w jaki serwera usługi MAB chroni maszyny wirtualne, zależy od typu migracji na żywo.
+Gdy maszyny wirtualne są zaangażowane w migrację na żywo, program MABS nadal chroni maszyny wirtualne, o ile agent ochrony MABS jest zainstalowany na hoście funkcji Hyper-V. Sposób, w jaki mabs chroni maszyny wirtualne zależy od typu migracji na żywo zaangażowanych.
 
-**Migracja na żywo w ramach klastra** — w przypadku migrowania maszyny wirtualnej w klastrze serwera usługi MAB wykrywa migrację i tworzy kopię zapasową maszyny wirtualnej z nowego węzła klastra bez konieczności interwencji użytkownika. Ponieważ lokalizacja przechowywania nie została zmieniona, serwera usługi MAB kontynuuje Tworzenie ekspresowych pełnych kopii zapasowych.
+**Migracja na żywo w klastrze** — gdy maszyna wirtualna jest migrowana w klastrze MABS wykrywa migrację i kopii zapasowej maszyny wirtualnej z nowego węzła klastra bez żadnych wymagań dotyczących interwencji użytkownika. Ponieważ lokalizacja magazynu nie uległa zmianie, usługa MABS kontynuuje wykonywanie pełnych kopii zapasowych.
 
-**Migracja na żywo poza klastrem** — podczas migracji maszyny wirtualnej między serwerami autonomicznymi, różnymi klastrami lub między serwerem autonomicznym a klastrem program serwera usługi MAB wykrywa migrację i umożliwia utworzenie kopii zapasowej maszyny wirtualnej bez interwencji użytkownika.
+**Migracja na żywo poza klastrem** — gdy maszyna wirtualna jest migrowana między serwerami autonomicznymi, różnymi klastrami lub między serwerem autonomicznym a klastrem, usługa MABS wykrywa migrację i może przeprowadzić jej utworzenie kopii zapasowej bez interwencji użytkownika.
 
 ### <a name="requirements-for-maintaining-protection"></a>Wymagania dotyczące utrzymania ochrony
 
-Poniżej przedstawiono wymagania dotyczące konserwacji ochrony podczas migracji na żywo:
+Poniżej przedstawiono wymagania dotyczące utrzymania ochrony podczas migracji na żywo:
 
-- Hosty funkcji Hyper-V dla maszyn wirtualnych muszą znajdować się w chmurze programu System Center VMM na serwerze VMM, na którym jest uruchomiony program System Center 2012 z dodatkiem SP1 lub nowszy.
+- Hosty funkcji Hyper-V dla maszyn wirtualnych muszą znajdować się w chmurze programu WindowsMM centrum systemowego na serwerze programu VMM z systemem co najmniej System Center 2012 z sp1.
 
-- Agent ochrony serwera usługi MAB musi być zainstalowany na wszystkich hostach funkcji Hyper-V.
+- Agent ochrony MABS musi być zainstalowany na wszystkich hostach funkcji Hyper-V.
 
-- Serwery serwera usługi MAB muszą być połączone z serwerem programu VMM. Wszystkie serwery hosta funkcji Hyper-V w chmurze programu VMM również muszą być podłączone do serwerów serwera usługi MAB. Pozwala to serwera usługi MAB na komunikowanie się z serwerem programu VMM, dlatego serwera usługi MAB może dowiedzieć się, na którym serwerze hosta funkcji Hyper-V maszyna wirtualna jest aktualnie uruchomiona, i utworzyć nową kopię zapasową z tego serwera funkcji Hyper-V. Jeśli nie można nawiązać połączenia z serwerem funkcji Hyper-V, kopia zapasowa kończy się niepowodzeniem z komunikatem, że Agent ochrony serwera usługi MAB jest nieosiągalny.
+- Serwery MABS muszą być podłączone do serwera programu VMM. Wszystkie serwery hostów funkcji Hyper-V w chmurze programu VMM muszą być również połączone z serwerami MABS. Dzięki temu mabs do komunikowania się z serwerem programu VMM, dzięki czemu mabs można dowiedzieć się, na którym serwerze hosta funkcji Hyper-V maszyna wirtualna jest aktualnie uruchomiona, i utworzyć nową kopię zapasową z tego serwera funkcji Hyper-V. Jeśli nie można nawiązać połączenia z serwerem funkcji Hyper-V, kopia zapasowa kończy się niepowodzeniem, a komunikat, że agent ochrony MABS jest nieosiągalny.
 
-- Wszystkie serwery serwera usługi MAB, serwery VMM i serwery hosta funkcji Hyper-V muszą znajdować się w tej samej domenie.
+- Wszystkie serwery MABS, serwery programu VMM i serwery hosta funkcji Hyper-V muszą znajdować się w tej samej domenie.
 
 ### <a name="details-about-live-migration"></a>Szczegółowe informacje o migracji na żywo
 
-Podczas migracji na żywo należy pamiętać o następujących kwestiach:
+W przypadku tworzenia kopii zapasowej podczas migracji na żywo należy pamiętać o następujących kwestiach:
 
-- Jeśli magazyn jest transferowany w ramach migracji na żywo, serwera usługi MAB wykonuje pełne sprawdzanie spójności maszyny wirtualnej, a następnie kontynuuje Tworzenie ekspresowych pełnych kopii zapasowych. Gdy odbywa się migracja magazynu na żywo, funkcja Hyper-V Reorganizuje wirtualny dysk twardy (VHD) lub VHDX, co powoduje jednorazowy wzrost rozmiaru danych kopii zapasowej serwera usługi MAB.
+- Jeśli migracja na żywo przenosi magazyn, usługa MABS wykonuje sprawdzanie pełnej spójności maszyny wirtualnej, a następnie kontynuuje wykonywanie pełnych kopii zapasowych. W przypadku migracji na żywo magazynu funkcja Hyper-V reorganizuje wirtualny dysk twardy (VHD) lub VHDX, co powoduje jednorazowy skok rozmiaru danych kopii zapasowej MABS.
 
-- Na hoście maszyny wirtualnej Włącz funkcję automatycznego instalowania, aby włączyć ochronę wirtualną, i wyłącz odciążanie przy użyciu technologii TCP Chimney.
+- Na hoście maszyny wirtualnej włącz funkcję automatycznego instalowania, aby umożliwić ochronę wirtualną, i wyłącz odciążanie przy użyciu technologii TCP Chimney.
 
-- SERWERA usługi MAB używa portu 6070 jako domyślnego portu do hostowania usługi pomocnika DPM-VMM. Aby zmienić rejestr:
+- Firma MABS używa portu 6070 jako domyślnego portu do obsługi usługi pomocnika programu DPM-VMM. Aby zmienić rejestr:
 
-    1. Przejdź do **HKLM\Software\Microsoft\Microsoft Data Protection Manager\Configuration**.
-    2. Utwórz 32-bitową wartość DWORD: DpmVmmHelperServicePort i Zapisz zaktualizowany numer portu w ramach klucza rejestru.
-    3. Otwórz ```<Install directory>\Azure Backup Server\DPM\DPM\VmmHelperService\VmmHelperServiceHost.exe.config```i Zmień numer portu z 6070 na nowy port. Na przykład: ```<add baseAddress="net.tcp://localhost:6080/VmmHelperService/" />```
-    4. Uruchom ponownie usługę pomocnika DPM-VMM i uruchom ponownie usługę DPM.
+    1. Przejdź do klucza **HKLM\Software\Microsoft\Microsoft Data Protection Manager\Configuration**.
+    2. Utwórz 32-bitową wartość DWORD: DpmVmmHelperServicePort i zapisz zaktualizowany numer portu jako część klucza rejestru.
+    3. Otwórz plik ```<Install directory>\Azure Backup Server\DPM\DPM\VmmHelperService\VmmHelperServiceHost.exe.config``` i zmień numer portu z 6070 na nowy port. Na przykład: ```<add baseAddress="net.tcp://localhost:6080/VmmHelperService/" />```
+    4. Uruchom ponownie usługę pomocnika DPM-VMM, a następnie uruchom ponownie usługę programu DPM.
 
-### <a name="set-up-protection-for-live-migration"></a>Konfigurowanie ochrony migracji na żywo
+### <a name="set-up-protection-for-live-migration"></a>Konfiguracja ochrony migracji na żywo
 
 Aby skonfigurować ochronę migracji na żywo:
 
-1. Skonfiguruj serwer serwera usługi MAB i jego magazyn, a następnie Zainstaluj agenta ochrony serwera usługi MAB na każdym serwerze hosta funkcji Hyper-V lub w węźle klastra w chmurze programu VMM. Jeśli używasz magazynu SMB w klastrze, Zainstaluj agenta ochrony serwera usługi MAB na wszystkich węzłach klastra.
+1. Skonfiguruj serwer MABS i jego magazyn oraz zainstaluj agenta ochrony MABS na każdym serwerze hosta lub węźle klastra funkcji Hyper-V w chmurze programu VMM. Jeśli używasz magazynu SMB w klastrze, zainstaluj agenta ochrony MABS we wszystkich węzłach klastra.
 
-2. Zainstaluj konsolę programu VMM jako składnik klienta na serwerze serwera usługi MAB, aby program serwera usługi MAB mógł komunikować się z serwerem programu VMM. Konsola powinna być taka sama jak wersja uruchomiona na serwerze programu VMM.
+2. Zainstaluj konsolę programu VMM jako składnik klienta na serwerze MABS, aby usługa MABS mogła komunikować się z serwerem programu VMM. Konsola powinna mieć taką samą wersję, jaka działa na serwerze programu VMM.
 
-3. Przypisz konto MABSMachineName $ jako konto administratora z uprawnieniami tylko do odczytu na serwerze zarządzania programu VMM.
+3. Przypisz konto MABSMachineName$ jako konto administratora tylko do odczytu na serwerze zarządzania programem VMM.
 
-4. Podłącz wszystkie serwery hosta funkcji Hyper-V do wszystkich serwerów serwera usługi MAB za pomocą polecenia cmdlet programu `Set-DPMGlobalProperty` PowerShell. Polecenie cmdlet akceptuje wiele nazw serwerów serwera usługi MAB. Użyj formatu: `Set-DPMGlobalProperty -dpmservername <MABSservername> -knownvmmservers <vmmservername>`. Aby uzyskać więcej informacji, zobacz [Set-DPMGlobalProperty](https://docs.microsoft.com/powershell/module/dataprotectionmanager/set-dpmglobalproperty?view=systemcenter-ps-2019).
+4. Podłącz wszystkie serwery hostów funkcji Hyper-V do wszystkich serwerów MABS za pomocą polecenia `Set-DPMGlobalProperty` cmdlet programu PowerShell. Polecenie cmdlet akceptuje wiele nazw serwerów MABS. Użyj formatu: `Set-DPMGlobalProperty -dpmservername <MABSservername> -knownvmmservers <vmmservername>`. Aby uzyskać więcej informacji, zobacz [Set-DPMGlobalProperty](https://docs.microsoft.com/powershell/module/dataprotectionmanager/set-dpmglobalproperty?view=systemcenter-ps-2019).
 
-5. Po odnalezieniu w programie VMM wszystkich maszyn wirtualnych uruchomionych na hostach funkcji Hyper-V w chmurach programu VMM Skonfiguruj grupę ochrony i Dodaj maszyny wirtualne, które mają być chronione. Należy włączyć automatyczne sprawdzanie spójności na poziomie grupy ochrony w celu ochrony w ramach scenariuszy mobilności maszyny wirtualnej.
+5. Po odnalezieniu w programie VMM wszystkich maszyn wirtualnych uruchomionych na hostach funkcji Hyper-V w chmurach programu VMM skonfiguruj grupę ochrony i dodaj maszyny wirtualne, które chcesz chronić. Automatyczne sprawdzanie spójności powinny być włączone na poziomie grupy ochrony w celu ochrony w scenariuszach mobilności maszyny wirtualnej.
 
-6. Po skonfigurowaniu ustawień, gdy maszyna wirtualna jest migrowana z jednego klastra do innych kopii zapasowych, kontynuuje się zgodnie z oczekiwaniami. Możesz sprawdzić, czy migracja na żywo jest włączona zgodnie z oczekiwaniami, w następujący sposób:
+6. Po skonfigurowaniu ustawień, gdy maszyna wirtualna migruje z jednego klastra do drugiego, wszystkie kopie zapasowe są kontynuowane zgodnie z oczekiwaniami. Możesz sprawdzić, czy migracja na żywo jest włączona zgodnie z oczekiwaniami, w następujący sposób:
 
-   1. Sprawdź, czy usługa pomocnika DPM-VMM jest uruchomiona. Jeśli nie, uruchom ją.
+   1. Sprawdź, czy usługa pomocnika DPM-VMM jest uruchomiona. Jeśli tak nie jest, uruchom go.
 
-   2. Otwórz Management Studio Microsoft SQL Server i nawiąż połączenie z wystąpieniem, które hostuje bazę danych serwera usługi MAB (DPMDB). Na DPMDB Uruchom następujące zapytanie: `SELECT TOP 1000 [PropertyName] ,[PropertyValue] FROM[DPMDB].[dbo].[tbl_DLS_GlobalSetting]`.
+   2. Otwórz program Microsoft SQL Server Management Studio i połącz się z wystąpieniem, w którym znajduje się baza danych MABS (DPMDB). W bazie danych DPMDB uruchom następujące zapytanie: `SELECT TOP 1000 [PropertyName] ,[PropertyValue] FROM[DPMDB].[dbo].[tbl_DLS_GlobalSetting]`.
 
-      To zapytanie zawiera właściwość o nazwie `KnownVMMServer`. Ta wartość powinna być taka sama jak wartość dostarczona z poleceniem cmdlet `Set-DPMGlobalProperty`.
+      Ta kwerenda zawiera `KnownVMMServer`właściwość o nazwie . Ta wartość powinna być taka sama jak wartość dostarczona z poleceniem cmdlet `Set-DPMGlobalProperty`.
 
-   3. Uruchom następujące zapytanie, aby sprawdzić poprawność parametru *vmmidentifier znajduje* w `PhysicalPathXML` dla określonej maszyny wirtualnej. Zastąp `VMName` nazwą maszyny wirtualnej.
+   3. Uruchom następujące zapytanie, aby zweryfikować parametr *VMMIdentifier* w lokalizacji `PhysicalPathXML` dla konkretnej maszyny wirtualnej. Zastąp `VMName` nazwą maszyny wirtualnej.
 
       ```sql
       select cast(PhysicalPath as XML) from tbl_IM_ProtectedObject where DataSourceId in (select datasourceid from tbl_IM_DataSource   where DataSourceName like '%<VMName>%')
       ```
 
-   4. Otwórz plik. XML, który zwraca ta kwerenda, i sprawdź, czy pole *vmmidentifier znajduje* ma wartość.
+   4. Otwórz plik *.xml, który zwraca to zapytanie, i sprawdź, czy w polu *VMMIdentifier* znajduje się wartość.
 
-### <a name="run-manual-migration"></a>Uruchom migrację ręczną
+### <a name="run-manual-migration"></a>Uruchamianie ręcznej migracji
 
-Po wykonaniu kroków opisanych w poprzednich sekcjach i zakończeniu zadania Menedżera podsumowania serwera usługi MAB zostanie włączona funkcja migracji. Domyślnie to zadanie zaczyna się o północy i jest uruchamiane co rano. Jeśli chcesz uruchomić migrację ręczną, aby sprawdzić, czy wszystko działa zgodnie z oczekiwaniami, wykonaj następujące czynności:
+Po wykonaniu kroków w poprzednich sekcjach i zakończeniu zadania Menedżera podsumowania MABS migracja jest włączona. Domyślnie to zadanie jest uruchamiane o północy i wykonywane każdego ranka. Jeśli chcesz uruchomić ręczną migrację w celu sprawdzenia, czy wszystko działa zgodnie z oczekiwaniami, wykonaj następujące czynności:
 
-1. Otwórz SQL Server Management Studio i nawiąż połączenie z wystąpieniem, które hostuje bazę danych serwera usługi MAB.
+1. Otwórz program SQL Server Management Studio i połącz się z wystąpieniem, w którym znajduje się baza danych MABS.
 
-2. Uruchom następujące zapytanie: `SELECT SCH.ScheduleId FROM tbl_JM_JobDefinition JD JOIN tbl_SCH_ScheduleDefinition SCH ON JD.JobDefinitionId = SCH.JobDefinitionId WHERE JD.Type = '282faac6-e3cb-4015-8c6d-4276fcca11d4' AND JD.IsDeleted = 0 AND SCH.IsDeleted = 0`. To zapytanie zwraca **Identyfikator harmonogramu ScheduleID**. Zwróć uwagę na ten identyfikator, ponieważ będzie on używany w następnym kroku.
+2. Uruchom następujące zapytanie: `SELECT SCH.ScheduleId FROM tbl_JM_JobDefinition JD JOIN tbl_SCH_ScheduleDefinition SCH ON JD.JobDefinitionId = SCH.JobDefinitionId WHERE JD.Type = '282faac6-e3cb-4015-8c6d-4276fcca11d4' AND JD.IsDeleted = 0 AND SCH.IsDeleted = 0`. To zapytanie zwraca identyfikator harmonogramu **ScheduleID**. Zapisz ten identyfikator, ponieważ użyjesz go w następnym kroku.
 
-3. W SQL Server Management Studio rozwiń węzeł **SQL Server Agent**, a następnie rozwiń węzeł **zadania**. Kliknij prawym przyciskiem myszy **Identyfikator harmonogramu ScheduleID** , a następnie wybierz pozycję **Rozpocznij zadanie w kroku**.
+3. W programie SQL Server Management Studio rozwiń pozycję **Agent programu SQL Server**, a następnie rozwiń pozycję **Zadania**. Kliknij prawym przyciskiem myszy zapisany identyfikator **ScheduleID** i wybierz polecenie **Uruchom zadanie w kroku**.
 
-Wydajność tworzenia kopii zapasowych zależy od tego, czy zadanie zostało uruchomione. Rozmiar i skala wdrożenia określają, ile czasu zadanie zajmie zakończenie.
+Wydajność kopii zapasowej ma wpływ podczas pracy zadania. Czas potrzebny na zakończenie zadania zależy od rozmiaru i skali wdrożenia.
 
 ## <a name="back-up-replica-virtual-machines"></a>Tworzenie kopii zapasowych maszyn wirtualnych repliki
 
-Jeśli serwera usługi MAB jest uruchomiony w systemie Windows Server 2012 R2 lub nowszym, można utworzyć kopię zapasową maszyn wirtualnych repliki. Jest to przydatne z kilku powodów:
+Jeśli usługa MABS jest uruchomiona w systemie Windows Server 2012 R2 lub większej, można wyw. Jest to przydatne z kilku powodów:
 
-**Zmniejsza wpływ tworzenia kopii zapasowych na uruchomione obciążenie** — pobranie kopii zapasowej maszyny wirtualnej powoduje pewne obciążenie w miarę tworzenia migawki. Przeciążanie procesu tworzenia kopii zapasowej do dodatkowej lokacji zdalnej powoduje, że uruchomione obciążenie nie ma już znaczenia dla operacji tworzenia kopii zapasowej. Ma to zastosowanie tylko do wdrożeń, w których kopia zapasowa jest przechowywana w lokacji zdalnej. Można na przykład tworzyć codzienne kopie zapasowe i przechowywać dane lokalnie w celu zapewnienia szybkiego przywracania, ale co miesiąc lub co kwartał tworzyć kopie zapasowe z maszyn wirtualnych repliki przechowywanych zdalnie w celu długoterminowego przechowywania.
+**Ogranicza wpływ tworzenia kopii zapasowej na obciążenie pracą** — wykonywanie kopii zapasowej maszyny wirtualnej powoduje pewne nadmiarowe obciążenie podczas tworzenia migawki. Odciążając proces tworzenia kopii zapasowej do dodatkowej lokacji zdalnej, działanie nie jest już zagrożone operacją tworzenia kopii zapasowej. Ma to zastosowanie tylko do wdrożeń, w których kopia zapasowa jest przechowywana w lokalizacji zdalnej. Na przykład możesz korzystać z codziennych kopii zapasowych i przechowywać dane lokalnie w celu zapewnienia szybkiego przywracania, ale co miesiąc lub co kwartał tworzyć kopie zapasowe z maszyn wirtualnych replik przechowywanych zdalnie w celu przechowywania długoterminowego.
 
-**Oszczędza przepustowość** — w typowym wdrożeniu w biurze oddziału, potrzebna jest odpowiednia przepustowość do przesyłania danych kopii zapasowych między lokacjami. Jeśli utworzysz strategię replikacji i trybu failover, oprócz strategii tworzenia kopii zapasowych danych możesz zmniejszyć ilość nadmiarowych danych wysyłanych przez sieć. Wykonując kopię zapasową danych maszyny wirtualnej repliki, a nie podstawowe, oszczędzasz obciążenie związane z wysyłaniem kopii zapasowych danych za pośrednictwem sieci.
+**Oszczędza przepustowość** — w typowych wdrożeniach w zdalnym oddziale lub siedzibie firmy potrzebne jest zapewnienie odpowiedniej przepustowości do transferu danych kopii zapasowych między lokacjami. Jeśli tworzysz strategię replikacji i pracy awaryjnej, oprócz opracowania strategii wykonywania kopii zapasowej danych możesz zmniejszyć ilość nadmiarowych danych przesyłanych w sieci. Tworząc kopię zapasową danych maszyny wirtualnej repliki, a nie podstawowego, można zapisać obciążenie związane z wysyłaniem kopii zapasowych danych za pośrednictwem sieci.
 
-**Umożliwia tworzenie kopii zapasowych dostawcy usług hostingowych** — można użyć hostowanego centrum danych jako lokacji repliki, bez potrzeby dodatkowego centrum danych. W takim przypadku umowa SLA dostawcy usług hostingowych wymaga spójnej kopii zapasowej maszyn wirtualnych repliki.
+**Umożliwia wykonywanie kopii zapasowych dostawcy usług hostingowych** — hostowanego centrum danych można użyć jako lokalizacji repliki, co powoduje, że pomocnicze centrum danych nie jest potrzebne. W takim przypadku usługa SLA hostera wymaga spójnej kopii zapasowej maszyn wirtualnych replik.
 
-Maszyna wirtualna repliki jest wyłączona do momentu zainicjowania trybu failover, a usługa VSS nie może zagwarantować kopii zapasowej spójnej na poziomie aplikacji dla maszyny wirtualnej repliki. W ten sposób kopia zapasowa maszyny wirtualnej repliki będzie tylko spójna w razie awarii. Jeśli nie można zagwarantować spójności awaryjnej, wykonywanie kopii zapasowej zakończy się niepowodzeniem i może wystąpić w kilku warunkach:
+Maszyna wirtualna repliki jest wyłączona do momentu zainicjowania trybu failover, a usługa VSS nie może zagwarantować kopii zapasowej maszyny wirtualnej repliki spójnej na poziomie aplikacji. W związku z tym kopia zapasowa repliki maszyny wirtualnej będzie tylko spójna na poziomie awarii. Jeśli nie można zagwarantować spójności na poziomie awarii, tworzenie kopii zapasowej zakończy się niepowodzeniem, a taka sytuacja może wystąpić w kilku przypadkach:
 
 - Maszyna wirtualna repliki nie jest w dobrej kondycji i jest w stanie krytycznym.
 
-- Maszyna wirtualna repliki jest ponownie synchronizowana (w stanie "ponowna synchronizacja w toku" lub "wymagana ponowna synchronizacja").
+- Maszyna wirtualna repliki jest ponownie synchronizowana (w stanie ponownej synchronizacji w toku lub w stanie konieczności wykonania ponownej synchronizacji).
 
-- Replikacja początkowa między lokacją podstawową a dodatkową jest w toku lub oczekuje na maszynę wirtualną.
+- Początkowa replikacja maszyny wirtualnej między lokalizacją główną a pomocniczą jest w toku lub jest oczekiwana.
 
-- Dzienniki. HRL są stosowane do maszyny wirtualnej repliki lub poprzednia czynność zastosowania dzienników. HRL na dysku wirtualnym nie powiodła się lub została anulowana lub przerwana.
+- Dzienniki hrl są stosowane do maszyny wirtualnej repliki lub poprzedniej akcji, aby zastosować .hrl dzienniki na dysku wirtualnym nie powiodło się lub został anulowany lub przerwany.
 
-- Migracja lub praca w trybie failover maszyny wirtualnej repliki jest w toku
+- Trwa migracja lub praca w trybie failover maszyny wirtualnej repliki
 
 ## <a name="recover-backed-up-virtual-machines"></a>Odzyskiwanie kopii zapasowych maszyn wirtualnych
 
-Aby można było odzyskać kopię zapasową maszyny wirtualnej, należy użyć Kreatora odzyskiwania, aby wybrać maszynę wirtualną i konkretny punkt odzyskiwania. Aby otworzyć Kreatora odzyskiwania i odzyskać maszynę wirtualną:
+Gdy możesz odzyskać kopię zapasową maszyny wirtualnej, użyj Kreatora odzyskiwania, aby wybrać maszynę wirtualną i określony punkt odzyskiwania. Aby otworzyć Kreatora odzyskiwania i odzyskać maszynę wirtualną:
 
-1. W konsoli administratora serwera usługi MAB wpisz nazwę maszyny wirtualnej lub rozwiń listę chronionych elementów i wybierz maszynę wirtualną, którą chcesz odzyskać.
+1. W konsoli Administrator systemu MABS wpisz nazwę maszyny Wirtualnej lub rozwiń listę elementów chronionych i wybierz maszynę wirtualną, którą chcesz odzyskać.
 
-2. W okienku **punkty odzyskiwania dla** w kalendarzu kliknij dowolną datę, aby wyświetlić dostępne punkty odzyskiwania. Następnie w okienku **ścieżka** wybierz punkt odzyskiwania, którego chcesz użyć w Kreatorze odzyskiwania.
+2. W okienku **Punkty odzyskiwania dla** kliknij w kalendarzu dowolną datę, aby wyświetlić dostępne punkty odzyskiwania. Następnie w okienku **Ścieżka** wybierz punkt odzyskiwania, którego chcesz użyć w Kreatorze odzyskiwania.
 
-3. W menu **Akcje** kliknij polecenie **Odzyskaj** , aby otworzyć Kreatora odzyskiwania.
+3. W menu **Akcje** kliknij pozycję **Odzyskaj**, aby otworzyć Kreatora odzyskiwania.
 
-    Wybrana maszyna wirtualna i punkt odzyskiwania są wyświetlane na ekranie **Przejrzyj wybrane opcje odzyskiwania** . Kliknij przycisk **Dalej**.
+    Wybrana maszyna wirtualna i punkt odzyskiwania są wyświetlane na ekranie **Przegląd wybranego elementu do odzyskania**. Kliknij przycisk **alej**.
 
-4. Na ekranie **Wybieranie typu odzyskiwania** wybierz miejsce, w którym chcesz przywrócić dane, a następnie kliknij przycisk **dalej**.
+4. Na ekranie **Wybieranie typu odzyskiwania** wybierz, dokąd chcesz przywrócić dane, a następnie kliknij przycisk **Dalej**.
 
-    - **Odzyskaj do oryginalnego wystąpienia**: gdy odzyskasz do oryginalnego wystąpienia, oryginalny dysk VHD zostanie usunięty. SERWERA usługi MAB odzyskuje dysk VHD i inne pliki konfiguracji do oryginalnej lokalizacji za pomocą składnika zapisywania usługi VSS funkcji Hyper-V. Po zakończeniu procesu odzyskiwania maszyny wirtualne są nadal wysoce dostępne.
-        Aby odzyskiwanie było możliwe, musi być obecna Grupa zasobów. Jeśli nie jest dostępna, Odzyskaj do lokalizacji alternatywnej, a następnie ustaw maszynę wirtualną w wysokiej dostępności.
+    - **Odzyskiwanie do oryginalnego wystąpienia**: podczas odzyskiwania do oryginalnego wystąpienia oryginalny dysk VHD jest usuwany. Firma MABS odzyskuje dysk VHD i inne pliki konfiguracyjne do oryginalnej lokalizacji przy użyciu modułu zapisującego usługi VSS funkcji Hyper-V. Po zakończeniu procesu odzyskiwania maszyny wirtualne nadal zapewniają dużą dostępność.
+        Aby odzyskiwanie mogło się odbyć, musi być dostępna grupa zasobów. Jeśli grupa nie jest dostępna, wykonaj odzyskiwanie do lokalizacji alternatywnej, a następnie przełącz maszynę wirtualną w tryb wysokiej dostępności.
 
-    - **Odzyskaj jako maszynę wirtualną do dowolnego hosta**: serwera usługi MAB obsługuje odzyskiwanie do lokalizacji alternatywnej (ALR), które zapewnia bezproblemowe odzyskiwanie chronionej maszyny wirtualnej funkcji Hyper-v do innego hosta funkcji Hyper-v niezależnie od architektury procesora. Maszyny wirtualne funkcji Hyper-V odzyskiwane do węzła klastra nie będą miały dużej dostępności. W przypadku wybrania tej opcji Kreator odzyskiwania przedstawia dodatkowy ekran służący do identyfikowania ścieżki docelowej i docelowej.
+    - **Odzyskaj jako maszynę wirtualną do dowolnego hosta:** MABS obsługuje alternatywne odzyskiwanie lokalizacji (ALR), które zapewnia bezproblemowe odzyskiwanie chronionej maszyny wirtualnej Funkcji Hyper-V do innego hosta funkcji Hyper-V, niezależnie od architektury procesora. Maszyny wirtualne funkcji Hyper-V, które są odzyskiwane do węzła klastra, nie będą mieć wysokiej dostępności. Jeśli wybierzesz tę opcję, Kreator odzyskiwania wyświetli dodatkowy ekran w celu identyfikacji miejsca docelowego i ścieżki docelowej.
 
-    - **Kopiuj do folderu sieciowego**: serwera usługi MAB obsługuje odzyskiwanie na poziomie elementu (ILR), które umożliwia odzyskiwanie plików, folderów, woluminów i wirtualnych dysków twardych (VHD) z kopii zapasowej na poziomie hosta maszyn wirtualnych funkcji Hyper-V do udziału sieciowego lub woluminu na serwerze chronionym serwera usługi MAB. Aby można było przeprowadzić odzyskiwanie na poziomie elementu, Agent ochrony serwera usługi MAB nie musi być zainstalowany w ramach gościa. W przypadku wybrania tej opcji Kreator odzyskiwania przedstawia dodatkowy ekran służący do identyfikowania ścieżki docelowej i docelowej.
+    - **Kopiowanie do folderu sieciowego:** MABS obsługuje odzyskiwanie na poziomie elementu (ILR), które umożliwia odzyskiwanie plików, folderów, woluminów i wirtualnych dysków twardych (VHD) na poziomie hosta, z kopii zapasowej maszyn wirtualnych typu Hyper-V na poziomie elementu do udziału sieciowego lub woluminu na serwerze chronionym przez mabs. Agent ochrony MABS nie musi być zainstalowany wewnątrz gościa do wykonywania odzyskiwania na poziomie elementu. Jeśli wybierzesz tę opcję, Kreator odzyskiwania wyświetli dodatkowy ekran w celu identyfikacji miejsca docelowego i ścieżki docelowej.
 
-5. W obszarze **Określ opcje odzyskiwania** Skonfiguruj opcje odzyskiwania i kliknij przycisk **dalej**:
+5. W obszarze **Określanie opcji odzyskiwania** skonfiguruj opcje odzyskiwania i kliknij przycisk **Dalej**:
 
-    - W przypadku odzyskiwania maszyny wirtualnej z niską przepustowością kliknij przycisk **Modyfikuj** , aby włączyć **ograniczanie użycia przepustowości sieci**. Po włączeniu opcji ograniczania przepustowości możesz określić przepustowość, która ma być dostępna, oraz czas, w którym ta przepustowość jest dostępna.
-    - Wybierz opcję **Włącz odzyskiwanie na podstawie sieci SAN, używając migawek sprzętowych** , jeśli skonfigurowano sieć.
-    - Wybierz opcję **Wyślij wiadomość e-mail po zakończeniu odzyskiwania** , a następnie podaj adresy e-mail, jeśli chcesz otrzymywać powiadomienia pocztą e-mail po zakończeniu procesu odzyskiwania.
+    - Jeśli odzyskujesz maszynę wirtualną w warunkach niskiej przepustowości, kliknij pozycję **Modyfikuj**, aby włączyć pozycję **Ograniczenie przepustowości sieci**. Po włączeniu opcji ograniczania przepustowości możesz określić przepustowość, którą chcesz udostępnić, i czas, kiedy ta przepustowość jest dostępna.
+    - Jeśli sieć jest skonfigurowana, wybierz pozycję **Włącz odzyskiwanie na podstawie sieci SAN z użyciem migawek sprzętowych**.
+    - Wybierz pozycję **Wyślij wiadomość e-mail po zakończeniu odzyskiwania**, a następnie wprowadź adresy e-mail, jeśli chcesz, aby powiadomienia e-mail były wysyłane po zakończeniu procesu odzyskiwania.
 
-6. Na ekranie Podsumowanie upewnij się, że wszystkie szczegóły są poprawne. Jeśli szczegóły są nieprawidłowe lub chcesz wprowadzić zmiany, kliknij przycisk **Wstecz**. Jeśli ustawienia są zadowalające, kliknij przycisk **Odzyskaj** , aby rozpocząć proces odzyskiwania.
+6. Na ekranie Podsumowanie upewnij się, że wszystkie szczegóły są poprawne. Jeśli szczegóły nie są poprawne lub chcesz wprowadzić zmiany, kliknij przycisk **Wstecz**. Jeśli ustawienia są poprawne, kliknij przycisk **Odzyskaj**, aby rozpocząć proces odzyskiwania.
 
-7. Ekran **stan odzyskiwania** zawiera informacje o zadaniu odzyskiwania.
+7. Ekran **Stan odzyskiwania** zawiera informacje o zadaniu odzyskiwania.
 
 ## <a name="next-steps"></a>Następne kroki
 

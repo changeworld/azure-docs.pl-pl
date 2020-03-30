@@ -1,6 +1,6 @@
 ---
-title: Udzielanie zgody administratora w całej dzierżawie na aplikację — Azure AD
-description: Dowiedz się, jak przyznać całej dzierżawie zgodę na aplikację, tak aby użytkownicy końcowi nie monitowani o zgodę podczas logowania się do aplikacji.
+title: Udzielanie zgody administratora dla całej dzierżawy na aplikację — usługa Azure AD
+description: Dowiedz się, jak udzielić aplikacji zgody całej dzierżawy, aby użytkownicy końcowi nie monitowani o zgodę podczas logowania się do aplikacji.
 services: active-directory
 author: psignoret
 manager: CelesteDG
@@ -13,77 +13,77 @@ ms.author: mimart
 ms.reviewer: phsignor
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c515fef4997720435c64bd5f3ae7b18f8921fc5d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75480920"
 ---
-# <a name="grant-tenant-wide-admin-consent-to-an-application"></a>Przyznaj administratorowi zgodę na dostęp do aplikacji
+# <a name="grant-tenant-wide-admin-consent-to-an-application"></a>Udzielanie zgody administratora dla całej dzierżawy na aplikację
 
-Dowiedz się, jak uprościć środowisko użytkownika, udzielając zgody administratora na dostęp do aplikacji. Ten artykuł zawiera różne sposoby osiągnięcia tego celu. Metody dotyczą wszystkich użytkowników końcowych w dzierżawie usługi Azure Active Directory (Azure AD).
+Dowiedz się, jak uprościć środowisko użytkownika, udzielając aplikacji zgody administratora w całej dzierżawie. Ten artykuł zawiera różne sposoby osiągnięcia tego celu. Metody dotyczą wszystkich użytkowników końcowych w dzierżawie usługi Azure Active Directory (Azure AD).
 
-Aby uzyskać więcej informacji na temat wyrażania zgody na aplikacje, zobacz [Azure Active Directory](../develop/consent-framework.md).
+Aby uzyskać więcej informacji na temat zgody na aplikacje, zobacz [Framework zgody usługi Azure Active Directory](../develop/consent-framework.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Przyznanie zgody administratora całej dzierżawy wymaga zalogowania się jako [administrator globalny](../users-groups-roles/directory-assign-admin-roles.md#global-administrator--company-administrator), [administrator aplikacji](../users-groups-roles/directory-assign-admin-roles.md#application-administrator)lub [administrator aplikacji w chmurze](../users-groups-roles/directory-assign-admin-roles.md#cloud-application-administrator).
+Udzielanie zgody administratora w całej dzierżawie wymaga zalogowania się jako [administrator globalny,](../users-groups-roles/directory-assign-admin-roles.md#global-administrator--company-administrator) [administrator aplikacji](../users-groups-roles/directory-assign-admin-roles.md#application-administrator)lub administrator aplikacji [w chmurze.](../users-groups-roles/directory-assign-admin-roles.md#cloud-application-administrator)
 
 > [!IMPORTANT]
-> Gdy aplikacja otrzymuje zgodę na dostęp do całej dzierżawy, wszyscy użytkownicy będą mogli zalogować się do aplikacji, o ile nie została skonfigurowana tak, aby wymagała przypisania użytkownika. Aby określić, którzy użytkownicy mogą logować się do aplikacji, należy zażądać przypisania użytkownika, a następnie przypisać użytkowników lub grupy do aplikacji. Aby uzyskać więcej informacji, zobacz [metody przypisywania użytkowników i grup](methods-for-assigning-users-and-groups.md).
+> Gdy aplikacja została udzielona w całej dzierżawie zgody administratora, wszyscy użytkownicy będą mogli zalogować się do aplikacji, chyba że został skonfigurowany do żądania przypisania użytkownika. Aby ograniczyć, którzy użytkownicy mogą logować się do aplikacji, wymagają przypisania użytkownika, a następnie przypisują użytkowników lub grupy do aplikacji. Aby uzyskać więcej informacji, zobacz [Metody przypisywania użytkowników i grup](methods-for-assigning-users-and-groups.md).
 
 > [!WARNING]
-> Przyznanie administratorowi zgody na dostęp do całej dzierżawy dla aplikacji spowoduje przyznanie aplikacji i wydawcy aplikacji dostępu do danych organizacji. Uważnie Przejrzyj uprawnienia, których aplikacja żąda przed udzieleniem zgody.
+> Udzielenie zgody administratora w całej dzierżawie aplikacji zapewni aplikacji i wydawcy aplikacji dostęp do danych organizacji. Dokładnie przejrzyj uprawnienia, o które żąda aplikacja przed udzieleniem zgody.
 
-## <a name="grant-admin-consent-from-the-azure-portal"></a>Udziel zgody administratora z Azure Portal
+## <a name="grant-admin-consent-from-the-azure-portal"></a>Udzielanie zgody administratora z witryny Azure portal
 
-### <a name="grant-admin-consent-in-enterprise-apps"></a>Udzielanie zgody administratora w aplikacjach dla przedsiębiorstw
+### <a name="grant-admin-consent-in-enterprise-apps"></a>Udzielanie zgody administratora w aplikacjach enterprise
 
-Jeśli aplikacja została już zainicjowana w dzierżawie, można udzielić zgody administratora na całej dzierżawie za pomocą *aplikacji dla przedsiębiorstw* . Na przykład aplikacja może zostać zainicjowana w dzierżawie, jeśli co najmniej jeden użytkownik już wyraził zgodę na aplikację. Aby uzyskać więcej informacji, zobacz [jak i dlaczego aplikacje są dodawane do Azure Active Directory](../develop/active-directory-how-applications-are-added.md).
+Można udzielić zgody administratora całej dzierżawy za pośrednictwem *aplikacji Enterprise,* jeśli aplikacja została już udostępniona w dzierżawie. Na przykład aplikacja może być aprowizowana w dzierżawie, jeśli co najmniej jeden użytkownik wyraził już zgodę na aplikację. Aby uzyskać więcej informacji, zobacz [Jak i dlaczego aplikacje są dodawane do usługi Azure Active Directory](../develop/active-directory-how-applications-are-added.md).
 
-Aby udzielić zgody administratora na poziomie dzierżawy aplikacji wymienionej w **aplikacjach dla przedsiębiorstw**:
+Aby udzielić zgody administratora w całej dzierżawie na aplikację wymienioną w **aplikacjach dla przedsiębiorstw:**
 
-1. Zaloguj się do [Azure Portal](https://portal.azure.com) jako [administrator globalny](../users-groups-roles/directory-assign-admin-roles.md#global-administrator--company-administrator), [administrator aplikacji](../users-groups-roles/directory-assign-admin-roles.md#application-administrator)lub [administrator aplikacji w chmurze](../users-groups-roles/directory-assign-admin-roles.md#cloud-application-administrator).
-2. Wybierz **Azure Active Directory** następnie **aplikacje dla przedsiębiorstw**.
+1. Zaloguj się do [portalu Azure](https://portal.azure.com) jako [administrator globalny,](../users-groups-roles/directory-assign-admin-roles.md#global-administrator--company-administrator) [administrator aplikacji](../users-groups-roles/directory-assign-admin-roles.md#application-administrator)lub administrator aplikacji [w chmurze.](../users-groups-roles/directory-assign-admin-roles.md#cloud-application-administrator)
+2. Wybierz **pozycję Azure Active Directory,** a następnie **aplikacje dla przedsiębiorstw**.
 3. Wybierz aplikację, do której chcesz udzielić zgody administratora w całej dzierżawie.
-4. Wybierz pozycję **uprawnienia** , a następnie kliknij pozycję **Udziel zgody administratora**.
-5. Uważnie Przejrzyj uprawnienia wymagane przez aplikację.
-6. Jeśli wyrażasz zgodę na uprawnienia wymagane przez aplikację, udziel zgody. Jeśli nie, kliknij przycisk **Anuluj** lub Zamknij okno.
+4. Wybierz **pozycję Uprawnienia,** a następnie kliknij pozycję **Udziel zgody administratora**.
+5. Dokładnie przejrzyj uprawnienia wymagane przez aplikację.
+6. Jeśli zgadzasz się z uprawnieniami, których wymaga aplikacja, udziel zgody. Jeśli nie, kliknij przycisk **Anuluj** lub zamknij okno.
 
-### <a name="grant-admin-consent-in-app-registrations"></a>Udzielanie zgody administratora w Rejestracje aplikacji
+### <a name="grant-admin-consent-in-app-registrations"></a>Udzielanie zgody administratora w rejestracjach aplikacji
 
-W przypadku aplikacji opracowanych przez organizację lub zarejestrowanych bezpośrednio w dzierżawie usługi Azure AD można także udzielić zgody administratora na poziomie dzierżawy **rejestracje aplikacji** w Azure Portal.
+W przypadku aplikacji opracowanych przez organizację lub zarejestrowanych bezpośrednio w dzierżawie usługi Azure AD można również udzielić zgody administratora w całej **dzierżawie** z rejestracji aplikacji w witrynie Azure portal.
 
-Aby udzielić zgody administratora na poziomie dzierżawy od **rejestracje aplikacji**:
+Aby udzielić zgody administratora w całej dzierżawie z **rejestracji aplikacji:**
 
-1. Zaloguj się do [Azure Portal](https://portal.azure.com) jako [administrator globalny](../users-groups-roles/directory-assign-admin-roles.md#global-administrator--company-administrator), [administrator aplikacji](../users-groups-roles/directory-assign-admin-roles.md#application-administrator)lub [administrator aplikacji w chmurze](../users-groups-roles/directory-assign-admin-roles.md#cloud-application-administrator).
-2. Wybierz **Azure Active Directory** następnie **rejestracje aplikacji**.
+1. Zaloguj się do [portalu Azure](https://portal.azure.com) jako [administrator globalny,](../users-groups-roles/directory-assign-admin-roles.md#global-administrator--company-administrator) [administrator aplikacji](../users-groups-roles/directory-assign-admin-roles.md#application-administrator)lub administrator aplikacji [w chmurze.](../users-groups-roles/directory-assign-admin-roles.md#cloud-application-administrator)
+2. Wybierz **pozycję Azure Active Directory,** a następnie **rejestracje aplikacji**.
 3. Wybierz aplikację, do której chcesz udzielić zgody administratora w całej dzierżawie.
-4. Wybierz pozycję **uprawnienia interfejsu API** , a następnie kliknij pozycję **Udziel zgody administratora**.
-5. Uważnie Przejrzyj uprawnienia wymagane przez aplikację.
-6. Jeśli wyrażasz zgodę na uprawnienia wymagane przez aplikację, udziel zgody. Jeśli nie, kliknij przycisk **Anuluj** lub Zamknij okno.
+4. Wybierz **pozycję Uprawnienia interfejsu API,** a następnie kliknij pozycję **Udzielaj zgody administratora**.
+5. Dokładnie przejrzyj uprawnienia wymagane przez aplikację.
+6. Jeśli zgadzasz się z uprawnieniami, których wymaga aplikacja, udziel zgody. Jeśli nie, kliknij przycisk **Anuluj** lub zamknij okno.
 
-## <a name="construct-the-url-for-granting-tenant-wide-admin-consent"></a>Utwórz adres URL na potrzeby udzielania zgody administratora całej dzierżawy
+## <a name="construct-the-url-for-granting-tenant-wide-admin-consent"></a>Tworzenie adresu URL w celu udzielenia zgody administratora dla całej dzierżawy
 
-Podczas udzielania zgody administratora na całej dzierżawie przy użyciu dowolnej metody opisanej powyżej zostanie otwarte okno z Azure Portal, aby wyświetlić monit o zgodę na korzystanie z administracji całej dzierżawy. Jeśli znasz identyfikator klienta (znany również jako identyfikator aplikacji) aplikacji, możesz utworzyć ten sam adres URL, aby udzielić zgody administratora całej dzierżawy.
+Podczas udzielania zgody administratora całej dzierżawy przy użyciu jednej z metod opisanych powyżej, otwiera się okno z witryny Azure Portal, aby monitować o zgodę administratora dla całej dzierżawy. Jeśli znasz identyfikator klienta (znany również jako identyfikator aplikacji) aplikacji, możesz utworzyć ten sam adres URL, aby udzielić zgody administratora w całej dzierżawie.
 
-Adres URL zgody administratora dla całej dzierżawy jest następujący:
+Adres URL zgody administratora w całej dzierżawie jest zgodny z następującym formatem:
 
     https://login.microsoftonline.com/{tenant-id}/adminconsent?client_id={client-id}
 
 gdzie:
 
-* `{client-id}` to identyfikator klienta aplikacji (znany również jako identyfikator aplikacji).
-* `{tenant-id}` jest IDENTYFIKATORem dzierżawy organizacji lub dowolną zweryfikowaną nazwą domeny.
+* `{client-id}`jest identyfikatorem klienta aplikacji (znanym również jako identyfikator aplikacji).
+* `{tenant-id}`to identyfikator dzierżawy organizacji lub dowolna zweryfikowana nazwa domeny.
 
-Zawsze należy uważnie przejrzeć uprawnienia żądania aplikacji przed udzieleniem zgody.
+Jak zawsze, dokładnie przejrzyj uprawnienia żądane przez aplikację przed udzieleniem zgody.
 
 ## <a name="next-steps"></a>Następne kroki
 
-[Konfigurowanie sposobu, w jaki użytkownicy końcowi wyrażają zgodę na aplikacje](configure-user-consent.md)
+[Konfigurowanie sposobu wyrażania zgody użytkowników końcowych na aplikacje](configure-user-consent.md)
 
 [Konfigurowanie przepływu pracy zgody administratora](configure-admin-consent-workflow.md)
 
 [Uprawnienia i zgoda na platformie tożsamości firmy Microsoft](../develop/active-directory-v2-scopes.md)
 
-[Usługa Azure AD w systemie StackOverflow](https://stackoverflow.com/questions/tagged/azure-active-directory)
+[Usługa Azure AD w przepływie stosuPrzepełnienie](https://stackoverflow.com/questions/tagged/azure-active-directory)

@@ -1,40 +1,40 @@
 ---
-title: Durable Functions publikowania do Azure Event Grid (wersja zapoznawcza)
-description: Dowiedz się, jak skonfigurować automatyczne publikowanie Azure Event Grid dla Durable Functions.
+title: Funkcje trwałe publikowania w usłudze Azure Event Grid (wersja zapoznawcza)
+description: Dowiedz się, jak skonfigurować automatyczne publikowanie w usłudze Azure Event Grid dla funkcji trwałych.
 ms.topic: conceptual
 ms.date: 03/14/2019
 ms.openlocfilehash: 52ffcd4eb81936ffcfa61580288c60bd59ffb744
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78249757"
 ---
-# <a name="durable-functions-publishing-to-azure-event-grid-preview"></a>Durable Functions publikowania do Azure Event Grid (wersja zapoznawcza)
+# <a name="durable-functions-publishing-to-azure-event-grid-preview"></a>Funkcje trwałe publikowania w usłudze Azure Event Grid (wersja zapoznawcza)
 
-W tym artykule przedstawiono sposób konfigurowania Durable Functions publikowania zdarzeń cyklu życia aranżacji (takich jak utworzone, ukończone i niepowodzenie) w temacie niestandardowym [Azure Event Grid](https://docs.microsoft.com/azure/event-grid/overview).
+W tym artykule pokazano, jak skonfigurować funkcje trwałe do publikowania zdarzeń cyklu życia aranżacji (takich jak utworzone, ukończone i nie powiodło się) w niestandardowym [temacie siatki zdarzeń platformy Azure.](https://docs.microsoft.com/azure/event-grid/overview)
 
-Poniżej przedstawiono kilka scenariuszy, w których ta funkcja jest przydatna:
+Oto kilka scenariuszy, w których ta funkcja jest przydatna:
 
-* **DevOps scenariusze, takie jak wdrożenia Blue/Green**: możesz chcieć wiedzieć, czy jakieś zadania są uruchomione przed implementacją [strategii wdrażania Side-by-Side](durable-functions-versioning.md#side-by-side-deployments).
+* **Scenariusze DevOps, takie jak wdrożenia niebieskie/zielone:** Przed wdrożeniem [strategii wdrażania side-by-side](durable-functions-versioning.md#side-by-side-deployments)warto wiedzieć, czy są uruchomione jakieś zadania.
 
-* **Zaawansowana obsługa monitorowania i diagnostyki**: można śledzić informacje o stanie aranżacji w zewnętrznym magazynie zoptymalizowanym pod kątem zapytań, takich jak Azure SQL Database lub Azure Cosmos DB.
+* **Zaawansowana obsługa monitorowania i diagnostyki:** Można śledzić informacje o stanie aranżacji w magazynie zewnętrznym zoptymalizowanym pod kątem zapytań, takich jak usługa Azure SQL Database lub usługa Azure Cosmos DB.
 
-* **Długotrwałe działanie w tle**: jeśli używasz Durable Functions do długotrwałego działania w tle, ta funkcja pomaga znać bieżący stan.
+* **Długotrwała aktywność w tle:** Jeśli używasz funkcji trwałych do długotrwałego działania w tle, ta funkcja pomaga poznać bieżący stan.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Zainstaluj [Microsoft. Azure. WebJobs. Extensions. DurableTask](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.DurableTask) w projekcie Durable Functions.
-* Zainstaluj [emulator usługi Azure Storage](../../storage/common/storage-use-emulator.md) (tylko system Windows) lub Użyj istniejącego konta usługi Azure Storage.
-* Instalowanie [interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) lub korzystanie z [Azure Cloud Shell](../../cloud-shell/overview.md)
+* Zainstaluj [microsoft.Azure.WebJobs.Extensions.DurableTask](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.DurableTask) w projekcie funkcji trwałych.
+* Zainstaluj [emulator usługi Azure Storage](../../storage/common/storage-use-emulator.md) (tylko system Windows) lub użyj istniejącego konta usługi Azure Storage.
+* Instalowanie [interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) lub korzystanie z usługi Azure Cloud [Shell](../../cloud-shell/overview.md)
 
-## <a name="create-a-custom-event-grid-topic"></a>Tworzenie niestandardowego tematu Event Grid
+## <a name="create-a-custom-event-grid-topic"></a>Tworzenie niestandardowego tematu siatki zdarzeń
 
-Utwórz temat Event Grid do wysyłania zdarzeń z Durable Functions. Poniższe instrukcje przedstawiają sposób tworzenia tematu za pomocą interfejsu wiersza polecenia platformy Azure. Można to zrobić również przy [użyciu programu PowerShell](../../event-grid/custom-event-quickstart-powershell.md) lub [Azure Portal](../../event-grid/custom-event-quickstart-portal.md).
+Utwórz temat siatki zdarzeń do wysyłania zdarzeń z funkcji trwałych. Poniższe instrukcje pokazują, jak utworzyć temat przy użyciu interfejsu wiersza polecenia platformy Azure. Można to również zrobić [za pomocą programu PowerShell](../../event-grid/custom-event-quickstart-powershell.md) lub [przy użyciu witryny Azure Portal.](../../event-grid/custom-event-quickstart-portal.md)
 
-### <a name="create-a-resource-group"></a>Utwórz grupę zasobów
+### <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
 
-Utwórz grupę zasobów za pomocą polecenia `az group create`. Obecnie Azure Event Grid nie obsługuje wszystkich regionów. Aby uzyskać informacje o obsługiwanych regionach, zobacz [omówienie Azure Event Grid](../../event-grid/overview.md).
+Utwórz grupę zasobów za pomocą polecenia `az group create`. Obecnie usługa Azure Event Grid nie obsługuje wszystkich regionów. Aby uzyskać informacje o obsługiwanych regionach, zobacz [omówienie usługi Azure Event Grid](../../event-grid/overview.md).
 
 ```azurecli
 az group create --name eventResourceGroup --location westus2
@@ -42,13 +42,13 @@ az group create --name eventResourceGroup --location westus2
 
 ### <a name="create-a-custom-topic"></a>Tworzenie tematu niestandardowego
 
-Temat Event Grid zawiera zdefiniowany przez użytkownika punkt końcowy, w którym jest ogłaszane wydarzenie. Zamień `<topic_name>` na unikatową nazwę tematu. Nazwa tematu musi być unikatowa, ponieważ jest wpisem DNS.
+Temat Siatka zdarzeń zawiera zdefiniowany przez użytkownika punkt końcowy, w którego można zaksięgować zdarzenie. Zamień `<topic_name>` na unikatową nazwę tematu. Nazwa tematu musi być unikatowa, ponieważ staje się wpisem DNS.
 
 ```azurecli
 az eventgrid topic create --name <topic_name> -l westus2 -g eventResourceGroup
 ```
 
-## <a name="get-the-endpoint-and-key"></a>Pobieranie punktu końcowego i klucza
+## <a name="get-the-endpoint-and-key"></a>Pobierz punkt końcowy i klucz
 
 Pobierz punkt końcowy tematu. Zamień `<topic_name>` na wybraną nazwę.
 
@@ -62,13 +62,13 @@ Pobierz klucz tematu. Zamień `<topic_name>` na wybraną nazwę.
 az eventgrid topic key list --name <topic_name> -g eventResourceGroup --query "key1" --output tsv
 ```
 
-Teraz możesz wysyłać zdarzenia do tematu.
+Teraz możesz wysyłać wydarzenia do tematu.
 
-## <a name="configure-event-grid-publishing"></a>Konfigurowanie publikowania Event Grid
+## <a name="configure-event-grid-publishing"></a>Konfigurowanie publikowania w siatce zdarzeń
 
-W projekcie Durable Functions Znajdź plik `host.json`.
+W projekcie funkcje trwałe `host.json` znajdź plik.
 
-Dodaj `eventGridTopicEndpoint` i `eventGridKeySettingName` we właściwości `durableTask`.
+Dodaj `eventGridTopicEndpoint` `eventGridKeySettingName` i `durableTask` we właściwości.
 
 ```json
 {
@@ -79,9 +79,9 @@ Dodaj `eventGridTopicEndpoint` i `eventGridKeySettingName` we właściwości `du
 }
 ```
 
-Możliwe właściwości konfiguracji Azure Event Grid można znaleźć w [dokumentacji pliku host. JSON](../functions-host-json.md#durabletask). Po skonfigurowaniu pliku `host.json` aplikacja funkcji wysyła zdarzenia cyklu życia do tematu Event Grid. Działa to w przypadku uruchamiania aplikacji funkcji zarówno lokalnie, jak i na platformie Azure.
+Możliwe właściwości konfiguracji usługi Azure Event Grid można znaleźć w [dokumentacji host.json](../functions-host-json.md#durabletask). Po skonfigurowaniu `host.json` pliku aplikacja funkcji wysyła zdarzenia cyklu życia do tematu Siatka zdarzeń. Działa to po uruchomieniu aplikacji funkcji zarówno lokalnie, jak i na platformie Azure.
 
-W aplikacja funkcji i `local.settings.json`Ustaw ustawienie aplikacji dla klucza tematu. Poniższy kod JSON jest przykładem `local.settings.json` na potrzeby debugowania lokalnego. Zastąp `<topic_key>` kluczem tematu.  
+Ustaw ustawienie aplikacji dla klucza tematu `local.settings.json`w aplikacji funkcji i . Następujące JSON jest próbką `local.settings.json` do debugowania lokalnego. Zamień `<topic_key>` na klawisz tematu.  
 
 ```json
 {
@@ -94,31 +94,31 @@ W aplikacja funkcji i `local.settings.json`Ustaw ustawienie aplikacji dla klucza
 }
 ```
 
-Jeśli używasz [emulatora magazynu](../../storage/common/storage-use-emulator.md) (tylko system Windows), upewnij się, że działa. Dobrym pomysłem jest uruchomienie `AzureStorageEmulator.exe clear all` polecenia przed wykonaniem.
+Jeśli używasz [emulatora magazynu](../../storage/common/storage-use-emulator.md) (tylko dla systemu Windows), upewnij się, że działa. Dobrym pomysłem jest uruchomienie `AzureStorageEmulator.exe clear all` polecenia przed wykonaniem.
 
-Jeśli używasz istniejącego konta usługi Azure Storage, Zastąp `UseDevelopmentStorage=true` w `local.settings.json` parametrami połączenia.
+Jeśli używasz istniejącego konta usługi `UseDevelopmentStorage=true` `local.settings.json` Azure Storage, zastąp jego parametry połączenia.
 
-## <a name="create-functions-that-listen-for-events"></a>Tworzenie funkcji nasłuchujących zdarzeń
+## <a name="create-functions-that-listen-for-events"></a>Tworzenie funkcji nasłuchiuj zdarzeń
 
-Korzystając z Azure Portal, Utwórz kolejną aplikację funkcji, aby nasłuchiwać zdarzeń opublikowanych przez aplikację Durable Functions. Najlepiej znaleźć ją w tym samym regionie co Event Grid tematu.
+Korzystając z witryny Azure portal, utwórz inną aplikację funkcji, aby nasłuchiwać zdarzeń opublikowanych przez aplikację Funkcje trwałe. Najlepiej jest zlokalizować go w tym samym regionie, co temat siatka zdarzeń.
 
-### <a name="create-an-event-grid-trigger-function"></a>Tworzenie funkcji wyzwalacza Event Grid
+### <a name="create-an-event-grid-trigger-function"></a>Tworzenie funkcji wyzwalania siatki zdarzeń
 
-Utwórz funkcję do odbierania zdarzeń cyklu życia. Wybierz pozycję **Funkcja niestandardowa**.
+Utwórz funkcję, aby odbierać zdarzenia cyklu życia. Wybierz **pozycję Funkcja niestandardowa**.
 
-![Wybierz opcję Utwórz funkcję niestandardową.](./media/durable-functions-event-publishing/functions-portal.png)
+![Wybierz pozycję Utwórz funkcję niestandardową.](./media/durable-functions-event-publishing/functions-portal.png)
 
-Wybierz wyzwalacz Event Grid i wybierz język.
+Wybierz pozycję Wyzwalacz siatki zdarzeń i wybierz język.
 
-![Wybierz wyzwalacz Event Grid.](./media/durable-functions-event-publishing/eventgrid-trigger.png)
+![Wybierz wyzwalacz siatki zdarzeń.](./media/durable-functions-event-publishing/eventgrid-trigger.png)
 
-Wprowadź nazwę funkcji, a następnie wybierz pozycję `Create`.
+Wprowadź nazwę funkcji, a następnie `Create`wybierz opcję .
 
-![Utwórz wyzwalacz Event Grid.](./media/durable-functions-event-publishing/eventgrid-trigger-creation.png)
+![Utwórz wyzwalacz siatki zdarzeń.](./media/durable-functions-event-publishing/eventgrid-trigger-creation.png)
 
-Zostanie utworzona funkcja o następującym kodzie:
+Tworzona jest funkcja z następującym kodem:
 
-# <a name="c-script"></a>[C#Napisy](#tab/csharp-script)
+# <a name="c-script"></a>[Skrypt języka C#](#tab/csharp-script)
 
 ```csharp
 #r "Newtonsoft.Json"
@@ -132,7 +132,7 @@ public static void Run(JObject eventGridEvent, ILogger log)
 }
 ```
 
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[Javascript](#tab/javascript)
 
 ```javascript
 module.exports = async function(context, eventGridEvent) {
@@ -143,19 +143,19 @@ module.exports = async function(context, eventGridEvent) {
 
 ---
 
-Wybierz pozycję `Add Event Grid Subscription`. Ta operacja dodaje Event Grid subskrypcję dla utworzonego tematu Event Grid. Aby uzyskać więcej informacji, zobacz [pojęcia w Azure Event Grid](https://docs.microsoft.com/azure/event-grid/concepts)
+Wybierz pozycję `Add Event Grid Subscription`. Ta operacja dodaje subskrypcję usługi Event Grid dla utworzonego tematu siatki zdarzeń. Aby uzyskać więcej informacji, zobacz [Pojęcia w usłudze Azure Event Grid](https://docs.microsoft.com/azure/event-grid/concepts)
 
-![Wybierz łącze wyzwalacz Event Grid.](./media/durable-functions-event-publishing/eventgrid-trigger-link.png)
+![Wybierz łącze Wyzwalacz siatki zdarzeń.](./media/durable-functions-event-publishing/eventgrid-trigger-link.png)
 
-Wybierz `Event Grid Topics` dla **typu tematu**. Wybierz grupę zasobów utworzoną dla tematu Event Grid. Następnie wybierz wystąpienie tematu Event Grid. Naciśnij `Create`.
+Wybierz `Event Grid Topics` dla **typu tematu**. Wybierz grupę zasobów utworzoną dla tematu Siatka zdarzeń. Następnie wybierz wystąpienie tematu Siatka zdarzeń. Naciśnij `Create`przycisk .
 
 ![Tworzy subskrypcję usługi Event Grid.](./media/durable-functions-event-publishing/eventsubscription.png)
 
 Teraz możesz przystąpić do odbierania zdarzeń cyklu życia.
 
-## <a name="run-durable-functions-app-to-send-the-events"></a>Uruchom aplikację Durable Functions, aby wysłać zdarzenia
+## <a name="run-durable-functions-app-to-send-the-events"></a>Uruchom aplikację Trwałe funkcje, aby wysłać zdarzenia
 
-W projekcie Durable Functions, który został wcześniej skonfigurowany, Rozpocznij debugowanie na maszynie lokalnej i Rozpocznij aranżację. Aplikacja publikuje Durable Functions zdarzenia cyklu życia, aby Event Grid. Sprawdź, czy Event Grid wyzwala funkcję odbiornika utworzoną przez sprawdzanie jej dzienników w Azure Portal.
+W projekcie funkcje trwałe, który został skonfigurowany wcześniej, rozpocząć debugowanie na komputerze lokalnym i rozpocząć aranżację. Aplikacja publikuje zdarzenia cyklu życia funkcji trwałych do siatki zdarzeń. Sprawdź, czy usługa Event Grid wyzwala utworzoną funkcję odbiornika, sprawdzając jej dzienniki w witrynie Azure portal.
 
 ```
 2019-04-20T09:28:21.041 [Info] Function started (Id=3301c3ef-625f-40ce-ad4c-9ba2916b162d)
@@ -201,28 +201,28 @@ W projekcie Durable Functions, który został wcześniej skonfigurowany, Rozpocz
 
 Na poniższej liście opisano schemat zdarzeń cyklu życia:
 
-* **`id`** : unikatowy identyfikator dla zdarzenia Event Grid.
-* **`subject`** : ścieżka do tematu zdarzenia. `durable/orchestrator/{orchestrationRuntimeStatus}`. `{orchestrationRuntimeStatus}` będzie `Running`, `Completed`, `Failed`i `Terminated`.  
-* **`data`** : Durable Functions określone parametry.
-  * **`hubName`** : nazwa [TaskHub](durable-functions-task-hubs.md) .
-  * **`functionName`** : nazwa funkcji programu Orchestrator.
-  * **`instanceId`** : Durable Functions identyfikator wystąpienia.
-  * **`reason`** : dodatkowe dane skojarzone ze zdarzeniem śledzenia. Aby uzyskać więcej informacji, zobacz [Diagnostyka w Durable Functions (Azure Functions)](durable-functions-diagnostics.md)
-  * **`runtimeStatus`** : stan środowiska uruchomieniowego aranżacji. Uruchomione, zakończone, zakończone niepowodzeniem, anulowane.
-* **`eventType`** : "orchestratorEvent"
-* **`eventTime`** : czas zdarzenia (UTC).
-* **`dataVersion`** : wersja schematu zdarzenia cyklu życia.
-* **`metadataVersion`** : wersja metadanych.
-* **`topic`** : zasób tematu zdarzenia w usłudze Event Grid.
+* **`id`**: Unikatowy identyfikator zdarzenia w siatce zdarzeń.
+* **`subject`**: Ścieżka do tematu zdarzenia. `durable/orchestrator/{orchestrationRuntimeStatus}`. `{orchestrationRuntimeStatus}`będzie `Running`, `Completed` `Failed`, `Terminated`i .  
+* **`data`**: Trwałe funkcje Specyficzne parametry.
+  * **`hubName`**: Nazwa [TaskHub.](durable-functions-task-hubs.md)
+  * **`functionName`**: Nazwa funkcji koordynatora.
+  * **`instanceId`**: Trwałe funkcje instanceId.
+  * **`reason`**: Dodatkowe dane skojarzone ze zdarzeniem śledzenia. Aby uzyskać więcej informacji, zobacz [Diagnostyka w trwałych funkcjach (usługi Azure)](durable-functions-diagnostics.md)
+  * **`runtimeStatus`**: Stan środowiska uruchomieniowego aranżacji. Uruchamianie, ukończone, nie powiodło się, anulowane.
+* **`eventType`**: "orchestratorEvent"
+* **`eventTime`**: Czas zdarzenia (UTC).
+* **`dataVersion`**: Wersja schematu zdarzenia cyklu życia.
+* **`metadataVersion`**: Wersja metadanych.
+* **`topic`**: Zasób tematu siatki zdarzeń.
 
-## <a name="how-to-test-locally"></a>Jak testować lokalnie
+## <a name="how-to-test-locally"></a>Jak przetestować lokalnie
 
-Aby przetestować lokalnie, Przeczytaj [funkcję Azure Function Event Grid Wyzwól lokalne debugowanie](../functions-debug-event-grid-trigger-local.md).
+Aby przetestować lokalnie, przeczytaj [artykuł Azure Function Event Grid Trigger Local Debugging](../functions-debug-event-grid-trigger-local.md).
 
 ## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Poznaj Zarządzanie wystąpieniami w Durable Functions](durable-functions-instance-management.md)
+> [Dowiedz się, jak zarządzanie wystąpieniami w funkcji trwałych](durable-functions-instance-management.md)
 
 > [!div class="nextstepaction"]
-> [Informacje o wersji w Durable Functions](durable-functions-versioning.md)
+> [Dowiedz się, jak wersjonować w funkcji trwałe](durable-functions-versioning.md)

@@ -1,6 +1,6 @@
 ---
-title: Ustaw aktywność zmiennej w Azure Data Factory
-description: Dowiedz się, jak użyć działania Ustaw zmienną, aby ustawić wartość istniejącej zmiennej zdefiniowanej w potoku Data Factory
+title: Ustawianie aktywności zmiennej w fabryce danych platformy Azure
+description: Dowiedz się, jak ustawić wartość istniejącej zmiennej zdefiniowanej w potoku Fabryki danych za pomocą działania Ustaw zmienną.
 services: data-factory
 documentationcenter: ''
 ms.service: data-factory
@@ -12,28 +12,28 @@ ms.author: daperlov
 manager: jroth
 ms.reviewer: maghan
 ms.openlocfilehash: 88500ecbc56b34551a0cbd3ca94727ba4bbcda9f
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74930642"
 ---
-# <a name="set-variable-activity-in-azure-data-factory"></a>Ustaw aktywność zmiennej w Azure Data Factory
+# <a name="set-variable-activity-in-azure-data-factory"></a>Ustawianie aktywności zmiennej w fabryce danych platformy Azure
 
-Użyj działania Ustaw zmienną, aby ustawić wartość istniejącej zmiennej typu String, bool lub Array zdefiniowanej w potoku Data Factory.
+Użyj działania Ustaw zmienną, aby ustawić wartość istniejącej zmiennej typu String, Bool lub Array zdefiniowanej w potoku fabryki danych.
 
 ## <a name="type-properties"></a>Właściwości typu
 
-Właściwość | Opis | Wymagane
+Właściwość | Opis | Wymagany
 -------- | ----------- | --------
 name | Nazwa działania w potoku | Tak
-description | Tekst opisujący działanie działania | nie
-type | Typ działania to setvariable | tak
-wartość | Literał ciągu lub wartość obiektu Expression używana do ustawiania określonej zmiennej | tak
-variableName | Nazwa zmiennej, która zostanie ustawiona przez to działanie | tak
+description | Tekst opisujący działanie | nie
+type | Typ działania jest SetVariable | tak
+value | Wartość obiektu literału ciągu lub wyrażenia używana do ustawiania określonej zmiennej | tak
+Variablename | Nazwa zmiennej, która zostanie ustawiona przez to działanie | tak
 
 
 ## <a name="next-steps"></a>Następne kroki
-Informacje na temat działania związanego z przepływem sterowania obsługiwanego przez Data Factory: 
+Dowiedz się więcej o powiązanej aktywności przepływu sterowania obsługiwanej przez fabrykę danych: 
 
-- [Dołącz działanie zmiennej](control-flow-append-variable-activity.md)
+- [Działanie dołączania zmiennej](control-flow-append-variable-activity.md)

@@ -1,27 +1,27 @@
 ---
-title: Zainstaluj wolumin tajny do grupy kontenerów
-description: Dowiedz się, jak zainstalować wolumin tajny, aby przechowywać poufne informacje na potrzeby dostępu do wystąpień kontenerów
+title: Instalowanie woluminu tajnego w grupie kontenerów
+description: Dowiedz się, jak zainstalować tajny wolumin do przechowywania poufnych informacji w celu uzyskania dostępu przez wystąpienia kontenera
 ms.topic: article
 ms.date: 07/19/2018
 ms.openlocfilehash: 913e3d147519bc73c3c57b8da383f9d373f3666d
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78249954"
 ---
-# <a name="mount-a-secret-volume-in-azure-container-instances"></a>Zainstaluj wolumin tajny w Azure Container Instances
+# <a name="mount-a-secret-volume-in-azure-container-instances"></a>Instalowanie woluminu tajnego w wystąpieniach kontenera platformy Azure
 
-Użyj woluminu *tajnego* , aby dostarczyć poufne informacje do kontenerów w grupie kontenerów. Wolumin *tajny* przechowuje wpisy tajne w plikach w woluminie, które są dostępne dla kontenerów w grupie kontenerów. Przechowywanie wpisów tajnych w woluminie *tajnym* pozwala uniknąć dodawania poufnych danych, takich jak klucze SSH lub poświadczenia bazy danych do kodu aplikacji.
+Użyj *woluminu tajnego,* aby dostarczyć poufne informacje do kontenerów w grupie kontenerów. Tajny *secret* wolumin przechowuje wpisy tajne w plikach w woluminie, dostępne przez kontenery w grupie kontenerów. Przechowując wpisy tajne w *tajnym* woluminie, można uniknąć dodawania poufnych danych, takich jak klucze SSH lub poświadczenia bazy danych do kodu aplikacji.
 
-Wszystkie woluminy *tajne* są obsługiwane przez [tmpfs][tmpfs], system plików z pamięcią RAM; ich zawartość nigdy nie jest zapisywana w magazynie nietrwałym.
+Wszystkie *tajne* woluminy są wspierane przez [tmpfs][tmpfs], system plików z pamięcią RAM; ich zawartość nigdy nie są zapisywane do przechowywania nieulotnego.
 
 > [!NOTE]
-> Woluminy *tajne* są obecnie ograniczone do kontenerów systemu Linux. Dowiedz się, jak przekazywać bezpieczne zmienne środowiskowe dla kontenerów systemów Windows i Linux w [ustawieniu zmiennych środowiskowych](container-instances-environment-variables.md). Gdy pracujemy nad przełączeniem wszystkich funkcji do kontenerów systemu Windows, w [przeglądzie](container-instances-overview.md#linux-and-windows-containers)można znaleźć bieżące różnice między platformami.
+> *Woluminy tajne* są obecnie ograniczone do kontenerów systemu Linux. Dowiedz się, jak przekazywać zmienne bezpiecznego środowiska dla kontenerów systemu Windows i Linux w [zmiennych środowiska Set.](container-instances-environment-variables.md) Podczas gdy pracujemy nad wprowadzeniem wszystkich funkcji do kontenerów systemu Windows, możesz znaleźć aktualne różnice między platformami w [przeglądzie.](container-instances-overview.md#linux-and-windows-containers)
 
-## <a name="mount-secret-volume---azure-cli"></a>Zainstaluj wolumin tajny — interfejs wiersza polecenia platformy Azure
+## <a name="mount-secret-volume---azure-cli"></a>Instalowanie woluminu tajnego — narzędzie interfejsu wiersza polecenia platformy Azure
 
-Aby wdrożyć kontener z co najmniej jednym wpisem tajnym przy użyciu interfejsu wiersza polecenia platformy Azure, w poleceniu [AZ Container Create][az-container-create] Uwzględnij parametry `--secrets` i `--secrets-mount-path`. W tym przykładzie jest instalowany wolumin *tajny* składający się z dwóch wpisów tajnych "mysecret1" i "mysecret2" w `/mnt/secrets`:
+Aby wdrożyć kontener z co najmniej jednym wpisem `--secrets` `--secrets-mount-path` tajnym przy użyciu interfejsu wiersza polecenia platformy Azure, należy uwzględnić parametry i parametry w [poleceniu tworzenia kontenera az.][az-container-create] W tym przykładzie montuje *tajny* tom składający się z dwóch tajemnic, `/mnt/secrets`"mysecret1" i "mysecret2", w:
 
 ```azurecli-interactive
 az container create \
@@ -32,7 +32,7 @@ az container create \
     --secrets-mount-path /mnt/secrets
 ```
 
-Następujące polecenie [AZ Container exec][az-container-exec] Output pokazuje otwieranie powłoki w działającym kontenerze, wyświetlanie listy plików w woluminie tajnym, a następnie wyświetlanie ich zawartości:
+Następujące [dane wyjściowe az container exec][az-container-exec] pokazuje otwarcie powłoki w uruchomionym kontenerze, listę plików w woluminie tajnym, a następnie wyświetlanie ich zawartości:
 
 ```azurecli
 az container exec --resource-group myResourceGroup --name secret-volume-demo --exec-command "/bin/sh"
@@ -50,13 +50,13 @@ My second secret BAR
 Bye.
 ```
 
-## <a name="mount-secret-volume---yaml"></a>Zainstaluj wolumin tajny YAML
+## <a name="mount-secret-volume---yaml"></a>Zamontuj tajny wolumin - YAML
 
-Możesz również wdrożyć grupy kontenerów za pomocą interfejsu wiersza polecenia platformy Azure i [szablonu YAML](container-instances-multi-container-yaml.md). Wdrażanie przy użyciu szablonu YAML jest preferowaną metodą wdrażania grup kontenerów składających się z wielu kontenerów.
+Można również wdrożyć grupy kontenerów za pomocą interfejsu wiersza polecenia platformy Azure i [szablonu YAML](container-instances-multi-container-yaml.md). Wdrażanie przez szablon YAML jest preferowaną metodą podczas wdrażania grup kontenerów składających się z wielu kontenerów.
 
-W przypadku wdrażania przy użyciu szablonu YAML wartości klucza tajnego muszą być **zakodowane w formacie base64** w szablonie. Jednak wartości klucza tajnego są wyświetlane w postaci zwykłego tekstu w plikach w kontenerze.
+Podczas wdrażania z szablonem YAML, wartości tajne muszą być **kodowane base64** w szablonie. Jednak tajne wartości są wyświetlane w postaci zwykłego tekstu w plikach w kontenerze.
 
-Poniższy szablon YAML definiuje grupę kontenerów z jednym kontenerem instalującym wolumin *tajny* w `/mnt/secrets`. Wolumin tajny ma dwa wpisy tajne, "mysecret1" i "mysecret2".
+Poniższy szablon YAML definiuje grupę kontenerów z *secret* jednym `/mnt/secrets`kontenerem, który montuje tajny wolumin w pliku . Tajny tom ma dwie tajemnice: "mysecret1" i "mysecret2".
 
 ```yaml
 apiVersion: '2018-10-01'
@@ -87,27 +87,27 @@ tags: {}
 type: Microsoft.ContainerInstance/containerGroups
 ```
 
-Aby wdrożyć z szablonem YAML, Zapisz poprzedni YAML do pliku o nazwie `deploy-aci.yaml`, a następnie wykonaj polecenie [AZ Container Create][az-container-create] z parametrem `--file`:
+Aby wdrożyć za pomocą szablonu YAML, zapisz `deploy-aci.yaml`poprzedni YAML w pliku o `--file` nazwie , a następnie wykonaj polecenie [tworzenia kontenera az][az-container-create] z parametrem:
 
 ```azurecli-interactive
 # Deploy with YAML template
 az container create --resource-group myResourceGroup --file deploy-aci.yaml
 ```
 
-## <a name="mount-secret-volume---resource-manager"></a>Zainstaluj wolumin tajny Menedżer zasobów
+## <a name="mount-secret-volume---resource-manager"></a>Instalowanie woluminu tajnego — Menedżer zasobów
 
-Oprócz wdrożenia interfejsu wiersza polecenia i YAML można wdrożyć grupę kontenerów przy użyciu [szablonu Menedżer zasobów](/azure/templates/microsoft.containerinstance/containergroups)platformy Azure.
+Oprócz wdrażania interfejsu wiersza polecenia i YAML można wdrożyć grupę kontenerów przy użyciu [szablonu usługi](/azure/templates/microsoft.containerinstance/containergroups)Azure Resource Manager .
 
-Najpierw Wypełnij tablicę `volumes` w sekcji `properties` grupy kontenerów szablonu. W przypadku wdrażania przy użyciu szablonu Menedżer zasobów wartości tajne muszą być **zakodowane w formacie base64** w szablonie. Jednak wartości klucza tajnego są wyświetlane w postaci zwykłego tekstu w plikach w kontenerze.
+Najpierw wypełnij tablicę `volumes` w sekcji `properties` grupy kontenerów szablonu. Podczas wdrażania z szablonem Menedżera zasobów, wartości tajne muszą być **zakodowane w szablonie Base64.** Jednak tajne wartości są wyświetlane w postaci zwykłego tekstu w plikach w kontenerze.
 
-Następnie dla każdego kontenera w grupie kontenerów, w której chcesz zainstalować wolumin *tajny* , Wypełnij tablicę `volumeMounts` w sekcji `properties` definicji kontenera.
+Następnie dla każdego kontenera w grupie kontenerów, w którym chcesz zainstalować `volumeMounts` wolumin *tajny,* wypełnij tablicę `properties` w sekcji definicji kontenera.
 
-Poniższy szablon Menedżer zasobów definiuje grupę kontenerów z jednym kontenerem instalującym wolumin *tajny* w `/mnt/secrets`. Wolumin tajny ma dwa wpisy tajne, "mysecret1" i "mysecret2".
+Poniższy szablon Menedżera zasobów definiuje grupę kontenerów *secret* z jednym `/mnt/secrets`kontenerem, który montuje tajny wolumin w pliku . Tajny tom ma dwie tajemnice: "mysecret1" i "mysecret2".
 
 <!-- https://github.com/Azure/azure-docs-json-samples/blob/master/container-instances/aci-deploy-volume-secret.json -->
 [!code-json[volume-secret](~/azure-docs-json-samples/container-instances/aci-deploy-volume-secret.json)]
 
-Aby wdrożyć z szablonem Menedżer zasobów, Zapisz poprzedni kod JSON w pliku o nazwie `deploy-aci.json`, a następnie uruchom polecenie [AZ Group Deployment Create][az-group-deployment-create] z parametrem `--template-file`:
+Aby wdrożyć za pomocą szablonu Menedżera zasobów, zapisz `deploy-aci.json`poprzedni json w pliku o `--template-file` nazwie , a następnie wykonaj polecenie tworzenia wdrożenia grupy [AZ][az-group-deployment-create] z parametrem:
 
 ```azurecli-interactive
 # Deploy with Resource Manager template
@@ -118,15 +118,15 @@ az group deployment create --resource-group myResourceGroup --template-file depl
 
 ### <a name="volumes"></a>Woluminy
 
-Dowiedz się, jak zainstalować inne typy woluminów w Azure Container Instances:
+Dowiedz się, jak zainstalować inne typy woluminów w wystąpieniach kontenera platformy Azure:
 
 * [Instalowanie udziału plików platformy Azure w usłudze Azure Container Instances](container-instances-volume-azure-files.md)
-* [Zainstaluj wolumin emptyDir w Azure Container Instances](container-instances-volume-emptydir.md)
-* [Zainstaluj wolumin gitRepo w Azure Container Instances](container-instances-volume-gitrepo.md)
+* [Instalowanie woluminu pustegodiru w wystąpieniach kontenera platformy Azure](container-instances-volume-emptydir.md)
+* [Instalowanie woluminu gitRepo w wystąpieniach kontenera platformy Azure](container-instances-volume-gitrepo.md)
 
 ### <a name="secure-environment-variables"></a>Bezpieczne zmienne środowiskowe
 
-Inną metodą podawania poufnych informacji do kontenerów (w tym kontenerów systemu Windows) jest użycie [bezpiecznych zmiennych środowiskowych](container-instances-environment-variables.md#secure-values).
+Inną metodą dostarczania poufnych informacji do kontenerów (w tym kontenerów systemu Windows) jest użycie [bezpiecznych zmiennych środowiskowych.](container-instances-environment-variables.md#secure-values)
 
 <!-- LINKS - External -->
 [tmpfs]: https://wikipedia.org/wiki/Tmpfs

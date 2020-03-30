@@ -5,17 +5,17 @@ ms.service: app-service-mobile
 ms.topic: include
 ms.date: 08/23/2018
 ms.openlocfilehash: a0b52c5f30e3d90570f4e9a1995b164dc9b6d0c1
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67183733"
 ---
-1. W [witryny Azure portal](https://portal.azure.com/), wybierz opcję **Przeglądaj wszystkie** > **App Services**. Następnie wybierz usługę Mobile Apps zapleczem. 
-2. W obszarze **ustawienia**, wybierz opcję **wypychania**. Następnie wybierz pozycję **usług powiadomień wypychanych Konfiguruj**.
-2. Przejdź do **Google (GCM)** . Podaj klucz starszego serwera usługi FCM, który został uzyskany z poziomu konsoli usługi Firebase, a następnie wybierz **Zapisz**.
+1. W [witrynie Azure portal](https://portal.azure.com/)wybierz pozycję **Przeglądaj wszystkie** > **usługi aplikacji**. Następnie wybierz zaplecze aplikacji mobilnych. 
+2. W obszarze **Ustawienia**wybierz pozycję **Wypychaj**. Następnie wybierz pozycję **Konfiguruj usługi powiadomień wypychanych**.
+2. Przejdź do **Google (GCM)**. Wprowadź klucz starszego serwera FCM uzyskany z konsoli Firebase, a następnie wybierz pozycję **Zapisz**.
 
-Usługa jest teraz skonfigurowane do pracy przy użyciu usługi Firebase Cloud Messaging.
+Usługa jest teraz skonfigurowana do pracy z firebase cloud messaging.
 
 <!-- URLs. -->
 

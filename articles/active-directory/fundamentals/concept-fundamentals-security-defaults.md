@@ -1,6 +1,6 @@
 ---
-title: Ustawienia domyślne zabezpieczeń Azure Active Directory
-description: Domyślne zasady zabezpieczeń, które ułatwiają ochronę organizacji przed typowymi atakami
+title: Domyślne ustawienia zabezpieczeń usługi Azure Active Directory
+description: Domyślne zasady zabezpieczeń, które pomagają chronić organizacje przed typowymi atakami
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
@@ -12,40 +12,40 @@ manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3139d39797c3bc576bb39f1438b7e6d3f37e3c5c
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78248847"
 ---
-# <a name="what-are-security-defaults"></a>Co to są wartości domyślne zabezpieczeń?
+# <a name="what-are-security-defaults"></a>Co to są ustawienia domyślne zabezpieczeń?
 
-Zarządzanie zabezpieczeniami może być trudne, gdy typowe ataki związane z tożsamościami stają się coraz bardziej popularne. Ataki te obejmują rozpylanie, odtwarzanie i wyłudzanie informacji.
+Zarządzanie zabezpieczeniami może być trudne, gdy typowe ataki związane z tożsamością stają się coraz bardziej popularne. Ataki te obejmują spray hasłem, powtórkę i phishing.
 
-Domyślne ustawienia zabezpieczeń w programie Azure Active Directory (Azure AD) ułatwiają ochronę organizacji. Wartości domyślne zabezpieczeń zawierają wstępnie skonfigurowane ustawienia zabezpieczeń dla typowych ataków. 
+Domyślne zabezpieczenia w usłudze Azure Active Directory (Azure AD) ułatwiają bezpieczeństwo i pomagają chronić organizację. Domyślne zabezpieczenia zawierają wstępnie skonfigurowane ustawienia zabezpieczeń dla typowych ataków. 
 
-Firma Microsoft udostępnia wartości domyślne zabezpieczeń dla wszystkich użytkowników. Celem jest zapewnienie, że wszystkie organizacje mają podstawowy poziom zabezpieczeń włączony bez dodatkowych kosztów. Ustawienia domyślne zabezpieczeń są włączane w Azure Portal.
+Firma Microsoft udostępnia wszystkim domyślne ustawienia zabezpieczeń. Celem jest zapewnienie, że wszystkie organizacje mają podstawowy poziom zabezpieczeń włączony bez dodatkowych kosztów. Ustawienia domyślne zabezpieczeń można włączyć w witrynie Azure portal.
 
-![Zrzut ekranu przedstawiający Azure Portal z przełącznikiem umożliwiającym włączenie ustawień domyślnych zabezpieczeń](./media/concept-fundamentals-security-defaults/security-defaults-azure-ad-portal.png)
+![Zrzut ekranu przedstawiający witrynę Azure portal z przełącznikiem umożliwiającym włączenie ustawień domyślnych zabezpieczeń](./media/concept-fundamentals-security-defaults/security-defaults-azure-ad-portal.png)
  
 > [!TIP]
-> Jeśli dzierżawa została utworzona w dniu lub po 22 października 2019, istnieje możliwość, że masz nowe zachowanie bezpieczne przez domyślne i masz już włączone wartości domyślne zabezpieczeń w dzierżawie. W celu ochrony wszystkich naszych użytkowników domyślnie są wdrażane wszystkie nowo utworzone dzierżawy.
+> Jeśli dzierżawa została utworzona w dniu lub po 22 października 2019 r., możliwe, że występują nowe zachowanie domyślne zabezpieczeń i już mają włączone ustawienia domyślne zabezpieczeń w dzierżawie. Aby chronić wszystkich naszych użytkowników, domyślne zabezpieczenia są wdrażane dla wszystkich nowych utworzonych dzierżaw.
 
-Więcej informacji o tym, dlaczego są udostępniane wartości domyślne zabezpieczeń, można znaleźć w wpisie w blogu Alex Weinert, [wprowadzając wartości domyślne zabezpieczeń](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/introducing-security-defaults/ba-p/1061414).
+Więcej szczegółów na temat tego, dlaczego zabezpieczenia są udostępniane, można znaleźć w blogu Alex Weinert, [Wprowadzenie ustawień domyślnych zabezpieczeń](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/introducing-security-defaults/ba-p/1061414).
 
-## <a name="unified-multi-factor-authentication-registration"></a>Ujednolicona Rejestracja Multi-Factor Authentication
+## <a name="unified-multi-factor-authentication-registration"></a>Ujednolicona rejestracja uwierzytelniania wieloskładnikowego
 
-Wszyscy użytkownicy w dzierżawie muszą zarejestrować się w celu korzystania z uwierzytelniania wieloskładnikowego (MFA) w formie usługi Azure Multi-Factor Authentication. Użytkownicy mają 14 dni na zarejestrowanie Multi-Factor Authentication przy użyciu aplikacji Microsoft Authenticator. Po upływie 14 dni użytkownik nie będzie mógł się zalogować do momentu zakończenia rejestracji Multi-Factor Authentication.
+Wszyscy użytkownicy w dzierżawie muszą zarejestrować się w celu uwierzytelniania wieloskładnikowego (MFA) w formie usługi Azure Multi-Factor Authentication service. Użytkownicy mają 14 dni na zarejestrowanie się w celu uwierzytelniania wieloskładnikowego przy użyciu aplikacji Microsoft Authenticator. Po upływie 14 dni użytkownik nie będzie mógł się zalogować, dopóki rejestracja uwierzytelniania wieloskładnikowego nie zostanie zakończona.
 
-Rozumiemy, że niektórzy użytkownicy mogą znajdować się poza biurem lub nie będą logować się w ciągu 14 dni bezpośrednio po włączeniu ustawień domyślnych zabezpieczeń. Aby zapewnić, że każdy użytkownik ma dużo czasu na zarejestrowanie się w celu Multi-Factor Authentication, okres 14 dni jest unikatowy dla każdego użytkownika. 14-dniowy okres użytkownika rozpoczyna się po pierwszym pomyślnym zalogowaniu interakcyjnym po włączeniu domyślnych ustawień zabezpieczeń.
+Rozumiemy, że niektórzy użytkownicy mogą być poza biurem lub nie zalogują się w ciągu 14 dni natychmiast po włączeniu ustawień domyślnych zabezpieczeń. Aby upewnić się, że każdy użytkownik ma wystarczająco dużo czasu na zarejestrowanie się w celu uwierzytelniania wieloskładnikowego, okres 14-dniowy jest unikatowy dla każdego użytkownika. 14-dniowy okres użytkownika rozpoczyna się po pierwszym pomyślnym interaktywnym logowaniach po włączeniu domyślnych ustawień zabezpieczeń.
 
-## <a name="multi-factor-authentication-enforcement"></a>Wymuszanie Multi-Factor Authentication
+## <a name="multi-factor-authentication-enforcement"></a>Wymuszanie uwierzytelniania wieloskładnikowego
 
 ### <a name="protecting-administrators"></a>Ochrona administratorów
 
-Użytkownicy mający dostęp do kont uprzywilejowanych mają zwiększony dostęp do Twojego środowiska. Ze względu na moc tych kont należy traktować je z uwzględnieniem specjalnych zaopieki. Jedną z typowych metod ulepszania ochrony uprzywilejowanych kont jest wymaganie, aby w celu zalogowania się była silniejsza weryfikacja konta. W usłudze Azure AD możesz uzyskać silniejszą weryfikację konta, wymagając Multi-Factor Authentication.
+Użytkownicy z dostępem do kont uprzywilejowanych mają zwiększony dostęp do środowiska. Ze względu na moc tych kont, należy traktować je ze szczególną ostrożnością. Jedną z typowych metod poprawy ochrony kont uprzywilejowanych jest wymaganie silniejszej formy weryfikacji konta w celu zalogowania się. W usłudze Azure AD można uzyskać silniejszą weryfikację konta, wymagając uwierzytelniania wieloskładnikowego.
 
-Po zakończeniu rejestracji w Multi-Factor Authentication zostanie zaakceptowana następująca dziewiąta rola administratora usługi Azure AD do przeprowadzenia dodatkowego uwierzytelniania przy każdym logowaniu:
+Po zakończeniu rejestracji za pomocą uwierzytelniania wieloskładnikowego do wykonania będzie wymagane dziewięć ról administratora usługi Azure AD, aby wykonać dodatkowe uwierzytelnianie za każdym razem, gdy się zalogują:
 
 - Administrator globalny
 - Administrator programu SharePoint
@@ -54,108 +54,108 @@ Po zakończeniu rejestracji w Multi-Factor Authentication zostanie zaakceptowana
 - Administrator zabezpieczeń
 - Administrator pomocy technicznej lub administrator haseł
 - Administrator rozliczeń
-- Administrator użytkowników
+- Administrator użytkownika
 - Administrator uwierzytelniania
 
 ### <a name="protecting-all-users"></a>Ochrona wszystkich użytkowników
 
-Chcemy myśleć, że konta administratorów są jedynymi kontami, które wymagają dodatkowych warstw uwierzytelniania. Administratorzy mają szeroki dostęp do poufnych informacji i mogą wprowadzać zmiany w ustawieniach całej subskrypcji. Osoby atakujące mają do nich możliwość ukierunkowania na użytkowników końcowych. 
+Mamy tendencję do myślenia, że konta administratora są jedynymi kontami, które wymagają dodatkowych warstw uwierzytelniania. Administratorzy mają szeroki dostęp do poufnych informacji i mogą wprowadzać zmiany w ustawieniach w całej subskrypcji. Ale atakujący mają tendencję do kierowania użytkowników końcowych. 
 
-Gdy Ci osoby atakujące uzyskali dostęp, mogą zażądać dostępu do informacji uprzywilejowanych w imieniu właściciela oryginalnego konta. Mogą nawet pobrać cały katalog, aby przeprowadzić atak wyłudzania informacji w całej organizacji. 
+Po uzyskaniu dostępu przez osoby atakujące mogą zażądać dostępu do uprzywilejowanych informacji w imieniu pierwotnego właściciela konta. Mogą nawet pobrać cały katalog, aby przeprowadzić atak phishingowy na całą organizację. 
 
-Jedną z częstych metod ulepszania ochrony dla wszystkich użytkowników jest wymaganie silniejszej formy weryfikacji konta, takiej jak Multi-Factor Authentication, dla wszystkich. Po zakończeniu Multi-Factor Authentication rejestracji użytkownicy będą monitowani o dodatkowe uwierzytelnianie w razie potrzeby.
+Jedną z typowych metod poprawy ochrony dla wszystkich użytkowników jest wymaganie silniejszej formy weryfikacji konta, takiej jak uwierzytelnianie wieloskładnikowe, dla wszystkich. Po zakończeniu rejestracji uwierzytelniania wieloskładnikowego zostaną poproszeni o dodatkowe uwierzytelnienie w razie potrzeby.
 
-### <a name="blocking-legacy-authentication"></a>Blokowanie starszego uwierzytelniania
+### <a name="blocking-legacy-authentication"></a>Blokowanie uwierzytelniania starszego
 
-Aby zapewnić użytkownikom łatwy dostęp do aplikacji w chmurze, usługa Azure AD obsługuje różne protokoły uwierzytelniania, w tym starsze uwierzytelnianie. *Starsza wersja uwierzytelniania* to termin, który odwołuje się do żądania uwierzytelnienia wykonanego przez:
+Aby zapewnić użytkownikom łatwy dostęp do aplikacji w chmurze, usługa Azure AD obsługuje wiele protokołów uwierzytelniania, w tym uwierzytelnianie starsze. *Uwierzytelnianie starsze* to termin, który odnosi się do żądania uwierzytelnienia złożonego przez:
 
 - Klienci, którzy nie korzystają z nowoczesnego uwierzytelniania (na przykład klienta pakietu Office 2010).
 - Każdy klient korzystający ze starszych protokołów poczty, takich jak IMAP, SMTP lub POP3.
 
-Dzisiaj większość nieżądanych prób logowania pochodzi ze starszego uwierzytelniania. Starsza wersja uwierzytelniania nie obsługuje Multi-Factor Authentication. Nawet jeśli masz zasady Multi-Factor Authentication włączone w katalogu, osoba atakująca może się uwierzytelnić przy użyciu starszego protokołu i Multi-Factor Authentication obejścia. 
+Obecnie większość prób logowania kompromitujących pochodzi ze starszego uwierzytelniania. Uwierzytelnianie starsze nie obsługuje uwierzytelniania wieloskładnikowego. Nawet jeśli w katalogu włączono zasady uwierzytelniania wieloskładnikowego, osoba atakująca może uwierzytelnić się przy użyciu starszego protokołu i pominąć uwierzytelnianie wieloskładnikowe. 
 
-Po włączeniu wartości domyślnych zabezpieczeń w dzierżawie zostaną zablokowane wszystkie żądania uwierzytelnienia podejmowane przez starszy protokół. Domyślne ustawienia zabezpieczeń są blokowane Exchange Active Sync uwierzytelniania podstawowego.
+Po włączeniu ustawień domyślnych zabezpieczeń w dzierżawie wszystkie żądania uwierzytelniania wykonane przez starszy protokół zostaną zablokowane. Domyślne zabezpieczenia blokują podstawowe uwierzytelnianie programu Exchange Active Sync.
 
 > [!WARNING]
-> Przed włączeniem ustawień domyślnych zabezpieczeń upewnij się, że administratorzy nie używają starszych protokołów uwierzytelniania. Aby uzyskać więcej informacji, zobacz [jak przenieść się z starszego uwierzytelniania](concept-fundamentals-block-legacy-authentication.md).
+> Przed włączeniem ustawień domyślnych zabezpieczeń upewnij się, że administratorzy nie używają starszych protokołów uwierzytelniania. Aby uzyskać więcej informacji, zobacz [Jak odejść od starszego uwierzytelniania](concept-fundamentals-block-legacy-authentication.md).
 
-### <a name="protecting-privileged-actions"></a>Ochrona uprzywilejowanych akcji
+### <a name="protecting-privileged-actions"></a>Ochrona akcji uprzywilejowanych
 
-Organizacje korzystają z różnych usług platformy Azure zarządzanych za pomocą interfejsu API Azure Resource Manager, w tym:
+Organizacje korzystają z różnych usług platformy Azure zarządzanych za pośrednictwem interfejsu API usługi Azure Resource Manager, w tym:
 
-- Portalu Azure 
+- Portal Azure 
 - Azure PowerShell 
 - Interfejs wiersza polecenia platformy Azure
 
-Używanie Azure Resource Manager do zarządzania usługami to wysoce uprzywilejowana akcja. Azure Resource Manager mogą zmieniać konfiguracje dla całej dzierżawy, takie jak ustawienia usługi i rozliczenia subskrypcji. Uwierzytelnianie wieloskładnikowe jest podatne na różne ataki, takie jak phishing i rozpylanie haseł. 
+Używanie usługi Azure Resource Manager do zarządzania usługami jest bardzo uprzywilejowaną akcją. Usługa Azure Resource Manager może zmieniać konfiguracje obejmujące całą dzierżawę, takie jak ustawienia usługi i rozliczenia subskrypcji. Uwierzytelnianie jednoskładnikowe jest narażone na różne ataki, takie jak phishing i spray do haseł. 
 
-Ważne jest, aby zweryfikować tożsamość użytkowników, którzy chcą uzyskać dostęp do Azure Resource Manager i konfiguracji aktualizacji. Tożsamość należy zweryfikować, wymagając dodatkowego uwierzytelniania przed zezwoleniem na dostęp.
+Ważne jest, aby zweryfikować tożsamość użytkowników, którzy chcą uzyskać dostęp do usługi Azure Resource Manager i zaktualizować konfiguracje. Weryfikujesz ich tożsamość, wymagając dodatkowego uwierzytelniania przed zezwoleniem na dostęp.
 
-Po włączeniu wartości domyślnych zabezpieczeń w dzierżawie każdy użytkownik, który uzyskuje dostęp do Azure Portal, Azure PowerShell lub interfejsu wiersza polecenia platformy Azure, będzie musiał wykonać dodatkowe uwierzytelnianie. Te zasady mają zastosowanie do wszystkich użytkowników, którzy uzyskują dostęp do Azure Resource Manager, niezależnie od tego, czy są oni administratorem czy użytkownikiem. 
+Po włączeniu domyślnych zabezpieczeń w dzierżawie każdy użytkownik, który uzyskuje dostęp do witryny Azure portal, azure powershell lub interfejsu wiersza polecenia platformy Azure, będzie musiał wykonać dodatkowe uwierzytelnianie. Ta zasada ma zastosowanie do wszystkich użytkowników, którzy uzyskują dostęp do usługi Azure Resource Manager, niezależnie od tego, czy są administratorem, czy użytkownikiem. 
 
-Jeśli użytkownik nie jest zarejestrowany do Multi-Factor Authentication, użytkownik będzie musiał zarejestrować się przy użyciu aplikacji Microsoft Authenticator, aby można było wykonać tę operację. Nie zostanie podany 14-dniowy okres rejestracji Multi-Factor Authentication.
-
-> [!NOTE]
-> Dzierżawy usługi Exchange Online w wersji pre-2017 są domyślnie wyłączone. Aby uniknąć możliwości pętli logowania podczas uwierzytelniania za pomocą tych dzierżawców, należy [włączyć nowoczesne uwierzytelnianie](https://docs.microsoft.com/exchange/clients-and-mobile-in-exchange-online/enable-or-disable-modern-authentication-in-exchange-online).
+Jeśli użytkownik nie jest zarejestrowany do uwierzytelniania wieloskładnikowego, użytkownik będzie musiał zarejestrować się przy użyciu aplikacji Microsoft Authenticator w celu kontynuowania. Nie zostanie zapewniony 14-dniowy okres rejestracji uwierzytelniania wieloskładnikowego.
 
 > [!NOTE]
-> Konto synchronizacji Azure AD Connect jest wykluczone z domyślnych ustawień zabezpieczeń i nie zostanie wyświetlony monit o zarejestrowanie się w usłudze lub przeprowadzenie uwierzytelniania wieloskładnikowego. Organizacje nie powinny używać tego konta do innych celów.
+> Przed 2017 r. dzierżawcy usługi Exchange Online domyślnie mają nowoczesne uwierzytelnianie wyłączone. Aby uniknąć możliwości pętli logowania podczas uwierzytelniania za pośrednictwem tych dzierżaw, należy [włączyć nowoczesne uwierzytelnianie.](https://docs.microsoft.com/exchange/clients-and-mobile-in-exchange-online/enable-or-disable-modern-authentication-in-exchange-online)
+
+> [!NOTE]
+> Konto synchronizacji usługi Azure AD Connect jest wykluczone z domyślnych zabezpieczeń i nie zostanie wyświetlona monit o zarejestrowanie się lub wykonanie uwierzytelniania wieloskładnikowego. Organizacje nie powinny używać tego konta do innych celów.
 
 ## <a name="deployment-considerations"></a>Zagadnienia dotyczące wdrażania
 
-Poniższe zagadnienia dodatkowe są związane z wdrażaniem ustawień domyślnych zabezpieczeń dla dzierżawy.
+Następujące dodatkowe zagadnienia są związane z wdrażaniem domyślnych zabezpieczeń dla dzierżawy.
 
 ### <a name="authentication-methods"></a>Metody uwierzytelniania
 
-Domyślne ustawienia zabezpieczeń umożliwiają rejestrację i korzystanie z usługi Azure Multi-Factor Authentication **przy użyciu tylko aplikacji Microsoft Authenticator przy użyciu powiadomień**. Dostęp warunkowy umożliwia korzystanie z dowolnej metody uwierzytelniania, która ma zostać włączona przez administratora.
+Domyślne zabezpieczenia zezwalają na rejestrację i korzystanie z uwierzytelniania wieloskładnikowego platformy Azure **przy użyciu tylko aplikacji Microsoft Authenticator przy użyciu powiadomień**. Dostęp warunkowy umożliwia użycie dowolnej metody uwierzytelniania, która jest łączona przez administratora.
 
 |   | Domyślne ustawienia zabezpieczeń | Dostęp warunkowy |
 | --- | --- | --- |
-| Powiadomienie za poorednictwem aplikacji mobilnej | X | X |
+| Powiadomienie za pośrednictwem aplikacji mobilnej | X | X |
 | Kod weryfikacyjny z aplikacji mobilnej lub tokenu sprzętowego |   | X |
 | Wiadomość SMS na telefon |   | X |
-| Wywołanie telefonu |   | X |
-| Hasła aplikacji |   | X * * |
+| Zadzwoń na telefon |   | X |
+| Hasła aplikacji |   | X** |
 
-\* * Hasła aplikacji są dostępne tylko w ramach usługi MFA dla poszczególnych użytkowników ze starszymi scenariuszami uwierzytelniania tylko wtedy, gdy są włączone przez administratorów.
+** Hasła aplikacji są dostępne tylko w u administratorów usług mfa dla użytkowników ze starszymi scenariuszami uwierzytelniania tylko wtedy, gdy są włączone przez administratorów.
 
 ### <a name="conditional-access"></a>Dostęp warunkowy
 
-Za pomocą dostępu warunkowego można skonfigurować zasady podobne do domyślnych ustawień zabezpieczeń, ale z większą szczegółowością, w tym wykluczeniami użytkowników, które nie są dostępne w domyślnych ustawieniach zabezpieczeń. Jeśli używasz dostępu warunkowego i w środowisku włączono zasady dostępu warunkowego, nie będą dostępne żadne ustawienia domyślne zabezpieczeń. Jeśli masz licencję, która zapewnia dostęp warunkowy, ale nie masz włączonych zasad dostępu warunkowego w danym środowisku, możesz użyć domyślnych ustawień zabezpieczeń do momentu włączenia zasad dostępu warunkowego. Więcej informacji na temat licencjonowania usługi Azure AD można znaleźć na [stronie cennika usługi Azure AD](https://azure.microsoft.com/pricing/details/active-directory/).
+Za pomocą dostępu warunkowego można skonfigurować zasady podobne do domyślnych zabezpieczeń, ale z większą szczegółowością, w tym wykluczenia użytkowników, które nie są dostępne w ustawieniach domyślnych zabezpieczeń. Jeśli używasz dostępu warunkowego i masz włączone zasady dostępu warunkowego w swoim środowisku, domyślne ustawienia zabezpieczeń nie będą dostępne. Jeśli masz licencję, która zapewnia dostęp warunkowy, ale nie masz włączonych żadnych zasad dostępu warunkowego w danym środowisku, możesz używać domyślnych zabezpieczeń, dopóki nie włączysz zasad dostępu warunkowego. Więcej informacji na temat licencjonowania usługi Azure AD można znaleźć na [stronie cennika usługi Azure AD](https://azure.microsoft.com/pricing/details/active-directory/).
 
-![Komunikat ostrzegawczy, który może mieć wartości domyślne zabezpieczeń lub dostęp warunkowy nie zarówno](./media/concept-fundamentals-security-defaults/security-defaults-conditional-access.png)
+![Komunikat ostrzegawczy, że mogą mieć ustawienia domyślne zabezpieczeń lub dostęp warunkowy nie oba](./media/concept-fundamentals-security-defaults/security-defaults-conditional-access.png)
 
-Poniżej przedstawiono wskazówki krok po kroku dotyczące konfigurowania równoważnych zasad przy użyciu dostępu warunkowego:
+Poniżej przedstawiono przewodniki krok po kroku dotyczące konfigurowania równoważnych zasad za pomocą dostępu warunkowego:
 
-- [Wymagaj uwierzytelniania wieloskładnikowego dla administratorów](../conditional-access/howto-conditional-access-policy-admin-mfa.md)
-- [Wymagaj uwierzytelniania wieloskładnikowego na potrzeby zarządzania na platformie Azure](../conditional-access/howto-conditional-access-policy-azure-management.md)
-- [Blokuj starsze uwierzytelnianie](../conditional-access/howto-conditional-access-policy-block-legacy.md)
-- [Wymagaj uwierzytelniania wieloskładnikowego dla wszystkich użytkowników](../conditional-access/howto-conditional-access-policy-all-users-mfa.md)
-- [Wymagaj rejestracji w usłudze Azure MFA](../identity-protection/howto-identity-protection-configure-mfa-policy.md) — wymaga Azure AD Identity Protection
+- [Wymaganie uwierzytelniania wieloskładnikowego dla administratorów](../conditional-access/howto-conditional-access-policy-admin-mfa.md)
+- [Wymaganie uwierzytelniania wieloskładnikowego do zarządzania platformą Azure](../conditional-access/howto-conditional-access-policy-azure-management.md)
+- [Blokowanie starszego uwierzytelniania](../conditional-access/howto-conditional-access-policy-block-legacy.md)
+- [Wymaganie uwierzytelniania wieloskładnikowego dla wszystkich użytkowników](../conditional-access/howto-conditional-access-policy-all-users-mfa.md)
+- [Wymagaj rejestracji usługi Azure MFA](../identity-protection/howto-identity-protection-configure-mfa-policy.md) — wymaga ochrony tożsamości usługi Azure AD
 
 ## <a name="enabling-security-defaults"></a>Włączanie ustawień domyślnych zabezpieczeń
 
-Aby włączyć domyślne ustawienia zabezpieczeń w katalogu:
+Aby włączyć domyślne zabezpieczenia w katalogu:
 
-1. Zaloguj się do [Azure Portal](https://portal.azure.com) jako administrator zabezpieczeń, administrator dostępu warunkowego lub Administrator globalny.
-1. Przejdź do **Azure Active Directory** > **Właściwości**.
+1. Zaloguj się do [witryny Azure portal](https://portal.azure.com) jako administrator zabezpieczeń, administrator dostępu warunkowego lub administrator globalny.
+1. Przejdź do **właściwości usługi Azure Active Directory** > **Properties**.
 1. Wybierz pozycję **Zarządzaj ustawieniami domyślnymi zabezpieczeń**.
-1. Ustaw opcję **Włącz ustawienia domyślne zabezpieczeń** na **wartość tak**.
-1. Wybierz pozycję **Zapisz**.
+1. Ustaw **przełącznik Włącz domyślne zabezpieczenia** na **Tak**.
+1. Wybierz **pozycję Zapisz**.
 
 ## <a name="disabling-security-defaults"></a>Wyłączanie ustawień domyślnych zabezpieczeń
 
-Organizacje, które zdecydują się zaimplementować zasady dostępu warunkowego, które zastępują domyślne ustawienia zabezpieczeń, muszą wyłączyć ustawienia domyślne zabezpieczeń. 
+Organizacje, które zdecydują się zaimplementować zasady dostępu warunkowego, które zastępują domyślne zabezpieczenia, muszą wyłączyć domyślne zabezpieczenia. 
 
-![Komunikat ostrzegawczy Wyłącz ustawienia domyślne zabezpieczeń, aby włączyć dostęp warunkowy](./media/concept-fundamentals-security-defaults/security-defaults-disable-before-conditional-access.png)
+![Komunikat ostrzegawczy wyłącz ustawienia domyślne zabezpieczeń, aby włączyć dostęp warunkowy](./media/concept-fundamentals-security-defaults/security-defaults-disable-before-conditional-access.png)
 
-Aby wyłączyć domyślne ustawienia zabezpieczeń w katalogu:
+Aby wyłączyć ustawienia domyślne zabezpieczeń w katalogu:
 
-1. Zaloguj się do [Azure Portal](https://portal.azure.com) jako administrator zabezpieczeń, administrator dostępu warunkowego lub Administrator globalny.
-1. Przejdź do **Azure Active Directory** > **Właściwości**.
+1. Zaloguj się do [witryny Azure portal](https://portal.azure.com) jako administrator zabezpieczeń, administrator dostępu warunkowego lub administrator globalny.
+1. Przejdź do **właściwości usługi Azure Active Directory** > **Properties**.
 1. Wybierz pozycję **Zarządzaj ustawieniami domyślnymi zabezpieczeń**.
-1. Ustaw opcję **Włącz ustawienia domyślne zabezpieczeń** na wartość **nie**.
-1. Wybierz pozycję **Zapisz**.
+1. Ustaw **przełącznik Włącz domyślne zabezpieczenia** na **Nie**.
+1. Wybierz **pozycję Zapisz**.
 
 ## <a name="next-steps"></a>Następne kroki
 

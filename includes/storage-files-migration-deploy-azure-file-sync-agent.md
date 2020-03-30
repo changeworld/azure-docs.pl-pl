@@ -1,6 +1,6 @@
 ---
-title: Wdrażanie agenta Azure File Sync
-description: Wdrażanie agenta Azure File Sync. Wspólny blok tekstu współużytkowany przez dokumenty migracji.
+title: Wdrażanie agenta synchronizacji plików platformy Azure
+description: Wdrażanie agenta synchronizacji plików platformy Azure. Wspólny blok tekstu, współużytkowane przez dokumenty migracji.
 author: fauhse
 ms.service: storage
 ms.topic: conceptual
@@ -8,34 +8,34 @@ ms.date: 2/20/2020
 ms.author: fauhse
 ms.subservice: files
 ms.openlocfilehash: 694becc49667204ef2071a140bb6330285089039
-ms.sourcegitcommit: 5192c04feaa3d1bd564efe957f200b7b1a93a381
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/02/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78209417"
 ---
-W tej sekcji instalujesz agenta Azure File Sync na serwerze z systemem Windows.
-[Przewodnik wdrażania](../articles/storage/files/storage-sync-files-deployment-guide.md) pokazuje, że należy wyłączyć **ulepszone zabezpieczenia programu IE**. Ulepszone zabezpieczenia programu Internet Explorer to środki bezpieczeństwa, które nie mają zastosowania do Azure File Sync i jego wyłączenia umożliwiają uwierzytelnianie na platformie Azure bez jakichkolwiek problemów.
+W tej sekcji należy zainstalować agenta usługi Azure File Sync na serwerze Windows Server.
+[Przewodnik wdrażania](../articles/storage/files/storage-sync-files-deployment-guide.md) ilustruje, że należy wyłączyć **ie zwiększonych zabezpieczeń**. IE zwiększonych zabezpieczeń jest środkiem zabezpieczeń, który nie ma zastosowania z synchronizacji plików platformy Azure i wyłączenie go umożliwia uwierzytelnianie na platformie Azure bez żadnych problemów.
 
-Otwórz program PowerShell i zainstaluj wymagane moduły programu PowerShell z następującymi poleceniami. Po wyświetleniu monitu upewnij się, że zainstalowano pełny moduł i dostawcę NuGet:
+Otwórz program PowerShell i zainstaluj wymagane moduły programu PowerShell za pomocą następujących poleceń. Upewnij się, aby zainstalować pełny moduł i dostawcy NuGet po wyświetleniu monitu:
 
 ```powershell
 Install-Module -Name Az -AllowClobber
 Install-Module -Name Az.StorageSync
 ```
 
-Jeśli masz problemy z nawiązaniem połączenia z Internetem z serwera, możesz teraz rozwiązać ten problem. Azure File Sync korzysta z dowolnego dostępnego połączenia sieciowego z Internetem.
-Obsługiwane jest również wymaganie, aby serwer proxy mógł nawiązać połączenie z Internetem. Można skonfigurować serwer proxy dla całego komputera lub określić serwer proxy, który będzie używany do synchronizacji plików podczas instalacji agenta.
+Jeśli masz jakieś problemy z dotarciem do Internetu z serwera, teraz jest czas, aby je rozwiązać. Usługa Azure File Sync używa dowolnego dostępnego połączenia sieciowego z Internetem.
+Obsługiwane jest również wymaganie serwera proxy, aby dotrzeć do Internetu. Można skonfigurować serwer proxy całego komputera teraz lub określić serwer proxy, który po prostu synchronizacji plików będzie używany podczas instalacji agenta.
 
-Jeśli to konieczne, należy otworzyć zapory dla tego serwera, co może być rozwiązaniem możliwym do zaakceptowania. Po zakończeniu instalacji serwera po zakończeniu rejestracji serwera zostanie wyświetlony raport o łączności sieciowej z dokładnymi adresami URL punktów końcowych na platformie Azure, których synchronizacja plików musi nawiązać połączenie z wybranym regionem. Raport informuje również o przyczynach niepotrzebnej komunikacji. Możesz użyć raportu, aby następnie zablokować zapory otaczające ten serwer do określonych adresów URL.
+Jeśli oznacza to, że musisz otworzyć zapory dla tego serwera, może to być akceptowalne podejście do Ciebie. Po zakończeniu instalacji serwera po zakończeniu rejestracji serwera pojawi się raport łączności sieciowej pokazujący dokładne adresy URL punktów końcowych na platformie Azure, z którym synchronizacja plików musi komunikować się z wybranym regionem. Raport zawiera również powód, dla którego potrzebna jest komunikacja. Za pomocą raportu można zablokować zapory wokół tego serwera, aby przejść do określonych adresów URL.
 
-Można również zastosować bardziej rozpuszczalną metodę, w której nie można otwierać zapór, ale zamiast tego ograniczyć serwer do komunikacji z nazwami DNS wyższego poziomu — w artykule [Azure File Sync serwera proxy i ustawień zapory](../articles/storage/files/storage-sync-files-firewall-and-proxy.md) znajduje się więcej szczegółów. Postępuj zgodnie z najlepszymi rozwiązaniami dotyczącymi sieci.
+Można również wykonać bardziej konserwatywne podejście, w którym nie otwierasz szerokich zapór, ale zamiast tego ograniczasz serwer do komunikowania się z przestrzeniami nazw DNS wyższego poziomu — w artykule [ustawienia serwera proxy i zapory usługi Azure File Sync](../articles/storage/files/storage-sync-files-firewall-and-proxy.md) jest więcej dokumentacji i szczegółów. Postępuj zgodnie z własnymi najlepszymi praktykami sieciowymi.
 
-Po zakończeniu działania kreatora *instalacji* serwera zostanie wyświetlony Kreator *rejestracji* serwera.
-Zarejestruj serwer w usłudze synchronizacji magazynu na podstawie wcześniejszego zasobu platformy Azure.
+Po zakończeniu pracy *kreatora instalacji* serwera pojawi się kreator *rejestracji* serwera.
+Zarejestruj serwer do zasobu platformy Azure usługi synchronizacji magazynu z wcześniej.
 
-Te kroki są opisane bardziej szczegółowo w Podręczniku wdrażania, w tym w powyższym module programu PowerShell, należy najpierw zainstalować: [Azure File Sync instalacji agenta](../articles/storage/files/storage-sync-files-deployment-guide.md).
+Te kroki są opisane bardziej szczegółowo w przewodniku wdrażania, w tym powyższe moduły programu PowerShell, które należy zainstalować najpierw: [zainstalowanie agenta usługi Azure File Sync](../articles/storage/files/storage-sync-files-deployment-guide.md).
 
-Należy użyć najnowszego agenta i można go pobrać z centrum pobierania Microsoft: [Azure File Sync-Agent](https://aka.ms/AFS/agent "Pobieranie agenta Azure File Sync").
+Najnowszy agent powinien być używany i można go pobrać z Centrum pobierania Microsoft: [Azure File Sync - agent](https://aka.ms/AFS/agent "Pobieranie agenta usługi Azure File Sync").
 
-Po pomyślnej instalacji i rejestracji serwera można sprawdzić, czy pomyślnie wykonano ten krok: Przejdź do zasobu usługi synchronizacji magazynu w Azure Portal, a następnie postępuj zgodnie z menu po lewej stronie, aby "zarejestrowane serwery". Serwer będzie tam tam widoczny.
+Po pomyślnej instalacji i rejestracji serwera, można sprawdzić, czy pomyślnie wykonano ten krok: Przejdź do zasobu usługi synchronizacji magazynu w witrynie Azure portal, a następnie wykonaj menu po lewej stronie do "Zarejestrowane serwery". Zobaczysz tam swój serwer od razu.

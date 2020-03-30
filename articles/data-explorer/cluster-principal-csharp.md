@@ -1,6 +1,6 @@
 ---
-title: Dodawanie podmiotów zabezpieczeń klastra dla usługi Azure Eksplorator danych przy użyciuC#
-description: W tym artykule dowiesz się, jak dodać podmioty zabezpieczeń klastra dla usługi Azure Eksplorator danych przy C#użyciu programu.
+title: 'Dodawanie podmiotów klastra dla Eksploratora danych platformy Azure przy użyciu języka C #'
+description: W tym artykule dowiesz się, jak dodać podmioty klastra dla Usługi Azure Data Explorer przy użyciu języka C#.
 author: lucygoldbergmicrosoft
 ms.author: lugoldbe
 ms.reviewer: orspodek
@@ -8,37 +8,37 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.openlocfilehash: e6c3970890dfe2c669dee1acf631e9dd45ab1085
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/02/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76965062"
 ---
-# <a name="add-cluster-principals-for-azure-data-explorer-by-using-c"></a>Dodawanie podmiotów zabezpieczeń klastra dla usługi Azure Eksplorator danych przy użyciuC#
+# <a name="add-cluster-principals-for-azure-data-explorer-by-using-c"></a>Dodawanie podmiotów klastra dla Eksploratora danych platformy Azure przy użyciu języka C #
 
 > [!div class="op_single_selector"]
-> * [C#](cluster-principal-csharp.md)
+> * [C #](cluster-principal-csharp.md)
 > * [Python](cluster-principal-python.md)
 > * [Szablon usługi Azure Resource Manager](cluster-principal-resource-manager.md)
 
-Azure Data Explorer to szybka i wysoce skalowalna usługa eksploracji danych na potrzeby danych dziennika i telemetrycznych. W tym artykule opisano Dodawanie podmiotów zabezpieczeń klastra dla usługi Azure Eksplorator danych przy użyciu C#programu.
+Azure Data Explorer to szybka i wysoce skalowalna usługa eksploracji danych na potrzeby danych dziennika i telemetrycznych. W tym artykule należy dodać podmioty klastra dla Usługi Azure Data Explorer przy użyciu języka C#.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Jeśli nie masz zainstalowanego programu Visual Studio 2019, możesz pobrać i korzystać **bezpłatnie** z programu [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/). Podczas instalacji programu Visual Studio upewnij się, że jest włączona opcja **Programowanie na platformie Azure**.
-* Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto platformy Azure](https://azure.microsoft.com/free/).
-* [Utwórz klaster](create-cluster-database-csharp.md).
+* Jeśli nie masz zainstalowanego programu Visual Studio 2019, możesz pobrać **bezpłatną** [wersję programu Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/)i korzystać z niej. Podczas instalacji programu Visual Studio upewnij się, że jest włączona opcja **Programowanie na platformie Azure**.
+* Jeśli nie masz subskrypcji platformy Azure, utwórz [bezpłatne konto platformy Azure](https://azure.microsoft.com/free/) przed rozpoczęciem.
+* [Tworzenie klastra](create-cluster-database-csharp.md).
 
-## <a name="install-c-nuget"></a>Zainstaluj C# pakiet NuGet
+## <a name="install-c-nuget"></a>Zainstaluj C# NuGet
 
-* Zainstaluj [Microsoft. Azure. Management. Kusto](https://www.nuget.org/packages/Microsoft.Azure.Management.Kusto/).
-* Zainstaluj [Microsoft. Rest. ClientRuntime. Azure. Authentication](https://www.nuget.org/packages/Microsoft.Rest.ClientRuntime.Azure.Authentication) na potrzeby uwierzytelniania.
+* Zainstaluj [plik Microsoft.Azure.Management.kusto](https://www.nuget.org/packages/Microsoft.Azure.Management.Kusto/).
+* Zainstaluj [microsoft.rest.clientRuntime.Azure.Authentication](https://www.nuget.org/packages/Microsoft.Rest.ClientRuntime.Azure.Authentication) do uwierzytelniania.
 
 [!INCLUDE [data-explorer-authentication](../../includes/data-explorer-authentication.md)]
 
-## <a name="add-a-cluster-principal"></a>Dodawanie podmiotu zabezpieczeń klastra
+## <a name="add-a-cluster-principal"></a>Dodawanie głównego zobowiązanego klastra
 
-Poniższy przykład pokazuje, jak dodać podmiot zabezpieczeń klastra programowo.
+W poniższym przykładzie pokazano, jak programowo dodać jednostkę klastra.
 
 ```csharp
 var tenantId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Directory (tenant) ID
@@ -67,18 +67,18 @@ await kustoManagementClient.ClusterPrincipalAssignments.CreateOrUpdateAsync(reso
 
 |**Ustawienie** | **Sugerowana wartość** | **Opis pola**|
 |---|---|---|
-| tenantId | *XXXXXXXX-XXXXX-xxxx-xxxx-xxxxxxxxx* | Identyfikator dzierżawy. Znany również jako identyfikator katalogu.|
-| subscriptionId | *XXXXXXXX-XXXXX-xxxx-xxxx-xxxxxxxxx* | Identyfikator subskrypcji używany do tworzenia zasobów.|
-| clientId | *XXXXXXXX-XXXXX-xxxx-xxxx-xxxxxxxxx* | Identyfikator klienta aplikacji, który może uzyskiwać dostęp do zasobów w dzierżawie.|
-| clientSecret | *xxxxxxxxxxxxxx* | Wpis tajny klienta aplikacji, który może uzyskiwać dostęp do zasobów w dzierżawie. |
+| identyfikator dzierżawy | *xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx* | Identyfikator dzierżawy. Znany również jako identyfikator katalogu.|
+| subscriptionId | *xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx* | Identyfikator subskrypcji używany do tworzenia zasobów.|
+| clientId | *xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx* | Identyfikator klienta aplikacji, która może uzyskać dostęp do zasobów w dzierżawie.|
+| clientSecret | *xxxxxxxxxxxxxx* | Klucz tajny klienta aplikacji, która może uzyskać dostęp do zasobów w dzierżawie. |
 | resourceGroupName | *testrg* | Nazwa grupy zasobów zawierającej klaster.|
 | clusterName | *mykustocluster* | Nazwa klastra.|
-| principalAssignmentName | *clusterPrincipalAssignment1* | Nazwa głównego zasobu klastra.|
-| principalId | *XXXXXXXX-XXXXX-xxxx-xxxx-xxxxxxxxx* | Identyfikator podmiotu zabezpieczeń, który może być adresem e-mail użytkownika, IDENTYFIKATORem aplikacji lub grupą zabezpieczeń.|
-| role (rola) | *AllDatabasesAdmin* | Rola podmiotu zabezpieczeń klastra, która może mieć wartość "AllDatabasesAdmin'" lub "AllDatabasesViewer".|
-| tenantIdForPrincipal | *XXXXXXXX-XXXXX-xxxx-xxxx-xxxxxxxxx* | Identyfikator dzierżawy podmiotu zabezpieczeń.|
-| Nazwa podmiotu zabezpieczeń | *Aplikacja* | Typ podmiotu zabezpieczeń, który może mieć wartość "User", "App" lub "Group"|
+| principalAssignmentName | *clusterPrincipalAssignment1* | Nazwa zasobu głównego klastra.|
+| principalId | *xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx* | Główny identyfikator, który może być e-mail użytkownika, identyfikator aplikacji lub nazwa grupy zabezpieczeń.|
+| role (rola) | *AllDatabasesAdmin* | Rola głównego klastra, który może być "AllDatabasesAdmin" lub "AllDatabasesViewer".|
+| tenantIdForPrincipal | *xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx* | Identyfikator dzierżawy głównego zobowiązanego.|
+| Principaltype | *Aplikacja* | Typ podmiotu zabezpieczeń, który może być "Użytkownik", "Aplikacja" lub "Grupa"|
 
 ## <a name="next-steps"></a>Następne kroki
 
-* [Dodawanie podmiotów zabezpieczeń bazy danych](database-principal-csharp.md)
+* [Dodawanie podmiotów bazy danych](database-principal-csharp.md)

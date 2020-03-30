@@ -1,59 +1,59 @@
 ---
-title: Tworzenie usługi opartej na aktorze na platformie Azure Service Fabric
-description: Dowiedz się, jak tworzyć, debugować i wdrażać pierwszą usługę opartą na C# aktorze przy użyciu Service Fabric Reliable Actors.
+title: Tworzenie usługi opartej na usłudze Azure Service Fabric
+description: Dowiedz się, jak tworzyć, debugować i wdrażać pierwszą usługę opartą na aktorach w języku C# przy użyciu niezawodnych aktorów sieci szkieletowej usług.
 author: vturecek
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.author: vturecek
 ms.openlocfilehash: a6e4fb48653572139463738c82de632ff7d55074
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75466252"
 ---
-# <a name="getting-started-with-reliable-actors"></a>Wprowadzenie do Reliable Actors
+# <a name="getting-started-with-reliable-actors"></a>Pierwsze kroki z wiarygodnymi aktorami
 > [!div class="op_single_selector"]
 > * [C# w systemie Windows](service-fabric-reliable-actors-get-started.md)
 > * [Java w systemie Linux](service-fabric-reliable-actors-get-started-java.md)
 
-W tym artykule omówiono tworzenie i debugowanie prostej niezawodnej aplikacji aktora w programie Visual Studio. Aby uzyskać więcej informacji na temat Reliable Actors, zobacz [wprowadzenie do Service Fabric Reliable Actors](service-fabric-reliable-actors-introduction.md).
+W tym artykule oględziny tworzenia i debugowania prostej aplikacji niezawodnego aktora w programie Visual Studio. Aby uzyskać więcej informacji na temat wiarygodnych aktorów, zobacz [Wprowadzenie do sieci szkieletowej usług Wiarygodnych aktorów.](service-fabric-reliable-actors-introduction.md)
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Przed rozpoczęciem upewnij się, że masz Service Fabric środowisko programistyczne, w tym program Visual Studio, a następnie skonfiguruj go na komputerze. Aby uzyskać szczegółowe informacje, zobacz [jak skonfigurować środowisko deweloperskie](service-fabric-get-started.md).
+Przed rozpoczęciem upewnij się, że masz środowisko programistyczne sieci szkieletowej usług, w tym Visual Studio, skonfigurowane na komputerze. Aby uzyskać szczegółowe informacje, [zobacz, jak skonfigurować środowisko programistyczne](service-fabric-get-started.md).
 
-## <a name="create-a-new-project-in-visual-studio"></a>Tworzenie nowego projektu w programie Visual Studio
+## <a name="create-a-new-project-in-visual-studio"></a>Utworzenie nowego projektu w Visual Studio
 
-Uruchom program Visual Studio 2019 lub nowszy jako administrator, a następnie utwórz nowy projekt **aplikacji Service Fabric** :
+Uruchom program Visual Studio 2019 lub nowszy jako administrator, a następnie utwórz nowy projekt **aplikacji sieci szkieletowej usług:**
 
-![Service Fabric Tools for Visual Studio — nowy projekt][1]
+![Narzędzia sieci szkieletowej usług dla programu Visual Studio — nowy projekt][1]
 
-W następnym oknie dialogowym wybierz pozycję **Usługa aktora** w obszarze **.NET Core 2,0** , a następnie wprowadź nazwę usługi.
+W następnym oknie dialogowym wybierz pozycję **Usługa aktora** w obszarze **.NET Core 2.0** i wprowadź nazwę usługi.
 
-![Service Fabric szablonów projektu][5]
+![Szablony projektów sieci szkieletowej usług][5]
 
-Utworzony projekt pokazuje następującą strukturę:
+Utworzony projekt przedstawia następującą strukturę:
 
-![Struktura projektu Service Fabric][2]
+![Struktura projektu sieci szkieletowej usług][2]
 
-## <a name="examine-the-solution"></a>Sprawdzanie rozwiązania
+## <a name="examine-the-solution"></a>Zbadaj rozwiązanie
 
 Rozwiązanie zawiera trzy projekty:
 
-* **Projekt aplikacji (aplikacje)** . Ten projekt pakuje wszystkie usługi do wdrożenia. Zawiera ona skrypty *ApplicationManifest. XML* i PowerShell służące do zarządzania aplikacją.
+* **Projekt aplikacji (MyApplication)**. Ten projekt pakiety wszystkich usług razem do wdrożenia. Zawiera *skrypty ApplicationManifest.xml* i PowerShell do zarządzania aplikacją.
 
-* **Projekt interfejsu (HelloWorld. Interfaces)** . Ten projekt zawiera definicję interfejsu aktora. Interfejsy aktora można definiować w dowolnym projekcie z dowolną nazwą.  Interfejs definiuje kontrakt aktora, który jest współużytkowany przez implementację aktora i klientów wywołujących aktora.  Ze względu na to, że projekty klienta mogą być od niego zależne, zazwyczaj warto zdefiniować je w zestawie, który jest oddzielony od implementacji aktora.
+* **Projekt interfejsu (HelloWorld.Interfaces)**. Ten projekt zawiera definicję interfejsu dla aktora. Interfejsy aktora można zdefiniować w dowolnym projekcie o dowolnej nazwie.  Interfejs definiuje kontrakt aktora, który jest współużytkowane przez implementację aktora i klientów wywołujących aktora.  Ponieważ projekty klienta może zależeć od niego, zazwyczaj ma sens, aby zdefiniować go w zestawie, który jest oddzielony od implementacji aktora.
 
-* **Projekt usługi aktora (HelloWorld)** . Ten projekt definiuje usługę Service Fabric, która będzie hostować aktora. Zawiera implementację aktora, *HelloWorld.cs*. Implementacja aktora to Klasa, która pochodzi od typu podstawowego `Actor` i implementuje interfejsy zdefiniowane w projekcie *webaktor. Interfaces* . Klasa aktora musi również implementować konstruktora, który akceptuje wystąpienie `ActorService` i `ActorId` i przekazuje je do podstawowej klasy `Actor`.
+* **Projekt usługi aktora (HelloWorld)**. Ten projekt definiuje usługę sieci szkieletowej usług, która będzie hostować aktora. Zawiera implementację aktora, *HelloWorld.cs*. Implementacja aktora jest klasą, która `Actor` wywodzi się z typu podstawowego i implementuje interfejsy zdefiniowane w projekcie *MyActor.Interfaces.* Klasa aktora musi również implementować konstruktora, który akceptuje wystąpienie `ActorService` i `ActorId` i przekazuje je do klasy podstawowej. `Actor`
     
-    Ten projekt zawiera również *program.cs*, który rejestruje klasy aktora w środowisku uruchomieniowym Service Fabric przy użyciu `ActorRuntime.RegisterActorAsync<T>()`. Klasa `HelloWorld` jest już zarejestrowana. Wszystkie dodatkowe implementacje aktora dodane do projektu również muszą być zarejestrowane w metodzie `Main()`.
+    Ten projekt zawiera również *Program.cs*, który rejestruje klasy aktora w `ActorRuntime.RegisterActorAsync<T>()`czasie wykonywania sieci szkieletowej usług przy użyciu . Klasa `HelloWorld` jest już zarejestrowana. Wszelkie dodatkowe implementacje aktora dodane do projektu `Main()` muszą być również zarejestrowane w metodzie.
 
 ## <a name="customize-the-helloworld-actor"></a>Dostosowywanie aktora HelloWorld
 
-Szablon projektu definiuje niektóre metody w interfejsie `IHelloWorld` i implementuje je w implementacji aktora `HelloWorld`.  Zastąp te metody, aby usługa aktora zwracała prosty ciąg "Hello world".
+Szablon projektu definiuje niektóre metody `IHelloWorld` w interfejsie i `HelloWorld` implementuje je w implementacji aktora.  Zastąp te metody, aby usługa aktora zwracała prosty ciąg "Hello World".
 
-W projekcie *HelloWorld. Interfaces* w pliku *IHelloWorld.cs* Zastąp definicję interfejsu w następujący sposób:
+W projekcie *HelloWorld.Interfaces* w pliku *IHelloWorld.cs* zastąp definicję interfejsu w następujący sposób:
 
 ```csharp
 public interface IHelloWorld : IActor
@@ -62,7 +62,7 @@ public interface IHelloWorld : IActor
 }
 ```
 
-W projekcie **HelloWorld** w **HelloWorld.cs**Zastąp całą definicję klasy w następujący sposób:
+W projekcie **HelloWorld** w **HelloWorld.cs**zastąpi całą definicję klasy w następujący sposób:
 
 ```csharp
 [StatePersistence(StatePersistence.Persisted)]
@@ -80,26 +80,26 @@ internal class HelloWorld : Actor, IHelloWorld
 }
 ```
 
-Naciśnij **kombinację klawiszy Ctrl-Shift-B** , aby skompilować projekt i upewnić się, że wszystko jest kompilowane.
+Naciśnij **klawisze Ctrl-Shift-B,** aby utworzyć projekt i upewnić się, że wszystko się kompiluje.
 
 ## <a name="add-a-client"></a>Dodawanie klienta
 
-Utwórz prostą aplikację konsolową, która wywoła usługę aktora.
+Utwórz prostą aplikację konsoli, aby wywołać usługę aktora.
 
-1. Kliknij prawym przyciskiem myszy rozwiązanie w Eksplorator rozwiązań > **dodaj** > **Nowy projekt.** ...
+1. Kliknij prawym przyciskiem myszy rozwiązanie w Eksploratorze rozwiązań > **Dodaj** > **nowy projekt...**.
 
-2. W obszarze typy projektów **platformy .NET Core** wybierz pozycję **Aplikacja konsolowa (.NET Core)** .  Nazwij projekt *ActorClient*.
+2. W obszarze typy projektów **.NET Core** wybierz pozycję **Aplikacja konsoli (.NET Core)**.  Nazwij projekt *ActorClient*.
     
     ![Okno dialogowe Dodawanie nowego projektu][6]    
     
     > [!NOTE]
-    > Aplikacja konsolowa nie jest typem aplikacji, która zwykle jest używana jako klient w Service Fabric, ale stanowi wygodny przykład dla debugowania i testowania przy użyciu lokalnego klastra Service Fabric.
+    > Aplikacja konsoli nie jest typem aplikacji, której zazwyczaj używasz jako klienta w sieci szkieletowej usług, ale stanowi wygodny przykład do debugowania i testowania przy użyciu lokalnego klastra sieci szkieletowej usług.
 
-3. Aplikacja konsolowa musi być aplikacją 64-bitową, aby zachować zgodność z projektem interfejsu i innymi zależnościami.  W Eksplorator rozwiązań kliknij prawym przyciskiem myszy projekt **ActorClient** , a następnie kliknij polecenie **Właściwości**.  Na karcie **kompilacja** ustaw wartość **docelowy platformy** na **x64**.
+3. Aplikacja konsoli musi być aplikacją 64-bitową, aby zachować zgodność z projektem interfejsu i innymi zależnościami.  W Eksploratorze rozwiązań kliknij prawym przyciskiem myszy projekt **ActorClient,** a następnie kliknij polecenie **Właściwości**.  Na karcie **Kompilacja** ustaw **docelową platformę** na **x64**.
     
     ![Właściwości kompilacji][8]
 
-4. Projekt klienta wymaga pakietu NuGet niezawodnych aktorów.  Kliknij pozycję **Narzędzia** > **Menedżer pakietów NuGet** > **Konsola menedżera pakietów**.  W konsoli Menedżera pakietów wprowadź następujące polecenie:
+4. Projekt klienta wymaga pakietu NuGet wiarygodnych aktorów.  Kliknij pozycję **Narzędzia** > **NuGet Package Manager** > **Package Manager Console**.  W konsoli Menedżera pakietów wprowadź następujące polecenie:
     
     ```powershell
     Install-Package Microsoft.ServiceFabric.Actors -IncludePrerelease -ProjectName ActorClient
@@ -107,11 +107,11 @@ Utwórz prostą aplikację konsolową, która wywoła usługę aktora.
 
     Pakiet NuGet i wszystkie jego zależności są instalowane w projekcie ActorClient.
 
-5. Projekt klienta wymaga również odwołania do projektu interfejsów.  W projekcie ActorClient kliknij prawym przyciskiem myszy pozycję **zależności** , a następnie kliknij pozycję **Dodaj odwołanie.**  Wybierz pozycję **projekty > rozwiązanie** (jeśli nie zostało to jeszcze zaznaczone), a następnie zaznacz pole wyboru obok pozycji **HelloWorld. Interfaces**.  Kliknij przycisk **OK**.
+5. Projekt klienta wymaga również odwołania do projektu interfejsów.  W projekcie ActorClient kliknij prawym przyciskiem myszy **pozycję Zależności,** a następnie kliknij polecenie **Dodaj odwołanie...**.  Wybierz **opcję Projekty > rozwiązanie** (jeśli nie jest jeszcze zaznaczone), a następnie zaznacz pole wyboru obok **helloworld.interfaces**.  Kliknij przycisk **OK**.
     
     ![Okno dialogowe Dodawanie odwołania][7]
 
-6. W projekcie ActorClient Zastąp całą zawartość *program.cs* następującym kodem:
+6. W projekcie ActorClient zastąp całą zawartość *Program.cs* następującym kodem:
     
     ```csharp
     using System;
@@ -137,19 +137,19 @@ Utwórz prostą aplikację konsolową, która wywoła usługę aktora.
 
 ## <a name="running-and-debugging"></a>Uruchamianie i debugowanie
 
-Naciśnij klawisz **F5** , aby skompilować, wdrożyć i uruchomić aplikację lokalnie w klastrze tworzenia Service Fabric.  W trakcie procesu wdrażania postęp jest wyświetlany w oknie **danych wyjściowych** .
+Naciśnij **klawisz F5,** aby skompilować, wdrożyć i uruchomić aplikację lokalnie w klastrze deweloperów sieci szkieletowej usług.  Podczas procesu wdrażania można zobaczyć postęp w oknie **Dane wyjściowe.**
 
-![Okno danych wyjściowych debugowania Service Fabric][3]
+![Okno wyjściowe debugowania sieci szkieletowej usług][3]
 
-Gdy dane wyjściowe zawierają tekst, *aplikacja jest gotowa*, możliwe jest przetestowanie usługi przy użyciu aplikacji ActorClient.  W Eksplorator rozwiązań kliknij prawym przyciskiem myszy projekt **ActorClient** , a następnie kliknij pozycję **Debuguj** > **Uruchom nowe wystąpienie**.  Aplikacja wiersza polecenia powinna wyświetlać dane wyjściowe usługi aktora.
+Gdy dane wyjściowe zawiera tekst, *Aplikacja jest gotowa*, jest możliwe, aby przetestować usługę przy użyciu aplikacji ActorClient.  W Eksploratorze rozwiązań kliknij prawym przyciskiem myszy projekt **ActorClient,** a następnie kliknij polecenie**Rozpocznij nowe wystąpienie** **debugowania** > .  Aplikacja wiersza polecenia powinna wyświetlać dane wyjściowe z usługi aktora.
 
 ![Dane wyjściowe aplikacji][9]
 
 > [!TIP]
-> Środowisko uruchomieniowe aktorów Service Fabric emituje niektóre [zdarzenia i liczniki wydajności związane z metodami aktora](service-fabric-reliable-actors-diagnostics.md#actor-method-events-and-performance-counters). Są one przydatne w przypadku diagnostyki i monitorowania wydajności.
+> Środowisko uruchomieniowe Aktorzy sieci szkieletowej usług emituje niektóre [zdarzenia i liczniki wydajności związane z metodami aktora.](service-fabric-reliable-actors-diagnostics.md#actor-method-events-and-performance-counters) Są one przydatne w diagnostyce i monitorowaniu wydajności.
 
 ## <a name="next-steps"></a>Następne kroki
-Dowiedz się więcej o [tym, jak Reliable Actors używać platformy Service Fabric](service-fabric-reliable-actors-platform.md).
+Dowiedz się więcej o [tym, jak niezawodni aktorzy korzystają z platformy sieci szkieletowej usług.](service-fabric-reliable-actors-platform.md)
 
 
 [1]: ./media/service-fabric-reliable-actors-get-started/reliable-actors-newproject.PNG

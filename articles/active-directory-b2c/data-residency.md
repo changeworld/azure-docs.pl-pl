@@ -1,7 +1,7 @@
 ---
-title: Dostępność regionu i dane w miejscu zamieszkania
+title: Dostępność regionu i miejsce zamieszkania danych
 titleSuffix: Azure AD B2C
-description: Dostępność regionów, zamieszkania danych i informacje o Azure Active Directory B2Cych w wersji zapoznawczej.
+description: Dostępność regionu, miejsce zamieszkania danych i informacje o dzierżawach usługi Azure Active Directory B2C w wersji zapoznawczej.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -12,60 +12,60 @@ ms.date: 09/26/2019
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 3df0f581d0d2a1e5ca02202b4eeaede5a1dd5362
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78188854"
 ---
-# <a name="azure-active-directory-b2c-region-availability--data-residency"></a>Azure Active Directory B2C: dostępność regionu & dane miejsca do zamieszkania
+# <a name="azure-active-directory-b2c-region-availability--data-residency"></a>Usługa Azure Active Directory B2C: dostępność regionu & rezydencji danych
 
-Dostępność regionów i miejsca do magazynowania danych to dwie bardzo różne koncepcje, które różnią się w zależności od pozostałej części platformy Azure Azure AD B2C. W tym artykule wyjaśniono różnice między tymi dwoma pojęciami i porównano sposób ich stosowania z platformą Azure a Azure AD B2C.
+Dostępność regionu i rezydencji danych to dwie bardzo różne koncepcje, które mają różny zakres usług Azure AD B2C niż reszta platformy Azure. W tym artykule wyjaśniono różnice między tymi dwoma pojęciami i porównuje sposób ich stosowania do platformy Azure w porównaniu do usługi Azure AD B2C.
 
-Azure AD B2C jest **ogólnie dostępna na całym świecie** z opcją **zamieszkania danych** w **Stany Zjednoczone, Europie lub Azja i Pacyfik**.
+Usługa Azure AD B2C jest **ogólnie dostępna na całym świecie** z opcją **rezydencji danych** w **Stanach Zjednoczonych, Europie lub regionie Azji i Pacyfiku.**
 
-[Dostępność regionu](#region-availability) dotyczy miejsca, w którym usługa jest dostępna do użycia.
+[Dostępność regionu](#region-availability) odnosi się do miejsca, w którym usługa jest dostępna do użytku.
 
-Miejsce [zamieszkania](#data-residency) polega na tym, gdzie są przechowywane dane użytkownika.
+[Data residency](#data-residency) odnosi się do miejsca przechowywania danych użytkownika.
 
 ## <a name="region-availability"></a>Dostępność w danym regionie
 
-Azure AD B2C jest dostępna na całym świecie za pośrednictwem chmury publicznej platformy Azure.
+Usługa Azure AD B2C jest dostępna na całym świecie za pośrednictwem chmury publicznej platformy Azure.
 
-Różni się to od modelu, po którym następuje większość innych usług platformy Azure, które zwykle oddzielają *dostępność* z miejscami do *zamieszkania*. Przykłady tego przykładu można znaleźć na stronie produkty platformy Azure [dostępne według regionów](https://azure.microsoft.com/regions/services/) i [kalkulatora cen Active Directory B2C](https://azure.microsoft.com/pricing/details/active-directory-b2c/).
+Różni się to od modelu, po którym następuje większość innych usług platformy Azure, które zazwyczaj *paruje dostępność* z *rezydentem danych.* Przykłady tego można zobaczyć zarówno na stronie [Produkty dostępne dla regionu](https://azure.microsoft.com/regions/services/) platformy Azure, jak i w [kalkulatorze cen B2C usługi Active Directory.](https://azure.microsoft.com/pricing/details/active-directory-b2c/)
 
 ## <a name="data-residency"></a>Rezydencja danych
 
-Azure AD B2C przechowuje dane użytkowników w Stany Zjednoczone, Europie lub regionie Azja i Pacyfik.
+Usługa Azure AD B2C przechowuje dane użytkowników w Stanach Zjednoczonych, Europie lub regionie Azji i Pacyfiku.
 
-Dane zamieszkania są określane przez kraj/region wybrany podczas [tworzenia dzierżawy Azure AD B2C](tutorial-create-tenant.md):
+Miejsce zamieszkania danych zależy od kraju/regionu wybranego podczas [tworzenia dzierżawy usługi Azure AD B2C:](tutorial-create-tenant.md)
 
-![Zrzut ekranu dla dzierżawy w wersji zapoznawczej](./media/data-residency/data-residency-b2c-tenant.png)
+![Zrzut ekranu przedstawiający dzierżawę w wersji zapoznawczej](./media/data-residency/data-residency-b2c-tenant.png)
 
-Dane znajdują się w **Stany Zjednoczone** dla następujących krajów/regionów:
+Dane znajdują się w **Stanach Zjednoczonych** dla następujących krajów/regionów:
 
-> Stany Zjednoczone, Kanada, Kostaryka, Dominikana, Salwador, Gwatemala, Meksyk, Panama, Portoryko i Trinidad & Tobago
+> Stany Zjednoczone, Kanada, Kostaryka, Dominikana, Salwador, Gwatemala, Meksyk, Panama, Portoryko i Trynidad & Tobago
 
-Dane znajdują się w **Europie** w następujących krajach/regionach:
+Dane znajdują się w **Europie** dla następujących krajów/regionów:
 
-> Algieria, Austria, Azerbejdżan, Bahrajn, Białoruś, Belgia, Bułgaria, Chorwacja, Cypr, Republika Czeska, Dania, Egipt, Estonia, Finlandia, Francja, Niemcy, Grecja, Węgry, Islandia, Irlandia, Izrael, Włochy, Jordania, Kazachstan Liechtenstein, Litwa, Luksemburg, Ameryka Północna, Malta, Czarnogóra, Maroko, Holandia, Nigeria, Norwegia, Oman, Pakistan, Polskę, Portugalia, REP, Republika Południowej Saudyjska, BJR Szwajcaria, Tunezja, Turcja, Ukraina, Zjednoczone Emiraty Arabskie i Zjednoczone Królestwo.
+> Algieria, Austria, Azerbejdżan, Bahrajn, Białoruś, Belgia, Bułgaria, Chorwacja, Cypr, Czechy, Dania, Egipt, Estonia, Finlandia, Francja, Niemcy, Grecja, Węgry, Islandia, Irlandia, Izrael, Włochy, Jordania, Kazachstan, Kenia, Kuwejt, Łotwa, Liban, Liechtenstein, Litwa, Luksemburg, Macedonia Północna, Malta, Czarnogóra, Maroko, Holandia, Nigeria, Norwegia, Oman, Pakistan, Polska, Portugalia, Katar, Rumunia, Rosja, Arabia Saudyjska, Serbia, Słowacja, Słowenia, Republika Południowej Afryki, Hiszpania, Szwecja, Szwajcaria, Tunezja, Turcja, Ukraina, Zjednoczone Emiraty Arabskie i Wielka Brytania.
 
-Dane znajdują się w **Azja i Pacyfik** w następujących krajach/regionach:
+Dane znajdują się w **regionie Azji i Pacyfiku** dla następujących krajów/regionów:
 
 > Afganistan, Hongkong SAR, Indie, Indonezja, Japonia, Korea, Malezja, Filipiny, Singapur, Sri Lanka, Tajwan i Tajlandia.
 
-Następujące kraje/regiony są w trakcie dodawania do listy. Na razie można nadal używać Azure AD B2C, wybierając którykolwiek z powyższych krajów/regionów.
+Następujące kraje/regiony są w trakcie dodawania do listy. Na razie nadal można używać usługi Azure AD B2C, wybierając dowolny z krajów/regionów powyżej.
 
 > Argentyna, Australia, Brazylia, Chile, Kolumbia, Ekwador, Irak, Nowa Zelandia, Paragwaj, Peru, Urugwaj i Wenezuela.
 
-## <a name="preview-tenant"></a>Zapoznawcza dzierżawy
+## <a name="preview-tenant"></a>Dzierżawa w wersji zapoznawczej
 
-Jeśli dzierżawa B2C została utworzona w okresie zapoznawczym usługi Azure AD B2C's, prawdopodobnie **Typ dzierżawy** ma wartość **wersja zapoznawcza**.
+Jeśli utworzono dzierżawę B2C w okresie podglądu usługi Azure AD B2C, prawdopodobnie **typ dzierżawy** będzie wyświetlany **jako dzierżawa w wersji zapoznawczej.**
 
-W takim przypadku należy użyć dzierżawy tylko do celów deweloperskich i testowych. NIE używaj dzierżawy w wersji zapoznawczej dla aplikacji produkcyjnych.
+W takim przypadku należy użyć dzierżawy TYLKO do celów rozwoju i testowania. NIE używaj dzierżawy w wersji zapoznawczej dla aplikacji produkcyjnych.
 
-**Brak ścieżki migracji** z DZIERŻAWy B2C w wersji zapoznawczej do DZIERŻAWy B2C w skali produkcyjnej. Musisz utworzyć nową dzierżawę B2C dla aplikacji produkcyjnych.
+**Nie ma ścieżki migracji** z dzierżawy B2C w wersji zapoznawczej do dzierżawy B2C w skali produkcyjnej. Należy utworzyć nową dzierżawę B2C dla aplikacji produkcyjnych.
 
-Istnieją znane problemy związane z usuwaniem dzierżawy B2C w wersji zapoznawczej i tworzenie dzierżawy B2C w skali produkcyjnej o tej samej nazwie domeny. *Musisz utworzyć dzierżawę B2C w skali produkcyjnej z inną nazwą domeny*.
+Istnieją znane problemy podczas usuwania dzierżawy B2C w wersji zapoznawczej i tworzenia dzierżawy B2C w skali produkcyjnej o tej samej nazwie domeny. *Należy utworzyć dzierżawę B2C w skali produkcyjnej o innej nazwie domeny.*
 
-![Zrzut ekranu dla dzierżawy w wersji zapoznawczej](./media/data-residency/preview-b2c-tenant.png)
+![Zrzut ekranu przedstawiający dzierżawę w wersji zapoznawczej](./media/data-residency/preview-b2c-tenant.png)

@@ -1,6 +1,6 @@
 ---
-title: Przekształcanie danych przy użyciu działania usługi Hadoop Streaming
-description: Wyjaśnia, jak używać działania przesyłania strumieniowego usługi Hadoop w Azure Data Factory do przekształcania danych przez uruchamianie programów przesyłania strumieniowego Hadoop w klastrze usługi Hadoop.
+title: Przekształcanie danych przy użyciu aktywności przesyłania strumieniowego w uodwęzo w hadoop
+description: W tym artykule wyjaśniono, jak używać działania przesyłania strumieniowego Hadoop w usłudze Azure Data Factory do przekształcania danych przez uruchamianie programów przesyłania strumieniowego Hadoop w klastrze Hadoop.
 author: nabhishek
 ms.author: abnarain
 manager: shwang
@@ -11,22 +11,22 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 01/16/2018
 ms.openlocfilehash: 1c12a10dfdf8e69cf05ab30d0e6aa48fea5803a3
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74912896"
 ---
-# <a name="transform-data-using-hadoop-streaming-activity-in-azure-data-factory"></a>Przekształcanie danych przy użyciu działania usługi Hadoop streaming w Azure Data Factory
-> [!div class="op_single_selector" title1="Wybierz używaną wersję usługi Data Factory:"]
+# <a name="transform-data-using-hadoop-streaming-activity-in-azure-data-factory"></a>Przekształcanie danych przy użyciu aktywności przesyłania strumieniowego usługi Hadoop w fabryce danych platformy Azure
+> [!div class="op_single_selector" title1="Wybierz wersję używanej usługi Data Factory:"]
 > * [Wersja 1](v1/data-factory-hadoop-streaming-activity.md)
 > * [Bieżąca wersja](transform-data-using-hadoop-streaming.md)
 
-Działanie przesyłania strumieniowego usługi HDInsight w [potoku](concepts-pipelines-activities.md) Data Factory wykonuje programy przesyłania strumieniowego Hadoop [](compute-linked-services.md#azure-hdinsight-on-demand-linked-service) we własnym lub [lokalnym klastrze usługi](compute-linked-services.md#azure-hdinsight-linked-service) HDInsight. W tym artykule przedstawiono artykuł [działania przekształcania danych](transform-data.md) , który zawiera ogólne omówienie transformacji danych i obsługiwanych działań transformacji.
+Aktywność przesyłania strumieniowego HDInsight w [potoku](concepts-pipelines-activities.md) usługi Data Factory wykonuje programy przesyłania strumieniowego Hadoop na [własny](compute-linked-services.md#azure-hdinsight-linked-service) lub [na żądanie](compute-linked-services.md#azure-hdinsight-on-demand-linked-service) klastra HDInsight. W tym artykule opiera się na [działaniach transformacji danych,](transform-data.md) który przedstawia ogólny przegląd transformacji danych i obsługiwanych działań transformacji.
 
-Jeśli jesteś nowym do Azure Data Factory, przeczytaj artykuł [wprowadzenie do Azure Data Factory](introduction.md) i wykonaj [Samouczek: Przekształcanie danych](tutorial-transform-data-spark-powershell.md) przed przeczytaniem tego artykułu. 
+Jeśli jesteś nowy w usłudze Azure Data Factory, przeczytaj [wprowadzenie do usługi Azure Data Factory](introduction.md) i wykonaj [samouczek: przekształć dane](tutorial-transform-data-spark-powershell.md) przed przeczytaniem tego artykułu. 
 
-## <a name="json-sample"></a>Przykład JSON
+## <a name="json-sample"></a>Próbka JSON
 ```json
 {
     "name": "Streaming Activity",
@@ -67,31 +67,31 @@ Jeśli jesteś nowym do Azure Data Factory, przeczytaj artykuł [wprowadzenie do
 
 ## <a name="syntax-details"></a>Szczegóły składni
 
-| Właściwość          | Opis                              | Wymagane |
+| Właściwość          | Opis                              | Wymagany |
 | ----------------- | ---------------------------------------- | -------- |
 | name              | Nazwa działania                     | Tak      |
-| description       | Tekst opisujący działanie używanego działania | Nie       |
-| type              | Dla działania przesyłania strumieniowego Hadoop typem działania jest HDInsightStreaming | Tak      |
-| linkedServiceName | Odwołanie do klastra usługi HDInsight zarejestrowanego jako połączona usługa w Data Factory. Aby dowiedzieć się więcej o tej połączonej usłudze, zobacz artykuł dotyczący [połączonych usług obliczeniowych](compute-linked-services.md) . | Tak      |
-| wzor            | Określa nazwę pliku wykonywalnego mapowania | Tak      |
-| zmniejszenie           | Określa nazwę pliku wykonywalnego redukcji | Tak      |
-| połączenie          | Określa nazwę pliku wykonywalnego łączenia | Nie       |
-| fileLinkedService | Odwołanie do połączonej usługi Azure Storage służącej do przechowywania programów mapowania, łączenia i narzędzi do ograniczania do wykonania. Jeśli nie określisz tej połączonej usługi, zostanie użyta połączona usługa Azure Storage zdefiniowana w połączonej usłudze HDInsight. | Nie       |
-| filePath          | Podaj tablicę ścieżek do programów mapowania, łączenia i redukcji przechowywanych w usłudze Azure Storage, która jest określona przez fileLinkedService. W ścieżce jest rozróżniana wielkość liter. | Tak      |
-| wejście             | Określa ścieżkę WASB do pliku wejściowego dla mapowania. | Tak      |
-| output            | Określa ścieżkę WASB do pliku wyjściowego dla funkcji zmniejszającej. | Tak      |
-| getDebugInfo      | Określa, kiedy pliki dziennika są kopiowane do usługi Azure Storage używanej przez klaster HDInsight (lub) określonej przez elementu scriptlinkedservice. Dozwolone wartości: brak, zawsze lub niepowodzenie. Wartość domyślna: None. | Nie       |
-| arguments         | Określa tablicę argumentów zadania usługi Hadoop. Argumenty są przesyłane jako argumenty wiersza polecenia do każdego zadania. | Nie       |
-| defines           | Określ parametry jako pary klucz/wartość dla odwołania w skrypcie Hive. | Nie       | 
+| description       | Tekst opisujący, do czego jest używane działanie | Nie       |
+| type              | W przypadku aktywności przesyłania strumieniowego hadoop typem działania jest HDInsightStreaming | Tak      |
+| linkedServiceName | Odwołanie do klastra HDInsight zarejestrowanego jako usługa połączona w fabryce danych. Aby dowiedzieć się więcej o tej połączonej usłudze, zobacz Artykuł [dotyczący powiązanych usług obliczeń.](compute-linked-services.md) | Tak      |
+| Mapowania            | Określa nazwę pliku wykonywalnego mapera | Tak      |
+| Reduktor           | Określa nazwę pliku wykonywalnego reduktora | Tak      |
+| kombajna          | Określa nazwę pliku wykonywalnego kombajni | Nie       |
+| plikLinkedService | Odwołanie do usługi Azure Storage Linked Service używane do przechowywania programów Mapper, Combiner i Reducer do wykonania. Jeśli nie określisz tej usługi połączonej, używana jest usługa linked service usługi Azure Storage zdefiniowana w usłudze połączonej usługi HDInsight. | Nie       |
+| Filepath          | Podaj tablicę ścieżki do programów Mapper, Combiner i Reducer przechowywane w usłudze Azure Storage, o których mowa fileLinkedService. W ścieżce jest rozróżniana wielkość liter. | Tak      |
+| wejście             | Określa ścieżkę WASB do pliku wejściowego dla mapera. | Tak      |
+| output            | Określa ścieżkę WASB do pliku wyjściowego reduktora. | Tak      |
+| getDebugInfo      | Określa, kiedy pliki dziennika są kopiowane do usługi Azure Storage używane przez klaster HDInsight (lub) określone przez scriptLinkedService. Dozwolone wartości: Brak, Zawsze lub Błąd. Wartość domyślna: None. | Nie       |
+| Argumenty         | Określa tablicę argumentów dla zadania Hadoop. Argumenty są przekazywane jako argumenty wiersza polecenia do każdego zadania. | Nie       |
+| Definiuje           | Określ parametry jako pary klucz/wartość do odwoływania się w skrypcie gałęzi. | Nie       | 
 
 ## <a name="next-steps"></a>Następne kroki
-Zapoznaj się z następującymi artykułami, które wyjaśniają sposób przekształcania danych w inny sposób: 
+Zobacz następujące artykuły, które wyjaśniają, jak przekształcać dane w inny sposób: 
 
 * [Działanie U-SQL](transform-data-using-data-lake-analytics.md)
-* [Działanie Hive](transform-data-using-hadoop-hive.md)
-* [Aktywność trzody chlewnej](transform-data-using-hadoop-pig.md)
-* [Działanie MapReduce](transform-data-using-hadoop-map-reduce.md)
-* [Działanie platformy Spark](transform-data-using-spark.md)
+* [Aktywność gałęzi](transform-data-using-hadoop-hive.md)
+* [Aktywność świń](transform-data-using-hadoop-pig.md)
+* [Działanie mapreduce](transform-data-using-hadoop-map-reduce.md)
+* [Aktywność iskierki](transform-data-using-spark.md)
 * [Niestandardowe działanie platformy .NET](transform-data-using-dotnet-custom-activity.md)
-* [Działanie wykonywania wsadowego Machine Learning](transform-data-using-machine-learning.md)
+* [Działanie wsadowe uczenia maszynowego](transform-data-using-machine-learning.md)
 * [Działanie procedury składowanej](transform-data-using-stored-procedure.md)

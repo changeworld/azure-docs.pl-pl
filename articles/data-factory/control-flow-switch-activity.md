@@ -1,6 +1,6 @@
 ---
-title: Przełącz działanie w Azure Data Factory
-description: Działanie Switch pozwala kontrolować przepływ przetwarzania na podstawie warunku.
+title: Przełączanie aktywności w fabryce danych platformy Azure
+description: Działanie Przełącznik umożliwia sterowanie przepływem przetwarzania na podstawie warunku.
 services: data-factory
 author: djpmsft
 ms.author: daperlov
@@ -10,15 +10,15 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/08/2019
 ms.openlocfilehash: fd0e6d526f0c47304e7bf53f91d08f42b924ff23
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75440379"
 ---
-# <a name="switch-activity-in-azure-data-factory"></a>Przełącz działanie w Azure Data Factory
+# <a name="switch-activity-in-azure-data-factory"></a>Przełączanie aktywności w fabryce danych platformy Azure
 
-Działanie Switch zapewnia te same funkcje, które instrukcja SWITCH zawiera w językach programowania. Ocenia zestaw działań odpowiadających wielkości liter, które pasują do oceny warunku.
+Switch działania zapewnia taką samą funkcjonalność, że switch instrukcji zapewnia w językach programowania. Ocenia zestaw działań odpowiadających przypadku, który pasuje do oceny stanu.
 
 ## <a name="syntax"></a>Składnia
 
@@ -65,22 +65,22 @@ Działanie Switch zapewnia te same funkcje, które instrukcja SWITCH zawiera w j
 
 ## <a name="type-properties"></a>Właściwości typu
 
-Właściwość | Opis | Dozwolone wartości | Wymagane
+Właściwość | Opis | Dozwolone wartości | Wymagany
 -------- | ----------- | -------------- | --------
-name | Nazwa działania Switch. | Ciąg | Tak
-type | Należy ustawić, aby *Przełączać** | Ciąg | Tak
-expression | Wyrażenie, które musi obliczyć wartość ciągu | Wyrażenie z ciągiem typu wynikowego | Tak
-padkach | Zestaw przypadków, które zawierają wartość i zestaw działań do wykonania, gdy wartość jest zgodna z oceną wyrażenia. Należy podać co najmniej jeden przypadek. Obowiązuje maksymalnie 25 przypadków. | Tablica obiektów Case | Tak
-defaultActivities | Zestaw działań, które są wykonywane, gdy szacowanie wyrażenia nie jest spełnione. | Tablica działań | Tak
+name | Nazwa działania przełącznika. | Ciąg | Tak
+type | Musi być ustawiona na *Przełącznik** | Ciąg | Tak
+wyrażenie | Wyrażenie, które musi oceniać wartość ciągu | Wyrażenie z ciągiem typu wynik | Tak
+Przypadkach | Zestaw przypadków, które zawierają wartość i zestaw działań do wykonania, gdy wartość jest zgodna z oceną wyrażenia. Musi podać co najmniej jeden przypadek. Istnieje maksymalny limit 25 przypadków. | Tablica obiektów case | Tak
+defaultAkcje | Zestaw działań, które są wykonywane, gdy ocena wyrażenia nie jest spełniony. | Tablica działań | Tak
 
 ## <a name="example"></a>Przykład
 
 Potok w tym przykładzie kopiuje dane z folderu wejściowego do folderu wyjściowego. Folder wyjściowy jest określany przez wartość parametru potoku: routeSelection.
 
 > [!NOTE]
-> Ta sekcja zawiera definicje JSON i przykładowe polecenia programu PowerShell umożliwiające uruchomienie potoku. Aby zapoznać się z instrukcjami krok po kroku dotyczącymi tworzenia potoku Data Factory przy użyciu definicji Azure PowerShell i JSON, zobacz [Samouczek: Tworzenie fabryki danych przy użyciu Azure PowerShell](quickstart-create-data-factory-powershell.md).
+> Ta sekcja zawiera definicje JSON i przykładowe polecenia programu PowerShell do uruchomienia potoku. Aby uzyskać przewodnik z instrukcjami krok po kroku, aby utworzyć potok fabryki danych przy użyciu definicji programu Azure PowerShell i JSON, zobacz [samouczek: tworzenie fabryki danych przy użyciu programu Azure PowerShell](quickstart-create-data-factory-powershell.md).
 
-### <a name="pipeline-with-switch-activity-adfv2quickstartpipelinejson"></a>Potok z działaniem Switch (Adfv2QuickStartPipeline. JSON)
+### <a name="pipeline-with-switch-activity-adfv2quickstartpipelinejson"></a>Potok z działaniem przełącznika (Adfv2QuickStartPipeline.json)
 
 ```json
 {
@@ -228,7 +228,7 @@ Potok w tym przykładzie kopiuje dane z folderu wejściowego do folderu wyjścio
 
 ```
 
-### <a name="azure-storage-linked-service-azurestoragelinkedservicejson"></a>Połączona usługa Azure Storage (AzureStorageLinkedService. JSON)
+### <a name="azure-storage-linked-service-azurestoragelinkedservicejson"></a>Usługa połączona usługi Azure Storage (AzureStorageLinkedService.json)
 
 ```json
 {
@@ -242,9 +242,9 @@ Potok w tym przykładzie kopiuje dane z folderu wejściowego do folderu wyjścio
 }
 ```
 
-### <a name="parameterized-azure-blob-dataset-blobdatasetjson"></a>Sparametryzowany zestaw danych obiektów blob platformy Azure (BlobDataset. JSON)
+### <a name="parameterized-azure-blob-dataset-blobdatasetjson"></a>Sparametryzowany zestaw danych obiektów blob platformy Azure (blobDataset.json)
 
-Potok ustawia **folderPath** na wartość **outputPath1** lub **outputPath2** parametru potoku. 
+Potok ustawia **folderPath** do wartości **outputPath1** lub **outputPath2** parametru potoku. 
 
 ```json
 {
@@ -270,7 +270,7 @@ Potok ustawia **folderPath** na wartość **outputPath1** lub **outputPath2** pa
 }
 ```
 
-### <a name="pipeline-parameter-json-pipelineparametersjson"></a>Plik JSON parametru potoku (PipelineParameters. JSON)
+### <a name="pipeline-parameter-json-pipelineparametersjson"></a>Parametr potoku JSON (PipelineParameters.json)
 
 ```json
 {
@@ -286,7 +286,7 @@ Potok ustawia **folderPath** na wartość **outputPath1** lub **outputPath2** pa
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-W tych poleceniach przyjęto założenie, że pliki JSON zostały zapisane w folderze: C:\ADF. 
+Te polecenia zakładają, że pliki JSON zostały zapisane w folderze: C:\ADF. 
 
 ```powershell
 Connect-AzAccount
@@ -329,11 +329,11 @@ $result.Error -join "`r`n"
 
 ## <a name="next-steps"></a>Następne kroki
 
-Zobacz inne działania przepływu sterowania obsługiwane przez Data Factory: 
+Zobacz inne działania przepływu sterowania obsługiwane przez fabrykę danych: 
 
 - [Działanie If Condition](control-flow-if-condition-activity.md)
 - [Działanie Execute Pipeline](control-flow-execute-pipeline-activity.md)
 - [Dla każdego działania](control-flow-for-each-activity.md)
-- [Działanie GetMetadata](control-flow-get-metadata-activity.md)
+- [Uzyskaj aktywność metadanych](control-flow-get-metadata-activity.md)
 - [Działanie Lookup](control-flow-lookup-activity.md)
-- [Aktywność sieci Web](control-flow-web-activity.md)
+- [Działanie internetowe](control-flow-web-activity.md)

@@ -8,22 +8,22 @@ ms.topic: article
 ms.date: 09/16/2019
 ms.author: allensu
 ms.openlocfilehash: b5ab62e7ab57d32a11a45713519633034deb6a5b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75453017"
 ---
 # <a name="disable-network-policies-for-private-endpoints"></a>Wyłączanie zasad sieciowych dla prywatnych punktów końcowych
 
-Zasady sieciowe, takie jak sieciowe grupy zabezpieczeń (sieciowej grupy zabezpieczeń), nie są obsługiwane dla prywatnych punktów końcowych. Aby można było wdrożyć prywatny punkt końcowy w danej podsieci, w tej podsieci jest wymagane jawne ustawienie Disable. To ustawienie ma zastosowanie tylko do prywatnego punktu końcowego. W przypadku innych zasobów w podsieci dostęp jest kontrolowany na podstawie definicji reguł zabezpieczeń sieciowych grup zabezpieczeń (sieciowej grupy zabezpieczeń). 
+Zasady sieciowe, takie jak sieciowe grupy zabezpieczeń (NSG), nie są obsługiwane dla prywatnych punktów końcowych. Aby wdrożyć prywatny punkt końcowy w danej podsieci, w tej podsieci wymagane jest jawne ustawienie wyłączenia. To ustawienie ma zastosowanie tylko do prywatnego punktu końcowego. W przypadku innych zasobów w podsieci dostęp jest kontrolowany na podstawie definicji reguł zabezpieczeń sieciowych grup zabezpieczeń (NSG). 
  
-W przypadku tworzenia prywatnego punktu końcowego przy użyciu portalu to ustawienie jest automatycznie wyłączone w ramach procesu tworzenia. Wdrożenie przy użyciu innych klientów wymaga dodatkowego kroku, aby zmienić to ustawienie. Można wyłączyć ustawienie za pomocą usługi Cloud Shell z poziomu Azure Portal lub lokalnych instalacji Azure PowerShell, interfejsu wiersza polecenia platformy Azure lub użyć szablonów Azure Resource Manager.  
+Podczas korzystania z portalu do tworzenia prywatnego punktu końcowego, to ustawienie jest automatycznie wyłączane jako część procesu tworzenia. Wdrożenie przy użyciu innych klientów wymaga dodatkowego kroku, aby zmienić to ustawienie. Można wyłączyć ustawienie przy użyciu powłoki chmury z witryny Azure portal lub lokalnych instalacji platformy Azure PowerShell, interfejsu wiersza polecenia platformy Azure lub użyć szablonów usługi Azure Resource Manager.  
  
-W poniższych przykładach opisano sposób wyłączania `PrivateEndpointNetworkPolicies` dla sieci wirtualnej o nazwie *myVirtualNetwork* z *domyślną* podsiecią hostowaną w grupie zasobów o nazwie Moja *resourceName*.
+W poniższych przykładach `PrivateEndpointNetworkPolicies` opisano sposób wyłączania sieci wirtualnej o nazwie *myVirtualNetwork* z *domyślną* podsieci hostowanym w grupie zasobów o nazwie *myResourceGroup*.
 
 ## <a name="using-azure-powershell"></a>Korzystanie z programu Azure PowerShell
-W tej sekcji opisano, jak wyłączyć zasady prywatnego punktu końcowego podsieci przy użyciu Azure PowerShell.
+W tej sekcji opisano sposób wyłączania zasad prywatnego punktu końcowego podsieci przy użyciu programu Azure PowerShell.
 
 ```azurepowershell
 $virtualNetwork= Get-AzVirtualNetwork `
@@ -35,7 +35,7 @@ $virtualNetwork= Get-AzVirtualNetwork `
 $virtualNetwork | Set-AzVirtualNetwork 
 ```
 ## <a name="using-azure-cli"></a>Korzystanie z interfejsu wiersza polecenia platformy Azure
-W tej sekcji opisano, jak wyłączyć zasady prywatnego punktu końcowego podsieci przy użyciu interfejsu wiersza polecenia platformy Azure.
+W tej sekcji opisano sposób wyłączania zasad prywatnych punktów końcowych podsieci przy użyciu interfejsu wiersza polecenia platformy Azure.
 ```azurecli
 az network vnet subnet update \ 
   --name default \ 
@@ -44,7 +44,7 @@ az network vnet subnet update \
   --disable-private-endpoint-network-policies true
 ```
 ## <a name="using-a-template"></a>Korzystanie z szablonu
-W tej sekcji opisano, jak wyłączyć zasady prywatnego punktu końcowego podsieci przy użyciu szablonu Azure Resource Manager.
+W tej sekcji opisano sposób wyłączania zasad prywatnych punktów końcowych podsieci przy użyciu szablonu usługi Azure Resource Manager.
 ```json
 { 
           "name": "myVirtualNetwork", 

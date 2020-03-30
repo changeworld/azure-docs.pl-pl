@@ -1,6 +1,6 @@
 ---
-title: Dostawcy usługi Azure MFA — Azure Active Directory
-description: Kiedy należy używać dostawcy uwierzytelniania z usługą Azure MFA?
+title: Dostawcy auth azure wielu czynników — usługa Azure Active Directory
+description: Kiedy należy używać dostawcy Auth z usługi Azure MFA?
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
@@ -12,65 +12,65 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a275e5ab394b54960a2340848152741762b28f8c
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78269384"
 ---
-# <a name="when-to-use-an-azure-multi-factor-authentication-provider"></a>Kiedy używać dostawcy usługi Azure Multi-Factor Authentication
+# <a name="when-to-use-an-azure-multi-factor-authentication-provider"></a>Kiedy używać dostawcy uwierzytelniania wieloskładnikowego platformy Azure
 
 Weryfikacja dwuetapowa jest domyślnie dostępna dla administratorów globalnych, którzy zarządzają użytkownikami usług Azure Active Directory i Office 365. Jeśli jednak chcesz korzystać z [funkcji zaawansowanych](howto-mfa-mfasettings.md), musisz kupić pełną wersję usługi Azure Multi-Factor Authentication (MFA).
 
-Dostawca usługi Azure MFA jest używany do korzystania z funkcji udostępnionych przez usługę Azure Multi-Factor Authentication dla użytkowników, którzy **nie mają licencji**.
+Dostawca usługi Azure Multi-Factor Auth jest używany do korzystania z funkcji oferowanych przez uwierzytelnianie wieloskładnikowe platformy Azure dla użytkowników, którzy **nie mają licencji.**
 
 > [!NOTE]
-> Obowiązujące 1 września, 2018 nowych dostawców uwierzytelniania nie można już tworzyć. Istniejący dostawcy uwierzytelniania mogą nadal być używane i aktualizowane, ale migracja nie jest już możliwa. Uwierzytelnianie wieloskładnikowe będzie nadal dostępne jako funkcja w Azure AD — wersja Premium licencji.
+> Od 1 września 2018 r. nowi dostawcy er mogą przestać być tworzoni. Istniejących dostawców eru może być nadal używany i aktualizowany, ale migracja nie jest już możliwe. Uwierzytelnianie wieloskładnikowe będzie nadal dostępne jako funkcja w licencjach usługi Azure AD Premium.
 
-## <a name="caveats-related-to-the-azure-mfa-sdk"></a>Ostrzeżenia związane z zestawem SDK usługi Azure MFA
+## <a name="caveats-related-to-the-azure-mfa-sdk"></a>Zastrzeżenia związane z zestawem SDK usługi Azure MFA
 
-Należy zauważyć, że zestaw SDK jest przestarzały i będzie kontynuował pracę dopiero po 14 listopada 2018. Po tym czasie wywołania do zestawu SDK będą kończyć się niepowodzeniem.
+Należy zauważyć, że SDK został przestarzały i będzie działać tylko do 14 listopada 2018. Po tym czasie wywołania do zestawu SDK będą kończyć się niepowodzeniem.
 
 ## <a name="what-is-an-mfa-provider"></a>Co to jest dostawca usługi MFA?
 
-Istnieją dwa typy dostawców uwierzytelniania, a różnica polega na tym, że opłaty są naliczane za subskrypcję platformy Azure. W modelu opartym na uwierzytelnianiu jest uwzględniana liczba uwierzytelnień w dzierżawie w ciągu miesiąca. Ta opcja jest przydatna, jeśli masz pewną liczbę użytkowników, którzy uwierzytelniają się tylko czasami. W modelu opartym na użytkownikach jest uwzględniana liczba osób w dzierżawie, które w danym miesiącu korzystają z weryfikacji dwuetapowej. Ta opcja jest przydatna, jeśli masz użytkowników z licencjami, ale musisz objąć uwierzytelnianiem wieloskładnikowym dodatkowych użytkowników, którzy nie mają licencji.
+Istnieją dwa typy dostawców Auth, a rozróżnienie dotyczy sposobu naliczania opłat za subskrypcję platformy Azure. W modelu opartym na uwierzytelnianiu jest uwzględniana liczba uwierzytelnień w dzierżawie w ciągu miesiąca. Ta opcja jest przydatna, jeśli masz pewną liczbę użytkowników, którzy uwierzytelniają się tylko czasami. W modelu opartym na użytkownikach jest uwzględniana liczba osób w dzierżawie, które w danym miesiącu korzystają z weryfikacji dwuetapowej. Ta opcja jest przydatna, jeśli masz użytkowników z licencjami, ale musisz objąć uwierzytelnianiem wieloskładnikowym dodatkowych użytkowników, którzy nie mają licencji.
 
 ## <a name="manage-your-mfa-provider"></a>Zarządzanie dostawcą usługi MFA
 
 Po utworzeniu dostawcy usługi MFA nie możesz zmienić modelu użycia (na włączonego użytkownika lub na uwierzytelnienie).
 
-W przypadku zakupionej wystarczającej liczby licencji na pokrycie wszystkich użytkowników włączonych dla usługi MFA można całkowicie usunąć dostawcę usługi MFA.
+Jeśli zakupiono wystarczającą liczbę licencji, aby objąć wszystkich użytkowników, którzy są włączeni dla usługi MFA, można całkowicie usunąć dostawcę usługi MFA.
 
-Jeśli dostawca usługi MFA nie jest połączony z dzierżawą usługi Azure AD lub łączysz nowego dostawcę usługi MFA z inną dzierżawą usługi Azure AD, ustawienia użytkownika i opcje konfiguracji nie są przenoszone. Ponadto istniejące serwery usługi Azure MFA muszą zostać ponownie aktywowane przy użyciu poświadczeń aktywacji wygenerowanych przez dostawcę usługi MFA.
+Jeśli dostawca usługi MFA nie jest połączony z dzierżawą usługi Azure AD lub łączysz nowego dostawcę usługi MFA z inną dzierżawą usługi Azure AD, ustawienia użytkownika i opcje konfiguracji nie są przenoszone. Ponadto istniejące serwery usługi Azure MFA muszą zostać ponownie aktywowane przy użyciu poświadczeń aktywacji generowanych za pośrednictwem dostawcy usługi MFA.
 
 ### <a name="removing-an-authentication-provider"></a>Usuwanie dostawcy uwierzytelniania
 
 > [!CAUTION]
-> Nie ma potwierdzenia podczas usuwania dostawcy uwierzytelniania. Wybranie pozycji **Usuń** jest procesem trwałym.
+> Nie ma potwierdzenia podczas usuwania dostawcy uwierzytelniania. Wybranie **opcji Usuń** jest procesem trwałym.
 
-Dostawców uwierzytelniania można znaleźć w **Azure Portal** > **Azure Active Directory** > **zabezpieczenia** > **MFA** > **dostawcy**. Kliknij wyświetlone dostawcy, aby wyświetlić szczegóły i konfiguracje skojarzone z tym dostawcą.
+Dostawców uwierzytelniania można znaleźć w **witrynie Azure portal** > Dostawców**Providers**zabezpieczeń usługi Azure Active >  > **Security** > **MFA****Directory.** Kliknij wymienionych dostawców, aby wyświetlić szczegóły i konfiguracje skojarzone z tym dostawcą.
 
-Przed usunięciem dostawcy uwierzytelniania Zwróć uwagę na wszelkie dostosowane ustawienia skonfigurowane w dostawcy. Zdecyduj, które ustawienia należy zmigrować do ustawień ogólnych usługi MFA od dostawcy, i wykonaj migrację tych ustawień. 
+Przed usunięciem dostawcy uwierzytelniania należy zapoznać się z niestandardowymi ustawieniami skonfigurowanym w dostawcy. Zdecyduj, jakie ustawienia należy przeprowadzić do ogólnych ustawień usługi MFA od dostawcy i zakończ migrację tych ustawień. 
 
-Serwery usługi Azure MFA połączone z dostawcami należy ponownie aktywować przy użyciu poświadczeń wygenerowanych w obszarze **Azure Portal** > **Azure Active Directory** > **zabezpieczenia** > **MFA** > **Ustawienia serwera**. Przed ponownym uaktywnieniem należy usunąć następujące pliki z katalogu `\Program Files\Multi-Factor Authentication Server\Data\` na serwerach usługi Azure MFA w Twoim środowisku:
+Serwery usługi Azure MFA połączone z dostawcami będą musiały zostać ponownie aktywowane przy użyciu poświadczeń wygenerowanych w**ustawieniach serwera****zabezpieczeń usługi** >  **Azure** > **Active Directory** > **usługi Azure Security MFA** > . Przed ponowną aktywacją następujące pliki muszą `\Program Files\Multi-Factor Authentication Server\Data\` zostać usunięte z katalogu na serwerach usługi Azure MFA w twoim środowisku:
 
-- caCert
-- zarchiwizowan
-- groupCACert
-- groupKey
-- groupName
-- Element LicenseKey
-- pkey
+- caCert ( caCert )
+- cert
+- grupaCACert
+- klawisz groupKey
+- Groupname
+- licenseKey (Klucz)
+- Pkey
 
-![Usuwanie dostawcy uwierzytelniania z Azure Portal](./media/concept-mfa-authprovider/authentication-provider-removal.png)
+![Usuwanie dostawcy eru z witryny Azure portal](./media/concept-mfa-authprovider/authentication-provider-removal.png)
 
-Po potwierdzeniu, że wszystkie ustawienia zostały zmigrowane, możesz przejść do **Azure Portal** > **Azure Active Directory** > **zabezpieczenia** > **MFA** > **dostawcy** i wybrać wielokropek **...** i wybrać pozycję **Usuń**.
+Po potwierdzeniu, że wszystkie ustawienia zostały zmigrowane, możesz przejść do **witryny Azure portal** > **Azure Active Directory** > **Security MFA** > **MFA** > **Providers** i wybrać elipsy **...** i wybrać pozycję **Usuń**. .
 
 > [!WARNING]
-> Usunięcie dostawcy uwierzytelniania spowoduje usunięcie wszelkich informacji o raportowaniu skojarzonych z tym dostawcą. Możesz chcieć zapisać raporty aktywności przed usunięciem dostawcy.
+> Usunięcie dostawcy uwierzytelniania spowoduje usunięcie wszelkich informacji raportowania skojarzonych z tym dostawcą. Przed usunięciem dostawcy można zapisać raporty aktywności.
 
 > [!NOTE]
-> Użytkownicy ze starszymi wersjami aplikacji Microsoft Authenticator i serwera usługi Azure MFA mogą wymagać ponownego zarejestrowania aplikacji.
+> Użytkownicy ze starszymi wersjami aplikacji Microsoft Authenticator i usługi Azure MFA Server mogą wymagać ponownej rejestracji aplikacji.
 
 ## <a name="next-steps"></a>Następne kroki
 
