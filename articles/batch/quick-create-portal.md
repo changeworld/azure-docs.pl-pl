@@ -1,6 +1,6 @@
 ---
 title: Szybki start na platformie Azure — uruchamianie zadania usługi Batch — portal
-description: Dowiedz się, jak za pomocą Azure Portal utworzyć konto w usłudze Batch, pulę węzłów obliczeniowych oraz zadanie, które uruchamia podstawowe zadania w puli.
+description: Dowiedz się, jak używać portalu Azure do tworzenia konta usługi Batch, puli węzłów obliczeniowych i zadania, które uruchamia podstawowe zadania w puli.
 services: batch
 author: LauraBrenner
 manager: evansma
@@ -10,10 +10,10 @@ ms.date: 07/03/2018
 ms.author: labrenne
 ms.custom: mvc
 ms.openlocfilehash: 6ce0066765de3d99f8309bf568b467518f38923e
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "79240436"
 ---
 # <a name="quickstart-run-your-first-batch-job-in-the-azure-portal"></a>Szybki start: uruchamianie pierwszego zadania usługi Batch w witrynie Azure Portal
@@ -24,14 +24,14 @@ Ten przewodnik Szybki start przedstawia sposób tworzenia konta usługi Batch, *
 
 ## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure 
 
-Zaloguj się do witryny Azure Portal pod adresem [https://portal.azure.com](https://portal.azure.com).
+Zaloguj się do witryny Azure portal w [https://portal.azure.com](https://portal.azure.com).
 
 ## <a name="create-a-batch-account"></a>Tworzenie konta usługi Batch
 
 Wykonaj następujące kroki, aby utworzyć przykładowe konto usługi Batch do celów testowych. Konto usługi Batch jest wymagane w celu tworzenia pul i zadań. Jak pokazano poniżej, z kontem usługi Batch możesz powiązać konto usługi Azure Storage. Chociaż nie jest ono wymagane na potrzeby tego przewodnika Szybki start, konto magazynu jest przydatne do wdrażania aplikacji oraz przechowywania danych wejściowych i wyjściowych w przypadku większości rzeczywistych obciążeń.
 
 
-1. Wybierz pozycję **Utwórz zasób** > **Compute** > **Usługa Batch**. 
+1. Wybierz pozycję Utwórz**usługę wsadową****obliczeniową** >  **zasobu** > . 
 
    ![Usługa Batch w witrynie Marketplace][marketplace_portal]
 
@@ -50,7 +50,7 @@ Po wyświetleniu komunikatu **Wdrażanie zakończyło się pomyślnie** przejdź
 Teraz, gdy masz już konto usługi Batch, utwórz przykładową pulę węzłów obliczeniowych systemu Windows do celów testowych. Pula na potrzeby tego krótkiego przykładu składa się z 2 węzłów z obrazem systemu Windows Server 2012 R2 pochodzącym z witryny Azure Marketplace.
 
 
-1. W ramach konta usługi Batch wybierz pozycję **Pule** > **Dodaj**.
+1. Na koncie Batch wybierz pozycję **Pule** > **Dodaj**.
 
 2. W polu **Identyfikator puli** podaj wartość *mypool*. 
 
@@ -61,7 +61,7 @@ Teraz, gdy masz już konto usługi Batch, utwórz przykładową pulę węzłów 
    |**Typ obrazu**|Witryna Marketplace (Linux/Windows)|
    |**Wydawca**     |MicrosoftWindowsServer|
    |**Oferta**     |WindowsServer|
-   |**Jednostka SKU**     |2012-R2-Datacenter-smalldisk|
+   |**Numer jednostki magazynowej**     |2012-R2-Datacenter-smalldisk|
 
    ![Wybór systemu operacyjnego puli][pool_os] 
 
@@ -86,7 +86,7 @@ Po kilku minutach stan puli zmieni się na **Stały** i węzły zostaną uruchom
 
 Teraz, gdy masz już pulę, utwórz zadanie, które zostanie w niej uruchomione. Zadanie usługi Batch to logiczna grupa zawierająca co najmniej jedno zadanie podrzędne. Zadanie uwzględnia wspólne ustawienia zadań podrzędnych, takie jak priorytet i pula, w której zadania podrzędne mają być uruchamiane. Początkowo zadanie nie zawiera zadań podrzędnych. 
 
-1. W widoku konta usługi Batch wybierz pozycję **Zadania** > **Dodaj**. 
+1. W widoku Konto usługi Batch wybierz pozycję **Zadania** > **Dodaj**. 
 
 2. W polu **Identyfikator zadania** wprowadź wartość *myjob*. W polu **Pula** wybierz pozycję *mypool*. Zaakceptuj wartości domyślne pozostałych ustawień, a następnie wybierz przycisk **OK**.
 

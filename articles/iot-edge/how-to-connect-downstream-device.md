@@ -1,6 +1,6 @@
 ---
-title: Połącz urządzenia podrzędne — usługi Azure IoT Edge | Dokumentacja firmy Microsoft
-description: Jak skonfigurować urządzenia podrzędne lub liściowe w celu nawiązania połączenia z urządzeniami bramy Azure IoT Edge.
+title: Łączenie urządzeń podrzędnych — Usługa Azure IoT Edge | Dokumenty firmy Microsoft
+description: Jak skonfigurować urządzenia podrzędne lub typu liść, aby połączyć się z urządzeniami bramy usługi Azure IoT Edge.
 author: kgremban
 manager: philmea
 ms.author: kgremban
@@ -9,130 +9,130 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: 6ddda38d887cdfe30b449847e2f625ba17f33898
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76510808"
 ---
-# <a name="connect-a-downstream-device-to-an-azure-iot-edge-gateway"></a>Podłącz urządzenie z podrzędnych do bramy usługi Azure IoT Edge
+# <a name="connect-a-downstream-device-to-an-azure-iot-edge-gateway"></a>Łączenie urządzenia podrzędnego z bramą usługi Azure IoT Edge
 
-Ten artykuł zawiera instrukcje dotyczące ustanawiania zaufanego połączenia między urządzeniami podrzędnymi a IoT Edge niewidocznymi bramami. W przypadku niejawnego scenariusza z bramą co najmniej jedno urządzenie może przekazać swoje wiadomości za pomocą jednego urządzenia bramy, które utrzymuje połączenie z IoT Hub. Podrzędne urządzenie może pozostawać w dowolnej aplikacji lub platformy, który został utworzony za pomocą tożsamości [usługi Azure IoT Hub](https://docs.microsoft.com/azure/iot-hub) usługi w chmurze. W wielu przypadkach te aplikacje korzystają [zestaw SDK urządzeń Azure IoT](../iot-hub/iot-hub-devguide-sdks.md). Urządzenie podrzędne może nawet być aplikacją działającą na samym urządzeniu bramy IoT Edge.
+Ten artykuł zawiera instrukcje dotyczące ustanawiania zaufanego połączenia między urządzeniami podrzędnymi i przezroczystymi bramami usługi IoT Edge. W scenariuszu bramy przezroczystej co najmniej jedno urządzenie może przekazywać swoje wiadomości za pośrednictwem jednego urządzenia bramy, które utrzymuje połączenie z centrum IoT Hub. Urządzeniem podrzędnym może być dowolna aplikacja lub platforma, która ma tożsamość utworzoną za pomocą usługi w chmurze [usługi Azure IoT Hub.](https://docs.microsoft.com/azure/iot-hub) W wielu przypadkach te aplikacje używają [SDK urządzenia Usługi Azure IoT.](../iot-hub/iot-hub-devguide-sdks.md) Urządzenie podrzędne może być nawet aplikacją działającą na samym urządzeniu bramy usługi IoT Edge.
 
-Należy wykonać trzy ogólne kroki, aby skonfigurować pomyślne, przezroczyste połączenie bramy. W tym artykule omówiono trzeci krok:
+Istnieją trzy ogólne kroki konfigurowania pomyślnego połączenia bramy przezroczystej. Ten artykuł obejmuje trzeci krok:
 
-1. Urządzenie bramy musi bezpiecznie połączyć się z urządzeniami podrzędnymi, odbierać komunikaty z urządzeń podrzędnych i kierować komunikaty do odpowiednich miejsc docelowych. Aby uzyskać więcej informacji, zobacz [Konfigurowanie urządzenia IoT Edge do działania jako nieprzezroczyste bramy](how-to-create-transparent-gateway.md).
-2. Urządzenie podrzędne musi mieć tożsamość urządzenia, aby można było uwierzytelnić się w usłudze IoT Hub i wiedzieć o komunikacji za pomocą swojego urządzenia bramy. Aby uzyskać więcej informacji, zobacz [uwierzytelnianie urządzenia podrzędnego w usłudze Azure IoT Hub](how-to-authenticate-downstream-device.md).
+1. Urządzenie bramy musi bezpiecznie łączyć się z urządzeniami podrzędnymi, odbierać komunikację z urządzeń podrzędnych i kierować wiadomości do właściwego miejsca docelowego. Aby uzyskać więcej informacji, zobacz [Konfigurowanie urządzenia usługi IoT Edge do działania jako przezroczysta brama](how-to-create-transparent-gateway.md).
+2. Urządzenie podrzędne wymaga tożsamości urządzenia, aby móc uwierzytelniać się za pomocą usługi IoT Hub i wiedzieć, aby komunikować się za pośrednictwem urządzenia bramy. Aby uzyskać więcej informacji, zobacz [Uwierzytelnianie urządzenia podrzędnego w centrum Usługi Azure IoT Hub](how-to-authenticate-downstream-device.md).
 3. **Urządzenie podrzędne musi bezpiecznie połączyć się z urządzeniem bramy.**
 
-W tym artykule identyfikuje typowe problemy z połączeniami podrzędnym urządzenia i umożliwia realizację procesu konfigurowania urządzenia transmisji przez:
+W tym artykule zidentyfikowano typowe problemy z połączeniami urządzeń podrzędnych i przewodnik po konfigurowaniu urządzeń podrzędnych przez:
 
-* Wyjaśnia transport layer security (TLS) i podstawowe informacje dotyczące certyfikatu.
-* Wyjaśniające, jak biblioteki TLS działają w różnych systemach operacyjnych i sposób obsługi każdego systemu operacyjnego za pomocą certyfikatów.
-* Przykłady w kilku językach, które pomogą Ci rozpocząć zalet usługi Azure IoT pracę.
+* Objaśnienie zabezpieczeń warstwy transportu (TLS) i podstaw certyfikatów.
+* Wyjaśnienie, jak biblioteki TLS działają w różnych systemach operacyjnych i jak każdy system operacyjny radzi sobie z certyfikatami.
+* Przechodzenie przez przykłady IoT platformy Azure w kilku językach, aby ułatwić rozpoczęcie pracy.
 
-W tym artykule terminy *bramy* i *brama usługi IoT Edge* odnoszą się do urządzenia usługi IoT Edge skonfigurowane jako przezroczystej bramy.
+W tym artykule *terminy bramy* i *bramy usługi IoT Edge* odnoszą się do urządzenia usługi IoT Edge skonfigurowanego jako brama przezroczysta.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Mieć plik certyfikatu **Azure-IoT-test-Only. root. ca. CERT** , który został wygenerowany w temacie [Konfigurowanie urządzenia IoT Edge do działania jako przezroczysta Brama](how-to-create-transparent-gateway.md) dostępna na urządzeniu podrzędnym. Urządzenie podrzędne używa tego certyfikatu do weryfikowania tożsamości urządzenia bramy.
-* Mają zmodyfikowane parametry połączenia wskazujące na urządzenie bramy, zgodnie z opisem w temacie [uwierzytelnianie urządzenia podrzędnego w usłudze Azure IoT Hub](how-to-authenticate-downstream-device.md).
+* Plik certyfikatu **azure-iot-test-only.root.ca.cert.pem,** który został wygenerowany w [obszarze Konfigurowanie urządzenia usługi IoT Edge, aby działał jako przezroczysta brama](how-to-create-transparent-gateway.md) dostępna na urządzeniu podrzędnym. Urządzenie podrzędne używa tego certyfikatu do sprawdzania tożsamości urządzenia bramy.
+* Mieć zmodyfikowany ciąg połączenia, który wskazuje na urządzenie bramy, jak wyjaśniono w [Uwierzytelnij urządzenie podrzędne do usługi Azure IoT Hub](how-to-authenticate-downstream-device.md).
 
-## <a name="prepare-a-downstream-device"></a>Przygotuj urządzenie podrzędne
+## <a name="prepare-a-downstream-device"></a>Przygotowanie urządzenia podrzędnego
 
-Podrzędne urządzenie może pozostawać w dowolnej aplikacji lub platformy, który został utworzony za pomocą tożsamości [usługi Azure IoT Hub](https://docs.microsoft.com/azure/iot-hub) usługi w chmurze. W wielu przypadkach te aplikacje korzystają [zestaw SDK urządzeń Azure IoT](../iot-hub/iot-hub-devguide-sdks.md). Urządzenie podrzędne może nawet być aplikacją działającą na samym urządzeniu bramy IoT Edge. Jednak inne urządzenie IoT Edge nie może być niższe niż Brama IoT Edge.
+Urządzeniem podrzędnym może być dowolna aplikacja lub platforma, która ma tożsamość utworzoną za pomocą usługi w chmurze [usługi Azure IoT Hub.](https://docs.microsoft.com/azure/iot-hub) W wielu przypadkach te aplikacje używają [SDK urządzenia Usługi Azure IoT.](../iot-hub/iot-hub-devguide-sdks.md) Urządzenie podrzędne może być nawet aplikacją działającą na samym urządzeniu bramy usługi IoT Edge. Jednak inne urządzenie Usługi IoT Edge nie może znajdować się za bramą usługi IoT Edge.
 
 >[!NOTE]
->Urządzenia IoT, które mają tożsamości zarejestrowane w IoT Hub mogą używać [modułu bliźniaczych reprezentacji](../iot-hub/iot-hub-devguide-module-twins.md) do izolowania różnych procesów, sprzętu lub funkcji na jednym urządzeniu. Bramy IoT Edge obsługują połączenia modułu podrzędnego przy użyciu uwierzytelniania za pomocą klucza symetrycznego, ale nie uwierzytelniania certyfikatu X. 509.
+>Urządzenia IoT, które mają tożsamości zarejestrowane w U usług IoT Hub, mogą używać [bliźniaczych modułów](../iot-hub/iot-hub-devguide-module-twins.md) do izolowania różnych procesów, sprzętu lub funkcji na jednym urządzeniu. Bramy usługi IoT Edge obsługują połączenia modułów podrzędnych przy użyciu uwierzytelniania klucza symetrycznego, ale nie uwierzytelniania certyfikatów X.509.
 
-Aby połączyć podrzędny urządzenia bramy usługi IoT Edge, niezbędne są dwa elementy:
+Aby podłączyć urządzenie podrzędne do bramy usługi IoT Edge, potrzebne są dwie rzeczy:
 
-* Urządzenie lub aplikacja, która jest skonfigurowana przy użyciu parametrów połączenia urządzenia usługi IoT Hub dołączane informacje w celu nawiązywania połączenia z bramą.
+* Urządzenie lub aplikacja, która jest skonfigurowana z ciągiem połączenia urządzenia Usługi IoT Hub dołączone z informacjami, aby połączyć go z bramą.
 
-    Ten krok został wyjaśniony w temacie [uwierzytelnianie urządzenia podrzędnego w usłudze Azure IoT Hub](how-to-authenticate-downstream-device.md).
+    Ten krok jest wyjaśniony w [uwierzytelnij urządzenie podrzędne do usługi Azure IoT Hub.](how-to-authenticate-downstream-device.md)
 
-* Urządzenie lub aplikacja musi ufać certyfikatowi **głównego urzędu certyfikacji** bramy, aby sprawdzić poprawność połączeń TLS z urządzeniem bramy.
+* Urządzenie lub aplikacja musi ufać **głównej** certyfikacie urzędu certyfikacji bramy, aby sprawdzić poprawność połączeń TLS z urządzeniem bramy.
 
-    Ten krok został szczegółowo opisany w dalszej części tego artykułu. Ten krok można wykonać jeden z dwóch sposobów: instalując certyfikat urzędu certyfikacji w magazynie certyfikatów systemu operacyjnego lub (w przypadku niektórych języków), odwołując się do certyfikatu w aplikacjach przy użyciu zestawów SDK usługi Azure IoT.
+    Ten krok jest szczegółowo wyjaśniony w dalszej części tego artykułu. Ten krok można wykonać na jeden z dwóch sposobów: instalując certyfikat urzędu certyfikacji w magazynie certyfikatów systemu operacyjnego lub (w przypadku niektórych języków) przez odwoływanie się do certyfikatu w aplikacjach przy użyciu zestawów SDK usługi Azure IoT.
 
-## <a name="tls-and-certificate-fundamentals"></a>Podstawowe informacje dotyczące protokołów TLS i certyfikatów
+## <a name="tls-and-certificate-fundamentals"></a>TLS i podstawy certyfikatów
 
-Wyzwanie, bezpiecznie nawiązywanie połączeń podrzędnym urządzenia usługi IoT Edge jest podobnie jak inne komunikacji klienta/serwera zabezpieczeń, które odbywa się za pośrednictwem Internetu. Klient i serwer bezpiecznego komunikowania się za pośrednictwem Internetu, za pomocą [Transport layer security (TLS)](https://en.wikipedia.org/wiki/Transport_Layer_Security). TLS został skompilowany przy użyciu standardu [infrastruktury kluczy publicznych (PKI)](https://en.wikipedia.org/wiki/Public_key_infrastructure) konstrukcji o nazwie certyfikatów. Protokół TLS to dość powiązana Specyfikacja i dotyczy szerokiego zakresu tematów związanych z zabezpieczaniem dwóch punktów końcowych. Ta sekcja zawiera podsumowanie pojęć związanych z bezpiecznym połączeniem urządzeń z bramą IoT Edge.
+Wyzwaniem bezpiecznego łączenia urządzeń podrzędnych z usługą IoT Edge jest jak każda inna bezpieczna komunikacja klient/serwer, która odbywa się za pośrednictwem Internetu. Klient i serwer bezpiecznie komunikują się przez Internet za pomocą [zabezpieczeń warstwy transportowej (TLS).](https://en.wikipedia.org/wiki/Transport_Layer_Security) TLS jest zbudowany przy użyciu standardowych [konstrukcji infrastruktury klucza publicznego (PKI)](https://en.wikipedia.org/wiki/Public_key_infrastructure) o nazwie certyfikaty. TLS jest dość zaangażowanych specyfikacji i dotyczy szeroki zakres tematów związanych z zabezpieczaniem dwóch punktów końcowych. W tej sekcji podsumowano pojęcia istotne dla bezpiecznego łączenia urządzeń z bramą usługi IoT Edge.
 
-Gdy klient nawiąże połączenie z serwerem, serwer przedstawia łańcucha certyfikatów, o nazwie *łańcuchu certyfikatów serwera*. Łańcuch certyfikatów zwykle składa się z urzędu certyfikacji certyfikat główny, jeden lub więcej certyfikatów pośrednich urzędów certyfikacji, a na końcu sam certyfikat serwera. Klient ustanawia relację zaufania z serwerem, upewniając się, kryptograficznie łańcucha certyfikatów całego serwera. Ta weryfikacja klienta łańcucha certyfikatów serwera jest nazywana *walidacją łańcucha serwerów*. Klient kryptograficznie wzywa usługę, aby potwierdzić posiadanie klucza prywatnego skojarzonego z certyfikatem serwera w procesie nazywanym *potwierdzeniem posiadania*. Kombinacja weryfikacji łańcucha serwera i dowodu posiadania jest nazywana *uwierzytelnianiem serwera*. Aby sprawdzić poprawność łańcucha certyfikatów serwera, klient musi kopię certyfikatu głównego urzędu certyfikacji, który został użyty do tworzenia (lub wystawiania) certyfikatu serwera. Zwykle podczas łączenia z witryn sieci Web, przeglądarce ma wstępnie skonfigurowany powszechnie używane certyfikaty urzędu certyfikacji, klient ma bezproblemowe procesu.
+Gdy klient łączy się z serwerem, serwer przedstawia łańcuch certyfikatów, nazywany *łańcuchem certyfikatów serwera*. Łańcuch certyfikatów zazwyczaj składa się z głównego certyfikatu urzędu certyfikacji, jednego lub kilku pośrednich certyfikatów urzędu certyfikacji i wreszcie samego certyfikatu serwera. Klient ustanawia zaufanie z serwerem, sprawdzając kryptograficznie cały łańcuch certyfikatów serwera. To sprawdzanie poprawności klienta łańcucha certyfikatów serwera jest nazywane *sprawdzanie poprawności łańcucha serwera*. Klient kryptograficznie wyzywa usługę do udowodnienia posiadania klucza prywatnego skojarzonego z certyfikatem serwera w procesie zwanym *dowodem posiadania*. Połączenie sprawdzania poprawności łańcucha serwerów i potwierdzenia posiadania nazywa się *uwierzytelnianiem serwera.* Aby sprawdzić poprawność łańcucha certyfikatów serwera, klient potrzebuje kopii certyfikatu głównego urzędu certyfikacji, który został użyty do utworzenia (lub wydania) certyfikatu serwera. Zwykle podczas łączenia się z witrynami sieci Web przeglądarka jest wstępnie skonfigurowana z powszechnie używanymi certyfikatami urzędu certyfikacji, dzięki czemu klient ma bezproblemowy proces.
 
-Gdy urządzenie nawiąże połączenie z usługi Azure IoT Hub, urządzenie jest klient i usługa IoT Hub w chmurze jest serwer. Usługa IoT Hub w chmurze jest wspierana przez certyfikat głównego urzędu certyfikacji, nazywany **Baltimore CyberTrust Root**, który jest publicznie dostępny i powszechnie używanych. Ponieważ certyfikat usługi IoT Hub urzędu certyfikacji jest już zainstalowane na większości urządzeń, wiele implementacji protokołu TLS (biblioteki OpenSSL, dostawca Schannel, LibreSSL) automatycznie używać go podczas weryfikacji certyfikatu serwera. Urządzenia, które mogą nawiązywać połączeń z Centrum IoT Hub może mieć problemy, które podejmuje próbę nawiązania połączenia bramy usługi IoT Edge.
+Gdy urządzenie łączy się z usługą Azure IoT Hub, urządzenie jest klientem, a usługa w chmurze usługi Usługi IoT Hub jest serwerem. Usługa w chmurze usługi IoT Hub jest obsługiwana przez główny certyfikat urzędu certyfikacji o nazwie **Baltimore CyberTrust Root**, który jest publicznie dostępny i szeroko stosowany. Ponieważ certyfikat urzędu certyfikacji usługi IoT Hub jest już zainstalowany na większości urządzeń, wiele implementacji TLS (OpenSSL, Schannel, LibreSSL) automatycznie używa go podczas sprawdzania poprawności certyfikatu serwera. Urządzenie, które może pomyślnie połączyć się z Centrum IoT może mieć problemy z próbą połączenia się z bramą usługi IoT Edge.
 
-Gdy urządzenie nawiąże połączenie z bramy usługi IoT Edge, klient jest podrzędnym urządzenia i urządzenia bramy jest serwerem. Usługa Azure IoT Edge umożliwia operatorów (lub użytkownicy) do tworzenia łańcuchów certyfikatów bramy, jednak mogą korzystać zależnie od potrzeb. Operator może wybrać należy użyć certyfikatu publicznego urzędu certyfikacji, takich jak Baltimore, lub podpisem (lub wewnętrznych) główny certyfikat urzędu certyfikacji. Certyfikatów publicznych urzędów certyfikacji często żadnych opłat związanych z nimi, zwykle są używane w scenariuszach produkcyjnych. Certyfikaty urzędu certyfikacji z podpisem własnym są preferowane dla tworzenia i testowania aplikacji. W przypadku niejawnych artykułów konfiguracji bramy wymienionych w temacie Wprowadzenie Użyj certyfikatów głównego urzędu certyfikacji z podpisem własnym.
+Gdy urządzenie łączy się z bramą usługi IoT Edge, urządzeniem podrzędnym jest klient, a urządzenie bramy jest serwerem. Usługa Azure IoT Edge umożliwia operatorom (lub użytkownikom) tworzenie łańcuchów certyfikatów bramy, niezależnie od ich zgodności. Operator może użyć publicznego certyfikatu urzędu certyfikacji, takiego jak Baltimore, lub użyć certyfikatu głównego urzędu certyfikacji z podpisem własnym (lub w domu). Publiczne certyfikaty urzędu certyfikacji często mają z nimi związane koszty, więc są zwykle używane w scenariuszach produkcyjnych. Certyfikaty urzędu certyfikacji z podpisem własnym są preferowane do programowania i testowania. Artykuły konfiguracji bramy przezroczystej wymienione we wstępie używają certyfikatów głównego urzędu certyfikacji z podpisem własnym.
 
-Korzystając z urzędu certyfikacji certyfikat główny z podpisem własnym w przypadku bramy usługi IoT Edge, musi być zainstalowany na lub udostępniane na wszystkich urządzeniach podrzędnego próby połączenia z bramą.
+W przypadku korzystania z certyfikatu głównego urzędu certyfikacji z podpisem własnym dla bramy usługi IoT Edge musi on zostać zainstalowany lub dostarczony wszystkim urządzeniom podrzędnym, które próbują połączyć się z bramą.
 
 ![Konfiguracja certyfikatu bramy](./media/how-to-create-transparent-gateway/gateway-setup.png)
 
-Aby dowiedzieć się więcej o certyfikatach usługi IoT Edge i pewne skutki produkcyjnych, zobacz [szczegóły użycia certyfikatu usługi IoT Edge](iot-edge-certs.md).
+Aby dowiedzieć się więcej o certyfikatach IoT Edge i niektórych implikacjach produkcyjnych, zobacz [Szczegóły użycia certyfikatu IoT Edge](iot-edge-certs.md).
 
-## <a name="provide-the-root-ca-certificate"></a>Podaj certyfikat głównego urzędu certyfikacji
+## <a name="provide-the-root-ca-certificate"></a>Podaj główny certyfikat urzędu certyfikacji
 
-Aby sprawdzić certyfikaty urządzenia bramy, urządzenie podrzędne musi mieć własną kopię certyfikatu głównego urzędu certyfikacji. Jeśli do tworzenia certyfikatów testowych użyto skryptów udostępnionych w repozytorium IoT Edge git, certyfikat głównego urzędu certyfikacji nosi nazwę **Azure-IoT-test-Only. root. ca. CERT. pem**. Jeśli nie zostało to jeszcze zrobione w ramach innych kroków przygotowywania urządzenia podrzędnego, Przenieś ten plik certyfikatu do dowolnego katalogu na urządzeniu podrzędnym. Do przenoszenia pliku certyfikatu można użyć usługi, takiej jak [Azure Key Vault](https://docs.microsoft.com/azure/key-vault) lub funkcja, taka jak [Secure Copy Protocol](https://www.ssh.com/ssh/scp/) .
+Aby zweryfikować certyfikaty urządzenia bramy, urządzenie podrzędne wymaga własnej kopii certyfikatu głównego urzędu certyfikacji. Jeśli do tworzenia certyfikatów testowych użyto skryptów podanych w repozytorium git usługi IoT Edge, certyfikat głównego urzędu certyfikacji nosi nazwę **azure-iot-test-only.root.ca.cert.pem**. Jeśli nie masz jeszcze w ramach innych kroków przygotowania urządzenia podrzędnego, przenieś ten plik certyfikatu do dowolnego katalogu na urządzeniu podrzędnym. Aby przenieść plik certyfikatu, można użyć usługi takiej jak [Azure Key Vault](https://docs.microsoft.com/azure/key-vault) lub funkcji, takiej jak secure copy [protocol.](https://www.ssh.com/ssh/scp/)
 
-## <a name="install-certificates-in-the-os"></a>Instalowanie certyfikatów w systemie operacyjnym
+## <a name="install-certificates-in-the-os"></a>Instalowanie certyfikatów w os
 
-Zainstalowanie certyfikatu głównego urzędu certyfikacji w magazynie certyfikatów systemu operacyjnego zwykle pozwala większości aplikacji używać certyfikatu głównego urzędu certyfikacji. Istnieją pewne wyjątki, takie jak aplikacje NodeJS, które nie korzystają z magazynu certyfikatów systemu operacyjnego, ale raczej używają wewnętrznego magazynu certyfikatów środowiska uruchomieniowego. Jeśli nie możesz zainstalować certyfikatu na poziomie systemu operacyjnego, przejdź z wyprzedzeniem, aby [użyć certyfikatów z zestawem SDK usługi Azure IoT](#use-certificates-with-azure-iot-sdks).
+Instalowanie certyfikatu głównego urzędu certyfikacji w magazynie certyfikatów systemu operacyjnego zazwyczaj umożliwia większości aplikacji korzystanie z głównego certyfikatu urzędu certyfikacji. Istnieją pewne wyjątki, takie jak aplikacje NodeJS, które nie używają magazynu certyfikatów systemu operacyjnego, ale raczej używają wewnętrznego magazynu certyfikatów środowiska wykonawczego węzła. Jeśli nie możesz zainstalować certyfikatu na poziomie systemu operacyjnego, przejdź do [witryny Użyj certyfikatów z zestawami SDK usługi Azure IoT](#use-certificates-with-azure-iot-sdks).
 
 ### <a name="ubuntu"></a>Ubuntu
 
-Następujące polecenia są przykładem zainstalować certyfikat urzędu certyfikacji na hoście systemu Ubuntu. W tym przykładzie przyjęto założenie, że używasz certyfikatu **Azure-IoT-test-Only. root. ca. CERT. pem** z artykułów z wymaganiami wstępnymi i że certyfikat został skopiowany do lokalizacji na urządzeniu podrzędnym.
+Poniższe polecenia są przykładem instalacji certyfikatu urzędu certyfikacji na hoście Ubuntu. W tym przykładzie przyjęto założenie, że używasz certyfikatu **azure-iot-test-only.root.ca.cert.pem** z artykułów wymagań wstępnych i że certyfikat został skopiowany do lokalizacji na urządzeniu podrzędnym.
 
 ```bash
 sudo cp <path>/azure-iot-test-only.root.ca.cert.pem /usr/local/share/ca-certificates/azure-iot-test-only.root.ca.cert.pem.crt
 sudo update-ca-certificates
 ```
 
-Powinien pojawić się komunikat "Aktualizowanie certyfikatów w programie/etc/SSL/certs... dodano 1, usunięto 0; Gotowe ".
+Powinien zostać wyświetlony komunikat z informacją: "Aktualizowanie certyfikatów w /etc/ssl/certs... 1 dodany, 0 usunięty; zrobić."
 
 ### <a name="windows"></a>Windows
 
-Poniższe kroki są przykładem zainstalować certyfikat urzędu certyfikacji na hoście Windows. W tym przykładzie przyjęto założenie, że używasz certyfikatu **Azure-IoT-test-Only. root. ca. CERT. pem** z artykułów z wymaganiami wstępnymi i że certyfikat został skopiowany do lokalizacji na urządzeniu podrzędnym.
+Poniższe kroki są przykładem instalowania certyfikatu urzędu certyfikacji na hoście systemu Windows. W tym przykładzie przyjęto założenie, że używasz certyfikatu **azure-iot-test-only.root.ca.cert.pem** z artykułów wymagań wstępnych i że certyfikat został skopiowany do lokalizacji na urządzeniu podrzędnym.
 
-Certyfikaty można instalować przy użyciu programu PowerShell [Import-Certificate](https://docs.microsoft.com/powershell/module/pkiclient/import-certificate?view=win10-ps) jako administrator:
+Certyfikaty można instalować przy użyciu [certyfikatu importu](https://docs.microsoft.com/powershell/module/pkiclient/import-certificate?view=win10-ps) programu PowerShell jako administratora:
 
 ```powershell
 import-certificate  <file path>\azure-iot-test-only.root.ca.cert.pem -certstorelocation cert:\LocalMachine\root
 ```
 
-Certyfikaty można także zainstalować za pomocą narzędzia **certlm** :
+Certyfikaty można również instalować za pomocą narzędzia **certlm:**
 
-1. W Start menu, wyszukaj i wybierz pozycję **zarządzania certyfikatami komputera**. Wywołuje narzędzie **certlm** zostanie otwarty.
-2. Przejdź do **certyfikaty — komputer lokalny** > **zaufane główne urzędy certyfikacji**.
-3. Kliknij prawym przyciskiem myszy **certyfikaty** i wybierz **wszystkie zadania** > **importu**. Należy uruchomić Kreatora importu certyfikatów.
-4. Postępuj zgodnie z instrukcjami, zgodnie z instrukcją i zaimportuj plik certyfikatu `<path>/azure-iot-test-only.root.ca.cert.pem`. Po zakończeniu wyświetlony komunikat "Pomyślnie zaimportowane".
+1. W menu Start wyszukaj i wybierz pozycję **Zarządzaj certyfikatami komputerów**. Zostanie otwarte narzędzie o nazwie **certlm.**
+2. Przejdź do **pozycji Certyfikaty — zaufane** > **główne urzędy certyfikacji**komputera lokalnego .
+3. Kliknij prawym przyciskiem myszy **pozycję Certyfikaty** i wybierz polecenie**Importuj** **wszystkie zadania** > . Kreator importu certyfikatów powinien zostać uruchomiony.
+4. Wykonaj kroki zgodnie z zaleceniami i zaimportuj plik `<path>/azure-iot-test-only.root.ca.cert.pem`certyfikatu . Po zakończeniu powinien zostać wyświetlony komunikat "Pomyślnie zaimportowany".
 
-Można także zainstalować certyfikaty programowo przy użyciu interfejsów API platformy .NET, jak pokazano w przykładzie .NET w dalszej części tego artykułu.
+Certyfikaty można również instalować programowo przy użyciu interfejsów API platformy .NET, jak pokazano w przykładzie .NET w dalszej części tego artykułu.
 
-Zazwyczaj aplikacje używają Windows, pod warunkiem o nazwie stosu protokołu TLS [Schannel](https://docs.microsoft.com/windows/desktop/com/schannel) nawiązania bezpiecznego połączenia za pośrednictwem protokołu TLS. Dostawca Schannel *wymaga* wszelkich certyfikatów zainstalowania w magazynie certyfikatów Windows przed podjęciem próby nawiązania połączenia TLS.
+Zazwyczaj aplikacje używają stosu TLS dostarczonego przez system Windows o nazwie [Schannel](https://docs.microsoft.com/windows/desktop/com/schannel) do bezpiecznego łączenia się za pomocą protokołu TLS. Schannel *wymaga* zainstalowania wszystkich certyfikatów w magazynie certyfikatów systemu Windows przed podjęciem próby nawiązania połączenia TLS.
 
-## <a name="use-certificates-with-azure-iot-sdks"></a>Użycie certyfikatów wraz z zestawami SDK Azure IoT
+## <a name="use-certificates-with-azure-iot-sdks"></a>Używanie certyfikatów z zestawami SDK usługi Azure IoT
 
-W tej sekcji opisano, jak łączyć z zestawami SDK Azure IoT do urządzenia usługi IoT Edge przy użyciu prostych przykładowych aplikacji. Celem wszystkie próbki jest połączenia klienta urządzenia i wysyłać dane telemetryczne do bramy, a następnie zamknij połączenie i zakończenia.
+W tej sekcji opisano, jak zestawY SDK usługi Azure IoT łączą się z urządzeniem usługi IoT Edge przy użyciu prostych przykładowych aplikacji. Celem wszystkich przykładów jest połączenie klienta urządzenia i wysyłanie wiadomości telemetrycznych do bramy, a następnie zamknięcie połączenia i zakończenia.
 
-Masz dwie rzeczy gotowe przed użyciem przykładów dodatku poziomu aplikacji:
+Przygotuj dwie rzeczy przed użyciem próbek na poziomie aplikacji:
 
-* Parametry połączenia IoT Hub urządzenia podrzędnego zostały zmodyfikowane w taki sposób, aby wskazywały na urządzenie bramy i wszystkie certyfikaty wymagane do uwierzytelnienia urządzenia podrzędnego w IoT Hub. Aby uzyskać więcej informacji, zobacz [uwierzytelnianie urządzenia podrzędnego w usłudze Azure IoT Hub](how-to-authenticate-downstream-device.md).
+* Parametry połączenia usługi IoT Hub urządzenia podrzędnego zmodyfikowane w celu wskazanie urządzenia bramy oraz wszystkie certyfikaty wymagane do uwierzytelnienia urządzenia podrzędnego w centrum IoT Hub. Aby uzyskać więcej informacji, zobacz [Uwierzytelnianie urządzenia podrzędnego w centrum Usługi Azure IoT Hub](how-to-authenticate-downstream-device.md).
 
-* Pełna ścieżka do certyfikatu głównego urzędu certyfikacji, który możesz skopiowane i zapisane w dowolne miejsce na urządzeniu z systemem podrzędnego.
+* Pełna ścieżka do głównego certyfikatu urzędu certyfikacji, który został skopiowany i zapisany gdzieś na urządzeniu podrzędnym.
 
     Na przykład `<path>/azure-iot-test-only.root.ca.cert.pem`.
 
 ### <a name="nodejs"></a>NodeJS
 
-Ta sekcja zawiera Przykładowa aplikacja do łączenia z klienta usługi Azure IoT NodeJS urządzenia do bramy usługi IoT Edge. W przypadku aplikacji NodeJS należy zainstalować certyfikat głównego urzędu certyfikacji na poziomie aplikacji, jak pokazano poniżej. Aplikacje NodeJS nie używają magazynu certyfikatów systemu.
+Ta sekcja zawiera przykładową aplikację do łączenia klienta urządzenia Usługi Azure IoT NodeJS z bramą usługi IoT Edge. W przypadku aplikacji NodeJS należy zainstalować główny certyfikat urzędu certyfikacji na poziomie aplikacji, jak pokazano poniżej. Aplikacje NodeJS nie korzystają z magazynu certyfikatów systemu.
 
-1. Pobierz przykład **edge_downstream_device.js** z [zestaw SDK urządzeń Azure IoT dla środowiska Node.js przykłady repozytorium](https://github.com/Azure/azure-iot-sdk-node/tree/master/device/samples).
-2. Upewnij się, że wszystkie wstępnie wymagane składniki do uruchomienia przykładu, przeglądając **readme.md** pliku.
-3. W pliku edge_downstream_device.js zaktualizuj **connectionString** i **edge_ca_cert_path** zmiennych.
-4. Zapoznaj się z dokumentacją zestawu SDK, aby uzyskać instrukcje dotyczące sposobu uruchamiania przykładu na urządzeniu z systemem.
+1. Pobierz przykład dla **edge_downstream_device.js** z [zestawem SDK urządzenia Usługi Azure IoT dla repozytorium próbek Node.js](https://github.com/Azure/azure-iot-sdk-node/tree/master/device/samples).
+2. Upewnij się, że masz wszystkie wymagania wstępne do uruchomienia próbki, przeglądając plik **readme.md.**
+3. W pliku edge_downstream_device.js zaktualizuj **zmienne connectionString** i **edge_ca_cert_path.**
+4. Zapoznaj się z dokumentacją SDK, aby uzyskać instrukcje dotyczące uruchamiania próbki na urządzeniu.
 
-Aby poznać przykład, której używasz, poniższy fragment kodu jest jak zestaw SDK klienta odczytuje plik certyfikatu i używa ich do nawiązania bezpiecznego połączenia TLS:
+Aby zrozumieć przykład, który jest uruchomiony, poniższy fragment kodu jest jak klient SDK odczytuje plik certyfikatu i używa go do ustanowienia bezpiecznego połączenia TLS:
 
 ```javascript
 // Provide the Azure IoT device client via setOptions with the X509
@@ -144,70 +144,70 @@ var options = {
 
 ### <a name="net"></a>.NET
 
-W tej sekcji przedstawiono przykładową aplikację do łączenia z klienta usługi Azure IoT dla środowiska .NET urządzenia do bramy usługi IoT Edge. Jednak aplikacji platformy .NET mogą automatycznie używać wszystkich zainstalowanych certyfikatów w magazynie certyfikatów systemu na hostach z systemem Linux i Windows.
+W tej sekcji przedstawiono przykładową aplikację do łączenia klienta urządzenia Usługi Azure IoT .NET z bramą usługi IoT Edge. Jednak aplikacje .NET mogą automatycznie używać zainstalowanych certyfikatów w magazynie certyfikatów systemu zarówno na hostach systemu Linux, jak i Windows.
 
-1. Pobierz przykład **EdgeDownstreamDevice** z [folderu przykładów IoT Edge .NET](https://github.com/Azure/iotedge/tree/master/samples/dotnet/EdgeDownstreamDevice).
-2. Upewnij się, że wszystkie wstępnie wymagane składniki do uruchomienia przykładu, przeglądając **readme.md** pliku.
-3. W **właściwości / launchSettings.json** pliku, zaktualizuj **DEVICE_CONNECTION_STRING** i **CA_CERTIFICATE_PATH** zmiennych. Aby użyć certyfikatu zainstalowanego w magazynie zaufanych certyfikatów w systemie hosta, ta zmienna pozostaw puste.
-4. Zapoznaj się z dokumentacją zestawu SDK, aby uzyskać instrukcje dotyczące sposobu uruchamiania przykładu na urządzeniu z systemem.
+1. Pobierz przykład dla **EdgeDownstreamDevice** z [folderu próbki IoT Edge .NET](https://github.com/Azure/iotedge/tree/master/samples/dotnet/EdgeDownstreamDevice).
+2. Upewnij się, że masz wszystkie wymagania wstępne do uruchomienia próbki, przeglądając plik **readme.md.**
+3. W pliku **Właściwości / launchSettings.json** zaktualizuj zmienne **DEVICE_CONNECTION_STRING** i **CA_CERTIFICATE_PATH.** Jeśli chcesz użyć certyfikatu zainstalowanego w magazynie certyfikatów zaufanych w systemie hosta, pozostaw tę zmienną pustą.
+4. Zapoznaj się z dokumentacją SDK, aby uzyskać instrukcje dotyczące uruchamiania próbki na urządzeniu.
 
-Aby programowo zainstalować zaufanego certyfikatu w magazynie certyfikatów za pomocą aplikacji .NET, zapoznaj się **InstallCACert()** działa w programach **EdgeDownstreamDevice / Program.cs** pliku. Ta operacja jest idempotentna, dzięki czemu można uruchamiać wiele razy przy użyciu tych samych wartości bez dodatkowe zmiany.
+Aby programowo zainstalować zaufany certyfikat w magazynie certyfikatów za pomocą aplikacji .NET, należy zapoznać się z funkcją **InstallCACert()** w pliku **EdgeDownstreamDevice / Program.cs.** Ta operacja jest idempotentna, więc można uruchomić wiele razy z tymi samymi wartościami bez dodatkowego efektu.
 
 ### <a name="c"></a>C
 
-W tej sekcji przedstawiono przykładową aplikację do łączenia z klienta usługi Azure IoT C urządzenia do bramy usługi IoT Edge. Zestaw SDK C mogą pracować z wielu bibliotek TLS, takich jak biblioteki OpenSSL, WolfSSL i Schannel. Aby uzyskać więcej informacji, zobacz [zestawu SDK C usługi IoT Azure](https://github.com/Azure/azure-iot-sdk-c).
+W tej sekcji przedstawiono przykładową aplikację do łączenia klienta urządzenia Usługi Azure IoT C z bramą usługi IoT Edge. C SDK może współpracować z wieloma bibliotekami TLS, w tym OpenSSL, WolfSSL i Schannel. Aby uzyskać więcej informacji, zobacz [zestaw SDK języka Azure IoT C](https://github.com/Azure/azure-iot-sdk-c).
 
-1. Pobierz **iotedge_downstream_device_sample** na [zestaw SDK urządzeń Azure IoT dla przykłady w języku C](https://github.com/Azure/azure-iot-sdk-c/tree/master/iothub_client/samples).
-2. Upewnij się, że wszystkie wstępnie wymagane składniki do uruchomienia przykładu, przeglądając **readme.md** pliku.
-3. W pliku iotedge_downstream_device_sample.c zaktualizuj **connectionString** i **edge_ca_cert_path** zmiennych.
-4. Zapoznaj się z dokumentacją zestawu SDK, aby uzyskać instrukcje dotyczące sposobu uruchamiania przykładu na urządzeniu z systemem.
+1. Pobierz **aplikację iotedge_downstream_device_sample** z [sdk urządzenia Usługi Azure IoT dla przykładów języka C.](https://github.com/Azure/azure-iot-sdk-c/tree/master/iothub_client/samples)
+2. Upewnij się, że masz wszystkie wymagania wstępne do uruchomienia próbki, przeglądając plik **readme.md.**
+3. W pliku iotedge_downstream_device_sample.c zaktualizuj **zmienne connectionString** i **edge_ca_cert_path.**
+4. Zapoznaj się z dokumentacją SDK, aby uzyskać instrukcje dotyczące uruchamiania próbki na urządzeniu.
 
-Zestaw SDK urządzeń Azure IoT dla języka C udostępnia opcję, aby zarejestrować certyfikat urzędu certyfikacji, podczas konfigurowania klienta. Tej operacji nie można zainstalować certyfikatu w dowolnym miejscu, ale raczej w formacie ciągu certyfikatu w pamięci. Zapisany certyfikat znajduje się do podstawowych stosu protokołu TLS, podczas nawiązywania połączenia.
+Zestaw SDK urządzenia Usługi Azure IoT dla języka C umożliwia zarejestrowanie certyfikatu urzędu certyfikacji podczas konfigurowania klienta. Ta operacja nie instaluje certyfikatu w dowolnym miejscu, ale raczej używa formatu ciągu certyfikatu w pamięci. Zapisany certyfikat jest dostarczany do podstawowego stosu TLS podczas ustanawiania połączenia.
 
 ```C
 (void)IoTHubDeviceClient_SetOption(device_handle, OPTION_TRUSTED_CERT, cert_string);
 ```
 
-Na hostach Windows Jeśli nie używasz biblioteki OpenSSL lub innej biblioteki TLS, zestaw SDK domyślnie przy użyciu kanału Schannel. Dla dostawcy Schannel do pracy, należy zainstalować certyfikat głównego urzędu certyfikacji usługi IoT Edge w magazynie certyfikatów Windows nie zestawu przy użyciu `IoTHubDeviceClient_SetOption` operacji.
+Jeśli na hostach systemu Windows nie jest używany protokół OpenSSL lub innej biblioteki TLS, przy użyciu schannel domyślnie jest używany plik Schannel. Aby schannel działał, certyfikat głównego urzędu certyfikacji usługi IoT Edge powinien `IoTHubDeviceClient_SetOption` być zainstalowany w magazynie certyfikatów systemu Windows, a nie ustawiony przy użyciu tej operacji.
 
 ### <a name="java"></a>Java
 
-W tej sekcji przedstawiono przykładową aplikację do łączenia z klienta urządzenia Java usługi Azure IoT do bramy usługi IoT Edge.
+W tej sekcji przedstawiono przykładową aplikację do łączenia klienta urządzenia Java usługi Azure z bramą usługi IoT Edge.
 
-1. Pobierz przykład **Zdarzenie wysyłania** z [zestaw SDK urządzeń Azure IoT dla przykładów w języku Java](https://github.com/Azure/azure-iot-sdk-java/tree/master/device/iot-device-samples).
-2. Upewnij się, że wszystkie wstępnie wymagane składniki do uruchomienia przykładu, przeglądając **readme.md** pliku.
-3. Zapoznaj się z dokumentacją zestawu SDK, aby uzyskać instrukcje dotyczące sposobu uruchamiania przykładu na urządzeniu z systemem.
+1. Pobierz przykład **zdarzenia wysyłania** z [sdk urządzenia Usługi Azure IoT dla próbek języka Java](https://github.com/Azure/azure-iot-sdk-java/tree/master/device/iot-device-samples).
+2. Upewnij się, że masz wszystkie wymagania wstępne do uruchomienia próbki, przeglądając plik **readme.md.**
+3. Zapoznaj się z dokumentacją SDK, aby uzyskać instrukcje dotyczące uruchamiania próbki na urządzeniu.
 
 ### <a name="python"></a>Python
 
-W tej sekcji przedstawiono przykładową aplikację do łączenia z klienta usługi Azure IoT dla środowiska Python urządzenia do bramy usługi IoT Edge.
+W tej sekcji przedstawiono przykładową aplikację do łączenia klienta urządzenia Usługi Azure IoT Python z bramą usługi IoT Edge.
 
-1. Pobierz przykład dla **send_message** z [zestawu SDK urządzeń Azure IoT dla przykładów języka Python](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device/samples/advanced-edge-scenarios).
-2. Upewnij się, że jesteś uruchomiony w kontenerze IoT Edge lub w scenariuszu debugowania, Ustaw zmienne środowiskowe `EdgeHubConnectionString` i `EdgeModuleCACertificateFile`.
-3. Zapoznaj się z dokumentacją zestawu SDK, aby uzyskać instrukcje dotyczące sposobu uruchamiania przykładu na urządzeniu z systemem.
+1. Pobierz przykład dla **send_message** z [zestawu SDK urządzenia Usługi Azure IoT dla przykładów języka Python](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device/samples/advanced-edge-scenarios).
+2. Upewnij się, że są uruchomione w kontenerze usługi IoT Edge `EdgeHubConnectionString` lub `EdgeModuleCACertificateFile` w scenariuszu debugowania, mają i środowiska zmienne ustawione.
+3. Zapoznaj się z dokumentacją SDK, aby uzyskać instrukcje dotyczące uruchamiania próbki na urządzeniu.
 
-## <a name="test-the-gateway-connection"></a>Testuj połączenie bramy
+## <a name="test-the-gateway-connection"></a>Testowanie połączenia bramy
 
-Użyj tego przykładowego polecenia, aby sprawdzić, czy urządzenie podrzędne może nawiązać połączenie z urządzeniem bramy:
+Użyj tego przykładowego polecenia, aby sprawdzić, czy urządzenie podrzędne może łączyć się z urządzeniem bramy:
 
 ```cmd/sh
 openssl s_client -connect mygateway.contoso.com:8883 -CAfile <CERTDIR>/certs/azure-iot-test-only.root.ca.cert.pem -showcerts
 ```
 
-To polecenie testuje połączenia za pośrednictwem MQTTS (port 8883). Jeśli używasz innego protokołu, Dostosuj polecenie w razie potrzeby do AMQPS (5671) lub HTTPS (433)
+To polecenie testuje połączenia za pomocą MQTTS (port 8883). Jeśli używasz innego protokołu, dostosuj to polecenie w razie potrzeby dla protokołu AMQPS (5671) lub HTTPS (433)
 
-Dane wyjściowe tego polecenia mogą być długie, w tym informacje o wszystkich certyfikatach w łańcuchu. W przypadku pomyślnego nawiązania połączenia zobaczysz wiersz, taki jak `Verification: OK` lub `Verify return code: 0 (ok)`.
+Dane wyjściowe tego polecenia mogą być długie, w tym informacje o wszystkich certyfikatach w łańcuchu. Jeśli połączenie zakończy się pomyślnie, zobaczysz `Verification: OK` linię `Verify return code: 0 (ok)`podobną do lub .
 
 ![Weryfikowanie połączenia bramy](./media/how-to-connect-downstream-device/verification-ok.png)
 
-## <a name="troubleshoot-the-gateway-connection"></a>Rozwiązywanie problemów z bramą
+## <a name="troubleshoot-the-gateway-connection"></a>Rozwiązywanie problemów z połączeniem bramy
 
-Jeśli urządzenie liścia ma sporadyczne połączenie z urządzeniem bramy, spróbuj wykonać poniższe czynności, aby rozwiązać ten problem.
+Jeśli urządzenie typu liść ma sporadyczne połączenie z urządzeniem bramy, spróbuj wykonać następujące kroki, aby uzyskać rozdzielczość.
 
-1. Czy nazwa hosta bramy w parametrach połączenia jest taka sama jak wartość nazwy hosta w pliku IoT Edge config. YAML na urządzeniu bramy?
-2. Czy nazwa hosta bramy jest rozpoznawana jako adres IP? Sporadyczne połączenia można rozwiązać przy użyciu systemu DNS lub przez dodanie wpisu do pliku hosta na urządzeniu liścia.
-3. Czy w zaporze są otwarte porty komunikacyjne? Komunikacja oparta na używanym protokole (MQTTS: 8883/AMQPS: 5671/HTTPS: Port 433) musi być możliwa między urządzeniem podrzędnym i przezroczystą IoT Edge.
+1. Czy nazwa hosta bramy w ciągu połączenia jest taka sama jak wartość nazwy hosta w pliku config.yaml usługi IoT Edge na urządzeniu bramy?
+2. Czy nazwa hosta bramy można rozwiązać z adresem IP? Sporadyczne połączenia można rozwiązać za pomocą systemu DNS lub dodając wpis pliku hosta na urządzeniu typu liść.
+3. Czy porty komunikacyjne są otwarte w zaporze? Komunikacja oparta na używanym protokole (MQTTS:8883/AMQPS:5671/HTTPS:433) musi być możliwa między urządzeniem podrzędnym a przezroczystą krawędzią IoT.
 
 ## <a name="next-steps"></a>Następne kroki
 
-Dowiedz się, jak rozszerzyć usługi IoT Edge [możliwości w trybie offline](offline-capabilities.md) urządzeniom podrzędnego.
+Dowiedz się, jak usługa IoT Edge może rozszerzać [możliwości trybu offline](offline-capabilities.md) na urządzenia podrzędne.

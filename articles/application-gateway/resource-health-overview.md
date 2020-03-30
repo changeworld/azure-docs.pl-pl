@@ -1,6 +1,6 @@
 ---
-title: Omówienie usługi Azure Application Gateway Resource Health
-description: W tym artykule przedstawiono omówienie funkcji kondycji zasobów w usłudze Azure Application Gateway
+title: Omówienie kondycji zasobów bramy aplikacji platformy Azure
+description: Ten artykuł zawiera omówienie funkcji kondycji zasobów usługi Azure Application Gateway
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
@@ -8,57 +8,57 @@ ms.topic: article
 ms.date: 7/9/2019
 ms.author: victorh
 ms.openlocfilehash: db29551a8150b70e797d45fe659482470c8aca2a
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67659504"
 ---
-# <a name="azure-application-gateway-resource-health-overview"></a>Omówienie usługi Azure Application Gateway Resource Health
+# <a name="azure-application-gateway-resource-health-overview"></a>Omówienie kondycji zasobów bramy aplikacji platformy Azure
 
-[Kondycja zasobów Azure](../service-health/resource-health-overview.md) pomaga diagnozować i uzyskać pomoc techniczną, gdy problem z usług platformy Azure ma wpływ na Twoje zasoby. Informowanie o bieżącej i przeszłej kondycji Twoich zasobów. I udostępnia pomocy technicznej, aby pomóc Ci rozwiązać problemy.
+Usługa [Azure Resource Health](../service-health/resource-health-overview.md) pomaga diagnozować i uzyskać pomoc techniczną, gdy problem z usługą platformy Azure wpłynie na Twoje zasoby. Informuje o bieżącej i przeszłej kondycji twoich zasobów. Zapewnia również pomoc techniczną, która pomoże Ci złagodzić problemy.
 
-W usłudze Application Gateway Resource Health opiera się na sygnały emitowane przez bramę do oceny, czy jest uszkodzony lub nie. Jeśli brama jest w złej kondycji, Resource Health analizuje dodatkowych informacji do ustalenia źródła problemu. Identyfikuje również akcje, które zajmuje firmy Microsoft lub co można zrobić, aby rozwiązać ten problem.
+W przypadku bramy aplikacji kondycja zasobów opiera się na sygnałach emitowanych przez bramę, aby ocenić, czy jest w dobrej kondycji, czy nie. Jeśli brama jest w złej kondycji, kondycja zasobów analizuje dodatkowe informacje w celu określenia źródła problemu. Identyfikuje również akcje podejmowane przez firmę Microsoft lub co można zrobić, aby rozwiązać problem.
 
-Więcej informacji na temat sposobu kondycji jest oceniana, przejrzyj pełną listę typów zasobów i kontroli kondycji w [usługi Azure Resource Health](../service-health/resource-health-checks-resource-types.md#microsoftnetworkapplicationgateways).
+Aby uzyskać dodatkowe informacje na temat sposobu oceny kondycji, przejrzyj pełną listę typów zasobów i kontroli kondycji w [usłudze Azure Resource Health.](../service-health/resource-health-checks-resource-types.md#microsoftnetworkapplicationgateways)
 
 
-Stan kondycji bramy Application Gateway jest wyświetlany jako jeden z następujących stanów:
+Stan kondycji bramy aplikacji jest wyświetlany jako jeden z następujących stanów:
 
 ## <a name="available"></a>Dostępne
 
-**Dostępne** stan oznacza, że usługa nie wykryto wszelkie zdarzenia, które mają wpływ na kondycję tego zasobu. Zobaczysz **ostatnio rozwiązane** powiadomień w przypadkach, gdy brama odzyskał sprawność nieplanowane przestoje w ciągu ostatnich 24 godzin.
+Dostępny **Available** stan oznacza, że usługa nie wykryła żadnych zdarzeń, które wpływają na kondycję zasobu. Powiadomienie **o niedawno rozwiązanym** ujrzysz w przypadkach, gdy brama odzyskała czas nieplanowanych przestojów w ciągu ostatnich 24 godzin.
 
-![Kondycja dostępności](media/resource-health-overview/available-full.png)
+![Dostępny stan zdrowia](media/resource-health-overview/available-full.png)
 
 ## <a name="unavailable"></a>Niedostępny
 
-**Unavailable** stan oznacza, że usługa wykryła trwającą platformy lub zdarzenia inne niż platformy, która wpływa na kondycji bramy.
+Stan **Niedostępne** oznacza, że usługa wykryła trwające zdarzenie platformy lub nieplatformowe, które wpływa na kondycję bramy.
 
-### <a name="platform-events"></a>Zdarzenia platformy
+### <a name="platform-events"></a>Wydarzenia platformy
 
-Zdarzenia platformy są wyzwalane przez wiele składników infrastruktury platformy Azure. Obejmują one zarówno zaplanowanych akcji (na przykład planowanej konserwacji), jak i nieoczekiwane zdarzenia (na przykład nieplanowana Akcja ponownego uruchomienia hosta).
+Zdarzenia platformy są wyzwalane przez wiele składników infrastruktury platformy Azure. Obejmują one zarówno zaplanowane akcje (na przykład planowaną konserwację), jak i nieoczekiwane zdarzenia (na przykład nieplanowany ponowny rozruch hosta).
 
-Usługa Resource Health zapewnia dodatkowe szczegóły dotyczące zdarzenia oraz proces odzyskiwania. Umożliwia on również się z pomocą techniczną, nawet jeśli nie masz aktywnych Microsoft umowę o pomocy technicznej.
+Kondycja zasobów zawiera dodatkowe szczegóły dotyczące zdarzenia i procesu odzyskiwania. Umożliwia również skontaktowanie się z pomocą techniczną, nawet jeśli nie masz aktywnej umowy pomocy technicznej firmy Microsoft.
 
-![Stan niedostępny](media/resource-health-overview/unavailable.png)
+![Stan niedostępności](media/resource-health-overview/unavailable.png)
 
 ## <a name="unknown"></a>Nieznane
 
-**Nieznany** stan kondycji wskazuje kondycja zasobu nie odebrał informacji na temat bramy na więcej niż 10 minut. Ten stan nie jest ostateczną wskazanie stan bramy. Ale to ważny punkt danych w proces rozwiązywania problemów.
+**Stan nieznany** wskazuje, że kondycja zasobu nie otrzymała informacji o bramie przez więcej niż 10 minut. Ten stan nie jest ostatecznym wskazaniem stanu bramy. Ale jest to ważny punkt danych w procesie rozwiązywania problemów.
 
-Jeśli brama działa zgodnie z oczekiwaniami, stan zmieni się na **dostępne** po kilku minutach.
+Jeśli brama działa zgodnie z oczekiwaniami, stan zmieni się **na Dostępne** po kilku minutach.
 
-Jeśli występują problemy, **nieznany** stan kondycji mogą wskazywać, że zdarzenie na platformie ma wpływ na bramę.
+Jeśli występują problemy, **nieznany** stan kondycji może sugerować, że zdarzenie na platformie ma wpływ na bramę.
 
 ![Nieznany stan](media/resource-health-overview/unknown.png)
 
-## <a name="degraded"></a>Obniżono poziom
+## <a name="degraded"></a>Obniżona wydajność
 
-**Obniżony** stan kondycji oznacza bramy utratę wydajności, mimo że nadal dostępne do użycia.
+Stan **obniżona kondycja** wskazuje, że brama wykryła utratę wydajności, chociaż jest nadal dostępna do użycia.
 
-![Stan degrated](media/resource-health-overview/degraded.png)
+![Stan zdejmowany](media/resource-health-overview/degraded.png)
 
 ## <a name="next-steps"></a>Następne kroki
 
-Aby dowiedzieć się więcej na temat rozwiązywania problemów z zaporą aplikacji sieci Web (WAF) aplikacji bramy, zobacz [Rozwiązywanie problemów z aplikacji sieci Web zapory (WAF) w usłudze Azure Application Gateway](web-application-firewall-troubleshoot.md).
+Aby dowiedzieć się więcej na temat rozwiązywania problemów z Zaporą aplikacji bramy aplikacji (WAF), zobacz [Rozwiązywanie problemów z zaporą aplikacji sieci Web (WAF) dla bramy aplikacji platformy Azure](web-application-firewall-troubleshoot.md).

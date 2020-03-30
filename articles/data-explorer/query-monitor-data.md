@@ -1,6 +1,6 @@
 ---
-title: Wykonywanie zapytań dotyczących danych w Azure Monitor za pomocą usługi Azure Eksplorator danych (wersja zapoznawcza)
-description: W tym temacie przedstawiono zapytania dotyczące danych w Azure Monitor przez utworzenie serwera proxy usługi Azure Eksplorator danych dla zapytań między produktami za pomocą Application Insights i Log Analytics
+title: Zapytanie o dane w usłudze Azure Monitor za pomocą Eksploratora danych platformy Azure (wersja zapoznawcza)
+description: W tym temacie kwerendy danych w usłudze Azure Monitor przez utworzenie serwera proxy Usługi Azure Data Explorer dla zapytań między produktami z usługi Application Insights i log Analytics
 services: data-explorer
 author: orspod
 ms.author: orspodek
@@ -9,71 +9,71 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 01/28/2020
 ms.openlocfilehash: c7e98c31c0db1db3051ad66df6526dcbddb265c5
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/22/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77560426"
 ---
-# <a name="query-data-in-azure-monitor-using-azure-data-explorer-preview"></a>Wykonywanie zapytań dotyczących danych w Azure Monitor przy użyciu usługi Azure Eksplorator danych (wersja zapoznawcza)
+# <a name="query-data-in-azure-monitor-using-azure-data-explorer-preview"></a>Zapytanie o dane w usłudze Azure Monitor przy użyciu Eksploratora danych platformy Azure (wersja zapoznawcza)
 
-Klaster usługi Azure Eksplorator danych proxy (ADX proxy) to jednostka, która umożliwia wykonywanie zapytań między produktami między usługą Azure Eksplorator danych, [Application Insights (AI)](/azure/azure-monitor/app/app-insights-overview)i [log Analytics (La)](/azure/azure-monitor/platform/data-platform-logs) w usłudze [Azure monitor](/azure/azure-monitor/) . Azure Monitor Log Analytics obszarów roboczych lub aplikacji Application Insights jako klastrów proxy. Następnie można wykonać zapytanie dotyczące klastra proxy przy użyciu narzędzi usługi Azure Eksplorator danych i odwołać się do niego w zapytaniu między klastrami. W tym artykule pokazano, jak nawiązać połączenie z klastrem proxy, dodać klaster proxy do interfejsu użytkownika sieci Web usługi Azure Eksplorator danych i uruchamiać zapytania dotyczące aplikacji AI lub obszarów roboczych LAer z usługi Azure Eksplorator danych.
+Klaster proxy usługi Azure Data Explorer (ADX Proxy) to jednostka, która umożliwia wykonywanie zapytań dotyczących różnych produktów między eksploratorem danych platformy Azure, [analizą aplikacji (AI)](/azure/azure-monitor/app/app-insights-overview)i [analizą dzienników (LA)](/azure/azure-monitor/platform/data-platform-logs) w usłudze [Azure Monitor.](/azure/azure-monitor/) Obszary robocze usługi Azure Monitor Log Analytics lub aplikacje usługi Application Insights można mapować jako klastry proxy. Następnie można zbadać klaster proxy przy użyciu narzędzi Usługi Azure Data Explorer i odwoływać się do niego w kwerendzie klastra krzyżowego. W tym artykule pokazano, jak połączyć się z klastrem proxy, dodać klaster proxy do interfejsu użytkownika sieci Web usługi Azure Data Explorer i uruchomić kwerendy dotyczące aplikacji AI lub obszarów roboczych LA z Usługi Azure Data Explorer.
 
-Przepływ serwera proxy usługi Azure Eksplorator danych: 
+Przepływ serwera proxy Usługi Azure Data Explorer: 
 
-![ADX przepływ serwera proxy](media/adx-proxy/adx-proxy-flow.png)
+![Przepływ serwera proxy ADX](media/adx-proxy/adx-proxy-flow.png)
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 > [!NOTE]
-> Serwer proxy ADX jest w trybie podglądu. [Połącz się z serwerem proxy,](#connect-to-the-proxy) aby włączyć funkcję serwera proxy ADX dla klastrów. Skontaktuj się z zespołem [ADXProxy](mailto:adxproxy@microsoft.com) .
+> Serwer proxy ADX jest w trybie podglądu. [Połącz się z serwerem proxy,](#connect-to-the-proxy) aby włączyć funkcję serwera proxy ADX dla klastrów. W razie jakichkolwiek pytań należy skontaktować się z zespołem [ADXProxy.](mailto:adxproxy@microsoft.com)
 
-## <a name="connect-to-the-proxy"></a>Łączenie z serwerem proxy
+## <a name="connect-to-the-proxy"></a>Łączenie się z serwerem proxy
 
-1. Przed nawiązaniem połączenia z klastrem Log Analytics lub Application Insights należy sprawdzić, czy w menu po lewej stronie jest wyświetlany klaster macierzysty platformy Azure Eksplorator danych (na przykład klaster *pomocy* ).
+1. Przed nawiązaniem połączenia z *help* klastrem usługi Log Analytics lub usługi Application Insights w menu po lewej stronie pojawi się klaster natywny usług Azure Data Explorer (np.
 
-    ![ADX natywny klaster](media/adx-proxy/web-ui-help-cluster.png)
+    ![Natywny klaster ADX](media/adx-proxy/web-ui-help-cluster.png)
 
-1. W interfejsie użytkownika usługi Azure Eksplorator danych (https://dataexplorer.azure.com/clusters)wybierz pozycję **Dodaj klaster**.
+1. W interfejsie użytkownika usługihttps://dataexplorer.azure.com/clusters)Azure Data Explorer ( wybierz pozycję **Dodaj klaster**.
 
-1. W oknie **Dodawanie klastra** Dodaj adres URL do klastra La lub AI. 
+1. W oknie **Dodawanie klastra** dodaj adres URL do klastra LA lub AI. 
     
-    * Dla LA: `https://ade.loganalytics.io/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>`
-    * Dla AI: `https://ade.applicationinsights.io/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.insights/components/<ai-app-name>`
+    * Dla LA:`https://ade.loganalytics.io/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>`
+    * Dla AI:`https://ade.applicationinsights.io/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.insights/components/<ai-app-name>`
 
     * Wybierz pozycję **Dodaj**.
 
     ![Dodawanie klastra](media/adx-proxy/add-cluster.png)
 
-    W przypadku dodania połączenia do więcej niż jednego klastra proxy nadaj każdej innej nazwie. W przeciwnym razie wszystkie będą mieć taką samą nazwę w lewym okienku.
+    Jeśli dodasz połączenie do więcej niż jednego klastra proxy, nadaj każdemu inną nazwę. W przeciwnym razie wszystkie będą miały taką samą nazwę w lewym okienku.
 
-1. Po nawiązaniu połączenia klaster LA lub AI zostanie wyświetlony w lewym okienku z natywnym klastrem ADX. 
+1. Po nawiązaniu połączenia klaster LA lub AI pojawi się w lewym okienku z macierzystym klastrem ADX. 
 
-    ![Log Analytics i klastry Eksplorator danych platformy Azure](media/adx-proxy/la-adx-clusters.png)
+    ![Usługi Log Analytics i klastry eksploratora danych platformy Azure](media/adx-proxy/la-adx-clusters.png)
 
 ## <a name="run-queries"></a>Uruchamianie zapytań
 
-Można uruchamiać zapytania przy użyciu narzędzi klienckich, które obsługują zapytania Kusto, takie jak: Kusto Explorer, ADX Web UI, Jupyter Kqlmagic, Flow, PowerQuery, PowerShell, Jarvis, Lens, interfejs API REST.
+Kwerendy można uruchamiać przy użyciu narzędzi klienckich obsługujących zapytania Kusto, takich jak: Kusto Explorer, ADX Web UI, Jupyter Kqlmagic, Flow, PowerQuery, PowerShell, Jarvis, Lens, REST API.
 
 > [!TIP]
-> * Nazwa bazy danych powinna mieć taką samą nazwę jak zasób określony w klastrze proxy. W nazwach rozróżniana jest wielkość liter.
-> * W przypadku zapytań między klastrami upewnij się, że nazwy aplikacji Application Insights i Log Analytics obszary robocze są poprawne.
->     * Jeśli nazwy zawierają znaki specjalne, są one zastępowane przez kodowanie adresów URL w nazwie klastra proxy. 
->     * Jeśli nazwa zawiera znaki, które nie są zgodne z [regułami nazw identyfikatorów KQL](/azure/kusto/query/schema-entities/entity-names), są one zastępowane znakami kreski **-** .
+> * Nazwa bazy danych powinna mieć taką samą nazwę jak zasób określony w klastrze serwera proxy. W nazwach rozróżniana jest wielkość liter.
+> * W kwerendach klastra krzyżowego upewnij się, że nazewnictwo aplikacji usługi Application Insights i obszarów roboczych usługi Log Analytics jest poprawne.
+>     * Jeśli nazwy zawierają znaki specjalne, są one zastępowane kodowaniem adresów URL w nazwie klastra proxy. 
+>     * Jeśli nazwy zawierają znaki, które nie spełniają [reguł identyfikatora KQL,](/azure/kusto/query/schema-entities/entity-names)są one zastępowane przez znak kreski. **-**
 
-### <a name="direct-query-from-your-la-or-ai-adx-proxy-cluster"></a>Zapytanie bezpośrednie z klastra LA lub AI ADX serwera proxy
+### <a name="direct-query-from-your-la-or-ai-adx-proxy-cluster"></a>Bezpośrednie zapytanie z klastra serwera proxy LA lub AI ADX
 
-Uruchamianie zapytań w klastrze LA lub AI. Sprawdź, czy klaster został wybrany w lewym okienku. 
+Uruchamianie zapytań w klastrze LA lub AI. Sprawdź, czy klaster jest zaznaczony w lewym okienku. 
 
 ```kusto
 Perf | take 10 // Demonstrate query through the proxy on the LA workspace
 ```
 
-![Zapytanie w obszarze roboczym LA](media/adx-proxy/query-la.png)
+![Kwerenda LA obszar roboczy](media/adx-proxy/query-la.png)
 
-### <a name="cross-query-of-your-la-or-ai-adx-proxy-cluster-and-the-adx-native-cluster"></a>Krzyżowe zapytanie dotyczące klastra ADX i sieci proxy programu LA lub AI oraz klastra macierzystego ADX 
+### <a name="cross-query-of-your-la-or-ai-adx-proxy-cluster-and-the-adx-native-cluster"></a>Kwerenda krzyżowa klastra serwera proxy LA lub AI ADX i klastra macierzystego ADX 
 
-Gdy uruchamiasz zapytania między klastrami z serwera proxy, sprawdź, czy w lewym okienku wybrano ADX natywny klaster. W poniższych przykładach pokazano, jak łączyć tabele klastrów ADX (przy użyciu `union`) z obszarem roboczym LA.
+Po uruchomieniu kwerend klastra krzyżowego z serwera proxy sprawdź, czy natywny klaster ADX jest zaznaczony w lewym okienku. Poniższe przykłady pokazują łączenie tabel klastra ADX (przy użyciu) `union`z obszarem roboczym LA.
 
 ```kusto
 union StormEvents, cluster('https://ade.loganalytics.io/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>').database('<workspace-name>').Perf
@@ -85,20 +85,20 @@ let CL1 = 'https://ade.loganalytics.io/subscriptions/<subscription-id>/resourceg
 union <ADX table>, cluster(CL1).database(<workspace-name>).<table name>
 ```
 
-   [![krzyżowego zapytania z usługi Azure Eksplorator danych proxy](media/adx-proxy/cross-query-adx-proxy.png)](media/adx-proxy/cross-query-adx-proxy.png#lightbox)
+   [![Kwerenda krzyżowa z serwera proxy Eksploratora danych platformy Azure](media/adx-proxy/cross-query-adx-proxy.png)](media/adx-proxy/cross-query-adx-proxy.png#lightbox)
 
-Użycie [operatora`join`](/azure/kusto/query/joinoperator), a nie Unii, może wymagać [`hint`](/azure/kusto/query/joinoperator#join-hints) uruchomienia go w klastrze usługi Azure Eksplorator danych Native (a nie na serwerze proxy). 
+Za pomocą [ `join` operatora](/azure/kusto/query/joinoperator), zamiast unii, [`hint`](/azure/kusto/query/joinoperator#join-hints) może wymagać uruchomienia go w klastrze macierzystym usługi Azure Data Explorer (a nie na serwerze proxy). 
 
 ## <a name="additional-syntax-examples"></a>Dodatkowe przykłady składni
 
-Podczas wywoływania klastrów Application Insights (AI) lub Log Analytics (LA) dostępne są następujące opcje składni:
+Następujące opcje składni są dostępne podczas wywoływania klastrów usługi Application Insights (AI) lub Log Analytics (LA):
 
 |Opis składni  |Application Insights  |Log Analytics  |
 |----------------|---------|---------|
-| Baza danych w klastrze, która zawiera tylko zdefiniowany zasób w tej subskrypcji (**zalecane w przypadku zapytań między klastrami**) |   klaster (`https://ade.applicationinsights.io/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.insights/components/<ai-app-name>').database('<ai-app-name>`) | klaster (`https://ade.loganalytics.io/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>').database('<workspace-name>`)     |
-| Klaster zawierający wszystkie aplikacje/obszary robocze w tej subskrypcji    |     klaster (`https://ade.applicationinsights.io/subscriptions/<subscription-id>`)    |    klaster (`https://ade.loganalytics.io/subscriptions/<subscription-id>`)     |
-|Klaster zawierający wszystkie aplikacje/obszary robocze w subskrypcji i są członkami tej grupy zasobów    |   klaster (`https://ade.applicationinsights.io/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>`)      |    klaster (`https://ade.loganalytics.io/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>`)      |
-|Klaster zawierający tylko zdefiniowany zasób w tej subskrypcji      |    klaster (`https://ade.applicationinsights.io/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.insights/components/<ai-app-name>`)    |  klaster (`https://ade.loganalytics.io/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>`)     |
+| Baza danych w klastrze zawierająca tylko zdefiniowany zasób w tej subskrypcji **(zalecana dla kwerend klastrowych krzyżowych)** |   klaster(`https://ade.applicationinsights.io/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.insights/components/<ai-app-name>').database('<ai-app-name>`) | klaster(`https://ade.loganalytics.io/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>').database('<workspace-name>`)     |
+| Klaster zawierający wszystkie aplikacje/obszary robocze w tej subskrypcji    |     klaster(`https://ade.applicationinsights.io/subscriptions/<subscription-id>`)    |    klaster(`https://ade.loganalytics.io/subscriptions/<subscription-id>`)     |
+|Klaster zawierający wszystkie aplikacje/obszary robocze w ramach subskrypcji i członków tej grupy zasobów    |   klaster(`https://ade.applicationinsights.io/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>`)      |    klaster(`https://ade.loganalytics.io/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>`)      |
+|Klaster zawierający tylko zdefiniowany zasób w tej subskrypcji      |    klaster(`https://ade.applicationinsights.io/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.insights/components/<ai-app-name>`)    |  klaster(`https://ade.loganalytics.io/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>`)     |
 
 ## <a name="next-steps"></a>Następne kroki
 

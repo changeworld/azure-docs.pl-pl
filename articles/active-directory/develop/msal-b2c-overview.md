@@ -1,7 +1,7 @@
 ---
-title: Użyj MSAL z Azure Active Directory B2CLearn | Azure
+title: Korzystanie z usługi MSAL w usłudze Azure Active Directory B2CLearn | Azure
 titleSuffix: Microsoft identity platform
-description: Biblioteka Microsoft Authentication Library (MSAL) umożliwia aplikacjom współdziałanie z Azure AD B2C i pozyskiwanie tokenów do wywoływania zabezpieczonych interfejsów API sieci Web. Te interfejsy API sieci Web mogą być Microsoft Graph, inne interfejsy API firmy Microsoft, interfejsy API sieci Web od innych, lub własny internetowy interfejs API.
+description: Biblioteka uwierzytelniania firmy Microsoft (MSAL) umożliwia aplikacjom współdziałanie z usługą Azure AD B2C i uzyskiwanie tokenów do wywoływania zabezpieczonych interfejsów API sieci Web. Te internetowe interfejsy API mogą być microsoft graph, inne interfejsy API firmy Microsoft, interfejsy API sieci web od innych lub własnego interfejsu API sieci web.
 services: active-directory
 author: negoe
 manager: CelesteDG
@@ -14,45 +14,45 @@ ms.author: negoe
 ms.reviewer: nacanuma
 ms.custom: aaddev
 ms.openlocfilehash: e25564e64410701754390024a5bcfd39321343e2
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76696456"
 ---
-# <a name="use-microsoft-authentication-library-to-interoperate-with-azure-active-directory-b2c"></a>Używanie biblioteki uwierzytelniania firmy Microsoft do współpracy z usługą Azure Active Directory B2C
+# <a name="use-microsoft-authentication-library-to-interoperate-with-azure-active-directory-b2c"></a>Współdziałanie z usługą Azure Active Directory B2C za pomocą biblioteki uwierzytelniania firmy Microsoft
 
-Biblioteka Microsoft Authentication Library (MSAL) umożliwia deweloperom aplikacji uwierzytelnianie użytkowników za pomocą tożsamości społecznościowych i lokalnych przy użyciu [Azure Active Directory B2C (Azure AD B2C)](https://docs.microsoft.com/azure/active-directory-b2c/). Azure AD B2C to usługa zarządzania tożsamościami. Korzystając z tej funkcji, można dostosowywać i kontrolować sposób tworzenia kont i logowania klientów oraz zarządzania nimi przy użyciu aplikacji.
+Biblioteka uwierzytelniania firmy Microsoft (MSAL) umożliwia deweloperom aplikacji uwierzytelnianie użytkowników przy użyciu tożsamości społecznościowych i lokalnych przy użyciu [usługi Azure Active Directory B2C (Azure AD B2C).](https://docs.microsoft.com/azure/active-directory-b2c/) Usługa Azure AD B2C to usługa zarządzania tożsamościami. Korzystając z niego, można dostosować i kontrolować, jak klienci zarejestrować się, zalogować się i zarządzać swoimi profilami podczas korzystania z aplikacji.
 
-Azure AD B2C umożliwia również markę i dostosowanie interfejsu użytkownika aplikacji, aby zapewnić klientom bezproblemowe środowisko.
+Usługa Azure AD B2C umożliwia również znakowanie i dostosowywanie interfejsu użytkownika aplikacji, aby zapewnić bezproblemowe środowisko klientom.
 
-W tym samouczku pokazano, jak używać MSAL do współpracy z Azure AD B2C.
+W tym samouczku pokazano, jak używać usługi MSAL do współpracy z usługą Azure AD B2C.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Jeśli nie utworzono jeszcze własnej [dzierżawy Azure AD B2C](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-create-tenant), utwórz ją teraz. Możesz również użyć istniejącej dzierżawy Azure AD B2C.
+Jeśli nie utworzono jeszcze własnej [dzierżawy usługi Azure AD B2C,](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-create-tenant)utwórz go teraz. Można również użyć istniejącej dzierżawy usługi Azure AD B2C.
 
 ## <a name="javascript"></a>JavaScript
 
-Poniższe kroki przedstawiają sposób, w jaki aplikacja jednostronicowa może używać Azure AD B2C do rejestrowania, logowania i wywoływania chronionego internetowego interfejsu API.
+Poniższe kroki pokazują, jak aplikacja jednostronicowa może używać usługi Azure AD B2C do rejestrowania się, logowania i wywoływania chronionego interfejsu API sieci Web.
 
 ### <a name="step-1-register-your-application"></a>Krok 1. Rejestrowanie aplikacji
 
-Aby zaimplementować uwierzytelnianie, należy najpierw zarejestrować aplikację. Aby uzyskać szczegółowe instrukcje, zobacz artykuł [Rejestrowanie aplikacji](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp#step-4-register-your-own-web-application-with-azure-ad-b2c) .
+Aby zaimplementować uwierzytelnianie, należy najpierw zarejestrować aplikację. Zobacz [Rejestrowanie aplikacji, aby](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp#step-4-register-your-own-web-application-with-azure-ad-b2c) uzyskać szczegółowe kroki.
 
-### <a name="step-2-download-the-sample-application"></a>Krok 2. Pobieranie przykładowej aplikacji
+### <a name="step-2-download-the-sample-application"></a>Krok 2: Pobierz przykładową aplikację
 
-Pobierz przykład jako plik zip lub Sklonuj go z witryny GitHub:
+Pobierz próbkę jako plik zip lub sklonuj go z GitHub:
 
 ```
 git clone https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp.git
 ```
 
-### <a name="step-3-configure-authentication"></a>Krok 3. Konfigurowanie uwierzytelniania
+### <a name="step-3-configure-authentication"></a>Krok 3: Konfigurowanie uwierzytelniania
 
-1. Otwórz plik **index. html** w przykładzie.
+1. Otwórz plik **index.html** w próbce.
 
-1. Skonfiguruj przykład przy użyciu identyfikatora klienta i klucza, który został zarejestrowany wcześniej podczas rejestrowania aplikacji. Zmień następujące wiersze kodu, zastępując wartości nazwami Twojego katalogu i interfejsów API:
+1. Skonfiguruj przykład przy przyuśle klienta i klucz, który został nagrany wcześniej podczas rejestrowania aplikacji. Zmień następujące wiersze kodu, zastępując wartości nazwami Twojego katalogu i interfejsów API:
 
    ```javascript
    // The current application coordinates were pre-registered in a B2C tenant.
@@ -78,22 +78,22 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-
 
    ```
 
-Nazwa [przepływu użytkownika](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-reference-policies) w tym samouczku jest **B2C_1_signupsignin1**. Jeśli używasz innej nazwy przepływu użytkownika, ustaw wartość **urzędu** na tę nazwę.
+Nazwa przepływu [użytkownika](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-reference-policies) w tym samouczku jest **B2C_1_signupsignin1**. Jeśli używasz innej nazwy przepływu użytkownika, ustaw wartość **urzędu** na tę nazwę.
 
-### <a name="step-4-configure-your-application-to-use-b2clogincom"></a>Krok 4. Konfigurowanie aplikacji do używania `b2clogin.com`
+### <a name="step-4-configure-your-application-to-use-b2clogincom"></a>Krok 4: Skonfiguruj aplikację do użycia`b2clogin.com`
 
-Zamiast `login.microsoftonline.com` jako adresu URL przekierowania, można użyć `b2clogin.com`. Należy to zrobić w aplikacji Azure AD B2C podczas konfigurowania dostawcy tożsamości na potrzeby rejestracji i logowania.
+Zamiast adresu `b2clogin.com` URL `login.microsoftonline.com` przekierowania można go używać. To zrobić w aplikacji usługi Azure AD B2C podczas konfigurowania dostawcy tożsamości do rejestracji i logowania.
 
-Użycie `b2clogin.com` w kontekście `https://your-tenant-name.b2clogin.com/your-tenant-guid` ma następujące skutki:
+Stosowanie `b2clogin.com` w kontekście `https://your-tenant-name.b2clogin.com/your-tenant-guid` ma następujące skutki:
 
-- Usługi firmy Microsoft zużywają mniej miejsca w nagłówku pliku cookie.
-- Adresy URL nie zawierają już odwołania do firmy Microsoft. Na przykład aplikacja Azure AD B2C prawdopodobnie odnosi się do `login.microsoftonline.com`.
+- Usługi firmy Microsoft zajmują mniej miejsca w nagłówku plików cookie.
+- Adresy URL nie zawierają już odwołania do firmy Microsoft. Na przykład aplikacja usługi Azure AD B2C prawdopodobnie odwołuje się do `login.microsoftonline.com`.
 
- Aby użyć `b2clogin.com`, należy zaktualizować konfigurację aplikacji.  
+ Aby `b2clogin.com`użyć programu , należy zaktualizować konfigurację aplikacji.  
 
-- Ustaw właściwość **validateAuthority** na `false`, tak aby przekierować przy użyciu `b2clogin.com` mogą wystąpić.
+- Ustaw **właściwość validateAuthority** na , `false` `b2clogin.com` aby można było przekierować za pomocą.
 
-Poniższy przykład pokazuje, jak można ustawić właściwość:
+W poniższym przykładzie pokazano, jak można ustawić właściwość:
 
 ```javascript
 // The current application coordinates were pre-registered in a B2C directory.
@@ -112,9 +112,9 @@ const myMSALObj = new UserAgentApplication(msalConfig);
 ```
 
 > [!NOTE]
-> Aplikacja Azure AD B2C prawdopodobnie odnosi się do `login.microsoftonline.com` w kilku miejscach, takich jak odwołania do przepływu użytkownika i punkty końcowe tokenu. Upewnij się, że punkt końcowy autoryzacji, punkt końcowy tokenu i wystawca zostały zaktualizowane, aby można było używać `your-tenant-name.b2clogin.com`.
+> Aplikacja usługi Azure AD B2C `login.microsoftonline.com` prawdopodobnie odwołuje się do w kilku miejscach, takich jak odwołania przepływu użytkownika i punktów końcowych tokenu. Upewnij się, że punkt końcowy autoryzacji, token końcowy `your-tenant-name.b2clogin.com`i wystawca zostały zaktualizowane do użycia .
 
-Postępuj zgodnie z [tym przykładem w języku JavaScript MSAL](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp#single-page-application-built-on-msaljs-with-azure-ad-b2c) na temat korzystania z wersji zapoznawczej MSAL języka JavaScript (MSAL. js). Przykład pobiera token dostępu i wywołuje interfejs API zabezpieczony przez Azure AD B2C.
+Postępuj zgodnie z [tym przykładem msal javascript,](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp#single-page-application-built-on-msaljs-with-azure-ad-b2c) jak korzystać z msal preview dla języka JavaScript (MSAL.js). Przykład pobiera token dostępu i wywołuje interfejs API zabezpieczony przez usługę Azure AD B2C.
 
 ## <a name="next-steps"></a>Następne kroki
 

@@ -1,6 +1,6 @@
 ---
-title: 'Szablon ExpressRoute platformy Azure: Tworzenie obwodu usługi ExpressRoute'
-description: Tworzenie, Inicjowanie obsługi, usuwanie i cofanie aprowizacji obwodu ExpressRoute.
+title: 'Szablon usługi Azure ExpressRoute: tworzenie obwodu usługi ExpressRoute'
+description: Tworzenie, inicjowania obsługi administracyjnej, usuwania i usuwania obsługi administracyjnej obwodu usługi ExpressRoute.
 services: expressroute
 author: cherylmc
 ms.service: expressroute
@@ -9,42 +9,42 @@ ms.date: 11/13/2019
 ms.author: cherylmc
 ms.reviewer: ganesr
 ms.openlocfilehash: 78da84a462566cca1a2800174849159ace8dd6dc
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75981137"
 ---
-# <a name="create-an-expressroute-circuit-by-using-azure-resource-manager-template"></a>Tworzenie obwodu usługi ExpressRoute przy użyciu szablonu Azure Resource Manager
+# <a name="create-an-expressroute-circuit-by-using-azure-resource-manager-template"></a>Tworzenie obwodu usługi ExpressRoute przy użyciu szablonu usługi Azure Resource Manager
 
 > [!div class="op_single_selector"]
-> * [Azure Portal](expressroute-howto-circuit-portal-resource-manager.md)
-> * [Program PowerShell](expressroute-howto-circuit-arm.md)
+> * [Portal Azure](expressroute-howto-circuit-portal-resource-manager.md)
+> * [Powershell](expressroute-howto-circuit-arm.md)
 > * [Interfejs wiersza polecenia platformy Azure](howto-circuit-cli.md)
 > * [Szablon usługi Azure Resource Manager](expressroute-howto-circuit-resource-manager-template.md)
-> * [Wideo — witryna Azure portal](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-an-expressroute-circuit)
+> * [Klip wideo — portal Platformy Azure](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-an-expressroute-circuit)
 > * [PowerShell (klasyczny)](expressroute-howto-circuit-classic.md)
 >
 
-Dowiedz się, jak utworzyć obwód usługi ExpressRoute, wdrażając szablon Azure Resource Manager przy użyciu Azure PowerShell. Aby uzyskać więcej informacji na temat opracowywania szablonów Menedżer zasobów, zobacz [dokumentację Menedżer zasobów i dokumentacja](/azure/azure-resource-manager/) [szablonu](/azure/templates/microsoft.network/expressroutecircuits).
+Dowiedz się, jak utworzyć obwód usługi ExpressRoute, wdrażając szablon usługi Azure Resource Manager przy użyciu programu Azure PowerShell. Aby uzyskać więcej informacji na temat tworzenia szablonów Menedżera zasobów, zobacz [Dokumentacja Menedżera zasobów](/azure/azure-resource-manager/) i odwołanie do [szablonu](/azure/templates/microsoft.network/expressroutecircuits).
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
-* Przegląd [wymagania wstępne](expressroute-prerequisites.md) i [przepływy pracy](expressroute-workflows.md) przed rozpoczęciem konfiguracji.
+* Przejrzyj [wymagania wstępne](expressroute-prerequisites.md) i [przepływy pracy](expressroute-workflows.md) przed rozpoczęciem konfiguracji.
 * Upewnij się, że masz uprawnienia do tworzenia nowych zasobów sieciowych. Jeśli nie masz odpowiednich uprawnień, skontaktuj się z administratorem konta.
-* Możesz [klip wideo](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-an-expressroute-circuit) przed rozpoczęciem, aby lepiej zrozumieć kroki.
+* Możesz [obejrzeć film](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-an-expressroute-circuit) przed rozpoczęciem, aby lepiej zrozumieć kroki.
 
-## <a name="create"></a>Tworzenie i aprowizowanie obwodu usługi ExpressRoute
+## <a name="create-and-provision-an-expressroute-circuit"></a><a name="create"></a>Tworzenie i udostępnianie obwodu usługi ExpressRoute
 
-[Szablony szybkiego startu platformy Azure](https://azure.microsoft.com/resources/templates/) mają dobrą kolekcję Menedżer zasobów szablonu. Użyj jednego z [istniejących szablonów](https://azure.microsoft.com/resources/templates/101-expressroute-circuit-create/) do utworzenia obwodu ExpressRoute.
+[Szablony szybki start platformy Azure](https://azure.microsoft.com/resources/templates/) ma dobrą kolekcję szablonu Menedżera zasobów. Jeden z [istniejących szablonów](https://azure.microsoft.com/resources/templates/101-expressroute-circuit-create/) służy do tworzenia obwodu usługi ExpressRoute.
 
 [!code-json[create-azure-expressroute-circuit](~/quickstart-templates/101-expressroute-circuit-create/azuredeploy.json)]
 
 Aby wyświetlić więcej powiązanych szablonów, wybierz [tutaj](https://azure.microsoft.com/resources/templates/?term=expressroute).
 
-Aby utworzyć obwód ExpressRoute przez wdrożenie szablonu:
+Aby utworzyć obwód usługi ExpressRoute przez wdrożenie szablonu:
 
-1. Wybierz opcję **Wypróbuj** z następującego bloku kodu, a następnie postępuj zgodnie z instrukcjami, aby zalogować się do usługi Azure Cloud Shell.
+1. Wybierz **pozycję Wypróbuj z** następującego bloku kodu, a następnie postępuj zgodnie z instrukcjami, aby zalogować się do powłoki usługi Azure Cloud.
 
     ```azurepowershell-interactive
     $circuitName = Read-Host -Prompt "Enter a circuit name"
@@ -64,35 +64,35 @@ Aby utworzyć obwód ExpressRoute przez wdrożenie szablonu:
     Write-Host "Press [ENTER] to continue ..."
     ```
 
-   * **Warstwa SKU** określa, czy obwód ExpressRoute jest [lokalny](expressroute-faqs.md#expressroute-local), standardowy czy [Premium](expressroute-faqs.md#expressroute-premium). Możesz określić *Local*, *Standard* lub *Premium*.
-   * **Rodzina SKU** określa typ rozliczeń. Można określić *Metereddata* plan taryfowy z danymi i *Unlimiteddata* dla plan z nieograniczonymi danymi. Można zmienić typ rozliczeń z *Metereddata* do *Unlimiteddata*, ale nie możesz zmienić typ z *Unlimiteddata* do *Metereddata*. Obwód *lokalny* jest tylko *Unlimiteddata* .
-   * **Lokalizacja komunikacji równorzędnej** jest lokalizacji fizycznej, w którym są komunikacji równorzędnej z firmą Microsoft.
+   * **Warstwa SKU** określa, czy obwód usługi ExpressRoute to [Lokalny,](expressroute-faqs.md#expressroute-local)Standardowy czy [Premium.](expressroute-faqs.md#expressroute-premium) Można określić *lokalne,* *standardowe* lub *premium*.
+   * **Rodzina jednostek SKU** określa typ rozliczeń. Można określić *Dane metereddata* dla taryfowego planu danych i *nieograniczone dane* dla nieograniczonego planu danych. Typ rozliczeń można zmienić z *Metereddata* na *Unlimiteddata*, ale nie można zmienić typu z *Unlimiteddata* na *Metereddata*. Obwód *lokalny* jest tylko *nieograniczonedane.*
+   * **Lokalizacja komunikacji równorzędnej** to fizyczna lokalizacja, w której można komunikacji równorzędnej z firmą Microsoft.
 
      > [!IMPORTANT]
-     > Lokalizacja komunikacji równorzędnej wskazuje [lokalizacji fizycznej](expressroute-locations.md) gdzie są komunikacji równorzędnej z firmą Microsoft. Jest to **nie** połączone z właściwością "Lokalizacja", która odwołuje się do lokalizacji geograficznej, w którym znajduje się dostawca zasobów sieciowych platformy Azure. Gdy nie są powiązane, jest dobrym rozwiązaniem, aby wybrać dostawca zasobów sieciowych w lokalizacji geograficznej blisko lokalizacji komunikacji równorzędnej obwodu.
+     > Lokalizacja komunikacji równorzędnej wskazuje [fizyczną lokalizację,](expressroute-locations.md) w której można komunikacji równorzędnej z firmą Microsoft. **Nie** jest to połączone z właściwością "Lokalizacja", która odwołuje się do lokalizacji geograficznej, w której znajduje się dostawca zasobów sieciowych platformy Azure. Chociaż nie są one powiązane, dobrą praktyką jest wybranie dostawcy zasobów sieciowych geograficznie blisko lokalizacji komunikacji równorzędnej obwodu.
 
-    Nazwa grupy zasobów to nazwa przestrzeni nazw usługi Service Bus z dołączoną **RG** .
+    Nazwa grupy zasobów jest nazwą obszaru nazw magistrali usług z **dołączeną rg.**
 
 2. Wybierz przycisk **Kopiuj**, aby skopiować skrypt programu PowerShell.
 3. Kliknij prawym przyciskiem myszy konsolę powłoki, a następnie wybierz polecenie **Wklej**.
 
-Utworzenie centrum zdarzeń trwa kilka chwil.
+Utworzenie centrum zdarzeń zajmuje kilka chwil.
 
-Azure PowerShell służy do wdrażania szablonu w tym samouczku. Aby poznać inne metody wdrażania szablonów, zobacz:
+Program Azure PowerShell jest używany do wdrażania szablonu w tym samouczku. Aby uzyskać inne metody wdrażania szablonów, zobacz:
 
-* Za [pomocą Azure Portal](../azure-resource-manager/templates/deploy-portal.md).
-* Za [pomocą interfejsu wiersza polecenia platformy Azure](../azure-resource-manager/templates/deploy-cli.md).
-* Za [pomocą interfejsu API REST](../azure-resource-manager/templates/deploy-rest.md).
+* [Za pomocą portalu Azure](../azure-resource-manager/templates/deploy-portal.md).
+* [Za pomocą narzędzia Azure CLI](../azure-resource-manager/templates/deploy-cli.md).
+* [Za pomocą interfejsu API REST](../azure-resource-manager/templates/deploy-rest.md).
 
-## <a name="delete"></a>Anulowanie aprowizacji i usuwanie obwodu usługi ExpressRoute
+## <a name="deprovisioning-and-deleting-an-expressroute-circuit"></a><a name="delete"></a>Anulowanie aprowizacji i usuwanie obwodu usługi ExpressRoute
 
-Możesz usunąć obwód usługi ExpressRoute, wybierając **Usuń** ikony. Zanotuj następujące informacje:
+Obwód usługi ExpressRoute można usunąć, wybierając ikonę **usuwania.** Zanotuj następujące informacje:
 
-* Musisz odłączyć wszystkie sieci wirtualne od obwodu usługi ExpressRoute. Jeśli operacja zakończy się niepowodzeniem, sprawdź, czy wszystkie sieci wirtualne są połączone z obwodem.
-* Jeśli dostawca usług obwodu usługi ExpressRoute, w stanie inicjowania obsługi **aprowizacji** lub **Aprowizowana** należy skontaktować się z dostawcą usługi, aby anulować aprowizację obwodu po ich stronie. Firma Microsoft nadal rezerwowania zasobów oraz są naliczane, dopóki dostawcy usług wykonuje anulowanie aprowizacji obwodu i będzie powiadamiał.
-* Jeśli dostawca usług ma anulowanie aprowizacji obwodu (stan aprowizacji dostawcy usług jest równa **nie zainicjowano obsługi administracyjnej**), można usunąć obwodu. Spowoduje to zatrzymanie naliczania opłat za obwód.
+* Musisz odłączyć wszystkie sieci wirtualne od obwodu usługi ExpressRoute. Jeśli ta operacja nie powiedzie się, sprawdź, czy wszystkie sieci wirtualne są połączone z obwódem.
+* Jeśli stan inicjowania obsługi administracyjnej dostawcy usług obwodu usługi ExpressRoute to **inicjowanie obsługi administracyjnej** lub **inicjowana obsługa,** należy współpracować z dostawcą usług w celu anulowania obsługi administracyjnej obwodu po ich stronie. Nadal rezerwujemy zasoby i rozliczamy cię do czasu zakończenia przez usługodawcę anulowania obsługi administracyjnej obwodu i powiadomi nas o tym.
+* Jeśli dostawca usług wyrejestrował obwód (stan inicjowania obsługi administracyjnej dostawcy usług jest ustawiony na **Nie aprowizowana),** można usunąć obwód. Spowoduje to zatrzymanie naliczania opłat za obwód.
 
-Obwód ExpressRoute można usunąć, uruchamiając następujące polecenie programu PowerShell:
+Obwód usługi ExpressRoute można usunąć, uruchamiając następujące polecenie programu PowerShell:
 
 ```azurepowershell-interactive
 $circuitName = Read-Host -Prompt "Enter the same circuit name that you used earlier"
@@ -103,7 +103,7 @@ Remove-AzExpressRouteCircuit -ResourceGroupName $resourceGroupName -Name $circui
 
 ## <a name="next-steps"></a>Następne kroki
 
-Po utworzeniu obwodu, Kontynuuj z następujących czynności:
+Po utworzeniu obwodu należy wykonać następujące czynności:
 
 * [Tworzenie i modyfikowanie routingu dla obwodu usługi ExpressRoute](expressroute-howto-routing-portal-resource-manager.md)
-* [Łączenie sieci wirtualnej na obwód usługi ExpressRoute](expressroute-howto-linkvnet-arm.md)
+* [Łączenie sieci wirtualnej z obwodem usługi ExpressRoute](expressroute-howto-linkvnet-arm.md)

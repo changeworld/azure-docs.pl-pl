@@ -1,6 +1,6 @@
 ---
-title: Przykładowe dane na platformie Azure blob storage — zespołu danych dla celów naukowych
-description: Próbkowanie danych przechowywanych w usłudze Azure blob storage, programowo ją pobrać, a następnie próbkowanie go za pomocą procedury napisane w języku Python.
+title: Przykładowe dane w magazynie obiektów blob platformy Azure — proces nauki o danych zespołu
+description: Próbkowanie danych przechowywanych w magazynie obiektów blob platformy Azure przez pobranie go programowo, a następnie próbkowanie go przy użyciu procedur napisanych w języku Python.
 services: machine-learning
 author: marktab
 manager: marktab
@@ -12,23 +12,23 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 4832762a88073f4d819925659bf9078e18f60c2d
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76720286"
 ---
-# <a name="heading"></a>Przykładowe dane w usłudze Azure Blob Storage
+# <a name="sample-data-in-azure-blob-storage"></a><a name="heading"></a>Przykładowe dane w usłudze Azure Blob Storage
 
-W tym artykule opisano próbkowania — dane przechowywane w usłudze Azure blob storage, programowo ją pobrać, a następnie próbkowanie go za pomocą procedury napisane w języku Python.
+W tym artykule opisano próbkowanie danych przechowywanych w magazynie obiektów blob platformy Azure przez pobranie go programowo, a następnie próbkowanie go przy użyciu procedur napisanych w języku Python.
 
-**Dlaczego warto Przykładowo dane?**
-Jeśli zestaw danych, która ma zostać analizowanie jest duża, zazwyczaj przyczyną jest dobrym pomysłem jest obniżenie częstotliwości próbkowania danych, aby zmniejszyć jego rozmiar mniejszy, ale reprezentatywny i łatwiejsze w zarządzaniu. Próbkowanie ułatwia zrozumienie, eksplorację i inżynierowanie danych. Jego rolę w procesie Cortana Analytics jest umożliwienie szybkiego tworzenia prototypów funkcji do przetwarzania danych i modeli uczenia maszynowego.
+**Dlaczego warto przykładać swoje dane?**
+Jeśli zestaw danych, który planujesz analizować, jest duży, zwykle warto pobrać próbkę w dół danych, aby zmniejszyć je do mniejszego, ale reprezentatywnego i łatwiejszego w zarządzaniu rozmiaru. Próbkowanie ułatwia zrozumienie danych, eksplorację i inżynierię funkcji. Jego rolą w procesie cortana Analytics jest umożliwienie szybkiego prototypowania funkcji przetwarzania danych i modeli uczenia maszynowego.
 
-To zadanie próbkowania jest krokiem w [procesie nauki o danych zespołowych (przetwarzania TDSP)](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/).
+To zadanie próbkowania jest krokiem w [procesie nauki o danych zespołu (TDSP).](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/)
 
-## <a name="download-and-down-sample-data"></a>Pobierz i obniżenie częstotliwości próbkowania danych
-1. Pobierz dane z usługi Azure Blob Storage przy użyciu Blob service z następującego przykładowego kodu w języku Python: 
+## <a name="download-and-down-sample-data"></a>Pobieranie i wprowadzanie próbek danych
+1. Pobierz dane z magazynu obiektów blob platformy Azure przy użyciu usługi obiektów Blob z następującego przykładowego kodu języka Python: 
    
         from azure.storage.blob import BlobService
         import tables
@@ -46,14 +46,14 @@ To zadanie próbkowania jest krokiem w [procesie nauki o danych zespołowych (pr
         t2=time.time()
         print(("It takes %s seconds to download "+blobname) % (t2 - t1))
 
-2. Odczytywanie danych do Pandas-ramki danych z pliku pobranego powyżej.
+2. Odczyt danych w ramce danych Pandas z pliku pobranego powyżej.
    
         import pandas as pd
    
         #directly ready from file on disk
         dataframe_blobdata = pd.read_csv(LOCALFILE)
 
-3. Przeprowadź przykładowe dane przy użyciu `random.choice` `numpy`w następujący sposób:
+3. Próbkowanie w dół `numpy`danych `random.choice` przy użyciu "s w następujący sposób:
    
         # A 1 percent sample
         sample_ratio = 0.01 
@@ -61,12 +61,12 @@ To zadanie próbkowania jest krokiem w [procesie nauki o danych zespołowych (pr
         sample_rows = np.random.choice(dataframe_blobdata.index.values, sample_size)
         dataframe_blobdata_sample = dataframe_blobdata.ix[sample_rows]
 
-Teraz można korzystać z powyższej ramki danych z jednym procentowym przykładem do dalszej eksploracji i generowania funkcji.
+Teraz możesz pracować z powyższą ramką danych z próbką jeden Procent do dalszej eksploracji i generowania funkcji.
 
-## <a name="heading"></a>Przekazywanie danych i odczytywanie ich w Azure Machine Learning
-Następujący przykładowy kod umożliwia obniżenie częstotliwości próbkowania danych i używać go bezpośrednio w usłudze Azure Machine Learning:
+## <a name="upload-data-and-read-it-into-azure-machine-learning"></a><a name="heading"></a>Przekazywanie danych i odczytywanie ich do usługi Azure Machine Learning
+Poniższy przykładowy kod służy do pobierania próbek w dół danych i używania ich bezpośrednio w usłudze Azure Machine Learning:
 
-1. Zapis ramki danych do pliku lokalnego
+1. Zapisywanie ramki danych w pliku lokalnym
    
         dataframe.to_csv(os.path.join(os.getcwd(),LOCALFILENAME), sep='\t', encoding='utf-8', index=False)
 
@@ -92,7 +92,7 @@ Następujący przykładowy kod umożliwia obniżenie częstotliwości próbkowan
         except:            
             print ("Something went wrong with uploading to the blob:"+ BLOBNAME)
 
-3. Odczytaj dane z obiektu blob platformy Azure przy użyciu Azure Machine Learning [Importuj dane](https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/) , jak pokazano na poniższej ilustracji:
+3. Przeczytaj dane z obiektu blob platformy Azure przy użyciu [danych importu](https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/) usługi Azure Machine Learning, jak pokazano na poniższej ilustracji:
 
-![czytnika obiektów blob](./media/sample-data-blob/reader_blob.png)
+![obiekt blob czytnika](./media/sample-data-blob/reader_blob.png)
 

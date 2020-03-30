@@ -14,18 +14,18 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 05/01/2019
 ms.author: juliako
-ms.openlocfilehash: d0a28bafef887bf0c40aa88eba1873f82cf36fd7
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 5d1dc90832a399aa9ee253b2c7962b8536c1926a
+ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80346076"
+ms.lasthandoff: 03/29/2020
+ms.locfileid: "80383008"
 ---
-# <a name="cli-example-upload-a-local-file-to-a-container"></a>Przykład interfejsu wiersza polecenia: przekazywanie pliku lokalnego do kontenera 
+# <a name="azure-cli-example-upload-a-local-file-to-a-container"></a>Przykład interfejsu wiersza polecenia platformy Azure: przekazywanie pliku lokalnego do kontenera
 
 Skrypt interfejsu wiersza polecenia platformy Azure w tym artykule pokazuje, jak można przekazać plik lokalny do kontenera magazynu.
 
-## <a name="prerequisites"></a>Wymagania wstępne 
+## <a name="prerequisites"></a>Wymagania wstępne
 
 * [Utwórz konto usługi Media Services](create-account-cli-how-to.md).
 * Przegląd [zarządzania zasobami](manage-asset-concept.md).
@@ -34,7 +34,7 @@ Skrypt interfejsu wiersza polecenia platformy Azure w tym artykule pokazuje, jak
 
 ## <a name="example-script"></a>Przykładowy skrypt
 
-```Azure CLI 
+```azurecli-interactive
 #!/bin/bash
 # Update the following variables for your own settings:
 storageAccountName=build2018storage

@@ -1,54 +1,54 @@
 ---
-title: Użyj tożsamości zarządzanej do uwierzytelnienia zadania Azure Stream Analytics do Power BI danych wyjściowych
-description: W tym artykule opisano sposób używania tożsamości zarządzanych do uwierzytelniania zadania Azure Stream Analytics do Power BI danych wyjściowych.
+title: Uwierzytelnianie zadania usługi Azure Stream Analytics do danych wyjściowych usługi Power BI za pomocą tożsamości zarządzanej
+description: W tym artykule opisano, jak używać tożsamości zarządzanych do uwierzytelniania zadania usługi Azure Stream Analytics w danych wyjściowych usługi Power BI.
 author: cedarbaum
 ms.author: sacedarb
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 3/10/2020
 ms.openlocfilehash: 8a7dfd7c690d79d8430f7c33a25b38949dbd06c4
-ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/11/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79086324"
 ---
-# <a name="use-managed-identity-to-authenticate-your-azure-stream-analytics-job-to-power-bi"></a>Za pomocą tożsamości zarządzanej można uwierzytelniać zadanie Azure Stream Analytics w Power BI
+# <a name="use-managed-identity-to-authenticate-your-azure-stream-analytics-job-to-power-bi"></a>Uwierzytelnianie zadania usługi Azure Stream Analytics w usłudze Power BI za pomocą tożsamości zarządzanej
 
-[Uwierzytelnianie tożsamości zarządzanej](../active-directory/managed-identities-azure-resources/overview.md) dla danych wyjściowych do Power BI daje Stream Analytics zadania bezpośredniego dostępu do obszaru roboczego w ramach konta Power BI. Ta funkcja umożliwia wdrażanie Stream Analytics zadań w pełni zautomatyzowanej, ponieważ nie jest już wymagane, aby użytkownik mógł interakcyjnie zalogować się do Power BI za pośrednictwem Azure Portal. Ponadto, długotrwałe zadania, które zapisują w Power BI są teraz lepiej obsługiwane, ponieważ nie trzeba okresowo ponownie autoryzować zadania.
+[Uwierzytelnianie tożsamości zarządzanej](../active-directory/managed-identities-azure-resources/overview.md) dla danych wyjściowych usługi Power BI zapewnia zadaniaom usługi Stream Analytics bezpośredni dostęp do obszaru roboczego na koncie usługi Power BI. Ta funkcja umożliwia wdrożenie zadań usługi Stream Analytics do pełnej automatyzacji, ponieważ nie jest już wymagane dla użytkownika interaktywnie zalogować się do usługi Power BI za pośrednictwem witryny Azure portal. Ponadto długo działające zadania, które zapisują w usłudze Power BI, są teraz lepiej obsługiwane, ponieważ nie trzeba okresowo ponownie autoryzować zadania.
 
-W tym artykule opisano sposób włączania zarządzanej tożsamości dla Power BI danych wyjściowych zadania Stream Analytics za pomocą Azure Portal oraz wdrożenia Azure Resource Manager.
+W tym artykule pokazano, jak włączyć tożsamość zarządzaną dla danych wyjściowych usługi Power BI zadania usługi Stream Analytics za pośrednictwem witryny Azure portal i wdrożenia usługi Azure Resource Manager.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 Do korzystania z tej funkcji wymagane są następujące elementy:
 
-- Konto Power BI z [licencją Pro](https://docs.microsoft.com/power-bi/service-admin-purchasing-power-bi-pro).
+- Konto usługi Power BI z [licencją Pro](https://docs.microsoft.com/power-bi/service-admin-purchasing-power-bi-pro).
 
-- Uaktualniony obszar roboczy w ramach konta Power BI. Aby uzyskać więcej informacji, zobacz [anons Power BI](https://powerbi.microsoft.com/blog/announcing-new-workspace-experience-general-availability-ga/) tej funkcji.
+- Uaktualniony obszar roboczy na koncie usługi Power BI. Aby uzyskać więcej informacji, zobacz ogłoszenie tej funkcji w usłudze [Power BI.](https://powerbi.microsoft.com/blog/announcing-new-workspace-experience-general-availability-ga/)
 
-## <a name="create-a-stream-analytics-job-using-the-azure-portal"></a>Tworzenie zadania Stream Analytics przy użyciu Azure Portal
+## <a name="create-a-stream-analytics-job-using-the-azure-portal"></a>Tworzenie zadania usługi Stream Analytics przy użyciu portalu Azure
 
-1. Utwórz nowe zadanie Stream Analytics lub Otwórz istniejące zadanie w Azure Portal. Na pasku menu znajdującym się po lewej stronie ekranu wybierz pozycję **zarządzana tożsamość** znajdującą się w obszarze **Konfiguruj**. Upewnij się, że wybrano opcję Użyj tożsamości zarządzanej przypisanej do systemu, a następnie wybierz przycisk **Zapisz** u dołu ekranu.
+1. Utwórz nowe zadanie usługi Stream Analytics lub otwórz istniejące zadanie w witrynie Azure portal. Na pasku menu znajdującym się po lewej stronie ekranu wybierz pozycję **Tożsamość zarządzana** znajdująca się w obszarze **Konfiguruj**. Upewnij się, że wybrano opcję "Użyj tożsamości zarządzanej przypisanej do systemu", a następnie wybierz przycisk **Zapisz** u dołu ekranu.
 
-   ![Konfigurowanie tożsamości zarządzanej Stream Analytics](./media/common/stream-analytics-enable-managed-identity.png)
+   ![Konfigurowanie tożsamości zarządzanej usługi Stream Analytics](./media/common/stream-analytics-enable-managed-identity.png)
 
-2. Przed skonfigurowaniem danych wyjściowych Udziel Stream Analytics dostęp do obszaru roboczego Power BI, postępując zgodnie z instrukcjami podanymi w sekcji [zapewnianie zadań Stream Analytics dostęp do obszaru roboczego Power BI](#give-the-stream-analytics-job-access-to-your-power-bi-workspace) w tym artykule.
+2. Przed skonfigurowaniem danych wyjściowych należy udzielić zadania usługi Stream Analytics dostępu do obszaru roboczego usługi Power BI, postępując zgodnie ze wskazówkami w sekcji [Nadaj zadaniu usługi Stream Analytics dostęp do obszaru roboczego usługi Power BI](#give-the-stream-analytics-job-access-to-your-power-bi-workspace) w tym artykule.
 
-3. Przejdź do sekcji dane **wyjściowe** zadania analitycznego strumienia, wybierz pozycję **+ Dodaj**, a następnie wybierz pozycję **Power BI**. Następnie wybierz przycisk **Autoryzuj** i zaloguj się przy użyciu konta Power BI.
+3. Przejdź do sekcji **Wyjścia** zadania analitycznego strumienia, wybierz pozycję **+ Dodaj**, a następnie wybierz pozycję **Power BI**. Następnie wybierz przycisk **Autoryzuj** i zaloguj się za pomocą konta usługi Power BI.
 
-   ![Autoryzuj przy użyciu konta Power BI](./media/stream-analytics-powerbi-output-managed-identity/stream-analytics-authorize-powerbi.png)
+   ![Autoryzowanie przy za pomocą konta usługi Power BI](./media/stream-analytics-powerbi-output-managed-identity/stream-analytics-authorize-powerbi.png)
 
-4. Po autoryzowaniu lista rozwijana będzie zawierać wszystkie obszary robocze, do których masz dostęp. Wybierz obszar roboczy, który został autoryzowany w poprzednim kroku. Następnie wybierz opcję **tożsamość zarządzana** jako "tryb uwierzytelniania". Na koniec wybierz przycisk **Zapisz** .
+4. Po autoryzacji lista rozwijana zostanie wypełniona wszystkimi obszarami roboczymi, do których masz dostęp. Wybierz obszar roboczy, który został autoryzowany w poprzednim kroku. Następnie wybierz **tożsamość zarządzana** jako "Tryb uwierzytelniania". Na koniec wybierz przycisk **Zapisz.**
 
-   ![Konfigurowanie danych wyjściowych Power BI z tożsamością zarządzaną](./media/stream-analytics-powerbi-output-managed-identity/stream-analytics-configure-powerbi-with-managed-id.png)
+   ![Konfigurowanie danych wyjściowych usługi Power BI przy obliczu tożsamości zarządzanej](./media/stream-analytics-powerbi-output-managed-identity/stream-analytics-configure-powerbi-with-managed-id.png)
 
 ## <a name="azure-resource-manager-deployment"></a>Wdrożenie usługi Azure Resource Manager
 
-Azure Resource Manager pozwala w pełni zautomatyzować wdrożenie zadania Stream Analytics. Szablony Menedżer zasobów można wdrożyć przy użyciu Azure PowerShell lub [interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest). W poniższych przykładach użyto interfejsu wiersza polecenia platformy Azure.
+Usługa Azure Resource Manager umożliwia pełną automatyzację wdrażania zadania usługi Stream Analytics. Szablony usługi Resource Manager można wdrożyć przy użyciu programu Azure PowerShell lub [interfejsu wiersza polecenia platformy Azure.](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) Poniższe przykłady używają interfejsu wiersza polecenia platformy Azure.
 
 
-1. Zasób **Microsoft. StreamAnalytics/streamingjobs** można utworzyć przy użyciu tożsamości zarządzanej, dołączając następującą właściwość w sekcji resource szablonu Menedżer zasobów:
+1. Zasób **Microsoft.StreamAnalytics/streamingjobs** z tożsamością zarządzaną można utworzyć, dołączając następującą właściwość w sekcji zasobów szablonu Menedżera zasobów:
 
     ```json
     "identity": {
@@ -56,7 +56,7 @@ Azure Resource Manager pozwala w pełni zautomatyzować wdrożenie zadania Strea
     }
     ```
 
-   Ta właściwość nakazuje Azure Resource Manager tworzenia tożsamości dla zadania Stream Analytics i zarządzania nią. Poniżej znajduje się przykładowy szablon Menedżer zasobów, który wdraża zadanie Stream Analytics z włączoną tożsamością zarządzaną oraz Power BIego ujścia danych wyjściowych, który używa tożsamości zarządzanej:
+   Ta właściwość informuje usługę Azure Resource Manager, aby utworzyć i zarządzać tożsamości dla zadania usługi Stream Analytics. Poniżej znajduje się przykładowy szablon Menedżera zasobów, który wdraża zadanie usługi Stream Analytics z włączoną tożsamością zarządzaną i ujściem wyjściowym usługi Power BI, który używa tożsamości zarządzanej:
 
     ```json
     {
@@ -97,13 +97,13 @@ Azure Resource Manager pozwala w pełni zautomatyzować wdrożenie zadania Strea
     }
     ```
 
-    Wdróż powyższe zadanie w grupie zasobów **przykład** , korzystając z poniższego polecenia platformy Azure:
+    Wdrażanie powyższego zadania w grupie zasobów **ExampleGroup** przy użyciu poniższego polecenia interfejsu wiersza polecenia platformy Azure:
 
     ```azurecli
     az group deployment create --resource-group ExampleGroup -template-file StreamingJob.json
     ```
 
-2. Po utworzeniu zadania użyj Azure Resource Manager, aby pobrać pełną definicję zadania.
+2. Po utworzeniu zadania użyj usługi Azure Resource Manager, aby pobrać pełną definicję zadania.
 
     ```azurecli
     az resource show --ids /subscriptions/<subsription-id>/resourceGroups/<resource-group>/providers/Microsoft.StreamAnalytics/StreamingJobs/<resource-name>
@@ -148,54 +148,54 @@ Azure Resource Manager pozwala w pełni zautomatyzować wdrożenie zadania Strea
     }
     ```
 
-    Jeśli planujesz użyć interfejsu API REST Power BI, aby dodać zadanie Stream Analytics do obszaru roboczego Power BI, zanotuj zwracaną wartość "principalId".
+    Jeśli planujesz dodać zadanie usługi Stream Analytics do obszaru roboczego usługi Power BI za pomocą interfejsu API REST usługi Power BI, zanotuj zwrócony "principalId".
 
-3. Teraz, gdy zadanie zostanie utworzone, przejdź do sekcji [udziel Stream Analytics dostęp do obszaru roboczego Power BI](#give-the-stream-analytics-job-access-to-your-power-bi-workspace) w tym artykule.
+3. Teraz, gdy zadanie jest tworzone, przejdź do sekcji [Give the Stream Analytics job job to your Power BI workspace](#give-the-stream-analytics-job-access-to-your-power-bi-workspace) section of this article.
 
 
-## <a name="give-the-stream-analytics-job-access-to-your-power-bi-workspace"></a>Przyznaj Stream Analytics dostęp do obszaru roboczego Power BI
+## <a name="give-the-stream-analytics-job-access-to-your-power-bi-workspace"></a>Udzielanie dostępu do zadania usługi Stream Analytics do obszaru roboczego usługi Power BI
 
-Teraz, gdy zadanie Stream Analytics zostało utworzone, można uzyskać dostęp do Power BI obszaru roboczego.
+Teraz, gdy zostało utworzone zadanie usługi Stream Analytics, można uzyskać dostęp do obszaru roboczego usługi Power BI.
 
-### <a name="use-the-power-bi-ui"></a>Korzystanie z Power BI interfejsu użytkownika
+### <a name="use-the-power-bi-ui"></a>Korzystanie z interfejsu użytkownika usługi Power BI
 
    > [!Note]
-   > Aby dodać zadanie Stream Analytics do obszaru roboczego Power BI za pomocą interfejsu użytkownika, należy również włączyć dostęp jednostki usługi w **ustawieniach dewelopera** w portalu administratora Power BI. Aby uzyskać więcej informacji, zobacz Wprowadzenie do jednostki [usługi](https://docs.microsoft.com/power-bi/developer/embed-service-principal#get-started-with-a-service-principal) .
+   > Aby dodać zadanie usługi Stream Analytics do obszaru roboczego usługi Power BI przy użyciu interfejsu użytkownika, należy również włączyć dostęp jednostki usługi w **ustawieniach dewelopera** w portalu administracyjnym usługi Power BI. Zobacz [Wprowadzenie do jednostki usługi, aby](https://docs.microsoft.com/power-bi/developer/embed-service-principal#get-started-with-a-service-principal) uzyskać więcej informacji.
 
-1. Przejdź do ustawień dostępu obszaru roboczego. Zobacz ten artykuł, aby uzyskać więcej szczegółów: [nadaj dostęp do obszaru roboczego](https://docs.microsoft.com/power-bi/service-create-the-new-workspaces#give-access-to-your-workspace).
+1. Przejdź do ustawień dostępu obszaru roboczego. Zobacz ten artykuł, aby uzyskać więcej informacji: [Udzielanie dostępu do obszaru roboczego](https://docs.microsoft.com/power-bi/service-create-the-new-workspaces#give-access-to-your-workspace).
 
-2. Wpisz nazwę zadania Stream Analytics w polu tekstowym i wybierz opcję **współautor** jako poziom dostępu.
+2. Wpisz nazwę zadania usługi Stream Analytics w polu tekstowym i wybierz **pozycję Współautor** jako poziom dostępu.
 
-3. Wybierz pozycję **Dodaj** i zamknij okienko.
+3. Wybierz **pozycję Dodaj** i zamknij okienko.
 
-   ![Dodawanie zadania Stream Analytics do Power BI obszaru roboczego](./media/stream-analytics-powerbi-output-managed-identity/stream-analytics-add-job-to-powerbi-workspace.png)
+   ![Dodawanie zadania usługi Stream Analytics do obszaru roboczego usługi Power BI](./media/stream-analytics-powerbi-output-managed-identity/stream-analytics-add-job-to-powerbi-workspace.png)
 
-### <a name="use-the-power-bi-powershell-cmdlets"></a>Korzystanie z Power BI poleceń cmdlet programu PowerShell
+### <a name="use-the-power-bi-powershell-cmdlets"></a>Korzystanie z poleceń cmdlet programu Power BI PowerShell
 
-1. Zainstaluj Power BI `MicrosoftPowerBIMgmt` poleceń cmdlet programu PowerShell.
+1. Zainstaluj polecenia `MicrosoftPowerBIMgmt` cmdlet programu Power BI PowerShell.
 
    > [!Important]
-   > Upewnij się, że używasz wersji 1.0.821 lub nowszej poleceń cmdlet.
+   > Upewnij się, że używasz poleceń cmdlet w wersji 1.0.821 lub nowszej.
 
 ```powershell
 Install-Module -Name MicrosoftPowerBIMgmt
 ```
 
-2. Zaloguj się do Power BI.
+2. Zaloguj się do usługi Power BI.
 
 ```powershell
 Login-PowerBI
 ```
 
-3. Dodaj zadanie Stream Analytics jako współautor do obszaru roboczego.
+3. Dodaj zadanie usługi Stream Analytics jako współautora do obszaru roboczego.
 
 ```powershell
 Add-PowerBIWorkspaceUser -WorkspaceId <group-id> -PrincipalId <principal-id> -PrincipalType App -AccessRight Contributor
 ```
 
-### <a name="use-the-power-bi-rest-api"></a>Korzystanie z interfejsu API REST Power BI
+### <a name="use-the-power-bi-rest-api"></a>Korzystanie z interfejsu API REST usługi Power BI
 
-Zadanie Stream Analytics można również dodać jako współautor do obszaru roboczego za pomocą interfejsu API REST "Dodaj użytkownika grupy" bezpośrednio. Pełną dokumentację tego interfejsu API można znaleźć tutaj: [grupy — Dodaj użytkownika grupy](https://docs.microsoft.com/rest/api/power-bi/groups/addgroupuser).
+Zadanie usługi Stream Analytics można również dodać jako współautor do obszaru roboczego za pomocą interfejsu API REST "Dodaj użytkownika grupy". Pełną dokumentację dla tego interfejsu API można znaleźć tutaj: [Grupy - Dodaj użytkownika grupy](https://docs.microsoft.com/rest/api/power-bi/groups/addgroupuser).
 
 **Przykładowe żądanie**
 ```http
@@ -211,17 +211,17 @@ Treść żądania
 ```
 
 ## <a name="limitations"></a>Ograniczenia
-Poniżej przedstawiono ograniczenia tej funkcji:
+Poniżej znajdują się ograniczenia tej funkcji:
 
-- Klasyczne obszary robocze Power BI nie są obsługiwane.
+- Klasyczne obszary robocze usługi Power BI nie są obsługiwane.
 
-- Konta platformy Azure bez Azure Active Directory.
+- Konta platformy Azure bez usługi Azure Active Directory.
 
-- Dostęp z wieloma dzierżawcami nie jest obsługiwany. Nazwa główna usługi utworzona dla danego zadania Stream Analytics musi znajdować się w tej samej dzierżawie Azure Active Directory, w której zadanie zostało utworzone i nie można jej używać z zasobem znajdującym się w innej dzierżawie Azure Active Directory.
+- Dostęp dla wielu dzierżawców nie jest obsługiwany. Podmiot zabezpieczeń usługi utworzony dla danego zadania usługi Usługi Usługi Musi znajdować się w tej samej dzierżawie usługi Azure Active Directory, w której utworzono zadanie, i nie może być używany z zasobem, który znajduje się w innej dzierżawie usługi Azure Active Directory.
 
-- [Tożsamość przypisana przez użytkownika](../active-directory/managed-identities-azure-resources/overview.md) nie jest obsługiwana. Oznacza to, że nie można wprowadzić własnej nazwy głównej usługi, która będzie używana przez ich Stream Analytics zadania. Nazwa główna usługi musi być generowana przez Azure Stream Analytics.
+- [Tożsamość przypisana przez użytkownika](../active-directory/managed-identities-azure-resources/overview.md) nie jest obsługiwana. Oznacza to, że nie możesz wprowadzić własnego podmiotu usługi, który ma być używany przez zadanie usługi Stream Analytics. Podmiot usługi musi być generowany przez usługę Azure Stream Analytics.
 
 ## <a name="next-steps"></a>Następne kroki
 
-* [Power BI integrację pulpitu nawigacyjnego z Azure Stream Analytics](./stream-analytics-power-bi-dashboard.md)
-* [Poznanie danych wyjściowych z Azure Stream Analytics](./stream-analytics-define-outputs.md)
+* [Integracja pulpitu nawigacyjnego usługi Power BI z usługą Azure Stream Analytics](./stream-analytics-power-bi-dashboard.md)
+* [Opis produktów z usługi Azure Stream Analytics](./stream-analytics-define-outputs.md)

@@ -1,29 +1,29 @@
 ---
-title: Tworzenie klastra Service Fabric systemu Linux na platformie Azure
+title: Tworzenie klastra sieci szkieletowej usług systemu Linux na platformie Azure
 description: Dowiedz się, jak wdrożyć klaster usługi Service Fabric systemu Linux w istniejącej sieci wirtualnej platformy Azure za pomocą interfejsu wiersza polecenia platformy Azure.
 ms.topic: conceptual
 ms.date: 02/14/2019
 ms.custom: mvc
 ms.openlocfilehash: f5788f07dd4a4f03a95efaea4b741cd64c930ac5
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78251783"
 ---
 # <a name="deploy-a-linux-service-fabric-cluster-into-an-azure-virtual-network"></a>wdrażanie klastra usługi Service Fabric systemu Linux w sieci wirtualnej platformy Azure
 
-W tym artykule dowiesz się, jak wdrożyć klaster Service Fabric systemu Linux w usłudze [Azure Virtual Network (VNET)](../virtual-network/virtual-networks-overview.md) przy użyciu interfejsu wiersza polecenia platformy Azure i szablonu. Po wykonaniu tych czynności powstanie działający w chmurze klaster, w którym można będzie wdrażać aplikacje. Aby utworzyć klaster systemu Windows za pomocą programu PowerShell, zobacz [Tworzenie bezpiecznego klastra systemu Windows na platformie Azure](service-fabric-tutorial-create-vnet-and-windows-cluster.md).
+W tym artykule dowiesz się, jak wdrożyć klaster sieci szkieletowej usług systemu Linux w [sieci wirtualnej platformy Azure przy](../virtual-network/virtual-networks-overview.md) użyciu interfejsu wiersza polecenia platformy Azure i szablonu. Po wykonaniu tych czynności powstanie działający w chmurze klaster, w którym można będzie wdrażać aplikacje. Aby utworzyć klaster systemu Windows za pomocą programu PowerShell, zobacz [Tworzenie bezpiecznego klastra systemu Windows na platformie Azure](service-fabric-tutorial-create-vnet-and-windows-cluster.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 Przed rozpoczęciem:
 
 * Jeśli nie masz subskrypcji platformy Azure, utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
-* Zainstaluj [interfejs wiersza polecenia usługi Service Fabric](service-fabric-cli.md).
-* Zainstaluj [interfejs wiersza polecenia platformy Azure](/cli/azure/install-azure-cli)
-* Aby poznać kluczowe pojęcia dotyczące klastrów, Przeczytaj [temat Omówienie klastrów platformy Azure](service-fabric-azure-clusters-overview.md)
-* [Planowanie i przygotowywanie](service-fabric-cluster-azure-deployment-preparation.md) wdrożenia klastra produkcyjnego.
+* Instalowanie [interfejsu wiersza polecenia sieci szkieletowej usług](service-fabric-cli.md)
+* Instalowanie [interfejsu wiersza polecenia platformy Azure](/cli/azure/install-azure-cli)
+* Aby poznać kluczowe pojęcia klastrów, przeczytaj [omówienie klastrów platformy Azure](service-fabric-azure-clusters-overview.md)
+* [Planowanie i przygotowanie do](service-fabric-cluster-azure-deployment-preparation.md) wdrożenia klastra produkcyjnego.
 
 Następujące procedury umożliwiają utworzenie klastra usługi Service Fabric z siedmioma węzłami. Aby obliczyć koszt działania klastra usługi Service Fabric na platformie Azure, skorzystaj z [Kalkulatora cen platformy Azure](https://azure.microsoft.com/pricing/calculator/).
 
@@ -31,17 +31,17 @@ Następujące procedury umożliwiają utworzenie klastra usługi Service Fabric 
 
 Pobierz poniższe pliki szablonu usługi Resource Manager:
 
-* [AzureDeploy. JSON][template]
-* [AzureDeploy. Parameters. JSON][parameters]
+* [Usługa AzureDeploy.json][template]
+* [Usługa AzureDeploy.Parameters.json][parameters]
 
-Ten szablon wdraża bezpieczny klaster składający się z siedmiu maszyn wirtualnych i trzech typów węzłów w sieci wirtualnej.  Inne przykładowe szablony można znaleźć w witrynie [GitHub](https://github.com/Azure-Samples/service-fabric-cluster-templates). Plik [AzureDeploy. JSON][template] wdraża liczbę zasobów, w tym następujące.
+Ten szablon wdraża bezpieczny klaster siedmiu maszyn wirtualnych i trzech typów węzłów w sieci wirtualnej.  Inne przykładowe szablony można znaleźć w witrynie [GitHub](https://github.com/Azure-Samples/service-fabric-cluster-templates). [AzureDeploy.json][template] wdraża wiele zasobów, w tym następujące.
 
 ### <a name="service-fabric-cluster"></a>Klaster usługi Service Fabric
 
 W zasobie **Microsoft.ServiceFabric/clusters** został wdrożony klaster systemu Linux o następujących właściwościach:
 
 * Trzy typy węzła
-* pięć węzłów w podstawowym typie węzła (konfigurowalne w parametrach szablonu), jeden węzeł w każdym z innych typów węzłów
+* pięć węzłów w typie węzła podstawowego (konfigurowalne w parametrach szablonu), jeden węzeł w każdym z pozostałych typów węzłów
 * system operacyjny Ubuntu 16.04 LTS (z możliwością konfiguracji w parametrach szablonu)
 * Zabezpieczenie przy użyciu certyfikatu (z możliwością konfiguracji za pomocą parametrów szablonu)
 * [Usługa DNS](service-fabric-dnsservice.md) jest włączona
@@ -70,7 +70,7 @@ Jeśli będą potrzebne dowolne inne porty aplikacji, będzie trzeba dostosować
 
 ## <a name="set-template-parameters"></a>Ustawianie parametrów szablonu
 
-Plik parametrów [AzureDeploy. Parameters][parameters] deklaruje wiele wartości używanych do wdrożenia klastra i skojarzonych zasobów. Niektóre parametry, które być może będzie trzeba zmodyfikować na potrzeby danego wdrożenia:
+Plik parametrów [AzureDeploy.Parameters][parameters] deklaruje wiele wartości służących do wdrażania klastra i skojarzonych zasobów. Niektóre parametry, które być może będzie trzeba zmodyfikować na potrzeby danego wdrożenia:
 
 |Parametr|Przykładowa wartość|Uwagi|
 |---|---||
@@ -86,7 +86,7 @@ Plik parametrów [AzureDeploy. Parameters][parameters] deklaruje wiele wartości
 
 ## <a name="deploy-the-virtual-network-and-cluster"></a>Wdrażanie sieci wirtualnej i klastra
 
-Następnym etapem jest skonfigurowanie topologii sieci i wdrożenie klastra usługi Service Fabric. Szablon Menedżer zasobów [AzureDeploy. JSON][template] tworzy sieć wirtualną (VNET) i podsieć dla Service Fabric. Szablon pozwala również wdrożyć klaster z włączonymi zabezpieczeniami opartymi na certyfikacie.  W przypadku klastrów produkcyjnych jako certyfikatu klastra należy używać certyfikatu z urzędu certyfikacji. Do zabezpieczenia klastrów testowych może służyć certyfikat z podpisem własnym.
+Następnym etapem jest skonfigurowanie topologii sieci i wdrożenie klastra usługi Service Fabric. Plik [AzureDeploy.json][template] szablonu usługi Resource Manager tworzy sieć wirtualną (VNET) i podsieć dla usługi Service Fabric. Szablon pozwala również wdrożyć klaster z włączonymi zabezpieczeniami opartymi na certyfikacie.  W przypadku klastrów produkcyjnych jako certyfikatu klastra należy używać certyfikatu z urzędu certyfikacji. Do zabezpieczenia klastrów testowych może służyć certyfikat z podpisem własnym.
 
 Szablon w tym artykule wdraża klaster, który używa odcisku palca certyfikatu do identyfikowania certyfikatu klastra.  Żadne dwa certyfikaty nie mogą mieć tego samego odcisku palca, co sprawia, że zarządzanie certyfikatami jest trudniejsze. Przełączenie wdrożonego klastra z używania odcisków palca certyfikatu na używanie nazw pospolitych certyfikatów sprawia, że zarządzanie certyfikatami jest znacznie prostsze.  Aby dowiedzieć się, jak zaktualizować klaster pod kątem używania nazw pospolitych certyfikatów do zarządzania certyfikatami, przeczytaj artykuł [Modyfikacja klastra pod kątem zarządzania certyfikatami za pomocą nazw pospolitych](service-fabric-cluster-change-cert-thumbprint-to-cn.md).
 

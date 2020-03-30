@@ -1,6 +1,6 @@
 ---
-title: Zarządzanie kontami — Portal Azure VMware Solutions (Automatyczna synchronizacja)
-description: Opisuje sposób zarządzania kontami w portalu Azure VMware Solutions (Automatyczna synchronizacja)
+title: Zarządzanie kontem — rozwiązanie Azure VMware według portalu CloudSimple
+description: W tym artykule opisano sposób zarządzania kontami w portalu Azure VMware Solution by CloudSimple
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/14/2019
@@ -8,33 +8,33 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 1fd7cb1c55fb664828448cef0b67ea9b16323bdf
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 00348d36c38fdbfdf69a2e4e80a4c720268b40c8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77025371"
 ---
-# <a name="manage-accounts-on-the-azure-vmware-solutions-avs-portal"></a>Zarządzanie kontami w portalu Azure VMware Solutions (Automatyczna synchronizacja)
+# <a name="manage-accounts-on-the-azure-vmware-solution-by-cloudsimple-portal"></a>Zarządzanie kontami w portalu Azure VMware Solution by CloudSimple
 
-Po utworzeniu usługi automatycznej synchronizacji tworzone jest konto o automatycznej synchronizacji. Konto jest skojarzone z subskrypcją platformy Azure, w której znajduje się usługa. Wszyscy użytkownicy z rolami właściciela i współautora w subskrypcji mają dostęp do portalu automatycznej synchronizacji. Identyfikator subskrypcji platformy Azure i identyfikator dzierżawy skojarzone z usługą automatycznej synchronizacji są dostępne na stronie konta.
+Podczas tworzenia usługi CloudSimple, tworzy konto w CloudSimple. Konto jest skojarzone z subskrypcją platformy Azure, w której znajduje się usługa. Wszyscy użytkownicy z rolami właściciela i współautora w subskrypcji mają dostęp do portalu CloudSimple. Identyfikator subskrypcji platformy Azure i identyfikator dzierżawy skojarzony z usługą CloudSimple znajdują się na stronie Konta.
 
-Aby zarządzać kontami w portalu automatycznej synchronizacji, [uzyskaj dostęp do portalu](access-cloudsimple-portal.md) i wybierz pozycję **konto** w menu po stronie.
+Aby zarządzać kontami w portalu CloudSimple, [przejdź do portalu](access-cloudsimple-portal.md) i wybierz opcję **Konto** w menu bocznym.
 
-Wybierz pozycję **Podsumowanie** , aby wyświetlić informacje o konfiguracji automatycznej synchronizacji Twojej firmy. Zostanie wyświetlona aktualna pojemność konfiguracji chmury, w tym liczba chmur prywatnych, całkowity magazyn, Konfiguracja klastra vSphere, liczba węzłów i liczba rdzeni obliczeniowych. Łącze jest dołączone do zakupu dodatkowych węzłów, jeśli Bieżąca konfiguracja nie spełnia wszystkich Twoich potrzeb.
+Wybierz **Podsumowanie,** aby wyświetlić informacje o konfiguracji CloudSimple twojej firmy. Wyświetlana jest bieżąca pojemność konfiguracji chmury, w tym liczba chmur prywatnych, całkowita pamięć masowa, konfiguracja klastra vSphere, liczba węzłów i liczba rdzeni obliczeniowych. Łącze jest dołączone do zakupu dodatkowych węzłów, jeśli bieżąca konfiguracja nie spełnia wszystkich twoich potrzeb.
 
 ## <a name="email-alerts"></a>Alerty e-mail
 
-Możesz dodać adresy e-mail osób, które mają być powiadamiane o zmianach w konfiguracji chmury prywatnej automatycznej synchronizacji.
+Możesz dodać adresy e-mail wszystkich osób, które chcesz powiadomić o zmianach w konfiguracji chmury prywatnej.
 
-1. W obszarze **dodatkowe alerty e-mail** kliknij pozycję **Dodaj nowy**.
+1. W obszarze **Dodatkowe alerty e-mail** kliknij pozycję **Dodaj nowy**.
 2. Wprowadź adres e-mail.
-3. Naciśnij klawisz Return.  
+3. Naciśnij przycisk Return.  
 
 Aby usunąć wpis, kliknij przycisk **X**.
 
-## <a name="avs-operator-access"></a>Dostęp do operatora automatycznej synchronizacji
+## <a name="cloudsimple-operator-access"></a>Dostęp do operatora CloudSimple
 
-Ustawienie dostęp operatora umożliwia automatyczna synchronizacja, która pomaga w rozwiązywaniu problemów, umożliwiając inżynierowi pomocy technicznej zalogowanie się do portalu automatycznej rejestracji. Ustawienie jest domyślnie włączone. Wszystkie akcje wykonywane przez inżyniera pomocy technicznej po zalogowaniu się na koncie klienta są rejestrowane i dostępne do przeglądu na stronie **inspekcji** > **działań** .
+Ustawienie dostępu operatora umożliwia CloudSimple, aby pomóc w rozwiązywaniu problemów, umożliwiając inżynierowi pomocy technicznej zalogować się do portalu CloudSimple.  Ustawienie jest domyślnie włączone. Wszystkie działania wykonywane przez inżyniera pomocy technicznej po zalogowaniu się na konto klienta są rejestrowane i dostępne do sprawdzenia na stronie**Inspekcja** **aktywności.** > 
 
-Kliknij przełącznik **Automatyczna synchronizacja z włączonym dostępem operatora** , aby włączyć lub wyłączyć dostęp.
+Kliknij przełącznik **włączono dostęp operatora CloudSimple,** aby włączyć lub wyłączyć dostęp.

@@ -1,51 +1,51 @@
 ---
-title: Użyj Azure Active Directory-Azure Database for PostgreSQL-pojedynczego serwera
-description: Informacje na temat sposobu konfigurowania Azure Active Directory (AAD) na potrzeby uwierzytelniania przy użyciu jednego serwera Azure Database for PostgreSQL
+title: Korzystanie z usługi Azure Active Directory — usługa Azure Database for PostgreSQL — single server
+description: Dowiedz się, jak skonfigurować usługę Azure Active Directory (AAD) do uwierzytelniania za pomocą usługi Azure Database for PostgreSQL — single server
 author: lfittl
 ms.author: lufittl
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: aacffbfdec67d7faa58cb8bd08f99963fb78263a
-ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
+ms.openlocfilehash: a9f12849525daeea69ece6e81077446f062e8889
+ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79299281"
+ms.lasthandoff: 03/29/2020
+ms.locfileid: "80384402"
 ---
-# <a name="use-azure-active-directory-for-authenticating-with-postgresql"></a>Używanie Azure Active Directory do uwierzytelniania za pomocą PostgreSQL
+# <a name="use-azure-active-directory-for-authenticating-with-postgresql"></a>Uwierzytelnianie za pomocą usługi PostgreSQL za pomocą usługi Azure Active Directory
 
-W tym artykule opisano kroki konfigurowania Azure Active Directory dostępu za pomocą Azure Database for PostgreSQL i sposobu nawiązywania połączenia przy użyciu tokenu usługi Azure AD.
+W tym artykule omówisz kroki konfigurowania dostępu usługi Azure Active Directory za pomocą usługi Azure Database for PostgreSQL oraz sposobu łączenia się przy użyciu tokenu usługi Azure AD.
 
 > [!IMPORTANT]
-> Uwierzytelnianie usługi Azure AD dla Azure Database for PostgreSQL jest obecnie dostępne w publicznej wersji zapoznawczej.
+> Uwierzytelnianie usługi Azure AD dla usługi Azure Database for PostgreSQL jest obecnie w publicznej wersji zapoznawczej.
 > Ta wersja zapoznawcza nie jest objęta umową dotyczącą poziomu usług i nie zalecamy korzystania z niej w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą być nieobsługiwane lub ograniczone.
 > Aby uzyskać więcej informacji, zobacz [Uzupełniające warunki korzystania z wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="setting-the-azure-ad-admin-user"></a>Ustawianie użytkownika administratora usługi Azure AD
 
-Tylko użytkownik administrator usługi Azure AD może tworzyć/włączać użytkowników w ramach uwierzytelniania opartego na usłudze Azure AD. Aby utworzyć użytkownika i administratora usługi Azure AD, wykonaj następujące czynności.
+Tylko użytkownik administratora usługi Azure AD może tworzyć/włączać użytkowników do uwierzytelniania opartego na usłudze Azure AD. Aby utworzyć i użytkownik usługi Azure AD Admin, wykonaj następujące kroki
 
-1. W Azure Portal wybierz wystąpienie Azure Database for PostgreSQL, które chcesz włączyć dla usługi Azure AD.
-2. W obszarze Ustawienia wybierz pozycję Administrator Active Directory:
+1. W witrynie Azure portal wybierz wystąpienie usługi Azure Database dla postgreSQL, które chcesz włączyć dla usługi Azure AD.
+2. W obszarze Ustawienia wybierz pozycję Administrator usługi Active Directory:
 
-![Ustawianie administratora usługi Azure AD][2]
+![ustawianie administratora reklam platformy Azure][2]
 
 3. Wybierz prawidłowego użytkownika usługi Azure AD w dzierżawie klienta, aby być administratorem usługi Azure AD.
 
 > [!IMPORTANT]
-> Podczas konfigurowania administratora nowy użytkownik zostanie dodany do serwera Azure Database for PostgreSQL z uprawnieniami pełnego administratora. Użytkownik administracyjny usługi Azure AD w Azure Database for PostgreSQL będzie miał rolę `azure_ad_admin`.
+> Podczas ustawiania administratora, nowy użytkownik jest dodawany do usługi Azure Database dla serwera PostgreSQL z pełnymi uprawnieniami administratora. Użytkownik administratora usługi Azure AD w bazie danych platformy `azure_ad_admin`Azure dla postgreSQL będzie miał rolę .
 
-Tylko jeden administrator usługi Azure AD można utworzyć na serwerze PostgreSQL, a wybranie innego z nich spowoduje zastąpienie istniejącego administratora usługi Azure AD skonfigurowanego dla serwera. Możesz określić grupę usługi Azure AD zamiast pojedynczego użytkownika, aby mieć wielu administratorów. Pamiętaj, że następnie zaloguj się przy użyciu nazwy grupy dla celów administracyjnych.
+Tylko jeden administrator usługi Azure AD można utworzyć na serwer postgresql i wybór innego zastąpi istniejącego administratora usługi Azure AD skonfigurowany dla serwera. Można określić grupę usługi Azure AD zamiast pojedynczego użytkownika, aby mieć wielu administratorów. Należy pamiętać, że następnie zalogujesz się przy tej nazwie do celów administracyjnych.
 
-## <a name="creating-azure-ad-users-in-azure-database-for-postgresql"></a>Tworzenie użytkowników usługi Azure AD w Azure Database for PostgreSQL
+## <a name="creating-azure-ad-users-in-azure-database-for-postgresql"></a>Tworzenie użytkowników usługi Azure AD w usłudze Azure Database dla postgreSQL
 
-Aby dodać użytkownika usługi Azure AD do bazy danych Azure Database for PostgreSQL, wykonaj następujące czynności po nawiązaniu połączenia (zobacz sekcję w dalszej części How to Connect):
+Aby dodać użytkownika usługi Azure AD do bazy danych usługi Azure Database for PostgreSQL, wykonaj następujące kroki po nawiązaniu połączenia (zobacz sekcję nowszą dotyczącą sposobu nawiązania połączenia):
 
-1. Najpierw upewnij się, że `<user>@yourtenant.onmicrosoft.com` użytkownika usługi Azure AD jest prawidłowym użytkownikiem w dzierżawie usługi Azure AD.
-2. Zaloguj się do swojego wystąpienia Azure Database for PostgreSQL jako użytkownik administracyjny usługi Azure AD.
-3. Utwórz `<user>@yourtenant.onmicrosoft.com` roli w Azure Database for PostgreSQL.
-4. Uczyń `<user>@yourtenant.onmicrosoft.com` członkiem azure_ad_user roli. Ta usługa musi być określona tylko dla użytkowników usługi Azure AD.
+1. Najpierw upewnij się, `<user>@yourtenant.onmicrosoft.com` że użytkownik usługi Azure AD jest prawidłowym użytkownikiem w dzierżawie usługi Azure AD.
+2. Zaloguj się do usługi Azure Database dla wystąpienia PostgreSQL jako użytkownik administratora usługi Azure AD.
+3. Tworzenie `<user>@yourtenant.onmicrosoft.com` roli w usłudze Azure Database dla postgreSQL.
+4. Zamieć `<user>@yourtenant.onmicrosoft.com` członka roli azure_ad_user. To może być podane tylko użytkownikom usługi Azure AD.
 
 **Przykład:**
 
@@ -54,11 +54,11 @@ CREATE ROLE "user1@yourtenant.onmicrosoft.com" WITH LOGIN IN ROLE azure_ad_user;
 ```
 
 > [!NOTE]
-> Uwierzytelnienie użytkownika za pomocą usługi Azure AD nie daje użytkownikowi żadnych uprawnień dostępu do obiektów w bazie danych Azure Database for PostgreSQL. Musisz przyznać użytkownikowi wymagane uprawnienia ręcznie.
+> Uwierzytelnianie użytkownika za pośrednictwem usługi Azure AD nie daje użytkownikowi żadnych uprawnień dostępu do obiektów w bazie danych azure bazy danych dla postgreSql bazy danych. Należy ręcznie udzielić użytkownikowi wymaganych uprawnień.
 
-## <a name="creating-azure-ad-groups-in-azure-database-for-postgresql"></a>Tworzenie grup usługi Azure AD w Azure Database for PostgreSQL
+## <a name="creating-azure-ad-groups-in-azure-database-for-postgresql"></a>Tworzenie grup usługi Azure AD w usłudze Azure Database dla postgreSQL
 
-Aby włączyć grupę usługi Azure AD w celu uzyskania dostępu do bazy danych, należy użyć tego samego mechanizmu co w przypadku użytkowników, ale zamiast tego należy określić nazwę grupy:
+Aby włączyć grupę usługi Azure AD w celu uzyskania dostępu do bazy danych, użyj tego samego mechanizmu, co dla użytkowników, ale zamiast tego określ nazwę grupy:
 
 **Przykład:**
 
@@ -66,62 +66,62 @@ Aby włączyć grupę usługi Azure AD w celu uzyskania dostępu do bazy danych,
 CREATE ROLE "Prod DB Readonly" WITH LOGIN IN ROLE azure_ad_user;
 ```
 
-Gdy logujesz się, członkowie grupy będą używać osobistych tokenów dostępu, ale Podpisz z nazwą grupy określoną jako nazwa użytkownika.
+Podczas logowania członkowie grupy będą używać tokenów dostępu osobistego, ale podpisują nazwę grupy określoną jako nazwa użytkownika.
 
-## <a name="connecting-to-azure-database-for-postgresql-using-azure-ad"></a>Nawiązywanie połączenia z Azure Database for PostgreSQL przy użyciu usługi Azure AD
+## <a name="connecting-to-azure-database-for-postgresql-using-azure-ad"></a>Łączenie się z usługą Azure Database dla postgreSQL przy użyciu usługi Azure AD
 
-Poniższy diagram wysokiego poziomu podsumowuje przepływ pracy przy użyciu uwierzytelniania usługi Azure AD z Azure Database for PostgreSQL:
+Poniższy diagram wysokiego poziomu podsumowuje przepływ pracy przy użyciu uwierzytelniania usługi Azure AD z usługą Azure Database for PostgreSQL:
 
-![Przepływ uwierzytelniania][1]
+![przepływ uwierzytelniania][1]
 
-Zaprojektowano integrację usługi Azure AD w celu współpracy z typowymi narzędziami PostgreSQL, takimi jak PSQL, które nie są oparte na usłudze Azure AD i obsługują Określanie nazwy użytkownika i hasła podczas nawiązywania połączenia z usługą PostgreSQL. Token usługi Azure AD jest przekazywany jako hasło, jak pokazano na powyższym rysunku.
+Zaprojektowaliśmy integrację usługi Azure AD do pracy ze typowymi narzędziami PostgreSQL, takimi jak psql, które nie są obsługują usługi Azure AD i obsługują tylko określanie nazwy użytkownika i hasła podczas łączenia się z postgreSQL. Przekazujemy token usługi Azure AD jako hasło, jak pokazano na powyższym rysunku.
 
-Obecnie przetestowano następujących klientów:
+Obecnie przetestowaliśmy następujących klientów:
 
-- PSQL CommandLine (Użyj zmiennej PGPASSWORD, aby przekazać token, zobacz poniżej)
-- Azure Data Studio (przy użyciu rozszerzenia PostgreSQL)
-- Inni klienci korzystający z libpq (np. typowe struktury aplikacji i ORMs)
+- psql commandline (wykorzystać zmienną PGPASSWORD przekazać token, patrz poniżej)
+- Usługa Azure Data Studio (przy użyciu rozszerzenia PostgreSQL)
+- Inni klienci z siedzibą w libpq (np. wspólne struktury aplikacji i ORM)
 
 > [!NOTE]
-> Należy pamiętać, że użycie tokenu usługi Azure AD z usługą pgAdmin nie jest obecnie obsługiwane, ponieważ ma ustalone ograniczenie 256 znaków dla haseł (do których token przekracza).
+> Należy pamiętać, że przy użyciu tokenu usługi Azure AD z pgAdmin nie jest obecnie obsługiwany, ponieważ ma zakodowane ograniczenie 256 znaków dla haseł (który przekracza token).
 
-Poniżej przedstawiono kroki, które należy wykonać, aby użytkownik/aplikacja wymagały uwierzytelniania za pomocą usługi Azure AD opisanej poniżej:
+Są to kroki, które użytkownik/aplikacja będzie musiał zrobić uwierzytelnić za pomocą usługi Azure AD opisane poniżej:
 
-### <a name="step-1-authenticate-with-azure-ad"></a>Krok 1. uwierzytelnianie przy użyciu usługi Azure AD
+### <a name="step-1-authenticate-with-azure-ad"></a>Krok 1: Uwierzytelnij się za pomocą usługi Azure AD
 
-Upewnij się, że masz [zainstalowany interfejs wiersza polecenia platformy Azure](/cli/azure/install-azure-cli).
+Upewnij się, że masz [zainstalowany plik CLI platformy Azure](/cli/azure/install-azure-cli).
 
-Wywołaj narzędzie interfejsu wiersza polecenia platformy Azure w celu uwierzytelnienia w usłudze Azure AD. Wymaga to podania identyfikatora użytkownika i hasła usługi Azure AD.
+Wywoływanie narzędzia interfejsu wiersza polecenia platformy Azure w celu uwierzytelniania za pomocą usługi Azure AD. Wymaga podania identyfikatora użytkownika usługi Azure AD i hasła.
 
-```
+```azurecli-interactive
 az login
 ```
 
-To polecenie spowoduje uruchomienie okna przeglądarki na stronie uwierzytelniania usługi Azure AD.
+To polecenie uruchomi okno przeglądarki na stronie uwierzytelniania usługi Azure AD.
 
 > [!NOTE]
-> Aby wykonać te kroki, można również użyć Azure Cloud Shell.
-> Należy pamiętać, że podczas pobierania tokenu dostępu usługi Azure AD w Azure Cloud Shell należy jawnie wywołać `az login` i ponownie zalogować się (w osobnym oknie z kodem). Po tym zalogowaniu polecenie `get-access-token` będzie działała zgodnie z oczekiwaniami.
+> Aby wykonać te kroki, można również użyć usługi Azure Cloud Shell.
+> Należy pamiętać, że podczas pobierania tokenu dostępu usługi Azure AD w `az login` usłudze Azure Cloud Shell należy jawnie wywołać i zalogować się ponownie (w osobnym oknie z kodem). Po tym zaloguje się polecenie będzie działać zgodnie z `get-access-token` oczekiwaniami.
 
-### <a name="step-2-retrieve-azure-ad-access-token"></a>Krok 2. Pobieranie tokenu dostępu usługi Azure AD
+### <a name="step-2-retrieve-azure-ad-access-token"></a>Krok 2: Pobieranie tokenu dostępu usługi Azure AD
 
-Wywołaj narzędzie interfejsu wiersza polecenia platformy Azure, aby uzyskać token dostępu dla uwierzytelnionego użytkownika usługi Azure AD z kroku 1 w celu uzyskania dostępu do Azure Database for PostgreSQL.
+Wywołaj narzędzie interfejsu wiersza polecenia platformy Azure, aby uzyskać token dostępu dla uwierzytelnionego użytkownika usługi Azure AD z kroku 1 do dostępu do bazy danych platformy Azure dla postgreSQL.
 
 Przykład (dla chmury publicznej):
 
-```shell
+```azurecli-interactive
 az account get-access-token --resource https://ossrdbms-aad.database.windows.net
 ```
 
-Powyższa wartość zasobu musi być określona dokładnie tak, jak pokazano. W przypadku innych chmur wartość zasobu może być wyszukiwana przy użyciu:
+Powyższa wartość zasobu musi być określona dokładnie tak, jak pokazano. W przypadku innych chmur wartość zasobu można sprawdzić za pomocą:
 
-```shell
+```azurecli-interactive
 az cloud show
 ```
 
-W przypadku interfejsu wiersza polecenia platformy Azure w wersji 2.0.71 lub nowszej polecenie można określić w następującej bardziej wygodnej wersji dla wszystkich chmur:
+W przypadku interfejsu wiersza polecenia platformy Azure w wersji 2.0.71 i nowszej można określić polecenie w następującej, wygodniejszej wersji dla wszystkich chmur:
 
-```shell
+```azurecli-interactive
 az account get-access-token --resource-type oss-rdbms
 ```
 
@@ -137,16 +137,16 @@ Po pomyślnym uwierzytelnieniu usługa Azure AD zwróci token dostępu:
 }
 ```
 
-Token jest bazowym ciągiem 64, który koduje wszystkie informacje o uwierzytelnionym użytkowniku i który jest przeznaczony dla usługi Azure Database for PostgreSQL.
+Token jest ciągiem Base 64, który koduje wszystkie informacje o uwierzytelnionym użytkowniku i który jest przeznaczony dla usługi Azure Database for PostgreSQL.
 
 > [!NOTE]
-> Ważność tokenu dostępu jest w dowolnym miejscu od 5 minut do 60 minut. Zalecamy uzyskanie tokenu dostępu tuż przed zainicjowaniem logowania do Azure Database for PostgreSQL.
+> Ważność tokenu dostępu wynosi od 5 minut do 60 minut. Zalecamy uzyskanie tokenu dostępu tuż przed zainicjowaniem logowania do usługi Azure Database for PostgreSQL.
 
-### <a name="step-3-use-token-as-password-for-logging-in-with-postgresql"></a>Krok 3. Używanie tokenu jako hasła do logowania za pomocą usługi PostgreSQL
+### <a name="step-3-use-token-as-password-for-logging-in-with-postgresql"></a>Krok 3: Użyj tokenu jako hasła do logowania się za pomocą PostgreSQL
 
-Podczas łączenia należy użyć tokenu dostępu jako hasła użytkownika PostgreSQL.
+Podczas łączenia należy użyć tokenu dostępu jako hasło użytkownika PostgreSQL.
 
-W przypadku korzystania z `psql` klienta wiersza polecenia token dostępu musi być przesyłany za pośrednictwem zmiennej środowiskowej `PGPASSWORD`, ponieważ token dostępu przekracza długość hasła, która `psql` może akceptować bezpośrednio:
+Podczas korzystania `psql` z klienta wiersza polecenia token dostępu `PGPASSWORD` musi być przekazywany przez zmienną `psql` środowiskową, ponieważ token dostępu przekracza długość hasła, które można zaakceptować bezpośrednio:
 
 Przykład systemu Windows:
 
@@ -154,56 +154,56 @@ Przykład systemu Windows:
 set PGPASSWORD=<copy/pasted TOKEN value from step 2>
 ```
 
-Przykład Linux/macOS:
+Przykład systemu Linux/macOS:
 
 ```shell
 export PGPASSWORD=<copy/pasted TOKEN value from step 2>
 ```
 
-Teraz możesz inicjować połączenie z Azure Database for PostgreSQL, podobnie jak zwykle:
+Teraz możesz zainicjować połączenie z usługą Azure Database dla PostgreSQL, tak jak zwykle:
 
 ```shell
 psql "host=mydb.postgres... user=user@tenant.onmicrosoft.com@mydb dbname=postgres sslmode=require"
 ```
 
-Masz teraz uwierzytelnienie na serwerze PostgreSQL przy użyciu uwierzytelniania usługi Azure AD.
+Teraz uwierzytelniony na serwerze PostgreSQL przy użyciu uwierzytelniania usługi Azure AD.
 
 ## <a name="token-validation"></a>Sprawdzanie poprawności tokenu
 
-Uwierzytelnianie usługi Azure AD w Azure Database for PostgreSQL zapewnia, że użytkownik istnieje na serwerze PostgreSQL i sprawdza poprawność tokenu przez zweryfikowanie zawartości tokenu. Wykonywane są następujące kroki walidacji tokenu:
+Uwierzytelnianie usługi Azure AD w usłudze Azure Database for PostgreSQL zapewnia, że użytkownik istnieje na serwerze PostgreSQL i sprawdza ważność tokenu, sprawdzając poprawność zawartości tokenu. Wykonywane są następujące kroki sprawdzania poprawności tokenu:
 
--   Token jest podpisany przez usługę Azure AD i nie został naruszony
--   Token został wystawiony przez usługę Azure AD dla dzierżawy skojarzonej z serwerem
--   Token nie wygasł
--   Token jest przeznaczony dla zasobu Azure Database for PostgreSQL (a nie innego zasobu platformy Azure)
+- Token jest podpisany przez usługę Azure AD i nie został zmodyfikowany
+- Token został wystawiony przez usługę Azure AD dla dzierżawy skojarzonej z serwerem
+- Token nie wygasł
+- Token jest przeznaczony dla zasobu usługi Azure Database dla postgreSQL (a nie innego zasobu platformy Azure)
 
-## <a name="migrating-existing-postgresql-users-to-azure-ad-based-authentication"></a>Migrowanie istniejących użytkowników PostgreSQL do uwierzytelniania opartego na usłudze Azure AD
+## <a name="migrating-existing-postgresql-users-to-azure-ad-based-authentication"></a>Migrowanie istniejących użytkowników postgresql do uwierzytelniania opartego na usłudze Azure AD
 
-Możesz włączyć uwierzytelnianie usługi Azure AD dla istniejących użytkowników. Istnieją dwa przypadki, które należy wziąć pod uwagę:
+Można włączyć uwierzytelnianie usługi Azure AD dla istniejących użytkowników. Istnieją dwa przypadki do rozważenia:
 
-### <a name="case-1-postgresql-username-matches-the-azure-ad-user-principal-name"></a>Przypadek 1: PostgreSQL nazwa użytkownika jest zgodna z nazwą główną użytkownika usługi Azure AD
+### <a name="case-1-postgresql-username-matches-the-azure-ad-user-principal-name"></a>Przypadek 1: Nazwa użytkownika PostgreSQL jest zgodna z główną nazwą użytkownika usługi Azure AD
 
-W mało prawdopodobnym przypadku istniejącym użytkownikom, które są już zgodne z nazwami użytkowników usługi Azure AD, można przyznać `azure_ad_user` rolę, aby umożliwić im uwierzytelnianie w usłudze Azure AD:
+W mało prawdopodobnym przypadku, że istniejący użytkownicy są już `azure_ad_user` zgodne z nazwami użytkowników usługi Azure AD, można udzielić im roli, aby włączyć je do uwierzytelniania usługi Azure AD:
 
 ```sql
 GRANT azure_ad_user TO "existinguser@yourtenant.onmicrosoft.com";
 ```
 
-Teraz będzie można zalogować się przy użyciu poświadczeń usługi Azure AD zamiast korzystać z wcześniej skonfigurowanego hasła użytkownika PostgreSQL.
+Będą teraz mogli logować się przy użyciu poświadczeń usługi Azure AD zamiast używać wcześniej skonfigurowanego hasła użytkownika PostgreSQL.
 
-### <a name="case-2-postgresql-username-is-different-than-the-azure-ad-user-principal-name"></a>Przypadek 2: PostgreSQL nazwa użytkownika różni się od nazwy głównej użytkownika usługi Azure AD
+### <a name="case-2-postgresql-username-is-different-than-the-azure-ad-user-principal-name"></a>Przypadek 2: Nazwa użytkownika PostgreSQL różni się od nazwy głównej użytkownika usługi Azure AD
 
-Jeśli użytkownik PostgreSQL nie istnieje w usłudze Azure AD lub ma inną nazwę użytkownika, możesz użyć grup usługi Azure AD do uwierzytelniania jako ten użytkownik PostgreSQL. Istniejące Azure Database for PostgreSQL użytkowników można migrować do usługi Azure AD, tworząc grupę usługi Azure AD o nazwie odpowiadającej użytkownikowi PostgreSQL, a następnie przyznając azure_ad_user rolę istniejącym użytkownikowi PostgreSQL:
+Jeśli użytkownik PostgreSQL nie istnieje w usłudze Azure AD lub ma inną nazwę użytkownika, można użyć grup usługi Azure AD do uwierzytelniania jako ten użytkownik PostgreSQL. Można migrować istniejącą usługę Azure Database dla użytkowników PostgreSQL do usługi Azure AD, tworząc grupę usługi Azure AD o nazwie odpowiadającej użytkownikowi PostgreSQL, a następnie przyznając rolę azure_ad_user do istniejącego użytkownika PostgreSQL:
 
 ```sql
 GRANT azure_ad_user TO "DBReadUser";
 ```
 
-Przyjęto założenie, że utworzono grupę "DBReadUser" w usłudze Azure AD. Użytkownicy należący do tej grupy będą teraz mogli logować się do bazy danych jako ten użytkownik.
+Zakłada się, że utworzono grupę "DBReadUser" w usłudze Azure AD. Użytkownicy należący do tej grupy będą teraz mogli zalogować się do bazy danych jako ten użytkownik.
 
 ## <a name="next-steps"></a>Następne kroki
 
-* Zapoznaj się z ogólnymi koncepcjami [uwierzytelniania Azure Active Directory za pomocą jednego serwera Azure Database for PostgreSQL](concepts-aad-authentication.md)
+* Przejrzyj ogólne pojęcia [uwierzytelniania usługi Azure Active Directory za pomocą usługi Azure Database for PostgreSQL — single server](concepts-aad-authentication.md)
 
 <!--Image references-->
 

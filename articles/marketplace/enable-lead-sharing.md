@@ -1,18 +1,18 @@
 ---
 title: Włączanie udostępniania potencjalnych klienty w portalu Azure Marketplace | Azure
 description: Dowiedz się, jak włączyć udostępnianie potencjalnych pracowników w portalu Azure Marketplace i AppSource dla wydawców aplikacji i usług.
-author: jm-aditi-ms
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 06/05/2018
 ms.author: dsindona
-ms.openlocfilehash: 09282f3a54eeded52c63fab6bfe13528eaace48a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b41a29fb3548937e9071cfb9f065dd46f63df83e
+ms.sourcegitcommit: d0fd35f4f0f3ec71159e9fb43fcd8e89d653f3f2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80286306"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80387615"
 ---
 # <a name="enable-lead-sharing"></a>Włączanie udostępniania informacji o potencjalnych klientach
 Zapewnienie, że zarządzanie potencjalnymi klientami jest włączone dla twojej aukcji w [portalu Azure Marketplace](https://azuremarketplace.microsoft.com) lub Microsoft [AppSource,](https://appsource.microsoft.com) może pomóc w otrzymaniu informacji kontaktowych dla następujących grup odbiorców:

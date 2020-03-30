@@ -1,6 +1,6 @@
 ---
-title: Kodowanie niestandardowej transformacji za pomocą usługi Media Services v3 interfejsu wiersza polecenia — Azure | Dokumentacja firmy Microsoft
-description: W tym temacie pokazano, jak kodować niestandardowe przekształcenia przy użyciu interfejsu wiersza polecenia za pomocą usługi Azure Media Services v3.
+title: Kodowanie transformacji niestandardowej przy użyciu narzędzia Media Services w wersji 3 Azure CLI | Dokumenty firmy Microsoft
+description: W tym temacie pokazano, jak używać usługi Azure Media Services w wersji 3 do kodowania transformacji niestandardowej przy użyciu interfejsu wiersza polecenia platformy Azure.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -12,37 +12,39 @@ ms.topic: article
 ms.custom: ''
 ms.date: 05/14/2019
 ms.author: juliako
-ms.openlocfilehash: 42b7c2d86525c428253137b424fe58bb61edba70
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7c1b446ccf04199449f012e738f6a03660735f50
+ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65762023"
+ms.lasthandoff: 03/29/2020
+ms.locfileid: "80382957"
 ---
-# <a name="how-to-encode-with-a-custom-transform---cli"></a>Jak kodować z przekształcenie niestandardowe — interfejs wiersza polecenia
+# <a name="how-to-encode-with-a-custom-transform---azure-cli"></a>Jak zakodować za pomocą niestandardowego przekształcenia — azure cli
 
-Podczas kodowania za pomocą usługi Azure Media Services, należy można szybko rozpocząć pracę z jedną z zalecanych wbudowane ustawienia wstępne, na podstawie najlepszych w branży, jak pokazano w [strumieniowego przesyłania plików](stream-files-cli-quickstart.md#create-a-transform-for-adaptive-bitrate-encoding) Szybki Start. Możesz również tworzyć niestandardowe ustawienie wstępne pod kątem określonych wymagań scenariusza lub urządzenia.
+Podczas kodowania za pomocą usługi Azure Media Services można szybko rozpocząć pracę z jednym z zalecanych wbudowanych ustawień wstępnych, na podstawie najlepszych rozwiązań branżowych, jak pokazano w szybki start [plików przesyłania strumieniowego.](stream-files-cli-quickstart.md#create-a-transform-for-adaptive-bitrate-encoding) Można również utworzyć niestandardowe ustawienia predefiniowane, aby kierować określone wymagania dotyczące scenariusza lub urządzenia.
 
 ## <a name="considerations"></a>Zagadnienia do rozważenia
 
-Podczas tworzenia niestandardowych ustawień wstępnych należy uwzględnić następujące kwestie:
+Podczas tworzenia niestandardowych ustawień predefiniowanych stosuje się następujące zagadnienia:
 
-* Wszystkie wartości dla wysokość i szerokość AVC zawartości musi być wielokrotnością liczby 4.
-* W usłudze Azure Media Services v3 są wszystkie kodowania szybkości transmisji w bitach na sekundę. To różni się od ustawień wstępnych przy użyciu interfejsów API w wersji 2, które używane kilobitów na sekundę jako jednostka. Na przykład jeśli szybkość transmisji bitów w wersji 2 została określona jako 128 (kilobity/sekundę), w wersji 3 go będzie miał ustawienie 128000 (bity/sekundę).
+* Wszystkie wartości wysokości i szerokości zawartości AVC muszą być wielokrotnością 4.
+* W usłudze Azure Media Services w wersji 3 wszystkie kodowanie bitów są w bitach na sekundę. Różni się to od ustawień wstępnych w naszych interfejsach API v2, które używały kilobitów na sekundę jako jednostki. Na przykład jeśli szybkość transmisji bitów w wersji 2 została określona jako 128 (kilobitów/sekundę), w wersji 3 zostanie ustawiona na 128000 (bity/sekundę).
 
-## <a name="prerequisites"></a>Wymagania wstępne 
+## <a name="prerequisites"></a>Wymagania wstępne
 
-[Utwórz konto usługi Media Services](create-account-cli-how-to.md). <br/>Upewnij się, że do zapamiętania nazwę grupy zasobów i nazwę konta usługi Media Services. 
+[Utwórz konto usługi Media Services](create-account-cli-how-to.md).
+
+Pamiętaj, aby zapamiętać nazwę grupy zasobów i nazwę konta usługi Media Services.
 
 [!INCLUDE [media-services-cli-instructions](../../../includes/media-services-cli-instructions.md)]
 
-## <a name="define-a-custom-preset"></a>Definiowanie niestandardowego ustawienia wstępnego
+## <a name="define-a-custom-preset"></a>Definiowanie ustawień niestandardowych
 
-W poniższym przykładzie zdefiniowano treść żądania elementu nowe przekształcenie. Możemy zdefiniować zestaw danych wyjściowych, które ma zostać wygenerowane podczas tej transformacji jest używany. 
+Poniższy przykład definiuje treść żądania nowego przekształcenia. Definiujemy zestaw wyjść, które chcemy być generowane, gdy to przekształcenie jest używany.
 
-W tym przykładzie najpierw dodamy warstwy AacAudio audio kodowania i dwie warstwy H264Video dla kodowania wideo. W warstwach wideo firma Microsoft przypisać etykiety, dzięki czemu mogą być używane w nazwach plików danych wyjściowych. Następnie chcemy, aby dane wyjściowe, aby obejmować miniatury. W poniższym przykładzie określamy obrazy w formacie PNG, generowane w wysokości 50% rozdzielczość wejściowy plik wideo i w trzech sygnatury czasowe — {25%, 50%, 75} długości wejściowego filmu wideo. Ponadto firma Microsoft służy do określania pliki wyjściowe — jedno dla wideo i audio, a drugi dla miniatur. Ponieważ firma Microsoft ma wielu H264Layers, musimy użyć makra, które generują unikatowych nazw na warstwę. Możemy użyć `{Label}` lub `{Bitrate}` makra w przykładzie pokazano pierwszych.
+W tym przykładzie najpierw dodajemy warstwę AacAudio do kodowania audio i dwie warstwy H264Video dla kodowania wideo. W warstwach wideo przypisujemy etykiety, aby mogły być używane w nazwach plików wyjściowych. Następnie chcemy, aby dane wyjściowe zawierały również miniatury. W poniższym przykładzie określamy obrazy w formacie PNG, generowane w 50% rozdzielczości wejściowego wideo i przy trzech sygnaturach czasowych — {25%, 50%, 75} długości wejściowego wideo. Na koniec określamy format plików wyjściowych - jeden dla wideo + audio, a drugi dla miniatur. Ponieważ mamy wiele H264Layers, musimy użyć makr, które produkują unikatowe nazwy na warstwę. Możemy użyć `{Label}` lub `{Bitrate}` makro, przykład pokazuje pierwszy.
 
-Firma Microsoft zamierza zapisać tej transformacji w pliku. W tym przykładzie użyjemy nazwy pliku `customPreset.json`. 
+Mamy zamiar zapisać tę transformację w pliku. W tym przykładzie nazwa `customPreset.json`pliku .
 
 ```json
 {
@@ -120,25 +122,24 @@ Firma Microsoft zamierza zapisać tej transformacji w pliku. W tym przykładzie 
         }
     ]
 }
-
 ```
 
-## <a name="create-a-new-transform"></a>Utwórz nowe przekształcenie  
+## <a name="create-a-new-transform"></a>Tworzenie nowej transformacji  
 
-W tym przykładzie tworzymy **Przekształcanie** opartego na predefiniowane zdefiniowanego wcześniej. Podczas tworzenia transformacji, powinny najpierw sprawdzić, jeśli jeden już istnieje. Jeśli istnieje transformacji, należy użyć ponownie. Następujące `show` polecenie `customTransformName` przekształcania, jeśli istnieje:
+W tym przykładzie tworzymy **Transform,** który jest oparty na niestandardowe ustawienia predefiniowane zdefiniowane wcześniej. Podczas tworzenia transformacji należy najpierw sprawdzić, czy już istnieje. Jeśli transform istnieje, należy go użyć ponownie. Następujące `show` polecenie zwraca `customTransformName` transform, jeśli istnieje:
 
-```cli
+```azurecli-interactive
 az ams transform show -a amsaccount -g amsResourceGroup -n customTransformName
 ```
 
-Następujące polecenie interfejsu wiersza polecenia tworzy przekształcenie oparte na animacji niestandardowej (zdefiniowanych wcześniej). 
+Następujące polecenie interfejsu wiersza polecenia platformy Azure tworzy transform na podstawie niestandardowego ustawienia predefiniowane (zdefiniowane wcześniej).
 
-```cli
+```azurecli-interactive
 az ams transform create -a amsaccount -g amsResourceGroup -n customTransformName --description "Basic Transform using a custom encoding preset" --preset customPreset.json
 ```
 
-Media Services zastosować przekształcenia do określonego filmu wideo lub audio musisz przesłać zadanie w ramach tej transformacji. Aby uzyskać kompletny przykład, który pokazuje, jak można przesłać zadania w obszarze transformacji, zobacz [Szybki Start: Stream pliki wideo — interfejs wiersza polecenia](stream-files-cli-quickstart.md).
+Aby program Media Services miał zastosowanie do określonego obrazu lub dźwięku, należy przesłać zadanie w ramach tego przekształcenia. Aby uzyskać pełny przykład przedstawiający sposób przesyłania zadania w ramach transformacji, zobacz [Szybki start: Przesyłanie strumieniowe plików wideo — Azure CLI](stream-files-cli-quickstart.md).
 
-## <a name="see-also"></a>Zobacz także
+## <a name="see-also"></a>Zobacz też
 
-[Interfejs wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/ams?view=azure-cli-latest)
+[Interfejs wiersza polecenia platformy Azure](/cli/azure/ams)
