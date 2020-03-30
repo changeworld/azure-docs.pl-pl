@@ -1,64 +1,64 @@
 ---
 title: Usuwanie grupy zasobów i zasobów
-description: Opisuje sposób usuwania grup zasobów i zasobów. Opisano w nim, jak Azure Resource Manager zamówienia usunięcia zasobów podczas usuwania grupy zasobów. Opisano w nim kodów odpowiedzi i jak Menedżera zasobów obsługuje je, aby określić, jeśli usunięcie powiodło się.
+description: W tym artykule opisano sposób usuwania grup zasobów i zasobów. Opisano w nim, jak usługa Azure Resource Manager zamawia usuwanie zasobów podczas usuwania grupy zasobów. Opisano kody odpowiedzi i jak Menedżer zasobów obsługuje je, aby ustalić, czy usunięcie zakończyło się pomyślnie.
 ms.topic: conceptual
 ms.date: 09/03/2019
 ms.custom: seodec18
 ms.openlocfilehash: db56cf0897cd90f1e6e51199032d0d9712530f1c
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79274023"
 ---
-# <a name="azure-resource-manager-resource-group-and-resource-deletion"></a>Azure Resource Manager grupy zasobów i usuwania zasobów
+# <a name="azure-resource-manager-resource-group-and-resource-deletion"></a>Usuwanie grupy zasobów usługi Azure Resource Manager i usuwania zasobów
 
-W tym artykule przedstawiono sposób usuwania grup zasobów i zasobów. Opisano w nim, jak Azure Resource Manager zamówienia usunięcia zasobów podczas usuwania grupy zasobów.
+W tym artykule pokazano, jak usunąć grupy zasobów i zasoby. Opisano w nim, jak usługa Azure Resource Manager zamawia usuwanie zasobów podczas usuwania grupy zasobów.
 
-## <a name="how-order-of-deletion-is-determined"></a>Sposób określania kolejności usuwania
+## <a name="how-order-of-deletion-is-determined"></a>Jak określana jest kolejność usuwania
 
-Podczas usuwania grupy zasobów usługi Resource Manager, określa kolejność, aby usunąć zasoby. Używa następującej kolejności:
+Po usunięciu grupy zasobów Menedżer zasobów określa kolejność usuwania zasobów. Używa następującej kolejności:
 
-1. Wszystkie zasoby podrzędne (zagnieżdżona) są usuwane.
+1. Wszystkie podrzędne (zagnieżdżone) zasoby są usuwane.
 
-2. Zasoby, które zarządzają inne zasoby są następnie usuwane. Zasób może mieć ustawioną właściwość `managedBy`, aby wskazać, że zarządza innym zasobem. Gdy ta właściwość jest ustawiona, zasobu, który zarządza inne zasoby zostaną usunięte przed inne zasoby.
+2. Zasoby, które zarządzają innymi zasobami, są usuwane w następnej kolejności. Zasób może `managedBy` mieć ustawioną właściwość wskazującą, że zarządza nim inny zasób. Po ustawieniu tej właściwości zasób, który zarządza innym zasobem, jest usuwany przed innymi zasobami.
 
-3. Pozostałe zasoby są usuwane po poprzednich dwóch kategorii.
+3. Pozostałe zasoby są usuwane po poprzednich dwóch kategoriach.
 
-Po kolejność jest określana, Menedżer zasobów wystawia operację usuwania dla każdego zasobu. Czeka on na wszystkie zależności zakończyć działanie przed kontynuowaniem.
+Po określeniu zamówienia Menedżer zasobów wystawia operację DELETE dla każdego zasobu. Czeka na wszelkie zależności, aby zakończyć przed kontynuowaniem.
 
-W przypadku operacji synchronicznych kody Oczekiwana odpowiedź oznaczająca Powodzenie to:
+W przypadku operacji synchronicznych oczekiwane pomyślne kody odpowiedzi to:
 
 * 200
 * 204
 * 404
 
-Dla operacji asynchronicznych Oczekiwana odpowiedź oznaczająca Powodzenie to 202. Menedżer zasobów śledzi nagłówek lokalizacji lub nagłówek operacji asynchronicznych platformy azure, można ustalić stanu operacji asynchronicznych usuwania.
+W przypadku operacji asynchronicznych oczekiwana pomyślna odpowiedź to 202. Menedżer zasobów śledzi nagłówek lokalizacji lub nagłówek operacji azure-async, aby określić stan operacji usuwania asynchronii.
   
 ### <a name="deletion-errors"></a>Błędy usuwania
 
-Podczas operacji usuwania zwraca błąd, Menedżer zasobów ponawia próbę wywołania usunięcia. 5xx, 429 i kodów stanu 408 się zdarzyć ponownych prób. Domyślnie okres czasu ponawiania prób to 15 minut.
+Gdy operacja usuwania zwraca błąd, Menedżer zasobów ponawia ponawia wywołanie DELETE. Ponownych prób zdarzają się dla 5xx, 429 i 408 kodów stanu. Domyślnie okres ponawiania próby wynosi 15 minut.
 
 ## <a name="after-deletion"></a>Po usunięciu
 
-Menedżer zasobów wystawia wywołanie GET dla każdego zasobu, do którego próbowano usunąć. Odpowiedź to wywołanie GET powinien być 404. Gdy Menedżera zasobów odbiera odpowiedź 404, które uzna za usuwania zostały ukończone pomyślnie. Menedżer zasobów spowoduje usunięcie zasobu z pamięci podręcznej.
+Menedżer zasobów wystawia wywołanie GET dla każdego zasobu, który próbował usunąć. Odpowiedź tego wywołania GET ma być 404. Gdy Menedżer zasobów pobiera 404, uważa, że usunięcie zostało pomyślnie zakończone. Menedżer zasobów usuwa zasób z jego pamięci podręcznej.
 
-Jednak jeśli wywołanie GET dla zasobu zwraca 200 lub 201, Menedżer zasobów odtwarza zasobu.
+Jeśli jednak wywołanie GET w zasobie zwraca wartość 200 lub 201, Menedżer zasobów odtwarza zasób.
 
-Jeśli operacja GET zwróci błąd, Menedżer zasobów ponawia próbę GET dla następujący kod błędu:
+Jeśli operacja GET zwraca błąd, Menedżer zasobów ponawia ponowny ponawia proces GET dla następującego kodu błędu:
 
 * Mniej niż 100
 * 408
 * 429
-* Większe niż 500
+* Większa niż 500
 
-Dla innych kodów błędu usługi Resource Manager nie usunięcia zasobu.
+W przypadku innych kodów błędów Menedżer zasobów nie może wykreślić zasobu.
 
 ## <a name="delete-resource-group"></a>Usuwanie grupy zasobów
 
-Aby usunąć grupę zasobów, użyj jednej z poniższych metod.
+Użyj jednej z następujących metod, aby usunąć grupę zasobów.
 
-# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name ExampleResourceGroup
@@ -82,11 +82,11 @@ az group delete --name ExampleResourceGroup
 
 ---
 
-## <a name="delete-resource"></a>Usuń zasób
+## <a name="delete-resource"></a>Usuwanie zasobu
 
-Użyj jednej z poniższych metod, aby usunąć zasób.
+Użyj jednej z następujących metod, aby usunąć zasób.
 
-# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
 
 ```azurepowershell-interactive
 Remove-AzResource `
@@ -108,9 +108,9 @@ az resource delete \
 
 1. W [portalu](https://portal.azure.com)wybierz zasób, który chcesz usunąć.
 
-1. Wybierz pozycję **Usuń**. Poniższy zrzut ekranu przedstawia opcje zarządzania dla maszyny wirtualnej.
+1. Wybierz pozycję **Usuń**. Poniższy zrzut ekranu przedstawia opcje zarządzania maszyną wirtualną.
 
-   ![Usuń zasób](./media/delete-resource-group/delete-resource.png)
+   ![Usuwanie zasobu](./media/delete-resource-group/delete-resource.png)
 
 1. Po wyświetleniu monitu potwierdź usunięcie.
 
@@ -119,5 +119,5 @@ az resource delete \
 
 ## <a name="next-steps"></a>Następne kroki
 
-* Aby zrozumieć koncepcje Menedżer zasobów, zobacz [Azure Resource Manager omówienie](overview.md).
-* Polecenia usuwania można znaleźć w temacie [PowerShell](/powershell/module/az.resources/Remove-AzResourceGroup), interfejs [wiersza polecenia platformy Azure](/cli/azure/group?view=azure-cli-latest#az-group-delete)i [interfejs API REST](/rest/api/resources/resourcegroups/delete).
+* Aby zapoznać się z pojęciami usługi Resource Manager, zobacz [Omówienie usługi Azure Resource Manager](overview.md).
+* Aby uzyskać polecenia usuwania, zobacz [PowerShell](/powershell/module/az.resources/Remove-AzResourceGroup), [Azure CLI](/cli/azure/group?view=azure-cli-latest#az-group-delete)i [REST API](/rest/api/resources/resourcegroups/delete).

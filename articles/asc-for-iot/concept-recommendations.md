@@ -1,6 +1,6 @@
 ---
-title: Opis Azure Security Center dotyczących zaleceń dotyczących zabezpieczeń IoT | Microsoft Docs
-description: Dowiedz się więcej na temat koncepcji zaleceń dotyczących zabezpieczeń i sposobu ich użycia w Azure Security Center na potrzeby IoT.
+title: Poznaj zaleceń dotyczące zabezpieczeń usługi Azure Security Center dla usług IoT| Dokumenty firmy Microsoft
+description: Dowiedz się więcej o koncepcji zaleceń dotyczących zabezpieczeń i o tym, jak są one używane w usłudze Azure Security Center dla IoT.
 services: asc-for-iot
 ms.service: asc-for-iot
 documentationcenter: na
@@ -16,55 +16,55 @@ ms.workload: na
 ms.date: 07/24/2019
 ms.author: mlottner
 ms.openlocfilehash: a8de821abcedf6bb9a331852a2c0af9b6439667a
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78303583"
 ---
 # <a name="security-recommendations"></a>Zalecenia dotyczące zabezpieczeń
 
-Azure Security Center dla IoT skanuje zasoby platformy Azure i urządzenia IoT oraz zapewnia zalecenia dotyczące zabezpieczeń, aby zmniejszyć obszar narażony na ataki. Zalecenia dotyczące zabezpieczeń są funkcjonalne i mają na celu pomóc klientom w zgodności z najlepszymi rozwiązaniami w zakresie zabezpieczeń.
+Usługa Azure Security Center for IoT skanuje zasoby platformy Azure i urządzenia IoT i udostępnia zalecenia dotyczące zabezpieczeń w celu zmniejszenia powierzchni ataku. Zalecenia dotyczące zabezpieczeń są wykonalne i mają na celu pomoc klientom w przestrzeganiu najlepszych praktyk w zakresie zabezpieczeń.
 
 W tym artykule znajdziesz listę zaleceń, które mogą być wyzwalane na urządzeniach IoT Hub i/lub IoT.
 
-## <a name="recommendations-for-iot-devices"></a>Zalecenia dotyczące urządzeń IoT
+## <a name="recommendations-for-iot-devices"></a>Zalecenia dla urządzeń IoT
 
-Zalecenia dotyczące urządzeń zapewniają szczegółowe informacje i sugestie dotyczące usprawnienia stan zabezpieczeń urządzeń. 
+Zalecenia dotyczące urządzeń zawierają szczegółowe informacje i sugestie, aby poprawić stan bezpieczeństwa urządzeń. 
 
-| Ważność | Name (Nazwa)                                                      | Źródło danych | Opis                                                                                                                                                                                           |
+| Ważność | Nazwa                                                      | Źródło danych | Opis                                                                                                                                                                                           |
 |----------|-----------------------------------------------------------|-------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Średnia   | Otwórz porty na urządzeniu                                      | Agent       | Znaleziono punkt końcowy nasłuchiwania na urządzeniu.                                                                                                                                                        |
-| Średnia   | Odnoszące się do zasad zapory znajdują się w jednym z łańcuchów. | Agent       | Znaleziono dozwolone zasady zapory (dane wejściowe/wyjściowe). Zasady zapory powinny domyślnie blokować cały ruch i definiować reguły zezwalające na niezbędną komunikację z urządzeniem lub z niego.                               |
-| Średnia   | Znaleziono ograniczającą regułę zapory w łańcuchu wejściowym     | Agent       | Znaleziono regułę w zaporze, która zawiera oddzielny wzorzec dla szerokiego zakresu adresów IP lub portów.                                                                                    |
-| Średnia   | Znaleziono ograniczającą regułę zapory w łańcuchu wyjściowym    | Agent       | Znaleziono regułę w zaporze, która zawiera oddzielny wzorzec dla szerokiego zakresu adresów IP lub portów.                                                                                   |
-| Średnia   | Weryfikacja linii bazowej systemu operacyjnego nie powiodła się           | Agent       | Urządzenie nie jest zgodne z wynikami [testów CIS systemu Linux](https://www.cisecurity.org/cis-benchmarks/).                                                                                                        |
+| Medium   | Otwórz porty na urządzeniu                                      | Agent       | Na urządzeniu znaleziono punkt końcowy odsłuchu.                                                                                                                                                        |
+| Medium   | Permisywna zasada zapory znaleziona w jednym z łańcuchów. | Agent       | Znaleziono dozwoloną zasadę zapory (INPUT/OUTPUT). Zasady zapory powinny domyślnie odmówić całego ruchu i zdefiniować reguły umożliwiające niezbędną komunikację do/z urządzenia.                               |
+| Medium   | Znaleziono zasadę zapory permisywnej w łańcuchu wprowadzania     | Agent       | Znaleziono regułę w zaporze, która zawiera wzorzec dopuszczalny dla szerokiego zakresu adresów IP lub portów.                                                                                    |
+| Medium   | Znaleziono zasadę zapory permisywnej w łańcuchu wyjściowym    | Agent       | Znaleziono regułę w zaporze, która zawiera wzorzec dopuszczalny dla szerokiego zakresu adresów IP lub portów.                                                                                   |
+| Medium   | Sprawdzanie poprawności linii bazowej systemu operacyjnego nie powiodło się           | Agent       | Urządzenie nie jest zgodne z [testami porównawczymi CIS Linux.](https://www.cisecurity.org/cis-benchmarks/)                                                                                                        |
 
 ### <a name="operational-recommendations-for-iot-devices"></a>Zalecenia operacyjne dotyczące urządzeń IoT
 
-Zalecenia dotyczące działania zapewniają szczegółowe informacje i sugestie dotyczące poprawy konfiguracji agenta zabezpieczeń.
+Zalecenia operacyjne zawierają szczegółowe informacje i sugestie dotyczące poprawy konfiguracji agenta zabezpieczeń.
 
-| Ważność | Name (Nazwa)                                    | Źródło danych | Opis                                                                       |
+| Ważność | Nazwa                                    | Źródło danych | Opis                                                                       |
 |----------|-----------------------------------------|-------------|-----------------------------------------------------------------------------------|
-| Niski      | Agent wysyła niewykorzystywane wiadomości          | Agent       | 10% lub więcej komunikatów o zabezpieczeniach było mniejsze niż 4 KB w ciągu ostatnich 24 godzin.  |
-| Niski      | Konfiguracja przędzy zabezpieczającej nie jest optymalna | Agent       | Konfiguracja przędzy zabezpieczeń nie jest optymalna.                                        |
-| Niski      | Konflikt konfiguracji przędzy zabezpieczającej    | Agent       | Zidentyfikowano konflikty w konfiguracji dwuosiowych zabezpieczeń. |                          |
+| Małe      | Agent wysyła niezauwalone wiadomości          | Agent       | 10% lub więcej komunikatów zabezpieczających było mniejszych niż 4 KB w ciągu ostatnich 24 godzin.  |
+| Małe      | Konfiguracja bliźniaczej zabezpieczeń nie jest optymalna | Agent       | Konfiguracja bliźniaczej reprezentacji zabezpieczeń nie jest optymalna.                                        |
+| Małe      | Konflikt konfiguracji bliźniaczej reprezentacji zabezpieczeń    | Agent       | Konflikty zostały zidentyfikowane w konfiguracji bliźniaczej reprezentacji zabezpieczeń. |                          |
 |
 
-## <a name="recommendations-for-iot-hub"></a>Zalecenia dotyczące IoT Hub
+## <a name="recommendations-for-iot-hub"></a>Zalecenia dla Usługi IoT Hub
 
-Alerty dotyczące rekomendacji zapewniają wgląd i sugestie dotyczące działań usprawniających stan zabezpieczeń środowiska.  
+Alerty rekomendacji zapewniają wgląd i sugestie dotyczące działań mających na celu poprawę postawy zabezpieczeń środowiska.  
 
-| Ważność | Name (Nazwa)                                                     | Źródło danych | Opis                                                                                                                                                                                                             |
+| Ważność | Nazwa                                                     | Źródło danych | Opis                                                                                                                                                                                                             |
 |----------|----------------------------------------------------------|-------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Wysoki     | Identyczne poświadczenia uwierzytelniania używane przez wiele urządzeń | Centrum IoT     | Poświadczenia uwierzytelniania IoT Hub są używane przez wiele urządzeń. Może to wskazywać na to, że urządzenie illegitimate personifikuje legalne urządzenie. Zduplikowane użycie poświadczeń zwiększa ryzyko personifikacji urządzenia przez złośliwy aktor. |
-| Średnia   | Domyślne zasady filtrowania adresów IP powinny być Odmów                  | Centrum IoT     | Konfiguracja filtru IP powinna mieć reguły zdefiniowane dla dozwolonego ruchu i powinna domyślnie odmówić całego ruchu.                                                                                                     |
-| Średnia   | Reguła filtru IP obejmuje duży zakres adresów IP                   | Centrum IoT     | Źródłowy zakres adresów IP reguły filtru adresów IP jest zbyt duży. Nadmiernie ograniczające reguły mogą uwidocznić Centrum IoT w złośliwych aktorach.                                                                                       |
-| Niski      | Włączanie dzienników diagnostycznych w IoT Hub                       | Centrum IoT     | Włącz dzienniki i zachowaj je przez maksymalnie rok. Przechowywanie dzienników umożliwia ponowne utworzenie śladów aktywności w celach dochodzeniowych w przypadku wystąpienia zdarzenia związanego z bezpieczeństwem lub zabezpieczenia sieci.                                       |
+| Wysoka     | Identyczne poświadczenia uwierzytelniania używane przez wiele urządzeń | Usługa IoT Hub     | Poświadczenia uwierzytelniania usługi IoT Hub są używane przez wiele urządzeń. Może to wskazywać na bezprawne urządzenie podszywające się pod legalne urządzenie. Użycie zduplikowanych poświadczeń zwiększa ryzyko personifikacji urządzenia przez złośliwego aktora. |
+| Medium   | Domyślna zasada filtru IP powinna zostać odmówiła                  | Usługa IoT Hub     | Konfiguracja filtru IP powinna mieć zdefiniowane reguły dla dozwolonego ruchu i domyślnie powinna domyślnie odmówić wszelkiego innego ruchu.                                                                                                     |
+| Medium   | Reguła filtru IP obejmuje duży zakres adresów IP                   | Usługa IoT Hub     | Zakres IP źródła reguły filtru IP zezwala na protokół IP jest zbyt duży. Zbyt dopuszczalne reguły mogą uwidaczniać centrum IoT hub złośliwym podmiotom.                                                                                       |
+| Małe      | Włączanie dzienników diagnostycznych w Centrum IoT                       | Usługa IoT Hub     | Włącz dzienniki i zachowaj je przez okres do roku. Zachowywanie dzienników umożliwia ponowne tworzenie śladów aktywności w celach dochodzeniowych w przypadku wystąpienia zdarzenia zabezpieczeń lub naruszenia zabezpieczeń sieci.                                       |
 |
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Azure Security Center usługi IoT [— Omówienie](overview.md)
+- Usługa Azure Security Center dla usługi IoT [— omówienie](overview.md)
 - Dowiedz się, jak [uzyskać dostęp do danych zabezpieczeń](how-to-security-data-access.md)
-- Dowiedz się więcej [na temat badania urządzenia](how-to-investigate-device.md)
+- Dowiedz się więcej o [badaniu urządzenia](how-to-investigate-device.md)

@@ -1,28 +1,28 @@
 ---
-title: Uczenie przepływu pracy programu PowerShell dla Azure Automation
-description: Ten artykuł jest przeznaczony do szybkiej lekcji dla autorów znanych z programem PowerShell w celu zrozumienia określonych różnic między środowiskiem Workflow i przepływem pracy programu PowerShell oraz pojęciami dotyczącymi elementów Runbook usługi Automation.
+title: Proces uczenia się przepływu pracy programu PowerShell dla automatyzacji platformy Azure
+description: Ten artykuł jest przeznaczony jako szybka lekcja dla autorów zaznajomionych z programem PowerShell, aby zrozumieć konkretne różnice między przepływem pracy programu PowerShell i przepływem pracy programu PowerShell oraz pojęciami dotyczącymi śmiób uruchomieniu do automatyzacji.
 services: automation
 ms.subservice: process-automation
 ms.date: 12/14/2018
 ms.topic: conceptual
 ms.openlocfilehash: 6e4c8057322b6208ea3b447b264e2bde1344540c
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79278690"
 ---
-# <a name="learning-key-windows-powershell-workflow-concepts-for-automation-runbooks"></a>Najważniejsze pojęcia dotyczące przepływu pracy programu Windows PowerShell dla elementów Runbook usługi Automation
+# <a name="learning-key-windows-powershell-workflow-concepts-for-automation-runbooks"></a>Nauka kluczowych koncepcji przepływu pracy programu Windows PowerShell dla uruchomieniu książek roboczej automatyzacji
 
-Elementy Runbook w Azure Automation są implementowane jako przepływy pracy środowiska Windows PowerShell.  Przepływ pracy programu Windows PowerShell jest podobny do skryptu programu Windows PowerShell, ale zawiera pewne znaczące różnice, które mogą być mylące dla nowego użytkownika.  Ten artykuł ma na celu ułatwienie pisania elementów Runbook za pomocą przepływu pracy programu PowerShell, dlatego zalecamy pisanie elementów Runbook przy użyciu programu PowerShell, chyba że potrzebne są punkty kontrolne.  Istnieje kilka różnic składni podczas tworzenia elementów Runbook przepływu pracy programu PowerShell, a różnice te wymagają nieco większej pracy w celu zapisywania efektywnych przepływów pracy.
+Elementy runbook w usłudze Azure Automation są implementowane jako przepływy pracy programu Windows PowerShell.  Przepływ pracy programu Windows PowerShell jest podobny do skryptu programu Windows PowerShell, ale ma pewne istotne różnice, które mogą być mylące dla nowego użytkownika.  Ten artykuł ma na celu ułatwienie pisania śmiób przy użyciu przepływu pracy programu PowerShell, ale zaleca się pisanie śmiób przy użyciu programu PowerShell, chyba że potrzebne są punkty kontrolne.  Istnieje kilka różnic składni podczas tworzenia liksów pracy programu PowerShell i te różnice wymagają nieco więcej pracy, aby zapisać skuteczne przepływy pracy.
 
-Przepływ pracy to sekwencja zaprogramowanych, połączonych czynności, które wykonywania długotrwałych zadań lub do zapewnienia koordynacji wielu czynności należące do wielu urządzeń lub węzłach zarządzanych. Korzyści wynikające z przepływu pracy zamiast zwykłego skryptu obejmują możliwość jednoczesnego wykonywania akcji na wielu urządzeniach i możliwość automatycznego odzyskiwania po awarii. Przepływ pracy programu Windows PowerShell to skrypt programu Windows PowerShell, który używa Windows Workflow Foundation. Gdy przepływ pracy jest napisane przy użyciu składni programu Windows PowerShell, a następnie uruchomić program Windows PowerShell, jest on przetwarzany przez program Windows Workflow Foundation.
+Przepływ pracy to sekwencja zaprogramowanych, połączonych ze sobą czynności służących do wykonywania długotrwałych zadań lub do zapewnienia koordynacji wielu czynności na wielu różnych urządzeniach albo w wielu węzłach zarządzanych. Korzyści ze stosowania przepływu pracy zamiast zwykłego skryptu obejmują możliwość jednoczesnego wykonywania akcji na różnych urządzeniach oraz zdolność usuwania skutków błędów. Przepływ pracy programu Windows PowerShell to skrypt programu Windows PowerShell, który używa programu Windows Workflow Foundation. Przepływ pracy ma składnię Windows PowerShell i jest uruchamiany przez środowisko Windows PowerShell, jednak jest przetwarzany przez program Windows Workflow Foundation.
 
-Aby uzyskać szczegółowe informacje dotyczące tematów w tym artykule, zobacz [wprowadzenie with Windows PowerShell Workflow](https://technet.microsoft.com/library/jj134242.aspx).
+Aby uzyskać pełne informacje na temat tematów w tym artykule, zobacz [Wprowadzenie do przepływu pracy programu Windows PowerShell](https://technet.microsoft.com/library/jj134242.aspx).
 
 ## <a name="basic-structure-of-a-workflow"></a>Podstawowa struktura przepływu pracy
 
-Pierwszym krokiem do przekonwertowania skryptu programu PowerShell na przepływ pracy programu PowerShell jest jego załączanie za pomocą słowa kluczowego **przepływu pracy** .  Przepływ pracy rozpoczyna się od słowa kluczowego **przepływu pracy** , po którym następuje treść skryptu ujęta w nawiasy klamrowe. Nazwa przepływu pracy jest zgodna ze słowem kluczowym **przepływu pracy** , jak pokazano w następującej składni:
+Pierwszym krokiem do konwersji skryptu programu PowerShell do przepływu pracy programu PowerShell jest załączanie go do słowa kluczowego **Przepływ pracy.**  Przepływ pracy rozpoczyna się od słowa kluczowego **Przepływ pracy,** po którym następuje treść skryptu ujęta w nawiasy klamrowe. Nazwa przepływu pracy jest zgodna ze słowem kluczowym **Przepływ pracy,** jak pokazano w następującej składni:
 
 ```powershell
 Workflow Test-Workflow
@@ -31,31 +31,31 @@ Workflow Test-Workflow
 }
 ```
 
-Nazwa przepływu pracy musi odpowiadać nazwie elementu runbook usługi Automation. Jeśli element Runbook jest importowany, nazwa pliku musi być zgodna z nazwą przepływu pracy i musi kończyć się na *. ps1*.
+Nazwa przepływu pracy musi być zgodna z nazwą uruchomieniu automatyzacji. Jeśli projekt runbook jest importowany, nazwa pliku musi być zgodna z nazwą przepływu pracy i musi kończyć się na *ps1*.
 
-Aby dodać parametry do przepływu pracy, użyj słowa kluczowego **param** tak samo jak w przypadku skryptu.
+Aby dodać parametry do przepływu pracy, użyj słowa kluczowego **Param,** tak jak w przypadku skryptu.
 
 ## <a name="code-changes"></a>Zmiany kodu
 
-Kod przepływu pracy programu PowerShell wygląda niemal identycznie z kodem skryptu programu PowerShell, z wyjątkiem kilku znaczących zmian.  W poniższych sekcjach opisano zmiany, które należy wykonać w skrypcie programu PowerShell, aby można było go uruchomić w przepływie pracy.
+Kod przepływu pracy programu PowerShell wygląda prawie identycznie jak kod skryptu programu PowerShell, z wyjątkiem kilku istotnych zmian.  W poniższych sekcjach opisano zmiany, które należy wprowadzić do skryptu programu PowerShell, aby był on uruchamiany w przepływie pracy.
 
 ### <a name="activities"></a>Działania
 
-Działanie jest konkretnym zadaniem w przepływie pracy. Tak samo, jak skrypt składa się z co najmniej jedno polecenie, przepływ pracy składa się z jednego lub więcej działań, które są wykonywane w sekwencji. Windows PowerShell Workflow automatycznie konwertuje wiele poleceń cmdlet programu Windows PowerShell do działania po uruchomieniu przepływu pracy. Po określeniu jednego z tych poleceń cmdlet w elemencie Runbook odpowiednie działanie jest uruchamiane przez Windows Workflow Foundation. W przypadku tych poleceń cmdlet, które nie odpowiadają działaniu, przepływ pracy programu Windows PowerShell automatycznie uruchamia polecenie cmdlet w ramach działania [InlineScript](#inlinescript) . Istnieje zestaw poleceń cmdlet, które są wyłączone i nie mogą być używane w przepływie pracy, chyba że zostaną jawnie umieszczone w bloku InlineScript. Aby uzyskać więcej szczegółowych informacji dotyczących tych pojęć, zobacz [Używanie działań w skryptowych przepływach pracy](https://technet.microsoft.com/library/jj574194.aspx).
+Działanie jest konkretnym zadaniem w przepływie pracy. Tak jak skrypt składa się z jednego polecenia lub kilku poleceń, tak przepływ pracy składa się z działania lub kilku działań wykonywanych w określonej kolejności. Podczas wykonywania przepływu pracy program Windows PowerShell Workflow automatycznie konwertuje wiele spośród poleceń cmdlet środowiska Windows PowerShell na działania. Po określeniu jednego z tych poleceń cmdlet w żyłaku odpowiednie działanie jest uruchamiane przez program Windows Workflow Foundation. W przypadku tych poleceń cmdlet bez odpowiedniego działania przepływ pracy programu Windows PowerShell automatycznie uruchamia polecenie cmdlet w ramach działania [InlineScript.](#inlinescript) Istnieje zestaw poleceń cmdlet, które są wykluczone i nie mogą być używane w przepływie pracy, chyba że jawnie dołączyć je do bloku InlineScript. Aby uzyskać więcej informacji na temat tych pojęć, zobacz [Korzystanie z działań w przepływach pracy skryptów](https://technet.microsoft.com/library/jj574194.aspx).
 
-Działania przepływów pracy dzielą zestaw wspólnych parametrów konfigurujących ich pracę. Aby uzyskać szczegółowe informacje o typowych parametrach przepływu pracy, zobacz [about_WorkflowCommonParameters](https://technet.microsoft.com/library/jj129719.aspx).
+Działania przepływów pracy dzielą zestaw wspólnych parametrów konfigurujących ich pracę. Aby uzyskać szczegółowe informacje na temat typowych parametrów przepływu pracy, zobacz [about_WorkflowCommonParameters](https://technet.microsoft.com/library/jj129719.aspx).
 
 ### <a name="positional-parameters"></a>Parametry pozycyjne
 
-W przepływie pracy nie można używać parametrów pozycyjnych z działaniami i poleceniami cmdlet.  Oznacza to, że należy użyć nazw parametrów.
+Nie można używać parametrów pozycyjnych z działaniami i poleceniami cmdlet w przepływie pracy.  Wszystko to oznacza, że należy używać nazw parametrów.
 
-Rozważmy na przykład poniższy kod, który pobiera wszystkie uruchomione usługi.
+Na przykład należy wziąć pod uwagę następujący kod, który pobiera wszystkie uruchomione usługi.
 
 ```azurepowershell-interactive
 Get-Service | Where-Object {$_.Status -eq "Running"}
 ```
 
-Jeśli spróbujesz uruchomić ten sam kod w przepływie pracy, zostanie wyświetlony komunikat "nie można rozpoznać zestawu parametrów przy użyciu określonych parametrów nazwanych".  Aby rozwiązać ten konieczność, podaj nazwę parametru w następujący sposób.
+Jeśli spróbujesz uruchomić ten sam kod w przepływie pracy, zostanie wyświetlony komunikat w stylu "Nie można rozpoznać zestawu parametrów przy użyciu określonych nazwanych parametrów".  Aby to poprawić, podaj nazwę parametru, jak w poniższej.
 
 ```powershell
 Workflow Get-RunningServices
@@ -64,18 +64,18 @@ Workflow Get-RunningServices
 }
 ```
 
-### <a name="deserialized-objects"></a>Obiekty deserializowane
+### <a name="deserialized-objects"></a>Obiekty deserialne
 
-Obiekty w przepływach pracy są deserializowane.  Oznacza to, że ich właściwości są nadal dostępne, ale nie ich metodami.  Rozważmy na przykład następujący kod programu PowerShell, który zatrzymuje usługę przy użyciu metody Stop obiektu usługi.
+Obiekty w przepływach pracy są deserializowane.  Oznacza to, że ich właściwości są nadal dostępne, ale nie ich metody.  Rozważmy na przykład następujący kod programu PowerShell, który zatrzymuje usługę przy użyciu Stop metody Service obiektu.
 
 ```azurepowershell-interactive
 $Service = Get-Service -Name MyService
 $Service.Stop()
 ```
 
-Jeśli spróbujesz uruchomić ten element w przepływie pracy, zostanie wyświetlony komunikat o błędzie informujący, że wywołanie metody nie jest obsługiwane w przepływie pracy programu Windows PowerShell.
+Jeśli spróbujesz uruchomić to w przepływie pracy, zostanie wyświetlony komunikat "Wywołanie metody nie jest obsługiwane w przepływie pracy programu Windows PowerShell".
 
-Jedną z opcji jest zawinięcie tych dwóch wierszy kodu w bloku [InlineScript](#inlinescript) , w którym przypadek $Service będzie obiektem usługi w bloku.
+Jedną z opcji jest zawijanie tych dwóch wierszy kodu w bloku [InlineScript,](#inlinescript) w którym to przypadku $Service będzie obiektem usługi w bloku.
 
 ```powershell
 Workflow Stop-Service
@@ -87,7 +87,7 @@ Workflow Stop-Service
 }
 ```
 
-Innym rozwiązaniem jest użycie innego polecenia cmdlet, które wykonuje te same funkcje co metoda, jeśli jest ona dostępna.  W naszym przykładzie polecenie cmdlet Stop-Service zapewnia te same funkcje co Metoda stop i można użyć poniższych danych dla przepływu pracy.
+Inną opcją jest użycie innego polecenia cmdlet, który wykonuje taką samą funkcjonalność jak metoda, jeśli jest dostępna.  W naszym przykładzie polecenie cmdlet stop-service zapewnia taką samą funkcjonalność jak Stop metody i można użyć następujących dla przepływu pracy.
 
 ```powershell
 Workflow Stop-MyService
@@ -99,9 +99,9 @@ Workflow Stop-MyService
 
 ## <a name="inlinescript"></a>InlineScript
 
-Działanie **InlineScript** jest przydatne, gdy trzeba uruchomić jedno lub więcej poleceń jako tradycyjnego skryptu programu PowerShell zamiast przepływu pracy programu PowerShell.  Podczas gdy polecenia w przepływie pracy są wysyłane do Windows Workflow Foundation w celu przetwarzania, polecenia w bloku InlineScript są przetwarzane przez program Windows PowerShell.
+Działanie **InlineScript** jest przydatne, gdy trzeba uruchomić jedno lub więcej poleceń jako tradycyjny skrypt programu PowerShell zamiast przepływu pracy programu PowerShell.  Podczas gdy polecenia zawarte w przepływie pracy są wysyłane do przetwarzania w programie Windows Workflow Foundation, polecenia umieszczone w bloku InlineScript są przetwarzane w środowisku Windows PowerShell.
 
-InlineScript używa następującej składni poniżej.
+InlineScript używa następującej składni pokazanej poniżej.
 
 ```powershell
 InlineScript
@@ -110,7 +110,7 @@ InlineScript
 } <Common Parameters>
 ```
 
-Dane wyjściowe można zwrócić z InlineScript, przypisując dane wyjściowe do zmiennej. Poniższy przykład powoduje zatrzymanie usługi, a następnie wyprowadza nazwę usługi.
+Dane wyjściowe można zwrócić z języka InlineScript, przypisując dane wyjściowe do zmiennej. Poniższy przykład zatrzymuje usługę, a następnie wyprowadza nazwę usługi.
 
 ```powershell
 Workflow Stop-MyService
@@ -125,7 +125,7 @@ Workflow Stop-MyService
 }
 ```
 
-Można przekazać wartości do bloku InlineScript, ale należy użyć modyfikatora zakresu **$using** .  Poniższy przykład jest identyczny z poprzednim przykładem, z tą różnicą, że nazwa usługi jest udostępniana przez zmienną.
+Wartości można przekazywać do bloku InlineScript, ale należy użyć **modyfikatora $Using** zakresu.  Poniższy przykład jest identyczny z poprzednim przykładem, z tą różnicą, że nazwa usługi jest dostarczana przez zmienną.
 
 ```powershell
 Workflow Stop-MyService
@@ -142,19 +142,19 @@ Workflow Stop-MyService
 }
 ```
 
-Chociaż działania InlineScript mogą być krytyczne w niektórych przepływach pracy, nie obsługują konstrukcji przepływu pracy i powinny być używane tylko w razie potrzeby z następujących powodów:
+Chociaż działania inlinescript mogą mieć kluczowe znaczenie w niektórych przepływach pracy, ale nie obsługują konstrukcji przepływu pracy i powinny być używane tylko wtedy, gdy jest to konieczne z następujących powodów:
 
-* [Punktów kontrolnych](#checkpoints) nie można używać wewnątrz bloku InlineScript. Jeśli wystąpi błąd w bloku, musi zostać wznowiony od początku bloku.
-* Nie można użyć [wykonania równoległego](#parallel-processing) wewnątrz elementu InlineScriptBlock.
-* InlineScript ma wpływ na skalowalność przepływu pracy, ponieważ zawiera sesję programu Windows PowerShell dla całej długości bloku InlineScript.
+* Nie można używać [punktów kontrolnych](#checkpoints) wewnątrz bloku InlineScript. Jeśli wystąpi błąd w bloku, należy wznowić od początku bloku.
+* Nie można używać [wykonywania równoległego](#parallel-processing) wewnątrz inlinescriptblock.
+* InlineScript wpływa na skalowalność przepływu pracy, ponieważ przechowuje sesję programu Windows PowerShell przez całą długość bloku InlineScript.
 
-Aby uzyskać więcej informacji na temat korzystania z programu InlineScript, zobacz [Uruchamianie poleceń programu Windows PowerShell w przepływie pracy](https://technet.microsoft.com/library/jj574197.aspx) i [about_InlineScript](https://technet.microsoft.com/library/jj649082.aspx).
+Aby uzyskać więcej informacji na temat korzystania z języka InlineScript, zobacz [Uruchamianie poleceń programu Windows PowerShell w przepływie pracy](https://technet.microsoft.com/library/jj574197.aspx) i [about_InlineScript](https://technet.microsoft.com/library/jj649082.aspx).
 
 ## <a name="parallel-processing"></a>Przetwarzanie równoległe
 
-Jedną z zalet przepływów pracy programu Windows PowerShell jest możliwość wykonywania zestawu poleceń równolegle, a nie po kolei podobnie jak w typowym skrypcie.
+Jedną z korzyści wynikających z używania przepływów pracy w środowisku Windows PowerShell jest możliwość wykonywania zestawów poleceń równolegle, w przeciwieństwie do wykonywania sekwencyjnego, jak w typowym skrypcie.
 
-Możesz użyć słowa kluczowego **Parallel** , aby utworzyć blok skryptu z wieloma poleceniami, które są uruchamiane współbieżnie. Ta funkcja używa następującej składni poniżej. W takim przypadku zakończeniu i Activity2 są uruchamiane w tym samym czasie. Działanie activity3 jest uruchamiany dopiero po zakończeniu obu zakończeniu i Activity2.
+**Za** pomocą równoległego słowa kluczowego można utworzyć blok skryptu z wieloma poleceniami, które są uruchamiane jednocześnie. Spowoduje to użycie następującej składni pokazanej poniżej. W takim przypadku Activity1 i Activity2 rozpoczyna się w tym samym czasie. Działanie3 rozpoczyna się dopiero po zakończeniu działania1 i activity2.
 
 ```powershell
 Parallel
@@ -165,7 +165,7 @@ Parallel
 <Activity3>
 ```
 
-Rozważmy na przykład następujące polecenia programu PowerShell, które kopiują wiele plików do sieci docelowej.  Te polecenia są uruchamiane sekwencyjnie, aby jeden plik musiał zakończyć kopiowanie przed rozpoczęciem następnego uruchomienia.
+Rozważmy na przykład następujące polecenia programu PowerShell, które kopiują wiele plików do miejsca docelowego sieci.  Polecenia te są uruchamiane sekwencyjnie, dzięki czemu jeden plik musi zakończyć kopiowanie przed rozpoczęciem następnego.
 
 ```azurepowershell-interactive
 Copy-Item -Path C:\LocalPath\File1.txt -Destination \\NetworkPath\File1.txt
@@ -173,7 +173,7 @@ Copy-Item -Path C:\LocalPath\File2.txt -Destination \\NetworkPath\File2.txt
 Copy-Item -Path C:\LocalPath\File3.txt -Destination \\NetworkPath\File3.txt
 ```
 
-W poniższym przepływie pracy te same polecenia są uruchamiane równolegle, tak aby wszystkie rozpoczęto kopiowanie w tym samym czasie.  Tylko wtedy, gdy są one kopiowane, zostanie wyświetlony komunikat o ukończeniu.
+Następujący przepływ pracy uruchamia te same polecenia równolegle, dzięki czemu wszystkie one zaczynają kopiować w tym samym czasie.  Dopiero po skopiowaniu wszystkich jest wyświetlany komunikat zakończenia.
 
 ```powershell
 Workflow Copy-Files
@@ -189,7 +189,7 @@ Workflow Copy-Files
 }
 ```
 
-Można użyć konstrukcji **foreach-Parallel** , aby przetwarzać polecenia dla każdego elementu w kolekcji współbieżnie. Elementy w kolekcji są przetwarzane równolegle, podczas gdy polecenia w bloku skryptu uruchamiają się sekwencyjnie. Ta funkcja używa następującej składni poniżej. W takim przypadku zakończeniu rozpocznie się w tym samym czasie dla wszystkich elementów w kolekcji. Dla każdego elementu Activity2 rozpoczyna się po zakończeniu. Działanie activity3 jest uruchamiany dopiero po zakończeniu zakończeniu i Activity2 dla wszystkich elementów. Użyjemy parametru `ThrottleLimit`, aby ograniczyć równoległość. Zbyt wysoka `ThrottleLimit` może spowodować problemy. Idealna wartość parametru `ThrottleLimit` zależy od wielu czynników w środowisku. Należy spróbować uruchomić z niską wartością i wypróbować różne wartości zwiększające się, dopóki nie znajdziesz tego, który działa w konkretnym przypadku.
+Można użyć **ForEach -Parallel** konstrukcji do przetwarzania poleceń dla każdego elementu w kolekcji jednocześnie. Elementy w kolekcji są przetwarzane współbieżnie, podczas gdy polecenia w bloku skryptu są wykonywane sekwencyjnie. Spowoduje to użycie następującej składni pokazanej poniżej. W takim przypadku Activity1 rozpoczyna się w tym samym czasie dla wszystkich elementów w kolekcji. Dla każdego elementu działanie2 rozpoczyna się po zakończeniu działania1. Działanie3 rozpoczyna się dopiero po zakończeniu działania1 i activity2 dla wszystkich elementów. Używamy parametru, `ThrottleLimit` aby ograniczyć równoległość. Zbyt wysoka `ThrottleLimit` może powodować problemy. Idealna wartość parametru `ThrottleLimit` zależy od wielu czynników w środowisku. Należy spróbować rozpocząć od niskiej wartości i spróbuj różnych wartości zwiększających, aż znajdziesz taki, który działa dla danej okoliczności.
 
 ```powershell
 ForEach -Parallel -ThrottleLimit 10 ($<item> in $<collection>)
@@ -200,7 +200,7 @@ ForEach -Parallel -ThrottleLimit 10 ($<item> in $<collection>)
 <Activity3>
 ```
 
-Poniższy przykład jest podobny do poprzedniego przykładu kopiowania plików równolegle.  W takim przypadku dla każdego pliku po jego skopiowaniu zostanie wyświetlony komunikat.  Tylko po całkowitym skopiowaniu jest wyświetlany końcowy komunikat uzupełniający.
+Poniższy przykład jest podobny do poprzedniego przykładu kopiowania plików równolegle.  W takim przypadku komunikat jest wyświetlany dla każdego pliku po jego skopiowaniu.  Dopiero po ich całkowitym skopiowaniu wyświetlany jest komunikat o zakończeniu końcowego.
 
 ```powershell
 Workflow Copy-Files
@@ -218,13 +218,13 @@ Workflow Copy-Files
 ```
 
 > [!NOTE]
-> Nie zaleca się uruchamiania podrzędnych elementów Runbook równolegle, ponieważ został on wyświetlony w celu zapewnienia wiarygodnych wyników. Dane wyjściowe z podrzędnego elementu Runbook czasami nie są wyświetlane, a ustawienia w jednym podrzędnym elemencie Runbook mogą mieć wpływ na inne równoległe podrzędne elementy Runbook. Zmienne, takie jak $VerbosePreference, $WarningPreference i inne, nie mogą być propagowane do podrzędnych elementów Runbook. A jeśli podrzędny element Runbook zmieni te wartości, mogą one nie zostać prawidłowo przywrócone po wywołaniu.
+> Nie zaleca się uruchamiania obrażeń śunkowych podrzędnych równolegle, ponieważ wykazano, że daje to niewiarygodne wyniki. Dane wyjściowe z podrzędnego elementu runbook czasami nie są wyświetlane, a ustawienia w jednym podrzędnym niuacie podrzędnym mogą mieć wpływ na inne równoległe podrzędne elementu runbook. Zmienne, takie jak $VerbosePreference, $WarningPreference i inne nie mogą być propagowane do śmigiełców podrzędnych. A jeśli element runbook podrzędny zmieni te wartości, mogą nie zostać poprawnie przywrócone po wywołaniu.
 
 ## <a name="checkpoints"></a>Punkty kontrolne
 
-*Punkt kontrolny* jest migawką bieżącego stanu przepływu pracy, który zawiera bieżącą wartość dla zmiennych i wszystkie dane wyjściowe wygenerowane do tego momentu. Jeśli przepływ pracy zakończy się błędem lub jest zawieszony, przy następnym uruchomieniu zostanie uruchomiony od ostatniego punktu kontrolnego zamiast od początku przepływu pracy.  Punkt kontrolny można ustawić w przepływie pracy przy użyciu działania **Checkpoint-Workflow** . Azure Automation ma funkcję o nazwie " [uczciwy udział](automation-runbook-execution.md#fair-share)", w której każdy element Runbook, który działa przez 3 godziny, zostaje zwolniony, aby umożliwić uruchomienie innych elementów Runbook. Po pewnym czasie zostanie ponownie załadowany zwolniony element Runbook, a w jego przypadku zostanie wznowione wykonywanie z ostatniego punktu kontrolnego wykonanego w elemencie Runbook. W celu zagwarantowania, że element Runbook zostanie ostatecznie zakończony, należy dodać punkty kontrolne w odstępach czasu, które są uruchamiane krócej niż 3 godziny. Jeśli podczas każdego uruchomienia zostanie dodany nowy punkt kontrolny, a element Runbook zostanie wykluczony po 3 godzinach z powodu błędu, element Runbook zostanie wznowiony w nieskończoność.
+Punkt *kontrolny* jest migawką bieżącego stanu przepływu pracy, który zawiera bieżącą wartość dla zmiennych i wszelkie dane wyjściowe generowane do tego punktu. Jeśli przepływ pracy kończy się błędem lub jest zawieszony, a następnie przy następnym uruchomieniu rozpocznie się od ostatniego punktu kontrolnego zamiast rozpoczęcia przepływu pracy.  Punkt kontrolny można ustawić w przepływie pracy za pomocą działania **przepływ pracy punktu kontrolnego.** Usługa Azure Automation ma funkcję o nazwie [fair share](automation-runbook-execution.md#fair-share), gdzie każdy element runbook, który działa przez 3 godziny jest zwalniany, aby umożliwić uruchamianie innych elementów runbook. Ostatecznie niechładowany projekt runbook zostanie ponownie załadowany, a gdy jest, wznowi wykonywanie z ostatniego punktu kontrolnego podjęte w życiorysie. Aby zagwarantować, że projekt runbook zostanie ostatecznie ukończony, należy dodać punkty kontrolne w odstępach czasu, które są uruchamiane przez mniej niż 3 godziny. Jeśli podczas każdego uruchomienia zostanie dodany nowy punkt kontrolny, a element runbook zostanie eksmitowany po 3 godzinach z powodu błędu, element runbook zostanie wznowiony przez czas nieokreślony.
 
-W poniższym przykładowym kodzie wyjątek występuje po Activity2, co spowodowało zakończenie przepływu pracy. Po ponownym uruchomieniu przepływu pracy jest on uruchamiany przez uruchomienie Activity2, ponieważ był tuż po ostatnim zestawie punktów kontrolnych.
+W poniższym przykładowym kodzie wyjątek występuje po Aktywność2 powodując przepływ pracy do końca. Gdy przepływ pracy jest uruchamiany ponownie, rozpoczyna się od uruchomienia Activity2, ponieważ było to tuż po ostatnim zestawie punktów kontrolnych.
 
 ```powershell
 <Activity1>
@@ -234,9 +234,9 @@ Checkpoint-Workflow
 <Activity3>
 ```
 
-Punkty kontrolne powinny być ustawiane w przepływie pracy po działaniach, które mogą być podatne na wyjątek i nie powinny być powtarzane, jeśli przepływ pracy zostanie wznowiony. Na przykład przepływ pracy może utworzyć maszynę wirtualną. Punkt kontrolny można ustawić przed i po poleceniach służących do tworzenia maszyny wirtualnej. Jeśli Tworzenie zakończy się niepowodzeniem, polecenia zostałyby powtórzone, jeśli przepływ pracy zostanie uruchomiony ponownie. Jeśli przepływ pracy zakończy się niepowodzeniem po pomyślnym utworzeniu, maszyna wirtualna nie zostanie ponownie utworzona po wznowieniu przepływu pracy.
+Należy ustawić punkty kontrolne w przepływie pracy po działaniach, które mogą być podatne na wyjątek i nie powinny być powtarzane, jeśli przepływ pracy zostanie wznowiony. Na przykład przepływ pracy może utworzyć maszynę wirtualną. Punkt kontrolny można ustawić przed poleceniami tworzącymi maszynę wirtualną i po nich. Jeśli tworzenie zakończy się niepowodzeniem, polecenia zostaną powtórzone, jeśli przepływ pracy zostanie uruchomiony ponownie. Jeśli przepływ pracy zakończy się niepowodzeniem po pomyślnym utworzeniu, maszyna wirtualna nie zostanie utworzona ponownie po wznowieniu przepływu pracy.
 
-Poniższy przykład kopiuje wiele plików do lokalizacji sieciowej i ustawia punkt kontrolny po każdym pliku.  Jeśli lokalizacja sieciowa zostanie utracona, przepływ pracy zostanie zakończony błędem.  Po ponownym uruchomieniu zostanie on wznowiony przez ostatni punkt kontrolny, co oznacza, że tylko te pliki, które zostały już skopiowane, zostaną pominięte.
+Poniższy przykład kopiuje wiele plików do lokalizacji sieciowej i ustawia punkt kontrolny po każdym pliku.  Jeśli lokalizacja sieciowa zostanie utracona, przepływ pracy zakończy się błędem.  Po ponownym uruchomieniu zostanie wznowione w ostatnim punkcie kontrolnym, co oznacza, że tylko pliki, które zostały już skopiowane, zostaną pominięte.
 
 ```powershell
 Workflow Copy-Files
@@ -254,9 +254,9 @@ Workflow Copy-Files
 }
 ```
 
-Ponieważ poświadczenia nazwy użytkownika nie są utrwalane po wywołaniu działania [Suspend-Workflow](https://technet.microsoft.com/library/jj733586.aspx) lub po ostatnim punkcie kontrolnym, należy ustawić poświadczenia na wartość null, a następnie pobrać je ponownie z magazynu zasobów po wywołaniu opcji **Suspend-Workflow** lub Checkpoint.  W przeciwnym razie może zostać wyświetlony następujący komunikat o błędzie: *nie można wznowić zadania przepływu pracy, ponieważ nie można całkowicie zapisać danych trwałości lub zapisano dane trwałości. Musisz ponownie uruchomić przepływ pracy.*
+Ponieważ poświadczenia nazwy użytkownika nie są zachowywane po wywołaniu działania [Wstrzymaj-Przepływ pracy](https://technet.microsoft.com/library/jj733586.aspx) lub po ostatnim punkcie kontrolnym, należy ustawić poświadczenia na wartość null, a następnie pobrać je ponownie z magazynu zasobów po **wywołaniu przepływu pracy wstrzymania** lub punktu kontrolnego.  W przeciwnym razie może pojawić się następujący komunikat o błędzie: *Nie można wznowić zadania przepływu pracy, ponieważ nie można całkowicie zapisać danych trwałości lub zapisane dane trwałości zostały uszkodzone. Należy ponownie uruchomić przepływ pracy.*
 
-Poniższy kod ilustruje sposób obsługi tego w elementach Runbook przepływu pracy programu PowerShell.
+Poniższy ten sam kod pokazuje, jak radzić sobie z tym w elementów runbook przepływu pracy programu PowerShell.
 
 ```powershell
 workflow CreateTestVms
@@ -283,13 +283,13 @@ workflow CreateTestVms
 ```
 
 > [!IMPORTANT]
-> **Add-AzureRmAccount** jest teraz aliasem dla polecenia **Connect-AzureRmAccount**. Podczas wyszukiwania elementów biblioteki, jeśli nie widzisz pozycji **Connect-AzureRMAccount**, możesz użyć polecenie **Add-AzureRMAccount**lub zaktualizować moduły na koncie usługi Automation.
+> **Add-AzureRmAccount** jest teraz aliasem **connect-azurermaccount**. Podczas przeszukiwania elementów biblioteki, jeśli nie widzisz **Connect-AzureRMAccount**, można użyć **Add-AzureRmAccount**lub można zaktualizować moduły na koncie automatyzacji.
 
-Nie jest to wymagane w przypadku uwierzytelniania przy użyciu konta Uruchom jako skonfigurowanego za pomocą nazwy głównej usługi.
+Nie jest to wymagane, jeśli uwierzytelniasz się przy użyciu konta Uruchom jako skonfigurowanego z jednostką usługi.
 
-Aby uzyskać więcej informacji na temat punktów kontrolnych, zobacz [Dodawanie punktów kontrolnych do skryptu przepływu pracy](https://technet.microsoft.com/library/jj574114.aspx).
+Aby uzyskać więcej informacji na temat punktów kontrolnych, zobacz [Dodawanie punktów kontrolnych do przepływu pracy skryptu](https://technet.microsoft.com/library/jj574114.aspx).
 
 ## <a name="next-steps"></a>Następne kroki
 
-* Aby rozpocząć pracę z elementami Runbook przepływu pracy programu PowerShell, zobacz artykuł [My first PowerShell workflow runbook](automation-first-runbook-textual.md) (Mój pierwszy element Runbook przepływu pracy programu PowerShell).
+* Aby rozpocząć pracę z uruchomieniu przepływem pracy programu PowerShell, zobacz [Mój pierwszy program PowerShell workflow runbook](automation-first-runbook-textual.md)
 

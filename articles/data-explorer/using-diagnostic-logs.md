@@ -1,6 +1,6 @@
 ---
-title: Monitorowanie operacji pozyskiwania Eksplorator danych platformy Azure przy użyciu dzienników diagnostycznych
-description: Dowiedz się, jak skonfigurować dzienniki diagnostyczne dla Eksplorator danych platformy Azure, aby monitorować operacje pozyskiwania.
+title: Monitorowanie operacji pozyskiwania usługi Azure Data Explorer przy użyciu dzienników diagnostycznych
+description: Dowiedz się, jak skonfigurować dzienniki diagnostyczne dla Eksploratora danych platformy Azure do monitorowania operacji pozyskiwania.
 author: orspod
 ms.author: orspodek
 ms.reviewer: gabil
@@ -8,59 +8,59 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 09/18/2019
 ms.openlocfilehash: 3e10979e26cacdc0c2071a6030c945adad21a51c
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76277424"
 ---
-# <a name="monitor-azure-data-explorer-ingestion-operations-using-diagnostic-logs-preview"></a>Monitorowanie operacji pozyskiwania Eksplorator danych platformy Azure przy użyciu dzienników diagnostycznych (wersja zapoznawcza)
+# <a name="monitor-azure-data-explorer-ingestion-operations-using-diagnostic-logs-preview"></a>Monitorowanie operacji pozyskiwania usługi Azure Data Explorer przy użyciu dzienników diagnostycznych (Wersja zapoznawcza)
 
-Usługa Azure Data Explorer to szybka, w pełni zarządzana usługa do analizy danych, która pozwala w czasie rzeczywistym analizować duże woluminy danych przesyłanych strumieniowo z aplikacji, witryn internetowych, urządzeń IoT i nie tylko. Aby używać usługi Azure Data Explorer, najpierw utwórz klaster, a następnie utwórz w tym klastrze co najmniej jedną bazę danych. Następnie Pozyskaj (Załaduj) dane do tabeli w bazie danych, aby można było uruchamiać zapytania względem tego programu. [Azure monitor dzienników diagnostycznych](/azure/azure-monitor/platform/diagnostic-logs-overview) zapewniają dane dotyczące operacji zasobów platformy Azure. Usługa Azure Eksplorator danych używa dzienników diagnostycznych do uzyskiwania szczegółowych informacji na temat sukcesów i niepowodzeń pozyskiwania. Dzienniki operacji można wyeksportować do usługi Azure Storage, centrum zdarzeń lub Log Analytics, aby monitorować stan pozyskiwania. Dzienniki z usługi Azure Storage i usługi Azure Event Hub można kierować do tabeli w klastrze Eksplorator danych platformy Azure w celu przeprowadzenia dalszej analizy.
+Usługa Azure Data Explorer to szybka, w pełni zarządzana usługa do analizy danych, która pozwala w czasie rzeczywistym analizować duże woluminy danych przesyłanych strumieniowo z aplikacji, witryn internetowych, urządzeń IoT i nie tylko. Aby używać usługi Azure Data Explorer, najpierw utwórz klaster, a następnie utwórz w tym klastrze co najmniej jedną bazę danych. Następnie można pozyskiwania (ładowania) danych do tabeli w bazie danych, dzięki czemu można uruchamiać kwerendy przeciwko niemu. [Dzienniki diagnostyczne usługi Azure Monitor](/azure/azure-monitor/platform/diagnostic-logs-overview) zawierają dane dotyczące działania zasobów platformy Azure. Usługa Azure Data Explorer używa dzienników diagnostycznych do szczegółowych informacji na temat sukcesów i błędów pozyskiwania. Dzienniki operacji można eksportować do usługi Azure Storage, Event Hub lub Log Analytics w celu monitorowania stanu pozyskiwania. Dzienniki z usługi Azure Storage i usługi Azure Event Hub można przekierować do tabeli w klastrze usługi Azure Data Explorer w celu dalszej analizy.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Jeśli nie masz subskrypcji platformy Azure, Utwórz [bezpłatne konto platformy Azure](https://azure.microsoft.com/free/).
-* Utwórz [klaster i bazę danych](create-cluster-database-portal.md).
+* Jeśli nie masz subskrypcji platformy Azure, utwórz [bezpłatne konto platformy Azure.](https://azure.microsoft.com/free/)
+* Tworzenie [klastra i bazy danych](create-cluster-database-portal.md).
 
 ## <a name="sign-in-to-the-azure-portal"></a>Logowanie się do witryny Azure Portal
 
 Zaloguj się do [Portalu Azure](https://portal.azure.com/).
 
-## <a name="set-up-diagnostic-logs-for-an-azure-data-explorer-cluster"></a>Konfigurowanie dzienników diagnostycznych dla klastra usługi Azure Eksplorator danych
+## <a name="set-up-diagnostic-logs-for-an-azure-data-explorer-cluster"></a>Konfigurowanie dzienników diagnostycznych dla klastra eksploratora danych platformy Azure
 
-Dzienników diagnostycznych można użyć do skonfigurowania kolekcji następujących danych dziennika:
-* Pomyślne operacje pozyskiwania: te dzienniki zawierają informacje o pomyślnym zakończeniu operacji pozyskiwania.
-* Nieudane operacje pozyskiwania: te dzienniki zawierają szczegółowe informacje o operacjach pozyskiwania zakończonych niepowodzeniem, w tym szczegóły błędu. 
+Dzienniki diagnostyczne mogą służyć do konfigurowania zbierania następujących danych dziennika:
+* Pomyślne operacje pozyskiwania: Te dzienniki mają informacje o pomyślnie zakończonych operacjach pozyskiwania.
+* Operacje pozyskiwania nie powiodło się: Te dzienniki mają szczegółowe informacje o nieudanych operacjach pozyskiwania, w tym szczegóły błędu. 
 
-Dane są następnie archiwizowane na koncie magazynu, przesyłane strumieniowo do centrum zdarzeń lub wysyłane do Log Analytics zgodnie ze specyfikacją.
+Dane są następnie archiwizowane na koncie magazynu, przesyłane strumieniowo do Centrum zdarzeń lub wysyłane do usługi Log Analytics zgodnie ze specyfikacjami.
 
 ### <a name="enable-diagnostic-logs"></a>Włączanie dzienników diagnostycznych
 
 Dzienniki diagnostyczne są domyślnie wyłączone. Aby włączyć dzienniki diagnostyczne, wykonaj następujące czynności:
 
-1. W [Azure Portal](https://portal.azure.com)wybierz zasób klastra usługi Azure Eksplorator danych, który ma być monitorowany.
-1. W obszarze **monitorowanie**, wybierz opcję **ustawień diagnostycznych**.
+1. W [witrynie Azure portal](https://portal.azure.com)wybierz zasób klastra usługi Azure Data Explorer, który chcesz monitorować.
+1. W obszarze **Monitorowanie** wybierz pozycję **Ustawienia diagnostyczne**.
   
     ![Dodawanie dzienników diagnostycznych](media/using-diagnostic-logs/add-diagnostic-logs.png)
 
-1. Wybierz pozycję **Dodaj ustawienie diagnostyczne**.
-1. W oknie **Ustawienia diagnostyczne** :
+1. Wybierz **pozycję Dodaj ustawienie diagnostyczne**.
+1. W oknie **Ustawienia diagnostyki:**
  
-    ![Konfiguracja ustawień diagnostycznych](media/using-diagnostic-logs/configure-diagnostics-settings.png) 
+    ![Konfiguracja ustawień diagnostyki](media/using-diagnostic-logs/configure-diagnostics-settings.png) 
 
     1. Wybierz **nazwę** dla ustawienia diagnostycznego.
-    1. Wybierz co najmniej jeden obiekt docelowy: konto magazynu, centrum zdarzeń lub Log Analytics.
-    1. Wybierz dzienniki do zebrania: `SucceededIngestion` lub `FailedIngestion`.
+    1. Wybierz jeden lub więcej obiektów docelowych: konto magazynu, Centrum zdarzeń lub usługa Log Analytics.
+    1. Wybierz dzienniki do `SucceededIngestion` zebrania: lub `FailedIngestion`.
     1. Wybierz [metryki](using-metrics.md#supported-azure-data-explorer-metrics) do zebrania (opcjonalnie).  
-    1. Wybierz pozycję **Zapisz** , aby zapisać nowe ustawienia dzienników diagnostycznych i metryki.
-    1. Utwórz **nowe żądanie obsługi** w Azure Portal, aby zażądać aktywacji dzienników diagnostycznych.
+    1. Wybierz **pozycję Zapisz,** aby zapisać nowe ustawienia i metryki dzienników diagnostycznych.
+    1. Utwórz **nowe żądanie pomocy technicznej** w witrynie Azure portal, aby zażądać aktywacji dzienników diagnostycznych.
 
-Nowe ustawienia zostaną ustawione w ciągu kilku minut. Dzienniki są następnie wyświetlane w skonfigurowanym celu archiwizacji (konto magazynu, centrum zdarzeń lub Log Analytics). 
+Nowe ustawienia zostaną ustawione w ciągu kilku minut. Dzienniki są następnie wyświetlane w skonfigurowanym celu archiwizacji (konto magazynu, Centrum zdarzeń lub usługa Log Analytics). 
 
-## <a name="diagnostic-logs-schema"></a>Dzienniki diagnostyczne schematu
+## <a name="diagnostic-logs-schema"></a>Schemat dzienników diagnostycznych
 
-Wszystkie [dzienniki diagnostyczne Azure monitor korzystają ze wspólnego schematu najwyższego poziomu](/azure/azure-monitor/platform/diagnostic-logs-schema). Usługa Azure Eksplorator danych ma unikatowe właściwości dla swoich własnych zdarzeń. Wszystkie dzienniki są przechowywane w formacie JSON.
+Wszystkie [dzienniki diagnostyczne usługi Azure Monitor mają wspólny schemat najwyższego poziomu.](/azure/azure-monitor/platform/diagnostic-logs-schema) Usługa Azure Data Explorer ma unikatowe właściwości dla własnych zdarzeń. Wszystkie dzienniki są przechowywane w formacie JSON.
 
 ### <a name="ingestion-logs-schema"></a>Schemat dzienników pozyskiwania
 
@@ -68,14 +68,14 @@ Ciągi JSON dziennika zawierają elementy wymienione w poniższej tabeli:
 
 |Nazwa               |Opis
 |---                |---
-|time               |Godzina raportu
-|resourceId         |Identyfikator zasobu Azure Resource Manager
-|operationName      |Nazwa operacji: "MICROSOFT. KUSTO/KLASTRY/POZYSKIWANIE/AKCJA "
-|operationVersion   |Wersja schematu: ' 1,0 ' 
-|category           |Kategoria operacji. `SucceededIngestion` lub `FailedIngestion`. Właściwości różnią się w zależności od [operacji zakończonej powodzeniem](#successful-ingestion-operation-log) lub [nieudanej operacji](#failed-ingestion-operation-log).
+|time               |Czas raportu
+|resourceId         |Identyfikator zasobu usługi Azure Resource Manager
+|operationName      |Nazwa operacji: 'MICROSOFT. KUSTO/KLASTRY/POŁKNIENIE/DZIAŁANIE"
+|operationVersion   |Wersja schematu: '1.0' 
+|category           |Kategoria operacji. `SucceededIngestion` lub `FailedIngestion`. Właściwości różnią się dla [pomyślnej operacji](#successful-ingestion-operation-log) lub [nieudanej operacji](#failed-ingestion-operation-log).
 |properties         |Szczegółowe informacje o operacji.
 
-#### <a name="successful-ingestion-operation-log"></a>Dziennik operacji pozyskiwania zakończonych powodzeniem
+#### <a name="successful-ingestion-operation-log"></a>Dziennik operacji pośmiania pomyślnego
 
 **Przykład:**
 
@@ -102,15 +102,15 @@ Ciągi JSON dziennika zawierają elementy wymienione w poniższej tabeli:
 
 |Nazwa               |Opis
 |---                |---
-|succeededOn        |Czas ukończenia pozyskiwania
-|operationId        |Identyfikator operacji pozyskiwania Eksplorator danych platformy Azure
-|baza danych           |Nazwa docelowej bazy danych
-|table              |Nazwa tabeli docelowej
+|succeededOn        |Czas połkania
+|operationId        |Identyfikator operacji pozyskiwania usługi Azure Data Explorer
+|database           |Nazwa docelowej bazy danych
+|tabela              |Nazwa tabeli docelowej
 |ingestionSourceId  |Identyfikator źródła danych pozyskiwania
-|ingestionSourcePath|Ścieżka do źródła danych pozyskiwania lub identyfikatora URI obiektu BLOB
-|rootActivityId     |Identyfikator działania
+|ingestionSourcePath|Ścieżka źródła danych pozyskiwania lub identyfikatora URI obiektu blob
+|rootActivityId (AktywnyId)     |Identyfikator działania
 
-#### <a name="failed-ingestion-operation-log"></a>Dziennik operacji pozyskiwania zakończonych niepowodzeniem
+#### <a name="failed-ingestion-operation-log"></a>Dziennik operacji pozyskiwania nie powiodło się
 
 **Przykład:**
 
@@ -139,25 +139,25 @@ Ciągi JSON dziennika zawierają elementy wymienione w poniższej tabeli:
 }
 ```
 
-**Właściwości dziennika diagnostyki operacji zakończonej niepowodzeniem**
+**Właściwości dziennika diagnostycznego operacji nie powiodło się**
 
 |Nazwa               |Opis
 |---                |---
-|failedOn           |Czas ukończenia pozyskiwania
-|operationId        |Identyfikator operacji pozyskiwania Eksplorator danych platformy Azure
-|baza danych           |Nazwa docelowej bazy danych
-|table              |Nazwa tabeli docelowej
+|failedOn           |Czas połkania
+|operationId        |Identyfikator operacji pozyskiwania usługi Azure Data Explorer
+|database           |Nazwa docelowej bazy danych
+|tabela              |Nazwa tabeli docelowej
 |ingestionSourceId  |Identyfikator źródła danych pozyskiwania
-|ingestionSourcePath|Ścieżka do źródła danych pozyskiwania lub identyfikatora URI obiektu BLOB
-|rootActivityId     |Identyfikator działania
-|details informacje            |Szczegółowy opis błędu i komunikatu o błędzie
-|Kodzie          |Kod błędu 
-|failureStatus      |`Permanent` lub `Transient`. Ponowna próba błędu przejściowego może zakończyć się pomyślnie.
-|originatesFromUpdatePolicy|Prawda, jeśli niepowodzenie pochodzi z zasad aktualizacji
-|shouldRetry        |Prawda, jeśli próba powiodła się
+|ingestionSourcePath|Ścieżka źródła danych pozyskiwania lub identyfikatora URI obiektu blob
+|rootActivityId (AktywnyId)     |Identyfikator działania
+|Szczegóły            |Szczegółowy opis komunikatu o błędzie i awarii
+|Errorcode          |Kod błędu 
+|status failure      |`Permanent` lub `Transient`. Ponów próbę niepowodzenia przejściowego może zakończyć się pomyślnie.
+|pochodziFromUpdatePolicy|Prawda, jeśli błąd pochodzi z zasad aktualizacji
+|powinienRetry        |Prawda, jeśli ponowna próby może zakończyć się pomyślnie
 
 ## <a name="next-steps"></a>Następne kroki
 
-* [Samouczek: pozyskiwanie i wykonywanie zapytań dotyczących danych monitorowania na platformie Azure Eksplorator danych](ingest-data-no-code.md)
+* [Samouczek: Pozyskiwania i wykonywania zapytań danych monitorowania danych w Eksploratorze danych platformy Azure](ingest-data-no-code.md)
 * [Monitorowanie kondycji klastra przy użyciu metryk](using-metrics.md)
 

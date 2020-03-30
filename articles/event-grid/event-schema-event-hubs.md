@@ -1,6 +1,6 @@
 ---
-title: Azure schematu zdarzeń centra zdarzeń usługi Event Grid
-description: Opisuje właściwości, które są dostarczane dla centrów zdarzeń za pomocą usługi Azure Event Grid
+title: Schemat zdarzenia centrum zdarzeń usługi Azure Event Grid
+description: Zawiera opis właściwości, które są dostarczane dla zdarzeń centrum zdarzeń za pomocą usługi Azure Event Grid
 services: event-grid
 author: spelluru
 ms.service: event-grid
@@ -8,25 +8,25 @@ ms.topic: reference
 ms.date: 01/17/2019
 ms.author: spelluru
 ms.openlocfilehash: 9c0113687d27bf43375f298057129a5594ec0a06
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60561832"
 ---
-# <a name="azure-event-grid-event-schema-for-event-hubs"></a>Schemat zdarzeń Azure Event Grid dla usługi event hubs
+# <a name="azure-event-grid-event-schema-for-event-hubs"></a>Schemat zdarzeń usługi Azure Event Grid dla centrów zdarzeń
 
-Ten artykuł zawiera właściwości i schematu dla centrów zdarzeń. Aby zapoznać się z wprowadzeniem do schematów zdarzeń, zobacz [schematu zdarzeń usługi Azure Event Grid](event-schema.md).
+Ten artykuł zawiera właściwości i schemat zdarzeń centrów zdarzeń.Aby zapoznać się ze schematem zdarzeń, zobacz [Schemat zdarzeń usługi Azure Event Grid](event-schema.md).
 
-Aby uzyskać listę przykładowych skryptów i samouczków, zobacz [źródła zdarzeń usługi Event Hubs](event-sources.md#event-hubs).
+Aby uzyskać listę przykładowych skryptów i samouczków, zobacz [Źródło zdarzeń Centrum zdarzeń](event-sources.md#event-hubs).
 
-### <a name="available-event-types"></a>Zdarzenie dostępne typy
+### <a name="available-event-types"></a>Dostępne typy zdarzeń
 
-Usługa Event Hubs emituje **Microsoft.EventHub.CaptureFileCreated** typ zdarzenia, gdy tworzony jest plik przechwytywania.
+Centrum zdarzeń emituje typ zdarzenia **Microsoft.EventHub.CaptureFileCreated** podczas tworzenia pliku przechwytywania.
 
-## <a name="example-event"></a>Przykład zdarzenia
+## <a name="example-event"></a>Przykładowe zdarzenie
 
-To zdarzenie próbki przedstawia schematu event hubs Zdarzenie wywoływane, gdy funkcja przechwytywania są przechowywane w pliku: 
+To przykładowe zdarzenie pokazuje schemat zdarzenia centrum zdarzeń wywoływane, gdy funkcja przechwytywania przechowuje plik: 
 
 ```json
 [
@@ -55,35 +55,35 @@ To zdarzenie próbki przedstawia schematu event hubs Zdarzenie wywoływane, gdy 
 
 ## <a name="event-properties"></a>Właściwości zdarzenia
 
-Zdarzenie zawiera następujące dane najwyższego poziomu:
+Zdarzenie ma następujące dane najwyższego poziomu:
 
 | Właściwość | Typ | Opis |
 | -------- | ---- | ----------- |
-| topic | string | Zasobów Pełna ścieżka do źródła zdarzeń. To pole nie jest zapisywalna. Usługa Event Grid udostępnia tę wartość. |
-| subject | string | Ścieżka zdefiniowana przez wydawcę na temat zdarzenia. |
-| eventType | string | Jeden z typów zdarzeń zarejestrowane dla tego źródła zdarzeń. |
-| eventTime | string | Czas, którego zdarzenie jest generowane na podstawie czasu UTC dostawcy. |
-| id | string | Unikatowy identyfikator zdarzenia. |
-| data | object | Dane zdarzenia Centrum zdarzeń. |
-| dataVersion | string | Wersja schematu dla obiektu danych. Wydawca Określa wersję schematu. |
-| metadataVersion | string | Wersja schematu dla metadanych zdarzenia. Usługa Event Grid definiuje schemat właściwości najwyższego poziomu. Usługa Event Grid udostępnia tę wartość. |
+| temat | ciąg | Pełna ścieżka zasobu do źródła zdarzeń. To pole nie jest zapisywalne. Ta wartość jest podawana przez usługę Event Grid. |
+| Temat | ciąg | Zdefiniowana przez wydawcę ścieżka do tematu zdarzenia. |
+| Eventtype | ciąg | Jeden z zarejestrowanych typów zdarzeń dla tego źródła zdarzeń. |
+| eventTime | ciąg | Czas, w której zdarzenie jest generowane na podstawie czasu UTC dostawcy. |
+| id | ciąg | Unikatowy identyfikator zdarzenia. |
+| dane | obiekt | Dane zdarzeń centrum zdarzeń. |
+| dataVersion | ciąg | Wersja schematu obiektu danych. Wydawca definiuje wersję schematu. |
+| metadataVersion | ciąg | Wersja schematu metadanych zdarzenia. Usługa Event Grid definiuje schemat właściwości najwyższego poziomu. Ta wartość jest podawana przez usługę Event Grid. |
 
 Obiekt danych ma następujące właściwości:
 
 | Właściwość | Typ | Opis |
 | -------- | ---- | ----------- |
-| fileUrl | string | Ścieżka do pliku przechwytywania. |
-| fileType | string | Typ pliku pliku przechwytywania. |
-| partitionId | string | Identyfikator fragmentu. |
-| sizeInBytes | liczba całkowita | Rozmiar pliku. |
+| plikUrl | ciąg | Ścieżka do pliku przechwytywania. |
+| Filetype | ciąg | Typ pliku przechwytywania. |
+| Partitionid | ciąg | Identyfikator niezależnego fragmentu. |
+| rozmiarWzdjęty | liczba całkowita | Rozmiar pliku. |
 | eventCount | liczba całkowita | Liczba zdarzeń w pliku. |
-| firstSequenceNumber | liczba całkowita | Najmniejsza liczba sekwencji z kolejki. |
-| lastSequenceNumber | liczba całkowita | Ostatni numer sekwencji z kolejki. |
-| firstEnqueueTime | string | Po raz pierwszy z kolejki. |
-| lastEnqueueTime | string | Czas ostatniego z kolejki. |
+| pierwszaSequenceNumber | liczba całkowita | Najmniejszy numer sekwencyjny z kolejki. |
+| lastSequenceNumber | liczba całkowita | Ostatni numer sekwencyjny z kolejki. |
+| firstEnqueueTime | ciąg | Pierwszy raz z kolejki. |
+| lastEnqueueTime | ciąg | Ostatni raz z kolejki. |
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-* Wprowadzenie do usługi Azure Event Grid, zobacz [co to jest usługa Event Grid?](overview.md)
+* Aby uzyskać wprowadzenie do usługi Azure Event Grid, zobacz [Co to jest siatka zdarzeń?](overview.md)
 * Aby uzyskać więcej informacji na temat tworzenia subskrypcji usługi Azure Event Grid, zobacz [schemat subskrypcji usługi Event Grid](subscription-creation-schema.md).
-* Aby uzyskać informacje na temat obsługi centrów zdarzeń, zobacz [Stream danych big data do magazynu danych](event-grid-event-hubs-integration.md).
+* Aby uzyskać informacje dotyczące obsługi zdarzeń w centrach zdarzeń, zobacz [Przesyłanie strumieniowe dużych zbiorów danych do magazynu danych](event-grid-event-hubs-integration.md).
