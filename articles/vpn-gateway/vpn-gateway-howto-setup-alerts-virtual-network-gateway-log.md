@@ -1,79 +1,79 @@
 ---
-title: 'Azure VPN Gateway: Konfigurowanie alertów dotyczących zdarzeń dzienników diagnostycznych'
-description: Kroki konfigurowania alertów dotyczących zdarzeń dziennika diagnostyki VPN Gateway
+title: 'Brama sieci VPN platformy Azure: konfigurowanie alertów dotyczących zdarzeń dziennika diagnostycznego'
+description: Kroki konfigurowania alertów w zdarzeniach dziennika diagnostycznego bramy sieci VPN
 services: vpn-gateway
 author: anzaman
 ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 06/12/2019
 ms.author: alzam
-ms.openlocfilehash: eb8f0204771b204af740c4ddc8e359499520a012
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: b587fa31f1aa42e8dbd5a9d2430c0117891f2091
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76045934"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80239784"
 ---
-# <a name="set-up-alerts-on-diagnostic-log-events-from-vpn-gateway"></a>Konfigurowanie alertów dotyczących zdarzeń dzienników diagnostycznych z VPN Gateway
+# <a name="set-up-alerts-on-diagnostic-log-events-from-vpn-gateway"></a>Konfigurowanie alertów dotyczących zdarzeń dziennika diagnostycznego z bramy sieci VPN
 
-Ten artykuł ułatwia Konfigurowanie alertów opartych na zdarzeniach dzienników diagnostycznych z usługi Azure VPN Gateway przy użyciu usługi Azure Log Analytics. 
+Ten artykuł ułatwia konfigurowanie alertów na podstawie zdarzeń dziennika diagnostycznego z usługi Azure VPN Gateway przy użyciu usługi Azure Log Analytics. 
 
 Następujące dzienniki są dostępne na platformie Azure:
 
 |***Nazwa*** | ***Opis*** |
 |---        | ---               |
-|GatewayDiagnosticLog | Zawiera dzienniki diagnostyczne dla zdarzeń konfiguracji bramy, podstawowe zmiany i zdarzenia konserwacji |
-|TunnelDiagnosticLog | Zawiera zdarzenia zmiany stanu tunelu. Zdarzenia łączenia/rozłączania tunelu zawierają podsumowanie przyczyny zmiany stanu, jeśli ma to zastosowanie |
-|RouteDiagnosticLog | Rejestruje zmiany tras statycznych i zdarzeń BGP występujących w bramie |
-|IKEDiagnosticLog | Rejestruje komunikaty i zdarzenia kontroli IKE na bramie |
-|P2SDiagnosticLog | Rejestruje komunikaty i zdarzenia kontroli punkt-lokacja w bramie |
+|Dziennik diagnostyki bramy | Zawiera dzienniki diagnostyczne dla zdarzeń konfiguracji bramy, podstawowych zmian i zdarzeń konserwacji |
+|TunnelDiagnosticLog | Zawiera zdarzenia zmiany stanu tunelu. Zdarzenia połączenia/rozłączania tunelu mają podsumowaną przyczynę zmiany stanu, jeśli ma to zastosowanie |
+|Dziennik diagnostyki trasy | Rejestruje zmiany tras statycznych i zdarzeń BGP, które występują w bramie |
+|IKEDiagnosticLog | Rejestruje komunikaty sterujące IKE i zdarzenia na bramie |
+|P2SDiagnosticLog | Rejestruje komunikaty kontrolne typu "punkt-lokacja" i zdarzenia w bramie |
 
-## <a name="setup"></a>Konfigurowanie alertów
+## <a name="set-up-alerts-in-the-azure-portal"></a><a name="setup"></a>Konfigurowanie alertów w witrynie Azure portal
 
-Poniższe przykładowe kroki spowodują utworzenie alertu dotyczącego zdarzenia rozłączenia obejmującego tunel VPN typu lokacja-lokacja:
+Poniższe kroki przykład utworzy alert dla zdarzenia rozłączenia, który obejmuje tunel sieci VPN lokacji do lokacji:
 
 
-1. W Azure Portal Wyszukaj **log Analytics** w obszarze **wszystkie usługi** i wybierz pozycję **log Analytics obszary robocze**.
+1. W witrynie Azure portal wyszukaj **usługę Log Analytics** w obszarze Wszystkie **usługi** i wybierz **obszary robocze usługi Log Analytics**.
 
-   ![Wybory do przechodzenia do Log Analytics obszarów roboczych](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert0.png "Create")
+   ![Wybory dotyczące przechodzenia do obszarów roboczych usługi Log Analytics](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert0.png "Utwórz")
 
-2. Wybierz pozycję **Utwórz** na stronie **log Analytics** .
+2. Wybierz **pozycję Utwórz** na stronie **Analiza dzienników.**
 
-   ![Strona Log Analyticsa z przyciskiem tworzenia](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert1.png  "Wybierz")
+   ![Strona Usługi Log Analytics za pomocą przycisku Utwórz](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert1.png  "Wybierz pozycję")
 
-3. Wybierz pozycję **Utwórz nową** i wypełnij szczegóły.
+3. Wybierz **pozycję Utwórz nowy** i wypełnij szczegóły.
 
-   ![Szczegóły dotyczące tworzenia obszaru roboczego Log Analytics](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert2.png  "Wybierz")
+   ![Szczegóły dotyczące tworzenia obszaru roboczego usługi Log Analytics](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert2.png  "Wybierz pozycję")
 
-4. Znajdź bramę sieci VPN w bloku **ustawień diagnostycznych** > **monitora** .
+4. Znajdź swoją bramę sieci VPN w bloku**Ustawienia diagnostyki** **monitora.** > 
 
-   ![Opcje znajdowania bramy sieci VPN w ustawieniach diagnostycznych](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert3.png  "Wybierz")
+   ![Wybór do znajdowania bramy sieci VPN w ustawieniach diagnostycznych](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert3.png  "Wybierz pozycję")
 
 5. Aby włączyć diagnostykę, kliknij dwukrotnie bramę, a następnie wybierz pozycję **Włącz diagnostykę**.
 
-   ![Opcje włączania diagnostyki](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert4.png  "Wybierz")
+   ![Wybór do włączania diagnostyki](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert4.png  "Wybierz pozycję")
 
-6. Wypełnij szczegóły i upewnij się, że wybrano opcję **Wyślij do log Analytics** i **TunnelDiagnosticLog** . Wybierz obszar roboczy Log Analytics, który został utworzony w kroku 3.
+6. Wypełnij szczegóły i upewnij się, że wybrano **opcję Wyślij do usługi Log Analytics** i **TunnelDiagnosticLog.** Wybierz obszar roboczy usługi Log Analytics utworzony w kroku 3.
 
-   ![Zaznaczone pola wyboru](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert5.png  "Wybierz")
+   ![Zaznaczone pola wyboru](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert5.png  "Wybierz pozycję")
 
    > [!NOTE]
-   > Początkowe wyświetlanie danych może potrwać kilka godzin.
+   > Może upłynąć kilka godzin, aby dane pojawiły się początkowo.
 
-7. Przejdź do omówienia zasobu bramy sieci wirtualnej i wybierz pozycję **alerty** na karcie **monitorowanie** . Następnie utwórz nową regułę alertu lub edytuj istniejącą regułę alertu.
+7. Przejdź do przeglądu zasobu bramy sieci wirtualnej i wybierz **alerty** na karcie **Monitorowanie.** Następnie utwórz nową regułę alertu lub edytuj istniejącą regułę alertu.
 
-   ![Wybory dotyczące tworzenia nowej reguły alertu](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert6.png  "Wybierz")
+   ![Wybory do tworzenia nowej reguły alertu](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert6.png  "Wybierz pozycję")
 
-   ![punkt-lokacja](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert6.png  "Wybierz")
-8. Wybierz obszar roboczy Log Analytics i zasób.
+   ![punkt do lokacji](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert6.png  "Wybierz pozycję")
+8. Wybierz obszar roboczy usługi Log Analytics i zasób.
 
-   ![Wybory dla obszaru roboczego i zasobu](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert7.png  "Wybierz")
+   ![Wybór obszaru roboczego i zasobu](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert7.png  "Wybierz pozycję")
 
-9. Wybierz **niestandardowe przeszukiwanie dzienników** jako logikę sygnału w obszarze **Dodawanie warunku**.
+9. Wybierz **niestandardowe wyszukiwanie dzienników** jako logikę sygnału w **obszarze Dodaj warunek**.
 
-   ![Wybory dla niestandardowego przeszukiwania dzienników](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert8.png  "Wybierz")
+   ![Wybór niestandardowego wyszukiwania dziennika](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert8.png  "Wybierz pozycję")
 
-10. W polu tekstowym **Zapytanie wyszukiwania** wpisz poniższe zapytanie. Zastąp wartości w < > i TimeGenerated, zgodnie z potrzebami.
+10. Wprowadź następującą kwerendę w polu **tekstowym Kwerenda wyszukiwania.** Zastąp wartości w <> i TimeGenerated odpowiednio.
 
     ```
     AzureDiagnostics
@@ -86,18 +86,115 @@ Poniższe przykładowe kroki spowodują utworzenie alertu dotyczącego zdarzenia
     | sort by TimeGenerated asc
     ```
 
-    Ustaw wartość progową na 0 i wybierz pozycję **gotowe**.
+    Ustaw wartość progową na 0 i wybierz **opcję Gotowe**.
 
-    ![Wprowadzanie zapytania i wybieranie progu](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert9.png  "Wybierz")
+    ![Wprowadzanie kwerendy i wybieranie progu](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert9.png  "Wybierz pozycję")
 
-11. Na stronie **Tworzenie reguły** wybierz pozycję **Utwórz nowy** w sekcji **grupy akcji** . Wypełnij szczegóły i wybierz **przycisk OK**.
+11. Na stronie **Reguła tworzenia** wybierz pozycję **Utwórz nowy** w sekcji **GRUPY AKCJI.** Wypełnij szczegóły i wybierz **PRZYCISK OK**.
 
-    ![Szczegóły nowej grupy akcji](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert10.png  "Wybierz")
+    ![Szczegółowe informacje o nowej grupie akcji](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert10.png  "Wybierz pozycję")
 
-12. Na stronie **Tworzenie reguły** Wypełnij pola szczegóły **akcji dostosowywania** i upewnij się, że poprawna nazwa jest wyświetlana w sekcji **Nazwa grupy akcji** . Wybierz pozycję **Utwórz regułę alertu** , aby utworzyć regułę.
+12. Na stronie **Tworzenie reguły** wprowadź szczegóły dotyczące **Dostosowywania akcji** i upewnij się, że w sekcji **NAZWA GRUPY AKCJI** pojawi się poprawna nazwa. Wybierz **pozycję Utwórz regułę alertu,** aby utworzyć regułę.
 
-    ![Wybory dla tworzenia reguły](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert11.png  "Wybierz")
+    ![Wybory do tworzenia reguły](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert11.png  "Wybierz pozycję")
+
+## <a name="set-up-alerts-by-using-powershell"></a><a name="setuppowershell"></a>Konfigurowanie alertów przy użyciu programu PowerShell
+
+Poniższe kroki przykładowe utworzyć alert dla zdarzenia rozłączenia, który obejmuje tunel sieci VPN lokacji do lokacji.
+
+1. Tworzenie obszaru roboczego usługi Log Analytics:
+
+   ```powershell
+   $Location           = 'westus2'
+   $ResourceGroupName  = 'TestRG1'
+   $Sku                = 'pergb2018'
+   $WorkspaceName      = 'LogAnalyticsWS123'
+
+   New-AzOperationalInsightsWorkspace -Location $Location -Name $WorkspaceName -Sku $Sku -ResourceGroupName $ResourceGroupName
+   ```
+
+2. Włącz diagnostykę bramy sieci VPN:
+
+   ```powershell
+   $ResourceGroupName  = 'TestRG1'
+   $VpnGatewayName     = 'VNet1GW'
+   $WorkspaceName      = 'LogAnalyticsWS123'
+
+   $VpnGateway         = Get-AzVirtualNetworkGateway -Name $VpnGatewayName -ResourceGroupName $ResourceGroupName
+   $Workspace          = Get-AzOperationalInsightsWorkspace -Name $WorkspaceName -ResourceGroupName $ResourceGroupName
+
+   Set-AzDiagnosticSetting `
+       -Name 'VPN tunnel' `
+       -ResourceId $VpnGateway.Id `
+       -WorkspaceId $Workspace.ResourceId `
+       -Enabled $true `
+       -Category 'TunnelDiagnosticLog'
+   ```
+
+3. Tworzenie grupy akcji.
+
+   Ten kod tworzy grupę akcji, która wysyła powiadomienie e-mail po wyzwoleniu alertu:
+
+   ```powershell
+   $ActionGroupName            = 'EmailAdmins'   # Max. 60 characters long
+   $ActionGroupShortName       = 'EmailAdmins'   # Max. 12 characters long
+   $ActionGroupReceiverName    = 'My receiver Name'
+   $EmailAddress               = 'xyz@contoso.com'
+   $ResourceGroupName          = 'TestRG1'
+
+   $ActionGroupReceiver = New-AzActionGroupReceiver -Name $ActionGroupReceiverName -UseCommonAlertSchema -EmailReceiver -EmailAddress $EmailAddress
+
+   Set-AzActionGroup `
+      -ResourceGroupName $ResourceGroupName `
+      -Name $ActionGroupName `
+      -ShortName $ActionGroupShortName `
+      -Receiver @($ActionGroupReceiver)
+   ```
+
+4. Utwórz regułę alertu na podstawie niestandardowego wyszukiwania w dzienniku:
+
+   ```powershell
+   $ActionGroupName    = 'EmailAdmins'
+   $EmailSubject       = 'Redmond VPN tunnel is disconnected'
+   $Location           = 'westus2'
+   $RemoteIp           = '104.42.209.46'
+   $ResourceGroupName  = 'TestRG1'
+   $VpnGatewayName     = 'VNet1GW'
+   $WorkspaceName      = 'LogAnalyticsWS123'
+
+   $VpnGateway         = Get-AzVirtualNetworkGateway -Name $VpnGatewayName -ResourceGroupName $ResourceGroupName
+   $Workspace          = Get-AzOperationalInsightsWorkspace -Name $WorkspaceName -ResourceGroupName $ResourceGroupName
+
+   $Query = @"
+   AzureDiagnostics |
+   where Category == "TunnelDiagnosticLog" |
+   where TimeGenerated > ago(5m) |
+   where _ResourceId == tolower("$($VpnGateway.id)") |
+   where remoteIP_s == "$($RemoteIp)" |
+   where status_s == "Disconnected" |
+   project TimeGenerated, OperationName, instance_s, Resource, ResourceGroup, _ResourceId |
+   sort by TimeGenerated asc
+   "@
+
+   $Source             = New-AzScheduledQueryRuleSource -Query $Query -DataSourceId $Workspace.ResourceId
+   $Schedule           = New-AzScheduledQueryRuleSchedule -FrequencyInMinutes 5 -TimeWindowInMinutes 5
+   $TriggerCondition   = New-AzScheduledQueryRuleTriggerCondition -ThresholdOperator 'GreaterThan' -Threshold 0
+
+   $ActionGroup        = Get-AzActionGroup -ResourceGroupName $ResourceGroupName -Name $ActionGroupName
+   $AznsActionGroup    = New-AzScheduledQueryRuleAznsActionGroup -ActionGroup $ActionGroup.Id -EmailSubject $EmailSubject
+   $AlertingAction     = New-AzScheduledQueryRuleAlertingAction -AznsAction $AznsActionGroup -Severity '1' -Trigger $TriggerCondition
+
+   New-AzScheduledQueryRule `
+       -ResourceGroupName $ResourceGroupName `
+       -Location $Location `
+       -Action $AlertingAction `
+       -Enabled $true `
+       -Description 'The tunnel between Azure and Redmond with IP address 104.42.209.46 is disconnected' `
+       -Schedule $Schedule `
+       -Source $Source `
+       -Name 'The Azure to Redmond tunnel is disconnected'
+   ```
 
 ## <a name="next-steps"></a>Następne kroki
 
-Aby skonfigurować alerty dotyczące metryk tuneli, zobacz [Konfigurowanie alertów na VPN Gateway metryki](vpn-gateway-howto-setup-alerts-virtual-network-gateway-metric.md).
+Aby skonfigurować alerty dotyczące metryk tunelu, zobacz [Konfigurowanie alertów w metrykach bramy sieci VPN](vpn-gateway-howto-setup-alerts-virtual-network-gateway-metric.md).

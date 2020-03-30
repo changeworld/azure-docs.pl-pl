@@ -1,24 +1,24 @@
 ---
 title: Definiowanie wielu wystąpień właściwości
-description: Użyj operacji kopiowania w szablonie Azure Resource Manager, aby wykonać iterację wielokrotnie podczas tworzenia właściwości w zasobie.
+description: Użyj operacji kopiowania w szablonie usługi Azure Resource Manager, aby iterować wiele razy podczas tworzenia właściwości na zasobie.
 ms.topic: conceptual
 ms.date: 02/13/2020
-ms.openlocfilehash: b759389cd1065c399658bd8d0c1ddd263054697c
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.openlocfilehash: e86d38b0e5d2e39d54b3c419b6eebdcda74022db
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77622859"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80258111"
 ---
-# <a name="property-iteration-in-azure-resource-manager-templates"></a>Iteracja właściwości w szablonach Azure Resource Manager
+# <a name="property-iteration-in-arm-templates"></a>Iteracja właściwości w szablonach ARM
 
-W tym artykule pokazano, jak utworzyć więcej niż jedno wystąpienie właściwości w szablonie Azure Resource Manager. Dodając element **copy** do sekcji Właściwości zasobu w szablonie, można dynamicznie ustawić liczbę elementów dla właściwości podczas wdrażania. Należy również unikać powtarzania składni szablonu.
+W tym artykule pokazano, jak utworzyć więcej niż jedno wystąpienie właściwości w szablonie usługi Azure Resource Manager (ARM). Dodając element **kopiowania** do sekcji właściwości zasobu w szablonie, można dynamicznie ustawić liczbę elementów dla właściwości podczas wdrażania. Można również unikać konieczności powtarzania składni szablonu.
 
-Możesz również używać kopiowania z [zasobami](copy-resources.md), [zmiennymi](copy-variables.md)i [wyjściami](copy-outputs.md).
+Można również użyć kopiowania z [zasobami, zmiennymi](copy-variables.md)i [wyjściowymi](copy-outputs.md). [resources](copy-resources.md)
 
 ## <a name="property-iteration"></a>Iteracja właściwości
 
-Element Copy ma następujący format ogólny:
+Element kopiowania ma następujący ogólny format:
 
 ```json
 "copy": [
@@ -30,11 +30,11 @@ Element Copy ma następujący format ogólny:
 ]
 ```
 
-W polu **Nazwa**Podaj nazwę właściwości zasobu, którą chcesz utworzyć. Właściwość **Count** określa liczbę iteracji dla właściwości.
+Dla **name**, podaj nazwę właściwości zasobu, który chcesz utworzyć. Właściwość **count** określa liczbę iteracji, które mają dla właściwości.
 
-Właściwość **Input** określa właściwości, które mają być powtarzane. Tworzysz tablicę elementów skonstruowanych na podstawie wartości we właściwości **wejściowej** .
+Właściwość **input** określa właściwości, które mają zostać powtórzone. Można utworzyć tablicę elementów zbudowanych na podstawie wartości we właściwości **wejściowej.**
 
-Poniższy przykład pokazuje, jak zastosować `copy` do właściwości datadisks na maszynie wirtualnej:
+W poniższym przykładzie `copy` pokazano, jak zastosować do dataDisks właściwości na maszynie wirtualnej:
 
 ```json
 {
@@ -78,13 +78,13 @@ Poniższy przykład pokazuje, jak zastosować `copy` do właściwości datadisks
 }
 ```
 
-Należy zauważyć, że w przypadku używania `copyIndex` wewnątrz iteracji właściwości należy podać nazwę iteracji.
+Należy zauważyć, `copyIndex` że podczas korzystania z iteracji właściwości, należy podać nazwę iteracji.
 
 > [!NOTE]
-> Iteracja właściwości obsługuje również argument przesunięcia. Przesunięcie musi następować po nazwie iteracji, takiej jak funkcji copyindex ("datadisks", 1).
+> Iteracja właściwości obsługuje również argument przesunięcia. Przesunięcie musi pochodzić po nazwie iteracji, takich jak copyIndex('dataDisks', 1).
 >
 
-Menedżer zasobów rozszerza tablicę `copy` podczas wdrażania. Nazwa tablicy zmieni się na nazwę właściwości. Wartości wejściowe stają się właściwościami obiektu. Wdrożony szablon zostanie:
+Menedżer zasobów rozszerza `copy` tablicę podczas wdrażania. Nazwa tablicy staje się nazwą właściwości. Wartości wejściowe stają się właściwościami obiektu. Wdrożony szablon staje się:
 
 ```json
 {
@@ -113,13 +113,13 @@ Menedżer zasobów rozszerza tablicę `copy` podczas wdrażania. Nazwa tablicy z
       ...
 ```
 
-Kopiuj element jest tablicą, więc można określić więcej niż jedną właściwość zasobu.
+Element kopiowania jest tablicą, dzięki czemu można określić więcej niż jedną właściwość dla zasobu.
 
 ```json
 {
   "type": "Microsoft.Network/loadBalancers",
   "apiVersion": "2017-10-01",
-  "name": "examleLB",
+  "name": "exampleLB",
   "properties": {
     "copy": [
       {
@@ -141,7 +141,7 @@ Kopiuj element jest tablicą, więc można określić więcej niż jedną właś
 }
 ```
 
-Iteracji zasobów i właściwości można używać razem. Odwołuje się do iteracji właściwości według nazwy.
+Można użyć iteracji zasobów i właściwości razem. Odwołanie się do iteracji właściwości według nazwy.
 
 ```json
 {
@@ -177,25 +177,25 @@ Iteracji zasobów i właściwości można używać razem. Odwołuje się do iter
 
 ## <a name="copy-limits"></a>Limity kopiowania
 
-Liczba nie może przekraczać 800.
+Liczba nie może przekroczyć 800.
 
-Liczba nie może być liczbą ujemną. Jeśli szablon jest wdrażany z Azure PowerShell 2,6 lub nowszym, interfejs wiersza polecenia platformy Azure 2.0.74 lub nowszy albo interfejs API REST w wersji **2019-05-10** lub nowszej, można ustawić liczbę na zero. We wcześniejszych wersjach programu PowerShell, interfejsu wiersza polecenia i interfejsie API REST nie są obsługiwane wartości zerowe.
+Liczba nie może być liczbą ujemną. Jeśli wdrożysz szablon z programem Azure PowerShell 2.6 lub nowszym, interfejsem wiersza polecenia platformy Azure 2.0.74 lub nowszym lub interfejsem API REST w wersji **2019-05-10** lub nowszej, można ustawić liczbę na zero. Starsze wersje programu PowerShell, interfejsu wiersza polecenia i interfejsu API REST nie obsługują zero dla liczby.
 
 ## <a name="example-templates"></a>Przykładowe szablony
 
-Poniższy przykład przedstawia typowy scenariusz tworzenia więcej niż jednej wartości właściwości.
+W poniższym przykładzie przedstawiono typowy scenariusz tworzenia więcej niż jednej wartości dla właściwości.
 
 |Szablon  |Opis  |
 |---------|---------|
-|[Wdrożenie maszyny wirtualnej z zmienną liczbą dysków z danymi](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-windows-copy-datadisks) |Wdraża kilka dysków danych z maszyną wirtualną. |
+|[Wdrażanie maszyn wirtualnych ze zmienną liczbą dysków z danymi](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-windows-copy-datadisks) |Wdraża kilka dysków danych z maszyną wirtualną. |
 
 ## <a name="next-steps"></a>Następne kroki
 
-* Aby przejść przez samouczek, zobacz [Samouczek: Tworzenie wielu wystąpień zasobów przy użyciu szablonów Menedżer zasobów](template-tutorial-create-multiple-instances.md).
-* Aby poznać inne zastosowania elementu Copy, zobacz:
-  * [Iteracja zasobów w szablonach Azure Resource Manager](copy-resources.md)
-  * [Iteracja zmiennej w szablonach Azure Resource Manager](copy-variables.md)
-  * [Iteracja danych wyjściowych w szablonach Azure Resource Manager](copy-outputs.md)
-* Jeśli chcesz dowiedzieć się więcej na temat sekcji szablonu, zobacz [Tworzenie szablonów Azure Resource Manager](template-syntax.md).
-* Aby dowiedzieć się, jak wdrożyć szablon, zobacz [wdrażanie aplikacji przy użyciu szablonu Azure Resource Manager](deploy-powershell.md).
+* Aby przejść przez samouczek, zobacz [Samouczek: tworzenie wielu wystąpień zasobów przy użyciu szablonów ARM](template-tutorial-create-multiple-instances.md).
+* Aby uzyskać inne zastosowania elementu kopiowania, zobacz:
+  * [Iteracja zasobów w szablonach ARM](copy-resources.md)
+  * [Iteracja zmiennych w szablonach ARM](copy-variables.md)
+  * [Iteracja wyjściowa w szablonach ARM](copy-outputs.md)
+* Jeśli chcesz dowiedzieć się więcej o sekcjach szablonu, zobacz [Tworzenie szablonów ARM](template-syntax.md).
+* Aby dowiedzieć się, jak wdrożyć szablon, zobacz [Wdrażanie aplikacji z szablonem ARM](deploy-powershell.md).
 

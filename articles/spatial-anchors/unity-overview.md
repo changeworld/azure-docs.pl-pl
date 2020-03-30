@@ -1,6 +1,6 @@
 ---
-title: Omówienie usługi Azure przestrzenny Unity
-description: Dowiedz się, jak kotwice przestrzenne platformy Azure mogą być używane w aplikacjach aparatu Unity.
+title: Omówienie usługi Azure Spatial Anchors Unity
+description: Dowiedz się, jak zakotwiczenia przestrzenne platformy Azure mogą być używane w aplikacjach Unity. Przejrzyj przewodniky Szybki start dla aplikacji Unity for HoloLens, Unity for Android i Unity for iOS.
 author: rgarcia
 ms.author: rgarcia
 manager: vriveras
@@ -8,25 +8,25 @@ services: azure-spatial-anchors
 ms.service: azure-spatial-anchors
 ms.date: 02/26/2020
 ms.topic: conceptual
-ms.openlocfilehash: eea2d57c708bd3563625d6f9da19ac043b604888
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: df28fc6b5e3a1ddd9813919c8afbf21f65d731b9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78246255"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79471090"
 ---
-# <a name="building-in-unity-with-azure-spatial-anchors"></a>Kompilowanie w środowisku Unity przy użyciu kotwic platformy Azure
+# <a name="building-in-unity-with-azure-spatial-anchors"></a>Tworzenie w jedności za pomocą kotwic przestrzennych platformy Azure
 
-Deweloperzy mogą wybrać środowisko Unity do tworzenia i wdrażania aplikacji rzeczywistości mieszanej, które korzystają z kotwic przestrzennych platformy Azure. Obsługiwane są następujące platformy:
+Deweloperzy mogą wybrać Unity do tworzenia i wdrażania aplikacji rzeczywistości mieszanej, które używają azure przestrzenne kotwice. Obsługiwane są następujące platformy:
 
-**Aparat Unity dla urządzeń HoloLens**
+**Jedność dla HoloLens**
 
-[Szybki Start: Tworzenie aplikacji HoloLens Unity wykorzystującej kotwice przestrzenne platformy Azure](https://docs.microsoft.com/azure/spatial-anchors/quickstarts/get-started-unity-hololens)
+[Szybki start: tworzenie aplikacji Unity HoloLens, która korzysta z zakotwiczeń przestrzennych platformy Azure](https://docs.microsoft.com/azure/spatial-anchors/quickstarts/get-started-unity-hololens)
 
-**Aparat Unity dla systemu Android**
+**Jedność dla Androida**
 
-[Szybki Start: Tworzenie aplikacji dla systemu Android w środowisku Unity korzystającej z kotwic przestrzennych platformy Azure](https://docs.microsoft.com/azure/spatial-anchors/quickstarts/get-started-unity-android)
+[Szybki start: tworzenie aplikacji Unity dla systemu Android, która korzysta z zakotwiczeń przestrzennych platformy Azure](https://docs.microsoft.com/azure/spatial-anchors/quickstarts/get-started-unity-android)
 
-**Aparat Unity dla systemu iOS**
+**Jedność dla systemu iOS**
 
-[Szybki Start: Tworzenie aplikacji Unity dla systemu iOS korzystającej z kotwic przestrzennych platformy Azure](https://docs.microsoft.com/azure/spatial-anchors/quickstarts/get-started-unity-ios)
+[Szybki start: tworzenie aplikacji Unity na iOS, która korzysta z zakotwiczeń przestrzennych platformy Azure](https://docs.microsoft.com/azure/spatial-anchors/quickstarts/get-started-unity-ios)

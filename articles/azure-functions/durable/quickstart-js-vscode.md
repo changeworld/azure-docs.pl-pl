@@ -1,16 +1,16 @@
 ---
 title: Tworzenie pierwszej funkcji trwałej na platformie Azure przy użyciu języka JavaScript
 description: Utwórz i opublikuj funkcję trwałą platformy Azure przy użyciu programu Visual Studio Code.
-author: ColbyTresness
+author: anthonychu
 ms.topic: quickstart
-ms.date: 11/07/2018
-ms.reviewer: azfuncdf, cotresne
-ms.openlocfilehash: 431bd45763cbe24e44d47342b32c5c452a27b0f6
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.date: 03/24/2020
+ms.reviewer: azfuncdf, antchu
+ms.openlocfilehash: 55098daa69d3e878140b20095b0a3e08811269e1
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77210297"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80257652"
 ---
 # <a name="create-your-first-durable-function-in-javascript"></a>Tworzenie pierwszej funkcji trwałej w języku Java Script
 
@@ -28,126 +28,161 @@ W celu ukończenia tego samouczka:
 
 * Zainstaluj narzędzie [Visual Studio Code](https://code.visualstudio.com/download).
 
-* Upewnij się, że masz najnowszą wersję [Azure Functions Core Tools](../functions-run-local.md).
+* Instalowanie rozszerzenia kodu [usługi Azure Functions](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions) VS
 
-* Na komputerze z systemem Windows sprawdź, czy zainstalowano i uruchomiono [emulator usługi Azure Storage](../../storage/common/storage-use-emulator.md). Na komputerze Mac lub komputerze z systemem Linux należy użyć rzeczywistego konta usługi Azure Storage.
+* Upewnij się, że masz najnowszą wersję [narzędzi Azure Functions Core Tools](../functions-run-local.md).
 
-* Upewnij się, że zainstalowano środowisko [Node.js](https://nodejs.org/) w wersji 8.0 lub nowszej.
+* Funkcje trwałe wymagają konta magazynu platformy Azure. Potrzebujesz subskrypcji platformy Azure.
+
+* Upewnij się, że masz zainstalowaną wersję 10.x lub 12.x [node.js.](https://nodejs.org/)
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [functions-install-vs-code-extension](../../../includes/functions-install-vs-code-extension.md)]
+## <a name="create-your-local-project"></a><a name="create-an-azure-functions-project"></a>Tworzenie lokalnego projektu 
 
-## <a name="create-an-azure-functions-project"></a>Utwórz projekt lokalny 
+W tej sekcji używasz Visual Studio Code do utworzenia lokalnego projektu usługi Azure Functions. 
 
-W tej sekcji użyto Visual Studio Code do utworzenia projektu Azure Functions lokalnego. 
+1. W programie Visual Studio Code naciśnij klawiszE F1 (lub Ctrl/Cmd+Shift+P), aby otworzyć paletę poleceń. W palecie poleceń wyszukaj i wybierz opcję `Azure Functions: Create New Project...`.
 
-1. W Visual Studio Code naciśnij klawisz F1, aby otworzyć paletę poleceń. W palecie poleceń Wyszukaj i wybierz `Azure Functions: Create new project...`.
+    ![Tworzenie funkcji](media/quickstart-js-vscode/functions-create-project.png)
 
-1. Wybierz lokalizację katalogu dla obszaru roboczego projektu, a następnie wybierz **pozycję Wybierz**.
+1. Wybierz pustą lokalizację folderu dla projektu i wybierz pozycję **Wybierz**.
 
-    > [!NOTE]
-    > Te kroki zostały zaprojektowane do ukończenia poza obszarem roboczym. W takim przypadku nie wybieraj folderu projektu, który jest częścią obszaru roboczego.
-
-1. Postępując zgodnie z instrukcjami, podaj następujące informacje dotyczące żądanego języka:
+1. Po monitach podaj następujące informacje:
 
     | Monit | Wartość | Opis |
     | ------ | ----- | ----------- |
-    | Wybierz język projektu aplikacji funkcji | JavaScript | Utwórz projekt funkcji lokalnego środowiska Node. js. |
-    | Wybierz wersję | Azure Functions v2 | Ta opcja jest wyświetlana tylko wtedy, gdy podstawowe narzędzia nie są jeszcze zainstalowane. W takim przypadku podstawowe narzędzia są instalowane przy pierwszym uruchomieniu aplikacji. |
-    | Wybierz szablon dla pierwszej funkcji projektu | Wyzwalacz HTTP | Utwórz funkcję wyzwalaną przez protokół HTTP w nowej aplikacji funkcji. |
-    | Podaj nazwę funkcji | HttpTrigger | Naciśnij klawisz ENTER, aby użyć nazwy domyślnej. |
-    | Poziom autoryzacji | Funkcja | Poziom autoryzacji `function` wymaga podania klucza dostępu podczas wywoływania punktu końcowego HTTP funkcji. Utrudnia to dostęp do niezabezpieczonego punktu końcowego. Aby dowiedzieć się więcej, zobacz [klucze autoryzacji](../functions-bindings-http-webhook-trigger.md#authorization-keys).  |
-    | Wybierz, w jaki sposób chcesz otworzyć projekt | Dodaj do obszaru roboczego | Tworzy aplikację funkcji w bieżącym obszarze roboczym. |
+    | Wybieranie języka dla projektu aplikacji funkcji | JavaScript | Utwórz lokalny projekt funkcji node.js. |
+    | Wybieranie wersji | Usługi Azure w wersji 3 | Ta opcja jest widoczna tylko wtedy, gdy narzędzia podstawowe nie są jeszcze zainstalowane. W takim przypadku narzędzia podstawowe są instalowane przy pierwszym uruchomieniu aplikacji. |
+    | Wybieranie szablonu dla pierwszej funkcji projektu | Pomiń na razie | |
+    | Wybierz sposób otwierania projektu | Otwórz w bieżącym oknie | Ponownie otwiera kod vs w wybranym folderze. |
 
-Visual Studio Code instaluje Azure Functions Core Tools, w razie konieczności. Tworzy również projekt aplikacji funkcji w nowym obszarze roboczym. Ten projekt zawiera pliki konfiguracji pliku [host. JSON](../functions-host-json.md) i [Local. Settings. JSON](../functions-run-local.md#local-settings-file) . Tworzy również folder HttpExample zawierający [plik definicji Function. JSON](../functions-reference-node.md#folder-structure) oraz [plik index. js](../functions-reference-node.md#exporting-a-function), plik Node. js, który zawiera kod funkcji.
+Kod programu Visual Studio instaluje podstawowe narzędzia usługi Azure Functions Core Tools, jeśli to konieczne. Tworzy również projekt aplikacji funkcji w folderze. Ten projekt zawiera pliki konfiguracyjne [host.json](../functions-host-json.md) i [local.settings.json.](../functions-run-local.md#local-settings-file)
 
-Plik Package. JSON jest również tworzony w folderze głównym.
+Plik package.json jest również tworzony w folderze głównym.
+
+### <a name="enable-azure-functions-v2-compatibility-mode"></a>Włącz tryb zgodności funkcji usługi Azure Functions v2
+
+Obecnie funkcje trwałe JavaScript wymagają trybu zgodności usługi Azure Functions V2, aby włączyć.
+
+1. Otwórz *local.settings.json,* aby edytować ustawienia używane podczas lokalnego uruchamiania aplikacji.
+
+1. Dodaj ustawienie `FUNCTIONS_V2_COMPATIBILITY_MODE` o nazwie `true`o wartości .
+
+    ```json
+    {
+        "IsEncrypted": false,
+        "Values": {
+            "AzureWebJobsStorage": "",
+            "FUNCTIONS_WORKER_RUNTIME": "node",
+            "FUNCTIONS_V2_COMPATIBILITY_MODE": "true"
+        }
+    }
+    ```
 
 ## <a name="install-the-durable-functions-npm-package"></a>Instalowanie pakietu npm rozszerzenia Durable Functions
+
+Aby pracować z funkcjami trwałymi w aplikacji funkcji Node.js, należy użyć biblioteki o nazwie `durable-functions`.
+
+1. Użyj menu *Widok* lub Ctrl+Shift+', aby otworzyć nowy terminal w programie VS Code.
 
 1. Zainstaluj pakiet npm `durable-functions`, uruchamiając polecenie `npm install durable-functions` w katalogu głównym aplikacji funkcji.
 
 ## <a name="creating-your-functions"></a>Tworzenie funkcji
 
-Teraz utworzysz trzy funkcje potrzebne do rozpoczęcia pracy z Durable Functions: HTTP Starter, programu Orchestrator i funkcji działania. Usługa HTTP Starter inicjuje całe rozwiązanie, a koordynator wyśle pracę do różnych funkcji działania.
+Najbardziej podstawowa aplikacja Trwałe funkcje zawiera trzy funkcje:
 
-### <a name="http-starter"></a>HTTP Starter
+* *Funkcja koordynatora* - opisuje przepływ pracy, który organizuje inne funkcje.
+* *Funkcja działania* - wywoływana przez funkcję koordynatora, wykonuje pracę i opcjonalnie zwraca wartość.
+* *Funkcja klienta* — zwykła funkcja platformy Azure, która uruchamia funkcję koordynatora. W tym przykładzie użyto funkcji wyzwalanej przez HTTP.
 
-Najpierw należy utworzyć funkcję wyzwalaną przez protokół HTTP, która rozpoczyna aranżację funkcji trwałej.
+### <a name="orchestrator-function"></a>Funkcja koordynatora
 
-1. Na *platformie Azure: funkcje*wybierz ikonę **Utwórz funkcję** .
+Szablon służy do tworzenia kodu funkcji trwałe w projekcie.
 
-    ![Tworzenie funkcji](./media/quickstart-js-vscode/create-function.png)
+1. W palecie poleceń wyszukaj i wybierz opcję `Azure Functions: Create Function...`.
 
-2. Wybierz folder z projektem aplikacji funkcji i wybierz szablon Durable Functions funkcji **http Starter** .
+1. Po monitach podaj następujące informacje:
 
-    ![Wybierz szablon HTTP Starter](./media/quickstart-js-vscode/create-function-choose-template.png)
+    | Monit | Wartość | Opis |
+    | ------ | ----- | ----------- |
+    | Wybieranie szablonu dla funkcji | Orkiestrator trwałych funkcji | Tworzenie aranżacji funkcji trwałych |
+    | Podaj nazwę funkcji | HelloOrchestrator (wygłębianie) | Nazwa twojej trwałej funkcji |
 
-3. Pozostaw nazwę domyślną jako `DurableFunctionsHttpStart` i naciśnij klawisze * * * * ENTER * *, a następnie wybierz opcję uwierzytelnianie **anonimowe** .
+Dodano koordynatora do koordynowania funkcji działania. Otwórz *HelloOrchestrator/index.js,* aby wyświetlić funkcję koordynatora. Każde wywołanie `context.df.callActivity` wywoływania funkcji `Hello`działania o nazwie .
 
-    ![Wybieranie uwierzytelniania anonimowego](./media/quickstart-js-vscode/create-function-anonymous-auth.png)
+Następnie dodasz funkcję `Hello` działania, do której istnieje odwołanie.
 
-Teraz utworzyliśmy punkt wejścia do naszej funkcji trwałej. Dodajmy orkiestratora.
+### <a name="activity-function"></a>Funkcja działania
 
-### <a name="orchestrator"></a>Orchestrator
+1. W palecie poleceń wyszukaj i wybierz opcję `Azure Functions: Create Function...`.
 
-Teraz utworzymy koordynatora do współdziałania z funkcjami działania.
+1. Po monitach podaj następujące informacje:
 
-1. Na *platformie Azure: funkcje*wybierz ikonę **Utwórz funkcję** .
+    | Monit | Wartość | Opis |
+    | ------ | ----- | ----------- |
+    | Wybieranie szablonu dla funkcji | Działanie funkcji trwałych | Tworzenie funkcji działania |
+    | Podaj nazwę funkcji | Hello | Nazwa funkcji aktywności |
 
-    ![Tworzenie funkcji](./media/quickstart-js-vscode/create-function.png)
+Dodano funkcję `Hello` działania, która jest wywoływana przez koordynatora. Otwórz *Hello/index.js,* aby zobaczyć, że przyjmuje nazwę jako dane wejściowe i zwraca powitanie. Funkcja działania to funkcja, w której będziesz wykonywać akcje, takie jak wykonywanie wywołania bazy danych lub wykonywanie obliczeń.
 
-2. Wybierz folder z projektem aplikacji funkcji i wybierz szablon funkcji **Durable Functions programu Orchestrator** . Pozostaw nazwę domyślną "DurableFunctionsOrchestrator"
+Na koniec dodasz funkcję wyzwalaną http, która uruchamia aranżację.
 
-    ![Wybieranie szablonu programu Orchestrator](./media/quickstart-js-vscode/create-function-choose-template.png)
+### <a name="client-function-http-starter"></a>Funkcja klienta (rozrusznik HTTP)
 
-Dodaliśmy orkiestrator w celu koordynowania funkcji działania. Dodajmy teraz funkcję przywoływanego działania.
+1. W palecie poleceń wyszukaj i wybierz opcję `Azure Functions: Create Function...`.
 
-### <a name="activity"></a>Działanie
+1. Po monitach podaj następujące informacje:
 
-Teraz utworzymy funkcję działania, która faktycznie przeprowadzi pracę rozwiązania.
+    | Monit | Wartość | Opis |
+    | ------ | ----- | ----------- |
+    | Wybieranie szablonu dla funkcji | Trwałe funkcje ROZRUSZNIK HTTP | Tworzenie funkcji startowej HTTP |
+    | Podaj nazwę funkcji | Trwałe funkcjeHttpStart | Nazwa funkcji aktywności |
+    | Poziom autoryzacji | Anonimowe | W celach demonstracyjnych zezwalaj na wywoływanie funkcji bez uwierzytelniania |
 
-1. Na *platformie Azure: funkcje*wybierz ikonę **Utwórz funkcję** .
+Dodano funkcję wyzwalaną http, która uruchamia aranżację. Otwórz *DurableFunctionsHttpStart/index.js,* aby zobaczyć, że używa `client.startNew` do rozpoczęcia nowej aranżacji. Następnie używa `client.createCheckStatusResponse` do zwrócenia odpowiedzi HTTP zawierającej adresy URL, które mogą być używane do monitorowania i zarządzania nową aranżacją.
 
-    ![Tworzenie funkcji](./media/quickstart-js-vscode/create-function.png)
-
-2. Wybierz folder z projektem aplikacji funkcji i wybierz szablon funkcji **działania Durable Functions** . Pozostaw nazwę domyślną "Hello".
-
-    ![Wybieranie szablonu działania](./media/quickstart-js-vscode/create-function-choose-template.png)
-
-Dodaliśmy już wszystkie składniki potrzebne do rozpoczęcia aranżacji i utworzenia łańcucha funkcji działań.
+Masz teraz aplikację funkcje trwałe, które można uruchomić lokalnie i wdrożone na platformie Azure.
 
 ## <a name="test-the-function-locally"></a>Lokalne testowanie funkcji
 
 Podstawowe narzędzia usługi Azure Functions umożliwiają uruchamianie projektu usługi Azure Functions na lokalnym komputerze deweloperskim. Monit o zainstalowanie tych narzędzi pojawia się przy pierwszym uruchomieniu funkcji w programie Visual Studio Code.
 
-1. Na komputerze z systemem Windows uruchom emulator usługi Azure Storage i upewnij się, że właściwość **AzureWebJobsStorage** pliku *Local. Settings. JSON* jest ustawiona na wartość `UseDevelopmentStorage=true`.
-
-    W przypadku emulatora magazynu 5,8 upewnij się, że właściwość **AzureWebJobsSecretStorageType** lokalnego. Settings. JSON ma wartość `files`. Na komputerze Mac lub Linux należy ustawić właściwość **AzureWebJobsStorage** na parametry połączenia istniejącego konta usługi Azure Storage. W dalszej części tego artykułu utworzysz konto magazynu.
-
-2. Aby przetestować funkcję, ustaw punkt przerwania w kodzie funkcji, a następnie naciśnij klawisz F5, aby uruchomić projekt aplikacji funkcji. Dane wyjściowe z pakietu Core Tools są wyświetlane na panelu **terminalu**. Jeśli po raz pierwszy używasz funkcji trwałych, jest instalowane rozszerzenie Durable Functions, a kompilacja może potrwać kilka sekund.
+1. Aby przetestować funkcję, ustaw punkt `Hello` przerwania w kodzie funkcji działania (*Hello/index.js*). Naciśnij klawisz F5 lub wybierz `Debug: Start Debugging` z palety poleceń, aby uruchomić projekt aplikacji funkcji. Dane wyjściowe z pakietu Core Tools są wyświetlane na panelu **terminalu**.
 
     > [!NOTE]
-    > Rozszerzenie Durable Functions języka JavaScript wymaga wersji **1.7.0** lub większej rozszerzenia **Microsoft.Azure.WebJobs.Extensions.DurableTask**. Uruchom następujące polecenie z folderu głównego aplikacji Azure Functions, aby zainstalować rozszerzenie Durable Functions `func extensions install -p Microsoft.Azure.WebJobs.Extensions.DurableTask -v 1.7.0`
+    > Więcej informacji na temat debugowania można znaleźć w [diagnostyce funkcji trwałych.](durable-functions-diagnostics.md#debugging)
 
-3. W panelu **terminalu** skopiuj punkt końcowy adresu URL funkcji wyzwalanej przez protokół HTTP.
+1. Funkcje trwałe wymaga konta usługi Azure Storage do uruchomienia. Gdy program VS Code wyświetli monit o wybranie konta magazynu, wybierz pozycję **Wybierz konto magazynu**.
 
-    ![Lokalne dane wyjściowe platformy Azure](../media/functions-create-first-function-vs-code/functions-vscode-f5.png)
+    ![Tworzenie konta magazynu](media/quickstart-js-vscode/functions-select-storage.png)
 
-4. Zastąp element `{functionName}` pytaniem `DurableFunctionsOrchestrator`.
+1. Po monitach podaj następujące informacje, aby utworzyć nowe konto magazynu na platformie Azure.
 
-5. Za pomocą narzędzia, takiego jak [Poster](https://www.getpostman.com/) lub [zwinięcie](https://curl.haxx.se/), Wyślij żądanie HTTP POST do punktu końcowego adresu URL.
+    | Monit | Wartość | Opis |
+    | ------ | ----- | ----------- |
+    | Wybieranie subskrypcji | *nazwa subskrypcji* | Wybierz subskrypcję platformy Azure |
+    | Wybieranie konta magazynu | Tworzenie nowego konta magazynu |  |
+    | Wprowadź nazwę nowego konta magazynu | *unikatowa nazwa* | Nazwa konta magazynu do utworzenia |
+    | Wybieranie grupy zasobów | *unikatowa nazwa* | Nazwa grupy zasobów do utworzenia |
+    | Wybieranie lokalizacji | *region* | Wybierz region blisko ciebie |
 
-   Odpowiedź to początkowy wynik z funkcji HTTP informujący o pomyślnym uruchomieniu aranżacji trwałej. Nie jest to jeszcze końcowy wynik aranżacji. Odpowiedź zawiera kilka przydatnych adresów URL. Na razie wykonajmy zapytanie o stan aranżacji.
+1. W panelu **terminalu** skopiuj punkt końcowy adresu URL funkcji wyzwalanej przez protokół HTTP.
 
-6. Skopiuj wartość adresu URL dla `statusQueryGetUri` i wklej ją na pasku adresu przeglądarki i wykonaj żądanie. Możesz również nadal korzystać z programu Poster w celu wystawienia żądania GET.
+    ![Lokalne dane wyjściowe platformy Azure](media/quickstart-js-vscode/functions-f5.png)
 
-   Żądanie wykona zapytanie o stan wystąpienia aranżacji. Powinna zostać wyświetlona ostateczna odpowiedź, która pokazuje, że wystąpienie zostało zakończone i zawiera dane wyjściowe lub wyniki funkcji trwałej. Wygląda na to: 
+1. Za pomocą narzędzia, takiego jak [Listonosz](https://www.getpostman.com/) lub [cURL,](https://curl.haxx.se/)wyślij żądanie HTTP POST do punktu końcowego adresu URL. Zastąp ostatni segment nazwą funkcji`HelloOrchestrator`koordynatora ( ). Adres URL powinien `http://localhost:7071/api/orchestrators/HelloOrchestrator`być podobny do .
+
+   Odpowiedź jest wynikiem początkowym z funkcji HTTP, informując, że trwała aranżacja została pomyślnie uruchomiona. Nie jest to jeszcze końcowy wynik aranżacji. Odpowiedź zawiera kilka przydatnych adresów URL. Na razie wykonajmy zapytanie o stan aranżacji.
+
+1. Skopiuj `statusQueryGetUri` wartość adresu URL i wklej ją na pasku adresu przeglądarki i wykonaj żądanie. Alternatywnie można również kontynuować korzystanie z listonosza do wystawiania żądania GET.
+
+   Żądanie wykona zapytanie o stan wystąpienia aranżacji. Należy uzyskać ostateczną odpowiedź, która pokazuje nam wystąpienie zostało zakończone i zawiera dane wyjściowe lub wyniki funkcji trwałe. Wygląda na to, że: 
 
     ```json
     {
-        "instanceId": "d495cb0ac10d4e13b22729c37e335190",
+        "name": "HelloOrchestrator",
+        "instanceId": "9a528a9e926f4b46b7d3deaa134b7e8a",
         "runtimeStatus": "Completed",
         "input": null,
         "customStatus": null,
@@ -156,12 +191,12 @@ Podstawowe narzędzia usługi Azure Functions umożliwiają uruchamianie projekt
             "Hello Seattle!",
             "Hello London!"
         ],
-        "createdTime": "2018-11-08T07:07:40Z",
-        "lastUpdatedTime": "2018-11-08T07:07:52Z"
+        "createdTime": "2020-03-18T21:54:49Z",
+        "lastUpdatedTime": "2020-03-18T21:54:54Z"
     }
     ```
 
-7. Aby zatrzymać debugowanie, naciśnij klawisze **Shift + F5** w vs Code.
+1. Aby zatrzymać debugowanie, naciśnij **klawisze Shift + F5** w programie VS Code.
 
 Gdy będziesz mieć pewność, że funkcja działa poprawnie na komputerze lokalnym, możesz opublikować projekt na platformie Azure.
 
@@ -169,11 +204,23 @@ Gdy będziesz mieć pewność, że funkcja działa poprawnie na komputerze lokal
 
 [!INCLUDE [functions-publish-project-vscode](../../../includes/functions-publish-project-vscode.md)]
 
+### <a name="enable-azure-functions-v2-compatibility-mode"></a>Włącz tryb zgodności funkcji usługi Azure Functions v2
+
+Ta sama zgodność usługi Azure Functions V2, która została włączona lokalnie, musi być włączona w aplikacji na platformie Azure.
+
+1. Korzystając z palety poleceń, `Azure Functions: Edit Setting...`wyszukaj i wybierz opcję .
+
+1. Postępuj zgodnie z instrukcjami, aby zlokalizować aplikację funkcji w ramach subskrypcji platformy Azure.
+
+1. Wybierz pozycję `Create new App Setting...`.
+
+1. Wprowadź nowy klucz `FUNCTIONS_V2_COMPATIBILITY_MODE`ustawień .
+
+1. Wprowadź wartość ustawienia `true`.
+
 ## <a name="test-your-function-in-azure"></a>Testowanie funkcji na platformie Azure
 
-1. Skopiuj adres URL wyzwalacza HTTP z panelu **Dane wyjściowe**. Adres URL, który wywołuje funkcję wyzwalaną przez protokół HTTP, powinien mieć następujący format:
-
-        http://<functionappname>.azurewebsites.net/orchestrators/<functionname>
+1. Skopiuj adres URL wyzwalacza HTTP z panelu **Dane wyjściowe**. Adres URL, który wywołuje funkcję wyzwalaną przez HTTP, powinien być w tym formacie:`http://<functionappname>.azurewebsites.net/orchestrators/HelloOrchestrator`
 
 2. Wklej nowy adres URL żądania HTTP na pasku adresu przeglądarki. Podczas korzystania z opublikowanej aplikacji powinna zostać zwrócona taka sama odpowiedź dotycząca stanu.
 

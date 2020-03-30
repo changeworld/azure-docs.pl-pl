@@ -4,10 +4,10 @@ description: Rozpocznij monitorowanie nowej aplikacji przy użyciu nowego klucza
 ms.topic: conceptual
 ms.date: 07/11/2018
 ms.openlocfilehash: 395e8d667985318f4a084428c6fd4c395ee8b956
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77671447"
 ---
 # <a name="monitor-a-sharepoint-site-with-application-insights"></a>Monitorowanie witryny programu SharePoint za pomocą usługi Application Insights
@@ -16,7 +16,7 @@ Usługa Azure Application Insights monitoruje dostępność, wydajność i użyc
 ## <a name="create-an-application-insights-resource"></a>Tworzenie zasobu usługi Application Insights
 W witrynie [Azure Portal](https://portal.azure.com) utwórz nowy zasób usługi Application Insights. Wybierz ASP.NET jako typ aplikacji.
 
-![Kliknij opcję Właściwości, zaznacz klucz i naciśnij Ctrl+C](./media/sharepoint/001.png)
+![Kliknij opcję Właściwości, zaznacz klucz i naciśnij klawisze Ctrl+C](./media/sharepoint/001.png)
 
 Okno, które zostanie otwarte, to miejsce, gdzie zobaczysz dane o wydajności i użyciu aplikacji. Aby wrócić do niego przy następnym logowaniu do platformy Azure, musisz znaleźć odpowiedni kafelek na ekranie startowym. Alternatywnie kliknij przycisk Przeglądaj, aby go znaleźć.
 
@@ -39,7 +39,7 @@ var sdkInstance="appInsightsSDK";window[sdkInstance]="appInsights";var aiName=wi
 </script>
 ```
 
-Wstaw skrypt tuż przed tagiem &lt;/Head&gt; każdej strony, którą chcesz śledzić. Jeśli witryna sieci Web ma stronę wzorcową, możesz umieścić skrypt w tym miejscu. Na przykład w projekcie MVC programu ASP.NET możesz go umieścić w pliku View\Shared\_Layout.cshtml
+Wstaw skrypt tuż &lt;przed&gt; tagiem /head każdej strony, którą chcesz śledzić. Jeśli twoja witryna ma stronę wzorcową, możesz umieścić tam skrypt. Na przykład w projekcie MVC programu ASP.NET możesz go umieścić w pliku View\Shared\_Layout.cshtml
 
 Skrypt zawiera klucz instrumentacji, który kieruje dane telemetryczne do zasobu usługi Application Insights.
 

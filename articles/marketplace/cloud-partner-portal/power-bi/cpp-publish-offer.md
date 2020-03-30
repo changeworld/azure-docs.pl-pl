@@ -1,60 +1,59 @@
 ---
-title: Publikowanie oferty aplikacji Power BI | Portal Azure Marketplace
-description: Opublikuj ofertę aplikacji Power BI w witrynie Microsoft AppSource Marketplace.
-services: Azure, AppSource, Marketplace, Cloud Partner Portal, Power BI
-author: v-miclar
+title: Publikowanie oferty aplikacji Power BI | Azure Marketplace
+description: Publikowanie oferty aplikacji usługi Power BI w portalu Microsoft AppSource marketplace.
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 01/31/2019
-ms.author: pabutler
-ms.openlocfilehash: 324be960bd2d22623763ca3e24b99be92ff04174
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 89d437fe74d209e0dc04ffc590a1e32426b28732
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73826035"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80275870"
 ---
-# <a name="publish-a-power-bi-app-offer"></a>Publikowanie oferty aplikacji Power BI
+# <a name="publish-a-power-bi-app-offer"></a>Publikowanie oferty aplikacji Usługi Power BI
 
-Ostatnim krokiem po zdefiniowaniu oferty w portal Cloud Partner i utworzeniu skojarzonych zasobów technicznych jest przesłanie oferty do opublikowania. Aby rozpocząć ten proces, w lewym okienku okna **Nowa oferta** wybierz pozycję **Publikuj**. Aby uzyskać więcej informacji, zobacz temat [Publikowanie ofert w portalu Azure Marketplace i AppSource](../manage-offers/cpp-publish-offer.md).
+Ostatnim krokiem po zdefiniowaniu oferty w portalu cloud partner i utworzeniu skojarzonych zasobów technicznych jest przesłanie oferty do publikacji. Aby rozpocząć ten proces, w lewym okienku okna **Nowa oferta** wybierz pozycję **Publikuj**. Aby uzyskać więcej informacji, zobacz [Publikowanie ofert portalu Azure Marketplace i AppSource](../manage-offers/cpp-publish-offer.md).
 
 
 ## <a name="publishing-steps"></a>Kroki publikowania
 
-Oto główne kroki w procesie publikowania:
+Oto główne kroki procesu publikowania:
 
-![Etapy procesu publikowania dla oferty aplikacji Power BI](./media/publishing-process-steps.png)
+![Kroki procesu publikowania dla oferty aplikacji Power BI](./media/publishing-process-steps.png)
 
-W tej tabeli opisano każdy krok i podano szacowany czas ukończenia:
+W tej tabeli opisano każdy krok i przedstawiono szacowany czas ukończenia:
 
-|   Etap publikowania            |   Time     |   Opis                                                                  |
+|   Krok publikowania            |   Time     |   Opis                                                                  |
 | --------------------         |------------| ----------------                                                               |
-| Sprawdzanie wymagań wstępnych       | 15 minut     | Informacje o ofercie i ustawienia oferty są weryfikowane.                            |
-| Certyfikacja                | 1-7 dni   | Zespół certyfikacji Power BI analizuje swoją ofertę. Zespół uruchamia aplikację Power BI za pośrednictwem testu ręcznego weryfikacji przez zainstalowanie aplikacji za pomocą podanego adresu URL instalacji. Podstawowe walidacje są wykonywane w ramach procesu certyfikacji aplikacji (opisanego w dalszej części tego dokumentu).         |
-| Tworzenie pakietów                    | \< 1 godz.  | Zasoby techniczne oferty są pakowane do użytku przez klienta.                        |
-| Rejestracja generacji potencjalnego klienta | \< 1 godz.  | Systemy liderów zostały skonfigurowane i wdrożone.                                      |
-| Wydawca przygotowania            | \-         | Zakończenie przeglądu końcowego i potwierdzenia przed rozpoczęciem tej oferty. Teraz masz również link umożliwiający wyświetlenie podglądu oferty. Gdy zobaczysz, jak wygląda Podgląd, wybierz pozycję **Przejdź na żywo** na karcie **stan** . Spowoduje to wysłanie żądania do zespołu dołączania w celu wyświetlenia listy aplikacji w witrynie AppSource.    |
-| Na żywo                         | \< 3 godziny | Twoja oferta jest teraz publicznie wyświetlana na liście ("Live") w witrynie AppSource, a klienci mogą wyświetlać swoją aplikację i wdrażać ją w ramach subskrypcji Power BI. Otrzymasz również wiadomość e-mail z potwierdzeniem. W prawej kolumnie na karcie **wszystkie oferty** możesz zobaczyć stan wszystkich ofert. Na karcie **stan** można zobaczyć szczegółowy stan przepływu publikacji dla swojej oferty. |
+| Sprawdzanie poprawności wymagań wstępnych       | 15 minut     | Informacje o ofercie i ustawienia oferty są sprawdzane.                            |
+| Certyfikacja                | 1-7 dni   | Zespół certyfikacji usługi Power BI analizuje ofertę. Zespół uruchamia aplikację usługi Power BI za pomocą testu weryfikacji ręcznej, instalując aplikację za pomocą podanego adresu URL instalacji. Podstawowe weryfikacje są wykonywane w ramach procesu certyfikacji aplikacji (opisane w dalszej części tego dokumentu).         |
+| Tworzenie pakietów                    | \<1 godz.  | Aktywa techniczne oferty są pakowane do użytku klienta.                        |
+| Rejestracja generowania potencjalnych osób | \<1 godz.  | Systemy potencjalnych potencjalnych klient są konfigurowane i wdrażane.                                      |
+| Znakowanie wydawcy            | \-         | Przed rozpoczęciem realizacji oferty należy wykonać ostateczną recenzję i potwierdzenie. Teraz będziesz mieć link do podglądu oferty. Po zadowoleniu z wyglądu podglądu wybierz pozycję Przejdź na **żywo** na karcie **Stan.** Spowoduje to wysłanie żądania do zespołu dołączania do listy aplikacji w u źródła aplikacji.    |
+| Na żywo                         | \<3 godz. | Twoja oferta jest teraz publicznie wyświetlana ("na żywo") w usłudze AppSource, a klienci mogą wyświetlać aplikację i wdrażać ją w swoich subskrypcjach usługi Power BI. Otrzymasz również wiadomość e-mail z potwierdzeniem. W prawej kolumnie na karcie **Wszystkie oferty** możesz zobaczyć stan wszystkich ofert. Na karcie **Stan** możesz zobaczyć szczegółowy stan przepływu publikowania oferty. |
 |   |   |
 
-Ukończenie tego procesu może potrwać do ośmiu dni. Po przeprowadzeniu tych kroków publikowania w sekcji [AppSource](https://appsource.microsoft.com/marketplace/apps?product=power-bi%20) Power BI Apps zostanie wyświetlona oferta aplikacji Power BI.
+Poczekaj do ośmiu dni na zakończenie tego procesu. Po przejściu przez te kroki publikowania oferta aplikacji usługi Power BI zostanie wyświetlona w sekcji Aplikacje usługi Power BI [appsource.](https://appsource.microsoft.com/marketplace/apps?product=power-bi%20)
 
 
 ### <a name="app-certification-process"></a>Proces certyfikacji aplikacji
 
-Zespół ds. dołączania firmy Microsoft używa tego procesu do weryfikacji oferty Power BI aplikacji:
+Zespół dołączania firmy Microsoft używa tego procesu do sprawdzania poprawności przesyłania oferty aplikacji Power BI:
 
 1. Przejrzyj dokumenty prawne i linki pomocy.
 2. Sprawdź poprawność informacji kontaktowych pomocy technicznej.
-3. Użyj adresu URL Instalatora, aby sprawdzić poprawność instalacji.
-4. Skanuj aplikację pod kątem złośliwego oprogramowania i innej złośliwej zawartości.
+3. Użyj adresu URL instalatora, aby zweryfikować prawidłową instalację.
+4. Przeskanuj aplikację w poszukiwaniu złośliwego oprogramowania i innej szkodliwej zawartości.
 5. Sprawdź, czy wyświetlana zawartość jest zgodna z opisem aplikacji.
-6. Sprawdź, czy operacje związane z aplikacją działają zgodnie z oczekiwaniami w Power BI. Zespół otwiera raporty i pulpity nawigacyjne z przykładowymi danymi, nawiązuje połączenie z niestandardowymi źródłami danych, odświeża dane i tak dalej.
+6. Sprawdź, czy operacje związane z aplikacjami działają zgodnie z oczekiwaniami w usłudze Power BI. Zespół otwiera raporty i pulpity nawigacyjne z przykładowymi danymi, łączy się z niestandardowymi źródłami danych, odświeża dane i tak dalej.
 
-Zespół certyfikacji dostarcza informacje zwrotne o problemach.  Więcej informacji o wymaganiach dotyczących aplikacji Power BI można znaleźć w [dokumentacji aplikacji Power BI](https://go.microsoft.com/fwlink/?linkid=2028636).
+Zespół certyfikacyjny przekazuje opinie w przypadku znalezienia jakichkolwiek problemów.  Aby uzyskać więcej informacji na temat wymagań aplikacji usługi Power BI, zobacz [dokumentację aplikacji usługi Power BI](https://go.microsoft.com/fwlink/?linkid=2028636).
 
 
 ## <a name="next-steps"></a>Następne kroki
 
-Zalecamy regularne monitorowanie aplikacji w [witrynie AppSource Marketplace](https://appsource.microsoft.com).  W celu uzyskania wglądu w informacje o klientach portalu Marketplace i użyciu aplikacji należy również użyć funkcji [Informacje o sprzedawcy](../../cloud-partner-portal-orig/si-getting-started.md) [Portal Cloud partner](https://cloudpartner.azure.com/#insights) . Na koniec możesz [zaktualizować swoją ofertę](./cpp-update-existing-offer.md).
+Zalecamy regularne monitorowanie aplikacji w [witrynie AppSource Marketplace.](https://appsource.microsoft.com)  Należy również użyć funkcji [Statystyki sprzedawcy](../../cloud-partner-portal-orig/si-getting-started.md) w [portalu Cloud Partner Portal,](https://cloudpartner.azure.com/#insights) aby uzyskać szczegółowe informacje na temat klientów z marketplace i użycia aplikacji. Na koniec możesz [zaktualizować ofertę](./cpp-update-existing-offer.md).

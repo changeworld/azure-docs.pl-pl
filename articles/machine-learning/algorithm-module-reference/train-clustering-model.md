@@ -1,7 +1,7 @@
 ---
-title: 'Model usługi Uczenie: informacje o module'
+title: 'Model klastrowania pociągu: odwołanie do modułu'
 titleSuffix: Azure Machine Learning
-description: Dowiedz się, w jaki sposób używać modułu uczenie modelu klastra w Azure Machine Learning do uczenia modeli klastrowania.
+description: Dowiedz się, jak korzystać z modułu modelu klastrowania pociągu w usłudze Azure Machine Learning do uczenia modeli klastrowania.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,50 +9,50 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 11/19/2019
-ms.openlocfilehash: 7053fab28b4a231c92f31e344cf09ffef3a6b146
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.openlocfilehash: c29baf3cdda998a2ab78c84f3311b84d37086bcd
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77152112"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79477429"
 ---
 # <a name="train-clustering-model"></a>Trenowanie modelu klastrowania
 
-W tym artykule opisano moduł w programie Azure Machine Learning Designer (wersja zapoznawcza).
+W tym artykule opisano moduł w projektancie usługi Azure Machine Learning (wersja zapoznawcza).
 
-Ten moduł służy do uczenia modelu klastrowania.
+Ten moduł służy do szkolenia modelu klastrowania.
 
-Moduł przyjmuje niepociąg Model klastrowania, który został już skonfigurowany przy użyciu modułu [K-oznacza klastrowanie](k-means-clustering.md) , i połączy model przy użyciu zestawu danych z etykietą lub bez etykiety. Moduł tworzy zarówno model szkolony, którego można użyć do prognozowania, jak i zestaw przypisań klastra dla każdego przypadku w danych szkoleniowych.
+Moduł przyjmuje nieprzeszkolony model klastrowania, który został już skonfigurowany przy użyciu modułu [klastrowania K-Means,](k-means-clustering.md) i trenuje model przy użyciu zestawu danych oznaczonych etykietą lub bez etykiety. Moduł tworzy zarówno wyszkolony model, który można użyć do przewidywania, jak i zestaw przypisań klastra dla każdego przypadku w danych szkoleniowych.
 
 > [!NOTE]
-> Model klastrowania nie może być szkolony przy użyciu modułu [uczenie modelu](train-model.md) , który jest modułem ogólnym do uczenia modeli uczenia maszynowego. Wynika to z faktu, że [model uczenia](train-model.md) działa tylko z algorytmami uczenia nadzorowanego. K-oznacza i inne algorytmy klastrowania umożliwiają nienadzorowane uczenie, co oznacza, że algorytm może poznać dane nieoznaczone.  
+> Nie można uszkoć modelu klastrowania przy użyciu modułu [Model pociągu,](train-model.md) który jest modułem ogólnym do szkolenia modeli uczenia maszynowego. To [dlatego, że Model pociągu](train-model.md) działa tylko z nadzorowanych algorytmów uczenia. K-środki i inne algorytmy klastrowania umożliwiają nienadzorowane uczenie się, co oznacza, że algorytm może uczyć się na danych bez etykiety.  
   
-## <a name="how-to-use-train-clustering-model"></a>Jak używać modelu klastrów uczenia  
+## <a name="how-to-use-train-clustering-model"></a>Jak korzystać z modelu klastrowania pociągu  
 
-1.  Dodaj moduł **uczenie modelu klastra** do potoku w projektancie. Moduł można znaleźć w obszarze **Machine Learning modułów**w kategorii **szkolenie** .  
+1.  Dodaj **moduł modelu klastrowania pociągu** do potoku w projektancie. Moduł można znaleźć w obszarze **Moduły uczenia maszynowego**w kategorii **Pociąg.**  
   
-2. Dodaj moduł [K-oznaczający klastrowanie](k-means-clustering.md) lub inny niestandardowy moduł, który tworzy zgodny Model klastrowania, i ustaw parametry modelu klastrowania.  
+2. Dodaj moduł [klastrowania K-Means](k-means-clustering.md) lub inny moduł niestandardowy, który tworzy zgodny model klastrowania i ustaw parametry modelu klastrowania.  
     
-3.  Dołączanie zestawu danych szkoleniowych do prawego wejścia **modelu klastra**szkoleń.
+3.  Dołącz zestaw danych szkoleniowych do po prawej stronie wejścia **modelu klastrowania pociągu**.
   
-5.  W obszarze **zestaw kolumn**wybierz kolumny z zestawu danych, które mają być używane podczas tworzenia klastrów. Pamiętaj, aby wybrać kolumny, które tworzą dobre funkcje: na przykład Unikaj używania identyfikatorów lub innych kolumn, które mają unikatowe wartości, lub kolumn, które mają wszystkie te same wartości.
+5.  W **polu Zestaw kolumn**wybierz kolumny z zestawu danych, które mają być używane w klastrach. Pamiętaj, aby wybrać kolumny, które tworzą dobre funkcje: na przykład unikaj używania identyfikatorów lub innych kolumn, które mają unikatowe wartości, lub kolumn, które mają te same wartości.
 
-    Jeśli etykieta jest dostępna, możesz użyć jej jako funkcji lub pozostawić ją.  
+    Jeśli etykieta jest dostępna, można jej użyć jako elementu lub pozostawić ją na zewnątrz.  
   
-6. Wybierz opcję, zaznacz pole **wyboru Dołącz lub usuń zaznaczenie tylko dla wyniku**, jeśli chcesz, aby dane szkoleniowe były wyprowadzane razem z nową etykietą klastra.
+6. Wybierz opcję **Sprawdź, czy należy dołączyć lub odznacz tylko wynik**, jeśli chcesz wyprowadzić dane szkoleniowe razem z nową etykietą klastra.
 
-    W przypadku zaznaczenia tej opcji tylko przypisania klastra są wyprowadzane. 
+    Jeśli usuniesz zaznaczenie tej opcji, tylko przypisania klastra są dane wyjściowe. 
 
-7. Uruchom potok lub kliknij moduł **uczenie modelu klastra** , a następnie wybierz pozycję **Uruchom wybrane**.  
+7. Prześlij potok lub kliknij moduł **Modelu klastrowania pociągu** i wybierz pozycję **Uruchom zaznaczone**.  
   
 ### <a name="results"></a>Wyniki
 
 Po zakończeniu szkolenia:
 
-+ Aby zapisać migawkę przeszkolonego modelu, wybierz kartę dane **wyjściowe** w prawym panelu modułu **uczenie modelu** . Wybierz ikonę **zarejestruj zestaw danych** , aby zapisać model jako moduł wielokrotnego użytku.
++ Aby zapisać migawkę uczonego modelu, wybierz kartę **Wyjścia** w prawym panelu modułu **Modelu pociągu.** Wybierz ikonę **Zarejestruj zestaw danych,** aby zapisać model jako moduł wielokrotnego wyboru.
 
-+ Aby wygenerować wyniki z modelu, użyj [przypisywania danych do klastrów](assign-data-to-clusters.md).
++ Aby wygenerować wyniki z modelu, należy użyć funkcji [Przypisywanie danych do klastrów](assign-data-to-clusters.md).
 
 ## <a name="next-steps"></a>Następne kroki
 
-Zapoznaj się z [zestawem modułów dostępnych](module-reference.md) do Azure Machine Learning. 
+Zobacz [zestaw modułów dostępnych dla](module-reference.md) usługi Azure Machine Learning. 

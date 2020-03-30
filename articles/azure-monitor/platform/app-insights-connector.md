@@ -1,272 +1,272 @@
 ---
-title: Wyświetlanie danych aplikacji usługi Azure Application Insights | Dokumentacja firmy Microsoft
-description: Za pomocą rozwiązania łącznik usługi Application Insights do diagnozowania problemów z wydajnością i zrozumieć, jak użytkownicy korzystają z aplikacją, gdy są monitorowane przy użyciu usługi Application Insights.
+title: Wyświetlanie danych aplikacji usługi Azure Application Insights | Dokumenty firmy Microsoft
+description: Za pomocą rozwiązania łącznika usługi Application Insights można zdiagnozować problemy z wydajnością i zrozumieć, co użytkownicy robią z aplikacją, gdy są monitorowane za pomocą usługi Application Insights.
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/13/2019
 ms.openlocfilehash: c143d8aa24d3479f4619ea2c220d4a0c593f9cb1
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77665158"
 ---
-# <a name="application-insights-connector-management-solution-deprecated"></a>Rozwiązanie do zarządzania Application Insights Connector (przestarzałe)
+# <a name="application-insights-connector-management-solution-deprecated"></a>Rozwiązanie do zarządzania łącznikami usługi Application Insights (przestarzałe)
 
-![Application Insights symboli](./media/app-insights-connector/app-insights-connector-symbol.png)
+![Symbol usługi Application Insights](./media/app-insights-connector/app-insights-connector-symbol.png)
 
 >[!NOTE]
-> W przypadku obsługi [zapytań między zasobami](../../azure-monitor/log-query/cross-workspace-query.md), rozwiązanie do zarządzania Application Insights Connector nie jest już wymagane. Jest on przestarzały i usuwany z portalu Azure Marketplace wraz z portalem pakietu OMS, który został oficjalnie uznany za przestarzały 15 stycznia 2019 dla chmury komercyjnej platformy Azure. Zostanie ona wycofana 30 marca 2019 dla chmury rządowej USA platformy Azure.
+> Dzięki obsłudze [zapytań między zasobami](../../azure-monitor/log-query/cross-workspace-query.md)rozwiązanie do zarządzania łącznikiem usługi Application Insights nie jest już wymagane. Został przestarzały i usunięty z portalu Azure Marketplace wraz z portalem OMS, który został oficjalnie przestarzały 15 stycznia 2019 r. dla chmury komercyjnej platformy Azure. Zostanie wycofany 30 marca 2019 r. dla chmury platformy Azure dla instytucji rządowych w Stanach Zjednoczonych.
 >
->Istniejące połączenia będą nadal działały do 30 czerwca 2019.  W przypadku wycofania portalu pakietu OMS nie istnieje sposób konfigurowania i usuwania istniejących połączeń z portalu. Zobacz [usuwanie łącznika za pomocą programu PowerShell](#removing-the-connector-with-powershell) poniżej, aby uzyskać skrypt dotyczący usuwania istniejących połączeń przy użyciu programu PowerShell.
+>Istniejące połączenia będą działać do 30 czerwca 2019 r.  Po usunięciu portalu usługi OMS nie można skonfigurować i usunąć istniejących połączeń z portalu. Zobacz [Usuwanie łącznika z programem PowerShell](#removing-the-connector-with-powershell) poniżej skryptu na temat używania programu PowerShell do usuwania istniejących połączeń.
 >
->Aby uzyskać wskazówki dotyczące wykonywania zapytań dotyczących danych dziennika Application Insights dla wielu aplikacji, zobacz [ujednolicaniaing multiple Azure Monitor Application Insights Resources](../log-query/unify-app-resource-data.md). Aby uzyskać więcej informacji na temat zaniechania portalu pakietu OMS, zobacz Portal pakietu OMS [przeniesiony na platformę Azure](../../azure-monitor/platform/oms-portal-transition.md).
+>Aby uzyskać wskazówki dotyczące wykonywania zapytań o dane dziennika usługi Application Insights dla wielu aplikacji, zobacz [Ujednolicenie wielu zasobów usługi Azure Monitor Application Insights.](../log-query/unify-app-resource-data.md) Aby uzyskać więcej informacji na temat uszczypania portalu OMS, zobacz [Portal OMS przenoszący się na platformę Azure](../../azure-monitor/platform/oms-portal-transition.md).
 >
 > 
 
-Rozwiązanie Application Insights Connector pomaga zdiagnozować problemy z wydajnością i zrozumieć, co użytkownicy robią z aplikacją podczas jej monitorowania za pomocą [Application Insights](../../azure-monitor/app/app-insights-overview.md). Widoki te same dane telemetryczne aplikacji, który zobaczą deweloperzy w usłudze Application Insights są dostępne w usłudze Log Analytics. Jednak gdy możesz zintegrować swoje aplikacje usługi Application Insights z usługą Log Analytics, widoczność aplikacji zwiększa się przez umieszczenie danych i danych aplikacji w jednym miejscu. O tej samej widoków ułatwia współpracę z deweloperów aplikacji. Wspólne widoki mogą pomóc w skróceniu czasu wykrywanie i rozwiązywanie zarówno aplikacji, jak i problemy dotyczące platformy.
+Rozwiązanie łącznika usługi Applications Insights ułatwia diagnozowanie problemów z wydajnością i zrozumienie, co użytkownicy robią z aplikacją, gdy jest monitorowana za pomocą [usługi Application Insights.](../../azure-monitor/app/app-insights-overview.md) Widoki tej samej telemetrii aplikacji, które deweloperzy widzą w usłudze Application Insights, są dostępne w usłudze Log Analytics. Jednak po zintegrowaniu aplikacji usługi Application Insights z usługą Log Analytics widoczność aplikacji zwiększa się dzięki operacji i danych aplikacji w jednym miejscu. Posiadanie tych samych widoków ułatwia współpracę z deweloperami aplikacji. Typowe widoki mogą pomóc skrócić czas wykrywania i rozwiązywania problemów z aplikacją i platformą.
 
-Korzystając z rozwiązania, możesz wykonywać następujące czynności:
+Korzystając z rozwiązania, można:
 
-- Wyświetl wszystkie aplikacje usługi Application Insights w jednym miejscu, nawet wtedy, gdy są one w różnych subskrypcjach platformy Azure
-- Korelowanie danych infrastruktury za pomocą danych aplikacji
-- Wizualizacja danych aplikacji przy użyciu perspektywy podczas wyszukiwania dziennika
-- Przestawianie z danymi usługi Log Analytics do swojej aplikacji usługę Application Insights w witrynie Azure portal
+- Wyświetlanie wszystkich aplikacji usługi Application Insights w jednym miejscu, nawet jeśli są one w różnych subskrypcjach platformy Azure
+- Skorelowanie danych infrastruktury z danymi aplikacji
+- Wizualizuj dane aplikacji z perspektywami wyszukiwania w dzienniku
+- Przestawiaj dane usługi Log Analytics do aplikacji usługi Application Insights w witrynie Azure portal
 
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="connected-sources"></a>Połączone źródła
 
-W przeciwieństwie do większości innych rozwiązań usługi Log Analytics dane nie są zbierane dla łącznik usługi Application Insights przez agentów. Wszystkie dane używane przez rozwiązania pochodzi bezpośrednio na platformie Azure.
+W przeciwieństwie do większości innych rozwiązań usługi Log Analytics dane nie są zbierane dla łącznika usługi Application Insights przez agentów. Wszystkie dane używane przez rozwiązanie pochodzą bezpośrednio z platformy Azure.
 
 | Połączone źródło | Obsługiwane | Opis |
 | --- | --- | --- |
-| [Agenci dla systemu Windows](../../azure-monitor/platform/agent-windows.md) | Nie | Rozwiązanie nie zbiera informacji od agentów Windows. |
-| [Agenci dla systemu Linux](../../azure-monitor/learn/quick-collect-linux-computer.md) | Nie | Rozwiązanie zbiera informacje z agentów dla systemu Linux. |
-| [Grupa zarządzania programu SCOM](../../azure-monitor/platform/om-agents.md) | Nie | Rozwiązanie nie zbiera informacji od agentów w połączonej grupie zarządzania programu SCOM. |
-| [Konto usługi Azure Storage](collect-azure-metrics-logs.md) | Nie | Działa to rozwiązanie nie zbierania informacji z usługi Azure storage. |
+| [Agenci dla systemu Windows](../../azure-monitor/platform/agent-windows.md) | Nie | Rozwiązanie nie zbiera informacji od agentów systemu Windows. |
+| [Agenci dla systemu Linux](../../azure-monitor/learn/quick-collect-linux-computer.md) | Nie | Rozwiązanie nie zbiera informacji od agentów Systemu Linux. |
+| [Grupa zarządzająca SCOM](../../azure-monitor/platform/om-agents.md) | Nie | Rozwiązanie nie zbiera informacji od agentów w połączonej grupie zarządzania SCOM. |
+| [Konto magazynu platformy Azure](collect-azure-metrics-logs.md) | Nie | Rozwiązanie nie zbiera informacji z usługi Azure storage. |
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Aby uzyskać dostęp do informacji łącznik usługi Application Insights, musi mieć subskrypcję platformy Azure
-- Musi mieć co najmniej jeden skonfigurowany zasób usługi Application Insights.
-- Musi być właścicielem lub współautorem zasób usługi Application Insights.
+- Aby uzyskać dostęp do informacji łącznika usługi Application Insights, musisz mieć subskrypcję platformy Azure
+- Musi istnieć co najmniej jeden skonfigurowany zasób usługi Application Insights.
+- Użytkownik musi być właścicielem lub współautorem zasobu usługi Application Insights.
 
-## <a name="configuration"></a>Konfiguracja
+## <a name="configuration"></a>Konfigurowanie
 
-1. Włącz rozwiązanie Azure Web Apps Analytics z [witryny Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AppInsights?tab=Overview) lub przy użyciu procesu opisanego w temacie [Dodawanie rozwiązań log Analytics z Galeria rozwiązań](../../azure-monitor/insights/solutions.md).
-2. Przejdź do witryny [Azure Portal](https://portal.azure.com). Wybierz pozycję **wszystkie usługi** , aby otworzyć Application Insights. Następnie wyszukaj usługę Application Insights. 
-3. W obszarze **subskrypcje**wybierz subskrypcję zawierającą Application Insights zasoby, a następnie w obszarze **Nazwa**wybierz co najmniej jedną aplikację.
-4. Kliknij przycisk **Save** (Zapisz).
+1. Włącz rozwiązanie usługi Azure Web Apps Analytics z [portalu Azure marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AppInsights?tab=Overview) lub przy użyciu procesu opisanego w [dodatku rozwiązań analizy dzienników z Galerii rozwiązań.](../../azure-monitor/insights/solutions.md)
+2. Przejdź do [witryny Azure portal](https://portal.azure.com). Wybierz **wszystkie usługi,** aby otworzyć aplikację Usługi Application Insights. Następnie wyszukaj aplikację Usługi Application Insights. 
+3. W obszarze **Subskrypcje**wybierz subskrypcję zawierającą zasoby usługi Application Insights, a następnie w obszarze **Nazwa**wybierz jedną lub więcej aplikacji.
+4. Kliknij przycisk **Zapisz**.
 
-W ciągu 30 minut dane będą dostępne, a Kafelek Application Insights jest aktualizowane przy użyciu danych, takich jak na poniższej ilustracji:
+W ciągu około 30 minut dane staną się dostępne, a kafelek usługi Application Insights zostanie zaktualizowany o dane, takie jak poniższy obraz:
 
-![Kafelek Application Insights](./media/app-insights-connector/app-insights-tile.png)
+![Kafelek usługi Application Insights](./media/app-insights-connector/app-insights-tile.png)
 
-Inne punkty, których należy pamiętać:
+Inne kwestie, o które należy pamiętać:
 
-- Aplikacje usługi Application Insights można połączyć tylko z jednym obszarem roboczym usługi Log Analytics.
-- Do Log Analytics można połączyć tylko [zasoby podstawowe lub Application Insights przedsiębiorstwa](https://azure.microsoft.com/pricing/details/application-insights) . Jednak można użyć usługi Log Analytics w warstwie bezpłatna.
+- Aplikacje usługi Application Insights można łączyć tylko z jednym obszarem roboczym usługi Log Analytics.
+- Zasoby usługi [Basic lub Enterprise Application Insights](https://azure.microsoft.com/pricing/details/application-insights) można łączyć tylko z usługą Log Analytics. Można jednak użyć bezpłatnej warstwy usługi Log Analytics.
 
 ## <a name="management-packs"></a>Pakiety administracyjne
 
-To rozwiązanie nie można zainstalować wszystkie pakiety administracyjne w podłączone grupy zarządzania.
+To rozwiązanie nie instaluje żadnych pakietów administracyjnych w połączonych grupach zarządzania.
 
-## <a name="use-the-solution"></a>Korzystanie z odpowiedniego rozwiązania
+## <a name="use-the-solution"></a>Użyj rozwiązania
 
-W poniższych sekcjach opisano, jak można użyć bloków widoczne w pulpicie nawigacyjnym usługi Application Insights można wyświetlać i korzystać z danych pochodzących z tworzonych aplikacji.
+W poniższych sekcjach opisano, jak można używać bloków wyświetlanych na pulpicie nawigacyjnym usługi Application Insights do wyświetlania danych z aplikacji i interakcji z nimi.
 
-### <a name="view-application-insights-connector-information"></a>Wyświetl informacje na łącznik usługi Application Insights
+### <a name="view-application-insights-connector-information"></a>Wyświetlanie informacji o łączniku usługi Application Insights
 
-Kliknij kafelek **Application Insights** , aby otworzyć pulpit nawigacyjny **Application Insights** , aby zobaczyć następujące bloki.
+Kliknij kafelek **usługi Application Insights,** aby otworzyć pulpit nawigacyjny **usługi Application Insights,** aby wyświetlić następujące ostrza.
 
-![Pulpit nawigacyjny szczegółowych informacji w aplikacji](./media/app-insights-connector/app-insights-dash01.png)
+![Pulpit nawigacyjny usługi Application Insights](./media/app-insights-connector/app-insights-dash01.png)
 
-![Pulpit nawigacyjny szczegółowych informacji w aplikacji](./media/app-insights-connector/app-insights-dash02.png)
+![Pulpit nawigacyjny usługi Application Insights](./media/app-insights-connector/app-insights-dash02.png)
 
-Pulpit nawigacyjny zawiera bloki pokazano w tabeli. Każdy blok zawiera do 10 elementów spełniających kryteria tego bloku dla określonego zakresu i czasu. Można uruchomić wyszukiwanie w dzienniku, które zwraca wszystkie rekordy po kliknięciu przycisku **Pokaż wszystkie** w dolnej części bloku lub po kliknięciu nagłówka bloku.
+Pulpit nawigacyjny zawiera ostrza pokazane w tabeli. Każdy blok zawiera do 10 elementów spełniających kryteria tego bloku dla określonego zakresu i czasu. Można uruchomić wyszukiwanie dziennika, który zwraca wszystkie rekordy po kliknięciu **przycisku Zobacz wszystko** w dolnej części bloku lub po kliknięciu nagłówka bloku.
 
 
 | **Kolumna** | **Opis** |
 | --- | --- |
-| Aplikacje — liczba aplikacji | Przedstawia liczbę aplikacji w ramach aplikacji zasobów. Zawiera także listę nazw aplikacji i dla każdej liczby rekordów w aplikacji. Kliknij liczbę, aby uruchomić wyszukiwanie w dzienniku dla <code>ApplicationInsights &#124; summarize AggregatedValue = sum(SampledCount) by ApplicationName</code> <br><br>  Kliknij nazwę aplikacji, aby uruchomić wyszukiwanie w dzienniku dla aplikacji, która zawiera rekordy aplikacji na hoście, rekordy według typu telemetrii i wszystkie dane według typu (oparte na ostatni dzień). |
-| Ilość danych — hosty wysyłające dane | Pokazuje liczbę hostów komputerów, które wysyłają dane. Zawiera również listę komputerów hostów i liczba rekordów dla każdego hosta. Kliknij liczbę, aby uruchomić wyszukiwanie w dzienniku dla <code>ApplicationInsights &#124; summarize AggregatedValue = sum(SampledCount) by Host</code> <br><br> Kliknij nazwę komputera, aby uruchomić wyszukiwanie w dzienniku dla hosta, który pokazuje rekordy aplikacji na hoście, rekordy według typu telemetrii i wszystkie dane według typu (oparte na ostatni dzień). |
-| Dostępność — wyniki testu internetowego | Przedstawia wykres pierścieniowy na potrzeby wyników testu sieci web, wskazując zakończone powodzeniem lub niepowodzeniem. Kliknij wykres, aby uruchomić wyszukiwanie w dzienniku dla <code>ApplicationInsights &#124; where TelemetryType == "Availability" &#124; summarize AggregatedValue = sum(SampledCount) by AvailabilityResult</code> <br><br> Liczba przebiegów i niepowodzeń dla wszystkich testów w wynikach. Raport uwzględnia wszystkie aplikacje sieci Web z ruchem w ciągu ostatniej minuty. Kliknij nazwę aplikacji w taki sposób, aby wyświetlić przeszukiwania dzienników, przedstawiający szczegółowe informacje o testach sieci web nie powiodło się. |
-| Żądania serwera — żądania na godzinę | Przedstawia wykres liniowy serwera na żądania na godzinę dla różnych aplikacji. Umieść kursor nad linii na wykresie, aby zobaczyć 3 najczęściej używane aplikacje odbierania żądań do punktu w czasie. Zawiera również listę aplikacji odbierać żądania i liczba żądań dla wybranego okresu. <br><br>Kliknij wykres, aby uruchomić wyszukiwanie w dzienniku dla <code>ApplicationInsights &#124; where TelemetryType == "Request" &#124; summarize AggregatedValue = sum(SampledCount) by ApplicationName, bin(TimeGenerated, 1h)</code>, który pokazuje bardziej szczegółowy wykres liniowy żądań serwera na godzinę dla różnych aplikacji. <br><br> Kliknij aplikację na liście, aby uruchomić wyszukiwanie w dzienniku dla <code>ApplicationInsights &#124; where ApplicationName == "yourapplicationname" and TelemetryType == "Request" and iff(isnotnull(toint(RequestSuccess)), RequestSuccess == false, RequestSuccess == "false") == true</code>, które wyświetla listę żądań, wykresy żądań w czasie i czas trwania żądania oraz listę kodów odpowiedzi na żądania.   |
-| Błędy — nieudane żądania na godzinę | Przedstawia wykres liniowy w aplikacji nieudane żądania na godzinę. Umieść kursor nad wykresie, aby zobaczyć 3 najczęściej używane aplikacje za pomocą żądań zakończonych niepowodzeniem dla punktu w czasie. Zawiera również listę aplikacji z liczbą żądań zakończonych niepowodzeniem dla każdego. Kliknij wykres, aby uruchomić wyszukiwanie w dzienniku dla <code>ApplicationInsights &#124; where TelemetryType == "Request" and iff(isnotnull(toint(RequestSuccess)), RequestSuccess == false, RequestSuccess == "false") == true &#124; summarize AggregatedValue = sum(SampledCount) by ApplicationName, bin(TimeGenerated, 1h)</code>, który pokazuje bardziej szczegółowy wykres liniowy zakończonych niepowodzeniem żądań aplikacji. <br><br>Kliknij element na liście, aby uruchomić wyszukiwanie w dzienniku dla <code>ApplicationInsights &#124; where ApplicationName == "yourapplicationname" and TelemetryType == "Request" and iff(isnotnull(toint(RequestSuccess)), RequestSuccess == false, RequestSuccess == "false") == true</code>, w którym są wyświetlane Nieudane żądania, wykresy dla żądań zakończonych niepowodzeniem w okresie i czasie trwania żądania oraz listę kodów odpowiedzi na żądanie zakończone niepowodzeniem. |
-| Wyjątki — liczba wyjątków na godzinę | Przedstawia wykres liniowy wyjątków na godzinę. Umieść kursor nad wykresie, aby zobaczyć 3 najczęściej używane aplikacje wyjątków dla punktu w czasie. Zawiera również listę aplikacji z liczbą wyjątków dla każdego. Kliknij wykres, aby uruchomić wyszukiwanie w dzienniku dla <code>ApplicationInsights &#124; where TelemetryType == "Exception" &#124; summarize AggregatedValue = sum(SampledCount) by ApplicationName, bin(TimeGenerated, 1h)</code>, w którym znajduje się bardziej szczegółowy wykres linków wyjątków. <br><br>Kliknij element na liście, aby uruchomić wyszukiwanie w dzienniku dla <code>ApplicationInsights &#124; where ApplicationName == "yourapplicationname" and TelemetryType == "Exception"</code>, które wyświetla listę wyjątków, wykresy dla wyjątków w czasie i żądania zakończone niepowodzeniem oraz listę typów wyjątków.  |
+| Wnioski - Liczba wniosków | Pokazuje liczbę aplikacji w zasobach aplikacji. Wyświetla również nazwy aplikacji i dla każdego liczby rekordów aplikacji. Kliknij numer, aby uruchomić wyszukiwanie w dzienniku<code>ApplicationInsights &#124; summarize AggregatedValue = sum(SampledCount) by ApplicationName</code> <br><br>  Kliknij nazwę aplikacji, aby uruchomić wyszukiwanie dziennika aplikacji, która pokazuje rekordy aplikacji na hoście, rekordy według typu telemetrii i wszystkie dane według typu (na podstawie ostatniego dnia). |
+| Ilość danych — hosty wysyłające dane | Pokazuje liczbę hostów komputerów, które wysyłają dane. Wyświetla również listę hostów komputera i liczbę rekordów dla każdego hosta. Kliknij numer, aby uruchomić wyszukiwanie w dzienniku<code>ApplicationInsights &#124; summarize AggregatedValue = sum(SampledCount) by Host</code> <br><br> Kliknij nazwę komputera, aby uruchomić wyszukiwanie dziennika dla hosta, który pokazuje rekordy aplikacji na hoście, rekordy według typu telemetrii i wszystkie dane według typu (na podstawie ostatniego dnia). |
+| Dostępność – wyniki testów internetowych | Pokazuje wykres pierścieniowy dla wyników testów internetowych, wskazujący przebieg lub niepowodzenie. Kliknij wykres, aby uruchomić wyszukiwanie w dzienniku<code>ApplicationInsights &#124; where TelemetryType == "Availability" &#124; summarize AggregatedValue = sum(SampledCount) by AvailabilityResult</code> <br><br> Wyniki pokazują liczbę przebiegów i błędów dla wszystkich testów. Pokazuje wszystkie aplikacje sieci Web z ruchem w ostatniej chwili. Kliknij nazwę aplikacji, aby wyświetlić wyszukiwanie w dzienniku z informacjami o nieudanych testach sieci Web. |
+| Żądania serwera — żądania na godzinę | Pokazuje wykres liniowy żądań serwera na godzinę dla różnych aplikacji. Umieść wskaźnik myszy na wierszu na wykresie, aby wyświetlić 3 najlepsze aplikacje odbierające żądania o punkt w czasie. Pokazuje również listę aplikacji odbierających żądania oraz liczbę żądań dla wybranego okresu. <br><br>Kliknij wykres, aby uruchomić wyszukiwanie <code>ApplicationInsights &#124; where TelemetryType == "Request" &#124; summarize AggregatedValue = sum(SampledCount) by ApplicationName, bin(TimeGenerated, 1h)</code> dziennika, które pokazuje bardziej szczegółowy wykres liniowy żądań serwera na godzinę dla różnych aplikacji. <br><br> Kliknij aplikację na <code>ApplicationInsights &#124; where ApplicationName == "yourapplicationname" and TelemetryType == "Request" and iff(isnotnull(toint(RequestSuccess)), RequestSuccess == false, RequestSuccess == "false") == true</code> liście, aby uruchomić wyszukiwanie dziennika, które pokazuje listę żądań, wykresy dla żądań w czasie i czas trwania żądania oraz listę kodów odpowiedzi żądania.   |
+| Błędy — żądania nie powiodły się na godzinę | Pokazuje wykres liniowy żądań aplikacji, które nie powiodły się na godzinę. Umieść wskaźnik myszy na wykresie, aby wyświetlić 3 najlepsze aplikacje z nieudanymi żądaniami punktu w czasie. Pokazuje również listę aplikacji z liczbą żądań nie powiodło się dla każdego. Kliknij wykres, aby uruchomić <code>ApplicationInsights &#124; where TelemetryType == "Request" and iff(isnotnull(toint(RequestSuccess)), RequestSuccess == false, RequestSuccess == "false") == true &#124; summarize AggregatedValue = sum(SampledCount) by ApplicationName, bin(TimeGenerated, 1h)</code> wyszukiwanie dziennika, które pokazuje bardziej szczegółowy wykres liniowy nieudanych żądań aplikacji. <br><br>Kliknij element na liście, aby uruchomić <code>ApplicationInsights &#124; where ApplicationName == "yourapplicationname" and TelemetryType == "Request" and iff(isnotnull(toint(RequestSuccess)), RequestSuccess == false, RequestSuccess == "false") == true</code> wyszukiwanie dziennika, które pokazuje nieudane żądania, wykresy dla żądań nie powiodło się w czasie i czas trwania żądania oraz listę kodów odpowiedzi żądania nie powiodło się. |
+| Wyjątki – wyjątki na godzinę | Pokazuje wykres liniowy wyjątków na godzinę. Umieść wskaźnik myszy na wykresie, aby wyświetlić 3 najlepsze aplikacje z wyjątkami dla punktu w czasie. Pokazuje również listę aplikacji z liczbą wyjątków dla każdego. Kliknij wykres, aby uruchomić <code>ApplicationInsights &#124; where TelemetryType == "Exception" &#124; summarize AggregatedValue = sum(SampledCount) by ApplicationName, bin(TimeGenerated, 1h)</code> wyszukiwanie dziennika, które zawiera bardziej szczegółowy wykres łączy wyjątków. <br><br>Kliknij element na liście, aby uruchomić <code>ApplicationInsights &#124; where ApplicationName == "yourapplicationname" and TelemetryType == "Exception"</code> wyszukiwanie dziennika, który pokazuje listę wyjątków, wykresy wyjątków w czasie i żądań nie powiodło się i listę typów wyjątków.  |
 
-### <a name="view-the-application-insights-perspective-with-log-search"></a>Wyświetl perspektywy usługi Application Insights, wyszukiwanie w dziennikach
+### <a name="view-the-application-insights-perspective-with-log-search"></a>Wyświetlanie perspektywy usługi Application Insights za pomocą wyszukiwania dzienników
 
-Po kliknięciu dowolnego elementu w pulpicie nawigacyjnym, zobaczysz perspektywy usługi Application Insights, wyświetlana w polu wyszukiwania. Perspektywa zapewnia rozszerzoną wizualizacji, na podstawie wybranego typu danych telemetrycznych. Tak, wizualizacja zmiany zawartości dla typów różnych danych telemetrycznych.
+Po kliknięciu dowolnego elementu na pulpicie nawigacyjnym zostanie wyświetlona perspektywa usługi Application Insights wyświetlana w wyszukiwaniu. Perspektywa zapewnia rozszerzoną wizualizację na podstawie wybranego typu telemetrii. Tak więc zmiany zawartości wizualizacji dla różnych typów telemetrii.
 
-Po kliknięciu dowolnego miejsca w bloku aplikacje zostanie wyświetlony domyślny perspektywa **aplikacji** .
+Po kliknięciu dowolnego miejsca w aplikacji bloku, zobaczysz domyślną **perspektywę aplikacji.**
 
-![Perspektywa aplikacji szczegółowych informacji w aplikacji](./media/app-insights-connector/applications-blade-drill-search.png)
+![Perspektywa aplikacji usługi Application Insights](./media/app-insights-connector/applications-blade-drill-search.png)
 
-Perspektywa zawiera omówienie aplikacji, które wybrano.
+Perspektywa pokazuje przegląd wybranej aplikacji.
 
-Blok **dostępności** pokazuje inny widok perspektywy, w którym można zobaczyć wyniki testu sieci Web i powiązane żądania zakończone niepowodzeniem.
+Blok **Dostępność** pokazuje inny widok perspektywy, w którym można zobaczyć wyniki testów sieci web i powiązane żądania nie powiodło się.
 
-![Perspektywa Insights dostępności aplikacji](./media/app-insights-connector/availability-blade-drill-search.png)
+![Perspektywa dostępności usługi Application Insights](./media/app-insights-connector/availability-blade-drill-search.png)
 
-Po kliknięciu dowolnego miejsca w blokach żądania lub **Błędy** **serwera** składniki perspektywy zmieniają się w celu udostępnienia wizualizacji powiązanej z żądaniami.
+Po kliknięciu dowolnego miejsca w **serwerze żądania** lub **błędy** bloków, składniki perspektywy zmienić, aby zapewnić wizualizację, która odnosi się do żądań.
 
-![Application Insights błędy bloku](./media/app-insights-connector/server-requests-failures-drill-search.png)
+![Blok Błędów usługi Application Insights](./media/app-insights-connector/server-requests-failures-drill-search.png)
 
-Po kliknięciu dowolnego miejsca w bloku **wyjątki** zostanie wyświetlona Wizualizacja dostosowana do wyjątków.
+Po kliknięciu dowolnego miejsca w **wyjątki** bloku, zostanie wyświetlena wizualizacja, która jest dostosowana do wyjątków.
 
-![Application Insights wyjątki bloku](./media/app-insights-connector/exceptions-blade-drill-search.png)
+![Blok Wyjątki usługi Application Insights](./media/app-insights-connector/exceptions-blade-drill-search.png)
 
-Bez względu na to, czy klikniesz coś jednego z pulpitów nawigacyjnych **Application Insights Connector** na stronie **wyszukiwania** , wszystkie zapytania zwracające Application Insights dane pokazują Application Insights perspektywę. Na przykład, Jeśli przeglądasz dane Application Insights, **&#42;** zapytanie pokazuje również kartę perspektywy, jak na poniższej ilustracji:
+Niezależnie od tego, czy klikniesz jeden pulpit nawigacyjny **łącznika usługi Application Insights,** na samej stronie **Wyszukiwanie** każda kwerenda zwracająca dane usługi Application Insights zawiera perspektywę usługi Application Insights. Na przykład w przypadku wyświetlania danych usługi Application Insights kwerenda **&#42;** pokazuje również kartę perspektywy, taką jak poniższa ilustracja:
 
 ![Application Insights](./media/app-insights-connector/app-insights-search.png)
 
-Składniki perspektywy są aktualizowane w zależności od zapytania wyszukiwania. Oznacza to, czy można filtrować wyniki za pomocą dowolnego pola wyszukiwania, która daje możliwość wyświetlenia danych z:
+Składniki perspektywy są aktualizowane w zależności od zapytania wyszukiwania. Oznacza to, że można filtrować wyniki przy użyciu dowolnego pola wyszukiwania, które daje możliwość, aby zobaczyć dane z:
 
-- Wszystkie swoje aplikacje
-- Pojedynczy wybranej aplikacji
-- Grupy aplikacji
+- Wszystkie twoje aplikacje
+- Pojedyncza wybrana aplikacja
+- Grupa aplikacji
 
-### <a name="pivot-to-an-app-in-the-azure-portal"></a>Przełącz się do aplikacji w witrynie Azure portal
+### <a name="pivot-to-an-app-in-the-azure-portal"></a>Przestawianie do aplikacji w witrynie Azure Portal
 
-Bloki Application Insights Connector zaprojektowano w celu umożliwienia przestawiania na wybraną aplikację Application Insights *podczas korzystania z Azure Portal*. To rozwiązanie służy jako platforma monitorowania wysokiego poziomu, która ułatwia rozwiązywanie problemów z aplikacją. Po wyświetleniu potencjalny problem w dowolnym z połączonych aplikacji można albo testowania odzyskiwania po awarii do niego w polu wyszukiwania usługi Log Analytics lub można przestawiać bezpośrednio do aplikacji usługi Application Insights.
+Bloki łącznika usługi Application Insights są zaprojektowane w taki sposób, aby umożliwić przesuń do wybranej aplikacji Usługi Application Insights *podczas korzystania z witryny Azure portal*. Rozwiązanie można używać jako platformy monitorowania wysokiego poziomu, która pomaga rozwiązywać problemy z aplikacją. Gdy pojawi się potencjalny problem w dowolnej z połączonych aplikacji, można przejść do szczegółów w wyszukiwarce usługi Log Analytics lub można przejść bezpośrednio do aplikacji usługi Application Insights.
 
-Aby przestawić, kliknij wielokropek ( **...** ), który pojawia się na końcu każdego wiersza, a następnie wybierz pozycję **Otwórz w Application Insights**.
+Aby przestawiać, kliknij wielokropek (**...**), który pojawia się na końcu każdego wiersza, a następnie wybierz pozycję **Otwórz w aplikacji Insights**.
 
 >[!NOTE]
->**Aplet Otwórz w Application Insights** nie jest dostępny w Azure Portal.
+>**Otwórz w usłudze Application Insights** nie jest dostępna w witrynie Azure portal.
 
 ![Otwórz w usłudze Application Insights](./media/app-insights-connector/open-in-app-insights.png)
 
-### <a name="sample-corrected-data"></a>Poprawione próbki danych
+### <a name="sample-corrected-data"></a>Dane poprawione próbką
 
-Application Insights zapewnia *[korekcję próbkowania](../../azure-monitor/app/sampling.md)* , aby pomóc w zmniejszeniu ruchu telemetrii. Po włączeniu pobierania próbek na aplikacji usługi Application Insights uzyskasz zmniejszenie liczby wpisów przechowywane zarówno w usłudze Application Insights, jak i w usłudze Log Analytics. Chociaż spójność danych jest zachowywana na stronie **Application Insights Connector** i perspektywach, należy ręcznie skorygować dane próbkowania dla zapytań niestandardowych.
+Usługa Application Insights zapewnia *[korekcję próbkowania](../../azure-monitor/app/sampling.md)* w celu zmniejszenia ruchu telemetryczne. Po włączeniu próbkowania w aplikacji usługi Application Insights, można uzyskać zmniejszoną liczbę wpisów przechowywanych zarówno w usłudze Application Insights i w usłudze Log Analytics. Spójność danych jest zachowywana na stronie i perspektywach **łącznika usługi Application Insights,** należy ręcznie poprawić próbkowane dane dla zapytań niestandardowych.
 
-Oto przykład korekty próbkowania w zapytanie wyszukiwania w dzienniku:
+Oto przykład korekty próbkowania w kwerendzie wyszukiwania dziennika:
 
 ```
 ApplicationInsights | summarize AggregatedValue = sum(SampledCount) by TelemetryType
 ```
 
-Pole **Liczba próbek** jest obecna we wszystkich wpisach i pokazuje liczbę punktów danych, które reprezentuje wpis. Jeśli włączysz próbkowanie dla aplikacji Application Insights, **Liczba próbek** jest większa niż 1. Aby policzyć rzeczywistą liczbę wpisów generowanych przez aplikację, należy zsumować pola **liczby próbkowanej** .
+Pole **Liczba próbkowania** jest obecne we wszystkich zapisach i zawiera liczbę punktów danych, które reprezentuje zapis. Jeśli włączysz próbkowanie aplikacji Usługi Application Insights, **liczba próbkowania** jest większa niż 1. Aby policzyć rzeczywistą liczbę wpisów generowanych przez aplikację, zsumuj pola **Liczba próbkowania.**
 
-Próbkowania ma wpływ tylko łączna liczba wpisów, generowane przez aplikację. Nie ma potrzeby poprawiania próbkowania dla pól metryk, takich jak **RequestDuration** lub **AvailabilityDuration** , ponieważ te pola pokazują średnią dla wpisów reprezentowanych.
+Próbkowanie ma wpływ tylko na całkowitą liczbę wpisów, które generuje aplikacja. Nie trzeba korygować próbkowania dla pól metryk, takich jak **RequestDuration** lub **AvailabilityDuration,** ponieważ te pola pokazują średnią dla reprezentowanych wpisów.
 
 ## <a name="input-data"></a>Dane wejściowe
 
-Rozwiązanie odbiera dane telemetryczne następujących rodzajów danych z połączonych aplikacji usługi Application Insights:
+Rozwiązanie odbiera następujące typy danych telemetrycznych z połączonych aplikacji usługi Application Insights:
 
 - Dostępność
 - Wyjątki
 - Żądania
-- Wyświetlenia stron — dla obszaru roboczego w celu odbierania wyświetleń stron, należy skonfigurować aplikacje do zbierania tych informacji. Aby uzyskać więcej informacji, zobacz [PageViews](../../azure-monitor/app/api-custom-events-metrics.md#page-views).
-- Zdarzenia niestandardowe — dla obszaru roboczego w celu odbierania zdarzeń niestandardowych, należy skonfigurować aplikacje do zbierania tych informacji. Aby uzyskać więcej informacji, zobacz [poleceń trackEvent](../../azure-monitor/app/api-custom-events-metrics.md#trackevent).
+- Widoki strony — aby obszar roboczy odbierał widoki stron, należy skonfigurować aplikacje do zbierania tych informacji. Aby uzyskać więcej informacji, zobacz [PageViews](../../azure-monitor/app/api-custom-events-metrics.md#page-views).
+- Zdarzenia niestandardowe — aby obszar roboczy odbierał zdarzenia niestandardowe, należy skonfigurować aplikacje do zbierania tych informacji. Więcej informacji można znaleźć na [pomylić TrackEvent](../../azure-monitor/app/api-custom-events-metrics.md#trackevent).
 
-Dane są odebrane przez usługę Log Analytics z usługi Application Insights po jej udostępnieniu.
+Dane są odbierane przez usługi Log Analytics z usługi Application Insights, gdy staną się dostępne.
 
 ## <a name="output-data"></a>Dane wyjściowe
 
-Rekord z *typem* *ApplicationInsights* jest tworzony dla każdego typu danych wejściowych. ApplicationInsights rekordy mają właściwości wyświetlane w następujących sekcjach:
+Rekord z *typem* *ApplicationInsights* jest tworzony dla każdego typu danych wejściowych. Rekordy ApplicationInsights mają właściwości pokazane w następujących sekcjach:
 
-### <a name="generic-fields"></a>Ogólny pola
+### <a name="generic-fields"></a>Pola ogólne
 
 | Właściwość | Opis |
 | --- | --- |
 | Typ | ApplicationInsights |
-| ClientIP |   |
+| KlientIP |   |
 | TimeGenerated | Czas rekordu |
-| ApplicationId | Klucz instrumentacji aplikacji usługi Application Insights |
-| ApplicationName | Nazwa usługi Application Insights aplikacji |
-| RoleInstance | Identyfikator serwera hosta |
-| Typ urządzenia | Urządzenie klienckie |
-| ScreenResolution |   |
-| Kontynent | Kontynent, skąd pochodzi żądanie |
-| Kraj | Kraj/region, w którym pochodziło żądanie |
-| Województwo | Prowincja, stanu lub ustawień regionalnych, skąd pochodzi żądanie |
-| Miasto | Miasto lub miejscowość, skąd pochodzi żądanie |
-| isSynthetic | Wskazuje, czy żądanie zostało utworzone przez użytkownika lub zautomatyzowanej metody. True = Metoda zautomatyzowana lub FAŁSZ = wygenerowane przez użytkownika |
-| SamplingRate | Procent telemetrii wygenerowanej przez zestaw SDK, które są wysyłane do portalu. Należeć do zakresu od 0,0 100,0. |
-| SampledCount | 100/(SamplingRate). Na przykład 4 =&gt; 25% |
-| Właściwości | Prawda lub fałsz |
-| OperationID | Elementy, które mają tę samą operację identyfikator są wyświetlane jako elementy powiązane w portalu. Zazwyczaj identyfikator żądania |
-| ParentOperationID | Identyfikator operacji nadrzędnej |
+| ApplicationId | Klucz instrumentacji aplikacji Usługi Insights |
+| ApplicationName | Nazwa aplikacji Usługi Insights aplikacji |
+| RoleInstance (Nieumieja roli) | Identyfikator hosta serwera |
+| DeviceType | Urządzenie klienckie |
+| Rozwiązanie ekranu |   |
+| Kontynent | Kontynent, na którym wniosek pochodzi |
+| Kraj | Kraj/region, w którym pochodzi żądanie |
+| Prowincji | Prowincja, stan lub ustawienia regionalne, z których pochodzi żądanie |
+| Miasto | Miasto lub miasto, z którego pochodzi wniosek |
+| isSyntetyczne | Wskazuje, czy żądanie zostało utworzone przez użytkownika, czy za pomocą metody zautomatyzowanej. Prawda = metoda automatyczna lub fałsz = wygenerowane przez użytkownika |
+| SamplingRate (Szybkość próbkowania) | Procent danych telemetrycznych generowanych przez sdk, który jest wysyłany do portalu. Zakres 0,0-100,0. |
+| Liczba próbkowania | 100/(SamplingRate). Na przykład 4&gt; = 25% |
+| Isauthenticated | Prawda lub fałsz |
+| OperationID (OperationID) | Elementy, które mają ten sam identyfikator operacji są wyświetlane jako elementy pokrewne w portalu. Zazwyczaj identyfikator żądania |
+| Element nadrzędny | Identyfikator operacji nadrzędnej |
 | OperationName |   |
-| Identyfikator sesji | Identyfikator GUID służący do unikatowej identyfikacji sesji, w którym utworzono żądanie |
+| SessionId | Identyfikator GUID umożliwiający jednoznaczną identyfikację sesji, w której utworzono żądanie |
 | SourceSystem | ApplicationInsights |
 
-### <a name="availability-specific-fields"></a>Pola charakterystyczne dla dostępności
+### <a name="availability-specific-fields"></a>Pola specyficzne dla dostępności
 
 | Właściwość | Opis |
 | --- | --- |
-| TelemetryType | Dostępność |
-| AvailabilityTestName | Nazwa testu sieci web |
-| AvailabilityRunLocation | Geograficzne źródła żądania http |
-| AvailabilityResult | Wskazuje wynik wskazujący Powodzenie testu sieci web |
-| AvailabilityMessage | Wiadomości dołączone do testu sieci web |
-| AvailabilityCount | 100 /(Sampling Rate). Na przykład 4 =&gt; 25% |
-| DataSizeMetricValue | w wersji 1.0 lub 0.0 |
-| DataSizeMetricCount | 100 /(Sampling Rate). Na przykład 4 =&gt; 25% |
-| AvailabilityDuration | Czas w milisekundach czas trwania testu sieci web |
-| AvailabilityDurationCount | 100 /(Sampling Rate). Na przykład 4 =&gt; 25% |
-| AvailabilityValue |   |
-| AvailabilityMetricCount |   |
-| AvailabilityTestId | Unikatowy identyfikator GUID dla testu sieci web |
-| AvailabilityTimestamp | Dokładny znacznik czasu testu dostępności |
-| AvailabilityDurationMin | Próbkowane rekordów to pole zawiera czas trwania testu minimalna sieci web (w milisekundach) dla punktów danych reprezentowanego |
-| AvailabilityDurationMax | Próbkowane rekordów to pole zawiera czas trwania testu sieci web maksymalna (w milisekundach) dla punktów danych reprezentowanego |
-| AvailabilityDurationStdDev | Próbkowane rekordów to pole zawiera standardowe odchylenie od wszystkich sieci web czasów trwania testów (w milisekundach) dla punktów danych reprezentowanego |
+| Typ telemetrii | Dostępność |
+| Nazwa testu dostępności | Nazwa testu sieci webowego |
+| DostępnośćRunLocation | Źródło geograficzne żądania http |
+| DostępnośćWysokie | Wskazuje wynik sukcesu testu sieci web |
+| DostępnośćMessage | Wiadomość dołączona do testu sieci web |
+| DostępnośćCount | 100/(Częstotliwość próbkowania). Na przykład 4&gt; = 25% |
+| DataSizeMetricValue | 1,0 lub 0,0 |
+| DataSizeMetricCount | 100/(Częstotliwość próbkowania). Na przykład 4&gt; = 25% |
+| DostępnośćDuration | Czas trwania testu sieci Web w milisekundach |
+| DostępnośćLiczna liczba | 100/(Częstotliwość próbkowania). Na przykład 4&gt; = 25% |
+| Wartość dostępności |   |
+| DostępnośćLiczna |   |
+| DostępnośćTestIdId | Unikatowy identyfikator GUID do testu sieci Web |
+| DostępnośćStyg | Precyzyjny sygnatura czasowa testu dostępności |
+| DostępnośćDurationMin | W przypadku rekordów próbkowanych to pole zawiera minimalny czas trwania testu sieci Web (milisekundy) dla reprezentowanych punktów danych |
+| DostępnośćDurationMax | W przypadku rekordów próbkowanych to pole zawiera maksymalny czas trwania testu sieci Web (milisekundy) dla reprezentowanych punktów danych |
+| DostępnośćDurationStdDev | W przypadku rekordów próbkowanych to pole zawiera odchylenie standardowe między wszystkimi czasami trwania testu sieci Web (milisekundy) dla reprezentowanych punktów danych |
 | AvailabilityMin |   |
-| AvailabilityMax |   |
-| AvailabilityStdDev | &nbsp;  |
+| DostępnośćMax |   |
+| DostępnośćStdDev | &nbsp;  |
 
-### <a name="exception-specific-fields"></a>Pola charakterystyczne dla wyjątków
+### <a name="exception-specific-fields"></a>Pola specyficzne dla wyjątku
 
 | Typ | ApplicationInsights |
 | --- | --- |
-| TelemetryType | Wyjątek |
-| Typ | Typ wyjątku |
+| Typ telemetrii | Wyjątek |
+| Typ wyjątku | Typ wyjątku |
 | ExceptionMethod | Metoda, która tworzy wyjątek |
-| ExceptionAssembly | Zestaw zawiera platformę i wersji, a także token klucza publicznego |
-| ExceptionGroup | Typ wyjątku |
-| ExceptionHandledAt | Wskazuje poziom obsługi wyjątku |
-| ExceptionCount | 100 /(Sampling Rate). Na przykład 4 =&gt; 25% |
-| ExceptionMessage | Komunikat o wyjątku |
-| ExceptionStack | Pełny stos wyjątku |
-| ExceptionHasStack | Wartość true, jeśli wyjątek ma stosu |
+| WyjątekAsześcij | Zestaw zawiera ramy i wersję, a także token klucza publicznego |
+| Grupa wyjątków | Typ wyjątku |
+| ExceptionHandledAt | Wskazuje poziom, który obsługiwał wyjątek |
+| Liczba wyjątków | 100/(Częstotliwość próbkowania). Na przykład 4&gt; = 25% |
+| WyjątekMessage | Komunikat o wyjątku |
+| WyjątekStack | Pełny stos wyjątku |
+| ExceptionHasStack | Prawda, jeśli wyjątek ma stos |
 
 
 
-### <a name="request-specific-fields"></a>Pola charakterystyczne dla żądania
+### <a name="request-specific-fields"></a>Pola specyficzne dla żądania
 
 | Właściwość | Opis |
 | --- | --- |
 | Typ | ApplicationInsights |
-| TelemetryType | Żądanie |
-| ResponseCode | Odpowiedzi HTTP wysłanej do klienta |
-| RequestSuccess | Wskazuje powodzenie lub niepowodzenie. Wartość PRAWDA lub FAŁSZ. |
-| RequestID | Identyfikator, aby jednoznacznie zidentyfikować żądania |
-| RequestName | GET/POST i podstawowy adres URL |
-| RequestDuration | Czas w sekundach czas trwania żądania |
-| Adres URL | Adres URL żądania, nie wliczając hosta |
-| Host | Hosta serwera sieci Web |
-| URLBase | Pełny adres URL żądania |
+| Typ telemetrii | Żądanie |
+| Kod odpowiedzi | Odpowiedź HTTP wysłana do klienta |
+| PoprośSukces | Wskazuje sukces lub porażkę. Prawda lub fałsz. |
+| RequestID | Identyfikator umożliwiający jednoznaczną identyfikację żądania |
+| Nazwa żądania | GET/POST + baza adresów URL |
+| RequestDuration (Wniosekduration) | Czas, w sekundach, czasu trwania żądania |
+| Adres URL | Adres URL żądania bez hosta |
+| Host | Host serwera sieci Web |
+| Baza adresów URL | Pełny adres URL żądania |
 | ApplicationProtocol | Typ protokołu używanego przez aplikację |
-| RequestCount | 100 /(Sampling Rate). Na przykład 4 =&gt; 25% |
-| RequestDurationCount | 100 /(Sampling Rate). Na przykład 4 =&gt; 25% |
-| RequestDurationMin | Próbkowane rekordów to pole zawiera minimalne żądania czas trwania (w milisekundach) dla punktów danych reprezentowanego. |
-| RequestDurationMax | Próbkowane rekordów to pole zawiera maksymalny czas trwania żądania (w milisekundach) dla punktów danych reprezentowanego |
-| RequestDurationStdDev | Próbkowane rekordów to pole zawiera standardowe odchylenie między wszystkie żądania czasów trwania (w milisekundach) dla punktów danych reprezentowanego |
+| Liczba żądań | 100/(Częstotliwość próbkowania). Na przykład 4&gt; = 25% |
+| RequestDurationCount (Liczba żądańDurationCount) | 100/(Częstotliwość próbkowania). Na przykład 4&gt; = 25% |
+| RequestDurationMin | W przypadku rekordów próbkowanych to pole zawiera minimalny czas trwania żądania (milisekund) dla reprezentowanych punktów danych. |
+| RequestDurationMax | W przypadku rekordów próbkowanych to pole zawiera maksymalny czas trwania żądania (milisekund) dla reprezentowanych punktów danych |
+| WniosekDurationStdDev | W przypadku rekordów próbkowanych to pole zawiera odchylenie standardowe między wszystkimi okresami trwania żądania (milisekundy) dla reprezentowanych punktów danych |
 
 ## <a name="sample-log-searches"></a>Przykładowe wyszukiwania dzienników
 
-To rozwiązanie nie ma zbiór przykładowe wyszukiwania dzienników wyświetlane na pulpicie nawigacyjnym. Jednak przykładowe zapytania wyszukiwania w dzienniku zawierające opisy są wyświetlane w sekcji [Wyświetl informacje Application Insights Connector](#view-application-insights-connector-information) .
+To rozwiązanie nie ma zestawu przykładowych wyszukiwań dziennika wyświetlanych na pulpicie nawigacyjnym. Jednak przykładowe zapytania wyszukiwania dziennika z opisami są wyświetlane w sekcji [Informacje o łączniku programu View Application Insights.](#view-application-insights-connector-information)
 
-## <a name="removing-the-connector-with-powershell"></a>Usuwanie łącznika przy użyciu programu PowerShell
-W przypadku wycofania portalu pakietu OMS nie istnieje sposób konfigurowania i usuwania istniejących połączeń z portalu. Istniejące połączenia można usunąć za pomocą poniższego skryptu programu PowerShell. Aby wykonać tę operację, musisz być właścicielem lub współautorem obszaru roboczego i czytnika zasobów Application Insights.
+## <a name="removing-the-connector-with-powershell"></a>Usuwanie łącznika za pomocą programu PowerShell
+Po usunięciu portalu usługi OMS nie można skonfigurować i usunąć istniejących połączeń z portalu. Istniejące połączenia można usunąć za pomocą następującego skryptu programu PowerShell. Aby wykonać tę operację, użytkownik musi być właścicielem lub współautorem obszaru roboczego i czytnika zasobów usługi Application Insights.
 
 ```powershell
 $Subscription_app = "App Subscription Name"
@@ -283,7 +283,7 @@ Set-AzContext -SubscriptionId $Subscription_workspace
 Remove-AzOperationalInsightsDataSource -WorkspaceName $Workspace -ResourceGroupName $ResourceGroup_workspace -Name $AIApp.Id
 ```
 
-Listę aplikacji można pobrać przy użyciu następującego skryptu programu PowerShell, który wywołuje wywołanie interfejsu API REST. 
+Można pobrać listę aplikacji przy użyciu następującego skryptu programu PowerShell, który wywołuje wywołanie interfejsu API REST. 
 
 ```powershell
 Connect-AzAccount
@@ -304,13 +304,13 @@ $Headers = @{
 $Connections = Invoke-RestMethod -Method "GET" -Uri "https://management.azure.com$($LAWorkspace.ResourceId)/dataSources/?%24filter=kind%20eq%20'ApplicationInsights'&api-version=2015-11-01-preview" -Headers $Headers
 $ConnectionsJson = $Connections | ConvertTo-Json
 ```
-Ten skrypt wymaga tokenu uwierzytelniania okaziciela do uwierzytelniania w odniesieniu do Azure Active Directory. Jednym ze sposobów pobrania tego tokenu jest użycie artykułu w [witrynie dokumentacji interfejsu API REST](https://docs.microsoft.com/rest/api/loganalytics/datasources/createorupdate). Kliknij przycisk Wypróbuj i zaloguj **się** do subskrypcji platformy Azure. Token okaziciela można skopiować z **wersji zapoznawczej żądania** , jak pokazano na poniższej ilustracji.
+Ten skrypt wymaga tokenu uwierzytelniania na okaziciela do uwierzytelniania w usłudze Azure Active Directory. Jednym ze sposobów pobrania tego tokenu jest użycie artykułu w [witrynie dokumentacji interfejsu API REST](https://docs.microsoft.com/rest/api/loganalytics/datasources/createorupdate). Kliknij przycisk **Wypróbuj** i zaloguj się do subskrypcji platformy Azure. Token nośnika można skopiować z **podglądu żądania,** jak pokazano na poniższej ilustracji.
 
 
-![Token okaziciela](media/app-insights-connector/bearer-token.png)
+![Token na okaziciela](media/app-insights-connector/bearer-token.png)
 
 
-Możesz również pobrać listę aplikacji, korzystając z kwerendy dziennika:
+Można również pobrać listę aplikacji użyć kwerendy dziennika:
 
 ```Kusto
 ApplicationInsights | summarize by ApplicationName
@@ -318,4 +318,4 @@ ApplicationInsights | summarize by ApplicationName
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Użyj [wyszukiwania w dzienniku](../../azure-monitor/log-query/log-query-overview.md) , aby wyświetlić szczegółowe informacje dotyczące Application Insights aplikacji.
+- Użyj [wyszukiwania dziennika,](../../azure-monitor/log-query/log-query-overview.md) aby wyświetlić szczegółowe informacje dotyczące aplikacji usługi Application Insights.

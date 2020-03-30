@@ -1,6 +1,6 @@
 ---
-title: Kopiowanie danych z programu Teradata Vantage przy użyciu Azure Data Factory
-description: Łącznik programu Teradata usługi Data Factory umożliwia kopiowanie danych z programu Teradata Vantage do magazynów danych obsługiwanych przez Data Factory jako ujścia.
+title: Kopiowanie danych z programu Teradata Vantage przy użyciu usługi Azure Data Factory
+description: Łącznik Teradata usługi Data Factory umożliwia kopiowanie danych z teradata Vantage do magazynów danych obsługiwanych przez fabrykę danych jako pochłaniacze.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -9,76 +9,70 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 10/24/2019
+ms.date: 03/25/2020
 ms.author: jingwang
-ms.openlocfilehash: 5a41d5653de0d8a9f674009904756892ac343609
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: c7c6cebf0a5c6371893dff52b2e8d7c064a40084
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79281732"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80257941"
 ---
-# <a name="copy-data-from-teradata-vantage-by-using-azure-data-factory"></a>Kopiowanie danych z programu Teradata Vantage przy użyciu Azure Data Factory
-> [!div class="op_single_selector" title1="Wybierz używaną wersję usługi Data Factory:"]
+# <a name="copy-data-from-teradata-vantage-by-using-azure-data-factory"></a>Kopiowanie danych z programu Teradata Vantage przy użyciu usługi Azure Data Factory
+> [!div class="op_single_selector" title1="Wybierz wersję używanej usługi Data Factory:"]
 >
 > * [Wersja 1](v1/data-factory-onprem-teradata-connector.md)
 > * [Bieżąca wersja](connector-teradata.md)
 
-W tym artykule opisano sposób używania działania kopiowania w Azure Data Factory do kopiowania danych z programu Teradata Vantage. Kompilacja jest oparta na [przeglądzie działania kopiowania](copy-activity-overview.md).
+W tym artykule opisano, jak używać działania kopiowania w usłudze Azure Data Factory do kopiowania danych z programu Teradata Vantage. Opiera się na [przeglądzie działania kopiowania](copy-activity-overview.md).
 
-## <a name="supported-capabilities"></a>Obsługiwane funkcje
+## <a name="supported-capabilities"></a>Obsługiwane możliwości
 
-Ten łącznik programu Teradata jest obsługiwany dla następujących działań:
+Ten łącznik Teradata jest obsługiwany dla następujących działań:
 
-- [Działanie kopiowania](copy-activity-overview.md) z [obsługiwaną macierzą źródłową/ujścia](copy-activity-overview.md)
-- [Działanie Lookup](control-flow-lookup-activity.md)
+- [Kopiowanie aktywności](copy-activity-overview.md) z [obsługiwaną macierzą źródło/ujście](copy-activity-overview.md)
+- [Działanie odnośnika](control-flow-lookup-activity.md)
 
-Dane z programu Teradata Vantage można skopiować do dowolnego obsługiwanego magazynu danych ujścia. Listę magazynów danych obsługiwanych jako źródła/ujścia przez działanie kopiowania można znaleźć w tabeli [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats) .
+Można skopiować dane z Teradata Vantage do dowolnego obsługiwanego magazynu danych ujścia. Aby uzyskać listę magazynów danych, które są obsługiwane jako źródła/pochłaniacze przez działanie kopiowania, zobacz tabelę [Obsługiwane magazyny danych.](copy-activity-overview.md#supported-data-stores-and-formats)
 
-W każdym przypadku ten łącznik programu Teradata obsługuje:
+W szczególności to złącze Teradata obsługuje:
 
-- Program Teradata w **wersji 14,10, 15,0, 15,10, 16,0, 16,10 i 16,20**.
-- Kopiowanie danych przy użyciu uwierzytelniania **podstawowego** lub **systemu Windows** .
-- Równoległe kopiowanie ze źródła programu Teradata. Aby uzyskać szczegółowe informacje, zobacz sekcję [Kopiowanie równoległe z programu Teradata](#parallel-copy-from-teradata) .
-
-> [!NOTE]
->
-> Po wydaniu środowiska Integration Runtime 3.18 w wersji samohostowanej Program Azure Data Factory uaktualniony łącznik programu Teradata. Wszystkie istniejące obciążenia używające poprzedniego łącznika programu Teradata są nadal obsługiwane. Jednak w przypadku nowych obciążeń dobrym pomysłem jest użycie nowego. Należy pamiętać, że nowa ścieżka wymaga innego zestawu połączonej usługi, zestawu danych i źródła kopii. Aby uzyskać szczegółowe informacje dotyczące konfiguracji, zapoznaj się z odpowiednimi sekcjami poniżej.
+- Teradata **w wersji 14.10, 15.0, 15.10, 16.0, 16.10 i 16.20**.
+- Kopiowanie danych przy użyciu uwierzytelniania **podstawowego** lub **uwierzytelniania systemu Windows.**
+- Kopiowanie równoległe ze źródła Teradata. Zobacz [kopię równoległą z Teradata](#parallel-copy-from-teradata) sekcji, aby uzyskać szczegółowe informacje.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 [!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 
-Środowisko Integration Runtime zapewnia wbudowaną wersję sterownika Teradata rozpoczynającą się od wersji 3,18. Nie musisz ręcznie instalować żadnego sterownika. Sterownik wymaga "Visual C++ redystrybucyjny 2012 Update 4" na własnym komputerze Integration Runtime. Jeśli jeszcze tego nie zainstalowano, Pobierz go z tego [miejsca](https://www.microsoft.com/en-sg/download/details.aspx?id=30679).
-
-W przypadku dowolnego środowiska Integration Runtime w wersji starszej niż 3,18 zainstaluj [dostawca danych .NET dla programu Teradata](https://go.microsoft.com/fwlink/?LinkId=278886), wersję 14 lub nowszą na komputerze Integration Runtime. 
+Jeśli używasz self-hosted Integration Runtime, należy pamiętać, że zapewnia wbudowany sterownik Teradata począwszy od wersji 3.18. Nie trzeba ręcznie instalować żadnego sterownika. Sterownik wymaga "Visual C++ Redystrybucyjne 2012 Update 4" na komputerze wykonawczego integracji hostowanego samodzielnie. Jeśli nie masz jeszcze zainstalowanego, pobierz go [stąd](https://www.microsoft.com/en-sg/download/details.aspx?id=30679).
 
 ## <a name="getting-started"></a>Wprowadzenie
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
-Poniższe sekcje zawierają szczegółowe informacje o właściwościach, które są używane do definiowania jednostek Data Factory specyficznych dla łącznika programu Teradata.
+W poniższych sekcjach znajdują się szczegółowe informacje o właściwościach, które są używane do definiowania jednostek fabryki danych specyficznych dla łącznika Teradata.
 
-## <a name="linked-service-properties"></a>Właściwości usługi połączonej
+## <a name="linked-service-properties"></a>Połączone właściwości usługi
 
-Połączona usługa programu Teradata obsługuje następujące właściwości:
+Usługa połączona teradata obsługuje następujące właściwości:
 
 | Właściwość | Opis | Wymagany |
 |:--- |:--- |:--- |
-| type | Właściwość Type musi być ustawiona na wartość **Teradata**. | Yes |
-| connectionString | Określa informacje, które są konieczne do nawiązania połączenia z wystąpieniem programu Teradata. Zapoznaj się z poniższymi przykładami.<br/>Możesz również wprowadzić hasło w Azure Key Vault i ściągnąć konfigurację `password` z parametrów połączenia. Aby uzyskać więcej informacji, zobacz temat [poświadczenia sklepu w Azure Key Vault](store-credentials-in-key-vault.md) . | Yes |
-| nazwa użytkownika | Określ nazwę użytkownika, aby połączyć się z programem Teradata. Ma zastosowanie w przypadku korzystania z uwierzytelniania systemu Windows. | Nie |
-| hasło | Określ hasło dla konta użytkownika określonego dla nazwy użytkownika. Możesz również wybrać odwołanie do [wpisu tajnego przechowywanego w Azure Key Vault](store-credentials-in-key-vault.md). <br>Ma zastosowanie w przypadku korzystania z uwierzytelniania systemu Windows lub odwoływania się do hasła w Key Vault na potrzeby uwierzytelniania podstawowego. | Nie |
-| connectVia | [Integration Runtime](concepts-integration-runtime.md) używany do nawiązywania połączenia z magazynem danych. Dowiedz się więcej z sekcji [wymagania wstępne](#prerequisites) . Jeśli nie zostanie określony, używa domyślnego środowiska Azure Integration Runtime. |Yes |
+| type | Właściwość typu musi być ustawiona na **Teradata**. | Tak |
+| Parametry połączenia | Określa informacje potrzebne do nawiązania połączenia z wystąpieniem Teradata. Zapoznaj się z poniższymi przykładami.<br/>Można również umieścić hasło w usłudze Azure `password` Key Vault i wyciągnąć konfigurację z ciągu połączenia. Więcej informacji można znaleźć [w witrynie Store credentials w usłudze Azure Key Vault.](store-credentials-in-key-vault.md) | Tak |
+| nazwa użytkownika | Określ nazwę użytkownika, aby połączyć się z Teradata. Ma zastosowanie, gdy używasz uwierzytelniania systemu Windows. | Nie |
+| hasło | Określ hasło dla konta użytkownika określonego dla nazwy użytkownika. Można również odwołać się do [klucza tajnego przechowywanego w usłudze Azure Key Vault](store-credentials-in-key-vault.md). <br>Ma zastosowanie, gdy używasz uwierzytelniania systemu Windows lub odwołujesz się do hasła w magazynie kluczy w celu uwierzytelnienia podstawowego. | Nie |
+| connectVia | [Środowisko wykonawcze integracji,](concepts-integration-runtime.md) które mają być używane do łączenia się z magazynem danych. Dowiedz się więcej z sekcji [Wymagania wstępne.](#prerequisites) Jeśli nie zostanie określony, używa domyślnego środowiska wykonawczego integracji platformy Azure. |Nie |
 
-Więcej właściwości połączenia, które można ustawić w parametrach połączenia dla danego przypadku:
+Więcej właściwości połączenia można ustawić w ciągu połączenia w przypadku:
 
 | Właściwość | Opis | Wartość domyślna |
 |:--- |:--- |:--- |
-| CharacterSet | Zestaw znaków, który ma być używany przez sesję. Np. `CharacterSet=UTF16`.<br><br/>Ta wartość może być zestawem znaków zdefiniowanym przez użytkownika lub jednym z następujących wstępnie zdefiniowanych zestawów znaków: <br/>-ASCII<br/>-UTF8<br/>-UTF16<br/>-LATIN1252_0A<br/>-LATIN9_0A<br/>-LATIN1_0A<br/>-Shift-JIS (Windows, zgodne z systemem DOS, KANJISJIS_0S)<br/>-EUC (zgodne z systemem UNIX, KANJIEC_0U)<br/>-IBM mainframe (KANJIEBCDIC5035_0I)<br/>-KANJI932_1S0<br/>-BIG5 (TCHBIG5_1R0)<br/>-GB (SCHGB2312_1T0)<br/>-SCHINESE936_6R0<br/>-TCHINESE950_8R0<br/>-NetworkKorean (HANGULKSC5601_2R4)<br/>-HANGUL949_7R0<br/>-ARABIC1256_6A0<br/>-CYRILLIC1251_2A0<br/>-HEBREW1255_5A0<br/>-LATIN1250_1A0<br/>-LATIN1254_7A0<br/>-LATIN1258_8A0<br/>-THAI874_4A0 | Wartość domyślna to `ASCII`. |
-| MaxRespSize |Maksymalny rozmiar buforu odpowiedzi dla żądań SQL w kilobajtach (artykułów bazy wiedzy). Np. `MaxRespSize=‭10485760‬`.<br/><br/>W przypadku bazy danych programu Teradata w wersji 16,00 lub nowszej wartość maksymalna to 7361536. Dla połączeń korzystających ze starszych wersji wartość maksymalna to 1048576. | Wartość domyślna to `65536`. |
+| Characterset | Zestaw znaków do użycia w sesji. `CharacterSet=UTF16`Np.<br><br/>Ta wartość może być zdefiniowanym przez użytkownika zestawem znaków lub jednym z następujących wstępnie zdefiniowanych zestawów znaków: <br/>- ASCII<br/>- UTF8<br/>- UTF16<br/>- LATIN1252_0A<br/>- LATIN9_0A<br/>- LATIN1_0A<br/>- Shift-JIS (Windows, DOS kompatybilny, KANJISJIS_0S)<br/>- EUC (kompatybilny z Unixem, KANJIEC_0U)<br/>- IBM Mainframe (KANJIEBCDIC5035_0I)<br/>- KANJI932_1S0<br/>- BIG5 (TCHBIG5_1R0)<br/>- GB (SCHGB2312_1T0)<br/>- SCHINESE936_6R0<br/>- TCHINESE950_8R0<br/>- NetworkKorean (HANGULKSC5601_2R4)<br/>- HANGUL949_7R0<br/>- ARABIC1256_6A0<br/>- CYRILLIC1251_2A0<br/>- HEBREW1255_5A0<br/>- LATIN1250_1A0<br/>- LATIN1254_7A0<br/>- LATIN1258_8A0<br/>- THAI874_4A0 | Wartością `ASCII`domyślną jest . |
+| Rozmiar MaxRespSize |Maksymalny rozmiar buforu odpowiedzi dla żądań SQL w kilobajtach (KB). `MaxRespSize=‭10485760‬`Np.<br/><br/>W przypadku bazy danych Teradata w wersji 16.00 lub nowszej maksymalna wartość to 7361536. W przypadku połączeń korzystających z wcześniejszych wersji maksymalna wartość to 1048576. | Wartością `65536`domyślną jest . |
 
-**Przykład użycia uwierzytelniania podstawowego**
+**Przykład przy użyciu uwierzytelniania podstawowego**
 
 ```json
 {
@@ -96,7 +90,7 @@ Więcej właściwości połączenia, które można ustawić w parametrach połą
 }
 ```
 
-**Przykład użycia uwierzytelniania systemu Windows**
+**Przykład przy użyciu uwierzytelniania systemu Windows**
 
 ```json
 {
@@ -118,9 +112,9 @@ Więcej właściwości połączenia, które można ustawić w parametrach połą
 
 > [!NOTE]
 >
-> Następujący ładunek jest nadal obsługiwany. Należy jednak użyć nowej usługi.
+> Następujący ładunek jest nadal obsługiwany. Idąc dalej, należy jednak użyć nowego.
 
-**Poprzedni ładunek:**
+**Poprzednia ładowność:**
 
 ```json
 {
@@ -146,15 +140,15 @@ Więcej właściwości połączenia, które można ustawić w parametrach połą
 
 ## <a name="dataset-properties"></a>Właściwości zestawu danych
 
-Ta sekcja zawiera listę właściwości obsługiwanych przez zestaw danych programu Teradata. Aby uzyskać pełną listę sekcji i właściwości dostępnych do definiowania zestawów danych, zobacz [zestawy danych](concepts-datasets-linked-services.md).
+Ta sekcja zawiera listę właściwości obsługiwanych przez zestaw danych Teradata. Aby uzyskać pełną listę sekcji i właściwości dostępnych do definiowania zestawów danych, zobacz [Zestawy danych](concepts-datasets-linked-services.md).
 
-Aby skopiować dane z programu Teradata, obsługiwane są następujące właściwości:
+Aby skopiować dane z teradata, obsługiwane są następujące właściwości:
 
 | Właściwość | Opis | Wymagany |
 |:--- |:--- |:--- |
-| type | Właściwość Type zestawu danych musi być ustawiona na `TeradataTable`. | Yes |
-| database | Nazwa wystąpienia programu Teradata. | Nie (Jeśli określono parametr "query" w źródle działania) |
-| tabela | Nazwa tabeli w wystąpieniu programu Teradata. | Nie (Jeśli określono parametr "query" w źródle działania) |
+| type | Właściwość typu zestawu danych musi `TeradataTable`być ustawiona na . | Tak |
+| database | Nazwa wystąpienia Teradata. | Nie (jeśli określono "zapytanie" w źródle działania) |
+| tabela | Nazwa tabeli w wystąpieniu Teradata. | Nie (jeśli określono "zapytanie" w źródle działania) |
 
 **Przykład:**
 
@@ -175,9 +169,9 @@ Aby skopiować dane z programu Teradata, obsługiwane są następujące właści
 
 > [!NOTE]
 >
-> zestaw danych typu `RelationalTable` jest nadal obsługiwany. Zalecamy jednak korzystanie z nowego zestawu danych.
+> `RelationalTable`typ zestawu danych jest nadal obsługiwany. Zaleca się jednak użycie nowego zestawu danych.
 
-**Poprzedni ładunek:**
+**Poprzednia ładowność:**
 
 ```json
 {
@@ -195,30 +189,30 @@ Aby skopiować dane z programu Teradata, obsługiwane są następujące właści
 
 ## <a name="copy-activity-properties"></a>Właściwości działania kopiowania
 
-Ta sekcja zawiera listę właściwości obsługiwanych przez źródło programu Teradata. Aby uzyskać pełną listę sekcji i właściwości dostępnych do definiowania działań, zobacz [potoki](concepts-pipelines-activities.md). 
+Ta sekcja zawiera listę właściwości obsługiwanych przez źródło Teradata. Aby uzyskać pełną listę sekcji i właściwości dostępnych do definiowania działań, zobacz [Potoki](concepts-pipelines-activities.md). 
 
 ### <a name="teradata-as-source"></a>Teradata jako źródło
 
 >[!TIP]
->Aby efektywnie załadować dane z programu Teradata przy użyciu partycjonowania danych, Dowiedz się więcej z sekcji [Kopiowanie równoległe z programu Teradata](#parallel-copy-from-teradata) .
+>Aby efektywnie załadować dane z Teradata przy użyciu partycjonowania danych, dowiedz się więcej z [kopiowania równoległego z sekcji Teradata.](#parallel-copy-from-teradata)
 
-Aby skopiować dane z programu Teradata, w sekcji **Źródło** działania kopiowania są obsługiwane następujące właściwości:
+Aby skopiować dane z teradata, w sekcji **źródła** działania kopiowania obsługiwane są następujące właściwości:
 
 | Właściwość | Opis | Wymagany |
 |:--- |:--- |:--- |
-| type | Właściwość Type źródła działania Copy musi mieć wartość `TeradataSource`. | Yes |
-| query | Umożliwia odczytywanie danych niestandardowe zapytania SQL. Może to być na przykład `"SELECT * FROM MyTable"`.<br>Po włączeniu obciążenia partycjonowanego należy podłączyć wszystkie odpowiednie wbudowane parametry partycji w zapytaniu. Przykłady można znaleźć w sekcji [Kopiowanie równoległe z programu Teradata](#parallel-copy-from-teradata) . | Nie (Jeśli określono table w zestawie danych) |
-| partitionOptions | Określa opcje partycjonowania danych używane do ładowania danych z programu Teradata. <br>Zezwalaj na wartości: **none** (wartość domyślna), **hash** i **DynamicRange**.<br>Gdy opcja partycji jest włączona (to nie `None`), stopień równoległości do współbieżnego ładowania danych z programu Teradata jest kontrolowany przez ustawienie [`parallelCopies`](copy-activity-performance.md#parallel-copy) dla działania kopiowania. | Nie |
-| partitionSettings | Określ grupę ustawień partycjonowania danych. <br>Zastosuj, gdy opcja partycji nie jest `None`. | Nie |
-| partitionColumnName | Określ nazwę kolumny źródłowej, która będzie używana przez partycję zakresu lub partycję skrótu dla kopii równoległej. Jeśli nie zostanie określony, podstawowy indeks tabeli zostanie wykryty i użyty jako kolumna partycji. <br>Zastosuj, gdy opcja partycji jest `Hash` lub `DynamicRange`. Jeśli używasz zapytania do pobierania danych źródłowych, hak `?AdfHashPartitionCondition` lub `?AdfRangePartitionColumnName` w klauzuli WHERE. Zobacz przykład w sekcji [Kopiowanie równoległe z programu Teradata](#parallel-copy-from-teradata) . | Nie |
-| partitionUpperBound | Maksymalna wartość kolumny partycji, w której mają zostać skopiowane dane. <br>Zastosuj, gdy opcja partycji jest `DynamicRange`. Jeśli używasz zapytania do pobierania danych źródłowych, hak `?AdfRangePartitionUpbound` w klauzuli WHERE. Aby zapoznać się z przykładem, zobacz sekcję [Kopiowanie równoległe z programu Teradata](#parallel-copy-from-teradata) . | Nie |
-| partitionLowerBound | Minimalna wartość kolumny partycji, w której mają zostać skopiowane dane. <br>Zastosuj, gdy opcja partycji jest `DynamicRange`. Jeśli używasz zapytania do pobierania danych źródłowych, hak `?AdfRangePartitionLowbound` w klauzuli WHERE. Aby zapoznać się z przykładem, zobacz sekcję [Kopiowanie równoległe z programu Teradata](#parallel-copy-from-teradata) . | Nie |
+| type | Właściwość typu źródła działania kopiowania `TeradataSource`musi być ustawiona na . | Tak |
+| query | Użyj niestandardowej kwerendy SQL, aby odczytać dane. Może to być na przykład `"SELECT * FROM MyTable"`.<br>Po włączeniu obciążenia partycjonowanego, należy podłączyć wszelkie odpowiednie wbudowane parametry partycji w zapytaniu. Przykłady można znaleźć w sekcji [Kopia równoległa z teradaty.](#parallel-copy-from-teradata) | Nie (jeśli określono tabelę w zestawie danych) |
+| partitionOptions (opcje partycji) | Określa opcje partycjonowania danych używane do ładowania danych z teradata. <br>Wartości zezwalania to: **Brak** (domyślnie), **Hash** i **DynamicRange**.<br>Gdy opcja partycji jest włączona `None`(czyli nie), stopień równoległości równoczesnych ładowania danych z [`parallelCopies`](copy-activity-performance.md#parallel-copy) Teradata jest kontrolowany przez ustawienie działania kopiowania. | Nie |
+| podziałY | Określ grupę ustawień partycjonowania danych. <br>Zastosuj, gdy opcja `None`partycji nie jest . | Nie |
+| partitionColumnName | Określ nazwę kolumny źródłowej, która będzie używana przez partycję zakresu lub partycję hash dla kopiowania równoległego. Jeśli nie zostanie określony, podstawowy indeks tabeli jest wykrywany automatycznie i używany jako kolumna partycji. <br>Zastosuj, gdy opcja `Hash` `DynamicRange`partycji jest lub . Jeśli używasz kwerendy do pobierania danych `?AdfHashPartitionCondition` `?AdfRangePartitionColumnName` źródłowych, hak lub w klauzuli WHERE. Zobacz przykład [w kopiowanie równoległe z sekcji Teradata.](#parallel-copy-from-teradata) | Nie |
+| partitionUpperBound | Maksymalna wartość kolumny partycji do skopiowania danych. <br>Zastosuj, gdy `DynamicRange`opcja partycji jest . Jeśli używasz kwerendy do pobierania `?AdfRangePartitionUpbound` danych źródłowych, należy podłączyć w klauzuli WHERE. Na przykład zobacz [kopię równoległą z Teradata](#parallel-copy-from-teradata) sekcji. | Nie |
+| partycjaLowerBound | Minimalna wartość kolumny partycji do skopiowania danych. <br>Zastosuj, gdy opcja `DynamicRange`partycji jest . Jeśli używasz kwerendy do pobierania danych `?AdfRangePartitionLowbound` źródłowych, należy podłączyć w klauzuli WHERE. Na przykład zobacz [kopię równoległą z Teradata](#parallel-copy-from-teradata) sekcji. | Nie |
 
 > [!NOTE]
 >
-> Źródło kopii typu `RelationalSource` jest nadal obsługiwane, ale nie obsługuje nowego wbudowanego obciążenia równoległego z programu Teradata (opcje partycji). Zalecamy jednak korzystanie z nowego zestawu danych.
+> `RelationalSource`typ źródła kopii jest nadal obsługiwany, ale nie obsługuje nowego wbudowanego obciążenia równoległego z Teradata (opcje partycji). Zaleca się jednak użycie nowego zestawu danych.
 
-**Przykład: Kopiuj dane przy użyciu podstawowego zapytania bez partycji**
+**Przykład: kopiowanie danych przy użyciu podstawowej kwerendy bez partycji**
 
 ```json
 "activities":[
@@ -250,23 +244,23 @@ Aby skopiować dane z programu Teradata, w sekcji **Źródło** działania kopio
 ]
 ```
 
-## <a name="parallel-copy-from-teradata"></a>Kopiowanie równoległe z programu Teradata
+## <a name="parallel-copy-from-teradata"></a>Kopia równoległa z Teradata
 
-Łącznik Data Factory Teradata udostępnia wbudowane Partycjonowanie danych, które umożliwia równoległe kopiowanie danych z programu Teradata. Opcje partycjonowania danych można znaleźć w tabeli **źródłowej** działania kopiowania.
+Łącznik Teradata fabryki danych zapewnia wbudowane partycjonowanie danych w celu równoległego kopiowania danych z teradaty. Opcje partycjonowania danych można znaleźć w tabeli **Źródło** działania kopiowania.
 
 ![Zrzut ekranu przedstawiający opcje partycji](./media/connector-teradata/connector-teradata-partition-options.png)
 
-Po włączeniu kopiowania partycjonowanego Data Factory uruchamia zapytania równoległe względem źródła programu Teradata w celu załadowania danych przez partycje. Stopień równoległy jest kontrolowany przez [`parallelCopies`](copy-activity-performance.md#parallel-copy) ustawienia dla działania kopiowania. Na przykład jeśli ustawisz `parallelCopies` na cztery, Data Factory jednocześnie generuje i uruchamia cztery zapytania w oparciu o określoną opcję partycji i ustawienia, a każde zapytanie pobiera część danych z programu Teradata.
+Po włączeniu kopii podzielonej na partycje usługa Data Factory uruchamia równoległe kwerendy względem źródła Teradata w celu załadowania danych według partycji. Stopień równoległy jest [`parallelCopies`](copy-activity-performance.md#parallel-copy) kontrolowany przez ustawienie działania kopiowania. Na przykład jeśli `parallelCopies` ustawisz cztery, data factory jednocześnie generuje i uruchamia cztery kwerendy na podstawie określonej opcji partycji i ustawień, a każda kwerenda pobiera część danych z Teradata.
 
-Zalecane jest włączenie kopiowania równoległego przy użyciu partycjonowania danych, szczególnie podczas ładowania dużej ilości danych z programu Teradata. Poniżej przedstawiono sugerowane konfiguracje dla różnych scenariuszy. Podczas kopiowania danych do magazynu danych opartego na plikach, należy ponownie wykonać zapis do folderu jako wiele plików (Określ tylko nazwę folderu), w którym to przypadku wydajność jest lepsza niż zapis do pojedynczego pliku.
+Zaleca się włączenie kopiowania równoległego z partycjonowanie danych, zwłaszcza podczas ładowania dużej ilości danych z Teradata. Poniżej przedstawiono sugerowane konfiguracje dla różnych scenariuszy. Podczas kopiowania danych do magazynu danych opartych na plikach zaleca się zapisywanie w folderze jako wielu plików (określanie tylko nazwy folderu), w którym to przypadku wydajność jest lepsza niż zapisywanie do jednego pliku.
 
 | Scenariusz                                                     | Sugerowane ustawienia                                           |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| Pełne ładowanie z dużej tabeli.                                   | **Opcja partycji**: hash. <br><br/>Podczas wykonywania Data Factory automatycznie wykrywa kolumnę PK, stosuje do niej skrót i kopiuje dane przez partycje. |
-| Załaduj dużą ilość danych przy użyciu kwerendy niestandardowej.                 | **Opcja partycji**: hash.<br>**Zapytanie**: `SELECT * FROM <TABLENAME> WHERE ?AdfHashPartitionCondition AND <your_additional_where_clause>`.<br>**Kolumna partycji**: określ kolumnę używaną na potrzeby stosowania partycji skrótu. Jeśli nie zostanie określony, Data Factory automatycznie wykrywa kolumnę PK dla tabeli określonej w zestawie danych programu Teradata.<br><br>Podczas wykonywania Data Factory zastępuje `?AdfHashPartitionCondition` z logiką partycji skrótu i wysyła do programu Teradata. |
-| Załaduj dużą ilość danych przy użyciu zapytania niestandardowego, mając kolumnę Integer z równomiernie rozproszoną wartością dla partycjonowania zakresu. | **Opcje partycji**: dynamiczna partycja zakresu.<br>**Zapytanie**: `SELECT * FROM <TABLENAME> WHERE ?AdfRangePartitionColumnName <= ?AdfRangePartitionUpbound AND ?AdfRangePartitionColumnName >= ?AdfRangePartitionLowbound AND <your_additional_where_clause>`.<br>**Kolumna partycji**: określ kolumnę używaną do partycjonowania danych. Można podzielić na kolumny z typem danych Integer.<br>**Górna** granica partycji i **Dolna granica partycji**: Określ, czy chcesz filtrować względem kolumny partycji, aby pobierać dane tylko między niższym i górnym zakresem.<br><br>Podczas wykonywania Data Factory zastępuje `?AdfRangePartitionColumnName`, `?AdfRangePartitionUpbound`i `?AdfRangePartitionLowbound` z rzeczywistą nazwą kolumny i zakresem wartości dla każdej partycji i wysyła do programu Teradata. <br>Na przykład jeśli kolumna partycji "ID" ma ustawioną dolną granicę 1 i górną granicę 80, z kopią równoległą ustawioną na wartość 4, Data Factory pobiera dane przez 4 partycje. Ich identyfikatory należą do zakresu od [1, 20], [21, 40], [41, 60] i [61, 80]. |
+| Pełne obciążenie z dużego stołu.                                   | **Opcja partycji**: Skrót. <br><br/>Podczas wykonywania usługa Data Factory automatycznie wykrywa kolumnę PK, stosuje skrót względem niej i kopiuje dane według partycji. |
+| Załaduj dużą ilość danych przy użyciu kwerendy niestandardowej.                 | **Opcja partycji**: Skrót.<br>**Zapytanie**: `SELECT * FROM <TABLENAME> WHERE ?AdfHashPartitionCondition AND <your_additional_where_clause>`.<br>**Kolumna partycji**: Określ kolumnę używaną do stosowania partycji mieszania. Jeśli nie zostanie określony, usługa Data Factory automatycznie wykrywa kolumnę PK tabeli określonej w zestawie danych Teradata.<br><br>Podczas wykonywania usługa Data `?AdfHashPartitionCondition` Factory zastępuje logikę partycji mieszania i wysyła do Teradata. |
+| Załaduj dużą ilość danych przy użyciu kwerendy niestandardowej, mając kolumnę całkowitą o równomiernie rozłożonej wartości do partycjonowania zakresu. | **Opcje partycji**: Partycja zakresu dynamicznego.<br>**Zapytanie**: `SELECT * FROM <TABLENAME> WHERE ?AdfRangePartitionColumnName <= ?AdfRangePartitionUpbound AND ?AdfRangePartitionColumnName >= ?AdfRangePartitionLowbound AND <your_additional_where_clause>`.<br>**Kolumna partycji**: Określ kolumnę używaną do partycjonowania danych. Można podzielić na kolumnę z typem danych liczby całkowitej.<br>**Górna granica partycji** i **dolna granica partycji**: Określ, czy chcesz filtrować względem kolumny partycji, aby pobierać dane tylko między dolnym i górnym zakresem.<br><br>Podczas wykonywania usługa Data `?AdfRangePartitionColumnName` `?AdfRangePartitionUpbound`Factory `?AdfRangePartitionLowbound` zastępuje , a rzeczywista nazwa kolumny i zakresy wartości dla każdej partycji i wysyła do Teradata. <br>Na przykład jeśli kolumna partycji "ID" ustawiona z dolną granicą jako 1 i górną granicą jako 80, z kopią równoległą ustawioną jako 4, usługa Data Factory pobiera dane przez 4 partycje. Ich identyfikatory znajdują się odpowiednio między [1,20], [21, 40], [41, 60] i [61, 80]. |
 
-**Przykład: zapytanie z partycją skrótu**
+**Przykład: kwerenda z partycją mieszania**
 
 ```json
 "source": {
@@ -279,7 +273,7 @@ Zalecane jest włączenie kopiowania równoległego przy użyciu partycjonowania
 }
 ```
 
-**Przykład: zapytanie z dynamiczną partycją zakresu**
+**Przykład: kwerenda z partycją zakresu dynamicznego**
 
 ```json
 "source": {
@@ -294,57 +288,57 @@ Zalecane jest włączenie kopiowania równoległego przy użyciu partycjonowania
 }
 ```
 
-## <a name="data-type-mapping-for-teradata"></a>Mapowanie typu danych dla programu Teradata
+## <a name="data-type-mapping-for-teradata"></a>Mapowanie typu danych dla teradata
 
-Podczas kopiowania danych z programu Teradata są stosowane następujące mapowania. Aby dowiedzieć się, jak działanie kopiowania mapuje schemat źródłowy i typ danych na ujścia, zobacz [Mapowanie schematu i typu danych](copy-activity-schema-and-type-mapping.md).
+Podczas kopiowania danych z Teradata stosuje się następujące mapowania. Aby dowiedzieć się, jak działanie kopiowania mapuje schemat źródłowy i typ danych do ujścia, zobacz [Mapowanie schematu i typów danych](copy-activity-schema-and-type-mapping.md).
 
-| Typ danych programu Teradata | Typ danych tymczasowych fabryki danych |
+| Typ danych Teradata | Tymczasowy typ danych data factory |
 |:--- |:--- |
-| BigInt |Int64 |
-| Obiekt blob |Byte[] |
-| Bajtów |Byte[] |
-| ByteInt |Int16 |
+| Bigint |Int64 |
+| Obiekt blob |Bajt[] |
+| Byte |Bajt[] |
+| BajtInt |Int16 |
 | Char |Ciąg |
 | Clob |Ciąg |
-| Date |DateTime |
-| Dziesiętna |Dziesiętna |
-| Podwójne |Podwójne |
-| Graphic |Nieobsługiwane. Zastosuj jawne rzutowanie w zapytaniu źródłowym. |
+| Data |DateTime |
+| Wartość dziesiętna |Wartość dziesiętna |
+| Double |Double |
+| Graficzny |Bez pomocy technicznej. Stosowanie jawnego rzutu w kwerendzie źródłej. |
 | Liczba całkowita |Int32 |
-| Interval Day |Nieobsługiwane. Zastosuj jawne rzutowanie w zapytaniu źródłowym. |
-| Interval Day To Hour |Nieobsługiwane. Zastosuj jawne rzutowanie w zapytaniu źródłowym. |
-| Interval Day To Minute |Nieobsługiwane. Zastosuj jawne rzutowanie w zapytaniu źródłowym. |
-| Interval Day To Second |Nieobsługiwane. Zastosuj jawne rzutowanie w zapytaniu źródłowym. |
-| Interval Hour |Nieobsługiwane. Zastosuj jawne rzutowanie w zapytaniu źródłowym. |
-| Interval Hour To Minute |Nieobsługiwane. Zastosuj jawne rzutowanie w zapytaniu źródłowym. |
-| Interval Hour To Second |Nieobsługiwane. Zastosuj jawne rzutowanie w zapytaniu źródłowym. |
-| Interval Minute |Nieobsługiwane. Zastosuj jawne rzutowanie w zapytaniu źródłowym. |
-| Interval Minute To Second |Nieobsługiwane. Zastosuj jawne rzutowanie w zapytaniu źródłowym. |
-| Interval Month |Nieobsługiwane. Zastosuj jawne rzutowanie w zapytaniu źródłowym. |
-| Interval Second |Nieobsługiwane. Zastosuj jawne rzutowanie w zapytaniu źródłowym. |
-| Interval Year |Nieobsługiwane. Zastosuj jawne rzutowanie w zapytaniu źródłowym. |
-| Interval Year To Month |Nieobsługiwane. Zastosuj jawne rzutowanie w zapytaniu źródłowym. |
-| Liczba |Podwójne |
-| Okres (Data) |Nieobsługiwane. Zastosuj jawne rzutowanie w zapytaniu źródłowym. |
-| Czas (Time) |Nieobsługiwane. Zastosuj jawne rzutowanie w zapytaniu źródłowym. |
-| Okres (czas ze strefą czasową) |Nieobsługiwane. Zastosuj jawne rzutowanie w zapytaniu źródłowym. |
-| Kropka (Sygnatura czasowa) |Nieobsługiwane. Zastosuj jawne rzutowanie w zapytaniu źródłowym. |
-| Okres (Sygnatura czasowa ze strefą czasową) |Nieobsługiwane. Zastosuj jawne rzutowanie w zapytaniu źródłowym. |
-| SmallInt |Int16 |
+| Dzień interwału |Bez pomocy technicznej. Stosowanie jawnego rzutu w kwerendzie źródłej. |
+| Interwał dzień na godzinę |Bez pomocy technicznej. Stosowanie jawnego rzutu w kwerendzie źródłej. |
+| Interwał dzień na minutę |Bez pomocy technicznej. Stosowanie jawnego rzutu w kwerendzie źródłej. |
+| Interwał od dnia do drugiego |Bez pomocy technicznej. Stosowanie jawnego rzutu w kwerendzie źródłej. |
+| Interwał Godzina |Bez pomocy technicznej. Stosowanie jawnego rzutu w kwerendzie źródłej. |
+| Interwał od godziny do minuty |Bez pomocy technicznej. Stosowanie jawnego rzutu w kwerendzie źródłej. |
+| Interwał od godziny do sekundy |Bez pomocy technicznej. Stosowanie jawnego rzutu w kwerendzie źródłej. |
+| Minuta interwału |Bez pomocy technicznej. Stosowanie jawnego rzutu w kwerendzie źródłej. |
+| Interwał od minuty do sekundy |Bez pomocy technicznej. Stosowanie jawnego rzutu w kwerendzie źródłej. |
+| Miesiąc interwału |Bez pomocy technicznej. Stosowanie jawnego rzutu w kwerendzie źródłej. |
+| Interwał drugi |Bez pomocy technicznej. Stosowanie jawnego rzutu w kwerendzie źródłej. |
+| Rok interwałowy |Bez pomocy technicznej. Stosowanie jawnego rzutu w kwerendzie źródłej. |
+| Interwał rok do miesiąca |Bez pomocy technicznej. Stosowanie jawnego rzutu w kwerendzie źródłej. |
+| Liczba |Double |
+| Okres (data) |Bez pomocy technicznej. Stosowanie jawnego rzutu w kwerendzie źródłej. |
+| Okres (czas) |Bez pomocy technicznej. Stosowanie jawnego rzutu w kwerendzie źródłej. |
+| Okres (czas ze strefą czasową) |Bez pomocy technicznej. Stosowanie jawnego rzutu w kwerendzie źródłej. |
+| Okres (sygnatura czasowa) |Bez pomocy technicznej. Stosowanie jawnego rzutu w kwerendzie źródłej. |
+| Okres (sygnatura czasowa ze strefą czasową) |Bez pomocy technicznej. Stosowanie jawnego rzutu w kwerendzie źródłej. |
+| Smallint |Int16 |
 | Time |przedział_czasu |
-| Time With Time Zone |przedział_czasu |
+| Czas ze strefą czasową |przedział_czasu |
 | Znacznik czasu |DateTime |
-| Timestamp With Time Zone |DateTime |
-| VarByte |Byte[] |
-| VarChar |Ciąg |
-| VarGraphic |Nieobsługiwane. Zastosuj jawne rzutowanie w zapytaniu źródłowym. |
-| Xml |Nieobsługiwane. Zastosuj jawne rzutowanie w zapytaniu źródłowym. |
+| Sygnatura czasowa ze strefą czasową |DateTime |
+| VarByte ( VarByte ) |Bajt[] |
+| Varchar |Ciąg |
+| Grafika vargraficzna |Bez pomocy technicznej. Stosowanie jawnego rzutu w kwerendzie źródłej. |
+| Xml |Bez pomocy technicznej. Stosowanie jawnego rzutu w kwerendzie źródłej. |
 
 
-## <a name="lookup-activity-properties"></a>Właściwości działania Lookup
+## <a name="lookup-activity-properties"></a>Właściwości działania odnośnika
 
-Aby dowiedzieć się więcej o właściwościach, sprawdź [działanie Lookup (wyszukiwanie](control-flow-lookup-activity.md)).
+Aby dowiedzieć się więcej o właściwościach, sprawdź [działanie odnośnika](control-flow-lookup-activity.md).
 
 
 ## <a name="next-steps"></a>Następne kroki
-Listę magazynów danych obsługiwanych jako źródła i ujścia przez działanie kopiowania w Data Factory można znaleźć w temacie [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats).
+Aby uzyskać listę magazynów danych obsługiwanych jako źródła i pochłaniacze przez działanie kopiowania w fabryce danych, zobacz [Obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats).

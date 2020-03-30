@@ -1,6 +1,6 @@
 ---
-title: Metryki oparte na dzienniku usługi Azure Application Insights | Microsoft Docs
-description: W tym artykule przedstawiono metryki usługi Azure Application Insights z obsługiwanymi agregacjami i wymiarami. Szczegółowe informacje o metrykach opartych na dzienniku zawierają bazowe instrukcje zapytania Kusto.
+title: Metryki oparte na dziennikach usługi Azure Application Insights | Dokumenty firmy Microsoft
+description: W tym artykule wymieniono metryki usługi Azure Application Insights z obsługiwanymi agregacjami i wymiarami. Szczegółowe informacje na temat metryk opartych na dzienniku obejmują podstawowe instrukcje zapytania Kusto.
 author: vgorbenko
 services: azure-monitor
 ms.topic: reference
@@ -8,48 +8,48 @@ ms.date: 07/03/2019
 ms.author: vitalyg
 ms.subservice: application-insights
 ms.openlocfilehash: 12bc51e800ef5ccd4ad3c72d3860fb22bac5b749
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77664919"
 ---
-# <a name="application-insights-log-based-metrics"></a>Application Insights metryki oparte na dzienniku
+# <a name="application-insights-log-based-metrics"></a>Metryki oparte na dziennikach usługi Application Insights
 
-Application Insights metryki oparte na dzienniku umożliwiają analizowanie kondycji monitorowanych aplikacji, tworzenie zaawansowanych pulpitów nawigacyjnych i Konfigurowanie alertów. Istnieją dwa rodzaje metryk:
+Metryki oparte na dzienniku usługi Application Insights umożliwiają analizowanie kondycji monitorowanych aplikacji, tworzenie zaawansowanych pulpitów nawigacyjnych i konfigurowanie alertów. Istnieją dwa rodzaje metryk:
 
-* [Metryki oparte na dziennikach](../../azure-monitor/app/pre-aggregated-metrics-log-metrics.md#log-based-metrics) są tłumaczone na [zapytania Kusto](https://docs.microsoft.com/azure/kusto/query/) z przechowywanych zdarzeń.
-* [Metryki standardowe](../../azure-monitor/app/pre-aggregated-metrics-log-metrics.md#pre-aggregated-metrics) są przechowywane jako szeregi czasowe zagregowane.
+* [Metryki oparte na dziennikach](../../azure-monitor/app/pre-aggregated-metrics-log-metrics.md#log-based-metrics) za sceną są tłumaczone na [zapytania Kusto](https://docs.microsoft.com/azure/kusto/query/) z przechowywanych zdarzeń.
+* [Standardowe metryki](../../azure-monitor/app/pre-aggregated-metrics-log-metrics.md#pre-aggregated-metrics) są przechowywane jako wstępnie zagregowane serie czasowe.
 
-Ze względu na to, że *metryki standardowe* są wstępnie agregowane podczas zbierania, mają lepszą wydajność w czasie wykonywania zapytania. Zapewnia to lepszy wybór dla pulpitów nawigacyjnych i alertów w czasie rzeczywistym. *Metryki oparte na dzienniku* mają więcej wymiarów, co sprawia, że jest to opcja najwyższej jakości do analizy danych i diagnostyki ad hoc. Użyj [selektora przestrzeni nazw](metrics-getting-started.md#create-your-first-metric-chart) , aby przełączać się między metrykami opartymi na dzienniku i standardowym w [Eksploratorze metryk](metrics-getting-started.md).
+Ponieważ *standardowe metryki* są wstępnie agregowane podczas zbierania, mają lepszą wydajność w czasie kwerendy. To sprawia, że są one lepszym wyborem do pulpitu nawigacyjnego i w czasie rzeczywistym alertów. *Metryki oparte na dzienniku* mają więcej wymiarów, co czyni je doskonałą opcją analizy danych i diagnostyki ad hoc. Użyj [selektora obszaru nazw,](metrics-getting-started.md#create-your-first-metric-chart) aby przełączać się między metrykami opartymi na dzienniku a standardowymi w [Eksploratorze metryk](metrics-getting-started.md).
 
-## <a name="interpret-and-use-queries-from-this-article"></a>Interpretuj i używaj zapytań z tego artykułu
+## <a name="interpret-and-use-queries-from-this-article"></a>Interpretowanie i używanie zapytań z tego artykułu
 
-Ten artykuł zawiera listę metryk z obsługiwanymi agregacjami i wymiarami. Szczegółowe informacje o metrykach opartych na dzienniku zawierają bazowe instrukcje zapytania Kusto. Dla wygody każde zapytanie używa wartości domyślnych dla stopnia szczegółowości czasu, typu wykresu i czasami dzielenia wymiarem, które upraszcza użycie zapytania w Log Analytics bez konieczności modyfikowania.
+W tym artykule wymieniono metryki z obsługiwanymi agregacjami i wymiarami. Szczegółowe informacje na temat metryk opartych na dzienniku obejmują podstawowe instrukcje zapytania Kusto. Dla wygody każda kwerenda używa wartości domyślnych dla szczegółowości czasu, typu wykresu, a czasami dzielenia wymiaru, co upraszcza korzystanie z kwerendy w usłudze Log Analytics bez konieczności modyfikowania.
 
-Podczas wykreślania tej samej metryki w [Eksploratorze metryk](metrics-getting-started.md)nie ma żadnych wartości domyślnych — zapytanie jest dynamicznie dostosowywane na podstawie ustawień wykresu:
+Podczas drukowania tej samej metryki w [Eksploratorze metryk](metrics-getting-started.md)nie ma żadnych wartości domyślnych — kwerenda jest dostosowywana dynamicznie na podstawie ustawień wykresu:
 
-- Wybrany **zakres czasu** jest tłumaczony na dodatkową klauzulę *WHERE sygnatura* czasowa..., aby wybierać tylko zdarzenia z wybranego zakresu czasu. Na przykład wykres przedstawiający dane dla ostatnich 24 godzin zapytania zawiera *| gdzie sygnatura czasowa > temu (24 h)* .
+- Wybrany **zakres czasu** jest tłumaczony na dodatkowe, *gdzie sygnatura czasowa...* klauzula, aby wybrać tylko zdarzenia z wybranego zakresu czasu. Na przykład wykres przedstawiający dane z ostatnich 24 godzin, zapytanie zawiera *| gdzie sygnatura czasowa > temu(24 h)*.
 
-- Wybrany **stopień szczegółowości czasu** jest wprowadzany do końcowego *podsumowania... według: bin (Sygnatura czasowa, [ziarno))* .
+- Wybrana **szczegółowość czasu** jest umieszczana w ostatecznej *podsumować ... przez klauzulę bin(timestamp, [time grain]).*
 
-- Wszystkie wybrane wymiary **filtru** są tłumaczone na dodatkowe klauzule *WHERE* .
+- Wszystkie wybrane wymiary **filtru** są tłumaczone na dodatkowe *klauzule gdzie.*
 
-- Wybrany wymiar **podzielony wykres** jest tłumaczony na dodatkową właściwość podsumowującą. Na przykład w przypadku dzielenia wykresu według *lokalizacji*i kreślenia przy użyciu 5-minutowego stopnia szczegółowości zostanie podsumowana klauzula *podsumowania* *... według bin (Sygnatura czasowa, 5 m), lokalizacja*.
+- Wybrany wymiar **wykresu podziału** jest tłumaczony na dodatkową właściwość podsumowania. Na przykład, jeśli wykres zostanie podzielony według *lokalizacji*i wydruku przy użyciu 5-minutowej szczegółowości czasu, *klauzula podsumowania* zostanie podsumowana *... przez bin(sygnatura czasowa, 5 m), lokalizacja*.
 
 > [!NOTE]
-> Jeśli dopiero zaczynasz pracę z językiem zapytań Kusto, możesz zacząć od skopiowania i wklejenia instrukcji Kusto do okienka zapytania Log Analytics bez wprowadzania żadnych modyfikacji. Kliknij przycisk **Uruchom** , aby wyświetlić wykres podstawowy. Po rozpoczęciu zrozumienia składni języka zapytań można zacząć wprowadzać małe modyfikacje i zobaczyć wpływ zmiany. Eksplorowanie własnych danych jest doskonałym sposobem na rozpoczęcie realizacji pełnej mocy [log Analytics](../../azure-monitor/log-query/get-started-portal.md) i [Azure monitor](../../azure-monitor/overview.md).
+> Jeśli jesteś nowy w języku zapytań Kusto, zaczynasz od kopiowania i wklejania instrukcji Kusto do okienka zapytań usługi Log Analytics bez wprowadzania żadnych modyfikacji. Kliknij **przycisk Uruchom,** aby wyświetlić wykres podstawowy. Jak zacząć rozumieć składnię języka zapytań, można rozpocząć wprowadzanie małych zmian i zobaczyć wpływ zmiany. Eksplorowanie własnych danych to świetny sposób na rozpoczęcie realizacji pełnej mocy [usługi Log Analytics](../../azure-monitor/log-query/get-started-portal.md) i usługi Azure [Monitor.](../../azure-monitor/overview.md)
 
 ## <a name="availability-metrics"></a>Metryki dostępności
 
-Metryki w kategorii dostępność umożliwiają sprawdzenie kondycji aplikacji sieci Web zaobserwowanej z punktów na całym świecie. [Skonfiguruj testy dostępności,](../../azure-monitor/app/monitor-web-app-availability.md) aby rozpocząć korzystanie z dowolnych metryk z tej kategorii.
+Metryki w kategorii Dostępność umożliwiają wyświetlanie kondycji aplikacji sieci web obserwowanej z punktów na całym świecie. [Skonfiguruj testy dostępności,](../../azure-monitor/app/monitor-web-app-availability.md) aby rozpocząć korzystanie z dowolnych metryk z tej kategorii.
 
-### <a name="availability-availabilityresultsavailabilitypercentage"></a>Dostępność (availabilityResults/availabilityPercentage)
-Metryka *dostępności* przedstawia wartość procentową przebiegów testów sieci Web, które nie wykryły żadnych problemów. Najmniejsza możliwa wartość to 0, co oznacza, że wszystkie uruchomienia testu sieci Web nie powiodły się. Wartość 100 oznacza, że wszystkie uruchomienia testu sieci Web przeszły kryteria walidacji.
+### <a name="availability-availabilityresultsavailabilitypercentage"></a>Dostępność (dostępnośćWyniki/dostępnośćProcent)
+Metryka *Dostępność* pokazuje procent przebiegów testu sieci web, które nie wykryły żadnych problemów. Najniższa możliwa wartość wynosi 0, co oznacza, że wszystkie przebiegi testu sieci web nie powiodły się. Wartość 100 oznacza, że wszystkie przebiegi testu sieci web przeszły kryteria sprawdzania poprawności.
 
 |Jednostka miary|Obsługiwane agregacje|Obsługiwane wymiary|
 |---|---|---|---|---|---|
-|Procent|Średnia|Lokalizacja przebiegu, nazwa testu|
+|Procentowe|Średnia|Uruchom lokalizację, nazwę testu|
 
 ```Kusto
 availabilityResults 
@@ -57,13 +57,13 @@ availabilityResults
 | render timechart
 ```
 
-### <a name="availability-test-duration-availabilityresultsduration"></a>Czas trwania testu dostępności (availabilityResults/Duration)
+### <a name="availability-test-duration-availabilityresultsduration"></a>Czas trwania testu dostępności (dostępnośćWyniki/czas trwania)
 
-Metryka *czas trwania testu dostępności* pokazuje, ile czasu zajęło uruchomienie testu sieci Web. W przypadku [wieloetapowych testów sieci Web](../../azure-monitor/app/availability-multistep.md)Metryka wskazuje całkowity czas wykonywania wszystkich kroków.
+Metryka *czasu trwania testu dostępności* pokazuje, ile czasu zajęło uruchomienie testu sieci web. W przypadku [wieloetapowych testów sieci web](../../azure-monitor/app/availability-multistep.md)metryka odzwierciedla całkowity czas wykonywania wszystkich kroków.
 
 |Jednostka miary|Obsługiwane agregacje|Obsługiwane wymiary|
 |---|---|---|---|---|---|
-|Milisekundy|Średnia, minimum, maksimum|Lokalizacja przebiegu, nazwa testu, wynik testu
+|Milisekund|Średnia, Min, Max|Uruchom lokalizację, nazwę testu, wynik testu
 
 ```Kusto
 availabilityResults
@@ -73,13 +73,13 @@ availabilityResults
 | render timechart
 ```
 
-### <a name="availability-tests-availabilityresultscount"></a>Testy dostępności (availabilityResults/Count)
+### <a name="availability-tests-availabilityresultscount"></a>Testy dostępności (dostępnośćWyniki/liczba)
 
-Metryki *testów dostępności* odzwierciedlają liczbę testów sieci Web wykonywanych przez Azure monitor.
+Metryka *Testy dostępności* odzwierciedla liczbę testów sieci web uruchamianych przez usługę Azure Monitor.
 
 |Jednostka miary|Obsługiwane agregacje|Obsługiwane wymiary|
 |---|---|---|---|---|---|
-|Licznik|Licznik|Lokalizacja przebiegu, nazwa testu, wynik testu|
+|Liczba|Liczba|Uruchom lokalizację, nazwę testu, wynik testu|
 
 ```Kusto
 availabilityResults
@@ -87,18 +87,18 @@ availabilityResults
 | render timechart
 ```
 
-## <a name="browser-metrics"></a>Metryki przeglądarki
+## <a name="browser-metrics"></a>Dane przeglądarki
 
-Metryki przeglądarki są zbierane przez zestaw Application Insights JavaScript SDK z rzeczywistych przeglądarek użytkowników końcowych. Zapewniają doskonałe informacje o doświadczeniu użytkowników w Twojej aplikacji sieci Web. Metryki przeglądarki zazwyczaj nie są próbkowane, co oznacza, że zapewniają większą precyzję numerów użycia w porównaniu z metrykami po stronie serwera, które mogą być pochylone przez próbkowanie.
+Metryki przeglądarki są zbierane przez SDK JavaScript aplikacji Insights z rzeczywistych przeglądarek użytkowników końcowych. Zapewniają one doskonały wgląd w środowisko użytkowników z aplikacją internetową. Metryki przeglądarki zazwyczaj nie są próbkowane, co oznacza, że zapewniają większą dokładność liczb użycia w porównaniu do metryk po stronie serwera, które mogą być wypaczone przez próbkowanie.
 
 > [!NOTE]
-> Aby zbierać metryki przeglądarki, aplikacja musi być Instrumentacja przy użyciu [zestawu SDK języka JavaScript Application Insights](../../azure-monitor/app/javascript.md).
+> Aby zbierać dane przeglądarki, aplikacja musi być instrumentowana za pomocą [SDK JavaScript aplikacji Insights](../../azure-monitor/app/javascript.md).
 
-### <a name="browser-page-load-time-browsertimingstotalduration"></a>Czas ładowania strony w przeglądarce (browserTimings/totalDuration)
+### <a name="browser-page-load-time-browsertimingstotalduration"></a>Czas ładowania strony przeglądarki (przeglądarkaTimings/totalDuration)
 
-|Jednostka miary|Obsługiwane agregacje|Wymiary wstępnie zagregowane|
+|Jednostka miary|Obsługiwane agregacje|Wstępnie zagregowane wymiary|
 |---|---|---|
-|Milisekundy|Średnia, minimum, maksimum|None|
+|Milisekund|Średnia, Min, Max|Brak|
 
 ```Kusto
 browserTimings
@@ -110,11 +110,11 @@ browserTimings
 | render timechart
 ```
 
-### <a name="client-processing-time-browsertimingprocessingduration"></a>Czas przetwarzania klienta (browserTiming/processingDuration)
+### <a name="client-processing-time-browsertimingprocessingduration"></a>Czas przetwarzania klienta (przeglądarkaTiming/processingDuration)
 
-|Jednostka miary|Obsługiwane agregacje|Wymiary wstępnie zagregowane|
+|Jednostka miary|Obsługiwane agregacje|Wstępnie zagregowane wymiary|
 |---|---|---|
-|Milisekundy|Średnia, minimum, maksimum|None|
+|Milisekund|Średnia, Min, Max|Brak|
 
 ```Kusto
 browserTimings
@@ -126,11 +126,11 @@ browserTimings
 | render timechart
 ```
 
-### <a name="page-load-network-connect-time-browsertimingsnetworkduration"></a>Czas połączenia sieciowego ładowania strony (browserTimings/networkDuration)
+### <a name="page-load-network-connect-time-browsertimingsnetworkduration"></a>Czas ładowania strony sieciowej (przeglądarkaTimings/networkDuration)
 
-|Jednostka miary|Obsługiwane agregacje|Wymiary wstępnie zagregowane|
+|Jednostka miary|Obsługiwane agregacje|Wstępnie zagregowane wymiary|
 |---|---|---|
-|Milisekundy|Średnia, minimum, maksimum|None|
+|Milisekund|Średnia, Min, Max|Brak|
 
 ```Kusto
 browserTimings
@@ -142,11 +142,11 @@ browserTimings
 | render timechart
 ```
 
-### <a name="receiving-response-time-browsertimingsreceiveduration"></a>Czas odpowiedzi na odebranie (browserTimings/receiveDuration)
+### <a name="receiving-response-time-browsertimingsreceiveduration"></a>Odbieranie czasu odpowiedzi (przeglądarkaTimings/receiveDuration)
 
-|Jednostka miary|Obsługiwane agregacje|Wymiary wstępnie zagregowane|
+|Jednostka miary|Obsługiwane agregacje|Wstępnie zagregowane wymiary|
 |---|---|---|
-|Milisekundy|Średnia, minimum, maksimum|None|
+|Milisekund|Średnia, Min, Max|Brak|
 
 ```Kusto
 browserTimings
@@ -158,11 +158,11 @@ browserTimings
 | render timechart
 ```
 
-### <a name="send-request-time-browsertimingssendduration"></a>Czas żądania wysłania (browserTimings/sendDuration)
+### <a name="send-request-time-browsertimingssendduration"></a>Wyślij czas żądania (przeglądarkaTimings/sendDuration)
 
-|Jednostka miary|Obsługiwane agregacje|Wymiary wstępnie zagregowane|
+|Jednostka miary|Obsługiwane agregacje|Wstępnie zagregowane wymiary|
 |---|---|---|
-|Milisekundy|Średnia, minimum, maksimum|None|
+|Milisekund|Średnia, Min, Max|Brak|
 
 ```Kusto
 browserTimings
@@ -174,17 +174,17 @@ browserTimings
 | render timechart
 ```
 
-## <a name="failure-metrics"></a>Metryki błędów
+## <a name="failure-metrics"></a>Metryki awarii
 
-Metryki w **błędach** pokazują problemy związane z przetwarzaniem żądań, wywołaniami zależności i zgłoszonymi wyjątkami.
+Metryki w **błędy** pokazują problemy z przetwarzaniem żądań, wywołania zależności i zgłoszonych wyjątków.
 
 ### <a name="browser-exceptions-exceptionsbrowser"></a>Wyjątki przeglądarki (wyjątki/przeglądarka)
 
-Ta Metryka odzwierciedla liczbę zgłoszonych wyjątków z kodu aplikacji działającego w przeglądarce. W metryce są uwzględniane tylko wyjątki, które są śledzone za pomocą wywołania interfejsu API Application Insights ```trackException()```.
+Ta metryka odzwierciedla liczbę zgłoszonych wyjątków z kodu aplikacji uruchomionego w przeglądarce. Tylko wyjątki, które są ```trackException()``` śledzone za pomocą wywołania interfejsu API usługi Application Insights są uwzględniane w metryce.
 
-|Jednostka miary|Obsługiwane agregacje|Wymiary wstępnie zagregowane|Uwagi|
+|Jednostka miary|Obsługiwane agregacje|Wstępnie zagregowane wymiary|Uwagi|
 |---|---|---|---|
-|Licznik|Licznik|None|Wersja oparta na dzienniku korzysta z agregacji **sum**|
+|Liczba|Liczba|Brak|Wersja oparta na dzienniku używa agregacji **sum**|
 
 ```Kusto
 exceptions
@@ -193,13 +193,13 @@ exceptions
 | render barchart
 ```
 
-### <a name="dependency-call-failures-dependenciesfailed"></a>Błędy wywołań zależności (zależności/niepowodzenie)
+### <a name="dependency-call-failures-dependenciesfailed"></a>Niepowodzenia wywołania zależności (zależności/nie powiodły się)
 
-Liczba wywołań zależności zakończonych niepowodzeniem.
+Liczba wywołań zależności nie powiodło się.
 
-|Jednostka miary|Obsługiwane agregacje|Wymiary wstępnie zagregowane|Uwagi|
+|Jednostka miary|Obsługiwane agregacje|Wstępnie zagregowane wymiary|Uwagi|
 |---|---|---|---|
-|Licznik|Licznik|None|Wersja oparta na dzienniku korzysta z agregacji **sum**|
+|Liczba|Liczba|Brak|Wersja oparta na dzienniku używa agregacji **sum**|
 
 ```Kusto
 dependencies
@@ -210,11 +210,11 @@ dependencies
 
 ### <a name="exceptions-exceptionscount"></a>Wyjątki (wyjątki/liczba)
 
-Za każdym razem, gdy rejestrujesz wyjątek do Application Insights, istnieje wywołanie [metody trackexception ()](../../azure-monitor/app/api-custom-events-metrics.md#trackexception) zestawu SDK. Metryka wyjątków pokazuje liczbę zarejestrowanych wyjątków.
+Za każdym razem, gdy rejestrujesz wyjątek do usługi Application Insights, istnieje wywołanie [metody trackException()](../../azure-monitor/app/api-custom-events-metrics.md#trackexception) sdk. Metryka Wyjątki pokazuje liczbę zarejestrowanych wyjątków.
 
-|Jednostka miary|Obsługiwane agregacje|Wymiary wstępnie zagregowane|Uwagi|
+|Jednostka miary|Obsługiwane agregacje|Wstępnie zagregowane wymiary|Uwagi|
 |---|---|---|---|
-|Licznik|Licznik|Nazwa roli w chmurze, wystąpienie roli w chmurze, typ urządzenia|Wersja oparta na dzienniku korzysta z agregacji **sum**|
+|Liczba|Liczba|Nazwa roli w chmurze, wystąpienie roli w chmurze, typ urządzenia|Wersja oparta na dzienniku używa agregacji **sum**|
 
 ```Kusto
 exceptions
@@ -222,13 +222,13 @@ exceptions
 | render barchart
 ```
 
-### <a name="failed-requests-requestsfailed"></a>Nieudane żądania (żądania/niepowodzenie)
+### <a name="failed-requests-requestsfailed"></a>Żądania nie powiodły się (żądania/niepowodzenie)
 
-Liczba śledzonych żądań serwera, które zostały oznaczone jako *zakończone niepowodzeniem*. Domyślnie zestaw SDK Application Insights automatycznie oznacza każde żądanie serwera, które zwróciło kod odpowiedzi HTTP 5xx lub 4xx jako żądanie zakończone niepowodzeniem. Tę logikę można dostosować, modyfikując właściwość *Success* elementu telemetrii żądania w [niestandardowym inicjatorze telemetrii](../../azure-monitor/app/api-filtering-sampling.md#addmodify-properties-itelemetryinitializer).
+Liczba śledzonych żądań serwera, które zostały oznaczone jako *nieudane.* Domyślnie SDK usługi Application Insights automatycznie oznacza każde żądanie serwera, które zwróciło kod odpowiedzi HTTP 5xx lub 4xx jako żądanie nieudane. Tę logikę można dostosować, modyfikując właściwość *sukcesu* elementu telemetrii żądania w [niestandardowym inicjatorze telemetrii](../../azure-monitor/app/api-filtering-sampling.md#addmodify-properties-itelemetryinitializer).
 
-|Jednostka miary|Obsługiwane agregacje|Wymiary wstępnie zagregowane|Uwagi|
+|Jednostka miary|Obsługiwane agregacje|Wstępnie zagregowane wymiary|Uwagi|
 |---|---|---|---|
-|Licznik|Licznik|Wystąpienie roli w chmurze, nazwa roli chmury, ruch rzeczywisty lub syntetyczny, wydajność żądania, kod odpowiedzi|Wersja oparta na dzienniku korzysta z agregacji **sum**|
+|Liczba|Liczba|Wystąpienie roli w chmurze, nazwa roli w chmurze, ruch rzeczywisty lub syntetyczny, wydajność żądania, kod odpowiedzi|Wersja oparta na dzienniku używa agregacji **sum**|
 
 ```Kusto
 requests
@@ -239,11 +239,11 @@ requests
 
 ### <a name="server-exceptions-exceptionsserver"></a>Wyjątki serwera (wyjątki/serwer)
 
-Ta Metryka przedstawia liczbę wyjątków serwera.
+Ta metryka pokazuje liczbę wyjątków serwera.
 
-|Jednostka miary|Obsługiwane agregacje|Wymiary wstępnie zagregowane|Uwagi|
+|Jednostka miary|Obsługiwane agregacje|Wstępnie zagregowane wymiary|Uwagi|
 |---|---|---|---|
-|Licznik|Licznik|Nazwa roli w chmurze, wystąpienie roli w chmurze|Wersja oparta na dzienniku korzysta z agregacji **sum**|
+|Liczba|Liczba|Nazwa roli w chmurze, wystąpienie roli w chmurze|Wersja oparta na dzienniku używa agregacji **sum**|
 
 ```Kusto
 exceptions
@@ -254,9 +254,9 @@ exceptions
 
 ## <a name="performance-counters"></a>Liczniki wydajności
 
-Użyj metryk w kategorii **liczniki wydajności** , aby uzyskać dostęp do [liczników wydajności systemu zbieranych przez Application Insights](../../azure-monitor/app/performance-counters.md).
+Użyj metryk w kategorii **Liczniki wydajności,** aby uzyskać dostęp do [liczników wydajności systemu zebranych przez aplikację Application Insights](../../azure-monitor/app/performance-counters.md).
 
-### <a name="available-memory-performancecountersavailablememory"></a>Dostępna pamięć (liczniki wydajności/availableMemory)
+### <a name="available-memory-performancecountersavailablememory"></a>Dostępna pamięć (performanceCounters/availableMemory)
 
 ```Kusto
 performanceCounters
@@ -266,7 +266,7 @@ performanceCounters
 | render timechart
 ```
 
-### <a name="exception-rate-performancecountersexceptionrate"></a>Częstotliwość wyjątków (liczniki wydajności/exceptionRate)
+### <a name="exception-rate-performancecountersexceptionrate"></a>Współczynnik wyjątków (performanceCounters/exceptionRate)
 
 ```Kusto
 performanceCounters
@@ -276,7 +276,7 @@ performanceCounters
 | render timechart
 ```
 
-### <a name="http-request-execution-time-performancecountersrequestexecutiontime"></a>Czas wykonywania żądania HTTP (liczniki wydajności/requestExecutionTime)
+### <a name="http-request-execution-time-performancecountersrequestexecutiontime"></a>Czas wykonywania żądania HTTP (performanceCounters/requestExecutionTime)
 
 ```Kusto
 performanceCounters
@@ -286,7 +286,7 @@ performanceCounters
 | render timechart
 ```
 
-### <a name="http-request-rate-performancecountersrequestspersecond"></a>Częstotliwość żądań HTTP (liczniki wydajności/requestsPerSecond)
+### <a name="http-request-rate-performancecountersrequestspersecond"></a>Szybkość żądania HTTP (performanceCounters/requestsPerSecond)
 
 ```Kusto
 performanceCounters
@@ -296,7 +296,7 @@ performanceCounters
 | render timechart
 ```
 
-### <a name="http-requests-in-application-queue-performancecountersrequestsinqueue"></a>Żądania HTTP w kolejce aplikacji (liczniki wydajności/requestsInQueue)
+### <a name="http-requests-in-application-queue-performancecountersrequestsinqueue"></a>Żądania HTTP w kolejce aplikacji (performanceCounters/requestsInQueue)
 
 ```Kusto
 performanceCounters
@@ -306,13 +306,13 @@ performanceCounters
 | render timechart
 ```
 
-### <a name="process-cpu-performancecountersprocesscpupercentage"></a>Procesor CPU procesu (liczniki wydajności/processCpuPercentage)
+### <a name="process-cpu-performancecountersprocesscpupercentage"></a>Procesor przetwarzania (performanceCounters/processCpuPercentage)
 
-Metryka pokazuje, ile całkowitej pojemności procesora jest zużywanych przez proces obsługujący monitorowaną aplikację.
+Metryka pokazuje, ile całkowitej pojemności procesora jest zużywana przez proces, który jest hostowany monitorowanej aplikacji.
 
 |Jednostka miary|Obsługiwane agregacje|Obsługiwane wymiary|
 |---|---|---|
-|Procent|Średnia, minimum, maksimum|Wystąpienie roli w chmurze
+|Procentowe|Średnia, Min, Max|Wystąpienie roli w chmurze
 
 ```Kusto
 performanceCounters
@@ -322,11 +322,11 @@ performanceCounters
 | render timechart
 ```
 
-### <a name="process-io-rate-performancecountersprocessiobytespersecond"></a>Współczynnik operacji we/wy procesu (liczniki wydajności/processIOBytesPerSecond)
+### <a name="process-io-rate-performancecountersprocessiobytespersecond"></a>Szybkość we/wy procesu (wydajnośćLiczniki/procesIOBytesPerSekund)
 
 |Jednostka miary|Obsługiwane agregacje|Obsługiwane wymiary|
 |---|---|---|
-|Bajty na sekundę|Średnia, minimum, maksimum|Wystąpienie roli w chmurze
+|Bajty na sekundę|Średnia, Min, Max|Wystąpienie roli w chmurze
 
 ```Kusto
 performanceCounters
@@ -336,13 +336,13 @@ performanceCounters
 | render timechart
 ```
 
-### <a name="process-private-bytes-performancecountersprocessprivatebytes"></a>Prywatne bajty procesu (liczniki wydajności/processPrivateBytes)
+### <a name="process-private-bytes-performancecountersprocessprivatebytes"></a>Przetwarzanie bajtów prywatnych (performanceCounters/processPrivateBytes)
 
-Ilość pamięci nieudostępnionej, którą proces monitorowania przydzielił dla danych.
+Ilość pamięci nieudzielonej, która jest przydzielona przez monitorowany proces dla swoich danych.
 
 |Jednostka miary|Obsługiwane agregacje|Obsługiwane wymiary|
 |---|---|---|
-|Bajty|Średnia, minimum, maksimum|Wystąpienie roli w chmurze
+|Bajty|Średnia, Min, Max|Wystąpienie roli w chmurze
 
 ```Kusto
 performanceCounters
@@ -352,16 +352,16 @@ performanceCounters
 | render timechart
 ```
 
-### <a name="processor-time-performancecountersprocessorcpupercentage"></a>Czas procesora (liczniki wydajności/processorCpuPercentage)
+### <a name="processor-time-performancecountersprocessorcpupercentage"></a>Czas procesora (performanceCounters/processorCpuPercentage)
 
-Użycie procesora CPU przez *wszystkie* procesy uruchomione w monitorowanym wystąpieniu serwera.
+Zużycie procesora przez *wszystkie* procesy uruchomione w monitorowanym wystąpieniu serwera.
 
 |Jednostka miary|Obsługiwane agregacje|Obsługiwane wymiary|
 |---|---|---|
-|Procent|Średnia, minimum, maksimum|Wystąpienie roli w chmurze
+|Procentowe|Średnia, Min, Max|Wystąpienie roli w chmurze
 
 >[!NOTE]
-> Metryka czasu procesora nie jest dostępna dla aplikacji hostowanych w usłudze Azure App Services. Metryka [procesora CPU procesu](#process-cpu-performancecountersprocesscpupercentage) służy do śledzenia użycia procesora CPU przez aplikacje sieci Web hostowane w App Services.
+> Metryka czasu procesora nie jest dostępna dla aplikacji hostowanych w usługach Azure App Services. Metryka [Procesora CPU procesowania](#process-cpu-performancecountersprocesscpupercentage) służy do śledzenia wykorzystania procesora CPU aplikacji internetowych hostowanych w usługach app services.
 
 ```Kusto
 performanceCounters
@@ -375,7 +375,7 @@ performanceCounters
 
 ### <a name="dependency-calls-dependenciescount"></a>Wywołania zależności (zależności/liczba)
 
-Ta Metryka jest w odniesieniu do liczby wywołań zależności.
+Ta metryka jest w odniesieniu do liczby wywołań zależności.
 
 ```Kusto
 dependencies
@@ -385,7 +385,7 @@ dependencies
 
 ### <a name="dependency-duration-dependenciesduration"></a>Czas trwania zależności (zależności/czas trwania)
 
-Ta Metryka odnosi się do czasu trwania wywołań zależności.
+Ta metryka odnosi się do czasu trwania wywołań zależności.
 
 ```Kusto
 dependencies
@@ -400,7 +400,7 @@ dependencies
 
 ### <a name="server-requests-requestscount"></a>Żądania serwera (żądania/liczba)
 
-Ta Metryka odzwierciedla liczbę przychodzących żądań serwera, które zostały odebrane przez aplikację sieci Web.
+Ta metryka odzwierciedla liczbę przychodzących żądań serwera, które zostały odebrane przez aplikację sieci web.
 
 ```Kusto
 requests
@@ -410,7 +410,7 @@ requests
 
 ### <a name="server-response-time-requestsduration"></a>Czas odpowiedzi serwera (żądania/czas trwania)
 
-Ta Metryka przedstawia czas przetwarzania żądań przychodzących przez serwery.
+Ta metryka odzwierciedla czas, jaki zajęło serwerom przetwarzanie żądań przychodzących.
 
 ```Kusto
 requests
@@ -425,9 +425,9 @@ requests
 
 ## <a name="usage-metrics"></a>Metryki użycia
 
-### <a name="page-view-load-time-pageviewsduration"></a>Czas ładowania widoku strony (pageViews/czas trwania)
+### <a name="page-view-load-time-pageviewsduration"></a>Czas ładowania widoku strony (odsłona strony/czas trwania)
 
-Ta Metryka odnosi się do czasu, jaki zajęło załadowanie zdarzeń PageView.
+Ta metryka odnosi się do czasu, jaki zajęło załadowanie zdarzeń PageView.
 
 ```Kusto
 pageViews
@@ -440,9 +440,9 @@ pageViews
 | render barchart
 ```
 
-### <a name="page-views-pageviewscount"></a>Wyświetlenia stron (pageViews/Count)
+### <a name="page-views-pageviewscount"></a>Wyświetlenia strony (odsłony/liczba stron)
 
-Liczba zdarzeń PageView zarejestrowanych przy użyciu interfejsu API Application Insights TrackPageView ().
+Liczba zdarzeń PageView zarejestrowanych w interfejsie API usługi TrackPageView() aplikacji insights.
 
 ```Kusto
 pageViews
@@ -452,7 +452,7 @@ pageViews
 
 ### <a name="sessions-sessionscount"></a>Sesje (sesje/liczba)
 
-Ta Metryka odnosi się do liczby unikatowych identyfikatorów sesji.
+Ta metryka odnosi się do liczby różnych identyfikatorów sesji.
 
 ```Kusto
 union traces, requests, pageViews, dependencies, customEvents, availabilityResults, exceptions, customMetrics, browserTimings
@@ -463,7 +463,7 @@ union traces, requests, pageViews, dependencies, customEvents, availabilityResul
 
 ### <a name="traces-tracescount"></a>Ślady (ślady/liczba)
 
-Liczba instrukcji Trace zarejestrowanych przy użyciu wywołania interfejsu API Application Insights TrackTrace ().
+Liczba instrukcji śledzenia zarejestrowanych za pomocą wywołania interfejsu API usługi TrackTrace() application insights.
 
 ```Kusto
 traces
@@ -471,9 +471,9 @@ traces
 | render barchart
 ```
 
-### <a name="users-userscount"></a>Użytkownicy (Użytkownicy/liczba)
+### <a name="users-userscount"></a>Użytkownicy (użytkownicy/liczba)
 
-Liczba różnych użytkowników, którzy uzyskali dostęp do Twojej aplikacji. Dokładność tej metryki może mieć znaczny wpływ na próbkowanie i filtrowanie danych telemetrycznych.
+Liczba różnych użytkowników, którzy uzyskili dostęp do aplikacji. Dokładność tej metryki może mieć znaczący wpływ przy użyciu pobierania próbek telemetrii i filtrowania.
 
 ```Kusto
 union traces, requests, pageViews, dependencies, customEvents, availabilityResults, exceptions, customMetrics, browserTimings
@@ -482,9 +482,9 @@ union traces, requests, pageViews, dependencies, customEvents, availabilityResul
 | render barchart
 ```
 
-### <a name="users-authenticated-usersauthenticated"></a>Użytkownicy, uwierzytelnieni (Użytkownicy/uwierzytelnieni)
+### <a name="users-authenticated-usersauthenticated"></a>Użytkownicy, uwierzytelnieni (użytkownicy/uwierzytelnieni)
 
-Liczba różnych użytkowników, którzy uwierzytelniali się w aplikacji.
+Liczba różnych użytkowników, którzy uwierzytelnili się w aplikacji.
 
 ```Kusto
 union traces, requests, pageViews, dependencies, customEvents, availabilityResults, exceptions, customMetrics, browserTimings

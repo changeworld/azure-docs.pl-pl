@@ -1,84 +1,84 @@
 ---
-title: Korzystanie z usługi Azure Storage z rozwiązaniem ciągłej integracji Jenkins
-description: W tym samouczku pokazano, jak używać usługi Azure Blob Service jako repozytorium dla artefaktów kompilacji utworzonych przez rozwiązanie ciągłej integracji Jenkins.
-keywords: Jenkins, Azure, DevOps, Storage, cicd
+title: Korzystanie z usługi Azure Storage z rozwiązaniem do ciągłej integracji usługi Jenkins
+description: W tym samouczku pokazano, jak używać usługi obiektów blob platformy Azure jako repozytorium artefaktów kompilacji utworzonych przez rozwiązanie integracji ciągłej usługi Jenkins.
+keywords: jenkins, azure, devops, magazynowanie, cicd
 ms.topic: article
 ms.date: 08/13/2019
 ms.openlocfilehash: df1d59c40fd09fb055db9d7622d86ff9c82991b8
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77624685"
 ---
-# <a name="using-azure-storage-with-a-jenkins-continuous-integration-solution"></a>Korzystanie z usługi Azure Storage z rozwiązaniem ciągłej integracji Jenkins
+# <a name="using-azure-storage-with-a-jenkins-continuous-integration-solution"></a>Korzystanie z usługi Azure Storage z rozwiązaniem do ciągłej integracji usługi Jenkins
 
-W tym artykule pokazano, jak używać magazynu obiektów BLOB jako repozytorium artefaktów kompilacji utworzonych przez rozwiązanie Jenkins ciągłej integracji (CI) lub jako źródło plików do pobrania, które mają być używane w procesie kompilacji. Jednym z scenariuszy, w których znalezienie tego rozwiązania jest przydatne, jest kodowanie w środowisku deweloperskim Agile (przy użyciu języka Java lub innych języków), kompilacje są uruchamiane na podstawie ciągłej integracji i potrzebne jest repozytorium dla artefaktów kompilacji, dzięki czemu Możesz na przykład udostępnić je innym członkom organizacji, Twoim klientom lub obsłudze archiwum. Innym scenariuszem jest to, że zadanie kompilacji wymaga innych plików, na przykład zależności do pobrania w ramach danych wejściowych kompilacji.
+W tym artykule pokazano, jak używać magazynu obiektów Blob jako repozytorium artefaktów kompilacji utworzonych przez rozwiązanie ciągłej integracji usługi Jenkins (CI) lub jako źródło plików do pobrania, które mają być używane w procesie kompilacji. Jednym ze scenariuszy, w których można znaleźć to rozwiązanie przydatne jest, gdy kodujesz w środowisku programistycznym agile (przy użyciu języka Java lub innych języków), kompilacje są uruchomione w oparciu o ciągłą integrację i potrzebujesz repozytorium artefaktów kompilacji, dzięki czemu można na przykład udostępnić je innym członkom organizacji, klientom lub prowadzić archiwum. Innym scenariuszem jest, gdy zadanie kompilacji sam wymaga innych plików, na przykład zależności do pobrania w ramach danych wejściowych kompilacji.
 
-W tym samouczku będziesz używać wtyczki usługi Azure Storage dla Jenkins CI udostępnionej przez firmę Microsoft.
+W tym samouczku będzie można użyć wtyczki usługi Azure Storage dla usługi Jenkins CI udostępnione przez firmę Microsoft.
 
-## <a name="jenkins-overview"></a>Jenkins — Omówienie
+## <a name="jenkins-overview"></a>Omówienie usługi Jenkins
 
-Jenkins zapewnia ciągłą integrację projektu oprogramowania przez umożliwienie deweloperom łatwej integracji zmian w kodzie i tworzenia kompilacji automatycznie i często, zwiększając jednocześnie produktywność deweloperów. Kompilacje są w wersji i artefakty kompilacji można przekazać do różnych repozytoriów. W tym artykule przedstawiono sposób korzystania z usługi Azure Blob Storage jako repozytorium artefaktów kompilacji. Pokazuje również, jak pobrać zależności z usługi Azure Blob Storage.
+Jenkins umożliwia ciągłą integrację projektu oprogramowania, umożliwiając deweloperom łatwe zintegrowanie zmian kodu i tworzenie kompilacji produkowanych automatycznie i często, zwiększając w ten sposób produktywność deweloperów. Kompilacje są wersjonowane, a artefakty kompilacji mogą być przekazywane do różnych repozytoriów. W tym artykule pokazano, jak używać magazynu obiektów blob platformy Azure jako repozytorium artefaktów kompilacji. Pokaże również, jak pobrać zależności z magazynu obiektów blob platformy Azure.
 
-Więcej informacji na temat Jenkins można znaleźć pod adresem [Jenkins](https://wiki.jenkins-ci.org/display/JENKINS/Meet+Jenkins).
+Więcej informacji na temat usługi Jenkins można znaleźć na stronie [Meet Jenkins](https://wiki.jenkins-ci.org/display/JENKINS/Meet+Jenkins).
 
-## <a name="benefits-of-using-the-blob-service"></a>Zalety korzystania z Blob service
+## <a name="benefits-of-using-the-blob-service"></a>Korzyści z korzystania z usługi obiektów Blob
 
-Korzyści wynikające z używania Blob service do hostowania artefaktów kompilacji Agile obejmują:
+Korzyści z używania usługi obiektów Blob do hostowania artefaktów kompilacji agile development obejmują:
 
-* Wysoka dostępność artefaktów kompilacji i/lub możliwe do pobrania zależności.
-* Wydajność, gdy rozwiązanie Jenkins CI przekazuje artefakty kompilacji.
-* Wydajność, gdy klienci i partnerzy pobierają artefakty kompilacji.
-* Kontrola nad zasadami dostępu użytkowników przy użyciu opcji dostępu anonimowego, dostępu do sygnatur dostępu współdzielonego opartego na wygaśnięciu, dostępu prywatnego itp.
+* Wysoka dostępność artefaktów kompilacji i/lub zależności do pobrania.
+* Wydajność, gdy rozwiązanie ci usługi Jenkins przekazuje artefakty kompilacji.
+* Wydajność, gdy twoi klienci i partnerzy pobierają artefakty kompilacji.
+* Kontrola nad zasadami dostępu użytkowników, z wyborem między dostępem anonimowym, dostępem do podpisu dostępu współdzielonego opartego na wygaśnięciu, dostępem prywatnym itp.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Rozwiązanie Jenkins ciągłej integracji.
+* Rozwiązanie ciągłej integracji jenkins.
   
-    Jeśli obecnie nie masz rozwiązania CI Jenkins, możesz uruchomić rozwiązanie Jenkins CI, korzystając z następującej techniki:
+    Jeśli obecnie nie masz rozwiązania usługi Jenkins CI, można uruchomić rozwiązanie ci usługi Jenkins przy użyciu następującej techniki:
   
-  1. Na maszynie z obsługą języka Java Pobierz Jenkins. War z <https://jenkins-ci.org>.
-  2. W wierszu polecenia otwartym w folderze, który zawiera Jenkins. War, uruchom polecenie:
+  1. Na komputerze obsługującym technologię Java <https://jenkins-ci.org>pobierz plik jenkins.war z pliku .
+  2. W wierszu polecenia otwieranym do folderu zawierającego plik jenkins.war uruchom:
      
       `java -jar jenkins.war`
 
-  3. W przeglądarce Otwórz `http://localhost:8080/`, aby otworzyć pulpit nawigacyjny Jenkins, który zostanie użyty do zainstalowania i skonfigurowania wtyczki usługi Azure Storage.
+  3. W przeglądarce `http://localhost:8080/` otwórz pulpit nawigacyjny usługi Jenkins, który będzie używany do instalowania i konfigurowania wtyczki usługi Azure Storage.
      
-      W przypadku typowego rozwiązania CI Jenkins można skonfigurować do uruchamiania jako usługa, a w wierszu polecenia musi być wystarczająca wartość Jenkins War.
-* Konto platformy Azure. Konto platformy Azure można zarejestrować w <https://www.azure.com>.
-* Konto usługi Azure Storage. Jeśli nie masz jeszcze konta magazynu, możesz utworzyć je, wykonując czynności opisane w sekcji [Tworzenie konta magazynu](../storage/common/storage-account-create.md).
-* Znajomość rozwiązania Jenkins CI jest zalecana, ale nie jest wymagana, ponieważ Poniższa zawartość będzie używać przykładu podstawowego do wyświetlania kroków potrzebnych podczas korzystania z Blob service jako repozytorium dla artefaktów kompilacji Jenkins CI.
+      Podczas gdy typowe rozwiązanie ci usługi Jenkins zostanie skonfigurowane do uruchamiania jako usługa, uruchomienie wojny jenkins w wierszu polecenia będzie wystarczające dla tego samouczka.
+* Konto platformy Azure. Możesz założyć konto platformy Azure <https://www.azure.com>w pliku .
+* Konto usługi Azure Storage. Jeśli nie masz jeszcze konta magazynu, możesz je utworzyć, wykonując czynności opisane w [umiań tworzenia konta magazynu](../storage/common/storage-account-create.md).
+* Znajomość rozwiązania ci usługi Jenkins jest zalecane, ale nie jest wymagane, ponieważ następująca zawartość użyje podstawowego przykładu, aby pokazać kroki potrzebne podczas korzystania z usługi obiektów Blob jako repozytorium artefaktów kompilacji ci usługi Jenkins.
 
-## <a name="how-to-use-the-blob-service-with-jenkins-ci"></a>Jak używać Blob service z Jenkinsą CI
-Aby użyć Blob service z Jenkins, należy zainstalować wtyczkę usługi Azure Storage, skonfigurować wtyczkę do korzystania z konta magazynu, a następnie utworzyć akcję po kompilacji, która przekazuje artefakty kompilacji do konta magazynu. Te kroki opisano w poniższych sekcjach.
+## <a name="how-to-use-the-blob-service-with-jenkins-ci"></a>Jak korzystać z usługi obiektów Blob z usługą Jenkins CI
+Aby korzystać z usługi obiektów Blob z usługą Jenkins, należy zainstalować wtyczkę usługi Azure Storage, skonfigurować wtyczkę do korzystania z konta magazynu, a następnie utworzyć akcję po kompilacji, która przekazuje artefakty kompilacji do konta magazynu. Te kroki są opisane w poniższych sekcjach.
 
 ## <a name="how-to-install-the-azure-storage-plugin"></a>Jak zainstalować wtyczkę usługi Azure Storage
-1. Na pulpicie nawigacyjnym Jenkins wybierz pozycję **Zarządzaj Jenkins**.
-2. Na stronie **Zarządzanie Jenkins** wybierz pozycję **Zarządzaj wtyczkami**.
+1. Na pulpicie nawigacyjnym aplikacji Jenkins wybierz pozycję **Zarządzaj u jenkinsem**.
+2. Na stronie **Zarządzanie jenkinsem** wybierz pozycję **Zarządzaj wtyczkami**.
 3. Wybierz kartę **Available** (Dostępne).
-4. W sekcji **operacje przekazywania artefaktów** Sprawdź **Microsoft Azure Storage wtyczka**.
-5. Wybierz opcję **Zainstaluj bez ponownego uruchomienia** lub **Pobierz teraz i zainstaluj po ponownym uruchomieniu**.
-6. Uruchom ponownie Jenkins.
+4. W sekcji **Przekazywanie artefaktów** sprawdź **wtyczkę Usługi Microsoft Azure Storage**.
+5. Wybierz opcję **Zainstaluj bez restartu** lub **Pobierz teraz i zainstaluj po ponownym uruchomieniu**.
+6. Uruchom ponownie usługę Jenkins.
 
-## <a name="how-to-configure-the-azure-storage-plugin-to-use-your-storage-account"></a>Jak skonfigurować wtyczkę usługi Azure Storage pod kątem korzystania z konta magazynu
-1. Na pulpicie nawigacyjnym Jenkins wybierz pozycję **Zarządzaj Jenkins**.
-2. Na stronie **Zarządzanie Jenkins** wybierz pozycję **Konfiguruj system**.
-3. W sekcji **Konfiguracja konta Microsoft Azure Storage** :
-   1. Wprowadź nazwę konta magazynu, którą można uzyskać z [Azure Portal](https://portal.azure.com).
-   2. Wprowadź klucz konta magazynu, który można również uzyskać z [Azure Portal](https://portal.azure.com).
-   3. Jeśli używasz globalnej chmury platformy Azure, użyj wartości domyślnej dla **adresu URL punktu końcowego usługi BLOB Service** . Jeśli używasz innej chmury platformy Azure, użyj punktu końcowego określonego w [Azure Portal](https://portal.azure.com) dla konta magazynu. 
-   4. Wybierz pozycję **Weryfikuj poświadczenia magazynu** , aby zweryfikować konto magazynu. 
-   5. Obowiązkowe Jeśli masz dodatkowe konta magazynu, które chcesz udostępnić Jenkins CI, wybierz pozycję **Dodaj więcej kont magazynu**.
-   6. Wybierz pozycję **Zapisz** , aby zapisać ustawienia.
+## <a name="how-to-configure-the-azure-storage-plugin-to-use-your-storage-account"></a>Jak skonfigurować wtyczkę usługi Azure Storage do używania konta magazynu
+1. Na pulpicie nawigacyjnym aplikacji Jenkins wybierz pozycję **Zarządzaj u jenkinsem**.
+2. Na stronie **Zarządzanie jenkinsem** wybierz pozycję **Konfiguruj system**.
+3. W sekcji **Konfiguracja konta usługi Microsoft Azure Storage:**
+   1. Wprowadź nazwę konta magazynu, którą można uzyskać w [witrynie Azure portal](https://portal.azure.com).
+   2. Wprowadź klucz konta magazynu, który można uzyskać również w [witrynie Azure portal](https://portal.azure.com).
+   3. Użyj wartości domyślnej dla **adresu URL punktu końcowego usługi obiektów blob,** jeśli używasz globalnej chmury platformy Azure. Jeśli używasz innej chmury platformy Azure, użyj punktu końcowego, jak określono w [witrynie Azure portal](https://portal.azure.com) dla konta magazynu. 
+   4. Wybierz **pozycję Sprawdź poprawność poświadczeń magazynu,** aby sprawdzić poprawność konta magazynu. 
+   5. [Opcjonalnie] Jeśli masz dodatkowe konta magazynu, które mają być dostępne dla ci usługi Jenkins, wybierz pozycję **Dodaj więcej kont magazynu**.
+   6. Wybierz **pozycję Zapisz,** aby zapisać ustawienia.
 
 ## <a name="how-to-create-a-post-build-action-that-uploads-your-build-artifacts-to-your-storage-account"></a>Jak utworzyć akcję po kompilacji, która przekazuje artefakty kompilacji do konta magazynu
-W celach informacyjnych należy najpierw utworzyć zadanie, które spowoduje utworzenie kilku plików, a następnie dodanie go do akcji po kompilacji w celu przekazania plików na konto magazynu.
+Do celów instruktażowych należy najpierw utworzyć zadanie, które utworzy kilka plików, a następnie dodać w akcji po kompilacji, aby przekazać pliki do konta magazynu.
 
-1. Na pulpicie nawigacyjnym Jenkins wybierz pozycję **nowy element**.
-2. Nazwij **MyJob**zadania, wybierz opcję **Kompiluj projekt oprogramowania o dowolnym stylu**, a następnie wybierz przycisk **OK**.
-3. W sekcji **kompilacja** w obszarze Konfiguracja zadania wybierz pozycję **Dodaj krok kompilacji** i wybierz **polecenie Uruchom zadanie wsadowe systemu Windows**.
-4. W **poleceniu**Użyj następujących poleceń:
+1. Na pulpicie nawigacyjnym aplikacji Jenkins wybierz pozycję **Nowy element**.
+2. Nazwij zadanie **MyJob**, wybierz **pozycję Zbuduj projekt wolnego oprogramowania,** a następnie wybierz przycisk **OK**.
+3. W sekcji **Kompilacja** konfiguracji zadania wybierz pozycję **Dodaj krok kompilacji** i wybierz polecenie **Wykonaj wsad systemu Windows**.
+4. W **poleceniu**użyj następujących poleceń:
 
     ```   
     md text
@@ -88,60 +88,60 @@ W celach informacyjnych należy najpierw utworzyć zadanie, które spowoduje utw
     time /t >> date.txt
     ```
 
-5. W sekcji **Akcje po kompilacji** w obszarze Konfiguracja zadania wybierz pozycję **Dodaj akcję po kompilacji** i wybierz pozycję **Przekaż artefakty do usługi Azure Blob Storage**.
-6. W polu **nazwa konta magazynu**wybierz konto magazynu, które ma być używane.
-7. W polu **nazwa kontenera**Określ nazwę kontenera. (Kontener zostanie utworzony, jeśli jeszcze nie istnieje, gdy artefakty kompilacji są przekazywane). Możesz użyć zmiennych środowiskowych, więc w tym przykładzie wprowadź `${JOB_NAME}` jako nazwę kontenera.
+5. W sekcji **Akcje po kompilacji** konfiguracji zadania wybierz pozycję **Dodaj akcję po kompilacji** i wybierz pozycję **Przekaż artefakty do magazynu obiektów Blob platformy Azure**.
+6. W obszarze **Nazwa konta magazynowania**wybierz konto magazynu, którego chcesz użyć.
+7. W **obszarze Nazwa kontenera**określ nazwę kontenera. (Kontener zostanie utworzony, jeśli jeszcze nie istnieje, gdy artefakty kompilacji są przekazywane.) Można użyć zmiennych środowiskowych, więc `${JOB_NAME}` w tym przykładzie wprowadź jako nazwę kontenera.
    
-    **Porada**
+    **Wskazówka**
    
-    Poniżej sekcji **polecenie** , w której wprowadzono skrypt do **wykonywania polecenia Windows Batch** jest łączem do zmiennych środowiskowych rozpoznawanych przez Jenkins. Wybierz ten link, aby poznać nazwy zmiennych środowiskowych i opisy. Zmienne środowiskowe, które zawierają znaki specjalne, takie jak **BUILD_URL** zmienna środowiskowa, nie mogą być nazwami kontenerów ani wspólną ścieżką wirtualną.
-8. Wybierz opcję **Utwórz nowy kontener jako publiczny domyślnie** dla tego przykładu. (Jeśli chcesz użyć prywatnego kontenera, musisz utworzyć sygnaturę dostępu współdzielonego w celu zezwolenia na dostęp, która wykracza poza zakres tego artykułu. Więcej informacji na temat sygnatur dostępu współdzielonego można uzyskać przy [użyciu sygnatur dostępu współdzielonego (SAS)](../storage/common/storage-sas-overview.md).
-9. Obowiązkowe Wybierz pozycję **Oczyść kontener przed przekazaniem** , jeśli chcesz, aby kontener został usunięty z zawartości przed przekazaniem artefaktów kompilacji (pozostaw to pole niezaznaczone, jeśli nie chcesz czyścić zawartości kontenera).
-10. Aby uzyskać **listę artefaktów do przekazania**, wprowadź `text/*.txt`.
-11. W przypadku **wspólnej ścieżki wirtualnej dla przekazanych artefaktów**na potrzeby tego samouczka wprowadź `${BUILD\_ID}/${BUILD\_NUMBER}`.
-12. Wybierz pozycję **Zapisz** , aby zapisać ustawienia.
-13. Na pulpicie nawigacyjnym Jenkins wybierz opcję **Kompiluj teraz** , aby uruchomić **MyJob**. Przejrzyj dane wyjściowe konsoli dla stanu. Komunikaty o stanie usługi Azure Storage zostaną uwzględnione w danych wyjściowych konsoli, gdy akcja po kompilacji zacznie przekazywać artefakty kompilacji.
-14. Po pomyślnym zakończeniu zadania można przeanalizować artefakty kompilacji, otwierając publiczny obiekt BLOB.
-    1. Zaloguj się do [Azure portal](https://portal.azure.com).
-    2. Wybierz pozycję **Magazyn**.
-    3. Wybierz nazwę konta magazynu, która została użyta dla Jenkins.
+    Poniżej sekcji **Command,** w której wprowadzono skrypt **polecenia wsadowego Wykonywanie systemu Windows,** znajduje się łącze do zmiennych środowiskowych rozpoznawanych przez firmę Jenkins. Wybierz to łącze, aby poznać nazwy i opisy zmiennych środowiskowych. Zmienne środowiskowe zawierające znaki specjalne, takie jak **zmienna środowiskowa BUILD_URL,** nie są dozwolone jako nazwa kontenera lub wspólna ścieżka wirtualna.
+8. W tym przykładzie wybierz **pozycję Domyślnie udostępnij nowy kontener.** (Jeśli chcesz użyć kontenera prywatnego, musisz utworzyć podpis dostępu współdzielonego, aby zezwolić na dostęp, który wykracza poza zakres tego artykułu. Więcej informacji na temat podpisów dostępu współdzielonego można uzyskać na stronie [Using Shared Access Signatures (SAS).](../storage/common/storage-sas-overview.md)
+9. [Opcjonalnie] Wybierz **Clean kontenera przed przekazaniem,** jeśli chcesz kontenera, które mają być wyczyszczone zawartości przed kompilacji artefakty są przekazywane (pozostawić niezaznaczone, jeśli nie chcesz czyścić zawartość kontenera).
+10. Aby **wyświetlić listę artefaktów do przesłania,** wprowadź `text/*.txt`.
+11. Dla **wspólnej ścieżki wirtualnej dla przesłanych artefaktów**, `${BUILD\_ID}/${BUILD\_NUMBER}`na potrzeby tego samouczka, wprowadź .
+12. Wybierz **pozycję Zapisz,** aby zapisać ustawienia.
+13. Na pulpicie nawigacyjnym usługi Jenkins wybierz pozycję **Zbuduj teraz,** aby uruchomić **program MyJob**. Sprawdź dane wyjściowe konsoli pod kątem stanu. Komunikaty o stanie usługi Azure storage zostaną uwzględnione w danych wyjściowych konsoli, gdy akcja po kompilacji rozpocznie przekazywanie artefaktów kompilacji.
+14. Po pomyślnym zakończeniu zadania, można zbadać artefakty kompilacji, otwierając publiczny obiekt blob.
+    1. Zaloguj się do [Portalu Azure](https://portal.azure.com).
+    2. Wybierz **opcję Magazyn**.
+    3. Wybierz nazwę konta magazynu, która jest używana dla usługi Jenkins.
     4. Wybierz **kontenery**.
-    5. Wybierz kontener o nazwie **myjob**, który jest małymi wersjami nazwy zadania przypisanego podczas tworzenia zadania Jenkins. Nazwy kontenerów i nazw obiektów BLOB są małymi literami (i rozróżniana wielkość liter) w usłudze Azure Storage. Na liście obiektów BLOB kontenera o nazwie **myjob**powinna być widoczna wartość **Hello. txt** i **Date. txt**. Skopiuj adres URL dla każdego z tych elementów i otwórz go w przeglądarce. Zobaczysz plik tekstowy, który został przekazany jako artefakt kompilacji.
+    5. Wybierz kontener o nazwie **myjob**, który jest niższą wersją nazwy zadania przypisanej podczas tworzenia zadania Jenkins. Nazwy kontenerów i nazwy obiektów blob są małe (i rozróżniana wielkość liter) w magazynie platformy Azure. Na liście obiektów blob dla kontenera o nazwie **myjob**powinien zostać wyświetlony **hello.txt** i **date.txt**. Skopiuj adres URL jednego z tych elementów i otwórz go w przeglądarce. Zostanie wyświetlony plik tekstowy, który został przekazany jako artefakt kompilacji.
 
-Dla każdego zadania można utworzyć tylko jedną akcję po kompilacji, która przekazuje artefakty do magazynu obiektów blob platformy Azure. Pojedyncza Akcja po kompilacji w celu przekazania artefaktów do usługi Azure Blob Storage może określać różne pliki (w tym symbole wieloznaczne) i ścieżki do plików znajdujących się na **liście artefaktów do przekazania** przy użyciu średnika jako separatora. Na przykład jeśli kompilacja Jenkins tworzy pliki JAR i TXT w folderze **kompilacji** obszaru roboczego i chcesz przekazać oba do usługi Azure Blob Storage, użyj następującej wartości, aby uzyskać **listę artefaktów do przekazania** : `build/\*.jar;build/\*.txt`. Aby określić ścieżkę do użycia w nazwie obiektu BLOB, można również użyć składni podwójnego dwukropka. Na przykład jeśli chcesz, aby JARs został przekazany przy użyciu plików **binarnych** w ścieżce obiektu BLOB i pliki txt do przekazania przy użyciu **powiadomień** w ścieżce obiektu BLOB, użyj następującej wartości dla **listy artefaktów do przekazania** : `build/\*.jar::binaries;build/\*.txt::notices`.
+Tylko jedna akcja po kompilacji, która przekazuje artefakty do magazynu obiektów blob platformy Azure można utworzyć na zadanie. Pojedyncza akcja po kompilacji do przekazywania artefaktów do magazynu obiektów blob platformy Azure można określić różne pliki (w tym symbole wieloznaczne) i ścieżki do plików w **ramach listy artefaktów do przekazania** przy użyciu średnika jako separatora. Jeśli na przykład kompilacja usługi Jenkins tworzy pliki JAR i pliki TXT w folderze **kompilacji** obszaru roboczego i chcesz przekazać oba do magazynu `build/\*.jar;build/\*.txt`obiektów blob platformy Azure, użyj następującej wartości dla opcji Lista **artefaktów do przekazania:** . Można również użyć składni dwukroęcza, aby określić ścieżkę do użycia w nazwie obiektu blob. Na przykład, jeśli chcesz, aby usługi JA Zostały przesłane za pomocą **plików binarnych** w ścieżce obiektów blob, a pliki TXT, aby uzyskać `build/\*.jar::binaries;build/\*.txt::notices`przesłane za pomocą **powiadomień** w ścieżce obiektu blob, użyj następującej wartości dla opcji Lista **artefaktów do przekazania:** .
 
-## <a name="how-to-create-a-build-step-that-downloads-from-azure-blob-storage"></a>Jak utworzyć krok kompilacji pobierany z usługi Azure Blob Storage
-Poniższe kroki pokazują, jak skonfigurować krok kompilacji do pobierania elementów z usługi Azure Blob Storage, co jest przydatne, jeśli chcesz dołączyć elementy do kompilacji. Przykładem użycia tego wzorca jest JARs, który można zachować w usłudze Azure Blob Storage.
+## <a name="how-to-create-a-build-step-that-downloads-from-azure-blob-storage"></a>Jak utworzyć krok kompilacji pobrany z magazynu obiektów blob platformy Azure
+Poniższe kroki ilustrują, aby skonfigurować krok kompilacji do pobierania elementów z magazynu obiektów blob platformy Azure, co jest przydatne, jeśli chcesz dołączyć elementy w kompilacji. Przykładem użycia tego wzorca jest JARs, które można chcieć utrwalić w magazynie obiektów blob platformy Azure.
 
-1. W sekcji **kompilacja** w obszarze Konfiguracja zadania wybierz pozycję **Dodaj krok kompilacji** , a następnie wybierz pozycję **Pobierz z usługi Azure Blob Storage**.
-2. W polu **nazwa konta magazynu**wybierz konto magazynu, które ma być używane.
-3. W polu **nazwa kontenera**Określ nazwę kontenera zawierającego obiekty blob, które chcesz pobrać. Można używać zmiennych środowiskowych.
-4. W polu **Nazwa obiektu BLOB**Określ nazwę obiektu BLOB. Można używać zmiennych środowiskowych. Ponadto można użyć gwiazdki jako symbolu wieloznacznego po określeniu początkowych liter nazwy obiektu BLOB. Na przykład **projekt\\** * będzie określać wszystkie obiekty blob, których nazwy zaczynają się od **projektu**.
-5. Obowiązkowe W polu **ścieżka do pobierania**określ ścieżkę na maszynie Jenkins, w której chcesz pobrać pliki z usługi Azure Blob Storage. Można również użyć zmiennych środowiskowych. (Jeśli nie podasz wartości **ścieżki pobierania**, pliki z usługi Azure Blob Storage zostaną pobrane do obszaru roboczego zadania).
+1. W sekcji **Kompilacja** konfiguracji zadania wybierz pozycję **Dodaj krok kompilacji** i wybierz **pozycję Pobierz z magazynu obiektów Blob platformy Azure**.
+2. W obszarze **Nazwa konta magazynowania**wybierz konto magazynu, którego chcesz użyć.
+3. W **obszarze Nazwa kontenera**określ nazwę kontenera, który ma obiekty blob, które chcesz pobrać. Można użyć zmiennych środowiskowych.
+4. W przypadku **nazwy obiektu Blob**określ nazwę obiektu blob. Można użyć zmiennych środowiskowych. Ponadto można użyć gwiazdki jako symbolu wieloznacznego po określeniu początkowych liter nazwy obiektu blob. Na przykład **\\projekt*** określi wszystkie obiekty blob, których nazwy zaczynają się od **projektu**.
+5. [Opcjonalnie] Aby **pobrać ścieżkę,** określ ścieżkę na komputerze jenkins, gdzie chcesz pobrać pliki z magazynu obiektów blob platformy Azure. Można również użyć zmiennych środowiskowych. (Jeśli nie podasz wartości **ścieżki pobierania,** pliki z magazynu obiektów blob platformy Azure zostaną pobrane do obszaru roboczego zadania).
 
-Jeśli masz dodatkowe elementy, które chcesz pobrać z usługi Azure Blob Storage, możesz utworzyć dodatkowe kroki kompilacji.
+Jeśli masz dodatkowe elementy, które chcesz pobrać z magazynu obiektów blob platformy Azure, możesz utworzyć dodatkowe kroki kompilacji.
 
-Po uruchomieniu kompilacji można sprawdzić dane wyjściowe konsoli historia kompilacji lub poszukać lokalizacji pobierania, aby sprawdzić, czy obiekty blob, których oczekiwano, zostały pobrane pomyślnie.  
+Po uruchomieniu kompilacji można sprawdzić dane wyjściowe konsoli historii kompilacji lub przyjrzeć się lokalizacji pobierania, aby sprawdzić, czy oczekiwane obiekty blob zostały pomyślnie pobrane.  
 
-## <a name="components-used-by-the-blob-service"></a>Składniki używane przez Blob service
-Ta sekcja zawiera omówienie składników Blob service.
+## <a name="components-used-by-the-blob-service"></a>Składniki używane przez usługę obiektów Blob
+Ta sekcja zawiera omówienie składników usługi obiektów Blob.
 
-* **Konto magazynu**: cały dostęp do usługi Azure Storage odbywa się przez konto magazynu. Konto magazynu to najwyższy poziom przestrzeni nazw do uzyskiwania dostępu do obiektów BLOB. Konto może zawierać nieograniczoną liczbę kontenerów, o ile ich łączny rozmiar przekracza 100 TB.
-* **Kontener**: kontener zawiera grupowanie zestawu obiektów BLOB. Wszystkie obiekty blob muszą być w kontenerze. Konto może zawierać nieograniczoną liczbę kontenerów. Kontener może przechowywać nieograniczoną liczbę obiektów blob.
-* **BLOB**: plik dowolnego typu i rozmiaru. Istnieją dwa typy obiektów blob, które mogą być przechowywane w usłudze Azure Storage: blokowe i stronicowe obiekty blob. Większość plików to blokowe obiekty blob. Pojedynczy blokowy obiekt BLOB może mieć rozmiar do 200 GB. W tym samouczku są stosowane blokowe obiekty blob. Stronicowe obiekty blob, inne typy obiektów blob, mogą mieć rozmiar do 1 TB i są bardziej wydajne, gdy często są modyfikowane zakresy bajtów w pliku. Aby uzyskać więcej informacji na temat obiektów blob, zobacz [Opis blokowych obiektów blob, dołączania obiektów blob i stronicowych obiektów BLOB](https://msdn.microsoft.com/library/azure/ee691964.aspx).
-* **Format adresu URL**: obiekty blob są adresowane przy użyciu następującego formatu adresu URL:
+* **Konto magazynu:** Cały dostęp do usługi Azure Storage odbywa się za pośrednictwem konta magazynu. Konto magazynu jest najwyższym poziomem obszaru nazw dostępu do obiektów blob. Konto może zawierać nieograniczoną liczbę kontenerów, o ile ich całkowity rozmiar jest poniżej 100 TB.
+* **Kontener:** Kontener zapewnia grupowanie zestawu obiektów blob. Wszystkie obiekty blob muszą być w kontenerze. Konto może zawierać nieograniczoną liczbę kontenerów. Kontener może przechowywać nieograniczoną liczbę obiektów blob.
+* **Obiekt blob**: Plik dowolnego typu i rozmiaru. Istnieją dwa typy obiektów blob, które mogą być przechowywane w usłudze Azure Storage: blok i strony obiektów blob. Większość plików to blokowe obiekty blob. Pojedynczy blokowy obiekt blob może mieć rozmiar do 200 GB. W tym samouczku użyto bloków obiektów blob. Obiekty BLOB strony, inny typ obiektu blob, może mieć rozmiar do 1 TB i są bardziej wydajne, gdy zakresy bajtów w pliku są często modyfikowane. Aby uzyskać więcej informacji na temat obiektów blob, zobacz [Opis bloków obiektów blob, dołączanie obiektów blob i obiektów blob strony](https://msdn.microsoft.com/library/azure/ee691964.aspx).
+* **Format adresu URL:** obiekty blob można adresować przy użyciu następującego formatu adresu URL:
   
     `http://storageaccount.blob.core.windows.net/container_name/blob_name`
   
-    (Powyższy format dotyczy globalnej chmury platformy Azure. Jeśli używasz innej chmury platformy Azure, użyj punktu końcowego w [Azure Portal](https://portal.azure.com) , aby określić punkt końcowy adresu URL.)
+    (Powyższy format ma zastosowanie do globalnej chmury platformy Azure. Jeśli używasz innej chmury platformy Azure, użyj punktu końcowego w [witrynie Azure portal,](https://portal.azure.com) aby określić punkt końcowy adresu URL.)
   
-    W powyższym formacie `storageaccount` reprezentuje nazwę konta magazynu, `container_name` reprezentuje nazwę kontenera, a `blob_name` reprezentuje odpowiednio nazwę obiektu BLOB. W obrębie nazwy kontenera można mieć wiele ścieżek oddzielonych ukośnikiem, **/** . Przykładowa nazwa kontenera użyta w tym samouczku została **MyJoba**, a **$ {Build\_ID}/$ {Build\_Number}** została użyta dla wspólnej ścieżki wirtualnej, co spowodowało, że obiekt BLOB ma adres URL w następującej postaci:
+    W powyższym `storageaccount` formacie reprezentuje nazwę konta `container_name` magazynu, reprezentuje nazwę kontenera i `blob_name` reprezentuje nazwę obiektu blob, odpowiednio. W nazwie kontenera można mieć wiele ścieżek oddzielonych **/** ukośnikiem do przodu, . Przykładowa nazwa kontenera używana w tym samouczku to **MyJob**, a **\_${BUILD ID}/${BUILD\_NUMBER}** został użyty dla wspólnej ścieżki wirtualnej, co spowodowało, że obiekt blob ma adres URL następującego formularza:
   
     `http://example.blob.core.windows.net/myjob/2014-04-14_23-57-00/1/hello.txt`
 
 ## <a name="troubleshooting-the-jenkins-plugin"></a>Rozwiązywanie problemów z wtyczką narzędzia Jenkins
 
-Jeśli napotkasz jakiekolwiek usterki we wtyczkach narzędzia Jenkins, prześlij zgłoszenie za pomocą narzędzia [Jenkins JIRA](https://issues.jenkins-ci.org/) dla określonego składnika.
+Jeśli wystąpią jakiekolwiek błędy z wtyczkami jenkins, zgładź problem w [JIRA usługi Jenkins](https://issues.jenkins-ci.org/) dla określonego składnika.
 
 ## <a name="next-steps"></a>Następne kroki
 

@@ -1,39 +1,39 @@
 ---
-title: Dokumentacja interfejsu API usługi Azure Application Insights Agent
-description: Dokumentacja interfejsu API agenta Application Insights. Enable-InstrumentationEngine. Monitorowanie wydajności witryny sieci Web bez ponownego wdrażania witryny sieci Web. Współpracuje z usługą ASP.NET Web Apps hostowaną lokalnie, na maszynach wirtualnych lub na platformie Azure.
+title: Odwołanie do interfejsu API agenta usługi Azure Application Insights
+description: Odwołanie do interfejsu API agenta usługi Application Insights. Włącz-InstrumentacjaInżyj. Monitoruj działanie witryny bez ponownego rozmieszczania witryny. Współpracuje ze ASP.NET aplikacjami sieci web hostowanymi lokalnie, na maszynach wirtualnych lub na platformie Azure.
 ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
 ms.openlocfilehash: b3f298ac31cc584cd16553186359c87f69f27aad
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77671361"
 ---
-# <a name="application-insights-agent-api-enable-instrumentationengine"></a>Interfejs API agenta Application Insights: Enable-InstrumentationEngine
+# <a name="application-insights-agent-api-enable-instrumentationengine"></a>Interfejs API agenta usługi Application Insights: Enable-InstrumentationEngine
 
-W tym artykule opisano polecenie cmdlet, które jest członkiem [modułu programu PowerShell AZ. ApplicationMonitor](https://www.powershellgallery.com/packages/Az.ApplicationMonitor/).
+W tym artykule opisano polecenie cmdlet, który jest członkiem [modułu Az.ApplicationMonitor PowerShell](https://www.powershellgallery.com/packages/Az.ApplicationMonitor/).
 
 ## <a name="description"></a>Opis
 
-Włącza aparat Instrumentacji przez ustawienie niektórych kluczy rejestru.
-Uruchom ponownie usługi IIS, aby zmiany zaczęły obowiązywać.
+Włącza aparat instrumentacji, ustawiając niektóre klucze rejestru.
+Uruchom ponownie usługę IIS, aby zmiany zostały wprowadzone.
 
-Aparat Instrumentacji może uzupełniać dane zbierane przez zestawy SDK platformy .NET.
-Zbiera zdarzenia i komunikaty opisujące wykonywanie procesu zarządzanego. Te zdarzenia i komunikaty obejmują kody wyników zależności, zlecenia HTTP i [tekst polecenia SQL](asp-net-dependencies.md#advanced-sql-tracking-to-get-full-sql-query).
+Aparat instrumentacji może uzupełniać dane zebrane przez zestawy SDK .NET.
+Zbiera zdarzenia i komunikaty, które opisują wykonanie procesu zarządzanego. Te zdarzenia i komunikaty obejmują kody wyników zależności, zlecenia HTTP i [tekst polecenia SQL](asp-net-dependencies.md#advanced-sql-tracking-to-get-full-sql-query).
 
-Włącz aparat instrumentacji, jeśli:
-- Monitorowanie zostało już włączone za pomocą polecenia cmdlet Enable, ale nie włączono aparatu Instrumentacji.
-- Twoja aplikacja została ręcznie przypięta przy użyciu zestawów SDK platformy .NET i chcesz zebrać dodatkową telemetrię.
+Włączyć silnik oprzyrządowania, jeśli:
+- Monitorowanie jest już włączone za pomocą polecenia cmdlet Enable, ale nie włączyłeś aparatu instrumentacji.
+- Aplikacja została ręcznie zaarządowana za pomocą zestawów SDK platformy .NET i ma być zbierana dodatkowa telemetria.
 
 > [!IMPORTANT] 
 > To polecenie cmdlet wymaga sesji programu PowerShell z uprawnieniami administratora.
 
 > [!NOTE] 
-> - To polecenie cmdlet wymaga przejrzenia i zaakceptowania naszych licencji i zasad zachowania poufności informacji.
-> - Aparat Instrumentacji dodaje dodatkowe obciążenie i jest domyślnie wyłączony.
+> - To polecenie cmdlet wymaga zapoznania się i zaakceptowania naszej licencji i oświadczenia o ochronie prywatności.
+> - Aparat oprzyrządowania dodaje dodatkowe obciążenie i jest domyślnie wyłączony.
 
 ## <a name="examples"></a>Przykłady
 
@@ -43,16 +43,16 @@ PS C:\> Enable-InstrumentationEngine
 
 ## <a name="parameters"></a>Parametry
 
-### <a name="-acceptlicense"></a>-AcceptLicense
-**Obowiązkowe.** Ten przełącznik umożliwia zaakceptowanie licencji i zasad zachowania poufności informacji w instalacjach bezobsługowych.
+### <a name="-acceptlicense"></a>-AcceptLicencja
+**Opcjonalne.** Ten przełącznik służy do akceptowania licencji i zasad zachowania poufności informacji w instalacjach bezgłowych.
 
-### <a name="-verbose"></a>-Verbose
-**Wspólny parametr.** Ten przełącznik umożliwia wyprowadzanie szczegółowych dzienników.
+### <a name="-verbose"></a>-Pełne
+**Wspólny parametr.** Użyj tego przełącznika do wyprowadzania szczegółowych dzienników.
 
 ## <a name="output"></a>Dane wyjściowe
 
 
-#### <a name="example-output-from-successfully-enabling-the-instrumentation-engine"></a>Przykładowe dane wyjściowe pomyślnie włączania aparatu Instrumentacji
+#### <a name="example-output-from-successfully-enabling-the-instrumentation-engine"></a>Przykładowy wynik z pomyślnego włączenia aparatu oprzyrządowania
 
 ```
 Configuring IIS Environment for instrumentation engine...
@@ -62,17 +62,17 @@ Configuring registry for instrumentation engine...
 ## <a name="next-steps"></a>Następne kroki
 
   Wyświetlanie telemetrii:
- - [Poznaj metryki](../../azure-monitor/app/metrics-explorer.md) , aby monitorować wydajność i użycie.
-- [Wyszukaj zdarzenia i dzienniki](../../azure-monitor/app/diagnostic-search.md) , aby zdiagnozować problemy.
-- Użyj [analizy](../../azure-monitor/app/analytics.md) , aby uzyskać bardziej zaawansowane zapytania.
+ - [Eksploruj metryki,](../../azure-monitor/app/metrics-explorer.md) aby monitorować wydajność i użycie.
+- [Szukaj zdarzeń i dzienników](../../azure-monitor/app/diagnostic-search.md) w celu zdiagnozowania problemów.
+- Użyj [analizy](../../azure-monitor/app/analytics.md) dla bardziej zaawansowanych zapytań.
 - [Tworzenie pulpitów nawigacyjnych](../../azure-monitor/app/overview-dashboard.md).
  
  Dodawanie kolejnych funkcji telemetrii:
- - [Utwórz testy sieci Web](monitor-web-app-availability.md) , aby upewnić się, że witryna pozostaje aktywna.
-- [Dodaj telemetrię klienta sieci Web](../../azure-monitor/app/javascript.md) , aby zobaczyć wyjątki z kodu strony sieci Web i włączyć wywołania śledzenia.
-- [Dodaj do kodu zestaw SDK Application Insights](../../azure-monitor/app/asp-net.md) , aby móc wstawiać wywołania śledzenia i rejestrowania.
+ - [Tworzenie testów sieci Web](monitor-web-app-availability.md), aby upewnić się, że witryna pozostaje aktywna.
+- [Dodaj dane telemetryczne klienta sieci Web,](../../azure-monitor/app/javascript.md) aby wyświetlić wyjątki od kodu strony sieci web i włączyć śledzenie wywołań.
+- [Dodaj SDK usługi Application Insights do kodu, dzięki](../../azure-monitor/app/asp-net.md) czemu można wstawić śledzenie i rejestrowanie wywołań.
  
- Zrób więcej dzięki Application Insights agentowi:
- - Skorzystaj z naszego przewodnika, aby [rozwiązać problemy z](status-monitor-v2-troubleshoot.md) agentem Application Insights.
- - [Pobierz konfigurację](status-monitor-v2-api-get-config.md) , aby upewnić się, że Twoje ustawienia zostały poprawnie zarejestrowane.
- - [Pobierz stan,](status-monitor-v2-api-get-status.md) aby sprawdzić monitorowanie.
+ Więcej informacji za pomocą agenta usługi Application Insights:
+ - Skorzystaj z naszego [przewodnika,](status-monitor-v2-troubleshoot.md) aby rozwiązać problem z agentem aplikacji Insights.
+ - [Pobierz config,](status-monitor-v2-api-get-config.md) aby potwierdzić, że ustawienia zostały nagrane poprawnie.
+ - [Uzyskaj stan,](status-monitor-v2-api-get-status.md) aby sprawdzić monitorowanie.

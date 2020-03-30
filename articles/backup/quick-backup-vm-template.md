@@ -1,30 +1,49 @@
 ---
-title: Szybki Start — Menedżer zasobów szablonu kopia zapasowa maszyny wirtualnej
-description: Dowiedz się, jak utworzyć kopię zapasową maszyn wirtualnych przy użyciu szablonu Azure Resource Manager
+title: Szybki start — szablon menedżera zasobów Kopia zapasowa maszyny Wirtualnej
+description: Dowiedz się, jak zrobić kopii zapasowej maszyn wirtualnych za pomocą szablonu usługi Azure Resource Manager
 ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 05/14/2019
-ms.custom: mvc
-ms.openlocfilehash: 721213dcdd4751de936968b7e67a4b5d31b8d9ec
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.custom: mvc,subject-armqs
+ms.openlocfilehash: c40dc7ef8fc55acade709b1ffbbd86ff306f7f0e
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75980654"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79459246"
 ---
-# <a name="back-up-a-virtual-machine-in-azure-with-resource-manager-template"></a>Tworzenie kopii zapasowej maszyny wirtualnej na platformie Azure przy użyciu szablonu Menedżer zasobów
+# <a name="back-up-a-virtual-machine-in-azure-with-resource-manager-template"></a>Finansuj utworzenie kopii zapasowej maszyny wirtualnej na platformie Azure za pomocą szablonu Usługi Resource Manager
 
-[Azure Backup](backup-overview.md) tworzyć kopie zapasowe maszyn i aplikacji lokalnych oraz maszyn wirtualnych platformy Azure. W tym artykule opisano sposób tworzenia kopii zapasowej maszyny wirtualnej platformy Azure przy użyciu szablonu Menedżer zasobów i Azure PowerShell. Ten przewodnik Szybki Start koncentruje się na procesie wdrażania szablonu Menedżer zasobów w celu utworzenia magazynu usługi Recovery Services. Aby uzyskać więcej informacji na temat opracowywania szablonów Menedżer zasobów, zobacz [dokumentację Menedżer zasobów i dokumentacja](/azure/azure-resource-manager/) [szablonu](/azure/templates/microsoft.recoveryservices/allversions).
+[Usługa Azure Backup](backup-overview.md) tworzą kopię zapasową maszyn i aplikacji lokalnych oraz maszyn wirtualnych platformy Azure. W tym artykule pokazano, jak zrobić z nim projekt kopii zapasowej maszyny Wirtualnej platformy Azure za pomocą szablonu usługi Resource Manager i programu Azure PowerShell. Ten przewodnik Szybki start koncentruje się na procesie wdrażania szablonu Menedżera zasobów w celu utworzenia magazynu recover services. Aby uzyskać więcej informacji na temat tworzenia szablonów Menedżera zasobów, zobacz [Dokumentacja Menedżera zasobów](/azure/azure-resource-manager/) i odwołanie do [szablonu](/azure/templates/microsoft.recoveryservices/allversions).
 
-Alternatywnie można utworzyć kopię zapasową maszyny wirtualnej przy użyciu [Azure PowerShell](./quick-backup-vm-powershell.md), [interfejsu wiersza polecenia platformy Azure](quick-backup-vm-cli.md)lub [Azure Portal](quick-backup-vm-portal.md).
+[!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-## <a name="create-a-vm-and-recovery-services-vault"></a>Tworzenie maszyny wirtualnej i magazynu Recovery Services
+Alternatywnie można wywrzeć zapas maszynę wirtualną przy użyciu [usługi Azure PowerShell](./quick-backup-vm-powershell.md), [interfejsu wiersza polecenia platformy Azure](quick-backup-vm-cli.md)lub w [witrynie Azure portal.](quick-backup-vm-portal.md)
 
-[Magazyn Recovery Services](backup-azure-recovery-services-vault-overview.md) jest kontenerem logicznym, który przechowuje dane kopii zapasowej chronionych zasobów, takich jak maszyny wirtualne platformy Azure. Po uruchomieniu zadania tworzenia kopii zapasowej tworzy punkt odzyskiwania w magazynie Recovery Services. Następnie można użyć jednego z tych punktów odzyskiwania w celu przywrócenia danych do danego punktu w czasie.
+## <a name="create-a-vm-and-recovery-services-vault"></a>Tworzenie magazynu usług wirtualnych i odzyskiwania
 
-Szablon używany w tym przewodniku szybki start pochodzi z [szablonów szybkiego startu platformy Azure](https://azure.microsoft.com/resources/templates/101-recovery-services-create-vm-and-configure-backup/). Ten szablon pozwala wdrożyć prostą maszynę wirtualną z systemem Windows i magazyn Recovery Services skonfigurowany przy użyciu DefaultPolicy na potrzeby ochrony.
+[Magazyn usług odzyskiwania](backup-azure-recovery-services-vault-overview.md) to kontener logiczny, który przechowuje dane kopii zapasowej dla chronionych zasobów, takich jak maszyny wirtualne platformy Azure. Po uruchomieniu zadania kopii zapasowej tworzy punkt odzyskiwania wewnątrz magazynu usług odzyskiwania. Następnie można użyć jednego z tych punktów odzyskiwania w celu przywrócenia danych do danego punktu w czasie.
 
-Aby wdrożyć szablon, wybierz pozycję **Wypróbuj** , aby otworzyć usługę Azure Cloud Shell, a następnie wklej następujący skrypt programu PowerShell do okna powłoki. Aby wkleić kod, kliknij prawym przyciskiem myszy okno powłoki, a następnie wybierz polecenie **Wklej**.
+### <a name="review-the-template"></a>Przejrzyj szablon
+
+Szablon używany w tym przewodniku Szybki start pochodzi z [szablonów szybki start platformy Azure](https://azure.microsoft.com/resources/templates/101-recovery-services-create-vm-and-configure-backup/). Ten szablon umożliwia wdrożenie prostej usługi Windows VM i Recovery Services Vault skonfigurowane za pomocą defaultpolicy for protection.
+
+:::code language="json" source="~/quickstart-templates/101-recovery-services-create-vm-and-configure-backup/azuredeploy.json" range="1-247" highlight="221-245":::
+
+Zasoby zdefiniowane w szablonie to:
+
+- [**Microsoft.Storage/storageKondyje**](/azure/templates/microsoft.storage/storageaccounts)
+- [**Microsoft.Network/publicIPAddresses**](/azure/templates/microsoft.network/publicipaddresses)
+- [**Microsoft.Network/networkSecurityGroups**](/azure/templates/microsoft.network/networksecuritygroups)
+- [**Sieć Microsoft.Network/virtual Sieci**](/azure/templates/microsoft.network/virtualnetworks)
+- [**Microsoft.Network/networkInterfaces**](/azure/templates/microsoft.network/networkinterfaces)
+- [**Microsoft.Compute/virutalMacyny**](/azure/templates/microsoft.compute/virtualmachines)
+- [**Microsoft.RecoverySługs/vaults**](/azure/templates/microsoft.recoveryservices/vaults)
+- [**Microsoft.RecoveryServices/vaults/backupFabrics/protectionContainers/protectedItems**](/azure/templates/microsoft.recoveryservices/vaults/backupfabrics/protectioncontainers/protecteditems)
+
+### <a name="deploy-the-template"></a>Wdrożenie szablonu
+
+Aby wdrożyć szablon, wybierz pozycję **Wypróbuj,** aby otworzyć usługę Azure Cloud Shell, a następnie wklej następujący skrypt programu PowerShell do okna powłoki. Aby wkleić kod, kliknij prawym przyciskiem myszy okno powłoki, a następnie wybierz polecenie **Wklej**.
 
 ```azurepowershell-interactive
 $projectName = Read-Host -Prompt "Enter a project name (limited to eight characters) that is used to generate Azure resource names"
@@ -40,24 +59,26 @@ New-AzResourceGroup -Name $resourceGroupName -Location $location
 New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri $templateUri -projectName $projectName -adminUsername $adminUsername -adminPassword $adminPassword -dnsLabelPrefix $dnsPrefix
 ```
 
-Azure PowerShell służy do wdrażania szablonu Menedżer zasobów w tym przewodniku Szybki Start. Do wdrażania szablonów można także używać [Azure Portal](../azure-resource-manager/templates/deploy-portal.md), interfejsu [wiersza polecenia platformy Azure](../azure-resource-manager/templates/deploy-cli.md)i [interfejsów API REST](../azure-resource-manager/templates/deploy-rest.md) .
+Program Azure PowerShell jest używany do wdrażania szablonu Menedżera zasobów w tym przewodniku Szybki start. [Witryna Azure portal](../azure-resource-manager/templates/deploy-portal.md), [interfejs wiersza polecenia platformy Azure](../azure-resource-manager/templates/deploy-cli.md)i interfejs API [odpoczynku](../azure-resource-manager/templates/deploy-rest.md) mogą być również używane do wdrażania szablonów.
 
-## <a name="start-a-backup-job"></a>Uruchamianie zadania tworzenia kopii zapasowej
+## <a name="validate-the-deployment"></a>Weryfikowanie wdrożenia
 
-Szablon tworzy maszynę wirtualną i włącza ją z powrotem na maszynie wirtualnej. Po wdrożeniu szablonu należy uruchomić zadanie tworzenia kopii zapasowej. Aby uzyskać więcej informacji, zobacz [Rozpoczynanie zadania tworzenia kopii zapasowej](./quick-backup-vm-powershell.md#start-a-backup-job).
+### <a name="start-a-backup-job"></a>Uruchamianie zadania tworzenia kopii zapasowej
 
-## <a name="monitor-the-backup-job"></a>Monitorowanie zadania tworzenia kopii zapasowej
+Szablon tworzy maszynę wirtualną i włącza z powrotem na maszynie Wirtualnej. Po wdrożeniu szablonu należy rozpocząć zadanie tworzenia kopii zapasowej. Aby uzyskać więcej informacji, zobacz [Uruchamianie zadania tworzenia kopii zapasowej](./quick-backup-vm-powershell.md#start-a-backup-job).
 
-Aby monitorować zadanie tworzenia kopii zapasowej, zobacz [monitorowanie zadania tworzenia kopii zapasowej](./quick-backup-vm-powershell.md#monitor-the-backup-job).
+### <a name="monitor-the-backup-job"></a>Monitorowanie zadania tworzenia kopii zapasowej
 
-## <a name="clean-up-the-deployment"></a>Wyczyść wdrożenie
+Aby monitorować zadanie tworzenia kopii zapasowej, zobacz [Monitorowanie zadania tworzenia kopii zapasowej](./quick-backup-vm-powershell.md#monitor-the-backup-job).
 
-Jeśli kopia zapasowa maszyny wirtualnej nie jest już potrzebna, można ją wyczyścić.
+## <a name="clean-up-the-deployment"></a>Oczyszczanie wdrożenia
 
-- Jeśli chcesz wypróbować przywracanie maszyny wirtualnej, Pomiń oczyszczanie.
-- Jeśli użyto istniejącej maszyny wirtualnej, możesz pominąć końcowe polecenie cmdlet [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) , aby pozostawić grupę zasobów i maszynę wirtualną.
+Jeśli nie trzeba już wykonać kopii zapasowej maszyny Wirtualnej, można ją wyczyścić.
 
-Wyłącz ochronę, Usuń punkty przywracania i magazyn. Następnie Usuń grupę zasobów i skojarzone z nią zasoby maszyn wirtualnych w następujący sposób:
+- Jeśli chcesz wypróbować przywracanie maszyny Wirtualnej, pomiń oczyszczanie.
+- Jeśli użyto istniejącej maszyny Wirtualnej, można pominąć końcowe polecenie cmdlet [Remove-AzResourceGroup,](/powershell/module/az.resources/remove-azresourcegroup) aby pozostawić grupę zasobów i maszynę wirtualną na miejscu.
+
+Wyłącz ochronę, usuń punkty przywracania i przechowalnię. Then delete the resource group and associated VM resources, as follows:
 
 ```powershell
 Disable-AzRecoveryServicesBackupProtection -Item $item -RemoveRecoveryPoints
@@ -70,5 +91,6 @@ Remove-AzResourceGroup -Name "myResourceGroup"
 
 W tym przewodniku Szybki start utworzono magazyn usługi Recovery Services, włączono ochronę maszyny wirtualnej i utworzono początkowy punkt odzyskiwania.
 
-- [Dowiedz się, jak](tutorial-backup-vm-at-scale.md) utworzyć kopię zapasową maszyn wirtualnych w Azure Portal.
+- [Dowiedz się, jak](tutorial-backup-vm-at-scale.md) zrobić kopii zapasowej maszyn wirtualnych w witrynie Azure portal.
 - [Dowiedz się, jak](tutorial-restore-disk.md) szybko przywrócić maszynę wirtualną
+- [Dowiedz się, jak](../azure-resource-manager/templates/template-tutorial-create-first-template.md) tworzyć szablony Menedżera zasobów.

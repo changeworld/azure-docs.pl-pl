@@ -1,67 +1,67 @@
 ---
-title: Model danych telemetrii żądania — Application Insights platformy Azure
-description: Application Insights model danych dla telemetrii żądania
+title: Model danych dla danych telemetrycznych żądania — usługa Azure Application Insights
+description: Model danych usługi Application Insights dla danych telemetrycznych żądania
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.reviewer: sergkanz
 ms.openlocfilehash: d8a28063bf6780c3cace4ead81e289779b95eb9a
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77671906"
 ---
-# <a name="request-telemetry-application-insights-data-model"></a>Dane telemetryczne żądania: Application Insights model danych
+# <a name="request-telemetry-application-insights-data-model"></a>Żądania danych telemetrycznych: model danych usługi Application Insights
 
-Element telemetrii żądania (w [Application Insights](../../azure-monitor/app/app-insights-overview.md)) reprezentuje sekwencję logiczną wykonywania wyzwalaną przez zewnętrzne żądanie do aplikacji. Każde wykonanie żądania jest identyfikowane przez unikatowe `ID` i `url` zawierające wszystkie parametry wykonania. Można grupować żądania według logicznych `name` i definiować `source` tego żądania. Wykonanie kodu może spowodować `success` lub `fail` i ma pewne `duration`. Zarówno wykonanie sukcesu, jak i niepowodzenia mogą być pogrupowane w `resultCode`. Godzina rozpoczęcia dla danych telemetrycznych żądania zdefiniowanej na poziomie koperty.
+Element telemetrii żądania (w [usłudze Application Insights)](../../azure-monitor/app/app-insights-overview.md)reprezentuje logiczną sekwencję wykonywania wyzwalane przez żądanie zewnętrzne do aplikacji. Każde wykonanie żądania jest `ID` identyfikowane przez unikatowe i `url` zawierające wszystkie parametry wykonywania. Żądania można grupować `name` według `source` logicznego i definiować to żądanie. Wykonanie kodu może `success` `fail` spowodować lub `duration`ma pewne . Zarówno sukces, jak i egzekucje `resultCode`porażki mogą być pogrupowane według . Godzina rozpoczęcia danych telemetrycznych żądania zdefiniowanych na poziomie koperty.
 
-Dane telemetryczne żądania obsługują standardowy model rozszerzalności przy użyciu niestandardowych `properties` i `measurements`.
+Żądania telemetrii obsługuje standardowy `properties` model `measurements`rozszerzalności przy użyciu niestandardowych i .
 
-## <a name="name"></a>Name (Nazwa)
+## <a name="name"></a>Nazwa
 
-Nazwa żądania reprezentuje ścieżkę kodu wykonywaną w celu przetworzenia żądania. Niska wartość kardynalności umożliwiająca lepsze grupowanie żądań. W przypadku żądań HTTP reprezentuje ona metodę HTTP i szablon ścieżki adresu URL, takie jak `GET /values/{id}` bez rzeczywistej wartości `id`.
+Nazwa żądania reprezentuje ścieżkę kodu pobraną do przetworzenia żądania. Niska wartość kardynalność, aby umożliwić lepsze grupowanie żądań. W przypadku żądań HTTP reprezentuje metodę `GET /values/{id}` HTTP i `id` szablon ścieżki adresu URL, podobnie jak bez rzeczywistej wartości.
 
-Application Insights Web SDK wysyła nazwę żądania "AS IS" w odniesieniu do wielkości liter. W grupowaniu w interfejsie użytkownika jest rozróżniana wielkość liter, dlatego `GET /Home/Index` są zliczane niezależnie od `GET /home/INDEX` nawet wtedy, gdy często powodują to ten sam kontroler i wykonywanie akcji. Przyczyną tego jest to, że adresy URL w ogólności uwzględnia [wielkość](https://www.w3.org/TR/WD-html40-970708/htmlweb.html)liter. Możesz chcieć sprawdzić, czy wszystkie `404` wystąpiły dla adresów URL wpisanych wielką literą. Więcej informacji na temat kolekcji nazw żądań można znaleźć przez ASP.NET Web SDK w [wpisie w blogu](https://apmtips.com/blog/2015/02/23/request-name-and-url/).
+SDK sieci Web usługi Application Insights wysyła nazwę żądania "tak jak jest" w odniesieniu do sprawy listu. Grupowanie w interfejsie użytkownika `GET /Home/Index` jest rozróżniana wielkość liter, więc jest liczony oddzielnie od `GET /home/INDEX` mimo że często powodują one tego samego kontrolera i wykonywania akcji. Powodem tego jest to, że adresy URL w ogóle są [rozróżniane wielkość liter](https://www.w3.org/TR/WD-html40-970708/htmlweb.html). Możesz sprawdzić, czy `404` wszystko się stało dla adresów URL wpisanych w wielkich literach. Więcej informacji na temat zbierania nazw na żądanie można przeczytać ASP.NET web SDK w poście w [blogu](https://apmtips.com/blog/2015/02/23/request-name-and-url/).
 
 Maksymalna długość: 1024 znaków
 
 ## <a name="id"></a>ID
 
-Identyfikator wystąpienia wywołania żądania. Służy do korelacji między żądaniem a innymi elementami telemetrii. Identyfikator powinien być globalnie unikatowy. Aby uzyskać więcej informacji, zobacz stronę [korelacji](../../azure-monitor/app/correlation.md) .
+Identyfikator wystąpienia wywołania żądania. Służy do korelacji między żądaniami i innymi elementami telemetrii. Identyfikator powinien być unikatowy globalnie. Aby uzyskać więcej informacji, zobacz stronę [korelacji.](../../azure-monitor/app/correlation.md)
 
 Maksymalna długość: 128 znaków
 
 ## <a name="url"></a>Url
 
-Adres URL żądania ze wszystkimi parametrami ciągu zapytania.
+Zażądaj adresu URL ze wszystkimi parametrami ciągu zapytania.
 
 Maksymalna długość: 2048 znaków
 
 ## <a name="source"></a>Element źródłowy
 
-Źródło żądania. Przykłady to klucz Instrumentacji obiektu wywołującego lub adres IP obiektu wywołującego. Aby uzyskać więcej informacji, zobacz stronę [korelacji](../../azure-monitor/app/correlation.md) .
+Źródło żądania. Przykładami są klucz instrumentacji osoby dzwoniącej lub adres IP osoby dzwoniącej. Aby uzyskać więcej informacji, zobacz stronę [korelacji.](../../azure-monitor/app/correlation.md)
 
 Maksymalna długość: 1024 znaków
 
 ## <a name="duration"></a>Czas trwania
 
-Czas trwania żądania w formacie: `DD.HH:MM:SS.MMMMMM`. Musi być wartością dodatnią i mniejszą niż `1000` dni. To pole jest wymagane jako dane telemetryczne żądania reprezentuje operację z początkiem i końcem.
+Czas trwania żądania `DD.HH:MM:SS.MMMMMM`w formacie: . Musi być pozytywny `1000` i mniej niż dni. To pole jest wymagane, ponieważ dane telemetryczne żądania reprezentują operację z początkiem i końcem.
 
 ## <a name="response-code"></a>Kod odpowiedzi
 
-Wynik wykonania żądania. Kod stanu HTTP dla żądań HTTP. Może to być `HRESULT` wartość lub typ wyjątku dla innych typów żądań.
+Wynik wykonania żądania. Kod stanu HTTP dla żądań HTTP. Może to `HRESULT` być wartość lub typ wyjątku dla innych typów żądań.
 
 Maksymalna długość: 1024 znaków
 
 ## <a name="success"></a>Powodzenie
 
-Wskazanie powodzenia lub nieudanych wywołań. To pole jest wymagane. Gdy nie ustawiono jawnie `false`-żądanie jest uznawane za pomyślne. Ustaw tę wartość na `false`, jeśli operacja została przerwana przez wyjątek lub zwróciła kod wyniku błędu.
+Wskazanie udanego lub nieudanego połączenia. To pole jest wymagane. Gdy nie jest `false` ustawiona jawnie - żądanie jest uważane za pomyślne. Ustaw tę `false` wartość na jeśli operacja została przerwana przez wyjątek lub zwrócony kod wyniku błędu.
 
-W przypadku aplikacji sieci Web Application Insights zdefiniować żądanie jako pomyślne, gdy kod odpowiedzi jest mniejszy niż `400` lub równy `401`. Istnieją jednak przypadki, gdy to domyślne mapowanie nie jest zgodne z semantyką aplikacji. Kod odpowiedzi `404` może wskazywać brak rekordów, które mogą być częścią regularnego przepływu. Może także wskazywać na przerwane łącze. W przypadku uszkodzonych linków można nawet zaimplementować bardziej zaawansowaną logikę. Przerwane linki można oznaczyć jako błędy tylko wtedy, gdy te linki znajdują się w tej samej witrynie przez analizowanie odwołującego adresu URL. Lub Oznacz je jako błędy podczas uzyskiwania dostępu z firmowej aplikacji mobilnej. Podobnie `301` i `302` wskazuje błąd podczas uzyskiwania dostępu z klienta, który nie obsługuje przekierowania.
+W przypadku aplikacji sieci web usługa Application Insights definiuje żądanie `400` jako `401`pomyślne, gdy kod odpowiedzi jest mniejszy lub równy . Istnieją jednak przypadki, gdy to domyślne mapowanie nie pasuje do semantyki aplikacji. Kod `404` odpowiedzi może wskazywać "brak rekordów", które mogą być częścią regularnego przepływu. Może również wskazywać na przerwane łącze. W przypadku przerwanych łączy można nawet zaimplementować bardziej zaawansowaną logikę. Przerwane łącza można oznaczyć jako błędy tylko wtedy, gdy te łącza znajdują się w tej samej witrynie, analizując adres url odsyłający. Lub oznacz je jako błędy, gdy dostęp z aplikacji mobilnej firmy. Podobnie `301` i `302` wskazuje błąd, gdy dostęp z klienta, który nie obsługuje przekierowania.
 
-Częściowo zaakceptowane `206` zawartości mogą wskazywać na niepowodzenie żądania ogólnego. Na przykład, Application Insights punkt końcowy odbiera partie elementów telemetrii jako pojedyncze żądanie. Zwraca `206`, gdy niektóre elementy w partii nie zostały przetworzone pomyślnie. Zwiększenie współczynnika `206` wskazuje problem, który należy zbadać. Podobna logika ma zastosowanie do `207` wiele stanów, w których sukces może być najgorszeniem oddzielnych kodów odpowiedzi.
+Częściowo zaakceptowana `206` zawartość może wskazywać na niepowodzenie ogólnego żądania. Na przykład punkt końcowy usługi Application Insights odbiera partię elementów telemetrycznych jako pojedyncze żądanie. Zwraca, `206` gdy niektóre elementy w partii nie zostały przetworzone pomyślnie. Zwiększenie wskaźnika `206` wskazuje na problem, który należy zbadać. Podobna logika `207` ma zastosowanie do multi-status, gdzie sukces może być najgorszy z oddzielnych kodów odpowiedzi.
 
-Więcej informacji na temat kodu wyniku żądania i kodu stanu można znaleźć w [wpisie w blogu](https://apmtips.com/blog/2016/12/03/request-success-and-response-code/).
+Więcej informacji na temat kodu wyniku żądania i kodu stanu można przeczytać w poście w [blogu](https://apmtips.com/blog/2016/12/03/request-success-and-response-code/).
 
 ## <a name="custom-properties"></a>Właściwości niestandardowe
 
@@ -73,7 +73,7 @@ Więcej informacji na temat kodu wyniku żądania i kodu stanu można znaleźć 
 
 ## <a name="next-steps"></a>Następne kroki
 
-- [Zapisz dane telemetryczne żądania niestandardowego](../../azure-monitor/app/api-custom-events-metrics.md#trackrequest)
-- Zobacz [model danych](data-model.md) dla typów Application Insights i modelu danych.
-- Dowiedz się, jak [skonfigurować aplikację ASP.NET Core](../../azure-monitor/app/asp-net.md) przy użyciu Application Insights.
-- Sprawdź [platformy](../../azure-monitor/app/platforms.md) obsługiwane przez Application Insights.
+- [Zapisanie danych telemetrycznych żądań niestandardowych](../../azure-monitor/app/api-custom-events-metrics.md#trackrequest)
+- Zobacz [model danych](data-model.md) dla typów usługi Application Insights i modelu danych.
+- Dowiedz się, jak [skonfigurować aplikację ASP.NET Core](../../azure-monitor/app/asp-net.md) za pomocą usługi Application Insights.
+- Zapoznaj się z [platformami](../../azure-monitor/app/platforms.md) obsługiwanymi przez usługa Application Insights.
