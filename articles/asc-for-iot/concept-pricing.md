@@ -1,6 +1,6 @@
 ---
-title: Informacje dotyczące Azure Security Center kosztów IoT | Microsoft Docs
-description: Dowiedz się więcej o kosztach związanych z Azure Security Centerami dla IoT i sposobach ich kontrolowania.
+title: Poznaj usługę Azure Security Center pod kątem kosztów IoT| Dokumenty firmy Microsoft
+description: Dowiedz się więcej o kosztach związanych z usługą Azure Security Center dla IoT i o tym, jak nimi kontrolować.
 services: asc-for-iot
 ms.service: asc-for-iot
 documentationcenter: na
@@ -16,69 +16,69 @@ ms.workload: na
 ms.date: 09/27/2019
 ms.author: mlottner
 ms.openlocfilehash: dc9dcbfd00b5205fa5c66e334b30c76d549d8a42
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71348519"
 ---
 # <a name="pricing-and-associated-costs"></a>Cennik i powiązane koszty
 
-W tym artykule wyjaśniono Azure Security Center modelu cen usługi IoT, podsumowano wszystkie powiązane koszty i wyjaśniono, jak zarządzać nimi.
+W tym artykule opisano model cenowy usługi Azure Security Center for IoT, podsumowuje wszystkie związane z tym koszty i wyjaśniono, jak nimi zarządzać.
 
 ## <a name="pricing"></a>Cennik
 
-Model cen usługi IoT Azure Security Center obejmuje dwie części, a opłaty są naliczane po [włączeniu](quickstart-onboard-iot-hub.md) IoT Hub w Azure Security Center dla IoT:
+Model cenowy Usługi Azure Security Center for IoT składa się z dwóch części i jest rozliczany po włączeniu usługi IoT Hub w [usłudze](quickstart-onboard-iot-hub.md) Azure Security Center dla IoT:
 
-- Koszt według wbudowanych funkcji zabezpieczeń urządzeń opartych na analizie IoT Hub dzienników.
+- Koszt po urządzeniu — wbudowane funkcje zabezpieczeń oparte na analizie dzienników usługi IoT Hub.
 
-- Koszt dzięki ulepszonym funkcjom zabezpieczeń opartym na komunikatach zabezpieczeń z urządzeń IoT Edge lub liści.
-
-
-Aby uzyskać więcej informacji, zobacz [Cennik usługi Security Center](https://azure.microsoft.com/pricing/details/security-center/).
-
-## <a name="associated-costs"></a>Powiązane koszty
-
-W Azure Security Center dla IoT są związane koszty, które nie są częścią cen bezpośrednich:
+- Koszt według wiadomości — ulepszone funkcje zabezpieczeń oparte na komunikatach zabezpieczających z usługi IoT Edge lub urządzeń typu liść.
 
 
-- Log Analytics koszty magazynu
+Aby uzyskać więcej informacji, zobacz [Ustalanie cen w centrum zabezpieczeń](https://azure.microsoft.com/pricing/details/security-center/).
 
-Możesz zmniejszyć koszty związane z niektórymi funkcjami rozwiązania. Zrezygnuj z zmiany ustawień.
+## <a name="associated-costs"></a>Koszty powiązane
+
+Usługa Azure Security Center for IoT ma powiązane koszty, które nie są częścią cen bezpośrednich:
+
+
+- Koszty przechowywania usługi Log Analytics
+
+Koszty związane z tym można zmniejszyć, rezygnując z niektórych funkcji rozwiązania. Zrezygnuj, zmieniając ustawienia.
 
 Aby zmienić ustawienia:
 
-1. Otwórz IoT Hub.
+1. Otwórz Centrum IoT.
 
-2. W obszarze **zabezpieczenia**kliknij pozycję **Przegląd**.
+2. W obszarze **Zabezpieczenia**kliknij pozycję **Przegląd**.
 
-3. Kliknij pozycję **Ustawienia**.
+3. Kliknij przycisk **Ustawienia**.
 
-Poniższa tabela zawiera podsumowanie powiązanych kosztów i implikacje poszczególnych opcji.
+Poniższa tabela zawiera podsumowanie powiązanych kosztów i implikacji każdej opcji.
 
 |     | Sposób użycia | Komentarz |
 | --- | --- | --- |
-| **Magazyn Log Analytics** |  |
-| Zalecenia i alerty dotyczące urządzeń| Zalecenia dotyczące zabezpieczeń i alerty wygenerowane przez usługę | Nieopcjonalne |
-| Surowe dane zabezpieczeń| Surowe dane zabezpieczeń z urządzeń IoT zebranych przez agentów zabezpieczeń | Wyłącz _zdarzenia związane z zabezpieczeniami magazynu RAW_ |
+| **Magazyn usługi Log Analytics** |  |
+| Zalecenia dotyczące urządzeń i alerty| Zalecenia dotyczące zabezpieczeń i alerty generowane przez usługę | Nie opcjonalne |
+| Surowe dane zabezpieczające| Surowe dane zabezpieczające z urządzeń IoT, zbierane przez agentów zabezpieczeń | Wyłączanie _zdarzeń zabezpieczeń nieprzetworzonych urządzeń_ |
 |
 
 >[!Important]
-> Rezygnacja z nich ma surowe konsekwencje dla Azure Security Center na potrzeby dostępności funkcji zabezpieczeń IoT. 
+> Rezygnacja ma poważne konsekwencje dla dostępności funkcji zabezpieczeń Usługi Azure Security Center dla IoT. 
   
-| Zrezygnuj | Implikacje |
+| Zrezygnować | Implikacje |
 | --- | --- |
-| _Zbieranie metadanych z przędzy_ | Wyłącz [alerty niestandardowe](quickstart-create-custom-alerts.md) |
-| | Wyłącz zalecenia dotyczące IoT Edge manifest |
+| _Podwójna kolekcja metadanych_ | Wyłączanie [alertów niestandardowych](quickstart-create-custom-alerts.md) |
+| | Wyłączanie zaleceń manifestu ioT Edge |
 | | Wyłączanie zaleceń i alertów opartych na tożsamości urządzenia |
-| _Przechowuj zdarzenia dotyczące zabezpieczeń nieprzetworzonych urządzeń_ | Szczegółowe informacje o zaleceniach bazowych systemu operacyjnego urządzeń nie są dostępne |
-| | Szczegóły dotyczące [](concept-security-alerts.md) postępowania z alertami i [zaleceniami](concept-recommendations.md) nie są dostępne |
+| _Przechowywanie nieprzetworzonych zdarzeń zabezpieczeń urządzeń_ | Szczegóły dotyczące zaleceń dotyczących planu bazowego systemu operacyjnego urządzenia nie są dostępne |
+| | Szczegóły dotyczące dochodzeń w sprawie [wpisów](concept-security-alerts.md) i [rekomendacji](concept-recommendations.md) nie są dostępne |
 |
 
 
-## <a name="see-also"></a>Zobacz także
+## <a name="see-also"></a>Zobacz też
 
-- Uzyskiwanie dostępu do [danych pierwotnych zabezpieczeń](how-to-security-data-access.md)
+- Dostęp do [nieprzetworzonych danych zabezpieczających](how-to-security-data-access.md)
 - [Badanie urządzenia](how-to-investigate-device.md)
-- Omówienie i eksplorowanie [zaleceń dotyczących zabezpieczeń](concept-recommendations.md)
-- Poznawanie i eksplorowanie [alertów zabezpieczeń](concept-security-alerts.md)
+- Zrozumienie i eksplorowanie [zaleceń dotyczących zabezpieczeń](concept-recommendations.md)
+- Opis i eksplorowanie [alertów zabezpieczeń](concept-security-alerts.md)

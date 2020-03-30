@@ -1,7 +1,7 @@
 ---
-title: Wdrażanie zestawów skalowania maszyn wirtualnych przy użyciu protokołu IPv6 na platformie Azure
+title: Wdrażanie zestawów skalowania maszyn wirtualnych z ipv6 na platformie Azure
 titlesuffix: Azure Virtual Network
-description: W tym artykule przedstawiono sposób wdrażania zestawów skalowania maszyn wirtualnych przy użyciu protokołu IPv6 w sieci wirtualnej platformy Azure.
+description: W tym artykule pokazano, jak wdrożyć zestawy skalowania maszyny wirtualnej z IPv6 w sieci wirtualnej platformy Azure.
 services: virtual-network
 documentationcenter: na
 author: KumudD
@@ -14,20 +14,20 @@ ms.workload: infrastructure-services
 ms.date: 10/29/2019
 ms.author: kumud
 ms.openlocfilehash: b90910614bcd86a54198b1a0961a3378427ea87e
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73164993"
 ---
-# <a name="deploy-virtual-machine-scale-sets-with-ipv6-in-azure-preview"></a>Wdrażanie zestawów skalowania maszyn wirtualnych przy użyciu protokołu IPv6 na platformie Azure (wersja zapoznawcza)
+# <a name="deploy-virtual-machine-scale-sets-with-ipv6-in-azure-preview"></a>Wdrażanie zestawów skalowania maszyny wirtualnej z ipv6 na platformie Azure (wersja zapoznawcza)
 
-W tym artykule pokazano, jak wdrożyć zestaw skalowania maszyn wirtualnych z podwójnym stosem (IPv4 + IPv6) z podwójnym zewnętrznym modułem równoważenia obciążenia w sieci wirtualnej platformy Azure. Proces tworzenia zestawu skalowania maszyn wirtualnych z obsługą protokołu IPv6 jest niemal identyczny z procesem tworzenia poszczególnych maszyn wirtualnych opisanych w [tym miejscu](ipv6-configure-standard-load-balancer-template-json.md). Zacznij od kroków, które są podobne do tych opisanych dla poszczególnych maszyn wirtualnych:
-1.  Tworzenie publicznych adresów IP IPv4 i IPv6.
-2.  Utwórz moduł równoważenia obciążenia podwójnego stosu.  
-3.  Utwórz reguły sieciowej grupy zabezpieczeń (sieciowej grupy zabezpieczeń).  
+W tym artykule pokazano, jak wdrożyć zestaw skalowania maszyny wirtualnej z dwoma stosami (IPv4 + IPv6) z podwójnym modułem równoważenia obciążenia zewnętrznego stosu w sieci wirtualnej platformy Azure. Proces tworzenia zestawu skalowania maszyny wirtualnej obsługującej iPv6 jest prawie identyczny z procesem tworzenia poszczególnych maszyn wirtualnych opisanych [w tym miejscu.](ipv6-configure-standard-load-balancer-template-json.md) Kroki, które są podobne do tych opisanych dla poszczególnych maszyn wirtualnych:
+1.  Tworzenie publicznych usług IPv4 i IPv6.
+2.  Utwórz moduł równoważenia obciążenia z dwoma stosami.  
+3.  Tworzenie reguł sieciowej grupy zabezpieczeń (NSG).  
 
-Jedyną czynnością, która różni się od poszczególnych maszyn wirtualnych, jest utworzenie konfiguracji interfejsu sieciowego (NIC) używającej zasobu zestawu skalowania maszyn wirtualnych: networkProfile/networkInterfaceConfigurations. Struktura JSON jest podobna do tego obiektu Microsoft. Network/networkInterfaces używanego w przypadku poszczególnych maszyn wirtualnych z dodaniem ustawienia karty sieciowej i elementu IpConfiguration protokołu IPv4 jako podstawowego interfejsu przy użyciu atrybutu **"Primary": true** , jak pokazano w Poniższy przykład:
+Jedynym krokiem, który różni się od poszczególnych maszyn wirtualnych jest utworzenie konfiguracji interfejsu sieciowego (NIC), który używa zasobu zestawu skalowania maszyny wirtualnej: networkProfile/networkInterfaceConfigurations. Struktura JSON jest podobna do obiektu Microsoft.Network/networkInterfaces używanego dla poszczególnych maszyn wirtualnych z dodatkiem ustawiania karty sieciowej i konfiguracji IpConfiguration IPv4 jako interfejsu podstawowego przy użyciu **atrybutu "primary": true,** jak pokazano w poniższym przykładzie:
 
 ```json
           "networkProfile": {
@@ -89,9 +89,9 @@ Jedyną czynnością, która różni się od poszczególnych maszyn wirtualnych,
 ```
 
 
-## <a name="sample-virtual-machine-scale-set-template-json"></a>Przykładowy kod JSON szablonu zestawu skalowania maszyn wirtualnych
+## <a name="sample-virtual-machine-scale-set-template-json"></a>Przykładowy szablon zestawu skalowania maszyny wirtualnej JSON
 
-Aby wdrożyć zestaw skalowania maszyn wirtualnych z podwójnym stosem (IPv4 + IPv6) z podwójnym szablonem Load Balancer zewnętrzna i widok sieci wirtualnej w [tym miejscu](https://azure.microsoft.com/resources/templates/ipv6-in-vnet-vmss/).
+Aby wdrożyć podwójny stos (IPv4 + IPv6) Virtual Machine Scale Set z podwójnym stosem zewnętrznego modułu równoważenia obciążenia i przykładowego szablonu widoku sieci wirtualnej [w tym miejscu](https://azure.microsoft.com/resources/templates/ipv6-in-vnet-vmss/).
 ## <a name="next-steps"></a>Następne kroki
 
-Aby dowiedzieć się więcej o obsłudze protokołu IPv6 w sieciach wirtualnych platformy Azure, zobacz [co to jest protokół IPv6 dla platformy azure Virtual Network?](ipv6-overview.md).
+Aby dowiedzieć się więcej o obsłudze IPv6 w sieciach wirtualnych platformy Azure, zobacz [Co to jest IPv6 dla usługi Azure Virtual Network?](ipv6-overview.md).

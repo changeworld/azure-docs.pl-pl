@@ -1,6 +1,6 @@
 ---
-title: 'Azure ExpressRoute: wymagania wstępne'
-description: Ta strona zawiera listę wymagań, które należy spełnić przed zamówieniem obwodu usługi Azure ExpressRoute. Zawiera on listę kontrolną.
+title: 'Azure ExpressRoute: Wymagania wstępne'
+description: Ta strona zawiera listę wymagań, które należy spełnić przed zamówieniem obwodu usługi Azure ExpressRoute. Zawiera listę kontrolną.
 services: expressroute
 author: cherylmc
 ms.service: expressroute
@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 09/18/2019
 ms.author: cherylmc
 ms.openlocfilehash: a72eba9bde0745e66bdf8e7efd8eaec7d6a0b186
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74083357"
 ---
 # <a name="expressroute-prerequisites--checklist"></a>Wymagania wstępne usługi ExpressRoute i lista kontrolna
@@ -20,8 +20,8 @@ Aby połączyć się z usługami w chmurze firmy Microsoft za pomocą usługi Ex
 [!INCLUDE [expressroute-office365-include](../../includes/expressroute-office365-include.md)]
 
 ## <a name="azure-account"></a>Konto platformy Azure
-* Prawidłowe i aktywne konto platformy Microsoft Azure. To konto jest wymagane do skonfigurowania obwodu usługi ExpressRoute. Obwody usługi ExpressRoute to zasoby w ramach subskrypcji platformy Azure. Subskrypcja platformy Azure jest wymagana, nawet jeśli łączność jest ograniczona do usług w chmurze firmy Microsoft, takich jak Office 365.
-* Aktywna subskrypcja usługi Office 365 (w przypadku korzystania z usług Office 365). Aby uzyskać więcej informacji, zobacz sekcję dotyczącą wymagań związanych z pakietem Office 365 w tym artykule.
+* Prawidłowe i aktywne konto platformy Microsoft Azure. To konto jest wymagane do skonfigurowania obwodu usługi ExpressRoute. Obwody usługi ExpressRoute to zasoby w ramach subskrypcji platformy Azure. Subskrypcja platformy Azure jest wymagana, nawet jeśli łączność jest ograniczona do usług w chmurze innych niż Azure, takich jak Office 365.
+* Aktywna subskrypcja usługi Office 365 (w przypadku korzystania z usług Office 365). Więcej informacji znajduje się w tym artykule w sekcji dotyczącej określonych wymagań dotyczących usługi Office 365.
 
 ## <a name="connectivity-provider"></a>Dostawca połączenia
 
@@ -29,8 +29,8 @@ Aby połączyć się z usługami w chmurze firmy Microsoft za pomocą usługi Ex
 * Jeśli dostawca nie jest partnerem połączenia usługi ExpressRoute, można nadal połączyć się z chmurą firmy Microsoft za pośrednictwem [dostawcy serwera Exchange w chmurze](expressroute-locations.md#connectivity-through-exchange-providers).
 
 ## <a name="network-requirements"></a>Wymagania dotyczące sieci
-* **Nadmiarowość w poszczególnych lokalizacjach komunikacji równorzędnej**: Firma Microsoft wymaga skonfigurowania nadmiarowych sesji protokołu BGP między routerami firmy Microsoft i routerami komunikacji równorzędnej w każdym obwodzie usługi ExpressRoute (nawet jeśli istnieje tylko [jedno połączenie fizyczne z wymianą w chmurze](expressroute-faqs.md#onep2plink)).
-* **Nadmiarowość odzyskiwania po awarii**: Firma Microsoft zdecydowanie zaleca skonfigurowanie co najmniej dwóch obwodów usługi ExpressRoute w różnych lokalizacjach komunikacji równorzędnej w celu uniknięcia Single Point of Failure.
+* **Nadmiarowość w każdej lokalizacji komunikacji równorzędnej:** Firma Microsoft wymaga, aby nadmiarowe sesje BGP były łączony między routerami firmy Microsoft a routerami komunikacji równorzędnej w każdym obwodzie usługi ExpressRoute (nawet jeśli masz tylko [jedno fizyczne połączenie z giełdą w chmurze).](expressroute-faqs.md#onep2plink)
+* **Nadmiarowość odzyskiwania po awarii:** Firma Microsoft zdecydowanie zaleca skonfigurowanie co najmniej dwóch obwodów usługi ExpressRoute w różnych lokalizacjach komunikacji równorzędnej, aby uniknąć pojedynczego punktu awarii.
 * **Routing**: w zależności od sposobu połączenia z chmurą firmy Microsoft użytkownik lub jego dostawca musi skonfigurować sesje protokołu BGP oraz nimi zarządzać na potrzeby [domen routingu](expressroute-circuit-peerings.md). Niektórzy dostawcy połączenia Ethernet lub dostawcy usług serwera Exchange w chmurze mogą oferować zarządzanie przy użyciu protokołu BGP w ramach usługi dodatkowej.
 * **Translator adresów sieciowych**: firma Microsoft akceptuje tylko publiczne adresy IP za pośrednictwem komunikacji równorzędnej firmy Microsoft. W przypadku korzystania z prywatnych adresów IP w sieci lokalnej użytkownik lub jego dostawca muszą przełożyć prywatne adresy IP na publiczne [przy użyciu translatora adresów sieciowych](expressroute-nat.md).
 * **Technologia QoS**: program Skype dla firm oferuje różne usługi (np. połączenia głosowe, wideo, usługi tekstowe), które wymagają zróżnicowanej obsługi w technologii QoS. Użytkownik i jego dostawca powinni postępować zgodnie z [wymaganiami technologii QoS](expressroute-qos.md).
@@ -49,7 +49,7 @@ Jeśli zamierzasz włączyć usługę Office 365 w ramach usługi ExpressRoute, 
 * [Usługa ExpressRoute w usłudze Office 365 — szkoleniowe filmy wideo dla zaawansowanych](https://channel9.msdn.com/series/aer/)
 
 ## <a name="next-steps"></a>Następne kroki
-* Więcej informacji na temat usługi ExpressRoute znajduje się w artykule [ExpressRoute FAQ](expressroute-faqs.md) (Usługa ExpressRoute — często zadawane pytania).
+* Aby uzyskać więcej informacji na temat usługi ExpressRoute, zobacz [często zadawane pytania dotyczące usługi ExpressRoute](expressroute-faqs.md).
 * Znajdź dostawcę połączenia usługi ExpressRoute. Zobacz artykuł [ExpressRoute partners and peering locations](expressroute-locations.md) (Partnerzy i lokalizacje komunikacji równorzędnej usługi ExpressRoute).
 * Zapoznaj się z wymaganiami dotyczącymi [routingu](expressroute-routing.md), [translatora adresów sieciowych](expressroute-nat.md) i [technologii QoS](expressroute-qos.md).
 * Skonfiguruj połączenie usługi ExpressRoute.

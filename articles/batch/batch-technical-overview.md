@@ -15,10 +15,10 @@ ms.date: 01/19/2018
 ms.author: markscu
 ms.custom: mvc
 ms.openlocfilehash: 7ca2a5e91a0ec0d765e106baca20f135996bc26e
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77022804"
 ---
 # <a name="what-is-azure-batch"></a>Co to jest Azure Batch?
@@ -29,7 +29,7 @@ Deweloperzy mogą używać usługi Batch jako usługi platformy do tworzenia apl
 
 Za korzystanie z usługi Batch nie są naliczane dodatkowe opłaty. Płaci się wyłącznie za wykorzystane zasoby bazowe, takie jak maszyny wirtualne, magazyn i zasoby sieciowe.
 
-Aby uzyskać porównanie między usługą Batch i innymi opcjami rozwiązania HPC na platformie Azure, zobacz [wydajność obliczeń o wysokiej wydajności (HPC) na platformie Azure](https://docs.microsoft.com/azure/architecture/topics/high-performance-computing/).
+Aby uzyskać porównanie między partią a innymi opcjami rozwiązania HPC na platformie Azure, zobacz [hpc (High Performance Computing) na platformie Azure.](https://docs.microsoft.com/azure/architecture/topics/high-performance-computing/)
 
 ## <a name="run-parallel-workloads"></a>Uruchamianie równoległych obciążeń
 Z usługą Batch działają dobrze obciążenia wewnętrznie równoległe (zwane również „zaskakująco równoległymi”). Obciążenia wewnętrznie równoległe to te, w przypadku których aplikacje mogą być uruchamiane równolegle i każde wystąpienie wykonuje część pracy. Aplikacje w trakcie wykonywania mogą uzyskiwać dostęp do niektórych wspólnych danych, ale nie komunikują się z innymi wystąpieniami aplikacji. Z tego względu obciążenia wewnętrznie równoległe mogą być uruchamiane na dużą skalę, zależną od ilości zasobów obliczeniowych dostępnych do jednoczesnego uruchamiania aplikacji.
@@ -63,7 +63,7 @@ Usługa Azure Batch cechuje się również możliwościami wyższego poziomu zal
 Zadania usługi Batch można też uruchamiać jako część większego przepływu pracy platformy Azure do przekształcania danych, który jest zarządzany przez narzędzia takie jak [Azure Data Factory](../data-factory/transform-data-using-dotnet-custom-activity.md).
 
 
-## <a name="how-it-works"></a>Zasady działania
+## <a name="how-it-works"></a>Jak to działa
 Typowy scenariusz korzystania z usługi Batch obejmuje skalowanie w poziomie pracy wewnętrznie równoległej — np. renderowania obrazów dla scen 3D — w puli węzłów obliczeniowych. Ta pula węzłów obliczeniowych może być „farmą renderowania”, która udostępnia dziesiątki, setki lub nawet tysiące rdzeni do zadania renderowania.
 
 Na poniższym diagramie przedstawiono kroki typowego przepływu pracy usługi Batch, w którym aplikacja kliencka lub usługa hostowana używa usługi Batch do uruchamiania obciążenia równoległego.
@@ -71,14 +71,14 @@ Na poniższym diagramie przedstawiono kroki typowego przepływu pracy usługi Ba
 ![Przewodnik po rozwiązaniu usługi Batch](./media/batch-technical-overview/tech_overview_03.png)
 
 
-|Czynność  |Opis  |
+|Krok  |Opis  |
 |---------|---------|
-|1. Przekaż **pliki wejściowe** i **aplikacje** , aby przetworzyć te pliki na konto usługi Azure Storage.     |Pliki wejściowe mogą zawierać dowolne dane, które aplikacja może przetworzyć, np. dane modelowania finansowego lub pliki wideo do transkodowania. Pliki aplikacji mogą obejmować skrypty lub aplikacje przetwarzające dane, na przykład transkoder multimediów.|
-|2. Utwórz **pulę** wsadową węzłów obliczeniowych na koncie wsadowym, **zadanie** uruchamiania obciążenia puli i **zadania** podrzędne w ramach zadania.     | Węzły puli to maszyny wirtualne wykonujące zadania podrzędne. Określ właściwości, takie jak liczba i rozmiar węzłów, obraz maszyny wirtualnej z systemem Windows lub Linux oraz aplikacja do zainstalowania, gdy węzły zostaną przyłączone do puli. Zarządzaj kosztem i rozmiarem puli, używając [maszyn wirtualnych o niskim priorytecie](batch-low-pri-vms.md) lub [automatycznego skalowania](batch-automatic-scaling.md) liczby węzłów w miarę zmian obciążenia. <br/><br/>Po dodaniu podzadań do zadania usługa Batch automatycznie planuje wykonanie podzadań w węzłach obliczeniowych w puli. Każde podzadanie używa przekazanej aplikacji w celu przetwarzania plików wejściowych. |
-|3. pobieranie **plików wejściowych** i **aplikacji** do partii     |Zanim każde zadanie podrzędne zostanie wykonane, może pobrać dane wejściowe, które ma przetworzyć, do przypisanego węzła obliczeniowego. Jeśli aplikacja jeszcze nie została zainstalowana na węzłach puli, można ją pobrać w tym miejscu. Po zakończeniu operacji pobierania z usługi Azure Storage zadanie podrzędne jest wykonywane na przypisanym węźle.|
-|4. Monitoruj **wykonywanie zadań**     |Po uruchomieniu zadań podrzędnych wykonaj zapytanie do usługi Batch w celu monitorowania postępu zadania oraz jego zadań podrzędnych. Aplikacja lub usługa kliencka komunikuje się z usługą Batch za pośrednictwem protokołu HTTPS. Ponieważ monitorowane mogą być tysiące podzadań uruchomionych w ramach tysięcy węzłów obliczeniowych, upewnij się, że [zapytanie względem usługi Batch jest wydajne](batch-efficient-list-queries.md).|
-|5. przekazywanie **danych wyjściowych zadania**     |Gdy podzadania zostaną ukończone, mogą przekazać dane wynikowe do usługi Azure Storage. Możesz również pobrać pliki bezpośrednio z systemu plików w ramach węzła obliczeniowego.|
-|6. pobieranie **plików wyjściowych**     |Jeśli podczas monitorowania zostanie wykryte, że zadania podrzędne w zadaniu zostały ukończone, aplikacja lub usługa kliencka może pobrać dane wyjściowe do dalszego przetwarzania.|
+|1. Przekaż **pliki wejściowe** i **aplikacje** do przetwarzania tych plików na konto usługi Azure Storage.     |Pliki wejściowe mogą zawierać dowolne dane, które aplikacja może przetworzyć, np. dane modelowania finansowego lub pliki wideo do transkodowania. Pliki aplikacji mogą obejmować skrypty lub aplikacje przetwarzające dane, na przykład transkoder multimediów.|
+|2. Utwórz **pulę** wsadową węzłów obliczeniowych na koncie usługi Batch, **zadanie** do uruchomienia obciążenia w puli i **zadania** w zadaniu.     | Węzły puli to maszyny wirtualne wykonujące zadania podrzędne. Określ właściwości, takie jak liczba i rozmiar węzłów, obraz maszyny wirtualnej z systemem Windows lub Linux oraz aplikacja do zainstalowania, gdy węzły zostaną przyłączone do puli. Zarządzaj kosztem i rozmiarem puli, używając [maszyn wirtualnych o niskim priorytecie](batch-low-pri-vms.md) lub [automatycznego skalowania](batch-automatic-scaling.md) liczby węzłów w miarę zmian obciążenia. <br/><br/>Po dodaniu podzadań do zadania usługa Batch automatycznie planuje wykonanie podzadań w węzłach obliczeniowych w puli. Każde podzadanie używa przekazanej aplikacji w celu przetwarzania plików wejściowych. |
+|3. Pobierz **pliki wejściowe** i **aplikacje** do partii     |Zanim każde zadanie podrzędne zostanie wykonane, może pobrać dane wejściowe, które ma przetworzyć, do przypisanego węzła obliczeniowego. Jeśli aplikacja jeszcze nie została zainstalowana na węzłach puli, można ją pobrać w tym miejscu. Po zakończeniu operacji pobierania z usługi Azure Storage zadanie podrzędne jest wykonywane na przypisanym węźle.|
+|4. Monitorowanie **wykonywania zadań**     |Po uruchomieniu zadań podrzędnych wykonaj zapytanie do usługi Batch w celu monitorowania postępu zadania oraz jego zadań podrzędnych. Aplikacja lub usługa kliencka komunikuje się z usługą Batch za pośrednictwem protokołu HTTPS. Ponieważ monitorowane mogą być tysiące podzadań uruchomionych w ramach tysięcy węzłów obliczeniowych, upewnij się, że [zapytanie względem usługi Batch jest wydajne](batch-efficient-list-queries.md).|
+|5. Przesyłanie **danych wyjściowych zadań**     |Gdy podzadania zostaną ukończone, mogą przekazać dane wynikowe do usługi Azure Storage. Możesz również pobrać pliki bezpośrednio z systemu plików w ramach węzła obliczeniowego.|
+|6. Pobieranie **plików wyjściowych**     |Jeśli podczas monitorowania zostanie wykryte, że zadania podrzędne w zadaniu zostały ukończone, aplikacja lub usługa kliencka może pobrać dane wyjściowe do dalszego przetwarzania.|
 
 
 

@@ -1,6 +1,6 @@
 ---
-title: Używanie portalu do powiadomień o konserwacji
-description: Wyświetlaj powiadomienia dotyczące konserwacji maszyn wirtualnych działających na platformie Azure i uruchamiaj samoobsługową konserwację przy użyciu portalu.
+title: Użyj portalu do powiadomień o konserwacji
+description: Wyświetl powiadomienia o konserwacji dla maszyn wirtualnych uruchomionych na platformie Azure i rozpocznij samoobsługową konserwację przy użyciu portalu.
 author: shants123
 ms.service: virtual-machines
 ms.workload: infrastructure-services
@@ -8,65 +8,65 @@ ms.topic: article
 ms.date: 11/19/2019
 ms.author: shants
 ms.openlocfilehash: 46fcc825ac49f0181ac74e9c3e2deaea577f3329
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77115743"
 ---
-# <a name="handling-planned-maintenance-notifications-using-the-portal"></a>Obsługa powiadomień dotyczących planowanej konserwacji przy użyciu portalu
+# <a name="handling-planned-maintenance-notifications-using-the-portal"></a>Obsługa powiadomień o planowanej konserwacji za pomocą portalu
 
-**Ten artykuł ma zastosowanie do maszyn wirtualnych z systemami Linux i Windows.**
+**Ten artykuł dotyczy maszyn wirtualnych z systemem Linux i Windows.**
 
-Po zaplanowaniu [planowanej fazy konserwacji](maintenance-notifications.md) możesz sprawdzić listę maszyn wirtualnych, których dotyczy problem. 
+Po zaplanowaniu [planowanej fali konserwacji](maintenance-notifications.md) można sprawdzić listę maszyn wirtualnych, których dotyczy problem. 
 
-Możesz użyć Azure Portal i wyszukać maszyny wirtualne zaplanowane do konserwacji.
+Możesz użyć witryny Azure portal i poszukać maszyn wirtualnych zaplanowanych do konserwacji.
 
-1. Zaloguj się do [Azure portal](https://portal.azure.com).
+1. Zaloguj się do [Portalu Azure](https://portal.azure.com).
 
-2. W lewym okienku nawigacji kliknij pozycję **Virtual Machines**.
+2. W lewej nawigacji kliknij pozycję **Maszyny wirtualne**.
 
-3. W okienku Virtual Machines wybierz przycisk **Edytuj kolumny** , aby otworzyć listę dostępnych kolumn.
+3. W okienku Maszyny wirtualne wybierz przycisk **Edytuj kolumny,** aby otworzyć listę dostępnych kolumn.
 
-4. Wybierz i Dodaj następujące kolumny:
+4. Zaznacz i dodaj następujące kolumny:
 
-   **Stan konserwacji**: pokazuje stan konserwacji maszyny wirtualnej. Oto potencjalne wartości:
+   **Stan konserwacji:** Pokazuje stan konserwacji maszyny Wirtualnej. Poniżej przedstawiono wartości potencjalne:
       
       | Wartość | Opis |
       |-------|-------------|
-      | Rozpocznij teraz | Maszyna wirtualna znajduje się w oknie obsługi samoobsługowej, która umożliwia samodzielne zainicjowanie obsługi. Zobacz poniżej, jak uruchomić konserwację na maszynie wirtualnej. | 
-      | Zaplanowana | Maszyna wirtualna jest zaplanowana do konserwacji bez opcji umożliwiającej samodzielne zainicjowanie konserwacji. Aby dowiedzieć się więcej o oknie obsługi, wybierz okno konserwacji zaplanowane w tym widoku lub kliknij maszynę wirtualną. | 
-      | Już Zaktualizowano | Maszyna wirtualna została już zaktualizowana i w tej chwili nie są wymagane żadne dalsze akcje. | 
-      | Spróbuj ponownie później | Inicjowanie obsługi nie powiodło się. Będzie można użyć opcji konserwacji samoobsługowej w późniejszym czasie. | 
-      | Ponów próbę teraz | Można ponowić próbę wykonania wcześniej nieudanej konserwacji. | 
-      | - | Maszyna wirtualna nie jest częścią planowanej fazy obsługi. |
+      | Rozpocznij teraz | Maszyna wirtualna znajduje się w oknie samoobsługowej konserwacji, które umożliwia samodzielne inicjowanie konserwacji. Zobacz poniżej, jak rozpocząć konserwację maszyny Wirtualnej. | 
+      | Zaplanowana | Maszyna wirtualna jest zaplanowana do konserwacji bez opcji umożliwiającej samodzielne zainicjowanie konserwacji. O oknie konserwacji można dowiedzieć się, wybierając okno Konserwacja — zaplanowane w tym widoku lub klikając maszynę wirtualną. | 
+      | Już zaktualizowany | Maszyna wirtualna jest już zaktualizowana i w tej chwili nie są wymagane żadne dalsze działania. | 
+      | Ponów próbę później | Rozpoczęto konserwację bez powodzenia. Będziesz mógł skorzystać z opcji samoobsługowej konserwacji w późniejszym czasie. | 
+      | Ponów próbę teraz | Można ponowić próbę wcześniej nieudanej samodzielnej konserwacji. | 
+      | - | Maszyna wirtualna nie jest częścią planowanej fali konserwacji. |
       
 
-   **Konserwacja — okno**samoobsługowe: pokazuje przedział czasu, w którym można uruchomić konserwację na maszynach wirtualnych.
+   **Konserwacja — okno samoobsługowe**: Pokazuje przedział czasu, kiedy można samodzielnie rozpocząć konserwację maszyn wirtualnych.
    
-   **Konserwacja — okno zaplanowane**: pokazuje przedział czasu, w którym platforma Azure będzie obsługiwać maszynę wirtualną w celu ukończenia konserwacji. 
+   **Konserwacja — zaplanowane okno:** Pokazuje przedział czasu, kiedy platforma Azure będzie utrzymywać maszynę wirtualną w celu zakończenia konserwacji. 
 
 
 
 ## <a name="notification-and-alerts-in-the-portal"></a>Powiadomienia i alerty w portalu
 
-Platforma Azure komunikuje harmonogram planowanej konserwacji, wysyłając wiadomość e-mail do właściciela subskrypcji i grupy współwłaścicieli. Możesz dodać kolejnych adresatów i kanałów do tej komunikacji, tworząc alerty dzienników aktywności platformy Azure. Aby uzyskać więcej informacji, zobacz [tworzenie alertów dziennika aktywności w powiadomieniach usługi](../azure-monitor/platform/alerts-activity-log-service-notifications.md).
+Platforma Azure komunikuje harmonogram planowanej konserwacji, wysyłając wiadomość e-mail do właściciela subskrypcji i grupy współwłaścicieli. Można dodać dodatkowych adresatów i kanałów do tej komunikacji, tworząc alerty dziennika aktywności platformy Azure. Aby uzyskać więcej informacji, zobacz [Tworzenie alertów dziennika aktywności w powiadomieniach o usługach](../azure-monitor/platform/alerts-activity-log-service-notifications.md).
 
-Upewnij się, że **Typ zdarzenia** jest ustawiony **jako planowana konserwacja**i **usługi** jako **Virtual Machine Scale Sets** i/lub **Virtual Machines**.
+Upewnij się, że **typ zdarzenia** został ustawiony jako **Planowana konserwacja**i **Usługi** jako **zestawy skalowania maszyny wirtualnej** i/lub **maszyny wirtualne**.
 
-## <a name="start-maintenance-on-your-vm-from-the-portal"></a>Rozpocznij konserwację na maszynie wirtualnej z poziomu portalu
+## <a name="start-maintenance-on-your-vm-from-the-portal"></a>Rozpocznij konserwację maszyny Wirtualnej z portalu
 
-Podczas przeglądania szczegółowych informacji o maszynie wirtualnej będzie można zobaczyć więcej szczegółów związanych z konserwacją.  
-W górnej części widoku Szczegóły maszyny wirtualnej zostanie dodana nowa wstążka powiadomień, jeśli maszyna wirtualna zostanie uwzględniona w planowanej fazie konserwacji. Ponadto nowa opcja jest dodawana, aby rozpocząć konserwację, jeśli jest to możliwe. 
+Podczas patrzenia na szczegóły maszyny Wirtualnej, będzie można zobaczyć więcej szczegółów związanych z konserwacją.  
+W górnej części widoku szczegółów maszyny Wirtualnej zostanie dodana nowa wstążka powiadomień, jeśli maszyna wirtualna jest uwzględniona w planowanej fali konserwacji. Ponadto w miarę możliwości dodawana jest nowa opcja, aby rozpocząć konserwację. 
 
 
-Kliknij powiadomienie o konserwacji, aby wyświetlić stronę obsługa z dodatkowymi szczegółami dotyczącymi planowanej konserwacji. Z tego miejsca będzie można **rozpocząć konserwację** na maszynie wirtualnej.
+Kliknij powiadomienie o konserwacji, aby wyświetlić stronę konserwacji z bardziej szczegółowych informacji na temat planowanej konserwacji. Stamtąd będzie można rozpocząć **konserwację** na maszynie Wirtualnej.
 
-Po rozpoczęciu konserwacji maszyna wirtualna zostanie utrzymana, a stan konserwacji zostanie zaktualizowany w celu odzwierciedlenia wyniku w ciągu kilku minut.
+Po uruchomieniu konserwacji maszyna wirtualna zostanie zachowana, a stan konserwacji zostanie zaktualizowany, aby odzwierciedlić wynik w ciągu kilku minut.
 
-Jeśli pominięto okno samoobsługowe, nadal będzie można zobaczyć okno, gdy maszyna wirtualna będzie utrzymywana na platformie Azure. 
+Jeśli pominięto okno samoobsługi, nadal będzie można zobaczyć okno, gdy maszyna wirtualna będzie obsługiwana przez platformę Azure. 
 
 
 ## <a name="next-steps"></a>Następne kroki
 
-Możesz również obsługiwać planowaną konserwację przy użyciu [interfejsu wiersza polecenia platformy Azure](maintenance-notifications-cli.md) lub [programu PowerShell](maintenance-notifications-powershell.md).
+Można również obsługiwać planowaną konserwację przy użyciu [interfejsu wiersza polecenia platformy Azure](maintenance-notifications-cli.md) lub programu [PowerShell](maintenance-notifications-powershell.md).

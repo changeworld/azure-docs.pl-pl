@@ -1,5 +1,5 @@
 ---
-title: Przesyłanie przepływu pracy przy użyciu danych wejściowych plików BAM
+title: Przesyłanie przepływu pracy przy użyciu wprowadzania pliku BAM
 titleSuffix: Microsoft Genomics
 description: W tym artykule pokazano, jak przesłać przepływ pracy do usługi Microsoft Genomics, jeśli plik wejściowy jest pojedynczym plikiem BAM.
 services: genomics
@@ -10,18 +10,18 @@ ms.service: genomics
 ms.topic: conceptual
 ms.date: 12/07/2017
 ms.openlocfilehash: 5145aa0ffdc4095f178a214f63433e5bcece83b6
-ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72249162"
 ---
 # <a name="submit-a-workflow-using-a-bam-file-input"></a>Przesyłanie przepływu pracy przy użyciu pliku wejściowego BAM
 
-W tym artykule pokazano, jak przesłać przepływ pracy do usługi Microsoft Genomics, jeśli plik wejściowy jest pojedynczym plikiem BAM. W tym temacie założono, że użytkownik zainstalował i uruchomił klienta `msgen` oraz że zna sposób korzystania z usługi Azure Storage. Jeśli przepływ pracy został pomyślnie przesłany przy użyciu dostarczonych przykładowych danych, możesz kontynuować pracę z tym artykułem. 
+W tym artykule pokazano, jak przesłać przepływ pracy do usługi Microsoft Genomics, jeśli plik wejściowy jest pojedynczym plikiem BAM. W tym temacie założono, że użytkownik zainstalował i uruchomił klienta `msgen` oraz że zna sposób korzystania z usługi Azure Storage. Jeśli pomyślnie przesłano przepływ pracy przy użyciu podanych przykładowych danych, można przystąpić do kontynuowania tego artykułu. 
 
 ## <a name="set-up-upload-your-bam-file-to-azure-storage"></a>Konfiguracja: przekazywanie pliku BAM do magazynu platformy Azure
-Załóżmy, że mamy jeden plik BAM, *reads.bam*, oraz że przekazano go do konta magazynu *myaccount* na platformie Azure jako obiekt **https://<span></span>myaccount.blob.core<span></span>.windows<span></span>.net<span></span>/inputs/reads<span></span>.bam<span></span>** . Masz adres URL interfejsu API i klucz dostępu. Chcesz uzyskać dane wyjściowe w lokalizacji **https://<span></span>myaccount.blob.core<span></span>.windows<span></span>.net<span></span>/outputs<span></span>** .
+Załóżmy, że mamy jeden plik BAM, *reads.bam*, oraz że przekazano go do konta magazynu *myaccount* na platformie Azure jako obiekt **https://<span></span>myaccount.blob.core<span></span>.windows<span></span>.net<span></span>/inputs/reads<span></span>.bam<span></span>**. Masz adres URL interfejsu API i klucz dostępu. Chcesz uzyskać dane wyjściowe w lokalizacji **https://<span></span>myaccount.blob.core<span></span>.windows<span></span>.net<span></span>/outputs<span></span>**.
 
 
 

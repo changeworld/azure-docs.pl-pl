@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 11/28/2018
 ms.author: memildin
 ms.openlocfilehash: a25bbd0f14d38a70624dbc58755c0e814753a181
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77604183"
 ---
 # <a name="azure-security-center-data-security"></a>Azure Security Center — bezpieczeństwo danych
@@ -47,11 +47,11 @@ Usługa Azure Security Center analizuje dane z następujących źródeł, aby za
 
 | Lokalizacja geograficzna maszyny wirtualnej                              | Lokalizacja geograficzna obszaru roboczego |
 |-------------------------------------|---------------|
-| Stany Zjednoczone, Brazylia, Afryka Południowa | Stany Zjednoczone |
+| Stany Zjednoczone, Brazylia, Republika Południowej Afryki | Stany Zjednoczone |
 | Kanada                              | Kanada        |
-| Europa (z wyjątkiem Zjednoczonego Królestwa)   | Europa        |
+| Europa (z wyłączeniem Zjednoczonego Królestwa)   | Europa        |
 | Wielka Brytania                      | Wielka Brytania |
-| Azja (z wyjątkiem Indii, Japonia, Korea, Chiny)   | Azja i Pacyfik  |
+| Azja (z wyłączeniem Indii, Japonii, Korei, Chin)   | Azja i Pacyfik  |
 | Korea                              | Azja i Pacyfik  |
 | Indie                               | Indie         |
 | Japonia                               | Japonia         |
@@ -80,8 +80,8 @@ Jeśli jest używana warstwa Bezpłatna usługi Azure Security Center, zbieranie
 
 Klienci mogą używać danych związanych z usługą Security Center pochodzących z różnych strumieni danych, jak pokazano poniżej:
 
-* **Aktywność platformy Azure**: wszystkie alerty zabezpieczeń, zatwierdzone Security Center żądań [just-in-Time](https://docs.microsoft.com/azure/security-center/security-center-just-in-time) oraz wszystkie alerty wygenerowane przez [adaptacyjne kontrolki aplikacji](https://docs.microsoft.com/azure/security-center/security-center-adaptive-application).
-* **Dzienniki Azure monitor**: wszystkie alerty zabezpieczeń.
+* **Działanie platformy Azure:** wszystkie alerty zabezpieczeń, zatwierdzone żądania [Just-in-time](https://docs.microsoft.com/azure/security-center/security-center-just-in-time) usługi Security Center i wszystkie alerty generowane przez [adaptacyjne formanty aplikacji.](https://docs.microsoft.com/azure/security-center/security-center-adaptive-application)
+* **Dzienniki usługi Azure Monitor**: wszystkie alerty zabezpieczeń.
 
 
 > [!NOTE]
@@ -90,8 +90,8 @@ Klienci mogą używać danych związanych z usługą Security Center pochodzący
 ## <a name="see-also"></a>Zobacz też
 W tym dokumencie wyjaśniono, jak zarządzane i chronione są dane w usłudze Azure Security Center. Aby dowiedzieć się więcej na temat usługi Azure Security Center, zobacz:
 
-* [Przewodnik planowania i obsługi usługi Azure Security Center](security-center-planning-and-operations-guide.md)— informacje na temat planowania i zagadnień projektowych podczas wdrażania usługi Azure Security Center.
-* [Monitorowanie kondycji zabezpieczeń w usłudze Azure Security Center](security-center-monitoring.md) — informacje na temat monitorowania kondycji zasobów platformy Azure
-* [Reagowanie na alerty zabezpieczeń i zarządzanie nimi w usłudze Azure Security Center](security-center-managing-and-responding-alerts.md) — informacje na temat reagowania na alerty zabezpieczeń i zarządzania nimi
-* [Monitorowanie rozwiązań partnerskich w usłudze Azure Security Center](security-center-partner-solutions.md) — informacje na temat monitorowania stanu kondycji rozwiązań partnerskich.
-* [Blog Azure Security](https://blogs.msdn.com/b/azuresecurity/) — wpisy na blogu dotyczące zabezpieczeń i zgodności platformy Azure
+* [Przewodnik planowania i operacji usługi Azure Security Center](security-center-planning-and-operations-guide.md) — dowiedz się, jak zaplanować i zrozumieć zagadnienia dotyczące projektu, aby przyjąć usługę Azure Security Center.
+* [Monitorowanie kondycji zabezpieczeń w usłudze Azure Security Center](security-center-monitoring.md) — dowiedz się, jak monitorować kondycję zasobów platformy Azure
+* [Zarządzanie alertami zabezpieczeń i odpowiadanie na nie w usłudze Azure Security Center](security-center-managing-and-responding-alerts.md) — dowiedz się, jak zarządzać alertami zabezpieczeń i odpowiadać na nie
+* [Monitorowanie rozwiązań partnerskich za pomocą usługi Azure Security Center](security-center-partner-solutions.md) — dowiedz się, jak monitorować stan kondycji rozwiązań partnerskich.
+* [Blog dotyczący zabezpieczeń platformy Azure](https://blogs.msdn.com/b/azuresecurity/) — znajdowanie wpisów w blogu dotyczących zabezpieczeń i zgodności z przepisami platformy Azure

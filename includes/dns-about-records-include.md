@@ -5,23 +5,23 @@ ms.topic: include
 ms.date: 11/25/2018
 ms.author: victorh
 ms.openlocfilehash: 261ae22348cd82b129727261c619727917e19c96
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "73832050"
 ---
 ### <a name="record-names"></a>Nazwy rekordów
 
-W usłudze DNS platformy Azure rekordy są określane przy użyciu nazw względnych. *W pełni kwalifikowana* nazwa domeny (FQDN) zawiera nazwę strefy, której nie zawiera nazwa *względna*. Na przykład względna nazwa rekordu `www` w strefie `contoso.com` daje w pełni kwalifikowaną nazwę rekordu `www.contoso.com`.
+W usłudze DNS platformy Azure rekordy są określane przy użyciu nazw względnych. *W pełni kwalifikowana* nazwa domeny (FQDN) zawiera nazwę strefy, której nie zawiera nazwa *względna*. Na przykład względna `www` nazwa rekordu `contoso.com` w strefie podaje `www.contoso.com`w pełni kwalifikowaną nazwę rekordu .
 
-Rekord *wierzchołka* to rekord DNS w katalogu głównym (*wierzchołku*) strefy DNS. Na przykład w strefie DNS `contoso.com`, rekord wierzchołka ma również w pełni kwalifikowaną nazwę `contoso.com` (jest to czasami *nazywane domeną* niepowołaną).  Zgodnie z Konwencją nazwa względna "\@" jest używana do reprezentowania rekordów wierzchołków.
+Rekord *wierzchołka* to rekord DNS w katalogu głównym (*wierzchołku*) strefy DNS. Na przykład w strefie `contoso.com`DNS rekord wierzchołka `contoso.com` ma również w pełni kwalifikowaną nazwę (czasami nazywana jest *domeną nagą).*  Zgodnie z konwencją\@nazwa względna ' ' jest używana do reprezentowania rekordów wierzchołka.
 
 ### <a name="record-types"></a>Typy rekordów
 
 Każdy rekord DNS ma nazwę i typ. Rekordy są pogrupowane w różne typy według danych, które zawierają. Najczęściej spotykanym typem jest rekord „A”, który mapuje nazwę na adres IPv4. Innym często spotykanym typem jest rekord „MX”, który mapuje nazwę na serwer poczty e-mail.
 
-Azure DNS obsługuje wszystkie popularne typy rekordów DNS: A, AAAA, CAA, CNAME, MX, NS, PTR, SOA, SRV i TXT. Należy pamiętać, że [rekordy SPF są reprezentowane przy użyciu rekordu TXT](../articles/dns/dns-zones-records.md#spf-records).
+Usługa Azure DNS obsługuje wszystkie typowe typy rekordów DNS: A, AAAA, CAA, CNAME, MX, NS, PTR, SOA, SRV i TXT. Należy pamiętać, że [rekordy SPF są reprezentowane przy użyciu rekordu TXT](../articles/dns/dns-zones-records.md#spf-records).
 
 ### <a name="record-sets"></a>Zestawy rekordów
 

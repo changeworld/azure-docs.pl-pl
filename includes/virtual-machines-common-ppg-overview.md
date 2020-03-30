@@ -9,41 +9,41 @@ ms.date: 10/30/2019
 ms.author: zivr
 ms.custom: include file
 ms.openlocfilehash: 3215f5952daef053c94432bc8fdef15e1775047a
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "73171099"
 ---
-Umieszczanie maszyn wirtualnych w jednym regionie zmniejsza odległość fizyczną między wystąpieniami. Umieszczenie ich w ramach pojedynczej strefy dostępności spowoduje również, że zostaną one fizycznie bliżej siebie. Jednak w miarę zwiększania się rozmiaru platformy Azure jedna strefa dostępności może obejmować wiele fizycznych centrów danych, co może skutkować opóźnieniami sieciowymi wpływającymi na aplikację. 
+Umieszczanie maszyn wirtualnych w jednym regionie zmniejsza fizyczną odległość między wystąpieniami. Umieszczenie ich w jednej strefie dostępności również zbliży je fizycznie do siebie. Jednak wraz ze wzrostem śladu platformy Azure pojedyncza strefa dostępności może obejmować wiele fizycznych centrów danych, co może spowodować opóźnienie sieciowe wpływające na aplikację. 
 
-Aby zapewnić, że maszyny wirtualne będą możliwie jak najbliżej, osiągając najniższe możliwe opóźnienie, należy wdrożyć je w obrębie grupy umieszczania sąsiedztwa.
+Aby maszyny wirtualne były jak najbliżej, osiągając najniższe możliwe opóźnienie, należy wdrożyć je w grupie miejsc docelowych w pobliżu.
 
-Grupa umieszczania bliskości jest grupą logiczną używaną w celu upewnienia się, że zasoby obliczeniowe platformy Azure znajdują się fizycznie blisko siebie. Grupy umieszczania zbliżeniowe są przydatne w przypadku obciążeń, w których jest wymagane małe opóźnienia.
-
-
-- Małe opóźnienia między samodzielnymi maszynami wirtualnymi.
-- Małe opóźnienia między maszynami wirtualnymi w jednym zestawie dostępności lub zestawem skalowania maszyn wirtualnych. 
-- Małe opóźnienia między samodzielnymi maszynami wirtualnymi, maszynami wirtualnymi w wielu zestawach dostępności lub wieloma zestawami skalowania. W jednej grupie umieszczania można korzystać z wielu zasobów obliczeniowych w celu zebrania aplikacji wielowarstwowej. 
-- Małe opóźnienia między wieloma warstwami aplikacji przy użyciu różnych typów sprzętu. Na przykład uruchomienie zaplecza przy użyciu serii M w zestawie dostępności i frontonu w wystąpieniu serii D w zestawie skalowania w pojedynczej grupie umieszczania sąsiedztwa.
+Grupa miejsc docelowych zbliżeniowych jest logicznym grupowaniem używanym w celu upewnienia się, że zasoby obliczeniowe platformy Azure są fizycznie zlokalizowane blisko siebie. Grupy miejsc docelowych zbliżeniowych są przydatne w przypadku obciążeń, w których wymagane jest małe opóźnienia.
 
 
-![Ilustracja przedstawiająca grupy położenia zbliżeniowe](./media/virtual-machines-common-ppg/ppg.png)
-
-## <a name="using-proximity-placement-groups"></a>Używanie grup umieszczania w sąsiedztwie 
-
-Grupa umieszczania bliskości jest nowym typem zasobów na platformie Azure. Należy utworzyć je przed użyciem z innymi zasobami. Po utworzeniu można go używać z maszynami wirtualnymi, zestawami dostępności lub zestawami skalowania maszyn wirtualnych. Należy określić grupę umieszczania bliskości podczas tworzenia zasobów obliczeniowych, podając identyfikator grupy umieszczania sąsiedztwa. 
-
-Możesz również przenieść istniejący zasób do grupy umieszczania sąsiedztwa. Podczas przenoszenia zasobu do grupy umieszczania w sąsiedztwie należy najpierw zatrzymać (cofnąć przydział) element zawartości, ponieważ zostanie on ponownie wdrożony w innym centrum danych w regionie, tak aby spełniał ograniczenie wspólnej lokalizacji. 
-
-W przypadku zestawów dostępności i zestawów skalowania maszyn wirtualnych należy ustawić grupę umieszczania sąsiedztwa na poziomie zasobu, a nie na poszczególnych maszynach wirtualnych. 
-
-Grupa położenia sąsiedztwa to ograniczenie między lokalizacjami, a nie mechanizm przypinania. Jest przypięty do określonego centrum danych z wdrożeniem pierwszego zasobu, aby go użyć. Po zatrzymaniu lub usunięciu wszystkich zasobów przy użyciu grupy umieszczania w sąsiedztwie nie jest już przypięty. W związku z tym podczas korzystania z grupy umieszczania bliskości z wieloma seriami maszyn wirtualnych ważne jest, aby określić wszystkie wymagane typy z góry w szablonie, gdy jest to możliwe, lub postępować zgodnie z sekwencją wdrożenia, która poprawi szansę na pomyślne wdrożenie. Jeśli wdrożenie nie powiedzie się, uruchom ponownie wdrożenie z rozmiarem maszyny wirtualnej, który nie powiódł się, jako pierwszy rozmiar do wdrożenia.
+- Małe opóźnienia między autonomicznymi maszynami wirtualnymi.
+- Małe opóźnienia między maszynami wirtualnymi w jednym zestawie dostępności lub w zestawie skalowania maszyny wirtualnej. 
+- Małe opóźnienia między autonomicznymi maszynami wirtualnymi, maszynami wirtualnymi w wielu zestawach dostępności lub wieloma zestawami skalowania. Można mieć wiele zasobów obliczeniowych w jednej grupie umieszczania, aby połączyć wielowarstwową aplikację. 
+- Małe opóźnienia między wieloma warstwami aplikacji przy użyciu różnych typów sprzętu. Na przykład uruchamianie wewnętrznej bazy danych przy użyciu serii M w zestawie dostępności i frontonia w wystąpieniu serii D, w zestawie skalowania, w jednej grupie miejsc docelowych zbliżeniowych.
 
 
-## <a name="best-practices"></a>Najlepsze praktyki 
-- W przypadku najmniejszego opóźnienia należy używać grup umieszczania sąsiedztwa wraz z przyspieszoną siecią. Aby uzyskać więcej informacji, zobacz [Tworzenie maszyny wirtualnej z systemem Linux przy użyciu przyspieszonej sieci](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-cli?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) lub [Tworzenie maszyny wirtualnej z systemem Windows przy użyciu przyspieszonej sieci](/azure/virtual-network/create-vm-accelerated-networking-powershell?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
-- Wdróż wszystkie rozmiary maszyn wirtualnych w jednym szablonie. Aby uniknąć lądowania na sprzęcie, który nie obsługuje wszystkich potrzebnych jednostek SKU i rozmiarów maszyn wirtualnych, należy uwzględnić wszystkie warstwy aplikacji w jednym szablonie, tak aby wszystkie te aplikacje były wdrażane w tym samym czasie.
-- Jeśli tworzysz skrypty do wdrożenia przy użyciu programu PowerShell, interfejsu wiersza polecenia lub zestawu SDK, możesz uzyskać błąd alokacji `OverconstrainedAllocationRequest`. W takim przypadku należy zatrzymać/cofnąć przydział wszystkich istniejących maszyn wirtualnych i zmienić sekwencję w skrypcie wdrażania, aby rozpocząć od jednostki SKU/rozmiaru maszyny wirtualnej, która nie powiodła się. 
-- Podczas ponownie korzystania z istniejącej grupy umieszczania, z której usunięto maszyny wirtualne, poczekaj na pełne zakończenie operacji usuwania przed dodaniem do niej maszyn wirtualnych.
-- Jeśli opóźnienie jest pierwszym priorytetem, umieść maszyny wirtualne w grupie umieszczania bliskości i całe rozwiązanie w strefie dostępności. Ale jeśli odporność ma najwyższy priorytet, rozłożenie wystąpień w wielu strefach dostępności (pojedyncza Grupa położenia sąsiedztwa nie może obejmować stref).
+![Grafika dla grup miejsc docelowych zbliżeniowych](./media/virtual-machines-common-ppg/ppg.png)
+
+## <a name="using-proximity-placement-groups"></a>Korzystanie z grup miejsc docelowych zbliżeniowych 
+
+Grupa miejsc docelowych zbliżeniowych to nowy typ zasobu na platformie Azure. Musisz utworzyć jeden przed użyciem go z innymi zasobami. Po utworzeniu może być używany z maszynami wirtualnymi, zestawami dostępności lub zestawami skalowania maszyny wirtualnej. Podczas tworzenia zasobów obliczeniowych należy określić grupę miejsc docelowych zbliżeniową, podając identyfikator grupy miejsc docelowych zbliżeniowo. 
+
+Istniejący zasób można również przenieść do grupy miejsc docelowych zbliżeniowych. Podczas przenoszenia zasobu do grupy miejsc docelowych zbliżeniowych należy najpierw zatrzymać (przydzielić) zasób, ponieważ zostanie on ponownie wprowadzony do innego centrum danych w regionie, aby spełnić ograniczenie kolokacji. 
+
+W przypadku zestawów dostępności i zestawów skalowania maszyny wirtualnej należy ustawić grupę miejsc docelowych zbliżeniowych na poziomie zasobu, a nie na poszczególnych maszynach wirtualnych. 
+
+Grupa miejsc docelowych zbliżeniowych jest ograniczeniem kolokacji, a nie mechanizmem przypinania. Jest przypięty do określonego centrum danych z wdrożeniem pierwszego zasobu, aby go użyć. Po zatrzymaniu lub usunięciu wszystkich zasobów korzystających z grupy miejsc docelowych w pobliżu nie zostaną ony przypięte. W związku z tym podczas korzystania z grupy miejsc docelowych zbliżeniami z wielu serii maszyn wirtualnych, ważne jest, aby określić wszystkie wymagane typy z góry w szablonie, gdy jest to możliwe lub wykonaj sekwencję wdrażania, które zwiększą swoje szanse na pomyślne wdrożenie. Jeśli wdrożenie nie powiedzie się, uruchom ponownie wdrożenie z rozmiarem maszyny Wirtualnej, który nie powiódł się jako pierwszy rozmiar do wdrożenia.
+
+
+## <a name="best-practices"></a>Najlepsze rozwiązania 
+- W przypadku najniższego opóźnienia należy używać grup miejsc docelowych zbliżeniowych wraz z przyspieszoną siecią. Aby uzyskać więcej informacji, zobacz [Tworzenie maszyny wirtualnej systemu Linux z przyspieszoną siecią](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-cli?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) lub [Tworzenie maszyny wirtualnej systemu Windows z przyspieszoną siecią](/azure/virtual-network/create-vm-accelerated-networking-powershell?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+- Wdrażanie wszystkich rozmiarów maszyn wirtualnych w jednym szablonie. Aby uniknąć lądowania na sprzęcie, który nie obsługuje wszystkich jednostek SKU maszyn wirtualnych i rozmiarów, które są wymagane, należy uwzględnić wszystkie warstwy aplikacji w jednym szablonie, tak aby wszystkie zostaną wdrożone w tym samym czasie.
+- W przypadku skryptów wdrażania przy użyciu programu PowerShell, interfejsu wiersza `OverconstrainedAllocationRequest`polecenia lub modułu SDK może zostać wyświetlony błąd alokacji. W takim przypadku należy zatrzymać/zmienić alokację wszystkich istniejących maszyn wirtualnych i zmienić sekwencję w skrypcie wdrażania, aby rozpocząć od jednostki SKU/rozmiary maszyny Wirtualnej, która nie powiodła się. 
+- Podczas ponownego użytku istniejącej grupy miejsc docelowych, z której maszyny wirtualne zostały usunięte, poczekaj na całkowite usunięcie przed dodaniem do niej maszyn wirtualnych.
+- Jeśli opóźnienie jest twoim priorytetem, umieść maszyny wirtualne w grupie miejsc docelowych zbliżeniami i całe rozwiązanie w strefie dostępności. Jeśli jednak priorytetem jest odporność, rozłóż wystąpienia na wiele stref dostępności (pojedyncza grupa miejsc docelowych zbliżeniowych nie może obejmować stref).

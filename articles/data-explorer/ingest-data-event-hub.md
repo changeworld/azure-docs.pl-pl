@@ -1,6 +1,6 @@
 ---
 title: pozyskiwanie danych z centrum zdarzeń do usługi Azure Data Explorer
-description: W tym artykule dowiesz się, jak pozyskiwanie (ładować) danych do usługi Azure Eksplorator danych z centrum zdarzeń.
+description: W tym artykule dowiesz się, jak pozyskiwania (ładowania) danych do Usługi Azure Data Explorer z Usługi Event Hub.
 author: orspod
 ms.author: orspodek
 ms.reviewer: tzgitlin
@@ -8,36 +8,36 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 01/08/2020
 ms.openlocfilehash: bb9357ca4388bd1fb7ae3e3704cf4112d07c1105
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77188186"
 ---
 # <a name="ingest-data-from-event-hub-into-azure-data-explorer"></a>pozyskiwanie danych z centrum zdarzeń do usługi Azure Data Explorer
 
 > [!div class="op_single_selector"]
 > * [Portal](ingest-data-event-hub.md)
-> * [C#](data-connection-event-hub-csharp.md)
+> * [C #](data-connection-event-hub-csharp.md)
 > * [Python](data-connection-event-hub-python.md)
 > * [Szablon usługi Azure Resource Manager](data-connection-event-hub-resource-manager.md)
 
-Azure Data Explorer to szybka i wysoce skalowalna usługa eksploracji danych na potrzeby danych dziennika i telemetrycznych. Usługa Azure Data Explorer umożliwia pozyskiwanie (ładowanie) danych z usługi Event Hubs — platformy do strumieniowego przesyłania dużych ilości danych i usługi pozyskiwania zdarzeń. Usługa [Event Hubs](/azure/event-hubs/event-hubs-about) może przetwarzać miliony zdarzeń na sekundę niemal w czasie rzeczywistym. W tym artykule opisano tworzenie centrum zdarzeń, nawiązywanie z nim połączenia z usługi Azure Eksplorator danych i wyświetlanie przepływu danych przez system.
+Azure Data Explorer to szybka i wysoce skalowalna usługa eksploracji danych na potrzeby danych dziennika i telemetrycznych. Usługa Azure Data Explorer umożliwia pozyskiwanie (ładowanie) danych z usługi Event Hubs — platformy do strumieniowego przesyłania dużych ilości danych i usługi pozyskiwania zdarzeń. Usługa [Event Hubs](/azure/event-hubs/event-hubs-about) może przetwarzać miliony zdarzeń na sekundę niemal w czasie rzeczywistym. W tym artykule utworzysz centrum zdarzeń, połączysz się z nim z Usługi Azure Data Explorer i zobaczysz przepływ danych za pośrednictwem systemu.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto platformy Azure](https://azure.microsoft.com/free/).
+* Jeśli nie masz subskrypcji platformy Azure, utwórz [bezpłatne konto platformy Azure](https://azure.microsoft.com/free/) przed rozpoczęciem.
 * [Klaster testowy i baza danych](create-cluster-database-portal.md).
 * [Przykładowa aplikacja](https://github.com/Azure-Samples/event-hubs-dotnet-ingest), która generuje dane i wysyła je do centrum zdarzeń. Pobierz przykładową aplikację w systemie.
-* [Program Visual Studio 2019](https://visualstudio.microsoft.com/vs/) do uruchamiania przykładowej aplikacji.
+* [Visual Studio 2019,](https://visualstudio.microsoft.com/vs/) aby uruchomić przykładową aplikację.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Logowanie się do witryny Azure Portal
 
-Zaloguj się do [Azure portal](https://portal.azure.com/).
+Zaloguj się do [Portalu Azure](https://portal.azure.com/).
 
 ## <a name="create-an-event-hub"></a>Tworzenie centrum zdarzeń
 
-W tym artykule opisano generowanie przykładowych danych i wysyłanie ich do centrum zdarzeń. Pierwszym krokiem jest utworzenie centrum zdarzeń. Możesz to zrobić, używając szablonu usługi Azure Resource Manager w witrynie Azure Portal.
+W tym artykule można wygenerować przykładowe dane i wysłać je do centrum zdarzeń. Pierwszym krokiem jest utworzenie centrum zdarzeń. Możesz to zrobić, używając szablonu usługi Azure Resource Manager w witrynie Azure Portal.
 
 1. Aby utworzyć centrum zdarzeń, użyj poniższego przycisku w celu rozpoczęcia wdrażania. Kliknij prawym przyciskiem myszy i wybierz pozycję **Utwórz w nowym oknie**, aby wykonać pozostałe kroki w tym artykule.
 
@@ -49,7 +49,7 @@ W tym artykule opisano generowanie przykładowych danych i wysyłanie ich do cen
 
 1. Wybierz subskrypcję, w której chcesz utworzyć centrum zdarzeń, i utwórz grupę zasobów o nazwie *test-hub-rg*.
 
-    ![Utwórz grupę zasobów](media/ingest-data-event-hub/create-resource-group.png)
+    ![Tworzenie grupy zasobów](media/ingest-data-event-hub/create-resource-group.png)
 
 1. Wypełnij formularz, używając poniższych informacji.
 
@@ -61,7 +61,7 @@ W tym artykule opisano generowanie przykładowych danych i wysyłanie ich do cen
     |---|---|---|
     | Subskrypcja | Twoja subskrypcja | Wybierz subskrypcję platformy Azure, która ma być używana dla centrum zdarzeń.|
     | Grupa zasobów | *test-hub-rg* | Utwórz nową grupę zasobów. |
-    | Lokalizacja | *Zachodnie stany USA* | W tym artykule wybierz pozycję *zachodnie stany USA* . W przypadku systemu produkcyjnego wybierz region, który najlepiej odpowiada Twoim potrzebom. Utwórz przestrzeń nazw centrum zdarzeń w tej samej lokalizacji co klaster Kusto w celu zapewnienia najlepszej wydajności (jest to szczególnie ważne w przypadku przestrzeni nazw centrum zdarzeń o dużej przepływności).
+    | Lokalizacja | *Zachodnie stany USA* | Wybierz *zachodnie stany USA* dla tego artykułu. W przypadku systemu produkcyjnego wybierz region, który najlepiej odpowiada Twoim potrzebom. Utwórz przestrzeń nazw centrum zdarzeń w tej samej lokalizacji co klaster Kusto w celu zapewnienia najlepszej wydajności (jest to szczególnie ważne w przypadku przestrzeni nazw centrum zdarzeń o dużej przepływności).
     | Nazwa przestrzeni nazw | Unikatowa nazwa przestrzeni nazw | Wybierz unikatową nazwę, która identyfikuje Twoją przestrzeń nazw. Na przykład *mytestnamespace*. Do podanej nazwy jest dołączana nazwa domeny *servicebus.windows.net*. Nazwa może zawierać tylko litery, cyfry i łączniki. Nazwa musi zaczynać się literą i kończyć literą lub cyfrą. Nazwa musi mieć długość od 6 do 50 znaków.
     | Nazwa centrum zdarzeń | *test-hub* | Centrum zdarzeń znajduje się w przestrzeni nazw, która zapewnia unikatowy kontener określania zakresu. Nazwa centrum zdarzeń musi być unikatowa w obrębie przestrzeni nazw. |
     | Nazwa grupy konsumentów | *test-group* | Dzięki grupom konsumentów każda z wielu aplikacji korzystających z danych może mieć osobny widok strumienia zdarzeń. |
@@ -117,26 +117,26 @@ Teraz połączysz się z centrum zdarzeń z usługi Azure Data Explorer. Po nawi
     | Przestrzeń nazw centrum zdarzeń | Unikatowa nazwa przestrzeni nazw | Wybrana wcześniej nazwa, która identyfikuje Twoją przestrzeń nazw. |
     | Centrum zdarzeń | *test-hub* | Utworzone przez Ciebie centrum zdarzeń. |
     | Grupa konsumentów | *test-group* | Grupa konsumentów zdefiniowana w utworzonym przez Ciebie centrum zdarzeń. |
-    | Właściwości systemu zdarzeń | Wybierz odpowiednie właściwości | [Właściwości systemu centrum zdarzeń](/azure/service-bus-messaging/service-bus-amqp-protocol-guide#message-annotations). Jeśli istnieje wiele rekordów dla każdego komunikatu o zdarzeniu, właściwości systemu zostaną dodane do pierwszej z nich. Podczas dodawania właściwości systemu [Utwórz](/azure/kusto/management/create-table-command) lub [zaktualizuj](/azure/kusto/management/alter-table-command) schemat i [Mapowanie](/azure/kusto/management/mappings) tabeli w celu uwzględnienia wybranych właściwości. |
-    | Kompresja | *Dawaj* | Typ kompresji ładunku komunikatów centrum zdarzeń. Obsługiwane typy kompresji: *Brak, gzip*.|
+    | Właściwości systemu zdarzeń | Wybierz odpowiednie właściwości | [Właściwości systemu Centrum zdarzeń](/azure/service-bus-messaging/service-bus-amqp-protocol-guide#message-annotations). Jeśli na komunikat o zdarzeniu jest wiele rekordów, właściwości systemu zostaną dodane do pierwszego. Podczas dodawania właściwości systemu [należy utworzyć](/azure/kusto/management/create-table-command) lub [zaktualizować](/azure/kusto/management/alter-table-command) schemat tabeli i [mapowanie](/azure/kusto/management/mappings) w celu uwzględnienia wybranych właściwości. |
+    | Kompresja | *Brak* | Typ kompresji ładunku komunikatów usługi Event Hub. Obsługiwane typy kompresji: *Brak, GZip*.|
     | | |
 
     **Tabela docelowa:**
 
-    Dostępne są dwie opcje routingu pozyskiwanych danych: *statyczne* i *dynamiczne*. 
-    W tym artykule należy używać routingu statycznego, w którym można określić nazwę tabeli, format danych i mapowanie. W związku z tym pozostaw pole **Moje dane zawierają informacje o routingu** niezaznaczone.
+    Istnieją dwie opcje routingu pochłoniętych danych: *statyczne* i *dynamiczne*. 
+    W tym artykule należy użyć routingu statycznego, w którym określa się nazwę tabeli, format danych i mapowanie. W związku z tym pozostaw pole **Moje dane zawierają informacje o routingu** niezaznaczone.
 
      **Ustawienie** | **Sugerowana wartość** | **Opis pola**
     |---|---|---|
     | Tabela | *TestTable* | Tabela utworzona przez Ciebie w obszarze **TestDatabase**. |
-    | Format danych | *JSON* | Obsługiwane formaty to Avro, CSV, JSON, WIELOWIERSZOWY kod JSON, PSV, SOHSV, SCSV, TSV, TSVE, TXT, ORC i PARQUET. |
-    | Mapowanie kolumn | *TestMapping* | [Mapowanie](/azure/kusto/management/mappings) utworzone w **TestDatabase**, które mapuje przychodzące dane JSON do nazw kolumn i typów **danych.** Wymagane dla notacji JSON lub wielowierszowego kodu JSON oraz opcjonalne dla innych formatów.|
+    | Format danych | *Json* | Obsługiwane formaty to Avro, CSV, JSON, MULTILINE JSON, PSV, SOHSV, SCSV, TSV, TSVE, TXT, ORC i PARQUET. |
+    | Mapowanie kolumn | *TestMapping* | [Mapowanie](/azure/kusto/management/mappings) utworzone w **TestDatabase**, które mapuje przychodzące dane JSON do nazw kolumn i typów danych **TestTable**. Wymagane dla JSON lub MULTILINE JSON i opcjonalne dla innych formatów.|
     | | |
 
     > [!NOTE]
-    > * Wybierz pozycję **moje dane zawiera informacje o routingu** , aby użyć routingu dynamicznego, gdzie dane zawierają niezbędne informacje dotyczące routingu, jak pokazano w komentarzach [przykładowych aplikacji](https://github.com/Azure-Samples/event-hubs-dotnet-ingest) . Jeśli są ustawione właściwości static i Dynamic, właściwości dynamiczne zastępują statyczne. 
-    > * Zostaną pozyskane tylko zdarzenia znajdujące się w kolejce po utworzeniu połączenia danych.
-    > * Możesz również ustawić typ kompresji za pomocą właściwości dynamicznych, jak pokazano w [przykładowej aplikacji](https://github.com/Azure-Samples/event-hubs-dotnet-ingest).
+    > * Wybierz **pozycję Moje dane zawiera informacje o routingu,** aby używać routingu dynamicznego, gdzie dane zawierają niezbędne informacje o routingu, które są widoczne w przykładowych komentarzach [aplikacji.](https://github.com/Azure-Samples/event-hubs-dotnet-ingest) Jeśli ustawiono właściwości statyczne i dynamiczne, właściwości dynamiczne zastępują właściwości statyczne. 
+    > * Tylko zdarzenia w kolejce po utworzeniu połączenia danych są połajane.
+    > * Typ kompresji można również ustawić za pomocą właściwości dynamicznych, jak widać w [przykładowej aplikacji](https://github.com/Azure-Samples/event-hubs-dotnet-ingest).
     > * Formaty Avro, ORC i PARQUET, a także właściwości systemu zdarzeń nie są obsługiwane w ładunku kompresji GZip.
 
 [!INCLUDE [data-explorer-container-system-properties](../../includes/data-explorer-container-system-properties.md)]
@@ -149,7 +149,7 @@ Gdy uruchamiasz [przykładową aplikację](https://github.com/Azure-Samples/even
 
     ![Zasady dostępu współużytkowanego](media/ingest-data-event-hub/shared-access-policies.png)
 
-1. Skopiuj zawartość pola **Parametry połączenia — klucz podstawowy**. Wkleisz ją w następnej sekcji.
+1. **Kopiuj ciąg połączenia — klucz podstawowy**. Wkleisz ją w następnej sekcji.
 
     ![Parametry połączenia](media/ingest-data-event-hub/connection-string.png)
 
@@ -197,9 +197,9 @@ Kiedy aplikacja generuje dane, możesz teraz zobaczyć przepływ tych danych z c
     ![Zestaw wyników komunikatów](media/ingest-data-event-hub/message-result-set.png)
 
     > [!NOTE]
-    > * W systemie Azure Data Explorer istnieją zasady agregacji (dzielenie na partie) dotyczące pozyskiwania danych opracowane w celu optymalizacji procesu pozyskiwania. Zasady są domyślnie skonfigurowane do 5 minut lub 500 MB danych, dzięki czemu mogą wystąpić opóźnienia. Zobacz temat [zasady tworzenia wsadowego](/azure/kusto/concepts/batchingpolicy) dla opcji agregacji. 
-    > * Pozyskanie centrum zdarzeń obejmuje czas odpowiedzi z centrum zdarzeń wynoszący 10 sekund lub 1 MB. 
-    > * Skonfiguruj tabelę do obsługi przesyłania strumieniowego i Usuń opóźnienie w czasie odpowiedzi. Zobacz [zasady przesyłania strumieniowego](/azure/kusto/concepts/streamingingestionpolicy). 
+    > * W systemie Azure Data Explorer istnieją zasady agregacji (dzielenie na partie) dotyczące pozyskiwania danych opracowane w celu optymalizacji procesu pozyskiwania. Zasady są domyślnie skonfigurowane do 5 minut lub 500 MB danych, więc może wystąpić opóźnienie. Zobacz [zasady przetwarzania wsadowego](/azure/kusto/concepts/batchingpolicy) dla opcji agregacji. 
+    > * Pozyskiwania centrum zdarzeń obejmuje czas odpowiedzi Centrum zdarzeń 10 sekund lub 1 MB. 
+    > * Skonfiguruj tabelę do obsługi przesyłania strumieniowego i usuń opóźnienie w czasie odpowiedzi. Zobacz [zasady przesyłania strumieniowego](/azure/kusto/concepts/streamingingestionpolicy). 
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
@@ -217,4 +217,4 @@ Jeśli nie zamierzasz ponownie używać centrum zdarzeń, wyczyść grupę zasob
 
 ## <a name="next-steps"></a>Następne kroki
 
-* [Wykonywanie zapytań dotyczących danych w usłudze Azure Eksplorator danych](web-query-data.md)
+* [wykonywanie zapytań o dane w usłudze Azure Data Explorer](web-query-data.md)

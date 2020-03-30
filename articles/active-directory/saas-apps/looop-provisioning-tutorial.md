@@ -1,6 +1,6 @@
 ---
-title: 'Samouczek: Konfigurowanie Looop dla automatycznej aprowizacji użytkowników przy użyciu Azure Active Directory | Microsoft Docs'
-description: Dowiedz się, jak skonfigurować Azure Active Directory w celu automatycznego aprowizacji i cofania aprowizacji kont użytkowników w usłudze Looop.
+title: 'Samouczek: Konfigurowanie funkcji Looop do automatycznego inicjowania obsługi administracyjnej za pomocą usługi Azure Active Directory | Dokumenty firmy Microsoft'
+description: Dowiedz się, jak skonfigurować usługę Azure Active Directory do automatycznego inicjowania obsługi administracyjnej i usuwania z obsługi administracyjnej kont użytkowników w looop.
 services: active-directory
 documentationcenter: ''
 author: zchia
@@ -16,164 +16,164 @@ ms.topic: article
 ms.date: 09/19/2019
 ms.author: Zhchia
 ms.openlocfilehash: e3e25a8c27b9a5c1bc1e7673300ac8aca9377c08
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77057444"
 ---
-# <a name="tutorial-configure-looop-for-automatic-user-provisioning"></a>Samouczek: Konfigurowanie Looop na potrzeby automatycznego aprowizacji użytkowników
+# <a name="tutorial-configure-looop-for-automatic-user-provisioning"></a>Samouczek: Konfigurowanie looop do automatycznego inicjowania obsługi administracyjnej przez użytkowników
 
-Celem tego samouczka jest przedstawienie czynności, które należy wykonać w Looop i Azure Active Directory (Azure AD) w celu skonfigurowania usługi Azure AD w celu automatycznego aprowizacji i cofania aprowizacji użytkowników i/lub grup do Looop.
+Celem tego samouczka jest zademonstrowanie kroków, które należy wykonać w usłudze Looop i usłudze Azure Active Directory (Azure AD) w celu skonfigurowania usługi Azure AD w celu automatycznego aprowizowania i deekwowania użytkowników i/lub grup do usługi Looop.
 
 > [!NOTE]
-> Ten samouczek zawiera opis łącznika utworzonego na podstawie usługi Azure AD User Provisioning. Aby uzyskać ważne informacje o tym, jak działa ta usługa, jak ona dotyczy, i często zadawanych pytań, zobacz [Automatyzowanie aprowizacji użytkowników i Anulowanie udostępniania aplikacji SaaS przy użyciu programu Azure Active Directory](../app-provisioning/user-provisioning.md).
+> W tym samouczku opisano łącznik utworzony na podstawie usługi inicjowania obsługi administracyjnej użytkowników usługi Azure AD. Aby uzyskać ważne informacje na temat działania tej usługi, działania i często zadawanych pytań, zobacz [Automatyzacja inicjowania obsługi administracyjnej i usuwania obsługi administracyjnej aplikacji SaaS za pomocą usługi Azure Active Directory](../app-provisioning/user-provisioning.md).
 >
-> Ten łącznik jest obecnie w publicznej wersji zapoznawczej. Aby uzyskać więcej informacji na temat ogólnych Microsoft Azure warunki użytkowania funkcji w wersji zapoznawczej, zobacz [dodatkowe warunki użytkowania dla Microsoft Azure podglądów](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Ten łącznik jest obecnie w publicznej wersji zapoznawczej. Aby uzyskać więcej informacji na temat ogólnych warunków korzystania z platformy Microsoft Azure dla funkcji w wersji Zapoznawczej, zobacz [Dodatkowe warunki użytkowania w wersji Zapoznawczej platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Scenariusz opisany w tym samouczku założono, że masz już następujące wymagania wstępne:
+Scenariusz opisany w tym samouczku zakłada, że masz już następujące wymagania wstępne:
 
 * Dzierżawa usługi Azure AD
-* [Dzierżawa Looop](https://www.looop.co/pricing/)
-* Konto użytkownika na Looop z uprawnieniami administratora.
+* [Najemca Looop](https://www.looop.co/pricing/)
+* Konto użytkownika w Looop z uprawnieniami administratora.
 
 ## <a name="assign-users-to-looop"></a>Przypisywanie użytkowników do Looop
 
-Azure Active Directory używa koncepcji zwanej zadaniami w celu określenia, którzy użytkownicy powinni otrzymywać dostęp do wybranych aplikacji. W kontekście automatycznej aprowizacji użytkowników są synchronizowane tylko użytkownicy i/lub grupy, które zostały przypisane do aplikacji w usłudze Azure AD.
+Usługa Azure Active Directory używa koncepcji o nazwie przydziały, aby określić, którzy użytkownicy powinni otrzymać dostęp do wybranych aplikacji. W kontekście automatycznego inicjowania obsługi administracyjnej użytkowników tylko użytkownicy i/lub grupy, które zostały przypisane do aplikacji w usłudze Azure AD są synchronizowane.
 
-Przed skonfigurowaniem i włączeniem automatycznej aprowizacji użytkowników należy zdecydować, którzy użytkownicy i/lub grupy w usłudze Azure AD potrzebują dostępu do Looop. Po ustaleniu tych użytkowników i/lub grup można przypisywać do Looop, postępując zgodnie z poniższymi instrukcjami:
+Przed skonfigurowaniem i włączeniem automatycznego inicjowania obsługi administracyjnej użytkowników należy zdecydować, którzy użytkownicy i/lub grupy w usłudze Azure AD potrzebują dostępu do usługi Looop. Po podjęciu decyzji, możesz przypisać tych użytkowników i / lub grupy do Looop, postępując zgodnie z instrukcjami tutaj:
 
-* [Przypisywanie użytkownika lub grupy do aplikacji dla przedsiębiorstw](../manage-apps/assign-user-or-group-access-portal.md)
+* [Przypisywanie użytkownika lub grupy do aplikacji przedsiębiorstwa](../manage-apps/assign-user-or-group-access-portal.md)
 
 ### <a name="important-tips-for-assigning-users-to-looop"></a>Ważne wskazówki dotyczące przypisywania użytkowników do Looop
 
-* Zaleca się, aby jeden użytkownik usługi Azure AD został przypisany do Looop w celu przetestowania automatycznej konfiguracji inicjowania obsługi użytkowników. Dodatkowych użytkowników i/lub grupy można przypisywać później.
+* Zaleca się, że jeden użytkownik usługi Azure AD jest przypisany do looop do testowania konfiguracji automatycznego inicjowania obsługi administracyjnej użytkownika. Dodatkowi użytkownicy i/lub grupy mogą być przypisane później.
 
-* Podczas przypisywania użytkownika do Looop należy wybrać dowolną prawidłową rolę specyficzną dla aplikacji (jeśli jest dostępna) w oknie dialogowym przypisania. Użytkownicy z **domyślną rolą dostępu** są wykluczeni z aprowizacji.
+* Podczas przypisywania użytkownika do Looop, należy wybrać dowolną prawidłową rolę specyficzne dla aplikacji (jeśli jest dostępna) w oknie dialogowym przypisania. Użytkownicy z rolą **dostępu domyślnego** są wykluczeni z inicjowania obsługi administracyjnej.
 
-## <a name="set-up-looop-for-provisioning"></a>Konfigurowanie Looop na potrzeby aprowizacji
+## <a name="set-up-looop-for-provisioning"></a>Konfigurowanie looop do inicjowania obsługi administracyjnej
 
-Przed skonfigurowaniem usługi Looop do automatycznego aprowizacji użytkowników w usłudze Azure AD należy pobrać pewne informacje o aprowizacji z Looop.
+Przed skonfigurowaniem Looop do automatycznego inicjowania obsługi administracyjnej za pomocą usługi Azure AD, należy pobrać niektóre informacje o inicjowaniu obsługi administracyjnej z Looop.
 
-1. Zaloguj się do [konsoli administracyjnej Looop](https://app.looop.co/#/login) i wybierz pozycję **konto**. W obszarze **Ustawienia konta** wybierz pozycję **uwierzytelnianie**.
+1. Zaloguj się do [konsoli administracyjnej Looop](https://app.looop.co/#/login) i wybierz **pozycję Konto**. W obszarze **Ustawienia konta** wybierz **pozycję Uwierzytelnianie**.
 
-    ![Looop Dodaj Standard scim](media/looop-provisioning-tutorial/admin.png)
+    ![Looop Dodaj SCIM](media/looop-provisioning-tutorial/admin.png)
 
-2. Wygeneruj nowy token, klikając pozycję **Zresetuj token** w obszarze **integracja z standard scim**.
+2. Wygeneruj nowy token, klikając pozycję **Resetuj token** w obszarze **Integracja SCIM**.
 
-    ![Looop Dodaj Standard scim](media/looop-provisioning-tutorial/resettoken.png)
+    ![Looop Dodaj SCIM](media/looop-provisioning-tutorial/resettoken.png)
 
-3. Skopiuj **punkt końcowy Standard scim** i **token**. Te wartości zostaną wprowadzone w polach **adres URL dzierżawy** i **klucz tajny tokenu** na karcie aprowizacji aplikacji Looop w Azure Portal. 
+3. Skopiuj **punkt końcowy SCIM** i **token**. Te wartości zostaną wprowadzone w adresie **URL dzierżawy** i **tajne token** pola na karcie inicjowania obsługi administracyjnej aplikacji Looop w witrynie Azure portal. 
 
-    ![Utwórz token Looop](media/looop-provisioning-tutorial/token.png)
+    ![Looop Utwórz token](media/looop-provisioning-tutorial/token.png)
 
 ## <a name="add-looop-from-the-gallery"></a>Dodaj Looop z galerii
 
-Aby skonfigurować Looop automatycznej aprowizacji użytkowników w usłudze Azure AD, musisz dodać Looop z galerii aplikacji usługi Azure AD do listy zarządzanych aplikacji SaaS.
+Aby skonfigurować looop do automatycznego inicjowania obsługi administracyjnej za pomocą usługi Azure AD, należy dodać Looop z galerii aplikacji usługi Azure AD do listy zarządzanych aplikacji SaaS.
 
-1. W **[Azure Portal](https://portal.azure.com)** w lewym panelu nawigacyjnym wybierz pozycję **Azure Active Directory**.
+1. W **[witrynie Azure portal](https://portal.azure.com)** w lewym panelu nawigacyjnym wybierz pozycję **Azure Active Directory**.
 
     ![Przycisk Azure Active Directory](common/select-azuread.png)
 
-2. Przejdź do pozycji **aplikacje dla przedsiębiorstw**, a następnie wybierz pozycję **wszystkie aplikacje**.
+2. Przejdź do **aplikacji enterprise**, a następnie wybierz pozycję **Wszystkie aplikacje**.
 
     ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
-3. Aby dodać nową aplikację, wybierz przycisk **Nowa aplikacja** w górnej części okienka.
+3. Aby dodać nową aplikację, wybierz przycisk **Nowa aplikacja** u góry okienka.
 
     ![Przycisk Nowa aplikacja](common/add-new-app.png)
 
-4. W polu wyszukiwania wpisz **Looop**, a następnie wybierz pozycję **Looop** w panelu wyniki. 
+4. W polu wyszukiwania wprowadź **Looop**, wybierz **Looop** w panelu wyników. 
 
     ![Looop na liście wyników](common/search-new-app.png)
 
-5. Wybierz przycisk **Utwórz konto w usłudze Looop** , który przekieruje Cię do strony logowania usługi Looop. 
+5. Wybierz przycisk **Zarejestruj się na Looop,** który przekieruje Cię na stronę logowania Looop. 
 
     ![Looop OIDC Dodaj](media/looop-provisioning-tutorial/signup.png)
 
-6. Ponieważ Looop jest aplikacją OpenIDConnect, wybierz logowanie do Looop przy użyciu konta służbowego firmy Microsoft.
+6. Ponieważ Looop jest aplikacją OpenIDConnect, wybierz opcję zalogowania się do Looop za pomocą konta służbowego Microsoft.
 
-    ![Looop OIDC logowania](media/looop-provisioning-tutorial/msftlogin.png)
+    ![Looop OIDC zaloguj się](media/looop-provisioning-tutorial/msftlogin.png)
 
-7. Po pomyślnym uwierzytelnieniu Zaakceptuj monit o zgodę na stronie zgody. Aplikacja zostanie następnie automatycznie dodana do dzierżawy i nastąpi przekierowanie do konta Looop.
+7. Po pomyślnym uwierzytelnieniu zaakceptuj monit o zgodę na stronę zgody. Aplikacja zostanie automatycznie dodana do twojej dzierżawy i zostaniesz przekierowany na swoje konto Looop.
 
-    ![Looop OIDc](media/looop-provisioning-tutorial/accept.png)
+    ![Looop OIDc Zgoda](media/looop-provisioning-tutorial/accept.png)
 
-## <a name="configure-automatic-user-provisioning-to-looop"></a>Konfigurowanie automatycznej aprowizacji użytkowników do Looop 
+## <a name="configure-automatic-user-provisioning-to-looop"></a>Konfigurowanie automatycznego inicjowania obsługi administracyjnej w looop 
 
-Ta sekcja przeprowadzi Cię przez kroki konfigurowania usługi Azure AD Provisioning w celu tworzenia, aktualizowania i wyłączania użytkowników i/lub grup w programie Looop na podstawie przypisań użytkowników i/lub grup w usłudze Azure AD.
+W tej sekcji można przejść przez kroki konfigurowania usługi inicjowania obsługi administracyjnej usługi Azure AD do tworzenia, aktualizowania i wyłączania użytkowników i/lub grup w looop na podstawie przypisania użytkownika i/lub grupy w usłudze Azure AD.
 
-### <a name="to-configure-automatic-user-provisioning-for-looop-in-azure-ad"></a>Aby skonfigurować automatyczne Inicjowanie obsługi użytkowników dla Looop w usłudze Azure AD:
+### <a name="to-configure-automatic-user-provisioning-for-looop-in-azure-ad"></a>Aby skonfigurować automatyczne inicjowanie obsługi administracyjnej dla usługi Looop w usłudze Azure AD:
 
-1. Zaloguj się do [Azure portal](https://portal.azure.com). Wybierz pozycję **aplikacje dla przedsiębiorstw**, a następnie wybierz pozycję **wszystkie aplikacje**.
+1. Zaloguj się do [Portalu Azure](https://portal.azure.com). Wybierz pozycję **Aplikacje przedsiębiorstwa**, a następnie wybierz pozycję **Wszystkie aplikacje**.
 
     ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
-2. Na liście Aplikacje wybierz pozycję **Looop**.
+2. Na liście aplikacji wybierz **pozycję Looop**.
 
-    ![Link Looop na liście aplikacji](common/all-applications.png)
+    ![Łącze Looop na liście Aplikacje](common/all-applications.png)
 
-3. Wybierz kartę **aprowizacji** .
+3. Wybierz kartę **Inicjowanie obsługi administracyjnej.**
 
-    ![Karta aprowizacji](common/provisioning.png)
+    ![Karta Inicjowanie obsługi administracyjnej](common/provisioning.png)
 
-4. Ustaw **tryb aprowizacji** na **automatyczny**.
+4. Ustaw **tryb inicjowania obsługi administracyjnej** na **Automatyczny**.
 
-    ![Karta aprowizacji](common/provisioning-automatic.png)
+    ![Karta Inicjowanie obsługi administracyjnej](common/provisioning-automatic.png)
 
-5. W sekcji **poświadczenia administratora** wprowadź `https://<organisation_domain>.looop.co/scim/v2` w **adresie URL dzierżawy**. Na przykład: `https://demo.looop.co/scim/v2`. Wprowadź wartość, która została pobrana i zapisana wcześniej z Looop w **tokenie tajnym**. Kliknij pozycję **Testuj połączenie** , aby upewnić się, że usługa Azure AD może się połączyć z usługą Looop. Jeśli połączenie nie powiedzie się, upewnij się, że konto usługi Looop ma uprawnienia administratora, a następnie spróbuj ponownie.
+5. W sekcji **Poświadczenia administratora** wprowadź w `https://<organisation_domain>.looop.co/scim/v2` **adresie URL dzierżawy**. Na przykład: `https://demo.looop.co/scim/v2`. Wprowadź wartość pobraną i zapisaną wcześniej z Looop w **tajnym tokenie**. Kliknij **przycisk Testuj połączenie,** aby upewnić się, że usługa Azure AD może łączyć się z looop. Jeśli połączenie nie powiedzie się, upewnij się, że twoje konto Looop ma uprawnienia administratora i spróbuj ponownie.
 
     ![Adres URL dzierżawy + token](common/provisioning-testconnection-tenanturltoken.png)
 
-6. W polu **adres E-mail powiadomienia** wprowadź adres e-mail osoby lub grupy, które powinny otrzymywać powiadomienia o błędach aprowizacji, i zaznacz pole wyboru — **Wyślij powiadomienie e-mail, gdy wystąpi awaria**.
+6. W polu **Wiadomość e-mail z powiadomieniem** wprowadź adres e-mail osoby lub grupy, która powinna otrzymywać powiadomienia o błędach inicjowania obsługi administracyjnej, i zaznacz pole wyboru - **Wyślij powiadomienie e-mail, gdy wystąpi błąd.**
 
-    ![Wiadomość E-mail z powiadomieniem](common/provisioning-notification-email.png)
+    ![Wiadomość e-mail z powiadomieniem](common/provisioning-notification-email.png)
 
-7. Kliknij przycisk **Save** (Zapisz).
+7. Kliknij przycisk **Zapisz**.
 
-8. W sekcji **mapowania** wybierz pozycję **Synchronizuj Azure Active Directory użytkowników do Looop**.
+8. W sekcji **Mapowania** wybierz pozycję **Synchronizuj użytkowników usługi Azure Active Directory z looop**.
 
-    ![Looop mapowania użytkowników](media/looop-provisioning-tutorial/usermappings.png)
+    ![Mapowania użytkowników Looop](media/looop-provisioning-tutorial/usermappings.png)
 
-9. Przejrzyj atrybuty użytkownika, które są synchronizowane z usługi Azure AD, do Looop w sekcji **Mapowanie atrybutów** . Atrybuty wybrane jako **pasujące** właściwości są używane do dopasowania kont użytkowników w programie Looop for Updates. Wybierz przycisk **Zapisz** , aby zatwierdzić zmiany.
+9. Przejrzyj atrybuty użytkownika, które są synchronizowane z usługi Azure AD do Looop w sekcji **Mapowanie atrybutów.** Atrybuty wybrane jako **pasujące** właściwości są używane do dopasowania kont użytkowników w Looop dla operacji aktualizacji. Wybierz przycisk **Zapisz,** aby zatwierdzić wszelkie zmiany.
 
-    ![Looop atrybuty użytkownika](media/looop-provisioning-tutorial/userattributes.png)
+    ![Atrybuty użytkownika Looop](media/looop-provisioning-tutorial/userattributes.png)
 
-10. W sekcji **mapowania** wybierz pozycję **Synchronizuj grupy Azure Active Directory do łącznika meta Networks**.
+10. W sekcji **Mapowania** wybierz pozycję **Synchronizuj grupy usługi Azure Active Directory z łącznikiem sieci meta.**
 
-    ![Mapowania grup Looop](media/looop-provisioning-tutorial/groupmappings.png)
+    ![Mapowanie grupy Looop](media/looop-provisioning-tutorial/groupmappings.png)
 
-11. Przejrzyj atrybuty grupy, które są synchronizowane z usługi Azure AD do łącznika meta Networks w sekcji **Mapowanie atrybutów** . Atrybuty wybrane jako **pasujące** właściwości są używane do dopasowania do grup w łączniku meta Networks dla operacji aktualizacji. Wybierz przycisk **Zapisz** , aby zatwierdzić zmiany.
+11. Przejrzyj atrybuty grupy, które są synchronizowane z usługi Azure AD do łącznika sieci meta w sekcji **Mapowanie atrybutów.** Atrybuty wybrane jako **pasujące** właściwości są używane do dopasowania grup w łączniku sieci meta do operacji aktualizacji. Wybierz przycisk **Zapisz,** aby zatwierdzić wszelkie zmiany.
 
     ![Atrybuty grupy Looop](media/looop-provisioning-tutorial/groupattributes.png)
 
-10. Aby skonfigurować filtry określania zakresu, zapoznaj się z poniższymi instrukcjami w [samouczku dotyczącym filtru określania zakresu](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
+10. Aby skonfigurować filtry zakresu, zapoznaj się z poniższymi instrukcjami podanymi w [samouczku filtru zakresu](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
 
-11. Aby włączyć usługę Azure AD Provisioning dla Looop, Zmień **stan aprowizacji** na **włączone** w sekcji **Ustawienia** .
+11. Aby włączyć usługę inicjowania obsługi administracyjnej usługi Azure AD dla usługi Looop, zmień **stan inicjowania obsługi administracyjnej** **na Włączone** w sekcji **Ustawienia.**
 
-    ![Stan aprowizacji jest przełączany](common/provisioning-toggle-on.png)
+    ![Stan inicjowania obsługi administracyjnej włączony](common/provisioning-toggle-on.png)
 
-12. Zdefiniuj użytkowników i/lub grupy, które chcesz udostępnić Looop, wybierając odpowiednie wartości w **zakresie** w sekcji **Ustawienia** .
+12. Zdefiniuj użytkowników i/lub grupy, które chcesz udostępnić Looop, wybierając żądane wartości w **zakresie** w sekcji **Ustawienia.**
 
-    ![Zakres aprowizacji](common/provisioning-scope.png)
+    ![Zakres inicjowania obsługi administracyjnej](common/provisioning-scope.png)
 
-13. Gdy wszystko będzie gotowe do udostępnienia, kliknij przycisk **Zapisz**.
+13. Gdy będziesz gotowy do aprowienia, kliknij przycisk **Zapisz**.
 
-    ![Zapisywanie konfiguracji aprowizacji](common/provisioning-configuration-save.png)
+    ![Zapisywanie konfiguracji inicjowania obsługi administracyjnej](common/provisioning-configuration-save.png)
 
-Ta operacja uruchamia początkową synchronizację wszystkich użytkowników i/lub grup zdefiniowanych w **zakresie** w sekcji **Ustawienia** . Synchronizacja początkowa trwa dłużej niż kolejne synchronizacje, które wystąpiły co około 40 minut, o ile usługa Azure AD Provisioning jest uruchomiona. Możesz użyć sekcji **szczegóły synchronizacji** do monitorowania postępu i postępuj zgodnie z raportem aktywności aprowizacji, który opisuje wszystkie akcje wykonywane przez usługę Azure AD Provisioning w witrynie Looop.
+Ta operacja rozpoczyna początkową synchronizację wszystkich użytkowników i/lub grup zdefiniowanych w **zakresie** w sekcji **Ustawienia.** Synchronizacja początkowa trwa dłużej niż kolejne synchronizacje, które występują co około 40 minut, o ile jest uruchomiona usługa inicjowania obsługi administracyjnej usługi Azure AD. Można użyć sekcji **Szczegóły synchronizacji** do monitorowania postępu i obserwowanie łączy do raportu aktywności inicjowania obsługi administracyjnej, który opisuje wszystkie akcje wykonywane przez usługę inicjowania obsługi administracyjnej usługi Azure AD w looop.
 
-Aby uzyskać więcej informacji na temat sposobu odczytywania dzienników aprowizacji usługi Azure AD, zobacz [Raportowanie dotyczące automatycznego inicjowania obsługi konta użytkownika](../app-provisioning/check-status-user-account-provisioning.md).
+Aby uzyskać więcej informacji na temat sposobu zapoznania się z dziennikami inicjowania obsługi administracyjnej usługi Azure AD, zobacz [Raportowanie automatycznego inicjowania obsługi administracyjnej konta użytkownika.](../app-provisioning/check-status-user-account-provisioning.md)
 
-## <a name="additional-resources"></a>Dodatkowe zasoby
+## <a name="additional-resources"></a>Zasoby dodatkowe
 
-* [Zarządzanie obsługą kont użytkowników w aplikacjach dla przedsiębiorstw](../app-provisioning/configure-automatic-user-provisioning-portal.md)
-* [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+* [Zarządzanie inicjowanie obsługi administracyjnej kont użytkowników dla aplikacji dla przedsiębiorstw](../app-provisioning/configure-automatic-user-provisioning-portal.md)
+* [Co to jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>Następne kroki
 
-* [Dowiedz się, jak przeglądać dzienniki i uzyskiwać raporty dotyczące aktywności aprowizacji](../app-provisioning/check-status-user-account-provisioning.md)
+* [Dowiedz się, jak przeglądać dzienniki i otrzymywać raporty dotyczące aktywności inicjowania obsługi administracyjnej](../app-provisioning/check-status-user-account-provisioning.md)
 
 

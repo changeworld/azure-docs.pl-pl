@@ -1,6 +1,6 @@
 ---
-title: Informacje na temat Azure Security Center lokalnego pliku konfiguracji agenta zabezpieczeń IoT C# dla | Microsoft Docs
-description: Dowiedz się więcej na temat Azure Security Center dla usługi zabezpieczeń IoT, lokalnego pliku konfiguracji agenta C#zabezpieczeń dla programu.
+title: Opis lokalnego pliku konfiguracji agenta zabezpieczeń IoT dla usługi Azure Security Center dla języka C# | Dokumenty firmy Microsoft
+description: Dowiedz się więcej o usłudze zabezpieczeń Usługi Zabezpieczeń Azure Security Center dla IoT, lokalnym pliku konfiguracji agenta zabezpieczeń dla języka C#.
 services: asc-for-iot
 ms.service: asc-for-iot
 documentationcenter: na
@@ -16,51 +16,51 @@ ms.workload: na
 ms.date: 07/26/2019
 ms.author: mlottner
 ms.openlocfilehash: 0172ada68ffa652fb0c301c89238beca4f4ce2f9
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/01/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74664201"
 ---
-# <a name="understanding-the-local-configuration-file-c-agent"></a>Informacje o lokalnym pliku konfiguracji (C# Agent)
+# <a name="understanding-the-local-configuration-file-c-agent"></a>Opis lokalnego pliku konfiguracji (agent języka C#)
 
 
-Azure Security Center usługi IoT Security Agent używa konfiguracji z lokalnego pliku konfiguracji.
+Agent zabezpieczeń Usługi Azure Security Center dla IoT używa konfiguracji z lokalnego pliku konfiguracji.
 
-Agent zabezpieczeń odczytuje plik konfiguracji, gdy zostanie uruchomiony agent. Konfiguracje Znalezione w lokalnym pliku konfiguracji zawierają konfigurację uwierzytelniania i inne konfiguracje powiązane z agentem.
+Agent zabezpieczeń odczytuje plik konfiguracyjny raz po uruchomieniu agenta. Konfiguracje znalezione w lokalnym pliku konfiguracyjnym zawierają zarówno konfigurację uwierzytelniania, jak i inne konfiguracje związane z agentem.
 
-Agent C# zabezpieczeń używa wielu plików konfiguracji:
+Agent zabezpieczeń języka C# używa wielu plików konfiguracyjnych:
 
-- **Ogólne. config** — konfiguracje powiązane z agentem.
-- **Authentication. config** — konfiguracja związana z uwierzytelnianiem (w tym szczegóły uwierzytelniania).
-- **SecurityIotInterface. config** — konfiguracje związane z IoT.
+- **General.config** — konfiguracje związane z agentem.
+- **Authentication.config** — konfiguracja związana z uwierzytelnianiem (w tym szczegóły uwierzytelniania).
+- **SecurityIotInterface.config** — konfiguracje związane z IoT.
 
-Pliki konfiguracji zawierają konfigurację domyślną. Konfiguracja uwierzytelniania jest wypełniana podczas instalacji agenta, a zmiany w pliku konfiguracji są wykonywane po ponownym uruchomieniu agenta. 
+Pliki konfiguracyjne zawierają konfigurację domyślną. Konfiguracja uwierzytelniania jest wypełniana podczas instalacji agenta, a zmiany w pliku konfiguracyjny są wprowadzane po ponownym uruchomieniu agenta. 
 
-## <a name="configuration-file-location"></a>Lokalizacja pliku konfiguracji
-Dla systemu Linux:
-- Pliki konfiguracji systemu operacyjnego znajdują się w `/var/ASCIoTAgent`.
+## <a name="configuration-file-location"></a>Lokalizacja pliku konfiguracyjnego
+Dla Linuksa:
+- Pliki konfiguracyjne systemu `/var/ASCIoTAgent`operacyjnego znajdują się w programie .
 
 W przypadku systemu Windows:
 - Pliki konfiguracji systemu operacyjnego znajdują się w katalogu agenta zabezpieczeń. 
 
-### <a name="generalconfig-configurations"></a>Konfiguracja ogólna. config
+### <a name="generalconfig-configurations"></a>Konfiguracje general.config
 
 | Nazwa konfiguracji | Możliwe wartości | Szczegóły | 
 |:-----------|:---------------|:--------|
-| Identyfikator agenta | IDENT | Unikatowy identyfikator agenta |
-| readRemoteConfigurationTimeout | Czasu | Okres pobierania konfiguracji zdalnej z IoT Hub. Jeśli Agent nie może pobrać konfiguracji w określonym czasie, zostanie przekroczony limit czasu operacji.|
-| schedulerInterval | Czasu | Wewnętrzny interwał harmonogramu. |
-| producerInterval | Czasu | Interwał procesu roboczego producenta zdarzeń. |
-| consumerInterval | Czasu | Interwał procesu roboczego odbiorcy zdarzeń. |
-| highPriorityQueueSizePercentage | 0 < numer < 1 | Część całkowitej pamięci podręcznej dedykowana dla komunikatów o wysokim priorytecie. |
-| logLevel | "Off", "krytyczny", "błąd", "ostrzeżenie", "informacje", "Debugowanie"  | Komunikaty dziennika równe i powyżej tej ważności są rejestrowane w konsoli debugowania (Dziennik systemowy w systemie Linux). |
-| fileLogLevel |  "Off", "krytyczny", "błąd", "ostrzeżenie", "informacje", "Debugowanie"| Komunikaty dziennika równe i powyżej ważności są rejestrowane w pliku (Dziennik systemowy w systemie Linux). |
-| diagnosticVerbosityLevel | "Brak", "niektóre", "wszystkie", | Poziom szczegółowości zdarzeń diagnostycznych. Brak — zdarzenia diagnostyczne nie są wysyłane, a wszystkie tylko zdarzenia diagnostyczne o wysokiej ważności są wysyłane, wszystkie — wszystkie dzienniki są również wysyłane jako zdarzenia diagnostyczne. |
-| logFilePath | Ścieżka do pliku | Jeśli fileLogLevel > wyłączone, dzienniki są zapisywane w tym pliku. |
-| defaultEventPriority | "High", "Low", "off" | Domyślny priorytet zdarzenia. |
+| agentId | Identyfikator GUID | Unikatowy identyfikator agenta |
+| readRemoteConfigurationTimeout | przedział_czasu | Okres pobierania konfiguracji zdalnej z usługi IoT Hub. Jeśli agent nie może pobrać konfiguracji w określonym czasie, operacja przekroczy limit czasu.|
+| schedulerInterval | przedział_czasu | Wewnętrzny interwał harmonogramu. |
+| producentInterval | przedział_czasu | Interwał pracownika producenta zdarzeń. |
+| consumerInterval | przedział_czasu | Interwał procesu roboczego konsumenta zdarzenia. |
+| highPriorityQueueSizePercentage | 0 < numer < 1 | Część całkowitej pamięci podręcznej dedykowana dla wiadomości o wysokim priorytecie. |
+| Loglevel | "Wył.", "Krytyczny", "Błąd", "Ostrzeżenie", "Informacje", "Debug"  | Komunikaty dziennika równe i powyżej tej ważności są rejestrowane do konsoli debugowania (Syslog w systemie Linux). |
+| fileLogLevel (dziennik plików) |  "Wył.", "Krytyczny", "Błąd", "Ostrzeżenie", "Informacje", "Debug"| Komunikaty dziennika równe i powyżej tej ważności są rejestrowane do pliku (Syslog w systemie Linux). |
+| diagnostykaVerbosityPoziom | "Brak", "Niektóre", "Wszystkie", | Poziom szczegółowości zdarzeń diagnostycznych. Brak - zdarzenia diagnostyczne nie są wysyłane, Niektóre — wysyłane są tylko zdarzenia diagnostyczne o wysokim znaczeniu, Wszystkie — wszystkie dzienniki są również wysyłane jako zdarzenia diagnostyczne. |
+| Logfilepath | Ścieżka do pliku | Jeśli fileLogLevel > Off, dzienniki są zapisywane w tym pliku. |
+| defaultEventPriority | "Wysoki", "Niski", "Wyłączony" | Domyślny priorytet zdarzenia. |
 
-### <a name="generalconfig-example"></a>Plik General. config — przykład
+### <a name="generalconfig-example"></a>Przykład pliku General.config
 ```XML
 <?xml version="1.0" encoding="utf-8"?>
 <General>
@@ -78,22 +78,22 @@ W przypadku systemu Windows:
 </General>
 ```
 
-### <a name="authenticationconfig"></a>Authentication. config
+### <a name="authenticationconfig"></a>Authentication.config
 
 | Nazwa konfiguracji | Możliwe wartości | Szczegóły | 
 |:-----------|:---------------|:--------|
-| moduleName | string | Nazwa tożsamości modułu zabezpieczeń. Ta nazwa musi odpowiadać nazwie tożsamości modułu w urządzeniu. |
-| deviceId | string | Identyfikator urządzenia (zgodnie z zarejestrowaniem w usłudze Azure IoT Hub). || schedulerInterval | Ciąg TimeSpan | Wewnętrzny interwał harmonogramu. |
-| gatewayHostname | string | Nazwa hosta usługi Azure IoT Hub. Zwykle < my-Hub >. Azure-devices.net |
-| Parametr | ścieżka ciągu do pliku | Ścieżka do pliku, który zawiera klucz tajny uwierzytelniania.|
-| type | "SymmetricKey", "SelfSignedCertificate" | Klucz tajny użytkownika do uwierzytelniania. Wybierz opcję *SymmetricKey* , jeśli klucz tajny użytkownika jest kluczem symetrycznym, wybierz opcję *certyfikat z* podpisem własnym, jeśli klucz tajny jest certyfikatem z podpisem własnym. |
-| tożsamość | "DPS", "moduł", "urządzenie" | Tożsamość uwierzytelniania — DPS Jeśli uwierzytelnianie odbywa się za pośrednictwem usługi DPS, moduł, jeśli uwierzytelnianie jest wykonywane przy użyciu poświadczeń modułu, lub urządzenie, jeśli uwierzytelnianie jest nawiązywane przy użyciu poświadczeń urządzenia.
-| certificateLocationKind |  "Plik_lokalny", "magazyn" | Plik_lokalny Jeśli certyfikat jest przechowywany w pliku, należy go zapisać, jeśli certyfikat znajduje się w magazynie certyfikatów. |
-| idScope | string | Zakres identyfikatorów DPS |
-| Identyfikator rejestracji | string  | Usługa DPS Identyfikator rejestracji urządzenia. |
+| nazwa modułu | ciąg | Nazwa tożsamości modułu zabezpieczeń. Ta nazwa musi odpowiadać nazwie tożsamości modułu w urządzeniu. |
+| deviceId | ciąg | Identyfikator urządzenia (zarejestrowany w usłudze Azure IoT Hub). || schedulerInterval | Ciąg TimeSpan | Wewnętrzny interwał harmonogramu. |
+| nazwa bramyHostname | ciąg | Nazwa hosta usługi Azure Iot Hub. Zwykle <my-hub>.azure-devices.net |
+| Filepath | string - ścieżka do pliku | Ścieżka do pliku zawierającego klucz tajny uwierzytelniania.|
+| type | "Symetryczny klucz", "Certyfikat SelfSignedC" | Klucz tajny użytkownika do uwierzytelniania. Wybierz *opcję SymmetricKey,* jeśli klucz tajny użytkownika jest kluczem symetrycznym, wybierz *certyfikat z podpisem własnym,* jeśli klucz tajny jest certyfikatem z podpisem własnym. |
+| identity | "DPS", "Moduł", "Urządzenie" | Tożsamość uwierzytelniania — DPS, jeśli uwierzytelnianie odbywa się za pośrednictwem dps, moduł, jeśli uwierzytelnianie jest dokonywane przy użyciu poświadczeń modułu lub urządzenia, jeśli uwierzytelnianie odbywa się przy użyciu poświadczeń urządzenia.
+| certificateLocationKind |  "LocalFile", "Sklep" | LocalFile jeśli certyfikat jest przechowywany w pliku, przechowuj, jeśli certyfikat znajduje się w magazynie certyfikatów. |
+| idScope | ciąg | Zakres identyfikatora DPS |
+| registrationId (Identyfikator rejestracji) | ciąg  | Identyfikator rejestracji urządzenia DPS. |
 |
 
-### <a name="authenticationconfig-example"></a>Przykład Authentication. config
+### <a name="authenticationconfig-example"></a>Przykład authentication.config
 ```XML
 <?xml version="1.0" encoding="utf-8"?>
 <Authentication>
@@ -108,14 +108,14 @@ W przypadku systemu Windows:
   <add key="registrationId" value="d1"/>
 </Authentication>
 ```
-### <a name="securityiotinterfaceconfig"></a>SecurityIotInterface. config
+### <a name="securityiotinterfaceconfig"></a>SecurityIotInterface.config
 
 | Nazwa konfiguracji | Możliwe wartości | Szczegóły | 
 |:-----------|:---------------|:--------|
-| transportType | "Ampq" "MQTT" | Typ transportu IoT Hub. |
+| transportTyp | "Ampq" "Mqtt" | Typ transportu usługi IoT Hub. |
 |
 
-### <a name="securityiotinterfaceconfig-example"></a>Przykład SecurityIotInterface. config
+### <a name="securityiotinterfaceconfig-example"></a>Przykład SecurityIotInterface.config
 ```XML
 <ExternalInterface>
   <add key="facadeType"  value="Microsoft.Azure.Security.IoT.Agent.Common.SecurityIoTHubInterface, Security.Common" />
@@ -124,10 +124,10 @@ W przypadku systemu Windows:
 ```
 
 ## <a name="next-steps"></a>Następne kroki
-- Przeczytaj Azure Security Center dla usługi IoT [— Omówienie](overview.md)
-- Dowiedz się więcej o [architekturze](architecture.md) Azure Security Center dla usługi IoT
-- Włączanie Azure Security Center dla [usługi](quickstart-onboard-iot-hub.md) IoT
-- Przeczytaj Azure Security Center dla usługi IoT [— często zadawane pytania](resources-frequently-asked-questions.md)
-- Dowiedz się, jak uzyskać dostęp do [danych pierwotnych zabezpieczeń](how-to-security-data-access.md)
-- Omówienie [zaleceń](concept-recommendations.md)
-- Informacje o [alertach](concept-security-alerts.md) zabezpieczeń
+- Przeczytaj [omówienie](overview.md) usługi Azure Security Center dla IoT
+- Dowiedz się więcej o usłudze Azure Security Center dla [architektury](architecture.md) IoT
+- Włączanie usługi Azure Security Center dla [usługi](quickstart-onboard-iot-hub.md) IoT
+- Przeczytaj często zadawane pytania dotyczące usługi Azure Security Center for [IoT](resources-frequently-asked-questions.md)
+- Dowiedz się, jak uzyskać dostęp do [nieprzetworzonych danych zabezpieczeń](how-to-security-data-access.md)
+- Zrozumienie [rekomendacji](concept-recommendations.md)
+- Opis [alertów](concept-security-alerts.md) zabezpieczeń

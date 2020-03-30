@@ -1,6 +1,6 @@
 ---
-title: Tworzenie udostępnionych obrazów maszyn wirtualnych za pomocą Azure PowerShell
-description: Dowiedz się, jak za pomocą Azure PowerShell utworzyć obraz udostępnionej maszyny wirtualnej na platformie Azure
+title: Tworzenie udostępnionych obrazów maszyn wirtualnych za pomocą programu Azure PowerShell
+description: Dowiedz się, jak utworzyć obraz udostępnionej maszyny wirtualnej na platformie Azure za pomocą programu Azure PowerShell
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: cynthn
@@ -16,45 +16,45 @@ ms.date: 05/06/2019
 ms.author: cynthn
 ms.custom: ''
 ms.openlocfilehash: db877c96167fc011c1a8bd52cc1d0b63260007c9
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74066239"
 ---
-# <a name="create-a-shared-image-gallery-with-azure-powershell"></a>Tworzenie udostępnionej galerii obrazów przy użyciu Azure PowerShell 
+# <a name="create-a-shared-image-gallery-with-azure-powershell"></a>Tworzenie udostępnionej galerii obrazów za pomocą programu Azure PowerShell 
 
-[Galeria obrazów udostępnionych](shared-image-galleries.md) upraszcza udostępnianie obrazów niestandardowych w całej organizacji. Obrazy niestandardowe są podobne do obrazów z platformy handlowej, ale tworzy się je samodzielnie. Niestandardowe obrazy mogą służyć do uruchamiania zadań wdrażania, takich jak wstępne ładowanie aplikacji, konfiguracje aplikacji i inne konfiguracje systemu operacyjnego. 
+[Udostępniona galeria obrazów](shared-image-galleries.md) upraszcza niestandardowe udostępnianie obrazów w całej organizacji. Obrazy niestandardowe są podobne do obrazów z platformy handlowej, ale tworzy się je samodzielnie. Obrazy niestandardowe mogą być używane do uruchamiania zadań wdrażania, takich jak wstępne ładowanie aplikacji, konfiguracji aplikacji i innych konfiguracji systemu operacyjnego. 
 
-Galeria obrazów udostępnionych umożliwia udostępnianie niestandardowych obrazów maszyn wirtualnych innym osobom w organizacji, w obrębie lub w różnych regionach, w ramach dzierżawy usługi AAD. Wybierz obrazy, które chcesz udostępnić, które regiony mają być dostępne w programie, oraz użytkowników, którym chcesz je udostępnić. Można utworzyć wiele galerii, aby można było logicznie grupować obrazy udostępnione. 
+Galeria obrazów udostępnionych umożliwia udostępnianie niestandardowych obrazów maszyn wirtualnych innym osobom w organizacji, w obrębie lub między regionami, w dzierżawie usługi AAD. Wybierz obrazy, które chcesz udostępnić, regiony, w których chcesz je udostępnić i komu chcesz je udostępnić. Można utworzyć wiele galerii, aby logicznie grupować udostępnione obrazy. 
 
-Galeria jest zasobem najwyższego poziomu, który zapewnia pełną kontrolę dostępu opartą na rolach (RBAC). Obrazy mogą być poddane wersji i można wybrać replikację poszczególnych wersji obrazu do innego zestawu regionów świadczenia usługi Azure. Galeria działa tylko z obrazami zarządzanymi.
+Galeria jest zasobem najwyższego poziomu, który zapewnia pełną kontrolę dostępu opartą na rolach (RBAC). Obrazy mogą być wersjona i można wybrać do replikacji każdej wersji obrazu do innego zestawu regionów platformy Azure. Galeria działa tylko z zarządzanymi obrazami.
 
-Funkcja galerii obrazów udostępnionych ma wiele typów zasobów. Firma Microsoft będzie używać tych aplikacji lub tworzyć je w tym artykule:
+Funkcja Galeria obrazów udostępnionych ma wiele typów zasobów. Będziemy używać lub budować te w tym artykule:
 
 | Zasób | Opis|
 |----------|------------|
-| **Obraz zarządzany** | Jest to podstawowy obraz, którego można użyć samodzielnie lub użyć do utworzenia **wersji obrazu** w galerii obrazów. Obrazy zarządzane są tworzone na podstawie uogólnionych maszyn wirtualnych. Obraz zarządzany jest specjalnym typem dysku VHD, który może służyć do tworzenia wielu maszyn wirtualnych i może być teraz używany do utworzenia wersji obrazu udostępnionego. |
-| **Galeria obrazów** | Podobnie jak w przypadku portalu Azure Marketplace, **Galeria obrazów** jest repozytorium do zarządzania i udostępniania obrazów, ale ty kontrolujesz, kto ma dostęp. |
-| **Definicja obrazu** | Obrazy są zdefiniowane w galerii i zawierają informacje o obrazie i wymaganiach dotyczących używania go wewnętrznie. Dotyczy to zarówno obrazu systemu Windows, jak i Linux, informacji o wersji oraz minimalnych i maksymalnych wymagań dotyczących pamięci. Jest to definicja typu obrazu. |
-| **Wersja obrazu** | **Wersja obrazu** jest używana do tworzenia maszyny wirtualnej w przypadku korzystania z galerii. Dla danego środowiska można mieć wiele wersji obrazu. Podobnie jak w przypadku obrazu zarządzanego, w przypadku tworzenia maszyny wirtualnej przy użyciu **wersji obrazu** wersja obrazu jest używana do tworzenia nowych dysków dla maszyny wirtualnej. Wersje obrazów można wielokrotnie używać. |
+| **Obraz zarządzany** | Jest to podstawowy obraz, który może być używany samodzielnie lub używany do tworzenia **wersji obrazu** w galerii obrazów. Obrazy zarządzane są tworzone na uogólnionych maszynach wirtualnych. Obraz zarządzany jest specjalnym typem dysku VHD, który może służyć do tworzenia wielu maszyn wirtualnych i może być teraz używany do tworzenia wersji obrazów udostępnionych. |
+| **Galeria zdjęć** | Podobnie jak w portalu Azure **Marketplace, galeria obrazów** jest repozytorium do zarządzania i udostępniania obrazów, ale można kontrolować, kto ma dostęp. |
+| **Definicja obrazu** | Obrazy są definiowane w galerii i zawierają informacje o obrazie i wymaganiach dotyczących używania go wewnętrznie. Obejmuje to, czy obraz jest Windows lub Linux, informacje o wersji i minimalne i maksymalne wymagania dotyczące pamięci. Jest to definicja typu obrazu. |
+| **Wersja obrazu** | **Wersja obrazu** jest to, czego używasz do tworzenia maszyny Wirtualnej podczas korzystania z galerii. W zależności od środowiska może być dostępnych wiele wersji obrazu. Podobnie jak w przypadku obrazu zarządzanego, podczas tworzenia maszyny Wirtualnej przy użyciu **wersji obrazu** wersja obrazu jest używana do tworzenia nowych dysków dla maszyny Wirtualnej. Wersje obrazów mogą być używane wiele razy. |
 
-Dla każdego 20 maszyn wirtualnych, które tworzysz współbieżnie, zalecamy zachowanie jednej repliki. Na przykład jeśli tworzysz maszyny wirtualne 120 na bieżąco przy użyciu tego samego obrazu w regionie, sugerujemy zachowywanie co najmniej 6 replik obrazu. Aby uzyskać więcej informacji, zobacz [skalowanie](/azure/virtual-machines/windows/shared-image-galleries#scaling).
+Dla każdego 20 maszyn wirtualnych, które tworzysz jednocześnie, zaleca się zachować jedną replikę. Na przykład jeśli tworzysz 120 maszyn wirtualnych jednocześnie przy użyciu tego samego obrazu w regionie, zalecamy zachować co najmniej 6 replik obrazu. Aby uzyskać więcej informacji, zobacz [Skalowanie](/azure/virtual-machines/windows/shared-image-galleries#scaling).
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
-Aby ukończyć ten przykład w tym artykule, musisz mieć istniejący obraz zarządzany. Możesz skorzystać z [samouczka: Tworzenie niestandardowego obrazu maszyny wirtualnej platformy Azure z Azure PowerShell](tutorial-custom-images.md) , aby utworzyć je w razie potrzeby. Jeśli zarządzany obraz zawiera dysk z danymi, rozmiar dysku danych nie może być większy niż 1 TB.
+Aby ukończyć przykład w tym artykule, musisz mieć istniejący obraz zarządzany. Możesz wykonać [samouczek: Utwórz niestandardowy obraz maszyny Wirtualnej platformy Azure za pomocą programu Azure PowerShell,](tutorial-custom-images.md) aby utworzyć go w razie potrzeby. Jeśli obraz zarządzany zawiera dysk danych, rozmiar dysku danych nie może być większy niż 1 TB.
 
-Podczas pracy z tym artykułem należy zastąpić grupę zasobów i nazwy maszyn wirtualnych, jeśli są one odpowiednie.
+Podczas pracy nad tym artykułem w razie potrzeby zastąp nazwy grupy zasobów i maszyn wirtualnych.
 
 [!INCLUDE [virtual-machines-common-shared-images-powershell](../../../includes/virtual-machines-common-shared-images-powershell.md)]
 
  
 ## <a name="create-vms-from-an-image"></a>Tworzenie maszyn wirtualnych na podstawie obrazu
 
-Po zakończeniu wersji obrazu można utworzyć co najmniej jedną nową maszynę wirtualną. Za pomocą polecenia cmdlet [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) . 
+Po zakończeniu wersji obrazu można utworzyć jedną lub więcej nowych maszyn wirtualnych. Korzystanie z polecenia cmdlet [New-AzVM.](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) 
 
-Ten przykład tworzy maszynę wirtualną o nazwie *myVMfromImage*w liście *zasobów* w regionie *Południowo-środkowe stany USA* .
+W tym przykładzie utworzy się maszynę wirtualną o nazwie *myVMfromImage*, w *myResourceGroup* w centrum danych *południowo-środkowej usa.*
 
 
 ```azurepowershell-interactive
@@ -97,14 +97,14 @@ New-AzVM -ResourceGroupName $resourceGroup -Location $location -VM $vmConfig
 [!INCLUDE [virtual-machines-common-shared-images-update-delete-ps](../../../includes/virtual-machines-common-shared-images-update-delete-ps.md)]
 
 ## <a name="next-steps"></a>Następne kroki
-[Usługa Azure Image Builder (wersja zapoznawcza)](image-builder-overview.md) ułatwia automatyzację tworzenia wersji obrazu. można nawet użyć jej do aktualizacji i [tworzenia nowej wersji obrazu z istniejącej wersji obrazu](image-builder-gallery-update-image-version.md). 
+[Usługa Azure Image Builder (wersja zapoznawcza)](image-builder-overview.md) może pomóc w automatyzacji tworzenia wersji obrazu, można nawet użyć go do aktualizacji i [utworzenia nowej wersji obrazu z istniejącej wersji obrazu](image-builder-gallery-update-image-version.md). 
 
-Możesz również utworzyć zasób udostępnionej galerii obrazów przy użyciu szablonów. Dostępnych jest kilka szablonów szybkiego startu platformy Azure: 
+Zasób Shared Image Gallery można również utworzyć przy użyciu szablonów. Dostępnych jest kilka szablonów szybki start platformy Azure: 
 
 - [Tworzenie galerii obrazów udostępnionych](https://azure.microsoft.com/resources/templates/101-sig-create/)
 - [Tworzenie definicji obrazu w galerii obrazów udostępnionych](https://azure.microsoft.com/resources/templates/101-sig-image-definition-create/)
 - [Tworzenie wersji obrazu w galerii obrazów udostępnionych](https://azure.microsoft.com/resources/templates/101-sig-image-version-create/)
-- [Tworzenie maszyny wirtualnej z wersji obrazu](https://azure.microsoft.com/resources/templates/101-vm-from-sig/)
+- [Tworzenie maszyny Wirtualnej z wersji obrazu](https://azure.microsoft.com/resources/templates/101-vm-from-sig/)
 
-Aby uzyskać więcej informacji na temat udostępnionych galerii obrazów, zobacz [Omówienie](shared-image-galleries.md). Jeśli występują problemy, zobacz temat [Rozwiązywanie problemów z udostępnionymi galeriami obrazów](troubleshooting-shared-images.md).
+Aby uzyskać więcej informacji na temat galerii obrazów udostępnionych, zobacz [Omówienie](shared-image-galleries.md). Jeśli napotkasz problemy, zobacz [Rozwiązywanie problemów z udostępnionymi galeriami obrazów](troubleshooting-shared-images.md).
 

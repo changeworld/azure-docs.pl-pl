@@ -1,5 +1,5 @@
 ---
-title: Integracja z zasadami platformy Azure — Azure Batch | Microsoft Docs
+title: Integracja z zasadami platformy Azure — usługa Azure Batch | Dokumenty firmy Microsoft
 description: ''
 services: batch
 documentationcenter: ''
@@ -15,28 +15,28 @@ ms.date: 02/24/2020
 ms.author: labrenne
 ms.custom: seodec18
 ms.openlocfilehash: 9a306457f838fc79d12be3217d96cc8fb25c9c1b
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77618375"
 ---
-# <a name="integration-with-azure-policy"></a>Integracja z usługą Azure Policy
+# <a name="integration-with-azure-policy"></a>Integracja z zasadami platformy Azure
 
-Azure Policy to usługa platformy Azure służąca do tworzenia, przypisywania i zarządzania zasadami, które wymuszają reguły dotyczące zasobów, aby zapewnić, że te zasoby pozostają zgodne ze standardami firmy i umowami dotyczącymi poziomu usług. Azure Policy szacuje zasoby pod kątem braku zgodności z przypisaną zasadami. 
+Zasady platformy Azure to usługa na platformie Azure używana do tworzenia, przypisywania i zarządzania zasadami wymuszania reguł dotyczących zasobów, aby zapewnić zgodność tych zasobów ze standardami firmowymi i umowami dotyczącymi poziomu usług. Usługa Azure Policy ocenia zasoby pod kątem niezgodności z przypisanymi zasadami. 
 
-Azure Batch ma dwa wbudowane rozszerzenia ułatwiające zarządzanie zgodnością zasad. 
+Usługa Azure Batch ma dwa wbudowane rozszerzenia ułatwiające zarządzanie zgodnością zasad. 
 
-|**Nazwa**...|   **Opis**|**Efekt (s)**|  **Wersja**|    **Element źródłowy**
+|**Nazwa**...|   **Opis**|**Efekt(-y)**|  **Wersja**|    **Źródła**
 |----------------|----------|----------|----------------|---------------|
-|Należy włączyć dzienniki diagnostyczne na kontach wsadowych|   Inspekcja włączenia dzienników diagnostycznych. Pozwala to na ponowne utworzenie śladów aktywności do użycia w celach dochodzeniowych; gdy wystąpi zdarzenie związane z bezpieczeństwem lub w przypadku naruszenia bezpieczeństwa sieci|AuditIfNotExists, wyłączone|  2.0.0|  GitHub|
-|Reguły alertów metryk powinny być skonfigurowane na kontach wsadowych| Inspekcja konfiguracji reguł alertów metryk na koncie wsadowym, aby włączyć wymaganą metrykę|   AuditIfNotExists, wyłączone| 1.0.0|  GitHub|
+|Dzienniki diagnostyczne na kontach usługi Batch powinny być włączone|   Inspekcja włączanie dzienników diagnostycznych. Dzięki temu można odtworzyć szlaki aktywności do wykorzystania w celach dochodzeniowych; w przypadku wystąpienia zdarzenia zabezpieczającego lub naruszenia zabezpieczeń sieci|AuditIfNotExists, Wyłączone|  2.0.0|  GitHub|
+|Reguły alertów metryk powinny być skonfigurowane na kontach usługi Batch| Konfiguracja inspekcji reguł alertów metryk na koncie usługi Batch w celu włączenia wymaganej metryki|   AuditIfNotExists, Wyłączone| 1.0.0|  GitHub|
 
-Definicje zasad opisują warunki, które muszą zostać spełnione. Warunek porównuje właściwość zasobu z wymaganą wartością. Pola właściwości zasobu są dostępne przy użyciu wstępnie zdefiniowanych aliasów. Aliasy właściwości są używane do uzyskiwania dostępu do określonych właściwości dla typu zasobu. Aliasy pozwalają ograniczyć, jakie wartości lub warunków, które są dozwolone dla właściwości zasobu. Każdy alias mapuje do ścieżki w różnych wersjach interfejsu API dla danego typu zasobu. Podczas oceny zasad aparatu zasad pobiera ścieżkę właściwości dla danej wersji interfejsu API.
+Definicje zasad opisują warunki, które muszą być spełnione. Warunek porównuje właściwość zasobu z wymaganą wartością. Dostęp do pól właściwości zasobu są dostępne przy użyciu wstępnie zdefiniowanych aliasów. Aliasy właściwości są używane do uzyskiwania dostępu do określonych właściwości typu zasobu. Aliasy umożliwiają ograniczenie, jakie wartości lub warunki są dozwolone dla właściwości w zasobie. Każdy alias jest mapowyny do ścieżek w różnych wersjach interfejsu API dla danego typu zasobu. Podczas oceny zasad aparat zasad pobiera ścieżkę właściwości dla tej wersji interfejsu API.
 
-Zasoby wymagane przez zadanie wsadowe obejmują: konto, węzeł obliczeniowy, pulę, zadanie i zadanie. Aby uzyskać dostęp do określonych właściwości dla tych zasobów, należy użyć aliasów właściwości. Dowiedz się więcej o [aliasach](https://docs.microsoft.com/azure/governance/policy/concepts/definition-structure#aliases)
+Zasoby wymagane przez partię obejmują: konto, węzeł obliczeniowy, pulę, zadanie i zadanie. Dlatego można użyć aliasów właściwości, aby uzyskać dostęp do określonych właściwości dla tych zasobów. Dowiedz się więcej o [aliasach](https://docs.microsoft.com/azure/governance/policy/concepts/definition-structure#aliases)
 
-Aby upewnić się, że znasz bieżące aliasy i zapoznaj się z zasobami i zasadami, użyj rozszerzenia zasad platformy Azure dla Visual Studio Code. Można ją zainstalować na wszystkich platformach obsługiwanych przez Visual Studio Code. Ta obsługa obejmuje systemy Windows, Linux i macOS. Zobacz [wskazówki dotyczące instalacji](https://docs.microsoft.com/azure/governance/policy/how-to/extension-for-vscode).
+Aby upewnić się, że znasz bieżące aliasy i przejrzyj zasoby i zasady, użyj rozszerzenia zasad platformy Azure dla programu Visual Studio Code. Można go zainstalować na wszystkich platformach, które są obsługiwane przez visual studio code. Ta obsługa obejmuje systemy Windows, Linux i macOS. Zapoznaj się [z wytycznymi dotyczącymi instalacji](https://docs.microsoft.com/azure/governance/policy/how-to/extension-for-vscode).
 
 
 

@@ -1,36 +1,36 @@
 ---
-title: Opracowywanie w usłudze Azure Kubernetes Service (AKS) przy użyciu wersji roboczej
-description: Użyj wersji roboczej z AKS i Azure Container Registry
+title: Tworzenie usługi Azure Kubernetes (AKS) przy 1
+description: Korzystanie z wersji roboczej z usługą AKS i rejestrem kontenerów platformy Azure
 services: container-service
 author: zr-msft
 ms.topic: article
 ms.date: 06/20/2019
 ms.author: zarhoads
 ms.openlocfilehash: b03256ee65a3c40d8a64d70b877c49e44e68f822
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77595225"
 ---
-# <a name="quickstart-develop-on-azure-kubernetes-service-aks-with-draft"></a>Szybki Start: Programowanie w usłudze Azure Kubernetes Service (AKS) przy użyciu wersji roboczej
+# <a name="quickstart-develop-on-azure-kubernetes-service-aks-with-draft"></a>Szybki start: tworzenie usługi Azure Kubernetes (AKS) przy 1
 
-Wersja robocza to narzędzie typu "open source", które ułatwia pakowanie i uruchamianie kontenerów aplikacji w klastrze Kubernetes. Za pomocą wersji roboczej można szybko ponownie wdrożyć aplikację w celu Kubernetes, gdy nastąpi zmiana kodu, bez konieczności zatwierdzania zmian w systemie kontroli wersji. Aby uzyskać więcej informacji na temat wersji roboczej, zobacz [dokumentację roboczą w witrynie GitHub][draft-documentation].
+Wersja robocza to narzędzie typu open source, które pomaga pakować i uruchamiać kontenery aplikacji w klastrze Kubernetes. W wersji roboczej można szybko ponownie wdrożyć aplikację do kubernetes jak zmiany kodu występują bez konieczności zatwierdzania zmian do kontroli wersji. Aby uzyskać więcej informacji na temat wersji roboczej, zobacz [dokumentację roboczą w usłudze GitHub][draft-documentation].
 
-W tym artykule pokazano, jak używać wersji roboczej do tworzenia pakietów i uruchamiania aplikacji w systemie AKS.
+W tym artykule pokazano, jak używać wersji roboczej do pakowania i uruchamiania aplikacji w u usługi AKS.
 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 * Subskrypcja platformy Azure. Jeśli nie masz subskrypcji platformy Azure, możesz utworzyć [bezpłatne konto](https://azure.microsoft.com/free).
 * [Zainstalowany interfejs wiersza polecenia platformy Azure](/cli/azure/install-azure-cli?view=azure-cli-latest).
-* Zainstalowano i skonfigurowano platformę Docker. Platforma Docker zawiera pakiety, które konfigurują platformę Docker w systemie [Mac][docker-for-mac], [Windows][docker-for-windows]lub [Linux][docker-for-linux] .
-* [Helm v2][helm-install].
-* [Zainstalowano wersję roboczą][draft-documentation].
+* Docker zainstalowany i skonfigurowany. Środowisko Docker zawiera pakiety, które umożliwiają konfigurowanie platformy Docker w systemie [Mac][docker-for-mac], [Windows][docker-for-windows] lub [Linux][docker-for-linux].
+* [Helm v2 zainstalowany][helm-install].
+* [Wersja robocza zainstalowana][draft-documentation].
 
-## <a name="create-an-azure-kubernetes-service-cluster"></a>Tworzenie klastra usługi Azure Kubernetes Service
+## <a name="create-an-azure-kubernetes-service-cluster"></a>Tworzenie klastra usługi Kubernetes platformy Azure
 
-Utwórz klaster AKS. Poniższe polecenia tworzą grupę zasobów o nazwie Moja zasobów i klaster AKS o nazwie MyAKS.
+Tworzenie klastra AKS. Poniższe polecenia tworzą grupę zasobów o nazwie MyResourceGroup i klaster AKS o nazwie MyAKS.
 
 ```azurecli
 az group create --name MyResourceGroup --location eastus
@@ -38,13 +38,13 @@ az aks create -g MyResourceGroup -n MyAKS --location eastus --node-vm-size Stand
 ```
 
 ## <a name="create-an-azure-container-registry"></a>Tworzenie rejestru Azure Container Registry
-Aby można było uruchomić aplikację w klastrze AKS przy użyciu wersji roboczej, musisz mieć Azure Container Registry do przechowywania obrazów kontenerów. Poniższy przykład używa [AZ ACR Create][az-acr-create] , aby utworzyć ACR o nazwie *MyDraftACR* w grupie *zasobów zasobu* z *podstawową* jednostką SKU. Należy podać własną unikatową nazwę rejestru. Nazwa rejestru musi być unikatowa w obrębie platformy Azure i może zawierać od 5 do 50 znaków alfanumerycznych. *Podstawowa* jednostka SKU to zoptymalizowany pod kątem kosztów punkt wejścia do celów programistycznych zapewniający równowagę między przestrzenią dyskową i przepływnością.
+Aby użyć wersji roboczej do uruchamiania aplikacji w klastrze AKS, potrzebujesz rejestru kontenerów platformy Azure do przechowywania obrazów kontenerów. W poniższym przykładzie użyto [az acr create][az-acr-create] do utworzenia acr o nazwie *MyDraftACR* w grupie zasobów *MyResourceGroup* z *podstawową* jednostką SKU. Należy podać własną unikatową nazwę rejestru. Nazwa rejestru musi być unikatowa w obrębie platformy Azure i może zawierać od 5 do 50 znaków alfanumerycznych. *Podstawowa* jednostka SKU to zoptymalizowany pod kątem kosztów punkt wejścia do celów programistycznych zapewniający równowagę między przestrzenią dyskową i przepływnością.
 
 ```azurecli
 az acr create --resource-group MyResourceGroup --name MyDraftACR --sku Basic
 ```
 
-Dane wyjściowe będą podobne do poniższego przykładu. Zanotuj wartość *loginServer* dla ACR, ponieważ zostanie ona użyta w późniejszym kroku. W poniższym przykładzie *mydraftacr.azurecr.IO* jest *loginServer* dla *mydraftacr*.
+Dane wyjściowe będą podobne do poniższego przykładu. Zanotuj wartość *loginServer* dla swojego ACR, ponieważ będzie on używany w późniejszym kroku. W poniższym przykładzie *mydraftacr.azurecr.io* jest *loginServer* dla *MyDraftACR*.
 
 ```console
 {
@@ -69,17 +69,17 @@ Dane wyjściowe będą podobne do poniższego przykładu. Zanotuj wartość *log
 ```
 
 
-Aby wersja robocza mogła używać wystąpienia ACR, musisz najpierw się zalogować. Użyj polecenia [AZ ACR login][az-acr-login] , aby się zalogować. Poniższy przykład zaloguje się do ACR o nazwie *MyDraftACR*.
+Aby wersja robocza używała wystąpienia usługi ACR, należy się najpierw zalogować. Użyj polecenia [az acr login,][az-acr-login] aby się zalogować. Poniższy przykład zaloguje się do ACR o nazwie *MyDraftACR*.
 
 ```azurecli
 az acr login --name MyDraftACR
 ```
 
-Polecenie zwraca komunikat *Logowanie pomyślne* po ukończeniu.
+Polecenie zwraca komunikat *Pomyślnie logowania* po zakończeniu.
 
-## <a name="create-trust-between-aks-cluster-and-acr"></a>Tworzenie zaufania między klastrem AKS a ACR
+## <a name="create-trust-between-aks-cluster-and-acr"></a>Tworzenie zaufania między klastrem AKS a acr
 
-Klaster AKS wymaga również dostępu do ACR w celu ściągania obrazów kontenera i uruchamiania ich. Możesz zezwolić na dostęp do ACR z AKS przez ustanowienie zaufania. Aby ustanowić relację zaufania między klastrem AKS i rejestrem ACR, Udziel uprawnień dla jednostki usługi Azure Active Directory używanej przez klaster AKS w celu uzyskania dostępu do rejestru ACR. Następujące polecenia przyznają uprawnienia do nazwy głównej usługi klastra *MyAKS* w grupie *zasobów* do *MyDraftACR* ACR w liście *zasobów*.
+Klaster AKS również potrzebuje dostępu do usługi ACR, aby wyciągnąć obrazy kontenerów i uruchomić je. Zezwalasz na dostęp do acr z AKS przez ustanowienie zaufania. Aby ustanowić zaufanie między klastrem AKS a rejestrem usługi ACR, należy udzielić uprawnień dla jednostki usługi Azure Active Directory używanej przez klaster AKS do uzyskiwania dostępu do rejestru ACR. Poniższe polecenia przyznają uprawnienia podmiotowi usługi klastra *MyAKS* w *grupie MyResourceGroup* do *usługi MyDraftACR* ACR w *grupie MyResourceGroup*.
 
 ```azurecli
 # Get the service principal ID of your AKS cluster
@@ -92,9 +92,9 @@ ACR_RESOURCE_ID=$(az acr show --resource-group MyResourceGroup --name MyDraftACR
 az role assignment create --assignee $AKS_SP_ID --scope $ACR_RESOURCE_ID --role contributor
 ```
 
-## <a name="connect-to-your-aks-cluster"></a>Nawiązywanie połączenia z klastrem AKS
+## <a name="connect-to-your-aks-cluster"></a>Łączenie się z klastrem AKS
 
-Aby nawiązać połączenie z klastrem Kubernetes z komputera lokalnego, należy użyć [polecenia kubectl][kubectl], klienta wiersza polecenia Kubernetes.
+Aby nawiązać połączenie z klastrem Kubernetes z komputera lokalnego, należy użyć narzędzia [kubectl][kubectl], czyli klienta wiersza polecenia usługi Kubernetes.
 
 Jeśli korzystasz z usługi Azure Cloud Shell, narzędzie `kubectl` jest już zainstalowane. Możesz także zainstalować je lokalnie za pomocą polecenia [az aks install-cli][]:
 
@@ -102,17 +102,17 @@ Jeśli korzystasz z usługi Azure Cloud Shell, narzędzie `kubectl` jest już za
 az aks install-cli
 ```
 
-Aby skonfigurować narzędzie `kubectl` w celu nawiązania połączenia z klastrem Kubernetes, użyj polecenia [az aks get-credentials][]. Poniższy przykład pobiera poświadczenia dla klastra AKS o nazwie *MyAKS* w liście *zasobów*:
+Aby skonfigurować narzędzie `kubectl` w celu nawiązania połączenia z klastrem Kubernetes, użyj polecenia [az aks get-credentials][]. Poniższy przykład pobiera poświadczenia dla klastra AKS o nazwie *MyAKS* w *MyResourceGroup:*
 
 ```azurecli
 az aks get-credentials --resource-group MyResourceGroup --name MyAKS
 ```
 
-## <a name="create-a-service-account-for-helm"></a>Utwórz konto usługi dla Helm
+## <a name="create-a-service-account-for-helm"></a>Tworzenie konta usługi dla helmu
 
-Przed wdrożeniem Helm w klastrze AKS z włączoną funkcją RBAC należy mieć konto usługi i powiązanie roli dla usługi. Aby uzyskać więcej informacji na temat zabezpieczania Helm/do usługi w klastrze z obsługą RBAC, zobacz odniesień [, przestrzenie nazw i RBAC][tiller-rbac]. Jeśli w klastrze AKS nie włączono kontroli RBAC, Pomiń ten krok.
+Przed wdrożeniem helm w klastrze AKS z włączoną funkcją RBAC, należy konto usługi i powiązanie roli dla usługi Tiller. Aby uzyskać więcej informacji na temat zabezpieczania helm / tiller w klastrze z włączoną funkcją RBAC, zobacz [Tiller, Przestrzenie nazw i RBAC][tiller-rbac]. Jeśli klaster AKS nie jest włączony RBAC, pomiń ten krok.
 
-Utwórz plik o nazwie `helm-rbac.yaml` i skopiuj go do następującej YAML:
+Utwórz plik `helm-rbac.yaml` o nazwie i skopiuj w następującym pliku YAML:
 
 ```yaml
 apiVersion: v1
@@ -135,14 +135,14 @@ subjects:
     namespace: kube-system
 ```
 
-Utwórz konto usługi i powiązanie roli za pomocą polecenia `kubectl apply`:
+Utwórz powiązanie konta usługi `kubectl apply` i roli za pomocą polecenia:
 
 ```console
 kubectl apply -f helm-rbac.yaml
 ```
 
-## <a name="configure-helm"></a>Konfigurowanie Helm
-Aby wdrożyć podstawową usługę do klastra AKS, użyj polecenia [init Helm][helm-init] . Jeśli w klastrze nie włączono kontroli RBAC, Usuń `--service-account` argument i wartość.
+## <a name="configure-helm"></a>Konfigurowanie helma
+Aby wdrożyć podstawowy kultywator w klastrze AKS, użyj polecenia [init helm.][helm-init] Jeśli klaster nie jest włączony RBAC, usuń `--service-account` argument i wartość.
 
 ```console
 helm init --service-account tiller --node-selectors "beta.kubernetes.io/os"="linux"
@@ -150,7 +150,7 @@ helm init --service-account tiller --node-selectors "beta.kubernetes.io/os"="lin
 
 ## <a name="configure-draft"></a>Konfigurowanie wersji roboczej
 
-Jeśli nie skonfigurowano wersji roboczej na komputerze lokalnym, uruchom `draft init`:
+Jeśli wersja robocza nie została skonfigurowana `draft init`na komputerze lokalnym, uruchom:
 
 ```console
 $ draft init
@@ -161,32 +161,32 @@ Installing default pack repositories...
 Happy Sailing!
 ```
 
-Należy również skonfigurować wersję roboczą, aby korzystała z *LOGINSERVER* ACR. Następujące polecenie używa `draft config set`, aby użyć `mydraftacr.azurecr.io` jako rejestru.
+Musisz również skonfigurować Draft, aby korzystać z *loginServer* swojego ACR. Następujące polecenie używa `draft config set` do `mydraftacr.azurecr.io` użycia jako rejestru.
 
 ```console
 draft config set registry mydraftacr.azurecr.io
 ```
 
-Skonfigurowano wersję roboczą do korzystania z ACR, a wersja robocza może wypchnąć obrazy kontenerów do ACR. Gdy wersja robocza uruchamia aplikację w klastrze AKS, nie są wymagane żadne hasła ani wpisy tajne do wypychania lub ściągania z rejestru ACR. Ponieważ relacja zaufania została utworzona między klastrem AKS a ACR, uwierzytelnianie odbywa się na poziomie Azure Resource Manager przy użyciu Azure Active Directory.
+Wersja robocza została skonfigurowana do używania usługi ACR, a wersja robocza może wypychać obrazy kontenerów do usługi ACR. Gdy wersja robocza uruchamia aplikację w klastrze AKS, żadne hasła ani wpisy tajne nie są wymagane do wypychania lub ściągania z rejestru usługi ACR. Ponieważ między klastrem AKS a usługą ACR utworzono zaufanie, uwierzytelnianie odbywa się na poziomie usługi Azure Resource Manager przy użyciu usługi Azure Active Directory.
 
 ## <a name="download-the-sample-application"></a>Pobieranie przykładowej aplikacji
 
-Ten przewodnik Szybki Start używa [przykładowej aplikacji Java z repozytorium GitHub][example-java]. Sklonuj aplikację z witryny GitHub i przejdź do katalogu `draft/examples/example-java/`.
+Ten szybki start używa [przykładowej aplikacji Java z repozytorium GitHub draft][example-java]. Sklonuj aplikację z gitHub `draft/examples/example-java/` i przejdź do katalogu.
 
 ```console
 git clone https://github.com/Azure/draft
 cd draft/examples/example-java/
 ```
 
-## <a name="run-the-sample-application-with-draft"></a>Uruchamianie przykładowej aplikacji z wersją roboczą
+## <a name="run-the-sample-application-with-draft"></a>Uruchamianie przykładowej aplikacji za pomocą wersji roboczej
 
-Użyj `draft create` polecenie, aby przygotować aplikację.
+Użyj `draft create` polecenia, aby przygotować aplikację.
 
 ```console
 draft create
 ```
 
-To polecenie tworzy artefakty, które są używane do uruchamiania aplikacji w klastrze Kubernetes. Te elementy obejmują pliku dockerfile, wykres Helm i plik *Draft. toml* , który jest plikiem konfiguracji wersji roboczej.
+To polecenie tworzy artefakty, które są używane do uruchamiania aplikacji w klastrze Kubernetes. Elementy te obejmują plik Dockerfile, wykres Helm i plik *draft.toml,* który jest plikiem konfiguracji Wersja robocza.
 
 ```console
 $ draft create
@@ -195,13 +195,13 @@ $ draft create
 --> Ready to sail
 ```
 
-Aby uruchomić przykładową aplikację w klastrze AKS, użyj polecenia `draft up`.
+Aby uruchomić przykładową aplikację w klastrze `draft up` AKS, użyj polecenia.
 
 ```console
 draft up
 ```
 
-To polecenie kompiluje pliku dockerfile, aby utworzyć obraz kontenera, wypchnięcie obrazu do ACR i zainstalowanie wykresu Helm w celu uruchomienia aplikacji w AKS. Przy pierwszym uruchomieniu tego polecenia, wypychanie i ściąganie obrazu kontenera może zająć trochę czasu. Po zbuforowaniu warstw podstawowych czas wdrażania aplikacji jest znacznie zmniejszany.
+To polecenie tworzy plik Dockerfile, aby utworzyć obraz kontenera, wypycha obraz do usługi ACR i instaluje wykres Helm, aby uruchomić aplikację w aks. Przy pierwszym uruchomieniu tego polecenia naciśnięcie i pociągnięcie obrazu kontenera może zająć trochę czasu. Po buforowaniu warstw podstawowych znacznie skrócić czas wdrożenia aplikacji.
 
 ```
 $ draft up
@@ -213,15 +213,15 @@ example-java: Releasing Application: SUCCESS ⚓  (4.6979s)
 Inspect the logs with `draft logs 01CMZAR1F4T1TJZ8SWJQ70HCNH`
 ```
 
-## <a name="connect-to-the-running-sample-application-from-your-local-machine"></a>Nawiązywanie połączenia z uruchomioną przykładową aplikacją z komputera lokalnego
+## <a name="connect-to-the-running-sample-application-from-your-local-machine"></a>Łączenie się z uruchomiającą przykładową aplikacją z komputera lokalnego
 
-Aby przetestować aplikację, użyj polecenia `draft connect`.
+Aby przetestować aplikację, `draft connect` użyj polecenia.
 
 ```console
 draft connect
 ```
 
-To polecenie proxy jest bezpiecznym połączeniem z Kubernetes pod. Po zakończeniu będzie można uzyskać dostęp do aplikacji przy użyciu podanego adresu URL.
+To polecenie proxy bezpieczne połączenie z zasobnikiem Kubernetes. Po zakończeniu, aplikacja jest dostępna pod podanym adresem URL.
 
 ```console
 $ draft connect
@@ -234,13 +234,13 @@ Connect to java:4567 on localhost:49804
 [java]: >> Listening on 0.0.0.0:4567
 ```
 
-Przejdź do aplikacji w przeglądarce przy użyciu adresu URL `localhost`, aby wyświetlić przykładową aplikację. W powyższym przykładzie adres URL jest `http://localhost:49804`. Zatrzymaj połączenie przy użyciu `Ctrl+c`.
+Przejdź do aplikacji w przeglądarce przy użyciu adresu URL, `localhost` aby wyświetlić przykładową aplikację. W powyższym przykładzie `http://localhost:49804`adres URL to . Zatrzymaj połączenie `Ctrl+c`za pomocą pliku .
 
 ## <a name="access-the-application-on-the-internet"></a>Dostęp do aplikacji w Internecie
 
-W poprzednim kroku utworzono połączenie serwera proxy z aplikacją znajdującą się w klastrze AKS. Podczas tworzenia i testowania aplikacji możesz chcieć udostępnić ją w Internecie. Aby udostępnić aplikację w Internecie, można utworzyć usługę Kubernetes z typem [modułu równoważenia obciążenia][kubernetes-service-loadbalancer].
+W poprzednim kroku utworzono połączenie serwera proxy z zasobnikiem aplikacji w klastrze AKS. Podczas opracowywania i testowania aplikacji można udostępnić aplikację w Internecie. Aby udostępnić aplikację w Internecie, można utworzyć usługę Kubernetes z typem [LoadBalancer][kubernetes-service-loadbalancer].
 
-Aktualizowanie `charts/example-java/values.yaml` w celu utworzenia usługi *modułu równoważenia obciążenia* . Zmień wartość parametru *Service. Type* z *ClusterIP* na moduł *równoważenia obciążenia*.
+Zaktualizuj, `charts/example-java/values.yaml` aby utworzyć usługę *LoadBalancer.* Zmień wartość *service.type* z *ClusterIP* na *LoadBalancer*.
 
 ```yaml
 ...
@@ -252,13 +252,13 @@ service:
 ...
 ```
 
-Zapisz zmiany, zamknij plik i uruchom `draft up`, aby ponownie uruchomić aplikację.
+Zapisz zmiany, zamknij plik i `draft up` uruchom ponownie aplikację.
 
 ```console
 draft up
 ```
 
-Zwrócenie publicznego adresu IP przez usługę może potrwać kilka minut. Aby monitorować postęp, użyj `kubectl get service` polecenia z parametrem *Watch* :
+Trwa kilka minut dla usługi do zwrócenia publicznego adresu IP. Aby monitorować postęp, `kubectl get service` użyj polecenia z parametrem *czujki:*
 
 ```console
 $ kubectl get service --watch
@@ -269,13 +269,13 @@ example-java-java   LoadBalancer  10.0.141.72   <pending>     80:32150/TCP   2m
 example-java-java   LoadBalancer   10.0.141.72   52.175.224.118  80:32150/TCP   7m
 ```
 
-Przejdź do modułu równoważenia obciążenia aplikacji w przeglądarce przy użyciu *zewnętrznego adresu IP* , aby wyświetlić przykładową aplikację. W powyższym przykładzie adres IP jest `52.175.224.118`.
+Przejdź do modułu równoważenia obciążenia aplikacji w przeglądarce przy użyciu *adresu IP zewnętrznego,* aby wyświetlić przykładową aplikację. W powyższym przykładzie `52.175.224.118`adres IP jest .
 
-## <a name="iterate-on-the-application"></a>Wykonaj iterację aplikacji
+## <a name="iterate-on-the-application"></a>Iteracji na wniosek
 
-Możesz wykonać iterację aplikacji, wprowadzając zmiany lokalnie i ponownie uruchamiając `draft up`.
+Możesz iterować aplikację, dokonując zmian lokalnie i ponownie wykonując . `draft up`
 
-Aktualizowanie wiadomości zwróconej w [wierszu 7 src/Main/Java/HelloWorld/Hello. Java][example-java-hello-l7]
+Aktualizacja wiadomości zwróconej na [linii 7 src/main/java/helloworld/Hello.java][example-java-hello-l7]
 
 ```java
     public static void main(String[] args) {
@@ -283,7 +283,7 @@ Aktualizowanie wiadomości zwróconej w [wierszu 7 src/Main/Java/HelloWorld/Hell
     }
 ```
 
-Uruchom polecenie `draft up`, aby ponownie wdrożyć aplikację:
+Uruchom `draft up` polecenie, aby ponownie wdrożyć aplikację:
 
 ```console
 $ draft up
@@ -295,25 +295,25 @@ example-java: Releasing Application: SUCCESS ⚓  (3.5773s)
 Inspect the logs with `draft logs 01CMZC9RF0TZT7XPWGFCJE15X4`
 ```
 
-Aby wyświetlić zaktualizowaną aplikację, przejdź ponownie do adresu IP modułu równoważenia obciążenia i sprawdź, czy zmiany są widoczne.
+Aby wyświetlić zaktualizowaną aplikację, przejdź ponownie do adresu IP modułu równoważenia obciążenia i sprawdź, czy zostaną wyświetlone zmiany.
 
 ## <a name="delete-the-cluster"></a>Usuwanie klastra
 
-Gdy klaster nie jest już wymagany, użyj polecenia [AZ Group Delete][az-group-delete] , aby usunąć grupę zasobów, klaster AKS, rejestr kontenerów, zapisane obrazy kontenerów i wszystkie powiązane zasoby.
+Gdy klaster nie jest już potrzebny, użyj polecenia [delete grupy AZ,][az-group-delete] aby usunąć grupę zasobów, klaster AKS, rejestr kontenerów, przechowywane tam obrazy kontenerów i wszystkie powiązane zasoby.
 
 ```azurecli-interactive
 az group delete --name MyResourceGroup --yes --no-wait
 ```
 
 > [!NOTE]
-> Po usunięciu klastra jednostka usługi Azure Active Directory używana przez klaster usługi AKS nie jest usuwana. Aby zapoznać się z instrukcjami dotyczącymi usuwania jednostki usługi, zobacz temat [zagadnienia i usuwanie głównej usługi AKS][sp-delete].
+> Po usunięciu klastra jednostka usługi Azure Active Directory używana przez klaster usługi AKS nie jest usuwana. Aby sprawdzić, jak usunąć jednostkę usługi, zobacz [AKS service principal considerations and deletion (Uwagi dotyczące jednostki usługi AKS i jej usuwanie)][sp-delete].
 
 ## <a name="next-steps"></a>Następne kroki
 
-Aby uzyskać więcej informacji o korzystaniu z wersji roboczej, zobacz dokumentację roboczą w witrynie GitHub.
+Aby uzyskać więcej informacji na temat korzystania z wersji roboczej, zobacz wersji roboczej dokumentacji w usłudze GitHub.
 
 > [!div class="nextstepaction"]
-> [Dokumentacja wersji roboczej][draft-documentation]
+> [Wersja robocza dokumentacji][draft-documentation]
 
 
 [az-acr-login]: /cli/azure/acr#az-acr-login

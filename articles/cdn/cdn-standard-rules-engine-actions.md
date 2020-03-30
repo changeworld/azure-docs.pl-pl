@@ -1,6 +1,6 @@
 ---
-title: Akcje w aparacie reguł standardowych dla Azure CDN | Microsoft Docs
-description: Dokumentacja referencyjna dotycząca akcji w aparacie standardowych reguł dla platformy Azure Content Delivery Network (Azure CDN).
+title: Akcje w silniku reguł standardowych dla usługi Azure CDN | Dokumenty firmy Microsoft
+description: Dokumentacja dotycząca akcji w silniku reguł standardowych dla usługi Azure Content Delivery Network (Azure CDN).
 services: cdn
 author: mdgattuso
 ms.service: azure-cdn
@@ -8,109 +8,109 @@ ms.topic: article
 ms.date: 11/01/2019
 ms.author: magattus
 ms.openlocfilehash: 53280bc90f629d93ff8a045c80f34a73970b43f6
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/26/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74171630"
 ---
-# <a name="actions-in-the-standard-rules-engine-for-azure-cdn"></a>Akcje w aparacie reguł standardowych dla Azure CDN
+# <a name="actions-in-the-standard-rules-engine-for-azure-cdn"></a>Akcje w silniku reguł standardowych dla usługi Azure CDN
 
-W [aparacie reguł standardowych](cdn-standard-rules-engine.md) dla platformy Azure Content Delivery Network (Azure CDN) reguła zawiera co najmniej jeden warunek dopasowania i akcję. Ten artykuł zawiera szczegółowe opisy akcji, których można użyć w aparacie reguł standardowych dla Azure CDN.
+W [silniku reguł standardowych](cdn-standard-rules-engine.md) dla usługi Azure Content Delivery Network (Azure CDN) reguła składa się z co najmniej jednego dopasowania i akcji. Ten artykuł zawiera szczegółowe opisy akcji, których można użyć w aparat reguł standardowych dla usługi Azure CDN.
 
-Druga część reguły jest akcją. Akcja definiuje zachowanie stosowane do typu żądania, który identyfikuje warunek dopasowania lub zestaw warunków zgodności.
+Drugą częścią reguły jest akcja. Akcja definiuje zachowanie, które jest stosowane do typu żądania, który identyfikuje warunek dopasowania lub zestaw warunków dopasowania.
 
 ## <a name="actions"></a>Akcje
 
-Następujące akcje są dostępne do użycia w aparacie reguł standardowych dla Azure CDN. 
+Następujące akcje są dostępne do użycia w aparat reguł standardowych dla usługi Azure CDN. 
 
 ### <a name="cache-expiration"></a>Wygaśnięcie pamięci podręcznej
 
-Użyj tej akcji, aby zastąpić wartość czasu wygaśnięcia (TTL) punktu końcowego dla żądań, które są zgodne z warunkami określonymi przez reguły.
+Ta akcja służy do zastępowanie wartości czasu wygaśnięcia punktu końcowego dla żądań, które określają warunki zgodne z regułami.
 
-#### <a name="required-fields"></a>Pola wymagane
+#### <a name="required-fields"></a>Wymagane pola
 
 Zachowanie pamięci podręcznej |  Opis              
 ---------------|----------------
-Pomiń pamięć podręczną | Gdy ta opcja jest zaznaczona, a reguła jest zgodna, zawartość nie jest buforowana.
-Mapowań | Gdy ta opcja jest zaznaczona, a reguła jest zgodna, wartość czasu wygaśnięcia zwracana z pochodzenia jest zastępowana wartością określoną w akcji.
-Ustaw, jeśli brakuje | Gdy ta opcja jest zaznaczona, a reguła jest zgodna, jeśli wartość czasu wygaśnięcia nie została zwrócona ze źródła, reguła ustawia czas wygaśnięcia na wartość określoną w akcji.
+Pomijanie pamięci podręcznej | Gdy ta opcja jest zaznaczona, a reguła jest zgodna, zawartość nie jest buforowana.
+Zastąpienie | Gdy ta opcja jest zaznaczona, a reguła jest zgodna, wartość TTL zwrócona ze źródła pochodzi z wartości jest zastępowany wartością określoną w akcji.
+Ustaw, jeśli brakuje | Gdy ta opcja jest zaznaczona i reguła jest zgodna, jeśli nie zwrócono wartości TTL od źródła, reguła ustawia czas wygaśnięcia na wartość określoną w akcji.
 
 #### <a name="additional-fields"></a>Dodatkowe pola
 
 Dni | Godziny | Minuty | Sekundy
 -----|-------|---------|--------
-ZAOKR | ZAOKR | ZAOKR | ZAOKR 
+int | int | int | int 
 
 ### <a name="cache-key-query-string"></a>Ciąg zapytania klucza pamięci podręcznej
 
-Użyj tej akcji, aby zmodyfikować klucz pamięci podręcznej na podstawie ciągów zapytań.
+Ta akcja służy do modyfikowania klucza pamięci podręcznej na podstawie ciągów zapytań.
 
-#### <a name="required-fields"></a>Pola wymagane
+#### <a name="required-fields"></a>Wymagane pola
 
 Zachowanie | Opis
 ---------|------------
-być | Gdy ta opcja jest zaznaczona, a reguła jest zgodna, ciągi zapytania określone w parametrach są uwzględniane podczas generowania klucza pamięci podręcznej. 
+Uwzględnij | Gdy ta opcja jest zaznaczona, a reguła jest zgodna, ciągi zapytań określone w parametrach są uwzględniane podczas generowania klucza pamięci podręcznej. 
 Buforuj każdy unikatowy adres URL | Gdy ta opcja jest zaznaczona, a reguła jest zgodna, każdy unikatowy adres URL ma swój własny klucz pamięci podręcznej. 
-Exclude | Gdy ta opcja jest zaznaczona, a reguła jest zgodna, ciągi zapytania określone w parametrach są wykluczone podczas generowania klucza pamięci podręcznej.
-Ignoruj ciągi zapytań | Gdy ta opcja jest zaznaczona, a reguła jest zgodna, ciągi zapytania nie są brane pod uwagę podczas generowania klucza pamięci podręcznej. 
+Exclude | Gdy ta opcja jest zaznaczona, a reguła jest zgodna, ciągi zapytań określone w parametrach są wykluczane podczas generowania klucza pamięci podręcznej.
+Ignoruj ciągi zapytań | Gdy ta opcja jest zaznaczona, a reguła jest zgodna, ciągi zapytań nie są uwzględniane podczas generowania klucza pamięci podręcznej. 
 
-### <a name="modify-request-header"></a>Modyfikuj nagłówek żądania
+### <a name="modify-request-header"></a>Modyfikowanie nagłówka żądania
 
-Użyj tej akcji, aby zmodyfikować nagłówki, które są obecne w żądaniach wysyłanych do źródła.
+Ta akcja służy do modyfikowania nagłówków, które są obecne w żądaniach wysłanych do źródła.
 
-#### <a name="required-fields"></a>Pola wymagane
+#### <a name="required-fields"></a>Wymagane pola
 
-Działanie | Nazwa nagłówka HTTP | Wartość
+Akcja | Nazwa nagłówka HTTP | Wartość
 -------|------------------|------
-Append | Gdy ta opcja jest zaznaczona, a reguła jest zgodna, nagłówek określony w **nazwie nagłówka** jest dodawany do żądania o określonej wartości. Jeśli nagłówek już istnieje, wartość jest dołączana do istniejącej wartości. | Ciąg
-Pisz | Gdy ta opcja jest zaznaczona, a reguła jest zgodna, nagłówek określony w **nazwie nagłówka** jest dodawany do żądania o określonej wartości. Jeśli nagłówek już istnieje, określona wartość zastępuje istniejącą wartość. | Ciąg
-Usuń | Gdy ta opcja jest zaznaczona, reguła jest zgodna, a nagłówek określony w regule jest obecny, nagłówek zostanie usunięty z żądania. | Ciąg
+Append | Gdy ta opcja jest zaznaczona, a reguła jest zgodna, nagłówek określony w **nazwie nagłówka** jest dodawany do żądania o określonej wartości. Jeśli nagłówek jest już obecny, wartość jest dołączana do istniejącej wartości. | Ciąg
+Zastąp | Gdy ta opcja jest zaznaczona, a reguła jest zgodna, nagłówek określony w **nazwie nagłówka** jest dodawany do żądania o określonej wartości. Jeśli nagłówek jest już obecny, określona wartość zastępuje istniejącą wartość. | Ciąg
+Usuń | Gdy ta opcja jest zaznaczona, reguła jest zgodna, a nagłówek określony w regule jest obecny, nagłówek jest usuwany z żądania. | Ciąg
 
-### <a name="modify-response-header"></a>Modyfikuj nagłówek odpowiedzi
+### <a name="modify-response-header"></a>Modyfikowanie nagłówka odpowiedzi
 
-Użyj tej akcji, aby zmodyfikować nagłówki, które są obecne w odpowiedziach zwracanych do klientów.
+Ta akcja służy do modyfikowania nagłówków, które są obecne w odpowiedzi zwracanych do klientów.
 
-#### <a name="required-fields"></a>Pola wymagane
+#### <a name="required-fields"></a>Wymagane pola
 
-Działanie | Nazwa nagłówka HTTP | Wartość
+Akcja | Nazwa nagłówka HTTP | Wartość
 -------|------------------|------
-Append | Gdy ta opcja jest zaznaczona, a reguła jest zgodna, nagłówek określony w **nazwie nagłówka** jest dodawany do odpowiedzi przy użyciu określonej **wartości**. Jeśli nagłówek jest już obecny, **wartość** jest dołączana do istniejącej wartości. | Ciąg
-Pisz | Gdy ta opcja jest zaznaczona, a reguła jest zgodna, nagłówek określony w **nazwie nagłówka** jest dodawany do odpowiedzi przy użyciu określonej **wartości**. Jeśli nagłówek już istnieje, **wartość** zastępuje istniejącą wartość. | Ciąg
-Usuń | Gdy ta opcja jest zaznaczona, reguła jest zgodna, a nagłówek określony w regule jest obecny, nagłówek zostanie usunięty z odpowiedzi. | Ciąg
+Append | Gdy ta opcja jest zaznaczona, a reguła jest zgodna, nagłówek określony w **nazwie nagłówka** jest dodawany do odpowiedzi przy użyciu określonej **wartości**. Jeśli nagłówek jest już obecny, **Wartość** jest dołączana do istniejącej wartości. | Ciąg
+Zastąp | Gdy ta opcja jest zaznaczona, a reguła jest zgodna, nagłówek określony w **nazwie nagłówka** jest dodawany do odpowiedzi przy użyciu określonej **wartości**. Jeśli nagłówek jest już obecny, **Wartość** zastępuje istniejącą wartość. | Ciąg
+Usuń | Gdy ta opcja jest zaznaczona, reguła jest zgodna, a nagłówek określony w regule jest obecny, nagłówek jest usuwany z odpowiedzi. | Ciąg
 
 ### <a name="url-redirect"></a>Przekierowywanie adresów URL
 
-Użyj tej akcji, aby przekierować klientów do nowego adresu URL. 
+Ta akcja służy do przekierowywania klientów do nowego adresu URL. 
 
-#### <a name="required-fields"></a>Pola wymagane
+#### <a name="required-fields"></a>Wymagane pola
 
 Pole | Opis 
 ------|------------
-Typ | Wybierz typ odpowiedzi, aby powrócić do obiektu żądającego: znaleziono (302), przeniesione (301), tymczasowe przekierowanie (307) i trwałe przekierowanie (308).
-Protocol (Protokół) | Żądanie dopasowania, HTTP i HTTPS.
-Nazwa hosta | Wybierz nazwę hosta, do którego chcesz przekierować żądanie. Pozostaw to pole puste, aby zachować hosta przychodzącego.
-Ścieżka | Zdefiniuj ścieżkę do użycia w przekierowaniu. Pozostaw to pole puste, aby zachować ścieżkę przychodzącą.  
-Ciąg zapytania | Zdefiniuj ciąg zapytania używany w przekierowaniu. Pozostaw to pole puste, aby zachować ciąg zapytania przychodzącego. 
-Trwania | Zdefiniuj fragment do użycia w przekierowaniu. Pozostaw to pole puste, aby zachować fragment przychodzący. 
+Typ | Wybierz typ odpowiedzi, aby powrócić do żądacza: Znaleziono (302), Przeniesiony (301), Przekierowanie tymczasowe (307) i Przekierowanie stałe (308).
+Protocol (Protokół) | Żądanie dopasowania, HTTP, HTTPS.
+Nazwa hosta | Wybierz nazwę hosta, do której ma zostać przekierowane żądanie. Pozostaw puste miejsce, aby zachować hosta przychodzącego.
+Ścieżka | Zdefiniuj ścieżkę do użycia w przekierowaniu. Pozostaw puste miejsce, aby zachować ścieżkę przychodzącą.  
+Ciąg zapytania | Zdefiniuj ciąg zapytania używany w przekierowaniu. Pozostaw puste, aby zachować przychodzący ciąg zapytania. 
+Fragment | Zdefiniuj fragment, który ma być używany w przekierowaniu. Pozostaw puste, aby zachować przychodzący fragment. 
 
-Zdecydowanie zalecamy używanie bezwzględnego adresu URL. Użycie względnego adresu URL może przekierować adresy URL Azure CDN do nieprawidłowej ścieżki. 
+Zdecydowanie zalecamy użycie bezwzględnego adresu URL. Użycie względnego adresu URL może przekierować adresy URL usługi Azure CDN do nieprawidłowej ścieżki. 
 
 ### <a name="url-rewrite"></a>Regenerowanie adresów URL
 
-Użyj tej akcji, aby ponownie napisać ścieżkę żądania, które jest trasy do źródła.
+Ta akcja służy do przepisywania ścieżki żądania, która jest w drodze do źródła.
 
-#### <a name="required-fields"></a>Pola wymagane
+#### <a name="required-fields"></a>Wymagane pola
 
 Pole | Opis 
 ------|------------
-Wzorzec źródła | Zdefiniuj wzorzec źródłowy w ścieżce URL, który ma zostać zamieniony. Obecnie wzorzec źródłowy używa dopasowania opartego na prefiksie. Aby dopasować wszystkie ścieżki URL, użyj ukośnika ( **/** ) jako wartości wzorca źródła.
-Cel | Zdefiniuj ścieżkę docelową do użycia podczas ponownego zapisywania. Ścieżka docelowa zastępuje wzorzec źródłowy.
-Zachowaj niedopasowaną ścieżkę | W przypadku ustawienia wartości **tak**pozostała ścieżka po wzorcu źródłowym zostanie dołączona do nowej ścieżki docelowej. 
+Wzorzec źródła | Zdefiniuj wzorzec źródłowy w ścieżce adresu URL do zastąpienia. Obecnie wzorzec źródłowy używa dopasowania opartego na prefiksie. Aby dopasować wszystkie ścieżki adresu URL, użyj ukośnika do przodu (**/**) jako wartości wzorca źródłowego.
+Element docelowy | Zdefiniuj ścieżkę docelową, która ma być używana podczas przepisywania. Ścieżka docelowa zastępuje wzorzec źródłowy.
+Zachowywanie niedopasowanej ścieżki | Jeśli ustawiona jest na **Tak,** pozostała ścieżka po wzorcu źródłowym jest dołączana do nowej ścieżki docelowej. 
 
 ## <a name="next-steps"></a>Następne kroki
 
-- [Przegląd Azure CDN](cdn-overview.md)
+- [Omówienie usługi Azure CDN](cdn-overview.md)
 - [Dokumentacja aparatu reguł standardowych](cdn-standard-rules-engine-reference.md)
-- [Warunki dopasowania w aparacie standardowych reguł](cdn-standard-rules-engine-match-conditions.md)
-- [Wymuszanie protokołu HTTPS przy użyciu standardowego aparatu reguł](cdn-standard-rules-engine.md)
+- [Warunki dopasowania w silniku reguł standardowych](cdn-standard-rules-engine-match-conditions.md)
+- [Wymuszanie protokołu HTTPS za pomocą aparatu reguł standardowych](cdn-standard-rules-engine.md)

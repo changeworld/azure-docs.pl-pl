@@ -1,6 +1,6 @@
 ---
-title: Publiczne punkty końcowe wystąpienia zarządzania bezpiecznego
-description: Bezpieczne używanie publicznych punktów końcowych na platformie Azure z wystąpieniami zarządzanymi
+title: Bezpieczne publiczne punkty końcowe wystąpienia zarządzanego
+description: Bezpieczne używanie publicznych punktów końcowych na platformie Azure przy użyciu wystąpienia zarządzanego
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -11,46 +11,46 @@ ms.author: srbozovi
 ms.reviewer: vanto, carlrab
 ms.date: 05/08/2019
 ms.openlocfilehash: 6dfeab3530445f8f9a102f47039d15b04fdf134a
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73821741"
 ---
-# <a name="use-an-azure-sql-database-managed-instance-securely-with-public-endpoints"></a>Bezpieczne używanie Azure SQL Database wystąpienia zarządzanego z publicznymi punktami końcowymi
+# <a name="use-an-azure-sql-database-managed-instance-securely-with-public-endpoints"></a>Bezpieczne korzystanie z wystąpienia zarządzanego usługi Azure SQL Database z publicznymi punktami końcowymi
 
-Azure SQL Database wystąpieniami zarządzanymi mogą zapewnić łączność użytkowników za pośrednictwem [publicznych punktów końcowych](../virtual-network/virtual-network-service-endpoints-overview.md). W tym artykule wyjaśniono, jak zwiększyć bezpieczeństwo tej konfiguracji.
+Wystąpienia zarządzanej usługi Azure SQL Database mogą zapewnić łączność z użytkownikami za pośrednictwem [publicznych punktów końcowych.](../virtual-network/virtual-network-service-endpoints-overview.md) W tym artykule wyjaśniono, jak uczynić tę konfigurację bardziej bezpieczną.
 
 ## <a name="scenarios"></a>Scenariusze
 
-Wystąpienie zarządzane SQL Database udostępnia prywatny punkt końcowy, aby umożliwić łączność z wewnątrz sieci wirtualnej. Opcja domyślna to zapewnienie maksymalnej izolacji. Istnieją jednak scenariusze, w których należy podać połączenie z publicznym punktem końcowym:
+Wystąpienie zarządzane bazy danych SQL zapewnia prywatny punkt końcowy, aby umożliwić łączność z wewnątrz sieci wirtualnej. Domyślną opcją jest zapewnienie maksymalnej izolacji. Istnieją jednak scenariusze, w których należy podać połączenie publicznego punktu końcowego:
 
-- Wystąpienie zarządzane musi być zintegrowane z ofertą platformy jako usługi (PaaS) obsługującą wiele dzierżawców.
-- Potrzebna jest większa przepływność wymiany danych niż jest to możliwe w przypadku korzystania z sieci VPN.
-- Zasady firmowe nie zabraniają PaaS w sieciach firmowych.
+- Wystąpienie zarządzane musi być zintegrowane z ofertami platformy tylko dla wielu dzierżawców (PaaS).
+- Potrzebujesz wyższej przepustowości wymiany danych niż jest to możliwe, gdy używasz sieci VPN.
+- Zasady firmy zabraniają paas wewnątrz sieci firmowych.
 
-## <a name="deploy-a-managed-instance-for-public-endpoint-access"></a>Wdróż wystąpienie zarządzane dla publicznego dostępu do punktu końcowego
+## <a name="deploy-a-managed-instance-for-public-endpoint-access"></a>Wdrażanie wystąpienia zarządzanego dla publicznego dostępu do punktu końcowego
 
-Chociaż nie jest to wymagane, typowym modelem wdrażania dla wystąpienia zarządzanego z publicznym dostępem do punktu końcowego jest utworzenie wystąpienia w dedykowanej izolowanej sieci wirtualnej. W tej konfiguracji Sieć wirtualna jest używana tylko do izolacji klastra wirtualnego. Nie ma znaczenia, czy przestrzeń adresów IP wystąpienia zarządzanego nakłada się na przestrzeń adresową IP sieci firmowej.
+Chociaż nie jest to obowiązkowe, typowy model wdrażania dla wystąpienia zarządzanego z dostępem do publicznego punktu końcowego jest utworzenie wystąpienia w dedykowanej izolowanej sieci wirtualnej. W tej konfiguracji sieć wirtualna jest używana tylko do izolacji klastra wirtualnego. Nie ma znaczenia, czy przestrzeń adresowa adresu IP wystąpienia zarządzanego nakłada się na przestrzeń adresów IP sieci firmowej.
 
-## <a name="secure-data-in-motion"></a>Zabezpieczanie danych w ruchu
+## <a name="secure-data-in-motion"></a>Bezpieczne dane w ruchu
 
-Ruch danych wystąpienia zarządzanego jest zawsze szyfrowany, jeśli sterownik klienta obsługuje szyfrowanie. Dane wysyłane między wystąpieniem zarządzanym i innymi maszynami wirtualnymi platformy Azure lub usługami platformy Azure nigdy nie opuszczają szkieletu platformy Azure. Jeśli istnieje połączenie między wystąpieniem zarządzanym a siecią lokalną, zalecamy korzystanie z usługi Azure ExpressRoute z usługą komunikacji równorzędnej firmy Microsoft. ExpressRoute pomaga uniknąć przeniesienia danych przez publiczny Internet. W przypadku połączenia prywatnego wystąpienia zarządzanego można używać tylko prywatnej komunikacji równorzędnej.
+Ruch danych wystąpienia zarządzanego jest zawsze szyfrowany, jeśli sterownik klienta obsługuje szyfrowanie. Dane wysyłane między wystąpieniem zarządzanym a innymi maszynami wirtualnymi platformy Azure lub usługami platformy Azure nigdy nie pozostawiają szkieletu platformy Azure. Jeśli istnieje połączenie między wystąpieniem zarządzanym a siecią lokalną, zaleca się użycie usługi Azure ExpressRoute z komunikacją równorzędną firmy Microsoft. Usługa ExpressRoute pomaga uniknąć przenoszenia danych przez publiczny Internet. W przypadku łączności prywatnej wystąpienia zarządzanego można używać tylko prywatnej komunikacji równorzędnej.
 
-## <a name="lock-down-inbound-and-outbound-connectivity"></a>Zablokuj łączność ruchu przychodzącego i wychodzącego
+## <a name="lock-down-inbound-and-outbound-connectivity"></a>Blokowanie połączeń przychodzących i wychodzących
 
 Na poniższym diagramie przedstawiono zalecane konfiguracje zabezpieczeń:
 
-![Konfiguracje zabezpieczeń służące do blokowania łączności przychodzącej i wychodzącej](media/sql-database-managed-instance-public-endpoint-securely/managed-instance-vnet.png)
+![Konfiguracje zabezpieczeń do blokowania połączeń przychodzących i wychodzących](media/sql-database-managed-instance-public-endpoint-securely/managed-instance-vnet.png)
 
-Wystąpienie zarządzane ma [dedykowany publiczny adres punktu końcowego](sql-database-managed-instance-find-management-endpoint-ip-address.md). W zaporze wychodzącej po stronie klienta i w regułach sieciowej grupy zabezpieczeń ustaw ten publiczny adres IP punktu końcowego, aby ograniczyć łączność wychodzącą.
+Wystąpienie zarządzane ma [dedykowany publiczny adres końcowy](sql-database-managed-instance-find-management-endpoint-ip-address.md). W zaporze wychodzącej po stronie klienta i w regułach sieciowej grupy zabezpieczeń ustaw ten publiczny adres IP punktu końcowego, aby ograniczyć łączność wychodzącą.
 
-Aby zapewnić, że ruch do wystąpienia zarządzanego pochodzi z zaufanych źródeł, zalecamy łączenie ze źródła przy użyciu dobrze znanych adresów IP. Użyj sieciowej grupy zabezpieczeń, aby ograniczyć dostęp do publicznego punktu końcowego wystąpienia zarządzanego na porcie 3342.
+Aby upewnić się, że ruch do wystąpienia zarządzanego pochodzi z zaufanych źródeł, zaleca się łączenie ze źródeł ze znanymi adresami IP. Użyj sieciowej grupy zabezpieczeń, aby ograniczyć dostęp do publicznego punktu końcowego wystąpienia zarządzanego na porcie 3342.
 
-Gdy klienci muszą inicjować połączenie z sieci lokalnej, upewnij się, że adres źródłowy jest tłumaczony na dobrze znany zestaw adresów IP. Jeśli nie możesz tego zrobić (na przykład dla pracowników mobilnych jest typowy scenariusz), zalecamy użycie [połączeń sieci VPN typu punkt-lokacja i prywatnego punktu końcowego](sql-database-managed-instance-configure-p2s.md).
+Gdy klienci muszą zainicjować połączenie z sieci lokalnej, upewnij się, że adres źródłowy jest tłumaczony na dobrze znany zestaw adresów IP. Jeśli nie możesz tego zrobić (na przykład pracownicy mobilni są typowym scenariuszem), zalecamy korzystanie z [połączeń sieci VPN typu punkt-lokacja i prywatnego punktu końcowego.](sql-database-managed-instance-configure-p2s.md)
 
-Jeśli połączenia są uruchamiane z platformy Azure, zalecamy, aby ruch pochodzi z dobrze znanego, przypisanego [wirtualnego adresu IP](../virtual-network/virtual-networks-reserved-public-ip.md) (na przykład maszyny wirtualnej). Aby łatwiej zarządzać wirtualnymi adresami IP (VIP), warto użyć [prefiksów publicznych adresów IP](../virtual-network/public-ip-address-prefix.md).
+Jeśli połączenia są uruchamiane z platformy Azure, zaleca się, że ruch pochodzi z dobrze znanego przypisanego [wirtualnego adresu IP](../virtual-network/virtual-networks-reserved-public-ip.md) (na przykład maszyny wirtualnej). Aby ułatwić zarządzanie wirtualnymi adresami IP (VIP), można użyć [prefiksów publicznego adresu IP](../virtual-network/public-ip-address-prefix.md).
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Dowiedz się, jak skonfigurować publiczny punkt końcowy dla zarządzania wystąpieniami: [Skonfiguruj publiczny punkt końcowy](sql-database-managed-instance-public-endpoint-configure.md)
+- Dowiedz się, jak skonfigurować publiczny punkt końcowy do zarządzania wystąpieniami: [Konfigurowanie publicznego punktu końcowego](sql-database-managed-instance-public-endpoint-configure.md)

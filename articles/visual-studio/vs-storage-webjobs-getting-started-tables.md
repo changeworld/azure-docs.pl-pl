@@ -1,6 +1,6 @@
 ---
-title: Wprowadzenie z usługą Azure Storage przy użyciu programu Visual Studio (projekty WebJob)
-description: Jak rozpocząć korzystanie z usługi Azure Table Storage w projekcie Azure WebJobs w programie Visual Studio po nawiązaniu połączenia z kontem magazynu przy użyciu usług połączonych programu Visual Studio
+title: Wprowadzenie do magazynu platformy Azure przy użyciu programu Visual Studio (projekty webjob)
+description: Jak rozpocząć korzystanie z magazynu tabel platformy Azure w projekcie azure WebJobs w programie Visual Studio po nawiązaniu połączenia z kontem magazynu przy użyciu połączonych usług programu Visual Studio
 services: storage
 author: ghogen
 manager: jillfra
@@ -14,28 +14,28 @@ ms.date: 12/02/2016
 ms.author: ghogen
 ROBOTS: NOINDEX,NOFOLLOW
 ms.openlocfilehash: e4d8299c06bfa5b0f33bff8fa592a2fa549c695c
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74707616"
 ---
-# <a name="getting-started-with-azure-storage-azure-webjob-projects"></a>Wprowadzenie z usługą Azure Storage (projekty zadań WebJob platformy Azure)
+# <a name="getting-started-with-azure-storage-azure-webjob-projects"></a>Wprowadzenie do usługi Azure Storage (projekty azure webjob)
 
 [!INCLUDE [storage-try-azure-tools-tables](../../includes/storage-try-azure-tools-tables.md)]
 
-## <a name="overview"></a>Przegląd
-W tym artykule C# przedstawiono przykłady kodu, które pokazują, jak używać zestawu SDK Azure WebJobs w wersji 1. x z usługą Azure Table Storage. Przykłady kodu używają [zestawu SDK zadań WebJob](https://github.com/Azure/azure-webjobs-sdk/wiki) w wersji 1. x.
+## <a name="overview"></a>Omówienie
+Ten artykuł zawiera przykłady kodu języka C#, które pokazują, jak używać narzędzia Azure WebJobs SDK w wersji 1.x z usługą magazynu tabel platformy Azure. Przykłady kodu używają [zestawów SDK WebJobs](https://github.com/Azure/azure-webjobs-sdk/wiki) w wersji 1.x.
 
-Usługa Azure Table Storage umożliwia przechowywanie dużych ilości danych strukturalnych. Usługa to magazyn danych NoSQL, który akceptuje uwierzytelnione wywołania z chmury platformy Azure i poza nią. Tabele Azure idealnie nadają się do przechowywania strukturalnych danych nierelacyjnych.  Aby uzyskać więcej informacji, zobacz [Rozpoczynanie pracy z usługą Azure Table Storage przy użyciu platformy .NET](../cosmos-db/tutorial-develop-table-dotnet.md#create-a-table) .
+Usługa magazynu tabel platformy Azure umożliwia przechowywanie dużych ilości danych strukturalnych. Usługa jest magazynem danych NoSQL, który akceptuje uwierzytelnione wywołania z chmury platformy Azure i poza nią. Tabele Azure idealnie nadają się do przechowywania strukturalnych danych nierelacyjnych.  Aby uzyskać więcej [informacji, zobacz Wprowadzenie do usługi Azure Table Storage przy użyciu platformy .NET.](../cosmos-db/tutorial-develop-table-dotnet.md#create-a-table)
 
-Niektóre fragmenty kodu pokazują atrybut **tabeli** używany w funkcjach, które są wywoływane ręcznie, czyli nie przy użyciu jednego z atrybutów wyzwalacza.
+Niektóre fragmenty kodu pokazują **table** atrybut używany w funkcjach, które są wywoływane ręcznie, to znaczy, nie przy użyciu jednego z atrybutów wyzwalacza.
 
-## <a name="how-to-add-entities-to-a-table"></a>Jak dodać jednostki do tabeli
+## <a name="how-to-add-entities-to-a-table"></a>Jak dodać encje do tabeli
 
-Aby dodać jednostki do tabeli, Użyj atrybutu **Table** z **ICollector\<t >** lub **IAsyncCollector\<t >** parametru, gdzie **t** określa schemat jednostek, które chcesz dodać. Konstruktor atrybutu przyjmuje parametr ciągu, który określa nazwę tabeli.
+Aby dodać jednostki do tabeli, należy użyć **atrybutu Tabela** z parametrem **\<ICollector T>** lub **IAsyncCollector\<T>,** w którym **T** określa schemat jednostek, które chcesz dodać. Konstruktor atrybutów przyjmuje parametr string, który określa nazwę tabeli.
 
-Poniższy przykładowy kod dodaje jednostki **osoby** do tabeli o nazwie transfery *wejściowe*.
+Poniższy przykładowy kod dodaje **jednostki osoby** do tabeli o nazwie *Ruch przychodzący*.
 
 ```csharp
 [NoAutomaticTrigger]
@@ -54,7 +54,7 @@ public static void IngressDemo(
 }
 ```
 
-Zazwyczaj typ używany z **ICollector** pochodzi z **klasy tableentity** lub implementuje **ITableEntity**, ale nie jest to konieczne. Jedna z następujących klas **osób** współpracuje z kodem pokazanym **w poprzedniej** metodzie transferu danych przychodzących.
+Zazwyczaj typ używany z **ICollector** pochodzi z **TableEntity** lub implementuje **ITableEntity**, ale nie musi. Jedna z następujących **person** klasy pracy z kodem pokazanym w poprzedniej metody **transferu ruchu przychodzącego.**
 
 ```csharp
 public class Person : TableEntity
@@ -70,27 +70,27 @@ public class Person
 }
 ```
 
-Jeśli chcesz bezpośrednio współpracować z interfejsem API usługi Azure Storage, możesz dodać parametr **CloudStorageAccount** do sygnatury metody.
+Jeśli chcesz pracować bezpośrednio z interfejsem API magazynu platformy Azure, możesz dodać parametr **CloudStorageAccount** do podpisu metody.
 
 ## <a name="real-time-monitoring"></a>Monitorowanie w czasie rzeczywistym
 
-Ponieważ funkcja transferu danych przychodzących często przetwarza duże ilości danych, pulpit nawigacyjny zestawu SDK zadań WebJob udostępnia dane monitorowania w czasie rzeczywistym. Sekcja **dziennika wywołania** informuje o tym, czy funkcja jest nadal uruchomiona.
+Ponieważ funkcje transferu danych często przetwarzają duże ilości danych, pulpit nawigacyjny SDK WebJobs udostępnia dane monitorowania w czasie rzeczywistym. **Sekcja Dziennik wywołania** informuje, czy funkcja jest nadal uruchomiona.
 
-![Uruchomiono funkcję transferu danych przychodzących](./media/vs-storage-webjobs-getting-started-tables/ingressrunning.png)
+![Uruchomienie funkcji transferu ruchu przychodzącego](./media/vs-storage-webjobs-getting-started-tables/ingressrunning.png)
 
-Na stronie **szczegóły wywołania** jest raportowany postęp funkcji (liczba utworzonych jednostek), gdy jest ona uruchomiona, i umożliwia jej przerwanie.
+**Strona Szczegóły wywołania** raportuje postęp funkcji (liczba napisanych jednostek) podczas jej działania i daje możliwość jej przerwania.
 
-![Uruchomiono funkcję transferu danych przychodzących](./media/vs-storage-webjobs-getting-started-tables/ingressprogress.png)
+![Uruchomienie funkcji transferu ruchu przychodzącego](./media/vs-storage-webjobs-getting-started-tables/ingressprogress.png)
 
-Po zakończeniu działania strony **szczegóły wywołania** zgłasza liczbę utworzonych wierszy.
+Po zakończeniu funkcji strona **Szczegóły wywołania** raportuje liczbę zapisanych wierszy.
 
-![Zakończono funkcję transferu danych przychodzących](./media/vs-storage-webjobs-getting-started-tables/ingresssuccess.png)
+![Zakończono funkcję przynikania](./media/vs-storage-webjobs-getting-started-tables/ingresssuccess.png)
 
-## <a name="how-to-read-multiple-entities-from-a-table"></a>Jak odczytać wiele jednostek z tabeli
+## <a name="how-to-read-multiple-entities-from-a-table"></a>Jak odczytać wiele encji z tabeli
 
-Aby odczytać tabelę, należy użyć atrybutu **Table** z parametrem **IQueryable\<t >** , gdzie Type **t** pochodzi z **klasy tableentity** lub implementuje **ITableEntity**.
+Aby odczytać tabelę, należy użyć **atrybutu Tabela** z parametrem **\<IQueryable T>,** w którym typ **T** pochodzi od **tableentity** lub implementuje **ITableEntity**.
 
-Poniższy przykładowy kod odczytuje i rejestruje wszystkie wiersze z tabeli danych **wejściowych** :
+Poniższy przykładowy kod odczytuje i rejestruje wszystkie wiersze z tabeli **przychodzących:**
 
 ```csharp
 public static void ReadTable(
@@ -108,9 +108,9 @@ public static void ReadTable(
 
 ### <a name="how-to-read-a-single-entity-from-a-table"></a>Jak odczytać pojedynczą jednostkę z tabeli
 
-Istnieje Konstruktor atrybutu **tabeli** z dwoma dodatkowymi parametrami, które umożliwiają określenie klucza partycji i klucza wiersza, gdy chcesz powiązać z pojedynczą jednostką tabeli.
+Istnieje konstruktor **atrybutów tabeli** z dwoma dodatkowymi parametrami, które umożliwiają określenie klucza partycji i klucza wiersza, gdy chcesz powiązać z jednostką pojedynczej tabeli.
 
-Poniższy przykładowy kod odczytuje wiersz tabeli dla jednostki **osoby** na podstawie klucza partycji i wartości klucza wiersza odebranych w komunikacie kolejki:
+Poniższy przykładowy kod odczytuje wiersz tabeli dla **jednostki Person** na podstawie wartości klucza partycji i klucza wiersza odebranych w komunikacie kolejki:
 
 ```csharp
 public static void ReadTableEntity(
@@ -131,13 +131,13 @@ public static void ReadTableEntity(
 }
 ```
 
-Klasa **Person** w tym przykładzie nie musi implementować **ITableEntity**.
+**Osoba** klasy w tym przykładzie nie ma do zaimplementowania **ITableEntity**.
 
-## <a name="how-to-use-the-net-storage-api-directly-to-work-with-a-table"></a>Jak używać interfejsu API usługi .NET Storage bezpośrednio do pracy z tabelą
+## <a name="how-to-use-the-net-storage-api-directly-to-work-with-a-table"></a>Jak bezpośrednio używać interfejsu API magazynu .NET do pracy z tabelą
 
-Można również użyć atrybutu **Table** z obiektem w **chmurze** , aby uzyskać większą elastyczność pracy z tabelą.
+Można również użyć **Table** atrybut z **CloudTable** obiektu dla większej elastyczności w pracy z tabelą.
 
-Poniższy przykład kodu używa obiektu tabeli w **chmurze** w celu dodania pojedynczej jednostki do tabeli danych *wejściowych* .
+Poniższy przykładowy kod używa **CloudTable** obiektu, aby dodać jedną jednostkę do tabeli *transferu ruchu przychodzącego.*
 
 ```csharp
 public static void UseStorageAPI(
@@ -155,12 +155,12 @@ public static void UseStorageAPI(
 }
 ```
 
-Aby uzyskać więcej informacji o sposobach korzystania z obiektu w **chmurze** , zobacz [Rozpoczynanie pracy z usługą Azure Table Storage przy użyciu platformy .NET](../storage/storage-dotnet-how-to-use-tables.md).
+Aby uzyskać więcej informacji na temat korzystania z obiektu **CloudTable,** zobacz [Wprowadzenie do magazynu tabel platformy Azure przy użyciu platformy .NET](../storage/storage-dotnet-how-to-use-tables.md).
 
-## <a name="related-topics-covered-by-the-queues-how-to-article"></a>Tematy pokrewne omówione w artykule Instrukcje dotyczące kolejek
+## <a name="related-topics-covered-by-the-queues-how-to-article"></a>Tematy pokrewne objęte artykułu instrukcje dotyczące kolejek
 
-Aby dowiedzieć się, jak obsłużyć przetwarzanie tabeli wyzwalane przez komunikat kolejki lub dla scenariuszy zestawu SDK zadań WebJob, które nie są specyficzne dla przetwarzania tabel, zobacz [wprowadzenie do usługi Azure queue storage i usług połączonych programu Visual Studio (projekty zadań WebJob)](../storage/vs-storage-webjobs-getting-started-queues.md).
+Aby uzyskać informacje dotyczące obsługi przetwarzania tabel wyzwalanych przez komunikat kolejki lub scenariuszy zestawów SDK webjobs niespecyfizowanych dla przetwarzania tabel, zobacz Wprowadzenie do [usługi Azure Queue storage i usługi połączone z programem Visual Studio (projekty webjob).](../storage/vs-storage-webjobs-getting-started-queues.md)
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym artykule przedstawiono przykłady kodu, które pokazują, jak obsługiwać typowe scenariusze pracy z tabelami platformy Azure. Więcej informacji o sposobach używania Azure WebJobs i zestawu SDK usługi WebJobs znajduje się w temacie [Azure WebJobs zasoby dokumentacji](https://go.microsoft.com/fwlink/?linkid=390226).
+W tym artykule przedstawiono przykłady kodu, które pokazują, jak obsługiwać typowe scenariusze pracy z tabelami platformy Azure. Aby uzyskać więcej informacji na temat korzystania z usługi Azure WebJobs i webjobs SDK, zobacz [zasoby dokumentacji usługi Azure WebJobs](https://go.microsoft.com/fwlink/?linkid=390226).

@@ -1,7 +1,7 @@
 ---
-title: Azure VMware Solutions (Automatyczna synchronizacja) — Omówienie maszyn wirtualnych
-description: Dowiedz się więcej o maszynach wirtualnych o automatycznej synchronizacji i ich korzyściach.
-titleSuffix: Azure VMware Solutions (AVS)
+title: Omówienie maszyn wirtualnych
+titleSuffix: Azure VMware Solution by CloudSimple
+description: Dowiedz się więcej o maszynach wirtualnych CloudSimple i ich zaletach.
 author: sharaths-cs
 ms.author: dikamath
 ms.date: 08/20/2019
@@ -9,33 +9,33 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 0e6cc6d51e37cea98cc553a236295311d21f595a
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 436a5ab6fb286ce206f981487b6a29d774ecd1a1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77024912"
 ---
-# <a name="avs-virtual-machines-overview"></a>Omówienie automatycznej synchronizacji maszyn wirtualnych
+# <a name="cloudsimple-virtual-machines-overview"></a>Omówienie maszyn wirtualnych CloudSimple
 
-Automatyczna synchronizacja umożliwia zarządzanie maszynami wirtualnymi VMware z poziomu Azure Portal. Klaster lub Pula zasobów z klastra vSphere jest zarządzana za pośrednictwem platformy Azure, mapując ją na subskrypcję.
+CloudSimple umożliwia zarządzanie maszynami wirtualnymi VMware (VMs) z witryny Azure portal.  Klaster lub pula zasobów z klastra vSphere jest zarządzana za pośrednictwem platformy Azure, mapując go do subskrypcji.
 
-Aby utworzyć maszynę wirtualną o automatycznej synchronizacji na platformie Azure, szablon maszyny wirtualnej musi znajdować się w programie vCenter w chmurze prywatnej chmury. Szablon służy do dostosowywania systemu operacyjnego i aplikacji. Szablon maszyny wirtualnej może być zaostrzony w celu spełnienia zasad zabezpieczeń przedsiębiorstwa. Przy użyciu szablonu można tworzyć maszyny wirtualne, a następnie korzystać z nich z Azure Portal przy użyciu modelu samoobsługowego.
+Aby utworzyć maszynę wirtualną CloudSimple z platformy Azure, szablon maszyny Wirtualnej musi istnieć w centrum wirtualnym private cloud.  Szablon służy do dostosowywania systemu operacyjnego i aplikacji.  Maszyna wirtualna szablonu może zostać wzmocniona w celu spełnienia zasad zabezpieczeń przedsiębiorstwa.  Szablonu można użyć do tworzenia maszyn wirtualnych, a następnie zużywają je z witryny Azure Portal przy użyciu modelu samoobsługi.
 
 ## <a name="benefits"></a>Korzyści
 
-Automatyczna synchronizacja maszyn wirtualnych z Azure Portal udostępnia mechanizm samoobsługowy do tworzenia maszyn wirtualnych VMware i zarządzania nimi.
+Maszyny wirtualne CloudSimple z witryny Azure portal zapewniają użytkownikom mechanizm samoobsługi do tworzenia maszyn wirtualnych VMware i zarządzania nimi.
 
-* Tworzenie maszyny wirtualnej o automatycznej synchronizacji w chmurze prywatnej chmury programu vCenter
-* Zarządzanie właściwościami maszyny wirtualnej
+* Tworzenie maszyny Wirtualnej CloudSimple w centrum vCenter private cloud
+* Zarządzanie właściwościami maszyny Wirtualnej
   * Dodawanie/usuwanie dysków
   * Dodawanie/usuwanie kart sieciowych
-* Operacje na maszynie wirtualnej automatycznej synchronizacji
-  * Włącz i Wyłącz zasilanie
-  * Resetuj maszynę wirtualną
-* Usuń maszynę wirtualną
+* Operacje zasilania maszyny Wirtualnej CloudSimple
+  * Włączanie i wyłączanie zasilania
+  * Resetowanie maszyny wirtualnej
+* Usuwanie maszyny wirtualnej
 
 ## <a name="next-steps"></a>Następne kroki
 
 * Dowiedz się, jak [korzystać z maszyn wirtualnych VMware na platformie Azure](quickstart-create-vmware-virtual-machine.md)
-* Dowiedz się, jak [mapować swoją subskrypcję platformy Azure](azure-subscription-mapping.md)
+* Dowiedz się, jak [zamapować subskrypcję platformy Azure](azure-subscription-mapping.md)

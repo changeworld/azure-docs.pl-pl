@@ -1,6 +1,6 @@
 ---
-title: Azure VMware Solutions (Automatyczna synchronizacja) — eskalacja uprawnień automatycznej synchronizacji
-description: Opisuje sposób eskalacji uprawnień automatycznej synchronizacji w celu wykonywania funkcji administracyjnych w programie vCenter w chmurze prywatnej do automatycznej synchronizacji
+title: Rozwiązanie Azure VMware według cloudsimple — uprawnienia Eskalacja cloudsimple
+description: W tym artykule opisano sposób eskalacji uprawnień CloudSimple do wykonywania funkcji administracyjnych w centrum vCenter private cloud
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/16/2019
@@ -8,16 +8,16 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 90dd61fc9856978bab0b68de19d48493a8e0c5fd
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 36c6969ed89d0bb9222f52aa81de0d4128b9e533
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77025337"
 ---
-# <a name="escalate-avs-privileges-to-perform-administrative-functions-in-avs-private-cloud-vcenter"></a>Eskalacja uprawnień automatycznej synchronizacji w celu wykonywania funkcji administracyjnych w programie do automatycznej synchronizacji w programie vCenter w chmurze prywatnej
+# <a name="escalate-cloudsimple-privileges-to-perform-administrative-functions-in-private-cloud-vcenter"></a>Eskalacja cloudSimple uprawnienia do wykonywania funkcji administracyjnych w private cloud vCenter
 
-Podejście do automatycznej synchronizacji ma na celu umożliwienie użytkownikom programu vCenter wymaganych uprawnień do wykonywania normalnych operacji. W niektórych przypadkach użytkownik może wymagać dodatkowych uprawnień do wykonania określonego zadania. Można eskalować uprawnienia użytkownika usługi vCenter SSO przez ograniczony okres.
+Podejście CloudSimple uprawnienia ma na celu nadadać użytkownikom vCenter uprawnienia, których potrzebują do wykonywania normalnych operacji. W niektórych przypadkach użytkownik może wymagać dodatkowych uprawnień do wykonania określonego zadania.  Można eskalować uprawnienia użytkownika SSO vCenter przez ograniczony okres.
 
 Przyczyny eskalacji uprawnień mogą być następujące:
 
@@ -28,12 +28,13 @@ Przyczyny eskalacji uprawnień mogą być następujące:
 * Tworzenie kont usług
 
 > [!WARNING]
-> Akcje podjęte w stanie eskalacji uprzywilejowanej mogą mieć negatywny wpływ na system i mogą spowodować, że system stanie się niedostępny. Wykonaj tylko niezbędne akcje w okresie eskalacji.
+> Akcje podejmowane w stanie uprzywilejowanym może niekorzystnie wpłynąć na system i może spowodować, że system stanie się niedostępny. Wykonaj tylko niezbędne akcje w okresie eskalacji.
 
-W portalu automatycznej synchronizacji [zaeskalacjnie uprawnień](escalate-private-cloud-privileges.md) dla lokalnego użytkownika CloudOwner na serwerze vCenter SSO. Możesz eskalować uprawnienia użytkownika zdalnego tylko wtedy, gdy na serwerze vCenter jest skonfigurowany dodatkowy dostawca tożsamości. Eskalacja uprawnień obejmuje dodanie wybranego użytkownika do wbudowanej grupy administratorów vSphere. Tylko jeden użytkownik może mieć uprawnienia eskalacji. Jeśli musisz eskalować uprawnienia innego użytkownika, najpierw Anuluj eskalację uprawnień bieżących użytkowników.
+Z portalu CloudSimple, [eskalacji uprawnień](escalate-private-cloud-privileges.md) dla użytkownika lokalnego CloudOwner na vCenter SSO.  Uprawnienia użytkownika zdalnego można eskalować tylko wtedy, gdy dodatkowy dostawca tożsamości jest skonfigurowany w centrum vCenter.  Eskalacja uprawnień polega na dodaniu wybranego użytkownika do wbudowanej grupy Administratorzy vSphere.  Tylko jeden użytkownik może mieć eskalacji uprawnień.  Jeśli musisz eskalować uprawnienia innego użytkownika, najpierw de-eskalacji uprawnień bieżących użytkowników.
 
-Użytkownicy z dodatkowych źródeł tożsamości muszą zostać dodani jako członkowie grupy CloudOwner.
+Użytkownicy z dodatkowych źródeł tożsamości muszą zostać dodana jako członkowie grupy CloudOwner.
 
 > [!CAUTION]
-> Nowi użytkownicy muszą zostać dodani tylko *do chmury-właściciel-Grupa*, *chmura-Global-Cluster-admin-* Group, Cloud- *Global-Storage-Administrator-* Group, *Cloud-Global-Network-admin* -Group  Użytkownicy dodani do grupy *administratorzy* zostaną usunięci automatycznie.  Tylko konta usług należy dodać do grupy *administratorzy* , a konta usług nie mogą być używane do logowania się do interfejsu użytkownika sieci Web vSphere.
-W okresie eskalacji automatyczna synchronizacja ze skojarzonymi powiadomieniami o alertach umożliwia zidentyfikowanie wszelkich niezamierzonych zmian w środowisku.
+> Nowi użytkownicy muszą być dodani tylko do *grupy Cloud-Owner,* *Cloud-Global-Cluster-Admin-Group*, *Cloud-Global-Storage-Admin-Group*, *Cloud-Global-Network-Admin-Group* lub *Cloud-Global-VM-Admin-Group*.  Użytkownicy dodani do grupy *Administratorzy* zostaną automatycznie usunięci.  Tylko konta usług muszą być dodawane do grupy *administratorów* i kont usług nie mogą być używane do logowania się do interfejsu użytkownika sieci web vSphere.
+
+W okresie eskalacji CloudSimple używa automatycznego monitorowania z skojarzonymi powiadomieniami o alertach, aby zidentyfikować wszelkie niezamierzone zmiany w środowisku.

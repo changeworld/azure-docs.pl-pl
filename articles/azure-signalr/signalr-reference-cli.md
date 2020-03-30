@@ -1,16 +1,16 @@
 ---
 title: Przykłady interfejsu wiersza polecenia platformy Azure — usługa Azure SignalR Service
-description: Obserwuj prawdziwe przykłady, aby uzyskać informacje na temat interfejsu wiersza polecenia platformy Azure dla usługi Azure Signal Service. Dowiesz się, jak utworzyć usługę sygnalizującą z większą liczbą usług platformy Azure.
+description: Postępuj zgodnie z rzeczywistymi przykładami, aby dowiedzieć się więcej o platformie Azure CLI dla usługi Azure SignalR. Dowiesz się, jak utworzyć usługę SignalR z większą liczrą usługami platformy Azure.
 author: sffamily
 ms.service: signalr
 ms.topic: reference
 ms.date: 11/13/2019
 ms.author: zhshang
 ms.openlocfilehash: 3c28781362e60d22b0d9a4e3754daaa24e5b61ee
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74158127"
 ---
 # <a name="azure-cli-reference"></a>Dokumentacja interfejsu wiersza polecenia platformy Azure
@@ -19,9 +19,9 @@ Poniższa tabela zawiera linki do skryptów powłoki systemowej dla usługi Azur
 
 | | |
 |-|-|
-|**Tworzenie**||
+|**Utwórz**||
 | [Tworzenie nowej usługi SignalR Service i grupy zasobów](scripts/signalr-cli-create-service.md) | Tworzy nowy zasób usługi Azure SignalR Service w nowej grupie zasobów o losowej nazwie.  |
 |**Integracja**||
-| [Tworzenie nowej usługi SignalR Service i aplikacji internetowej skonfigurowanej na potrzeby korzystania z usługi SignalR](scripts/signalr-cli-create-with-app-service.md) | Tworzy nowy zasób usługi Azure SignalR Service w nowej grupie zasobów o losowej nazwie. Dodaje również nową aplikację sieci Web i plan App Service, aby hostować aplikację sieci Web ASP.NET Core, która używa usługi sygnalizującej. Aplikację internetową skonfigurowano za pomocą ustawień aplikacji, aby nawiązać połączenie z nowym zasobem usługi SignalR Service. |
-| [Tworzenie nowej usługi SignalR Service i aplikacji internetowej skonfigurowanej na potrzeby korzystania z usług SignalR i GitHub OAuth](scripts/signalr-cli-create-with-app-service-github-oauth.md) | Tworzy nowy zasób usługi Azure SignalR Service w nowej grupie zasobów o losowej nazwie. Dodaje również nową aplikację sieci Web platformy Azure i plan hostingu do hostowania aplikacji sieci Web ASP.NET Core, która korzysta z usługi sygnalizującej. Aplikację internetową skonfigurowano za pomocą ustawień aplikacji, aby parametry połączenia z nowym zasobem usługi SignalR i klucze tajne klientów obsługiwały [uwierzytelnianie GitHub](https://developer.github.com/v3/guides/basics-of-authentication/), jak pokazano w [samouczku uwierzytelniania](signalr-concept-authenticate-oauth.md). Aplikacja internetowa jest również skonfigurowana do używania lokalnego źródła wdrożenia repozytorium git. |
+| [Tworzenie nowej usługi SignalR Service i aplikacji internetowej skonfigurowanej na potrzeby korzystania z usługi SignalR](scripts/signalr-cli-create-with-app-service.md) | Tworzy nowy zasób usługi Azure SignalR Service w nowej grupie zasobów o losowej nazwie. Dodaje również nową aplikację sieci Web i usługę app service plan hostowania ASP.NET Core Web App, który korzysta z usługi SignalR. Aplikację internetową skonfigurowano za pomocą ustawień aplikacji, aby nawiązać połączenie z nowym zasobem usługi SignalR Service. |
+| [Tworzenie nowej usługi SignalR Service i aplikacji internetowej skonfigurowanej na potrzeby korzystania z usług SignalR i GitHub OAuth](scripts/signalr-cli-create-with-app-service-github-oauth.md) | Tworzy nowy zasób usługi Azure SignalR Service w nowej grupie zasobów o losowej nazwie. Dodaje również nową aplikację Azure Web App i plan hostingu do hostowania ASP.NET Core Web App, która korzysta z usługi SignalR. Aplikację internetową skonfigurowano za pomocą ustawień aplikacji, aby parametry połączenia z nowym zasobem usługi SignalR i klucze tajne klientów obsługiwały [uwierzytelnianie GitHub](https://developer.github.com/v3/guides/basics-of-authentication/), jak pokazano w [samouczku uwierzytelniania](signalr-concept-authenticate-oauth.md). Aplikacja internetowa jest również skonfigurowana do używania lokalnego źródła wdrożenia repozytorium git. |
 | | |

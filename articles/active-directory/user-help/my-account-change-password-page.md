@@ -1,6 +1,6 @@
 ---
-title: Zmienianie hasła konta służbowego — Azure AD
-description: Dowiedz się, jak zmienić hasło konta służbowego ze strony Zmień hasło w portalu My account.
+title: Zmienianie hasła do konta służbowego — usługa Azure AD
+description: Dowiedz się, jak zmienić hasło do konta służbowego na stronie Zmień hasło w portalu Moje konto.
 services: active-directory
 author: curtand
 manager: daveba
@@ -12,45 +12,45 @@ ms.topic: conceptual
 ms.date: 10/28/2019
 ms.author: curtand
 ms.openlocfilehash: 06e5abe04ed1ec75dcbf1b216bfaab1a7458ce72
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77064057"
 ---
-# <a name="change-your-work-or-school-account-password-from-the-change-password-page"></a>Zmień hasło konta służbowego ze strony Zmień hasło
+# <a name="change-your-work-or-school-account-password-from-the-change-password-page"></a>Zmienianie hasła do konta służbowego na stronie Zmienianie hasła
 
-Strona **zmiana hasła** w portalu **My Account** umożliwia zaktualizowanie istniejącego hasła do konta służbowego, przy założeniu, że hasło nie jest zablokowane. Jeśli nie pamiętasz hasła, jeśli użytkownik jest zablokowany z konta lub jeśli nie masz hasła z Twojej organizacji, możesz użyć informacji zabezpieczających i urządzenia przenośnego, aby zresetować hasło.
+Strona **Zmień hasło** w portalu Moje **konto** pomaga zaktualizować istniejące hasło do konta służbowego, zakładając, że zapamiętasz hasło i że nie zostaniesz zablokowany z konta. Jeśli nie pamiętasz hasła, jeśli nie masz konta lub jeśli nigdy nie otrzymałeś hasła od organizacji, możesz użyć informacji zabezpieczających i urządzenia mobilnego, aby zresetować hasło.
 
 >[!Important]
->Ten artykuł jest przeznaczony dla użytkowników próbujących zaktualizować znane hasło dla istniejącego konta służbowego. Jeśli jesteś użytkownikiem próbującym uzyskać dostęp do konta osobistego, takiego jak Xbox, Hotmail lub Outlook.com, wypróbuj sugestie w temacie, [gdy nie możesz zalogować się do konto Microsoft](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant) artykułu. Jeśli jesteś administratorem próbującym znaleźć więcej informacji na temat testowania samoobsługowego resetowania hasła dla pracowników lub innych użytkowników, zobacz samoobsługowe [Resetowanie hasła](https://docs.microsoft.com/azure/active-directory/authentication/quickstart-sspr).
+>Ten artykuł jest przeznaczony dla użytkowników próbujących zaktualizować znane hasło dla istniejącego konta służbowego. Jeśli użytkownik próbuje uzyskać dostęp do konta osobistego, takiego jak Xbox, Hotmail lub Outlook.com, wypróbuj sugestie w artykule [Kiedy nie możesz zalogować się do konta Microsoft.](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant) Jeśli jesteś administratorem, który próbuje znaleźć więcej informacji na temat samodzielnego resetowania hasła dla pracowników lub innych użytkowników, zobacz [Samoobsługowe resetowanie hasła](https://docs.microsoft.com/azure/active-directory/authentication/quickstart-sspr).
 
 ## <a name="update-a-password-from-the-change-password-page"></a>Aktualizowanie hasła na stronie Zmienianie hasła
 
-1. Zaloguj się do swojego konta służbowego, korzystając z istniejącego hasła, a następnie przejdź do strony **Moje konto** (https://myprofile.microsoft.com/).
+1. Zaloguj się na swoje konto służbowe, używając istniejącego hasła,https://myprofile.microsoft.com/) a następnie przejdź do strony Moje **konto** (
 
-2. Wybierz pozycję **hasło** w okienku nawigacji po lewej stronie lub wybierz łącze **Zmień hasło** z bloku **hasła** .
+2. Wybierz **pozycję Hasło** z lewego okienka nawigacji lub wybierz łącze Zmień **hasło** z bloku **Hasło.**
 
-    ![Strona Moje konto z wyróżnionym linkiem zmiany hasła](media/my-account-portal/my-account-portal-change-password.png)
+    ![Strona Moje konto z wyróżnionym linkiem Zmień hasło](media/my-account-portal/my-account-portal-change-password.png)
 
-3. Wpisz stare hasło, a następnie utwórz i Potwierdź nowe hasło.
+3. Wpisz stare hasło, a następnie utwórz i potwierdź nowe hasło.
 
-    ![Strona zmiany hasła, Pokazywanie pól haseł](media/my-account-portal/my-account-portal-change-password-page.png)
+    ![Zmienianie strony hasła z polem hasła](media/my-account-portal/my-account-portal-change-password-page.png)
 
 4. Wybierz pozycję **Prześlij**.
 
-    Twoje hasło zostanie zmienione i zostanie wyświetlony monit o ponowne zalogowanie się do konta służbowego.
+    Twoje hasło zostanie zmienione i zostaniesz poproszony o ponowne zalogowanie się na konto służbowe.
 
 ## <a name="next-steps"></a>Następne kroki
 
-Po zmianie hasła można:
+Po zmianie hasła możesz:
 
-- Wyświetl [informacje zabezpieczające](user-help-security-info-overview.md)lub zarządzaj nimi.
+- Wyświetlanie informacji [zabezpieczających](user-help-security-info-overview.md)lub zarządzanie nimi .
 
-- Wyświetl podłączone [urządzenia](my-account-portal-devices-page.md)lub zarządzaj nimi.
+- Wyświetlanie [podłączonych urządzeń](my-account-portal-devices-page.md)lub zarządzanie nimi .
 
-- Wyświetl swoje [organizacje](my-account-portal-organizations-page.md)lub zarządzaj nimi.
+- Wyświetlanie [organizacji](my-account-portal-organizations-page.md)lub zarządzanie nimi .
 
-- Wyświetlanie [działania związanego z logowaniem](my-account-portal-sign-ins-page.md).
+- Wyświetlanie [aktywności logowania](my-account-portal-sign-ins-page.md).
 
-- Zobacz, w jaki sposób organizacja [używa danych związanych z prywatnością](my-account-portal-privacy-page.md).
+- Zobacz, jak organizacja [wykorzystuje dane związane z prywatnością](my-account-portal-privacy-page.md).

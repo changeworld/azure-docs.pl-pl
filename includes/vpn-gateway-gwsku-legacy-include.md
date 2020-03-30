@@ -5,16 +5,16 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: cherylmc
 ms.openlocfilehash: 622a2f69c2e7b82f2df10d6120ee2dd466961915
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77211432"
 ---
 Starsze (stare) jednostki SKU bramy sieci VPN to:
 
-* Wartość domyślna (podstawowa)
-* Standardowy
+* Domyślnie (podstawowe)
+* Standardowa
 * Wysoka wydajność (HighPerformance)
 
 Brama sieci VPN nie korzysta z jednostki SKU bramy UltraPerformance. Informacje o jednostce SKU UltraPerformance można znaleźć w dokumentacji dotyczącej usługi [ExpressRoute](../articles/expressroute/expressroute-about-virtual-network-gateways.md).

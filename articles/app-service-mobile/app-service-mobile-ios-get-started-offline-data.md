@@ -1,46 +1,46 @@
 ---
-title: Włącz synchronizację w trybie offline (iOS)
-description: Dowiedz się, jak używać Azure App Service Mobile Apps do buforowania i synchronizowania danych w trybie offline w aplikacjach systemu iOS.
+title: Włączanie synchronizacji w trybie offline (iOS)
+description: Dowiedz się, jak używać aplikacji mobilnych usługi Azure App Service do buforowania i synchronizowania danych w trybie offline w aplikacjach systemu iOS.
 ms.assetid: eb5b9520-0f39-4a09-940a-dadb6d940db8
 ms.tgt_pltfrm: mobile-ios
 ms.devlang: objective-c
 ms.topic: article
 ms.date: 06/25/2019
 ms.openlocfilehash: d943213814b999f101a541abb0195a9fdd5a7423
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77459178"
 ---
-# <a name="enable-offline-syncing-with-ios-mobile-apps"></a>Włączanie synchronizacji w trybie offline za pomocą aplikacji mobilnych dla systemu iOS
+# <a name="enable-offline-syncing-with-ios-mobile-apps"></a>Włączanie synchronizacji w trybie offline z aplikacjami mobilnymi systemu iOS
 [!INCLUDE [app-service-mobile-selector-offline](../../includes/app-service-mobile-selector-offline.md)]
 
 ## <a name="overview"></a>Omówienie
-Ten samouczek dotyczy synchronizacji w trybie offline z Mobile Apps funkcją Azure App Service dla systemu iOS. Dzięki synchronizacji w trybie offline użytkownicy końcowi mogą korzystać z aplikacji mobilnej w celu wyświetlania, dodawania i modyfikowania danych, nawet jeśli nie mają połączenia sieciowego. Zmiany są przechowywane w lokalnej bazie danych. Po powrocie urządzenia do trybu online zmiany są synchronizowane ze zdalnym zapleczem.
+W tym samouczku opisano synchronizację w trybie offline z funkcją aplikacji mobilnych usługi Azure App Service dla systemu iOS. Dzięki synchronizacji w trybie offline użytkownicy końcowi mogą wchodzić w interakcje z aplikacją mobilną, aby wyświetlać, dodawać lub modyfikować dane, nawet jeśli nie mają połączenia sieciowego. Zmiany są przechowywane w lokalnej bazie danych. Po powrocie urządzenia do trybu online zmiany są synchronizowane ze zdalnym zapleczem.
 
-Jeśli jest to pierwsze środowisko pracy z Mobile Apps, należy najpierw ukończyć samouczek [Tworzenie aplikacji dla systemu iOS]. Jeśli nie używasz pobranego projektu serwera szybkiego startu, musisz dodać pakiety rozszerzeń dostępu do danych do projektu. Aby uzyskać więcej informacji o pakietach rozszerzeń serwera, zobacz [Work with the .NET zaplecz Server SDK for Azure Mobile Apps](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md).
+Jeśli jest to twoje pierwsze doświadczenie z aplikacjami mobilnymi, należy najpierw ukończyć samouczek [Tworzenie aplikacji na iOS]. Jeśli nie używasz pobranego projektu serwera szybkiego startu, należy dodać pakiety rozszerzeń dostępu do danych do projektu. Aby uzyskać więcej informacji na temat pakietów rozszerzeń serwera, zobacz [Praca z zestawem SDK serwera wewnętrznej bazy danych .NET dla aplikacji azure mobile apps](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md).
 
-Aby dowiedzieć się więcej o funkcji synchronizacji w trybie offline, zobacz [Synchronizacja danych w trybie offline w Mobile Apps].
+Aby dowiedzieć się więcej o funkcji synchronizacji w trybie offline, zobacz [Synchronizacja danych w trybie offline w aplikacjach mobilnych].
 
-## <a name="review-sync"></a>Przejrzyj kod synchronizacji klienta
-Projekt klienta pobrany dla samouczka [Tworzenie aplikacji dla systemu iOS] zawiera już kod obsługujący synchronizację w trybie offline przy użyciu lokalnej podstawowej bazy danych opartej na danych. Ta sekcja zawiera podsumowanie informacji o tym, co zostało już zawarte w kodzie samouczka. Aby zapoznać się z omówieniem koncepcyjnym tej funkcji, zobacz [Synchronizacja danych w trybie offline w Mobile Apps].
+## <a name="review-the-client-sync-code"></a><a name="review-sync"></a>Przejrzyj kod synchronizacji klienta
+Projekt klienta pobrany dla [samouczka Tworzenie aplikacji] dla systemu iOS zawiera już kod obsługujący synchronizację w trybie offline przy użyciu lokalnej bazy danych opartej na danych podstawowych. W tej sekcji podsumowano, co jest już zawarte w kodzie samouczka. Aby zapoznać się z koncepcyjnym omówieniem tej funkcji, zobacz [Synchronizacja danych w trybie offline w aplikacjach mobilnych].
 
-Korzystając z funkcji synchronizacji danych w trybie offline Mobile Apps, użytkownicy końcowi mogą współdziałać z lokalną bazą danych, nawet jeśli sieć jest niedostępna. Aby korzystać z tych funkcji w aplikacji, należy zainicjować kontekst synchronizacji `MSClient` i odwołać się do magazynu lokalnego. Następnie należy odwołać się do tabeli za pomocą interfejsu **MSSyncTable** .
+Korzystając z funkcji synchronizacji danych w trybie offline aplikacji mobilnych, użytkownicy końcowi mogą wchodzić w interakcje z lokalną bazą danych, nawet jeśli sieć jest niedostępna. Aby korzystać z tych funkcji w aplikacji, `MSClient` należy zainicjować kontekst synchronizacji i odwoływać się do sklepu lokalnego. Następnie odwołać się do tabeli za pośrednictwem interfejsu **MSSyncTable.**
 
-W **QSTodoService. m** (cel-C) lub **ToDoTableViewController. Swift** (SWIFT) Zwróć uwagę, że typ elementu członkowskiego **synchronizacji** to **MSSyncTable**. Synchronizacja w trybie offline używa tego interfejsu tabeli synchronizacji zamiast **MSTable**. Gdy używana jest tabela synchronizacji, wszystkie operacje są wykonywane do lokalnego magazynu i są synchronizowane tylko z zapleczem zdalnym z jawnymi operacjami wypychania i ściągania.
+W **pliku QSTodoService.m** (Objective-C) lub **ToDoTableViewController.swift** (Swift) należy zauważyć, że typem **elementu członkowskiego syncTable** jest **tabela MSSyncTable**. Synchronizacja w trybie offline używa tego interfejsu tabeli synchronizacji zamiast **mstable**. Gdy używana jest tabela synchronizacji, wszystkie operacje przejść do magazynu lokalnego i są synchronizowane tylko ze zdalnym zapleczu z jawnych operacji wypychania i ściągania.
 
- Aby uzyskać odwołanie do tabeli synchronizacji, należy użyć metody **syncTableWithName** na `MSClient`. Aby usunąć funkcje synchronizacji w trybie offline, zamiast tego należy użyć **tableWithName** .
+ Aby uzyskać odwołanie do tabeli synchronizacji, użyj metody `MSClient` **syncTableWithName** w programie . Aby usunąć funkcje synchronizacji w trybie offline, użyj **tableWithName** zamiast tego.
 
-Przed wykonaniem jakiejkolwiek operacji na tabeli należy zainicjować magazyn lokalny. Oto odpowiedni kod:
+Przed wykonaniem operacji tabeli należy zainicjować magazyn lokalny. Oto odpowiedni kod:
 
-* **Cel-C**. W metodzie **QSTodoService. init** :
+* **Objective-C**. W **metodzie QSTodoService.init:**
 
    ```objc
    MSCoreDataStore *store = [[MSCoreDataStore alloc] initWithManagedObjectContext:context];
    self.client.syncContext = [[MSSyncContext alloc] initWithDelegate:nil dataSource:store callback:nil];
    ```    
-* **Kod SWIFT**. W metodzie **ToDoTableViewController. viewDidLoad** :
+* **Szybki**. W **ToDoTableViewController.viewDidLoad** metody:
 
    ```swift
    let client = MSClient(applicationURLString: "http:// ...") // URI of the Mobile App
@@ -48,11 +48,11 @@ Przed wykonaniem jakiejkolwiek operacji na tabeli należy zainicjować magazyn l
    self.store = MSCoreDataStore(managedObjectContext: managedObjectContext)
    client.syncContext = MSSyncContext(delegate: nil, dataSource: self.store, callback: nil)
    ```
-   Ta metoda tworzy magazyn lokalny przy użyciu interfejsu `MSCoreDataStore`, który zawiera Mobile Apps SDK. Alternatywnie można podać inny magazyn lokalny, implementując protokół `MSSyncContextDataSource`. Ponadto pierwszy parametr **MSSyncContext** jest używany do określania procedury obsługi konfliktów. Ponieważ przeszedł `nil`, otrzymamy domyślną procedurę obsługi konfliktów, która kończy się niepowodzeniem na żadnym konflikcie.
+   Ta metoda tworzy magazyn lokalny `MSCoreDataStore` przy użyciu interfejsu, który zapewnia SDK aplikacji mobilnych. Alternatywnie można podać inny magazyn lokalny, `MSSyncContextDataSource` implementując protokół. Ponadto pierwszy parametr **MSSyncContext** jest używany do określenia obsługi konfliktów. Ponieważ przeszliśmy, `nil`otrzymujemy domyślny program obsługi konfliktów, który kończy się niepowodzeniem w każdym konflikcie.
 
-Teraz wykonajmy rzeczywistą operację synchronizacji i Pobierz dane z zdalnego zaplecza:
+Teraz wykonajmy rzeczywistą operację synchronizacji i pobierzmy dane ze zdalnego zaplecza:
 
-* **Cel-C**. `syncData` najpierw wypychanie nowych zmian, a następnie wywołuje **pullData** , aby pobrać dane z zdalnego zaplecza. Z kolei Metoda **pullData** pobiera nowe dane, które pasują do zapytania:
+* **Objective-C**. `syncData`najpierw wypycha nowe zmiany, a następnie wywołuje **pullData,** aby uzyskać dane ze zdalnego zaplecza. Z kolei **pullData** metoda pobiera nowe dane, które pasuje do kwerendy:
 
    ```objc
    -(void)syncData:(QSCompletionBlock)completion
@@ -81,7 +81,7 @@ Teraz wykonajmy rzeczywistą operację synchronizacji i Pobierz dane z zdalnego 
        }];
    }
    ```
-* **Kod SWIFT**:
+* **Szybki**:
    ```swift
    func onRefresh(sender: UIRefreshControl!) {
       UIApplication.sharedApplication().networkActivityIndicatorVisible = true
@@ -115,61 +115,61 @@ Teraz wykonajmy rzeczywistą operację synchronizacji i Pobierz dane z zdalnego 
    }
    ```
 
-W wersji celu języka C w `syncData`najpierw Wywołaj **pushWithCompletion** w kontekście synchronizacji. Ta metoda jest składową `MSSyncContext` (a nie tabeli synchronizacji), ponieważ wypycha zmiany we wszystkich tabelach. Tylko rekordy, które zostały zmodyfikowane w sposób lokalny (za pomocą operacji CUD), są wysyłane do serwera. Następnie pomocnik **pullData** jest wywoływany, który wywołuje **MSSyncTable. pullWithQuery** , aby pobrać dane zdalne i zapisać je w lokalnej bazie danych.
+W wersji Objective-C `syncData`w programie , najpierw nazywamy **pushWithCompletion** w kontekście synchronizacji. Ta metoda jest `MSSyncContext` członkiem (a nie samej tabeli synchronizacji), ponieważ wypycha zmiany we wszystkich tabelach. Tylko rekordy, które zostały zmodyfikowane w jakiś sposób lokalnie (za pośrednictwem operacji CUD) są wysyłane do serwera. Następnie wywoływane jest **pullData** pomocnika, który wywołuje **mssynctable.pullWithQuery** do pobierania danych zdalnych i przechowywania ich w lokalnej bazie danych.
 
-W wersji SWIFT, ponieważ operacja push nie była absolutnie konieczna, nie istnieje wywołanie do **pushWithCompletion**. Jeśli w kontekście synchronizacji w tabeli, która wykonuje operację wypychania, istnieją zmiany oczekujące, ściąganie zawsze wystawia wypychanie jako pierwsze. Jednak jeśli masz więcej niż jedną tabelę synchronizacji, najlepiej jawnie wywołać wypychanie, aby upewnić się, że wszystkie elementy są spójne w powiązanych tabelach.
+W wersji Swift, ponieważ operacja push nie była absolutnie konieczna, nie ma połączenia **pushWithCompletion**. Jeśli w kontekście synchronizacji dla tabeli, która wykonuje operację wypychania, zawładnienie jest zawsze powodem do uzyskania wypychania, należy wykonać jakiekolwiek zmiany w kontekście synchronizacji. Jednak jeśli masz więcej niż jedną tabelę synchronizacji, najlepiej jest jawnie wywołać wypychanie, aby upewnić się, że wszystko jest spójne w powiązanych tabelach.
 
-W przypadku wersji zamierzenia języka C i Swift można użyć metody **pullWithQuery** , aby określić zapytanie w celu odfiltrowania rekordów, które mają zostać pobrane. W tym przykładzie zapytanie pobiera wszystkie rekordy w zdalnej tabeli `TodoItem`.
+W wersjach Objective-C i Swift można użyć **metody pullWithQuery,** aby określić kwerendę do filtrowania rekordów, które mają zostać pobrane. W tym przykładzie kwerenda pobiera wszystkie `TodoItem` rekordy w tabeli zdalnej.
 
-Drugi parametr **pullWithQuery** jest identyfikatorem zapytania, który jest używany do *synchronizacji przyrostowej*. Synchronizacja przyrostowa pobiera tylko rekordy, które zostały zmodyfikowane od ostatniej synchronizacji, przy użyciu sygnatury czasowej `UpdatedAt` rekordu (o nazwie `updatedAt` w magazynie lokalnym). Identyfikator zapytania musi być ciągiem opisowym, który jest unikatowy dla każdej kwerendy logicznej w aplikacji. Aby zrezygnować z synchronizacji przyrostowej, Przekaż `nil` jako identyfikator zapytania. Takie podejście może być potencjalnie niewydajne, ponieważ pobiera wszystkie rekordy dla każdej operacji ściągania.
+Drugi parametr **pullWithQuery** jest identyfikatorem zapytania, który jest używany do *synchronizacji przyrostowej*. Synchronizacja przyrostowa pobiera tylko rekordy, które zostały zmodyfikowane od ostatniej `UpdatedAt` synchronizacji, `updatedAt` przy użyciu sygnatury czasowej rekordu (wywoływanej w magazynie lokalnym). Identyfikator kwerendy powinien być ciągiem opisowym, który jest unikatowy dla każdej kwerendy logicznej w aplikacji. Aby zrezygnować z synchronizacji przyrostowej, przekaż `nil` jako identyfikator kwerendy. Takie podejście może być potencjalnie nieefektywne, ponieważ pobiera wszystkie rekordy dla każdej operacji ściągania.
 
-Aplikacja "cel-C" jest synchronizowana podczas modyfikowania lub dodawania danych, gdy użytkownik wykonuje gest odświeżenia i przy uruchamianiu.
+Aplikacja Objective-C synchronizuje się podczas modyfikowania lub dodawania danych, gdy użytkownik wykonuje gest odświeżania i po uruchomieniu.
 
-Aplikacja SWIFT synchronizuje się, gdy użytkownik wykonuje gest odświeżenia i przy uruchamianiu.
+Aplikacja Swift synchronizuje się, gdy użytkownik wykonuje gest odświeżania i uruchamia.
 
-Ponieważ aplikacja jest synchronizowana, gdy dane są modyfikowane (cel-C) lub za każdym razem, gdy aplikacja jest uruchamiana (zamierzenia C i SWIFT), aplikacja założono, że użytkownik jest w trybie online. W dalszej części należy zaktualizować aplikację tak, aby użytkownicy mogli ją edytować nawet wtedy, gdy są w trybie offline.
+Ponieważ aplikacja synchronizuje się za każdym razem, gdy dane są modyfikowane (Objective-C) lub przy każdym uruchomieniu aplikacji (Objective-C i Swift), aplikacja zakłada, że użytkownik jest w trybie online. W dalszej części zaktualizujesz aplikację, aby użytkownicy mogli edytować nawet wtedy, gdy są w trybie offline.
 
-## <a name="review-core-data"></a>Zapoznaj się z podstawowym modelem danych
-W przypadku korzystania z magazynu danych podstawowych w trybie offline należy zdefiniować określone tabele i pola w modelu danych. Przykładowa aplikacja zawiera już model danych o odpowiednim formacie. W tej sekcji przeglądamy te tabele, aby zobaczyć, jak są używane.
+## <a name="review-the-core-data-model"></a><a name="review-core-data"></a>Przejrzyj model podstawowych danych
+Korzystając z magazynu Core Data w trybie offline, należy zdefiniować określone tabele i pola w modelu danych. Przykładowa aplikacja zawiera już model danych o odpowiednim formacie. W tej sekcji przechodzimy przez te tabele, aby pokazać, jak są używane.
 
-Otwórz **QSDataModel. xcdatamodeld**. Zdefiniowano cztery tabele — trzy, które są używane przez zestaw SDK i które są używane dla samych elementów do wykonania:
-  * MS_TableOperations: śledzi elementy, które muszą być synchronizowane z serwerem programu.
-  * MS_TableOperationErrors: śledzi wszystkie błędy występujące podczas synchronizacji w trybie offline.
-  * MS_TableConfig: śledzi czas ostatniej aktualizacji dla ostatniej operacji synchronizacji dla wszystkich operacji ściągania.
-  * TodoItem: przechowuje elementy do wykonania. Kolumny systemowe **createdAt**, **updatedAt**i **Version** są opcjonalnymi właściwościami systemowymi.
+Otwórz **QSDataModel.xcdatamodeld**. Zdefiniowane są cztery tabele — trzy, które są używane przez SDK i jedna używana dla samych elementów do wykonania:
+  * MS_TableOperations: Śledzi elementy, które muszą być zsynchronizowane z serwerem.
+  * MS_TableOperationErrors: śledzi wszelkie błędy, które zdarzają się podczas synchronizacji w trybie offline.
+  * MS_TableConfig: Śledzi ostatni zaktualizowany czas dla ostatniej operacji synchronizacji dla wszystkich operacji ściągania.
+  * TodoItem: Przechowuje elementy do wykonania. Kolumny systemowe **createdAt**, **updatedAt**i **version** są opcjonalnymi właściwościami systemu.
 
 > [!NOTE]
-> Zestaw SDK Mobile Apps rezerwuje nazwy kolumn zaczynające się od " **``** ". Nie należy używać tego prefiksu dla elementów innych niż kolumny systemowe. W przeciwnym razie nazwy kolumn są modyfikowane w przypadku korzystania z zdalnego zaplecza.
+> SDK aplikacji mobilnych zastrzega nazwy kolumn, które zaczynają się od "**``**". Nie należy używać tego prefiksu z innymi niż kolumny systemowe. W przeciwnym razie nazwy kolumn są modyfikowane podczas korzystania ze zdalnego zaplecza.
 >
 >
 
-W przypadku korzystania z funkcji synchronizacji w trybie offline Zdefiniuj trzy tabele systemowe i tabelę danych.
+Podczas korzystania z funkcji synchronizacji w trybie offline należy zdefiniować trzy tabele systemowe i tabelę danych.
 
 ### <a name="system-tables"></a>Tabele systemowe
 
 **MS_TableOperations**  
 
-![Atrybuty tabeli MS_TableOperations][defining-core-data-tableoperations-entity]
+![atrybuty tabeli MS_TableOperations][defining-core-data-tableoperations-entity]
 
 | Atrybut | Typ |
 | --- | --- |
-| id | Integer 64 |
-| Elementów | Ciąg |
-| properties | Binary Data |
-| table | Ciąg |
-| tableKind | Integer 16 |
+| id | 10 000 000 000 000 |
+| Itemid | Ciąg |
+| properties | Dane binarne |
+| tabela | Ciąg |
+| tableKind | 16 całkowitej liczby całkowitej |
 
 
 **MS_TableOperationErrors**
 
- ![Atrybuty tabeli MS_TableOperationErrors][defining-core-data-tableoperationerrors-entity]
+ ![atrybuty tabeli MS_TableOperationErrors][defining-core-data-tableoperationerrors-entity]
 
 | Atrybut | Typ |
 | --- | --- |
 | id |Ciąg |
-| operationId |Integer 64 |
-| properties |Binary Data |
-| tableKind |Integer 16 |
+| operationId |10 000 000 000 000 |
+| properties |Dane binarne |
+| tableKind |16 całkowitej liczby całkowitej |
 
  **MS_TableConfig**
 
@@ -179,103 +179,103 @@ W przypadku korzystania z funkcji synchronizacji w trybie offline Zdefiniuj trzy
 | --- | --- |
 | id |Ciąg |
 | key |Ciąg |
-| keyType |Integer 64 |
-| table |Ciąg |
-| wartość |Ciąg |
+| Keytype |10 000 000 000 000 |
+| tabela |Ciąg |
+| value |Ciąg |
 
 ### <a name="data-table"></a>Tabela danych
 
-**TodoItem**
+**TodoItem (TodoItem)**
 
 | Atrybut | Typ | Uwaga |
 | --- | --- | --- |
-| id | Ciąg, oznaczone jako wymagane |Klucz podstawowy w magazynie zdalnym |
-| wykonanie | Wartość logiczna | Pole elementu do wykonania |
-| tekst |Ciąg |Pole elementu do wykonania |
-| createdAt | Date | obowiązkowe Mapowanie do właściwości systemowej **createdAt** |
-| updatedAt | Date | obowiązkowe Mapowanie do właściwości systemowej **updatedAt** |
-| version | Ciąg | obowiązkowe Służy do wykrywania konfliktów, mapowania do wersji |
+| id | Wymagany ciąg znaków |Klucz podstawowy w magazynie zdalnym |
+| kończenie | Wartość logiczna | Pole Zapas do wykonania |
+| tekst |Ciąg |Pole Zapas do wykonania |
+| utworzonyW | Data | (opcjonalnie) Mapy do **utworzeniaW** właściwość systemu |
+| aktualizacjaW | Data | (opcjonalnie) Mapy do **updatedAt** właściwość systemu |
+| version | Ciąg | (opcjonalnie) Służy do wykrywania konfliktów, mapy do wersji |
 
-## <a name="setup-sync"></a>Zmiana zachowania synchronizacji aplikacji
-W tej sekcji należy zmodyfikować aplikację tak, aby nie była synchronizowana przy uruchamianiu aplikacji ani gdy wstawiasz i aktualizujesz elementy. Synchronizacja jest wykonywana tylko wtedy, gdy jest wykonywany przycisk gestu odświeżania.
+## <a name="change-the-sync-behavior-of-the-app"></a><a name="setup-sync"></a>Zmienianie zachowania synchronizacji aplikacji
+W tej sekcji zmodyfikujesz aplikację tak, aby nie była synchronizowana podczas uruchamiania aplikacji lub podczas wstawiania i aktualizowania elementów. Synchronizuje się tylko wtedy, gdy przycisk gestu odświeżania jest wykonywany.
 
-**Cel-C**:
+**Cel C**:
 
-1. W **QSTodoListViewController. m**Zmień metodę **viewDidLoad** , aby usunąć wywołanie do `[self refresh]` na końcu metody. Teraz dane nie są synchronizowane z serwerem podczas uruchamiania aplikacji. Zamiast tego jest synchronizowany z zawartością magazynu lokalnego.
-2. W **QSTodoService. m**zmodyfikuj definicję `addItem` tak, aby nie była synchronizowana po wstawieniu elementu. Usuń blok `self syncData` i zastąp go następującym:
+1. W **QSTodoListViewController.m**, zmień **viewDidLoad** metody, `[self refresh]` aby usunąć wywołanie na końcu metody. Teraz dane nie są synchronizowane z serwerem w aplikacji start. Zamiast tego jest synchronizowany z zawartością magazynu lokalnego.
+2. W **QSTodoService.m**, zmodyfikuj `addItem` definicję tak, aby nie synchronizować po wstawieniu elementu. Zdejmij `self syncData` blok i wymień go na następujący:
 
    ```objc
    if (completion != nil) {
        dispatch_async(dispatch_get_main_queue(), completion);
    }
    ```
-3. Zmodyfikuj definicję `completeItem` jak wspomniano wcześniej. Usuń blok dla `self syncData` i zastąp go następującym:
+3. Zmodyfikuj `completeItem` definicję, jak wspomniano wcześniej. Zdejmij blok `self syncData` i wymień go na następujący:
    ```objc
    if (completion != nil) {
        dispatch_async(dispatch_get_main_queue(), completion);
    }
    ```
 
-**Kod SWIFT**:
+**Szybki**:
 
-W `viewDidLoad`, w **ToDoTableViewController. Swift**, Dodaj komentarz do dwóch wierszy przedstawionych tutaj, aby zatrzymać synchronizację podczas uruchamiania aplikacji. Podczas tego pisania aplikacja SWIFT do zrobienia nie aktualizuje usługi, gdy ktoś doda lub ukończy element. Usługa aktualizuje usługę tylko przy uruchamianiu aplikacji.
+W `viewDidLoad`, w **ToDoTableViewController.swift**, skomentować dwa wiersze pokazane tutaj, aby zatrzymać synchronizację na początku aplikacji. W momencie pisania tego tekstu aplikacja Swift Todo nie aktualizuje usługi, gdy ktoś doda lub ukończy element. Aktualizuje usługę tylko przy uruchomieniu aplikacji.
 
    ```swift
   self.refreshControl?.beginRefreshing()
   self.onRefresh(self.refreshControl)
 ```
 
-## <a name="test-app"></a>Testowanie aplikacji
-W tej sekcji połączysz się z nieprawidłowym adresem URL w celu symulowania scenariusza w trybie offline. Po dodaniu elementów danych są one przechowywane w lokalnym podstawowym magazynie danych, ale nie są synchronizowane z zapleczem aplikacji mobilnej.
+## <a name="test-the-app"></a><a name="test-app"></a>Testowanie aplikacji
+W tej sekcji można połączyć się z nieprawidłowym adresem URL, aby symulować scenariusz w trybie offline. Gdy dodasz elementy danych, są one przechowywane w lokalnym magazynie danych podstawowych, ale nie są synchronizowane z zapleczem aplikacji mobilnej.
 
-1. Zmień adres URL aplikacji mobilnej w **QSTodoService. m** na nieprawidłowy adres URL i ponownie uruchom aplikację:
+1. Zmień adres URL aplikacji mobilnej w **QSTodoService.m** na nieprawidłowy adres URL i uruchom aplikację ponownie:
 
-   **Cel-C**. W QSTodoService. m:
+   **Objective-C**. W QSTodoService.m:
    ```objc
    self.client = [MSClient clientWithApplicationURLString:@"https://sitename.azurewebsites.net.fail"];
    ```
-   **Kod SWIFT**. In ToDoTableViewController.swift:
+   **Szybki**. W todotableviewcontroller.swift:
    ```swift
    let client = MSClient(applicationURLString: "https://sitename.azurewebsites.net.fail")
    ```
-2. Dodaj niektóre elementy do wykonania. Zamknij symulator (lub Wymuś zamknięcie aplikacji), a następnie uruchom go ponownie. Sprawdź, czy zmiany są zachowywane.
+2. Dodaj kilka rzeczy do wykonania. Zamknij symulator (lub przymusowo zamknij aplikację), a następnie uruchom go ponownie. Sprawdź, czy zmiany są kontynuowane.
 
-3. Wyświetl zawartość zdalnej tabeli **TodoItem** :
-   * W przypadku zaplecza Node. js przejdź do [Azure Portal](https://portal.azure.com/) i w zapleczu aplikacji mobilnej kliknij pozycję **łatwe tabele** > **TodoItem**.  
-   * W przypadku zaplecza platformy .NET Użyj narzędzia SQL, takiego jak SQL Server Management Studio, lub klienta REST, takiego jak programu Fiddler lub Poster.  
+3. Wyświetl zawartość zdalnej tabeli **TodoItem:**
+   * W przypadku zaplecza Node.js przejdź do [witryny Azure portal,](https://portal.azure.com/) a w aplikacji mobilnej kliknij przycisk **Łatwe tabele** > **TodoItem**.  
+   * W przypadku zaplecza .NET użyj narzędzia SQL, takiego jak SQL Server Management Studio, lub klienta REST, takiego jak Fiddler lub Postman.  
 
 4. Sprawdź, czy nowe elementy *nie* zostały zsynchronizowane z serwerem.
 
-5. Zmień adres URL z powrotem na poprawny w **QSTodoService. m**i ponownie uruchom aplikację.
+5. Zmień adres URL z powrotem na poprawny w **QSTodoService.m**i uruchom ponownie aplikację.
 
-6. Wykonaj gest odświeżenia, pobierając listę elementów.  
+6. Wykonaj gest odświeżania, ściągając w dół listę elementów.  
 Zostanie wyświetlony pokrętło postępu.
 
-7. Ponownie Wyświetl dane **TodoItem** . Nowe i zmienione elementy do wykonania powinny teraz być wyświetlane.
+7. Ponownie wyświetl dane **TodoItem.** Nowe i zmienione elementy do wykonania powinny być teraz wyświetlane.
 
 ## <a name="summary"></a>Podsumowanie
-W celu obsługi funkcji synchronizacji w trybie offline użyto interfejsu `MSSyncTable` i zainicjowany `MSClient.syncContext` z magazynem lokalnym. W takim przypadku lokalnym magazynem jest podstawowa baza danych oparta na danych.
+Aby obsługiwać funkcję synchronizacji `MSSyncTable` w trybie `MSClient.syncContext` offline, użyliśmy interfejsu i zainicjowaliśmy w sklepie lokalnym. W takim przypadku magazyn lokalny był podstawową bazą danych opartą na danych.
 
-W przypadku korzystania z podstawowego magazynu danych lokalnych, należy zdefiniować kilka tabel z [poprawnymi właściwościami systemu](#review-core-data).
+Korzystając z lokalnego magazynu Core Data, należy zdefiniować kilka tabel z [prawidłowymi właściwościami systemu](#review-core-data).
 
-Normalne operacje tworzenia, odczytu, aktualizacji i usuwania (CRUD) dla aplikacji mobilnych działają tak, jakby aplikacja była nadal połączona, ale wszystkie operacje są wykonywane w odniesieniu do lokalnego magazynu.
+Normalne operacje tworzenia, odczytu, aktualizacji i usuwania (CRUD) dla aplikacji mobilnych działają tak, jakby aplikacja była nadal połączona, ale wszystkie operacje występują w sklepie lokalnym.
 
-Po zsynchronizowaniu lokalnego magazynu z serwerem użyto metody **MSSyncTable. pullWithQuery** .
+Podczas synchronizacji magazynu lokalnego z serwerem użyliśmy metody **MSSyncTable.pullWithQuery.**
 
-## <a name="additional-resources"></a>Dodatkowe zasoby
-* [Synchronizacja danych w trybie offline w Mobile Apps]
-* [Pokrycie w chmurze: synchronizacja w trybie offline na platformie Azure Mobile Services] \(film wideo ma Mobile Services, ale Mobile Apps synchronizacja w trybie offline działa w podobny sposób.\)
+## <a name="additional-resources"></a>Zasoby dodatkowe
+* [Synchronizacja danych w trybie offline w aplikacjach mobilnych]
+* [Zachmurzenie: Synchronizacja w trybie offline w usługach] \(mobilnych platformy Azure Film wideo dotyczy usług mobilnych, ale synchronizacja aplikacji mobilnych w trybie offline działa w podobny sposób.\)
 
 <!-- URLs. -->
 
 
-[Tworzenie aplikacji dla systemu iOS]: app-service-mobile-ios-get-started.md
-[Synchronizacja danych w trybie offline w Mobile Apps]: app-service-mobile-offline-data-sync.md
+[Tworzenie aplikacji na iOS]: app-service-mobile-ios-get-started.md
+[Synchronizacja danych w trybie offline w aplikacjach mobilnych]: app-service-mobile-offline-data-sync.md
 
 [defining-core-data-tableoperationerrors-entity]: ./media/app-service-mobile-ios-get-started-offline-data/defining-core-data-tableoperationerrors-entity.png
 [defining-core-data-tableoperations-entity]: ./media/app-service-mobile-ios-get-started-offline-data/defining-core-data-tableoperations-entity.png
 [defining-core-data-tableconfig-entity]: ./media/app-service-mobile-ios-get-started-offline-data/defining-core-data-tableconfig-entity.png
 [defining-core-data-todoitem-entity]: ./media/app-service-mobile-ios-get-started-offline-data/defining-core-data-todoitem-entity.png
 
-[Pokrycie w chmurze: synchronizacja w trybie offline na platformie Azure Mobile Services]: https://channel9.msdn.com/Shows/Cloud+Cover/Episode-155-Offline-Storage-with-Donna-Malayeri
+[Zachmurzenie: synchronizacja w trybie offline w usługach azure dla urządzeń przenośnych]: https://channel9.msdn.com/Shows/Cloud+Cover/Episode-155-Offline-Storage-with-Donna-Malayeri
 [Azure Friday: Offline-enabled apps in Azure Mobile Services]: https://azure.microsoft.com/documentation/videos/azure-mobile-services-offline-enabled-apps-with-donna-malayeri/

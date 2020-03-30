@@ -1,6 +1,6 @@
 ---
-title: Łączenie Raspberry Pi z rozwiązaniem do zdalnego monitorowania — Node. js-Azure | Microsoft Docs
-description: Opisuje sposób podłączenia urządzenia Raspberry Pi do akceleratora rozwiązania do zdalnego monitorowania przy użyciu aplikacji w języku Node. js.
+title: Połączenie Raspberry Pi z rozwiązaniem do zdalnego monitorowania — Node.js - Azure | Dokumenty firmy Microsoft
+description: W tym artykule opisano sposób podłączania urządzenia Raspberry Pi do akceleratora rozwiązań do zdalnego monitorowania przy użyciu aplikacji napisanej w pliku Node.js.
 author: dominicbetts
 manager: timlt
 ms.service: iot-accelerators
@@ -9,25 +9,25 @@ ms.topic: conceptual
 ms.date: 01/24/2018
 ms.author: dobett
 ms.openlocfilehash: 98d947e8aabf20fbfdb192cb80c9bc881007d5da
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/09/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73889268"
 ---
-# <a name="connect-your-raspberry-pi-device-to-the-remote-monitoring-solution-accelerator-nodejs"></a>Łączenie urządzenia z programem Raspberry Pi z akceleratorem rozwiązania do zdalnego monitorowania (Node. js)
+# <a name="connect-your-raspberry-pi-device-to-the-remote-monitoring-solution-accelerator-nodejs"></a>Podłącz urządzenie Raspberry Pi do akceleratora rozwiązań do zdalnego monitorowania (Node.js)
 
 [!INCLUDE [iot-suite-selector-connecting](../../includes/iot-suite-selector-connecting.md)]
 
-W tym samouczku pokazano, jak podłączyć rzeczywiste urządzenie do akceleratora rozwiązania do monitorowania zdalnego. W tym samouczku jest używany program Node. js, który jest dobrym rozwiązaniem w przypadku środowisk z minimalnymi ograniczeniami zasobów.
+W tym samouczku pokazano, jak podłączyć rzeczywiste urządzenie do akceleratora rozwiązań zdalnego monitorowania. W tym samouczku należy użyć Node.js, który jest dobrym rozwiązaniem dla środowisk z minimalnymi ograniczeniami zasobów.
 
 Jeśli wolisz symulować urządzenie, zobacz [Tworzenie i testowanie nowego symulowanego urządzenia](iot-accelerators-remote-monitoring-create-simulated-device.md).
 
 ### <a name="required-hardware"></a>Wymagany sprzęt
 
-Komputer stacjonarny, który umożliwia zdalne nawiązywanie połączenia z wierszem polecenia w Raspberry Pi.
+Komputer stacjonarny umożliwiający zdalne łączenie się z wierszem polecenia w raspberry pi.
 
-[Zestaw startowy Microsoft IoT dla Raspberry Pi 3](https://azure.microsoft.com/develop/iot/starter-kits/) lub równoważnych składników. W tym samouczku są stosowane następujące elementy z zestawu:
+[Zestaw startowy Microsoft IoT dla Raspberry Pi 3](https://azure.microsoft.com/develop/iot/starter-kits/) lub równoważnych składników. W tym samouczku użyto następujących elementów z zestawu:
 
 - Raspberry Pi 3
 - Karta MicroSD (z NOOBS)
@@ -36,24 +36,24 @@ Komputer stacjonarny, który umożliwia zdalne nawiązywanie połączenia z wier
 
 ### <a name="required-desktop-software"></a>Wymagane oprogramowanie komputerowe
 
-Do uzyskania zdalnego dostępu do wiersza polecenia na Raspberry Pi jest potrzebny klient SSH na komputerze stacjonarnym.
+Potrzebujesz klienta SSH na komputerze stacjonarnym, aby umożliwić zdalny dostęp do wiersza polecenia na Raspberry Pi.
 
-- System Windows nie zawiera klienta SSH. Zalecamy [Korzystanie z](https://www.putty.org/)programu.
-- Większość dystrybucji systemu Linux i Mac OS zawierają narzędzia SSH wiersza polecenia. Aby uzyskać więcej informacji, zobacz [SSH przy użyciu systemu Linux lub Mac OS](https://www.raspberrypi.org/documentation/remote-access/ssh/unix.md).
+- System Windows nie zawiera klienta SSH. Zalecamy stosowanie [PuTTY](https://www.putty.org/).
+- Większość dystrybucji Linuksa i Mac OS zawiera narzędzie SSH wiersza polecenia. Aby uzyskać więcej informacji, zobacz [SSH Using Linux lub Mac OS](https://www.raspberrypi.org/documentation/remote-access/ssh/unix.md).
 
 ### <a name="required-raspberry-pi-software"></a>Wymagane oprogramowanie Raspberry Pi
 
-Jeśli jeszcze tego nie zrobiono, zainstaluj program Node. js w wersji 4.0.0 lub nowszej na Raspberry Pi. Poniższe kroki pokazują, jak zainstalować program Node. js V6 na Raspberry Pi:
+Jeśli jeszcze tego nie zrobiono, zainstaluj node.js w wersji 4.0.0 lub nowszej na komputerze Raspberry Pi. W poniższych krokach pokazano, jak zainstalować plik Node.js v6 na urządzeniu Raspberry Pi:
 
-1. Nawiąż połączenie z Raspberry Pi przy użyciu `ssh`. Aby uzyskać więcej informacji, zobacz [SSH (Secure Shell)](https://www.raspberrypi.org/documentation/remote-access/ssh/README.md) w [witrynie sieci Web Raspberry Pi](https://www.raspberrypi.org/).
+1. Połącz się ze `ssh`swoim Raspberry Pi za pomocą programu . Aby uzyskać więcej informacji, zobacz [SSH (Secure Shell)](https://www.raspberrypi.org/documentation/remote-access/ssh/README.md) w [witrynie Raspberry Pi](https://www.raspberrypi.org/).
 
-1. Aby zaktualizować Raspberry Pi, użyj następującego polecenia:
+1. Użyj następującego polecenia, aby zaktualizować Raspberry Pi:
 
     ```sh
     sudo apt-get update
     ```
 
-1. Użyj następujących poleceń, aby usunąć istniejącą instalację środowiska Node. js z Raspberry Pi:
+1. Użyj następujących poleceń, aby usunąć istniejącą instalację node.js z Raspberry Pi:
 
     ```sh
     sudo apt-get remove nodered -y
@@ -61,24 +61,24 @@ Jeśli jeszcze tego nie zrobiono, zainstaluj program Node. js w wersji 4.0.0 lub
     sudo apt-get remove npm  -y
     ```
 
-1. Użyj następującego polecenia, aby pobrać i zainstalować Node. js V6 na Raspberry Pi:
+1. Użyj następującego polecenia, aby pobrać i zainstalować node.js v6 na urządzeniu Raspberry Pi:
 
     ```sh
     curl -sL https://deb.nodesource.com/setup_6.x | sudo bash -
     sudo apt-get install nodejs npm
     ```
 
-1. Użyj poniższego polecenia, aby sprawdzić, czy pomyślnie zainstalowano program Node. js v 6.11.4:
+1. Aby sprawdzić, czy aplikacja Node.js v6.11.4 została pomyślnie zainstalowana, użyj następującego polecenia:
 
     ```sh
     node --version
     ```
 
-## <a name="create-a-nodejs-solution"></a>Tworzenie rozwiązania Node. js
+## <a name="create-a-nodejs-solution"></a>Tworzenie rozwiązania Node.js
 
-Wykonaj następujące kroki, korzystając z połączenia `ssh` Raspberry Pi:
+Wykonaj następujące czynności, `ssh` korzystając z połączenia z raspberry pi:
 
-1. Utwórz folder o nazwie `remotemonitoring` w folderze głównym na Raspberry Pi. Przejdź do tego folderu w wierszu polecenia:
+1. Utwórz folder `remotemonitoring` o nazwie w folderze domowym na Raspberry Pi. Przejdź do tego folderu w wierszu polecenia:
 
     ```sh
     cd ~
@@ -92,9 +92,9 @@ Wykonaj następujące kroki, korzystając z połączenia `ssh` Raspberry Pi:
     npm install async azure-iot-device azure-iot-device-mqtt
     ```
 
-1. W folderze `remotemonitoring` Utwórz plik o nazwie **remote_monitoring. js**. Otwórz ten plik w edytorze tekstu. Na Raspberry Pi można użyć edytorów tekstu `nano` lub `vi`.
+1. W `remotemonitoring` folderze utwórz plik o nazwie **remote_monitoring.js**. Otwórz ten plik w edytorze tekstu. Na Raspberry Pi można użyć `nano` `vi` edytorów tekstu.
 
-1. W pliku **remote_monitoring. js** Dodaj następujące instrukcje `require`:
+1. W pliku **remote_monitoring.js** dodaj następujące `require` instrukcje:
 
     ```javascript
     var Protocol = require('azure-iot-device-mqtt').Mqtt;
@@ -103,13 +103,13 @@ Wykonaj następujące kroki, korzystając z połączenia `ssh` Raspberry Pi:
     var async = require('async');
     ```
 
-1. Dodaj następujące deklaracje zmiennych po instrukcji `require`. Zastąp wartość symbolu zastępczego `{device connection string}` wartością zanotowaną dla urządzenia obsługiwanego w rozwiązaniu do zdalnego monitorowania:
+1. Dodaj następujące deklaracje zmiennych po instrukcji `require`. Zastąp `{device connection string}` wartość symbolu zastępczego wartością odnotowaną dla urządzenia aprowizowanego w rozwiązaniu do zdalnego monitorowania:
 
     ```javascript
     var connectionString = '{device connection string}';
     ```
 
-1. Aby zdefiniować podstawowe dane telemetrii, Dodaj następujące zmienne:
+1. Aby zdefiniować niektóre podstawowe dane telemetryczne, dodaj następujące zmienne:
 
     ```javascript
     var temperature = 50;
@@ -120,7 +120,7 @@ Wykonaj następujące kroki, korzystając z połączenia `ssh` Raspberry Pi:
     var pressureUnit = 'psig';
     ```
 
-1. Aby zdefiniować niektóre wartości właściwości, Dodaj następujące zmienne:
+1. Aby zdefiniować niektóre wartości właściwości, dodaj następujące zmienne:
 
     ```javascript
     var schema = "real-chiller;v1";
@@ -133,7 +133,7 @@ Wykonaj następujące kroki, korzystając z połączenia `ssh` Raspberry Pi:
     var deviceOnline = true;
     ```
 
-1. Dodaj następującą zmienną, aby zdefiniować zgłoszone właściwości do wysłania do rozwiązania. Te właściwości obejmują metadane, które mają być wyświetlane w interfejsie użytkownika sieci Web:
+1. Dodaj następującą zmienną, aby zdefiniować zgłoszone właściwości do wysłania do rozwiązania. Te właściwości obejmują metadane do wyświetlenia w interfejsie użytkownika sieci Web:
 
     ```javascript
     var reportedProperties = {
@@ -151,7 +151,7 @@ Wykonaj następujące kroki, korzystając z połączenia `ssh` Raspberry Pi:
     }
     ```
 
-1. Aby wydrukować wyniki operacji, Dodaj następującą funkcję pomocnika:
+1. Aby wydrukować wyniki operacji, dodaj następującą funkcję pomocnika:
 
     ```javascript
     function printErrorFor(op) {
@@ -161,7 +161,7 @@ Wykonaj następujące kroki, korzystając z połączenia `ssh` Raspberry Pi:
     }
     ```
 
-1. Dodaj następującą funkcję pomocnika, aby użyć programu do losowego generowania wartości telemetrycznych:
+1. Dodaj następującą funkcję pomocnika, która będzie używana do losowania wartości telemetrycznych:
 
      ```javascript
      function generateRandomIncrement() {
@@ -169,7 +169,7 @@ Wykonaj następujące kroki, korzystając z połączenia `ssh` Raspberry Pi:
      }
      ```
 
-1. Dodaj następującą funkcję rodzajową, aby obsłużyć bezpośrednie wywołania metod z rozwiązania. Funkcja wyświetla informacje o metodzie bezpośredniej, która została wywołana, ale w tym przykładzie nie modyfikuje urządzenia w żaden sposób. Rozwiązanie używa metod bezpośrednich do działania na urządzeniach:
+1. Dodaj następującą funkcję rodzajową do obsługi wywołań metody bezpośredniej z rozwiązania. Funkcja wyświetla informacje o metodzie bezpośredniej, która została wywołana, ale w tym przykładzie nie modyfikuje urządzenia w żaden sposób. Rozwiązanie wykorzystuje bezpośrednie metody działania na urządzeniach:
 
      ```javascript
      function onDirectMethod(request, response) {
@@ -184,7 +184,7 @@ Wykonaj następujące kroki, korzystając z połączenia `ssh` Raspberry Pi:
      }
      ```
 
-1. Dodaj następującą funkcję, aby obsłużyć wywołania metody bezpośredniej **FirmwareUpdate** z rozwiązania. Funkcja weryfikuje parametry przesłane w ładunku metody bezpośredniej, a następnie asynchronicznie uruchamia symulację aktualizacji oprogramowania układowego:
+1. Dodaj następującą funkcję do obsługi wywołań metody bezpośredniej **Metody FirmwareUpdate** z rozwiązania. Funkcja weryfikuje parametry przekazywane w ładunku metody bezpośredniej, a następnie asynchronicznie uruchamia symulację aktualizacji oprogramowania układowego:
 
      ```javascript
      function onFirmwareUpdate(request, response) {
@@ -291,7 +291,7 @@ Wykonaj następujące kroki, korzystając z połączenia `ssh` Raspberry Pi:
      }
      ```
 
-1. Dodaj następujący kod, aby wysłać dane telemetryczne do rozwiązania. Aplikacja kliencka dodaje do komunikatu właściwości w celu zidentyfikowania schematu komunikatu:
+1. Dodaj następujący kod, aby wysłać dane telemetryczne do rozwiązania. Aplikacja kliencka dodaje właściwości do wiadomości, aby zidentyfikować schemat wiadomości:
 
      ```javascript
      function sendTelemetry(data, schema) {
@@ -319,9 +319,9 @@ Wykonaj następujące kroki, korzystając z połączenia `ssh` Raspberry Pi:
 1. Dodaj następujący kod do:
 
     * Otwórz połączenie.
-    * Skonfiguruj procedurę obsługi dla żądanych właściwości.
+    * Konfigurowanie programu obsługi dla żądanych właściwości.
     * Wyślij zgłoszone właściwości.
-    * Procedury obsługi rejestru dla metod bezpośrednich. W przykładzie zastosowano osobną procedurę obsługi dla metody bezpośredniej aktualizacji oprogramowania układowego.
+    * Zarejestruj programy obsługi dla metod bezpośrednich. W przykładzie użyto oddzielnego programu obsługi dla metody bezpośredniej aktualizacji oprogramowania układowego.
     * Rozpocznij wysyłanie danych telemetrycznych.
 
       ```javascript
@@ -384,7 +384,7 @@ Wykonaj następujące kroki, korzystając z połączenia `ssh` Raspberry Pi:
       });
       ```
 
-1. Zapisz zmiany w pliku **remote_monitoring. js** .
+1. Zapisz zmiany w pliku **remote_monitoring.js.**
 
 1. Aby uruchomić przykładową aplikację, uruchom następujące polecenie w wierszu polecenia na Raspberry Pi:
 

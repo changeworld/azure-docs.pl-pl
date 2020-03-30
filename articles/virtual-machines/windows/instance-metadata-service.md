@@ -1,6 +1,6 @@
 ---
-title: Instance Metadata Service platformy Azure
-description: Interfejs RESTful, aby uzyskać informacje na temat obliczeniowych, sieciowych i nadchodzących zdarzeń konserwacji maszyn wirtualnych z systemem Windows.
+title: Usługa metadanych wystąpienia platformy Azure
+description: Interfejs RESTful, aby uzyskać informacje o obliczeniach maszyn wirtualnych systemu Windows, sieci i nadchodzących zdarzeniach konserwacji.
 services: virtual-machines-windows
 documentationcenter: ''
 author: KumariSupriya
@@ -15,55 +15,55 @@ ms.date: 02/24/2020
 ms.author: sukumari
 ms.reviewer: azmetadata
 ms.openlocfilehash: 0fbe27fb5ed61cc187c679f9cb7420f0b444aa60
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77615935"
 ---
 # <a name="azure-instance-metadata-service"></a>Usługa metadanych wystąpienia platformy Azure
 
-Usługa Azure Instance Metadata Service (IMDS) zawiera informacje o aktualnie uruchomionych wystąpieniach maszyn wirtualnych i może służyć do zarządzania maszynami wirtualnymi i ich konfigurowania.
-Podane informacje obejmują jednostki SKU, konfigurację sieci i nadchodzące zdarzenia konserwacji. Pełną listę dostępnych danych można znaleźć w temacie [Metadata API](#metadata-apis).
+Usługa metadanych wystąpienia platformy Azure (IMDS) zawiera informacje o aktualnie uruchomionych wystąpieniach maszyn wirtualnych i może służyć do zarządzania i konfigurowania maszyn wirtualnych.
+Podane informacje obejmują jednostkę SKU, konfigurację sieci i nadchodzące zdarzenia konserwacji. Aby uzyskać pełną listę dostępnych danych, zobacz [interfejsy API metadanych](#metadata-apis).
 
-Instance Metadata Service platformy Azure to punkt końcowy REST dostępny dla wszystkich maszyn wirtualnych IaaS utworzonych za pośrednictwem [Azure Resource Manager](https://docs.microsoft.com/rest/api/resources/).
-Punkt końcowy jest dostępny w dobrze znanym adresie IP bez obsługi routingu (`169.254.169.254`), do którego można uzyskać dostęp tylko z poziomu maszyny wirtualnej.
+Usługa metadanych wystąpienia platformy Azure to punkt końcowy REST dostępny dla wszystkich maszyn wirtualnych IaaS utworzonych za pośrednictwem [usługi Azure Resource Manager.](https://docs.microsoft.com/rest/api/resources/)
+Punkt końcowy jest dostępny pod dobrze znanym nie rutowalnym adresem IP (`169.254.169.254`), do który można uzyskać tylko z poziomu maszyny Wirtualnej.
 
 > [!IMPORTANT]
-> Ta usługa jest **ogólnie dostępna** we wszystkich regionach świadczenia usługi Azure.  Regularnie otrzymuje aktualizacje, aby uwidocznić nowe informacje o wystąpieniach maszyn wirtualnych. Ta strona przedstawia aktualne dostępne [interfejsy API metadanych](#metadata-apis) .
+> Ta usługa jest **ogólnie dostępna** we wszystkich regionach platformy Azure.  Regularnie otrzymuje aktualizacje, aby udostępnić nowe informacje o wystąpieniach maszyny wirtualnej. Ta strona odzwierciedla aktualne dostępne [interfejsy API metadanych.](#metadata-apis)
 
-## <a name="service-availability"></a>Dostępność usługi
+## <a name="service-availability"></a>Dostępność usług
 
-Usługa jest dostępna w ogólnie dostępnych regionach platformy Azure. Nie wszystkie wersje interfejsu API mogą być dostępne we wszystkich regionach świadczenia usługi Azure.
+Usługa jest dostępna w ogólnie dostępnych regionach platformy Azure. Nie wszystkie wersje interfejsu API mogą być dostępne we wszystkich regionach platformy Azure.
 
-Regiony                                        | Opóźnienie?                                 | Obsługiwane wersje
+Regiony                                        | Dostępność?                                 | Obsługiwane wersje
 -----------------------------------------------|-----------------------------------------------|-----------------
-[Wszystkie ogólnie dostępne globalne regiony platformy Azure](https://azure.microsoft.com/regions/)     | Ogólnie dostępna | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01, 2019-02-01, 2019-03-11, 2019-04-30, 2019-06-01, 2019-06-04, 2019-08-01, 2019-08-15
-[Azure Government](https://azure.microsoft.com/overview/clouds/government/)              | Ogólnie dostępna | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01, 2019-02-01, 2019-03-11, 2019-04-30, 2019-06-01, 2019-06-04, 2019-08-01, 2019-08-15
-[Azure — Chiny](https://www.azure.cn/)                                            | Ogólnie dostępna | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01, 2019-02-01, 2019-03-11, 2019-04-30, 2019-06-01, 2019-06-04, 2019-08-01, 2019-08-15
-[Azure (Niemcy)](https://azure.microsoft.com/overview/clouds/germany/)                    | Ogólnie dostępna | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01, 2019-02-01, 2019-03-11, 2019-04-30, 2019-06-01, 2019-06-04, 2019-08-01, 2019-08-15
+[Wszystkie ogólnie dostępne globalne regiony platformy Azure](https://azure.microsoft.com/regions/)     | Ogólnie dostępne | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01, 2019-02-01, 2019-03-11, 2019-04-30, 2019-06-01, 2019-06-04, 2019-08-01, 2019-08-15
+[Azure Government](https://azure.microsoft.com/overview/clouds/government/)              | Ogólnie dostępne | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01, 2019-02-01, 2019-03-11, 2019-04-30, 2019-06-01, 2019-06-04, 2019-08-01, 2019-08-15
+[Azure w Chinach — 21Vianet](https://www.azure.cn/)                                            | Ogólnie dostępne | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01, 2019-02-01, 2019-03-11, 2019-04-30, 2019-06-01, 2019-06-04, 2019-08-01, 2019-08-15
+[Azure (Niemcy)](https://azure.microsoft.com/overview/clouds/germany/)                    | Ogólnie dostępne | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01, 2019-02-01, 2019-03-11, 2019-04-30, 2019-06-01, 2019-06-04, 2019-08-01, 2019-08-15
 
 Wersja 2019-11-01 jest obecnie wdrażana i może nie być dostępna we wszystkich regionach.
 
-Ta tabela jest aktualizowana, gdy istnieją aktualizacje usługi i/lub dostępne są nowe obsługiwane wersje.
+Ta tabela jest aktualizowana, gdy dostępne są aktualizacje usługi i/lub dostępne są nowe obsługiwane wersje.
 
-Aby wypróbować Instance Metadata Service, Utwórz maszynę wirtualną z poziomu [Azure Resource Manager](https://docs.microsoft.com/rest/api/resources/) lub [Azure Portal](https://portal.azure.com) w powyższych regionach i postępuj zgodnie z poniższymi przykładami.
-Więcej przykładów dotyczących zapytań IMDS można znaleźć w przykładach [metadanych wystąpienia platformy Azure](https://github.com/microsoft/azureimds)
+Aby wypróbować usługę metadanych wystąpienia, utwórz maszynę wirtualną z [usługi Azure Resource Manager](https://docs.microsoft.com/rest/api/resources/) lub [witrynę Azure portal](https://portal.azure.com) w powyższych regionach i postępuj zgodnie z poniższymi przykładami.
+Dalsze przykłady sposobu wykonywania zapytań o usługi IMDS można znaleźć w [przykładach metadanych wystąpienia platformy Azure](https://github.com/microsoft/azureimds)
 
 ## <a name="usage"></a>Sposób użycia
 
-### <a name="versioning"></a>Obsługa wersji
+### <a name="versioning"></a>Przechowywanie wersji
 
-Instance Metadata Service ma wersję, a określenie wersji interfejsu API w żądaniu HTTP jest obowiązkowe.
+Usługa metadanych wystąpienia jest wersjona, a określenie wersji interfejsu API w żądaniu HTTP jest obowiązkowe.
 
-W tej [tabeli dostępności](#service-availability)są wyświetlane najnowsze wersje.
+Najnowsze wersje można zobaczyć na liście w tej [tabeli dostępności](#service-availability).
 
-W miarę dodawania nowszych wersji nadal można uzyskać dostęp do starszych wersji, jeśli skrypty są zależne od określonych formatów danych.
+Po dodaniu nowszych wersji starsze wersje są nadal dostępne w celu zapewnienia zgodności, jeśli skrypty mają zależności od określonych formatów danych.
 
-Jeśli żadna wersja nie zostanie określona, zostanie zwrócony błąd z listą najnowszych obsługiwanych wersji.
+Jeśli nie określono wersji, zwracany jest błąd z listą najnowszych obsługiwanych wersji.
 
 > [!NOTE]
-> Odpowiedź jest ciągiem JSON. Poniższy Przykładowa odpowiedź jest całkiem wydrukowana pod kątem czytelności.
+> Odpowiedź jest ciągiem JSON. Poniższa przykładowa odpowiedź jest dość wydrukowana w celu uzyskania czytelności.
 
 **Żądanie**
 
@@ -71,7 +71,7 @@ Jeśli żadna wersja nie zostanie określona, zostanie zwrócony błąd z listą
 curl -H Metadata:true "http://169.254.169.254/metadata/instance"
 ```
 
-**Odpowiedź**
+**Odpowiedzi**
 
 ```json
 {
@@ -84,64 +84,64 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance"
 }
 ```
 
-### <a name="using-headers"></a>Używanie nagłówków
+### <a name="using-headers"></a>Korzystanie z nagłówków
 
-Podczas wykonywania zapytania dotyczącego Instance Metadata Service należy podać nagłówek `Metadata: true`, aby upewnić się, że żądanie nie zostało przypadkowo przekierowane.
+Podczas kwerendy usługi metadanych wystąpienia, `Metadata: true` należy podać nagłówek, aby upewnić się, że żądanie nie zostało przypadkowo przekierowane.
 
 ### <a name="retrieving-metadata"></a>Pobieranie metadanych
 
-Metadane wystąpienia są dostępne do uruchamiania maszyn wirtualnych utworzonych/zarządzanych przy użyciu [Azure Resource Manager](https://docs.microsoft.com/rest/api/resources/). Uzyskaj dostęp do wszystkich kategorii danych dla wystąpienia maszyny wirtualnej, korzystając z następującego żądania:
+Metadane wystąpienia są dostępne do uruchamiania maszyn wirtualnych utworzonych/zarządzanych przy użyciu [usługi Azure Resource Manager](https://docs.microsoft.com/rest/api/resources/). Dostęp do wszystkich kategorii danych dla wystąpienia maszyny wirtualnej przy użyciu następującego żądania:
 
 ```bash
 curl -H Metadata:true "http://169.254.169.254/metadata/instance?api-version=2017-08-01"
 ```
 
 > [!NOTE]
-> We wszystkich kwerendach metadanych wystąpienia jest rozróżniana wielkość liter.
+> Wszystkie kwerendy metadanych wystąpienia są rozróżniane.
 
 ### <a name="data-output"></a>Dane wyjściowe
 
-Domyślnie Instance Metadata Service zwraca dane w formacie JSON (`Content-Type: application/json`). Jednak inne interfejsy API zwracają dane w różnych formatach, jeśli jest to wymagane.
-Poniższa tabela zawiera odwołania do innych formatów danych, które mogą być obsługiwane przez interfejsy API.
+Domyślnie usługa metadanych wystąpienia zwraca dane`Content-Type: application/json`w formacie JSON ( ). Jednak różne interfejsy API zwracają dane w różnych formatach, jeśli jest to wymagane.
+Poniższa tabela jest odwołaniem do innych formatów danych, które mogą obsługiwać interfejsy API.
 
-Interfejs API | Domyślny format danych | Inne formaty
+interfejs API | Domyślny format danych | Inne formaty
 --------|---------------------|--------------
-/instance | kodu | tekst
-/scheduledevents | kodu | brak
-/attested | kodu | brak
+/instance | json | tekst
+/scheduledevents | json | brak
+/potwierdzone | json | brak
 
-Aby uzyskać dostęp do formatu niedomyślnej odpowiedzi, należy określić żądany format jako parametr ciągu zapytania w żądaniu. Na przykład:
+Aby uzyskać dostęp do formatu odpowiedzi nie domyślnej, należy określić żądany format jako parametr ciągu zapytania w żądaniu. Przykład:
 
 ```bash
 curl -H Metadata:true "http://169.254.169.254/metadata/instance?api-version=2017-08-01&format=text"
 ```
 
 > [!NOTE]
-> W przypadku węzłów liścia `format=json` nie działa. Te zapytania `format=text` muszą być jawnie określone, jeśli domyślny format to JSON.
+> W przypadku węzłów liścia `format=json` nie działa. Dla tych `format=text` kwerend musi być jawnie określony, jeśli domyślny format jest json.
 
-### <a name="security"></a>Bezpieczeństwo
+### <a name="security"></a>Zabezpieczenia
 
-Punkt końcowy Instance Metadata Service jest dostępny tylko w ramach uruchomionego wystąpienia maszyny wirtualnej w adresie IP bez obsługi routingu. Ponadto wszystkie żądania z nagłówkiem `X-Forwarded-For` są odrzucane przez usługę.
-Żądania muszą również zawierać nagłówek `Metadata: true`, aby upewnić się, że rzeczywiste żądanie było bezpośrednio przeznaczone i nie jest częścią niezamierzonego przekierowania.
+Punkt końcowy usługi metadanych wystąpienia jest dostępny tylko z poziomu uruchomionego wystąpienia maszyny wirtualnej na nierutowalnym adresie IP. Ponadto każde żądanie z `X-Forwarded-For` nagłówkiem jest odrzucane przez usługę.
+Żądania muszą również `Metadata: true` zawierać nagłówek, aby upewnić się, że rzeczywiste żądanie było bezpośrednio zamierzone, a nie częścią niezamierzonego przekierowania.
 
 ### <a name="error"></a>Błąd
 
-Jeśli nie odnaleziono elementu danych lub nieprawidłowo sformułowane żądanie, Instance Metadata Service zwraca standardowe błędy HTTP. Na przykład:
+Jeśli nie znaleziono elementu danych lub nieprawidłowo sformułowane żądanie, usługa metadanych wystąpienia zwraca standardowe błędy HTTP. Przykład:
 
 Kod stanu HTTP | Przyczyna
 ----------------|-------
-200 OK |
-400 Nieprawidłowe żądanie | Brak nagłówka `Metadata: true` lub nie ma go w czasie wykonywania zapytania dotyczącego węzła liścia
-nie znaleziono 404 | Żądany element nie istnieje
-Metoda 405 nie jest dozwolona | Obsługiwane są tylko żądania `GET`
-410 | Spróbuj ponownie za jakiś czas przez maksymalnie 70 sekund
-429 zbyt wiele żądań | Interfejs API obsługuje obecnie maksymalnie 5 zapytań na sekundę.
-Błąd usługi 500     | Ponów próbę za jakiś czas
+200 ok. |
+400 Zła prośba | Brak `Metadata: true` nagłówka lub brak formatu podczas wykonywania kwerendy w węźle liścia
+404 — Nie znaleziono | Żądany element nie istnieje
+405 Metoda niedozwolona | Obsługiwane `GET` są tylko żądania
+410 Odszedł | Ponów próbę po pewnym czasie na maksymalnie 70 sekund
+429 Zbyt wiele żądań | Interfejs API obsługuje obecnie maksymalnie 5 zapytań na sekundę
+Błąd usługi 500     | Ponów próbę po pewnym czasie
 
 ### <a name="examples"></a>Przykłady
 
 > [!NOTE]
-> Wszystkie odpowiedzi interfejsu API są ciągami JSON. Wszystkie poniższe przykładowe odpowiedzi są całkiem drukowane w celu zapewnienia czytelności.
+> Wszystkie odpowiedzi interfejsu API są ciągami JSON. Wszystkie poniższe przykładowe odpowiedzi są dość wydrukowane dla czytelności.
 
 #### <a name="retrieving-network-information"></a>Pobieranie informacji o sieci
 
@@ -151,10 +151,10 @@ Błąd usługi 500     | Ponów próbę za jakiś czas
 curl -H Metadata:true "http://169.254.169.254/metadata/instance/network?api-version=2017-08-01"
 ```
 
-**Odpowiedź**
+**Odpowiedzi**
 
 > [!NOTE]
-> Odpowiedź jest ciągiem JSON. Poniższy Przykładowa odpowiedź jest całkiem wydrukowana pod kątem czytelności.
+> Odpowiedź jest ciągiem JSON. Poniższa przykładowa odpowiedź jest dość wydrukowana w celu uzyskania czytelności.
 
 ```json
 {
@@ -190,7 +190,7 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance/network?api-vers
 curl -H Metadata:true "http://169.254.169.254/metadata/instance/network/interface/0/ipv4/ipAddress/0/publicIpAddress?api-version=2017-08-01&format=text"
 ```
 
-#### <a name="retrieving-all-metadata-for-an-instance"></a>Pobieranie wszystkich metadanych wystąpienia
+#### <a name="retrieving-all-metadata-for-an-instance"></a>Pobieranie wszystkich metadanych dla wystąpienia
 
 **Żądanie**
 
@@ -198,10 +198,10 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance/network/interfac
 curl -H Metadata:true "http://169.254.169.254/metadata/instance?api-version=2019-06-01"
 ```
 
-**Odpowiedź**
+**Odpowiedzi**
 
 > [!NOTE]
-> Odpowiedź jest ciągiem JSON. Poniższy Przykładowa odpowiedź jest całkiem wydrukowana pod kątem czytelności.
+> Odpowiedź jest ciągiem JSON. Poniższa przykładowa odpowiedź jest dość wydrukowana w celu uzyskania czytelności.
 
 ```json
 {
@@ -314,27 +314,27 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance?api-version=2019
 }
 ```
 
-#### <a name="retrieving-metadata-in-windows-virtual-machine"></a>Pobieranie metadanych w maszynie wirtualnej z systemem Windows
+#### <a name="retrieving-metadata-in-windows-virtual-machine"></a>Pobieranie metadanych na maszynie wirtualnej systemu Windows
 
 **Żądanie**
 
-Metadane wystąpienia można pobrać w systemie Windows za pośrednictwem programu `curl`:
+Metadane instancji można pobrać w `curl` systemie Windows za pośrednictwem programu:
 
 ```powershell
 curl -H @{'Metadata'='true'} http://169.254.169.254/metadata/instance?api-version=2019-06-01 | select -ExpandProperty Content
 ```
 
-Lub za pomocą polecenia cmdlet programu `Invoke-RestMethod` PowerShell:
+Lub za `Invoke-RestMethod` pośrednictwem polecenia cmdlet programu PowerShell:
 
 ```powershell
 
 Invoke-RestMethod -Headers @{"Metadata"="true"} -URI http://169.254.169.254/metadata/instance?api-version=2019-06-01 -Method get
 ```
 
-**Odpowiedź**
+**Odpowiedzi**
 
 > [!NOTE]
-> Odpowiedź jest ciągiem JSON. Poniższy Przykładowa odpowiedź jest całkiem wydrukowana pod kątem czytelności.
+> Odpowiedź jest ciągiem JSON. Poniższa przykładowa odpowiedź jest dość wydrukowana w celu uzyskania czytelności.
 
 ```json
 {
@@ -449,72 +449,72 @@ Invoke-RestMethod -Headers @{"Metadata"="true"} -URI http://169.254.169.254/meta
 
 ## <a name="metadata-apis"></a>Interfejsy API metadanych
 
-Następujące interfejsy API są dostępne za pomocą punktu końcowego metadanych:
+Następujące interfejsy API są dostępne za pośrednictwem punktu końcowego metadanych:
 
-Dane | Opis | Wprowadzona wersja
+Dane | Opis | Wprowadzono wersję
 -----|-------------|-----------------------
-zaświadczenia | Zobacz [zaświadczone dane](#attested-data) | 2018-10-01
-identity | Zarządzane tożsamości dla zasobów platformy Azure. Zobacz [pozyskiwanie tokenu dostępu](../../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md) | 2018-02-01
-wystąpienie | Zobacz [interfejs API wystąpienia](#instance-api) | 2017-04-02
-scheduledevents | Zobacz [Scheduled Events](scheduled-events.md) | 2017-08-01
+Potwierdzone | Zobacz [potwierdzone dane](#attested-data) | 2018-10-01
+identity | Tożsamości zarządzane dla zasobów platformy Azure. Zobacz [uzyskiwanie tokenu dostępu](../../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md) | 2018-02-01
+Wystąpienie | Zobacz [interfejs API wystąpienia](#instance-api) | 2017-04-02
+terminy | Zobacz [zaplanowane wydarzenia](scheduled-events.md) | 2017-08-01
 
 ### <a name="instance-api"></a>Interfejs API wystąpienia
 
-Następujące kategorie obliczeniowe są dostępne za pomocą interfejsu API wystąpienia:
+Następujące kategorie obliczeń są dostępne za pośrednictwem interfejsu API wystąpienia:
 
 > [!NOTE]
-> Za pomocą punktu końcowego metadanych następujące kategorie są dostępne za pomocą wystąpień/obliczeń
+> Za pośrednictwem punktu końcowego metadanych dostępne są następujące kategorie za pośrednictwem wystąpienia/obliczeń
 
-Dane | Opis | Wprowadzona wersja
+Dane | Opis | Wprowadzono wersję
 -----|-------------|-----------------------
-azEnvironment | Środowisko platformy Azure, w którym jest uruchomiona maszyna wirtualna | 2018-10-01
-customData | Ta funkcja jest obecnie wyłączona i będziemy aktualizować tę dokumentację, gdy staną się dostępne | 2019-02-01
-location | Region platformy Azure, w którym działa maszyna wirtualna | 2017-04-02
-name | Nazwa maszyny wirtualnej | 2017-04-02
-offer | Informacje o ofercie dla obrazu maszyny wirtualnej i dostępne tylko dla obrazów wdrożonych z galerii obrazów platformy Azure | 2017-04-02
-osType | System Linux lub Windows | 2017-04-02
-placementGroupId | [Grupa umieszczania](../../virtual-machine-scale-sets/virtual-machine-scale-sets-placement-groups.md) zestawu skalowania maszyn wirtualnych | 2017-08-01
-zamierza | [Planowanie](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#plan) zawierające nazwę, produkt i wydawcę maszyny wirtualnej, jeśli jest to obraz portalu Azure Marketplace | 2018-04-02
-platformUpdateDomain |  [Aktualizuj domenę](manage-availability.md) , w której działa maszyna wirtualna | 2017-04-02
-platformFaultDomain | [Domena błędów](manage-availability.md) , w której działa maszyna wirtualna | 2017-04-02
-dostawcy | Dostawca maszyny wirtualnej | 2018-10-01
-publicKeys | [Kolekcja kluczy publicznych](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#sshpublickey) przypisanych do maszyny wirtualnej i ścieżek | 2018-04-02
-publisher | Wydawca obrazu maszyny wirtualnej | 2017-04-02
+azŚrodowisk | Środowisko platformy Azure, w którym maszyna wirtualna jest uruchomiona | 2018-10-01
+Customdata | Ta funkcja jest obecnie wyłączona i zaktualizujemy tę dokumentację, gdy stanie się dostępna | 2019-02-01
+location | Region platformy Azure, w który działa maszyna wirtualna | 2017-04-02
+name | Nazwa maszyny Wirtualnej | 2017-04-02
+offer | Informacje o ofercie dla obrazu maszyny Wirtualnej i są dostępne tylko dla obrazów wdrożonych z galerii obrazów platformy Azure | 2017-04-02
+osType | Linux lub Windows | 2017-04-02
+placementGroupId (ład grupy) | [Grupa umieszczania](../../virtual-machine-scale-sets/virtual-machine-scale-sets-placement-groups.md) zestawu skalowania maszyny wirtualnej | 2017-08-01
+plan | [Plan](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#plan) zawierający nazwę, produkt i wydawcę maszyny Wirtualnej, jeśli jest to obraz portalu Azure Marketplace | 2018-04-02
+platformaUpdateDomain |  [Aktualizuj domenę,](manage-availability.md) w | 2017-04-02
+platformaFaultDomain | [Domena błędów,](manage-availability.md) w | 2017-04-02
+Dostawca | Dostawca maszyny Wirtualnej | 2018-10-01
+klawisze publiczne | [Kolekcja kluczy publicznych](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#sshpublickey) przypisanych do maszyny Wirtualnej i ścieżek | 2018-04-02
+wydawca | Wydawca obrazu maszyny Wirtualnej | 2017-04-02
 resourceGroupName | [Grupa zasobów](../../azure-resource-manager/management/overview.md) dla maszyny wirtualnej | 2017-08-01
-resourceId | W [pełni kwalifikowany](https://docs.microsoft.com/rest/api/resources/resources/getbyid) identyfikator zasobu | 2019-03-11
-sku | Określona jednostka SKU dla obrazu maszyny wirtualnej | 2017-04-02
-Obszarze storageprofile | Zobacz [profil magazynu](#storage-profile) | 2019-06-01
+resourceId | [W pełni kwalifikowany](https://docs.microsoft.com/rest/api/resources/resources/getbyid) identyfikator zasobu | 2019-03-11
+sku | Określona jednostka SKU dla obrazu maszyny Wirtualnej | 2017-04-02
+przechowywanieProfile | Zobacz [Profil pamięci masowej](#storage-profile) | 2019-06-01
 subscriptionId | Subskrypcja platformy Azure dla maszyny wirtualnej | 2017-08-01
-tagów | [Tagi](../../azure-resource-manager/management/tag-resources.md) dla maszyny wirtualnej  | 2017-08-01
-tagsList | Tagi sformatowane jako tablica JSON dla łatwiejszego analizowania programistycznego  | 2019-06-04
-version | Wersja obrazu maszyny wirtualnej | 2017-04-02
-vmId | [Unikatowy identyfikator](https://azure.microsoft.com/blog/accessing-and-using-azure-vm-unique-id/) dla maszyny wirtualnej | 2017-04-02
-vmScaleSetName | [Nazwa zestawu skalowania maszyn wirtualnych](../../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) w zestawie skalowania maszyn wirtualnych | 2017-12-01
-vmSize | [Rozmiar maszyny wirtualnej](sizes.md) | 2017-04-02
+tags | [Tagi](../../azure-resource-manager/management/tag-resources.md) dla maszyny wirtualnej  | 2017-08-01
+lista tagów | Znaczniki sformatowane jako tablica JSON dla łatwiejszego analizowania programowego  | 2019-06-04
+version | Wersja obrazu maszyny Wirtualnej | 2017-04-02
+Mieszek maszyn wirtualnych | [Unikatowy identyfikator](https://azure.microsoft.com/blog/accessing-and-using-azure-vm-unique-id/) maszyny Wirtualnej | 2017-04-02
+Nazwa zestawu vmScaleSet | [Zestaw skalowania maszyny wirtualnej Nazwa](../../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) zestawu skalowania maszyny wirtualnej | 2017-12-01
+vmSize | [Rozmiar maszyny Wirtualnej](sizes.md) | 2017-04-02
 strefa | [Strefa dostępności](../../availability-zones/az-overview.md) maszyny wirtualnej | 2017-12-01
 
-Następujące kategorie sieci są dostępne za pomocą interfejsu API wystąpienia:
+Następujące kategorie sieci są dostępne za pośrednictwem interfejsu API wystąpienia:
 
 > [!NOTE]
-> Za pomocą punktu końcowego metadanych następujące kategorie są dostępne za pomocą wystąpienia/sieci/interfejsu
+> Za pośrednictwem punktu końcowego metadanych dostępne są następujące kategorie za pośrednictwem wystąpienia/sieci/interfejsu
 
-Dane | Opis | Wprowadzona wersja
+Dane | Opis | Wprowadzono wersję
 -----|-------------|-----------------------
-ipv4/privateIpAddress | Lokalny adres IPv4 maszyny wirtualnej | 2017-04-02
-ipv4/publicIpAddress | Publiczny adres IPv4 maszyny wirtualnej | 2017-04-02
-podsieć/adres | Adres podsieci maszyny wirtualnej | 2017-04-02
+ipv4/privateIpAddress | Lokalny adres IPv4 maszyny Wirtualnej | 2017-04-02
+ipv4/publicIpAddress | Publiczny adres IPv4 maszyny Wirtualnej | 2017-04-02
+podsieci/adres | Adres podsieci maszyny Wirtualnej | 2017-04-02
 podsieć/prefiks | Prefiks podsieci, przykład 24 | 2017-04-02
-ipv6/ipAddress | Lokalny adres IPv6 maszyny wirtualnej | 2017-04-02
-macAddress | Adres MAC maszyny wirtualnej | 2017-04-02
+ipv6/ipAddress | Lokalny adres IPv6 maszyny Wirtualnej | 2017-04-02
+macAddress | Adres mac maszyny Wirtualnej | 2017-04-02
 
-## <a name="attested-data"></a>Zaświadczone dane
+## <a name="attested-data"></a>Potwierdzone dane
 
-Częścią scenariusza obsługiwanego przez Instance Metadata Service jest zapewnienie gwarancji, że dostarczone dane pochodzą z platformy Azure. Firma Microsoft rejestruje część tych informacji, aby obrazy z portalu Marketplace mogły mieć pewność, że jest to obraz działający na platformie Azure.
+Część scenariusza obsługiwane przez usługę metadanych wystąpienia jest zapewnienie gwarancji, że dostarczone dane pochodzą z platformy Azure. Podpisujemy część tych informacji, aby obrazy portalu Marketplace mogły mieć pewność, że jest to ich obraz uruchomiony na platformie Azure.
 
-### <a name="example-attested-data"></a>Przykładowe dane zaświadczone
+### <a name="example-attested-data"></a>Przykładowe potwierdzone dane
 
 > [!NOTE]
-> Wszystkie odpowiedzi interfejsu API są ciągami JSON. Poniższe przykładowe odpowiedzi są dość drukowane w celu zapewnienia czytelności.
+> Wszystkie odpowiedzi interfejsu API są ciągami JSON. Poniższe przykładowe odpowiedzi są dość wydrukowane dla czytelności.
 
  **Żądanie**
 
@@ -523,13 +523,13 @@ curl -H Metadata:true "http://169.254.169.254/metadata/attested/document?api-ver
 
 ```
 
-Interfejs API-Version jest polem obowiązkowym. Obsługiwane wersje interfejsu API znajdują się w [sekcji dostępności usługi](#service-availability) .
-Identyfikator jednorazowy jest opcjonalnym 10-cyfrowym ciągiem. Jeśli nie zostanie podany, IMDS zwraca bieżącą sygnaturę czasową UTC w swoim miejscu. Ze względu na mechanizm buforowania IMDS, można zwrócić wcześniej buforowaną wartość nonce.
+Wersja api jest polem obowiązkowym. Zobacz [sekcję dostępności usług](#service-availability) dla obsługiwanych wersji interfejsu API.
+Nonce jest opcjonalnym ciągiem 10-cyfrowym. Jeśli nie podano, imds zwraca bieżącą sygnaturę czasną UTC w jego miejsce. Ze względu na mechanizm buforowania IMDS wcześniej buforowane wartości nonce mogą być zwracane.
 
- **Odpowiedź**
+ **Odpowiedzi**
 
 > [!NOTE]
-> Odpowiedź jest ciągiem JSON. Poniższy Przykładowa odpowiedź jest całkiem wydrukowana pod kątem czytelności.
+> Odpowiedź jest ciągiem JSON. Poniższa przykładowa odpowiedź jest dość wydrukowana w celu uzyskania czytelności.
 
  ```json
 {
@@ -537,31 +537,31 @@ Identyfikator jednorazowy jest opcjonalnym 10-cyfrowym ciągiem. Jeśli nie zost
 }
 ```
 
-Obiekt BLOB sygnatury jest podpisanym przez [PKCS7](https://aka.ms/pkcs7) wersją dokumentu. Zawiera certyfikat używany do podpisywania wraz ze szczegółami maszyny wirtualnej, takimi jak identyfikator maszyny wirtualnej, SKU, nonce, Identyfikator subskrypcji, sygnatura czasowa do utworzenia i wygaśnięcia dokumentu oraz informacje o planie obrazu. Informacje o planie są wypełniane wyłącznie na potrzeby obrazów w miejscu na rynku platformy Azure. Certyfikat może zostać wyodrębniony z odpowiedzi i użyty do zweryfikowania, że odpowiedź jest prawidłowa i pochodzi z platformy Azure.
+Obiekt blob podpisu jest podpisaną wersją dokumentu [podpisaną przez pkcs7.](https://aka.ms/pkcs7) Zawiera certyfikat używany do podpisywania wraz ze szczegółami maszyny Wirtualnej, takimi jak vmId, sku, nonce, subscriptionId, timeStamp do tworzenia i wygaśnięcia dokumentu oraz informacje o planie obrazu. Informacje o planie są wypełniane tylko dla obrazów miejsc usługi Azure Market. Certyfikat można wyodrębnić z odpowiedzi i służy do sprawdzania poprawności, że odpowiedź jest prawidłowa i pochodzi z platformy Azure.
 
-#### <a name="retrieving-attested-metadata-in-windows-virtual-machine"></a>Pobieranie zaświadczania metadanych na maszynie wirtualnej z systemem Windows
+#### <a name="retrieving-attested-metadata-in-windows-virtual-machine"></a>Pobieranie pouczonych metadanych na maszynie wirtualnej systemu Windows
 
  **Żądanie**
 
-Metadane wystąpienia można pobrać w systemie Windows za pomocą narzędzia PowerShell `curl`:
+Metadane wystąpienia można pobrać w systemie Windows `curl`za pomocą narzędzia PowerShell:
 
  ```powershell
 curl -H @{'Metadata'='true'} "http://169.254.169.254/metadata/attested/document?api-version=2018-10-01&nonce=1234567890" | select -ExpandProperty Content
 ```
 
- Lub za pomocą polecenia cmdlet `Invoke-RestMethod`:
+ Lub przez `Invoke-RestMethod` polecenie cmdlet:
 
  ```powershell
 Invoke-RestMethod -Headers @{"Metadata"="true"} -URI "http://169.254.169.254/metadata/attested/document?api-version=2018-10-01&nonce=1234567890" -Method get
 ```
 
-Interfejs API-Version jest polem obowiązkowym. Obsługiwane wersje interfejsu API znajdują się w sekcji dostępności usługi.
-Identyfikator jednorazowy jest opcjonalnym 10-cyfrowym ciągiem. Jeśli nie zostanie podany, IMDS zwraca bieżącą sygnaturę czasową UTC w swoim miejscu. Ze względu na mechanizm buforowania IMDS, można zwrócić wcześniej buforowaną wartość nonce.
+Wersja api jest polem obowiązkowym. Zobacz sekcję dostępności usług dla obsługiwanych wersji interfejsu API.
+Nonce jest opcjonalnym ciągiem 10-cyfrowym. Jeśli nie podano, imds zwraca bieżącą sygnaturę czasną UTC w jego miejsce. Ze względu na mechanizm buforowania IMDS wcześniej buforowane wartości nonce mogą być zwracane.
 
- **Odpowiedź**
+ **Odpowiedzi**
 
 > [!NOTE]
-> Odpowiedź jest ciągiem JSON. Poniższy Przykładowa odpowiedź jest całkiem wydrukowana pod kątem czytelności.
+> Odpowiedź jest ciągiem JSON. Poniższa przykładowa odpowiedź jest dość wydrukowana w celu uzyskania czytelności.
 
  ```json
 {
@@ -569,13 +569,13 @@ Identyfikator jednorazowy jest opcjonalnym 10-cyfrowym ciągiem. Jeśli nie zost
 }
 ```
 
-Obiekt BLOB sygnatury jest podpisanym przez [PKCS7](https://aka.ms/pkcs7) wersją dokumentu. Zawiera certyfikat używany do podpisywania wraz ze szczegółami maszyny wirtualnej, takimi jak identyfikator maszyny wirtualnej, SKU, nonce, Identyfikator subskrypcji, sygnatura czasowa do utworzenia i wygaśnięcia dokumentu oraz informacje o planie obrazu. Informacje o planie są wypełniane wyłącznie na potrzeby obrazów w miejscu na rynku platformy Azure. Certyfikat może zostać wyodrębniony z odpowiedzi i użyty do zweryfikowania, że odpowiedź jest prawidłowa i pochodzi z platformy Azure.
+Obiekt blob podpisu jest podpisaną wersją dokumentu [podpisaną przez pkcs7.](https://aka.ms/pkcs7) Zawiera certyfikat używany do podpisywania wraz ze szczegółami maszyny Wirtualnej, takimi jak vmId, sku, nonce, subscriptionId, timeStamp do tworzenia i wygaśnięcia dokumentu oraz informacje o planie obrazu. Informacje o planie są wypełniane tylko dla obrazów miejsc usługi Azure Market. Certyfikat można wyodrębnić z odpowiedzi i służy do sprawdzania poprawności, że odpowiedź jest prawidłowa i pochodzi z platformy Azure.
 
 ## <a name="example-scenarios-for-usage"></a>Przykładowe scenariusze użycia  
 
 ### <a name="tracking-vm-running-on-azure"></a>Śledzenie maszyny wirtualnej działającej na platformie Azure
 
-Jako usługodawca może być konieczne śledzenie liczby maszyn wirtualnych korzystających z oprogramowania lub agentów, którzy muszą śledzić unikatowość maszyny wirtualnej. Aby można było uzyskać unikatowy identyfikator dla maszyny wirtualnej, użyj pola `vmId` z Instance Metadata Service.
+Jako dostawca usług może być konieczne śledzenie liczby maszyn wirtualnych z oprogramowaniem lub agentów, którzy muszą śledzić unikatowość maszyny Wirtualnej. Aby uzyskać unikatowy identyfikator maszyny Wirtualnej, użyj `vmId` pola z usługi metadanych wystąpienia.
 
 **Żądanie**
 
@@ -583,7 +583,7 @@ Jako usługodawca może być konieczne śledzenie liczby maszyn wirtualnych korz
 curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute/vmId?api-version=2017-08-01&format=text"
 ```
 
-**Odpowiedź**
+**Odpowiedzi**
 
 ```text
 5c08b38e-4d57-4c23-ac45-aca61037f084
@@ -591,9 +591,9 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute/vmId?api
 
 ### <a name="placement-of-containers-data-partitions-based-faultupdate-domain"></a>Umieszczanie kontenerów, domena błędów/aktualizacji bazująca na partycjach danych
 
-W niektórych scenariuszach umieszczanie różnych replik danych ma podstawowe znaczenie. Na przykład [umieszczenie repliki](https://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html#Replica_Placement:_The_First_Baby_Steps) systemu plików HDFS lub umieszczenie kontenera za pośrednictwem programu [Orchestrator](https://kubernetes.io/docs/user-guide/node-selection/) może wymagać znajomości `platformFaultDomain` i `platformUpdateDomain` maszyny wirtualnej jest uruchomiona.
-Można również użyć [strefy dostępności](../../availability-zones/az-overview.md) , aby wystąpienia mogły podejmować te decyzje.
-Możesz wysyłać zapytania o te dane bezpośrednio za pośrednictwem Instance Metadata Service.
+W niektórych scenariuszach rozmieszczenie replik różnych danych ma pierwszorzędne znaczenie. Na przykład [umieszczenie repliki HDFS](https://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html#Replica_Placement:_The_First_Baby_Steps) lub umieszczanie kontenera za `platformUpdateDomain` pośrednictwem [koordynatora](https://kubernetes.io/docs/user-guide/node-selection/) może wymagać `platformFaultDomain` wiedzieć, a maszyna wirtualna jest uruchomiona.
+Do [podejmowania](../../availability-zones/az-overview.md) tych decyzji można również użyć stref dostępności dla wystąpień.
+Można zbadać te dane bezpośrednio za pośrednictwem usługi metadanych wystąpienia.
 
 **Żądanie**
 
@@ -601,7 +601,7 @@ Możesz wysyłać zapytania o te dane bezpośrednio za pośrednictwem Instance M
 curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute/platformFaultDomain?api-version=2017-08-01&format=text"
 ```
 
-**Odpowiedź**
+**Odpowiedzi**
 
 ```text
 0
@@ -609,7 +609,7 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute/platform
 
 ### <a name="getting-more-information-about-the-vm-during-support-case"></a>Uzyskiwanie dodatkowych informacji o maszynie wirtualnej podczas przetwarzania zgłoszenia do pomocy technicznej
 
-Jako dostawca usług możesz uzyskać informacje o pomocy technicznej, w których chcesz poznać więcej informacji o maszynie wirtualnej. Prośba o udostępnienie metadanych obliczeniowych przez klienta może stanowić podstawowe informacje dla specjalistów pomocy technicznej dotyczące rodzaju maszyny wirtualnej na platformie Azure.
+Jako dostawca usług możesz uzyskać połączenie pomocy technicznej, w którym chcesz uzyskać więcej informacji na temat maszyny Wirtualnej. Proszenie klienta o udostępnienie metadanych obliczeń może dostarczyć podstawowych informacji dla pracownika pomocy technicznej, aby wiedzieć o rodzaju maszyny Wirtualnej na platformie Azure.
 
 **Żądanie**
 
@@ -617,10 +617,10 @@ Jako dostawca usług możesz uzyskać informacje o pomocy technicznej, w któryc
 curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute?api-version=2019-06-01"
 ```
 
-**Odpowiedź**
+**Odpowiedzi**
 
 > [!NOTE]
-> Odpowiedź jest ciągiem JSON. Poniższy Przykładowa odpowiedź jest całkiem wydrukowana pod kątem czytelności.
+> Odpowiedź jest ciągiem JSON. Poniższa przykładowa odpowiedź jest dość wydrukowana w celu uzyskania czytelności.
 
 ```json
 {
@@ -709,30 +709,30 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute?api-vers
 
 ### <a name="getting-azure-environment-where-the-vm-is-running"></a>Uzyskiwanie informacji o środowisku platformy Azure, w którym działa maszyna wirtualna
 
-Platforma Azure ma rozmaite suwerenne chmury, takie jak [Azure Government](https://azure.microsoft.com/overview/clouds/government/). Czasami konieczne jest środowisko platformy Azure, aby podejmować pewne decyzje dotyczące środowiska uruchomieniowego. Poniższy przykład pokazuje, jak można to osiągnąć.
+Platforma Azure ma różne suwerenne chmury, takie jak [Azure Government.](https://azure.microsoft.com/overview/clouds/government/) Czasami potrzebujesz środowiska platformy Azure, aby podjąć pewne decyzje dotyczące środowiska uruchomieniowego. W poniższym przykładzie pokazano, jak można osiągnąć to zachowanie.
 
 **Żądanie**
 ```bash
 curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute/azEnvironment?api-version=2018-10-01&format=text"
 ```
 
-**Odpowiedź**
+**Odpowiedzi**
 ```bash
 AzurePublicCloud
 ```
 
-Poniżej znajdują się regiony i wartości środowiska platformy Azure.
+Regiony i wartości środowiska platformy Azure są wymienione poniżej.
 
  Regiony | Środowisko platformy Azure
 ---------|-----------------
-[Wszystkie ogólnie dostępne globalne regiony platformy Azure](https://azure.microsoft.com/regions/)     | AzurePublicCloud
+[Wszystkie ogólnie dostępne globalne regiony platformy Azure](https://azure.microsoft.com/regions/)     | Usługa AzurePublicCloud
 [Azure Government](https://azure.microsoft.com/overview/clouds/government/)              | AzureUSGovernmentCloud
-[Azure — Chiny](https://azure.microsoft.com/global-infrastructure/china)          | AzureChinaCloud
+[Azure w Chinach — 21Vianet](https://azure.microsoft.com/global-infrastructure/china)          | AzureChinaCloud
 [Azure (Niemcy)](https://azure.microsoft.com/overview/clouds/germany/)                    | AzureGermanCloud
 
-### <a name="getting-the-tags-for-the-vm"></a>Pobieranie tagów dla maszyny wirtualnej
+### <a name="getting-the-tags-for-the-vm"></a>Uzyskiwanie tagów dla maszyny Wirtualnej
 
-Tagi mogły zostać zastosowane do maszyny wirtualnej platformy Azure, aby logicznie zorganizować je w taksonomię. Tagi przypisane do maszyny wirtualnej można pobrać przy użyciu poniższego żądania.
+Tagi mogły zostać zastosowane do maszyny Wirtualnej platformy Azure, aby logicznie zorganizować je w taksonomię. Tagi przypisane do maszyny Wirtualnej można pobrać przy użyciu poniższego żądania.
 
 **Żądanie**
 
@@ -740,13 +740,13 @@ Tagi mogły zostać zastosowane do maszyny wirtualnej platformy Azure, aby logic
 curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute/tags?api-version=2018-10-01&format=text"
 ```
 
-**Odpowiedź**
+**Odpowiedzi**
 
 ```text
 Department:IT;Environment:Test;Role:WebRole
 ```
 
-Pole `tags` jest ciągiem zawierającym znaczniki rozdzielane średnikami. Może to być problem, jeśli średniki są używane w samych tagach. Jeśli parser jest Zapisano w celu programistycznego wyodrębnienia tagów, należy polegać na `tagsList` polu, które jest tablicą JSON bez ograniczników, a w związku z tym łatwiej jest analizować.
+Pole `tags` jest ciągiem z tagami rozdzielanych średnikami. Może to być problem, jeśli średniki są używane w samych tagach. Jeśli analizator jest zapisywany do programowo wyodrębnić tagi, `tagsList` należy polegać na polu, które jest tablicą JSON bez ograniczników, a w konsekwencji łatwiejsze do przeanalizowania.
 
 **Żądanie**
 
@@ -754,7 +754,7 @@ Pole `tags` jest ciągiem zawierającym znaczniki rozdzielane średnikami. Może
 curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute/tagsList?api-version=2019-06-04&format=JSON"
 ```
 
-**Odpowiedź**
+**Odpowiedzi**
 
 ```json
 [
@@ -775,10 +775,10 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute/tagsList
 
 ### <a name="validating-that-the-vm-is-running-in-azure"></a>Weryfikowanie, czy maszyna wirtualna jest uruchomiona na platformie Azure
 
-Dostawcy portalu Marketplace chcą mieć pewność, że ich oprogramowanie jest licencjonowane do uruchamiania tylko na platformie Azure. Jeśli ktoś kopiuje dysk VHD do lokalnego programu, powinien on mieć możliwość wykrycia tej funkcji. Dzwoniąc do Instance Metadata Service, dostawcy portalu Marketplace mogą uzyskać podpisane dane, które gwarantują odpowiedź tylko z platformy Azure.
+Dostawcy portalu Marketplace chcą mieć pewność, że ich oprogramowanie jest licencjonowane do uruchamiania tylko na platformie Azure. Jeśli ktoś kopiuje wirtualny dysk wideo do lokalnego, powinien mieć możliwość wykrycia tego. Wywołując usługę metadanych wystąpienia, dostawcy portalu Marketplace mogą uzyskać podpisane dane, które gwarantują odpowiedź tylko z platformy Azure.
 
 > [!NOTE]
-> Wymaga zainstalowania JQ.
+> Wymaga jq do zainstalowania.
 
 **Żądanie**
 
@@ -798,7 +798,7 @@ Dostawcy portalu Marketplace chcą mieć pewność, że ich oprogramowanie jest 
   openssl smime -verify -in sign.pk7 -inform pem -noverify
  ```
 
- **Odpowiedź**
+ **Odpowiedzi**
 
 ```json
 Verification successful
@@ -822,29 +822,29 @@ Verification successful
 
 Dane | Opis
 -----|------------
-nonce | Użytkownik podano opcjonalny ciąg z żądaniem. Jeśli w żądaniu nie podano identyfikatora jednorazowego, zwracana jest bieżąca sygnatura czasowa UTC
-zamierza | [Zaplanuj](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#plan) maszynę wirtualną w tym obrazie portalu Azure Marketplace, która zawiera nazwę, produkt i wydawcę
-Sygnatura czasowa/createdOn | Sygnatura czasowa UTC, w której został utworzony pierwszy podpisany dokument
-timestamp/expiresOn | Sygnatura czasowa UTC, z którą wygasa podpisany dokument
-vmId |  [Unikatowy identyfikator](https://azure.microsoft.com/blog/accessing-and-using-azure-vm-unique-id/) dla maszyny wirtualnej
-subscriptionId | Subskrypcja platformy Azure dla maszyny wirtualnej wprowadzona w `2019-04-30`
-sku | Określona jednostka SKU dla obrazu maszyny wirtualnej wprowadzona w `2019-11-01`
+nonce | Użytkownik dostarczył opcjonalny ciąg z żądaniem. Jeśli w żądaniu nie podano żadnych eksce, zwracany jest bieżący znacznik czasu UTC
+plan | [Planowanie](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#plan) maszyny wirtualnej w obrazie portalu Azure Marketplace zawiera nazwę, produkt i wydawcę
+sygnatura czasowa/createdOn | Sygnatura czasowa UTC, przy której utworzono pierwszy podpisany dokument
+sygnatura czasowa/data wygaśnięciaOn | Sygnatura czasowa UTC, na której podpisany dokument wygasa
+Mieszek maszyn wirtualnych |  [Unikatowy identyfikator](https://azure.microsoft.com/blog/accessing-and-using-azure-vm-unique-id/) maszyny Wirtualnej
+subscriptionId | Subskrypcja platformy Azure dla maszyny wirtualnej, wprowadzona w`2019-04-30`
+sku | Określona jednostka SKU dla obrazu maszyny Wirtualnej,`2019-11-01`
 
 #### <a name="verifying-the-signature"></a>Weryfikowanie podpisu
 
-Po otrzymaniu powyższego podpisu możesz sprawdzić, czy podpis pochodzi od firmy Microsoft. Można także zweryfikować certyfikat pośredni i łańcuch certyfikatów. Na koniec możesz sprawdzić, czy identyfikator subskrypcji jest poprawny.
+Po uzyskaniu podpisu powyżej, można sprawdzić, czy podpis jest od firmy Microsoft. Można również zweryfikować certyfikat pośredni i łańcuch certyfikatów. Na koniec można sprawdzić, czy identyfikator subskrypcji jest poprawny.
 
 > [!NOTE]
-> Certyfikat dla chmury publicznej i suwerennej chmury będzie różny.
+> Certyfikat dla chmury publicznej i suwerennej chmury będzie inny.
 
- Chmurowa | Certyfikat
+ Chmura | Certyfikat
 ---------|-----------------
-[Wszystkie ogólnie dostępne globalne regiony platformy Azure](https://azure.microsoft.com/regions/)     | *. metadata.azure.com
-[Azure Government](https://azure.microsoft.com/overview/clouds/government/)              | *. metadata.azure.us
-[Azure — Chiny](https://azure.microsoft.com/global-infrastructure/china/)         | *. metadata.azure.cn
-[Azure (Niemcy)](https://azure.microsoft.com/overview/clouds/germany/)                    | *. metadata.microsoftazure.de
+[Wszystkie ogólnie dostępne globalne regiony platformy Azure](https://azure.microsoft.com/regions/)     | *.metadata.azure.com
+[Azure Government](https://azure.microsoft.com/overview/clouds/government/)              | *.metadata.azure.us
+[Azure w Chinach — 21Vianet](https://azure.microsoft.com/global-infrastructure/china/)         | *.metadata.azure.cn
+[Azure (Niemcy)](https://azure.microsoft.com/overview/clouds/germany/)                    | *.metadata.microsoftazure.de
 
-Istnieje znany problem związany z certyfikatem używanym do podpisywania. Certyfikaty mogą nie mieć dokładnego dopasowania `metadata.azure.com` dla chmury publicznej. W związku z tym weryfikacja certyfikacji powinna zezwalać na wspólną nazwę z dowolnej poddomeny `.metadata.azure.com`.
+Istnieje znany problem wokół certyfikatu używanego do podpisywania. Certyfikaty mogą nie mieć `metadata.azure.com` dokładnego dopasowania dla chmury publicznej. W związku z tym sprawdzanie poprawności `.metadata.azure.com` certyfikacji należy zezwolić na nazwę pospolitą z dowolnej poddomeny.
 
 ```bash
 
@@ -860,22 +860,22 @@ openssl x509 -noout -issuer -in intermediate.pem
 openssl verify -verbose -CAfile /etc/ssl/certs/Baltimore_CyberTrust_Root.pem -untrusted intermediate.pem signer.pem
 ```
 
-W przypadkach, gdy nie można pobrać certyfikatu pośredniego z powodu ograniczeń sieci podczas weryfikacji, certyfikat pośredni może zostać przypięty. Jednak platforma Azure przywróci certyfikaty zgodnie z zasadami standardowej infrastruktury kluczy publicznych. Przypięte certyfikaty należy zaktualizować, gdy nastąpi przekroczenie. Za każdym razem, gdy planowana jest zmiana aktualizacji certyfikatu pośredniego, blog platformy Azure zostanie zaktualizowany i klienci platformy Azure zostaną powiadomieni. Certyfikaty pośrednie można znaleźć [tutaj](https://www.microsoft.com/pki/mscorp/cps/default.htm). Certyfikaty pośrednie dla każdego regionu mogą być różne.
+W przypadkach, gdy nie można pobrać certyfikatu pośredniego z powodu ograniczeń sieciowych podczas sprawdzania poprawności, certyfikat pośredni można przypiąć. Jednak platforma Azure będzie przewracać certyfikaty zgodnie ze standardową praktyką infrastruktury kluczy publicznych. Przypięte certyfikaty będą musiały zostać zaktualizowane po przerzucie. Za każdym razem, gdy planowana jest zmiana w celu zaktualizowania certyfikatu pośredniego, blog platformy Azure zostanie zaktualizowany, a klienci platformy Azure zostaną powiadomieni. Certyfikaty pośrednie można znaleźć [tutaj](https://www.microsoft.com/pki/mscorp/cps/default.htm). Certyfikaty pośrednie dla każdego z regionów mogą być różne.
 
-### <a name="failover-clustering-in-windows-server"></a>Klaster trybu failover w systemie Windows Server
+### <a name="failover-clustering-in-windows-server"></a>Klastrowanie trybu failover w systemie Windows Server
 
-W przypadku niektórych scenariuszy podczas wykonywania zapytania dotyczącego Instance Metadata Service z klastrem trybu failover należy dodać trasę do tabeli routingu.
+W przypadku niektórych scenariuszy podczas wykonywania zapytań usługi metadanych wystąpienia za pomocą klastrowania trybu failover konieczne jest dodanie trasy do tabeli routingu.
 
 1. Otwórz wiersz polecenia z uprawnieniami administratora.
 
-2. Uruchom następujące polecenie i Zanotuj adres interfejsu dla miejsca docelowego sieci (`0.0.0.0`) w tabeli tras IPv4.
+2. Uruchom następujące polecenie i zanotuj adres`0.0.0.0`interfejsu dla miejsca docelowego sieci ( ) w tabeli trasy IPv4.
 
 ```bat
 route print
 ```
 
 > [!NOTE]
-> Następujące przykładowe dane wyjściowe z maszyny wirtualnej z systemem Windows Server z włączoną funkcją klaster trybu failover zawierają tylko tabelę tras IPv4 dla uproszczenia.
+> Poniższy przykładowy wynik z maszyny Wirtualnej systemu Windows Server z włączonym klastrem trybu failover zawiera tylko tabelę tras IPv4 dla uproszczenia.
 
 ```bat
 IPv4 Route Table
@@ -901,7 +901,7 @@ Network Destination        Netmask          Gateway       Interface  Metric
   255.255.255.255  255.255.255.255         On-link         10.0.1.10    266
 ```
 
-1. Uruchom następujące polecenie i użyj adresu interfejsu dla miejsca docelowego sieci (`0.0.0.0`) (`10.0.1.10`) w tym przykładzie.
+1. Uruchom następujące polecenie i użyj adresu interfejsu dla`0.0.0.0`miejsca docelowego sieci ( ), który jest (`10.0.1.10`) w tym przykładzie.
 
 ```bat
 route add 169.254.169.254/32 10.0.1.10 metric 1 -p
@@ -909,52 +909,52 @@ route add 169.254.169.254/32 10.0.1.10 metric 1 -p
 
 ### <a name="storage-profile"></a>Profil magazynu
 
-Instance Metadata Service można dostarczyć szczegółowych informacji o dyskach magazynu skojarzonych z maszyną wirtualną. Te dane można znaleźć w punkcie końcowym wystąpienie/Obliczanie/obszarze storageprofile.
+Usługa metadanych wystąpienia może podać szczegółowe informacje o dyskach magazynu skojarzonych z maszyną wirtualną. Te dane można znaleźć w wystąpieniu/compute/storagePunkt końcowy profilu.
 
-Profil magazynu maszyny wirtualnej jest podzielony na trzy kategorie — odwołanie do obrazu, dysk systemu operacyjnego i dyski z danymi.
+Profil magazynu maszyny Wirtualnej jest podzielony na trzy kategorie - odwołanie do obrazu, dysk systemu operacyjnego i dyski z danymi.
 
-Obiekt odwołanie do obrazu zawiera następujące informacje o obrazie systemu operacyjnego:
+Obiekt odniesienia do obrazu zawiera następujące informacje o obrazie systemu operacyjnego:
 
 Dane    | Opis
 --------|-----------------
 id      | Identyfikator zasobu
-offer   | Oferta platformy lub obrazu z witryny Marketplace
-publisher | Wydawca obrazu
-sku     | Jednostka SKU obrazu
-version | Wersja platformy lub obrazu witryny Marketplace
+offer   | Oferta platformy lub wizerunku rynku
+wydawca | Wydawca obrazu
+sku     | Obraz sku
+version | Wersja platformy lub obrazu na rynku
 
-Obiekt dysku systemu operacyjnego zawiera następujące informacje na temat dysku systemu operacyjnego używanego przez maszynę wirtualną:
-
-Dane    | Opis
---------|-----------------
-buforowanie | Wymagania dotyczące buforowania
-Opcja | Informacje na temat sposobu tworzenia maszyny wirtualnej
-diffDiskSettings | Ustawienia dysku tymczasowych
-diskSizeGB | Rozmiar dysku w GB
-image   | Wirtualny dysk twardy obrazu użytkownika źródłowego
-tworzona     | Numer jednostki logicznej dysku
-managedDisk | Parametry dysku zarządzanego
-name    | Nazwa dysku
-VHD     | Wirtualny dysk twardy
-writeAcceleratorEnabled | Czy writeAccelerator jest włączona na dysku
-
-Tablica dyski danych zawiera listę dysków danych podłączonych do maszyny wirtualnej. Każdy obiekt dysku danych zawiera następujące informacje:
+Obiekt dysku systemu operacyjnego zawiera następujące informacje o dysku systemu operacyjnego używanym przez maszynę wirtualną:
 
 Dane    | Opis
 --------|-----------------
-buforowanie | Wymagania dotyczące buforowania
-Opcja | Informacje na temat sposobu tworzenia maszyny wirtualnej
-diffDiskSettings | Ustawienia dysku tymczasowych
-diskSizeGB | Rozmiar dysku w GB
-encryptionSettings | Ustawienia szyfrowania dysku
-image   | Wirtualny dysk twardy obrazu użytkownika źródłowego
-managedDisk | Parametry dysku zarządzanego
+Buforowanie | Wymagania dotyczące buforowania
+tworzenieopcji | Informacje o tym, jak utworzono maszynę wirtualną
+diffDiskSettings | Ustawienia dysku efemerycznego
+dyskSizeGB | Rozmiar dysku w GB
+image   | Źródłowy obraz użytkownika wirtualny dysk twardy
+Jednostki lun     | Numer jednostki logicznej dysku
+zarządzanyDisk | Parametry dysku zarządzanego
 name    | Nazwa dysku
-osType  | Typ systemu operacyjnego znajdującego się na dysku
-VHD     | Wirtualny dysk twardy
-writeAcceleratorEnabled | Czy writeAccelerator jest włączona na dysku
+Vhd     | Wirtualny dysk twardy
+writeAcceleratorEnabled | Czy writeAccelerator jest włączony na dysku
 
-Poniżej przedstawiono przykład sposobu wykonywania zapytania dotyczącego informacji o magazynowaniu maszyny wirtualnej.
+Tablica dysków danych zawiera listę dysków danych dołączonych do maszyny Wirtualnej. Każdy obiekt dysku danych zawiera następujące informacje:
+
+Dane    | Opis
+--------|-----------------
+Buforowanie | Wymagania dotyczące buforowania
+tworzenieopcji | Informacje o tym, jak utworzono maszynę wirtualną
+diffDiskSettings | Ustawienia dysku efemerycznego
+dyskSizeGB | Rozmiar dysku w GB
+szyfrowanieStawy | Ustawienia szyfrowania dysku
+image   | Źródłowy obraz użytkownika wirtualny dysk twardy
+zarządzanyDisk | Parametry dysku zarządzanego
+name    | Nazwa dysku
+osType  | Typ systemu operacyjnego dołączonego do dysku
+Vhd     | Wirtualny dysk twardy
+writeAcceleratorEnabled | Czy writeAccelerator jest włączony na dysku
+
+Poniżej przedstawiono przykład sposobu wykonywania zapytań o informacje magazynu maszyny Wirtualnej.
 
 **Żądanie**
 
@@ -962,10 +962,10 @@ Poniżej przedstawiono przykład sposobu wykonywania zapytania dotyczącego info
 curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute/storageProfile?api-version=2019-06-01"
 ```
 
-**Odpowiedź**
+**Odpowiedzi**
 
 > [!NOTE]
-> Odpowiedź jest ciągiem JSON. Poniższy Przykładowa odpowiedź jest całkiem wydrukowana pod kątem czytelności.
+> Odpowiedź jest ciągiem JSON. Poniższa przykładowa odpowiedź jest dość wydrukowana w celu uzyskania czytelności.
 
 ```json
 {
@@ -1023,7 +1023,7 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute/storageP
 }
 ```
 
-### <a name="examples-of-calling-metadata-service-using-different-languages-inside-the-vm"></a>Przykłady wywoływania usługi metadanych przy użyciu różnych języków w maszynie wirtualnej 
+### <a name="examples-of-calling-metadata-service-using-different-languages-inside-the-vm"></a>Przykłady wywoływania usługi metadanych przy użyciu różnych języków wewnątrz maszyny Wirtualnej 
 
 Język | Przykład
 ---------|----------------
@@ -1033,38 +1033,38 @@ Python   | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.py
 C++      | https://github.com/Microsoft/azureimds/blob/master/IMDSSample-windows.cpp
 C#       | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.cs
 JavaScript | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.js
-Program PowerShell | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.ps1
+PowerShell | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.ps1
 Bash       | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.sh
 Perl       | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.pl
 Java       | https://github.com/Microsoft/azureimds/blob/master/imdssample.java
 Visual Basic | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.vb
 Puppet | https://github.com/keirans/azuremetadata
 
-## <a name="faq"></a>Często zadawane pytania
+## <a name="faq"></a>Najczęściej zadawane pytania
 
-1. Otrzymuję błąd `400 Bad Request, Required metadata header not specified`. Co to oznacza?
-   * Instance Metadata Service wymaga przesłania `Metadata: true` nagłówka w żądaniu. Przekazanie tego nagłówka w wywołaniu REST umożliwia dostęp do Instance Metadata Service.
-2. Dlaczego nie otrzymuję informacji o obliczeniach dla mojej maszyny wirtualnej?
-   * Obecnie Instance Metadata Service obsługuje tylko wystąpienia utworzone przy użyciu Azure Resource Manager. W przyszłości można dodać obsługę maszyn wirtualnych usługi w chmurze.
-3. Moja maszyna wirtualna została utworzona przez Azure Resource Manager a. Dlaczego nie widzę informacji o metadanych obliczeń?
-   * Dla wszystkich maszyn wirtualnych utworzonych po SEP 2016 Dodaj [tag](../../azure-resource-manager/management/tag-resources.md) , aby rozpocząć wyświetlanie metadanych obliczeniowych. W przypadku starszych maszyn wirtualnych (utworzonych przed SEP 2016) Dodaj/Usuń rozszerzenia lub dyski danych do maszyny wirtualnej w celu odświeżenia metadanych.
+1. Pojawia się błąd `400 Bad Request, Required metadata header not specified`. Co to oznacza?
+   * Usługa metadanych wystąpienia `Metadata: true` wymaga, aby nagłówek był przekazywany w żądaniu. Przekazywanie tego nagłówka w wywołaniu REST umożliwia dostęp do usługi metadanych wystąpienia.
+2. Dlaczego nie oszukuję informacji obliczeniowych dla mojej maszyny Wirtualnej?
+   * Obecnie usługa metadanych wystąpienia obsługuje tylko wystąpienia utworzone za pomocą usługi Azure Resource Manager. W przyszłości może zostać dodana obsługa maszyn wirtualnych usługi w chmurze.
+3. Utworzono maszynę wirtualną za pośrednictwem usługi Azure Resource Manager jakiś czas temu. Dlaczego nie widzę informacji o metadanych obliczeniowych?
+   * W przypadku wszystkich maszyn wirtualnych utworzonych po wrześniu 2016 r. dodaj [tag,](../../azure-resource-manager/management/tag-resources.md) aby rozpocząć wyświetlanie metadanych obliczeń. W przypadku starszych maszyn wirtualnych (utworzonych przed wrześniem 2016 r.) dodaj/usuń rozszerzenia lub dyski danych do maszyny Wirtualnej, aby odświeżyć metadane.
 4. Nie widzę wszystkich danych wypełnionych dla nowej wersji
-   * Dla wszystkich maszyn wirtualnych utworzonych po SEP 2016 Dodaj [tag](../../azure-resource-manager/management/tag-resources.md) , aby rozpocząć wyświetlanie metadanych obliczeniowych. W przypadku starszych maszyn wirtualnych (utworzonych przed SEP 2016) Dodaj/Usuń rozszerzenia lub dyski danych do maszyny wirtualnej w celu odświeżenia metadanych.
-5. Dlaczego otrzymuję błąd `500 Internal Server Error`?
-   * Ponów żądanie w oparciu o wykładniczy system wycofywania. Jeśli problem będzie się powtarzać, skontaktuj się z pomocą techniczną platformy Azure.
-6. Gdzie mogę udostępnić dodatkowe pytania/Komentarze?
-   * Wyślij komentarze na https://feedback.azure.com.
-7. Czy ta funkcja będzie działała w przypadku wystąpienia zestawu skalowania maszyn wirtualnych?
-   * Tak, aby usługa metadanych była dostępna dla wystąpień zestawu skalowania.
-8. Jak mogę uzyskać pomoc techniczną dla usługi?
-   * Aby uzyskać pomoc techniczną dotyczącą usługi, Utwórz problem pomocy technicznej w Azure Portal dla maszyny wirtualnej, na której nie można uzyskać odpowiedzi na metadane po długotrwałych próbach.
-9. Upłynął limit czasu żądania dla wywołania usługi?
-   * Wywołania metadanych muszą pochodzić z podstawowego adresu IP przypisanego do podstawowej karty sieciowej maszyny wirtualnej. Ponadto w przypadku zmiany trasy musi istnieć trasa dla 169.254.0.0/16 adresów z karty sieciowej.
-10. Zaktualizowaliśmy moje Tagi w zestawie skalowania maszyn wirtualnych, ale nie są one wyświetlane w wystąpieniach, w przeciwieństwie do maszyn wirtualnych?
-    * Obecnie dla tagów ScaleSets są wyświetlane tylko na maszynie wirtualnej na ponownym uruchomieniu/reobrazie/lub dysku zmienionym na wystąpienie.
+   * W przypadku wszystkich maszyn wirtualnych utworzonych po wrześniu 2016 r. dodaj [tag,](../../azure-resource-manager/management/tag-resources.md) aby rozpocząć wyświetlanie metadanych obliczeń. W przypadku starszych maszyn wirtualnych (utworzonych przed wrześniem 2016 r.) dodaj/usuń rozszerzenia lub dyski danych do maszyny Wirtualnej, aby odświeżyć metadane.
+5. Dlaczego pojawia się `500 Internal Server Error`błąd?
+   * Ponów próbę żądania na podstawie wykładniczego wycofywania systemu. Jeśli problem będzie się powtarzał, skontaktuj się z pomocą techniczną platformy Azure.
+6. Gdzie mogę udostępnić dodatkowe pytania/komentarze?
+   * Wyślij swoje https://feedback.azure.comkomentarze na .
+7. Czy to działa dla wystąpienia zestawu skalowania maszyny wirtualnej?
+   * Usługa Yes Metadata jest dostępna dla wystąpień zestawu skalowania.
+8. Jak uzyskać pomoc techniczną dla usługi?
+   * Aby uzyskać pomoc techniczną dla usługi, utwórz problem z pomocą techniczną w witrynie Azure portal dla maszyny Wirtualnej, gdzie nie można uzyskać odpowiedzi na metadane po długich ponownych prób.
+9. Otrzymuję czas na moje połączenie z serwisem?
+   * Wywołania metadanych muszą być nawiązywały z podstawowego adresu IP przypisanego do podstawowej karty sieciowej maszyny Wirtualnej, a ponadto w przypadku zmiany tras musi istnieć trasa dla adresu 169.254.0.0/16 z karty sieciowej.
+10. Zaktualizowałem tagi w zestawie skalowania maszyny wirtualnej, ale nie są one wyświetlane w wystąpieniach w przeciwieństwie do maszyn wirtualnych?
+    * Obecnie dla ScaleSets tagi tylko pokazać maszynie wirtualnej na ponowne uruchomienie/reimage/lub zmiany dysku do wystąpienia.
 
-    ![Obsługa metadanych wystąpienia](./media/instance-metadata-service/InstanceMetadata-support.png)
+    ![Obsługa metadanych wystąpień](./media/instance-metadata-service/InstanceMetadata-support.png)
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Dowiedz się więcej o [Scheduled Events](scheduled-events.md)
+- Dowiedz się więcej o [zaplanowanych wydarzeniach](scheduled-events.md)

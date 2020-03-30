@@ -1,6 +1,6 @@
 ---
-title: Korzystanie z interfejsu wiersza polecenia do wdrażania maszyn wirtualnych usługi Azure Spot (wersja zapoznawcza)
-description: Dowiedz się, jak za pomocą interfejsu wiersza polecenia wdrożyć maszyny wirtualne Azure spot w celu oszczędności kosztów.
+title: Wdrażanie maszyn wirtualnych platformy Azure spot (preview) za pomocą interfejsu wiersza polecenia
+description: Dowiedz się, jak używać interfejsu wiersza polecenia do wdrażania maszyn wirtualnych platformy Azure w miejscu, aby zaoszczędzić koszty.
 services: virtual-machines-linux
 documentationcenter: ''
 author: cynthn
@@ -15,42 +15,42 @@ ms.topic: article
 ms.date: 02/11/2020
 ms.author: cynthn
 ms.openlocfilehash: 110e935671ab1d640b2ff3dc26c203b262e999fe
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77163096"
 ---
-# <a name="preview-deploy-spot-vms-using-the-azure-cli"></a>Wersja zapoznawcza: wdrażanie maszyn wirtualnych przy użyciu interfejsu wiersza polecenia platformy Azure
+# <a name="preview-deploy-spot-vms-using-the-azure-cli"></a>Wersja zapoznawcza: wdrażanie maszyn wirtualnych w miejscu przy użyciu interfejsu wiersza polecenia platformy Azure
 
-Korzystanie z [maszyn wirtualnych platformy Azure](spot-vms.md) umożliwia korzystanie z nieużywanej pojemności przy znaczącym obciążeniu kosztów. W dowolnym momencie, gdy platforma Azure wymaga przywrócenia pojemności, infrastruktura platformy Azure wyłączy maszyny wirtualne. W związku z tym maszyny wirtualne są doskonałe dla obciążeń, które mogą obsłużyć przerwy, takie jak zadania przetwarzania wsadowego, środowiska deweloperskie/testowe, duże obciążenia obliczeniowe i inne.
+Korzystanie z [maszyn wirtualnych platformy Azure spot](spot-vms.md) umożliwia korzystanie z naszej niewykorzystanej pojemności przy znacznych oszczędnościach kosztów. W dowolnym momencie, gdy platforma Azure potrzebuje pojemności z powrotem, infrastruktura platformy Azure będzie eksmitować maszyny wirtualne spot. W związku z tym maszyny wirtualne spot są idealne dla obciążeń, które mogą obsługiwać przerwy, takie jak zadania przetwarzania wsadowego, środowiska deweloperów/testów, duże obciążenia obliczeniowe i inne.
 
-Ceny maszyn wirtualnych na miejscu są zmienne, na podstawie regionu i jednostki SKU. Aby uzyskać więcej informacji, zobacz cennik maszyn wirtualnych dla [systemów](https://azure.microsoft.com/pricing/details/virtual-machines/windows/) [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) i Windows. 
+Ceny maszyn wirtualnych punktowych są zmienne na podstawie regionu i jednostki SKU. Aby uzyskać więcej informacji, zobacz Ceny maszyn wirtualnych dla [systemów Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) i [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows/). 
 
-Dla maszyny wirtualnej można ustawić maksymalną cenę, która ma być płacona za godzinę. Maksymalna cena maszyny wirtualnej na miejscu może być ustawiona w dolarach amerykańskich (USD) przy użyciu maksymalnie 5 miejsc dziesiętnych. Na przykład wartość `0.98765`będzie cena maksymalna $0,98765 USD za godzinę. Jeśli ustawisz maksymalną wartość `-1`, maszyna wirtualna nie zostanie wykluczona na podstawie ceny. Cena maszyny wirtualnej to aktualna cena za ilość miejsca lub cena standardowej maszyny wirtualnej, która kiedykolwiek jest mniejsza, o ile jest dostępna pojemność i przydział. Aby uzyskać więcej informacji na temat ustawiania ceny maksymalnej, zobacz [punkt maszyny wirtualne — Cennik](spot-vms.md#pricing).
+Masz możliwość, aby ustawić maksymalną cenę jesteś gotów zapłacić, za godzinę, dla maszyny Wirtualnej. Maksymalna cena maszyny Wirtualnej spot można ustawić w dolarach amerykańskich (USD), przy użyciu miejsc po przecinku do 5. Na przykład wartość `0.98765`będzie maksymalna cena $0.98765 USD za godzinę. Jeśli ustawisz maksymalną `-1`cenę, maszyna wirtualna nie zostanie eksmitowana na podstawie ceny. Cena za maszynę wirtualną będzie bieżącą ceną spotu lub ceną standardowej maszyny Wirtualnej, która kiedykolwiek jest mniejsza, o ile dostępna jest pojemność i przydział. Aby uzyskać więcej informacji na temat ustawiania ceny maksymalnej, zobacz [Maszyny wirtualne spot - Cennik](spot-vms.md#pricing).
 
-Proces tworzenia maszyny wirtualnej przy użyciu interfejsu wiersza polecenia platformy Azure jest taki sam jak szczegółowy w [artykule szybki start](/azure/virtual-machines/linux/quick-create-cli). Po prostu Dodaj parametr "--Priority" i podaj maksymalną cenę lub `-1`.
+Proces tworzenia maszyny Wirtualnej z spot przy użyciu interfejsu wiersza polecenia platformy Azure jest taki sam, jak opisano w [artykule szybki start](/azure/virtual-machines/linux/quick-create-cli). Wystarczy dodać parametr '--priority Spot' i `-1`podać maksymalną cenę lub .
 
 > [!IMPORTANT]
-> Wystąpienia punktowe są obecnie dostępne w publicznej wersji zapoznawczej.
-> Ta wersja zapoznawcza nie jest zalecana w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą być nieobsługiwane lub ograniczone. Aby uzyskać więcej informacji, zobacz [Uzupełniające warunki korzystania z wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Wystąpienia spot są obecnie w publicznej wersji zapoznawczej.
+> Ta wersja zapoznawcza nie jest zalecana dla obciążeń produkcyjnych. Niektóre funkcje mogą być nieobsługiwane lub ograniczone. Aby uzyskać więcej informacji, zobacz [Uzupełniające warunki korzystania z wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 >
 
 
 
 ## <a name="install-azure-cli"></a>Zainstaluj interfejs wiersza polecenia platformy Azure
 
-Aby tworzyć maszyny wirtualne, musisz uruchomić interfejs wiersza polecenia platformy Azure w wersji 2.0.74 lub nowszej. Aby odnaleźć wersję, uruchom polecenie **az --version**. Jeśli konieczna będzie instalacja lub uaktualnienie interfejsu, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure](/cli/azure/install-azure-cli). 
+Aby utworzyć maszyny wirtualne spot, musisz uruchomić platformę Azure CLI w wersji 2.0.74 lub nowszej. Aby odnaleźć wersję, uruchom polecenie **az --version**. Jeśli konieczna będzie instalacja lub uaktualnienie interfejsu, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure](/cli/azure/install-azure-cli). 
 
-Zaloguj się do platformy Azure za pomocą polecenia [AZ login](/cli/azure/reference-index#az-login).
+Zaloguj się na platformie Azure przy użyciu [logowania az](/cli/azure/reference-index#az-login).
 
 ```azurecli
 az login
 ```
 
-## <a name="create-a-spot-vm"></a>Tworzenie doaktywnej maszyny wirtualnej
+## <a name="create-a-spot-vm"></a>Tworzenie maszyny wirtualnej punktowej
 
-Ten przykład pokazuje, jak wdrożyć maszynę wirtualną z systemem Linux, która nie zostanie wykluczona na podstawie ceny. 
+W tym przykładzie pokazano, jak wdrożyć maszynę wirtualną punktu systemu Linux, która nie zostanie eksmitowana na podstawie ceny. 
 
 ```azurecli
 az group create -n mySpotGroup -l eastus
@@ -64,7 +64,7 @@ az vm create \
     --max-price -1
 ```
 
-Po utworzeniu maszyny wirtualnej można wykonać zapytanie, aby zobaczyć maksymalną cenę rozliczeniową dla wszystkich maszyn wirtualnych w grupie zasobów.
+Po utworzeniu maszyny Wirtualnej można sprawdzić maksymalną cenę rozliczeniową dla wszystkich maszyn wirtualnych w grupie zasobów.
 
 ```azurecli
 az vm list \
@@ -75,6 +75,6 @@ az vm list \
 
 **Następne kroki**
 
-Możesz również utworzyć maszynę wirtualną na miejscu przy użyciu [Azure PowerShell](../windows/spot-powershell.md) lub [szablonu](spot-template.md).
+Maszynę wirtualną punktu można również utworzyć przy użyciu [programu Azure PowerShell](../windows/spot-powershell.md) lub [szablonu.](spot-template.md)
 
-Jeśli wystąpi błąd, zobacz [kody błędów](../error-codes-spot.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+Jeśli wystąpi błąd, zobacz [Kody błędów](../error-codes-spot.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
