@@ -1,5 +1,5 @@
 ---
-title: Resetowanie hasła użytkownika — usługi Azure Active Directory | Dokumentacja firmy Microsoft
+title: Resetowanie hasła użytkownika — usługa Azure Active Directory | Dokumenty firmy Microsoft
 description: Instrukcje dotyczące resetowania hasła użytkownika przy użyciu usługi Azure Active Directory.
 services: active-directory
 author: msaburnley
@@ -15,52 +15,52 @@ ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b4fdbbd4d71a9c97259678413cd9e59ee8aeae6b
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/15/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "69032663"
 ---
-# <a name="reset-a-users-password-using-azure-active-directory"></a>Zresetuj hasło użytkownika przy użyciu usługi Azure Active Directory
+# <a name="reset-a-users-password-using-azure-active-directory"></a>Resetowanie hasła użytkownika przy użyciu usługi Azure Active Directory
 
-Jako administrator możesz zresetować hasła użytkownika, czy zapomniane hasło, jeśli użytkownik pobiera blokada urządzenia, czy hasło nigdy nie odebrane przez użytkownika.
-
->[!Note]
->Chyba że dzierżawy usługi Azure AD jest katalogu macierzystego użytkownika, nie można zresetować swoje hasło. Oznacza to, że jeśli użytkownik loguje się do swojej organizacji za pomocą konta z innej organizacji, konta Microsoft lub konto Google, nie można zresetować swoje hasło.<br><br>Jeśli użytkownik ma źródło Urząd jako Windows Server Active Directory, tylko wtedy będzie można zresetować hasła, jeśli włączono funkcję zapisywania zwrotnego haseł.<br><br>Jeśli użytkownik ma źródło Urząd jako zewnętrzne usługi Azure AD, nie można zresetować hasło. Tylko użytkownik lub Konfigurator w zewnętrznej usłudze Azure AD, można zresetować hasła.
+Jako administrator możesz zresetować hasło użytkownika, jeśli hasło zostanie zapomniane, jeśli użytkownik zostanie zablokowany z urządzenia lub jeśli użytkownik nigdy nie otrzymał hasła.
 
 >[!Note]
->Jeśli nie jesteś administratorem i zamiast tego szukasz instrukcje dotyczące resetowania hasła firmowego lub szkolnego, zobacz [Resetowanie hasła służbowego](../user-help/active-directory-passwords-update-your-own-password.md).
+>Jeśli dzierżawa usługi Azure AD nie jest katalogiem macierzystym dla użytkownika, nie będzie można zresetować hasła. Oznacza to, że jeśli użytkownik loguje się do organizacji przy użyciu konta innej organizacji, konta Microsoft lub konta Google, nie będzie można zresetować hasła.<br><br>Jeśli użytkownik ma źródło uprawnień jako usługa Windows Server Active Directory, hasło będzie można zresetować tylko wtedy, gdy hasło zostało włączone.<br><br>Jeśli użytkownik ma źródło uprawnień jako zewnętrzna usługa Azure AD, nie będzie można zresetować hasła. Tylko użytkownik lub administrator w zewnętrznej usłudze Azure AD może zresetować hasło.
+
+>[!Note]
+>Jeśli nie jesteś administratorem i zamiast tego szukasz instrukcji dotyczących resetowania hasła służbowego, zobacz [Resetowanie hasła służbowego lub szkolnego](../user-help/active-directory-passwords-update-your-own-password.md).
 
 ## <a name="to-reset-a-password"></a>Aby zresetować hasło
 
-1. Zaloguj się do [Azure Portal](https://portal.azure.com/) jako administrator użytkownika lub hasło. Aby uzyskać więcej informacji na temat dostępnych ról, zobacz [przypisywanie ról administratorów w usłudze Azure Active Directory](../users-groups-roles/directory-assign-admin-roles.md#available-roles)
+1. Zaloguj się do [witryny Azure portal](https://portal.azure.com/) jako administrator użytkownika lub administrator haseł. Aby uzyskać więcej informacji na temat dostępnych ról, zobacz [Przypisywanie ról administratora w usłudze Azure Active Directory](../users-groups-roles/directory-assign-admin-roles.md#available-roles)
 
-2. Wybierz **usługi Azure Active Directory**, wybierz opcję **użytkowników**Wyszukaj i wybierz użytkownika, który potrzebuje resetowania, a następnie wybierz **resetowania hasła**.
+2. Wybierz **pozycję Azure Active Directory**, wybierz pozycję **Użytkownicy**, wyszukaj i wybierz użytkownika, który wymaga zresetowania, a następnie wybierz pozycję **Resetuj hasło**.
 
-    **Alain Charon — profil** zostanie wyświetlona strona z **Resetuj hasło** opcji.
+    Zostanie wyświetlona strona **Alain Charon - Profil** z opcją **Resetuj hasło.**
 
-    ![Strony profilu użytkownika, z podświetloną opcją hasło resetowania](media/active-directory-users-reset-password-azure-portal/user-profile-reset-password-link.png)
+    ![Strona profilu użytkownika z wyróżnioną opcją Resetowanie hasła](media/active-directory-users-reset-password-azure-portal/user-profile-reset-password-link.png)
 
-3. W **Resetuj hasło** wybierz opcję **Resetuj hasło**.
+3. Na stronie **Resetowanie hasła** wybierz pozycję **Resetuj hasło**.
 
     > [!Note]
-    > W przypadku korzystania z Azure Active Directory hasło tymczasowe jest automatycznie generowane dla użytkownika. W przypadku korzystania z Active Directory lokalnego należy utworzyć hasło dla użytkownika.
+    > Podczas korzystania z usługi Azure Active Directory tymczasowe hasło jest generowane automatycznie dla użytkownika. Korzystając z usługi Active Directory lokalnie, należy utworzyć hasło dla użytkownika.
 
-4. Skopiuj hasło i przekaż go do użytkownika. Będzie wymagane wprowadzenie przez użytkownika, aby zmienić hasło podczas następnego logowania.
+4. Skopiuj hasło i przekaż go użytkownikowi. Użytkownik będzie musiał zmienić hasło podczas następnego procesu logowania.
 
     >[!Note]
-    >Tymczasowe hasło nigdy nie wygasa. Podczas następnego logowania użytkownika, hasła będzie nadal działać, bez względu na to ile czasu minęło od wygenerowano hasło tymczasowe.
+    >Hasło tymczasowe nigdy nie wygasa. Następnym razem, gdy użytkownik zaloguje się, hasło będzie nadal działać, niezależnie od tego, ile czasu minęło od wygenerowania tymczasowego hasła.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Po po zresetowaniu hasła użytkownika, należy wykonać następujące procesy basic:
+Po zresetowaniu hasła użytkownika można wykonać następujące podstawowe procesy:
 
 - [Dodawanie lub usuwanie użytkowników](add-users-azure-active-directory.md)
 
 - [Przypisywanie ról do użytkowników](active-directory-users-assign-role-azure-portal.md)
 
-- [Dodać lub zmienić informacje o profilu](active-directory-users-profile-azure-portal.md)
+- [Dodawanie lub zmienianie informacji o profilu](active-directory-users-profile-azure-portal.md)
 
-- [Utworzenie podstawowej grupy i dodawać członków](active-directory-groups-create-azure-portal.md)
+- [Tworzenie grupy podstawowej i dodawanie członków](active-directory-groups-create-azure-portal.md)
 
-Lub można wykonywać bardziej złożonych scenariuszy użytkownika, takich jak przypisanie delegatów, przy użyciu zasad oraz udostępnianie kont użytkowników. Aby uzyskać więcej informacji na temat innych dostępnych akcji, zobacz [dokumentacja zarządzania użytkownika usługi Azure Active Directory](../users-groups-roles/index.yml).
+Można też wykonywać bardziej złożone scenariusze użytkowników, takie jak przypisywanie pełnomocników, korzystanie z zasad i udostępnianie kont użytkowników. Aby uzyskać więcej informacji na temat innych dostępnych akcji, zobacz [Dokumentacja zarządzania użytkownikami usługi Azure Active Directory](../users-groups-roles/index.yml).

@@ -5,20 +5,20 @@ ms.service: app-service-mobile
 ms.topic: include
 ms.date: 08/23/2018
 ms.openlocfilehash: 675ad278cb8bdc0ced4eff3bd77572f44c9808fc
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "68857457"
 ---
-W tej sekcji zaktualizujesz kod w istniejącym Mobile Apps zaplecza, aby wysyłać powiadomienia wypychane za każdym razem, gdy zostanie dodany nowy element. Ten proces jest obsługiwany przez funkcję [szablonu](../articles/notification-hubs/notification-hubs-templates-cross-platform-push-messages.md) Notification Hubs platformy Azure, która umożliwia wypychanie między platformami. Różni klienci są rejestrowani do powiadomień wypychanych przy użyciu szablonów, a pojedyncze uniwersalne wypychanie może uzyskać dostęp do wszystkich platform klienckich.
+W tej sekcji zaktualizujesz kod w istniejącym projekcie zaplecza aplikacji mobilnych, aby wysyłać powiadomienie wypychanego za każdym razem, gdy nowy element zostanie dodany. Ten proces jest obsługiwany przez funkcję [szablonu](../articles/notification-hubs/notification-hubs-templates-cross-platform-push-messages.md) usługi Azure Notification Hubs, która umożliwia wypychanie między platformami. Różnych klientów są rejestrowane dla powiadomień wypychanych przy użyciu szablonów i jeden uniwersalny wypychanie można uzyskać do wszystkich platform klienta.
 
-Wybierz jedną z następujących procedur, które pasują do projektu&mdash;zaplecza lub zaplecza [środowiska](#dotnet) [Node. js](#nodejs).
+Wybierz jedną z poniższych procedur, która&mdash;pasuje do typu projektu zaplecza [.NET](#dotnet) lub [zaplecza Node.js](#nodejs).
 
-### <a name="dotnet"></a>Projekt zaplecza .NET
+### <a name="net-back-end-project"></a><a name="dotnet"></a>Projekt zaplecza platformy .NET
 
-1. W programie Visual Studio kliknij prawym przyciskiem myszy projekt serwera. Następnie wybierz pozycję **Zarządzaj pakietami NuGet**. Wyszukaj pozycję, a następnie wybierz pozycję **Zainstaluj.** `Microsoft.Azure.NotificationHubs` Ten proces powoduje zainstalowanie biblioteki Notification Hubs na potrzeby wysyłania powiadomień z zaplecza.
-2. W projekcie serwera Otwórz pozycję **Kontrolery** > **TodoItemController.cs**. Następnie Dodaj następujące instrukcje using:
+1. W programie Visual Studio kliknij prawym przyciskiem myszy projekt serwera. Następnie wybierz pozycję **Zarządzaj pakietami NuGet**. Wyszukaj `Microsoft.Azure.NotificationHubs`, a następnie wybierz pozycję **Zainstaluj**. Ten proces instaluje bibliotekę Centrum powiadomień do wysyłania powiadomień z zaplecza.
+2. W projekcie serwera otwórz **TodoItemController.cs kontrolery** > **.** Następnie dodaj następujące instrukcje za pomocą:
 
     ```csharp
     using System.Collections.Generic;
@@ -26,7 +26,7 @@ Wybierz jedną z następujących procedur, które pasują do projektu&mdash;zapl
     using Microsoft.Azure.Mobile.Server.Config;
     ```
 
-3. W metodzie **PostTodoItem** Dodaj następujący kod po wywołaniu **InsertAsync**:  
+3. W **PostTodoItem** metody, dodać następujący kod po wywołaniu **InsertAsync:**  
 
     ```csharp
     // Get the settings for the server project.
@@ -64,14 +64,14 @@ Wybierz jedną z następujących procedur, które pasują do projektu&mdash;zapl
     }
     ```
 
-    Ten proces wysyła powiadomienie szablonu zawierające element. Tekst po wstawieniu nowego elementu.
+    Ten proces wysyła powiadomienie szablonu, który zawiera element. Tekst po wstawieniu nowego elementu.
 
-4. Opublikuj ponownie projekt serwera.
+4. Ponownie opublikuj projekt serwera.
 
-### <a name="nodejs"></a>Projekt zaplecza Node. js
+### <a name="nodejs-back-end-project"></a><a name="nodejs"></a>Projekt zaplecza node.js
 
-1. Skonfiguruj projekt zaplecza.
-2. Zastąp istniejący kod w TodoItem. js następującym kodem:
+1. Skonfiguruj projekt wewnętrznej bazy danych.
+2. Zastąp istniejący kod w pliku todoitem.js następującym kodem:
 
     ```javascript
     var azureMobileApps = require('azure-mobile-apps'),
@@ -114,6 +114,6 @@ Wybierz jedną z następujących procedur, które pasują do projektu&mdash;zapl
     module.exports = table;  
     ```
 
-    Ten proces wysyła powiadomienie szablonu zawierające element. Text po wstawieniu nowego elementu.
+    Ten proces wysyła powiadomienie szablonu, który zawiera item.text po wstawieniu nowego elementu.
 
-3. Podczas edytowania pliku na komputerze lokalnym należy ponownie opublikować projekt serwera.
+3. Podczas edytowania pliku na komputerze lokalnym ponownie opublikuj projekt serwera.

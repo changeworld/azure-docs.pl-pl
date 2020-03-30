@@ -1,34 +1,34 @@
 ---
-title: Przywracanie Azure Files przy użyciu programu PowerShell
-description: W tym artykule dowiesz się, jak przywrócić Azure Files przy użyciu usługi Azure Backup i programu PowerShell.
+title: Przywracanie plików platformy Azure za pomocą programu PowerShell
+description: W tym artykule dowiesz się, jak przywrócić usługi Azure Files przy użyciu usługi Azure Backup i programu PowerShell.
 ms.topic: conceptual
 ms.date: 1/27/2020
 ms.openlocfilehash: 99aeaa6173bb5336e6e1719a9fc0df0c668374e2
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/08/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77086824"
 ---
-# <a name="restore-azure-files-with-powershell"></a>Przywracanie Azure Files przy użyciu programu PowerShell
+# <a name="restore-azure-files-with-powershell"></a>Przywracanie plików platformy Azure za pomocą programu PowerShell
 
-W tym artykule wyjaśniono, jak przywrócić cały udział plików lub określone pliki z punktu przywracania utworzonego przez usługę [Azure Backup](backup-overview.md) przy użyciu programu Azure PowerShell.
+W tym artykule wyjaśniono, jak przywrócić cały udział plików lub określonych plików z punktu przywracania utworzonego przez usługę [Azure Backup](backup-overview.md) przy użyciu programu Azure Powershell.
 
-Można przywrócić cały udział plików lub konkretne pliki w udziale. Można przywrócić do oryginalnej lokalizacji lub do alternatywnej lokalizacji.
+Można przywrócić cały udział plików lub określone pliki w udziale. Można przywrócić do oryginalnej lokalizacji lub do lokalizacji alternatywnej.
 
 > [!WARNING]
-> Upewnij się, że wersja PS została uaktualniona do wersji minimalnej dla "AZ. RecoveryServices 2.6.0" dla kopii zapasowych AFS. Aby uzyskać więcej informacji, zapoznaj się z [sekcją](backup-azure-afs-automation.md#important-notice---backup-item-identification-for-afs-backups) , w której znajduje się wymóg zmiany.
+> Upewnij się, że wersja PS jest uaktualniona do minimalnej wersji dla "Az.RecoveryServices 2.6.0" dla kopii zapasowych AFS. Aby uzyskać więcej informacji, zapoznaj się [z sekcją](backup-azure-afs-automation.md#important-notice---backup-item-identification-for-afs-backups) przedstawiającą wymagania dotyczące tej zmiany.
 
-## <a name="fetch-recovery-points"></a>Pobierz punkty odzyskiwania
+## <a name="fetch-recovery-points"></a>Pobieranie punktów odzyskiwania
 
-Użyj polecenie [Get-AzRecoveryServicesBackupRecoveryPoint](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackuprecoverypoint?view=azps-1.4.0) , aby wyświetlić listę wszystkich punktów odzyskiwania dla elementu kopii zapasowej.
+Użyj [Get-AzRecoveryServicesBackupRecoveryPoint,](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackuprecoverypoint?view=azps-1.4.0) aby wyświetlić listę wszystkich punktów odzyskiwania dla elementu kopii zapasowej.
 
-W poniższym skrypcie:
+W następującym skrypcie:
 
-* Zmienna **$RP** jest tablicą punktów odzyskiwania dla wybranego elementu kopii zapasowej z ostatnich siedmiu dni.
-* Tablica jest posortowana w odwrotnej kolejności czasu z najnowszym punktem odzyskiwania pod indeksem **0**.
+* Zmienna **$rp** jest tablicą punktów odzyskiwania dla wybranego elementu kopii zapasowej z ostatnich siedmiu dni.
+* Tablica jest sortowana w odwrotnej kolejności czasu z najnowszym punktem odzyskiwania w indeksie **0**.
 * Użyj standardowego indeksowania tablicy programu PowerShell, aby wybrać punkt odzyskiwania.
-* W przykładzie **$RP [0]** wybiera najnowszy punkt odzyskiwania.
+* W tym przykładzie **$rp[0]** wybiera najnowszy punkt odzyskiwania.
 
 ```powershell
 $startDate = (Get-Date).AddDays(-7)
@@ -54,24 +54,24 @@ ContainerType        : AzureStorage
 BackupManagementType : AzureStorage
 ```
 
-Po wybraniu odpowiedniego punktu odzyskiwania przywracasz udział plików lub plik do oryginalnej lokalizacji lub do lokalizacji alternatywnej.
+Po wybraniu odpowiedniego punktu odzyskiwania należy przywrócić udział lub plik do oryginalnej lokalizacji lub do lokalizacji alternatywnej.
 
-## <a name="restore-an-azure-file-share-to-an-alternate-location"></a>Przywracanie udziału plików platformy Azure w alternatywnej lokalizacji
+## <a name="restore-an-azure-file-share-to-an-alternate-location"></a>Przywracanie udziału plików platformy Azure do lokalizacji alternatywnej
 
-Aby przywrócić do wybranego punktu odzyskiwania, użyj [instrukcji RESTORE-AzRecoveryServicesBackupItem](https://docs.microsoft.com/powershell/module/az.recoveryservices/restore-azrecoveryservicesbackupitem?view=azps-1.4.0) . Określ te parametry, aby zidentyfikować alternatywną lokalizację:
+Użyj [Restore-AzRecoveryServicesBackupItem](https://docs.microsoft.com/powershell/module/az.recoveryservices/restore-azrecoveryservicesbackupitem?view=azps-1.4.0) przywrócić do wybranego punktu odzyskiwania. Określ następujące parametry, aby zidentyfikować alternatywną lokalizację:
 
-* **TargetStorageAccountName**: konto magazynu, do którego zostanie przywrócona zawartość kopii zapasowej. Docelowe konto magazynu musi znajdować się w tej samej lokalizacji co magazyn.
-* **TargetFileShareName**: udziały plików w docelowym koncie magazynu, do którego zostanie przywrócona zawartość kopii zapasowej.
-* **TargetFolder**: folder w udziale plików, do którego przywracane są dane. Jeśli kopia zapasowa ma zostać przywrócona do folderu głównego, nadaj wartości folderu docelowego jako pusty ciąg.
-* **ResolveConflict**: instrukcja, jeśli wystąpił konflikt z przywróconymi danymi. Akceptuje **zastępowanie** lub **pomijanie**.
+* **TargetStorageAccountName:** konto magazynu, na którym jest przywracana kopia zapasowa zawartości. Docelowe konto magazynu musi znajdować się w tej samej lokalizacji co magazyn.
+* **TargetFileShareName**: Udziały plików w ramach docelowego konta magazynu, do którego przywracana jest kopia zapasowa zawartości.
+* **TargetFolder**: Folder pod udziałem plików, do którego dane są przywracane. Jeśli kopia zapasowa ma zostać przywrócona do folderu głównego, należy podać wartości folderu docelowego jako pusty ciąg.
+* **ResolveConflict**: Instrukcja, jeśli występuje konflikt z przywróconymi danymi. Akceptuje **zastąpienie** lub **pominięcie**.
 
-Uruchom polecenie cmdlet z parametrami w następujący sposób:
+Uruchom polecenie cmdlet z następującymi parametrami:
 
 ```powershell
 Restore-AzRecoveryServicesBackupItem -RecoveryPoint $rp[0] -TargetStorageAccountName "TargetStorageAcct" -TargetFileShareName "DestAFS" -TargetFolder "testAzureFS_restored" -ResolveConflict Overwrite
 ```
 
-Polecenie zwraca zadanie z IDENTYFIKATORem, który ma być śledzony, jak pokazano w poniższym przykładzie.
+Polecenie zwraca zadanie z identyfikatorem do śledzenia, jak pokazano w poniższym przykładzie.
 
 ```powershell
 WorkloadName     Operation            Status               StartTime                 EndTime                   JobID
@@ -81,34 +81,34 @@ testAzureFS        Restore              InProgress           12/10/2018 9:56:38 
 
 ## <a name="restore-an-azure-file-to-an-alternate-location"></a>Przywracanie pliku platformy Azure do lokalizacji alternatywnej
 
-Aby przywrócić do wybranego punktu odzyskiwania, użyj [instrukcji RESTORE-AzRecoveryServicesBackupItem](https://docs.microsoft.com/powershell/module/az.recoveryservices/restore-azrecoveryservicesbackupitem?view=azps-1.4.0) . Określ te parametry, aby zidentyfikować alternatywną lokalizację i jednoznacznie zidentyfikować plik, który chcesz przywrócić.
+Użyj [Restore-AzRecoveryServicesBackupItem](https://docs.microsoft.com/powershell/module/az.recoveryservices/restore-azrecoveryservicesbackupitem?view=azps-1.4.0) przywrócić do wybranego punktu odzyskiwania. Określ te parametry, aby zidentyfikować alternatywną lokalizację i jednoznacznie zidentyfikować plik, który chcesz przywrócić.
 
-* **TargetStorageAccountName**: konto magazynu, do którego zostanie przywrócona zawartość kopii zapasowej. Docelowe konto magazynu musi znajdować się w tej samej lokalizacji co magazyn.
-* **TargetFileShareName**: udziały plików w docelowym koncie magazynu, do którego zostanie przywrócona zawartość kopii zapasowej.
-* **TargetFolder**: folder w udziale plików, do którego przywracane są dane. Jeśli kopia zapasowa ma zostać przywrócona do folderu głównego, nadaj wartości folderu docelowego jako pusty ciąg.
-* **Sourcefilepath**: ścieżka bezwzględna pliku, która ma zostać przywrócona w udziale plików jako ciąg. Ta ścieżka jest tą samą ścieżką używaną w poleceniu cmdlet **Get-AzStorageFile** programu PowerShell.
-* **SourceFileType**: czy wybrano katalog lub plik. Akceptuje **katalog** lub **plik**.
-* **ResolveConflict**: instrukcja, jeśli wystąpił konflikt z przywróconymi danymi. Akceptuje **zastępowanie** lub **pomijanie**.
+* **TargetStorageAccountName:** konto magazynu, na którym jest przywracana kopia zapasowa zawartości. Docelowe konto magazynu musi znajdować się w tej samej lokalizacji co magazyn.
+* **TargetFileShareName**: Udziały plików w ramach docelowego konta magazynu, do którego przywracana jest kopia zapasowa zawartości.
+* **TargetFolder**: Folder pod udziałem plików, do którego dane są przywracane. Jeśli kopia zapasowa ma zostać przywrócona do folderu głównego, należy podać wartości folderu docelowego jako pusty ciąg.
+* **SourceFilePath**: Bezwzględna ścieżka pliku, który ma zostać przywrócony w udziale plików, jako ciąg. Ta ścieżka jest tą samą ścieżką, która jest używana w połącze cmdlet **Programu Get-AzStorageFile** PowerShell.
+* **SourceFileType**: Czy wybrano katalog, czy plik. Akceptuje **katalog** lub **plik**.
+* **ResolveConflict**: Instrukcja, jeśli występuje konflikt z przywróconymi danymi. Akceptuje **zastąpienie** lub **pominięcie**.
 
-Dodatkowe parametry (SourceFilePath i SourceFileType) są powiązane tylko z pojedynczym plikiem, który ma zostać przywrócony.
+Dodatkowe parametry (SourceFilePath i SourceFileType) są powiązane tylko z poszczególnymi plikami, które chcesz przywrócić.
 
 ```powershell
 Restore-AzRecoveryServicesBackupItem -RecoveryPoint $rp[0] -TargetStorageAccountName "TargetStorageAcct" -TargetFileShareName "DestAFS" -TargetFolder "testAzureFS_restored" -SourceFileType File -SourceFilePath "TestDir/TestDoc.docx" -ResolveConflict Overwrite
 ```
 
-To polecenie zwraca zadanie z IDENTYFIKATORem, który ma być śledzony, jak pokazano w poprzedniej sekcji.
+To polecenie zwraca zadanie z identyfikatorem do śledzenia, jak pokazano w poprzedniej sekcji.
 
 ## <a name="restore-azure-file-shares-and-files-to-the-original-location"></a>Przywracanie udziałów plików i plików platformy Azure do oryginalnej lokalizacji
 
-Podczas przywracania do oryginalnej lokalizacji nie trzeba określać parametrów docelowych i docelowych. Należy podać tylko **ResolveConflict** .
+Po przywróceniu do oryginalnej lokalizacji nie trzeba określać parametrów związanych z miejscem docelowym i docelowym. Należy podać **tylko ResolveConflict.**
 
-#### <a name="overwrite-an-azure-file-share"></a>Zastąp udział plików platformy Azure
+#### <a name="overwrite-an-azure-file-share"></a>Zastępowanie udziału plików platformy Azure
 
 ```powershell
 Restore-AzRecoveryServicesBackupItem -RecoveryPoint $rp[0] -ResolveConflict Overwrite
 ```
 
-#### <a name="overwrite-an-azure-file"></a>Zastąp plik platformy Azure
+#### <a name="overwrite-an-azure-file"></a>Zastępowanie pliku platformy Azure
 
 ```powershell
 Restore-AzRecoveryServicesBackupItem -RecoveryPoint $rp[0] -SourceFileType File -SourceFilePath "TestDir/TestDoc.docx" -ResolveConflict Overwrite
@@ -116,4 +116,4 @@ Restore-AzRecoveryServicesBackupItem -RecoveryPoint $rp[0] -SourceFileType File 
 
 ## <a name="next-steps"></a>Następne kroki
 
-[Dowiedz się więcej na temat](restore-afs.md) przywracania Azure Files w Azure Portal.
+[Dowiedz się więcej o](restore-afs.md) przywracaniu plików platformy Azure w witrynie Azure portal.

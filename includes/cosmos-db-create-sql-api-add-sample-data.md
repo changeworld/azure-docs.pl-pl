@@ -9,19 +9,19 @@ ms.date: 08/07/2019
 ms.author: sngun
 ms.custom: include file
 ms.openlocfilehash: f80efbac256871af073354f23317c447d6a85f1e
-ms.sourcegitcommit: 80dff35a6ded18fa15bba633bf5b768aa2284fa8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/26/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "70020170"
 ---
-Teraz możesz dodawać dane do nowego kontenera przy użyciu Eksplorator danych.
+Teraz można dodać dane do nowego kontenera za pomocą Eksploratora danych.
 
-1. W **Eksplorator danych**rozwiń bazę danych **zadania** , rozwiń kontener **elementy** . Wybierz pozycję **elementy**, a następnie wybierz pozycję **nowy element**.
+1. W **Eksploratorze danych**rozwiń bazę danych **Zadania,** rozwiń kontener **Elementy.** Wybierz pozycję **Elementy**, a następnie wybierz pozycję **Nowy element**.
 
    ![Tworzenie nowych dokumentów w Eksploratorze danych w witrynie Azure Portal](./media/cosmos-db-create-sql-api-add-sample-data/azure-cosmosdb-data-explorer-new-document.png)
   
-2. Teraz Dodaj dokument do kontenera z następującą strukturą.
+2. Teraz dodaj dokument do kontenera z następującą strukturą.
 
      ```json
      {
@@ -33,8 +33,8 @@ Teraz możesz dodawać dane do nowego kontenera przy użyciu Eksplorator danych.
      }
      ```
 
-3. Po dodaniu pliku JSON do karty **dokumenty** wybierz pozycję **Zapisz**.
+3. Po dodaniu jsonu do karty **Dokumenty** wybierz pozycję **Zapisz**.
 
-    ![Kopiuj w danych JSON i wybierz pozycję Zapisz w Eksplorator danych w Azure Portal](./media/cosmos-db-create-sql-api-add-sample-data/azure-cosmosdb-data-explorer-save-document.png)
+    ![Kopiowanie w json danych i wybierz Zapisz w Eksploratorze danych w witrynie Azure portal](./media/cosmos-db-create-sql-api-add-sample-data/azure-cosmosdb-data-explorer-save-document.png)
 
 4.  Utwórz i zapisz jeszcze jeden dokument, w którym wstawisz unikatową wartość dla właściwości `id` i zmienisz inne właściwości wedle uznania. Nowe dokumenty mogą mieć dowolną strukturę, ponieważ usługa Azure Cosmos DB nie wymusza żadnego schematu danych.

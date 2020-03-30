@@ -9,10 +9,10 @@ ms.date: 06/19/2018
 ms.author: wesmc
 ms.custom: include file
 ms.openlocfilehash: 49fbfe116a2fe554abb3a3ca4d1dcd6cab2b746d
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/19/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "69626375"
 ---
 Jeśli zamierzasz przejść do kolejnego zalecanego artykułu, możesz zachować już utworzone zasoby i użyć ich ponownie.
@@ -27,10 +27,10 @@ Aby usunąć grupę zasobów na podstawie nazwy:
 
 1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com) i wybierz pozycję **Grupy zasobów**.
 
-2. W polu tekstowym **Filtruj według nazwy** wpisz nazwę grupy zasobów zawierającej IoT Hub. 
+2. W polach tekstowych **Filtruj według nazwy** wpisz nazwę grupy zasobów zawierającej Centrum IoT Hub. 
 
-3. Z prawej strony grupy zasobów na liście wynik wybierz pozycję **...** , a następnie **Usuń grupę zasobów**.
+3. Po prawej stronie grupy zasobów na liście wyników wybierz polecenie **...** **Usuń grupę zasobów**.
 
-    ![Usuwanie](./media/iot-hub-quickstarts-clean-up-resources/iot-hub-delete-resource-group.png)
+    ![Usuń](./media/iot-hub-quickstarts-clean-up-resources/iot-hub-delete-resource-group.png)
 
 4. Zobaczysz prośbę o potwierdzenie usunięcia grupy zasobów. Wpisz ponownie nazwę grupy zasobów, aby potwierdzić, a następnie wybierz pozycję **Usuń**. Po krótkim czasie grupa zasobów i wszystkie zawarte w niej zasoby zostaną usunięte.

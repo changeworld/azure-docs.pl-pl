@@ -1,6 +1,6 @@
 ---
-title: Logowanie jednokrotne oparte na hasłach (SSO) w panelu dostępu | Microsoft Docs
-description: W tym artykule omówiono obszary problemów, które zapewniają wskazówki dotyczące rozwiązywania problemów związanych z logowaniem do aplikacji w galerii usługi Azure AD skonfigurowanych do logowania jednokrotnego hasła.
+title: Logowanie jednookrotne oparte na hasłach w Panelu dostępu | Dokumenty firmy Microsoft
+description: W tym artykule omówiono obszary problemów, które zawierają wskazówki dotyczące rozwiązywania problemów związanych z logowaniem się do aplikacji usługi Azure AD Gallery skonfigurowanych do logowania jednokrotnego hasła.
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -17,78 +17,78 @@ ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9ca192c28757df189e531aee0ba2d8da288ba7e6
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/22/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68381239"
 ---
-# <a name="problems-signing-in-to-an-azure-ad-gallery-application-configured-for-password-single-sign-on"></a>Problemy z logowaniem do aplikacji w galerii usługi Azure AD skonfigurowanej do logowania jednokrotnego hasła
+# <a name="problems-signing-in-to-an-azure-ad-gallery-application-configured-for-password-single-sign-on"></a>Problemy z logowaniem się do aplikacji usługi Azure AD Gallery skonfigurowanej do logowania jednokrotnego hasła
 
-Panel dostępu jest portalem opartym na sieci Web, który umożliwia użytkownikowi, który ma konto służbowe w usłudze Azure Active Directory (Azure AD) wyświetlanie i uruchamianie aplikacji opartych na chmurze, do których administrator usługi Azure AD udzielił im dostępu. Użytkownik, który ma wersje usługi Azure AD, może również korzystać z funkcji samoobsługowego zarządzania grupami i aplikacjami za pomocą panelu dostępu. Panel dostępu jest oddzielony od Azure Portal i nie wymaga, aby użytkownicy mieli subskrypcję platformy Azure.
+Panel dostępu to portal internetowy, który umożliwia użytkownikowi, który ma konto służbowe w usłudze Azure Active Directory (Azure AD) wyświetlanie i uruchamianie aplikacji opartych na chmurze, do których administrator usługi Azure AD przyznał im dostęp. Użytkownik, który ma wersje usługi Azure AD, może również korzystać z funkcji samoobsługowego zarządzania grupami i aplikacjami za pośrednictwem Panelu dostępu. Panel dostępu jest oddzielony od witryny Azure portal i nie wymaga od użytkowników subskrypcji platformy Azure.
 
-Aby korzystać z logowania jednokrotnego opartego na hasłach (SSO) w panelu dostępu, rozszerzenie panelu dostępu musi być zainstalowane w przeglądarce użytkownika. To rozszerzenie jest pobierane automatycznie, gdy użytkownik wybierze aplikację, która jest skonfigurowana dla logowania jednokrotnego opartego na hasłach.
+Aby w Panelu dostępu można korzystać z logowania jednokrotnego opartego na hasłach, w przeglądarce użytkownika należy zainstalować rozszerzenie Panelu dostępu. To rozszerzenie jest pobierane automatycznie, gdy użytkownik wybierze aplikację skonfigurowaną dla loga loga bez hasła.
 
-## <a name="meeting-browser-requirements-for-the-access-panel"></a>Wymagania dotyczące przeglądarki dla panelu dostępu
+## <a name="meeting-browser-requirements-for-the-access-panel"></a>Spełnianie wymagań przeglądarki dla Panelu dostępu
 
-Panel dostępu wymaga przeglądarki obsługującej język JavaScript i ma włączoną obsługę CSS. Aby korzystać z logowania jednokrotnego opartego na hasłach (SSO) w panelu dostępu, rozszerzenie panelu dostępu musi być zainstalowane w przeglądarce użytkownika. To rozszerzenie jest pobierane automatycznie, gdy użytkownik wybierze aplikację, która jest skonfigurowana dla logowania jednokrotnego opartego na hasłach.
+Panel dostępu wymaga przeglądarki obsługującej język JavaScript i włączonej wersji CSS. Aby w Panelu dostępu można korzystać z logowania jednokrotnego opartego na hasłach, w przeglądarce użytkownika należy zainstalować rozszerzenie Panelu dostępu. To rozszerzenie jest pobierane automatycznie, gdy użytkownik wybierze aplikację skonfigurowaną dla loga loga bez hasła.
 
-W przypadku logowania jednokrotnego opartego na haśle przeglądarki użytkownika końcowego mogą:
+W przypadku logów samouszeńców opartych na hasłach przeglądarki użytkownika końcowego mogą być:
 
 -   Internet Explorer 8, 9, 10, 11 — w systemie Windows 7 lub nowszym
 
 -   Chrome — w systemie Windows 7 lub nowszym oraz w systemie MacOS X lub nowszym
 
--   Firefox 26,0 lub nowszy — w systemie Windows XP z dodatkiem SP2 lub nowszym oraz na Mac OS X 10,6 lub nowszym
+-   Firefox 26.0 lub nowszy — w systemie Windows XP z dodatkiem SP2 lub nowszym oraz w systemie Mac OS X 10.6 lub nowszym
 
 >[!NOTE]
->Rozszerzenie logowania jednokrotnego oparte na hasłach staje się dostępne dla przeglądarki Microsoft Edge w systemie Windows 10, gdy rozszerzenia przeglądarek stają się obsługiwane w programie Microsoft Edge.
+>Rozszerzenie loga SSO oparte na hasłach staje się dostępne dla przeglądarki Microsoft Edge w systemie Windows 10, gdy rozszerzenia przeglądarki staną się obsługiwane przez microsoft edge.
 >
 >
 
 ## <a name="how-to-install-the-access-panel-browser-extension"></a>Jak zainstalować rozszerzenie przeglądarki panelu dostępu
 
-Aby zainstalować rozszerzenie przeglądarki panelu dostępu, wykonaj następujące czynności:
+Aby zainstalować rozszerzenie przeglądarki panelu dostępu, wykonaj poniższe czynności:
 
-1.  Otwórz [panel dostępu](https://myapps.microsoft.com) w jednej z obsługiwanych przeglądarek i zaloguj się jako **użytkownik** w usłudze Azure AD.
+1.  Otwórz [Panel dostępu](https://myapps.microsoft.com) w jednej z obsługiwanych przeglądarek i zaloguj się jako **użytkownik** w usłudze Azure AD.
 
-2.  Kliknij pozycję **hasło — logowanie** jednokrotne w panelu dostępu.
+2.  kliknij **aplikację** logajną hasła w Panelu dostępu.
 
-3.  W wierszu polecenia z monitem o zainstalowanie oprogramowania wybierz pozycję **Zainstaluj teraz**.
+3.  W wierszu z prośbą o zainstalowanie oprogramowania wybierz pozycję **Zainstaluj teraz**.
 
-4.  W zależności od używanej przeglądarki do linku pobierania. **Dodaj** rozszerzenie do przeglądarki.
+4.  Na podstawie przeglądarki zostaniesz przekierowany do linku do pobrania. **Dodaj** rozszerzenie do przeglądarki.
 
-5.  Jeśli w przeglądarce zostanie wyświetlone pytanie, wybierz opcję **włączenia** lub **zezwolenia** na rozszerzenie.
+5.  Jeśli twoja przeglądarka poprosi, wybierz opcję **Włącz** lub **Zezwól** na rozszerzenie.
 
-6.  Po zainstalowaniu **Uruchom ponownie** sesję przeglądarki.
+6.  Po zainstalowaniu **uruchom ponownie** sesję przeglądarki.
 
-7.  Zaloguj się do panelu dostępu i sprawdź, czy możesz **uruchamiać** aplikacje logowania jednokrotnego
+7.  Zaloguj się do Panelu dostępu i sprawdź, czy możesz **uruchomić** aplikacje logowania bez logowania do haseł
 
-Możesz również pobrać rozszerzenie dla przeglądarki Chrome i Firefox z linków bezpośrednich poniżej:
+Możesz również pobrać rozszerzenie dla Chrome i Firefox z bezpośrednich linków poniżej:
 
--   [Rozszerzenie panelu dostępu dla programu Chrome](https://chrome.google.com/webstore/detail/access-panel-extension/ggjhpefgjjfobnfoldnjipclpcfbgbhl)
+-   [Rozszerzenie panelu dostępu do Chrome](https://chrome.google.com/webstore/detail/access-panel-extension/ggjhpefgjjfobnfoldnjipclpcfbgbhl)
 
--   [Rozszerzenie panelu dostępu Firefox](https://addons.mozilla.org/firefox/addon/access-panel-extension/)
+-   [Rozszerzenie panelu dostępu do Firefoksa](https://addons.mozilla.org/firefox/addon/access-panel-extension/)
 
 ## <a name="setting-up-a-group-policy-for-internet-explorer"></a>Konfigurowanie zasad grupy dla programu Internet Explorer
 
-Można skonfigurować zasady grupy, które umożliwiają zdalne instalowanie rozszerzenia panelu dostępu dla programu Internet Explorer na komputerach użytkowników.
+Można skonfigurować zasady grupy, które umożliwiają zdalne instalowanie rozszerzenia Panelu dostępu dla programu Internet Explorer na komputerach użytkowników.
 
 Wymagania wstępne obejmują:
 
--   Skonfigurowano [Active Directory Domain Services](https://msdn.microsoft.com/library/aa362244%28v=vs.85%29.aspx)i przyłączono komputery użytkowników do domeny.
+-   Skonfigurowano [Usługi domenowe Active Directory](https://msdn.microsoft.com/library/aa362244%28v=vs.85%29.aspx)i przyłączyłeś komputery użytkowników do domeny.
 
--   Aby edytować obiekt zasady grupy (GPO), musisz mieć uprawnienie "Edytuj ustawienia". Domyślnie członkowie następujących grup zabezpieczeń mają to uprawnienie: Administratorzy domeny, Administratorzy przedsiębiorstwa i właściciele zasady grupy Twórcy. [Dowiedz się więcej](https://technet.microsoft.com/library/cc781991%28v=ws.10%29.aspx).
+-   Aby edytować obiekt zasad grupy, musisz mieć uprawnienie "Edytuj ustawienia". Domyślnie członkowie następujących grup zabezpieczeń mają takie uprawnienia: Administratorzy domeny, Administratorzy przedsiębiorstwa i Właściciele twórców zasad grupy. [Dowiedz się więcej](https://technet.microsoft.com/library/cc781991%28v=ws.10%29.aspx).
 
-Postępuj zgodnie z samouczkiem [jak wdrożyć rozszerzenie panelu dostępu dla programu Internet Explorer przy użyciu zasady grupy](https://docs.microsoft.com/azure/active-directory/active-directory-saas-ie-group-policy) , aby uzyskać instrukcje krok po kroku dotyczące konfigurowania zasad grupy i wdrażania ich dla użytkowników.
+Postępuj zgodnie z samouczkiem [Jak wdrożyć rozszerzenie panelu dostępu dla programu Internet Explorer przy użyciu zasad grupy,](https://docs.microsoft.com/azure/active-directory/active-directory-saas-ie-group-policy) aby uzyskać instrukcje krok po kroku dotyczące konfigurowania zasad grupy i wdrażania jej dla użytkowników.
 
-## <a name="troubleshoot-the-access-panel-in-internet-explorer"></a>Rozwiązywanie problemów z panelem dostępu w programie Internet Explorer
+## <a name="troubleshoot-the-access-panel-in-internet-explorer"></a>Rozwiązywanie problemów z Panelem dostępu w programie Internet Explorer
 
-Postępuj zgodnie z instrukcjami w części [Rozwiązywanie problemów z rozszerzeniami panelu dostępu dla programu Internet Explorer](https://docs.microsoft.com/azure/active-directory/active-directory-saas-ie-troubleshooting) , aby uzyskać dostęp do narzędzia diagnostycznego i instrukcje krok po kroku dotyczące konfigurowania rozszerzenia dla programu IE.
+Postępuj zgodnie [z instrukcją Rozwiązywanie problemów z rozszerzeniem panelu dostępu dla programu Internet Explorer,](https://docs.microsoft.com/azure/active-directory/active-directory-saas-ie-troubleshooting) aby uzyskać dostęp do narzędzia diagnostycznego i instrukcjami krok po kroku dotyczącymi konfigurowania rozszerzenia dla programu IE.
 
-## <a name="how-to-configure-password-single-sign-on-for-a-non-gallery-application"></a>Jak skonfigurować Logowanie jednokrotne przy użyciu hasła dla aplikacji spoza galerii
+## <a name="how-to-configure-password-single-sign-on-for-a-non-gallery-application"></a>Jak skonfigurować logowanie jednokrotne hasła dla aplikacji spoza galerii
 
-Aby skonfigurować aplikację z galerii usługi Azure AD, należy wykonać następujące:
+Aby skonfigurować aplikację z galerii usługi Azure AD, należy:
 
 -   [Dodawanie aplikacji spoza galerii](#add-a-non-gallery-application)
 
@@ -98,106 +98,106 @@ Aby skonfigurować aplikację z galerii usługi Azure AD, należy wykonać nast�
 
 ### <a name="add-a-non-gallery-application"></a>Dodawanie aplikacji spoza galerii
 
-Aby dodać aplikację z galerii usługi Azure AD, wykonaj następujące czynności:
+Aby dodać aplikację z galerii usługi Azure AD Gallery, wykonaj poniższe czynności:
 
-1.  Otwórz [Azure Portal](https://portal.azure.com) i zaloguj się jako **administrator globalny** lub współadministrator
+1.  Otwórz [witrynę Azure portal](https://portal.azure.com) i zaloguj się jako **administrator globalny** lub **współadministrator**
 
-2.  Otwórz **rozszerzenie Azure Active Directory** , klikając pozycję **wszystkie usługi** w górnej części menu nawigacji po lewej stronie.
+2.  Otwórz **rozszerzenie usługi Azure Active Directory,** klikając **pozycję Wszystkie usługi** u góry głównego menu nawigacji po lewej stronie.
 
-3.  Wpisz **"Azure Active Directory**" w polu wyszukiwania filtru i wybierz pozycję **usługi Azure Active Directory** elementu.
+3.  Wpisz **"Usługa Azure Active Directory"** w polu wyszukiwania filtru i wybierz element **usługi Azure Active Directory.**
 
-4.  Kliknij pozycję **aplikacje przedsiębiorstwa** w menu nawigacji po lewej stronie Azure Active Directory.
+4.  kliknij polecenie **Aplikacje przedsiębiorstwa** z menu nawigacji po lewej stronie usługi Azure Active Directory.
 
-5.  Kliknij przycisk **Dodaj** w prawym górnym rogu w okienku aplikacje dla **przedsiębiorstw** .
+5.  kliknij przycisk **Dodaj** w prawym górnym rogu okienka **Aplikacje dla przedsiębiorstw.**
 
-6.  Kliknij pozycję **aplikacja niebędąca galerią.**
+6.  kliknij pozycję **Aplikacja niezwiązane z galerią.**
 
-7.  Wprowadź nazwę aplikacji w polu tekstowym **Nazwa** . Wybierz pozycję **Dodaj.**
+7.  Wprowadź nazwę aplikacji w polach tekstowych **Nazwa.** Wybierz **pozycję Dodaj.**
 
-Po krótkim czasie będzie możliwe wyświetlenie okienka konfiguracja aplikacji.
+Po krótkim czasie można wyświetlić okienko konfiguracji aplikacji.
 
 ### <a name="configure-the-application-for-password-single-sign-on"></a>Konfigurowanie aplikacji do logowania jednokrotnego hasła
 
-Aby skonfigurować Logowanie jednokrotne dla aplikacji, wykonaj następujące czynności:
+Aby skonfigurować logowanie jednokrotne dla aplikacji, wykonaj poniższe czynności:
 
-1. Otwórz [**Azure Portal**](https://portal.azure.com/) i zaloguj się jako **administrator globalny** lub współadministrator **.**
+1. Otwórz [**witrynę Azure portal**](https://portal.azure.com/) i zaloguj się jako **administrator globalny** lub **współadministrator.**
 
-2. Otwórz **rozszerzenie Azure Active Directory** , klikając pozycję **wszystkie usługi** w górnej części menu nawigacji po lewej stronie.
+2. Otwórz **rozszerzenie usługi Azure Active Directory,** klikając **pozycję Wszystkie usługi** u góry głównego menu nawigacji po lewej stronie.
 
-3. Wpisz **"Azure Active Directory**" w polu wyszukiwania filtru i wybierz pozycję **usługi Azure Active Directory** elementu.
+3. Wpisz **"Usługa Azure Active Directory"** w polu wyszukiwania filtru i wybierz element **usługi Azure Active Directory.**
 
-4. Kliknij pozycję **aplikacje przedsiębiorstwa** w menu nawigacji po lewej stronie Azure Active Directory.
+4. kliknij polecenie **Aplikacje przedsiębiorstwa** z menu nawigacji po lewej stronie usługi Azure Active Directory.
 
-5. Kliknij przycisk **wszystkie aplikacje** Aby wyświetlić listę wszystkich aplikacji.
+5. kliknij pozycję **Wszystkie aplikacje,** aby wyświetlić listę wszystkich aplikacji.
 
-   * Jeśli nie widzisz aplikacji, chcesz, aby wyświetlić tutaj użyć **filtru** formant w górnej części **listę wszystkich aplikacji** i ustaw **Pokaż** opcję **wszystkie Aplikacje.**
+   * Jeśli nie widzisz aplikacji, która ma być pokazana w tym miejscu, użyj kontrolki **Filtruj** u góry **listy Wszystkie aplikacje** i ustaw opcję **Pokaż** na **Wszystkie aplikacje.**
 
-6. Wybierz aplikację, dla której chcesz skonfigurować Logowanie jednokrotne
+6. Wybierz aplikację, którą chcesz skonfigurować logowanie jednokrotne
 
-7. Po załadowaniu aplikacji kliknij pozycję **Logowanie** jednokrotne w menu nawigacji po lewej stronie aplikacji.
+7. Po załadowaniu aplikacji kliknij **logowanie jednokrotne** z menu nawigacji po lewej stronie aplikacji.
 
-8. Wybierz pozycję **Logowanie oparte na haśle.**
+8. Wybierz tryb **logowania opartego na hasłach.**
 
-9. Wprowadź **adres URL logowania**. Jest to adres URL, pod którym użytkownicy wprowadzają nazwę użytkownika i hasło, aby się zalogować. Upewnij się, że pola logowania są widoczne pod adresem URL.
+9. Wprowadź **adres URL logowania**. Jest to adres URL, w którym użytkownicy wejdą swoją nazwę użytkownika i hasło, aby się zalogować. Upewnij się, że pola logowania są widoczne pod adresem URL.
 
 10. Przypisz użytkowników do aplikacji.
 
-11. Dodatkowo można także podać poświadczenia w imieniu użytkownika, wybierając wiersze użytkowników i klikając opcję **zaktualizuj poświadczenia** i wprowadzając nazwę użytkownika i hasło w imieniu użytkowników. W przeciwnym razie użytkownicy otrzymają monit o wprowadzenie poświadczeń podczas uruchamiania.
+11. Ponadto można również podać poświadczenia w imieniu użytkownika, wybierając wiersze użytkowników i klikając **przycisk Aktualizuj poświadczenia** i wprowadzając nazwę użytkownika i hasło w imieniu użytkowników. W przeciwnym razie użytkownicy są monitowani o wprowadzenie poświadczeń samodzielnie po uruchomieniu.
 
 ### <a name="assign-users-to-the-application"></a>Przypisywanie użytkowników do aplikacji
 
-Aby przypisać co najmniej jednego użytkownika do aplikacji bezpośrednio, wykonaj następujące czynności:
+Aby bezpośrednio przypisać jednego lub więcej użytkowników do aplikacji, wykonaj poniższe czynności:
 
-1. Otwórz [ **witryny Azure portal** ](https://portal.azure.com/) i zaloguj się jako **administratora globalnego.**
+1. Otwórz [**witrynę Azure portal**](https://portal.azure.com/) i zaloguj się jako **administrator globalny.**
 
-2. Otwórz **rozszerzenie Azure Active Directory** , klikając pozycję **wszystkie usługi** w górnej części menu nawigacji po lewej stronie.
+2. Otwórz **rozszerzenie usługi Azure Active Directory,** klikając **pozycję Wszystkie usługi** u góry głównego menu nawigacji po lewej stronie.
 
-3. Wpisz **"Azure Active Directory**" w polu wyszukiwania filtru i wybierz pozycję **usługi Azure Active Directory** elementu.
+3. Wpisz **"Usługa Azure Active Directory"** w polu wyszukiwania filtru i wybierz element **usługi Azure Active Directory.**
 
-4. Kliknij pozycję **aplikacje przedsiębiorstwa** w menu nawigacji po lewej stronie Azure Active Directory.
+4. kliknij polecenie **Aplikacje przedsiębiorstwa** z menu nawigacji po lewej stronie usługi Azure Active Directory.
 
-5. Kliknij przycisk **wszystkie aplikacje** Aby wyświetlić listę wszystkich aplikacji.
+5. kliknij pozycję **Wszystkie aplikacje,** aby wyświetlić listę wszystkich aplikacji.
 
-   * Jeśli nie widzisz aplikacji, chcesz, aby wyświetlić tutaj użyć **filtru** formant w górnej części **listę wszystkich aplikacji** i ustaw **Pokaż** opcję **wszystkie Aplikacje.**
+   * Jeśli nie widzisz aplikacji, która ma być pokazana w tym miejscu, użyj kontrolki **Filtruj** u góry **listy Wszystkie aplikacje** i ustaw opcję **Pokaż** na **Wszystkie aplikacje.**
 
-6. Wybierz aplikację, którą chcesz przypisać do użytkownika z listy.
+6. Wybierz aplikację, do której chcesz przypisać użytkownika z listy.
 
-7. Po załadowaniu aplikacji kliknij pozycję **Użytkownicy i grupy** w menu nawigacji po lewej stronie aplikacji.
+7. Po załadowaniu aplikacji kliknij pozycję **Użytkownicy i grupy** z menu nawigacji po lewej stronie aplikacji.
 
-8. Kliknij przycisk **Dodaj** przycisk w górnej części **użytkowników i grup** liście, aby otworzyć **Dodaj przydziału** okienka.
+8. Kliknij przycisk **Dodaj** u góry listy **Użytkownicy i grupy,** aby otworzyć okienko **Dodaj przypisanie.**
 
-9. Kliknij przycisk **użytkowników i grup** selektor z **Dodaj przydziału** okienka.
+9. kliknij selektor **Użytkownicy i grupy** w okienku **Dodawanie przypisania.**
 
-10. Wpisz **Pełna nazwa** lub **adres e-mail** użytkownika, jesteś zainteresowany przypisywania do **wyszukiwanie według nazwy lub adresu e-mail** pola wyszukiwania.
+10. Wpisz **pełną nazwę** lub **adres e-mail** użytkownika, którego jesteś zainteresowany, aby przypisać do pola wyszukiwania według nazwy lub adresu **e-mail.**
 
-11. Umieść kursor nad **użytkownika** na liście, aby wyświetlić **wyboru**. Kliknij pole wyboru obok logo, aby dodać użytkownika, aby lub zdjęcie w profilu użytkownika **wybrane** listy.
+11. Umieść wskaźnik myszy na **użytkowniku** na liście, aby wyświetlić **pole wyboru**. Kliknij pole wyboru obok zdjęcia profilowego lub logo użytkownika, aby dodać go do **wybranej** listy.
 
-12. **Opcjonalnie:** Jeśli chcesz **dodać więcej niż jednego użytkownika**, wpisz inną **pełną nazwę** lub **adres e-mail** w polu **Wyszukaj według nazwy lub adresu e-mail** , a następnie kliknij pole wyboru, aby dodać tego użytkownika do **wybranej** listy.
+12. **Opcjonalnie:** Jeśli chcesz **dodać więcej niż jednego użytkownika,** wpisz inne imię i **nazwisko** lub **adres e-mail** w polu wyszukiwania według nazwy lub adresu **e-mail,** a następnie kliknij to pole wyboru, aby dodać tego użytkownika do **wybranej** listy.
 
-13. Gdy to zrobisz, Wybieranie użytkowników, kliknij przycisk **wybierz** przycisk, aby dodać je do listy użytkowników i grup do przypisania do aplikacji.
+13. Po zakończeniu wybierania użytkowników kliknij przycisk **Wybierz,** aby dodać ich do listy użytkowników i grup, które mają być przypisane do aplikacji.
 
-14. **Opcjonalnie:** kliknij **wybierz rolę** selektorze **Dodaj przydziału** okienku wybierz rolę, aby przypisać użytkownikom wybrania.
+14. **Opcjonalnie:** kliknij selektor **wybierz rolę** w okienku **Dodaj przypisanie,** aby wybrać rolę przypisaną do wybranych użytkowników.
 
-15. Kliknij przycisk **przypisać** przycisk, aby przypisać aplikację do wybranych użytkowników.
+15. Kliknij przycisk **Przypisz,** aby przypisać aplikację do wybranych użytkowników.
 
-Po krótkim czasie wybrane przez Ciebie użytkownicy będą mogli uruchamiać te aplikacje w panelu dostępu.
+Po krótkim czasie wybrani użytkownicy będą mogli uruchamiać te aplikacje w Panelu dostępu.
 
-## <a name="if-these-troubleshooting-steps-do-not-the-resolve-the-issue"></a>Jeśli te kroki rozwiązywania problemów nie rozwiązują problemu
+## <a name="if-these-troubleshooting-steps-do-not-the-resolve-the-issue"></a>Jeśli te kroki rozwiązywania problemów nie rozwiążą problemu
 
-Otwórz bilet pomocy technicznej z następującymi informacjami, jeśli są dostępne:
+otwórz bilet pomocy technicznej z następującymi informacjami, jeśli są dostępne:
 
 -   Identyfikator błędu korelacji
 
--   Nazwa UPN (adres e-mail użytkownika)
+-   UPN (adres e-mail użytkownika)
 
--   TenantID
+-   Identyfikator dzierżawy
 
 -   Typ przeglądarki
 
--   Strefa czasowa i czas/przedział czasu w trakcie wystąpienia błędu
+-   Strefa czasowa i czas/ramy czasowe podczas wystąpienia błędu
 
--   Ślady programu Fiddler
+-   Ślady skrzypka
 
 ## <a name="next-steps"></a>Następne kroki
-[Udostępnij logowanie jednokrotne do aplikacji serwera Proxy aplikacji](application-proxy-configure-single-sign-on-with-kcd.md)
+[Zapewnianie logowania jednokrotnego do aplikacji za pomocą serwera proxy aplikacji](application-proxy-configure-single-sign-on-with-kcd.md)
 

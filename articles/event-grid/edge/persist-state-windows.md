@@ -1,5 +1,5 @@
 ---
-title: Stan utrwalania w systemie Windows Azure Event Grid IoT Edge | Microsoft Docs
+title: Stan utrwalania w systemie Windows — usługa Azure Event Grid IoT Edge | Dokumenty firmy Microsoft
 description: Stan utrwalania w systemie Windows
 author: VidyaKukke
 manager: rajarv
@@ -10,26 +10,26 @@ ms.topic: article
 ms.service: event-grid
 services: event-grid
 ms.openlocfilehash: c2bae3bd268dba8efdf23ae314671b17a2c89420
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/08/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77086630"
 ---
 # <a name="persist-state-in-windows"></a>Stan utrwalania w systemie Windows
 
-Tematy i subskrypcje utworzone w module Event Grid są domyślnie przechowywane w systemie plików kontenera. Bez trwałości, jeśli moduł zostanie ponownie wdrożony, wszystkie utworzone metadane zostałyby utracone. Aby zachować dane między wdrożeniami i ponownymi uruchomieniami, należy utrzymać dane poza systemem plików kontenera. 
+Tematy i subskrypcje utworzone w module Siatka zdarzeń są domyślnie przechowywane w systemie plików kontenera. Bez trwałości, jeśli moduł zostanie ponownie wydechowany, wszystkie utworzone metadane zostaną utracone. Aby zachować dane między wdrożeniami i ponownymi uruchomień, należy utrwalić dane poza systemem plików kontenera. 
 
-Domyślnie tylko metadane są utrwalane, a Zdarzenia nadal są przechowywane w pamięci w celu zwiększenia wydajności. Postępuj zgodnie z sekcją zdarzenia utrwalania, aby włączyć również trwałość zdarzenia.
+Domyślnie tylko metadane są zachowywane, a zdarzenia są nadal przechowywane w pamięci w celu zwiększenia wydajności. Postępuj zgodnie z sekcją persist zdarzenia, aby włączyć trwałość zdarzeń, jak również.
 
-Ten artykuł zawiera kroki niezbędne do wdrożenia modułu Event Grid z trwałością we wdrożeniach systemu Windows.
+Ten artykuł zawiera kroki potrzebne do wdrożenia modułu usługi Event Grid z trwałością we wdrożeniach systemu Windows.
 
 > [!NOTE]
->Moduł Event Grid jest uruchamiany jako **ContainerUser** użytkownika z niskim poziomem uprawnień w systemie Windows.
+>Moduł Siatki zdarzeń działa jako **kontener** użytkownika o niskich uprawnieniach w systemie Windows.
 
-## <a name="persistence-via-volume-mount"></a>Trwałość za pośrednictwem instalacji woluminu
+## <a name="persistence-via-volume-mount"></a>Trwałość za pomocą uchwytu objętościowego
 
-[Woluminy platformy Docker](https://docs.docker.com/storage/volumes/) są używane do zachowywania danych między wdrożeniami. Aby zainstalować wolumin, należy go utworzyć przy użyciu poleceń platformy Docker, udzielić uprawnień, aby umożliwić odczytywanie i zapisywanie w kontenerze, a następnie wdrożenie modułu.
+[Woluminy platformy Docker](https://docs.docker.com/storage/volumes/) są używane do zachowywania danych we wdrożeniach. Aby zainstalować wolumin, należy utworzyć go przy użyciu poleceń platformy docker, nadać uprawnienia, aby kontener mógł odczytywać, zapisywać do niego, a następnie wdrażać moduł.
 
 1. Utwórz wolumin, uruchamiając następujące polecenie:
 
@@ -42,7 +42,7 @@ Ten artykuł zawiera kroki niezbędne do wdrożenia modułu Event Grid z trwało
    ```sh
    docker -H npipe:////./pipe/iotedge_moby_engine volume create myeventgridvol
    ```
-1. Pobierz katalog hosta, na który jest mapowany wolumin, uruchamiając poniższe polecenie
+1. Pobierz katalog hosta, do który mapuje wolumin, uruchamiając polecenie poniżej
 
     ```sh
     docker -H npipe:////./pipe/iotedge_moby_engine volume inspect <your-volume-name-here>
@@ -54,7 +54,7 @@ Ten artykuł zawiera kroki niezbędne do wdrożenia modułu Event Grid z trwało
    docker -H npipe:////./pipe/iotedge_moby_engine volume inspect myeventgridvol
    ```
 
-   Przykładowe dane wyjściowe:-
+   Przykładowe wyjście:-
 
    ```json
    [
@@ -69,15 +69,15 @@ Ten artykuł zawiera kroki niezbędne do wdrożenia modułu Event Grid z trwało
           }
    ]
    ```
-1. Dodaj grupę **Użytkownicy** do wartości wskazywanej przez **mountpoint** w następujący sposób:
+1. Dodaj grupę **Użytkownicy** do wartości wskazanej przez **punkt mountpoint** w następujący sposób:
     1. Uruchom Eksploratora plików.
-    1. Przejdź do folderu wskazywanego przez **mountpoint**.
+    1. Przejdź do folderu wskazywionego przez **punkt Mountpoint**.
     1. Kliknij prawym przyciskiem myszy, a następnie wybierz polecenie **Właściwości**.
-    1. Wybierz pozycję **zabezpieczenia**.
-    1. W obszarze * nazwy grup lub użytkowników wybierz pozycję **Edytuj**.
-    1. Wybierz pozycję **Dodaj**, wprowadź `Users`, wybierz pozycję **Sprawdź nazwy**, a następnie wybierz **przycisk OK**.
-    1. W obszarze *uprawnienia dla użytkowników*wybierz pozycję **Modyfikuj**, a następnie wybierz pozycję **OK**.
-1. Użyj **powiązań** , aby zainstalować ten wolumin i ponownie wdrożyć moduł Event Grid z Azure Portal
+    1. Wybierz pozycję **Zabezpieczenia**.
+    1. W obszarze *Grupuj lub nazwy użytkowników wybierz pozycję **Edytuj**.
+    1. Wybierz **pozycję** `Users`Dodaj , wprowadź , wybierz **pozycję Sprawdź nazwy**i wybierz **ok**.
+    1. W obszarze *Uprawnienia dla użytkowników*wybierz pozycję **Modyfikuj**i **wybierz**ok .
+1. Użyj **bindów,** aby zainstalować ten wolumin i ponownie wdrożyć moduł siatki zdarzeń z witryny Azure portal
 
    Na przykład:
 
@@ -112,7 +112,7 @@ Ten artykuł zawiera kroki niezbędne do wdrożenia modułu Event Grid z trwało
     ```
 
    >[!IMPORTANT]
-   >Nie zmieniaj drugiej części wartości powiązania. Wskazuje on konkretną lokalizację w module. W przypadku modułu Event Grid w systemie Windows musi to być **C:\\app\\metadataDb**.
+   >Nie należy zmieniać drugiej części wartości wiązania. Wskazuje na określoną lokalizację w module. Dla modułu Event Grid w systemie Windows musi to być **C:\\app\\metadataDb**.
 
 
     Na przykład:
@@ -148,9 +148,9 @@ Ten artykuł zawiera kroki niezbędne do wdrożenia modułu Event Grid z trwało
     }
     ```
 
-## <a name="persistence-via-host-directory-mount"></a>Trwałość przy użyciu instalacji katalogu hosta
+## <a name="persistence-via-host-directory-mount"></a>Trwałość za pośrednictwem instalacji katalogu hosta
 
-Zamiast instalować wolumin, można utworzyć katalog w systemie hosta i zainstalować ten katalog.
+Zamiast montować wolumin, można utworzyć katalog w systemie hosta i zainstalować ten katalog.
 
 1. Utwórz katalog w systemie plików hosta, uruchamiając następujące polecenie.
 
@@ -163,7 +163,7 @@ Zamiast instalować wolumin, można utworzyć katalog w systemie hosta i zainsta
    ```sh
    mkdir C:\myhostdir
    ```
-1. Użyj **powiązań** , aby zainstalować katalog i ponownie wdrożyć moduł Event Grid z Azure Portal.
+1. Użyj **bindów,** aby zainstalować katalog i ponownie wdrożyć moduł siatki zdarzeń z witryny Azure portal.
 
     ```json
     {
@@ -176,7 +176,7 @@ Zamiast instalować wolumin, można utworzyć katalog w systemie hosta i zainsta
     ```
 
     >[!IMPORTANT]
-    >Nie zmieniaj drugiej części wartości powiązania. Wskazuje on konkretną lokalizację w module. W przypadku modułu Event Grid w systemie Windows musi to być **C:\\app\\metadataDb**.
+    >Nie należy zmieniać drugiej części wartości wiązania. Wskazuje na określoną lokalizację w module. Dla modułu Siatki zdarzeń w systemie Windows musi to być **C:\\app\\metadataDb**.
 
     Na przykład:
 
@@ -210,17 +210,17 @@ Zamiast instalować wolumin, można utworzyć katalog w systemie hosta i zainsta
          }
     }
     ```
-## <a name="persist-events"></a>Zdarzenia utrwalania
+## <a name="persist-events"></a>Utrwalanie zdarzeń
 
-Aby włączyć trwałość zdarzeń, należy najpierw włączyć trwałość zdarzeń przez zainstalowanie woluminu lub instalację katalogu hosta za pomocą powyższych sekcji.
+Aby włączyć trwałość zdarzeń, należy najpierw włączyć trwałość zdarzeń za pomocą instalacji woluminu lub hosta katalogu mount przy użyciu powyższych sekcji.
 
-Ważne kwestie dotyczące utrwalania zdarzeń:
+Ważne rzeczy, na które należy zwrócić uwagę na powtarzające się zdarzenia:
 
-* Zdarzenia utrwalania są włączane dla każdej subskrypcji zdarzeń i są zgodą na zamontowanie woluminu lub katalogu.
-* Trwałość zdarzenia jest konfigurowana w subskrypcji zdarzeń podczas tworzenia i nie można jej modyfikować po utworzeniu subskrypcji zdarzeń. Aby przełączać trwałość zdarzeń, należy usunąć i ponownie utworzyć subskrypcję zdarzeń.
-* Utrwalanie zdarzeń jest niemal zawsze wolniejsze niż w przypadku operacji w pamięci, jednak różnica między szybkością zależy od charakterystyki dysku. Kompromis między szybkością i niezawodnością jest nieodłączny dla wszystkich systemów obsługi komunikatów, ale tylko w dużej skali.
+* Utrwalanie zdarzeń jest włączone na podstawie subskrypcji zdarzeń i jest włączona po zamontowaniu woluminu lub katalogu.
+* Trwałość zdarzeń jest skonfigurowana w subskrypcji zdarzeń w czasie tworzenia i nie można go zmodyfikować po utworzeniu subskrypcji zdarzeń. Aby przełączyć trwałość zdarzeń, należy usunąć i ponownie utworzyć subskrypcję zdarzeń.
+* Utrzymujące się zdarzenia jest prawie zawsze wolniejsze niż w operacjach pamięci, jednak różnica prędkości jest w dużym stopniu zależna od charakterystyki dysku. Kompromis między szybkością a niezawodnością jest nieodłącznym elementem wszystkich systemów przesyłania wiadomości, ale staje się zauważalny tylko na dużą skalę.
 
-Aby włączyć trwałość zdarzeń w subskrypcji zdarzeń, ustaw `persistencePolicy` na `true`:
+Aby włączyć trwałość zdarzeń w `persistencePolicy` subskrypcji `true`zdarzeń, ustaw na:
 
  ```json
         {
