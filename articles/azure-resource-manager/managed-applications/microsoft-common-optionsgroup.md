@@ -1,22 +1,22 @@
 ---
-title: Options — element interfejsu użytkownika
-description: Opisuje element interfejsu użytkownika Microsoft. Common. options dla Azure Portal. Umożliwia użytkownikom wybór opcji dostępnych podczas wdrażania aplikacji zarządzanej.
+title: Element interfejsu użytkownika grupy options
+description: Zawiera opis elementu interfejsu użytkownika grupy Microsoft.Common.OptionsGroup dla witryny Azure portal. Umożliwia użytkownikom wybranie spośród dostępnych opcji podczas wdrażania aplikacji zarządzanej.
 author: tfitzmac
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: tomfitz
 ms.openlocfilehash: c1da0b0082bfe046adf9596a10397e9063c888be
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75652348"
 ---
-# <a name="microsoftcommonoptionsgroup-ui-element"></a>Microsoft. Common. options — element interfejsu użytkownika
+# <a name="microsoftcommonoptionsgroup-ui-element"></a>Microsoft.Common.OptionsGroup Element interfejsu użytkownika
 
 Kontrolka wyboru z wierszem dostępnych opcji.
 
-## <a name="ui-sample"></a>Przykładowy interfejs użytkownika
+## <a name="ui-sample"></a>Próbka interfejsu użytkownika
 
 ![Microsoft.Common.OptionsGroup](./media/managed-application-elements/microsoft.common.optionsgroup.png)
 
@@ -54,11 +54,11 @@ Kontrolka wyboru z wierszem dostępnych opcji.
 
 ## <a name="remarks"></a>Uwagi
 
-- Etykieta dla `constraints.allowedValues` jest wyświetlanym tekstem elementu, a jego wartość jest wartością wyjściową elementu, gdy jest zaznaczone.
-- Jeśli jest określony, wartość domyślna musi być etykietą obecną w `constraints.allowedValues`. Jeśli nie zostanie określony, domyślnie zaznaczony jest pierwszy element w `constraints.allowedValues`. Wartość domyślna to **null**.
-- `constraints.allowedValues` musi mieć co najmniej jeden element.
+- Etykieta `constraints.allowedValues` dla jest wyświetlany tekst dla elementu, a jego wartość jest wartością wyjściową elementu, gdy zaznaczona.
+- Jeśli jest określony, wartością domyślną `constraints.allowedValues`musi być etykieta obecna w pliku . Jeśli nie zostanie określony, `constraints.allowedValues` pierwszy element w jest zaznaczony domyślnie. Wartość domyślna to **null**.
+- `constraints.allowedValues`musi mieć co najmniej jedną pozycję.
 
 ## <a name="next-steps"></a>Następne kroki
 
-* Wprowadzenie do tworzenia definicji interfejsu użytkownika można znaleźć w temacie [wprowadzenie do CreateUiDefinition](create-uidefinition-overview.md).
-* Opis wspólnych właściwości elementów interfejsu użytkownika można znaleźć w temacie [CreateUiDefinition elementy](create-uidefinition-elements.md).
+* Aby zapoznać się z wprowadzeniem do tworzenia definicji interfejsu użytkownika, zobacz [Wprowadzenie do createuidefinition](create-uidefinition-overview.md).
+* Aby uzyskać opis wspólnych właściwości w elementach interfejsu użytkownika, zobacz [CreateUiDefinition elementów](create-uidefinition-elements.md).

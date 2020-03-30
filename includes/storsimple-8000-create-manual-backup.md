@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 4fc92931979aa367bdead435c3d6fd758d66a397
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67183306"
 ---
 #### <a name="to-create-a-manual-backup"></a>Ręczne tworzenie kopii zapasowej
@@ -21,7 +21,7 @@ ms.locfileid: "67183306"
 
 3. W bloku **Utwórz kopię zapasową teraz** wykonaj następujące czynności:
 
-    1. Wybierz odpowiedni **typ migawki** z listy rozwijanej: **Lokalne** migawki lub **chmury** migawki. Wybierz migawkę lokalną, jeśli chcesz szybko tworzyć kopie zapasowe lub je przywracać, albo migawkę w chmurze, jeśli zależy Ci na odporności danych.
+    1. Wybierz odpowiedni **typ migawki** z listy rozwijanej: migawka **lokalna** lub migawka **w chmurze**. Wybierz migawkę lokalną, jeśli chcesz szybko tworzyć kopie zapasowe lub je przywracać, albo migawkę w chmurze, jeśli zależy Ci na odporności danych.
 
         ![Ręczne tworzenie kopii zapasowych](./media/storsimple-8000-create-manual-backup/createmanualbu2.png)
 

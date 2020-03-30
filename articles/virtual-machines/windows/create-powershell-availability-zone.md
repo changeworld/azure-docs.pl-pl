@@ -1,5 +1,5 @@
 ---
-title: Tworzenie maszyny wirtualnej z systemem Windows Azure PowerShell
+title: Tworzenie strefyowej maszyny Wirtualnej systemu Windows — Azure PowerShell
 description: Tworzenie maszyny wirtualnej z systemem Windows w strefie dostępności przy użyciu programu Azure PowerShell
 services: virtual-machines-windows
 documentationcenter: virtual-machines
@@ -16,10 +16,10 @@ ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: ''
 ms.openlocfilehash: 5cecc6e43dfeda3838ae52fdd0c028a7739ff227
-ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/26/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75497944"
 ---
 # <a name="create-a-windows-virtual-machine-in-an-availability-zone-with-powershell"></a>Tworzenie maszyny wirtualnej z systemem Windows w strefie dostępności przy użyciu programu PowerShell
@@ -30,7 +30,7 @@ Aby użyć strefy dostępność, utwórz maszynę wirtualną w [obsługiwanym re
 
  
 
-## <a name="sign-in-to-azure"></a>Zaloguj się w usłudze Azure
+## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
 
 Zaloguj się do subskrypcji platformy Azure za pomocą polecenia `Connect-AzAccount` i postępuj zgodnie z instrukcjami wyświetlanymi na ekranie.
 
@@ -177,4 +177,4 @@ Tags               : {}
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym artykule przedstawiono sposób tworzenia maszyny wirtualnej w strefie dostępności. Dowiedz się więcej o [dostępności](availability.md) dla maszyn wirtualnych platformy Azure.
+W tym artykule przedstawiono sposób tworzenia maszyny wirtualnej w strefie dostępności. Dowiedz się więcej o [dostępności](availability.md) maszyn wirtualnych platformy Azure.

@@ -1,7 +1,7 @@
 ---
-title: Zdefiniuj profil techniczny transformacji oświadczeń
+title: Definiowanie profilu technicznego transformacji oświadczeń
 titleSuffix: Azure AD B2C
-description: Zdefiniuj profil techniczny transformacji oświadczeń w zasadach niestandardowych w Azure Active Directory B2C.
+description: Zdefiniuj profil techniczny transformacji oświadczeń w zasadach niestandardowych w usłudze Azure Active Directory B2C.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -12,23 +12,23 @@ ms.date: 02/13/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 84c1cf798e88e4067da8a495c1591143d2ee1bd0
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78189790"
 ---
-# <a name="define-a-claims-transformation-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Zdefiniuj profil techniczny transformacji oświadczeń w zasadach niestandardowych Azure Active Directory B2C
+# <a name="define-a-claims-transformation-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Definiowanie profilu technicznego transformacji oświadczeń w zasadach niestandardowych usługi Azure Active Directory B2C
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Profil techniczny przekształcania oświadczeń umożliwia wywoływanie przekształceń oświadczeń wyjściowych w celu manipulowania wartościami oświadczeń, weryfikowania oświadczeń lub ustawiania wartości domyślnych dla zestawu oświadczeń wyjściowych.
+Profil techniczny transformacji oświadczeń umożliwia wywołanie przekształceń oświadczeń wyjściowych w celu manipulowania wartościami oświadczeń, sprawdzania poprawności oświadczeń lub ustawiania wartości domyślnych dla zestawu oświadczeń danych wyjściowych.
 
-## <a name="protocol"></a>Protokół
+## <a name="protocol"></a>Protocol (Protokół)
 
-Atrybut **name** elementu **Protocol** musi mieć wartość `Proprietary`. Atrybut **programu obsługi** musi zawierać w pełni kwalifikowaną nazwę zestawu programu obsługi protokołu, który jest używany przez Azure AD B2C: `Web.TPEngine.Providers.ClaimsTransformationProtocolProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null`.
+Atrybut **Nazwa** elementu **Protokołu** musi być ustawiony `Proprietary`na . Atrybut **programu obsługi** musi zawierać w pełni kwalifikowaną nazwę zestawu obsługi protokołu `Web.TPEngine.Providers.ClaimsTransformationProtocolProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null`używanego przez usługę Azure AD B2C: .
 
-Poniższy przykład przedstawia profil techniczny przekształcenia oświadczeń:
+W poniższym przykładzie pokazano profil techniczny transformacji oświadczeń:
 
 ```XML
 <TechnicalProfile Id="Facebook-OAUTH-UnLink">
@@ -39,7 +39,7 @@ Poniższy przykład przedstawia profil techniczny przekształcenia oświadczeń:
 
 ## <a name="output-claims"></a>Oświadczenia wyjściowe
 
-Element **OutputClaims** jest obowiązkowy. Należy podać co najmniej jedno zgłoszenie wyjściowe zwrócone przez profil techniczny. Poniższy przykład pokazuje, jak ustawić wartości domyślne w oświadczeniach wyjściowych:
+**OutputClaims** element jest obowiązkowe. Należy podać co najmniej jedno oświadczenie wyjściowe zwrócone przez profil techniczny. W poniższym przykładzie pokazano, jak ustawić wartości domyślne w oświadczeń danych wyjściowych:
 
 ```xml
 <OutputClaims>
@@ -50,7 +50,7 @@ Element **OutputClaims** jest obowiązkowy. Należy podać co najmniej jedno zg�
 
 ## <a name="output-claims-transformations"></a>Przekształcenia oświadczeń wyjściowych
 
-Element **OutputClaimsTransformations** może zawierać kolekcję elementów **OutputClaimsTransformation** , które są używane do modyfikowania oświadczeń lub generowania nowych. Poniższy profil techniczny wywołuje transformację oświadczeń **RemoveAlternativeSecurityIdByIdentityProvider** . Ta transformacja oświadczeń usuwa identyfikację społeczną z kolekcji **AlternativeSecurityIds**. Oświadczenia wyjściowe tego profilu technicznego to **identityProvider2**, który jest ustawiony na `facebook.com`i **AlternativeSecurityIds**, który zawiera listę tożsamości społeczności skojarzonych z tym użytkownikiem po usunięciu tożsamości Facebook.com.
+**OutputClaimsTransformations** element może zawierać kolekcję **OutputClaimsTransformation** elementów, które są używane do modyfikowania oświadczeń lub generowania nowych. Poniższy profil techniczny wywołuje **RemoveAlternativeSecurityIdByIdentityProvider** roszczeń transformacji. Ta transformacja roszczeń usuwa identyfikacji społecznej z kolekcji **AlternativeSecurityIds**. Oświadczenia wyjściowe tego profilu technicznego są **identityProvider2**, który jest ustawiony na `facebook.com`, i **AlternativeSecurityIds**, który zawiera listę tożsamości społecznych skojarzonych z tym użytkownikiem po usunięciu facebook.com tożsamości.
 
 ```XML
 <ClaimsTransformations>
@@ -82,7 +82,7 @@ TransformationClaimType="collection" />
 </TechnicalProfile>
 ```
 
-Profil techniczny przekształcania oświadczeń umożliwia wykonywanie transformacji oświadczeń z dowolnego kroku aranżacji podróży użytkownika. W poniższym przykładzie krok aranżacji wywołuje jeden z niepołączonych profilów technicznych, takich jak **unlink-Facebook-OAuth**. Ten profil techniczny wywołuje **RemoveAlternativeSecurityIdByIdentityProvider**profil techniczny przekształcenia oświadczeń, który generuje nowe oświadczenie **AlternativeSecurityIds2** , które zawiera listę tożsamości społeczności użytkowników, podczas usuwania tożsamości w serwisie Facebook z kolekcji.
+Profil techniczny transformacji oświadczeń umożliwia wykonanie transformacji oświadczeń z kroku aranżacji dowolnej podróży użytkownika. W poniższym przykładzie krok aranżacji wywołuje jeden z odłączonych profilów technicznych, takich jak **UnLink-Facebook-OAUTH**. Ten profil techniczny wywołuje profil techniczny transformacji oświadczeń **RemoveAlternativeSecurityIdByIdentityProvider**, który generuje nowe **oświadczenie AlternativeSecurityIds2,** które zawiera listę tożsamości społecznościowych użytkowników, jednocześnie usuwając tożsamość Facebooka z kolekcji.
 
 ```XML
 <UserJourney Id="AccountUnLink">
@@ -104,11 +104,11 @@ Profil techniczny przekształcania oświadczeń umożliwia wykonywanie transform
 
 | Atrybut | Wymagany | Opis |
 | --------- | -------- | ----------- |
-| IncludeClaimResolvingInClaimsHandling  | Nie | W przypadku oświadczeń wejściowych i wyjściowych określa, czy w profilu technicznym znajduje się [rozpoznawanie oświadczeń](claim-resolver-overview.md) . Możliwe wartości: `true`lub `false` (wartość domyślna). Jeśli chcesz użyć programu rozpoznawania oświadczeń w profilu technicznym, ustaw tę opcję na `true`. |
+| IncludeClaimResolvingInClaimsHandling  | Nie | W przypadku oświadczeń wejściowych i wyjściowych określa, czy [rozpoznawanie oświadczeń](claim-resolver-overview.md) jest uwzględnione w profilu technicznym. Możliwe wartości: `true` `false`  , lub (domyślnie). Jeśli chcesz użyć programu rozpoznawania oświadczeń w profilu technicznym, ustaw to na `true`. |
 
-## <a name="use-a-validation-technical-profile"></a>Użyj profilu technicznego weryfikacji
+## <a name="use-a-validation-technical-profile"></a>Korzystanie z profilu technicznego sprawdzania poprawności
 
-Profil techniczny transformacji oświadczeń może służyć do weryfikowania informacji. W poniższym przykładzie [profil techniczny](self-asserted-technical-profile.md) z monitem o nazwie **LocalAccountSignUpWithLogonEmail** prosi użytkownika o wprowadzenie adresu e-mail dwa razy, a następnie wywołanie [profilu sprawdzania poprawności](validation-technical-profile.md) w celu weryfikacji **wiadomości e-mail.** Profil techniczny **Validate-email** wywołuje **AssertEmailAreEqual** transformacji oświadczeń w celu porównania dwóch oświadczeń **poczty e-mail** i **emailRepeat**, a następnie zgłasza wyjątek, jeśli nie są one równe zgodnie z określonym porównaniem.
+Profil techniczny transformacji oświadczeń może służyć do sprawdzania poprawności informacji. W poniższym przykładzie [samodzielnie potwierdzony profil techniczny](self-asserted-technical-profile.md) o nazwie **LocalAccountSignUpWithLogonEmail** prosi użytkownika o dwukrotne wprowadzenie wiadomości e-mail, a następnie wywołuje [profil techniczny sprawdzania poprawności](validation-technical-profile.md) o nazwie **Validate-Email,** aby sprawdzić poprawność wiadomości e-mail. Profil techniczny **validate-email** wywołuje transformację oświadczeń **AssertEmailAreEqual,** aby porównać dwie **wiadomości e-mail** i **emailRepeat**oświadczeń i zgłosić wyjątek, jeśli nie są równe zgodnie z określonym porównaniem.
 
 ```XML
 <ClaimsTransformations>
@@ -124,7 +124,7 @@ Profil techniczny transformacji oświadczeń może służyć do weryfikowania in
 </ClaimsTransformations>
 ```
 
-Profil techniczny przekształcania oświadczeń wywołuje transformację oświadczeń **AssertEmailAreEqual** , która potwierdza, że wiadomości e-mail podane przez użytkownika są takie same.
+Profil techniczny transformacji oświadczeń wywołuje **AssertEmailAreEqual** transformacja oświadczeń, który twierdzi, że wiadomości e-mail dostarczone przez użytkownika są takie same.
 
 ```XML
 <TechnicalProfile Id="Validate-Email">
@@ -143,7 +143,7 @@ Profil techniczny przekształcania oświadczeń wywołuje transformację oświad
 </TechnicalProfile>
 ```
 
-Własny profil techniczny może wywołać profil techniczny weryfikacji i wyświetlić komunikat o błędzie określony w metadanych **UserMessageIfClaimsTransformationStringsAreNotEqual** .
+Samodzielnie potwierdzony profil techniczny może wywołać profil techniczny sprawdzania poprawności i wyświetlić komunikat o błędzie określony w **metadanych UserMessageIfClaimsTransformationStringsAreNotEqual.**
 
 ```XML
 <TechnicalProfile Id="LocalAccountSignUpWithLogonEmail">

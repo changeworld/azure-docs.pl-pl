@@ -5,38 +5,38 @@ ms.topic: include
 ms.date: 04/28/2019
 ms.author: ramamill
 ms.openlocfilehash: 00b0c1b1a40ad16db177916c57dba6e9d5a187a7
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67183759"
 ---
-Wykonaj kroki dla Twojego określonych okolicznościach.
+Postępuj zgodnie z instrukcjami dotyczącymi konkretnych okoliczności.
 
-### <a name="unregister-a-connected-process-server"></a>Wyrejestrowywanie serwera przetwarzania połączone
+### <a name="unregister-a-connected-process-server"></a>Wyrejestrowywać podłączony serwer procesów
 
-1. Nawiąż połączenie zdalne do serwera przetwarzania jako Administrator.
-2. W **Panelu sterowania**, otwórz **programy > Odinstaluj program**.
-3. Odinstaluj program **Microsoft Azure lokacji odzyskiwania mobilności usługi/główny serwer docelowy**.
-4. Odinstaluj program **serwera konfiguracji/przetwarzania usługi Microsoft Azure Site Recovery**.
-5. Po odinstalowaniu są programy w kroku 3 i 4, należy odinstalować **zależności serwera konfiguracji/przetwarzania odzyskiwania witryny Microsoft Azure**.
+1. Nawiązuj zdalne połączenie z serwerem przetwarzania jako administrator.
+2. W **Panelu sterowania**otwórz program **> Odinstaluj program**.
+3. Odinstaluj program **Usługi mobilności odzyskiwania witryny platformy Microsoft Azure/głównego serwera docelowego**.
+4. Odinstaluj program **Microsoft Azure Site Recovery Configuration/Process Server**.
+5. Po odinstalowaniu programów w krokach 3 i 4 odinstaluj **konfigurację/zależności serwera przetwarzania usługi Microsoft Azure Site Recovery**.
 
-### <a name="unregister-a-disconnected-process-server"></a>Wyrejestrowywanie serwera przetwarzania odłączony
+### <a name="unregister-a-disconnected-process-server"></a>Wyrejestrowywał odłączony serwer procesów
 
-Te kroki należy używać tylko, jeśli nie sposobu reaktywowania maszyny, na którym jest zainstalowany na serwerze przetwarzania.
+Tych kroków należy wykonać tylko wtedy, gdy nie ma możliwości ożywienia komputera, na którym jest zainstalowany serwer przetwarzania.
 
-1. Zaloguj się na serwerze konfiguracji jako Administrator.
-2. Otwórz administracyjny wiersz polecenia i przejdź do `%ProgramData%\ASR\home\svsystems\bin`.
-3. Uruchom następujące polecenie w celu uzyskania listy jeden lub więcej serwerów przetwarzania.
+1. Zaloguj się na serwerze konfiguracji jako administrator.
+2. Otwórz wiersz polecenia Administracyjne i `%ProgramData%\ASR\home\svsystems\bin`przejdź do .
+3. Uruchom to polecenie, aby uzyskać listę co najmniej jednego serwera przetwarzania.
 
     ```
     perl Unregister-ASRComponent.pl -IPAddress <IP_of_Process_Server> -Component PS
     ```
     - Mag. Nie: numer seryjny serwera przetwarzania.
-    - IP/nazwa: Adres IP i nazwę maszyny z uruchomionym serwerem przetwarzania.
-    - Pulsu: Ostatni Puls z komputera serwera przetwarzania.
-    ![Unregister-cmd](media/site-recovery-vmware-unregister-process-server/Unregister-cmd.PNG)
+    - Adres IP/Nazwa: Adres IP i nazwa komputera z serwerem przetwarzania.
+    - Puls: Ostatnie bicie serca z komputera serwera przetwarzania.
+    ![Wyrejestrować cmd](media/site-recovery-vmware-unregister-process-server/Unregister-cmd.PNG)
 
-4. Określ numer seryjny serwera przetwarzania, które chcesz wyrejestrować.
-5. Wyrejestrowywanie serwera przetwarzania usunąć wszystkie szczegółowe informacje z systemu i wyświetla komunikat: **Pomyślnie wyrejestrowano nazwa serwera > (-adres IP serwera-)**
+4. Określ numer seryjny serwera przetwarzania, który ma zostać wyrejestrowany.
+5. Wyrejestrowanie serwera przetwarzania powoduje usunięcie wszystkich jego szczegółów z systemu i wyświetlenie komunikatu: **Pomyślnie wyrejestrowana nazwa serwera> (adres IP serwera)**
 

@@ -1,13 +1,13 @@
 ---
-title: Tworzenie pierwszej aplikacji Service Fabric platformy Azure w systemie Linux przy użyciuC#
-description: Dowiedz się, jak utworzyć i wdrożyć aplikację Service Fabric C# przy użyciu programu i platformy .net Core 2,0.
+title: 'Tworzenie pierwszej aplikacji sieci szkieletowej usługi Azure w systemie Linux przy użyciu języka C #'
+description: Dowiedz się, jak utworzyć i wdrożyć aplikację sieci szkieletowej usług przy użyciu języka C# i .NET Core 2.0.
 ms.topic: conceptual
 ms.date: 04/11/2018
 ms.openlocfilehash: 202dde933b41a98c1c119f422d47cbdbb0be84ae
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75458138"
 ---
 # <a name="create-your-first-azure-service-fabric-application"></a>Tworzenie pierwszej aplikacji usługi Azure Service Fabric
@@ -22,7 +22,7 @@ Usługa Service Fabric udostępnia zestawy SDK do kompilowania usług w systemie
 ## <a name="prerequisites"></a>Wymagania wstępne
 Przed rozpoczęciem upewnij się, że masz [skonfigurowane środowisko programowania systemu Linux](service-fabric-get-started-linux.md). Jeśli używasz systemu Mac OS X, możesz [skonfigurować jednopunktowe środowisko systemu Linux na maszynie wirtualnej za pomocą narzędzia Vagrant](service-fabric-get-started-mac.md).
 
-Trzeba również zainstalować [interfejs wiersza polecenia usługi Service Fabric](service-fabric-cli.md)
+Należy również zainstalować [interfejsu wiersza polecenia sieci szkieletowej usług](service-fabric-cli.md)
 
 ### <a name="install-and-set-up-the-generators-for-c"></a>Instalowanie i konfigurowanie generatorów dla języka C#
 Usługa Service Fabric udostępnia narzędzia do tworzenia szkieletów, które ułatwiają tworzenie aplikacji usługi Service Fabric z poziomu terminalu przy użyciu generatora szablonów narzędzia Yeoman. Wykonaj poniższe kroki, aby skonfigurować generatory szablonów narzędzia Yeoman w usłudze Service Fabric dla języka C#:
@@ -33,7 +33,7 @@ Usługa Service Fabric udostępnia narzędzia do tworzenia szkieletów, które u
    curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.0/install.sh | bash 
    nvm install node 
    ```
-2. Zainstaluj generator szablonów [narzędzia Yeoman](https://yeoman.io/) na swoim komputerze z poziomu narzędzia NPM
+2. Zainstaluj generator [szablonów Yeoman](https://yeoman.io/) na swoim komputerze z NPM
 
    ```bash
    npm install -g yo
@@ -89,7 +89,7 @@ Parametry tych poleceń można znaleźć w manifestach wygenerowanych w pakiecie
 Po wdrożeniu aplikacji otwórz przeglądarkę i przejdź do narzędzia [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) pod adresem [http://localhost:19080/Explorer](http://localhost:19080/Explorer). Następnie rozwiń węzeł **Aplikacje** i zwróć uwagę, że istnieje teraz wpis dla danego typu aplikacji i inny wpis dla pierwszego wystąpienia tego typu.
 
 > [!IMPORTANT]
-> Aby wdrożyć aplikację do bezpiecznego klastra z systemem Linux na platformie Azure, musisz skonfigurować certyfikat w celu weryfikacji aplikacji przy użyciu środowiska uruchomieniowego Service Fabric. Dzięki temu usługi Reliable Services mogą komunikować się z podstawowymi interfejsami API środowiska uruchomieniowego Service Fabric. Aby dowiedzieć się więcej, zobacz [Konfigurowanie aplikacji Reliable Services do uruchamiania w klastrach systemu Linux](./service-fabric-configure-certificates-linux.md#configure-a-reliable-services-app-to-run-on-linux-clusters).  
+> Aby wdrożyć aplikację do bezpiecznego klastra systemu Linux na platformie Azure, należy skonfigurować certyfikat, aby sprawdzić poprawność aplikacji w czasie wykonywania sieci szkieletowej usług. Umożliwia to usługi niezawodne usługi do komunikowania się z podstawowych interfejsów API środowiska wykonawczego sieci szkieletowej usług. Aby dowiedzieć się więcej, zobacz [Konfigurowanie aplikacji Niezawodne usługi do uruchamiania w klastrach systemu Linux](./service-fabric-configure-certificates-linux.md#configure-a-reliable-services-app-to-run-on-linux-clusters).  
 >
 
 ## <a name="start-the-test-client-and-perform-a-failover"></a>Uruchamianie klienta testowego i przechodzenie w tryb failover

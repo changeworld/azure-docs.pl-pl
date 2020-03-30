@@ -1,22 +1,22 @@
 ---
-title: TagsByResource — element interfejsu użytkownika
-description: Opisuje element interfejsu użytkownika Microsoft. Common. TagsByResource dla Azure Portal. Użyj, aby zastosować znaczniki do zasobu podczas wdrażania.
+title: TagsByResource Element interfejsu użytkownika
+description: W tym artykule opisano element interfejsu użytkownika microsoft.common.tagsByResource dla witryny Azure portal. Służy do stosowania tagów do zasobu podczas wdrażania.
 author: tfitzmac
 ms.topic: conceptual
 ms.date: 11/11/2019
 ms.author: tomfitz
 ms.openlocfilehash: 23a7c54a84ec083b8fa470f26582913fcc3d2ee6
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75652205"
 ---
-# <a name="microsoftcommontagsbyresource-ui-element"></a>Microsoft. Common. TagsByResource — element interfejsu użytkownika
+# <a name="microsoftcommontagsbyresource-ui-element"></a>Microsoft.Common.TagsByResource Element interfejsu użytkownika
 
-Kontrolka służąca do kojarzenia [tagów](../management/tag-resources.md) z zasobami w ramach wdrożenia.
+Formant do kojarzenia tagów z [zasobami](../management/tag-resources.md) we wdrożeniu.
 
-## <a name="ui-sample"></a>Przykładowy interfejs użytkownika
+## <a name="ui-sample"></a>Próbka interfejsu użytkownika
 
 ![Microsoft.Common.DropDown](./media/managed-application-elements/microsoft.common.tagsbyresource.png)
 
@@ -49,9 +49,9 @@ Kontrolka służąca do kojarzenia [tagów](../management/tag-resources.md) z za
 
 ## <a name="remarks"></a>Uwagi
 
-- Należy określić co najmniej jeden element w tablicy `resources`.
-- Każdy element w `resources` musi być w pełni kwalifikowanym typem zasobu. Te elementy pojawiają się na liście rozwijanej **zasobów** i są taggable przez użytkownika.
-- Dane wyjściowe kontrolki są formatowane w celu łatwego przypisywania wartości tagów w szablonie Azure Resource Manager. Aby uzyskać dane wyjściowe kontrolki w szablonie, należy dołączyć parametr w szablonie, jak pokazano w następującym przykładzie:
+- Należy określić co `resources` najmniej jeden element w tablicy.
+- Każdy element `resources` w musi być w pełni kwalifikowany typ zasobu. Te elementy są wyświetlane w **zasobu** listy rozwijanej i są tagowalne przez użytkownika.
+- Dane wyjściowe formantu są sformatowane w celu łatwego przypisywania wartości tagów w szablonie usługi Azure Resource Manager. Aby otrzymać dane wyjściowe formantu w szablonie, należy dołączyć parametr do szablonu, jak pokazano w poniższym przykładzie:
 
   ```json
   "parameters": {
@@ -59,7 +59,7 @@ Kontrolka służąca do kojarzenia [tagów](../management/tag-resources.md) z za
   }
   ```
 
-  Dla każdego zasobu, który może być otagowany, przypisz Właściwość Tags do wartości parametru tego typu zasobu:
+  Dla każdego zasobu, który może być oznakowany, przypisz właściwość tagów do wartości parametru dla tego typu zasobu:
 
   ```json
   {
@@ -69,9 +69,9 @@ Kontrolka służąca do kojarzenia [tagów](../management/tag-resources.md) z za
     ...
   ```
 
-- Użyj funkcji [if](../templates/template-functions-logical.md#if) podczas uzyskiwania dostępu do parametru tagsByResource. Umożliwia przypisanie pustego obiektu, gdy nie są przypisane żadne Tagi do danego typu zasobu.
+- Użyj [if](../templates/template-functions-logical.md#if) funkcji podczas uzyskiwania dostępu do parametru tagsByResource. Umożliwia przypisanie pustego obiektu, gdy do danego typu zasobu nie są przypisane żadne znaczniki.
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Wprowadzenie do tworzenia definicji interfejsu użytkownika można znaleźć w temacie [wprowadzenie do CreateUiDefinition](create-uidefinition-overview.md).
-- Opis wspólnych właściwości elementów interfejsu użytkownika można znaleźć w temacie [CreateUiDefinition elementy](create-uidefinition-elements.md).
+- Aby zapoznać się z wprowadzeniem do tworzenia definicji interfejsu użytkownika, zobacz [Wprowadzenie do createuidefinition](create-uidefinition-overview.md).
+- Aby uzyskać opis wspólnych właściwości w elementach interfejsu użytkownika, zobacz [CreateUiDefinition elementów](create-uidefinition-elements.md).

@@ -7,34 +7,34 @@ ms.service: data-share
 ms.topic: conceptual
 ms.date: 12/18/2019
 ms.openlocfilehash: a736e3ddfcf785f9ce27140eed58374a0732c1f1
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75483182"
 ---
 # <a name="disaster-recovery-for-azure-data-share"></a>Odzyskiwanie po awarii dla udziału danych platformy Azure
 
-W tym artykule omówiono sposób konfigurowania środowiska odzyskiwania po awarii dla udziału danych platformy Azure. Awaria centrum danych platformy Azure jest rzadka, ale może być w dowolnym miejscu od kilku minut do godzin. Awaria centrum danych może spowodować zakłócenia w środowiskach, które są zależne od danych udostępnianych przez dostawcę danych. Postępując zgodnie z krokami opisanymi w tym artykule, dostawcy danych mogą nadal udostępniać dane swoim odbiorcom danych w przypadku awarii centrum danych w regionie podstawowym hostującym udział danych. 
+W tym artykule omówimy sposób konfigurowania środowiska odzyskiwania po awarii dla usługi Azure Data Share. Awarie centrum danych platformy Azure są rzadkie, ale mogą trwać od kilku minut do godzin. Awarie centrum danych mogą powodować zakłócenia w środowiskach, które są zależne od danych udostępnianych przez dostawcę danych. Wykonując kroki opisane w tym artykule, dostawcy danych mogą nadal udostępniać dane swoim odbiorcom danych w przypadku awarii centrum danych dla regionu podstawowego, który hostuje udział danych. 
 
-## <a name="achieving-business-continuity-for-azure-data-share"></a>Osiąganie ciągłości biznesowej dla udziału danych platformy Azure
+## <a name="achieving-business-continuity-for-azure-data-share"></a>Osiągnięcie ciągłości biznesowej udostępniania danych platformy Azure
 
-Aby przygotować się do awarii centrum danych, dostawca danych może mieć udostępnione środowisko udostępniania danych w regionie pomocniczym. Istnieją miary, które można podjąć, aby zapewnić bezproblemową pracę w trybie failover w przypadku wystąpienia awarii centrum danych. 
+Aby przygotować się na awarię centrum danych, dostawca danych może mieć środowisko udostępniania danych aprowizowanego w regionie pomocniczym. Istnieją środki, które można podjąć, które zapewnią sprawne pracy awaryjnej w przypadku wystąpienia awarii centrum danych. 
 
-Dostawcy danych mogą inicjować obsługę administracyjną zasobów udziałów danych platformy Azure w dodatkowym regionie. Te zasoby udostępniające dane można skonfigurować tak, aby obejmowały zestawy danych, które istnieją w podstawowym środowisku udostępniania. Odbiorcy danych mogą być dodawani do udziału danych podczas konfigurowania środowiska odzyskiwania po awarii lub dodanych w późniejszym czasie (tj. w ramach ręcznego kroku trybu failover).
+Dostawcy danych mogą aprowizować pomocnicze zasoby udostępniania danych platformy Azure w dodatkowym regionie. Te zasoby udziału danych można skonfigurować tak, aby zawierały zestawy danych, które istnieją w środowisku udostępniania danych podstawowych. Dane, które konsumenci mogą być dodawane do udziału danych podczas konfigurowania środowiska odzyskiwania po awarii lub dodawane w późniejszym czasie (tj. w ramach ręcznych kroków pracy awaryjnej).
 
-Jeśli odbiorcy danych mają aktywną subskrypcję udziałów w środowisku pomocniczym zainicjowanym w celu odzyskiwania po awarii, mogą włączyć harmonogram migawek w ramach trybu failover. Jeśli odbiorcy danych nie chcą subskrybować regionu pomocniczego na potrzeby odzyskiwania po awarii, mogą zostać zaproszeni do pomocniczego udziału danych w późniejszym czasie. 
+Jeśli konsumenci danych mają subskrypcję aktywnego udziału w środowisku pomocniczym aprowidywalnym dla celów odzyskiwania po awarii, mogą włączyć harmonogram migawki w ramach pracy awaryjnej. Jeśli konsumenci danych nie chcą subskrybować regionu pomocniczego do celów odzyskiwania po awarii, mogą zostać zaproszeni do udziału danych pomocniczych w późniejszym czasie. 
 
-Konsumenci danych mogą mieć aktywną subskrypcję udziałów, która jest bezczynna dla celów odzyskiwania po awarii, lub dostawców danych może dodawać je w późniejszym momencie w czasie w ramach ręcznych procedur trybu failover. 
+Konsumenci danych mogą mieć subskrypcję aktywnego udziału, która jest bezczynna do celów odzyskiwania po awarii, lub dostawcy danych mogą dodać je w późniejszym momencie w ramach procedur ręcznego pracy awaryjnej. 
 
 ## <a name="related-information"></a>Informacje pokrewne
 
 - [Ciągłość działania i odzyskiwanie po awarii](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)
-- [Tworzenie wysokiej dostępności w strategii BCDR](https://docs.microsoft.com/azure/architecture/solution-ideas/articles/build-high-availability-into-your-bcdr-strategy)
+- [Wbudowywanie wysokiej dostępności w strategię zapewniania ciągłości biznesowej i odzyskiwania po awarii](https://docs.microsoft.com/azure/architecture/solution-ideas/articles/build-high-availability-into-your-bcdr-strategy)
 
 ## <a name="next-steps"></a>Następne kroki
 
-Aby dowiedzieć się, jak zacząć udostępniać dane, przejdź do samouczka [udostępnianie danych](share-your-data.md) .
+Aby dowiedzieć się, jak rozpocząć udostępnianie danych, przejdź do [samouczka udostępniania danych.](share-your-data.md)
 
 
 

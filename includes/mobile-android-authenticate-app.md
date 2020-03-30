@@ -5,15 +5,15 @@ ms.topic: include
 ms.date: 11/25/2018
 ms.author: crdun
 ms.openlocfilehash: eded2d6a9f2c270a2b3ccca296277b0a016733fd
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67183918"
 ---
-1. Otwórz projekt w programie Android Studio.
+1. Otwórz projekt w Android Studio.
 
-2. W **Eksplorator projektów** w programie Android Studio, otwórz `ToDoActivity.java` pliku i dodaj następujące instrukcje importu:
+2. W **Eksploratorze projektu** `ToDoActivity.java` w programie Android Studio otwórz plik i dodaj następujące instrukcje importu:
 
     ```java
     import java.util.concurrent.ExecutionException;
@@ -27,7 +27,7 @@ ms.locfileid: "67183918"
     import com.microsoft.windowsazure.mobileservices.authentication.MobileServiceUser;
     ```
 
-3. Dodaj następującą metodę do **ToDoActivity** klasy:
+3. Dodaj następującą metodę do klasy **ToDoActivity:**
 
     ```java
     // You can choose any unique number here to differentiate auth providers from each other. Note this is the same code at login() and onActivityResult().
@@ -59,20 +59,20 @@ ms.locfileid: "67183918"
     }
     ```
 
-    Ten kod tworzy metodę, aby obsługiwać ten proces uwierzytelniania Google. Okno dialogowe wyświetla identyfikator uwierzytelnionego użytkownika. Możesz tylko przejść na pomyślne uwierzytelnienie.
+    Ten kod tworzy metodę obsługi procesu uwierzytelniania Google. W oknie dialogowym zostanie wyświetlony identyfikator uwierzytelnionego użytkownika. Można kontynuować tylko po pomyślnym uwierzytelnieniu.
 
     > [!NOTE]
-    > Jeśli używasz dostawcy tożsamości innych niż firmy Google, zmień wartość przekazana do **logowania** metody do jednego z następujących wartości: _MicrosoftAccount_, _Facebook_, _Twitter_, lub _windowsazureactivedirectory_.
+    > Jeśli używasz dostawcy tożsamości innego niż Google, zmień wartość przekazyną do metody **logowania** na jedną z następujących wartości: _MicrosoftAccount_, _Facebook,_ _Twitter_lub _windowsazureactivedirectory_.
 
-4. W **onCreate** metody, Dodaj następujący wiersz kodu po kodzie, która tworzy wystąpienie `MobileServiceClient` obiektu.
+4. W **onCreate** metody, dodać następujący wiersz kodu po kod, `MobileServiceClient` który wystąpienia obiektu.
 
     ```java
     authenticate();
     ```
 
-    To wywołanie rozpoczyna się proces uwierzytelniania.
+    To wywołanie rozpoczyna proces uwierzytelniania.
 
-5. Przenieś pozostały kod po `authenticate();` w **onCreate** nową metodę **createTable** metody:
+5. Przenieś pozostały kod `authenticate();` po w **onCreate** metody do nowej metody **createTable:**
 
     ```java
     private void createTable() {
@@ -92,7 +92,7 @@ ms.locfileid: "67183918"
     }
     ```
 
-6. Aby zapewnić przekierowania działa zgodnie z oczekiwaniami, Dodaj następujący fragment `RedirectUrlActivity` do `AndroidManifest.xml`:
+6. Aby upewnić się, że przekierowanie działa zgodnie `RedirectUrlActivity` `AndroidManifest.xml`z oczekiwaniami, dodaj następujący fragment kodu:
 
     ```xml
     <activity android:name="com.microsoft.windowsazure.mobileservices.authentication.RedirectUrlActivity">
@@ -106,7 +106,7 @@ ms.locfileid: "67183918"
     </activity>
     ```
 
-7. Dodaj `redirectUriScheme` do `build.gradle` aplikacji dla systemu Android.
+7. Dodaj `redirectUriScheme` `build.gradle` do swojej aplikacji na Androida.
 
     ```gradle
     android {
@@ -123,7 +123,7 @@ ms.locfileid: "67183918"
     }
     ```
 
-8. Dodaj `com.android.support:customtabs:23.0.1` zależności w swojej `build.gradle`:
+8. Dodaj `com.android.support:customtabs:23.0.1` do zależności w `build.gradle`:
 
     ```gradle
     dependencies {
@@ -132,9 +132,9 @@ ms.locfileid: "67183918"
     }
     ```
 
-9. Z **Uruchom** menu, kliknij przycisk **uruchamianie aplikacji** można uruchomić aplikację i zaloguj się przy użyciu dostawcy tożsamości wybrany.
+9. W menu **Uruchom** kliknij pozycję **Uruchom aplikację,** aby uruchomić aplikację i zalogować się u wybranego dostawcy tożsamości.
 
 > [!WARNING]
-> Schemat adresu URL, do wymienionej jest uwzględniana wielkość liter. Upewnij się, że wszystkie wystąpienia `{url_scheme_of_you_app}` wielkością liter.
+> W wymienionym schemacie adresu URL jest rozróżniana wielkość liter. Upewnij się, że `{url_scheme_of_you_app}` wszystkie wystąpienia używać tego samego przypadku.
 
-Po pomyślnym zalogowaniu się, aplikacja powinna działać bez błędów i powinno być możliwe do tworzenia zapytań usługi zaplecza i dokonać aktualizacji danych.
+Po pomyślnym zalogowaniu aplikacja powinna działać bez błędów i powinna być w stanie wykonać kwerendę w usłudze zaplecza i dokonać aktualizacji danych.

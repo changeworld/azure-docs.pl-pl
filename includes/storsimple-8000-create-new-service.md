@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 980cbe17e982edb3aa72c3b58908f13a3d63a639
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "76020885"
 ---
 #### <a name="to-create-a-new-service"></a>Aby utworzyć nową usługę
@@ -19,7 +19,7 @@ ms.locfileid: "76020885"
 
     ![Tworzenie usługi Menedżer urządzeń StorSimple](./media/storsimple-8000-create-new-service/createssdevman1.png)
 
-    Wyszukaj pozycję _Urządzenie fizyczne StorSimple_. Wybierz i kliknij pozycję **Seria urządzeń fizycznych StorSimple**, a następnie kliknij pozycję **Utwórz**. Możesz również w witrynie Azure Portal kliknąć znak **+** , a następnie w obszarze **Magazyn** kliknąć pozycję **Seria urządzeń fizycznych StorSimple**.
+    Wyszukaj pozycję _Urządzenie fizyczne StorSimple_. Wybierz i kliknij pozycję **Seria urządzeń fizycznych StorSimple**, a następnie kliknij pozycję **Utwórz**. Alternatywnie w witrynie **+** Azure portal kliknij, a następnie w obszarze **Magazyn**kliknij pozycję **StorProstejalne urządzenia fizyczne .**
 
     ![Tworzenie usługi Menedżer urządzeń StorSimple](./media/storsimple-8000-create-new-service/createssdevman11.png)
 

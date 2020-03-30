@@ -1,90 +1,90 @@
 ---
-title: Uwierzytelnianie przy użyciu tożsamości zarządzanych przez platformę Azure
+title: Uwierzytelnij się przy użyciu tożsamości zarządzanych platformy Azure
 titleSuffix: Azure App Configuration
-description: Uwierzytelnianie w usłudze Azure App Configuration przy użyciu tożsamości zarządzanych przez platformę Azure
-ms.service: azure-app-configuration
+description: Uwierzytelnij się w konfiguracji aplikacji platformy Azure przy użyciu tożsamości zarządzanych platformy Azure
 author: lisaguthrie
+ms.author: lcozzens
+ms.service: azure-app-configuration
 ms.topic: conceptual
 ms.date: 2/25/2020
-ms.author: lcozzens
-ms.openlocfilehash: ff69262a89d8112419ffe62cd391d003cb21adc1
-ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
+ms.openlocfilehash: bf97a1eae758778efc8d800666af4a5fcb574429
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "78967573"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80056835"
 ---
 # <a name="integrate-with-azure-managed-identities"></a>Integracja z usługą tożsamości zarządzanych platformy Azure
 
-Azure Active Directory [tożsamości zarządzane](../active-directory/managed-identities-azure-resources/overview.md) upraszczają zarządzanie kluczami tajnymi aplikacji w chmurze. Przy użyciu tożsamości zarządzanej kod może używać jednostki usługi utworzonej dla usługi platformy Azure, w której jest uruchomiona. Użytkownik korzysta z tożsamości zarządzanej zamiast oddzielnego poświadczenia przechowywanego w Azure Key Vault lub lokalnych parametrów połączenia. 
+Tożsamości zarządzane w usłudze Azure Active Directory upraszczają zarządzanie [wpisami tajnymi](../active-directory/managed-identities-azure-resources/overview.md) dla aplikacji w chmurze. Dzięki tożsamości zarządzanej kod może używać jednostki usługi utworzonej dla usługi platformy Azure, na której działa. Tożsamość zarządzana jest używana zamiast oddzielnych poświadczeń przechowywanych w usłudze Azure Key Vault lub w lokalnym ciągu połączenia. 
 
-Konfiguracja aplikacji platformy Azure oraz jej biblioteki klienckie .NET Core, .NET Framework i Java sprężyny mają wbudowaną obsługę tożsamości. Chociaż nie jest to konieczne, zarządzana tożsamość eliminuje konieczność korzystania z tokenu dostępu zawierającego wpisy tajne. Twój kod może uzyskać dostęp do magazynu konfiguracji aplikacji przy użyciu tylko punktu końcowego usługi. Możesz osadzić ten adres URL w kodzie bezpośrednio bez ujawniania żadnych wpisów tajnych.
+Usługa Azure App Configuration i jej biblioteki klienckie .NET Core, .NET Framework i Java Spring zarządzały wbudowaną obsługą tożsamości. Chociaż nie są wymagane do korzystania z niego, tożsamość zarządzana eliminuje potrzebę tokenu dostępu, który zawiera wpisy tajne. Kod można uzyskać dostęp do magazynu konfiguracji aplikacji przy użyciu tylko punktu końcowego usługi. Ten adres URL można osadzić bezpośrednio w kodzie bez ujawniania kodu tajnego.
 
-W tym artykule pokazano, jak można wykorzystać zarządzaną tożsamość w celu uzyskania dostępu do konfiguracji aplikacji. Opiera się on na aplikacji internetowej wprowadzonej w przewodnikach Szybki start. Przed kontynuowaniem [Utwórz najpierw aplikację ASP.NET Coreową z konfiguracją aplikacji](./quickstart-aspnet-core-app.md) .
+W tym artykule pokazano, jak można korzystać z tożsamości zarządzanej, aby uzyskać dostęp do konfiguracji aplikacji. Opiera się on na aplikacji internetowej wprowadzonej w przewodnikach Szybki start. Przed kontynuowaniem [utwórz aplikację ASP.NET Core przy czym najpierw możesz skonfigurować aplikację.](./quickstart-aspnet-core-app.md)
 
-W tym artykule pokazano również, jak można używać tożsamości zarządzanej w połączeniu z odwołaniami Key Vault konfiguracji aplikacji. Przy użyciu pojedynczej tożsamości zarządzanej można bezproblemowo uzyskać dostęp do tych samych wartości Key Vault i konfiguracji z konfiguracji aplikacji. Aby poznać tę możliwość, należy najpierw zakończyć [Korzystanie z Key Vault odwołań z ASP.NET Core](./use-key-vault-references-dotnet-core.md) .
+W tym artykule pokazano również, jak można używać tożsamości zarządzanej w połączeniu z odwołaniami do magazynu kluczy konfiguracji aplikacji. Dzięki jednej tożsamości zarządzanej można bezproblemowo uzyskiwać dostęp zarówno do wpisów tajnych z usługi Key Vault, jak i wartości konfiguracji z konfiguracji aplikacji. Jeśli chcesz zapoznać się z tą funkcją, zakończ [Korzystanie z odwołań do magazynu kluczy z ASP.NET Core.](./use-key-vault-references-dotnet-core.md)
 
-Aby wykonać kroki opisane w tym samouczku, można użyć dowolnego edytora kodu. [Visual Studio Code](https://code.visualstudio.com/) jest doskonałym rozwiązaniem dostępnym na platformach Windows, MacOS i Linux.
+Aby wykonać czynności opisane w tym samouczku, można użyć dowolnego edytora kodu. [Visual Studio Code](https://code.visualstudio.com/) to doskonała opcja dostępna na platformach Windows, macOS i Linux.
 
 W tym artykule omówiono sposób wykonywania następujących zadań:
 
 > [!div class="checklist"]
-> * Przyznaj zarządzanej tożsamości dostęp do konfiguracji aplikacji.
-> * Skonfiguruj aplikację do korzystania z tożsamości zarządzanej podczas łączenia się z konfiguracją aplikacji.
-> * Opcjonalnie można skonfigurować aplikację do korzystania z tożsamości zarządzanej podczas łączenia się z Key Vault za pomocą Key Vault informacji o konfiguracji aplikacji.
+> * Udziel dostępu do tożsamości zarządzanej konfiguracji aplikacji.
+> * Skonfiguruj aplikację tak, aby używała tożsamości zarządzanej podczas łączenia się z konfiguracją aplikacji.
+> * Opcjonalnie skonfiguruj aplikację tak, aby używała zarządzanej tożsamości podczas łączenia się z magazynem kluczy za pośrednictwem odwołania do usługi App Configuration Key Vault.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 Do ukończenia tego samouczka niezbędne są następujące elementy:
 
-* [Zestaw .NET Core SDK](https://www.microsoft.com/net/download/windows).
-* [Azure Cloud Shell skonfigurowany](https://docs.microsoft.com/azure/cloud-shell/quickstart).
+* [.NET Core SDK](https://www.microsoft.com/net/download/windows).
+* [Usługa Azure Cloud Shell skonfigurowana](https://docs.microsoft.com/azure/cloud-shell/quickstart).
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="add-a-managed-identity"></a>Dodawanie tożsamości zarządzanej
 
-Aby skonfigurować tożsamość zarządzaną w portalu, należy najpierw utworzyć aplikację, a następnie włączyć tę funkcję.
+Aby skonfigurować tożsamość zarządzaną w portalu, należy najpierw utworzyć aplikację, a następnie włączyć funkcję.
 
-1. Utwórz wystąpienie App Services w [Azure Portal](https://portal.azure.com) jak zwykle. Przejdź do niego w portalu.
+1. Utwórz wystąpienie usługi App Services w [witrynie Azure portal,](https://portal.azure.com) jak zwykle. Przejdź do niego w portalu.
 
-1. Przewiń w dół do grupy **Ustawienia** w okienku po lewej stronie, a następnie wybierz pozycję **tożsamość**.
+1. Przewiń w dół do grupy **Ustawienia** w lewym okienku i wybierz pozycję **Tożsamość**.
 
-1. Na karcie **przypisane do systemu** Przełącz pozycję **stan** na **włączone** i wybierz pozycję **Zapisz**.
+1. Na karcie **Przypisany system** przełącz **stan** **na Włączone** i wybierz pozycję **Zapisz**.
 
-1. Odpowiedź **tak** po wyświetleniu monitu o włączenie tożsamości zarządzanej przypisanej przez system.
+1. Odpowiedź **Tak** po wyświetleniu monitu o włączenie tożsamości zarządzanej przypisanej do systemu.
 
     ![Ustawianie tożsamości zarządzanej w usłudze App Service](./media/set-managed-identity-app-service.png)
 
 ## <a name="grant-access-to-app-configuration"></a>Udzielanie dostępu do usługi App Configuration
 
-1. W [Azure Portal](https://portal.azure.com)wybierz pozycję **wszystkie zasoby** i wybierz magazyn konfiguracji aplikacji utworzony w ramach przewodnika Szybki Start.
+1. W [witrynie Azure portal](https://portal.azure.com)wybierz **pozycję Wszystkie zasoby** i wybierz sklep konfiguracji aplikacji utworzony w przewodniku Szybki start.
 
-1. Wybierz pozycję **Kontrola dostępu (IAM)** .
+1. Wybierz **pozycję Kontrola dostępu (IAM)**.
 
-1. Na karcie **sprawdzanie dostępu** wybierz pozycję **Dodaj** w interfejsie użytkownika karty **Dodaj rolę** .
+1. Na karcie **Sprawdź dostęp** wybierz pozycję **Dodaj** w interfejsie użytkownika karty **przypisania roli Dodaj.**
 
-1. W obszarze **rola**wybierz pozycję **czytnik danych konfiguracji aplikacji**. W obszarze **Przypisz dostęp do**wybierz pozycję **App Service** w obszarze **system przypisanej tożsamości zarządzanej**.
+1. W obszarze **Rola**wybierz pozycję **Czytnik danych konfiguracji aplikacji**. W obszarze **Przypisywanie dostępu do**wybierz pozycję **Usługa aplikacji** w obszarze **Tożsamość zarządzana przypisana systemowi**.
 
-1. W obszarze **subskrypcja**wybierz subskrypcję platformy Azure. Wybierz zasób App Service dla aplikacji.
+1. W obszarze **Subskrypcja**wybierz subskrypcję platformy Azure. Wybierz zasób usługi app service dla aplikacji.
 
-1. Wybierz pozycję **Zapisz**.
+1. Wybierz **pozycję Zapisz**.
 
     ![Dodawanie tożsamości zarządzanej](./media/add-managed-identity.png)
 
-1. Opcjonalnie: Jeśli chcesz udzielić dostępu do Key Vault, postępuj zgodnie z instrukcjami w temacie [zapewnianie Key Vault uwierzytelniania przy użyciu tożsamości zarządzanej](https://docs.microsoft.com/azure/key-vault/managed-identity).
+1. Opcjonalnie: Jeśli chcesz również udzielić dostępu do usługi Key Vault, postępuj zgodnie ze wskazówkami w [aplikacji Udostępnij uwierzytelnianie usługi Key Vault z zarządzaną tożsamością.](https://docs.microsoft.com/azure/key-vault/managed-identity)
 
 ## <a name="use-a-managed-identity"></a>Korzystanie z tożsamości zarządzanej
 
-1. Dodaj odwołanie do pakietu *platformy Azure. Identity* :
+1. Dodaj odwołanie do pakietu *Azure.Identity:*
 
     ```cli
     dotnet add package Azure.Identity
     ```
 
-1. Znajdź punkt końcowy w magazynie konfiguracji aplikacji. Ten adres URL jest wyświetlany na karcie **klucze dostępu** dla sklepu w Azure Portal.
+1. Znajdź punkt końcowy w sklepie konfiguracji aplikacji. Ten adres URL jest wyświetlany na karcie **Klucze programu Access** dla magazynu w witrynie Azure portal.
 
-1. Otwórz plik *appSettings. JSON*i Dodaj następujący skrypt. Zastąp *\<service_endpoint >* , w tym nawiasy, adresem URL Twojego magazynu konfiguracji aplikacji. 
+1. Otwórz *plik appsettings.json*i dodaj następujący skrypt. Zastąp * \<service_endpoint>*, w tym nawiasy, adresem URL do sklepu konfiguracji aplikacji. 
 
     ```json
     "AppConfig": {
@@ -92,18 +92,18 @@ Aby skonfigurować tożsamość zarządzaną w portalu, należy najpierw utworzy
     }
     ```
 
-1. Otwórz *program.cs*i Dodaj odwołanie do przestrzeni nazw `Azure.Identity` i `Microsoft.Azure.Services.AppAuthentication`:
+1. Otwórz *Program.cs*i dodaj odwołanie do `Azure.Identity` obszarów nazw i `Microsoft.Azure.Services.AppAuthentication` nazw:
 
     ```csharp-interactive
     using Azure.Identity;
     ```
 
-1. Jeśli chcesz uzyskać dostęp tylko do wartości przechowywanych bezpośrednio w konfiguracji aplikacji, zaktualizuj metodę `CreateWebHostBuilder`, zastępując metodę `config.AddAzureAppConfiguration()`.
+1. Jeśli chcesz uzyskać dostęp tylko do wartości przechowywanych `CreateWebHostBuilder` bezpośrednio w `config.AddAzureAppConfiguration()` konfiguracji aplikacji, zaktualizuj metodę, zastępując metodę.
 
     > [!IMPORTANT]
-    > `CreateHostBuilder` zastępuje `CreateWebHostBuilder` na platformie .NET Core 3,0.  Wybierz poprawną składnię opartą na Twoim środowisku.
+    > `CreateHostBuilder`zastępuje `CreateWebHostBuilder` w .NET Core 3.0.  Wybierz poprawną składnię na podstawie środowiska.
 
-    ### <a name="net-core-2x"></a>[.NET Core 2. x](#tab/core2x)
+    ### <a name="net-core-2x"></a>[.NET Rdzeń 2.x](#tab/core2x)
 
     ```csharp
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
@@ -117,7 +117,7 @@ Aby skonfigurować tożsamość zarządzaną w portalu, należy najpierw utworzy
                 .UseStartup<Startup>();
     ```
 
-    ### <a name="net-core-3x"></a>[.NET Core 3. x](#tab/core3x)
+    ### <a name="net-core-3x"></a>[.NET Rdzeń 3.x](#tab/core3x)
 
     ```csharp
         public static IHostBuilder CreateHostBuilder(string[] args) =>
@@ -133,9 +133,9 @@ Aby skonfigurować tożsamość zarządzaną w portalu, należy najpierw utworzy
     ```
     ---
 
-1. Aby użyć zarówno wartości konfiguracji aplikacji, jak i Key Vault odwołań, należy zaktualizować *program.cs* , jak pokazano poniżej. Ten kod tworzy nowy `KeyVaultClient` przy użyciu `AzureServiceTokenProvider` i przekazuje to odwołanie do wywołania metody `UseAzureKeyVault`.
+1. Aby użyć zarówno wartości konfiguracji aplikacji, jak i odwołań do usługi Key Vault, zaktualizuj *Program.cs,* jak pokazano poniżej. Ten kod tworzy `KeyVaultClient` nowy `AzureServiceTokenProvider` przy użyciu i przekazuje `UseAzureKeyVault` to odwołanie do wywołania metody.
 
-    ### <a name="net-core-2x"></a>[.NET Core 2. x](#tab/core2x)
+    ### <a name="net-core-2x"></a>[.NET Rdzeń 2.x](#tab/core2x)
 
     ```csharp
             public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
@@ -157,7 +157,7 @@ Aby skonfigurować tożsamość zarządzaną w portalu, należy najpierw utworzy
                     .UseStartup<Startup>();
     ```
 
-    ### <a name="net-core-3x"></a>[.NET Core 3. x](#tab/core3x)
+    ### <a name="net-core-3x"></a>[.NET Rdzeń 3.x](#tab/core3x)
 
     ```csharp
         public static IHostBuilder CreateHostBuilder(string[] args) =>
@@ -181,20 +181,20 @@ Aby skonfigurować tożsamość zarządzaną w portalu, należy najpierw utworzy
     ```
     ---
 
-    Teraz możesz uzyskiwać dostęp do Key Vault odwołań podobnie jak każdy inny klucz konfiguracji aplikacji. Dostawca konfiguracji użyje `KeyVaultClient`, który został skonfigurowany do uwierzytelniania, aby Key Vault i pobrać wartość.
+    Teraz możesz uzyskać dostęp do odwołań do usługi Key Vault, tak jak do każdego innego klucza konfiguracji aplikacji. Dostawca konfiguracji użyje `KeyVaultClient` skonfigurowanych do uwierzytelniania w magazynie kluczy i pobierania wartości.
 
 [!INCLUDE [Prepare repository](../../includes/app-service-deploy-prepare-repo.md)]
 
 ## <a name="deploy-from-local-git"></a>Wdrażanie z lokalnego wdrożenia narzędzia Git
 
-Najprostszym sposobem włączenia lokalnego wdrożenia narzędzia Git dla aplikacji przy użyciu serwera kompilacji kudu jest użycie [Azure Cloud Shell](https://shell.azure.com).
+Najprostszym sposobem włączenia lokalnego wdrożenia git dla aplikacji za pomocą serwera kompilacji Kudu jest użycie [usługi Azure Cloud Shell.](https://shell.azure.com)
 
 ### <a name="configure-a-deployment-user"></a>Konfigurowanie użytkownika wdrożenia
 
 [!INCLUDE [Configure a deployment user](../../includes/configure-deployment-user-no-h.md)]
 
 ### <a name="enable-local-git-with-kudu"></a>Włączanie lokalnej usługi Git za pomocą serwera Kudu
-Jeśli nie masz lokalnego repozytorium git dla swojej aplikacji, musisz ją zainicjować. Aby zainicjować lokalne repozytorium git, uruchom następujące polecenia w katalogu projektu aplikacji:
+Jeśli nie masz lokalnego repozytorium git dla aplikacji, musisz je zainicjować. Aby zainicjować lokalne repozytorium git, uruchom następujące polecenia z katalogu projektu aplikacji:
 
 ```cmd
 git init
@@ -202,13 +202,13 @@ git add .
 git commit -m "Initial version"
 ```
 
-Aby włączyć lokalne wdrożenie narzędzia Git dla aplikacji przy użyciu serwera kompilacji kudu, uruchom [`az webapp deployment source config-local-git`](/cli/azure/webapp/deployment/source?view=azure-cli-latest#az-webapp-deployment-source-config-local-git) w Cloud Shell.
+Aby włączyć lokalne wdrażanie git dla aplikacji za [`az webapp deployment source config-local-git`](/cli/azure/webapp/deployment/source?view=azure-cli-latest#az-webapp-deployment-source-config-local-git) pomocą serwera kompilacji Kudu, uruchom w usłudze Cloud Shell.
 
 ```azurecli-interactive
 az webapp deployment source config-local-git --name <app_name> --resource-group <group_name>
 ```
 
-To polecenie daje coś podobnego do następującego:
+To polecenie daje coś podobnego do następującego wyjścia:
 
 ```json
 {
@@ -218,23 +218,23 @@ To polecenie daje coś podobnego do następującego:
 
 ### <a name="deploy-your-project"></a>Wdrażanie projektu
 
-W _oknie terminalu lokalnego_Dodaj zdalne Azure do lokalnego repozytorium git. Zastąp _adres url\<> adresem_ URL zdalnego systemu Git, który pochodzi z [włączenia lokalnego narzędzia Git z kudu](#enable-local-git-with-kudu).
+W _oknie terminala lokalnego_dodaj pilota platformy Azure do lokalnego repozytorium Git. Zastąp _ \<adres URL>_ adresem URL pilota Git, który otrzymałeś od Włącz lokalny [Git z Kudu](#enable-local-git-with-kudu).
 
 ```bash
 git remote add azure <url>
 ```
 
-Wypchnij na zdalną platformę Azure w celu wdrożenia aplikacji za pomocą następującego polecenia. Po wyświetleniu monitu o podanie hasła wprowadź hasło utworzone w obszarze [Konfigurowanie użytkownika wdrożenia](#configure-a-deployment-user). Nie używaj hasła używanego do logowania się do Azure Portal.
+Wypchnij na zdalną platformę Azure w celu wdrożenia aplikacji za pomocą następującego polecenia. Po wyświetleniu monitu o podanie hasła wprowadź hasło utworzone w [obszarze Konfigurowanie użytkownika wdrożeniowego](#configure-a-deployment-user). Nie używaj hasła używanego do logowania się do witryny Azure portal.
 
 ```bash
 git push azure master
 ```
 
-W danych wyjściowych można zobaczyć automatyzację specyficzną dla środowiska uruchomieniowego, na przykład MSBuild for ASP.NET, `npm install` dla środowiska Node. js i `pip install` dla języka Python.
+Automatyzacja specyficzne dla środowiska uruchomieniowego w danych wyjściowych, takich jak `npm install` MSBuild dla `pip install` ASP.NET, dla Node.js i Python.
 
 ### <a name="browse-to-the-azure-web-app"></a>Przechodzenie do aplikacji internetowej platformy Azure
 
-Przejdź do aplikacji sieci Web przy użyciu przeglądarki, aby sprawdzić, czy zawartość została wdrożona.
+Przejdź do aplikacji sieci web za pomocą przeglądarki, aby sprawdzić, czy zawartość jest wdrażana.
 
 ```bash
 http://<app_name>.azurewebsites.net
@@ -242,9 +242,9 @@ http://<app_name>.azurewebsites.net
 
 ## <a name="use-managed-identity-in-other-languages"></a>Używanie tożsamości zarządzanej w innych językach
 
-Dostawcy usługi App Configuration dla programu .NET Framework i Java Spring również mają wbudowaną obsługę tożsamości zarządzanej. Po skonfigurowaniu jednego z tych dostawców można użyć punktu końcowego adresu URL sklepu zamiast jego pełnych parametrów połączenia. 
+Dostawcy usługi App Configuration dla programu .NET Framework i Java Spring również mają wbudowaną obsługę tożsamości zarządzanej. Można użyć punktu końcowego adresu URL sklepu zamiast jego pełnego ciągu połączenia podczas konfigurowania jednego z tych dostawców. 
 
-Można na przykład zaktualizować aplikację konsolową .NET Framework utworzoną w przewodniku Szybki Start, aby określić następujące ustawienia w pliku *App. config* :
+Na przykład można zaktualizować aplikację konsoli .NET Framework utworzoną w przewodniku Szybki start, aby określić następujące ustawienia w pliku *App.config:*
 
 ```xml
     <configSections>
@@ -269,7 +269,7 @@ Można na przykład zaktualizować aplikację konsolową .NET Framework utworzon
 [!INCLUDE [azure-app-configuration-cleanup](../../includes/azure-app-configuration-cleanup.md)]
 
 ## <a name="next-steps"></a>Następne kroki
-W tym samouczku dodano tożsamość zarządzaną platformy Azure, aby usprawnić dostęp do konfiguracji aplikacji i usprawnić zarządzanie poświadczeniami dla aplikacji. Aby dowiedzieć się więcej na temat korzystania z konfiguracji aplikacji, przejdź do przykładów interfejsu wiersza polecenia platformy Azure.
+W tym samouczku dodano tożsamość zarządzaną platformy Azure, aby usprawnić dostęp do konfiguracji aplikacji i poprawić zarządzanie poświadczeniami dla aplikacji. Aby dowiedzieć się więcej na temat korzystania z konfiguracji aplikacji, przejdź do przykładów interfejsu wiersza polecenia platformy Azure.
 
 > [!div class="nextstepaction"]
 > [Przykłady interfejsu wiersza polecenia](./cli-samples.md)

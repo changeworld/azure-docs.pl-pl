@@ -1,6 +1,6 @@
 ---
-title: Dodawanie organizacji zachowania poufności informacji — usługi Azure Active Directory | Dokumentacja firmy Microsoft
-description: Instrukcje dotyczące sposobu dodawania informacji o prywatności w organizacji do obszaru właściwości usługi Azure Active Directory.
+title: Dodawanie informacji o ochronie prywatności organizacji — usługa Azure Active Directory | Dokumenty firmy Microsoft
+description: Instrukcje dotyczące dodawania informacji o prywatności organizacji do obszaru Właściwości usługi Azure Active Directory.
 services: active-directory
 author: msaburnley
 manager: daveba
@@ -14,47 +14,47 @@ ms.reviewer: bpham
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 95f1877ae630919ba7da5a851b5f8291ade2d165
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76897582"
 ---
-# <a name="add-your-organizations-privacy-info-using-azure-active-directory"></a>Dodaj informacje o prywatności w organizacji za pomocą usługi Azure Active Directory
-W tym artykule wyjaśniono, jak dodać informacje dotyczące ochrony prywatności do dzierżawy usługi Azure Active Directory (Azure AD) w organizacji, w witrynie Azure portal jako Administrator dzierżawy.
+# <a name="add-your-organizations-privacy-info-using-azure-active-directory"></a>Dodawanie informacji o ochronie prywatności organizacji przy użyciu usługi Azure Active Directory
+W tym artykule wyjaśniono, jak administrator dzierżawy może dodawać informacje związane z prywatnością do dzierżawy usługi Azure Active Directory (Azure AD) w organizacji za pośrednictwem witryny Azure Portal.
 
-Zdecydowanie zalecamy dodawanie przez osobę kontaktową globalne ochrona prywatności i poufności informacji w organizacji, więc pracowników wewnętrznych i zewnętrznych gości, można przejrzeć swoje zasady. Ponieważ zasady zachowania poufności informacji jednoznacznie są tworzone i przeznaczonym dla każdej firmy, zdecydowanie zalecamy się z prawnikiem uzyskania pomocy.
+Zdecydowanie zalecamy dodanie zarówno globalnego kontaktu prywatności, jak i zasad zachowania poufności informacji w organizacji, aby twoi pracownicy wewnętrzni i goście zewnętrzni mogli zapoznać się z twoimi zasadami. Ponieważ oświadczenia o ochronie prywatności są jednoznacznie tworzone i dostosowane do każdej firmy, zalecamy skontaktowanie się z prawnikiem w celu uzyskania pomocy.
 
 [!INCLUDE [GDPR-related guidance](../../../includes/gdpr-dsr-and-stp-note.md)]
 
-## <a name="add-your-privacy-info-on-azure-ad"></a>Dodawanie zachowania poufności informacji w usłudze Azure AD
-Dodaj informacje o ochronie prywatności w Twojej organizacji w **właściwości** obszar usługi Azure AD.
+## <a name="add-your-privacy-info-on-azure-ad"></a>Dodawanie informacji o prywatności w usłudze Azure AD
+Dodaj informacje o prywatności organizacji w obszarze **Właściwości** usługi Azure AD.
 
-### <a name="to-access-the-properties-area-and-add-your-privacy-information"></a>Dostęp do obszaru właściwości i Dodaj informacje o prywatności
+### <a name="to-access-the-properties-area-and-add-your-privacy-information"></a>Aby uzyskać dostęp do obszaru Właściwości i dodać informacje o prywatności
 
 1.  Zaloguj się do witryny Azure portal jako administrator dzierżawy.
 
-2.  Na lewym pasku nawigacyjnym wybierz **usługi Azure Active Directory**, a następnie wybierz pozycję **właściwości**.
+2.  Na lewym pasku nawigacyjnym wybierz pozycję **Azure Active Directory**, a następnie wybierz pozycję **Właściwości**.
 
-    **Właściwości** obszarze.
+    Pojawi się obszar **Właściwości.**
 
-    ![Usługa Azure obszaru właściwości usługi AD wyróżnienie obszaru informacje o prywatności](media/active-directory-properties-area/properties-area.png)
+    ![Obszar Właściwości usługi Azure AD z wyróżnioniem obszaru informacji o prywatności](media/active-directory-properties-area/properties-area.png)
 
-3.  Dodaj swoje informacje o prywatności dla pracowników:
+3.  Dodaj informacje o prywatności dla swoich pracowników:
 
-    - **Skontaktuj się z pomocą technicznych.** Wpisz adres e-mail osoby kontaktowej w celu uzyskania pomocy technicznej w Twojej organizacji.
+    - **Kontakt techniczny.** Wpisz adres e-mail osoby, z którą ma się skontaktować w celu uzyskania pomocy technicznej w organizacji.
     
-    - **Skontaktuj się z zachowania globalnego.** Wpisz adres e-mail osoby kontaktowej dla zapytania dotyczące prywatności danych osobowych. Osoba ta jest kto firmy Microsoft skontaktuje się w przypadku naruszenia danych. W przypadku braku osoby wymienione w tym miejscu firmy Microsoft skontaktuje się z administratorów globalnych.
+    - **Globalny kontakt z prywatnością.** Wpisz adres e-mail, aby osoba kontaktować się w celu uzyskania informacji na temat prywatności danych osobowych. Ta osoba jest również kontakty firmy Microsoft w przypadku naruszenia bezpieczeństwa danych. Jeśli na liście nie ma w tym miejscu żadnej osoby, firma Microsoft skontaktuje się z administratorami globalnymi.
 
-    - **Adres URL zasad zachowania poufności informacji.** Typ łącza do dokumentu w organizacji, w tym artykule opisano, jak Twoja organizacja obsługuje zarówno prywatność danych wewnętrznych i zewnętrznych gościa.
+    - **Adres URL zasad zachowania poufności informacji.** Wpisz łącze do dokumentu organizacji opisujące sposób, w jaki organizacja obsługuje prywatność danych gościa wewnętrznego i zewnętrznego.
 
         >[!Important]
-        >Jeśli nie podasz własne zasady zachowania poufności i ochrony prywatności przejrzenia przez osobę kontaktową zewnętrznych gości zostanie wyświetlony tekst w **Przegląd uprawnień** polu, które  **< _nazwę swojej organizacji_> nie udostępnił linków do swoich warunków, którymi możesz się zapoznać**. Na przykład użytkownik-Gość zostanie wyświetlony ten komunikat, po otrzymaniu zaproszenia dostęp do organizacji za pośrednictwem współpracy B2B.
+        >Jeśli nie uwzględnisz własnego oświadczenia o ochronie prywatności ani kontaktu z prywatnością, twoi goście zewnętrzni zobaczą tekst w polu **Uprawnienia recenzji,** który mówi, ** <że _Twoja nazwa organizacji_> nie poda linków do ich warunków do sprawdzenia.** Na przykład użytkownik-gość zobaczy ten komunikat po otrzymaniu zaproszenia do uzyskania dostępu do organizacji za pośrednictwem współpracy B2B.
 
-        ![Okno uprawnień przeglądu współpracy B2B z komunikatem](media/active-directory-properties-area/active-directory-no-privacy-statement-or-contact.png)
+        ![B2B Collaboration Review Permissions pole z komunikatem](media/active-directory-properties-area/active-directory-no-privacy-statement-or-contact.png)
 
-4.  Wybierz pozycję **Zapisz**.
+4.  Wybierz **pozycję Zapisz**.
 
 ## <a name="next-steps"></a>Następne kroki
-- [Realizacja zaproszenia współpracy w usłudze Azure Active Directory B2B](https://aka.ms/b2bredemption)
-- [Dodawanie lub zmienianie informacji o profilu użytkownika w usłudze Azure Active Directory](active-directory-users-profile-azure-portal.md)
+- [Realizacja zaproszenia do współpracy usługi Azure Active Directory B2B](https://aka.ms/b2bredemption)
+- [Dodawanie lub zmienianie informacji o profilu dla użytkownika w usłudze Azure Active Directory](active-directory-users-profile-azure-portal.md)

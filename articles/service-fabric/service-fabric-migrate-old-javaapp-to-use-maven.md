@@ -1,15 +1,15 @@
 ---
-title: Migrowanie z zestawu Java SDK do Maven
+title: Migracja z java sdk do maven
 description: Aktualizowanie starszych aplikacji Java korzystających z zestawu SDK Java usługi Service Fabric w celu pobrania zależności Java usługi Service Fabric z narzędzia Maven. Po ukończeniu tej konfiguracji starsze aplikacje Java będą mogły obsługiwać kompilację.
 author: rapatchi
 ms.topic: conceptual
 ms.date: 08/23/2017
 ms.author: rapatchi
 ms.openlocfilehash: b5e126ebdf3b89470472391c59d378c7a6d39b86
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/02/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75609812"
 ---
 # <a name="update-your-previous-java-service-fabric-application-to-fetch-java-libraries-from-maven"></a>Aktualizowanie starszych aplikacji Java usługi Service Fabric w celu pobierania bibliotek z narzędzia Maven
@@ -158,7 +158,7 @@ task copyDeps <<{
     }
 }
 ```
-Teraz, aby pobrać zależności z Maven, **zaktualizowany** ``build.gradle`` będzie miał odpowiednie części w następujący sposób:
+Teraz, aby pobierać zależności z Maven, odpowiednie części **zaktualizowanego pliku ** ``build.gradle`` powinny wyglądać następująco:
 ```
 repositories {
         mavenCentral()
@@ -232,7 +232,7 @@ dependencies {
 .
 .
 ```
-Teraz, aby pobrać zależności z Maven, **zaktualizowany** ``build.gradle`` będzie miał odpowiednie części w następujący sposób:
+Teraz, aby pobierać zależności z Maven, odpowiednie części **zaktualizowanego pliku ** ``build.gradle`` powinny wyglądać następująco:
 ```
 repositories {
     mavenCentral()
@@ -304,7 +304,7 @@ task copyDeps<< {
     }
 }
 ```
-Teraz, aby pobrać zależności z Maven, **zaktualizowany** ``build.gradle`` będzie miał odpowiednie części w następujący sposób:
+Teraz, aby pobierać zależności z Maven, odpowiednie części **zaktualizowanego pliku ** ``build.gradle`` powinny wyglądać następująco:
 ```
 repositories {
     mavenCentral()
@@ -404,7 +404,7 @@ task copyDeps<< {
         }
 }
 ```
-Teraz, aby pobrać zależności z Maven, **zaktualizowany** ``build.gradle`` będzie miał odpowiednie części w następujący sposób:
+Teraz, aby pobierać zależności z Maven, odpowiednie części **zaktualizowanego pliku ** ``build.gradle`` powinny wyglądać następująco:
 ```
 repositories {
     mavenCentral()

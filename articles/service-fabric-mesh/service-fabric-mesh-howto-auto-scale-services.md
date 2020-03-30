@@ -1,33 +1,33 @@
 ---
-title: Automatyczne skalowanie aplikacji działającej na platformie Azure Service Fabric siatką
-description: Dowiedz się, jak skonfigurować zasady automatycznego skalowania dla usług aplikacji usługi Service Fabric siatki.
+title: Automatyczne skalowanie aplikacji uruchomionej w usłudze Azure Service Fabric Mesh
+description: Dowiedz się, jak skonfigurować zasady automatycznego skalowania dla usług aplikacji sieci szkieletowej usług.
 author: dkkapur
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: dekapur
 ms.custom: mvc, devcenter
 ms.openlocfilehash: fb72806dd7ba838ba7170bda409715bc074e1d99
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75461980"
 ---
-# <a name="create-autoscale-policies-for-a-service-fabric-mesh-application"></a>Utwórz zasady automatycznego skalowania dla aplikacji usługi Service Fabric siatki
-Jedną z głównych zalet wdrażania aplikacji do Service Fabric siatki jest możliwość łatwego skalowania usług do lub wyprowadzenia. Ta usługa powinna być używana do obsługi różnych ilości obciążeń w usługach lub do zwiększenia dostępności. Można ręcznie skalować swoje usługi wewnątrz lub na zewnątrz lub skonfiguruj zasady skalowania automatycznego.
+# <a name="create-autoscale-policies-for-a-service-fabric-mesh-application"></a>Tworzenie zasad skalowania automatycznego dla aplikacji siatki sieci szkieletowej usług
+Jedną z głównych zalet wdrażania aplikacji w sieci szkieletowej usługi Mesh jest możliwość łatwego skalowania usług w lub obecnie. Powinno to być używane do obsługi różnych ilości obciążenia usług lub poprawy dostępności. Można ręcznie skalować usługi w lub obecnie lub skonfigurować zasady skalowania automatycznego.
 
-[Automatyczne skalowanie](service-fabric-mesh-scalability.md#autoscaling-service-instances) umożliwia dynamiczne skalowanie liczby wystąpień usługi (skalowanie w poziomie). Automatyczne skalowanie zapewnia dużą elastyczność i umożliwia inicjowanie obsługi administracyjnej lub usuwania wystąpień usługi na podstawie użycia procesora CPU lub pamięci.
+[Automatyczne skalowanie](service-fabric-mesh-scalability.md#autoscaling-service-instances) umożliwia dynamiczne skalowanie liczby wystąpień usługi (skalowanie w poziomie). Automatyczne skalowanie zapewnia dużą elastyczność i umożliwia inicjowanie obsługi administracyjnej lub usuwanie wystąpień usługi na podstawie wykorzystania procesora CPU lub pamięci.
 
-## <a name="options-for-creating-an-auto-scaling-policy-trigger-and-mechanism"></a>Opcje automatycznego skalowania zasad, wyzwalacz i mechanizm tworzenia
-Zasady skalowania automatycznie jest zdefiniowana dla każdej usługi, który chcesz skalować. Zasada jest zdefiniowana w pliku YAML zasób usługi lub szablon wdrożenia JSON. Wszystkie zasady skalowania składa się z dwóch części: wyzwalacz i mechanizm skalowania.
+## <a name="options-for-creating-an-auto-scaling-policy-trigger-and-mechanism"></a>Opcje tworzenia zasad skalowania automatycznego, wyzwalacza i mechanizmu
+Zasady skalowania automatycznego są definiowane dla każdej usługi, którą chcesz skalować. Zasada jest zdefiniowana w pliku zasobów usługi YAML lub szablonie wdrożenia JSON. Każda zasada skalowania składa się z dwóch części: wyzwalacza i mechanizmu skalowania.
 
-Wyzwalacz definiuje, gdy zostanie wywołana zasadę automatycznego skalowania.  Określ rodzaj metryki monitorowania (procesor CPU lub pamięci) i wyzwalaczy (średnie obciążenie).  Progi obciążenia górny i dolny, określony jako wartość procentowa. Interwału skalowania definiuje, jak często chcesz sprawdzać (w sekundach) określonego wykorzystania (na przykład średnie obciążenie procesora CPU) we wszystkich wystąpieniach w obecnie wdrożonej usłudze.  Ten mechanizm jest wyzwalany, gdy monitorowane metryki spadnie poniżej niższego progu, lub zwiększa powyżej górnej wartości progowej.  
+Wyzwalacz definiuje, gdy wywoływana jest zasada skalowania automatycznego.  Określ rodzaj wyzwalacza (średnie obciążenie) i metrykę do monitorowania (procesora CPU lub pamięci).  Górne i dolne progi obciążenia określone jako wartość procentowa. Interwał skalowania określa, jak często sprawdzać (w sekundach) określone wykorzystanie (takie jak średnie obciążenie procesora CPU) we wszystkich aktualnie wdrożonych wystąpieniach usługi.  Mechanizm jest uruchamiany, gdy monitorowana metryka spada poniżej dolnego progu lub wzrasta powyżej górnego progu.  
 
-Mechanizm skalowania definiuje sposób wykonywania operacji skalowania po wyzwoleniu zasad.  Określ rodzaj mechanizmu (Dodawanie/usuwanie repliki), repliki minimalnej i maksymalnej liczby (jako liczby całkowite).  Liczba replik usługi nigdy nie będzie można skalować, poniżej minimalnej liczby lub powyżej maksymalna liczba.  Przyrost skalowania można również określić jako liczba całkowita, która jest liczba replik, które zostaną dodane lub usunięte w ramach operacji skalowania.  
+Mechanizm skalowania definiuje sposób wykonywania operacji skalowania po wyzwoleniu zasad.  Określ rodzaj mechanizmu (dodawanie/usuwanie repliki), minimalną i maksymalną liczbę replik (jako liczby całkowite).  Liczba replik usługi nigdy nie będzie skalowana poniżej minimalnej liczby lub powyżej maksymalnej liczby.  Należy również określić przyrost skali jako liczbę całkowitą, która jest liczbą replik, które zostaną dodane lub usunięte w operacji skalowania.  
 
-## <a name="define-an-auto-scaling-policy-in-a-json-template"></a>Zdefiniuj automatycznie zasady skalowania w szablonie JSON
+## <a name="define-an-auto-scaling-policy-in-a-json-template"></a>Definiowanie zasad automatycznego skalowania w szablonie JSON
 
-Poniższy przykład pokazuje zasadę automatycznego skalowania w szablonie wdrożenia JSON.  Zasady skalowania automatycznego jest zadeklarowana we właściwości usługi można skalować.  W tym przykładzie zdefiniowano wyzwalacz średnie obciążenie procesora CPU.  Mechanizm zostanie wyzwolony, jeśli średnie użycie procesora CPU nie można załadować wszystkich wdrożonych wystąpień spadnie poniżej 0.2 (20%) lub zbliża się powyżej 0,8 (80%).  Obciążenie procesora CPU jest sprawdzane co 60 sekund.  Mechanizm skalowania jest zdefiniowany do dodawania lub usuwania wystąpień, jeśli zasady są wyzwalane.  Wystąpienia usługi zostaną dodane lub usunięte z przyrostem równym jedną.  Minimalna liczba wystąpień jednego i maksymalną liczbę wystąpień 40 jest również definiowany.
+W poniższym przykładzie przedstawiono zasady skalowania automatycznego w szablonie wdrażania JSON.  Zasady skalowania automatycznego jest zadeklarowany we właściwości usługi do skalowania.  W tym przykładzie zdefiniowano wyzwalacz średniego obciążenia procesora CPU.  Mechanizm zostanie uruchomiony, jeśli średnie obciążenie procesora wszystkich wdrożonych wystąpień spadnie poniżej 0,2 (20%) lub przekracza 0,8 (80%).  Obciążenie procesora jest sprawdzane co 60 sekund.  Mechanizm skalowania jest zdefiniowany w celu dodania lub usunięcia wystąpień, jeśli zasada jest wyzwalana.  Wystąpienia usługi zostaną dodane lub usunięte w przyrostach jednego.  Zdefiniowano również minimalną liczbę wystąpień jednego i maksymalną liczbę wystąpień 40.
 
 ```json
 {
@@ -79,8 +79,8 @@ Poniższy przykład pokazuje zasadę automatycznego skalowania w szablonie wdro�
 }
 ```
 
-## <a name="define-an-autoscale-policy-in-a-serviceyaml-resource-file"></a>Zdefiniuj zasady skalowania automatycznego w pliku zasobów service.yaml
-Poniższy przykład pokazuje zasady skalowania automatycznego w pliku zasobów (YAML) usługi.  Zasady skalowania automatycznego jest zadeklarowana jako właściwość, usługi skalowania.  W tym przykładzie zdefiniowano wyzwalacz średnie obciążenie procesora CPU.  Mechanizm zostanie wyzwolony, jeśli średnie użycie procesora CPU nie można załadować wszystkich wdrożonych wystąpień spadnie poniżej 0.2 (20%) lub zbliża się powyżej 0,8 (80%).  Obciążenie procesora CPU jest sprawdzane co 60 sekund.  Mechanizm skalowania jest zdefiniowany do dodawania lub usuwania wystąpień, jeśli zasady są wyzwalane.  Wystąpienia usługi zostaną dodane lub usunięte z przyrostem równym jedną.  Minimalna liczba wystąpień jednego i maksymalną liczbę wystąpień 40 jest również definiowany.
+## <a name="define-an-autoscale-policy-in-a-serviceyaml-resource-file"></a>Definiowanie zasad skalowania automatycznego w pliku zasobu service.yaml
+W poniższym przykładzie przedstawiono zasady skalowania automatycznego w pliku zasobu usługi (YAML).  Zasady skalowania automatycznego jest zadeklarowany jako właściwość usługi do skalowania.  W tym przykładzie zdefiniowano wyzwalacz średniego obciążenia procesora CPU.  Mechanizm zostanie uruchomiony, jeśli średnie obciążenie procesora wszystkich wdrożonych wystąpień spadnie poniżej 0,2 (20%) lub przekracza 0,8 (80%).  Obciążenie procesora jest sprawdzane co 60 sekund.  Mechanizm skalowania jest zdefiniowany w celu dodania lub usunięcia wystąpień, jeśli zasada jest wyzwalana.  Wystąpienia usługi zostaną dodane lub usunięte w przyrostach jednego.  Zdefiniowano również minimalną liczbę wystąpień jednego i maksymalną liczbę wystąpień 40.
 
 ```yaml
 ## Service definition ##
@@ -115,4 +115,4 @@ application:
 ```
 
 ## <a name="next-steps"></a>Następne kroki
-Dowiedz się, jak [ręczne skalowanie usługi](service-fabric-mesh-tutorial-template-scale-services.md)
+Dowiedz się, jak [ręcznie skalować usługę](service-fabric-mesh-tutorial-template-scale-services.md)

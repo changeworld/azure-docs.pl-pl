@@ -9,21 +9,21 @@ ms.date: 03/21/2018
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: dc018b5d09c9b33c10cd2d54ac6572537e05ed25
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67183118"
 ---
-Poniższa lista zawiera wymagania dotyczące bramy oparte na zasadach i sieci VPN typu RouteBased. Ta tabela ma zastosowanie w obu modelach wdrażania — przy użyciu usługi Resource Manager i klasycznym. W przypadku modelu klasycznego bramy sieci VPN oparte na zasadach są takie same, jak bramy statyczne, a bramy oparte na trasach są takie same, jak bramy dynamiczne.
+W poniższej tabeli wymieniono wymagania dotyczące bram sieci VPN opartych na zasadach i routingu. Ta tabela ma zastosowanie w obu modelach wdrażania — przy użyciu usługi Resource Manager i klasycznym. W przypadku modelu klasycznego bramy sieci VPN oparte na zasadach są takie same jak bramy statyczne, a bramy oparte na marszsłce są takie same jak bramy dynamiczne.
 
-|  | **PolicyBased Basic VPN Gateway** | **RouteBased Basic VPN Gateway** | **RouteBased Standard VPN Gateway** | **Bramy sieci VPN usługi RouteBased o wysokiej wydajności** |
+|  | **Podstawowa brama sieci VPN oparta na zasadach** | **Podstawowa brama sieci VPN oparta na routinie** | **Standardowa brama sieci VPN oparta na routinie** | **Brama sieci VPN o wysokiej wydajności o wysokiej wydajności opartej na routinie** |
 | --- | --- | --- | --- | --- |
-| **Połączenie lokacja-lokacja (S2S)** |Konfiguracja sieci VPN typu PolicyBased |Konfiguracja sieci VPN typu RouteBased |Konfiguracja sieci VPN typu RouteBased |Konfiguracja sieci VPN typu RouteBased |
+| **Łączność typu „lokacja do lokacji” (Site-to-Site, S2S)** |Konfiguracja sieci VPN oparta na zasadach |Konfiguracja sieci VPN opartej na routinie |Konfiguracja sieci VPN opartej na routinie |Konfiguracja sieci VPN opartej na routinie |
 | **Łączność typu „punkt do lokacji” (Point-to-Site, P2S**) |Nieobsługiwane |Obsługiwane (może współistnieć z S2S) |Obsługiwane (może współistnieć z S2S) |Obsługiwane (może współistnieć z S2S) |
 | **Metoda uwierzytelniania** |Klucz wstępny |Klucz wstępny dla połączeń S2S, certyfikaty dla łączności P2S |Klucz wstępny dla połączeń S2S, certyfikaty dla łączności P2S |Klucz wstępny dla połączeń S2S, certyfikaty dla łączności P2S |
 | **Maksymalna liczba połączeń S2S** |1 |10 |10 |30 |
 | **Maksymalna liczba połączeń P2S** |Nieobsługiwane |128 |128 |128 |
-| **Aktywna Obsługa routingu (BGP)** (*) |Nieobsługiwane |Nieobsługiwane |Obsługiwane |Obsługiwane |
+| **Obsługa aktywnego routingu (BGP)** (*) |Nieobsługiwane |Nieobsługiwane |Obsługiwane |Obsługiwane |
 
-  (*) Protokół BGP nie jest obsługiwane dla klasycznego modelu wdrażania.
+  (*) BGP nie jest obsługiwany dla klasycznego modelu wdrażania.

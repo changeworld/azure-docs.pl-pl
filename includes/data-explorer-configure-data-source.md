@@ -5,50 +5,50 @@ ms.topic: include
 ms.date: 11/03/2019
 ms.author: orspodek
 ms.openlocfilehash: 3cd9d017429b629acad39f5b902e842886c3c818
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "78305055"
 ---
 ## <a name="configure-the-data-source"></a>Konfigurowanie źródła danych
 
-Aby skonfigurować Eksplorator danych platformy Azure jako źródło danych dla narzędzia pulpitu nawigacyjnego, wykonaj następujące czynności. Te kroki zostaną omówione bardziej szczegółowo w tej sekcji:
+Wykonaj następujące kroki, aby skonfigurować Eksploratora danych platformy Azure jako źródło danych dla narzędzia pulpitu nawigacyjnego. Omówimy te kroki bardziej szczegółowo w tej sekcji:
 
-1. Utwórz nazwę główną usługi Azure Active Directory (Azure AD). Nazwa główna usługi jest używana przez narzędzie pulpitu nawigacyjnego do uzyskiwania dostępu do usługi Azure Eksplorator danych.
+1. Utwórz jednostkę usługi Azure Active Directory (Azure AD). Podmiot usługi jest używany przez narzędzie pulpitu nawigacyjnego, aby uzyskać dostęp do usługi Azure Data Explorer.
 
-1. Dodaj nazwę główną usługi Azure AD do roli *osoby przeglądające* w bazie danych Azure Eksplorator danych.
+1. Dodaj jednostkę usługi Azure AD do roli *przeglądarki* w bazie danych Usługi Azure Data Explorer.
 
 1. Określ właściwości połączenia narzędzia pulpitu nawigacyjnego na podstawie informacji z jednostki usługi Azure AD, a następnie przetestuj połączenie.
 
-### <a name="create-a-service-principal"></a>Tworzenie jednostki usługi
+### <a name="create-a-service-principal"></a>Tworzenie nazwy głównej usługi
 
-Nazwę główną usługi można utworzyć w [Azure Portal](#azure-portal) lub przy użyciu interfejsu wiersza polecenia [platformy Azure](#azure-cli) . Niezależnie od używanej metody, po utworzeniu uzyskasz wartości czterech właściwości połączenia, które będą używane w dalszych krokach.
+Można utworzyć jednostkę usługi w [witrynie Azure portal](#azure-portal) lub przy użyciu środowiska wiersza polecenia [interfejsu wiersza polecenia platformy Azure.](#azure-cli) Niezależnie od używanej metody po utworzeniu otrzymasz wartości dla czterech właściwości połączenia, które będą używane w kolejnych krokach.
 
-#### <a name="azure-portal"></a>Portalu Azure
+#### <a name="azure-portal"></a>Portal Azure
 
-1. Aby utworzyć jednostkę usługi, postępuj zgodnie z instrukcjami w [dokumentacji Azure Portal](/azure/active-directory/develop/howto-create-service-principal-portal).
+1. Aby utworzyć jednostkę usługi, postępuj zgodnie z instrukcjami zawartymi w [dokumentacji portalu Azure.](/azure/active-directory/develop/howto-create-service-principal-portal)
 
-    1. W sekcji [przypisywanie aplikacji do roli](/azure/active-directory/develop/howto-create-service-principal-portal#assign-a-role-to-the-application) Przypisz typ roli **czytnik** do klastra usługi Azure Eksplorator danych.
+    1. W sekcji [Przypisywanie aplikacji do roli](/azure/active-directory/develop/howto-create-service-principal-portal#assign-a-role-to-the-application) przypisz typ roli **programu Reader** do klastra usługi Azure Data Explorer.
 
-    1. W sekcji [pobieranie wartości dla logowania](/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) Skopiuj trzy wartości właściwości omówione w krokach: **Identyfikator katalogu** (identyfikator dzierżawy), **Identyfikator aplikacji**i **hasło**.
+    1. W sekcji [Pobierz wartości do logowania](/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) skopiuj trzy wartości właściwości opisane w krokach: Identyfikator katalogu (identyfikator **dzierżawy),** **identyfikator aplikacji**i **hasło**.
 
-1. W Azure Portal wybierz pozycję **subskrypcje** , a następnie skopiuj Identyfikator subskrypcji, w której utworzono nazwę główną usługi.
+1. W witrynie Azure portal wybierz **subskrypcje,** a następnie skopiuj identyfikator subskrypcji, w której utworzono jednostkę usługi.
 
-    ![Identyfikator subskrypcji — Portal](media/data-explorer-configure-data-source/subscription-id-portal.png)
+    ![Identyfikator subskrypcji — portal](media/data-explorer-configure-data-source/subscription-id-portal.png)
 
 #### <a name="azure-cli"></a>Interfejs wiersza polecenia platformy Azure
 
-1. Tworzenie jednostki usługi. Ustaw odpowiedni zakres i typ roli `reader`.
+1. Tworzenie jednostki usługi. Ustaw odpowiedni zakres i typ `reader`roli .
 
     ```azurecli
     az ad sp create-for-rbac --name "https://{UrlToYourDashboard}:{PortNumber}" --role "reader" \
                              --scopes /subscriptions/{SubID}/resourceGroups/{ResourceGroupName}
     ```
 
-    Aby uzyskać więcej informacji, zobacz [Tworzenie jednostki usługi platformy Azure przy użyciu interfejsu wiersza polecenia platformy Azure](/cli/azure/create-an-azure-service-principal-azure-cli).
+    Aby uzyskać więcej informacji, zobacz [Tworzenie jednostki usługi platformy Azure za pomocą interfejsu wiersza polecenia platformy Azure.](/cli/azure/create-an-azure-service-principal-azure-cli)
 
-1. Polecenie zwraca zestaw wyników podobny do poniższego. Skopiuj trzy wartości właściwości: **Identyfikator aplikacji**, **hasło**i **dzierżawca**.
+1. Polecenie zwraca zestaw wyników, podobnie jak poniżej. Skopiuj trzy wartości właściwości: **appID**, **hasło**i **dzierżawa**.
 
 
     ```json
@@ -61,7 +61,7 @@ Nazwę główną usługi można utworzyć w [Azure Portal](#azure-portal) lub pr
     }
     ```
 
-1. Pobierz listę subskrypcji.
+1. Pobierz listę swoich subskrypcji.
 
     ```azurecli
     az account list --output table
@@ -69,48 +69,48 @@ Nazwę główną usługi można utworzyć w [Azure Portal](#azure-portal) lub pr
 
     Skopiuj odpowiedni identyfikator subskrypcji.
 
-    ![Identyfikator subskrypcji — interfejs wiersza polecenia](media/data-explorer-configure-data-source/subscription-id-cli.png)
+    ![Identyfikator subskrypcji — cli](media/data-explorer-configure-data-source/subscription-id-cli.png)
 
-### <a name="add-the-service-principal-to-the-viewers-role"></a>Dodawanie jednostki usługi do roli osoby przeglądające
+### <a name="add-the-service-principal-to-the-viewers-role"></a>Dodawanie jednostki usługi do roli przeglądarki
 
-Teraz, gdy masz nazwę główną usługi, Dodaj ją do roli *osoby przeglądające* w bazie danych Azure Eksplorator danych. To zadanie można wykonać w obszarze **uprawnienia** w Azure Portal lub w obszarze **zapytanie** przy użyciu polecenia zarządzania.
+Teraz, gdy masz jednostkę usługi, należy dodać go do roli *przeglądarki* w bazie danych Usługi Azure Data Explorer. To zadanie można wykonać w obszarze **Uprawnienia** w witrynie Azure Portal lub w obszarze **Kwerenda** przy użyciu polecenia zarządzania.
 
-#### <a name="azure-portal---permissions"></a>Azure Portal — uprawnienia
+#### <a name="azure-portal---permissions"></a>Portal Azure — uprawnienia
 
-1. W Azure Portal przejdź do klastra usługi Azure Eksplorator danych.
+1. W witrynie Azure portal przejdź do klastra usługi Azure Data Explorer.
 
 1. W sekcji **Przegląd** wybierz bazę danych z przykładowymi danymi StormEvents.
 
-    ![Wybierz bazę danych](media/data-explorer-configure-data-source/select-database.png)
+    ![Wybieranie bazy danych](media/data-explorer-configure-data-source/select-database.png)
 
-1. Wybierz pozycję **uprawnienia** , a następnie **Dodaj**.
+1. Wybierz **pozycję Uprawnienia,** a następnie **dodaj**.
 
     ![Uprawnienia bazy danych](media/data-explorer-configure-data-source/database-permissions.png)
 
-1. W obszarze **Dodawanie uprawnień do bazy danych**wybierz rolę **przeglądarki** , a następnie **Wybierz pozycję podmioty zabezpieczeń**.
+1. W obszarze **Dodawanie uprawnień bazy danych**wybierz rolę **Podgląd,** a następnie **wybierz główne podmioty**.
 
     ![Dodawanie uprawnień do bazy danych](media/data-explorer-configure-data-source/add-permission.png)
 
-1. Wyszukaj utworzoną jednostkę usługi. Wybierz podmiot zabezpieczeń, a następnie **Wybierz pozycję**.
+1. Wyszukaj utworzony podmiot usługi. Wybierz podmiot, a następnie **wybierz**.
 
-    ![Zarządzanie uprawnieniami w Azure Portal](media/data-explorer-configure-data-source/new-principals.png)
+    ![Zarządzanie uprawnieniami w witrynie Azure portal](media/data-explorer-configure-data-source/new-principals.png)
 
-1. Wybierz pozycję **Zapisz**.
+1. Wybierz **pozycję Zapisz**.
 
-    ![Zarządzanie uprawnieniami w Azure Portal](media/data-explorer-configure-data-source/save-permission.png)
+    ![Zarządzanie uprawnieniami w witrynie Azure portal](media/data-explorer-configure-data-source/save-permission.png)
 
-#### <a name="management-command---query"></a>Polecenie zarządzania — zapytanie
+#### <a name="management-command---query"></a>Polecenie Zarządzanie — kwerenda
 
-1. W Azure Portal przejdź do klastra usługi Azure Eksplorator danych, a następnie wybierz pozycję **zapytanie**.
+1. W witrynie Azure portal przejdź do klastra Usługi Azure Data Explorer i wybierz pozycję **Zapytanie**.
 
     ![Zapytanie](media/data-explorer-configure-data-source/query.png)
 
-1. Uruchom następujące polecenie w oknie zapytania. Użyj identyfikatora aplikacji i identyfikatora dzierżawy z Azure Portal lub interfejsu wiersza polecenia.
+1. Uruchom następujące polecenie w oknie kwerendy. Użyj identyfikatora aplikacji i identyfikatora dzierżawy z witryny Azure portal lub interfejsu wiersza polecenia.
 
     ```kusto
     .add database {TestDatabase} viewers ('aadapp={ApplicationID};{TenantID}')
     ```
 
-    Polecenie zwraca zestaw wyników podobny do poniższego. W tym przykładzie pierwszy wiersz dotyczy istniejącego użytkownika w bazie danych, a drugi wiersz jest dla jednostki usługi, która została właśnie dodana.
+    Polecenie zwraca zestaw wyników, podobnie jak poniżej. W tym przykładzie pierwszy wiersz jest dla istniejącego użytkownika w bazie danych, a drugi wiersz jest dla jednostki usługi, który został właśnie dodany.
 
     ![Zestaw wyników](media/data-explorer-configure-data-source/result-set.png)

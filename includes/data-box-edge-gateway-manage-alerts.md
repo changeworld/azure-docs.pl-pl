@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 04/15/2019
 ms.author: alkohli
 ms.openlocfilehash: c419ed7e01da2bb9833233a14a116bfd3148444a
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67183681"
 ---
-Skonfiguruj reguły alertu, informujące o warunków alertów dotyczących zużycia zasobów na urządzeniu z systemem. Można skonfigurować reguły alertów, aby monitorować warunki alertu na urządzeniu. Aby uzyskać szczegółowe informacje na temat alertów, przejdź do [tworzenie, wyświetlanie i zarządzanie nimi w usłudze Azure monitor alertów dotyczących metryk](../articles/azure-monitor/platform/alerts-metric.md).
+Skonfiguruj reguły alertów, aby informować o warunkach alertów związanych z zużyciem zasobów na urządzeniu. Można skonfigurować reguły alertów, aby monitorować urządzenie pod kątem warunków alertów. Aby uzyskać bardziej szczegółowe informacje na temat alertów, przejdź do [tworzenia, wyświetlania i zarządzania alertami metryk w monitorze platformy Azure](../articles/azure-monitor/platform/alerts-metric.md).

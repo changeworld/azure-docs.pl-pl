@@ -1,47 +1,47 @@
 ---
-title: Korzystanie z wielu pul węzłów w usłudze Azure Kubernetes Service (AKS)
-description: Informacje na temat tworzenia pul węzłów i zarządzania nimi dla klastra w usłudze Azure Kubernetes Service (AKS)
+title: Używanie wielu pul węzłów w usłudze Azure Kubernetes Service (AKS)
+description: Dowiedz się, jak tworzyć wiele pul węzłów dla klastra w usłudze Azure Kubernetes (AKS) i zarządzać nimi.
 services: container-service
 ms.topic: article
 ms.date: 03/10/2020
-ms.openlocfilehash: b7025b896a1bd156c448ccfcd0e9001c49146be4
-ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
+ms.openlocfilehash: 2045cb9a175bead3abf5b53120b9fe381a17b04b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/14/2020
-ms.locfileid: "79368285"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80047727"
 ---
-# <a name="create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>Tworzenie i zarządzanie wieloma pulami węzłów dla klastra w usłudze Azure Kubernetes Service (AKS)
+# <a name="create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>Tworzenie wielu pul węzłów dla klastra w usłudze Azure Kubernetes (AKS) i zarządzanie nimi
 
-W usłudze Azure Kubernetes Service (AKS) węzły tej samej konfiguracji są pogrupowane w *Pule węzłów*. Te pule węzłów zawierają bazowe maszyny wirtualne, na których działają aplikacje. Początkowa liczba węzłów i ich rozmiar (SKU) są definiowane podczas tworzenia klastra AKS, który tworzy *domyślną pulę węzłów*. Aby można było obsługiwać aplikacje, które mają różne wymagania dotyczące obliczeń lub magazynu, możesz utworzyć dodatkowe pule węzłów. Na przykład użyj tych dodatkowych pul węzłów, aby udostępnić procesory GPU dla aplikacji intensywnie korzystających z mocy obliczeniowej, lub dostęp do magazynu SSD o wysokiej wydajności.
+W usłudze Azure Kubernetes (AKS) węzły tej samej konfiguracji są grupowane w *pule węzłów.* Te pule węzłów zawierają podstawowe maszyny wirtualne, które uruchamiają aplikacje. Początkowa liczba węzłów i ich rozmiar (SKU) jest definiowana podczas tworzenia klastra AKS, który tworzy *domyślną pulę węzłów*. Aby obsługiwać aplikacje, które mają różne wymagania obliczeniowe lub magazynowe, można utworzyć dodatkowe pule węzłów. Na przykład użyj tych dodatkowych pul węzłów, aby zapewnić procesory GPU dla aplikacji intensywnie korzystających z obliczeń lub dostęp do magazynu dysków SSD o wysokiej wydajności.
 
 > [!NOTE]
-> Ta funkcja umożliwia większą kontrolę nad sposobem tworzenia wielu pul węzłów i zarządzania nimi. W związku z tym wymagane są osobne polecenia do tworzenia/aktualizowania/usuwania. Wcześniej operacje klastra za pomocą `az aks create` lub `az aks update` używały interfejsu API managedCluster i były jedyną opcją zmiany płaszczyzny kontroli i puli jednego węzła. Ta funkcja uwidacznia oddzielny zestaw operacji dla pul agentów za pomocą interfejsu API nieznanej obiektu agentpool i wymaga użycia polecenia `az aks nodepool` ustawionego do wykonywania operacji w puli węzłów indywidualnych.
+> Ta funkcja umożliwia większą kontrolę nad tym, jak tworzyć i zarządzać wieloma pulami węzłów. W rezultacie do tworzenia/aktualizowania/usuwania wymagane są oddzielne polecenia. Wcześniej operacje klastra za pośrednictwem `az aks create` zarządzanegogównajadu `az aks update` interfejsu API i były jedyną opcją, aby zmienić płaszczyznę sterowania i puli pojedynczego węzła. Ta funkcja udostępnia oddzielny zestaw operacji dla pul agenta za `az aks nodepool` pośrednictwem interfejsu API agentpool i wymaga użycia zestawu poleceń do wykonywania operacji w puli poszczególnych węzłów.
 
-W tym artykule pokazano, jak utworzyć wiele pul węzłów i zarządzać nimi w klastrze AKS.
+W tym artykule pokazano, jak tworzyć i zarządzać wieloma pulami węzłów w klastrze AKS.
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
-Wymagany jest interfejs wiersza polecenia platformy Azure w wersji 2.0.76 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure][install-azure-cli].
+Potrzebujesz zainstalowanego i skonfigurowany interfejsu wiersza polecenia platformy Azure w wersji 2.2.0 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure][install-azure-cli].
 
 ## <a name="limitations"></a>Ograniczenia
 
-Następujące ograniczenia są stosowane podczas tworzenia klastrów AKS i zarządzania nimi, które obsługują pule wielu węzłów:
+Podczas tworzenia klastrów AKS i zarządzania nimi obowiązują następujące ograniczenia:
 
-* Zobacz [limity przydziałów, ograniczenia rozmiaru maszyny wirtualnej i dostępność regionów w usłudze Azure Kubernetes Service (AKS)][quotas-skus-regions].
-* Nie można usunąć puli węzłów systemowych, domyślnie jest to pierwsza Pula węzłów.
-* Klaster AKS musi używać usługi równoważenia obciążenia standardowej jednostki SKU do korzystania z wielu pul węzłów, ale ta funkcja nie jest obsługiwana w przypadku podstawowych modułów równoważenia obciążenia SKU.
-* Klaster AKS musi używać zestawów skalowania maszyn wirtualnych dla węzłów.
-* Nazwa puli węzłów może zawierać tylko małe znaki alfanumeryczne i musi zaczynać się małą literą. W przypadku pul węzłów systemu Linux długość musi należeć do zakresu od 1 do 12 znaków, długość musi mieć od 1 do 6 znaków.
+* Zobacz [Przydziały, ograniczenia rozmiaru maszyny wirtualnej i dostępność regionu w usłudze Azure Kubernetes Service (AKS)][quotas-skus-regions].
+* Nie można usunąć puli węzłów systemowych, domyślnie pierwszej puli węzłów.
+* Klaster AKS musi używać standardowego modułu równoważenia obciążenia jednostki SKU do używania wielu pul węzłów, funkcja nie jest obsługiwana w przypadku podstawowych modułów równoważenia obciążenia jednostki SKU.
+* Klaster AKS musi używać zestawów skalowania maszyny wirtualnej dla węzłów.
+* Nazwa puli węzłów może zawierać tylko małe litery alfanumeryczne i musi zaczynać się od małych liter. W przypadku pul węzłów systemu Linux długość musi wynosić od 1 do 12 znaków, w przypadku puli węzłów systemu Windows długość musi wynosić od 1 do 6 znaków.
 * Wszystkie pule węzłów muszą znajdować się w tej samej sieci wirtualnej i podsieci.
-* Podczas tworzenia wielu pul węzłów podczas tworzenia klastra wszystkie wersje Kubernetes używane przez pule węzłów muszą być zgodne z wersją ustawioną dla płaszczyzny kontroli. Tę wersję można zaktualizować po zainicjowaniu obsługi administracyjnej klastra przy użyciu operacji dla puli węzłów.
+* Podczas tworzenia wielu pul węzłów w czasie tworzenia klastra wszystkie wersje kubernetes używane przez pule węzłów muszą być zgodne z wersją ustawioną dla płaszczyzny sterowania. Tę wersję można zaktualizować po zainicjowaniu obsługi administracyjnej klastra przy użyciu operacji puli na węzeł.
 
 ## <a name="create-an-aks-cluster"></a>Tworzenie klastra AKS
 
-Aby rozpocząć, Utwórz klaster AKS z pulą jednego węzła. W poniższym przykładzie za pomocą polecenia [AZ Group Create][az-group-create] można utworzyć grupę zasobów o nazwie Moja *zasobów* w regionie *wschodnim* . Klaster AKS o nazwie *myAKSCluster* jest tworzony przy użyciu polecenia [AZ AKS Create][az-aks-create] . A *--Kubernetes-Version* of *1.15.7* służy do pokazywania sposobu aktualizowania puli węzłów w następnym kroku. Można określić dowolną [obsługiwaną wersję Kubernetes][supported-versions].
+Aby rozpocząć, należy utworzyć klaster AKS z pulą jednego węzła. W poniższym przykładzie użyto polecenia [create grupy az][az-group-create] do utworzenia grupy zasobów o nazwie *myResourceGroup* w regionie *eastus.* Klaster AKS o nazwie *myAKSCluster* jest następnie tworzony za pomocą polecenia [az aks create.][az-aks-create] *Wersja --kubernetes* *1.15.7* służy do pokazywalenia sposobu aktualizowania puli węzłów w następnym kroku. Można określić dowolną [obsługiwani wersję kubernetes][supported-versions].
 
 > [!NOTE]
-> Jednostka SKU usługi równoważenia obciążenia w warstwie *podstawowa* **nie jest obsługiwana** w przypadku używania wielu pul węzłów. Domyślnie klastry AKS są tworzone z użyciem jednostki SKU modułu *równoważenia obciążenia z poziomu interfejsu* wiersza polecenia platformy Azure i Azure Portal.
+> *Podstawowa jednostka* SKU modułu równoważenia obciążenia nie jest **obsługiwana** podczas korzystania z wielu pul węzłów. Domyślnie klastry AKS są tworzone przy za pomocą *standardowej* jednostki SKU równoważenia obciążenia z interfejsu wiersza polecenia platformy Azure i witryny Azure portal.
 
 ```azurecli-interactive
 # Create a resource group in East US
@@ -61,9 +61,9 @@ az aks create \
 Utworzenie klastra trwa kilka minut.
 
 > [!NOTE]
-> Aby zapewnić niezawodne działanie klastra, należy uruchomić co najmniej 2 (dwa) węzły w domyślnej puli węzłów, ponieważ podstawowe usługi systemowe działają w tej puli węzłów.
+> Aby upewnić się, że klaster działa niezawodnie, należy uruchomić co najmniej 2 (dwa) węzły w domyślnej puli węzłów, ponieważ podstawowe usługi systemowe są uruchomione w tej puli węzłów.
 
-Gdy klaster jest gotowy, użyj polecenia [AZ AKS Get-Credentials][az-aks-get-credentials] , aby uzyskać poświadczenia klastra do użycia z `kubectl`:
+Gdy klaster jest gotowy, użyj polecenia [az aks get-credentials,][az-aks-get-credentials] `kubectl`aby uzyskać poświadczenia klastra do użycia z:
 
 ```azurecli-interactive
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
@@ -71,7 +71,7 @@ az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
 
 ## <a name="add-a-node-pool"></a>Dodawanie puli węzłów
 
-Klaster utworzony w poprzednim kroku ma pulę jednego węzła. Dodajmy do drugiego pulę węzłów za pomocą polecenia [AZ AKS nodepool Add][az-aks-nodepool-add] . Poniższy przykład tworzy pulę węzłów o nazwie *mynodepool* , która uruchamia *3* węzły:
+Klaster utworzony w poprzednim kroku ma pulę pojedynczego węzła. Dodajmy drugą pulę węzłów za pomocą polecenia [az aks nodepool add.][az-aks-nodepool-add] Poniższy przykład tworzy pulę węzłów o nazwie *mynodepool,* która uruchamia *3* węzły:
 
 ```azurecli-interactive
 az aks nodepool add \
@@ -83,15 +83,15 @@ az aks nodepool add \
 ```
 
 > [!NOTE]
-> Nazwa puli węzłów musi rozpoczynać się od małej litery i może zawierać tylko znaki alfanumeryczne. W przypadku pul węzłów systemu Linux długość musi należeć do zakresu od 1 do 12 znaków, długość musi mieć od 1 do 6 znaków.
+> Nazwa puli węzłów musi zaczynać się od małych liter i może zawierać tylko znaki alfanumeryczne. W przypadku pul węzłów systemu Linux długość musi wynosić od 1 do 12 znaków, w przypadku puli węzłów systemu Windows długość musi wynosić od 1 do 6 znaków.
 
-Aby wyświetlić stan pul węzłów, użyj polecenia [AZ AKS Node Pool list][az-aks-nodepool-list] i określ grupę zasobów i nazwę klastra:
+Aby wyświetlić stan pul węzłów, użyj polecenia [listy puli węzłów az aks][az-aks-nodepool-list] i określ nazwę grupy zasobów i klastra:
 
 ```azurecli-interactive
 az aks nodepool list --resource-group myResourceGroup --cluster-name myAKSCluster
 ```
 
-Następujące przykładowe dane wyjściowe pokazują, że *mynodepool* został pomyślnie utworzony z trzema węzłami w puli węzłów. Gdy klaster AKS został utworzony w poprzednim kroku, utworzono domyślny *nodepool1* z liczbą węzłów wynoszącą *2*.
+Poniższe przykładowe dane wyjściowe pokazują, że *mynodepool* został pomyślnie utworzony z trzech węzłów w puli węzłów. Podczas tworzenia klastra AKS w poprzednim kroku utworzono domyślny *nodepool1* z liczbą węzłów *2*.
 
 ```output
 [
@@ -119,21 +119,21 @@ Następujące przykładowe dane wyjściowe pokazują, że *mynodepool* został p
 ```
 
 > [!TIP]
-> Jeśli *VmSize* nie zostanie określony podczas dodawania puli węzłów, domyślny rozmiar jest *Standard_DS2_v3* dla pul węzłów systemu Windows i *Standard_DS2_v2* dla pul węzłów w systemie Linux. Jeśli *OrchestratorVersion* nie jest określony, domyślnie jest to taka sama wersja, jak płaszczyzna kontroli.
+> Jeśli podczas dodawania puli węzłów nie określono rozmiaru *VmSize,* domyślny rozmiar jest *Standard_DS2_v3* dla pul węzłów systemu Windows i *Standard_DS2_v2* dla pul węzłów systemu Linux. Jeśli nie *OrchestratorVersion* jest określony, domyślnie do tej samej wersji co płaszczyzna sterowania.
 
 ## <a name="upgrade-a-node-pool"></a>Uaktualnianie puli węzłów
 
 > [!NOTE]
-> Operacje uaktualniania i skalowania w klastrze lub puli węzłów nie mogą występować jednocześnie, jeśli zostanie zwrócony błąd. W zamian każdy typ operacji musi zakończyć się w odniesieniu do zasobu docelowego przed następnym żądaniem tego samego zasobu. Więcej informacji na ten temat znajdziesz w naszym [przewodniku rozwiązywania problemów](https://aka.ms/aks-pending-upgrade).
+> Operacje uaktualniania i skalowania w puli klastra lub węzła nie mogą wystąpić jednocześnie, jeśli zostanie zwrócona próba wystąpienia błędu. Zamiast tego każdy typ operacji musi zakończyć się na zasób docelowy przed następnym żądaniem w tym samym zasobie. Przeczytaj więcej na ten temat w naszym [przewodniku rozwiązywania problemów.](https://aka.ms/aks-pending-upgrade)
 
-Po utworzeniu klastra AKS w pierwszym kroku został określony `--kubernetes-version` *1.15.7* . Spowoduje to ustawienie wersji Kubernetes dla płaszczyzny kontroli i domyślnej puli węzłów. W poleceniach w tej sekcji wyjaśniono, jak uaktualnić pojedynczą określoną pulę węzłów.
+Gdy klaster usługi AKS został pierwotnie `--kubernetes-version` utworzony w pierwszym kroku, określono *1.15.7.* W ten sposób ustawiono wersję kubernetes dla płaszczyzny sterowania i domyślnej puli węzłów. Polecenia w tej sekcji wyjaśniają, jak uaktualnić pulę pojedynczego węzła określonego.
 
-Relacja między uaktualnianiem wersji Kubernetes płaszczyzny kontroli a pulą węzłów znajduje się w [sekcji poniżej](#upgrade-a-cluster-control-plane-with-multiple-node-pools).
+Relacja między uaktualnieniem wersji kubernetes płaszczyzny sterowania a pulą węzłów jest wyjaśniona w [poniższej sekcji](#upgrade-a-cluster-control-plane-with-multiple-node-pools).
 
 > [!NOTE]
-> Wersja obrazu systemu operacyjnego puli węzłów jest powiązana z wersją Kubernetes klastra. Uaktualnienia obrazu systemu operacyjnego są uzyskiwane tylko po uaktualnieniu klastra.
+> Wersja obrazu systemu operacyjnego puli węzłów jest powiązana z wersją klastra w ubraciach kubernetes. Uaktualnienia obrazu systemu operacyjnego będą ujmowane tylko po uaktualnieniu klastra.
 
-Ponieważ w tym przykładzie istnieją dwa pule węzłów, należy użyć [AZ AKS nodepool upgrade][az-aks-nodepool-upgrade] , aby uaktualnić pulę węzłów. Uaktualnimy *mynodepool* do Kubernetes *1.15.7*. Użyj polecenia [AZ AKS nodepool upgrade][az-aks-nodepool-upgrade] , aby uaktualnić pulę węzłów, jak pokazano w następującym przykładzie:
+Ponieważ istnieją dwa węzły pul w tym przykładzie, musimy użyć [az aks nodepool uaktualnienia][az-aks-nodepool-upgrade] do uaktualnienia puli węzłów. Uaktualnijmy *mynodepool* do Kubernetes *1.15.7*. Użyj polecenia [az aks nodepool upgrade,][az-aks-nodepool-upgrade] aby uaktualnić pulę węzłów, jak pokazano w poniższym przykładzie:
 
 ```azurecli-interactive
 az aks nodepool upgrade \
@@ -144,7 +144,7 @@ az aks nodepool upgrade \
     --no-wait
 ```
 
-Ponownie utwórz listę stan pul węzłów za pomocą polecenia [AZ AKS Node Pool list][az-aks-nodepool-list] . Poniższy przykład pokazuje, że *mynodepool* jest w stanie *uaktualnienia* do *1.15.7*:
+Ponownie wyświetl stan pul węzłów za pomocą polecenia [az aks node pool list.][az-aks-nodepool-list] Poniższy przykład pokazuje, że *mynodepool* jest w stanie *uaktualniania* do *1.15.7:*
 
 ```azurecli
 az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
@@ -179,49 +179,49 @@ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
 ]
 ```
 
-Uaktualnienie węzłów do określonej wersji może potrwać kilka minut.
+Uaktualnienie węzłów do określonej wersji zajmuje kilka minut.
 
-Najlepszym rozwiązaniem jest uaktualnienie wszystkich pul węzłów w klastrze AKS do tej samej wersji Kubernetes. Domyślne zachowanie `az aks upgrade` polega na uaktualnieniu wszystkich pul węzłów razem z płaszczyzną kontroli w celu osiągnięcia tego wyrównania. Możliwość uaktualnienia poszczególnych pul węzłów umożliwia przeprowadzenie uaktualnienia stopniowego i zaplanowanie między pulami węzłów, aby zachować czas działania aplikacji w ramach powyższych ograniczeń wymienionych powyżej.
+Najlepszym rozwiązaniem jest uaktualnienie wszystkich pul węzłów w klastrze AKS do tej samej wersji usługi Kubernetes. Domyślnym zachowaniem `az aks upgrade` jest uaktualnienie wszystkich pul węzłów wraz z płaszczyzną kontrolną, aby osiągnąć to wyrównanie. Możliwość uaktualniania poszczególnych pul węzłów umożliwia wykonywanie uaktualniania stopniowego i planowania zasobników między pulami węzłów w celu utrzymania czasu pracy aplikacji w ramach wyżej wymienionych ograniczeń.
 
-## <a name="upgrade-a-cluster-control-plane-with-multiple-node-pools"></a>Uaktualnianie płaszczyzny kontroli klastra z wieloma pulami węzłów
+## <a name="upgrade-a-cluster-control-plane-with-multiple-node-pools"></a>Uaktualnianie płaszczyzny sterowania klastra z wieloma pulami węzłów
 
 > [!NOTE]
-> Kubernetes używa standardowego schematu obsługi wersji [semantycznej](https://semver.org/) . Numer wersji jest wyrażony jako *x. y. z*, gdzie *x* jest wersją główną, *y* jest wersją pomocniczą, a *z* to wersja poprawki. Na przykład w wersji *1.12.6*1 jest wersją główną, 12 jest wersją pomocniczą, a 6 to wersja poprawki. Wersja Kubernetes płaszczyzny kontroli i początkowa Pula węzłów są ustawiane podczas tworzenia klastra. Wszystkie dodatkowe pule węzłów mają ustawioną wersję Kubernetes po dodaniu ich do klastra. Wersje Kubernetes mogą się różnić między pulami węzłów, a także między pulą węzłów a płaszczyzną kontroli.
+> Kubernetes używa standardowego schematu przechowywania [wersji semantycznych.](https://semver.org/) Numer wersji jest wyrażony jako *x.y.z*, gdzie *x* jest wersją główną, *y* jest wersją pomocniczą, a *z* jest wersją patcha. Na przykład w wersji *1.12.6*, 1 jest wersja główna, 12 jest wersja pomocnicza, a 6 jest wersja poprawki. Wersja Kubernetes płaszczyzny sterowania i początkowej puli węzłów są ustawiane podczas tworzenia klastra. Wszystkie dodatkowe pule węzłów mają ich wersji Kubernetes zestaw po dodaniu do klastra. Wersje kubernetes mogą się różnić między pulami węzłów, a także między pulą węzłów a płaszczyzną sterowania.
 
-Klaster AKS ma dwa obiekty zasobów klastra z skojarzonymi wersjami Kubernetes.
+Klaster AKS ma dwa obiekty zasobów klastra z skojarzonymi wersjami usługi Kubernetes.
 
-1. Kubernetes wersja płaszczyzny kontroli klastra.
-2. Pula węzłów z wersją Kubernetes.
+1. Wersja kubernetes płaszczyzny sterowania klastra.
+2. Pula węzłów z wersją kubernetes.
 
-Płaszczyzna kontrolna jest mapowana na jedną lub wiele pul węzłów. Zachowanie operacji uaktualniania zależy od tego, które polecenie interfejsu wiersza polecenia platformy Azure jest używane.
+Płaszczyzna sterowania jest mapowana na jedną lub wiele pul węzłów. Zachowanie operacji uaktualniania zależy od tego, które polecenie interfejsu wiersza polecenia platformy Azure jest używane.
 
-Uaktualnianie płaszczyzny kontroli AKS wymaga użycia `az aks upgrade`. To polecenie uaktualnia wersję płaszczyzny kontroli i wszystkie pule węzłów w klastrze.
+Modernizacja płaszczyzny sterowania AKS wymaga użycia `az aks upgrade`. To polecenie uaktualnia wersję płaszczyzny sterowania i wszystkie pule węzłów w klastrze.
 
-Wydawanie `az aks upgrade` polecenie z flagą `--control-plane-only` uaktualnia tylko płaszczyznę kontroli klastra. Żadna ze skojarzonych pul węzłów w klastrze nie zostanie zmieniona.
+Wydanie `az aks upgrade` polecenia z `--control-plane-only` flagą uaktualnia tylko płaszczyznę sterowania klastra. Żadna z pul skojarzonych węzłów w klastrze nie została zmieniona.
 
-Uaktualnianie poszczególnych pul węzłów wymaga użycia `az aks nodepool upgrade`. To polecenie uaktualnia tylko pulę węzłów docelowych z określoną wersją Kubernetes
+Uaktualnianie poszczególnych pul węzłów wymaga użycia programu `az aks nodepool upgrade`. To polecenie uaktualnia tylko pulę węzłów docelowych z określoną wersją programu Kubernetes
 
-### <a name="validation-rules-for-upgrades"></a>Reguły walidacji dla uaktualnień
+### <a name="validation-rules-for-upgrades"></a>Reguły sprawdzania poprawności uaktualnień
 
-Prawidłowe uaktualnienia Kubernetes dla płaszczyzny kontroli i pul węzłów klastra są weryfikowane przez następujące zestawy reguł.
+Prawidłowe uaktualnienia kubernetes dla płaszczyzny sterowania klastra i pul węzłów są sprawdzane przez następujące zestawy reguł.
 
-* Reguły dotyczące prawidłowych wersji do uaktualnienia pul węzłów:
-   * Wersja puli węzłów musi mieć taką samą wersję *główną* jak płaszczyzna kontroli.
-   * Wersja *pomocnicza* puli węzłów musi znajdować się w dwóch *mniejszych* wersjach wersji płaszczyzny kontroli.
-   * Wersja puli węzłów nie może być większa niż kontrolka `major.minor.patch` wersja.
+* Reguły dla prawidłowych wersji do uaktualniania pul węzłów:
+   * Wersja puli węzłów musi mieć taką samą wersję *główną* jak płaszczyzna kontrolna.
+   * Wersja *pomocnicza* puli węzłów musi mieszczeć się w dwóch *wersjach pomocniczych* wersji płaszczyzny sterowania.
+   * Wersja puli węzłów nie może `major.minor.patch` być większa niż wersja formantu.
 
-* Reguły przesyłania operacji uaktualniania:
-   * Nie można zmienić wersji Kubernetes płaszczyzny kontroli ani puli węzłów.
-   * Jeśli nie określono wersji Kubernetes puli węzłów, zachowanie zależy od używanego klienta. Deklaracja w szablonach Menedżer zasobów powraca do istniejącej wersji zdefiniowanej dla puli węzłów, jeśli jest używana, jeśli żadna z nich nie jest ustawiona, zostanie użyta wersja płaszczyzny kontroli.
-   * Można uaktualnić lub skalować płaszczyznę kontroli lub pulę węzłów w danym momencie, nie można jednocześnie przesłać wielu operacji na pojedynczej płaszczyźnie kontroli lub w puli węzłów.
+* Zasady przesyłania operacji uaktualniania:
+   * Nie można obniżyć płaszczyzny sterowania lub wersji kubernetes puli węzłów.
+   * Jeśli wersja kubernetes puli węzłów nie jest określona, zachowanie zależy od używanego klienta. Deklaracja w szablonach Menedżera zasobów powraca do istniejącej wersji zdefiniowanej dla puli węzłów, jeśli jest używana, jeśli nie jest ustawiona wersja płaszczyzny sterowania jest używana do powrotu.
+   * Można uaktualnić lub skalować płaszczyznę kontrolną lub pulę węzłów w danym czasie, nie można przesłać wielu operacji na jednej płaszczyźnie kontrolnej lub zasobu puli węzłów jednocześnie.
 
 ## <a name="scale-a-node-pool-manually"></a>Ręczne skalowanie puli węzłów
 
-Gdy obciążenie aplikacji wymaga zmiany, może być konieczne skalowanie liczby węzłów w puli węzłów. Liczbę węzłów można skalować w górę lub w dół.
+W miarę jak zapotrzebowanie na obciążenie aplikacji wymaga zmiany, może być konieczne skalowanie liczby węzłów w puli węzłów. Liczbę węzłów można skalować w górę lub w dół.
 
 <!--If you scale down, nodes are carefully [cordoned and drained][kubernetes-drain] to minimize disruption to running applications.-->
 
-Aby skalować liczbę węzłów w puli węzłów, użyj polecenia [AZ AKS Node Pool Scale][az-aks-nodepool-scale] . Poniższy przykład skaluje liczbę węzłów w *mynodepool* do *5*:
+Aby skalować liczbę węzłów w puli węzłów, użyj polecenia [skali puli węzłów az aks.][az-aks-nodepool-scale] Poniższy przykład skaluje liczbę węzłów w *mynodepool* do *5:*
 
 ```azurecli-interactive
 az aks nodepool scale \
@@ -232,7 +232,7 @@ az aks nodepool scale \
     --no-wait
 ```
 
-Ponownie utwórz listę stan pul węzłów za pomocą polecenia [AZ AKS Node Pool list][az-aks-nodepool-list] . Poniższy przykład pokazuje, że *mynodepool* jest w stanie *skalowania* z nową liczbą *5* węzłów:
+Ponownie wyświetl stan pul węzłów za pomocą polecenia [az aks node pool list.][az-aks-nodepool-list] Poniższy przykład pokazuje, że *mynodepool* jest w stanie *skalowania* z nową liczbą *5* węzłów:
 
 ```azurecli
 az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
@@ -267,24 +267,24 @@ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
 ]
 ```
 
-Ukończenie operacji skalowania może potrwać kilka minut.
+Trwa kilka minut, aby zakończyć operację skalowania.
 
-## <a name="scale-a-specific-node-pool-automatically-by-enabling-the-cluster-autoscaler"></a>Automatyczne skalowanie określonej puli węzłów przez włączenie automatycznego skalowania klastra
+## <a name="scale-a-specific-node-pool-automatically-by-enabling-the-cluster-autoscaler"></a>Automatyczne skalowanie określonej puli węzłów przez włączenie skalowania automatycznego klastra
 
-AKS oferuje osobną funkcję automatycznego skalowania pul węzłów za pomocą funkcji zwanej [autoskalowaniem klastra](cluster-autoscaler.md). Tę funkcję można włączyć dla puli węzłów z unikatowymi minimalnymi i maksymalnymi liczbami skalowania na pulę węzłów. Dowiedz się [, jak korzystać z automatycznego skalowania klastra na pulę węzłów](cluster-autoscaler.md#use-the-cluster-autoscaler-with-multiple-node-pools-enabled).
+Usługa AKS oferuje oddzielną funkcję automatycznego skalowania pul węzłów za pomocą funkcji zwanej [skalowaniem automatycznym klastra.](cluster-autoscaler.md) Ta funkcja może być włączona na pulę węzłów z unikatową minimalną i maksymalną liczbą skali na pulę węzłów. Dowiedz się, jak [używać skalowania automatycznego klastra na pulę węzłów](cluster-autoscaler.md#use-the-cluster-autoscaler-with-multiple-node-pools-enabled).
 
 ## <a name="delete-a-node-pool"></a>Usuwanie puli węzłów
 
-Jeśli pula nie jest już potrzebna, można ją usunąć i usunąć źródłowe węzły maszyn wirtualnych. Aby usunąć pulę węzłów, użyj polecenia [AZ AKS Node Pool Delete][az-aks-nodepool-delete] i określ nazwę puli węzłów. Poniższy przykład usuwa *mynoodepool* utworzone w poprzednich krokach:
+Jeśli nie potrzebujesz już puli, można ją usunąć i usunąć podstawowe węzły maszyny Wirtualnej. Aby usunąć pulę węzłów, użyj polecenia [usuwania puli węzłów az aks][az-aks-nodepool-delete] i określ nazwę puli węzłów. Poniższy przykład usuwa *mynoodepool* utworzony w poprzednich krokach:
 
 > [!CAUTION]
-> Brak opcji odzyskiwania dla utraty danych, które mogą wystąpić po usunięciu puli węzłów. Jeśli nie można zaplanować puli dla innych pul węzłów, te aplikacje są niedostępne. Upewnij się, że nie usuniesz puli węzłów, gdy aplikacje w użyciu nie mają kopii zapasowych danych ani nie mogą być uruchamiane na innych pulach węzłów w klastrze.
+> Nie ma żadnych opcji odzyskiwania dla utraty danych, które mogą wystąpić po usunięciu puli węzłów. Jeśli zasobników nie można zaplanować w innych pulach węzłów, te aplikacje są niedostępne. Upewnij się, że nie usuniesz puli węzłów, gdy aplikacje w użyciu nie mają kopii zapasowych danych lub możliwość uruchamiania w innych pulach węzłów w klastrze.
 
 ```azurecli-interactive
 az aks nodepool delete -g myResourceGroup --cluster-name myAKSCluster --name mynodepool --no-wait
 ```
 
-Następujące przykładowe dane wyjściowe z polecenia [AZ AKS Node Pool list][az-aks-nodepool-list] pokazują, że *mynodepool* jest w stanie *usuwania* :
+Poniższy przykład danych wyjściowych z [az aks node pool list][az-aks-nodepool-list] polecenia pokazuje, że *mynodepool* jest w stanie *usuwania:*
 
 ```azurecli
 az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
@@ -319,15 +319,15 @@ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
 ]
 ```
 
-Usunięcie węzłów i puli węzłów może potrwać kilka minut.
+Usunięcie węzłów i puli węzłów zajmuje kilka minut.
 
-## <a name="specify-a-vm-size-for-a-node-pool"></a>Określanie rozmiaru maszyny wirtualnej dla puli węzłów
+## <a name="specify-a-vm-size-for-a-node-pool"></a>Określanie rozmiaru maszyny Wirtualnej dla puli węzłów
 
-W poprzednich przykładach w celu utworzenia puli węzłów dla węzłów utworzonych w klastrze użyto domyślnego rozmiaru maszyny wirtualnej. Bardziej typowy scenariusz polega na tworzeniu pul węzłów o różnych rozmiarach i możliwościach maszyn wirtualnych. Można na przykład utworzyć pulę węzłów zawierającą węzły z dużą ilością procesora lub pamięci albo pulę węzłów, która zapewnia obsługę procesora GPU. W następnym kroku należy użyć przystawek [i tolerowania](#schedule-pods-using-taints-and-tolerations) , aby poinformować usługę Kubernetes Scheduler, jak ograniczyć dostęp do zasobników, które mogą być uruchamiane w tych węzłach.
+W poprzednich przykładach tworzenia puli węzłów dla węzłów użyto domyślnego rozmiaru maszyny Wirtualnej dla węzłów utworzonych w klastrze. Bardziej typowym scenariuszem jest tworzenie pul węzłów o różnych rozmiarach i możliwościach maszyn wirtualnych. Na przykład można utworzyć pulę węzłów, która zawiera węzły z dużymi ilościami procesora CPU lub pamięci lub puli węzłów, która zapewnia obsługę procesora GPU. W następnym kroku [należy użyć taints i tolerancji,](#schedule-pods-using-taints-and-tolerations) aby poinformować harmonogram Kubernetes, jak ograniczyć dostęp do zasobników, które można uruchomić w tych węzłach.
 
-W poniższym przykładzie Utwórz pulę węzłów opartą na procesorze GPU, która używa *Standard_NC6* rozmiaru maszyny wirtualnej. Te maszyny wirtualne są obsługiwane przez kartę NVIDIA Tesla K80. Aby uzyskać informacje na temat dostępnych rozmiarów maszyn wirtualnych, zobacz [rozmiary maszyn wirtualnych z systemem Linux na platformie Azure][vm-sizes].
+W poniższym przykładzie utwórz pulę węzłów opartych na procesorze GPU, która używa *Standard_NC6* rozmiaru maszyny Wirtualnej. Te maszyny wirtualne są zasilane przez kartę NVIDIA Tesla K80. Aby uzyskać informacje na temat dostępnych rozmiarów maszyn wirtualnych, zobacz [Rozmiary maszyn wirtualnych systemu Linux na platformie Azure][vm-sizes].
 
-Utwórz pulę węzłów za pomocą polecenia [AZ AKS Node Pool Add][az-aks-nodepool-add] . Tym razem Określ nazwę *gpunodepool*i użyj parametru `--node-vm-size`, aby określić rozmiar *Standard_NC6* :
+Utwórz ponownie pulę węzłów przy użyciu [polecenia dodaj węzeł az aks.][az-aks-nodepool-add] Tym razem określ nazwę *gpunodepool* `--node-vm-size` i użyj parametru, aby określić *rozmiar Standard_NC6:*
 
 ```azurecli-interactive
 az aks nodepool add \
@@ -339,7 +339,7 @@ az aks nodepool add \
     --no-wait
 ```
 
-Następujące przykładowe dane wyjściowe z polecenia [AZ AKS Node Pool list][az-aks-nodepool-list] pokazują, że *gpunodepool* *tworzy* węzły o określonym *VmSize*:
+Poniższy przykładowy wynik z polecenia [az aks node pool list][az-aks-nodepool-list] pokazuje, że *gpunodepool* jest *Tworzenie* węzłów o określonej *VmSize:*
 
 ```azurecli
 az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
@@ -374,11 +374,11 @@ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
 ]
 ```
 
-Pomyślne utworzenie *gpunodepool* może potrwać kilka minut.
+Trwa kilka minut dla *gpunodepool,* które mają zostać pomyślnie utworzone.
 
-## <a name="schedule-pods-using-taints-and-tolerations"></a>Zaplanuj użycie zasobników z zmianami i tolerowaniem
+## <a name="schedule-pods-using-taints-and-tolerations"></a>Zaplanuj strąki za pomocą skaz i tolerancji
 
-W klastrze znajdują się teraz dwa pule węzłów — domyślna pula węzłów została początkowo utworzona i Pula węzłów oparta na procesorze GPU. Użyj [polecenia kubectl Pobierz węzły][kubectl-get] polecenie, aby wyświetlić węzły w klastrze. Następujące przykładowe dane wyjściowe przedstawiają węzły:
+Masz teraz dwie pule węzłów w klastrze — domyślna pula węzłów została pierwotnie utworzona i pula węzłów oparta na procesorze GPU. Użyj [polecenia kubectl get nodes,][kubectl-get] aby wyświetlić węzły w klastrze. Następujące przykładowe dane wyjściowe pokazuje węzły:
 
 ```console
 kubectl get nodes
@@ -390,22 +390,22 @@ aks-gpunodepool-28993262-vmss000000  Ready    agent   4m22s   v1.15.7
 aks-nodepool1-28993262-vmss000000    Ready    agent   115m    v1.15.7
 ```
 
-Harmonogram Kubernetes może używać przyniesień i tolerowanych elementów w celu ograniczenia obciążeń, które mogą być uruchamiane w węzłach.
+Harmonogram Kubernetes można używać taints i tolerancji, aby ograniczyć, jakie obciążenia można uruchomić w węzłach.
 
-* Do **węzła jest stosowany** obiekt, który wskazuje na ich zaplanowanie tylko określonych zasobników.
-* **Tolerowana** jest następnie stosowana do elementu, który umożliwia im *tolerowanie* kształtu węzła.
+* **Skazy** jest stosowany do węzła, który wskazuje tylko określone zasobników mogą być zaplanowane na nich.
+* **Tolerancja** jest następnie stosowana do zasobnika, który pozwala im *tolerować skazy* węzła.
 
-Aby uzyskać więcej informacji na temat korzystania z zaawansowanych funkcji usługi Kubernetes, zobacz [najlepsze rozwiązania dotyczące zaawansowanych funkcji usługi Scheduler w AKS][taints-tolerations]
+Aby uzyskać więcej informacji na temat korzystania z zaawansowanych zaplanowanych funkcji kubernetes, zobacz [Najważniejsze wskazówki dotyczące zaawansowanych funkcji harmonogramu w ustroju AKS][taints-tolerations]
 
-W tym przykładzie Zastosuj przybarwienie do węzła opartego na procesorach GPU przy użyciu polecenia--Node-. Określ nazwę węzła opartego na procesorze GPU z danych wyjściowych poprzedniego polecenia `kubectl get nodes`. Ten obiekt jest stosowany jako *klucz: wartość* , a następnie opcja planowania. W poniższym przykładzie używa pary *SKU = GPU* i definiujemy *w inny sposób możliwości* noscheduler:
+W tym przykładzie zastosuj skazę do węzła opartego na procesorze GPU za pomocą polecenia --node-taints. Określ nazwę węzła opartego na procesorze `kubectl get nodes` GPU z danych wyjściowych poprzedniego polecenia. Skażenie jest stosowane jako *klucz:wartość,* a następnie opcja planowania. W poniższym przykładzie użyto pary *sku=gpu* i definiuje zasobników, w przeciwnym razie mają zdolność *NoSchedule:*
 
 ```console
 az aks nodepool add --node-taints aks-gpunodepool-28993262-vmss000000 sku=gpu:NoSchedule
 ```
 
-Poniższy podstawowy przykład manifestu YAML korzysta z tolerowania, aby umożliwić usłudze Kubernetes Scheduler uruchamianie NGINX na węźle opartym na procesorze GPU. Aby uzyskać bardziej odpowiedni, ale czasochłonny Przykładowo, aby uruchomić zadanie Tensorflow w odniesieniu do zestawu danych MNIST ręcznie, zobacz [Korzystanie z procesorów GPU na potrzeby obciążeń intensywnie korzystających z obliczeń na AKS][gpu-cluster].
+Poniższy podstawowy przykład yaml manifest używa tolerancji, aby umożliwić harmonogramu Kubernetes do uruchomienia zasobnika NGINX w węźle opartym na procesorze GPU. Aby uzyskać bardziej odpowiedni, ale czasochłonny przykład uruchamiania zadania Tensorflow względem zestawu danych MNIST, zobacz [Używanie procesorów GPU dla obciążeń intensywnie korzystających z obliczeń w udziale AKS][gpu-cluster].
 
-Utwórz plik o nazwie `gpu-toleration.yaml` i skopiuj go w poniższym przykładzie YAML:
+Utwórz plik `gpu-toleration.yaml` o nazwie i skopiuj w poniższym przykładzie YAML:
 
 ```yaml
 apiVersion: v1
@@ -430,13 +430,13 @@ spec:
     effect: "NoSchedule"
 ```
 
-Zaplanuj użycie przy użyciu `kubectl apply -f gpu-toleration.yaml` polecenia:
+Zaplanuj `kubectl apply -f gpu-toleration.yaml` zasobnik za pomocą polecenia:
 
 ```console
 kubectl apply -f gpu-toleration.yaml
 ```
 
-Zaplanowanie i ściągnięcie obrazu NGINX może potrwać kilka sekund. Użyj polecenia [polecenia kubectl opisz pod][kubectl-describe] , aby wyświetlić stan pod. Następujące wąskie przykładowe dane wyjściowe pokazują, że jest stosowane tolerowanie *jednostki SKU = GPU: NoSchedule* . W sekcji Events Scheduler przypisano do węzła *AKS-gpunodepool-28993262-vmss000000* procesora GPU:
+To trwa kilka sekund, aby zaplanować zasobnika i wyciągnąć obraz NGINX. Użyj [polecenia kubectl describe pod,][kubectl-describe] aby wyświetlić stan zasobnika. Następujące skondensowane przykładowe dane wyjściowe pokazuje *sku = gpu:NoSchedule* tolerancji jest stosowana. W sekcji zdarzenia harmonogram przypisał zasobnik do *węzła opartego na procesorze gpu aks-gpunodepool-28993262-vmss0000000:*
 
 ```console
 kubectl describe pod mypod
@@ -457,13 +457,13 @@ Events:
   Normal  Started    4m40s  kubelet, aks-gpunodepool-28993262-vmss000000  Started container
 ```
 
-Na węzłach w *gpunodepool*można zaplanować tylko te zasobniki, do których zastosowano ten przedział. Wszystkie inne na stronie zaplanowano w puli węzłów *nodepool1* . W przypadku tworzenia dodatkowych pul węzłów można użyć dodatkowych przydziałów i tolerowania, aby ograniczyć liczbę elementów, które można zaplanować w tych zasobach węzła.
+Tylko zasobników, które mają ten taint stosowane mogą być zaplanowane w węzłach w *gpunodepool*. Każdy inny zasobnik zostanie zaplanowany w puli węzłów *nodepool1.* Jeśli utworzysz dodatkowe pule węzłów, można użyć dodatkowych skazy i tolerancji, aby ograniczyć, jakie zasobniki można zaplanować w tych zasobach węzła.
 
-## <a name="specify-a-taint-label-or-tag-for-a-node-pool"></a>Określ przebarwienie, etykietę lub tag dla puli węzłów
+## <a name="specify-a-taint-label-or-tag-for-a-node-pool"></a>Określanie skazy, etykiety lub znacznika dla puli węzłów
 
-Podczas tworzenia puli węzłów można dodawać do niej takie same, etykiety lub Tagi. Po dodaniu opcji przeciąganie, etykietka lub tag wszystkie węzły w puli węzłów również pobierają ten obiekt, etykietę lub tag.
+Podczas tworzenia puli węzłów można dodawać skazy, etykiety lub znaczniki do tej puli węzłów. Po dodaniu skazy, etykiety lub znacznika wszystkie węzły w tej puli węzłów również uzyskać ten taint, etykiety lub tagu.
 
-Aby utworzyć pulę węzłów z przebarwieniem, użyj [AZ AKS nodepool Add][az-aks-nodepool-add]. Określ nazwę *taintnp* i użyj parametru `--node-taints`, aby określić *jednostkę SKU = GPU: NoSchedule dla zmiany* czasu.
+Aby utworzyć pulę węzłów z skazy, użyj [az aks nodepool add][az-aks-nodepool-add]. Określ nazwę *taintnp* `--node-taints` i użyj parametru, aby określić *sku=gpu:NoSchedule* dla skażenia.
 
 ```azurecli-interactive
 az aks nodepool add \
@@ -475,7 +475,7 @@ az aks nodepool add \
     --no-wait
 ```
 
-Następujące przykładowe dane wyjściowe z polecenia [AZ AKS nodepool list][az-aks-nodepool-list] pokazują, że *taintnp* *tworzy* węzły z określonym *nodeTaints*:
+Poniższy przykładowy wynik z polecenia [az aks nodepool][az-aks-nodepool-list] list pokazuje, że *taintnp* jest *Tworzenie* węzłów z określonym *nodeTaints:*
 
 ```console
 $ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
@@ -499,22 +499,11 @@ $ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
 ]
 ```
 
-Informacje o zasobie są widoczne w Kubernetes na potrzeby obsługi reguł planowania dla węzłów.
+Informacje o skazy są widoczne w umotywanie do obsługi reguł planowania dla węzłów.
 
-> [!IMPORTANT]
-> Aby można było używać etykiet i tagów puli węzłów, wymagany jest *AKS-Preview* interfejsu wiersza polecenia w wersji 0.4.35 lub nowszej. Zainstaluj rozszerzenie interfejsu wiersza polecenia platformy Azure w *wersji zapoznawczej* przy użyciu poleceń [AZ Extension Add][az-extension-add] , a następnie wyszukaj wszystkie dostępne aktualizacje za pomocą polecenia [AZ Extension Update][az-extension-update] :
-> 
-> ```azurecli-interactive
-> # Install the aks-preview extension
-> az extension add --name aks-preview
-> 
-> # Update the extension to make sure you have the latest version installed
-> az extension update --name aks-preview
-> ```
+Można również dodać etykiety do puli węzłów podczas tworzenia puli węzłów. Etykiety ustawione w puli węzłów są dodawane do każdego węzła w puli węzłów. Te [etykiety są widoczne w umięsienia][kubernetes-labels] do obsługi reguł planowania dla węzłów.
 
-Podczas tworzenia puli węzłów można również dodać etykiety do puli węzłów. Etykiety ustawione w puli węzłów są dodawane do każdego węzła w puli węzłów. Te [etykiety są widoczne w Kubernetes][kubernetes-labels] na potrzeby obsługi reguł planowania dla węzłów.
-
-Aby utworzyć pulę węzłów za pomocą etykiety, użyj [AZ AKS nodepool Add][az-aks-nodepool-add]. Określ nazwę *labelnp* i użyj parametru `--labels`, aby określić *Wydział = IT* i *costcenter = 9999* dla etykiet.
+Aby utworzyć pulę węzłów z etykietą, użyj [az aks nodepool add][az-aks-nodepool-add]. Określ nazwę *labelnp* `--labels` i użyj parametru, aby określić *dept=IT* i *costcenter=9999* dla etykiet.
 
 ```azurecli-interactive
 az aks nodepool add \
@@ -527,9 +516,9 @@ az aks nodepool add \
 ```
 
 > [!NOTE]
-> Etykietę można ustawić tylko dla pul węzłów podczas tworzenia puli węzłów. Etykiety muszą być również parą klucz/wartość i mieć [prawidłową składnię][kubernetes-label-syntax].
+> Etykieta może być ustawiona tylko dla pul węzłów podczas tworzenia puli węzłów. Etykiety muszą być również parą klucz/wartość i mieć [prawidłową składnię][kubernetes-label-syntax].
 
-Następujące przykładowe dane wyjściowe z polecenia [AZ AKS nodepool list][az-aks-nodepool-list] pokazują, że *labelnp* *tworzy* węzły z określonym *nodeLabels*:
+Poniższy przykładowy wynik z [az aks nodepool polecenie][az-aks-nodepool-list] pokazuje, że *labelnp* jest *Tworzenie* węzłów z określonym *nodeLabels:*
 
 ```console
 $ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
@@ -554,9 +543,9 @@ $ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
 ]
 ```
 
-Możesz zastosować tag platformy Azure do pul węzłów w klastrze AKS. Tagi zastosowane do puli węzłów są stosowane do każdego węzła w puli węzłów i są utrwalane za pomocą uaktualnień. Tagi są również stosowane do nowych węzłów dodanych do puli węzłów podczas operacji skalowania w poziomie. Dodanie tagu może ułatwić wykonywanie zadań, takich jak śledzenie zasad lub szacowanie kosztów.
+Tag platformy Azure można zastosować do pul węzłów w klastrze AKS. Tagi stosowane do puli węzłów są stosowane do każdego węzła w puli węzłów i są utrwalone za pomocą uaktualnień. Znaczniki są również stosowane do nowych węzłów dodanych do puli węzłów podczas operacji skalowania w poziomie. Dodanie tagu może pomóc w zadaniach, takich jak śledzenie zasad lub szacowanie kosztów.
 
-Utwórz pulę węzłów za pomocą polecenia [AZ AKS nodepool Add][az-aks-nodepool-add]. Określ nazwę *tagnodepool* i użyj parametru `--tag`, aby określić *Wydział = IT* i *costcenter = 9999* dla tagów.
+Utwórz pulę węzłów przy użyciu [az aks nodepool add][az-aks-nodepool-add]. Określ nazwę *tagnodepool* `--tag` i użyj parametru, aby określić *dept=IT* i *costcenter=9999* dla tagów.
 
 ```azurecli-interactive
 az aks nodepool add \
@@ -569,9 +558,9 @@ az aks nodepool add \
 ```
 
 > [!NOTE]
-> Za pomocą polecenia [AZ AKS nodepool Update][az-aks-nodepool-update] można także użyć parametru `--tags`, jak również podczas tworzenia klastra. Podczas tworzenia klastra `--tags` parametr stosuje tag do początkowej puli węzłów utworzonej w klastrze. Wszystkie nazwy tagów muszą być zgodne z ograniczeniami w sposobie [używania tagów do organizowania zasobów platformy Azure][tag-limitation]. Aktualizacja puli węzłów za pomocą parametru `--tags` aktualizuje wszystkie istniejące wartości tagów i dołącza wszelkie nowe tagi. Na przykład jeśli Pula węzłów ma *Wydział = IT* i *costcenter = 9999* dla tagów i Zaktualizowano ją z *zespołem = dev* i *costcenter = 111* dla tagów, nodepool byłoby miały *Wydział = IT*, *costcenter = 111*i *zespół = dev* for Tags.
+> Można również użyć `--tags` tego parametru podczas używania polecenia [aktualizacji az aks nodepool,][az-aks-nodepool-update] a także podczas tworzenia klastra. Podczas tworzenia klastra `--tags` parametr stosuje znacznik do początkowej puli węzłów utworzonej za pomocą klastra. Wszystkie nazwy tagów muszą być zgodne z ograniczeniami w [użyciu tagów do organizowania zasobów platformy Azure][tag-limitation]. Aktualizowanie puli węzłów `--tags` za pomocą parametru aktualizuje wszystkie istniejące wartości tagów i dołącza wszystkie nowe znaczniki. Na przykład, jeśli pula węzłów miała *dept=IT* i *costcenter=9999* dla tagów i zaktualizowałeś ją za pomocą *team=dev* i *costcenter=111* dla tagów, nodepool miałby *dept=IT*, *costcenter=111*i *team=dev* dla tagów.
 
-Następujące przykładowe dane wyjściowe z polecenia [AZ AKS nodepool list][az-aks-nodepool-list] pokazują, że *tagnodepool* *tworzy* węzły z określonym *tagiem*:
+Poniższy przykładowy wynik z polecenia [az aks nodepool list][az-aks-nodepool-list] pokazuje, że *tagnodepool* jest *Tworzenie* węzłów z określonym *tagiem:*
 
 ```azurecli
 az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
@@ -598,17 +587,17 @@ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
 ]
 ```
 
-## <a name="manage-node-pools-using-a-resource-manager-template"></a>Zarządzanie pulami węzłów przy użyciu szablonu Menedżer zasobów
+## <a name="manage-node-pools-using-a-resource-manager-template"></a>Zarządzanie pulami węzłów przy użyciu szablonu Menedżera zasobów
 
-W przypadku tworzenia i zarządzania zasobami przy użyciu szablonu Azure Resource Manager można zwykle zaktualizować ustawienia w szablonie i wdrożyć je ponownie w celu zaktualizowania zasobu. W przypadku pul węzłów w AKS nie można zaktualizować profilu początkowej puli węzłów po utworzeniu klastra AKS. To zachowanie oznacza, że nie można zaktualizować istniejącego szablonu Menedżer zasobów, wprowadzić zmiany w pulach węzłów i ponownie wdrożyć. Zamiast tego należy utworzyć oddzielny szablon Menedżer zasobów, który aktualizuje tylko pule węzłów dla istniejącego klastra AKS.
+Korzystając z szablonu usługi Azure Resource Manager do tworzenia zasobów i zarządzanych zasobów, zazwyczaj można zaktualizować ustawienia w szablonie i ponownie wdrożyć, aby zaktualizować zasób. W pulach węzłów w uzywniu usługi AKS nie można zaktualizować początkowego profilu puli węzłów po utworzeniu klastra AKS. To zachowanie oznacza, że nie można zaktualizować istniejącego szablonu Menedżera zasobów, wprowadzić zmiany w pulach węzłów i ponownie wdrożyć. Zamiast tego należy utworzyć oddzielny szablon Menedżera zasobów, który aktualizuje tylko pule węzłów dla istniejącego klastra AKS.
 
-Utwórz szablon, taki jak `aks-agentpools.json`, i wklej następujący przykładowy manifest. Ten przykładowy szablon służy do konfigurowania następujących ustawień:
+Utwórz szablon, `aks-agentpools.json` taki jak i wklej następujący przykładowy manifest. W tym przykładowym szablonie skonfigurowano następujące ustawienia:
 
-* Aktualizuje pulę węzłów systemu *Linux* o nazwie *myagentpool* , aby uruchamiać trzy węzły.
-* Ustawia węzły w puli węzłów do uruchomienia Kubernetes w wersji *1.15.7*.
-* Określa rozmiar węzła jako *Standard_DS2_v2*.
+* Aktualizuje pulę węzłów *systemu Linux* o nazwie *myagentpool,* aby uruchomić trzy węzły.
+* Ustawia węzły w puli węzłów do uruchamiania aplikacji Kubernetes w wersji *1.15.7*.
+* Definiuje rozmiar węzła jako *Standard_DS2_v2*.
 
-W razie potrzeby należy edytować te wartości jako wymagające aktualizacji, dodania lub usunięcia pul węzłów:
+W razie potrzeby edytuj te wartości w celu zaktualizowania, dodania lub usunięcia pul węzłów:
 
 ```json
 {
@@ -677,7 +666,7 @@ W razie potrzeby należy edytować te wartości jako wymagające aktualizacji, d
 }
 ```
 
-Wdróż ten szablon przy użyciu polecenia [AZ Group Deployment Create][az-group-deployment-create] , jak pokazano w poniższym przykładzie. Zostanie wyświetlony monit o istniejącą nazwę i lokalizację klastra AKS:
+Wdrożyć ten szablon za pomocą polecenia [tworzenia wdrożenia grupy az,][az-group-deployment-create] jak pokazano w poniższym przykładzie. Zostanie wyświetlony monit o podanie istniejącej nazwy i lokalizacji klastra AKS:
 
 ```azurecli-interactive
 az group deployment create \
@@ -686,7 +675,7 @@ az group deployment create \
 ```
 
 > [!TIP]
-> Możesz dodać tag do puli węzłów, dodając Właściwość *tag* w szablonie, jak pokazano w poniższym przykładzie.
+> Tag można dodać do puli węzłów, dodając właściwość *tagu* w szablonie, jak pokazano w poniższym przykładzie.
 > 
 > ```json
 > ...
@@ -704,32 +693,32 @@ az group deployment create \
 > ...
 > ```
 
-Zaktualizowanie klastra AKS może potrwać kilka minut, w zależności od ustawień puli węzłów i operacji zdefiniowanych w szablonie Menedżer zasobów.
+Aktualizacja klastra usługi AKS może potrwać kilka minut w zależności od ustawień puli węzłów i operacji zdefiniowanych w szablonie Menedżera zasobów.
 
 ## <a name="assign-a-public-ip-per-node-in-a-node-pool"></a>Przypisywanie publicznego adresu IP na węzeł w puli węzłów
 
 > [!WARNING]
-> W trakcie korzystania z wersji zapoznawczej przypisywania publicznego adresu IP na węzeł nie można jej używać z jednostką *SKU usługa Load Balancer w warstwie Standardowa w AKS* ze względu na ewentualne reguły modułu równoważenia obciążenia powodujące konflikt z obsługą maszyny wirtualnej. W wyniku tego ograniczenia pule agentów systemu Windows nie są obsługiwane w tej funkcji w wersji zapoznawczej. W wersji zapoznawczej należy użyć *podstawowej jednostki SKU Load Balancer* , jeśli trzeba przypisać publiczny adres IP na węzeł.
+> Podczas podglądu przypisywania publicznego adresu IP na węzeł nie można go używać z *jednostką SKU standardowego modułu równoważenia obciążenia w utoka* z powodu możliwych reguł modułu równoważenia obciążenia, które są sprzeczne z inicjowania obsługi administracyjnej maszyny Wirtualnej. W wyniku tego ograniczenia pule agentów systemu Windows nie są obsługiwane za pomocą tej funkcji w wersji zapoznawczej. W wersji zapoznawczej należy użyć *jednostki SKU podstawowego modułu równoważenia obciążenia,* jeśli konieczne jest przypisanie publicznego adresu IP na węzeł.
 
-Węzły AKS nie wymagają swoich własnych publicznych adresów IP do komunikacji. Jednak niektóre scenariusze mogą wymagać, aby węzły w puli węzłów miały własne publiczne adresy IP. Przykładem są gry, w których konsola programu musi nawiązać bezpośrednie połączenie z maszyną wirtualną w chmurze, aby zminimalizować liczbę przeskoków. Ten scenariusz można osiągnąć, rejestrując się w celu uzyskania oddzielnej funkcji w wersji zapoznawczej, publicznego adresu IP węzła (wersja zapoznawcza).
+Węzły AKS nie wymagają własnych publicznych adresów IP do komunikacji. Jednak niektóre scenariusze mogą wymagać węzłów w puli węzłów, aby mieć własne publiczne adresy IP. Przykładem jest gra, gdzie konsola musi nawiązać bezpośrednie połączenie z maszyną wirtualną w chmurze, aby zminimalizować przeskoki. Ten scenariusz można osiągnąć, rejestrując się dla oddzielnej funkcji w wersji zapoznawczej Node Public IP (wersja zapoznawcza).
 
 ```azurecli-interactive
 az feature register --name NodePublicIPPreview --namespace Microsoft.ContainerService
 ```
 
-Po pomyślnej rejestracji Wdróż szablon Azure Resource Manager zgodnie z takimi samymi instrukcjami jak [powyżej](#manage-node-pools-using-a-resource-manager-template) , a następnie Dodaj właściwość wartość logiczna `enableNodePublicIP` do agentPoolProfiles. Ustaw wartość tak, aby `true` domyślnie ustawiona jako `false`, jeśli nie została określona. Ta właściwość jest właściwością tylko do utworzenia i wymaga minimalnej wersji interfejsu API 2019-06-01. Można to zastosować do pul węzłów systemu Linux i Windows.
+Po pomyślnej rejestracji wdrożyć szablon usługi Azure [above](#manage-node-pools-using-a-resource-manager-template) Resource Manager zgodnie z `enableNodePublicIP` tymi samymi instrukcjami, jak powyżej i dodać właściwość wartości logicznej do agentpoolprofiles. Ustaw wartość `true` jako domyślnie jest `false` ustawiona tak, jakby nie została określona. Ta właściwość jest właściwością tylko do tworzenia i wymaga minimalnej wersji interfejsu API 2019-06-01. Można to zastosować zarówno do pul węzłów systemu Linux, jak i Windows.
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-W tym artykule opisano tworzenie klastra AKS zawierającego węzły oparte na procesorach GPU. Aby zmniejszyć niepotrzebny koszt, warto usunąć *gpunodepool*lub cały klaster AKS.
+W tym artykule utworzono klaster AKS, który zawiera węzły oparte na procesorze GPU. Aby zmniejszyć niepotrzebne koszty, można usunąć *gpunodepool*lub cały klaster AKS.
 
-Aby usunąć pulę węzłów opartą na procesorze GPU, użyj polecenia [AZ AKS nodepool Delete][az-aks-nodepool-delete] , jak pokazano w poniższym przykładzie:
+Aby usunąć pulę węzłów opartych na procesorze GPU, użyj polecenia [az aks nodepool,][az-aks-nodepool-delete] jak pokazano na poniższym przykładzie:
 
 ```azurecli-interactive
 az aks nodepool delete -g myResourceGroup --cluster-name myAKSCluster --name gpunodepool
 ```
 
-Aby usunąć klaster, użyj polecenia [AZ Group Delete][az-group-delete] , aby usunąć grupę zasobów AKS:
+Aby usunąć sam klaster, użyj polecenia [usuń grupę AZ,][az-group-delete] aby usunąć grupę zasobów AKS:
 
 ```azurecli-interactive
 az group delete --name myResourceGroup --yes --no-wait
@@ -737,9 +726,9 @@ az group delete --name myResourceGroup --yes --no-wait
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym artykule przedstawiono sposób tworzenia wielu pul węzłów w klastrze AKS i zarządzania nimi. Aby uzyskać więcej informacji na temat sterowania zestawami w puli węzłów, zobacz [najlepsze rozwiązania dotyczące zaawansowanych funkcji usługi Scheduler w AKS][operator-best-practices-advanced-scheduler].
+W tym artykule dowiesz się, jak tworzyć i zarządzać wieloma pulami węzłów w klastrze AKS. Aby uzyskać więcej informacji na temat kontrolowania zasobników w pulach węzłów, zobacz [Najważniejsze wskazówki dotyczące zaawansowanych funkcji harmonogramu w ustroju AKS][operator-best-practices-advanced-scheduler].
 
-Aby utworzyć i użyć pul węzłów kontenera systemu Windows Server, zobacz [Tworzenie kontenera systemu Windows Server w AKS][aks-windows].
+Aby utworzyć i używać pul węzłów kontenerów systemu Windows Server, zobacz [Tworzenie kontenera systemu Windows Server w programie AKS][aks-windows].
 
 <!-- EXTERNAL LINKS -->
 [kubernetes-drain]: https://kubernetes.io/docs/tasks/administer-cluster/safely-drain-node/

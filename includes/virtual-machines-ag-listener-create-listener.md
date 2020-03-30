@@ -5,47 +5,47 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: 394b242ab46da7821f77e8d008836753f4e358e2
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67183180"
 ---
-W tym kroku ręcznie utworzyć odbiornik grupy dostępności w Menedżerze klastra trybu Failover i SQL Server Management Studio.
+W tym kroku ręcznie utworzysz odbiornik grupy dostępności w Menedżerze klastrów trybu failover i programie SQL Server Management Studio.
 
-1. Otwórz Menedżera klastra trybu Failover z węzła, który obsługuje replikę podstawową.
+1. Otwórz Menedżera klastrów trybu failover z węzła obsługującego replikę podstawową.
 
-2. Wybierz **sieci** węzeł, a następnie Uwaga Nazwa sieciowa klastra. Ta nazwa jest używana w zmiennej $ClusterNetworkName w skrypcie programu PowerShell.
+2. Wybierz węzeł **Sieci,** a następnie zanotuj nazwę sieci klastra. Ta nazwa jest używana w zmiennej $ClusterNetworkName w skrypcie programu PowerShell.
 
-3. Rozwiń nazwę klastra, a następnie kliknij przycisk **role**.
+3. Rozwiń nazwę klastra, a następnie kliknij pozycję **Role**.
 
-4. W **role** okienku kliknij prawym przyciskiem myszy nazwę grupy dostępności, a następnie wybierz **Dodaj zasób** > **punktu dostępu klienta**.
+4. W okienku **Role** kliknij prawym przyciskiem myszy nazwę grupy dostępności, a następnie wybierz polecenie Dodaj**punkt dostępu klienta** **zasobów** > .
    
-    ![Dodaj punkt dostępu klienta dla grupy dostępności](./media/virtual-machines-sql-server-configure-alwayson-availability-group-listener/IC678769.gif)
+    ![Dodawanie punktu dostępu klienta dla grupy dostępności](./media/virtual-machines-sql-server-configure-alwayson-availability-group-listener/IC678769.gif)
 
-5. W **nazwa** pola, Utwórz nazwę tego nowy odbiornik, kliknij przycisk **dalej** dwa razy, a następnie kliknij przycisk **Zakończ**.  
-    Nie należy przełączać odbiornika lub zasób w tryb online w tym momencie.
+5. W polu **Nazwa** utwórz nazwę tego nowego odbiornika, kliknij przycisk **Dalej** dwa razy, a następnie kliknij przycisk **Zakończ**.  
+    W tym momencie nie należy przewprowadzić odbiornika ani zasobu do trybu online.
 
-6. Kliknij przycisk **zasobów** kartę, a następnie rozwiń utworzony punkt dostępu klienta. 
-    Zasób adresu IP dla każdej sieci klastra w klastrze jest wyświetlany. Jeśli jest to rozwiązanie tylko z platformą Azure, jest wyświetlany tylko jeden zasób adresu IP.
+6. Kliknij kartę **Zasoby,** a następnie rozwiń utworzony właśnie punkt dostępu klienta. 
+    Zostanie wyświetlony zasób adresu IP dla każdej sieci klastra w klastrze. Jeśli jest to rozwiązanie tylko do platformy Azure, wyświetlany jest tylko jeden zasób adresu IP.
 
 7. Wykonaj jedną z następujących czynności:
    
    * Aby skonfigurować rozwiązanie hybrydowe:
      
-        a. Kliknij prawym przyciskiem myszy zasób adresu IP, który odnosi się do podsieci lokalnej, a następnie wybierz **właściwości**. Należy pamiętać, nazwa adresu IP i nazwa sieciowa.
+        a. Kliknij prawym przyciskiem myszy zasób adresu IP odpowiadający podsieci lokalnej, a następnie wybierz polecenie **Właściwości**. Zanotuj nazwę adresu IP i nazwę sieci.
    
-        b. Wybierz **statyczny adres IP**, przypisać nieużywany adres IP, a następnie kliknij przycisk **OK**.
+        b. Wybierz **statyczny adres IP**, przypisz nieużyny adres IP, a następnie kliknij przycisk **OK**.
  
-   * Aby skonfigurować tylko na platformie Azure rozwiązania:
+   * Aby skonfigurować rozwiązanie tylko dla platformy Azure:
 
-        a. Kliknij prawym przyciskiem myszy zasób adresu IP, który odnosi się do podsieci środowiska platformy Azure, a następnie wybierz **właściwości**.
+        a. Kliknij prawym przyciskiem myszy zasób adresu IP odpowiadający podsieci platformy Azure, a następnie wybierz polecenie **Właściwości**.
        
        > [!NOTE]
-       > Jeśli odbiornik ulegnie awarii później do trybu online ze względu na konflikt adresu IP wybrana przez protokół DHCP, można skonfigurować statyczny adres IP, w tym oknie właściwości.
+       > Jeśli później detektor nie przejdzie do trybu online z powodu sprzecznego adresu IP wybranego przez protokół DHCP, można skonfigurować prawidłowy statyczny adres IP w tym oknie właściwości.
        > 
        > 
 
-       b. W tym samym **adresu IP** oknie Właściwości zmień **nazwa adresu IP**.  
-        Ta nazwa jest używana w zmiennej $IPResourceName skryptu programu PowerShell. Jeśli rozwiązanie obejmuje wiele sieci wirtualnych platformy Azure, powtórz ten krok dla każdego zasobu adresu IP.
+       b. W tym samym oknie właściwości **adresu IP** zmień nazwę **adresu IP**.  
+        Ta nazwa jest używana w zmiennej $IPResourceName skryptu programu PowerShell. Jeśli rozwiązanie obejmuje wiele sieci wirtualnych platformy Azure, powtórz ten krok dla każdego zasobu IP.
 

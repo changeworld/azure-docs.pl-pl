@@ -1,6 +1,6 @@
 ---
-title: Przepływy pracy Apache Oozie & zabezpieczenia przedsiębiorstwa — Azure HDInsight
-description: Zabezpiecz przepływy pracy Apache Oozie przy użyciu usługi Azure HDInsight pakiet Enterprise Security. Dowiedz się, jak zdefiniować przepływ pracy Oozie i przesłać zadanie Oozie.
+title: Przepływy pracy Apache Oozie & enterprise security — Azure HDInsight
+description: Bezpieczne przepływy pracy Apache Oozie przy użyciu pakietu zabezpieczeń usługi Azure HDInsight Enterprise Security Package. Dowiedz się, jak zdefiniować przepływ pracy Oozie i przesłać zadanie Oozie.
 author: omidm1
 ms.author: omidm
 ms.reviewer: jasonh
@@ -9,55 +9,55 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,seodec18
 ms.date: 12/09/2019
 ms.openlocfilehash: 9ef54707f7fac3dd1328e29f6d05f62c1dee2561
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78194907"
 ---
-# <a name="run-apache-oozie-in-hdinsight-hadoop-clusters-with-enterprise-security-package"></a>Uruchamianie platformy Apache Oozie w klastrach usługi HDInsight Hadoop przy użyciu pakiet Enterprise Security
+# <a name="run-apache-oozie-in-hdinsight-hadoop-clusters-with-enterprise-security-package"></a>Uruchamianie apache Oozie w klastrach HDInsight Hadoop z pakietem zabezpieczeń dla przedsiębiorstw
 
-Apache Oozie to przepływ pracy i system koordynacji, który zarządza zadaniami Apache Hadoop. Usługa Oozie jest zintegrowana z stosem usługi Hadoop i obsługuje następujące zadania:
+Apache Oozie to system przepływu pracy i koordynacji, który zarządza zadaniami Apache Hadoop. Oozie jest zintegrowany ze stosem Hadoop i obsługuje następujące zadania:
 
 - Apache MapReduce
-- Apache świni
-- Apache Hive
+- Świnia Apache
+- Ul Apache
 - Apache Sqoop
 
-Można również użyć Oozie do planowania zadań specyficznych dla systemu, takich jak programy Java lub skrypty powłoki.
+Za pomocą funkcji Oozie można również zaplanować zadania specyficzne dla systemu, takie jak programy Java lub skrypty powłoki.
 
 ## <a name="prerequisite"></a>Wymagania wstępne
 
-Klaster Azure HDInsight Hadoop z pakiet Enterprise Security (ESP). Zobacz [Konfigurowanie klastrów usługi HDInsight przy użyciu protokołu ESP](./apache-domain-joined-configure-using-azure-adds.md).
+Klaster usługi Azure HDInsight Hadoop z pakietem zabezpieczeń przedsiębiorstwa (ESP). Zobacz [Konfigurowanie klastrów HDInsight za pomocą pliku ESP](./apache-domain-joined-configure-using-azure-adds.md).
 
 > [!NOTE]  
-> Aby uzyskać szczegółowe instrukcje dotyczące używania Oozie w klastrach innych niż ESP, zobacz [Korzystanie z przepływów pracy Apache Oozie w usłudze Azure HDInsight opartej na systemie Linux](../hdinsight-use-oozie-linux-mac.md).
+> Aby uzyskać szczegółowe instrukcje dotyczące używania usługi Oozie w klastrach innych niż ESP, zobacz [Korzystanie z przepływów pracy Apache Oozie w usłudze Azure HDInsight opartej na systemie Linux](../hdinsight-use-oozie-linux-mac.md).
 
-## <a name="connect-to-an-esp-cluster"></a>Nawiązywanie połączenia z klastrem ESP
+## <a name="connect-to-an-esp-cluster"></a>Łączenie się z klastrem ESP
 
-Aby uzyskać więcej informacji na temat Secure Shell (SSH), zobacz [nawiązywanie połączenia z usługą HDInsight (Hadoop) przy użyciu protokołu SSH](../hdinsight-hadoop-linux-use-ssh-unix.md).
+Aby uzyskać więcej informacji na temat bezpiecznej powłoki (SSH), zobacz [Łączenie się z HDInsight (Hadoop) za pomocą SSH](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
-1. Nawiązywanie połączenia z klastrem usługi HDInsight przy użyciu protokołu SSH:
+1. Połącz się z klastrem HDInsight za pomocą funkcji SSH:
 
     ```bash
     ssh [DomainUserName]@<clustername>-ssh.azurehdinsight.net
     ```
 
-1. Aby sprawdzić poprawność uwierzytelniania Kerberos, użyj polecenia `klist`. W przeciwnym razie użyj `kinit`, aby uruchomić uwierzytelnianie Kerberos.
+1. Aby sprawdzić pomyślne uwierzytelnianie `klist` Kerberos, użyj tego polecenia. Jeśli nie, `kinit` użyj, aby uruchomić uwierzytelnianie Kerberos.
 
-1. Zaloguj się do bramy usługi HDInsight, aby zarejestrować token OAuth wymagane w celu uzyskania dostępu do Azure Data Lake Storage:
+1. Zaloguj się do bramy USŁUGI HDInsight, aby zarejestrować token OAuth wymagany do uzyskania dostępu do usługi Azure Data Lake Storage:
 
     ```bash
     curl -I -u [DomainUserName@Domain.com]:[DomainUserPassword] https://<clustername>.azurehdinsight.net
     ```
 
-    Kod odpowiedzi o stanie **200 OK** wskazuje pomyślną rejestrację. Sprawdź nazwę użytkownika i hasło, jeśli otrzymasz nieautoryzowaną odpowiedź, na przykład 401.
+    Kod odpowiedzi stanu **200 OK** wskazuje pomyślną rejestrację. Sprawdź nazwę użytkownika i hasło, jeśli zostanie odebrana nieautoryzowana odpowiedź, na przykład 401.
 
 ## <a name="define-the-workflow"></a>Definiowanie przepływu pracy
 
-Definicje przepływów pracy Oozie są zapisywane w języku definicji procesu Apache Hadoop (hPDL). hPDL to język definicji procesu XML. Wykonaj następujące kroki, aby zdefiniować przepływ pracy:
+Definicje przepływu pracy Oozie są zapisywane w języku definicji procesu Apache Hadoop (hPDL). hPDL jest językiem definicji procesu XML. Aby zdefiniować przepływ pracy, należy wykonać następujące kroki:
 
-1. Skonfiguruj obszar roboczy użytkownika domeny:
+1. Konfigurowanie obszaru roboczego użytkownika domeny:
 
    ```bash
    hdfs dfs -mkdir /user/<DomainUser>
@@ -67,9 +67,9 @@ Definicje przepływów pracy Oozie są zapisywane w języku definicji procesu Ap
    hdfs dfs -put examples /user/<DomainUser>/
    ```
 
-   Zastąp `DomainUser` nazwą użytkownika domeny.
-   Zastąp `DomainUserPath` ścieżką katalogu macierzystego użytkownika domeny.
-   Zastąp `ClusterVersion` wersją platformy danych klastra.
+   Zamień `DomainUser` na nazwę użytkownika domeny.
+   Zamień `DomainUserPath` ścieżkę katalogu macierzystego dla użytkownika domeny.
+   Zamień `ClusterVersion` wersję platformy danych klastra.
 
 2. Użyj następującej instrukcji, aby utworzyć i edytować nowy plik:
 
@@ -176,43 +176,43 @@ Definicje przepływów pracy Oozie są zapisywane w języku definicji procesu Ap
     </workflow-app>
     ```
 
-4. Zastąp `clustername` nazwą klastra.
+4. Zamień `clustername` na nazwę klastra.
 
-5. Aby zapisać plik, wybierz **kombinację klawiszy Ctrl + X**. Wprowadź **Y**. Następnie wybierz klawisz **Enter**.
+5. Aby zapisać plik, wybierz **ctrl+X**. Wprowadź **Y**. Następnie wybierz **pozycję Wprowadź**.
 
     Przepływ pracy jest podzielony na dwie części:
 
-   - **Poświadczeń.** Ta sekcja zajmuje się poświadczeniami, które są używane do uwierzytelniania akcji Oozie:
+   - **Poświadczeń.** W tej sekcji przyjmuje poświadczenia, które są używane do uwierzytelniania akcji Oozie:
 
-     Ten przykład używa uwierzytelniania dla akcji Hive. Aby dowiedzieć się więcej, zobacz [Akcja uwierzytelnianie](https://oozie.apache.org/docs/4.2.0/DG_ActionAuthentication.html).
+     W tym przykładzie użyto uwierzytelniania dla akcji gałęzi. Aby dowiedzieć się więcej, zobacz [Uwierzytelnianie akcji](https://oozie.apache.org/docs/4.2.0/DG_ActionAuthentication.html).
 
-     Usługa Credential umożliwia Oozieą akcje personifikacji użytkownika w celu uzyskania dostępu do usług Hadoop.
+     Usługa poświadczeń umożliwia akcje Oozie personifikacji użytkownika w celu uzyskania dostępu do usług Hadoop.
 
-   - **Transakcji.** Ta sekcja ma trzy akcje: map — zmniejszenie, serwer Hive 2 i serwer Hive 1:
+   - **Działania.** W tej sekcji są trzy akcje: map-reduce, Hive server 2 i Hive server 1:
 
-     - Akcja Mapuj — Redukuj uruchamia przykład z pakietu Oozie dla mapy — redukuje dane wyjściowe zagregowanej liczby wyrazów.
+     - Akcja map-reduce uruchamia przykład z pakietu Oozie dla map-reduce, który wyprowadza zagregowane liczby wyrazów.
 
-     - Akcje serwera Hive 2 i programu Hive Server 1 uruchamiają zapytanie w przykładowej tabeli Hive dostarczonej z usługą HDInsight.
+     - Akcje serwera hive 2 i hive server 1 uruchamiają kwerendę w przykładowej tabeli gałęzi dostarczonej z programem HDInsight.
 
-     Akcje programu Hive używają poświadczeń zdefiniowanych w sekcji poświadczeń do uwierzytelniania za pomocą słowa kluczowego `cred` w elemencie Action.
+     Akcje Gałęzi używają poświadczeń zdefiniowanych w sekcji poświadczenia `cred` do uwierzytelniania przy użyciu słowa kluczowego w elemencie akcji.
 
-6. Użyj następującego polecenia, aby skopiować plik `workflow.xml` do `/user/<domainuser>/examples/apps/map-reduce/workflow.xml`:
+6. Użyj następującego polecenia, `workflow.xml` aby `/user/<domainuser>/examples/apps/map-reduce/workflow.xml`skopiować plik do:
 
     ```bash
     hdfs dfs -put workflow.xml /user/<domainuser>/examples/apps/map-reduce/workflow.xml
     ```
 
-7. Zastąp `domainuser` nazwą użytkownika domeny.
+7. Zamień `domainuser` swoją nazwę użytkownika dla domeny.
 
-## <a name="define-the-properties-file-for-the-oozie-job"></a>Zdefiniuj plik właściwości dla zadania Oozie
+## <a name="define-the-properties-file-for-the-oozie-job"></a>Definiowanie pliku właściwości zadania Oozie
 
-1. Użyj poniższej instrukcji, aby utworzyć i edytować nowy plik dla właściwości zadania:
+1. Użyj następującej instrukcji, aby utworzyć i edytować nowy plik dla właściwości zadania:
 
     ```bash
     nano job.properties
     ```
 
-2. Po otwarciu edytora nano Użyj następującego kodu XML jako zawartości pliku:
+2. Po otwarciu edytora nano użyj następującego kodu XML jako zawartości pliku:
 
    ```bash
    nameNode=adl://home
@@ -230,21 +230,21 @@ Definicje przepływów pracy Oozie są zapisywane w języku definicji procesu Ap
    hiveOutputDirectory2=${nameNode}/user/${user.name}/hiveresult2
    ```
 
-   - Użyj `adl://home` URI dla właściwości `nameNode`, jeśli masz Azure Data Lake Storage Gen1 jako podstawowy magazyn klastra. Jeśli używasz usługi Azure Blob Storage, Zmień ją na `wasb://home`. Jeśli używasz Azure Data Lake Storage Gen2, Zmień to na `abfs://home`.
-   - Zastąp `domainuser` nazwą użytkownika domeny.  
-   - Zastąp `ClusterShortName` krótką nazwą klastra. Na przykład jeśli nazwa klastra to https:// *[przykład link]* sechadoopcontoso.azurehdisnight.net, `clustershortname` to pierwsze sześć znaków klastra: **sechad**.  
-   - Zastąp `jdbcurlvalue` adresem URL JDBC z konfiguracji programu Hive. Przykładem jest JDBC: hive2://headnodehost: 10001/; transportmode = http.
-   - Aby zapisać plik, wybierz kombinację klawiszy Ctrl + X, wprowadź `Y`, a następnie wybierz klawisz **Enter**.
+   - Użyj `adl://home` identyfikatora URI dla `nameNode` właściwości, jeśli masz usługi Azure Data Lake Storage Gen1 jako podstawowy magazyn klastra. Jeśli używasz usługi Azure Blob Storage, `wasb://home`zmień to na . Jeśli używasz usługi Azure Data Lake Storage Gen2, zmień to na `abfs://home`.
+   - Zamień `domainuser` swoją nazwę użytkownika dla domeny.  
+   - Zamień `ClusterShortName` na krótką nazwę klastra. Na przykład, jeśli nazwa klastra jest https:// *[przykładowe łącze]* sechadoopcontoso.azurehdisnight.net, jest to `clustershortname` pierwsze sześć znaków klastra: **sechad**.  
+   - Zamień `jdbcurlvalue` na adres URL JDBC z konfiguracji gałęzi. Przykładem jest jdbc:hive2://headnodehost:10001/;transportMode=http.
+   - Aby zapisać plik, wybierz ctrl+X, wprowadź , `Y`a następnie wybierz pozycję **Wprowadź**.
 
    Ten plik właściwości musi być obecny lokalnie podczas uruchamiania zadań Oozie.
 
-## <a name="create-custom-hive-scripts-for-oozie-jobs"></a>Tworzenie niestandardowych skryptów Hive dla zadań Oozie
+## <a name="create-custom-hive-scripts-for-oozie-jobs"></a>Tworzenie niestandardowych skryptów gałęzi dla zadań Oozie
 
-Można utworzyć dwa skrypty Hive dla serwera Hive 1 i serwera Hive 2, jak pokazano w poniższych sekcjach.
+Można utworzyć dwa skrypty hive dla serwera hive 1 i hive server 2, jak pokazano w poniższych sekcjach.
 
-### <a name="hive-server-1-file"></a>Plik programu Hive Server 1
+### <a name="hive-server-1-file"></a>Plik serwera hive 1
 
-1. Utwórz i edytuj plik dla działań serwera Hive 1:
+1. Tworzenie i edytowanie pliku dla akcji serwera hive 1:
 
     ```bash
     nano countrowshive1.hql
@@ -258,15 +258,15 @@ Można utworzyć dwa skrypty Hive dla serwera Hive 1 i serwera Hive 2, jak pokaz
     select devicemake from hivesampletable limit 2;
     ```
 
-3. Zapisz plik w rozproszony system plików Apache Hadoop (HDFS):
+3. Zapisz plik w apache Hadoop Distributed File System (HDFS):
 
     ```bash
     hdfs dfs -put countrowshive1.hql countrowshive1.hql
     ```
 
-### <a name="hive-server-2-file"></a>Plik programu Hive Server 2
+### <a name="hive-server-2-file"></a>Plik serwera hive 2
 
-1. Utwórz i edytuj pole dla akcji programu Hive Server 2:
+1. Tworzenie i edytowanie pola dla akcji serwera hive 2:
 
     ```bash
     nano countrowshive2.hql
@@ -286,15 +286,15 @@ Można utworzyć dwa skrypty Hive dla serwera Hive 1 i serwera Hive 2, jak pokaz
     hdfs dfs -put countrowshive2.hql countrowshive2.hql
     ```
 
-## <a name="submit-oozie-jobs"></a>Przesyłanie zadań Oozie
+## <a name="submit-oozie-jobs"></a>Prześlij oferty pracy Oozie
 
-Przesyłanie zadań Oozie dla klastrów ESP jest podobne do przesyłania zadań Oozie w klastrach innych niż ESP.
+Przesyłanie zadań Oozie dla klastrów ESP jest jak przesyłanie zadań Oozie w klastrach innych niż ESP.
 
-Aby uzyskać więcej informacji, zobacz [Używanie platformy Apache Oozie z usługą Apache Hadoop do definiowania i uruchamiania przepływu pracy w usłudze Azure HDInsight opartej na systemie Linux](../hdinsight-use-oozie-linux-mac.md).
+Aby uzyskać więcej informacji, zobacz [Używanie apache Oozie z Apache Hadoop do definiowania i uruchamiania przepływu pracy na platformie Azure HDInsight opartej na systemie Linux](../hdinsight-use-oozie-linux-mac.md).
 
-## <a name="results-from-an-oozie-job-submission"></a>Wyniki z Ooziego przesłania zadania
+## <a name="results-from-an-oozie-job-submission"></a>Wyniki z zgłoszenia oozie pracy
 
-Zadania Oozie są uruchamiane dla użytkownika. Tak więc w przypadku Apache Hadoop w ramach usługi PRZĘDZy i usługi Apache Ranger Audit Logs są wyświetlane zadania uruchamiane jako personifikowany użytkownik. Dane wyjściowe interfejsu wiersza polecenia zadania Oozie wyglądają podobnie jak w poniższym kodzie:
+Zadania Oozie są uruchamiane dla użytkownika. Tak więc zarówno Apache Hadoop YARN, jak i Apache Ranger dzienniki inspekcji pokazują zadania uruchamiane jako personifikowany użytkownik. Dane wyjściowe interfejsu wiersza polecenia zadania Oozie wygląda następująco:
 
 ```output
 Job ID : 0000015-180626011240801-oozie-oozi-W
@@ -327,25 +327,25 @@ ID                      Status  Ext ID          ExtStatus   ErrCode
 -----------------------------------------------------------------------------------------------
 ```
 
-W dziennikach inspekcji Ranger dla akcji programu Hive Server 2 są wyświetlane Oozie z akcją użytkownika. Widoki Ranger i PRZĘDZy są widoczne tylko dla administratora klastra.
+Dzienniki inspekcji Ranger dla hive server 2 akcje pokazują Oozie uruchomienie akcji dla użytkownika. Widoki Ranger i YARN są widoczne tylko dla administratora klastra.
 
 ## <a name="configure-user-authorization-in-oozie"></a>Konfigurowanie autoryzacji użytkownika w Oozie
 
-Oozie przez siebie sama ma konfigurację autoryzacji użytkowników, która umożliwia blokowanie użytkownikom zatrzymywania lub usuwania zadań innych użytkowników. Aby włączyć tę konfigurację, należy ustawić `oozie.service.AuthorizationService.security.enabled` na `true`. 
+Oozie sama w sobie ma konfigurację autoryzacji użytkownika, która może uniemożliwić użytkownikom zatrzymywanie lub usuwanie zadań innych użytkowników. Aby włączyć tę konfigurację, ustaw na `oozie.service.AuthorizationService.security.enabled` . `true` 
 
-Aby uzyskać więcej informacji, zobacz [Instalowanie i Konfigurowanie oprogramowania Apache Oozie](https://oozie.apache.org/docs/3.2.0-incubating/AG_Install.html).
+Aby uzyskać więcej informacji, zobacz [Apache Oozie Instalacja i konfiguracja](https://oozie.apache.org/docs/3.2.0-incubating/AG_Install.html).
 
-W przypadku składników, takich jak serwer programu Hive 1, w przypadku których wtyczka Ranger jest niedostępna lub nie jest obsługiwana, możliwe jest tylko duże upoważnienie HDFS. Szczegółowa Autoryzacja jest dostępna tylko za poorednictwem wtyczek Ranger.
+W przypadku składników, takich jak serwer Hive 1, w których wtyczka Ranger nie jest dostępna lub obsługiwana, możliwa jest tylko autoryzacja gruboziarnistej usługi HDFS. Autoryzacja drobnoziarnista jest dostępna tylko za pośrednictwem wtyczek Ranger.
 
-## <a name="get-the-oozie-web-ui"></a>Pobierz interfejs użytkownika sieci Web Oozie
+## <a name="get-the-oozie-web-ui"></a>Pobierz interfejs użytkownika sieci Oozie
 
-Interfejs użytkownika sieci Web Oozie zapewnia internetowy widok stanu zadań Oozie w klastrze. Aby uzyskać interfejs użytkownika sieci Web, wykonaj następujące kroki w obszarze klastry ESP:
+Interfejs użytkownika sieci Web Oozie udostępnia widok oparty na sieci Web do stanu zadań Oozie w klastrze. Aby uzyskać interfejs użytkownika sieci Web, należy wykonać następujące kroki w klastrach ESP:
 
-1. Dodaj [węzeł brzegowy](../hdinsight-apps-use-edge-node.md) i Włącz [uwierzytelnianie przy użyciu protokołu SSH Kerberos](../hdinsight-hadoop-linux-use-ssh-unix.md).
+1. Dodaj [węzeł krawędzi](../hdinsight-apps-use-edge-node.md) i włącz [uwierzytelnianie Protokołu Kerberos .](../hdinsight-hadoop-linux-use-ssh-unix.md)
 
-2. Postępuj zgodnie z instrukcjami [interfejsu użytkownika sieci Web Oozie](../hdinsight-use-oozie-linux-mac.md) , aby włączyć tunelowanie ssh do węzła brzegowego i uzyskać dostęp do interfejsu użytkownika sieci Web.
+2. Postępuj zgodnie z krokiami [interfejsu użytkownika sieci Web Oozie,](../hdinsight-use-oozie-linux-mac.md) aby włączyć tunelowanie SSH do węzła brzegowego i uzyskać dostęp do interfejsu użytkownika sieci Web.
 
 ## <a name="next-steps"></a>Następne kroki
 
-- [Użyj programu Apache Oozie z Apache Hadoop, aby zdefiniować i uruchomić przepływ pracy w usłudze Azure HDInsight opartej na systemie Linux](../hdinsight-use-oozie-linux-mac.md).
-- [Łączenie z usługą HDInsight (Apache Hadoop) przy użyciu protokołu SSH](../hdinsight-hadoop-linux-use-ssh-unix.md#authentication-domain-joined-hdinsight).
+- [Użyj Apache Oozie z Apache Hadoop, aby zdefiniować i uruchomić przepływ pracy na platformie Azure HDInsight opartej na systemie Linux](../hdinsight-use-oozie-linux-mac.md).
+- [Połącz się z HDInsight (Apache Hadoop) za pomocą SSH](../hdinsight-hadoop-linux-use-ssh-unix.md#authentication-domain-joined-hdinsight).

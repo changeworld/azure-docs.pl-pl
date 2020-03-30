@@ -9,45 +9,45 @@ ms.topic: include
 ms.date: 11/27/2019
 ms.author: prmitiki
 ms.openlocfilehash: 16909e0a5d59b0ae019d91aad00e0168b0c5f433
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75775071"
 ---
-1. Na stronie **Tworzenie komunikacji równorzędnej** na karcie **Konfiguracja** Wypełnij pola, jak pokazano poniżej.
+1. Na stronie **Tworzenie komunikacji równorzędnej** w obszarze **Konfiguracja** karta Wypełnij pola, jak pokazano poniżej.
 
     > [!div class="mx-imgBorder"]
-    > ![konfiguracja komunikacji równorzędnej — bezpośrednie](../media/setup-direct-conf-tab.png)
+    > ![Konfiguracja komunikacji równorzędnej — bezpośrednia](../media/setup-direct-conf-tab.png)
 
-    * W obszarze **Typ komunikacji równorzędnej**wybierz pozycję *bezpośrednie*.
-    * W przypadku **sieci firmy Microsoft**wybierz pozycję *AS8075*. Nie wybieraj numeru ASN 8069. Jest ona zarezerwowana dla specjalnych aplikacji i jest używana tylko przez [komunikację równorzędną firmy Microsoft](mailto:peering@microsoft.com).
-    * Wybierz **jednostkę SKU** jako *bezpłatnie jako podstawową*. Nie wybieraj opcji *bezpłatna wersja Premium* , ponieważ jest zarezerwowana dla aplikacji specjalnych.
-    * Wybierz lokalizację **, w której** chcesz skonwertować komunikację równorzędną z zasobem platformy Azure. Jeśli masz połączenia komunikacji równorzędnej z firmą Microsoft w wybranej lokalizacji **Metro** , które nie zostały przekonwertowane na zasób platformy Azure, takie połączenia będą wyświetlane w sekcji **połączenia komunikacji równorzędnej** , jak pokazano poniżej. Teraz możesz przekonwertować te połączenia komunikacji równorzędnej na zasób platformy Azure.
+    * W przypadku **typu komunikacji równorzędnej**wybierz opcję *Bezpośrednie*.
+    * W przypadku **sieci Microsoft**wybierz *AS8075*. Nie należy wybierać ASN 8069. Jest on zarezerwowany dla specjalnych aplikacji i używany tylko przez [microsoft peering](mailto:peering@microsoft.com).
+    * Wybierz **jednostkę SKU** jako *bezpłatną opcję Basic*. Nie wybieraj *Premium Free,* ponieważ jest ona zarezerwowana dla specjalnych zastosowań.
+    * Wybierz lokalizację **metro,** w której chcesz przekonwertować komunikację równorzędnej na zasób platformy Azure. Jeśli masz połączenia komunikacji równorzędnej z firmą Microsoft w wybranej lokalizacji **metro,** które nie są konwertowane do zasobu platformy Azure, takie połączenia zostaną wymienione w sekcji **Połączenia równorzędne,** jak pokazano poniżej. Teraz można przekonwertować te połączenia komunikacji równorzędnej na zasób platformy Azure.
 
         > [!div class="mx-imgBorder"]
-        > ![konfiguracja komunikacji równorzędnej — połączenia bezpośrednie/starsze](../media/setup-directlegacy-conf-tab.png)
+        > ![Konfiguracja komunikacji równorzędnej — bezpośrednie — starsze połączenia](../media/setup-directlegacy-conf-tab.png)
 
-1. Jeśli potrzebujesz zaktualizować przepustowość, kliknij przycisk Edytuj dla wiersza, jak pokazano poniżej, aby zmodyfikować ustawienia połączenia.
+1. Jeśli chcesz zaktualizować przepustowość, kliknij przycisk edycji linii, jak zaznaczono poniżej, aby zmodyfikować ustawienia połączenia.
 
     > [!div class="mx-imgBorder"]
-    > ![konfiguracja komunikacji równorzędnej — bezpośrednie edytowanie](../media/setup-directlegacy-conf-tab-edit.png)
+    > ![Konfiguracja komunikacji równorzędnej — edycja bezpośrednia](../media/setup-directlegacy-conf-tab-edit.png)
 
     > [!NOTE]
-    > Jeśli chcesz dodać dodatkowe połączenia komunikacji równorzędnej do firmy Microsoft w wybranej lokalizacji **Metro** , możesz to zrobić, klikając przycisk **Utwórz nowy** . Aby uzyskać więcej informacji [, zobacz Tworzenie lub modyfikowanie bezpośredniej komunikacji równorzędnej przy użyciu portalu](../howto-direct-portal.md) .
+    > Jeśli chcesz dodać dodatkowe połączenia komunikacji równorzędnej z firmą Microsoft w wybranej lokalizacji **Metro,** możesz to zrobić, klikając przycisk **Utwórz nowe.** Aby uzyskać więcej informacji, zobacz [Tworzenie lub modyfikowanie komunikacji równorzędnej za pomocą portalu.](../howto-direct-portal.md)
     >
 
-1. Kliknij pozycję **Przegląd + Utwórz**. Zwróć uwagę na to, że w portalu zostanie uruchomione podstawowe sprawdzanie poprawności wprowadzonych informacji. Ten element jest wyświetlany na Wstążce u góry, jak *trwa sprawdzanie poprawności końcowej...*
+1. Kliknij **przejrzyj + utwórz**. Należy zauważyć, że portal uruchamia podstawowe sprawdzanie poprawności wprowadzonych informacji. Jest to wyświetlane na wstążce u góry, jako *Bieżące sprawdzanie poprawności końcowej...*.
 
     > [!div class="mx-imgBorder"]
-    > ![kartę walidacji komunikacji równorzędnej](../media/setup-direct-review-tab-validation.png)
+    > ![Karta Sprawdzanie poprawności komunikacji równorzędnej](../media/setup-direct-review-tab-validation.png)
 
-1. Po *przejściu na weryfikację*Sprawdź informacje i prześlij żądanie, klikając pozycję **Utwórz**. Jeśli musisz zmodyfikować żądanie, kliknij przycisk **Wstecz** i powtórz powyższe kroki.
-
-    > [!div class="mx-imgBorder"]
-    > ![przesyłania komunikacji równorzędnej](../media/setup-direct-review-tab-submit.png)
-
-1. Po przesłaniu żądania poczekaj na zakończenie wdrożenia. Jeśli wdrożenie nie powiedzie się, skontaktuj się z pomocą techniczną [firmy Microsoft](mailto:peering@microsoft.com). Pomyślne wdrożenie zostanie wyświetlone poniżej.
+1. Po przełączeniu do *weryfikacji przekazanych,* sprawdź informacje i prześlij żądanie, klikając przycisk **Utwórz**. Jeśli chcesz zmodyfikować prośbę, kliknij **przycisk Poprzedni** i powtórz powyższe czynności.
 
     > [!div class="mx-imgBorder"]
-    > ![sukcesu komunikacji równorzędnej](../media/setup-direct-success.png)
+    > ![Przekazywanie komunikacji równorzędnej](../media/setup-direct-review-tab-submit.png)
+
+1. Po przesłaniu żądania poczekaj na jego ukończenie wdrożenia. Jeśli wdrożenie nie powiedzie się, skontaktuj się z [programem Microsoft w komunikacji równorzędnej](mailto:peering@microsoft.com). Pomyślne wdrożenie pojawi się poniżej.
+
+    > [!div class="mx-imgBorder"]
+    > ![Sukces komunikacji równorzędnej](../media/setup-direct-success.png)

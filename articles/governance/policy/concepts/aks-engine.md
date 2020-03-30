@@ -1,39 +1,39 @@
 ---
-title: Uczenie Azure Policy aparatu AKS
-description: Dowiedz się, w jaki sposób Azure Policy CustomResourceDefinitions i Otwórz agenta zasad z strażnik v3, aby zarządzać klastrami z aparatem AKS.
+title: Poznaj zasady platformy Azure dla aparatu AKS
+description: Dowiedz się, jak usługa Azure Policy używa customresourceDefinitions i Open Policy Agent z Gatekeeper w wersji 3 do zarządzania klastrami za pomocą aparatu AKS.
 ms.date: 11/04/2019
 ms.topic: conceptual
 ms.openlocfilehash: c41a9d84dfe43e356e9a4a17af523a37209c2933
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75436423"
 ---
-# <a name="understand-azure-policy-for-aks-engine"></a>Opis Azure Policy aparatu AKS
+# <a name="understand-azure-policy-for-aks-engine"></a>Poznaj zasady platformy Azure dla aparatu AKS
 
-Azure Policy integruje się z [aparatem AKS](https://github.com/Azure/aks-engine/blob/master/docs/README.md), system, który zapewnia wygodne narzędzia umożliwiające szybkie uruchomienie samozarządzanego klastra Kubernetes na platformie Azure. Ta Integracja umożliwia wymuszanie skalowania i ochronę w przypadku klastrów samodzielnego zarządzania aparatem AKS w scentralizowany, spójny sposób. Rozszerzając użycie programu [Open Policy Agent](https://www.openpolicyagent.org/) (nieprzez) — [strażnik](https://github.com/open-policy-agent/gatekeeper) v3 (beta), _elementu webhook kontrolera systemu Admission_ dla Kubernetes, Azure Policy umożliwia zarządzanie stanem zgodności zasobów platformy Azure i klastrami z własnym programem AKS Engine z jednego miejsca.
+Usługa Azure Policy integruje się z [usługą AKS Engine](https://github.com/Azure/aks-engine/blob/master/docs/README.md)— systemem zapewniającym wygodne narzędzia do szybkiego uruchamiania samodzielnie zarządzanego klastra kubernetes na platformie Azure. Ta integracja umożliwia wymuszanie na dużą skalę i zabezpieczenia w klastrach zarządzanych samodzielnie przez aparat AKS w sposób scentralizowany i spójny. Rozszerzając korzystanie z [Open Policy Agent](https://www.openpolicyagent.org/) (OPA) [Gatekeeper](https://github.com/open-policy-agent/gatekeeper) v3 (beta), _webhook kontrolera wstępu_ dla usługi Kubernetes, usługa Azure Policy umożliwia zarządzanie i raportowanie stanu zgodności zasobów platformy Azure i klastrów samodzielnie zarządzanych usługi AKS Engine z jednego miejsca.
 
 > [!NOTE]
-> Azure Policy dla aparatu AKS jest w publicznej wersji zapoznawczej i nie ma umowy SLA. Program strażnik V3 jest w wersji beta i jest obsługiwany przez społeczność programu Open Source. Usługa obsługuje tylko wbudowane definicje zasad i pojedynczy klaster aparatu AKS dla każdej grupy zasobów skonfigurowanej przy użyciu nazwy głównej usługi.
+> Usługa Azure Policy for AKS Engine jest w publicznej wersji zapoznawczej i nie ma umowy SLA. Gatekeeper v3 jest w wersji beta i jest obsługiwany przez społeczność open source. Usługa obsługuje tylko wbudowane definicje zasad i jeden klaster aparatu AKS dla każdej grupy zasobów skonfigurowanych za pomocą jednostki usługi.
 
 > [!IMPORTANT]
-> Aby uzyskać pomoc techniczną dotyczącą Azure Policy aparatu AKS, aparatu AKS lub strażnika v3, Utwórz [nowy problem](https://github.com/Azure/aks-engine/issues/new/choose) w repozytorium GITHUB aparatu AKS.
+> Aby uzyskać obsługę zasad platformy Azure dla aparatu AKS, aparatu AKS lub gatekeeper v3, utwórz [nowy problem](https://github.com/Azure/aks-engine/issues/new/choose) w repozytorium GitHub aparatu AKS.
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
-Aby włączyć i używać Azure Policy dla aparatu AKS z własnym zarządzanym klastrem Kubernetes na platformie Azure, wykonaj następujące czynności:
+Aby włączyć i używać usługi Azure Policy for AKS Engine za pomocą samodzielnie zarządzanego klastra Kubernetes na platformie Azure, należy podjąć następujące akcje:
 
 - [Wymagania wstępne](#prerequisites)
-- [Instalowanie dodatku Azure Policy](#installing-the-add-on)
+- [Instalowanie dodatku zasad platformy Azure](#installing-the-add-on)
 - [Przypisywanie definicji zasad dla aparatu AKS](#built-in-policies)
-- [Zaczekaj na weryfikację](#validation-and-reporting-frequency)
+- [Poczekaj na weryfikację](#validation-and-reporting-frequency)
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Przed zainstalowaniem dodatku Azure Policy lub włączenia dowolnych funkcji usługi subskrypcja musi włączyć dostawcę zasobów **Microsoft. PolicyInsights** i utworzyć przypisanie roli dla jednostki usługi klastra. 
+Przed zainstalowaniem dodatku zasad platformy Azure lub włączenie dowolnej funkcji usługi subskrypcja musi włączyć dostawcę zasobów **Microsoft.PolicyInsights** i utworzyć przypisanie roli dla podmiotu usługi klastrowania. 
 
-1. Aby włączyć dostawcę zasobów, postępuj zgodnie z instrukcjami w obszarze [dostawcy zasobów i typy](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-portal) lub Uruchom interfejs wiersza polecenia platformy Azure lub Azure PowerShell polecenie:
+1. Aby włączyć dostawcę zasobów, wykonaj kroki opisane w [obszarze Dostawcy zasobów i typy](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-portal) lub uruchom polecenie interfejsu wiersza polecenia platformy Azure CLI lub azure PowerShell:
 
    - Interfejs wiersza polecenia platformy Azure
 
@@ -44,7 +44,7 @@ Przed zainstalowaniem dodatku Azure Policy lub włączenia dowolnych funkcji us�
      az provider register --namespace 'Microsoft.PolicyInsights'
      ```
 
-   - Program Azure PowerShell
+   - Azure PowerShell
    
      ```azurepowershell-interactive
      # Log in first with Connect-AzAccount if you're not using Cloud Shell
@@ -53,9 +53,9 @@ Przed zainstalowaniem dodatku Azure Policy lub włączenia dowolnych funkcji us�
      Register-AzResourceProvider -ProviderNamespace 'Microsoft.PolicyInsights'
      ```
 
-1. Tworzenie przypisania roli dla jednostki usługi klastra
+1. Tworzenie przypisania roli dla jednostki usługi klastrowania
 
-   - Jeśli nie znasz identyfikatora aplikacji głównej usługi klastra, poszukaj go przy użyciu następującego polecenia.
+   - Jeśli nie znasz identyfikatora głównej aplikacji usługi klastrowania, poszukaj go za pomocą następującego polecenia.
 
      ```bash
      # Get the kube-apiserver pod name
@@ -65,28 +65,28 @@ Przed zainstalowaniem dodatku Azure Policy lub włączenia dowolnych funkcji us�
      kubectl exec <kube-apiserver pod name> -n kube-system cat /etc/kubernetes/azure.json
      ```
 
-   - Przypisz przypisanie roli modułu zapisywania danych usługi Policy Insights (wersja zapoznawcza) do identyfikatora aplikacji głównej (wartość _aadClientID_ z poprzedniego kroku) przy użyciu interfejsu wiersza polecenia platformy Azure. Zastąp `<subscriptionId>` IDENTYFIKATORem subskrypcji i `<aks engine cluster resource group>` z grupą zasobów, w której znajduje się klaster Kubernetes aparatu AKS.
+   - Przypisz przypisanie roli "Moduł zapisujący dane usługi policy insights (wersja zapoznawcza)" do identyfikatora głównej aplikacji usługi klastrowania (wartość _aadClientID_ z poprzedniego kroku) za pomocą interfejsu wiersza polecenia platformy Azure. Zamień `<subscriptionId>` na swój `<aks engine cluster resource group>` identyfikator subskrypcji i z grupą zasobów, w skład grupy zasobów, w skład grupy kubernetes zarządzany przez aparat AKS.
 
      ```azurecli-interactive
      az role assignment create --assignee <cluster service principal app ID> --scope "/subscriptions/<subscriptionId>/resourceGroups/<aks engine cluster resource group>" --role "Policy Insights Data Writer (Preview)"
      ```
 
-## <a name="azure-policy-add-on"></a>Dodatek Azure Policy
+## <a name="azure-policy-add-on"></a>Dodatek usługi Azure Policy
 
-_Dodatek Azure Policy_ dla Kubernetes łączy usługę Azure Policy z kontrolerem strażnika. Dodatek, który jest instalowany w przestrzeni nazw _polecenia-system_ , wprowadza następujące funkcje:
+_Dodatek zasad platformy Azure_ dla aplikacji Kubernetes łączy usługę Azure Policy z kontrolerem przyjęć gatekeeper. Dodatek, który jest zainstalowany w obszarze nazw _systemu kube,_ uchwala następujące funkcje:
 
-- Sprawdza przy użyciu Azure Policy do przypisań do klastra aparatu AKS
-- Pobiera i instaluje Szczegóły zasad, szablony ograniczeń i ograniczenia
-- Uruchamia sprawdzanie zgodności pełnego skanowania w klastrze aparatu AKS
-- Szczegóły inspekcji i zgodności raportów z powrotem do Azure Policy
+- Sprawdza za pomocą zasad platformy Azure przydziały do klastra aparatu AKS
+- Pobieranie i instalowanie szczegółów zasad, szablonów ograniczeń i ograniczeń
+- Uruchamia pełną kontrolę zgodności skanowania w klastrze aparatu AKS
+- Raporty inspekcji i szczegóły zgodności z powrotem do zasad platformy Azure
 
 ### <a name="installing-the-add-on"></a>Instalowanie dodatku
 
-Po zakończeniu wymagań wstępnych można zainstalować dodatek Azure Policy. Instalacja może być wykonywana w cyklu tworzenia lub aktualizacji aparatu AKS lub jako niezależna akcja w istniejącym klastrze.
+Po zakończeniu wymagań wstępnych można zainstalować dodatek zasad platformy Azure. Instalacja może być podczas tworzenia lub aktualizacji cyklu aparatu AKS lub jako niezależna akcja w istniejącym klastrze.
 
-- Zainstaluj podczas procesu tworzenia lub aktualizacji
+- Instalacja podczas tworzenia lub aktualizacji cyklu
 
-  Aby włączyć dodatek Azure Policy podczas tworzenia nowego klastra z własnym zarządzaniem lub jako aktualizacji istniejącego klastra, należy uwzględnić definicję klastra właściwości **dodatków** dla aparatu AKS.
+  Aby włączyć dodatek zasad platformy Azure podczas tworzenia nowego klastra zarządzanego samodzielnie lub jako aktualizację istniejącego klastra, dołącz definicję klastra właściwości **dodatków** dla aparatu AKS.
 
   ```json
   "addons": [{
@@ -99,98 +99,98 @@ Po zakończeniu wymagań wstępnych można zainstalować dodatek Azure Policy. I
   }]
   ```
 
-  Aby uzyskać więcej informacji na temat, zobacz [Definicja klastra aparatu AKS Engine](https://github.com/Azure/aks-engine/blob/master/docs/topics/clusterdefinitions.md).
+  Aby uzyskać więcej informacji na temat, zobacz zewnętrzny przewodnik [AKS Engine definicji klastra](https://github.com/Azure/aks-engine/blob/master/docs/topics/clusterdefinitions.md).
 
-- Instalowanie w istniejącym klastrze z wykresami Helm
+- Instalowanie w istniejącym klastrze za pomocą wykresów helm
 
-  Wykonaj następujące kroki, aby przygotować klaster i zainstalować dodatek:
+  Aby przygotować klaster i zainstalować dodatek, należy wykonać następujące czynności:
 
-  1. Zainstaluj strażnika w przestrzeni nazw _systemowej_ .
+  1. Zainstaluj strażnika w przestrzeni nazw systemu gatekeeper.Install Gatekeeper to the _gatekeeper-system_ namespace.
 
      ```bash
      kubectl apply -f https://raw.githubusercontent.com/open-policy-agent/gatekeeper/master/deploy/gatekeeper.yaml
      ```
-  1. Dodaj etykietę _kontrolki płaszczyzny_ do _polecenia-system_. Ta etykieta wyklucza inspekcję polecenia i _firmowych systemów_ i usług przez strażnika i dodatek Azure Policy.
+  1. Dodaj _etykietę płaszczyzny sterowania_ do _kube-system_. Ta etykieta nie obejmuje inspekcji zasobników i usług _systemu kube_ przez gatekeeper i dodatek zasad platformy Azure.
 
      ```bash
      kubectl label namespaces kube-system control-plane=controller-manager
      ```
 
-  1. Synchronizuj dane Kubernetes (przestrzeń nazw, pod, ruch przychodzący, usługa) z NIEPRZEZ.
+  1. Synchronizuj dane kubernetes (obszar nazw, zasobnik, przychył się, usługa) z opa.
 
      ```bash
      kubectl apply -f https://raw.githubusercontent.com/Azure/azure-policy/master/built-in-references/Kubernetes/gatekeeper-opa-sync.yaml
      ```
 
-     Aby uzyskać więcej informacji, zobacz [nieprzez — replikowanie danych](https://github.com/open-policy-agent/gatekeeper#replicating-data).
+     Aby uzyskać więcej informacji, zobacz [OPA — replikowanie danych](https://github.com/open-policy-agent/gatekeeper#replicating-data).
 
-  1. Dodaj repozytorium Azure Policy do Helm.
+  1. Dodaj repozytorium zasad platformy Azure do helma.
 
      ```bash
      helm repo add azure-policy https://raw.githubusercontent.com/Azure/azure-policy/master/extensions/policy-addon-kubernetes/helm-charts
      ```
 
-     Aby uzyskać więcej informacji, zobacz [Helm Chart-Przewodnik Szybki Start](https://helm.sh/docs/using_helm/#quickstart-guide).
+     Aby uzyskać więcej informacji, zobacz [Wykres steru - Przewodnik szybki start](https://helm.sh/docs/using_helm/#quickstart-guide).
 
-  1. Zainstaluj dodatek przy użyciu wykresu Helm. Zastąp `<subscriptionId>` IDENTYFIKATORem subskrypcji i `<aks engine cluster resource group>` z grupą zasobów, w której znajduje się klaster Kubernetes aparatu AKS.
+  1. Zainstaluj dodatek za pomocą wykresu helm. Zamień `<subscriptionId>` na swój `<aks engine cluster resource group>` identyfikator subskrypcji i z grupą zasobów, w skład grupy zasobów, w skład grupy kubernetes zarządzany przez aparat AKS.
 
      ```bash
      helm install azure-policy/azure-policy-addon-aks-engine --name azure-policy-addon --set azurepolicy.env.resourceid="/subscriptions/<subscriptionId>/resourceGroups/<aks engine cluster resource group>"
      ```
 
-     Aby uzyskać więcej informacji na temat instalacji wykresu Helm dodatku, [Azure Policy Zobacz definicję wykresu Helm dodatku](https://github.com/Azure/azure-policy/tree/master/extensions/policy-addon-kubernetes/helm-charts) w witrynie GitHub.
+     Aby uzyskać więcej informacji na temat instalowania dodatku Helm Chart, zobacz [definicję wykresu helm dodatku usługi Azure Policy w](https://github.com/Azure/azure-policy/tree/master/extensions/policy-addon-kubernetes/helm-charts) usłudze GitHub.
 
      > [!NOTE]
-     > Ze względu na relacje między dodatkiem Azure Policy i identyfikatorem grupy zasobów Azure Policy obsługuje tylko jeden klaster aparatu AKS dla każdej grupy zasobów.
+     > Ze względu na relację między dodatkiem usługi Azure Policy a identyfikatorem grupy zasobów usługa Azure Policy obsługuje tylko jeden klaster aparatu AKS dla każdej grupy zasobów.
 
-Aby sprawdzić, czy instalacja dodatku zakończyła się pomyślnie i czy _zasady na platformie Azure_ są uruchomione, uruchom następujące polecenie:
+Aby sprawdzić, czy instalacja dodatku zakończyła się pomyślnie i czy zasobnik _zasad platformy Azure_ jest uruchomiony, uruchom następujące polecenie:
 
 ```bash
 kubectl get pods -n kube-system
 ```
 
-### <a name="validation-and-reporting-frequency"></a>Częstotliwość sprawdzania poprawności i raportowania
+### <a name="validation-and-reporting-frequency"></a>Częstotliwość walidacji i raportowania
 
-Dodatek jest sprawdzany przy użyciu Azure Policy do zmian przypisań zasad co 5 minut. W trakcie tego cyklu odświeżania dodatek sprawdza zmiany. Te zmiany wyzwalają tworzenie, aktualizowanie lub usuwanie szablonów ograniczeń i ograniczeń.
+Dodatek sprawdza się za pomocą zasad platformy Azure w celu zmiany przydziałów zasad co 5 minut. Podczas tego cyklu odświeżania dodatek sprawdza zmiany. Wyzwalacz tych zmian tworzy, aktualizuje lub usuwa szablony ograniczeń i ograniczenia.
 
 > [!NOTE]
-> _Administrator klastra_ może mieć uprawnienia do wprowadzania zmian w szablonach ograniczeń i ograniczeniach, ale nie jest to zalecane ani obsługiwane w celu wprowadzania zmian w szablonach ograniczeń ani ograniczeniach utworzonych przez Azure Policy. Wszelkie zmiany wprowadzane ręcznie są tracone podczas cyklu odświeżania.
+> Administrator _klastra_ może mieć uprawnienia do wprowadzania zmian w szablonach ograniczeń i ograniczeniach, nie jest zalecane ani obsługiwane wprowadzanie zmian w szablonach ograniczeń lub ograniczeniach utworzonych przez usługę Azure Policy. Wszelkie wprowadzone ręczne zmiany zostaną utracone podczas cyklu odświeżania.
 
-Co 5 minut, dodatek wywołuje pełne skanowanie klastra. Po zebraniu szczegółowych informacji o pełnym skanowaniu i wszystkich ocenach w czasie rzeczywistym przez strażnika podjętych zmian w klastrze dodatek zgłasza wyniki z powrotem do Azure Policy w celu uwzględnienia informacji o [zgodności](../how-to/get-compliance-data.md) , takich jak wszystkie Azure Policy przypisania. W cyklu inspekcji są zwracane tylko wyniki aktywnych przypisań zasad. Wyniki inspekcji mogą być również widoczne jako naruszenia wymienione w polu Stan niepowodzenia ograniczenia.
+Co 5 minut dodatek wymaga pełnego skanowania klastra. Po zebraniu szczegółów pełnego skanowania i wszelkich ocen w czasie rzeczywistym przez gatekeeper prób zmian w klastrze, dodatek raportuje wyniki z powrotem do zasad platformy Azure w celu uwzględnienia [w szczegóły zgodności,](../how-to/get-compliance-data.md) takie jak każde przypisanie zasad platformy Azure. Tylko wyniki dla aktywnych przypisań zasad są zwracane podczas cyklu inspekcji. Wyniki inspekcji mogą być również postrzegane jako naruszenia wymienione w polu stanu ograniczenia nie powiodło się.
 
-## <a name="policy-language"></a>Język zasad
+## <a name="policy-language"></a>Język polityki
 
-Struktura języka Azure Policy zarządzania aparatem AKS jest zgodna z istniejącymi zasadami. Efekt _EnforceOPAConstraint_ służy do zarządzania klastrami aparatu AKS i zawiera _szczegółowe_ właściwości specyficzne dla pracy z [platformą ograniczeń nieprzez](https://github.com/open-policy-agent/frameworks/tree/master/constraint) i strażnik v3. Aby uzyskać szczegółowe informacje i przykłady, zobacz efekt [EnforceOPAConstraint](effects.md#enforceopaconstraint) .
+Struktura języka zasad platformy Azure do zarządzania aparatem AKS jest zgodna z istniejącymi zasadami. Efekt _EnforceOPAConstraint_ jest używany do zarządzania klastrami aparatu AKS i pobiera _szczegółowe_ właściwości specyficzne dla pracy z [frameworkiem ograniczeń OPA](https://github.com/open-policy-agent/frameworks/tree/master/constraint) i gatekeeper v3. Aby uzyskać szczegółowe informacje i przykłady, zobacz [EnforceOPAConstraint](effects.md#enforceopaconstraint) efekt.
 
-W ramach właściwości _szczegóły. constraintTemplate_ i _szczegóły. ograniczenia_ w definicji zasad Azure Policy przekazuje identyfikatory URI tych [CustomResourceDefinitions](https://github.com/open-policy-agent/gatekeeper#constraint-templates) (CRD) do dodatku. Rego to język, w którym NIEPRZEZ i strażnik obsługuje walidację żądania do klastra Kubernetes. Dzięki obsłudze istniejącej normy Kubernetes Management Azure Policy umożliwia ponowne użycie istniejących reguł i sparowanie ich z Azure Policy na potrzeby ujednoliconego środowiska raportowania zgodności z chmurą. Aby uzyskać więcej informacji, zobacz [co to jest rego?](https://www.openpolicyagent.org/docs/how-do-i-write-policies.html#what-is-rego).
+W ramach _details.constraintTemplate_ i _details.constraint_ właściwości w definicji zasad, usługi Azure Policy przekazuje identyfikatory URI tych [CustomResourceDefinitions](https://github.com/open-policy-agent/gatekeeper#constraint-templates) (CRD) do dodatku. Rego to język, który opa i gatekeeper wsparcia do sprawdzania poprawności żądania do klastra Kubernetes. Obsługując istniejący standard zarządzania usługą Kubernetes, usługa Azure Policy umożliwia ponowne użycie istniejących reguł i powiązanie ich z zasadami platformy Azure w celu zapewnienia ujednoliconego środowiska raportowania zgodności w chmurze. Aby uzyskać więcej informacji, zobacz [Co to jest Rego?](https://www.openpolicyagent.org/docs/how-do-i-write-policies.html#what-is-rego).
 
 ## <a name="built-in-policies"></a>Wbudowane zasady
 
-Aby znaleźć wbudowane zasady zarządzania klastrem aparatu AKS przy użyciu Azure Portal, wykonaj następujące kroki:
+Aby znaleźć wbudowane zasady zarządzania klastrem usługi AKS Engine przy użyciu witryny Azure portal, wykonaj następujące kroki:
 
-1. Uruchom usługę Azure Policy w Azure Portal. W lewym okienku wybierz pozycję **wszystkie usługi** , a następnie wyszukaj i wybierz pozycję **zasady**.
+1. Uruchom usługę Azure Policy w witrynie Azure portal. Wybierz **pozycję Wszystkie usługi** w lewym okienku, a następnie wyszukaj i wybierz pozycję **Zasady**.
 
-1. W lewym okienku strony Azure Policy wybierz pozycję **definicje**.
+1. W lewym okienku strony Zasady platformy Azure wybierz pozycję **Definicje**.
 
-1. W polu listy rozwijanej Kategoria Użyj **opcji Zaznacz wszystko** , aby wyczyścić filtr, a następnie wybierz pozycję **Kubernetes**.
+1. Z listy rozwijanej Kategoria użyj pola **wyboru dla wszystkich,** aby wyczyścić filtr, a następnie wybierz pozycję **Kubernetes**.
 
-1. Wybierz definicję zasad, a następnie wybierz przycisk **Przypisz** .
+1. Wybierz definicję zasad, a następnie wybierz przycisk **Przypisz.**
 
 > [!NOTE]
-> Podczas przypisywania Azure Policy do definicji aparatu AKS **zakres** musi być grupą zasobów klastra aparatu AKS.
+> Podczas przypisywania definicji usługi Azure Policy dla aparatu AKS **zakres** musi być grupą zasobów klastra aparatu AKS.
 
-Alternatywnie, można [użyć zasad programu do szybkiego](../assign-policy-portal.md) startu i przypisania aparatu AKS. Wyszukaj definicję zasad aparatu AKS zamiast przykładowej "Inspekcja maszyn wirtualnych".
+Alternatywnie użyj [przypisywania zasad — Szybki](../assign-policy-portal.md) start portalu, aby znaleźć i przypisać zasady aparatu AKS. Wyszukaj definicję zasad aparatu AKS zamiast przykładowych "maszyn wirtualnych inspekcji".
 
 > [!IMPORTANT]
-> Wbudowane zasady w kategorii **Kubernetes** są przeznaczone tylko do użytku z aparatem AKS.
+> Wbudowane zasady w kategorii **Kubernetes** są używane tylko z aparatem AKS.
 
 ## <a name="logging"></a>Rejestrowanie
 
-### <a name="azure-policy-add-on-logs"></a>Azure Policy dzienniki dodatków
+### <a name="azure-policy-add-on-logs"></a>Dzienniki dodatków zasad platformy Azure
 
-Jako kontroler Kubernetes/kontener, dodatek Azure Policy przechowuje dzienniki w klastrze aparatu AKS.
+Jako kontroler/kontener usługi Kubernetes dodatek zasad platformy Azure przechowuje dzienniki w klastrze aparatu AKS.
 
-Aby wyświetlić Azure Policy dzienniki dodatków, użyj `kubectl`:
+Aby wyświetlić dzienniki dodatków usługi `kubectl`Azure Policy, należy użyć:
 
 ```bash
 # Get the Azure Policy Add-on pod name
@@ -202,24 +202,24 @@ kubectl logs <Azure Policy Add-on pod name> -n kube-system
 
 ### <a name="gatekeeper-logs"></a>Dzienniki strażnika
 
-Strażnika pod, _strażnik-Controller-Manager-0_, zazwyczaj znajduje się w przestrzeni nazw `gatekeeper-system` lub `kube-system`, ale może znajdować się w innej przestrzeni nazw w zależności od sposobu jego wdrożenia.
+Gatekeeper pod, _gatekeeper-controller-manager-0_, jest `gatekeeper-system` `kube-system` zwykle w obszarze nazw lub, ale może być w innej przestrzeni nazw w zależności od sposobu jego wdrożenia.
 
-Aby wyświetlić dzienniki strażnika, użyj `kubectl`:
+Aby wyświetlić dzienniki strażnika, należy użyć: `kubectl`
 
 ```bash
 NAMESPACE=<namespace of gatekeeper>
 kubectl logs gatekeeper-controller-manager-0 -n $NAMESPACE
 ```
 
-Aby uzyskać więcej informacji, zobacz [debugowanie strażnika](https://github.com/open-policy-agent/gatekeeper#debugging) w dokumentacji nieprzez.
+Aby uzyskać więcej informacji, zobacz [Debugowanie Gatekeeper](https://github.com/open-policy-agent/gatekeeper#debugging) w dokumentacji OPA.
 
-## <a name="remove-the-add-on"></a>Usuń dodatek
+## <a name="remove-the-add-on"></a>Usuwanie dodatku
 
-Aby usunąć dodatek Azure Policy i strażnika z klastra aparatu AKS, użyj metody, która jest wyrównana do sposobu instalacji dodatku:
+Aby usunąć dodatek zasad platformy Azure i gatekeeper z klastra aparatu AKS, należy użyć metody, która jest zgodna z sposób instalowany dodatek:
 
-- Jeśli jest zainstalowany, należy ustawić właściwość **Dodatki** w definicji klastra dla aparatu AKS:
+- Jeśli jest zainstalowany przez ustawienie **właściwości addons** w definicji klastra dla aparatu AKS:
 
-  Wdróż ponownie definicję klastra w aparacie AKS po zmianie właściwości **Dodatki** dla _usługi Azure-Policy_ na wartość false:
+  Ponownie rozmieszczaj definicję klastra do aparatu AKS po zmianie właściwości **dodatków** dla _zasad azure_ na false:
 
 
   ```json
@@ -229,19 +229,19 @@ Aby usunąć dodatek Azure Policy i strażnika z klastra aparatu AKS, użyj meto
   }]
   ```
 
-- Jeśli program został zainstalowany z wykresami Helm:
+- Jeśli jest zainstalowany z wykresami helm:
 
-  1. Usuń stare ograniczenia
+  1. Usuwanie starych ograniczeń
 
-     Obecnie mechanizm odinstalowywania usuwa jedynie system strażnika, nie usuwa żadnych zasobów _ConstraintTemplate_, _ograniczeń_ani _konfiguracji_ , które zostały utworzone przez użytkownika, ani nie usuwa ich towarzyszącego _CRDs_.
+     Obecnie mechanizm odinstalowywania usuwa tylko system Gatekeeper, nie usuwa żadnych _zasobów ConstraintTemplate_, _Constraint_ani _Config,_ które zostały utworzone przez użytkownika, ani nie usuwa towarzyszących im _identyfikatorów CRD._
 
-     Gdy strażnik jest uruchomiony, można usunąć niepożądane ograniczenia przez:
+     Gdy gatekeeper jest uruchomiony, można usunąć niechciane ograniczenia przez:
 
      - Usuwanie wszystkich wystąpień zasobu ograniczenia
-     - Usuwanie zasobu _ConstraintTemplate_ , który powinien automatycznie czyścić _CRD_
-     - Usunięcie zasobu _konfiguracji_ spowoduje usunięcie finalizatorów z synchronizowanych zasobów
+     - Usuwanie zasobu _ConstraintTemplate,_ który powinien automatycznie wyczyścić _crd_
+     - Usunięcie zasobu _Config_ powoduje usunięcie finalizatorów z synchronizowanych zasobów
 
-  1. Odinstaluj dodatek Azure Policy
+  1. Odinstalowywanie dodatku zasad platformy Azure
   
      ```bash
      helm del --purge azure-policy-addon
@@ -253,17 +253,17 @@ Aby usunąć dodatek Azure Policy i strażnika z klastra aparatu AKS, użyj meto
      kubectl delete -f https://raw.githubusercontent.com/open-policy-agent/gatekeeper/master/deploy/gatekeeper.yaml
      ```
 
-## <a name="diagnostic-data-collected-by-azure-policy-add-on"></a>Dane diagnostyczne zbierane przez Azure Policy dodatek
+## <a name="diagnostic-data-collected-by-azure-policy-add-on"></a>Dane diagnostyczne zbierane przez dodatek usługi Azure Policy
 
-Dodatek Azure Policy dla Kubernetes zbiera ograniczone dane diagnostyczne klastra. Te dane diagnostyczne są istotnymi danymi technicznymi związanymi z oprogramowaniem i wydajnością. Jest on używany w następujący sposób:
+Dodatek zasad platformy Azure dla usługi Kubernetes zbiera ograniczone dane diagnostyczne klastra. Te dane diagnostyczne są istotnymi danymi technicznymi związanymi z oprogramowaniem i wydajnością. Jest on używany w następujący sposób:
 
-- Zachowaj aktualność Azure Policy
-- Utrzymywanie bezpiecznych, niezawodnych i wydajnych Azure Policy dodatków
-- Ulepszanie Azure Policy dodatku poprzez zagregowaną analizę użycia dodatku
+- Dbaj o aktualną datę dodatku zasad platformy Azure
+- Utrzymuj bezpieczne, niezawodne i wydajne dodatki zasad platformy Azure
+- Ulepszanie dodatku zasad platformy Azure — dzięki zbiorczej analizie użycia dodatku
 
-Informacje zbierane przez dodatek nie są danymi osobistymi. Obecnie są zbierane następujące szczegóły:
+Informacje zebrane przez dodatek nie są danymi osobowymi. Obecnie zbierane są następujące szczegóły:
 
-- Azure Policy wersji agenta dodatku
+- Wersja dodatku usługi Azure Policy
 - Typ klastra
 - Region klastra
 - Grupa zasobów klastra
@@ -271,17 +271,17 @@ Informacje zbierane przez dodatek nie są danymi osobistymi. Obecnie są zbieran
 - Identyfikator subskrypcji klastra
 - System operacyjny klastra (przykład: Linux)
 - Miasto klastra (przykład: Seattle)
-- Województwo klastra (przykład: Waszyngton)
+- Stan lub prowincja klastra (przykład: Waszyngton)
 - Kraj lub region klastra (przykład: Stany Zjednoczone)
-- Wyjątki/błędy napotykane przez dodatek Azure Policy podczas instalacji agenta podczas oceny zasad
-- Liczba zasad strażnika niezainstalowanych przez dodatek Azure Policy
+- Wyjątki/błędy napotkane przez dodatek usługi Azure Policy podczas instalacji agenta podczas oceny zasad
+- Liczba zasad strażnika nieinstalowanych przez dodatek usługi Azure Policy
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Zapoznaj się z przykładami w [Azure Policy Samples](../samples/index.md).
+- Przejrzyj przykłady w [przykładach zasad platformy Azure](../samples/index.md).
 - Przejrzyj [strukturę definicji usługi Azure Policy](definition-structure.md).
 - Przejrzyj [wyjaśnienie działania zasad](effects.md).
-- Dowiedz się, jak [programowo utworzyć zasady](../how-to/programmatically-create.md).
-- Dowiedz się, jak [uzyskać dane zgodności](../how-to/get-compliance-data.md).
-- Dowiedz się, jak [skorygować niezgodne zasoby](../how-to/remediate-resources.md).
-- Zapoznaj się z informacjami o tym, czym jest Grupa zarządzania, aby [zorganizować swoje zasoby za pomocą grup zarządzania platformy Azure](../../management-groups/overview.md).
+- Dowiedz się, jak [programowo tworzyć zasady](../how-to/programmatically-create.md).
+- Dowiedz się, jak [uzyskać dane dotyczące zgodności](../how-to/get-compliance-data.md).
+- Dowiedz się, jak [korygować niezgodne zasoby](../how-to/remediate-resources.md).
+- Sprawdź, czym jest grupa zarządzania, [organizuj swoje zasoby za pomocą grup zarządzania platformy Azure](../../management-groups/overview.md).

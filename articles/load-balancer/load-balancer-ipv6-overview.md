@@ -1,10 +1,10 @@
 ---
-title: Omówienie protokołu IPv6 Azure Load Balancer
-description: Korzystając z tej ścieżki szkoleniowej, Rozpocznij pracę z obsługą protokołu IPv6 dla Azure Load Balancer i maszyn wirtualnych o zrównoważonym obciążeniu.
+title: Omówienie ipv6 — Równoważenie obciążenia platformy Azure
+description: Dzięki tej ścieżce szkoleniowej rozpocznij pracę z obsługą IPv6 dla modułu Azure Load Balancer i maszyn wirtualnych ze zrównoważonym obciążeniem.
 services: load-balancer
 documentationcenter: na
 author: asudbring
-keywords: Protokół IPv6, usługa azure load balancer, podwójnego stosu, publiczny adres ip, natywnego protokołu ipv6, aplikację mobilną, iot
+keywords: ipv6, lazurowy moduł równoważenia obciążenia, podwójny stos, publiczny adres IP, natywny ipv6, mobilny, iot
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
@@ -14,79 +14,79 @@ ms.workload: infrastructure-services
 ms.date: 08/24/2018
 ms.author: allensu
 ms.openlocfilehash: 6bc7f45d84d525156a3d25bdceef4d1012844afa
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/14/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75931985"
 ---
-# <a name="overview-of-ipv6-for-azure-load-balancer"></a>Omówienie protokołu IPv6 dla Azure Load Balancer
+# <a name="overview-of-ipv6-for-azure-load-balancer"></a>Omówienie modułu IPv6 dla modułu równoważenia obciążenia platformy Azure
 
 
 >[!NOTE] 
->Ta zawartość została zastąpiona przez [protokół IPv6 na potrzeby omówienia sieci wirtualnej platformy Azure](https://docs.microsoft.com/azure/virtual-network/ipv6-overview). Na platformie Azure zalecane są nowe wdrożenia protokołu IPv6 dla funkcji sieci wirtualnych platformy Azure.
+>Ta zawartość została zastąpiona przez [IPv6 dla usługi Azure VNet Overview](https://docs.microsoft.com/azure/virtual-network/ipv6-overview). Platforma Azure zaleca nowe wdrożenia IPv6 przy użyciu nowych funkcji IPv6 dla sieci wirtualnych platformy Azure.
 
 >[!NOTE]
->Usługa Azure Load Balancer obsługuje dwie warstwy: Podstawowa i Standardowa. W tym artykule omówiono usługę Load Balancer w warstwie Podstawowa. Aby uzyskać więcej informacji na temat usługa Load Balancer w warstwie Standardowa, zobacz [Usługa Load Balancer w warstwie Standardowa Omówienie](load-balancer-standard-overview.md).
+>Usługa Azure Load Balancer obsługuje dwie warstwy: Podstawowa i Standardowa. W tym artykule omówiono usługę Load Balancer w warstwie Podstawowa. Aby uzyskać więcej informacji na temat standardowego modułu równoważenia obciążenia, zobacz [omówienie standardowego modułu równoważenia obciążenia](load-balancer-standard-overview.md).
 
-Usługi równoważenia obciążenia z podstawową jednostką SKU można wdrożyć przy użyciu adresu IPv6. Oprócz łączności IPv4, zapewnia to następujące możliwości:
+Podstawowe moduły równoważenia obciążenia z internetem przeznaczone dla jednostki SKU można wdrożyć z adresem IPv6. Oprócz łączności IPv4 umożliwia to następujące możliwości:
 
-* Natywna łączność między publicznymi klientami internetowymi i usługą Azure Virtual Machines (VM) za pośrednictwem modułu równoważenia obciążenia.
-* Natywna, kompleksowa łączność z protokołem IPv6 między maszynami wirtualnymi i publicznymi klientami z obsługą protokołu IPv6.
+* Natywna kompleksowa łączność IPv6 między publicznymi klientami internetowymi a maszynami wirtualnymi platformy Azure za pośrednictwem modułu równoważenia obciążenia.
+* Natywna kompleksowa łączność wychodząca IPv6 między maszynami wirtualnymi a publicznymi klientami obsługującymi protokół IPv6 w Internecie.
 
-Na poniższej ilustracji przedstawiono funkcje protokołu IPv6 dla Azure Load Balancer.
+Na poniższej ilustracji przedstawiono funkcję IPv6 dla modułu Równoważenia obciążenia platformy Azure.
 
-![Azure Load Balancer przy użyciu protokołu IPv6](./media/load-balancer-ipv6-overview/load-balancer-ipv6.png)
+![Moduł równoważenia obciążenia platformy Azure z ipv6](./media/load-balancer-ipv6-overview/load-balancer-ipv6.png)
 
-Po wdrożeniu Klient internetowy z obsługą protokołu IPv4 lub IPv6 może komunikować się z publicznymi adresami IPv4 lub IPv6 (lub nazwami hostów) Load Balancer internetowego na platformie Azure. Moduł równoważenia obciążenia kieruje pakiety IPv6 do prywatnych adresów IPv6 maszyn wirtualnych przy użyciu translatora adresów sieciowych (NAT). Klient internetowy IPv6 nie może komunikować się bezpośrednio z adresem IPv6 maszyn wirtualnych.
+Po wdrożeniu klient internetowy obsługujący protokół IPv4 lub IPv6 może komunikować się z publicznymi adresami IPv4 lub IPv6 (lub nazwami hostów) modułu równoważenia obciążenia opartego na Internecie. Moduł równoważenia obciążenia kieruje pakiety IPv6 na prywatne adresy IPv6 maszyn wirtualnych przy użyciu translacji adresów sieciowych (NAT). Klient internetowy IPv6 nie może komunikować się bezpośrednio z adresem IPv6 maszyn wirtualnych.
 
 ## <a name="features"></a>Funkcje
 
-Natywna obsługa protokołu IPv6 dla maszyn wirtualnych wdrożonych za pośrednictwem Azure Resource Manager zapewnia następujące możliwości:
+Natywna obsługa protokołu IPv6 dla maszyn wirtualnych wdrożonych za pośrednictwem usługi Azure Resource Manager zapewnia:
 
-1. Usługi IPv6 o zrównoważonym obciążeniu dla klientów IPv6 w Internecie
-2. Natywne punkty końcowe protokołu IPv6 i IPv4 na maszynach wirtualnych ("podwójne piętro")
-3. Przychodzące i wychodzące połączenia natywne protokołu IPv6
-4. Obsługiwane protokoły, takie jak TCP, UDP i HTTP (S), zapewniają pełny zakres architektur usługi
+1. Usługi IPv6 z równoważenia obciążenia dla klientów IPv6 w Internecie
+2. Natywne punkty końcowe IPv6 i IPv4 na maszynach wirtualnych ("podwójny skumulowany")
+3. Natywne połączenia IPv6 inbound i wychodzące
+4. Obsługiwane protokoły, takie jak TCP, UDP i HTTP(S) umożliwiają pełny zakres architektur usług
 
 ## <a name="benefits"></a>Korzyści
 
-Ta funkcja zapewnia następujące korzyści:
+Ta funkcja umożliwia następujące kluczowe korzyści:
 
-* Spełnianie przepisów obowiązujących dla instytucji rządowych, które wymagają, aby nowe aplikacje były dostępne tylko dla klientów korzystających
-* Umożliwienie deweloperom usług mobilnych i Internetu rzeczy (IOT) korzystania z podwójnego stosu (IPv4 + IPv6) Virtual Machines platformy Azure w celu rozwiązania rosnących rynków usług Mobile & IOT
+* Spełniaj przepisy rządowe wymagające, aby nowe aplikacje były dostępne dla klientów tylko w IPv6
+* Umożliwienie deweloperom urządzeń mobilnych i internetu rzeczy (IOT) korzystania z maszyn wirtualnych platformy Azure z dwoma stosami (IPv4+IPv6) w celu rozwiązania problemu rosnących rynków mobilnych & IOT
 
 ## <a name="details-and-limitations"></a>Szczegóły i ograniczenia
 
 Szczegóły
 
-* Usługa Azure DNS zawiera rekordy nazw (AAAA) IPv4 a i IPv6 i odpowiada obu rekordom usługi równoważenia obciążenia. Klient wybiera adres (IPv4 lub IPv6) do komunikacji.
-* Gdy maszyna wirtualna inicjuje połączenie z publicznym urządzeniem połączonym z Internetem za pomocą protokołu IPv6, źródłowy adres IPv6 maszyny wirtualnej to adres sieciowy przetłumaczony na publiczny adres IPv6 modułu równoważenia obciążenia.
-* Maszyny wirtualne z systemem operacyjnym Linux muszą być skonfigurowane do odbierania adresów IP IPv6 za pośrednictwem protokołu DHCP. Wiele obrazów systemu Linux w galerii platformy Azure jest już skonfigurowanych do obsługi protokołu IPv6 bez modyfikacji. Aby uzyskać więcej informacji, zobacz [Konfigurowanie protokołu DHCPv6 dla maszyn wirtualnych z systemem Linux](load-balancer-ipv6-for-linux.md)
-* Jeśli zdecydujesz się użyć sondy kondycji z modułem równoważenia obciążenia, Utwórz sondę IPv4 i użyj jej z punktami końcowymi IPv4 i IPv6. Jeśli usługa na maszynie wirtualnej ulegnie awarii, punkty końcowe IPv4 i IPv6 są wyłączane.
+* Usługa Azure DNS zawiera rekordy nazw IPv4 A i IPv6 AAAA i odpowiada za pomocą obu rekordów dla modułu równoważenia obciążenia. Klient wybiera adres (IPv4 lub IPv6) do komunikowania się z.
+* Gdy maszyna wirtualna inicjuje połączenie z publicznym urządzeniem podłączonym do Internetu IPv6, źródłowy adres IPv6 maszyny Wirtualnej jest adresem sieciowym przetłumaczonym (NAT) na publiczny adres IPv6 modułu równoważenia obciążenia.
+* Maszyny wirtualne z systemem operacyjnym Linux muszą być skonfigurowane do odbierania adresu IP Protokołu IPv6 za pośrednictwem usługi DHCP. Wiele obrazów systemu Linux w galerii Azure Są już skonfigurowane do obsługi IPv6 bez modyfikacji. Aby uzyskać więcej informacji, zobacz [Konfigurowanie maszyn wirtualnych DHCPv6 dla systemu Linux](load-balancer-ipv6-for-linux.md)
+* Jeśli zdecydujesz się użyć sondy kondycji z modułem równoważenia obciążenia, utwórz sondę IPv4 i użyj jej zarówno z punktami końcowymi IPv4, jak i IPv6. Jeśli usługa na maszynie wirtualnej ustępuje, punkty końcowe IPv4 i IPv6 są wyjęte z obrotu.
 
 Ograniczenia
 
-* Nie można dodać reguł równoważenia obciążenia IPv6 do Azure Portal. Reguły można tworzyć tylko za pomocą szablonu, interfejsu wiersza polecenia, programu PowerShell.
-* Nie można uaktualnić istniejących maszyn wirtualnych do korzystania z adresów IPv6. Należy wdrożyć nowe maszyny wirtualne.
-* Pojedynczy adres IPv6 można przypisać do jednego interfejsu sieciowego w każdej maszynie wirtualnej.
-* Publicznych adresów IPv6 nie można przypisać do maszyny wirtualnej. Można je przypisać tylko do modułu równoważenia obciążenia.
-* Nie można skonfigurować wyszukiwania odwrotnego systemu DNS dla publicznych adresów IPv6.
-* Maszyny wirtualne z adresami IPv6 nie mogą należeć do usługi w chmurze platformy Azure. Mogą być połączone z usługą Azure Virtual Network (VNet) i komunikować się ze sobą przy użyciu adresów IPv4.
+* Nie można dodać reguł równoważenia obciążenia IPv6 w witrynie Azure Portal. Reguły można tworzyć tylko za pośrednictwem szablonu, interfejsu wiersza polecenia, programu PowerShell.
+* Nie można uaktualnić istniejących maszyn wirtualnych do używania adresów IPv6. Należy wdrożyć nowe maszyny wirtualne.
+* Jeden adres IPv6 można przypisać do jednego interfejsu sieciowego w każdej maszynie wirtualnej.
+* Publicznych adresów IPv6 nie można przypisać do maszyny Wirtualnej. Można je przypisać tylko do modułu równoważenia obciążenia.
+* Nie można skonfigurować odwrotnego wyszukiwania DNS dla publicznych adresów IPv6.
+* Maszyny wirtualne z adresami IPv6 nie mogą być członkami usługi Azure Cloud Service. Mogą być połączone z siecią wirtualną platformy Azure i komunikować się ze sobą za pośrednictwem ich adresów IPv4.
 * Prywatne adresy IPv6 można wdrożyć na poszczególnych maszynach wirtualnych w grupie zasobów, ale nie można ich wdrożyć w grupie zasobów za pomocą zestawów skalowania.
-* Maszyny wirtualne platformy Azure nie mogą łączyć się za pośrednictwem protokołu IPv6 z innymi maszynami wirtualnymi, innymi usługami platformy Azure lub urządzeniami lokalnymi. Mogą komunikować się tylko z modułem równoważenia obciążenia platformy Azure za pośrednictwem protokołu IPv6. Mogą jednak komunikować się z tymi innymi zasobami przy użyciu protokołu IPv4.
-* Ochrona sieciowej grupy zabezpieczeń (sieciowej grupy zabezpieczeń) dla protokołu IPv4 jest obsługiwana w przypadku wdrożeń z podwójnym stosem (IPv4 + IPv6). Sieciowych grup zabezpieczeń nie mają zastosowania do punktów końcowych protokołu IPv6.
-* Punkt końcowy protokołu IPv6 na maszynie wirtualnej nie jest narażony bezpośrednio z Internetem. Znajduje się za modułem równoważenia obciążenia. Tylko porty określone w regułach modułu równoważenia obciążenia są dostępne za pośrednictwem protokołu IPv6.
-* Zmiana parametru IdleTimeout dla protokołu IPv6 **nie jest obecnie obsługiwana**. Wartość domyślna to cztery minuty.
-* Zmiana parametru loadDistributionMethod protokołu IPv6 nie jest **obecnie obsługiwana**.
-* Zastrzeżone adresy IP IPv6 (gdzie IPAllocationMethod = static) **nie są obecnie obsługiwane**.
-* Usługa NAT64 (tłumaczenie adresów IPv6 na IPv4) nie jest obsługiwana.
+* Maszyny wirtualne platformy Azure nie mogą łączyć się za pomocą usługi IPv6 z innymi maszynami wirtualnymi, innymi usługami platformy Azure lub urządzeniami lokalnymi. Mogą komunikować się tylko z modułem równoważenia obciążenia platformy Azure za pomocą usługi IPv6. Mogą jednak komunikować się z tymi innymi zasobami przy użyciu IPv4.
+* Ochrona sieciowej grupy zabezpieczeń (NSG) dla IPv4 jest obsługiwana we wdrożeniach z dwoma stosami (IPv4+IPv6). NSG nie mają zastosowania do punktów końcowych IPv6.
+* Punkt końcowy IPv6 na maszynie Wirtualnej nie jest narażony bezpośrednio do Internetu. Znajduje się za modułem równoważenia obciążenia. Tylko porty określone w regułach modułu równoważenia obciążenia są dostępne za pośrednictwem IPv6.
+* Zmiana parametru IdleTimeout dla IPv6 nie jest **obecnie obsługiwana**. Wartość domyślna to cztery minuty.
+* Zmiana parametru loadDistributionMethod dla IPv6 nie jest **obecnie obsługiwana.**
+* Zarezerwowane adresy IPPv6 (gdzie IPAllocationMethod = static) nie są **obecnie obsługiwane**.
+* NAT64 (tłumaczenie IPv6 na IPv4) nie jest obsługiwany.
 
 ## <a name="next-steps"></a>Następne kroki
 
-Dowiedz się, jak wdrożyć moduł równoważenia obciążenia przy użyciu protokołu IPv6.
+Dowiedz się, jak wdrożyć moduł równoważenia obciążenia za pomocą iPv6.
 
-* [Dostępność adresów IPv6 według regionów](https://go.microsoft.com/fwlink/?linkid=828357)
-* [Wdrażanie modułu równoważenia obciążenia za pomocą protokołu IPv6 przy użyciu szablonu](load-balancer-ipv6-internet-template.md)
-* [Wdrażanie modułu równoważenia obciążenia przy użyciu protokołu IPv6 za pomocą Azure PowerShell](load-balancer-ipv6-internet-ps.md)
-* [Wdrażanie modułu równoważenia obciążenia za pomocą protokołu IPv6 przy użyciu interfejsu wiersza polecenia platformy Azure](load-balancer-ipv6-internet-cli.md)
+* [Dostępność IPv6 według regionów](https://go.microsoft.com/fwlink/?linkid=828357)
+* [Wdrażanie modułu równoważenia obciążenia za pomocą iPv6 przy użyciu szablonu](load-balancer-ipv6-internet-template.md)
+* [Wdrażanie modułu równoważenia obciążenia za pomocą usługi IPv6 przy użyciu programu Azure PowerShell](load-balancer-ipv6-internet-ps.md)
+* [Wdrażanie modułu równoważenia obciążenia za pomocą funkcji IPv6 przy użyciu interfejsu wiersza polecenia platformy Azure](load-balancer-ipv6-internet-cli.md)

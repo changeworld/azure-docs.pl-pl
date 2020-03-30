@@ -5,64 +5,64 @@ ms.topic: include
 ms.date: 04/15/2019
 ms.author: alkohli
 ms.openlocfilehash: e02c0b86cd542b3ea12914e35a6577cf4e9b43d8
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67183682"
 ---
-Można również wyświetlić metryki do monitorowania wydajności urządzenia i w niektórych przypadkach, aby informacje o rozwiązywaniu problemów z urządzeniami.
+Można również wyświetlić metryki, aby monitorować wydajność urządzenia, a w niektórych przypadkach rozwiązywania problemów z urządzeniem.
 
-Wykonaj następujące kroki w witrynie Azure portal, aby utworzyć wykres metryk wybranego urządzenia.
+Aby utworzyć wykres dla wybranych metryk urządzenia, należy wykonać następujące kroki w witrynie Azure Portal.
 
-1. Dla zasobu w witrynie Azure portal, przejdź do **monitorowanie > metryki** i wybierz **Dodaj metrykę**.
+1. Aby uzyskać zasób w witrynie Azure portal, przejdź do **monitorowania > metryki** i wybierz **pozycję Dodaj metrykę**.
 
     ![Dodawanie metryki](media/data-box-edge-gateway-view-metrics/view-metrics-1.png)
 
-2. Zasób jest wypełniane automatycznie.  
+2. Zasób jest wypełniany automatycznie.  
 
     ![Bieżący zasób](media/data-box-edge-gateway-view-metrics/view-metrics-2.png)
 
-    Aby określić inny zasób, wybierz zasób. Na **wybierz zasób** bloku, wybierz subskrypcję, grupy zasobów, typ zasobu i określonego zasobu, dla którego chcesz wyświetlić metryki, a następnie wybierz pozycję **Zastosuj**.
+    Aby określić inny zasób, wybierz zasób. W obszarze Wybierz blok zasobu wybierz **subskrypcję,** grupę zasobów, typ zasobu i określony zasób, dla którego chcesz wyświetlić metryki, i wybierz pozycję **Zastosuj**.
 
-    ![Wybierz inny zasób](media/data-box-edge-gateway-view-metrics/view-metrics-3.png)
+    ![Wybieranie innego zasobu](media/data-box-edge-gateway-view-metrics/view-metrics-3.png)
 
-3. Z listy rozwijanej wybierz metrykę, aby monitorować urządzenie. Metryki może być **metryki pojemności** lub **metryk transakcji**. Pojemność urządzenia są powiązane metryki pojemności. Metryki transakcji odnoszą się do odczytu i zapisu do usługi Azure Storage.
+3. Z listy rozwijanej wybierz metrykę, aby monitorować urządzenie. Metryki mogą być **metryki pojemności** lub **metryki transakcji**. Metryki pojemności są związane z pojemnością urządzenia. Metryki transakcji są powiązane z operacjami odczytu i zapisu w usłudze Azure Storage.
 
-    |Metryki wydajności                     |Opis  |
+    |Metryki pojemności                     |Opis  |
     |-------------------------------------|-------------|
-    |**Dostępna pojemność**               | Odnosi się do rozmiaru danych, które mogą być zapisywane na urządzeniu. Innymi słowy to wydajności, które mogą być udostępniane na urządzeniu. <br></br>Możesz zwolnić pojemność urządzenia przez usunięcie lokalną kopię plików, które mają kopii na zarówno urządzenie, jak i chmury.        |
-    |**Całkowita pojemność**                   | Odnosi się do całkowita liczba bajtów na urządzeniu, aby zapisywać danych. To również jest określane jako całkowity rozmiar lokalnej pamięci podręcznej. <br></br> Teraz można zwiększyć pojemność istniejącego urządzenia wirtualnego, Dodawanie dysku danych. Dodaj dysk danych za pośrednictwem zarządzania funkcji hypervisor dla maszyny Wirtualnej, a następnie uruchom ponownie maszynę Wirtualną. Pula magazynu lokalnego urządzenia bramy rozszerzy się do uwzględnienia nowo dodane dane dysku. <br></br>Aby uzyskać więcej informacji, przejdź do [Dodaj dysk twardy dla maszyny wirtualnej funkcji Hyper-V](https://www.youtube.com/watch?v=EWdqUw9tTe4). |
+    |**Dostępna pojemność**               | Odnosi się do rozmiaru danych, które mogą być zapisywane na urządzeniu. Innymi słowy, jest to pojemność, która może być udostępniona na urządzeniu. <br></br>Możesz zwolnić pojemność urządzenia, usuwając lokalną kopię plików, które mają kopię zarówno na urządzeniu, jak i w chmurze.        |
+    |**Całkowita pojemność**                   | Odnosi się do całkowitej liczby bajtów na urządzeniu, na które mają być zapisywane dane. Jest to również określane jako całkowity rozmiar lokalnej pamięci podręcznej. <br></br> Teraz można zwiększyć pojemność istniejącego urządzenia wirtualnego, dodając dysk danych. Dodaj dysk danych za pośrednictwem zarządzania hipernadzorcami dla maszyny Wirtualnej, a następnie uruchom ponownie maszynę wirtualną. Lokalna pula magazynu urządzenia bramy zostanie rozszerzona, aby pomieścić nowo dodany dysk danych. <br></br>Aby uzyskać więcej informacji, przejdź do [tematu Dodawanie dysku twardego dla maszyny wirtualnej funkcji Hyper-V](https://www.youtube.com/watch?v=EWdqUw9tTe4). |
     
     |Metryki transakcji              | Opis         |
     |-------------------------------------|---------|
-    |**Chmury przekazanych bajtów (urządzenia)**    | Sumie wszystkich bajtów przypadająca na wszystkie udziały na urządzeniu z systemem        |
-    |**Przekazane bajty chmurze (udział)**     | Bajty są przekazywane na jedną akcję. Może to być: <br></br> Średnia liczba, która jest (sumie wszystkich bajtów przekazany na jedną akcję / numer udziałów),  <br></br>Maksymalna liczba, która jest maksymalną liczbę bajtów przekazany z udziału <br></br>Wartość minimalna, czyli minimalną liczbę bajtów przekazany z udziału      |
-    |**Przepływność pobierania chmurze (udział)**| Bajty pobrane na jedną akcję. Może to być: <br></br> Średnia liczba, która jest (sumie wszystkich bajtów odczytu lub pobrany do udziału / numer akcji) <br></br> Maksymalna liczba, która jest maksymalną liczbę bajtów pobrane z udziału<br></br> a wartość minimalna, czyli minimalną liczbę bajtów pobrane z udziału  |
-    |**Przepływność zapisu w chmurze**            | Sumie wszystkich bajtów odczytu z chmury dla wszystkich udziałów na urządzeniu z systemem     |
-    |**Przepustowość przekazywania w chmurze**          | Sumie wszystkich bajtów, które są zapisywane do chmury we wszystkich akcji na urządzeniu z systemem     |
-    |**Przepustowość przekazywania w chmurze (udział)**  | Sumie wszystkich bajtów zapisywane w chmurze z udziału / # akcji jest średnią, maksimum i minimum na udział      |
-    |**Przepływność odczytu (sieć)**           | Zawiera przepływność sieci systemu dla wszystkich bajtów odczytanych z chmury. W tym widoku mogą obejmować dane, które nie są ograniczone do udziałów. <br></br>Dzielenie pokaże ruch za pośrednictwem wszystkich kart sieciowych na urządzeniu. W tym kart, które nie są połączone lub włączone.      |
-    |**Zapis przepływności (sieć)**       | Zawiera przepływność sieci systemu dla wszystkich bajtów, które są zapisywane w chmurze. W tym widoku mogą obejmować dane, które nie są ograniczone do udziałów. <br></br>Dzielenie pokaże ruch za pośrednictwem wszystkich kart sieciowych na urządzeniu. W tym kart, które nie są połączone lub włączone.          |
-    |**Obliczeń brzegowych — użycie pamięci**      | Ta metryka nie jest odpowiednie dla bramy pola danych i dlatego nie jest wypełnione.          |
-    |**Krawędź compute - procentowe użycie procesora CPU**    | Ta metryka nie jest odpowiednie dla bramy pola danych i dlatego nie jest wypełnione.         |
+    |**Przesłane bajty w chmurze (urządzenie)**    | Suma wszystkich bajtów przesłanych we wszystkich udziałach na urządzeniu        |
+    |**Bajty w chmurze przesłane (udostępnianie)**     | Bajty przesłane na jedną akcję. Może to być: <br></br> Średnia, czyli (Suma wszystkich bajtów przesłanych na jedną akcję / Liczba udziałów),  <br></br>Maks. <br></br>Min, czyli minimalna liczba bajtów przesłanych z udziału      |
+    |**Przepływność pobierania w chmurze (udostępnianie)**| Bajty pobrane na jedną akcję. Może to być: <br></br> Avg, czyli (Suma wszystkich bajtów przeczytanych lub pobranych na akcję / Liczba udziałów) <br></br> Max, czyli maksymalna liczba bajtów pobranych z udziału<br></br> i Min, co jest minimalną liczbą bajtów pobranych z  |
+    |**Przepływność odczytu w chmurze**            | Suma wszystkich bajtów odczytanych z chmury we wszystkich udziałach na urządzeniu     |
+    |**Przepływność przekazywania w chmurze**          | Suma wszystkich bajtów zapisanych w chmurze we wszystkich udziałach na urządzeniu     |
+    |**Przepływność przekazywania w chmurze (udostępnianie)**  | Suma wszystkich bajtów zapisanych w chmurze z akcji/# udziałów to średnia, max i min na akcję      |
+    |**Przepływność odczytu (sieć)**           | Zawiera przepustowość sieci systemowej dla wszystkich bajtów odczytanych z chmury. Ten widok może zawierać dane, które nie są ograniczone do udziałów. <br></br>Podział spowoduje wyświetlenie ruchu na wszystkich kartach sieciowych na urządzeniu. Obejmuje to karty, które nie są podłączone lub włączone.      |
+    |**Przepływność zapisu (sieć)**       | Zawiera przepustowość sieci systemowej dla wszystkich bajtów zapisanych w chmurze. Ten widok może zawierać dane, które nie są ograniczone do udziałów. <br></br>Podział spowoduje wyświetlenie ruchu na wszystkich kartach sieciowych na urządzeniu. Obejmuje to karty, które nie są podłączone lub włączone.          |
+    |**Obliczanie krawędzi — użycie pamięci**      | Ta metryka nie ma zastosowania do bramy pola danych i dlatego nie jest wypełniona.          |
+    |**Obliczeń krawędziowych — procent procesora CPU**    | Ta metryka nie ma zastosowania do bramy pola danych i dlatego nie jest wypełniona.         |
 
-4. Gdy jest wybrana Metryka z listy rozwijanej, można także definiować agregacji. Agregacja odnosi się do rzeczywistej wartości agregowane przez określony przedział czasu. Zagregowane wartości może być średnią, minimalną lub maksymalną wartość. Wybierz agregację Avg, minimalnej lub maksymalnej.
+4. Gdy metryka jest zaznaczona z listy rozwijanej, można również zdefiniować agregację. Agregacja odnosi się do rzeczywistej wartości zagregowane w określonym przedziale czasu. Zagregowane wartości mogą być wartością średnią, minimalną lub maksymalną. Wybierz agregację ze średnika, maks.
 
-    ![Widok wykresu](media/data-box-edge-gateway-view-metrics/view-metrics-4.png)
+    ![Wyświetl wykres](media/data-box-edge-gateway-view-metrics/view-metrics-4.png)
 
-5. Jeśli wybrane metryki ma wiele wystąpień, podziału opcja jest dostępna. Wybierz **zastosować podział** a następnie wybierz wartość, według której chcesz zobaczyć podział.
+5. Jeśli wybrana metryka ma wiele wystąpień, opcja podziału jest dostępna. Wybierz **pozycję Zastosuj dzielenie,** a następnie wybierz wartość, według której chcesz wyświetlić podział.
 
-    ![Zastosuj rozdzielenie](media/data-box-edge-gateway-view-metrics/view-metrics-5.png)
+    ![Stosowanie podziału](media/data-box-edge-gateway-view-metrics/view-metrics-5.png)
 
-6. Jeśli teraz chcesz zobaczyć podział tylko w przypadku kilku wystąpień, można filtrować dane. Na przykład w tym przypadku, jeśli chcesz zobaczyć przepływność sieci tylko w przypadku dwóch interfejsów sieciowych podłączonych na twoim urządzeniu, można filtrować te interfejsy. Wybierz **Dodaj filtr** i określ nazwę interfejsu sieciowego w celu filtrowania.
+6. Jeśli chcesz teraz zobaczyć podział tylko dla kilku wystąpień, możesz filtrować dane. Na przykład w takim przypadku, jeśli chcesz zobaczyć przepływność sieci tylko dla dwóch połączonych interfejsów sieciowych na urządzeniu, można filtrować te interfejsy. Wybierz **dodaj filtr** i określ nazwę interfejsu sieciowego do filtrowania.
 
     ![Dodaj filtr](media/data-box-edge-gateway-view-metrics/view-metrics-6.png)
 
-7. Można również przypiąć wykres do pulpitu nawigacyjnego, aby mieć łatwy dostęp.
+7. Można również przypiąć wykres do pulpitu nawigacyjnego, aby mieć do niego łatwy dostęp.
 
     ![Przypnij do pulpitu nawigacyjnego](media/data-box-edge-gateway-view-metrics/view-metrics-7.png)
 
-8. Eksportuj dane wykresu do arkusza kalkulacyjnego programu Excel lub Utwórz link pozwalający wykres, który można udostępniać, wybierz opcję udostępniania na pasku poleceń.
+8. Aby wyeksportować dane wykresu do arkusza kalkulacyjnego programu Excel lub uzyskać łącze do wykresu, który można udostępnić, wybierz opcję udziału z paska poleceń.
 
     ![Eksportowanie danych](media/data-box-edge-gateway-view-metrics/view-metrics-8.png)

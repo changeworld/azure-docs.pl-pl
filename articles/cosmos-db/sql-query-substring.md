@@ -1,6 +1,6 @@
 ---
-title: Podciąg w Azure Cosmos DB języku zapytań
-description: Dowiedz się więcej o podciągu funkcji systemu SQL w Azure Cosmos DB.
+title: PODCIĄGNIE w języku kwerend usługi Azure Cosmos DB
+description: Dowiedz się więcej o funkcji systemu SQL SUBSTRING w usłudze Azure Cosmos DB.
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
@@ -8,14 +8,14 @@ ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: d4462fc407093b23510bddfae4d9f55d68f8c0fa
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78303702"
 ---
-# <a name="substring-azure-cosmos-db"></a>Podciąg (Azure Cosmos DB)
- Zwraca część wyrażenia ciągu, zaczynając od pozycji liczony od zera określony znak i kontynuuje do określonej długości lub do końca ciągu.  
+# <a name="substring-azure-cosmos-db"></a>PODCIĄGNIE (Usługa Azure Cosmos DB)
+ Zwraca część wyrażenia ciągu, zaczynając od określonego znaku zerowego i kontynuuje do określonej długości lub na końcu ciągu.  
   
 ## <a name="syntax"></a>Składnia
   
@@ -29,18 +29,18 @@ SUBSTRING(<str_expr>, <num_expr1>, <num_expr2>)
    Jest wyrażeniem ciągu.
   
 *num_expr1*  
-   Jest wyrażeniem liczbowym służącym do określenia znaku początkowego. Wartość 0 jest pierwszym znakiem *str_expr*.
+   Jest wyrażeniem liczbowym oznaczanym znakiem początkowym. Wartość 0 jest pierwszym znakiem *str_expr*.
   
 *num_expr2*  
-   Jest wyrażeniem liczbowym określającym maksymalną liczbę znaków *str_expr* do zwrócenia. Wartość 0 lub mniej skutkuje ciągiem pustym.
+   Jest wyrażeniem liczbowym oznaczającego maksymalną liczbę znaków *str_expr* do zwrotu. Wartość 0 lub mniej powoduje pusty ciąg.
 
-## <a name="return-types"></a>Typy zwracane
+## <a name="return-types"></a>Typy zwrotów
   
   Zwraca wyrażenie ciągu.  
   
 ## <a name="examples"></a>Przykłady
   
-  Poniższy przykład zwraca podciąg "abc", począwszy od stawki 1 i długości 1 znak.  
+  Poniższy przykład zwraca podciąg "abc" począwszy od 1 i dla długości 1 znak.  
   
 ```sql
 SELECT SUBSTRING("abc", 1, 1) AS substring  
@@ -54,10 +54,10 @@ SELECT SUBSTRING("abc", 1, 1) AS substring
 
 ## <a name="remarks"></a>Uwagi
 
-Ta funkcja systemowa będzie korzystać z [indeksu zakresu](index-policy.md#includeexclude-strategy) , jeśli pozycja początkowa jest `0`.
+Ta funkcja systemu będzie korzystać z [indeksu zakresu,](index-policy.md#includeexclude-strategy) jeśli pozycja początkowa jest `0`.
 
 ## <a name="next-steps"></a>Następne kroki
 
-- [Azure Cosmos DB funkcje ciągów](sql-query-string-functions.md)
-- [Azure Cosmos DB funkcje systemowe](sql-query-system-functions.md)
-- [Wprowadzenie do Azure Cosmos DB](introduction.md)
+- [Funkcje ciągów usługi Azure Cosmos DB](sql-query-string-functions.md)
+- [Funkcje systemowe Usługi Azure Cosmos DB](sql-query-system-functions.md)
+- [Wprowadzenie do usługi Azure Cosmos DB](introduction.md)

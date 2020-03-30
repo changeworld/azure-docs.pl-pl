@@ -5,37 +5,37 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: juliako
 ms.openlocfilehash: 065cb4daa9501ee658d364dad43b9e03798e4083
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67183645"
 ---
-Zadanie tworzy plik danych wyjściowych JSON, który zawiera metadane dotyczące wykryte i śledzone twarzy. Metadane obejmują współrzędne wskazującą lokalizację twarzy, a także numer identyfikacyjny rozpoznawania twarzy, wskazując śledzenie tej osoby. Numery identyfikatorów twarzy są podatne na zresetować w sytuacjach, gdy czołowego twarzy zostanie utracony lub nakładających się w ramce, co w niektórych osób wprowadzenie przypisanych wiele identyfikatorów.
+Zadanie tworzy plik wyjściowy JSON, który zawiera metadane dotyczące wykrytych i śledzonych twarzy. Metadane zawierają współrzędne wskazujące położenie twarzy, a także numer identyfikatora twarzy wskazujący śledzenie tej osoby. Numery identyfikatorów twarzy są podatne na resetowanie w warunkach utraty lub nakładania się czołowej ściany w ramce, co powoduje, że niektóre osoby otrzymują przypisane wiele identyfikatorów.
 
-Dane wyjściowe JSON zawiera następujące elementy:
+Wyjście JSON zawiera następujące elementy:
 
-### <a name="root-json-elements"></a>Elementy katalogu głównego JSON
+### <a name="root-json-elements"></a>Główne elementy JSON
 
 | Element | Opis |
 | --- | --- |
-| version |Odnosi się do wersji interfejsu API wideo. |
-| Skala czasu |"Impulsów" na sekundę filmu wideo. |
-| offset |Jest to przesunięcie czasu sygnatur czasowych. W wersji 1.0 interfejsów API Video ta będzie zawsze równa 0. W przyszłości scenariusze, które firma Microsoft obsługuje, ta wartość może ulec zmianie. |
-| szerokość, wysoki |Szerokość i wysoki dane wyjściowe klatki wideo, w pikselach.|
-| szybkość klatek |Liczba klatek na sekundę w wideo. |
-| [fragments](#fragments-json-elements) |Metadane jest podzielony się w różnych segmentach fragmentów. Każdy fragment zawiera rozpoczęcie, czas trwania, wartość interwału i zdarzenia. |
+| version |Odnosi się to do wersji interfejsu API wideo. |
+| skala czasu |"Kleszcze" na sekundę filmu. |
+| przesunięcie |Jest to przesunięcie czasu dla znaczników czasu. W wersji 1.0 interfejsów API wideo zawsze będzie to 0. W przyszłych scenariuszach, które obsługujemy, ta wartość może ulec zmianie. |
+| szerokość, wysokość |Szerokość i wysokość wyjściowej klatki wideo w pikselach.|
+| Ilość klatek |Liczba klatek na sekundę w wideo. |
+| [Fragmenty](#fragments-json-elements) |Metadane są podzielone na różne segmenty zwane fragmentami. Każdy fragment zawiera rozpoczęcie, czas trwania, wartość interwału i zdarzenia. |
 
-### <a name="fragments-json-elements"></a>Elementy JSON fragmentów
+### <a name="fragments-json-elements"></a>Fragmenty elementów JSON
 
 |Element|Opis|
 |---|---|
-| start |Czas rozpoczęcia pierwsze zdarzenie "taktów." |
-| Czas trwania |Długość fragmentu, w "taktów." |
-| index | (Dotyczy tylko z usługi Azure Media Redactor) definiuje indeks ramka bieżącego zdarzenia. |
-| interval |Interwał każdego wpisu zdarzenia w obrębie fragmentu, w "taktów." |
-| zdarzenia |Każde zdarzenie zawiera twarzy wykryte i śledzenia w tym czas trwania. Istnieje szereg zdarzeń. Zewnętrzna tablica reprezentuje jeden interwał czasu. Wewnętrzna tablica składa się z 0 lub większej liczby zdarzeń, które wystąpiły w danym momencie. [] Nawiasu pusty oznacza, że nie wykryto żadnych twarzy. |
-| id |Identyfikator twarzy, które jest śledzone. Ten numer spowodować niezamierzoną zmianę, jeśli twarzy staje się niewykryte. Danej osoby powinny mieć ten sam identyfikator w całym ogólną wideo, ale to nie można zagwarantować ze względu na ograniczenia w algorytm wykrywania (zamknięcia itp.). |
-| x, y |Lewy górny róg X i współrzędne Y twarzy obwiedni na znormalizowaną skali od 0.0 do 1.0. <br/>-X i Y współrzędne są względne na poziomą zawsze, więc jeśli masz pionowa wideo (lub nogami w przypadku systemu iOS), musisz odpowiednio TRANSPONUJ współrzędne. |
-| szerokość, wysokość |Szerokość i wysokość twarzy obwiedni na znormalizowaną skali od 0.0 do 1.0. |
-| facesDetected |Znajduje się na końcu wyniki JSON, a zawiera podsumowanie liczby wyświetlanych twarzy algorytm znalezione w trakcie filmu wideo. Ponieważ identyfikatory można zresetować przypadkowo Jeśli twarzy staje się niewykryte (np. twarz wykracza poza ekranem, natychmiast wygląda), ta liczba nie zawsze równa true liczbę twarzy w filmie wideo. |
+| rozpoczynanie |Godzina rozpoczęcia pierwszego zdarzenia w "kleszczach". |
+| czas trwania |Długość fragmentu w "kleszczach". |
+| indeks | (Dotyczy tylko usługi Azure Media Redactor) definiuje indeks ramki bieżącego zdarzenia. |
+| interval |Interwał każdego wpisu zdarzenia w obrębie fragmentu w "kleszcze". |
+| zdarzenia |Każde zdarzenie zawiera twarze wykryte i śledzone w tym czasie. Jest to tablica zdarzeń. Zewnętrzna tablica reprezentuje jeden interwał czasu. Wewnętrzna tablica składa się z 0 lub większej liczby zdarzeń, które wystąpiły w danym momencie. Pusty nawias [] oznacza, że nie wykryto żadnych ścian. |
+| id |Identyfikator ściany, która jest śledzona. Liczba ta może przypadkowo zmienić, jeśli twarz staje się niewykryte. Dana osoba powinna mieć ten sam identyfikator w całym filmie, ale nie może to być zagwarantowane ze względu na ograniczenia w algorytmie wykrywania (okluzja, itp.). |
+| x, y |Koordynujące się współrzędne X i Y górnej granicy powierzchni w znormalizowanej skali od 0,0 do 1,0. <br/>Współrzędne X i Y są zawsze względem krajobrazu, więc jeśli masz film portretowy (lub do góry nogami, w przypadku systemu iOS), będziesz musiał odpowiednio przetransponować współrzędne. |
+| szerokość, wysokość |Szerokość i wysokość obwiedni ściany w znormalizowanej skali od 0,0 do 1,0. |
+| twarzeDetected |Znajduje się to na końcu wyników JSON i podsumowuje liczbę twarzy, które algorytm wykryte podczas wideo. Ponieważ identyfikatory można zresetować przypadkowo, jeśli twarz zostanie niewykryta (np. twarz zgaśnie, odamiewa), liczba ta nie zawsze może być równa prawdziwej liczbie twarzy w filmie. |

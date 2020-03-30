@@ -1,6 +1,6 @@
 ---
-title: Przyłączanie maszyny wirtualnej RHEL do Azure AD Domain Services | Microsoft Docs
-description: Dowiedz się, jak skonfigurować maszynę wirtualną Red Hat Enterprise Linux i przyłączyć ją do domeny zarządzanej Azure AD Domain Services.
+title: Dołączanie maszyny Wirtualnej RHEL do usług domenowych usługi Azure AD | Dokumenty firmy Microsoft
+description: Dowiedz się, jak skonfigurować maszynę wirtualną red hat enterprise z systemem Linux i dołączyć do domeny zarządzanej usług domenowych usługi Azure AD.
 services: active-directory-ds
 author: iainfoulds
 manager: daveba
@@ -12,71 +12,71 @@ ms.topic: conceptual
 ms.date: 01/23/2020
 ms.author: iainfou
 ms.openlocfilehash: d12dd0c79f2e9c1d2b0cc17956a0bb8d8fa35865
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78299146"
 ---
 # <a name="join-a-red-hat-enterprise-linux-virtual-machine-to-an-azure-ad-domain-services-managed-domain"></a>Dołączanie maszyny wirtualnej z systemem Red Hat Enterprise Linux do domeny zarządzanej Usług domenowych Azure AD
 
-Aby umożliwić użytkownikom logowanie się do maszyn wirtualnych na platformie Azure przy użyciu jednego zestawu poświadczeń, można przyłączyć maszyny wirtualne do domeny zarządzanej Azure Active Directory Domain Services (AD DS). Po dołączeniu maszyny wirtualnej do domeny zarządzanej AD DS platformy Azure można użyć kont użytkowników i poświadczeń z domeny, aby zalogować się i zarządzać serwerami. Członkostwa w grupach z domeny zarządzanej AD DS platformy Azure są również stosowane w celu umożliwienia kontroli dostępu do plików lub usług na maszynie wirtualnej.
+Aby umożliwić użytkownikom logowanie się do maszyn wirtualnych (VM) na platformie Azure przy użyciu jednego zestawu poświadczeń, można dołączyć maszyny wirtualne do domeny zarządzanej usług domenowych Active Directory (AD DS). Po dołączeniu maszyny Wirtualnej do domeny zarządzanej usług Azure AD DS konta użytkowników i poświadczenia z domeny mogą służyć do logowania się i zarządzania serwerami. Członkostwa w grupach z domeny zarządzanej usług Azure AD DS są również stosowane w celu umożliwienia kontrolowania dostępu do plików lub usług na maszynie Wirtualnej.
 
-W tym artykule opisano sposób przyłączania maszyny wirtualnej z systemem Red Hat Enterprise Linux (RHEL) do domeny zarządzanej AD DS platformy Azure.
+W tym artykule pokazano, jak dołączyć do maszyny Wirtualnej Red Hat Enterprise Linux (RHEL) do domeny zarządzanej usług Azure AD DS.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Do ukończenia tego samouczka potrzebne są następujące zasoby i uprawnienia:
+Aby ukończyć ten samouczek, potrzebne są następujące zasoby i uprawnienia:
 
 * Aktywna subskrypcja platformy Azure.
-    * Jeśli nie masz subskrypcji platformy Azure, [Utwórz konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-* Dzierżawa usługi Azure Active Directory skojarzona z subskrypcją, zsynchronizowana z katalogiem lokalnym lub katalogiem w chmurze.
-    * W razie konieczności [Utwórz dzierżawę Azure Active Directory][create-azure-ad-tenant] lub [skojarz subskrypcję platformy Azure z Twoim kontem][associate-azure-ad-tenant].
-* Azure Active Directory Domain Services zarządzana domena włączona i skonfigurowana w dzierżawie usługi Azure AD.
-    * W razie konieczności pierwszy samouczek [tworzy i konfiguruje wystąpienie Azure Active Directory Domain Services][create-azure-ad-ds-instance].
-* Konto użytkownika, które jest częścią domeny zarządzanej AD DS platformy Azure.
+    * Jeśli nie masz subskrypcji platformy Azure, [utwórz konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+* Dzierżawa usługi Azure Active Directory skojarzona z subskrypcją, zsynchronizowana z katalogiem lokalnym lub katalogiem tylko w chmurze.
+    * W razie potrzeby [utwórz dzierżawę usługi Azure Active Directory][create-azure-ad-tenant] lub [skojarz subskrypcję platformy Azure z kontem.][associate-azure-ad-tenant]
+* Domena zarządzana usługami domenowymi Usługi Active Directory platformy Azure włączona i skonfigurowana w dzierżawie usługi Azure AD.
+    * W razie potrzeby pierwszy samouczek [tworzy i konfiguruje wystąpienie usług domenowych Usługi domenowe Active Directory][create-azure-ad-ds-instance]platformy Azure .
+* Konto użytkownika, które jest częścią domeny zarządzanej usług Azure AD DS.
 
-## <a name="create-and-connect-to-a-rhel-linux-vm"></a>Tworzenie maszyny wirtualnej z systemem RHEL Linux i nawiązywanie z nią połączenia
+## <a name="create-and-connect-to-a-rhel-linux-vm"></a>Tworzenie maszyny wirtualnej RHEL z systemem Linux i łączenie się z nią
 
-Jeśli masz istniejącą maszynę wirtualną z systemem Linux RHEL na platformie Azure, Połącz się z nią przy użyciu protokołu SSH, a następnie przejdź do następnego kroku, aby [rozpocząć konfigurowanie maszyny wirtualnej](#configure-the-hosts-file).
+Jeśli masz istniejącą maszynę wirtualną RHEL z systemem Linux na platformie Azure, połącz się z nią za pomocą SSH, a następnie przejdź do następnego kroku, aby [rozpocząć konfigurowanie maszyny Wirtualnej](#configure-the-hosts-file).
 
-Jeśli musisz utworzyć maszynę wirtualną z systemem Linux RHEL lub chcesz utworzyć testową maszynę wirtualną do użycia z tym artykułem, możesz użyć jednej z następujących metod:
+Jeśli chcesz utworzyć maszynę wirtualną RHEL z systemem Linux lub chcesz utworzyć testową maszynę wirtualną do użycia w tym artykule, możesz użyć jednej z następujących metod:
 
-* [Azure Portal](../virtual-machines/linux/quick-create-portal.md)
+* [Portal Azure](../virtual-machines/linux/quick-create-portal.md)
 * [Interfejs wiersza polecenia platformy Azure](../virtual-machines/linux/quick-create-cli.md)
 * [Azure PowerShell](../virtual-machines/linux/quick-create-powershell.md)
 
-Podczas tworzenia maszyny wirtualnej należy zwrócić uwagę na ustawienia sieci wirtualnej, aby upewnić się, że maszyna wirtualna może komunikować się z domeną zarządzaną platformy Azure AD DS:
+Podczas tworzenia maszyny Wirtualnej należy zwrócić uwagę na ustawienia sieci wirtualnej, aby upewnić się, że maszyna wirtualna może komunikować się z domeną zarządza zarządza zarządzana usługą Azure AD DS:
 
-* Wdróż maszynę wirtualną w tej samej lub równorzędnej sieci wirtualnej, w której włączono Azure AD Domain Services.
-* Wdróż maszynę wirtualną w innej podsieci niż wystąpienie Azure AD Domain Services.
+* Wdrażanie maszyny Wirtualnej w tej samej lub równorzędnej sieci wirtualnej, w której włączono usługi domenowe usługi Azure AD Domain Services.
+* Wdrażanie maszyny Wirtualnej w innej podsieci niż wystąpienie usług domenowych usługi Azure AD.
 
-Po wdrożeniu maszyny wirtualnej postępuj zgodnie z instrukcjami, aby nawiązać połączenie z maszyną wirtualną przy użyciu protokołu SSH.
+Po wdrożeniu maszyny Wirtualnej wykonaj kroki, aby połączyć się z maszyną wirtualną przy użyciu SSH.
 
 ## <a name="configure-the-hosts-file"></a>Konfigurowanie pliku hosts
 
-Aby upewnić się, że nazwa hosta maszyny wirtualnej jest prawidłowo skonfigurowana dla domeny zarządzanej, edytuj plik */etc/hosts* i Ustaw nazwę hosta:
+Aby upewnić się, że nazwa hosta maszyny Wirtualnej jest poprawnie skonfigurowana dla domeny zarządzanej, edytuj plik */etc/hosts* i ustaw nazwę hosta:
 
 ```console
 sudo vi /etc/hosts
 ```
 
-W pliku *hosts* zaktualizuj adres *localhost* . W poniższym przykładzie:
+W pliku *hosts* zaktualizuj adres *hosta lokalnego.* W poniższym przykładzie:
 
-* *aaddscontoso.com* to nazwa domeny DNS domeny zarządzanej AD DS platformy Azure.
-* *RHEL* jest nazwą hosta maszyny wirtualnej RHEL, która jest dołączana do domeny zarządzanej.
+* *aaddscontoso.com* jest nazwą domeny DNS domeny zarządzanej usługą Azure AD DS.
+* *rhel* to nazwa hosta maszyny Wirtualnej RHEL, do której dołączasz do domeny zarządzanej.
 
-Zaktualizuj te nazwy przy użyciu własnych wartości:
+Zaktualizuj te nazwy za pomocą własnych wartości:
 
 ```console
 127.0.0.1 rhel rhel.aaddscontoso.com
 ```
 
-Po zakończeniu Zapisz i wyjdź z pliku *hosts* za pomocą polecenia `:wq` edytora.
+Po zakończeniu zapisz i *hosts* zamknij plik `:wq` hosts za pomocą polecenia edytora.
 
 ## <a name="install-required-packages"></a>Instalowanie wymaganych pakietów
 
-Maszyna wirtualna wymaga dodatkowych pakietów do przyłączenia maszyny wirtualnej do domeny zarządzanej AD DS platformy Azure. Aby zainstalować i skonfigurować te pakiety, zaktualizuj i zainstaluj narzędzia do przyłączania do domeny przy użyciu `yum`. Istnieją pewne różnice między RHEL 7. x i RHEL 6. x, dlatego użyj odpowiednich poleceń dla wersji dystrybucji w pozostałych sekcjach tego artykułu.
+Maszyna wirtualna potrzebuje dodatkowych pakietów, aby dołączyć do maszyny Wirtualnej do domeny zarządzanej usług Azure AD DS. Aby zainstalować i skonfigurować te pakiety, zaktualizuj i zainstaluj narzędzia dołączenia do domeny za pomocą programu `yum`. Istnieją pewne różnice między RHEL 7.x i RHEL 6.x, więc użyj odpowiednich poleceń dla wersji dystrybucji w pozostałych sekcjach tego artykułu.
 
 **RHEL 7**
 
@@ -90,39 +90,39 @@ sudo yum install realmd sssd krb5-workstation krb5-libs oddjob oddjob-mkhomedir 
 sudo yum install adcli sssd authconfig krb5-workstation
 ```
 
-## <a name="join-vm-to-the-managed-domain"></a>Dołącz maszynę wirtualną do domeny zarządzanej
+## <a name="join-vm-to-the-managed-domain"></a>Dołączanie maszyny Wirtualnej do domeny zarządzanej
 
-Teraz, gdy wymagane pakiety są zainstalowane na maszynie wirtualnej, Dołącz maszynę wirtualną do domeny zarządzanej AD DS platformy Azure. Ponownie Użyj odpowiednich kroków dla wersji RHEL dystrybucji.
+Teraz, gdy wymagane pakiety są zainstalowane na maszynie Wirtualnej, dołącz do maszyny Wirtualnej do domeny zarządzanej usług Azure AD DS. Ponownie, należy użyć odpowiednich kroków dla wersji dystrybucji RHEL.
 
 ### <a name="rhel-7"></a>RHEL 7
 
-1. Użyj `realm discover` polecenia, aby odnaleźć domenę zarządzaną platformy Azure AD DS. Poniższy przykład umożliwia odnajdywanie obszaru *AADDSCONTOSO.com*. Określ własną nazwę domeny zarządzanej przez usługę Azure AD DS w dowolnej wielkiej litery:
+1. Użyj `realm discover` polecenia, aby odkryć domenę zarządza zarządzana usługą Azure AD DS. W poniższym przykładzie odnajduje się *AADDSCONTOSO.COM*obszaru . Określ własną nazwę domeny zarządzanej usług Azure AD DS w all uppercase:
 
     ```console
     sudo realm discover AADDSCONTOSO.COM
     ```
 
-   Jeśli polecenie `realm discover` nie może znaleźć domeny zarządzanej AD DS platformy Azure, zapoznaj się z następującymi krokami rozwiązywania problemów:
+   Jeśli `realm discover` polecenie nie może znaleźć domeny zarządzanej usług Azure AD DS, zapoznaj się z następującymi krokami rozwiązywania problemów:
 
-    * Upewnij się, że domena jest osiągalna z maszyny wirtualnej. Spróbuj `ping aaddscontoso.com`, aby sprawdzić, czy jest zwracana pozytywna odpowiedź.
-    * Sprawdź, czy maszyna wirtualna jest wdrożona w tej samej lub równorzędnej sieci wirtualnej, w której jest dostępna domena zarządzana platformy Azure AD DS.
-    * Upewnij się, że ustawienia serwera DNS dla sieci wirtualnej zostały zaktualizowane w taki sposób, aby wskazywały kontrolery domeny w domenie zarządzanej platformy Azure AD DS.
+    * Upewnij się, że domena jest osiągalna z maszyny Wirtualnej. Spróbuj `ping aaddscontoso.com` sprawdzić, czy odpowiedź pozytywna jest zwracana.
+    * Sprawdź, czy maszyna wirtualna jest wdrażana w tej samej lub równorzędnej sieci wirtualnej, w której jest dostępna domena zarządzana usługą Azure AD DS.
+    * Upewnij się, że ustawienia serwera DNS dla sieci wirtualnej zostały zaktualizowane w celu wskazania kontrolerów domeny domeny zarządzanej usług Azure AD DS.
 
-1. Teraz zainicjuj protokół Kerberos za pomocą polecenia `kinit`. Określ użytkownika, który jest częścią domeny zarządzanej AD DS platformy Azure. W razie potrzeby [Dodaj konto użytkownika do grupy w usłudze Azure AD](../active-directory/fundamentals/active-directory-groups-members-azure-portal.md).
+1. Teraz zainiszczaj protokół Kerberos za pomocą `kinit` polecenia. Określ użytkownika, który jest częścią domeny zarządzanej usług Azure AD DS. W razie potrzeby [dodaj konto użytkownika do grupy w usłudze Azure AD](../active-directory/fundamentals/active-directory-groups-members-azure-portal.md).
 
-    Ponownie nazwa domeny zarządzanej platformy Azure AD DS musi być wpisana WIELKImi LITERAmi. W poniższym przykładzie konto o nazwie `contosoadmin@aaddscontoso.com` jest używane do inicjowania protokołu Kerberos. Wprowadź własne konto użytkownika, które jest częścią domeny zarządzanej AD DS platformy Azure:
+    Ponownie nazwa domeny domeny zarządzanej usług Azure AD DS musi zostać wprowadzona w all uppercase. W poniższym przykładzie `contosoadmin@aaddscontoso.com` konto o nazwie jest używane do inicjowania protokołu Kerberos. Wprowadź własne konto użytkownika, które jest częścią domeny zarządzanej usług Azure AD DS:
 
     ```console
     kinit contosoadmin@AADDSCONTOSO.COM
     ```
 
-1. Na koniec Dołącz maszynę do domeny zarządzanej AD DS platformy Azure przy użyciu polecenia `realm join`. Użyj tego samego konta użytkownika, które jest częścią domeny zarządzanej AD DS platformy Azure, która została określona w poprzednim `kinit` polecenie, takie jak `contosoadmin@AADDSCONTOSO.COM`:
+1. Na koniec dołącz do komputera do domeny zarządzanej usług Azure AD DS za pomocą `realm join` polecenia. Użyj tego samego konta użytkownika, które jest częścią domeny zarządzanej usługi `kinit` Azure AD `contosoadmin@AADDSCONTOSO.COM`DS określonej w poprzednim poleceniu, takiej jak:
 
     ```console
     sudo realm join --verbose AADDSCONTOSO.COM -U 'contosoadmin@AADDSCONTOSO.COM'
     ```
 
-Dołączenie maszyny wirtualnej do domeny zarządzanej platformy Azure AD DS może chwilę potrwać. Następujące przykładowe dane wyjściowe pokazują, że maszyna wirtualna została pomyślnie dołączona do domeny zarządzanej AD DS platformy Azure:
+To trwa kilka chwil, aby dołączyć do maszyny Wirtualnej do domeny zarządzanej usług Ad DS platformy Azure. Poniższe przykładowe dane wyjściowe pokazują, że maszyna wirtualna pomyślnie dołączyła do domeny zarządzanej usług Azure AD DS:
 
 ```output
 Successfully enrolled machine in realm
@@ -130,34 +130,34 @@ Successfully enrolled machine in realm
 
 ### <a name="rhel-6"></a>RHEL 6
 
-1. Użyj `adcli info` polecenia, aby odnaleźć domenę zarządzaną platformy Azure AD DS. Poniższy przykład umożliwia odnajdywanie obszaru *ADDDSCONTOSO.com*. Określ własną nazwę domeny zarządzanej przez usługę Azure AD DS w dowolnej wielkiej litery:
+1. Użyj `adcli info` polecenia, aby odkryć domenę zarządza zarządzana usługą Azure AD DS. W poniższym przykładzie odnajduje się *ADDDSCONTOSO.COM*obszaru . Określ własną nazwę domeny zarządzanej usług Azure AD DS w all uppercase:
 
     ```console
     sudo adcli info aaddscontoso.com
     ```
 
-   Jeśli polecenie `adcli info` nie może znaleźć domeny zarządzanej AD DS platformy Azure, zapoznaj się z następującymi krokami rozwiązywania problemów:
+   Jeśli `adcli info` polecenie nie może znaleźć domeny zarządzanej usług Azure AD DS, zapoznaj się z następującymi krokami rozwiązywania problemów:
 
-    * Upewnij się, że domena jest osiągalna z maszyny wirtualnej. Spróbuj `ping aaddscontoso.com`, aby sprawdzić, czy jest zwracana pozytywna odpowiedź.
-    * Sprawdź, czy maszyna wirtualna jest wdrożona w tej samej lub równorzędnej sieci wirtualnej, w której jest dostępna domena zarządzana platformy Azure AD DS.
-    * Upewnij się, że ustawienia serwera DNS dla sieci wirtualnej zostały zaktualizowane w taki sposób, aby wskazywały kontrolery domeny w domenie zarządzanej platformy Azure AD DS.
+    * Upewnij się, że domena jest osiągalna z maszyny Wirtualnej. Spróbuj `ping aaddscontoso.com` sprawdzić, czy odpowiedź pozytywna jest zwracana.
+    * Sprawdź, czy maszyna wirtualna jest wdrażana w tej samej lub równorzędnej sieci wirtualnej, w której jest dostępna domena zarządzana usługą Azure AD DS.
+    * Upewnij się, że ustawienia serwera DNS dla sieci wirtualnej zostały zaktualizowane w celu wskazania kontrolerów domeny domeny zarządzanej usług Azure AD DS.
 
-1. Najpierw Przyłącz się do domeny za pomocą polecenia `adcli join`, to polecenie spowoduje również utworzenie plik KEYTAB do uwierzytelnienia maszyny. Użyj konta użytkownika, które jest częścią domeny zarządzanej AD DS platformy Azure.
+1. Najpierw dołącz do domeny `adcli join` za pomocą polecenia, to polecenie utworzy również klucz do uwierzytelniania komputera. Użyj konta użytkownika, które jest częścią domeny zarządzanej usług Azure AD DS.
 
     ```console
     sudo adcli join aaddscontoso.com -U contosoadmin
     ```
 
-1. Teraz Skonfiguruj `/ect/krb5.conf` i Utwórz pliki `/etc/sssd/sssd.conf` do używania `aaddscontoso.com` Active Directory domeny.
-   Upewnij się, że `AADDSCONTOSO.COM` jest zastępowana przez własną nazwę domeny:
+1. Teraz `/ect/krb5.conf` skonfiguruj `/etc/sssd/sssd.conf` i utwórz pliki do używania `aaddscontoso.com` domeny usługi Active Directory.
+   Upewnij się, że `AADDSCONTOSO.COM` jest ona zastępowana przez własną nazwę domeny:
 
-    Otwórz plik `/ect/krb5.conf` z edytorem:
+    Otwórz `/ect/krb5.conf` plik za pomocą edytora:
 
     ```console
     sudo vi /etc/krb5.conf
     ```
 
-    Zaktualizuj plik `krb5.conf`, aby pasował do poniższego przykładu:
+    Zaktualizuj plik, `krb5.conf` aby dopasować go do następującego przykładu:
 
     ```console
     [logging]
@@ -184,13 +184,13 @@ Successfully enrolled machine in realm
      AADDSCONTOSO.COM = AADDSCONTOSO.COM
     ```
     
-   Utwórz plik `/etc/sssd/sssd.conf`:
+   Utwórz `/etc/sssd/sssd.conf` plik:
     
     ```console
     sudo vi /etc/sssd/sssd.conf
     ```
 
-    Zaktualizuj plik `sssd.conf`, aby pasował do poniższego przykładu:
+    Zaktualizuj plik, `sssd.conf` aby dopasować go do następującego przykładu:
 
     ```console
     [sssd]
@@ -203,53 +203,53 @@ Successfully enrolled machine in realm
      id_provider = ad
     ```
 
-1. Upewnij się, że uprawnienia `/etc/sssd/sssd.conf` są 600 i należą do użytkownika root:
+1. Upewnij `/etc/sssd/sssd.conf` się, że uprawnienia są 600 i jest własnością użytkownika głównego:
 
     ```console
     sudo chmod 600 /etc/sssd/sssd.conf
     sudo chown root:root /etc/sssd/sssd.conf
     ```
 
-1. Użyj `authconfig`, aby nakazać maszynie wirtualnej integrację z usługą AD systemu Linux:
+1. Użyj, `authconfig` aby poinstruować maszynę wirtualną o integracji z systemem AD Linux:
 
     ```console
     sudo authconfig --enablesssd --enablesssdauth --update
     ```
 
-1. Uruchom i Włącz usługę SSSD:
+1. Uruchom i włącz usługę sssd:
 
     ```console
     sudo service sssd start
     sudo chkconfig sssd on
     ```
 
-Jeśli maszyna wirtualna nie może pomyślnie ukończyć procesu przyłączania do domeny, upewnij się, że sieciowa Grupa zabezpieczeń maszyny wirtualnej zezwala na ruch wychodzący protokołu Kerberos na porcie TCP + UDP 464 do podsieci sieci wirtualnej dla domeny zarządzanej platformy Azure AD DS.
+Jeśli maszyna wirtualna nie może pomyślnie ukończyć procesu dołączania do domeny, upewnij się, że sieciowa grupa zabezpieczeń maszyny Wirtualnej zezwala na ruch wychodzący protokołu Kerberos na porcie TCP + UDP 464 do podsieci sieci wirtualnej domeny zarządzanej usługAmi AD DS.
 
-Sprawdź teraz, czy możesz wysyłać zapytania o informacje o użytkowniku przy użyciu `getent`
+Teraz sprawdź, czy możesz wysyłać zapytania do informacji o u. AD za pomocą`getent`
 
 ```console
 sudo getent passwd contosoadmin
 ```
 
-## <a name="allow-password-authentication-for-ssh"></a>Zezwalaj na uwierzytelnianie za pośrednictwem protokołu SSH
+## <a name="allow-password-authentication-for-ssh"></a>Zezwalaj na uwierzytelnianie hasłem dla SSH
 
-Domyślnie użytkownicy mogą logować się tylko do maszyny wirtualnej przy użyciu uwierzytelniania opartego na kluczu publicznym SSH. Uwierzytelnianie oparte na hasłach kończy się niepowodzeniem. Po dołączeniu maszyny wirtualnej do domeny zarządzanej AD DS platformy Azure te konta domeny muszą używać uwierzytelniania opartego na hasłach. Zaktualizuj konfigurację protokołu SSH, aby zezwolić na uwierzytelnianie oparte na hasłach w następujący sposób.
+Domyślnie użytkownicy mogą logować się tylko do maszyny Wirtualnej przy użyciu uwierzytelniania opartego na kluczach publicznych SSH. Uwierzytelnianie oparte na hasłach kończy się niepowodzeniem. Po dołączeniu maszyny Wirtualnej do domeny zarządzanej usług Azure AD DS te konta domeny muszą używać uwierzytelniania opartego na hasłach. Zaktualizuj konfigurację SSH, aby zezwolić na uwierzytelnianie oparte na hasłach w następujący sposób.
 
-1. Otwórz plik *sshd_conf* z edytorem:
+1. Otwórz plik *sshd_conf* za pomocą edytora:
 
     ```console
     sudo vi /etc/ssh/sshd_config
     ```
 
-1. Zaktualizuj wiersz dla elementu *PasswordAuthentication* do *tak*:
+1. Zaktualizuj wiersz dla *PasswordAuthentication* do *tak:*
 
     ```console
     PasswordAuthentication yes
     ```
 
-    Po zakończeniu Zapisz i zamknij plik *sshd_conf* za pomocą polecenia `:wq` edytora.
+    Po zakończeniu zapisz i zamknij plik *sshd_conf* `:wq` za pomocą polecenia edytora.
 
-1. Aby zastosować zmiany i umożliwić użytkownikom logowanie się przy użyciu hasła, należy ponownie uruchomić usługę SSH dla swojej wersji RHEL dystrybucji:
+1. Aby zastosować zmiany i umożliwić użytkownikom zalogowanie się przy użyciu hasła, uruchom ponownie usługę SSH dla swojej wersji dystrybucji RHEL:
 
    **RHEL 7**
 
@@ -263,52 +263,52 @@ Domyślnie użytkownicy mogą logować się tylko do maszyny wirtualnej przy uż
     sudo service sshd restart
     ```
 
-## <a name="grant-the-aad-dc-administrators-group-sudo-privileges"></a>Przyznaj grupie "Administratorzy usługi AAD DC" uprawnienia sudo
+## <a name="grant-the-aad-dc-administrators-group-sudo-privileges"></a>Przyznawanie uprawnień sudo grupy "Administratorzy kontrolera domeny usługi AAD"
 
-Aby udzielić członkom uprawnień administracyjnych grupy *administratorów usługi AAD* na maszynie wirtualnej RHEL, należy dodać wpis do */etc/sudoers*. Po dodaniu członkowie grupy *Administratorzy domeny usługi AAD* mogą używać polecenia `sudo` na maszynie wirtualnej RHEL.
+Aby przyznać członkom grupy *administratorów kontrolera domeny usługi AAD* uprawnienia administracyjne na maszynie wirtualnej RHEL, należy dodać wpis do */etc/sudoers*. Po dodaniu członkowie grupy *Administratorzy kontrolera domeny AAD* mogą używać `sudo` polecenia na maszynie wirtualnej RHEL.
 
-1. Otwórz plik *sudo* do edycji:
+1. Otwórz plik *sudoers do* edycji:
 
     ```console
     sudo visudo
     ```
 
-1. Dodaj następujący wpis na końcu pliku */etc/sudoers* . Grupa *Administratorzy domeny usługi AAD* zawiera odstępy w nazwie, dlatego w nazwie grupy należy umieścić znak ucieczki odwrotnej kreski ułamkowej. Dodaj własną nazwę domeny, taką jak *aaddscontoso.com*:
+1. Dodaj następujący wpis na końcu *pliku /etc/sudoers.* Grupa *Administratorzy kontrolera domeny usługi AAD* zawiera odstępy w nazwie, więc dołącz znak ucieczki ukośnika odwrotnego w nazwie grupy. Dodaj własną nazwę domeny, taką jak *aaddscontoso.com:*
 
     ```console
     # Add 'AAD DC Administrators' group members as admins.
     %AAD\ DC\ Administrators@aaddscontoso.com ALL=(ALL) NOPASSWD:ALL
     ```
 
-    Po zakończeniu Zapisz i wyjdź z edytora przy użyciu `:wq` polecenia edytora.
+    Po zakończeniu zapisz i zamknij `:wq` edytor za pomocą polecenia edytora.
 
-## <a name="sign-in-to-the-vm-using-a-domain-account"></a>Logowanie się do maszyny wirtualnej przy użyciu konta domeny
+## <a name="sign-in-to-the-vm-using-a-domain-account"></a>Logowanie się do maszyny Wirtualnej przy użyciu konta domeny
 
-Aby sprawdzić, czy maszyna wirtualna została pomyślnie dołączona do domeny zarządzanej AD DS platformy Azure, uruchom nowe połączenie SSH przy użyciu konta użytkownika domeny. Upewnij się, że katalog macierzysty został utworzony, a członkostwo w grupie jest stosowane.
+Aby sprawdzić, czy maszyna wirtualna została pomyślnie przyłączona do domeny zarządzanej usług Azure AD DS, uruchom nowe połączenie SSH przy użyciu konta użytkownika domeny. Upewnij się, że utworzono katalog macierzysty i że członkostwo w grupie z domeny jest stosowane.
 
-1. Utwórz nowe połączenie SSH z poziomu konsoli. Użyj konta domeny należącego do domeny zarządzanej przy użyciu polecenia `ssh -l`, takiego jak `contosoadmin@aaddscontoso.com`, a następnie wprowadź adres maszyny wirtualnej, na przykład *RHEL.aaddscontoso.com*. Jeśli używasz Azure Cloud Shell, użyj publicznego adresu IP maszyny wirtualnej, a nie wewnętrznej nazwy DNS.
+1. Utwórz nowe połączenie SSH z konsoli. Użyj konta domeny należącego do domeny `ssh -l` zarządzanej za `contosoadmin@aaddscontoso.com` pomocą polecenia, na przykład, a następnie wprowadź adres maszyny Wirtualnej, na przykład *rhel.aaddscontoso.com*. Jeśli używasz usługi Azure Cloud Shell, użyj publicznego adresu IP maszyny Wirtualnej, a nie wewnętrznej nazwy DNS.
 
     ```console
     ssh -l contosoadmin@AADDSCONTOSO.com rhel.aaddscontoso.com
     ```
 
-1. Po pomyślnym nawiązaniu połączenia z maszyną wirtualną Sprawdź, czy katalog macierzysty został zainicjowany prawidłowo:
+1. Po pomyślnym nawiązaniu połączenia z maszyną wirtualną sprawdź, czy katalog macierzysty został poprawnie zainicjowany:
 
     ```console
     pwd
     ```
 
-    Należy mieć katalog */Home* z własnym katalogiem, który odpowiada kontu użytkownika.
+    Powinieneś znajdować się w *katalogu /home* z własnym katalogiem, który pasuje do konta użytkownika.
 
-1. Teraz sprawdź, czy członkostwa w grupach są poprawnie rozwiązane:
+1. Teraz sprawdź, czy członkostwo w grupach jest poprawnie rozwiązywane:
 
     ```console
     id
     ```
 
-    Członkostwa w grupach powinny być widoczne z domeny zarządzanej usługi Azure AD DS.
+    Powinny być widoczne członkostwa w grupach z domeny zarządzanej usług Azure AD DS.
 
-1. Jeśli zalogowano się do maszyny wirtualnej jako członek grupy *administratorów domeny usługi AAD* , sprawdź, czy można prawidłowo użyć `sudo` polecenia:
+1. Jeśli zalogowano się do maszyny Wirtualnej jako członek grupy *Administratorzy kontrolera domeny usługi AAD,* sprawdź, czy można poprawnie użyć `sudo` tego polecenia:
 
     ```console
     sudo yum update
@@ -316,7 +316,7 @@ Aby sprawdzić, czy maszyna wirtualna została pomyślnie dołączona do domeny 
 
 ## <a name="next-steps"></a>Następne kroki
 
-Jeśli masz problemy z połączeniem maszyny wirtualnej z domeną zarządzaną platformy Azure AD DS lub zalogowanie się przy użyciu konta domeny, zobacz [Rozwiązywanie problemów z przyłączaniem do domeny](join-windows-vm.md#troubleshoot-domain-join-issues).
+Jeśli masz problemy z połączeniem maszyny Wirtualnej z domeną zarządzaną usługą Azure AD DS lub zalogowaniem się za pomocą konta domeny, zobacz Rozwiązywanie problemów z [dołączaniem do domeny](join-windows-vm.md#troubleshoot-domain-join-issues).
 
 <!-- INTERNAL LINKS -->
 [create-azure-ad-tenant]: ../active-directory/fundamentals/sign-up-organization.md

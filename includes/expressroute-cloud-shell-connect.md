@@ -9,19 +9,19 @@ ms.date: 02/01/2019
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 1aca39a7ff162aa3c42fdb3ca5999c71091ec02e
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67182964"
 ---
- Jeśli używasz usługi Azure Cloud Shell, możesz Zaloguj się do konta platformy Azure automatycznie po kliknięciu przycisku "Wypróbuj". Aby zalogować się lokalnie, otwórz konsolę programu PowerShell z podwyższonym poziomem uprawnień i uruchom polecenie cmdlet, aby połączyć.
+ Jeśli używasz usługi Azure Cloud Shell, logujesz się do konta platformy Azure automatycznie po kliknięciu przycisku "Wypróbuj". Aby zalogować się lokalnie, otwórz konsolę programu PowerShell z podwyższonymi uprawnieniami i uruchom polecenie cmdlet, aby się połączyć.
 
 ```azurepowershell
 Connect-AzAccount
 ```
 
-Jeśli masz więcej niż jedną subskrypcję, zostanie wyświetlona lista subskrypcji platformy Azure.
+Jeśli masz więcej niż jedną subskrypcję, pobierz listę subskrypcji platformy Azure.
 
 ```azurepowershell-interactive
 Get-AzSubscription

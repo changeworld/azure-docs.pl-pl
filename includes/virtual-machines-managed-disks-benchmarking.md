@@ -9,114 +9,114 @@ ms.date: 01/11/2019
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: e5148ff9e92a2e550a3117356a4e77cbac8fc6f4
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67673450"
 ---
-*Trwa rozgrzewanie pamięci podręcznej*  
-Dysk z buforowania hosta tylko do odczytu są mógł przekazać wyższym operacje We/Wy niż limit na dysku. Aby uzyskać ten maksymalną wydajność odczytu z pamięci podręcznej hosta, najpierw należy musi przećwiczeniu podstawowych zadań pamięci podręcznej tego dysku. Daje to gwarancję, że odczytu z systemem IOs, że na woluminie CacheReads regulują narzędzi porównawczych faktycznie trafienia pamięci podręcznej, a nie dysków bezpośrednio. Wynik trafień w pamięci podręcznej w dodatkowe operacje We/Wy z jednym pamięci podręcznej włączone dysku.
+*Rozgrzewanie pamięci podręcznej*  
+Dysk z buforowania hosta ReadOnly są w stanie dać wyższe We/Wy niż limit dysku. Aby uzyskać maksymalną wydajność odczytu z pamięci podręcznej hosta, należy najpierw rozgrzać pamięć podręczną tego dysku. Gwarantuje to, że odczyt ios, że narzędzie do porównywania będzie jeździć na woluminie CacheReads, faktycznie trafia do pamięci podręcznej, a nie bezpośrednio dysku. Trafienia w pamięci podręcznej powodują dodatkowe we/wy we/wy z dysku obsługującego pojedynczą pamięć podręczną.
 
 > [!IMPORTANT]
-> Przed uruchomieniem testów porównawczych, za każdym razem, gdy maszyna wirtualna jest uruchamiana ponownie, musisz rozgrzewki pamięci podręcznej.
+> Należy rozgrzać pamięć podręczną przed uruchomieniem analizy porównawczej, za każdym razem, gdy maszyna wirtualna jest ponownie uruchamiana.
 
 ## <a name="tools"></a>Narzędzia
 
-### <a name="iometer"></a>Iometer
+### <a name="iometer"></a>Iometr
 
-[Pobierz narzędzie Iometer](https://sourceforge.net/projects/iometer/files/iometer-stable/2006-07-27/iometer-2006.07.27.win32.i386-setup.exe/download) na maszynie Wirtualnej.
+[Pobierz narzędzie Iometer](https://sourceforge.net/projects/iometer/files/iometer-stable/2006-07-27/iometer-2006.07.27.win32.i386-setup.exe/download) na maszynie wirtualnej.
 
-#### <a name="test-file"></a>Plik testu
+#### <a name="test-file"></a>Plik testowy
 
-Iometer używa pliku testu, który znajduje się na woluminie, na którym jest uruchamiany testów porównawczych. On dyski operacji odczytu i zapisu tego pliku testu, aby zmierzyć dysku, operacje We/Wy i przepływność. Iometer tworzy tego pliku testu, jeśli nie podano jeden. Utwórz plik testu 200 GB o nazwie iobw.tst na woluminach CacheReads i NoCacheWrites.
+Iometer używa pliku testowego, który jest przechowywany na woluminie, na którym można uruchomić test porównawczy. Dyski odczytuje i zapisuje na tym pliku testowym do pomiaru we/wy i przepływności dysku. Iometer tworzy ten plik testowy, jeśli go nie podałeś. Utwórz plik testowy o pojemności 200 GB o nazwie iobw.tst na woluminach CacheReads i NoCacheWrites.
 
-#### <a name="access-specifications"></a>Specyfikacja dostępu
+#### <a name="access-specifications"></a>Specyfikacje dostępu
 
-Rozmiar operacji We/Wy, % odczytu/zapisu żądania specyfikacje, % losowe/sekwencyjne są konfigurowane na karcie "Dostęp do specyfikacji" w Iometer. Utwórz specyfikację dostępu dla poszczególnych scenariuszy opisanych poniżej. Utwórz specyfikacje dostępu i "Zapisz" na preferowany nadaj nazwę takich jak — RandomWrites\_8 kilobajtów RandomReads\_8 kilobajtów. Wybierz odpowiedni specyfikację, podczas uruchamiania scenariusza testu.
+Specyfikacje, rozmiar we/wy żądania, % odczytu/zapisu, % losowe/sekwencyjne są konfigurowane przy użyciu zakładki "Specyfikacje dostępu" w Iometer. Utwórz specyfikację dostępu dla każdego ze scenariuszy opisanych poniżej. Utwórz specyfikacje dostępu i "Zapisz" o odpowiedniej\_nazwie, takiej jak\_RandomWrites 8K, RandomReads 8K. Wybierz odpowiednią specyfikację podczas uruchamiania scenariusza testowego.
 
-Poniżej przedstawiono przykład specyfikacji dostępu dla maksymalnej scenariusza operacje We/Wy zapisu  
-    ![Przykład dostępu specyfikacje dotyczące maksymalnego zapisu na SEKUNDĘ](../articles/virtual-machines/linux/media/premium-storage-performance/image8.png)
+Poniżej przedstawiono przykład specyfikacji dostępu dla maksymalnego scenariusza zapisu operacji We/Wy,  
+    ![Przykład specyfikacji dostępu dla maksymalnego zapisu We/Wy](../articles/virtual-machines/linux/media/premium-storage-performance/image8.png)
 
-#### <a name="maximum-iops-test-specifications"></a>Maksymalna liczba IOPS test specyfikacji
+#### <a name="maximum-iops-test-specifications"></a>Maksymalna specyfikacja testu IOPS
 
-Aby zademonstrować maksymalna liczba IOPs, należy użyć mniejszego rozmiaru żądania. Rozmiar żądania 8K i Utwórz specyfikacje dotyczące losowego zapisu i odczytu.
+Aby zademonstrować maksymalne we/wy, należy użyć mniejszego rozmiaru żądania. Użyj rozmiaru żądania 8K i utwórz specyfikacje dla losowych zapisów i odczytów.
 
-| Specyfikacja dostępu | Rozmiar żądania | % Losowe | % Odczytu |
+| Specyfikacja dostępu | Rozmiar żądania | Losowy % | Odczyt % |
 | --- | --- | --- | --- |
-| RandomWrites\_8K |8K |100 |0 |
-| RandomReads\_8 kilobajtów |8K |100 |100 |
+| RandomWrites\_8K |8 tys. |100 |0 |
+| Losowe\_odczyty 8K |8 tys. |100 |100 |
 
-#### <a name="maximum-throughput-test-specifications"></a>Maksymalna przepływność testu specyfikacji
+#### <a name="maximum-throughput-test-specifications"></a>Maksymalne specyfikacje testów wydajności
 
-Aby zademonstrować maksymalną przepływność, należy użyć większy rozmiar żądania. Użyj 64 KB, rozmiar żądań i Utwórz specyfikacje dotyczące losowego zapisu i odczytu.
+Aby zademonstrować maksymalną przepływność, należy użyć większego rozmiaru żądania. Użyj 64 K rozmiar żądania i utworzyć specyfikacje dla losowych zapisów i odczytów.
 
-| Specyfikacja dostępu | Rozmiar żądania | % Losowe | % Odczytu |
+| Specyfikacja dostępu | Rozmiar żądania | Losowy % | Odczyt % |
 | --- | --- | --- | --- |
-| RandomWrites\_64K |64 K |100 |0 |
-| RandomReads\_64 K |64 K |100 |100 |
+| RandomWrites\_64K |64 k. |100 |0 |
+| Losowe\_odczyty 64K |64 k. |100 |100 |
 
-#### <a name="run-the-iometer-test"></a>Uruchom Iometer test
+#### <a name="run-the-iometer-test"></a>Uruchom test Iometer
 
-Wykonaj poniższe kroki, aby rozgrzewki pamięci podręcznej
+Wykonaj poniższe czynności, aby rozgrzać pamięć podręczną
 
-1. Tworzenie dwóch specyfikacje dostępu przy użyciu wartości podanych poniżej,
+1. Utwórz dwie specyfikacje dostępu z wartościami pokazanymi poniżej,
 
-   | Name (Nazwa) | Rozmiar żądania | % Losowe | % Odczytu |
+   | Nazwa | Rozmiar żądania | Losowy % | Odczyt % |
    | --- | --- | --- | --- |
-   | RandomWrites\_1 MB |1 MB |100 |0 |
-   | RandomReads\_1 MB |1 MB |100 |100 |
-1. Uruchom test Iometer zainicjować dysk pamięci podręcznej z następującymi parametrami. Użyj trzech wątków roboczych dla woluminu docelowego i głębokości kolejki wynoszącej 128. Ustaw czas trwania testu "Czas wykonywania" do 2 godzin na karcie "Setup testów".
+   | RandomWrites\_1MB |1 MB |100 |0 |
+   | Losowe\_odczyty 1MB |1 MB |100 |100 |
+1. Uruchom test Iometer w celu zainicjowania dysku pamięci podręcznej z następującymi parametrami. Użyj trzech wątków roboczych dla woluminu docelowego i głębokości kolejki 128. Ustaw czas trwania testu "Czas wykonywania" na 2 godziny na karcie "Konfiguracja testu".
 
-   | Scenariusz | Wolumin docelowy | Name (Nazwa) | Duration |
+   | Scenariusz | Wolumin docelowy | Nazwa | Czas trwania |
    | --- | --- | --- | --- |
-   | Zainicjuj dysk pamięci podręcznej |CacheReads |RandomWrites\_1 MB |2 godz. |
-1. Uruchom test Iometer rozgrzewania dysk pamięci podręcznej z następującymi parametrami. Użyj trzech wątków roboczych dla woluminu docelowego i głębokości kolejki wynoszącej 128. Ustaw czas trwania testu "Czas wykonywania" do 2 godzin na karcie "Setup testów".
+   | Inicjowanie dysku pamięci podręcznej |Odczyty pamięci podręcznej |RandomWrites\_1MB |2 godz. |
+1. Uruchom test Iometer w celu nagrzebienia dysku pamięci podręcznej z następującymi parametrami. Użyj trzech wątków roboczych dla woluminu docelowego i głębokości kolejki 128. Ustaw czas trwania testu "Czas wykonywania" na 2 godziny na karcie "Konfiguracja testu".
 
-   | Scenariusz | Wolumin docelowy | Name (Nazwa) | Duration |
+   | Scenariusz | Wolumin docelowy | Nazwa | Czas trwania |
    | --- | --- | --- | --- |
-   | Rozgrzewanie dysk pamięci podręcznej |CacheReads |RandomReads\_1 MB |2 godz. |
+   | Rozgrzej dysk pamięci podręcznej |Odczyty pamięci podręcznej |Losowe\_odczyty 1MB |2 godz. |
 
-Po dysk pamięci podręcznej jest przygotowaniu, Kontynuuj przy użyciu scenariuszy testowania wymienionych poniżej. Aby uruchomić Iometer test, należy użyć co najmniej trzech wątków roboczych dla **każdego** docelowy wolumin. Dla każdego wątku roboczego wybierz wolumin docelowy, Ustawia głębokość kolejki, a następnie wybierz jedną z specyfikacją zapisane badania, jak pokazano w poniższej tabeli, aby uruchomić odpowiedni scenariusz testów. W tabeli przedstawiono również oczekiwanych wyników na SEKUNDĘ i przepływność podczas uruchamiania tych testów. W przypadku wszystkich scenariuszy używany jest mały rozmiar operacji We/Wy o rozmiarze 8 KB i wysoką głębokości 128.
+Po rozgrzaniu dysku pamięci podręcznej, przejdź do scenariuszy testowych wymienionych poniżej. Aby uruchomić test Iometer, należy użyć co najmniej trzech wątków roboczych dla **każdego** woluminu docelowego. Dla każdego wątku roboczego wybierz wolumin docelowy, ustaw głębokość kolejki i wybierz jedną ze specyfikacji zapisanych testów, jak pokazano w poniższej tabeli, aby uruchomić odpowiedni scenariusz testowy. W tabeli przedstawiono również oczekiwane wyniki dla we/wy i przepływności podczas uruchamiania tych testów. Dla wszystkich scenariuszy używany jest mały rozmiar we/wy 8 KB i wysoka głębokość kolejki 128.
 
-| Scenariusz testów | Wolumin docelowy | Name (Nazwa) | Wynik |
+| Scenariusz testowy | Wolumin docelowy | Nazwa | Wynik |
 | --- | --- | --- | --- |
-| Maksymalnie z Operacje odczytu We/Wy |CacheReads |RandomWrites\_8K |50 000 OPERACJI WE/WY |
-| Maksymalnie z Operacje We/Wy zapisu |NoCacheWrites |RandomReads\_8 kilobajtów |64 000 OPERACJI WE/WY |
-| Maksymalnie z Łączna liczba IOPS |CacheReads |RandomWrites\_8K |100 000 OPERACJI WE/WY |
-| NoCacheWrites |RandomReads\_8 kilobajtów | &nbsp; | &nbsp; |
-| Maksymalnie z Odczyt MB/s |CacheReads |RandomWrites\_64K |524 MB/s |
-| Maksymalnie z Zapis MB/s |NoCacheWrites |RandomReads\_64 K |524 MB/s |
-| Połączone MB/s |CacheReads |RandomWrites\_64K |1000 MB/s |
-| NoCacheWrites |RandomReads\_64 K | &nbsp; | &nbsp; |
+| Maksymalnie z Odczyt IOPS |Odczyty pamięci podręcznej |RandomWrites\_8K |50 000 IOPS |
+| Maksymalnie z Zapis IOPS |NoCachePisy |Losowe\_odczyty 8K |64 000 iops |
+| Maksymalnie z Połączone IOPS |Odczyty pamięci podręcznej |RandomWrites\_8K |100 000 IOPS |
+| NoCachePisy |Losowe\_odczyty 8K | &nbsp; | &nbsp; |
+| Maksymalnie z Odczyt MB/s |Odczyty pamięci podręcznej |RandomWrites\_64K |524 MB/s |
+| Maksymalnie z Zapis MB/s |NoCachePisy |Losowe\_odczyty 64K |524 MB/s |
+| Połączone MB/s |Odczyty pamięci podręcznej |RandomWrites\_64K |1000 MB/s |
+| NoCachePisy |Losowe\_odczyty 64K | &nbsp; | &nbsp; |
 
-Poniżej przedstawiono zrzuty ekranu przedstawiające Iometer wyniki testu dla połączonych scenariuszach operacje We/Wy i przepływność.
+Poniżej znajdują się zrzuty ekranu wyników testu Iometer dla połączonych scenariuszy we/wy i przepływności.
 
-#### <a name="combined-reads-and-writes-maximum-iops"></a>Połączone odczytuje i zapisuje maksymalna liczba IOPS
+#### <a name="combined-reads-and-writes-maximum-iops"></a>Połączone odczyty i zapisy maksymalne we/wy
 
-![Połączone odczyty i zapisy maksymalna liczba IOPS](../articles/virtual-machines/linux/media/premium-storage-performance/image9.png)
+![Połączone odczyty i zapisy maksymalne we/wy](../articles/virtual-machines/linux/media/premium-storage-performance/image9.png)
 
-#### <a name="combined-reads-and-writes-maximum-throughput"></a>Połączone odczytuje i zapisuje maksymalna przepływność
+#### <a name="combined-reads-and-writes-maximum-throughput"></a>Połączone odczyty i zapisy maksymalnej przepływności
 
-![Maksymalna przepływność połączone odczyty i zapisy](../articles/virtual-machines/linux/media/premium-storage-performance/image10.png)
+![Połączone odczyty i zapisy maksymalna przepływność](../articles/virtual-machines/linux/media/premium-storage-performance/image10.png)
 
 ### <a name="fio"></a>FIO
 
-FIO to popularne narzędzie do magazynu testów porównawczych na maszynach wirtualnych z systemem Linux. Ma wybrać różne rozmiary we/wy, sekwencyjnych lub losowych operacji odczytu i zapisu. Jej spowoduje utworzenie wątków roboczych i realizowania innych procesów do wykonywania określonej operacji We/Wy. Można określić typ operacji We/Wy każdego wątku roboczego należy wykonać przy użyciu plików zadania. Utworzyliśmy jeden plik zadania na scenariusz pokazano w poniższych przykładach. Możesz zmienić specyfikacji w tych plikach zadania przeprowadzenie testu porównawczego różnych obciążeń uruchomionych na usługę Premium Storage. W przykładach użyto standardowego DS 14 w maszyny Wirtualnej z systemem **Ubuntu**. Użycie tej samej konfiguracji opisanych na początku sekcji Benchmarking i dostępu do ciepłych pamięci podręcznej przed uruchomieniem testów porównawczych.
+FIO jest popularnym narzędziem do porównywania pamięci masowej na maszynach wirtualnych z systemem Linux. Ma elastyczność, aby wybrać różne rozmiary we/wy, sekwencyjne lub losowe odczyty i zapisy. Tworzy wątki robocze lub procesy do wykonywania określonych operacji we/wy. Można określić typ operacji we/wy, które każdy wątek roboczy musi wykonać przy użyciu plików zadań. Utworzyliśmy jeden plik zadania na scenariusz zilustrowany w poniższych przykładach. Można zmienić specyfikacje w tych plikach zadań, aby porównać różne obciążenia uruchomione w magazynie w wersji Premium. W przykładach używamy standardowego ds 14 VM z systemem **Ubuntu**. Użyj tej samej konfiguracji opisanej na początku sekcji Benchmarking i rozgrzej pamięć podręczną przed uruchomieniem testów porównawczych.
 
-Przed przystąpieniem do wykonywania [Pobierz FIO](https://github.com/axboe/fio) i zainstaluj go na maszynie wirtualnej.
+Przed rozpoczęciem [pobierz FIO](https://github.com/axboe/fio) i zainstaluj go na swojej maszynie wirtualnej.
 
-Uruchom następujące polecenie na systemie Ubuntu
+Uruchom następujące polecenie dla Ubuntu,
 
 ```
 apt-get install fio
 ```
 
-Cztery wątki robocze do obsługi operacji zapisu i cztery wątki robocze używamy opracowuje operacji odczytu na dyskach. Procesy robocze zapisu napędzają ruchu na wolumin "właściwość nocache", który zawiera dyski 10 z pamięcią podręczną równa "None". Procesy robocze odczytu napędzają ruchu w woluminie "readcache", który ma jeden dysk z pamięci podręcznej ustawioną na "ReadOnly".
+Używamy czterech wątków roboczych do prowadzenia operacji zapisu i czterech wątków roboczych do prowadzenia operacji odczytu na dyskach. Pracownicy zapisu są jazdy ruchu na woluminie "nocache", który ma 10 dysków z pamięci podręcznej ustawionej na "Brak". Odczyt pracowników są jazdy ruchu na woluminie "readcache", który ma jeden dysk z pamięcią podręczną ustawioną na "ReadOnly".
 
-#### <a name="maximum-write-iops"></a>Maksymalna liczba zapisu na sekundę
+#### <a name="maximum-write-iops"></a>Maksymalny zapis We/Wy
 
-Utwórz plik zadania z następującymi specyfikacjami, aby uzyskać maksymalną zapisu operacji We/Wy. Nadaj mu nazwę "fiowrite.ini".
+Utwórz plik zadania z następującymi specyfikacjami, aby uzyskać maksymalną liczbę we/wy zapisu. Nazwij go "fiowrite.ini".
 
 ```ini
 [global]
@@ -140,24 +140,24 @@ rw=randwrite
 directory=/mnt/nocache
 ```
 
-Należy pamiętać, postępuj zgodnie z rzeczy, które są tworzone są zalecenia dotyczące projektowania omówione w poprzednich sekcjach. W tych specyfikacjach są istotne dla maksymalnej operacje We/Wy dysku  
+Należy zwrócić uwagę na następujące kluczowe elementy, które są zgodne z wytycznymi dotyczącymi projektowania omówione w poprzednich sekcjach. Specyfikacje te są niezbędne do prowadzenia maksymalnej liczby  
 
-* Głębokość kolejki o wysokiej 256.  
-* Małych blokach o rozmiarze 8 KB.  
-* Losowe zapisy wykonywanie wielu wątków.
+* Wysoka głębokość kolejki 256.  
+* Mały rozmiar bloku 8 KB.  
+* Wiele wątków wykonujących losowe zapisy.
 
-Uruchom następujące polecenie, aby uruchamiał testu FIO przez 30 sekund  
+Uruchom następujące polecenie, aby rozpocząć test FIO na 30 sekund,  
 
 ```
 sudo fio --runtime 30 fiowrite.ini
 ```
 
-Podczas wykonywania testu, jesteś w stanie wyświetlić liczbę zapisu na SEKUNDĘ maszyny Wirtualnej i dyski w warstwie Premium są dostarczane. Jak pokazano w poniższym przykładzie, maszyna wirtualna DS14 jest dostarczanie jego zapisu maksymalny limit operacji We/Wy 50 000 operacji We/Wy.  
-    ![Liczba zapisu dysków maszyny Wirtualnej operacje We/Wy i Premium są dostarczane.](../articles/virtual-machines/linux/media/premium-storage-performance/image11.png)
+Podczas pracy testu, można zobaczyć liczbę zapisu We/Wy, które dostarczają dyski Maszyny Wirtualnej i Premium. Jak pokazano w poniższym przykładzie, maszyna wirtualna DS14 zapewnia maksymalny limit we/wy zapisu wynoszący 50 000 we/wy.  
+    ![Liczba zapisu we/wy maszyny Wirtualnej i dysków Premium](../articles/virtual-machines/linux/media/premium-storage-performance/image11.png)
 
-#### <a name="maximum-read-iops"></a>Maksymalny odczyt operacji We/Wy
+#### <a name="maximum-read-iops"></a>Maksymalny odczyt we/wy
 
-Utwórz plik zadania z następującymi specyfikacjami, aby uzyskać maksymalną operacje odczytu We/Wy. Nadaj mu nazwę "fioread.ini".
+Utwórz plik zadania z następującymi specyfikacjami, aby uzyskać maksymalną liczbę do odczytu we/wy. Nazwij go "fioread.ini".
 
 ```ini
 [global]
@@ -181,24 +181,24 @@ rw=randread
 directory=/mnt/readcache
 ```
 
-Należy pamiętać, postępuj zgodnie z rzeczy, które są tworzone są zalecenia dotyczące projektowania omówione w poprzednich sekcjach. W tych specyfikacjach są istotne dla maksymalnej operacje We/Wy dysku
+Należy zwrócić uwagę na następujące kluczowe elementy, które są zgodne z wytycznymi dotyczącymi projektowania omówione w poprzednich sekcjach. Specyfikacje te są niezbędne do prowadzenia maksymalnej liczby
 
-* Głębokość kolejki o wysokiej 256.  
-* Małych blokach o rozmiarze 8 KB.  
-* Losowe zapisy wykonywanie wielu wątków.
+* Wysoka głębokość kolejki 256.  
+* Mały rozmiar bloku 8 KB.  
+* Wiele wątków wykonujących losowe zapisy.
 
-Uruchom następujące polecenie, aby uruchamiał testu FIO przez 30 sekund
+Uruchom następujące polecenie, aby rozpocząć test FIO na 30 sekund,
 
 ```
 sudo fio --runtime 30 fioread.ini
 ```
 
-Podczas wykonywania testu, jesteś w stanie liczba odczytanych na SEKUNDĘ maszyny Wirtualnej, a dyski w warstwie Premium są dostarczane. Jak pokazano w poniższym przykładzie, maszyna wirtualna DS14 świadczy ponad 64 000 operacji odczytu We/Wy. Jest to kombinacja dysku i wydajność pamięci podręcznej.  
+Podczas pracy testu, można zobaczyć liczbę odczytu We/Wy, które dostarczają dyski maszyny Wirtualnej i Premium. Jak pokazano w poniższym przykładzie, maszyna wirtualna DS14 dostarcza ponad 64 000 odczytu we/wy. Jest to kombinacja wydajności dysku i pamięci podręcznej.  
     ![](../articles/virtual-machines/linux/media/premium-storage-performance/image12.png)
 
-#### <a name="maximum-read-and-write-iops"></a>Maksymalny Odczyt i zapis operacji We/Wy
+#### <a name="maximum-read-and-write-iops"></a>Maksymalne odczytywanie i zapisywanie we/wy
 
-Utwórz plik zadania z następujących specyfikacji, aby uzyskać maksymalną połączone odczytu i zapisu na SEKUNDĘ. Nadaj mu nazwę "fioreadwrite.ini".
+Utwórz plik zadania z następującymi specyfikacjami, aby uzyskać maksymalną łączną liczbę połączonych we/wy odczytu i zapisu. Nazwij go "fioreadwrite.ini".
 
 ```ini
 [global]
@@ -239,21 +239,21 @@ directory=/mnt/nocache
 rate_iops=12500
 ```
 
-Należy pamiętać, postępuj zgodnie z rzeczy, które są tworzone są zalecenia dotyczące projektowania omówione w poprzednich sekcjach. W tych specyfikacjach są istotne dla maksymalnej operacje We/Wy dysku
+Należy zwrócić uwagę na następujące kluczowe elementy, które są zgodne z wytycznymi dotyczącymi projektowania omówione w poprzednich sekcjach. Specyfikacje te są niezbędne do prowadzenia maksymalnej liczby
 
-* Głębokość kolejki o wysokiej 128.  
-* Małych blokach o rozmiarze 4 KB.  
-* Wiele wątków, wykonując losowych operacji odczytu i zapisu.
+* Wysoka głębokość kolejki 128.  
+* Mały blok o rozmiarze 4 KB.  
+* Wiele wątków wykonujących losowe odczyty i zapisy.
 
-Uruchom następujące polecenie, aby uruchamiał testu FIO przez 30 sekund
+Uruchom następujące polecenie, aby rozpocząć test FIO na 30 sekund,
 
 ```
 sudo fio --runtime 30 fioreadwrite.ini
 ```
 
-Podczas wykonywania testu, można wyświetlić liczbę połączonych odczytu i zapisu na SEKUNDĘ maszyny Wirtualnej, a dyski w warstwie Premium są dostarczane. Jak pokazano w poniższym przykładzie, maszyna wirtualna DS14 świadczy ponad 100 000 połączone odczytu i zapisu na SEKUNDĘ. Jest to kombinacja dysku i wydajność pamięci podręcznej.  
-    ![Połączone odczytu i zapisu na SEKUNDĘ](../articles/virtual-machines/linux/media/premium-storage-performance/image13.png)
+Podczas pracy testu, można zobaczyć liczbę połączonych odczytu i zapisu We/Wy, które dostarczają dyski maszyny Wirtualnej i Premium. Jak pokazano w poniższym przykładzie, maszyna wirtualna DS14 dostarcza ponad 100 000 połączonych funkcji We/Wy odczytu i zapisu. Jest to kombinacja wydajności dysku i pamięci podręcznej.  
+    ![Połączone odczytywanie i zapis we/wy](../articles/virtual-machines/linux/media/premium-storage-performance/image13.png)
 
-#### <a name="maximum-combined-throughput"></a>Maksymalna łączna przepływność
+#### <a name="maximum-combined-throughput"></a>Maksymalna łączna przepustowość
 
-Aby uzyskać maksymalną połączone odczytu i zapisu przepływności, większy rozmiar bloku i dużych głębokości za pomocą wielu wątków, wykonywanie operacji odczytu i zapisu. Można użyć blok o rozmiarze 64 KB i głębokości kolejki wynoszącej 128.
+Aby uzyskać maksymalną łączną przepustowość odczytu i zapisu, należy użyć większego rozmiaru bloku i dużej głębokości kolejki z wieloma wątkami wykonującymi odczyty i zapisy. Można użyć rozmiaru bloku o rozmiarze 64 KB i głębokości kolejki 128.

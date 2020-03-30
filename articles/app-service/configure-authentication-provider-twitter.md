@@ -1,62 +1,62 @@
 ---
-title: Konfigurowanie uwierzytelniania w usłudze Twitter
-description: Dowiedz się, jak skonfigurować uwierzytelnianie w usłudze Twitter jako dostawcę tożsamości dla aplikacji App Service.
+title: Konfigurowanie uwierzytelniania twitterowego
+description: Dowiedz się, jak skonfigurować uwierzytelnianie na Twitterze jako dostawcę tożsamości dla aplikacji usługi App Service.
 ms.assetid: c6dc91d7-30f6-448c-9f2d-8e91104cde73
 ms.topic: article
 ms.date: 02/28/2020
 ms.custom: seodec18
 ms.openlocfilehash: 794f671b36b5aeb9f19cf5d80e488500cedb1098
-ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/01/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78207147"
 ---
-# <a name="configure-your-app-service-app-to-use-twitter-login"></a>Skonfiguruj aplikację App Service, aby korzystała z logowania do usługi Twitter
+# <a name="configure-your-app-service-app-to-use-twitter-login"></a>Konfigurowanie aplikacji usługi App Service do używania logowania do Twittera
 
 [!INCLUDE [app-service-mobile-selector-authentication](../../includes/app-service-mobile-selector-authentication.md)]
 
-W tym artykule przedstawiono sposób konfigurowania Azure App Service do korzystania z usługi Twitter jako dostawcy uwierzytelniania.
+W tym artykule pokazano, jak skonfigurować usługę Azure App Service do używania twittera jako dostawcy uwierzytelniania.
 
-Aby wykonać procedurę opisaną w tym artykule, musisz mieć konto w usłudze Twitter z zweryfikowanym adresem e-mail i numerem telefonu. Aby utworzyć nowe konto w usłudze Twitter, przejdź do [Twitter.com].
+Aby wykonać procedurę opisaną w tym artykule, potrzebujesz konta na Twitterze, które ma zweryfikowany adres e-mail i numer telefonu. Aby utworzyć nowe konto na Twitterze, przejdź do [twitter.com].
 
-## <a name="register"> </a>Rejestrowanie aplikacji w usłudze Twitter
+## <a name="register-your-application-with-twitter"></a><a name="register"> </a>Zarejestruj swoją aplikację za pomocą Twittera
 
-1. Zaloguj się do [Azure Portal] i przejdź do swojej aplikacji. Skopiuj **adres URL**. Zostanie ona użyta do skonfigurowania aplikacji usługi Twitter.
-1. Przejdź do witryny sieci Web [Deweloperzy usługi Twitter] i zaloguj się przy użyciu poświadczeń konta w usłudze Twitter, a następnie wybierz pozycję **Utwórz aplikację**.
-1. Wprowadź **nazwę aplikacji** i **Opis aplikacji** dla nowej aplikacji. Wklej **adres URL** aplikacji do pola **adres URL witryny sieci Web** . W sekcji **adresy URL wywołania zwrotnego** wprowadź adres URL protokołu HTTPS aplikacji App Service i Dołącz `/.auth/login/twitter/callback`ścieżki. Na przykład `https://contoso.azurewebsites.net/.auth/login/twitter/callback`.
-1. W dolnej części strony wpisz co najmniej 100 znaków w polu **powiedz nam, jak będzie używana ta aplikacja**, a następnie wybierz pozycję **Utwórz**. Kliknij przycisk **Utwórz** ponownie w oknie podręcznym. Zostaną wyświetlone szczegóły aplikacji.
-1. Wybierz kartę **klucze i tokeny dostępu** .
+1. Zaloguj się do [witryny Azure portal] i przejdź do aplikacji. Skopiuj **swój adres URL**. Użyjesz go do skonfigurowania aplikacji Twitter.
+1. Przejdź do [witryny twitter deweloperzy,] zaloguj się przy użyciu poświadczeń konta twitter i wybierz pozycję **Utwórz aplikację**.
+1. Wprowadź **nazwę aplikacji** i **opis aplikacji** dla nowej aplikacji. Wklej **adres URL** aplikacji w polu Adres **URL witryny.** W sekcji **Adresy URL wywołania zwrotnego** wprowadź adres URL HTTPS `/.auth/login/twitter/callback`w aplikacji App Service i dołącz ścieżkę . Na przykład `https://contoso.azurewebsites.net/.auth/login/twitter/callback`.
+1. U dołu strony wpisz co najmniej 100 znaków w **obszarze Powiedz nam, jak ta aplikacja będzie używana,** a następnie wybierz pozycję **Utwórz**. W wyskakującym okienku **kliknij pozycję Utwórz** ponownie. Zostaną wyświetlone szczegóły aplikacji.
+1. Wybierz kartę **Klucze i Tokeny dostępu.**
 
-   Zanotuj te wartości:
-   - Klucz interfejsu API
+   Zanotuj następujące wartości:
+   - Klucz INTERFEJSU API
    - Klucz tajny interfejsu API
 
    > [!NOTE]
-   > Klucz tajny interfejsu API jest ważnym poświadczeniem zabezpieczeń. Nie należy udostępniać tego klucza tajnego nikomu ani rozpowszechniać go wraz z Twoją aplikacją.
+   > Klucz tajny interfejsu API jest ważnym poświadczeniem zabezpieczeń. Nie udostępniaj nikomu tego klucza tajnego ani nie rozpowszechniaj go za pomocą aplikacji.
 
-## <a name="secrets"> </a>Dodawanie informacji usługi Twitter do aplikacji
+## <a name="add-twitter-information-to-your-application"></a><a name="secrets"> </a>Dodawanie informacji z Twittera do aplikacji
 
-1. Przejdź do aplikacji w [Azure Portal].
-1. Wybierz pozycję **ustawienia** > **uwierzytelnianie/autoryzacja**i upewnij się, że **App Service uwierzytelnianie** jest **włączone**.
-1. Wybierz pozycję **Twitter**.
-1. Wklej wartości `API key` i `API secret key`, które zostały uzyskane wcześniej.
+1. Przejdź do aplikacji w [witrynie Azure portal].
+1. Wybierz **pozycję Uwierzytelnianie ustawienia** > **/ autoryzacja**i upewnij się, że **uwierzytelnianie usługi aplikacji** jest **włączone**.
+1. Wybierz **Twitter**.
+1. Wklej `API key` wartości `API secret key` i wartości uzyskane wcześniej.
 1. Kliknij przycisk **OK**.
 
-   ![Zrzut ekranu ustawień usługi Twitter aplikacji mobilnych][1]
+   ![Zrzut ekranu przedstawiający ustawienia aplikacji mobilnej na Twitterze][1]
 
-   Domyślnie App Service zapewnia uwierzytelnianie, ale nie ogranicza uprawnień dostępu do zawartości i interfejsów API witryny. Musisz autoryzować użytkowników w kodzie aplikacji.
+   Domyślnie usługa App Service zapewnia uwierzytelnianie, ale nie ogranicza autoryzowanego dostępu do zawartości witryny i interfejsów API. Musisz autoryzować użytkowników w kodzie aplikacji.
 
-1. Obowiązkowe Aby ograniczyć dostęp do witryny tylko do użytkowników uwierzytelnionych przez serwis Twitter, ustaw **akcję do wykonania, gdy żądanie nie zostanie uwierzytelnione** do usługi **Twitter**. Po ustawieniu tej funkcji aplikacja wymaga uwierzytelnienia wszystkich żądań. Przekierowuje także wszystkie nieuwierzytelnione żądania do usługi Twitter w celu uwierzytelnienia.
+1. (Opcjonalnie) Aby ograniczyć dostęp do witryny tylko do użytkowników uwierzytelnionych przez Twittera, ustaw **akcję do podjęcia, gdy żądanie nie zostanie uwierzytelnione** w **serwisie Twitter.** Po ustawieniu tej funkcji aplikacja wymaga uwierzytelnienia wszystkich żądań. Przekierowuje również wszystkie nieuwierzyte żądania do Twittera w celu uwierzytelnienia.
 
    > [!CAUTION]
-   > Ograniczenie dostępu w ten sposób dotyczy wszystkich wywołań aplikacji, które mogą nie być pożądane dla aplikacji, które mają publicznie dostępną stronę główną, tak jak w przypadku aplikacji jednostronicowych. W przypadku takich aplikacji **Zezwalanie na żądania anonimowe (żadna akcja)** może być preferowana, aby aplikacja ręcznie uruchamiała sam uwierzytelnienie. Aby uzyskać więcej informacji, zobacz temat [przepływ uwierzytelniania](overview-authentication-authorization.md#authentication-flow).
+   > Ograniczenie dostępu w ten sposób ma zastosowanie do wszystkich wywołań aplikacji, co może nie być pożądane w przypadku aplikacji, które mają publicznie dostępną stronę główną, jak w wielu aplikacjach jednostronicowych. W przypadku takich aplikacji **można zezwolić na żądania anonimowe (brak akcji),** aby aplikacja ręcznie uruchamiała uwierzytelnianie. Aby uzyskać więcej informacji, zobacz [Przepływ uwierzytelniania](overview-authentication-authorization.md#authentication-flow).
 
-1. Wybierz pozycję **Zapisz**.
+1. Wybierz **pozycję Zapisz**.
 
-Możesz teraz przystąpić do uwierzytelniania w aplikacji za pomocą usługi Twitter.
+Teraz możesz używać Twittera do uwierzytelniania w aplikacji.
 
-## <a name="related-content"> </a>Następne kroki
+## <a name="next-steps"></a><a name="related-content"> </a>Następne kroki
 
 [!INCLUDE [app-service-mobile-related-content-get-started-users](../../includes/app-service-mobile-related-content-get-started-users.md)]
 
@@ -67,7 +67,7 @@ Możesz teraz przystąpić do uwierzytelniania w aplikacji za pomocą usługi Tw
 
 <!-- URLs. -->
 
-[Deweloperzy usługi Twitter]: https://go.microsoft.com/fwlink/p/?LinkId=268300
+[Twórcy Twittera]: https://go.microsoft.com/fwlink/p/?LinkId=268300
 [twitter.com]: https://go.microsoft.com/fwlink/p/?LinkID=268287
-[Azure Portal]: https://portal.azure.com/
+[Portal Azure]: https://portal.azure.com/
 [xamarin]: ../app-services-mobile-app-xamarin-ios-get-started-users.md
