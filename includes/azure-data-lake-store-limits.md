@@ -8,17 +8,17 @@ ms.topic: include
 ms.date: 06/22/2018
 ms.author: twooley
 ms.custom: include file
-ms.openlocfilehash: f328de00d206b58037fda800354e9634b1c374d6
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: 5e5ef3084fa4e13035fe562dd3c5ed2a37b76be2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "67183622"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80334879"
 ---
-Azure Data Lake Storage Gen1 jest repozytorium skalowalnych w całej firmie dla obciążeń analitycznych danych Big Data. Data Lake Storage Gen1 służy do przechwytywania danych dowolnego rozmiaru, typu i szybkości pozyskiwania w jednym miejscu na potrzeby analiz operacyjnych i poznawczych. Nie ma limitu ilości danych, które można przechowywać na koncie Data Lake Storage Gen1.
+Usługa Azure Data Lake Storage Gen1 to repozytorium hiperskali dla dużych zbiorów danych w całym przedsiębiorstwie. Za pomocą usługi Data Lake Storage Gen1 można przechwytywać dane o dowolnym rozmiarze, typie i szybkości pozyskiwania w jednym miejscu w celu analizy operacyjnej i eksploracyjnej. Nie ma ograniczeń co do ilości danych, które można przechowywać na koncie Data Lake Storage Gen1.
 
-| **Zasób** | **Limit domyślny** | **Komentarze** |
+| **Zasobów** | **Limit** | **Komentarze** |
 | --- | --- | --- |
-| Maksymalna liczba kont Data Lake Storage Gen1 na subskrypcję na region |10 | Aby zażądać zwiększenia dla tego limitu, skontaktuj się z pomocą techniczną. |
-| Maksymalna liczba list kontroli dostępu dla pliku lub folderu |32 | Jest to sztywny limit. Używanie grup do zarządzania dostępem z mniejszą liczbą wpisów. |
-| Maksymalna liczba domyślnych list kontroli dostępu (ACL) na plik lub folder |32 | Jest to sztywny limit. Używanie grup do zarządzania dostępem z mniejszą liczbą wpisów. |
+| Maksymalna liczba kont Data Lake Storage Gen1 według subskrypcji dla regionu |10 | Aby poprosić o zwiększenie tego limitu, skontaktuj się z pomocą techniczną. |
+| Maksymalna liczba list ACL dostępu, na plik lub folder |32 | To jest twarda granica. Grupy można używać do zarządzania dostępem z mniejszą liczbą wpisów. |
+| Maksymalna liczba domyślnych list ACL na plik lub folder |32 | To jest twarda granica. Grupy można używać do zarządzania dostępem z mniejszą liczbą wpisów. |
