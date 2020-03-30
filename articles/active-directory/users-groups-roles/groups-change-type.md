@@ -1,6 +1,6 @@
 ---
-title: Zmiana członkostwa grupy statycznej na dynamiczną — Azure AD | Microsoft Docs
-description: Sposób tworzenia reguł członkostwa w celu automatycznego wypełniania grup i odwołania do reguły.
+title: Zmienianie członkostwa w grupach statycznych na dynamiczne — Usługa Azure AD | Dokumenty firmy Microsoft
+description: Jak utworzyć reguły członkostwa, aby automatycznie wypełniać grupy i odwołanie do reguły.
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -15,51 +15,51 @@ ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 34451fcc4597f77464e5e9566613e21e9fecdbc6
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74027310"
 ---
-# <a name="change-static-group-membership-to-dynamic-in-azure-active-directory"></a>Zmień statyczną składową grupy na dynamiczną Azure Active Directory
+# <a name="change-static-group-membership-to-dynamic-in-azure-active-directory"></a>Zmienianie członkostwa w grupach statycznych na dynamiczne w usłudze Azure Active Directory
 
-Członkostwo w grupie można zmienić z statycznej na dynamiczną (lub odwrotnie) w Azure Active Directory (Azure AD). Usługa Azure AD zachowuje tę samą nazwę grupy i identyfikator w systemie, więc wszystkie istniejące odwołania do grupy są nadal ważne. W przypadku utworzenia nowej grupy należy zaktualizować te odwołania. Dynamiczne członkostwo w grupie eliminuje obciążenie związane z zarządzaniem dodawaniem i usuwaniem użytkowników. W tym artykule opisano sposób konwertowania istniejących grup z statycznej na dynamiczne członkostwo przy użyciu Centrum administracyjnego usługi Azure AD lub poleceń cmdlet programu PowerShell.
+Można zmienić członkostwo grupy ze statycznego na dynamiczny (lub odwrotnie) w usłudze Azure Active Directory (Azure AD). Usługa Azure AD zachowuje tę samą nazwę grupy i identyfikator w systemie, więc wszystkie istniejące odwołania do grupy są nadal prawidłowe. Jeśli zamiast tego utworzysz nową grupę, należy zaktualizować te odwołania. Członkostwo w grupach dynamicznych eliminuje obciążenie związane z dodawaniem i usuwaniem użytkowników. W tym artykule opisano sposób konwertowania istniejących grup z członkostwa statycznego na dynamiczne przy użyciu centrum administracyjnego usługi Azure AD lub poleceń cmdlet programu PowerShell.
 
 > [!WARNING]
-> W przypadku zmiany istniejącej grupy statycznej na grupę dynamiczną wszystkie istniejące elementy członkowskie są usuwane z grupy, a następnie jest przetwarzana reguła członkostwa w celu dodania nowych członków. Jeśli grupa służy do kontrolowania dostępu do aplikacji lub zasobów, należy pamiętać, że pierwotne elementy członkowskie mogą utracić dostęp do momentu całkowitego przetworzenia reguły członkostwa.
+> Podczas zmiany istniejącej grupy statycznej na grupę dynamiczną wszyscy istniejący członkowie są usuwani z grupy, a następnie reguła członkostwa jest przetwarzana w celu dodania nowych członków. Jeśli grupa jest używana do kontrolowania dostępu do aplikacji lub zasobów, należy pamiętać, że oryginalni członkowie mogą utracić dostęp, dopóki reguła członkostwa nie zostanie w pełni przetworzona.
 >
-> Zalecamy uprzednie przetestowanie nowej reguły członkostwa, aby upewnić się, że nowe członkostwo w grupie jest zgodne z oczekiwaniami.
+> Zaleca się przetestowanie nowej reguły członkostwa wcześniej, aby upewnić się, że nowe członkostwo w grupie jest zgodne z oczekiwaniami.
 
-## <a name="change-the-membership-type-for-a-group"></a>Zmiana typu członkostwa dla grupy
+## <a name="change-the-membership-type-for-a-group"></a>Zmienianie typu członkostwa w grupie
 
-1. Zaloguj się do [Centrum administracyjnego usługi Azure AD](https://aad.portal.azure.com) przy użyciu konta, które jest administratorem globalnym lub administratorem użytkownika w dzierżawie.
-2. Wybierz pozycję **grupy**.
-3. Na liście **wszystkie grupy** Otwórz grupę, którą chcesz zmienić.
-4. Wybierz pozycję **Właściwości**.
-5. Na stronie **Właściwości** grupy wybierz **Typ członkostwa** przypisany (statyczny), użytkownika dynamicznego lub urządzenie dynamiczne, w zależności od żądanego typu członkostwa. W przypadku członkostwa dynamicznego można użyć konstruktora reguł, aby wybrać opcje prostej reguły lub samodzielnie napisać regułę członkostwa. 
+1. Zaloguj się do [centrum administracyjnego usługi Azure AD](https://aad.portal.azure.com) przy za pomocą konta, które jest administratorem globalnym lub administratorem użytkownika w dzierżawie.
+2. Wybierz **opcję Grupy**.
+3. Na liście **Wszystkie grupy** otwórz grupę, którą chcesz zmienić.
+4. Wybierz **pozycję Właściwości**.
+5. Na stronie **Właściwości** grupy wybierz **typ członkostwa** przypisanego (statycznego), dynamicznego użytkownika lub urządzenia dynamicznego, w zależności od żądanego typu członkostwa. W przypadku członkostwa dynamicznego można użyć konstruktora reguł, aby wybrać opcje prostej reguły lub napisać regułę członkostwa samodzielnie. 
 
-Poniżej przedstawiono przykład zmiany grupy z statycznej na członkostwo dynamiczne dla grupy użytkowników.
+Poniższe kroki są przykładem zmiany grupy z członkostwa statycznego na dynamiczne dla grupy użytkowników.
 
-1. Na stronie **Właściwości** wybranej grupy wybierz **Typ członkostwa** **użytkownika dynamicznego**, a następnie wybierz pozycję tak w oknie dialogowym wyjaśniającym zmiany członkostwa w grupie, aby kontynuować. 
+1. Na stronie **Właściwości** dla wybranej grupy wybierz **typ członkostwa** **użytkownika dynamicznego**, a następnie wybierz pozycję Tak w oknie dialogowym wyjaśniającym zmiany w członkostwie grupy, aby kontynuować. 
   
-   ![Wybierz typ członkostwa użytkownika dynamicznego](./media/groups-change-type/select-group-to-convert.png)
+   ![wybieranie typu członkostwa użytkownika dynamicznego](./media/groups-change-type/select-group-to-convert.png)
   
-2. Wybierz pozycję **Dodaj zapytanie dynamiczne**, a następnie podaj regułę.
+2. Wybierz **pozycję Dodaj kwerendę dynamiczną**, a następnie podaj regułę.
   
-   ![Wprowadź regułę dla grupy dynamicznej](./media/groups-change-type/enter-rule.png)
+   ![wprowadzanie reguły dla grupy dynamicznej](./media/groups-change-type/enter-rule.png)
   
-3. Po utworzeniu reguły wybierz pozycję **Dodaj zapytanie** w dolnej części strony.
-4. Wybierz pozycję **Zapisz** na stronie **Właściwości** dla grupy, aby zapisać zmiany. **Typ członkostwa** grupy zostanie natychmiast zaktualizowany na liście grup.
+3. Po utworzeniu reguły wybierz pozycję **Dodaj kwerendę** u dołu strony.
+4. Wybierz **pozycję Zapisz** na stronie **Właściwości** dla grupy, aby zapisać zmiany. **Typ członkostwa** grupy jest natychmiast aktualizowany na liście grup.
 
 > [!TIP]
-> Konwersja grup może zakończyć się niepowodzeniem, Jeśli wprowadzona reguła członkostwa była nieprawidłowa. W prawym górnym rogu portalu zostanie wyświetlone powiadomienie zawierające wyjaśnienie przyczyny niemożności zaakceptowania reguły przez system. Przeczytaj uważnie, aby zrozumieć, jak można dostosować regułę, aby była prawidłowa. Aby poznać przykłady składni reguł i pełną listę obsługiwanych właściwości, operatorów i wartości dla reguły członkostwa, zobacz [dynamiczne reguły członkostwa dla grup w Azure Active Directory](groups-dynamic-membership.md).
+> Konwersja grupy może zakończyć się niepowodzeniem, jeśli wprowadzona reguła członkostwa jest nieprawidłowa. Powiadomienie jest wyświetlane w prawym górnym rogu portalu, że zawiera wyjaśnienie, dlaczego reguła nie może być zaakceptowana przez system. Przeczytaj ją uważnie, aby zrozumieć, jak można dostosować regułę, aby była prawidłowa. Aby zapoznać się z przykładami składni reguły i pełną listą obsługiwanych właściwości, operatorów i wartości reguły członkostwa, zobacz [Dynamiczne reguły członkostwa dla grup w usłudze Azure Active Directory](groups-dynamic-membership.md).
 
-## <a name="change-membership-type-for-a-group-powershell"></a>Zmień typ członkostwa dla grupy (program PowerShell)
+## <a name="change-membership-type-for-a-group-powershell"></a>Zmienianie typu członkostwa dla grupy (Program PowerShell)
 
 > [!NOTE]
-> Aby zmienić właściwości grupy dynamicznej, należy użyć poleceń cmdlet z **wersji zapoznawczej** programu [Azure AD PowerShell w wersji 2](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0). Możesz zainstalować wersję zapoznawczą z [Galeria programu PowerShell](https://www.powershellgallery.com/packages/AzureADPreview).
+> Aby zmienić właściwości grupy dynamicznej, należy użyć poleceń cmdlet z **wersji zapoznawczej** [programu Azure AD PowerShell w wersji 2](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0). Podgląd można zainstalować w [galerii programu PowerShell](https://www.powershellgallery.com/packages/AzureADPreview).
 
-Oto przykład funkcji służących do przełączania zarządzania członkostwem w istniejącej grupie. W tym przykładzie należy zwrócić uwagę na prawidłowe manipulowanie właściwością GroupTypes i zachowanie wszelkich wartości, które nie są związane z członkostwem dynamicznym.
+Oto przykład funkcji, które przełączają zarządzanie członkostwem w istniejącej grupie. W tym przykładzie należy zadbać o poprawne manipulowanie właściwości GroupTypes i zachowanie wszystkich wartości, które nie są związane z członkostwem dynamicznym.
 
 ```powershell
 #The moniker for dynamic groups as used in the GroupTypes property of a group object
@@ -103,13 +103,13 @@ function ConvertStaticGroupToDynamic
     Set-AzureAdMsGroup -Id $groupId -GroupTypes $groupTypes.ToArray() -MembershipRuleProcessingState "On" -MembershipRule $dynamicMembershipRule
 }
 ```
-Aby uczynić grupę statyczną:
+Aby grupa była statyczna:
 
 ```powershell
 ConvertDynamicGroupToStatic "a58913b2-eee4-44f9-beb2-e381c375058f"
 ```
 
-Aby uczynić grupę dynamiczną:
+Aby dynamicznie grupy:
 
 ```powershell
 ConvertStaticGroupToDynamic "a58913b2-eee4-44f9-beb2-e381c375058f" "user.displayName -startsWith ""Peter"""
@@ -117,7 +117,7 @@ ConvertStaticGroupToDynamic "a58913b2-eee4-44f9-beb2-e381c375058f" "user.display
 
 ## <a name="next-steps"></a>Następne kroki
 
-Te artykuły zawierają dodatkowe informacje dotyczące grup w Azure Active Directory.
+Te artykuły zawierają dodatkowe informacje na temat grup w usłudze Azure Active Directory.
 
 * [Wyświetlanie istniejących grup](../fundamentals/active-directory-groups-view-azure-portal.md)
 * [Tworzenie nowej grupy i dodawanie członków](../fundamentals/active-directory-groups-create-azure-portal.md)

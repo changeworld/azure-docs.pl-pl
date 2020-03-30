@@ -15,19 +15,19 @@ ms.topic: conceptual
 ms.date: 03/28/2018
 ms.author: b-juche
 ms.openlocfilehash: 25cae58663f6fa7ef27995c10509eb33e49dd4c7
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "70012586"
 ---
 # <a name="create-a-netapp-account"></a>Tworzenie konta usługi NetApp
 Utworzenie konta usługi NetApp umożliwia skonfigurowanie puli pojemności, w której następnie można utworzyć wolumin. Nowe konto usługi NetApp możesz utworzyć w bloku usługi Azure NetApp Files.
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
-Użytkownik musi otrzymać wiadomość e-mail od zespołu Azure NetApp Files, upewniając się, że udzielono dostępu do usługi. [Aby uzyskać dostęp do usługi, zobacz Przesyłanie żądania waitlist](azure-netapp-files-register.md#waitlist).
+Musisz otrzymać wiadomość e-mail od zespołu usługi Azure NetApp Files potwierdzającą, że przyznano Ci dostęp do usługi. Zobacz [Prześlij żądanie listy oczekujących na dostęp do usługi](azure-netapp-files-register.md#waitlist).
 
-Ponadto należy zarejestrować swoją subskrypcję do korzystania z dostawcy zasobów NetApp. Zobacz [Rejestrowanie dostawcy zasobów NetApp](azure-netapp-files-register.md#resource-provider).
+Musisz również zarejestrować swoją subskrypcję do korzystania z dostawcy zasobów NetApp. Zobacz [Rejestrowanie dostawcy zasobów NetApp](azure-netapp-files-register.md#resource-provider).
 
 ## <a name="steps"></a>Kroki 
 
@@ -54,11 +54,11 @@ Ponadto należy zarejestrować swoją subskrypcję do korzystania z dostawcy zas
      ![Nowe konto usługi NetApp](../media/azure-netapp-files/azure-netapp-files-new-netapp-account.png)
 
 
-5. Kliknij pozycję **Utwórz**.     
+5. Kliknij przycisk **Utwórz**.     
    Utworzone konto usługi NetApp znajduje się teraz w bloku usługi Azure NetApp Files. 
 
 > [!NOTE] 
-> Jeśli nie udzielono dostępu do usługi Azure NetApp Files, podczas próby utworzenia pierwszego konta NetApp zostanie wyświetlony następujący komunikat o błędzie:  
+> Jeśli nie udzielono Ci dostępu do usługi Azure NetApp Files, podczas próby utworzenia pierwszego konta NetApp zostanie wyświetlony następujący błąd:  
 >
 > `{"code":"DeploymentFailed","message":"At least one resource deployment operation failed. Please list deployment operations for details. Please see https://aka.ms/arm-debug for usage details.","details":[{"code":"NotFound","message":"{\r\n \"error\": {\r\n \"code\": \"InvalidResourceType\",\r\n \"message\": \"The resource type could not be found in the namespace 'Microsoft.NetApp' for api version '2017-08-15'.\"\r\n }\r\n}"}]}`
 

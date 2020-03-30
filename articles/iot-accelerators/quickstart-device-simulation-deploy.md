@@ -10,19 +10,19 @@ ms.custom: mvc
 ms.date: 03/08/2019
 ms.author: troyhop
 ms.openlocfilehash: 68e0c3c89698bafbab65ca786231e0364900213a
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/09/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "65467877"
 ---
-# <a name="quickstart-deploy-and-run-an-iot-device-simulation-in-azure"></a>Szybki start: wdrażanie i uruchamianie symulacji urządzenia IoT na platformie Azure
+# <a name="quickstart-deploy-and-run-an-iot-device-simulation-in-azure"></a>Szybki start: wdrażanie i uruchamianie symulacji urządzenia usługi IoT na platformie Azure
 
 W tym przewodniku Szybki start przedstawiono sposób wdrażania symulacji urządzenia usługi Azure IoT w celu przetestowania rozwiązania usługi IoT. Po wdrożeniu akceleratora rozwiązań możesz uruchomić przykładową symulację, aby rozpocząć pracę.
 
 Do wykonania kroków tego przewodnika Szybki start jest potrzebna aktywna subskrypcja platformy Azure.
 
-Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Jeśli nie masz subskrypcji platformy Azure, utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) przed rozpoczęciem.
 
 ## <a name="deploy-device-simulation"></a>Wdrażanie symulacji urządzenia
 
@@ -90,7 +90,7 @@ Jeśli symulacja urządzenia nie jest już potrzebna, usuń ją na stronie [Apro
 
 ![Usuwanie rozwiązania](media/quickstart-device-simulation-deploy/deletesolution.png)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W tym przewodniku Szybki start wdrożono symulację urządzenia i uruchomiono przykładową symulację urządzenia usługi IoT.
 

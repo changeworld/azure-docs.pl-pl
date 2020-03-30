@@ -1,6 +1,6 @@
 ---
-title: Filtrowanie zdarzeń dla Azure Event Grid
-description: Opisuje sposób filtrowania zdarzeń podczas tworzenia subskrypcji Azure Event Grid.
+title: Filtrowanie zdarzeń dla usługi Azure Event Grid
+description: W tym artykule opisano sposób filtrowania zdarzeń podczas tworzenia subskrypcji usługi Azure Event Grid.
 services: event-grid
 author: spelluru
 ms.service: event-grid
@@ -8,25 +8,25 @@ ms.topic: conceptual
 ms.date: 01/21/2019
 ms.author: spelluru
 ms.openlocfilehash: f9fca0a9fefb5959747a4492139ae422a118db02
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "70390173"
 ---
-# <a name="understand-event-filtering-for-event-grid-subscriptions"></a>Opis filtrowania zdarzeń dla subskrypcji Event Grid
+# <a name="understand-event-filtering-for-event-grid-subscriptions"></a>Opis filtrowania zdarzeń dla subskrypcji usługi Event Grid
 
-W tym artykule opisano różne sposoby filtrowania zdarzeń wysyłanych do punktu końcowego. Podczas tworzenia subskrypcji zdarzeń dostępne są trzy opcje filtrowania:
+W tym artykule opisano różne sposoby filtrowania zdarzeń, które są wysyłane do punktu końcowego. Podczas tworzenia subskrypcji zdarzeń dostępne są trzy opcje filtrowania:
 
 * Typy zdarzeń
-* Podmiot rozpoczyna się od lub kończąc z
-* Zaawansowane pola i operatory
+* Temat zaczyna się od
+* Zaawansowane pola i operatorzy
 
-## <a name="event-type-filtering"></a>Filtrowanie typów zdarzeń
+## <a name="event-type-filtering"></a>Filtrowanie typu zdarzenia
 
-Domyślnie wszystkie [typy zdarzeń](event-schema.md) dla źródła zdarzeń są wysyłane do punktu końcowego. Możesz zdecydować się na wysłanie tylko niektórych typów zdarzeń do punktu końcowego. Można na przykład otrzymywać powiadomienia o aktualizacjach zasobów, ale nie powiadomienia o innych operacjach, takich jak usuwanie. W takim przypadku należy filtrować według `Microsoft.Resources.ResourceWriteSuccess` typu zdarzenia. Podaj tablicę z typami zdarzeń lub Określ `All` , aby pobrać wszystkie typy zdarzeń dla źródła zdarzeń.
+Domyślnie wszystkie [typy zdarzeń](event-schema.md) dla źródła zdarzeń są wysyłane do punktu końcowego. Można zdecydować się na wysłanie tylko niektóre typy zdarzeń do punktu końcowego. Na przykład można otrzymywać powiadomienia o aktualizacjach zasobów, ale nie są powiadamiane o innych operacjach, takich jak usunięcia. W takim przypadku filtruj według typu `Microsoft.Resources.ResourceWriteSuccess` zdarzenia. Podaj tablicę z typami zdarzeń lub określ, `All` aby uzyskać wszystkie typy zdarzeń dla źródła zdarzeń.
 
-Składnia JSON dla filtrowania według typu zdarzenia:
+Składnia JSON do filtrowania według typu zdarzenia jest:
 
 ```json
 "filter": {
@@ -37,13 +37,13 @@ Składnia JSON dla filtrowania według typu zdarzenia:
 }
 ```
 
-## <a name="subject-filtering"></a>Filtrowanie podmiotu
+## <a name="subject-filtering"></a>Filtrowanie obiektów
 
-Dla prostego filtrowania według tematu Określ wartość początkową lub końcową podmiotu. Można na przykład określić, że temat ma kończyć `.txt` się tylko zdarzenia związane z przekazywaniem pliku tekstowego do konta magazynu. Można też odfiltrować temat od `/blobServices/default/containers/testcontainer` , aby pobierać wszystkie zdarzenia dla tego kontenera, ale nie inne kontenery na koncie magazynu.
+W przypadku prostego filtrowania według tematu należy określić wartość początkową lub końcową obiektu. Na przykład można określić temat `.txt` kończy się tylko uzyskać zdarzenia związane z przekazywaniem pliku tekstowego do konta magazynu. Lub można filtrować temat `/blobServices/default/containers/testcontainer` zaczyna się, aby uzyskać wszystkie zdarzenia dla tego kontenera, ale nie inne kontenery na koncie magazynu.
 
-Podczas publikowania zdarzeń w niestandardowych tematach, należy utworzyć tematy dotyczące wydarzeń, które ułatwią subskrybentom dowiedzieć się, czy zainteresują się wydarzeniem. Subskrybenci używają właściwości podmiotu do filtrowania i kierowania zdarzeń. Rozważ dodanie ścieżki do miejsca wystąpienia zdarzenia, dzięki czemu Subskrybenci mogą filtrować według segmentów tej ścieżki. Ścieżka umożliwia subskrybentom Zawężanie lub szerokie filtrowanie zdarzeń. Jeśli podano trzy ścieżki segmentu jak `/A/B/C` w temacie, subskrybenci mogą odfiltrować według pierwszego segmentu `/A` , aby uzyskać obszerny zestaw zdarzeń. Subskrybenci uzyskują zdarzenia z podmiotami `/A/B/C` takimi jak lub `/A/D/E`. Inni Subskrybenci mogą odfiltrować, `/A/B` Aby uzyskać węższy zestaw zdarzeń.
+Publikując zdarzenia w tematach niestandardowych, utwórz tematy dla wydarzeń, które ułatwiają subskrybentom dowiedzieć się, czy są zainteresowani wydarzeniem. Subskrybenci używają właściwości podmiot do filtrowania i rozsyłania zdarzeń. Należy rozważyć dodanie ścieżki dla miejsca, w którym zdarzenie miało miejsce, dzięki czemu subskrybenci mogą filtrować według segmentów tej ścieżki. Ścieżka umożliwia subskrybentom wąsko lub szeroko filtrować zdarzenia. Jeśli podasz ścieżkę `/A/B/C` trzech segmentów, jak w temacie, subskrybenci mogą filtrować według pierwszego segmentu, `/A` aby uzyskać szeroki zestaw zdarzeń. Ci subskrybenci otrzymują `/A/B/C` `/A/D/E`wydarzenia z tematami takimi jak lub . Inni subskrybenci mogą filtrować, `/A/B` aby uzyskać węższy zestaw zdarzeń.
 
-Składnia JSON dla filtrowania według tematu to:
+Składnia JSON do filtrowania według tematu jest:
 
 ```json
 "filter": {
@@ -55,13 +55,13 @@ Składnia JSON dla filtrowania według tematu to:
 
 ## <a name="advanced-filtering"></a>Filtrowanie zaawansowane
 
-Aby filtrować według wartości w polach danych i określić operator porównania, użyj opcji filtrowania zaawansowanego. W zaawansowanym filtrowaniu należy określić:
+Aby filtrować według wartości w polach danych i określać operator porównania, użyj opcji filtrowania zaawansowanego. W przypadku filtrowania zaawansowanego należy określić:
 
-* Typ operatora — typ porównania.
-* klucz — pole w danych zdarzenia, które są używane do filtrowania. Może to być liczba, wartość logiczna lub ciąg.
-* wartość lub wartości — wartość lub wartości, które mają zostać porównane z kluczem.
+* typ operatora — typ porównania.
+* - pole w danych zdarzenia, których używasz do filtrowania. Może to być liczba, wartość logiczna lub ciąg.
+* wartość lub wartości — wartość lub wartości do porównania z kluczem.
 
-Jeśli określisz jeden filtr z wieloma wartościami, wykonywana jest operacja **lub** , więc wartość pola klucza musi być jedną z tych wartości. Oto przykład:
+Jeśli określisz pojedynczy filtr z wieloma wartościami, wykonywana jest operacja **OR,** więc wartość pola klucza musi być jedną z tych wartości. Oto przykład:
 
 ```json
 "advancedFilters": [
@@ -76,7 +76,7 @@ Jeśli określisz jeden filtr z wieloma wartościami, wykonywana jest operacja *
 ]
 ```
 
-Jeśli określisz wiele różnych filtrów, operacja **i** zostanie wykonana, więc należy spełnić każdy warunek filtru. Oto przykład: 
+Jeśli określisz wiele różnych filtrów, wykonywana jest operacja **AND,** więc każdy warunek filtru musi być spełniony. Oto przykład: 
 
 ```json
 "advancedFilters": [
@@ -99,68 +99,68 @@ Jeśli określisz wiele różnych filtrów, operacja **i** zostanie wykonana, wi
 
 ### <a name="operator"></a>Operator
 
-Dostępne operatory dla liczb to:
+Dostępne operatory dla numerów to:
 
-* NumberGreaterThan
-* NumberGreaterThanOrEquals
-* NumberLessThan
-* NumberLessThanOrEquals
-* Numer w
-* NumberNotIn
+* LiczbaGreaterThan
+* LiczbaGreaterThanOrEquals
+* Liczba Bezduszny
+* NumberLessThanOrEquals (Liczba bezliory)
+* LiczbaIn
+* LiczbaNotIn
 
-Operatorem dostępnym dla wartości logicznych jest: BoolEquals
+Dostępny operator dla booleans jest: BoolEquals
 
-Dostępne operatory dla ciągów są następujące:
+Dostępne operatory dla ciągów to:
 
-* StringContains
+* CiągiZawiera
 * StringBeginsWith
 * StringEndsWith
-* StringIn
-* StringNotIn
+* StringIn (Ciągin)
+* StringNotIn (Niemy w ciągu ręczną
 
-Wszystkie porównania ciągów mają wielkość liter-insensitve.
+Wszystkie porównania ciągów są bez uwzględniania wielkości liter.
 
 ### <a name="key"></a>Klucz
 
-Dla zdarzeń w schemacie Event Grid należy użyć następujących wartości klucza:
+W przypadku zdarzeń w schemacie siatki zdarzeń użyj następujących wartości dla klucza:
 
-* id
+* ID
 * Temat
-* Subject
-* EventType
-* Wersja
-* Dane zdarzenia (np. Data. Klucz1)
+* Podmiot
+* Typ zdarzenia
+* DataVersion (Wersja danych)
+* Dane zdarzeń (takie jak Data.key1)
 
-Dla zdarzeń w schemacie zdarzenia w chmurze Użyj następujących wartości klucza:
+W przypadku zdarzeń w schemacie zdarzeń w chmurze użyj następujących wartości dla klucza:
 
-* Identyfikator zdarzenia
-* Source
-* EventType
-* EventTypeVersion
-* Dane zdarzenia (np. Data. Klucz1)
+* Eventid
+* Element źródłowy
+* Typ zdarzenia
+* EventTypeVersion (Wersja eventowa)
+* Dane zdarzeń (takie jak Data.key1)
 
-W przypadku niestandardowego schematu wprowadzania Użyj pól danych zdarzenia (np. Data. Klucz1).
+W przypadku niestandardowego schematu wejściowego należy użyć pól danych zdarzeń (takich jak Data.key1).
 
 ### <a name="values"></a>Wartości
 
-Mogą to być następujące wartości:
+Wartości mogą być następujące:
 
 * numer
 * ciąg
-* boolean
-* array
+* wartość logiczna
+* tablica
 
 ### <a name="limitations"></a>Ograniczenia
 
-Filtrowanie zaawansowane ma następujące ograniczenia:
+Zaawansowane filtrowanie ma następujące ograniczenia:
 
-* Pięć zaawansowanych filtrów na subskrypcję usługi Event Grid
+* Pięć zaawansowanych filtrów na subskrypcję sieci zdarzeń
 * 512 znaków na wartość ciągu
-* Pięć wartości dla operatora **in** i **Not in**
+* Pięć wartości dla **operatorów, a** **nie dla** operatorów
 
 Ten sam klucz może być używany w więcej niż jednym filtrze.
 
 ## <a name="next-steps"></a>Następne kroki
 
-* Aby dowiedzieć się więcej o filtrowaniu zdarzeń przy użyciu programu PowerShell i interfejsu wiersza polecenia platformy Azure, zobacz [filtrowanie zdarzeń dla Event Grid](how-to-filter-events.md).
-* Aby szybko rozpocząć pracę, przy użyciu usługi Event Grid, zobacz [Utwórz i wyznaczać trasy zdarzeń niestandardowych za pomocą usługi Azure Event Grid](custom-event-quickstart.md).
+* Aby dowiedzieć się więcej o filtrowaniu zdarzeń za pomocą programów PowerShell i interfejsu wiersza polecenia platformy Azure, zobacz [Filtrowanie zdarzeń dla siatki zdarzeń](how-to-filter-events.md).
+* Aby szybko rozpocząć korzystanie z usługi Event Grid, zobacz [Tworzenie i rozsyłanie zdarzeń niestandardowych za pomocą usługi Azure Event Grid](custom-event-quickstart.md).

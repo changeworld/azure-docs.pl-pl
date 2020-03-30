@@ -1,6 +1,6 @@
 ---
-title: Linux Support pulpitu wirtualnego systemu Windows — Azure
-description: Krótki przegląd obsługi systemu Linux dla pulpitu wirtualnego Windows.
+title: Obsługa systemu Windows Virtual Desktop Linux — platforma Azure
+description: Krótki przegląd linux wsparcie dla Windows Virtual Desktop.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -9,60 +9,60 @@ ms.date: 01/23/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 967fd1fa182b7c8e581fd74cc287c5a6ba0e4038
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/11/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79127827"
 ---
 # <a name="linux-support"></a>Obsługa systemu Linux
 
-Możesz użyć zestawu Linux SDK dla pulpitu wirtualnego systemu Windows, aby skompilować autonomiczny Klient pulpitu wirtualnego systemu Windows. Można go również użyć do włączenia obsługi pulpitu wirtualnego systemu Windows w aplikacji klienckiej. Ten krótki przewodnik wyjaśnia, co to jest zestaw Linux SDK i jak zacząć z niego korzystać.
+Za pomocą pakietu Linux SDK dla pulpitu wirtualnego systemu Windows można utworzyć samodzielny klient pulpitu wirtualnego systemu Windows. Można go również użyć, aby włączyć obsługę pulpitu wirtualnego systemu Windows w aplikacji klienckiej. Ten krótki przewodnik wyjaśni, czym jest SDK Linuksa i jak zacząć go używać.
 
-## <a name="what-is-the-linux-sdk"></a>Co to jest zestaw SDK systemu Linux?
+## <a name="what-is-the-linux-sdk"></a>Co to jest SDK Systemu Linux?
 
-Za pomocą interfejsów API zestawu SDK można pobierać źródła zasobów, łączyć się z sesjami pulpitu lub aplikacji zdalnych oraz korzystać z wielu przekierowań, które obsługują Klienci pierwszej firmy.
+Interfejsy API sdk można używać do pobierania źródeł danych źródłowych zasobów, łączenia się z sesjami aplikacji pulpitu lub zdalnego i używania wielu przekierowań obsługiwanych przez naszych klientów zewnętrznych.
 
 > [!NOTE]
-> Zestaw SDK jest obecnie w trakcie opracowywania. Zaktualizujemy ten dokument przy użyciu instrukcji, aby uzyskać dostęp do zestawu SDK, gdy jest on dostępny.
+> SDK jest obecnie w fazie rozwoju. Zaktualizujemy ten dokument z instrukcjami dostępu do sdk, gdy jest on dostępny.
 
-### <a name="supported-linux-distributions"></a>Obsługiwane dystrybucje systemu Linux
+### <a name="supported-linux-distributions"></a>Obsługiwane dystrybucje linuksa
 
-Zestaw SDK jest zgodny z większością systemów operacyjnych opartych na systemie Ubuntu 18,04 lub nowszym. Jeśli korzystasz z innej dystrybucji systemu Linux, możemy współpracować z nim, aby dowiedzieć się, jak najlepiej obsługiwać Twoje potrzeby.
+SDK jest kompatybilny z większością systemów operacyjnych opartych na Ubuntu 18.04 lub nowszym. Jeśli masz inną dystrybucję Linuksa, możemy współpracować z Tobą, aby dowiedzieć się, jak najlepiej wspierać Twoje potrzeby.
 
 ### <a name="feature-support"></a>Obsługa funkcji
 
-Zestaw SDK obsługuje wiele połączeń do sesji pulpitu i aplikacji zdalnych. Obsługiwane są następujące przekierowania:
+Zestaw SDK obsługuje wiele połączeń z sesjami aplikacji stacjonarnych i zdalnych. Obsługiwane są następujące przekierowania:
 
 | Przekierowania       | Obsługiwane |
 | :---------------- | :-------: |
-| Klawiatury          | &#10004;  |
-| Wskaźnik             | &#10004;  |
+| Klawiatura          | &#10004;  |
+| Mysz             | &#10004;  |
 | Dźwięk w          | &#10004;  |
 | Wyjście audio         | &#10004;  |
 | Schowek (tekst)  | &#10004;  |
-| Schowek (obraz) | &#10004;  |
+| Schowek (zdjęcie) | &#10004;  |
 | Schowek (plik)  | &#10004;  |
-| Kart         | &#10004;  |
+| Smartcard         | &#10004;  |
 | Dysk/folder      | &#10004;  |
 
 Zestaw SDK obsługuje również wiele konfiguracji wyświetlania monitorów, o ile monitory wybrane dla sesji są ciągłe.
 
-Ten dokument zostanie zaktualizowany w miarę dodawania obsługi nowych funkcji i przekierowań. Jeśli chcesz zasugerować nowe funkcje i inne ulepszenia, odwiedź naszą [stronę usługi UserVoice](https://go.microsoft.com/fwlink/?linkid=2116523).
+Zaktualizujemy ten dokument, gdy dodamy obsługę nowych funkcji i przekierowań. Jeśli chcesz zaproponować nowe funkcje i inne ulepszenia, odwiedź naszą [stronę UserVoice](https://go.microsoft.com/fwlink/?linkid=2116523).
 
-## <a name="get-started-with-the-linux-sdk"></a>Wprowadzenie do zestawu SDK dla systemu Linux
+## <a name="get-started-with-the-linux-sdk"></a>Wprowadzenie do sdk linuksa
 
-Przed rozpoczęciem opracowywania klienta systemu Linux dla pulpitu wirtualnego z systemem Windows należy wykonać następujące czynności:
+Przed opracowaniem klienta systemu Linux dla pulpitu wirtualnego systemu Windows należy wykonać następujące czynności:
 
-1. Kompiluj i wdrażaj środowisko pulpitu wirtualnego systemu Windows na potrzeby testowania lub użycia produkcyjnego.
-2. Przetestuj dostępnych klientów pierwszej firmy, aby zapoznać się z interfejsem użytkownika pulpitu wirtualnego systemu Windows.
+1. Tworzenie i wdrażanie środowiska pulpitu wirtualnego systemu Windows do testowania lub użytku produkcyjnego.
+2. Przetestuj dostępnych klientów innych firm, aby zapoznać się z środowiskiem użytkownika pulpitu wirtualnego systemu Windows.
 
 ## <a name="next-steps"></a>Następne kroki
 
 Zapoznaj się z naszą dokumentacją dla następujących klientów:
 
-- [Klient klasyczny systemu Windows](connect-windows-7-and-10.md)
+- [Klient pulpitu systemu Windows](connect-windows-7-and-10.md)
 - [Klient sieci Web](connect-web.md)
-- [Klient systemu Android](connect-android.md)
-- [Klient macOS](connect-macos.md)
+- [Klient Androida](connect-android.md)
+- [Klient systemu macOS](connect-macos.md)
 - [Klient systemu iOS](connect-ios.md)

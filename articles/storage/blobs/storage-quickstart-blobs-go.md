@@ -8,13 +8,13 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.openlocfilehash: f4016349e354c84e9e096ac6d5072a4870e9ef29
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/01/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "68726456"
 ---
-# <a name="quickstart-upload-download-and-list-blobs-using-go"></a>Szybki start: przekazywanie i pobieranie obiektów blob oraz wyświetlanie ich listy za pomocą języka Go
+# <a name="quickstart-upload-download-and-list-blobs-using-go"></a>Szybki start: przekazywanie, pobieranie i wyświetlanie listy obiektów blob za pomocą języka Go
 
 W tym przewodniku Szybki start dowiesz się, w jaki sposób za pomocą języka programowania Go przekazywać, pobierać i wyświetlać listę blokowych obiektów blob w kontenerze usługi Azure Blob Storage. 
 
@@ -50,14 +50,14 @@ To polecenie klonuje repozytorium do lokalnego folderu git. Aby otworzyć przyk�
 ## <a name="configure-your-storage-connection-string"></a>Konfigurowanie parametrów połączenia magazynu
 To rozwiązanie wymaga, aby nazwa i klucz konta magazynu były bezpiecznie przechowywane w zmiennych środowiskowych lokalnych względem komputera, na którym działa aplikacja przykładowa. Postępuj zgodnie z jednym z poniższych przykładów w zależności od używanego systemu operacyjnego, aby utworzyć zmienne środowiskowe.
 
-# <a name="linuxtablinux"></a>[Linux](#tab/linux)
+# <a name="linux"></a>[Linux](#tab/linux)
 
 ```
 export AZURE_STORAGE_ACCOUNT="<youraccountname>"
 export AZURE_STORAGE_ACCESS_KEY="<youraccountkey>"
 ```
 
-# <a name="windowstabwindows"></a>[Windows](#tab/windows)
+# <a name="windows"></a>[Windows](#tab/windows)
 
 ```
 setx AZURE_STORAGE_ACCOUNT "<youraccountname>"
@@ -98,7 +98,7 @@ W kolejnej części omówimy przykładowy kod, aby wyjaśnić, w jaki sposób dz
 ### <a name="create-containerurl-and-bloburl-objects"></a>Tworzenie obiektów ContainerURL i BlobURL
 Najpierw należy utworzyć odwołania do obiektów ContainerURL i BlobURL używane w celu uzyskania dostępu do usługi Blob Storage i zarządzania nią. Te obiekty oferują interfejsy API niskiego poziomu, takie jak Create, Upload i Download, na potrzeby wywoływania interfejsów API REST.
 
-* Użyj struktury [**SharedKeyCredential**](https://godoc.org/github.com/Azure/azure-storage-blob-go/azblob#SharedKeyCredential) do przechowywania poświadczeń. 
+* Użyj [**sharedKeyCredential**](https://godoc.org/github.com/Azure/azure-storage-blob-go/azblob#SharedKeyCredential) struktury do przechowywania poświadczeń. 
 
 * Utwórz [**potok**](https://godoc.org/github.com/Azure/azure-storage-blob-go/azblob#NewPipeline) przy użyciu poświadczeń i opcji. Potok określa zasady ponawiania, rejestrowanie, deserializacji ładunków odpowiedzi HTTP i inne elementy.  
 
@@ -110,7 +110,7 @@ Po utworzeniu obiektu ContainerURL możesz utworzyć wystąpienie obiektu **Blob
 > [!IMPORTANT]
 > Nazwy kontenerów muszą być zapisane małymi literami. Aby uzyskać dodatkowe informacje o regułach nazewnictwa kontenerów i obiektów blob, zobacz [Nazewnictwo i odwoływanie się do kontenerów, obiektów blob i metadanych](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata).
 
-W tej sekcji utworzysz nowy kontener. Kontener nosi nazwę **quickstartblobs-[losowy ciąg]** . 
+W tej sekcji utworzysz nowy kontener. Kontener nosi nazwę **quickstartblobs-[losowy ciąg]**. 
 
 ```go 
 // From the Azure portal, get your storage account name and key and set environment variables.
@@ -147,11 +147,11 @@ handleErrors(err)
 
 Usługa Blob Storage obsługuje blokowe, uzupełnialne i stronicowe obiekty blob. Blokowe obiekty blob są używane najczęściej i dlatego zostały użyte w tym przewodniku Szybki start.  
 
-Aby przekazać plik do obiektu blob, otwórz plik przy użyciu metody **os.Open**. Następnie możesz przekazać plik do określonej ścieżki przy użyciu jednego z interfejsów API REST: Upload (PutBlob), StageBlock/CommitBlockList (PutBlock/PutBlockList). 
+Aby przekazać plik do obiektu blob, otwórz plik przy użyciu metody **os.Open**. Następnie można przekazać ten plik do określonej ścieżki przy użyciu jednego z interfejsów API REST: Upload (PutBlob), StageBlock/CommitBlockList (PutBlock/PutBlockList). 
 
 Zestaw SDK udostępnia również [interfejsy API wysokiego poziomu](https://github.com/Azure/azure-storage-blob-go/blob/master/azblob/highlevel.go), które bazują na interfejsach API REST niskiego poziomu. Na przykład funkcja ***UploadFileToBlockBlob*** używa operacji StageBlock (PutBlock) w celu współbieżnego przekazania pliku we fragmentach, aby zoptymalizować przepływność. Jeśli plik ma rozmiar mniejszy niż 256 MB, zamiast tej operacji jest używana metoda Upload (PutBlob), która kończy transfer w ramach jednej transakcji.
 
-Następujący kod przykładowy przekazuje plik do kontenera o nazwie **quickstartblobs-[losowy ciąg]** .
+Następujący kod przykładowy przekazuje plik do kontenera o nazwie **quickstartblobs-[losowy ciąg]**.
 
 ```go
 // Create a file to test the upload and download.
@@ -207,7 +207,7 @@ for marker := (azblob.Marker{}); marker.NotDone(); {
 
 ### <a name="download-the-blob"></a>Pobieranie obiektu blob
 
-Pobierz obiekty blob za pomocą funkcji niskiego poziomu **Download** z użyciem obiektu BlobURL. Spowoduje to zwrócenie struktury **DownloadResponse**. Uruchom funkcję **Body** w strukturze, aby uzyskać strumień **RetryReader** związany z odczytem danych. Jeśli podczas czytania wystąpi błąd połączenia, spowoduje to dodatkowe żądanie ponownego nawiązania połączenia i kontynuowanie odczytywania. Określenie opcji RetryReaderOption z elementem MaxRetryRequests ustawionym na 0 (ustawienie domyślne) zwraca treść oryginalnej odpowiedzi, a kolejne próby nie są wykonywane. Można również użyć interfejsów API wysokiego poziomu **DownloadBlobToBuffer** lub **DownloadBlobToFile** w celu uproszczenia kodu.
+Pobierz obiekty blob za pomocą funkcji niskiego poziomu **Download** z użyciem obiektu BlobURL. Spowoduje to zwrócenie struktury **DownloadResponse**. Uruchom funkcję **Body** w strukturze, aby uzyskać strumień **RetryReader** związany z odczytem danych. Jeśli połączenie nie powiedzie się podczas odczytu, będzie dodatkowe żądania, aby ponownie ustanowić połączenie i kontynuować czytanie. Określenie opcji RetryReaderOption z elementem MaxRetryRequests ustawionym na 0 (ustawienie domyślne) zwraca treść oryginalnej odpowiedzi, a kolejne próby nie są wykonywane. Można również użyć interfejsów API wysokiego poziomu **DownloadBlobToBuffer** lub **DownloadBlobToFile** w celu uproszczenia kodu.
 
 Poniższy kod pobiera obiekt blob przy użyciu funkcji **Download**. Zawartość obiektu blob jest zapisywana w buforze i wyświetlana w konsoli.
 
@@ -244,6 +244,6 @@ Zobacz dodatkowe zasoby używane podczas tworzenia aplikacji języka Go przy uż
 - W witrynie GitHub wyświetl [kod źródłowy biblioteki klienta Go](https://github.com/Azure/azure-storage-blob-go) dla usługi Azure Storage i zainstaluj go.
 - Zapoznaj się z [przykładami magazynu Blob Storage](https://godoc.org/github.com/Azure/azure-storage-blob-go/azblob#pkg-examples) napisanymi przy użyciu biblioteki klienta Go.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
  
 W tym przewodniku Szybki start przedstawiono metodę transferowania plików między dyskiem lokalnym i usługą Azure Blob Storage przy użyciu języka Go. Aby uzyskać więcej informacji o zestawie SDK usługi Azure Storage Blob, przejrzyj [kod źródłowy](https://github.com/Azure/azure-storage-blob-go/) i [dokumentację interfejsu API](https://godoc.org/github.com/Azure/azure-storage-blob-go/azblob).

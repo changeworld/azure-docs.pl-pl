@@ -1,5 +1,5 @@
 ---
-title: Żądaj oświadczeń niestandardowych (MSAL iOS/macOS) | Azure
+title: Żądanie oświadczeń niestandardowych (MSAL iOS/macOS) | Azure
 titleSuffix: Microsoft identity platform
 description: Dowiedz się, jak żądać oświadczeń niestandardowych.
 services: active-directory
@@ -18,27 +18,27 @@ ms.author: marsma
 ms.reviewer: ''
 ms.custom: aaddev
 ms.openlocfilehash: 44158296faaf238fd72f2360149d3d93f68c5ba0
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/08/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77085609"
 ---
-# <a name="how-to-request-custom-claims-using-msal-for-ios-and-macos"></a>Instrukcje: żądania oświadczeń niestandardowych przy użyciu MSAL dla systemów iOS i macOS
+# <a name="how-to-request-custom-claims-using-msal-for-ios-and-macos"></a>Jak: Żądanie oświadczeń niestandardowych przy użyciu usługi MSAL dla systemu iOS i macOS
 
-Program OpenID Connect Connect umożliwia opcjonalne żądanie powrotu pojedynczych oświadczeń z punktu końcowego UserInfo i/lub identyfikatora. Żądanie oświadczeń jest reprezentowane jako obiekt JSON, który zawiera listę żądanych oświadczeń. Aby uzyskać więcej informacji, zobacz [OpenID Connect Connect Core 1,0](https://openid.net/specs/openid-connect-core-1_0-final.html#ClaimsParameter) .
+OpenID Connect umożliwia opcjonalnie żądanie zwrotu poszczególnych oświadczeń z punktu końcowego UserInfo i/lub tokenu identyfikatora. Żądanie oświadczeń jest reprezentowane jako obiekt JSON, który zawiera listę żądanych oświadczeń. Zobacz [OpenID Connect Core 1.0,](https://openid.net/specs/openid-connect-core-1_0-final.html#ClaimsParameter) aby uzyskać więcej informacji.
 
-Biblioteka Microsoft Authentication Library (MSAL) dla systemów iOS i macOS umożliwia żądanie określonych oświadczeń w scenariuszach pozyskiwania tokenów interaktywnych i dyskretnych. Robi to za pomocą `claimsRequest` parametru.
+Biblioteka uwierzytelniania firmy Microsoft (MSAL) dla systemu iOS i macOS umożliwia żądanie określonych oświadczeń zarówno w scenariuszach nabycia tokenów interaktywnych, jak i cichych. Robi to za `claimsRequest` pośrednictwem parametru.
 
-Istnieje wiele scenariuszy, w których jest to wymaganie. Na przykład:
+Istnieje wiele scenariuszy, w których jest to potrzebne. Przykład:
 
 - Żądanie oświadczeń poza standardowym zestawem dla aplikacji.
-- Żądanie określonych kombinacji standardowych oświadczeń, których nie można określić za pomocą zakresów dla aplikacji. Na przykład, jeśli token dostępu zostanie odrzucony z powodu braku oświadczeń, aplikacja może zażądać brakujących oświadczeń przy użyciu MSAL.
+- Żądanie określonych kombinacji standardowych oświadczeń, których nie można określić przy użyciu zakresów dla aplikacji. Na przykład jeśli token dostępu zostanie odrzucony z powodu brakujących oświadczeń, aplikacja może zażądać brakujących oświadczeń przy użyciu usługi MSAL.
 
 > [!NOTE]
-> MSAL pomija pamięć podręczną tokenów dostępu za każdym razem, gdy żądanie oświadczeń jest określone. Należy podać parametr `claimsRequest` tylko wtedy, gdy potrzebne są dodatkowe oświadczenia (w przeciwieństwie do tego samego parametru `claimsRequest` w każdym wywołaniu interfejsu API MSAL).
+> MSAL pomija pamięć podręczną tokenu dostępu, gdy zostanie określone żądanie oświadczeń. Ważne jest, aby `claimsRequest` podać tylko parametr, gdy potrzebne są dodatkowe `claimsRequest` oświadczenia (w przeciwieństwie do zawsze zapewniając ten sam parametr w każdym wywołaniu interfejsu API MSAL).
 
-`claimsRequest` można określić w `MSALSilentTokenParameters` i `MSALInteractiveTokenParameters`:
+`claimsRequest`można określić `MSALSilentTokenParameters` `MSALInteractiveTokenParameters`w i:
 
 ```objc
 /*!
@@ -54,16 +54,16 @@ Istnieje wiele scenariuszy, w których jest to wymaganie. Na przykład:
 
 @end
 ```
-`MSALClaimsRequest` można utworzyć na podstawie reprezentacji NSString żądania oświadczeń JSON. 
+`MSALClaimsRequest`można skonstruować z NSString reprezentacji żądań oświadczeń JSON. 
 
-Cel-C:
+Cel C:
 
 ```objc
 NSError *claimsError = nil;
 MSALClaimsRequest *request = [[MSALClaimsRequest alloc] initWithJsonString:@"{\"id_token\":{\"auth_time\":{\"essential\":true},\"acr\":{\"values\":[\"urn:mace:incommon:iap:silver\"]}}}" error:&claimsError];
 ```
 
-Adres
+Swift:
 
 ```swift
 var requestError: NSError? = nil
@@ -73,9 +73,9 @@ let request = MSALClaimsRequest(jsonString: "{\"id_token\":{\"auth_time\":{\"ess
 
 
 
-Można ją także zmodyfikować, żądając dodatkowych określonych oświadczeń:
+Można go również zmodyfikować, żądając dodatkowych konkretnych oświadczeń:
 
-Cel-C:
+Cel C:
 
 ```objc
 MSALIndividualClaimRequest *individualClaimRequest = [[MSALIndividualClaimRequest alloc] initWithName:@"custom_claim"];
@@ -85,7 +85,7 @@ individualClaimRequest.additionalInfo.value = @"myvalue";
 [request requestClaim:individualClaimRequest forTarget:MSALClaimsRequestTargetIdToken error:&claimsError];
 ```
 
-Adres
+Swift:
 
 ```swift
 let individualClaimRequest = MSALIndividualClaimRequest(name: "custom-claim")
@@ -103,9 +103,9 @@ do {
 
 
 
-`MSALClaimsRequest` powinna być następnie ustawiona w parametrach tokenów i udostępniana jednemu z interfejsów API pozyskiwania tokenów MSAL:
+`MSALClaimsRequest`następnie należy ustawić w parametrach tokenu i dostarczyć do jednego z interfejsów API pozyskiwania tokenów MSAL:
 
-Cel-C:
+Cel C:
 
 ```objc
 MSALPublicClientApplication *application = ...;
@@ -118,7 +118,7 @@ parameters.claimsRequest = request;
 [application acquireTokenWithParameters:parameters completionBlock:completionBlock];
 ```
 
-Adres
+Swift:
 
 ```swift
 let application: MSALPublicClientApplication!
@@ -135,4 +135,4 @@ application.acquireToken(with: parameters) { (result: MSALResult?, error: Error?
 
 ## <a name="next-steps"></a>Następne kroki
 
-Dowiedz się więcej na temat [przepływów uwierzytelniania i scenariuszy aplikacji](authentication-flows-app-scenarios.md)
+Dowiedz się więcej o [przepływach uwierzytelniania i scenariuszach aplikacji](authentication-flows-app-scenarios.md)

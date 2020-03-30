@@ -1,6 +1,6 @@
 ---
-title: Zarządzanie danymi historycznymi w tabelach danych czasowych
-description: Dowiedz się, jak używać zasad przechowywania danych czasowych, aby przechowywać dane historyczne w formancie.
+title: Zarządzanie danymi historycznymi w tabelach czasowych
+description: Dowiedz się, jak używać zasad przechowywania czasowego, aby zachować kontrolę nad danymi historycznymi.
 services: sql-database
 ms.service: sql-database
 ms.subservice: development
@@ -12,36 +12,36 @@ ms.author: bonova
 ms.reviewer: carlrab
 ms.date: 09/25/2018
 ms.openlocfilehash: 3c2460c6f5e0905f45106148ecc3e8a949cf221f
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73820682"
 ---
-# <a name="manage-historical-data-in-temporal-tables-with-retention-policy"></a>Zarządzanie danymi historycznymi w tabelach danych czasowych przy użyciu zasad przechowywania
+# <a name="manage-historical-data-in-temporal-tables-with-retention-policy"></a>Zarządzanie danymi historycznymi w tabelach czasowych za pomocą zasad przechowywania
 
-Tabele czasowe mogą zwiększyć rozmiar bazy danych więcej niż zwykłe tabele, zwłaszcza w przypadku przechowywania danych historycznych przez dłuższy czas. W związku z tym zasady przechowywania danych historycznych są ważnym aspektem planowania i zarządzania cyklem życia każdej tabeli czasowej. Tabele danych czasowych w Azure SQL Database są dostępne za pomocą łatwego w użyciu mechanizmu przechowywania, który pomaga wykonać to zadanie.
+Tabele czasowe mogą zwiększać rozmiar bazy danych bardziej niż zwykłe tabele, zwłaszcza jeśli dane historyczne są przechowywane przez dłuższy czas. W związku z tym zasady przechowywania danych historycznych jest ważnym aspektem planowania i zarządzania cyklem życia każdej tabeli czasowej. Tabele czasowe w usłudze Azure SQL Database są wyposażone w łatwy w użyciu mechanizm przechowywania, który pomaga wykonać to zadanie.
 
-Przechowywanie historii danych czasowych można skonfigurować na poziomie poszczególnych tabel, co pozwala użytkownikom na tworzenie elastycznych zasad przedawnienia. Stosowanie przechowywania danych czasowych jest proste: wymaga ustawienia tylko jednego parametru podczas tworzenia tabeli lub zmiany schematu.
+Przechowywanie historii czasowej można skonfigurować na poziomie poszczególnych tabel, co pozwala użytkownikom na tworzenie elastycznych zasad starzenia się. Stosowanie przechowywania czasowego jest proste: wymaga tylko jednego parametru, który ma być ustawiony podczas tworzenia tabeli lub zmiany schematu.
 
-Po zdefiniowaniu zasad przechowywania Azure SQL Database rozpoczyna regularne sprawdzanie, jeśli istnieją wiersze historyczne, które kwalifikują się do automatycznego czyszczenia danych. Identyfikacja pasujących wierszy i ich usunięcie z tabeli historii odbywa się w sposób przezroczysty, w zadaniu w tle, które jest zaplanowane i uruchamiane przez system. Warunki wieku dla wierszy tabeli historii są sprawdzane na podstawie kolumny reprezentującej koniec SYSTEM_TIMEego okresu. Jeśli na przykład okres przechowywania jest ustawiony na sześć miesięcy, wiersze tabeli kwalifikujące się do oczyszczenia spełniają następujący warunek:
+Po zdefiniowaniu zasad przechowywania usługa Azure SQL Database rozpoczyna regularne sprawdzanie, czy istnieją historyczne wiersze, które kwalifikują się do automatycznego oczyszczania danych. Identyfikacja pasujących wierszy i ich usunięcie z tabeli historii odbywa się w sposób przezroczysty w zadaniu w tle, które jest zaplanowane i uruchamiane przez system. Warunek wieku dla wierszy tabeli historii jest sprawdzany na podstawie kolumny reprezentującej koniec okresu SYSTEM_TIME. Jeśli na przykład okres przechowywania jest ustawiony na sześć miesięcy, wiersze tabeli kwalifikujące się do czyszczenia spełniają następujący warunek:
 
 ```
 ValidTo < DATEADD (MONTH, -6, SYSUTCDATETIME())
 ```
 
-W poprzednim przykładzie przyjęto, że kolumna **ValidTo** odnosi się do końca okresu SYSTEM_TIME.
+W poprzednim przykładzie założyliśmy, że **kolumna ValidTo** odpowiada zakończeniu okresu SYSTEM_TIME.
 
 ## <a name="how-to-configure-retention-policy"></a>Jak skonfigurować zasady przechowywania
 
-Przed skonfigurowaniem zasad przechowywania dla tabeli danych czasowych, należy najpierw sprawdzić, czy czas przechowywania historycznego jest włączony *na poziomie bazy*.
+Przed skonfigurowaniem zasad przechowywania dla tabeli czasowej należy najpierw sprawdzić, czy *czasowa*retencja historyczna jest włączona na poziomie bazy danych .
 
 ```
 SELECT is_temporal_history_retention_enabled, name
 FROM sys.databases
 ```
 
-Flaga bazy danych **is_temporal_history_retention_enabled** jest domyślnie ustawiona na wartość włączone, ale użytkownicy mogą ją zmienić przy użyciu instrukcji ALTER DATABASE. Jest on również automatycznie ustawiany jako wyłączony po operacji [przywracania do punktu w czasie](sql-database-recovery-using-backups.md) . Aby włączyć oczyszczanie historii czasowej przechowywania dla bazy danych, wykonaj następującą instrukcję:
+Flaga bazy danych **is_temporal_history_retention_enabled** jest domyślnie ustawiona na ON, ale użytkownicy mogą ją zmienić za pomocą instrukcji ALTER DATABASE. Jest również automatycznie ustawiany na OFF po [operacji przywracania punktu w czasie.](sql-database-recovery-using-backups.md) Aby włączyć oczyszczanie przechowywania historii czasowej dla bazy danych, wykonaj następującą instrukcję:
 
 ```sql
 ALTER DATABASE <myDB>
@@ -49,7 +49,7 @@ SET TEMPORAL_HISTORY_RETENTION  ON
 ```
 
 > [!IMPORTANT]
-> Można skonfigurować przechowywanie dla tabel danych czasowych, nawet jeśli **is_temporal_history_retention_enabled** jest wyłączone, ale w takim przypadku automatyczne czyszczenie dla przestarzałych wierszy nie zostanie wyzwolone.
+> Można skonfigurować retencji dla tabel czasowych, nawet jeśli **is_temporal_history_retention_enabled** jest wyłączony, ale automatyczne oczyszczanie dla przestarzałych wierszy nie jest wyzwalane w tym przypadku.
 
 Zasady przechowywania są konfigurowane podczas tworzenia tabeli przez określenie wartości parametru HISTORY_RETENTION_PERIOD:
 
@@ -73,9 +73,9 @@ CREATE TABLE dbo.WebsiteUserInfo
  );
 ```
 
-Azure SQL Database pozwala określić okres przechowywania przy użyciu różnych jednostek czasu: dni, tygodnie, miesiące i lata. W przypadku pominięcia HISTORY_RETENTION_PERIOD założono NIESKOŃCZONe przechowywanie. Można również jawnie użyć NIESKOŃCZONego słowa kluczowego.
+Usługa Azure SQL Database umożliwia określenie okresu przechowywania przy użyciu różnych jednostek czasu: DNI, TYGODNIE, MIESIĄCE i LATA. Jeśli HISTORY_RETENTION_PERIOD zostanie pominięty, zakłada się, że przechowywanie INFINITE. Można również użyć infinite słowa kluczowego jawnie.
 
-W niektórych scenariuszach możesz chcieć skonfigurować przechowywanie po utworzeniu tabeli lub zmienić wcześniej skonfigurowaną wartość. W takim przypadku użyj instrukcji ALTER TABLE:
+W niektórych scenariuszach można skonfigurować retencji po utworzeniu tabeli lub zmienić wcześniej skonfigurowaną wartość. W takim przypadku należy użyć instrukcji ALTER TABLE:
 
 ```sql
 ALTER TABLE dbo.WebsiteUserInfo
@@ -83,9 +83,9 @@ SET (SYSTEM_VERSIONING = ON (HISTORY_RETENTION_PERIOD = 9 MONTHS));
 ```
 
 > [!IMPORTANT]
-> Ustawienie SYSTEM_VERSIONING wyłączone *nie zachowuje* wartości okresu przechowywania. Ustawienie SYSTEM_VERSIONING na włączone bez HISTORY_RETENTION_PERIOD określone jawnie spowoduje NIESKOŃCZONy okres przechowywania.
+> Ustawienie SYSTEM_VERSIONING na OFF *nie zachowuje* wartości okresu przechowywania. Ustawienie SYSTEM_VERSIONING na ON bez HISTORY_RETENTION_PERIOD wyraźnie określa okres przechowywania INFINITE.
 
-Aby sprawdzić bieżący stan zasad przechowywania, należy użyć następującego zapytania, które dołącza flagę włączenia przechowywania danych czasowych na poziomie bazy, z okresami przechowywania dla poszczególnych tabel:
+Aby przejrzeć bieżący stan zasad przechowywania, należy użyć następującej kwerendy, która łączy flagę włączania przechowywania czasowego na poziomie bazy danych z okresami przechowywania dla poszczególnych tabel:
 
 ```sql
 SELECT DB.is_temporal_history_retention_enabled,
@@ -101,30 +101,30 @@ ON T1.history_table_id = T2.object_id WHERE T1.temporal_type = 2
 ```
 
 
-## <a name="how-sql-database-deletes-aged-rows"></a>Jak SQL Database usuwa przestarzałe wiersze
+## <a name="how-sql-database-deletes-aged-rows"></a>Jak baza danych SQL usuwa przestarzałe wiersze
 
-Proces oczyszczania zależy od układu indeksu tabeli historii. Należy zauważyć, że *tylko tabele historii z indeksem klastrowanym (B-Tree lub magazynu kolumn) mogą mieć skonfigurowane ograniczone zasady przechowywania*. Zadanie w tle jest tworzone w celu przeprowadzenia przestarzałego oczyszczania danych dla wszystkich tabel danych czasowych z skończonego okresu przechowywania.
-Logika oczyszczania dla indeksu klastrowanego magazynu wierszy (B-Tree) usuwa przestarzały wiersz w mniejszych fragmentach (do 10 tys.), minimalizując nacisk na dziennik bazy danych i podsystem we/wy. Chociaż logika oczyszczania wykorzystuje wymagany indeks B-drzewa, kolejność usuwania wierszy starszych niż okres przechowywania nie może być gwarantowana. W związku z tym nie należy *podejmować żadnych zależności od kolejności oczyszczania w aplikacjach*.
+Proces oczyszczania zależy od układu indeksu tabeli historii. Ważne jest, aby zauważyć, że *tylko tabele historii z indeksem klastrowanym (B-drzewo lub magazyn kolumn) mogą mieć skonfigurowane zasady ograniczonego przechowywania.* Zadanie w tle jest tworzone w celu wykonywania oczyszczania przestarzałych danych dla wszystkich tabel czasowych z skończonego okresu przechowywania.
+Logika oczyszczania indeksu klastrowanego magazynu wierszy (B-tree) usuwa przestarzały wiersz w mniejszych fragmentach (do 10 000) minimalizując presję na dziennik bazy danych i podsystem we/wy. Chociaż logika oczyszczania wykorzystuje wymagany indeks drzewa B, kolejność usuń dla wierszy starszych niż okres przechowywania nie może być mocno zagwarantowana. W związku z tym *nie należy przyjmować żadnych zależności od kolejności oczyszczania w aplikacjach*.
 
-Zadanie oczyszczania dla klastrowanej magazynu kolumn usuwa jednocześnie wszystkie [grupy wierszy](https://msdn.microsoft.com/library/gg492088.aspx) (zazwyczaj zawierają 1 000 000 wierszy każdego), co jest bardzo wydajne, szczególnie gdy dane historyczne są generowane w dużym tempie.
+Zadanie oczyszczania dla klastrowanego magazynu kolumn usuwa całe [grupy wierszy](https://msdn.microsoft.com/library/gg492088.aspx) jednocześnie (zazwyczaj zawierają po 1 milion wierszy), co jest bardzo wydajne, szczególnie gdy dane historyczne są generowane w szybkim tempie.
 
-![Przechowywanie klastrowanej magazynu kolumn](./media/sql-database-temporal-tables-retention-policy/cciretention.png)
+![Retencja magazynu kolumn klastrowanych](./media/sql-database-temporal-tables-retention-policy/cciretention.png)
 
-Doskonałej kompresji danych i wydajne oczyszczanie przechowywania sprawia, że klastrowany indeks magazynu kolumn jest idealnym wyborem dla scenariuszy, gdy obciążenie szybko generuje duże ilości danych historycznych. Ten wzorzec jest typowy dla intensywnych [obciążeń przetwarzania transakcyjnego, które używają tabel](https://msdn.microsoft.com/library/mt631669.aspx) czasowych do śledzenia zmian i inspekcji, analizy trendów lub pozyskiwania danych IoT.
+Doskonała kompresja danych i efektywne oczyszczanie przechowywania sprawia, że indeks klastrowanego magazynu kolumn jest idealnym wyborem dla scenariuszy, gdy obciążenie szybko generuje dużą ilość danych historycznych. Ten wzorzec jest typowy dla [intensywnych obciążeń przetwarzania transakcyjnego, które używają tabel czasowych](https://msdn.microsoft.com/library/mt631669.aspx) do śledzenia zmian i inspekcji, analizy trendów lub pozyskiwania danych IoT.
 
-## <a name="index-considerations"></a>Zagadnienia dotyczące indeksów
+## <a name="index-considerations"></a>Zagadnienia dotyczące indeksu
 
-Zadanie oczyszczania tabel z indeksem klastrowanym magazynu wierszy wymaga, aby indeks rozpoczynał się od kolumny odpowiadającej końcowi okresu SYSTEM_TIME. Jeśli taki indeks nie istnieje, nie można skonfigurować skończonego okresu przechowywania:
+Zadanie oczyszczania dla tabel z indeksem klastrowanym magazynu wierszy wymaga indeksu, aby rozpocząć od kolumny odpowiadającej na koniec okresu SYSTEM_TIME. Jeśli taki indeks nie istnieje, nie można skonfigurować skończonego okresu przechowywania:
 
-*Msg 13765, poziom 16, stan 1 <br></br> ustawienie ograniczonego okresu przechowywania nie powiodło się w tabeli danych czasowych z systemową obsługą wersji "temporalstagetestdb. dbo. WebsiteUserInfo", ponieważ tabela historii "temporalstagetestdb. dbo. WebsiteUserInfoHistory" nie zawiera wymagany indeks klastrowany. Rozważ utworzenie klastrowanego magazynu kolumn lub spisu B-drzewa, rozpoczynając od kolumny, która jest zgodna z końcem SYSTEM_TIME okresu, w tabeli historii.*
+*Msg 13765, Poziom 16, <br> </br> Stan 1 Ustawienie skończonego okresu przechowywania nie powiodło się w tabeli czasowej o wersji systemowej "temporalstagetestdb.dbo.WebsiteUserInfo", ponieważ tabela historii "temporalstagetestdb.dbo.WebsiteUserInfoHistory" nie zawiera wymaganego indeksu klastrowanego. Należy rozważyć utworzenie klastrowanego magazynu kolumn lub indeksu drzewa B, począwszy od kolumny, która pasuje do końca okresu SYSTEM_TIME, w tabeli historii.*
 
-Należy pamiętać, że domyślna tabela historii utworzona przez Azure SQL Database ma już indeks klastrowany, który jest zgodny z zasadami przechowywania. Jeśli spróbujesz usunąć ten indeks z tabeli z ograniczonym okresem przechowywania, operacja kończy się niepowodzeniem z powodu następującego błędu:
+Należy zauważyć, że domyślna tabela historii utworzona przez usługę Azure SQL Database ma już indeks klastrowany, który jest zgodny z zasadami przechowywania. Jeśli spróbujesz usunąć ten indeks w tabeli z skończonego okresu przechowywania, operacja zakończy się niepowodzeniem z następującym błędem:
 
-*Komunikat 13766, poziom 16, stan 1 <br></br> nie może porzucić klastrowanego indeksu "WebsiteUserInfoHistory. IX_WebsiteUserInfoHistory", ponieważ jest on używany do automatycznego czyszczenia przestarzałych danych. Należy rozważyć ustawienie nieograniczonej HISTORY_RETENTION_PERIOD w odpowiedniej tabeli danych czasowych z systemową obsługą wersji, jeśli trzeba będzie usunąć ten indeks.*
+*Msg 13766, Poziom 16, <br> </br> Stan 1 Nie można usunąć indeks klastrowany "WebsiteUserInfoHistory.IX_WebsiteUserInfoHistory", ponieważ jest używany do automatycznego oczyszczania przestarzałych danych. Należy rozważyć ustawienie HISTORY_RETENTION_PERIOD infinite w odpowiedniej tabeli czasowej wersją systemu, jeśli chcesz upuścić ten indeks.*
 
-Czyszczenie na klastrowanym indeksie magazynu kolumn działa optymalnie, jeśli wiersze historyczne są wstawiane w kolejności rosnącej (uporządkowane według końca kolumny okresu), która zawsze jest uwzględniana w przypadku, gdy tabela historii zostanie wypełniona wyłącznie przez mechanizm SYSTEM_VERSIONIOING. Jeśli wiersze w tabeli historii nie są uporządkowane według kolumny końca okresu (co może dotyczyć przypadku migracji istniejących danych historycznych), należy ponownie utworzyć klastrowany indeks magazynu kolumn na podstawie indeksu B-drzewa magazynu wierszy, który jest prawidłowo uporządkowany, aby osiągnąć optymalny skuteczności.
+Oczyszczanie w indeksie magazynu kolumn klastrowanych działa optymalnie, jeśli historyczne wiersze są wstawiane w kolejności rosnąco (uporządkowane na końcu kolumny okresu), co zawsze ma miejsce, gdy tabela historii jest wypełniana wyłącznie przez mechanizm SYSTEM_VERSIONIOING. Jeśli wiersze w tabeli historii nie są uporządkowane do końca kolumny okresu (co może mieć miejsce w przypadku migracji istniejących danych historycznych), należy ponownie utworzyć indeks klastrowanego magazynu kolumn na indeksie magazynu b-drzewo, który jest prawidłowo uporządkowany, aby osiągnąć optymalny Wydajności.
 
-Unikaj odbudowywania klastrowanego indeksu magazynu kolumn w tabeli historii przy użyciu skończonego okresu przechowywania, ponieważ może to zmienić kolejność w grupach wierszy, które są w sposób naturalny nałożone przez operację obsługi wersji systemu. Jeśli musisz ponownie skompilować klastrowany indeks magazynu kolumn w tabeli historii, zrób to przez ponowne utworzenie go na podstawie zgodnego indeksu B-drzewa, zachowując kolejność w RowGroups koniecznym do regularnego oczyszczania danych. Takie samo podejście należy wykonać w przypadku utworzenia tabeli danych czasowych z istniejącą tabelą historii, która ma klastrowany indeks kolumn bez gwarantowanej kolejności danych:
+Należy unikać przebudowy indeksu magazynu kolumn klastrowanych w tabeli historii z skończonego okresu przechowywania, ponieważ może to zmienić kolejność w grupach wierszy naturalnie nałożone przez system-versioning operacji. Jeśli chcesz odbudować indeks magazynu kolumn klastrowanych w tabeli historii, zrób to, tworząc go ponownie na podstawie zgodnego indeksu drzewa B, zachowując kolejność w grupach wierszy niezbędnych do regularnego oczyszczania danych. Takie samo podejście należy podjąć, jeśli tworzysz tabelę czasową z istniejącą tabelą historii, która ma indeks kolumn klastrowanych bez gwarantowanej kolejności danych:
 
 ```sql
 /*Create B-tree ordered by the end of period column*/
@@ -136,43 +136,43 @@ CREATE CLUSTERED COLUMNSTORE INDEX IX_WebsiteUserInfoHistory ON WebsiteUserInfoH
 WITH (DROP_EXISTING = ON);
 ```
 
-W przypadku skonfigurowania skończonego okresu przechowywania w tabeli historii z klastrowanym indeksem magazynu kolumn nie można utworzyć dodatkowych indeksów nieklastrowanych B-drzewa w tej tabeli:
+Gdy skończony okres przechowywania jest skonfigurowany dla tabeli historii z indeksem klastrowanego magazynu kolumn, nie można utworzyć dodatkowych indeksów drzewa B nieklastrowanych w tej tabeli:
 
 ```sql
 CREATE NONCLUSTERED INDEX IX_WebHistNCI ON WebsiteUserInfoHistory ([UserName])
 ```
 
-Próba wykonania powyższej instrukcji kończy się niepowodzeniem z powodu następującego błędu:
+Próba wykonania powyższej instrukcji kończy się niepowodzeniem z następującym błędem:
 
-*Msg 13772, poziom 16, stan 1 <br></br> nie można utworzyć indeksu nieklastrowanego w tabeli historii danych czasowych "WebsiteUserInfoHistory", ponieważ ma on zdefiniowany zakres przechowywania i klastrowany indeks magazynu kolumn.*
+*Msg 13772, Poziom 16, <br> </br> Stan 1 Nie można utworzyć indeksu nieklastrowanego w tabeli historii czasowej "WebsiteUserInfoHistory", ponieważ ma ograniczony okres przechowywania i zdefiniowany indeks magazynu kolumn klastrowanych.*
 
-## <a name="querying-tables-with-retention-policy"></a>Wykonywanie zapytań dotyczących tabel przy użyciu zasad przechowywania
+## <a name="querying-tables-with-retention-policy"></a>Wykonywanie zapytań z zasadami przechowywania
 
-Wszystkie zapytania w tabeli danych czasowych automatycznie filtrują wiersze historyczne pasujące do skończonej zasady przechowywania, aby uniknąć nieprzewidywalnych i niespójnych wyników, ponieważ w dowolnym momencie zadanie oczyszczania może usunąć przestarzałe wiersze z dowolnego momentu *i w dowolnej kolejności*.
+Wszystkie kwerendy w tabeli czasowej automatycznie odfiltrowują historyczne wiersze pasujące do zasad ograniczonego przechowywania, aby uniknąć nieprzewidywalnych i niespójnych wyników, ponieważ przestarzałe wiersze mogą zostać usunięte przez zadanie oczyszczania, *w dowolnym momencie i w dowolnej kolejności*.
 
-Na poniższej ilustracji przedstawiono plan zapytania dla prostego zapytania:
+Na poniższej ilustracji przedstawiono plan kwerendy dla prostej kwerendy:
 
 ```sql
 SELECT * FROM dbo.WebsiteUserInfo FOR SYSTEM_TIME ALL;
 ```
 
-Plan zapytania obejmuje dodatkowy filtr zastosowany do kolumny końca okresu (ValidTo) w operatorze skanowania indeksu klastrowanego w tabeli historii (wyróżniony). W tym przykładzie przyjęto założenie, że w tabeli WebsiteUserInfo ustawiono jeden miesiąc okresu przechowywania.
+Plan kwerend zawiera dodatkowy filtr zastosowany do kolumny końca okresu (ValidTo) w operatorze skanowania indeksu klastrowanego w tabeli historii (wyróżniona). W tym przykładzie przyjęto założenie, że jeden miesiąc okres przechowywania został ustawiony na websiteUserInfo tabeli.
 
-![Filtr zapytania przechowywania](./media/sql-database-temporal-tables-retention-policy/queryexecplanwithretention.png)
+![Filtr kwerend retencyjny](./media/sql-database-temporal-tables-retention-policy/queryexecplanwithretention.png)
 
-Jednak w przypadku bezpośredniej kwerendy tabeli historii można zobaczyć wiersze, które są starsze niż określony okres przechowywania, ale bez żadnych gwarancji dla powtarzających się wyników zapytania. Na poniższej ilustracji przedstawiono plan wykonywania zapytania dla zapytania w tabeli historii bez zastosowania dodatkowych filtrów:
+Jednak jeśli kwerendy tabeli historii bezpośrednio, mogą być widoczne wiersze, które są starsze niż określony okres przechowywania, ale bez żadnej gwarancji dla wyników kwerendy powtarzalne. Na poniższej ilustracji przedstawiono plan wykonania kwerendy dla kwerendy w tabeli historii bez zastosowania dodatkowych filtrów:
 
-![Wykonywanie zapytania dotyczącego historii bez filtru przechowywania](./media/sql-database-temporal-tables-retention-policy/queryexecplanhistorytable.png)
+![Wykonywanie zapytań o historię bez filtru przechowywania](./media/sql-database-temporal-tables-retention-policy/queryexecplanhistorytable.png)
 
-Nie należy polegać na logice biznesowej podczas odczytywania tabeli historii poza okresem przechowywania, ponieważ mogą być niespójne lub nieoczekiwane wyniki. Zalecamy używanie zapytań czasowych z klauzulą FOR SYSTEM_TIME, aby analizować dane w tabelach danych czasowych.
+Nie należy polegać na logiki biznesowej na tabeli historii czytania po okresie przechowywania, ponieważ mogą pojawić się niespójne lub nieoczekiwane wyniki. Zaleca się użycie zapytań czasowych z klauzulą FOR SYSTEM_TIME do analizowania danych w tabelach czasowych.
 
-## <a name="point-in-time-restore-considerations"></a>Uwagi dotyczące przywracania do punktu w czasie
+## <a name="point-in-time-restore-considerations"></a>Zagadnienia dotyczące przywracania punktu w czasie
 
-Podczas tworzenia nowej bazy danych przez [przywrócenie istniejącej bazy danych do określonego punktu w czasie, okresowe](sql-database-recovery-using-backups.md)przechowywanie jest wyłączone na poziomie bazy danych. (flaga**is_temporal_history_retention_enabled** ustawiona na off). Ta funkcja pozwala zbadać wszystkie wiersze historyczne podczas przywracania, bez obaw przed usunięciem przestarzałych wierszy przed uzyskaniem zapytania. Za jego pomocą można *sprawdzić dane historyczne poza skonfigurowanym okresem przechowywania*.
+Podczas tworzenia nowej bazy danych przez [przywrócenie istniejącej bazy danych do określonego punktu w czasie,](sql-database-recovery-using-backups.md)ma czasowe przechowywania wyłączone na poziomie bazy danych. **(is_temporal_history_retention_enabled** flaga ustawiona na OFF). Ta funkcja umożliwia zbadanie wszystkich wierszy historycznych po przywróceniu, nie martwiąc się, że przestarzałe wiersze są usuwane przed uzyskaniem ich zapytania. Można go używać do *sprawdzania danych historycznych poza skonfigurowanym okresem przechowywania*.
 
-Załóżmy, że dla tabeli danych czasowych określono jeden miesiąc okresu przechowywania. Jeśli baza danych została utworzona w warstwie usługi Premium, można utworzyć kopię bazy danych z stanem bazy danych do 35 dni wstecz w przeszłości. Dzięki temu można analizować wiersze historyczne, które są do 65 dni przed upływem zapytania bezpośrednio do tabeli historii.
+Załóżmy, że tabela czasowa ma określony okres przechowywania w ciągu jednego miesiąca. Jeśli baza danych została utworzona w warstwie usługi Premium, można utworzyć kopię bazy danych ze stanem bazy danych do 35 dni wstecz w przeszłości. To skutecznie pozwoliłoby na analizowanie wierszy historycznych, które są do 65 dni, bezpośrednio przez zapytanie tabeli historii bezpośrednio.
 
-Jeśli chcesz uaktywnić czyszczenie danych czasowych, uruchom następującą instrukcję Transact-SQL po przywróceniu punktu w czasie:
+Jeśli chcesz aktywować oczyszczanie przechowywania czasowego, uruchom następującą instrukcję Transact-SQL po przywróceniu punktu w czasie:
 
 ```sql
 ALTER DATABASE <myDB>
@@ -181,8 +181,8 @@ SET TEMPORAL_HISTORY_RETENTION  ON
 
 ## <a name="next-steps"></a>Następne kroki
 
-Aby dowiedzieć się, jak używać tabel danych czasowych w aplikacjach, zapoznaj się z tematem [wprowadzenie z tabelami czasowymi w Azure SQL Database](sql-database-temporal-tables.md).
+Aby dowiedzieć się, jak używać tabel czasowych w aplikacjach, zapoznaj się [z wprowadzeniem do tabel czasowych w bazie danych SQL Azure](sql-database-temporal-tables.md).
 
-Odwiedź stronę Channel 9, aby poznać [rzeczywistą historię sukcesów wykonywania](https://channel9.msdn.com/Blogs/jsturtevant/Azure-SQL-Temporal-Tables-with-RockStep-Solutions) danych czasowych klienta i obejrzyj [prezentację](https://channel9.msdn.com/Shows/Data-Exposed/Temporal-in-SQL-Server-2016)czasową na żywo.
+Odwiedź Kanał 9, aby usłyszeć [prawdziwy sukces wdrożenia czasowego klienta](https://channel9.msdn.com/Blogs/jsturtevant/Azure-SQL-Temporal-Tables-with-RockStep-Solutions) i obejrzeć na żywo pokaz [czasowy.](https://channel9.msdn.com/Shows/Data-Exposed/Temporal-in-SQL-Server-2016)
 
-Aby uzyskać szczegółowe informacje o tabelach danych czasowych, przejrzyj [dokumentację MSDN](https://msdn.microsoft.com/library/dn935015.aspx).
+Aby uzyskać szczegółowe informacje na temat tabel czasowych, zapoznaj się z [dokumentacją MSDN](https://msdn.microsoft.com/library/dn935015.aspx).

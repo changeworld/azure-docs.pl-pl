@@ -1,6 +1,6 @@
 ---
-title: Jak generować i przesyłać klucze chronione przez moduł HSM dla Azure Key Vault-Azure Key Vault | Microsoft Docs
-description: Ten artykuł ułatwia planowanie, generowanie i transferowanie własnych kluczy chronionych przez moduł HSM w celu korzystania z Azure Key Vault. Znany również jako BYOK lub własny klucz.
+title: Jak generować i przesyłać klucze chronione przez moduł HSM dla usługi Azure Key Vault — Usługa Azure Key Vault | Dokumenty firmy Microsoft
+description: Ten artykuł ułatwia planowanie, generowanie, a następnie przenoszenie własnych kluczy chronionych przez moduł HSM do użycia w usłudze Azure Key Vault. Znany również jako BYOK lub przynieść własny klucz.
 services: key-vault
 author: amitbapat
 manager: devtiw
@@ -11,31 +11,31 @@ ms.topic: conceptual
 ms.date: 02/17/2020
 ms.author: ambapat
 ms.openlocfilehash: 048e5072c592cf2de32e533014c99034572a1c47
-ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/10/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79082901"
 ---
-# <a name="import-hsm-protected-keys-to-key-vault"></a>Importuj klucze chronione przez moduł HSM do Key Vault
+# <a name="import-hsm-protected-keys-to-key-vault"></a>Importowanie kluczy chronionych przez moduł HSM do magazynu kluczy
 
-Aby uzyskać gwarancję, w przypadku korzystania z Azure Key Vault można importować lub generować klucze w sprzętowych modułach zabezpieczeń (sprzętowych modułów zabezpieczeń), które nigdy nie opuszczają granicy modułu HSM. Ten scenariusz jest często nazywany *własnym kluczem*lub BYOK. W celu ochrony kluczy Azure Key Vault używa rodziny oprogramowanie wspomagające nCipher sprzętowego nshield sprzętowych modułów zabezpieczeń (zweryfikowany poziom 2 trybu FIPS 140-2).
+Aby uzyskać dodatkową pewność, korzystając z usługi Azure Key Vault, można importować lub generować klucze w sprzętowych modułach zabezpieczeń (HSM), które nigdy nie opuszczają granicy modułu HSM. Ten scenariusz jest często określany jako *używania własnego klucza* (BYOK). Usługa Azure Key Vault używa nCipher nShield rodziny modułów HSM (FIPS 140-2 Poziom 2 zatwierdzone) do ochrony kluczy.
 
-Ta funkcja jest niedostępna dla platformy Azure w Chinach.
+Ta funkcja nie jest dostępna dla platformy Azure China 21Vianet.
 
 > [!NOTE]
-> Aby uzyskać więcej informacji na temat Azure Key Vault, zobacz [co to jest Azure Key Vault?](key-vault-overview.md)  
-> Aby zapoznać się z samouczkiem wprowadzającym, które obejmuje tworzenie magazynu kluczy dla kluczy chronionych przez moduł HSM, zobacz [co to jest Azure Key Vault?](key-vault-overview.md).
+> Aby uzyskać więcej informacji na temat usługi Azure Key Vault, zobacz [Co to jest usługa Azure Key Vault?](key-vault-overview.md)  
+> Aby zapoznać się z samouczkiem wprowadzenie, który obejmuje tworzenie magazynu kluczy chronionych przez moduł HSM, zobacz [Co to jest usługa Azure Key Vault?](key-vault-overview.md).
 
-## <a name="supported-hsms"></a>Obsługiwane sprzętowych modułów zabezpieczeń
+## <a name="supported-hsms"></a>Obsługiwane moduły HSM
 
-Transferowanie kluczy chronionych przez moduł HSM do Key Vault jest obsługiwane za pośrednictwem dwóch różnych metod, w zależności od używanej sprzętowych modułów zabezpieczeń. Skorzystaj z poniższej tabeli, aby określić, która metoda powinna zostać użyta do generowania sprzętowych modułów zabezpieczeń, a następnie przenieść własne klucze chronione przez moduł HSM do użycia z Azure Key Vault. 
+Przenoszenie kluczy chronionych przez moduł HSM do usługi Key Vault jest obsługiwane za pomocą dwóch różnych metod w zależności od używanych modułów HSM. Skorzystaj z poniższej tabeli, aby określić, która metoda powinna być używana do generowania modułów HSM, a następnie przenieś własne klucze chronione przez moduł HSM do użycia z usługą Azure Key Vault. 
 
-|Nazwa dostawcy|Typ dostawcy|Obsługiwane modele HSM|Obsługiwana metoda modułu HSM — transfer klucza|
+|Nazwa dostawcy|Typ dostawcy|Obsługiwane modele HSM|Obsługiwana metoda transferu klucza HSM|
 |---|---|---|---|
-|Oprogramowanie wspomagające nCipher|Producent|<ul><li>Rodzina sprzętowego nshield sprzętowych modułów zabezpieczeń</li></ul>|[Użyj starszej metody BYOK](hsm-protected-keys-legacy.md)|
-|Firmy Thales|Producent|<ul><li>Rodzina SafeNet Luna modułu HSM 7 z oprogramowaniem układowym w wersji 7,3 lub nowszej</li></ul>| [Użyj nowej metody BYOK (wersja zapoznawcza)](hsm-protected-keys-vendor-agnostic-byok.md)|
-|Fortanix|Moduł HSM jako usługa|<ul><li>Samoobsługowa usługa zarządzania kluczami (SDKMS)</li></ul>|[Użyj nowej metody BYOK (wersja zapoznawcza)](hsm-protected-keys-vendor-agnostic-byok.md)|
+|nCipher (własy)|Producent|<ul><li>Rodzina hsmów nShield</li></ul>|[Użyj starszej metody BYOK](hsm-protected-keys-legacy.md)|
+|Thales|Producent|<ul><li>Rodzina SafeNet Luna HSM 7 z oprogramowaniem układowym w wersji 7.3 lub nowszej</li></ul>| [Użyj nowej metody BYOK (wersja zapoznawcza)](hsm-protected-keys-vendor-agnostic-byok.md)|
+|Fortanix ( Fortanix )|HSM jako usługa|<ul><li>Samookadująca się usługa zarządzania kluczami (SDKMS)</li></ul>|[Użyj nowej metody BYOK (wersja zapoznawcza)](hsm-protected-keys-vendor-agnostic-byok.md)|
 
 
 
@@ -48,4 +48,4 @@ Transferowanie kluczy chronionych przez moduł HSM do Key Vault jest obsługiwan
 
 ## <a name="next-steps"></a>Następne kroki
 
-Postępuj zgodnie z [Key Vault najlepszych](key-vault-best-practices.md) rozwiązań, aby zapewnić bezpieczeństwo, trwałość i monitorowanie kluczy.
+Postępuj zgodnie z [najlepszymi praktykami usługi Key Vault,](key-vault-best-practices.md) aby zapewnić bezpieczeństwo, trwałość i monitorowanie kluczy.

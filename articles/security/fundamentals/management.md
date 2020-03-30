@@ -1,6 +1,6 @@
 ---
 title: Poprawianie bezpieczeństwa zdalnego zarządzania na platformie Azure | Microsoft Docs
-description: W tym artykule omówiono procedurę rozszerzania zabezpieczeń zdalnego zarządzania podczas administrowania środowiskami Microsoft Azure, w tym usługami w chmurze, maszynami wirtualnymi i aplikacjami niestandardowymi.
+description: W tym artykule omówiono kroki mające na celu zwiększenie zabezpieczeń zarządzania zdalnego podczas administrowania środowiskami platformy Microsoft Azure, w tym usługami w chmurze, maszynami wirtualnymi i aplikacjami niestandardowymi.
 services: security
 documentationcenter: na
 author: TerryLanfear
@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 10/31/2019
 ms.author: terrylan
 ms.openlocfilehash: 45efaadf7d15fff290165fe831c45c0bc063db53
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73643796"
 ---
 # <a name="security-management-in-azure"></a>Zarządzanie zabezpieczeniami na platformie Azure
@@ -118,7 +118,7 @@ Brama usług pulpitu zdalnego jest opartą na zasadach usługą serwera proxy RD
 ## <a name="security-guidelines"></a>Zalecenia dotyczące zabezpieczeń
 Ogólnie rzecz biorąc, ulepszanie zabezpieczeń stacji roboczych administratorów używanych do pracy z chmurą jest podobne do rozwiązań stosowanych w przypadku dowolnych lokalnych stacji roboczych (na przykład minimalizacja funkcjonalności i ograniczanie uprawnień). Niektóre unikatowe aspekty zarządzania chmurą są bardziej zbliżone do zdalnego zarządzania lub zarządzania poza pasmem w przedsiębiorstwach. Przykładem może być użycie i inspekcja poświadczeń, rozszerzone zabezpieczenia dostępu zdalnego oraz wykrywanie zagrożeń i podejmowanie działań zaradczych.
 
-### <a name="authentication"></a>Authentication
+### <a name="authentication"></a>Uwierzytelnianie
 Korzystając z ograniczeń logowania platformy Azure, można zmniejszyć liczbę źródłowych adresów IP używanych do uzyskiwania dostępu do narzędzi administracyjnych i prowadzić inspekcję żądań dostępu. W celu ułatwienia platformie Azure identyfikowania klientów (stacji roboczych i/lub aplikacji) używanych do zarządzania, można skonfigurować zarówno interfejs SMAPI (przy użyciu narzędzi opracowanych przez klienta, takich jak polecenia cmdlet programu Windows PowerShell), jak i witrynę Azure Portal tak, aby oprócz certyfikatów SSL było wymagane instalowanie certyfikatów zarządzania po stronie klienta. Zalecamy również stosowanie uwierzytelniania wieloskładnikowego w przypadku dostępu administratorów.
 
 Niektóre aplikacje lub usługi wdrażane na platformie Azure mogą mieć własne mechanizmy uwierzytelniania zarówno użytkowników końcowych, jak i administratorów, podczas gdy inne wykorzystują w pełnym zakresie usługę Azure AD. W zależności od tego, czy jest dokonywana federacja poświadczeń za pośrednictwem usługi Active Directory Federation Services (AD FS), używana synchronizacja katalogów, czy obsługa kont użytkowników jedynie w chmurze, użycie usługi [Microsoft Identity Manager](https://technet.microsoft.com/library/mt218776.aspx) (część usługi Azure AD Premium) ułatwia zarządzanie cyklami życia tożsamości między zasobami.
@@ -138,7 +138,7 @@ Wymuszanie zasad, które obejmuje ścisłą kontrolę dostępu, polega na stosow
 ## <a name="client-configuration"></a>Konfiguracja klientów
 Zalecamy trzy podstawowe konfiguracje stacji roboczych ze wzmocnionymi zabezpieczeniami. Najważniejsze różnice są związane z kosztem, użytecznością i dostępnością przy zachowaniu podobnego profilu zabezpieczeń dla wszystkich opcji. Poniższa tabela zawiera zwięzłe informacje umożliwiające analizę korzyści i zagrożeń związanych z poszczególnymi konfiguracjami. Określenie „komputer firmowy” oznacza standardową konfigurację komputera stacjonarnego wdrażaną dla wszystkich użytkowników w domenie niezależnie od roli.
 
-| Konfiguracja | Korzyści | Wady |
+| Konfigurowanie | Korzyści | Wady |
 | --- | --- | --- |
 | Autonomiczna stacja robocza ze wzmocnionymi zabezpieczeniami |Ściśle kontrolowana stacja robocza |Wyższy koszt dla dedykowanych komputerów stacjonarnych |
 | - | Mniejsze ryzyko wykorzystania luk w zabezpieczeniach aplikacji |Większa ilość zasobów wymaganych do zarządzania |
@@ -180,7 +180,7 @@ Przenośny obraz przedstawiony na poniższej ilustracji jest systemem przyłącz
 
 Pamiętaj, że prawdopodobieństwo utraty dysku flash USB jest wyższe niż prawdopodobieństwo utraty przeciętnego komputera stacjonarnego. Zaszyfrowanie całego woluminu przy użyciu funkcji BitLocker i silnego hasła utrudnia osobie atakującej wykorzystanie obrazu dysku do szkodliwych celów. Ponadto jeśli dysk flash USB zostanie utracony, odwołanie i [wystawienie nowego certyfikatu zarządzania](https://technet.microsoft.com/library/hh831574.aspx) oraz szybkie zresetowanie hasła może ograniczyć zagrożenie. Dzienniki inspekcji administracyjnej znajdują się na platformie Azure, a nie na kliencie, co dodatkowo ogranicza ryzyko utraty danych.
 
-## <a name="best-practices"></a>Najlepsze praktyki
+## <a name="best-practices"></a>Najlepsze rozwiązania
 Podczas zarządzania aplikacjami i danymi na platformie Azure należy uwzględnić poniższe dodatkowe zalecenia.
 
 ### <a name="dos-and-donts"></a>Zalecenia i zakazy

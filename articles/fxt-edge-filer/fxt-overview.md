@@ -1,59 +1,59 @@
 ---
-title: Przegląd Microsoft Azure FXT Edge
-description: Opisuje pamięć podręczną magazynu hybrydowego usługi Azure FXT Edge, aktywny plik archiwum i akcelerator dostępu do plików dla obliczeń o wysokiej wydajności
+title: Omówienie narzędzia Microsoft Azure FXT Edge Filer
+description: W tym artykule opisano hybrydową pamięć podręczną magazynu plików usługi Azure FXT Edge Filer, aktywne rozwiązanie do akceleratora archiwum i dostępu do plików do obliczeń o wysokiej wydajności
 author: ekpgh
 ms.service: fxt-edge-filer
 ms.topic: overview
 ms.date: 07/01/2019
 ms.author: rohogue
 ms.openlocfilehash: acf35015ff7851f7ea2a2527852be2573512e35d
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "72254838"
 ---
-# <a name="what-is-azure-fxt-edge-filer-hybrid-storage-cache"></a>Co to jest pamięć podręczna magazynu hybrydowego usługi Azure FXT Edge?
+# <a name="what-is-azure-fxt-edge-filer-hybrid-storage-cache"></a>Co to jest hybrydowa pamięć podręczna magazynu usługi Azure FXT Edge Filer?
 
-Usługa Azure FXT Edge to hybrydowe urządzenie magazynujące magazynu, które zapewnia szybki dostęp do plików i aktywne Archiwum dla zadań obliczeniowych o wysokiej wydajności (HPC).
+Azure FXT Edge Filer to hybrydowe urządzenie do buforowania pamięci masowej, które zapewnia szybki dostęp do plików i aktywne archiwum dla zadań obliczeniowych o wysokiej wydajności (HPC).
 
-Współpracuje z wieloma źródłami danych, niezależnie od tego, czy są przechowywane w lokalnym centrum danych, zdalnie czy w chmurze. Usługa Azure FXT Edge może zapewnić ujednoliconą przestrzeń nazw dla danych w różnych systemach magazynowania.
+Działa z wieloma źródłami danych, niezależnie od tego, czy są przechowywane w lokalnym centrum danych, zdalnie, czy w chmurze. Azure FXT Edge Filer może zapewnić ujednoliconą przestrzeń nazw dla danych w różnych systemach magazynu.
 
-Trzy lub więcej urządzeń sprzętowych plików FXT Edge współpracują ze sobą jako klastrowany system plików, aby zapewnić pamięć podręczną. Aby uzyskać szczegółowe informacje na temat kupowania wymaganego sprzętu, skontaktuj się z przedstawicielem firmy Microsoft. 
+Co najmniej trzy urządzenia sprzętowe FXT Edge Filer współpracują ze sobą jako klastrowany system plików w celu zapewnienia pamięci podręcznej. Aby uzyskać szczegółowe informacje na temat zakupu wymaganego sprzętu, skontaktuj się z przedstawicielem firmy Microsoft. 
 
-Aby dowiedzieć się więcej, zapoznaj się z informacjami o produkcie i arkuszem danych w [usłudze Azure FXT Edge](https://azure.microsoft.com/services/fxt-edge-filer/).
+Aby dowiedzieć się więcej, przeczytaj informacje o produkcie i arkusz danych na [platformie Azure FXT Edge Filer](https://azure.microsoft.com/services/fxt-edge-filer/).
 
 ## <a name="use-cases"></a>Przypadki zastosowań
 
-Plik usługi Azure FXT Edge zwiększa produktywność w zakresie przepływów pracy takich jak:
+Azure FXT Edge Filer zwiększa produktywność najlepiej dla przepływów pracy, takich jak te:
 
-* Przepływ pracy dostępu do pliku z dużym dostępem do odczytu 
+* Przepływ pracy dostępu do plików o dużej przełkowej 
 * Protokoły NFSv3 lub SMB2
-* Farmy obliczeniowe z 1000 do 100 000 rdzeni procesora CPU
+* Farmy obliczeniowe od 1000 do 100 000 rdzeni procesora
 
 ### <a name="nas-optimization-and-scaling"></a>Optymalizacja i skalowanie serwera NAS
 
-Pamięć podręczna plików usługi Azure FXT Edge umożliwia bezproblemowe dostęp do istniejących systemów NetApp i Dell EMC Isilon NAS. Możesz również dodać obiekt blob platformy Azure lub inny magazyn w chmurze, aby zapewnić skalowalność bez konieczności ponownego wykonywania procesów dostępu do danych po stronie klienta. 
+Za pomocą pamięci podręcznej Azure FXT Edge Filer można uzyskać płynny dostęp do istniejących systemów Nas NetApp i Dell EMC Isilon. Można również dodać azure blob lub innego magazynu w chmurze, aby zapewnić skalowalność bez konieczności ponownego przetwarzania procesów dostępu do danych po stronie klienta. 
 
-### <a name="wan-caching"></a>Buforowanie sieci WAN
+### <a name="wan-caching"></a>Buforowanie wan
 
-Plik usługi Azure FXT Edge może służyć do obsługi szybkiego dostępu do plików od użytkowników zaawansowanych, gdy potrzebne dane są przechowywane w innym miejscu. Zapewnianie dostępu podczas utrzymywania kopii zapasowych i innych systemów zarządzania danymi w scentralizowanym centrum danych. 
+Azure FXT Edge Filer może służyć do obsługi szybkiego dostępu do plików od użytkowników zaaprosznika, gdy dane, których potrzebują, są przechowywane w innym miejscu. Zapewnij dostęp przy jednoczesnym zachowaniu kopii zapasowych i innych systemów zarządzania danymi w scentralizowanym centrum danych. 
 
-### <a name="active-archive-in-azure-blob"></a>Aktywne Archiwum w obiekcie blob platformy Azure
+### <a name="active-archive-in-azure-blob"></a>Aktywne archiwum w obiekcie Blob platformy Azure
 
-Rozszerz swoje centrum danych do magazynu w chmurze za pomocą usługi Azure FXT Edge jako punktu dostępu. 
+Rozszerz swoje centrum danych do magazynu w chmurze z Azure FXT Edge Filer jako punkt dostępu. 
 
 ## <a name="features"></a>Funkcje 
 
 Dostępne są dwa modele sprzętu. 
 
-| Model | PAMIĘCI | NVMe SSD | Porty sieciowe | 
+| Model | Dram | NVMe SSD | Porty sieciowe | 
 |-------|------|----------|---------------|
-| FXT 6600 | 1536 GB | 25,6 TB | 6 x 25 GB/10Gb + 2 x 1 GB |
-| FXT 6400 | 768 GB | 12,8 TB | 6 x 25 GB/10Gb + 2 x 1 GB |
+| FXT 6600 | 1536 GB | 25,6 TB | 6 x 25 Gb/10 Gb + 2 x 1 Gb |
+| FXT 6400 | 768 GB | 12,8 TB | 6 x 25 Gb/10 Gb + 2 x 1 Gb |
 
 
 ## <a name="next-steps"></a>Następne kroki
 
-* Zapoznaj się z samouczkiem dotyczącym usługi Azure FXT Edge, odczytując [specyfikacje](fxt-specs.md) lub [Samouczek instalacji](fxt-install.md).
-* Dowiedz się, jak kupić usługę Azure FXT Edge na [stronie produktu usługi Azure FXT Edge](https://azure.microsoft.com/services/fxt-edge-filer/).
+* Kontynuuj naukę o usłudze Azure FXT Edge Filer, czytając [specyfikacje](fxt-specs.md) lub [samouczek instalacyjny](fxt-install.md).
+* Dowiedz się, jak kupić plik usługi Azure FXT Edge filer na [stronie produktu Azure FXT Edge Filer](https://azure.microsoft.com/services/fxt-edge-filer/).

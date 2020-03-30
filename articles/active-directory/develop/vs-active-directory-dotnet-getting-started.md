@@ -1,6 +1,6 @@
 ---
-title: Rozpoczynanie pracy z usługą Azure AD w projektach platformy .NET MVC | Azure
-description: Jak rozpocząć korzystanie z Azure Active Directory w projektach .NET MVC po nawiązaniu połączenia z usługą Azure AD lub utworzeniu jej przy użyciu usług połączonych programu Visual Studio
+title: Wprowadzenie do usługi Azure AD w projektach MVC platformy .NET | Azure
+description: Jak rozpocząć korzystanie z usługi Azure Active Directory w projektach mvc platformy .NET po nawiązaniu połączenia z usługą Azure AD lub utworzeniu usługi Azure AD przy użyciu połączonych usług programu Visual Studio
 author: ghogen
 manager: jillfra
 ms.assetid: 1c8b6a58-5144-4965-a905-625b9ee7b22b
@@ -12,29 +12,29 @@ ms.date: 03/12/2018
 ms.author: ghogen
 ms.custom: aaddev, vs-azure
 ms.openlocfilehash: eae649a4de88373ee79e49ecb7d5f14564a3054b
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77159492"
 ---
-# <a name="getting-started-with-azure-active-directory-aspnet-mvc-projects"></a>Wprowadzenie z Azure Active Directory (projekty ASP.NET MVC)
+# <a name="getting-started-with-azure-active-directory-aspnet-mvc-projects"></a>Wprowadzenie do usługi Azure Active Directory (ASP.NET projektów MVC)
 
 > [!div class="op_single_selector"]
 > - [Wprowadzenie](vs-active-directory-dotnet-getting-started.md)
 > - [Co się stało](vs-active-directory-dotnet-what-happened.md)
 
-Ten artykuł zawiera dodatkowe wskazówki po dodaniu Active Directory do projektu MVC ASP.NET za pomocą polecenia **project > Connect Services** programu Visual Studio. Jeśli usługa nie została jeszcze dodana do projektu, możesz to zrobić w dowolnym momencie.
+Ten artykuł zawiera dodatkowe wskazówki po dodaniu usługi Active Directory do ASP.NET projektu MVC za pośrednictwem polecenia **Programu Project > Connected Services** programu Visual Studio. Jeśli usługa nie została jeszcze dodana do projektu, możesz to zrobić w dowolnym momencie.
 
-Zobacz, [co się stało z moim projektem MVC?](vs-active-directory-dotnet-what-happened.md) dla zmian wprowadzonych w projekcie podczas dodawania połączonej usługi.
+Zobacz [Co się stało z moim projektem MVC?](vs-active-directory-dotnet-what-happened.md)
 
-## <a name="requiring-authentication-to-access-controllers"></a>Wymaganie uwierzytelniania do kontrolerów dostępu
+## <a name="requiring-authentication-to-access-controllers"></a>Wymaganie uwierzytelniania w celu uzyskania dostępu do kontrolerów
 
-Wszystkie kontrolery w projekcie zostały utworzone przy użyciu atrybutu `[Authorize]`. Ten atrybut wymaga uwierzytelnienia użytkownika przed uzyskaniem dostępu do tych kontrolerów. Aby umożliwić dostęp do kontrolera anonimowo, Usuń ten atrybut z kontrolera. Jeśli chcesz ustawić uprawnienia na bardziej szczegółowym poziomie, zastosuj atrybut do każdej metody wymagającej autoryzacji zamiast zastosowania jej do klasy kontrolera.
+Wszystkie kontrolery w projekcie zostały ozdobione atrybutem. `[Authorize]` Ten atrybut wymaga, aby użytkownik został uwierzytelniony przed dostępem do tych kontrolerów. Aby umożliwić dostęp do kontrolera anonimowo, usuń ten atrybut z kontrolera. Jeśli chcesz ustawić uprawnienia na poziomie bardziej szczegółowy, zastosuj atrybut do każdej metody, która wymaga autoryzacji zamiast stosowania go do klasy kontrolera.
 
-## <a name="adding-signin--signout-controls"></a>Dodawanie kontrolek Signing/wylogowaniu
+## <a name="adding-signin--signout-controls"></a>Dodawanie kontrolek SignIn / SignOut
 
-Aby dodać kontrolki logowania/wylogowaniu do widoku, możesz użyć widoku częściowego `_LoginPartial.cshtml`, aby dodać funkcje do jednego z widoków. Oto przykład funkcji dodanej do widoku standardowej `_Layout.cshtml`. (Należy zwrócić uwagę na ostatni element w bloku DIV z klasą nawigacyjną — zwijanie):
+Aby dodać kontrolki SignIn/SignOut do widoku, można użyć widoku `_LoginPartial.cshtml` częściowego, aby dodać funkcje do jednego z widoków. Oto przykład funkcji dodanych do widoku `_Layout.cshtml` standardowego. (Zwróć uwagę na ostatni element w div z podziałem nawigacyjny klasy):
 
 ```html
 <!DOCTYPE html>
@@ -83,5 +83,5 @@ Aby dodać kontrolki logowania/wylogowaniu do widoku, możesz użyć widoku czę
 
 ## <a name="next-steps"></a>Następne kroki
 
-- [Scenariusze uwierzytelniania dla Azure Active Directory](authentication-scenarios.md)
-- [Dodawanie logowania z firmą Microsoft do aplikacji sieci Web ASP.NET](quickstart-v2-aspnet-webapp.md)
+- [Scenariusze uwierzytelniania dla usługi Azure Active Directory](authentication-scenarios.md)
+- [dodawanie logowania przy użyciu konta Microsoft do aplikacji internetowej ASP.NET](quickstart-v2-aspnet-webapp.md)

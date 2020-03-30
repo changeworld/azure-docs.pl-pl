@@ -1,6 +1,6 @@
 ---
-title: Automatyczne dostrajanie powiadomień e-mail — Przewodnik
-description: Włącz powiadomienia e-mail dla Azure SQL Database automatycznego dostrajania zapytań.
+title: Przewodnik po automatycznym dostrajaniu powiadomień e-mail
+description: Włącz powiadomienia e-mail dla automatycznego dostrajania zapytań usługi Azure SQL Database.
 services: sql-database
 ms.service: sql-database
 ms.subservice: performance
@@ -12,78 +12,78 @@ ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 06/03/2019
 ms.openlocfilehash: b48c37a6e607d121416ebae4d74e58f39670b79a
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73821925"
 ---
-# <a name="email-notifications-for-automatic-tuning"></a>Powiadomienia e-mail dotyczące dostrajania automatycznego
+# <a name="email-notifications-for-automatic-tuning"></a>Powiadomienia e-mail do automatycznego dostrajania
 
-Zalecenia dotyczące dostrajania SQL Database są generowane przez Azure SQL Database [dostrajania automatycznego](sql-database-automatic-tuning.md). To rozwiązanie nieustannie monitoruje i analizuje obciążenia baz danych SQL, zapewniając dostosowane zalecenia dotyczące dostrajania dla poszczególnych baz danych związanych z tworzeniem indeksu, usuwaniem indeksu i optymalizacją planów wykonywania zapytań.
+Zalecenia dotyczące dostrajania bazy danych SQL są generowane przez [automatyczne dostrajanie](sql-database-automatic-tuning.md)bazy danych SQL Azure . To rozwiązanie stale monitoruje i analizuje obciążenia baz danych SQL, zapewniając dostosowane zalecenia dotyczące dostrajania dla każdej pojedynczej bazy danych związane z tworzeniem indeksu, usuwaniem indeksu i optymalizacją planów wykonywania zapytań.
 
-SQL Database zalecenia dotyczące dostrajania automatycznego można wyświetlać w [Azure Portal](sql-database-advisor-portal.md), pobierane z WYWOŁANIAMI [interfejsu API REST](https://docs.microsoft.com/rest/api/sql/databaserecommendedactions/listbydatabaseadvisor) lub przy użyciu poleceń [języka T-SQL](https://azure.microsoft.com/blog/automatic-tuning-introduces-automatic-plan-correction-and-t-sql-management/) i [programu PowerShell](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabaserecommendedaction) . Ten artykuł jest oparty na użyciu skryptu programu PowerShell w celu pobrania zaleceń dotyczących dostrajania automatycznego.
+Zalecenia dotyczące automatycznego dostrajania bazy danych SQL można wyświetlać w [portalu Azure](sql-database-advisor-portal.md)portal , pobieranym za pomocą wywołań interfejsu [API REST](https://docs.microsoft.com/rest/api/sql/databaserecommendedactions/listbydatabaseadvisor) lub przy użyciu poleceń [T-SQL](https://azure.microsoft.com/blog/automatic-tuning-introduces-automatic-plan-correction-and-t-sql-management/) i [PowerShell.](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabaserecommendedaction) Ten artykuł jest oparty na użyciu skryptu programu PowerShell do pobierania zaleceń automatycznego dostrajania.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 > [!IMPORTANT]
-> Moduł Azure Resource Manager programu PowerShell jest nadal obsługiwany przez Azure SQL Database, ale wszystkie przyszłe Programowanie dla modułu AZ. SQL. W przypadku tych poleceń cmdlet zobacz [AzureRM. SQL](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Argumenty poleceń polecenia AZ module i w modułach AzureRm są zasadniczo identyczne.
+> Moduł usługi PowerShell Azure Resource Manager jest nadal obsługiwany przez usługę Azure SQL Database, ale wszystkie przyszłe prace rozwojowe są przeznaczone dla modułu Az.Sql. Aby uzyskać następujące polecenia cmdlet, zobacz [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Argumenty dla poleceń w module Az i w modułach AzureRm są zasadniczo identyczne.
 
-## <a name="automate-email-notifications-for-automatic-tuning-recommendations"></a>Automatyzuj powiadomienia e-mail dotyczące zaleceń dotyczących dostrajania automatycznego
+## <a name="automate-email-notifications-for-automatic-tuning-recommendations"></a>Automatyzacja powiadomień e-mail w celu uzyskania rekomendacji automatycznego dostrajania
 
-Poniższe Rozwiązanie automatyzuje wysyłanie powiadomień e-mail zawierających zalecenia dotyczące dostrajania automatycznego. Opisane rozwiązanie składa się z automatyzacji wykonywania skryptu programu PowerShell na potrzeby pobierania zaleceń dostrajania przy użyciu [Azure Automation](https://docs.microsoft.com/azure/automation/automation-intro)i automatyzacji zadania dostarczania w ramach planowania poczty e-mail przy użyciu [Microsoft Flow](https://flow.microsoft.com).
+Poniższe rozwiązanie automatyzuje wysyłanie powiadomień e-mail zawierających zalecenia dotyczące automatycznego dostrajania. Opisane rozwiązanie polega na automatyzacji wykonywania skryptu programu PowerShell w celu pobierania zaleceń dotyczących dostrajania przy użyciu [usługi Azure Automation](https://docs.microsoft.com/azure/automation/automation-intro)oraz automatyzacji planowania zadania dostarczania wiadomości e-mail przy użyciu usługi Microsoft [Flow.](https://flow.microsoft.com)
 
-## <a name="create-azure-automation-account"></a>Utwórz konto Azure Automation
+## <a name="create-azure-automation-account"></a>Tworzenie konta usługi Azure Automation
 
-Aby skorzystać z Azure Automation, pierwszym krokiem jest utworzenie konta usługi Automation i skonfigurowanie go przy użyciu zasobów platformy Azure w celu wykonania skryptu programu PowerShell. Aby dowiedzieć się więcej o Azure Automation i jej możliwościach, zobacz [Rozpoczynanie pracy z usługą Azure Automation](https://docs.microsoft.com/azure/automation/automation-offering-get-started).
+Aby użyć usługi Azure Automation, pierwszym krokiem jest utworzenie konta automatyzacji i skonfigurowanie go z zasobami platformy Azure do użycia do wykonania skryptu programu PowerShell. Aby dowiedzieć się więcej o usłudze Azure Automation i jej możliwościach, zobacz [Wprowadzenie do automatyzacji platformy Azure.](https://docs.microsoft.com/azure/automation/automation-offering-get-started)
 
-Wykonaj następujące kroki, aby utworzyć konto Azure Automation za pomocą metody wybierania i konfigurowania aplikacji usługi Automation z poziomu portalu Marketplace:
+Wykonaj następujące kroki, aby utworzyć konto usługi Azure Automation za pomocą metody wybierania i konfigurowania aplikacji automatyzacji z portalu Marketplace:
 
-- Zaloguj się do Azure Portal
-- Kliknij pozycję " **+ Utwórz zasób**" w lewym górnym rogu.
-- Wyszukaj "**automatyzację**" (naciśnij klawisz ENTER)
-- Kliknij aplikację Automation w wynikach wyszukiwania
+- Zaloguj się do portalu Platformy Azure
+- Kliknij "**+ Utwórz zasób**" w lewym górnym rogu
+- Wyszukaj "**Automatyzacja**" (naciśnij enter)
+- Kliknij aplikację Automatyzacja w wynikach wyszukiwania
 
-![Dodawanie usługi Azure Automation](./media/sql-database-automatic-tuning-email-notifications/howto-email-01.png)
+![Dodawanie automatyzacji platformy Azure](./media/sql-database-automatic-tuning-email-notifications/howto-email-01.png)
 
-- W okienku "Tworzenie konta usługi Automation" kliknij pozycję "**Utwórz**".
-- Wypełnij wymagane informacje: Wprowadź nazwę dla tego konta usługi Automation, wybierz identyfikator subskrypcji platformy Azure i zasoby platformy Azure, które mają być używane na potrzeby wykonywania skryptu programu PowerShell.
-- Dla opcji "**Utwórz konto Uruchom jako platformy Azure**" Wybierz opcję **tak** , aby skonfigurować typ konta, w ramach którego działa skrypt programu PowerShell z pomocą Azure Automation. Aby dowiedzieć się więcej na temat typów kont, zobacz [konto Uruchom jako](https://docs.microsoft.com/azure/automation/automation-create-runas-account)
-- Zakończenie tworzenia konta usługi Automation przez kliknięcie przycisku **Utwórz**
+- Po wejściu do okienka "Utwórz konto automatyzacji" kliknij "**Utwórz**"
+- Wypełnianie wymaganych informacji: wprowadź nazwę tego konta automatyzacji, wybierz identyfikator subskrypcji platformy Azure i zasoby platformy Azure, które mają być używane do wykonywania skryptów programu PowerShell
+- W przypadku opcji **"Utwórz konto azure uruchom jako**" wybierz opcję **Tak,** aby skonfigurować typ konta, na którym skrypt programu PowerShell jest uruchamiany za pomocą usługi Azure Automation. Aby dowiedzieć się więcej o typach kont, zobacz [Uruchamianie jako konto](https://docs.microsoft.com/azure/automation/automation-create-runas-account)
+- Zawarcie utworzenia konta automatyzacji przez kliknięcie **przycisku Utwórz**
 
 > [!TIP]
-> Zapisz nazwę konta Azure Automation, Identyfikator subskrypcji i zasoby (takie jak kopiowanie i wklejanie do Notatnika) dokładnie tak jak w przypadku tworzenia aplikacji automatyzacji. Te informacje będą potrzebne później.
+> Zapisz nazwę konta usługi Azure Automation, identyfikator subskrypcji i zasoby (takie jak kopiuj i wklej do notatnika) dokładnie tak, jak wprowadzono podczas tworzenia aplikacji automatyzacji. Te informacje są potrzebne później.
 >
 
-Jeśli masz kilka subskrypcji platformy Azure, dla których chcesz skompilować tę samą automatyzację, musisz powtórzyć ten proces dla innych subskrypcji.
+Jeśli masz kilka subskrypcji platformy Azure, dla których chcesz utworzyć tę samą automatyzację, musisz powtórzyć ten proces dla innych subskrypcji.
 
-## <a name="update-azure-automation-modules"></a>Aktualizowanie modułów Azure Automation
+## <a name="update-azure-automation-modules"></a>Aktualizowanie modułów usługi Azure Automation
 
-Skrypt programu PowerShell umożliwiający pobranie zalecenia dotyczącego dostrajania automatycznego używa poleceń [Get-AzResource](https://docs.microsoft.com/powershell/module/az.Resources/Get-azResource) i [Get-AzSqlDatabaseRecommendedAction](https://docs.microsoft.com/powershell/module/az.Sql/Get-azSqlDatabaseRecommendedAction) , dla których wymagany jest moduł platformy Azure w wersji 4 lub nowszej.
+Skrypt programu PowerShell do pobierania zalecenia automatycznego dostrajania używa [get-AzResource](https://docs.microsoft.com/powershell/module/az.Resources/Get-azResource) i [Get-AzSqlDatabaseRecommendedAction](https://docs.microsoft.com/powershell/module/az.Sql/Get-azSqlDatabaseRecommendedAction) polecenia, dla których moduł Azure w wersji 4 i powyżej jest wymagane.
 
-- Jeśli Twoje moduły platformy Azure wymagają aktualizacji, zobacz [AZ module Support in Azure Automation](../automation/az-modules.md).
+- Jeśli moduły platformy Azure wymagają aktualizacji, zobacz [obsługę modułów Az w usłudze Azure Automation.](../automation/az-modules.md)
 
-## <a name="create-azure-automation-runbook"></a>Tworzenie elementu Runbook Azure Automation
+## <a name="create-azure-automation-runbook"></a>Tworzenie systemu ceń automatyzacji platformy Azure
 
-Następnym krokiem jest utworzenie elementu Runbook w Azure Automation, w którym znajduje się skrypt programu PowerShell służący do pobierania zaleceń dostrajania.
+Następnym krokiem jest utworzenie likmy w usłudze Azure Automation, wewnątrz której znajduje się skrypt programu PowerShell do pobierania zaleceń dostrajania.
 
-Wykonaj następujące kroki, aby utworzyć nowy element Runbook Azure Automation:
+Wykonaj następujące kroki, aby utworzyć nowy projekt owy usługi Azure Automation:
 
-- Uzyskaj dostęp do konta Azure Automation utworzonego w poprzednim kroku
-- Raz w okienku konto usługi Automation kliknij element menu "**elementy Runbook**" po lewej stronie, aby utworzyć nowy element Runbook Azure Automation przy użyciu skryptu programu PowerShell. Aby dowiedzieć się więcej na temat tworzenia elementów Runbook usługi Automation, zobacz [Tworzenie nowego elementu Runbook](../automation/manage-runbooks.md#create-a-runbook).
-- Aby dodać nowy element Runbook, kliknij opcję menu " **+ Dodaj element Runbook**", a następnie kliknij pozycję "**szybkie tworzenie — tworzenie nowego elementu Runbook**".
-- W okienku elementu Runbook wpisz nazwę elementu Runbook (na potrzeby tego przykładu zostanie użyta wartość "**AutomaticTuningEmailAutomation**"), wybierz typ elementu Runbook jako program **PowerShell** i napisz opis tego elementu Runbook, aby opisać jego przeznaczenie.
-- Kliknij przycisk **Utwórz** , aby zakończyć tworzenie nowego elementu Runbook
+- Dostęp do konta usługi Azure Automation utworzonego w poprzednim kroku
+- Po wejściu do okienka konta automatyzacji kliknij element menu **"Runbooks"** po lewej stronie, aby utworzyć nowy element runbook usługi Azure Automation ze skryptem programu PowerShell. Aby dowiedzieć się więcej o tworzeniu śmięty automatyzacji, zobacz [Tworzenie nowego uruchomieniu .](../automation/manage-runbooks.md#create-a-runbook)
+- Aby dodać nowy element runbook, kliknij opcję menu "**+Dodaj element runbook**", a następnie kliknij przycisk "**Szybkie tworzenie — utwórz nowy element runbook**".
+- W okienku Runbook wpisz nazwę przewodniczącego (na potrzeby tego przykładu jest używana "**AutomaticTuningEmailAutomation"),** wybierz typ przewodniczącego jako **program PowerShell** i napisz opis tego żyjącego łańca, aby opisać jego przeznaczenie.
+- Kliknij przycisk **Utwórz,** aby zakończyć tworzenie nowego ekscesu
 
-![Dodawanie elementu Runbook usługi Azure Automation](./media/sql-database-automatic-tuning-email-notifications/howto-email-03.png)
+![Dodawanie podręcznika automatyzacji platformy Azure](./media/sql-database-automatic-tuning-email-notifications/howto-email-03.png)
 
-Wykonaj następujące kroki, aby załadować skrypt programu PowerShell wewnątrz utworzonego elementu Runbook:
+Wykonaj następujące kroki, aby załadować skrypt programu PowerShell wewnątrz utworzonego życiówki:
 
-- W okienku "**Edytuj element Runbook programu PowerShell**" Wybierz pozycję "**elementy Runbook**" w drzewie menu i rozwiń widok, dopóki nie zostanie wyświetlona nazwa elementu Runbook (w tym przykładzie "**AutomaticTuningEmailAutomation**"). Wybierz ten element Runbook.
-- W pierwszym wierszu "Edytuj element Runbook programu PowerShell" (rozpoczynając od numeru 1) Skopiuj poniższy kod skryptu programu PowerShell. Ten skrypt programu PowerShell jest dostępny z chwilą rozpoczęcia pracy. Zmodyfikuj skrypt, aby wymusić Twoje potrzeby.
+- Wewnątrz okienka "**Edytuj runbook programu PowerShell**" wybierz "**RUNBOOKS**" w drzewie menu i rozwiń widok, aż zobaczysz nazwę żyjącego (w tym przykładzie "**AutomaticTuningEmailAutomation**"). Wybierz ten projekt eks-owy.
+- W pierwszym wierszu "Edytuj runbook programu PowerShell" (począwszy od numeru 1), kopiuj i wklej następujący kod skryptu programu PowerShell. Ten skrypt programu PowerShell jest dostarczany w stanie takim, w jakim można rozpocząć pracę. Zmodyfikuj skrypt, aby dochowywać.
 
-W nagłówku podanego skryptu programu PowerShell należy zastąpić `<SUBSCRIPTION_ID_WITH_DATABASES>` IDENTYFIKATORem subskrypcji platformy Azure. Aby dowiedzieć się, jak pobrać identyfikator subskrypcji platformy Azure, zobacz temat [Pobieranie identyfikatora GUID subskrypcji platformy Azure](https://blogs.msdn.microsoft.com/mschray/20../../getting-your-azure-subscription-guid-new-portal/).
+W nagłówku dostarczonego skryptu programu PowerShell należy zastąpić `<SUBSCRIPTION_ID_WITH_DATABASES>` identyfikatorem subskrypcji platformy Azure. Aby dowiedzieć się, jak pobrać identyfikator subskrypcji platformy Azure, zobacz [Pobieranie identyfikatora GUID subskrypcji platformy Azure.](https://blogs.msdn.microsoft.com/mschray/20../../getting-your-azure-subscription-guid-new-portal/)
 
-W przypadku kilku subskrypcji można je dodać jako rozdzielane przecinkami do właściwości "$subscriptions" w nagłówku skryptu.
+W przypadku kilku subskrypcji można dodać je jako przecinki rozdzielone do właściwości "$subscriptions" w nagłówku skryptu.
 
 ```powershell
 # PowerShell script to retrieve Azure SQL Database Automatic tuning recommendations.
@@ -170,86 +170,86 @@ $table = $results | Format-List
 Write-Output $table
 ```
 
-Kliknij przycisk "**Zapisz**" w prawym górnym rogu, aby zapisać skrypt. Gdy skrypt jest zadowalający, kliknij przycisk "**Opublikuj**", aby opublikować ten element Runbook.
+Kliknij przycisk **"Zapisz"** w prawym górnym rogu, aby zapisać skrypt. Po zakończeniu pracy ze skryptem kliknij przycisk "**Publikuj**", aby opublikować ten projekt runbook.
 
-W głównym okienku elementu Runbook możesz kliknąć przycisk "**Start**", aby **przetestować** skrypt. Kliknij "**dane wyjściowe**", aby wyświetlić wyniki wykonywanego skryptu. Dane wyjściowe będą stanowić zawartość wiadomości e-mail. Przykładowe dane wyjściowe skryptu można zobaczyć na poniższym zrzucie ekranu.
+W głównym okienku runbooka możesz kliknąć przycisk "**Start**", aby **przetestować** skrypt. Kliknij na **"Dane wyjściowe",** aby wyświetlić wyniki wykonanego skryptu. Ten wynik będzie zawartość wiadomości e-mail. Przykładowe dane wyjściowe ze skryptu można zobaczyć na poniższym zrzucie ekranu.
 
-![Uruchamianie widoku rekomendacje automatycznego dostrajania przy użyciu Azure Automation](./media/sql-database-automatic-tuning-email-notifications/howto-email-04.png)
+![Uruchamianie zaleceń dotyczących automatycznego dostrajania widoku za pomocą usługi Azure Automation](./media/sql-database-automatic-tuning-email-notifications/howto-email-04.png)
 
-Upewnij się, że zawartość jest dostosowywana przez dostosowanie skryptu programu PowerShell do Twoich potrzeb.
+Upewnij się, aby dostosować zawartość, dostosowując skrypt programu PowerShell do swoich potrzeb.
 
-W powyższych krokach skrypt programu PowerShell służący do pobierania zaleceń dostrajania automatycznego jest ładowany w Azure Automation. Następnym krokiem jest Automatyzacja i zaplanowanie zadania dostarczania poczty e-mail.
+W powyższych krokach skrypt programu PowerShell do pobierania zaleceń automatycznego dostrajania jest ładowany w usłudze Azure Automation. Następnym krokiem jest zautomatyzowanie i zaplanowanie zadania dostarczania wiadomości e-mail.
 
-## <a name="automate-the-email-jobs-with-microsoft-flow"></a>Automatyzowanie zadań poczty e-mail za pomocą Microsoft Flow
+## <a name="automate-the-email-jobs-with-microsoft-flow"></a>Automatyzacja zadań poczty e-mail za pomocą usługi Microsoft Flow
 
-Aby zakończyć rozwiązanie, w ostatnim kroku Utwórz przepływ automatyzacji w Microsoft Flow zawierający trzy akcje (zadania):
+Aby ukończyć rozwiązanie, jako ostatni krok, utwórz przepływ automatyzacji w usłudze Microsoft Flow składający się z trzech akcji (zadań):
 
-1. "**Azure Automation-Create Job**" — służy do wykonywania skryptu programu PowerShell w celu pobrania zaleceń dostrajania automatycznego w elemencie Runbook Azure Automation
-2. "**Azure Automation — Pobierz dane wyjściowe zadania**" — służy do pobierania danych wyjściowych z wykonanego skryptu programu PowerShell
-3. "**Office 365 Outlook — Wyślij wiadomość e-mail**" — służy do wysyłania wiadomości e-mail. Wiadomości e-mail są wysyłane przy użyciu konta Office 365 indywidualnego tworzenia przepływu.
+1. "Usługa**Azure Automation — tworzenie zadania"**— służy do wykonywania skryptu programu PowerShell w celu pobrania zaleceń dotyczących automatycznego dostrajania w usłudze Azure Automation
+2. "Usługa**Azure Automation — pobieranie danych wyjściowych zadań**" — służy do pobierania danych wyjściowych z wykonanego skryptu programu PowerShell
+3. "**Office 365 Outlook — Wyślij wiadomość e-mail**" — służy do wysyłania wiadomości e-mail. Wiadomości e-mail są wysyłane przy użyciu konta usługi Office 365 osoby tworzącej przepływ.
 
-Aby dowiedzieć się więcej o możliwościach Microsoft Flow, zobacz [wprowadzenie do Microsoft Flow](https://docs.microsoft.com/flow/getting-started).
+Aby dowiedzieć się więcej o funkcjach usługi Microsoft Flow, zobacz [Wprowadzenie do usługi Microsoft Flow](https://docs.microsoft.com/flow/getting-started).
 
-Wymaganie wstępne dla tego kroku polega na zarejestrowaniu się w usłudze [Microsoft Flow](https://flow.microsoft.com) Account i zalogowaniu się. Po umieszczeniu w rozwiązaniu wykonaj następujące kroki, aby skonfigurować **Nowy przepływ**:
+Warunkiem wstępnym tego kroku jest utworzenie konta [Usługi Microsoft Flow](https://flow.microsoft.com) i zalogowanie się. Po wejściu do roztworu wykonaj następujące kroki, aby skonfigurować **nowy przepływ:**
 
-- Uzyskaj dostęp do elementu menu "**Moje przepływy**"
-- W obszarze Moje przepływy wybierz link " **+ Utwórz z pustego**" w górnej części strony
-- Kliknij link "**Wyszukaj setki łączników i wyzwalaczy**" w dolnej części strony.
-- W polu wyszukiwania wpisz "**cykl**" i wybierz pozycję "**harmonogram-cykl**" z wyników wyszukiwania, aby zaplanować uruchamianie zadania dostarczania poczty e-mail.
-- W okienku cykl w polu Częstotliwość wybierz częstotliwość planowania dla tego przepływu, na przykład Wysyłaj automatyczne wiadomości e-mail co minutę, godzinę, dzień, tydzień itd.
+- Dostęp do elementu menu **"Moje przepływy"**
+- W obszarze Moje przepływy wybierz link "**+Utwórz z pustego**miejsca " u góry strony
+- Kliknij na link "**Wyszukaj setki złączy i wyzwalaczy**" u dołu strony
+- W polu wyszukiwania wpisz "**recurrence**" i wybierz "**Harmonogram - Cykl**" z wyników wyszukiwania, aby zaplanować uruchomienie zadania dostarczania wiadomości e-mail.
+- W okienku Cykl w polu Częstotliwość wybierz częstotliwość planowania dla tego przepływu, na przykład wysyłanie automatycznej wiadomości e-mail co minutę, godzinę, dzień, tydzień itp.
 
-Następnym krokiem jest dodanie trzech zadań (tworzenie, pobieranie danych wyjściowych i wysyłanie wiadomości e-mail) do nowo utworzonego przepływu cyklicznego. Aby wykonać Dodawanie wymaganych zadań do przepływu, wykonaj następujące kroki:
+Następnym krokiem jest dodanie trzech zadań (tworzenie, pobierz dane wyjściowe i wyślij wiadomość e-mail) do nowo utworzonego przepływu cyklicznego. Aby wykonać dodawanie wymaganych zadań do przepływu, wykonaj następujące kroki:
 
-1. Utwórz akcję wykonywania skryptu programu PowerShell w celu pobrania zaleceń dotyczących dostrajania
+1. Tworzenie akcji w celu wykonania skryptu programu PowerShell w celu pobrania zaleceń dotyczących dostrajania
 
-   - Wybierz pozycję " **+ nowy krok**", a następnie pozycję "**Dodaj akcję**" w okienku przepływ cyklu.
-   - W polu wyszukiwania wpisz "**Automatyzacja**" i wybierz pozycję "**Azure Automation — Utwórz zadanie**" z wyników wyszukiwania
-   - W okienku Tworzenie zadania skonfiguruj właściwości zadania. W przypadku tej konfiguracji potrzebne będą szczegóły dotyczące identyfikatora subskrypcji platformy Azure, grupy zasobów i konta usługi Automation, które **zostały wcześniej zarejestrowane** w **okienku konto usługi Automation**. Aby dowiedzieć się więcej o opcjach dostępnych w tej sekcji, zobacz [Azure Automation-Create Job](https://docs.microsoft.com/connectors/azureautomation/#create-job).
-   - Aby ukończyć tworzenie tej akcji, kliknij pozycję "**Zapisz przepływ**".
+   - Wybierz "**+Nowy krok**", a następnie "**Dodaj akcję**" w okienku przepływu cyklu
+   - W polu wyszukiwania typu "**automation**" i wybierz "**Usługa Azure Automation – Tworzenie zadania**" z wyników wyszukiwania
+   - W okienku Tworzenie zadania skonfiguruj właściwości zadania. W przypadku tej konfiguracji potrzebne będą szczegółowe informacje o identyfikatorze subskrypcji platformy Azure, grupie zasobów i koncie automatyzacji **wcześniej zarejestrowanym** w **okienku Konto automatyzacji**. Aby dowiedzieć się więcej o opcjach dostępnych w tej sekcji, zobacz [Usługa Azure Automation — Tworzenie zadania](https://docs.microsoft.com/connectors/azureautomation/#create-job).
+   - Ukończ tworzenie tej akcji, klikając "**Zapisz przepływ**"
 
-2. Utwórz akcję w celu pobrania danych wyjściowych z wykonanego skryptu programu PowerShell
+2. Tworzenie akcji w celu pobrania danych wyjściowych z wykonanego skryptu programu PowerShell
 
-   - Wybierz pozycję " **+ nowy krok**", a następnie pozycję "**Dodaj akcję**" w okienku przepływ cyklu.
-   - W polu wyszukiwania wpisz "**Automatyzacja**" i wybierz pozycję "**Azure Automation — Pobierz dane wyjściowe zadania**" z wyników wyszukiwania. Aby dowiedzieć się więcej o opcjach dostępnych w tej sekcji, zobacz [Azure Automation – pobieranie danych wyjściowych zadania](https://docs.microsoft.com/connectors/azureautomation/#get-job-output).
-   - Wypełnij pola wymagane (podobne do tworzenia poprzedniego zadania) — Wypełnij Identyfikator subskrypcji platformy Azure, grupę zasobów i konto usługi Automation (zgodnie z definicją w okienku konto usługi Automation).
-   - Kliknij wewnątrz pola "**Identyfikator zadania**", aby wyświetlić menu "**zawartość dynamiczna**". Z poziomu tego menu wybierz opcję "**Identyfikator zadania**".
-   - Aby ukończyć tworzenie tej akcji, kliknij pozycję "**Zapisz przepływ**".
+   - Wybierz "**+Nowy krok**", a następnie "**Dodaj akcję**" w okienku przepływu cyklu
+   - W wyszukiwaniu typu "**automation**" i wybierz "**Usługa Azure Automation — Pobierz dane wyjściowe zadania**" z wyników wyszukiwania. Aby dowiedzieć się więcej o opcjach dostępnych w tej sekcji, zobacz [Usługa Azure Automation — pobierz dane wyjściowe zadania.](https://docs.microsoft.com/connectors/azureautomation/#get-job-output)
+   - Wypełnianie wymaganych pól (podobnie jak tworzenie poprzedniego zadania) — wypełnianie identyfikatora subskrypcji platformy Azure, grupy zasobów i konta automatyzacji (wprowadzonego w okienku Konto automatyzacji)
+   - Kliknij wewnątrz pola "**Identyfikator zadania**" dla menu "**Zawartość dynamiczna**", aby się wyświetlić. W tym menu wybierz opcję "**Identyfikator zadania**".
+   - Ukończ tworzenie tej akcji, klikając "**Zapisz przepływ**"
 
-3. Utwórz akcję do wysłania wiadomości e-mail przy użyciu integracji z pakietem Office 365
+3. Tworzenie akcji do wysyłania wiadomości e-mail przy użyciu integracji z usłudze Office 365
 
-   - Wybierz pozycję " **+ nowy krok**", a następnie pozycję "**Dodaj akcję**" w okienku przepływ cyklu.
-   - W polu wyszukiwania wpisz "**Wyślij wiadomość e-mail**" i wybierz pozycję "**Office 365 Outlook — Wyślij wiadomość e-mail**" z wyników wyszukiwania
-   - W polu "**do**" wpisz adres e-mail, na który ma być wysyłana wiadomość e-mail z powiadomieniem
-   - W polu "**podmiot**" wpisz w temacie wiadomości e-mail, na przykład "powiadomienie dotyczące automatycznego dostrajania powiadomień e-mail"
-   - Kliknij wewnątrz pola "**treść**", aby wyświetlić menu "**zawartość dynamiczna**". Z poziomu tego menu w obszarze "**Pobierz dane wyjściowe zadania**" Wybierz pozycję "**zawartość**".
-   - Aby ukończyć tworzenie tej akcji, kliknij pozycję "**Zapisz przepływ**".
+   - Wybierz "**+Nowy krok**", a następnie "**Dodaj akcję**" w okienku przepływu cyklu
+   - W wpisowym wyszukiwaniu wpisz "**wyślij wiadomość e-mail**" i wybierz "**Office 365 Outlook – Wyślij wiadomość e-mail**" z wyników wyszukiwania
+   - W polu Wpisz pole **"Do"** w adresie e-mail, na który musisz wysłać wiadomość e-mail z powiadomieniem
+   - W polu "**Temat**" wpisz temat wiadomości e-mail, na przykład "Automatyczne dostrajanie rekomendacji powiadomienia e-mail"
+   - Kliknij wewnątrz pola "**Body**" dla menu "**Zawartość dynamiczna**", aby się wyświetlić. Z tego menu w obszarze "**Pobierz dane wyjściowe zadania**", wybierz "**Zawartość**"
+   - Ukończ tworzenie tej akcji, klikając "**Zapisz przepływ**"
 
 > [!TIP]
-> Aby wysyłać automatyczne wiadomości e-mail do różnych adresatów, Utwórz oddzielne przepływy. W tych dodatkowych przepływach Zmień adres e-mail adresata w polu "do" i wiersz tematu wiadomości e-mail w polu "podmiot". Tworzenie nowych elementów Runbook w Azure Automation z niestandardowymi skryptami programu PowerShell (na przykład z zmianą identyfikatora subskrypcji platformy Azure) umożliwia dalsze dostosowywanie zautomatyzowanych scenariuszy, takich jak wysyłanie wiadomości e-mail do osobnych odbiorców przy użyciu dostrajania automatycznego zalecenia dotyczące osobnych subskrypcji.
+> Aby wysyłać automatyczne wiadomości e-mail do różnych adresatów, należy utworzyć oddzielne przepływy. W tych dodatkowych przepływach zmień adres e-mail adresata w polu "Do" oraz wiersz tematu wiadomości e-mail w polu "Temat". Tworzenie nowych niestandardowych niestandardowych niestandardowych niestandardowych skryptów programu PowerShell (na przykład ze zmianą identyfikatora subskrypcji platformy Azure) umożliwia dalsze dostosowywanie zautomatyzowanych scenariuszy, takich jak na przykład wysyłanie wiadomości e-mail do oddzielnych adresatów w przypadku automatycznego dostrajania zalecenia dotyczące oddzielnych subskrypcji.
 >
 
-Powyższe zawiera kroki wymagane do skonfigurowania przepływu pracy dla zadania dostarczania poczty e-mail. Na poniższej ilustracji przedstawiono cały przepływ składający się z trzech utworzonych akcji.
+Powyższe określa kroki wymagane do skonfigurowania przepływu pracy zadania dostarczania poczty e-mail. Cały przepływ składający się z trzech zbudowanych akcji jest pokazany na poniższej ilustracji.
 
-![Wyświetlanie przepływu powiadomień e-mail dotyczących dostrajania automatycznego](./media/sql-database-automatic-tuning-email-notifications/howto-email-05.png)
+![Wyświetlanie przepływu powiadomień e-mail do automatycznego dostrajania](./media/sql-database-automatic-tuning-email-notifications/howto-email-05.png)
 
-Aby przetestować przepływ, kliknij pozycję "**Uruchom teraz**" w prawym górnym rogu w okienku przepływ.
+Aby przetestować przepływ, kliknij przycisk "**Uruchom teraz**" w prawym górnym rogu wewnątrz okienka przepływu.
 
-Statystyka uruchamiania zautomatyzowanych zadań pokazująca pomyślne wysłanie powiadomień e-mail, które można zobaczyć z okienka analiza przepływu.
+Statystyki uruchamiania zautomatyzowanych zadań, pokazujące powodzenie wysyłanych powiadomień e-mail, można zobaczyć w okienku analizy przepływu.
 
-![Uruchamianie przepływu dla powiadomień e-mail dotyczących dostrajania automatycznego](./media/sql-database-automatic-tuning-email-notifications/howto-email-06.png)
+![Przepływ uruchamiania dla automatycznego dostrajania powiadomień e-mail](./media/sql-database-automatic-tuning-email-notifications/howto-email-06.png)
 
-Analiza przepływu jest przydatna do monitorowania sukcesu wykonywania zadań i w razie potrzeby rozwiązywania problemów.  W przypadku rozwiązywania problemów warto również zapoznać się z dziennikiem wykonywania skryptu programu PowerShell dostępnym za pomocą aplikacji Azure Automation.
+Analiza przepływu jest przydatna do monitorowania powodzenia wykonywania zadań i w razie potrzeby do rozwiązywania problemów.  W przypadku rozwiązywania problemów można również sprawdzić dziennik wykonywania skryptu programu PowerShell dostępny za pośrednictwem aplikacji Usługi Azure Automation.
 
-Końcowe dane wyjściowe zautomatyzowanej wiadomości e-mail wyglądają podobnie do następującej wiadomości e-mail otrzymanej po skompilowaniu i uruchomieniu tego rozwiązania:
+Ostateczne dane wyjściowe automatycznej wiadomości e-mail wyglądają podobnie do następującej wiadomości e-mail otrzymanej po zbudowaniu i uruchomieniu tego rozwiązania:
 
-![Przykładowe dane wyjściowe wiadomości e-mail z powiadomień dotyczących automatycznego dostrajania wiadomości e-mail](./media/sql-database-automatic-tuning-email-notifications/howto-email-07.png)
+![Przykładowe dane wyjściowe wiadomości e-mail z automatycznego dostrajania powiadomień e-mail](./media/sql-database-automatic-tuning-email-notifications/howto-email-07.png)
 
-Przez dostosowanie skryptu programu PowerShell możesz dostosować dane wyjściowe i formatowanie zautomatyzowanej wiadomości e-mail do swoich potrzeb.
+Dostosowując skrypt programu PowerShell, można dostosować dane wyjściowe i formatowanie automatycznej poczty e-mail do swoich potrzeb.
 
-Możesz dodatkowo dostosować rozwiązanie do kompilowania powiadomień e-mail na podstawie konkretnego zdarzenia dostrajania oraz wielu odbiorców dla wielu subskrypcji lub baz danych, w zależności od scenariuszy niestandardowych.
+Można dodatkowo dostosować rozwiązanie do tworzenia powiadomień e-mail na podstawie określonego zdarzenia dostrajania i wielu adresatów, dla wielu subskrypcji lub baz danych, w zależności od scenariuszy niestandardowych.
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Dowiedz się więcej o tym, jak dostrajanie automatyczne może pomóc w ulepszaniu wydajności bazy danych, zobacz [dostrajanie automatyczne w Azure SQL Database](sql-database-automatic-tuning.md).
-- Aby włączyć dostrajanie automatyczne w Azure SQL Database do zarządzania obciążeniem, zobacz [Włączanie dostrajania automatycznego](sql-database-automatic-tuning-enable.md).
-- Aby ręcznie przejrzeć i zastosować zalecenia dotyczące dostrajania automatycznego, zobacz [Znajdowanie i stosowanie zaleceń dotyczących wydajności](sql-database-advisor-portal.md).
+- Dowiedz się więcej o tym, jak automatyczne dostrajanie może pomóc w zwiększce wydajności bazy danych, zobacz [Automatyczne dostrajanie w bazie danych SQL azure](sql-database-automatic-tuning.md).
+- Aby włączyć automatyczne dostrajanie w usłudze Azure SQL Database w celu zarządzania obciążeniem, zobacz [Włączanie dostrajania automatycznego](sql-database-automatic-tuning-enable.md).
+- Aby ręcznie przejrzeć i zastosować zalecenia dotyczące automatycznego dostrajania, zobacz [Znajdowanie i stosowanie zaleceń dotyczących wydajności](sql-database-advisor-portal.md).

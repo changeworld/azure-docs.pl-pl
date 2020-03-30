@@ -1,6 +1,6 @@
 ---
-title: Używanie grup umieszczania sąsiedztwa dla maszyn wirtualnych z systemem Linux
-description: Dowiedz się więcej na temat tworzenia i używania grup umieszczania sąsiedztwa dla maszyn wirtualnych z systemem Linux na platformie Azure.
+title: Używanie grup miejsc docelowych zbliżeniowych dla maszyn wirtualnych z systemem Linux
+description: Dowiedz się więcej o tworzeniu i używaniu grup miejsc docelowych zbliżeniowych dla maszyn wirtualnych systemu Linux na platformie Azure.
 services: virtual-machines-linux
 author: cynthn
 manager: gwallace
@@ -11,21 +11,21 @@ ms.workload: infrastructure-services
 ms.date: 10/30/2019
 ms.author: cynthn
 ms.openlocfilehash: 353a266b647c299515c15889c302ba4409aa511b
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73171053"
 ---
-# <a name="deploy-vms-to-proximity-placement-groups-using-azure-cli"></a>Wdrażanie maszyn wirtualnych w grupach umieszczania sąsiedztwa przy użyciu interfejsu wiersza polecenia platformy Azure
+# <a name="deploy-vms-to-proximity-placement-groups-using-azure-cli"></a>Wdrażanie maszyn wirtualnych w grupach miejsc docelowych zbliżeniowych przy użyciu interfejsu wiersza polecenia platformy Azure
 
-Aby zapewnić, że maszyny wirtualne będą możliwie jak najbliżej, osiągając najniższe możliwe opóźnienie, należy wdrożyć je w obrębie [grupy umieszczania sąsiedztwa](co-location.md#proximity-placement-groups).
+Aby maszyny wirtualne były jak najbliżej, osiągając możliwie najniższe opóźnienie, należy wdrożyć je w [grupie miejsc docelowych w pobliżu](co-location.md#proximity-placement-groups).
 
-Grupa umieszczania bliskości jest grupą logiczną używaną w celu upewnienia się, że zasoby obliczeniowe platformy Azure znajdują się fizycznie blisko siebie. Grupy umieszczania zbliżeniowe są przydatne w przypadku obciążeń, w których jest wymagane małe opóźnienia.
+Grupa miejsc docelowych zbliżeniowych jest logicznym grupowaniem używanym w celu upewnienia się, że zasoby obliczeniowe platformy Azure są fizycznie zlokalizowane blisko siebie. Grupy miejsc docelowych zbliżeniowych są przydatne w przypadku obciążeń, w których wymagane jest małe opóźnienia.
 
 
-## <a name="create-the-proximity-placement-group"></a>Tworzenie grupy umieszczania zbliżeniowe
-Utwórz grupę umieszczania sąsiedztwa przy użyciu [`az ppg create`](/cli/azure/ppg#az-ppg-create). 
+## <a name="create-the-proximity-placement-group"></a>Tworzenie grupy miejsc docelowych zbliżeniowych
+Utwórz grupę miejsc [`az ppg create`](/cli/azure/ppg#az-ppg-create)docelowych zbliżeniowych za pomocą programu . 
 
 ```azurecli-interactive
 az group create --name myPPGGroup --location westus
@@ -36,9 +36,9 @@ az ppg create \
    -t standard 
 ```
 
-## <a name="list-proximity-placement-groups"></a>Wyświetl listę grup umieszczania zbliżeniowe
+## <a name="list-proximity-placement-groups"></a>Wyświetlanie listy grup miejsc docelowych zbliżeniowych
 
-Możesz wyświetlić listę wszystkich grup umieszczania w sąsiedztwie przy użyciu polecenia [AZ PPG list](/cli/azure/ppg#az-ppg-list).
+Możesz wyświetlić listę wszystkich grup miejsc docelowych zbliżeniowych za pomocą [listy az ppg](/cli/azure/ppg#az-ppg-list).
 
 ```azurecli-interactive
 az ppg list -o table
@@ -46,7 +46,7 @@ az ppg list -o table
 
 ## <a name="create-a-vm"></a>Tworzenie maszyny wirtualnej
 
-Utwórz maszynę wirtualną w grupie umieszczania bliskości przy użyciu [nowej AZ VM](/cli/azure/vm#az-vm-create).
+Utwórz maszynę wirtualną w grupie miejsc docelowych w pobliżu przy użyciu [nowego az vm](/cli/azure/vm#az-vm-create).
 
 ```azurecli-interactive
 az vm create \
@@ -59,19 +59,19 @@ az vm create \
    -l westus
 ```
 
-Maszynę wirtualną można zobaczyć w grupie położenia zbliżeniowe przy użyciu polecenia [AZ PPG show](/cli/azure/ppg#az-ppg-show).
+Maszynę Wirtualną można wyświetlić w grupie miejsc docelowych zbliżeniowych za pomocą [programu AZ ppg show](/cli/azure/ppg#az-ppg-show).
 
 ```azurecli-interactive
 az ppg show --name myppg --resource-group myppggroup --query "virtualMachines"
 ```
 
 ## <a name="availability-sets"></a>Zestawy dostępności
-Zestaw dostępności można również utworzyć w grupie umieszczania sąsiedztwa. Użyj tego samego `--ppg` parametru z parametrem [AZ VM Availability-Set Create](/cli/azure/vm/availability-set#az-vm-availability-set-create) w celu utworzenia zestawu dostępności i wszystkich maszyn wirtualnych w zestawie dostępności również zostanie utworzona w tej samej grupie umieszczania sąsiedztwa.
+Można również utworzyć zestaw dostępności w grupie miejsc docelowych zbliżeniowych. Użyj tego `--ppg` samego parametru z [az vm dostępność zestaw tworzenia,](/cli/azure/vm/availability-set#az-vm-availability-set-create) aby utworzyć zestaw dostępności i wszystkie maszyny wirtualne w zestawie dostępności zostaną również utworzone w tej samej grupie miejsc docelowych zbliżeniowych.
 
 ## <a name="scale-sets"></a>Zestawy skalowania
 
-Zestaw skalowania można również utworzyć w grupie umieszczania sąsiedztwa. Użyj tego samego `--ppg` parametru z [AZ VMSS Create](/cli/azure/vmss?view=azure-cli-latest#az-vmss-create) , aby utworzyć zestaw skalowania i wszystkie wystąpienia zostaną utworzone w tej samej grupie umieszczania sąsiedztwa.
+Można również utworzyć zestaw skalowania w grupie miejsc docelowych zbliżeniowych. Użyj tego `--ppg` samego parametru z [az vmss utworzyć,](/cli/azure/vmss?view=azure-cli-latest#az-vmss-create) aby utworzyć zestaw skalowania i wszystkie wystąpienia zostaną utworzone w tej samej grupie miejsc docelowych zbliżeniowych.
 
 ## <a name="next-steps"></a>Następne kroki
 
-Dowiedz się więcej na temat poleceń [interfejsu wiersza polecenia platformy Azure](/cli/azure/ppg) dla grup umieszczania sąsiedztwa.
+Dowiedz się więcej o poleceniach [interfejsu wiersza polecenia platformy Azure](/cli/azure/ppg) dla grup miejsc docelowych zbliżeniowych.

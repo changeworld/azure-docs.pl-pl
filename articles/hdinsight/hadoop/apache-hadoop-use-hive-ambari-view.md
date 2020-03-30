@@ -1,6 +1,6 @@
 ---
-title: Korzystanie z widoku programu Apache Ambari Hive z Apache Hadoop w usłudze Azure HDInsight
-description: Dowiedz się, jak przesyłać zapytania programu Hive za pomocą widoku programu Hive z przeglądarki sieci Web. Widok Hive jest częścią Ambari internetowego interfejsu użytkownika dostarczonego z klastrem usługi HDInsight opartego na systemie Linux.
+title: Użyj widoku gałęzi Apache Ambari z Apache Hadoop w usłudze Azure HDInsight
+description: Dowiedz się, jak używać widoku gałęzi w przeglądarce sieci Web do przesyłania zapytań hive. Widok hive jest częścią interfejsu użytkownika sieci Web Ambari dostarczanego z klastrem HDInsight opartym na systemie Linux.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,38 +9,38 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/24/2019
 ms.openlocfilehash: 6c199a0dd75b89d9c9368e799c97a28b73758d06
-ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73097099"
 ---
-# <a name="use-apache-ambari-hive-view-with-apache-hadoop-in-hdinsight"></a>Korzystanie z widoku platformy Apache Ambari z usługą Apache Hadoop w usłudze HDInsight
+# <a name="use-apache-ambari-hive-view-with-apache-hadoop-in-hdinsight"></a>Korzystanie z widoku programu Hive narzędzia Apache Ambari z usługą Apache Hadoop w usłudze HDInsight
 
 [!INCLUDE [hive-selector](../../../includes/hdinsight-selector-use-hive.md)]
 
-Dowiedz się, jak uruchamiać zapytania programu Hive za pomocą widoku Hive w programie Apache Ambari. Widok Hive umożliwia tworzenie, optymalizowanie i uruchamianie zapytań programu Hive z poziomu przeglądarki sieci Web.
+Dowiedz się, jak uruchamiać zapytania hive przy użyciu apache Ambari Hive View. Widok gałęzi umożliwia tworzenie, optymalizowanie i uruchamianie zapytań hive z przeglądarki sieci Web.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Klaster usługi Hadoop w usłudze HDInsight. Zobacz Rozpoczynanie [pracy z usługą HDInsight w systemie Linux](./apache-hadoop-linux-tutorial-get-started.md).
-* Przeglądarka sieci Web
+* Klaster Hadoop na HDInsight. Zobacz [Wprowadzenie do HDInsight w systemie Linux](./apache-hadoop-linux-tutorial-get-started.md).
+* Przeglądarka internetowa
 
 ## <a name="run-a-hive-query"></a>Uruchomienie zapytania programu Hive
 
-1. Na [Azure Portal](https://portal.azure.com/)wybierz swój klaster.  Instrukcje można znaleźć w temacie Wyświetlanie [i wyświetlanie klastrów](../hdinsight-administer-use-portal-linux.md#showClusters) . Klaster zostanie otwarty w nowym bloku portalu.
+1. Z [witryny Azure portal](https://portal.azure.com/)wybierz swój klaster.  Zobacz [Lista i pokaż klastry,](../hdinsight-administer-use-portal-linux.md#showClusters) aby uzyskać instrukcje. Klaster jest otwierany w nowym bloku portalu.
 
-1. W obszarze **pulpity nawigacyjne klastra**wybierz pozycję **widoki Ambari**. Po wyświetleniu monitu o uwierzytelnienie Użyj nazwy konta (domyślnej `admin`) i hasła podanego podczas tworzenia klastra. Alternatywnie przejdź do `https://CLUSTERNAME.azurehdinsight.net/#/main/views` w przeglądarce, gdzie `CLUSTERNAME` jest nazwą klastra.
+1. Z **pulpitów nawigacyjnych klastra**wybierz **widoki Ambari**. Po wyświetleniu monitu o uwierzytelnienie `admin`użyj nazwy konta i hasła logowania klastra (domyślnie) podanej podczas tworzenia klastra. Alternatywnie przejdź `https://CLUSTERNAME.azurehdinsight.net/#/main/views` do przeglądarki, `CLUSTERNAME` gdzie jest nazwa klastra.
 
-1. Z listy widoki wybierz pozycję __Widok Hive__.
+1. Z listy widoków wybierz pozycję __Widok gałęzi__.
 
-    ![Ambari wybierz widok Apache Hive Apache](./media/apache-hadoop-use-hive-ambari-view/select-apache-hive-view.png)
+    ![Apache Ambari wybierz widok ula Apache](./media/apache-hadoop-use-hive-ambari-view/select-apache-hive-view.png)
 
-    Strona widok programu Hive jest podobna do następującej:
+    Strona widoku gałęzi jest podobna do następującej ilustracji:
 
-    ![Obraz arkusza zapytania dla widoku programu Hive](./media/apache-hadoop-use-hive-ambari-view/ambari-worksheet-view.png)
+    ![Obraz arkusza kwerendy dla widoku Gałąź](./media/apache-hadoop-use-hive-ambari-view/ambari-worksheet-view.png)
 
-1. Na karcie __zapytanie__ Wklej następujące instrukcje HiveQL do arkusza:
+1. Na karcie __Kwerenda__ wklej następujące instrukcje HiveQL do arkusza:
 
     ```hiveql
     DROP TABLE log4jLogs;
@@ -59,115 +59,115 @@ Dowiedz się, jak uruchamiać zapytania programu Hive za pomocą widoku Hive w p
         GROUP BY t4;
     ```
 
-    Te instrukcje wykonują następujące czynności:
+    Te instrukcje wykonują następujące akcje:
 
-   * `DROP TABLE`: usuwa tabelę i plik danych. w przypadku, gdy tabela już istnieje.
+   * `DROP TABLE`: Usuwa tabelę i plik danych, jeśli tabela już istnieje.
 
-   * `CREATE EXTERNAL TABLE`: tworzy nową tabelę "zewnętrzna" w gałęzi Hive.
-     Tabele zewnętrzne przechowują tylko definicję tabeli w programie Hive. Dane pozostaną w oryginalnej lokalizacji.
+   * `CREATE EXTERNAL TABLE`: Tworzy nową tabelę "zewnętrzną" w obszarze Hive.
+     Tabele zewnętrzne przechowują tylko definicję tabeli w obszarze Gałęzi. Dane są pozostawione w oryginalnej lokalizacji.
 
-   * `ROW FORMAT`: pokazuje, jak są formatowane dane. W takim przypadku pola w każdym dzienniku są oddzielone spacją.
+   * `ROW FORMAT`: Pokazuje sposób formatowania danych. W takim przypadku pola w każdym dzienniku są oddzielone spacją.
 
-   * `STORED AS TEXTFILE LOCATION`: pokazuje, gdzie są przechowywane dane i czy są przechowywane jako tekst.
+   * `STORED AS TEXTFILE LOCATION`: Pokazuje, gdzie dane są przechowywane i czy są przechowywane jako tekst.
 
-   * `SELECT`: wybiera liczbę wszystkich wierszy, w których kolumna T4 zawiera wartość [ERROR].
+   * `SELECT`: Wybiera liczbę wszystkich wierszy, w których kolumna t4 zawiera wartość [BŁĄD].
 
    > [!IMPORTANT]  
-   > Pozostaw __Domyślnie__wybraną __bazę danych__ . Przykłady w tym dokumencie wykorzystują domyślną bazę danych dołączoną do usługi HDInsight.
+   > Pozostaw __domyślny__wybór __bazy danych__ . Przykłady w tym dokumencie użyć domyślnej bazy danych dołączonej do usługi HDInsight.
 
-1. Aby uruchomić zapytanie, wybierz pozycję **Wykonaj** poniżej arkusza. Przycisk zmieni kolor na pomarańczowy, a tekst zostanie zmieniony na **zatrzymany**.
+1. Aby uruchomić kwerendę, wybierz pozycję **Wykonaj** poniżej arkusza. Przycisk zmieni kolor na pomarańczowy, a tekst zmieni się na **Zatrzymaj**.
 
-1. Po zakończeniu zapytania na karcie **wyniki** zostaną wyświetlone wyniki operacji. Następujący tekst jest wynikiem zapytania:
+1. Po zakończeniu kwerendy na karcie **Wyniki** zostaną wyświetlone wyniki operacji. Następujący tekst jest wynikiem kwerendy:
 
         loglevel       count
         [ERROR]        3
 
-    Karta **Dziennik** służy do wyświetlania informacji rejestrowania utworzonych przez zadanie.
+    Za pomocą karty **LOG** można wyświetlić informacje dotyczące rejestrowania utworzonego zadania.
 
    > [!TIP]  
-   > Pobierz lub Zapisz wyniki z okna dialogowego rozwijanej **Akcje** na karcie **wyniki** .
+   > Pobieranie lub zapisywanie wyników z okna dialogowego **Działania** rozwijane na karcie **Wyniki.**
 
-### <a name="visual-explain"></a>Wyjaśnienie wizualizacji
+### <a name="visual-explain"></a>Wizualne wyjaśnienie
 
-Aby wyświetlić wizualizację planu zapytania, wybierz kartę **wyjaśnienie wizualizacji** poniżej arkusza.
+Aby wyświetlić wizualizację planu kwerend, wybierz kartę **Objaśnienie wizualne** pod arkuszem.
 
-Widok **objaśnienia wizualnego** zapytania może pomóc w zrozumieniu przepływu złożonych zapytań.
+**Visual Explain** widok kwerendy może być pomocne w zrozumieniu przepływu złożonych zapytań.
 
-### <a name="tez-ui"></a>Interfejs użytkownika tez
+### <a name="tez-ui"></a>Interfejs użytkownika Tez
 
-Aby wyświetlić interfejs użytkownika tez dla zapytania, wybierz kartę **interfejsu użytkownika tez** pod arkuszem.
+Aby wyświetlić interfejs użytkownika tez dla kwerendy, wybierz kartę **Tez UI** pod arkuszem.
 
 > [!IMPORTANT]  
-> Tez nie jest używany do rozpoznawania wszystkich zapytań. Można rozwiązać wiele zapytań bez używania tez.
+> Tez nie jest używany do rozwiązywania wszystkich zapytań. Można rozwiązać wiele zapytań bez użycia Tez.
 
 ## <a name="view-job-history"></a>Wyświetlanie historii zadań
 
-Na karcie __zadania__ zostanie wyświetlona historia zapytań programu Hive.
+Na karcie __Zadania__ jest wyświetlana historia zapytań hive.
 
-![Historia karty Apache Hive widoku zadań](./media/apache-hadoop-use-hive-ambari-view/apache-hive-job-history.png)
+![Historia kart zadań widoku ula Apache](./media/apache-hadoop-use-hive-ambari-view/apache-hive-job-history.png)
 
 ## <a name="database-tables"></a>Tabele bazy danych
 
-Karta __tabele__ służy do pracy z tabelami w bazie danych programu Hive.
+Za pomocą karty __Tabele__ można pracować z tabelami w bazie danych hive.
 
-![Obraz karty Apache Hive tabele](./media/apache-hadoop-use-hive-ambari-view/hdinsight-tables-tab.png)
+![Obraz karty Tabele ula Apache](./media/apache-hadoop-use-hive-ambari-view/hdinsight-tables-tab.png)
 
-## <a name="saved-queries"></a>Zapisane zapytania
+## <a name="saved-queries"></a>Zapisane kwerendy
 
-Na karcie **zapytanie** można opcjonalnie zapisywać zapytania. Po zapisaniu zapytania można użyć go ponownie z karty __zapisane zapytania__ .
+Na karcie **Kwerenda** można opcjonalnie zapisywać kwerendy. Po zapisaniu kwerendy można ją ponownie użyć na karcie __Zapisane kwerendy.__
 
-![Karta Apache Hive widoku zapisane zapytania](./media/apache-hadoop-use-hive-ambari-view/ambari-saved-queries.png)
+![Karta Zapisane kwerendy w widoku gałęzi Apache](./media/apache-hadoop-use-hive-ambari-view/ambari-saved-queries.png)
 
 > [!TIP]  
-> Zapisane zapytania są przechowywane w domyślnym magazynie klastra. Zapisane zapytania można znaleźć pod ścieżką `/user/<username>/hive/scripts`. Są one przechowywane jako pliki `.hql` zwykłego tekstu.
+> Zapisane kwerendy są przechowywane w domyślnym magazynie klastra. Zapisane zapytania można znaleźć pod `/user/<username>/hive/scripts`ścieżką . Są one przechowywane jako `.hql` pliki zwykłego tekstu.
 >
-> Jeśli usuniesz klaster, ale zachowasz magazyn, możesz pobrać zapytania za pomocą narzędzia, takiego jak [Eksplorator usługi Azure Storage](https://azure.microsoft.com/features/storage-explorer/) lub Data Lake Storage Explorer (z witryny [Azure Portal](https://portal.azure.com)).
+> Jeśli usuniesz klaster, ale zachowasz magazyn, możesz użyć narzędzia, takiego jak [Eksplorator usługi Azure Storage](https://azure.microsoft.com/features/storage-explorer/) lub Data Lake Storage Explorer (z [witryny Azure Portal),](https://portal.azure.com)aby pobrać zapytania.
 
 ## <a name="user-defined-functions"></a>Funkcje zdefiniowane przez użytkownika
 
-Gałąź można rozciągnąć za poorednictwem funkcji zdefiniowanych przez użytkownika (UDF). Użyj formatu UDF, aby zaimplementować funkcje lub logikę, które nie są łatwo modelowane w HiveQL.
+Gałąź można rozszerzyć za pomocą funkcji zdefiniowanych przez użytkownika (UDF). Użyj UDF do zaimplementowania funkcji lub logiki, która nie jest łatwo modelowane w HiveQL.
 
-Zadeklaruj i Zapisz zestaw UDF przy użyciu karty **UDF** w górnej części widoku programu Hive. Te UDF mogą być używane z **edytorem zapytań**.
+Deklarowanie i zapisywanie zestawu plików UDF przy użyciu karty **UDF** w górnej części widoku gałęzi. Te pliki UDF mogą być używane z **Edytorem zapytań**.
 
-![Wyświetlanie karty UDF w widoku Apache Hive](./media/apache-hadoop-use-hive-ambari-view/user-defined-functions.png)
+![Wyświetlanie karty UDF widoku gałęzi Apache](./media/apache-hadoop-use-hive-ambari-view/user-defined-functions.png)
 
-Po dodaniu UDF do widoku programu Hive przycisk **Wstaw UDF** pojawia się u dołu **edytora zapytań**. Wybranie tej pozycji spowoduje wyświetlenie listy rozwijanej UDF zdefiniowanej w widoku programu Hive. Wybranie opcji UDF dodaje do zapytania instrukcje HiveQL, aby włączyć funkcję UDF.
+Po dodaniu UDF do widoku gałęzi u dołu **Edytora zapytań**pojawi się przycisk **Wstaw udfs.** Wybranie tego wpisu powoduje wyświetlenie listy rozwijanej plików UDF zdefiniowanych w widoku gałęzi. Wybranie UDF dodaje instrukcje HiveQL do kwerendy, aby włączyć UDF.
 
-Na przykład jeśli zdefiniowano UDF o następujących właściwościach:
+Na przykład, jeśli zdefiniowano UDF z następującymi właściwościami:
 
 * Nazwa zasobu: myudfs
 
-* Ścieżka zasobu:/myudfs.jar
+* Ścieżka zasobu: /myudfs.jar
 
 * Nazwa UDF: myawesomeudf
 
-* Nazwa klasy UDF: com. myudfs. awesome
+* Nazwa klasy UDF: com.myudfs.Awesome
 
-Za pomocą przycisku **Wstaw UDF** jest wyświetlany wpis o nazwie **myudfs**, z inną listą rozwijaną dla każdego elementu UDF zdefiniowanego dla tego zasobu. W tym przypadku jest to **myawesomeudf**. Po wybraniu tego wpisu na początku zapytania zostanie dodana następująca wartość:
+Za pomocą przycisku **Wstaw udfs** jest wyświetlany wpis o nazwie **myudfs**, z inną listą rozwijaną dla każdego UDF zdefiniowanego dla tego zasobu. W tym przypadku, to **myawesomeudf**. Wybranie tego wpisu powoduje dodanie następującego na początku kwerendy:
 
 ```hiveql
 add jar /myudfs.jar;
 create temporary function myawesomeudf as 'com.myudfs.Awesome';
 ```
 
-Następnie można użyć w zapytaniu UDF. Na przykład `SELECT myawesomeudf(name) FROM people;`.
+Następnie można użyć UDF w zapytaniu. Na przykład `SELECT myawesomeudf(name) FROM people;`.
 
-Aby uzyskać więcej informacji na temat używania UDF z usługą Hive w usłudze HDInsight, zobacz następujące artykuły:
+Aby uzyskać więcej informacji na temat korzystania z plików UDF z gałęzią w programie HDInsight, zobacz następujące artykuły:
 
-* [Używanie języka Python z usługami Apache Hive i Apache chlewnej w usłudze HDInsight](python-udf-hdinsight.md)
-* [Jak dodać niestandardowy Apache Hive UDF do usługi HDInsight](https://blogs.msdn.com/b/bigdatasupport/archive/2014/01/14/how-to-add-custom-hive-udfs-to-hdinsight.aspx)
+* [Korzystanie z Pythona z ula Apache i Świnia Apache w HDInsight](python-udf-hdinsight.md)
+* [Jak dodać niestandardowy Apache Hive UDF do HDInsight](https://blogs.msdn.com/b/bigdatasupport/archive/2014/01/14/how-to-add-custom-hive-udfs-to-hdinsight.aspx)
 
-## <a name="hive-settings"></a>Ustawienia programu Hive
+## <a name="hive-settings"></a>Ustawienia gałęzi
 
-Można zmienić różne ustawienia programu Hive, takie jak zmiana aparatu wykonywania dla programu Hive z tez (wartość domyślna) na MapReduce.
+Można zmienić różne ustawienia gałęzi, takie jak zmiana aparatu wykonywania dla hive z Tez (domyślnie) na MapReduce.
 
-## <a id="nextsteps"></a>Następne kroki
+## <a name="next-steps"></a><a id="nextsteps"></a>Następne kroki
 
-Aby uzyskać ogólne informacje na temat usługi Hive w usłudze HDInsight:
+Aby uzyskać ogólne informacje na temat hive w hdinsight:
 
-* [Używanie Apache Hive z Apache Hadoop w usłudze HDInsight](hdinsight-use-hive.md)
+* [Użyj Apache Hive z Apache Hadoop na HDInsight](hdinsight-use-hive.md)
 
-Aby uzyskać informacje na temat innych sposobów pracy z usługą Hadoop w usłudze HDInsight:
+Aby uzyskać informacje na temat innych sposobów pracy z Hadoop na HDInsight:
 
-* [Korzystanie z usługi Apache świni z usługą Apache Hadoop w usłudze HDInsight](hdinsight-use-pig.md)
-* [Używanie MapReduce z usługą Apache Hadoop w usłudze HDInsight](hdinsight-use-mapreduce.md)
+* [Użyj Apache Pig z Apache Hadoop na HDInsight](hdinsight-use-pig.md)
+* [Użyj MapReduce z Apache Hadoop na HDInsight](hdinsight-use-mapreduce.md)

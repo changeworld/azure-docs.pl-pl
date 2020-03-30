@@ -1,39 +1,39 @@
 ---
-title: Tworzenie i szyfrowanie zestawu skalowania maszyn wirtualnych za pomocą szablonów Azure Resource Manager
-description: W tym przewodniku szybki start dowiesz się, jak za pomocą szablonów Azure Resource Manager utworzyć i zaszyfrować zestaw skalowania maszyn wirtualnych
+title: Tworzenie i szyfrowanie zestawu skalowania maszyny wirtualnej za pomocą szablonów usługi Azure Resource Manager
+description: W tym przewodniku Szybki start dowiesz się, jak tworzyć i szyfrować zestaw skalowania maszyny wirtualnej za pomocą szablonów usługi Azure Resource Manager
 author: msmbaldwin
 ms.author: mbaldwin
 ms.service: virtual-machine-scale-sets
 ms.topic: quickstart
 ms.date: 10/10/2019
 ms.openlocfilehash: aeba9aee8dd10b1245fb0a1e1cc98a1951382c72
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "72530000"
 ---
-# <a name="encrypt-virtual-machine-scale-sets-with-azure-resource-manager"></a>Szyfruj zestawy skalowania maszyn wirtualnych za pomocą Azure Resource Manager
+# <a name="encrypt-virtual-machine-scale-sets-with-azure-resource-manager"></a>Szyfruj zestawy skalowania maszyny wirtualnej za pomocą usługi Azure Resource Manager
 
-Zestawy skalowania maszyn wirtualnych z systemem Linux można szyfrować lub odszyfrowywać przy użyciu szablonów Azure Resource Manager.
+Można szyfrować lub odszyfrowywać zestawy skalowania maszyny wirtualnej systemu Linux przy użyciu szablonów usługi Azure Resource Manager.
 
 ## <a name="deploying-templates"></a>Wdrażanie szablonów
 
-Najpierw wybierz szablon, który odpowiada Twojemu scenariuszowi.
+Najpierw wybierz szablon, który pasuje do twojego scenariusza.
 
-- [Włącz szyfrowanie dysków w uruchomionym zestawie skalowania maszyn wirtualnych z systemem Linux](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-vmss-linux)
+- [Włączanie szyfrowania dysku w uruchomionym zestawie skalowania maszyny wirtualnej systemu Linux](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-vmss-linux)
 
-- [Włącz szyfrowanie dysków w uruchomionym zestawie skalowania maszyn wirtualnych z systemem Windows](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-vmss-windows)
+- [Włączanie szyfrowania dysku w uruchomionym zestawie skalowania maszyny wirtualnej systemu Windows](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-vmss-windows)
 
-  - [Wdrażanie zestawu skalowania maszyn wirtualnych z systemem Linux przy użyciu programu serwera przesiadkowego i Włączanie szyfrowania w ramach zestawów skalowania maszyn wirtualnych z systemem Linux](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-vmss-linux-jumpbox)
+  - [Wdrażanie zestawu maszyn wirtualnych maszyn wirtualnych z systemem Linux za pomocą jumpboxa i umożliwia szyfrowanie w zestawach skalowania maszyn wirtualnych systemu Linux](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-vmss-linux-jumpbox)
 
-  - [Wdrażanie zestawu skalowania maszyn wirtualnych z systemem Windows za pomocą serwera przesiadkowego i Włączanie szyfrowania w zestawach skalowania maszyn wirtualnych z systemem Windows](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-vmss-windows-jumpbox)
+  - [Wdrażanie zestawu skalowania maszyny wirtualnej maszyn z systemem Windows z jumpbox i umożliwia szyfrowanie w zestawach skalowania maszyny wirtualnej systemu Windows](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-vmss-windows-jumpbox)
 
-- [Wyłącz szyfrowanie dysków w uruchomionym zestawie skalowania maszyn wirtualnych z systemem Linux](https://github.com/Azure/azure-quickstart-templates/tree/master/201-decrypt-vmss-linux)
+- [Wyłącz szyfrowanie dysku w uruchomionym zestawie skalowania maszyny wirtualnej systemu Linux](https://github.com/Azure/azure-quickstart-templates/tree/master/201-decrypt-vmss-linux)
 
-- [Wyłączanie szyfrowania dysków w uruchomionym zestawie skalowania maszyn wirtualnych z systemem Windows](https://github.com/Azure/azure-quickstart-templates/tree/master/201-decrypt-vmss-windows)
+- [Wyłączanie szyfrowania dysku w uruchomionym zestawie skalowania maszyny wirtualnej systemu Windows](https://github.com/Azure/azure-quickstart-templates/tree/master/201-decrypt-vmss-windows)
 
-Następnie wykonaj następujące kroki:
+Następnie wykonaj poniższe czynności:
 
      1. Click **Deploy to Azure**.
      2. Fill in the required fields then agree to the terms and conditions.
@@ -41,8 +41,8 @@ Następnie wykonaj następujące kroki:
 
 ## <a name="next-steps"></a>Następne kroki
 
-- [Azure Disk Encryption dla zestawów skalowania maszyn wirtualnych](disk-encryption-overview.md)
-- [Szyfrowanie zestawów skalowania maszyn wirtualnych przy użyciu interfejsu wiersza polecenia platformy Azure](disk-encryption-cli.md)
-- [Szyfrowanie zestawów skalowania maszyn wirtualnych przy użyciu Azure PowerShell](disk-encryption-powershell.md)
-- [Tworzenie i Konfigurowanie magazynu kluczy dla Azure Disk Encryption](disk-encryption-key-vault.md)
-- [Użyj Azure Disk Encryption z sekwencjonowaniem rozszerzenia zestawu skalowania maszyn wirtualnych](disk-encryption-extension-sequencing.md)
+- [Szyfrowanie dysków platformy Azure dla zestawów skalowania maszyn wirtualnych](disk-encryption-overview.md)
+- [Szyfruj zestawy skalowania maszyny wirtualnej przy użyciu interfejsu wiersza polecenia platformy Azure](disk-encryption-cli.md)
+- [Szyfrowanie zestawów skalowania maszyny wirtualnej przy użyciu programu Azure PowerShell](disk-encryption-powershell.md)
+- [Tworzenie i konfigurowanie magazynu kluczy dla szyfrowania dysków platformy Azure](disk-encryption-key-vault.md)
+- [Używanie szyfrowania dysku platformy Azure z sekwencjonowaniem rozszerzenia zestawu skalowania maszyny wirtualnej](disk-encryption-extension-sequencing.md)

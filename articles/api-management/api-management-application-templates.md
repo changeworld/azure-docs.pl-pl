@@ -1,5 +1,5 @@
 ---
-title: Szablony aplikacji na platformie Azure API Management | Microsoft Docs
+title: Szablony aplikacji w usłudze Azure API Management | Dokumenty firmy Microsoft
 description: Dowiedz się, jak dostosować zawartość stron aplikacji w portalu dla deweloperów w usłudze Azure API Management.
 services: api-management
 documentationcenter: ''
@@ -14,14 +14,14 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: d635950c8b34986cd5824660166017317948cbd8
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73176914"
 ---
-# <a name="application-templates-in-azure-api-management"></a>Szablony aplikacji na platformie Azure API Management
-Usługa Azure API Management umożliwia dostosowanie zawartości stron portalu dla deweloperów przy użyciu zestawu szablonów, które konfigurują ich zawartość. Korzystając z składni [DotLiquid](http://dotliquidmarkup.org/) i wybranego edytora, takiego jak [DotLiquid dla projektantów](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers), i dostępnego zestawu zlokalizowanych [zasobów ciągów](api-management-template-resources.md#strings), [zasobów symboli](api-management-template-resources.md#glyphs)i [kontrolek stron](api-management-page-controls.md), masz doskonałą elastyczność konfigurowania zawartość stron wyświetlanych w postaci dopasowania przy użyciu tych szablonów.  
+# <a name="application-templates-in-azure-api-management"></a>Szablony aplikacji w usłudze Azure API Management
+Usługa Azure API Management umożliwia dostosowanie zawartości stron portalu deweloperów przy użyciu zestawu szablonów, które konfigurują ich zawartość. Za pomocą [dotLiquid](http://dotliquidmarkup.org/) składni i edytora do wyboru, takich jak [DotLiquid dla projektantów](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers), i pod warunkiem, zestaw zlokalizowanych [zasobów ciąg,](api-management-template-resources.md#strings) [zasoby glifów](api-management-template-resources.md#glyphs)i [page formantów,](api-management-page-controls.md)masz dużą elastyczność, aby skonfigurować zawartość stron, jak można uznać za stosowne przy użyciu tych szablonów.  
   
  Szablony w tej sekcji umożliwiają dostosowanie zawartości stron aplikacji w portalu dla deweloperów.  
   
@@ -30,16 +30,16 @@ Usługa Azure API Management umożliwia dostosowanie zawartości stron portalu d
 -   [Aplikacja](#Application)  
   
 > [!NOTE]
->  Przykładowe szablony domyślne są zawarte w poniższej dokumentacji, ale mogą ulec zmianie ze względu na ciągłe ulepszenia. Możesz wyświetlić szablony domyślne na żywo w portalu dla deweloperów, przechodząc do żądanych poszczególnych szablonów. Aby uzyskać więcej informacji na temat pracy z szablonami, zobacz [How to dostosowywanie portalu deweloperów API Management przy użyciu szablonów](https://azure.microsoft.com/documentation/articles/api-management-developer-portal-templates/).  
+>  Przykładowe szablony domyślne są zawarte w poniższej dokumentacji, ale mogą ulec zmianie z powodu ciągłych ulepszeń. Domyślne szablony na żywo można wyświetlić w portalu dla deweloperów, przechodząc do żądanych szablonów indywidualnych. Aby uzyskać więcej informacji na temat pracy z szablonami, zobacz [Jak dostosować portal dewelopera zarządzania interfejsami API przy użyciu szablonów](https://azure.microsoft.com/documentation/articles/api-management-developer-portal-templates/).  
 
 [!INCLUDE [api-management-portal-legacy.md](../../includes/api-management-portal-legacy.md)]
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
   
-##  <a name="ProductList"></a>Lista aplikacji  
- Szablon **Lista aplikacji** umożliwia dostosowanie treści strony listy aplikacji w portalu dla deweloperów.  
+##  <a name="application-list"></a><a name="ProductList"></a>Lista aplikacji  
+ **Szablon listy aplikacji** umożliwia dostosowanie treści strony listy aplikacji w portalu dla deweloperów.  
   
- ![Strona listy aplikacji szablony portalu dla deweloperów](./media/api-management-application-templates/APIM-Application-List-Page-Developer-Portal-Templates.png "Strona listy aplikacji APIM — szablony portalu dla deweloperów")  
+ ![Szablony portalu dla deweloperów listy aplikacji](./media/api-management-application-templates/APIM-Application-List-Page-Developer-Portal-Templates.png "Szablony portalu dla deweloperów listy aplikacji APIM")  
   
 ### <a name="default-template"></a>Szablon domyślny  
   
@@ -73,18 +73,18 @@ Usługa Azure API Management umożliwia dostosowanie zawartości stron portalu d
 </div>  
 ```  
   
-### <a name="controls"></a>Kontrolki  
- Szablon `Product list` może korzystać z następujących [kontrolek strony](api-management-page-controls.md).  
+### <a name="controls"></a>Formanty  
+ Szablon `Product list` może używać [kontrolek](api-management-page-controls.md)strony poniżej .  
   
--   [Kontrola stronicowania](api-management-page-controls.md#paging-control)  
+-   [sterowanie stronicowania](api-management-page-controls.md#paging-control)  
   
 ### <a name="data-model"></a>Model danych  
   
 |Właściwość|Typ|Opis|  
 |--------------|----------|-----------------|  
-|`Paging`|Jednostka [stronicowania](api-management-template-data-model-reference.md#Paging) .|Informacje o stronicowaniu dla kolekcji aplikacji.|  
-|`Applications`|Kolekcja jednostek [aplikacji](api-management-template-data-model-reference.md#Application) .|Aplikacje widoczne dla bieżącego użytkownika.|  
-|`CategoryName`|string|Kategoria aplikacji.|  
+|`Paging`|[Jednostka stronicowania.](api-management-template-data-model-reference.md#Paging)|Informacje stronicowania dla kolekcji aplikacji.|  
+|`Applications`|Kolekcja jednostek [aplikacji.](api-management-template-data-model-reference.md#Application)|Aplikacje widoczne dla bieżącego użytkownika.|  
+|`CategoryName`|ciąg|Kategoria zastosowania.|  
   
 ### <a name="sample-template-data"></a>Przykładowe dane szablonu  
   
@@ -137,10 +137,10 @@ Usługa Azure API Management umożliwia dostosowanie zawartości stron portalu d
 }  
 ```  
   
-##  <a name="Application"></a>Aplikacja  
- Szablon **aplikacji** umożliwia dostosowanie treści strony aplikacji w portalu dla deweloperów.  
+##  <a name="application"></a><a name="Application"></a>Aplikacji  
+ Szablon **aplikacji** umożliwia dostosowanie treści strony aplikacji w portalu dewelopera.  
   
- ![Szablony portalu dla deweloperów stron aplikacji](./media/api-management-application-templates/APIM-Application-Page-Developer-Portal-Templates.png "Szablony portalu dla deweloperów stron aplikacji APIM")  
+ ![Szablony portalu deweloperów strony aplikacji](./media/api-management-application-templates/APIM-Application-Page-Developer-Portal-Templates.png "Szablony portalu dla deweloperów strony aplikacji APIM")  
   
 ### <a name="default-template"></a>Szablon domyślny  
   
@@ -180,11 +180,11 @@ Usługa Azure API Management umożliwia dostosowanie zawartości stron portalu d
   
 ```  
   
-### <a name="controls"></a>Kontrolki  
- Szablon `Application` nie zezwala na używanie dowolnych [kontrolek strony](api-management-page-controls.md).  
+### <a name="controls"></a>Formanty  
+ Szablon `Application` nie zezwala na używanie żadnych [formantów strony](api-management-page-controls.md).  
   
 ### <a name="data-model"></a>Model danych  
- Jednostka [aplikacji](api-management-template-data-model-reference.md#Application) .  
+ [Jednostki aplikacji.](api-management-template-data-model-reference.md#Application)  
   
 ### <a name="sample-template-data"></a>Przykładowe dane szablonu  
   
@@ -224,4 +224,4 @@ Usługa Azure API Management umożliwia dostosowanie zawartości stron portalu d
 ```
 
 ## <a name="next-steps"></a>Następne kroki
-Aby uzyskać więcej informacji na temat pracy z szablonami, zobacz [How to dostosowywanie portalu deweloperów API Management przy użyciu szablonów](api-management-developer-portal-templates.md).
+Aby uzyskać więcej informacji na temat pracy z szablonami, zobacz [Jak dostosować portal dewelopera zarządzania interfejsami API przy użyciu szablonów](api-management-developer-portal-templates.md).

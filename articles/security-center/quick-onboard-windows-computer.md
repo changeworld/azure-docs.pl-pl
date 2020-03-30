@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 12/3/2018
 ms.author: memildin
 ms.openlocfilehash: 417d8379d019a9ef0da41638cba4a1f9cb7b8bc2
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "73686505"
 ---
 # <a name="quickstart-onboard-windows-computers-to-azure-security-center"></a>Szybki start: dołączanie komputerów z systemem Windows do usługi Azure Security Center
@@ -33,15 +33,15 @@ Musisz korzystać z warstwy cenowej Standardowa usługi Security Center przed ro
 
 ## <a name="add-new-windows-computer"></a>Dodawanie nowego komputera z systemem Windows
 
-1. Zaloguj się w witrynie [Azure Portal](https://azure.microsoft.com/features/azure-portal/).
-2. W menu platformy **Microsoft Azure** wybierz pozycję **Security Center**. Zostanie otwarte okno **Security Center — Przegląd**.
+1. Zaloguj się do [witryny Azure portal](https://azure.microsoft.com/features/azure-portal/).
+2. W menu **Microsoft Azure** wybierz pozycję **Centrum zabezpieczeń**. Zostanie otwarte okno **Security Center — Przegląd**.
 
    ![Security Center — Przegląd][2]
 
 3. W menu głównym usługi Security Center wybierz pozycję **Wprowadzenie**.
 4. Wybierz kartę **Rozpoczęcie pracy**.
 
-   ![Rozpocznij][3]
+   ![Wprowadzenie][3]
 
 5. Kliknij przycisk **Konfiguruj** w obszarze **Dodaj nowe komputery spoza platformy Azure**. Zostanie wyświetlona lista obszarów roboczych usługi Log Analytics. Jeśli ma to zastosowanie, lista zawiera domyślny obszar roboczy utworzony przez usługę Security Center po włączeniu automatycznej aprowizacji. Wybierz ten obszar roboczy lub inny obszar roboczy, którego chcesz użyć.
 

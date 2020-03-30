@@ -1,6 +1,6 @@
 ---
-title: Konfigurowanie szablonu do korzystania z tożsamości zarządzanych w zestawach skalowania maszyn wirtualnych — Azure AD
-description: Instrukcje krok po kroku dotyczące konfigurowania tożsamości zarządzanych dla zasobów platformy Azure w zestawie skalowania maszyn wirtualnych przy użyciu szablonu Azure Resource Manager.
+title: Konfigurowanie szablonu do używania tożsamości zarządzanych w zestawach skalowania maszyny wirtualnej — Usługa Azure AD
+description: Instrukcje krok po kroku dotyczące konfigurowania tożsamości zarządzanych dla zasobów platformy Azure w zestawie skalowania maszyny wirtualnej przy użyciu szablonu usługi Azure Resource Manager.
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -16,54 +16,54 @@ ms.date: 02/20/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2d5e324ea20b2ea82fac5b5132893d3558bd3b41
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/18/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77425565"
 ---
-# <a name="configure-managed-identities-for-azure-resources-on-an-azure-virtual-machine-scale-using-a-template"></a>Konfigurowanie zarządzanych tożsamości dla zasobów platformy Azure na skalę maszyn wirtualnych platformy Azure przy użyciu szablonu
+# <a name="configure-managed-identities-for-azure-resources-on-an-azure-virtual-machine-scale-using-a-template"></a>Konfigurowanie tożsamości zarządzanych dla zasobów platformy Azure w skali maszyny wirtualnej platformy Azure przy użyciu szablonu
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
-Zarządzane tożsamości dla zasobów platformy Azure zapewniają usługi platformy Azure z automatycznie zarządzaną tożsamością w Azure Active Directory. Tej tożsamości można użyć do uwierzytelniania w dowolnej usłudze, która obsługuje uwierzytelnianie usługi Azure AD, bez poświadczeń w kodzie.
+Tożsamości zarządzane dla zasobów platformy Azure zapewniają usługom platformy Azure automatycznie zarządzaną tożsamość w usłudze Azure Active Directory. Tej tożsamości można użyć do uwierzytelniania do dowolnej usługi, która obsługuje uwierzytelnianie usługi Azure AD, bez poświadczeń w kodzie.
 
-W tym artykule dowiesz się, jak wykonywać następujące tożsamości zarządzane dla operacji zasobów platformy Azure na zestawie skalowania maszyn wirtualnych platformy Azure przy użyciu szablonu wdrażania Azure Resource Manager:
-- Włączanie i wyłączanie zarządzanej tożsamości przypisanej przez system w zestawie skalowania maszyn wirtualnych platformy Azure
-- Dodawanie i usuwanie tożsamości zarządzanej przypisanej przez użytkownika w zestawie skalowania maszyn wirtualnych platformy Azure
+W tym artykule dowiesz się, jak wykonać następujące tożsamości zarządzane dla operacji zasobów platformy Azure na zestawie skalowania maszyny wirtualnej platformy Azure przy użyciu szablonu wdrożenia usługi Azure Resource Manager:
+- Włączanie i wyłączanie tożsamości zarządzanej przypisanej przez system w zestawie skalowania maszyny wirtualnej platformy Azure
+- Dodawanie i usuwanie tożsamości zarządzanej przypisanej przez użytkownika w zestawie skalowania maszyny wirtualnej platformy Azure
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Jeśli nie znasz tożsamości zarządzanych dla zasobów platformy Azure, zapoznaj się z [sekcją przegląd](overview.md). **Pamiętaj, aby zapoznać się z [różnicą między przypisaną przez system i tożsamością zarządzaną przez użytkownika](overview.md#how-does-the-managed-identities-for-azure-resources-work)** .
+- Jeśli nie znasz tożsamości zarządzanych dla zasobów platformy Azure, zapoznaj się z [sekcją omówienie](overview.md). **Pamiętaj, aby przejrzeć [różnicę między tożsamością zarządzaną przypisaną do systemu a przypisaną przez użytkownika](overview.md#how-does-the-managed-identities-for-azure-resources-work)**.
 - Jeśli nie masz jeszcze konta platformy Azure, [utwórz bezpłatne konto](https://azure.microsoft.com/free/) przed kontynuowaniem.
-- Aby wykonać operacje zarządzania w tym artykule, Twoje konto musi mieć następujące przypisania kontroli dostępu oparte na rolach na platformie Azure:
+- Aby wykonać operacje zarządzania w tym artykule, twoje konto wymaga następujących przypisań kontroli dostępu opartych na rolach platformy Azure:
 
     > [!NOTE]
-    > Nie są wymagane żadne dodatkowe przypisania ról w katalogu usługi Azure AD.
+    > Nie są wymagane żadne dodatkowe przypisania ról katalogu usługi Azure AD.
 
-    - [Współautor maszyny wirtualnej](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) w celu utworzenia zestawu skalowania maszyn wirtualnych oraz włączenia i usunięcia tożsamości zarządzanej system i/lub przypisanej przez użytkownika z zestawu skalowania maszyn wirtualnych.
-    - Rola [współautor tożsamości zarządzanej](/azure/role-based-access-control/built-in-roles#managed-identity-contributor) do tworzenia tożsamości zarządzanej przypisanej przez użytkownika.
-    - Rola [operatora tożsamości zarządzanej](/azure/role-based-access-control/built-in-roles#managed-identity-operator) do przypisywania i usuwania tożsamości zarządzanej przypisanej przez użytkownika z i do zestawu skalowania maszyn wirtualnych.
+    - [Współautor maszyny wirtualnej,](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) aby utworzyć zestaw skalowania maszyny wirtualnej i włączyć i usunąć system i/lub przypisaną przez użytkownika tożsamość zarządzaną z zestawu skalowania maszyny wirtualnej.
+    - [Rola współautora tożsamości zarządzanej](/azure/role-based-access-control/built-in-roles#managed-identity-contributor) w celu utworzenia tożsamości zarządzanej przypisanej przez użytkownika.
+    - [Rola zarządzanego operatora tożsamości](/azure/role-based-access-control/built-in-roles#managed-identity-operator) do przypisywania i usuwania tożsamości zarządzanej przypisanej przez użytkownika z i do zestawu skalowania maszyny wirtualnej.
 
 ## <a name="azure-resource-manager-templates"></a>Szablony usługi Azure Resource Manager
 
-Podobnie jak w przypadku Azure Portal i skryptów, szablony [Azure Resource Manager](../../azure-resource-manager/management/overview.md) umożliwiają wdrażanie nowych lub zmodyfikowanych zasobów zdefiniowanych przez grupę zasobów platformy Azure. Do edycji i wdrażania szablonu są dostępne różne opcje, w tym:
+Podobnie jak w witrynie Azure portal i skrypty, szablony [usługi Azure Resource Manager](../../azure-resource-manager/management/overview.md) zapewniają możliwość wdrażania nowych lub zmodyfikowanych zasobów zdefiniowanych przez grupę zasobów platformy Azure. Dostępnych jest kilka opcji edycji i wdrażania szablonów, zarówno lokalnych, jak i opartych na portalu, w tym:
 
-   - Przy użyciu [szablonu niestandardowego z portalu Azure Marketplace](../../azure-resource-manager/templates/deploy-portal.md#deploy-resources-from-custom-template), który umożliwia tworzenie szablonu od podstaw lub na podstawie istniejącego szablonu wspólnego lub [szybkiego startu](https://azure.microsoft.com/documentation/templates/).
-   - Wyprowadzanie z istniejącej grupy zasobów przez wyeksportowanie szablonu z [oryginalnego wdrożenia](../../azure-resource-manager/templates/export-template-portal.md)lub z [bieżącego stanu wdrożenia](../../azure-resource-manager/templates/export-template-portal.md).
-   - Używanie lokalnego [edytora JSON (takiego jak vs Code)](../../azure-resource-manager/resource-manager-create-first-template.md), a następnie przekazywanie i wdrażanie przy użyciu programu PowerShell lub interfejsu wiersza polecenia.
-   - Użycie [projektu grupy zasobów platformy Azure](../../azure-resource-manager/templates/create-visual-studio-deployment-project.md) dla programu Visual Studio w celu utworzenia i wdrożenia szablonu.  
+   - Korzystanie [z szablonu niestandardowego z portalu Azure Marketplace,](../../azure-resource-manager/templates/deploy-portal.md#deploy-resources-from-custom-template)który umożliwia utworzenie szablonu od podstaw lub oparcie go na istniejącym szablonie wspólnym lub [szybki start.](https://azure.microsoft.com/documentation/templates/)
+   - Wyprowadzając z istniejącej grupy zasobów, eksportując szablon z [oryginalnego wdrożenia](../../azure-resource-manager/templates/export-template-portal.md)lub z [bieżącego stanu wdrożenia](../../azure-resource-manager/templates/export-template-portal.md).
+   - Za pomocą lokalnego [edytora JSON (na przykład VS Code),](../../azure-resource-manager/resource-manager-create-first-template.md)a następnie przekazywania i wdrażania przy użyciu programu PowerShell lub interfejsu wiersza polecenia.
+   - Za pomocą [projektu](../../azure-resource-manager/templates/create-visual-studio-deployment-project.md) Visual Studio Azure Resource Group zarówno do tworzenia i wdrażania szablonu.  
 
-Bez względu na wybraną opcję, składnia szablonu jest taka sama podczas początkowego wdrożenia i ponownego wdrożenia. Włączenie zarządzanych tożsamości dla zasobów platformy Azure na nowej lub istniejącej maszynie wirtualnej odbywa się w taki sam sposób. Ponadto domyślnie Azure Resource Manager wykonuje [aktualizację przyrostową](../../azure-resource-manager/templates/deployment-modes.md) wdrożeń.
+Niezależnie od opcji, którą wybierzesz, składnia szablonu jest taka sama podczas początkowego wdrażania i ponownego wdrażania. Włączanie tożsamości zarządzanych dla zasobów platformy Azure na nowej lub istniejącej maszynie wirtualnej odbywa się w ten sam sposób. Ponadto domyślnie usługa Azure Resource Manager wykonuje [przyrostową aktualizację](../../azure-resource-manager/templates/deployment-modes.md) do wdrożeń.
 
-## <a name="system-assigned-managed-identity"></a>Tożsamość zarządzana przypisana przez system
+## <a name="system-assigned-managed-identity"></a>Tożsamość zarządzana przypisana do systemu
 
-W tej sekcji zostanie włączona i wyłączona tożsamość zarządzana przypisana przez system przy użyciu szablonu Azure Resource Manager.
+W tej sekcji włączysz i wyłączysz przypisaną do systemu tożsamość zarządzaną przy użyciu szablonu usługi Azure Resource Manager.
 
-### <a name="enable-system-assigned-managed-identity-during-creation-the-creation-of-a-virtual-machines-scale-set-or-an-existing-virtual-machine-scale-set"></a>Włącz tożsamość zarządzaną przypisaną przez system podczas tworzenia zestawu skalowania maszyn wirtualnych lub istniejącego zestawu skalowania maszyn wirtualnych
+### <a name="enable-system-assigned-managed-identity-during-creation-the-creation-of-a-virtual-machines-scale-set-or-an-existing-virtual-machine-scale-set"></a>Włączanie tożsamości zarządzanej przypisanej przez system podczas tworzenia zestawu skalowania maszyn wirtualnych lub istniejącego zestawu skalowania maszyny wirtualnej
 
-1. Niezależnie od tego, czy logujesz się do platformy Azure lokalnie, czy za pośrednictwem Azure Portal, użyj konta skojarzonego z subskrypcją platformy Azure, która zawiera zestaw skalowania maszyn wirtualnych.
-2. Aby włączyć tożsamość zarządzaną przypisaną przez system, załaduj szablon do edytora, Znajdź `Microsoft.Compute/virtualMachinesScaleSets` zasobów zainteresowania w sekcji Resources i Dodaj właściwość `identity` na tym samym poziomie, co Właściwość `"type": "Microsoft.Compute/virtualMachinesScaleSets"`. Użyj następującej składni:
+1. Niezależnie od tego, czy logujesz się do platformy Azure lokalnie, czy za pośrednictwem witryny Azure Portal, użyj konta skojarzonego z subskrypcją platformy Azure, która zawiera zestaw skalowania maszyny wirtualnej.
+2. Aby włączyć tożsamość zarządzaną przypisaną do systemu, należy `Microsoft.Compute/virtualMachinesScaleSets` załadować szablon do edytora, zlokalizować zasób zainteresowania w sekcji zasobów i dodać `identity` właściwość na tym samym poziomie co `"type": "Microsoft.Compute/virtualMachinesScaleSets"` właściwość. Użyj następującej składni:
 
    ```JSON
    "identity": {
@@ -72,10 +72,10 @@ W tej sekcji zostanie włączona i wyłączona tożsamość zarządzana przypisa
    ```
 
 > [!NOTE]
-> Opcjonalnie można zainicjować obsługę tożsamości zarządzanych dla rozszerzenia zestawu skalowania maszyn wirtualnych dla zasobów platformy Azure, określając je w `extensionProfile` elemencie szablonu. Ten krok jest opcjonalny, ponieważ można użyć punktu końcowego tożsamości usługi Azure Instance Metadata Service (IMDS), aby uzyskać również tokeny.  Aby uzyskać więcej informacji, zobacz [Migrowanie z rozszerzenia maszyny wirtualnej do usługi Azure IMDS na potrzeby uwierzytelniania](howto-migrate-vm-extension.md).
+> Opcjonalnie można aprowizować tożsamości zarządzane dla zasobów platformy Azure rozszerzenie `extensionProfile` zestawu skalowania maszyny wirtualnej, określając go w elemencie szablonu. Ten krok jest opcjonalny, ponieważ można użyć punktu końcowego tożsamości usługi imds (Azure Instance Metadata Service), aby pobrać tokeny.  Aby uzyskać więcej informacji, zobacz [Migrowanie z rozszerzenia maszyny Wirtualnej do usługi Azure IMDS w celu uwierzytelnienia](howto-migrate-vm-extension.md).
 
 
-4. Gdy skończysz, następujące sekcje powinny zostać dodane do sekcji zasobów szablonu i powinny wyglądać następująco:
+4. Po zakończeniu następujące sekcje powinny zostać dodane do sekcji zasobów szablonu i powinny wyglądać następująco:
 
    ```json
     "resources": [
@@ -115,25 +115,25 @@ W tej sekcji zostanie włączona i wyłączona tożsamość zarządzana przypisa
     ]
    ```
 
-### <a name="disable-a-system-assigned-managed-identity-from-an-azure-virtual-machine-scale-set"></a>Wyłączanie tożsamości zarządzanej przypisanej przez system z zestawu skalowania maszyn wirtualnych platformy Azure
+### <a name="disable-a-system-assigned-managed-identity-from-an-azure-virtual-machine-scale-set"></a>Wyłączanie tożsamości zarządzanej przypisanej przez system z zestawu skalowania maszyny wirtualnej platformy Azure
 
-Jeśli masz zestaw skalowania maszyn wirtualnych, który nie potrzebuje już tożsamości zarządzanej przypisanej do systemu:
+Jeśli masz zestaw skalowania maszyny wirtualnej, który nie wymaga już tożsamości zarządzanej przypisanej do systemu:
 
-1. Niezależnie od tego, czy logujesz się do platformy Azure lokalnie, czy za pośrednictwem Azure Portal, użyj konta skojarzonego z subskrypcją platformy Azure, która zawiera zestaw skalowania maszyn wirtualnych.
+1. Niezależnie od tego, czy logujesz się do platformy Azure lokalnie, czy za pośrednictwem witryny Azure Portal, użyj konta skojarzonego z subskrypcją platformy Azure, która zawiera zestaw skalowania maszyny wirtualnej.
 
-2. Załaduj szablon do [edytora](#azure-resource-manager-templates) i Znajdź `Microsoft.Compute/virtualMachineScaleSets` zasób zainteresowania w sekcji `resources`. Jeśli masz maszynę wirtualną, która ma tylko tożsamość zarządzaną przypisaną przez system, możesz ją wyłączyć, zmieniając typ tożsamości na `None`.
+2. Załaduj szablon do `Microsoft.Compute/virtualMachineScaleSets` [edytora](#azure-resource-manager-templates) i `resources` znajdź zasób zainteresowania w sekcji. Jeśli masz maszynę wirtualną, która ma tylko tożsamość zarządzaną przypisaną `None`do systemu, możesz ją wyłączyć, zmieniając typ tożsamości na .
 
-   **Interfejs API Microsoft. COMPUTE/virtualMachineScaleSets w wersji 2018-06-01**
+   **Interfejs API Microsoft.Compute/virtualMachineScaleSets w wersji 2018-06-01**
 
-   Jeśli apiVersion jest `2018-06-01` a maszyna wirtualna ma zarządzane tożsamości systemowe i przypisane przez użytkownika, Usuń `SystemAssigned` z typu tożsamości i Zachowaj `UserAssigned` wraz z wartościami słownika Resourceidentity.
+   Jeśli apiVersion `2018-06-01` jest i maszyna wirtualna ma zarówno system, jak `SystemAssigned` i tożsamości zarządzane `UserAssigned` przypisane przez użytkownika, usuń z typu tożsamości i zachowaj wraz z wartościami słownika userAssignedIdentities.
 
-   **Interfejs API Microsoft. COMPUTE/virtualMachineScaleSets w wersji 2018-06-01**
+   **Interfejs API Microsoft.Compute/virtualMachineScaleSets w wersji 2018-06-01**
 
-   Jeśli apiVersion jest `2017-12-01` a zestaw skalowania maszyn wirtualnych ma zarządzane tożsamości systemowe i przypisane przez użytkownika, Usuń `SystemAssigned` z typu tożsamości i Zachowaj `UserAssigned` razem z tablicą `identityIds`ą zarządzanych tożsamości przypisanych przez użytkownika.
+   Jeśli apiVersion `2017-12-01` jest i zestaw skalowania maszyny wirtualnej ma zarówno system, jak i tożsamości zarządzane przypisane przez użytkownika, usuń `SystemAssigned` z typu tożsamości i zachowaj `UserAssigned` wraz z `identityIds` tablicą tożsamości zarządzanych przypisanych przez użytkownika.
 
 
 
-   Poniższy przykład pokazuje, jak usunąć tożsamość zarządzaną przypisaną przez system z zestawu skalowania maszyn wirtualnych bez tożsamości zarządzanej przypisanej przez użytkownika:
+   W poniższym przykładzie pokazano, jak usunąć tożsamość zarządzaną przypisaną do systemu z zestawu skalowania maszyny wirtualnej bez tożsamości zarządzanych przypisanych przez użytkownika:
 
    ```json
    {
@@ -149,18 +149,18 @@ Jeśli masz zestaw skalowania maszyn wirtualnych, który nie potrzebuje już to�
 
 ## <a name="user-assigned-managed-identity"></a>Tożsamość zarządzana przypisana przez użytkownika
 
-Ta sekcja zawiera przypisanie zarządzanej tożsamości przypisanej przez użytkownika do zestawu skalowania maszyn wirtualnych przy użyciu szablonu Azure Resource Manager.
+W tej sekcji przypisano tożsamość zarządzaną przypisaną przez użytkownika do zestawu skalowania maszyny wirtualnej przy użyciu szablonu usługi Azure Resource Manager.
 
 > [!Note]
-> Aby utworzyć tożsamość zarządzaną przypisaną przez użytkownika przy użyciu szablonu Azure Resource Manager, zobacz [Tworzenie tożsamości zarządzanej przypisanej przez użytkownika](how-to-manage-ua-identity-arm.md#create-a-user-assigned-managed-identity).
+> Aby utworzyć tożsamość zarządzaną przypisaną przez użytkownika przy użyciu szablonu usługi Azure Resource Manager, zobacz [Tworzenie tożsamości zarządzanej przypisanej przez użytkownika](how-to-manage-ua-identity-arm.md#create-a-user-assigned-managed-identity).
 
-### <a name="assign-a-user-assigned-managed-identity-to-a-virtual-machine-scale-set"></a>Przypisywanie tożsamości zarządzanej przypisanej przez użytkownika do zestawu skalowania maszyn wirtualnych
+### <a name="assign-a-user-assigned-managed-identity-to-a-virtual-machine-scale-set"></a>Przypisywanie tożsamości zarządzanej przypisanej przez użytkownika do zestawu skalowania maszyny wirtualnej
 
-1. W obszarze `resources` Dodaj następujący wpis, aby przypisać tożsamość zarządzaną przypisaną przez użytkownika do zestawu skalowania maszyn wirtualnych.  Pamiętaj, aby zastąpić `<USERASSIGNEDIDENTITY>` nazwą utworzonej tożsamości zarządzanej przez użytkownika.
+1. W `resources` obszarze elementu dodaj następujący wpis, aby przypisać tożsamość zarządzaną przypisaną przez użytkownika do zestawu skalowania maszyny wirtualnej.  Pamiętaj, aby `<USERASSIGNEDIDENTITY>` zastąpić nazwą utworzonej tożsamości zarządzanej przypisanej przez użytkownika.
 
-   **Interfejs API Microsoft. COMPUTE/virtualMachineScaleSets w wersji 2018-06-01**
+   **Interfejs API Microsoft.Compute/virtualMachineScaleSets w wersji 2018-06-01**
 
-   Jeśli apiVersion jest `2018-06-01`, zarządzane tożsamości przypisane przez użytkownika są przechowywane w formacie słownika `userAssignedIdentities`, a wartość `<USERASSIGNEDIDENTITYNAME>` musi być przechowywana w zmiennej zdefiniowanej w sekcji `variables` szablonu.
+   Jeśli apiVersion `2018-06-01`jest , tożsamości zarządzane przypisane przez `userAssignedIdentities` użytkownika są przechowywane `<USERASSIGNEDIDENTITYNAME>` w formacie słownika i `variables` wartość musi być przechowywana w zmiennej zdefiniowanej w sekcji szablonu.
 
    ```json
    {
@@ -177,9 +177,9 @@ Ta sekcja zawiera przypisanie zarządzanej tożsamości przypisanej przez użytk
    }
    ```   
 
-   **Interfejs API Microsoft. COMPUTE/virtualMachineScaleSets w wersji 2017-12-01**
+   **Interfejs API Microsoft.Compute/virtualMachineScaleSets w wersji 2017-12-01**
 
-   Jeśli `apiVersion` ma `2017-12-01` lub wcześniej, zarządzane tożsamości przypisane przez użytkownika są przechowywane w tablicy `identityIds`, a wartość `<USERASSIGNEDIDENTITYNAME>` musi być przechowywana w zmiennej zdefiniowanej w sekcji zmienne szablonu.
+   Jeśli `apiVersion` jest `2017-12-01` lub wcześniej, tożsamości zarządzane przypisane przez `identityIds` użytkownika są `<USERASSIGNEDIDENTITYNAME>` przechowywane w tablicy, a wartość musi być przechowywana w zmiennej zdefiniowanej w sekcji zmiennych szablonu.
 
    ```json
    {
@@ -196,11 +196,11 @@ Ta sekcja zawiera przypisanie zarządzanej tożsamości przypisanej przez użytk
    }
    ```
 > [!NOTE]
-> Opcjonalnie można zainicjować obsługę tożsamości zarządzanych dla rozszerzenia zestawu skalowania maszyn wirtualnych dla zasobów platformy Azure, określając je w `extensionProfile` elemencie szablonu. Ten krok jest opcjonalny, ponieważ można użyć punktu końcowego tożsamości usługi Azure Instance Metadata Service (IMDS), aby uzyskać również tokeny.  Aby uzyskać więcej informacji, zobacz [Migrowanie z rozszerzenia maszyny wirtualnej do usługi Azure IMDS na potrzeby uwierzytelniania](howto-migrate-vm-extension.md).
+> Opcjonalnie można aprowizować tożsamości zarządzane dla zasobów platformy Azure rozszerzenie `extensionProfile` zestawu skalowania maszyny wirtualnej, określając go w elemencie szablonu. Ten krok jest opcjonalny, ponieważ można użyć punktu końcowego tożsamości usługi imds (Azure Instance Metadata Service), aby pobrać tokeny.  Aby uzyskać więcej informacji, zobacz [Migrowanie z rozszerzenia maszyny Wirtualnej do usługi Azure IMDS w celu uwierzytelnienia](howto-migrate-vm-extension.md).
 
-3. Gdy skończysz, szablon powinien wyglądać podobnie do poniższego:
+3. Po zakończeniu szablon powinien wyglądać podobnie do następującego:
 
-   **Interfejs API Microsoft. COMPUTE/virtualMachineScaleSets w wersji 2018-06-01**   
+   **Interfejs API Microsoft.Compute/virtualMachineScaleSets w wersji 2018-06-01**   
 
    ```json
    "resources": [
@@ -243,7 +243,7 @@ Ta sekcja zawiera przypisanie zarządzanej tożsamości przypisanej przez użytk
     ]
    ```
 
-   **Interfejs API Microsoft. COMPUTE/virtualMachines w wersji 2017-12-01**
+   **Interfejs API microsoft.compute/virtualMachines w wersji 2017-12-01**
 
    ```json
    "resources": [
@@ -285,15 +285,15 @@ Ta sekcja zawiera przypisanie zarządzanej tożsamości przypisanej przez użytk
         }
     ]
    ```
-   ### <a name="remove-user-assigned-managed-identity-from-an-azure-virtual-machine-scale-set"></a>Usuwanie tożsamości zarządzanej przypisanej przez użytkownika z zestawu skalowania maszyn wirtualnych platformy Azure
+   ### <a name="remove-user-assigned-managed-identity-from-an-azure-virtual-machine-scale-set"></a>Usuwanie tożsamości zarządzanej przypisanej przez użytkownika z zestawu skalowania maszyny wirtualnej platformy Azure
 
-Jeśli masz zestaw skalowania maszyn wirtualnych, który nie potrzebuje już tożsamości zarządzanej przypisanej przez użytkownika:
+Jeśli masz zestaw skalowania maszyny wirtualnej, który nie wymaga już tożsamości zarządzanej przypisanej przez użytkownika:
 
-1. Niezależnie od tego, czy logujesz się do platformy Azure lokalnie, czy za pośrednictwem Azure Portal, użyj konta skojarzonego z subskrypcją platformy Azure, która zawiera zestaw skalowania maszyn wirtualnych.
+1. Niezależnie od tego, czy logujesz się do platformy Azure lokalnie, czy za pośrednictwem witryny Azure Portal, użyj konta skojarzonego z subskrypcją platformy Azure, która zawiera zestaw skalowania maszyny wirtualnej.
 
-2. Załaduj szablon do [edytora](#azure-resource-manager-templates) i Znajdź `Microsoft.Compute/virtualMachineScaleSets` zasób zainteresowania w sekcji `resources`. Jeśli masz zestaw skalowania maszyn wirtualnych, który ma tylko tożsamość zarządzaną przez użytkownika, możesz ją wyłączyć, zmieniając typ tożsamości na `None`.
+2. Załaduj szablon do `Microsoft.Compute/virtualMachineScaleSets` [edytora](#azure-resource-manager-templates) i `resources` znajdź zasób zainteresowania w sekcji. Jeśli masz zestaw skalowania maszyny wirtualnej, który ma tylko przypisaną przez użytkownika `None`tożsamość zarządzaną, możesz ją wyłączyć, zmieniając typ tożsamości na .
 
-   W poniższym przykładzie pokazano, jak usunąć wszystkie zarządzane tożsamości przypisane przez użytkownika z maszyny wirtualnej bez tożsamości zarządzanych przypisanych do systemu:
+   Poniższy przykład pokazuje, jak usunąć wszystkie tożsamości zarządzane przypisane przez użytkownika z maszyny Wirtualnej bez tożsamości zarządzanych przypisanych do systemu:
 
    ```json
    {
@@ -306,18 +306,18 @@ Jeśli masz zestaw skalowania maszyn wirtualnych, który nie potrzebuje już to�
    }
    ```
 
-   **Interfejs API Microsoft. COMPUTE/virtualMachineScaleSets w wersji 2018-06-01**
+   **Interfejs API Microsoft.Compute/virtualMachineScaleSets w wersji 2018-06-01**
 
-   Aby usunąć tożsamość zarządzaną przypisaną przez użytkownika z zestawu skalowania maszyn wirtualnych, usuń ją ze słownika `userAssignedIdentities`.
+   Aby usunąć pojedynczą tożsamość zarządzaną przypisaną przez użytkownika z `userAssignedIdentities` zestawu skalowania maszyny wirtualnej, usuń ją ze słownika.
 
-   Jeśli masz tożsamość przypisaną przez system, Zachowaj ją w polu `type` wartość w obszarze `identity` wartość.
+   Jeśli masz tożsamość przypisaną do systemu, zachowaj ją w `type` wartości pod wartością. `identity`
 
-   **Interfejs API Microsoft. COMPUTE/virtualMachineScaleSets w wersji 2017-12-01**
+   **Interfejs API Microsoft.Compute/virtualMachineScaleSets w wersji 2017-12-01**
 
-   Aby usunąć tożsamość zarządzaną przypisaną przez użytkownika z zestawu skalowania maszyn wirtualnych, usuń ją z tablicy `identityIds`.
+   Aby usunąć pojedynczą tożsamość zarządzaną przypisaną przez użytkownika z `identityIds` zestawu skalowania maszyny wirtualnej, usuń ją z tablicy.
 
-   Jeśli masz tożsamość zarządzaną przypisaną przez system, Zachowaj ją w polu `type` wartość poniżej wartości `identity`.
+   Jeśli masz przypisaną do systemu tożsamość zarządzaną, `type` zachowaj `identity` ją w wartości pod wartością.
 
 ## <a name="next-steps"></a>Następne kroki
 
-- [Zarządzanie tożsamościami dla zasobów platformy Azure — omówienie](overview.md).
+- [Zarządzane tożsamości dla zasobów platformy Azure omówienie](overview.md).

@@ -9,44 +9,44 @@ ms.date: 12/12/2019
 ms.author: rogara
 ms.custom: include file
 ms.openlocfilehash: 23550c83e76631e44d5036e0a038f01b61a79f1b
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79208245"
 ---
 ## <a name="assign-access-permissions-to-an-identity"></a>Przypisywanie uprawnień dostępu do tożsamości
 
-Aby uzyskać dostęp do zasobów Azure Files przy użyciu uwierzytelniania opartego na tożsamościach, tożsamość (nazwa użytkownika, Grupa lub nazwa główna usługi) musi mieć odpowiednie uprawnienia na poziomie udziału. Ten proces jest podobny do określania uprawnień do udziału w systemie Windows, w którym można określić typ dostępu określonego użytkownika do udziału plików. Wskazówki zawarte w tej sekcji przedstawiają sposób przypisywania uprawnień do odczytu, zapisu lub usuwania udziału plików do tożsamości.
+Aby uzyskać dostęp do zasobów usługi Azure Files z uwierzytelnianiem opartym na tożsamości, tożsamość (użytkownik, grupa lub podmiot usługi) musi mieć niezbędne uprawnienia na poziomie udziału. Ten proces jest podobny do określania uprawnień udziału systemu Windows, w którym można określić typ dostępu określonego użytkownika do udziału plików. Wskazówki w tej sekcji pokazuje, jak przypisać uprawnienia do odczytu, zapisu lub usunięcia dla udziału plików do tożsamości.
 
-Wprowadziliśmy trzy wbudowane role platformy Azure na potrzeby udzielania użytkownikom uprawnień na poziomie udziału:
+Wprowadziliśmy trzy wbudowane role platformy Azure do udzielania użytkownikom uprawnień na poziomie udziału:
 
-- **Czytnik udziałów plików dla plików magazynu (SMB** ) umożliwia dostęp do odczytu w udziałach pliku usługi Azure Storage za pośrednictwem protokołu SMB.
-- **Współautor udostępniania danych plików magazynu SMB** umożliwia dostęp do odczytu, zapisu i usuwania w udziałach plików usługi Azure Storage za pośrednictwem protokołu SMB.
-- **Współautorzy udziałów SMB danych plików magazynu** umożliwia odczyt, zapis, usuwanie i modyfikowanie uprawnień NTFS w udziałach plików usługi Azure Storage za pośrednictwem protokołu SMB.
+- **Czytnik udostępniania plików danych magazynu umożliwia** dostęp do odczytu w udziałach plików usługi Azure Storage za pomocą pamięci SMB.
+- **Współautor udostępniania danych pliku magazynu** umożliwia dostęp do odczytu, zapisu i usuwania w udziałach plików usługi Azure Storage za pomocą miejsca SMB.
+- **Zwiększony współautor udziału w pliku danych magazynu** umożliwia odczyt, zapis, usuwanie i modyfikowanie uprawnień NTFS w udziałach plików usługi Azure Storage za pomocą usługi SMB.
 
 > [!IMPORTANT]
-> Pełna kontrola administracyjna udziału plików, w tym możliwość przejęcia na własność pliku, wymaga użycia klucza konta magazynu. Kontrolka administracyjna nie jest obsługiwana w przypadku poświadczeń usługi Azure AD.
+> Pełna kontrola administracyjna udziału plików, w tym możliwość przejęcia na własność pliku, wymaga użycia klucza konta magazynu. Kontrola administracyjna nie jest obsługiwana przy użyciu poświadczeń usługi Azure AD.
 
-Korzystając z Azure Portal, PowerShell lub interfejsu wiersza polecenia platformy Azure, można przypisać wbudowane role do tożsamości usługi Azure AD użytkownika w celu udzielenia uprawnień na poziomie udziału.
+Za pomocą witryny Azure Portal, PowerShell lub interfejsu wiersza polecenia platformy Azure można przypisać wbudowane role do tożsamości usługi Azure AD użytkownika w celu przyznania uprawnień na poziomie udziału.
 
 > [!NOTE]
-> Pamiętaj, aby zsynchronizować poświadczenia usługi AD z usługą Azure AD, jeśli planujesz używać usługi AD do uwierzytelniania. Synchronizacja skrótów haseł z usługi AD do usługi Azure AD jest opcjonalna. Uprawnienie na poziomie udziału zostanie przyznane tożsamości usługi Azure AD, która jest synchronizowana z usługi AD.
+> Pamiętaj, aby zsynchronizować poświadczenia usługi AD z usługą Azure AD, jeśli planujesz używać usługi AD do uwierzytelniania. Synchronizacja skrótu hasła z usługi AD do usługi Azure AD jest opcjonalna. Uprawnienia na poziomie udziału zostaną przyznane tożsamości usługi Azure AD, która jest synchronizowana z usługą AD.
 
-#### <a name="azure-portal"></a>Portalu Azure
-Aby przypisać rolę RBAC do tożsamości usługi Azure AD przy użyciu [Azure Portal](https://portal.azure.com), wykonaj następujące czynności:
+#### <a name="azure-portal"></a>Portal Azure
+Aby przypisać rolę RBAC do tożsamości usługi Azure AD przy użyciu [witryny Azure portal,](https://portal.azure.com)wykonaj następujące kroki:
 
-1. W Azure Portal przejdź do udziału plików lub [Utwórz udział plików](../articles/storage/files/storage-how-to-create-file-share.md).
-2. Wybierz pozycję **Access Control (IAM)** .
-3. Wybierz pozycję **Dodaj przypisanie roli**
-4. W bloku **Dodaj przypisanie roli** wybierz odpowiednią rolę wbudowaną (plik magazynu: czytnik udziałów SMB, współautor udziału danych plików magazynu) z listy **rola** . Pozostaw ustawienie domyślne do **przypisywania** : **użytkownik, Grupa lub nazwa główna usługi Azure AD**. Wybierz docelową tożsamość usługi Azure AD według nazwy lub adresu e-mail.
-5. Wybierz pozycję **Zapisz** , aby ukończyć operację przypisywania roli.
+1. W witrynie Azure portal przejdź do udziału plików lub [Utwórz udział plików](../articles/storage/files/storage-how-to-create-file-share.md).
+2. Wybierz **pozycję Kontrola dostępu (IAM)**.
+3. Wybieranie **opcji Dodaj przypisanie roli**
+4. W bloku **Dodawanie przypisania roli** wybierz odpowiednią rolę wbudowaną (Czytnik udostępniania danych SMB danych magazynu, współautor udostępniania danych pliku magazynu) z listy **Role.** Pozostaw **dostęp Przypisz** przy domyślnym ustawieniu: **użytkownik, grupa lub podmiot usługi Azure AD**. Wybierz docelową tożsamość usługi Azure AD według nazwy lub adresu e-mail.
+5. Wybierz **pozycję Zapisz,** aby ukończyć operację przypisania roli.
 
-#### <a name="powershell"></a>Program PowerShell
+#### <a name="powershell"></a>PowerShell
 
-Poniższy przykład programu PowerShell przedstawia sposób przypisywania roli RBAC do tożsamości usługi Azure AD na podstawie nazwy logowania. Aby uzyskać więcej informacji na temat przypisywania ról RBAC przy użyciu programu PowerShell, zobacz [Zarządzanie dostępem przy użyciu RBAC i Azure PowerShell](../articles/role-based-access-control/role-assignments-powershell.md).
+W poniższym przykładzie programu PowerShell pokazano, jak przypisać rolę RBAC do tożsamości usługi Azure AD na podstawie nazwy logowania. Aby uzyskać więcej informacji na temat przypisywania ról RBAC za pomocą programu PowerShell, zobacz [Zarządzanie dostępem przy użyciu funkcji RBAC i azure powershell](../articles/role-based-access-control/role-assignments-powershell.md).
 
-Przed uruchomieniem następującego przykładowego skryptu pamiętaj, aby zastąpić wartości symboli zastępczych, w tym nawiasów, z własnymi wartościami.
+Przed uruchomieniem następującego przykładowego skryptu należy pamiętać o zastąpieniu wartości zastępczych, w tym nawiasów, własnymi wartościami.
 
 ```powershell
 #Get the name of the custom role
@@ -59,69 +59,69 @@ New-AzRoleAssignment -SignInName <user-principal-name> -RoleDefinitionName $File
 
 #### <a name="cli"></a>Interfejs wiersza polecenia
   
-Następujące polecenie interfejsu wiersza polecenia 2,0 pokazuje, jak przypisać rolę RBAC do tożsamości usługi Azure AD na podstawie nazwy logowania. Aby uzyskać więcej informacji na temat przypisywania ról RBAC przy użyciu interfejsu wiersza polecenia platformy Azure, zobacz [Zarządzanie dostępem przy użyciu RBAC i interfejsu wiersza polecenia platformy Azure](../articles/role-based-access-control/role-assignments-cli.md). 
+Następujące polecenie CLI 2.0 pokazuje, jak przypisać rolę RBAC do tożsamości usługi Azure AD na podstawie nazwy logowania. Aby uzyskać więcej informacji na temat przypisywania ról RBAC za pomocą interfejsu wiersza polecenia platformy Azure, zobacz [Zarządzanie dostępem przy użyciu funkcji RBAC i interfejsu wiersza polecenia platformy Azure](../articles/role-based-access-control/role-assignments-cli.md). 
 
-Przed uruchomieniem następującego przykładowego skryptu pamiętaj, aby zastąpić wartości symboli zastępczych, w tym nawiasów, z własnymi wartościami.
+Przed uruchomieniem następującego przykładowego skryptu należy pamiętać o zastąpieniu wartości zastępczych, w tym nawiasów, własnymi wartościami.
 
 ```azurecli-interactive
 #Assign the built-in role to the target identity: Storage File Data SMB Share Reader, Storage File Data SMB Share Contributor, Storage File Data SMB Share Elevated Contributor
 az role assignment create --role "<role-name>" --assignee <user-principal-name> --scope "/subscriptions/<subscription-id>/resourceGroups/<resource-group>/providers/Microsoft.Storage/storageAccounts/<storage-account>/fileServices/default/fileshares/<share-name>"
 ```
 
-## <a name="configure-ntfs-permissions-over-smb"></a>Konfigurowanie uprawnień systemu plików NTFS przy użyciu protokołu SMB 
-Po przypisaniu uprawnień na poziomie udziałów przy użyciu RBAC należy przypisać odpowiednie uprawnienia systemu plików NTFS do poziomu głównego, katalogu lub pliku. Należy traktować uprawnienia na poziomie udziałów jako strażnika wysokiego poziomu, który określa, czy użytkownik może uzyskać dostęp do udziału. Uprawnienia NTFS działają na bardziej szczegółowym poziomie, aby określić, jakie operacje może wykonać użytkownik na poziomie katalogu lub pliku.
+## <a name="configure-ntfs-permissions-over-smb"></a>Konfigurowanie uprawnień ntfs za zgodą za mb/ smb 
+Po przypisaniu uprawnień na poziomie udziału do funkcji RBAC należy przypisać odpowiednie uprawnienia NTFS na poziomie głównym, katalogu lub pliku. Pomyśl o uprawnieniach na poziomie udziału jako strażnik wysokiego poziomu, który określa, czy użytkownik może uzyskać dostęp do udziału. Uprawnienia NTFS działają na bardziej szczegółowym poziomie, aby określić, jakie operacje użytkownik może wykonać na poziomie katalogu lub pliku.
 
-Azure Files obsługuje pełny zestaw uprawnień systemu plików NTFS podstawowych i zaawansowanych. Uprawnienia NTFS można wyświetlać i konfigurować dla katalogów i plików w udziale plików platformy Azure, instalując udział, a następnie używając Eksploratora plików systemu Windows lub uruchamiając polecenie [icacls](https://docs.microsoft.com/windows-server/administration/windows-commands/icacls) lub [Set-ACL](https://docs.microsoft.com/powershell/module/microsoft.powershell.security/get-acl) . 
+Usługa Azure Files obsługuje pełny zestaw podstawowych i zaawansowanych uprawnień systemu NTFS. Uprawnienia NTFS do katalogów i plików w udziale plików platformy Azure można wyświetlać i konfigurować, montując udział, a następnie używając Eksploratora plików systemu Windows lub uruchamiając polecenie [Icacls](https://docs.microsoft.com/windows-server/administration/windows-commands/icacls) lub [Set-ACL.](https://docs.microsoft.com/powershell/module/microsoft.powershell.security/get-acl) 
 
-Aby skonfigurować system plików NTFS z uprawnieniami administratora, należy zainstalować udział przy użyciu klucza konta magazynu z maszyny wirtualnej przyłączonej do domeny. Postępuj zgodnie z instrukcjami w następnej sekcji, aby zainstalować udział plików platformy Azure z wiersza polecenia i odpowiednio skonfigurować uprawnienia systemu plików NTFS.
+Aby skonfigurować system NTFS z uprawnieniami administratora, należy zainstalować udział przy użyciu klucza konta magazynu z maszyny wirtualnej przyłączone do domeny. Postępuj zgodnie z instrukcjami w następnej sekcji, aby zainstalować udział plików platformy Azure z wiersza polecenia i odpowiednio skonfigurować uprawnienia NTFS.
 
-W katalogu głównym udziału plików są obsługiwane następujące zestawy uprawnień:
+Następujące zestawy uprawnień są obsługiwane w katalogu głównym udziału plików:
 
-- Builtin\administratorzy: (OI) (CI) (F)
-- NT NT\SYSTEM: (OI) (CI) (CI) (F)
-- BUILTIN\Users: (RX)
-- BUILTIN\Users: (OI) (CI) (we/wy) (GR, GE)
-- Użytkownicy NT AUTHORITY\Authenticated: (OI) (CI) (M)
-- ZARZĄDZANIE NT\SYSTEM: (F)
-- TWÓRCA-WŁAŚCICIEL: (OI) (WE/WY) (IO) (F)
+- BUILTIN\Administratorzy:(OI)(CI)(F)
+- NT AUTHORITY\SYSTEM:(OI)(CI)(F)
+- BUILTIN\Użytkownicy:(RX)
+- BUILTIN\Users:(OI)(CI)(IO)(GR,GE)
+- UPRAWNIENIA NT\Uwierzytelnieni użytkownicy:(OI)(CI)(M)
+- NT AUTHORITY\SYSTEM:(F)
+- WŁAŚCICIEL TWÓRCY:(OI)(CI)(IO)(F)
 
-### <a name="configure-ntfs-permissions-with-icacls"></a>Konfigurowanie uprawnień systemu plików NTFS przy użyciu icacls
-Użyj następującego polecenia systemu Windows, aby przyznać pełne uprawnienia do wszystkich katalogów i plików w udziale plików, w tym katalogu głównego. Pamiętaj, aby zastąpić wartości symboli zastępczych w przykładzie własnymi wartościami.
+### <a name="configure-ntfs-permissions-with-icacls"></a>Konfigurowanie uprawnień ntfs za pomocą icacls
+Poniższe polecenie systemu Windows umożliwia przyznanie pełnych uprawnień do wszystkich katalogów i plików w ramach udziału plików, w tym do katalogu głównego. Pamiętaj, aby zastąpić wartości zastępcze w przykładzie własnymi wartościami.
 
 ```
 icacls <mounted-drive-letter>: /grant <user-email>:(f)
 ```
 
-Aby uzyskać więcej informacji na temat używania icacls do ustawiania uprawnień systemu plików NTFS i różnych typów obsługiwanych uprawnień, zobacz [informacje dotyczące wiersza polecenia dla icacls](https://docs.microsoft.com/windows-server/administration/windows-commands/icacls).
+Aby uzyskać więcej informacji na temat używania icacls do ustawiania uprawnień NTFS i różnych typów obsługiwanych uprawnień, zobacz [odwołanie do wiersza polecenia dla icacls](https://docs.microsoft.com/windows-server/administration/windows-commands/icacls).
 
-### <a name="mount-a-file-share-from-the-command-prompt"></a>Instalowanie udziału plików z wiersza polecenia
+### <a name="mount-a-file-share-from-the-command-prompt"></a>Instalowanie udziału plików w wierszu polecenia
 
-Użyj polecenia Windows **net use** , aby zainstalować udział plików platformy Azure. Pamiętaj, aby zastąpić wartości symboli zastępczych w poniższym przykładzie własnymi wartościami. Aby uzyskać więcej informacji na temat instalowania udziałów plików, zobacz [Korzystanie z udziału plików platformy Azure w systemie Windows](../articles/storage/files/storage-how-to-use-files-windows.md).
+Użyj polecenia **użyj sieci** systemu Windows, aby zainstalować udział plików platformy Azure. Pamiętaj, aby zastąpić wartości zastępcze w poniższym przykładzie własnymi wartościami. Aby uzyskać więcej informacji na temat [instalowania](../articles/storage/files/storage-how-to-use-files-windows.md)udziałów plików, zobacz Używanie udziału plików platformy Azure w systemie Windows .
 
 ```
 net use <desired-drive-letter>: \\<storage-account-name>.file.core.windows.net\<share-name> <storage-account-key> /user:Azure\<storage-account-name>
 ```
-### <a name="configure-ntfs-permissions-with-windows-file-explorer"></a>Konfigurowanie uprawnień systemu plików NTFS przy użyciu Eksploratora plików systemu Windows
-Użyj Eksploratora plików systemu Windows, aby przyznać pełne uprawnienia do wszystkich katalogów i plików w udziale plików, w tym katalogu głównego.
+### <a name="configure-ntfs-permissions-with-windows-file-explorer"></a>Konfigurowanie uprawnień NTFS za pomocą Eksploratora plików systemu Windows
+Eksploratora plików systemu Windows umożliwia przyznanie pełnych uprawnień wszystkim katalogom i plikom w ramach udziału plików, w tym katalogowi główne.
 
-1. Otwórz Eksploratora plików systemu Windows i kliknij prawym przyciskiem myszy plik/katalog i wybierz polecenie **Właściwości**
-2. Kliknij kartę **zabezpieczenia**
-3. Kliknij pozycję **Edytuj..** . przycisk zmiany uprawnień
-4. Możesz zmienić uprawnienia istniejących użytkowników lub kliknąć przycisk **Dodaj...** , aby przyznać uprawnienia nowym użytkownikom
-5. W oknie monitu do dodawania nowych użytkowników wprowadź nazwę użytkownika docelowego, do którego chcesz udzielić uprawnień w polu **Wprowadź nazwy obiektów do wybrania** , a następnie kliknij przycisk **Sprawdź nazwy** , aby znaleźć pełną nazwę UPN użytkownika docelowego.
-7.  Kliknij przycisk **OK** .
-8.  Na karcie Zabezpieczenia wybierz pozycję wszystkie uprawnienia, które chcesz udzielić nowo dodawanemu użytkownikowi.
-9.  Kliknij przycisk **Zastosuj**
+1. Otwórz Eksploratora plików w systemie Windows i kliknij prawym przyciskiem myszy plik/katalog i wybierz polecenie **Właściwości**
+2. Kliknij kartę **Zabezpieczenia**
+3. Kliknij **na Edytuj..**. przycisk, aby zmienić uprawnienia
+4. Możesz zmienić uprawnienia istniejących użytkowników lub kliknąć **dodaj...** aby udzielić uprawnień nowym użytkownikom
+5. W oknie monitu o dodanie nowych użytkowników wprowadź docelową nazwę użytkownika, której chcesz udzielić uprawnień w polu **Wprowadź nazwy obiektów do zaznaczenia,** a następnie kliknij pozycję Sprawdź **nazwy,** aby znaleźć pełną nazwę nazwy UPN użytkownika docelowego.
+7.  Kliknij przycisk **OK**
+8.  Na karcie Zabezpieczenia wybierz wszystkie uprawnienia, które chcesz przyznać nowo dodanej użytkownikowi
+9.  Kliknij na **Zastosuj**
 
-## <a name="mount-a-file-share-from-a-domain-joined-vm"></a>Instalowanie udziału plików z maszyny wirtualnej przyłączonej do domeny
+## <a name="mount-a-file-share-from-a-domain-joined-vm"></a>Instalowanie udziału plików z maszyny wirtualnej przyłączanej do domeny
 
-Następujący proces sprawdza, czy udział plików i uprawnienia dostępu zostały prawidłowo skonfigurowane i że można uzyskać dostęp do udziału plików platformy Azure z poziomu maszyny wirtualnej przyłączonej do domeny:
+Następujący proces sprawdza, czy twój udział plików i uprawnienia dostępu zostały poprawnie skonfigurowane i czy można uzyskać dostęp do udziału plików platformy Azure z maszyny Wirtualnej przyłączone do domeny:
 
-Zaloguj się do maszyny wirtualnej przy użyciu tożsamości usługi Azure AD, do której udzielono uprawnień, jak pokazano na poniższej ilustracji. Jeśli włączono uwierzytelnianie usługi AD dla Azure Files, Użyj poświadczeń usługi AD. W przypadku uwierzytelniania za pomocą usługi Azure AD DS Zaloguj się przy użyciu poświadczeń usługi Azure AD.
+Zaloguj się do maszyny Wirtualnej przy użyciu tożsamości usługi Azure AD, do której udzielono uprawnień, jak pokazano na poniższej ilustracji. Jeśli włączono uwierzytelnianie usługi AD dla plików platformy Azure, użyj poświadczeń usługi AD. W przypadku uwierzytelniania usług Ad DS usługi Azure zaloguj się przy użyciu poświadczeń usługi Azure AD.
 
-![Zrzut ekranu przedstawiający ekran logowania do usługi Azure AD na potrzeby uwierzytelniania użytkowników](media/storage-files-aad-permissions-and-mounting/azure-active-directory-authentication-dialog.png)
+![Zrzut ekranu przedstawiający ekran logowania usługi Azure AD do uwierzytelniania użytkowników](media/storage-files-aad-permissions-and-mounting/azure-active-directory-authentication-dialog.png)
 
-Użyj poniższego polecenia, aby zainstalować udział plików platformy Azure. Pamiętaj, aby zastąpić wartości zastępcze własnymi wartościami. Ponieważ użytkownik został uwierzytelniony, nie musisz podawać klucza konta magazynu, poświadczeń usługi AD ani poświadczeń usługi Azure AD. Obsługa logowania jednokrotnego jest obsługiwana w przypadku uwierzytelniania za pomocą usług AD lub Azure AD DS.
+Użyj następującego polecenia, aby zainstalować udział plików platformy Azure. Pamiętaj, aby zastąpić wartości zastępcze własnymi wartościami. Ponieważ zostałeś uwierzytelniony, nie musisz podawać klucza konta magazynu, poświadczeń usługi AD ani poświadczeń usługi Azure AD. Środowisko logowania jednokrotnego jest obsługiwane w przypadku uwierzytelniania za pomocą usług AD lub usługi Azure AD DS.
 
 ```
 net use <desired-drive-letter>: \\<storage-account-name>.file.core.windows.net\<share-name>

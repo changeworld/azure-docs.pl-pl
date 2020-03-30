@@ -1,6 +1,6 @@
 ---
-title: Praca z zasadami zabezpieczeń | Microsoft Docs
-description: W tym artykule opisano sposób pracy z zasadami zabezpieczeń w programie Azure Security Center.
+title: Praca z zasadami bezpieczeństwa | Dokumenty firmy Microsoft
+description: W tym artykule opisano sposób pracy z zasadami zabezpieczeń w usłudze Azure Security Center.
 services: security-center
 documentationcenter: na
 author: memildin
@@ -15,120 +15,120 @@ ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
 ms.openlocfilehash: 45a27be400753b56c42310a340334feba8a420c5
-ms.sourcegitcommit: 6dec090a6820fb68ac7648cf5fa4a70f45f87e1a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/11/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73906854"
 ---
 # <a name="working-with-security-policies"></a>Praca z zasadami zabezpieczeń
 
-W tym artykule opisano sposób konfigurowania zasad zabezpieczeń oraz sposób ich wyświetlania w Security Center. 
+W tym artykule wyjaśniono, jak skonfigurowano zasady zabezpieczeń i jak je wyświetlać w Centrum zabezpieczeń. 
 
-## <a name="introduction-to-security-policies"></a>Wprowadzenie do zasad zabezpieczeń
+## <a name="introduction-to-security-policies"></a>Wprowadzenie do zasad bezpieczeństwa
 
-Zasada zabezpieczeń definiuje żądaną konfigurację obciążeń i pomaga zapewnić zgodność z wymaganiami firmy lub instytucji nadzoru.
+Zasady zabezpieczeń definiują żądaną konfigurację obciążeń i pomagają upewnić się, że spełniasz wymagania dotyczące zabezpieczeń firmy lub organów regulacyjnych.
 
-Azure Security Center wykonuje zalecenia dotyczące zabezpieczeń w oparciu o wybrane zasady. Zasady Security Center są oparte na inicjatywach zasad utworzonych w programie Azure Policy. Za pomocą [Azure Policy](../governance/policy/overview.md) można zarządzać zasadami oraz konfigurować zasady w grupach zarządzania i wielu subskrypcjach.
+Usługa Azure Security Center udostępnia zalecenia dotyczące zabezpieczeń na podstawie wybranych zasad. Zasady usługi Security Center są oparte na inicjatywach zasad utworzonych w usłudze Azure Policy. Za pomocą [usługi Azure Policy](../governance/policy/overview.md) można zarządzać zasadami i ustawiać zasady w grupach zarządzania i w wielu subskrypcjach.
 
-Security Center oferuje następujące opcje pracy z zasadami zabezpieczeń:
+Usługa Security Center oferuje następujące opcje pracy z zasadami zabezpieczeń:
 
-* **Wyświetlanie i edytowanie wbudowanych zasad domyślnych** — po włączeniu Security Center wbudowana inicjatywa o nazwie "domyślna wartość ASC" jest automatycznie przypisywana do wszystkich Security Center zarejestrowanych subskrypcji (warstwy Bezpłatna lub standardowa). Aby dostosować tę inicjatywę, możesz włączyć lub wyłączyć poszczególne zasady w ramach tego programu. Zapoznaj się z listą [wbudowanych zasad zabezpieczeń](security-center-policy-definitions.md) , aby poznać dostępne opcje.
+* **Wyświetlanie i edytowanie wbudowanych zasad domyślnych** — po włączeniu usługi Security Center wbudowana inicjatywa o nazwie "Domyślny asc" jest automatycznie przypisywana do wszystkich subskrypcji zarejestrowanych w umorzynym u centrum zabezpieczeń (warstwy bezpłatne lub standardowe). Aby dostosować tę inicjatywę, można włączyć lub wyłączyć poszczególne zasady w niej. Zobacz listę [wbudowanych zasad zabezpieczeń,](security-center-policy-definitions.md) aby zapoznać się z opcjami dostępnymi po wyjęciu z pudełka.
 
-* **Dodawanie własnych zasad niestandardowych** — Jeśli chcesz dostosować inicjatywy zabezpieczeń stosowane do subskrypcji, możesz to zrobić w ramach Security Center. Następnie otrzymasz zalecenia, jeśli maszyny nie będą zgodne z tworzonymi zasadami. Aby uzyskać instrukcje dotyczące tworzenia i przypisywania zasad niestandardowych, zobacz [Używanie niestandardowych zasad zabezpieczeń](custom-security-policies.md).
+* **Dodaj własne zasady niestandardowe** — jeśli chcesz dostosować inicjatywy zabezpieczeń zastosowane do subskrypcji, możesz to zrobić w u centrum zabezpieczeń. Następnie otrzymasz rekomendacje, jeśli twoje maszyny nie zastosują się do utworzonych zasad. Aby uzyskać instrukcje dotyczące tworzenia i przypisywania zasad niestandardowych, zobacz [Korzystanie z niestandardowych zasad zabezpieczeń](custom-security-policies.md).
 
-* **Dodaj zasady zgodności z przepisami** — pulpit nawigacyjny zgodności z przepisami Security Center pokazuje stan wszystkich ocen w danym środowisku w kontekście określonego standardu lub rozporządzenia (na przykład Azure CIS, NIST SP 800-53 R4, Swift CSP CSCF-v2020). Aby uzyskać więcej informacji, zobacz [Zwiększanie zgodności z przepisami](security-center-compliance-dashboard.md).
+* **Dodaj zasady zgodności z przepisami** — pulpit nawigacyjny zgodności z przepisami usługi Security Center pokazuje stan wszystkich ocen w danym środowisku w kontekście określonego standardu lub regulacji (takich jak Azure CIS, NIST SP 800-53 R4, SWIFT CSP CSCF-v2020). Aby uzyskać więcej informacji, zobacz [Poprawianie zgodności z przepisami](security-center-compliance-dashboard.md).
 
 
 ## <a name="managing-your-security-policies"></a>Zarządzanie zasadami zabezpieczeń
 
 Aby wyświetlić zasady zabezpieczeń w usłudze Security Center:
 
-1. Na pulpicie nawigacyjnym **Security Center** wybierz pozycję **zasady zabezpieczeń**.
+1. Na pulpicie nawigacyjnym **Centrum zabezpieczeń** wybierz pozycję **Zasady zabezpieczeń**.
 
     ![Okienko Zarządzanie zasadami](./media/security-center-policies/security-center-policy-mgt.png)
 
-   Na ekranie **Zarządzanie zasadami** można zobaczyć liczbę grup zarządzania, subskrypcji i obszarów roboczych, a także strukturę grupy zarządzania.
+   Na ekranie **Zarządzanie zasadami** można wyświetlić liczbę grup zarządzania, subskrypcji i obszarów roboczych, a także strukturę grupy zarządzania.
 
 1. Wybierz subskrypcję lub grupę zarządzania, której zasady chcesz wyświetlić.
 
-1. Zostanie wyświetlona strona zasady zabezpieczeń dla tej subskrypcji lub grupy zarządzania. Są w nim wyświetlane zasady dostępne i przypisane.
+1. Zostanie wyświetlona strona zasad zabezpieczeń dla tej subskrypcji lub grupy zarządzania. Pokazuje dostępne i przypisane zasady.
 
    ![ekran zasad](./media/tutorial-security-policy/security-policy-page.png)
 
     > [!NOTE]
-    > Jeśli istnieje etykieta "MG odziedziczona" wraz z zasadami domyślnymi, oznacza to, że zasady zostały przypisane do grupy zarządzania i są dziedziczone przez przeglądaną subskrypcję.
+    > Jeśli obok domyślnej zasady znajduje się etykieta "MG Inherited", oznacza to, że zasada została przypisana do grupy zarządzania i dziedziczona przez przeglądaną subskrypcję.
 
 
-1. Wybierz spośród dostępnych opcji na tej stronie:
+1. Wybierz jedną z dostępnych opcji na tej stronie:
 
-    1. Aby korzystać z zasad branżowych, kliknij pozycję **Dodaj więcej standardów**. Aby uzyskać więcej informacji, zobacz [Aktualizacja dynamicznych pakietów zgodności](update-regulatory-compliance-packages.md).
+    1. Aby pracować z zasadami branżowymi, kliknij **pozycję Dodaj więcej standardów**. Aby uzyskać więcej informacji, zobacz [Aktualizowanie do dynamicznych pakietów zgodności](update-regulatory-compliance-packages.md).
 
-    1. Aby przypisywać niestandardowe inicjatywy i zarządzać nimi, kliknij pozycję **Dodaj inicjatywy niestandardowe**. Aby uzyskać więcej informacji, zobacz [Korzystanie z niestandardowych zasad zabezpieczeń](custom-security-policies.md).
+    1. Aby przypisać inicjatywy niestandardowe i zarządzać nimi, kliknij pozycję **Dodaj inicjatywy niestandardowe**. Aby uzyskać więcej informacji, zobacz [Korzystanie z niestandardowych zasad zabezpieczeń](custom-security-policies.md).
 
-    1. Aby wyświetlić i edytować zasady domyślne, kliknij przycisk **Wyświetl czynne zasady** i postępuj zgodnie z poniższym opisem. 
+    1. Aby wyświetlić i edytować zasady domyślne, kliknij pozycję **Wyświetl skuteczne zasady** i postępuj zgodnie z poniższymi opisami. 
 
        ![ekran zasad](./media/security-center-policies/policy-screen.png)
        
-       Ten ekran **zasad zabezpieczeń** odzwierciedla akcję podejmowaną przez zasady przypisane do wybranej subskrypcji lub grupy zarządzania.
+       Ten ekran **zasad zabezpieczeń** odzwierciedla działania podejmowane przez zasady przypisane do wybranej subskrypcji lub grupy zarządzania.
        
-       * Użyj linków w górnej części strony, aby otworzyć **przypisanie** zasad, które ma zastosowanie do subskrypcji lub grupy zarządzania. Te linki umożliwiają dostęp do przypisania i edytowanie lub wyłączanie zasad. Jeśli na przykład widzisz, że określone przypisanie zasad skutecznie odmawia ochrony punktu końcowego, Użyj linku do edytowania lub wyłączania zasad.
+       * Użyj łączy u góry, aby otworzyć **przypisanie** zasad, które ma zastosowanie do subskrypcji lub grupy zarządzania. Te łącza umożliwiają dostęp do przypisania oraz edytowanie lub wyłączanie zasad. Na przykład jeśli widzisz, że określone przypisanie zasad skutecznie odmawia ochrony punktu końcowego, użyj łącza, aby edytować lub wyłączyć zasady.
        
-       * Na liście zasad można zobaczyć obowiązującą aplikację zasad w ramach subskrypcji lub grupy zarządzania. Są brane pod uwagę ustawienia poszczególnych zasad, które mają zastosowanie do zakresu, oraz łączny wynik akcji podejmowanych przez zasady. Na przykład, jeśli w jednym przypisaniu zasad jest wyłączone, ale w innym jest ustawiona na AuditIfNotExist, to efekt skumulowany stosuje AuditIfNotExist. Większym aktywnym efektem jest zawsze pierwszeństwo.
+       * Na liście zasad można zobaczyć skuteczne stosowanie zasad w ramach subskrypcji lub grupy zarządzania. Ustawienia każdej zasady, które mają zastosowanie do zakresu są brane pod uwagę i skumulowany wynik działań podejmowanych przez zasady jest wyświetlany. Na przykład jeśli w jednym przypisaniu zasad jest wyłączona, ale w innym jest ustawiona na AuditIfNotExist, a następnie skumulowany efekt stosuje AuditIfNotExist. Bardziej aktywny efekt zawsze ma pierwszeństwo.
        
-       * Efektem zasad może być: dołączanie, inspekcja, AuditIfNotExists, Odmów, DeployIfNotExists, wyłączone. Aby uzyskać więcej informacji na temat sposobu stosowania efektów, zobacz [opis efektów zasad](../governance/policy/concepts/effects.md).
+       * Efekt zasad może być: Dołącz, Inspekcja, AuditIfNotExists, Deny, DeployIfNotExists, Wyłączone. Aby uzyskać więcej informacji na temat sposobu stosowania efektów, zobacz [Opis efektów zasad](../governance/policy/concepts/effects.md).
 
        > [!NOTE]
-       > Podczas wyświetlania przypisanych zasad można zobaczyć wiele przypisań i zobaczyć, jak poszczególne przypisania są skonfigurowane samodzielnie.
+       > Podczas wyświetlania przypisanych zasad można zobaczyć wiele przypisań i zobaczyć, jak każde przypisanie jest skonfigurowane samodzielnie.
 
 
 ## <a name="who-can-edit-security-policies"></a>Kto może edytować zasady zabezpieczeń?
 
-Zasady zabezpieczeń można edytować za pośrednictwem portalu Azure Policy przy użyciu interfejsu API REST lub środowiska Windows PowerShell.
+Zasady zabezpieczeń można edytować za pośrednictwem portalu Azure Policy, za pośrednictwem interfejsu API REST lub programu Windows PowerShell.
 
-Security Center korzysta z Access Control opartych na rolach (RBAC), które udostępnia wbudowane role, które można przypisać do użytkowników, grup i usług na platformie Azure. Gdy użytkownicy otworzą Security Center, zobaczą tylko te informacje, które są związane z zasobami, do których mają dostęp. Oznacza to, że użytkownicy mają przypisaną rolę *właściciela*, *współautora*lub *czytelnika* do subskrypcji zasobu. Podobnie jak te role, istnieją dwie konkretne role Security Center:
+Usługa Security Center używa kontroli dostępu opartej na rolach udostępniającej wbudowane role, które można przypisać do użytkowników, grup i usług na platformie Azure. Gdy użytkownicy otwierają Centrum zabezpieczeń, widzą tylko informacje związane z zasobami, do których mają dostęp. Oznacza to, że użytkownikom przypisano rolę *właściciela,* *współautora*lub *czytelnika* do subskrypcji zasobu. Oprócz tych ról istnieją dwie określone role w centrum zabezpieczeń:
 
-- **Czytelnik zabezpieczeń**: mieć uprawnienia do widoku Security Center, w tym zalecenia, alerty, zasady i kondycję, ale nie mogą wprowadzać zmian.
-- **Administrator zabezpieczeń**: mają takie same uprawnienia do wyświetlania jak *czytelnik zabezpieczeń*i mogą także aktualizować zasady zabezpieczeń i odrzucać zalecenia i alerty.
+- **Czytnik zabezpieczeń:** mają prawa do wyświetlania w centrum zabezpieczeń, które zawiera zalecenia, alerty, zasady i kondycję, ale nie mogą wprowadzać zmian.
+- **Administrator zabezpieczeń:** Mają takie same prawa do widoku jak *czytnik zabezpieczeń,* a także mogą aktualizować zasady zabezpieczeń i odrzucać zalecenia i alerty.
 
 
-## <a name="disable-security-policies"></a>Wyłącz zasady zabezpieczeń
-Jeśli domyślne zasady zabezpieczeń generują rekomendację, która nie jest odpowiednia dla danego środowiska, można ją zatrzymać, wyłączając definicję zasad, która wysyła zalecenie.
-Aby uzyskać więcej informacji na temat zaleceń, zobacz [Zarządzanie zaleceniami](security-center-recommendations.md)dotyczącymi zabezpieczeń.
+## <a name="disable-security-policies"></a>Wyłączanie zasad zabezpieczeń
+Jeśli domyślna zasada zabezpieczeń generuje zalecenie, które nie jest istotne dla danego środowiska, można go zatrzymać, wyłączając definicję zasad, która wysyła zalecenie.
+Aby uzyskać więcej informacji na temat zaleceń, zobacz [Zarządzanie zaleceniami dotyczącymi zabezpieczeń](security-center-recommendations.md).
 
-1. W Security Center z sekcji **zgodność zasad &** kliknij pozycję **zasady zabezpieczeń**.
+1. W Centrum zabezpieczeń w sekcji **Zasady & Zgodność** kliknij pozycję Zasady **zabezpieczeń**.
 
-   ![Zarządzanie zasadami](./media/tutorial-security-policy/policy-management.png)
+   ![zarządzanie polityką](./media/tutorial-security-policy/policy-management.png)
 
-2. Kliknij subskrypcję lub grupę zarządzania, dla której chcesz wyłączyć zalecenie.
+2. Kliknij grupę subskrypcji lub zarządzania, dla której chcesz wyłączyć zalecenie.
 
    > [!NOTE]
-   > Należy pamiętać, że grupa zarządzania stosuje swoje zasady do swoich subskrypcji. W związku z tym Jeśli wyłączysz zasady subskrypcji, a subskrypcja należy do grupy zarządzania, która nadal używa tych samych zasad, będziesz nadal otrzymywać zalecenia dotyczące zasad. Zasady będą nadal stosowane z poziomu zarządzania i nadal będą generowane zalecenia.
+   > Pamiętaj, że grupa zarządzania stosuje zasady do swoich subskrypcji. W związku z tym wyłączenie zasady subskrypcji, która należy do grupy zarządzania korzystającej nadal z tych samych zasad, sprawi, że będziesz nadal otrzymywać rekomendacje dotyczące zasad. Zasady będą nadal stosowane z poziomu zarządzania i rekomendacje będą nadal generowane.
 
-1. Kliknij pozycję **Wyświetl czynne zasady**.
+1. Kliknij **pozycję Wyświetl skuteczne zasady**.
 
-   ![Wyłącz zasady](./media/tutorial-security-policy/view-effective-policy.png)
+   ![wyłączanie zasad](./media/tutorial-security-policy/view-effective-policy.png)
 
 1. Kliknij przypisane zasady.
 
-   ![Wyłącz zasady](./media/tutorial-security-policy/security-policy.png)
+   ![wyłączanie zasad](./media/tutorial-security-policy/security-policy.png)
 
-1. W sekcji **Parametry** Wyszukaj zasady wywołujące zalecenie, które chcesz wyłączyć, a następnie z listy rozwijanej wybierz pozycję **wyłączone** .
+1. W sekcji **PARAMETRY** wyszukaj zasadę, która wywołuje zalecenie, które chcesz wyłączyć, a z listy rozwijanej wybierz pozycję **Wyłączone**
 
-   ![Wyłącz zasady](./media/tutorial-security-policy/disable-policy.png)
+   ![wyłączanie zasad](./media/tutorial-security-policy/disable-policy.png)
 
-1. Kliknij pozycję **Zapisz**.
+1. Kliknij przycisk **Zapisz**.
 
    > [!NOTE]
-   > Wyłączenie zmian zasad może potrwać do 12 godzin.
+   > Wprowadzenie zmian w zasadach wyłączenia może potrwać do 12 godzin.
 
 
 
 ## <a name="next-steps"></a>Następne kroki
-W tym artykule przedstawiono informacje dotyczące zasad zabezpieczeń. Aby uzyskać powiązane informacje, zobacz następujące artykuły:
+W tym artykule dowiesz się o zasadach zabezpieczeń. Aby uzyskać powiązane informacje, zobacz następujące artykuły:
 
-* Aby uzyskać instrukcje dotyczące sposobu ustawiania zasad przy użyciu programu PowerShell, zobacz [Szybki Start: Tworzenie przypisania zasad w celu zidentyfikowania niezgodnych zasobów przy użyciu modułu Azure PowerShell](../governance/policy/assign-policy-powershell.md)
+* Aby uzyskać instrukcje dotyczące ustawiania zasad przy użyciu programu PowerShell, zobacz [Szybki start: Tworzenie przypisania zasad w celu identyfikowania niezgodnych zasobów przy użyciu modułu Programu Azure PowerShell](../governance/policy/assign-policy-powershell.md)
 
-* Aby uzyskać instrukcje dotyczące edytowania zasad zabezpieczeń w programie Azure Policy, zobacz [Tworzenie zasad i zarządzanie nimi w celu wymuszenia zgodności](../governance/policy/tutorials/create-and-manage.md).
+* Aby uzyskać instrukcje dotyczące edytowania zasad zabezpieczeń w zasadach platformy Azure, zobacz Tworzenie zasad i zarządzanie nimi w [celu wymuszania zgodności](../governance/policy/tutorials/create-and-manage.md).
 
-* Aby uzyskać instrukcje dotyczące sposobu ustawiania zasad w ramach subskrypcji lub grup zarządzania przy użyciu Azure Policy, zobacz [co to jest Azure Policy?](../governance/policy/overview.md)
+* Aby uzyskać instrukcje dotyczące ustawiania zasad w ramach subskrypcji lub grup zarządzania przy użyciu zasad platformy Azure, zobacz [Co to jest zasady platformy Azure?](../governance/policy/overview.md)

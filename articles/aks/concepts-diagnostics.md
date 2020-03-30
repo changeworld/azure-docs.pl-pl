@@ -1,86 +1,86 @@
 ---
-title: Omówienie diagnostyki usługi Azure Kubernetes Service (AKS)
-description: Dowiedz się więcej na temat klastrów samodiagnostyki w usłudze Azure Kubernetes.
+title: Omówienie diagnostyki usługi Kubernetes (AKS) platformy Azure
+description: Dowiedz się więcej o samodiagnozowaniu klastrów w usłudze Azure Kubernetes.
 services: container-service
 author: yunjchoi
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: yunjchoi
 ms.openlocfilehash: 03bb7b786280dfcbb64190adac51b8d001d59c18
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/11/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79126611"
 ---
-# <a name="azure-kubernetes-service-diagnostics-preview-overview"></a>Omówienie usługi Azure Kubernetes Service Diagnostics (wersja zapoznawcza)
+# <a name="azure-kubernetes-service-diagnostics-preview-overview"></a>Omówienie diagnostyki usługi Azure Kubernetes (wersja zapoznawcza)
 
-Rozwiązywanie problemów z klastrem usługi Azure Kubernetes Service (AKS) jest ważną częścią obsługi klastra, zwłaszcza jeśli klaster działa w przypadku obciążeń o kluczowym znaczeniu. Diagnostyka AKS to inteligentne środowisko do samodzielnej diagnostyki, które ułatwia identyfikowanie i rozwiązywanie problemów z klastrem. Diagnostyka AKS jest natywna w chmurze i można jej używać bez dodatkowych opłat.
+Rozwiązywanie problemów z klastrem usługi Azure Kubernetes (AKS) jest ważną częścią obsługi klastra, zwłaszcza jeśli w klastrze są uruchomione obciążenia o znaczeniu krytycznym. Diagnostyka AKS to inteligentne środowisko samodiagnostyki, które pomaga identyfikować i rozwiązywać problemy w klastrze. Diagnostyka AKS jest natywna dla chmury i można jej używać bez dodatkowych kosztów konfiguracji lub rozliczeń.
 
-Ta funkcja jest teraz dostępna w publicznej wersji zapoznawczej.
+Ta funkcja jest teraz w publicznej wersji zapoznawczej.
 
 ## <a name="open-aks-diagnostics"></a>Otwórz diagnostykę AKS
 
 Aby uzyskać dostęp do diagnostyki AKS:
 
-- Przejdź do klastra Kubernetes w [Azure Portal](https://portal.azure.com).
-- Kliknij przycisk **diagnozowanie i rozwiązywanie problemów** w lewym okienku nawigacji, co spowoduje otwarcie diagnostyki AKS.
-- Wybierz kategorię, która najlepiej opisuje problem z klastrem przy użyciu słów kluczowych na kafelku strony głównej, lub wpisz słowo kluczowe, które najlepiej opisuje Twój problem na pasku wyszukiwania, na przykład _problemy z węzłem klastra_.
+- Przejdź do klastra kubernetes w [witrynie Azure portal](https://portal.azure.com).
+- Kliknij przycisk **Diagnozuj i rozwiązuj problemy** w lewej nawigacji, która otwiera diagnostykę AKS.
+- Wybierz kategorię, która najlepiej opisuje problem klastra przy użyciu słów kluczowych na kafelku strony głównej, lub wpisz słowo kluczowe, które najlepiej opisuje problem na pasku wyszukiwania, na przykład _Problemy z węzłem klastra_.
 
-![Głównej](./media/concepts-diagnostics/aks-diagnostics-homepage.png)
+![Strona główna](./media/concepts-diagnostics/aks-diagnostics-homepage.png)
 
-## <a name="view-a-diagnostic-report"></a>Wyświetl raport diagnostyczny
+## <a name="view-a-diagnostic-report"></a>Wyświetlanie raportu diagnostycznego
 
-Po kliknięciu kategorii można wyświetlić raport diagnostyczny specyficzny dla danego klastra. Raport diagnostyczny jest inteligentnie wywoływany, jeśli wystąpił problem w klastrze z ikonami stanu. Aby przejść do szczegółów poszczególnych tematów, kliknij pozycję **więcej informacji** , aby wyświetlić szczegółowy opis problemu, zalecane akcje, linki do przydatnych dokumentów, metryk powiązanych i danych rejestrowania. Raporty diagnostyczne są generowane w sposób inteligentny na podstawie bieżącego stanu klastra po uruchomieniu różnych kontroli. Raporty diagnostyczne mogą być użytecznym narzędziem do lokalizowania problemu z klastrem i znajdowania następnych kroków w celu rozwiązania problemu.
+Po kliknięciu kategorii można wyświetlić raport diagnostyczny specyficzny dla klastra. Raport diagnostyczny inteligentnie wywołuje, jeśli istnieje jakikolwiek problem w klastrze z ikonami stanu. Możesz przejść do szczegółów każdego tematu, klikając **więcej informacji,** aby zobaczyć szczegółowy opis problemu, zalecane akcje, łącza do przydatnych dokumentów, powiązane metryki i dane rejestrowania. Raporty diagnostyczne są generowane inteligentnie na podstawie bieżącego stanu klastra po uruchomieniu różnych kontroli. Raporty diagnostyczne mogą być przydatnym narzędziem do wskazywania problemu klastra i znajdowania kolejnych kroków, aby rozwiązać problem.
 
 ![Raport diagnostyczny](./media/concepts-diagnostics/diagnostic-report.png)
 
-![Rozwinięty raport diagnostyczny](./media/concepts-diagnostics/node-issues.png)
+![Rozszerzony raport diagnostyczny](./media/concepts-diagnostics/node-issues.png)
 
 ## <a name="cluster-insights"></a>Szczegółowe informacje o klastrze
 
-W usłudze **cluster Insights**są dostępne następujące testy diagnostyczne.
+Następujące kontrole diagnostyczne są dostępne w **usłudze Cluster Insights**.
 
 ### <a name="cluster-node-issues"></a>Problemy z węzłem klastra
 
-Problemy z węzłem klastra sprawdzają, czy występują problemy związane z węzłem, które mogą spowodować nieoczekiwane zachowanie klastra.
+Problemy z węzłem klastra sprawdza problemy związane z węzłami, które mogą powodować nieoczekiwane zachowanie klastra.
 
-- Problemy z gotowością węzłów
+- Problemy z gotowością węzła
 - Awarie węzłów
 - Niewystarczające zasoby
-- Brak konfiguracji adresu IP węzła
+- Brak konfiguracji ip węzła
 - Awarie CNI węzła
 - Nie znaleziono węzła
-- Wyłącz zasilanie węzła
-- Niepowodzenie uwierzytelniania węzła
-- Node polecenia — nieodświeżony serwer proxy
+- Wyłączenie zasilania węzła
+- Błąd uwierzytelniania węzła
+- Węzeł kube-proxy przestarzały
 
-### <a name="create-read-update--delete-operations"></a>Tworzenie, odczytywanie, aktualizowanie & operacji usuwania
+### <a name="create-read-update--delete-operations"></a>Operacje tworzenia, odczytu, aktualizowania & usuwania
 
-CRUD operacji sprawdza wszystkie operacje CRUD, które mogą powodować problemy w klastrze.
+CRUD Operations sprawdza, czy wszystkie operacje CRUD, które mogą powodować problemy w klastrze.
 
 - Błąd operacji usuwania podsieci w użyciu
 - Błąd operacji usuwania sieciowej grupy zabezpieczeń
-- Błąd operacji usuwania tabeli tras w użyciu
-- Przywoływany błąd aprowizacji zasobów
+- Błąd operacji usuwania tabeli marszruty w użyciu
+- Błąd inicjowania obsługi administracyjnej zasobów, do których istnieje odwołanie
 - Błąd operacji usuwania publicznego adresu IP
 - Niepowodzenie wdrożenia z powodu przydziału wdrożenia
-- Błąd operacji ze względu na zasady organizacji
+- Błąd operacji spowodowany zasadami organizacji
 - Brak rejestracji subskrypcji
-- Błąd inicjowania obsługi rozszerzenia maszyny wirtualnej
+- Błąd inicjowania obsługi administracyjnej rozszerzenia maszyny Wirtualnej
 - Pojemność podsieci
-- Błąd przekroczenia limitu przydziału
+- Przekroczony błąd przydziału
 
 ### <a name="identity-and-security-management"></a>Zarządzanie tożsamościami i zabezpieczeniami
 
-Zarządzanie tożsamościami i zabezpieczeniami wykrywa błędy uwierzytelniania i autoryzacji, które mogą uniemożliwić komunikację z klastrem.
+Usługa Identity and Security Management wykrywa błędy uwierzytelniania i autoryzacji, które mogą uniemożliwiać komunikację z klastrem.
 
 - Błędy autoryzacji węzła
-- Błędy 401
+- 401 błędów
 - Błędy 403
 
 ## <a name="next-steps"></a>Następne kroki
 
-Zbierz dzienniki, aby ułatwić dalsze Rozwiązywanie problemów z klastrem za pomocą [AKS Periscope](https://aka.ms/aksperiscope).
+Zbieranie dzienników ułatwiające dalsze rozwiązywanie problemów z klastrem przy użyciu [programu AKS Periscope](https://aka.ms/aksperiscope).
 
-Opublikuj swoje pytania lub opinie w witrynie [UserVoice](https://feedback.azure.com/forums/914020-azure-kubernetes-service-aks) , dodając w tytule "[diag]".
+Zamieść swoje pytania lub opinie na [UserVoice,](https://feedback.azure.com/forums/914020-azure-kubernetes-service-aks) dodając "[Diag]" w tytule.

@@ -1,6 +1,6 @@
 ---
-title: 'Szybki Start: Nawiązywanie połączenia z maszyną wirtualną przy użyciu prywatnego adresu IP: Azure bastionu'
-description: W tym artykule dowiesz się, jak utworzyć hosta usługi Azure bastionu z poziomu maszyny wirtualnej i bezpiecznie połączyć się przy użyciu prywatnego adresu IP.
+title: 'Szybki start: łączenie się z maszyną wirtualną przy użyciu prywatnego adresu IP: Bastion platformy Azure'
+description: W tym artykule dowiesz się, jak utworzyć hosta bastionu platformy Azure z maszyny wirtualnej i bezpiecznie połączyć się przy użyciu prywatnego adresu IP.
 services: bastion
 author: cherylmc
 ms.service: bastion
@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: cherylmc
 ms.openlocfilehash: 0b4f0a1fa4f9cce05aa544bb24e045209a6d24ef
-ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79137462"
 ---
-# <a name="quickstart-connect-to-a-virtual-machine-using-a-private-ip-address-and-azure-bastion"></a>Szybki Start: Nawiązywanie połączenia z maszyną wirtualną przy użyciu prywatnego adresu IP i usługi Azure bastionu
+# <a name="quickstart-connect-to-a-virtual-machine-using-a-private-ip-address-and-azure-bastion"></a>Szybki start: łączenie się z maszyną wirtualną przy użyciu prywatnego adresu IP i bastionu platformy Azure
 
-Ten artykuł Szybki Start przedstawia sposób nawiązywania połączenia z maszyną wirtualną przy użyciu prywatnego adresu IP. Po nawiązaniu połączenia za pośrednictwem bastionu maszyny wirtualne nie potrzebują publicznego adresu IP. Kroki opisane w tym artykule ułatwiają wdrożenie bastionu w sieci wirtualnej za pośrednictwem maszyny wirtualnej w portalu. Po aprowizacji usługi środowisko RDP/SSH jest dostępne dla wszystkich maszyn wirtualnych w tej samej sieci wirtualnej.
+W tym artykule przewodnika Szybki start pokazano, jak połączyć się z maszyną wirtualną przy użyciu prywatnego adresu IP. Po nawiązaniu połączenia za pośrednictwem bastionu maszyny wirtualne nie potrzebują publicznego adresu IP. Kroki opisane w tym artykule pomagają wdrożyć bastion w sieci wirtualnej za pośrednictwem maszyny wirtualnej w portalu. Po zainicjowaniu obsługi administracyjnej usługi środowisko RDP/SSH jest dostępne dla wszystkich maszyn wirtualnych w tej samej sieci wirtualnej.
 
-## <a name="prereq"></a>Wymagania wstępne
+## <a name="prerequisites"></a><a name="prereq"></a>Wymagania wstępne
 
 * Sieć wirtualna platformy Azure.
 * Maszyna wirtualna platformy Azure znajdująca się w sieci wirtualnej z otwartym portem 3389.
@@ -27,71 +27,71 @@ Ten artykuł Szybki Start przedstawia sposób nawiązywania połączenia z maszy
 
 |**Nazwa** | **Wartość** |
 | --- | --- |
-| Name (Nazwa) |  VNet1Bastion |
+| Nazwa |  W sieci wirtualnej1Bastion |
 | Region | eastus |
-| Sieć wirtualna |  VNet1 |
-| + Nazwa podsieci | AzureBastionSubnet |
-| Adresy AzureBastionSubnet |  10.1.254.0/27 |
+| Sieć wirtualna |  Sieć wirtualna 1 |
+| + Nazwa podsieci | Usługa AzureBastionSubnet |
+| Adresy usługi AzureBastionSubnet |  10.1.254.0/27 |
 | Publiczny adres IP |  Tworzenie nowego elementu |
 | Nazwa publicznego adresu IP | VNet1BastionPIP  |
-| Jednostka SKU publicznego adresu IP |  Standard  |
+| Publiczna jednostka SKU adresu IP |  Standardowa  |
 | Przypisanie  | Statyczny |
 
-## <a name="createvmset"></a>Tworzenie hosta bastionu
+## <a name="create-a-bastion-host"></a><a name="createvmset"></a>Tworzenie hosta bastionu
 
-Po utworzeniu hosta usługi bastionu w portalu przy użyciu istniejącej maszyny wirtualnej różne ustawienia będą automatycznie odpowiadały maszynom wirtualnym i/lub sieci wirtualnej.
+Podczas tworzenia hosta bastionu w portalu przy użyciu istniejącej maszyny wirtualnej, różne ustawienia będą automatycznie domyślnie odpowiadać maszynie wirtualnej i/lub sieci wirtualnej.
 
-1. Otwórz [portal Azure](https://portal.azure.com). Przejdź do maszyny wirtualnej, a następnie kliknij przycisk **Połącz**.
+1. Otwórz witrynę [Azure Portal](https://portal.azure.com). Przejdź do maszyny wirtualnej, a następnie kliknij przycisk **Połącz**.
 
    ![ustawienia maszyny wirtualnej](./media/quickstart-host-portal/vm-settings.png)
-1. Z listy rozwijanej wybierz pozycję **bastionu**.
-1. Na stronie Połącz wybierz pozycję **Użyj bastionu**.
+1. Z listy rozwijanej wybierz **bastion**.
+1. Na stronie Łączenie wybierz pozycję **Użyj bastionu**.
 
-   ![Wybierz bastionu](./media/quickstart-host-portal/select-bastion.png)
+   ![wybierz Bastion](./media/quickstart-host-portal/select-bastion.png)
 
-1. Na stronie bastionu wypełnij następujące pola ustawień:
+1. Na stronie Bastion wypełnij następujące pola ustawień:
 
-   * **Name**: Nazwij hosta bastionu
-   * **Podsieć**: podsieć w sieci wirtualnej, do której zostanie wdrożony zasób bastionu. Należy utworzyć podsieć o nazwie **AzureBastionSubnet**. Nazwa pozwala platformie Azure wiedzieć, która podsieć, w której ma zostać wdrożony zasób bastionu. Jest to inna niż podsieć bramy. Użyj podsieci o wartości co najmniej/27 lub większej (/27,/26,/25 itd.).
+   * **Nazwa**: Nazwa hosta bastionu
+   * **Podsieć:** Podsieć w sieci wirtualnej, do której zostanie wdrożony zasób Bastion. Podsieć musi zostać utworzona pod nazwą **AzureBastionSubnet**. Nazwa informuje platformę Azure, do której podsieci należy wdrożyć zasób Bastion. Jest to inna niż podsieć bramy. Użyj podsieci co najmniej /27 lub większej (/27, /26, /25 itd.).
    
-      * Wybierz pozycję **Zarządzaj konfiguracją podsieci**, a następnie wybierz pozycję **+ podsieć**.
-      * Na stronie Dodawanie podsieci wpisz **AzureBastionSubnet**.
+      * Wybierz **pozycję Zarządzaj konfiguracją podsieci**, a następnie wybierz pozycję **+ Podsieć**.
+      * Na stronie Dodaj podsieci wpisz **AzureBastionSubnet**.
       * Określ zakres adresów w notacji CIDR. Na przykład 10.1.254.0/27.
-      * Wybierz **przycisk OK** , aby utworzyć podsieć. W górnej części strony Wróć do bastionu, aby ukończyć pozostałe ustawienia.
+      * Wybierz **przycisk OK,** aby utworzyć podsieć. W górnej części strony przejdź z powrotem do Bastionu, aby ukończyć pozostałe ustawienia.
 
-         ![Przejdź do ustawień bastionu](./media/quickstart-host-portal/navigate-bastion.png)
-   * **Publiczny adres IP**: jest to Public IP zasobu bastionu, w którym będzie dostępny protokół RDP/SSH (za pośrednictwem portu 443). Utwórz nowy publiczny adres IP lub Użyj istniejącego. Publiczny adres IP musi znajdować się w tym samym regionie co tworzony zasób bastionu.
-   * **Nazwa publicznego adresu IP**: nazwa zasobu publicznego adresu IP.
-1. Na ekranie walidacji kliknij pozycję **Utwórz**. Poczekaj około 5 minut na utworzenie i wdrożenie zasobu bastionu.
+         ![przechodzenie do ustawień bastionu](./media/quickstart-host-portal/navigate-bastion.png)
+   * **Publiczny adres IP:** Jest to publiczny adres IP zasobu Bastion, na którym będzie dostępny protokół RDP/SSH (za portem 443). Utwórz nowy publiczny adres IP lub użyj istniejącego. Publiczny adres IP musi znajdować się w tym samym regionie co zasób Bastion, który tworzysz.
+   * **Nazwa publicznego adresu IP**: Nazwa zasobu publicznego adresu IP.
+1. Na ekranie sprawdzania poprawności kliknij pozycję **Utwórz**. Poczekaj około 5 minut na utworzenie i wdrożenie zasobu Bastion.
 
-   ![Utwórz hosta bastionu](./media/quickstart-host-portal/bastion-settings.png)
+   ![tworzenie hosta bastionu](./media/quickstart-host-portal/bastion-settings.png)
 
-## <a name="connect"></a>Łączone
+## <a name="connect"></a><a name="connect"></a>Połącz
 
-Po wdrożeniu bastionu w sieci wirtualnej, ekran zmieni się na stronę Połącz.
+Po wdrożeniu bastionu w sieci wirtualnej ekran zmieni się na stronę połączenia.
 
-1. Wpisz nazwę użytkownika i hasło dla swojej maszyny wirtualnej. Następnie wybierz pozycję **Połącz**.
+1. Wpisz nazwę użytkownika i hasło dla maszyny wirtualnej. Następnie wybierz pozycję **Połącz**.
 
    ![nawiązywania połączenia](./media/quickstart-host-portal/connect.png)
-1. Połączenie RDP z tą maszyną wirtualną za pośrednictwem bastionu zostanie otwarte bezpośrednio w Azure Portal (za pośrednictwem HTML5) przy użyciu portu 443 i usługi bastionu.
+1. Połączenie RDP z tą maszyną wirtualną za pośrednictwem bastionu zostanie otwarte bezpośrednio w witrynie Azure portal (ponad HTML5) przy użyciu portu 443 i usługi Bastion.
 
-   ![Połączenie RDP](./media/quickstart-host-portal/443-rdp.png)
+   ![Połączenie z PROW](./media/quickstart-host-portal/443-rdp.png)
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Gdy skończysz korzystać z sieci wirtualnej i maszyn wirtualnych, Usuń grupę zasobów i wszystkie zawarte w niej zasoby:
+Po zakończeniu korzystania z sieci wirtualnej i maszyn wirtualnych usuń grupę zasobów i wszystkie zasoby, które zawiera:
 
-1. Wprowadź *TestRG1* w polu **wyszukiwania** w górnej części portalu i wybierz pozycję **TestRG1** z wyników wyszukiwania.
+1. Wprowadź *TestRG1* w polu **wyszukiwania** u góry portalu i wybierz **TestRG1** z wyników wyszukiwania.
 
 2. Wybierz pozycję **Usuń grupę zasobów**.
 
-3. Wprowadź *TestRG1* w **polu wpisz nazwę grupy zasobów** i wybierz pozycję **Usuń**.
+3. Wprowadź *TestRG1* dla **TYPU NAZWA GRUPY ZASOBÓW** i wybierz **usuń**.
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym przewodniku szybki start utworzono Host bastionu dla sieci wirtualnej, a następnie jest on bezpiecznie połączony z maszyną wirtualną za pośrednictwem hosta bastionu.
+W tym przewodniku Szybki start utworzono host bastionu dla sieci wirtualnej, a następnie bezpiecznie połączony z maszyną wirtualną za pośrednictwem hosta Bastion.
 
-* Aby dowiedzieć się więcej o usłudze Azure bastionu, zapoznaj się z [omówieniem bastionu](bastion-overview.md) i [zapytaniami bastionu](bastion-faq.md).
-* Aby użyć sieciowych grup zabezpieczeń z podsiecią usługi Azure bastionu, zobacz [Work with sieciowych grup zabezpieczeń](bastion-nsg.md).
-* Instrukcje zawierające wyjaśnienia dotyczące ustawień hosta usługi Azure bastionu można znaleźć w [samouczku](bastion-create-host-portal.md).
-* Aby nawiązać połączenie z zestawem skalowania maszyn wirtualnych, zobacz [nawiązywanie połączenia z zestawem skalowania maszyn wirtualnych przy użyciu usługi Azure bastionu](bastion-connect-vm-scale-set.md).
+* Aby dowiedzieć się więcej o usłudze Azure Bastion, przeczytaj [omówienie bastionu](bastion-overview.md) i często zadawane pytania dotyczące [bastionu.](bastion-faq.md)
+* Aby używać grup zabezpieczeń sieciowych w podsieci Bastion platformy Azure, zobacz [Praca z sieciami roboczymi](bastion-nsg.md).
+* Instrukcje zawierające objaśnienia ustawień hosta bastionu platformy Azure można znaleźć w [samouczku](bastion-create-host-portal.md).
+* Aby połączyć się z zestawem skalowania maszyny wirtualnej, zobacz [Łączenie z zestawem skalowania maszyny wirtualnej przy użyciu usługi Azure Bastion](bastion-connect-vm-scale-set.md).

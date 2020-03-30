@@ -1,7 +1,7 @@
 ---
-title: Użyj pełnej składni zapytań Lucene
+title: Użyj pełnej składni kwerendy lucene
 titleSuffix: Azure Cognitive Search
-description: Składnia zapytań Lucene dla wyszukiwania rozmytego, wyszukiwania w sąsiedztwie, zwiększania warunków, wyszukiwania wyrażeń regularnych i wyszukiwania symboli wieloznacznych w usłudze Azure Wyszukiwanie poznawcze.
+description: Składnia kwerendy lucene dla wyszukiwania rozmytego, wyszukiwania zbliżeniowego, zwiększania terminów, wyszukiwania wyrażeń regularnych i wyszukiwania symboli wieloznacznych w usłudze Azure Cognitive Search.
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
@@ -10,81 +10,81 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 745be21c2a7a09a09fdbbfd57a305d09a4fac3ed
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72793445"
 ---
-# <a name="use-the-full-lucene-search-syntax-advanced-queries-in-azure-cognitive-search"></a>Użyj "pełnej" składni wyszukiwania Lucene (zapytania zaawansowane w usłudze Azure Wyszukiwanie poznawcze)
+# <a name="use-the-full-lucene-search-syntax-advanced-queries-in-azure-cognitive-search"></a>Użyj "pełnej" składni wyszukiwania Lucene (zaawansowane zapytania w usłudze Azure Cognitive Search)
 
-Podczas konstruowania zapytań dotyczących usługi Azure Wyszukiwanie poznawcze można zastąpić domyślny [prosty Analizator zapytań](query-simple-syntax.md) , używając [analizatora zapytań rozległych Lucene w usłudze Azure wyszukiwanie poznawcze](query-lucene-syntax.md) do tworzenia specjalnych i zaawansowanych definicji zapytań. 
+Podczas konstruowania kwerend dla usługi Azure Cognitive Search, można zastąpić [domyślny analizator prostych zapytań](query-simple-syntax.md) z bardziej [ekspansywny Analizator zapytania Lucene w usłudze Azure Cognitive Search](query-lucene-syntax.md) do formułowania definicji kwerend specjalistycznych i zaawansowanych. 
 
-Parser Lucene obsługuje złożone konstrukcje zapytań, takie jak zapytania o zakresie pól, Wyszukiwanie rozmyte i symbole wieloznaczne, wyszukiwanie w sąsiedztwie, zwiększanie terminów i wyszukiwanie wyrażeń regularnych. Dodatkowa moc jest dostarczana z dodatkowymi wymaganiami dotyczącymi przetwarzania, dlatego należy oczekiwać nieco dłuższego czasu wykonania. W tym artykule można zapoznać się z przykładami pokazującymi operacje zapytania dostępne w przypadku korzystania z pełnej składni.
+Analizator lucene obsługuje złożone konstrukcje zapytań, takie jak zapytania o zakresie pola, wyszukiwanie rozmyte i prefiksu z symbolami wieloznacznych, wyszukiwanie zbliżeniowe, zwiększanie terminów i wyszukiwanie wyrażeń regularnych. Dodatkowa moc jest wyposażona w dodatkowe wymagania dotyczące przetwarzania, więc należy się spodziewać nieco dłuższego czasu wykonywania. W tym artykule można przejść przez przykłady demonstrowania operacji kwerendy dostępne podczas korzystania z pełnej składni.
 
 > [!Note]
-> Wiele wyspecjalizowanych konstrukcji zapytań włączonych za pomocą pełnej składni zapytań Lucene nie jest w trakcie [analizowania tekstu](search-lucene-query-architecture.md#stage-2-lexical-analysis), co może być zaskakującee, jeśli oczekujesz rdzeni lub Lematyzacja. Analiza leksykalna jest wykonywana tylko w przypadku pełnych warunków (zapytania warunkowego zapytania lub frazy). Typy zapytań z niekompletnymi postanowieniami (zapytanie o prefiks, zapytanie symboli wieloznacznych, zapytanie rozmyte) są dodawane bezpośrednio do drzewa zapytań, pomijając etap analizy. Jedyne przekształcenie wykonane na niekompletnych terminach zapytania to lowercasing. 
+> Wiele konstrukcji specjalistycznych zapytań włączonych za pośrednictwem pełnej składni zapytania Lucene nie jest [analizowanych tekstu,](search-lucene-query-architecture.md#stage-2-lexical-analysis)co może być zaskakujące, jeśli spodziewasz się wynikającej lub lemmatyzacji. Analiza leksykalne jest przeprowadzana tylko na pełnych terminach (kwerenda terminowa lub kwerenda frazowa). Typy zapytań z niekompletnymi terminami (kwerenda prefiksu, kwerenda wieloznaczna, zapytanie regularne, kwerenda rozmyta) są dodawane bezpośrednio do drzewa kwerend, z pominięciem etapu analizy. Jedyną transformacją wykonano na niekompletnych warunkach kwerendy jest małe przysłości. 
 >
 
-## <a name="formulate-requests-in-postman"></a>Formułowanie żądań w programie Poster
+## <a name="formulate-requests-in-postman"></a>Formułowanie żądań w listonoszu
 
-Poniższe przykłady wykorzystują indeks wyszukiwania zadań NYC składający się z zadań dostępnych na podstawie zestawu danych dostarczonego przez [miasto z inicjatywy New York OpenData](https://opendata.cityofnewyork.us/) Initiative. Te dane nie powinny być uważane za bieżące ani ukończone. Indeks znajduje się w usłudze piaskownicy dostarczonej przez firmę Microsoft, co oznacza, że nie potrzebujesz subskrypcji platformy Azure ani usługi Azure Wyszukiwanie poznawcze do wypróbowania tych zapytań.
+Poniższe przykłady wykorzystują indeks wyszukiwania zadań NYC składający się z dostępnych zadań na podstawie zestawu danych dostarczonego przez inicjatywę [City of New York OpenData.](https://opendata.cityofnewyork.us/) Dane te nie powinny być uważane za aktualne lub kompletne. Indeks znajduje się w usłudze piaskownicy świadczonej przez firmę Microsoft, co oznacza, że nie potrzebujesz subskrypcji platformy Azure ani usługi Azure Cognitive Search, aby wypróbować te zapytania.
 
-To, czego potrzebujesz, jest to Poster lub równoważne narzędzie do wystawiania żądań HTTP na potrzeby pobierania. Aby uzyskać więcej informacji, zobacz [Eksplorowanie z klientami REST](search-get-started-postman.md).
+To, czego potrzebujesz, to Listonosz lub równoważne narzędzie do wystawiania żądania HTTP na GET. Aby uzyskać więcej informacji, zobacz [Eksploruj z klientami REST](search-get-started-postman.md).
 
 ### <a name="set-the-request-header"></a>Ustawianie nagłówka żądania
 
-1. W nagłówku żądania ustaw wartość **Typ zawartości** na `application/json`.
+1. W nagłówku żądania ustaw typ `application/json` **zawartości** na .
 
-2. Dodaj **klucz API-Key**i ustaw go na następujący ciąg: `252044BE3886FE4A8E3BAA4F595114BB`. Jest to klucz zapytania dla usługi wyszukiwania piaskownicy hostującym indeks zadań NYC.
+2. Dodaj **api-key**i ustaw go na `252044BE3886FE4A8E3BAA4F595114BB`ten ciąg: . Jest to klucz zapytania dla usługi wyszukiwania piaskownicy obsługującej indeks zadań NYC.
 
-Po określeniu nagłówka żądania można użyć go ponownie dla wszystkich zapytań w tym artykule, zamieniając tylko ciąg **Search =** String. 
+Po określeniu nagłówka żądania można go ponownie użyć dla wszystkich zapytań w tym artykule, zamieniając tylko **ciąg wyszukiwania=.** 
 
   ![Nagłówek żądania narzędzia Postman](media/search-query-lucene-examples/postman-header.png)
 
-### <a name="set-the-request-url"></a>Ustaw adres URL żądania
+### <a name="set-the-request-url"></a>Ustawianie adresu URL żądania
 
-Żądanie jest poleceniem GET z adresem URL zawierającym punkt końcowy Wyszukiwanie poznawcze platformy Azure i ciąg wyszukiwania.
+Request to polecenie GET sparowane z adresem URL zawierającym punkt końcowy usługi Azure Cognitive Search i ciąg wyszukiwania.
 
   ![Nagłówek żądania narzędzia Postman](media/search-query-lucene-examples/postman-basic-url-request-elements.png)
 
-Kompozycja adresów URL ma następujące elementy:
+Skład adresu URL ma następujące elementy:
 
-+ **`https://azs-playground.search.windows.net/`** to usługa wyszukiwania piaskownicy obsługiwana przez zespół deweloperów systemu Azure wyszukiwanie poznawcze. 
-+ **`indexes/nycjobs/`** to indeks zadań NYC w kolekcji indeksów tej usługi. W żądaniu wymagane są zarówno nazwę usługi, jak i indeks.
-+ **`docs`** jest kolekcją dokumentów zawierającą całą zawartość przeszukiwaną. Klucz API Query-Key podany w nagłówku żądania działa tylko na operacjach odczytu dla kolekcji Documents.
-+ **`api-version=2019-05-06`** ustawia interfejs API-Version, który jest parametrem wymaganym dla każdego żądania.
-+ **`search=*`** jest ciągiem zapytania, który w początkowym zapytaniu ma wartość null, zwracając pierwsze wyniki 50 (domyślnie).
++ **`https://azs-playground.search.windows.net/`** to usługa wyszukiwania piaskownicy obsługiwana przez zespół deweloperów usługi Azure Cognitive Search. 
++ **`indexes/nycjobs/`** jest nyc jobs indeksu w kolekcji indeksów tej usługi. Zarówno nazwa usługi, jak i indeks są wymagane w żądaniu.
++ **`docs`** to kolekcja dokumentów zawierająca całą zawartość, która można przeszukiwać. Klucz interfejsu api kwerendy podany w nagłówku żądania działa tylko w operacjach odczytu dotyczących kolekcji dokumentów.
++ **`api-version=2019-05-06`** ustawia wersję api, która jest wymaganym parametrem przy każdym żądaniu.
++ **`search=*`** jest ciągiem zapytania, który w początkowej kwerendzie ma wartość null, zwracając pierwsze 50 wyników (domyślnie).
 
-## <a name="send-your-first-query"></a>Wyślij pierwsze zapytanie
+## <a name="send-your-first-query"></a>Wysyłanie pierwszego zapytania
 
-W ramach kroku weryfikacji Wklej następujące żądanie do GET i kliknij pozycję **Wyślij**. Wyniki są zwracane w postaci pełnych dokumentów JSON. Zwracane są całe dokumenty, które umożliwiają wyświetlanie wszystkich pól i wszystkich wartości.
+Jako krok weryfikacji wklej następujące żądanie do GET i kliknij przycisk **Wyślij**. Wyniki są zwracane w postaci pełnych dokumentów JSON. Zwracane są całe dokumenty, co pozwala zobaczyć wszystkie pola i wszystkie wartości.
 
-Wklej ten adres URL do klienta REST jako krok walidacji i Wyświetl strukturę dokumentu.
+Wklej ten adres URL do klienta REST jako krok sprawdzania poprawności i wyświetlić strukturę dokumentu.
 
   ```http
   https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&search=*
   ```
 
-Ciąg zapytania, **`search=*`** , jest nieokreślonym wyszukiwaniem równym null lub pustemu wyszukiwaniu. Jest to najprostszy sposób wyszukiwania.
+Ciąg zapytania **`search=*`**, jest nieokreślonym wyszukiwaniem równoważnym wyszukiwaniu null lub puste. To najprostsze wyszukiwanie, które możesz zrobić.
 
-Opcjonalnie możesz dodać **`$count=true`** do adresu URL, aby zwrócić liczbę dokumentów pasujących do kryteriów wyszukiwania. W przypadku pustego ciągu wyszukiwania jest to wszystkie dokumenty w indeksie (około 2800 w przypadku zadań NYC).
+Opcjonalnie można dodać **`$count=true`** do adresu URL, aby zwrócić liczbę dokumentów spełniających kryteria wyszukiwania. Na pusty ciąg wyszukiwania, jest to wszystkie dokumenty w indeksie (około 2800 w przypadku zadań NYC).
 
-## <a name="how-to-invoke-full-lucene-parsing"></a>Jak wywoływać pełne analizowanie Lucene
+## <a name="how-to-invoke-full-lucene-parsing"></a>Jak wywołać pełną analizowanie Lucene
 
-Dodaj **zapytania = Full** , aby wywołać pełną składnię zapytania, zastępując domyślną prostą składnię zapytania. 
+Dodaj **queryType=full,** aby wywołać pełną składnię kwerendy, zastępując domyślną składnię kwerendy prostej. 
 
 ```GET
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&queryType=full&search=*
 ```
 
-We wszystkich przykładach w tym artykule określono parametr **querytype = Full** Search wskazujący, że Pełna składnia jest obsługiwana przez Analizator zapytań Lucene. 
+Wszystkie przykłady w tym artykule określają **queryType=full** search parametr, wskazując, że pełna składnia jest obsługiwana przez analizator zapytania lucene. 
 
-## <a name="example-1-query-scoped-to-a-list-of-fields"></a>Przykład 1: zapytanie zakresu zapytania do listy pól
+## <a name="example-1-query-scoped-to-a-list-of-fields"></a>Przykład 1: Kwerenda o zakresie do listy pól
 
-Ten pierwszy przykład nie jest specyficzny dla Lucene, ale prowadzimy do tego, aby wprowadzić pierwszą podstawową koncepcję zapytania: zakres pól. W tym przykładzie zakresy całego zapytania i odpowiedzi na kilka określonych pól. Znajomość sposobu tworzenia struktury odpowiedzi w formacie JSON jest ważna, gdy narzędzie jest dostępne po opublikowaniu lub w Eksploratorze wyszukiwania. 
+Ten pierwszy przykład nie jest specyficzne dla Lucene, ale prowadzimy z nim do wprowadzenia pierwszej koncepcji kwerendy podstawowej: zakres pola. W tym przykładzie zakresy całej kwerendy i odpowiedzi na tylko kilka określonych pól. Wiedza o tym, jak ustrukturyzować czytelną odpowiedź JSON, jest ważna, gdy narzędziem jest Listonosz lub Eksplorator wyszukiwania. 
 
-W przypadku zwięzłości zapytanie odwołuje się tylko do pola *business_title* i określa tylko tytuły biznesowe, które są zwracane. Parametr **searchFields** ogranicza wykonywanie zapytania tylko do pola business_title i **wybiera** , które pola są uwzględniane w odpowiedzi.
+W przypadku zwięzłości kwerenda jest przeznaczona tylko dla pola *business_title* i określa zwracane są tylko tytuły firm. Parametr **searchFields** ogranicza wykonywanie kwerendy tylko do pola business_title, a **select** określa, które pola są uwzględnione w odpowiedzi.
 
 ### <a name="partial-query-string"></a>Częściowy ciąg zapytania
 
@@ -92,7 +92,7 @@ W przypadku zwięzłości zapytanie odwołuje się tylko do pola *business_title
 &search=*&searchFields=business_title&$select=business_title
 ```
 
-W tym samym zapytaniu z wieloma polami na liście rozdzielanej przecinkami.
+Oto ta sama kwerenda z wieloma polami na liście rozdzielanych przecinkami.
 
 ```http
 search=*&searchFields=business_title, posting_type&$select=business_title, posting_type
@@ -101,7 +101,7 @@ search=*&searchFields=business_title, posting_type&$select=business_title, posti
 Spacje po przecinkach są opcjonalne.
 
 > [!Tip]
-> W przypadku korzystania z interfejsu API REST z kodu aplikacji nie należy zapominać o parametrach kodowania URL, takich jak `$select` i `searchFields`.
+> Korzystając z interfejsu API REST z kodu aplikacji, nie zapomnij `$select` o `searchFields`parametrach kodowania adresów URL, takich jak i .
 
 ### <a name="full-url"></a>Pełny adres URL
 
@@ -109,15 +109,15 @@ Spacje po przecinkach są opcjonalne.
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&queryType=full&$count=true&search=*&searchFields=business_title&$select=business_title
 ```
 
-Odpowiedź na to zapytanie powinna wyglądać podobnie do poniższego zrzutu ekranu.
+Odpowiedź dla tej kwerendy powinna wyglądać podobnie do poniższego zrzutu ekranu.
 
-  ![Przykładowa odpowiedź Poster](media/search-query-lucene-examples/postman-sample-results.png)
+  ![Odpowiedź przykładowa listonosza](media/search-query-lucene-examples/postman-sample-results.png)
 
-Być może zauważono wynik wyszukiwania w odpowiedzi. Jednolite Punktacja 1 występuje, gdy nie ma żadnej rangi, ponieważ wyszukiwanie nie było wyszukiwaniem pełnotekstowym lub nie zastosowano żadnych kryteriów. W przypadku wyszukiwania wartości null bez kryteriów wiersze są przywracane w dowolnej kolejności. Gdy dołączysz rzeczywiste kryteria wyszukiwania, wyniki wyszukiwania zostaną rozdzielone na znaczące wartości.
+Być może wynik wyszukiwania został zauważony w odpowiedzi. Jednolite wyniki 1 występują, gdy nie ma rangi, ponieważ wyszukiwanie nie było wyszukiwaniem pełnotekstowym lub nie stosowano żadnych kryteriów. W przypadku wyszukiwania wartości null bez kryteriów wiersze wracają w dowolnej kolejności. Po dodaniu rzeczywistych kryteriów wyszukiwania wyniki wyszukiwania ewoluują w miarępłciowe wartości.
 
-## <a name="example-2-fielded-search"></a>Przykład 2: wyszukiwanie polowe
+## <a name="example-2-fielded-search"></a>Przykład 2: Wyszukiwanie fielded
 
-Pełna składnia Lucene obsługuje określanie zakresu poszczególnych wyrażeń wyszukiwania do określonego pola. Ten przykład wyszukuje tytuły biznesowe z terminem starszym w nich, ale nie na żadnym z nich.
+Pełna składnia lucene obsługuje określanie zakresu poszczególnych wyrażeń wyszukiwania do określonego pola. W tym przykładzie wyszukuje tytuły firm z terminem senior w nich, ale nie junior.
 
 ### <a name="partial-query-string"></a>Częściowy ciąg zapytania
 
@@ -125,7 +125,7 @@ Pełna składnia Lucene obsługuje określanie zakresu poszczególnych wyrażeń
 $select=business_title&search=business_title:(senior NOT junior)
 ```
 
-To samo zapytanie z wieloma polami.
+Oto ta sama kwerenda z wieloma polami.
 
 ```http
 $select=business_title, posting_type&search=business_title:(senior NOT junior) AND posting_type:external
@@ -137,24 +137,24 @@ $select=business_title, posting_type&search=business_title:(senior NOT junior) A
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&queryType=full&$count=true&$select=business_title&search=business_title:(senior NOT junior)
 ```
 
-  ![Przykładowa odpowiedź Poster](media/search-query-lucene-examples/intrafieldfilter.png)
+  ![Odpowiedź przykładowa listonosza](media/search-query-lucene-examples/intrafieldfilter.png)
 
-Można zdefiniować pole operacji wyszukiwania za pomocą składni **NazwaPola: searchExpression** , gdzie wyrażenie wyszukiwania może być pojedynczym słowem lub frazą lub bardziej skomplikowanym wyrażeniem w nawiasach, opcjonalnie z operatorami logicznymi. Oto kilka przykładów:
+Operację wyszukiwania z polem za pomocą **fieldName:searchExpression** składni, w której wyrażenie wyszukiwania może być pojedynczym wyrazem lub frazą, lub bardziej złożonym wyrażeniem w nawiasach, opcjonalnie za pomocą operatorów logicznych. Oto kilka przykładów:
 
 - `business_title:(senior NOT junior)`
 - `state:("New York" OR "New Jersey")`
 - `business_title:(senior NOT junior) AND posting_type:external`
 
-Pamiętaj, aby umieścić wiele ciągów w cudzysłowie, jeśli chcesz, aby oba ciągi były oceniane jako pojedyncze jednostki, tak jak w tym przypadku wyszukiwanie dwóch odrębnych lokalizacji w polu `state`. Upewnij się również, że operator jest wielką literą, gdy zobaczysz pozycję nie i i.
+Pamiętaj, aby umieścić wiele ciągów w cudzysłowie, jeśli chcesz, aby oba ciągi były oceniane `state` jako pojedyncza jednostka, jak w tym przypadku wyszukiwanie dwóch różnych lokalizacji w polu. Upewnij się również, że operator jest kapitalizowany, jak widać z NOT i I.
 
-Pole określone w elemencie **FieldName: searchExpression** musi być polem z możliwością wyszukiwania. Aby uzyskać szczegółowe informacje na temat sposobu używania atrybutów indeksu w definicjach pól, zobacz [create index (interfejs API REST platformy Azure wyszukiwanie poznawcze)](https://docs.microsoft.com/rest/api/searchservice/create-index) .
+Pole określone w **poluName:searchExpression** musi być polem z wyszukujalnym. Zobacz [Tworzenie indeksu (azure cognitive search REST API),](https://docs.microsoft.com/rest/api/searchservice/create-index) aby uzyskać szczegółowe informacje na temat sposobu, w jaki atrybuty indeksu są używane w definicjach pól.
 
 > [!NOTE]
-> W powyższym przykładzie nie musimy używać parametru `searchFields`, ponieważ każda część zapytania ma jawnie określoną nazwę pola. Jednak nadal można użyć parametru `searchFields`, jeśli chcesz uruchomić zapytanie, w którym niektóre części są objęte zakresem określonego pola, a reszta może mieć zastosowanie do kilku pól. Na przykład, `search=business_title:(senior NOT junior) AND external&searchFields=posting_type` kwerendy będzie pasować `senior NOT junior` tylko do pola `business_title`, podczas gdy będzie pasować do pola "External" w polu `posting_type`. Nazwa pola podana w polu **NazwaPola: searchExpression** zawsze ma pierwszeństwo przed parametrem `searchFields`, co w tym przykładzie nie musi zawierać `business_title` w parametrze `searchFields`.
+> W powyższym przykładzie nie trzeba `searchFields` używać parametru, ponieważ każda część kwerendy ma nazwę pola jawnie określoną. Jednak nadal można użyć `searchFields` parametru, jeśli chcesz uruchomić kwerendę, gdzie niektóre części są ograniczone do określonego pola, a reszta może mieć zastosowanie do kilku pól. Na `search=business_title:(senior NOT junior) AND external&searchFields=posting_type` przykład kwerenda `senior NOT junior` będzie pasować tylko do `business_title` pola, podczas `posting_type` gdy będzie pasować do "zewnętrznego" z polem. Nazwa pola podana w **poluName:searchExpression** zawsze `searchFields` ma pierwszeństwo przed parametrem, dlatego w `business_title` tym `searchFields` przykładzie nie musimy uwzględniać w parametrze.
 
 ## <a name="example-3-fuzzy-search"></a>Przykład 3: Wyszukiwanie rozmyte
 
-Pełna składnia Lucene obsługuje również Wyszukiwanie rozmyte, które dopasowuje się do warunków, które mają podobną konstrukcję. Aby wykonać Wyszukiwanie rozmyte, Dołącz symbol `~` tyldy na końcu pojedynczego słowa z opcjonalnym parametrem, wartością z zakresu od 0 do 2, która określa odległość edycji. Na przykład `blue~` lub `blue~1` zwróci niebieskie, blues i przyklej.
+Pełna składnia Lucene obsługuje również wyszukiwanie rozmyte, dopasowując się do warunków o podobnej konstrukcji. Aby wykonać wyszukiwanie rozmyte, należy `~` dołączyć symbol tyldy na końcu pojedynczego wyrazu z opcjonalnym parametrem, wartością od 0 do 2, która określa odległość edycji. Na przykład `blue~` `blue~1` lub zwróci niebieski, niebieski i klej.
 
 ### <a name="partial-query-string"></a>Częściowy ciąg zapytania
 
@@ -162,7 +162,7 @@ Pełna składnia Lucene obsługuje również Wyszukiwanie rozmyte, które dopaso
 searchFields=business_title&$select=business_title&search=business_title:asosiate~
 ```
 
-Wyrażenia nie są obsługiwane bezpośrednio, ale można określić dopasowanie rozmyte w częściach składnika frazy.
+Frazy nie są obsługiwane bezpośrednio, ale można określić dopasowanie rozmyte na części składowe frazy.
 
 ```http
 searchFields=business_title&$select=business_title&search=business_title:asosiate~ AND comm~ 
@@ -171,20 +171,20 @@ searchFields=business_title&$select=business_title&search=business_title:asosiat
 
 ### <a name="full-url"></a>Pełny adres URL
 
-To zapytanie wyszukuje zadania z terminem "Skojarz" (świadomie błędny):
+Ta kwerenda wyszukuje zadania z terminem "associate" (celowo błędnie napisane):
 
 ```GET
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&queryType=full&$count=true&searchFields=business_title&$select=business_title&search=business_title:asosiate~
 ```
-  ![Odpowiedź na Wyszukiwanie rozmyte](media/search-query-lucene-examples/fuzzysearch.png)
+  ![Rozmyta odpowiedź wyszukiwania](media/search-query-lucene-examples/fuzzysearch.png)
 
 
 > [!Note]
-> Zapytania rozmyte nie są [analizowane](search-lucene-query-architecture.md#stage-2-lexical-analysis). Typy zapytań z niekompletnymi postanowieniami (zapytanie o prefiks, zapytanie symboli wieloznacznych, zapytanie rozmyte) są dodawane bezpośrednio do drzewa zapytań, pomijając etap analizy. Jedyne przekształcenie wykonane na niekompletnych terminach zapytania to lowercasing.
+> Rozmyte zapytania nie są [analizowane](search-lucene-query-architecture.md#stage-2-lexical-analysis). Typy zapytań z niekompletnymi terminami (kwerenda prefiksu, kwerenda wieloznaczna, zapytanie regularne, kwerenda rozmyta) są dodawane bezpośrednio do drzewa kwerend, z pominięciem etapu analizy. Jedyną transformacją wykonano na niekompletnych warunkach kwerendy jest małe przysłości.
 >
 
-## <a name="example-4-proximity-search"></a>Przykład 4: wyszukiwanie w sąsiedztwie
-Wyszukiwania w sąsiedztwie są używane do znajdowania terminów blisko siebie w dokumencie. Wstaw symbol tyldy "~" na końcu frazy, a po niej liczbę słów, które tworzą granicę bliskości. Na przykład "Port lotniczy" w hotelu "~ 5 zawiera warunki hotelowe i lotnisko w 5 wyrazach innych elementów w dokumencie.
+## <a name="example-4-proximity-search"></a>Przykład 4: Wyszukiwanie zbliżeniowe
+Wyszukiwanie zbliżeniowe służy do znajdowania terminów, które znajdują się blisko siebie w dokumencie. Wstaw symbol tyldy "~" na końcu frazy, po której następuje liczba słów tworzących granicę bliskości. Na przykład "lotnisko hotelowe"~5 znajdzie warunki hotel i lotnisko w ciągu 5 słów od siebie w dokumencie.
 
 ### <a name="partial-query-string"></a>Częściowy ciąg zapytania
 
@@ -194,50 +194,50 @@ searchFields=business_title&$select=business_title&search=business_title:%22seni
 
 ### <a name="full-url"></a>Pełny adres URL
 
-W tym zapytaniu w przypadku zadań z terminem "wyższy analityk", w którym jest oddzielona nie więcej niż jeden wyraz:
+W tej kwerendzie dla zadań z terminem "starszy analityk", gdzie jest oddzielony nie więcej niż jednym słowem:
 
 ```GET
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&queryType=full&$count=true&searchFields=business_title&$select=business_title&search=business_title:%22senior%20analyst%22~1
 ```
-  ![Zapytanie o bliskość](media/search-query-lucene-examples/proximity-before.png)
+  ![Zapytanie zbliżeniowe](media/search-query-lucene-examples/proximity-before.png)
 
-Spróbuj ponownie usunąć słowa między terminem "wyższego analityka". Zwróć uwagę, że 8 dokumentów jest zwracanych dla tego zapytania, a nie do 10 dla poprzedniego zapytania.
+Spróbuj ponownie usunąć słowa między terminem "starszy analityk". Należy zauważyć, że 8 dokumentów są zwracane dla tej kwerendy, w przeciwieństwie do 10 dla poprzedniej kwerendy.
 
 ```GET
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&queryType=full&$count=true&searchFields=business_title&$select=business_title&search=business_title:%22senior%20analyst%22~0
 ```
 
-## <a name="example-5-term-boosting"></a>Przykład 5: zwiększenie warunków
-Zwiększenie warunków dotyczy klasyfikacji dokumentu, jeśli zawiera on podwyższony termin względem dokumentów, które nie zawierają warunków. Aby zwiększyć okres, użyj karetki, "^", symbolu z współczynnikem wzrostu (liczba) na końcu wyszukiwanego okresu. 
+## <a name="example-5-term-boosting"></a>Przykład 5: Zwiększenie terminów
+Termin zwiększenie odnosi się do rankingu dokumentu wyżej, jeśli zawiera wzmocniony termin, w stosunku do dokumentów, które nie zawierają terminu. Aby zwiększyć termin, użyj daszka "^", symbol z współczynnikiem wzmocnienia (liczbą) na końcu wyszukiwanego terminu. 
 
 ### <a name="full-urls"></a>Pełne adresy URL
 
-W tym zapytaniu "Before" Wyszukaj zadania z takim *analitykiem komputerowym* i zwróć uwagę na to, że nie ma żadnych wyników zarówno dla *komputera* , jak i *analityka*, ale zadania *komputera* znajdują się w górnej części wyników.
+W tym "przed" zapytanie, szukaj pracy z terminem *analityk komputerowy* i zauważyć, że nie ma wyników zarówno z *komputerem* słowa i *analityka,* ale zadania *komputera* są na szczycie wyników.
 
 ```GET
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&queryType=full&$count=true&searchFields=business_title&$select=business_title&search=business_title:computer%20analyst
 ```
-  ![Trwa zwiększanie warunków](media/search-query-lucene-examples/termboostingbefore.png)
+  ![Termin zwiększenie przed](media/search-query-lucene-examples/termboostingbefore.png)
 
-W zapytaniu "After" Powtórz wyszukiwanie, a tym samym czasie zwiększy wyniki za pomocą warunkowego *analityka* na *komputerze* , jeśli oba słowa nie istnieją. 
+W zapytaniu "po" powtórz wyszukiwanie, tym razem zwiększając wyniki z *terminem analityk* nad terminem *komputer,* jeśli oba słowa nie istnieją. 
 
 ```GET
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&queryType=full&$count=true&searchFields=business_title&$select=business_title&search=business_title:computer%20analyst%5e2
 ```
-Bardziej czytelna dla człowieka wersja powyższego zapytania jest `search=business_title:computer analyst^2`. W przypadku zapytania prawidłowo `^2` jest zakodowana jako `%5E2`, co jest trudniejsze do wyświetlenia.
+Bardziej czytelną dla człowieka wersją `search=business_title:computer analyst^2`powyższej kwerendy jest . Dla wykonalne zapytanie, `^2` jest `%5E2`zakodowany jako , co jest trudniejsze do zobaczenia.
 
-  ![Zwiększenie warunków](media/search-query-lucene-examples/termboostingafter.png)
+  ![Okres zwiększenie po](media/search-query-lucene-examples/termboostingafter.png)
 
-Zwiększenie okresu różni się od profilów oceniania w tym profilu oceniania, a nie na określonych warunkach. Poniższy przykład pomaga zilustrować różnice.
+Zwiększanie terminów różni się od profili punktacji tym, że profile punktacji zwiększają niektóre pola, a nie konkretne terminy. Poniższy przykład pomaga zilustrować różnice.
 
-Rozważmy profil oceniania, który zwiększa dopasowań w określonym polu, takich jak **gatunek** w przykładowym musicstoreindex. Zwiększenie okresu może służyć do dalszej promocji niektórych wyszukiwanych terminów wyższych niż inne. Na przykład "skała ^ 2 elektroniczna" spowoduje zwiększenie poziomu dokumentów zawierających terminy wyszukiwania w polu **gatunek** powyżej innych pól, które można wyszukiwać w indeksie. Ponadto dokumenty zawierające termin wyszukiwania "skały" będą wyższe niż w przypadku innych wyszukiwanych terminów "elektroniczny" w wyniku okresu zwiększenia wartości (2).
+Należy wziąć pod uwagę profil punktacji, który zwiększa dopasowania w określonym polu, takich jak **gatunek** w przykładzie musicstoreindex. Zwiększenie terminów może być wykorzystane do dalszego zwiększenia niektórych wyszukiwanych terminów wyższych niż inne. Na przykład "rock^2 electronic" zwiększy dokumenty zawierające wyszukiwane terminy w polu **gatunku** wyższe niż inne pola z wyszukujalne w indeksie. Ponadto dokumenty zawierające wyszukiwane hasło "rock" będą klasyfikowane wyżej niż inne wyszukiwane hasło "elektroniczne" w wyniku terminu wartość dodana (2).
 
-W przypadku ustawienia poziomu współczynnika wyższa wartość współczynnika zwiększania istotny termin będzie odnosić się do innych wyszukiwanych terminów. Domyślnie współczynnik zwiększania wynosi 1. Chociaż współczynnik zwiększania wartości musi być dodatni, może być mniejszy niż 1 (na przykład 0,2).
+Przy ustalaniu poziomu współczynnika, im wyższy współczynnik wzmocnienia, tym bardziej odpowiedni termin będzie w stosunku do innych wyszukiwanych haseł. Domyślnie współczynnik wzmocnienia wynosi 1. Chociaż współczynnik wzmocnienia musi być dodatni, może być mniejszy niż 1 (na przykład 0,2).
 
 
-## <a name="example-6-regex"></a>Przykład 6: wyrażenie regularne
+## <a name="example-6-regex"></a>Przykład 6: Regex
 
-Wyszukiwanie w wyrażeniu regularnym wyszukuje dopasowanie na podstawie zawartości między ukośnikami "/", zgodnie z opisem w [klasie RegExp](https://lucene.apache.org/core/6_6_1/core/org/apache/lucene/util/automaton/RegExp.html).
+Wyszukiwanie wyrażeń regularnych znajduje dopasowanie na podstawie zawartości między ukośnikami "/", zgodnie z dokumentami w [klasie RegExp](https://lucene.apache.org/core/6_6_1/core/org/apache/lucene/util/automaton/RegExp.html).
 
 ### <a name="partial-query-string"></a>Częściowy ciąg zapytania
 
@@ -247,20 +247,20 @@ searchFields=business_title&$select=business_title&search=business_title:/(Sen|J
 
 ### <a name="full-url"></a>Pełny adres URL
 
-W tym zapytaniu Wyszukaj zadania z terminem "starsze lub młodsze: `search=business_title:/(Sen|Jun)ior/`.
+W tym pytaniu wyszukaj oferty pracy `search=business_title:/(Sen|Jun)ior/`z terminem Senior lub Junior: .
 
 ```GET
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&queryType=full&$count=true&searchFields=business_title&$select=business_title&search=business_title:/(Sen|Jun)ior/
 ```
 
-  ![Zapytanie wyrażenia regularnego](media/search-query-lucene-examples/regex.png)
+  ![Zapytanie programu Regex](media/search-query-lucene-examples/regex.png)
 
 > [!Note]
-> Zapytania wyrażenia regularnego nie są [analizowane](https://docs.microsoft.com/azure/search/search-lucene-query-architecture#stage-2-lexical-analysis). Jedyne przekształcenie wykonane na niekompletnych terminach zapytania to lowercasing.
+> Kwerendy regex nie są [analizowane](https://docs.microsoft.com/azure/search/search-lucene-query-architecture#stage-2-lexical-analysis). Jedyną transformacją wykonano na niekompletnych warunkach kwerendy jest małe przysłości.
 >
 
-## <a name="example-7-wildcard-search"></a>Przykład 7: wyszukiwanie przy użyciu symboli wieloznacznych
-Można użyć ogólnie rozpoznanej składni dla wielu (\*) lub pojedynczego znaku (?) wyszukiwania symboli wieloznacznych. Zwróć uwagę, że Analizator zapytań Lucene obsługuje używanie tych symboli z pojedynczym terminem, a nie frazą.
+## <a name="example-7-wildcard-search"></a>Przykład 7: Wyszukiwanie symboli wieloznacznych
+Można użyć ogólnie rozpoznaną składni\*dla wielu ( ) lub pojedynczych (?) symboli wieloznacznych. Należy zauważyć, że analizator zapytania Lucene obsługuje użycie tych symboli z jednym terminem, a nie frazą.
 
 ### <a name="partial-query-string"></a>Częściowy ciąg zapytania
 
@@ -270,26 +270,26 @@ searchFields=business_title&$select=business_title&search=business_title:prog*
 
 ### <a name="full-url"></a>Pełny adres URL
 
-W tym zapytaniu Wyszukaj zadania, które zawierają prefiks "program", który zawiera tytuły biznesowe z programowaniem terminów i programistą. Nie można użyć znaku * ani? Symbol jako pierwszy znak wyszukiwania.
+W tej kwerendzie wyszukaj zadania zawierające prefiks "prog", który zawiera tytuły firm z terminami programowania i programisty w nim. Nie można użyć * lub ? jako pierwszy znak wyszukiwania.
 
 ```GET
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&queryType=full&$count=true&searchFields=business_title&$select=business_title&search=business_title:prog*
 ```
-  ![Zapytanie symboli wieloznacznych](media/search-query-lucene-examples/wildcard.png)
+  ![Kwerenda wieloznaczna](media/search-query-lucene-examples/wildcard.png)
 
 > [!Note]
-> Zapytania z symbolami wieloznacznymi nie są [analizowane](https://docs.microsoft.com/azure/search/search-lucene-query-architecture#stage-2-lexical-analysis). Jedyne przekształcenie wykonane na niekompletnych terminach zapytania to lowercasing.
+> Kwerendy wieloznaczne nie są [analizowane](https://docs.microsoft.com/azure/search/search-lucene-query-architecture#stage-2-lexical-analysis). Jedyną transformacją wykonano na niekompletnych warunkach kwerendy jest małe przysłości.
 >
 
 ## <a name="next-steps"></a>Następne kroki
-Spróbuj określić parser zapytań Lucene w kodzie. Poniższe linki wyjaśniają, jak skonfigurować zapytania wyszukiwania dla platformy .NET i interfejsu API REST. Linki używają domyślnej prostej składni, dlatego należy zastosować informacje uzyskane z tego artykułu, aby określić element **querytype**.
+Spróbuj określić analizator zapytania Lucene w kodzie. Poniższe łącza wyjaśniają, jak skonfigurować zapytania wyszukiwania dla interfejsu API .NET i REST. Łącza używają domyślnej prostej składni, więc należy zastosować to, czego nauczyłeś się z tego artykułu, aby określić **typ kwerendy**.
 
-* [Tworzenie zapytań względem indeksu przy użyciu zestawu .NET SDK](search-query-dotnet.md)
-* [Tworzenie zapytań względem indeksu przy użyciu interfejsu API REST](search-create-index-rest-api.md)
+* [Zapytanie o indeks przy użyciu sdk .NET](search-query-dotnet.md)
+* [Zapytanie o indeks przy użyciu interfejsu API REST](search-create-index-rest-api.md)
 
-Dodatkowe informacje na temat składni, architekturę zapytań i przykłady można znaleźć w następujących linkach:
+Dodatkowe odwołanie do składni, architekturę kwerend i przykłady można znaleźć w następujących łączach:
 
-+ [Przykłady prostych zapytań składniowych](search-query-simple-examples.md)
-+ [Jak działa wyszukiwanie pełnotekstowe na platformie Azure Wyszukiwanie poznawcze](search-lucene-query-architecture.md)
++ [Przykłady kwerend składni prostych](search-query-simple-examples.md)
++ [Jak działa wyszukiwanie pełnotekstowe w usłudze Azure Cognitive Search](search-lucene-query-architecture.md)
 + [Prosta składnia zapytań](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search)
 + [Pełna składnia zapytań Lucene](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search)

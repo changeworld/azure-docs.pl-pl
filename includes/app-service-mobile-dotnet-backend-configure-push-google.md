@@ -5,18 +5,18 @@ ms.service: app-service-mobile
 ms.topic: include
 ms.date: 08/23/2018
 ms.openlocfilehash: 3c6147cc24f285fc32dce145e594f743c9633c20
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68857459"
 ---
-Użyj procedury zgodnej z projektem&mdash;zaplecza lub zaplecza środowiska [Node. js](#nodejs) [platformy .NET](#dotnet) .
+Użyj procedury zgodnej z typem&mdash;projektu zaplecza .NET lub [zaplecza](#dotnet) [Node.js](#nodejs).
 
-### <a name="dotnet"></a>Projekt zaplecza .NET
+### <a name="net-back-end-project"></a><a name="dotnet"></a>Projekt zaplecza platformy .NET
 
-1. W programie Visual Studio kliknij prawym przyciskiem myszy projekt serwera, a następnie kliknij pozycję **Zarządzaj pakietami NuGet**. Wyszukaj, a następnie kliknij przycisk **Instaluj.** `Microsoft.Azure.NotificationHubs` Spowoduje to zainstalowanie biblioteki klienta Notification Hubs.
-2. W folderze controllers Otwórz TodoItemController.cs i Dodaj następujące `using` instrukcje:
+1. W programie Visual Studio kliknij prawym przyciskiem myszy projekt serwera, a następnie kliknij polecenie **Zarządzaj pakietami NuGet**. Wyszukaj `Microsoft.Azure.NotificationHubs`, a następnie kliknij przycisk **Zainstaluj**. Spowoduje to zainstalowanie biblioteki klienta centrum powiadomień.
+2. W folderze Kontrolery otwórz TodoItemController.cs i dodaj `using` następujące instrukcje:
 
     ```csharp
     using Microsoft.Azure.Mobile.Server.Config;
@@ -65,12 +65,12 @@ Użyj procedury zgodnej z projektem&mdash;zaplecza lub zaplecza środowiska [Nod
     }
     ```
 
-4. Opublikuj ponownie projekt serwera.
+4. Ponownie opublikuj projekt serwera.
 
-### <a name="nodejs"></a>Projekt zaplecza Node. js
+### <a name="nodejs-back-end-project"></a><a name="nodejs"></a>Projekt zaplecza node.js
 
-1. Skonfiguruj projekt zaplecza.
-2. Zastąp istniejący kod w pliku TodoItem. js następującym:
+1. Skonfiguruj projekt wewnętrznej bazy danych.
+2. Zastąp istniejący kod w pliku todoitem.js na następujące:
 
     ```javascript
     var azureMobileApps = require('azure-mobile-apps'),
@@ -117,6 +117,6 @@ Użyj procedury zgodnej z projektem&mdash;zaplecza lub zaplecza środowiska [Nod
     module.exports = table;
     ```
 
-    Spowoduje to wysłanie powiadomienia GCM zawierającego element. Text po wstawieniu nowego elementu do wykonania.
+    Spowoduje to wysłanie powiadomienia GCM, który zawiera item.text po wstawieniu nowego elementu todo.
 
-3. Podczas edytowania pliku na komputerze lokalnym należy ponownie opublikować projekt serwera.
+3. Podczas edytowania pliku na komputerze lokalnym ponownie opublikuj projekt serwera.

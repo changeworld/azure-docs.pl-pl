@@ -1,6 +1,6 @@
 ---
-title: Tworzenie grupy umieszczania w sąsiedztwie przy użyciu portalu
-description: Dowiedz się, jak utworzyć grupę umieszczania w sąsiedztwie przy użyciu Azure Portal.
+title: Tworzenie grupy miejsc docelowych zbliżeniowych za pomocą portalu
+description: Dowiedz się, jak utworzyć grupę miejsc docelowych zbliżeniowych za pomocą witryny Azure Portal.
 services: virtual-machines
 author: cynthn
 manager: gwallace
@@ -11,47 +11,47 @@ ms.workload: infrastructure-services
 ms.date: 10/30/2019
 ms.author: cynthn
 ms.openlocfilehash: 8512d9b701242dc686d49bbe56e8a2059f14ee3d
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73180253"
 ---
-# <a name="create-a-proximity-placement-group-using-the-portal"></a>Tworzenie grupy umieszczania w sąsiedztwie przy użyciu portalu
+# <a name="create-a-proximity-placement-group-using-the-portal"></a>Tworzenie grupy miejsc docelowych zbliżeniowych za pomocą portalu
 
-Aby zapewnić, że maszyny wirtualne będą możliwie jak najbliżej, osiągając najniższe możliwe opóźnienie, należy wdrożyć je w obrębie [grupy umieszczania sąsiedztwa](co-location.md#proximity-placement-groups).
+Aby maszyny wirtualne były jak najbliżej, osiągając możliwie najniższe opóźnienie, należy wdrożyć je w [grupie miejsc docelowych w pobliżu](co-location.md#proximity-placement-groups).
 
-Grupa umieszczania bliskości jest grupą logiczną używaną w celu upewnienia się, że zasoby obliczeniowe platformy Azure znajdują się fizycznie blisko siebie. Grupy umieszczania zbliżeniowe są przydatne w przypadku obciążeń, w których jest wymagane małe opóźnienia.
+Grupa miejsc docelowych zbliżeniowych jest logicznym grupowaniem używanym w celu upewnienia się, że zasoby obliczeniowe platformy Azure są fizycznie zlokalizowane blisko siebie. Grupy miejsc docelowych zbliżeniowych są przydatne w przypadku obciążeń, w których wymagane jest małe opóźnienia.
 
 
-## <a name="create-the-proximity-placement-group"></a>Tworzenie grupy umieszczania zbliżeniowe
+## <a name="create-the-proximity-placement-group"></a>Tworzenie grupy miejsc docelowych zbliżeniowych
 
-1. W polu wyszukiwania wpisz **bliską grupę umieszczania** .
-1. W obszarze **usługi** w wynikach wyszukiwania wybierz pozycję **grupy położenia zbliżeniowe**.
-1. Na stronie **grupy umieszczania sąsiedztwa** wybierz pozycję **Dodaj**.
-1. Na karcie **podstawy** w obszarze **szczegóły projektu**upewnij się, że wybrano poprawną subskrypcję.
-1. W obszarze **Grupa zasobów** wybierz pozycję **Utwórz nową** , aby utworzyć nową grupę, lub wybierz istniejącą grupę zasobów z listy rozwijanej.
-1. W **obszarze region** wybierz lokalizację, w której ma zostać utworzona grupa umieszczania sąsiedztwa.
-1. W polu **Nazwa grupy położenia zbliżeniowe** wpisz nazwę, a następnie wybierz pozycję **Przegląd + Utwórz**.
-1. Po zakończeniu walidacji wybierz pozycję **Utwórz** , aby utworzyć grupę umieszczania zbliżeniowe.
+1. Wpisz **grupę miejsc docelowych zbliżeniowych** w wyszukiwaniu.
+1. W obszarze **Usługi** w wynikach wyszukiwania wybierz pozycję **Grupy miejsc docelowych zbliżeniowych**.
+1. Na stronie **Grupy miejsc docelowych zbliżeniowych** wybierz pozycję **Dodaj**.
+1. Na karcie **Podstawy** w obszarze **Szczegóły projektu**upewnij się, że wybrano poprawną subskrypcję.
+1. W **grupie zasobów** wybierz pozycję **Utwórz nową,** aby utworzyć nową grupę, lub wybierz istniejącą grupę zasobów z listy rozwijanej.
+1. W **obszarze region** wybierz lokalizację, w której ma zostać utworzona grupa miejsc docelowych zbliżeniowych.
+1. W **obszarze Nazwa grupy umieszczania zbliżeniowego** wpisz nazwę, a następnie wybierz pozycję **Przejrzyj + utwórz**.
+1. Po przejściu weryfikacji wybierz pozycję **Utwórz,** aby utworzyć grupę miejsc docelowych zbliżeniowych.
 
-    ![Zrzut ekranu przedstawiający tworzenie grupy umieszczania zbliżeniowe](./media/ppg/ppg.png)
+    ![Zrzut ekranu przedstawiający tworzenie grupy miejsc docelowych zbliżeniowych](./media/ppg/ppg.png)
 
 
 ## <a name="create-a-vm"></a>Tworzenie maszyny wirtualnej
 
-1. Podczas tworzenia maszyny wirtualnej w portalu przejdź do karty **Zaawansowane** . 
-1. W wybranej **grupie umieszczania sąsiedztwa** Wybierz poprawną grupę umieszczania. 
+1. Podczas tworzenia maszyny Wirtualnej w portalu przejdź do karty **Zaawansowane.** 
+1. W **zaznaczeniu grupy miejsc docelowych zbliżeniowych** wybierz właściwą grupę miejsc docelowych. 
 
-    ![Zrzut ekranu przedstawiający sekcję Grupa umieszczania sąsiedztwa podczas tworzenia nowej maszyny wirtualnej w portalu](./media/ppg/vm-ppg.png)
+    ![Zrzut ekranu przedstawiający sekcję grupy miejsc docelowych zbliżeniowych podczas tworzenia nowej maszyny wirtualnej w portalu](./media/ppg/vm-ppg.png)
 
-1. Po zakończeniu wprowadzania wszystkich innych wymaganych opcji wybierz pozycję **Przegląd + Utwórz**.
-1. Po przeprowadzeniu walidacji wybierz pozycję **Utwórz** , aby wdrożyć maszynę wirtualną w grupie umieszczania.
+1. Po zakończeniu dokonywania wszystkich innych wymaganych wyborów wybierz pozycję **Przejrzyj + utwórz**.
+1. Po przejściu sprawdzania poprawności wybierz pozycję **Utwórz,** aby wdrożyć maszynę wirtualną w grupie miejsc docelowych.
 
 
 
 
 ## <a name="next-steps"></a>Następne kroki
 
-Można również użyć [Azure PowerShell](proximity-placement-groups.md) do tworzenia grup umieszczania sąsiedztwa.
+Można również użyć [programu Azure PowerShell](proximity-placement-groups.md) do tworzenia grup miejsc docelowych zbliżeniowych.
 

@@ -1,58 +1,58 @@
 ---
 title: Przycisk Wdróż na platformie Azure
-description: Użyj przycisku, aby wdrożyć szablony Azure Resource Manager z repozytorium GitHub.
+description: Użyj przycisku, aby wdrożyć szablony usługi Azure Resource Manager z repozytorium Usługi GitHub.
 ms.topic: conceptual
 ms.date: 02/07/2020
 ms.openlocfilehash: 88436eac970b252d7b0bc7bccee4131e06e9e0cf
-ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77109052"
 ---
-# <a name="use-a-deployment-button-to-deploy-templates-from-github-repository"></a>Użyj przycisku wdrożenia, aby wdrożyć szablony z repozytorium GitHub
+# <a name="use-a-deployment-button-to-deploy-templates-from-github-repository"></a>Wdrażanie szablonów z repozytorium Usługi GitHub za pomocą przycisku wdrażania
 
-W tym artykule opisano sposób wdrażania szablonów z repozytorium GitHub za pomocą przycisku **Wdróż na platformie Azure** . Możesz dodać przycisk bezpośrednio do pliku README.md w repozytorium GitHub lub do strony sieci Web, która odwołuje się do repozytorium.
+W tym artykule opisano, jak użyć przycisku **Wdrażanie na platformie Azure** do wdrażania szablonów z repozytorium Usługi GitHub. Przycisk można dodać bezpośrednio do pliku README.md w repozytorium GitHub lub do strony sieci web, która odwołuje się do repozytorium.
 
-## <a name="use-common-image"></a>Użyj wspólnego obrazu
+## <a name="use-common-image"></a>Używanie wspólnego obrazu
 
-Aby dodać przycisk do strony sieci Web lub repozytorium, użyj następującego obrazu:
+Aby dodać przycisk do strony internetowej lub repozytorium, użyj następującego obrazu:
 
 ```html
 <img src="https://aka.ms/deploytoazurebutton"/>
 ```
 
-Obraz jest wyświetlany jako:
+Obraz jest wyświetlany w następujący sposób:
 
 ![Przycisk Wdróż na platformie Azure](https://aka.ms/deploytoazurebutton)
 
-## <a name="create-url-for-deploying-template"></a>Utwórz adres URL do wdrożenia szablonu
+## <a name="create-url-for-deploying-template"></a>Tworzenie adresu URL do wdrażania szablonu
 
-Aby utworzyć adres URL dla szablonu, Zacznij od pierwotnego adresu URL do szablonu w repozytorium:
+Aby utworzyć adres URL szablonu, zacznij od nieprzetworzonego adresu URL szablonu w repozytorium:
 
 ```html
 https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json
 ```
 
-Następnie należy zakodować ten adres URL. Możesz użyć kodera online lub uruchomić polecenie. Poniższy przykład programu PowerShell przedstawia sposób kodowania wartości przy użyciu adresu URL.
+Następnie zakoduj go adresem URL. Można użyć kodera online lub uruchomić polecenie. W poniższym przykładzie programu PowerShell pokazano, jak kodować wartość według adresu URL.
 
 ```powershell
 [uri]::EscapeDataString($url)
 ```
 
-Przykładowy adres URL ma następującą wartość w przypadku kodowania adresu URL.
+Przykładowy adres URL ma następującą wartość podczas kodowania adresu URL.
 
 ```html
 https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-storage-account-create%2Fazuredeploy.json
 ```
 
-Każde łącze rozpoczyna się od tego samego podstawowego adresu URL:
+Każdy link zaczyna się od tego samego podstawowego adresu URL:
 
 ```html
 https://portal.azure.com/#create/Microsoft.Template/uri/
 ```
 
-Dodaj link szablonu szyfrowanego przez adres URL do końca podstawowego adresu URL.
+Dodaj link do szablonu zakodowanego w adresie URL na końcu podstawowego adresu URL.
 
 ```html
 https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-storage-account-create%2Fazuredeploy.json
@@ -60,17 +60,17 @@ https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.github
 
 Masz pełny adres URL linku.
 
-## <a name="create-deploy-to-azure-button"></a>Przycisk Utwórz wdrożenie na platformie Azure
+## <a name="create-deploy-to-azure-button"></a>Przycisk Utwórz wdrażanie w usłudze Azure
 
-Na koniec Umieść link i obraz razem.
+Na koniec umieść link i obraz razem.
 
-Aby dodać przycisk z opcją inpromocji w pliku README.md w repozytorium GitHub lub stronie sieci Web, użyj:
+Aby dodać przycisk z Markdown w pliku README.md w repozytorium GitHub lub na stronie internetowej, użyj:
 
 ```markdown
 [![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-storage-account-create%2Fazuredeploy.json)
 ```
 
-W przypadku języka HTML należy użyć:
+W przypadku kodu HTML użyj:
 
 ```html
 <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-storage-account-create%2Fazuredeploy.json" target="_blank">
@@ -84,10 +84,10 @@ Aby przetestować pełne rozwiązanie, wybierz następujący przycisk:
 
 [![Wdrażanie na platformie Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-storage-account-create%2Fazuredeploy.json)
 
-W portalu zostanie wyświetlone okienko pozwalające łatwo podawać wartości parametrów. Parametry są wstępnie wypełnione wartościami domyślnymi z szablonu.
+Portal wyświetla okienko, które umożliwia łatwe podanie wartości parametrów. Parametry są wstępnie wypełnione wartościami domyślnymi z szablonu.
 
-![Używanie portalu do wdrażania](./media/deploy-to-azure-button/portal.png)
+![Wdrażanie za pomocą portalu](./media/deploy-to-azure-button/portal.png)
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Aby dowiedzieć się więcej na temat szablonów, zobacz [Opis struktury i składni szablonów Azure Resource Manager](template-syntax.md).
+- Aby dowiedzieć się więcej o szablonach, zobacz [Opis struktury i składni szablonów usługi Azure Resource Manager](template-syntax.md).

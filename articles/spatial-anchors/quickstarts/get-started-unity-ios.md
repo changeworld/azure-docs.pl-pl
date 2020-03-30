@@ -1,5 +1,5 @@
 ---
-title: 'Szybki Start: Tworzenie aplikacji Unity dla systemu iOS'
+title: 'Szybki start: tworzenie aplikacji Unity na iOS'
 description: Z tego przewodnika Szybki start dowiesz się, jak utworzyć aplikację dla systemu iOS, używając aparatu Unity i usługi Spatial Anchors.
 author: craigktreasure
 manager: vriveras
@@ -9,15 +9,15 @@ ms.date: 02/24/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
 ms.openlocfilehash: 37a82c4001dd42a4cfbbb9dabec29f28359afd75
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "79240590"
 ---
-# <a name="quickstart-create-a-unity-ios-app-with-azure-spatial-anchors"></a>Szybki Start: Tworzenie aplikacji Unity dla systemu iOS z zakotwiczeniami przestrzennymi platformy Azure
+# <a name="quickstart-create-a-unity-ios-app-with-azure-spatial-anchors"></a>Szybki start: tworzenie aplikacji Unity na iOS za pomocą zakotwiczeń przestrzennych platformy Azure
 
-W tym przewodniku szybki start opisano, jak utworzyć aplikację Unity dla systemu iOS przy użyciu [kotwic przestrzennych platformy Azure](../overview.md). Azure Spatial Anchors to usługa dla deweloperów programujących dla wielu platform, która pozwala kreować rozwiązania z rzeczywistością mieszaną z użyciem obiektów, których lokalizacja jest taka sama na różnych urządzeniach mimo upływu czasu. Gdy skończysz, będziesz mieć aplikację ARKit dla systemu iOS utworzoną za pomocą aparatu Unity, która może zapisywać i przywoływać kotwicę przestrzenną.
+Ten przewodnik Szybki start obejmuje sposób tworzenia aplikacji Unity na iOS przy użyciu [funkcji Azure Spatial Anchors](../overview.md). Azure Spatial Anchors to usługa dla deweloperów programujących dla wielu platform, która pozwala kreować rozwiązania z rzeczywistością mieszaną z użyciem obiektów, których lokalizacja jest taka sama na różnych urządzeniach mimo upływu czasu. Gdy skończysz, będziesz mieć aplikację ARKit dla systemu iOS utworzoną za pomocą aparatu Unity, która może zapisywać i przywoływać kotwicę przestrzenną.
 
 Omawiane tematy:
 
@@ -34,13 +34,13 @@ Omawiane tematy:
 
 Aby ukończyć ten przewodnik Szybki start, upewnij się, że dysponujesz następującymi elementami:
 
-- Maszyna macOS z systemem <a href="https://unity3d.com/get-unity/download" target="_blank">Unity 2019,1 lub 2019,2</a>, najnowszą wersją programu <a href="https://geo.itunes.apple.com/us/app/xcode/id497799835?mt=12" target="_blank">Xcode</a>i <a href="https://cocoapods.org" target="_blank">CocoaPods</a> .
-- Narzędzie git zainstalowane za pośrednictwem usługi oprogramowania homebrew. Wprowadź następujące polecenie w jednym wierszu terminalu: `/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`. Następnie uruchom `brew install git` i `brew install git-lfs`.
+- Komputer z systemem macOS z <a href="https://unity3d.com/get-unity/download" target="_blank">unity 2019.1 lub 2019.2</a>, najnowszą wersją <a href="https://geo.itunes.apple.com/us/app/xcode/id497799835?mt=12" target="_blank">Xcode</a>i <a href="https://cocoapods.org" target="_blank">CocoaPods zainstalowany.</a>
+- Git zainstalowany przez HomeBrew. Wprowadź następujące polecenie w jednym wierszu `/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`terminala: . Następnie uruchom `brew install git` `brew install git-lfs`i .
 - Deweloperskie urządzenie z systemem iOS, <a href="https://developer.apple.com/documentation/arkit/verifying_device_support_and_user_permission" target="_blank">zgodne z zestawem ARKit</a>.
 
 [!INCLUDE [Create Spatial Anchors resource](../../../includes/spatial-anchors-get-started-create-resource.md)]
 
-## <a name="download-and-open-the-unity-sample-project"></a>Pobieranie i otwieranie przykładowego projektu środowiska Unity
+## <a name="download-and-open-the-unity-sample-project"></a>Pobieranie i otwieranie przykładowego projektu Unity
 
 [!INCLUDE [Clone Sample Repo](../../../includes/spatial-anchors-clone-sample-repository.md)]
 
@@ -54,7 +54,7 @@ W okienku **Project (Projekt)** przejdź do katalogu `Assets/AzureSpatialAnchors
 
 [!INCLUDE [Configure Unity Scene](../../../includes/spatial-anchors-unity-configure-scene.md)]
 
-Zapisz scenę, wybierając pozycje **File (Plik)**  -> **Save (Zapisz)** .
+Zapisz scenę, wybierając **pozycję Zapisz plik** -> **Save**.
 
 ## <a name="export-the-xcode-project"></a>Eksportowanie projektu Xcode
 
@@ -64,17 +64,17 @@ Zapisz scenę, wybierając pozycje **File (Plik)**  -> **Save (Zapisz)** .
 
 Postępuj zgodnie z instrukcjami w aplikacji, aby umieścić i przywołać kotwicę.
 
-Po zakończeniu Zatrzymaj aplikację, naciskając przycisk **Zatrzymaj** w Xcode.
+Po zakończeniu zatrzymaj aplikację, naciskając **przycisk Zatrzymaj** w xcode.
 
 ## <a name="troubleshooting"></a>Rozwiązywanie problemów
 
 ### <a name="rendering-issues"></a>Problemy z renderowaniem
 
-Jeśli podczas uruchamiania aplikacji nie widzisz aparatu jako tła (np. widzisz puste miejsce, niebieski kolor lub inne tekstury), prawdopodobnie musisz ponownie zaimportować zasoby w aparacie Unity. Zatrzymaj aplikację. Z górnego menu aparatu Unity wybierz pozycje **Assets -> Re-import all (Zasoby -> Zaimportuj ponownie wszystko)** . Następnie ponownie uruchom aplikację.
+Jeśli podczas uruchamiania aplikacji nie widzisz aparatu jako tła (np. widzisz puste miejsce, niebieski kolor lub inne tekstury), prawdopodobnie musisz ponownie zaimportować zasoby w aparacie Unity. Zatrzymaj aplikację. Z górnego menu w unity wybierz pozycję **Zasoby -> Ponownie zaimportuj wszystkie**. Następnie ponownie uruchom aplikację.
 
-### <a name="cocoapods-issues-on-macos-catalina-1015"></a>CocoaPods problemy w macOS Catalina (10,15)
+### <a name="cocoapods-issues-on-macos-catalina-1015"></a>Problemy z cocoaPods w systemie macOS Catalina (10.15)
 
-Jeśli niedawno Zaktualizowano do macOS Catalina (10,15) i CocoaPods zostały wcześniej zainstalowane, CocoaPods może być w stanie przerwania i nie powiodło się poprawne skonfigurowanie plików projektu i `.xcworkspace`. Aby rozwiązać ten problem, należy ponownie zainstalować program CocoaPods, uruchamiając następujące polecenia:
+Jeśli niedawno zaktualizowano do systemu macOS Catalina (10.15) i miał CocoaPods zainstalowany wcześniej, CocoaPods może być `.xcworkspace` w stanie uszkodzonym i nie poprawnie skonfigurować strąki i pliki projektu. Aby rozwiązać ten problem, musisz ponownie zainstalować CocoaPods, uruchamiając następujące polecenia:
 
 ```shell
 brew update
@@ -82,13 +82,13 @@ brew install cocoapods --build-from-source
 brew link --overwrite cocoapods
 ```
 
-### <a name="unity-20193"></a>Unity 2019,3
+### <a name="unity-20193"></a>Jedność 2019.3
 
-Ze względu na istotne zmiany, środowisko Unity 2019,3 nie jest obecnie obsługiwane. Użyj aparatu Unity 2019,1 lub 2019,2.
+Ze względu na przełomowe zmiany, Unity 2019.3 nie jest obecnie obsługiwany. Prosimy o korzystanie z Unity 2019.1 lub 2019.2.
 
 [!INCLUDE [Clean-up section](../../../includes/clean-up-section-portal.md)]
 
 [!INCLUDE [Next steps](../../../includes/spatial-anchors-quickstarts-nextsteps.md)]
 
 > [!div class="nextstepaction"]
-> [Samouczek: udostępnianie kotwic przestrzennych między urządzeniami](../tutorials/tutorial-share-anchors-across-devices.md)
+> [Samouczek: Udostępnianie zakotwiczeń przestrzennych na różnych urządzeniach](../tutorials/tutorial-share-anchors-across-devices.md)

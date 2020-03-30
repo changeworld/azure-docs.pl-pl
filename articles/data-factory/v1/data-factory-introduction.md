@@ -1,5 +1,5 @@
 ---
-title: Wprowadzenie do Data Factory, usługi integracji danych
+title: Wprowadzenie do fabryki danych, usługi integracji danych
 description: 'Dowiedz się, czym jest usługa Azure Data Factory: usługa integracji danych w chmurze, która służy do aranżacji i automatyzacji przenoszenia i przekształcania danych.'
 services: data-factory
 documentationcenter: ''
@@ -13,14 +13,14 @@ ms.workload: data-services
 ms.topic: overview
 ms.date: 01/22/2018
 ms.openlocfilehash: 30578f204ff05443de82015627d67d3d4d357dce
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "73666798"
 ---
 # <a name="introduction-to-azure-data-factory"></a>Wprowadzenie do usługi Azure Data Factory 
-> [!div class="op_single_selector" title1="Wybierz używaną wersję usługi Data Factory:"]
+> [!div class="op_single_selector" title1="Wybierz wersję używanej usługi Data Factory:"]
 > * [Wersja 1](data-factory-introduction.md)
 > * [Wersja 2 (bieżąca wersja)](../introduction.md)
 
@@ -92,7 +92,7 @@ Działanie kopiowania w usłudze Data Factory kopiuje dane z magazynu danych źr
 
 Aby uzyskać więcej informacji, zobacz [Move data by using Copy Activity (Przenoszenie danych za pomocą działania kopiowania)](data-factory-data-movement-activities.md).
 
-### <a name="data-transformation-activities"></a>Działania związane z transformacją danych
+### <a name="data-transformation-activities"></a>Działania dotyczące przekształcania danych
 [!INCLUDE [data-factory-transformation-activities](../../../includes/data-factory-transformation-activities.md)]
 
 Aby uzyskać więcej informacji, zobacz [Move data by using Copy Activity (Przenoszenie danych za pomocą działania kopiowania)](data-factory-data-transformation-activities.md).
@@ -125,7 +125,7 @@ Obecnie można tworzyć fabryki danych w regionach Zachodnie stany USA, Wschodni
 
 Sama usługa Azure Data Factory nie przechowuje żadnych danych. Pozwala ona tworzyć przepływy pracy oparte na danych służące do organizowania przenoszenia danych między [obsługiwanymi magazynami danych](#data-movement-activities). Pozwala ona także przetwarzać dane przy użyciu [usług obliczeniowych](#data-transformation-activities) w innych regionach lub w środowisku lokalnym. Dodatkowo umożliwia [monitorowanie przepływów pracy i zarządzanie nimi](data-factory-monitor-manage-pipelines.md) przy użyciu zarówno mechanizmów programowych, jaki i interfejsu użytkownika.
 
-Usługa Data Factory jest dostępna tylko w regionach Zachodnie stany USA, Wschodnie stany USA i Europa Północna. Jednak usługa, która obsługuje przenoszenie danych w usłudze Data Factory, jest dostępna [globalnie](data-factory-data-movement-activities.md#global) w wielu regionach. Jeśli magazyn danych znajduje się za zaporą, dane są przenoszone przez [bramę zarządzania danymi](data-factory-move-data-between-onprem-and-cloud.md) zainstalowaną w środowisku lokalnym.
+Usługa Data Factory jest dostępna tylko w regionach Zachodnie stany USA, Wschodnie stany USA i Europa Północna. Jednak usługa, która obsługuje przenoszenie danych w usłudze Data Factory, jest dostępna [globalnie](data-factory-data-movement-activities.md#global) w wielu regionach. Jeśli magazyn danych znajduje się za zaporą, [brama zarządzania danymi](data-factory-move-data-between-onprem-and-cloud.md) zainstalowana w środowisku lokalnym przenosi dane.
 
 Załóżmy na przykład, że środowiska obliczeniowe, takie jak klaster usługi Azure HDInsight i usługa Azure Machine Learning, są zlokalizowane w regionie Europa Zachodnia. Można wtedy utworzyć wystąpienie usługi Azure Data Factory w regionie Europa Północna i korzystać z niego. Następnie można go używać do planowania zadań w środowiskach obliczeniowych w regionie Europa Zachodnia. Wyzwolenie zadania w środowisku obliczeniowym zajmuje usłudze Data Factory kilka milisekund, ale czas uruchomienia zadania w środowisku obliczeniowym nie zmienia się.
 

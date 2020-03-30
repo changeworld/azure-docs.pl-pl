@@ -1,6 +1,6 @@
 ---
-title: Rejestrowanie usługi sieci Web — Azure Machine Learning Studio (klasyczny) | Microsoft Docs
-description: Dowiedz się, jak włączyć rejestrowanie dla usług sieci Web Machine Learning Studio (klasycznych). Rejestrowanie udostępnia dodatkowe informacje ułatwiające rozwiązywanie problemów z interfejsów API.
+title: Rejestrowanie usługi sieci Web — usługa Azure Machine Learning Studio (klasyczna) | Dokumenty firmy Microsoft
+description: Dowiedz się, jak włączyć rejestrowanie dla usług sieci Web Machine Learning Studio (klasycznych). Rejestrowanie zawiera dodatkowe informacje ułatwiające rozwiązywanie problemów z interfejsami API.
 services: machine-learning
 author: xiaoharper
 ms.custom: seodec18
@@ -12,78 +12,78 @@ ms.subservice: studio
 ms.topic: conceptual
 ms.date: 06/15/2017
 ms.openlocfilehash: 90e7692fe0e254074d8176d719d0ca9abad54a9b
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79217844"
 ---
-# <a name="enable-logging-for-azure-machine-learning-studio-classic-web-services"></a>Włącz rejestrowanie dla usług sieci Web Azure Machine Learning Studio (klasycznych)
+# <a name="enable-logging-for-azure-machine-learning-studio-classic-web-services"></a>Włączanie rejestrowania dla usług sieci Web usługi Azure Machine Learning Studio (klasyczne)
 
 [!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
-Ten dokument zawiera informacje na temat możliwości rejestrowania usług sieci Web Machine Learning Studio (klasycznych). Rejestrowanie zawiera dodatkowe informacje, po których tylko numer błędu i komunikat mogą pomóc w rozwiązywaniu problemów z wywołaniami do interfejsów API Machine Learning Studio (klasycznego).  
+Ten dokument zawiera informacje na temat możliwości rejestrowania usług sieci web Machine Learning Studio (klasyczne). Rejestrowanie zawiera dodatkowe informacje, poza tylko numer błędu i komunikat, które mogą pomóc w rozwiązywaniu problemów z wywołaniami do machine learning studio (klasyczne) interfejsy API.  
 
-## <a name="how-to-enable-logging-for-a-web-service"></a>Jak włączyć rejestrowanie dla usługi sieci Web
+## <a name="how-to-enable-logging-for-a-web-service"></a>Jak włączyć rejestrowanie usługi sieci Web
 
-Rejestrowanie można włączyć z poziomu portalu [usług sieci Web Azure Machine Learning Studio (klasycznego)](https://services.azureml.net) . 
+Rejestrowanie można włączyć z [portalu usług Azure Machine Learning Studio (klasyczny) web services.](https://services.azureml.net) 
 
-1. Zaloguj się do portalu usług sieci Web Azure Machine Learning Studio (klasyczny) pod [https://services.azureml.net](https://services.azureml.net). W przypadku klasycznej usługi sieci Web można również przejść do portalu, klikając pozycję **nowe usługi sieci Web** na stronie usług sieci Web Machine Learning Studio (klasycznej) w programie Studio (klasyczny).
+1. Zaloguj się do portalu usług Azure Machine Learning [https://services.azureml.net](https://services.azureml.net)Studio (klasyczny) w sieci Web w . W przypadku klasycznej usługi sieci web można również uzyskać informacje o portalu, klikając pozycję **Nowe środowisko usług sieci Web** na stronie Usługi sieci Web Machine Learning Studio (klasyczne) w Studio (klasyczny).
 
-   ![Nowe łącze środowisko usług sieci Web](./media/web-services-logging/new-web-services-experience-link.png)
+   ![Łącze Nowe środowisko usług sieci Web](./media/web-services-logging/new-web-services-experience-link.png)
 
-2. Na górnym pasku menu kliknij pozycję **usługi sieci Web** dla nowej usługi sieci Web lub kliknij pozycję **klasyczne usługi sieci Web** dla klasycznej usługi sieci Web.
+2. Na górnym pasku menu kliknij pozycję **Usługi sieci Web** dla nowej usługi sieci web lub kliknij pozycję **Klasyczne usługi sieci Web** dla klasycznej usługi sieci web.
 
-   ![Wybierz nowy lub klasyczne usługi sieci web](./media/web-services-logging/select-web-service.png)
+   ![Wybieranie nowych lub klasycznych usług sieci web](./media/web-services-logging/select-web-service.png)
 
-3. Dla nowej usługi sieci web kliknij nazwę usługi sieci web. Dla klasycznej usługi sieci web kliknij nazwę usługi sieci web, a na następnej stronie kliknij pozycję odpowiednich punktów końcowych.
+3. W przypadku nowej usługi sieci web kliknij nazwę usługi sieci web. W przypadku klasycznej usługi sieci web kliknij nazwę usługi sieci web, a następnie na następnej stronie kliknij odpowiedni punkt końcowy.
 
 4. Na górnym pasku menu kliknij pozycję **Konfiguruj**.
 
-5. Ustaw opcję **Włącz rejestrowanie** na *błąd* (aby rejestrować tylko błędy) lub *wszystkie* (w celu pełnego rejestrowania).
+5. Ustaw opcję **Włącz rejestrowanie** na *Błąd* (aby rejestrować tylko błędy) lub *Wszystkie* (dla pełnego rejestrowania).
 
    ![Wybierz poziom rejestrowania](./media/web-services-logging/enable-logging.png)
 
-6. Kliknij przycisk **Save** (Zapisz).
+6. Kliknij przycisk **Zapisz**.
 
-7. W przypadku klasycznych usług sieci Web Utwórz kontener **"ml-Diagnostics"** .
+7. W przypadku klasycznych usług sieci web utwórz kontener **diagnostyki ml.**
 
-   Wszystkie dzienniki usługi sieci Web są przechowywane w kontenerze obiektów BLOB o nazwie **ml-Diagnostics** na koncie magazynu skojarzonym z usługą sieci Web. Dla nowych usług sieci web ten kontener jest tworzony po raz pierwszy możesz uzyskać dostęp do usługi sieci web. Klasyczne usługi sieci web należy utworzyć kontener, jeśli jeszcze nie istnieje. 
+   Wszystkie dzienniki usług sieci web są przechowywane w kontenerze obiektów blob o nazwie **diagnostyka ml** na koncie magazynu skojarzonym z usługą sieci web. W przypadku nowych usług sieci web ten kontener jest tworzony przy pierwszym dostępie do usługi sieci web. W przypadku klasycznych usług sieci web należy utworzyć kontener, jeśli jeszcze nie istnieje. 
 
-   1. W [Azure Portal](https://portal.azure.com)przejdź do konta magazynu skojarzonego z usługą sieci Web.
+   1. W [witrynie Azure portal](https://portal.azure.com)przejdź do konta magazynu skojarzonego z usługą sieci web.
 
    2. W obszarze **Blob Service** kliknij pozycję **Kontenery**.
 
-   3. Jeśli kontener Container **-Diagnostics** nie istnieje, kliknij pozycję **+ kontener**, nadaj kontenerowi nazwę "ml-Diagnostics" i wybierz **Typ dostępu** jako "BLOB". Kliknij przycisk **OK**.
+   3. Jeśli kontener **ml-diagnostyka** nie istnieje, kliknij **+Kontener**, nadaj kontenerowi nazwę "ml-diagnostics" i wybierz **typ dostępu** jako "Obiekt blob". Kliknij przycisk **OK**.
 
-      ![Utwórz nowy kontener do przechowywania dzienników diagnostycznych](./media/web-services-logging/create-ml-diagnostics-container.png)
+      ![Tworzenie nowego kontenera do przechowywania dzienników diagnostycznych](./media/web-services-logging/create-ml-diagnostics-container.png)
 
 > [!TIP]
 >
-> W przypadku klasycznej usługi sieci Web pulpit nawigacyjny usług sieci Web w Machine Learning Studio (klasyczny) ma również przełącznik umożliwiający włączenie rejestrowania. Jednak ponieważ rejestrowania jest teraz zarządzana za pośrednictwem portalu usług sieci Web, należy włączyć rejestrowanie za pośrednictwem portalu, zgodnie z opisem w tym artykule. Jeśli włączono już rejestrowanie w programie Studio (klasyczne), w portalu usług sieci Web Wyłącz rejestrowanie i włącz je ponownie.
+> W przypadku klasycznej usługi sieci web pulpit nawigacyjny usług sieci Web w programie Machine Learning Studio (klasyczny) ma również przełącznik umożliwiający rejestrowanie. Jednak ponieważ rejestrowanie jest teraz zarządzane za pośrednictwem portalu usług sieci Web, należy włączyć rejestrowanie za pośrednictwem portalu, jak opisano w tym artykule. Jeśli logowanie w Studio (klasyczne) jest już włączone, a następnie w portalu usług sieci Web wyłącz rejestrowanie i włącz je ponownie.
 
 
-## <a name="the-effects-of-enabling-logging"></a>Efekty Włączanie rejestrowania
-Po włączeniu rejestrowania Diagnostyka i błędy w punkcie końcowym usługi sieci Web są rejestrowane w kontenerze obiektów BLOB **diagnostyki ml** na koncie usługi Azure Storage połączonym z obszarem roboczym użytkownika. Ten kontener zawiera wszystkie informacje diagnostyczne dla wszystkich internetowych punktów końcowych usługi we wszystkich obszarach roboczych skojarzonych z tym kontem magazynu.
+## <a name="the-effects-of-enabling-logging"></a>Skutki umożliwienia rejestrowania
+Gdy rejestrowanie jest włączone, diagnostyki i błędy z punktu końcowego usługi sieci web są rejestrowane w kontenerze obiektu blob **diagnostyki ml** w koncie usługi Azure Storage połączone z obszaru roboczego użytkownika. Ten kontener zawiera wszystkie informacje diagnostyczne dla wszystkich punktów końcowych usługi sieci web dla wszystkich obszarów roboczych skojarzonych z tym kontem magazynu.
 
-Dzienniki można wyświetlać przy użyciu dowolnego z kilku narzędzi można eksplorować konto usługi Azure Storage. Najłatwiejszym rozwiązaniem może być przechodzenie do konta magazynu w Azure Portal, kliknij pozycję **kontenery**, a następnie kliknij kontener **ml — Diagnostyka**.  
+Dzienniki można przeglądać przy użyciu dowolnego z kilku narzędzi dostępnych do eksplorowania konta usługi Azure Storage. Najłatwiejsza może być przejście do konta magazynu w witrynie Azure portal, kliknięcie pozycji **Kontenery**, a następnie **kliknięcie diagnostyki ml kontenera**.  
 
-## <a name="log-blob-detail-information"></a>Dziennik blob szczegółowe informacje
-Każdy obiekt blob w kontenerze przechowuje informacje diagnostyczne dla dokładnie jeden z następujących czynności:
+## <a name="log-blob-detail-information"></a>Szczegółowe informacje o obiektach obiektów blob dziennika
+Każdy obiekt blob w kontenerze zawiera informacje diagnostyczne dla dokładnie jednej z następujących akcji:
 
-* Wykonywanie metody wykonywania wsadowego  
-* Wykonywanie metody odpowiedzi na żądanie  
-* Inicjowanie kontenera odpowiedź na żądanie
+* Wykonanie metody wsadowego-wykonywania  
+* Wykonanie metody Request-Response  
+* Inicjowanie kontenera żądanie-odpowiedź
 
-Nazwa każdego obiektu blob ma prefiksu o następującej postaci: 
+Nazwa każdego obiektu blob ma prefiks następującego formularza: 
 
 
 `{Workspace Id}-{Web service Id}-{Endpoint Id}/{Log type}`
 
 
-Gdzie _Typ dziennika_ jest jedną z następujących wartości:  
+Gdzie _typ dziennika_ jest jedną z następujących wartości:  
 
 * partia  
-* Ocena/żądań  
-* Ocena/init  
+* wynik/wnioski  
+* wynik/init  
 

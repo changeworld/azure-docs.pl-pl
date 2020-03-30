@@ -1,6 +1,6 @@
 ---
-title: Zbiorcze usuwanie członków grupy przez przekazanie pliku CSV — Azure Active Directory | Microsoft Docs
-description: Dodaj użytkowników zbiorczo w centrum administracyjnym platformy Azure.
+title: Zbiorcze usuwanie członków grupy przez przekazanie pliku csv — Usługa Azure Active Directory | Dokumenty firmy Microsoft
+description: Zbiorcze dodawanie użytkowników w centrum administracyjnym platformy Azure.
 services: active-directory
 author: curtand
 ms.author: curtand
@@ -14,49 +14,49 @@ ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9d384ea4749e2d0bc7edf8df7ac0508566f2f76b
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72517092"
 ---
-# <a name="bulk-remove-group-members-preview-in-azure-active-directory"></a>Zbiorcze usuwanie członków grupy (wersja zapoznawcza) w Azure Active Directory
+# <a name="bulk-remove-group-members-preview-in-azure-active-directory"></a>Zbiorcze usuwanie członków grupy (wersja zapoznawcza) w usłudze Azure Active Directory
 
-Korzystając z portalu Azure Active Directory (Azure AD), można usunąć dużą liczbę członków z grupy, używając pliku wartości rozdzielanych przecinkami (CSV) do zbiorczego usuwania elementów członkowskich grupy.
+Korzystając z portalu usługi Azure Active Directory (Azure AD), można usunąć dużą liczbę członków z grupy za pomocą pliku csv (uszecony przecinkami), aby zbiorczo usuwać członków grupy.
 
-## <a name="to-bulk-remove-group-members"></a>Aby zbiorczo usuwać członków grupy
+## <a name="to-bulk-remove-group-members"></a>Aby zbiorczo usunąć członków grupy
 
-1. Zaloguj się do [Azure Portal](https://portal.azure.com) przy użyciu konta administratora użytkowników w organizacji. Właściciele grupy mogą również zbiorczo usuwać członków należących do nich grup.
-1. W usłudze Azure AD wybierz pozycję **grupy**  > **wszystkie grupy**.
-1. Otwórz grupę, z której zostaną usunięte elementy członkowskie, a następnie wybierz pozycję **Członkowie**.
+1. Zaloguj się do [witryny Azure portal](https://portal.azure.com) przy za pomocą konta administratora użytkownika w organizacji. Właściciele grup mogą również zbiorczo usuwać członków grup, których są właścicielami.
+1. W usłudze Azure AD wybierz pozycję **Grupy** > **Wszystkie grupy**.
+1. Otwórz grupę, z której usuwasz członków, a następnie wybierz pozycję **Członkowie**.
 1. Na stronie **Członkowie** wybierz pozycję **Usuń członków**.
-1. Na stronie **zbiorcze usuwanie członków grupy (wersja zapoznawcza)** wybierz pozycję **Pobierz** , aby pobrać szablon pliku CSV z właściwościami wymaganych elementów członkowskich grupy.
+1. Na stronie **Zbiorcze usuwanie członków grupy (Wersja zapoznawcza)** wybierz pozycję **Pobierz,** aby uzyskać szablon pliku CSV z wymaganymi właściwościami członka grupy.
 
    ![Polecenie Usuń członków znajduje się na stronie profilu grupy](./media/groups-bulk-remove-members/remove-panel.png)
 
-1. Otwórz plik CSV i Dodaj wiersz dla każdego członka grupy, który chcesz usunąć z grupy (wymagane wartości to identyfikator obiektu elementu członkowskiego lub główna nazwa użytkownika). Następnie zapisz plik.
+1. Otwórz plik CSV i dodaj wiersz dla każdego członka grupy, którego chcesz usunąć z grupy (wymagane wartości to identyfikator obiektu członka lub główna nazwa użytkownika). Następnie zapisz plik.
 
-   ![Plik CSV zawiera nazwy i identyfikatory dla elementów członkowskich do usunięcia](./media/groups-bulk-remove-members/csv-file.png)
+   ![Plik CSV zawiera nazwy i identyfikatory członków do usunięcia](./media/groups-bulk-remove-members/csv-file.png)
 
-1. Na stronie **zbiorcze usuwanie członków grupy (wersja zapoznawcza)** w obszarze **Przekaż plik CSV**przejdź do pliku. Po wybraniu pliku zostanie uruchomiony Walidacja pliku CSV.
-1. Po sprawdzeniu poprawności zawartości pliku, Strona importowania zbiorczego wyświetla **pomyślnie przekazany plik**. Jeśli występują błędy, należy je usunąć przed przesłaniem zadania.
-1. Gdy plik zostanie pomyślnie zweryfikowany, wybierz pozycję **Prześlij** , aby rozpocząć operację zbiorczą platformy Azure, która usuwa członków grupy z grupy.
-1. Po zakończeniu operacji usuwania zobaczysz powiadomienie, że operacja zbiorcza zakończyła się pomyślnie.
+1. Na stronie **Zbiorcze usuwanie członków grupy (Wersja zapoznawcza)** w obszarze **Przekazywanie pliku csv**przejdź do pliku. Po wybraniu pliku rozpocznie się sprawdzanie poprawności pliku csv.
+1. Po sprawdzeniu poprawności zawartości pliku na stronie importu zbiorczego **zostanie wyświetlony plik przekazany pomyślnie**. Jeśli występują błędy, należy je naprawić, zanim będzie można przesłać zadanie.
+1. Gdy plik przechodzi weryfikacji, wybierz **prześlij,** aby rozpocząć operację zbiorczą platformy Azure, która usuwa członków grupy z grupy.
+1. Po zakończeniu operacji usuwania zostanie wyświetlone powiadomienie, że operacja zbiorcza powiodła się.
 
 ## <a name="check-removal-status"></a>Sprawdź stan usuwania
 
-Stan wszystkich oczekujących żądań zbiorczych można zobaczyć na stronie **wyniki operacji zbiorczej (wersja zapoznawcza)** .
+Stan wszystkich oczekujących żądań zbiorczych można zobaczyć na stronie **Wyniki operacji zbiorczej (wersja zapoznawcza).**
 
-   ![Na stronie wyniki operacji zbiorczych jest wyświetlany stan zbiorczego żądania](./media/groups-bulk-remove-members/bulk-center.png)
+   ![Strona Wyniki operacji zbiorczych pokazuje stan żądania zbiorczego](./media/groups-bulk-remove-members/bulk-center.png)
 
-Aby uzyskać szczegółowe informacje na temat każdego elementu wiersza w ramach operacji zbiorczej, wybierz wartości z kolumny **# Success**, **# Failure**lub **Total Requests** . Jeśli wystąpią błędy, zostaną wyświetlone przyczyny niepowodzenia.
+Aby uzyskać szczegółowe informacje o każdym elemencie zamówienia w ramach operacji zbiorczej, wybierz wartości w kolumnach **# Sukces**, **# Niepowodzenie**lub Całkowita **liczba żądań.** Jeśli wystąpiły błędy, zostaną wyświetlone przyczyny awarii.
 
-## <a name="bulk-removal-service-limits"></a>Limity usługi usuwania zbiorczego
+## <a name="bulk-removal-service-limits"></a>Limity usług usuwania zbiorczego
 
-Każde działanie zbiorcze służące do usuwania listy członków grupy można uruchomić przez maksymalnie jedną godzinę. Umożliwia to usunięcie listy co najmniej 40 000 członków.
+Każde działanie zbiorcze w celu usunięcia listy członków grupy można uruchomić przez maksymalnie jedną godzinę. Umożliwia to usunięcie listy co najmniej 40 000 członków.
 
 ## <a name="next-steps"></a>Następne kroki
 
 - [Członkowie grupy importu zbiorczego](groups-bulk-import-members.md)
-- [Pobierz członków grupy](groups-bulk-download-members.md)
+- [Pobieranie członków grupy](groups-bulk-download-members.md)
 - [Pobierz listę wszystkich grup](groups-bulk-download.md)

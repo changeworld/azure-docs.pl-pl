@@ -1,6 +1,6 @@
 ---
-title: Rejestrowanie urządzenia TPM w usłudze Azure Device Provisioning przy użyciu języka Java
-description: Szybki Start — rejestrowanie urządzenia TPM w usłudze Azure IoT Hub Device Provisioning Service (DPS) przy użyciu zestawu SDK usługi Java. W tym przewodniku Szybki start używane są rejestracje indywidualne.
+title: Rejestrowanie urządzenia modułu TPM w usłudze inicjowania obsługi administracyjnej urządzeń platformy Azure przy użyciu języka Java
+description: Szybki start — rejestrowanie urządzenia TPM w usłudze inicjowania obsługi administracyjnej usługi usługi Azure IoT Hub (DPS) przy użyciu zestawu SDK usługi Java. W tym przewodniku Szybki start używane są rejestracje indywidualne.
 author: wesmc7777
 ms.author: wesmc
 ms.date: 11/08/2019
@@ -10,24 +10,24 @@ services: iot-dps
 ms.devlang: java
 ms.custom: mvc
 ms.openlocfilehash: c199d5be4c103c80a6fcc126af70f48367909f64
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "79241696"
 ---
-# <a name="quickstart-enroll-tpm-device-to-iot-hub-device-provisioning-service-using-java-service-sdk"></a>Szybki Start: rejestrowanie urządzenia TPM w IoT Hub Device Provisioning Service przy użyciu zestawu SDK usługi Java
+# <a name="quickstart-enroll-tpm-device-to-iot-hub-device-provisioning-service-using-java-service-sdk"></a>Szybki start: rejestrowanie urządzenia TPM w usłudze inicjowania obsługi administracyjnej urządzeń usługi IoT Hub przy użyciu sdk usługi Java
 
 [!INCLUDE [iot-dps-selector-quick-enroll-device-tpm](../../includes/iot-dps-selector-quick-enroll-device-tpm.md)]
 
-W tym przewodniku szybki start utworzysz samodzielną rejestrację dla symulowanego urządzenia TPM w usłudze Azure IoT Hub Device Provisioning Service przy użyciu zestawu SDK usługi Java z pomocą przykładowej aplikacji Java.
+W tym przewodniku Szybki start programowo utwórz indywidualną rejestrację dla symulowanego urządzenia TPM w usłudze inicjowania obsługi administracyjnej urządzeń usługi Azure IoT Hub przy użyciu zestawu SDK usługi Java za pomocą przykładowej aplikacji Java.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Zakończenie [konfigurowania IoT Hub Device Provisioning Service przy użyciu Azure Portal](./quick-setup-auto-provision.md).
-- Kończenie [odczytywania kluczy kryptograficznych z urządzenia TPM](quick-create-simulated-device.md#simulatetpm).
-- Konto platformy Azure z aktywną subskrypcją. [Utwórz je bezpłatnie](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
-- [Java SE Development Kit 8](https://aka.ms/azure-jdks). Ten przewodnik Szybki Start instaluje [zestaw SDK usługi Java](https://azure.github.io/azure-iot-sdk-java/service/) poniżej. Działa on zarówno w systemie Windows, jak i Linux. Ten przewodnik Szybki Start używa systemu Windows.
+- Zakończenie [konfigurowania usługi inicjowania obsługi administracyjnej urządzeń usługi Usługi obsługi urządzeń usługi IoT Hub za pomocą witryny Azure portal](./quick-setup-auto-provision.md).
+- Zakończenie [odczytu kluczy kryptograficznych z urządzenia TPM](quick-create-simulated-device.md#simulatetpm).
+- Konto platformy Azure z aktywną subskrypcją. [Utwórz jeden za darmo](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+- [Zestaw java se development 8](https://aka.ms/azure-jdks). Ten szybki start instaluje [sdk usługi Java](https://azure.github.io/azure-iot-sdk-java/service/) poniżej. Działa zarówno na Windows i Linux. Ten przewodnik Szybki start korzysta z systemu Windows.
 - [Maven 3](https://maven.apache.org/download.cgi).
 - [Git](https://git-scm.com/download/).
 
@@ -37,7 +37,7 @@ W tym przewodniku szybki start utworzysz samodzielną rejestrację dla symulowan
 
 1. Upewnij się, że na maszynie zainstalowano środowisko [Java SE Development Kit 8](https://aka.ms/azure-jdks). 
 
-2. Skonfiguruj zmienne środowiskowe instalacji języka Java. Zmienna `PATH` powinna zawierać pełną ścieżkę do katalogu *jdk1.8.x\bin*. Jeśli jest to pierwsza instalacja języka Java na komputerze, utwórz nową zmienną środowiskową o nazwie `JAVA_HOME` i ustaw ją na pełną ścieżkę do katalogu *jdk1.8.x*. Na komputerze z systemem Windows ten katalog znajduje się w folderze *C:\\Program Files\\Java\\* , a zmienne środowiskowe można tworzyć lub edytować po wyszukaniu frazy **Edytuj zmienne środowiskowe systemu** w **Panelu sterowania** komputera z systemem Windows. 
+2. Skonfiguruj zmienne środowiskowe instalacji języka Java. Zmienna `PATH` powinna zawierać pełną ścieżkę do katalogu *jdk1.8.x\bin*. Jeśli jest to pierwsza instalacja języka Java na komputerze, utwórz nową zmienną środowiskową o nazwie `JAVA_HOME` i ustaw ją na pełną ścieżkę do katalogu *jdk1.8.x*. Na komputerze z systemem Windows ten katalog znajduje się w folderze *C:\\Program Files\\Java\\*, a zmienne środowiskowe można tworzyć lub edytować po wyszukaniu frazy **Edytuj zmienne środowiskowe systemu** w **Panelu sterowania** komputera z systemem Windows. 
 
    Aby sprawdzić poprawność skonfigurowania języka Java na komputerze, możesz uruchomić następujące polecenie w oknie polecenia:
 
@@ -62,16 +62,16 @@ W tym przewodniku szybki start utworzysz samodzielną rejestrację dla symulowan
 
 W tej sekcji przedstawiono sposób dodawania szczegółów aprowizacji urządzenia TPM do przykładowego kodu. 
 
-1. Otwórz wiersz polecenia. Sklonuj repozytorium GitHub na potrzeby przykładowego kodu rejestracji urządzenia przy użyciu [zestawu SDK usługi Java](https://azure.github.io/azure-iot-sdk-java/service/):
+1. Otwórz wiersz polecenia. Sklonuj przykład kodu kodu rejestracji urządzenia repozytorium GitHub przy użyciu zestawu [SDK usługi Java:](https://azure.github.io/azure-iot-sdk-java/service/)
     
     ```cmd\sh
     git clone https://github.com/Azure/azure-iot-sdk-java.git --recursive
     ```
 
-2. W pobranym kodzie źródłowym przejdź do folderu przykładu **_azure-iot-sdk-java/provisioning/provisioning-samples/service-enrollment-sample_** . Otwórz plik **_/src/main/java/samples/com/microsoft/azure/sdk/iot/ServiceEnrollmentSample.java_** w dowolnym edytorze i dodaj następujące szczegółowe informacje:
+2. W pobranym kodzie źródłowym przejdź do folderu przykładu **_azure-iot-sdk-java/provisioning/provisioning-samples/service-enrollment-sample_**. Otwórz plik **_/src/main/java/samples/com/microsoft/azure/sdk/iot/ServiceEnrollmentSample.java_** w dowolnym edytorze i dodaj następujące szczegółowe informacje:
 
    1. Dodaj ciąg `[Provisioning Connection String]` dla usługi aprowizacji z portalu, jako pokazano poniżej:
-       1. Przejdź do usługi aprowizacji w witrynie [Azure Portal](https://portal.azure.com). 
+       1. Przejdź do usługi inicjowania obsługi administracyjnej w [witrynie Azure portal](https://portal.azure.com). 
        2. Otwórz **Zasady dostępu współużytkowanego** i wybierz zasadę, która ma uprawnienie *EnrollmentWrite*.
        3. Skopiuj **Parametry połączenia klucza podstawowego**. 
 
@@ -85,7 +85,7 @@ W tej sekcji przedstawiono sposób dodawania szczegółów aprowizacji urządzen
 
    2. Dodaj szczegóły urządzenia TPM:
        1. Pobierz *identyfikator rejestracji* i *klucz poręczenia modułu TPM* na potrzeby symulacji urządzenia TPM, wykonując kroki prowadzące do sekcji [Symulowanie urządzenia TPM](quick-create-simulated-device.md#simulatetpm).
-       2. Użyj **_identyfikatora rejestracji_** i **_klucza poręczenia_** z danych wyjściowych poprzedniego kroku, aby zastąpić ciągi `[RegistrationId]` i `[TPM Endorsement Key]` w przykładowym pliku kodu **_ServiceEnrollmentSample.java_** :
+       2. Użyj **_identyfikatora rejestracji_** i **_klucza poręczenia_** z danych wyjściowych poprzedniego kroku, aby zastąpić ciągi `[RegistrationId]` i `[TPM Endorsement Key]` w przykładowym pliku kodu **_ServiceEnrollmentSample.java_**:
         
            ```Java
            private static final String REGISTRATION_ID = "[RegistrationId]";
@@ -122,7 +122,7 @@ W tej sekcji przedstawiono sposób dodawania szczegółów aprowizacji urządzen
 
 ## <a name="build-and-run-the-java-sample-code"></a>Kompilowanie i uruchamianie przykładowego kodu Java
 
-1. Otwórz okno polecenia i przejdź do folderu **_azure-iot-sdk-java/provisioning/provisioning-samples/service-enrollment-sample_** .
+1. Otwórz okno polecenia i przejdź do folderu **_azure-iot-sdk-java/provisioning/provisioning-samples/service-enrollment-sample_**.
 
 2. Skompiluj przykładowy kod za pomocą tego polecenia:
 
@@ -130,7 +130,7 @@ W tej sekcji przedstawiono sposób dodawania szczegółów aprowizacji urządzen
     mvn install -DskipTests
     ```
 
-   To polecenie pobiera pakiet Maven [`com.microsoft.azure.sdk.iot.provisioning.service`](https://www.mvnrepository.com/artifact/com.microsoft.azure.sdk.iot.provisioning/provisioning-service-client) na komputer. Ten pakiet zawiera pliki binarne dla [zestawu SDK usługi Java](https://azure.github.io/azure-iot-sdk-java/service/), których przykładowy kod musi skompilować. 
+   To polecenie pobiera pakiet [`com.microsoft.azure.sdk.iot.provisioning.service`](https://www.mvnrepository.com/artifact/com.microsoft.azure.sdk.iot.provisioning/provisioning-service-client) Maven na komputer. Ten pakiet zawiera pliki binarne dla [zestawu Java Service SDK](https://azure.github.io/azure-iot-sdk-java/service/), który należy utworzyć przykładowy kod. 
 
 3. Uruchom przykładowy kod przy użyciu tych poleceń w oknie polecenia:
 
@@ -141,19 +141,19 @@ W tej sekcji przedstawiono sposób dodawania szczegółów aprowizacji urządzen
 
 4. Sprawdź poprawność rejestracji w oknie danych wyjściowych. 
 
-5. Przejdź do usługi aprowizacji w witrynie Azure Portal. Wybierz pozycję **Zarządzaj rejestracjami**, a następnie wybierz kartę **rejestracje indywidualne** . Zauważ, że na liście znajduje się teraz *Identyfikator rejestracji* symulowanego urządzenia TPM. 
+5. Przejdź do usługi aprowizacji w witrynie Azure Portal. Wybierz **pozycję Zarządzaj rejestracjami**i wybierz kartę *Registration ID* **Rejestracje indywidualne.** 
 
     ![Potwierdzanie poprawności rejestracji urządzenia TPM w portalu](./media/quick-enroll-device-tpm-java/verify-tpm-enrollment.png)  
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
-Jeśli planujesz Eksplorowanie przykładu usługi Java, nie czyść zasobów utworzonych w tym przewodniku Szybki Start. Jeśli nie planujesz kontynuować pracy, wykonaj następujące kroki, aby usunąć wszystkie zasoby utworzone w ramach tego przewodnika Szybki Start.
+Jeśli planujesz eksplorować przykład usługi Java, nie czyścić zasobów utworzonych w tym przewodniku Szybki start. Jeśli nie zamierzasz kontynuować, wykonaj następujące kroki, aby usunąć wszystkie zasoby utworzone przez ten przewodnik Szybki start.
 
 1. Zamknij okno danych wyjściowych przykładowej usługi Java na swojej maszynie.
 1. Zamknij okno symulatora modułu TPM, które mogło zostać utworzone do symulacji urządzenia TPM.
-1. Przejdź do usługi Device Provisioning w Azure Portal, wybierz pozycję **Zarządzaj rejestracjami**, a następnie wybierz kartę **indywidualne rejestracje** . Zaznacz pole wyboru obok *identyfikatora rejestracji* wpisu rejestracji utworzonego w ramach tego przewodnika Szybki Start, a następnie naciśnij przycisk **Usuń** w górnej części okienka.
+1. Przejdź do usługi inicjowania obsługi urządzeń w portalu Azure, wybierz pozycję **Zarządzaj rejestracjami**, a następnie wybierz kartę **Rejestracje indywidualne.** Zaznacz pole wyboru obok *identyfikatora rejestracji* dla wpisu rejestracji utworzonego przy użyciu tego przewodnika Szybki start, a następnie naciśnij przycisk **Usuń** u góry okienka.
 
 ## <a name="next-steps"></a>Następne kroki
-W tym przewodniku szybki start zarejestrowano symulowane urządzenie TPM w usłudze Device Provisioning. Aby uzyskać dokładne informacje na temat aprowizowania urządzeń, przejdź do samouczka poświęconego konfiguracji usługi Device Provisioning Service w witrynie Azure portal. 
+W tym przewodniku Szybki start zarejestrowano symulowane urządzenie TPM do usługi inicjowania obsługi administracyjnej urządzeń. Aby uzyskać dokładne informacje na temat aprowizowania urządzeń, przejdź do samouczka poświęconego konfiguracji usługi Device Provisioning Service w witrynie Azure portal. 
 
 > [!div class="nextstepaction"]
 > [Samouczki dla usługi Azure IoT Hub Device Provisioning Service](./tutorial-set-up-cloud.md)

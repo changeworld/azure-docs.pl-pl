@@ -1,6 +1,6 @@
 ---
-title: Zarządzanie dostępem w organizacji do aplikacji & grup — Azure AD
-description: Dowiedz się, jak przeprowadzić przegląd dostępu w celu zarządzania dostępem do zabezpieczeń dla aplikacji i grup organizacji z poziomu portalu Moje aplikacje.
+title: Zarządzanie dostępem organizacji do aplikacji & grupami — Azure AD
+description: Dowiedz się, jak przeprowadzić przegląd dostępu, aby zarządzać dostępem do zabezpieczeń aplikacji i grup organizacji z portalu Moje aplikacje.
 services: active-directory
 author: curtand
 manager: daveba
@@ -13,68 +13,68 @@ ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
 ms.openlocfilehash: c71195b247af6d5046d88d3e6918a660eddf09b3
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77062386"
 ---
-# <a name="perform-an-access-review-from-the-my-apps-portal"></a>Przeprowadzanie przeglądu dostępu z poziomu portalu Moje aplikacje
+# <a name="perform-an-access-review-from-the-my-apps-portal"></a>Wykonywanie przeglądu dostępu z portalu Moje aplikacje
 
-Możesz użyć konta służbowego z portalem **Moje aplikacje** oparte na sieci Web, aby wykonywać przeglądy dostępu dla aplikacji i grup. Przeglądy dostępu ułatwiają zarządzanie nieaktualnym dostępem lub zmianami wymagań dostępu i zapewniają ich przegląd i aktualizację.
+Za pomocą konta służbowego możesz korzystać z internetowego portalu **Moje aplikacje,** aby uzyskać recenzje dostępu do aplikacji i grup. Przeglądy dostępu ułatwiają zarządzanie nieaktualny dostęp lub zmienianie wymagań dotyczących dostępu oraz zapewniają ich przegląd i zaktualizowanie.
 
-Jeśli nie masz dostępu do portalu **Moje aplikacje** , skontaktuj się z pomocą techniczną, aby uzyskać odpowiednie uprawnienia.
+Jeśli nie masz dostępu do portalu **Moje aplikacje,** skontaktuj się z działem pomocy technicznej, aby uzyskać pozwolenie.
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-my-apps-portal.md)]
 
 >[!Important]
->Ta zawartość jest przeznaczona dla użytkowników **moich aplikacji** . Jeśli jesteś administratorem, możesz znaleźć więcej informacji na temat sposobu konfigurowania i zarządzania aplikacjami opartymi na chmurze w [dokumentacji zarządzania aplikacjami](https://docs.microsoft.com/azure/active-directory/manage-apps).
+>Ta zawartość jest przeznaczona dla użytkowników **aplikacji Moje aplikacje.** Jeśli jesteś administratorem, więcej informacji na temat konfigurowania aplikacji opartych na chmurze i zarządzania nimi można znaleźć w [dokumentacji zarządzania aplikacjami](https://docs.microsoft.com/azure/active-directory/manage-apps).
 
 ## <a name="manage-access-reviews"></a>Zarządzanie recenzjami dostępu
 
-Jeśli administrator udzielił Ci uprawnień do wykonywania własnych przeglądów dostępu, możesz zarządzać grupami lub aplikacjami dostępnymi na kafelku **przeglądy dostępu** na stronie portalu **Moje aplikacje** .
+Jeśli administrator udzielił Ci uprawnień do wykonywania własnych recenzji dostępu, możesz zarządzać dostępem do grup lub aplikacji z kafelka **Przeglądy programu Access** na stronie **Portal Moje aplikacje.**
 
 >[!Note]
->Jeśli nie widzisz kafelka **przeglądy dostępu** , oznacza to, że nie masz uprawnienia do przeprowadzania przeglądów dostępu lub nie masz żadnych oczekujących przeglądów oczekujących na zatwierdzenie. Jeśli uważasz, że masz dostęp do kafelka, skontaktuj się z pomocą techniczną w celu uzyskania pomocy.
+>Jeśli nie widzisz kafelka **Przeglądy programu Access,** oznacza to, że nie masz uprawnień do wykonywania recenzji dostępu lub że nie masz żadnych oczekujących recenzji oczekujących na zatwierdzenie. Jeśli uważasz, że powinieneś mieć dostęp do kafelka, skontaktuj się z działem pomocy technicznej, aby uzyskać pomoc.
 
-## <a name="to-perform-your-access-reviews"></a>Aby przeprowadzić przeglądy dostępu
+## <a name="to-perform-your-access-reviews"></a>Aby wykonać przeglądy dostępu
 
-1. Zaloguj się do konta służbowego.
+1. Zaloguj się na swoje konto służbowe.
 
-2. Otwórz przeglądarkę internetową i przejdź do https://myapps.microsoft.comlub Użyj linku dostarczonego przez organizację. Na przykład może nastąpić przekierowanie do dostosowanej strony organizacji, takiej jak https://myapps.microsoft.com/contoso.com.
+2. Otwórz przeglądarkę internetową https://myapps.microsoft.comi przejdź do strony , lub użyj łącza dostarczonego przez organizację. Na przykład może być przekierowany do dostosowanej strony https://myapps.microsoft.com/contoso.comdla organizacji, takich jak .
 
-    Zostanie wyświetlona strona **aplikacje** przedstawiająca wszystkie aplikacje oparte na chmurze należące do organizacji i dostępne do użycia.
+    Zostanie wyświetlona strona **Aplikacje** z wyświetlonymi wszystkimi aplikacjami w chmurze należącymi do organizacji i dostępnymi do użycia.
 
-    ![Strona aplikacje w portalu Moje aplikacje](media/my-apps-portal/my-apps-portal-apps-page-access-review-tile.png)
+    ![Strona Aplikacje w portalu Moje aplikacje](media/my-apps-portal/my-apps-portal-apps-page-access-review-tile.png)
 
-3. Wybierz kafelek **przeglądy dostępu** , aby wyświetlić listę przeglądów dostępu oczekujących na zatwierdzenie.
+3. Wybierz kafelek **Przeglądy programu Access,** aby wyświetlić listę przeglądów dostępu oczekujących na zatwierdzenie.
 
-    ![Strona przeglądy dostępu z oczekującymi przeglądami dostępu dla organizacji](media/my-apps-portal/my-apps-portal-access-reviews-page.png)
+    ![Strona Przeglądy programu Access z oczekującymi recenzjami dostępu dla instytucji](media/my-apps-portal/my-apps-portal-access-reviews-page.png)
 
-4. Wybierz pozycję **Rozpocznij przegląd** , aby rozpocząć przegląd dostępu.
+4. Wybierz **rozpocznij weryfikację,** aby rozpocząć przegląd dostępu.
 
-5. Przejrzyj swój dostęp i ustal, czy nadal jest to konieczne.
+5. Przejrzyj swój dostęp i określ, czy jest to nadal konieczne.
 
-    ![Strona przeglądu dostępu zawierająca szczegóły przeglądu](media/my-apps-portal/my-apps-portal-perform-access-reviews-page.png)
+    ![Strona recenzji programu Access ze szczegółami recenzji](media/my-apps-portal/my-apps-portal-perform-access-reviews-page.png)
 
     >[!Note]
-    >Jeśli jesteś administratorem i masz uprawnienia do przeglądania dostępu do grup i aplikacji w organizacji, zobaczysz inną stronę. Aby uzyskać więcej informacji na temat przeglądania grup lub aplikacji w organizacji, zobacz [Przegląd dostępu do grup lub aplikacji w przeglądach dostępu do usługi Azure AD](https://docs.microsoft.com/azure/active-directory/governance/perform-access-review).
+    >Jeśli jesteś administratorem i możesz przeglądać dostęp organizacji do grup i aplikacji, zobaczysz inną stronę. Aby uzyskać więcej informacji na temat przeglądania grup lub aplikacji w organizacji, zobacz [Przeglądanie dostępu do grup lub aplikacji w recenzjach usługi Azure AD Access](https://docs.microsoft.com/azure/active-directory/governance/perform-access-review).
 
-6. Wybierz pozycję **tak** , aby zachować dostęp, lub przycisk **nie** , aby usunąć swój dostęp.
+6. Wybierz **opcję Tak,** aby zachować dostęp lub **nie,** aby usunąć dostęp.
 
-    Jeśli wybierzesz opcję **tak**, w polu **Przyczyna** może być konieczne określenie uzasadnienia.
+    Jeśli wybierzesz **tak,** może być konieczne określenie justowania w polu **Przyczyna.**
 
-    ![Strona przeglądu dostępu pokazująca pole przyczyna z przykładowym tekstem](media/my-apps-portal/my-apps-portal-perform-access-reviews-reason-box.png)
+    ![Strona recenzji programu Access z polem Przyczyna z przykładowym tekstem](media/my-apps-portal/my-apps-portal-perform-access-reviews-reason-box.png)
 
 7. Wybierz pozycję **Prześlij**.
 
-    Przegląd dostępu zostanie zakończony i wrócisz do portalu **My Apps** .
+    Twoja recenzja dostępu została zakończona i wrócisz do portalu **Moje aplikacje.**
 
     >[!Note]
-    >Dostęp można zmienić w dowolnym momencie do momentu zakończenia okresu przeglądu dostępu. Jeśli usuniesz swój dostęp do aplikacji lub grupy, nie zostanie on natychmiast usunięty. Usunięcie odbywa się po zakończeniu okresu przeglądu dostępu lub gdy administrator zamknie przegląd.
+    >Dostęp można zmienić w dowolnym momencie do czasu zakończenia okresu przeglądu dostępu. Jeśli usuniesz dostęp do aplikacji lub grupy, nie zostanie on natychmiast usunięty. Usunięcie następuje po zakończeniu okresu przeglądu dostępu lub gdy administrator zamyka przegląd.
 
 ## <a name="next-steps"></a>Następne kroki
 
-- [Dostęp do aplikacji i korzystanie z nich w portalu My Apps](my-apps-portal-end-user-access.md)
+- [Uzyskiwanie dostępu do aplikacji i korzystanie z nich w portalu Moje aplikacje](my-apps-portal-end-user-access.md)
 - [Zmienianie informacji o profilu](my-apps-portal-end-user-update-profile.md)
 - [Wyświetlanie i aktualizowanie informacji związanych z grupami](my-apps-portal-end-user-groups.md)

@@ -1,6 +1,6 @@
 ---
-title: Delegowanie dostępu ładu w celu uzyskania dostępu do menedżerów pakietów w usłudze Azure AD uprawnień zarządzanie — Azure Active Directory
-description: Dowiedz się, jak delegować nadzór dostępu od administratorów IT, aby uzyskiwać dostęp do menedżerów pakietów i menedżerów projektów, aby mogli zarządzać samymi prawami dostępu.
+title: Delegowanie nadzoru dostępu do menedżerów pakietów dostępu w zarządzania uprawnieniami usługi Azure AD — usługa Azure Active Directory
+description: Dowiedz się, jak delegować zarządzanie dostępem od administratorów IT do uzyskiwania dostępu do menedżerów pakietów i menedżerów projektów, aby mogli samodzielnie zarządzać dostępem.
 services: active-directory
 documentationCenter: ''
 author: msaburnley
@@ -17,59 +17,59 @@ ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: efdc61b82a19cc5d370d6069e8c9dcd3ce5e8ae5
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73174356"
 ---
-# <a name="delegate-access-governance-to-access-package-managers-in-azure-ad-entitlement-management"></a>Delegowanie dostępu ładu w celu uzyskania dostępu do menedżerów pakietów w usłudze Azure AD uprawnień zarządzanie
+# <a name="delegate-access-governance-to-access-package-managers-in-azure-ad-entitlement-management"></a>Delegowanie nadzoru dostępu do menedżerów pakietów dostępu w zarządzaniu uprawnieniami usługi Azure AD
 
-Aby delegować tworzenie i zarządzanie pakietami dostępu w wykazie, należy dodać użytkowników do roli Menedżer pakietów dostępu. Menedżerowie pakietów muszą znać potrzeby uzyskiwania dostępu do zasobów w katalogu. Na przykład jeśli katalog jest używany w projekcie, potencjalnym liderem projektu może być Menedżer pakietów dostępu dla tego wykazu.  Menedżerowie pakietów dostępu nie mogą dodawać zasobów do wykazu, ale mogą zarządzać pakietami i zasadami dostępu w wykazie.  W przypadku delegowania do Menedżera pakietów programu Access osoba ta może być odpowiedzialna za:
+Aby delegować tworzenie i zarządzanie pakietami dostępu w katalogu, należy dodać użytkowników do roli menedżera pakietów dostępu. Menedżerowie pakietów dostępu muszą być zaznajomieni z koniecznością żądania dostępu użytkowników do zasobów w katalogu. Na przykład jeśli katalog jest używany dla projektu, a następnie potencjalny klient projektu może być menedżerem pakietów dostępu dla tego katalogu.  Menedżerowie pakietów dostępu nie mogą dodawać zasobów do katalogu, ale mogą zarządzać pakietami dostępu i zasadami w katalogu.  Podczas delegowannia do menedżera pakietów dostępu ta osoba może być odpowiedzialna za:
 
-- Jakie role użytkownicy będą musieli dysponować zasobami w wykazie
-- Kto będzie potrzebować dostępu
+- Jakie role użytkownik będzie miał do zasobów w katalogu
+- Kto będzie potrzebował dostępu
 - Kto musi zatwierdzić żądania dostępu
-- Jak długo projekt będzie ostatni
+- Jak długo będzie trwał projekt
 
-Ten film wideo zawiera omówienie sposobów delegowania dostępu ładu z wykazu do Menedżera pakietów.
+W tym klipie wideo przedstawiono informacje na temat delegowania nadzoru dostępu od właściciela katalogu do menedżera pakietów dostępu.
 
 > [!VIDEO https://www.microsoft.com/videoplayer/embed/RE3Lq08]
 
-## <a name="as-a-catalog-owner-delegate-to-an-access-package-manager"></a>Jako właściciel katalogu delegowanie do Menedżera pakietów dostępu
+## <a name="as-a-catalog-owner-delegate-to-an-access-package-manager"></a>Jako właściciel katalogu delegoj się do menedżera pakietów dostępu
 
 Wykonaj następujące kroki, aby przypisać użytkownika do roli menedżera pakietów dostępu:
 
-**Rola wymagana wstępnie:** Administrator globalny, administrator użytkownika lub właściciel katalogu
+**Rola wstępna:** Administrator globalny, administrator użytkownika lub właściciel katalogu
 
-1. W Azure Portal kliknij pozycję **Azure Active Directory** , a następnie kliknij pozycję **Zarządzanie tożsamościami**.
+1. W witrynie Azure portal kliknij pozycję **Usługa Azure Active Directory,** a następnie kliknij pozycję **Zarządzanie tożsamościami**.
 
-1. W menu po lewej stronie kliknij pozycję **wykazy** , a następnie otwórz wykaz, do którego chcesz dodać administratorów.
+1. W menu po lewej stronie kliknij pozycję **Katalogi,** a następnie otwórz katalog, do którego chcesz dodać administratorów.
 
-1. W menu po lewej stronie kliknij pozycję **role i Administratorzy**.
+1. W menu po lewej stronie kliknij pozycję **Role i administratorzy**.
 
-    ![Role i Administratorzy katalogu](./media/entitlement-management-shared/catalog-roles-administrators.png)
+    ![Katalogi ról i administratorów](./media/entitlement-management-shared/catalog-roles-administrators.png)
 
-1. Kliknij pozycję **Dodaj menedżerów pakietów dostępu** , aby wybrać członków dla tych ról.
+1. Kliknij **pozycję Dodaj menedżerów pakietów dostępu,** aby wybrać członków dla tych ról.
 
-1. Kliknij pozycję **Wybierz** , aby dodać tych członków.
+1. Kliknij **przycisk Wybierz,** aby dodać tych członków.
 
-## <a name="remove-an-access-package-manager"></a>Usuwanie Menedżera pakietów programu Access
+## <a name="remove-an-access-package-manager"></a>Usuwanie menedżera pakietów dostępu
 
 Wykonaj następujące kroki, aby usunąć użytkownika z roli menedżera pakietów dostępu:
 
-**Rola wymagana wstępnie:** Administrator globalny, administrator użytkownika lub właściciel katalogu
+**Rola wstępna:** Administrator globalny, administrator użytkownika lub właściciel katalogu
 
-1. W Azure Portal kliknij pozycję **Azure Active Directory** , a następnie kliknij pozycję **Zarządzanie tożsamościami**.
+1. W witrynie Azure portal kliknij pozycję **Usługa Azure Active Directory,** a następnie kliknij pozycję **Zarządzanie tożsamościami**.
 
-1. W menu po lewej stronie kliknij pozycję **wykazy** , a następnie otwórz wykaz, do którego chcesz dodać administratorów.
+1. W menu po lewej stronie kliknij pozycję **Katalogi,** a następnie otwórz katalog, do którego chcesz dodać administratorów.
 
-1. W menu po lewej stronie kliknij pozycję **role i Administratorzy**.
+1. W menu po lewej stronie kliknij pozycję **Role i administratorzy**.
 
-1. Dodaj znacznik wyboru obok Menedżera pakietów programu Access, który chcesz usunąć.
+1. Dodaj znacznik wyboru obok menedżera pakietów dostępu, który chcesz usunąć.
 
 1. Kliknij pozycję **Usuń**.
 
 ## <a name="next-steps"></a>Następne kroki
 
-- [Utwórz nowy pakiet dostępu](entitlement-management-access-package-create.md)
+- [Tworzenie nowego pakietu dostępu](entitlement-management-access-package-create.md)

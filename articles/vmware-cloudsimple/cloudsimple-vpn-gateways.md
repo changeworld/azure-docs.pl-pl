@@ -1,6 +1,6 @@
 ---
-title: Azure VMware Solutions (AVS) - VPN gateways
-description: Learn about AVS Site-to-Site VPN and Point-to-Site VPN concepts
+title: Rozwiązanie Azure VMware firmy CloudSimple — bramy sieci VPN
+description: Dowiedz się więcej o pojęciach sieci VPN między lokacjami i sieci VPN typu "punkt-lokacja"
 author: sharaths-cs
 ms.author: dikamath
 ms.date: 08/20/2019
@@ -8,70 +8,70 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 73171e2c46bdf6c934db5777efe36ba51153a686
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 662fa342b3a18f726b418c496ff3fda937445301
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77024861"
 ---
-# <a name="vpn-gateways-overview"></a>VPN gateways overview
+# <a name="vpn-gateways-overview"></a>Omówienie bram sieci VPN
 
-A VPN gateway is used to send encrypted traffic between an AVS region network at an on-premises location, or a computer over the public internet. Each region can have one VPN gateway, which can support multiple connections. W przypadku utworzenia wielu połączeń do tej samej bramy sieci VPN wszystkie tunele VPN współdzielą dostępną przepustowość bramy.
+Brama sieci VPN służy do wysyłania zaszyfrowanego ruchu między siecią regionu CloudSimple w lokalizacji lokalnej lub komputerem za pośrednictwem publicznego Internetu.  Każdy region może mieć jedną bramę sieci VPN, która może obsługiwać wiele połączeń. W przypadku utworzenia wielu połączeń do tej samej bramy sieci VPN wszystkie tunele VPN współdzielą dostępną przepustowość bramy.
 
-AVS provides two kinds of VPN gateways:
+CloudSimple udostępnia dwa rodzaje bram sieci VPN:
 
-* Site-to-Site VPN gateway
-* Point-to-Site VPN gateway
+* Brama sieci VPN między lokacjami
+* Brama sieci VPN typu punkt-lokacja
 
-## <a name="site-to-site-vpn-gateway"></a>Site-to-Site VPN gateway
+## <a name="site-to-site-vpn-gateway"></a>Brama sieci VPN między lokacjami
 
-A Site-to-Site VPN gateway is used to send encrypted traffic between an AVS region network and an on-premises datacenter. Use this connection to define the subnets/CIDR range, for network traffic between your on-premises network and the AVS region network.
+Brama sieci VPN między lokacjami jest używana do wysyłania zaszyfrowanego ruchu między siecią regionu CloudSimple a lokalnym centrum danych. To połączenie służy do definiowania zakresu podsieci/CIDR dla ruchu sieciowego między siecią lokalną a siecią regionu CloudSimple.
 
-The VPN gateway allows you to consume services from on-premises on your AVS Private Cloud, and services on your AVS Private Cloud from the on-premises network. AVS provides a policy-based VPN server for establishing the connection from your on-premises network.
+Brama sieci VPN umożliwia korzystanie z usług lokalnych w chmurze prywatnej i usług w chmurze prywatnej z sieci lokalnej.  CloudSimple udostępnia oparty na zasadach serwer sieci VPN do ustanawiania połączenia z sieci lokalnej.
 
-Use cases for Site-to-Site VPN:
+Przypadki użycia sieci VPN typu lokacja lokacja:
 
-* Accessibility of your AVS Private Cloud vCenter from any workstation in your on-premises network.
-* Use of your on-premises Active Directory as a vCenter identity source.
-* Convenient transfer of VM templates, ISOs, and other files from your on-premises resources to your AVS Private Cloud vCenter.
-* Accessibility of workloads running on your AVS Private Cloud from your on-premises network.
+* Dostępność usługi Private Cloud vCenter z dowolnej stacji roboczej w sieci lokalnej.
+* Korzystanie z lokalnej usługi Active Directory jako źródła tożsamości vCenter.
+* Wygodne przesyłanie szablonów maszyn wirtualnych, iso i innych plików z zasobów lokalnych do usługi Private Cloud vCenter.
+* Dostępność obciążeń działających w chmurze prywatnej z sieci lokalnej.
 
-![Site-to-Site VPN connection topology](media/cloudsimple-site-to-site-vpn-connection.png)
+![Topologia połączeń sieci VPN między lokacjami](media/cloudsimple-site-to-site-vpn-connection.png)
 
-### <a name="cryptographic-parameters"></a>Cryptographic parameters
+### <a name="cryptographic-parameters"></a>Parametry kryptograficzne
 
-A Site-to-Site VPN connection uses the following default cryptographic parameters to establish a secure connection. When you create a connection from your on-premises VPN device, use any of the following parameters that are supported by your on-premises VPN gateway.
+Połączenie sieci VPN między lokacjami używa następujących domyślnych parametrów kryptograficznych do ustanowienia bezpiecznego połączenia.  Podczas tworzenia połączenia z lokalnego urządzenia sieci VPN należy użyć dowolnego z następujących parametrów obsługiwanych przez lokalną bramę sieci VPN.
 
-#### <a name="phase-1-proposals"></a>Phase 1 proposals
+#### <a name="phase-1-proposals"></a>Wnioski fazy 1
 
-| Parametr | Proposal 1 | Proposal 2 | Proposal 3 |
+| Parametr | Wniosek 1 | Wniosek 2 | Wniosek 3 |
 |-----------|------------|------------|------------|
 | Wersja IKE | IKEv1 | IKEv1 | IKEv1 |
 | Szyfrowanie | AES 128 | AES 256 | AES 256 |
-| Hash Algorithm| SHA 256 | SHA 256 | SHA 1 |
-| Diffie Hellman Group (DH Group) | 2 | 2 | 2 |
-| Life Time | 28 800 sekund | 28 800 sekund | 28 800 sekund |
-| Data Size | 4 GB | 4 GB | 4 GB |
+| Algorytm mieszania| Sha 256 | Sha 256 | Sha 1 (właso) |
+| Grupa Diffie Hellman (Grupa DH) | 2 | 2 | 2 |
+| Czas życia | 28 800 sekund | 28 800 sekund | 28 800 sekund |
+| Rozmiar danych | 4 GB | 4 GB | 4 GB |
 
-#### <a name="phase-2-proposals"></a>Phase 2 proposals
+#### <a name="phase-2-proposals"></a>Wnioski dotyczące fazy 2
 
-| Parametr | Proposal 1 | Proposal 2 | Proposal 3 |
+| Parametr | Wniosek 1 | Wniosek 2 | Wniosek 3 |
 |-----------|------------|------------|------------|
 | Szyfrowanie | AES 128 | AES 256 | AES 256 |
-| Hash Algorithm| SHA 256 | SHA 256 | SHA 1 |
-| Perfect Forward Secrecy Group (PFS Group) | Brak | Brak | Brak |
-| Life Time | 1,800 seconds | 1,800 seconds | 1,800 seconds |
-| Data Size | 4 GB | 4 GB | 4 GB |
+| Algorytm mieszania| Sha 256 | Sha 256 | Sha 1 (właso) |
+| Perfect Forward Secrecy Group (grupa PFS) | Brak | Brak | Brak |
+| Czas życia | 1800 sekund | 1800 sekund | 1800 sekund |
+| Rozmiar danych | 4 GB | 4 GB | 4 GB |
 
 
 > [!IMPORTANT]
-> Set TCP MSS Clamping at 1200 on your VPN device. Or if your VPN devices do not support MSS clamping, you can alternatively set the MTU on the tunnel interface to 1240 bytes instead.
+> Ustaw TCP MSS Clamping na 1200 na urządzeniu VPN. Lub jeśli urządzenia sieci VPN nie obsługują zaciskania MSS, możesz alternatywnie ustawić jednostkę MTU w interfejsie tunelu na 1240 bajtów.
 
-## <a name="point-to-site-vpn-gateway"></a>Point-to-Site VPN gateway
+## <a name="point-to-site-vpn-gateway"></a>Brama sieci VPN typu punkt-lokacja
 
-A Point-to-Site VPN is used to send encrypted traffic between an AVS region network and a client computer. Point-to-Site VPN is the easiest way to access your AVS Private Cloud network, including your AVS Private Cloud vCenter and workload VMs. Use Point-to-Site VPN connectivity if you're connecting to the AVS Private Cloud remotely.
+Sieć VPN typu punkt-lokacja służy do wysyłania zaszyfrowanego ruchu między siecią regionu CloudSimple a komputerem klienckim.  Sieć VPN typu punkt-lokacja to najprostszy sposób uzyskiwania dostępu do sieci prywatnej chmury, w tym do wirtualnych centrów wirtualnych private cloud i obciążeń.  Użyj łączności sieci VPN typu punkt-lokacja, jeśli łączysz się zdalnie z chmurą prywatną.
 
 ## <a name="next-steps"></a>Następne kroki
 
-* [Set up VPN gateway](vpn-gateway.md)
+* [Konfigurowanie bramy sieci VPN](vpn-gateway.md)

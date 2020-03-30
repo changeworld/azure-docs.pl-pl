@@ -1,62 +1,62 @@
 ---
-title: Tworzenie środowisk usługi integracji (ISEs) za pomocą interfejsu API REST Logic Apps
-description: Utwórz środowisko usługi integracji (ISE) za pomocą interfejsu API REST Logic Apps, dzięki czemu możesz uzyskiwać dostęp do sieci wirtualnych platformy Azure (sieci wirtualnych) z Azure Logic Apps
+title: Tworzenie środowisk usług integracji (ISE) za pomocą interfejsu API REST aplikacji logiki
+description: Tworzenie środowiska usługi integracji (ISE) przy użyciu interfejsu API REST aplikacji logiki, dzięki czemu można uzyskać dostęp do sieci wirtualnych platformy Azure (VNETs) z usługi Azure Logic Apps
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.openlocfilehash: 2c6e35b1e7d160064998004f87c5b14d0eaeac5e
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/11/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79127655"
 ---
-# <a name="create-an-integration-service-environment-ise-by-using-the-logic-apps-rest-api"></a>Tworzenie środowiska usługi integracji (ISE) za pomocą interfejsu API REST Logic Apps
+# <a name="create-an-integration-service-environment-ise-by-using-the-logic-apps-rest-api"></a>Tworzenie środowiska usługi integracji (ISE) przy użyciu interfejsu API REST aplikacji logiki
 
-W tym artykule przedstawiono sposób tworzenia [ *środowiska usługi integracji* (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) za pomocą interfejsu API REST Logic Apps w scenariuszach, w których aplikacje logiki i konta integracji muszą mieć dostęp do [sieci wirtualnej platformy Azure](../virtual-network/virtual-networks-overview.md). ISE to środowisko izolowane korzystające z dedykowanego magazynu i innych zasobów, które są oddzielone od "globalnej" Logic Apps z wieloma dzierżawcami. Ta separacja również zmniejsza wpływ innych dzierżawców platformy Azure na wydajność aplikacji. ISE udostępnia także własne statyczne adresy IP. Te adresy IP są niezależne od statycznych adresów IP, które są współużytkowane przez aplikacje logiki w publicznej, wielodostępnej usłudze.
+W tym artykule pokazano, jak utworzyć [ *środowisko usługi integracji* (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) za pośrednictwem interfejsu API REST aplikacji logiki dla scenariuszy, w których aplikacje logiki i konta integracji potrzebują dostępu do [sieci wirtualnej platformy Azure.](../virtual-network/virtual-networks-overview.md) Środowisko ISE jest izolowanym środowiskiem, które używa dedykowanego magazynu i innych zasobów, które są oddzielone od "globalnej" usługi aplikacji logiki z wieloma dzierżawami. Ta separacja zmniejsza również wpływ innych dzierżaw platformy Azure na wydajność aplikacji. Ise zapewnia również własne statyczne adresy IP. Te adresy IP są oddzielone od statycznych adresów IP, które są współużytkowane przez aplikacje logiki w publicznej, usługi wielu dzierżawców.
 
-Aby utworzyć ISE przy użyciu Azure Portal zamiast tego, zobacz [nawiązywanie połączenia z sieciami wirtualnymi platformy Azure z Azure Logic Apps](../logic-apps/connect-virtual-network-vnet-isolated-environment.md).
+Aby utworzyć środowisko ISE przy użyciu portalu Azure, zobacz [Łączenie się z sieciami wirtualnymi platformy Azure z usługi Azure Logic Apps.](../logic-apps/connect-virtual-network-vnet-isolated-environment.md)
 
 > [!IMPORTANT]
-> Aplikacje logiki, wbudowane wyzwalacze, wbudowane akcje i łączniki, które działają w ISE, korzystają z planu cenowego innego niż plan cenowy oparty na zużyciu. Aby dowiedzieć się, jak korzystać z cen i rozliczeń dla usługi ISEs, zobacz [model cen Logic Apps](../logic-apps/logic-apps-pricing.md#fixed-pricing). Stawki cenowe znajdują się w temacie [Logic Apps cenniku](../logic-apps/logic-apps-pricing.md).
+> Aplikacje logiki, wbudowane wyzwalacze, wbudowane akcje i łączniki uruchamiane w interfejsie ISE używają planu cenowego innego niż plan cenowy oparty na zużyciu. Aby dowiedzieć się, jak działają ceny i rozliczenia dla firm ISE, zobacz [model cenowy Aplikacji logiki](../logic-apps/logic-apps-pricing.md#fixed-pricing). Aby uzyskać informacje o cenach, zobacz [Ceny aplikacji logiki](../logic-apps/logic-apps-pricing.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Te same wymagania [wstępne](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#prerequisites) i [wymagania dotyczące włączania dostępu do ISE](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#enable-access) jako podczas tworzenia ISE w Azure Portal
+* Te same [wymagania wstępne](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#prerequisites) i [wymagania, aby włączyć dostęp do ise](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#enable-access) jak podczas tworzenia ise w witrynie Azure portal
 
-* Narzędzie, za pomocą którego można utworzyć ISE przez wywołanie interfejsu API REST Logic Apps przy użyciu żądania HTTPS PUT. Na przykład można użyć programu [Poster](https://www.getpostman.com/downloads/)lub można utworzyć aplikację logiki, która wykonuje to zadanie.
+* Narzędzie, którego można użyć do utworzenia interfejsu ISE, wywołując interfejs API REST aplikacji logiki z żądaniem HTTPS PUT. Na przykład można użyć [postman](https://www.getpostman.com/downloads/)lub można utworzyć aplikację logiki, która wykonuje to zadanie.
 
 ## <a name="send-the-request"></a>Wysyłanie żądania
 
-Aby utworzyć ISE przez wywołanie interfejsu API REST Logic Apps, wykonaj to żądanie HTTP PUT:
+Aby utworzyć interfejs ISE, wywołując interfejs API REST aplikacji logiki, należy wykonać to żądanie HTTPS PUT:
 
 `PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/integrationServiceEnvironments/{integrationServiceEnvironmentName}?api-version=2019-05-01`
 
 > [!IMPORTANT]
-> Wersja interfejsu API REST Logic Apps 2019-05-01 wymaga wprowadzenia własnego żądania HTTP PUT dla łączników ISE.
+> Wersja interfejsu API INTERFEJSU API 2019-05-01 aplikacji logic apps wymaga wykonania własnego żądania HTTP PUT dla łączników ISE.
 
-Wdrożenie zazwyczaj trwa w ciągu dwóch godzin. Czasami wdrożenie może trwać do czterech godzin. Aby sprawdzić stan wdrożenia, w [Azure Portal](https://portal.azure.com)na pasku narzędzi platformy Azure wybierz ikonę powiadomienia, która spowoduje otwarcie okienka powiadomienia.
+Wdrożenie zwykle trwa w ciągu dwóch godzin, aby zakończyć. Od czasu do czasu wdrożenie może potrwać do czterech godzin. Aby sprawdzić stan wdrożenia, w [witrynie Azure portal](https://portal.azure.com), na pasku narzędzi platformy Azure wybierz ikonę powiadomień, która otwiera okienko powiadomień.
 
 > [!NOTE]
-> Jeśli wdrożenie nie powiedzie się lub usuniesz ISE, platforma Azure może upłynąć do godziny przed zwolnieniem podsieci. To opóźnienie oznacza, że może być konieczne odczekanie przed ponownym użyciem tych podsieci w innym ISE.
+> Jeśli wdrożenie zakończy się niepowodzeniem lub usuniesz ise, platforma Azure może potrwać do godziny przed zwolnieniem podsieci. To opóźnienie oznacza, że może być trzeba poczekać przed ponownym użyciem tych podsieci w innym ise.
 >
-> Po usunięciu sieci wirtualnej platforma Azure zazwyczaj zajmie maksymalnie dwie godziny przed zwolnieniem podsieci, ale ta operacja może trwać dłużej. 
+> Jeśli usuniesz sieć wirtualną, platforma Azure zwykle trwa do dwóch godzin przed zwolnieniem podsieci, ale ta operacja może potrwać dłużej. 
 > Podczas usuwania sieci wirtualnych upewnij się, że żadne zasoby nie są nadal połączone. 
-> Zobacz [usuwanie sieci wirtualnej](../virtual-network/manage-virtual-network.md#delete-a-virtual-network).
+> Zobacz [Usuwanie sieci wirtualnej](../virtual-network/manage-virtual-network.md#delete-a-virtual-network).
 
 ## <a name="request-header"></a>Nagłówek żądania
 
 W nagłówku żądania uwzględnij następujące właściwości:
 
-* `Content-type`: Ustaw tę wartość właściwości na `application/json`.
+* `Content-type`: Ustaw tę `application/json`wartość właściwości na .
 
-* `Authorization`: Ustaw wartość tej właściwości na token okaziciela dla klienta, który ma dostęp do subskrypcji platformy Azure lub grupy zasobów, której chcesz użyć.
+* `Authorization`: Ustaw tę wartość właściwości na token nośny dla klienta, który ma dostęp do subskrypcji platformy Azure lub grupy zasobów, której chcesz użyć.
 
 ### <a name="request-body-syntax"></a>Składnia treści żądania
 
-Poniżej przedstawiono składnię treści żądania opisującą właściwości używane podczas tworzenia ISE:
+Oto składnia treści żądania, która opisuje właściwości, które mają być używane podczas tworzenia ise:
 
 ```json
 {
@@ -95,7 +95,7 @@ Poniżej przedstawiono składnię treści żądania opisującą właściwości u
 
 ### <a name="request-body-example"></a>Przykład treści żądania
 
-W tej przykładowej treści żądania pokazano przykładowe wartości:
+W tej przykładzie treści żądania przedstawiono przykładowe wartości:
 
 ```json
 {
@@ -134,6 +134,6 @@ W tej przykładowej treści żądania pokazano przykładowe wartości:
 
 ## <a name="next-steps"></a>Następne kroki
 
-* [Dodawanie zasobów do środowisk usługi integracji](../logic-apps/add-artifacts-integration-service-environment-ise.md)
-* [Zarządzaj środowiskami usługi integracji](../logic-apps/ise-manage-integration-service-environment.md#check-network-health)
+* [Dodawanie zasobów do środowisk usług integracyjnych](../logic-apps/add-artifacts-integration-service-environment-ise.md)
+* [Zarządzanie środowiskami usługi integracji](../logic-apps/ise-manage-integration-service-environment.md#check-network-health)
 
