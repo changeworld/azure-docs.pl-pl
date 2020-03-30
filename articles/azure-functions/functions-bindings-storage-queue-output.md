@@ -1,29 +1,29 @@
 ---
-title: Powiązanie danych wyjściowych usługi Azure queue storage dla Azure Functions
-description: Informacje na temat tworzenia komunikatów usługi Azure queue storage w Azure Functions.
+title: Powiązanie danych wyjściowych magazynu kolejki platformy Azure dla funkcji platformy Azure
+description: Dowiedz się, jak tworzyć komunikaty magazynu kolejki platformy Azure w usłudze Azure Functions.
 author: craigshoemaker
 ms.topic: reference
 ms.date: 02/18/2020
 ms.author: cshoe
 ms.custom: cc996988-fb4f-47
 ms.openlocfilehash: 76af5f398edd736874fa79095f2e80c02298eac0
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79277338"
 ---
-# <a name="azure-queue-storage-output-bindings-for-azure-functions"></a>Powiązania wyjściowe usługi Azure queue storage dla Azure Functions
+# <a name="azure-queue-storage-output-bindings-for-azure-functions"></a>Powiązania danych wyjściowych magazynu kolejki platformy Azure dla usług Azure Functions
 
-Azure Functions można utworzyć nowe komunikaty usługi Azure queue storage przez skonfigurowanie powiązania danych wyjściowych.
+Usługa Azure Functions może tworzyć nowe komunikaty magazynu usługi Azure Queue, konfigurując powiązanie danych wyjściowych.
 
-Aby uzyskać informacje na temat konfiguracji i szczegółów konfiguracji, zobacz [Omówienie](./functions-bindings-storage-queue.md).
+Aby uzyskać informacje na temat szczegółów konfiguracji i konfiguracji, zobacz [omówienie](./functions-bindings-storage-queue.md).
 
 ## <a name="example"></a>Przykład
 
-# <a name="c"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C #](#tab/csharp)
 
-Poniższy przykład pokazuje [ C# funkcję](functions-dotnet-class-library.md) , która tworzy komunikat kolejki dla każdego odebranego żądania HTTP.
+W poniższym przykładzie przedstawiono [funkcję Języka C#,](functions-dotnet-class-library.md) która tworzy komunikat kolejki dla każdego odebranego żądania HTTP.
 
 ```csharp
 [StorageAccount("MyStorageConnectionAppSetting")]
@@ -39,11 +39,11 @@ public static class QueueFunctions
 }
 ```
 
-# <a name="c-script"></a>[C#Napisy](#tab/csharp-script)
+# <a name="c-script"></a>[Skrypt języka C#](#tab/csharp-script)
 
-Poniższy przykład pokazuje powiązanie wyzwalacza http w pliku *Function. JSON* i [ C# kodzie skryptu (. CSX)](functions-reference-csharp.md) , który używa powiązania. Funkcja tworzy element kolejki z ładunkiem obiektu **CustomQueueMessage** dla każdego odebranego żądania HTTP.
+W poniższym przykładzie pokazano powiązanie wyzwalacza HTTP w pliku *function.json* i kod [skryptu C#(csx),](functions-reference-csharp.md) który używa powiązania. Funkcja tworzy element kolejki z ładunkiem obiektu **CustomQueueMessage** dla każdego odebranego żądania HTTP.
 
-Oto plik *Function. JSON* :
+Oto plik *function.json:*
 
 ```json
 {
@@ -70,9 +70,9 @@ Oto plik *Function. JSON* :
 }
 ```
 
-W sekcji [Konfiguracja](#configuration) objaśniono te właściwości.
+W sekcji [konfiguracji](#configuration) opisano te właściwości.
 
-Kod C# skryptu, który tworzy pojedynczy komunikat w kolejce:
+Oto kod skryptu języka C#, który tworzy komunikat pojedynczej kolejki:
 
 ```cs
 public class CustomQueueMessage
@@ -87,7 +87,7 @@ public static CustomQueueMessage Run(CustomQueueMessage input, ILogger log)
 }
 ```
 
-Jednocześnie można wysłać wiele komunikatów przy użyciu parametru `ICollector` lub `IAsyncCollector`. Tutaj znajduje C# się kod skryptu, który wysyła wiele komunikatów, jeden z danymi żądania HTTP i jedną z ustalonymi wartościami:
+Można wysyłać wiele wiadomości jednocześnie `IAsyncCollector` przy użyciu lub parametru. `ICollector` Oto kod skryptu języka C#, który wysyła wiele wiadomości, jeden z danymi żądania HTTP i jeden z wartościami zakodowanych na twardo:
 
 ```cs
 public static void Run(
@@ -100,11 +100,11 @@ public static void Run(
 }
 ```
 
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[Javascript](#tab/javascript)
 
-W poniższym przykładzie pokazano powiązanie wyzwalacza HTTP w pliku *Function. JSON* oraz [funkcja języka JavaScript](functions-reference-node.md) , która używa powiązania. Funkcja tworzy element kolejki dla każdego odebranego żądania HTTP.
+W poniższym przykładzie pokazano powiązanie wyzwalacza HTTP w pliku *function.json* i [funkcję JavaScript,](functions-reference-node.md) która używa powiązania. Funkcja tworzy element kolejki dla każdego odebranego żądania HTTP.
 
-Oto plik *Function. JSON* :
+Oto plik *function.json:*
 
 ```json
 {
@@ -131,9 +131,9 @@ Oto plik *Function. JSON* :
 }
 ```
 
-W sekcji [Konfiguracja](#configuration) objaśniono te właściwości.
+W sekcji [konfiguracji](#configuration) opisano te właściwości.
 
-Poniżej przedstawiono kod JavaScript:
+Oto kod JavaScript:
 
 ```javascript
 module.exports = function (context, input) {
@@ -141,7 +141,7 @@ module.exports = function (context, input) {
 };
 ```
 
-Można wysłać wiele komunikatów jednocześnie, definiując tablicę komunikatów dla powiązania danych wyjściowych `myQueueItem`. Poniższy kod JavaScript wysyła dwie komunikaty kolejki z ustalonymi wartościami dla każdego odebranego żądania HTTP.
+Można wysyłać wiele wiadomości jednocześnie, definiując tablicę wiadomości dla powiązania danych wyjściowych. `myQueueItem` Poniższy kod JavaScript wysyła dwie wiadomości kolejki z wartościami zakodowanych na czas dla każdego odebranego żądania HTTP.
 
 ```javascript
 module.exports = function(context) {
@@ -152,9 +152,9 @@ module.exports = function(context) {
 
 # <a name="python"></a>[Python](#tab/python)
 
-Poniższy przykład ilustruje sposób wyprowadzania pojedynczych i wielu wartości do kolejek magazynu. Konfiguracja wymagana dla *funkcji Function. JSON* jest taka sama jak w obu kierunkach.
+W poniższym przykładzie pokazano, jak dane wyjściowe pojedyncze i wiele wartości do kolejek magazynu. Konfiguracja wymagana dla *function.json* jest taka sama w obu przypadkach.
 
-Powiązanie kolejki magazynu jest zdefiniowane w *funkcji Function. JSON* , w której *typ* ma wartość `queue`.
+Powiązanie kolejki magazynu jest zdefiniowane w *funkcji.json,* gdzie *typ* jest ustawiony na `queue`.
 
 ```json
 {
@@ -186,7 +186,7 @@ Powiązanie kolejki magazynu jest zdefiniowane w *funkcji Function. JSON* , w kt
 }
 ```
 
-Aby ustawić pojedynczy komunikat w kolejce, należy przekazać jedną wartość do metody `set`.
+Aby ustawić pojedynczą wiadomość w kolejce, należy `set` przekazać pojedynczą wartość do metody.
 
 ```python
 import azure.functions as func
@@ -200,7 +200,7 @@ def main(req: func.HttpRequest, msg: func.Out[str]) -> func.HttpResponse:
     return 'OK'
 ```
 
-Aby utworzyć wiele komunikatów w kolejce, zadeklaruj parametr jako odpowiedni typ listy i przekaż tablicę wartości (pasujących do typu listy) do metody `set`.
+Aby utworzyć wiele komunikatów w kolejce, zadeklaruj parametr jako odpowiedni typ listy `set` i przekaż do metody tablicę wartości (która odpowiada typowi listy).
 
 ```python
 import azure.functions as func
@@ -215,7 +215,7 @@ def main(req: func.HttpRequest, msg: func.Out[typing.List[str]]) -> func.HttpRes
 
 # <a name="java"></a>[Java](#tab/java)
 
- Poniższy przykład pokazuje funkcję języka Java, która tworzy komunikat w kolejce dla wyzwalane przez żądanie HTTP.
+ W poniższym przykładzie przedstawiono funkcję Java, która tworzy komunikat kolejki po wyzwoleniu przez żądanie HTTP.
 
 ```java
 @FunctionName("httpToQueue")
@@ -229,17 +229,17 @@ def main(req: func.HttpRequest, msg: func.Out[typing.List[str]]) -> func.HttpRes
  }
 ```
 
-W [bibliotece środowiska uruchomieniowego funkcji Java](/java/api/overview/azure/functions/runtime)Użyj adnotacji `@QueueOutput` w przypadku parametrów, których wartość zostałaby zapisywana w usłudze queue storage.  Typ parametru powinien być `OutputBinding<T>`, gdzie `T` jest dowolnym natywnym typem języka Java POJO.
+W [bibliotece środowiska wykonawczego](/java/api/overview/azure/functions/runtime)funkcji `@QueueOutput` Java użyj adnotacji na temat parametrów, których wartość zostanie zapisana w magazynie kolejki.  Typ parametru `OutputBinding<T>`powinien `T` być , gdzie jest dowolny natywny typ Java POJO.
 
 ---
 
 ## <a name="attributes-and-annotations"></a>Atrybuty i adnotacje
 
-# <a name="c"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C #](#tab/csharp)
 
-W [ C# bibliotekach klas](functions-dotnet-class-library.md)Użyj klasy [queueattribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.Extensions.Storage/Queues/QueueAttribute.cs).
+W [bibliotekach klas języka C#](functions-dotnet-class-library.md)użyj [atrybutu QueueAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.Extensions.Storage/Queues/QueueAttribute.cs).
 
-Ten atrybut ma zastosowanie do parametru `out` lub wartości zwracanej funkcji. Konstruktor atrybutu przyjmuje nazwę kolejki, jak pokazano w następującym przykładzie:
+Atrybut ma zastosowanie do `out` parametru lub zwracanej wartości funkcji. Konstruktor atrybutu przyjmuje nazwę kolejki, jak pokazano w poniższym przykładzie:
 
 ```csharp
 [FunctionName("QueueOutput")]
@@ -250,7 +250,7 @@ public static string Run([HttpTrigger] dynamic input,  ILogger log)
 }
 ```
 
-Możesz ustawić właściwość `Connection`, aby określić konto magazynu, które ma być używane, jak pokazano w następującym przykładzie:
+Można ustawić `Connection` właściwość, aby określić konto magazynu do użycia, jak pokazano w poniższym przykładzie:
 
 ```csharp
 [FunctionName("QueueOutput")]
@@ -261,25 +261,25 @@ public static string Run([HttpTrigger] dynamic input,  ILogger log)
 }
 ```
 
-Aby uzyskać pełny przykład, zobacz [przykład danych wyjściowych](#example).
+Aby uzyskać pełny przykład, zobacz [przykład wyjścia](#example).
 
-Można użyć atrybutu `StorageAccount`, aby określić konto magazynu na poziomie klasy, metody lub parametru. Aby uzyskać więcej informacji, zobacz wyzwalacz-atrybuty.
+Za pomocą `StorageAccount` atrybutu można określić konto magazynu na poziomie klasy, metody lub parametru. Aby uzyskać więcej informacji, zobacz Trigger - atrybuty.
 
-# <a name="c-script"></a>[C#Napisy](#tab/csharp-script)
+# <a name="c-script"></a>[Skrypt języka C#](#tab/csharp-script)
 
-Atrybuty nie są obsługiwane przez C# skrypt.
+Atrybuty nie są obsługiwane przez skrypt języka C#.
 
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[Javascript](#tab/javascript)
 
-Atrybuty nie są obsługiwane przez język JavaScript.
+Atrybuty nie są obsługiwane przez javascript.
 
 # <a name="python"></a>[Python](#tab/python)
 
-Atrybuty nie są obsługiwane przez język Python.
+Atrybuty nie są obsługiwane przez Pythona.
 
 # <a name="java"></a>[Java](#tab/java)
 
-Adnotacja `QueueOutput` pozwala pisać komunikat jako dane wyjściowe funkcji. Poniższy przykład pokazuje funkcję wyzwalaną przez protokół HTTP, która tworzy komunikat w kolejce.
+Adnotacja `QueueOutput` umożliwia pisanie wiadomości jako dane wyjściowe funkcji. W poniższym przykładzie przedstawiono funkcję wyzwalaną przez protokół HTTP, która tworzy komunikat kolejki.
 
 ```java
 package com.function;
@@ -302,100 +302,100 @@ public class HttpTriggerQueueOutput {
 
 | Właściwość    | Opis |
 |-------------|-----------------------------|
-|`name`       | Deklaruje nazwę parametru w podpisie funkcji. Gdy funkcja jest wyzwalana, wartość tego parametru ma zawartość komunikatu w kolejce. |
+|`name`       | Deklaruje nazwę parametru w podpisie funkcji. Po wyzwoleniu funkcji wartość tego parametru ma zawartość komunikatu kolejki. |
 |`queueName`  | Deklaruje nazwę kolejki na koncie magazynu. |
-|`connection` | Wskazuje na parametry połączenia konta magazynu. |
+|`connection` | Wskazuje parametry połączenia konta magazynu. |
 
-Parametr skojarzony z adnotacją `QueueOutput` jest wpisywany jako wystąpienie elementu [wyjściowego\<t\>](https://github.com/Azure/azure-functions-java-library/blob/master/src/main/java/com/microsoft/azure/functions/OutputBinding.java) .
+Parametr skojarzony z `QueueOutput` adnotacją jest wpisywany jako [wystąpienie OutputBinding\<T.\> ](https://github.com/Azure/azure-functions-java-library/blob/master/src/main/java/com/microsoft/azure/functions/OutputBinding.java)
 
 ---
 
-## <a name="configuration"></a>Konfiguracja
+## <a name="configuration"></a>Konfigurowanie
 
-W poniższej tabeli objaśniono właściwości konfiguracji powiązań ustawiane w pliku *Function. JSON* i `Queue` atrybutu.
+W poniższej tabeli opisano właściwości konfiguracji powiązania, które można `Queue` ustawić w pliku *function.json* i atrybut.
 
-|Właściwość Function.JSON | Właściwość atrybutu |Opis|
+|właściwość function.json | Właściwość atrybutu |Opis|
 |---------|---------|----------------------|
-|**type** | Nie dotyczy | Musi być ustawiony na `queue`. Ta właściwość jest ustawiana automatycznie po utworzeniu wyzwalacza w witrynie Azure portal.|
-|**direction** | Nie dotyczy | Musi być ustawiony na `out`. Ta właściwość jest ustawiana automatycznie po utworzeniu wyzwalacza w witrynie Azure portal. |
-|**Nazwij** | Nie dotyczy | Nazwa zmiennej, która reprezentuje kolejkę w kodzie funkcji. Ustaw `$return`, aby odwoływać się do zwracanej wartości funkcji.|
-|**Zmienną QueueName** |**Zmienną QueueName** | Nazwa kolejki. |
-|**połączenia** | **Połączenie** |Nazwa ustawienia aplikacji, które zawiera parametry połączenia magazynu, które będą używane dla tego powiązania. Jeśli nazwa ustawienia aplikacji zaczyna się od "AzureWebJobs", w tym miejscu możesz określić tylko resztę nazwy. Na przykład jeśli ustawisz `connection` na "WebStorage", środowisko uruchomieniowe Functions szuka ustawienia aplikacji o nazwie "WebStorage". W przypadku pozostawienia `connection` pustego środowisko uruchomieniowe funkcji używa domyślnych parametrów połączenia magazynu w ustawieniu aplikacji o nazwie `AzureWebJobsStorage`.|
+|**Typu** | Nie dotyczy | Musi być `queue`ustawiona na . Ta właściwość jest ustawiana automatycznie podczas tworzenia wyzwalacza w witrynie Azure portal.|
+|**Kierunku** | Nie dotyczy | Musi być `out`ustawiona na . Ta właściwość jest ustawiana automatycznie podczas tworzenia wyzwalacza w witrynie Azure portal. |
+|**Nazwa** | Nie dotyczy | Nazwa zmiennej reprezentującej kolejkę w kodzie funkcji. Ustaw, `$return` aby odwoływać się do wartości zwracanej funkcji.|
+|**Queuename** |**Queuename** | Nazwa kolejki. |
+|**Połączenia** | **Połączenia** |Nazwa ustawienia aplikacji, która zawiera ciąg połączenia magazynu do użycia dla tego powiązania. Jeśli nazwa ustawienia aplikacji zaczyna się od "AzureWebJobs", można określić tylko pozostałą część nazwy tutaj. Na przykład jeśli `connection` ustawisz "MyStorage", środowisko wykonawcze Functions wyszukuje ustawienie aplikacji o nazwie "MyStorage". Jeśli pozostawisz `connection` puste, środowisko wykonawcze Functions używa domyślnego ciągu połączenia `AzureWebJobsStorage`Magazyn w ustawieniu aplikacji o nazwie .|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
 ## <a name="usage"></a>Sposób użycia
 
-# <a name="c"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C #](#tab/csharp)
 
-Napisz pojedynczy komunikat w kolejce przy użyciu parametru metody, takiego jak `out T paramName`. Można użyć typu zwracanego metody zamiast parametru `out`, a `T` może być jednym z następujących typów:
+Napisz wiadomość pojedynczej kolejki przy użyciu `out T paramName`parametru metody, takiego jak . Można użyć typu zwracanego metody `out` zamiast parametru i `T` może być dowolny z następujących typów:
 
-* Obiekt możliwy do serializacji jako plik JSON
+* Obiekt serializowalny jako JSON
 * `string`
 * `byte[]`
 * [CloudQueueMessage] 
 
-Jeśli próbujesz powiązać z `CloudQueueMessage` i otrzymać komunikat o błędzie, upewnij się, że masz odwołanie do [odpowiedniej wersji zestawu SDK magazynu](functions-bindings-storage-queue.md#azure-storage-sdk-version-in-functions-1x).
+Jeśli spróbujesz `CloudQueueMessage` powiązać i pojawi się komunikat o błędzie, upewnij się, że masz odwołanie do [poprawnej wersji SDK magazynu](functions-bindings-storage-queue.md#azure-storage-sdk-version-in-functions-1x).
 
-W C# programie C# i skrypcie Napisz wiele komunikatów w kolejce przy użyciu jednego z następujących typów: 
+W skrypcie C# i C# zapisuj wiele komunikatów kolejki przy użyciu jednego z następujących typów: 
 
 * `ICollector<T>` lub `IAsyncCollector<T>`
-* [CloudQueue](/dotnet/api/microsoft.azure.storage.queue.cloudqueue)
+* [CloudQueue (CloudQueue)](/dotnet/api/microsoft.azure.storage.queue.cloudqueue)
 
-# <a name="c-script"></a>[C#Napisy](#tab/csharp-script)
+# <a name="c-script"></a>[Skrypt języka C#](#tab/csharp-script)
 
-Napisz pojedynczy komunikat w kolejce przy użyciu parametru metody, takiego jak `out T paramName`. `paramName` jest wartością określoną we właściwości `name` *funkcji Function. JSON*. Można użyć typu zwracanego metody zamiast parametru `out`, a `T` może być jednym z następujących typów:
+Napisz wiadomość pojedynczej kolejki przy użyciu `out T paramName`parametru metody, takiego jak . Jest `paramName` to wartość określona `name` we właściwości *function.json*. Można użyć typu zwracanego metody `out` zamiast parametru i `T` może być dowolny z następujących typów:
 
-* Obiekt możliwy do serializacji jako plik JSON
+* Obiekt serializowalny jako JSON
 * `string`
 * `byte[]`
 * [CloudQueueMessage] 
 
-Jeśli próbujesz powiązać z `CloudQueueMessage` i otrzymać komunikat o błędzie, upewnij się, że masz odwołanie do [odpowiedniej wersji zestawu SDK magazynu](functions-bindings-storage-queue.md#azure-storage-sdk-version-in-functions-1x).
+Jeśli spróbujesz `CloudQueueMessage` powiązać i pojawi się komunikat o błędzie, upewnij się, że masz odwołanie do [poprawnej wersji SDK magazynu](functions-bindings-storage-queue.md#azure-storage-sdk-version-in-functions-1x).
 
-W C# programie C# i skrypcie Napisz wiele komunikatów w kolejce przy użyciu jednego z następujących typów: 
+W skrypcie C# i C# zapisuj wiele komunikatów kolejki przy użyciu jednego z następujących typów: 
 
 * `ICollector<T>` lub `IAsyncCollector<T>`
-* [CloudQueue](/dotnet/api/microsoft.azure.storage.queue.cloudqueue)
+* [CloudQueue (CloudQueue)](/dotnet/api/microsoft.azure.storage.queue.cloudqueue)
 
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[Javascript](#tab/javascript)
 
-Element kolejki wyjściowej jest dostępny za pośrednictwem `context.bindings.<NAME>`, gdzie `<NAME>` pasuje do nazwy zdefiniowanej w *funkcji Function. JSON*. Dla ładunku elementu kolejki można użyć ciągu lub obiektu możliwego do serializacji w formacie JSON.
+Element kolejki wyjściowej `context.bindings.<NAME>` jest `<NAME>` dostępny w miejscu, w którym jest zgodna z nazwą zdefiniowaną w *pliku function.json*. Można użyć ciągu lub obiektu serializable JSON dla ładunku elementu kolejki.
 
 # <a name="python"></a>[Python](#tab/python)
 
-Istnieją dwie opcje wyprowadzania komunikatu centrum zdarzeń z funkcji:
+Istnieją dwie opcje wyprowadzania komunikatu Centrum zdarzeń z funkcji:
 
-- **Wartość zwracana**: ustaw właściwość `name` w *funkcji Function. JSON* na `$return`. W przypadku tej konfiguracji wartość zwracana przez funkcję jest utrwalana jako komunikat magazynu kolejki.
+- **Zwracana wartość:** Ustaw `name` właściwość w `$return` *function.json* na . W tej konfiguracji wartość zwracana funkcji jest zachowywana jako komunikat magazynu kolejki.
 
-- Bezwzględnie **: Przekaż**wartość do metody [Set](https://docs.microsoft.com/python/api/azure-functions/azure.functions.out?view=azure-python#set-val--t-----none) parametru zadeklarowanego jako typ [out](https://docs.microsoft.com/python/api/azure-functions/azure.functions.out?view=azure-python) . Wartość przeniesiona do `set` jest utrwalona jako komunikat magazynu kolejki.
+- **Imperatyw:** Przekaż wartość do [metody zestawu](https://docs.microsoft.com/python/api/azure-functions/azure.functions.out?view=azure-python#set-val--t-----none) parametru zadeklarowanego jako typ [Out.](https://docs.microsoft.com/python/api/azure-functions/azure.functions.out?view=azure-python) Wartość przekazana `set` do jest zachowywana jako komunikat magazynu kolejki.
 
 # <a name="java"></a>[Java](#tab/java)
 
-Istnieją dwie opcje wyprowadzania komunikatu centrum zdarzeń z funkcji przy użyciu adnotacji [QueueOutput](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.annotation.queueoutput) :
+Istnieją dwie opcje wyprowadzania wiadomości Centrum zdarzeń z funkcji przy użyciu adnotacji [QueueOutput:](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.annotation.queueoutput)
 
-- **Wartość zwracana**: przez zastosowanie adnotacji do samej funkcji, wartość zwracana funkcji jest utrwalana jako komunikat centrum zdarzeń.
+- **Zwracana wartość:** Stosując adnotację do samej funkcji, zwracana wartość funkcji jest zachowywana jako komunikat Centrum zdarzeń.
 
-- Bezwzględnie **: aby**jawnie ustawić wartość komunikatu, Zastosuj adnotację do określonego parametru typu [`OutputBinding<T>`](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.OutputBinding), gdzie `T` jest Pojo lub dowolnym natywnym typem języka Java. W przypadku tej konfiguracji przekazywanie wartości do metody `setValue` utrzymuje wartość jako komunikat centrum zdarzeń.
+- **Imperatyw:** Aby jawnie ustawić wartość wiadomości, zastosuj adnotację do określonego parametru typu [`OutputBinding<T>`](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.OutputBinding), gdzie `T` jest POJO lub dowolnego natywnego typu Java. W tej konfiguracji przekazywanie `setValue` wartości do metody utrwala wartość jako komunikat Centrum zdarzeń.
 
 ---
 
-## <a name="exceptions-and-return-codes"></a>Wyjątki i kody powrotne
+## <a name="exceptions-and-return-codes"></a>Wyjątki i kody zwrotne
 
-| Powiązanie |  Dokumentacja |
+| Wiązanie |  Tematy pomocy |
 |---|---|
 | Kolejka | [Kody błędów kolejki](https://docs.microsoft.com/rest/api/storageservices/queue-service-error-codes) |
-| Obiekt BLOB, tabela, kolejka | [Kody błędów magazynu](https://docs.microsoft.com/rest/api/storageservices/fileservices/common-rest-api-error-codes) |
-| Obiekt BLOB, tabela, kolejka |  [Rozwiązywanie problemów](https://docs.microsoft.com/rest/api/storageservices/fileservices/troubleshooting-api-operations) |
+| Obiekt Blob, Tabela, Kolejka | [Kody błędów magazynu](https://docs.microsoft.com/rest/api/storageservices/fileservices/common-rest-api-error-codes) |
+| Obiekt Blob, Tabela, Kolejka |  [Rozwiązywanie problemów](https://docs.microsoft.com/rest/api/storageservices/fileservices/troubleshooting-api-operations) |
 
 <a name="host-json"></a>  
 
-## <a name="hostjson-settings"></a>Ustawienia host.JSON
+## <a name="hostjson-settings"></a>ustawienia host.json
 
-W tej sekcji opisano globalne ustawienia konfiguracji dostępne dla tego powiązania w wersji 2. x i nowszych. Poniższy przykładowy plik host. JSON zawiera tylko ustawienia wersji 2. x dla tego powiązania. Aby uzyskać więcej informacji na temat ustawień konfiguracji globalnej w wersjach 2. x i więcej, zobacz informacje dotyczące pliku [host. JSON dla Azure Functions](functions-host-json.md).
+W tej sekcji opisano globalne ustawienia konfiguracji dostępne dla tego powiązania w wersjach 2.x lub nowszych. Przykładowy plik host.json poniżej zawiera tylko ustawienia w wersji 2.x+ dla tego powiązania. Aby uzyskać więcej informacji na temat globalnych ustawień konfiguracji w wersjach 2.x i nowszych, zobacz [odwołanie do host.json dla usługi Azure Functions](functions-host-json.md).
 
 > [!NOTE]
-> Aby uzyskać odwołanie do pliku host. JSON w funkcjach 1. x, zobacz informacje dotyczące pliku [host. JSON dla Azure Functions 1. x](functions-host-json-v1.md).
+> Aby uzyskać odwołanie do pliku host.json w usługach 1.x, zobacz [odwołanie do host.json dla usługi Azure Functions 1.x](functions-host-json-v1.md).
 
 ```json
 {
@@ -414,15 +414,15 @@ W tej sekcji opisano globalne ustawienia konfiguracji dostępne dla tego powiąz
 
 |Właściwość  |Domyślne | Opis |
 |---------|---------|---------|
-|maxPollingInterval|00:00:01|Maksymalny interwał między sondami kolejki. Wartość minimalna to 00:00:00.100 (100 ms) i zwiększa się do 00:01:00 (1 min).  W 1. x typ danych to milisekundy, a w 2. x i wyższych jest to TimeSpan.|
-|visibilityTimeout|00:00:00|Przedział czasu między ponownymi próbami, gdy przetwarzanie komunikatu kończy się niepowodzeniem. |
-|batchSize|16|Liczba komunikatów w kolejce, które środowisko uruchomieniowe funkcji jednocześnie pobiera i przetwarza równolegle. Gdy przetworzona liczba zostanie Poprzednia `newBatchThreshold`, środowisko uruchomieniowe pobiera kolejną partię i rozpocznie przetwarzanie tych komunikatów. Dlatego Maksymalna liczba współbieżnych komunikatów przetwarzanych na funkcję jest `batchSize` i `newBatchThreshold`. Ten limit dotyczy osobno każdej funkcji wyzwalanej przez kolejkę. <br><br>Aby uniknąć równoległego wykonywania komunikatów odebranych w jednej kolejce, można ustawić `batchSize` na 1. To ustawienie eliminuje jednak współbieżność tylko wtedy, gdy aplikacja funkcji działa na jednej maszynie wirtualnej. Jeśli aplikacja funkcji jest skalowana do wielu maszyn wirtualnych, każda maszyna wirtualna może uruchomić jedno wystąpienie każdej funkcji wyzwalanej przez kolejkę.<br><br>Maksymalna `batchSize` to 32. |
-|maxDequeueCount|5|Liczba prób przetworzenia komunikatu przed przeniesieniem go do kolejki trującej.|
-|newBatchThreshold|batchSize/2|Gdy liczba przetwarzanych komunikatów współbieżnie przyjdzie do tego numeru, środowisko uruchomieniowe pobiera kolejną partię.|
+|maxPollingInterval (właso.|00:00:01|Maksymalny interwał między ankietami kolejki. Minimalna wartość to 00:00:00.100 (100 ms) i przyrosty do 00:01:00 (1 min).  W 1.x typ danych jest milisekund, a w 2.x i wyższej jest TimeSpan.|
+|widocznośćCzas|00:00:00|Przedział czasu między ponownych prób podczas przetwarzania wiadomości kończy się niepowodzeniem. |
+|batchSize|16|Liczba komunikatów kolejki, które funkcje środowiska wykonawczego pobiera jednocześnie i procesów równolegle. Gdy liczba przetwarzana pobiera w `newBatchThreshold`dół do , środowisko wykonawcze pobiera inną partię i rozpoczyna przetwarzanie tych komunikatów. Tak więc maksymalna liczba równoczesnych komunikatów `batchSize` `newBatchThreshold`przetwarzanych na funkcję jest plus . Ten limit ma zastosowanie oddzielnie do każdej funkcji wyzwalaneją kolejki. <br><br>Jeśli chcesz uniknąć równoległego wykonywania wiadomości odebranych w `batchSize` jednej kolejce, można ustawić na 1. Jednak to ustawienie eliminuje współbieżność tylko tak długo, jak aplikacja funkcji działa na jednej maszynie wirtualnej (VM). Jeśli aplikacja funkcji jest skalowana w poziomie do wielu maszyn wirtualnych, każda maszyna wirtualna może uruchomić jedno wystąpienie każdej funkcji wyzwalanej kolejką.<br><br>Maksymalna `batchSize` wartość to 32. |
+|maksymalna liczba kolejek nieliczna|5|Liczba razy, aby spróbować przetworzyć wiadomość przed przeniesieniem go do kolejki trucizny.|
+|newBatchThreshold|batchSize/2|Za każdym razem, gdy liczba wiadomości przetwarzanych jednocześnie spada do tej liczby, środowisko wykonawcze pobiera inną partię.|
 
 ## <a name="next-steps"></a>Następne kroki
 
-- [Uruchamianie funkcji jako kolejki zmian danych magazynu (wyzwalacz)](./functions-bindings-storage-queue-trigger.md)
+- [Uruchamianie funkcji w miarę zmiany danych magazynu kolejek (wyzwalacz)](./functions-bindings-storage-queue-trigger.md)
 
 <!-- LINKS -->
 

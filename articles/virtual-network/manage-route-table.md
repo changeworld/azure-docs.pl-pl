@@ -1,5 +1,5 @@
 ---
-title: Tworzenie, zmienianie lub usuwanie tabeli tras platformy Azure
+title: Tworzenie, zmienianie lub usuwanie tabeli marszrut platformy Azure
 titlesuffix: Azure Virtual Network
 description: Dowiedz się, jak utworzyć, zmienić lub usunąć tabelę tras.
 services: virtual-network
@@ -10,245 +10,342 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/09/2018
+ms.date: 03/19/2020
 ms.author: kumud
-ms.openlocfilehash: fe8ea4dfb4de45a1e09648ac51fe8d74f93a6b9e
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 79310ddf121d6ada10755b198b515fdc9c1114d6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79280276"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80247065"
 ---
-# <a name="create-change-or-delete-a-route-table"></a>Tworzenie, zmienianie lub usuwanie tabeli tras
+# <a name="create-change-or-delete-a-route-table"></a>Tworzenie, zmienianie lub usuwanie tabeli marszruty
 
-Platforma Azure automatycznie kieruje ruchem między podsieciami platformy Azure, sieciami wirtualnymi i sieciami lokalnymi. Jeśli chcesz zmienić domyślny Routing systemu Azure, możesz to zrobić, tworząc tabelę tras. Jeśli jesteś nowym sposobem routingu w sieciach wirtualnych, możesz dowiedzieć się więcej na jego temat w [omówieniu routingu](virtual-networks-udr-overview.md) lub przez zakończenie korzystania z [samouczka](tutorial-create-route-table-portal.md).
+Platforma Azure automatycznie kieruje ruchem między podsieciami platformy Azure, sieciami wirtualnymi i sieciami lokalnymi. Jeśli chcesz zmienić dowolną z domyślnych routingu platformy Azure, należy to zrobić, tworząc tabelę marszruty. Jeśli dopiero zaczynasz routing w sieciach wirtualnych, możesz dowiedzieć się więcej o tym w [routingu ruchu sieci wirtualnej](virtual-networks-udr-overview.md) lub wykonując [samouczek](tutorial-create-route-table-portal.md).
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+Jeśli go nie masz, skonfiguruj konto platformy Azure z aktywną subskrypcją. [Utwórz konto za darmo](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio). Następnie wykonaj jedno z tych zadań przed rozpoczęciem kroków w dowolnej sekcji tego artykułu:
 
-Przed wykonaniem kroków opisanych w sekcji tego artykułu wykonaj następujące zadania:
+- **Użytkownicy portalu:** Zaloguj się do [witryny Azure portal](https://portal.azure.com) za pomocą konta platformy Azure.
 
-* Jeśli nie masz jeszcze konta platformy Azure, Utwórz [konto bezpłatnej wersji próbnej](https://azure.microsoft.com/free).<br>
-* Jeśli używasz portalu, Otwórz https://portal.azure.comi zaloguj się przy użyciu konta platformy Azure.<br>
-* W przypadku wykonywania zadań w tym artykule przy użyciu poleceń programu PowerShell uruchom polecenia w [Azure Cloud Shell](https://shell.azure.com/powershell)lub przez uruchomienie programu PowerShell z komputera. Usługa Azure Cloud Shell to bezpłatna interaktywna powłoka, której możesz używać do wykonywania kroków opisanych w tym artykule. Udostępnia ona wstępnie zainstalowane i najczęściej używane narzędzia platformy Azure, które są skonfigurowane do użycia na koncie. Ten samouczek wymaga modułu Azure PowerShell w wersji 1.0.0 lub nowszej. Uruchom polecenie `Get-Module -ListAvailable Az`, aby dowiedzieć się, jaka wersja jest zainstalowana. Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-az-ps). Jeśli używasz programu PowerShell lokalnie, musisz też uruchomić polecenie `Connect-AzAccount`, aby utworzyć połączenie z platformą Azure.<br>
-* W przypadku korzystania z poleceń interfejsu wiersza polecenia (CLI) platformy Azure w celu wykonania zadań w tym artykule Uruchom polecenia w [Azure Cloud Shell](https://shell.azure.com/bash)lub przez uruchomienie interfejsu wiersza polecenia na komputerze. Ten samouczek wymaga interfejsu wiersza polecenia platformy Azure w wersji 2.0.31 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest zainstalowana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure](/cli/azure/install-azure-cli). Jeśli używasz interfejsu wiersza polecenia platformy Azure lokalnie, musisz również uruchomić `az login`, aby utworzyć połączenie z platformą Azure.
+- **Użytkownicy programu PowerShell:** Uruchom polecenia w [usłudze Azure Cloud Shell](https://shell.azure.com/powershell)lub uruchom program PowerShell z komputera. Usługa Azure Cloud Shell to bezpłatna interaktywna powłoka, której możesz używać do wykonywania kroków opisanych w tym artykule. Udostępnia ona wstępnie zainstalowane i najczęściej używane narzędzia platformy Azure, które są skonfigurowane do użycia na koncie. Na karcie Przeglądarka usługi Azure Cloud Shell znajdź listę rozwijana **Wybierz środowisko,** a następnie wybierz pozycję **PowerShell,** jeśli nie jest jeszcze zaznaczona.
 
-Konto, do którego chcesz się zalogować, lub Połącz się z platformą Azure za pomocą programu, musi być przypisane do roli [współautor sieci](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) lub do [roli niestandardowej](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) , do której przypisano odpowiednie akcje wymienione w obszarze [uprawnienia](#permissions).
+    Jeśli używasz programu PowerShell lokalnie, użyj modułu programu Azure PowerShell w wersji 1.0.0 lub nowszej. Uruchom polecenie `Get-Module -ListAvailable Az.Network`, aby dowiedzieć się, jaka wersja jest zainstalowana. Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-az-ps). Uruchom `Connect-AzAccount` również, aby utworzyć połączenie z platformą Azure.
+
+- **Użytkownicy interfejsu wiersza polecenia platformy Azure (CLI):** uruchom polecenia w [usłudze Azure Cloud Shell](https://shell.azure.com/bash)lub uruchom interfejs wiersza polecenia z komputera. Użyj interfejsu wiersza polecenia platformy Azure w wersji 2.0.31 lub nowszej, jeśli używasz interfejsu wiersza polecenia platformy Azure lokalnie. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest zainstalowana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure](/cli/azure/install-azure-cli). Uruchom `az login` również, aby utworzyć połączenie z platformą Azure.
+
+Konto, do którego się logujesz lub z którą łączysz się z platformą Azure, musi być przypisane do [roli współautora sieci](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) lub do [roli niestandardowej,](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) której przypisano odpowiednie akcje wymienione w [sekcji Uprawnienia](#permissions).
 
 ## <a name="create-a-route-table"></a>Tworzenie tabeli tras
 
-Istnieje limit liczby tabel tras, które można utworzyć dla lokalizacji i subskrypcji platformy Azure. Aby uzyskać więcej informacji, zobacz [Azure limits (Ograniczenia platformy Azure)](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits).
+Istnieje limit liczby tabel tras, które można utworzyć na lokalizację i subskrypcję platformy Azure. Aby uzyskać szczegółowe informacje, zobacz [Limity sieci — Usługa Azure Resource Manager](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits).
 
-1. W lewym górnym rogu portalu wybierz pozycję **+ Utwórz zasób**.
-1. Wybierz pozycję **Sieć**, a następnie wybierz pozycję **tabela tras**.
-1. Wprowadź **nazwę** tabeli tras, wybierz **subskrypcję**, Utwórz nową **grupę zasobów**lub wybierz istniejącą grupę zasobów, wybierz **lokalizację**, a następnie wybierz pozycję **Utwórz**. Jeśli planujesz skojarzenie tabeli tras z podsiecią z siecią wirtualną, która jest połączona z siecią lokalną za pośrednictwem bramy sieci VPN, i wyłączysz **propagację trasy bramy sieci wirtualnej**, trasy lokalne nie są propagowane do interfejsów sieciowych w podsieci.
+1. W menu [portalu azure](https://portal.azure.com) lub na stronie **głównej** wybierz pozycję **Utwórz zasób**.
 
-### <a name="create-route-table---commands"></a>Tworzenie tabeli tras — polecenia
+1. W polu wyszukiwania wprowadź *tabelę Trasa*. Gdy w wynikach wyszukiwania pojawi się **tabela Trasa,** zaznacz ją.
 
-* Interfejs wiersza polecenia platformy Azure: [AZ Network Route-Table Create](/cli/azure/network/route-table/route)<br>
-* PowerShell: [New-AzRouteTable](/powershell/module/az.network/new-azroutetable)
+1. Na stronie **Tabela Marszruta** wybierz pozycję **Utwórz**.
+
+1. W oknie dialogowym **Tworzenie tabeli marszruty:**
+
+    1. Wprowadź **nazwę** tabeli marszruty.
+    1. Wybierz **subskrypcję**.
+    1. Wybierz istniejącą **grupę zasobów** lub wybierz **pozycję Utwórz nowy,** aby utworzyć nową grupę zasobów.
+    1. Wybierz **lokalizację**.
+    1. Jeśli tabela marszruty ma być skojarzona z podsiecią w sieci wirtualnej połączonej z siecią lokalną za pośrednictwem bramy sieci VPN i nie chcesz propagować tras lokalnych do interfejsów sieciowych w podsieci, ustaw **propagację trasy bramy sieci wirtualnej** na **Wyłączone**.
+
+1. Wybierz **pozycję Utwórz,** aby utworzyć nową tabelę tras.
+
+### <a name="create-route-table---commands"></a>Tworzenie tabeli tras - polecenia
+
+| Narzędzie | Polecenie |
+| ---- | ------- |
+| Interfejs wiersza polecenia platformy Azure | [az network route-table create](/cli/azure/network/route-table#az-network-route-table-create) |
+| PowerShell | [New-AzRouteTable](/powershell/module/az.network/new-azroutetable) |
 
 ## <a name="view-route-tables"></a>Wyświetlanie tabel tras
 
-W polu wyszukiwania w górnej części portalu wprowadź *tabele tras* w polu wyszukiwania. Gdy **tabele tras** są wyświetlane w wynikach wyszukiwania, wybierz je. Zostaną wyświetlone tabele tras, które istnieją w Twojej subskrypcji.
+Przejdź do [witryny Azure portal,](https://portal.azure.com) aby zarządzać siecią wirtualną. Wyszukaj i wybierz **tabele trasy**. Tabele tras, które istnieją w subskrypcji są wyświetlane.
 
-### <a name="view-route-table---commands"></a>Wyświetlanie tabeli tras — polecenia
+### <a name="view-route-table---commands"></a>Wyświetlanie tabeli tras - polecenia
 
-* Interfejs wiersza polecenia platformy Azure: [AZ Network Route-Table list](/cli/azure/network/route-table/route)<br>
-* PowerShell: [Get-AzRouteTable](/powershell/module/az.network/get-azroutetable)
+| Narzędzie | Polecenie |
+| ---- | ------- |
+| Interfejs wiersza polecenia platformy Azure | [az sieć tabela-tabela](/cli/azure/network/route-table#az-network-route-table-list) |
+| PowerShell | [Tabela Get-AzRouteTable](/powershell/module/az.network/get-azroutetable) |
 
 ## <a name="view-details-of-a-route-table"></a>Wyświetlanie szczegółów tabeli tras
 
-1. W polu wyszukiwania w górnej części portalu wprowadź *tabele tras* w polu wyszukiwania. Gdy **tabele tras** są wyświetlane w wynikach wyszukiwania, wybierz je.
-1. Wybierz tabelę tras na liście, dla której chcesz wyświetlić szczegóły. W obszarze **Ustawienia**można wyświetlić **trasy** w tabeli tras i **podsieci** , z którymi jest skojarzona tabela tras.
-1. Aby dowiedzieć się więcej o typowych ustawieniach platformy Azure, zobacz następujące informacje:
+1. Przejdź do [witryny Azure portal,](https://portal.azure.com) aby zarządzać siecią wirtualną. Wyszukaj i wybierz **tabele trasy**.
 
-    * [Dziennik aktywności](../azure-monitor/platform/platform-logs-overview.md)<br>
-    * [Kontrola dostępu (IAM)](../role-based-access-control/overview.md)<br>
-    * [Tagi](../azure-resource-manager/management/tag-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br>
-    * [Zamki](../azure-resource-manager/management/lock-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br>
-    * [Skrypt automatyzacji](../azure-resource-manager/templates/export-template-portal.md)
+1. Na liście tabeli tras wybierz tabelę tras, dla której chcesz wyświetlić szczegóły.
 
-### <a name="view-details-of-route-table---commands"></a>Wyświetl szczegóły trasy — polecenia
+1. Na stronie tabeli trasy w obszarze **Ustawienia**wyświetl **trasy** w tabeli trasy lub **Podsieci,** z którymi jest skojarzona tabela trasy.
 
-* Interfejs wiersza polecenia platformy Azure: [AZ Network Route-Table show](/cli/azure/network/route-table/route)<br>
-* PowerShell: [Get-AzRouteTable](/powershell/module/az.network/get-azroutetable)
+Aby dowiedzieć się więcej o typowych ustawieniach platformy Azure, zobacz następujące informacje:
 
-## <a name="change-a-route-table"></a>Zmiana tabeli tras
+- [Dziennik aktywności](../azure-monitor/platform/platform-logs-overview.md)
+- [Kontrola dostępu (IAM)](../role-based-access-control/overview.md)
+- [Tagi](../azure-resource-manager/management/tag-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
+- [Blokady](../azure-resource-manager/management/lock-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
+- [Skrypt usługi Automation](../azure-resource-manager/templates/export-template-portal.md)
 
-1. W polu wyszukiwania w górnej części portalu wprowadź *tabele tras* w polu wyszukiwania. Gdy **tabele tras** są wyświetlane w wynikach wyszukiwania, wybierz je.
-1. Wybierz tabelę tras, którą chcesz zmienić. Najczęstszymi zmianami są [Dodawanie](#create-a-route) lub [usuwanie](#delete-a-route) tras oraz [kojarzenie](#associate-a-route-table-to-a-subnet) tabel tras z lub [skojarzenie](#dissociate-a-route-table-from-a-subnet) tabel tras z podsieciami.
+### <a name="view-details-of-route-table---commands"></a>Wyświetlanie szczegółów tabeli tras - polecenia
 
-### <a name="change-a-route-table---commands"></a>Zmienianie tabeli tras — polecenia
+| Narzędzie | Polecenie |
+| ---- | ------- |
+| Interfejs wiersza polecenia platformy Azure | [az sieć tabela-tabela pokaż](/cli/azure/network/route-table#az-network-route-table-show) |
+| PowerShell | [Tabela Get-AzRouteTable](/powershell/module/az.network/get-azroutetable) |
 
-* Interfejs wiersza polecenia platformy Azure: [AZ Network Route-Table Update](/cli/azure/network/route-table/route)<br>
-* PowerShell: [Set-AzRouteTable](/powershell/module/az.network/set-azroutetable)
+## <a name="change-a-route-table"></a>Zmienianie tabeli tras
+
+1. Przejdź do [witryny Azure portal,](https://portal.azure.com) aby zarządzać siecią wirtualną. Wyszukaj i wybierz **tabele trasy**.
+
+1. Na liście tabeli tras wybierz tabelę tras, którą chcesz zmienić.
+
+Najczęstszymi zmianami [jest dodawanie](#create-a-route) tras, [usuwanie](#delete-a-route) tras, [kojarzenie](#associate-a-route-table-to-a-subnet) tabel tras z podsieciami lub [odłączenie](#dissociate-a-route-table-from-a-subnet) tabel tras od podsieci.
+
+### <a name="change-a-route-table---commands"></a>Zmienianie tabeli tras - polecenia
+
+| Narzędzie | Polecenie |
+| ---- | ------- |
+| Interfejs wiersza polecenia platformy Azure | [AZ aktualizacja tabeli tras sieciowych](/cli/azure/network/route-table#az-network-route-table-update) |
+| PowerShell | [Tabela Set-AzRouteTable](/powershell/module/az.network/set-azroutetable) |
 
 ## <a name="associate-a-route-table-to-a-subnet"></a>Kojarzenie tabeli tras z podsiecią
 
-Podsieć może mieć skojarzoną jedną tabelę tras lub żadną. Tabela tras może być skojarzona z wieloma podsieciami lub żadną. Ponieważ tabele tras nie są skojarzone z sieciami wirtualnymi, musisz skojarzyć tabelę tras z każdą podsiecią, która ma mieć skojarzoną tabelę tras. Cały ruch wychodzący z podsieci jest kierowany na podstawie tras utworzonych w ramach tabel tras, [tras domyślnych](virtual-networks-udr-overview.md#default)i tras propagowanych z sieci lokalnej, jeśli sieć wirtualna jest połączona z bramą sieci wirtualnej platformy Azure (ExpressRoute lub sieci VPN). Tabelę tras można skojarzyć tylko z podsieciami w sieciach wirtualnych, które istnieją w tej samej lokalizacji i subskrypcji platformy Azure co tabela tras.
+Opcjonalnie można skojarzyć tabelę marszruty z podsiecią. Tabela marszruty może być skojarzona z zerowymi lub większą liczeciami podsieci. Ponieważ tabele tras nie są skojarzone z sieciami wirtualnymi, należy skojarzyć tabelę marszrut z każdą podsiecią, z którą ma być skojarzona tabela tras. Platforma Azure kieruje cały ruch opuszczający podsieć na podstawie tras utworzonych w tabelach tras, [tras domyślnych](virtual-networks-udr-overview.md#default)i tras propagowanych z sieci lokalnej, jeśli sieć wirtualna jest połączona z bramą sieci wirtualnej platformy Azure (usługa ExpressRoute lub VPN). Tabelę tras można skojarzyć tylko z podsieciami w sieciach wirtualnych, które istnieją w tej samej lokalizacji i subskrypcji platformy Azure co tabela tras.
 
-1. W polu wyszukiwania w górnej części portalu wprowadź *sieci wirtualne* w polu wyszukiwania. Gdy **sieci wirtualne** pojawiają się w wynikach wyszukiwania, wybierz je.
-1. Wybierz sieć wirtualną z listy zawierającej podsieć, do której chcesz skojarzyć tabelę tras.
-1. W obszarze **Ustawienia**wybierz pozycję **podsieci** .
-1. Wybierz podsieć, do której chcesz skojarzyć tabelę tras.
-1. Wybierz pozycję **tabela tras**, wybierz tabelę tras, która ma zostać skojarzona z podsiecią, a następnie wybierz pozycję **Zapisz**.
+1. Przejdź do [witryny Azure portal,](https://portal.azure.com) aby zarządzać siecią wirtualną. Wyszukaj i wybierz **sieć wirtualną**.
 
-Jeśli Twoja sieć wirtualna jest podłączona do bramy sieci VPN platformy Azure, nie należy kojarzyć tabeli tras z [podsiecią bramy](../vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md?toc=%2fazure%2fvirtual-network%2ftoc.json#gwsub) zawierającą trasy z adresem docelowym 0.0.0.0/0. Zaniedbanie tego może spowodować nieprawidłowe działanie bramy. Aby uzyskać więcej informacji o używaniu 0.0.0.0/0 w trasie, zobacz [routing ruchu w sieci wirtualnej](virtual-networks-udr-overview.md#default-route).
+1. Na liście sieci wirtualnej wybierz sieć wirtualną zawierającą podsieć, z którą chcesz skojarzyć tabelę marszruty.
 
-### <a name="associate-a-route-table---commands"></a>Kojarzenie tabeli tras — polecenia
+1. Na pasku menu sieci wirtualnej wybierz pozycję **Podsieci**.
 
-* Interfejs wiersza polecenia platformy Azure: [AZ Network VNET Subnet Update](/cli/azure/network/vnet/subnet?view=azure-cli-latest)<br>
-* PowerShell: [Set-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/set-azvirtualnetworksubnetconfig)
+1. Wybierz podsieć, z którą chcesz skojarzyć tabelę marszruty.
+
+1. W **tabeli Marszruta**wybierz tabelę tras, którą chcesz skojarzyć z podsiecią.
+
+1. Wybierz **pozycję Zapisz**.
+
+Jeśli sieć wirtualna jest połączona z bramą sieci VPN platformy Azure, nie kojarz tabelę marszruty z [podsiecią bramy](../vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md?toc=%2fazure%2fvirtual-network%2ftoc.json#gwsub) zawierającą trasę o docelowej *0.0.0.0/0.* Zaniedbanie tego może spowodować nieprawidłowe działanie bramy. Aby uzyskać więcej informacji na temat używania *0.0.0.0/0* w trasie, zobacz [Routing ruchu sieci wirtualnej](virtual-networks-udr-overview.md#default-route).
+
+### <a name="associate-a-route-table---commands"></a>Kojarzenie tabeli marszruty - polecenia
+
+| Narzędzie | Polecenie |
+| ---- | ------- |
+| Interfejs wiersza polecenia platformy Azure | [az network vnet subnet update](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-update) |
+| PowerShell | [Set-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/set-azvirtualnetworksubnetconfig) |
 
 ## <a name="dissociate-a-route-table-from-a-subnet"></a>Usuwanie skojarzenia tabeli tras z podsiecią
 
-Po skojarzeniu tabeli tras z podsiecią platforma Azure kieruje ruchem na podstawie jego [domyślnych tras](virtual-networks-udr-overview.md#default).
+Po odłączeniu tabeli tras od podsieci platforma Azure kieruje ruch na podstawie [jego tras domyślnych](virtual-networks-udr-overview.md#default).
 
-1. W polu wyszukiwania w górnej części portalu wprowadź *sieci wirtualne* w polu wyszukiwania. Gdy **sieci wirtualne** pojawiają się w wynikach wyszukiwania, wybierz je.
-1. Wybierz sieć wirtualną zawierającą podsieć, z której chcesz usunąć skojarzenie tabeli tras.
-1. W obszarze **Ustawienia**wybierz pozycję **podsieci** .
-1. Wybierz podsieć, z której chcesz usunąć skojarzenie tabeli tras.
-1. Wybierz pozycję **tabela tras**, wybierz pozycję **Brak**, a następnie wybierz pozycję **Zapisz**.
+1. Przejdź do [witryny Azure portal,](https://portal.azure.com) aby zarządzać siecią wirtualną. Wyszukaj i wybierz **sieć wirtualną**.
 
-### <a name="dissociate-a-route-table---commands"></a>Usuwanie skojarzenia tabeli tras — polecenia
+1. Na liście sieci wirtualnej wybierz sieć wirtualną zawierającą podsieć, z której chcesz odłączyć tabelę marszruty.
 
-* Interfejs wiersza polecenia platformy Azure: [AZ Network VNET Subnet Update](/cli/azure/network/vnet/subnet?view=azure-cli-latest)<br>
-* PowerShell: [Set-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/set-azvirtualnetworksubnetconfig)
+1. Na pasku menu sieci wirtualnej wybierz pozycję **Podsieci**.
+
+1. Wybierz podsieć, z której chcesz odłączyć tabelę tras.
+
+1. W **tabeli Trasa**wybierz pozycję **Brak**.
+
+1. Wybierz **pozycję Zapisz**.
+
+### <a name="dissociate-a-route-table---commands"></a>Odłączyć tabelę trasy - polecenia
+
+| Narzędzie | Polecenie |
+| ---- | ------- |
+| Interfejs wiersza polecenia platformy Azure | [az network vnet subnet update](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-update) |
+| PowerShell | [Set-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/set-azvirtualnetworksubnetconfig) |
 
 ## <a name="delete-a-route-table"></a>Usuwanie tabeli tras
 
-Jeśli tabela tras jest skojarzona z podsieciami, nie można jej usunąć. [Usuń skojarzenie](#dissociate-a-route-table-from-a-subnet) tabeli tras z wszystkimi podsieciami, zanim spróbujesz ją usunąć.
+Nie można usunąć tabeli marszruty skojarzonej z żadnymi podsieciami. [Usuń skojarzenie](#dissociate-a-route-table-from-a-subnet) tabeli tras z wszystkimi podsieciami, zanim spróbujesz ją usunąć.
 
-1. W polu wyszukiwania w górnej części portalu wprowadź *tabele tras* w polu wyszukiwania. Gdy **tabele tras** są wyświetlane w wynikach wyszukiwania, wybierz je.
-1. Wybierz pozycję **...** znajdującą się po prawej stronie tabeli tras, która ma zostać usunięta.
-1. Wybierz pozycję **Usuń**, a następnie wybierz pozycję **tak**.
+1. Przejdź do [witryny Azure portal,](https://portal.azure.com) aby zarządzać tabelami tras. Wyszukaj i wybierz **tabele trasy**.
 
-### <a name="delete-a-route-table---commands"></a>Usuwanie tabeli tras — polecenia
+1. Na liście tabeli tras wybierz tabelę tras, którą chcesz usunąć.
 
-* Interfejs wiersza polecenia platformy Azure: [AZ Network Route-Table Delete](/cli/azure/network/route-table/route)<br>
-* PowerShell: [Remove-AzRouteTable](/powershell/module/az.network/remove-azroutetable)
+1. Wybierz **pozycję Usuń**, a następnie wybierz pozycję **Tak** w oknie dialogowym potwierdzenia.
+
+### <a name="delete-a-route-table---commands"></a>Usuwanie tabeli marszruty - polecenia
+
+| Narzędzie | Polecenie |
+| ---- | ------- |
+| Interfejs wiersza polecenia platformy Azure | [AZ sieć -tabela-tabela usunąć](/cli/azure/network/route-table#az-network-route-table-delete) |
+| PowerShell | [Usuń-AzRouteTable](/powershell/module/az.network/remove-azroutetable) |
 
 ## <a name="create-a-route"></a>Tworzenie trasy
 
-Istnieje ograniczenie, ile tras na tabelę tras można utworzyć dla lokalizacji i subskrypcji platformy Azure. Aby uzyskać więcej informacji, zobacz [Azure limits (Ograniczenia platformy Azure)](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits).
+Istnieje limit liczby tras na tabelę tras można utworzyć na lokalizację platformy Azure i subskrypcji. Aby uzyskać szczegółowe informacje, zobacz [Limity sieci — Usługa Azure Resource Manager](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits).
 
-1. W polu wyszukiwania w górnej części portalu wprowadź *tabele tras* w polu wyszukiwania. Gdy **tabele tras** są wyświetlane w wynikach wyszukiwania, wybierz je.
-1. Wybierz z listy tabelę tras, do której chcesz dodać trasę.
-1. W obszarze **Ustawienia**wybierz pozycję **trasy**.
-1. Wybierz pozycję **+ Dodaj**.
-1. Wprowadź unikatową **nazwę** trasy w tabeli tras.
-1. Wprowadź **prefiks adresu**w notacji CIDR, do której chcesz kierować ruchem. Prefiksu nie można zduplikować w więcej niż jednej trasie w tabeli tras, chociaż sam prefiks może być zawarty w innym prefiksie. Na przykład jeśli zdefiniowano 10.0.0.0/16 jako prefiks w jednej trasie, nadal można zdefiniować inną trasę z prefiksem adresu 10.0.0.0/24. Platforma Azure wybiera trasę dla ruchu na podstawie najdłuższych pasujących prefiksów. Aby dowiedzieć się więcej o tym, jak platforma Azure wybiera trasy, zobacz [Omówienie routingu](virtual-networks-udr-overview.md#how-azure-selects-a-route).
-1. Wybierz **Typ następnego przeskoku**. Aby uzyskać szczegółowy opis wszystkich typów następnego przeskoku, zobacz [Omówienie routingu](virtual-networks-udr-overview.md).
-1. Wprowadź adres IP dla **adresu następnego przeskoku**. Adres można wprowadzić tylko w przypadku wybrania *urządzenia wirtualnego* dla **typu następnego przeskoku**.
+1. Przejdź do [witryny Azure portal,](https://portal.azure.com) aby zarządzać tabelami tras. Wyszukaj i wybierz **tabele trasy**.
+
+1. Na liście tabeli tras wybierz tabelę tras, do której chcesz dodać trasę.
+
+1. Na pasku menu tabeli tras wybierz pozycję **Trasy** > **Dodaj**.
+
+1. Wprowadź unikatową **nazwę trasy** dla trasy w tabeli trasy.
+
+1. Wprowadź **prefiks adresu**w notacji CIDR (Classless Inter-Domain Routing), do którego chcesz kierować ruch. Prefiksu nie można zduplikować w więcej niż jednej trasie w tabeli trasy, chociaż prefiks może znajdować się w innym prefiksie. Jeśli na przykład zdefiniowano *10.0.0.0/16* jako prefiks w jednej trasie, nadal można zdefiniować inną trasę z prefiksem adresu *10.0.0.0/22.* Platforma Azure wybiera trasę dla ruchu na podstawie najdłuższego dopasowania prefiksu. Aby dowiedzieć się więcej, zobacz [Jak platforma Azure wybiera trasę](virtual-networks-udr-overview.md#how-azure-selects-a-route).
+
+1. Wybierz **następny typ przeskoku**. Aby dowiedzieć się więcej o następnych typach przeskoku, zobacz [Routing ruchu sieci wirtualnej](virtual-networks-udr-overview.md).
+
+1. Jeśli wybrano **następny typ przeskoku** **urządzenia wirtualnego,** wprowadź adres IP dla **następnego adresu przeskoku**.
+
 1. Kliknij przycisk **OK**.
 
-### <a name="create-a-route---commands"></a>Tworzenie trasy — polecenia
+### <a name="create-a-route---commands"></a>Tworzenie trasy - polecenia
 
-* Interfejs wiersza polecenia platformy Azure: [AZ Network Route-Table Route Create](/cli/azure/network/route-table/route?view=azure-cli-latest)<br>
-* PowerShell: [New-AzRouteConfig](/powershell/module/az.network/new-azrouteconfig)
+| Narzędzie | Polecenie |
+| ---- | ------- |
+| Interfejs wiersza polecenia platformy Azure | [az network route-table route create](/cli/azure/network/route-table/route#az-network-route-table-route-create) |
+| PowerShell | [New-AzRouteConfig](/powershell/module/az.network/new-azrouteconfig) |
 
 ## <a name="view-routes"></a>Wyświetlanie tras
 
-Tabela tras zawiera zero lub wiele tras. Aby dowiedzieć się więcej na temat informacji wyświetlanych podczas wyświetlania tras, zobacz [Omówienie routingu](virtual-networks-udr-overview.md).
+Tabela tras zawiera zero lub więcej tras. Aby dowiedzieć się więcej o informacjach wymienionych podczas wyświetlania tras, zobacz [Routing ruchu sieci wirtualnej](virtual-networks-udr-overview.md).
 
-1. W polu wyszukiwania w górnej części portalu wprowadź *tabele tras* w polu wyszukiwania. Gdy **tabele tras** są wyświetlane w wynikach wyszukiwania, wybierz je.
-1. Wybierz z listy tabelę tras, dla której chcesz wyświetlić trasy.
-1. Wybierz pozycję **trasy** w obszarze **Ustawienia**.
+1. Przejdź do [witryny Azure portal,](https://portal.azure.com) aby zarządzać tabelami tras. Wyszukaj i wybierz **tabele trasy**.
 
-### <a name="view-routes---commands"></a>Wyświetlanie tras — polecenia
+1. Na liście tabeli tras wybierz tabelę tras, dla której chcesz wyświetlić trasy.
 
-* Interfejs wiersza polecenia platformy Azure: [AZ Network Route-Table Route list](/cli/azure/network/route-table/route?view=azure-cli-latest)<br>
-* PowerShell: [Get-AzRouteConfig](/powershell/module/az.network/get-azrouteconfig)
+1. Na pasku menu tabeli tras wybierz pozycję **Trasy,** aby wyświetlić listę tras.
+
+### <a name="view-routes---commands"></a>Wyświetlanie tras - polecenia
+
+| Narzędzie | Polecenie |
+| ---- | ------- |
+| Interfejs wiersza polecenia platformy Azure | [lista tras tabeli tras sieciowych az](/cli/azure/network/route-table/route#az-network-route-table-route-list) |
+| PowerShell | [Get-AzRouteConfig](/powershell/module/az.network/get-azrouteconfig) |
 
 ## <a name="view-details-of-a-route"></a>Wyświetlanie szczegółów trasy
 
-1. W polu wyszukiwania w górnej części portalu wprowadź *tabele tras* w polu wyszukiwania. Gdy **tabele tras** są wyświetlane w wynikach wyszukiwania, wybierz je.
-1. Wybierz tabelę tras, dla której chcesz wyświetlić szczegóły trasy.
-1. Wybierz pozycję **trasy**.
-1. Wybierz trasę, dla której chcesz wyświetlić szczegóły.
+1. Przejdź do [witryny Azure portal,](https://portal.azure.com) aby zarządzać tabelami tras. Wyszukaj i wybierz **tabele trasy**.
 
-### <a name="view-details-of-a-route---commands"></a>Wyświetlanie szczegółów dotyczących tras — polecenia
+1. Na liście tabeli tras wybierz tabelę tras zawierającą trasę, dla której chcesz wyświetlić szczegóły.
 
-* Interfejs wiersza polecenia platformy Azure: [AZ Network Route-Table Route show](/cli/azure/network/route-table/route?view=azure-cli-latest)<br>
-* PowerShell: [Get-AzRouteConfig](/powershell/module/az.network/get-azrouteconfig)
+1. Na pasku menu tabeli tras wybierz pozycję **Trasy,** aby wyświetlić listę tras.
+
+1. Wybierz trasę, o której chcesz wyświetlić szczegóły.
+
+### <a name="view-details-of-a-route---commands"></a>Wyświetlanie szczegółów trasy - polecenia
+
+| Narzędzie | Polecenie |
+| ---- | ------- |
+| Interfejs wiersza polecenia platformy Azure | [az sieć trasy tabeli trasy pokaż](/cli/azure/network/route-table/route#az-network-route-table-route-show) |
+| PowerShell | [Get-AzRouteConfig](/powershell/module/az.network/get-azrouteconfig) |
 
 ## <a name="change-a-route"></a>Zmienianie trasy
 
-1. W polu wyszukiwania w górnej części portalu wprowadź *tabele tras* w polu wyszukiwania. Gdy **tabele tras** są wyświetlane w wynikach wyszukiwania, wybierz je.
-1. Wybierz tabelę tras, dla której chcesz zmienić trasę.
-1. Wybierz pozycję **trasy**.
+1. Przejdź do [witryny Azure portal,](https://portal.azure.com) aby zarządzać tabelami tras. Wyszukaj i wybierz **tabele trasy**.
+
+1. Na liście tabel tras wybierz tabelę tras zawierającą trasę, którą chcesz zmienić.
+
+1. Na pasku menu tabeli tras wybierz pozycję **Trasy,** aby wyświetlić listę tras.
+
 1. Wybierz trasę, którą chcesz zmienić.
+
 1. Zmień istniejące ustawienia na nowe ustawienia, a następnie wybierz pozycję **Zapisz**.
 
-### <a name="change-a-route---commands"></a>Zmienianie trasy — polecenia
+### <a name="change-a-route---commands"></a>Zmienianie trasy - polecenia
 
-* Interfejs wiersza polecenia platformy Azure: [AZ Network Route-Table Route Update](/cli/azure/network/route-table/route?view=azure-cli-latest)<br>
-* PowerShell: [Set-AzRouteConfig](/powershell/module/az.network/set-azrouteconfig)
+| Narzędzie | Polecenie |
+| ---- | ------- |
+| Interfejs wiersza polecenia platformy Azure | [AZ aktualizacja trasy tabeli tras sieciowych](/cli/azure/network/route-table/route#az-network-route-table-route-update) |
+| PowerShell | [Zestaw-AzRouteConfig](/powershell/module/az.network/set-azrouteconfig) |
 
 ## <a name="delete-a-route"></a>Usuwanie trasy
 
-1. W polu wyszukiwania w górnej części portalu wprowadź *tabele tras* w polu wyszukiwania. Gdy **tabele tras** są wyświetlane w wynikach wyszukiwania, wybierz je.
-1. Wybierz tabelę tras, dla której chcesz usunąć trasę.
-1. Wybierz pozycję **trasy**.
-1. Z listy tras wybierz pozycję **...** po prawej stronie trasy, która ma zostać usunięta.
-1. Wybierz pozycję **Usuń**, a następnie wybierz pozycję **tak**.
+1. Przejdź do [witryny Azure portal,](https://portal.azure.com) aby zarządzać tabelami tras. Wyszukaj i wybierz **tabele trasy**.
 
-### <a name="delete-a-route---commands"></a>Usuwanie trasy — polecenia
+1. Na liście tabeli tras wybierz tabelę tras zawierającą trasę, którą chcesz usunąć.
 
-* Interfejs wiersza polecenia platformy Azure: [AZ Network Route-Table Route Delete](/cli/azure/network/route-table/route?view=azure-cli-latest)<br>
-* PowerShell: [Remove-AzRouteConfig](/powershell/module/az.network/remove-azrouteconfig)
+1. Na pasku menu tabeli tras wybierz pozycję **Trasy,** aby wyświetlić listę tras.
 
-## <a name="view-effective-routes"></a>Wyświetl efektywne trasy
+1. Wybierz trasę, którą chcesz usunąć.
 
-Efektywne trasy dla każdego interfejsu sieciowego dołączonego do maszyny wirtualnej to kombinacja utworzonych tabel tras, domyślnych tras platformy Azure oraz wszelkich tras propagowanych z sieci lokalnych za pośrednictwem protokołu BGP za pośrednictwem bramy sieci wirtualnej platformy Azure. Zrozumienie efektywnych tras dla interfejsu sieciowego jest przydatne podczas rozwiązywania problemów z routingiem. Efektywne trasy można wyświetlić dla dowolnego interfejsu sieciowego dołączonego do uruchomionej maszyny wirtualnej.
+1. Wybierz **pozycję Usuń**, a następnie wybierz pozycję **Tak** w oknie dialogowym potwierdzenia.
 
-1. W polu wyszukiwania w górnej części portalu wprowadź nazwę maszyny wirtualnej, dla której chcesz wyświetlić obowiązujące trasy. Jeśli nie znasz nazwy maszyny wirtualnej, wprowadź *maszyny wirtualne* w polu wyszukiwania. Gdy **maszyny wirtualne** pojawiają się w wynikach wyszukiwania, wybierz je i wybierz maszynę wirtualną z listy.
-1. W obszarze **Ustawienia**wybierz pozycję **Sieć** .
+### <a name="delete-a-route---commands"></a>Usuwanie trasy - polecenia
+
+| Narzędzie | Polecenie |
+| ---- | ------- |
+| Interfejs wiersza polecenia platformy Azure | [AZ sieć trasy tabeli usuwania](/cli/azure/network/route-table/route#az-network-route-table-route-delete) |
+| PowerShell | [Usuń-AzRouteConfig](/powershell/module/az.network/remove-azrouteconfig) |
+
+## <a name="view-effective-routes"></a>Wyświetlanie efektywnych tras
+
+Efektywne trasy dla każdego interfejsu sieciowego podłączonego do maszyny Wirtualnej to kombinacja utworzonych tabel tras, domyślnych tras platformy Azure i wszelkich tras propagowanych z sieci lokalnych za pośrednictwem protokołu Brama graniczna (BGP) za pośrednictwem sieci wirtualnej platformy Azure Bramy. Zrozumienie skutecznych tras dla interfejsu sieciowego jest przydatne podczas rozwiązywania problemów z routingiem. Można wyświetlić efektywne trasy dla dowolnego interfejsu sieciowego, który jest dołączony do uruchomionej maszyny Wirtualnej.
+
+1. Przejdź do [witryny Azure portal,](https://portal.azure.com) aby zarządzać maszynami wirtualnymi. Wyszukaj i wybierz **maszyny wirtualne**.
+
+1. Na liście maszyny wirtualnej wybierz maszynę wirtualną, dla której chcesz wyświetlić efektywne trasy.
+
+1. Na pasku menu maszyny Wirtualnej wybierz pozycję **Sieć**.
+
 1. Wybierz nazwę interfejsu sieciowego.
-1. Wybierz pozycję **efektywne trasy** w obszarze **Pomoc techniczna i rozwiązywanie problemów**.
-1. Przejrzyj listę efektywnych tras, aby ustalić, czy istnieje prawidłowa trasa dla miejsca, do którego chcesz kierować ruchem. Dowiedz się więcej na temat typów następnego przeskoku, które są widoczne na tej liście w temacie [Omówienie routingu](virtual-networks-udr-overview.md).
 
-### <a name="view-effective-routes---commands"></a>Wyświetlanie efektywnych tras — polecenia
+1. Na pasku menu interfejsu sieciowego wybierz pozycję **Efektywne trasy**.
 
-* Interfejs wiersza polecenia platformy Azure: [AZ Network nic show-skuteczna-Route-Table](/cli/azure/network/nic?view=azure-cli-latest)<br>
-* PowerShell: [Get-AzEffectiveRouteTable](/powershell/module/az.network/get-azeffectiveroutetable)
+1. Przejrzyj listę skutecznych tras, aby sprawdzić, czy istnieje poprawna trasa dla miejsca, do którego chcesz kierować ruch. Dowiedz się więcej o następnych typach przeskoku widocznych na tej liście w [trybie Routingu ruchu sieci wirtualnej](virtual-networks-udr-overview.md).
 
-## <a name="validate-routing-between-two-endpoints"></a>Weryfikowanie routingu między dwoma punktami końcowymi
+### <a name="view-effective-routes---commands"></a>Wyświetlanie tras efektywnych - polecenia
 
-Możesz określić typ następnego przeskoku między maszyną wirtualną i adresem IP innego zasobu platformy Azure, zasobem lokalnym lub zasobem w Internecie. Określanie routingu platformy Azure jest pomocne podczas rozwiązywania problemów z routingiem. Aby wykonać to zadanie, musisz mieć istniejące Network Watcher. Jeśli nie masz istniejącego Network Watcher, utwórz je, wykonując kroki z sekcji [Tworzenie wystąpienia Network Watcher](../network-watcher/network-watcher-create.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+| Narzędzie | Polecenie |
+| ---- | ------- |
+| Interfejs wiersza polecenia platformy Azure | [az sieć nic show-effective-route-table](/cli/azure/network/nic#az-network-nic-show-effective-route-table) |
+| PowerShell | [Get-AzEffectiveRouteTable](/powershell/module/az.network/get-azeffectiveroutetable) |
 
-1. W polu wyszukiwania w górnej części portalu wprowadź *obserwatora sieci* w polu wyszukiwania. Gdy w wynikach wyszukiwania pojawi się nazwa **Network Watcher**, wybierz ją.
-1. Wybierz kolejno pozycje **Następny przeskok** w obszarze **narzędzia diagnostyki sieci**.
-1. Wybierz swoją **subskrypcję** i **grupę zasobów** źródłowej maszyny wirtualnej, z której chcesz sprawdzić poprawność routingu.
-1. Wybierz **maszynę wirtualną**, **interfejs sieciowy** dołączony do maszyny wirtualnej i **źródłowy adres IP** przypisany do interfejsu sieciowego, z którego chcesz sprawdzić poprawność routingu.
-1. Wprowadź **docelowy adres IP** , na który chcesz sprawdzić poprawność routingu.
-1. Wybierz **Następny przeskok**.
-1. Po krótkim czasie oczekiwania zwracane są informacje, które mówią, że typ następnego przeskoku i identyfikator trasy, która skierowała ruch. Dowiedz się więcej na temat typów następnego przeskoku, które są widoczne w temacie [Omówienie routingu](virtual-networks-udr-overview.md).
+## <a name="validate-routing-between-two-endpoints"></a>Sprawdzanie poprawności routingu między dwoma punktami końcowymi
 
-### <a name="validate-routing-between-two-endpoints---commands"></a>Weryfikowanie routingu między dwoma punktami końcowymi — polecenia
+Można określić następny typ przeskoku między maszyną wirtualną a adresem IP innego zasobu platformy Azure, zasobu lokalnego lub zasobu w Internecie. Określanie routingu platformy Azure jest przydatne podczas rozwiązywania problemów z routingiem. Aby wykonać to zadanie, musisz mieć istniejącego obserwatora sieciowego. Jeśli nie masz już obserwatora sieci, utwórz go, wykonując czynności opisane w instancji [Utwórz obserwatora sieci.](../network-watcher/network-watcher-create.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
 
-* Interfejs wiersza polecenia platformy Azure: [AZ Network obserwator show-Next-przeskok](/cli/azure/network/watcher?view=azure-cli-latest)<br>
-* PowerShell: [Get-AzNetworkWatcherNextHop](/powershell/module/az.network/get-aznetworkwatchernexthop)
+1. Przejdź do [witryny Azure portal,](https://portal.azure.com) aby zarządzać obserwatorami sieci. Wyszukaj i wybierz **pozycję Obserwator sieci**.
+
+1. Na pasku menu obserwatora sieci wybierz pozycję **Następny przeskok**.
+
+1. W **obserwatorze sieci | Następna strona przeskoku:**
+
+    1. Wybierz **subskrypcję** i **grupę Zasobów** źródłowej maszyny Wirtualnej, z której chcesz sprawdzić poprawność routingu.
+
+    1. Wybierz **maszynę wirtualną** i **interfejs sieciowy,** który jest dołączony do maszyny Wirtualnej.
+    
+    1. Wprowadź **źródłowy adres IP** przypisany do interfejsu sieciowego, z którego chcesz sprawdzić poprawność routingu.
+
+    1. Wprowadź **docelowy adres IP,** do którego chcesz sprawdzić poprawność routingu.
+
+1. Wybierz **następny przeskok**.
+
+Po krótkim oczekiwaniu platforma Azure informuje o następnym typie przeskoku i identyfikatorze trasy, która skierowała ruch. Dowiedz się więcej o następnych typach przeskoku, które są widoczne, zwracane w [routingu ruchu sieci wirtualnej](virtual-networks-udr-overview.md).
+
+### <a name="validate-routing-between-two-endpoints---commands"></a>Sprawdzanie poprawności routingu między dwoma punktami końcowymi - polecenia
+
+| Narzędzie | Polecenie |
+| ---- | ------- |
+| Interfejs wiersza polecenia platformy Azure | [az sieć watcher show-next-hop](/cli/azure/network/watcher#az-network-watcher-show-next-hop) |
+| PowerShell | [Get-AzNetworkWatcherNextHop](/powershell/module/az.network/get-aznetworkwatchernexthop) |
 
 ## <a name="permissions"></a>Uprawnienia
 
-Aby wykonać zadania dotyczące tabel tras i tras, Twoje konto musi być przypisane do roli [współautor sieci](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) lub do roli [niestandardowej](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) , do której przypisano odpowiednie działania wymienione w poniższej tabeli:
+Aby wykonywać zadania w tabelach i trasach tras, konto musi być przypisane do [roli współautora sieci](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) lub do [roli niestandardowej,](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) która przypisuje odpowiednie akcje wymienione w poniższej tabeli:
 
-| Akcja                                                          |   Name (Nazwa)                                                  |
+| Akcja                                                          |   Nazwa                                                  |
 |--------------------------------------------------------------   |   -------------------------------------------           |
-| Microsoft.Network/routeTables/read                              |   Odczytaj tabelę tras                                    |
-| Microsoft.Network/routeTables/write                             |   Tworzenie lub aktualizowanie tabeli tras                        |
+| Microsoft.Network/routeTables/read                              |   Czytanie tabeli marszruty                                    |
+| Microsoft.Network/routeTables/write                             |   Tworzenie lub aktualizowanie tabeli marszruty                        |
 | Microsoft.Network/routeTables/delete                            |   Usuwanie tabeli tras                                  |
 | Microsoft.Network/routeTables/join/action                       |   Kojarzenie tabeli tras z podsiecią                   |
-| Microsoft.Network/routeTables/routes/read                       |   Odczytaj trasę                                          |
-| Microsoft.Network/routeTables/routes/write                      |   Utwórz lub zaktualizuj trasę                              |
+| Microsoft.Network/routeTables/routes/read                       |   Czytanie trasy                                          |
+| Microsoft.Network/routeTables/routes/write                      |   Tworzenie lub aktualizowanie trasy                              |
 | Microsoft.Network/routeTables/routes/delete                     |   Usuwanie trasy                                        |
-| Microsoft.Network/networkInterfaces/effectiveRouteTable/action  |   Pobierz obowiązującą tabelę tras dla interfejsu sieciowego |
-| Microsoft.Network/networkWatchers/nextHop/action                |   Pobiera następny przeskok z maszyny wirtualnej                           |
+| Microsoft.Network/networkInterfaces/effectiveRouteTable/action  |   Pobierz tabelę efektywnej trasy dla interfejsu sieciowego |
+| Microsoft.Network/networkWatchers/nextHop/akcja                |   Pobiera następny przeskok z maszyny Wirtualnej                           |
 
 ## <a name="next-steps"></a>Następne kroki
 
-* Tworzenie tabeli tras przy użyciu [programu PowerShell](powershell-samples.md) lub przykładów skryptów [interfejsu wiersza polecenia platformy Azure](cli-samples.md) lub korzystanie z szablonów usługi Azure [Menedżer zasobów](template-samples.md)<br>
-* Tworzenie i stosowanie [zasad platformy Azure](policy-samples.md) dla sieci wirtualnych
+- Tworzenie tabeli marszruty przy użyciu przykładowych skryptów interfejsu wiersza polecenia programu [PowerShell](powershell-samples.md) lub [interfejsu wiersza polecenia platformy Azure](cli-samples.md) lub [szablonów usługi](template-samples.md) Azure Resource Manager
+- Tworzenie i stosowanie [zasad platformy Azure](policy-samples.md) dla sieci wirtualnych

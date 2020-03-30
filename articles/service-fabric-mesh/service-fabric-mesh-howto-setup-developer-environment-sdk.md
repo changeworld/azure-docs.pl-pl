@@ -1,15 +1,15 @@
 ---
-title: Skonfiguruj środowisko deweloperskie systemu Windows dla Service Fabric siatki
+title: Konfigurowanie środowiska deweloperskiego systemu Windows dla siatki sieci szkieletowej usług
 description: Skonfigurowanie środowiska deweloperskiego w systemie Windows pozwala utworzyć aplikację usługi Service Fabric Mesh i wdrożyć ją w usłudze Azure Service Fabric Mesh.
 author: dkkapur
 ms.author: dekapur
 ms.date: 12/12/2018
 ms.topic: conceptual
 ms.openlocfilehash: a674047722d4deca02d8f4d38a0826e479065037
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79259203"
 ---
 # <a name="set-up-your-windows-development-environment-to-build-service-fabric-mesh-apps"></a>Konfigurowanie środowiska deweloperskiego w systemie Windows w celu tworzenia aplikacji usługi Service Fabric Mesh
@@ -17,7 +17,7 @@ ms.locfileid: "79259203"
 Aby móc tworzyć i uruchamiać aplikacje usługi Azure Service Fabric Mesh na maszynie deweloperskiej z systemem Windows, musisz mieć:
 
 * Docker
-* Program Visual Studio 2017 lub nowszy
+* Visual Studio 2017 lub nowsze
 * Środowisko uruchomieniowe usługi Service Fabric Mesh
 * Zestaw Service Fabric Mesh SDK i narzędzia.
 
@@ -27,32 +27,32 @@ Oraz jedną z następujących wersji systemu Windows:
 * Windows Server w wersji 1709
 * Windows Server w wersji 1803
 
-Poniższe instrukcje pomogą Ci w założeniu, że wszystko jest zainstalowane w zależności od używanej wersji systemu Windows.
+Poniższe instrukcje pomogą Ci zainstalować wszystko na podstawie wersji systemu Windows, którą używasz.
 
 [!INCLUDE [preview note](./includes/include-preview-note.md)]
 
-## <a name="visual-studio"></a>{1&gt;Visual Studio&lt;1}
+## <a name="visual-studio"></a>Visual Studio
 
-Do wdrożenia aplikacji Service Fabric siatki jest wymagany program Visual Studio 2017 lub nowszy. [Zainstaluj wersję 15.6.0][download-visual-studio] lub nowszą i Włącz następujące obciążenia:
+Visual Studio 2017 lub nowsze jest wymagane do wdrażania aplikacji sieci szkieletowej usługi. [Zainstaluj wersję 15.6.0][download-visual-studio] lub nowszą i włącz następujące obciążenia:
 
 * Tworzenie aplikacji na platformie ASP.NET i aplikacji internetowych
 * Programowanie na platformie Azure
 
 ## <a name="install-docker"></a>Zainstaluj platformę Docker
 
-Jeśli platforma Docker jest już zainstalowana, upewnij się, że masz najnowszą wersję. Program Docker może monitować o podanie nowej wersji, ale sprawdź ręcznie, aby upewnić się, że masz najnowszą wersję.
+Jeśli platforma Docker jest już zainstalowana, upewnij się, że masz najnowszą wersję. Docker może monitować o nową wersję, ale sprawdź ręcznie, aby upewnić się, że masz najnowszą wersję.
 
 #### <a name="install-docker-on-windows-10"></a>Instalowanie platformy Docker w systemie Windows 10
 
-Pobierz i zainstaluj najnowszą wersję [platformy Docker Community Edition dla systemu Windows][download-docker] w celu obsługi kontenerów Service Fabric aplikacji używanych przez Service Fabric siatkę.
+Pobierz i zainstaluj najnowszą wersję aplikacji [Docker Community Edition for Windows][download-docker] do obsługi konteneryzowanych aplikacji usługi Service Fabric używanych w usłudze Service Fabric Mesh.
 
 Podczas instalacji wybierz opcję **Use Windows containers instead of Linux containers** (Użyj kontenerów systemu Windows zamiast kontenerów systemu Linux), gdy pojawi się odpowiedni monit.
 
-Jeśli funkcja Hyper-V nie jest włączona na tym komputerze, Instalator platformy Docker będzie oferować tę funkcję. Jeśli pojawi się taki monit, kliknij przycisk **OK**, aby to zrobić.
+Jeśli funkcja Hyper-V nie jest włączona na komputerze, instalator platformy Docker zaoferuje jego włączenie. Jeśli pojawi się taki monit, kliknij przycisk **OK**, aby to zrobić.
 
 #### <a name="install-docker-on-windows-server-2016"></a>Instalowanie platformy Docker w systemie Windows Server 2016
 
-Jeśli nie masz włączonej roli funkcji Hyper-V, otwórz program PowerShell jako administrator i uruchom następujące polecenie, aby włączyć funkcję Hyper-V, a następnie uruchom ponownie komputer. Aby uzyskać więcej informacji, zobacz [Docker Enterprise Edition dla systemu Windows Server][download-docker-server].
+Jeśli nie masz włączonej roli funkcji Hyper-V, otwórz program PowerShell jako administrator i uruchom następujące polecenie, aby włączyć funkcję Hyper-V, a następnie uruchom ponownie komputer. Aby uzyskać więcej informacji, zobacz [Docker Enterprise Edition for Windows Server (Oprogramowanie Docker Enterprise Edition for Windows Server)][download-docker-server].
 
 ```powershell
 Install-WindowsFeature -Name Hyper-V -IncludeManagementTools
@@ -72,13 +72,13 @@ Install-WindowsFeature Containers
 
 Zainstaluj środowisko uruchomieniowe, zestaw SDK oraz narzędzia usługi Service Fabric Mesh w kolejności podanej poniżej.
 
-1. Zainstaluj [zestaw SDK siatki Service Fabric][download-sdkmesh] przy użyciu Instalatora platformy sieci Web. Spowoduje to również zainstalowanie zestawu SDK i środowiska uruchomieniowego usługi Microsoft Azure Service Fabric.
-2. Zainstaluj [rozszerzenie Visual Studio Service Fabric siatka Tools (wersja zapoznawcza)][download-tools] z Visual Studio Marketplace.
+1. Zainstaluj [zestaw SDK usługi Service Fabric Mesh][download-sdkmesh] za pomocą Instalatora platformy sieci Web. Spowoduje to również zainstalowanie zestawu SDK i środowiska uruchomieniowego usługi Microsoft Azure Service Fabric.
+2. Zainstaluj [rozszerzenie Visual Studio Service Fabric Mesh Tools (wersja zapoznawcza)][download-tools] z witryny Visual Studio Marketplace.
 
 ## <a name="build-a-cluster"></a>Tworzenie klastra
 
 > [!IMPORTANT]
-> Utworzenie klastra **wymaga**  uruchomienia platformy Docker.
+> Utworzenie klastra **wymaga ** uruchomienia platformy Docker.
 > Aby sprawdzić, czy platforma Docker jest uruchomiona, otwórz okno terminalu i uruchom polecenie `docker ps`. Jeśli odpowiedź nie wskazuje na wystąpienie błędu, oznacza to, że platforma Docker jest uruchomiona i można przystąpić do tworzenia klastra.
 
 > [!Note]
@@ -87,7 +87,7 @@ Zainstaluj środowisko uruchomieniowe, zestaw SDK oraz narzędzia usługi Servic
 
 Jeśli używasz programu Visual Studio, możesz pominąć tę sekcję, ponieważ program Visual Studio utworzy klaster lokalny, jeśli go nie masz.
 
-Aby uzyskać najlepszą wydajność debugowania podczas tworzenia i uruchamiania pojedynczej aplikacji Service Fabric w danym momencie, należy utworzyć lokalny klaster programistyczny z jednym węzłem. W przypadku uruchamiania wielu aplikacji w danym momencie należy utworzyć lokalny klaster programistyczny z pięcioma węzłami. Klaster musi być uruchomiony podczas każdego wdrażania lub debugowania projektu usługi Service Fabric Mesh.
+Aby uzyskać najlepszą wydajność debugowania podczas tworzenia i uruchamiania pojedynczej aplikacji sieci szkieletowej usług naraz, utwórz klaster lokalnego rozwoju z jednym węzłem. Jeśli korzystasz z wielu aplikacji naraz, utwórz pięciowęzłowy klaster lokalnego rozwoju. Klaster musi być uruchomiony podczas każdego wdrażania lub debugowania projektu usługi Service Fabric Mesh.
 
 Po zainstalowaniu środowiska uruchomieniowego, zestawów SDK, narzędzi programu Visual Studio i platformy Docker oraz uruchomieniu platformy Docker utwórz klaster projektowy.
 

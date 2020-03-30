@@ -1,55 +1,55 @@
 ---
 title: Przychodzące/wychodzące adresy IP
-description: Dowiedz się, w jaki sposób przychodzący i wychodzący adres IP są używane w Azure App Service, gdy zmieniają się i jak znaleźć adresy dla aplikacji.
+description: Dowiedz się, jak przychodzące i wychodzące adresy IP są używane w usłudze Azure App Service, gdy się zmieniają i jak znaleźć adresy aplikacji.
 ms.topic: article
 ms.date: 06/06/2019
 ms.custom: seodec18
 ms.openlocfilehash: aebce04fe2f1b055a4d498021dcd25144cd122a9
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79279210"
 ---
-# <a name="inbound-and-outbound-ip-addresses-in-azure-app-service"></a>Przychodzące i wychodzące adresy IP w Azure App Service
+# <a name="inbound-and-outbound-ip-addresses-in-azure-app-service"></a>Przychodzące i wychodzące adresy IP w usłudze Azure App Service
 
-[Azure App Service](overview.md) to usługa z wieloma dzierżawami, z wyjątkiem [środowisk App Service](environment/intro.md). Aplikacje, które nie znajdują się w środowisku App Service (nie w [warstwie izolowanej](https://azure.microsoft.com/pricing/details/app-service/)), współużytkują infrastrukturę sieci z innymi aplikacjami. W związku z tym przychodzące i wychodzące adresy IP aplikacji mogą być różne i nawet w pewnych sytuacjach mogą się zmieniać. 
+[Usługa Azure App Service](overview.md) jest usługą wielodostępną, z wyjątkiem [środowisk usługi app service.](environment/intro.md) Aplikacje, które nie znajdują się w środowisku usługi app service (nie w [warstwie Izolowane)](https://azure.microsoft.com/pricing/details/app-service/)współużytkują infrastrukturę sieciową z innymi aplikacjami. W rezultacie przychodzące i wychodzące adresy IP aplikacji mogą być różne, a nawet mogą ulec zmianie w pewnych sytuacjach. 
 
-[Środowiska App Service](environment/intro.md) używają dedykowanych infrastruktur sieciowych, więc aplikacje działające w środowisku App Service otrzymują statyczne, dedykowane adresy IP zarówno dla połączeń przychodzących, jak i wychodzących.
+[Środowiska usługi app service](environment/intro.md) używają dedykowanej infrastruktury sieciowej, dzięki czemu aplikacje działające w środowisku usługi app service otrzymują statyczne, dedykowane adresy IP zarówno dla połączeń przychodzących, jak i wychodzących.
 
-## <a name="when-inbound-ip-changes"></a>Gdy przychodzące zmiany adresów IP
+## <a name="when-inbound-ip-changes"></a>Po zmianie przychodzącego adresu IP
 
-Niezależnie od liczby wystąpień skalowanych w poziomie, każda aplikacja ma jeden adres IP ruchu przychodzącego. Adres IP ruchu przychodzącego może ulec zmianie podczas wykonywania jednej z następujących czynności:
+Niezależnie od liczby wystąpień skalowane w poziomie każda aplikacja ma jeden przychodzący adres IP. Przychodzący adres IP może ulec zmianie podczas wykonywania jednej z następujących czynności:
 
-- Usuń aplikację i utwórz ją ponownie w innej grupie zasobów.
-- Usuń ostatnią aplikację w kombinacji grupy zasobów _i_ regionu i utwórz ją ponownie.
-- Usuń istniejące powiązanie SSL, takie jak podczas odnawiania certyfikatu (zobacz [odnów certyfikat](configure-ssl-certificate.md#renew-certificate)).
+- Usuń aplikację i ponownie stwórz ją w innej grupie zasobów.
+- Usuń ostatnią aplikację w kombinacji grupy _zasobów i_ regionu i ponownie ją utworzyć.
+- Usuwanie istniejącego powiązania SSL, na przykład podczas odnawiania certyfikatu (zobacz [Odnawianie certyfikatu).](configure-ssl-certificate.md#renew-certificate)
 
 ## <a name="find-the-inbound-ip"></a>Znajdowanie przychodzącego adresu IP
 
-Po prostu uruchom następujące polecenie w lokalnym terminalu:
+Wystarczy uruchomić następujące polecenie w terminalu lokalnym:
 
 ```bash
 nslookup <app-name>.azurewebsites.net
 ```
 
-## <a name="get-a-static-inbound-ip"></a>Pobierz statyczny adres IP dla ruchu przychodzącego
+## <a name="get-a-static-inbound-ip"></a>Uzyskaj statyczny przychodzący adres IP
 
-Czasami może być potrzebny dedykowany, statyczny adres IP dla aplikacji. Aby uzyskać statyczny adres IP dla ruchu przychodzącego, należy skonfigurować [powiązanie protokołu SSL opartego na](configure-ssl-bindings.md#secure-a-custom-domain)protokole IP. Jeśli w rzeczywistości nie potrzebujesz funkcji SSL do zabezpieczenia aplikacji, możesz nawet przekazać certyfikat z podpisem własnym dla tego powiązania. W przypadku wiązania SSL opartego na protokole IP certyfikat jest powiązany z samym adresem IP, dlatego App Service udostępnia statyczny adres IP w celu jego wystąpienia. 
+Czasami możesz chcieć dedykowanego, statycznego adresu IP dla aplikacji. Aby uzyskać statyczny przychodzący adres IP, należy skonfigurować [powiązanie SSL oparte na protoke.](configure-ssl-bindings.md#secure-a-custom-domain) Jeśli faktycznie nie potrzebujesz funkcji SSL do zabezpieczenia aplikacji, możesz nawet przekazać certyfikat z podpisem własnym dla tego powiązania. W powiązaniu SSL opartym na protoke ip certyfikat jest powiązany z samym adresem IP, więc usługa App Service udostępnia statyczny adres IP, aby to się stało. 
 
-## <a name="when-outbound-ips-change"></a>Po zmianie wychodzących adresów IP
+## <a name="when-outbound-ips-change"></a>Gdy wychodzące ip zmiany
 
-Niezależnie od liczby wystąpień skalowanych w poziomie, każda aplikacja ma określoną liczbę wychodzących adresów IP w danym momencie. Każde połączenie wychodzące z aplikacji App Service, na przykład do bazy danych zaplecza, używa jednego z wychodzących adresów IP jako źródłowego adresu IP. Nie można wcześniej wiedzieć, który adres IP danego wystąpienia aplikacji będzie używany do nawiązywania połączenia wychodzącego, więc usługa zaplecza musi otworzyć Zaporę do wszystkich wychodzących adresów IP aplikacji.
+Niezależnie od liczby wystąpień skalowane w poziomie, każda aplikacja ma określoną liczbę wychodzących adresów IP w danym momencie. Każde połączenie wychodzące z aplikacji Usługi App Service, takie jak baza danych zaplecza, używa jednego z wychodzących adresów IP jako źródłowego adresu IP. Nie można wcześniej wiedzieć, który adres IP danego wystąpienia aplikacji będzie używać do nawiązywania połączenia wychodzącego, więc usługa zaplecza musi otworzyć zaporę na wszystkie wychodzące adresy IP aplikacji.
 
-Zestaw wychodzących adresów IP dla aplikacji zmienia się podczas skalowania aplikacji między niższą warstwą (**podstawowa**, **standardowa**i **Premium**) i warstwą **Premium v2** .
+Zestaw wychodzących adresów IP dla aplikacji zmienia się podczas skalowania aplikacji między niższymi warstwami **(Podstawowa,** **Standardowa**i **Premium)** i warstwą **Premium V2.**
 
-Można znaleźć zestaw wszystkich możliwych wychodzących adresów IP, które mogą być używane przez aplikację, niezależnie od warstw cenowych, szukając właściwości `possibleOutboundIpAddresses` lub w polu **dodatkowe wychodzące adresy IP** w bloku **Właściwości** w Azure Portal. Zobacz [Znajdź wychodzące adresy IP](#find-outbound-ips).
+Zestaw wszystkich możliwych wychodzących adresów IP, których aplikacja może używać, niezależnie od warstw `possibleOutboundIpAddresses` cenowych, wyszukując właściwość lub w polu **Dodatkowe wychodzące adresy IP** w bloku **Właściwości** w witrynie Azure portal. Zobacz [Znajdowanie wychodzących usług IP](#find-outbound-ips).
 
-## <a name="find-outbound-ips"></a>Znajdź wychodzące adresy IP
+## <a name="find-outbound-ips"></a>Znajdowanie wychodzących usług IP
 
-Aby znaleźć wychodzące adresy IP aktualnie używane przez aplikację w Azure Portal, kliknij przycisk **Właściwości** w nawigacji po lewej stronie aplikacji. Są one wymienione w polu **wychodzące adresy IP** .
+Aby znaleźć wychodzące adresy IP aktualnie używane przez aplikację w witrynie Azure portal, kliknij **pozycję Właściwości** w nawigacji po lewej stronie aplikacji. Są one wyświetlane w polu **Wychodzące adresy IP.**
 
-Te same informacje można znaleźć, uruchamiając następujące polecenie w [Cloud Shell](../cloud-shell/quickstart.md).
+Te same informacje można znaleźć, uruchamiając następujące polecenie w [usłudze Cloud Shell](../cloud-shell/quickstart.md).
 
 ```azurecli-interactive
 az webapp show --resource-group <group_name> --name <app_name> --query outboundIpAddresses --output tsv
@@ -59,9 +59,9 @@ az webapp show --resource-group <group_name> --name <app_name> --query outboundI
 (Get-AzWebApp -ResourceGroup <group_name> -name <app_name>).OutboundIpAddresses
 ```
 
-Aby znaleźć _wszystkie_ możliwe wychodzące adresy IP dla aplikacji, bez względu na warstwy cenowe, kliknij pozycję **Właściwości** w obszarze nawigacji po lewej stronie aplikacji. Są one wymienione w polu **dodatkowe wychodzące adresy IP** .
+Aby znaleźć _wszystkie_ możliwe wychodzące adresy IP aplikacji, niezależnie od warstw cenowych, kliknij **pozycję Właściwości** w nawigacji po lewej stronie aplikacji. Są one wymienione w polu **Dodatkowe wychodzące adresy IP.**
 
-Te same informacje można znaleźć, uruchamiając następujące polecenie w [Cloud Shell](../cloud-shell/quickstart.md).
+Te same informacje można znaleźć, uruchamiając następujące polecenie w [usłudze Cloud Shell](../cloud-shell/quickstart.md).
 
 ```azurecli-interactive
 az webapp show --resource-group <group_name> --name <app_name> --query possibleOutboundIpAddresses --output tsv
@@ -76,4 +76,4 @@ az webapp show --resource-group <group_name> --name <app_name> --query possibleO
 Dowiedz się, jak ograniczyć ruch przychodzący według źródłowych adresów IP.
 
 > [!div class="nextstepaction"]
-> [Ograniczenia statycznych adresów IP](app-service-ip-restrictions.md)
+> [Statyczne ograniczenia adresów IP](app-service-ip-restrictions.md)

@@ -1,6 +1,6 @@
 ---
-title: Tworzenie, zmienianie lub usuwanie sieci wirtualnej TAP — interfejs wiersza polecenia platformy Azure
-description: Dowiedz się, jak utworzyć, zmienić lub usunąć sieć wirtualną NACIŚNIĘCIe przy użyciu interfejsu wiersza polecenia platformy Azure.
+title: Tworzenie, zmienianie lub usuwanie sieci wirtualnej TAP — azure cli
+description: Dowiedz się, jak utworzyć, zmienić lub usunąć tap sieci wirtualnej przy użyciu interfejsu wiersza polecenia platformy Azure.
 services: virtual-network
 documentationcenter: na
 author: karthikananth
@@ -15,22 +15,22 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/18/2018
 ms.author: kaanan
-ms.openlocfilehash: 05ce45a52db2b8a47223023ce31b5591b2b97c37
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 56288a65dc9e5b12a12393965b9670e394146181
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74185395"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80234971"
 ---
-# <a name="work-with-a-virtual-network-tap-using-the-azure-cli"></a>Współpraca z siecią wirtualną przy użyciu interfejsu wiersza polecenia platformy Azure
+# <a name="work-with-a-virtual-network-tap-using-the-azure-cli"></a>Praca z siecią wirtualną TAP przy użyciu interfejsu wiersza polecenia platformy Azure
 
-Usługa Azure Virtual Network TAP (punkt dostępu terminalu) umożliwia ciągłą przesyłanie strumieniowego ruchu sieciowego maszyny wirtualnej do narzędzia do zbierania pakietów sieciowych lub narzędzi analitycznych. Moduł zbierający lub narzędzie analityczne jest dostarczany przez partnera [wirtualnego urządzenia sieciowego](https://azure.microsoft.com/solutions/network-appliances/) . Aby uzyskać listę rozwiązań partnerskich, które są sprawdzane pod kątem współpracy z siecią wirtualną, zobacz [rozwiązania partnerskie](virtual-network-tap-overview.md#virtual-network-tap-partner-solutions). 
+Usługa Azure virtual network TAP (Terminal Access Point) umożliwia ciągłe przesyłanie strumieniowe ruchu sieciowego maszyny wirtualnej do modułu zbierającego pakiety sieciowego lub narzędzia analitycznego. Narzędzie do tworzenia lub analizy jest dostarczane przez partnera [urządzenia wirtualnego sieci.](https://azure.microsoft.com/solutions/network-appliances/) Aby uzyskać listę rozwiązań partnerskich, które są sprawdzane do pracy z siecią wirtualną TAP, zobacz [rozwiązania partnerów](virtual-network-tap-overview.md#virtual-network-tap-partner-solutions). 
 
-## <a name="create-a-virtual-network-tap-resource"></a>Utwórz zasób TAP sieci wirtualnej
+## <a name="create-a-virtual-network-tap-resource"></a>Tworzenie zasobu TAP w sieci wirtualnej
 
-Zapoznaj się z [wymaganiami wstępnymi](virtual-network-tap-overview.md#prerequisites) przed utworzeniem zasobu TAP sieci wirtualnej. Poniższe polecenia można uruchomić w [Azure Cloud Shell](https://shell.azure.com/bash)lub przez uruchomienie interfejsu wiersza polecenia platformy Azure (CLI) na komputerze. Azure Cloud Shell to bezpłatna interaktywna powłoka, która nie wymaga instalacji interfejsu wiersza polecenia platformy Azure na komputerze. Musisz zalogować się do platformy Azure przy użyciu konta, które ma odpowiednie [uprawnienia](virtual-network-tap-overview.md#permissions). Ten artykuł wymaga interfejsu wiersza polecenia platformy Azure w wersji 2.0.46 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest zainstalowana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure 2.0](/cli/azure/install-azure-cli). Sieć wirtualna TAP jest obecnie dostępna jako rozszerzenie. Aby zainstalować rozszerzenie, należy uruchomić `az extension add -n virtual-network-tap`. Jeśli używasz interfejsu wiersza polecenia platformy Azure lokalnie, musisz również uruchomić `az login`, aby utworzyć połączenie z platformą Azure.
+Przed utworzeniem zasobu TAP sieci wirtualnej należy przeczytać [wymagania wstępne.](virtual-network-tap-overview.md#prerequisites) Można uruchomić polecenia, które należy wykonać w [usłudze Azure Cloud Shell](https://shell.azure.com/bash)lub uruchamiając interfejs wiersza polecenia platformy Azure (CLI) z komputera. Usługa Azure Cloud Shell to bezpłatna powłoka interaktywna, która nie wymaga instalowania interfejsu wiersza polecenia platformy Azure na komputerze. Musisz zalogować się na platformie Azure przy za pomocą konta, które ma odpowiednie [uprawnienia](virtual-network-tap-overview.md#permissions). Ten artykuł wymaga interfejsu wiersza polecenia platformy Azure w wersji 2.0.46 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest zainstalowana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure 2.0](/cli/azure/install-azure-cli). Tap sieci wirtualnej jest obecnie dostępny jako rozszerzenie. Aby zainstalować rozszerzenie, musisz `az extension add -n virtual-network-tap`uruchomić program . Jeśli korzystasz z interfejsu wiersza polecenia platformy `az login` Azure lokalnie, należy również uruchomić, aby utworzyć połączenie z platformą Azure.
 
-1. Pobierz identyfikator subskrypcji do zmiennej, która jest używana w kolejnym kroku:
+1. Pobierz identyfikator subskrypcji do zmiennej, która jest używana w późniejszym kroku:
 
    ```azurecli-interactive
    subscriptionId=$(az account show \
@@ -38,21 +38,21 @@ Zapoznaj się z [wymaganiami wstępnymi](virtual-network-tap-overview.md#prerequ
    --out tsv)
    ```
 
-2. Ustaw identyfikator subskrypcji, który będzie używany do tworzenia zasobów TAP sieci wirtualnej.
+2. Ustaw identyfikator subskrypcji, który będzie używany do tworzenia zasobu TAP sieci wirtualnej.
 
    ```azurecli-interactive
    az account set --subscription $subscriptionId
    ```
 
-3. Zarejestruj ponownie identyfikator subskrypcji, którego będziesz używać do tworzenia zasobu sieci wirtualnej. Jeśli podczas tworzenia zasobu TAP wystąpi błąd rejestracji, uruchom następujące polecenie:
+3. Ponownie zarejestruj identyfikator subskrypcji, który będzie używany do tworzenia zasobu TAP sieci wirtualnej. Jeśli podczas tworzenia zasobu TAP pojawia się błąd rejestracji, uruchom następujące polecenie:
 
    ```azurecli-interactive
    az provider register --namespace Microsoft.Network --subscription $subscriptionId
    ```
 
-4. Jeśli miejsce docelowe dla sieci wirtualnej naciśnij pozycję interfejs sieciowy w urządzeniu wirtualnym sieci dla modułu zbierającego lub narzędzia analitycznego —
+4. Jeśli miejscem docelowym dla sieci wirtualnej TAP jest interfejs sieciowy w sieciowym urządzeniu wirtualnym dla modułu zbierającego lub narzędzia analitycznego -
 
-   - Pobierz konfigurację adresu IP interfejsu sieciowego sieciowego urządzenia wirtualnego do zmiennej, która jest używana w późniejszym kroku. Identyfikator jest punktem końcowym, który będzie agregować ruch dla NACISKu. Poniższy przykład pobiera identyfikator *ipconfig1* IP dla interfejsu sieciowego o nazwie *myNetworkInterface*w grupie zasobów o nazwie Moja *zasobów*:
+   - Pobierz konfigurację IP interfejsu sieciowego urządzenia wirtualnego do zmiennej, która jest używana w późniejszym kroku. Identyfikator jest punktem końcowym, który zagreguje ruch TAP. Poniższy przykład pobiera identyfikator konfiguracji *ipconfig1* IP dla interfejsu sieciowego o nazwie *myNetworkInterface*, w grupie zasobów o nazwie *myResourceGroup:*
 
       ```azurecli-interactive
        IpConfigId=$(az network nic ip-config show \
@@ -63,7 +63,7 @@ Zapoznaj się z [wymaganiami wstępnymi](virtual-network-tap-overview.md#prerequ
        --out tsv)
       ```
 
-   - Utwórz sieć wirtualną naciśnij w regionie westcentralus Azure, używając identyfikatora konfiguracji adresu IP jako miejsca docelowego i opcjonalnej właściwości portu. Port Określa port docelowy w konfiguracji protokołu IP interfejsu sieciowego, w którym będzie odbierany ruch TAP:  
+   - Utwórz tap sieci wirtualnej w regionie westcentralus azure przy użyciu identyfikatora konfiguracji IP jako miejsce docelowe i opcjonalne właściwości portu. Port określa port docelowy w konfiguracji IP interfejsu sieciowego, w którym zostanie odebrany ruch TAP:  
 
       ```azurecli-interactive
        az network vnet tap create \
@@ -74,9 +74,9 @@ Zapoznaj się z [wymaganiami wstępnymi](virtual-network-tap-overview.md#prerequ
        --location westcentralus
       ```
 
-5. Jeśli lokalizacja docelowa dla sieci wirtualnej jest WYBIERAna jako wewnętrzny moduł równoważenia obciążenia platformy Azure:
+5. Jeśli miejscem docelowym dla sieci wirtualnej TAP jest wewnętrzny moduł równoważenia obciążenia platformy Azure:
   
-   - Pobierz konfigurację adresu IP frontonu wewnętrznego modułu równoważenia obciążenia platformy Azure do zmiennej, która jest używana w późniejszym kroku. Identyfikator jest punktem końcowym, który będzie agregować ruch dla NACISKu. Poniższy przykład pobiera identyfikator *frontendipconfig1ego* adresu IP frontonu dla modułu równoważenia obciążenia o nazwie *myInternalLoadBalancer*w grupie zasobów o nazwie Moja *zasobów*:
+   - Pobierz konfigurację ip frontonijnego modułu równoważenia obciążenia platformy Azure do zmiennej, która jest używana w późniejszym kroku. Identyfikator jest punktem końcowym, który zagreguje ruch TAP. Poniższy przykład pobiera identyfikator *frontendipconfig1* frontonu konfiguracji IP dla modułu równoważenia obciążenia o nazwie *myInternalLoadBalancer*, w grupie zasobów o nazwie *myResourceGroup:*
 
       ```azurecli-interactive
       FrontendIpConfigId=$(az network lb frontend-ip show \
@@ -86,7 +86,8 @@ Zapoznaj się z [wymaganiami wstępnymi](virtual-network-tap-overview.md#prerequ
       --query id \
       --out tsv)
       ```
-   - Utwórz sieć wirtualną naciśnij, używając identyfikatora konfiguracji adresu IP frontonu jako lokalizacji docelowej i opcjonalnej właściwości portu. Port Określa port docelowy w konfiguracji adresu IP frontonu, w którym będzie odbierany ruch dla TAP:  
+
+   - Utwórz tap sieci wirtualnej przy użyciu identyfikatora konfiguracji IP frontona jako miejsce docelowe i opcjonalne właściwości portu. Port określa port docelowy w konfiguracji ip front-endu, w którym zostanie odebrany ruch TAP:  
 
       ```azurecli-interactive
       az network vnet tap create \
@@ -107,7 +108,7 @@ Zapoznaj się z [wymaganiami wstępnymi](virtual-network-tap-overview.md#prerequ
 
 ## <a name="add-a-tap-configuration-to-a-network-interface"></a>Dodawanie konfiguracji TAP do interfejsu sieciowego
 
-1. Pobierz identyfikator istniejącej sieci wirtualnej. Poniższy przykład pobiera sieć wirtualną TAP o nazwie *myTap* w grupie zasobów o nazwie Moja *resourceName*:
+1. Pobierz identyfikator istniejącego zasobu TAP sieci wirtualnej. Poniższy przykład pobiera tap sieci wirtualnej o nazwie *myTap* w grupie zasobów o nazwie *myResourceGroup:*
 
    ```azurecli-interactive
    tapId=$(az network vnet tap show \
@@ -117,7 +118,7 @@ Zapoznaj się z [wymaganiami wstępnymi](virtual-network-tap-overview.md#prerequ
    --out tsv)
    ```
 
-2. Utwórz konfigurację TAP w interfejsie sieciowym monitorowanej maszyny wirtualnej. Poniższy przykład tworzy konfigurację TAP dla interfejsu sieciowego o nazwie *myNetworkInterface*:
+2. Utwórz konfigurację TAP na interfejsie sieciowym monitorowanej maszyny wirtualnej. Poniższy przykład tworzy konfigurację TAP dla interfejsu sieciowego o nazwie *myNetworkInterface:*
 
    ```azurecli-interactive
    az network nic vtap-config create \
@@ -138,9 +139,9 @@ Zapoznaj się z [wymaganiami wstępnymi](virtual-network-tap-overview.md#prerequ
    --subscription subscriptionId
    ```
 
-## <a name="delete-the-tap-configuration-on-a-network-interface"></a>Usuń konfigurację TAP w interfejsie sieciowym
+## <a name="delete-the-tap-configuration-on-a-network-interface"></a>Usuwanie konfiguracji TAP w interfejsie sieciowym
 
-   ```azure-cli-interactive
+   ```azurecli-interactive
    az network nic vtap-config delete \
    --resource-group myResourceGroup \
    --nic myNetworkInterface \
@@ -148,13 +149,13 @@ Zapoznaj się z [wymaganiami wstępnymi](virtual-network-tap-overview.md#prerequ
    --subscription subscriptionId
    ```
 
-## <a name="list-virtual-network-taps-in-a-subscription"></a>Wyświetlanie listy naciśnięć sieci wirtualnych w ramach subskrypcji
+## <a name="list-virtual-network-taps-in-a-subscription"></a>Wyświetlanie listy tapp sieci wirtualnej w ramach subskrypcji
 
    ```azurecli-interactive
    az network vnet tap list
    ```
 
-## <a name="delete-a-virtual-network-tap-in-a-resource-group"></a>Usuwanie sieci wirtualnej NACIŚNIĘCIe w grupie zasobów
+## <a name="delete-a-virtual-network-tap-in-a-resource-group"></a>Usuwanie tap sieci wirtualnej w grupie zasobów
 
    ```azurecli-interactive
    az network vnet tap delete \

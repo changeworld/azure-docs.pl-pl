@@ -1,6 +1,6 @@
 ---
-title: Śledzenie i rejestrowanie Azure Data Box, zdarzenia Azure Data Box Heavy | Microsoft Docs
-description: Opisuje sposób śledzenia i rejestrowania zdarzeń na różnych etapach Azure Data Box i Azure Data Box Heavy kolejności.
+title: Śledzenie i rejestrowanie zdarzeń azure data box, azure data box heavy; Dokumenty firmy Microsoft
+description: W tym artykule opisano sposób śledzenia i rejestrowania zdarzeń na różnych etapach zamówienia azure data box i azure data box heavy.
 services: databox
 author: alkohli
 ms.service: databox
@@ -9,79 +9,79 @@ ms.topic: article
 ms.date: 08/08/2019
 ms.author: alkohli
 ms.openlocfilehash: 72e1d3b0ad72b1e68b88eb0550cbe839ade9d929
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79260022"
 ---
-# <a name="tracking-and-event-logging-for-your-azure-data-box-and-azure-data-box-heavy"></a>Śledzenie i rejestrowanie zdarzeń dla Azure Data Box i Azure Data Box Heavy
+# <a name="tracking-and-event-logging-for-your-azure-data-box-and-azure-data-box-heavy"></a>Śledzenie i rejestrowanie zdarzeń dla usługi Azure Data Box i Azure Data Box Heavy
 
-Urządzenie Data Box lub Data Box Heavy kolejności przechodzą przez następujące kroki: kolejność, konfiguracja, kopiowanie danych, zwracanie, przekazywanie na platformę Azure oraz sprawdzanie i wymazywanie danych. Dla każdego kroku w kolejności można wykonać wiele akcji, aby kontrolować dostęp do zamówienia, przeprowadzać inspekcję zdarzeń, śledzić kolejność i interpretować różne dzienniki, które są generowane.
+Zamówienie data box lub Data Box Heavy przechodzi przez następujące kroki: kolejność, konfiguracja, kopiowanie danych, zwracanie, przekazywanie na platformę Azure i weryfikowanie oraz usuwanie danych. Odpowiadający każdemu krokowi w kolejności można podjąć wiele akcji, aby kontrolować dostęp do zamówienia, kontrolować zdarzenia, śledzić kolejność i interpretować różne generowane dzienniki.
 
-W poniższej tabeli przedstawiono podsumowanie kroków zlecenia urządzenie Data Box lub Data Box Heavy oraz dostępnych narzędzi do śledzenia i inspekcji kolejności w każdym kroku.
+W poniższej tabeli przedstawiono podsumowanie kroków zamówienia Data Box lub Data Box Heavy oraz narzędzia dostępne do śledzenia i inspekcji zamówienia podczas każdego kroku.
 
-| urządzenie Data Box etap kolejności       | Narzędzie do śledzenia i inspekcji                                                                        |
+| Etap zamówienia pola danych       | Narzędzie do śledzenia i audytu                                                                        |
 |----------------------------|------------------------------------------------------------------------------------------------|
-| Utwórz zamówienie               | [Konfigurowanie kontroli dostępu w kolejności za pośrednictwem RBAC](#set-up-access-control-on-the-order)                                                    |
-| Przetworzone zamówienie            | [Śledź kolejność](#track-the-order) <ul><li> Portalu Azure </li><li> Witryna sieci Web firmy kurierskiej </li><li>Powiadomienia e-mail</ul> |
-| Konfigurowanie urządzenia              | Poświadczenia urządzenia dostęp do zalogowanych [dzienników aktywności](#query-activity-logs-during-setup)                                              |
-| Kopiowanie danych na urządzenie        | [Wyświetl pliki *Error. XML* ](#view-error-log-during-data-copy) do kopiowania danych                                                             |
-| Przygotowanie do wysłania            | [Inspekcja plików BOM](#inspect-bom-during-prepare-to-ship) lub plików manifestu na urządzeniu                                      |
-| Przekazywanie danych na platformę Azure       | [Przeglądanie dzienników kopiowania](#review-copy-log-during-upload-to-azure) pod kątem błędów podczas przekazywania danych w centrum dane platformy Azure                         |
-| Dane wymazywane z urządzenia   | [Wyświetlanie łańcucha dzienników opieki](#get-chain-of-custody-logs-after-data-erasure) , w tym dzienników inspekcji i historii kolejności                |
+| Tworzenie zamówienia               | [Konfigurowanie kontroli dostępu do zamówienia za pośrednictwem RBAC](#set-up-access-control-on-the-order)                                                    |
+| Zamówienie przetworzone            | [Śledzenie zamówienia](#track-the-order) za pośrednictwem <ul><li> Portal Azure </li><li> Witryna internetowa firmy spedycyjnej </li><li>Powiadomienia e-mail</ul> |
+| Konfigurowanie urządzenia              | Dostęp do poświadczeń urządzenia zalogowanych w [dziennikach aktywności](#query-activity-logs-during-setup)                                              |
+| Kopiowanie danych na urządzenie        | [Wyświetlanie plików *error.xml* ](#view-error-log-during-data-copy) dla kopiowania danych                                                             |
+| Przygotowanie do wysłania            | [Sprawdzanie plików BOM](#inspect-bom-during-prepare-to-ship) lub plików manifestu na urządzeniu                                      |
+| Przekazywanie danych na platformę Azure       | [Przeglądanie dzienników kopiowania](#review-copy-log-during-upload-to-azure) w poszukiwaniu błędów podczas przekazywania danych w centrum danych platformy Azure                         |
+| Usuwanie danych z urządzenia   | [Wyświetlanie łańcucha dzienników opieki,](#get-chain-of-custody-logs-after-data-erasure) w tym dzienników inspekcji i historii zamówień                |
 
-W tym artykule opisano szczegółowo różne mechanizmy lub narzędzia dostępne do śledzenia i inspekcji urządzenie Data Box lub Data Box Heavy. Informacje przedstawione w tym artykule dotyczą obu programów, urządzenie Data Box i Data Box Heavy. W kolejnych sekcjach wszystkie odwołania do urządzenie Data Box dotyczą również Data Box Heavy.
+W tym artykule opisano szczegółowo różne mechanizmy lub narzędzia dostępne do śledzenia i inspekcji data box lub data box heavy zamówienia. Informacje zawarte w tym artykule dotyczą zarówno data box i Data Box Heavy. W kolejnych sekcjach wszelkie odwołania do pola danych mają również zastosowanie do data box heavy.
 
-## <a name="set-up-access-control-on-the-order"></a>Konfigurowanie kontroli dostępu w kolejności
+## <a name="set-up-access-control-on-the-order"></a>Konfigurowanie kontroli dostępu w zamówieniu
 
-Możesz kontrolować, kto może uzyskiwać dostęp do zamówienia podczas pierwszego tworzenia zamówienia. Skonfiguruj role Access Control oparte na rolach (RBAC) w różnych zakresach, aby kontrolować dostęp do urządzenie Data Box kolejności. Rola RBAC określa typ dostępu — do odczytu i zapisu, tylko do odczytu, do odczytu i zapisu do podzbioru operacji.
+Możesz kontrolować, kto może uzyskać dostęp do twojego zamówienia podczas pierwszego utworzenia zamówienia. Skonfiguruj role kontroli dostępu opartej na rolach (RBAC) w różnych zakresach, aby kontrolować dostęp do kolejności data box. Rola RBAC określa typ dostępu — odczytu i zapisu, tylko do odczytu i zapisu do podzbioru operacji.
 
-Dwie role, które można zdefiniować dla usługi Azure Data Box są następujące:
+Dwie role, które można zdefiniować dla usługi Azure Data Box to:
 
-- **Urządzenie Data Box Reader** — dostęp tylko do odczytu do zamówień określonych przez zakres. Mogą jedynie wyświetlać szczegóły zamówienia. Nie mogą oni uzyskać dostępu do żadnych innych szczegółów związanych z kontami magazynu ani edytować szczegółów zamówienia, takich jak adres i tak dalej.
-- **Współautor urządzenie Data Box** — można utworzyć tylko zamówienie, aby przesłać dane do danego konta magazynu, *Jeśli mają już dostęp do zapisu do konta magazynu*. Jeśli nie mają dostępu do konta magazynu, nie można nawet utworzyć zamówienia urządzenie Data Box, aby skopiować dane na konto. Ta rola nie definiuje żadnych uprawnień związanych z kontem magazynu ani nie udziela dostępu do kont magazynu.  
+- **Data Box Reader** - mają dostęp tylko do odczytu do zamówień zdefiniowanych przez zakres. Mogą wyświetlać tylko szczegóły zamówienia. Nie mogą uzyskać dostępu do innych szczegółów związanych z kontami magazynu ani edytować szczegółów zamówienia, takich jak adres i tak dalej.
+- **Data Box Contributor** - może utworzyć zlecenie przesyłania danych do danego konta magazynu *tylko wtedy, gdy ma już dostęp do zapisu konta magazynu.* Jeśli nie mają dostępu do konta magazynu, nie mogą nawet utworzyć zamówienia w polu danych, aby skopiować dane na konto. Ta rola nie definiuje żadnych uprawnień związanych z kontem magazynu ani nie udziela dostępu do kont magazynu.  
 
-Aby ograniczyć dostęp do zamówienia, możesz:
+Aby ograniczyć dostęp do zamówienia, można:
 
-- Przypisywanie roli na poziomie zamówienia. Użytkownik ma tylko te uprawnienia zdefiniowane przez role do współdziałania z tym konkretną urządzenie Data Box kolejnością i nic innego.
-- Przypisz rolę na poziomie grupy zasobów, użytkownik ma dostęp do wszystkich zamówień urządzenie Data Box w grupie zasobów.
+- Przypisz rolę na poziomie zamówienia. Użytkownik ma tylko te uprawnienia zdefiniowane przez role do interakcji z tej konkretnej kolejności pola danych tylko i nic więcej.
+- Przypisz rolę na poziomie grupy zasobów, użytkownik ma dostęp do wszystkich zamówień pola danych w grupie zasobów.
 
-Aby uzyskać więcej informacji na temat sugerowanych użycia RBAC, zobacz [najlepsze rozwiązania dotyczące kontroli RBAC](../role-based-access-control/overview.md#best-practice-for-using-rbac).
+Aby uzyskać więcej informacji na temat sugerowanego użycia RBAC, zobacz [Najważniejsze wskazówki dotyczące rbac](../role-based-access-control/overview.md#best-practice-for-using-rbac).
 
 ## <a name="track-the-order"></a>Śledzenie zamówienia
 
-Zamówienie można śledzić za pomocą Azure Portal oraz za pomocą witryny sieci Web firmy Carrier transport. Następujące mechanizmy są stosowane do śledzenia kolejności urządzenie Data Box w dowolnym momencie:
+Możesz śledzić swoje zamówienie za pośrednictwem witryny Azure portal i za pośrednictwem witryny internetowej przewoźnika. W dowolnym momencie obowiązują następujące mechanizmy śledzenia kolejności data box:
 
-- Aby śledzić kolejność, gdy urządzenie znajduje się w centrum danych platformy Azure lub Twoim środowisku lokalnym, przejdź do **urządzenie Data Box zamówienia > Omówienie** w Azure Portal.
+- Aby śledzić kolejność, gdy urządzenie znajduje się w centrum danych platformy Azure lub w twoim lokalu, przejdź do przeglądu > kolejności pól danych w **witrynie** Azure portal.
 
-    ![Wyświetl stan zamówienia i numer śledzenia](media/data-box-logs/overview-view-status-1.png)
+    ![Wyświetlanie stanu zamówienia i śledzenie nie](media/data-box-logs/overview-view-status-1.png)
 
-- Aby śledzić kolejność, gdy urządzenie jest w trakcie przesyłania, przejdź do witryny internetowej przewoźnika regionalnego, na przykład w przypadku witryny UPS w USA. Podaj numer śledzenia skojarzony z zamówieniem.
-- Urządzenie Data Box wysyła również powiadomienia e-mail, gdy stan zamówienia zostanie zmieniony na podstawie wiadomości e-mail dostarczonych podczas tworzenia zamówienia. Aby uzyskać listę wszystkich stanów zamówień urządzenie Data Box, zobacz [Wyświetlanie stanu zamówienia](data-box-portal-admin.md#view-order-status). Aby zmienić ustawienia powiadomień skojarzone z kolejnością, zobacz [Edytowanie szczegółów powiadomień](data-box-portal-admin.md#edit-notification-details).
+- Aby śledzić zamówienie podczas przesyłania urządzenia, przejdź do witryny internetowej operatora regionalnego, na przykład witryny UPS w USA. Podaj numer śledzenia skojarzony z zamówieniem.
+- Data Box wysyła również powiadomienia e-mail w każdej chwili zmiany statusu zamówienia na podstawie wiadomości e-mail podanych podczas tworzenia zamówienia. Aby uzyskać listę wszystkich stanów zamówień pola danych, zobacz [Wyświetlanie stanu zamówienia](data-box-portal-admin.md#view-order-status). Aby zmienić ustawienia powiadomień skojarzone z zamówieniem, zobacz [Edytowanie szczegółów powiadomień](data-box-portal-admin.md#edit-notification-details).
 
-## <a name="query-activity-logs-during-setup"></a>Badaj dzienniki aktywności podczas instalacji
+## <a name="query-activity-logs-during-setup"></a>Dzienniki aktywności kwerend podczas instalacji
 
-- Twoje urządzenie Data Box docierają do Twoich miejsc w stanie zablokowanym. Możesz użyć poświadczeń urządzenia dostępnych w Azure Portal zamówienia.  
+- Pole danych jest przesyłane do twojego lokalu w stanie zablokowanym. Poświadczenia urządzenia można użyć dostępnych w witrynie Azure portal dla zamówienia.  
 
-    Po skonfigurowaniu urządzenie Data Box może być konieczna informacja o tym, kto ma dostęp do poświadczeń urządzenia. Aby ustalić, kto uzyskał dostęp do bloku **poświadczenia urządzenia** , można wykonać zapytanie dotyczące dzienników aktywności.  Wszystkie akcje dotyczące uzyskiwania dostępu do **szczegółów urządzenia > bloku poświadczenia** są rejestrowane w dziennikach aktywności jako akcja `ListCredentials`.
+    Po skonfigurowaniu pola danych może być konieczne poznanie, kto uzyskał dostęp do poświadczeń urządzenia. Aby dowiedzieć się, kto uzyskał dostęp do **bloku poświadczenia urządzenia,** można zbadać dzienniki aktywności.  Każda akcja, która obejmuje dostęp do **szczegółów urządzenia > przyciemnianie** `ListCredentials` poświadczenia jest zalogowany do dzienników działań jako akcja.
 
     ![Wykonywanie zapytań dotyczących dzienników aktywności](media/data-box-logs/query-activity-log-1.png)
 
-- Każdy Zaloguj się do urządzenie Data Box jest rejestrowany w czasie rzeczywistym. Jednak te informacje są dostępne tylko w [dziennikach inspekcji](#audit-logs) po pomyślnym zakończeniu kolejności.
+- Każdy znak w polu danych jest rejestrowany w czasie rzeczywistym. Jednak te informacje są dostępne tylko w [dziennikach inspekcji](#audit-logs) po pomyślnym zakończeniu zamówienia.
 
-## <a name="view-error-log-during-data-copy"></a>Wyświetl dziennik błędów podczas kopiowania danych
+## <a name="view-error-log-during-data-copy"></a>Wyświetlanie dziennika błędów podczas kopiowania danych
 
-Podczas kopiowania danych do urządzenie Data Box lub Data Box Heavy, generowany jest plik błędu w przypadku problemów z kopiowanymi danymi.
+Podczas kopiowania danych do pola danych lub pliku Data Box Heavy plik błędu jest generowany w przypadku jakichkolwiek problemów z kopiowanymi danymi.
 
-### <a name="errorxml-file"></a>Error. xml — plik
+### <a name="errorxml-file"></a>Plik error.xml
 
-Upewnij się, że zadania kopiowania zakończyły się bez błędów. Jeśli wystąpią błędy podczas procesu kopiowania, Pobierz dzienniki ze strony **Połącz i Kopiuj** .
+Upewnij się, że zadania kopiowania zostały zakończone bez błędów. Jeśli podczas procesu kopiowania występują błędy, pobierz dzienniki ze strony **Połącz i skopuj.**
 
-- Jeśli skopiowano plik, który nie jest 512 bajtów wyrównany do folderu dysku zarządzanego na urządzenie Data Box, plik nie zostanie przekazany jako obiekt BLOB strony do konta magazynu tymczasowego. W dziennikach zostanie wyświetlony komunikat o błędzie. Usuń plik i skopiuj plik o 512 bajtów wyrównanych.
-- W przypadku skopiowania dysku VHDX lub dynamicznego dysku VHD lub różnicowego dysku VHD (te pliki nie są obsługiwane) w dziennikach zostanie wyświetlony komunikat o błędzie.
+- Jeśli plik, który nie jest 512 bajtów wyrównane do folderu dysku zarządzanego w polu danych, plik nie jest przekazyany jako obiekt blob strony do konta magazynu przemieszczania. Zostanie wyświetlony błąd w dziennikach. Usuń plik i skopiuj plik, który jest wyrównany do 512 bajtów.
+- Jeśli skopiowano VHDX, dynamiczny dysk VHD lub różnicowy dysk VHD (te pliki nie są obsługiwane), w dziennikach pojawi się błąd.
 
-Oto przykład *błędu. XML* dla różnych błędów podczas kopiowania do dysków zarządzanych.
+Oto przykład pliku *error.xml* dla różnych błędów podczas kopiowania do dysków zarządzanych.
 
 ```xml
 <file error="ERROR_BLOB_OR_FILE_TYPE_UNSUPPORTED">\StandardHDD\testvhds\differencing-vhd-022019.vhd</file>
@@ -90,7 +90,7 @@ Oto przykład *błędu. XML* dla różnych błędów podczas kopiowania do dysk�
 <file error="ERROR_BLOB_OR_FILE_TYPE_UNSUPPORTED">\StandardHDD\testvhds\insidediffvhd-022019.vhd</file>
 ```
 
-Oto przykład *błędu. XML* dla różnych błędów podczas kopiowania do stronicowych obiektów BLOB.
+Oto przykład pliku *error.xml* dla różnych błędów podczas kopiowania do obiektów blob strony.
 
 ```xml
 <file error="ERROR_BLOB_OR_FILE_SIZE_ALIGNMENT">\PageBlob512NotAligned\File100Bytes</file>
@@ -101,7 +101,7 @@ Oto przykład *błędu. XML* dla różnych błędów podczas kopiowania do stron
 ```
 
 
-Oto przykład *błędu. XML* dla różnych błędów podczas kopiowania do blokowych obiektów BLOB.
+Oto przykład pliku *error.xml* dla różnych błędów podczas kopiowania w celu zablokowania obiektów blob.
 
 ```xml
 <file error="ERROR_CONTAINER_OR_SHARE_NAME_LENGTH">\ab</file>
@@ -129,7 +129,7 @@ Oto przykład *błędu. XML* dla różnych błędów podczas kopiowania do bloko
 <file error="ERROR_BLOB_OR_FILE_NAME_CHARACTER_ILLEGAL" name_encoding="Base64">XEludmFsaWRVbmljb2RlRmlsZXNcU3BjQ2hhci01NTI5Ny3vv70=</file>
 ```
 
-Oto przykład *błędu. XML* dla różnych błędów podczas kopiowania do Azure Files.
+Oto przykład pliku *error.xml* dla różnych błędów podczas kopiowania do usługi Azure Files.
 
 ```xml
 <file error="ERROR_BLOB_OR_FILE_SIZE_LIMIT">\AzFileMorethan1TB\AzFile1.2TB</file>
@@ -147,31 +147,31 @@ Oto przykład *błędu. XML* dla różnych błędów podczas kopiowania do Azure
 <file error="ERROR_CONTAINER_OR_SHARE_NAME_ALPHA_NUMERIC_DASH">\Starting with Capital</file>
 ```
 
-W każdym z powyższych przypadków Usuń błędy przed przejściem do następnego kroku. Aby uzyskać więcej informacji na temat błędów otrzymywanych podczas kopiowania danych do urządzenie Data Box za pośrednictwem protokołów SMB lub NFS, przejdź do [rozwiązywania problemów z urządzenie Data Box i Data Box Heavy](data-box-troubleshoot.md). Aby uzyskać informacje dotyczące błędów otrzymywanych podczas kopiowania danych na urządzenie Data Box za pośrednictwem usługi REST, przejdź do obszaru [Rozwiązywanie problemów z urządzenie Data Box magazynu obiektów BLOB](data-box-troubleshoot-rest.md).
+W każdym z powyższych przypadków rozwiąż błędy przed przejściem do następnego kroku. Aby uzyskać więcej informacji na temat błędów otrzymanych podczas kopiowania danych do data box za pośrednictwem protokołów SMB lub NFS, przejdź do [rozwiązywania problemów z polem danych i dużymi problemami z polem danych](data-box-troubleshoot.md). Aby uzyskać informacje na temat błędów otrzymanych podczas kopiowania danych do data box za pośrednictwem REST, przejdź do [rozwiązywania problemów z przechowywaniem obiektów Blob pola danych](data-box-troubleshoot-rest.md).
 
-## <a name="inspect-bom-during-prepare-to-ship"></a>Zbadaj BOM podczas przygotowywania do wysłania
+## <a name="inspect-bom-during-prepare-to-ship"></a>Inspekcja BOM podczas przygotowań do wysyłki
 
-Podczas przygotowywania do wysłania należy utworzyć listę plików znanych jako BOM lub plik manifestu.
+Podczas przygotowywania do wysyłki tworzona jest lista plików znanych jako BOM (BOM) lub plik manifestu.
 
-- Użyj tego pliku, aby sprawdzić poprawność nazw i liczbę plików, które zostały skopiowane do urządzenie Data Box.
-- Użyj tego pliku, aby zweryfikować rzeczywiste rozmiary plików.
-- Sprawdź, czy *crc64* odpowiada ciągowi o wartości innej niż zero. <!--A null value for crc64 indicates that there was a reparse point error)-->
+- Ten plik służy do weryfikacji rzeczywistych nazw i liczby plików skopiowanych do pola danych.
+- Ten plik służy do weryfikacji rzeczywistych rozmiarów plików.
+- Sprawdź, czy *crc64* odpowiada ciągowi niezerowe. <!--A null value for crc64 indicates that there was a reparse point error)-->
 
-Aby uzyskać więcej informacji na temat błędów otrzymywanych podczas przygotowywania do wysłania, przejdź do [rozwiązywania problemów urządzenie Data Box i Data Box Heavy](data-box-troubleshoot.md).
+Aby uzyskać więcej informacji na temat błędów otrzymanych podczas przygotowywania do wysyłki, przejdź do [rozwiązywania problemów z polem danych i dużymi problemami z polem danych](data-box-troubleshoot.md).
 
 ### <a name="bom-or-manifest-file"></a>BOM lub plik manifestu
 
-Plik BOM lub manifestu zawiera listę wszystkich plików, które są kopiowane na urządzenie urządzenie Data Box. Plik BOM zawiera nazwy plików i odpowiednie rozmiary oraz sumę kontrolną. Tworzony jest osobny plik BOM dla blokowych obiektów blob, stronicowych obiektów blob, Azure Files, do kopiowania za pośrednictwem interfejsów API REST oraz kopiowania do dysków zarządzanych na urządzenie Data Box. Pliki BOM można pobrać z lokalnego interfejsu użytkownika sieci Web urządzenia podczas przygotowywania do wysłania.
+Plik BOM lub manifest zawiera listę wszystkich plików, które są kopiowane do urządzenia Data Box. Plik BOM ma nazwy plików i odpowiednie rozmiary, a także sumę kontrolną. Oddzielny plik BOM jest tworzony dla bloków blob, stronicowych obiektów blob, plików Platformy Azure, do kopiowania za pośrednictwem interfejsów API REST i dla kopiowania do dysków zarządzanych w polu danych. Pliki BOM można pobrać z lokalnego interfejsu użytkownika sieci Web urządzenia podczas przygotowywania do wysyłki.
 
-Te pliki znajdują się również na urządzeniu urządzenie Data Box i są przekazywane do skojarzonego konta magazynu w centrum danych platformy Azure.
+Pliki te znajdują się również na urządzeniu Data Box i są przekazywane do skojarzonego konta magazynu w centrum danych platformy Azure.
 
 ### <a name="bom-file-format"></a>Format pliku BOM
 
-Plik BOM lub manifestu ma następujący format ogólny:
+BOM lub plik manifestu ma następujący ogólny format:
 
 `<file size = "file-size-in-bytes" crc64="cyclic-redundancy-check-string">\folder-path-on-data-box\name-of-file-copied.md</file>`
 
-Poniżej znajduje się przykład manifestu generowanego, gdy dane zostały skopiowane do udziału blokowego obiektu BLOB na urządzenie Data Box.
+Oto przykład manifestu wygenerowany, gdy dane zostały skopiowane do udziału bloku obiektu blob w polu danych.
 
 ```
 <file size="10923" crc64="0x51c78833c90e4e3f">\databox\media\data-box-deploy-copy-data\connect-shares-file-explorer1.png</file>
@@ -191,29 +191,29 @@ Poniżej znajduje się przykład manifestu generowanego, gdy dane zostały skopi
 <file size="3220" crc64="0x7257a263c434839a">\databox\data-box-system-requirements.md</file>
 ```
 
-Pliki BOM lub manifestów są również kopiowane do konta usługi Azure Storage. Możesz użyć pliku lub plików manifestu, aby sprawdzić, czy pliki przekazane do platformy Azure pasują do danych, które zostały skopiowane do urządzenie Data Box.
+Pliki BOM lub manifestu są również kopiowane na konto magazynu platformy Azure. Za pomocą bom lub plików manifestu można sprawdzić, czy pliki przekazane na platformę Azure są zgodne z danymi skopiowanymi do pola danych.
 
-## <a name="review-copy-log-during-upload-to-azure"></a>Przejrzyj dziennik kopiowania podczas przekazywania na platformę Azure
+## <a name="review-copy-log-during-upload-to-azure"></a>Przeglądanie dziennika kopiowania podczas przekazywania na platformę Azure
 
-Podczas przekazywania danych na platformę Azure jest tworzony dziennik kopii.
+Podczas przekazywania danych na platformę Azure tworzony jest dziennik kopii.
 
-### <a name="copy-log"></a>Kopiuj dziennik
+### <a name="copy-log"></a>Dziennik kopiowania
 
-Dla każdego przetwarzanego zamówienia usługa urządzenie Data Box tworzy dziennik kopiowania na skojarzonym koncie magazynu. Dziennik kopiowania zawiera łączną liczbę plików, które zostały przekazane, oraz liczbę plików, które wystąpiły podczas kopiowania danych z urządzenie Data Box na konto usługi Azure Storage.
+Dla każdego zamówienia, które jest przetwarzane, usługa Data Box tworzy dziennik kopiowania na skojarzonym koncie magazynu. Dziennik kopiowania zawiera całkowitą liczbę plików, które zostały przekazane i liczbę plików, które wystąpiły podczas kopiowania danych z pola danych na konto magazynu platformy Azure.
 
-Obliczenia cyklicznej kontroli nadmiarowości (CRC) są wykonywane podczas przekazywania do platformy Azure. CRCs z kopii danych i po przekazaniu danych. Niezgodność CRC wskazuje, że nie powiodło się przekazanie odpowiednich plików.
+Obliczenia cyklicznego sprawdzania nadmiarowości (CRC) są wykonywane podczas przekazywania na platformę Azure. Crc z kopii danych i po przekazaniu danych są porównywane. Niezgodność CRC wskazuje, że nie można przekazać odpowiednich plików.
 
-Domyślnie dzienniki są zapisywane do kontenera o nazwie `copylog`. Dzienniki są przechowywane z następującą konwencją nazewnictwa:
+Domyślnie dzienniki są zapisywane w `copylog`kontenerze o nazwie . Dzienniki są przechowywane z następującą konwencją nazewnictwa:
 
 `storage-account-name/databoxcopylog/ordername_device-serial-number_CopyLog_guid.xml`.
 
-Ścieżka dziennika kopiowania jest również wyświetlana w bloku **Przegląd** dla portalu.
+Ścieżka dziennika kopiowania jest również wyświetlana w **bloku Przegląd** dla portalu.
 
-![Ścieżka do kopiowania bloku dziennika przeglądu po zakończeniu](media/data-box-logs/copy-log-path-1.png)
+![Ścieżka do kopiowania dziennika w bloku Przegląd po zakończeniu](media/data-box-logs/copy-log-path-1.png)
 
-### <a name="upload-completed-successfully"></a>Przekazywanie zostało ukończone pomyślnie 
+### <a name="upload-completed-successfully"></a>Przekazywanie zakończyło się pomyślnie 
 
-W poniższym przykładzie opisano ogólny format dziennika kopiowania dla urządzenie Data Box przekazywania, który zakończył się pomyślnie:
+W poniższym przykładzie opisano ogólny format dziennika kopii dla przekazywania pola danych, który zakończył się pomyślnie:
 
 ```
 <?xml version="1.0"?>
@@ -226,11 +226,11 @@ W poniższym przykładzie opisano ogólny format dziennika kopiowania dla urząd
 
 ### <a name="upload-completed-with-errors"></a>Przekazywanie zakończone z błędami 
 
-Przekazywanie na platformę Azure może także zakończyć się z błędami.
+Przekaż na platformę Azure może również wraz z błędami.
 
-![Ścieżka do kopiowania bloku dziennika przeglądu po zakończeniu z błędami](media/data-box-logs/copy-log-path-2.png)
+![Ścieżka do kopiowania bloku przegląd po zakończeniu z błędami](media/data-box-logs/copy-log-path-2.png)
 
-Oto przykład dziennika kopiowania, w którym zakończono przekazywanie z błędami:
+Oto przykład dziennika kopiowania, w którym przekazywanie zostało zakończone z błędami:
 
 ```xml
 <ErroredEntity Path="iso\samsungssd.iso">
@@ -249,15 +249,15 @@ Oto przykład dziennika kopiowania, w którym zakończono przekazywanie z błęd
   <FilesErrored>2</FilesErrored>
 </CopyLog>
 ```
-### <a name="upload-completed-with-warnings"></a>Przekazywanie zostało ukończone z ostrzeżeniami
+### <a name="upload-completed-with-warnings"></a>Przekazywanie zakończone z ostrzeżeniami
 
-Przekazanie na platformę Azure kończy się z ostrzeżeniami, jeśli dane mają nazwy kontenera/obiektów BLOB/plików niezgodne z konwencjami nazewnictwa platformy Azure i nazwy zostały zmodyfikowane w celu przekazania danych na platformę Azure.
+Przekaż na platformę Azure wraz z ostrzeżeniami, jeśli dane miały nazwy kontenerów/obiektów blob/plików, które nie były zgodne z konwencjami nazewnictwa platformy Azure, a nazwy zostały zmodyfikowane w celu przekazania danych na platformę Azure.
 
-![Ścieżka do kopiowania bloku dziennika przeglądu po zakończeniu z ostrzeżeniami](media/data-box-logs/copy-log-path-3.png)
+![Ścieżka do kopiowania bloku przegląd po zakończeniu z ostrzeżeniami](media/data-box-logs/copy-log-path-3.png)
 
-Oto przykład dziennika kopiowania, w którym nazwy kontenerów, które nie są zgodne z konwencjami nazewnictwa platformy Azure, zostały zmienione podczas przekazywania danych na platformę Azure.
+Oto przykład dziennika kopiowania, w którym kontenery, które nie były zgodne z konwencjami nazewnictwa platformy Azure zostały zmienione podczas przekazywania danych na platformę Azure.
 
-Nowe unikatowe nazwy kontenerów są w formacie `DataBox-GUID` a dane dla kontenera są umieszczane w nowym kontenerze. W dzienniku kopiowania określono starą i nową nazwę kontenera dla kontenera.
+Nowe unikatowe nazwy kontenerów `DataBox-GUID` są w formacie i dane dla kontenera są umieszczane w nowym kontenerze o zmienionej nazwie. Dziennik kopiowania określa starą i nową nazwę kontenera dla kontenera.
 
 ```xml
 <ErroredEntity Path="New Folder">
@@ -268,9 +268,9 @@ Nowe unikatowe nazwy kontenerów są w formacie `DataBox-GUID` a dane dla konten
 </ErroredEntity>
 ```
 
-Poniżej znajduje się przykład dziennika kopiowania, w którym zmieniono nazwy obiektów blob lub plików, które nie są zgodne z konwencjami nazewnictwa platformy Azure, podczas przekazywania danych na platformę Azure. Nowe obiekty blob lub nazwy plików są konwertowane na SHA256 Digest ścieżki względnej do kontenera i są przekazywane do ścieżki na podstawie typu docelowego. Miejscem docelowym może być blokowe obiekty blob, stronicowe obiekty blob lub Azure Files.
+Oto przykład dziennika kopiowania, w którym obiekty BLOB lub pliki, które nie były zgodne z konwencjami nazewnictwa platformy Azure, zostały zmienione podczas przekazywania danych na platformę Azure. Nowe nazwy obiektów blob lub plików są konwertowane na sha256 skrót ścieżki względnej do kontenera i są przekazywane do ścieżki na podstawie typu docelowego. Miejscem docelowym mogą być blokowe obiekty BLOB, obiekty blob stron lub usługi Azure Files.
 
-`copylog` określa stary i nowy obiekt BLOB lub nazwę pliku oraz ścieżkę na platformie Azure.
+Określa `copylog` stare i nowe gołąb lub nazwę pliku i ścieżkę na platformie Azure.
 
 ```xml
 <ErroredEntity Path="TesDir028b4ba9-2426-4e50-9ed1-8e89bf30d285\Ã">
@@ -291,15 +291,15 @@ Poniżej znajduje się przykład dziennika kopiowania, w którym zmieniono nazwy
 </ErroredEntity>
 ```
 
-## <a name="get-chain-of-custody-logs-after-data-erasure"></a>Pobierz łańcuch dzienników opieki po usunięciu danych
+## <a name="get-chain-of-custody-logs-after-data-erasure"></a>Pobierz dzienniki łańcucha opieki po usunięciu danych
 
-Po wymazaniu danych z urządzenie Data Box dysków zgodnie z wytycznymi dla programu NIST SP 800-88 z poprawkami 1 jest dostępny łańcuch dzienników opieki. Te dzienniki obejmują dzienniki inspekcji i historię kolejności. Pliki BOM lub manifestów są również kopiowane z dziennikami inspekcji.
+Po usunięciu danych z dysków pola danych zgodnie z wytycznymi NIST SP 800-88 Revision 1 dostępne są dzienniki łańcucha opieki. Dzienniki te obejmują dzienniki inspekcji i historię zamówień. Pliki BOM lub manifestu są również kopiowane za pomocą dzienników inspekcji.
 
 ### <a name="audit-logs"></a>Dzienniki inspekcji
 
-Dzienniki inspekcji zawierają informacje dotyczące włączania i uzyskiwania dostępu do udziałów na urządzenie Data Box lub Data Box Heavy, gdy nie znajduje się on poza centrum danych platformy Azure. Te dzienniki znajdują się w lokalizacji: `storage-account/azuredatabox-chainofcustodylogs`
+Dzienniki inspekcji zawierają informacje dotyczące włączania i uzyskiwania dostępu do udziałów w polu danych lub danych— dużo danych, gdy znajdują się poza centrum danych platformy Azure. Te dzienniki znajdują się pod adresem:`storage-account/azuredatabox-chainofcustodylogs`
 
-Oto przykład dziennika inspekcji z urządzenie Data Box:
+Oto przykład dziennika inspekcji z pola danych:
 
 ```
 9/10/2018 8:23:01 PM : The operating system started at system time ‎2018‎-‎09‎-‎10T20:23:01.497758400Z.
@@ -354,15 +354,15 @@ The authentication information fields provide detailed information about this sp
 
 ## <a name="download-order-history"></a>Pobieranie historii zamówienia
 
-Historia zamówień jest dostępna w Azure Portal. Jeśli zamówienie zostało zakończone, a oczyszczanie urządzenia (dane wymazywane z dysków) zostało zakończone, przejdź do kolejności urządzenia i przejdź do **szczegółów zamówienia**. Opcja **Pobieranie historii zamówienia** jest dostępna. Aby uzyskać więcej informacji, zobacz [Pobieranie historii kolejności](data-box-portal-admin.md#download-order-history).
+Historia zamówień jest dostępna w witrynie Azure portal. Jeśli zamówienie zostanie zakończone, a oczyszczanie urządzenia (usuwanie danych z dysków) zostanie zakończone, przejdź do zamówienia urządzenia i przejdź do **pozycji Szczegóły zamówienia**. Opcja **Pobieranie historii zamówienia** jest dostępna. Aby uzyskać więcej informacji, zobacz [Historia zamówień pobierania](data-box-portal-admin.md#download-order-history).
 
-Jeśli przewiniesz historię kolejności, zobaczysz:
+Po przewinięciu historii zamówień zobaczysz:
 
-- Informacje o śledzeniu nośnika dla Twojego urządzenia.
-- Zdarzenia z działaniem *SecureErase* . Te zdarzenia odpowiadają za wymazywanie danych na dysku.
-- Urządzenie Data Box linki dzienników. Wyświetlane są ścieżki *dzienników inspekcji*, *kopii dzienników*i plików *BOM* .
+- Informacje o śledzeniu operatora dla Twojego urządzenia.
+- Zdarzenia z aktywnością *SecureErase.* Zdarzenia te odpowiadają wymazaniu danych na dysku.
+- Łącza dziennika pola danych. Ścieżki dla *dzienników inspekcji, dzienników* *kopiowania*i plików *BOM* są prezentowane.
 
-Oto przykład dziennika historii kolejności z Azure Portal:
+Oto przykład dziennika historii zamówień z witryny Azure portal:
 
 ```
 -------------------------------
@@ -413,4 +413,4 @@ BOM Files Path       : azuredatabox-chainofcustodylogs\<GUID>\<Device-serial-no>
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Dowiedz się [, jak rozwiązywać problemy dotyczące urządzenie Data Box i Data Box Heavy](data-box-troubleshoot.md).
+- Dowiedz się, jak [rozwiązywać problemy z danymi w witrynie Data Box i Data Box Heavy](data-box-troubleshoot.md).

@@ -1,318 +1,318 @@
 ---
-title: Przewodnik referencyjny dotyczący funkcji w wyrażeniach
-description: Przewodnik referencyjny dotyczący funkcji w wyrażeniach dla Azure Logic Apps i automatyzacji
+title: Przewodnik dla funkcji w wyrażeniach
+description: Przewodnik po funkcjach w wyrażeniach dla aplikacji Azure Logic Apps i Power Automate
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.openlocfilehash: 87798c93bbc1098daea2f7258a3af3e26bb4bb93
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79283916"
 ---
-# <a name="reference-guide-to-using-functions-in-expressions-for-azure-logic-apps-and-power-automate"></a>Przewodnik referencyjny dotyczący używania funkcji w wyrażeniach dla Azure Logic Apps i automatyzacji
+# <a name="reference-guide-to-using-functions-in-expressions-for-azure-logic-apps-and-power-automate"></a>Przewodnik dotyczący używania funkcji w wyrażeniach dla aplikacji Azure Logic Apps i Power Automate
 
-W przypadku definicji przepływu pracy w [Azure Logic Apps](../logic-apps/logic-apps-overview.md) i [automatyzacji](https://docs.microsoft.com/flow/getting-started), niektóre [wyrażenia](../logic-apps/logic-apps-workflow-definition-language.md#expressions) pobierają wartości z akcji środowiska uruchomieniowego, które mogą jeszcze nie istnieć podczas uruchamiania przepływu pracy. Aby odwołać się do tych wartości lub przetworzyć wartości w tych wyrażeniach, można użyć *funkcji* udostępnianych przez [Język definicji przepływu pracy](../logic-apps/logic-apps-workflow-definition-language.md). 
+W przypadku definicji przepływu pracy w [usłudze Azure Logic Apps](../logic-apps/logic-apps-overview.md) i [power automatyce](https://docs.microsoft.com/flow/getting-started)niektóre [wyrażenia](../logic-apps/logic-apps-workflow-definition-language.md#expressions) otrzymują swoje wartości z akcji środowiska uruchomieniowego, które mogą jeszcze nie istnieć, gdy przepływ pracy zacznie działać. Aby odwołać się do tych wartości lub przetworzyć wartości w tych wyrażeniach, można użyć *funkcji dostarczonych* przez [język definicji przepływu pracy](../logic-apps/logic-apps-workflow-definition-language.md). 
 
 > [!NOTE]
-> Ta strona referencyjna dotyczy zarówno Azure Logic Apps, jak i automatyzacji, ale pojawia się w dokumentacji Azure Logic Apps. Mimo że ta strona odwołuje się głównie do usługi Logic Apps, te funkcje działają zarówno dla przepływów, jak i aplikacji logiki. Aby uzyskać więcej informacji o funkcjach i wyrażeniach w programie do automatyzowania, zobacz [use Expressions in Conditions](https://docs.microsoft.com/flow/use-expressions-in-conditions).
+> Ta strona odwołania dotyczy zarówno usługi Azure Logic Apps, jak i Power Automate, ale jest wyświetlana w dokumentacji usługi Azure Logic Apps. Chociaż ta strona odnosi się specjalnie do aplikacji logiki, te funkcje działają zarówno dla przepływów, jak i aplikacji logiki. Aby uzyskać więcej informacji o funkcjach i wyrażeniach w programie Power Automate, zobacz [Używanie wyrażeń w warunkach](https://docs.microsoft.com/flow/use-expressions-in-conditions).
 
-Na przykład można obliczyć wartości przy użyciu funkcji matematycznych, takich jak [Funkcja Add ()](../logic-apps/workflow-definition-language-functions-reference.md#add), jeśli chcesz, aby suma była sumą z liczb całkowitych lub zmiennoprzecinkowych. Oto inne przykładowe zadania, które można wykonywać za pomocą funkcji:
+Na przykład wartości można obliczyć za pomocą funkcji matematycznych, takich jak [funkcja add(),](../logic-apps/workflow-definition-language-functions-reference.md#add)jeśli chcesz sumę z liczby całkowitej lub floats. Oto inne przykładowe zadania, które można wykonywać z funkcjami:
 
 | Zadanie | Składnia funkcji | Wynik |
 | ---- | --------------- | ------ |
-| Zwraca ciąg w formacie małymi literami. | toLower ("< >*tekstu*") <p>Na przykład: toLower ("Hello") | Hello |
-| Zwraca unikatowy identyfikator globalny (GUID). | Identyfikator GUID () |"c2ecc88d-88c8-4096-912c-d6f2e2b138ce" |
+| Zwraca ciąg w formacie małych liter. | toLower("<*tekst*>") <p>Na przykład: toLower('Hello') | "cześć" |
+| Zwraca unikatowy identyfikator globalny (GUID). | guid() |"c2ecc88d-88c8-4096-912c-d6f2e2b138ce" |
 ||||
 
-Aby znaleźć funkcje [na podstawie ich ogólnego przeznaczenia](#ordered-by-purpose), zapoznaj się z poniższymi tabelami. Lub, aby uzyskać szczegółowe informacje na temat każdej funkcji, zobacz [alfabetyczną listę](#alphabetical-list).
+Aby znaleźć funkcje [na podstawie ich ogólnego przeznaczenia,](#ordered-by-purpose)zapoznaj się z poniższymi tabelami. Lub, aby uzyskać szczegółowe informacje na temat każdej funkcji, zobacz [listę alfabetyczną](#alphabetical-list).
 
 > [!NOTE]
-> W składni definicji parametrów, znak zapytania (?), który pojawia się po parametrze oznacza, że parametr jest opcjonalny.
-> Na przykład zobacz [getFutureTime ()](#getFutureTime).
+> W składni dla definicji parametrów, znak zapytania (?), który pojawia się po parametr oznacza, że parametr jest opcjonalny.
+> Na przykład zobacz [getFutureTime()](#getFutureTime).
 
 ## <a name="functions-in-expressions"></a>Funkcje w wyrażeniach
 
-Aby pokazać, jak używać funkcji w wyrażeniu, ten przykład pokazuje, jak można uzyskać wartość z parametru `customerName` i przypisać tę wartość do właściwości `accountName` przy użyciu funkcji [Parameters ()](#parameters) w wyrażeniu:
+Aby pokazać, jak używać funkcji w wyrażeniu, w tym `customerName` przykładzie pokazano, `accountName` jak można uzyskać wartość z parametru i przypisać tę wartość do właściwości za pomocą funkcji [parameters()](#parameters) w wyrażeniu:
 
 ```json
 "accountName": "@parameters('customerName')"
 ```
 
-Poniżej przedstawiono inne ogólne sposoby używania funkcji w wyrażeniach:
+Oto kilka innych ogólnych sposobów używania funkcji w wyrażeniach:
 
 | Zadanie | Składnia funkcji w wyrażeniu |
 | ---- | -------------------------------- |
-| Wykonaj prace z elementem, przekazując ten element do funkcji. | "\@<*functionname*> (<*elementu*>)" |
-| 1. Pobierz wartość *parametruname*przy użyciu zagnieżdżonej funkcji `parameters()`. </br>2. wykonaj prace z wynikiem, przekazując tę wartość do *funkcji FunctionName*. | "\@<*functionname*> (parametry (" <*ParameterName*> "))" |
-| 1. Pobierz wynik z zagnieżdżonej *funkcji wewnętrznejname.* </br>2. Przekaż wynik do funkcji zewnętrznej *functionName2*. | "\@<*functionName2*> (<*FunctionName*> (<*Item*>))" |
-| 1. Pobierz wynik z *funkcji FunctionName*. </br>2. Jeśli wynik jest obiektem z właściwością *PropertyName*, Pobierz wartość tej właściwości. | "\@<*functionname*> (<*elementu*>). <*PropertyName*>" |
+| Wykonywanie pracy z elementem, przekazując ten element do funkcji. | "\@<*functionName*>(<*item*>)" |
+| 1. Pobierz wartość *parameterName*'s za `parameters()` pomocą funkcji zagnieżdżonej. </br>2. Wykonaj pracę z wynikiem, przekazując tę wartość do *functionName*. | "\@<*functionName*>(parameters('<*parameterName*>'))" |
+| 1. Pobierz wynik z zagnieżdżonej *funkcji wewnętrznejName*. </br>2. Przekaż wynik funkcji *zewnętrznejName2*. | "\@<*functionName2*>(<*functionName*>(<*item*>)". |
+| 1. Pobierz wynik z *functionName*. </br>2. Biorąc pod uwagę, że wynik jest obiektem z *property propertyName*, pobierz wartość tej właściwości. | "\@<*functionName*>(<*item*>).<*propertyName*>" |
 |||
 
-Na przykład funkcja `concat()` może przyjmować jako parametry dwie lub więcej wartości ciągu. Ta funkcja łączy te ciągi w jeden ciąg.
-Można przekazać literały ciągu, na przykład "Sophia" i "Owen", aby uzyskać ciąg połączony "SophiaOwen":
+Na przykład `concat()` funkcja może przyjmować dwie lub więcej wartości ciągu jako parametry. Ta funkcja łączy te ciągi w jeden ciąg.
+Możesz albo przekazać w literałach ciągów, na przykład "Sophia" i "Owen", aby uzyskać połączony ciąg "SophiaOwen":
 
 ```json
 "customerName": "@concat('Sophia', 'Owen')"
 ```
 
-Lub można uzyskać wartości ciągu z parametrów. Ten przykład używa funkcji `parameters()` w każdym parametrze `concat()` i `firstName` i `lastName` parametrów. Następnie można przekazać otrzymane ciągi do funkcji `concat()`, aby uzyskać ciąg połączony, na przykład "SophiaOwen":
+Lub można uzyskać wartości ciągów z parametrów. `parameters()` W tym przykładzie użyto funkcji w każdym `concat()` parametrze i `firstName` i `lastName` parametrów. Następnie należy przekazać wynikowe ciągi do `concat()` funkcji, dzięki czemu można uzyskać połączony ciąg, na przykład "SophiaOwen":
 
 ```json
 "customerName": "@concat(parameters('firstName'), parameters('lastName'))"
 ```
 
-W obu przypadkach oba przykłady przypisują wynik do właściwości `customerName`.
+Tak czy inaczej, oba przykłady `customerName` przypisać wynik do właściwości.
 
-Poniżej przedstawiono dostępne funkcje uporządkowane według ich ogólnego przeznaczenia lub można przeglądać funkcje w oparciu o [kolejność alfabetyczną](#alphabetical-list).
+Oto dostępne funkcje uporządkowane według ich ogólnego przeznaczenia lub możesz przeglądać funkcje w oparciu o [kolejność alfabetyczną.](#alphabetical-list)
 
 <a name="ordered-by-purpose"></a>
 <a name="string-functions"></a>
 
 ## <a name="string-functions"></a>Funkcje ciągów
 
-Aby korzystać z ciągów, można użyć tych funkcji ciągów, a także niektórych [funkcji kolekcji](#collection-functions).
+Aby pracować z ciągami, można użyć tych funkcji ciągu, a także niektórych [funkcji zbierania](#collection-functions).
 Funkcje ciągów działają tylko na ciągach.
 
-| Funkcja String | Zadanie |
+| Ciąg, funkcja | Zadanie |
 | --------------- | ---- |
 | [Concat](../logic-apps/workflow-definition-language-functions-reference.md#concat) | Połącz dwa lub więcej ciągów i zwróć połączony ciąg. |
-| [endsWith](../logic-apps/workflow-definition-language-functions-reference.md#endswith) | Sprawdź, czy ciąg jest kończący się określonym podciągiem. |
-| [formatNumber](../logic-apps/workflow-definition-language-functions-reference.md#formatNumber) | Zwróć liczbę jako ciąg w oparciu o określony format |
-| [ident](../logic-apps/workflow-definition-language-functions-reference.md#guid) | Generuj unikatowy identyfikator globalny (GUID) jako ciąg. |
-| [indexOf](../logic-apps/workflow-definition-language-functions-reference.md#indexof) | Zwróć pozycję początkową dla podciągu. |
-| [lastIndexOf](../logic-apps/workflow-definition-language-functions-reference.md#lastindexof) | Zwróć pozycję początkową dla ostatniego wystąpienia podciągu. |
-| [stępować](../logic-apps/workflow-definition-language-functions-reference.md#replace) | Zamień podciąg na określony ciąg i zwróć zaktualizowany ciąg. |
-| [split](../logic-apps/workflow-definition-language-functions-reference.md#split) | Zwraca tablicę zawierającą podciągi, rozdzieloną przecinkami, od większego ciągu na podstawie określonego znaku ogranicznika w oryginalnym ciągu. |
-| [startsWith](../logic-apps/workflow-definition-language-functions-reference.md#startswith) | Sprawdź, czy ciąg rozpoczyna się od określonego podciągu. |
-| [podciąg](../logic-apps/workflow-definition-language-functions-reference.md#substring) | Zwraca znaki z ciągu, zaczynając od określonej pozycji. |
-| [toLower](../logic-apps/workflow-definition-language-functions-reference.md#toLower) | Zwraca ciąg w formacie małymi literami. |
-| [toUpper](../logic-apps/workflow-definition-language-functions-reference.md#toUpper) | Zwraca ciąg w formacie wielką literą. |
-| [Trim](../logic-apps/workflow-definition-language-functions-reference.md#trim) | Usuń spacje wiodące i końcowe z ciągu, a następnie Zwróć zaktualizowany ciąg. |
+| [Endswith](../logic-apps/workflow-definition-language-functions-reference.md#endswith) | Sprawdź, czy ciąg kończy się określonym podciągiem. |
+| [Formatnumber](../logic-apps/workflow-definition-language-functions-reference.md#formatNumber) | Zwraca liczbę jako ciąg na podstawie określonego formatu |
+| [Identyfikator guid](../logic-apps/workflow-definition-language-functions-reference.md#guid) | Generowanie unikatowego identyfikatora (GUID) jako ciągu. |
+| [Indexof](../logic-apps/workflow-definition-language-functions-reference.md#indexof) | Zwraca pozycję początkową podciągu. |
+| [Lastindexof](../logic-apps/workflow-definition-language-functions-reference.md#lastindexof) | Zwraca pozycję początkową dla ostatniego wystąpienia podciągu. |
+| [Zastąpić](../logic-apps/workflow-definition-language-functions-reference.md#replace) | Zamień podciąg na określony ciąg i zwróć zaktualizowany ciąg. |
+| [split](../logic-apps/workflow-definition-language-functions-reference.md#split) | Zwraca tablicę zawierającą podciągi, oddzielone przecinkami, z większego ciągu opartego na określonym znaku ogranicznika w oryginalnym ciągu. |
+| [Startswith](../logic-apps/workflow-definition-language-functions-reference.md#startswith) | Sprawdź, czy ciąg zaczyna się od określonego podciągu. |
+| [Podciąg](../logic-apps/workflow-definition-language-functions-reference.md#substring) | Zwraca znaki z ciągu, zaczynając od określonej pozycji. |
+| [Tolower](../logic-apps/workflow-definition-language-functions-reference.md#toLower) | Zwraca ciąg w formacie małych liter. |
+| [Toupper](../logic-apps/workflow-definition-language-functions-reference.md#toUpper) | Zwraca ciąg wielkimi literami. |
+| [Przycinanie](../logic-apps/workflow-definition-language-functions-reference.md#trim) | Usuń interweniujący i końcowy biały znak z ciągu i zwraca zaktualizowany ciąg. |
 |||
 
 <a name="collection-functions"></a>
 
-## <a name="collection-functions"></a>Funkcje kolekcji
+## <a name="collection-functions"></a>Funkcje zbierania
 
-Do pracy z kolekcjami, ogólnie tablicami, ciągami i czasami słownikami można używać tych funkcji kolekcji.
+Aby pracować z kolekcji, zazwyczaj tablice, ciągi i czasami słowniki, można użyć tych funkcji kolekcji.
 
-| Funkcja kolekcji | Zadanie |
+| Kolekcja, funkcja | Zadanie |
 | ------------------- | ---- |
-| [wyświetlana](../logic-apps/workflow-definition-language-functions-reference.md#contains) | Sprawdź, czy kolekcja zawiera określony element. |
-| [ciągiem](../logic-apps/workflow-definition-language-functions-reference.md#empty) | Sprawdź, czy kolekcja jest pusta. |
-| [pierwszego](../logic-apps/workflow-definition-language-functions-reference.md#first) | Zwróć pierwszy element z kolekcji. |
-| [część wspólną](../logic-apps/workflow-definition-language-functions-reference.md#intersection) | Zwróć kolekcję, która ma *tylko* wspólne elementy w określonej kolekcji. |
-| [elementów](../logic-apps/workflow-definition-language-functions-reference.md#item) | Gdy wewnątrz powtarzającej się akcji nad tablicą, zwraca bieżący element w tablicy podczas bieżącej iteracji akcji. |
-| [join](../logic-apps/workflow-definition-language-functions-reference.md#join) | Zwraca ciąg, który zawiera *wszystkie* elementy z tablicy, oddzielone określonym znakiem. |
-| [ostatniego](../logic-apps/workflow-definition-language-functions-reference.md#last) | Zwróć ostatni element z kolekcji. |
+| [Zawiera](../logic-apps/workflow-definition-language-functions-reference.md#contains) | Sprawdź, czy kolekcja ma określony element. |
+| [Pusty](../logic-apps/workflow-definition-language-functions-reference.md#empty) | Sprawdź, czy kolekcja jest pusta. |
+| [Pierwszym](../logic-apps/workflow-definition-language-functions-reference.md#first) | Zwraca pierwszy element z kolekcji. |
+| [Przecięcia](../logic-apps/workflow-definition-language-functions-reference.md#intersection) | Zwraca kolekcję, która ma *tylko* wspólne elementy w określonych kolekcjach. |
+| [Element](../logic-apps/workflow-definition-language-functions-reference.md#item) | W przypadku wewnątrz powtarzania akcji nad tablicą, zwraca bieżący element w tablicy podczas bieżącej iteracji akcji. |
+| [join](../logic-apps/workflow-definition-language-functions-reference.md#join) | Zwraca ciąg, który ma *wszystkie* elementy z tablicy, oddzielone określonym znakiem. |
+| [Ostatnio](../logic-apps/workflow-definition-language-functions-reference.md#last) | Zwróć ostatni element z kolekcji. |
 | [Długość](../logic-apps/workflow-definition-language-functions-reference.md#length) | Zwraca liczbę elementów w ciągu lub tablicy. |
-| [Skocz](../logic-apps/workflow-definition-language-functions-reference.md#skip) | Usuń elementy z przodu kolekcji i zwróć *wszystkie pozostałe* elementy. |
-| [czasochłonn](../logic-apps/workflow-definition-language-functions-reference.md#take) | Zwróć elementy z przodu kolekcji. |
-| [Unii](../logic-apps/workflow-definition-language-functions-reference.md#union) | Zwraca kolekcję zawierającą *wszystkie* elementy z określonych kolekcji. |
+| [Pominąć](../logic-apps/workflow-definition-language-functions-reference.md#skip) | Usuń elementy z przodu kolekcji i zwróć *wszystkie pozostałe* elementy. |
+| [wziąć](../logic-apps/workflow-definition-language-functions-reference.md#take) | Zwracaj przedmioty z przodu kolekcji. |
+| [Unii](../logic-apps/workflow-definition-language-functions-reference.md#union) | Zwraca kolekcję, która ma *wszystkie* elementy z określonych kolekcji. |
 |||
 
 <a name="comparison-functions"></a>
 
-## <a name="logical-comparison-functions"></a>Logiczne funkcje porównania
+## <a name="logical-comparison-functions"></a>Funkcje porównywania logicznego
 
-Aby działać z warunkami, porównywać wartości i wyniki wyrażeń lub oceniać różne rodzaje logiki, można użyć tych logicznych funkcji porównywania.
-Aby uzyskać pełne informacje o każdej z tych funkcji, zobacz [alfabetyczną listę](../logic-apps/workflow-definition-language-functions-reference.md#alphabetical-list).
+Aby pracować z warunkami, porównać wartości i wyniki wyrażenia lub ocenić różne rodzaje logiki, można użyć tych funkcji porównania logicznego.
+Aby uzyskać pełne informacje o każdej funkcji, zobacz [listę alfabetyczną](../logic-apps/workflow-definition-language-functions-reference.md#alphabetical-list).
 
-| Logiczna funkcja porównywania | Zadanie |
+| Funkcja porównywania logicznego | Zadanie |
 | --------------------------- | ---- |
-| [lub](../logic-apps/workflow-definition-language-functions-reference.md#and) | Sprawdź, czy wszystkie wyrażenia mają wartość PRAWDA. |
-| [ubiegł](../logic-apps/workflow-definition-language-functions-reference.md#equals) | Sprawdź, czy obie wartości są równoważne. |
-| [mniejszą](../logic-apps/workflow-definition-language-functions-reference.md#greater) | Sprawdź, czy pierwsza wartość jest większa od drugiej wartości. |
+| [I](../logic-apps/workflow-definition-language-functions-reference.md#and) | Sprawdź, czy wszystkie wyrażenia są prawdziwe. |
+| [equals](../logic-apps/workflow-definition-language-functions-reference.md#equals) | Sprawdź, czy obie wartości są równoważne. |
+| [greater](../logic-apps/workflow-definition-language-functions-reference.md#greater) | Sprawdź, czy pierwsza wartość jest większa niż druga wartość. |
 | [greaterOrEquals](../logic-apps/workflow-definition-language-functions-reference.md#greaterOrEquals) | Sprawdź, czy pierwsza wartość jest większa lub równa drugiej wartości. |
-| [przypadku](../logic-apps/workflow-definition-language-functions-reference.md#if) | Sprawdź, czy wyrażenie ma wartość true lub false. W oparciu o wynik Zwraca określoną wartość. |
-| [wcześniejsz](../logic-apps/workflow-definition-language-functions-reference.md#less) | Sprawdź, czy pierwsza wartość jest mniejsza od drugiej wartości. |
+| [if](../logic-apps/workflow-definition-language-functions-reference.md#if) | Sprawdź, czy wyrażenie jest prawdziwe czy fałszywe. Na podstawie wyniku zwraca określoną wartość. |
+| [less](../logic-apps/workflow-definition-language-functions-reference.md#less) | Sprawdź, czy pierwsza wartość jest mniejsza niż druga wartość. |
 | [lessOrEquals](../logic-apps/workflow-definition-language-functions-reference.md#lessOrEquals) | Sprawdź, czy pierwsza wartość jest mniejsza lub równa drugiej wartości. |
-| [niemożliwe](../logic-apps/workflow-definition-language-functions-reference.md#not) | Sprawdź, czy wyrażenie ma wartość false. |
-| [lub](../logic-apps/workflow-definition-language-functions-reference.md#or) | Sprawdź, czy co najmniej jedno wyrażenie ma wartość true. |
+| [Nie](../logic-apps/workflow-definition-language-functions-reference.md#not) | Sprawdź, czy wyrażenie jest fałszywe. |
+| [Lub](../logic-apps/workflow-definition-language-functions-reference.md#or) | Sprawdź, czy co najmniej jedno wyrażenie jest prawdziwe. |
 |||
 
 <a name="conversion-functions"></a>
 
 ## <a name="conversion-functions"></a>Funkcje konwersji
 
-Aby zmienić typ lub format wartości, można użyć tych funkcji konwersji.
-Na przykład można zmienić wartość z wartości logicznej na liczbę całkowitą.
-Aby uzyskać więcej informacji na temat sposobu, w jaki Logic Apps obsługuje typy zawartości podczas konwersji, zobacz [Obsługa typów zawartości](../logic-apps/logic-apps-content-type.md).
-Aby uzyskać pełne informacje o każdej z tych funkcji, zobacz [alfabetyczną listę](../logic-apps/workflow-definition-language-functions-reference.md#alphabetical-list).
+Aby zmienić typ lub format wartości, możesz użyć tych funkcji konwersji.
+Na przykład można zmienić wartość z wartości logicznej na całkowitej.
+Aby uzyskać więcej informacji o tym, jak aplikacje logiki obsługują typy zawartości podczas konwersji, zobacz [Obsługa typów zawartości](../logic-apps/logic-apps-content-type.md).
+Aby uzyskać pełne informacje o każdej funkcji, zobacz [listę alfabetyczną](../logic-apps/workflow-definition-language-functions-reference.md#alphabetical-list).
 
 | Funkcja konwersji | Zadanie |
 | ------------------- | ---- |
-| [macierzy](../logic-apps/workflow-definition-language-functions-reference.md#array) | Zwraca tablicę z pojedynczego określonego danych wejściowych. W przypadku wielu danych wejściowych [Zobacz sekcję](../logic-apps/workflow-definition-language-functions-reference.md#createArray). |
-| [zakodowan](../logic-apps/workflow-definition-language-functions-reference.md#base64) | Zwróć wersję z kodowaniem Base64 dla ciągu. |
-| [base64ToBinary](../logic-apps/workflow-definition-language-functions-reference.md#base64ToBinary) | Zwróć wersję binarną dla ciągu zakodowanego algorytmem Base64. |
-| [base64ToString](../logic-apps/workflow-definition-language-functions-reference.md#base64ToString) | Zwraca wersję ciągu dla ciągu zakodowanego algorytmem Base64. |
-| [binarny](../logic-apps/workflow-definition-language-functions-reference.md#binary) | Zwróć wersję binarną dla wartości wejściowej. |
-| [logiczna](../logic-apps/workflow-definition-language-functions-reference.md#bool) | Zwróć wersję logiczną dla wartości wejściowej. |
-| [przearray](../logic-apps/workflow-definition-language-functions-reference.md#createArray) | Zwróć tablicę z wielu danych wejściowych. |
-| [dataUri](../logic-apps/workflow-definition-language-functions-reference.md#dataUri) | Zwróć identyfikator URI danych dla wartości wejściowej. |
-| [dataUriToBinary](../logic-apps/workflow-definition-language-functions-reference.md#dataUriToBinary) | Zwróć wersję binarną dla identyfikatora URI danych. |
+| [tablica](../logic-apps/workflow-definition-language-functions-reference.md#array) | Zwraca tablicę z jednego określonego wejścia. Dla wielu wejść, zobacz [createArray](../logic-apps/workflow-definition-language-functions-reference.md#createArray). |
+| [base64](../logic-apps/workflow-definition-language-functions-reference.md#base64) | Zwraca wersję zakodowaną w base64 dla ciągu. |
+| [base64ToBinary](../logic-apps/workflow-definition-language-functions-reference.md#base64ToBinary) | Zwraca wersję binarną dla ciągu zakodowanego base64. |
+| [base64ToString](../logic-apps/workflow-definition-language-functions-reference.md#base64ToString) | Zwraca wersję ciągu dla ciągu zakodowanego base64. |
+| [binarny](../logic-apps/workflow-definition-language-functions-reference.md#binary) | Zwraca wersję binarną dla wartości wejściowej. |
+| [bool](../logic-apps/workflow-definition-language-functions-reference.md#bool) | Zwraca wersję logiczną dla wartości wejściowej. |
+| [tworzenieArray](../logic-apps/workflow-definition-language-functions-reference.md#createArray) | Zwraca tablicę z wielu danych wejściowych. |
+| [dataUri](../logic-apps/workflow-definition-language-functions-reference.md#dataUri) | Zwraca identyfikator URI danych dla wartości wejściowej. |
+| [dataUriToBinary](../logic-apps/workflow-definition-language-functions-reference.md#dataUriToBinary) | Zwraca wersję binarną dla identyfikatora URI danych. |
 | [dataUriToString](../logic-apps/workflow-definition-language-functions-reference.md#dataUriToString) | Zwraca wersję ciągu dla identyfikatora URI danych. |
-| [decodeBase64](../logic-apps/workflow-definition-language-functions-reference.md#decodeBase64) | Zwraca wersję ciągu dla ciągu zakodowanego algorytmem Base64. |
-| [decodeDataUri](../logic-apps/workflow-definition-language-functions-reference.md#decodeDataUri) | Zwróć wersję binarną dla identyfikatora URI danych. |
-| [decodeUriComponent](../logic-apps/workflow-definition-language-functions-reference.md#decodeUriComponent) | Zwraca ciąg, który zastępuje znaki ucieczki z zdekodowanymi wersjami. |
-| [encodeURIComponent —](../logic-apps/workflow-definition-language-functions-reference.md#encodeUriComponent) | Zwraca ciąg, który zastępuje znaki w postaci niebezpiecznej adresów URL. |
-| [float](../logic-apps/workflow-definition-language-functions-reference.md#float) | Zwróć liczbę zmiennoprzecinkową dla wartości wejściowej. |
-| [ZAOKR](../logic-apps/workflow-definition-language-functions-reference.md#int) | Zwróć wersję całkowitą dla ciągu. |
-| [kodu](../logic-apps/workflow-definition-language-functions-reference.md#json) | Zwróć wartość typu JavaScript Object Notation (JSON) lub obiekt dla ciągu lub XML. |
-| [parametry](../logic-apps/workflow-definition-language-functions-reference.md#string) | Zwraca wersję ciągu dla wartości wejściowej. |
-| [uriComponent](../logic-apps/workflow-definition-language-functions-reference.md#uriComponent) | Zwróć wersję z kodowaniem URI dla wartości wejściowej przez zastępowanie znaków w adresie URL bez znaku ucieczki. |
-| [uriComponentToBinary](../logic-apps/workflow-definition-language-functions-reference.md#uriComponentToBinary) | Zwróć wersję binarną dla ciągu zakodowanego za pomocą identyfikatora URI. |
-| [uriComponentToString](../logic-apps/workflow-definition-language-functions-reference.md#uriComponentToString) | Zwraca wersję ciągu dla ciągu zakodowanego przy użyciu identyfikatora URI. |
-| [xml](../logic-apps/workflow-definition-language-functions-reference.md#xml) | Zwraca wersję XML dla ciągu. |
+| [dekodowanieBase64](../logic-apps/workflow-definition-language-functions-reference.md#decodeBase64) | Zwraca wersję ciągu dla ciągu zakodowanego base64. |
+| [dekodowanieDataUri](../logic-apps/workflow-definition-language-functions-reference.md#decodeDataUri) | Zwraca wersję binarną dla identyfikatora URI danych. |
+| [dekodowanieskładeksu](../logic-apps/workflow-definition-language-functions-reference.md#decodeUriComponent) | Zwraca ciąg, który zastępuje znaki ucieczki z dekodowanych wersji. |
+| [Encodeuricomponent](../logic-apps/workflow-definition-language-functions-reference.md#encodeUriComponent) | Zwraca ciąg, który zastępuje znaki niebezpieczne dla adresów URL znakami ucieczki. |
+| [float](../logic-apps/workflow-definition-language-functions-reference.md#float) | Zwraca numer zmiennoprzecinkowy dla wartości wejściowej. |
+| [int](../logic-apps/workflow-definition-language-functions-reference.md#int) | Zwraca wersję całkowitą dla ciągu. |
+| [Json](../logic-apps/workflow-definition-language-functions-reference.md#json) | Zwraca wartość typu ISON (JavaScript Object Notation) lub obiekt dla ciągu lub pliku XML. |
+| [Ciąg](../logic-apps/workflow-definition-language-functions-reference.md#string) | Zwraca wersję ciągu dla wartości wejściowej. |
+| [uriComponent](../logic-apps/workflow-definition-language-functions-reference.md#uriComponent) | Zwraca wersję zakodowaną w identyfikatorze URI dla wartości wejściowej, zastępując znaki niebezpieczne dla adresów URL znakami ucieczki. |
+| [uriComponentToBinary](../logic-apps/workflow-definition-language-functions-reference.md#uriComponentToBinary) | Zwraca wersję binarną dla ciągu zakodowanego zgodnie z identyfikatorem URI. |
+| [uriComponentToString](../logic-apps/workflow-definition-language-functions-reference.md#uriComponentToString) | Zwraca wersję ciągu dla ciągu zakodowanego w identyfikatorze URI. |
+| [Xml](../logic-apps/workflow-definition-language-functions-reference.md#xml) | Zwraca wersję XML dla ciągu. |
 |||
 
 <a name="math-functions"></a>
 
 ## <a name="math-functions"></a>Funkcje matematyczne
 
-Aby korzystać z liczb całkowitych i zmiennoprzecinkowych, można użyć tych funkcji matematycznych.
-Aby uzyskać pełne informacje o każdej z tych funkcji, zobacz [alfabetyczną listę](../logic-apps/workflow-definition-language-functions-reference.md#alphabetical-list).
+Aby pracować z liczby całkowite i pływaków, można użyć tych funkcji matematycznych.
+Aby uzyskać pełne informacje o każdej funkcji, zobacz [listę alfabetyczną](../logic-apps/workflow-definition-language-functions-reference.md#alphabetical-list).
 
 | Funkcja matematyczna | Zadanie |
 | ------------- | ---- |
-| [dodana](../logic-apps/workflow-definition-language-functions-reference.md#add) | Zwróć wynik dodawania dwóch liczb. |
-| [służąc](../logic-apps/workflow-definition-language-functions-reference.md#div) | Zwróć wynik dzielenia dwóch liczb. |
-| [Maksymalny](../logic-apps/workflow-definition-language-functions-reference.md#max) | Zwraca najwyższą wartość z zestawu liczb lub tablicy. |
-| [długości](../logic-apps/workflow-definition-language-functions-reference.md#min) | Zwróć najniższą wartość z zestawu liczb lub tablicy. |
-| [Funkcja](../logic-apps/workflow-definition-language-functions-reference.md#mod) | Zwróć resztę z dzielenia dwóch liczb. |
-| [mul](../logic-apps/workflow-definition-language-functions-reference.md#mul) | Zwróć produkt z mnożenia dwóch liczb. |
-| [Rand](../logic-apps/workflow-definition-language-functions-reference.md#rand) | Zwraca losową liczbę całkowitą z podanego zakresu. |
-| [zakresu](../logic-apps/workflow-definition-language-functions-reference.md#range) | Zwróć tablicę liczb całkowitych, która zaczyna się od określonej liczby całkowitej. |
-| [Sub](../logic-apps/workflow-definition-language-functions-reference.md#sub) | Zwraca wynik odejmowania drugiej liczby od pierwszej liczby. |
+| [add](../logic-apps/workflow-definition-language-functions-reference.md#add) | Zwraca wynik z dodawania dwóch liczb. |
+| [div](../logic-apps/workflow-definition-language-functions-reference.md#div) | Zwraca wynik z dzielenia dwóch liczb. |
+| [Max](../logic-apps/workflow-definition-language-functions-reference.md#max) | Zwraca najwyższą wartość z zestawu liczb lub tablicy. |
+| [Min](../logic-apps/workflow-definition-language-functions-reference.md#min) | Zwraca najniższą wartość z zestawu liczb lub tablicy. |
+| [Mod](../logic-apps/workflow-definition-language-functions-reference.md#mod) | Zwróć pozostałą część z podzielenia dwóch liczb. |
+| [Mul](../logic-apps/workflow-definition-language-functions-reference.md#mul) | Zwróć produkt z pomnożenia dwóch liczb. |
+| [Rand](../logic-apps/workflow-definition-language-functions-reference.md#rand) | Zwraca losową ćę całkowitą z określonego zakresu. |
+| [Zakres](../logic-apps/workflow-definition-language-functions-reference.md#range) | Zwraca tablicę całkowitą, która rozpoczyna się od określonej liczby całkowitej. |
+| [Sub](../logic-apps/workflow-definition-language-functions-reference.md#sub) | Zwraca wynik z odejmowania drugiej liczby od pierwszej liczby. |
 |||
 
 <a name="date-time-functions"></a>
 
 ## <a name="date-and-time-functions"></a>Funkcje daty i godziny
 
-Aby działać z datami i godzinami, można użyć tych funkcji daty i godziny.
-Aby uzyskać pełne informacje o każdej z tych funkcji, zobacz [alfabetyczną listę](../logic-apps/workflow-definition-language-functions-reference.md#alphabetical-list).
+Aby pracować z datami i godzinami, można użyć tych funkcji daty i godziny.
+Aby uzyskać pełne informacje o każdej funkcji, zobacz [listę alfabetyczną](../logic-apps/workflow-definition-language-functions-reference.md#alphabetical-list).
 
 | Funkcja daty lub godziny | Zadanie |
 | --------------------- | ---- |
-| [Liczba dni](../logic-apps/workflow-definition-language-functions-reference.md#addDays) | Dodaj liczbę dni do sygnatury czasowej. |
-| [addgodz.](../logic-apps/workflow-definition-language-functions-reference.md#addHours) | Dodaj liczbę godzin do sygnatury czasowej. |
-| [addminut](../logic-apps/workflow-definition-language-functions-reference.md#addMinutes) | Dodaj liczbę minut do sygnatury czasowej. |
-| [AddSeconds](../logic-apps/workflow-definition-language-functions-reference.md#addSeconds) | Dodaj liczbę sekund do sygnatury czasowej. |
-| [addToTime](../logic-apps/workflow-definition-language-functions-reference.md#addToTime) | Dodaj liczbę jednostek czasu do sygnatury czasowej. Zobacz również [getFutureTime](../logic-apps/workflow-definition-language-functions-reference.md#getFutureTime). |
-| [convertFromUtc](../logic-apps/workflow-definition-language-functions-reference.md#convertFromUtc) | Przekształć sygnaturę czasową od uniwersalnego czasu koordynowanego (UTC) na docelową strefę czasową. |
-| [convertTimeZone](../logic-apps/workflow-definition-language-functions-reference.md#convertTimeZone) | Przekonwertuj sygnaturę czasową ze źródłowej strefy czasowej na docelową strefę czasową. |
-| [convertToUtc](../logic-apps/workflow-definition-language-functions-reference.md#convertToUtc) | Konwertuj sygnaturę czasową ze źródłowej strefy czasowej na uniwersalne czas uniwersalny (UTC). |
-| [dayOfMonth](../logic-apps/workflow-definition-language-functions-reference.md#dayOfMonth) | Zwróć dzień składnika miesiąca z sygnatury czasowej. |
-| [dayOfWeek](../logic-apps/workflow-definition-language-functions-reference.md#dayOfWeek) | Zwróć dzień składnika tygodnia z sygnatury czasowej. |
-| [dzieńroku](../logic-apps/workflow-definition-language-functions-reference.md#dayOfYear) | Zwróć dzień składnika roku z sygnatury czasowej. |
-| [formatDateTime](../logic-apps/workflow-definition-language-functions-reference.md#formatDateTime) | Zwróć datę z sygnatury czasowej. |
-| [getFutureTime](../logic-apps/workflow-definition-language-functions-reference.md#getFutureTime) | Zwróć bieżącą sygnaturę czasową powiększoną o określoną liczbę jednostek czasu. Zobacz również [addToTime](../logic-apps/workflow-definition-language-functions-reference.md#addToTime). |
-| [getPastTime](../logic-apps/workflow-definition-language-functions-reference.md#getPastTime) | Zwróć bieżącą sygnaturę czasową minus określoną liczbę jednostek czasu. Zobacz również [subtractFromTime](../logic-apps/workflow-definition-language-functions-reference.md#subtractFromTime). |
-| [startOfDay](../logic-apps/workflow-definition-language-functions-reference.md#startOfDay) | Zwróć początek dnia dla sygnatury czasowej. |
-| [Początek godziny](../logic-apps/workflow-definition-language-functions-reference.md#startOfHour) | Zwróć początek godziny dla sygnatury czasowej. |
-| [startOfMonth](../logic-apps/workflow-definition-language-functions-reference.md#startOfMonth) | Zwróć początek miesiąca dla sygnatury czasowej. |
-| [subtractFromTime](../logic-apps/workflow-definition-language-functions-reference.md#subtractFromTime) | Odejmij wiele jednostek czasu od sygnatury czasowej. Zobacz również [getPastTime](../logic-apps/workflow-definition-language-functions-reference.md#getPastTime). |
-| [taktów](../logic-apps/workflow-definition-language-functions-reference.md#ticks) | Zwróć `ticks` wartość właściwości dla określonego sygnatury czasowej. |
-| [utcNow](../logic-apps/workflow-definition-language-functions-reference.md#utcNow) | Zwróć bieżącą sygnaturę czasową jako ciąg. |
+| [Adddays](../logic-apps/workflow-definition-language-functions-reference.md#addDays) | Dodaj liczbę dni do sygnatury czasowej. |
+| [Addhours](../logic-apps/workflow-definition-language-functions-reference.md#addHours) | Dodaj liczbę godzin do sygnatury czasowej. |
+| [Addminutes](../logic-apps/workflow-definition-language-functions-reference.md#addMinutes) | Dodaj liczbę minut do sygnatury czasowej. |
+| [Addseconds](../logic-apps/workflow-definition-language-functions-reference.md#addSeconds) | Dodaj liczbę sekund do sygnatury czasowej. |
+| [addToTime](../logic-apps/workflow-definition-language-functions-reference.md#addToTime) | Dodaj liczbę jednostek czasu do sygnatury czasowej. Zobacz też [getFutureTime](../logic-apps/workflow-definition-language-functions-reference.md#getFutureTime). |
+| [convertFromUtc](../logic-apps/workflow-definition-language-functions-reference.md#convertFromUtc) | Konwertuj sygnaturę czasową z uniwersalnej strefy czasowej (UTC) na docelową strefę czasową. |
+| [convertTimeZone](../logic-apps/workflow-definition-language-functions-reference.md#convertTimeZone) | Konwertuj sygnaturę czasową ze źródłowej strefy czasowej na docelową strefę czasową. |
+| [convertToUtc](../logic-apps/workflow-definition-language-functions-reference.md#convertToUtc) | Konwertuj sygnaturę czasową ze źródłowej strefy czasowej na uniwersalną koordynacyjną (UTC). |
+| [dzieńPomiesiętny](../logic-apps/workflow-definition-language-functions-reference.md#dayOfMonth) | Zwraca składnik dzień miesiąca z sygnatury czasowej. |
+| [Dayofweek](../logic-apps/workflow-definition-language-functions-reference.md#dayOfWeek) | Zwraca składnik dzień tygodnia z sygnatury czasowej. |
+| [Dayofyear](../logic-apps/workflow-definition-language-functions-reference.md#dayOfYear) | Zwraca składnik dzień roku z sygnatury czasowej. |
+| [Formatdatetime](../logic-apps/workflow-definition-language-functions-reference.md#formatDateTime) | Zwraca datę z sygnatury czasowej. |
+| [getFutureTime](../logic-apps/workflow-definition-language-functions-reference.md#getFutureTime) | Zwraca bieżący sygnatura czasowa oraz określone jednostki czasu. Zobacz też [addToTime](../logic-apps/workflow-definition-language-functions-reference.md#addToTime). |
+| [getPastTime](../logic-apps/workflow-definition-language-functions-reference.md#getPastTime) | Zwraca bieżący sygnatura czasowa minus określone jednostki czasu. Zobacz też [otracaćFromTime](../logic-apps/workflow-definition-language-functions-reference.md#subtractFromTime). |
+| [startOfDay](../logic-apps/workflow-definition-language-functions-reference.md#startOfDay) | Zwraca początek dnia dla sygnatury czasowej. |
+| [startOfHour](../logic-apps/workflow-definition-language-functions-reference.md#startOfHour) | Zwraca początek godziny dla sygnatury czasowej. |
+| [startOfMonth](../logic-apps/workflow-definition-language-functions-reference.md#startOfMonth) | Zwraca początek miesiąca dla sygnatury czasowej. |
+| [odejmowanieOdczasu](../logic-apps/workflow-definition-language-functions-reference.md#subtractFromTime) | Odejmij liczbę jednostek czasu od sygnatury czasowej. Zobacz też [getPastTime](../logic-apps/workflow-definition-language-functions-reference.md#getPastTime). |
+| [Kleszcze](../logic-apps/workflow-definition-language-functions-reference.md#ticks) | Zwraca `ticks` wartość właściwości dla określonej sygnatury czasowej. |
+| [Utcnow](../logic-apps/workflow-definition-language-functions-reference.md#utcNow) | Zwraca bieżący sygnatura czasowa jako ciąg. |
 |||
 
 <a name="workflow-functions"></a>
 
 ## <a name="workflow-functions"></a>Funkcje przepływu pracy
 
-Te funkcje przepływu pracy mogą pomóc:
+Te funkcje przepływu pracy mogą ci pomóc:
 
-* Pobierz szczegóły dotyczące wystąpienia przepływu pracy w czasie wykonywania.
-* Pracuj z danymi wejściowymi używanymi do tworzenia wystąpień aplikacji logiki lub przepływów.
-* Odwołuje się do danych wyjściowych z wyzwalaczy i akcji.
+* Uzyskaj szczegółowe informacje o wystąpieniu przepływu pracy w czasie wykonywania.
+* Praca z danych wejściowych używanych do tworzenia wystąpienia aplikacji logiki lub przepływów.
+* Odwołaj się do wyjść z wyzwalaczy i akcji.
 
-Na przykład można odwoływać się do danych wyjściowych z jednej akcji i używać ich w późniejszej akcji.
-Aby uzyskać pełne informacje o każdej z tych funkcji, zobacz [alfabetyczną listę](../logic-apps/workflow-definition-language-functions-reference.md#alphabetical-list).
+Na przykład można odwołać się do wyjść z jednej akcji i użyć tych danych w późniejszej akcji.
+Aby uzyskać pełne informacje o każdej funkcji, zobacz [listę alfabetyczną](../logic-apps/workflow-definition-language-functions-reference.md#alphabetical-list).
 
 | Funkcja przepływu pracy | Zadanie |
 | ----------------- | ---- |
-| [transakcji](../logic-apps/workflow-definition-language-functions-reference.md#action) | Zwraca dane wyjściowe bieżącej akcji w czasie wykonywania lub wartości z innych par nazw i wartości JSON. Zobacz także [Akcje](../logic-apps/workflow-definition-language-functions-reference.md#actions). |
-| [actionBody](../logic-apps/workflow-definition-language-functions-reference.md#actionBody) | Zwróć `body` danych wyjściowych akcji w czasie wykonywania. Zobacz także [treść](../logic-apps/workflow-definition-language-functions-reference.md#body). |
-| [actionOutputs](../logic-apps/workflow-definition-language-functions-reference.md#actionOutputs) | Zwraca dane wyjściowe akcji w czasie wykonywania. Zobacz dane [wyjściowe](../logic-apps/workflow-definition-language-functions-reference.md#outputs) i [Akcje](../logic-apps/workflow-definition-language-functions-reference.md#actions). |
-| [wykonane](../logic-apps/workflow-definition-language-functions-reference.md#actions) | Zwraca dane wyjściowe akcji w czasie wykonywania lub wartości z innych par nazw i wartości JSON. Zobacz również [Akcja](../logic-apps/workflow-definition-language-functions-reference.md#action).  |
-| [jednostce](#body) | Zwróć `body` danych wyjściowych akcji w czasie wykonywania. Zobacz również [actionBody](../logic-apps/workflow-definition-language-functions-reference.md#actionBody). |
-| [formDataMultiValues](../logic-apps/workflow-definition-language-functions-reference.md#formDataMultiValues) | Utwórz tablicę z wartościami, które pasują do nazwy klucza w danych wyjściowych akcji *form-Data* lub *form-Encoded* . |
-| [formDataValue](../logic-apps/workflow-definition-language-functions-reference.md#formDataValue) | Zwróć pojedynczą wartość, która pasuje do nazwy klucza w danych *wyjściowych* *formularza* akcji lub formularza. |
-| [elementów](../logic-apps/workflow-definition-language-functions-reference.md#item) | Gdy wewnątrz powtarzającej się akcji nad tablicą, zwraca bieżący element w tablicy podczas bieżącej iteracji akcji. |
-| [produktów](../logic-apps/workflow-definition-language-functions-reference.md#items) | Gdy wewnątrz pętli Foreach lub do until zwraca bieżący element z określonej pętli.|
-| [iterationIndexes](../logic-apps/workflow-definition-language-functions-reference.md#iterationIndexes) | W pętli until należy zwrócić wartość indeksu bieżącej iteracji. Ta funkcja może być używana wewnątrz zagnieżdżonych pętli do. |
-| [listCallbackUrl](../logic-apps/workflow-definition-language-functions-reference.md#listCallbackUrl) | Zwróć "adres URL wywołania zwrotnego", który wywołuje wyzwalacz lub akcję. |
-| [multipartBody](../logic-apps/workflow-definition-language-functions-reference.md#multipartBody) | Zwróć treść określonej części w danych wyjściowych akcji z wieloma częściami. |
-| [wydajności](../logic-apps/workflow-definition-language-functions-reference.md#outputs) | Zwraca dane wyjściowe akcji w czasie wykonywania. |
-| [parameters](../logic-apps/workflow-definition-language-functions-reference.md#parameters) | Zwraca wartość parametru, który jest opisany w definicji przepływu pracy. |
-| [wynika](../logic-apps/workflow-definition-language-functions-reference.md#result) | Zwraca dane wejściowe i wyjściowe ze wszystkich akcji w określonym zakresie akcji, takich jak `For_each`, `Until`i `Scope`. |
-| [uruchamiać](../logic-apps/workflow-definition-language-functions-reference.md#trigger) | Zwraca dane wyjściowe wyzwalacza w czasie wykonywania lub z innych par nazw i wartości JSON. Zobacz również [triggerOutputs](#triggerOutputs) i [triggerBody](../logic-apps/workflow-definition-language-functions-reference.md#triggerBody). |
-| [triggerBody](../logic-apps/workflow-definition-language-functions-reference.md#triggerBody) | Zwraca dane wyjściowe wyzwalacza `body` w czasie wykonywania. Zobacz [wyzwalacz](../logic-apps/workflow-definition-language-functions-reference.md#trigger). |
-| [triggerFormDataValue](../logic-apps/workflow-definition-language-functions-reference.md#triggerFormDataValue) | Zwróć pojedynczą wartość odpowiadającą nazwie klucza w danych wyjściowych wyzwalacza *form-Data* lub *form* . |
-| [triggerMultipartBody](../logic-apps/workflow-definition-language-functions-reference.md#triggerMultipartBody) | Zwróć treść konkretnej części w wyjściu wyzwalacza. |
-| [triggerFormDataMultiValues](../logic-apps/workflow-definition-language-functions-reference.md#triggerFormDataMultiValues) | Utwórz tablicę, której wartości pasują do nazwy klucza w danych wyjściowych wyzwalacza *form-Data* lub *form-Encoded* . |
+| [Działania](../logic-apps/workflow-definition-language-functions-reference.md#action) | Zwraca dane wyjściowe bieżącej akcji w czasie wykonywania lub wartości z innych par nazw i wartości JSON. Zobacz też [akcje](../logic-apps/workflow-definition-language-functions-reference.md#actions). |
+| [ciało akcji](../logic-apps/workflow-definition-language-functions-reference.md#actionBody) | Zwraca dane wyjściowe `body` akcji w czasie wykonywania. Zobacz też [body](../logic-apps/workflow-definition-language-functions-reference.md#body). |
+| [actionOutputs (Nieumiejeć)](../logic-apps/workflow-definition-language-functions-reference.md#actionOutputs) | Zwraca dane wyjściowe akcji w czasie wykonywania. Zobacz [dane wyjściowe](../logic-apps/workflow-definition-language-functions-reference.md#outputs) i [akcje](../logic-apps/workflow-definition-language-functions-reference.md#actions). |
+| [Działania](../logic-apps/workflow-definition-language-functions-reference.md#actions) | Zwraca dane wyjściowe akcji w czasie wykonywania lub wartości z innych par nazw i wartości JSON. Zobacz też [akcja](../logic-apps/workflow-definition-language-functions-reference.md#action).  |
+| [Ciała](#body) | Zwraca dane wyjściowe `body` akcji w czasie wykonywania. Zobacz też [actionBody](../logic-apps/workflow-definition-language-functions-reference.md#actionBody). |
+| [wartości formularzaDataMultiValues](../logic-apps/workflow-definition-language-functions-reference.md#formDataMultiValues) | Utwórz tablicę z wartościami, które pasują do nazwy klucza w *danych formularza* lub danych *zakodowanych* w formularzu. |
+| [wartość danych formularza](../logic-apps/workflow-definition-language-functions-reference.md#formDataValue) | Zwraca pojedynczą wartość, która pasuje do nazwy klucza w *danych formularza* akcji lub *danych wyjściowych zakodowanych w formularzu*. |
+| [Element](../logic-apps/workflow-definition-language-functions-reference.md#item) | W przypadku wewnątrz powtarzania akcji nad tablicą, zwraca bieżący element w tablicy podczas bieżącej iteracji akcji. |
+| [Elementy](../logic-apps/workflow-definition-language-functions-reference.md#items) | W pętli Foreach lub Until zwraca bieżący element z określonej pętli.|
+| [iteracjaIndeksy](../logic-apps/workflow-definition-language-functions-reference.md#iterationIndexes) | Gdy wewnątrz Until pętli, zwraca wartość indeksu dla bieżącej iteracji. Tej funkcji można użyć wewnątrz zagnieżdżonych pętli Until. |
+| [listaCallbackUrl](../logic-apps/workflow-definition-language-functions-reference.md#listCallbackUrl) | Zwróć "adres URL wywołania zwrotnego", który wywołuje wyzwalacz lub akcję. |
+| [wieloczęścioweBody](../logic-apps/workflow-definition-language-functions-reference.md#multipartBody) | Zwraca obiekt dla określonej części w danych wyjściowych akcji, która ma wiele części. |
+| [Wyjść](../logic-apps/workflow-definition-language-functions-reference.md#outputs) | Zwraca dane wyjściowe akcji w czasie wykonywania. |
+| [Parametry](../logic-apps/workflow-definition-language-functions-reference.md#parameters) | Zwraca wartość parametru opisanego w definicji przepływu pracy. |
+| [Wynik](../logic-apps/workflow-definition-language-functions-reference.md#result) | Zwraca dane wejściowe i wyjściowe ze wszystkich akcji wewnątrz `For_each`określonej akcji o określonym zakresie, takich jak , `Until`i `Scope`. |
+| [Wyzwalacz](../logic-apps/workflow-definition-language-functions-reference.md#trigger) | Zwraca dane wyjściowe wyzwalacza w czasie wykonywania lub z innych par nazw i wartości JSON. Zobacz też [triggerOutputs](#triggerOutputs) i [triggerBody](../logic-apps/workflow-definition-language-functions-reference.md#triggerBody). |
+| [triggerBody (Ciało wyzwalające)](../logic-apps/workflow-definition-language-functions-reference.md#triggerBody) | Zwraca dane wyjściowe `body` wyzwalacza w czasie wykonywania. Zobacz [wyzwalacz](../logic-apps/workflow-definition-language-functions-reference.md#trigger). |
+| [triggerFormDataValue](../logic-apps/workflow-definition-language-functions-reference.md#triggerFormDataValue) | Zwraca pojedynczą wartość pasującą nazwę klucza w *danych formularza* lub wyjściach wyzwalaczy *zakodowanych w formularzu.* |
+| [triggerMultipartBody](../logic-apps/workflow-definition-language-functions-reference.md#triggerMultipartBody) | Zwraca obiekt dla określonej części w wieloczęściowym wyjściu wyzwalacza. |
+| [triggerFormDataMultiValues](../logic-apps/workflow-definition-language-functions-reference.md#triggerFormDataMultiValues) | Utwórz tablicę, której wartości odpowiadają nazwie klucza w *danych formularza* lub danych *wyzwalaczy zakodowanych* w formularzu. |
 | [triggerOutputs](../logic-apps/workflow-definition-language-functions-reference.md#triggerOutputs) | Zwraca dane wyjściowe wyzwalacza w czasie wykonywania lub wartości z innych par nazw i wartości JSON. Zobacz [wyzwalacz](../logic-apps/workflow-definition-language-functions-reference.md#trigger). |
-| [modyfikacj](../logic-apps/workflow-definition-language-functions-reference.md#variables) | Zwraca wartość dla określonej zmiennej. |
-| [utworzonego](../logic-apps/workflow-definition-language-functions-reference.md#workflow) | Zwróć wszystkie szczegóły dotyczące przepływu pracy w czasie wykonywania. |
+| [Zmiennych](../logic-apps/workflow-definition-language-functions-reference.md#variables) | Zwraca wartość dla określonej zmiennej. |
+| [Przepływu pracy](../logic-apps/workflow-definition-language-functions-reference.md#workflow) | Zwraca wszystkie szczegóły dotyczące samego przepływu pracy w czasie wykonywania. |
 |||
 
 <a name="uri-parsing-functions"></a>
 
-## <a name="uri-parsing-functions"></a>Funkcje analizy identyfikatorów URI
+## <a name="uri-parsing-functions"></a>Funkcje analizowania identyfikatorów URI
 
-Aby korzystać z identyfikatorów URI (Uniform Resource Identifier) i uzyskać różne wartości właściwości dla tych identyfikatorów URI, można użyć tych funkcji analizy URI.
-Aby uzyskać pełne informacje o każdej z tych funkcji, zobacz [alfabetyczną listę](../logic-apps/workflow-definition-language-functions-reference.md#alphabetical-list).
+Aby pracować z jednolitymi identyfikatorami zasobów (URI) i uzyskać różne wartości właściwości dla tych identyfikatorów URI, można użyć tych funkcji analizowania identyfikatorów URI.
+Aby uzyskać pełne informacje o każdej funkcji, zobacz [listę alfabetyczną](../logic-apps/workflow-definition-language-functions-reference.md#alphabetical-list).
 
-| Funkcja analizy identyfikatora URI | Zadanie |
+| Funkcja analizowania identyfikatorów URI | Zadanie |
 | -------------------- | ---- |
-| [uriHost](../logic-apps/workflow-definition-language-functions-reference.md#uriHost) | Zwróć wartość `host` dla identyfikatora URI (Uniform Resource Identifier). |
-| [uriPath](../logic-apps/workflow-definition-language-functions-reference.md#uriPath) | Zwróć wartość `path` dla identyfikatora URI (Uniform Resource Identifier). |
-| [uriPathAndQuery](../logic-apps/workflow-definition-language-functions-reference.md#uriPathAndQuery) | Zwróć wartości `path` i `query` dla identyfikatora URI (Uniform Resource Identifier). |
-| [uriPort](../logic-apps/workflow-definition-language-functions-reference.md#uriPort) | Zwróć wartość `port` dla identyfikatora URI (Uniform Resource Identifier). |
-| [uriQuery](../logic-apps/workflow-definition-language-functions-reference.md#uriQuery) | Zwróć wartość `query` dla identyfikatora URI (Uniform Resource Identifier). |
-| [uriScheme](../logic-apps/workflow-definition-language-functions-reference.md#uriScheme) | Zwróć wartość `scheme` dla identyfikatora URI (Uniform Resource Identifier). |
+| [uriHost](../logic-apps/workflow-definition-language-functions-reference.md#uriHost) | Zwraca `host` wartość jednolitego identyfikatora zasobu (URI). |
+| [uriPath (ścieżka uripath)](../logic-apps/workflow-definition-language-functions-reference.md#uriPath) | Zwraca `path` wartość jednolitego identyfikatora zasobu (URI). |
+| [uriPathAndQuery (uriPathAndQuery)](../logic-apps/workflow-definition-language-functions-reference.md#uriPathAndQuery) | Zwraca `path` wartości `query` i dla jednolitego identyfikatora zasobu (URI). |
+| [uriPort (port uriport)](../logic-apps/workflow-definition-language-functions-reference.md#uriPort) | Zwraca `port` wartość jednolitego identyfikatora zasobu (URI). |
+| [uriQuery](../logic-apps/workflow-definition-language-functions-reference.md#uriQuery) | Zwraca `query` wartość jednolitego identyfikatora zasobu (URI). |
+| [uriScheme](../logic-apps/workflow-definition-language-functions-reference.md#uriScheme) | Zwraca `scheme` wartość jednolitego identyfikatora zasobu (URI). |
 |||
 
 <a name="manipulation-functions"></a>
 
-## <a name="manipulation-functions-json--xml"></a>Funkcje manipulowania: kod JSON & XML
+## <a name="manipulation-functions-json--xml"></a>Funkcje manipulacji: JSON & XML
 
-Aby współdziałać z obiektami JSON i węzłami XML, można użyć tych funkcji manipulowania.
-Aby uzyskać pełne informacje o każdej z tych funkcji, zobacz [alfabetyczną listę](../logic-apps/workflow-definition-language-functions-reference.md#alphabetical-list).
+Aby pracować z obiektami JSON i węzłami XML, można użyć tych funkcji manipulacji.
+Aby uzyskać pełne informacje o każdej funkcji, zobacz [listę alfabetyczną](../logic-apps/workflow-definition-language-functions-reference.md#alphabetical-list).
 
-| Funkcja manipulowania | Zadanie |
+| Manipulacja, funkcja | Zadanie |
 | --------------------- | ---- |
-| [addProperty](../logic-apps/workflow-definition-language-functions-reference.md#addProperty) | Dodaj właściwość i jej wartość lub parę nazwa-wartość do obiektu JSON i zwróć zaktualizowany obiekt. |
-| [łączonych](../logic-apps/workflow-definition-language-functions-reference.md#coalesce) | Zwróć pierwszą wartość inną niż null z co najmniej jednego parametru. |
-| [removeProperty](../logic-apps/workflow-definition-language-functions-reference.md#removeProperty) | Usunięcie właściwości z obiektu JSON i zwrócenie zaktualizowanego obiektu. |
-| [setProperty](../logic-apps/workflow-definition-language-functions-reference.md#setProperty) | Ustaw wartość właściwości obiektu JSON i zwróć zaktualizowany obiekt. |
-| [Lokalizacja](../logic-apps/workflow-definition-language-functions-reference.md#xpath) | Sprawdź XML dla węzłów lub wartości, które pasują do wyrażenia XPath (język ścieżki XML) i zwracają pasujące węzły lub wartości. |
+| [dodajwłaściwość](../logic-apps/workflow-definition-language-functions-reference.md#addProperty) | Dodaj właściwość i jej wartość lub parę nazwa-wartość do obiektu JSON i zwróć zaktualizowany obiekt. |
+| [Łączonej](../logic-apps/workflow-definition-language-functions-reference.md#coalesce) | Zwraca pierwszą wartość niekwaśną z jednego lub więcej parametrów. |
+| [removeProperty](../logic-apps/workflow-definition-language-functions-reference.md#removeProperty) | Usuń właściwość z obiektu JSON i zwróć zaktualizowany obiekt. |
+| [Setproperty](../logic-apps/workflow-definition-language-functions-reference.md#setProperty) | Ustaw wartość właściwości obiektu JSON i zwróć zaktualizowany obiekt. |
+| [Xpath](../logic-apps/workflow-definition-language-functions-reference.md#xpath) | Sprawdź xml dla węzłów lub wartości, które pasują do wyrażenia XPath (XML Path Language) i zwraca pasujące węzły lub wartości. |
 |||
 
 <a name="alphabetical-list"></a>
 
-## <a name="all-functions---alphabetical-list"></a>Wszystkie funkcje — Alfabetyczna lista
+## <a name="all-functions---alphabetical-list"></a>Wszystkie funkcje - lista alfabetyczna
 
-Ta sekcja zawiera listę wszystkich dostępnych funkcji w kolejności alfabetycznej.
+W tej sekcji wymieniono wszystkie dostępne funkcje w kolejności alfabetycznej.
 
 <a name="action"></a>
 
 ### <a name="action"></a>action
 
 Zwraca dane wyjściowe *bieżącej* akcji w czasie wykonywania lub wartości z innych par nazw i wartości JSON, które można przypisać do wyrażenia.
-Domyślnie ta funkcja odwołuje się do całego obiektu Action, ale można opcjonalnie określić właściwość, której wartość chcesz.
-Zobacz także [Akcje ()](../logic-apps/workflow-definition-language-functions-reference.md#actions).
+Domyślnie ta funkcja odwołuje się do całego obiektu akcji, ale opcjonalnie można określić właściwość, której wartość ma być.
+Zobacz też [actions()](../logic-apps/workflow-definition-language-functions-reference.md#actions).
 
-Funkcji `action()` można używać tylko w następujących miejscach:
+`action()` Funkcji można używać tylko w następujących miejscach:
 
-* Właściwość `unsubscribe` akcji elementu webhook, aby można było uzyskać dostęp do wyniku oryginalnego żądania `subscribe`
-* Właściwość `trackedProperties` dla akcji
-* Warunek pętli `do-until` dla akcji
+* Właściwość `unsubscribe` dla akcji elementu webhook, dzięki czemu `subscribe` można uzyskać dostęp do wyniku z oryginalnego żądania
+* Właściwość `trackedProperties` dla działania
+* Warunek `do-until` pętli dla akcji
 
 ```
 action()
@@ -321,21 +321,21 @@ action().outputs.body.<property>
 
 | Parametr | Wymagany | Typ | Opis |
 | --------- | -------- | ---- | ----------- |
-| <*właściwość*> | Nie | Ciąg | Nazwa właściwości obiektu akcji, której wartość ma być: **name**, **StartTime**, **Endtime**, **Inputs** **, Output,** **status**, **Code**, **trackingId**i **clientTrackingId**. W Azure Portal można znaleźć te właściwości, przeglądając szczegóły konkretnej historii uruchamiania. Aby uzyskać więcej informacji, zobacz [działania interfejsu API REST — przepływ pracy](https://docs.microsoft.com/rest/api/logic/workflowrunactions/get). |
+| <*Właściwość*> | Nie | Ciąg | Nazwa właściwości obiektu action, której wartość ma wartość: **nazwa**, **startTime**, **endTime**, **dane wejściowe, dane wyjściowe,** **stan**, **kod**, **trackingId**i **clientTrackingId**. **outputs** W witrynie Azure portal można znaleźć te właściwości, przeglądając szczegóły określonej historii uruchamiania. Aby uzyskać więcej informacji, zobacz [INTERFEJS API REST - Akcje uruchamiania przepływu pracy](https://docs.microsoft.com/rest/api/logic/workflowrunactions/get). |
 |||||
 
 | Wartość zwracana | Typ | Opis |
 | ------------ | -----| ----------- |
-| *akcja <— dane wyjściowe*> | Ciąg | Dane wyjściowe z bieżącej akcji lub właściwości |
+| <*wyjście akcji*> | Ciąg | Dane wyjściowe z bieżącej akcji lub właściwości |
 ||||
 
 <a name="actionBody"></a>
 
-### <a name="actionbody"></a>actionBody
+### <a name="actionbody"></a>ciało akcji
 
-Zwróć `body` danych wyjściowych akcji w czasie wykonywania.
-Skrót `actions('<actionName>').outputs.body`.
-Zobacz [treść ()](#body) i [Akcje ()](#actions).
+Zwraca dane wyjściowe `body` akcji w czasie wykonywania.
+Skrót do `actions('<actionName>').outputs.body`.
+Zobacz [body()](#body) i [actions()](#actions).
 
 ```
 actionBody('<actionName>')
@@ -343,17 +343,17 @@ actionBody('<actionName>')
 
 | Parametr | Wymagany | Typ | Opis |
 | --------- | -------- | ---- | ----------- |
-| <*actionname*> | Yes | Ciąg | Nazwa `body` danych wyjściowych akcji, które chcesz |
+| <*nazwa działania*> | Tak | Ciąg | Nazwa żądanego `body` wyjścia akcji |
 |||||
 
 | Wartość zwracana | Typ | Opis |
 | ------------ | -----| ----------- |
-| *akcja <— dane wyjściowe*> | Ciąg | `body` dane wyjściowe z określonej akcji |
+| <*wyjście z ciała-ciało*> | Ciąg | Dane `body` wyjściowe z określonej akcji |
 ||||
 
 *Przykład*
 
-Ten przykład pobiera `body` dane wyjściowe z akcji usługi Twitter `Get user`:
+W tym `body` przykładzie pobiera `Get user`dane wyjściowe z akcji Twitter:
 
 ```
 actionBody('Get_user')
@@ -378,9 +378,9 @@ I zwraca ten wynik:
 
 <a name="actionOutputs"></a>
 
-### <a name="actionoutputs"></a>actionOutputs
+### <a name="actionoutputs"></a>actionOutputs (Nieumiejeć)
 
-Zwraca dane wyjściowe akcji w czasie wykonywania.  i jest skrótem `actions('<actionName>').outputs`. Zobacz [Akcje ()](#actions). Funkcja `actionOutputs()` jest rozpoznawana jako `outputs()` w Projektancie aplikacji logiki, dlatego Rozważ użycie danych [wyjściowych ()](#outputs), a nie `actionOutputs()`. Chociaż obie funkcje działają tak samo, `outputs()` jest preferowane.
+Zwraca dane wyjściowe akcji w czasie wykonywania.  i jest skrótem od `actions('<actionName>').outputs`. Zobacz [actions()](#actions). Funkcja `actionOutputs()` jest rozpoznawana `outputs()` w logice App Designer, więc należy rozważyć użycie [outputs()](#outputs), a nie . `actionOutputs()` Chociaż obie funkcje działają `outputs()` w ten sam sposób, jest preferowany.
 
 ```
 actionOutputs('<actionName>')
@@ -388,17 +388,17 @@ actionOutputs('<actionName>')
 
 | Parametr | Wymagany | Typ | Opis |
 | --------- | -------- | ---- | ----------- |
-| <*actionname*> | Yes | Ciąg | Nazwa żądanego danych wyjściowych akcji |
+| <*nazwa działania*> | Tak | Ciąg | Nazwa żądanego wyjścia akcji |
 |||||
 
 | Wartość zwracana | Typ | Opis |
 | ------------ | -----| ----------- |
-| <*dane wyjściowe*> | Ciąg | Dane wyjściowe z określonej akcji |
+| <*Wyjście*> | Ciąg | Dane wyjściowe z określonej akcji |
 ||||
 
 *Przykład*
 
-Ten przykład pobiera dane wyjściowe z akcji usługi Twitter `Get user`:
+W tym przykładzie pobiera `Get user`dane wyjściowe z akcji Twitter:
 
 ```
 actionOutputs('Get_user')
@@ -441,15 +441,15 @@ I zwraca ten wynik:
 
 <a name="actions"></a>
 
-### <a name="actions"></a>wykonane
+### <a name="actions"></a>akcje
 
-Zwraca dane wyjściowe akcji w czasie wykonywania lub wartości z innych par nazw i wartości JSON, które można przypisać do wyrażenia. Domyślnie funkcja odwołuje się do całego obiektu akcji, ale można opcjonalnie określić właściwość, której wartość chcesz.
-W przypadku wersji skróconych zobacz [actionBody ()](#actionBody), [actionOutputs ()](#actionOutputs)i [Body ()](#body).
-Aby uzyskać bieżącą akcję, zobacz [Akcja ()](#action).
+Zwraca dane wyjściowe akcji w czasie wykonywania lub wartości z innych par nazw i wartości JSON, które można przypisać do wyrażenia. Domyślnie funkcja odwołuje się do całego obiektu akcji, ale opcjonalnie można określić właściwość, której wartość ma być.
+Aby zapoznać się z wersjami skróconymi, zobacz [actionBody()](#actionBody), [actionOutputs()](#actionOutputs)i [body()](#body).
+Aby zapoznać się z bieżącą akcją, zobacz [action()](#action).
 
 > [!NOTE]
-> Wcześniej można użyć funkcji `actions()` lub elementu `conditions` podczas określania, czy akcja została uruchomiona na podstawie danych wyjściowych z innej akcji. Jednak aby zadeklarować jawnie zależności między akcjami, musisz teraz użyć właściwości `runAfter` zależnej akcji.
-> Aby dowiedzieć się więcej na temat właściwości `runAfter`, zobacz [awarie catch i Handle przy użyciu właściwości runAfter](../logic-apps/logic-apps-workflow-definition-language.md).
+> Wcześniej można było użyć `actions()` funkcji `conditions` lub elementu podczas określania, że akcja została uruchomiony na podstawie danych wyjściowych z innej akcji. Jednak aby zadeklarować jawnie zależności między akcjami, należy `runAfter` teraz użyć właściwości akcji zależnej.
+> Aby dowiedzieć `runAfter` się więcej o właściwości, zobacz [Catch i obsługi błędów z runAfter właściwości](../logic-apps/logic-apps-workflow-definition-language.md).
 
 ```
 actions('<actionName>')
@@ -458,30 +458,30 @@ actions('<actionName>').outputs.body.<property>
 
 | Parametr | Wymagany | Typ | Opis |
 | --------- | -------- | ---- | ----------- |
-| <*actionname*> | Yes | Ciąg | Nazwa obiektu akcji, dla którego chcesz uzyskać dane wyjściowe.  |
-| <*właściwość*> | Nie | Ciąg | Nazwa właściwości obiektu akcji, której wartość ma być: **name**, **StartTime**, **Endtime**, **Inputs** **, Output,** **status**, **Code**, **trackingId**i **clientTrackingId**. W Azure Portal można znaleźć te właściwości, przeglądając szczegóły konkretnej historii uruchamiania. Aby uzyskać więcej informacji, zobacz [działania interfejsu API REST — przepływ pracy](https://docs.microsoft.com/rest/api/logic/workflowrunactions/get). |
+| <*nazwa działania*> | Tak | Ciąg | Nazwa obiektu akcji, którego dane wyjściowe mają być  |
+| <*Właściwość*> | Nie | Ciąg | Nazwa właściwości obiektu action, której wartość ma wartość: **nazwa**, **startTime**, **endTime**, **dane wejściowe, dane wyjściowe,** **stan**, **kod**, **trackingId**i **clientTrackingId**. **outputs** W witrynie Azure portal można znaleźć te właściwości, przeglądając szczegóły określonej historii uruchamiania. Aby uzyskać więcej informacji, zobacz [INTERFEJS API REST - Akcje uruchamiania przepływu pracy](https://docs.microsoft.com/rest/api/logic/workflowrunactions/get). |
 |||||
 
 | Wartość zwracana | Typ | Opis |
 | ------------ | -----| ----------- |
-| *akcja <— dane wyjściowe*> | Ciąg | Dane wyjściowe z określonej akcji lub właściwości |
+| <*wyjście akcji*> | Ciąg | Dane wyjściowe z określonej akcji lub właściwości |
 ||||
 
 *Przykład*
 
-Ten przykład pobiera wartość właściwości `status` z akcji Twitter `Get user` w czasie wykonywania:
+W tym `status` przykładzie pobiera wartość `Get user` właściwości z akcji Twitter w czasie wykonywania:
 
 ```
 actions('Get_user').outputs.body.status
 ```
 
-I zwraca ten wynik: `"Succeeded"`
+I zwraca ten wynik:`"Succeeded"`
 
 <a name="add"></a>
 
 ### <a name="add"></a>add
 
-Zwróć wynik dodawania dwóch liczb.
+Zwraca wynik z dodawania dwóch liczb.
 
 ```
 add(<summand_1>, <summand_2>)
@@ -489,27 +489,27 @@ add(<summand_1>, <summand_2>)
 
 | Parametr | Wymagany | Typ | Opis |
 | --------- | -------- | ---- | ----------- |
-| <*summand_1*>, <*summand_2*> | Yes | Liczba całkowita, zmiennoprzecinkowa lub mieszana | Liczby do dodania |
+| <*summand_1*>, *<summand_2*> | Tak | Całkowita, Float lub mieszana | Liczby do dodania |
 |||||
 
 | Wartość zwracana | Typ | Opis |
 | ------------ | -----| ----------- |
-| <*Result-sum*> | Liczba całkowita lub zmiennoprzecinkowa | Wynik dodawania określonych liczb |
+| <*suma wyniku*> | Całkowita lub float | Wynik z dodania określonych liczb |
 ||||
 
 *Przykład*
 
-Ten przykład dodaje określone liczby:
+W tym przykładzie dodano określone liczby:
 
 ```
 add(1, 1.5)
 ```
 
-I zwraca ten wynik: `2.5`
+I zwraca ten wynik:`2.5`
 
 <a name="addDays"></a>
 
-### <a name="adddays"></a>Liczba dni
+### <a name="adddays"></a>Adddays
 
 Dodaj liczbę dni do sygnatury czasowej.
 
@@ -519,39 +519,39 @@ addDays('<timestamp>', <days>, '<format>'?)
 
 | Parametr | Wymagany | Typ | Opis |
 | --------- | -------- | ---- | ----------- |
-| <*sygnatura czasowa*> | Yes | Ciąg | Ciąg zawierający sygnaturę czasową. |
-| <*dni*> | Yes | Liczba całkowita | Dodatnia lub ujemna liczba dni do dodania |
-| <*format*> | Nie | Ciąg | [Pojedynczy specyfikator formatu](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) lub [wzorzec formatowania niestandardowego](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Domyślny format sygnatury czasowej to ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (RRRR-MM-DDTgg: mm: SS: fffffffK), który jest zgodny z [normą ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) i zachowuje informacje o strefie czasowej. |
+| <*Sygnatury czasowej*> | Tak | Ciąg | Ciąg zawierający sygnaturę czasowa |
+| <*Dni*> | Tak | Liczba całkowita | Dodatnia lub ujemna liczba dni do dodania |
+| <*Formacie*> | Nie | Ciąg | Specyfikator [pojedynczego formatu](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) lub [wzorzec formatu niestandardowego](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Domyślnym formatem sygnatury czasowej jest ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-MM-ddTHH:mm:ss:fffffffK), który jest zgodny z [iso 8601](https://en.wikipedia.org/wiki/ISO_8601) i zachowuje informacje o strefie czasowej. |
 |||||
 
 | Wartość zwracana | Typ | Opis |
 | ------------ | ---- | ----------- |
-| <> *sygnatura czasowa aktualizacji* | Ciąg | Sygnatura czasowa powiększona o określoną liczbę dni  |
+| <*zaktualizowany sygnatura czasowa*> | Ciąg | Sygnatura czasowa plus określona liczba dni  |
 ||||
 
 *Przykład 1*
 
-Ten przykład dodaje 10 dni do określonej sygnatury czasowej:
+W tym przykładzie dodaje 10 dni do określonego sygnatury czasowej:
 
 ```
 addDays('2018-03-15T13:00:00Z', 10)
 ```
 
-I zwraca ten wynik: `"2018-03-25T00:00:0000000Z"`
+I zwraca ten wynik:`"2018-03-25T00:00:0000000Z"`
 
 *Przykład 2*
 
-Ten przykład odejmuje pięć dni od określonej sygnatury czasowej:
+W tym przykładzie odejmuje pięć dni od określonego sygnatury czasowej:
 
 ```
 addDays('2018-03-15T00:00:00Z', -5)
 ```
 
-I zwraca ten wynik: `"2018-03-10T00:00:0000000Z"`
+I zwraca ten wynik:`"2018-03-10T00:00:0000000Z"`
 
 <a name="addHours"></a>
 
-### <a name="addhours"></a>addgodz.
+### <a name="addhours"></a>Addhours
 
 Dodaj liczbę godzin do sygnatury czasowej.
 
@@ -561,39 +561,39 @@ addHours('<timestamp>', <hours>, '<format>'?)
 
 | Parametr | Wymagany | Typ | Opis |
 | --------- | -------- | ---- | ----------- |
-| <*sygnatura czasowa*> | Yes | Ciąg | Ciąg zawierający sygnaturę czasową. |
-| <*godz* .> | Yes | Liczba całkowita | Dodatnia lub ujemna liczba godzin do dodania |
-| <*format*> | Nie | Ciąg | [Pojedynczy specyfikator formatu](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) lub [wzorzec formatowania niestandardowego](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Domyślny format sygnatury czasowej to ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (RRRR-MM-DDTgg: mm: SS: fffffffK), który jest zgodny z [normą ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) i zachowuje informacje o strefie czasowej. |
+| <*Sygnatury czasowej*> | Tak | Ciąg | Ciąg zawierający sygnaturę czasowa |
+| <*Godzin*> | Tak | Liczba całkowita | Dodatnia lub ujemna liczba godzin do dodania |
+| <*Formacie*> | Nie | Ciąg | Specyfikator [pojedynczego formatu](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) lub [wzorzec formatu niestandardowego](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Domyślnym formatem sygnatury czasowej jest ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-MM-ddTHH:mm:ss:fffffffK), który jest zgodny z [iso 8601](https://en.wikipedia.org/wiki/ISO_8601) i zachowuje informacje o strefie czasowej. |
 |||||
 
 | Wartość zwracana | Typ | Opis |
 | ------------ | ---- | ----------- |
-| <> *sygnatura czasowa aktualizacji* | Ciąg | Sygnatura czasowa powiększona o określoną liczbę godzin  |
+| <*zaktualizowany sygnatura czasowa*> | Ciąg | Sygnatura czasowa plus określona liczba godzin  |
 ||||
 
 *Przykład 1*
 
-Ten przykład dodaje 10 godzin do określonej sygnatury czasowej:
+W tym przykładzie dodaje 10 godzin do określonego sygnatury czasowej:
 
 ```
 addHours('2018-03-15T00:00:00Z', 10)
 ```
 
-I zwraca ten wynik: `"2018-03-15T10:00:0000000Z"`
+I zwraca ten wynik:`"2018-03-15T10:00:0000000Z"`
 
 *Przykład 2*
 
-Ten przykład odejmuje pięć godzin od określonej sygnatury czasowej:
+W tym przykładzie odejmuje pięć godzin od określonego sygnatury czasowej:
 
 ```
 addHours('2018-03-15T15:00:00Z', -5)
 ```
 
-I zwraca ten wynik: `"2018-03-15T10:00:0000000Z"`
+I zwraca ten wynik:`"2018-03-15T10:00:0000000Z"`
 
 <a name="addMinutes"></a>
 
-### <a name="addminutes"></a>addminut
+### <a name="addminutes"></a>Addminutes
 
 Dodaj liczbę minut do sygnatury czasowej.
 
@@ -603,41 +603,41 @@ addMinutes('<timestamp>', <minutes>, '<format>'?)
 
 | Parametr | Wymagany | Typ | Opis |
 | --------- | -------- | ---- | ----------- |
-| <*sygnatura czasowa*> | Yes | Ciąg | Ciąg zawierający sygnaturę czasową. |
-| <*minut*> | Yes | Liczba całkowita | Dodatnia lub ujemna liczba minut do dodania |
-| <*format*> | Nie | Ciąg | [Pojedynczy specyfikator formatu](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) lub [wzorzec formatowania niestandardowego](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Domyślny format sygnatury czasowej to ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (RRRR-MM-DDTgg: mm: SS: fffffffK), który jest zgodny z [normą ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) i zachowuje informacje o strefie czasowej. |
+| <*Sygnatury czasowej*> | Tak | Ciąg | Ciąg zawierający sygnaturę czasowa |
+| <*Minut*> | Tak | Liczba całkowita | Dodatnia lub ujemna liczba minut do dodania |
+| <*Formacie*> | Nie | Ciąg | Specyfikator [pojedynczego formatu](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) lub [wzorzec formatu niestandardowego](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Domyślnym formatem sygnatury czasowej jest ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-MM-ddTHH:mm:ss:fffffffK), który jest zgodny z [iso 8601](https://en.wikipedia.org/wiki/ISO_8601) i zachowuje informacje o strefie czasowej. |
 |||||
 
 | Wartość zwracana | Typ | Opis |
 | ------------ | ---- | ----------- |
-| <> *sygnatura czasowa aktualizacji* | Ciąg | Sygnatura czasowa powiększona o określoną liczbę minut |
+| <*zaktualizowany sygnatura czasowa*> | Ciąg | Sygnatura czasowa plus określona liczba minut |
 ||||
 
 *Przykład 1*
 
-Ten przykład dodaje 10 minut do określonej sygnatury czasowej:
+W tym przykładzie dodaje 10 minut do określonego sygnatury czasowej:
 
 ```
 addMinutes('2018-03-15T00:10:00Z', 10)
 ```
 
-I zwraca ten wynik: `"2018-03-15T00:20:00.0000000Z"`
+I zwraca ten wynik:`"2018-03-15T00:20:00.0000000Z"`
 
 *Przykład 2*
 
-Ten przykład odejmuje pięć minut od określonej sygnatury czasowej:
+W tym przykładzie odejmuje pięć minut od określonego sygnatury czasowej:
 
 ```
 addMinutes('2018-03-15T00:20:00Z', -5)
 ```
 
-I zwraca ten wynik: `"2018-03-15T00:15:00.0000000Z"`
+I zwraca ten wynik:`"2018-03-15T00:15:00.0000000Z"`
 
 <a name="addProperty"></a>
 
-### <a name="addproperty"></a>addProperty
+### <a name="addproperty"></a>dodajwłaściwość
 
-Dodaj właściwość i jej wartość lub parę nazwa-wartość do obiektu JSON i zwróć zaktualizowany obiekt. Jeśli właściwość już istnieje w czasie wykonywania, funkcja zakończy się niepowodzeniem i zgłosi błąd.
+Dodaj właściwość i jej wartość lub parę nazwa-wartość do obiektu JSON i zwróć zaktualizowany obiekt. Jeśli właściwość już istnieje w czasie wykonywania, funkcja kończy się niepowodzeniem i zgłasza błąd.
 
 ```
 addProperty(<object>, '<property>', <value>)
@@ -645,17 +645,17 @@ addProperty(<object>, '<property>', <value>)
 
 | Parametr | Wymagany | Typ | Opis |
 | --------- | -------- | ---- | ----------- |
-| > <*obiektu* | Yes | Obiekt | Obiekt JSON, w którym chcesz dodać właściwość |
-| <*właściwość*> | Yes | Ciąg | Nazwa właściwości do dodania |
-| <*wartość*> | Yes | Dowolne | Wartość właściwości |
+| <*Obiektu*> | Tak | Obiekt | Obiekt JSON, w którym chcesz dodać właściwość |
+| <*Właściwość*> | Tak | Ciąg | Nazwa właściwości do dodania |
+| <*Wartość*> | Tak | Dowolne | Wartość właściwości |
 |||||
 
 | Wartość zwracana | Typ | Opis |
 | ------------ | ---- | ----------- |
-| <*Zaktualizowano —> obiektu* | Obiekt | Zaktualizowany obiekt JSON z określoną właściwością. |
+| <*zaktualizowany obiekt*> | Obiekt | Zaktualizowany obiekt JSON z określoną właściwością |
 ||||
 
-Aby dodać właściwość podrzędną do istniejącej właściwości, użyj następującej składni:
+Aby dodać właściwość podrzędną do istniejącej właściwości, użyj tej składni:
 
 ```
 addProperty(<object>['<parent-property>'], '<child-property>', <value>)
@@ -663,20 +663,20 @@ addProperty(<object>['<parent-property>'], '<child-property>', <value>)
 
 | Parametr | Wymagany | Typ | Opis |
 | --------- | -------- | ---- | ----------- |
-| > <*obiektu* | Yes | Obiekt | Obiekt JSON, w którym chcesz dodać właściwość |
-| <*Właściwość parent*> | Yes | Ciąg | Nazwa właściwości nadrzędnej, w której ma zostać dodana Właściwość podrzędna |
-| <*Właściwość podrzędna*> | Yes | Ciąg | Nazwa właściwości podrzędnej do dodania |
-| <*wartość*> | Yes | Dowolne | Wartość do ustawienia dla określonej właściwości |
+| <*Obiektu*> | Tak | Obiekt | Obiekt JSON, w którym chcesz dodać właściwość |
+| <*własność nadrzędna*> | Tak | Ciąg | Nazwa właściwości nadrzędnej, w której chcesz dodać właściwość podrzędną |
+| <*własność dziecka*> | Tak | Ciąg | Nazwa właściwości podrzędnej do dodania |
+| <*Wartość*> | Tak | Dowolne | Wartość ustawiona dla określonej właściwości |
 |||||
 
 | Wartość zwracana | Typ | Opis |
 | ------------ | ---- | ----------- |
-| <*Zaktualizowano —> obiektu* | Obiekt | Zaktualizowany obiekt JSON, którego właściwość została ustawiona |
+| <*zaktualizowany obiekt*> | Obiekt | Zaktualizowany obiekt JSON, którego właściwość została ustawiona |
 ||||
 
 *Przykład 1*
 
-Ten przykład dodaje właściwość `middleName` do obiektu JSON, który jest konwertowany z ciągu na notację JSON przy użyciu funkcji [JSON ()](#json) . Obiekt zawiera już właściwości `firstName` i `surName`. Funkcja przypisuje określoną wartość do nowej właściwości i zwraca zaktualizowany obiekt:
+W tym `middleName` przykładzie dodaje właściwość do obiektu JSON, który jest konwertowany z ciągu do JSON za pomocą funkcji [JSON().](#json) Obiekt zawiera już `firstName` `surName` właściwości i. Funkcja przypisuje określoną wartość do nowej właściwości i zwraca zaktualizowany obiekt:
 
 ```
 addProperty(json('{ "firstName": "Sophia", "lastName": "Owen" }'), 'middleName', 'Anne')
@@ -703,7 +703,7 @@ Oto zaktualizowany obiekt JSON:
 
 *Przykład 2*
 
-Ten przykład dodaje właściwość podrzędną `middleName` do istniejącej właściwości `customerName` w obiekcie JSON, który jest konwertowany z ciągu na notację JSON przy użyciu funkcji [JSON ()](#json) . Funkcja przypisuje określoną wartość do nowej właściwości i zwraca zaktualizowany obiekt:
+W tym `middleName` przykładzie dodaje `customerName` właściwość podrzędną do istniejącej właściwości w obiekcie JSON, który jest konwertowany z ciągu do JSON za pomocą funkcji [JSON().](#json) Funkcja przypisuje określoną wartość do nowej właściwości i zwraca zaktualizowany obiekt:
 
 ```
 addProperty(json('{ "customerName": { "firstName": "Sophia", "surName": "Owen" } }')['customerName'], 'middleName', 'Anne')
@@ -734,7 +734,7 @@ Oto zaktualizowany obiekt JSON:
 
 <a name="addSeconds"></a>
 
-### <a name="addseconds"></a>AddSeconds
+### <a name="addseconds"></a>Addseconds
 
 Dodaj liczbę sekund do sygnatury czasowej.
 
@@ -744,42 +744,42 @@ addSeconds('<timestamp>', <seconds>, '<format>'?)
 
 | Parametr | Wymagany | Typ | Opis |
 | --------- | -------- | ---- | ----------- |
-| <*sygnatura czasowa*> | Yes | Ciąg | Ciąg zawierający sygnaturę czasową. |
-| <*sekund*> | Yes | Liczba całkowita | Dodatnia lub ujemna liczba sekund do dodania |
-| <*format*> | Nie | Ciąg | [Pojedynczy specyfikator formatu](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) lub [wzorzec formatowania niestandardowego](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Domyślny format sygnatury czasowej to ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (RRRR-MM-DDTgg: mm: SS: fffffffK), który jest zgodny z [normą ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) i zachowuje informacje o strefie czasowej. |
+| <*Sygnatury czasowej*> | Tak | Ciąg | Ciąg zawierający sygnaturę czasowa |
+| <*Sekund*> | Tak | Liczba całkowita | Dodatnia lub ujemna liczba sekund do dodania |
+| <*Formacie*> | Nie | Ciąg | Specyfikator [pojedynczego formatu](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) lub [wzorzec formatu niestandardowego](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Domyślnym formatem sygnatury czasowej jest ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-MM-ddTHH:mm:ss:fffffffK), który jest zgodny z [iso 8601](https://en.wikipedia.org/wiki/ISO_8601) i zachowuje informacje o strefie czasowej. |
 |||||
 
 | Wartość zwracana | Typ | Opis |
 | ------------ | ---- | ----------- |
-| <> *sygnatura czasowa aktualizacji* | Ciąg | Sygnatura czasowa powiększona o określoną liczbę sekund.  |
+| <*zaktualizowany sygnatura czasowa*> | Ciąg | Sygnatura czasowa plus określona liczba sekund  |
 ||||
 
 *Przykład 1*
 
-Ten przykład dodaje 10 sekund do określonej sygnatury czasowej:
+W tym przykładzie dodaje 10 sekund do określonego sygnatury czasowej:
 
 ```
 addSeconds('2018-03-15T00:00:00Z', 10)
 ```
 
-I zwraca ten wynik: `"2018-03-15T00:00:10.0000000Z"`
+I zwraca ten wynik:`"2018-03-15T00:00:10.0000000Z"`
 
 *Przykład 2*
 
-Ten przykład odejmuje pięć sekund do określonej sygnatury czasowej:
+W tym przykładzie odejmuje pięć sekund do określonego sygnatury czasowej:
 
 ```
 addSeconds('2018-03-15T00:00:30Z', -5)
 ```
 
-I zwraca ten wynik: `"2018-03-15T00:00:25.0000000Z"`
+I zwraca ten wynik:`"2018-03-15T00:00:25.0000000Z"`
 
 <a name="addToTime"></a>
 
 ### <a name="addtotime"></a>addToTime
 
 Dodaj liczbę jednostek czasu do sygnatury czasowej.
-Zobacz również [getFutureTime ()](#getFutureTime).
+Zobacz też [getFutureTime()](#getFutureTime).
 
 ```
 addToTime('<timestamp>', <interval>, '<timeUnit>', '<format>'?)
@@ -787,43 +787,43 @@ addToTime('<timestamp>', <interval>, '<timeUnit>', '<format>'?)
 
 | Parametr | Wymagany | Typ | Opis |
 | --------- | -------- | ---- | ----------- |
-| <*sygnatura czasowa*> | Yes | Ciąg | Ciąg zawierający sygnaturę czasową. |
-| *interwał* <> | Yes | Liczba całkowita | Liczba określonych jednostek czasu do dodania |
-| <*timeUnit*> | Yes | Ciąg | Jednostka czasu do użycia z *interwałem*: "sekunda", "minuta", "godzina", "dzień", "tydzień", "Month", "Year" |
-| <*format*> | Nie | Ciąg | [Pojedynczy specyfikator formatu](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) lub [wzorzec formatowania niestandardowego](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Domyślny format sygnatury czasowej to ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (RRRR-MM-DDTgg: mm: SS: fffffffK), który jest zgodny z [normą ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) i zachowuje informacje o strefie czasowej. |
+| <*Sygnatury czasowej*> | Tak | Ciąg | Ciąg zawierający sygnaturę czasowa |
+| <*Interwał*> | Tak | Liczba całkowita | Liczba określonych jednostek czasu do dodania |
+| <*jednostka czasowa*> | Tak | Ciąg | Jednostka czasu do użycia z *interwałem:*"Drugi", "Minuta", "Godzina", "Dzień", "Tydzień", "Miesiąc", "Rok" |
+| <*Formacie*> | Nie | Ciąg | Specyfikator [pojedynczego formatu](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) lub [wzorzec formatu niestandardowego](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Domyślnym formatem sygnatury czasowej jest ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-MM-ddTHH:mm:ss:fffffffK), który jest zgodny z [iso 8601](https://en.wikipedia.org/wiki/ISO_8601) i zachowuje informacje o strefie czasowej. |
 |||||
 
 | Wartość zwracana | Typ | Opis |
 | ------------ | ---- | ----------- |
-| <> *sygnatura czasowa aktualizacji* | Ciąg | Sygnatura czasowa powiększona o określoną liczbę jednostek czasu  |
+| <*zaktualizowany sygnatura czasowa*> | Ciąg | Sygnatura czasowa plus określona liczba jednostek czasu  |
 ||||
 
 *Przykład 1*
 
-Ten przykład dodaje jeden dzień do określonego znacznika czasu:
+W tym przykładzie dodaje jeden dzień do określonego sygnatury czasowej:
 
 ```
 addToTime('2018-01-01T00:00:00Z', 1, 'Day')
 ```
 
-I zwraca ten wynik: `"2018-01-02T00:00:00.0000000Z"`
+I zwraca ten wynik:`"2018-01-02T00:00:00.0000000Z"`
 
 *Przykład 2*
 
-Ten przykład dodaje jeden dzień do określonego znacznika czasu:
+W tym przykładzie dodaje jeden dzień do określonego sygnatury czasowej:
 
 ```
 addToTime('2018-01-01T00:00:00Z', 1, 'Day', 'D')
 ```
 
-I zwraca wynik przy użyciu opcjonalnego formatu "D": `"Tuesday, January 2, 2018"`
+I zwraca wynik przy użyciu opcjonalnego formatu "D":`"Tuesday, January 2, 2018"`
 
 <a name="and"></a>
 
 ### <a name="and"></a>i
 
-Sprawdź, czy wszystkie wyrażenia mają wartość PRAWDA.
-Zwraca wartość true, jeśli wszystkie wyrażenia są prawdziwe, lub zwraca wartość false, jeśli co najmniej jedno wyrażenie ma wartość false.
+Sprawdź, czy wszystkie wyrażenia są prawdziwe.
+Zwraca wartość true, gdy wszystkie wyrażenia są prawdziwe, lub zwraca wartość false, gdy co najmniej jedno wyrażenie jest false.
 
 ```
 and(<expression1>, <expression2>, ...)
@@ -831,17 +831,17 @@ and(<expression1>, <expression2>, ...)
 
 | Parametr | Wymagany | Typ | Opis |
 | --------- | -------- | ---- | ----------- |
-| <*wyrażenie1*>, <*wyrażenie2*>,... | Yes | Wartość logiczna | Wyrażenia do sprawdzenia |
+| <*expression1*>, <*expression2*>, ... | Tak | Wartość logiczna | Wyrażenia do sprawdzenia |
 |||||
 
 | Wartość zwracana | Typ | Opis |
 | ------------ | -----| ----------- |
-| true lub false | Wartość logiczna | Zwraca wartość true, jeśli wszystkie wyrażenia mają wartość true. Zwraca wartość false, jeśli co najmniej jedno wyrażenie ma wartość false. |
+| true lub false | Wartość logiczna | Zwraca wartość true, gdy wszystkie wyrażenia są prawdziwe. Zwraca wartość false, gdy co najmniej jedno wyrażenie jest fałszywe. |
 ||||
 
 *Przykład 1*
 
-Te przykłady sprawdzają, czy określone wartości logiczne są spełnione:
+Te przykłady sprawdzić, czy określone wartości logiczne są prawdziwe:
 
 ```
 and(true, true)
@@ -851,13 +851,13 @@ and(false, false)
 
 I zwraca te wyniki:
 
-* Pierwszy przykład: oba wyrażenia są prawdziwe, dlatego zwraca `true`.
-* Drugi przykład: jedno wyrażenie ma wartość false, więc zwraca `false`.
-* Trzeci przykład: oba wyrażenia mają wartość false, więc zwraca `false`.
+* Pierwszy przykład: Oba wyrażenia są `true`prawdziwe, więc zwraca .
+* Drugi przykład: Jedno wyrażenie jest `false`fałszywe, więc zwraca .
+* Trzeci przykład: Oba wyrażenia są `false`fałszywe, więc zwraca .
 
 *Przykład 2*
 
-Te przykłady sprawdzają, czy określone wyrażenia są prawdziwe:
+Te przykłady sprawdzić, czy określone wyrażenia są prawdziwe:
 
 ```
 and(equals(1, 1), equals(2, 2))
@@ -867,16 +867,16 @@ and(equals(1, 2), equals(1, 3))
 
 I zwraca te wyniki:
 
-* Pierwszy przykład: oba wyrażenia są prawdziwe, dlatego zwraca `true`.
-* Drugi przykład: jedno wyrażenie ma wartość false, więc zwraca `false`.
-* Trzeci przykład: oba wyrażenia mają wartość false, więc zwraca `false`.
+* Pierwszy przykład: Oba wyrażenia są `true`prawdziwe, więc zwraca .
+* Drugi przykład: Jedno wyrażenie jest `false`fałszywe, więc zwraca .
+* Trzeci przykład: Oba wyrażenia są `false`fałszywe, więc zwraca .
 
 <a name="array"></a>
 
 ### <a name="array"></a>tablica
 
-Zwraca tablicę z pojedynczego określonego danych wejściowych.
-W przypadku wielu danych wejściowych zobacz polecenie " [XmlArray" ()](#createArray).
+Zwraca tablicę z jednego określonego wejścia.
+Dla wielu wejść zobacz [createArray()](#createArray).
 
 ```
 array('<value>')
@@ -884,29 +884,29 @@ array('<value>')
 
 | Parametr | Wymagany | Typ | Opis |
 | --------- | -------- | ---- | ----------- |
-| <*wartość*> | Yes | Ciąg | Ciąg do tworzenia tablicy |
+| <*Wartość*> | Tak | Ciąg | Ciąg do tworzenia tablicy |
 |||||
 
 | Wartość zwracana | Typ | Opis |
 | ------------ | ---- | ----------- |
-| [<*wartość*>] | Tablica | Tablica zawierająca pojedyncze określone dane wejściowe |
+| [> wartości *<]* | Tablica | Tablica zawierająca pojedyncze określone dane wejściowe |
 ||||
 
 *Przykład*
 
-Ten przykład tworzy tablicę z ciągu "Hello":
+W tym przykładzie tworzy tablicę z ciągu "hello":
 
 ```
 array('hello')
 ```
 
-I zwraca ten wynik: `["hello"]`
+I zwraca ten wynik:`["hello"]`
 
 <a name="base64"></a>
 
 ### <a name="base64"></a>base64
 
-Zwróć wersję z kodowaniem Base64 dla ciągu.
+Zwraca wersję zakodowaną w base64 dla ciągu.
 
 ```
 base64('<value>')
@@ -914,29 +914,29 @@ base64('<value>')
 
 | Parametr | Wymagany | Typ | Opis |
 | --------- | -------- | ---- | ----------- |
-| <*wartość*> | Yes | Ciąg | Ciąg wejściowy |
+| <*Wartość*> | Tak | Ciąg | Ciąg wejściowy |
 |||||
 
 | Wartość zwracana | Typ | Opis |
 | ------------ | ---- | ----------- |
-| <> *ciągu Base64* | Ciąg | Wersja zakodowana algorytmem Base64 dla ciągu wejściowego |
+| <*ciąg podstawowy64*> | Ciąg | Wersja zakodowana w base64 dla ciągu wejściowego |
 ||||
 
 *Przykład*
 
-Ten przykład konwertuje ciąg "Hello" na ciąg szyfrowany algorytmem Base64:
+W tym przykładzie konwertuje ciąg "hello" na ciąg zakodowany base64:
 
 ```
 base64('hello')
 ```
 
-I zwraca ten wynik: `"aGVsbG8="`
+I zwraca ten wynik:`"aGVsbG8="`
 
 <a name="base64ToBinary"></a>
 
 ### <a name="base64tobinary"></a>base64ToBinary
 
-Zwróć wersję binarną dla ciągu zakodowanego algorytmem Base64.
+Zwraca wersję binarną dla ciągu zakodowanego base64.
 
 ```
 base64ToBinary('<value>')
@@ -944,17 +944,17 @@ base64ToBinary('<value>')
 
 | Parametr | Wymagany | Typ | Opis |
 | --------- | -------- | ---- | ----------- |
-| <*wartość*> | Yes | Ciąg | Ciąg zakodowany w formacie base64 do przekonwertowania |
+| <*Wartość*> | Tak | Ciąg | Ciąg zakodowany w kodowaniu base64 do konwersji |
 |||||
 
 | Wartość zwracana | Typ | Opis |
 | ------------ | ---- | ----------- |
-| <> *typu binary-for-Base64* | Ciąg | Wersja binarna dla ciągu zakodowanego algorytmem Base64 |
+| <*ciągbinowy dla base64*> | Ciąg | Wersja binarna dla ciągu zakodowanego base64 |
 ||||
 
 *Przykład*
 
-Ten przykład konwertuje ciąg "aGVsbG8 =" zakodowany algorytmem Base64 na ciąg binarny:
+W tym przykładzie konwertuje ciąg "aGVsbG8=" zakodowany base64 na ciąg binarny:
 
 ```
 base64ToBinary('aGVsbG8=')
@@ -968,9 +968,9 @@ I zwraca ten wynik:
 
 ### <a name="base64tostring"></a>base64ToString
 
-Zwraca wersję ciągu dla ciągu zakodowanego algorytmem Base64, efektywnie dekodowanie ciągu Base64.
-Użyj tej funkcji zamiast [decodeBase64 ()](#decodeBase64).
-Chociaż obie funkcje działają tak samo, `base64ToString()` jest preferowane.
+Zwraca wersję ciągu dla ciągu zakodowanego base64, skutecznie dekodując ciąg base64.
+Użyj tej funkcji, a nie [dekodowaniaBase64()](#decodeBase64).
+Chociaż obie funkcje działają `base64ToString()` w ten sam sposób, jest preferowany.
 
 ```
 base64ToString('<value>')
@@ -978,29 +978,29 @@ base64ToString('<value>')
 
 | Parametr | Wymagany | Typ | Opis |
 | --------- | -------- | ---- | ----------- |
-| <*wartość*> | Yes | Ciąg | Zakodowany w formacie base64 ciąg do zdekodowania |
+| <*Wartość*> | Tak | Ciąg | Ciąg kodowany base64 do dekodowania |
 |||||
 
 | Wartość zwracana | Typ | Opis |
 | ------------ | ---- | ----------- |
-| <*dekodowane — ciąg base64*> | Ciąg | Wersja ciągu dla ciągu zakodowanego algorytmem Base64 |
+| <*dekodowany-base64-string*> | Ciąg | Wersja ciągu dla ciągu zakodowanego base64 |
 ||||
 
 *Przykład*
 
-Ten przykład konwertuje ciąg "aGVsbG8 =" zakodowany algorytmem Base64 na tylko ciąg:
+W tym przykładzie konwertuje ciąg "aGVsbG8=" kodowany base64 na ciąg:
 
 ```
 base64ToString('aGVsbG8=')
 ```
 
-I zwraca ten wynik: `"hello"`
+I zwraca ten wynik:`"hello"`
 
 <a name="binary"></a>
 
-### <a name="binary"></a>binary
+### <a name="binary"></a>binarny
 
-Zwróć wersję binarną ciągu.
+Zwraca wersję binarną dla ciągu.
 
 ```
 binary('<value>')
@@ -1008,17 +1008,17 @@ binary('<value>')
 
 | Parametr | Wymagany | Typ | Opis |
 | --------- | -------- | ---- | ----------- |
-| <*wartość*> | Yes | Ciąg | Ciąg do przekonwertowania |
+| <*Wartość*> | Tak | Ciąg | Ciąg do konwersji |
 |||||
 
 | Wartość zwracana | Typ | Opis |
 | ------------ | ---- | ----------- |
-| <> *wartości binarnej* | Ciąg | Wersja binarna określonego ciągu |
+| <*wartość binarna dla wejścia*> | Ciąg | Wersja binarna dla określonego ciągu |
 ||||
 
 *Przykład*
 
-Ten przykład konwertuje ciąg "Hello" na ciąg binarny:
+W tym przykładzie konwertuje ciąg "hello" na ciąg binarny:
 
 ```
 binary('hello')
@@ -1030,11 +1030,11 @@ I zwraca ten wynik:
 
 <a name="body"></a>
 
-### <a name="body"></a>jednostce
+### <a name="body"></a>body
 
-Zwróć `body` danych wyjściowych akcji w czasie wykonywania.
-Skrót `actions('<actionName>').outputs.body`.
-Zobacz [actionBody ()](#actionBody) i [Akcje ()](#actions).
+Zwraca dane wyjściowe `body` akcji w czasie wykonywania.
+Skrót do `actions('<actionName>').outputs.body`.
+Zobacz [actionBody()](#actionBody) i [actions()](#actions).
 
 ```
 body('<actionName>')
@@ -1042,17 +1042,17 @@ body('<actionName>')
 
 | Parametr | Wymagany | Typ | Opis |
 | --------- | -------- | ---- | ----------- |
-| <*actionname*> | Yes | Ciąg | Nazwa `body` danych wyjściowych akcji, które chcesz |
+| <*nazwa działania*> | Tak | Ciąg | Nazwa żądanego `body` wyjścia akcji |
 |||||
 
 | Wartość zwracana | Typ | Opis |
 | ------------ | -----| ----------- |
-| *akcja <— dane wyjściowe*> | Ciąg | `body` dane wyjściowe z określonej akcji |
+| <*wyjście z ciała-ciało*> | Ciąg | Dane `body` wyjściowe z określonej akcji |
 ||||
 
 *Przykład*
 
-Ten przykład pobiera `body` dane wyjściowe z akcji usługi Twitter `Get user`:
+W tym `body` przykładzie `Get user` pobiera dane wyjściowe z akcji Twitter:
 
 ```
 body('Get_user')
@@ -1077,9 +1077,9 @@ I zwraca ten wynik:
 
 <a name="bool"></a>
 
-### <a name="bool"></a>logiczna
+### <a name="bool"></a>bool
 
-Zwróć wersję logiczną dla wartości.
+Zwraca wersję logiczną dla wartości.
 
 ```
 bool(<value>)
@@ -1087,7 +1087,7 @@ bool(<value>)
 
 | Parametr | Wymagany | Typ | Opis |
 | --------- | -------- | ---- | ----------- |
-| <*wartość*> | Yes | Dowolne | Wartość do przekonwertowania |
+| <*Wartość*> | Tak | Dowolne | Wartość do przekonwertowania |
 |||||
 
 | Wartość zwracana | Typ | Opis |
@@ -1097,7 +1097,7 @@ bool(<value>)
 
 *Przykład*
 
-Te przykłady umożliwiają konwersję określonych wartości na wartości logiczne:
+W tych przykładach konwertowane są określone wartości na wartości logiczne:
 
 ```
 bool(1)
@@ -1106,14 +1106,14 @@ bool(0)
 
 I zwraca te wyniki:
 
-* Pierwszy przykład: `true`
-* Drugi przykład: `false`
+* Pierwszy przykład:`true`
+* Drugi przykład:`false`
 
 <a name="coalesce"></a>
 
-### <a name="coalesce"></a>łączonych
+### <a name="coalesce"></a>Łączonej
 
-Zwróć pierwszą wartość inną niż null z co najmniej jednego parametru.
+Zwraca pierwszą wartość niekwaśną z jednego lub więcej parametrów.
 Puste ciągi, puste tablice i puste obiekty nie mają wartości null.
 
 ```
@@ -1122,17 +1122,17 @@ coalesce(<object_1>, <object_2>, ...)
 
 | Parametr | Wymagany | Typ | Opis |
 | --------- | -------- | ---- | ----------- |
-| <*object_1*>, <*object_2*>,... | Yes | Any, można mieszać typy | Co najmniej jeden element do sprawdzenia dla wartości null |
+| <*object_1*>, *<object_2*>, ... | Tak | Dowolna, może mieszać typy | Jeden lub więcej elementów do sprawdzenia wartości null |
 |||||
 
 | Wartość zwracana | Typ | Opis |
 | ------------ | ---- | ----------- |
-| <*element "First-Non-null"* > | Dowolne | Pierwszy element lub wartość, która nie jest równa null. Jeśli wszystkie parametry mają wartość null, ta funkcja zwraca wartość null. |
+| <*element pierwszy bez wartości null*> | Dowolne | Pierwszy element lub wartość, która nie jest null. Jeśli wszystkie parametry mają wartość null, ta funkcja zwraca wartość null. |
 ||||
 
 *Przykład*
 
-Te przykłady zwracają pierwszą wartość o wartości innej niż null z określonych wartości lub wartości null, jeśli wszystkie wartości mają wartość null:
+Te przykłady zwracają pierwszą wartość nie null z określonych wartości lub null, gdy wszystkie wartości są null:
 
 ```
 coalesce(null, true, false)
@@ -1142,13 +1142,13 @@ coalesce(null, null, null)
 
 I zwraca te wyniki:
 
-* Pierwszy przykład: `true`
-* Drugi przykład: `"hello"`
-* Trzeci przykład: `null`
+* Pierwszy przykład:`true`
+* Drugi przykład:`"hello"`
+* Trzeci przykład:`null`
 
 <a name="concat"></a>
 
-### <a name="concat"></a>Concat
+### <a name="concat"></a>concat
 
 Połącz dwa lub więcej ciągów i zwróć połączony ciąg.
 
@@ -1158,57 +1158,57 @@ concat('<text1>', '<text2>', ...)
 
 | Parametr | Wymagany | Typ | Opis |
 | --------- | -------- | ---- | ----------- |
-| <*tekst1*>, <*Tekst2*>,... | Yes | Ciąg | Co najmniej dwa ciągi do połączenia |
+| <*text1*>, <*text2*>, ... | Tak | Ciąg | Co najmniej dwa ciągi do połączenia |
 |||||
 
 | Wartość zwracana | Typ | Opis |
 | ------------ | ---- | ----------- |
-| <*text1text2...* > | Ciąg | Ciąg utworzony na podstawie połączonych ciągów wejściowych |
+| <*text1text2...*> | Ciąg | Ciąg utworzony na podstawie połączonych ciągów wejściowych |
 ||||
 
 *Przykład*
 
-Ten przykład łączy ciągi "Hello" i "World":
+W tym przykładzie łączy ciągi "Hello" i "World":
 
 ```
 concat('Hello', 'World')
 ```
 
-I zwraca ten wynik: `"HelloWorld"`
+I zwraca ten wynik:`"HelloWorld"`
 
 <a name="contains"></a>
 
 ### <a name="contains"></a>zawiera
 
-Sprawdź, czy kolekcja zawiera określony element.
-Zwraca wartość true, jeśli element zostanie znaleziony lub zwraca wartość false, jeśli nie znaleziono.
-Ta funkcja jest uwzględniana wielkość liter.
+Sprawdź, czy kolekcja ma określony element.
+Zwraca wartość true po znalezieniu elementu lub zwraca wartość false, gdy nie zostanie znaleziony.
+W tej funkcji rozróżniana jest wielkość liter.
 
 ```
 contains('<collection>', '<value>')
 contains([<collection>], '<value>')
 ```
 
-W przypadku tej funkcji działa ona na następujących typach kolekcji:
+W szczególności ta funkcja działa na tych typach kolekcji:
 
-* *Ciąg* , aby znaleźć *podciąg*
-* *Tablica* , aby znaleźć *wartość*
-* *Słownik* służący do znajdowania *klucza*
+* *Ciąg,* aby znaleźć *podciąg*
+* *Tablica* do znajdowania *wartości*
+* *Słownik,* aby znaleźć *klucz*
 
 | Parametr | Wymagany | Typ | Opis |
 | --------- | -------- | ---- | ----------- |
-| <*zbieranie*> | Yes | Ciąg, tablica lub słownik | Kolekcja do sprawdzenia |
-| <*wartość*> | Yes | Odpowiednio ciąg, tablica lub słownik | Element do znalezienia |
+| <*Kolekcji*> | Tak | Ciąg, tablica lub słownik | Kolekcja do sprawdzenia |
+| <*Wartość*> | Tak | Odpowiednio ciąg, tablica lub słownik | Element do znalezienia |
 |||||
 
 | Wartość zwracana | Typ | Opis |
 | ------------ | ---- | ----------- |
-| true lub false | Wartość logiczna | Zwraca wartość true, jeśli element zostanie znaleziony. Zwraca wartość false, jeśli nie znaleziono. |
+| true lub false | Wartość logiczna | Zwraca wartość true po znalezieniu elementu. Zwraca wartość false, gdy nie znaleziono. |
 ||||
 
 *Przykład 1*
 
-Ten przykład sprawdza ciąg "Hello World" dla podciągu "World" i zwraca wartość true:
+W tym przykładzie sprawdza ciąg "hello world" dla podciąg "świat" i zwraca true:
 
 ```
 contains('hello world', 'world')
@@ -1216,7 +1216,7 @@ contains('hello world', 'world')
 
 *Przykład 2*
 
-Ten przykład sprawdza ciąg "Hello World" dla podciągu "Universe" i zwraca wartość false:
+W tym przykładzie sprawdza ciąg "hello world" dla podciąg "universe" i zwraca false:
 
 ```
 contains('hello world', 'universe')
@@ -1226,7 +1226,7 @@ contains('hello world', 'universe')
 
 ### <a name="convertfromutc"></a>convertFromUtc
 
-Przekształć sygnaturę czasową od uniwersalnego czasu koordynowanego (UTC) na docelową strefę czasową.
+Konwertuj sygnaturę czasową z uniwersalnej strefy czasowej (UTC) na docelową strefę czasową.
 
 ```
 convertFromUtc('<timestamp>', '<destinationTimeZone>', '<format>'?)
@@ -1234,41 +1234,41 @@ convertFromUtc('<timestamp>', '<destinationTimeZone>', '<format>'?)
 
 | Parametr | Wymagany | Typ | Opis |
 | --------- | -------- | ---- | ----------- |
-| <*sygnatura czasowa*> | Yes | Ciąg | Ciąg zawierający sygnaturę czasową. |
-| <*destinationTimeZone*> | Yes | Ciąg | Nazwa docelowej strefy czasowej. W przypadku nazw stref czasowych zobacz [wartości indeksów strefy czasowej firmy Microsoft](https://support.microsoft.com/en-us/help/973627/microsoft-time-zone-index-values), ale może być konieczne usunięcie znaków interpunkcyjnych z nazwy strefy czasowej. |
-| <*format*> | Nie | Ciąg | [Pojedynczy specyfikator formatu](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) lub [wzorzec formatowania niestandardowego](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Domyślny format sygnatury czasowej to ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (RRRR-MM-DDTgg: mm: SS: fffffffK), który jest zgodny z [normą ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) i zachowuje informacje o strefie czasowej. |
+| <*Sygnatury czasowej*> | Tak | Ciąg | Ciąg zawierający sygnaturę czasowa |
+| <*destinationTimeZone*> | Tak | Ciąg | Nazwa docelowej strefy czasowej. Aby zapoznać się z nazwami stref czasowych, zobacz [Wartości indeksu stref czasowych firmy Microsoft](https://support.microsoft.com/en-us/help/973627/microsoft-time-zone-index-values), ale może być trzeba usunąć wszelkie znaki interpunkcyjne z nazwy strefy czasowej. |
+| <*Formacie*> | Nie | Ciąg | Specyfikator [pojedynczego formatu](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) lub [wzorzec formatu niestandardowego](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Domyślnym formatem sygnatury czasowej jest ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-MM-ddTHH:mm:ss:fffffffK), który jest zgodny z [iso 8601](https://en.wikipedia.org/wiki/ISO_8601) i zachowuje informacje o strefie czasowej. |
 |||||
 
 | Wartość zwracana | Typ | Opis |
 | ------------ | ---- | ----------- |
-| <*przekonwertowanej sygnatury czasowej*> | Ciąg | Sygnatura czasowa konwertowana na docelową strefę czasową |
+| <*sygnatura czasowa konwersji*> | Ciąg | Sygnatura czasowa przekonwertowana na docelową strefę czasową |
 ||||
 
 *Przykład 1*
 
-Ten przykład konwertuje sygnaturę czasową na określoną strefę czasową:
+W tym przykładzie sygnatura czasowa konwertuje określoną strefę czasową:
 
 ```
 convertFromUtc('2018-01-01T08:00:00.0000000Z', 'Pacific Standard Time')
 ```
 
-I zwraca ten wynik: `"2018-01-01T00:00:00.0000000"`
+I zwraca ten wynik:`"2018-01-01T00:00:00.0000000"`
 
 *Przykład 2*
 
-Ten przykład konwertuje sygnaturę czasową na określoną strefę czasową i format:
+W tym przykładzie sygnatura czasowa konwertuje określoną strefę czasową i format:
 
 ```
 convertFromUtc('2018-01-01T08:00:00.0000000Z', 'Pacific Standard Time', 'D')
 ```
 
-I zwraca ten wynik: `"Monday, January 1, 2018"`
+I zwraca ten wynik:`"Monday, January 1, 2018"`
 
 <a name="convertTimeZone"></a>
 
 ### <a name="converttimezone"></a>convertTimeZone
 
-Przekonwertuj sygnaturę czasową ze źródłowej strefy czasowej na docelową strefę czasową.
+Konwertuj sygnaturę czasową ze źródłowej strefy czasowej na docelową strefę czasową.
 
 ```
 convertTimeZone('<timestamp>', '<sourceTimeZone>', '<destinationTimeZone>', '<format>'?)
@@ -1276,42 +1276,42 @@ convertTimeZone('<timestamp>', '<sourceTimeZone>', '<destinationTimeZone>', '<fo
 
 | Parametr | Wymagany | Typ | Opis |
 | --------- | -------- | ---- | ----------- |
-| <*sygnatura czasowa*> | Yes | Ciąg | Ciąg zawierający sygnaturę czasową. |
-| <*sourceTimeZone*> | Yes | Ciąg | Nazwa źródłowej strefy czasowej. W przypadku nazw stref czasowych zobacz [wartości indeksów strefy czasowej firmy Microsoft](https://support.microsoft.com/en-us/help/973627/microsoft-time-zone-index-values), ale może być konieczne usunięcie znaków interpunkcyjnych z nazwy strefy czasowej. |
-| <*destinationTimeZone*> | Yes | Ciąg | Nazwa docelowej strefy czasowej. W przypadku nazw stref czasowych zobacz [wartości indeksów strefy czasowej firmy Microsoft](https://support.microsoft.com/en-us/help/973627/microsoft-time-zone-index-values), ale może być konieczne usunięcie znaków interpunkcyjnych z nazwy strefy czasowej. |
-| <*format*> | Nie | Ciąg | [Pojedynczy specyfikator formatu](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) lub [wzorzec formatowania niestandardowego](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Domyślny format sygnatury czasowej to ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (RRRR-MM-DDTgg: mm: SS: fffffffK), który jest zgodny z [normą ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) i zachowuje informacje o strefie czasowej. |
+| <*Sygnatury czasowej*> | Tak | Ciąg | Ciąg zawierający sygnaturę czasowa |
+| <*Sourcetimezone*> | Tak | Ciąg | Nazwa źródłowej strefy czasowej. Aby zapoznać się z nazwami stref czasowych, zobacz [Wartości indeksu stref czasowych firmy Microsoft](https://support.microsoft.com/en-us/help/973627/microsoft-time-zone-index-values), ale może być trzeba usunąć wszelkie znaki interpunkcyjne z nazwy strefy czasowej. |
+| <*destinationTimeZone*> | Tak | Ciąg | Nazwa docelowej strefy czasowej. Aby zapoznać się z nazwami stref czasowych, zobacz [Wartości indeksu stref czasowych firmy Microsoft](https://support.microsoft.com/en-us/help/973627/microsoft-time-zone-index-values), ale może być trzeba usunąć wszelkie znaki interpunkcyjne z nazwy strefy czasowej. |
+| <*Formacie*> | Nie | Ciąg | Specyfikator [pojedynczego formatu](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) lub [wzorzec formatu niestandardowego](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Domyślnym formatem sygnatury czasowej jest ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-MM-ddTHH:mm:ss:fffffffK), który jest zgodny z [iso 8601](https://en.wikipedia.org/wiki/ISO_8601) i zachowuje informacje o strefie czasowej. |
 |||||
 
 | Wartość zwracana | Typ | Opis |
 | ------------ | ---- | ----------- |
-| <*przekonwertowanej sygnatury czasowej*> | Ciąg | Sygnatura czasowa konwertowana na docelową strefę czasową |
+| <*sygnatura czasowa konwersji*> | Ciąg | Sygnatura czasowa przekonwertowana na docelową strefę czasową |
 ||||
 
 *Przykład 1*
 
-Ten przykład konwertuje źródłową strefę czasową na docelową strefę czasową:
+W tym przykładzie konwertuje strefę czasową źródła do docelowej strefy czasowej:
 
 ```
 convertTimeZone('2018-01-01T08:00:00.0000000Z', 'UTC', 'Pacific Standard Time')
 ```
 
-I zwraca ten wynik: `"2018-01-01T00:00:00.0000000"`
+I zwraca ten wynik:`"2018-01-01T00:00:00.0000000"`
 
 *Przykład 2*
 
-Ten przykład konwertuje strefę czasową na określoną strefę czasową i format:
+W tym przykładzie konwertuje strefę czasową do określonej strefy czasowej i formatu:
 
 ```
 convertTimeZone('2018-01-01T80:00:00.0000000Z', 'UTC', 'Pacific Standard Time', 'D')
 ```
 
-I zwraca ten wynik: `"Monday, January 1, 2018"`
+I zwraca ten wynik:`"Monday, January 1, 2018"`
 
 <a name="convertToUtc"></a>
 
 ### <a name="converttoutc"></a>convertToUtc
 
-Konwertuj sygnaturę czasową ze źródłowej strefy czasowej na uniwersalne czas uniwersalny (UTC).
+Konwertuj sygnaturę czasową ze źródłowej strefy czasowej na uniwersalną koordynacyjną (UTC).
 
 ```
 convertToUtc('<timestamp>', '<sourceTimeZone>', '<format>'?)
@@ -1319,42 +1319,42 @@ convertToUtc('<timestamp>', '<sourceTimeZone>', '<format>'?)
 
 | Parametr | Wymagany | Typ | Opis |
 | --------- | -------- | ---- | ----------- |
-| <*sygnatura czasowa*> | Yes | Ciąg | Ciąg zawierający sygnaturę czasową. |
-| <*sourceTimeZone*> | Yes | Ciąg | Nazwa źródłowej strefy czasowej. W przypadku nazw stref czasowych zobacz [wartości indeksów strefy czasowej firmy Microsoft](https://support.microsoft.com/en-us/help/973627/microsoft-time-zone-index-values), ale może być konieczne usunięcie znaków interpunkcyjnych z nazwy strefy czasowej. |
-| <*format*> | Nie | Ciąg | [Pojedynczy specyfikator formatu](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) lub [wzorzec formatowania niestandardowego](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Domyślny format sygnatury czasowej to ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (RRRR-MM-DDTgg: mm: SS: fffffffK), który jest zgodny z [normą ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) i zachowuje informacje o strefie czasowej. |
+| <*Sygnatury czasowej*> | Tak | Ciąg | Ciąg zawierający sygnaturę czasowa |
+| <*Sourcetimezone*> | Tak | Ciąg | Nazwa źródłowej strefy czasowej. Aby zapoznać się z nazwami stref czasowych, zobacz [Wartości indeksu stref czasowych firmy Microsoft](https://support.microsoft.com/en-us/help/973627/microsoft-time-zone-index-values), ale może być trzeba usunąć wszelkie znaki interpunkcyjne z nazwy strefy czasowej. |
+| <*Formacie*> | Nie | Ciąg | Specyfikator [pojedynczego formatu](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) lub [wzorzec formatu niestandardowego](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Domyślnym formatem sygnatury czasowej jest ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-MM-ddTHH:mm:ss:fffffffK), który jest zgodny z [iso 8601](https://en.wikipedia.org/wiki/ISO_8601) i zachowuje informacje o strefie czasowej. |
 |||||
 
 | Wartość zwracana | Typ | Opis |
 | ------------ | ---- | ----------- |
-| <*przekonwertowanej sygnatury czasowej*> | Ciąg | Sygnatura czasowa konwertowana na UTC |
+| <*sygnatura czasowa konwersji*> | Ciąg | Sygnatura czasowa przekonwertowana na utc |
 ||||
 
 *Przykład 1*
 
-Ten przykład konwertuje sygnaturę czasową na czas UTC:
+W tym przykładzie konwertuje sygnaturę czasową na UTC:
 
 ```
 convertToUtc('01/01/2018 00:00:00', 'Pacific Standard Time')
 ```
 
-I zwraca ten wynik: `"2018-01-01T08:00:00.0000000Z"`
+I zwraca ten wynik:`"2018-01-01T08:00:00.0000000Z"`
 
 *Przykład 2*
 
-Ten przykład konwertuje sygnaturę czasową na czas UTC:
+W tym przykładzie konwertuje sygnaturę czasową na UTC:
 
 ```
 convertToUtc('01/01/2018 00:00:00', 'Pacific Standard Time', 'D')
 ```
 
-I zwraca ten wynik: `"Monday, January 1, 2018"`
+I zwraca ten wynik:`"Monday, January 1, 2018"`
 
 <a name="createArray"></a>
 
-### <a name="createarray"></a>createArray
+### <a name="createarray"></a>tworzenieArray
 
-Zwróć tablicę z wielu danych wejściowych.
-Dla pojedynczych tablic wejściowych zobacz [Array ()](#array).
+Zwraca tablicę z wielu danych wejściowych.
+W przypadku pojedynczych tablic wejściowych zobacz [tablica()](#array).
 
 ```
 createArray('<object1>', '<object2>', ...)
@@ -1362,29 +1362,29 @@ createArray('<object1>', '<object2>', ...)
 
 | Parametr | Wymagany | Typ | Opis |
 | --------- | -------- | ---- | ----------- |
-| <*obiekt1*>, <*Obiekt2*>,... | Yes | Wszystkie, ale nie mieszane | Co najmniej dwa elementy, aby utworzyć tablicę |
+| <*object1*>, <*object2*>, ... | Tak | Wszelkie, ale nie mieszane | Co najmniej dwa elementy do utworzenia tablicy |
 |||||
 
 | Wartość zwracana | Typ | Opis |
 | ------------ | ---- | ----------- |
-| [<*obiekt1*>, <*Obiekt2*>,...] | Tablica | Tablica utworzona na podstawie wszystkich elementów wejściowych |
+| [<*object1*>, <*object2*>, ...] | Tablica | Tablica utworzona na podstawie wszystkich elementów wejściowych |
 ||||
 
 *Przykład*
 
-Ten przykład tworzy tablicę z następujących danych wejściowych:
+W tym przykładzie tworzy tablicę z tych danych wejściowych:
 
 ```
 createArray('h', 'e', 'l', 'l', 'o')
 ```
 
-I zwraca ten wynik: `["h", "e", "l", "l", "o"]`
+I zwraca ten wynik:`["h", "e", "l", "l", "o"]`
 
 <a name="dataUri"></a>
 
 ### <a name="datauri"></a>dataUri
 
-Zwróć identyfikator URI (Uniform Resource Identifier) danych dla ciągu.
+Zwraca identyfikator jednolitego zasobu danych (URI) dla ciągu.
 
 ```
 dataUri('<value>')
@@ -1392,31 +1392,31 @@ dataUri('<value>')
 
 | Parametr | Wymagany | Typ | Opis |
 | --------- | -------- | ---- | ----------- |
-| <*wartość*> | Yes | Ciąg | Ciąg do przekonwertowania |
+| <*Wartość*> | Tak | Ciąg | Ciąg do konwersji |
 |||||
 
 | Wartość zwracana | Typ | Opis |
 | ------------ | ---- | ----------- |
-| <> *identyfikatorów URI* | Ciąg | Identyfikator URI danych dla ciągu wejściowego |
+| <*dane-uri*> | Ciąg | Identyfikator URI danych dla ciągu wejściowego |
 ||||
 
 *Przykład*
 
-W tym przykładzie tworzony jest identyfikator URI danych dla ciągu "Hello":
+W tym przykładzie tworzy identyfikator URI danych dla ciągu "hello":
 
 ```
 dataUri('hello')
 ```
 
-I zwraca ten wynik: `"data:text/plain;charset=utf-8;base64,aGVsbG8="`
+I zwraca ten wynik:`"data:text/plain;charset=utf-8;base64,aGVsbG8="`
 
 <a name="dataUriToBinary"></a>
 
 ### <a name="datauritobinary"></a>dataUriToBinary
 
-Zwróć wersję binarną dla identyfikatora URI (Uniform Resource Identifier) danych.
-Użyj tej funkcji zamiast [decodeDataUri ()](#decodeDataUri).
-Chociaż obie funkcje działają tak samo, `dataUriBinary()` jest preferowane.
+Zwraca wersję binarną dla identyfikatora jednolitego zasobu danych (URI).
+Użyj tej funkcji, a nie [dekodowaniaDataUri()](#decodeDataUri).
+Chociaż obie funkcje działają `dataUriBinary()` w ten sam sposób, jest preferowany.
 
 ```
 dataUriToBinary('<value>')
@@ -1424,17 +1424,17 @@ dataUriToBinary('<value>')
 
 | Parametr | Wymagany | Typ | Opis |
 | --------- | -------- | ---- | ----------- |
-| <*wartość*> | Yes | Ciąg | Identyfikator URI danych do przekonwertowania |
+| <*Wartość*> | Tak | Ciąg | Identyfikator URI danych do konwersji |
 |||||
 
 | Wartość zwracana | Typ | Opis |
 | ------------ | ---- | ----------- |
-| <*Identyfikator URI danych binarnych*> | Ciąg | Wersja binarna identyfikatora URI danych |
+| <*bin-for-data-uri*> | Ciąg | Wersja binarna dla identyfikatora URI danych |
 ||||
 
 *Przykład*
 
-W tym przykładzie tworzona jest wersja binarna dla tego identyfikatora URI danych:
+W tym przykładzie tworzy wersję binarną dla tego identyfikatora URI danych:
 
 ```
 dataUriToBinary('data:text/plain;charset=utf-8;base64,aGVsbG8=')
@@ -1451,7 +1451,7 @@ I zwraca ten wynik:
 
 ### <a name="datauritostring"></a>dataUriToString
 
-Zwraca wersję ciągu dla identyfikatora URI (Uniform Resource Identifier) danych.
+Zwraca wersję ciągu dla identyfikatora zasobów jednolitych danych (URI).
 
 ```
 dataUriToString('<value>')
@@ -1459,23 +1459,23 @@ dataUriToString('<value>')
 
 | Parametr | Wymagany | Typ | Opis |
 | --------- | -------- | ---- | ----------- |
-| <*wartość*> | Yes | Ciąg | Identyfikator URI danych do przekonwertowania |
+| <*Wartość*> | Tak | Ciąg | Identyfikator URI danych do konwersji |
 |||||
 
 | Wartość zwracana | Typ | Opis |
 | ------------ | ---- | ----------- |
-| <*ciąg — dla identyfikatora URI dla danych*> | Ciąg | Wersja ciągu dla identyfikatora URI danych |
+| <*ciąg-dla danych-uri*> | Ciąg | Wersja ciągu dla identyfikatora URI danych |
 ||||
 
 *Przykład*
 
-Ten przykład tworzy ciąg dla tego identyfikatora URI danych:
+W tym przykładzie tworzy ciąg dla tego identyfikatora URI danych:
 
 ```
 dataUriToString('data:text/plain;charset=utf-8;base64,aGVsbG8=')
 ```
 
-I zwraca ten wynik: `"hello"`
+I zwraca ten wynik:`"hello"`
 
 <a name="dayOfMonth"></a>
 
@@ -1489,23 +1489,23 @@ dayOfMonth('<timestamp>')
 
 | Parametr | Wymagany | Typ | Opis |
 | --------- | -------- | ---- | ----------- |
-| <*sygnatura czasowa*> | Yes | Ciąg | Ciąg zawierający sygnaturę czasową. |
+| <*Sygnatury czasowej*> | Tak | Ciąg | Ciąg zawierający sygnaturę czasowa |
 |||||
 
 | Wartość zwracana | Typ | Opis |
 | ------------ | ---- | ----------- |
-| <*dzień miesiąca*> | Liczba całkowita | Dzień miesiąca od określonej sygnatury czasowej |
+| <*dzień miesiąca*> | Liczba całkowita | Dzień miesiąca z określonej sygnatury czasowej |
 ||||
 
 *Przykład*
 
-Ten przykład zwraca liczbę dla dnia miesiąca z tej sygnatury czasowej:
+W tym przykładzie zwraca liczbę dla dnia miesiąca z tej sygnatury czasowej:
 
 ```
 dayOfMonth('2018-03-15T13:27:36Z')
 ```
 
-I zwraca ten wynik: `15`
+I zwraca ten wynik:`15`
 
 <a name="dayOfWeek"></a>
 
@@ -1519,27 +1519,27 @@ dayOfWeek('<timestamp>')
 
 | Parametr | Wymagany | Typ | Opis |
 | --------- | -------- | ---- | ----------- |
-| <*sygnatura czasowa*> | Yes | Ciąg | Ciąg zawierający sygnaturę czasową. |
+| <*Sygnatury czasowej*> | Tak | Ciąg | Ciąg zawierający sygnaturę czasowa |
 |||||
 
 | Wartość zwracana | Typ | Opis |
 | ------------ | ---- | ----------- |
-| <*dzień tygodnia*> | Liczba całkowita | Dzień tygodnia od określonej sygnatury czasowej, gdzie Niedziela ma wartość 0, poniedziałek wynosi 1 itd. |
+| <*dzień tygodnia*> | Liczba całkowita | Dzień tygodnia od określonego sygnatury czasowej, w którym niedziela jest 0, poniedziałek to 1, i tak dalej |
 ||||
 
 *Przykład*
 
-Ten przykład zwraca liczbę dni tygodnia od tej sygnatury czasowej:
+W tym przykładzie zwraca liczbę dla dnia tygodnia z tej sygnatury czasowej:
 
 ```
 dayOfWeek('2018-03-15T13:27:36Z')
 ```
 
-I zwraca ten wynik: `3`
+I zwraca ten wynik:`3`
 
 <a name="dayOfYear"></a>
 
-### <a name="dayofyear"></a>dzieńroku
+### <a name="dayofyear"></a>dayOfYear
 
 Zwróć dzień roku z sygnatury czasowej.
 
@@ -1549,31 +1549,31 @@ dayOfYear('<timestamp>')
 
 | Parametr | Wymagany | Typ | Opis |
 | --------- | -------- | ---- | ----------- |
-| <*sygnatura czasowa*> | Yes | Ciąg | Ciąg zawierający sygnaturę czasową. |
+| <*Sygnatury czasowej*> | Tak | Ciąg | Ciąg zawierający sygnaturę czasowa |
 |||||
 
 | Wartość zwracana | Typ | Opis |
 | ------------ | ---- | ----------- |
-| <*dzień roku*> | Liczba całkowita | Dzień roku od określonej sygnatury czasowej |
+| <*dzień w roku*> | Liczba całkowita | Dzień roku z określonej sygnatury czasowej |
 ||||
 
 *Przykład*
 
-Ten przykład zwraca numer dnia roku z tej sygnatury czasowej:
+W tym przykładzie zwraca numer dnia roku z tej sygnatury czasowej:
 
 ```
 dayOfYear('2018-03-15T13:27:36Z')
 ```
 
-I zwraca ten wynik: `74`
+I zwraca ten wynik:`74`
 
 <a name="decodeBase64"></a>
 
-### <a name="decodebase64"></a>decodeBase64
+### <a name="decodebase64"></a>dekodowanieBase64
 
-Zwraca wersję ciągu dla ciągu zakodowanego algorytmem Base64, efektywnie dekodowanie ciągu Base64.
-Rozważ użycie [base64ToString ()](#base64ToString) , a nie `decodeBase64()`.
-Chociaż obie funkcje działają tak samo, `base64ToString()` jest preferowane.
+Zwraca wersję ciągu dla ciągu zakodowanego base64, skutecznie dekodując ciąg base64.
+Należy rozważyć użycie [base64ToString()](#base64ToString) zamiast `decodeBase64()`.
+Chociaż obie funkcje działają `base64ToString()` w ten sam sposób, jest preferowany.
 
 ```
 decodeBase64('<value>')
@@ -1581,31 +1581,31 @@ decodeBase64('<value>')
 
 | Parametr | Wymagany | Typ | Opis |
 | --------- | -------- | ---- | ----------- |
-| <*wartość*> | Yes | Ciąg | Zakodowany w formacie base64 ciąg do zdekodowania |
+| <*Wartość*> | Tak | Ciąg | Ciąg kodowany base64 do dekodowania |
 |||||
 
 | Wartość zwracana | Typ | Opis |
 | ------------ | ---- | ----------- |
-| <*dekodowane — ciąg base64*> | Ciąg | Wersja ciągu dla ciągu zakodowanego algorytmem Base64 |
+| <*dekodowany-base64-string*> | Ciąg | Wersja ciągu dla ciągu zakodowanego base64 |
 ||||
 
 *Przykład*
 
-Ten przykład tworzy ciąg dla ciągu zakodowanego algorytmem Base64:
+W tym przykładzie tworzy ciąg dla ciągu zakodowanego base64:
 
 ```
 decodeBase64('aGVsbG8=')
 ```
 
-I zwraca ten wynik: `"hello"`
+I zwraca ten wynik:`"hello"`
 
 <a name="decodeDataUri"></a>
 
-### <a name="decodedatauri"></a>decodeDataUri
+### <a name="decodedatauri"></a>dekodowanieDataUri
 
-Zwróć wersję binarną dla identyfikatora URI (Uniform Resource Identifier) danych.
-Rozważ użycie [dataUriToBinary ()](#dataUriToBinary), a nie `decodeDataUri()`.
-Chociaż obie funkcje działają tak samo, `dataUriToBinary()` jest preferowane.
+Zwraca wersję binarną dla identyfikatora jednolitego zasobu danych (URI).
+Należy rozważyć użycie [dataUriToBinary()](#dataUriToBinary)zamiast `decodeDataUri()`.
+Chociaż obie funkcje działają `dataUriToBinary()` w ten sam sposób, jest preferowany.
 
 ```
 decodeDataUri('<value>')
@@ -1613,17 +1613,17 @@ decodeDataUri('<value>')
 
 | Parametr | Wymagany | Typ | Opis |
 | --------- | -------- | ---- | ----------- |
-| <*wartość*> | Yes | Ciąg | Ciąg identyfikatora URI danych do zdekodowania |
+| <*Wartość*> | Tak | Ciąg | Ciąg identyfikatora URI danych do dekodowania |
 |||||
 
 | Wartość zwracana | Typ | Opis |
 | ------------ | ---- | ----------- |
-| <*Identyfikator URI danych binarnych*> | Ciąg | Wersja binarna ciągu identyfikatora URI danych |
+| <*bin-for-data-uri*> | Ciąg | Wersja binarna dla ciągu identyfikatora URI danych |
 ||||
 
 *Przykład*
 
-Ten przykład zwraca wersję binarną dla tego identyfikatora URI danych:
+W tym przykładzie zwraca wersję binarną dla tego identyfikatora URI danych:
 
 ```
 decodeDataUri('data:text/plain;charset=utf-8;base64,aGVsbG8=')
@@ -1638,9 +1638,9 @@ I zwraca ten wynik:
 
 <a name="decodeUriComponent"></a>
 
-### <a name="decodeuricomponent"></a>decodeUriComponent
+### <a name="decodeuricomponent"></a>dekodowanieskładeksu
 
-Zwraca ciąg, który zastępuje znaki ucieczki z zdekodowanymi wersjami.
+Zwraca ciąg, który zastępuje znaki ucieczki z dekodowanych wersji.
 
 ```
 decodeUriComponent('<value>')
@@ -1648,30 +1648,30 @@ decodeUriComponent('<value>')
 
 | Parametr | Wymagany | Typ | Opis |
 | --------- | -------- | ---- | ----------- |
-| <*wartość*> | Yes | Ciąg | Ciąg znaków ucieczki do zdekodowania |
+| <*Wartość*> | Tak | Ciąg | Ciąg ze znakami ucieczki do dekodowania |
 |||||
 
 | Wartość zwracana | Typ | Opis |
 | ------------ | ---- | ----------- |
-| <*zdekodowana-uri*> | Ciąg | Zaktualizowany ciąg z zdekodowanymi znakami ucieczki |
+| <*dekodowane-uri*> | Ciąg | Zaktualizowany ciąg z zdekodowanymi znakami ucieczki |
 ||||
 
 *Przykład*
 
-Ten przykład zastępuje znaki ucieczki w tym ciągu z zdekodowanymi wersjami:
+W tym przykładzie znaki ucieczki w tym ciągu zdekodowane wersje:
 
 ```
 decodeUriComponent('http%3A%2F%2Fcontoso.com')
 ```
 
-I zwraca ten wynik: `"https://contoso.com"`
+I zwraca ten wynik:`"https://contoso.com"`
 
 <a name="div"></a>
 
 ### <a name="div"></a>div
 
-Zwraca liczbę całkowitą z wyniku dzielenia dwóch liczb.
-Aby uzyskać resztę, zobacz [mod ()](#mod).
+Zwraca wynik liczby całkowitej z podzielenia dwóch liczb.
+Aby uzyskać pozostały wynik, zobacz [mod()](#mod).
 
 ```
 div(<dividend>, <divisor>)
@@ -1679,33 +1679,33 @@ div(<dividend>, <divisor>)
 
 | Parametr | Wymagany | Typ | Opis |
 | --------- | -------- | ---- | ----------- |
-| <*dzielną*> | Yes | Liczba całkowita lub zmiennoprzecinkowa | Liczba do podzielenia przez *dzielnik* |
-| <*dzielnik*> | Yes | Liczba całkowita lub zmiennoprzecinkowa | Liczba dzieląca *dzielną*, ale nie może być równa 0. |
+| <*Dywidendy*> | Tak | Całkowita lub float | Liczba do podzielenia przez *dzielnik* |
+| <*Dzielnik*> | Tak | Całkowita lub float | Liczba, która dzieli *dywidendę,* ale nie może być 0 |
 |||||
 
 | Wartość zwracana | Typ | Opis |
 | ------------ | ---- | ----------- |
-| <*wyniku ilorazu*> | Liczba całkowita | Wynik z wartości całkowitej dzielącej pierwszą liczbę przez drugą liczbę |
+| <*wynik ilorazu*> | Liczba całkowita | Wynik liczby całkowitej z podzielenia pierwszej liczby przez drugą liczbę |
 ||||
 
 *Przykład*
 
-Oba przykłady dzielą pierwszą liczbę o drugą liczbę:
+Oba przykłady dzielą pierwszą liczbę przez drugą liczbę:
 
 ```
 div(10, 5)
 div(11, 5)
 ```
 
-I zwróć ten wynik: `2`
+I zwrócić ten wynik:`2`
 
 <a name="encodeUriComponent"></a>
 
-### <a name="encodeuricomponent"></a>encodeURIComponent —
+### <a name="encodeuricomponent"></a>Encodeuricomponent
 
-Zwróć jednolity identyfikator zasobów (URI) dla ciągu przez zastępowanie znaków w adresie URL bez znaku ucieczki.
-Rozważ użycie [uriComponent ()](#uriComponent), a nie `encodeUriComponent()`.
-Chociaż obie funkcje działają tak samo, `uriComponent()` jest preferowane.
+Zwraca wersję zakodowaną w jednolitym identyfikatorze zasobu (URI) dla ciągu, zastępując znaki niebezpieczne dla adresów URL znakami ucieczki.
+Należy rozważyć użycie [uriComponent()](#uriComponent), a nie `encodeUriComponent()`.
+Chociaż obie funkcje działają `uriComponent()` w ten sam sposób, jest preferowany.
 
 ```
 encodeUriComponent('<value>')
@@ -1713,30 +1713,30 @@ encodeUriComponent('<value>')
 
 | Parametr | Wymagany | Typ | Opis |
 | --------- | -------- | ---- | ----------- |
-| <*wartość*> | Yes | Ciąg | Ciąg do przekonwertowania na format zakodowany przy użyciu identyfikatora URI |
+| <*Wartość*> | Tak | Ciąg | Ciąg do konwersji do formatu zakodowanego na URI |
 |||||
 
 | Wartość zwracana | Typ | Opis |
 | ------------ | ---- | ----------- |
-| <*zakodowany> URI* | Ciąg | Ciąg znaków w formacie URI z znakami ucieczki |
+| <*zakodowane-uri*> | Ciąg | Ciąg zakodowany w kodach URI ze znakami ucieczki |
 ||||
 
 *Przykład*
 
-W tym przykładzie tworzona jest wersja zakodowana przy użyciu identyfikatora URI dla tego ciągu:
+W tym przykładzie tworzy wersję zakodowaną w identyfikatorze URI dla tego ciągu:
 
 ```
 encodeUriComponent('https://contoso.com')
 ```
 
-I zwraca ten wynik: `"http%3A%2F%2Fcontoso.com"`
+I zwraca ten wynik:`"http%3A%2F%2Fcontoso.com"`
 
 <a name="empty"></a>
 
-### <a name="empty"></a>ciągiem
+### <a name="empty"></a>empty
 
 Sprawdź, czy kolekcja jest pusta.
-Zwraca wartość true, jeśli kolekcja jest pusta lub zwraca wartość false, jeśli nie jest pusta.
+Zwraca wartość true, gdy kolekcja jest pusta lub zwraca false, gdy nie jest pusty.
 
 ```
 empty('<collection>')
@@ -1745,17 +1745,17 @@ empty([<collection>])
 
 | Parametr | Wymagany | Typ | Opis |
 | --------- | -------- | ---- | ----------- |
-| <*zbieranie*> | Yes | Ciąg, tablica lub obiekt | Kolekcja do sprawdzenia |
+| <*Kolekcji*> | Tak | Ciąg, tablica lub obiekt | Kolekcja do sprawdzenia |
 |||||
 
 | Wartość zwracana | Typ | Opis |
 | ------------ | ---- | ----------- |
-| true lub false | Wartość logiczna | Zwraca wartość true, jeśli kolekcja jest pusta. Zwraca wartość false, jeśli nie jest pusta. |
+| true lub false | Wartość logiczna | Zwraca wartość true, gdy kolekcja jest pusta. Zwraca wartość false, gdy nie jest pusta. |
 ||||
 
 *Przykład*
 
-Te przykłady sprawdzają, czy określone kolekcje są puste:
+Te przykłady sprawdzić, czy określone kolekcje są puste:
 
 ```
 empty('')
@@ -1764,16 +1764,16 @@ empty('abc')
 
 I zwraca te wyniki:
 
-* Pierwszy przykład: przekazuje pusty ciąg, więc funkcja zwraca `true`.
-* Drugi przykład: przekazuje ciąg "ABC", więc funkcja zwraca `false`.
+* Pierwszy przykład: Przekazuje pusty ciąg, `true`więc funkcja zwraca .
+* Drugi przykład: Przekazuje ciąg "abc", `false`więc funkcja zwraca .
 
 <a name="endswith"></a>
 
 ### <a name="endswith"></a>endsWith
 
-Sprawdź, czy ciąg jest kończący się określonym podciągiem.
-Zwraca wartość true, jeśli znaleziono podciąg lub zwraca wartość false, jeśli nie znaleziono.
-Ta funkcja nie uwzględnia wielkości liter.
+Sprawdź, czy ciąg kończy się określonym podciągiem.
+Zwraca wartość true po znalezieniu podciągów lub zwraca wartość false, gdy nie zostanie znaleziony.
+W tej funkcji nie jest rozróżniana wielkość liter.
 
 ```
 endsWith('<text>', '<searchText>')
@@ -1781,41 +1781,41 @@ endsWith('<text>', '<searchText>')
 
 | Parametr | Wymagany | Typ | Opis |
 | --------- | -------- | ---- | ----------- |
-| <> *tekstu* | Yes | Ciąg | Ciąg do sprawdzenia |
-| <*tekstprzeszukiwany*> | Yes | Ciąg | Końcowy podciąg do znalezienia |
+| <*Tekst*> | Tak | Ciąg | Ciąg do sprawdzenia |
+| <*tekst wyszukiwania*> | Tak | Ciąg | Podciąg końcowy, aby znaleźć |
 |||||
 
 | Wartość zwracana | Typ | Opis |
 | ------------ | ---- | ----------- |
-| true lub false  | Wartość logiczna | Zwraca wartość true, gdy zostanie znaleziony końcowy podciąg. Zwraca wartość false, jeśli nie znaleziono. |
+| true lub false  | Wartość logiczna | Zwraca wartość true po znalezieniu końcowego podciągu. Zwraca wartość false, gdy nie znaleziono. |
 ||||
 
 *Przykład 1*
 
-Ten przykład sprawdza, czy ciąg "Hello World" jest zakończony ciągiem "World":
+W tym przykładzie sprawdza, czy ciąg "hello world" kończy się ciągiem "świat":
 
 ```
 endsWith('hello world', 'world')
 ```
 
-I zwraca ten wynik: `true`
+I zwraca ten wynik:`true`
 
 *Przykład 2*
 
-Ten przykład sprawdza, czy ciąg "Hello World" jest zakończony ciągiem "Universe":
+W tym przykładzie sprawdza, czy ciąg "hello world" kończy się ciągiem "wszechświat":
 
 ```
 endsWith('hello world', 'universe')
 ```
 
-I zwraca ten wynik: `false`
+I zwraca ten wynik:`false`
 
 <a name="equals"></a>
 
-### <a name="equals"></a>równa się
+### <a name="equals"></a>equals
 
 Sprawdź, czy obie wartości, wyrażenia lub obiekty są równoważne.
-Zwraca wartość true, jeśli oba są równoważne, lub zwraca wartość false, jeśli nie są równoważne.
+Zwracaj wartość true, gdy oba są równoważne lub zwracaj false, gdy nie są równoważne.
 
 ```
 equals('<object1>', '<object2>')
@@ -1823,17 +1823,17 @@ equals('<object1>', '<object2>')
 
 | Parametr | Wymagany | Typ | Opis |
 | --------- | -------- | ---- | ----------- |
-| <*obiekt1*>, <*Obiekt2*> | Yes | Poszczególne | Wartości, wyrażenia lub obiekty do porównania |
+| <*object1*>, <*obiekt2*> | Tak | Różnych | Wartości, wyrażenia lub obiekty do porównania |
 |||||
 
 | Wartość zwracana | Typ | Opis |
 | ------------ | ---- | ----------- |
-| true lub false | Wartość logiczna | Zwraca wartość true, jeśli oba są równoważne. Zwraca wartość false, jeśli nie jest równoważne. |
+| true lub false | Wartość logiczna | Zwraca wartość true, gdy oba są równoważne. Zwraca wartość false, gdy nie jest odpowiednikiem. |
 ||||
 
 *Przykład*
 
-Te przykłady sprawdzają, czy określone dane wejściowe są równoważne.
+Te przykłady sprawdzić, czy określone dane wejściowe są równoważne.
 
 ```
 equals(true, 1)
@@ -1842,14 +1842,14 @@ equals('abc', 'abcd')
 
 I zwraca te wyniki:
 
-* Pierwszy przykład: obie wartości są równoważne, więc funkcja zwraca `true`.
-* Drugi przykład: obie wartości nie są równoważne, więc funkcja zwraca `false`.
+* Pierwszy przykład: Obie wartości są równoważne, więc funkcja zwraca `true`.
+* Drugi przykład: Obie wartości nie są równoważne, więc funkcja zwraca `false`.
 
 <a name="first"></a>
 
-### <a name="first"></a>Pierwszego
+### <a name="first"></a>Pierwszym
 
-Zwróć pierwszy element z ciągu lub tablicy.
+Zwraca pierwszy element z ciągu lub tablicy.
 
 ```
 first('<collection>')
@@ -1858,34 +1858,34 @@ first([<collection>])
 
 | Parametr | Wymagany | Typ | Opis |
 | --------- | -------- | ---- | ----------- |
-| <*zbieranie*> | Yes | Ciąg lub tablica | Kolekcja, w której ma zostać znaleziony pierwszy element. |
+| <*Kolekcji*> | Tak | Ciąg lub tablica | Kolekcja, w której można znaleźć pierwszy element |
 |||||
 
 | Wartość zwracana | Typ | Opis |
 | ------------ | ---- | ----------- |
-| <> *pierwszej kolekcji* | Dowolne | Pierwszy element w kolekcji |
+| <*element pierwszej kolekcji*> | Dowolne | Pierwszy element w kolekcji |
 ||||
 
 *Przykład*
 
-W tych przykładach znaleziono pierwszy element w tych kolekcjach:
+Te przykłady znaleźć pierwszy element w tych kolekcjach:
 
 ```
 first('hello')
 first(createArray(0, 1, 2))
 ```
 
-I zwróć następujące wyniki:
+I zwrócić te wyniki:
 
-* Pierwszy przykład: `"h"`
-* Drugi przykład: `0`
+* Pierwszy przykład:`"h"`
+* Drugi przykład:`0`
 
 <a name="float"></a>
 
 ### <a name="float"></a>float
 
 Konwertuj wersję ciągu dla liczby zmiennoprzecinkowej na rzeczywistą liczbę zmiennoprzecinkową.
-Tej funkcji można użyć tylko w przypadku przekazywania parametrów niestandardowych do aplikacji, na przykład aplikacji logiki lub przepływu.
+Tej funkcji można używać tylko podczas przekazywania parametrów niestandardowych do aplikacji, na przykład aplikacji logiki lub przepływu.
 
 ```
 float('<value>')
@@ -1893,29 +1893,29 @@ float('<value>')
 
 | Parametr | Wymagany | Typ | Opis |
 | --------- | -------- | ---- | ----------- |
-| <*wartość*> | Yes | Ciąg | Ciąg, który ma prawidłową liczbę zmiennoprzecinkową do przekonwertowania. |
+| <*Wartość*> | Tak | Ciąg | Ciąg, który ma prawidłową liczbę zmiennoprzecinkową do konwersji |
 |||||
 
 | Wartość zwracana | Typ | Opis |
 | ------------ | ---- | ----------- |
-| <*wartość zmiennoprzecinkowa*> | Float | Liczba zmiennoprzecinkowa dla podanego ciągu. |
+| <*wartość float*> | Liczba zmiennoprzecinkowa | Numer zmiennoprzecinkowy dla określonego ciągu |
 ||||
 
 *Przykład*
 
-W tym przykładzie tworzona jest wersja ciągu dla tej liczby zmiennoprzecinkowej:
+W tym przykładzie tworzy wersję ciągu dla tej liczby zmiennoprzecinkowej:
 
 ```
 float('10.333')
 ```
 
-I zwraca ten wynik: `10.333`
+I zwraca ten wynik:`10.333`
 
 <a name="formatDateTime"></a>
 
-### <a name="formatdatetime"></a>formatDateTime
+### <a name="formatdatetime"></a>Formatdatetime
 
-Zwróć sygnaturę czasową w określonym formacie.
+Zwraca sygnaturę czasową w określonym formacie.
 
 ```
 formatDateTime('<timestamp>', '<format>'?)
@@ -1923,30 +1923,30 @@ formatDateTime('<timestamp>', '<format>'?)
 
 | Parametr | Wymagany | Typ | Opis |
 | --------- | -------- | ---- | ----------- |
-| <*sygnatura czasowa*> | Yes | Ciąg | Ciąg zawierający sygnaturę czasową. |
-| <*format*> | Nie | Ciąg | [Pojedynczy specyfikator formatu](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) lub [wzorzec formatowania niestandardowego](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Domyślny format sygnatury czasowej to ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (RRRR-MM-DDTgg: mm: SS: fffffffK), który jest zgodny z [normą ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) i zachowuje informacje o strefie czasowej. |
+| <*Sygnatury czasowej*> | Tak | Ciąg | Ciąg zawierający sygnaturę czasowa |
+| <*Formacie*> | Nie | Ciąg | Specyfikator [pojedynczego formatu](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) lub [wzorzec formatu niestandardowego](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Domyślnym formatem sygnatury czasowej jest ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-MM-ddTHH:mm:ss:fffffffK), który jest zgodny z [iso 8601](https://en.wikipedia.org/wiki/ISO_8601) i zachowuje informacje o strefie czasowej. |
 |||||
 
 | Wartość zwracana | Typ | Opis |
 | ------------ | ---- | ----------- |
-| <ponownie *sformatowana sygnatura czasowa*> | Ciąg | Zaktualizowana sygnatura czasowa w określonym formacie |
+| <*sygnatura czasowa sformatowana w formatach*> | Ciąg | Zaktualizowany sygnatura czasowa w określonym formacie |
 ||||
 
 *Przykład*
 
-Ten przykład konwertuje sygnaturę czasową do określonego formatu:
+W tym przykładzie sygnatura czasowa konwertuje do określonego formatu:
 
 ```
 formatDateTime('03/15/2018 12:00:00', 'yyyy-MM-ddTHH:mm:ss')
 ```
 
-I zwraca ten wynik: `"2018-03-15T12:00:00"`
+I zwraca ten wynik:`"2018-03-15T12:00:00"`
 
 <a name="formDataMultiValues"></a>
 
-### <a name="formdatamultivalues"></a>formDataMultiValues
+### <a name="formdatamultivalues"></a>wartości formularzaDataMultiValues
 
-Zwraca tablicę z wartościami, które pasują do nazwy klucza w danych wyjściowych *formularza* akcji lub *formularza* .
+Zwraca tablicę z wartościami, które pasują do nazwy klucza w *danych formularza* akcji lub danych *wyjściowych zakodowanych w formularzu.*
 
 ```
 formDataMultiValues('<actionName>', '<key>')
@@ -1954,31 +1954,31 @@ formDataMultiValues('<actionName>', '<key>')
 
 | Parametr | Wymagany | Typ | Opis |
 | --------- | -------- | ---- | ----------- |
-| <*actionname*> | Yes | Ciąg | Akcja, której dane wyjściowe mają żądaną wartość klucza |
-| > *klucza* < | Yes | Ciąg | Nazwa klucza, którego wartość chcesz wykonać. |
+| <*nazwa działania*> | Tak | Ciąg | Akcja, której dane wyjściowe ma wartość klucza, którą chcesz |
+| <*Klucz*> | Tak | Ciąg | Nazwa klucza, którego wartość ma być |
 |||||
 
 | Wartość zwracana | Typ | Opis |
 | ------------ | ---- | ----------- |
-| [<*Array-with-Key-values*>] | Tablica | Tablica ze wszystkimi wartościami, które pasują do określonego klucza |
+| [<> *tablica z wartościami klucza]* | Tablica | Tablica ze wszystkimi wartościami zgodnymi z określonym kluczem |
 ||||
 
 *Przykład*
 
-W tym przykładzie tworzona jest tablica z wartości klucza "subject" w danych wyjściowych formularza z danymi lub formularza:
+W tym przykładzie tworzy tablicę z wartości klucza "Podmiot" w określonym danych formularza lub danych zakodowanych w formularzu:
 
 ```
 formDataMultiValues('Send_an_email', 'Subject')
 ```
 
-I zwraca tekst podmiotu w tablicy, na przykład: `["Hello world"]`
+I zwraca tekst tematu w tablicy, na przykład:`["Hello world"]`
 
 <a name="formDataValue"></a>
 
-### <a name="formdatavalue"></a>formDataValue
+### <a name="formdatavalue"></a>wartość danych formularza
 
-Zwróć pojedynczą wartość, która pasuje do nazwy klucza w danych wyjściowych *formularza* akcji lub *formularza* .
-Jeśli funkcja odnajdzie więcej niż jedno dopasowanie, funkcja zgłasza błąd.
+Zwraca pojedynczą wartość, która pasuje do nazwy klucza w *danych formularza akcji* lub danych *wyjściowych zakodowanych w formularzu.*
+Jeśli funkcja znajdzie więcej niż jedno dopasowanie, funkcja zgłasza błąd.
 
 ```
 formDataValue('<actionName>', '<key>')
@@ -1986,30 +1986,30 @@ formDataValue('<actionName>', '<key>')
 
 | Parametr | Wymagany | Typ | Opis |
 | --------- | -------- | ---- | ----------- |
-| <*actionname*> | Yes | Ciąg | Akcja, której dane wyjściowe mają żądaną wartość klucza |
-| > *klucza* < | Yes | Ciąg | Nazwa klucza, którego wartość chcesz wykonać. |
+| <*nazwa działania*> | Tak | Ciąg | Akcja, której dane wyjściowe ma wartość klucza, którą chcesz |
+| <*Klucz*> | Tak | Ciąg | Nazwa klucza, którego wartość ma być |
 |||||
 
 | Wartość zwracana | Typ | Opis |
 | ------------ | ---- | ----------- |
-| <*klucz-wartość*> | Ciąg | Wartość w określonym kluczu  |
+| <*wartość klucza*> | Ciąg | Wartość w określonym kluczu  |
 ||||
 
 *Przykład*
 
-W tym przykładzie tworzony jest ciąg z wartości klucza "subject" w danych wyjściowych formularza określonej przez daną akcję lub formularza:
+W tym przykładzie tworzy ciąg z wartości klucza "Podmiot" w określonym danych formularza lub danych zakodowanych w formularzu:
 
 ```
 formDataValue('Send_an_email', 'Subject')
 ```
 
-I zwraca tekst podmiotu jako ciąg, na przykład: `"Hello world"`
+I zwraca tekst tematu jako ciąg, na przykład:`"Hello world"`
 
 <a name="formatNumber"></a>
 
-### <a name="formatnumber"></a>formatNumber
+### <a name="formatnumber"></a>Formatnumber
 
-Zwróć liczbę jako ciąg, który jest oparty na określonym formacie.
+Zwraca liczbę jako ciąg, który jest oparty na określonym formacie.
 
 ```text
 formatNumber(<number>, <format>, <locale>?)
@@ -2017,27 +2017,27 @@ formatNumber(<number>, <format>, <locale>?)
 
 | Parametr | Wymagany | Typ | Opis |
 | --------- | -------- | ---- | ----------- |
-| *numer* <> | Yes | Liczba całkowita lub podwójna | Wartość, którą chcesz sformatować. |
-| <*format*> | Yes | Ciąg | Ciąg formatu złożonego, który określa format, który ma być używany. W przypadku obsługiwanych ciągów formatu liczbowego zobacz [ciągi standardowego formatu liczb](https://docs.microsoft.com/dotnet/standard/base-types/standard-numeric-format-strings), które są obsługiwane przez `number.ToString(<format>, <locale>)`. |
-| <*Ustawienia regionalne*> | Nie | Ciąg | Ustawienia regionalne, które mają być obsługiwane przez `number.ToString(<format>, <locale>)`. Jeśli nie zostanie określony, wartość domyślna to `en-us`. |
+| <*Numer*> | Tak | Całkowita lub podwójna | Wartość, którą chcesz sformatować. |
+| <*Formacie*> | Tak | Ciąg | Ciąg formatu złożonego określający format, którego chcesz użyć. Dla obsługiwanych ciągów formatu numerycznego, zobacz [Standardowe ciągi formatu numerycznego](https://docs.microsoft.com/dotnet/standard/base-types/standard-numeric-format-strings), które są obsługiwane przez `number.ToString(<format>, <locale>)`. |
+| <*Ustawień regionalnych*> | Nie | Ciąg | Ustawienia regionalne, które mają `number.ToString(<format>, <locale>)`być używane jako obsługiwane przez program . Jeśli nie zostanie określona, wartością domyślną jest `en-us`. |
 |||||
 
 | Wartość zwracana | Typ | Opis |
 | ------------ | ---- | ----------- |
-| <*sformatowana liczba*> | Ciąg | Określona liczba jako ciąg w określonym formacie. Tę wartość zwracaną można rzutować na `int` lub `float`. |
+| <*sformatowany numer*> | Ciąg | Określona liczba jako ciąg w określonym formacie. Tę wartość zwracaną można `int` `float`oddać na wartość lub . |
 ||||
 
 *Przykład 1*
 
-Załóżmy, że chcesz sformatować numer `1234567890`. Ten przykład formatuje ten numer jako ciąg "1 234 567 890,00".
+Załóżmy, że chcesz `1234567890`sformatować liczbę . W tym przykładzie jest to numer jako ciąg "1,234,567,890.00".
 
 ```
 formatNumber(1234567890, '{0:0,0.00}', 'en-us')
 ```
 
-\* Przykład 2 "
+*Przykład 2"
 
-Załóżmy, że chcesz sformatować numer `1234567890`. Ten przykład formatuje liczbę na ciąg "1.234.567.890, 00".
+Załóżmy, że chcesz `1234567890`sformatować liczbę . W tym przykładzie sformatować liczbę do ciągu "1.234.567.890,00".
 
 ```
 formatNumber(1234567890, '{0:0,0.00}', 'is-is')
@@ -2045,7 +2045,7 @@ formatNumber(1234567890, '{0:0,0.00}', 'is-is')
 
 *Przykład 3*
 
-Załóżmy, że chcesz sformatować numer `17.35`. Ten przykład służy do formatowania liczby do ciągu "$17,35".
+Załóżmy, że chcesz `17.35`sformatować liczbę . W tym przykładzie sformatować liczbę do ciągu "$17.35".
 
 ```
 formatNumber(17.36, 'C2')
@@ -2053,7 +2053,7 @@ formatNumber(17.36, 'C2')
 
 *Przykład 4*
 
-Załóżmy, że chcesz sformatować numer `17.35`. Ten przykład formatuje liczbę do ciągu "17, 35 KR".
+Załóżmy, że chcesz `17.35`sformatować liczbę . W tym przykładzie sformatować liczbę do ciągu "17,35 kr".
 
 ```
 formatNumber(17.36, 'C2', 'is-is')
@@ -2063,7 +2063,7 @@ formatNumber(17.36, 'C2', 'is-is')
 
 ### <a name="getfuturetime"></a>getFutureTime
 
-Zwróć bieżącą sygnaturę czasową powiększoną o określoną liczbę jednostek czasu.
+Zwraca bieżący sygnatura czasowa oraz określone jednostki czasu.
 
 ```
 getFutureTime(<interval>, <timeUnit>, <format>?)
@@ -2071,43 +2071,43 @@ getFutureTime(<interval>, <timeUnit>, <format>?)
 
 | Parametr | Wymagany | Typ | Opis |
 | --------- | -------- | ---- | ----------- |
-| *interwał* <> | Yes | Liczba całkowita | Liczba określonych jednostek czasu do dodania |
-| <*timeUnit*> | Yes | Ciąg | Jednostka czasu do użycia z *interwałem*: "sekunda", "minuta", "godzina", "dzień", "tydzień", "Month", "Year" |
-| <*format*> | Nie | Ciąg | [Pojedynczy specyfikator formatu](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) lub [wzorzec formatowania niestandardowego](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Domyślny format sygnatury czasowej to ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (RRRR-MM-DDTgg: mm: SS: fffffffK), który jest zgodny z [normą ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) i zachowuje informacje o strefie czasowej. |
+| <*Interwał*> | Tak | Liczba całkowita | Liczba określonych jednostek czasu do dodania |
+| <*jednostka czasowa*> | Tak | Ciąg | Jednostka czasu do użycia z *interwałem:*"Drugi", "Minuta", "Godzina", "Dzień", "Tydzień", "Miesiąc", "Rok" |
+| <*Formacie*> | Nie | Ciąg | Specyfikator [pojedynczego formatu](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) lub [wzorzec formatu niestandardowego](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Domyślnym formatem sygnatury czasowej jest ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-MM-ddTHH:mm:ss:fffffffK), który jest zgodny z [iso 8601](https://en.wikipedia.org/wiki/ISO_8601) i zachowuje informacje o strefie czasowej. |
 |||||
 
 | Wartość zwracana | Typ | Opis |
 | ------------ | ---- | ----------- |
-| <> *sygnatura czasowa aktualizacji* | Ciąg | Bieżąca sygnatura czasowa powiększona o określoną liczbę jednostek czasu |
+| <*zaktualizowany sygnatura czasowa*> | Ciąg | Bieżący sygnatura czasowa plus określona liczba jednostek czasu |
 ||||
 
 *Przykład 1*
 
-Załóżmy, że bieżąca sygnatura czasowa to "2018 r-03-01T00:00:00.0000000 Z".
-Ten przykład dodaje pięć dni do tej sygnatury czasowej:
+Załóżmy, że bieżący sygnatura czasowa to "2018-03-01T00:00:00.0000000Z".
+W tym przykładzie dodaje pięć dni do tego sygnatury czasowe:
 
 ```
 getFutureTime(5, 'Day')
 ```
 
-I zwraca ten wynik: `"2018-03-06T00:00:00.0000000Z"`
+I zwraca ten wynik:`"2018-03-06T00:00:00.0000000Z"`
 
 *Przykład 2*
 
-Załóżmy, że bieżąca sygnatura czasowa to "2018 r-03-01T00:00:00.0000000 Z".
-Ten przykład dodaje pięć dni i konwertuje wynik na format "D":
+Załóżmy, że bieżący sygnatura czasowa to "2018-03-01T00:00:00.0000000Z".
+W tym przykładzie dodaje pięć dni i konwertuje wynik do formatu "D":
 
 ```
 getFutureTime(5, 'Day', 'D')
 ```
 
-I zwraca ten wynik: `"Tuesday, March 6, 2018"`
+I zwraca ten wynik:`"Tuesday, March 6, 2018"`
 
 <a name="getPastTime"></a>
 
 ### <a name="getpasttime"></a>getPastTime
 
-Zwróć bieżącą sygnaturę czasową minus określoną liczbę jednostek czasu.
+Zwraca bieżący sygnatura czasowa minus określone jednostki czasu.
 
 ```
 getPastTime(<interval>, <timeUnit>, <format>?)
@@ -2115,44 +2115,44 @@ getPastTime(<interval>, <timeUnit>, <format>?)
 
 | Parametr | Wymagany | Typ | Opis |
 | --------- | -------- | ---- | ----------- |
-| *interwał* <> | Yes | Liczba całkowita | Liczba określonych jednostek czasu do odjęcia |
-| <*timeUnit*> | Yes | Ciąg | Jednostka czasu do użycia z *interwałem*: "sekunda", "minuta", "godzina", "dzień", "tydzień", "Month", "Year" |
-| <*format*> | Nie | Ciąg | [Pojedynczy specyfikator formatu](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) lub [wzorzec formatowania niestandardowego](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Domyślny format sygnatury czasowej to ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (RRRR-MM-DDTgg: mm: SS: fffffffK), który jest zgodny z [normą ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) i zachowuje informacje o strefie czasowej. |
+| <*Interwał*> | Tak | Liczba całkowita | Liczba określonych jednostek czasu do odjęciu |
+| <*jednostka czasowa*> | Tak | Ciąg | Jednostka czasu do użycia z *interwałem:*"Drugi", "Minuta", "Godzina", "Dzień", "Tydzień", "Miesiąc", "Rok" |
+| <*Formacie*> | Nie | Ciąg | Specyfikator [pojedynczego formatu](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) lub [wzorzec formatu niestandardowego](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Domyślnym formatem sygnatury czasowej jest ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-MM-ddTHH:mm:ss:fffffffK), który jest zgodny z [iso 8601](https://en.wikipedia.org/wiki/ISO_8601) i zachowuje informacje o strefie czasowej. |
 |||||
 
 | Wartość zwracana | Typ | Opis |
 | ------------ | ---- | ----------- |
-| <> *sygnatura czasowa aktualizacji* | Ciąg | Bieżąca sygnatura czasowa pomniejszona o określoną liczbę jednostek czasu |
+| <*zaktualizowany sygnatura czasowa*> | Ciąg | Bieżący sygnatura czasowa pomniejszona o określoną liczbę jednostek czasu |
 ||||
 
 *Przykład 1*
 
-Załóżmy, że bieżąca sygnatura czasowa to "2018 r-02-01T00:00:00.0000000 Z".
-Ten przykład odejmuje pięć dni od tej sygnatury czasowej:
+Załóżmy, że bieżący sygnatura czasowa to "2018-02-01T00:00:00.0000000Z".
+W tym przykładzie odejmuje pięć dni od tego sygnatury czasowych:
 
 ```
 getPastTime(5, 'Day')
 ```
 
-I zwraca ten wynik: `"2018-01-27T00:00:00.0000000Z"`
+I zwraca ten wynik:`"2018-01-27T00:00:00.0000000Z"`
 
 *Przykład 2*
 
-Załóżmy, że bieżąca sygnatura czasowa to "2018 r-02-01T00:00:00.0000000 Z".
-Ten przykład odejmuje pięć dni i konwertuje wynik na format "D":
+Załóżmy, że bieżący sygnatura czasowa to "2018-02-01T00:00:00.0000000Z".
+W tym przykładzie odejmuje pięć dni i konwertuje wynik na format "D":
 
 ```
 getPastTime(5, 'Day', 'D')
 ```
 
-I zwraca ten wynik: `"Saturday, January 27, 2018"`
+I zwraca ten wynik:`"Saturday, January 27, 2018"`
 
 <a name="greater"></a>
 
-### <a name="greater"></a>mniejszą
+### <a name="greater"></a>greater
 
-Sprawdź, czy pierwsza wartość jest większa od drugiej wartości.
-Zwraca wartość true, jeśli pierwsza wartość jest większa lub zwraca wartość false, jeśli jest mniejsza.
+Sprawdź, czy pierwsza wartość jest większa niż druga wartość.
+Zwraca wartość true, gdy pierwsza wartość jest większa, lub zwraca wartość false, gdy mniej.
 
 ```
 greater(<value>, <compareTo>)
@@ -2161,35 +2161,35 @@ greater('<value>', '<compareTo>')
 
 | Parametr | Wymagany | Typ | Opis |
 | --------- | -------- | ---- | ----------- |
-| <*wartość*> | Yes | Liczba całkowita, zmiennoprzecinkowa lub ciąg | Pierwsza wartość do sprawdzenia, czy większa niż druga wartość |
-| <*compareTo*> | Yes | Odpowiednio liczby całkowite, zmiennoprzecinkowe lub ciąg | Wartość porównania |
+| <*Wartość*> | Tak | Całkowita, Float lub Ciąg | Pierwsza wartość, aby sprawdzić, czy większa niż druga wartość |
+| <*Compareto*> | Tak | Odpowiednio całkowita, float lub string | Wartość porównania |
 |||||
 
 | Wartość zwracana | Typ | Opis |
 | ------------ | ---- | ----------- |
-| true lub false | Wartość logiczna | Zwraca wartość true, jeśli pierwsza wartość jest większa niż druga wartość. Zwraca wartość false, gdy pierwsza wartość jest równa lub mniejsza od drugiej wartości. |
+| true lub false | Wartość logiczna | Zwraca wartość true, gdy pierwsza wartość jest większa niż druga wartość. Zwraca wartość false, gdy pierwsza wartość jest równa lub mniejsza niż druga wartość. |
 ||||
 
 *Przykład*
 
-Te przykłady sprawdzają, czy pierwsza wartość jest większa niż druga wartość:
+Te przykłady sprawdzić, czy pierwsza wartość jest większa niż druga wartość:
 
 ```
 greater(10, 5)
 greater('apple', 'banana')
 ```
 
-I zwróć następujące wyniki:
+I zwrócić te wyniki:
 
-* Pierwszy przykład: `true`
-* Drugi przykład: `false`
+* Pierwszy przykład:`true`
+* Drugi przykład:`false`
 
 <a name="greaterOrEquals"></a>
 
 ### <a name="greaterorequals"></a>greaterOrEquals
 
 Sprawdź, czy pierwsza wartość jest większa lub równa drugiej wartości.
-Zwraca wartość true, jeśli pierwsza wartość jest większa lub równa lub zwraca wartość false, gdy pierwsza wartość jest mniejsza.
+Zwraca wartość true, gdy pierwsza wartość jest większa lub równa, lub zwraca wartość false, gdy pierwsza wartość jest mniejsza.
 
 ```
 greaterOrEquals(<value>, <compareTo>)
@@ -2198,40 +2198,40 @@ greaterOrEquals('<value>', '<compareTo>')
 
 | Parametr | Wymagany | Typ | Opis |
 | --------- | -------- | ---- | ----------- |
-| <*wartość*> | Yes | Liczba całkowita, zmiennoprzecinkowa lub ciąg | Pierwsza wartość do sprawdzenia, czy większa lub równa drugiej wartości |
-| <*compareTo*> | Yes | Odpowiednio liczby całkowite, zmiennoprzecinkowe lub ciąg | Wartość porównania |
+| <*Wartość*> | Tak | Całkowita, Float lub Ciąg | Pierwsza wartość, aby sprawdzić, czy większa lub równa drugiej wartości |
+| <*Compareto*> | Tak | Odpowiednio całkowita, float lub string | Wartość porównania |
 |||||
 
 | Wartość zwracana | Typ | Opis |
 | ------------ | ---- | ----------- |
-| true lub false | Wartość logiczna | Zwraca wartość true, jeśli pierwsza wartość jest większa lub równa drugiej wartości. Zwraca wartość false, jeśli pierwsza wartość jest mniejsza od drugiej wartości. |
+| true lub false | Wartość logiczna | Zwraca wartość true, gdy pierwsza wartość jest większa lub równa drugiej wartości. Zwraca wartość false, gdy pierwsza wartość jest mniejsza niż druga wartość. |
 ||||
 
 *Przykład*
 
-Te przykłady sprawdzają, czy pierwsza wartość jest większa lub równa drugiej wartości:
+Te przykłady sprawdzić, czy pierwsza wartość jest większa lub równa niż druga wartość:
 
 ```
 greaterOrEquals(5, 5)
 greaterOrEquals('apple', 'banana')
 ```
 
-I zwróć następujące wyniki:
+I zwrócić te wyniki:
 
-* Pierwszy przykład: `true`
-* Drugi przykład: `false`
+* Pierwszy przykład:`true`
+* Drugi przykład:`false`
 
 <a name="guid"></a>
 
-### <a name="guid"></a>guid
+### <a name="guid"></a>Identyfikator GUID
 
-Generuj unikatowy identyfikator globalny (GUID) jako ciąg, na przykład "c2ecc88d-88c8-4096-912c-d6f2e2b138ce":
+Generowanie unikatowego identyfikatora globalnego (GUID) jako ciągu, na przykład "c2ecc88d-88c8-4096-912c-d6f2e2b138ce":
 
 ```
 guid()
 ```
 
-Ponadto można określić inny format dla identyfikatora GUID innego niż format domyślny, "D", który jest 32 cyfr oddzielonych łącznikiem.
+Ponadto można określić inny format identyfikatora GUID innego niż domyślny format "D", który jest 32 cyframi oddzielonymi myślnikami.
 
 ```
 guid('<format>')
@@ -2239,30 +2239,30 @@ guid('<format>')
 
 | Parametr | Wymagany | Typ | Opis |
 | --------- | -------- | ---- | ----------- |
-| <*format*> | Nie | Ciąg | Pojedynczy [specyfikator formatu](https://msdn.microsoft.com/library/97af8hh4) dla ZWRÓCONEGO identyfikatora GUID. Domyślnie formatem jest "D", ale można użyć "N", "D", "B", "P" lub "X". |
+| <*Formacie*> | Nie | Ciąg | Specyfikator pojedynczego [formatu](https://msdn.microsoft.com/library/97af8hh4) zwracanego identyfikatora GUID. Domyślnie format to "D", ale można użyć "N", "D", "B", "P" lub "X". |
 |||||
 
 | Wartość zwracana | Typ | Opis |
 | ------------ | ---- | ----------- |
-| <*wartość identyfikatora GUID*> | Ciąg | Losowo wygenerowany identyfikator GUID |
+| <*Wartość GUID*> | Ciąg | Losowo generowany identyfikator GUID |
 ||||
 
 *Przykład*
 
-Ten przykład generuje ten sam identyfikator GUID, ale jako 32 cyfr, rozdzielone łącznikami i ujęte w nawiasy:
+W tym przykładzie generuje ten sam identyfikator GUID, ale jako 32 cyfry, oddzielone łącznikami i ujęte w nawiasy:
 
 ```
 guid('P')
 ```
 
-I zwraca ten wynik: `"(c2ecc88d-88c8-4096-912c-d6f2e2b138ce)"`
+I zwraca ten wynik:`"(c2ecc88d-88c8-4096-912c-d6f2e2b138ce)"`
 
 <a name="if"></a>
 
 ### <a name="if"></a>if
 
-Sprawdź, czy wyrażenie ma wartość true lub false.
-W oparciu o wynik Zwraca określoną wartość.
+Sprawdź, czy wyrażenie jest prawdziwe czy fałszywe.
+Na podstawie wyniku zwraca określoną wartość.
 
 ```
 if(<expression>, <valueIfTrue>, <valueIfFalse>)
@@ -2270,20 +2270,20 @@ if(<expression>, <valueIfTrue>, <valueIfFalse>)
 
 | Parametr | Wymagany | Typ | Opis |
 | --------- | -------- | ---- | ----------- |
-| *wyrażenie* <> | Yes | Wartość logiczna | Wyrażenie do sprawdzenia |
-| <*valueIfTrue*> | Yes | Dowolne | Wartość, która ma zostać zwrócona, gdy wyrażenie ma wartość true. |
-| <*valueIfFalse*> | Yes | Dowolne | Wartość, która ma zostać zwrócona, gdy wyrażenie ma wartość false. |
+| <*Wyrażenie*> | Tak | Wartość logiczna | Wyrażenie do sprawdzenia |
+| <*wartośćIfTrue*> | Tak | Dowolne | Wartość zwracana, gdy wyrażenie jest prawdziwe |
+| <*wartośćIfFalse*> | Tak | Dowolne | Wartość zwracana, gdy wyrażenie jest fałszywe |
 |||||
 
 | Wartość zwracana | Typ | Opis |
 | ------------ | ---- | ----------- |
-| <*określone — zwraca wartość*> | Dowolne | Określona wartość, która zwraca w zależności od tego, czy wyrażenie ma wartość Prawda czy fałsz. |
+| <*określona wartość zwrotu*> | Dowolne | Określona wartość zwracana na podstawie tego, czy wyrażenie jest prawdziwe, czy fałszywe |
 ||||
 
 *Przykład*
 
-Ten przykład zwraca `"yes"`, ponieważ określone wyrażenie zwraca wartość true.
-W przeciwnym razie przykład zwraca `"no"`:
+W tym `"yes"` przykładzie zwraca, ponieważ określone wyrażenie zwraca true.
+W przeciwnym razie `"no"`w przykładzie zwraca:
 
 ```
 if(equals(1, 1), 'yes', 'no')
@@ -2291,9 +2291,9 @@ if(equals(1, 1), 'yes', 'no')
 
 <a name="indexof"></a>
 
-### <a name="indexof"></a>indexOf
+### <a name="indexof"></a>Indexof
 
-Zwraca pozycję początkową lub wartość indeksu podciągu.
+Zwraca pozycję początkową lub wartość indeksu dla podciągów.
 W tej funkcji nie jest rozróżniana wielkość liter, a indeksy zaczynają się od liczby 0.
 
 ```
@@ -2302,30 +2302,30 @@ indexOf('<text>', '<searchText>')
 
 | Parametr | Wymagany | Typ | Opis |
 | --------- | -------- | ---- | ----------- |
-| <> *tekstu* | Yes | Ciąg | Ciąg, który zawiera podciąg do znalezienia |
-| <*tekstprzeszukiwany*> | Yes | Ciąg | Podciąg do znalezienia |
+| <*Tekst*> | Tak | Ciąg | Ciąg, który ma podciąg do znalezienia |
+| <*tekst wyszukiwania*> | Tak | Ciąg | Podciąg, aby znaleźć |
 |||||
 
 | Wartość zwracana | Typ | Opis |
 | ------------ | ---- | ----------- |
-| <*wartość indeksu*>| Liczba całkowita | Pozycja początkowa lub wartość indeksu dla podanego podciągu. <p>Jeśli ciąg nie zostanie znaleziony, Zwróć liczbę-1. |
+| <*wartość indeksu*>| Liczba całkowita | Pozycja początkowa lub wartość indeksu dla określonego podciągu. <p>Jeśli ciąg nie zostanie znaleziony, zwróć liczbę -1. |
 ||||
 
 *Przykład*
 
-W tym przykładzie znaleziono początkową wartość indeksu dla podciągu "World" w ciągu "Hello World":
+W tym przykładzie znajduje wartość indeksu początkowego dla podciągu "świat" w ciągu "hello world":
 
 ```
 indexOf('hello world', 'world')
 ```
 
-I zwraca ten wynik: `6`
+I zwraca ten wynik:`6`
 
 <a name="int"></a>
 
 ### <a name="int"></a>int
 
-Zwróć wersję całkowitą dla ciągu.
+Zwraca wersję całkowitą dla ciągu.
 
 ```
 int('<value>')
@@ -2333,30 +2333,30 @@ int('<value>')
 
 | Parametr | Wymagany | Typ | Opis |
 | --------- | -------- | ---- | ----------- |
-| <*wartość*> | Yes | Ciąg | Ciąg do przekonwertowania |
+| <*Wartość*> | Tak | Ciąg | Ciąg do konwersji |
 |||||
 
 | Wartość zwracana | Typ | Opis |
 | ------------ | ---- | ----------- |
-| < *— Liczba całkowita — wynik*> | Liczba całkowita | Wersja całkowita dla podanego ciągu |
+| <*wynik liczby całkowitej*> | Liczba całkowita | Wersja całkowita dla określonego ciągu |
 ||||
 
 *Przykład*
 
-Ten przykład tworzy wersję całkowitą dla ciągu "10":
+W tym przykładzie tworzy wersję całkowitą dla ciągu "10":
 
 ```
 int('10')
 ```
 
-I zwraca ten wynik: `10`
+I zwraca ten wynik:`10`
 
 <a name="item"></a>
 
-### <a name="item"></a>elementów
+### <a name="item"></a>element
 
-W przypadku użycia wewnątrz powtarzającej się akcji nad tablicą zwraca bieżący element w tablicy podczas bieżącej iteracji akcji.
-Możesz również pobrać wartości z właściwości tego elementu.
+Gdy jest używana wewnątrz akcji powtarzania zaoferując tablicy, zwraca bieżący element w tablicy podczas bieżącej iteracji akcji.
+Można również uzyskać wartości z właściwości tego elementu.
 
 ```
 item()
@@ -2364,12 +2364,12 @@ item()
 
 | Wartość zwracana | Typ | Opis |
 | ------------ | ---- | ----------- |
-| <*element bieżący-array*> | Dowolne | Bieżący element w tablicy dla bieżącej iteracji akcji |
+| <*bieżący element tablicy*> | Dowolne | Bieżący element w tablicy bieżącej iteracji akcji |
 ||||
 
 *Przykład*
 
-Ten przykład pobiera `body` elementu z bieżącego komunikatu dla akcji "Send_an_email" wewnątrz bieżącej iteracji pętli for-each:
+W tym `body` przykładzie pobiera element z bieżącej wiadomości dla akcji "Send_an_email" wewnątrz bieżącej iteracji pętli dla każdego:
 
 ```
 item().body
@@ -2377,10 +2377,10 @@ item().body
 
 <a name="items"></a>
 
-### <a name="items"></a>items
+### <a name="items"></a>Elementy
 
-Zwraca bieżący element z każdego cyklu w pętli for-each.
-Użyj tej funkcji wewnątrz pętli for-each.
+Zwraca bieżący element z każdego cyklu w pętli dla każdego.
+Użyj tej funkcji wewnątrz pętli dla każdego.
 
 ```
 items('<loopName>')
@@ -2388,17 +2388,17 @@ items('<loopName>')
 
 | Parametr | Wymagany | Typ | Opis |
 | --------- | -------- | ---- | ----------- |
-| <*loopname*> | Yes | Ciąg | Nazwa pętli for-each |
+| <*nazwa pętli*> | Tak | Ciąg | Nazwa dla każdej pętli |
 |||||
 
 | Wartość zwracana | Typ | Opis |
 | ------------ | ---- | ----------- |
-| *element* <> | Dowolne | Element z bieżącego cyklu w określonej pętli for-each |
+| <*Element*> | Dowolne | Element z bieżącego cyklu w określonej pętli dla każdego |
 ||||
 
 *Przykład*
 
-Ten przykład pobiera bieżący element z określonej pętli for-each:
+W tym przykładzie pobiera bieżący element z określonej dla każdej pętli:
 
 ```
 items('myForEachLoopName')
@@ -2406,9 +2406,9 @@ items('myForEachLoopName')
 
 <a name="iterationIndexes"></a>
 
-### <a name="iterationindexes"></a>iterationIndexes
+### <a name="iterationindexes"></a>iteracjaIndeksy
 
-Zwraca wartość indeksu bieżącej iteracji w pętli until. Ta funkcja może być używana wewnątrz zagnieżdżonych pętli do. 
+Zwraca wartość indeksu dla bieżącej iteracji wewnątrz Until pętli. Tej funkcji można użyć wewnątrz zagnieżdżonych pętli Until. 
 
 ```
 iterationIndexes('<loopName>')
@@ -2416,17 +2416,17 @@ iterationIndexes('<loopName>')
 
 | Parametr | Wymagany | Typ | Opis | 
 | --------- | -------- | ---- | ----------- | 
-| <*loopname*> | Yes | Ciąg | Nazwa pętli until | 
+| <*nazwa pętli*> | Tak | Ciąg | Nazwa pętli Until | 
 ||||| 
 
 | Wartość zwracana | Typ | Opis | 
 | ------------ | ---- | ----------- | 
-| > *indeksu* < | Liczba całkowita | Wartość indeksu bieżącej iteracji w pętli określonej do momentu | 
+| <*Indeks*> | Liczba całkowita | Wartość indeksu bieżącej iteracji wewnątrz określonej pętli Until | 
 |||| 
 
 *Przykład* 
 
-Ten przykład tworzy zmienną licznika i zwiększa tę zmienną o jeden podczas każdej iteracji w pętli until do momentu osiągnięcia pięciu wartości licznika. W przykładzie tworzony jest również zmienna, która śledzi bieżący indeks dla każdej iteracji. W pętli until podczas każdej iteracji, przykład zwiększa licznik, a następnie przypisuje wartość licznika do bieżącej wartości indeksu, a następnie zwiększa licznik. W dowolnym momencie można określić bieżącą liczbę iteracji, pobierając bieżącą wartość indeksu.
+W tym przykładzie tworzy zmienną licznika i zwiększa, że zmienna o jeden podczas każdej iteracji w Until pętli, aż wartość licznika osiągnie pięć. W przykładzie tworzy również zmienną, która śledzi bieżący indeks dla każdej iteracji. W Until pętli podczas każdej iteracji przykładowy zwiększa licznik, a następnie przypisuje wartość licznika do bieżącej wartości indeksu, a następnie zwiększa licznik. W dowolnym momencie można określić bieżący numer iteracji, pobierając bieżącą wartość indeksu.
 
 ```
 {
@@ -2496,9 +2496,9 @@ Ten przykład tworzy zmienną licznika i zwiększa tę zmienną o jeden podczas 
 
 <a name="json"></a>
 
-### <a name="json"></a>kodu
+### <a name="json"></a>json
 
-Zwróć wartość typu JavaScript Object Notation (JSON) lub obiekt dla ciągu lub XML.
+Zwraca wartość typu ISON (JavaScript Object Notation) lub obiekt dla ciągu lub pliku XML.
 
 ```
 json('<value>')
@@ -2506,27 +2506,27 @@ json('<value>')
 
 | Parametr | Wymagany | Typ | Opis |
 | --------- | -------- | ---- | ----------- |
-| <*wartość*> | Yes | Ciąg lub XML | Ciąg lub XML do przekonwertowania |
+| <*Wartość*> | Tak | Ciąg lub kod XML | Ciąg lub XML do konwersji |
 |||||
 
 | Wartość zwracana | Typ | Opis |
 | ------------ | ---- | ----------- |
-| <> *wyniku JSON* | Natywny typ lub obiekt JSON | Wartość lub obiekt natywnego typu JSON dla określonego ciągu lub XML. Jeśli ciąg ma wartość null, funkcja zwraca pusty obiekt. |
+| <*Wynik JSON*> | Typ macierzysty JSON lub obiekt macierzysty | Wartość typu macierzystego JSON lub obiekt dla określonego ciągu lub XML. Jeśli ciąg ma wartość null, funkcja zwraca pusty obiekt. |
 ||||
 
 *Przykład 1*
 
-Ten przykład konwertuje ten ciąg na wartość JSON:
+W tym przykładzie konwertuje ten ciąg na wartość JSON:
 
 ```
 json('[1, 2, 3]')
 ```
 
-I zwraca ten wynik: `[1, 2, 3]`
+I zwraca ten wynik:`[1, 2, 3]`
 
 *Przykład 2*
 
-Ten przykład konwertuje ten ciąg na format JSON:
+W tym przykładzie konwertuje ten ciąg na JSON:
 
 ```
 json('{"fullName": "Sophia Owen"}')
@@ -2542,7 +2542,7 @@ I zwraca ten wynik:
 
 *Przykład 3*
 
-Ten przykład konwertuje ten kod XML na format JSON:
+W tym przykładzie konwertuje ten kod XML na JSON:
 
 ```
 json(xml('<?xml version="1.0"?> <root> <person id='1'> <name>Sophia Owen</name> <occupation>Engineer</occupation> </person> </root>'))
@@ -2565,11 +2565,11 @@ I zwraca ten wynik:
 
 <a name="intersection"></a>
 
-### <a name="intersection"></a>część wspólną
+### <a name="intersection"></a>Przecięcia
 
-Zwróć kolekcję, która ma *tylko* wspólne elementy w określonej kolekcji.
-Aby pojawił się w wyniku, element musi znajdować się we wszystkich kolekcjach przekazaniu do tej funkcji.
-Jeśli co najmniej jeden element ma taką samą nazwę, w wyniku zostanie wyświetlony ostatni element o tej nazwie.
+Zwraca kolekcję, która ma *tylko* wspólne elementy w określonych kolekcjach.
+Aby pojawić się w wyniku, element musi pojawić się we wszystkich kolekcjach przekazanych do tej funkcji.
+Jeśli jeden lub więcej elementów ma taką samą nazwę, ostatni element o tej nazwie pojawia się w wyniku.
 
 ```
 intersection([<collection1>], [<collection2>], ...)
@@ -2578,29 +2578,29 @@ intersection('<collection1>', '<collection2>', ...)
 
 | Parametr | Wymagany | Typ | Opis |
 | --------- | -------- | ---- | ----------- |
-| <*kolekcji collection1*>, <*Collection2*>,... | Yes | Tablica lub obiekt, ale nie oba | Kolekcje, z których mają być *tylko* wspólne elementy |
+| <*kolekcja1*>, *kolekcja <2*>, ... | Tak | Tablica lub obiekt, ale nie oba | Kolekcje, z których *chcesz, aby tylko* wspólne elementy |
 |||||
 
 | Wartość zwracana | Typ | Opis |
 | ------------ | ---- | ----------- |
-| <*elementów wspólnych*> | Odpowiednio tablica lub obiekt | Kolekcja, która ma tylko wspólne elementy w określonej kolekcji |
+| <*przedmioty wspólne*> | Tablica lub obiekt, odpowiednio | Kolekcja, która ma tylko wspólne elementy w określonych kolekcjach |
 ||||
 
 *Przykład*
 
-Ten przykład umożliwia znalezienie typowych elementów w następujących tablicach:
+W tym przykładzie znajduje wspólne elementy w tych tablicach:
 
 ```
 intersection(createArray(1, 2, 3), createArray(101, 2, 1, 10), createArray(6, 8, 1, 2))
 ```
 
-I zwraca tablicę zawierającą *tylko* te elementy: `[1, 2]`
+I zwraca tablicę z *tylko* tymi elementami:`[1, 2]`
 
 <a name="join"></a>
 
 ### <a name="join"></a>join
 
-Zwraca ciąg, który zawiera wszystkie elementy z tablicy i zawiera każdy znak oddzielony *ogranicznikiem*.
+Zwraca ciąg, który ma wszystkie elementy z tablicy i ma każdy znak oddzielony *ogranicznikiem*.
 
 ```
 join([<collection>], '<delimiter>')
@@ -2608,24 +2608,24 @@ join([<collection>], '<delimiter>')
 
 | Parametr | Wymagany | Typ | Opis |
 | --------- | -------- | ---- | ----------- |
-| <*zbieranie*> | Yes | Tablica | Tablica zawierająca elementy do przyłączenia. |
-| <*ogranicznik*> | Yes | Ciąg | Separator, który pojawia się między poszczególnymi znakami w ciągu wynikiem |
+| <*Kolekcji*> | Tak | Tablica | Tablica, która ma elementy do sprzężenia |
+| <*Ogranicznik*> | Tak | Ciąg | Separator, który pojawia się między każdym znakiem w wynikowym ciągu |
 |||||
 
 | Wartość zwracana | Typ | Opis |
 | ------------ | ---- | ----------- |
-| <*char1*><*ogranicznik*><*CHAR2*><*ogranicznika*>... | Ciąg | Powstały ciąg utworzony na podstawie wszystkich elementów w określonej tablicy. |
+| <*char1*><*ogranicznik*><*char2*><*>...* | Ciąg | Wynikowy ciąg utworzony ze wszystkich elementów w określonej tablicy |
 ||||
 
 *Przykład*
 
-Ten przykład tworzy ciąg ze wszystkich elementów w tej tablicy z określonym znakiem jako ogranicznikiem:
+W tym przykładzie tworzy ciąg ze wszystkich elementów w tej tablicy z określonym znakiem jako ogranicznik:
 
 ```
 join(createArray('a', 'b', 'c'), '.')
 ```
 
-I zwraca ten wynik: `"a.b.c"`
+I zwraca ten wynik:`"a.b.c"`
 
 <a name="last"></a>
 
@@ -2640,17 +2640,17 @@ last([<collection>])
 
 | Parametr | Wymagany | Typ | Opis |
 | --------- | -------- | ---- | ----------- |
-| <*zbieranie*> | Yes | Ciąg lub tablica | Kolekcja, w której ma zostać znaleziony ostatni element |
+| <*Kolekcji*> | Tak | Ciąg lub tablica | Kolekcja, w której można znaleźć ostatni element |
 |||||
 
 | Wartość zwracana | Typ | Opis |
 | ------------ | ---- | ----------- |
-| <*ostatnią kolekcją elementów*> | Odpowiednio ciąg lub tablicę | Ostatni element w kolekcji |
+| <*ostatni element kolekcji*> | Ciąg lub tablica, odpowiednio | Ostatni element w kolekcji |
 ||||
 
 *Przykład*
 
-Te przykłady znajdują ostatni element w tych kolekcjach:
+Te przykłady znaleźć ostatni element w tych kolekcjach:
 
 ```
 last('abcd')
@@ -2659,14 +2659,14 @@ last(createArray(0, 1, 2, 3))
 
 I zwraca te wyniki:
 
-* Pierwszy przykład: `"d"`
-* Drugi przykład: `3`
+* Pierwszy przykład:`"d"`
+* Drugi przykład:`3`
 
 <a name="lastindexof"></a>
 
-### <a name="lastindexof"></a>lastIndexOf
+### <a name="lastindexof"></a>Lastindexof
 
-Zwraca pozycję początkową lub wartość indeksu dla ostatniego wystąpienia podciągu.
+Zwraca pozycję początkową lub wartość indeksu dla ostatniego wystąpienia podciągów.
 W tej funkcji nie jest rozróżniana wielkość liter, a indeksy zaczynają się od liczby 0.
 
 ```
@@ -2675,28 +2675,28 @@ lastIndexOf('<text>', '<searchText>')
 
 | Parametr | Wymagany | Typ | Opis |
 | --------- | -------- | ---- | ----------- |
-| <> *tekstu* | Yes | Ciąg | Ciąg, który zawiera podciąg do znalezienia |
-| <*tekstprzeszukiwany*> | Yes | Ciąg | Podciąg do znalezienia |
+| <*Tekst*> | Tak | Ciąg | Ciąg, który ma podciąg do znalezienia |
+| <*tekst wyszukiwania*> | Tak | Ciąg | Podciąg, aby znaleźć |
 |||||
 
 | Wartość zwracana | Typ | Opis |
 | ------------ | ---- | ----------- |
-| <*wartość końcowa indeksu*> | Liczba całkowita | Pozycja początkowa lub wartość indeksu dla ostatniego wystąpienia określonego podciągu. <p>Jeśli ciąg nie zostanie znaleziony, Zwróć liczbę-1. |
+| <*końcowa wartość indeksu*> | Liczba całkowita | Pozycja początkowa lub wartość indeksu dla ostatniego wystąpienia określonego podciągu. <p>Jeśli ciąg nie zostanie znaleziony, zwróć liczbę -1. |
 ||||
 
 *Przykład*
 
-W tym przykładzie znaleziono początkową wartość indeksu dla ostatniego wystąpienia podciągu "World" w ciągu "Hello World":
+W tym przykładzie znajduje wartość indeksu początkowego dla ostatniego wystąpienia podciągu "świat" w ciągu "hello world":
 
 ```
 lastIndexOf('hello world', 'world')
 ```
 
-I zwraca ten wynik: `6`
+I zwraca ten wynik:`6`
 
 <a name="length"></a>
 
-### <a name="length"></a>{1&gt;length&lt;1}
+### <a name="length"></a>length
 
 Zwraca liczbę elementów w kolekcji.
 
@@ -2707,31 +2707,31 @@ length([<collection>])
 
 | Parametr | Wymagany | Typ | Opis |
 | --------- | -------- | ---- | ----------- |
-| <*zbieranie*> | Yes | Ciąg lub tablica | Kolekcja zawierająca elementy do zliczenia |
+| <*Kolekcji*> | Tak | Ciąg lub tablica | Kolekcja z elementami do zliczenia |
 |||||
 
 | Wartość zwracana | Typ | Opis |
 | ------------ | ---- | ----------- |
-| <*Długość lub licznik*> | Liczba całkowita | Liczba elementów w kolekcji |
+| <*długość lub liczba*> | Liczba całkowita | Liczba elementów w kolekcji |
 ||||
 
 *Przykład*
 
-Te przykłady zliczają liczbę elementów w tych kolekcjach:
+W tych przykładach zlicza się liczbę elementów w tych kolekcjach:
 
 ```
 length('abcd')
 length(createArray(0, 1, 2, 3))
 ```
 
-I zwróć ten wynik: `4`
+I zwrócić ten wynik:`4`
 
 <a name="less"></a>
 
-### <a name="less"></a>wcześniejsz
+### <a name="less"></a>less
 
-Sprawdź, czy pierwsza wartość jest mniejsza od drugiej wartości.
-Zwraca wartość true, jeśli pierwsza wartość jest mniejsza lub zwraca wartość false, gdy pierwsza wartość jest większa.
+Sprawdź, czy pierwsza wartość jest mniejsza niż druga wartość.
+Zwraca wartość true, gdy pierwsza wartość jest mniejsza lub zwraca wartość false, gdy pierwsza wartość jest większa.
 
 ```
 less(<value>, <compareTo>)
@@ -2740,35 +2740,35 @@ less('<value>', '<compareTo>')
 
 | Parametr | Wymagany | Typ | Opis |
 | --------- | -------- | ---- | ----------- |
-| <*wartość*> | Yes | Liczba całkowita, zmiennoprzecinkowa lub ciąg | Pierwsza wartość do sprawdzenia, czy mniejsza od drugiej wartości |
-| <*compareTo*> | Yes | Odpowiednio liczby całkowite, zmiennoprzecinkowe lub ciąg | Element porównania |
+| <*Wartość*> | Tak | Całkowita, Float lub Ciąg | Pierwsza wartość, aby sprawdzić, czy mniejsza niż druga wartość |
+| <*Compareto*> | Tak | Odpowiednio całkowita, float lub string | Pozycja porównawcza |
 |||||
 
 | Wartość zwracana | Typ | Opis |
 | ------------ | ---- | ----------- |
-| true lub false | Wartość logiczna | Zwraca wartość true, jeśli pierwsza wartość jest mniejsza od drugiej wartości. Zwraca wartość false, gdy pierwsza wartość jest równa lub większa od drugiej wartości. |
+| true lub false | Wartość logiczna | Zwraca wartość true, gdy pierwsza wartość jest mniejsza niż druga wartość. Zwraca wartość false, gdy pierwsza wartość jest równa lub większa niż druga wartość. |
 ||||
 
 *Przykład*
 
-Te przykłady sprawdzają, czy pierwsza wartość jest mniejsza od drugiej wartości.
+Te przykłady sprawdzić, czy pierwsza wartość jest mniejsza niż druga wartość.
 
 ```
 less(5, 10)
 less('banana', 'apple')
 ```
 
-I zwróć następujące wyniki:
+I zwrócić te wyniki:
 
-* Pierwszy przykład: `true`
-* Drugi przykład: `false`
+* Pierwszy przykład:`true`
+* Drugi przykład:`false`
 
 <a name="lessOrEquals"></a>
 
 ### <a name="lessorequals"></a>lessOrEquals
 
 Sprawdź, czy pierwsza wartość jest mniejsza lub równa drugiej wartości.
-Zwraca wartość true, jeśli pierwsza wartość jest mniejsza lub równa lub zwraca wartość false, gdy pierwsza wartość jest większa.
+Zwraca wartość true, gdy pierwsza wartość jest mniejsza lub równa, lub zwraca wartość false, gdy pierwsza wartość jest większa.
 
 ```
 lessOrEquals(<value>, <compareTo>)
@@ -2777,35 +2777,35 @@ lessOrEquals('<value>', '<compareTo>')
 
 | Parametr | Wymagany | Typ | Opis |
 | --------- | -------- | ---- | ----------- |
-| <*wartość*> | Yes | Liczba całkowita, zmiennoprzecinkowa lub ciąg | Pierwsza wartość do sprawdzenia, czy mniejsza lub równa drugiej wartości |
-| <*compareTo*> | Yes | Odpowiednio liczby całkowite, zmiennoprzecinkowe lub ciąg | Element porównania |
+| <*Wartość*> | Tak | Całkowita, Float lub Ciąg | Pierwsza wartość, aby sprawdzić, czy jest mniejsza lub równa drugiej wartości |
+| <*Compareto*> | Tak | Odpowiednio całkowita, float lub string | Pozycja porównawcza |
 |||||
 
 | Wartość zwracana | Typ | Opis |
 | ------------ | ---- | ----------- |
-| true lub false  | Wartość logiczna | Zwraca wartość true, jeśli pierwsza wartość jest mniejsza lub równa drugiej wartości. Zwraca wartość false, gdy pierwsza wartość jest większa niż druga wartość. |
+| true lub false  | Wartość logiczna | Zwraca wartość true, gdy pierwsza wartość jest mniejsza lub równa drugiej wartości. Zwraca wartość false, gdy pierwsza wartość jest większa niż druga wartość. |
 ||||
 
 *Przykład*
 
-Te przykłady sprawdzają, czy pierwsza wartość jest mniejsza lub równa drugiej wartości.
+Te przykłady sprawdzić, czy pierwsza wartość jest mniejsza lub równa niż druga wartość.
 
 ```
 lessOrEquals(10, 10)
 lessOrEquals('apply', 'apple')
 ```
 
-I zwróć następujące wyniki:
+I zwrócić te wyniki:
 
-* Pierwszy przykład: `true`
-* Drugi przykład: `false`
+* Pierwszy przykład:`true`
+* Drugi przykład:`false`
 
 <a name="listCallbackUrl"></a>
 
-### <a name="listcallbackurl"></a>listCallbackUrl
+### <a name="listcallbackurl"></a>listaCallbackUrl
 
 Zwróć "adres URL wywołania zwrotnego", który wywołuje wyzwalacz lub akcję.
-Ta funkcja działa tylko z wyzwalaczami i akcjami dla typów łączników **HttpWebhook** i **ApiConnectionWebhook** , ale nie z typami **ręcznymi**, **cyklem**, **http**i **APIConnection** .
+Ta funkcja działa tylko z wyzwalaczami i akcjami dla typów łączników **HttpWebhook** i **ApiConnectionWebhook,** ale nie **z typami Manual**, **Recurrence**, **HTTP**i **APIConnection.**
 
 ```
 listCallbackUrl()
@@ -2813,18 +2813,18 @@ listCallbackUrl()
 
 | Wartość zwracana | Typ | Opis |
 | ------------ | ---- | ----------- |
-| <*wywołanie zwrotne — adres URL*> | Ciąg | Adres URL wywołania zwrotnego dla wyzwalacza lub akcji |
+| <*adres URL wywołania zwrotnego*> | Ciąg | Adres URL wywołania zwrotnego dla wyzwalacza lub akcji |
 ||||
 
 *Przykład*
 
-Ten przykład przedstawia przykładowy adres URL wywołania zwrotnego, który może zwrócić ta funkcja:
+W tym przykładzie pokazano przykładowy adres URL wywołania zwrotnego, który ta funkcja może zwrócić:
 
 `"https://prod-01.westus.logic.azure.com:443/workflows/<*workflow-ID*>/triggers/manual/run?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=<*signature-ID*>"`
 
 <a name="max"></a>
 
-### <a name="max"></a>maks.
+### <a name="max"></a>max
 
 Zwraca najwyższą wartość z listy lub tablicy z liczbami, które są włącznie na obu końcach.
 
@@ -2835,31 +2835,31 @@ max([<number1>, <number2>, ...])
 
 | Parametr | Wymagany | Typ | Opis |
 | --------- | -------- | ---- | ----------- |
-| <*liczba1*>, <*liczba2*>,... | Yes | Liczba całkowita, zmiennoprzecinkowa lub oba | Zbiór liczb, z których ma być najwyższa wartość |
-| [<*liczba1*>, <*liczba2*>,...] | Yes | Array-Integer, float lub Both | Tablica liczb, z której ma być najwyższa wartość |
+| <*numer1*>, <*numer2*>, ... | Tak | Całkowita, Float lub obie te te elementy | Zestaw liczb, z których ma być najwyższa wartość |
+| [<numer *1*>, <numer *2*>,...] | Tak | Tablica — całkowita, float lub obie te 2 | Tablica liczb, z których ma być najwyższa wartość |
 |||||
 
 | Wartość zwracana | Typ | Opis |
 | ------------ | ---- | ----------- |
-| <*Max-value*> | Liczba całkowita lub zmiennoprzecinkowa | Najwyższa wartość w określonej tablicy lub zestawie liczb |
+| <*wartość maksymalna*> | Całkowita lub float | Najwyższa wartość w określonej tablicy lub zestawie liczb |
 ||||
 
 *Przykład*
 
-Te przykłady uzyskują najwyższą wartość z zestawu liczb i tablicy:
+Te przykłady uzyskać najwyższą wartość z zestawu liczb i tablicy:
 
 ```
 max(1, 2, 3)
 max(createArray(1, 2, 3))
 ```
 
-I zwróć ten wynik: `3`
+I zwrócić ten wynik:`3`
 
 <a name="min"></a>
 
-### <a name="min"></a>min.
+### <a name="min"></a>min
 
-Zwróć najniższą wartość z zestawu liczb lub tablicy.
+Zwraca najniższą wartość z zestawu liczb lub tablicy.
 
 ```
 min(<number1>, <number2>, ...)
@@ -2868,32 +2868,32 @@ min([<number1>, <number2>, ...])
 
 | Parametr | Wymagany | Typ | Opis |
 | --------- | -------- | ---- | ----------- |
-| <*liczba1*>, <*liczba2*>,... | Yes | Liczba całkowita, zmiennoprzecinkowa lub oba | Zbiór liczb, z których ma być najmniejsza wartość. |
-| [<*liczba1*>, <*liczba2*>,...] | Yes | Array-Integer, float lub Both | Tablica liczb, z której ma być najmniejsza wartość. |
+| <*numer1*>, <*numer2*>, ... | Tak | Całkowita, Float lub obie te te elementy | Zestaw liczb, z których ma być najniższa wartość |
+| [<numer *1*>, <numer *2*>,...] | Tak | Tablica — całkowita, float lub obie te 2 | Tablica liczb, z których ma być najniższa wartość |
 |||||
 
 | Wartość zwracana | Typ | Opis |
 | ------------ | ---- | ----------- |
-| <> *minimalnej wartości* | Liczba całkowita lub zmiennoprzecinkowa | Najniższa wartość w określonym zestawie liczb lub określonej tablicy. |
+| <*wartość min.*> | Całkowita lub float | Najniższa wartość w określonym zestawie liczb lub określonej tablicy |
 ||||
 
 *Przykład*
 
-Te przykłady uzyskują najniższą wartość w zestawie liczb i tablicy:
+Te przykłady uzyskać najniższą wartość w zestawie liczb i tablicy:
 
 ```
 min(1, 2, 3)
 min(createArray(1, 2, 3))
 ```
 
-I zwróć ten wynik: `1`
+I zwrócić ten wynik:`1`
 
 <a name="mod"></a>
 
-### <a name="mod"></a>Funkcja
+### <a name="mod"></a>Mod
 
-Zwróć resztę z dzielenia dwóch liczb.
-Aby uzyskać wynik całkowity, zobacz [DIV ()](#div).
+Zwróć pozostałą część z podzielenia dwóch liczb.
+Aby uzyskać wynik liczby całkowitej, zobacz [div()](#div).
 
 ```
 mod(<dividend>, <divisor>)
@@ -2901,30 +2901,30 @@ mod(<dividend>, <divisor>)
 
 | Parametr | Wymagany | Typ | Opis |
 | --------- | -------- | ---- | ----------- |
-| <*dzielną*> | Yes | Liczba całkowita lub zmiennoprzecinkowa | Liczba do podzielenia przez *dzielnik* |
-| <*dzielnik*> | Yes | Liczba całkowita lub zmiennoprzecinkowa | Liczba dzieląca *dzielną*, ale nie może być równa 0. |
+| <*Dywidendy*> | Tak | Całkowita lub float | Liczba do podzielenia przez *dzielnik* |
+| <*Dzielnik*> | Tak | Całkowita lub float | Liczba, która dzieli *dywidendę*, ale nie może być 0. |
 |||||
 
 | Wartość zwracana | Typ | Opis |
 | ------------ | ---- | ----------- |
-| <*modulo — wynik*> | Liczba całkowita lub zmiennoprzecinkowa | Reszta z dzielenia pierwszej liczby przez drugą liczbę |
+| <*modulo-wynik*> | Całkowita lub float | Pozostała część z podzielenia pierwszej liczby przez drugą liczbę |
 ||||
 
 *Przykład*
 
-Ten przykład dzieli pierwszą liczbę przez drugą liczbę:
+W tym przykładzie dzieli pierwszą liczbę przez drugą liczbę:
 
 ```
 mod(3, 2)
 ```
 
-I zwróć ten wynik: `1`
+I zwrócić ten wynik:`1`
 
 <a name="mul"></a>
 
-### <a name="mul"></a>mul
+### <a name="mul"></a>Mul
 
-Zwróć produkt z mnożenia dwóch liczb.
+Zwróć produkt z pomnożenia dwóch liczb.
 
 ```
 mul(<multiplicand1>, <multiplicand2>)
@@ -2932,34 +2932,34 @@ mul(<multiplicand1>, <multiplicand2>)
 
 | Parametr | Wymagany | Typ | Opis |
 | --------- | -------- | ---- | ----------- |
-| <*multiplicand1*> | Yes | Liczba całkowita lub zmiennoprzecinkowa | Liczba do pomnożenia przez *multiplicand2* |
-| <*multiplicand2*> | Yes | Liczba całkowita lub zmiennoprzecinkowa | Liczba, która *multiplicand1* wielokrotność |
+| <*wieloplikowy1*> | Tak | Całkowita lub float | Liczba do pomnożenia przez *multiplicand2* |
+| <*multiplicand2*> | Tak | Całkowita lub float | Liczba wielokrotności *multiplicand1* |
 |||||
 
 | Wartość zwracana | Typ | Opis |
 | ------------ | ---- | ----------- |
-| <*produktu —> wynik* | Liczba całkowita lub zmiennoprzecinkowa | Produkt nie pomnożyć pierwszej liczby przez drugą liczbę |
+| <*wynik produktu*> | Całkowita lub float | Produkt z pomnożenia pierwszej liczby przez drugą liczbę |
 ||||
 
 *Przykład*
 
-Te przykłady wielokrotności pierwszej liczby przez drugą liczbę:
+W tych przykładach wielokrotność pierwszej liczby przez drugą liczbę:
 
 ```
 mul(1, 2)
 mul(1.5, 2)
 ```
 
-I zwróć następujące wyniki:
+I zwrócić te wyniki:
 
-* Pierwszy przykład: `2`
-* Drugi przykład `3`
+* Pierwszy przykład:`2`
+* Drugi przykład`3`
 
 <a name="multipartBody"></a>
 
-### <a name="multipartbody"></a>multipartBody
+### <a name="multipartbody"></a>wieloczęścioweBody
 
-Zwróć treść określonej części w danych wyjściowych akcji z wieloma częściami.
+Zwraca obiekt dla określonej części w danych wyjściowych akcji, która ma wiele części.
 
 ```
 multipartBody('<actionName>', <index>)
@@ -2967,21 +2967,21 @@ multipartBody('<actionName>', <index>)
 
 | Parametr | Wymagany | Typ | Opis |
 | --------- | -------- | ---- | ----------- |
-| <*actionname*> | Yes | Ciąg | Nazwa akcji, która zawiera dane wyjściowe z wieloma częściami. |
-| > *indeksu* < | Yes | Liczba całkowita | Wartość indeksu dla potrzebnej części |
+| <*nazwa działania*> | Tak | Ciąg | Nazwa akcji, która ma dane wyjściowe z wieloma częściami |
+| <*Indeks*> | Tak | Liczba całkowita | Wartość indeksu dla części, którą chcesz |
 |||||
 
 | Wartość zwracana | Typ | Opis |
 | ------------ | ---- | ----------- |
-| <*treści*> | Ciąg | Treść określonej części |
+| <*Ciała*> | Ciąg | Treść dla określonej części |
 ||||
 
 <a name="not"></a>
 
-### <a name="not"></a>niemożliwe
+### <a name="not"></a>not
 
-Sprawdź, czy wyrażenie ma wartość false.
-Zwraca wartość true, jeśli wyrażenie ma wartość false, lub zwraca wartość false, gdy wartość jest równa true.
+Sprawdź, czy wyrażenie jest fałszywe.
+Zwraca wartość true, gdy wyrażenie jest false lub zwraca false, gdy true.
 
 ```json
 not(<expression>)
@@ -2989,48 +2989,48 @@ not(<expression>)
 
 | Parametr | Wymagany | Typ | Opis |
 | --------- | -------- | ---- | ----------- |
-| *wyrażenie* <> | Yes | Wartość logiczna | Wyrażenie do sprawdzenia |
+| <*Wyrażenie*> | Tak | Wartość logiczna | Wyrażenie do sprawdzenia |
 |||||
 
 | Wartość zwracana | Typ | Opis |
 | ------------ | ---- | ----------- |
-| true lub false | Wartość logiczna | Zwraca wartość true, jeśli wyrażenie ma wartość false. Zwraca wartość false, jeśli wyrażenie ma wartość true. |
+| true lub false | Wartość logiczna | Zwraca wartość true, gdy wyrażenie jest false. Zwraca wartość false, gdy wyrażenie jest prawdziwe. |
 ||||
 
 *Przykład 1*
 
-Te przykłady sprawdzają, czy określone wyrażenia mają wartość false:
+Te przykłady sprawdzić, czy określone wyrażenia są fałszywe:
 
 ```json
 not(false)
 not(true)
 ```
 
-I zwróć następujące wyniki:
+I zwrócić te wyniki:
 
-* Pierwszy przykład: wyrażenie ma wartość false, więc funkcja zwraca `true`.
-* Drugi przykład: wyrażenie ma wartość true, więc funkcja zwraca `false`.
+* Pierwszy przykład: Wyrażenie jest fałszywe, `true`więc funkcja zwraca .
+* Drugi przykład: Wyrażenie jest prawdziwe, `false`więc funkcja zwraca .
 
 *Przykład 2*
 
-Te przykłady sprawdzają, czy określone wyrażenia mają wartość false:
+Te przykłady sprawdzić, czy określone wyrażenia są fałszywe:
 
 ```json
 not(equals(1, 2))
 not(equals(1, 1))
 ```
 
-I zwróć następujące wyniki:
+I zwrócić te wyniki:
 
-* Pierwszy przykład: wyrażenie ma wartość false, więc funkcja zwraca `true`.
-* Drugi przykład: wyrażenie ma wartość true, więc funkcja zwraca `false`.
+* Pierwszy przykład: Wyrażenie jest fałszywe, `true`więc funkcja zwraca .
+* Drugi przykład: Wyrażenie jest prawdziwe, `false`więc funkcja zwraca .
 
 <a name="or"></a>
 
 ### <a name="or"></a>lub
 
-Sprawdź, czy co najmniej jedno wyrażenie ma wartość true.
-Zwraca wartość true, jeśli co najmniej jedno wyrażenie ma wartość true lub zwraca wartość false, jeśli wszystkie mają wartość false.
+Sprawdź, czy co najmniej jedno wyrażenie jest prawdziwe.
+Zwraca wartość true, gdy co najmniej jedno wyrażenie jest prawdziwe, lub zwraca false, gdy wszystkie są false.
 
 ```
 or(<expression1>, <expression2>, ...)
@@ -3038,47 +3038,47 @@ or(<expression1>, <expression2>, ...)
 
 | Parametr | Wymagany | Typ | Opis |
 | --------- | -------- | ---- | ----------- |
-| <*wyrażenie1*>, <*wyrażenie2*>,... | Yes | Wartość logiczna | Wyrażenia do sprawdzenia |
+| <*expression1*>, <*expression2*>, ... | Tak | Wartość logiczna | Wyrażenia do sprawdzenia |
 |||||
 
 | Wartość zwracana | Typ | Opis |
 | ------------ | ---- | ----------- |
-| true lub false | Wartość logiczna | Zwraca wartość true, jeśli co najmniej jedno wyrażenie ma wartość true. Zwraca wartość false, jeśli wszystkie wyrażenia mają wartość false. |
+| true lub false | Wartość logiczna | Zwraca wartość true, gdy co najmniej jedno wyrażenie jest prawdziwe. Zwraca wartość false, gdy wszystkie wyrażenia są fałszywe. |
 ||||
 
 *Przykład 1*
 
-Te przykłady sprawdzają, czy co najmniej jedno wyrażenie jest prawdziwe:
+Te przykłady sprawdzić, czy co najmniej jedno wyrażenie jest prawdziwe:
 
 ```json
 or(true, false)
 or(false, false)
 ```
 
-I zwróć następujące wyniki:
+I zwrócić te wyniki:
 
-* Pierwszy przykład: co najmniej jedno wyrażenie ma wartość true, więc funkcja zwraca `true`.
-* Drugi przykład: oba wyrażenia mają wartość false, więc funkcja zwraca `false`.
+* Pierwszy przykład: Co najmniej jedno wyrażenie jest `true`prawdziwe, więc funkcja zwraca .
+* Drugi przykład: Oba wyrażenia są fałszywe, `false`więc funkcja zwraca .
 
 *Przykład 2*
 
-Te przykłady sprawdzają, czy co najmniej jedno wyrażenie jest prawdziwe:
+Te przykłady sprawdzić, czy co najmniej jedno wyrażenie jest prawdziwe:
 
 ```json
 or(equals(1, 1), equals(1, 2))
 or(equals(1, 2), equals(1, 3))
 ```
 
-I zwróć następujące wyniki:
+I zwrócić te wyniki:
 
-* Pierwszy przykład: co najmniej jedno wyrażenie ma wartość true, więc funkcja zwraca `true`.
-* Drugi przykład: oba wyrażenia mają wartość false, więc funkcja zwraca `false`.
+* Pierwszy przykład: Co najmniej jedno wyrażenie jest `true`prawdziwe, więc funkcja zwraca .
+* Drugi przykład: Oba wyrażenia są fałszywe, `false`więc funkcja zwraca .
 
 <a name="outputs"></a>
 
-### <a name="outputs"></a>outputs
+### <a name="outputs"></a>Wyjść
 
-Zwraca dane wyjściowe akcji w czasie wykonywania. Użyj tej funkcji, a nie `actionOutputs()`, która jest rozpoznawana jako `outputs()` w Projektancie aplikacji logiki. Chociaż obie funkcje działają tak samo, `outputs()` jest preferowane.
+Zwraca dane wyjściowe akcji w czasie wykonywania. Użyj tej funkcji, `actionOutputs()`a nie `outputs()` , który jest rozpoznawany w Logic App Designer. Chociaż obie funkcje działają `outputs()` w ten sam sposób, jest preferowany.
 
 ```
 outputs('<actionName>')
@@ -3086,17 +3086,17 @@ outputs('<actionName>')
 
 | Parametr | Wymagany | Typ | Opis |
 | --------- | -------- | ---- | ----------- |
-| <*actionname*> | Yes | Ciąg | Nazwa żądanego danych wyjściowych akcji |
+| <*nazwa działania*> | Tak | Ciąg | Nazwa żądanego wyjścia akcji |
 |||||
 
 | Wartość zwracana | Typ | Opis |
 | ------------ | -----| ----------- |
-| <*dane wyjściowe*> | Ciąg | Dane wyjściowe z określonej akcji |
+| <*Wyjście*> | Ciąg | Dane wyjściowe z określonej akcji |
 ||||
 
 *Przykład*
 
-Ten przykład pobiera dane wyjściowe z akcji usługi Twitter `Get user`:
+W tym przykładzie pobiera `Get user`dane wyjściowe z akcji Twitter:
 
 ```
 outputs('Get_user')
@@ -3141,7 +3141,7 @@ I zwraca ten wynik:
 
 ### <a name="parameters"></a>parameters
 
-Zwraca wartość parametru, który jest opisany w definicji przepływu pracy.
+Zwraca wartość parametru opisanego w definicji przepływu pracy.
 
 ```
 parameters('<parameterName>')
@@ -3149,12 +3149,12 @@ parameters('<parameterName>')
 
 | Parametr | Wymagany | Typ | Opis |
 | --------- | -------- | ---- | ----------- |
-| *parametr <parametername*> | Yes | Ciąg | Nazwa parametru, którego wartość chcesz wykonać. |
+| <*Parametername*> | Tak | Ciąg | Nazwa parametru, którego wartość ma zostać |
 |||||
 
 | Wartość zwracana | Typ | Opis |
 | ------------ | ---- | ----------- |
-| <*parametru-value*> | Dowolne | Wartość dla określonego parametru |
+| <*wartość parametru*> | Dowolne | Wartość określonego parametru |
 ||||
 
 *Przykład*
@@ -3167,19 +3167,19 @@ Załóżmy, że masz tę wartość JSON:
 }
 ```
 
-Ten przykład pobiera wartość dla określonego parametru:
+W tym przykładzie pobiera wartość dla określonego parametru:
 
 ```
 parameters('fullName')
 ```
 
-I zwraca ten wynik: `"Sophia Owen"`
+I zwraca ten wynik:`"Sophia Owen"`
 
 <a name="rand"></a>
 
-### <a name="rand"></a>Rand
+### <a name="rand"></a>rand
 
-Zwraca losową liczbę całkowitą z podanego zakresu, która jest dopuszczająca tylko do końca początkowego.
+Zwraca losową liczę całkowitą z określonego zakresu, która jest włącznie tylko na końcu początkowym.
 
 ```
 rand(<minValue>, <maxValue>)
@@ -3187,30 +3187,30 @@ rand(<minValue>, <maxValue>)
 
 | Parametr | Wymagany | Typ | Opis |
 | --------- | -------- | ---- | ----------- |
-| <*minValue*> | Yes | Liczba całkowita | Najmniejsza liczba całkowita z zakresu |
-| <*maxValue*> | Yes | Liczba całkowita | Liczba całkowita, która następuje po największej liczbie całkowitej z zakresu, który może zwracać funkcja |
+| <*Minvalue*> | Tak | Liczba całkowita | Najniższa liczba całkowita w zakresie |
+| <*Maxvalue*> | Tak | Liczba całkowita | Liczba całkowita, która następuje po najwyższej liczby całkowitej w zakresie, który funkcja może zwrócić |
 |||||
 
 | Wartość zwracana | Typ | Opis |
 | ------------ | ---- | ----------- |
-| <> *wyniku losowego* | Liczba całkowita | Losowa liczba całkowita zwrócona z określonego zakresu |
+| <*wynik losowy*> | Liczba całkowita | Losowa liczba całkowita zwrócona z określonego zakresu |
 ||||
 
 *Przykład*
 
-Ten przykład pobiera losową liczbę całkowitą z podanego zakresu, z wyłączeniem wartości maksymalnej:
+W tym przykładzie pobiera losową liczbę całkowitą z określonego zakresu, z wyłączeniem wartości maksymalnej:
 
 ```
 rand(1, 5)
 ```
 
-I zwraca jedną z tych liczb jako wynik: `1`, `2`, `3`lub `4`
+I zwraca jedną z tych liczb `1` `2`w `3`wyniku: , , , lub`4`
 
 <a name="range"></a>
 
-### <a name="range"></a>zakresu
+### <a name="range"></a>range
 
-Zwróć tablicę liczb całkowitych, która zaczyna się od określonej liczby całkowitej.
+Zwraca tablicę całkowitą, która rozpoczyna się od określonej liczby całkowitej.
 
 ```
 range(<startIndex>, <count>)
@@ -3218,30 +3218,30 @@ range(<startIndex>, <count>)
 
 | Parametr | Wymagany | Typ | Opis |
 | --------- | -------- | ---- | ----------- |
-| <*startIndex*> | Yes | Liczba całkowita | Wartość całkowita, która uruchamia tablicę jako pierwszy element |
-| *liczba* <> | Yes | Liczba całkowita | Liczba liczb całkowitych w tablicy |
+| <*Startindex*> | Tak | Liczba całkowita | Wartość całkowita uruchamiana jako pierwszy element |
+| <*Liczba*> | Tak | Liczba całkowita | Liczba liczb całkowitych w tablicy |
 |||||
 
 | Wartość zwracana | Typ | Opis |
 | ------------ | ---- | ----------- |
-| [<*zakres — wynik*>] | Tablica | Tablica z liczbami całkowitymi rozpoczynającymi się od określonego indeksu |
+| [<> *wynik zakresu]* | Tablica | Tablica z liczbami całkowitymi zaczyna się od określonego indeksu |
 ||||
 
 *Przykład*
 
-Ten przykład tworzy tablicę liczb całkowitych, która zaczyna się od określonego indeksu i ma określoną liczbę liczb całkowitych:
+W tym przykładzie tworzy tablicę liczb całkowitych, która rozpoczyna się od określonego indeksu i ma określoną liczbę liczb całkowitych:
 
 ```
 range(1, 4)
 ```
 
-I zwraca ten wynik: `[1, 2, 3, 4]`
+I zwraca ten wynik:`[1, 2, 3, 4]`
 
 <a name="replace"></a>
 
-### <a name="replace"></a>replace
+### <a name="replace"></a>Zastąp
 
-Zamień podciąg na określony ciąg i zwróć ciąg wynikowy. Ta funkcja jest uwzględniana wielkość liter.
+Zamień podciąg na określony ciąg i zwróć ciąg wynikowy. W tej funkcji rozróżniana jest wielkość liter.
 
 ```
 replace('<text>', '<oldText>', '<newText>')
@@ -3249,31 +3249,31 @@ replace('<text>', '<oldText>', '<newText>')
 
 | Parametr | Wymagany | Typ | Opis |
 | --------- | -------- | ---- | ----------- |
-| <> *tekstu* | Yes | Ciąg | Ciąg zawierający podciąg, który ma zostać zamieniony. |
-| <*oldText*> | Yes | Ciąg | Podciąg, który ma zostać zamieniony. |
-| <*newText*> | Yes | Ciąg | Ciąg zamienny |
+| <*Tekst*> | Tak | Ciąg | Ciąg, który ma podciąg do zastąpienia |
+| <*staryTekst*> | Tak | Ciąg | Podciąg do wymiany |
+| <*nowy Tekst*> | Tak | Ciąg | Ciąg zastępczy |
 |||||
 
 | Wartość zwracana | Typ | Opis |
 | ------------ | ---- | ----------- |
-| <*zaktualizowany —> tekstu* | Ciąg | Zaktualizowany ciąg po zamianie podciągu <p>Jeśli podciąg nie zostanie znaleziony, zwróć oryginalny ciąg. |
+| <*zaktualizowany tekst*> | Ciąg | Zaktualizowany ciąg po wymianie podciągów <p>Jeśli podciąg nie zostanie znaleziony, zwróć oryginalny ciąg. |
 ||||
 
 *Przykład*
 
-Ten przykład wyszukuje "stary" podciąg w "starym ciągu" i zamienia "stary" z "New":
+W tym przykładzie znajduje się podciąg "stary" w "starym ciągu" i zastępuje "stary" "nowy":
 
 ```
 replace('the old string', 'old', 'new')
 ```
 
-I zwraca ten wynik: `"the new string"`
+I zwraca ten wynik:`"the new string"`
 
 <a name="removeProperty"></a>
 
 ### <a name="removeproperty"></a>removeProperty
 
-Usunięcie właściwości z obiektu i zwrócenie zaktualizowanego obiektu. Jeśli właściwość, którą próbujesz usunąć, nie istnieje, funkcja zwraca oryginalny obiekt.
+Usuń właściwość z obiektu i zwróć zaktualizowany obiekt. Jeśli właściwość, którą próbujesz usunąć, nie istnieje, funkcja zwraca oryginalny obiekt.
 
 ```
 removeProperty(<object>, '<property>')
@@ -3281,16 +3281,16 @@ removeProperty(<object>, '<property>')
 
 | Parametr | Wymagany | Typ | Opis |
 | --------- | -------- | ---- | ----------- |
-| > <*obiektu* | Yes | Obiekt | Obiekt JSON, z którego chcesz usunąć Właściwość |
-| <*właściwość*> | Yes | Ciąg | Nazwa właściwości do usunięcia. |
+| <*Obiektu*> | Tak | Obiekt | Obiekt JSON, z którego chcesz usunąć właściwość |
+| <*Właściwość*> | Tak | Ciąg | Nazwa właściwości do usunięcia |
 |||||
 
 | Wartość zwracana | Typ | Opis |
 | ------------ | ---- | ----------- |
-| <*Zaktualizowano —> obiektu* | Obiekt | Zaktualizowany obiekt JSON bez określonej właściwości |
+| <*zaktualizowany obiekt*> | Obiekt | Zaktualizowany obiekt JSON bez określonej właściwości |
 ||||
 
-Aby usunąć Właściwość podrzędną z istniejącej właściwości, użyj następującej składni:
+Aby usunąć właściwość podrzędną z istniejącej właściwości, użyj tej składni:
 
 ```
 removeProperty(<object>['<parent-property>'], '<child-property>')
@@ -3298,19 +3298,19 @@ removeProperty(<object>['<parent-property>'], '<child-property>')
 
 | Parametr | Wymagany | Typ | Opis |
 | --------- | -------- | ---- | ----------- |
-| > <*obiektu* | Yes | Obiekt | Obiekt JSON, którego właściwość ma zostać usunięta. |
-| <*Właściwość parent*> | Yes | Ciąg | Nazwa właściwości nadrzędnej z właściwością podrzędną, która ma zostać usunięta. |
-| <*Właściwość podrzędna*> | Yes | Ciąg | Nazwa właściwości podrzędnej do usunięcia |
+| <*Obiektu*> | Tak | Obiekt | Obiekt JSON, którego właściwość chcesz usunąć |
+| <*własność nadrzędna*> | Tak | Ciąg | Nazwa właściwości nadrzędnej z właściwością podrzędną, którą chcesz usunąć |
+| <*własność dziecka*> | Tak | Ciąg | Nazwa właściwości podrzędnej do usunięcia |
 |||||
 
 | Wartość zwracana | Typ | Opis |
 | ------------ | ---- | ----------- |
-| <*Zaktualizowano —> obiektu* | Obiekt | Zaktualizowany obiekt JSON, którego usunięto Właściwość podrzędną. |
+| <*zaktualizowany obiekt*> | Obiekt | Zaktualizowany obiekt JSON, którego właściwość podrzędna została usunięta |
 ||||
 
 *Przykład 1*
 
-Ten przykład usuwa Właściwość `middleName` z obiektu JSON, który jest konwertowany z ciągu na notację JSON przy użyciu funkcji [JSON ()](#json) i zwraca zaktualizowany obiekt:
+W tym przykładzie usuwa `middleName` właściwość z obiektu JSON, który jest konwertowany z ciągu do JSON za pomocą funkcji [JSON()](#json) i zwraca zaktualizowany obiekt:
 
 ```
 removeProperty(json('{ "firstName": "Sophia", "middleName": "Anne", "surName": "Owen" }'), 'middleName')
@@ -3337,7 +3337,7 @@ Oto zaktualizowany obiekt JSON:
 
 *Przykład 2*
 
-Ten przykład usuwa Właściwość podrzędną `middleName` z `customerName` właściwości nadrzędnej w obiekcie JSON, który jest konwertowany z ciągu na notację JSON przy użyciu funkcji [JSON ()](#json) i zwraca zaktualizowany obiekt:
+W tym przykładzie usuwa właściwość `middleName` podrzędną z właściwości nadrzędnej `customerName` w obiekcie JSON, która jest konwertowana z ciągu na JSON za pomocą funkcji [JSON()](#json) i zwraca zaktualizowany obiekt:
 
 ```
 removeProperty(json('{ "customerName": { "firstName": "Sophia", "middleName": "Anne", "surName": "Owen" } }')['customerName'], 'middleName')
@@ -3370,7 +3370,7 @@ Oto zaktualizowany obiekt JSON:
 
 ### <a name="result"></a>wynik
 
-Zwraca dane wejściowe i wyjściowe ze wszystkich akcji, które znajdują się w określonej akcji w zakresie, takiej jak akcja `For_each`, `Until`lub `Scope`. Ta funkcja jest przydatna zwracająca wyniki akcji zakończonej niepowodzeniem, aby można było zdiagnozować i obsłużyć wyjątki. Aby uzyskać więcej informacji, zobacz [pobieranie kontekstu i wyników dla niepowodzeń](../logic-apps/logic-apps-exception-handling.md#get-results-from-failures).
+Zwraca dane wejściowe i wyjściowe ze wszystkich akcji, które znajdują `For_each`się `Until`wewnątrz `Scope` określonej akcji o określonym zakresie, takiej jak , lub akcja. Ta funkcja jest przydatna, zwracając wyniki z akcji nie powiodło się, dzięki czemu można zdiagnozować i obsługiwać wyjątki. Aby uzyskać więcej informacji, zobacz [Get context and results for failures](../logic-apps/logic-apps-exception-handling.md#get-results-from-failures).
 
 ```
 result('<scopedActionName>')
@@ -3378,17 +3378,17 @@ result('<scopedActionName>')
 
 | Parametr | Wymagany | Typ | Opis |
 | --------- | -------- | ---- | ----------- |
-| <*scopedActionName*> | Yes | Ciąg | Nazwa akcji z zakresem, z której mają zostać zwrócone dane wejściowe i wyjściowe ze wszystkich akcji wewnętrznych |
+| <*nazwa scopedActionName*> | Tak | Ciąg | Nazwa akcji o określonym zakresie, z której mają być zwracane dane wejściowe i wyjściowe ze wszystkich akcji wewnętrznych |
 ||||
 
 | Wartość zwracana | Typ | Opis |
 | ------------ | ---- | ----------- |
-| <*obiektu array*> | Array — Obiekt | Tablica zawierająca tablice danych wejściowych i wyjść z poszczególnych akcji, które pojawiają się w określonej akcji w zakresie |
+| <*obiekt tablicy*> | Obiekt tablicowy | Tablica zawierająca tablice danych wejściowych i wyjściowych z każdej akcji, która pojawia się wewnątrz określonej akcji o określonym zakresie |
 ||||
 
 *Przykład*
 
-Ten przykład zwraca dane wejściowe i wyjściowe z każdej iteracji akcji HTTP wewnątrz pętli `For_each` przy użyciu funkcji `result()` w akcji `Compose`:
+W tym przykładzie zwraca dane wejściowe i wyjściowe z każdej iteracji akcji HTTP wewnątrz, która znajduje się wewnątrz `For_each` pętli przy użyciu `result()` funkcji w `Compose` akcji:
 
 ```json
 {
@@ -3421,7 +3421,7 @@ Ten przykład zwraca dane wejściowe i wyjściowe z każdej iteracji akcji HTTP 
 }
 ```
 
-Poniżej przedstawiono sposób, w jaki Przykładowa zwracana tablica może wyglądać, gdzie zewnętrzny obiekt `outputs` zawiera dane wejściowe i wyjściowe z każdej iteracji akcji wewnątrz akcji `For_each`.
+Oto jak przykład zwrócona tablica może `outputs` wyglądać, gdzie obiekt zewnętrzny zawiera dane wejściowe `For_each` i wyjściowe z każdej iteracji akcji wewnątrz akcji.
 
 ```json
 [
@@ -3489,9 +3489,9 @@ Poniżej przedstawiono sposób, w jaki Przykładowa zwracana tablica może wygl�
 
 <a name="setProperty"></a>
 
-### <a name="setproperty"></a>setProperty
+### <a name="setproperty"></a>Setproperty
 
-Ustaw wartość właściwości obiektu JSON i zwróć zaktualizowany obiekt. Jeśli właściwość, którą próbujesz ustawić, nie istnieje, właściwość zostanie dodana do obiektu. Aby dodać nową właściwość, użyj funkcji [AddProperty ()](#addProperty) .
+Ustaw wartość właściwości obiektu JSON i zwróć zaktualizowany obiekt. Jeśli właściwość, którą próbujesz ustawić, nie istnieje, właściwość zostanie dodana do obiektu. Aby dodać nową właściwość, użyj funkcji [addProperty().](#addProperty)
 
 ```
 setProperty(<object>, '<property>', <value>)
@@ -3499,12 +3499,12 @@ setProperty(<object>, '<property>', <value>)
 
 | Parametr | Wymagany | Typ | Opis |
 | --------- | -------- | ---- | ----------- |
-| > <*obiektu* | Yes | Obiekt | Obiekt JSON, którego właściwość ma zostać ustawiona. |
-| <*właściwość*> | Yes | Ciąg | Nazwa istniejącej lub nowej właściwości do ustawienia |
-| <*wartość*> | Yes | Dowolne | Wartość do ustawienia dla określonej właściwości |
+| <*Obiektu*> | Tak | Obiekt | Obiekt JSON, którego właściwość chcesz ustawić |
+| <*Właściwość*> | Tak | Ciąg | Nazwa istniejącej lub nowej właściwości do |
+| <*Wartość*> | Tak | Dowolne | Wartość ustawiona dla określonej właściwości |
 |||||
 
-Aby ustawić właściwość podrzędną w obiekcie podrzędnym, należy zamiast tego użyć zagnieżdżonego wywołania `setProperty()`. W przeciwnym razie funkcja zwraca tylko obiekt podrzędny jako dane wyjściowe.
+Aby ustawić właściwość podrzędną w obiekcie `setProperty()` podrzędnym, należy użyć zagnieżdżonego wywołania. W przeciwnym razie funkcja zwraca tylko obiekt podrzędny jako dane wyjściowe.
 
 ```
 setProperty(<object>['<parent-property>'], '<parent-property>', setProperty(<object>['parentProperty'], '<child-property>', <value>))
@@ -3512,20 +3512,20 @@ setProperty(<object>['<parent-property>'], '<parent-property>', setProperty(<obj
 
 | Parametr | Wymagany | Typ | Opis |
 | --------- | -------- | ---- | ----------- |
-| > <*obiektu* | Yes | Obiekt | Obiekt JSON, którego właściwość ma zostać ustawiona. |
-| <*Właściwość parent*> | Yes | Ciąg | Nazwa właściwości nadrzędnej z właściwością podrzędną, która ma zostać ustawiona. |
-| <*Właściwość podrzędna*> | Yes | Ciąg | Nazwa właściwości podrzędnej do ustawienia |
-| <*wartość*> | Yes | Dowolne | Wartość do ustawienia dla określonej właściwości |
+| <*Obiektu*> | Tak | Obiekt | Obiekt JSON, którego właściwość chcesz ustawić |
+| <*własność nadrzędna*> | Tak | Ciąg | Nazwa właściwości nadrzędnej z właściwością podrzędną, którą chcesz ustawić |
+| <*własność dziecka*> | Tak | Ciąg | Nazwa właściwości podrzędnej do ustawionego |
+| <*Wartość*> | Tak | Dowolne | Wartość ustawiona dla określonej właściwości |
 |||||
 
 | Wartość zwracana | Typ | Opis |
 | ------------ | ---- | ----------- |
-| <*Zaktualizowano —> obiektu* | Obiekt | Zaktualizowany obiekt JSON, którego właściwość została ustawiona |
+| <*zaktualizowany obiekt*> | Obiekt | Zaktualizowany obiekt JSON, którego właściwość została ustawiona |
 ||||
 
 *Przykład 1*
 
-Ten przykład ustawia właściwość `surName` w obiekcie JSON, który jest konwertowany z ciągu na notację JSON przy użyciu funkcji [JSON ()](#json) . Funkcja przypisuje określoną wartość do właściwości i zwraca zaktualizowany obiekt:
+W tym `surName` przykładzie ustawia właściwość w obiekcie JSON, który jest konwertowany z ciągu na JSON za pomocą funkcji [JSON().](#json) Funkcja przypisuje określoną wartość do właściwości i zwraca zaktualizowany obiekt:
 
 ```
 setProperty(json('{ "firstName": "Sophia", "surName": "Owen" }'), 'surName', 'Hartnett')
@@ -3551,7 +3551,7 @@ Oto zaktualizowany obiekt JSON:
 
 *Przykład 2*
 
-Ten przykład ustawia właściwość podrzędną `surName` dla właściwości Parent `customerName` w obiekcie JSON, który jest konwertowany z ciągu na notację JSON przy użyciu funkcji [JSON ()](#json) . Funkcja przypisuje określoną wartość do właściwości i zwraca zaktualizowany obiekt:
+W tym `surName` przykładzie ustawia `customerName` właściwość podrzędną dla właściwości nadrzędnej w obiekcie JSON, która jest konwertowana z ciągu na JSON przy użyciu funkcji [JSON().](#json) Funkcja przypisuje określoną wartość do właściwości i zwraca zaktualizowany obiekt:
 
 ```
 setProperty(json('{ "customerName": { "firstName": "Sophia", "surName": "Owen" } }'), 'customerName', setProperty(json('{ "customerName": { "firstName": "Sophia", "surName": "Owen" } }')['customerName'], 'surName', 'Hartnett'))
@@ -3581,7 +3581,7 @@ Oto zaktualizowany obiekt JSON:
 
 <a name="skip"></a>
 
-### <a name="skip"></a>Skocz
+### <a name="skip"></a>Pomiń
 
 Usuń elementy z przodu kolekcji i zwróć *wszystkie pozostałe* elementy.
 
@@ -3591,30 +3591,30 @@ skip([<collection>], <count>)
 
 | Parametr | Wymagany | Typ | Opis |
 | --------- | -------- | ---- | ----------- |
-| <*zbieranie*> | Yes | Tablica | Kolekcja, której elementy chcesz usunąć. |
-| *liczba* <> | Yes | Liczba całkowita | Dodatnia liczba całkowita liczby elementów do usunięcia na przedniej |
+| <*Kolekcji*> | Tak | Tablica | Kolekcja, której elementy chcesz usunąć |
+| <*Liczba*> | Tak | Liczba całkowita | Dodatnia liczba całkowita dla liczby elementów do usunięcia z przodu |
 |||||
 
 | Wartość zwracana | Typ | Opis |
 | ------------ | ---- | ----------- |
-| [<*Zaktualizowano — zbieranie*>] | Tablica | Zaktualizowana kolekcja po usunięciu określonych elementów |
+| [<> *zbierania aktualizacji]* | Tablica | Zaktualizowana kolekcja po usunięciu określonych elementów |
 ||||
 
 *Przykład*
 
-Ten przykład usuwa jeden element, liczbę 0 z przodu określonej tablicy:
+W tym przykładzie usuwa jeden element, numer 0, z przodu określonej tablicy:
 
 ```
 skip(createArray(0, 1, 2, 3), 1)
 ```
 
-I zwraca tę tablicę z pozostałymi elementami: `[1,2,3]`
+I zwraca tę tablicę z pozostałymi elementami:`[1,2,3]`
 
 <a name="split"></a>
 
 ### <a name="split"></a>split
 
-Zwraca tablicę zawierającą podciągi, rozdzieloną przecinkami, na podstawie określonego znaku ogranicznika w oryginalnym ciągu.
+Zwraca tablicę zawierającą podciągi, oddzielone przecinkami, na podstawie określonego znaku ogranicznika w oryginalnym ciągu.
 
 ```
 split('<text>', '<delimiter>')
@@ -3622,30 +3622,30 @@ split('<text>', '<delimiter>')
 
 | Parametr | Wymagany | Typ | Opis |
 | --------- | -------- | ---- | ----------- |
-| <> *tekstu* | Yes | Ciąg | Ciąg do rozdzielenia na podciągi na podstawie określonego ogranicznika w oryginalnym ciągu |
-| <*ogranicznik*> | Yes | Ciąg | Znak w oryginalnym ciągu, który ma być używany jako ogranicznik |
+| <*Tekst*> | Tak | Ciąg | Ciąg do oddzielenia na podciągi na podstawie określonego ogranicznika w oryginalnym ciągu |
+| <*Ogranicznik*> | Tak | Ciąg | Znak w oryginalnym ciągu do użycia jako ogranicznik |
 |||||
 
 | Wartość zwracana | Typ | Opis |
 | ------------ | ---- | ----------- |
-| [<*podciąg1*>, <*subciąg2*>,...] | Tablica | Tablica zawierająca podciągi z oryginalnego ciągu, rozdzielona przecinkami |
+| [<*podciąg1*>,<*podciąg2*>,...] | Tablica | Tablica zawierająca podciągi z oryginalnego ciągu, oddzielona przecinkami |
 ||||
 
 *Przykład*
 
-Ten przykład tworzy tablicę z podciągami z określonego ciągu na podstawie określonego znaku jako ogranicznika:
+W tym przykładzie tworzy tablicę z podciągami z określonego ciągu na podstawie określonego znaku jako ogranicznik:
 
 ```
 split('a_b_c', '_')
 ```
 
-I zwraca tę tablicę jako wynik: `["a","b","c"]`
+I zwraca tę tablicę jako wynik:`["a","b","c"]`
 
 <a name="startOfDay"></a>
 
 ### <a name="startofday"></a>startOfDay
 
-Zwróć początek dnia dla sygnatury czasowej.
+Zwraca początek dnia dla sygnatury czasowej.
 
 ```
 startOfDay('<timestamp>', '<format>'?)
@@ -3653,30 +3653,30 @@ startOfDay('<timestamp>', '<format>'?)
 
 | Parametr | Wymagany | Typ | Opis |
 | --------- | -------- | ---- | ----------- |
-| <*sygnatura czasowa*> | Yes | Ciąg | Ciąg zawierający sygnaturę czasową. |
-| <*format*> | Nie | Ciąg | [Pojedynczy specyfikator formatu](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) lub [wzorzec formatowania niestandardowego](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Domyślny format sygnatury czasowej to ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (RRRR-MM-DDTgg: mm: SS: fffffffK), który jest zgodny z [normą ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) i zachowuje informacje o strefie czasowej. |
+| <*Sygnatury czasowej*> | Tak | Ciąg | Ciąg zawierający sygnaturę czasowa |
+| <*Formacie*> | Nie | Ciąg | Specyfikator [pojedynczego formatu](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) lub [wzorzec formatu niestandardowego](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Domyślnym formatem sygnatury czasowej jest ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-MM-ddTHH:mm:ss:fffffffK), który jest zgodny z [iso 8601](https://en.wikipedia.org/wiki/ISO_8601) i zachowuje informacje o strefie czasowej. |
 |||||
 
 | Wartość zwracana | Typ | Opis |
 | ------------ | ---- | ----------- |
-| <> *sygnatura czasowa aktualizacji* | Ciąg | Określona sygnatura czasowa, ale rozpoczynająca się od znaku zero godziny na dzień |
+| <*zaktualizowany sygnatura czasowa*> | Ciąg | Określony sygnatura czasowa, ale zaczynający się od znaku zero godziny dla dnia |
 ||||
 
 *Przykład*
 
-Ten przykład umożliwia znalezienie początku dnia dla tej sygnatury czasowej:
+W tym przykładzie znajduje początek dnia dla tej sygnatury czasowej:
 
 ```
 startOfDay('2018-03-15T13:30:30Z')
 ```
 
-I zwraca ten wynik: `"2018-03-15T00:00:00.0000000Z"`
+I zwraca ten wynik:`"2018-03-15T00:00:00.0000000Z"`
 
 <a name="startOfHour"></a>
 
-### <a name="startofhour"></a>Początek godziny
+### <a name="startofhour"></a>startOfHour
 
-Zwróć początek godziny dla sygnatury czasowej.
+Zwraca początek godziny dla sygnatury czasowej.
 
 ```
 startOfHour('<timestamp>', '<format>'?)
@@ -3684,30 +3684,30 @@ startOfHour('<timestamp>', '<format>'?)
 
 | Parametr | Wymagany | Typ | Opis |
 | --------- | -------- | ---- | ----------- |
-| <*sygnatura czasowa*> | Yes | Ciąg | Ciąg zawierający sygnaturę czasową. |
-| <*format*> | Nie | Ciąg | [Pojedynczy specyfikator formatu](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) lub [wzorzec formatowania niestandardowego](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Domyślny format sygnatury czasowej to ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (RRRR-MM-DDTgg: mm: SS: fffffffK), który jest zgodny z [normą ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) i zachowuje informacje o strefie czasowej. |
+| <*Sygnatury czasowej*> | Tak | Ciąg | Ciąg zawierający sygnaturę czasowa |
+| <*Formacie*> | Nie | Ciąg | Specyfikator [pojedynczego formatu](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) lub [wzorzec formatu niestandardowego](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Domyślnym formatem sygnatury czasowej jest ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-MM-ddTHH:mm:ss:fffffffK), który jest zgodny z [iso 8601](https://en.wikipedia.org/wiki/ISO_8601) i zachowuje informacje o strefie czasowej. |
 |||||
 
 | Wartość zwracana | Typ | Opis |
 | ------------ | ---- | ----------- |
-| <> *sygnatura czasowa aktualizacji* | Ciąg | Określona sygnatura czasowa, ale rozpoczynająca się od znaku 0 minuty dla godziny |
+| <*zaktualizowany sygnatura czasowa*> | Ciąg | Określony sygnatura czasowa, ale zaczynający się od znaku zero-minute dla godziny |
 ||||
 
 *Przykład*
 
-Ten przykład umożliwia znalezienie początku godziny dla tej sygnatury czasowej:
+W tym przykładzie znajduje początek godziny dla tej sygnatury czasowej:
 
 ```
 startOfHour('2018-03-15T13:30:30Z')
 ```
 
-I zwraca ten wynik: `"2018-03-15T13:00:00.0000000Z"`
+I zwraca ten wynik:`"2018-03-15T13:00:00.0000000Z"`
 
 <a name="startOfMonth"></a>
 
 ### <a name="startofmonth"></a>startOfMonth
 
-Zwróć początek miesiąca dla sygnatury czasowej.
+Zwraca początek miesiąca dla sygnatury czasowej.
 
 ```
 startOfMonth('<timestamp>', '<format>'?)
@@ -3715,32 +3715,32 @@ startOfMonth('<timestamp>', '<format>'?)
 
 | Parametr | Wymagany | Typ | Opis |
 | --------- | -------- | ---- | ----------- |
-| <*sygnatura czasowa*> | Yes | Ciąg | Ciąg zawierający sygnaturę czasową. |
-| <*format*> | Nie | Ciąg | [Pojedynczy specyfikator formatu](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) lub [wzorzec formatowania niestandardowego](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Domyślny format sygnatury czasowej to ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (RRRR-MM-DDTgg: mm: SS: fffffffK), który jest zgodny z [normą ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) i zachowuje informacje o strefie czasowej. |
+| <*Sygnatury czasowej*> | Tak | Ciąg | Ciąg zawierający sygnaturę czasowa |
+| <*Formacie*> | Nie | Ciąg | Specyfikator [pojedynczego formatu](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) lub [wzorzec formatu niestandardowego](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Domyślnym formatem sygnatury czasowej jest ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-MM-ddTHH:mm:ss:fffffffK), który jest zgodny z [iso 8601](https://en.wikipedia.org/wiki/ISO_8601) i zachowuje informacje o strefie czasowej. |
 |||||
 
 | Wartość zwracana | Typ | Opis |
 | ------------ | ---- | ----------- |
-| <> *sygnatura czasowa aktualizacji* | Ciąg | Określona sygnatura czasowa, ale rozpoczyna się pierwszego dnia miesiąca w znaku 0-godzinnym |
+| <*zaktualizowany sygnatura czasowa*> | Ciąg | Określony sygnatura czasowa, ale rozpoczynający się pierwszego dnia miesiąca w znaku zero godziny |
 ||||
 
 *Przykład*
 
-Ten przykład zwraca początek miesiąca dla tej sygnatury czasowej:
+W tym przykładzie zwraca początek miesiąca dla tej sygnatury czasowej:
 
 ```
 startOfMonth('2018-03-15T13:30:30Z')
 ```
 
-I zwraca ten wynik: `"2018-03-01T00:00:00.0000000Z"`
+I zwraca ten wynik:`"2018-03-01T00:00:00.0000000Z"`
 
 <a name="startswith"></a>
 
 ### <a name="startswith"></a>startsWith
 
-Sprawdź, czy ciąg rozpoczyna się od określonego podciągu.
-Zwraca wartość true, jeśli znaleziono podciąg lub zwraca wartość false, jeśli nie znaleziono.
-Ta funkcja nie uwzględnia wielkości liter.
+Sprawdź, czy ciąg zaczyna się od określonego podciągu.
+Zwraca wartość true po znalezieniu podciągów lub zwraca wartość false, gdy nie zostanie znaleziony.
+W tej funkcji nie jest rozróżniana wielkość liter.
 
 ```
 startsWith('<text>', '<searchText>')
@@ -3748,34 +3748,34 @@ startsWith('<text>', '<searchText>')
 
 | Parametr | Wymagany | Typ | Opis |
 | --------- | -------- | ---- | ----------- |
-| <> *tekstu* | Yes | Ciąg | Ciąg do sprawdzenia |
-| <*tekstprzeszukiwany*> | Yes | Ciąg | Ciąg początkowy do znalezienia |
+| <*Tekst*> | Tak | Ciąg | Ciąg do sprawdzenia |
+| <*tekst wyszukiwania*> | Tak | Ciąg | Ciąg początkowy do znalezienia |
 |||||
 
 | Wartość zwracana | Typ | Opis |
 | ------------ | ---- | ----------- |
-| true lub false  | Wartość logiczna | Zwraca wartość true, gdy zostanie znaleziony początkowy podciąg. Zwraca wartość false, jeśli nie znaleziono. |
+| true lub false  | Wartość logiczna | Zwraca wartość true po znalezieniu podciągów początkowych. Zwraca wartość false, gdy nie znaleziono. |
 ||||
 
 *Przykład 1*
 
-Ten przykład sprawdza, czy ciąg "Hello World" rozpoczyna się od ciągu "Hello":
+W tym przykładzie sprawdza, czy ciąg "hello world" zaczyna się od podciągu "hello":
 
 ```
 startsWith('hello world', 'hello')
 ```
 
-I zwraca ten wynik: `true`
+I zwraca ten wynik:`true`
 
 *Przykład 2*
 
-Ten przykład sprawdza, czy ciąg "Hello World" rozpoczyna się od ciągu "Greetings":
+W tym przykładzie sprawdza, czy ciąg "hello world" zaczyna się od podciągu "pozdrowienia":
 
 ```
 startsWith('hello world', 'greetings')
 ```
 
-I zwraca ten wynik: `false`
+I zwraca ten wynik:`false`
 
 <a name="string"></a>
 
@@ -3789,39 +3789,39 @@ string(<value>)
 
 | Parametr | Wymagany | Typ | Opis |
 | --------- | -------- | ---- | ----------- |
-| <*wartość*> | Yes | Dowolne | Wartość do przekonwertowania |
+| <*Wartość*> | Tak | Dowolne | Wartość do przekonwertowania |
 |||||
 
 | Wartość zwracana | Typ | Opis |
 | ------------ | ---- | ----------- |
-| <*wartość ciągu*> | Ciąg | Wersja ciągu dla określonej wartości. |
+| <*wartość ciągu*> | Ciąg | Wersja ciągu dla określonej wartości |
 ||||
 
 *Przykład 1*
 
-W tym przykładzie zostanie utworzona wersja ciągu dla tej liczby:
+W tym przykładzie tworzy wersję ciągu dla tej liczby:
 
 ```
 string(10)
 ```
 
-I zwraca ten wynik: `"10"`
+I zwraca ten wynik:`"10"`
 
 *Przykład 2*
 
-Ten przykład tworzy ciąg dla określonego obiektu JSON i używa znaku ukośnika odwrotnego (\\) jako znaku ucieczki dla znaku podwójnego cudzysłowu (").
+W tym przykładzie tworzy ciąg dla określonego obiektu JSON\\i używa znaku ukośnika odwrotnego ( ) jako znaku ucieczki dla znaku podwójnego cudzysłowu (").
 
 ```
 string( { "name": "Sophie Owen" } )
 ```
 
-I zwraca ten wynik: `"{ \\"name\\": \\"Sophie Owen\\" }"`
+I zwraca ten wynik:`"{ \\"name\\": \\"Sophie Owen\\" }"`
 
 <a name="sub"></a>
 
-### <a name="sub"></a>sub
+### <a name="sub"></a>Sub
 
-Zwraca wynik odejmowania drugiej liczby od pierwszej liczby.
+Zwraca wynik z odejmowania drugiej liczby od pierwszej liczby.
 
 ```
 sub(<minuend>, <subtrahend>)
@@ -3829,28 +3829,28 @@ sub(<minuend>, <subtrahend>)
 
 | Parametr | Wymagany | Typ | Opis |
 | --------- | -------- | ---- | ----------- |
-| <*odjemna*> | Yes | Liczba całkowita lub zmiennoprzecinkowa | Liczba, z której ma zostać odjęta *odjemnik* |
-| <*odjemnik*> | Yes | Liczba całkowita lub zmiennoprzecinkowa | Liczba, która ma zostać odjęta od *odjemna* |
+| <*minuend*> | Tak | Całkowita lub float | Liczba, od której można odjąć *odchylić odchylić odchylić* |
+| <*Odjemnik*> | Tak | Całkowita lub float | Liczba do odjęcie od *minuend* |
 |||||
 
 | Wartość zwracana | Typ | Opis |
 | ------------ | ---- | ----------- |
-| <> *wyników* | Liczba całkowita lub zmiennoprzecinkowa | Wynik odejmowania drugiej liczby od pierwszej liczby |
+| <*Wynik*> | Całkowita lub float | Wynik odejmowania drugiego numeru od pierwszej liczby |
 ||||
 
 *Przykład*
 
-Ten przykład odejmuje drugą liczbę od pierwszej liczby:
+W tym przykładzie odejmuje drugą liczbę od pierwszej liczby:
 
 ```
 sub(10.3, .3)
 ```
 
-I zwraca ten wynik: `10`
+I zwraca ten wynik:`10`
 
 <a name="substring"></a>
 
-### <a name="substring"></a>podciągu
+### <a name="substring"></a>Podciąg
 
 Zwraca znaki z ciągu, zaczynając od określonej pozycji lub indeksu.
 Wartości indeksu zaczynają się od liczby 0.
@@ -3861,32 +3861,32 @@ substring('<text>', <startIndex>, <length>)
 
 | Parametr | Wymagany | Typ | Opis |
 | --------- | -------- | ---- | ----------- |
-| <> *tekstu* | Yes | Ciąg | Ciąg, którego znaki mają być potrzebne. |
-| <*startIndex*> | Yes | Liczba całkowita | Liczba dodatnia równa lub większa od 0, która ma być używana jako pozycja początkowa lub wartość indeksu. |
-| *długość* <> | Yes | Liczba całkowita | Dodatnia liczba znaków, które mają być używane w podciągu. |
+| <*Tekst*> | Tak | Ciąg | Ciąg, którego znaki chcesz |
+| <*Startindex*> | Tak | Liczba całkowita | Liczba dodatnia równa lub większa niż 0, której chcesz użyć jako pozycji wyjściowej lub wartości indeksu |
+| <*Długość*> | Tak | Liczba całkowita | Dodatnia liczba znaków, które mają być w podciąg |
 |||||
 
 | Wartość zwracana | Typ | Opis |
 | ------------ | ---- | ----------- |
-| <*podciąg — wynik*> | Ciąg | Podciąg z określoną liczbą znaków, zaczynając od określonej pozycji indeksu w ciągu źródłowym. |
+| <*wynik podciągowy*> | Ciąg | Podciąg z określoną liczbą znaków, zaczynając od określonej pozycji indeksu w ciągu źródłowym |
 ||||
 
 *Przykład*
 
-Ten przykład tworzy znak podciągu pięć znaków z określonego ciągu, rozpoczynając od wartości indeksu 6:
+W tym przykładzie tworzy podciąg pięcioznakowy z określonego ciągu, zaczynając od wartości indeksu 6:
 
 ```
 substring('hello world', 6, 5)
 ```
 
-I zwraca ten wynik: `"world"`
+I zwraca ten wynik:`"world"`
 
 <a name="subtractFromTime"></a>
 
-### <a name="subtractfromtime"></a>subtractFromTime
+### <a name="subtractfromtime"></a>odejmowanieOdczasu
 
-Odejmij wiele jednostek czasu od sygnatury czasowej.
-Zobacz również [getPastTime](#getPastTime).
+Odejmij liczbę jednostek czasu od sygnatury czasowej.
+Zobacz też [getPastTime](#getPastTime).
 
 ```
 subtractFromTime('<timestamp>', <interval>, '<timeUnit>', '<format>'?)
@@ -3894,42 +3894,42 @@ subtractFromTime('<timestamp>', <interval>, '<timeUnit>', '<format>'?)
 
 | Parametr | Wymagany | Typ | Opis |
 | --------- | -------- | ---- | ----------- |
-| <*sygnatura czasowa*> | Yes | Ciąg | Ciąg zawierający sygnaturę czasową. |
-| *interwał* <> | Yes | Liczba całkowita | Liczba określonych jednostek czasu do odjęcia |
-| <*timeUnit*> | Yes | Ciąg | Jednostka czasu do użycia z *interwałem*: "sekunda", "minuta", "godzina", "dzień", "tydzień", "Month", "Year" |
-| <*format*> | Nie | Ciąg | [Pojedynczy specyfikator formatu](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) lub [wzorzec formatowania niestandardowego](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Domyślny format sygnatury czasowej to ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (RRRR-MM-DDTgg: mm: SS: fffffffK), który jest zgodny z [normą ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) i zachowuje informacje o strefie czasowej. |
+| <*Sygnatury czasowej*> | Tak | Ciąg | Ciąg zawierający sygnaturę czasowa |
+| <*Interwał*> | Tak | Liczba całkowita | Liczba określonych jednostek czasu do odjęciu |
+| <*jednostka czasowa*> | Tak | Ciąg | Jednostka czasu do użycia z *interwałem:*"Drugi", "Minuta", "Godzina", "Dzień", "Tydzień", "Miesiąc", "Rok" |
+| <*Formacie*> | Nie | Ciąg | Specyfikator [pojedynczego formatu](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) lub [wzorzec formatu niestandardowego](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Domyślnym formatem sygnatury czasowej jest ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-MM-ddTHH:mm:ss:fffffffK), który jest zgodny z [iso 8601](https://en.wikipedia.org/wiki/ISO_8601) i zachowuje informacje o strefie czasowej. |
 |||||
 
 | Wartość zwracana | Typ | Opis |
 | ------------ | ---- | ----------- |
-| <> *sygnatura czasowa aktualizacji* | Ciąg | Sygnatura czasowa pomniejszona o określoną liczbę jednostek czasu |
+| <*zaktualizowany sygnatura czasowa*> | Ciąg | Sygnatura czasowa pomniejszona o określoną liczbę jednostek czasu |
 ||||
 
 *Przykład 1*
 
-Ten przykład odejmuje jeden dzień od tej sygnatury czasowej:
+W tym przykładzie odejmuje jeden dzień od tego sygnatury czasowej:
 
 ```
 subtractFromTime('2018-01-02T00:00:00Z', 1, 'Day')
 ```
 
-I zwraca ten wynik: `"2018-01-01T00:00:00:0000000Z"`
+I zwraca ten wynik:`"2018-01-01T00:00:00:0000000Z"`
 
 *Przykład 2*
 
-Ten przykład odejmuje jeden dzień od tej sygnatury czasowej:
+W tym przykładzie odejmuje jeden dzień od tego sygnatury czasowej:
 
 ```
 subtractFromTime('2018-01-02T00:00:00Z', 1, 'Day', 'D')
 ```
 
-I zwraca ten wynik przy użyciu opcjonalnego formatu "D": `"Monday, January, 1, 2018"`
+I zwraca ten wynik przy użyciu opcjonalnego formatu "D":`"Monday, January, 1, 2018"`
 
 <a name="take"></a>
 
-### <a name="take"></a>czasochłonn
+### <a name="take"></a>wziąć
 
-Zwróć elementy z przodu kolekcji.
+Zwracaj przedmioty z przodu kolekcji.
 
 ```
 take('<collection>', <count>)
@@ -3938,35 +3938,35 @@ take([<collection>], <count>)
 
 | Parametr | Wymagany | Typ | Opis |
 | --------- | -------- | ---- | ----------- |
-| <*zbieranie*> | Yes | Ciąg lub tablica | Kolekcja, której elementy chcesz |
-| *liczba* <> | Yes | Liczba całkowita | Dodatnia liczba całkowita liczby elementów, które mają być od przodu |
+| <*Kolekcji*> | Tak | Ciąg lub tablica | Kolekcja, której elementy chcesz |
+| <*Liczba*> | Tak | Liczba całkowita | Dodatnia liczba całkowita dla liczby elementów, które mają od przodu |
 |||||
 
 | Wartość zwracana | Typ | Opis |
 | ------------ | ---- | ----------- |
-| *podzbiór*<> lub [*podzbiór*< >] | Odpowiednio ciąg lub tablicę | Ciąg lub tablica, która ma określoną liczbę elementów pobranych z przodu oryginalnej kolekcji |
+| <*> podzbioru* lub [<*podzbiór*>] | Ciąg lub tablica, odpowiednio | Ciąg lub tablica, która ma określoną liczbę elementów pobranych z przodu oryginalnej kolekcji |
 ||||
 
 *Przykład*
 
-Te przykłady pobierają określoną liczbę elementów z przodu tych kolekcji:
+Te przykłady uzyskać określoną liczbę elementów z przodu tych kolekcji:
 
 ```
 take('abcde', 3)
 take(createArray(0, 1, 2, 3, 4), 3)
 ```
 
-I zwróć następujące wyniki:
+I zwrócić te wyniki:
 
-* Pierwszy przykład: `"abc"`
-* Drugi przykład: `[0, 1, 2]`
+* Pierwszy przykład:`"abc"`
+* Drugi przykład:`[0, 1, 2]`
 
 <a name="ticks"></a>
 
-### <a name="ticks"></a>taktów
+### <a name="ticks"></a>Kleszcze
 
-Zwróć `ticks` wartość właściwości dla określonego sygnatury czasowej.
-*Cykl* jest interwałem 100-nanosekund.
+Zwraca `ticks` wartość właściwości dla określonej sygnatury czasowej.
+*Znacznik* to 100-nanosekundowy interwał.
 
 ```
 ticks('<timestamp>')
@@ -3974,19 +3974,19 @@ ticks('<timestamp>')
 
 | Parametr | Wymagany | Typ | Opis |
 | --------- | -------- | ---- | ----------- |
-| <*sygnatura czasowa*> | Yes | Ciąg | Ciąg dla sygnatury czasowej |
+| <*Sygnatury czasowej*> | Tak | Ciąg | Ciąg sygnatury czasowej |
 |||||
 
 | Wartość zwracana | Typ | Opis |
 | ------------ | ---- | ----------- |
-| <*Takty — liczba*> | Liczba całkowita | Liczba taktów od określonej sygnatury czasowej |
+| <*liczba znaczników*> | Liczba całkowita | Liczba znaczników od określonej sygnatury czasowej |
 ||||
 
 <a name="toLower"></a>
 
-### <a name="tolower"></a>toLower
+### <a name="tolower"></a>Tolower
 
-Zwraca ciąg w formacie małymi literami. Jeśli znak w ciągu nie ma małych wersji, ten znak pozostaje niezmieniony w zwracanym ciągu.
+Zwraca ciąg w formacie małych liter. Jeśli znak w ciągu nie ma wersji małych liter, ten znak pozostaje niezmieniony w zwracanym ciągu.
 
 ```
 toLower('<text>')
@@ -3994,29 +3994,29 @@ toLower('<text>')
 
 | Parametr | Wymagany | Typ | Opis |
 | --------- | -------- | ---- | ----------- |
-| <> *tekstu* | Yes | Ciąg | Ciąg do zwrócenia w formacie małymi literami |
+| <*Tekst*> | Tak | Ciąg | Ciąg do zwrócenia w formacie małych liter |
 |||||
 
 | Wartość zwracana | Typ | Opis |
 | ------------ | ---- | ----------- |
-| <*małe> tekstu* | Ciąg | Oryginalny ciąg w formacie małymi literami |
+| <*tekst przy małych literach*> | Ciąg | Oryginalny ciąg w formacie małych liter |
 ||||
 
 *Przykład*
 
-Ten przykład konwertuje ten ciąg na małe litery:
+W tym przykładzie konwertuje ten ciąg na małe litery:
 
 ```
 toLower('Hello World')
 ```
 
-I zwraca ten wynik: `"hello world"`
+I zwraca ten wynik:`"hello world"`
 
 <a name="toUpper"></a>
 
-### <a name="toupper"></a>toUpper
+### <a name="toupper"></a>Toupper
 
-Zwraca ciąg w formacie wielką literą. Jeśli znak w ciągu nie ma Wielkiej wersji, ten znak pozostaje niezmieniony w zwracanym ciągu.
+Zwraca ciąg wielkimi literami. Jeśli znak w ciągu nie ma wersji wielkich liter, ten znak pozostaje niezmieniony w zwróconym ciągu.
 
 ```
 toUpper('<text>')
@@ -4024,36 +4024,36 @@ toUpper('<text>')
 
 | Parametr | Wymagany | Typ | Opis |
 | --------- | -------- | ---- | ----------- |
-| <> *tekstu* | Yes | Ciąg | Ciąg do zwrócenia w formacie wielką literą |
+| <*Tekst*> | Tak | Ciąg | Ciąg do zwrócenia w formacie wielkich liter |
 |||||
 
 | Wartość zwracana | Typ | Opis |
 | ------------ | ---- | ----------- |
-| <*wielkie> tekstu* | Ciąg | Oryginalny ciąg w formacie wielką literą |
+| <*tekst wielkich liter*> | Ciąg | Oryginalny ciąg w formacie wielkich liter |
 ||||
 
 *Przykład*
 
-Ten przykład konwertuje ten ciąg na wielkie litery:
+W tym przykładzie konwertuje ten ciąg na wielkie litery:
 
 ```
 toUpper('Hello World')
 ```
 
-I zwraca ten wynik: `"HELLO WORLD"`
+I zwraca ten wynik:`"HELLO WORLD"`
 
 <a name="trigger"></a>
 
-### <a name="trigger"></a>uruchamiać
+### <a name="trigger"></a>Wyzwalacz
 
 Zwraca dane wyjściowe wyzwalacza w czasie wykonywania lub wartości z innych par nazw i wartości JSON, które można przypisać do wyrażenia.
 
-* W danych wejściowych wyzwalacza ta funkcja zwraca dane wyjściowe z poprzedniego wykonania.
+* Wewnątrz danych wejściowych wyzwalacza ta funkcja zwraca dane wyjściowe z poprzedniego wykonania.
 
-* W warunku wyzwalacza ta funkcja zwraca dane wyjściowe z bieżącego wykonania.
+* Wewnątrz warunku wyzwalacza ta funkcja zwraca dane wyjściowe z bieżącego wykonywania.
 
-Domyślnie funkcja odwołuje się do całego obiektu wyzwalacza, ale można opcjonalnie określić właściwość, której wartość chcesz.
-Ponadto ta funkcja ma dostępne wersje skrócone, zobacz [triggerOutputs ()](#triggerOutputs) i [triggerBody ()](#triggerBody).
+Domyślnie funkcja odwołuje się do całego obiektu wyzwalacza, ale opcjonalnie można określić właściwość, której wartość ma być.
+Ponadto ta funkcja ma dostępne wersje skrócone, zobacz [triggerOutputs()](#triggerOutputs) i [triggerBody()](#triggerBody).
 
 ```
 trigger()
@@ -4061,16 +4061,16 @@ trigger()
 
 | Wartość zwracana | Typ | Opis |
 | ------------ | ---- | ----------- |
-| <*wyzwalacz-wyjście*> | Ciąg | Dane wyjściowe wyzwalacza w czasie wykonywania |
+| <*wyjście wyzwalacza*> | Ciąg | Dane wyjściowe z wyzwalacza w czasie wykonywania |
 ||||
 
 <a name="triggerBody"></a>
 
-### <a name="triggerbody"></a>triggerBody
+### <a name="triggerbody"></a>triggerBody (Ciało wyzwalające)
 
-Zwraca dane wyjściowe wyzwalacza `body` w czasie wykonywania.
-Skrót `trigger().outputs.body`.
-Zobacz [wyzwalacz ()](#trigger).
+Zwraca dane wyjściowe `body` wyzwalacza w czasie wykonywania.
+Skrót do `trigger().outputs.body`.
+Zobacz [trigger()](#trigger).
 
 ```
 triggerBody()
@@ -4078,14 +4078,14 @@ triggerBody()
 
 | Wartość zwracana | Typ | Opis |
 | ------------ | ---- | ----------- |
-| *wyzwalacz <— dane wyjściowe*> | Ciąg | Dane wyjściowe `body` z wyzwalacza |
+| <*wyzwalacz-wyjście ciała*> | Ciąg | Wyjście `body` z wyzwalacza |
 ||||
 
 <a name="triggerFormDataMultiValues"></a>
 
 ### <a name="triggerformdatamultivalues"></a>triggerFormDataMultiValues
 
-Zwraca tablicę z wartościami, które pasują do nazwy klucza w *danych* wyjściowych formularza wyzwalacza *lub formularza.*
+Zwraca tablicę z wartościami, które pasują do nazwy klucza w danych *formularza* wyzwalacza lub danych *wyjściowych zakodowanych w formularzu.*
 
 ```
 triggerFormDataMultiValues('<key>')
@@ -4093,30 +4093,30 @@ triggerFormDataMultiValues('<key>')
 
 | Parametr | Wymagany | Typ | Opis |
 | --------- | -------- | ---- | ----------- |
-| > *klucza* < | Yes | Ciąg | Nazwa klucza, którego wartość chcesz wykonać. |
+| <*Klucz*> | Tak | Ciąg | Nazwa klucza, którego wartość ma być |
 |||||
 
 | Wartość zwracana | Typ | Opis |
 | ------------ | ---- | ----------- |
-| [<*Array-with-Key-values*>] | Tablica | Tablica ze wszystkimi wartościami, które pasują do określonego klucza |
+| [<> *tablica z wartościami klucza]* | Tablica | Tablica ze wszystkimi wartościami zgodnymi z określonym kluczem |
 ||||
 
 *Przykład*
 
-Ten przykład tworzy tablicę z wartości klucza "feedUrl" w danych wyjściowych formularza wyzwalacza RSS lub formularza:
+W tym przykładzie tworzy tablicę z wartości klucza "feedUrl" w wyzwalaczu RSS danych formularza lub danych zakodowanych w formularzu:
 
 ```
 triggerFormDataMultiValues('feedUrl')
 ```
 
-I zwraca tę tablicę jako przykładowy wynik: `["http://feeds.reuters.com/reuters/topNews"]`
+I zwraca tę tablicę jako przykładowy wynik:`["http://feeds.reuters.com/reuters/topNews"]`
 
 <a name="triggerFormDataValue"></a>
 
 ### <a name="triggerformdatavalue"></a>triggerFormDataValue
 
-Zwraca ciąg z pojedynczą wartością, która pasuje do nazwy klucza w danych wyjściowych *formularza* wyzwalacza lub *formularza.*
-Jeśli funkcja odnajdzie więcej niż jedno dopasowanie, funkcja zgłasza błąd.
+Zwraca ciąg z pojedynczą wartością, która pasuje do nazwy klucza w *danych formularza* wyzwalacza lub danych *wyjściowych zakodowanych w formularzu.*
+Jeśli funkcja znajdzie więcej niż jedno dopasowanie, funkcja zgłasza błąd.
 
 ```
 triggerFormDataValue('<key>')
@@ -4124,29 +4124,29 @@ triggerFormDataValue('<key>')
 
 | Parametr | Wymagany | Typ | Opis |
 | --------- | -------- | ---- | ----------- |
-| > *klucza* < | Yes | Ciąg | Nazwa klucza, którego wartość chcesz wykonać. |
+| <*Klucz*> | Tak | Ciąg | Nazwa klucza, którego wartość ma być |
 |||||
 
 | Wartość zwracana | Typ | Opis |
 | ------------ | ---- | ----------- |
-| <*klucz-wartość*> | Ciąg | Wartość w określonym kluczu |
+| <*wartość klucza*> | Ciąg | Wartość w określonym kluczu |
 ||||
 
 *Przykład*
 
-Ten przykład tworzy ciąg z wartości klucza "feedUrl" w danych wyjściowych formularza wyzwalacza RSS lub formularza:
+W tym przykładzie tworzy ciąg z wartości klucza "feedUrl" w wyzwalaczu RSS danych formularza lub danych zakodowanych w formularzu:
 
 ```
 triggerFormDataValue('feedUrl')
 ```
 
-I zwraca ten ciąg jako przykładowy wynik: `"http://feeds.reuters.com/reuters/topNews"`
+I zwraca ten ciąg jako przykładowy wynik:`"http://feeds.reuters.com/reuters/topNews"`
 
 <a name="triggerMultipartBody"></a>
 
 ### <a name="triggermultipartbody"></a>triggerMultipartBody
 
-Zwróć treść określonej części w danych wyjściowych wyzwalacza, który ma wiele części.
+Zwraca obiekt dla określonej części w danych wyjściowych wyzwalacza, który ma wiele części.
 
 ```
 triggerMultipartBody(<index>)
@@ -4154,12 +4154,12 @@ triggerMultipartBody(<index>)
 
 | Parametr | Wymagany | Typ | Opis |
 | --------- | -------- | ---- | ----------- |
-| > *indeksu* < | Yes | Liczba całkowita | Wartość indeksu dla potrzebnej części |
+| <*Indeks*> | Tak | Liczba całkowita | Wartość indeksu dla części, którą chcesz |
 |||||
 
 | Wartość zwracana | Typ | Opis |
 | ------------ | ---- | ----------- |
-| <*treści*> | Ciąg | Treść określonej części w wyzwalaczu z wieloczęściowym wynikiem |
+| <*Ciała*> | Ciąg | Treść określonej części w wieloczęściowym wyjściu wyzwalacza |
 ||||
 
 <a name="triggerOutputs"></a>
@@ -4167,8 +4167,8 @@ triggerMultipartBody(<index>)
 ### <a name="triggeroutputs"></a>triggerOutputs
 
 Zwraca dane wyjściowe wyzwalacza w czasie wykonywania lub wartości z innych par nazw i wartości JSON.
-Skrót `trigger().outputs`.
-Zobacz [wyzwalacz ()](#trigger).
+Skrót do `trigger().outputs`.
+Zobacz [trigger()](#trigger).
 
 ```
 triggerOutputs()
@@ -4176,14 +4176,14 @@ triggerOutputs()
 
 | Wartość zwracana | Typ | Opis |
 | ------------ | ---- | ----------- |
-| <*wyzwalacz-wyjście*> | Ciąg | Dane wyjściowe wyzwalacza w czasie wykonywania  |
+| <*wyjście wyzwalacza*> | Ciąg | Dane wyjściowe z wyzwalacza w czasie wykonywania  |
 ||||
 
 <a name="trim"></a>
 
-### <a name="trim"></a>trim
+### <a name="trim"></a>Przycinanie
 
-Usuń spacje wiodące i końcowe z ciągu, a następnie Zwróć zaktualizowany ciąg.
+Usuń interweniujący i końcowy biały znak z ciągu i zwraca zaktualizowany ciąg.
 
 ```
 trim('<text>')
@@ -4191,30 +4191,30 @@ trim('<text>')
 
 | Parametr | Wymagany | Typ | Opis |
 | --------- | -------- | ---- | ----------- |
-| <> *tekstu* | Yes | Ciąg | Ciąg, który zawiera spacje wiodące i końcowe do usunięcia |
+| <*Tekst*> | Tak | Ciąg | Ciąg, który ma interweniujący i końcowy biały, aby usunąć |
 |||||
 
 | Wartość zwracana | Typ | Opis |
 | ------------ | ---- | ----------- |
-| <*updatedText*> | Ciąg | Zaktualizowana wersja oryginalnego ciągu bez spacji wiodących lub końcowych |
+| <*updatedText*> | Ciąg | Zaktualizowana wersja oryginalnego ciągu bez interlinia lub końcowego odstępu |
 ||||
 
 *Przykład*
 
-Ten przykład usuwa spacje wiodące i końcowe z ciągu "Hello world":
+W tym przykładzie usuwa interweniujący i końcowy biały z ciągu " Hello World ":
 
 ```
 trim(' Hello World  ')
 ```
 
-I zwraca ten wynik: `"Hello World"`
+I zwraca ten wynik:`"Hello World"`
 
 <a name="union"></a>
 
-### <a name="union"></a>Unii
+### <a name="union"></a>unia
 
-Zwraca kolekcję zawierającą *wszystkie* elementy z określonych kolekcji.
-Aby pojawił się w wyniku, element może pojawić się w dowolnej kolekcji przekazaną do tej funkcji. Jeśli co najmniej jeden element ma taką samą nazwę, w wyniku zostanie wyświetlony ostatni element o tej nazwie.
+Zwraca kolekcję, która ma *wszystkie* elementy z określonych kolekcji.
+Aby pojawić się w wyniku, element może pojawić się w dowolnej kolekcji przekazane do tej funkcji. Jeśli jeden lub więcej elementów ma taką samą nazwę, ostatni element o tej nazwie pojawia się w wyniku.
 
 ```
 union('<collection1>', '<collection2>', ...)
@@ -4223,31 +4223,31 @@ union([<collection1>], [<collection2>], ...)
 
 | Parametr | Wymagany | Typ | Opis |
 | --------- | -------- | ---- | ----------- |
-| <*kolekcji collection1*>, <*Collection2*>,...  | Yes | Tablica lub obiekt, ale nie oba | Kolekcje, z których mają być *wszystkie* elementy |
+| <*kolekcja1*>, *kolekcja <2*>, ...  | Tak | Tablica lub obiekt, ale nie oba | Kolekcje, z których mają być *wszystkie* elementy |
 |||||
 
 | Wartość zwracana | Typ | Opis |
 | ------------ | ---- | ----------- |
-| <*zaktualizowana*> | Odpowiednio tablica lub obiekt | Kolekcja zawierająca wszystkie elementy z określonych kolekcji — brak duplikatów |
+| <*aktualizacjaCollection*> | Tablica lub obiekt, odpowiednio | Kolekcja ze wszystkimi elementami z określonych kolekcji — bez duplikatów |
 ||||
 
 *Przykład*
 
-Ten przykład pobiera *wszystkie* elementy z tych kolekcji:
+W tym przykładzie pobiera *wszystkie* elementy z tych kolekcji:
 
 ```
 union(createArray(1, 2, 3), createArray(1, 2, 10, 101))
 ```
 
-I zwraca ten wynik: `[1, 2, 3, 10, 101]`
+I zwraca ten wynik:`[1, 2, 3, 10, 101]`
 
 <a name="uriComponent"></a>
 
 ### <a name="uricomponent"></a>uriComponent
 
-Zwróć jednolity identyfikator zasobów (URI) dla ciągu przez zastępowanie znaków w adresie URL bez znaku ucieczki.
-Użyj tej funkcji zamiast [encodeURIComponent — ()](#encodeUriComponent).
-Chociaż obie funkcje działają tak samo, `uriComponent()` jest preferowane.
+Zwraca wersję zakodowaną w jednolitym identyfikatorze zasobu (URI) dla ciągu, zastępując znaki niebezpieczne dla adresów URL znakami ucieczki.
+Użyj tej funkcji, a nie [encodeUriComponent()](#encodeUriComponent).
+Chociaż obie funkcje działają `uriComponent()` w ten sam sposób, jest preferowany.
 
 ```
 uriComponent('<value>')
@@ -4255,29 +4255,29 @@ uriComponent('<value>')
 
 | Parametr | Wymagany | Typ | Opis |
 | --------- | -------- | ---- | ----------- |
-| <*wartość*> | Yes | Ciąg | Ciąg do przekonwertowania na format zakodowany przy użyciu identyfikatora URI |
+| <*Wartość*> | Tak | Ciąg | Ciąg do konwersji do formatu zakodowanego na URI |
 |||||
 
 | Wartość zwracana | Typ | Opis |
 | ------------ | ---- | ----------- |
-| <*zakodowany> URI* | Ciąg | Ciąg znaków w formacie URI z znakami ucieczki |
+| <*zakodowane-uri*> | Ciąg | Ciąg zakodowany w kodach URI ze znakami ucieczki |
 ||||
 
 *Przykład*
 
-W tym przykładzie tworzona jest wersja zakodowana przy użyciu identyfikatora URI dla tego ciągu:
+W tym przykładzie tworzy wersję zakodowaną w identyfikatorze URI dla tego ciągu:
 
 ```
 uriComponent('https://contoso.com')
 ```
 
-I zwraca ten wynik: `"http%3A%2F%2Fcontoso.com"`
+I zwraca ten wynik:`"http%3A%2F%2Fcontoso.com"`
 
 <a name="uriComponentToBinary"></a>
 
 ### <a name="uricomponenttobinary"></a>uriComponentToBinary
 
-Zwróć wersję binarną dla składnika Uniform Resource Identifier (URI).
+Zwraca wersję binarną dla składnika jednolitego identyfikatora zasobu (URI).
 
 ```
 uriComponentToBinary('<value>')
@@ -4285,17 +4285,17 @@ uriComponentToBinary('<value>')
 
 | Parametr | Wymagany | Typ | Opis |
 | --------- | -------- | ---- | ----------- |
-| <*wartość*> | Yes | Ciąg | Ciąg zakodowany przy użyciu identyfikatora URI do przekonwertowania |
+| <*Wartość*> | Tak | Ciąg | Ciąg zakodowany w kodowaniu URI do konwersji |
 |||||
 
 | Wartość zwracana | Typ | Opis |
 | ------------ | ---- | ----------- |
-| <> *identyfikatorów URI w formacie binarnym* | Ciąg | Wersja binarna dla ciągu zakodowanego przy użyciu identyfikatora URI. Zawartość binarna jest zakodowana algorytmem Base64 i reprezentowana przez `$content`. |
+| <*bin-for-encoded-uri*> | Ciąg | Wersja binarna dla ciągu zakodowanego zgodnie z identyfikatorem URI. Zawartość binarna jest zakodowana w formacie `$content`base64 i reprezentowana przez program . |
 ||||
 
 *Przykład*
 
-W tym przykładzie tworzona jest wersja binarna dla tego ciągu zakodowanego przy użyciu identyfikatora URI:
+W tym przykładzie tworzy wersję binarną dla tego ciągu zakodowanego na identyfikatorze URI:
 
 ```
 uriComponentToBinary('http%3A%2F%2Fcontoso.com')
@@ -4312,7 +4312,7 @@ I zwraca ten wynik:
 
 ### <a name="uricomponenttostring"></a>uriComponentToString
 
-Zwróć wersję ciągu dla zakodowanego ciągu identyfikatora URI (Uniform Resource Identifier) w celu efektywnego dekodowania ciągu zakodowanego przy użyciu identyfikatora URI.
+Zwraca wersję ciągu dla jednolitego identyfikatora zasobu (URI) zakodowanego ciągu, skutecznie dekodując ciąg zakodowany w identyfikatorze URI.
 
 ```
 uriComponentToString('<value>')
@@ -4320,29 +4320,29 @@ uriComponentToString('<value>')
 
 | Parametr | Wymagany | Typ | Opis |
 | --------- | -------- | ---- | ----------- |
-| <*wartość*> | Yes | Ciąg | Ciąg zakodowany przy użyciu identyfikatora URI, który ma zostać zdekodowany |
+| <*Wartość*> | Tak | Ciąg | Ciąg zakodowany w kodowanie identyfikatorów URI do dekodowania |
 |||||
 
 | Wartość zwracana | Typ | Opis |
 | ------------ | ---- | ----------- |
-| <*zdekodowana-uri*> | Ciąg | Zdekodowana wersja dla ciągu zakodowanego przy użyciu identyfikatora URI |
+| <*dekodowane-uri*> | Ciąg | Zdekodowana wersja dla ciągu zakodowanego zgodnie z identyfikatorem URI |
 ||||
 
 *Przykład*
 
-Ten przykład tworzy zdekodowaną wersję ciągu dla tego ciągu kodowanego URI:
+W tym przykładzie tworzy zdekodowaną wersję ciągu dla tego ciągu zakodowanego w uisięcowym:
 
 ```
 uriComponentToString('http%3A%2F%2Fcontoso.com')
 ```
 
-I zwraca ten wynik: `"https://contoso.com"`
+I zwraca ten wynik:`"https://contoso.com"`
 
 <a name="uriHost"></a>
 
 ### <a name="urihost"></a>uriHost
 
-Zwróć wartość `host` dla identyfikatora URI (Uniform Resource Identifier).
+Zwraca `host` wartość jednolitego identyfikatora zasobu (URI).
 
 ```
 uriHost('<uri>')
@@ -4350,29 +4350,29 @@ uriHost('<uri>')
 
 | Parametr | Wymagany | Typ | Opis |
 | --------- | -------- | ---- | ----------- |
-| <> *URI* | Yes | Ciąg | Identyfikator URI, którego wartość `host` chcesz |
+| <*Identyfikator uri*> | Tak | Ciąg | Identyfikator URI, którego `host` wartość ma zostać |
 |||||
 
 | Wartość zwracana | Typ | Opis |
 | ------------ | ---- | ----------- |
-| <*wartość hosta*> | Ciąg | Wartość `host` dla określonego identyfikatora URI |
+| <*wartość hosta*> | Ciąg | Wartość `host` określonego identyfikatora URI |
 ||||
 
 *Przykład*
 
-Ten przykład umożliwia znalezienie wartości `host` dla tego identyfikatora URI:
+W tym `host` przykładzie znajduje wartość dla tego identyfikatora URI:
 
 ```
 uriHost('https://www.localhost.com:8080')
 ```
 
-I zwraca ten wynik: `"www.localhost.com"`
+I zwraca ten wynik:`"www.localhost.com"`
 
 <a name="uriPath"></a>
 
-### <a name="uripath"></a>uriPath
+### <a name="uripath"></a>uriPath (ścieżka uripath)
 
-Zwróć wartość `path` dla identyfikatora URI (Uniform Resource Identifier).
+Zwraca `path` wartość jednolitego identyfikatora zasobu (URI).
 
 ```
 uriPath('<uri>')
@@ -4380,29 +4380,29 @@ uriPath('<uri>')
 
 | Parametr | Wymagany | Typ | Opis |
 | --------- | -------- | ---- | ----------- |
-| <> *URI* | Yes | Ciąg | Identyfikator URI, którego wartość `path` chcesz |
+| <*Identyfikator uri*> | Tak | Ciąg | Identyfikator URI, którego `path` wartość ma zostać |
 |||||
 
 | Wartość zwracana | Typ | Opis |
 | ------------ | ---- | ----------- |
-| <*Path-value*> | Ciąg | Wartość `path` dla określonego identyfikatora URI. Jeśli `path` nie ma wartości, zwróć znak "/". |
+| <*wartość ścieżki*> | Ciąg | Wartość `path` dla określonego identyfikatora URI. Jeśli `path` nie ma wartości, zwróć znak "/". |
 ||||
 
 *Przykład*
 
-Ten przykład umożliwia znalezienie wartości `path` dla tego identyfikatora URI:
+W tym `path` przykładzie znajduje wartość dla tego identyfikatora URI:
 
 ```
 uriPath('http://www.contoso.com/catalog/shownew.htm?date=today')
 ```
 
-I zwraca ten wynik: `"/catalog/shownew.htm"`
+I zwraca ten wynik:`"/catalog/shownew.htm"`
 
 <a name="uriPathAndQuery"></a>
 
-### <a name="uripathandquery"></a>uriPathAndQuery
+### <a name="uripathandquery"></a>uriPathAndQuery (uriPathAndQuery)
 
-Zwróć wartości `path` i `query` dla identyfikatora URI (Uniform Resource Identifier).
+Zwraca `path` wartości `query` i dla jednolitego identyfikatora zasobu (URI).
 
 ```
 uriPathAndQuery('<uri>')
@@ -4410,29 +4410,29 @@ uriPathAndQuery('<uri>')
 
 | Parametr | Wymagany | Typ | Opis |
 | --------- | -------- | ---- | ----------- |
-| <> *URI* | Yes | Ciąg | Identyfikator URI, którego wartości `path` i `query` mają być |
+| <*Identyfikator uri*> | Tak | Ciąg | Identyfikator URI, którego `path` i `query` wartości chcesz |
 |||||
 
 | Wartość zwracana | Typ | Opis |
 | ------------ | ---- | ----------- |
-| *ścieżka <—> wartości zapytania* | Ciąg | `path` i `query` wartości dla określonego identyfikatora URI. Jeśli `path` nie określa wartości, zwróć znak "/". |
+| <*wartość-zapytanie ścieżki*> | Ciąg | I `path` `query` wartości dla określonego identyfikatora URI. Jeśli `path` nie określi wartości, zwróć znak "/". |
 ||||
 
 *Przykład*
 
-Ten przykład umożliwia znalezienie wartości `path` i `query` dla tego identyfikatora URI:
+W tym `path` przykładzie znajduje się i `query` wartości dla tego identyfikatora URI:
 
 ```
 uriPathAndQuery('http://www.contoso.com/catalog/shownew.htm?date=today')
 ```
 
-I zwraca ten wynik: `"/catalog/shownew.htm?date=today"`
+I zwraca ten wynik:`"/catalog/shownew.htm?date=today"`
 
 <a name="uriPort"></a>
 
-### <a name="uriport"></a>uriPort
+### <a name="uriport"></a>uriPort (port uriport)
 
-Zwróć wartość `port` dla identyfikatora URI (Uniform Resource Identifier).
+Zwraca `port` wartość jednolitego identyfikatora zasobu (URI).
 
 ```
 uriPort('<uri>')
@@ -4440,29 +4440,29 @@ uriPort('<uri>')
 
 | Parametr | Wymagany | Typ | Opis |
 | --------- | -------- | ---- | ----------- |
-| <> *URI* | Yes | Ciąg | Identyfikator URI, którego wartość `port` chcesz |
+| <*Identyfikator uri*> | Tak | Ciąg | Identyfikator URI, którego `port` wartość ma zostać |
 |||||
 
 | Wartość zwracana | Typ | Opis |
 | ------------ | ---- | ----------- |
-| <> *wartości portu* | Liczba całkowita | Wartość `port` dla określonego identyfikatora URI. Jeśli `port` nie określi wartości, zwróć domyślny port dla protokołu. |
+| <*wartość portu*> | Liczba całkowita | Wartość `port` dla określonego identyfikatora URI. Jeśli `port` nie określi wartości, zwróć domyślny port protokołu. |
 ||||
 
 *Przykład*
 
-Ten przykład zwraca wartość `port` dla tego identyfikatora URI:
+W tym `port` przykładzie zwraca wartość dla tego identyfikatora URI:
 
 ```
 uriPort('http://www.localhost:8080')
 ```
 
-I zwraca ten wynik: `8080`
+I zwraca ten wynik:`8080`
 
 <a name="uriQuery"></a>
 
 ### <a name="uriquery"></a>uriQuery
 
-Zwróć wartość `query` dla identyfikatora URI (Uniform Resource Identifier).
+Zwraca `query` wartość jednolitego identyfikatora zasobu (URI).
 
 ```
 uriQuery('<uri>')
@@ -4470,29 +4470,29 @@ uriQuery('<uri>')
 
 | Parametr | Wymagany | Typ | Opis |
 | --------- | -------- | ---- | ----------- |
-| <> *URI* | Yes | Ciąg | Identyfikator URI, którego wartość `query` chcesz |
+| <*Identyfikator uri*> | Tak | Ciąg | Identyfikator URI, którego `query` wartość ma zostać |
 |||||
 
 | Wartość zwracana | Typ | Opis |
 | ------------ | ---- | ----------- |
-| <> *wartości zapytania* | Ciąg | Wartość `query` dla określonego identyfikatora URI |
+| <*wartość zapytania*> | Ciąg | Wartość `query` określonego identyfikatora URI |
 ||||
 
 *Przykład*
 
-Ten przykład zwraca wartość `query` dla tego identyfikatora URI:
+W tym `query` przykładzie zwraca wartość dla tego identyfikatora URI:
 
 ```
 uriQuery('http://www.contoso.com/catalog/shownew.htm?date=today')
 ```
 
-I zwraca ten wynik: `"?date=today"`
+I zwraca ten wynik:`"?date=today"`
 
 <a name="uriScheme"></a>
 
-### <a name="urischeme"></a>UriScheme
+### <a name="urischeme"></a>uriScheme
 
-Zwróć wartość `scheme` dla identyfikatora URI (Uniform Resource Identifier).
+Zwraca `scheme` wartość jednolitego identyfikatora zasobu (URI).
 
 ```
 uriScheme('<uri>')
@@ -4500,72 +4500,72 @@ uriScheme('<uri>')
 
 | Parametr | Wymagany | Typ | Opis |
 | --------- | -------- | ---- | ----------- |
-| <> *URI* | Yes | Ciąg | Identyfikator URI, którego wartość `scheme` chcesz |
+| <*Identyfikator uri*> | Tak | Ciąg | Identyfikator URI, którego `scheme` wartość ma zostać |
 |||||
 
 | Wartość zwracana | Typ | Opis |
 | ------------ | ---- | ----------- |
-| <*schemat-wartość*> | Ciąg | Wartość `scheme` dla określonego identyfikatora URI |
+| <*wartość schematu*> | Ciąg | Wartość `scheme` określonego identyfikatora URI |
 ||||
 
 *Przykład*
 
-Ten przykład zwraca wartość `scheme` dla tego identyfikatora URI:
+W tym `scheme` przykładzie zwraca wartość dla tego identyfikatora URI:
 
 ```
 uriScheme('http://www.contoso.com/catalog/shownew.htm?date=today')
 ```
 
-I zwraca ten wynik: `"http"`
+I zwraca ten wynik:`"http"`
 
 <a name="utcNow"></a>
 
-### <a name="utcnow"></a>utcNow
+### <a name="utcnow"></a>Utcnow
 
-Zwróć bieżącą sygnaturę czasową.
+Zwraca bieżącą sygnaturę czasną.
 
 ```
 utcNow('<format>')
 ```
 
-Opcjonalnie można określić inny format z parametrem > <*Format*.
+Opcjonalnie można określić inny format za pomocą parametru> *formatu* <.
 
 
 | Parametr | Wymagany | Typ | Opis |
 | --------- | -------- | ---- | ----------- |
-| <*format*> | Nie | Ciąg | [Pojedynczy specyfikator formatu](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) lub [wzorzec formatowania niestandardowego](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Domyślny format sygnatury czasowej to ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (RRRR-MM-DDTgg: mm: SS: fffffffK), który jest zgodny z [normą ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) i zachowuje informacje o strefie czasowej. |
+| <*Formacie*> | Nie | Ciąg | Specyfikator [pojedynczego formatu](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) lub [wzorzec formatu niestandardowego](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Domyślnym formatem sygnatury czasowej jest ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-MM-ddTHH:mm:ss:fffffffK), który jest zgodny z [iso 8601](https://en.wikipedia.org/wiki/ISO_8601) i zachowuje informacje o strefie czasowej. |
 |||||
 
 | Wartość zwracana | Typ | Opis |
 | ------------ | ---- | ----------- |
-| <*sygnatura czasowa current*> | Ciąg | Bieżąca data i godzina |
+| <*sygnatura bieżącego czasu*> | Ciąg | Bieżąca data i godzina |
 ||||
 
 *Przykład 1*
 
-Załóżmy, że dzisiaj to 15 kwietnia 2018 o 1:00:00 PM.
-Ten przykład pobiera bieżącą sygnaturę czasową:
+Załóżmy, że dzisiaj jest 15 kwietnia 2018 o 13:00:00.
+W tym przykładzie pobiera bieżącą sygnaturę czasą:
 
 ```
 utcNow()
 ```
 
-I zwraca ten wynik: `"2018-04-15T13:00:00.0000000Z"`
+I zwraca ten wynik:`"2018-04-15T13:00:00.0000000Z"`
 
 *Przykład 2*
 
-Załóżmy, że dzisiaj to 15 kwietnia 2018 o 1:00:00 PM.
-Ten przykład pobiera bieżącą sygnaturę czasową przy użyciu opcjonalnego formatu "D":
+Załóżmy, że dzisiaj jest 15 kwietnia 2018 o 13:00:00.
+W tym przykładzie pobiera bieżący znacznik czasu przy użyciu opcjonalnego formatu "D":
 
 ```
 utcNow('D')
 ```
 
-I zwraca ten wynik: `"Sunday, April 15, 2018"`
+I zwraca ten wynik:`"Sunday, April 15, 2018"`
 
 <a name="variables"></a>
 
-### <a name="variables"></a>zmienne
+### <a name="variables"></a>Zmiennych
 
 Zwraca wartość dla określonej zmiennej.
 
@@ -4575,30 +4575,30 @@ variables('<variableName>')
 
 | Parametr | Wymagany | Typ | Opis |
 | --------- | -------- | ---- | ----------- |
-| <*zmiennaname*> | Yes | Ciąg | Nazwa zmiennej, której wartość chcesz wykonać. |
+| <*Variablename*> | Tak | Ciąg | Nazwa zmiennej, której wartość ma być |
 |||||
 
 | Wartość zwracana | Typ | Opis |
 | ------------ | ---- | ----------- |
-| <*wartość zmiennej*> | Dowolne | Wartość dla określonej zmiennej |
+| <*wartość zmienna*> | Dowolne | Wartość dla określonej zmiennej |
 ||||
 
 *Przykład*
 
-Załóżmy, że bieżąca wartość dla zmiennej "numItems" wynosi 20.
-Ten przykład pobiera wartość całkowitą dla tej zmiennej:
+Załóżmy, że bieżąca wartość zmiennej "numItems" wynosi 20.
+W tym przykładzie pobiera wartość całkowitą dla tej zmiennej:
 
 ```
 variables('numItems')
 ```
 
-I zwraca ten wynik: `20`
+I zwraca ten wynik:`20`
 
 <a name="workflow"></a>
 
 ### <a name="workflow"></a>przepływ pracy
 
-Zwróć wszystkie szczegóły dotyczące przepływu pracy w czasie wykonywania.
+Zwraca wszystkie szczegóły dotyczące samego przepływu pracy w czasie wykonywania.
 
 ```
 workflow().<property>
@@ -4606,12 +4606,12 @@ workflow().<property>
 
 | Parametr | Wymagany | Typ | Opis |
 | --------- | -------- | ---- | ----------- |
-| <*właściwość*> | Nie | Ciąg | Nazwa właściwości przepływu pracy, której wartość ma być <p>Obiekt przepływu pracy ma następujące właściwości: **name**, **Type**, **ID**, **Location**i **Run**. Wartość właściwości **Run** jest również obiektem, który ma następujące właściwości: **name**, **Type**i **ID**. |
+| <*Właściwość*> | Nie | Ciąg | Nazwa właściwości przepływu pracy, której wartość ma być <p>Obiekt przepływu pracy ma następujące właściwości: **nazwa**, **typ**, **id**, **lokalizacja**i **uruchom**. Wartość właściwości **run** jest również obiektem o następujących właściwościach: **name**, **type**i **id**. |
 |||||
 
 *Przykład*
 
-Ten przykład zwraca nazwę bieżącego przebiegu przepływu pracy:
+W tym przykładzie zwraca nazwę bieżącego przebiegu przepływu pracy:
 
 ```
 workflow().run.name
@@ -4621,7 +4621,7 @@ workflow().run.name
 
 ### <a name="xml"></a>xml
 
-Zwróć wersję XML dla ciągu, który zawiera obiekt JSON.
+Zwraca wersję XML dla ciągu zawierającego obiekt JSON.
 
 ```
 xml('<value>')
@@ -4629,17 +4629,17 @@ xml('<value>')
 
 | Parametr | Wymagany | Typ | Opis |
 | --------- | -------- | ---- | ----------- |
-| <*wartość*> | Yes | Ciąg | Ciąg z obiektem JSON do przekonwertowania <p>Obiekt JSON musi mieć tylko jedną właściwość root, która nie może być tablicą. <br>Użyj znaku ukośnika odwrotnego (\\) jako znaku ucieczki dla podwójnego cudzysłowu ("). |
+| <*Wartość*> | Tak | Ciąg | Ciąg z obiektem JSON do konwersji <p>Obiekt JSON musi mieć tylko jedną właściwość główną, która nie może być tablicą. <br>Użyj znaku ukośnika odwrotnego (\\) jako znaku ucieczki dla znaku podwójnego cudzysłowu ("). |
 |||||
 
 | Wartość zwracana | Typ | Opis |
 | ------------ | ---- | ----------- |
-| <> w *wersji XML* | Obiekt | Zakodowany kod XML dla określonego ciągu lub obiektu JSON. |
+| <*wersja xml*> | Obiekt | Zakodowany kod XML dla określonego ciągu lub obiektu JSON |
 ||||
 
 *Przykład 1*
 
-W tym przykładzie jest tworzona wersja XML dla tego ciągu, który zawiera obiekt JSON:
+W tym przykładzie tworzy wersję XML dla tego ciągu, który zawiera obiekt JSON:
 
 `xml(json('{ \"name\": \"Sophia Owen\" }'))`
 
@@ -4662,7 +4662,7 @@ Załóżmy, że masz ten obiekt JSON:
 }
 ```
 
-Ten przykład tworzy kod XML dla ciągu, który zawiera ten obiekt JSON:
+W tym przykładzie tworzy XML dla ciągu, który zawiera ten obiekt JSON:
 
 `xml(json('{\"person\": {\"name\": \"Sophia Owen\", \"city\": \"Seattle\"}}'))`
 
@@ -4677,9 +4677,9 @@ I zwraca ten wynik XML:
 
 <a name="xpath"></a>
 
-### <a name="xpath"></a>Lokalizacja
+### <a name="xpath"></a>Xpath
 
-Sprawdź XML dla węzłów lub wartości, które pasują do wyrażenia XPath (język ścieżki XML) i zwracają pasujące węzły lub wartości. Wyrażenie XPath lub "XPath" ułatwia nawigowanie po strukturze dokumentu XML, dzięki czemu można wybrać węzły lub wartości obliczeniowe w zawartości XML.
+Sprawdź xml dla węzłów lub wartości, które pasują do wyrażenia XPath (XML Path Language) i zwraca pasujące węzły lub wartości. Wyrażenie XPath lub po prostu "XPath" ułatwia poruszanie się po strukturze dokumentu XML, dzięki czemu można wybrać węzły lub wartości obliczeniowe w zawartości XML.
 
 ```
 xpath('<xml>', '<xpath>')
@@ -4687,62 +4687,62 @@ xpath('<xml>', '<xpath>')
 
 | Parametr | Wymagany | Typ | Opis |
 | --------- | -------- | ---- | ----------- |
-| > <*XML* | Yes | Dowolne | Ciąg XML służący do wyszukiwania węzłów lub wartości, które pasują do wartości wyrażenia XPath. |
-| <> *XPath* | Yes | Dowolne | Wyrażenie XPath używane do znajdowania pasujących węzłów lub wartości XML |
+| <*Xml*> | Tak | Dowolne | Ciąg XML do wyszukiwania węzłów lub wartości zgodnych z wartością wyrażenia XPath |
+| <*Xpath*> | Tak | Dowolne | Wyrażenie XPath używane do znajdowania pasujących węzłów lub wartości XML |
 |||||
 
 | Wartość zwracana | Typ | Opis |
 | ------------ | ---- | ----------- |
-| <> *węzła XML* | {1&gt;XML&lt;1} | Węzeł XML, gdy tylko jeden węzeł pasuje do określonego wyrażenia XPath |
-| <*wartość*> | Dowolne | Wartość z węzła XML, gdy tylko jedna wartość jest zgodna z określonym wyrażeniem XPath |
-| [<*XML-węzeł1*>, <*xml-Węzeł2*>,...] </br>— lub — </br>[<*wartość1*>, <*wartość2*>,...] | Tablica | Tablica z węzłami lub wartościami XML, które pasują do określonego wyrażenia XPath |
+| <*xml-węzeł*> | XML | Węzeł XML, gdy tylko jeden węzeł pasuje do określonego wyrażenia XPath |
+| <*Wartość*> | Dowolne | Wartość z węzła XML, gdy tylko pojedyncza wartość jest zgodna z określonym wyrażeniem XPath |
+| [<> *xml-node1,* <> *xml-node2,* ...] </br>— lub — </br>[<*wartość1*>, <*wartość2*>, ...] | Tablica | Tablica z węzłami lub wartościami XML zgodnymi z określonym wyrażeniem XPath |
 ||||
 
 *Przykład 1*
 
-Ten przykład umożliwia znalezienie węzłów, które pasują do węzła `<name></name>` w określonych argumentach, i zwraca tablicę z tymi wartościami węzła:
+W tym przykładzie znajduje `<name></name>` się węzły, które pasują do węzła w określonych argumentów i zwraca tablicę z tymi wartościami węzła:
 
 `xpath(xml(parameters('items')), '/produce/item/name')`
 
 Oto argumenty:
 
-* Ciąg "Items", który zawiera ten kod XML:
+* Ciąg "items", który zawiera ten kod XML:
 
   `"<?xml version="1.0"?> <produce> <item> <name>Gala</name> <type>apple</type> <count>20</count> </item> <item> <name>Honeycrisp</name> <type>apple</type> <count>10</count> </item> </produce>"`
 
-  W przykładzie użyto funkcji [Parameters ()](#parameters) , aby uzyskać ciąg XML z argumentu "Items", ale musi także przekonwertować ciąg na format XML przy użyciu funkcji [XML ()](#xml) .
+  W przykładzie użyto funkcji [parameters(),](#parameters) aby uzyskać ciąg XML z argumentu "items", ale musi również przekonwertować ciąg na format XML za pomocą funkcji [xml().](#xml)
 
-* To wyrażenie XPath, które jest przesyłane jako ciąg:
+* To wyrażenie XPath, które jest przekazywane jako ciąg:
 
   `"/produce/item/name"`
 
-Oto tablica wyników z węzłami, które pasują `<name></name`:
+Oto tablica wyników z węzłami, które pasują `<name></name`do:
 
 `[ <name>Gala</name>, <name>Honeycrisp</name> ]`
 
 *Przykład 2*
 
-Jak pokazano na przykładzie 1, ten przykład odnajduje węzły, które pasują do węzła `<count></count>` i dodaje te wartości węzłów za pomocą funkcji `sum()`:
+W poniższym przykładzie 1 w tym `<count></count>` przykładzie znajduje się `sum()` węzły, które pasują do węzła i dodaje te wartości węzła z funkcją:
 
 `xpath(xml(parameters('items')), 'sum(/produce/item/count)')`
 
-I zwraca ten wynik: `30`
+I zwraca ten wynik:`30`
 
 *Przykład 3*
 
-W tym przykładzie oba wyrażenia znajdą węzły, które pasują do węzła `<location></location>`, w określonych argumentach, które zawierają XML z przestrzenią nazw. 
+W tym przykładzie oba wyrażenia znajdują `<location></location>` węzły, które pasują do węzła, w określonych argumentach, które obejmują XML z obszarem nazw. 
 
 > [!NOTE]
 >
-> Jeśli pracujesz w widoku kodu, wykorzystaj znak podwójnego cudzysłowu ("), używając znaku ukośnika odwrotnego (\\). 
-> Na przykład należy użyć znaków ucieczki podczas serializacji wyrażenia jako ciągu JSON. 
-> Jeśli jednak Pracujesz w Projektancie aplikacji logiki lub edytorze wyrażeń, nie musisz wyznaczać znaku podwójnego cudzysłowu, ponieważ znak ukośnika odwrotnego jest automatycznie dodawany do podstawowej definicji, na przykład:
+> Jeśli pracujesz w widoku kodu, wyjmij podwójny cudzysłów\\(") za pomocą znaku ukośnika odwrotnego ( ). 
+> Na przykład należy użyć znaków ucieczki podczas serializacji wyrażenia jako ciąg JSON. 
+> Jednak jeśli pracujesz w logic app designer lub edytora wyrażeń, nie trzeba uniknąć podwójnego cudzysłowu, ponieważ znak ukośnika odwrotnego jest dodawany automatycznie do podstawowej definicji, na przykład:
 > 
-> * Widok kodu: `xpath(xml(body('Http')), '/*[name()=\"file\"]/*[name()=\"location\"]')`
+> * Widok kodu:`xpath(xml(body('Http')), '/*[name()=\"file\"]/*[name()=\"location\"]')`
 >
-> * Edytor wyrażeń: `xpath(xml(body('Http')), '/*[name()="file"]/*[name()="location"]')`
+> * Edytor wyrażeń:`xpath(xml(body('Http')), '/*[name()="file"]/*[name()="location"]')`
 > 
-> Poniższe przykłady dotyczą wyrażeń, które wprowadzasz w edytorze wyrażeń.
+> Poniższe przykłady dotyczą wyrażeń wprowadzonych w edytorze wyrażeń.
 
 * *Wyrażenie 1*
 
@@ -4754,19 +4754,19 @@ W tym przykładzie oba wyrażenia znajdą węzły, które pasują do węzła `<l
 
 Oto argumenty:
 
-* Ten plik XML, który zawiera przestrzeń nazw dokumentu XML, `xmlns="http://contoso.com"`:
+* Ten kod XML, który obejmuje obszar `xmlns="http://contoso.com"`nazw dokumentu XML, :
 
   ```xml
   <?xml version="1.0"?> <file xmlns="http://contoso.com"> <location>Paris</location> </file>
   ```
 
-* Wyrażenie XPath tutaj:
+* Albo wyrażenie XPath w tym miejscu:
 
   * `/*[name()="file"]/*[name()="location"]`
 
   * `/*[local-name()="file" and namespace-uri()="http://contoso.com"]/*[local-name()="location"]`
 
-Oto węzeł wyniku pasujący do węzła `<location></location>`:
+Oto węzeł wynikowy, `<location></location>` który pasuje do węzła:
 
 ```xml
 <location xmlns="https://contoso.com">Paris</location>
@@ -4774,11 +4774,11 @@ Oto węzeł wyniku pasujący do węzła `<location></location>`:
 
 *Przykład 4*
 
-Poniższy przykład znajduje się w tym przykładzie w węźle `<location></location>`:
+Poniżej przykładu 3 w tym `<location></location>` przykładzie znajduje wartość w węźle:
 
 `xpath(xml(body('Http')), 'string(/*[name()="file"]/*[name()="location"])')`
 
-I zwraca ten wynik: `"Paris"`
+I zwraca ten wynik:`"Paris"`
 
 ## <a name="next-steps"></a>Następne kroki
 

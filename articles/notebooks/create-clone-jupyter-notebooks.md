@@ -1,49 +1,49 @@
 ---
-title: Tworzenie i klonowanie notesów Jupyter — wersja zapoznawcza Azure Notebooks
-description: Projekty Azure Notebooks w wersji zapoznawczej zarządzają kolekcją notesów i powiązanych plików, które można utworzyć nowe lub klonować z innego źródła.
+title: Tworzenie i klonowanie notesów jupytera — usługa Azure Notebooks Preview
+description: Projekty usługi Azure Notebooks Preview zarządzają kolekcją notesów i powiązanych plików, które można utworzyć nowe lub sklonować z innego źródła.
 ms.topic: how-to
 ms.date: 02/25/2019
 ms.openlocfilehash: b29ff336c09a3bbf05a57c8a3a503b1875b76e54
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79280575"
 ---
-# <a name="create-and-clone-projects-in-azure-notebooks-preview"></a>Tworzenie i klonowanie projektów w podglądzie Azure Notebooks
+# <a name="create-and-clone-projects-in-azure-notebooks-preview"></a>Tworzenie i klonowanie projektów w usłudze Azure Notebooks Preview
 
-Azure Notebooks organizuje notesy Jupyter i powiązane pliki do grup logicznych nazywanych *projektami*. Jako kontener, najpierw Utwórz projekt, a następnie utworzyć lub sklonować co najmniej jeden notesów w folderze wraz z innych plików projektów. (Ten proces jest zaprezentowany w [samouczku](tutorial-create-run-jupyter-notebook.md)).
+Notesy platformy Azure organizują notesy jupytera i powiązane pliki w logiczne grupy zwane *projektami*. Najpierw utworzysz projekt jako kontener, a następnie utworzysz lub sklonujesz jeden lub więcej notesów w folderze obok innych plików projektu. (Ten proces jest pokazany w [samouczku](tutorial-create-run-jupyter-notebook.md).)
 
 [!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
-Projekt udostępnia również metadane i pozostałe ustawienia konfiguracyjne, które wpływają na serwer, na które notesów uruchomić, w tym kroki instalacji niestandardowej i instalacji pakietu aktualizacji. Aby uzyskać więcej informacji, zobacz [Zarządzanie projektami i Konfigurowanie](configure-manage-azure-notebooks-projects.md)ich.
+Projekt przechowuje również metadane i inne ustawienia konfiguracji, które mają wpływ na serwer, na którym działają notesy, w tym kroki konfiguracji niestandardowej i instalacja pakietu. Aby uzyskać więcej informacji, zobacz [Zarządzanie projektami i konfigurowanie ich](configure-manage-azure-notebooks-projects.md).
 
-## <a name="use-the-my-projects-dashboard"></a>Pulpit nawigacyjny Moje projekty
+## <a name="use-the-my-projects-dashboard"></a>Korzystanie z pulpitu nawigacyjnego Moje projekty
 
-Pulpit nawigacyjny **Moje projekty** w `https://notebooks.azure.com/<userID>/projects` jest miejscem, w którym można wyświetlać projekty i zarządzać nimi:
+Pulpit nawigacyjny Moje `https://notebooks.azure.com/<userID>/projects` **projekty** to miejsce, w którym można wyświetlać projekty, zarządzać nimi i tworzyć je:
 
-[![pulpit nawigacyjny moje projekty w programie Azure Notebooks](media/my-projects-dashboard.png)](media/my-projects-dashboard.png#lightbox)
+[![Pulpit nawigacyjny Moje projekty w notesach platformy Azure](media/my-projects-dashboard.png)](media/my-projects-dashboard.png#lightbox)
 
-Co można zrobić na pulpicie nawigacyjnym, zależy od tego, czy po zarejestrowaniu się przy użyciu konta, który jest właścicielem identyfikator użytkownika:
+To, co możesz zrobić na pulpicie nawigacyjnym, zależy od tego, czy zalogujesz się za pomocą konta, które jest właścicielem identyfikatora użytkownika:
 
-| Polecenie | Dostępna dla | Opis |
+| Polecenie | Dostępne dla | Opis |
 | --- | --- | --- |
-| **Run** | Właściciel | Uruchamia serwer project server i otwiera folder projektu w programie Jupyter. (Częściej, możesz najpierw przejdź do folderu projektu, a następnie uruchomić Notes, w tym miejscu.) |
-| **Pobieranie** | Dowolny użytkownik | Pobiera kopię wybranego projektu jako plik ZIP. |
-| **Share** | Dowolny użytkownik | Wyświetla okno podręczne udostępniania, za pomocą którego można uzyskać adres URL wybranego projektu, udostępnić do mediów społecznościowych, wysłać wiadomość e-mail z adresem URL oraz uzyskać kod HTML lub promocji dla programu za pomocą wskaźnika "Uruchom Notes" (zobacz temat [Uzyskiwanie wskaźnika uruchamiania](#obtain-a-launch-badge)) przy użyciu adresu URL. |
-| **Usuwanie** | Właściciel | Usuwa wybranego projektu. Tej operacji nie można cofnąć. |
-| **Terminal** | Właściciel | Rozpoczyna się na serwerze project server, a następnie zostanie otwarte nowe okno przeglądarki, przy użyciu programu bash terminalu dla tego serwera. |
+| **Run** | Właściciel | Uruchamia serwer projektu i otwiera folder projektu w jupyter. (Częściej częściej najpierw nawigujesz do folderu projektu, a następnie uruchamiasz notes). |
+| **Pobierz** | Dowolny użytkownik | Pobiera kopię wybranego projektu jako plik ZIP. |
+| **Share** | Dowolny użytkownik | Wyświetla okno podręczne udostępniania, za pomocą którego można uzyskać adres URL do wybranego projektu, udostępnić go w mediach społecznościowych, wysłać wiadomość e-mail z adresem URL i uzyskać kod HTML lub Markdown z plakietką "notes uruchamiania" (zobacz [uzyskiwanie plakietki uruchamiania)](#obtain-a-launch-badge)z adresem URL. |
+| **Usuwanie** | Właściciel | Usuwa wybrany projekt. Tej operacji nie można cofnąć. |
+| **Terminal** | Właściciel | Uruchamia serwer projektu, a następnie otwiera nowe okno przeglądarki z terminalem bash dla tego serwera. |
 | **+ Nowy projekt** | Właściciel | Tworzy nowy projekt. Zobacz [Tworzenie nowego projektu](#create-a-new-project). |
-| **Przekaż repozytorium GitHub** | Właściciel | Importuje projektu z usługi GitHub. [Importuj projekt z usługi GitHub](#import-a-project-from-github). |
-| **Klon** | Dowolny użytkownik | Kopiuje wybrany projekt do własnego konta. Monituje o Zaloguj się w przypadku jeszcze nie jest zalogowany. Zobacz [klonowanie projektu](#clone-a-project). |
+| **Prześlij Repo GitHub** | Właściciel | Importuje projekt z usługi GitHub. [Importowanie projektu z usługi GitHub](#import-a-project-from-github). |
+| **Klonowanie** | Dowolny użytkownik | Kopiuje wybrany projekt na własne konto. Monituje o zalogowanie się, jeśli jeszcze nie. Zobacz [Klonowanie projektu](#clone-a-project). |
 
-### <a name="obtain-a-launch-badge"></a>Uzyskaj wskaźnik uruchamiania
+### <a name="obtain-a-launch-badge"></a>Uzyskiwanie plakietki startowej
 
-W przypadku użycia polecenia **Udostępnij** i wybrania karty **osadzania** można skopiować kod HTML lub przeznaczenie, które tworzy znaczek "Uruchom Notes":
+Korzystając z polecenia **Udostępnij** i wybierając kartę **Osadź,** możesz skopiować kod HTML lub markdown, który tworzy plakietkę "Notes uruchamiania":
 
-![Uruchamianie notesu wskaźnika](https://notebooks.azure.com/launch.png)
+![Uruchamianie plakietki notesu](https://notebooks.azure.com/launch.png)
 
-Jeśli nie masz projektu notesów usługi Azure można utworzyć łącze, które klony z serwisu GitHub bezpośrednio przy użyciu następujących szablonów, podstawiając odpowiednie nazwy użytkownika i nazwy repozytoriów:
+Jeśli nie masz projektu notesów platformy Azure, możesz utworzyć łącze, które klonuje z usługi GitHub bezpośrednio przy użyciu następujących szablonów, zastępując odpowiednie nazwy użytkownika i nazwy repozytorium:
 
 ```html
 <a href="https://notebooks.azure.com/import/gh/<GitHub_username>/<repository_name>"><img src="https://notebooks.azure.com/launch.png" /></a>
@@ -55,67 +55,67 @@ Jeśli nie masz projektu notesów usługi Azure można utworzyć łącze, które
 
 ## <a name="create-a-new-project"></a>Tworzenie nowego projektu
 
-W przypadku korzystania z polecenia **+ Nowy projekt** Azure Notebooks wyświetla okno podręczne **Utwórz nowy projekt** . W tym oknie podręcznym Wprowadź poniższe informacje, a następnie wybierz pozycję **Utwórz**:
+Podczas korzystania z polecenia **+ Nowy projekt,** Notesy platformy Azure wyświetla **tworzenie nowego projektu** popup. W tym wyskakującym okienku wprowadź następujące informacje, a następnie wybierz pozycję **Utwórz:**
 
 | Pole | Opis |
 | --- | --- |
-| Project name (Nazwa projektu) | Przyjazna nazwa dla projektu, które korzysta z notesów usługi Azure w celach wyświetlania. Na przykład "mój projekt notesu". |
-| Identyfikator projektu | Niestandardowy identyfikator, który jest częścią adresu URL, który jest używany do udostępniania projektu (formularz jest `https://notebooks.azure.com/<user_id>/projects/<project_id>`). Ten identyfikator może korzystać tylko z liter, cyfr i łączników, jest ograniczony do 30 znaków i nie może być [zarezerwowanym identyfikatorem projektu](#reserved-project-ids). Jeśli masz pewności co do użycia, typową Konwencją jest użyć małe wersji nazwa projektu, w którym spacje są przekształcane w łączników, np. "Moja notesu projekt" (obcięty, jeśli to konieczne dopasować limit długości). |
-| Public | Jeśli ustawiona, umożliwia każdemu z linkiem do dostępu do projektu. Podczas tworzenia projektu prywatny, usuń zaznaczenie tej opcji. |
-| Inicjowanie projektu z pliku README | Jeśli ta wartość jest ustawiona, program tworzy domyślny plik *README.MD* w projekcie. Plik *README.MD* to miejsce, w którym podano dokumentację projektu, w razie potrzeby. |
+| Project name (Nazwa projektu) | Przyjazna nazwa projektu, który używa notesów platformy Azure do celów wyświetlania. Na przykład "Mój projekt notesu". |
+| Identyfikator projektu | Niestandardowy identyfikator, który staje się częścią adresu URL używanego `https://notebooks.azure.com/<user_id>/projects/<project_id>`do udostępniania projektu (formularz jest ). Ten identyfikator może używać tylko liter, cyfr i łączników, jest ograniczony do 30 znaków i nie może być [zastrzeżonym identyfikatorem projektu.](#reserved-project-ids) Jeśli nie masz pewności, czego użyć, wspólną konwencją jest użycie małych liter nazwy projektu, w której spacje są przekształcane w łączniki, takie jak "mój notes-project" (obcięty, jeśli to konieczne, aby dopasować limit długości). |
+| Public | Jeśli jest ustawiona, umożliwia każdemu, kto ma łącze, dostęp do projektu. Podczas tworzenia projektu prywatnego wyczyść tę opcję. |
+| Inicjowanie tego projektu za pomocą pliku README | Jeśli jest ustawiona, tworzy domyślny plik *README.md* w projekcie. Plik *README.md* to miejsce, w którym w razie potrzeby dostarczasz dokumentację dla projektu. |
 
 ### <a name="reserved-project-ids"></a>Zarezerwowane identyfikatory projektów
 
-Następujące słowa zastrzeżone nie mogą być używane przez siebie jako identyfikatory projektu. Te słowa zastrzeżone mogą jednak być używane jako część dłuższego identyfikatora projektu.
+Następujące słowa zastrzeżone nie mogą być używane przez siebie jako identyfikatory projektu. Te słowa zastrzeżone mogą być jednak używane jako część dłuższych identyfikatorów projektu.
 
 | | | | | | |
 | --- | --- | --- | --- | --- | --- |
-| informacje | account | administracja | api | wpisów | miejsca |
-| content | pulpit nawigacyjny | przeglądać | FAQ | Pomoc | html |
-| Strona główna | zaimportować | biblioteki | zarządzanie | Nowy | notesu |
-| notesy | formatach | wersja zapoznawcza | wpisaną | profile | search |
-| status | obsługa | test | | | |
+| informacje | account | administracja | api | blog | klasa |
+| content | pulpit nawigacyjny | odkrywanie | FAQ | Pomoc | html |
+| strona główna | import | biblioteka | zarządzanie | new | Notebook |
+| notesy | pdf | podgląd | Ceny | profil | search |
+| status | pomoc techniczna | test | | | |
 
-Jeśli spróbujesz użyć jednego z tych słów jako identyfikatora projektu, okna podręczne **Utwórz nowy projekt** i **Ustawienia projektu** wskazują, "identyfikator biblioteki jest zarezerwowanym identyfikatorem".
+Jeśli spróbujesz użyć jednego z tych słów jako identyfikatora projektu, w oknach podręcznych **Utwórz nowy projekt** i **Ustawienia projektu** wskaż "Identyfikator biblioteki jest identyfikatorem zastrzeżonym".
 
-Ponieważ identyfikator projektu jest również częścią adresu URL projektu, oprogramowanie usługi AD Blocker może blokować użycie niektórych słów kluczowych, takich jak "anons". W takich przypadkach należy użyć innego wyrazu w IDENTYFIKATORze projektu.
+Ponieważ identyfikator projektu jest również częścią adresu URL projektu, oprogramowanie blokujące reklamy może blokować używanie niektórych słów kluczowych, takich jak "reklama". W takich przypadkach należy użyć innego wyrazu w identyfikatorze projektu.
 
 ## <a name="import-a-project-from-github"></a>Importowanie projektu z usługi GitHub
 
-Możesz łatwo zaimportować cały publiczny repozytorium GitHub jako projekt obejmujący wszystkie pliki danych i *README.MD* . Użyj polecenia **Przekaż repozytorium GitHub** , podaj następujące informacje w oknie podręcznym, a następnie wybierz pozycję **Importuj**:
+Możesz łatwo zaimportować całe publiczne repozytorium GitHub jako projekt, w tym wszelkie dane i *pliki README.md.* Użyj polecenia **Przekaż repozytorium GitHub,** podaj następujące szczegóły w wyskakującym okienku, a następnie wybierz pozycję **Importuj:**
 
 | Pole | Opis |
 | --- | --- |
-| Repozytorium GitHub | Nazwa repozytorium źródłowe w witrynie github.com. Na przykład aby sklonować notesy Jupyter dla usługi Azure Cognitive Services w [https://github.com/Microsoft/cognitive-services-notebooks](https://github.com/Microsoft/cognitive-services-notebooks), wprowadź "Microsoft/poznawcze-Services-Notess".  |
-| Rekursywnie Klonuj | Repozytoria GitHub może zawierać wiele repozytoriów podrzędnych. Ustaw tę opcję, jeśli chcesz klonować repozytorium nadrzędnego i jego elementów podrzędnych. Ponieważ jest możliwe w przypadku repozytorium można mieć wiele podrzędnych, pozostaw tę opcję, wyczyść, chyba że wiesz, że będą potrzebne. |
-| Project name (Nazwa projektu) | Przyjazna nazwa dla projektu, które korzysta z notesów usługi Azure w celach wyświetlania. |
-| Identyfikator projektu | Niestandardowy identyfikator, który jest częścią adresu URL, który jest używany do udostępniania projektu (formularz jest `https://notebooks.azure.com/<user_id>/projects/<project_id>`). Ten identyfikator może korzystać tylko z liter, cyfr i łączników, jest ograniczony do 30 znaków i nie może być [zarezerwowanym identyfikatorem projektu](#reserved-project-ids). Jeśli masz pewności co do użycia, typową Konwencją jest użyć małe wersji nazwa projektu, w którym spacje są przekształcane w łączników, np. "Moja notesu projekt" (obcięty, jeśli to konieczne dopasować limit długości). |
-| Public | Jeśli ustawiona, umożliwia każdemu z linkiem do dostępu do projektu. Podczas tworzenia projektu prywatny, usuń zaznaczenie tej opcji. |
+| Repozytorium GitHub | Nazwa repozytorium źródłowego w github.com. Na przykład, aby sklonować notesy Jupyter [https://github.com/Microsoft/cognitive-services-notebooks](https://github.com/Microsoft/cognitive-services-notebooks)dla usługi Azure Cognitive Services w programie , wprowadź "Microsoft/cognitive-services-notebooks".  |
+| Klonuj rekursywnie | Repozytoria GitHub mogą zawierać wiele repozytoriów podrzędnych. Ustaw tę opcję, jeśli chcesz sklonować repozytorium nadrzędne i wszystkie jego wiązki podrzędne. Ponieważ repozytorium może mieć wiele dzieściń, pozostaw tę opcję jako czystą, chyba że wiesz, że jej potrzebujesz. |
+| Project name (Nazwa projektu) | Przyjazna nazwa projektu, który używa notesów platformy Azure do celów wyświetlania. |
+| Identyfikator projektu | Niestandardowy identyfikator, który staje się częścią adresu URL używanego `https://notebooks.azure.com/<user_id>/projects/<project_id>`do udostępniania projektu (formularz jest ). Ten identyfikator może używać tylko liter, cyfr i łączników, jest ograniczony do 30 znaków i nie może być [zastrzeżonym identyfikatorem projektu.](#reserved-project-ids) Jeśli nie masz pewności, czego użyć, wspólną konwencją jest użycie małych liter nazwy projektu, w której spacje są przekształcane w łączniki, takie jak "mój notes-project" (obcięty, jeśli to konieczne, aby dopasować limit długości). |
+| Public | Jeśli jest ustawiona, umożliwia każdemu, kto ma łącze, dostęp do projektu. Podczas tworzenia projektu prywatnego wyczyść tę opcję. |
 
-Importowanie repozytorium z serwisu GitHub importuje także jego historię. Można użyć standardowych poleceń usługi Git z poziomu terminalu Zatwierdź nowych zmian, ściąganie zmian z usługi GitHub i tak dalej.
+Importowanie repozytorium z gitHub również importuje jego historię. Można użyć standardowych poleceń Git z terminala, aby zatwierdzić nowe zmiany, ściągać zmiany z GitHub i tak dalej.
 
 ## <a name="clone-a-project"></a>Klonowanie projektu
 
-Klonowanie tworzy kopię istniejącego projektu w własnego konta, w którym można uruchomić i zmodyfikować wszelkie Notatnika lub innego pliku w projekcie. Umożliwia także klonowania, aby utworzyć kopie własnych projektów, w których wykonasz eksperymentów lub inne prace, bez naruszania oryginalnego projektu.
+Klonowanie tworzy kopię istniejącego projektu na własnym koncie, gdzie można następnie uruchomić i zmodyfikować dowolny notes lub inny plik w projekcie. Klonowanie można również używać do tworzenia kopii własnych projektów, w których wykonujesz eksperymenty lub inne prace bez zakłócania oryginalnego projektu.
 
-Klonowanie projektu:
+Aby sklonować projekt:
 
 1. Na pulpicie nawigacyjnym **Moje projekty** kliknij prawym przyciskiem myszy żądany projekt i wybierz polecenie **Klonuj** (skrót klawiaturowy: c).
 
-    ![Polecenia klonowania w menu kontekstowym projektu](media/clone-command.png)
+    ![Polecenie Klonuj w menu kontekstowym projektu](media/clone-command.png)
 
-1. W oknie podręcznym **klonowanie projektu** wprowadź nazwę i Identyfikator klonu i określ, czy klon jest publiczny. Te ustawienia są takie same jak dla [nowego projektu](#create-a-new-project).
+1. W wyskakującym okienku **Sklonowanie projektu** wprowadź nazwę i identyfikator klonu i określ, czy klon jest publiczny. Te ustawienia są takie same jak w przypadku [nowego projektu](#create-a-new-project).
 
-    ![Okno podręczne projektu klonowania](media/clone-project.png)
+    ![Okno podręczne Klonuj projekt](media/clone-project.png)
 
-1. Po wybraniu przycisku **klonuj** Azure Notebooks nawiguje bezpośrednio do kopii.
+1. Po wybraniu przycisku **Klonuj** notesy platformy Azure przechodzi bezpośrednio do kopii.
 
 ## <a name="next-steps"></a>Następne kroki
 
 - [Explore sample notebooks (Eksplorowanie przykładowych notesów)](azure-notebooks-samples.md)
-- [Instrukcje: Konfigurowanie projektów i zarządzanie nimi](configure-manage-azure-notebooks-projects.md)
-- [Instrukcje: Instalowanie pakietów z poziomu notesu](install-packages-jupyter-notebook.md)
-- [Instrukcje: prezentowanie pokazu slajdów](present-jupyter-notebooks-slideshow.md)
-- [Instrukcje: korzystanie z plików danych](work-with-project-data-files.md)
-- [Instrukcje: dostęp do zasobów danych](access-data-resources-jupyter-notebooks.md)
-- [Instrukcje: korzystanie z Azure Machine Learning](use-machine-learning-services-jupyter-notebooks.md)
+- [Jak: Konfigurowanie projektów i zarządzanie nimi](configure-manage-azure-notebooks-projects.md)
+- [Jak: Instalowanie pakietów z poziomu notesu](install-packages-jupyter-notebook.md)
+- [Jak: Prezentowanie pokazu slajdów](present-jupyter-notebooks-slideshow.md)
+- [Jak: Praca z plikami danych](work-with-project-data-files.md)
+- [Jak: Dostęp do zasobów danych](access-data-resources-jupyter-notebooks.md)
+- [Jak: Korzystanie z usługi Azure Machine Learning](use-machine-learning-services-jupyter-notebooks.md)

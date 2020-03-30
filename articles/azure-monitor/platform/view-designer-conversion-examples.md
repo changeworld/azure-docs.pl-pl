@@ -1,5 +1,5 @@
 ---
-title: Przykłady konwersji Azure Monitor View na skoroszyty
+title: Przykłady konwersji widoku usługi Azure Monitor do skoroszytów
 description: ''
 author: austonli
 ms.author: aul
@@ -7,21 +7,21 @@ ms.subservice: ''
 ms.topic: conceptual
 ms.date: 02/07/2020
 ms.openlocfilehash: b50d8cfa4731c487997e2bf431a9c71eff08f5d1
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79274166"
 ---
-# <a name="view-designer-conversion-examples"></a>Przykłady konwersji projektanta widoków
+# <a name="view-designer-conversion-examples"></a>Wyświetlanie przykładów konwersji projektanta
 
-Aby zreplikować skoroszyt widoku z kartami, skopiuj i wklej następujący kod w edytorze zaawansowanym, oznaczany przez symbol </> na pasku narzędzi
+Aby zreplikować skoroszyt projektanta z kart widoku, skopiuj i wklej następujący kod do edytora Zaawansowanego, oznaczonego symbolem </> na pasku narzędzi
 
-![Edytor zaawansowany pasek narzędzi](media/view-designer-conversion-examples/toolbar.png)
+![Pasek narzędzi zaawansowanego edytora](media/view-designer-conversion-examples/toolbar.png)
 
-Użytkownicy mogą chcieć zaktualizować ustawienia zapytania i subskrypcje do własnych dostępnych zasobów
+Użytkownicy mogą być musieli zaktualizować swoje ustawienia zapytań i subskrypcje do własnych dostępnych zasobów
 
-## <a name="vertical"></a>Pionow
+## <a name="vertical"></a>Pionowa
 
 ```Json
 {
@@ -337,7 +337,7 @@ Użytkownicy mogą chcieć zaktualizować ustawienia zapytania i subskrypcje do 
 }
 ```
 
-## <a name="tabbed"></a>Z kartami 
+## <a name="tabbed"></a>Kartach 
 
 ```Json
 {

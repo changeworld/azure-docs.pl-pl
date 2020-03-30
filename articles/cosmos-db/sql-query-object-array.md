@@ -1,25 +1,25 @@
 ---
-title: Praca z tablicami i obiektami w Azure Cosmos DB
-description: Poznaj składnię SQL, aby utworzyć tablice i obiekty w Azure Cosmos DB. W tym artykule przedstawiono również przykłady wykonywania operacji na obiektach Array
+title: Praca z macierzami i obiektami w usłudze Azure Cosmos DB
+description: Poznaj składnię SQL, aby utworzyć tablice i obiekty w usłudze Azure Cosmos DB. W tym artykule podano również kilka przykładów do wykonywania operacji na obiektach tablicowych
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: tisande
 ms.openlocfilehash: 5b2801b0a71f04803955e9d8bc18a97133019996
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79246554"
 ---
-# <a name="working-with-arrays-and-objects-in-azure-cosmos-db"></a>Praca z tablicami i obiektami w Azure Cosmos DB
+# <a name="working-with-arrays-and-objects-in-azure-cosmos-db"></a>Praca z macierzami i obiektami w usłudze Azure Cosmos DB
 
-Kluczową funkcją interfejsu API SQL Azure Cosmos DB jest tworzenie tablic i obiektów.
+Kluczową cechą interfejsu API SQL usługi Azure Cosmos DB jest tworzenie tablic i obiektów.
 
 ## <a name="arrays"></a>Tablice
 
-Można skonstruować tablice, jak pokazano w następującym przykładzie:
+Można konstruować tablice, jak pokazano w poniższym przykładzie:
 
 ```sql
     SELECT [f.address.city, f.address.state] AS CityState
@@ -45,16 +45,16 @@ Wyniki są następujące:
     ]
 ```
 
-Możesz również użyć [wyrażenia Array](sql-query-subquery.md#array-expression) , aby utworzyć tablicę z wyników [podzapytania](sql-query-subquery.md) . To zapytanie pobiera wszystkie różne nazwy elementów podrzędnych w tablicy.
+Można również użyć [wyrażenie ARRAY](sql-query-subquery.md#array-expression) do konstruowania tablicy z wyników [podzapytania.](sql-query-subquery.md) Ta kwerenda pobiera wszystkie różne podane nazwy wiązek podrzędnych w tablicy.
 
 ```sql
 SELECT f.id, ARRAY(SELECT DISTINCT VALUE c.givenName FROM c IN f.children) as ChildNames
 FROM f
 ```
 
-## <a id="Iteration"></a>Iteracja
+## <a name="iteration"></a><a id="Iteration"></a>Iteracja
 
-Interfejs API SQL zapewnia obsługę iteracji w tablicach JSON, a nowa konstrukcja dodana za pośrednictwem [słowa kluczowego in](sql-query-keywords.md#in) w źródle from. W poniższym przykładzie:
+Interfejs API SQL zapewnia obsługę iteracji za pośrednictwem tablic JSON, z nową konstrukcją dodaną za pomocą [słowa kluczowego IN](sql-query-keywords.md#in) w źródle FROM. W poniższym przykładzie:
 
 ```sql
     SELECT *
@@ -90,7 +90,7 @@ Wyniki są następujące:
     ]
 ```
 
-Następne zapytanie wykonuje iterację przez `children` w kontenerze `Families`. Tablica wyjściowa różni się od powyższego zapytania. Ten przykład dzieli `children`i spłaszcza wyniki do pojedynczej tablicy:  
+Następna kwerenda wykonuje iteracji w `children` kontenerze. `Families` Tablica wyjściowa różni się od poprzedniej kwerendy. W tym `children`przykładzie dzieli i spłaszcza wyniki w jednej tablicy:  
 
 ```sql
     SELECT *
@@ -122,7 +122,7 @@ Wyniki są następujące:
     ]
 ```
 
-Można filtrować więcej według poszczególnych wpisów tablicy, jak pokazano w następującym przykładzie:
+Można filtrować dalej przy każdym pojedynczym wpisie tablicy, jak pokazano w poniższym przykładzie:
 
 ```sql
     SELECT c.givenName
@@ -138,7 +138,7 @@ Wyniki są następujące:
     }]
 ```
 
-Można również agregować wynik iteracji tablicy. Na przykład następujące zapytanie liczy liczbę elementów podrzędnych między wszystkimi rodzinami:
+Można również agregować w wyniku iteracji tablicy. Na przykład następująca kwerenda zlicza liczbę dzieci we wszystkich rodzinach:
 
 ```sql
     SELECT COUNT(child)
@@ -157,6 +157,6 @@ Wyniki są następujące:
 
 ## <a name="next-steps"></a>Następne kroki
 
-- [Rozpoczęcie pracy](sql-query-getting-started.md)
+- [Wprowadzenie](sql-query-getting-started.md)
 - [Przykłady dla platformy .NET w usłudze Azure Cosmos DB](https://github.com/Azure/azure-cosmos-dotnet-v3)
-- [Łącze](sql-query-join.md)
+- [Łączy](sql-query-join.md)
