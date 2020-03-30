@@ -1,6 +1,6 @@
 ---
-title: Zarządzanie organizacjami z poziomu portalu My Account — Azure AD
-description: Jak wyświetlać i opuszczać organizacje połączone z kontem służbowym ze strony organizacje portalu My account.
+title: Zarządzanie organizacjami za pomocą portalu Moje konto — Usługa Azure AD
+description: Jak wyświetlać i zostawiać organizacje połączone z kontem służbowym na stronie Organizacje w portalu Moje konto.
 services: active-directory
 author: curtand
 manager: daveba
@@ -12,59 +12,59 @@ ms.topic: conceptual
 ms.date: 10/28/2019
 ms.author: curtand
 ms.openlocfilehash: fbaca387dd8062f50bb7555c7be6e7f65ce346bf
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77062476"
 ---
-# <a name="manage-your-connected-organizations-from-the-organizations-page"></a>Zarządzaj połączonymi organizacjami ze strony organizacji
+# <a name="manage-your-connected-organizations-from-the-organizations-page"></a>Zarządzanie połączonymi organizacjami na stronie Organizacje
 
-Strona **organizacje** w portalu **My Account** ułatwia zarządzanie organizacjami (zazwyczaj nazwą organizacji) połączoną z kontem służbowym. Na stronie **organizacje** są wyświetlane dwa typy organizacji:
+Strona **Organizacje** portalu **Moje konto** ułatwia zarządzanie organizacjami (zazwyczaj nazwa organizacji) połączonymi z kontem służbowym. Istnieją dwa typy organizacji wyświetlane na stronie **Organizacje:**
 
-- **Organizacja główna.** Organizacja główna jest organizacją, która jest właścicielem Twojego konta służbowego. Nie możesz opuścić swojej organizacji.
+- **Organizacja domowa.** Organizacja domowa to organizacja, która jest właścicielem konta służbowego. Nie możesz opuścić organizacji domowej.
 
     >[!NOTE]
-    > Jeśli nie masz przypisanej organizacji domowej, zobaczysz tylko jeden nagłówek z listą skojarzonych organizacji.
+    > Jeśli nie masz przypisanej organizacji domowej, zobaczysz tylko jeden nagłówek z listą organizacji powiązanych z nią.
 
-- **Inne organizacje.** Inne organizacje to wszystkie grupy, do których użytkownik zalogował się wcześniej przy użyciu konta służbowego. W każdej chwili możesz opuścić każdą z tych organizacji.
+- **Inne organizacje.** Pozostałe organizacje to dowolna grupa, do której wcześniej zalogowano się przy użyciu konta służbowego. Możesz opuścić dowolną z tych organizacji w dowolnym momencie.
 
 >[!Important]
->Ten artykuł jest przeznaczony dla użytkowników próbujących zaktualizować informacje o organizacji połączone z kontem służbowym. Jeśli jesteś administratorem, który szuka informacji o zarządzaniu grupami i użytkownikami dla pracowników i innych użycia, zobacz [dokumentację dotyczącą zarządzania użytkownikami przedsiębiorstwa](https://docs.microsoft.com/azure/active-directory/users-groups-roles/index).
+>Ten artykuł jest przeznaczony dla użytkowników próbujących zaktualizować informacje o organizacji połączone z kontem służbowym. Jeśli jesteś administratorem szukającym informacji o zarządzaniu grupami i użytkownikami dla pracowników i innych zastosowań, zapoznaj się z [dokumentacją zarządzania użytkownikami przedsiębiorstwa.](https://docs.microsoft.com/azure/active-directory/users-groups-roles/index)
 
 ## <a name="view-your-organizations"></a>Wyświetlanie organizacji
 
-1. Zaloguj się do konta służbowego, a następnie przejdź do strony **Moje konto** (https://myprofile.microsoft.com/).
+1. Zaloguj się na swoje konto służbowe, a następniehttps://myprofile.microsoft.com/) przejdź do strony Moje **konto** (
 
-2. W okienku nawigacji po lewej stronie wybierz pozycję **organizacje** lub wybierz łącze **Zarządzaj organizacjami** w bloku **organizacje** .
+2. Wybierz **pozycję Organizacje** z lewego okienka nawigacji lub wybierz łącze **Zarządzaj organizacjami** z bloku **Organizacje.**
 
-    ![Strona Moje konto z widocznymi łączami wyróżnionych organizacji](media/my-account-portal/my-account-portal-organizations.png)
+    ![Strona Moje konto z wyróżnionymi linkami Organizacje](media/my-account-portal/my-account-portal-organizations.png)
 
 3. Przejrzyj informacje dotyczące **organizacji domowej**.
 
-    ![Strona organizacji](media/my-account-portal/my-account-portal-organization-page.png)
+    ![Strona Organizacja](media/my-account-portal/my-account-portal-organization-page.png)
 
-4. Zapoznaj się z innymi skojarzonymi organizacjami, aby rozpoznać wszystkie organizacje połączone z Twoim kontem.
+4. Przejrzyj inne skojarzone organizacje, upewniając się, że rozpoznajesz wszystkie organizacje połączone z Twoim kontem.
 
 ## <a name="leave-an-organization"></a>Opuszczanie organizacji
 
-Możesz opuścić każdą organizację, która nie jest Twoją organizacją domową.
+Możesz opuścić dowolną organizację, która nie jest Twoją organizacją domową.
 
 >[!Important]
->Jeśli pozostawisz organizację przez pomyłkę, nie ma możliwości jej cofnięcia. Musisz poczekać, aż administrator tej organizacji zaprosił Cię ponownie.
+>Jeśli opuścisz organizację przez pomyłkę, nie ma sposobu, aby ją cofnąć. Musisz poczekać, aż administrator tej organizacji ponownie Cię zaprosi.
 
-- Wybierz pozycję **Opuść organizację** obok organizacji, którą chcesz opuścić, a następnie wybierz pozycję **Pozostaw** , aby potwierdzić, że chcesz opuścić.
+- Wybierz **pozycję Pozostaw organizację** obok organizacji, którą chcesz opuścić, a następnie wybierz pozycję **Opuść,** aby potwierdzić, że chcesz opuścić organizację.
 
-    ![Strona organizacje z wyróżnionym łączem Opuść organizację](media/my-account-portal/my-account-portal-organizations-leave.png)
+    ![Strona Organizacje z wyróżnionym linkiem do organizacji opuszczenia](media/my-account-portal/my-account-portal-organizations-leave.png)
 
 ## <a name="next-steps"></a>Następne kroki
 
-Po przejrzeniu organizacji można:
+Po wyświetleniach organizacji można:
 
-- Wyświetl [informacje zabezpieczające](user-help-security-info-overview.md)lub zarządzaj nimi.
+- Wyświetlanie informacji [zabezpieczających](user-help-security-info-overview.md)lub zarządzanie nimi .
 
-- Wyświetl podłączone [urządzenia](my-account-portal-devices-page.md)lub zarządzaj nimi.
+- Wyświetlanie [podłączonych urządzeń](my-account-portal-devices-page.md)lub zarządzanie nimi .
 
-- Wyświetlanie [działania związanego z logowaniem](my-account-portal-sign-ins-page.md).
+- Wyświetlanie [aktywności logowania](my-account-portal-sign-ins-page.md).
 
-- Zobacz, w jaki sposób organizacja [używa danych związanych z prywatnością](my-account-portal-privacy-page.md).
+- Zobacz, jak organizacja [wykorzystuje dane związane z prywatnością](my-account-portal-privacy-page.md).

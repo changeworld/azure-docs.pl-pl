@@ -1,20 +1,20 @@
 ---
-title: Przegląd
+title: Omówienie
 description: Dowiedz się, w jaki sposób usługa Azure App Service ułatwia tworzenie i hostowanie aplikacji internetowych
 ms.assetid: 94af2caf-a2ec-4415-a097-f60694b860b3
 ms.topic: overview
 ms.date: 01/04/2017
-ms.custom: seodec18
-ms.openlocfilehash: 849886eb03f46949301d76113109aae8188ff8fc
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.custom: mvc, seodec18
+ms.openlocfilehash: b385136183fba5d1e64db3763453d2f4b23d4d96
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74687046"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80045166"
 ---
 # <a name="app-service-overview"></a>Omówienie usługi App Service
 
-*Azure App Service* to usługa oparta na protokole HTTP do hostowania aplikacji sieci Web, interfejsów API REST i zaplecza mobilnego. Możesz programować w ulubionym języku — .NET, .NET Core, Java, Ruby, Node.js, PHP lub Python. Aplikacje można łatwo uruchamiać i skalować w środowiskach opartych zarówno na systemie Windows, jak i Linux. W przypadku środowisk opartych na systemie Linux zobacz [Usługa App Service w systemie Linux](containers/app-service-linux-intro.md). 
+*Usługa Azure App Service* to usługa oparta na protoko web do obsługi aplikacji sieci Web, interfejsów API REST i zaplecza mobilnego. Możesz programować w ulubionym języku — .NET, .NET Core, Java, Ruby, Node.js, PHP lub Python. Aplikacje można łatwo uruchamiać i skalować w środowiskach opartych zarówno na systemie Windows, jak i Linux. W przypadku środowisk opartych na systemie Linux zobacz [Usługa App Service w systemie Linux](containers/app-service-linux-intro.md). 
 
 Usługa App Service nie tylko dodaje do aplikacji możliwości platformy Microsoft Azure, takie jak zabezpieczenia, równoważenie obciążenia, automatyczne skalowanie i automatyczne zarządzanie. Umożliwia również korzystanie z funkcji metodyki DevOps, takich jak ciągłe wdrażanie z usług Azure DevOps, GitHub, Docker Hub i innych źródeł, zarządzanie pakietami, środowiska przejściowe, domena niestandardowa i certyfikaty SSL. 
 

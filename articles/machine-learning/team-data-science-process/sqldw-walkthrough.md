@@ -1,6 +1,6 @@
 ---
-title: Kompilowanie i wdrażanie modelu przy użyciu usługi Azure Synapse Analytics — proces nauki danych zespołu
-description: Kompiluj i wdrażaj model uczenia maszynowego przy użyciu usługi Azure Synapse Analytics z publicznie dostępnym zestawem danych.
+title: Tworzenie i wdrażanie modelu przy użyciu usługi Azure Synapse Analytics — proces nauki o danych zespołowych
+description: Tworzenie i wdrażanie modelu uczenia maszynowego przy użyciu usługi Azure Synapse Analytics z publicznie dostępnym zestawem danych.
 services: machine-learning
 author: marktab
 manager: marktab
@@ -11,22 +11,22 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: e64b951a8bb96b25a6ef917b4cebe077d6dd6657
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 96d0a5b2fb59e4612107d8ccbf7285fff7576585
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76718450"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80128389"
 ---
-# <a name="the-team-data-science-process-in-action-using-azure-synapse-analytics"></a>Proces nauki danych zespołu w działaniu: korzystanie z usługi Azure Synapse Analytics
-W ramach tego samouczka przeprowadzimy Cię przez proces tworzenia i wdrażania modelu uczenia maszynowego przy użyciu usługi Azure Synapse Analytics dla publicznie dostępnego zestawu danych — zestawu danych [podróży NYC z taksówkami](https://www.andresmh.com/nyctaxitrips/) . Model klasyfikacji binarnej skonstruowany przewiduje, czy Porada jest płatna za podróż.  Modele obejmują klasyfikację wieloklasową (bez względu na to, czy jest to Porada) i regresję (dystrybucja dla płatnych sum).
+# <a name="the-team-data-science-process-in-action-using-azure-synapse-analytics"></a>Proces nauki o danych zespołu w działaniu: korzystanie z usługi Azure Synapse Analytics
+W tym samouczku prowadzimy użytkownika przez tworzenie i wdrażanie modelu uczenia maszynowego przy użyciu usługi Azure Synapse Analytics dla publicznie dostępnego zestawu danych — zestawu danych [NYC Taxi Trips.](https://www.andresmh.com/nyctaxitrips/) Skonstruowany model klasyfikacji binarnej przewiduje, czy wskazówka jest płatna za podróż.  Modele obejmują klasyfikację wieloklasową (niezależnie od tego, czy jest wskazówka) i regresję (rozkład dla zapłaconych kwot napiwków).
 
-Procedura jest zgodna z przepływem pracy [zespołowej analizy danych (przetwarzania TDSP)](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/) . Pokazujemy, jak skonfigurować środowisko do nauki o danych, jak załadować dane do usługi Azure Synapse Analytics oraz jak korzystać z usługi Azure Synapse Analytics lub notesu IPython w celu eksplorowania funkcji danych i inżynierów z modelem. Następnie przedstawiono, jak utworzyć i wdrożyć model przy użyciu usługi Azure Machine Learning.
+Procedura jest zgodna z przepływem pracy [proces nauki o danych zespołu (TDSP).](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/) Pokazujemy, jak skonfigurować środowisko do nauki o danych, jak załadować dane do usługi Azure Synapse Analytics i jak używać usługi Azure Synapse Analytics lub notesu IPython do eksplorowania funkcji danych i inżynierów do modelowania. Następnie pokazujemy, jak skompilować i wdrożyć model za pomocą usługi Azure Machine Learning.
 
-## <a name="dataset"></a>Zestaw danych podróży z NYC taksówkami
-Dane podróży taksówek NYC składa się z około 20 GB skompresowanych plików CSV (~ 48 GB nieskompresowane), rejestrowanie ponad milion 173 poszczególnych podróży i opłaty opłacony każdego podróży. Każdy rekord podróży obejmuje lokalizacji odbioru i dropoff i czas, numer licencji hack anonimowe (sterownika) i numer Medalionu (unikatowy identyfikator dla taksówek). Dane obejmuje wszystkie podróży w roku 2013 i znajduje się w następujących dwóch zestawów danych w każdym miesiącu:
+## <a name="the-nyc-taxi-trips-dataset"></a><a name="dataset"></a>Zestaw danych NYC Taxi Trips
+Dane NYC Taxi Trip składają się z około 20 GB skompresowanych plików CSV (~ 48 GB nieskompresowanych), rejestrując ponad 173 miliony pojedynczych podróży i opłaty zapłacone za każdą podróż. Każdy rekord podróży zawiera miejsca odbioru i nadsyłania, anonimowy numer licencji hack (kierowcy) i numer medalionu (unikalny identyfikator taksówki). Dane obejmują wszystkie podróże w 2013 r. i są dostępne w następujących dwóch zestawach danych dla każdego miesiąca:
 
-1. Plik **trip_data. csv** zawiera szczegółowe informacje o podróży, takie jak liczba pasażerów, punkty odbioru i Dropoff, czas trwania podróży i długość podróży. Poniżej przedstawiono kilka przykładowych rekordów:
+1. Plik **trip_data.csv** zawiera szczegóły podróży, takie jak liczba pasażerów, punkty odbioru i wysiadania, czas trwania podróży i długość podróży. Oto kilka przykładowych rekordów:
 
         medallion,hack_license,vendor_id,rate_code,store_and_fwd_flag,pickup_datetime,dropoff_datetime,passenger_count,trip_time_in_secs,trip_distance,pickup_longitude,pickup_latitude,dropoff_longitude,dropoff_latitude
         89D227B655E5C82AECF13C3F540D4CF4,BA96DE419E711691B9445D6A6307C170,CMT,1,N,2013-01-01 15:11:48,2013-01-01 15:18:10,4,382,1.00,-73.978165,40.757977,-73.989838,40.751171
@@ -34,7 +34,7 @@ Dane podróży taksówek NYC składa się z około 20 GB skompresowanych plików
         0BD7C8F5BA12B88E0B67BED28BEA73D8,9FD8F69F0804BDB5549F40E9DA1BE472,CMT,1,N,2013-01-05 18:49:41,2013-01-05 18:54:23,1,282,1.10,-74.004707,40.73777,-74.009834,40.726002
         DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,1,N,2013-01-07 23:54:15,2013-01-07 23:58:20,2,244,.70,-73.974602,40.759945,-73.984734,40.759388
         DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,1,N,2013-01-07 23:25:03,2013-01-07 23:34:24,1,560,2.10,-73.97625,40.748528,-74.002586,40.747868
-2. Plik **trip_fare. csv** zawiera szczegółowe informacje o opłatach za każdą podróż, takie jak typ płatności, kwota opłaty, opłata dodatkowa i podatki, porady i opłaty, a także łączną kwotę płatną. Poniżej przedstawiono kilka przykładowych rekordów:
+2. Plik **trip_fare.csv** zawiera szczegółowe informacje o taryfie zapłaconej za każdą podróż, takie jak rodzaj płatności, kwota taryfy, dopłaty i podatki, napiwki i opłaty drogowe oraz całkowita zapłacona kwota. Oto kilka przykładowych rekordów:
 
         medallion, hack_license, vendor_id, pickup_datetime, payment_type, fare_amount, surcharge, mta_tax, tip_amount, tolls_amount, total_amount
         89D227B655E5C82AECF13C3F540D4CF4,BA96DE419E711691B9445D6A6307C170,CMT,2013-01-01 15:11:48,CSH,6.5,0,0.5,0,0,7
@@ -43,51 +43,51 @@ Dane podróży taksówek NYC składa się z około 20 GB skompresowanych plików
         DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,2013-01-07 23:54:15,CSH,5,0.5,0.5,0,0,6
         DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,2013-01-07 23:25:03,CSH,9.5,0.5,0.5,0,0,10.5
 
-**Unikatowy klucz** służący do dołączania do podróży\_danych i podróży\_opłaty są złożone z następujących trzech pól:
+**Unikatowy klucz** używany\_do łączenia danych podróży i taryfy podróży\_składa się z następujących trzech pól:
 
-* Medalionu,
-* haker\_licencję i
-* Data i godzina odebrania\_.
+* Medalion
+* licencję hakerską\_i
+* data\_odbioru.
 
-## <a name="mltasks"></a>Adresowanie trzech typów zadań przewidywania
-Opracowujemy trzy problemy z przewidywaniami w oparciu o *\_ną kwotę* , aby zilustrować trzy rodzaje zadań modelowania:
+## <a name="address-three-types-of-prediction-tasks"></a><a name="mltasks"></a>Rozwiązywanie trzech typów zadań przewidywania
+Sformułowaliśmy trzy problemy z przewidywaniem na podstawie *kwoty końcówki,\_* aby zilustrować trzy rodzaje zadań modelowania:
 
-1. **Klasyfikacja binarna**: w celu przewidywania, czy Porada została zapłacona dla podróży, to oznacza, że jest to dodatnia *\_kwota Porada* , która jest większa niż $0, a *Porada\_kwota* $0 jest ujemna.
-2. **Klasyfikacja wieloklasowa**: przewidywanie zakresu porady dla podróży. Podzielmy *poradę\_ą* na pięć przedziałów lub klas:
+1. **Klasyfikacja binarna:** Aby przewidzieć, czy napiwek został zapłacony za podróż, czyli *kwota napiwku\_* większa niż $0 jest pozytywnym przykładem, podczas gdy kwota *napiwku\_* $0 jest przykładem ujemnym.
+2. **Klasyfikacja wieloklasowa**: Aby przewidzieć zakres napiwku opłaconego za podróż. Dzielimy *ilość\_końcówki* na pięć pojemników lub klas:
 
         Class 0 : tip_amount = $0
         Class 1 : tip_amount > $0 and tip_amount <= $5
         Class 2 : tip_amount > $5 and tip_amount <= $10
         Class 3 : tip_amount > $10 and tip_amount <= $20
         Class 4 : tip_amount > $20
-3. **Zadanie regresji**: przewidywanie kwoty Porada płatnej dla podróży.
+3. **Zadanie regresji:** Aby przewidzieć kwotę napiwku zapłaconego za podróż.
 
-## <a name="setup"></a>Konfigurowanie środowiska nauki o danych Azure na potrzeby zaawansowanej analizy
-Aby skonfigurować środowisko nauki o danych platformy Azure, wykonaj następujące kroki.
+## <a name="set-up-the-azure-data-science-environment-for-advanced-analytics"></a><a name="setup"></a>Konfigurowanie środowiska do nauki o danych platformy Azure do zaawansowanej analizy
+Aby skonfigurować środowisko usługi Azure Data Science, wykonaj następujące kroki.
 
-**Tworzenie własnego konta usługi Azure Blob Storage**
+**Tworzenie własnego konta magazynu obiektów blob platformy Azure**
 
-* Podczas aprowizacji własnego magazynu obiektów blob platformy Azure wybierz lokalizację geograficzną magazynu obiektów blob platformy Azure w lub jak najbliżej **Południowo-środkowe stany USA**, czyli miejsce, w którym są przechowywane dane z NYC. Dane zostaną skopiowane, za pomocą narzędzia AzCopy z publicznego kontenera obiektów blob storage do kontenera na koncie magazynu. Im bliżej usługi Azure blob storage jest południowo-środkowe stany USA, tym szybciej będzie można ukończyć tego zadania (krok 4).
-* Aby utworzyć własne konto usługi Azure Storage, wykonaj czynności opisane w sekcji [Informacje o kontach usługi Azure Storage](../../storage/common/storage-create-storage-account.md). Pamiętaj robić notatki na podstawie wartości dla następujących poświadczeń konta magazynu, ponieważ będą one potrzebne w dalszej części tego przewodnika.
+* Podczas aprowizowania własnego magazynu obiektów blob platformy Azure wybierz lokalizację geograficzną magazynu obiektów blob platformy Azure w magazynie obiektów blob platformy Azure lub jak najbliżej **południowo-środkowej części stanów USA,** czyli miejsca przechowywania danych taksówki NYC. Dane zostaną skopiowane przy użyciu AzCopy z kontenera magazynu obiektów blob publicznych do kontenera na własnym koncie magazynu. Im bliżej magazynu obiektów blob platformy Azure jest do południowo-środkowej stany USA, tym szybciej to zadanie (krok 4) zostanie ukończone.
+* Aby utworzyć własne konto usługi Azure Storage, wykonaj kroki opisane w witrynie [Informacje o kontach usługi Azure Storage](../../storage/common/storage-create-storage-account.md). Pamiętaj, aby wprowadzać uwagi dotyczące wartości następujących poświadczeń konta magazynu, ponieważ będą one potrzebne w dalszej części tego przewodnika.
 
   * **Nazwa konta magazynu**
   * **Klucz konta magazynu**
-  * **Nazwa kontenera** (w którym dane mają być przechowywane w usłudze Azure Blob Storage)
+  * **Nazwa kontenera** (który ma być przechowywany w magazynie obiektów blob platformy Azure)
 
-**Inicjowanie obsługi administracyjnej wystąpienia usługi Azure Synapse Analytics.**
-Postępuj zgodnie z dokumentacją w temacie [Tworzenie i wykonywanie zapytań dotyczących Azure SQL Data Warehouse w Azure Portal,](../../sql-data-warehouse/create-data-warehouse-portal.md) aby udostępnić wystąpienie usługi Azure Synapse Analytics. Upewnij się, że wprowadzono notację na następujących poświadczeniach usługi Azure Synapse Analytics, które będą używane w dalszych krokach.
+**Aprowizuj swoje wystąpienie usługi Azure Synapse Analytics.**
+Postępuj zgodnie z dokumentacją [w tworzenie i kwerendy usługi Azure SQL Data Warehouse w witrynie Azure portal](../../synapse-analytics/sql-data-warehouse/create-data-warehouse-portal.md) do inicjowania obsługi administracyjnej wystąpienia usługi Azure Synapse Analytics. Upewnij się, że należy wprowadzić notacje na następujące poświadczenia usługi Azure Synapse Analytics, które będą używane w kolejnych krokach.
 
-* **Nazwa serwera**: \<nazwa serwera >. Database. Windows. NET
-* **Nazwa SQLDW (baza danych)**
-* **Nazwa użytkownika**
+* **Nazwa**serwera \<: nazwa serwera>.database.windows.net
+* **Nazwa PROGRAMU SQLDW (database)**
+* **Nazwę użytkownika**
 * **Hasło**
 
-**Zainstaluj program Visual Studio i narzędzia danych SQL Server.** Aby uzyskać instrukcje, zobacz [wprowadzenie do programu Visual Studio 2019 dla SQL Data Warehouse](../../sql-data-warehouse/sql-data-warehouse-install-visual-studio.md).
+**Zainstaluj narzędzia do pobierania danych w programie Visual Studio i SQL Server.** Aby uzyskać instrukcje, zobacz [Wprowadzenie do programu Visual Studio 2019 dla magazynu danych SQL.](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-install-visual-studio.md)
 
-**Połącz się z usługą Azure Synapse Analytics przy użyciu programu Visual Studio.** Aby uzyskać instrukcje, zobacz kroki 1 & 2 w artykule [łączenie z Azure SQL Data Warehouse](../../sql-data-warehouse/sql-data-warehouse-connect-overview.md).
+**Połącz się z usługą Azure Synapse Analytics za pomocą programu Visual Studio.** Aby uzyskać instrukcje, zobacz kroki 1 & 2 w [połącz z usługą Azure SQL Data Warehouse](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-connect-overview.md).
 
 > [!NOTE]
-> Uruchom następujące zapytanie SQL w bazie danych utworzonej w usłudze Azure Synapse Analytics (zamiast zapytania podanego w kroku 3 tematu Połącz), aby **utworzyć klucz główny**.
+> Uruchom następującą kwerendę SQL w bazie danych utworzonej w usłudze Azure Synapse Analytics (zamiast kwerendy podanej w kroku 3 tematu połączenia), aby **utworzyć klucz główny**.
 >
 >
 
@@ -99,13 +99,13 @@ Postępuj zgodnie z dokumentacją w temacie [Tworzenie i wykonywanie zapytań do
            --If the master key exists, do nothing
     END CATCH;
 
-**Utwórz obszar roboczy Azure Machine Learning w ramach subskrypcji platformy Azure.** Aby uzyskać instrukcje, zobacz [Tworzenie obszaru roboczego Azure Machine Learning](../studio/create-workspace.md).
+**Utwórz obszar roboczy usługi Azure Machine Learning w ramach subskrypcji platformy Azure.** Aby uzyskać instrukcje, zobacz [Tworzenie obszaru roboczego usługi Azure Machine Learning](../studio/create-workspace.md).
 
-## <a name="getdata"></a>Ładowanie danych do usługi Azure Synapse Analytics
-Otwórz konsolę polecenia programu Windows PowerShell. Uruchom następujące polecenia programu PowerShell, aby pobrać przykładowe pliki skryptów SQL udostępniane w usłudze GitHub do katalogu lokalnego określonego za pomocą parametru *-DESTDIR*. Wartość parametru *-DESTDIR* można zmienić na dowolny katalog lokalny. Jeśli *DESTDIR* nie istnieje, zostanie utworzony przez skrypt programu PowerShell.
+## <a name="load-the-data-into-azure-synapse-analytics"></a><a name="getdata"></a>Ładowanie danych do usługi Azure Synapse Analytics
+Otwórz konsolę poleceń programu Windows PowerShell. Uruchom następujące polecenia programu PowerShell, aby pobrać przykładowe pliki skryptów SQL, które udostępniamy ci w usłudze GitHub, do katalogu lokalnego określonego za pomocą parametru *-DestDir*. Wartość parametru *-DestDir* można zmienić na dowolny katalog lokalny. Jeśli *-DestDir* nie istnieje, zostanie utworzony przez skrypt programu PowerShell.
 
 > [!NOTE]
-> Może być konieczne **uruchomienie programu jako administrator** podczas wykonywania poniższego skryptu programu PowerShell, jeśli katalog *DESTDIR* wymaga uprawnień administratora w celu utworzenia lub zapisu w nim.
+> Może być konieczne **uruchomienie jako administrator** podczas wykonywania następującego skryptu programu PowerShell, jeśli katalog *DestDir* wymaga uprawnień administratora do tworzenia lub zapisywania.
 >
 >
 
@@ -115,22 +115,22 @@ Otwórz konsolę polecenia programu Windows PowerShell. Uruchom następujące po
     $wc.DownloadFile($source, $ps1_dest)
     .\Download_Scripts_SQLDW_Walkthrough.ps1 –DestDir 'C:\tempSQLDW'
 
-Po pomyślnym wykonaniu bieżący katalog roboczy zmieni się na *-DESTDIR*. Powinno być możliwe zobaczyć ekran, takich jak poniżej:
+Po pomyślnym wykonaniu bieżący katalog roboczy zmienia się na *-DestDir*. Powinieneś być w stanie zobaczyć ekran jak poniżej:
 
-![Zmiany w bieżącym katalogu roboczym][19]
+![Bieżące zmiany w katalogu roboczym][19]
 
-W *DESTDIR*, wykonaj następujący skrypt programu PowerShell w trybie administratora:
+W *programie -DestDir*wykonaj następujący skrypt programu PowerShell w trybie administratora:
 
     ./SQLDW_Data_Import.ps1
 
-Gdy skrypt programu PowerShell jest uruchamiany po raz pierwszy, zostanie wyświetlony monit o wprowadzenie informacji z usługi Azure Synapse Analytics i konta usługi Azure Blob Storage. Po zakończeniu tego skryptu programu PowerShell uruchomiony po raz pierwszy, poświadczenia danych wejściowych można będzie zapisanych w pliku konfiguracji SQLDW.conf w aktualnym katalogiem roboczym. Przyszłe Uruchom ten plik skryptu programu PowerShell może odczytywać wszystkie wymagane parametry, z tego pliku konfiguracji. Jeśli musisz zmienić niektóre parametry, możesz wybrać opcję wprowadzania parametrów na ekranie po wyświetleniu monitu, usuwając ten plik konfiguracji i wprowadzając wartości parametrów jako monit lub aby zmienić wartości parametrów, edytując plik SQLDW. conf w katalogu *-DESTDIR* .
+Gdy skrypt programu PowerShell jest uruchamiany po raz pierwszy, zostaniesz poproszony o wprowadzenie informacji z usługi Azure Synapse Analytics i konta magazynu obiektów blob platformy Azure. Po zakończeniu pracy tego skryptu programu PowerShell wprowadzone poświadczenia zostaną zapisane w pliku konfiguracyjnym SQLDW.conf w obecnym katalogu roboczym. Przyszłe uruchomienie tego pliku skryptu programu PowerShell ma możliwość odczytu wszystkich potrzebnych parametrów z tego pliku konfiguracyjnego. Jeśli chcesz zmienić niektóre parametry, możesz wprowadzić parametry na ekranie po wierszu monitu, usuwając ten plik konfiguracyjny i wprowadzając wartości parametrów jako monit lub aby zmienić wartości parametrów, edytując plik SQLDW.conf w katalogu *-DestDir.*
 
 > [!NOTE]
-> Aby uniknąć konfliktów nazw schematu z tymi, które już istnieją w usłudze Azure Synapse Analytics, podczas odczytywania parametrów bezpośrednio z pliku SQLDW. conf, do nazwy schematu z SQLDW. conf jest dodawana 3-cyfrowa liczba losowa jako schemat domyślny Nazwa każdego uruchomienia. Skrypt programu PowerShell mogą wyświetlenie monitu o nazwę schematu: Nazwa może być określone w gestii użytkownika.
+> Aby uniknąć konfliktów nazw schematów z tymi, które już istnieją w usłudze Azure Azure Synapse Analytics, podczas odczytywania parametrów bezpośrednio z pliku SQLDW.conf, 3-cyfrowy numer losowy jest dodawany do nazwy schematu z pliku SQLDW.conf jako domyślny schemat dla każdego biegu. Skrypt programu PowerShell może monitować o nazwę schematu: nazwa może być określona według uznania użytkownika.
 >
 >
 
-Ten plik **skryptu programu PowerShell** wykonuje następujące zadania:
+Ten plik **skryptu programu PowerShell** wykona następujące zadania:
 
 * **Pobiera i instaluje AzCopy**, jeśli AzCopy nie jest jeszcze zainstalowany
 
@@ -153,7 +153,7 @@ Ten plik **skryptu programu PowerShell** wykonuje następujące zadania:
                     $env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine")
                     $env_path = $env:Path
                 }
-* **Kopiuje dane do prywatnego konta usługi BLOB Storage** z publicznego obiektu BLOB za pomocą AzCopy
+* **Kopiuje dane do prywatnego konta magazynu obiektów blob** z publicznego obiektu blob za pomocą programu AzCopy
 
         Write-Host "AzCopy is copying data from public blob to yo storage account. It may take a while..." -ForegroundColor "Yellow"
         $start_time = Get-Date
@@ -163,17 +163,17 @@ Ten plik **skryptu programu PowerShell** wykonuje następujące zadania:
         $total_seconds = [math]::Round($time_span.TotalSeconds,2)
         Write-Host "AzCopy finished copying data. Please check your storage account to verify." -ForegroundColor "Yellow"
         Write-Host "This step (copying data from public blob to your storage account) takes $total_seconds seconds." -ForegroundColor "Green"
-* **Ładuje dane przy użyciu bazy danych (przez wykonanie LoadDataToSQLDW. SQL) do usługi Azure Synapse Analytics** z konta prywatnego magazynu obiektów BLOB za pomocą następujących poleceń.
+* **Ładuje dane przy użyciu polybase (wykonując LoadDataToSQLDW.sql) do usługi Azure Synapse Analytics** z konta magazynu obiektów blob z następujących poleceń.
 
-  * Utwórz schemat
+  * Tworzenie schematu
 
           EXEC (''CREATE SCHEMA {schemaname};'');
-  * Tworzenie poświadczeń o zakresie bazy danych
+  * Tworzenie poświadczenia o zakresie bazy danych
 
           CREATE DATABASE SCOPED CREDENTIAL {KeyAlias}
           WITH IDENTITY = ''asbkey'' ,
           Secret = ''{StorageAccountKey}''
-  * Tworzenie zewnętrznego źródła danych dla obiektu BLOB usługi Azure Storage
+  * Tworzenie zewnętrznego źródła danych dla obiektu blob usługi Azure Storage
 
           CREATE EXTERNAL DATA SOURCE {nyctaxi_trip_storage}
           WITH
@@ -192,7 +192,7 @@ Ten plik **skryptu programu PowerShell** wykonuje następujące zadania:
               CREDENTIAL = {KeyAlias}
           )
           ;
-  * Utwórz formatu pliku zewnętrznego pliku csv. Data jest bez kompresji i pola są rozdzielone znakiem kreski pionowej.
+  * Utwórz format pliku zewnętrznego dla pliku csv. Dane są nieskompresowane, a pola są oddzielone znakiem potoku.
 
           CREATE EXTERNAL FILE FORMAT {csv_file_format}
           WITH
@@ -205,7 +205,7 @@ Ten plik **skryptu programu PowerShell** wykonuje następujące zadania:
               )
           )
           ;
-  * Tworzenie zewnętrznego klasie i tabele podróży dla zestawu danych taksówek NYC w usłudze Azure blob storage.
+  * Tworzenie zewnętrznych tabel taryf i podróży dla zestawu danych taksówek NYC w magazynie obiektów blob platformy Azure.
 
           CREATE EXTERNAL TABLE {external_nyctaxi_fare}
           (
@@ -254,7 +254,7 @@ Ten plik **skryptu programu PowerShell** wykonuje następujące zadania:
                 REJECT_VALUE = 12
             )
 
-    - Ładowanie danych z tabel zewnętrznych w usłudze Azure Blob Storage do usługi Azure Synapse Analytics
+    - Ładowanie danych z tabel zewnętrznych w magazynie obiektów blob platformy Azure do usługi Azure Synapse Analytics
 
             CREATE TABLE {schemaname}.{nyctaxi_fare}
             WITH
@@ -278,7 +278,7 @@ Ten plik **skryptu programu PowerShell** wykonuje następujące zadania:
             FROM   {external_nyctaxi_trip}
             ;
 
-    - Utwórz przykładową tabelę danych (NYCTaxi_Sample) i wstawianie danych do niego z wybraniu zapytania SQL w tabelach podróży i klasie. (W niektórych krokach tego instruktażu należy użyć tej przykładowej tabeli).
+    - Utwórz przykładową tabelę danych (NYCTaxi_Sample) i wstaw do niej dane, wybierając zapytania SQL w tabelach podróży i taryf. (Niektóre kroki tego przewodnika należy użyć tej tabeli przykładowej.)
 
             CREATE TABLE {schemaname}.{nyctaxi_sample}
             WITH
@@ -307,55 +307,55 @@ Ten plik **skryptu programu PowerShell** wykonuje następujące zadania:
             )
             ;
 
-Geograficzna lokalizacja konta magazynu ma wpływ na czas ładowania.
+Lokalizacja geograficzna kont magazynu wpływa na czasy ładowania.
 
 > [!NOTE]
-> W zależności od lokalizacji geograficznej konta prywatnego magazynu obiektów BLOB proces kopiowania danych z publicznego obiektu BLOB do prywatnego konta magazynu może potrwać około 15 minut, a nawet dłużej i proces ładowania danych z konta magazynu na platformę Azure Analiza usługi Azure Synapse może trwać 20 minut lub dłużej.
+> W zależności od lokalizacji geograficznej konta prywatnego magazynu obiektów blob proces kopiowania danych z publicznego obiektu blob na konto prywatnego magazynu może potrwać około 15 minut, a nawet dłużej, a proces ładowania danych z konta magazynu na platformę Azure Usługa Azure Synapse Analytics może potrwać 20 minut lub dłużej.
 >
 >
 
-Musisz zdecydować co robią, jeśli masz zduplikowane pliki źródłowe i docelowe.
+Będziesz musiał zdecydować, co zrobić, jeśli masz zduplikowane pliki źródłowe i docelowe.
 
 > [!NOTE]
-> Pliki CSV, skopiowane z magazynu publicznego obiektu blob na koncie magazynu prywatnego obiektu blob już istnieje na koncie magazynu prywatnego obiektu blob, narzędzia AzCopy zapyta, czy chcesz je zastąpić. Jeśli nie chcesz ich zastąpić, wprowadź **n** po wyświetleniu monitu. Jeśli chcesz zastąpić **wszystkie** z nich **, wprowadź po** wyświetleniu monitu. Możesz również wprowadzić **y** , aby zastąpić pliki CSV pojedynczo.
+> Jeśli pliki csv, które mają zostać skopiowane z publicznego magazynu obiektów blob do prywatnego konta magazynu obiektów blob, już istnieją na koncie prywatnego magazynu obiektów blob, program AzCopy zapyta, czy chcesz je zastąpić. Jeśli nie chcesz ich zastąpić, po wyświetleniu monitu wprowadź **n.** Jeśli chcesz zastąpić **wszystkie** z nich, wprowadź **po** wyświetleniu monitu. Można również wprowadzić **y,** aby zastąpić pliki csv indywidualnie.
 >
 >
 
-![Dane wyjściowe z narzędzia AzCopy][21]
+![Wyjście z AzCopy][21]
 
-Można użyć własnych danych. W przypadku danych na maszynie lokalnej w realnym aplikacji, możesz nadal używać narzędzia AzCopy do przekazania danych lokalnych do swojej prywatnej usługi Azure blob storage. Wystarczy zmienić lokalizację **źródłową** , `$Source = "http://getgoing.blob.core.windows.net/public/nyctaxidataset"`, w poleceniu AzCopy pliku skryptu programu PowerShell do katalogu lokalnego, który zawiera dane.
+Możesz użyć własnych danych. Jeśli dane są na komputerze lokalnym w aplikacji rzeczywistych, nadal można użyć AzCopy do przekazywania danych lokalnych do prywatnego magazynu obiektów blob platformy Azure. Wystarczy zmienić lokalizację **źródłową,** `$Source = "http://getgoing.blob.core.windows.net/public/nyctaxidataset"`w poleceniu AzCopy pliku skryptu programu PowerShell na katalog lokalny zawierający dane.
 
 > [!TIP]
-> Jeśli Twoje dane są już w prywatnym magazynie obiektów blob platformy Azure w aplikacji rzeczywistej, możesz pominąć krok AzCopy w skrypcie programu PowerShell i bezpośrednio przekazać dane do usługi Azure Synapse Analytics. Będzie to wymagało dodatkowej edycji skrypt, aby dopasować ją do formatu danych.
+> Jeśli dane są już w prywatnym magazynie obiektów blob platformy Azure w aplikacji rzeczywistych, można pominąć krok AzCopy w skrypcie programu PowerShell i bezpośrednio przekazać dane do usługi Azure Azure Synapse Analytics. Będzie to wymagało dodatkowych zmian skryptu, aby dostosować go do formatu danych.
 >
 >
 
-Ten skrypt programu PowerShell umożliwia również podłączenie informacji analitycznych usługi Azure Synapse do plików przykładowych eksploracji danych SQLDW_Explorations. SQL, SQLDW_Explorations. ipynb i SQLDW_Explorations_Scripts. PR, aby te trzy pliki były gotowe do wypróbowania natychmiast po zakończeniu działania skryptu programu PowerShell.
+Ten skrypt programu PowerShell podłącza również informacje usługi Azure Synapse Analytics do przykładowych plików eksploracji danych SQLDW_Explorations.sql, SQLDW_Explorations.ipynb i SQLDW_Explorations_Scripts.py, aby te trzy pliki były gotowe do wypróbowania natychmiast po zakończeniu skryptu programu PowerShell.
 
-Po pomyślnym wykonaniu, zostanie wyświetlony ekran, takich jak poniżej:
+Po pomyślnym wykonaniu, zobaczysz ekran jak poniżej:
 
-![Dane wyjściowe wykonania pomyślnego skryptu][20]
+![Dane wyjściowe pomyślnego wykonania skryptu][20]
 
-## <a name="dbexplore"></a>Eksploracja danych i inżynieria funkcji w usłudze Azure Synapse Analytics
-W tej sekcji przeprowadzamy eksplorowanie i generowanie funkcji, uruchamiając zapytania SQL bezpośrednio w usłudze Azure Synapse Analytics przy użyciu **narzędzi danych programu Visual Studio**. Wszystkie zapytania SQL użyte w tej sekcji znajdują się w przykładowym skrypcie o nazwie *SQLDW_Explorations. SQL*. Ten plik został już pobrany z katalogiem lokalnym za pomocą skryptu programu PowerShell. Można go również pobrać z witryny [GitHub](https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataScience/master/Misc/SQLDW/SQLDW_Explorations.sql). Jednak plik w usłudze GitHub nie ma podłączonych informacji o usłudze Azure Synapse Analytics.
+## <a name="data-exploration-and-feature-engineering-in-azure-synapse-analytics"></a><a name="dbexplore"></a>Eksploracja danych i inżynieria funkcji w usłudze Azure Synapse Analytics
+W tej sekcji wykonujemy eksplorację danych i generowanie funkcji, uruchamiając zapytania SQL względem usługi Azure Synapse Analytics bezpośrednio przy użyciu **narzędzi danych programu Visual Studio.** Wszystkie kwerendy SQL używane w tej sekcji można znaleźć w przykładowym skrypcie o nazwie *SQLDW_Explorations.sql*. Ten plik został już pobrany do katalogu lokalnego przez skrypt programu PowerShell. Można go również pobrać z [GitHub](https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataScience/master/Misc/SQLDW/SQLDW_Explorations.sql). Ale plik w usłudze GitHub nie ma podłączonych informacji usługi Azure Synapse Analytics.
 
-Połącz się z usługą Azure Synapse Analytics przy użyciu programu Visual Studio za pomocą nazwy logowania i hasła usługi Azure Synapse Analytics, a następnie otwórz **Eksplorator obiektów SQL** w celu potwierdzenia, że baza danych i tabele zostały zaimportowane. Pobierz plik *SQLDW_Explorations. SQL* .
+Połącz się z usługą Azure Synapse Analytics przy użyciu programu Visual Studio za pomocą nazwy logowania i hasła usługi Azure Synapse Analytics i otwórz **Eksploratora obiektów SQL,** aby potwierdzić, że baza danych i tabele zostały zaimportowane. Pobierz plik *SQLDW_Explorations.sql.*
 
 > [!NOTE]
-> Aby otworzyć Edytor zapytań programu Parallel Data Warehouse (PDW), użyj polecenia **New Query** , gdy w **programie SQL Eksplorator obiektów**wybrano polecenie PDW. Standardowa edytorowi zapytań SQL nie jest obsługiwany przez PDW.
+> Aby otworzyć edytor zapytań magazynu danych równoległych (PDW), użyj polecenia **Nowa kwerenda,** gdy plik PDW jest zaznaczony w **Eksploratorze obiektów SQL**. Standardowy edytor zapytań SQL nie jest obsługiwany przez plik PDW.
 >
 >
 
-Poniżej przedstawiono typy zadań eksploracji danych i generowania funkcji wykonanych w tej sekcji:
+Oto typy zadań eksploracji danych i generowania funkcji wykonywanych w tej sekcji:
 
-* Zapoznaj się z dystrybucji danych kilka pól w różnych okna czasowe.
-* Zbadaj dobrej jakości danych pola długości i szerokości geograficznej.
-* Generuj etykiety klasyfikacji danych binarnych i wieloklasowych na podstawie **\_Porada**.
-* Generowanie funkcji i obliczeń/compare odległości podróży.
-* Dołącz do dwóch tabel i Wyodrębnij losowej próbki, która będzie służyć do tworzenia modeli.
+* Eksploruj dystrybucje danych w kilku polach w różnych oknach czasowych.
+* Zbadaj jakość danych pól długości i szerokości geograficznej.
+* Generowanie etykiet klasyfikacji binarnej i wieloklasowej na podstawie **kwoty końcówki\_**.
+* Generuj funkcje i obliczaj/porównuj odległości podróży.
+* Dołącz do dwóch tabel i wyodrębnić losową próbkę, która będzie używana do tworzenia modeli.
 
 ### <a name="data-import-verification"></a>Weryfikacja importu danych
-Te zapytania zapewniają szybki weryfikacji liczbę wierszy i kolumn w tabelach wypełniać wcześniej przy użyciu technologii Polybase firmy równoległy zbiorczy zaimportować,
+Te zapytania zapewniają szybką weryfikację liczby wierszy i kolumn w tabelach wypełnionych wcześniej przy użyciu importu zbiorczego polybase,
 
     -- Report number of rows in table <nyctaxi_trip> without table scan
     SELECT SUM(rows) FROM sys.partitions WHERE object_id = OBJECT_ID('<schemaname>.<nyctaxi_trip>')
@@ -363,10 +363,10 @@ Te zapytania zapewniają szybki weryfikacji liczbę wierszy i kolumn w tabelach 
     -- Report number of columns in table <nyctaxi_trip>
     SELECT COUNT(*) FROM information_schema.columns WHERE table_name = '<nyctaxi_trip>' AND table_schema = '<schemaname>'
 
-**Dane wyjściowe:** Należy uzyskać 173 179 759 wierszy i 14 kolumn.
+**Wyjście:** Powinieneś dostać 173,179,759 wiersze i 14 kolumn.
 
-### <a name="exploration-trip-distribution-by-medallion"></a>Eksploracja: Podróży rozkład według Medalionu
-To przykładowe zapytanie identyfikuje medallions (taksówek liczb), wykonanych więcej niż 100 podróży w określonym przedziale czasu. Zapytanie może korzystać z dostępu do partycjonowanej tabeli, ponieważ jest ono warunkiem schematu partycji **pobrania\_DateTime**. Wykonywanie zapytań pełnego zestawu danych spowoduje również, że użycie tabeli partycjonowanej i/lub indeksu skanowania.
+### <a name="exploration-trip-distribution-by-medallion"></a>Eksploracja: Dystrybucja podróży przez medalion
+W tym przykładzie kwerendy identyfikuje medaliony (numery taksówek), które ukończyły więcej niż 100 podróży w określonym okresie czasu. Kwerenda będzie korzystać z podzielonego na partycje dostępu do tabeli, ponieważ jest to uwarunkowane przez schemat partycji **datatime odbioru\_**. Kwerenda pełnego zestawu danych będzie również korzystać z partycjonowanych tabeli i/lub skanowania indeksu.
 
     SELECT medallion, COUNT(*)
     FROM <schemaname>.<nyctaxi_fare>
@@ -374,10 +374,10 @@ To przykładowe zapytanie identyfikuje medallions (taksówek liczb), wykonanych 
     GROUP BY medallion
     HAVING COUNT(*) > 100
 
-**Dane wyjściowe:** Zapytanie powinno zwrócić tabelę z wierszami określającymi 13 369 Medallions (taksówki) i liczbę podróży ukończonych w 2013. Ostatnia kolumna zawiera liczbę rund ukończone.
+**Wyjście:** Kwerenda powinna zwracać tabelę z wierszami określającymi 13 369 medalionów (taksówek) i liczbę podróży ukończonych w 2013 roku. Ostatnia kolumna zawiera liczbę ukończonych podróży.
 
-### <a name="exploration-trip-distribution-by-medallion-and-hack_license"></a>Eksploracja: Podróży rozkład według Medalionu i hack_license
-W tym przykładzie identyfikuje medallions (numery taksówek) i hack_license cyfry (sterowniki) zakończona ponad 100 podróży w określonym przedziale czasu.
+### <a name="exploration-trip-distribution-by-medallion-and-hack_license"></a>Eksploracja: Dystrybucja podróży przez medalion i hack_license
+W tym przykładzie identyfikuje medaliony (numery taksówek) i hack_license numerów (kierowców), które ukończyły ponad 100 przejazdów w określonym przedziale czasu.
 
     SELECT medallion, hack_license, COUNT(*)
     FROM <schemaname>.<nyctaxi_fare>
@@ -385,10 +385,10 @@ W tym przykładzie identyfikuje medallions (numery taksówek) i hack_license cyf
     GROUP BY medallion, hack_license
     HAVING COUNT(*) > 100
 
-**Dane wyjściowe:** Zapytanie powinno zwrócić tabelę z 13 369 wierszami 13 369 określającymi identyfikatory samochodów/sterowników, które ukończyły ponad 100 podróży w 2013. Ostatnia kolumna zawiera liczbę rund ukończone.
+**Wyjście:** Kwerenda powinna zwrócić tabelę z 13 369 wierszami określającymi 13 369 identyfikatorów samochodów/kierowców, które ukończyły ponad 100 przejazdów w 2013 roku. Ostatnia kolumna zawiera liczbę ukończonych podróży.
 
-### <a name="data-quality-assessment-verify-records-with-incorrect-longitude-andor-latitude"></a>Dane oceny jakości: Sprawdź rekordy o długości geograficznej niepoprawne i/lub szerokości geograficznej
-W tym przykładzie bada, jeśli żadnego pola geograficzne i/lub szerokość geograficzną albo zawiera nieprawidłową wartość (stopnie radianach powinna być od-90 do 90), lub (0, 0) współrzędnych.
+### <a name="data-quality-assessment-verify-records-with-incorrect-longitude-andor-latitude"></a>Ocena jakości danych: weryfikuj rekordy z nieprawidłową długością i/lub szerokością geograficzną
+W tym przykładzie bada, czy którykolwiek z pól długości i/lub szerokości geograficznej albo zawierają nieprawidłową wartość (promieniowe stopnie powinny być między -90 i 90), lub mają (0, 0) współrzędne.
 
     SELECT COUNT(*) FROM <schemaname>.<nyctaxi_trip>
     WHERE pickup_datetime BETWEEN '20130101' AND '20130331'
@@ -399,10 +399,10 @@ W tym przykładzie bada, jeśli żadnego pola geograficzne i/lub szerokość geo
     OR    (pickup_longitude = '0' AND pickup_latitude = '0')
     OR    (dropoff_longitude = '0' AND dropoff_latitude = '0'))
 
-**Dane wyjściowe:** Zapytanie zwraca 837 467 TRIPS, które mają nieprawidłowe pola długości geograficznej i/lub szerokości geograficznej.
+**Wyjście:** Kwerenda zwraca 837 467 podróży, które mają nieprawidłowe pola długości i/lub szerokości geograficznej.
 
-### <a name="exploration-tipped-vs-not-tipped-trips-distribution"></a>Eksploracja: Przechylony a dystrybucji nie Przechylony podróży
-W tym przykładzie wyszukuje Liczba podróży, które zostały Przechylony a liczbą, które nie zostały Przechylony w określonym przedziale czasu (lub pełnego zestawu danych, jeśli obejmujące pełny rok, ponieważ jest skonfigurowana w tym miejscu). Tej dystrybucji odzwierciedla dystrybucji binarne etykiety później służący do modelowania klasyfikacji binarnej.
+### <a name="exploration-tipped-vs-not-tipped-trips-distribution"></a>Eksploracja: Przechylony a nie przechylony dystrybucja podróży
+W tym przykładzie znajduje się liczba podróży, które zostały przechylone w porównaniu z liczbą, które nie zostały przechylone w określonym przedziale czasu (lub w pełnym zestawie danych, jeśli obejmuje cały rok, jak to jest skonfigurowane w tym miejscu). Ta dystrybucja odzwierciedla dystrybucji etykiet binarnych, które mają być później używane do modelowania klasyfikacji binarnej.
 
     SELECT tipped, COUNT(*) AS tip_freq FROM (
       SELECT CASE WHEN (tip_amount > 0) THEN 1 ELSE 0 END AS tipped, tip_amount
@@ -410,10 +410,10 @@ W tym przykładzie wyszukuje Liczba podróży, które zostały Przechylony a lic
       WHERE pickup_datetime BETWEEN '20130101' AND '20131231') tc
     GROUP BY tipped
 
-**Dane wyjściowe:** Zapytanie powinno zwrócić następujące częstotliwości Porada dla roku 2013:90 447 622, które zostały przechylone i 82 264 709 nie są wyrzucane.
+**Wyjście:** Kwerenda powinna zwracać następujące częstotliwości porad dla roku 2013: 90,447,622 przechylony i 82,264,709 nie-tipped.
 
-### <a name="exploration-tip-classrange-distribution"></a>Eksploracji: Dystrybucja klasy/zakresu Porada
-W tym przykładzie oblicza rozkład Porada zakresów w danym okresie czasu (lub pełnego zestawu danych, jeśli obejmujące pełny rok). Ta dystrybucja klas etykiet zostanie później użyta w przypadku modelowania klasyfikacji wieloklasowej.
+### <a name="exploration-tip-classrange-distribution"></a>Eksploracja: Klasa końcówka/rozkład zasięgu
+W tym przykładzie oblicza rozkład zakresów końcówek w danym okresie czasu (lub w pełnym zestawie danych, jeśli obejmuje cały rok). Ten rozkład klas etykiet będzie używany później do modelowania klasyfikacji wieloklasowej.
 
     SELECT tip_class, COUNT(*) AS tip_freq FROM (
         SELECT CASE
@@ -427,7 +427,7 @@ W tym przykładzie oblicza rozkład Porada zakresów w danym okresie czasu (lub 
     WHERE pickup_datetime BETWEEN '20130101' AND '20131231') tc
     GROUP BY tip_class
 
-**Rozdzielczości**
+**Dane wyjściowe:**
 
 | tip_class | tip_freq |
 | --- | --- |
@@ -437,8 +437,8 @@ W tym przykładzie oblicza rozkład Porada zakresów w danym okresie czasu (lub 
 | 0 |82264625 |
 | 4 |85765 |
 
-### <a name="exploration-compute-and-compare-trip-distance"></a>Eksploracji: Obliczeń i porównywanie odległość podróży
-Ten przykład konwertuje odbiór i dropoff długości geograficznej i szerokości geograficznej do lokalizacji geograficznej SQL punktów oblicza odległość podróży za pomocą różnicę punktów lokalizacji geograficznej SQL i zwraca losowej próbki wyniki porównania. Przykład ogranicza wyniki do prawidłowe współrzędne wyłącznie przy użyciu zapytania oceny jakości danych omówione wcześniej.
+### <a name="exploration-compute-and-compare-trip-distance"></a>Eksploracja: Oblicz i porównaj odległość podróży
+W tym przykładzie konwertuje długość i szerokość geograficzną odbioru i dropoff do punktów geografii SQL, oblicza odległość podróży przy użyciu różnicy punktów geografii SQL i zwraca losową próbkę wyników do porównania. Przykład ogranicza wyniki do prawidłowych współrzędnych tylko przy użyciu kwerendy oceny jakości danych omówione wcześniej.
 
     /****** Object:  UserDefinedFunction [dbo].[fnCalculateDistance] ******/
     SET ANSI_NULLS ON
@@ -482,8 +482,8 @@ Ten przykład konwertuje odbiór i dropoff długości geograficznej i szerokośc
     AND CAST(dropoff_latitude AS float) BETWEEN -90 AND 90
     AND pickup_longitude != '0' AND dropoff_longitude != '0'
 
-### <a name="feature-engineering-using-sql-functions"></a>Korzystanie z funkcji SQL technicznego opracowywania funkcji
-Czasami funkcji SQL może być opcją wydajne potrzeby inżynierii cech. W tym przewodniku zdefiniowaliśmy funkcji SQL, aby obliczyć bezpośrednie odległość między lokalizacjami odbiór i dropoff. Poniższe skrypty SQL można uruchomić w **narzędziach danych programu Visual Studio**.
+### <a name="feature-engineering-using-sql-functions"></a>Inżynieria funkcji przy użyciu funkcji SQL
+Czasami funkcje SQL może być skuteczną opcją dla inżynierii funkcji. W tym instruktażu zdefiniowaliśmy funkcję SQL, aby obliczyć bezpośrednią odległość między lokalizacjami odbioru i dropoff. W **programie Visual Studio Data Tools**można uruchomić następujące skrypty SQL.
 
 Oto skrypt SQL, który definiuje funkcję odległości.
 
@@ -520,7 +520,7 @@ Oto skrypt SQL, który definiuje funkcję odległości.
     END
     GO
 
-Oto przykład, aby wywołać tę funkcję, aby wygenerować funkcji w zapytaniu SQL:
+Oto przykład wywołania tej funkcji w celu wygenerowania funkcji w kwerendzie SQL:
 
     -- Sample query to call the function to create features
     SELECT pickup_latitude, pickup_longitude, dropoff_latitude, dropoff_longitude,
@@ -531,16 +531,16 @@ Oto przykład, aby wywołać tę funkcję, aby wygenerować funkcji w zapytaniu 
     AND CAST(dropoff_latitude AS float) BETWEEN -90 AND 90
     AND pickup_longitude != '0' AND dropoff_longitude != '0'
 
-**Dane wyjściowe:** To zapytanie generuje tabelę (z 2 803 538 wierszami) z pobraniem i Dropoff Latitudes i długością geograficzną oraz odpowiednimi odległościami bezpośrednimi w milach. Poniżej przedstawiono wyniki dla pierwszych trzech wierszy:
+**Wyjście:** Ta kwerenda generuje tabelę (z 2 803 538 wierszy) z szerokościami i długościami i długościami odbioru i dropoff oraz odpowiadającymi im bezpośrednimi odległościami w milach. Oto wyniki dla pierwszych trzech wierszy:
 
-|  | pickup_latitude | pickup_longitude | dropoff_latitude | dropoff_longitude | DirectDistance |
+|  | pickup_latitude | pickup_longitude | dropoff_latitude | dropoff_longitude | Bezpośrednia dyskutka |
 | --- | --- | --- | --- | --- | --- |
 | 1 |40.731804 |-74.001083 |40.736622 |-73.988953 |.7169601222 |
 | 2 |40.715794 |-74,010635 |40.725338 |-74.00399 |.7448343721 |
 | 3 |40.761456 |-73.999886 |40.766544 |-73.988228 |0.7037227967 |
 
-### <a name="prepare-data-for-model-building"></a>Przygotowuje dane do konstruowania modelu
-Następujące zapytanie sprzęga **\_wyjazdu** i **nyctaxi\_opłaty** za dane, wygeneruje binarną **etykietę klasyfikacji**, porada etykiet klasyfikacji wieloklasowej **\_klasie**i wyodrębnia próbkę z pełnego dołączonego zestawu danych. Próbkowanie odbywa się przez pobranie podzbiór podróży, na podstawie czasu odbioru.  To zapytanie można skopiować, a następnie wkleić bezpośrednio w [Azure Machine Learning Studio (klasyczny)](https://studio.azureml.net) [Importuj dane]import[-Data] modułu do bezpośredniego pozyskiwania danych z wystąpienia SQL Database na platformie Azure. Zapytanie wyklucza rekordy z niepoprawny (0, 0) współrzędnych.
+### <a name="prepare-data-for-model-building"></a>Przygotowywanie danych do budowania modelu
+Poniższa kwerenda łączy **tabele\_taryf nyctaxi** i **nyctaxi,\_** generuje etykietę klasyfikacji binarnej z **podziałką**, klasę etykiet **\_** klasy wieloklasowej i wyodrębnia próbkę z pełnego zestawu danych. Próbkowanie odbywa się przez pobranie podzbioru podróży na podstawie czasu odbioru.  Ta kwerenda może być kopiowana, a następnie wklejona bezpośrednio w module [importu danych][importu] danych usługi Azure Machine Learning [Studio (klasyczny)](https://studio.azureml.net) w celu bezpośredniego pozyskiwania danych z wystąpienia bazy danych SQL na platformie Azure. Kwerenda wyklucza rekordy z niepoprawnymi współrzędnymi (0, 0).
 
     SELECT t.*, f.payment_type, f.fare_amount, f.surcharge, f.mta_tax, f.tolls_amount,     f.total_amount, f.tip_amount,
         CASE WHEN (tip_amount > 0) THEN 1 ELSE 0 END AS tipped,
@@ -557,51 +557,51 @@ Następujące zapytanie sprzęga **\_wyjazdu** i **nyctaxi\_opłaty** za dane, w
     AND   t.pickup_datetime = f.pickup_datetime
     AND   pickup_longitude != '0' AND dropoff_longitude != '0'
 
-Gdy wszystko jest gotowe do przejścia do usługi Azure Machine Learning, użytkownik może:
+Gdy będziesz gotowy, aby przejść do usługi Azure Machine Learning, możesz:
 
-1. Zapisz ostateczną kwerendę SQL w celu wyodrębnienia i próbkowania danych i skopiowania zapytania bezpośrednio do modułu[Import] danych w programie Azure Machine Learning lub
-2. Utrwalaj próbkowane i zaprojektowane dane, które planujesz użyć do kompilowania modelu w nowej tabeli usługi Azure Synapse Analytics, i użyj nowej tabeli w module [Import danych][import] w Azure Machine Learning. Skrypt programu PowerShell w ramach wcześniejszego kroku zakończył to zadanie. Możesz przeczytać bezpośrednio z tej tabeli w modułu importu danych.
+1. Zapisz ostateczną kwerendę SQL, aby wyodrębnić i próbkować dane oraz skopiować i wkleić kwerendę bezpośrednio do modułu[importu danych importu] danych w usłudze Azure Machine Learning lub
+2. Utrwalić próbkowane i zaprojektowane dane, których zamierzasz użyć do tworzenia modelu w nowej tabeli usługi Azure Synapse Analytics i użyj nowej tabeli w module [Importuj dane][importu danych] w usłudze Azure Machine Learning. Skrypt programu PowerShell we wcześniejszym kroku wykonał to zadanie za Ciebie. Można odczytać bezpośrednio z tej tabeli w module Importuj dane.
 
-## <a name="ipnb"></a>Eksploracja danych i inżynieria funkcji w notesie IPython
-W tej sekcji będziemy wykonywać eksplorowanie i generowanie funkcji przy użyciu zapytań w języku Python i SQL względem utworzonej wcześniej usługi Azure Synapse Analytics. Przykładowy Notes IPython o nazwie **SQLDW_Explorations. ipynb** i plik skryptu w języku Python **SQLDW_Explorations_Scripts. PR** został pobrany do katalogu lokalnego. Są one również dostępne w serwisie [GitHub](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/SQLDW). Te dwa pliki są identyczne w skryptach języka Python. Plik skryptu języka Python jest udostępniany w przypadku, gdy nie masz serwera IPython Notebook. Te dwa przykładowe pliki w języku Python zostały zaprojektowane w języku **python 2,7**.
+## <a name="data-exploration-and-feature-engineering-in-ipython-notebook"></a><a name="ipnb"></a>Eksploracja danych i inżynieria funkcji w notebooku IPython
+W tej sekcji będziemy wykonywać eksploracji danych i generowania funkcji przy użyciu zapytań Języka Python i SQL względem usługi Azure Synapse Analytics utworzone wcześniej. Przykładowy notes IPython o nazwie **SQLDW_Explorations.ipynb** i plik skryptu **Pythona SQLDW_Explorations_Scripts.py** zostały pobrane do lokalnego katalogu. Są one również dostępne na [GitHub](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/SQLDW). Te dwa pliki są identyczne w skryptach Pythona. Plik skryptu Pythona jest dostarczany w przypadku, gdy nie masz serwera notebooka IPython. Te dwa przykładowe pliki Pythona są zaprojektowane pod **Python 2.7**.
 
-Odpowiednie informacje o usłudze Azure Synapse Analytics w notesie przykładowym IPython i plik skryptu języka Python pobrane na komputer lokalny został wcześniej podłączony przez skrypt programu PowerShell. Są one pliku wykonywalnego bez żadnych modyfikacji.
+Potrzebne informacje usługi Azure Synapse Analytics w przykładowym notesie IPython i pliku skryptu Języka Python pobranego na komputer lokalny zostały wcześniej podłączone przez skrypt programu PowerShell. Są one wykonywalne bez żadnych modyfikacji.
 
-Jeśli już skonfigurowano obszar roboczy Azure Machine Learning, możesz bezpośrednio przekazać przykładowy Notes IPython do usługi Azure IPython Notes i uruchomić go. Poniżej przedstawiono procedurę przekazywania do usługi Azure IPython Notes:
+Jeśli masz już skonfigurowany obszar roboczy usługi Azure Machine Learning, możesz bezpośrednio przekazać przykładowy notes IPython do usługi AzureML IPython Notebook i rozpocząć jego uruchamianie. Oto kroki, które należy przekazać do usługi AzureML IPython Notebook usługi:
 
-1. Zaloguj się do obszaru roboczego Azure Machine Learning, kliknij przycisk **Studio** u góry, a następnie kliknij pozycję **notesy** po lewej stronie strony sieci Web.
+1. Zaloguj się do obszaru roboczego usługi Azure Machine Learning, kliknij studio **u** góry i kliknij pozycję **NOTESY** po lewej stronie strony sieci Web.
 
-    ![Kliknij przycisk Studio, a następnie NOTESÓW][22]
-2. Kliknij pozycję **Nowy** w lewym dolnym rogu strony sieci Web, a następnie wybierz pozycję **Python 2**. Następnie podaj nazwę w notesie i kliknij znacznik wyboru, aby utworzyć nowy pusty IPython Notebook.
+    ![Kliknij pozycję Studio, a następnie POZYCJĘ NOTESS][22]
+2. Kliknij **przycisk NOWY** w lewym dolnym rogu strony internetowej, a następnie wybierz pozycję Python **2**. Następnie podaj nazwę notesu i kliknij znacznik wyboru, aby utworzyć nowy pusty notes IPython.
 
-    ![Kliknij pozycję Nowy, a następnie wybierz opcję 2 dla języka Python][23]
+    ![Kliknij przycisk NOWY, a następnie wybierz python 2][23]
 3. Kliknij symbol **Jupyter** w lewym górnym rogu nowego notesu IPython.
 
-    ![Kliknij Jupyter symbol][24]
-4. Przeciągnij i upuść przykładowy Notes IPython na stronę **drzewa** usługi Azure IPython Notes, a następnie kliknij pozycję **Przekaż**. Następnie przykład IPython Notebook zostanie przekazany do usługi Azure ml IPython Notebook.
+    ![Kliknij symbol Jupyter][24]
+4. Przeciągnij i upuść przykładowy notes IPython na stronę **drzewa** usługi notesu usługi AzureML IPython, a następnie kliknij przycisk **Przekaż**. Następnie przykładowy notes IPython zostanie przekazany do usługi Notesie usługi AzureML IPython.
 
     ![Kliknij przycisk Przekaż][25]
 
-Aby można było uruchomić przykładowy plik, Python następujące pakiety są wymagane skryptu IPython Notebook lub Python. Jeśli używasz usługi Azure ml IPython Notebook te pakiety zostały wstępnie zainstalowane.
+Aby uruchomić przykładowy notes IPython lub plik skryptu Pythona, potrzebne są następujące pakiety Pythona. Jeśli używasz usługi AzureML IPython Notebook usługi, te pakiety zostały wstępnie zainstalowane.
 
-- pandas
-- numpy
+- Pandy
+- Numpy
 - matplotlib
 - pyodbc
-- PyTables
+- PyTables (Tabele pytables)
 
-W przypadku kompilowania zaawansowanych rozwiązań analitycznych na Azure Machine Learning z dużymi danymi zalecaną sekwencją są:
+Podczas tworzenia zaawansowanych rozwiązań analitycznych w usłudze Azure Machine Learning z dużymi danymi, oto zalecana sekwencja:
 
-* Przeczytaj w niewielką próbkę danych do ramki danych w pamięci.
-* Wykonaj niektóre wizualizacje i eksploracji przy użyciu próbki danych.
-* Poeksperymentuj z technicznego opracowywania funkcji przy użyciu próbki danych.
-* W celu uzyskania większej eksploracji danych, manipulowania danymi i inżynierii funkcji Użyj języka Python, aby wystawiać zapytania SQL bezpośrednio z usługą Azure Synapse Analytics.
-* Zdecyduj, czy rozmiar próbki za właściwe do konstruowania modelu usługi Azure Machine Learning
+* Odczyt w małej próbce danych do ramki danych w pamięci.
+* Wykonaj niektóre wizualizacje i eksploracje przy użyciu próbkowania danych.
+* Eksperymentuj z inżynierią funkcji przy użyciu próbkowania danych.
+* Aby uzyskać większe eksploracji danych, manipulowania danymi i inżynierii funkcji, użyj języka Python do wystawiania zapytań SQL bezpośrednio względem usługi Azure Synapse Analytics.
+* Zdecyduj rozmiar próbki, aby był odpowiedni dla tworzenia modelu usługi Azure Machine Learning.
 
-Temacie przedstawiono kilka eksplorację danych, wizualizacji danych i funkcji inżynierii przykłady. Więcej eksploracji danych można znaleźć w przykładzie IPython Notebook oraz przykładowy plik skryptu języka Python.
+Oto kilka eksploracji danych, wizualizacji danych i przykładów inżynierii funkcji. Więcej eksploracji danych można znaleźć w przykładowym notesie IPython i przykładowym pliku skryptu Języka Python.
 
-### <a name="initialize-database-credentials"></a>Inicjowanie poświadczenia bazy danych
-Inicjuj ustawienia połączenia bazy danych w następujących zmiennych:
+### <a name="initialize-database-credentials"></a>Inicjowanie poświadczeń bazy danych
+Zainicjowanie ustawień połączenia z bazą danych w następujących zmiennych:
 
     SERVER_NAME=<server name>
     DATABASE_NAME=<database name>
@@ -609,13 +609,13 @@ Inicjuj ustawienia połączenia bazy danych w następujących zmiennych:
     PASSWORD=<password>
     DB_DRIVER = <database driver>
 
-### <a name="create-database-connection"></a>Utwórz połączenie z bazą danych
-Poniżej przedstawiono parametry połączenia, które tworzy połączenie z bazą danych.
+### <a name="create-database-connection"></a>Tworzenie połączenia z bazą danych
+Oto parametry połączenia, który tworzy połączenie z bazą danych.
 
     CONNECTION_STRING = 'DRIVER={'+DRIVER+'};SERVER='+SERVER_NAME+';DATABASE='+DATABASE_NAME+';UID='+USERID+';PWD='+PASSWORD
     conn = pyodbc.connect(CONNECTION_STRING)
 
-### <a name="report-number-of-rows-and-columns-in-table-nyctaxi_trip"></a>Raport liczba wierszy i kolumn w tabeli < nyctaxi_trip >
+### <a name="report-number-of-rows-and-columns-in-table-nyctaxi_trip"></a>Raport liczbę wierszy i kolumn w tabeli <nyctaxi_trip>
     nrows = pd.read_sql('''
         SELECT SUM(rows) FROM sys.partitions
         WHERE object_id = OBJECT_ID('<schemaname>.<nyctaxi_trip>')
@@ -631,9 +631,9 @@ Poniżej przedstawiono parametry połączenia, które tworzy połączenie z baz�
     print 'Total number of columns = %d' % ncols.iloc[0,0]
 
 * Całkowita liczba wierszy = 173179759
-* Łączna liczba kolumn = 14
+* Całkowita liczba kolumn = 14
 
-### <a name="report-number-of-rows-and-columns-in-table-nyctaxi_fare"></a>Raport liczba wierszy i kolumn w tabeli < nyctaxi_fare >
+### <a name="report-number-of-rows-and-columns-in-table-nyctaxi_fare"></a>Raport liczbę wierszy i kolumn w tabeli <nyctaxi_fare>
     nrows = pd.read_sql('''
         SELECT SUM(rows) FROM sys.partitions
         WHERE object_id = OBJECT_ID('<schemaname>.<nyctaxi_fare>')
@@ -649,9 +649,9 @@ Poniżej przedstawiono parametry połączenia, które tworzy połączenie z baz�
     print 'Total number of columns = %d' % ncols.iloc[0,0]
 
 * Całkowita liczba wierszy = 173179759
-* Łączna liczba kolumn = 11
+* Całkowita liczba kolumn = 11
 
-### <a name="read-in-a-small-data-sample-from-the-azure-synapse-analytics-database"></a>Zapoznaj się z niewielkim przykładem danych z bazy danych usługi Azure Synapse Analytics
+### <a name="read-in-a-small-data-sample-from-the-azure-synapse-analytics-database"></a>Odczyt małego przykładu danych z bazy danych usługi Azure Synapse Analytics
     t0 = time.time()
 
     query = '''
@@ -671,23 +671,23 @@ Poniżej przedstawiono parametry połączenia, które tworzy połączenie z baz�
 
     print 'Number of rows and columns retrieved = (%d, %d)' % (df1.shape[0], df1.shape[1])
 
-Czas odczytu z przykładowej tabeli jest 14.096495 sekund.
-Liczba wierszy i kolumn pobrać = (1000, 21).
+Czas odczytu przykładowej tabeli to 14.096495 sekund.
+Liczba pobranych wierszy i kolumn = (1000, 21).
 
 ### <a name="descriptive-statistics"></a>Statystyki opisowe
-Teraz można przystąpić do eksplorowania próbki danych. Zaczynamy od przejrzenia niektórych opisowych statystyk dla **\_podróży** (lub innych pól, które można określić).
+Teraz możesz przystąpić do eksplorowania próbkowania danych. Zaczynamy od przyjrzenia się niektórym statystykom opisowym **dla odległości podróży\_** (lub innych pól, które określisz).
 
     df1['trip_distance'].describe()
 
-### <a name="visualization-box-plot-example"></a>Wizualizacji: Przykład wykres pola
-Następnie przyjrzymy się skrzynkowy odległość podróży quantiles wizualizacji.
+### <a name="visualization-box-plot-example"></a>Wizualizacja: przykład wykresu pola
+Następnie patrzymy na wykres polu dla odległości podróży do wizualizacji quantiles.
 
     df1.boxplot(column='trip_distance',return_type='dict')
 
-![Okno danych wyjściowych z wykresu][1]
+![Wyjście wykresu pola][1]
 
-### <a name="visualization-distribution-plot-example"></a>Wizualizacji: Przykładowy diagram dystrybucji
-Wykresy wizualizowaniem dystrybucji i histogram odległości próbkowanych podróży.
+### <a name="visualization-distribution-plot-example"></a>Wizualizacja: przykład wykresu dystrybucji
+Wykresy, które wizualizują rozkład i histogram dla badanych odległości podróży.
 
     fig = plt.figure()
     ax1 = fig.add_subplot(1,2,1)
@@ -695,52 +695,52 @@ Wykresy wizualizowaniem dystrybucji i histogram odległości próbkowanych podr�
     df1['trip_distance'].plot(ax=ax1,kind='kde', style='b-')
     df1['trip_distance'].hist(ax=ax2, bins=100, color='k')
 
-![Diagram dystrybucji w danych wyjściowych][2]
+![Wyjście wykresu dystrybucji][2]
 
-### <a name="visualization-bar-and-line-plots"></a>Pasek wizualizacji: I drukuje wiersza
-W tym przykładzie firma Microsoft bin odległość podróży do pięciu pojemników, a wizualizacja wyników pakowania.
+### <a name="visualization-bar-and-line-plots"></a>Wizualizacja: wykresy słupkowe i liniowe
+W tym przykładzie możemy bin odległość podróży do pięciu pojemników i wizualizacji wyników binning.
 
     trip_dist_bins = [0, 1, 2, 4, 10, 1000]
     df1['trip_distance']
     trip_dist_bin_id = pd.cut(df1['trip_distance'], trip_dist_bins)
     trip_dist_bin_id
 
-Możemy wykresu powyżej dystrybucji bin na pasku lub linii wykresu za pomocą:
+Możemy wykreślić powyższy rozkład pojemnika na pasku lub na wykresie liniowym z:
 
     pd.Series(trip_dist_bin_id).value_counts().plot(kind='bar')
 
-![Pasek wykresu danych wyjściowych][3]
+![Wyjście wykresu prętowego][3]
 
 i
 
     pd.Series(trip_dist_bin_id).value_counts().plot(kind='line')
 
-![Dane wyjściowe wiersza wykresu][4]
+![Wyjście wykresu linii][4]
 
-### <a name="visualization-scatterplot-examples"></a>Wizualizacji: Przykłady wykres punktowy
-Pokazujemy wykres punktowy między **podróżą\_czasie\_w\_sekundach** i **wyjazdem\_** , aby sprawdzić, czy istnieje korelacja
+### <a name="visualization-scatterplot-examples"></a>Wizualizacja: przykłady scatterplot
+Pokazujemy wykres punktowy między **czasem\_\_podróży w\_sekundach** a **odległością podróży,\_** aby sprawdzić, czy istnieje korelacja
 
     plt.scatter(df1['trip_time_in_secs'], df1['trip_distance'])
 
-![Wykres punktowy danych wyjściowych relacji między czasem i odległości][6]
+![Wyjście scatterplot relacji między czasem a odległością][6]
 
-Podobnie możemy sprawdzić relację między **szybkością\_kod** i **podróż\_odległość**.
+Podobnie możemy sprawdzić związek między **kodem stawki\_** a **odległością podróży.\_**
 
     plt.scatter(df1['passenger_count'], df1['trip_distance'])
 
-![Wykres punktowy danych wyjściowych relacji między kodem i odległości][8]
+![Wyjście scatterplot relacji między kodem a odległością][8]
 
-### <a name="data-exploration-on-sampled-data-using-sql-queries-in-ipython-notebook"></a>Eksplorowanie danych na próbki danych przy użyciu zapytań SQL w IPython notebook
-W tej sekcji eksplorujemy dystrybucje danych przy użyciu danych próbkowanych, które są utrwalane w nowo utworzonej tabeli. Podobne eksploracje mogą być wykonywane przy użyciu oryginalnych tabel.
+### <a name="data-exploration-on-sampled-data-using-sql-queries-in-ipython-notebook"></a>Eksploracja danych na przykładowych danych przy użyciu zapytań SQL w notesie IPython
+W tej sekcji firma We eksplorujemy dystrybucje danych przy użyciu próbkowanych danych, które są zachowywane w nowej tabeli, którą utworzyliśmy powyżej. Podobne eksploracje mogą być wykonywane przy użyciu oryginalnych tabel.
 
-#### <a name="exploration-report-number-of-rows-and-columns-in-the-sampled-table"></a>Eksploracja: Raport liczba wierszy i kolumn w tabeli próbki
+#### <a name="exploration-report-number-of-rows-and-columns-in-the-sampled-table"></a>Eksploracja: Zgłoś liczbę wierszy i kolumn w próbkowanej tabeli
     nrows = pd.read_sql('''SELECT SUM(rows) FROM sys.partitions WHERE object_id = OBJECT_ID('<schemaname>.<nyctaxi_sample>')''', conn)
     print 'Number of rows in sample = %d' % nrows.iloc[0,0]
 
     ncols = pd.read_sql('''SELECT count(*) FROM information_schema.columns WHERE table_name = ('<nyctaxi_sample>') AND table_schema = '<schemaname>'''', conn)
     print 'Number of columns in sample = %d' % ncols.iloc[0,0]
 
-#### <a name="exploration-tippednot-tripped-distribution"></a>Eksploracja: Przechylony nie wyzwolenia dystrybucji
+#### <a name="exploration-tippednot-tripped-distribution"></a>Eksploracja: Przechylony / nie potknięty dystrybucja
     query = '''
         SELECT tipped, count(*) AS tip_freq
         FROM <schemaname>.<nyctaxi_sample>
@@ -749,7 +749,7 @@ W tej sekcji eksplorujemy dystrybucje danych przy użyciu danych próbkowanych, 
 
     pd.read_sql(query, conn)
 
-#### <a name="exploration-tip-class-distribution"></a>Eksploracji: Dystrybucja klasy Porada
+#### <a name="exploration-tip-class-distribution"></a>Eksploracja: Dystrybucja klas porad
     query = '''
         SELECT tip_class, count(*) AS tip_freq
         FROM <schemaname>.<nyctaxi_sample>
@@ -758,12 +758,12 @@ W tej sekcji eksplorujemy dystrybucje danych przy użyciu danych próbkowanych, 
 
     tip_class_dist = pd.read_sql(query, conn)
 
-#### <a name="exploration-plot-the-tip-distribution-by-class"></a>Eksploracja: Wykreślania dystrybucji Porada przez klasę
+#### <a name="exploration-plot-the-tip-distribution-by-class"></a>Eksploracja: Wykreślić rozkład końcówki według klasy
     tip_class_dist['tip_freq'].plot(kind='bar')
 
-![#26 wykreślania][26]
+![#26 działki][26]
 
-#### <a name="exploration-daily-distribution-of-trips"></a>Eksploracji: Codzienne rozkład rund
+#### <a name="exploration-daily-distribution-of-trips"></a>Eksploracja: Codzienna dystrybucja podróży
     query = '''
         SELECT CONVERT(date, dropoff_datetime) AS date, COUNT(*) AS c
         FROM <schemaname>.<nyctaxi_sample>
@@ -772,7 +772,7 @@ W tej sekcji eksplorujemy dystrybucje danych przy użyciu danych próbkowanych, 
 
     pd.read_sql(query,conn)
 
-#### <a name="exploration-trip-distribution-per-medallion"></a>Eksploracja: Podróży dystrybucji na Medalionu
+#### <a name="exploration-trip-distribution-per-medallion"></a>Eksploracja: Dystrybucja podróży na medalion
     query = '''
         SELECT medallion,count(*) AS c
         FROM <schemaname>.<nyctaxi_sample>
@@ -781,109 +781,109 @@ W tej sekcji eksplorujemy dystrybucje danych przy użyciu danych próbkowanych, 
 
     pd.read_sql(query,conn)
 
-#### <a name="exploration-trip-distribution-by-medallion-and-hack-license"></a>Eksploracja: Podróży rozkład według Medalionu i hack licencji
+#### <a name="exploration-trip-distribution-by-medallion-and-hack-license"></a>Eksploracja: Dystrybucja podróży przez medalion i licencję hack
     query = '''select medallion, hack_license,count(*) from <schemaname>.<nyctaxi_sample> group by medallion, hack_license'''
     pd.read_sql(query,conn)
 
 
-#### <a name="exploration-trip-time-distribution"></a>Eksploracji: Rozkład czasów podróży
+#### <a name="exploration-trip-time-distribution"></a>Eksploracja: Dystrybucja czasu podróży
     query = '''select trip_time_in_secs, count(*) from <schemaname>.<nyctaxi_sample> group by trip_time_in_secs order by count(*) desc'''
     pd.read_sql(query,conn)
 
-#### <a name="exploration-trip-distance-distribution"></a>Eksploracji: Dystrybucja odległość podróży
+#### <a name="exploration-trip-distance-distribution"></a>Eksploracja: Rozkład odległości podróży
     query = '''select floor(trip_distance/5)*5 as tripbin, count(*) from <schemaname>.<nyctaxi_sample> group by floor(trip_distance/5)*5 order by count(*) desc'''
     pd.read_sql(query,conn)
 
-#### <a name="exploration-payment-type-distribution"></a>Eksploracji: Rozkład typu płatności
+#### <a name="exploration-payment-type-distribution"></a>Eksploracja: Dystrybucja typu płatności
     query = '''select payment_type,count(*) from <schemaname>.<nyctaxi_sample> group by payment_type'''
     pd.read_sql(query,conn)
 
-#### <a name="verify-the-final-form-of-the-featurized-table"></a>Sprawdź ostatecznej postaci tabeli neural
+#### <a name="verify-the-final-form-of-the-featurized-table"></a>Sprawdź ostateczną formę tabeli featurized
     query = '''SELECT TOP 100 * FROM <schemaname>.<nyctaxi_sample>'''
     pd.read_sql(query,conn)
 
-## <a name="mlmodel"></a>Tworzenie modeli w Azure Machine Learning
-Teraz możemy przystąpić do tworzenia modeli i wdrażania modeli w [Azure Machine Learning](https://studio.azureml.net). Dane są gotowe do użycia w jednym z problemów prognozowania wymienionych wcześniej, to znaczy:
+## <a name="build-models-in-azure-machine-learning"></a><a name="mlmodel"></a>Tworzenie modeli w usłudze Azure Machine Learning
+Jesteśmy teraz gotowi przystąpić do tworzenia modelu i wdrażania modelu w [usłudze Azure Machine Learning.](https://studio.azureml.net) Dane są gotowe do użycia w każdym z problemów z przewidywaniem zidentyfikowanych wcześniej, a mianowicie:
 
-1. **Klasyfikacja binarna**: w celu przewidywania, czy Porada została zapłacona za podróż.
-2. **Klasyfikacja wieloklasowa**: aby przewidzieć zakres płatnej porady zgodnie z wcześniej zdefiniowanymi klasami.
-3. **Zadanie regresji**: przewidywanie kwoty Porada płatnej dla podróży.
+1. **Klasyfikacja binarna**: Aby przewidzieć, czy napiwek został opłacony za podróż.
+2. **Klasyfikacja wieloklasowa**: Aby przewidzieć zakres końcówki wypłacane, zgodnie z wcześniej zdefiniowanych klas.
+3. **Zadanie regresji:** Aby przewidzieć kwotę napiwku zapłaconego za podróż.
 
-Aby rozpocząć ćwiczenie modelowania, zaloguj się do obszaru roboczego **Azure Machine Learning (klasycznego)** . Jeśli nie utworzono jeszcze obszaru roboczego uczenia maszynowego, zobacz [Tworzenie obszaru roboczego Azure Machine Learning Studio (klasycznego)](../studio/create-workspace.md).
+Aby rozpocząć ćwiczenie modelowania, zaloguj się do swojego obszaru **roboczego usługi Azure Machine Learning (klasyczny).** Jeśli nie utworzono jeszcze obszaru roboczego uczenia maszynowego, zobacz [Tworzenie obszaru roboczego Usługi Azure Machine Learning Studio (klasycznego).](../studio/create-workspace.md)
 
-1. Aby rozpocząć pracę z Azure Machine Learning, zobacz [co to jest Azure Machine Learning Studio (klasyczny)?](../studio/what-is-ml-studio.md)
-2. Zaloguj się do [Azure Machine Learning Studio (klasyczne)](https://studio.azureml.net).
-3. Strona główna Machine Learning Studio (klasyczna) zawiera wiele informacji, filmów wideo, samouczków, linków do odwołań do modułów i innych zasobów. Aby uzyskać więcej informacji na temat Azure Machine Learning, zobacz [centrum dokumentacji Azure Machine Learning](https://azure.microsoft.com/documentation/services/machine-learning/).
+1. Aby rozpocząć korzystanie z usługi Azure Machine Learning, zobacz [Co to jest usługa Azure Machine Learning Studio (klasyczna)?](../studio/what-is-ml-studio.md)
+2. Zaloguj się do [usługi Azure Machine Learning Studio (klasyczny)](https://studio.azureml.net).
+3. Machine Learning Studio (klasyczny) Strona główna zawiera wiele informacji, filmy, samouczki, łącza do modułów odniesienia i innych zasobów. Aby uzyskać więcej informacji na temat usługi Azure Machine Learning, zobacz [Centrum dokumentacji usługi Azure Machine Learning](https://azure.microsoft.com/documentation/services/machine-learning/).
 
-Typowe eksperyment składa się z następujących czynności:
+Typowy eksperyment szkoleniowy składa się z następujących kroków:
 
-1. Utwórz **Nowy** eksperyment.
-2. Pobierz dane do Azure Machine Learning Studio (klasyczne).
-3. Przed przetworzeniem i przekształcaniem danych oraz manipulowanie nimi.
-4. Generowanie funkcji zgodnie z potrzebami.
-5. Podzielić dane na szkolenie i sprawdzania poprawności/testowania zestawów danych (lub rozdzielanie zestawów danych dla każdego).
-6. Wybierz co najmniej jeden algorytmów uczenia maszynowego w zależności od problemu nauki do rozwiązania. Na przykład klasyfikacja binarna, klasyfikacja wieloklasowa, regresja.
-7. Szkolenie jednego lub więcej modeli przy użyciu zestawu danych szkoleniowych.
-8. Wynik sprawdzania poprawności zestawu danych za pomocą wytrenowane modele.
-9. Ocena modeli można obliczyć metryki istotne dla nauczanym problemem.
-10. Dostosuj modele i wybierz najlepszy model do wdrożenia.
+1. Utwórz **eksperyment +NOWY.**
+2. Pobierz dane do usługi Azure Machine Learning Studio (klasyczny).
+3. W razie potrzeby przetwórz, przekształcaj i manipuluj danymi.
+4. Generuj funkcje w razie potrzeby.
+5. Podziel dane na zestawy danych szkoleniowe/walidacyjne/testujące(lub mają oddzielne zestawy danych dla każdego z nich).
+6. Wybierz jeden lub więcej algorytmów uczenia maszynowego w zależności od problemu uczenia się do rozwiązania. Na przykład klasyfikacja binarna, klasyfikacja wieloklasowa, regresja.
+7. Trenuj jeden lub więcej modeli przy użyciu zestawu danych szkolenia.
+8. Ocena zestawu danych sprawdzania poprawności przy użyciu wyszkolonych modeli.
+9. Oceń model(y), aby obliczyć odpowiednie metryki problemu uczenia się.
+10. Dostroić model(y) i wybrać najlepszy model do wdrożenia.
 
-W tym ćwiczeniu zostały już omówione i zaprojektowane dane w usłudze Azure Synapse Analytics i podjęto decyzję o wielkości próbki do pozyskania w Azure Machine Learning Studio (klasyczny). Poniżej przedstawiono procedurę tworzenia co najmniej jeden modele predykcyjne:
+W tym ćwiczeniu zbadaliśmy już i zaprojektowaliśmy dane w usłudze Azure Synapse Analytics i zdecydowaliśmy się na przykładowy rozmiar do pozyskiwania w usłudze Azure Machine Learning Studio (klasyczny). Oto procedura tworzenia jednego lub więcej modeli przewidywania:
 
-1. Pobierz dane do Azure Machine Learning Studio (klasycznego) przy użyciu modułu [Import danych][import] , który jest dostępny w sekcji **dane wejściowe i wyjściowe** . Aby uzyskać więcej informacji, zapoznaj się z informacjami na stronie [Import Data][import] modułu.
+1. Pobierz dane do usługi Azure Machine Learning Studio (klasyczny) przy użyciu [importu danych][importu danych] modułu, dostępne w danych **wejściowych i wyjściowych** sekcji. Aby uzyskać więcej informacji, zobacz stronę odwołania do[modułu importu danych importuj] dane. [Import Data]
 
-    ![Usługa Azure ML importu danych][17]
-2. Wybierz **Azure SQL Database** jako **Źródło danych** w panelu **Właściwości** .
-3. Wprowadź nazwę DNS bazy danych w polu **Nazwa serwera bazy danych** . Format: `tcp:<your_virtual_machine_DNS_name>,1433`
+    ![Dane importu usługi Azure ML][17]
+2. Wybierz **usługę Azure SQL Database** jako źródło **danych** w panelu **Właściwości.**
+3. Wprowadź nazwę DNS bazy danych w polu **Nazwa serwera bazy danych.** Formacie:`tcp:<your_virtual_machine_DNS_name>,1433`
 4. Wprowadź **nazwę bazy danych** w odpowiednim polu.
-5. Wprowadź *nazwę użytkownika SQL* w polu **nazwa konta użytkownika serwera**i *hasło* w polu **hasło konta użytkownika serwera**.
-7. W obszarze tekst **kwerendy bazy danych** Edytuj zapytanie, które wyodrębnia niezbędne pola bazy danych (w tym wszystkie pola obliczane, takie jak etykiety), i w dół próbkuje dane do żądanego rozmiaru próbki.
+5. Wprowadź *nazwę użytkownika SQL* w **nazwie konta użytkownika serwera**oraz *hasło* w **haśle konta użytkownika serwera**.
+7. W obszarze edycji tekstu **kwerendy bazy danych** wklej kwerendę, która wyodrębnia niezbędne pola bazy danych (w tym wszystkie obliczone pola, takie jak etykiety) i w dół próbkuje dane do żądanego rozmiaru próbki.
 
-Przykładem eksperymentu klasyfikacji danych binarnych odczytującego dane bezpośrednio z bazy danych usługi Azure Synapse Analytics znajduje się na poniższej ilustracji (Pamiętaj, aby zastąpić nazwy tabel nyctaxi_trip i nyctaxi_fare według nazwy schematu i nazw tabel użytych w Przewodnik po kroku). Podobne eksperymenty można konstruować wieloklasowej klasyfikacji i regresji problemów.
+Przykład eksperymentu klasyfikacyjnego binarnego odczytu danych bezpośrednio z bazy danych usługi Azure Synapse Analytics znajduje się na poniższym rysunku (pamiętaj, aby zastąpić nazwy tabel nyctaxi_trip i nyctaxi_fare przez nazwę schematu i nazwy tabel używane w w instruktażu). Podobne eksperymenty mogą być konstruowane dla wieloklasowych problemów klasyfikacji i regresji.
 
-![Szkolenie usługi Azure ML][10]
+![Pociąg usługi Azure ML][10]
 
 > [!IMPORTANT]
-> W zapytaniach dotyczących wyodrębniania i próbkowania danych modelowania, które zostały podane w poprzednich sekcjach, **wszystkie etykiety dla trzech ćwiczeń modelowania są zawarte w zapytaniu**. Ważne (wymagane) krok w każdym z ćwiczeń modelowania polega na **wykluczeniu** niepotrzebnych etykiet dla innych dwóch problemów oraz wszelkich innych **przecieków docelowych**. Na przykład, w przypadku używania klasyfikacji binarnej, należy użyć etykiety **przechylonej** i wykluczyć **\_etykietki**pól, **\_ilość**i **łączną kwotę\_** . Są one przecieki docelowy od momentu oznaczają porady płatne.
+> W przykładach wyodrębniania danych modelowania i próbkowania zapytań podanych w poprzednich sekcjach **wszystkie etykiety dla trzech ćwiczeń modelowania są zawarte w kwerendzie**. Ważnym (wymaganym) krokiem w każdym z ćwiczeń modelowania jest **wykluczenie** zbędnych etykiet dla pozostałych dwóch problemów i wszelkich innych **przecieków docelowych.** Na przykład w przypadku klasyfikacji binarnej należy użyć etykiety **z podziałką** i wykluczyć **klasę końcówki\_** pól, kwotę **\_końcówki**i łączną **\_kwotę.** Te ostatnie są przecieki docelowe, ponieważ implikują napiwek wypłacane.
 >
-> Aby wykluczyć niepotrzebne kolumny lub wycieki docelowe, możesz użyć modułu [SELECT Columns in DataSet (Wybieranie kolumn w zestawie danych][select-columns] ) lub [edytować metadane][edit-metadata]. Aby uzyskać więcej informacji, zobacz [Wybieranie kolumn w zestawie danych][select-columns] i edytowanie stron odwołań do [metadanych][edit-metadata] .
+> Aby wykluczyć niepotrzebne kolumny lub przecieki docelowe, można użyć modułu [Wybierz kolumny w][select-columns] zestawie danych lub Edytuj [metadane][edit-metadata]. Aby uzyskać więcej informacji, zobacz [Wybieranie kolumn w zestawie danych][select-columns] i Edytowanie stron referencyjnych [metadanych.][edit-metadata]
 >
 >
 
-## <a name="mldeploy"></a>Wdrażanie modeli w Azure Machine Learning
-Gdy model jest gotowy, można łatwo wdrażać je jako usługi sieci web bezpośrednio z poziomu eksperymentu. Aby uzyskać więcej informacji na temat wdrażania usług sieci Web Azure ML, zobacz [wdrażanie usługi sieci web Azure Machine Learning](../studio/deploy-a-machine-learning-web-service.md).
+## <a name="deploy-models-in-azure-machine-learning"></a><a name="mldeploy"></a>Wdrażanie modeli w usłudze Azure Machine Learning
+Gdy model jest gotowy, można łatwo wdrożyć go jako usługę sieci web bezpośrednio z eksperymentu. Aby uzyskać więcej informacji na temat wdrażania usług sieci Web usługi Azure ML, zobacz [Wdrażanie usługi sieci Web usługi Azure Machine Learning.](../studio/deploy-a-machine-learning-web-service.md)
 
 Aby wdrożyć nową usługę sieci web, należy:
 
 1. Tworzenie eksperymentu oceniania.
 2. Wdrażanie usługi sieci web.
 
-Aby utworzyć eksperyment oceniania z **gotowego** eksperymentu szkoleniowego, kliknij pozycję **Utwórz eksperyment oceniania** na niższym pasku akcji.
+Aby utworzyć eksperyment oceniania z eksperymentu **Zakończone szkolenie,** kliknij przycisk **UTWÓRZ EKSPERYMENT PUNKTACJI** na dolnym pasku akcji.
 
-![Ocenianie przez usługę Azure][18]
+![Ocena platformy Azure][18]
 
-Usługa Azure Machine Learning spróbuje utworzyć eksperyment oceniania na podstawie składników eksperymentu szkolenia. W szczególności będą wykonywane następujące czynności:
+Usługa Azure Machine Learning podejmie próbę utworzenia eksperymentu oceniania na podstawie składników eksperymentu szkoleniowego. W szczególności:
 
-1. Zapisania trenowanego modelu, a następnie usuń moduły szkolenie modelu.
-2. Określ logiczny **port wejściowy** reprezentujący oczekiwany schemat danych wejściowych.
-3. Określ logiczny **port wyjściowy** reprezentujący oczekiwany schemat danych wyjściowych usługi sieci Web.
+1. Zapisz przeszkolony model i usuń moduły szkoleniowe modelu.
+2. Identyfikowanie logicznego **portu wejściowego** w celu reprezentowania oczekiwanego schematu danych wejściowych.
+3. Identyfikowanie logicznego **portu wyjściowego** w celu reprezentowania oczekiwanego schematu wyjściowego usługi sieci Web.
 
-Podczas tworzenia eksperymentu oceniania Przejrzyj wyniki i dostosuj je w razie konieczności. Typowym ustawieniem jest zastępowanie wejściowego zestawu danych lub zapytania, które wyklucza pola etykiety, ponieważ te pola etykiet nie będą mapowane do schematu podczas wywoływania usługi. Dobrym sposobem jest zmniejszenie rozmiaru wejściowego zestawu danych i/lub zapytania do kilku rekordów, wystarczająco że wskazuje schemat wejściowy. Dla portu wyjściowego często wyklucza wszystkie pola wejściowe i zawiera tylko **etykiety z wynikami** i **oceny prawdopodobieństwa** w danych wyjściowych za pomocą modułu [SELECT Columns in DataSet (Wybieranie kolumn w zestawie danych][select-columns] ).
+Podczas tworzenia eksperymentu oceniania przejrzyj wyniki i dostosuj się zgodnie z potrzebami. Typowym dostosowaniem jest zastąpienie wejściowego zestawu danych lub kwerendy takim, który wyklucza pola etykiet, ponieważ te pola etykiet nie będą mapowane do schematu podczas wywoływania usługi. Jest również dobrą praktyką, aby zmniejszyć rozmiar wejściowego zestawu danych i/lub kwerendy do kilku rekordów, wystarczy wskazać schemat wejściowy. Dla portu wyjściowego jest wspólne, aby wykluczyć wszystkie pola wejściowe i obejmują tylko **ocenione etykiety** i **ocenione prawdopodobieństwa** w danych wyjściowych przy użyciu Wybierz kolumny w module [zestawu danych.][select-columns]
 
-Przykład oceniania eksperymentu znajduje się na poniższej ilustracji. Gdy wszystko będzie gotowe do wdrożenia, kliknij przycisk **Publikuj usługę sieci Web** na dolnym pasku akcji.
+Przykładowy eksperyment oceniania znajduje się na poniższym rysunku. Gdy będzie gotowy do wdrożenia, kliknij przycisk **PUBLIKUJ USŁUGĘ SIECI WEB** na dolnym pasku akcji.
 
-![Azure ML Publish][11]
+![Publikowanie usługi Azure ML][11]
 
 ## <a name="summary"></a>Podsumowanie
-Na podsumowanie wykonaliśmy w tym samouczku wskazówki, utworzono środowisko do nauki o danych platformy Azure we współpracy z dużego zestawu danych publicznego, poruszają zespołu danych dla celów naukowych, od pozyskiwanie danych do szkolenia modelu, a następnie do Wdrażanie usługi sieci web Azure Machine Learning.
+Aby podsumować to, co zrobiliśmy w tym samouczku, utworzono środowisko do nauki o danych platformy Azure, pracowałeś z dużym publicznym zestawem danych, przechodząc przez proces nauki o danych zespołu, od pozyskiwania danych do szkolenia modelu, a następnie do wdrażania usługi sieci web usługi Azure Machine Learning.
 
 ### <a name="license-information"></a>Informacje o licencji
-Ten przewodnik po przykładzie i towarzyszące jej IPython notebook(s) i skrypty są udostępniane przez firmę Microsoft na licencji MIT. Sprawdź plik LICENSE. txt w katalogu przykładowego kodu w witrynie GitHub, aby uzyskać więcej informacji.
+Ten przykładowy instruktaż i towarzyszące mu skrypty i notesy IPython są udostępniane przez firmę Microsoft na licencji MIT. Sprawdź plik LICENSE.txt w katalogu przykładowego kodu w usłudze GitHub, aby uzyskać więcej informacji.
 
 ## <a name="references"></a>Dokumentacja
-- [Strona pobierania podróży z Andrés Monroy NYC](https://www.andresmh.com/nyctaxitrips/)
-- [Dane o podróży z taksówką NYC przez Krzysztof Whong](https://chriswhong.com/open-data/foil_nyc_taxi/)
-- [Badania i dane statystyczne dotyczące NYC taksówki i Limousine Komisji](https://www1.nyc.gov/site/tlc/about/tlc-trip-record-data.page)
+- [Andrés Monroy NYC Taxi Trips Strona pobierania](https://www.andresmh.com/nyctaxitrips/)
+- [FOILing NYC's Taxi Trip Dane Chris Whong](https://chriswhong.com/open-data/foil_nyc_taxi/)
+- [NYC Taxi i Limuzyny Komisji Badania i Statystyki](https://www1.nyc.gov/site/tlc/about/tlc-trip-record-data.page)
 
 [1]: ./media/sqldw-walkthrough/sql-walkthrough_26_1.png
 [2]: ./media/sqldw-walkthrough/sql-walkthrough_28_1.png
@@ -916,4 +916,4 @@ Ten przewodnik po przykładzie i towarzyszące jej IPython notebook(s) i skrypty
 <!-- Module References -->
 [edit-metadata]: https://msdn.microsoft.com/library/azure/370b6676-c11c-486f-bf73-35349f842a66/
 [select-columns]: https://msdn.microsoft.com/library/azure/1ec722fa-b623-4e26-a44e-a50c6d726223/
-[Import]: https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/
+[import-data]: https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/

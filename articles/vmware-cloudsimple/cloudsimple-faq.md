@@ -1,6 +1,6 @@
 ---
-title: Często zadawane pytania — Azure VMware Solutions (Automatyczna synchronizacja)
-description: Często zadawane pytania dotyczące rozwiązań VMware platformy Azure (Automatyczna synchronizacja)
+title: Często zadawane pytania — rozwiązanie Azure VMware firmy CloudSimple
+description: Często zadawane pytania dotyczące rozwiązania Azure VMware firmy CloudSimple
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/15/2019
@@ -8,159 +8,159 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: c3808491c84f6c76a51c914aac6ee5e5ee370970
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 95d8c2974ea372dd59d15a9f2cc31ed171acd932
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77025065"
 ---
-# <a name="frequently-asked-questions-about-vmware-solution-by-avs"></a>Często zadawane pytania dotyczące rozwiązania VMware dzięki automatycznej synchronizacji
+# <a name="frequently-asked-questions-about-vmware-solution-by-cloudsimple"></a>Często zadawane pytania dotyczące rozwiązania VMware firmy CloudSimple
 
-## <a name="avs-service"></a>Usługa automatycznej synchronizacji
+## <a name="cloudsimple-service"></a>Usługa CloudSimple
 
-**Co to jest Azure VMware Solutions (Automatyczna synchronizacja)?**
+**Co to jest rozwiązanie Azure VMware firmy CloudSimple?**
 
-Usługa Azure VMware Solutions (Automatyczna synchronizacja) przekształca i rozszerza obciążenia oprogramowania VMware do prywatnych, dedykowanych chmur na platformie Azure w ciągu kilku minut. Automatyczna synchronizacja jest przeznaczona do obsługi, zarządzania infrastrukturą i organizowania obciążeń między środowiskiem lokalnym i platformą Azure. Ponieważ aplikacje działają dokładnie tak samo lokalnie i na platformie Azure, możesz skorzystać z elastyczności i usług w chmurze bez konieczności ponownego tworzenia architektury aplikacji. Automatyczna synchronizacja pozwala obniżyć całkowity koszt posiadania przy użyciu modelu zużycia w chmurze, który zapewnia zainicjowanie obsługi na żądanie, płatność zgodnie z oczekiwaniami i optymalizację pojemności. Zapoznaj [się z artykułem co to jest rozwiązanie VMware na platformie Azure](cloudsimple-vmware-solutions-overview.md) , aby uzyskać informacje na temat funkcji, korzyści i scenariuszy.
+Rozwiązanie Azure VMware firmy CloudSimple przekształca i rozszerza obciążenia VMware na prywatne, dedykowane chmury na platformie Azure w ciągu kilku minut. CloudSimple zajmuje się inicjowania obsługi administracyjnej, zarządzania infrastrukturą i organizowania obciążeń między lokalnymi i platformy Azure. Ponieważ aplikacje działają dokładnie tak samo lokalnie i na platformie Azure, możesz korzystać z elastyczności i usług chmury bez złożoności rearchitecting aplikacji. CloudSimple obniża całkowity koszt posiadania dzięki modelowi zużycia chmury, który zapewnia aprowizowanie na żądanie, zwiększanie płatności zgodnie z rzeczywistym użyciem i optymalizację pojemności.  Zobacz [Co to jest rozwiązanie VMware na platformie Azure przez CloudSimple](cloudsimple-vmware-solutions-overview.md) dla funkcji, korzyści i scenariuszy.
 
-**Co to jest chmura prywatna w wersji zaautomatycznej?**
+**Co to jest CloudSimple Private Cloud?**
 
-Chmura prywatna w wersji zaciągającej jest prywatną, dedykowaną chmurą obejmującą środowisko obliczeniowe, magazynowe i sieciowe o wysokiej wydajności wdrożone w infrastrukturze Microsoft Azure (sprzęt i przestrzeń w centrum danych) w lokalizacjach platformy Azure. Chmura prywatna w wersji załadunkowej zapewnia natywną platformę VMware jako usługę. W programie VMware każda Chmura prywatna w wersji zapoznawczych zawiera dokładnie jedno wystąpienie vCenter Server. VCenter Server zarządza wieloma węzłami ESXi zawartymi w jednym lub większej liczbie klastrów vSphere wraz z odpowiednim magazynem wirtualnej sieci SAN (sieci vSAN). Usługa automatycznej synchronizacji może zawierać wiele chmur prywatnych w ramach subskrypcji platformy Azure. Aby uzyskać więcej informacji, zobacz [Omówienie automatycznej synchronizacji chmury prywatnej](cloudsimple-private-cloud.md).
+CloudSimple Private Cloud to prywatna, dedykowana chmura, która składa się z wysokowydajnego środowiska obliczeniowego, magazynu i sieci wdrożonego w infrastrukturze platformy Microsoft Azure (sprzęt i przestrzeń centrum danych) w lokalizacjach platformy Azure.  Private Cloud zapewnia natywną platformę VMware jako usługę. W warunkach VMware każda chmura prywatna zawiera dokładnie jedno wystąpienie serwera vCenter. Serwer vCenter zarządza wieloma węzłami ESXi zawartymi w co najmniej jednym klastrze vSphere, wraz z odpowiednim magazynem virtual SAN (vSAN). Usługa CloudSimple może zawierać wiele chmur prywatnych w ramach subskrypcji platformy Azure.  Aby uzyskać więcej informacji, zobacz [Omówienie chmury prywatnej](cloudsimple-private-cloud.md).
 
-**Gdzie jest dostępna usługa automatycznej synchronizacji?**
+**Gdzie jest dostępna usługa CloudSimple?**
 
-Automatyczna synchronizacja jest dostępna w regionach Wschodnie stany USA, zachodnie stany USA i Europa Zachodnia z dodatkowymi regionami.
+CloudSimple jest dostępny w regionach Wschodnich stanów USA, Zachodnich Stanów Zjednoczonych i Europy Zachodniej, a wkrótce pojawią się dodatkowe regiony.
 
-**Jak mogę włączyć subskrypcję na potrzeby automatycznej synchronizacji?**
+**Jak włączyć subskrypcję cloudsimple?**
 
-Możesz skontaktować się z przedstawicielem konto Microsoft w [azurevmwaresales@microsoft.com](mailto:azurevmwaresales@microsoft.com) , aby włączyć subskrypcję usługi automatycznej synchronizacji. Podaj identyfikator subskrypcji w wiadomości e-mail, dla której ma być włączona usługa automatycznej synchronizacji. 
+Możesz skontaktować się z [azurevmwaresales@microsoft.com](mailto:azurevmwaresales@microsoft.com) przedstawicielem konta Microsoft, aby włączyć subskrypcję usługi CloudSimple. Podaj swój identyfikator subskrypcji w wiadomości e-mail, dla której chcesz włączyć usługę CloudSimple.  
 
-**Jak mogę uzyskać dostęp do portalu automatycznej synchronizacji?**
+**Jak uzyskać dostęp do portalu CloudSimple?**
 
-Dostęp do portalu automatycznej synchronizacji można uzyskać z Azure Portal. Aby uzyskać szczegółowe informacje, zobacz [dostęp do portalu VMware Solutions (Automatyczna synchronizacja) z Azure Portal](access-cloudsimple-portal.md).
+Dostęp do portalu CloudSimple z witryny Azure portal.  Aby uzyskać szczegółowe informacje, zobacz [Dostęp do rozwiązania VMware przez portal CloudSimple z witryny Azure portal.](access-cloudsimple-portal.md)
 
-**Jak mogę zwiększyć pojemność chmury prywatnej w wersji zaautomatycznej?**
+**Jak zwiększyć pojemność chmury prywatnej?**
 
-Aby zwiększyć pojemność, Kup dodatkowe węzły z Azure Portal a następnie użyj węzłów, aby rozwinąć chmurę prywatną w wersji zastosowanej w portalu automatycznej synchronizacji. Można dodać dodatkowe węzły do istniejącego klastra vSphere lub dodać je do nowego klastra vSphere. Aby uzyskać szczegółowe informacje, zobacz [Rozwiń chmurę prywatną](expand-private-cloud.md).
+Aby zwiększyć pojemność, zakup dodatkowych węzłów z witryny Azure portal, a następnie użyj węzłów, aby rozwinąć chmurę prywatną z portalu CloudSimple.  Można dodać dodatkowe węzły do istniejącego klastra vSphere lub dodać je do nowego klastra vSphere.  Aby uzyskać szczegółowe informacje, zobacz [Rozszerzanie chmury prywatnej CloudSimple](expand-private-cloud.md).
 
-**Co się stanie z moją chmurą prywatną podczas konserwacji?**
+**Co dzieje się z moją chmurą prywatną podczas konserwacji?**
 
-Automatyczna synchronizacja zapewnia powiadomienia kilka dni przed upływem zaplanowanego interwału konserwacji. Konserwacja odbywa się w niezakłóconym stopniu, aby zapewnić dostępność chmury prywatnej automatycznej synchronizacji. Konserwacja może być następujących typów:
+CloudSimple zapewnia powiadomienie na kilka dni przed zaplanowanym interwałem konserwacji.  Konserwacja odbywa się w sposób nieuniknięty, aby zapewnić dostępność chmury prywatnej.  Konserwacja może być następujących typów:
 
-* **Infrastruktura automatycznej synchronizacji**. Infrastruktura automatycznej dostępności została zaprojektowana tak, aby była wysoce dostępna. W trakcie tego typu interwału konserwacji nadmiarowe składniki są aktualizowane pojedynczo, aby uniknąć przerw w świadczeniu usług. Zapewniasz dostęp do wersji zawieszeń prywatnych chmury, wszystkich maszyn wirtualnych, połączenia internetowego z chmury prywatnej do automatycznej synchronizacji oraz połączeń z lokalnym lub platformą Azure.
-* **Portal automatycznej synchronizacji**. W trakcie tego typu interwału konserwacji niektóre funkcje portalu automatycznej konfiguracji mogą być wyłączone lub niedostępne. Powiadomienie przed interwałem konserwacji zawiera szczegółowe informacje o ograniczeniach funkcji, gdy odbywa się konserwacja.
+* **Infrastruktura CloudSimple**.  Infrastruktura CloudSimple została zaprojektowana tak, aby była dostępna.  W tym rodzaju interwału konserwacji nadmiarowe komponenty są aktualizowane po jednym naraz, aby uniknąć przerw w świadczeniu usług. Użytkownik zachowuje dostęp do usługi Private Cloud vCenter, wszystkich maszyn wirtualnych, połączenia internetowego z chmury prywatnej oraz połączeń z lokalnymi lub platformą Azure.
+* **CloudSimple portal**. Podczas tego typu interwału konserwacji niektóre funkcje portalu CloudSimple mogą być wyłączone lub niedostępne.  Powiadomienie przed przerwą międzyobsługową zawiera szczegółowe informacje na temat ograniczeń funkcji podczas konserwacji.
 
 ## <a name="connectivity"></a>Łączność
 
-**Jakie są moje opcje łączności w sieci regionu automatycznej synchronizacji?**
+**Jakie są moje opcje łączności z siecią regionu CloudSimple?**
 
-Automatyczna synchronizacja zapewnia następujące opcje łączności, aby połączyć się z siecią regionu automatycznej synchronizacji. W tym samym czasie można używać wielu opcji.
+CloudSimple udostępnia następujące opcje łączności, aby połączyć się z siecią regionu CloudSimple. Można użyć wielu opcji w tym samym czasie.
 
-* **ExpressRoute połączenie z lokalnego centrum danych do sieci regionu z**obsługą synchronizacji. Jest to bardzo szybkie, bezpieczne połączenie prywatne, które używa Global Reach do mostkowania lokalnego obwodu ExpressRoute do obwodu usługi ExpressRoute. Aby uzyskać instrukcje dotyczące konfigurowania połączenia, zobacz [łączenie się z lokalnego narzędzia do automatycznej synchronizacji przy użyciu ExpressRoute](on-premises-connection.md).
-* **ExpressRoute połączenie z sieci wirtualnej platformy Azure z siecią regionu automatycznej synchronizacji**. Jest to bardzo szybkie i bezpieczne połączenie prywatne, które korzysta z bram sieci wirtualnej do mostkowania sieci wirtualnej na platformie Azure do obwodu usługi synchronizacji ExpressRoute. Aby uzyskać instrukcje dotyczące konfigurowania połączenia, zobacz temat [łączenie środowiska chmury prywatnej automatycznej konfiguracji z usługą Azure Virtual Network za pomocą ExpressRoute](azure-expressroute-connection.md).
-* **Połączenie sieci VPN typu lokacja-lokacja z lokalnego centrum danych z siecią regionu automatycznej synchronizacji**. Jest to bezpieczna wirtualna sieć prywatna z lokalnego urządzenia sieci VPN w regionie chmury prywatnej automatycznej synchronizacji. Aby uzyskać szczegółowe informacje, zobacz [Konfigurowanie bram sieci VPN w sieci automatycznej synchronizacji](vpn-gateway.md).
+* **Połączenie usługi ExpressRoute z lokalnego centrum danych z siecią regionu CloudSimple**. Jest to szybkie, o małym opóźnieniu bezpieczne połączenie prywatne, które używa globalnego zasięgu do mostkowego obwodu usługi ExpressRoute lokalnego do obwodu CloudSimple ExpressRoute. Aby uzyskać instrukcje dotyczące konfigurowania połączenia, zobacz [Łączenie się z lokalnego do CloudSimple przy użyciu usługi ExpressRoute](on-premises-connection.md).
+* **Połączenie usługi ExpressRoute z sieci wirtualnej platformy Azure do sieci regionu CloudSimple**. Jest to szybkie, o małym opóźnieniu bezpieczne połączenie prywatne, które używa bram sieci wirtualnej do mostka sieci wirtualnej na platformie Azure do obwodu CloudSimple ExpressRoute. Aby uzyskać instrukcje dotyczące konfigurowania połączenia, zobacz [Łączenie środowiska cloudsimple private cloud z siecią wirtualną platformy Azure przy użyciu usługi ExpressRoute](azure-expressroute-connection.md).
+* **Połączenie sieci VPN między lokacjami z lokalnego centrum danych do sieci regionu CloudSimple**. Jest to bezpieczna wirtualna sieć prywatna z lokalnego urządzenia sieci VPN do regionu CloudSimple Private Cloud.  Aby uzyskać szczegółowe informacje, zobacz [Konfigurowanie bram sieci VPN w sieci CloudSimple](vpn-gateway.md).
 
-**Jak mogę połączyć się z chmurą prywatną do automatycznej synchronizacji?**
+**Jak połączyć się z chmurą prywatną?**
 
-Szczegóły chmury prywatnej automatycznej synchronizacji można wyświetlić w portalu automatycznej wersji zapoznawczej. Aby nawiązać połączenie z programem vCenter, który odpowiada chmurze prywatnej, należy najpierw sprawdzić, czy połączenie sieciowe jest nawiązywane przy użyciu sieci VPN typu lokacja-lokacja, sieci VPN typu punkt-lokacja lub ExpressRoute. Następnie uruchom Portal automatycznej synchronizacji z Azure Portal, a następnie kliknij pozycję **Uruchom klienta vSphere** na stronie głównej lub na stronie szczegółów chmury prywatnej dotyczącej automatycznej synchronizacji.
+Szczegółowe informacje o chmurze prywatnej można wyświetlić w portalu CloudSimple. Aby połączyć się z centrum vCenter odpowiadającym chmurze prywatnej, najpierw sprawdź, czy połączenie sieciowe zostało nawiązane przy użyciu sieci VPN typu lokacja, sieci VPN typu punkt-lokacja lub usługi ExpressRoute. Następnie uruchom portal CloudSimple z witryny Azure portal i kliknij przycisk **Uruchom klienta vSphere** na stronie głównej lub na stronie szczegóły chmury prywatnej.
 
-**Jakie jest zalety obwody usługi ExpressRoute?**
+**Jaka jest zaleta obwodów usługi ExpressRoute?**
 
-Obwód usługi Azure ExpressRoute to szybkie i bezpieczne połączenie o małych opóźnieniach. Automatyczna synchronizacja zapewnia dedykowany obwód ExpressRoute na region na klienta. Za pomocą tego obwodu można nawiązać bezpieczne połączenie z poziomu lokalnej lub subskrypcji platformy Azure.
+Obwód usługi Azure ExpressRoute to bezpieczne połączenie o dużej szybkości i małych opóźnieniach.  CloudSimple udostępnia dedykowany obwód usługi ExpressRoute na region na klienta.  Za pomocą tego obwodu można ustanowić bezpieczne połączenie z lokalnego lub subskrypcji platformy Azure.
 
-**Jakie koszty sieciowe mają być połączone z programem automatyczna synchronizacja? Czy opłaty za ruch wychodzący są naliczane między programem automatyczna synchronizacja i platformą Azure, czy między regionami?**
+**Jakie są koszty połączenia z usługą CloudSimple?  Czy opłaty za ruch wychodzący mają zastosowanie między CloudSimple i Azure lub między regionami?**
 
-Nie ma opłat za usługę automatycznej synchronizacji w przypadku ruchu wychodzącego w sieci. Stawki standardowe platformy Azure dotyczą wszelkich ruchu wychodzącego z sieci wirtualnej lub lokalnego obwodu usługi ExpressRoute.
+Nie ma opłaty CloudSimple dla wyjścia sieciowego.  Standardowe stawki platformy Azure mają zastosowanie do ruchu wychodzącego z sieci wirtualnej lub lokalnego obwodu usługi ExpressRoute.
 
-## <a name="networking"></a>Networking
+## <a name="networking"></a>Obsługa sieci
 
-**Jakie funkcje sieciowe są dostępne dla mojej chmury prywatnej "Automatyczna synchronizacja"?**
+**Jakie funkcje sieciowe są dostępne dla mojej chmury prywatnej?**
 
-Można udostępniać sieci VLAN (i ich podsieci) oraz tabele zapory i przypisywać publiczne adresy IP, które są mapowane na maszynę wirtualną działającą w chmurze prywatnej synchronizacji. Aby uzyskać szczegółowe informacje o funkcjach sieciowych, zobacz Omówienie [sieci VLAN i podsieci](cloudsimple-vlans-subnets.md), omówienie [tabel zapory](cloudsimple-firewall-tables.md)i [publiczny adres IP](cloudsimple-public-ip-address.md).
+Można aprowizować sieci VLAN (i ich podsieci) i tabel zapory oraz przypisywać publiczne adresy IP mapowane do maszyny wirtualnej uruchomionej w chmurze prywatnej. Aby uzyskać szczegółowe informacje na temat funkcji sieciowych, zobacz [omówienie sieci VPN i podsieci,](cloudsimple-vlans-subnets.md) [omówienie tabel zapory](cloudsimple-firewall-tables.md)i [omówienie publicznego adresu IP.](cloudsimple-public-ip-address.md)
 
-**Jak mogę skonfigurować różne podsieci dla aplikacji w mojej chmurze prywatnej automatycznej synchronizacji?**
+**Jak skonfigurować różne podsieci dla moich aplikacji w chmurze prywatnej?**
 
-Możesz tworzyć sieci VLAN w chmurze prywatnej automatycznej synchronizacji w portalu automatycznej synchronizacji. Po utworzeniu sieci VLAN można utworzyć rozproszoną grupę portów na potrzeby narzędzia do automatycznej synchronizacji w chmurze prywatnej w programie vCenter przy użyciu sieci VLAN i utworzyć maszyny wirtualne połączone z grupą portów rozproszonych. Można włączyć tabele zapory dla sieci VLAN/podsieci i zdefiniować reguły zapory w celu zabezpieczenia ruchu sieciowego.
+Nazwy VLAN są tworzone w chmurze prywatnej z portalu CloudSimple.  Po utworzeniu sieci VLAN można utworzyć grupę portów rozproszonych w centrum vCenter private cloud przy użyciu sieci VLAN i utworzyć maszyny wirtualne, które są połączone z rozproszoną grupą portów.  Można włączyć tabele zapory dla sieci VLAN/podsieci i zdefiniować reguły zapory w celu zabezpieczenia ruchu sieciowego.
 
-**Jakie ustawienia zapory są dostępne dla chmur prywatnych?**
+**Jakie ustawienia zapory są dostępne dla moich chmur prywatnych?**
 
-Można skonfigurować reguły dla ruchu północ-południe i wschód-zachód. Reguły są zdefiniowane w tabeli zapory. Tabelę zapory można dołączyć do sieci VLAN w chmurze prywatnej automatycznej synchronizacji. Aby uzyskać szczegółowe informacje, zobacz [Konfigurowanie tabel zapory i reguł na potrzeby automatycznej synchronizacji chmur prywatnych](firewall.md).
+Można skonfigurować reguły dla ruchu północ-południe i wschód-zachód.  Reguły są zdefiniowane w tabeli zapory.  Tabela zapory można podłączyć do sieci VLAN w chmurze prywatnej.  Aby uzyskać szczegółowe informacje, zobacz [Konfigurowanie tabel zapory i reguł dla chmur prywatnych](firewall.md).
 
-**Czy można przypisywać publiczne adresy IP do maszyn wirtualnych w środowisku chmury prywatnej do automatycznej synchronizacji?**
+**Czy mogę przypisać publiczne adresy IP do maszyn wirtualnych w moim środowisku private cloud?**
 
-W portalu automatycznej synchronizacji można przydzielić nowy publiczny adres IP i skojarzyć go z prywatnym adresem IP maszyny wirtualnej lub urządzenia. Możesz również utworzyć nowe reguły zapory lub zastosować istniejące reguły zapory, aby zezwolić na ruch z określonych portów i adresów IP w portalu. Aby uzyskać szczegółowe informacje, zobacz [przydzielanie publicznych adresów IP na potrzeby automatycznej synchronizacji środowiska chmury prywatnej](public-ips.md).
+W portalu CloudSimple można przydzielić nowy publiczny adres IP i skojarzyć go z prywatnym adresem IP maszyny wirtualnej lub urządzenia.  Można również utworzyć nowe reguły zapory lub zastosować istniejące reguły zapory, aby zezwolić na ruch z określonych portów i adresów IP w portalu. Aby uzyskać szczegółowe informacje, zobacz [Przydzielanie publicznych adresów IP dla środowiska private cloud](public-ips.md).
 
 ## <a name="security"></a>Zabezpieczenia
 
-**Jakie są opcje zabezpieczeń dotyczące automatycznej synchronizacji?**
+**Jakie są moje opcje zabezpieczeń w usłudze CloudSimple?**
 
-Funkcja automatycznej synchronizacji zapewnia następujące funkcje zabezpieczeń w celu zapewnienia bezpieczeństwa środowiska chmury prywatnej na potrzeby automatycznej synchronizacji:
+CloudSimple udostępnia następujące funkcje zabezpieczeń do zabezpieczania środowiska chmury prywatnej:
 
-* **Szyfrowanie danych w czasie spoczynku**. Możesz zaszyfrować dane przechowywane w magazynie sieci vSAN w chmurze prywatnej automatycznej synchronizacji. program sieci vSAN obsługuje zewnętrzne serwery zarządzania kluczami, które można wdrożyć w sieci wirtualnej platformy Azure lub w środowisku lokalnym. Aby uzyskać szczegółowe informacje, zobacz [Konfigurowanie szyfrowania sieci vSAN w chmurze prywatnej automatycznej](vsan-encryption.md).
-* **Zabezpieczenia sieciowe**. Sterowanie przepływem ruchu sieciowego za pomocą reguł zapory, które są stosowane między chmurą prywatną i Internetem, swoją reprocesową chmurą i środowiskiem lokalnym oraz w podsieciach chmury prywatnej automatycznej synchronizacji.
-* **Bezpieczne połączenie prywatne**. Bezpieczne połączenie prywatne jest nawiązywane między siecią lokalną i subskrypcją platformy Azure.
+* **Szyfrowanie danych w spoczynku**. Możesz szyfrować dane w stanie spoczynku przebywającym w magazynie vSAN w chmurze prywatnej. VSAN obsługuje serwery zarządzania kluczami zewnętrznymi, które można wdrożyć w sieci wirtualnej platformy Azure lub środowisku lokalnym.  Aby uzyskać szczegółowe informacje, zobacz [Konfigurowanie szyfrowania vSAN dla chmury CloudSimple Private Cloud](vsan-encryption.md).
+* **Bezpieczeństwo sieci**. Kontroluj przepływ ruchu sieciowego za pomocą reguł zapory, które mają zastosowanie między chmurą prywatną a Internetem, chmurą prywatną i środowiskiem lokalnym lub w podsieciach chmury prywatnej.
+* **Bezpieczne, prywatne połączenie**. Ustanawia się bezpieczne, prywatne połączenie między siecią lokalną a subskrypcją platformy Azure.
 
-## <a name="compute"></a>Compute
+## <a name="compute"></a>Wystąpienia obliczeniowe
 
-**Jakiego rodzaju hosty są dostępne?**
+**Jakie hosty są dostępne?**
 
-Automatyczna synchronizacja oferuje następujące typy hostów:
+CloudSimple oferuje następujące typy hostów:
 
-* **Węzeł CS28:** Procesor: 2,2 2 GHz, łącznie 28 rdzeni, 48 HT.  PAMIĘĆ RAM: 256 GB.  Magazyn: pamięć podręczna interfejsu NVMe 1600 GB, dane 5760 GB (wszystkie-Flash). Sieć: karta sieciowa 4x25Gbe
-* **Węzeł CS36:** Procesor 2,3 2 GHz, łączne rdzenie 36, 72 HT.  PAMIĘĆ RAM: 512 GB.  Magazyn: 3200 GB pamięci podręcznej interfejsu NVMe 11520 GB danych (wszystkie-Flash).  Sieć: karta sieciowa 4x25Gbe
-* **Węzeł CS36m:** Procesor 2,3 2 GHz, łączne rdzenie 36, 72 HT.  PAMIĘĆ RAM: 576 GB.  Magazyn: 3200 GB pamięci podręcznej interfejsu NVMe 13360 GB danych (wszystkie-Flash).  Sieć: karta sieciowa 4x25Gbe
+* **Węzeł CS28:** CPU: 2x 2.2 GHz, łącznie 28 rdzeni, 48 HT.  RAM: 256 GB.  Pamięć masowa: 1600 GB pamięci podręcznej NVMe, dane 5760 GB (All-Flash). Sieć: karta sieciowa 4x25Gbe
+* **Węzeł CS36:** CPU 2x 2.3 GHz, łącznie 36 rdzeni, 72 HT.  RAM: 512 GB.  Pamięć masowa: 3200 GB pamięci podręcznej NVMe 11520 GB danych (All-Flash).  Sieć: karta sieciowa 4x25Gbe
+* **Węzeł CS36m:** CPU 2x 2.3 GHz, łącznie 36 rdzeni, 72 HT.  RAM: 576 GB.  Pamięć masowa: 3200 GB pamięci podręcznej NVMe 13360 GB danych (All-Flash).  Sieć: karta sieciowa 4x25Gbe
 
-**Jak są obsługiwane błędy sprzętu?**
+**Jak obsługiwane są wszelkie awarie sprzętu?**
 
-Cała infrastruktura automatycznej synchronizacji jest stale monitorowana przez platformę automatycznej synchronizacji i naszych zespołów operacyjnych usługi. Jeśli awaria sprzętowa zostanie wykryta, do chmury prywatnej automatycznej synchronizacji zostanie dodany nowy węzeł i zostanie usunięty węzeł zakończony niepowodzeniem.
+Cała infrastruktura CloudSimple jest stale monitorowana przez platformę CloudSimple i nasze zespoły operacyjne usług.  Jeśli zostanie wykryty błąd sprzętowy, nowy węzeł zostanie dodany do chmury prywatnej i węzeł nie powiodło się zostanie usunięty.
 
-## <a name="storage"></a>Usługa Storage
+## <a name="storage"></a>Magazyn
 
-**Jakiego typu magazyn jest obsługiwany w chmurze prywatnej automatycznej synchronizacji?**
+**Jaki typ magazynu jest obsługiwany w chmurze prywatnej?**
 
-Funkcja automatycznej synchronizacji oferuje wszystkie funkcje programu VMware sieci vSAN Storage z każdą funkcją automatycznej synchronizacji w chmurze prywatnej. Każdy vSphere jest tworzony z własnym magazynem danych sieci vSAN. Aby uzyskać szczegółowe informacje, zobacz artykuł [Automatyczna synchronizacja chmurowa chmury Private Components-sieci vSAN Storage](vmware-components.md#vsan-storage).
+CloudSimple oferuje całą pamięć masową VMware vSAN z każdą chmurą prywatną.  Każdy vSphere jest tworzony przy własnych vSAN magazynu danych.  Aby uzyskać szczegółowe informacje, zobacz [Private Cloud VMware components - vSAN storage](vmware-components.md#vsan-storage).
 
-**Czy jest obsługiwane szyfrowanie danych?**
-Tak. Można skonfigurować magazyn sieci vSAN w chmurze prywatnej automatycznej synchronizacji, aby używać serwera zarządzania kluczami (KMS) wdrożonego lokalnie lub na platformie Azure w celu szyfrowania danych przechowywanych w usłudze sieci vSAN.
+**Czy szyfrowanie danych jest obsługiwane?**
+Tak.  Można skonfigurować magazyn vSAN w chmurze prywatnej, aby używać serwera zarządzania kluczami (KMS), który jest wdrażany lokalnie lub na platformie Azure do szyfrowania danych przechowywanych w usłudze vSAN.
 
-**Jak są obsługiwane dyski z błędami?**
+**Jak obsługiwane są dyski, które uległy awarii?**
 
-Funkcja automatycznej synchronizacji stale monitoruje wszystkie składniki sprzętowe chmury prywatnej automatycznej synchronizacji. Jeśli awaria dysku zostanie wykryta lub dysk zostanie zidentyfikowany jako niepowodzenie (w oparciu o algorytmy heurystyczne), nowy węzeł zostanie automatycznie dodany do chmury prywatnej automatycznej synchronizacji. Węzeł z dyskiem zakończonym niepowodzeniem lub niepowodzeniem zostanie usunięty z chmury prywatnej automatycznej synchronizacji.
+CloudSimple stale monitoruje wszystkie składniki sprzętowe chmury prywatnej.  Jeśli zostanie wykryty błąd dysku lub dysk zostanie zidentyfikowany jako awaryjny (na podstawie heurystyki), nowy węzeł jest automatycznie dodawany do chmury prywatnej.  Węzeł z dyskiem, który uległ awarii lub uległ awarii, zostanie usunięty z chmury prywatnej.
 
 ## <a name="vmware"></a>VMware
 
-**Jak mogę wykonywać na dużą skalę przekazywanie lub migrację aplikacji i danych z lokalnego systemu?**
+**Jak wykonać przekazywanie lub migrację aplikacji i danych na dużą skalę z lokalnego środowiska?**
 
-Narzędzie do automatycznej synchronizacji oferuje natywne rozwiązanie VMware vSphere. Wszystkie narzędzia VMware do migracji danych zbiorczych mogą być używane razem z chmurą prywatną. Dostępne są następujące opcje:
+CloudSimple zapewnia natywne rozwiązanie VMware vSphere.  Wszystkie narzędzia VMware do masowej migracji danych mogą być używane z chmurą prywatną.  Dostępne są następujące opcje:
 
-* Oprogramowanie VMware HCX na potrzeby migracji zbiorczej danych.
-* Zimna migracja danych przy użyciu usługi Storage vMotion z wersji lokalnej do automatycznej synchronizacji.
+* VMware HCX do masowej migracji danych.
+* Migracja danych na zimno przy użyciu pamięci wirtualnej magazynu z lokalnego do CloudSimple.
 
 **Czy mogę zainstalować dowolne narzędzia VMware?**
 
-Narzędzie do automatycznej synchronizacji oferuje natywne rozwiązanie VMware vSphere. Wszystkie narzędzia VMware używane do zarządzania lokalnym środowiskiem vSphere mogą być używane na potrzeby automatycznej synchronizacji. Narzędzie do automatycznej obsługi wersji obsługuje model "BYOL" do instalowania narzędzi VMware.
+CloudSimple zapewnia natywne rozwiązanie VMware vSphere.  Wszystkie narzędzia VMware używane do zarządzania lokalnym środowiskiem vSphere mogą być używane w CloudSimple.  CloudSimple obsługuje model byol (bring-your-own-license) do instalowania narzędzi VMware.
 
-**Jak są zarządzane aktualizacje i uaktualnienia?**
+**W jaki sposób zarządzane są aktualizacje i uaktualnienia?**
 
-Funkcja automatycznej synchronizacji zarządza i aktualizuje wszystkie składniki infrastruktury chmury prywatnej automatycznej synchronizacji w niezakłócony sposób. Wszystkie aktualizacje i poprawki zabezpieczeń wydane przez dostawców oprogramowania VMware lub infrastruktury są planowane do aktualizacji, gdy tylko zakwalifikują się do automatycznej synchronizacji.
+CloudSimple zarządza i aktualizuje wszystkie składniki infrastruktury chmury prywatnej w sposób bezproblemowy, nieunikłujący.  Wszystkie aktualizacje i poprawki zabezpieczeń wydane przez VMware lub dostawców infrastruktury są zaplanowane do aktualizacji, jak tylko są one kwalifikowane przez CloudSimple.
 
-Funkcja automatycznej synchronizacji nie wykonuje uaktualnień ani aktualizacji aplikacji zainstalowanych w chmurze prywatnej automatycznej synchronizacji.
+CloudSimple nie wykonuje uaktualnień ani aktualizacji aplikacji zainstalowanych w chmurze prywatnej.
 
 ## <a name="azure-integration"></a>Integracja z platformą Azure
 
 **Jakie usługi platformy Azure są obsługiwane?**
 
-Automatyczna synchronizacja zapewnia połączenie usługi Azure ExpressRoute z subskrypcją na platformie Azure. Wszystkie usługi działające w ramach subskrypcji mogą łączyć się z chmurą prywatną. Przykłady obejmują:
+CloudSimple zapewnia połączenie usługi Azure ExpressRoute do subskrypcji na platformie Azure.  Wszystkie usługi uruchomione w ramach subskrypcji mogą łączyć się z chmurą prywatną.  Przykłady:
 
-* **Azure Active Directory** jako źródło tożsamości dla serwera vCenter do automatycznej synchronizacji.
-* **Usługa Azure Storage** do przechowywania kopii zapasowych, obrazów i innych danych z chmury prywatnej automatycznej synchronizacji.
-* **Aplikacje hybrydowe** z architekturą aplikacji, która obejmuje prywatne i automatyczna synchronizacja chmur prywatnych. Na przykład można utworzyć serwery WebServer na platformie Azure, które uzyskują dostęp do serwerów aplikacji i baz danych w chmurze prywatnej automatycznej synchronizacji.
-* **Usługa Azure monitor** i **usługa Azure Security Center** dla obciążeń działających na potrzeby rejestrowania, metryk wydajności i zarządzania zabezpieczeniami w oprogramowaniu VMware.
+* **Usługa Azure Active Directory** jako źródło tożsamości dla usługi CloudSimple vCenter.
+* **Magazyn platformy Azure** do przechowywania kopii zapasowych, obrazów i innych danych z chmury prywatnej.
+* **Aplikacje hybrydowe** z architekturą aplikacji obejmującą chmury publiczne i prywatne.  Na przykład można utworzyć serwery sieci Web na platformie Azure, które uzyskują dostęp do aplikacji i serwerów bazy danych w chmurze prywatnej.
+* **Monitor platformy Azure** i **centrum zabezpieczeń platformy Azure** dla obciążeń działających na vmware obsługują rejestrowanie, metryki wydajności i zarządzanie zabezpieczeniami.
 
-**Jak mogę mapowanie moich dzierżawców VMware na platformę Azure?**
+**Jak mapować dzierżawców VMware na platformę Azure?**
 
-Funkcja automatycznej synchronizacji zapewnia unikatową możliwość zarządzania maszynami wirtualnymi VMware w ramach automatycznej synchronizacji chmury prywatnej na podstawie Azure Portal. Pulę zasobów programu vCenter skonfigurowaną z żądanymi ograniczeniami zasobów można zamapować na subskrypcję przez administratora globalnego. 
+CloudSimple zapewnia unikatową możliwość zarządzania maszynami wirtualnymi VMware w chmurze prywatnej z witryny Azure portal.  Pula zasobów vCenter skonfigurowana z żądanymi ograniczeniami zasobów może być mapowana do subskrypcji przez administratora globalnego.  
 
-**Jakie korzyści z licencjonowania mogę uzyskać na platformie Azure?**
+**Jakie korzyści z licencjonowania mogę uzyskać dzięki platformie Azure?**
 
-Dzięki funkcji automatycznej synchronizacji możesz skorzystać z korzyści użycia hybrydowego platformy Azure i zaoszczędzić do 90% na licencji. Ta korzyść zachowuje inwestycję w licencje firmy Microsoft i obniża całkowity koszt posiadania względem innych rozwiązań w chmurze. Można również uzyskać rozszerzone aktualizacje zabezpieczeń dla systemów Windows Server 2008 i Microsoft SQL Server 2008. Model "BYOL" umożliwia zachowanie niskich kosztów dla typowych aplikacji, takich jak Veeam i Zerto. 
+Dzięki CloudSimple możesz korzystać z korzyści użycia hybrydowego platformy Azure i zaoszczędzić do 90% na licencjach. Ta korzyść pozwala zachować inwestycje w licencje firmy Microsoft i obniża koszt posiadania w stosunku do innych rozwiązań w chmurze. Dostępne są również rozszerzone aktualizacje zabezpieczeń dla systemów Windows Server 2008 i Microsoft SQL Server 2008.  Model byol (bring-your-own-license) pomaga utrzymać niskie koszty popularnych aplikacji, takich jak Veeam i Zerto.  

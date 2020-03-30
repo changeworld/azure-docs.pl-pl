@@ -1,5 +1,5 @@
 ---
-title: Połącz przy użyciu polecenia go-Azure Database for MySQL
+title: Połącz się przy użyciu usługi Go — usługa Azure Database for MySQL
 description: Ten przewodnik Szybki start zawiera kilka przykładów kodu Go, których można używać do nawiązywania połączeń z danymi usługi Azure Database for MySQL i wykonywania zapytań względem nich.
 author: ajlam
 ms.author: andrela
@@ -7,13 +7,13 @@ ms.service: mysql
 ms.custom: mvc
 ms.devlang: go
 ms.topic: quickstart
-ms.date: 12/02/2019
-ms.openlocfilehash: b3ee0caa380cacc697a87307c3107b93aa241afb
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 3/18/2020
+ms.openlocfilehash: 5b55c457f5e30b1b844aafd0114f73b62bdbcac7
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74770768"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80067974"
 ---
 # <a name="azure-database-for-mysql-use-go-language-to-connect-and-query-data"></a>Usługa Azure Database for MySQL: nawiązywanie połączeń z danymi i wykonywanie względem nich zapytań za pomocą języka Go
 Ten przewodnik Szybki start przedstawia sposób nawiązywania połączeń z usługą Azure Database for MySQL przy użyciu kodu napisanego w języku [Go](https://golang.org/) na platformach Windows, Ubuntu Linux i Apple macOS. Pokazano w nim, jak używać instrukcji języka SQL w celu wysyłania zapytań o dane oraz wstawiania, aktualizowania i usuwania danych w bazie danych. W tym temacie założono, że wiesz już, jak opracowywać zawartość za pomocą języka Go, i dopiero zaczynasz pracę z usługą Azure Database for MySQL.
@@ -60,7 +60,7 @@ Zainstaluj środowisko języka [Go](https://golang.org/doc/install) i sterownik 
    ```
 
 ### <a name="apple-macos"></a>Apple macOS
-1. Pobierz i zainstaluj język Go zgodnie z [instrukcjami dotyczącymi instalacji](https://golang.org/doc/install) odpowiedniej platformy. 
+1. Pobierz i zainstaluj go zgodnie z [instrukcjami instalacji pasującymi](https://golang.org/doc/install) do Twojej platformy. 
 2. Uruchom powłokę Bash.
 3. Utwórz folder dla projektu w katalogu macierzystym, np. `mkdir -p ~/go/src/mysqlgo/`.
 4. Przejdź do tego folderu, np. `cd ~/go/src/mysqlgo/`.
@@ -86,7 +86,7 @@ Pobierz informacje o połączeniu potrzebne do nawiązania połączenia z usług
    
 
 ## <a name="build-and-run-go-code"></a>Kompilowanie i uruchamianie kodu języka Go 
-1. Do pisania kodu w języku Golang można użyć prostego edytora tekstów, takiego jak Notatnik w systemie Microsoft Windows, [vi](https://manpages.ubuntu.com/manpages/xenial/man1/nvi.1.html#contenttoc5) lub [Nano](https://www.nano-editor.org/) w systemie Ubuntu lub TextEdit w systemie macOS. Jeśli wolisz bardziej zaawansowane środowisko IDE, wypróbuj rozwiązanie [Gogland](https://www.jetbrains.com/go/) firmy Jetbrains, edytor [Visual Studio Code](https://code.visualstudio.com/) firmy Microsoft lub [Atom](https://atom.io/).
+1. Do pisania kodu w języku Golang można użyć prostego edytora tekstów, takiego jak Notatnik w systemie Microsoft Windows, [vi](https://manpages.ubuntu.com/manpages/xenial/man1/nvi.1.html#contenttoc5) lub [Nano](https://www.nano-editor.org/) w systemie Ubuntu lub TextEdit w systemie macOS. Jeśli wolisz bogatsze interaktywne środowisko programistyczne (IDE), wypróbuj [Gogland](https://www.jetbrains.com/go/) by Jetbrains, [Visual Studio Code](https://code.visualstudio.com/) firmy Microsoft lub [Atom](https://atom.io/).
 2. Wklej kod języka Go z poniższych sekcji do plików tekstowych i zapisz pliki w folderze projektu z rozszerzeniem pliku \*.go. Na przykład ścieżka w systemie Windows: `%USERPROFILE%\go\src\mysqlgo\createtable.go`, ścieżka w systemie Linux: `~/go/src/mysqlgo/createtable.go`.
 3. Zlokalizuj zmienne `HOST`, `DATABASE`, `USER` i `PASSWORD` w kodzie i zastąp przykładowe wartości wybranymi samodzielnie wartościami. 
 4. Uruchom wiersz polecenia lub powłokę bash. Przejdź do folderu projektu. Na przykład w systemie Windows uruchom polecenie `cd %USERPROFILE%\go\src\mysqlgo\`. W systemie Linux: `cd ~/go/src/mysqlgo/`.  Niektóre z wymienionych edytorów IDE oferują możliwości debugowania i uruchamiania bez konieczności używania poleceń powłoki.

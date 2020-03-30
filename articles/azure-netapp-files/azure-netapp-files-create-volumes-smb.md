@@ -1,6 +1,6 @@
 ---
-title: Tworzenie woluminu SMB dla Azure NetApp Files | Microsoft Docs
-description: Opisuje sposób tworzenia woluminu SMB dla Azure NetApp Files.
+title: Tworzenie woluminu SMB dla plików NetApp platformy Azure | Dokumenty firmy Microsoft
+description: W tym artykule opisano sposób tworzenia woluminu SMB dla plików NetApp platformy Azure.
 services: azure-netapp-files
 documentationcenter: ''
 author: b-juche
@@ -12,18 +12,18 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/05/2020
+ms.date: 03/13/2020
 ms.author: b-juche
-ms.openlocfilehash: 7affd408ce2471f34a8362ba32101b639aafc514
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: b2000c3fd3d64793f797e997d8f3c10eaed5d7aa
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77586613"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79409601"
 ---
 # <a name="create-an-smb-volume-for-azure-netapp-files"></a>Tworzenie woluminu SMB dla usługi Azure NetApp Files
 
-Azure NetApp Files obsługuje woluminy NFS i SMBv3. Użycie pojemności woluminu jest liczone jako użycie aprowizowanej pojemności puli. W tym artykule pokazano, jak utworzyć wolumin SMBv3. Jeśli chcesz utworzyć wolumin systemu plików NFS, zobacz [Tworzenie woluminu NFS dla Azure NetApp Files](azure-netapp-files-create-volumes.md). 
+Usługa Azure NetApp Files obsługuje woluminy NFS i SMBv3. Użycie pojemności woluminu jest liczone jako użycie aprowizowanej pojemności puli. W tym artykule pokazano, jak utworzyć wolumin SMBv3. Jeśli chcesz utworzyć wolumin NFS, zobacz [Tworzenie woluminu NFS dla plików NetApp platformy Azure](azure-netapp-files-create-volumes.md). 
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem 
 Potrzebujesz skonfigurowanej puli pojemności.   
@@ -31,108 +31,151 @@ Potrzebujesz skonfigurowanej puli pojemności.
 Podsieć musi być delegowana do usługi Azure NetApp Files.  
 [Delegowanie podsieci do usługi Azure NetApp Files](azure-netapp-files-delegate-subnet.md)
 
-## <a name="requirements-for-active-directory-connections"></a>Wymagania dotyczące Active Directory połączeń
+## <a name="requirements-for-active-directory-connections"></a>Wymagania dotyczące połączeń usługi Active Directory
 
- Przed utworzeniem woluminu SMB należy utworzyć połączenia Active Directory. Wymagania dotyczące połączeń Active Directory są następujące: 
+ Przed utworzeniem woluminu SMB należy utworzyć połączenia usługi Active Directory. Wymagania dotyczące połączeń usługi Active Directory są następujące: 
 
-* Konto administratora, którego używasz, musi mieć możliwość tworzenia kont komputerów w określonej ścieżce jednostki organizacyjnej (OU).  
+* Konto administratora, którego używasz, musi mieć możliwość tworzenia kont maszyn w określonej ścieżce jednostki organizacyjnej.  
 
-* Odpowiednie porty muszą być otwarte na odpowiednim serwerze Windows Active Directory (AD).  
+* Odpowiednie porty muszą być otwarte na odpowiednim serwerze usługi Windows Active Directory (AD).  
     Wymagane porty są następujące: 
 
-    |     NDES           |     Port     |     Protocol     |
+    |     Usługa           |     Port     |     Protocol (Protokół)     |
     |-----------------------|--------------|------------------|
-    |    Usługi sieci Web AD    |    9389      |    TCP           |
+    |    Usługi sieci Web usługi AD    |    9389      |    TCP           |
     |    DNS                |    53        |    TCP           |
     |    DNS                |    53        |    UDP           |
-    |    ICMPv4             |    N/D       |    Odpowiedź echa    |
-    |    Udziałem           |    464       |    TCP           |
-    |    Udziałem           |    464       |    UDP           |
-    |    Udziałem           |    88        |    TCP           |
-    |    Udziałem           |    88        |    UDP           |
+    |    ICMPv4             |    Nie dotyczy       |    Echo Odpowiedź    |
+    |    Kerberos           |    464       |    TCP           |
+    |    Kerberos           |    464       |    UDP           |
+    |    Kerberos           |    88        |    TCP           |
+    |    Kerberos           |    88        |    UDP           |
     |    LDAP               |    389       |    TCP           |
     |    LDAP               |    389       |    UDP           |
     |    LDAP               |    3268      |    TCP           |
     |    Nazwa NetBIOS       |    138       |    UDP           |
     |    SAM/LSA            |    445       |    TCP           |
     |    SAM/LSA            |    445       |    UDP           |
-    |    W32Time            |    123       |    UDP           |
+    |    W32time            |    123       |    UDP           |
 
-* Topologia lokacji dla konkretnych Active Directory Domain Services musi być zgodna z najlepszymi rozwiązaniami, w szczególności z siecią wirtualną platformy Azure, w której wdrożono Azure NetApp Files.  
+* Topologia lokacji dla ukierunkowanych Usług domenowych Active Directory musi być zgodna z najlepszymi rozwiązaniami, w szczególności z siecią wirtualną platformy Azure, w której wdrożono usługi Azure NetApp Files.  
 
-    Przestrzeń adresowa dla sieci wirtualnej, w której wdrożono Azure NetApp Files, musi zostać dodana do nowej lub istniejącej lokacji Active Directory (w której znajduje się kontroler domeny osiągalny przez Azure NetApp Files). 
+    Przestrzeń adresowa sieci wirtualnej, w której wdrożono pliki NetApp platformy Azure, musi zostać dodana do nowej lub istniejącej lokacji usługi Active Directory (w której znajduje się kontroler domeny dostępny przez usługi Azure NetApp Files). 
 
-* Określone serwery DNS muszą być dostępne z [delegowanej podsieci](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-delegate-subnet) Azure NetApp Files.  
+* Określone serwery DNS muszą być dostępne z [delegowanej podsieci](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-delegate-subnet) plików NetApp usługi Azure.  
 
-    Zapoznaj się z tematem [wskazówki dotyczące planowania sieci Azure NetApp Files](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-network-topologies) obsługiwanych topologii sieci.
+    Zobacz [wskazówki dotyczące planowania sieci usługi Azure NetApp Files](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-network-topologies) dla obsługiwanych topologii sieci.
 
-    Sieciowe grupy zabezpieczeń (sieciowych grup zabezpieczeń) i zapory muszą mieć odpowiednio skonfigurowane reguły zezwalające na żądania ruchu Active Directory i DNS. 
+    Sieciowe grupy zabezpieczeń (NSG) i zapory muszą mieć odpowiednio skonfigurowane reguły umożliwiające żądania ruchu usługi Active Directory i DNS. 
 
-* Delegowana podsieć Azure NetApp Files musi mieć dostęp do wszystkich Active Directory Domain Services (dodaje) kontrolerów domeny w domenie, łącznie z lokalnymi i zdalnymi kontrolerami domeny. W przeciwnym razie może wystąpić przerwa w działaniu usługi.  
+* Podsieć delegowana usługi Azure NetApp Files musi mieć możliwość dotarcia do wszystkich kontrolerów domeny Usług domenowych Active Directory (ADDS) w domenie, w tym do wszystkich kontrolerów domeny lokalnej i zdalnej. W przeciwnym razie może wystąpić przerwa w działaniu usługi.  
 
-    Jeśli masz kontrolery domeny, które są nieosiągalne za pośrednictwem delegowanej podsieci Azure NetApp Files, możesz określić lokację Active Directory podczas tworzenia połączenia Active Directory.  Azure NetApp Files musi komunikować się tylko z kontrolerami domeny w lokacji, w której znajduje się Azure NetApp Files przestrzeń adresowa delegowanej podsieci.
+    Jeśli masz kontrolery domeny, które są nieosiągalne przez podsieć delegowane pliki usługi Azure NetApp, możesz określić lokację usługi Active Directory podczas tworzenia połączenia usługi Active Directory.  Usługa Azure NetApp Files musi komunikować się tylko z kontrolerami domeny w lokacji, w której znajduje się przestrzeń adresowa podsieci delegowanej plików Usługi Azure NetApp.
 
-    Zobacz [projektowanie topologii lokacji](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/designing-the-site-topology) dotyczącej witryn i usług AD. 
+    Zobacz [Projektowanie topologii witryn dotyczących](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/designing-the-site-topology) lokacji i usług AD. 
     
-Zobacz Azure NetApp Files usługi [SMB — często zadawane pytania](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-faqs#smb-faqs) dotyczące dodatkowych informacji o usłudze AD. 
+Zobacz Często zadawane pytania dotyczące [smb](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-faqs#smb-faqs) plików netapp platformy Azure o dodatkowych informacjach o usłudze AD. 
 
-## <a name="create-an-active-directory-connection"></a>Utwórz połączenie Active Directory
+## <a name="decide-which-domain-services-to-use"></a>Określanie usług domenowych do użycia 
 
-1. Na koncie usługi NetApp kliknij pozycję **połączenia Active Directory**a następnie kliknij pozycję **Dołącz**.  
+Usługa Azure NetApp Files obsługuje zarówno [usługi domenowe Active Directory](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/understanding-active-directory-site-topology) (ADDS), jak i usługi domenowe Usługi domenowe Active Directory (Azure Active Directory Domain Services) dla połączeń AD.  Przed utworzeniem połączenia usługi AD należy zdecydować, czy ma być używany dodatek ADDS, czy usługi AADDS.  
 
-    ![Połączenia Active Directory](../media/azure-netapp-files/azure-netapp-files-active-directory-connections.png)
+Aby uzyskać więcej informacji, zobacz [Porównanie samodzielnie zarządzanych Usług domenowych Active Directory, usługi Azure Active Directory i zarządzanych Usług domenowych Active Directory platformy Azure](https://docs.microsoft.com/azure/active-directory-domain-services/compare-identity-solutions). 
 
-2. W oknie sprzęganie Active Directory podaj następujące informacje:
+### <a name="active-directory-domain-services"></a>Active Directory Domain Services
 
-    * **Podstawowy serwer DNS**  
-        Jest to serwer DNS, który jest wymagany do przyłączania do domeny Active Directory i operacji uwierzytelniania SMB. 
-    * **Pomocniczy  DNS**  
-        Jest to pomocniczy serwer DNS służący do zapewniania nadmiarowych usług nazw. 
+Można użyć preferowanego zakresu [witryn i usług Active Directory](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/understanding-active-directory-site-topology) dla plików NetApp platformy Azure. Ta opcja umożliwia odczyty i zapisy na kontrolerach domeny Usług domenowych Active Directory (ADDS), które są [dostępne dla plików NetApp platformy Azure](azure-netapp-files-network-topologies.md). Uniemożliwia to również usłudze komunikowanie się z kontrolerami domeny, które nie znajdują się w określonej lokacji Lokacji lokacji lokacji lokacji usługi Active Directory. 
+
+Aby znaleźć nazwę witryny podczas korzystania z programu ADDS, można skontaktować się z grupą administracyjną w organizacji odpowiedzialnej za Usługi domenowe Active Directory. W poniższym przykładzie pokazano wtyczkę Lokacje i usługi Active Directory, w której wyświetlana jest nazwa witryny: 
+
+![Lokacje i usługi Active Directory](../media/azure-netapp-files/azure-netapp-files-active-directory-sites-and-services.png)
+
+Podczas konfigurowania połączenia usługi AD dla plików NetApp usługi Azure należy określić nazwę witryny w zakresie pola **Nazwa witryny usługi AD.**
+
+### <a name="azure-active-directory-domain-services"></a>Azure Active Directory Domain Services 
+
+Aby zapoznać się z konfiguracją i wskazówkami dotyczącymi usług domenowych Active Directory (Azure Active Directory Domain Services), zobacz [dokumentację usług domenowych usługi azure ad](https://docs.microsoft.com/azure/active-directory-domain-services/).
+
+Dodatkowe zagadnienia AADDS dotyczą plików NetApp platformy Azure: 
+
+* Upewnij się, że sieć wirtualna lub podsieć, w której wdrożono usługę AADDS, znajduje się w tym samym regionie platformy Azure, co wdrożenie plików NetApp platformy Azure.
+* Jeśli używasz innej sieci wirtualnej w regionie, w którym jest wdrażany usługi Azure NetApp Files, należy utworzyć komunikację równorzędną między dwiema sieciami wirtualnymi.
+* Usługa Azure NetApp Files obsługuje `user` i `resource forest` typów.
+* W przypadku typu synchronizacji `All` `Scoped`można wybrać lub .   
+    Jeśli wybierzesz `Scoped`opcję , upewnij się, że do uzyskiwania dostępu do udziałów SMB wybrano właściwą grupę usługi Azure AD.  Jeśli nie masz pewności, `All` można użyć typu synchronizacji.
+* Wymagane jest korzystanie z jednostki SKU Enterprise lub Premium. Standardowa jednostka SKU nie jest obsługiwana.
+
+Podczas tworzenia połączenia usługi Active Directory należy zwrócić uwagę na następujące szczegóły dotyczące usługi AADDS:
+
+* Informacje dotyczące **podstawowego systemu DNS,** **pomocniczego DNS**i **nazwy domeny DNS usługi AD** można znaleźć w menu AADDS.  
+W przypadku serwerów DNS do konfigurowania połączenia usługi Active Directory używane będą dwa adresy IP. 
+* **Ścieżka jednostki organizacyjnej** jest `OU=AADDC Computers`.  
+To ustawienie jest skonfigurowane w **usłudze Połączenia usługi Active Directory** w obszarze **Konto NetApp:**
+
+  ![Ścieżka jednostki organizacyjnej](../media/azure-netapp-files/azure-netapp-files-org-unit-path.png)
+
+* **Poświadczenia nazwy użytkownika** mogą być dowolnym użytkownikiem, który jest członkiem grupy Azure AD **Administratorzy kontrolera domeny usługi Azure AD.**
+
+
+## <a name="create-an-active-directory-connection"></a>Tworzenie połączenia usługi Active Directory
+
+1. Na koncie NetApp kliknij pozycję **Połączenia usługi Active Directory**, a następnie kliknij pozycję **Dołącz**.  
+
+    ![Połączenia usługi Active Directory](../media/azure-netapp-files/azure-netapp-files-active-directory-connections.png)
+
+2. W oknie Dołącz do usługi Active Directory podaj następujące informacje na podstawie usług domenowych, których chcesz użyć:  
+
+    Aby uzyskać informacje dotyczące używanych Usług domenowych, zobacz [Określanie usług domenowych, których należy używać.](#decide-which-domain-services-to-use) 
+
+    * **Podstawowy dns**  
+        Jest to system DNS wymagany dla operacji dołączania do domeny usługi Active Directory i uwierzytelniania SMB. 
+    * **Dodatkowy dns**   
+        Jest to pomocniczy serwer DNS zapewniający nadmiarowe usługi nazw. 
     * **Nazwa domeny DNS usługi AD**  
-        To jest nazwa domeny Active Directory Domain Services, do której chcesz dołączyć.
+        Jest to nazwa domeny Usług domenowych Active Directory, do której chcesz dołączyć.
     * **Nazwa witryny usługi AD**  
-        Jest to nazwa lokacji, do której zostanie ograniczona funkcja odnajdowania kontrolera domeny.
-    * **Prefiks serwera SMB (konto komputera)**  
-        Jest to prefiks nazwy dla konta komputera w Active Directory, które Azure NetApp Files będzie używane do tworzenia nowych kont.
+        Jest to nazwa lokacji, do których odnajduje się kontroler domeny.
+    * **Prefiks serwera (konta komputera) SMB**  
+        Jest to prefiks nazewnictwa konta komputera w usłudze Active Directory, który będzie używany przez usługi Azure NetApp Files do tworzenia nowych kont.
 
-        Na przykład jeśli standard nazewnictwa używany przez organizację dla serwerów plików to NAS-01, NAS-02..., NAS-045, wpisz "NAS" dla prefiksu. 
+        Jeśli na przykład standardem nazewnictwa używanym przez organizację dla serwerów plików są SERWERY NAS-01, NAS-02..., NAS-045, należy wprowadzić "NAS" dla prefiksu. 
 
-        W razie konieczności usługa utworzy dodatkowe konta komputera w Active Directory.
+        W razie potrzeby usługa utworzy dodatkowe konta komputerów w usłudze Active Directory.
 
     * **Ścieżka jednostki organizacyjnej**  
-        Jest to ścieżka LDAP jednostki organizacyjnej (OU), w której zostaną utworzone konta komputerów serwera SMB. Oznacza to, OU = drugi poziom, OU = pierwszy poziom. 
+        Jest to ścieżka LDAP dla jednostki organizacyjnej (OU), w której będą tworzone konta komputerów serwerowych SMB. Oznacza to, że OU = drugi poziom, OU = pierwszy poziom. 
 
-        Jeśli używasz Azure NetApp Files z Azure Active Directory Domain Services, ścieżka jednostki organizacyjnej jest `OU=AADDC Computers` podczas konfigurowania Active Directory dla konta NetApp.
+        Jeśli używasz usługi Azure NetApp Files z usługami domenowymi `OU=AADDC Computers` Usługi domenowe Active Directory platformy Azure, ścieżka jednostki organizacyjnej jest podczas konfigurowania usługi Active Directory dla konta NetApp.
         
-    * Poświadczenia, w tym **Nazwa użytkownika** i **hasło**
+    * Poświadczenia, w tym **nazwa użytkownika** i **hasło**
 
-    ![Przyłączanie Active Directory](../media/azure-netapp-files/azure-netapp-files-join-active-directory.png)
+    ![Dołączanie do usługi Active Directory](../media/azure-netapp-files/azure-netapp-files-join-active-directory.png)
 
 3. Kliknij pozycję **Dołącz**.  
 
-    Zostanie wyświetlone utworzone połączenie Active Directory.
+    Zostanie wyświetlenie utworzonego połączenia usługi Active Directory.
 
-    ![Połączenia Active Directory](../media/azure-netapp-files/azure-netapp-files-active-directory-connections-created.png)
+    ![Połączenia usługi Active Directory](../media/azure-netapp-files/azure-netapp-files-active-directory-connections-created.png)
 
 > [!NOTE] 
-> Po zapisaniu połączenia Active Directory można edytować pola username i Password. Po zapisaniu połączenia nie można edytować żadnych innych wartości. Jeśli trzeba zmienić inne wartości, należy najpierw usunąć wszystkie wdrożone woluminy SMB, a następnie usunąć i utworzyć ponownie połączenie Active Directory.
+> Po zapisaniu połączenia usługi Active Directory można edytować pola nazwy użytkownika i hasła. Po zapisaniu połączenia nie można edytować żadnych innych wartości. Jeśli trzeba zmienić inne wartości, należy najpierw usunąć wszystkie wdrożone woluminy SMB, a następnie usunąć i ponownie utworzyć połączenie usługi Active Directory.
 
 ## <a name="add-an-smb-volume"></a>Dodawanie woluminu SMB
 
-1. Kliknij blok **woluminy** w bloku pule pojemności. 
+1. Kliknij **blok Woluminy** z bloku Pule pojemności. 
 
-    ![Przejdź do woluminów](../media/azure-netapp-files/azure-netapp-files-navigate-to-volumes.png)
+    ![Przechodzenie do woluminów](../media/azure-netapp-files/azure-netapp-files-navigate-to-volumes.png)
 
 2. Kliknij pozycję **+ Dodaj wolumin**, aby utworzyć wolumin.  
-    Zostanie wyświetlone okno Tworzenie woluminu.
+    Zostanie wyświetle okno Utwórz wolumin.
 
-3. W oknie Tworzenie woluminu kliknij pozycję **Utwórz** i podaj informacje dla następujących pól:   
+3. W oknie Tworzenie woluminu kliknij pozycję **Utwórz** i podaj informacje dotyczące następujących pól:   
     * **Nazwa woluminu**      
         Określ nazwę tworzonego woluminu.   
 
-        Nazwa woluminu musi być unikatowa w ramach każdej puli pojemności. Musi zawierać co najmniej trzy znaki. Można użyć dowolnych znaków alfanumerycznych.   
+        Nazwa woluminu musi być unikatowa w ramach każdej puli pojemności. Musi zawierać co najmniej trzy znaki. Można użyć dowolnych znaków alfanumeryczne.   
 
-        Nie można użyć `default` jako nazwy woluminu.
+        Nie można używać `default` jako nazwy woluminu.
 
     * **Pula pojemności**  
         Określ pulę pojemności, w której ma zostać utworzony wolumin.
@@ -145,28 +188,28 @@ Zobacz Azure NetApp Files usługi [SMB — często zadawane pytania](https://doc
     * **Sieć wirtualna**  
         Określ sieć wirtualną platformy Azure, z której chcesz uzyskać dostęp do woluminu.  
 
-        Określona Sieć wirtualna musi mieć podsieć delegowaną do Azure NetApp Files. Dostęp do usługi Azure NetApp Files można uzyskać tylko z tej samej sieci wirtualnej lub z sieci wirtualnej, która znajduje się w tym samym regionie co wolumin za pośrednictwem sieci równorzędnej. Możesz również uzyskać dostęp do woluminu z sieci lokalnej za pośrednictwem usługi Express Route.   
+        Określona sieć wirtualna musi mieć podsieć delegowaną do plików NetApp platformy Azure. Usługa Azure NetApp Files jest dostępna tylko z tej samej sieci wirtualnej lub sieci wirtualnej, która znajduje się w tym samym regionie co wolumin za pośrednictwem komunikacji równorzędnej sieci wirtualnej. Można również uzyskać dostęp do woluminu z sieci lokalnej za pośrednictwem trasy ekspresowej.   
 
-    * **Podsieć**  
+    * **Podsieci**  
         Określ podsieć, której chcesz użyć na potrzeby woluminu.  
         Określana podsieć musi być delegowana do usługi Azure NetApp Files. 
         
-        Jeśli podsieć nie została delegowana, można kliknąć pozycję **Utwórz nowe** na stronie Utwórz wolumin. Następnie na stronie Utwórz podsieć określ informacje o podsieci i wybierz pozycję **Microsoft.NetApp/woluminy**, aby delegować podsieć dla usługi Azure NetApp Files. W każdej sieci wirtualnej można delegować tylko jedną podsieć do Azure NetApp Files.   
+        Jeśli podsieć nie została delegowana, na stronie Tworzenie woluminu kliknij pozycję **Utwórz nowy.** Następnie na stronie Utwórz podsieć określ informacje o podsieci i wybierz pozycję **Microsoft.NetApp/woluminy**, aby delegować podsieć dla usługi Azure NetApp Files. W każdej sieci wirtualnej tylko jedna podsieć może być delegowana do plików NetApp platformy Azure.   
  
         ![Tworzenie woluminu](../media/azure-netapp-files/azure-netapp-files-new-volume.png)
     
         ![Tworzenie podsieci](../media/azure-netapp-files/azure-netapp-files-create-subnet.png)
 
-4. Kliknij pozycję **Protokół** i wykonaj następujące informacje:  
-    * Wybierz opcję **SMB** jako typ protokołu dla woluminu. 
-    * Wybierz połączenie **Active Directory** z listy rozwijanej.
-    * Określ nazwę udostępnionego woluminu w polu **Nazwa udziału**.
+4. Kliknij **przycisk Protokół** i uzupełnij następujące informacje:  
+    * Wybierz **SMB** jako typ protokołu dla woluminu. 
+    * Wybierz połączenie **usługi Active Directory** z listy rozwijanej.
+    * Określ nazwę udostępnionego woluminu w **obszarze Nazwa udziału**.
 
-    ![Określ protokół SMB](../media/azure-netapp-files/azure-netapp-files-protocol-smb.png)
+    ![Określanie protokołu SMB](../media/azure-netapp-files/azure-netapp-files-protocol-smb.png)
 
-5. Kliknij przycisk **Przegląd + Utwórz** , aby przejrzeć szczegóły woluminu.  Następnie kliknij przycisk **Utwórz** , aby utworzyć wolumin SMB.
+5. Kliknij **przycisk Recenzja + Utwórz,** aby przejrzeć szczegóły woluminu.  Następnie kliknij przycisk **Utwórz,** aby utworzyć wolumin SMB.
 
-    Utworzony wolumin zostanie wyświetlony na stronie woluminy. 
+    Utworzony wolumin pojawi się na stronie Woluminy. 
  
     Wolumin dziedziczy atrybuty Subskrypcja, Grupa zasobów i Lokalizacja z puli pojemności. Stan wdrożenia woluminu możesz monitorować na karcie Powiadomienia.
 
@@ -174,6 +217,6 @@ Zobacz Azure NetApp Files usługi [SMB — często zadawane pytania](https://doc
 
 * [Instalowanie lub odinstalowywanie woluminu dla maszyn wirtualnych z systemem Windows lub Linux](azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md)
 * [Limity zasobów dla usługi Azure NetApp Files](azure-netapp-files-resource-limits.md)
-* [Funkcja SMB — często zadawane pytania](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-faqs#smb-faqs)
+* [Najczęściej zadawane pytania dotyczące SMB](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-faqs#smb-faqs)
 * [Informacje o integracji z siecią wirtualną dla usług platformy Azure](https://docs.microsoft.com/azure/virtual-network/virtual-network-for-azure-services)
-* [Instalowanie nowego lasu Active Directory przy użyciu interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/windows-server/identity/ad-ds/deploy/virtual-dc/adds-on-azure-vm)
+* [Instalowanie nowego lasu usługi Active Directory przy użyciu interfejsu wiersza polecenia usługi Azure](https://docs.microsoft.com/windows-server/identity/ad-ds/deploy/virtual-dc/adds-on-azure-vm)

@@ -1,16 +1,16 @@
 ---
-title: 'Szybki Start: nowe przypisanie zasad przy użyciu interfejsu wiersza polecenia platformy Azure'
-description: W tym przewodniku szybki start utworzysz przypisanie Azure Policy w celu zidentyfikowania niezgodnych zasobów przy użyciu interfejsu wiersza polecenia platformy Azure.
+title: 'Szybki start: nowe przypisanie zasad za pomocą interfejsu wiersza polecenia platformy Azure'
+description: W tym przewodniku Szybki start można użyć interfejsu wiersza polecenia platformy Azure do utworzenia przypisania zasad platformy Azure w celu identyfikowania niezgodnych zasobów.
 ms.date: 01/11/2020
 ms.topic: quickstart
 ms.openlocfilehash: 7f76191d97a936c745fc2b13b54011e787e0b5e6
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "75978322"
 ---
-# <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-with-azure-cli"></a>Szybki Start: Tworzenie przypisania zasad w celu zidentyfikowania niezgodnych zasobów przy użyciu interfejsu wiersza polecenia platformy Azure
+# <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-with-azure-cli"></a>Szybki start: tworzenie przypisania zasad w celu identyfikowania niezgodnych zasobów za pomocą interfejsu wiersza polecenia platformy Azure
 
 Pierwszym krokiem do zrozumienia pojęcia zgodności na platformie Azure jest określenie obecnej sytuacji dotyczącej Twoich zasobów.
 Ten przewodnik Szybki start przeprowadzi Cię przez proces tworzenia przypisania zasad w celu zidentyfikowania maszyn wirtualnych, które nie korzystają z dysków zarządzanych.
@@ -21,9 +21,9 @@ Interfejs wiersza polecenia platformy Azure umożliwia tworzenie zasobów Azure 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne](https://azure.microsoft.com/free/) konto.
+- Jeśli nie masz subskrypcji platformy Azure, utwórz [bezpłatne](https://azure.microsoft.com/free/) konto przed rozpoczęciem.
 
-- Ten przewodnik Szybki Start wymaga uruchomienia interfejsu wiersza polecenia platformy Azure w wersji 2.0.76 lub nowszej, aby zainstalować interfejs wiersza polecenia i korzystać z niego lokalnie. Aby dowiedzieć się, jaka wersja jest używana, uruchom polecenie `az --version`. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure](/cli/azure/install-azure-cli).
+- Ten przewodnik Szybki start wymaga uruchomienia interfejsu wiersza polecenia platformy Azure w wersji 2.0.76 lub nowszej w celu zainstalowania i używania interfejsu wiersza polecenia lokalnie. Aby dowiedzieć się, jaka wersja jest używana, uruchom polecenie `az --version`. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure](/cli/azure/install-azure-cli).
 
 - Zarejestruj dostawcę zasobów usługi Azure Policy Insights przy użyciu interfejsu wiersza polecenia platformy Azure. Dzięki zarejestrowaniu dostawcy zasobów masz pewność, że subskrypcja będzie z nim współpracować. Aby zarejestrować dostawcę zasobów, należy mieć uprawnienia do wykonywania operacji rejestrowania dostawcy zasobów. Ta operacja jest uwzględniona w rolach Współautor i Właściciel. Uruchom następujące polecenie, aby zarejestrować dostawcę zasobów:
 
@@ -49,7 +49,7 @@ az policy assignment create --name 'audit-vm-manageddisks' --display-name 'Audit
 
 Poprzednie polecenie korzysta z następujących informacji:
 
-- **Nazwa** — rzeczywista nazwa przypisania. W tym przykładzie użyto nazwy _audit-vm-manageddisks_.
+- **Nazwa** —rzeczywista nazwa przypisania. W tym przykładzie użyto nazwy _audit-vm-manageddisks_.
 - **DisplayName** — nazwa wyświetlana przypisania zasad. W tym przypadku użyj nazwy przypisania _Audit VMs without managed disks Assignment_ (Przeprowadź inspekcję maszyn wirtualnych bez dysków zarządzanych).
 - **Zasady** — identyfikator definicji zasad, na podstawie której tworzysz przypisanie. W tym przypadku jest to identyfikator definicji zasad _Audit VMs that do not use managed disks_ (Przeprowadź inspekcję maszyn wirtualnych, które nie korzystają z dysków zarządzanych). Aby uzyskać identyfikator definicji zasad, uruchom następujące polecenie: `az policy definition list --query "[?displayName=='Audit VMs that do not use managed disks']"`
 - **Zakres** — zakres określa, jakie zasoby lub grupy zasobów są wymuszane w ramach przypisania zasad. Może obejmować zarówno subskrypcje, jak i grupy zasobów. Pamiętaj, aby zastąpić fragment &lt;zakres&gt; nazwą grupy zasobów.
@@ -62,7 +62,7 @@ Aby wyświetlić zasoby, które są niezgodne z tym nowym przypisaniem, uzyskaj 
 az policy assignment list --query "[?displayName=='Audit VMs without managed disks Assignment'].id"
 ```
 
-Aby uzyskać więcej informacji o identyfikatorach przypisywania zasad, zobacz [AZ Policy przypisanie](/cli/azure/policy/assignment).
+Aby uzyskać więcej informacji na temat identyfikatorów przypisania zasad, zobacz [przypisanie zasad az](/cli/azure/policy/assignment).
 
 Następnie uruchom poniższe polecenie, aby uzyskać identyfikatory niezgodnych zasobów, które są danymi wyjściowymi przekazywanymi do pliku JSON:
 

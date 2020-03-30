@@ -1,6 +1,6 @@
 ---
-title: Tworzenie niestandardowej sondy przy użyciu programu PowerShell — Application Gateway platformy Azure
-description: Dowiedz się, jak utworzyć niestandardową sondę dla Application Gateway przy użyciu programu PowerShell w klasycznym modelu wdrażania
+title: Tworzenie niestandardowej sondy przy użyciu usługi PowerShell — brama aplikacji platformy Azure
+description: Dowiedz się, jak utworzyć niestandardową sondę bramy aplikacji przy użyciu programu PowerShell w klasycznym modelu wdrażania
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
@@ -8,27 +8,27 @@ ms.topic: article
 ms.date: 11/13/2019
 ms.author: victorh
 ms.openlocfilehash: e01a1cad98ded9d7ce8683b6adf38b5d53959774
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75966812"
 ---
-# <a name="create-a-custom-probe-for-azure-application-gateway-classic-by-using-powershell"></a>Tworzenie niestandardowej sondy dla platformy Azure Application Gateway (klasyczny) przy użyciu programu PowerShell
+# <a name="create-a-custom-probe-for-azure-application-gateway-classic-by-using-powershell"></a>Tworzenie niestandardowej sondy dla bramy aplikacji platformy Azure (klasycznej) przy użyciu programu PowerShell
 
 > [!div class="op_single_selector"]
-> * [Azure Portal](application-gateway-create-probe-portal.md)
+> * [Portal Azure](application-gateway-create-probe-portal.md)
 > * [Azure Resource Manager — program PowerShell](application-gateway-create-probe-ps.md)
 > * [Klasyczny portal Azure — program PowerShell](application-gateway-create-probe-classic-ps.md)
 
-W tym artykule opisano Dodawanie niestandardowej sondy do istniejącej bramy aplikacji przy użyciu programu PowerShell. Niestandardowe sondy są przydatne w przypadku aplikacji, które mają konkretną kontrolę kondycji lub dla aplikacji, które nie zapewniają prawidłowej odpowiedzi w domyślnej aplikacji sieci Web.
+W tym artykule należy dodać niestandardową sondę do istniejącej bramy aplikacji z programem PowerShell. Sondy niestandardowe są przydatne dla aplikacji, które mają określoną stronę sprawdzania kondycji lub dla aplikacji, które nie zapewniają pomyślnej odpowiedzi w domyślnej aplikacji sieci web.
 
 > [!IMPORTANT]
-> Platforma Azure ma dwa różne modele wdrażania służące do tworzenia zasobów i pracy z nimi: [Menedżer zasobów i klasyczne](../azure-resource-manager/management/deployment-models.md). W tym artykule opisano korzystanie z klasycznego modelu wdrażania. Firma Microsoft zaleca, aby w przypadku większości nowych wdrożeń korzystać z modelu opartego na programie Resource Manager. Dowiedz się, jak [wykonać te kroki przy użyciu modelu usługi Resource Manager](application-gateway-create-probe-ps.md).
+> Platforma Azure ma dwa różne modele wdrażania do tworzenia i pracy z zasobami: [Menedżer zasobów i Klasyczny](../azure-resource-manager/management/deployment-models.md). W tym artykule opisano przy użyciu modelu wdrażania klasycznego. Firma Microsoft zaleca, aby w przypadku większości nowych wdrożeń korzystać z modelu opartego na programie Resource Manager.  Dowiedz się, jak [wykonać te kroki w modelu przy użyciu usługi Resource Manager](application-gateway-create-probe-ps.md).
 
 [!INCLUDE [azure-ps-prerequisites-include.md](../../includes/azure-ps-prerequisites-include.md)]
 
-## <a name="create-an-application-gateway"></a>Tworzenie bramy Application Gateway
+## <a name="create-an-application-gateway"></a>Tworzenie bramy aplikacji
 
 Aby utworzyć bramę aplikacji:
 
@@ -53,11 +53,11 @@ Get-AzureApplicationGateway AppGwTest
 ```
 
 > [!NOTE]
-> Wartość domyślna parametru *InstanceCount* to 2, a wartość maksymalna — 10. Wartość domyślna parametru *GatewaySize* to Medium (Średnia). Można wybrać opcję mały, średni i duży.
+> Wartość domyślna parametru *InstanceCount* to 2, a wartość maksymalna — 10. Wartość domyślna parametru *GatewaySize* to Medium (Średnia). Można wybrać między Małe, Średnie i Duże.
 > 
 > 
 
-Parametry *VirtualIPs* (Wirtualne adresy IP) i *DnsName* (Nazwa serwera DNS) są wyświetlane jako puste, ponieważ brama nie została jeszcze uruchomiona. Te wartości są tworzone, gdy Brama jest w stanie uruchomienia.
+Parametry *VirtualIPs* (Wirtualne adresy IP) i *DnsName* (Nazwa serwera DNS) są wyświetlane jako puste, ponieważ brama nie została jeszcze uruchomiona. Te wartości są tworzone, gdy brama jest w stanie uruchomionym.
 
 ### <a name="configure-an-application-gateway-by-using-xml"></a>Konfigurowanie bramy aplikacji przy użyciu języka XML
 
@@ -131,37 +131,37 @@ Skopiuj poniższy tekst do Notatnika.
 
 Edytuj zawarte w nawiasach wartości elementów konfiguracji. Zapisz plik z rozszerzeniem .xml.
 
-Poniższy przykład pokazuje, jak użyć pliku konfiguracji w celu skonfigurowania bramy aplikacji do równoważenia obciążenia ruchu HTTP na porcie publicznym 80 i wysyłania ruchu sieciowego do portu z zapleczem 80 między dwoma adresami IP przy użyciu sondy niestandardowej.
+W poniższym przykładzie pokazano, jak użyć pliku konfiguracji do skonfigurowania bramy aplikacji w celu równoważenia obciążenia ruchu HTTP na porcie publicznym 80 i wysyłania ruchu sieciowego do portu zaplecza 80 między dwoma adresami IP przy użyciu sondy niestandardowej.
 
 > [!IMPORTANT]
 > W elemencie Http lub Https jest rozróżniana wielkość liter.
 
-Nowy element konfiguracji \<sondy\> zostanie dodany, aby skonfigurować sondy niestandardowe.
+Nowy element \<konfiguracji\> Probe jest dodawany do konfigurowania sond niestandardowych.
 
-Parametry konfiguracji są następujące:
+Parametry konfiguracji to:
 
 |Parametr|Opis|
 |---|---|
 |**Nazwa** |Nazwa odwołania dla sondy niestandardowej. |
 | **Protokół** | Używany protokół (możliwe wartości to HTTP lub HTTPS).|
-| **Host** i **ścieżka** | Pełna ścieżka URL, która jest wywoływana przez bramę aplikacji w celu określenia kondycji wystąpienia. Na przykład jeśli masz witrynę sieci Web http:\//contoso.com/, można skonfigurować niestandardową sondę dla "http:\//contoso.com/path/custompath.htm", aby testy sondy miały Pomyślne odpowiedzi HTTP.|
-| **Interwał** | Konfiguruje testy interwału sondowania w sekundach.|
-| **Limit czasu** | Określa limit czasu sondy dla sprawdzania odpowiedzi HTTP.|
-| **UnhealthyThreshold** | Liczba nieprawidłowych odpowiedzi HTTP wymaganych do oflagowania wystąpienia zaplecza jako *złej kondycji*.|
+| **Host** i **ścieżka** | Pełna ścieżka adresu URL, która jest wywoływana przez bramę aplikacji w celu określenia kondycji wystąpienia. Na przykład jeśli masz witrynę\/http: /contoso.com/, a następnie niestandardowe sondy\/można skonfigurować dla "http: /contoso.com/path/custompath.htm" dla kontroli sondy mieć pomyślną odpowiedź HTTP.|
+| **Interwał** | Konfiguruje sprawdzanie interwału sondy w sekundach.|
+| **Limit czasu** | Definiuje limit czasu sondy dla sprawdzania odpowiedzi HTTP.|
+| **UnhealthyThreshold** | Liczba nieudanych odpowiedzi HTTP potrzebnych do oznaczenia wystąpienia zaplecza jako *w złej kondycji*.|
 
-Nazwa sondy jest przywoływana w konfiguracji \<BackendHttpSettings\>, aby przypisać pulę zaplecza, która używa niestandardowych ustawień sondowania.
+Nazwa sondy odwołuje się \<w konfiguracji Wewnętrznej\> bazyhttpsettings przypisać, która pula zaplecza używa niestandardowych ustawień sondy.
 
-## <a name="add-a-custom-probe-to-an-existing-application-gateway"></a>Dodaj niestandardową sondę do istniejącej bramy aplikacji
+## <a name="add-a-custom-probe-to-an-existing-application-gateway"></a>Dodawanie sondy niestandardowej do istniejącej bramy aplikacji
 
-Zmiana bieżącej konfiguracji bramy aplikacji wymaga wykonania trzech kroków: pobrać bieżący plik konfiguracyjny XML, zmodyfikować w taki sposób, aby miał niestandardową sondę i skonfigurować bramę aplikacji przy użyciu nowych ustawień XML.
+Zmiana bieżącej konfiguracji bramy aplikacji wymaga trzech kroków: Pobierz bieżący plik konfiguracyjny XML, zmodyfikuj, aby mieć niestandardową sondę i skonfiguruj bramę aplikacji przy nowych ustawieniach XML.
 
-1. Pobierz plik XML przy użyciu `Get-AzureApplicationGatewayConfig`. To polecenie cmdlet eksportuje plik XML konfiguracji, aby mógł zostać zmodyfikowany w celu dodania ustawienia sondowania.
+1. Pobierz plik XML `Get-AzureApplicationGatewayConfig`za pomocą pliku . To polecenie cmdlet eksportuje konfigurację XML do zmodyfikowanego w celu dodania ustawienia sondy.
 
    ```powershell
    Get-AzureApplicationGatewayConfig -Name "<application gateway name>" -Exporttofile "<path to file>"
    ```
 
-1. Otwórz plik XML w edytorze tekstu. Dodaj sekcję `<probe>` po `<frontendport>`.
+1. Otwórz plik XML w edytorze tekstu. Dodaj `<probe>` sekcję `<frontendport>`po pliku .
 
    ```xml
    <Probes>
@@ -177,7 +177,7 @@ Zmiana bieżącej konfiguracji bramy aplikacji wymaga wykonania trzech kroków: 
    </Probes>
    ```
 
-   W sekcji backendHttpSettings w pliku XML Dodaj nazwę sondy, jak pokazano w następującym przykładzie:
+   W sekcji wewnętrznej bazy danychHttpSettings w formacie XML dodaj nazwę sondy, jak pokazano w poniższym przykładzie:
 
    ```xml
     <BackendHttpSettings>
@@ -192,7 +192,7 @@ Zmiana bieżącej konfiguracji bramy aplikacji wymaga wykonania trzech kroków: 
 
    Zapisz plik XML.
 
-1. Zaktualizuj konfigurację bramy aplikacji za pomocą nowego pliku XML przy użyciu `Set-AzureApplicationGatewayConfig`. To polecenie cmdlet aktualizuje bramę aplikacji przy użyciu nowej konfiguracji.
+1. Zaktualizuj konfigurację bramy aplikacji `Set-AzureApplicationGatewayConfig`za pomocą nowego pliku XML za pomocą programu . To polecenie cmdlet aktualizuje bramę aplikacji o nową konfigurację.
 
 ```powershell
 Set-AzureApplicationGatewayConfig -Name "<application gateway name>" -Configfile "<path to file>"
@@ -200,7 +200,7 @@ Set-AzureApplicationGatewayConfig -Name "<application gateway name>" -Configfile
 
 ## <a name="next-steps"></a>Następne kroki
 
-Jeśli chcesz skonfigurować odciążanie SSL (SSL), zobacz [Konfigurowanie bramy aplikacji na potrzeby odciążania protokołu SSL](application-gateway-ssl.md).
+Jeśli chcesz skonfigurować odciążanie warstwy SSL (Secure Sockets Layer), zobacz [Konfigurowanie bramy aplikacji dla odciążania SSL](application-gateway-ssl.md).
 
 Jeśli chcesz skonfigurować bramę aplikacji do użycia z wewnętrznym modułem równoważenia obciążenia, zobacz artykuł [Create an application gateway with an internal load balancer (ILB)](application-gateway-ilb.md) (Tworzenie bramy aplikacji przy użyciu wewnętrznego modułu równoważenia obciążenia).
 

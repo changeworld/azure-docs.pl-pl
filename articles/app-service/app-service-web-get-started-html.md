@@ -1,22 +1,22 @@
 ---
-title: 'Szybki Start: Tworzenie statycznej aplikacji sieci Web w formacie HTML'
-description: Wdróż swoje pierwsze Hello world HTML do Azure App Service w ciągu kilku minut. Wdrażasz program przy użyciu narzędzia Git, który jest jednym z wielu sposobów wdrażania w App Service.
+title: 'Szybki start: tworzenie statycznej aplikacji sieci Web HTML'
+description: Wdrażanie pierwszego html Hello World do usługi Azure App Service w ciągu kilku minut. Wdrażanie przy użyciu git, który jest jednym z wielu sposobów wdrażania w usłudze App Service.
 author: msangapu-msft
 ms.assetid: 60495cc5-6963-4bf0-8174-52786d226c26
 ms.topic: quickstart
 ms.date: 08/23/2019
 ms.author: msangapu
-ms.custom: seodec18
-ms.openlocfilehash: 1ec8944ea0b4cf44c05efe92d350ae0db66d338b
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.custom: mvc, cli-validate, seodec18
+ms.openlocfilehash: e975708eddad9b9b4a07b49e1f753d604d77ff94
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78247807"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80047569"
 ---
 # <a name="create-a-static-html-web-app-in-azure"></a>Tworzenie statycznej aplikacji internetowej w języku HTML na platformie Azure
 
-Usługa [Azure App Service](overview.md) oferuje wysoce skalowalną i samonaprawialną usługę hostingu w Internecie. W tym samouczku Szybki start przedstawiono sposób wdrażania podstawowej witryny HTML+CSS w usłudze Azure App Service. Ten przewodnik Szybki start można wykonać w usłudze [Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview), ale można te polecenia uruchomić również lokalnie za pomocą [interfejsu wiersza polecenia platformy Azure](/cli/azure/install-azure-cli).
+[Usługa Azure App Service](overview.md) zapewnia wysoce skalowalną, samoładującą się usługę hostingu. W tym samouczku Szybki start przedstawiono sposób wdrażania podstawowej witryny HTML+CSS w usłudze Azure App Service. Ten przewodnik Szybki start można wykonać w usłudze [Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview), ale można te polecenia uruchomić również lokalnie za pomocą [interfejsu wiersza polecenia platformy Azure](/cli/azure/install-azure-cli).
 
 ![Strona główna przykładowej aplikacji](media/app-service-web-get-started-html/hello-world-in-browser-az.png)
 
@@ -98,7 +98,7 @@ W usłudze Cloud Shell wpisz `nano index.html`, aby otworzyć edytor tekstów na
 
 ![Plik index.html programu nano](media/app-service-web-get-started-html/nano-index-html.png)
 
-Zapisz zmiany i zakończ program nano. Użyj polecenia `^O` do zapisania i `^X`, aby zakończyć program.
+Zapisz zmiany i zamknij program nano. Użyj polecenia `^O` w celu zapisania i polecenia `^X` w celu zamknięcia programu.
 
 Wdrożysz teraz ponownie tę aplikację za pomocą tego samego polecenia `az webapp up`.
 
@@ -112,11 +112,11 @@ Po zakończeniu wdrożenia przejdź z powrotem do okna przeglądarki otwartego w
 
 ## <a name="manage-your-new-azure-app"></a>Zarządzanie nową aplikacją platformy Azure
 
-Aby zarządzać utworzoną aplikacją sieci Web, w [Azure Portal](https://portal.azure.com)Wyszukaj i wybierz pozycję **App Services**. 
+Aby zarządzać utworzoną aplikacją internetową, w [witrynie Azure portal](https://portal.azure.com)wyszukaj i wybierz pozycję **Usługi aplikacji**. 
 
-![Wybierz App Services w Azure Portal](./media/app-service-web-get-started-html/portal0.png)
+![Wybieranie usług aplikacji w witrynie Azure portal](./media/app-service-web-get-started-html/portal0.png)
 
-Na stronie **App Services** wybierz nazwę swojej aplikacji platformy Azure.
+Na stronie **Usługi aplikacji** wybierz nazwę aplikacji platformy Azure.
 
 ![Nawigacja w portalu do aplikacji platformy Azure](./media/app-service-web-get-started-html/portal1.png)
 

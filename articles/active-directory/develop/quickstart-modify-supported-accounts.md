@@ -1,5 +1,5 @@
 ---
-title: Modyfikowanie firmy Microsoft identyfikacja kont aplikacji platformy | Azure
+title: Modyfikowanie kont aplikacji platformy Microsoft do identyfikowania platformy | Azure
 description: Konfigurowanie aplikacji zarejestrowanej za pomocą platformy tożsamości firmy Microsoft pod kątem zmiany zbioru osób (kont) z dostępem do aplikacji.
 services: active-directory
 author: rwike77
@@ -12,14 +12,14 @@ ms.date: 05/08/2019
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: aragra, lenalepa, sureshja
-ms.openlocfilehash: 56771658380e0a5b946c3acc70df98a262561b5c
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 94fed6f4aa62c7e649cf7d644e571b30561e0da4
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77160693"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80050241"
 ---
-# <a name="quickstart-modify-the-accounts-supported-by-an-application"></a>Szybki Start: modyfikowanie kont obsługiwanych przez aplikację
+# <a name="quickstart-modify-the-accounts-supported-by-an-application"></a>Szybki start: modyfikowanie kont obsługiwanych przez aplikację
 
 Podczas rejestrowania aplikacji na platformie tożsamości firmy Microsoft możesz zdecydować, że aplikacja powinna być dostępna tylko dla użytkowników w Twojej organizacji. Możesz także planować udostępnienie aplikacji użytkownikom w organizacjach zewnętrznych lub użytkownikom w organizacjach zewnętrznych i użytkownikom nienależącym do organizacji (kontom osobistym).
 
@@ -39,7 +39,7 @@ Przed skonfigurowaniem aplikacji wykonaj następujące kroki:
 
 1. Zaloguj się do [witryny Azure Portal](https://portal.azure.com) przy użyciu służbowego lub osobistego konta Microsoft.
 1. Jeśli Twoje konto umożliwia dostęp do więcej niż jednej dzierżawy, wybierz konto w prawym górnym rogu, a następnie ustaw sesję portalu na odpowiednią dzierżawę usługi Azure AD.
-1. W okienku nawigacji po lewej stronie wybierz usługę **Azure Active Directory** a następnie wybierz pozycję **rejestracje aplikacji**.
+1. W lewym okienku nawigacji wybierz usługę **Azure Active Directory,** a następnie wybierz pozycję **Rejestracje aplikacji**.
 1. Znajdź i wybierz aplikację do skonfigurowania. Po wybraniu aplikacji zobaczysz stronę **Przegląd** aplikacji lub główną stronę rejestracji.
 1. Postępuj zgodnie z instrukcjami, aby [zmienić rejestrację aplikacji pod kątem obsługi różnych kont](#change-the-application-registration-to-support-different-accounts).
 1. W przypadku aplikacji z jedną stroną [włącz niejawne udzielenie uwierzytelniania OAuth 2.0](#enable-oauth-20-implicit-grant-for-single-page-applications).
@@ -49,7 +49,7 @@ Przed skonfigurowaniem aplikacji wykonaj następujące kroki:
 Jeśli piszesz aplikację, którą ma być dostępna dla klientów lub partnerów spoza organizacji, musisz zaktualizować definicję aplikacji w witrynie Azure Portal.
 
 > [!IMPORTANT]
-> Usługa Azure AD wymaga, aby identyfikator URI identyfikatora aplikacji wielodostępnej był globalnie unikatowy. Identyfikator URI identyfikatora aplikacji jest jednym ze sposobów, w jaki aplikacja jest identyfikowana w komunikatach protokołu. W przypadku aplikacji jednodostępnej wystarczy, aby identyfikator URI identyfikatora aplikacji był unikatowy w obrębie tej dzierżawy. W przypadku aplikacji wielodostępnej ten identyfikator musi być globalnie unikatowy, dzięki czemu usługa Azure AD będzie mogła znaleźć aplikację we wszystkich dzierżawach. Globalna unikatowość jest wymuszana poprzez wymaganie, aby identyfikator URI identyfikatora aplikacji miał nazwę hosta, która jest zgodna ze zweryfikowaną domeną dzierżawy usługi Azure AD. Jeśli na przykład nazwa dzierżawy to contoso.onmicrosoft.com, prawidłowy identyfikator URI identyfikatora aplikacji będzie mieć postać https://contoso.onmicrosoft.com/myapp. Jeśli Twoja dzierżawa ma zweryfikowaną domenę contoso.com, prawidłowy identyfikator URI identyfikatora aplikacji będzie również miał postać https://contoso.com/myapp. Jeśli identyfikator URI identyfikatora aplikacji nie jest zgodny z tym wzorcem, ustawienie aplikacji jako aplikacji wielodostępnej zakończy się niepowodzeniem.
+> Usługa Azure AD wymaga, aby identyfikator URI identyfikatora aplikacji wielodostępnej był globalnie unikatowy. Identyfikator URI identyfikatora aplikacji jest jednym ze sposobów, w jaki aplikacja jest identyfikowana w komunikatach protokołu. W przypadku aplikacji jednodostępnej wystarczy, aby identyfikator URI identyfikatora aplikacji był unikatowy w obrębie tej dzierżawy. W przypadku aplikacji wielodostępnej ten identyfikator musi być globalnie unikatowy, dzięki czemu usługa Azure AD będzie mogła znaleźć aplikację we wszystkich dzierżawach. Globalna unikatowość jest wymuszana poprzez wymaganie, aby identyfikator URI identyfikatora aplikacji miał nazwę hosta, która jest zgodna ze zweryfikowaną domeną dzierżawy usługi Azure AD. Jeśli na przykład nazwa dzierżawy to contoso.onmicrosoft.com, prawidłowy identyfikator URI identyfikatora aplikacji będzie mieć postać `https://contoso.onmicrosoft.com/myapp`. Jeśli Twoja dzierżawa ma zweryfikowaną domenę contoso.com, prawidłowy identyfikator URI identyfikatora aplikacji będzie również miał postać `https://contoso.com/myapp`. Jeśli identyfikator URI identyfikatora aplikacji nie jest zgodny z tym wzorcem, ustawienie aplikacji jako aplikacji wielodostępnej zakończy się niepowodzeniem.
 
 ### <a name="to-change-who-can-access-your-application"></a>Modyfikowanie zbioru osób z dostępem do aplikacji
 
@@ -57,7 +57,7 @@ Jeśli piszesz aplikację, którą ma być dostępna dla klientów lub partneró
     * Wybierz pozycję **Konta tylko w tym katalogu organizacyjnym**, jeśli tworzysz aplikację biznesową. Ta opcja nie jest dostępna, jeśli aplikacja nie jest zarejestrowana w katalogu.
     * Wybierz pozycję **Konta w dowolnym katalogu organizacyjnym**, jeśli aplikacja jest przeznaczona dla wszystkich klientów biznesowych i edukacyjnych.
     * Wybierz pozycję **Konta w dowolnym katalogu organizacyjnym i konta osobiste Microsoft**, aby przeznaczyć aplikację dla najszerszego możliwego grona klientów.
-1. Wybierz pozycję **Zapisz**.
+1. Wybierz **pozycję Zapisz**.
 
 ## <a name="enable-oauth-20-implicit-grant-for-single-page-applications"></a>Włączanie przyznawania niejawnego protokołu OAuth 2.0 dla aplikacji jednostronicowych
 
@@ -72,7 +72,7 @@ Domyślnie niejawne udzielenie protokołu OAuth 2.0 jest wyłączone dla aplikac
 1. Na stronie **Przegląd** aplikacji wybierz sekcję **Uwierzytelnianie**.
 1. W obszarze **Ustawienia zaawansowane** znajdź sekcję **Niejawne udzielenie**.
 1. Wybierz pozycję **Tokeny identyfikatora**, **Tokeny dostępu** lub je obie.
-1. Wybierz pozycję **Zapisz**.
+1. Wybierz **pozycję Zapisz**.
 
 ## <a name="next-steps"></a>Następne kroki
 

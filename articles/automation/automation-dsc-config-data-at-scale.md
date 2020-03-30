@@ -1,7 +1,7 @@
 ---
-title: Dane konfiguracji w skali — Azure Automation
-description: Dowiedz się, jak skonfigurować dane w odpowiedniej skali dla konfiguracji stanu w Azure Automation.
-keywords: DSC, PowerShell, konfiguracja, instalacja
+title: Dane konfiguracyjne na dużą skalę — usługa Azure Automation
+description: Dowiedz się, jak skonfigurować dane na dużą skalę dla konfiguracji stanu w usłudze Azure Automation.
+keywords: dsc,powershell,konfiguracja,konfiguracja
 services: automation
 ms.service: automation
 ms.subservice: dsc
@@ -11,46 +11,46 @@ ms.date: 08/08/2019
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: 1a77a366ee8e06b2d8c47eb3b47eeaf9ae809598
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76028288"
 ---
 # <a name="configuration-data-at-scale"></a>Dane konfiguracji w dużej skali
 
-> Dotyczy: Windows PowerShell 5,1
+> Dotyczy: Windows PowerShell 5.1
 
 Zarządzanie setkami lub tysiącami serwerów może być wyzwaniem.
-Klienci otrzymali opinię, że najbardziej trudnym aspektem jest zarządzanie [danymi konfiguracji](/powershell/scripting/dsc/configurations/configdata).
-Organizowanie informacji w ramach konstrukcji logicznych, takich jak lokalizacja, typ i środowisko.
+Klienci przekazali informację zwrotną, że najtrudniejszym aspektem jest zarządzanie [danymi konfiguracyjnymi.](/powershell/scripting/dsc/configurations/configdata)
+Organizowanie informacji w konstrukcjach logicznych, takich jak lokalizacja, typ i środowisko.
 
 > [!NOTE]
-> Ten artykuł odnosi się do rozwiązania, które jest obsługiwane przez społeczność typu open source.
-> Pomoc techniczna jest dostępna tylko w formie współpracy GitHub, a nie od firmy Microsoft.
+> Ten artykuł odnosi się do rozwiązania, które jest obsługiwane przez społeczność open source.
+> Pomoc techniczna jest dostępna tylko w formie współpracy z githubem, a nie od firmy Microsoft.
 
-## <a name="community-project-datum"></a>Projekt społeczności: Datum
+## <a name="community-project-datum"></a>Projekt wspólnotowy: Datum
 
-Utworzono rozwiązanie obsługiwane przez społeczność o nazwie [Datum](https://github.com/gaelcolas/Datum) , aby rozwiązać ten problem.
-Datum tworzy doskonałe pomysły dotyczące innych platform zarządzania konfiguracją i implementuje ten sam typ rozwiązania dla DSC programu PowerShell.
-Informacje są [zorganizowane w plikach tekstowych](https://github.com/gaelcolas/Datum#3-intended-usage) w oparciu o koncepcje logiczne.
-Oto przykłady:
+Aby rozwiązać ten problem, stworzono rozwiązanie obsługiwane przez społeczność o nazwie [Bazy pomocy.](https://github.com/gaelcolas/Datum)
+Datum opiera się na świetnych pomysłach z innych platform zarządzania konfiguracją i implementuje ten sam typ rozwiązania dla programu PowerShell DSC.
+Informacje [są zorganizowane w plikach tekstowych](https://github.com/gaelcolas/Datum#3-intended-usage) na podstawie logicznych pomysłów.
+Przykładami mogą być:
 
 - Ustawienia, które powinny być stosowane globalnie
-- Ustawienia, które powinny być stosowane do wszystkich serwerów w lokalizacji
-- Ustawienia, które powinny być stosowane dla wszystkich serwerów baz danych
-- Ustawienia poszczególnych serwerów
+- Ustawienia, które powinny mieć zastosowanie do wszystkich serwerów w lokalizacji
+- Ustawienia, które powinny mieć zastosowanie do wszystkich serwerów bazy danych
+- Indywidualne ustawienia serwera
 
-Te informacje są zorganizowane w preferowany format pliku (JSON, YAML lub PSD1).
-Polecenia cmdlet są udostępniane do generowania plików danych konfiguracji przez [konsolidowanie informacji](https://github.com/gaelcolas/Datum#datum-tree) z każdego pliku w programie do pojedynczego widoku roli serwera lub serwera.
+Te informacje są uporządkowane w preferowanym formacie pliku (JSON, Yaml lub PSD1).
+Następnie polecenia cmdlet są dostarczane do generowania plików danych konfiguracyjnych przez [konsolidację informacji](https://github.com/gaelcolas/Datum#datum-tree) z każdego pliku do pojedynczego widoku roli serwera lub serwera.
 
-Po wygenerowaniu plików danych można użyć ich ze [skryptami konfiguracji DSC](/powershell/scripting/dsc/configurations/write-compile-apply-configuration) w celu wygenerowania plików MOF i [przekazania plików MOF do Azure Automation](/azure/automation/tutorial-configure-servers-desired-state#create-and-upload-a-configuration-to-azure-automation).
-Następnie zarejestruj serwery [lokalnie](/azure/automation/automation-dsc-onboarding#physicalvirtual-windows-machines-on-premises-or-in-a-cloud-other-than-azure-including-aws-ec2-instances) lub na [platformie Azure](/azure/automation/automation-dsc-onboarding#azure-virtual-machines) , aby przeprowadzić konfigurację ściągania.
+Po wygenerowaniu plików danych można ich używać za pomocą [skryptów konfiguracji DSC](/powershell/scripting/dsc/configurations/write-compile-apply-configuration) do generowania plików MOF i [przekazywania plików MOF do usługi Azure Automation.](/azure/automation/tutorial-configure-servers-desired-state#create-and-upload-a-configuration-to-azure-automation)
+Następnie zarejestruj serwery z [lokalnego](/azure/automation/automation-dsc-onboarding#physicalvirtual-windows-machines-on-premises-or-in-a-cloud-other-than-azure-including-aws-ec2-instances) lub [na platformie Azure,](/azure/automation/automation-dsc-onboarding#azure-virtual-machines) aby pobierać konfiguracje.
 
-Aby wypróbować podstawę, odwiedź [Galeria programu PowerShell](https://www.powershellgallery.com/packages/datum/) i Pobierz rozwiązanie lub kliknij pozycję "Witryna projektu", aby wyświetlić [dokumentację](https://github.com/gaelcolas/Datum#2-getting-started--concepts).
+Aby wypróbować datum, odwiedź [Galerię programu PowerShell](https://www.powershellgallery.com/packages/datum/) i pobierz rozwiązanie lub kliknij "Witryna projektu", aby wyświetlić [dokumentację](https://github.com/gaelcolas/Datum#2-getting-started--concepts).
 
 ## <a name="next-steps"></a>Następne kroki
 
-- [Przegląd konfiguracji żądanego stanu programu Windows PowerShell](/powershell/scripting/dsc/overview/overview)
+- [Omówienie konfiguracji żądanego stanu programu Windows PowerShell](/powershell/scripting/dsc/overview/overview)
 - [Zasoby DSC](/powershell/scripting/dsc/resources/resources)
-- [Konfigurowanie Configuration Manager lokalnego](/powershell/scripting/dsc/managing-nodes/metaconfig)
+- [Konfigurowanie lokalnego menedżera konfiguracji](/powershell/scripting/dsc/managing-nodes/metaconfig)

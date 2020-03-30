@@ -1,6 +1,6 @@
 ---
-title: Udostępnianie widoków niestandardowych z sparametryzowanymi adresami URL — Azure Time Series Insights | Microsoft Docs
-description: Dowiedz się, jak utworzyć sparametryzowane adresy URL, aby łatwo udostępniać niestandardowe widoki Eksploratora w Azure Time Series Insights.
+title: Udostępnianie widoków niestandardowych za pomocą sparametryzowanych adresów URL — usługa Azure Time Series Insights | Dokumenty firmy Microsoft
+description: Dowiedz się, jak tworzyć sparametryzowane adresy URL, aby łatwo udostępniać niestandardowe widoki eksploratora w usłudze Azure Time Series Insights.
 ms.service: time-series-insights
 services: time-series-insights
 author: deepakpalled
@@ -11,29 +11,29 @@ ms.workload: big-data
 ms.date: 02/04/2020
 ms.custom: seodec18
 ms.openlocfilehash: 9dfe499a7d6084a23fd71ab98db472befe71fc04
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77024368"
 ---
 # <a name="share-a-custom-view-using-a-parameterized-url"></a>Udostępnianie widoku niestandardowego przy użyciu sparametryzowanego adresu URL
 
-Aby udostępnić widok niestandardowy w Eksploratorze Time Series Insights, można programowo utworzyć sparametryzowany adres URL widoku niestandardowego.
+Aby udostępnić widok niestandardowy w Eksploratorze wglądu w szeregi czasowe, można programowo utworzyć sparametryzowany adres URL widoku niestandardowego.
 
-Eksplorator Time Series Insights obsługuje parametry zapytania URL, aby określić widoki w środowisku bezpośrednio z adresu URL. Na przykład przy użyciu tylko adresu URL możesz określić środowisko docelowe, predykat wyszukiwania i żądany przedział czasu. Gdy użytkownik wybierze dostosowany adres URL, Interfejs udostępnia link bezpośrednio do tego zasobu w portalu Time Series Insights. Obowiązują zasady dostępu do danych.
+Explorer usługi Time Series Insights obsługuje parametry zapytania URL, aby określić widoki w środowiskach bezpośrednio z adresu URL. Na przykład przy użyciu tylko adresu URL możesz określić środowisko docelowe, predykat wyszukiwania i żądany przedział czasu. Gdy użytkownik wybierze niestandardowy adres URL, interfejs udostępnia łącze bezpośrednio do tego zasobu w portalu Time Series Insights. Obowiązują zasady dostępu do danych.
 
 > [!TIP]
-> * Obejrzyj pokaz bezpłatnej [Time Series Insights](https://insights.timeseries.azure.com/samples).
-> * Przeczytaj towarzyszącą dokumentację programu [Time Series Insights Explorer](./time-series-insights-explorer.md) .
+> * Wyświetl bezpłatną [prezentację aplikacji Time Series Insights](https://insights.timeseries.azure.com/samples).
+> * Przeczytaj dołączoną dokumentację [eksploratora usługi Time Series Insights.](./time-series-insights-explorer.md)
 
 ## <a name="environment-id"></a>Identyfikator środowiska
 
-Parametr `environmentId=<guid>` określa identyfikator środowiska docelowego. Jest to składnik nazwy FQDN dostępu do danych, który można znaleźć w prawym górnym rogu omówienia środowiska w Azure Portal. Jest to cała część poprzedzająca ciąg `env.timeseries.azure.com`.
+Parametr `environmentId=<guid>` określa identyfikator środowiska docelowego. Jest składnikiem fqdn dostępu do danych i można go znaleźć w prawym górnym rogu środowiska omówienie w witrynie Azure portal. Jest to cała część poprzedzająca ciąg `env.timeseries.azure.com`.
 
 Przykładowy parametr identyfikatora środowiska to `?environmentId=10000000-0000-0000-0000-100000000108`.
 
-## <a name="time"></a>Czas
+## <a name="time"></a>Time
 
 Za pomocą sparametryzowanego adresu URL możesz określać bezwzględne lub względne wartości czasu.
 
@@ -45,60 +45,60 @@ Aby podać bezwzględne wartości czasu, użyj parametrów `from=<integer>` i `t
 * Parametr `to=<integer>` to wartość w milisekundach JavaScript określająca czas końcowy dla zakresu wyszukiwania.
 
 > [!TIP]
-> Aby łatwo przetłumaczyć daty na JavaScript w milisekundach, wypróbuj [konwertera Timestamp & UNIX](https://www.freeformatter.com/epoch-timestamp-to-date-converter.html).
+> Aby łatwo przetłumaczyć daty na milisekundy JavaScript, wypróbuj [konwerter sygnatury czasowej Epoch & Unix](https://www.freeformatter.com/epoch-timestamp-to-date-converter.html).
 
 ### <a name="relative-time-values"></a>Względne wartości czasu
 
-Dla względnej wartości czasu Użyj `relativeMillis=<value>`, gdzie *wartość* jest w języku JavaScript w milisekundach od ostatniego znacznika czasu otrzymanego z interfejsu API.
+Dla względnej wartości `relativeMillis=<value>`czasu użyj , gdzie *wartość* jest w milisekundach JavaScript z najnowszej sygnatury czasowej otrzymanej z interfejsu API.
 
 Na przykład parametr `&relativeMillis=3600000` spowoduje wyświetlenie danych z ostatnich 60 minut.
 
-Akceptowane wartości odpowiadają menu **szybkiego czasu** Eksploratora Time Series Insights i obejmują:
+Zaakceptowane wartości odpowiadają menu **szybki** czas eksploratora usługi Time Series Insights i obejmują:
 
-* `1800000` (ostatnie 30 minut)
-* `3600000` (ostatnie 60 min)
-* `10800000` (ostatnie 3 godziny)
-* `21600000` (ostatnie 6 godzin)
-* `43200000` (ostatnie 12 godzin)
-* `86400000` (ostatnie 24 godziny)
-* `604800000` (ostatnie 7 dni)
-* `2592000000` (ostatnie 30 godzin)
+* `1800000`(Ostatnie 30 min)
+* `3600000`(Ostatnie 60 min)
+* `10800000`(Ostatnie 3 godziny)
+* `21600000`(Ostatnie 6 godzin)
+* `43200000`(Ostatnie 12 godzin)
+* `86400000`(Ostatnie 24 godziny)
+* `604800000`(Ostatnie 7 dni)
+* `2592000000`(Ostatnie 30 godzin)
 
 ### <a name="optional-parameters"></a>Parametry opcjonalne
 
-`timeSeriesDefinitions=<collection of term objects>` parametr określa terminy predykatu, które będą wyświetlane w widoku Time Series Insights:
+Parametr `timeSeriesDefinitions=<collection of term objects>` określa warunki predykatu, które będą wyświetlane w widoku Usługi Time Series Insights:
 
 | Parametr | Element adresu URL | Opis |
 | --- | --- | --- |
 | **Nazwa** | `\<string>` | Nazwa *terminu*. |
-| **splitBy** | `\<string>` | Nazwa kolumny, według której ma zostać wykonany *podział*. |
-| **measureName** | `\<string>` | Nazwa kolumny *miary*. |
-| **predykatu** | `\<string>` | Klauzula *where* na potrzeby filtrowania po stronie serwera. |
-| **useSum** | `true` | Opcjonalny parametr, który określa użycie sum dla miary. |
+| **splitBy (podział)** | `\<string>` | Nazwa kolumny, według której ma zostać wykonany *podział*. |
+| **nazwa miary** | `\<string>` | Nazwa kolumny *miary*. |
+| **Predykat** | `\<string>` | Klauzula *where* na potrzeby filtrowania po stronie serwera. |
+| **useSum** | `true` | Opcjonalny parametr określający użycie sumy dla miary. |
 
 > [!NOTE]
-> Jeśli `Events` jest wybrana miara **useSum** , liczba jest zaznaczona domyślnie.  
-> Jeśli nie wybrano `Events`, wartość średnia jest domyślnie zaznaczona. |
+> Jeśli `Events` jest to wybrana **miara useSum,** liczba jest zaznaczona domyślnie.  
+> Jeśli `Events` opcja nie jest zaznaczona, średnia jest wybierana domyślnie. |
 
-* Para klucz-wartość `multiChartStack=<true/false>` umożliwia tworzenie stosów na wykresie.
-* Para klucz-wartość `multiChartSameScale=<true/false>` umożliwia tej samej skali osi Y w warunkach w ramach opcjonalnego parametru.  
-* `timeBucketUnit=<Unit>&timeBucketSize=<integer>` umożliwia dostosowanie suwaka interwału, aby zapewnić bardziej szczegółowy lub gładszy, bardziej Zagregowany widok wykresu.  
-* Parametr `timezoneOffset=<integer>` umożliwia ustawienie strefy czasowej na potrzeby wyświetlania wykresu jako przesunięcia do czasu UTC.
+* Para `multiChartStack=<true/false>` klucz-wartość umożliwia układanie w tabeli na wykresie.
+* Para `multiChartSameScale=<true/false>` klucz-wartość umożliwia tę samą skalę osi Y w różnych terminach w ramach opcjonalnego parametru.  
+* Umożliwia `timeBucketUnit=<Unit>&timeBucketSize=<integer>` dostosowanie suwaka interwału w celu zapewnienia bardziej szczegółowego lub gładszego, bardziej zagregowanego widoku wykresu.  
+* Parametr `timezoneOffset=<integer>` umożliwia ustawienie strefy czasowej dla wykresu, który ma być oglądany jako przesunięcie do czasu UTC.
 
-| Pary | Opis |
+| Para(-y) | Opis |
 | --- | --- |
-| `multiChartStack=false` | `true` jest domyślnie włączona, więc Przekaż `false` do stosu. |
-| `multiChartStack=false&multiChartSameScale=true` | Układanie na stosie musi mieć możliwość użycia takiej samej skali osi Y dla warunków.  Jest ona domyślnie `false`, więc przekazywanie `true` włącza tę funkcję. |
-| `timeBucketUnit=<Unit>&timeBucketSize=<integer>` | Units = `days`, `hours`, `minutes`, `seconds`, `milliseconds`.  Jednostka zawsze wielką literą. </br> Zdefiniuj liczbę jednostek, przekazując żądaną liczbę całkowitą dla **timeBucketSize**.  |
+| `multiChartStack=false` | `true`jest domyślnie włączona, więc przechodzą `false` do stosu. |
+| `multiChartStack=false&multiChartSameScale=true` | Układanie na stosie musi mieć możliwość użycia takiej samej skali osi Y dla warunków.  Jest to `false` domyślnie, `true` więc przekazywanie włącza tę funkcję. |
+| `timeBucketUnit=<Unit>&timeBucketSize=<integer>` | Jednostki `days` `hours`= `minutes` `seconds`, `milliseconds`, , .  Jednostka zawsze wielką literą. </br> Zdefiniuj liczbę jednostek, przekazując żądaną liczbę całkowitą dla **timeBucketSize**.  |
 | `timezoneOffset=-<integer>` | Liczba całkowita jest zawsze w milisekundach. |
 
 > [!NOTE]
-> wartości **timeBucketUnit** można wygładzić do 7 dni.
-> wartości **timezoneOffset** nie są czasem UTC ani czasem lokalnym.
+> **timeBucketUnit** wartości mogą być wygładzone do 7 dni.
+> **timezoneOffset** wartości nie są ani UTC ani czasu lokalnego.
 
 ### <a name="examples"></a>Przykłady
 
-Aby dodać definicje szeregów czasowych do środowiska Time Series Insights jako parametr adresu URL, Dołącz:
+Aby dodać definicje szeregów czasowych do środowiska usługi Time Series Insights jako parametr adresu URL, dołącz:
 
 ```URL parameter
 &timeSeriesDefinitions=[{"name":"F1PressureId","splitBy":"Id","measureName":"Pressure","predicate":"'Factory1'"},{"name":"F2TempStation","splitBy":"Station","measureName":"Temperature","predicate":"'Factory2'"},
@@ -109,31 +109,31 @@ Użyj przykładowych definicji szeregów czasowych dla:
 
 * Identyfikator środowiska
 * Ostatnie 60 minut danych
-* Warunki (**F1PressureID**, **F2TempStation**i **F3VibrationPL**), które składają się na parametry opcjonalne
+* Terminy **(F1PressureID**, **F2TempStation**i **F3VibrationPL),** które składają się na parametry opcjonalne
 
-Można utworzyć następujący sparametryzowany adres URL dla widoku:
+Dla widoku można utworzyć następujący sparametryzowany adres URL:
 
 ```URL
 https://insights.timeseries.azure.com/samples?environmentId=10000000-0000-0000-0000-100000000108&relativeMillis=3600000&timeSeriesDefinitions=[{"name":"F1PressureId","splitBy":"Id","measureName":"Pressure","predicate":"'Factory1'"},{"name":"F2TempStation","splitBy":"Station","measureName":"Temperature","predicate":"'Factory2'"},{"name":"F3VibrationPL","splitBy":"ProductionLine","measureName":"Vibration","predicate":"'Factory3'"}]
 ```
 
-[![sparametryzowany adres URL programu Time Series Insights Explorer](media/parameterized-url/share-parameterized-url.png)](media/parameterized-url/share-parameterized-url.png#lightbox)
+[![Sparametryczny adres URL programu Explorer usługi Time Series Insights](media/parameterized-url/share-parameterized-url.png)](media/parameterized-url/share-parameterized-url.png#lightbox)
 
 > [!TIP]
-> Zapoznaj się z Eksploratorem na żywo przy użyciu powyższego przykładu [adresu URL](https://insights.timeseries.azure.com/samples?environmentId=10000000-0000-0000-0000-100000000108&relativeMillis=3600000&timeSeriesDefinitions=[{"name":"F1PressureId","splitBy":"Id","measureName":"Pressure","predicate":"'Factory1'"},{"name":"F2TempStation","splitBy":"Station","measureName":"Temperature","predicate":"'Factory2'"},{"name":"F3VibrationPL","splitBy":"ProductionLine","measureName":"Vibration","predicate":"'Factory3'"}]) .
+> Zobacz Eksploratora na żywo [przy użyciu przykładu adresu URL](https://insights.timeseries.azure.com/samples?environmentId=10000000-0000-0000-0000-100000000108&relativeMillis=3600000&timeSeriesDefinitions=[{"name":"F1PressureId","splitBy":"Id","measureName":"Pressure","predicate":"'Factory1'"},{"name":"F2TempStation","splitBy":"Station","measureName":"Temperature","predicate":"'Factory2'"},{"name":"F3VibrationPL","splitBy":"ProductionLine","measureName":"Vibration","predicate":"'Factory3'"}]) powyżej.
 
-Powyższy adres URL opisuje i wyświetla sparametryzowany widok Eksploratora Time Series Insights. 
+Powyższy adres URL opisuje i wyświetla sparametryzowany widok eksploratora usługi Time Series Insights. 
 
-* Predykaty sparametryzowane.
+* Sparametryzowane predykaty.
 
-  [![predykaty sparametryzowane Time Series Insights Explorer.](media/parameterized-url/share-parameterized-url-predicates.png)](media/parameterized-url/share-parameterized-url-predicates.png#lightbox)
+  [![Explorer usługi Time Series Insights sparametryzowany predykatów.](media/parameterized-url/share-parameterized-url-predicates.png)](media/parameterized-url/share-parameterized-url-predicates.png#lightbox)
 
-* Widok udostępnionego wykresu pełny.
+* Udostępniony pełny widok wykresu.
 
-  [![udostępniony widok pełnego wykresu.](media/parameterized-url/share-parameterized-url-full-chart.png)](media/parameterized-url/share-parameterized-url-full-chart.png#lightbox)
+  [![Udostępniony pełny widok wykresu.](media/parameterized-url/share-parameterized-url-full-chart.png)](media/parameterized-url/share-parameterized-url-full-chart.png#lightbox)
 
 ## <a name="next-steps"></a>Następne kroki
 
-* Dowiedz się, jak [wykonywać C#zapytania dotyczące danych przy użyciu programu ](time-series-insights-query-data-csharp.md).
+* Dowiedz się, jak [badać dane przy użyciu języka C#](time-series-insights-query-data-csharp.md).
 
-* Dowiedz się więcej o [eksploratorze Time Series Insights](./time-series-insights-explorer.md).
+* Dowiedz się więcej o [Eksploratorze wglądu w szeregi czasowe](./time-series-insights-explorer.md).

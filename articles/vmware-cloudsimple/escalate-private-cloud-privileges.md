@@ -1,7 +1,7 @@
 ---
-title: Escalate AVS private cloud privileges - Azure VMware Solution by AVS
-description: Describes how to escalate privileges on your AVS private cloud for administrative functions in vCenter
-titleSuffix: Azure VMware Solutions (AVS)
+title: Eskalacja uprawnień chmury prywatnej
+titleSuffix: Azure VMware Solution by CloudSimple
+description: W tym artykule opisano sposób eskalacji uprawnień w chmurze prywatnej dla funkcji administracyjnych w programie vCenter
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 06/05/2019
@@ -9,84 +9,84 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 211960af359e19f93afef58162c5b09ae1d9b23f
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 3d06f3e8be449e7050c65c75339a0cff6efe19e4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77025320"
 ---
-# <a name="escalate-avs-private-cloud-vcenter-privileges-from-the-avs-portal"></a>Escalate AVS Private Cloud vCenter privileges from the AVS portal
+# <a name="escalate-private-cloud-vcenter-privileges-from-the-cloudsimple-portal"></a>Eskalacja uprawnień vCenter w chmurze prywatnej z portalu CloudSimple
 
-For administrative access to your AVS Private Cloud vCenter, you can temporarily escalate your AVS privileges. Using elevated privileges, you can install VMware solutions, add identity sources, and manage users.
+Aby uzyskać dostęp administracyjny do usługi Private Cloud vCenter, można tymczasowo eskalować uprawnienia CloudSimple.  Korzystając z podwyższonych uprawnień, można instalować rozwiązania VMware, dodawać źródła tożsamości i zarządzać użytkownikami.
 
-New users can be created on the vCenter SSO domain and given access to vCenter. When you create new users, add them to the AVS builtin groups for accessing vCenter. For more information, see [AVS Private Cloud permission model of VMware vCenter](https://docs.azure.cloudsimple.com/learn-private-cloud-permissions/).
+Nowi użytkownicy mogą być tworzone w domenie syt/sso vCenter i mieć dostęp do vCenter.  Podczas tworzenia nowych użytkowników, dodać je do cloudSimple wbudowanych grup dostępu do vCenter.  Aby uzyskać więcej informacji, zobacz [CloudSimple Private Cloud model uprawnień VMware vCenter](https://docs.azure.cloudsimple.com/learn-private-cloud-permissions/).
 
 > [!CAUTION]
-> Don’t make any configuration changes for management components. Actions taken during the escalated privileged state can adversely impact your system or can cause your system to become unavailable.
+> Nie należy wprowadzać żadnych zmian konfiguracji dla składników zarządzania. Akcje podjęte podczas eskalacji stanu uprzywilejowanego mogą niekorzystnie wpłynąć na system lub spowodować, że system stanie się niedostępny.
 
-## <a name="sign-in-to-azure"></a>Zaloguj się w usłudze Azure
+## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
 
-Zaloguj się do witryny Azure Portal pod adresem [https://portal.azure.com](https://portal.azure.com).
+Zaloguj się do witryny Azure portal w [https://portal.azure.com](https://portal.azure.com).
 
 ## <a name="escalate-privileges"></a>Podwyższanie poziomu uprawnień
 
-1. Access the [AVS portal](access-cloudsimple-portal.md).
+1. Uzyskaj dostęp do [portalu CloudSimple](access-cloudsimple-portal.md).
 
-2. Open the **Resources** page, select the AVS Private Cloud for which you want to escalate privileges.
+2. Otwórz stronę **Zasoby,** wybierz chmurę prywatną, dla której chcesz eskalować uprawnienia.
 
-3. Near the bottom of the Summary page under **Change vSphere privileges**, click **Escalate**.
+3. U dołu strony Podsumowanie w obszarze **Zmienianie uprawnień vSphere**kliknij pozycję **Eskalacja**.
 
-    ![Change vSphere privilege](media/escalate-private-cloud-privilege.png)
+    ![Zmienianie uprawnień vSphere](media/escalate-private-cloud-privilege.png)
 
-4. Select the vSphere user type. Only `CloudOwner@cloudsimple.local` local user can be escalated.
+4. Wybierz typ użytkownika vSphere.  Tylko `CloudOwner@cloudsimple.local` użytkownik lokalny może być eskalowany.
 
-5. Select the escalate time interval from the drop-down. Choose the shortest period that will allow you to complete the task.
+5. Wybierz interwał czasu eskalacji z listy rozwijanej. Wybierz najkrótszy okres, który pozwoli Ci wykonać zadanie.
 
-6. Select the checkbox to confirm that you understand the risks.
+6. Zaznacz to pole wyboru, aby potwierdzić, że rozumiesz zagrożenia.
 
-    ![Escalate privilege dialog](media/escalate-private-cloud-privilege-dialog.png)
+    ![Okno dialogowe uprawnień Eskalacja](media/escalate-private-cloud-privilege-dialog.png)
 
 7. Kliknij przycisk **OK**.
 
-8. The escalation process can take a couple of minutes. Po zakończeniu kliknij przycisk **OK**.
+8. Proces eskalacji może potrwać kilka minut. Po zakończeniu kliknij przycisk **OK**.
 
-The privilege escalation begins and lasts until the end of the selected interval. You can sign in to your AVS private cloud vCenter to do administrative tasks.
+Eskalacja uprawnień rozpoczyna się i trwa do końca wybranego interwału.  Możesz zalogować się do sieci vCenter chmury prywatnej, aby wykonywać zadania administracyjne.
 
 > [!IMPORTANT]
-> Tylko jeden użytkownik może mieć uprawnienia eskalacji. You must de-escalate the user's privileges before you can escalate another user's privileges.
+> Tylko jeden użytkownik może mieć eskalacji uprawnień.  Należy de-eskalacji uprawnień użytkownika, zanim będzie można eskalować uprawnienia innego użytkownika.
 
 > [!CAUTION]
-> Nowi użytkownicy muszą zostać dodani tylko *do chmury-właściciel-Grupa*, *chmura-Global-Cluster-admin-* Group, Cloud- *Global-Storage-Administrator-* Group, *Cloud-Global-Network-admin* -Group  Użytkownicy dodani do grupy *administratorzy* zostaną usunięci automatycznie.  Tylko konta usług należy dodać do grupy *administratorzy* , a konta usług nie mogą być używane do logowania się do interfejsu użytkownika sieci Web vSphere.
+> Nowi użytkownicy muszą być dodani tylko do *grupy Cloud-Owner,* *Cloud-Global-Cluster-Admin-Group*, *Cloud-Global-Storage-Admin-Group*, *Cloud-Global-Network-Admin-Group* lub *Cloud-Global-VM-Admin-Group*.  Użytkownicy dodani do grupy *Administratorzy* zostaną automatycznie usunięci.  Tylko konta usług muszą być dodawane do grupy *administratorów* i kont usług nie mogą być używane do logowania się do interfejsu użytkownika sieci web vSphere.
 
-## <a name="extend-privilege-escalation"></a>Extend privilege escalation
+## <a name="extend-privilege-escalation"></a>Rozszerzanie eskalacji uprawnień
 
-If you require additional time to complete your tasks, you can extend the privilege escalation period. Choose the additional escalate time interval that allows you to complete the administrative tasks.
+Jeśli potrzebujesz dodatkowego czasu na wykonanie zadań, możesz przedłużyć okres eskalacji uprawnień.  Wybierz dodatkowy interwał czasu eskalacji, który umożliwia wykonywanie zadań administracyjnych.
 
-1. On the **Resources** > **AVS Private Clouds** in the AVS portal, select the AVS Private Cloud for which you want to extend privilege escalation.
+1. W **witrynie Chmury** > **prywatne** zasobów w portalu CloudSimple wybierz chmurę prywatną, dla której chcesz rozszerzyć eskalację uprawnień.
 
-2. Near the bottom of the Summary tab, click **Extend privilege escalation**.
+2. U dołu karty Podsumowanie kliknij pozycję **Rozszerz eskalację uprawnień**.
 
-    ![Extend privilege escalation](media/de-escalate-private-cloud-privilege.png)
+    ![Rozszerzanie eskalacji uprawnień](media/de-escalate-private-cloud-privilege.png)
 
-3. Select an escalate time interval from the drop-down. Review the new escalation end time.
+3. Wybierz interwał czasu eskalacji z listy rozwijanej. Przejrzyj nowy czas zakończenia eskalacji.
 
-4. Click **Save** to extend the interval.
+4. Kliknij **przycisk Zapisz,** aby wydłużyć interwał.
 
-## <a name="de-escalate-privileges"></a>De-escalate privileges
+## <a name="de-escalate-privileges"></a>Uprawnienia do deeskalacji
 
-Once your administrative tasks are complete, you should de-escalate your privileges. 
+Po zakończeniu zadań administracyjnych należy odeskalować swoje uprawnienia.  
 
-1. On the **Resources** > **AVS Private Clouds** in the AVS portal, select the AVS Private Cloud for which you want to de-escalate privileges.
+1. W **witrynie Chmury** > **prywatne** zasobów w portalu CloudSimple wybierz chmurę prywatną, dla której chcesz deeskalować uprawnienia.
 
-2. Click **De-escalate**.
+2. Kliknij pozycję **Deeskalacji**.
 
 3. Kliknij przycisk **OK**.
 
 > [!IMPORTANT]
-> To avoid any errors, sign out of vCenter and sign in again after de-escalating privileges.
+> Aby uniknąć błędów, wyloguj się z vCenter i zaloguj się ponownie po deeskalacji uprawnień.
 
 ## <a name="next-steps"></a>Następne kroki
 
-* [Set up vCenter identity sources to use Active Directory](https://docs.azure.cloudsimple.com/set-vcenter-identity/)
-* Install backup solution to [backup workload virtual machines](https://docs.azure.cloudsimple.com/backup-workloads-veeam/)
+* [Konfigurowanie źródeł tożsamości vCenter do używania usługi Active Directory](https://docs.azure.cloudsimple.com/set-vcenter-identity/)
+* Instalowanie rozwiązania do tworzenia kopii zapasowych na [maszynach wirtualnych z obciążeniem kopii zapasowej](https://docs.azure.cloudsimple.com/backup-workloads-veeam/)

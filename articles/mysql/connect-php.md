@@ -1,18 +1,18 @@
 ---
-title: Nawiązywanie połączenia przy użyciu języka PHP-Azure Database for MySQL
+title: Połącz się przy użyciu php - usługa Azure Database for MySQL
 description: Ten przewodnik Szybki start zawiera kilka przykładów kodu PHP, których można używać do nawiązywania połączeń z danymi usługi Azure Database for MySQL i wykonywania zapytań względem nich.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.custom: mvc
 ms.topic: quickstart
-ms.date: 12/02/2019
-ms.openlocfilehash: b8923000b0bbc75e6d96b1b27a1154ef8ff87f24
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 3/18/2020
+ms.openlocfilehash: 58683cb6eb74fcc3bc2f90245d6f76ef65bdf2e6
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74770717"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80067917"
 ---
 # <a name="azure-database-for-mysql-use-php-to-connect-and-query-data"></a>Usługa Azure Database for MySQL: nawiązywanie połączeń z danymi i wykonywanie na nich zapytań za pomocą języka PHP
 Ten przewodnik Szybki start przedstawia sposób nawiązywania połączeń z usługą Azure Database for MySQL przy użyciu aplikacji języka [PHP](https://secure.php.net/manual/intro-whatis.php). Pokazano w nim, jak używać instrukcji języka SQL w celu wysyłania zapytań o dane oraz wstawiania, aktualizowania i usuwania danych w bazie danych. W tym temacie założono, że wiesz już, jak opracowywać zawartość za pomocą języka PHP, i dopiero zaczynasz pracę z usługą Azure Database for MySQL.
@@ -26,16 +26,16 @@ Ten przewodnik Szybki start jako punktu wyjścia używa zasobów utworzonych w j
 Zainstaluj język PHP na własnym serwerze lub utwórz [aplikację internetową](../app-service/overview.md), która zawiera język PHP.
 
 ### <a name="macos"></a>MacOS
-- Pobierz [język PHP w wersji 7.1.4](https://secure.php.net/downloads.php).
-- Zainstaluj język PHP i zapoznaj się z [podręcznikiem języka PHP](https://secure.php.net/manual/install.macosx.php) w celu przeprowadzenia dalszej konfiguracji.
+- Pobierz [za darmo PHP 7.1.4 wersja](https://secure.php.net/downloads.php).
+- Zainstaluj PHP i zapoznaj się z [instrukcją PHP,](https://secure.php.net/manual/install.macosx.php) aby uzyskać dalszą konfigurację.
 
 ### <a name="linux-ubuntu"></a>Linux (Ubuntu)
-- Pobierz [bezpieczny, niestanowiący zagrożenia język PHP w wersji 7.1.4 (x64)](https://secure.php.net/downloads.php).
-- Zainstaluj język PHP i zapoznaj się z [podręcznikiem języka PHP](https://secure.php.net/manual/install.unix.php) w celu przeprowadzenia dalszej konfiguracji.
+- Pobierz [za darmo PHP 7.1.4 wersja bezpiecznych dla wątków (x64).](https://secure.php.net/downloads.php)
+- Zainstaluj PHP i zapoznaj się z [instrukcją PHP,](https://secure.php.net/manual/install.unix.php) aby uzyskać dalszą konfigurację.
 
 ### <a name="windows"></a>Windows
-- Pobierz [bezpieczny, niestanowiący zagrożenia język PHP w wersji 7.1.4 (x64)](https://windows.php.net/download#php-7.1).
-- Zainstaluj język PHP i zapoznaj się z [podręcznikiem języka PHP](https://secure.php.net/manual/install.windows.php) w celu przeprowadzenia dalszej konfiguracji.
+- Pobierz [za darmo PHP 7.1.4 wersja bezpiecznych dla wątków (x64).](https://windows.php.net/download#php-7.1)
+- Zainstaluj PHP i zapoznaj się z [instrukcją PHP,](https://secure.php.net/manual/install.windows.php) aby uzyskać dalszą konfigurację.
 
 ## <a name="get-connection-information"></a>Pobieranie informacji o połączeniu
 Pobierz informacje o połączeniu potrzebne do nawiązania połączenia z usługą Azure Database for MySQL. Potrzebna jest w pełni kwalifikowana nazwa serwera i poświadczenia logowania.

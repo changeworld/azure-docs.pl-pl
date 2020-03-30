@@ -1,7 +1,7 @@
 ---
-title: Dane w Azure Machine Learning
+title: Dane w usłudze Azure Machine Learning
 titleSuffix: Azure Machine Learning
-description: Dowiedz się, w jaki sposób Azure Machine Learning współdziałać z danymi i jak są wykorzystywane przez eksperymenty uczenia maszynowego.
+description: Dowiedz się, jak usługa Azure Machine Learning bezpiecznie łączy się z danymi i używa tych danych do zadań uczenia maszynowego.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,46 +9,52 @@ ms.topic: conceptual
 ms.reviewer: nibaccam
 author: nibaccam
 ms.author: nibaccam
-ms.date: 12/09/2019
-ms.openlocfilehash: a2af1e87ce7b17183ae09fb02b2652a04f585e84
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.date: 03/20/2020
+ms.openlocfilehash: 982c9c9eadec4403c8116430e1e25092de99f1d9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79270266"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80128489"
 ---
-# <a name="data-access-in-azure-machine-learning"></a>Dostęp do danych w Azure Machine Learning
+# <a name="data-access-in-azure-machine-learning"></a>Dostęp do danych w usłudze Azure Machine Learning
 
-Ten artykuł zawiera informacje o rozwiązaniach do zarządzania danymi i integracji z programem Azure Machine Learning. W tym artykule przyjęto założenie, że utworzono już [konto usługi Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal) i [usługę Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-introduction).
+Usługa Azure Machine Learning ułatwia łączenie się z danymi w chmurze.  Zapewnia warstwę abstrakcji nad podstawową usługą magazynu, dzięki czemu można bezpiecznie uzyskać dostęp i pracować z danymi bez konieczności pisania kodu specyficznego dla typu magazynu. Usługa Azure Machine Learning udostępnia również następujące funkcje danych:
 
-Gdy wszystko będzie gotowe do użycia danych w magazynie, zalecamy
+*    Przechowywanie wersji i śledzenie linii danych
+*    Etykietowanie danych 
+*    Monitorowanie dryfu danych
+*    Współdziałanie z pandami i ramami danych iskier i spark
 
-1. Utwórz magazyn danych Azure Machine Learning.
-2. Z tego magazynu danych Utwórz zestaw danych Azure Machine Learning. 
-3. Użyj tego zestawu danych w doświadczeniu uczenia maszynowego, wykonując jedną z tych opcji 
-    1. Instalowanie jej w celu obliczeń na potrzeby szkolenia modelu
+## <a name="data-workflow"></a>Przepływ pracy danych
 
-        **ORAZ** 
+Gdy będziesz gotowy do użycia danych w rozwiązaniu magazynu opartego na chmurze, zalecamy następujący przepływ pracy dostarczania danych. Ten przepływ pracy zakłada, że masz [konto magazynu platformy Azure](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal) i dane w usłudze magazynu opartego na chmurze na platformie Azure. 
 
-    1. Korzystanie z niego bezpośrednio w Azure Machine Learning rozwiązaniach, takich jak zautomatyzowany przebiegi eksperymentów maszynowych (zautomatyzowany ML), potoki uczenia maszynowego i [projektant Azure Machine Learning](concept-designer.md).
-4. Utwórz monitory zestawu danych dla wyjściowego zestawu danych modelu, aby wykryć dryf danych. 
-5. Jeśli wykryto dryfowanie danych, zaktualizuj wejściowy zestaw danych i odpowiednio ponownie naszkol model.
+1. Utwórz [magazyn danych usługi Azure Machine Learning,](#datastores) aby przechowywać informacje o połączeniu z magazynem platformy Azure.
 
-Na poniższym diagramie przedstawiono wizualizację tego zalecanego przepływu pracy dostępu do danych.
+2. Z tego magazynu danych utwórz [zestaw danych usługi Azure Machine Learning,](#datasets) aby wskazać określone pliki w podstawowej przestrzeni dyskowej. 
 
-![Diagram koncepcji danych](./media/concept-data/data-concept-diagram.svg)
+3. Aby użyć tego zestawu danych w eksperymencie uczenia maszynowego, można
+    1. Zamontuj go do celu obliczeniowego eksperymentu do szkolenia modelu.
 
-## <a name="access-data-in-storage"></a>Dostęp do danych w magazynie
+        **Lub** 
 
-Aby uzyskać dostęp do danych na koncie magazynu, Azure Machine Learning oferuje magazyny i zestawy danych. Usługa datastores odpowiada na pytanie: jak bezpiecznie łączyć się z danymi w usłudze Azure Storage? Magazyny danych zapewniają warstwę abstrakcji za pośrednictwem usługi magazynu. Ta pomoc w zakresie zabezpieczeń i łatwego dostępu do magazynu, ponieważ informacje o połączeniu są przechowywane w magazynie danych i nie są dostępne w skryptach. 
+    1. Korzystaj z niego bezpośrednio w rozwiązaniach usługi Azure Machine Learning, takich jak zautomatyzowane testy uczenia maszynowego (zautomatyzowane uczenia maszynowego), potoki uczenia maszynowego lub [projektant usługi Azure Machine Learning.](concept-designer.md)
 
-Zestawy danych odpowiadają na pytanie: jak uzyskać określone pliki danych w magazynie danych? Zestawy danych wskazują określony plik lub pliki w źródłowym magazynie, które mają być używane na potrzeby eksperymentu uczenia maszynowego. Razem magazyny danych i zestawy danych oferują bezpieczne, skalowalne i odtwarzalne przepływy pracy dostarczania dla zadań uczenia maszynowego.
+4. Tworzenie [monitorów zestawu danych](#data-drift) dla zestawu danych wyjściowych modelu w celu wykrycia dryfu danych. 
 
-### <a name="datastores"></a>Magazynów danych
+5. Jeśli zostanie wykryty dryft danych, zaktualizuj wejściowy zestaw danych i odpowiednio przeszkolij model.
 
-Magazyn danych Azure Machine Learning jest abstrakcją magazynu za pośrednictwem usług Azure Storage. [Zarejestruj i Utwórz magazyn](how-to-access-data.md) danych, aby łatwo połączyć się z kontem usługi Azure Storage i uzyskać dostęp do danych w podstawowych usługach Azure Storage.
+Poniższy diagram zawiera wizualną demonstrację tego zalecanego przepływu pracy.
 
-Obsługiwane usługi magazynu platformy Azure, które można zarejestrować jako magazyny danych:
+![Diagram koncepcyjny danych](./media/concept-data/data-concept-diagram.svg)
+
+## <a name="datastores"></a>Magazyny danych
+
+Magazyny danych usługi Azure Machine Learning bezpiecznie przechowują informacje o połączeniu z magazynem platformy Azure, więc nie trzeba go kodować w skryptach. [Zarejestruj się i utwórz magazyn danych,](how-to-access-data.md) aby łatwo połączyć się z kontem magazynu i uzyskać dostęp do danych w podstawowej usłudze magazynu platformy Azure. 
+
+Obsługiwane usługi magazynu opartego na chmurze na platformie Azure, które mogą być zarejestrowane jako magazyny danych:
+
 + Kontener obiektów blob platformy Azure
 + Udział plików platformy Azure
 + Azure Data Lake
@@ -58,64 +64,55 @@ Obsługiwane usługi magazynu platformy Azure, które można zarejestrować jako
 + System plików usługi Databricks
 + Azure Database for MySQL
 
-### <a name="datasets"></a>Zestawy danych
+## <a name="datasets"></a>Zestawy danych
 
-[Utwórz Azure Machine Learning zestaw danych](how-to-create-register-datasets.md) , aby współtworzyć dane w Twoich magazynach danych i spakować dane do obiektu, który można wykorzystywać do wykonywania zadań uczenia maszynowego. Zarejestruj zestaw danych w obszarze roboczym, aby udostępnić go i ponownie użyć w różnych eksperymentach bez złożonych danych.
+Zestawy danych usługi Azure Machine Learning są odwołaniami wskazującymi dane w usłudze magazynu. Nie są to kopie twoich danych, więc nie ponosi żadnych dodatkowych kosztów przechowywania. Aby wchodzić w interakcje z danymi w magazynie, [utwórz zestaw danych,](how-to-create-register-datasets.md) aby spakować dane do obiektu zużywalnej do zadań uczenia maszynowego. Zarejestruj zestaw danych w obszarze roboczym, aby udostępnić go i ponownie wykorzystać w różnych eksperymentach bez złożoności pozyskiwania danych.
 
-Zestawy danych mogą być tworzone na podstawie plików lokalnych, publicznych adresów URL, [otwartych zestawów danych platformy Azure](#open)lub określonych plików w magazynach danych. Aby utworzyć zestaw danych na podstawie Pandas pamięci Dataframe, Zapisz dane w lokalnym pliku, takim jak wolumin CSV, i Utwórz zestaw danych z tego pliku. Zbiory danych nie są kopiami, ale odwołują się do danych w usłudze Storage, więc nie są naliczane żadne dodatkowe koszty związane z magazynem. 
+Zestawy danych można tworzyć na podstawie plików lokalnych, publicznych adresów URL, [otwartych zestawów danych platformy Azure](https://azure.microsoft.com/services/open-datasets/)lub usług magazynu platformy Azure za pośrednictwem magazynów danych. Aby utworzyć zestaw danych z ramki danych pandas w pamięci, zapisz je w pliku lokalnym, takim jak parkiet, i utwórz zestaw danych z tego pliku.  
 
-Na poniższym diagramie przedstawiono, że jeśli nie masz usługi Azure Storage, możesz utworzyć zestaw danych bezpośrednio z plików lokalnych, publicznych adresów URL lub otwartego zestawu danych platformy Azure. Spowoduje to połączenie zestawu danych z domyślnym magazynem obiektów, który został automatycznie utworzony przy użyciu [obszaru roboczego Azure Machine Learning](concept-workspace.md)eksperymentu.
+Obsługujemy 2 typy zestawów danych: 
++ Zestaw [tabelaryczny](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py) reprezentuje dane w formacie tabelarycznym, analizując podany plik lub listę plików. Można załadować Zestaw danych tabelaryjskich do Pandas lub Spark DataFrame do dalszej manipulacji i oczyszczania. Aby uzyskać pełną listę formatów danych, z których można utworzyć zestawy danych tabelaryczne, zobacz [klasę TabularDatasetFactory](https://aka.ms/tabulardataset-api-reference).
 
-![Diagram koncepcji danych](./media/concept-data/dataset-workflow.svg)
++ [Zestaw danych zawiera](https://docs.microsoft.com/python/api/azureml-core/azureml.data.file_dataset.filedataset?view=azure-ml-py) odwołania do pojedynczych lub wielu plików w magazynach danych lub publicznych adresach URL. Pliki, do których nie można [pobierać lub montować,](how-to-train-with-datasets.md#option-2--mount-files-to-a-remote-compute-target) do których nie ma odwoływanych przez zestawy plików, można pobrać lub zainstalować do obiektu docelowego obliczeń.
 
 Dodatkowe możliwości zestawów danych można znaleźć w następującej dokumentacji:
 
-+ [Wersja i śledzenie](how-to-version-track-datasets.md) zestawu danych.
-+ [Monitoruj zestaw danych](how-to-monitor-datasets.md) , aby pomóc w wykrywaniu dryfowania danych.
-+  Aby uzyskać dokumentację dotyczącą dwóch typów zestawów danych, zobacz następujące tematy:
-    + [TabularDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py) reprezentuje dane w formacie tabelarycznym przez analizowanie dostarczonego pliku lub listy plików. Umożliwia zmaterializowania danych do Pandas lub Spark Dataframe w celu dalszej manipulacji i czyszczenia. Aby uzyskać pełną listę plików, z których można utworzyć TabularDatasets, zobacz [Klasa TabularDatasetFactory](https://aka.ms/tabulardataset-api-reference).
++ Linia zestawu danych [wersji i śledzenia.](how-to-version-track-datasets.md)
++ [Monitoruj zestaw danych,](how-to-monitor-datasets.md) aby pomóc w wykrywaniu dryfu danych.    
 
-    + [FileDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.file_dataset.filedataset?view=azure-ml-py) odwołuje się do jednego lub wielu plików w magazynach danych lub publicznych adresach URL. Za pomocą tej metody można pobrać lub zainstalować wybrane pliki do obiektu docelowego obliczeń jako obiekt FileDataset.
+## <a name="work-with-your-data"></a>Praca z danymi
 
-## <a name="work-with-your-data"></a>Pracuj z danymi
+Dzięki zestawom danych można wykonywać wiele zadań uczenia maszynowego dzięki bezproblemowej integracji z funkcjami usługi Azure Machine Learning. 
 
-Zestawy danych umożliwiają wykonywanie wielu zadań uczenia maszynowego poprzez bezproblemowe integrację z funkcjami Azure Machine Learning. 
-
-+ [Uczenie modeli uczenia maszynowego](how-to-train-with-datasets.md).
-+ Korzystanie z zestawów danych w 
++ Tworzenie [projektu etykietowania danych](#label).
++ Trenuj modele uczenia maszynowego:
      + [zautomatyzowane eksperymenty ML](how-to-use-automated-ml-for-ml-models.md)
-     + [Projektant](tutorial-designer-automobile-price-train-score.md#import-data) 
-+ Uzyskaj dostęp do zestawów danych do oceniania za pomocą wnioskowania wsadowego w [potokach uczenia maszynowego](how-to-create-your-first-pipeline.md).
-+ Utwórz [projekt etykietowania danych](#label).
-+ Skonfiguruj monitor zestawu danych na potrzeby wykrywania [dryfowania danych](#drift) .
-
-<a name="open"></a>
-
-## <a name="azure-open-datasets"></a>Zestawy danych licencji Azure Open
-
-[Otwarte zestawy danych platformy Azure](how-to-create-register-datasets.md#create-datasets-with-azure-open-datasets) mają nadzorowane zestawy danych, których można użyć do dodawania funkcji specyficznych dla scenariusza do rozwiązań uczenia maszynowego w celu uzyskania dokładniejszych modeli. Otwarte zestawy danych znajdują się w chmurze w Microsoft Azure i są zintegrowane z Azure Machine Learning. Możesz również uzyskać dostęp do zestawów danych za pomocą interfejsów API i używać ich w innych produktach, takich jak Power BI i Azure Data Factory.
-
-Otwarte zestawy danych platformy Azure obejmują dane z domeny publicznej na potrzeby pogodowych, spisu, świąt, bezpieczeństwa publicznego i lokalizacji, które ułatwiają uczenie modeli uczenia maszynowego i wzbogacanie rozwiązań predykcyjnych. Możesz również udostępnić publiczne zestawy danych na platformie Azure Otwórz zestaw danych.
+     + [projektant](tutorial-designer-automobile-price-train-score.md#import-data)
+     + [Notebooki](how-to-train-with-datasets.md)
+     + [Potoki usługi Azure Machine Learning](how-to-create-your-first-pipeline.md)
++ Dostęp do zestawów danych do oceniania z [wnioskowaniem wsadowym w](how-to-use-parallel-run-step.md) [potokach uczenia maszynowego](how-to-create-your-first-pipeline.md).
++ Skonfiguruj monitor zestawu danych do wykrywania [dryfu danych.](#drift)
 
 <a name="label"></a>
 
 ## <a name="data-labeling"></a>Etykietowanie danych
 
-Etykietowanie dużych ilości danych często było kłopotliwej w projektach uczenia maszynowego. Te ze składnikiem przetwarzania obrazów, takie jak Klasyfikacja obrazu lub wykrywanie obiektów, zwykle wymagają tysięcy obrazów i odpowiednich etykiet.
+Etykietowanie dużych ilości danych często było bólem głowy w projektach uczenia maszynowego. Osoby z komponentem widzenia komputerowego, takim jak klasyfikacja obrazów lub wykrywanie obiektów, zazwyczaj wymagają tysięcy obrazów i odpowiednich etykiet.
 
-Azure Machine Learning stanowi centralną lokalizację do tworzenia i monitorowania projektów etykietowania oraz zarządzania nimi. Etykietowanie projektów ułatwia koordynowanie danych, etykiet i członków zespołu, co pozwala efektywniej zarządzać zadaniami etykietowania. Obecnie obsługiwane zadania to klasyfikacja obrazów, wiele etykiet lub wiele klas oraz identyfikacja obiektów przy użyciu powiązanych pól.
+Usługa Azure Machine Learning zapewnia centralną lokalizację do tworzenia projektów etykietowania, zarządzania nimi i monitorowania ich. Projekty etykietowania pomagają koordynować dane, etykiety i członków zespołu, co pozwala na bardziej efektywne zarządzanie zadaniami etykietowania. Obecnie obsługiwane zadania to klasyfikacja obrazów, wieloznakowa lub wieloklasowa oraz identyfikacja obiektów przy użyciu ograniczonych pól.
 
-+ Utwórz [projekt etykietowania danych](how-to-create-labeling-projects.md)i wyjściowy zestaw danych do użycia w eksperymentach uczenia maszynowego.
+Utwórz [projekt etykietowania danych](how-to-create-labeling-projects.md)i wyśmij zestaw danych do użycia w eksperymentach uczenia maszynowego.
 
 <a name="drift"></a>
 
-## <a name="data-drift"></a>Dryfowanie danych
+## <a name="data-drift"></a>Dryft danych
 
-W kontekście uczenia maszynowego, dryfowanie danych to zmiana danych wejściowych modelu, które prowadzą do obniżenia wydajności modelu. Jest to jedna z najważniejszych przyczyn, które pogorszą się w miarę upływu czasu, dlatego monitorowanie dryfowania danych pomaga wykrywać problemy z wydajnością modelu.
-Zapoznaj się z artykułem [Tworzenie monitora zestawu danych](how-to-monitor-datasets.md) , aby dowiedzieć się więcej na temat wykrywania i generowania alertów dotyczących dryfowania danych w nowych danych w zestawie danych.
+W kontekście uczenia maszynowego dryft danych jest zmiana danych wejściowych modelu, która prowadzi do obniżenia wydajności modelu. Jest to jeden z głównych powodów, dla których dokładność modelu pogarsza się w czasie, dzięki czemu monitorowanie dryfu danych pomaga wykrywać problemy z wydajnością modelu.
+
+Zobacz [artykuł Tworzenie monitora zestawu danych,](how-to-monitor-datasets.md) aby dowiedzieć się więcej o wykrywaniu i ostrzeganiu przed dryfem danych na nowych danych w zestawie danych.
 
 ## <a name="next-steps"></a>Następne kroki 
 
-+ Utwórz zestaw danych w programie Azure Machine Learning Studio lub z zestawem SDK języka Python, [wykonując następujące kroki.](how-to-create-register-datasets.md)
-+ Wypróbuj przykłady szkoleniowe dotyczące zestawu danych, korzystając z naszych [przykładowych notesów](https://aka.ms/dataset-tutorial).
-+ Aby zapoznać się z przykładami dryfowania danych, zobacz ten [Samouczek dotyczący dryfowania danych](https://aka.ms/datadrift-notebook).
++ Utwórz zestaw danych w studio usługi Azure Machine Learning lub przy użyciu zestawu SDK języka [Python, wykonując następujące kroki.](how-to-create-register-datasets.md)
++ Wypróbuj przykłady szkoleń z zestawem danych za pomocą [naszych przykładowych notesów.](https://aka.ms/dataset-tutorial)
++ Przykłady dryfu danych można znaleźć w tym [samouczku dotyczących dryfu danych](https://aka.ms/datadrift-notebook).

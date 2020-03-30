@@ -1,243 +1,243 @@
 ---
 title: Architektura & kluczowe pojęcia
 titleSuffix: Azure Machine Learning
-description: Poznaj architekturę, terminy, koncepcje i przepływy pracy, które składają się Azure Machine Learning.
+description: Dowiedz się więcej o architekturze, terminach, pojęciach i przepływach pracy, które składają się na usługę Azure Machine Learning.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.author: larryfr
 author: Blackmist
-ms.date: 12/27/2019
-ms.custom: seodec18
-ms.openlocfilehash: 39e6e9d500a398fd34b8b61727dee8bf11da7430
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.date: 03/17/2020
+ms.custom: seoapril2019, seodec18
+ms.openlocfilehash: f779781eee81bf85f6420e5bae6b0feb62680b8d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79270487"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80064187"
 ---
-# <a name="how-azure-machine-learning-works-architecture-and-concepts"></a>Jak działa Azure Machine Learning: architektura i koncepcje
+# <a name="how-azure-machine-learning-works-architecture-and-concepts"></a>Jak działa usługa Azure Machine Learning: architektura i koncepcje
 
-Poznaj architekturę, koncepcje i przepływ pracy dla Azure Machine Learning. Główne składniki usługi i ogólny przepływ pracy związane z korzystaniem z usługi są pokazane na poniższym diagramie:
+Dowiedz się więcej o architekturze, koncepcjach i przepływie pracy dla usługi Azure Machine Learning. Główne składniki usługi i ogólny przepływ pracy dla korzystania z usługi są pokazane na poniższym diagramie:
 
-![Azure Machine Learning architektura i przepływ pracy](./media/concept-azure-machine-learning-architecture/workflow.png)
+![Architektura i przepływ pracy usługi Azure Machine Learning](./media/concept-azure-machine-learning-architecture/workflow.png)
 
 ## <a name="workflow"></a>Przepływ pracy
 
-Przepływ pracy modelu uczenia maszynowego jest zwykle następujący:
+Przepływ pracy modelu uczenia maszynowego zazwyczaj następuje następująca sekwencja:
 
-1. **Trasy**
-    + Opracowywanie skryptów szkoleniowych dotyczących uczenia maszynowego w języku **Python** lub przy użyciu projektanta wizualnego.
-    + Utwórz i skonfiguruj **obiekt docelowy obliczeń**.
-    + **Prześlij skrypty** do skonfigurowanego obiektu docelowego obliczeń do uruchomienia w tym środowisku. Podczas szkoleń skrypty mogą odczytywać dane z **magazynu**danych lub zapisywać do niego. Rekordy wykonywania są zapisywane jako **uruchomienia** w **obszarze roboczym** i pogrupowane w obszarze **eksperymenty**.
+1. **Pociąg**
+    + Tworzenie skryptów szkoleniowych uczenia maszynowego w **pythonie**, **R**lub z projektantem wizualnym.
+    + Tworzenie i **konfigurowanie celu obliczeniowego**.
+    + **Prześlij skrypty** do skonfigurowanego obiektu docelowego obliczeń, aby działały w tym środowisku. Podczas szkolenia skrypty mogą odczytywać z magazynów danych lub zapisywać je w **magazynach danych.** Dzienniki i dane wyjściowe wyprodukowane podczas szkolenia są zapisywane jako **przebiegi** w **obszarze roboczym** i grupowane w ramach **eksperymentów.**
 
-1. **Pakiet** — po znalezieniu zadowalającego przebiegu Zarejestruj trwały model w **rejestrze modelu**.
+1. **Pakiet** — po znalezieniu zadowalającego uruchomienia zarejestruj utrwalony model w **rejestrze modelu**.
 
-1. **Sprawdź Poprawność** - **Zbadaj eksperyment** rejestrowanych metryk z bieżącego i przeszłego uruchomienia. Jeśli metryki nie wskazują żądanego wyniku, pętla Wróć do kroku 1 i wykonuje iterację w skryptach.
+1. **Sprawdź poprawność****kwerendy eksperymentu** dla zarejestrowanych metryk z bieżących i przeszłych przebiegów. -  Jeśli metryki nie wskazują pożądanego rezultatu, wróć do kroku 1 i iteruj w skryptach.
 
-1. **Wdróż** — opracowuje skrypt oceniania, który używa modelu i **wdraża model** jako **usługę sieci Web** na platformie Azure lub na **IoT Edge urządzenie**.
+1. **Wdrażanie** — opracowanie skryptu oceniającego, który używa modelu i **wdrażanie modelu** jako **usługi sieci web** na platformie Azure lub na urządzeniu usługi **IoT Edge.**
 
-1. **Monitor** -monitoruje **dryf danych** między zestawem danych szkoleń i danymi wnioskowania wdrożonego modelu. W razie potrzeby Wróć do kroku 1, aby ponownie przeprowadzić uczenie modelu przy użyciu nowych danych szkoleniowych.
+1. **Monitor** — **monitorowanie dryfu danych** między zestawem danych szkolenia i danymi wnioskowania wdrożonego modelu. W razie potrzeby należy ponownie przejść do kroku 1, aby przeszkolić model z nowymi danymi treningowymi.
 
-## <a name="tools-for-azure-machine-learning"></a>Narzędzia dla Azure Machine Learning
+## <a name="tools-for-azure-machine-learning"></a>Narzędzia do uczenia maszynowego platformy Azure
 
-Użyj tych narzędzi dla Azure Machine Learning:
+Użyj tych narzędzi dla usługi Azure Machine Learning:
 
-+  Korzystanie z usługi w dowolnym środowisku języka Python z [zestawem SDK Azure Machine Learning dla języka Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py).
-+ Korzystanie z usługi w dowolnym środowisku R z [zestawem SDK Azure Machine Learning dla języka r](https://azure.github.io/azureml-sdk-for-r/reference/index.html).
-+ Automatyzuj działania uczenia maszynowego za pomocą [interfejsu wiersza polecenia Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/reference-azure-machine-learning-cli).
-+ Użyj programu [Azure Machine Learning Designer (wersja zapoznawcza)](concept-designer.md) , aby wykonać etapy przepływu pracy bez pisania kodu.
++  Interakcja z usługą w dowolnym środowisku języka Python za pomocą [zestawu SDK usługi Azure Machine Learning dla języka Python.](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)
++ Interakcja z usługą w dowolnym środowisku języka R za pomocą [sdk usługi Azure Machine Learning dla języka R](https://azure.github.io/azureml-sdk-for-r/reference/index.html).
++ Zautomatyzuj swoje działania związane z uczeniem maszynowym za pomocą [interfejsu wiersza polecenia usługi Azure Machine Learning.](https://docs.microsoft.com/azure/machine-learning/reference-azure-machine-learning-cli)
++ Użyj [projektanta usługi Azure Machine Learning (wersja zapoznawcza),](concept-designer.md) aby wykonać kroki przepływu pracy bez pisania kodu.
 
 
 > [!NOTE]
-> Chociaż w tym artykule opisano warunki i pojęcia używane przez Azure Machine Learning, nie zdefiniowano warunków i koncepcji dla platformy Azure. Aby uzyskać więcej informacji na temat terminologii platformy Azure, zobacz [słownik Microsoft Azure](https://docs.microsoft.com/azure/azure-glossary-cloud-terminology).
+> Mimo że w tym artykule zdefiniowano terminy i pojęcia używane przez usługę Azure Machine Learning, nie definiuje terminów i pojęć platformy Azure. Aby uzyskać więcej informacji na temat terminologii platformy Azure, zobacz [słowniczek platformy Microsoft Azure](https://docs.microsoft.com/azure/azure-glossary-cloud-terminology).
 
 ## <a name="glossary"></a>Słownik
 
 * [Działanie](#activities)
-* [Obszary](#workspaces)
+* [Workspace](#workspaces)
     * [Eksperymenty](#experiments)
         * [Run](#runs) 
             * [Uruchom konfigurację](#run-configurations)
-            * [Zdjęcie](#snapshots)
-            * [Śledzenie git](#github-tracking-and-integration)
-            * [Rejestrować](#logging)
-    * [Potoki ML](#ml-pipelines)
-    * [Przykładów](#models)
-        * [Wiejski](#environments)
+            * [Migawka](#snapshots)
+            * [Śledzenie gitów](#github-tracking-and-integration)
+            * [Rejestrowanie](#logging)
+    * [Potoki uczenia maszynowego](#ml-pipelines)
+    * [Modele](#models)
+        * [Środowiska](#environments)
         * [Skrypt szkoleniowy](#training-scripts)
-        * [Szacowania](#estimators)
-    * [Punktów końcowych](#endpoints)
+        * [Estymatorów](#estimators)
+    * [Punkty końcowe](#endpoints)
         * [Usługa sieci Web](#web-service-endpoint)
         * [Moduły IoT](#iot-module-endpoints)
-    * [& Magazynów danych](#datasets-and-datastores)
-    * [Cele obliczeń](#compute-targets)
+    * [Zestaw danych & magazyny danych](#datasets-and-datastores)
+    * [Docelowe obiekty obliczeniowe](#compute-targets)
 
 ### <a name="activities"></a>Działania
 
-Działanie reprezentuje długotrwałej operacji. Następujące operacje są przykłady działań:
+Działanie reprezentuje długotrwałą operację. Następujące operacje są przykładami działań:
 
-* Tworzenie lub usuwanie obliczeniowego elementu docelowego
-* Uruchomienie skryptu na obliczeniowego elementu docelowego
+* Tworzenie lub usuwanie obiektu docelowego obliczeń
+* Uruchamianie skryptu w docelowych obliczeniach
 
-Działania mogą udostępniać powiadomienia za pomocą zestawu SDK lub internetowego interfejsu użytkownika, dzięki czemu można łatwo monitorować postęp tych operacji.
+Działania mogą dostarczać powiadomienia za pośrednictwem sdk lub interfejsu użytkownika sieci web, dzięki czemu można łatwo monitorować postęp tych operacji.
 
 ### <a name="workspaces"></a>Obszary robocze
 
-[Obszar roboczy](concept-workspace.md) jest zasobem najwyższego poziomu dla Azure Machine Learning. Zapewnia centralne miejsce do pracy ze wszystkimi artefaktami tworzonymi podczas korzystania z Azure Machine Learning. Obszar roboczy można udostępniać innym osobom. Aby uzyskać szczegółowy opis obszarów roboczych, zobacz [co to jest obszar roboczy Azure Machine Learning?](concept-workspace.md)
+[Obszar roboczy](concept-workspace.md) jest zasobem najwyższego poziomu dla usługi Azure Machine Learning. Zapewnia scentralizowane miejsce do pracy ze wszystkimi artefaktami, które można utworzyć podczas korzystania z usługi Azure Machine Learning. Obszar roboczy można udostępniać innym osobom. Aby uzyskać szczegółowy opis obszarów roboczych, zobacz [Co to jest obszar roboczy usługi Azure Machine Learning?](concept-workspace.md).
 
 ### <a name="experiments"></a>Eksperymenty
 
-Eksperyment to grupa wielu przebiegów z określonego skryptu. Zawsze należy do obszaru roboczego. Po przesłaniu przebiegu można podać nazwę eksperymentu. Informacje dotyczące uruchomienia są przechowywane w ramach tego eksperymentu. Jeśli przesyłasz przebieg i określisz nieistniejącą nazwę eksperymentu, zostanie automatycznie utworzony nowy eksperyment z nowo określoną nazwą.
+Eksperyment jest grupowanie wielu przebiegów z określonego skryptu. Zawsze należy do obszaru roboczego. Podczas przesyłania przebiegu podajesz nazwę eksperymentu. Informacje dotyczące przebiegu są przechowywane w ramach tego eksperymentu. Jeśli prześlesz przebieg i określisz nazwę eksperymentu, która nie istnieje, zostanie automatycznie utworzony nowy eksperyment z tą nowo określoną nazwą.
 
-Przykład korzystania z eksperymentu można znaleźć w [samouczku: uczenie pierwszego modelu](tutorial-1st-experiment-sdk-train.md).
+Na przykład użycia eksperymentu zobacz [Samouczek: Trenuj swój pierwszy model](tutorial-1st-experiment-sdk-train.md).
 
-### <a name="runs"></a>Wyczerpani
+### <a name="runs"></a>Uruchamianie
 
-Uruchomienie to pojedyncze wykonanie skryptu szkoleniowego. Eksperyment zwykle zawiera wiele uruchomień.
+Przebieg jest pojedynczym wykonaniem skryptu szkoleniowego. Eksperyment zazwyczaj będzie zawierać wiele przebiegów.
 
-Azure Machine Learning rejestruje wszystkie uruchomienia i zapisuje następujące informacje w eksperymentie:
+Usługa Azure Machine Learning rejestruje wszystkie przebiegi i przechowuje następujące informacje w eksperymencie:
 
-* Metadane dotyczące przebiegu (Sygnatura czasowa, czas trwania itd.)
-* Metryki rejestrowane przez skrypt
-* Pliki wyjściowe, które są zbierane przez eksperyment lub jawnie przekazane przez użytkownika
-* Migawka katalogu, który zawiera skrypty, przed przebiegu
+* Metadane dotyczące przebiegu (sygnatura czasowa, czas trwania itd.)
+* Metryki zarejestrowane przez skrypt
+* Pliki wyjściowe, które są automatycznie czesane przez eksperyment lub jawnie przesłane przez Ciebie
+* Migawka katalogu zawierającego skrypty przed uruchomieniem
 
-Podczas przesyłania skryptu w celu uczenia modelu należy utworzyć przebieg. Uruchom może mieć zero lub więcej uruchomień podrzędnych. Na przykład uruchomienie najwyższego poziomu może mieć dwa uruchomienia podrzędne, z których każdy może mieć własne uruchomienie podrzędne.
+Uruchom podczas przesyłania skryptu do szkolenia modelu. Przebieg może mieć zero lub więcej uruchomień podrzędnych. Na przykład przebieg najwyższego poziomu może mieć dwa podrzędne przebiegi, z których każdy może mieć własny przebieg podrzędny.
 
-### <a name="run-configurations"></a>Uruchom konfiguracje
+### <a name="run-configurations"></a>Uruchamianie konfiguracji
 
-Konfiguracja przebiegu to zestaw instrukcji, które definiują sposób uruchamiania skryptu w określonym elemencie docelowym obliczeń. Konfiguracja obejmuje szeroki zestaw definicji zachowań, takich jak użycie istniejącego środowiska Python lub użycie środowiska Conda, które jest kompilowane ze specyfikacji.
+Konfiguracja uruchamiania to zestaw instrukcji, który definiuje sposób uruchamiania skryptu w określonym miejscu docelowym obliczeń. Konfiguracja zawiera szeroki zestaw definicji zachowań, takich jak czy używać istniejącego środowiska Python lub używać środowiska Conda, który jest zbudowany na podstawie specyfikacji.
 
-Konfigurację przebiegu można utrwalić do pliku znajdującego się w katalogu, który zawiera skrypt szkoleniowy lub który może być skonstruowany jako obiekt w pamięci i użyty do przesłania uruchomienia.
+Konfiguracja uruchamiania może być utrwalona w pliku wewnątrz katalogu, który zawiera skrypt szkolenia lub może być skonstruowany jako obiekt w pamięci i używany do przesyłania uruchomienia.
 
-Na przykład Uruchom konfiguracje, zobacz [Wybieranie i używanie elementu docelowego obliczeń do uczenia modelu](how-to-set-up-training-targets.md).
+Na przykład uruchom konfiguracje, zobacz [Wybieranie i używanie celu obliczeniowego do trenowania modelu](how-to-set-up-training-targets.md).
 
 ### <a name="snapshots"></a>Migawki
 
-W przypadku przesyłania przebiegu Azure Machine Learning kompresuje katalog zawierający skrypt jako plik zip i wysyła go do obiektu docelowego obliczeń. Następnie plik zip zostanie wyodrębniony, a skrypt zostanie uruchomiony w tym miejscu. Usługa Azure Machine Learning są także przechowywane w pliku zip jako migawka jako część rekordu uruchomienia. Każda osoba mająca dostęp do obszaru roboczego można przeglądać rekordu uruchomienia i pobrać migawki.
+Po przesłaniu uruchomienia usługa Azure Machine Learning kompresuje katalog zawierający skrypt jako plik zip i wysyła go do obiektu docelowego obliczeń. Plik zip jest następnie wyodrębniany, a skrypt jest tam uruchamiany. Usługa Azure Machine Learning przechowuje również plik zip jako migawkę jako część rekordu przebiegu. Każdy, kto ma dostęp do obszaru roboczego, może przeglądać rekord biegu i pobierać migawkę.
 
 > [!NOTE]
-> Aby zapobiec dołączeniu niepotrzebnych plików do migawki, należy wykonać ignorowanie pliku (. gitignore lub. amlignore). Umieść ten plik w katalogu migawek i Dodaj do niego nazwy plików. Plik. amlignore używa tej samej [składni i wzorców co plik. gitignore](https://git-scm.com/docs/gitignore). Jeśli istnieją oba pliki, plik. amlignore ma pierwszeństwo.
+> Aby zapobiec uwzględnieniu niepotrzebnych plików w migawce, należy wykonać plik ignorowania (.gitignore lub .amlignore). Umieść ten plik w katalogu Migawka i dodaj nazwy plików, które mają być w nim ignorowane. Plik .amlignore używa tej samej [składni i wzorców co plik gitignore](https://git-scm.com/docs/gitignore). Jeśli oba pliki istnieją, ma pierwszeństwo plik .amlignore.
 
-### <a name="github-tracking-and-integration"></a>Śledzenie i integracja z usługą GitHub
+### <a name="github-tracking-and-integration"></a>Śledzenie i integracja GitHub
 
-Po rozpoczęciu szkolenia w przypadku, gdy katalog źródłowy jest lokalnym repozytorium git, informacje o repozytorium są przechowywane w historii uruchamiania. Działa to z przebiegami przesłanymi przy użyciu potoku szacowania, ML lub uruchamiania skryptu. Działa również w przypadku przebiegów przesłanych z zestawu SDK lub interfejsu wiersza polecenia Machine Learning.
+Po uruchomieniu przebiegu szkolenia, w którym katalog źródłowy jest lokalnym repozytorium Git, informacje o repozytorium są przechowywane w historii uruchamiania. Działa to z uruchomieniami przesłane przy użyciu estymatora, potoku ML lub uruchomienia skryptu. Działa również dla uruchomień przesłanych z SDK lub machine learning CLI.
 
-Aby uzyskać więcej informacji, zobacz Integracja z usługą [git dla Azure Machine Learning](concept-train-model-git-integration.md).
+Aby uzyskać więcej informacji, zobacz [Integracja git dla usługi Azure Machine Learning](concept-train-model-git-integration.md).
 
 ### <a name="logging"></a>Rejestrowanie
 
-Podczas opracowywania rozwiązania Użyj zestawu SDK języka Python Azure Machine Learning w skrypcie języka Python, aby rejestrować arbitralne metryki. Po uruchomieniu Zbadaj metryki, aby określić, czy przebieg został utworzony przez model, który chcesz wdrożyć.
+Podczas opracowywania rozwiązania użyj zestawu SDK języka Python usługi Azure Machine Learning w skrypcie języka Python, aby rejestrować dowolne metryki. Po uruchomieniu kwerendy metryki, aby ustalić, czy uruchomienie wyprodukował model, który chcesz wdrożyć.
 
-### <a name="ml-pipelines"></a>Potokach uczenia Maszynowego
+### <a name="ml-pipelines"></a>Rurociągi ML
 
-Potoki uczenia maszynowego umożliwiają tworzenie przepływów pracy, które łączą etapy uczenia maszynowego, oraz zarządzanie nimi. Na przykład potok może obejmować przygotowanie danych, szkolenie modeli, wdrożenie modelu i etapy wnioskowania/oceniania. Każda faza może obejmować wiele kroków, z których każdy może uruchamiane w różnych celów obliczeń. 
+Potoki uczenia maszynowego są używane do tworzenia przepływów pracy i zarządzania nimi, które łączą fazy uczenia maszynowego. Na przykład potok może obejmować przygotowanie danych, szkolenie modelu, wdrażanie modelu i fazy wnioskowania/oceniania. Każda faza może obejmować wiele kroków, z których każdy może działać bez nadzoru w różnych obiektów docelowych obliczeń. 
 
-Kroki potoku są wielokrotnego użytku i można je uruchomić bez ponownego uruchomienia poprzednich kroków, jeśli dane wyjściowe tych kroków nie uległy zmianie. Na przykład możesz ponownie przeprowadzić uczenie modelu bez ponownego uruchamiania kosztownych kroków przygotowywania danych, jeśli dane nie uległy zmianie. Potoki umożliwiają również analitykom danych współpracę podczas pracy nad osobnymi obszarami przepływu pracy uczenia maszynowego.
+Kroki potoku są wielokrotnego użycia i można uruchomić bez ponownego uruchamiania poprzednich kroków, jeśli dane wyjściowe tych kroków nie uległy zmianie. Na przykład można przeszkolić model bez ponownego uruchamiania kosztownych kroków przygotowania danych, jeśli dane nie uległy zmianie. Potoki umożliwiają również analitykom danych współpracę podczas pracy nad oddzielnymi obszarami przepływu pracy uczenia maszynowego.
 
-Aby uzyskać więcej informacji na temat potoków uczenia maszynowego za pomocą tej usługi, zobacz [potoki i Azure Machine Learning](concept-ml-pipelines.md).
+Aby uzyskać więcej informacji na temat potoków uczenia maszynowego za pomocą tej usługi, zobacz [Potoki i uczenie maszynowe platformy Azure.](concept-ml-pipelines.md)
 
 ### <a name="models"></a>Modele
 
-W najprostszym modelem jest fragmentem kodu, który przyjmuje dane wejściowe i generuje dane wyjściowe. Tworzenie modelu uczenia maszynowego obejmuje algorytmu, wybierając dostarczanie danych i dostosowywanie hiperparametrów. Szkolenie jest procesem iteracyjnym, tworzącego trenowanego modelu, który hermetyzuje, jakie zakorzenione podczas procesu uczenia modelu.
+W najprostszym modelu jest fragment kodu, który pobiera dane wejściowe i generuje dane wyjściowe. Tworzenie modelu uczenia maszynowego polega na wybraniu algorytmu, udostępnieniu go z danymi i dostrajaniu hiperparametrów. Szkolenie jest iteracyjny proces, który tworzy wyszkolony model, który hermetyzuje, co model dowiedział się podczas procesu szkolenia.
 
-Model jest generowany przez uruchomienie w usłudze Azure Machine Learning. Można również użyć modelu, który jest przeszkolony poza Azure Machine Learning. Model można zarejestrować w obszarze roboczym Azure Machine Learning.
+Model jest produkowany przez uruchomienie w usłudze Azure Machine Learning. Można również użyć modelu, który jest przeszkolony poza usługi Azure Machine Learning. Model można zarejestrować w obszarze roboczym usługi Azure Machine Learning.
 
-Azure Machine Learning to struktura niezależny od. Podczas tworzenia modelu można użyć dowolnej popularnej platformy uczenia maszynowego, takiej jak Scikit-Learning, XGBoost, PyTorch, TensorFlow i łańcucha.
+Usługa Azure Machine Learning jest niezależna od struktury. Podczas tworzenia modelu można użyć dowolnej popularnej struktury uczenia maszynowego, takiej jak Scikit-learn, XGBoost, PyTorch, TensorFlow i Chainer.
 
-Aby zapoznać się z przykładem szkoleń dotyczących modelu przy użyciu Scikit — uczenie i szacowania, zobacz [Samouczek: uczenie modelu klasyfikacji obrazów za pomocą Azure Machine Learning](tutorial-train-models-with-aml.md).
+Na przykład szkolenia modelu przy użyciu Scikit-learn i estymatora, zobacz [Samouczek: Szkolenie modelu klasyfikacji obrazu z usługi Azure Machine Learning](tutorial-train-models-with-aml.md).
 
-**Rejestr modelu** śledzi wszystkie modele w obszarze roboczym Azure Machine Learning.
+**Rejestr modelu** śledzi wszystkie modele w obszarze roboczym usługi Azure Machine Learning.
 
-Modele są identyfikowane przez nazwę i wersję. Za każdym razem, gdy rejestrujesz model o takiej samej nazwie jak istniejący, rejestr założono, że jest to nowa wersja. Wersja jest zwiększana, a nowy model jest zarejestrowany pod tą samą nazwą.
+Modele są identyfikowane według nazwy i wersji. Za każdym razem, gdy rejestrujesz model o takiej samej nazwie jak istniejący, rejestr zakłada, że jest to nowa wersja. Wersja jest zwiększana, a nowy model jest zarejestrowany pod tą samą nazwą.
 
-Po zarejestrowaniu modelu można podać dodatkowe Tagi metadanych, a następnie użyć tagów podczas wyszukiwania modeli.
+Podczas rejestrowania modelu można podać dodatkowe tagi metadanych, a następnie użyć tagów podczas wyszukiwania modeli.
 
 > [!TIP]
-> Zarejestrowany model to logiczny kontener dla co najmniej jednego pliku, który składa się z modelu. Na przykład jeśli masz model, który jest przechowywany w wielu plikach, możesz zarejestrować je jako jeden model w obszarze roboczym Azure Machine Learning. Po zarejestrowaniu można pobrać lub wdrożyć zarejestrowany model i odebrać wszystkie zarejestrowane pliki.
+> Zarejestrowany model jest kontenerem logicznym dla jednego lub więcej plików, które tworzą model. Na przykład jeśli masz model, który jest przechowywany w wielu plikach, można zarejestrować je jako pojedynczy model w obszarze roboczym usługi Azure Machine Learning. Po rejestracji można pobrać lub wdrożyć zarejestrowany model i otrzymać wszystkie zarejestrowane pliki.
 
 Nie można usunąć zarejestrowanego modelu, który jest używany przez aktywne wdrożenie.
 
-Aby zapoznać się z przykładem rejestrowania modelu, zobacz [uczenie modelu klasyfikacji obrazów przy użyciu Azure Machine Learning](tutorial-train-models-with-aml.md).
+Na przykład rejestrowania modelu zobacz [Szkolenie modelu klasyfikacji obrazów za pomocą usługi Azure Machine Learning.](tutorial-train-models-with-aml.md)
 
 ### <a name="environments"></a>Środowiska
 
-Środowiska usługi Azure ML służą do określania konfiguracji (Docker/Python/Spark/itp.) służącej do tworzenia odtwarzalnego środowiska na potrzeby przygotowywania danych, szkolenia modeli i modelowania. Są one zarządzane i obsługiwane przez program w obszarze roboczym Azure Machine Learning, które umożliwiają powtarzalny, z inspekcją i przenośne przepływy pracy uczenia maszynowego między różnymi obiektami docelowymi obliczeniowymi.
+Środowiska usługi Azure ML są używane do określania konfiguracji (Docker / Python / Spark / etc.) używane do tworzenia powtarzalnego środowiska do przygotowywania danych, szkolenia modelu i obsługi modelu. Są one zarządzane i wersjonowane jednostki w obszarze roboczym usługi Azure Machine Learning, które umożliwiają odtwarzalne, inspekcji i przenośne przepływy pracy uczenia maszynowego w różnych obiektach docelowych obliczeń.
 
-Możesz użyć obiektu środowiska na lokalnym obliczeniu do opracowania skryptu szkoleniowego i ponownie użyć tego samego środowiska na Azure Machine Learning obliczeń dla szkolenia modeli w dużej skali, a nawet wdrożyć model przy użyciu tego samego środowiska. 
+Obiekt środowiska na komputerze lokalnym można użyć do opracowania skryptu szkoleniowego, ponownego użycia tego samego środowiska w usłudze Azure Machine Learning Compute do szkolenia modelu na dużą skalę, a nawet wdrożenia modelu w tym samym środowisku. 
 
-Dowiedz się [, jak utworzyć i zarządzać środowiskiem ml wielokrotnego użytku](how-to-use-environments.md) na potrzeby szkolenia i wnioskowania.
+Dowiedz [się, jak tworzyć środowisko ml wielokrotnego użytku i zarządzać nim](how-to-use-environments.md) do celów szkoleniowych i wnioskowania.
 
-### <a name="training-scripts"></a>Skryptów szkolenia
+### <a name="training-scripts"></a>Skrypty szkoleniowe
 
-Do nauczenia modelu, można określić katalog, który zawiera skrypt szkolenia i skojarzone pliki. Należy również określić nazwę eksperymentu, która jest używana do przechowywania informacji zebranych podczas szkolenia. Podczas szkolenia cały katalog jest kopiowany do środowiska szkoleniowego (elementu docelowego obliczeń), a skrypt określony przez konfigurację uruchamiania jest uruchamiany. Migawka katalogu znajduje się również w obszarze eksperymentu, w obszarze roboczym.
+Aby wyszkolić model, należy określić katalog zawierający skrypt szkoleniowy i skojarzone pliki. Należy również określić nazwę eksperymentu, która jest używana do przechowywania informacji, które są zbierane podczas szkolenia. Podczas szkolenia cały katalog jest kopiowany do środowiska szkoleniowego (obiekt docelowy obliczeń) i uruchamiany jest skrypt określony przez konfigurację uruchamiania. Migawka katalogu jest również przechowywana w ramach eksperymentu w obszarze roboczym.
 
-Aby zapoznać się z przykładem, zobacz [Samouczek: uczenie modelu klasyfikacji obrazów przy użyciu Azure Machine Learning](tutorial-train-models-with-aml.md).
+Na przykład zobacz [Samouczek: Trenuj model klasyfikacji obrazów za pomocą usługi Azure Machine Learning](tutorial-train-models-with-aml.md).
 
-### <a name="estimators"></a>Szacowania
+### <a name="estimators"></a>Estymatorów
 
-Aby ułatwić uczenie modeli przy użyciu popularnych struktur, Klasa szacowania umożliwia łatwe konstruowanie konfiguracji uruchomieniowych. Można utworzyć i użyć generycznej [szacowania](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator?view=azure-ml-py) do przesyłania skryptów szkoleniowych, które korzystają z wybranej platformy szkoleniowej (na przykład scikit-Learning).
+Aby ułatwić szkolenie modelu z popularnych struktur, estymator klasy pozwala łatwo konstruować konfiguracje uruchamiania. Można utworzyć i używać ogólnego [estymatora](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator?view=azure-ml-py) do przesyłania skryptów szkoleniowych, które używają dowolnej struktury uczenia się wybierzesz (takich jak scikit-learn).
 
-W przypadku zadań PyTorch, TensorFlow i łańcucha, Azure Machine Learning również udostępnia odpowiednie [PyTorch](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.pytorch?view=azure-ml-py), [TensorFlow](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py)i [łańcucha](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py) szacowania, aby uprościć korzystanie z tych platform.
+W przypadku zadań PyTorch, TensorFlow i Chainer usługa Azure Machine Learning udostępnia również odpowiednie estymatory [PyTorch,](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.pytorch?view=azure-ml-py) [TensorFlow](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py)i [Chainer,](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py) aby uprościć korzystanie z tych struktur.
 
 Aby uzyskać więcej informacji zobacz następujące artykuły:
 
-* [Uczenie modeli ml z szacowania](how-to-train-ml-models.md).
-* [Pytorch modele uczenia głębokiego na dużą skalę w Azure Machine Learning](how-to-train-pytorch.md).
-* [Uczenie i rejestrowanie modeli TensorFlow na dużą skalę przy użyciu Azure Machine Learning](how-to-train-tensorflow.md).
-* [Uczenie i rejestrowanie modeli łańcucha na dużą skalę przy użyciu Azure Machine Learning](how-to-train-chainer.md).
+* [Trenuj modele ML z estymatorami](how-to-train-ml-models.md).
+* [Trenuj modele uczenia głębokiego Pytorch na dużą skalę dzięki usłudze Azure Machine Learning.](how-to-train-pytorch.md)
+* [Trenuj i rejestruj modele TensorFlow na dużą skalę za pomocą usługi Azure Machine Learning.](how-to-train-tensorflow.md)
+* [Trenuj i rejestruj modele Chainer na dużą skalę dzięki usłudze Azure Machine Learning.](how-to-train-chainer.md)
 
 ### <a name="endpoints"></a>Punkty końcowe
 
-Punkt końcowy to tworzenie wystąpienia modelu w usłudze sieci Web, która może być hostowana w chmurze lub module IoT na potrzeby wdrożeń zintegrowanych urządzeń.
+Punkt końcowy to wystąpienie modelu do usługi sieci web, która może być hostowana w chmurze lub moduł IoT dla zintegrowanych wdrożeń urządzeń.
 
 #### <a name="web-service-endpoint"></a>Punkt końcowy usługi sieci Web
 
-Podczas wdrażania modelu jako usługi sieci Web punkt końcowy można wdrożyć na Azure Container Instances, usłudze Azure Kubernetes lub FPGA. Usługę można utworzyć z modelu, skryptu i skojarzonych plików. Są one umieszczane w podstawowym obrazie kontenera, który zawiera środowisko wykonawcze dla modelu. Obraz zawiera punkt końcowy HTTP o zrównoważonym obciążeniu, który odbiera żądania oceniania wysyłane do usługi sieci Web.
+Podczas wdrażania modelu jako usługi sieci web punkt końcowy można wdrożyć w wystąpieniach kontenera platformy Azure, usłudze Azure Kubernetes lub układach FPGA. Usługę można utworzyć na podstawie modelu, skryptu i skojarzonych plików. Są one umieszczane w obrazie kontenera podstawowego, który zawiera środowisko wykonywania dla modelu. Obraz ma zbilansowany obciążeniem punkt końcowy HTTP, który odbiera żądania oceniania, które są wysyłane do usługi sieci web.
 
-Platforma Azure pomaga monitorować usługę sieci Web, zbierając Application Insights dane telemetryczne lub model telemetrii, jeśli wybrano opcję włączenia tej funkcji. Dane telemetryczne są dostępne tylko dla Ciebie i są przechowywane w wystąpieniach Application Insights i konta magazynu.
+Platforma Azure ułatwia monitorowanie usługi sieci web przez zbieranie danych telemetrycznych usługi Application Insights lub danych telemetrycznych modelu, jeśli wybrano włączenie tej funkcji. Dane telemetryczne są dostępne tylko dla Ciebie i są przechowywane w wystąpieniach konta usługi Application Insights i magazynu.
 
 Jeśli włączono automatyczne skalowanie, platforma Azure automatycznie skaluje wdrożenie.
 
-Aby zapoznać się z przykładem wdrażania modelu jako usługi sieci Web, zobacz [Wdrażanie modelu klasyfikacji obrazów w Azure Container Instances](tutorial-deploy-models-with-aml.md).
+Na przykład wdrażania modelu jako usługi sieci web, zobacz [Wdrażanie modelu klasyfikacji obrazu w wystąpieniach kontenera platformy Azure.](tutorial-deploy-models-with-aml.md)
 
 #### <a name="iot-module-endpoints"></a>Punkty końcowe modułu IoT
 
-Wdrożony punkt końcowy modułu IoT to kontener platformy Docker, który obejmuje model i skojarzony skrypt lub aplikację oraz wszelkie dodatkowe zależności. Te moduły są wdrażane przy użyciu Azure IoT Edge na urządzeniach brzegowych.
+Wdrożony punkt końcowy modułu IoT to kontener platformy Docker, który zawiera model i skojarzony skrypt lub aplikację oraz wszelkie dodatkowe zależności. Wdrożyć te moduły przy użyciu usługi Azure IoT Edge na urządzeniach brzegowych.
 
-Jeśli włączono monitorowanie, platforma Azure zbiera dane telemetryczne z modelu w module Azure IoT Edge. Dane telemetryczne są dostępne tylko dla Ciebie i są przechowywane w wystąpieniu konta magazynu.
+Jeśli włączono monitorowanie, platforma Azure zbiera dane telemetryczne z modelu wewnątrz modułu usługi Azure IoT Edge. Dane telemetryczne są dostępne tylko dla Ciebie i są przechowywane w wystąpieniu konta magazynu.
 
-Azure IoT Edge zapewnia, że moduł jest uruchomiony, i monitoruje urządzenie, które je obsługuje.
+Usługa Azure IoT Edge zapewnia, że moduł jest uruchomiony i monitoruje urządzenie, które go hostuje.
 
 
-### <a name="compute-instance"></a>Wystąpienie obliczeniowe (wersja zapoznawcza)
+### <a name="compute-instance-preview"></a><a name="compute-instance"></a>Instancji obliczeń (wersja zapoznawcza)
 
-**Wystąpienie obliczeniowe Azure Machine Learning** (dawniej jest maszyną wirtualną) to w pełni zarządzana stacja robocza oparta na chmurze, która obejmuje wiele narzędzi i środowisk zainstalowanych na potrzeby uczenia maszynowego. Wystąpienia obliczeniowe mogą służyć jako element docelowy obliczeń dla zadań szkoleniowych i inferencing. W przypadku dużych zadań [Azure Machine Learning klastrów obliczeniowych](how-to-set-up-training-targets.md#amlcompute) z możliwościami skalowania wielu węzłów jest lepszym rozwiązaniem docelowym obliczeń.
+**Wystąpienie obliczeniowe usługi Azure Machine Learning** (dawniej maszyna wirtualna notesu) to w pełni zarządzana stacja robocza oparta na chmurze, która zawiera wiele narzędzi i środowisk zainstalowanych dla uczenia maszynowego. Wystąpienia obliczeniowe mogą służyć jako cel obliczeniowy dla zadań szkoleniowych i wnioskowania. W przypadku dużych zadań [klastry obliczeniowe usługi Azure Machine Learning](how-to-set-up-training-targets.md#amlcompute) z możliwościami skalowania wielu węzłów są lepszym wyborem docelowym obliczeń.
 
 Dowiedz się więcej o [wystąpieniach obliczeniowych](concept-compute-instance.md).
 
-### <a name="datasets-and-datastores"></a>Zestawy danych i magazyny datastores
+### <a name="datasets-and-datastores"></a>Zestawy danych i magazyny danych
 
-**Azure Machine Learning zestawy** danych (wersja zapoznawcza) ułatwiają uzyskiwanie dostępu i pracę z danymi. Zestawy danych zarządzają danymi w różnych scenariuszach, takich jak szkolenia modeli i tworzenie potoku. Za pomocą zestawu SDK Azure Machine Learning można uzyskać dostęp do magazynu bazowego, eksplorować dane i zarządzać cyklem życia różnych definicji zestawu danych.
+**Zestawy danych usługi Azure Machine Learning** (wersja zapoznawcza) ułatwiają dostęp do danych i pracę z nim. Zestawy danych zarządzają danymi w różnych scenariuszach, takich jak szkolenie modelu i tworzenie potoku. Za pomocą zestawu SDK usługi Azure Machine Learning można uzyskać dostęp do magazynu bazowego, eksplorować dane i zarządzać cyklem życia różnych definicji zestawu danych.
 
-Zestawy danych udostępniają metody pracy z danymi w popularnych formatach, takich jak używanie `from_delimited_files()` lub `to_pandas_dataframe()`.
+Zestawy danych zawierają metody pracy z danymi w popularnych `from_delimited_files()` `to_pandas_dataframe()`formatach, takich jak używanie lub .
 
-Aby uzyskać więcej informacji, zobacz [Tworzenie i Rejestrowanie zestawów danych Azure Machine Learning](how-to-create-register-datasets.md).  Aby uzyskać więcej przykładów użycia zestawów danych, zobacz [przykładowe notesy](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/work-with-data/datasets).
+Aby uzyskać więcej informacji, zobacz [Tworzenie i rejestrowanie zestawów danych usługi Azure Machine Learning](how-to-create-register-datasets.md).  Aby uzyskać więcej przykładów użycia zestawów danych, zobacz [przykładowe notesy](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/work-with-data/datasets).
 
-**Magazyn** danych to Abstrakcja magazynu przez konto usługi Azure Storage. Magazyn danych może używać kontenera obiektów blob platformy Azure lub udziału plików platformy Azure jako magazynu zaplecza. Każdy obszar roboczy ma domyślny magazyn danych i można zarejestrować dodatkowe magazyny danych. Użyj interfejsu API zestawu SDK języka Python lub wiersza polecenia Azure Machine Learning, aby przechowywać i pobierać pliki z magazynu danych.
+**Magazyn danych** to abstrakcja magazynu za pomocą konta magazynu platformy Azure. Magazyn danych można użyć kontenera obiektów blob platformy Azure lub udziału plików platformy Azure jako magazynu zaplecza. Każdy obszar roboczy ma domyślny magazyn danych i można zarejestrować dodatkowe magazyny danych. Użyj interfejsu API zestawów SDK języka Python lub interfejsu wiersza polecenia usługi Azure Machine Learning do przechowywania i pobierania plików z magazynu danych.
 
 ### <a name="compute-targets"></a>Docelowe obiekty obliczeniowe
 
-[Obiekt docelowy obliczeń](concept-compute-target.md) pozwala określić zasób obliczeniowy służący do uruchamiania skryptu szkoleniowego lub hostowania wdrożenia usługi. Ta lokalizacja może być maszyną lokalną lub zasobem obliczeniowym opartym na chmurze.
+Obiekt [docelowy obliczeń](concept-compute-target.md) umożliwia określenie zasobu obliczeniowego, w którym uruchomisz skrypt szkoleniowy lub hostujesz wdrożenie usługi. Ta lokalizacja może być komputer lokalny lub zasób obliczeniowy oparty na chmurze.
 
-Dowiedz się więcej o [dostępnych celach obliczeniowych na potrzeby szkolenia i wdrażania](concept-compute-target.md).
+Dowiedz się więcej o [dostępnych celach obliczeniowych dla szkoleń i wdrażania.](concept-compute-target.md)
 
 ### <a name="next-steps"></a>Następne kroki
 
-Aby rozpocząć pracę z Azure Machine Learning, zobacz:
+Aby rozpocząć korzystanie z usługi Azure Machine Learning, zobacz:
 
-* [Co to jest Azure Machine Learning?](overview-what-is-azure-ml.md)
-* [Tworzenie obszaru roboczego Azure Machine Learning](how-to-manage-workspace.md)
-* [Samouczek (część 1): uczenie modelu](tutorial-train-models-with-aml.md)
+* [Co to jest usługa Azure Machine Learning?](overview-what-is-azure-ml.md)
+* [Tworzenie obszaru roboczego usługi Azure Machine Learning](how-to-manage-workspace.md)
+* [Samouczek (część 1): Trenuj model](tutorial-train-models-with-aml.md)

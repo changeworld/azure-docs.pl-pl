@@ -1,78 +1,74 @@
 ---
 title: Zbieranie & analizowanie dzienników zasobów
-description: Rejestruj i Analizuj zdarzenia dziennika zasobów dla Azure Container Registry takich jak uwierzytelnianie, wypychanie obrazów i ściąganie obrazów.
+description: Rejestrowanie i analizowanie zdarzeń dziennika zasobów dla rejestru kontenerów platformy Azure, takich jak uwierzytelnianie, wypychanie obrazów i ściąganie obrazów.
 ms.topic: article
 ms.date: 01/03/2020
-ms.openlocfilehash: 72d03149cd24636ba2086dfaaff0dbba16d30f1e
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 00f9468721126bd166051df47cec1596356e9b54
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75748003"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79409647"
 ---
-# <a name="azure-container-registry-logs-for-diagnostic-evaluation-and-auditing"></a>Dzienniki Azure Container Registry na potrzeby oceny i inspekcji diagnostyki
+# <a name="azure-container-registry-logs-for-diagnostic-evaluation-and-auditing"></a>Dzienniki rejestru kontenerów platformy Azure do oceny diagnostycznej i inspekcji
 
-W tym artykule wyjaśniono, jak zbierać dane dziennika dla usługi Azure Container Registry przy użyciu funkcji programu [Azure monitor](../azure-monitor/overview.md). Azure Monitor zbiera [dzienniki zasobów](../azure-monitor/platform/platform-logs-overview.md) (wcześniej nazywane *dziennikami diagnostycznymi*) dla zdarzeń sterowanych przez użytkownika w rejestrze. Zbieraj dane i korzystaj z nich w celu zaspokajania potrzeb, takich jak:
+W tym artykule wyjaśniono, jak zbierać dane dziennika dla rejestru kontenerów platformy Azure przy użyciu funkcji [usługi Azure Monitor.](../azure-monitor/overview.md) Usługa Azure Monitor zbiera [dzienniki zasobów](../azure-monitor/platform/platform-logs-overview.md) (dawniej nazywane *dziennikami diagnostycznymi)* dla zdarzeń opartych na użytkownikach w rejestrze. Zbieraj i konsuj te dane, aby zaspokoić potrzeby, takie jak:
 
 * Inspekcja zdarzeń uwierzytelniania rejestru w celu zapewnienia bezpieczeństwa i zgodności 
 
-* Zapewnij kompletną aktywność dla artefaktów rejestru, takich jak zdarzenia ściągania i ściągania, dzięki czemu można zdiagnozować problemy operacyjne z rejestrem 
+* Podaj pełny dziennik aktywności na artefaktach rejestru, takich jak zdarzenia ściągania i ściągania, aby można było zdiagnozować problemy operacyjne z rejestrem 
 
-Zbieranie danych dzienników zasobów przy użyciu Azure Monitor może pociągnąć za sobą dodatkowe koszty. Zobacz [cennik Azure monitor](https://azure.microsoft.com/pricing/details/monitor/). 
+Zbieranie danych dziennika zasobów przy użyciu usługi Azure Monitor może ponieść dodatkowe koszty. Zobacz [cennik usługi Azure Monitor](https://azure.microsoft.com/pricing/details/monitor/). 
 
-
-> [!IMPORTANT]
-> Ta funkcja jest obecnie dostępna w wersji zapoznawczej, a niektóre [ograniczenia](#preview-limitations) mają zastosowanie. Wersje zapoznawcze są udostępniane pod warunkiem udzielenia zgody na [dodatkowe warunki użytkowania][terms-of-use]. Niektóre cechy funkcji mogą ulec zmianie, zanim stanie się ona ogólnie dostępna.
-
-## <a name="preview-limitations"></a>Ograniczenia wersji zapoznawczej
+## <a name="repository-events"></a>Zdarzenia repozytorium
 
 Następujące zdarzenia na poziomie repozytorium dla obrazów i innych artefaktów są obecnie rejestrowane:
 
 * **Zdarzenia wypychania**
-* **Zdarzenia ściągnięcia**
-* **Zdarzenia UNTAG**
-* **Usuń zdarzenia** (w tym zdarzenia usuwania repozytorium)
+* **Zdarzenia ściągania**
+* **Untag wydarzenia**
+* **Usuwanie zdarzeń** (w tym zdarzeń usuwania repozytorium)
 
-Zdarzenia na poziomie repozytorium, które nie są obecnie rejestrowane: przeczyszczanie zdarzeń.
+Zdarzenia na poziomie repozytorium, które nie są aktualnie rejestrowane: przeczyszczanie zdarzeń.
 
 ## <a name="registry-resource-logs"></a>Dzienniki zasobów rejestru
 
-Dzienniki zasobów zawierają informacje wyemitowane przez zasoby platformy Azure opisujące ich wewnętrzną operację. W przypadku usługi Azure Container Registry dzienniki zawierają zdarzenia uwierzytelniania i na poziomie repozytorium przechowywane w poniższych tabelach. 
+Dzienniki zasobów zawierają informacje emitowane przez zasoby platformy Azure, które opisują ich wewnętrzną operację. W przypadku rejestru kontenerów platformy Azure dzienniki zawierają zdarzenia na poziomie uwierzytelniania i repozytorium przechowywane w poniższych tabelach. 
 
-* **ContainerRegistryLoginEvents** — zdarzenia i stan uwierzytelniania rejestru, w tym przychodzącą tożsamość i adres IP
-* **ContainerRegistryRepositoryEvents** — operacje, takie jak wypychanie i ściąganie dla obrazów i innych artefaktów w repozytoriach rejestru
-* **AzureMetrics** - [metryki rejestru kontenerów](../azure-monitor/platform/metrics-supported.md#microsoftcontainerregistryregistries) , takie jak agregowane liczby wypychania i ściągania.
+* **ContainerRegistryLoginEvents** — zdarzenia i stan uwierzytelniania rejestru, w tym tożsamość przychodząca i adres IP
+* **ContainerRegistryRepositoryEvents** — operacje, takie jak wypychanie i ściąganie obrazów i innych artefaktów w repozytoriach rejestru
+* **AzureMetrics** - [Metryki rejestru kontenera](../azure-monitor/platform/metrics-supported.md#microsoftcontainerregistryregistries) AzureMetrics, takie jak zagregowane liczby wypychania i ściągania.
 
 W przypadku operacji dane dziennika obejmują:
-  * Stan powodzenia lub niepowodzenia
-  * Sygnatury czasowe rozpoczęcia i zakończenia
+  * Stan sukcesu lub porażki
+  * Znaczniki czasu rozpoczęcia i zakończenia
 
-Oprócz dzienników zasobów platforma Azure udostępnia [Dziennik aktywności](../azure-monitor/platform/platform-logs-overview.md), pojedynczy rekord poziomu subskrypcji zdarzeń zarządzania platformy Azure, taki jak tworzenie lub usuwanie rejestru kontenerów.
+Oprócz dzienników zasobów platforma Azure udostępnia [dziennik aktywności](../azure-monitor/platform/platform-logs-overview.md), rekord na poziomie pojedynczej subskrypcji zdarzeń zarządzania platformy Azure, takich jak tworzenie lub usuwanie rejestru kontenerów.
 
-## <a name="enable-collection-of-resource-logs"></a>Włącz zbieranie dzienników zasobów
+## <a name="enable-collection-of-resource-logs"></a>Włączanie zbierania dzienników zasobów
 
-Kolekcja dzienników zasobów dla rejestru kontenerów nie jest domyślnie włączona. Jawnie Włącz ustawienia diagnostyczne dla każdego rejestru, który ma być monitorowany. Aby uzyskać opcje włączania ustawień diagnostycznych, zobacz [Tworzenie ustawień diagnostycznych w celu zbierania dzienników platformy i metryk na platformie Azure](../azure-monitor/platform/diagnostic-settings.md).
+Zbieranie dzienników zasobów dla rejestru kontenerów nie jest domyślnie włączona. Jawnie włącz ustawienia diagnostyczne dla każdego rejestru, który chcesz monitorować. Aby uzyskać opcje włączania ustawień diagnostycznych, zobacz [Tworzenie ustawień diagnostycznych w celu zbierania dzienników i metryk platformy na platformie Azure](../azure-monitor/platform/diagnostic-settings.md).
 
-Aby na przykład wyświetlić dzienniki i metryki dla rejestru kontenerów niemal w czasie rzeczywistym w Azure Monitor, Zbierz dzienniki zasobów w Log Analytics obszarze roboczym. Aby włączyć to ustawienie diagnostyczne przy użyciu Azure Portal:
+Na przykład, aby wyświetlić dzienniki i metryki dla rejestru kontenerów w czasie zbliżonym do rzeczywistego w usłudze Azure Monitor, należy zebrać dzienniki zasobów w obszarze roboczym usługi Log Analytics. Aby włączyć to ustawienie diagnostyczne przy użyciu witryny Azure portal:
 
-1. Jeśli nie masz jeszcze obszaru roboczego, Utwórz obszar roboczy przy użyciu [Azure Portal](../azure-monitor/learn/quick-create-workspace.md). Aby zminimalizować opóźnienie w zbieraniu danych, upewnij się, że obszar roboczy znajduje się w tym **samym regionie** co rejestr kontenerów.
-1. W portalu wybierz rejestr, a następnie wybierz pozycję **monitorowanie > Ustawienia diagnostyczne > Dodaj ustawienie diagnostyczne**.
-1. Wprowadź nazwę ustawienia, a następnie wybierz pozycję **Wyślij do log Analytics**.
+1. Jeśli nie masz jeszcze obszaru roboczego, utwórz obszar roboczy przy użyciu [portalu Azure.](../azure-monitor/learn/quick-create-workspace.md) Aby zminimalizować opóźnienia w zbieraniu danych, upewnij się, że obszar roboczy znajduje się w **tym samym regionie co** rejestr kontenerów.
+1. W portalu wybierz rejestr i wybierz pozycję **Monitorowanie > ustawienia diagnostyczne > Dodaj ustawienie diagnostyczne**.
+1. Wprowadź nazwę tego ustawienia i wybierz pozycję **Wyślij do usługi Log Analytics**.
 1. Wybierz obszar roboczy dzienników diagnostycznych rejestru.
 1. Wybierz dane dziennika, które chcesz zebrać, a następnie kliknij przycisk **Zapisz**.
 
-Na poniższej ilustracji przedstawiono tworzenie ustawień diagnostycznych dla rejestru przy użyciu portalu.
+Na poniższej ilustracji przedstawiono utworzenie ustawienia diagnostycznego dla rejestru za pomocą portalu.
 
 ![Włączanie ustawień diagnostycznych](media/container-registry-diagnostics-audit-logs/diagnostic-settings.png)
 
 > [!TIP]
-> Zbierz tylko potrzebne dane, Zrównoważ koszt i wymagania dotyczące monitorowania. Na przykład, jeśli konieczne jest tylko Inspekcja zdarzeń uwierzytelniania, należy wybrać tylko dziennik **ContainerRegistryLoginEvents** . 
+> Zbieraj tylko potrzebne dane, równoważąc koszty i potrzeby monitorowania. Na przykład jeśli wystarczy tylko inspekcji zdarzeń uwierzytelniania, wybierz tylko **ContainerRegistryLoginEvents** dziennika. 
 
-## <a name="view-data-in-azure-monitor"></a>Wyświetlanie danych w Azure Monitor
+## <a name="view-data-in-azure-monitor"></a>Wyświetlanie danych w usłudze Azure Monitor
 
-Po włączeniu zbierania dzienników diagnostycznych w Log Analytics może upłynąć kilka minut, zanim dane będą widoczne w Azure Monitor. Aby wyświetlić dane w portalu, wybierz rejestr, a następnie wybierz pozycję **monitorowanie > dzienników**. Wybierz jedną z tabel zawierających dane dla rejestru. 
+Po włączeniu zbierania dzienników diagnostycznych w usłudze Log Analytics może upłynąć kilka minut, aby dane były wyświetlane w usłudze Azure Monitor. Aby wyświetlić dane w portalu, wybierz rejestr i wybierz **pozycję Monitorowanie > dzienniki**. Wybierz jedną z tabel zawierającą dane dla rejestru. 
 
-Uruchom zapytania, aby wyświetlić dane. Dostępne są kilka przykładowych zapytań lub własne. Na przykład następujące zapytanie pobiera ostatnie 24 godziny danych z tabeli **ContainerRegistryRepositoryEvents** :
+Uruchom kwerendy, aby wyświetlić dane. Kilka przykładowych zapytań są dostarczane lub uruchomić własne. Na przykład następująca kwerenda pobiera najnowsze 24 godziny danych z **ContainerRegistryRepositoryEvents** tabeli:
 
 ```Kusto
 ContainerRegistryRepositoryEvents
@@ -83,11 +79,11 @@ Na poniższej ilustracji przedstawiono przykładowe dane wyjściowe:
 
 ![Dane dziennika zapytań](media/container-registry-diagnostics-audit-logs/azure-monitor-query.png)
 
-Aby zapoznać się z samouczkiem dotyczącym używania Log Analytics w Azure Portal, zobacz [wprowadzenie do Azure Monitor Log Analytics](../azure-monitor/log-query/get-started-portal.md)lub wypróbuj [środowisko demonstracyjne](https://portal.loganalytics.io/demo)log Analytics. 
+Aby zapoznać się z samouczkiem na temat korzystania z usługi Log Analytics w portalu Azure, zobacz [Wprowadzenie do usługi Azure Monitor Log Analytics](../azure-monitor/log-query/get-started-portal.md)lub wypróbuj środowisko [demo](https://portal.loganalytics.io/demo)usługi Log Analytics . 
 
-Aby uzyskać więcej informacji na temat zapytań dzienników, zobacz [Omówienie zapytań dzienników w Azure monitor](../azure-monitor/log-query/log-query-overview.md).
+Aby uzyskać więcej informacji na temat zapytań dziennika, zobacz [Omówienie zapytań dziennika w usłudze Azure Monitor](../azure-monitor/log-query/log-query-overview.md).
 
-### <a name="additional-query-examples"></a>Dodatkowe przykłady zapytań
+### <a name="additional-query-examples"></a>Przykłady dodatkowych zapytań
 
 #### <a name="100-most-recent-registry-events"></a>100 ostatnich zdarzeń rejestru
 
@@ -98,16 +94,14 @@ ContainerRegistryRepositoryEvents
 | project TimeGenerated, LoginServer , OperationName , Identity , Repository , DurationMs , Region , ResultType
 ```
 
-## <a name="additional-log-destinations"></a>Dodatkowe miejsca docelowe dzienników
+## <a name="additional-log-destinations"></a>Dodatkowe miejsca docelowe dziennika
 
-Oprócz wysyłania dzienników do Log Analytics lub jako alternatywy typowym scenariuszem jest wybranie konta usługi Azure Storage jako miejsca docelowego dziennika. Aby zarchiwizować dzienniki w usłudze Azure Storage, należy utworzyć konto magazynu przed włączeniem archiwizowania za pomocą ustawień diagnostycznych.
+Oprócz wysyłania dzienników do usługi Log Analytics lub alternatywnie typowym scenariuszem jest wybranie konta usługi Azure Storage jako miejsca docelowego dziennika. Aby zarchiwizować dzienniki w usłudze Azure Storage, utwórz konto magazynu przed włączeniem archiwizacji za pomocą ustawień diagnostycznych.
 
-Zdarzenia dzienników diagnostycznych można przesyłać strumieniowo do [centrum zdarzeń platformy Azure](../event-hubs/event-hubs-what-is-event-hubs.md). Usługa Event Hubs pozyskiwać miliony zdarzeń na sekundę, które można przetworzyć i zapisać za pomocą dowolnego dostawcy analiz w czasie rzeczywistym. 
+Można również przesyłać strumieniowo zdarzenia dziennika diagnostycznego do [usługi Azure Event Hub](../event-hubs/event-hubs-what-is-event-hubs.md). Centra zdarzeń mogą pozyskiwania milionów zdarzeń na sekundę, które można następnie przekształcić i przechowywać przy użyciu dowolnego dostawcy analizy w czasie rzeczywistym. 
 
 ## <a name="next-steps"></a>Następne kroki
 
-* Dowiedz się więcej na temat używania [log Analytics](../azure-monitor/log-query/get-started-portal.md) i tworzenia [zapytań dzienników](../azure-monitor/log-query/get-started-queries.md).
-* Zobacz [Omówienie dzienników platformy Azure](../azure-monitor/platform/platform-logs-overview.md) , aby dowiedzieć się więcej o dziennikach platformy, które są dostępne na różnych warstwach platformy Azure.
+* Dowiedz się więcej o korzystaniu z [usługi Log Analytics](../azure-monitor/log-query/get-started-portal.md) i tworzeniu [zapytań dziennika](../azure-monitor/log-query/get-started-queries.md).
+* Zobacz [Omówienie dzienników platformy Azure,](../azure-monitor/platform/platform-logs-overview.md) aby dowiedzieć się więcej o dziennikach platformy, które są dostępne w różnych warstwach platformy Azure.
 
-<!-- LINKS - External -->
-[terms-of-use]: https://azure.microsoft.com/support/legal/preview-supplemental-terms/

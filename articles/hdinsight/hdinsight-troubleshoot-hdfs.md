@@ -1,6 +1,6 @@
 ---
 title: Rozwiązywanie problemów z systemem plików HDFS w usłudze Azure HDInsight
-description: Uzyskaj odpowiedzi na często zadawane pytania dotyczące pracy z systemem plików HDFS i usługą Azure HDInsight.
+description: Uzyskaj odpowiedzi na często zadawane pytania dotyczące pracy z usługą HDFS i usługi Azure HDInsight.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,25 +9,25 @@ ms.topic: troubleshooting
 ms.date: 09/30/2019
 ms.custom: seodec18
 ms.openlocfilehash: 6b0a81a2f3af10a1e5ad60c6c33357a6e906ee47
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75895250"
 ---
-# <a name="troubleshoot-apache-hadoop-hdfs-by-using-azure-hdinsight"></a>Rozwiązywanie problemów z Apache Hadoop HDFS przy użyciu usługi Azure HDInsight
+# <a name="troubleshoot-apache-hadoop-hdfs-by-using-azure-hdinsight"></a>Rozwiązywanie problemów z systemem HDFS usługi Apache Hadoop za pomocą usługi Azure HDInsight
 
-Poznaj najważniejsze problemy i ich rozwiązania podczas pracy z ładunkiem rozproszony system plików (HDFS) w usłudze Apache Ambari. Aby zapoznać się z pełną listą poleceń, zobacz [Przewodnik po poleceniach](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HDFSCommands.html) [systemu plików HDFS i podręczniku](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/FileSystemShell.html)dotyczącego powłoki.
+Dowiedz się więcej o najważniejszych problemach i ich rozwiązaniach podczas pracy z ładunkami Rozproszonego Systemu Plików (HDFS) hadoop w Apache Ambari. Aby uzyskać pełną listę poleceń, zobacz [Przewodnik po poleceniach HDFS](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HDFSCommands.html) i [Przewodnik po skorupie systemu plików](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/FileSystemShell.html).
 
-## <a name="how-do-i-access-local-hdfs-from-inside-a-cluster"></a>Jak mogę uzyskać dostęp do lokalnego systemu plików HDFS z klastra?
+## <a name="how-do-i-access-the-local-hdfs-from-inside-a-cluster"></a><a name="how-do-i-access-local-hdfs-from-inside-a-cluster"></a>Jak uzyskać dostęp do lokalnego usługi HDFS z wewnątrz klastra?
 
 ### <a name="issue"></a>Problem
 
-Dostęp do lokalnego systemu plików HDFS z poziomu wiersza polecenia i kodu aplikacji zamiast programu przy użyciu magazynu obiektów blob platformy Azure lub Azure Data Lake Storage z klastra usługi HDInsight.
+Dostęp do lokalnego usługi HDFS z wiersza polecenia i kodu aplikacji, a nie przy użyciu magazynu obiektów Blob platformy Azure lub usługi Azure Data Lake Storage z wewnątrz klastra HDInsight.
 
 ### <a name="resolution-steps"></a>Kroki rozwiązywania problemów
 
-1. W wierszu polecenia Użyj `hdfs dfs -D "fs.default.name=hdfs://mycluster/" ...` dosłownie, jak w poniższym poleceniu:
+1. W wierszu polecenia `hdfs dfs -D "fs.default.name=hdfs://mycluster/" ...` użyj dosłownie, jak w następującym poleceniu:
 
     ```output
     hdfs dfs -D "fs.default.name=hdfs://mycluster/" -ls /
@@ -37,7 +37,7 @@ Dostęp do lokalnego systemu plików HDFS z poziomu wiersza polecenia i kodu apl
     drwx------   - hdiuser hdfs          0 2016-11-10 22:22 /user
     ```
 
-2. Z kodu źródłowego Użyj identyfikatora URI `hdfs://mycluster/` dosłownie, tak jak w przypadku następującej przykładowej aplikacji:
+2. Z kodu źródłowego użyj `hdfs://mycluster/` identyfikatora URI dosłownie, jak w poniższej przykładowej aplikacji:
 
     ```Java
     import java.io.IOException;
@@ -62,7 +62,7 @@ Dostęp do lokalnego systemu plików HDFS z poziomu wiersza polecenia i kodu apl
     }
     ```
 
-3. Uruchom skompilowany plik JAR (na przykład plik o nazwie `java-unit-tests-1.0.jar`) w klastrze usługi HDInsight przy użyciu następującego polecenia:
+3. Uruchom skompilowany plik jar (na `java-unit-tests-1.0.jar`przykład plik o nazwie) w klastrze HDInsight za pomocą następującego polecenia:
 
     ```apache
     hadoop jar java-unit-tests-1.0.jar JavaUnitTests
@@ -72,11 +72,11 @@ Dostęp do lokalnego systemu plików HDFS z poziomu wiersza polecenia i kodu apl
     hdfs://mycluster/tmp/hive/hive/a0be04ea-ae01-4cc4-b56d-f263baf2e314/inuse.lck
     ```
 
-## <a name="du"></a>jednostka bazy danych
+## <a name="du"></a>Du
 
-[-Du](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/FileSystemShell.html#du) polecenie wyświetla rozmiary plików i katalogów znajdujących się w danym katalogu lub długość pliku w przypadku, gdy jest tylko plikiem.
+Polecenie [-du](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/FileSystemShell.html#du) wyświetla rozmiary plików i katalogów zawartych w danym katalogu lub długość pliku w przypadku, gdy jest to tylko plik.
 
-Opcja `-s` generuje zagregowane podsumowanie długości plików, które są wyświetlane.  
+Opcja `-s` tworzy zbiorcze podsumowanie wyświetlanych długości plików.  
 Opcja `-h` formatuje rozmiary plików.
 
 Przykład:
@@ -86,9 +86,9 @@ hdfs dfs -du -s -h hdfs://mycluster/
 hdfs dfs -du -s -h hdfs://mycluster/tmp
 ```
 
-## <a name="rm"></a>RM
+## <a name="rm"></a>Rm
 
-Polecenie [-RM](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/FileSystemShell.html#rm) usuwa pliki określone jako argumenty.
+Polecenie [-rm](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/FileSystemShell.html#rm) usuwa pliki określone jako argumenty.
 
 Przykład:
 
@@ -98,10 +98,10 @@ hdfs dfs -rm hdfs://mycluster/tmp/testfile
 
 ## <a name="next-steps"></a>Następne kroki
 
-Jeśli problem nie został wyświetlony lub nie można rozwiązać problemu, odwiedź jeden z następujących kanałów, aby uzyskać więcej pomocy:
+Jeśli nie widzisz problemu lub nie możesz rozwiązać problemu, odwiedź jeden z następujących kanałów, aby uzyskać więcej pomocy technicznej:
 
-* Uzyskaj odpowiedzi od ekspertów platformy Azure za pośrednictwem [pomocy technicznej dla społeczności platformy Azure](https://azure.microsoft.com/support/community/).
+* Uzyskaj odpowiedzi od ekspertów platformy Azure za pośrednictwem [pomocy technicznej platformy Azure Community.](https://azure.microsoft.com/support/community/)
 
-* Połącz się z [@AzureSupport](https://twitter.com/azuresupport) — oficjalnego Microsoft Azure konta, aby zwiększyć komfort obsługi klienta. Połączenie społeczności platformy Azure z właściwymi zasobami: odpowiedziami, wsparciem i ekspertami.
+* Połącz [@AzureSupport](https://twitter.com/azuresupport) się z — oficjalnym kontem platformy Microsoft Azure w celu poprawy jakości obsługi klienta. Łączenie społeczności platformy Azure z odpowiednimi zasobami: odpowiedziami, pomocą techniczną i ekspertami.
 
-* Jeśli potrzebujesz więcej pomocy, możesz przesłać żądanie pomocy technicznej z [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Na pasku menu wybierz pozycję **Obsługa** , a następnie otwórz Centrum **pomocy i obsługi technicznej** . Aby uzyskać szczegółowe informacje, zapoznaj [się z tematem jak utworzyć żądanie pomocy technicznej platformy Azure](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request). Dostęp do pomocy w zakresie zarządzania subskrypcjami i rozliczeń jest dostępny w ramach subskrypcji Microsoft Azure, a pomoc techniczna jest świadczona za pomocą jednego z [planów pomocy technicznej systemu Azure](https://azure.microsoft.com/support/plans/).
+* Jeśli potrzebujesz więcej pomocy, możesz przesłać żądanie pomocy z [witryny Azure portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Wybierz **pozycję Obsługa z** paska menu lub otwórz centrum pomocy + pomocy **technicznej.** Aby uzyskać bardziej szczegółowe informacje, zapoznaj [się z instrukcjami tworzenia żądania pomocy technicznej platformy Azure.](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request) Dostęp do obsługi zarządzania subskrypcjami i rozliczeń jest dołączony do subskrypcji platformy Microsoft Azure, a pomoc techniczna jest świadczona za pośrednictwem jednego z [planów pomocy technicznej platformy Azure.](https://azure.microsoft.com/support/plans/)

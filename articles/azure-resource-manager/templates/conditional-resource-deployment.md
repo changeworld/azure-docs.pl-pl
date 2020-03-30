@@ -1,22 +1,22 @@
 ---
 title: Wdrożenie warunkowe z szablonami
-description: Opisuje sposób warunkowego wdrażania zasobu w szablonie Azure Resource Manager.
+description: W tym artykule opisano sposób warunkowego wdrożenia zasobu w szablonie usługi Azure Resource Manager.
 ms.topic: conceptual
 ms.date: 12/03/2019
-ms.openlocfilehash: 83aa22ba57e0111d060665778922437723481c69
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: f170710118c0e3de6f3643b6216ed55b83b5c7df
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77207795"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80153424"
 ---
-# <a name="conditional-deployment-in-resource-manager-templates"></a>Wdrożenie warunkowe w szablonach Menedżer zasobów
+# <a name="conditional-deployment-in-arm-templates"></a>Wdrożenie warunkowe w szablonach ARM
 
-Czasami trzeba opcjonalnie wdrożyć zasób w szablonie. Użyj elementu `condition`, aby określić, czy zasób został wdrożony. Wartość dla tego elementu jest rozpoznawana jako true lub false. Gdy wartość jest równa true, zasób jest tworzony. Gdy wartość jest równa false, zasób nie zostanie utworzony. Wartość może zostać zastosowana tylko do całego zasobu.
+Czasami należy opcjonalnie wdrożyć zasób w szablonie usługi Azure Resource Manager (ARM). Użyj `condition` elementu, aby określić, czy zasób jest wdrażany. Wartość dla tego elementu jest rozpoznawana jako true lub false. Gdy wartość jest true, zasób jest tworzony. Gdy wartość jest false, zasób nie jest tworzony. Wartość można zastosować tylko do całego zasobu.
 
 ## <a name="new-or-existing-resource"></a>Nowy lub istniejący zasób
 
-Przy użyciu wdrożenia warunkowego można utworzyć nowy zasób lub użyć istniejącego. Poniższy przykład pokazuje, jak za pomocą warunku wdrożyć nowe konto magazynu lub użyć istniejącego konta magazynu.
+Można użyć wdrożenia warunkowego, aby utworzyć nowy zasób lub użyć istniejącego. W poniższym przykładzie pokazano, jak użyć warunku do wdrożenia nowego konta magazynu lub użycia istniejącego konta magazynu.
 
 ```json
 {
@@ -33,13 +33,13 @@ Przy użyciu wdrożenia warunkowego można utworzyć nowy zasób lub użyć istn
 }
 ```
 
-Gdy parametr **newOrExisting** ma wartość **New**, warunek ma wartość true. Konto magazynu zostało wdrożone. Jeśli jednak **newOrExisting** jest ustawiona na **istniejące**, warunek zwróci wartość false, a konto magazynu nie jest wdrożone.
+Gdy parametr **newOrExisting** jest ustawiony na **nowy,** warunek jest oceniany na true. Konto magazynu jest wdrażane. Jednak gdy **newOrExisting** jest ustawiona na **istniejące,** warunek ocenia false i konto magazynu nie jest wdrażany.
 
-Aby zapoznać się z kompletnym przykładowym szablonem, który używa elementu `condition`, zobacz [maszynę wirtualną z nowym lub istniejącym Virtual Network, magazynem i publicznym adresem IP](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-new-or-existing-conditions).
+Aby uzyskać kompletny przykładowy `condition` szablon, który używa tego elementu, zobacz [maszynę wirtualną z nową lub istniejącą siecią wirtualną, magazynem i publicznym adresem IP](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-new-or-existing-conditions).
 
 ## <a name="allow-condition"></a>Zezwalaj na warunek
 
-Można przekazać wartość parametru, która wskazuje, czy warunek jest dozwolony. Poniższy przykład wdraża program SQL Server i opcjonalnie zezwala na adresy IP platformy Azure.
+Można przekazać w wartości parametru, który wskazuje, czy warunek jest dozwolony. Poniższy przykład wdraża serwer SQL i opcjonalnie zezwala na adresy IP platformy Azure.
 
 ```json
 {
@@ -71,21 +71,21 @@ Można przekazać wartość parametru, która wskazuje, czy warunek jest dozwolo
 }
 ```
 
-Aby zapoznać się z kompletnym szablonem, zobacz [serwer logiczny usługi Azure SQL](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-logical-server).
+Aby uzyskać pełny szablon, zobacz [serwer logiczny SQL platformy Azure](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-logical-server).
 
-## <a name="runtime-functions"></a>Funkcje środowiska uruchomieniowego
+## <a name="runtime-functions"></a>Funkcje środowiska wykonawczego
 
-Jeśli używasz funkcji [odwołania](template-functions-resource.md#reference) lub [listy](template-functions-resource.md#list) z zasobem, który jest wdrażany warunkowo, funkcja jest oceniana, nawet jeśli zasób nie został wdrożony. Występuje błąd, jeśli funkcja odwołuje się do zasobu, który nie istnieje.
+Jeśli używasz funkcji [odwołania](template-functions-resource.md#reference) lub [listy](template-functions-resource.md#list) z zasobem, który jest warunkowo wdrożony, funkcja jest oceniana, nawet jeśli zasób nie jest wdrażany. Zostanie wyświetlony błąd, jeśli funkcja odwołuje się do zasobu, który nie istnieje.
 
-Użyj funkcji [if](template-functions-logical.md#if) , aby upewnić się, że funkcja jest obliczana tylko pod kątem warunków, gdy zasób jest wdrożony. Zobacz [funkcję if](template-functions-logical.md#if) , aby zapoznać się z przykładowym szablonem, który używa if i Reference z wdrożonym warunkowo zasobem.
+Użyj if [funkcji,](template-functions-logical.md#if) aby upewnić się, że funkcja jest oceniana tylko dla warunków, gdy zasób jest wdrażany. Zobacz [if funkcji](template-functions-logical.md#if) dla przykładowego szablonu, który używa if i odwołania z warunkowo wdrożony zasób.
 
-Zasób jest ustawiany [jako zależny od](define-resource-dependency.md) zasobu warunkowego dokładnie tak samo jak w przypadku każdego innego zasobu. Gdy zasób warunkowy nie zostanie wdrożony, Azure Resource Manager automatycznie usuwa go z wymaganych zależności.
+[Zasób](define-resource-dependency.md) jest tak zależny od zasobu warunkowego, jak każdy inny zasób. Gdy zasób warunkowy nie jest wdrażany, usługa Azure Resource Manager automatycznie usuwa go z wymaganych zależności.
 
-## <a name="condition-with-complete-mode"></a>Warunek z trybem ukończenia
+## <a name="condition-with-complete-mode"></a>Warunek z trybem kompletnym
 
-Jeśli szablon zostanie wdrożony z [trybem kompletnym](deployment-modes.md) , a zasób nie zostanie wdrożony, ponieważ warunek zwróci wartość false, wynik zależy od używanej wersji interfejsu API REST do wdrożenia szablonu. W przypadku używania wersji wcześniejszej niż 2019-05-10 zasób nie zostanie **usunięty**. W przypadku 2019-05-10 lub nowszych zasób **jest usuwany**. Najnowsze wersje Azure PowerShell i interfejsu wiersza polecenia platformy Azure usuwają zasób, gdy warunek ma wartość false.
+Jeśli wdrożysz szablon z [trybem kompletnym,](deployment-modes.md) a zasób nie zostanie wdrożony, ponieważ warunek ma wartość false, wynik zależy od wersji interfejsu API REST używanej do wdrażania szablonu. Jeśli używasz wersji wcześniejszej niż 2019-05-10, zasób **nie zostanie usunięty**. W 2019-05-10 lub nowszym zasób **jest usuwany**. Najnowsze wersje programu Azure PowerShell i interfejsu wiersza polecenia platformy Azure usuwają zasób, gdy warunek jest fałszywy.
 
 ## <a name="next-steps"></a>Następne kroki
 
-* Zalecenia dotyczące tworzenia szablonów można znaleźć w temacie [Azure Resource Manager Best Practices Template](template-best-practices.md).
-* Aby utworzyć wiele wystąpień zasobu, zobacz [iteracja zasobów w szablonach Azure Resource Manager](copy-resources.md).
+* Aby uzyskać zalecenia dotyczące tworzenia szablonów, zobacz [Najlepsze wskazówki dotyczące szablonów ARM](template-best-practices.md).
+* Aby utworzyć wiele wystąpień zasobu, zobacz [Iteracja zasobów w szablonach ARM](copy-resources.md).

@@ -1,6 +1,6 @@
 ---
-title: Azure IoT Edge i IoT Central platformy Azure | Microsoft Docs
-description: Dowiedz się, jak używać Azure IoT Edge z aplikacją IoT Central.
+title: Usługa Azure IoT Edge i usługa Azure IoT Central | Dokumenty firmy Microsoft
+description: Dowiedz się, jak korzystać z usługi Azure IoT Edge za pomocą aplikacji IoT Central.
 author: dominicbetts
 ms.author: dobett
 ms.date: 12/12/2019
@@ -8,68 +8,68 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 ms.openlocfilehash: 69660152458de26e9dbcbf1f50db6ce6824351d0
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77027071"
 ---
-# <a name="connect-azure-iot-edge-devices-to-an-azure-iot-central-application"></a>Łączenie urządzeń Azure IoT Edge z aplikacją IoT Central platformy Azure
+# <a name="connect-azure-iot-edge-devices-to-an-azure-iot-central-application"></a>Łączenie urządzeń usługi Azure IoT Edge z aplikacją Azure IoT Central
 
-IoT Edge składa się z trzech składników:
+IoT Edge składa się z trzech komponentów:
 
-* **Moduły IoT Edge** są kontenerami, na których działają usługi platformy Azure, usługi partnerskie lub własny kod. Moduły są wdrażane na IoT Edge urządzeniach i uruchamiane lokalnie na tych urządzeniach.
-* **Środowisko uruchomieniowe IoT Edge** działa na każdym urządzeniu IoT Edge i zarządza modułami wdrożonymi na poszczególnych urządzeniach.
-* **Interfejs oparty na chmurze** umożliwia zdalne monitorowanie IoT Edge urządzeń i zarządzanie nimi. IoT Central jest interfejsem chmury.
+* **Moduły usługi IoT Edge to kontenery,** które uruchamiają usługi platformy Azure, usługi partnerskie lub własny kod. Moduły są wdrażane na urządzeniach usługi IoT Edge i uruchamiane lokalnie na tych urządzeniach.
+* **Środowisko uruchomieniowe IoT Edge** działa na każdym urządzeniu IoT Edge i zarządza modułami wdrożonymi na każdym urządzeniu.
+* **Interfejs oparty na chmurze** umożliwia zdalne monitorowanie urządzeń usługi IoT Edge i zarządzanie nimi. IoT Central to interfejs chmury.
 
-Urządzenie **Azure IoT Edge** może być urządzeniem bramy z urządzeniami podrzędnymi łączącymi się z urządzeniem IoT Edge. Ten artykuł udostępnia więcej informacji na temat wzorców łączności urządzeń podrzędnych.
+Urządzenie **usługi Azure IoT Edge** może być urządzeniem bramy, z urządzeniami podrzędnymi łączącymi się z urządzeniem usługi IoT Edge. W tym artykule udostępnia więcej informacji na temat wzorców łączności urządzenia podrzędnego.
 
-**Szablon urządzenia** definiuje możliwości urządzenia i moduły IoT Edge. Możliwości obejmują dane telemetryczne, które są wysyłane przez moduł, właściwości modułu i polecenia, na które odpowiada moduł.
+**Szablon urządzenia** definiuje możliwości urządzenia i modułów IoT Edge. Możliwości obejmują dane telemetryczne, które wysyła moduł, właściwości modułu i polecenia, na które odpowiada moduł.
 
 ## <a name="downstream-device-relationships-with-a-gateway-and-modules"></a>Relacje urządzeń podrzędnych z bramą i modułami
 
-Urządzenia podrzędne mogą łączyć się z urządzeniem bramy IoT Edge za pomocą modułu `$edgeHub`. To IoT Edge urządzenie zostanie w tym scenariuszu przezroczystą bramą.
+Urządzenia podrzędne mogą łączyć się z urządzeniem bramy usługi IoT Edge za pośrednictwem modułu. `$edgeHub` To urządzenie usługi IoT Edge staje się przezroczystą bramą w tym scenariuszu.
 
 ![Diagram przezroczystej bramy](./media/concepts-iot-edge/gateway-transparent.png)
 
-Urządzenia podrzędne mogą również łączyć się z urządzeniem bramy IoT Edge za pomocą modułu niestandardowego. W poniższym scenariuszu urządzenia podrzędne łączą się za pomocą modułu niestandardowego Modbus.
+Urządzenia podrzędne mogą również łączyć się z urządzeniem bramy usługi IoT Edge za pośrednictwem modułu niestandardowego. W poniższym scenariuszu urządzenia podrzędne łączą się za pośrednictwem modułu niestandardowego Modbus.
 
-![Diagram połączenia modułu niestandardowego](./media/concepts-iot-edge/gateway-module.png)
+![Diagram niestandardowego połączenia modułu](./media/concepts-iot-edge/gateway-module.png)
 
-Na poniższym diagramie przedstawiono połączenie z urządzeniem bramy IoT Edge za pomocą obu typów modułów (niestandardowych i `$edgeHub`).  
+Na poniższym diagramie przedstawiono połączenie z urządzeniem bramy usługi `$edgeHub`IoT Edge za pośrednictwem obu typów modułów (niestandardowych i ).  
 
-![Diagram łączenia za pośrednictwem obu modułów połączeń](./media/concepts-iot-edge/gateway-module-transparent.png)
+![Schemat łączenia za pośrednictwem obu modułów połączeń](./media/concepts-iot-edge/gateway-module-transparent.png)
 
-Na koniec urządzenia podrzędne mogą łączyć się z urządzeniem bramy IoT Edge przy użyciu wielu modułów niestandardowych. Na poniższym diagramie przedstawiono urządzenia podrzędne łączące się za pomocą modułu niestandardowego Modbus, modułu niestandardowego dla beli i modułu `$edgeHub`. 
+Na koniec urządzenia podrzędne mogą łączyć się z urządzeniem bramy usługi IoT Edge za pośrednictwem wielu modułów niestandardowych. Na poniższym diagramie przedstawiono urządzenia podrzędne łączące się za `$edgeHub` pośrednictwem modułu niestandardowego Modbus, modułu niestandardowego BLE i modułu. 
 
-![Diagram łączenia za pośrednictwem wielu modułów niestandardowych](./media/concepts-iot-edge/gateway-module2-transparent.png)
+![Diagram łączenia za pomocą wielu modułów niestandardowych](./media/concepts-iot-edge/gateway-module2-transparent.png)
 
-## <a name="deployment-manifests-and-device-templates"></a>Manifesty wdrożenia i szablony urządzeń
+## <a name="deployment-manifests-and-device-templates"></a>Manifesty wdrażania i szablony urządzeń
 
-W IoT Edge można wdrożyć logikę biznesową w formie modułów i zarządzać nią. Moduły IoT Edge są najmniejszą jednostką obliczeniową zarządzaną przez IoT Edge i mogą zawierać usługi platformy Azure (takie jak Azure Stream Analytics) lub własny kod specyficzny dla rozwiązania. Aby zrozumieć, jak moduły są opracowywane, wdrażane i utrzymywane, zobacz [IoT Edge modules](../../iot-edge/iot-edge-modules.md).
+W umyw ciągłej rzeczywistości można wdrażać logikę biznesową i zarządzać nią w postaci modułów. Moduły usługi IoT Edge są najmniejszą jednostką obliczeń zarządzaną przez usługę IoT Edge i mogą zawierać usługi platformy Azure (takie jak usługa Azure Stream Analytics) lub własny kod specyficzny dla rozwiązania. Aby zrozumieć, w jaki sposób moduły są opracowywane, wdrażane i utrzymywane, zobacz [moduły IoT Edge](../../iot-edge/iot-edge-modules.md).
 
-Na wysokim poziomie manifest wdrażania znajduje się lista bliźniaczych reprezentacjach modułów, które są skonfigurowane przy użyciu ich żądane właściwości. Manifest wdrożenia informuje urządzenie IoT Edge (lub grupę urządzeń), które moduły zainstalować, oraz sposób ich konfiguracji. Manifesty wdrożenia obejmują odpowiednie właściwości dla każdego sznurka modułu. IoT Edge urządzeń raportuje z powrotem raportowane właściwości dla każdego modułu.
+Na wysokim poziomie manifest wdrożenia jest lista bliźniacze modułu, które są skonfigurowane z ich żądanych właściwości. Manifest wdrażania informuje urządzenie usługi IoT Edge (lub grupę urządzeń), które moduły do zainstalowania i jak je skonfigurować. Manifesty wdrażania zawierają żądane właściwości dla każdej bliźniaczej reprezentacji modułu. Urządzenia IoT Edge zgłaszają zgłoszone właściwości dla każdego modułu.
 
-Użyj Visual Studio Code, aby utworzyć manifest wdrożenia. Aby dowiedzieć się więcej, zobacz [Azure IoT Edge Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge).
+Użyj programu Visual Studio Code, aby utworzyć manifest wdrożenia. Aby dowiedzieć się więcej, zobacz [Usługa Azure IoT Edge for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge).
 
-Na platformie Azure IoT Central można zaimportować manifest wdrożenia w celu utworzenia szablonu urządzenia. Poniższy schemat blokowy przedstawia cykl życia manifestu wdrożenia w IoT Central.
+W usłudze Azure IoT Central można zaimportować manifest wdrożenia w celu utworzenia szablonu urządzenia. Poniższy schemat blokowy przedstawia cykl życia manifestu wdrażania w centrum IoT.
 
-![Schemat blokowy cyklu życia manifestu wdrożenia](./media/concepts-iot-edge/dmflow.png)
+![Schemat blokowy cyklu życia manifestu wdrażania](./media/concepts-iot-edge/dmflow.png)
 
-Plug and Play IoT (wersja zapoznawcza) modeluje urządzenie IoT Edge w następujący sposób:
+IoT Plug and Play (wersja zapoznawcza) modeluje urządzenie IoT Edge w następujący sposób:
 
 * Każdy szablon urządzenia IoT Edge ma model możliwości urządzenia.
-* Dla każdego modułu niestandardowego wymienionego w manifeście wdrożenia jest generowany model możliwości modułu.
-* Między każdym modelem możliwości modułu a modelem możliwości urządzenia jest ustanowiona relacja.
+* Dla każdego modułu niestandardowego wymienionego w manifeście wdrażania generowany jest model możliwości modułu.
+* Nawiązywany jest związek między każdym modelem możliwości modułu a modelem możliwości urządzenia.
 * Model możliwości modułu implementuje interfejsy modułów.
 * Każdy interfejs modułu zawiera dane telemetryczne, właściwości i polecenia.
 
 ![Diagram modelowania IoT Edge](./media/concepts-iot-edge/edgemodelling.png)
 
-## <a name="iot-edge-gateway-devices"></a>Urządzenia bramy IoT Edge
+## <a name="iot-edge-gateway-devices"></a>Urządzenia bramy usługi IoT Edge
 
-Jeśli wybrano urządzenie IoT Edge jako urządzenie bramy, można dodać relacje podrzędne do modeli możliwości urządzeń, które mają być połączone z urządzeniem bramy.
+Jeśli wybrano urządzenie usługi IoT Edge jako urządzenie bramy, można dodać relacje podrzędne do modeli możliwości urządzenia dla urządzeń, które chcesz połączyć się z urządzeniem bramy.
 
 ## <a name="next-steps"></a>Następne kroki
 
-Teraz, kiedy wiesz, co IoT Central szablonów aplikacji, Zacznij od [utworzenia aplikacji IoT Central](quick-deploy-iot-central.md).
+Teraz, gdy wiesz, jakie są szablony aplikacji IoT Central, rozpocznij tworzenie [aplikacji centralnej IoT](quick-deploy-iot-central.md).

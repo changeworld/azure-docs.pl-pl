@@ -1,22 +1,22 @@
 ---
 title: Dane wyjściowe w szablonach
-description: Opisuje sposób definiowania wartości wyjściowych w szablonie Azure Resource Manager.
+description: W tym artykule opisano sposób definiowania wartości danych wyjściowych w szablonie usługi Azure Resource Manager.
 ms.topic: conceptual
 ms.date: 02/25/2020
-ms.openlocfilehash: ec96b45cdc5ccf488d46c2d8da03caf16d002dfa
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.openlocfilehash: 203bfc66e9515ef14a5fe1315ef5b9ee07075041
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77622836"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79460028"
 ---
-# <a name="outputs-in-azure-resource-manager-template"></a>Dane wyjściowe w szablonie Azure Resource Manager
+# <a name="outputs-in-azure-resource-manager-template"></a>Dane wyjściowe w szablonie usługi Azure Resource Manager
 
-W tym artykule opisano sposób definiowania wartości wyjściowych w szablonie Azure Resource Manager. Dane wyjściowe są używane, gdy trzeba zwrócić wartości ze wdrożonych zasobów.
+W tym artykule opisano sposób definiowania wartości danych wyjściowych w szablonie usługi Azure Resource Manager. Dane wyjściowe są używane, gdy trzeba zwrócić wartości z wdrożonych zasobów.
 
 ## <a name="define-output-values"></a>Definiowanie wartości wyjściowych
 
-Poniższy przykład pokazuje, jak zwraca identyfikator zasobu dla publicznego adresu IP:
+W poniższym przykładzie pokazano, jak zwrócić identyfikator zasobu dla publicznego adresu IP:
 
 ```json
 "outputs": {
@@ -27,9 +27,9 @@ Poniższy przykład pokazuje, jak zwraca identyfikator zasobu dla publicznego ad
 }
 ```
 
-## <a name="conditional-output"></a>Dane wyjściowe warunkowe
+## <a name="conditional-output"></a>Wyjście warunkowe
 
-W sekcji dane wyjściowe można warunkowo zwrócić wartość. Zazwyczaj warunek jest używany w danych wyjściowych, gdy [warunkowo wdrożono](conditional-resource-deployment.md) zasób. Poniższy przykład pokazuje, jak warunkowo zwrócić identyfikator zasobu dla publicznego adresu IP na podstawie tego, czy został wdrożony nowy:
+W sekcji dane wyjściowe można warunkowo zwrócić wartość. Zazwyczaj warunek jest używany w danych wyjściowych, gdy [już warunkowo wdrożony](conditional-resource-deployment.md) zasób. W poniższym przykładzie pokazano, jak warunkowo zwrócić identyfikator zasobu dla publicznego adresu IP na podstawie tego, czy nowy został wdrożony:
 
 ```json
 "outputs": {
@@ -41,11 +41,11 @@ W sekcji dane wyjściowe można warunkowo zwrócić wartość. Zazwyczaj warunek
 }
 ```
 
-Aby uzyskać prosty przykład danych wyjściowych warunkowych, zobacz [warunkowy szablon danych wyjściowych](https://github.com/bmoore-msft/AzureRM-Samples/blob/master/conditional-output/azuredeploy.json).
+Prosty przykład danych wyjściowych warunkowych można znaleźć w [szablonie danych wyjściowych warunkowych](https://github.com/bmoore-msft/AzureRM-Samples/blob/master/conditional-output/azuredeploy.json).
 
-## <a name="dynamic-number-of-outputs"></a>Dynamiczna liczba danych wyjściowych
+## <a name="dynamic-number-of-outputs"></a>Dynamiczna liczba wyjść
 
-W niektórych scenariuszach nie wiadomo, ile wystąpień wartości należy zwrócić podczas tworzenia szablonu. Można zwrócić zmienną liczbę wartości za pomocą elementu **copy** .
+W niektórych scenariuszach nie znasz liczby wystąpień wartości, które należy zwrócić podczas tworzenia szablonu. Można zwrócić zmienną liczbę wartości przy użyciu elementu **kopiowania.**
 
 ```json
 "outputs": {
@@ -59,19 +59,19 @@ W niektórych scenariuszach nie wiadomo, ile wystąpień wartości należy zwró
 }
 ```
 
-Aby uzyskać więcej informacji, zobacz [iteracja danych wyjściowych w szablonach Azure Resource Manager](copy-outputs.md).
+Aby uzyskać więcej informacji, zobacz [Iteracja danych wyjściowych w szablonach usługi Azure Resource Manager](copy-outputs.md).
 
 ## <a name="linked-templates"></a>Połączone szablony
 
-Aby pobrać wartość wyjściową z połączonego szablonu, użyj funkcji [Reference](template-functions-resource.md#reference) w szablonie nadrzędnym. Składnia w szablonie nadrzędnym jest następująca:
+Aby pobrać wartość danych wyjściowych z połączonego szablonu, użyj funkcji [odwołania](template-functions-resource.md#reference) w szablonie nadrzędnym. Składnia szablonu nadrzędnego jest:
 
 ```json
 "[reference('<deploymentName>').outputs.<propertyName>.value]"
 ```
 
-Podczas pobierania właściwości danych wyjściowych z dołączonego szablonu, nazwy właściwości nie może zawierać kreskę.
+Podczas uzyskiwania właściwości wyjściowej z połączonego szablonu nazwa właściwości nie może zawierać kreski.
 
-Poniższy przykład pokazuje, jak ustawić adres IP dla modułu równoważenia obciążenia przez pobranie wartości z połączonego szablonu.
+W poniższym przykładzie pokazano, jak ustawić adres IP na moduł równoważenia obciążenia, pobierając wartość z połączonego szablonu.
 
 ```json
 "publicIPAddress": {
@@ -79,15 +79,15 @@ Poniższy przykład pokazuje, jak ustawić adres IP dla modułu równoważenia o
 }
 ```
 
-Nie można użyć funkcji `reference` w sekcji dane wyjściowe [szablonu zagnieżdżonego](linked-templates.md#nested-template). Aby zwrócić wartości dla zasobów wdrożonych w zagnieżdżonych szablonów, należy przekonwertować zagnieżdżony szablon do dołączonego szablonu.
+Nie można użyć `reference` tej funkcji w sekcji wyjścia [zagnieżdżonego szablonu](linked-templates.md#nested-template). Aby zwrócić wartości wdrożonego zasobu w szablonie zagnieżdżonym, przekonwertuj szablon zagnieżdżony na szablon połączony.
 
-## <a name="get-output-values"></a>Pobierz wartości wyjściowe
+## <a name="get-output-values"></a>Uzyskaj wartości wyjściowe
 
-Po pomyślnym wdrożeniu wartości wyjściowe są automatycznie zwracane w wynikach wdrożenia.
+Gdy wdrożenie zakończy się pomyślnie, wartości wyjściowe są automatycznie zwracane w wynikach wdrożenia.
 
-Aby uzyskać wartości wyjściowe z historii wdrożenia, można użyć skryptu.
+Aby uzyskać wartości wyjściowe z historii wdrażania, można użyć skryptu.
 
-# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
 
 ```azurepowershell-interactive
 (Get-AzResourceGroupDeployment `
@@ -98,7 +98,7 @@ Aby uzyskać wartości wyjściowe z historii wdrożenia, można użyć skryptu.
 # <a name="azure-cli"></a>[Interfejs wiersza polecenia platformy Azure](#tab/azure-cli)
 
 ```azurecli-interactive
-az group deployment show \
+az deployment group show \
   -g <resource-group-name> \
   -n <deployment-name> \
   --query properties.outputs.resourceID.value
@@ -108,14 +108,14 @@ az group deployment show \
 
 ## <a name="example-templates"></a>Przykładowe szablony
 
-W poniższych przykładach przedstawiono scenariusze używania danych wyjściowych.
+Poniższe przykłady pokazują scenariusze przy użyciu danych wyjściowych.
 
 |Szablon  |Opis  |
 |---------|---------|
-|[Kopiuj zmienne](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/copyvariables.json) | Tworzy zmienne złożone i wysyła te wartości. Nie należy wdrażać żadnych zasobów. |
-|[Publiczny adres IP](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip.json) | Tworzy publiczny adres IP, a następnie generuje identyfikator zasobu. |
-|[Moduł równoważenia obciążenia](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip-parentloadbalancer.json) | Zawiera łącza do Powyższy szablon. Używa Identyfikatora zasobu w danych wyjściowych, podczas tworzenia modułu równoważenia obciążenia. |
+|[Kopiowanie zmiennych](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/copyvariables.json) | Tworzy złożone zmienne i wyprowadza te wartości. Nie wdraża żadnych zasobów. |
+|[Publiczny adres IP](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip.json) | Tworzy publiczny adres IP i wyprowadza identyfikator zasobu. |
+|[Moduł równoważenia obciążenia](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip-parentloadbalancer.json) | Łącza do poprzedniego szablonu. Używa identyfikatora zasobu w danych wyjściowych podczas tworzenia modułu równoważenia obciążenia. |
 
 ## <a name="next-steps"></a>Następne kroki
 
-* Aby dowiedzieć się więcej o dostępnych właściwościach danych wyjściowych, zobacz [Opis struktury i składni szablonów Azure Resource Manager](template-syntax.md).
+* Aby dowiedzieć się więcej o dostępnych właściwościach produktów wyjściowych, zobacz [Opis struktury i składni szablonów usługi Azure Resource Manager](template-syntax.md).

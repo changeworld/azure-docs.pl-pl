@@ -1,6 +1,6 @@
 ---
 title: Omówienie maszyn wirtualnych z systemem Linux na platformie Azure
-description: Omówienie maszyn wirtualnych z systemem Linux na platformie Azure.
+description: Omówienie maszyn wirtualnych systemu Linux na platformie Azure.
 services: virtual-machines-linux
 documentationcenter: virtual-machines-linux
 author: cynthn
@@ -12,12 +12,12 @@ ms.workload: infrastructure
 ms.date: 11/14/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: bfda5fe7592d4c3f3f9550f406cf7635c43168ed
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 69a9722436aea1cf794e6e3f3ce02ec79180cff3
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75896193"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80159476"
 ---
 # <a name="linux-virtual-machines-in-azure"></a>Maszyny wirtualne z systemem Linux na platformie Azure
 
@@ -52,7 +52,7 @@ W poniższej tabeli przedstawiono wybrane metody uzyskania dostępu do listy dos
 | Metoda | Opis |
 | --- | --- |
 | Portal Azure |Wybór lokalizacji z listy podczas tworzenia maszyny wirtualnej. |
-| Program Azure PowerShell |Użyj polecenia [Get-AzLocation](https://docs.microsoft.com/powershell/module/az.resources/get-azlocation). |
+| Azure PowerShell |Użyj polecenia [Get-AzLocation](https://docs.microsoft.com/powershell/module/az.resources/get-azlocation). |
 | Interfejs API REST |Użycie operacji [wyświetlania listy lokalizacji](https://docs.microsoft.com/rest/api/resources/subscriptions). |
 | Interfejs wiersza polecenia platformy Azure |Użyj operacji [az account list-locations](https://docs.microsoft.com/cli/azure/account?view=azure-cli-latest). |
 
@@ -62,7 +62,7 @@ Platforma Azure oferuje najlepszą w branży umowę dotyczącą poziomu usług g
 ## <a name="vm-size"></a>Rozmiar maszyny wirtualnej
 [Rozmiar](sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) maszyny wirtualnej zależy od obciążenia, które ma zostać uruchomione. Wybrany rozmiar ma więc wpływ na takie czynniki jak moc procesora, pamięć i przestrzeń dyskowa. W ramach platformy Azure dostępna jest szeroka gama rozmiarów umożliwiających wykorzystanie produktu do wielu różnych zastosowań.
 
-Na platformie Azure obowiązuje [cena za godzinę](https://azure.microsoft.com/pricing/details/virtual-machines/linux/), która jest określana na podstawie rozmiaru maszyny wirtualnej i jej systemu operacyjnego. W przypadku rozpoczętych godzin opłaty są pobierane tylko za faktycznie wykorzystane minuty. Magazyn jest wyceniany oddzielnie; związane z nim opłaty są także pobierane osobno.
+Platforma Azure pobiera [cenę godzinową](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) na podstawie rozmiaru maszyny Wirtualnej i systemu operacyjnego. W przypadku rozpoczętych godzin opłaty są pobierane tylko za faktycznie wykorzystane minuty. Magazyn jest wyceniany oddzielnie; związane z nim opłaty są także pobierane osobno.
 
 ## <a name="vm-limits"></a>Limity maszyn wirtualnych
 Subskrypcje mają domyślne [limity przydziałów](../../azure-resource-manager/management/azure-subscription-service-limits.md), które mogą mieć wpływ na wdrożenie wielu maszyn wirtualnych w projekcie. Aktualny limit dla każdej subskrypcji wynosi 20 maszyn wirtualnych na region. Limity można zwiększyć, [wypełniając odpowiednio bilet pomocy technicznej](../../azure-portal/supportability/resource-manager-core-quotas-request.md)
@@ -93,34 +93,24 @@ Firma Microsoft blisko współpracuje z partnerami, aby zagwarantować, że dost
 * Docker — [Azure Marketplace — usługa Azure Container Service z rozwiązaniem Docker Swarm](https://azure.microsoft.com/marketplace/partners/microsoft/acsswarms/)
 * Jenkins — [Azure Marketplace — platforma CloudBees Jenkins](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/cloudbees.cloudbees-core-contact)
 
-## <a name="vm-sizes"></a>Rozmiary maszyn wirtualnych
-[Rozmiar](sizes.md) maszyny wirtualnej zależy od obciążenia, które ma zostać uruchomione. Wybrany rozmiar ma więc wpływ na takie czynniki jak moc procesora, pamięć i przestrzeń dyskowa. W ramach platformy Azure dostępna jest szeroka gama rozmiarów umożliwiających wykorzystanie produktu do wielu różnych zastosowań.
-
-Na platformie Azure obowiązuje [cena za godzinę](https://azure.microsoft.com/pricing/details/virtual-machines/linux/), która jest określana na podstawie rozmiaru maszyny wirtualnej i jej systemu operacyjnego. W przypadku rozpoczętych godzin opłaty są pobierane tylko za faktycznie wykorzystane minuty. Magazyn jest wyceniany oddzielnie; związane z nim opłaty są także pobierane osobno.
 
 ## <a name="cloud-init"></a>Cloud-init 
 
-Aby uzyskać właściwą kulturę DevOps, cała infrastruktura musi być zawarta w kodzie.  Gdy cała infrastruktura przebywa w kodzie, można ją łatwo odtworzyć.  Platforma Azure współpracuje ze wszystkimi najważniejszymi narzędziami automatyzacji, takimi jak Ansible, Chef, SaltStack i Puppet.  Platforma Azure oferuje również własne narzędzia automatyzacji:
+Aby uzyskać właściwą kulturę DevOps, cała infrastruktura musi być zawarta w kodzie.  Gdy cała infrastruktura działa w kodzie można łatwo odtworzyć.  Platforma Azure współpracuje ze wszystkimi najważniejszymi narzędziami automatyzacji, takimi jak Ansible, Chef, SaltStack i Puppet.  Platforma Azure oferuje również własne narzędzia automatyzacji:
 
 * [Szablony platformy Azure](create-ssh-secured-vm-from-template.md)
 * [Rozszerzenie Azure VMAccess](using-vmaccess-extension.md)
 
-Platforma Azure obsługuje funkcję [Cloud-init](https://cloud-init.io/) w większości dystrybucje systemu Linux, która go obsługuje.  Aktywnie współpracujemy z partnerami zalecanych dystrybucji systemu Linux, aby mogła mieć pakietu cloud-init, włączone obrazów dostępnych w witrynie Azure marketplace. Te obrazy spowodują, że wdrożenia i konfiguracje usługi Cloud-init pracują bezproblemowo z maszynami wirtualnymi i zestawami skalowania maszyn wirtualnych.
+Platforma Azure obsługuje [init chmury w](https://cloud-init.io/) większości dystrybucji systemu Linux, które go obsługują.  Aktywnie współpracujemy z naszymi zatwierdzonymi partnerami dystrybucji systemu Linux, aby obrazy z obsługą chmury były dostępne w portalu Azure marketplace. Te obrazy sprawią, że wdrożenia i konfiguracje typu cloud-init będą bezproblemowo współpracować z maszynami wirtualnymi i zestawami skalowania maszyn wirtualnych.
 
 * [Korzystanie z pakietu cloud-init na maszynach wirtualnych platformy Azure z systemem Linux](using-cloud-init.md)
 
-## <a name="quotas"></a>Przydziały
-Każda subskrypcja platformy Azure ma domyślnie ustawiony limit przydziałów, który może mieć wpływ na wdrożenie wielu maszyn wirtualnych w projekcie. Aktualny limit dla każdej subskrypcji wynosi 20 maszyn wirtualnych na region.  Limity przydziałów można szybko i łatwo zwiększyć, przesyłając zgłoszenie pomocy technicznej.  Więcej informacji na temat limitów przydziałów znajduje się w artykułach:
-
-* [Azure Subscription Service Limits](../../azure-resource-manager/management/azure-subscription-service-limits.md) (Limity usług subskrypcji platformy Azure)
-
-
-## <a name="storage"></a>Usługa Storage
+## <a name="storage"></a>Magazyn
 * [Wprowadzenie do usługi Microsoft Azure Storage](../../storage/common/storage-introduction.md)
 * [Dodawanie dysku do maszyny wirtualnej systemu Linux przy użyciu interfejsu wiersza polecenia platformy Azure](add-disk.md)
 * [Jak dołączyć dysk danych do maszyny wirtualnej w witrynie Azure Portal?](attach-disk-portal.md)
 
-## <a name="networking"></a>Networking
+## <a name="networking"></a>Obsługa sieci
 * [Omówienie usługi Virtual Network](../../virtual-network/virtual-networks-overview.md)
 * [Adresy IP na platformie Azure](../../virtual-network/virtual-network-ip-addresses-overview-arm.md)
 * [Otwieranie portów dla maszyny wirtualnej systemu Linux na platformie Azure](nsg-quickstart.md)
@@ -129,9 +119,9 @@ Każda subskrypcja platformy Azure ma domyślnie ustawiony limit przydziałów, 
 
 ## <a name="next-steps"></a>Następne kroki
 
-Utwórz pierwszą maszynę wirtualną.
+Stwórz swoją pierwszą maszynę wirtualną!
 
 - [Portal](quick-create-portal.md)
 - [Interfejs wiersza polecenia platformy Azure](quick-create-cli.md)
-- [Program PowerShell](quick-create-powershell.md)
+- [Powershell](quick-create-powershell.md)
 

@@ -1,29 +1,33 @@
 ---
-title: Używanie środowiska Node. js do nawiązywania połączenia z serwerem Azure Database for PostgreSQL-pojedynczym
-description: Ten przewodnik Szybki Start zawiera przykładowy kod w języku Node. js, którego można używać do nawiązywania połączeń i wysyłania zapytań dotyczących danych z jednego serwera Azure Database for PostgreSQL.
+title: Łączenie się z usługą Azure Database dla postgreSQL — pojedynczy serwer za pomocą node.js
+description: Ten przewodnik Szybki start zawiera przykładowy kod Node.js, którego można użyć do łączenia się i wykonywania zapytań o dane z usługi Azure Database for PostgreSQL — Single Server.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
-ms.custom: seo-javascript-september2019, seo-javascript-october2019
+ms.custom:
+- mvc
+- devcenter
+- seo-javascript-september2019
+- seo-javascript-october2019
 ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 5/6/2019
-ms.openlocfilehash: ca3a8bb093e81404da638ff869e05b5a4626626e
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 1d48fc818ca32b6168b0986ddb6453fe66fc8341
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76774832"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80062260"
 ---
-# <a name="quickstart-use-nodejs-to-connect-and-query-data-in-azure-database-for-postgresql---single-server"></a>Szybki Start: Używanie środowiska Node. js do nawiązywania połączenia i wykonywania zapytań dotyczących danych na pojedynczym serwerze Azure Database for PostgreSQL
+# <a name="quickstart-use-nodejs-to-connect-and-query-data-in-azure-database-for-postgresql---single-server"></a>Szybki start: łączenie danych i wyszukiwanie danych w usłudze Azure Database dla postgreSQL — pojedynczy serwer za pomocą pliku Node.js
 
-W tym przewodniku szybki start nawiążesz połączenie z Azure Database for PostgreSQL przy użyciu aplikacji node. js. Pokazano w nim, jak używać instrukcji języka SQL w celu wysyłania zapytań o dane oraz wstawiania, aktualizowania i usuwania danych w bazie danych. W krokach w tym artykule założono, że wiesz już, jak programować za pomocą języka Node.js, i dopiero zaczynasz pracę z usługą Azure Database for PostgreSQL.
+W tym przewodniku Szybki start można połączyć się z usługą Azure Database for PostgreSQL przy użyciu aplikacji Node.js. Pokazano w nim, jak używać instrukcji języka SQL w celu wysyłania zapytań o dane oraz wstawiania, aktualizowania i usuwania danych w bazie danych. W krokach w tym artykule założono, że wiesz już, jak programować za pomocą języka Node.js, i dopiero zaczynasz pracę z usługą Azure Database for PostgreSQL.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Konto platformy Azure z aktywną subskrypcją. [Utwórz konto bezpłatnie](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+- Konto platformy Azure z aktywną subskrypcją. [Utwórz konto za darmo](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 
-- Kończenie [przewodnika Szybki Start: Tworzenie serwera Azure Database for PostgreSQL w Azure Portal](quickstart-create-server-database-portal.md) lub [szybki start: Tworzenie Azure Database for PostgreSQL przy użyciu interfejsu wiersza polecenia platformy Azure](quickstart-create-server-database-azure-cli.md).
+- Ukończenie [przewodnika Szybki start: tworzenie bazy danych platformy Azure dla serwera PostgreSQL w witrynie Azure portal](quickstart-create-server-database-portal.md) lub szybki [start: tworzenie bazy danych platformy Azure dla postgreSQL przy użyciu interfejsu wiersza polecenia platformy Azure](quickstart-create-server-database-azure-cli.md).
 
 - [Node.js](https://nodejs.org)
 
@@ -43,11 +47,11 @@ npm list
 ## <a name="get-connection-information"></a>Pobieranie informacji o połączeniu
 Uzyskaj parametry połączenia potrzebne do nawiązania połączenia z usługą Azure Database for PostgreSQL. Potrzebna jest w pełni kwalifikowana nazwa serwera i poświadczenia logowania.
 
-1. W [Azure Portal](https://portal.azure.com/)Wyszukaj i wybierz utworzony przez siebie serwer (na przykład **mydemoserver**).
+1. W [witrynie Azure portal](https://portal.azure.com/)wyszukaj i wybierz utworzony serwer (np. **serwer mydemoserver**).
 
-1. W panelu **Przegląd** serwera Zanotuj **nazwę serwera i nazwa** **użytkownika administratora**. Jeśli zapomnisz hasła, możesz również je zresetować z poziomu tego panelu.
+1. W panelu **Przegląd** serwera zanotuj **nazwę serwera** i **nazwę użytkownika administratora**. Jeśli zapomnisz hasła, możesz również je zresetować z poziomu tego panelu.
 
-   ![Azure Database for PostgreSQL parametry połączenia](./media/connect-nodejs/server-details-azure-database-postgresql.png)
+   ![Ciąg połączenia Usługi Azure Database dla postgreSQL](./media/connect-nodejs/server-details-azure-database-postgresql.png)
 
 ## <a name="running-the-javascript-code-in-nodejs"></a>Uruchamianie kodu JavaScript w środowisku Node.js
 Środowisko Node.js można uruchomić w wierszu polecenia powłoki Bash, programu Terminal lub systemu Windows, wpisując polecenie `node`, a następnie uruchomić przykładowy kod JavaScript przez skopiowanie i wklejenie go w wierszu polecenia. Alternatywnie można zapisać kod JavaScript w pliku tekstowym, a następnie uruchomić polecenie `node filename.js` z nazwą pliku jako parametrem uruchamiania.

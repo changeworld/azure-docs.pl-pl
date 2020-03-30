@@ -1,6 +1,6 @@
 ---
-title: 'Kopiowanie i wklejanie do i z maszyny wirtualnej: Azure bastionu'
-description: W tym artykule dowiesz się, jak kopiować i wklejać do i z maszyny wirtualnej platformy Azure przy użyciu programu bastionu.
+title: 'Kopiowanie i wklejanie do i z maszyny wirtualnej: Bastion platformy Azure'
+description: W tym artykule dowiesz się, jak kopiować i wklejać do i z maszyny Wirtualnej platformy Azure przy użyciu bastionu.
 services: bastion
 author: cherylmc
 ms.service: bastion
@@ -8,52 +8,52 @@ ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: cherylmc
 ms.openlocfilehash: 0aaf816cdfe7d42fd345eb4f010cf47b1615f462
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/04/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76989539"
 ---
-# <a name="copy-and-paste-to-a-virtual-machine-azure-bastion"></a>Kopiowanie i wklejanie do maszyny wirtualnej: Azure bastionu
+# <a name="copy-and-paste-to-a-virtual-machine-azure-bastion"></a>Kopiowanie i wklejenie do maszyny wirtualnej: Bastion platformy Azure
 
-Ten artykuł pomaga w kopiowaniu i wklejaniu tekstu do i z maszyn wirtualnych podczas korzystania z usługi Azure bastionu. Przed rozpoczęciem pracy z maszyną wirtualną upewnij się, że wykonano kroki umożliwiające [utworzenie hosta bastionu](bastion-create-host-portal.md). Następnie nawiąż połączenie z maszyną wirtualną, z którą chcesz współpracować przy użyciu [protokołu RDP](bastion-connect-vm-rdp.md) lub [SSH](bastion-connect-vm-ssh.md).
+Ten artykuł ułatwia kopiowanie i wklejanie tekstu do i z maszyn wirtualnych podczas korzystania z usługi Azure Bastion. Przed rozpoczęciem pracy z maszyną wirtualną upewnij się, że postępujesz do kroków, aby [utworzyć host bastionu](bastion-create-host-portal.md). Następnie połącz się z maszyną wirtualną, z którą chcesz pracować, korzystając z [protokołu RDP](bastion-connect-vm-rdp.md) lub [SSH](bastion-connect-vm-ssh.md).
 
-W przypadku przeglądarek obsługujących zaawansowany dostęp do interfejsu API schowka można kopiować i wklejać tekst między urządzeniem lokalnym a sesją zdalną w taki sam sposób, jak kopiowanie i wklejanie między aplikacjami na urządzeniu lokalnym. W przypadku innych przeglądarek można użyć palety narzędzia dostępu do schowka bastionu.
+W przypadku przeglądarek obsługujących zaawansowany dostęp do interfejsu API Schowka można kopiować i wklejać tekst między urządzeniem lokalnym a sesją zdalną w taki sam sposób, w jaki można kopiować i wklejać między aplikacjami na urządzeniu lokalnym. W przypadku innych przeglądarek można użyć palety narzędzi dostępu do schowka Bastion.
 
    ![Zezwalaj na schowek](./media/bastion-vm-manage/allow.png)
 
-Obsługiwane jest tylko kopiowanie tekstu/wklejanie. W przypadku bezpośredniej kopiowania i wklejania przeglądarka może monitować o dostęp do schowka po zainicjowaniu sesji bastionu. **Zezwól** stronie sieci Web na dostęp do Schowka.
+Obsługiwane jest tylko kopiowanie/wklejanie tekstu. W przypadku bezpośredniego kopiowania i wklejania przeglądarka może monitować o dostęp do schowka podczas inicjowania sesji Bastion. **Zezwól** stronie internetowej na dostęp do schowka.
 
-## <a name="to"></a>Kopiuj do sesji zdalnej
+## <a name="copy-to-a-remote-session"></a><a name="to"></a>Kopiowanie do sesji zdalnej
 
-Po nawiązaniu połączenia z maszyną wirtualną przy użyciu [Azure Portal ](https://portal.azure.com)wykonaj następujące czynności:
+Po nawiązaniu połączenia z maszyną wirtualną za pomocą [portalu Azure ](https://portal.azure.com)wykonaj następujące kroki:
 
-1. Skopiuj tekst/zawartość z urządzenia lokalnego do schowka lokalnego.
-1. Podczas sesji zdalnej Uruchom paletę narzędzi dostępu do schowka bastionu, wybierając dwie strzałki. Strzałki znajdują się na lewym środku sesji.
+1. Skopiuj tekst/zawartość z urządzenia lokalnego do lokalnego schowka.
+1. Podczas sesji zdalnej uruchom paletę narzędzi dostępu do schowka Bastion, wybierając dwie strzałki. Strzałki znajdują się po lewej stronie sesji.
 
-   ![Paleta narzędzi](./media/bastion-vm-manage/left.png)
+   ![paleta narzędzi](./media/bastion-vm-manage/left.png)
 
-   ![Schowka](./media/bastion-vm-manage/clipboard.png)
-1. Zwykle kopiowany tekst jest automatycznie wyświetlany na palecie kopiowania bastionu. Jeśli Twój tekst nie istnieje, wklej tekst w obszarze tekstu na palecie.
-1. Gdy tekst znajduje się w obszarze tekstu, można wkleić go do sesji zdalnej.
+   ![schowek](./media/bastion-vm-manage/clipboard.png)
+1. Zazwyczaj skopiowany tekst jest automatycznie wyświetlany na palecie wklejanie kopii bastionu. Jeśli tekstu nie ma, wklej tekst w obszarze tekstowym na palecie.
+1. Gdy tekst znajduje się w obszarze tekstowym, można go wkleić do sesji zdalnej.
 
    ![Wklej](./media/bastion-vm-manage/local.png)
 
-## <a name="from"></a>Kopiuj z sesji zdalnej
+## <a name="copy-from-a-remote-session"></a><a name="from"></a>Kopiowanie z sesji zdalnej
 
-Po nawiązaniu połączenia z maszyną wirtualną przy użyciu [Azure Portal ](https://portal.azure.com)wykonaj następujące czynności:
+Po nawiązaniu połączenia z maszyną wirtualną za pomocą [portalu Azure ](https://portal.azure.com)wykonaj następujące kroki:
 
-1. Skopiuj tekst/zawartość z sesji zdalnej do zdalnego schowka (przy użyciu kombinacji klawiszy CTRL-C).
+1. Skopiuj tekst/zawartość z sesji zdalnej do zdalnego schowka (za pomocą klawisza Ctrl-C).
 
-   ![Paleta narzędzi](./media/bastion-vm-manage/remote.png)
-1. Podczas sesji zdalnej Uruchom paletę narzędzi dostępu do schowka bastionu, wybierając dwie strzałki. Strzałki znajdują się na lewym środku sesji.
+   ![paleta narzędzi](./media/bastion-vm-manage/remote.png)
+1. Podczas sesji zdalnej uruchom paletę narzędzi dostępu do schowka Bastion, wybierając dwie strzałki. Strzałki znajdują się po lewej stronie sesji.
 
-   ![Schowka](./media/bastion-vm-manage/clipboard2.png)
-1. Zwykle kopiowany tekst jest automatycznie wyświetlany na palecie kopiowania bastionu. Jeśli Twój tekst nie istnieje, wklej tekst w obszarze tekstu na palecie.
-1. Gdy tekst znajduje się w obszarze tekstu, można wkleić go do urządzenia lokalnego.
+   ![schowek](./media/bastion-vm-manage/clipboard2.png)
+1. Zazwyczaj skopiowany tekst jest automatycznie wyświetlany na palecie wklejanie kopii bastionu. Jeśli tekstu nie ma, wklej tekst w obszarze tekstowym na palecie.
+1. Gdy tekst znajduje się w obszarze tekstowym, można go wkleić do urządzenia lokalnego.
 
    ![Wklej](./media/bastion-vm-manage/local2.png)
  
 ## <a name="next-steps"></a>Następne kroki
 
-Zapoznaj się z [bastionu często zadawanych pytań](bastion-faq.md).
+Przeczytaj często zadawane pytania dotyczące [bastionu](bastion-faq.md).

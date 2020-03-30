@@ -1,6 +1,6 @@
 ---
-title: Inicjowanie obsługi węzłów dla rozwiązań VMware (Automatyczna synchronizacja) — Azure
-description: Dowiedz się, jak dodać węzły do programu VMWare z wdrożeniem automatycznej synchronizacji
+title: Węzły inicjowania obsługi administracyjnej rozwiązania VMware według usługi CloudSimple — Azure
+description: Dowiedz się, jak dodać węzły do urządzenia VMWare za pomocą wdrożenia CloudSimple
 author: dikamath
 ms.author: dikamath
 ms.date: 08/14/2019
@@ -8,44 +8,44 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 94ca681153f1e3ccd9ff628b41a9d0e547be5802
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: eb033425d18b472c9da1a2d6a1bb6f166702905e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77024810"
 ---
-# <a name="provision-nodes-for-azure-vmware-solutions-avs"></a>Inicjowanie obsługi węzłów dla rozwiązań VMware platformy Azure (Automatyczna synchronizacja)
+# <a name="provision-nodes-for-azure-vmware-solution-by-cloudsimple"></a>Inicjowanie obsługi administracyjnej węzłów rozwiązania Azure VMware przez CloudSimple
 
-Inicjowanie obsługi węzłów w Azure Portal. Następnie możesz skonfigurować przepustowość zgodnie z rzeczywistym użyciem w środowisku chmury prywatnej.
+Inicjuj węzeły w witrynie Azure portal. Następnie można skonfigurować pojemność płatności zgodnie z rzeczywistyma pozycją dla środowiska chmury prywatnej CloudSimple.
 
-## <a name="sign-in-to-azure"></a>Zaloguj się w usłudze Azure
+## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
 
-Zaloguj się do witryny Azure Portal pod adresem [https://portal.azure.com](https://portal.azure.com).
+Zaloguj się do witryny Azure portal w [https://portal.azure.com](https://portal.azure.com).
 
-## <a name="add-a-node-to-your-avs-private-cloud"></a>Dodawanie węzła do chmury prywatnej do automatycznej synchronizacji
+## <a name="add-a-node-to-your-cloudsimple-private-cloud"></a>Dodawanie węzła do chmury prywatnej CloudSimple
 
 1. Wybierz pozycję **Wszystkie usługi**.
-2. Wyszukaj **węzły automatycznej synchronizacji**.
+2. Wyszukaj **węzły CloudSimple**.
 
-   ![Wyszukaj węzły automatycznej synchronizacji](media/create-cloudsimple-node-search.png)
+   ![Szukaj węzłów CloudSimple](media/create-cloudsimple-node-search.png)
 
-3. Wybierz **węzły automatyczna synchronizacja**.
-4. Kliknij przycisk **Dodaj** , aby utworzyć węzły.
+3. Wybierz **opcję Węzły CloudSimple**.
+4. Kliknij **przycisk Dodaj,** aby utworzyć węzły.
 
-    ![Dodaj węzły automatycznej synchronizacji](media/create-cloudsimple-node-add.png)
+    ![Dodawanie węzłów CloudSimple](media/create-cloudsimple-node-add.png)
 
-5. Wybierz subskrypcję, w której chcesz udostępnić węzły automatycznej synchronizacji.
-6. Wybierz grupę zasobów dla węzłów. Aby dodać nową grupę zasobów, kliknij pozycję **Utwórz nową**.
+5. Wybierz subskrypcję, w której chcesz aprowizować węzły CloudSimple.
+6. Wybierz grupę zasobów dla węzłów. Aby dodać nową grupę zasobów, kliknij przycisk **Utwórz nowy**.
 7. Wprowadź prefiks, aby zidentyfikować węzły.
 8. Wybierz lokalizację dla zasobów węzła.
-9. Wybierz dedykowaną lokalizację do hostowania zasobów węzła.
-10. Wybierz [Typ węzła](cloudsimple-node.md).
-11. Wybierz liczbę węzłów do aprowizacji.
-12. Wybierz pozycję **Przegląd + utwórz**.
-13. Przejrzyj ustawienia. Aby zmodyfikować wszystkie ustawienia, kliknij przycisk **Wstecz**.
-14. Wybierz pozycję **Utwórz**.
+9. Wybierz dedykowaną lokalizację, aby obsługiwać zasoby węzła.
+10. Wybierz [typ węzła](cloudsimple-node.md).
+11. Wybierz liczbę węzłów do zainicjowania.
+12. Wybierz **pozycję Recenzja + Utwórz**.
+13. Przejrzyj ustawienia. Aby zmodyfikować dowolne ustawienia, kliknij przycisk **Poprzedni**.
+14. Wybierz **pozycję Utwórz**.
 
 ## <a name="next-steps"></a>Następne kroki
 
-* [Tworzenie automatycznej synchronizacji w chmurze prywatnej](create-private-cloud.md)
+* [Tworzenie chmury prywatnej](create-private-cloud.md)

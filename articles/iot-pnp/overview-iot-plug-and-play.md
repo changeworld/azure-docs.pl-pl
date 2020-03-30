@@ -1,6 +1,6 @@
 ---
-title: Wprowadzenie do wersji zapoznawczej IoT Plug and Play | Microsoft Docs
-description: Dowiedz się więcej o usłudze IoT Plug and Play Preview. Plug and Play IoT jest oparta na otwartym języku modelowania, który umożliwia urządzeniom IoT zadeklarować swoje możliwości. Urządzenia IoT stanowią tę deklarację nazywaną modelem możliwości urządzenia, gdy łączą się z rozwiązaniami w chmurze, takimi jak Azure IoT Central lub Aplikacje partnerskie. Rozwiązanie w chmurze może następnie automatycznie zrozumieć urządzenie i zacząć z niego korzystać — wszystko to bez konieczności pisania kodu.
+title: Wprowadzenie do wersji zapoznawczej i odtwórczych IoT | Dokumenty firmy Microsoft
+description: Dowiedz się więcej o podglądzie i odtworzenia IoT. Funkcja IoT Plug and Play jest oparta na otwartym języku modelowania, który umożliwia urządzeniom IoT deklarowanie ich możliwości. Urządzenia IoT prezentują tę deklarację, nazywaną modelem możliwości urządzenia, gdy łączą się z rozwiązaniami w chmurze, takimi jak Azure IoT Central lub aplikacje partnerskie. Rozwiązanie w chmurze może następnie automatycznie zrozumieć urządzenie i rozpocząć interakcję z nim — wszystko to bez pisania kodu.
 author: ChrisGMsft
 ms.author: chrisgre
 ms.date: 12/23/2019
@@ -9,83 +9,83 @@ ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
-ms.openlocfilehash: 54a18bb20ab9af3ad794ed678ea3234a712bf5cb
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 0399e1659fb7cc6a650c6b3c1d0189c8802d4904
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75531166"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80064312"
 ---
-# <a name="what-is-iot-plug-and-play-preview"></a>Co to jest IoT Plug and Play w wersji zapoznawczej?
+# <a name="what-is-iot-plug-and-play-preview"></a>Co to jest podgląd ioT Plug and Play?
 
-Wersja zapoznawcza Plug and Play IoT umożliwia deweloperom rozwiązań integrację urządzeń z ich rozwiązaniami bez konieczności pisania kodu osadzonego. Podstawą Plug and Play IoT jest schemat _modelu możliwości urządzenia_ , który opisuje możliwości urządzeń. Ten schemat jest dokumentem JSON, który jest strukturalny jako zestaw interfejsów, które obejmują definicje:
+IoT Plug and Play Preview umożliwia deweloperom rozwiązań integrowanie urządzeń z ich rozwiązaniami bez pisania kodu osadzonego. Sednem IoT Plug and Play jest schemat _modelu możliwości urządzenia,_ który opisuje możliwości urządzenia. Ten schemat jest dokument JSON, który jest skonstruowany jako zestaw interfejsów, które zawierają definicje:
 
-- _Właściwości_ reprezentujące stan tylko do odczytu i odczytu/zapisu urządzenia lub innej jednostki. Na przykład numer seryjny urządzenia może być właściwością tylko do odczytu, a docelowa temperatura w termostatie może być właściwością odczytu/zapisu.
-- Dane _telemetryczne_ , które są emitowane przez urządzenie, niezależnie od tego, czy dane są regularnym strumieniem odczytów czujnika, okazjonalnym błędem czy komunikatem informacyjnym.
-- _Polecenia_ opisujące funkcję lub operację, którą można wykonać na urządzeniu. Na przykład polecenie może ponownie uruchomić bramę lub zrobić zdjęcie przy użyciu zdalnej kamery.
+- _Właściwości reprezentujące_ stan tylko do odczytu i odczytu/zapisu urządzenia lub innej jednostki. Na przykład numer seryjny urządzenia może być właściwością tylko do odczytu, a temperatura docelowa na termostatze może być właściwością odczytu/zapisu.
+- _Dane telemetryczne,_ które są danymi emitowanymi przez urządzenie, niezależnie od tego, czy dane są zwykłym strumieniem odczytów czujników, sporadycznym błędem lub komunikatem informacyjnym.
+- _Polecenia opisujące_ funkcję lub operację, które można wykonać na urządzeniu. Na przykład polecenie może ponownie uruchomić bramę lub zrobić zdjęcie za pomocą zdalnej kamery.
 
-Można ponownie użyć interfejsów między modelami możliwości urządzeń, aby ułatwić współpracę i przyspieszyć programowanie.
+Interfejsy można ponownie używać w różnych modelach możliwości urządzeń, aby ułatwić współpracę i przyspieszyć rozwój.
 
-Aby usługa IoT Plug and Play bezproblemowo korzystać z [usługi Azure Digital bliźniaczych reprezentacji](../digital-twins/about-digital-twins.md), schemat Plug and Play IoT zostanie zdefiniowany przy użyciu [języka Digital sznur Definition Language (DTDL)](https://github.com/Azure/IoTPlugandPlay/tree/master/DTDL). Plug and Play IoT i DTDL są otwarte dla społeczności, a firma Microsoft zachęca do współpracy z klientami, partnerami i branżą. Oba są oparte na otwartych standardach W3C, takich jak JSON-LD i RDF, które umożliwiają łatwiejsze wdrażanie w ramach usług i narzędzi. Ponadto nie ma dodatkowych kosztów związanych z korzystaniem z usługi IoT Plug and Play i DTDL. Standardowe stawki za [usługę azure IoT Hub](../iot-hub/about-iot-hub.md), [Azure IoT Central](../iot-central/core/overview-iot-central.md)i inne usługi platformy Azure pozostają takie same.
+Aby usługa IoT Plug and Play bezproblemowo działała z [usługą Azure Digital Twins,](../digital-twins/about-digital-twins.md)schemat IoT Plug and Play jest definiowany przy użyciu [języka Cyfrowej Bliźniaczej definicji (DTDL).](https://github.com/Azure/IoTPlugandPlay/tree/master/DTDL) IoT Plug and Play i DTDL są otwarte dla społeczności, a firma Microsoft z zadowoleniem przyjmuje współpracę z klientami, partnerami i branżą. Oba są oparte na otwartych standardach W3C, takich jak JSON-LD i RDF, które umożliwiają łatwiejsze wdrażanie usług i narzędzi. Ponadto korzystanie z funkcji IoT Plug and Play i DTDL nie ma żadnych dodatkowych kosztów. Stawki standardowe dla [usługi Azure IoT Hub,](../iot-hub/about-iot-hub.md) [Usługi Azure IoT Central](../iot-central/core/overview-iot-central.md)i innych usług platformy Azure pozostają takie same.
 
-Rozwiązania oparte na IoT Hub lub IoT Central mogą korzystać z usługi IoT Plug and Play.
+Rozwiązania oparte na Uiście IoT Hub lub IoT Central mogą korzystać z technologii IoT Plug and Play.
 
-Ten artykuł zawiera opis:
+W tym artykule opisano:
 
-- Typowe role skojarzone z projektem, który używa Plug and Play IoT.
-- Jak korzystać z urządzeń Plug and Play IoT w aplikacji.
-- Jak opracowywać aplikację urządzenia IoT, która obsługuje Plug and Play IoT.
-- Jak zatwierdzić urządzenie Plug and Play IoT i opublikować je w [wykazie urządzeń z certyfikatem usługi IoT](https://catalog.azureiotsolutions.com/).
+- Typowe role skojarzone z projektem, który używa IoT Plug and Play.
+- Jak korzystać z urządzeń IoT Plug and Play w aplikacji.
+- Jak opracować aplikację urządzenia IoT, która obsługuje IoT Plug and Play.
+- Jak certyfikować urządzenie IoT Plug and Play i publikować w [katalogu urządzeń Certified for IoT](https://catalog.azureiotsolutions.com/).
 
 ## <a name="user-roles"></a>Role użytkownika
 
-Plug and Play IoT jest przydatne dla dwóch typów deweloperów:
+IoT Plug and Play jest przydatne dla dwóch typów programistów:
 
-- _Deweloper rozwiązań_ jest odpowiedzialny za opracowywanie rozwiązania IoT przy użyciu usługi Azure IoT i innych zasobów platformy Azure oraz do identyfikowania urządzeń IoT do integracji.
-- _Deweloper urządzenia_ tworzy kod, który jest uruchamiany na urządzeniu podłączonym do rozwiązania.
+- _Deweloper rozwiązania_ jest odpowiedzialny za tworzenie rozwiązania IoT przy użyciu usługi Azure IoT i innych zasobów platformy Azure oraz za identyfikowanie urządzeń IoT w celu integracji.
+- _Deweloper urządzenia_ tworzy kod, który działa na urządzeniu podłączonym do rozwiązania.
 
-## <a name="use-iot-plug-and-play-devices"></a>Korzystanie z urządzeń Plug and Play IoT
+## <a name="use-iot-plug-and-play-devices"></a>Korzystanie z urządzeń Typu Plug and Play ioT
 
-Jako programista rozwiązań możesz opracowywać rozwiązanie IoT hostowane w chmurze, które korzysta z urządzeń Plug and Play IoT. Możesz użyć jednej z następujących usług platformy Azure:
+Jako deweloper rozwiązania możesz opracować rozwiązanie IoT hostowane w chmurze, które używa urządzeń IoT Plug and Play. Można użyć jednej z następujących usług platformy Azure:
 
-- [IoT Central](../iot-central/core/overview-iot-central.md) — w pełni zarządzane rozwiązanie typu "oprogramowanie jako usługa IoT", które ułatwia tworzenie produktów łączących fizyczne i cyfrowe środowiska światowe.
-- [IoT Hub](../iot-hub/about-iot-hub.md) — zarządzana usługa w chmurze, która działa jako centrum komunikatów w celu bezpiecznej, dwukierunkowej komunikacji między aplikacją IoT i urządzeniami.
+- [IoT Central](../iot-central/core/overview-iot-central.md) - w pełni zarządzane rozwiązanie do obsługi oprogramowania IoT jako usługi, które ułatwia tworzenie produktów łączących światy fizyczne i cyfrowe.
+- [Usługa IoT Hub](../iot-hub/about-iot-hub.md) — zarządzana usługa w chmurze, która działa jako centrum komunikatów dla bezpiecznej, dwukierunkowej komunikacji między aplikacją IoT a urządzeniami.
 
-Urządzenia IoT Plug and Play można znaleźć za pomocą wykazu urządzeń z certyfikatem platformy Azure dla IoT. Każde urządzenie Plug and Play IoT w wykazie zostało zweryfikowane i ma model możliwości urządzenia. Wyświetl model możliwości urządzenia, aby zrozumieć funkcjonalność urządzenia lub użyć go do symulowania urządzenia w usłudze Azure IoT Central.
+Urządzenia IoT Plug and Play można znaleźć za pośrednictwem katalogu urządzeń z certyfikatem platformy Azure dla IoT. Każde urządzenie Typu Plug and Play ioT w katalogu zostało zweryfikowane i ma model możliwości urządzenia. Wyświetl model możliwości urządzenia, aby zrozumieć funkcjonalność urządzenia lub użyć go do symulacji urządzenia w usłudze Azure IoT Central.
 
-Po nawiązaniu połączenia z urządzeniem IoT Plug and Play można wyświetlić jego model możliwości urządzenia, interfejsy zawarte w modelu oraz dane telemetryczne, właściwości i polecenia zdefiniowane w tych interfejsach.
+Po podłączeniu urządzenia Typu Plug and Play usługi IoT można wyświetlić jego model możliwości urządzenia, interfejsy zawarte w modelu oraz dane telemetryczne, właściwości i polecenia zdefiniowane w tych interfejsach.
 
-## <a name="develop-an-iot-device-application"></a>Opracowywanie aplikacji urządzenia IoT
+## <a name="develop-an-iot-device-application"></a>Tworzenie aplikacji na urządzenie IoT
 
-Jako deweloper urządzenia możesz opracować produkt sprzętu IoT, który obsługuje Plug and Play IoT. Proces obejmuje dwa kluczowe kroki:
+Jako deweloper urządzeń możesz opracować produkt sprzętowy IoT, który obsługuje funkcję IoT Plug and Play. Proces ten obejmuje dwa kluczowe etapy:
 
-1. Zdefiniuj model możliwości urządzenia i interfejsy. Tworzysz zestaw plików JSON, które deklarują możliwości urządzenia przy użyciu [DTDL](https://github.com/Azure/IoTPlugandPlay/tree/master/DTDL). Model możliwości urządzenia opisuje kompletną jednostkę, taką jak produkt fizyczny, i definiuje zestaw interfejsów implementowanych przez tę jednostkę. Interfejsy są wspólnymi kontraktami, które jednoznacznie identyfikują dane telemetryczne, właściwości i polecenia obsługiwane przez urządzenie. Interfejsy mogą być ponownie używane w różnych modelach możliwości urządzeń.
+1. Zdefiniuj model możliwości urządzenia i interfejsy. Autorem zestawu plików JSON, które deklarują możliwości urządzenia za pomocą [DTDL](https://github.com/Azure/IoTPlugandPlay/tree/master/DTDL). Model możliwości urządzenia opisuje pełną jednostkę, taką jak produkt fizyczny, i definiuje zestaw interfejsów zaimplementowanych przez tę jednostkę. Interfejsy są umów udostępnionych, które jednoznacznie identyfikują dane telemetryczne, właściwości i polecenia obsługiwane przez urządzenie. Interfejsy mogą być ponownie stosowane w różnych modelach możliwości urządzenia.
 
-1. Utwórz oprogramowanie urządzenia lub oprogramowanie układowe, które implementuje możliwości zadeklarowane w modelu możliwości urządzenia i interfejsy. Zestaw SDK usługi Azure IoT zawiera interfejsy API służące do implementowania modeli możliwości urządzeń.
+1. Utwórz oprogramowanie urządzenia lub oprogramowanie układowe, które implementuje funkcje zadeklarowane w modelu możliwości urządzenia i interfejsach. Zestaw SDK usługi Azure IoT zawiera interfejsy API do implementowania modeli możliwości urządzenia.
 
-Pakiet Microsoft [Azure IoT Tools for vs Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) Extension Pack udostępnia wiele funkcji, które ułatwią Ci pomoc. Na przykład jako deweloper urządzenia można użyć rozszerzenia do wygenerowania szkieletowego projektu C z modelu możliwości. Można jednak użyć dowolnego środowiska IDE do tworzenia i implementowania modeli możliwości urządzeń.
+Pakiet rozszerzeń [Narzędzia IoT platformy Azure dla programu VS Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) zawiera wiele funkcji ułatwiających. Na przykład jako deweloper urządzeń można użyć rozszerzenia do generowania szkieletu projektu C z modelu możliwości. Jednak można użyć dowolnego IDE do tworzenia i implementowania modeli możliwości urządzenia.
 
-## <a name="certify-an-iot-plug-and-play-device"></a>Certyfikowanie urządzenia Plug and Play IoT
+## <a name="certify-an-iot-plug-and-play-device"></a>Certyfikuj urządzenie Typu Plug and Play IoT
 
-Jako deweloper urządzenia możesz przesłać produkty sprzętu IoT do certyfikacji. Certyfikowane urządzenie można opublikować w wykazie certyfikowane urządzenia IoT. Kroki procesu certyfikacji obejmują:
+Jako deweloper urządzeń możesz przesłać produkty sprzętowe IoT do certyfikacji. Certyfikowane urządzenie można opublikować w katalogu urządzeń certyfikowanych dla IoT. Etapy procesu certyfikacji obejmują:
 
-- Dołącz do [Microsoft Partner Network](https://partner.microsoft.com).
-- Dołączanie do portalu usługi Azure IoT z certyfikatem.
-- Prześlij model możliwości urządzenia Plug and Play IoT i informacje marketingowe, aby utworzyć nowy rekord urządzenia.
-- Przekaż zautomatyzowany zestaw testów weryfikacyjnych dla urządzenia.
-- Publikowanie w katalogu certyfikowanych urządzeń IoT.
+- Dołącz do [sieci partnerów firmy Microsoft](https://partner.microsoft.com).
+- Dołączanie do portalu Certified for Azure IoT.
+- Prześlij model możliwości urządzenia IoT Plug and Play i informacje marketingowe, aby utworzyć nowy rekord urządzenia.
+- Zdaj automatyczne testy sprawdzania poprawności urządzenia.
+- Publikowanie w katalogu urządzeń Certified for IoT.
 
 ## <a name="regional-availability"></a>Dostępność regionalna
 
-W publicznej wersji zapoznawczej Plug and Play IoT jest dostępny w regionach Europa Północna, środkowe stany USA i Japonia Wschodnia. Upewnij się, że tworzysz centrum w jednym z tych regionów.
+Podczas publicznej wersji zapoznawczej ioT Plug and Play jest dostępny we wszystkich regionach.
 
-## <a name="message-quotas-in-iot-hub"></a>Limity przydziału komunikatów w IoT Hub
-W publicznej wersji zapoznawczej urządzenia IoT Plug and Play wysyłają osobne komunikaty na interfejs, co może zwiększyć liczbę komunikatów zliczanych w ramach [limitu przydziału komunikatów](../iot-hub/iot-hub-devguide-quotas-throttling.md).
+## <a name="message-quotas-in-iot-hub"></a>Przydziały wiadomości w Centrum IoT
+Podczas publicznej wersji zapoznawczej urządzenia IoT Plug and Play wysyłają oddzielne wiadomości na interfejs, co może zwiększyć liczbę wiadomości zaliczonych do [przydziału wiadomości.](../iot-hub/iot-hub-devguide-quotas-throttling.md)
 
 ## <a name="next-steps"></a>Następne kroki
 
-Teraz, gdy masz przegląd Plug and Play IoT, sugerowanym następnym krokiem jest wypróbowanie jednego z przewodników szybki start:
+Teraz, gdy masz przegląd IoT Plug and Play, sugerowanym następnym krokiem jest wypróbowanie jednego z szybkich startów:
 
-- [Tworzenie urządzenia Plug and Play IoT przy użyciu modelu możliwości urządzenia](./quickstart-create-pnp-device-windows.md)
-- [Połącz urządzenie z usługą IoT Hub](./quickstart-connect-pnp-device-c-windows.md)
+- [Tworzenie urządzenia Typu Plug and Play za pomocą modelu funkcji urządzenia](./quickstart-create-pnp-device-windows.md)
+- [Łączenie urządzenia z usługą IoT Hub](./quickstart-connect-pnp-device-c-windows.md)
 - [Nawiązywanie połączenia z urządzeniem w rozwiązaniu](./quickstart-connect-pnp-device-solution-node.md)

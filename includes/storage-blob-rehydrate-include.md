@@ -11,18 +11,18 @@ ms.topic: include
 ms.reviewer: hux
 ms.custom: include file
 ms.openlocfilehash: 81ffc87ce97a936e693c59bca6caf721cb8599cf
-ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "75780248"
 ---
-Aby odczytać dane w magazynie archiwalnym, należy najpierw zmienić warstwę obiektu blob na gorącą lub chłodną. Ten proces jest nazywany odpełnieniem i może trwać kilka godzin. Zalecamy duże rozmiary obiektów BLOB w celu uzyskania optymalnej wydajności. Ponowne wypełnianie kilku małych obiektów blob równocześnie może spowodować dalsze przedłużenie czasu. Obecnie istnieją dwa priorytety odnoszące się do wartości (wersja zapoznawcza) i Standard, które można ustawić za pośrednictwem opcjonalnej właściwości " *x-MS-dehydratacji-Priority"* w [ustawieniu warstwy obiektu BLOB](https://docs.microsoft.com/rest/api/storageservices/set-blob-tier) lub operacji [kopiowania obiektu BLOB](https://docs.microsoft.com/rest/api/storageservices/copy-blob) .
+Aby odczytać dane w magazynie archiwalnym, należy najpierw zmienić warstwę obiektu blob na gorącą lub chłodną. Proces ten jest znany jako nawodnienie i może potrwać wiele godzin. Zalecamy duże rozmiary obiektów blob dla optymalnej wydajności nawodnienia. Ponowne wypełnianie kilku małych obiektów blob równocześnie może spowodować dalsze przedłużenie czasu. Obecnie istnieją dwa priorytety ponownego nawodnienia, Wysoki (wersja zapoznawcza) i Standard, które można ustawić za pomocą opcjonalnej właściwości *x-ms-rehydrate-priority* w operacji [Set Blob Tier](https://docs.microsoft.com/rest/api/storageservices/set-blob-tier) lub [Copy Blob.](https://docs.microsoft.com/rest/api/storageservices/copy-blob)
 
-* **Priorytet standardowy**: żądanie Odnotuj zostanie przetworzone w kolejności, w jakiej zostało odebrane i może trwać do 15 godzin.
-* **Wysoki priorytet (wersja zapoznawcza)** : żądanie ponownego wypełniania będzie ustalane według priorytetów w przypadku żądań standardowych i może zakończyć się w ciągu 1 godziny. Wysoki priorytet może potrwać dłużej niż 1 godzina, w zależności od rozmiaru obiektu BLOB i bieżącego zapotrzebowania. Priorytet żądań o wysokim priorytecie jest gwarantowany przez żądania standardowego priorytetu.
+* **Standardowy priorytet**: Wniosek o nawodnienie zostanie rozpatrzony w kolejności, w jakiej został otrzymany i może potrwać do 15 godzin.
+* **Wysoki priorytet (wersja zapoznawcza)**: Żądanie nawadniania będzie traktowane priorytetowo w stosunku do żądań standardowych i może zakończyć się w mniej niż 1 godzinę. Wysoki priorytet może trwać dłużej niż 1 godzinę, w zależności od rozmiaru obiektu blob i bieżącego zapotrzebowania. Żądania o wysokim priorytecie są gwarantowane jako priorytetowe w stosunku do żądań priorytetu standardowego.
 
 > [!NOTE]
-> Priorytet standardowy to domyślna opcja uzupełniania dla archiwum. Wysoki priorytet to szybsza opcja, która będzie kosztowała więcej niż normalne uzupełnianie priorytetów i jest zazwyczaj zarezerwowana do użycia w sytuacjach awaryjnych przywracania danych.
+> Standardowy priorytet jest domyślną opcją nawodnienia dla archiwum. Wysoki priorytet to szybsza opcja, która będzie kosztować więcej niż standardowe nawodnienie priorytetowe i jest zwykle zarezerwowana do użytku w sytuacjach przywracania danych w sytuacjach awaryjnych.
 
-Po zainicjowaniu żądania ponownego wypełniania nie można go anulować. Podczas ponownego wypełniania można sprawdzać właściwość obiektu blob *Stan archiwum*, aby upewnić się, że warstwa została zmieniona. Właściwość ta ma wartość „rehydrate-pending-to-hot” (ponowne wypełnianie w celu przejścia do warstwy gorącej) lub „rehydrate-pending-to-cool” (ponowne wypełnianie w celu przejścia do warstwy chłodnej) w zależności od warstwy docelowej. Po zakończeniu tego procesu właściwość obiektu blob „stan archiwum” jest usuwana, a wartość właściwości *Warstwa dostępu* odpowiada nowej warstwie Gorąca lub Chłodna.
+Po zainicjowaniu żądania ponownego nawodnienia nie można go anulować. Podczas ponownego wypełniania można sprawdzać właściwość obiektu blob *Stan archiwum*, aby upewnić się, że warstwa została zmieniona. Właściwość ta ma wartość „rehydrate-pending-to-hot” (ponowne wypełnianie w celu przejścia do warstwy gorącej) lub „rehydrate-pending-to-cool” (ponowne wypełnianie w celu przejścia do warstwy chłodnej) w zależności od warstwy docelowej. Po zakończeniu tego procesu właściwość obiektu blob „stan archiwum” jest usuwana, a wartość właściwości *Warstwa dostępu* odpowiada nowej warstwie Gorąca lub Chłodna.

@@ -1,7 +1,7 @@
 ---
-title: Dodawanie okna podręcznego do punktu na mapie | Mapy Microsoft Azure
-description: W tym artykule dowiesz się, jak dodać okno podręczne do punktu przy użyciu zestawu Microsoft Azure Web SDK mapy.
-author: jingjing-z
+title: Dodawanie okna podręcznego do punktu na mapie | Mapy platformy Microsoft Azure
+description: W tym artykule dowiesz się, jak dodać okno podręczne do punktu przy użyciu zestawu SDK sieci Web microsoft azure maps.
+author: jinzh-azureiot
 ms.author: jinzh
 ms.date: 02/27/2020
 ms.topic: conceptual
@@ -9,20 +9,20 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 588de08666930937c3ad965b2609f8e207b75eca
-ms.sourcegitcommit: 5192c04feaa3d1bd564efe957f200b7b1a93a381
+ms.openlocfilehash: cf6424d2a6cbcfb7c5052201b5a9190c81fddaff
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/02/2020
-ms.locfileid: "78208852"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80055948"
 ---
-# <a name="add-a-popup-to-the-map"></a>Dodawanie okna podręcznego do mapy
+# <a name="add-a-popup-to-the-map"></a>Dodawanie wyskakujących okienka do mapy
 
-W tym artykule opisano sposób dodawania okna podręcznego do punktu na mapie.
+W tym artykule pokazano, jak dodać okno podręczne do punktu na mapie.
 
 ## <a name="understand-the-code"></a>Zrozumienie kodu
 
-Poniższy kod dodaje funkcję punktu, która ma `name` i `description` właściwości, do mapy za pomocą warstwy symboli. Wystąpienie [klasy popup](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest) jest tworzone, ale nie jest wyświetlane. Zdarzenia myszy są dodawane do warstwy symboli, aby wyzwolić otwieranie i zamykanie okna podręcznego. Gdy symbol znacznika jest aktywowany, właściwość `position` menu podręcznego jest aktualizowana przy użyciu pozycji znacznika, a opcja `content` jest aktualizowana przy użyciu pewnego kodu HTML, który otacza `name` i `description` właściwości punktu, w którym znajduje się kursor. Następnie zostanie wyświetlone okno podręczne na mapie przy użyciu funkcji `open`.
+Poniższy kod dodaje obiekt punktowy, który ma `name` i `description` właściwości, do mapy za pomocą warstwy symbolu. Wystąpienie [popup klasy](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup) jest tworzony, ale nie jest wyświetlany. Zdarzenia myszy są dodawane do warstwy symboli, aby wyzwolić otwieranie i zamykanie okna podręcznego. Gdy symbol znacznika jest najechany, właściwość okna podręcznego jest aktualizowana o położenie `position` znacznika, a `content` opcja jest aktualizowana o kod HTML, który otacza `name` właściwości `description` obiektu punktu, który jest najechany kursorem. Wyskakujące okienko jest następnie `open` wyświetlane na mapie przy użyciu jego funkcji.
 
 ```javascript
 //Define an HTML template for a custom popup content laypout.
@@ -76,199 +76,227 @@ map.events.add('mouseleave', symbolLayer, function (){
 });
 ```
 
-Poniżej znajduje się kompletny przykładowy kod wykonywany z powyższymi funkcjami.
+Poniżej znajduje się kompletny przykładowy kod uruchomiony powyższej funkcji.
 
 <br/>
 
-<iframe height='500' scrolling='no' title='Dodawanie wyskakujących okienek przy użyciu Azure Maps' src='//codepen.io/azuremaps/embed/MPRPvz/?height=500&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zobacz pióro <a href='https://codepen.io/azuremaps/pen/MPRPvz/'>Dodaj wyskakujące okienko przy użyciu Azure Maps</a> Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>CodePen</a>.
+<iframe height='500' scrolling='no' title='Dodawanie wyskakujących okienka przy użyciu usługi Azure Maps' src='//codepen.io/azuremaps/embed/MPRPvz/?height=500&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zobacz <a href='https://codepen.io/azuremaps/pen/MPRPvz/'>pióro Dodaj wyskakujące okienko przy użyciu usługi Azure Maps</a> by Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na funkcji <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
-## <a name="reusing-a-popup-with-multiple-points"></a>Używanie okna podręcznego z wieloma punktami
+## <a name="reusing-a-popup-with-multiple-points"></a>Ponowne czesanie wyskakującego okienka z wieloma punktami
 
-Istnieją przypadki, w których najlepszym rozwiązaniem jest utworzenie jednego okna podręcznego i jego ponowne użycie. Na przykład możesz mieć dużą liczbę punktów i chcesz wyświetlić tylko jedno podręczne. Za pomocą tego okna podręcznego, liczba elementów DOM utworzonych przez aplikację jest znacznie zmniejszona, co może zapewnić lepszą wydajność. Poniższy przykład tworzy funkcje 3-punktowe. Po kliknięciu dowolnego z nich zostanie wyświetlone okno podręczne z zawartością dla tej funkcji punktu.
+Istnieją przypadki, w których najlepszym rozwiązaniem jest utworzenie jednego okna podręcznego i ponowne użycie go. Na przykład może mieć dużą liczbę punktów i chcesz pokazać tylko jedno wyskakujące okienko naraz. Po ponownym uruchomieniu okna podręcznego liczba elementów DOM utworzonych przez aplikację jest znacznie zmniejszona, co może zapewnić lepszą wydajność. Poniższy przykład tworzy 3-punktowe operacje. Jeśli klikniesz na którykolwiek z nich, zostanie wyświetlone okno podręczne z zawartością tej funkcji punktu.
 
 <br/>
 
-<iframe height='500' scrolling='no' title='Używanie podręcznego z wieloma numerami PIN' src='//codepen.io/azuremaps/embed/rQbjvK/?height=500&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zapoznaj się z <a href='https://codepen.io/azuremaps/pen/rQbjvK/'>menu podręcznego z wieloma</a> numerami pin przez Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>CodePen</a>.
+<iframe height='500' scrolling='no' title='Ponowne wyskakowanie z wieloma pinami' src='//codepen.io/azuremaps/embed/rQbjvK/?height=500&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zobacz okno <a href='https://codepen.io/azuremaps/pen/rQbjvK/'>podręczne Pióro ponowne z wieloma pinami</a> według usługi Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na funkcji <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
-## <a name="customizing-a-popup"></a>Dostosowywanie okna podręcznego
+## <a name="customizing-a-popup"></a>Dostosowywanie wyskakującego okienka
 
-Domyślnie okno podręczne ma białe tło, strzałkę wskaźnika na dole i przycisk Zamknij w prawym górnym rogu. Poniższy przykład zmienia kolor tła na czarny przy użyciu opcji `fillColor` okienka podręcznego. Przycisk Zamknij jest usuwany przez ustawienie opcji `CloseButton` na false. Zawartość HTML z menu podręcznego jest uzupełniona o 10 pikseli od krawędzi okienka podręcznego. Tekst jest biały, więc pokazuje dobrze na czarnym tle.  
+Domyślnie okno podręczne ma białe tło, strzałkę wskaźnika u dołu i przycisk zamknięcia w prawym górnym rogu. Poniższa próbka zmienia kolor tła na czarny, korzystając z `fillColor` opcji okna podręcznego. Przycisk zamknij zostanie usunięty `CloseButton` przez ustawienie opcji false. Zawartość HTML w wyskakującym okienku używa wyściełane 10 pikseli od krawędzi okna podręcznego. Tekst jest biały, więc dobrze pokazuje się na czarnym tle.  
 
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="Niestandardowe okno podręczne" src="//codepen.io/azuremaps/embed/ymKgdg/?height=500&theme-id=0&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true">
-Zobacz <a href='https://codepen.io/azuremaps/pen/ymKgdg/'>niestandardowe podręczne</a> pióro, Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>CodePen</a>.
+Zobacz <a href='https://codepen.io/azuremaps/pen/ymKgdg/'>wyskakujące okienko</a> <a href='https://codepen.io/azuremaps'>@azuremaps</a>dostosowane do pióra przez usługi Azure Maps ( ) na <a href='https://codepen.io'>funkcji CodePen</a>.
 </iframe>
 
-## <a name="add-popup-templates-to-the-map"></a>Dodawanie szablonów podręcznych do mapy
+## <a name="add-popup-templates-to-the-map"></a>Dodawanie szablonów wyskakujących do mapy
 
-Szablony wyskakujące ułatwiają tworzenie układów opartych na danych dla okien podręcznych. W poniższych sekcjach przedstawiono użycie różnych szablonów podręcznych w celu wygenerowania sformatowanej zawartości przy użyciu właściwości funkcji.
+Szablony wyskakujących okienków ułatwiają tworzenie układów opartych na danych dla wyskakujących okienków. Poniższe sekcje pokazują użycie różnych szablonów wyskakujących do generowania sformatowanej zawartości przy użyciu właściwości funkcji.
+
+> [!NOTE]
+> Domyślnie cała zawartość renderowana używa szablonu wyskakujących okienka będzie piaskownica wewnątrz elementu iframe jako funkcja zabezpieczeń. Istnieją jednak ograniczenia:
+>
+> - Wszystkie skrypty, formularze, blokada wskaźnika i górna funkcja nawigacji są wyłączone. Linki mogą otwierać się na nowej karcie po kliknięciu. 
+> - Starsze przeglądarki, które nie `srcdoc` obsługują parametru w elementów iframe, będą ograniczone do renderowania niewielkiej ilości zawartości.
+> 
+> Jeśli ufasz, że dane są ładowane do wyskakujących okienk i potencjalnie chcesz, aby te skrypty ładowane do wyskakujących okienka mogły uzyskać dostęp do aplikacji, możesz wyłączyć to, ustawiając opcję szablonów wyskakujących `sandboxContent` na false. 
 
 ### <a name="string-template"></a>Szablon ciągu
 
-Szablon ciągu zastępuje symbole zastępcze wartościami właściwości funkcji. Właściwościom funkcji nie trzeba przypisywać wartości typu String. Na przykład `value1` przechowuje liczbę całkowitą. Te wartości są następnie przesyłane do właściwości zawartość `popupTemplate`. 
+Szablon Ciąg zastępuje symbole zastępcze wartościami właściwości operacji. Właściwości operacji nie muszą być przypisane wartość typu String. Na przykład `value1` przechowuje całkowitą. Wartości te są następnie przekazywane do `popupTemplate`właściwości zawartości . 
 
-Opcja `numberFormat` określa format liczby do wyświetlenia. Jeśli nie określono `numberFormat`, kod będzie używać formatu daty szablonów podręcznych. Opcja `numberFormat` formatuje cyfry przy użyciu funkcji [Number. toLocaleString](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number/toLocaleString) . Aby sformatować duże liczby, należy rozważyć użycie opcji `numberFormat` z funkcjami z [NumberFormat. format](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/NumberFormat/format). Na przykład poniższy fragment kodu używa `maximumFractionDigits`, aby ograniczyć liczbę cyfr ułamków do dwóch.
+Opcja `numberFormat` określa format liczby do wyświetlenia. Jeśli `numberFormat` nie jest określony, a następnie kod użyje formatu daty szablonów wyskakujących. Opcja `numberFormat` formatuje liczby za pomocą funkcji [Number.toLocaleString.](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number/toLocaleString) Aby sformatować duże `numberFormat` liczby, należy rozważyć użycie opcji z funkcjami z [numberformat.format](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/NumberFormat/format). Na przykład fragment kodu poniżej używa `maximumFractionDigits` do ograniczenia liczby cyfr ułamków do dwóch.
 
 > [!Note]
-> Istnieje tylko jeden sposób renderowania obrazów przez szablon ciągu. Najpierw szablon ciągu musi mieć tag obrazu. Wartość, która jest przesyłana do znacznika obrazu, powinna być adresem URL obrazu. Następnie szablon ciągu musi mieć ustawioną wartość true w `HyperLinkFormatOptions``isImage`. Opcja `isImage` określa, że hiperłącze jest dla obrazu, a hiperlink zostanie załadowany do tagu obrazu. Po kliknięciu hiperlinku zostanie otwarty obraz.
+> Jest tylko jeden sposób, w którym szablon String może renderować obrazy. Po pierwsze, szablon String musi mieć znacznik obrazu w nim. Wartość przekazywana do znacznika obrazu powinna być adresem URL obrazu. Następnie szablon Ciąg musi `isImage` mieć ustawioną `HyperLinkFormatOptions`wartość true w pliku . Opcja `isImage` określa, że hiperłącze jest dla obrazu, a hiperłącze zostanie załadowane do znacznika obrazu. Po kliknięciu hiperłącza obraz zostanie otwarty.
 
 ```javascript
-new atlas.data.Feature(new atlas.data.Point([-20, -20]), {
+var templateOptions = {
+  content: 'This template uses a string template with placeholders.<br/><br/> - Value 1 = {value1}<br/> - Value 2 = {value2/subValue}<br/> - Array value [2] = {arrayValue/2}',
+  numberFormat: {
+    maximumFractionDigits: 2
+  }
+};
+
+var feature = new atlas.data.Feature(new atlas.data.Point([0, 0]), {
     title: 'Template 1 - String template',
     value1: 1.2345678,
     value2: {
         subValue: 'Pizza'
     },
-    arrayValue: [3, 4, 5, 6],
-    popupTemplate: {
-        content: 'This template uses a string template with placeholders.<br/><br/> - Value 1 = {value1}<br/> - Value 2 = {value2/subValue}<br/> - Array value [2] = {arrayValue/2}',
-        numberFormat: {
-            maximumFractionDigits: 2
-        }
-    }
-}),
+    arrayValue: [3, 4, 5, 6]
+});
+
+var popup = new atlas.Popup({
+  content: atlas.PopupTemplate.applyTemplate(feature.properties, templateOptions),
+  position: feature.geometry.coordinates
+});
 ```
 
 ### <a name="propertyinfo-template"></a>Szablon PropertyInfo
 
-Szablon PropertyInfo wyświetla dostępne właściwości funkcji. Opcja `label` określa tekst, który ma być wyświetlany użytkownikowi. Jeśli nie określono `label`, zostanie wyświetlone hiperłącze. A jeśli hiperłącze jest obrazem, zostanie wyświetlona wartość przypisana do tagu "Alt". `dateFormat` określa format daty, a jeśli format daty nie zostanie określony, Data będzie renderowana jako ciąg. Opcja `hyperlinkFormat` renderuje linki do kliknięcia, podobnie jak opcja `email` może być używana do renderowania adresów e-mail, które można klikać.
+Szablon PropertyInfo wyświetla dostępne właściwości operacji. Opcja `label` określa tekst do wyświetlenia użytkownikowi. Jeśli `label` nie zostanie określony, zostanie wyświetlone hiperłącze. A jeśli hiperłącze jest obrazem, zostanie wyświetlona wartość przypisana do tagu "alt". Określa `dateFormat` format daty, a jeśli format daty nie jest określony, data będzie renderowana jako ciąg. Opcja `hyperlinkFormat` renderuje klikalne linki, `email` podobnie, opcja może służyć do renderowania klikalnych adresów e-mail.
 
-Zanim szablon PropertyInfo wyświetli właściwości dla użytkownika końcowego, rekursywnie sprawdza, czy właściwości są rzeczywiście zdefiniowane dla tej funkcji. Ignoruje także wyświetlanie właściwości stylu i tytułu. Na przykład nie będzie wyświetlana `color`, `size`, `anchor`, `strokeOpacity`i `visibility`. Dlatego po zakończeniu sprawdzania ścieżki właściwości w zapleczu szablon PropertyInfo pokazuje zawartość w formacie tabeli.
+Zanim szablon PropertyInfo wyświetli właściwości użytkownikowi końcowemu, cyklicznie sprawdza, czy właściwości są rzeczywiście zdefiniowane dla tej funkcji. Ignoruje również wyświetlanie właściwości stylu i tytułu. Na przykład nie będzie `color`wyświetlany `size` `anchor`, `strokeOpacity`, `visibility`, i . Tak więc po zakończeniu sprawdzania ścieżki właściwości w zapleczu szablon PropertyInfo pokazuje zawartość w formacie tabeli.
 
 ```javascript
-new atlas.data.Feature(new atlas.data.Point([20, -20]), {
+var templateOptions = {
+  content: [
+    {
+        propertyPath: 'createDate',
+        label: 'Created Date'
+    },
+    {
+        propertyPath: 'dateNumber',
+        label: 'Formatted date from number',
+        dateFormat: {
+          weekday: 'long',
+          year: 'numeric',
+          month: 'long',
+          day: 'numeric',
+          timeZone: 'UTC',
+          timeZoneName: 'short'
+        }
+    },
+    {
+        propertyPath: 'url',
+        label: 'Code samples',
+        hideLabel: true,
+        hyperlinkFormat: {
+          lable: 'Go to code samples!',
+          target: '_blank'
+        }
+    },
+    {
+        propertyPath: 'email',
+        label: 'Email us',
+        hideLabel: true,
+        hyperlinkFormat: {
+          target: '_blank',
+          scheme: 'mailto:'
+        }
+    }
+  ]
+};
+
+var feature = new atlas.data.Feature(new atlas.data.Point([0, 0]), {
     title: 'Template 2 - PropertyInfo',
     createDate: new Date(),
     dateNumber: 1569880860542,
     url: 'https://aka.ms/AzureMapsSamples',
-    email: 'info@microsoft.com',
-    popupTemplate: {
-        content: [{
-    propertyPath: 'createDate',
-    label: 'Created Date'
-    },
-    {
-    propertyPath: 'dateNumber',
-    label: 'Formatted date from number',
-    dateFormat: {
-        weekday: 'long',
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric',
-        timeZone: 'UTC',
-        timeZoneName: 'short'
-    }
-    },
-    {
-    propertyPath: 'url',
-    label: 'Code samples',
-    hideLabel: true,
-    hyperlinkFormat: {
-        lable: 'Go to code samples!',
-        target: '_blank'
-    }
-    },
-    {
-    propertyPath: 'email',
-    label: 'Email us',
-    hideLabel: true,
-    hyperlinkFormat: {
-        target: '_blank',
-        scheme: 'mailto:'
-        }
-    }
-        ]
-    }
+    email: 'info@microsoft.com'
 }),
 
+var popup = new atlas.Popup({
+  content: atlas.PopupTemplate.applyTemplate(feature.properties, templateOptions),
+  position: feature.geometry.coordinates
+});
 ```
 
 ### <a name="multiple-content-templates"></a>Wiele szablonów zawartości
 
-Funkcja może również wyświetlać zawartość przy użyciu kombinacji szablonu ciągu i szablonu PropertyInfo. W takim przypadku szablon ciągu renderuje wartości zastępcze na białym tle.  A, szablon PropertyInfo renderuje obraz pełnej szerokości wewnątrz tabeli. Właściwości w tym przykładzie są podobne do właściwości, które wyjaśniono w poprzednich przykładach.
+Funkcja może również wyświetlać zawartość przy użyciu kombinacji szablonu String i szablonu PropertyInfo. W takim przypadku szablon Ciąg renderuje wartości symboli zastępczych na białym tle.  I Szablon PropertyInfo renderuje obraz o pełnej szerokości wewnątrz tabeli. Właściwości w tym przykładzie są podobne do właściwości wyjaśnione w poprzednich przykładach.
 
 ```javascript
-new atlas.data.Feature(new atlas.data.Point([0, 0]), {
+var templateOptions = {
+  content: [
+    'This template has two pieces of content; a string template with placeholders and a array of property info which renders a full width image.<br/><br/> - Value 1 = {value1}<br/> - Value 2 = {value2/subValue}<br/> - Array value [2] = {arrayValue/2}',
+    [{
+      propertyPath: 'imageLink',
+      label: 'Image',
+      hideImageLabel: true,
+      hyperlinkFormat: {
+        isImage: true
+      }
+    }]
+  ],
+  numberFormat: {
+    maximumFractionDigits: 2
+  }
+};
+
+var feature = new atlas.data.Feature(new atlas.data.Point([0, 0]), {
     title: 'Template 3 - Multiple content template',
     value1: 1.2345678,
     value2: {
     subValue: 'Pizza'
     },
     arrayValue: [3, 4, 5, 6],
-    imageLink: 'https://azuremapscodesamples.azurewebsites.net/common/images/Pike_Market.jpg',
-    popupTemplate: {
-    content: [
-      'This template has two pieces of content; a string template with placeholders and a array of property info which renders a full width image.<br/><br/> - Value 1 = {value1}<br/> - Value 2 = {value2/subValue}<br/> - Array value [2] = {arrayValue/2}',
-      [{
-        propertyPath: 'imageLink',
-        label: 'Image',
-        hideImageLabel: true,
-        hyperlinkFormat: {
-          isImage: true
-        }
-      }]
-    ],
-    numberFormat: {
-      maximumFractionDigits: 2
-    }
-    }
-    }),
-]);
+    imageLink: 'https://azuremapscodesamples.azurewebsites.net/common/images/Pike_Market.jpg'
+});
+
+var popup = new atlas.Popup({
+  content: atlas.PopupTemplate.applyTemplate(feature.properties, templateOptions),
+  position: feature.geometry.coordinates
+});
 ```
 
 ### <a name="points-without-a-defined-template"></a>Punkty bez zdefiniowanego szablonu
 
-Gdy szablon podręczny nie jest zdefiniowany jako szablon typu ciąg, szablon PropertyInfo lub kombinacji obu, wówczas używa ustawień domyślnych. Gdy `title` i `description` są jedynymi przypisanymi właściwościami, szablon podręczny wyświetla białe tło, przycisk Zamknij w prawym górnym rogu. Na małych i średnich ekranach widać strzałkę u dołu. Ustawienia domyślne są wyświetlane wewnątrz tabeli dla wszystkich właściwości innych niż `title` i `description`. Nawet w przypadku powrotu do ustawień domyślnych szablon podręczny może nadal być manipulowany programowo. Na przykład użytkownicy mogą wyłączyć wykrywanie hiperłączy, a ustawienia domyślne byłyby nadal stosowane do innych właściwości.
+Gdy szablon wyskakujących okienka nie jest zdefiniowany jako szablon String, szablon PropertyInfo lub kombinacja obu tych ów, używa ustawień domyślnych. Gdy `title` i `description` są tylko przypisane właściwości, szablon wyskakujących wyświetla białe tło, przycisk zamknięcia w prawym górnym rogu. A na małych i średnich ekranach pokazuje strzałkę u dołu. Ustawienia domyślne są wyświetlane wewnątrz tabeli `title` dla `description`wszystkich właściwości innych niż i . Nawet po dołączeniu do ustawień domyślnych szablon wyskakujących okienka nadal można manipulować programowo. Na przykład użytkownicy mogą wyłączyć wykrywanie hiperłączy, a ustawienia domyślne nadal będą miały zastosowanie do innych właściwości.
 
-Kliknij punkty na mapie w CodePen. Istnieje punkt na mapie dla każdego z następujących szablonów podręcznych: szablon String, szablon PropertyInfo i szablon wielu zawartości. Istnieją również trzy punkty, w których można wyświetlać szablony renderowane przy użyciu ustawień domyślnych.
+Kliknij punkty na mapie w CodePen. Na mapie znajduje się punkt dla każdego z następujących szablonów wyskakujących okienka: szablon ciągu, szablon PropertyInfo i szablon wiele zawartości. Istnieją również trzy punkty, aby pokazać, jak szablony renderowania przy użyciu ustawień domyślnych.
 
 <br/>
 
-<iframe height='500' scrolling='no' title='PopupTemplates' src='//codepen.io/azuremaps/embed/dyovrzL/?height=500&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zobacz <a href='https://codepen.io/azuremaps/pen/dyovrzL/'>PopupTemplates</a> pióra według Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) w <a href='https://codepen.io'>CodePen</a>.
+<iframe height='500' scrolling='no' title='PopupTemplates' src='//codepen.io/azuremaps/embed/dyovrzL/?height=500&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zobacz <a href='https://codepen.io/azuremaps/pen/dyovrzL/'>popuptemplates pióra</a> <a href='https://codepen.io/azuremaps'>@azuremaps</a>przez usługi Azure Maps ( ) na <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
-## <a name="reuse-popup-template"></a>Ponownie Użyj szablonu popup
+## <a name="reuse-popup-template"></a>Ponowne używanie szablonu podręcznego
 
-Podobnie jak w przypadku korzystania z menu podręcznego, można ponownie użyć szablonów podręcznych. Takie podejście jest przydatne, gdy chcesz wyświetlić tylko jeden szablon podręczny w danej chwili dla wielu punktów. Ponowne użycie szablonu podręcznego powoduje zmniejszenie liczby elementów DOM utworzonych przez aplikację, co następnie poprawi wydajność aplikacji. Poniższy przykład używa tego samego szablonu podręcznego dla trzech punktów. Po kliknięciu dowolnego z nich zostanie wyświetlone okno podręczne z zawartością dla tej funkcji punktu.
+Podobnie jak w wyskakującym okienku, można ponownie użyć szablonów wyskakujących. Takie podejście jest przydatne, gdy chcesz pokazać tylko jeden szablon wyskakujących w czasie, dla wielu punktów. Po ponownym uruchomieniu szablonu wyskakującego zmniejsza się liczba elementów DOM utworzonych przez aplikację, co zwiększa wydajność aplikacji. W poniższym przykładzie użyto tego samego szablonu wyskakujących dla trzech punktów. Jeśli klikniesz na którykolwiek z nich, zostanie wyświetlone okno podręczne z zawartością tej funkcji punktu.
 
 <br/>
 
-<iframe height='500' scrolling='no' title='ReusePopupTemplate' src='//codepen.io/azuremaps/embed/WNvjxGw/?height=500&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zobacz <a href='https://codepen.io/azuremaps/pen/WNvjxGw/'>ReusePopupTemplate</a> pióra według Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) w <a href='https://codepen.io'>CodePen</a>.
+<iframe height='500' scrolling='no' title='Ponowne użyciePopupTemplate' src='//codepen.io/azuremaps/embed/WNvjxGw/?height=500&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zobacz ponowne użycie pióraPopupTemplate przez usługi Azure Maps ( <a href='https://codepen.io/azuremaps/pen/WNvjxGw/'>ReusePopupTemplate</a> <a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>codepen</a>.
 </iframe>
 
 ## <a name="popup-events"></a>Zdarzenia wyskakujące
 
-Okienka wyskakujące mogą być otwierane, zamykane i przeciągane. Klasa popup udostępnia zdarzenia, aby pomóc deweloperom reagować na te zdarzenia. W poniższym przykładzie przedstawiono zdarzenia wyzwalane, gdy użytkownik otwiera, zamyka lub przeciąga okno podręczne. 
+Wyskakujące okienka można otwierać, zamykać i przeciągać. Klasa popup zawiera zdarzenia, aby pomóc deweloperom reagować na te zdarzenia. W poniższym przykładzie wyróżniono, które zdarzenia są uruchamiane po otwarciu, zamknięciu lub przeciągnięciu okna podręcznego. 
 
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="Zdarzenia wyskakujące" src="//codepen.io/azuremaps/embed/BXrpvB/?height=500&theme-id=0&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true">
-Zobacz <a href='https://codepen.io/azuremaps/pen/BXrpvB/'>zdarzenia wyskakujące</a> pióro według Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>CodePen</a>.
+Zobacz <a href='https://codepen.io/azuremaps/pen/BXrpvB/'>zdarzenia wyskakujące</a> <a href='https://codepen.io/azuremaps'>@azuremaps</a>pióra przez usługi Azure Maps ( ) na <a href='https://codepen.io'>funkcji CodePen</a>.
 </iframe>
 
 ## <a name="next-steps"></a>Następne kroki
 
-Dowiedz się więcej na temat klas i metod używanych w tym artykule:
+Dowiedz się więcej o klasach i metodach użytych w tym artykule:
 
 > [!div class="nextstepaction"]
-> [Elementy](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest)
+> [Popup](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup)
 
 > [!div class="nextstepaction"]
-> [PopupOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popupoptions?view=azure-iot-typescript-latest)
-
-Zobacz następujące wspaniałe artykuły dotyczące pełnych przykładów kodu:
+> [Wyskakujące okienka](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popupoptions)
 
 > [!div class="nextstepaction"]
-> [Dodaj warstwę symboli](./map-add-pin.md)
+> [PopupTemplate](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popuptemplate)
+
+Zobacz następujące wspaniałe artykuły dla pełnych przykładów kodu:
+
+> [!div class="nextstepaction"]
+> [Dodawanie warstwy symboli](./map-add-pin.md)
 
 > [!div class="nextstepaction"]
 > [Dodawanie znacznika HTML](./map-add-custom-html.md)
 
 > [!div class="nextstepaction"]
-> [Dodaj warstwę linii](map-add-line-layer.md)
+> [Dodawanie warstwy linii](map-add-line-layer.md)
 
 > [!div class="nextstepaction"]
-> [Dodaj warstwę wielokątów](map-add-shape.md)
+> [Dodawanie warstwy wielokąta](map-add-shape.md)
