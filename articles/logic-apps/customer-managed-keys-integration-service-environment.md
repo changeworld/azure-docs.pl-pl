@@ -1,99 +1,99 @@
 ---
-title: Konfigurowanie kluczy zarządzanych przez klienta do szyfrowania danych przechowywanych w ISEs
-description: Utwórz własne klucze szyfrowania i zarządzaj nimi, aby zabezpieczyć dane przechowywane w środowiskach usługi Integration Environment (ISEs) w Azure Logic Apps
+title: Konfigurowanie kluczy zarządzanych przez klienta w celu szyfrowania danych w stanie spoczynku w programach ISE
+description: Tworzenie własnych kluczy szyfrowania i zarządzanie nimi w celu zabezpieczania danych w stanie spoczynku dla środowisk usług integracyjnych (ISE) w usłudze Azure Logic Apps
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, rarayudu, logicappspm
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.openlocfilehash: fa39c8f65b00283044ef31dc7577a4668b3e634b
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/11/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79127638"
 ---
-# <a name="set-up-customer-managed-keys-to-encrypt-data-at-rest-for-integration-service-environments-ises-in-azure-logic-apps"></a>Skonfiguruj klucze zarządzane przez klienta, aby szyfrować dane przechowywane w środowiskach usługi Integration Environment (ISEs) w Azure Logic Apps
+# <a name="set-up-customer-managed-keys-to-encrypt-data-at-rest-for-integration-service-environments-ises-in-azure-logic-apps"></a>Konfigurowanie kluczy zarządzanych przez klienta do szyfrowania danych w stanie spoczynku dla środowisk usług integracyjnych (ISE) w usłudze Azure Logic Apps
 
-Azure Logic Apps korzysta z usługi Azure Storage, aby przechowywać i automatycznie [szyfrować dane](../storage/common/storage-service-encryption.md)przechowywane. To szyfrowanie chroni dane i pomaga sprostać zobowiązaniom dotyczącym bezpieczeństwa i zgodności w organizacji. Domyślnie usługa Azure Storage używa kluczy zarządzanych przez firmę Microsoft do szyfrowania danych. Aby uzyskać więcej informacji o tym, jak działa szyfrowanie usługi Azure Storage, zobacz [szyfrowanie usługi Azure Storage dla danych przechowywanych w usłudze REST](../storage/common/storage-service-encryption.md) i [szyfrowanie danych na platformie Azure](../security/fundamentals/encryption-atrest.md).
+Usługa Azure Logic Apps polega na usłudze Azure Storage do przechowywania i automatycznego [szyfrowania danych w spoczynku.](../storage/common/storage-service-encryption.md) To szyfrowanie chroni dane i pomaga spełnić zobowiązania dotyczące zabezpieczeń i zgodności z przepisami organizacji. Domyślnie usługa Azure Storage używa kluczy zarządzanych przez firmę Microsoft do szyfrowania danych. Aby uzyskać więcej informacji na temat funkcjonowania szyfrowania usługi Azure Storage, zobacz [Szyfrowanie usługi Azure Storage w celu uzyskania danych w spoczynku](../storage/common/storage-service-encryption.md) i [szyfrowanie danych platformy Azure w spoczynku.](../security/fundamentals/encryption-atrest.md)
 
-Podczas tworzenia [środowiska usługi integracji (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) na potrzeby hostowania aplikacji logiki, a użytkownik chce mieć większą kontrolę nad kluczami szyfrowania używanymi przez usługę Azure Storage, można skonfigurować własny klucz, korzystać z niego i zarządzać nim przy użyciu [Azure Key Vault](../key-vault/key-vault-overview.md). Ta funkcja jest również znana jako "Bring Your Own Key" (BYOK), a klucz jest nazywany "kluczem zarządzanym przez klienta".
+Podczas tworzenia [środowiska usługi integracji (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) do obsługi aplikacji logiki i chcesz mieć większą kontrolę nad kluczami szyfrowania używanymi przez usługę Azure Storage, można skonfigurować, używać i zarządzać własnym kluczem przy użyciu [usługi Azure Key Vault](../key-vault/key-vault-overview.md). Ta funkcja jest również znana jako "Bring Your Own Key" (BYOK), a klucz jest nazywany "kluczem zarządzanym przez klienta".
 
-W tym temacie przedstawiono sposób konfigurowania i określania własnego klucza szyfrowania, który ma być używany podczas tworzenia ISE przy użyciu interfejsu API REST Logic Apps. Aby zapoznać się z ogólnymi krokami tworzenia ISE za pośrednictwem interfejsu API REST Logic Apps, zobacz [Tworzenie środowiska usługi integracji (ISE) przy użyciu interfejsu API rest Logic Apps](../logic-apps/create-integration-service-environment-rest-api.md).
+W tym temacie pokazano, jak skonfigurować i określić własny klucz szyfrowania do użycia podczas tworzenia interfejsu ISE przy użyciu interfejsu API REST aplikacji logiki. Aby uzyskać ogólne kroki tworzenia środowiska ISE za pośrednictwem interfejsu API REST aplikacji logiki, zobacz [Tworzenie środowiska usługi integracji (ISE) przy użyciu interfejsu API REST aplikacji logiki](../logic-apps/create-integration-service-environment-rest-api.md).
 
 ## <a name="considerations"></a>Zagadnienia do rozważenia
 
-* W tej chwili obsługa klucza zarządzanego przez klienta dla ISE jest dostępna tylko w następujących regionach świadczenia usługi Azure: zachodnie stany USA 2, Wschodnie stany USA i Południowo-środkowe stany USA
+* Obecnie obsługa kluczy zarządzanych przez klienta dla ise jest dostępna tylko w tych regionach platformy Azure: Zachodnie stany USA 2, wschodnie stany USA i południowo-środkowe stany USA
 
-* Klucz zarządzany przez klienta można określić tylko w *przypadku tworzenia ISE*, a nie później. Nie można wyłączyć tego klucza po utworzeniu ISE. Obecnie nie istnieje żadna pomoc dla rotacji klucza zarządzanego przez klienta dla ISE.
+* Klucz zarządzany przez klienta można określić *tylko podczas tworzenia ise*, a nie później. Nie można wyłączyć tego klucza po utworzeniu ise. Obecnie nie istnieje żadna obsługa obracania klucza zarządzanego przez klienta dla ise.
 
-* Aby obsługiwały klucze zarządzane przez klienta, ISE wymaga, aby była włączona [tożsamość zarządzana przez system](../active-directory/managed-identities-azure-resources/overview.md#how-does-the-managed-identities-for-azure-resources-work) . Ta tożsamość pozwala ISE uwierzytelniać dostęp do zasobów w innych dzierżawach usługi Azure Active Directory (Azure AD), dzięki czemu nie musisz logować się przy użyciu swoich poświadczeń.
+* Aby obsługiwać klucze zarządzane przez klienta, oprogramowanie ISE wymaga włączenia [tożsamości zarządzanej przypisanej przez system.](../active-directory/managed-identities-azure-resources/overview.md#how-does-the-managed-identities-for-azure-resources-work) Ta tożsamość umożliwia ise uwierzytelnić dostęp do zasobów w innych dzierżaw usługi Azure Active Directory (Azure AD), dzięki czemu nie trzeba logować się przy użyciu poświadczeń.
 
-* Obecnie aby utworzyć element ISE, który obsługuje klucze zarządzane przez klienta i ma włączoną swoją tożsamość przypisaną do systemu, należy wywołać interfejs API REST Logic Apps przy użyciu żądania HTTPS PUT.
+* Obecnie, aby utworzyć interfejs ISE, który obsługuje klucze zarządzane przez klienta i ma włączoną tożsamość przypisaną do systemu, należy wywołać interfejs API REST aplikacji logiki przy użyciu żądania HTTPS PUT.
 
-* W ciągu *30 minut* od wysłania żądania HTTPS Put, które tworzy ISE, należy [nadać magazynowi kluczy dostęp do tożsamości przypisanej do systemu ISE](#identity-access-to-key-vault). W przeciwnym razie tworzenie ISE kończy się niepowodzeniem i zgłasza błąd uprawnień.
+* W ciągu *30 minut* po wysłaniu żądania HTTPS PUT, które tworzy ise, należy [dać dostęp do magazynu kluczy do tożsamości przypisanej przez system ise](#identity-access-to-key-vault). W przeciwnym razie tworzenie ISE kończy się niepowodzeniem i zgłasza błąd uprawnień.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Te same wymagania [wstępne](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#prerequisites) i [wymagania dotyczące włączania dostępu do ISE](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#enable-access) jako podczas tworzenia ISE w Azure Portal
+* Te same [wymagania wstępne](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#prerequisites) i [wymagania, aby włączyć dostęp do ise](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#enable-access) jak podczas tworzenia ise w witrynie Azure portal
 
-* Magazyn kluczy platformy Azure z włączonymi nietrwałymi właściwościami **usuwania** i **nieprzeczyszczania**
+* Magazyn kluczy platformy Azure z włączonymi właściwościami **Usuwanie nietrwale** i **Nie przeczyszczaj**
 
-  Aby uzyskać więcej informacji na temat włączania tych właściwości, zobacz [Azure Key Vault narzędzia nietrwałego usuwania](../key-vault/key-vault-ovw-soft-delete.md) i [konfigurowania kluczy zarządzanych przez klienta przy użyciu Azure Key Vault](../storage/common/storage-encryption-keys-portal.md). Jeśli dopiero zaczynasz Azure Key Vault, Dowiedz się, [jak utworzyć magazyn kluczy](../key-vault/quick-create-portal.md#create-a-vault) za pomocą Azure Portal lub przy użyciu polecenia Azure PowerShell [New-AzKeyVault](https://docs.microsoft.com/powershell/module/az.keyvault/new-azkeyvault).
+  Aby uzyskać więcej informacji na temat włączania tych właściwości, zobacz [Omówienie usuwania programów nietrwałych usługi Azure Key Vault](../key-vault/key-vault-ovw-soft-delete.md) i [konfigurowanie kluczy zarządzanych przez klienta za pomocą usługi Azure Key Vault](../storage/common/storage-encryption-keys-portal.md). Jeśli jesteś nowym użytkownikiem usługi Azure Key Vault, dowiedz się, [jak utworzyć magazyn kluczy](../key-vault/quick-create-portal.md#create-a-vault) przy użyciu witryny Azure portal lub za pomocą polecenia Azure PowerShell, [New-AzKeyVault.](https://docs.microsoft.com/powershell/module/az.keyvault/new-azkeyvault)
 
-* W magazynie kluczy, który jest tworzony przy użyciu tych wartości właściwości:
+* W magazynie kluczy klucz, który jest tworzony przy następujących wartościach właściwości:
 
   | Właściwość | Wartość |
   |----------|-------|
   | **Typ klucza** | RSA |
   | **Rozmiar klucza RSA** | 2048 |
-  | **Enabled (Włączone)** | Yes |
+  | **Enabled (Włączony)** | Tak |
   |||
 
   ![Tworzenie klucza szyfrowania zarządzanego przez klienta](./media/customer-managed-keys-integration-service-environment/create-customer-managed-key-for-encryption.png)
 
-  Aby uzyskać więcej informacji, zobacz [Konfigurowanie kluczy zarządzanych przez klienta za pomocą Azure Key Vault](../storage/common/storage-encryption-keys-portal.md) lub Azure PowerShell polecenie [Add-AzKeyVaultKey](https://docs.microsoft.com/powershell/module/az.keyvault/Add-AzKeyVaultKey).
+  Aby uzyskać więcej informacji, zobacz [Konfigurowanie kluczy zarządzanych przez klienta za pomocą usługi Azure Key Vault](../storage/common/storage-encryption-keys-portal.md) lub polecenia Azure PowerShell, [Add-AzKeyVaultKey](https://docs.microsoft.com/powershell/module/az.keyvault/Add-AzKeyVaultKey).
 
-* Narzędzie, za pomocą którego można utworzyć ISE przez wywołanie interfejsu API REST Logic Apps przy użyciu żądania HTTPS PUT. Na przykład można użyć programu [Poster](https://www.getpostman.com/downloads/)lub można utworzyć aplikację logiki, która wykonuje to zadanie.
+* Narzędzie, którego można użyć do utworzenia interfejsu ISE, wywołując interfejs API REST aplikacji logiki z żądaniem HTTPS PUT. Na przykład można użyć [postman](https://www.getpostman.com/downloads/)lub można utworzyć aplikację logiki, która wykonuje to zadanie.
 
 <a name="enable-support-key-system-identity"></a>
 
-## <a name="create-ise-with-key-vault-and-managed-identity-support"></a>Tworzenie ISE przy użyciu magazynu kluczy i pomocy technicznej dotyczącej tożsamości zarządzanej
+## <a name="create-ise-with-key-vault-and-managed-identity-support"></a>Tworzenie ise z obsługą magazynu kluczy i tożsamości zarządzanej
 
-Aby utworzyć ISE przez wywołanie interfejsu API REST Logic Apps, wykonaj to żądanie HTTP PUT:
+Aby utworzyć interfejs ISE, wywołując interfejs API REST aplikacji logiki, należy wykonać to żądanie HTTPS PUT:
 
 `PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/integrationServiceEnvironments/{integrationServiceEnvironmentName}?api-version=2019-05-01`
 
 > [!IMPORTANT]
-> Wersja interfejsu API REST Logic Apps 2019-05-01 wymaga wprowadzenia własnego żądania HTTP PUT dla łączników ISE.
+> Wersja interfejsu API INTERFEJSU API 2019-05-01 aplikacji logic apps wymaga wykonania własnego żądania HTTP PUT dla łączników ISE.
 
-Wdrożenie zazwyczaj trwa w ciągu dwóch godzin. Czasami wdrożenie może trwać do czterech godzin. Aby sprawdzić stan wdrożenia, w [Azure Portal](https://portal.azure.com)na pasku narzędzi platformy Azure wybierz ikonę powiadomienia, która spowoduje otwarcie okienka powiadomienia.
+Wdrożenie zwykle trwa w ciągu dwóch godzin, aby zakończyć. Od czasu do czasu wdrożenie może potrwać do czterech godzin. Aby sprawdzić stan wdrożenia, w [witrynie Azure portal](https://portal.azure.com), na pasku narzędzi platformy Azure wybierz ikonę powiadomień, która otwiera okienko powiadomień.
 
 > [!NOTE]
-> Jeśli wdrożenie nie powiedzie się lub usuniesz ISE, platforma Azure może upłynąć do godziny przed zwolnieniem podsieci. To opóźnienie oznacza, że może być konieczne odczekanie przed ponownym użyciem tych podsieci w innym ISE.
+> Jeśli wdrożenie zakończy się niepowodzeniem lub usuniesz ise, platforma Azure może potrwać do godziny przed zwolnieniem podsieci. To opóźnienie oznacza, że może być trzeba poczekać przed ponownym użyciem tych podsieci w innym ise.
 >
-> Po usunięciu sieci wirtualnej platforma Azure zazwyczaj zajmie maksymalnie dwie godziny przed zwolnieniem podsieci, ale ta operacja może trwać dłużej. 
+> Jeśli usuniesz sieć wirtualną, platforma Azure zwykle trwa do dwóch godzin przed zwolnieniem podsieci, ale ta operacja może potrwać dłużej. 
 > Podczas usuwania sieci wirtualnych upewnij się, że żadne zasoby nie są nadal połączone. 
-> Zobacz [usuwanie sieci wirtualnej](../virtual-network/manage-virtual-network.md#delete-a-virtual-network).
+> Zobacz [Usuwanie sieci wirtualnej](../virtual-network/manage-virtual-network.md#delete-a-virtual-network).
 
 ### <a name="request-header"></a>Nagłówek żądania
 
 W nagłówku żądania uwzględnij następujące właściwości:
 
-* `Content-type`: Ustaw tę wartość właściwości na `application/json`.
+* `Content-type`: Ustaw tę `application/json`wartość właściwości na .
 
-* `Authorization`: Ustaw wartość tej właściwości na token okaziciela dla klienta, który ma dostęp do subskrypcji platformy Azure lub grupy zasobów, której chcesz użyć.
+* `Authorization`: Ustaw tę wartość właściwości na token nośny dla klienta, który ma dostęp do subskrypcji platformy Azure lub grupy zasobów, której chcesz użyć.
 
 ### <a name="request-body"></a>Treść żądania
 
-W treści żądania Włącz obsługę tych dodatkowych elementów, dostarczając ich informacje w definicji ISE:
+W treści żądania włącz obsługę tych dodatkowych elementów, podając ich informacje w definicji ISE:
 
-* Tożsamość zarządzana przypisana przez system, której ISE używa do uzyskiwania dostępu do magazynu kluczy
-* Magazyn kluczy i klucz zarządzany przez klienta, który ma być używany
+* Przypisana przez system tożsamość zarządzana używana przez oprogramowanie ISE do uzyskiwania dostępu do magazynu kluczy
+* Magazyn kluczy i klucz zarządzany przez klienta, którego chcesz użyć
 
 #### <a name="request-body-syntax"></a>Składnia treści żądania
 
-Poniżej przedstawiono składnię treści żądania opisującą właściwości używane podczas tworzenia ISE:
+Oto składnia treści żądania, która opisuje właściwości, które mają być używane podczas tworzenia ise:
 
 ```json
 {
@@ -144,7 +144,7 @@ Poniżej przedstawiono składnię treści żądania opisującą właściwości u
 
 #### <a name="request-body-example"></a>Przykład treści żądania
 
-W tej przykładowej treści żądania pokazano przykładowe wartości:
+W tej przykładzie treści żądania przedstawiono przykładowe wartości:
 
 ```json
 {
@@ -195,38 +195,38 @@ W tej przykładowej treści żądania pokazano przykładowe wartości:
 
 <a name="identity-access-to-key-vault"></a>
 
-## <a name="grant-access-to-your-key-vault"></a>Udzielanie dostępu do magazynu kluczy
+## <a name="grant-access-to-your-key-vault"></a>Udziel dostępu do magazynu kluczy
 
-W ciągu *30 minut* od wysłania żądania HTTP Put w celu utworzenia ISE należy dodać zasady dostępu do magazynu kluczy dla tożsamości przypisanej do systemu ISE. W przeciwnym razie tworzenie ISE kończy się niepowodzeniem i zostanie wyświetlony komunikat o błędzie uprawnień. 
+W ciągu *30 minut* po wysłaniu żądania HTTP PUT w celu utworzenia ise należy dodać zasady dostępu do magazynu kluczy dla tożsamości przypisanej przez system ise. W przeciwnym razie utworzenie ise kończy się niepowodzeniem i zostanie wyświetlony błąd uprawnień. 
 
-W przypadku tego zadania można użyć polecenia Azure PowerShell [Set-AzKeyVaultAccessPolicy](https://docs.microsoft.com/powershell/module/az.keyvault/set-azkeyvaultaccesspolicy) albo wykonać następujące czynności w Azure Portal:
+W tym zadaniu można użyć polecenia Azure PowerShell [Set-AzKeyVaultAccessPolicy](https://docs.microsoft.com/powershell/module/az.keyvault/set-azkeyvaultaccesspolicy) lub wykonać następujące kroki w witrynie Azure portal:
 
-1. W [Azure Portal](https://portal.azure.com)Otwórz swój magazyn kluczy platformy Azure.
+1. W [witrynie Azure portal](https://portal.azure.com)otwórz magazyn kluczy platformy Azure.
 
-1. W menu Magazyn kluczy wybierz pozycję **zasady dostępu** > **Dodaj zasady dostępu**, na przykład:
+1. W menu magazynu kluczy wybierz pozycję **Zasady** > dostępu**Dodaj zasady dostępu**, na przykład:
 
-   ![Dodawanie zasad dostępu dla tożsamości zarządzanej przypisanej przez system](./media/customer-managed-keys-integration-service-environment/add-ise-access-policy-key-vault.png)
+   ![Dodawanie zasad dostępu dla tożsamości zarządzanej przypisanej do systemu](./media/customer-managed-keys-integration-service-environment/add-ise-access-policy-key-vault.png)
 
-1. Po otwarciu okienka **Dodawanie zasad dostępu** wykonaj następujące kroki:
+1. Po otwarciu okienka **Dodaj zasady dostępu** wykonaj następujące czynności:
 
    1. Wybierz następujące opcje:
 
       | Ustawienie | Wartości |
       |---------|--------|
-      | **Konfiguruj z listy szablon (opcjonalnie)** | Zarządzanie kluczami |
-      | **Uprawnienia klucza** | - **operacji zarządzania kluczami**: Get, list <p><p>- **operacji kryptograficznych**: rozpakowywanie klucza, zawijanie klucza |
+      | **Konfigurowanie z listy szablonów (opcjonalnie)** | Zarządzanie kluczami |
+      | **Uprawnienia klucza** | - **Kluczowe operacje zarządzania:** Get, List <p><p>- **Operacje kryptograficzne:** Rozpakuj klucz, zawij klucz |
       |||
 
-      ![Wybierz pozycję "Zarządzanie kluczami" > "uprawnienia klucza"](./media/customer-managed-keys-integration-service-environment/select-key-permissions.png)
+      ![Wybierz "Zarządzanie kluczami" > "Uprawnienia klucza"](./media/customer-managed-keys-integration-service-environment/select-key-permissions.png)
 
-   1. W obszarze **wybór podmiotu zabezpieczeń**wybierz pozycję **nie wybrano**. Po otwarciu okienka **podmiotu zabezpieczeń** w polu wyszukiwania Znajdź i wybierz swój ISE. Gdy skończysz, wybierz **pozycję wybierz** > **Dodaj**.
+   1. W **obszarze Wybierz głównego**wybierz pozycję **Brak.** Po otwarciu **okienka Główny** element w polu wyszukiwania znajdź i wybierz ise. Po zakończeniu wybierz **pozycję Wybierz** > **dodaj**.
 
-      ![Wybierz ISE do użycia jako podmiot zabezpieczeń](./media/customer-managed-keys-integration-service-environment/select-service-principal-ise.png)
+      ![Wybierz ise do użycia jako główny](./media/customer-managed-keys-integration-service-environment/select-service-principal-ise.png)
 
-   1. Po zakończeniu pracy z okienkiem **zasady dostępu** wybierz pozycję **Zapisz**.
+   1. Po zakończeniu pracy z okienkiem **Zasady programu Access** wybierz pozycję **Zapisz**.
 
-Aby uzyskać więcej informacji, zobacz [zapewnianie uwierzytelniania Key Vault przy użyciu tożsamości zarządzanej](../key-vault/managed-identity.md#grant-your-app-access-to-key-vault).
+Aby uzyskać więcej informacji, zobacz [Zapewnianie uwierzytelniania magazynu kluczy z tożsamością zarządzaną](../key-vault/managed-identity.md#grant-your-app-access-to-key-vault).
 
 ## <a name="next-steps"></a>Następne kroki
 
-* Dowiedz się więcej o [Azure Key Vault](../key-vault/key-vault-overview.md)
+* Dowiedz się więcej o [usłudze Azure Key Vault](../key-vault/key-vault-overview.md)

@@ -1,7 +1,7 @@
 ---
-title: Wdrażanie aplikacji podwójnego stosu IPv6 — podstawowa Load Balancer — PowerShell
+title: Wdrażanie aplikacji IPv6 z dwoma stosami — Podstawowy moduł równoważenia obciążenia — PowerShell
 titlesuffix: Azure Virtual Network
-description: W tym artykule pokazano, jak wdrożyć aplikację dwustosową protokołu IPv6 w usłudze Azure Virtual Network przy użyciu programu Azure PowerShell.
+description: W tym artykule pokazano, jak wdrożyć aplikację podwójnego stosu IPv6 w sieci wirtualnej platformy Azure przy użyciu programu Azure Powershell.
 services: virtual-network
 documentationcenter: na
 author: KumudD
@@ -14,27 +14,27 @@ ms.workload: infrastructure-services
 ms.date: 12/17/2019
 ms.author: kumud
 ms.openlocfilehash: 003d677dcdead5792f932ecfe6350df63184cee2
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75368338"
 ---
-# <a name="deploy-an-ipv6-dual-stack-application-using-basic-load-balancer---powershell-preview"></a>Wdrażanie aplikacji podwójnego stosu IPv6 przy użyciu podstawowego Load Balancer — PowerShell (wersja zapoznawcza)
+# <a name="deploy-an-ipv6-dual-stack-application-using-basic-load-balancer---powershell-preview"></a>Wdrażanie aplikacji podwójnego stosu IPv6 przy użyciu podstawowego modułu równoważenia obciążenia — PowerShell (wersja zapoznawcza)
 
-W tym artykule pokazano, jak wdrożyć aplikację podwójnego stosu (IPv4 + IPv6) z podstawową Load Balancer przy użyciu Azure PowerShell, która obejmuje sieć wirtualną o podwójnym stosie i podsieć, podstawowy Load Balancer z dwoma konfiguracjami frontonu (IPv4 + IPv6), maszyn wirtualnych z kartami sieciowymi, które mają dwie konfiguracje protokołu IP, sieciową grupę zabezpieczeń i publiczne adresy IP.
+W tym artykule pokazano, jak wdrożyć aplikację z dwoma stosami (IPv4 + IPv6) z podstawowym modułem równoważenia obciążenia przy użyciu programu Azure PowerShell, która zawiera sieć wirtualną i podsieć z dwoma stosami, podstawowy moduł równoważenia obciążenia z dwoma (IPv4 + IPv6) konfiguracjami frontonacyjnymi, maszyny wirtualne z kartami sieciowymi, które mają podwójną konfigurację IP, grupę zabezpieczeń sieci i publiczne adresy IP.
 
-Aby wdrożyć aplikację z podwójnym stosem (IPV4 + IPv6) przy użyciu usługa Load Balancer w warstwie Standardowa, zobacz [wdrażanie aplikacji dwustosowej z obsługą protokołu IPv6 za pomocą usługa Load Balancer w warstwie Standardowa przy użyciu Azure PowerShell](virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell.md).
+Aby wdrożyć aplikację z dwoma stosami (IPV4 + IPv6) przy użyciu standardowego modułu równoważenia obciążenia, zobacz [Wdrażanie aplikacji podwójnego stosu IPv6 ze standardowym modułem równoważenia obciążenia przy użyciu programu Azure PowerShell.](virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell.md)
 
 > [!Important]
-> Obsługa protokołu IPv6 dla usługi Azure Virtual Network jest obecnie w publicznej wersji zapoznawczej. Ta wersja zapoznawcza nie jest objęta umową dotyczącą poziomu usług i nie zalecamy korzystania z niej w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą być nieobsługiwane lub ograniczone. Aby uzyskać szczegółowe informacje, zobacz [Dodatkowe warunki użytkowania wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Obsługa IPv6 dla usługi Azure Virtual Network jest obecnie w publicznej wersji zapoznawczej. Ta wersja zapoznawcza nie jest objęta umową dotyczącą poziomu usług i nie zalecamy korzystania z niej w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą być nieobsługiwane lub ograniczone. Aby uzyskać szczegółowe informacje, zobacz [Dodatkowe warunki użytkowania wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Jeśli zdecydujesz się zainstalować program PowerShell i używać go lokalnie, ten artykuł będzie wymagał modułu Azure PowerShell w wersji 6.9.0 lub nowszej. Uruchom polecenie `Get-Module -ListAvailable Az`, aby dowiedzieć się, jaka wersja jest zainstalowana. Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-Az-ps). Jeśli używasz programu PowerShell lokalnie, musisz też uruchomić polecenie `Connect-AzAccount`, aby utworzyć połączenie z platformą Azure.
+Jeśli zdecydujesz się zainstalować i używać programu PowerShell lokalnie, ten artykuł wymaga modułu programu Azure PowerShell w wersji 6.9.0 lub nowszej. Uruchom polecenie `Get-Module -ListAvailable Az`, aby dowiedzieć się, jaka wersja jest zainstalowana. Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-Az-ps). Jeśli używasz programu PowerShell lokalnie, musisz też uruchomić polecenie `Connect-AzAccount`, aby utworzyć połączenie z platformą Azure.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-Przed wdrożeniem aplikacji o podwójnej stercie na platformie Azure należy skonfigurować subskrypcję tej funkcji w wersji zapoznawczej, korzystając z następującej Azure PowerShell:
+Przed wdrożeniem aplikacji z dwoma stosami na platformie Azure należy skonfigurować subskrypcję dla tej funkcji w wersji zapoznawczej przy użyciu następującej usługi Azure PowerShell:
 
 Zarejestruj się w następujący sposób:
 
@@ -42,12 +42,12 @@ Zarejestruj się w następujący sposób:
 Register-AzProviderFeature -FeatureName AllowIPv6VirtualNetwork -ProviderNamespace Microsoft.Network
 Register-AzProviderFeature -FeatureName AllowIPv6CAOnStandardLB -ProviderNamespace Microsoft.Network
 ```
-Ukończenie rejestracji funkcji może potrwać do 30 minut. Stan rejestracji można sprawdzić, uruchamiając następujące polecenie Azure PowerShell: Sprawdź rejestrację w następujący sposób:
+Rejestracja funkcji trwa do 30 minut. Możesz sprawdzić stan rejestracji, uruchamiając następujące polecenie programu Azure PowerShell: Sprawdź rejestrację w następujący sposób:
 ```azurepowershell
 Get-AzProviderFeature -FeatureName AllowIPv6VirtualNetwork -ProviderNamespace Microsoft.Network
 Get-AzProviderFeature -FeatureName AllowIPv6CAOnStandardLB -ProviderNamespace Microsoft.Network
 ```
-Po zakończeniu rejestracji Uruchom następujące polecenie:
+Po zakończeniu rejestracji uruchom następujące polecenie:
 
 ```azurepowershell
 Register-AzResourceProvider -ProviderNamespace Microsoft.Network
@@ -55,7 +55,7 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.Network
 
 ## <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
 
-Przed utworzeniem sieci wirtualnej o podwójnym stosie należy utworzyć grupę zasobów przy użyciu polecenie [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup). Poniższy przykład tworzy grupę zasobów o nazwie *myRGDualStack* w lokalizacji *Wschodnie stany USA* :
+Przed utworzeniem sieci wirtualnej z dwoma stosami należy utworzyć grupę zasobów za pomocą [programu New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup). Poniższy przykład tworzy grupę zasobów o nazwie *myRGDualStack* w lokalizacji *we wschodniej części usa:*
 
 ```azurepowershell-interactive
    $rg = New-AzResourceGroup `
@@ -63,8 +63,8 @@ Przed utworzeniem sieci wirtualnej o podwójnym stosie należy utworzyć grupę 
   -Location "east us"
 ```
 
-## <a name="create-ipv4-and-ipv6-public-ip-addresses"></a>Tworzenie publicznych adresów IP adresów IPv4 i IPv6
-Aby uzyskać dostęp do maszyn wirtualnych z Internetu, potrzebne są publiczne adresy IP IPv4 i IPv6 dla modułu równoważenia obciążenia. Utwórz publiczne adresy IP przy użyciu programu [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress). Poniższy przykład tworzy publiczny adres IP IPv4 i IPv6 o nazwie *dsPublicIP_v4* i *dsPublicIP_v6* w grupie zasobów *dsRG1* :
+## <a name="create-ipv4-and-ipv6-public-ip-addresses"></a>Tworzenie publicznych adresów IP i IPv6
+Aby uzyskać dostęp do maszyn wirtualnych z Internetu, potrzebujesz publicznych adresów IP IPv4 i IPv6 dla modułu równoważenia obciążenia. Tworzenie publicznych adresów IP za pomocą [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress). Poniższy przykład tworzy publiczny adres IP IPv4 i IPv6 o nazwie *dsPublicIP_v4* i *dsPublicIP_v6* w grupie zasobów *dsRG1:*
 
 ```azurepowershell-interactive
 $PublicIP_v4 = New-AzPublicIpAddress `
@@ -81,7 +81,7 @@ $PublicIP_v6 = New-AzPublicIpAddress `
   -AllocationMethod Dynamic `
   -IpAddressVersion IPv6
 ```
-Aby uzyskać dostęp do maszyn wirtualnych przy użyciu połączenia RDP, należy utworzyć publiczne adresy IP dla maszyn wirtualnych przy użyciu polecenia [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress).
+Aby uzyskać dostęp do maszyn wirtualnych przy użyciu połączenia RDP, należy utworzyć publiczne adresy IPV4 dla maszyn wirtualnych za pomocą [usługi New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress).
 
 ```azurepowershell-interactive
   $RdpPublicIP_1 = New-AzPublicIpAddress `
@@ -101,11 +101,11 @@ Aby uzyskać dostęp do maszyn wirtualnych przy użyciu połączenia RDP, należ
 
 ## <a name="create-basic-load-balancer"></a>Tworzenie podstawowego modułu równoważenia obciążenia
 
-W tej sekcji należy skonfigurować podwójny adres IP frontonu (IPv4 i IPv6) oraz pulę adresów zaplecza dla modułu równoważenia obciążenia, a następnie utworzyć podstawową Load Balancer.
+W tej sekcji można skonfigurować adres IP z dwiema frontendami (IPv4 i IPv6) oraz pulę adresów zaplecza dla modułu równoważenia obciążenia, a następnie utworzyć podstawowy moduł równoważenia obciążenia.
 
 ### <a name="create-front-end-ip"></a>Tworzenie adresu IP frontonu
 
-Utwórz adres IP frontonu przy użyciu polecenia [New-AzLoadBalancerFrontendIpConfig](/powershell/module/az.network/new-azloadbalancerfrontendipconfig). Poniższy przykład tworzy konfiguracje adresów IP frontonu IPv4 i IPv6 o nazwie *dsLbFrontEnd_v4* i *dsLbFrontEnd_v6*:
+Utwórz adres IP frontonu przy użyciu polecenia [New-AzLoadBalancerFrontendIpConfig](/powershell/module/az.network/new-azloadbalancerfrontendipconfig). Poniższy przykład tworzy konfiguracje IP iPv4 i IPv6 o nazwie *dsLbFrontEnd_v4* i *dsLbFrontEnd_v6:*
 
 ```azurepowershell-interactive
 $frontendIPv4 = New-AzLoadBalancerFrontendIpConfig `
@@ -120,7 +120,7 @@ $frontendIPv6 = New-AzLoadBalancerFrontendIpConfig `
 
 ### <a name="configure-back-end-address-pool"></a>Konfigurowanie puli adresów zaplecza
 
-Utwórz pulę adresów zaplecza przy użyciu polecenia [New-AzLoadBalancerBackendAddressPoolConfig](/powershell/module/az.network/new-azloadbalancerbackendaddresspoolconfig). W kolejnych krokach maszyny wirtualne zostaną dołączone do tej puli zaplecza. Poniższy przykład tworzy pule adresów zaplecza o nazwie *dsLbBackEndPool_v4* i *dsLbBackEndPool_v6* w celu uwzględnienia maszyn wirtualnych z konfiguracją kart sieciowych IPv4 i IPv6:
+Utwórz pulę adresów zaplecza z [New-AzLoadBalancerBackendAddressPoolConfig](/powershell/module/az.network/new-azloadbalancerbackendaddresspoolconfig). W kolejnych krokach maszyny wirtualne zostaną dołączone do tej puli zaplecza. W poniższym przykładzie utworzono pule adresów zaplecza o nazwie *dsLbBackEndPool_v4* i *dsLbBackEndPool_v6* w celu uwzględnienia maszyn wirtualnych z konfiguracjami kart SIECIOWYCH IPV4 i IPv6:
 
 ```azurepowershell-interactive
 $backendPoolv4 = New-AzLoadBalancerBackendAddressPoolConfig `
@@ -130,15 +130,15 @@ $backendPoolv6 = New-AzLoadBalancerBackendAddressPoolConfig `
 -Name "dsLbBackEndPool_v6"
 ```
 ### <a name="create-a-health-probe"></a>Tworzenie sondy kondycji
-Użyj [Add-AzLoadBalancerProbeConfig](/powershell/module/az.network/add-azloadbalancerprobeconfig) , aby utworzyć sondę kondycji do monitorowania kondycji maszyn wirtualnych.
+Użyj [Add-AzLoadBalancerProbeConfig,](/powershell/module/az.network/add-azloadbalancerprobeconfig) aby utworzyć sondę kondycji do monitorowania kondycji maszyn wirtualnych.
 ```azurepowershell
 $probe = New-AzLoadBalancerProbeConfig -Name MyProbe -Protocol tcp -Port 3389 -IntervalInSeconds 15 -ProbeCount 2
 ```
 ### <a name="create-a-load-balancer-rule"></a>Tworzenie reguły modułu równoważenia obciążenia
 
-Reguła modułu równoważenia obciążenia służy do definiowania sposobu dystrybucji ruchu do maszyn wirtualnych. Zdefiniuj konfigurację adresu IP frontonu na potrzeby ruchu przychodzącego oraz pulę adresów IP zaplecza do odbierania ruchu, wraz z wymaganym portem źródłowym i docelowym. Aby upewnić się, że tylko zdrowe maszyny wirtualne odbierają ruch, można opcjonalnie zdefiniować sondę kondycji. Podstawowa usługa równoważenia obciążenia używa sondy IPv4 do oceny kondycji dla punktów końcowych IPv4 i IPv6 na maszynach wirtualnych. Usługa równoważenia obciążenia w warstwie Standardowa obejmuje obsługę jawnych sond kondycji protokołu IPv6.
+Reguła modułu równoważenia obciążenia służy do definiowania sposobu dystrybucji ruchu do maszyn wirtualnych. Zdefiniuj konfigurację adresu IP frontonu na potrzeby ruchu przychodzącego oraz pulę adresów IP zaplecza do odbierania ruchu, wraz z wymaganym portem źródłowym i docelowym. Aby upewnić się, że tylko w dobrej kondycji maszyny wirtualne odbierają ruch, można opcjonalnie zdefiniować sondę kondycji. Podstawowy moduł równoważenia obciążenia używa sondy IPv4 do oceny kondycji zarówno punktów końcowych IPv4, jak i IPv6 na maszynach wirtualnych. Standardowy moduł równoważenia obciążenia zawiera obsługę jawnie sond kondycji IPv6.
 
-Utwórz regułę modułu równoważenia obciążenia przy użyciu polecenia [Add-AzLoadBalancerRuleConfig](/powershell/module/az.network/add-azloadbalancerruleconfig). Poniższy przykład tworzy reguły modułu równoważenia obciążenia o nazwie *dsLBrule_v4* i *dsLBrule_v6* i równoważy ruch na porcie TCP *80* do konfiguracji adresu IP frontonu IPv4 i IPv6:
+Utwórz regułę modułu równoważenia obciążenia przy użyciu polecenia [Add-AzLoadBalancerRuleConfig](/powershell/module/az.network/add-azloadbalancerruleconfig). W poniższym przykładzie utworzono reguły równoważenia obciążenia o nazwach *dsLBrule_v4* i *dsLBrule_v6* i równoważą ruch na porcie *TCP* *80* do konfiguracji IP frontendu IPv4 i IPv6:
 
 ```azurepowershell-interactive
 $lbrule_v4 = New-AzLoadBalancerRuleConfig `
@@ -162,7 +162,7 @@ $lbrule_v6 = New-AzLoadBalancerRuleConfig `
 
 ### <a name="create-load-balancer"></a>Tworzenie modułu równoważenia obciążenia
 
-Utwórz podstawowy moduł równoważenia obciążenia przy użyciu polecenia [New-AzLoadBalancer](/powershell/module/az.network/new-azloadbalancer). Poniższy przykład tworzy publiczną Load Balancer o nazwie *myLoadBalancer* przy użyciu konfiguracji IP frontonu IPv4 i IPv6, pul zaplecza i reguł równoważenia obciążenia, które zostały utworzone w poprzednich krokach:
+Utwórz podstawowy moduł równoważenia obciążenia przy użyciu polecenia [New-AzLoadBalancer](/powershell/module/az.network/new-azloadbalancer). Poniższy przykład tworzy publiczny podstawowy moduł równoważenia obciążenia o nazwie *myLoadBalancer* przy użyciu konfiguracji IP frontendu IPv4 i IPv6, pul zaplecza i reguł równoważenia obciążenia utworzonych w poprzednich krokach:
 
 ```azurepowershell-interactive
 $lb = New-AzLoadBalancer `
@@ -177,7 +177,7 @@ $lb = New-AzLoadBalancer `
 ```
 
 ## <a name="create-network-resources"></a>Tworzenie zasobów sieciowych
-Przed wdrożeniem niektórych maszyn wirtualnych i przetestowanie modułu równoważenia obciążenia, należy utworzyć pomocnicze zasoby sieciowe — zestaw dostępności, sieciową grupę zabezpieczeń, sieć wirtualną i wirtualne karty sieciowe. 
+Przed wdrożeniem niektórych maszyn wirtualnych i przetestowaniu modułu balansera należy utworzyć pomocnicze zasoby sieciowe — zestaw dostępności, grupę zabezpieczeń sieci, sieć wirtualną i wirtualne karty sieciowe. 
 ### <a name="create-an-availability-set"></a>Tworzenie zestawu dostępności
 Aby poprawić wysoką dostępność aplikacji, umieść maszyny wirtualne w zestawie dostępności.
 
@@ -195,7 +195,7 @@ $avset = New-AzAvailabilitySet `
 
 ### <a name="create-network-security-group"></a>Tworzenie sieciowej grupy zabezpieczeń
 
-Utwórz sieciową grupę zabezpieczeń dla reguł, które będą zarządzać komunikacją przychodzącą i wychodzącą w sieci wirtualnej.
+Utwórz grupę zabezpieczeń sieci dla reguł, które będą regulować komunikację przychodzącą i wychodzącą w sieci wirtualnej.
 
 #### <a name="create-a-network-security-group-rule-for-port-3389"></a>Tworzenie reguły sieciowej grupy zabezpieczeń dla portu 3389
 
@@ -216,7 +216,7 @@ $rule1 = New-AzNetworkSecurityRuleConfig `
 ```
 #### <a name="create-a-network-security-group-rule-for-port-80"></a>Tworzenie reguły sieciowej grupy zabezpieczeń dla portu 80
 
-Utwórz regułę sieciowej grupy zabezpieczeń, aby zezwolić na połączenia internetowe przez port 80 za pomocą narzędzia [New-AzNetworkSecurityRuleConfig](/powershell/module/az.network/new-aznetworksecurityruleconfig).
+Utwórz regułę sieciowej grupy zabezpieczeń, aby zezwolić na połączenia internetowe za pośrednictwem portu 80 za pomocą [pliku New-AzNetworkSecurityRuleConfig](/powershell/module/az.network/new-aznetworksecurityruleconfig).
 
 ```azurepowershell-interactive
 $rule2 = New-AzNetworkSecurityRuleConfig `
@@ -263,7 +263,7 @@ $vnet = New-AzVirtualNetwork `
 
 ### <a name="create-nics"></a>Tworzenie kart sieciowych
 
-Twórz wirtualne karty sieciowe za pomocą interfejsu [New-AzNetworkInterface](/powershell/module/az.network/new-aznetworkinterface). Poniższy przykład tworzy dwie wirtualne karty sieciowe zarówno z konfiguracją IPv4, jak i IPv6. (Po jednej karcie na każdą maszynę wirtualną, która zostanie utworzona na potrzeby aplikacji w kolejnych krokach).
+Tworzenie wirtualnych kart sieciowych za pomocą [new-aznetworkinterface](/powershell/module/az.network/new-aznetworkinterface). Poniższy przykład tworzy dwie wirtualne karty sieciowe zarówno w konfiguracjach IPv4 i IPv6. (Po jednej karcie na każdą maszynę wirtualną, która zostanie utworzona na potrzeby aplikacji w kolejnych krokach).
 
 ```azurepowershell-interactive
   $Ip4Config=New-AzNetworkInterfaceIpConfig `
@@ -328,7 +328,7 @@ $VM2 = New-AzVM -ResourceGroupName $rg.ResourceGroupName  -Location $rg.Location
 ```
 
 ## <a name="determine-ip-addresses-of-the-ipv4-and-ipv6-endpoints"></a>Określanie adresów IP punktów końcowych IPv4 i IPv6
-Pobierz wszystkie obiekty interfejsu sieciowego w grupie zasobów, aby podsumować adresy IP używane w tym wdrożeniu przy użyciu `get-AzNetworkInterface`. Należy również uzyskać adresy punktów końcowych protokołu IPv4 i IPv6 Load Balancer z `get-AzpublicIpAddress`.
+Pobierz wszystkie obiekty interfejsu sieciowego w grupie zasobów, aby podsumować adres IP używany w tym wdrożeniu za pomocą programu `get-AzNetworkInterface`. Ponadto, pobierz adresy frontendu modułu równoważenia obciążenia punktów końcowych IPv4 i IPv6 za pomocą `get-AzpublicIpAddress`.
 
 ```azurepowershell-interactive
 $rgName= "dsRG1"
@@ -362,19 +362,19 @@ foreach ($NIC in $NICsInRG) {
  
   (get-AzpublicIpAddress -resourcegroupname $rgName | where { $_.name -notlike "RdpPublicIP*" }).IpAddress
 ```
-Na poniższej ilustracji przedstawiono przykładowe dane wyjściowe zawierające listę prywatnych adresów IPv4 i IPv6 dwóch maszyn wirtualnych oraz adresy IP frontonu IPv4 i IPv6 Load Balancer.
+Na poniższej ilustracji przedstawiono przykładowe dane wyjściowe, które zawierają listę prywatnych adresów IPv4 i IPv6 dwóch maszyn wirtualnych oraz adresów IP iPv4 fronta i IPv6 modułu równoważenia obciążenia.
 
-![Podsumowanie protokołu IP wdrożenia aplikacji podwójnego stosu (IPv4/IPv6) na platformie Azure](./media/virtual-network-ipv4-ipv6-dual-stack-powershell/dual-stack-application-summary.png)
+![Podsumowanie protokołu IP wdrożenia aplikacji z dwoma stosami (IPv4/IPv6) na platformie Azure](./media/virtual-network-ipv4-ipv6-dual-stack-powershell/dual-stack-application-summary.png)
 
-## <a name="view-ipv6-dual-stack-virtual-network-in-azure-portal"></a>Wyświetlanie sieci wirtualnej podwójnego stosu IPv6 w Azure Portal
-Sieć wirtualną o podwójnym stosie IPv6 można wyświetlić w Azure Portal w następujący sposób:
+## <a name="view-ipv6-dual-stack-virtual-network-in-azure-portal"></a>Wyświetlanie sieci wirtualnej z dwoma stosami IPv6 w witrynie Azure portal
+Sieć wirtualną z dwoma stosami IPv6 można wyświetlić w witrynie Azure Portal w następujący sposób:
 1. Na pasku wyszukiwania portalu wprowadź *dsVnet*.
-2. Gdy pozycja **myVirtualNetwork** pojawi się w wynikach wyszukiwania, wybierz ją. Spowoduje to uruchomienie strony **Przegląd** sieci wirtualnej o podwójnym stosie o nazwie *dsVnet*. Sieć wirtualna o podwójnym stosie pokazuje dwie karty sieciowe z konfiguracją protokołów IPv4 i IPv6 znajdującą się w podwójnej podsieci o nazwie *dsSubnet*.
+2. Gdy pozycja **myVirtualNetwork** pojawi się w wynikach wyszukiwania, wybierz ją. Spowoduje to uruchomienie strony **Przegląd** sieci wirtualnej z dwoma stosami o nazwie *dsVnet*. Sieć wirtualna z dwoma stosami pokazuje dwie karty sieciowe z konfiguracjami IPv4 i IPv6 znajdującymi się w podsieci podwójnego stosu o nazwie *dsSubnet*.
 
-  ![Sieć wirtualna o podwójnym stosie IPv6 na platformie Azure](./media/virtual-network-ipv4-ipv6-dual-stack-powershell/dual-stack-vnet.png)
+  ![Sieć wirtualna z dwoma stosami IPv6 na platformie Azure](./media/virtual-network-ipv4-ipv6-dual-stack-powershell/dual-stack-vnet.png)
 
 > [!NOTE]
-> Protokół IPv6 dla usługi Azure Virtual Network jest dostępny w Azure Portal w ramach tej wersji zapoznawczej tylko do odczytu.
+> Sieć wirtualna IPv6 dla platformy Azure jest dostępna w witrynie Azure portal tylko do odczytu w tej wersji w wersji zapoznawczej.
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
@@ -386,4 +386,4 @@ Remove-AzResourceGroup -Name dsRG1
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym artykule opisano tworzenie podstawowego Load Balancer z konfiguracją dwóch adresów IP frontonu (IPv4 i IPv6). Utworzono również dwie maszyny wirtualne, które zawierają karty sieciowe z dwoma konfiguracjami protokołu IP (IPV4 + IPv6), które zostały dodane do puli zaplecza modułu równoważenia obciążenia. Aby dowiedzieć się więcej o obsłudze protokołu IPv6 w sieciach wirtualnych platformy Azure, zobacz [co to jest protokół IPv6 dla systemu azure Virtual Network?](ipv6-overview.md)
+W tym artykule utworzono podstawowy moduł równoważenia obciążenia z konfiguracją IP z podwójnym frontendem (IPv4 i IPv6). Utworzono również dwie maszyny wirtualne, które zawierały karty sieciowe z dwiema konfiguracjami IP (IPV4 + IPv6), które zostały dodane do puli zaplecza modułu równoważenia obciążenia. Aby dowiedzieć się więcej o obsłudze IPv6 w sieciach wirtualnych platformy Azure, zobacz [Co to jest IPv6 dla usługi Azure Virtual Network?](ipv6-overview.md)

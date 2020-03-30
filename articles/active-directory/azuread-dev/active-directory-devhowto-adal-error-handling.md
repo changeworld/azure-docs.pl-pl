@@ -1,6 +1,6 @@
 ---
-title: Obsługa błędów aplikacji klienta ADAL — najlepsze rozwiązania | Azure
-description: Zapewnia wskazówki dotyczące obsługi błędów i najlepsze rozwiązania dla aplikacji klienckich ADAL.
+title: Najważniejsze wskazówki dotyczące obsługi błędów aplikacji klienckiej ADAL | Azure
+description: Zawiera wskazówki dotyczące obsługi błędów i najlepsze rozwiązania dotyczące aplikacji klienckich ADAL.
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -11,60 +11,61 @@ ms.custom: aaddev
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 02/27/2017
-ms.openlocfilehash: 508d1b71873b535725f446a3b62ce17d82258495
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ROBOTS: NOINDEX
+ms.openlocfilehash: 9fc45ead65a29f2e7567133b5af4667bdb7c79ef
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77165256"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80154988"
 ---
-# <a name="error-handling-best-practices-for-azure-active-directory-authentication-library-adal-clients"></a>Błąd obsługi najlepszych rozwiązań dla klientów biblioteki uwierzytelniania Azure Active Directory (ADAL)
+# <a name="error-handling-best-practices-for-azure-active-directory-authentication-library-adal-clients"></a>Najważniejsze wskazówki dotyczące obsługi błędów dla klientów biblioteki uwierzytelniania usługi Azure Active Directory (ADAL)
 
 [!INCLUDE [active-directory-azuread-dev](../../../includes/active-directory-azuread-dev.md)]
 
-Ten artykuł zawiera wskazówki dotyczące typu błędów, które deweloperzy mogą napotkać, w przypadku używania biblioteki ADAL do uwierzytelniania użytkowników. W przypadku korzystania z biblioteki ADAL istnieje kilka przypadków, w których deweloper może potrzebować krok po kroku i obsłużyć błędy. Właściwa obsługa błędów zapewnia doskonałe środowisko użytkownika końcowego i ogranicza liczbę użytkowników końcowych, którzy muszą się zalogować.
+Ten artykuł zawiera wskazówki dotyczące typu błędów, które deweloperzy mogą napotkać podczas korzystania z usługi ADAL do uwierzytelniania użytkowników. Podczas korzystania z usługi ADAL, istnieje kilka przypadków, w których deweloper może trzeba krok i obsługi błędów. Prawidłowa obsługa błędów zapewnia doskonałe środowisko użytkownika końcowego i ogranicza liczbę razy, w tym gdy użytkownik końcowy musi się zalogować.
 
-W tym artykule omówiono określone przypadki dla każdej platformy obsługiwanej przez bibliotekę ADAL oraz sposób, w jaki aplikacja może prawidłowo obsługiwać poszczególne przypadki. Wskazówki dotyczące błędów są podzielone na dwie szersze kategorie na podstawie wzorców pozyskiwania tokenów udostępnianych przez interfejsy API biblioteki ADAL:
+W tym artykule możemy zbadać konkretne przypadki dla każdej platformy obsługiwane przez usługi ADAL i jak aplikacja może prawidłowo obsługiwać każdy przypadek. Wskazówki dotyczące błędów są podzielone na dwie szersze kategorie, na podstawie wzorców pozyskiwania tokenów dostarczonych przez interfejsy API ADAL:
 
-- **AcquireTokenSilent**: klient próbuje uzyskać token dyskretnie (bez interfejsu użytkownika) i może się nie powieść, jeśli biblioteka ADAL nie powiedzie się. 
-- **AcquireToken**: Klient może próbować uzyskać ciche pobieranie, ale może również wykonywać interaktywne żądania, które wymagają logowania.
+- **AcquireTokenSilent:** Klient próbuje uzyskać token po cichu (bez interfejsu użytkownika) i może zakończyć się niepowodzeniem, jeśli usługa ADAL zakończy się niepowodzeniem. 
+- **AcquireToken**: Klient może próbować cichego nabycia, ale może również wykonywać interaktywne żądania, które wymagają logowania.
 
 > [!TIP]
-> Dobrym pomysłem jest zarejestrowanie wszystkich błędów i wyjątków podczas korzystania z biblioteki ADAL i usługi Azure AD. Dzienniki nie tylko ułatwiają zrozumienie ogólnej kondycji aplikacji, ale są również ważne podczas debugowania. Mimo że aplikacja może zostać odzyskana po pewnych błędach, może to mieć szersze problemy z projektowaniem, które wymagają zmiany kodu w celu rozwiązania. 
+> Dobrym pomysłem jest rejestrowanie wszystkich błędów i wyjątków podczas korzystania z usługi ADAL i usługi Azure AD. Dzienniki są nie tylko pomocne w zrozumieniu ogólnej kondycji aplikacji, ale są również ważne podczas debugowania szerszych problemów. Podczas gdy aplikacja może odzyskać z niektórych błędów, mogą one wskazywać na szersze problemy z projektem, które wymagają zmian kodu w celu rozwiązania. 
 > 
-> Podczas wdrażania warunków błędu objętych tym dokumentem należy rejestrować kod błędu i opis z przyczyn omówionych wcześniej. Przykłady kodu rejestrowania można znaleźć w dokumentacji dotyczącej [błędów i rejestrowania](#error-and-logging-reference) . 
+> Podczas implementowania warunków błędu omówionych w tym dokumencie, należy zarejestrować kod błędu i opis z powodów omówionych wcześniej. Zobacz [odwołanie do błędu i rejestrowania](#error-and-logging-reference) przykłady kodu rejestrowania. 
 >
 
-## <a name="acquiretokensilent"></a>AcquireTokenSilent
+## <a name="acquiretokensilent"></a>AcquireTokenSilent (AcquireTokenSilent)
 
-AcquireTokenSilent próbuje uzyskać token z gwarancją, że użytkownik końcowy nie widzi interfejsu użytkownika. Istnieje kilka przypadków, w których uzyskanie dyskretne może zakończyć się niepowodzeniem i musi być obsługiwane za pomocą żądań interaktywnych lub przez domyślną procedurę obsługi. Firma Microsoft szczegółowe się z informacjami o tym, kiedy i jak należy korzystać z każdego przypadku w poniższych sekcjach.
+AcquireTokenSilent próbuje uzyskać token z gwarancją, że użytkownik końcowy nie widzi interfejsu użytkownika (UI). Istnieje kilka przypadków, w których ciche pozyskiwanie może zakończyć się niepowodzeniem i musi być obsługiwane za pośrednictwem żądań interaktywnych lub przez domyślny program obsługi. Zagłębiamy się w szczegóły, kiedy i jak zatrudniać każdy przypadek w kolejnych sekcjach.
 
-Istnieje zestaw błędów generowanych przez system operacyjny, co może wymagać obsługi błędów specyficznych dla aplikacji. Aby uzyskać więcej informacji, zobacz sekcję "błędy systemu operacyjnego" w [dokumentacji dotyczącej błędów i rejestrowania](#error-and-logging-reference). 
+Istnieje zestaw błędów generowanych przez system operacyjny, które mogą wymagać obsługi błędów specyficzne dla aplikacji. Aby uzyskać więcej informacji, zobacz sekcję Błędy systemu operacyjnego w sekcji [Błąd i odwołanie do rejestrowania](#error-and-logging-reference). 
 
 ### <a name="application-scenarios"></a>Scenariusze aplikacji
 
-- [Natywne aplikacje klienckie](../develop/developer-glossary.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json#native-client) (iOS, Android, Desktop .NET lub Xamarin)
-- Aplikacje [klienckie sieci Web](../develop/developer-glossary.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json#web-client) wywołujące [zasób](../develop/developer-glossary.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json#resource-server) (.NET)
+- [Natywne aplikacje klienckie](../develop/developer-glossary.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json#native-client) (iOS, Android, .NET Desktop lub Xamarin)
+- Aplikacje [klienckie w sieci Web](../develop/developer-glossary.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json#web-client) wywołujące [zasób](../develop/developer-glossary.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json#resource-server) (.NET)
 
-### <a name="error-cases-and-actionable-steps"></a>Przypadki błędów i kroki z możliwością wykonania akcji
+### <a name="error-cases-and-actionable-steps"></a>Przypadki błędów i kroki zasłaniania
 
 Zasadniczo istnieją dwa przypadki błędów AcquireTokenSilent:
 
-| Spraw | Opis |
+| Sprawa | Opis |
 |------|-------------|
-| **Przypadek 1**. błąd jest rozpoznawany przy użyciu interakcyjnego logowania | W przypadku błędów spowodowanych brakiem prawidłowych tokenów wymagane jest żądanie interaktywne. W każdym przypadku wyszukiwanie w pamięci podręcznej i nieprawidłowy/wygasły token odświeżania wymagają wywołania AcquireToken do rozwiązania.<br><br>W takich przypadkach użytkownik końcowy musi zostać poproszony o zalogowanie się. Aplikacja może natychmiast wykonać żądanie interaktywne, po interakcji z użytkownikiem końcowym (np. naciśnięciem przycisku logowania) lub nowszym. Wybór zależy od żądanego zachowania aplikacji.<br><br>Zapoznaj się z kodem w poniższej sekcji w tym konkretnym przypadku i błędami, które je Diagnozuj.|
-| **Przypadek 2**: błąd nie jest rozpoznawany przy użyciu interakcyjnego logowania | W przypadku błędów sieci i przejściowych/tymczasowych lub innych awarii wykonywanie interakcyjnego żądania AcquireToken nie rozwiąże problemu. Niezbędne interakcyjne komunikaty logowania mogą również frustrować użytkowników końcowych. Biblioteka ADAL automatycznie próbuje wykonać pojedynczej próby dla większości błędów w przypadku błędów AcquireTokenSilent.<br><br>Aplikacja kliencka może również próbować ponowić próbę w pewnym momencie, ale w przypadku i w zależności od zachowania aplikacji oraz odpowiedniego środowiska użytkownika końcowego. Na przykład aplikacja może wykonać AcquireTokenSilentą ponowną próbę po kilku minutach lub w odpowiedzi na pewną akcję użytkownika końcowego. Natychmiastowe ponowienie próby spowoduje ograniczenie ograniczenia aplikacji i nie powinno być podejmowane próby.<br><br>Kolejna próba nie powiedzie się z powodu tego samego błędu nie oznacza, że klient powinien wykonać interaktywne żądanie przy użyciu AcquireToken, ponieważ nie rozwiąże błędu.<br><br>Zapoznaj się z kodem w poniższej sekcji w tym konkretnym przypadku i błędami, które je Diagnozuj. |
+| **Przypadek 1:** Błąd można rozwiązać za pomocą interaktywnego logowania | W przypadku błędów spowodowanych brakiem prawidłowych tokenów konieczne jest żądanie interaktywne. W szczególności wyszukiwanie w pamięci podręcznej i nieprawidłowy/wygasły token odświeżania wymagają wywołania AcquireToken, aby rozwiązać.<br><br>W takich przypadkach użytkownik końcowy musi zostać poproszony o zalogowanie się. Aplikacja może wybrać opcję natychmiastowego wykonania żądania interaktywnego po interakcji z użytkownikiem końcowym (na przykład naciśnięcie przycisku logowania) lub później. Wybór zależy od pożądanego zachowania aplikacji.<br><br>Zobacz kod w poniższej sekcji dla tego konkretnego przypadku i błędy, które go zdiagnozować.|
+| **Przypadek 2:** Błąd nie można rozwiązać za pomocą interaktywnego logowania | W przypadku błędów sieciowych i przejściowych/tymczasowych lub innych błędów wykonanie interaktywnego żądania AcquireToken nie rozwiązuje problemu. Niepotrzebne interaktywne monity logowania mogą również frustrować użytkowników końcowych. ADAL automatycznie próbuje ponowić próbę dla większości błędów w błędach AcquireTokenSilent.<br><br>Aplikacja kliencka może również podjąć próbę ponowienia próby w pewnym późniejszym momencie, ale kiedy i jak zależy od zachowania aplikacji i pożądanego środowiska użytkownika końcowego. Na przykład aplikacja może wykonać AcquireTokenSilent ponowie próbę po kilku minutach lub w odpowiedzi na niektóre działania użytkownika końcowego. Natychmiastowe ponowienie próby spowoduje, że aplikacja zostanie ograniczona i nie należy podejmować prób.<br><br>Kolejna ponowna próba niepowodzenia z tym samym błędem nie oznacza, że klient powinien wykonać interaktywne żądanie przy użyciu AcquireToken, ponieważ nie rozwiązuje błędu.<br><br>Zobacz kod w poniższej sekcji dla tego konkretnego przypadku i błędy, które go zdiagnozować. |
 
 ### <a name="net"></a>.NET
 
 Poniższe wskazówki zawierają przykłady obsługi błędów w połączeniu z metodami ADAL: 
 
-- acquireTokenSilentAsync(…)
-- acquireTokenSilentSync(…) 
-- [przestarzałe] acquireTokenSilent (...)
-- [przestarzałe] acquireTokenByRefreshToken (...) 
+- acquireTokenSilentAsync(...)
+- acquireTokenSilentSync(...) 
+- [przestarzałe] acquireTokenSilent(...)
+- [przestarzały] acquireTokenByRefreshToken(...) 
 
-Kod zostanie wdrożony w następujący sposób:
+Twój kod zostanie zaimplementowany w następujący sposób:
 
 ```csharp
 try{
@@ -103,11 +104,11 @@ catch (AdalException e) {
 
 Poniższe wskazówki zawierają przykłady obsługi błędów w połączeniu z metodami ADAL: 
 
-- acquireTokenSilentSync(…)
+- acquireTokenSilentSync(...)
 - acquireTokenSilentAsync(...)
-- [przestarzałe] acquireTokenSilent (...)
+- [przestarzałe] acquireTokenSilent(...)
 
-Kod zostanie wdrożony w następujący sposób:
+Twój kod zostanie zaimplementowany w następujący sposób:
 
 ```java
 // *Inside callback*
@@ -139,9 +140,9 @@ public void onError(Exception e) {
 
 Poniższe wskazówki zawierają przykłady obsługi błędów w połączeniu z metodami ADAL: 
 
-- acquireTokenSilentWithResource(…)
+- acquireTokenSilentWithResource(...)
 
-Kod zostanie wdrożony w następujący sposób:
+Twój kod zostanie zaimplementowany w następujący sposób:
 
 ```objc
 [context acquireTokenSilentWithResource:[ARGS], completionBlock:^(ADAuthenticationResult *result) {
@@ -169,52 +170,52 @@ Kod zostanie wdrożony w następujący sposób:
 }]
 ```
 
-## <a name="acquiretoken"></a>AcquireToken
+## <a name="acquiretoken"></a>AcquireToken (AcquireToken)
 
-AcquireToken to domyślna metoda ADAL używana do uzyskiwania tokenów. W przypadkach, gdy tożsamość użytkownika jest wymagana, AcquireToken próbuje najpierw uzyskać token dyskretny, a następnie w razie potrzeby wyświetla interfejs użytkownika (chyba że PromptBehavior. nigdy nie jest przesyłany). W przypadkach, gdy wymagana jest tożsamość aplikacji, AcquireToken próbuje uzyskać token, ale nie wyświetla interfejsu użytkownika, ponieważ nie ma żadnych użytkowników końcowych. 
+AcquireToken jest domyślną metodą ADAL używaną do uzyskiwania tokenów. W przypadkach, gdy wymagana jest tożsamość użytkownika AcquireToken próbuje najpierw po cichu uzyskać token, a następnie wyświetla interfejs użytkownika w razie potrzeby (chyba że promptbehavior.Never nie jest przekazywana). W przypadkach, gdy wymagana jest tożsamość aplikacji AcquireToken próbuje uzyskać token, ale nie pokazuje interfejsu użytkownika, ponieważ nie ma użytkownika końcowego. 
 
-Podczas obsługi błędów AcquireToken obsługa błędów jest zależna od platformy i scenariusza, w którym aplikacja próbuje osiągnąć. 
+Podczas obsługi błędów AcquireToken obsługa błędów zależy od platformy i scenariusza, który aplikacja próbuje osiągnąć. 
 
-System operacyjny może również generować zestaw błędów, które wymagają obsługi błędów zależnych od konkretnej aplikacji. Aby uzyskać więcej informacji, zobacz "błędy systemu operacyjnego" w [dokumentacji dotyczącej błędów i rejestrowania](#error-and-logging-reference). 
+System operacyjny może również generować zestaw błędów, które wymagają obsługi błędów w zależności od określonej aplikacji. Aby uzyskać więcej informacji, zobacz "Błędy systemu operacyjnego" w [obszarze Błąd i odwołanie do rejestrowania](#error-and-logging-reference). 
 
 ### <a name="application-scenarios"></a>Scenariusze aplikacji
 
-- Natywne aplikacje klienckie (iOS, Android, Desktop .NET lub Xamarin)
+- Natywne aplikacje klienckie (iOS, Android, .NET Desktop lub Xamarin)
 - Aplikacje sieci Web wywołujące interfejs API zasobów (.NET)
 - Aplikacje jednostronicowe (JavaScript)
-- Aplikacje między usługami (.NET, Java)
+- Aplikacje usługi do usługi (.NET, Java)
   - Wszystkie scenariusze, w tym w imieniu
-  - W imieniu określonych scenariuszy
+  - W imieniu konkretnych scenariuszy
 
-### <a name="error-cases-and-actionable-steps-native-client-applications"></a>Przypadki błędów i kroki umożliwiające wykonanie akcji: natywne aplikacje klienckie
+### <a name="error-cases-and-actionable-steps-native-client-applications"></a>Przypadki błędów i kroki, które można wykonać: natywne aplikacje klienckie
 
-Jeśli tworzysz natywną aplikację kliencką, istnieje kilka przypadków obsługi błędów, które należy wziąć pod uwagę, które odnoszą się do problemów z siecią, błędów przejściowych i innych błędów specyficznych dla platformy. W większości przypadków aplikacja nie powinna wykonywać bezpośrednich ponownych prób, ale należy zaczekać na interakcję użytkownika końcowego, która monituje o logowanie. 
+Jeśli budujesz natywną aplikację kliencką, istnieje kilka przypadków obsługi błędów, które należy wziąć pod uwagę, które odnoszą się do problemów z siecią, błędów przejściowych i innych błędów specyficznych dla platformy. W większości przypadków aplikacja nie powinna wykonywać natychmiastowych ponownych prób, ale raczej czekać na interakcję użytkownika końcowego, który monituje logowania. 
 
-Istnieje kilka specjalnych przypadków, w których jedna ponowna próba może rozwiązać problem. Na przykład gdy użytkownik musi włączyć dane na urządzeniu lub ukończyć pobieranie brokera usługi Azure AD po awarii początkowej. 
+Istnieje kilka szczególnych przypadków, w których pojedyncza ponowna próba może rozwiązać problem. Na przykład, gdy użytkownik musi włączyć dane na urządzeniu lub ukończone pobieranie brokera usługi Azure AD po początkowym niepowodzeniu. 
 
-W przypadku awarii aplikacja może przedstawić interfejs użytkownika, aby umożliwić użytkownikowi końcowemu przeprowadzenie pewnej interakcji, która poprosi o ponowienie próby. Na przykład jeśli urządzenie nie powiodło się z powodu błędu w trybie offline, przycisk "Spróbuj ponownie się zalogować" monituje o ponowienie próby AcquireToken, a nie natychmiast ponowienie błędu. 
+W przypadku awarii aplikacja może przedstawić interfejs użytkownika, aby umożliwić użytkownikowi końcowemu wykonanie niektórych interakcji, która monituje o ponowną próbę. Na przykład jeśli urządzenie nie powiodło się dla błędu w trybie offline, przycisk "Spróbuj zalogować się ponownie" monitowanie AcquireToken ponowić próbę, a nie natychmiast ponowić próbę błędu. 
 
-Obsługa błędów w natywnych aplikacjach może być definiowana przez dwa sytuacje:
+Obsługa błędów w aplikacjach natywnych może być zdefiniowana przez dwa przypadki:
 
 |  |  |
 |------|-------------|
-| **Przypadek 1**:<br>Błąd niepowtarzający operacji (większość przypadków) | 1. nie próbuj natychmiast próbować. Zaprezentowanie interfejsu użytkownika końcowego na podstawie określonego błędu, który wywołuje ponowną próbę (na przykład "Spróbuj zalogować się ponownie" lub "Pobierz aplikację brokera usługi Azure AD"). |
-| **Przypadek 2**:<br>Błąd powtarzania | 1. wykonaj jedną ponowną próbę, ponieważ użytkownik końcowy mógł wprowadzić stan, który spowoduje sukces.<br><br>2. Jeśli próba nie powiedzie się, zaprezentowanie interfejsu użytkownika końcowego na podstawie określonego błędu, który wywołuje ponowną próbę ("Spróbuj ponownie się zalogować", "Pobierz aplikację brokera usługi Azure AD" itp.). |
+| **Przypadek 1**:<br>Błąd nieuprzepróbowalny (w większości przypadków) | 1. Nie próbuj natychmiastowej próby. Przedstaw interfejs użytkownika końcowego na podstawie określonego błędu, który wywołuje ponowną próbę (na przykład "Spróbuj zalogować się ponownie" lub "Pobierz aplikację brokera usługi Azure AD"). |
+| **Przypadek 2**:<br>Błąd ponowialny | 1. Wykonaj jedną próbę ponowienia, ponieważ użytkownik końcowy mógł wprowadzić stan, który kończy się sukcesem.<br><br>2. Jeśli ponowna próba nie powiedzie się, przedstaw interfejs użytkownika końcowego na podstawie określonego błędu, który wywołuje ponowną próbę ("Spróbuj zalogować się ponownie", "Pobierz aplikację brokera usługi Azure AD" itp.). |
 
 > [!IMPORTANT]
-> Jeśli konto użytkownika zostanie przesłane do biblioteki ADAL w wywołaniu dyskretnym i zakończy się niepowodzeniem, kolejne żądanie interaktywne umożliwi użytkownikowi końcowemu zalogowanie się przy użyciu innego konta. Po pomyślnym AcquireTokenniu przy użyciu konta użytkownika aplikacja musi sprawdzić, czy zalogowany użytkownik jest zgodny z lokalnym obiektem użytkownika aplikacji. Niezgodność nie generuje wyjątku (z wyjątkiem w celu C), ale należy ją uwzględnić w przypadkach, gdy użytkownik jest znany lokalnie przed żądaniami uwierzytelniania (np. wywołaniem dyskretnym).
+> Jeśli konto użytkownika jest przekazywane do usługi ADAL w wywołaniu cichym i kończy się niepowodzeniem, kolejne żądanie interaktywne umożliwia użytkownikowi końcowemu zalogowanie się przy użyciu innego konta. Po pomyślnym acquireToken przy użyciu konta użytkownika, aplikacja musi sprawdzić zalogowany użytkownik pasuje do obiektu użytkownika lokalnego aplikacji. Niezgodność nie generuje wyjątek (z wyjątkiem celu C), ale należy wziąć pod uwagę w przypadkach, gdy użytkownik jest znany lokalnie przed żądania uwierzytelniania (jak nieudane wywołanie niemne).
 >
 
 #### <a name="net"></a>.NET
 
-Poniższe wskazówki zawierają przykłady obsługi błędów w połączeniu ze wszystkimi niecichymi AcquireToken (...) Metody ADAL, *z wyjątkiem*: 
+Poniższe wskazówki zawierają przykłady obsługi błędów w połączeniu ze wszystkimi niedyskretnymi usługami AcquireToken(...) Metody ADAL, *z wyjątkiem:* 
 
-- AcquireTokenAsync(…, IClientAssertionCertification, …)
-- AcquireTokenAsync (..., ClientCredential,...)
+- AcquireTokenAsync(..., IClientAssertionCertification, ...)
+- AcquireTokenAsync(..., ClientCredential, ...)
 - AcquireTokenAsync(..., ClientAssertion, ...)
-- AcquireTokenAsync (..., UserAssertion,...)   
+- AcquireTokenAsync(..., UserAssertion,...)   
 
-Kod zostanie wdrożony w następujący sposób:
+Twój kod zostanie zaimplementowany w następujący sposób:
 
 ```csharp
 try {
@@ -248,14 +249,14 @@ catch (AdalException e) {
 ```
 
 > [!NOTE]
-> Biblioteka ADAL .NET ma dodatkowe uwagi, ponieważ obsługuje PromptBehavior. Never, która ma zachowanie takie jak AcquireTokenSilent.
+> ADAL .NET ma dodatkowe uwagę, ponieważ obsługuje PromptBehavior.Never, który ma zachowanie jak AcquireTokenSilent.
 >
 
 Poniższe wskazówki zawierają przykłady obsługi błędów w połączeniu z metodami ADAL: 
 
-- acquireToken(…, PromptBehavior.Never)
+- acquireToken(..., PromptBehavior.Never)
 
-Kod zostanie wdrożony w następujący sposób:
+Twój kod zostanie zaimplementowany w następujący sposób:
 
 ```csharp
     try {acquireToken(…, PromptBehavior.Never);
@@ -285,9 +286,9 @@ catch(AdalServiceException e) {
 
 #### <a name="android"></a>Android
 
-Poniższe wskazówki zawierają przykłady obsługi błędów w połączeniu ze wszystkimi niecichymi AcquireToken (...) Metody ADAL. 
+Poniższe wskazówki zawierają przykłady obsługi błędów w połączeniu ze wszystkimi niedyskretnymi usługami AcquireToken(...) metody ADAL. 
 
-Kod zostanie wdrożony w następujący sposób:
+Twój kod zostanie zaimplementowany w następujący sposób:
 
 ```java
 AcquireTokenAsync(…);
@@ -314,9 +315,9 @@ public void onError(Exception e) {
 
 #### <a name="ios"></a>iOS
 
-Poniższe wskazówki zawierają przykłady obsługi błędów w połączeniu ze wszystkimi niecichymi AcquireToken (...) Metody ADAL. 
+Poniższe wskazówki zawierają przykłady obsługi błędów w połączeniu ze wszystkimi niedyskretnymi usługami AcquireToken(...) metody ADAL. 
 
-Kod zostanie wdrożony w następujący sposób:
+Twój kod zostanie zaimplementowany w następujący sposób:
 
 ```objc
 [context acquireTokenWithResource:[ARGS], completionBlock:^(ADAuthenticationResult *result) {
@@ -339,15 +340,15 @@ Kod zostanie wdrożony w następujący sposób:
 }]
 ```
 
-### <a name="error-cases-and-actionable-steps-web-applications-that-call-a-resource-api-net"></a>Przypadki błędów i kroki z możliwością działania: aplikacje sieci Web wywołujące interfejs API zasobów (.NET)
+### <a name="error-cases-and-actionable-steps-web-applications-that-call-a-resource-api-net"></a>Przypadki błędów i kroki, które można wykonać: aplikacje sieci Web, które wywołują interfejs API zasobów (.NET)
 
-W przypadku kompilowania aplikacji sieci Web platformy .NET, która wywołuje metodę pobiera token przy użyciu kodu autoryzacji dla zasobu, jedynym wymaganym kodem jest domyślna procedura obsługi dla ogólnego przypadku. 
+Jeśli budujesz aplikację sieci web .NET, która wywołuje pobiera token przy użyciu kodu autoryzacji dla zasobu, tylko kod wymagany jest domyślny program obsługi dla przypadku ogólnego. 
 
 Poniższe wskazówki zawierają przykłady obsługi błędów w połączeniu z metodami ADAL: 
 
-- AcquireTokenByAuthorizationCodeAsync(…)
+- AcquireTokenByAuthorizationCodeAsync(...)
 
-Kod zostanie wdrożony w następujący sposób:
+Twój kod zostanie zaimplementowany w następujący sposób:
 
 ```csharp
 try {
@@ -364,19 +365,19 @@ catch (AdalException e) {
 }
 ```
 
-### <a name="error-cases-and-actionable-steps-single-page-applications-adaljs"></a>Przypadki błędów i kroki z możliwością podejmowania działań: aplikacje jednostronicowe (ADAL. js)
+### <a name="error-cases-and-actionable-steps-single-page-applications-adaljs"></a>Przypadki błędów i kroki, które można wykonać: aplikacje jednostronicowe (adal.js)
 
-Jeśli tworzysz aplikację jednostronicową przy użyciu biblioteki ADAL. js z AcquireToken, kod obsługi błędu jest podobny do tego w przypadku typowego wywołania dyskretnego. W przypadku biblioteki ADAL. js AcquireToken nigdy nie jest wyświetlany interfejs użytkownika. 
+Jeśli budujesz aplikacji jednostronicowej przy użyciu adal.js z AcquireToken, kod obsługi błędów jest podobny do typowego wywołania dyskretnego. W szczególności w adal.js AcquireToken nigdy nie pokazuje interfejsu użytkownika. 
 
-Niepowodzenie AcquireToken ma następujące sytuacje:
+Nieudane acquireToken ma następujące przypadki:
 
 |  |  |
 |------|-------------|
-| **Przypadek 1**:<br>Rozpoznawalnie przy użyciu żądania interaktywnego | 1. Jeśli logowanie () nie powiedzie się, nie wykonuj natychmiastowej próby. Ponów próbę, gdy akcja użytkownika zostanie ponowiona.|
-| **Przypadek 2**:<br>Nierozpoznawalne w przypadku żądania interaktywnego. Błąd jest ponawiany. | 1. wykonaj jedną ponowną próbę, ponieważ w poprawce użytkownika końcowego wprowadzono stan, którego wynikiem jest sukces.<br><br>2. Jeśli próba nie powiedzie się, zaprezentowanie użytkownikowi końcowemu akcji na podstawie konkretnego błędu, który może wywołać ponawianie próby ("Spróbuj zalogować się ponownie"). |
-| **Przypadek 3**:<br>Nierozpoznawalne w przypadku żądania interaktywnego. Nie ponowienie próby. | 1. nie próbuj natychmiast próbować. Przedstaw użytkownikowi końcowemu akcję na podstawie konkretnego błędu, który może wywołać ponowienie próby ("Spróbuj zalogować się ponownie"). |
+| **Przypadek 1**:<br>Możliwość ponownego rozpalnej za pomocą interaktywnego żądania | 1. Jeśli login() nie powiedzie się, nie należy wykonywać natychmiastowej próby. Ponów próbę tylko po wyświetlenie ponów po ponów próby użytkownika.|
+| **Przypadek 2**:<br>Nie można rozwiązać z żądaniem interaktywnym. Błąd jest ponawiany. | 1. Wykonaj jedną próbę ponawiania, ponieważ główny użytkownik końcowy wszedł w stan, który kończy się sukcesem.<br><br>2. Jeśli ponowna próba nie powiedzie się, przedstawić użytkownikowi końcowemu akcję opartą na określonym błędzie, który może wywołać ponowną próbę ("Spróbuj zalogować się ponownie"). |
+| **Przypadek 3**:<br>Nie można rozwiązać z żądaniem interaktywnym. Błąd nie jest ponawiany. | 1. Nie próbuj natychmiastowej próby. Przedstaw użytkownikowi końcowemu akcję opartą na określonym błędzie, który może wywołać ponowną próbę ("Spróbuj zalogować się ponownie"). |
 
-Kod zostanie wdrożony w następujący sposób:
+Twój kod zostanie zaimplementowany w następujący sposób:
 
 ```javascript
 AuthContext.acquireToken(…, function(error, errorDesc, token) {
@@ -401,25 +402,25 @@ AuthContext.acquireToken(…, function(error, errorDesc, token) {
 }
 ```
 
-### <a name="error-cases-and-actionable-steps-service-to-service-applications-net-only"></a>Przypadki błędów i kroki z możliwością wykonywania akcji: aplikacje Service-to-Service (tylko platforma .NET)
+### <a name="error-cases-and-actionable-steps-service-to-service-applications-net-only"></a>Przypadki błędów i kroki, które można wykonać: aplikacje usługi do usługi (tylko.NET)
 
-W przypadku kompilowania aplikacji typu "usługa do usługi" używającej AcquireToken istnieje kilka kluczowych błędów, jakie musi obsłużyć kod. Jedyną możliwością wystąpienia błędu jest zwrócenie błędu z powrotem do aplikacji wywołującej (w przypadku wystąpienia) lub zastosowanie strategii ponawiania prób. 
+Jeśli budujesz aplikację usługi do usługi, która używa AcquireToken, istnieje kilka błędów klucza kod musi obsłużyć. Jedynym odwołaniem się do niepowodzenia jest zwrócenie błędu z powrotem do aplikacji wywołującej (w przypadku w imieniu) lub zastosowanie strategii ponawiania. 
 
 #### <a name="all-scenarios"></a>Wszystkie scenariusze
 
-Dla *wszystkich* scenariuszy aplikacji między usługami, w tym w imieniu:
+Dla *wszystkich* scenariuszy aplikacji usługi do usługi, w tym w imieniu:
 
-- Nie należy próbować natychmiastowej próby. Biblioteka ADAL próbuje pojedynczą ponowną próbę w przypadku niektórych nieudanych żądań. 
-- Kontynuuj ponawianie próby, gdy akcja użytkownika lub aplikacji zostanie pożądana. Na przykład aplikacja demona, która działa w pewnym interwale, powinna czekać do następnego interwału do ponowienia próby.
+- Nie próbuj natychmiastowej próby. ADAL próbuje ponowić próbę dla niektórych żądań nie powiodło się. 
+- Kontynuuj ponawianie próby tylko po tym, jak akcja użytkownika lub aplikacji zostanie wyświetle monit o ponowną próbę. Na przykład aplikacja demona, który działa w pewnym przedziale zestawu należy poczekać do następnego interwału, aby ponowić próbę.
 
 Poniższe wskazówki zawierają przykłady obsługi błędów w połączeniu z metodami ADAL: 
 
-- AcquireTokenAsync(…, IClientAssertionCertification, …)
-- AcquireTokenAsync(…,ClientCredential, …)
+- AcquireTokenAsync(..., IClientAssertionCertification, ...)
+- AcquireTokenAsync(...,ClientCredential, ...)
 - AcquireTokenAsync(...,ClientAssertion, ...)
 - AcquireTokenAsync(...,UserAssertion, ...)
 
-Kod zostanie wdrożony w następujący sposób:
+Twój kod zostanie zaimplementowany w następujący sposób:
 
 ```csharp
 try {
@@ -438,13 +439,13 @@ catch (AdalException e) {
 
 #### <a name="on-behalf-of-scenarios"></a>Scenariusze w imieniu
 
-Scenariusze aplikacji typu "usługa do obsługi" *w imieniu* usługi.
+W przypadku scenariuszy aplikacji usługi do usługi *w imieniu.*
 
 Poniższe wskazówki zawierają przykłady obsługi błędów w połączeniu z metodami ADAL: 
 
 - AcquireTokenAsync(..., UserAssertion, ...)
 
-Kod zostanie wdrożony w następujący sposób:
+Twój kod zostanie zaimplementowany w następujący sposób:
 
 ```csharp
 try {
@@ -476,34 +477,34 @@ catch (AdalException e) {
 }
 ```
 
-Utworzyliśmy [kompletny przykład](https://github.com/Azure-Samples/active-directory-dotnet-webapi-onbehalfof-ca) demonstrujący ten scenariusz.
+Stworzyliśmy kompletny [przykład,](https://github.com/Azure-Samples/active-directory-dotnet-webapi-onbehalfof-ca) który pokazuje ten scenariusz.
 
-## <a name="error-and-logging-reference"></a>Informacje o błędach i rejestrowaniu
+## <a name="error-and-logging-reference"></a>Odwołanie do błędu i rejestrowania
 
-### <a name="logging-personal-identifiable-information--organizational-identifiable-information"></a>Rejestrowanie informacji osobistych & informacji o organizacji 
-Domyślnie rejestrowanie biblioteki ADAL nie przechwytuje ani nie rejestruje żadnych informacji osobistych ani informacji o organizacji. Biblioteka umożliwia deweloperom aplikacji włączenie tego elementu przy użyciu metody ustawiającej w klasie rejestratora. Dzięki rejestrowaniu informacji osobistych lub informacji o organizacji, aplikacja jest odpowiedzialna za bezpieczne obsługiwanie bardzo poufnych danych i spełnianie wymagań prawnych.
+### <a name="logging-personal-identifiable-information--organizational-identifiable-information"></a>Rejestrowanie danych osobowych umożliwiających identyfikację & identyfikowalnych informacji organizacji 
+Domyślnie rejestrowanie ADAL nie przechwytuje ani nie rejestruje żadnych osobistych informacji umożliwiających identyfikację ani informacji umożliwiających identyfikację organizacji. Biblioteka umożliwia deweloperom aplikacji, aby włączyć to za pośrednictwem ustawiacza w Logger klasy. Rejestrując dane osobowe lub informacje umożliwiające identyfikację organizacji, aplikacja ponosi odpowiedzialność za bezpieczne przetwarzanie bardzo wrażliwych danych i spełnianie wszelkich wymogów regulacyjnych.
 
 ### <a name="net"></a>.NET
 
 #### <a name="adal-library-errors"></a>Błędy biblioteki ADAL
 
-W celu zbadania określonych błędów ADAL kod źródłowy w [repozytorium Azure-ActiveDirectory-Library for dotnet](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/blob/8f6d560fbede2247ec0e217a21f6929d4375dcaa/src/ADAL.PCL/Utilities/Constants.cs#L58) jest najlepszym odwołaniem do błędu.
+Aby eksplorować określone błędy ADAL, kod źródłowy w [repozytorium azure-activedirectory-library-for-dotnet](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/blob/8f6d560fbede2247ec0e217a21f6929d4375dcaa/src/ADAL.PCL/Utilities/Constants.cs#L58) jest najlepszym odwołaniem do błędu.
 
 #### <a name="guidance-for-error-logging-code"></a>Wskazówki dotyczące kodu rejestrowania błędów
 
-Rejestrowanie w programie .NET ADAL zmiany w zależności od platformy, na której pracujesz. Zapoznaj się z [rejestrowaniem wiki](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Logging-in-ADAL.Net) , aby uzyskać kod dotyczący włączania rejestrowania.
+Rejestrowanie usługi ADAL .NET zmienia się w zależności od platformy, nad na która pracuje. Zapoznaj się z [wiki rejestrowania](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Logging-in-ADAL.Net) kodu, jak włączyć rejestrowanie.
 
 ### <a name="android"></a>Android
 
 #### <a name="adal-library-errors"></a>Błędy biblioteki ADAL
 
-W celu zbadania określonych błędów ADAL kod źródłowy w [repozytorium Azure-ActiveDirectory-Library-for-Android](https://github.com/AzureAD/azure-activedirectory-library-for-android/blob/dev/adal/src/main/java/com/microsoft/aad/adal/ADALError.java#L33) jest najlepszym odwołaniem do błędu.
+Aby eksplorować określone błędy ADAL, kod źródłowy w [repozytorium azure-activedirectory-library-for-android](https://github.com/AzureAD/azure-activedirectory-library-for-android/blob/dev/adal/src/main/java/com/microsoft/aad/adal/ADALError.java#L33) jest najlepszym odwołaniem do błędu.
 
 #### <a name="operating-system-errors"></a>Błędy systemu operacyjnego
 
-Błędy systemu operacyjnego Android są ujawniane za pomocą protokołu AuthenticationException w bibliotece ADAL, są identyfikowane jako "SERVER_INVALID_REQUEST" i mogą być bardziej szczegółowe w opisach błędów. 
+Błędy systemu operacyjnego Systemu Android są udostępniane za pośrednictwem AuthenticationException w ADAL, są identyfikowalne jako "SERVER_INVALID_REQUEST" i mogą być dalej szczegółowe za pomocą opisów błędów. 
 
-Aby zapoznać się z pełną listą typowych błędów i czynności, które należy podjąć w przypadku napotkania aplikacji lub użytkowników końcowych, zobacz witrynę [typu wiki systemu Android](https://github.com/AzureAD/azure-activedirectory-library-for-android/wiki)w systemie ADAL. 
+Aby uzyskać pełną listę typowych błędów i jakie kroki należy podjąć, gdy aplikacja lub użytkownicy końcowi napotkać je, zobacz [ADAL Android Wiki](https://github.com/AzureAD/azure-activedirectory-library-for-android/wiki). 
 
 #### <a name="guidance-for-error-logging-code"></a>Wskazówki dotyczące kodu rejestrowania błędów
 
@@ -538,15 +539,15 @@ adb logcat > "C:\logmsg\logfile.txt";
 
 #### <a name="adal-library-errors"></a>Błędy biblioteki ADAL
 
-Aby poznać konkretne błędy biblioteki ADAL, najlepszym odwołaniem do błędu jest kod źródłowy w [repozytorium Azure-ActiveDirectory-Library-for-objc](https://github.com/AzureAD/azure-activedirectory-library-for-objc/blob/dev/ADAL/src/ADAuthenticationError.m#L295) .
+Aby eksplorować określone błędy ADAL, kod źródłowy w [repozytorium azure-activedirectory-library-for-objc](https://github.com/AzureAD/azure-activedirectory-library-for-objc/blob/dev/ADAL/src/ADAuthenticationError.m#L295) jest najlepszym odwołaniem do błędu.
 
 #### <a name="operating-system-errors"></a>Błędy systemu operacyjnego
 
-Błędy systemu iOS mogą wystąpić podczas logowania, gdy użytkownicy korzystają z widoków sieci Web i charakteru uwierzytelniania. Może to być spowodowane warunkami, takimi jak błędy protokołu SSL, limity czasu lub błędy sieci:
+Błędy systemu iOS mogą wystąpić podczas logowania, gdy użytkownicy korzystają z widoków sieci Web i charakteru uwierzytelniania. Może to być spowodowane warunkami, takimi jak błędy SSL, limity czasu lub błędy sieciowe:
 
-- W przypadku udostępniania uprawnień logowania nie są trwałe, a pamięć podręczna jest pusta. Można rozwiązać, dodając następujący wiersz kodu do łańcucha kluczy: `[[ADAuthenticationSettings sharedInstance] setSharedCacheKeychainGroup:nil];`
-- W przypadku zestawu NsUrlDomain błędów akcja zmienia się w zależności od logiki aplikacji. Zobacz [dokumentację referencyjną NSURLErrorDomain](https://developer.apple.com/documentation/foundation/nsurlerrordomain#declarations) dla określonych wystąpień, które mogą być obsługiwane.
-- Zapoznaj się z tematem [typowe problemy dotyczące biblioteki ADAL obj](https://github.com/AzureAD/azure-activedirectory-library-for-objc#adauthenticationerror) .
+- W przypadku udostępniania uprawnień logowania nie są trwałe, a pamięć podręczna jest pusta. Można rozwiązać, dodając następujący wiersz kodu do pęku kluczy:`[[ADAuthenticationSettings sharedInstance] setSharedCacheKeychainGroup:nil];`
+- W przypadku zestawu błędów NsUrlDomain akcja zmienia się w zależności od logiki aplikacji. Zobacz [dokumentację referencyjną NSURLErrorDomain](https://developer.apple.com/documentation/foundation/nsurlerrordomain#declarations) dla określonych wystąpień, które mogą być obsługiwane.
+- Zobacz [ADAL Obj-C typowe problemy](https://github.com/AzureAD/azure-activedirectory-library-for-objc#adauthenticationerror) dla listy typowych błędów obsługiwanych przez zespół ADAL Objective-C.
 
 #### <a name="guidance-for-error-logging-code"></a>Wskazówki dotyczące kodu rejestrowania błędów
 
@@ -564,7 +565,7 @@ Błędy systemu iOS mogą wystąpić podczas logowania, gdy użytkownicy korzyst
 }];
 ```
 
-### <a name="guidance-for-error-logging-code---javascript"></a>Wskazówki dotyczące rejestrowania błędów — JavaScript 
+### <a name="guidance-for-error-logging-code---javascript"></a>Wskazówki dotyczące kodu rejestrowania błędów - JavaScript 
 
 ```javascript
 0: Error1: Warning2: Info3: Verbose
@@ -576,15 +577,15 @@ window.Logging = {
 };
 ```
 
-## <a name="related-content"></a>Powiązana zawartość
+## <a name="related-content"></a>Zawartość pokrewna
 
 * [Biblioteki uwierzytelniania usługi Azure AD][AAD-Auth-Libraries]
 * [Scenariusze uwierzytelniania usługi Azure AD][AAD-Auth-Scenarios]
-* [Integrowanie aplikacji z Azure Active Directory][AAD-Integrating-Apps]
+* [Integrowanie aplikacji z usługą Azure Active Directory][AAD-Integrating-Apps]
 
-Skorzystaj z poniższej sekcji komentarzy, aby przekazać Opinie i pomóc nam udoskonalić naszą zawartość.
+Skorzystaj z następującej sekcji komentarzy, aby przekazać opinię i pomóc nam udoskonalić i kształtować naszą zawartość.
 
-[![wyświetla przycisk "Zaloguj się przy użyciu konta Microsoft"][AAD-Sign-In]][AAD-Sign-In]
+[![Pokazuje przycisk "Zaloguj się za pomocą firmy Microsoft"][AAD-Sign-In]][AAD-Sign-In]
 <!--Reference style links -->
 
 [AAD-Auth-Libraries]: ./active-directory-authentication-libraries.md

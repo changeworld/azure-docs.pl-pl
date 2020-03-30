@@ -1,24 +1,24 @@
 ---
-title: Bezpieczne wdrażanie szablonu z tokenem SAS
-description: Wdróż zasoby na platformie Azure przy użyciu szablonu Azure Resource Manager, który jest chroniony przez token sygnatury dostępu współdzielonego. Pokazuje Azure PowerShell i interfejs wiersza polecenia platformy Azure.
+title: Bezpieczne wdrażanie szablonu za pomocą tokenu sygnatury dostępu Współdzielonego
+description: Wdrażanie zasobów na platformie Azure za pomocą szablonu usługi Azure Resource Manager, który jest chroniony przez token sygnatury dostępu Współdzielonego. Pokazuje platformę Azure PowerShell i platformę Azure CLI.
 ms.topic: conceptual
 ms.date: 08/14/2019
-ms.openlocfilehash: d30e685c35f33b6fc5d3872b9287e45190ad5713
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 42eaae316d4fd0575102323933f849a3058228a6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79273711"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80156399"
 ---
-# <a name="deploy-private-resource-manager-template-with-sas-token"></a>Wdrażanie prywatnego szablonu usługi Resource Manager przy użyciu tokenu sygnatury dostępu współdzielonego
+# <a name="deploy-private-arm-template-with-sas-token"></a>Wdrażanie prywatnego szablonu ARM za pomocą tokenu Sygnatury dostępu Współdzielonego
 
-Gdy szablon znajduje się na koncie magazynu, możesz ograniczyć dostęp do szablonu, aby zapobiec ujawnieniu go publicznie. Dostęp do bezpiecznego szablonu można uzyskać, tworząc token sygnatury dostępu współdzielonego (SAS) dla szablonu i dostarczając ten token podczas wdrażania. W tym artykule wyjaśniono, jak używać Azure PowerShell lub interfejsu wiersza polecenia platformy Azure do wdrożenia szablonu z tokenem SAS.
+Gdy szablon usługi Azure Resource Manager (ARM) znajduje się na koncie magazynu, można ograniczyć dostęp do szablonu, aby uniknąć uwidaczniania go publicznie. Dostęp do zabezpieczonego szablonu można uzyskać, tworząc token podpisu dostępu współdzielonego (SAS) dla szablonu i udostępniając go tokenu podczas wdrażania. W tym artykule wyjaśniono, jak używać narzędzia Azure PowerShell lub interfejsu wiersza polecenia platformy Azure do wdrażania szablonu z tokenem sygnatury dostępu Współdzielonego.
 
-## <a name="create-storage-account-with-secured-container"></a>Utwórz konto magazynu z bezpiecznym kontenerem
+## <a name="create-storage-account-with-secured-container"></a>Tworzenie konta magazynu z zabezpieczonym kontenerem
 
 Poniższy skrypt tworzy konto magazynu i kontener z wyłączonym dostępem publicznym.
 
-# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
 
 ```azurepowershell-interactive
 New-AzResourceGroup `
@@ -63,9 +63,9 @@ az storage container create \
 
 ## <a name="upload-template-to-storage-account"></a>Przekaż szablon do konta magazynu
 
-Teraz możesz przystąpić do przekazywania szablonu do konta magazynu. Podaj ścieżkę do szablonu, którego chcesz użyć.
+Teraz możesz przesłać szablon na konto magazynu. Podaj ścieżkę do szablonu, którego chcesz użyć.
 
-# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
 
 ```azurepowershell-interactive
 Set-AzStorageBlobContent `
@@ -85,15 +85,15 @@ az storage blob upload \
 
 ---
 
-## <a name="provide-sas-token-during-deployment"></a>Podaj token sygnatury dostępu współdzielonego podczas wdrażania
+## <a name="provide-sas-token-during-deployment"></a>Podaj token sygnatury dostępu Współdzielonego podczas wdrażania
 
-Aby wdrożyć szablon prywatny na koncie magazynu, wygeneruj token sygnatury dostępu współdzielonego i umieść go w identyfikatorze URI dla szablonu. Ustaw czas wygaśnięcia, aby zapewnić wystarczającą ilość czasu na ukończenie wdrożenia.
+Aby wdrożyć szablon prywatny na koncie magazynu, wygeneruj token sygnatury dostępu Współdzielonego i dołącz go do identyfikatora URI dla szablonu. Ustaw czas wygaśnięcia, aby dać wystarczająco dużo czasu na ukończenie wdrożenia.
 
 > [!IMPORTANT]
-> Obiekt BLOB zawierający szablon jest dostępny tylko dla właściciela konta. Jednak podczas tworzenia tokenu sygnatury dostępu współdzielonego dla obiektu BLOB obiekt BLOB jest dostępny dla wszystkich użytkowników o tym identyfikatorze URI. Jeśli inny użytkownik przechwytuje identyfikator URI, ten użytkownik będzie mógł uzyskać dostęp do szablonu. Token SAS to dobry sposób ograniczania dostępu do szablonów, ale nie należy uwzględniać poufnych danych, takich jak hasła bezpośrednio w szablonie.
+> Obiekt blob zawierający szablon jest dostępny tylko dla właściciela konta. Jednak podczas tworzenia tokenu sygnatury dostępu Współdzielonego dla obiektu blob obiekt jest dostępny dla każdego, kto ma ten identyfikator URI. Jeśli inny użytkownik przechwytuje identyfikator URI, ten użytkownik może uzyskać dostęp do szablonu. Token Sygnatury dostępu Współdzielonego jest dobrym sposobem ograniczenia dostępu do szablonów, ale nie należy dołączać poufnych danych, takich jak hasła bezpośrednio w szablonie.
 >
 
-# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
 
 ```azurepowershell-interactive
 # get the URI with the SAS token
@@ -129,16 +129,16 @@ url=$(az storage blob url \
     --name azuredeploy.json \
     --output tsv \
     --connection-string $connection)
-az group deployment create \
+az deployment group create \
   --resource-group ExampleGroup \
   --template-uri $url?$token
 ```
 
 ---
 
-Aby zapoznać się z przykładem użycia tokenu sygnatury dostępu współdzielonego z połączonymi szablonami, zobacz [Używanie połączonych szablonów z Azure Resource Manager](linked-templates.md).
+Na przykład przy użyciu tokenu sygnatury dostępu Współdzielonego z szablonami połączonymi zobacz [Używanie połączonych szablonów z usługą Azure Resource Manager](linked-templates.md).
 
 
 ## <a name="next-steps"></a>Następne kroki
-* Aby zapoznać się z wprowadzeniem do wdrażania szablonów, zobacz [wdrażanie zasobów za pomocą szablonów Menedżer zasobów i Azure PowerShell](deploy-powershell.md).
-* Aby zdefiniować parametry w szablonie, zobacz [Tworzenie szablonów](template-syntax.md#parameters).
+* Aby zapoznać się z wprowadzeniem do wdrażania szablonów, zobacz [Wdrażanie zasobów za pomocą szablonów ARM i programu Azure PowerShell](deploy-powershell.md).
+* Aby zdefiniować parametry w szablonie, zobacz [Szablony tworzenia](template-syntax.md#parameters).

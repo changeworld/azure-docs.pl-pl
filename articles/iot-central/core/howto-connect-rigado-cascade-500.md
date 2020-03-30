@@ -1,73 +1,73 @@
 ---
-title: Łączenie Rigado kaskadowego 500 na platformie Azure IoT Central | Microsoft Docs
-description: Dowiedz się, jak połączyć Rigado kaskadowe urządzenie bramy 500 z aplikacją IoT Central.
+title: Łączenie kaskady Rigado Cascade 500 w usłudze Azure IoT Central | Dokumenty firmy Microsoft
+description: Dowiedz się, jak podłączyć urządzenie bramy Rigado Cascade 500 do aplikacji IoT Central.
 services: iot-central
 ms.service: iot-central
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom:
 - iot-storeAnalytics-conditionMonitor
 - iot-p0-scenario
 ms.author: avneets
 author: avneet723
 ms.date: 11/27/2019
-ms.openlocfilehash: bd96d2b9f2220c4eecb653e0764c381235c62157
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: d52366684d772f91b53a1ab385b51ae4f11f0a5b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77026928"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80158380"
 ---
-# <a name="connect-a-rigado-cascade-500-gateway-device-to-your-azure-iot-central-application"></a>Podłączanie Rigado kaskadowego urządzenia bramy 500 do aplikacji IoT Central platformy Azure
+# <a name="connect-a-rigado-cascade-500-gateway-device-to-your-azure-iot-central-application"></a>Podłącz urządzenie bramy Rigado Cascade 500 do aplikacji Azure IoT Central
 
 
-W tym artykule opisano, jak w ramach konstruktora rozwiązań można podłączyć urządzenie bramy Rigado Kaskada 500 do aplikacji IoT Central Microsoft Azure. 
+W tym artykule opisano, jak jako konstruktor rozwiązań można połączyć urządzenie bramy Rigado Cascade 500 z aplikacją Microsoft Azure IoT Central. 
 
-## <a name="what-is-cascade-500"></a>Co to jest Kaskada 500?
+## <a name="what-is-cascade-500"></a>Co to jest Cascade 500?
 
-Kaskada 500 IoT Gateway to Oferta sprzętowa z Rigado, która jest dołączana jako część rozwiązania do tworzenia kaskadowych rozwiązań jako usługi. Udostępnia ona komercyjne projekty IoT i zespoły produktów o elastycznej mocy obliczeniowej, niezawodne środowisko aplikacji w kontenerze oraz szeroką gamę opcji łączności z urządzeniami bezprzewodowymi, w tym Bluetooth 5, LTE, & Wi-Fi.
+Cascade 500 IoT gateway to oferta sprzętowa rigado, która jest częścią ich rozwiązania Cascade Edge-as-a-Service. Zapewnia komercyjne zespoły projektowe IoT i produkty z elastyczną mocą obliczeniową krawędzi, niezawodnym środowiskiem aplikacji konteneryzowanym i szeroką gamą opcji łączności urządzeń bezprzewodowych, w tym Bluetooth 5, LTE, & Wi-Fi.
 
-Kaskada 500 jest wstępnie certyfikowana dla usługi Azure IoT Plug and Play (wersja zapoznawcza), dzięki której konstruktory rozwiązań mogą łatwo dołączać urządzenie do kompleksowych rozwiązań. Brama kaskadowa umożliwia bezprzewodową łączenie się z różnymi czujnikami monitorowania warunków, które znajdują się w pobliżu urządzenia bramy. Czujniki te można dołączyć do IoT Central za pośrednictwem urządzenia bramy.
+Cascade 500 jest wstępnie certyfikowany dla platformy Azure IoT Plug and Play (wersja zapoznawcza), dzięki czemu nasi konstruktorzy rozwiązań mogą łatwo dołączać urządzenie do swoich kompleksowych rozwiązań. Brama Kaskadowa umożliwia bezprzewodowe łączenie się z różnymi czujnikami monitorowania stanu, które znajdują się w pobliżu urządzenia bramy. Czujniki te można włączyć do IoT Central za pośrednictwem urządzenia bramy.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-Aby wykonać czynności opisane w tym przewodniku, potrzebujesz następujących zasobów:
+Aby przejść przez ten przewodnik, potrzebujesz następujących zasobów:
 
-* Urządzenie kaskadowe Rigado 500. Aby uzyskać więcej informacji, odwiedź stronę [Rigado](https://www.rigado.com/).
-* Aplikacja IoT Central platformy Azure. Aby uzyskać więcej informacji, zobacz [Tworzenie nowej aplikacji](./quick-deploy-iot-central.md).
+* Urządzenie Rigado Cascade 500. Aby uzyskać więcej informacji, odwiedź [Stronę Rigado](https://www.rigado.com/).
+* Aplikacja Azure IoT Central. Aby uzyskać więcej informacji, zobacz [tworzenie nowej aplikacji](./quick-deploy-iot-central.md).
 
 ## <a name="add-a-device-template"></a>Dodawanie szablonu urządzenia
 
-W celu dołączenia urządzenia bramy kaskadowej 500 do wystąpienia aplikacji platformy Azure IoT Central należy skonfigurować odpowiedni szablon urządzenia w aplikacji.
+Aby na pokładzie urządzenia bramy Kaskada 500 do wystąpienia aplikacji usługi Azure IoT Central, należy skonfigurować odpowiedni szablon urządzenia w aplikacji.
 
-Aby dodać kaskadowy szablon urządzenia 500: 
+Aby dodać szablon urządzenia Kaskada 500: 
 
-1. Przejdź do karty ***Szablony urządzeń*** w lewym okienku, wybierz pozycję **+ Nowy**: ![utwórz nowy szablon urządzenia](./media/howto-connect-rigado-cascade-500/device-template-new.png)
-1. Na stronie można ***utworzyć szablon niestandardowy*** lub ***użyć wstępnie skonfigurowanego szablonu urządzenia***
-1. Wybierz szablon urządzenia C500 z listy wstępnie skonfigurowanych szablonów urządzeń, jak pokazano poniżej: ![Wybieranie szablonu urządzenia C500](./media/howto-connect-rigado-cascade-500/device-template-preconfigured.png)
-1. Wybierz pozycję ***Dalej: Dostosuj*** , aby przejść do następnego kroku. 
-1. Na następnym ekranie wybierz pozycję ***Utwórz*** , aby dołączyć szablon urządzenia C500 do aplikacji IoT Central.
+1. Przejdź do karty ***Szablony urządzeń*** w lewym okienku, wybierz + **Nowy**: ![Tworzenie nowego szablonu urządzenia](./media/howto-connect-rigado-cascade-500/device-template-new.png)
+1. Strona umożliwia ***utworzenie szablonu niestandardowego*** lub ***użycie wstępnie skonfigurowanego szablonu urządzenia***
+1. Wybierz szablon urządzenia C500 z listy wstępnie skonfigurowanych szablonów ![urządzeń, jak pokazano poniżej: Wybierz szablon urządzenia C500](./media/howto-connect-rigado-cascade-500/device-template-preconfigured.png)
+1. Wybierz ***dalej: Dostosuj,*** aby przejść do następnego kroku. 
+1. Na następnym ekranie wybierz pozycję ***Utwórz,*** aby pokłować szablon urządzenia C500 do aplikacji IoT Central.
 
-## <a name="retrieve-application-connection-details"></a>Pobierz szczegóły połączenia z aplikacją
+## <a name="retrieve-application-connection-details"></a>Pobieranie szczegółów połączenia aplikacji
 
-Teraz musisz pobrać **Identyfikator zakresu** i **klucz podstawowy** aplikacji IoT Central platformy Azure, aby połączyć urządzenie kaskadowe 500. 
+Teraz trzeba będzie pobrać **identyfikator zakresu** i **klucz podstawowy** dla aplikacji Azure IoT Central, aby połączyć urządzenie Cascade 500. 
 
-1. W lewym okienku przejdź do obszarze **Administracja** , a następnie kliknij pozycję **połączenie z urządzeniem**. 
-2. Zanotuj **Identyfikator zakresu** dla aplikacji IoT Central.
-Identyfikator zakresu aplikacji ![](./media/howto-connect-rigado-cascade-500/app-scope-id.png)
-3. Teraz kliknij przycisk **Wyświetl klucze** i zanotuj **klucz podstawowy**
-![klucz podstawowy](./media/howto-connect-rigado-cascade-500/primary-key-sas.png)  
+1. Przejdź do **pozycji Administracja** w lewym okienku i kliknij pozycję **Połączenie urządzenia**. 
+2. Zanotuj **identyfikator zakresu** aplikacji IoT Central.
+![Identyfikator zakresu aplikacji](./media/howto-connect-rigado-cascade-500/app-scope-id.png)
+3. Teraz kliknij **przycisk Wyświetl klawisze** i zanotuj **klucz**
+![podstawowy](./media/howto-connect-rigado-cascade-500/primary-key-sas.png)  
 
-## <a name="contact-rigado-to-connect-the-gateway"></a>Skontaktuj się z Rigado, aby połączyć bramę 
+## <a name="contact-rigado-to-connect-the-gateway"></a>Skontaktuj się z Rigado, aby podłączyć bramę 
 
-Aby podłączyć urządzenie kaskadowo 500 do aplikacji IoT Central, musisz skontaktować się z usługą Rigado i udostępnić je szczegółowym informacjom dotyczącym połączenia aplikacji z powyższych kroków. 
+Aby podłączyć urządzenie Cascade 500 do aplikacji IoT Central, należy skontaktować się z Rigado i podać szczegóły połączenia aplikacji z powyższych kroków. 
 
-Gdy urządzenie jest połączone z Internetem, Rigado będzie w stanie wypchnąć aktualizację konfiguracji na urządzenie z bramą kaskadową 500 za pośrednictwem bezpiecznego kanału. 
+Gdy urządzenie jest podłączone do Internetu, Rigado będzie mógł przesunąć aktualizację konfiguracji do urządzenia bramy Cascade 500 za pośrednictwem bezpiecznego kanału. 
 
-Ta aktualizacja zastosuje IoT Central szczegóły połączenia na urządzeniu kaskadowym 500 i pojawi się na liście urządzeń. 
+Ta aktualizacja zastosuje szczegóły połączenia IoT Central na urządzeniu Kaskadowym 500 i pojawi się na liście urządzeń. 
 
 ![Klucz podstawowy](./media/howto-connect-rigado-cascade-500/devices-list-c500.png)  
 
-Teraz możesz przystąpić do korzystania z urządzenia C500 w aplikacji IoT Central!
+Teraz możesz używać urządzenia C500 w aplikacji IoT Central!
 
 ## <a name="next-steps"></a>Następne kroki
 
-Teraz, gdy wiesz już, jak połączyć Rigado kaskadowo 500 z aplikacją IoT Central platformy Azure, sugerowanym następnym krokiem jest zapoznanie się z tematem [Tworzenie aplikacji do analizy w sklepie w](../retail/tutorial-in-store-analytics-create-app-pnp.md) celu utworzenia kompleksowego rozwiązania. 
+Teraz, gdy już wiesz, jak połączyć Rigado Cascade 500 z aplikacją Azure IoT Central, sugerowanym następnym krokiem jest dowiedzieć się, jak [utworzyć aplikację analityczną w sklepie,](../retail/tutorial-in-store-analytics-create-app-pnp.md) aby utworzyć kompleksowe rozwiązanie. 

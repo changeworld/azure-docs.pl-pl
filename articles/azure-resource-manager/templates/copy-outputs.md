@@ -1,24 +1,24 @@
 ---
-title: Zdefiniuj wiele wystąpień wartości wyjściowej
-description: Użyj operacji kopiowania w szablonie Azure Resource Manager, aby wykonać iterację wiele razy podczas zwracania wartości z wdrożenia.
+title: Definiowanie wielu wystąpień wartości wyjściowej
+description: Użyj operacji kopiowania w szablonie usługi Azure Resource Manager, aby iterować wiele razy podczas zwracania wartości z wdrożenia.
 ms.topic: conceptual
 ms.date: 02/25/2020
-ms.openlocfilehash: db5c548c7bd4c60357d3656b1273b0192c497459
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.openlocfilehash: 3889260d02f438274c80e99e99136515499443e6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77624776"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80153390"
 ---
-# <a name="output-iteration-in-azure-resource-manager-templates"></a>Iteracja danych wyjściowych w szablonach Azure Resource Manager
+# <a name="output-iteration-in-arm-templates"></a>Iteracja wyjściowa w szablonach ARM
 
-W tym artykule pokazano, jak utworzyć więcej niż jedną wartość danych wyjściowych w szablonie Azure Resource Manager. Po dodaniu elementu **copy** do sekcji dane wyjściowe szablonu można dynamicznie zwrócić liczbę elementów podczas wdrażania.
+W tym artykule pokazano, jak utworzyć więcej niż jedną wartość dla danych wyjściowych w szablonie usługi Azure Resource Manager (ARM). Dodając element **kopiowania** do sekcji dane wyjściowe szablonu, można dynamicznie zwracać liczbę elementów podczas wdrażania.
 
-Można również użyć kopiowania z [zasobami](copy-resources.md), [właściwości w zasobie](copy-properties.md)i [zmiennych](copy-variables.md).
+Można również użyć kopiowania z [resources](copy-resources.md) [zasobami, właściwości w zasobie](copy-properties.md)i [zmiennych](copy-variables.md).
 
-## <a name="outputs-iteration"></a>Iteracja danych wyjściowych
+## <a name="outputs-iteration"></a>Wyprowadza iterację
 
-Element Copy ma następujący format ogólny:
+Element kopiowania ma następujący ogólny format:
 
 ```json
 "copy": [
@@ -29,9 +29,9 @@ Element Copy ma następujący format ogólny:
 ]
 ```
 
-Właściwość **Count** określa liczbę iteracji dla wartości wyjściowej.
+Właściwość **count** określa liczbę iteracji, które mają dla wartości wyjściowej.
 
-Właściwość **Input** określa właściwości, które mają być powtarzane. Tworzysz tablicę elementów skonstruowanych na podstawie wartości we właściwości **wejściowej** . Może to być pojedyncza Właściwość (na przykład ciąg) lub obiekt z kilkoma właściwościami.
+Właściwość **input** określa właściwości, które mają zostać powtórzone. Można utworzyć tablicę elementów zbudowanych na podstawie wartości we właściwości **wejściowej.** Może to być pojedyncza właściwość (jak ciąg) lub obiekt z kilkoma właściwościami.
 
 Poniższy przykład tworzy zmienną liczbę kont magazynu i zwraca punkt końcowy dla każdego konta magazynu:
 
@@ -134,7 +134,7 @@ Następny przykład zwraca trzy właściwości z nowych kont magazynu.
 }
 ```
 
-Poprzedni przykład zwraca tablicę o następujących wartościach:
+W poprzednim przykładzie zwraca tablicę z następującymi wartościami:
 
 ```json
 [
@@ -153,11 +153,11 @@ Poprzedni przykład zwraca tablicę o następujących wartościach:
 
 ## <a name="next-steps"></a>Następne kroki
 
-* Aby przejść przez samouczek, zobacz [Samouczek: Tworzenie wielu wystąpień zasobów przy użyciu szablonów Menedżer zasobów](template-tutorial-create-multiple-instances.md).
-* Aby poznać inne zastosowania elementu Copy, zobacz:
-  * [Iteracja zasobów w szablonach Azure Resource Manager](copy-resources.md)
-  * [Iteracja właściwości w szablonach Azure Resource Manager](copy-properties.md)
-  * [Iteracja zmiennej w szablonach Azure Resource Manager](copy-variables.md)
-* Jeśli chcesz dowiedzieć się więcej na temat sekcji szablonu, zobacz [Tworzenie szablonów Azure Resource Manager](template-syntax.md).
-* Aby dowiedzieć się, jak wdrożyć szablon, zobacz [wdrażanie aplikacji przy użyciu szablonu Azure Resource Manager](deploy-powershell.md).
+* Aby przejść przez samouczek, zobacz [Samouczek: tworzenie wielu wystąpień zasobów przy użyciu szablonów ARM](template-tutorial-create-multiple-instances.md).
+* Aby uzyskać inne zastosowania elementu kopiowania, zobacz:
+  * [Iteracja zasobów w szablonach ARM](copy-resources.md)
+  * [Iteracja właściwości w szablonach ARM](copy-properties.md)
+  * [Iteracja zmiennych w szablonach ARM](copy-variables.md)
+* Jeśli chcesz dowiedzieć się więcej o sekcjach szablonu, zobacz [Tworzenie szablonów ARM](template-syntax.md).
+* Aby dowiedzieć się, jak wdrożyć szablon, zobacz [Wdrażanie aplikacji z szablonem ARM](deploy-powershell.md).
 

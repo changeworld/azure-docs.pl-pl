@@ -1,6 +1,6 @@
 ---
-title: Replikuj w Azure Cosmos DB języku zapytań
-description: Dowiedz się więcej na temat replikacji funkcji systemu SQL w Azure Cosmos DB.
+title: REPLIKACJA w języku kwerend usługi Azure Cosmos DB
+description: Dowiedz się więcej o replikacji funkcji systemu SQL w usłudze Azure Cosmos DB.
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
@@ -8,13 +8,13 @@ ms.date: 03/03/2020
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 19fcde522c5cb0355e53a5616145f27fada7dad9
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78302189"
 ---
-# <a name="replicate-azure-cosmos-db"></a>REPLIKACJA (Azure Cosmos DB)
+# <a name="replicate-azure-cosmos-db"></a>REPLIKA (Usługa Azure Cosmos DB)
  Powtarza wartość ciągu określoną liczbę razy.
   
 ## <a name="syntax"></a>Składnia
@@ -29,18 +29,18 @@ REPLICATE(<str_expr>, <num_expr>)
    Jest wyrażeniem ciągu.
   
 *num_expr*  
-   To wyrażenie liczbowe. Jeśli *num_expr* jest ujemna lub nieograniczona, wynik jest niezdefiniowany.
+   Jest wyrażeniem liczbowym. Jeśli *num_expr* jest ujemna lub nie skończona, wynik jest niezdefiniowany.
   
-## <a name="return-types"></a>Typy zwracane
+## <a name="return-types"></a>Typy zwrotów
   
   Zwraca wyrażenie ciągu.
   
 ## <a name="remarks"></a>Uwagi
-  Maksymalna długość wyniku to 10 000 znaków (długość (*str_expr*) * *num_expr*) < = 10 000.
+  Maksymalna długość wyniku wynosi 10 000 znaków, czyli (długość(*str_expr*) * *num_expr*) <= 10 000.
 
 ## <a name="examples"></a>Przykłady
   
-  Poniższy przykład pokazuje, jak używać `REPLICATE` w zapytaniu.
+  W poniższym przykładzie `REPLICATE` pokazano, jak używać w kwerendzie.
   
 ```sql
 SELECT REPLICATE("a", 3) AS replicate
@@ -54,10 +54,10 @@ SELECT REPLICATE("a", 3) AS replicate
 
 ## <a name="remarks"></a>Uwagi
 
-Ta funkcja systemowa nie będzie używać indeksu.
+Ta funkcja systemu nie będzie korzystać z indeksu.
 
 ## <a name="next-steps"></a>Następne kroki
 
-- [Azure Cosmos DB funkcje ciągów](sql-query-string-functions.md)
-- [Azure Cosmos DB funkcje systemowe](sql-query-system-functions.md)
-- [Wprowadzenie do Azure Cosmos DB](introduction.md)
+- [Funkcje ciągów usługi Azure Cosmos DB](sql-query-string-functions.md)
+- [Funkcje systemowe Usługi Azure Cosmos DB](sql-query-system-functions.md)
+- [Wprowadzenie do usługi Azure Cosmos DB](introduction.md)

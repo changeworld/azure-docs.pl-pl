@@ -1,6 +1,6 @@
 ---
-title: Przywracanie woluminu z kopii zapasowej na serii StorSimple 8000 | Dokumentacja firmy Microsoft
-description: Wyjaśnia, jak za pomocą usługi Menedżer urządzeń StorSimple wykaz kopii zapasowych, przywracania woluminu StorSimple z zestawu kopii zapasowych.
+title: Przywracanie woluminu z kopii zapasowej w serii StorSimple 8000 | Dokumenty firmy Microsoft
+description: W tym artykule wyjaśniono, jak przywrócić wolumin StorSimple z zestawu kopii zapasowych za pomocą usługi StorSimple Device Manager.
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -15,132 +15,132 @@ ms.workload: TBD
 ms.date: 05/23/2017
 ms.author: alkohli
 ms.openlocfilehash: 6a2e022697ced90d968075b7a4abe4163be7a539
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60723394"
 ---
 # <a name="restore-a-storsimple-volume-from-a-backup-set"></a>Przywracanie woluminu StorSimple z zestawu kopii zapasowych
 
 ## <a name="overview"></a>Omówienie
 
-W tym samouczku opisano operacji przywracania, wykonywane na urządzenia serii StorSimple 8000 przy użyciu istniejącego zestawu kopii zapasowych. Użyj **katalog kopii zapasowej** bloku przywracania woluminu z dysku lokalnego lub kopia zapasowa w chmurze. **Katalog kopii zapasowej** bloku wyświetlane są wszystkie zestawy kopii zapasowych, które są tworzone podczas ręczne lub automatyczne kopie zapasowe są wykonywane. Operacja przywracania z kopii zapasowej do trybu online dopiero podczas gdy dane są pobierane w tle.
+W tym samouczku opisano operację przywracania wykonaną na urządzeniu z serii StorSimple 8000 przy użyciu istniejącego zestawu kopii zapasowych. Użyj **bloku katalogu kopii zapasowej,** aby przywrócić wolumin z kopii zapasowej lokalnej lub w chmurze. Blok **katalogu kopii zapasowej** wyświetla wszystkie zestawy kopii zapasowych, które są tworzone podczas wykonywania ręcznych lub automatycznych kopii zapasowych. Operacja przywracania z zestawu kopii zapasowych powoduje natychmiastowe przesunie wolumin w tryb online, gdy dane są pobierane w tle.
 
-Alternatywna metoda, aby rozpocząć przywracanie jest aby przejść do **urządzeń > [urządzenie] > woluminów**. W **woluminów** bloku, wybierz wolumin, kliknij prawym przyciskiem myszy aby wywołać menu kontekstowe, a następnie wybierz **przywrócić**.
+Alternatywną metodą uruchamiania przywracania jest przejść do **urządzenia > [Urządzenie] > woluminów**. W bloku **Woluminy** wybierz wolumin, kliknij prawym przyciskiem myszy, aby wywołać menu kontekstowe, a następnie wybierz polecenie **Przywróć**.
 
 ## <a name="before-you-restore"></a>Przed przywróceniem
 
-Przed rozpoczęciem przywracania, należy przejrzeć następujące zastrzeżenia:
+Przed rozpoczęciem przywracania zapoznaj się z następującymi zastrzeżeniami:
 
-* **Wolumin należy wykonać w trybie offline** — wykonaj wolumin w tryb offline na hoście i urządzenia, przed rozpoczęciem operacji przywracania. Mimo że operacji przywracania automatycznie do trybu online dopiero na urządzeniu, należy ręcznie przenieść urządzenie w tryb online, na hoście. Można przenieść wolumin w trybie online na hoście, jak wolumin jest w trybie online, na urządzeniu. (Nie trzeba czekać, aż do ukończenia operacji przywracania.) Aby uzyskać procedury, przejdź do [przełączyć wolumin w tryb offline](storsimple-8000-manage-volumes-u2.md#take-a-volume-offline).
+* Przed zainicjowaniem operacji przywracania **wolumin należy przetraktować wolumin** w tryb offline — przejmij wolumin w tryb offline zarówno na hoście, jak i na urządzeniu. Mimo że operacja przywracania automatycznie powoduje przesuń wolumin w tryb online na urządzeniu, należy ręcznie przewieźć urządzenie do trybu online na hoście. Wolumin można przewieźć do trybu online na hoście, gdy tylko wolumin zostanie w trybie online na urządzeniu. (Nie trzeba czekać, aż operacja przywracania zostanie zakończona.) Aby uzyskać procedury, przejdź do [ustawienia Przejmuj wolumin w tryb offline](storsimple-8000-manage-volumes-u2.md#take-a-volume-offline).
 
-* **Typ woluminu po przywróceniu** — usunięte woluminy są przywracane na podstawie typu w migawce; czyli woluminów przypiętych lokalnie zostaną przywrócone jako woluminy przypięte lokalnie i woluminów, które zostały warstwowego zostaną przywrócone jako woluminy warstwowe.
+* **Typ woluminu po przywróceniu** — usunięte woluminy są przywracane na podstawie typu w migawce; oznacza to, że woluminy, które zostały przypięte lokalnie są przywracane jako woluminy przypięte lokalnie i woluminy, które zostały warstwowe są przywracane jako woluminy warstwowe.
 
-    Istniejące woluminy bieżącego typu użycia woluminu zastępuje typ, który jest przechowywany w migawce. Na przykład woluminu w przypadku przywracania z migawki, która została wykonana, gdy typ woluminu został warstwy, a typ woluminu jest teraz przypięty lokalnie (z powodu operacji konwersji, która została wykonana), następnie wolumin zostanie przywrócony jako woluminu przypiętego lokalnie. Podobnie jeśli istniejącego woluminu przypiętego lokalnie została rozwinięta, a następnie przywrócić z starsze migawki gdy wolumin był mniejszy, przywróconych woluminów zachowa bieżący rozmiar po rozwinięciu.
+    W przypadku istniejących woluminów bieżący typ użycia woluminu zastępuje typ, który jest przechowywany w migawce. Na przykład jeśli przywrócisz wolumin z migawki, która została podjęta, gdy typ woluminu był warstwowy, a ten typ woluminu jest teraz przypięty lokalnie (z powodu operacji konwersji, która została wykonana), wolumin zostanie przywrócony jako wolumin przypięty lokalnie. Podobnie jeśli istniejący wolumin przypięty lokalnie został rozszerzony, a następnie przywrócony ze starszej migawki wykonanej, gdy wolumin był mniejszy, przywrócony wolumin zachowa bieżący rozmiar rozwiniętego.
 
-    Nie można przekonwertować woluminu z warstwowego woluminu do woluminu przypiętego lokalnie lub woluminu przypiętego lokalnie do woluminu warstwowego, gdy wolumin jest przywracany. Poczekaj, aż operacja przywracania została zakończona, a następnie przekonwertować wolumin, do innego typu. Aby uzyskać informacje o konwersji woluminu, przejdź do [zmienić typ woluminu](storsimple-8000-manage-volumes-u2.md#change-the-volume-type). 
+    Nie można przekonwertować woluminu z woluminu warstwowego na wolumin przypięty lokalnie lub z woluminu przypiętego lokalnie na wolumin warstwowy podczas przywracania woluminu. Poczekaj na zakończenie operacji przywracania, a następnie możesz przekonwertować wolumin na inny typ. Aby uzyskać informacje dotyczące konwertowania [woluminu,](storsimple-8000-manage-volumes-u2.md#change-the-volume-type)przejdź do temat Zmień typ woluminu . 
 
-* **Rozmiar woluminu jest odzwierciedlana w woluminie przywróconej** — jest ważną kwestią, Jeśli przywracasz woluminu przypiętego lokalnie, który został usunięty (ponieważ lokalnie przypięte woluminy są w pełni zaaprowizowanym). Upewnij się, że jest wystarczająco dużo miejsca, przed przystąpieniem do przywracania woluminu przypiętego lokalnie, który został wcześniej usunięty.
+* **Rozmiar woluminu jest odzwierciedlany w przywróconym woluminie** — jest to ważna kwestia w przypadku przywracania woluminu przypiętego lokalnie, który został usunięty (ponieważ woluminy przypięte lokalnie są w pełni aprowizowane). Upewnij się, że masz wystarczająco dużo miejsca przed podjęciem próby przywrócenia lokalnie przypiętego woluminu, który został wcześniej usunięty.
 
-* **Nie można rozszerzyć woluminu, gdy jest przywracana** — poczekaj na zakończenie operacji przywracania przed przystąpieniem do zwiększenia woluminu. Aby uzyskać informacje o rozszerzaniu woluminu, przejdź do [modyfikowania woluminu](storsimple-8000-manage-volumes-u2.md#modify-a-volume).
+* **Nie można rozszerzyć woluminu podczas jego przywracania** — poczekaj, aż operacja przywracania zostanie zakończona przed próbą rozszerzenia woluminu. Aby uzyskać informacje dotyczące rozszerzania woluminu, przejdź do [tematu Modyfikowanie woluminu](storsimple-8000-manage-volumes-u2.md#modify-a-volume).
 
-* **Można wykonać kopii zapasowej, podczas przywracania woluminu lokalnego** — dla procedur, przejdź do [usługi Menedżer urządzeń StorSimple umożliwia zarządzanie zasadami kopii zapasowych](storsimple-8000-manage-backup-policies-u2.md).
+* **Kopię zapasową można wykonać podczas przywracania woluminu lokalnego** — w przypadku procedur przejdź do [usługi Menedżer urządzeń StorSimple do zarządzania zasadami tworzenia kopii zapasowych.](storsimple-8000-manage-backup-policies-u2.md)
 
-* **Można anulować operacji przywracania** — w przypadku anulowania zadania przywracania, a następnie wolumin zostanie wycofana do stanu sprzed zainicjował operację przywracania. Aby uzyskać procedury, przejdź do [anulować zadanie](storsimple-8000-manage-jobs-u2.md#cancel-a-job).
+* **Można anulować operację przywracania** — jeśli anulujesz zadanie przywracania, wolumin zostanie przywrócony do stanu, w który był przed zainicjowaniem operacji przywracania. Aby uzyskać procedury, przejdź do [anuluj zadanie](storsimple-8000-manage-jobs-u2.md#cancel-a-job).
 
-## <a name="how-does-restore-work"></a>Jak przywrócić pracę
+## <a name="how-does-restore-work"></a>Jak działa przywracanie
 
-W przypadku urządzeń z aktualizacją Update 4 lub nowszym Przywracanie na podstawie mapy cieplnej jest zaimplementowana. Jako host wysyła żądanie do dostępu do danych nawiązać połączenia z urządzeniem, te żądania są śledzone i utworzeniu mapy cieplnej. Liczba żądań wysokiej powoduje fragmentów danych przy użyciu nowszej ciepła natomiast wolniejszym tempie żądania przekłada się na fragmenty o niższych ciepło. Należy uzyskać dostęp do danych w co najmniej dwa razy być oznaczony jako _gorąca_. Plik, który jest modyfikowana również jest oznaczony jako _gorąca_. Po zainicjowaniu przywracania aktywnego wypełniania danych występuje zależnie od mapy cieplnej. W przypadku wersji starszych niż Update 4 danych jest pobierany podczas przywracania oparte na dostęp tylko do.
+W przypadku urządzeń z aktualizacją 4 lub nowszą zaimplementowano przywracanie oparte na mapach cieplnych. Gdy host żąda dostępu do danych, dociera do urządzenia, te żądania są śledzone i tworzona jest mapa cieplna. Wysoka szybkość żądania powoduje fragmenty danych o wyższym ogniu, podczas gdy niższa szybkość żądania przekłada się na kawałki o niższym ogniu. Aby uzyskać dostęp do danych, należy uzyskać dostęp co najmniej dwa razy, aby oznaczyć je jako _gorące._ Zmodyfikowany plik jest również oznaczony jako _gorący_. Po zainicjowaniu przywracania następuje proaktywne nawodnienie danych na podstawie mapy cieplnej. W przypadku wersji wcześniejszych niż Aktualizacja 4 dane są pobierane podczas przywracania tylko na podstawie dostępu.
 
-Następujące zastrzeżenia dotyczą Przywracanie na podstawie mapy cieplnej:
+Następujące zastrzeżenia dotyczą przywracania opartego na mapie cieplnej:
 
-* Mapy cieplnej śledzenie jest włączone tylko dla woluminów warstwowych, a woluminy przypięte lokalnie nie są obsługiwane.
+* Śledzenie mapy cieplnej jest włączone tylko dla woluminów warstwowych, a woluminy przypięte lokalnie nie są obsługiwane.
 
-* Przywracanie na podstawie mapy cieplnej nie jest obsługiwane, podczas klonowania woluminu na innym urządzeniu. 
+* Przywracanie oparte na heatmap nie jest obsługiwane podczas klonowania woluminu na inne urządzenie. 
 
-* W przypadku przywracania w miejscu, a następnie firma Microsoft nie przywrócenia z magazynu trwałego (jak dane są już dostępne w lokalnie) na urządzeniu, istnieje lokalne migawki dla woluminu, który ma zostać przywrócone. 
+* Jeśli istnieje przywracanie w miejscu i lokalna migawka dla woluminu do przywrócenia istnieje na urządzeniu, a następnie nie nawadniać (ponieważ dane są już dostępne lokalnie). 
 
-* Domyślnie podczas przywracania, zadania ponownego wypełniania są inicjowane, które aktywnie przywrócenia z magazynu trwałego danych w oparciu mapy cieplnej. 
+* Domyślnie po przywróceniu są inicjowane zadania nawodnienia, które proaktywnie nawadniają dane na podstawie mapy cieplnej. 
 
-W aktualizacji Update 4 poleceń cmdlet programu Windows PowerShell może służyć do zapytania działające zadania ponownego wypełniania, anulowanie zadania ponownego wypełniania i wyświetlić stan zadania ponownego wypełniania.
+W aktualizacji 4 polecenia cmdlet programu Windows PowerShell mogą służyć do wykonywania zapytań o uruchamianie zadań nawodnienia, anulowania zadania nawodnienia i uzyskania stanu zadania nawadniania.
 
-* `Get-HcsRehydrationJob` — To polecenie cmdlet pobiera stan zadania ponownego wypełniania. Zadanie jednego ponownego wypełniania, zostanie wywołany przez jeden wolumin.
+* `Get-HcsRehydrationJob`- To polecenie cmdlet otrzymuje status zadania nawodnienia. Dla jednego woluminu wyzwalane jest jedno zadanie nawodnienia.
 
-* `Set-HcsRehydrationJob` — To polecenie cmdlet pozwala na wstrzymanie, Zatrzymaj, Wznów zadanie ponownego wypełniania, podczas ponownego wypełniania jest w toku.
+* `Set-HcsRehydrationJob`- To polecenie cmdlet pozwala na wstrzymanie, zatrzymanie, wznowienie pracy nawodnienia, gdy nawodnienie jest w toku.
 
-Aby uzyskać więcej informacji na temat poleceń cmdlet ponownego wypełniania, przejdź do [Dokumentacja poleceń cmdlet programu Windows PowerShell dla usługi StorSimple](https://technet.microsoft.com/library/dn688168.aspx).
+Aby uzyskać więcej informacji na temat poleceń cmdlet rehydration, przejdź do [odwołania polecenia cmdlet programu Windows PowerShell dla StorSimple](https://technet.microsoft.com/library/dn688168.aspx).
 
-Za pomocą automatycznego ponownego wypełniania zwykle wyższa wydajność odczytu przejściowy jest oczekiwany. Wielkość rzeczywistej ulepszenia zależy od różnych czynników, takich jak wzorcu dostępu, współczynnik zmian danych i typ danych. 
+W przypadku automatycznego nawodnienia oczekuje się zazwyczaj wyższej wydajności odczytu przejściowego. Rzeczywista wielkość ulepszeń zależy od różnych czynników, takich jak wzorzec dostępu, zmiany danych i typ danych. 
 
-Aby anulować zadanie ponownego wypełniania, używając polecenia cmdlet programu PowerShell. Jeśli chcesz trwale wyłączyć zadania ponownego wypełniania dla wszystkich przyszłych przywraca [skontaktuj się z Microsoft Support](storsimple-8000-contact-microsoft-support.md).
+Aby anulować zadanie nawadniania, można użyć polecenia cmdlet programu PowerShell. Jeśli chcesz trwale wyłączyć zadania nawadniania dla wszystkich przyszłych przywracań, [skontaktuj się z pomocą techniczną firmy Microsoft](storsimple-8000-contact-microsoft-support.md).
 
-## <a name="how-to-use-the-backup-catalog"></a>Jak używać wykaz kopii zapasowych
+## <a name="how-to-use-the-backup-catalog"></a>Jak korzystać z katalogu kopii zapasowych
 
-**Wykaz kopii zapasowych** blok zawiera zapytanie, które pomaga w celu zawężenia kopii zapasowej Ustaw zaznaczenie. Można filtrować zestawów kopii zapasowych, które są pobierane w oparciu o następujące parametry:
+Blok **Wykaz kopii zapasowych** zawiera kwerendę, która pomaga zawęzić wybór zestawu kopii zapasowych. Można filtrować zestawy kopii zapasowych, które są pobierane na podstawie następujących parametrów:
 
-* **Zakres czasu** — zakres dat i godzin, podczas tworzenia zestawu kopii zapasowych.
-* **Urządzenie** — urządzenia, na którym został utworzony zestaw kopii zapasowych.
-* **Zasady tworzenia kopii zapasowej** lub **woluminu** — zasady tworzenia kopii zapasowej lub woluminie skojarzonym z tego zestawu kopii zapasowych.
+* **Zakres czasu** — zakres daty i godziny podczas tworzenia zestawu kopii zapasowych.
+* **Urządzenie** — urządzenie, na którym utworzono zestaw kopii zapasowych.
+* **Zasady tworzenia kopii zapasowych** lub **wolumin —** zasady tworzenia kopii zapasowych lub wolumin skojarzony z tym zestawem kopii zapasowych.
 
-Filtrowane zestawów kopii zapasowych następnie wyszczególniono w oparciu o następujące atrybuty:
+Filtrowane zestawy kopii zapasowych są następnie tabelaryczne na podstawie następujących atrybutów:
 
-* **Nazwa** — Nazwa zasad kopii zapasowych lub woluminie skojarzonym z zestawu kopii zapasowych.
-* **Typ** — zestawy kopii zapasowych mogą być lokalne migawki lub migawki w chmurze. Migawka lokalna jest kopię zapasową wszystkich danych woluminów przechowywanych lokalnie na urządzeniu, migawkę w chmurze, który odnosi się do wykonywania kopii zapasowych woluminów danych znajdujących się w chmurze. Migawki lokalne zapewniają szybszy dostęp, dlatego są wybierane migawki w chmurze, aby zachować odporność danych.
+* **Nazwa** — nazwa zasad tworzenia kopii zapasowej lub woluminu skojarzonego z zestawem kopii zapasowych.
+* **Typ** — zestawy kopii zapasowych mogą być migawkami lokalnymi lub migawkami w chmurze. Migawka lokalna to kopia zapasowa wszystkich danych woluminu przechowywanych lokalnie na urządzeniu, podczas gdy migawka w chmurze odnosi się do kopii zapasowej danych woluminów przechowywanych w chmurze. Migawki lokalne zapewniają szybszy dostęp, podczas gdy migawki w chmurze są wybierane dla odporności danych.
 * **Rozmiar** — rzeczywisty rozmiar zestawu kopii zapasowych.
-* **Utworzone na** — Data i godzina, kiedy zostały utworzone kopie zapasowe. 
-* **Woluminy** — liczba woluminów skojarzonych z zestawu kopii zapasowych.
-* **Zainicjowano** — kopie zapasowe mogą być inicjowane automatycznie, zgodnie z harmonogramem lub ręcznie przez użytkownika. (Aby zaplanować kopie zapasowe można użyć zasad tworzenia kopii zapasowej. Alternatywnie, można użyć **wykonaj kopię zapasową** opcję, aby wykonać interakcyjnego lub na żądanie kopii zapasowej.)
+* **Utworzony na** — data i godzina utworzenia kopii zapasowych. 
+* **Woluminy** — liczba woluminów skojarzonych z zestawem kopii zapasowych.
+* **Zainicjowane** — kopie zapasowe mogą być inicjowane automatycznie zgodnie z harmonogramem lub ręcznie przez użytkownika. (Można użyć zasad tworzenia kopii zapasowych, aby zaplanować tworzenie kopii zapasowych. Alternatywnie można użyć opcji **Zrób kopię zapasową,** aby wykonać interaktywną lub na żądanie kopię zapasową).)
 
-## <a name="how-to-restore-your-storsimple-volume-from-a-backup"></a>Przywracanie woluminu StorSimple z kopii zapasowej
+## <a name="how-to-restore-your-storsimple-volume-from-a-backup"></a>Jak przywrócić wolumin StorSimple z kopii zapasowej
 
-Możesz użyć **wykaz kopii zapasowych** bloku przywracania woluminu StorSimple z określonej kopii zapasowej. Należy pamiętać, jednak, Przywracanie woluminu zostanie przywrócony woluminu do stanu, w jakim był po wykonaniu kopii zapasowej. Wszelkie dane, które zostały dodane po zakończeniu operacji tworzenia kopii zapasowej zostaną utracone.
+Za pomocą bloku **wykaz kopii zapasowej** można przywrócić wolumin StorSimple z określonej kopii zapasowej. Należy jednak pamiętać, że przywracanie woluminu spowoduje przywrócenie woluminu do stanu, w którym znajdował się podczas wykonywania kopii zapasowej. Wszystkie dane dodane po operacji tworzenia kopii zapasowej zostaną utracone.
 
 > [!WARNING]
-> Przywracanie z kopii zapasowej spowoduje zastąpienie istniejących woluminów z kopii zapasowej. Może to spowodować utratę wszystkich danych, które zostały zapisane, po wykonaniu kopii zapasowej.
+> Przywracanie z kopii zapasowej zastąpi istniejące woluminy z kopii zapasowej. Może to spowodować utratę wszelkich danych, które zostały zapisane po wykonaniu kopii zapasowej.
 
 
-### <a name="to-restore-your-volume"></a>Aby przywrócić woluminu
-1. Przejdź do usługi Menedżer urządzeń StorSimple, a następnie kliknij przycisk **katalog kopii zapasowej**.
+### <a name="to-restore-your-volume"></a>Aby przywrócić głośność
+1. Przejdź do usługi StorSimple Device Manager, a następnie kliknij pozycję **Katalog kopii zapasowych**.
 
-2. Wybierz kopię zapasową, ustaw w następujący sposób:
+2. Wybierz zestaw kopii zapasowych w następujący sposób:
    
    1. Określ zakres czasu.
    2. Wybierz odpowiednie urządzenie.
-   3. Na liście rozwijanej wybierz zasady woluminu lub kopii zapasowej do utworzenia kopii zapasowej, który chcesz wybrać.
-   4. Kliknij przycisk **Zastosuj** do wykonywania tej kwerendy.
+   3. Na liście rozwijanej wybierz zasady woluminu lub kopii zapasowej dla kopii zapasowej, którą chcesz wybrać.
+   4. Kliknij przycisk **Zastosuj,** aby wykonać tę kwerendę.
 
-      Kopie zapasowe skojarzone z wybranego woluminu lub zasad tworzenia kopii zapasowej powinna zostać wyświetlona na liście zestawów kopii zapasowych.
+      Kopie zapasowe skojarzone z wybranymi zasadami woluminu lub kopii zapasowej powinny być wyświetlane na liście zestawów kopii zapasowych.
    
-      ![Lista zestawu kopii zapasowych](./media/storsimple-8000-restore-from-backup-set-u2/bucatalog.png)     
+      ![Lista zestawów kopii zapasowych](./media/storsimple-8000-restore-from-backup-set-u2/bucatalog.png)     
      
-3. Rozwiń zestaw, aby wyświetlić skojarzone woluminy kopii zapasowych. Te woluminy muszą przełączony w tryb offline na hoście i urządzenia przed można je przywrócić. Dostęp do woluminów na **woluminów** bloku urządzenia, a następnie wykonaj kroki opisane w [przełączyć wolumin w tryb offline](storsimple-8000-manage-volumes-u2.md#take-a-volume-offline) do przełączenia ich w tryb offline.
+3. Rozwiń zestaw kopii zapasowych, aby wyświetlić skojarzone woluminy. Woluminy te muszą zostać przesuń do trybu offline na hoście i urządzeniu, zanim będzie można je przywrócić. Uzyskaj dostęp do woluminów na bloku **Woluminy** urządzenia, a następnie wykonaj kroki opisane w [obszarze Przekszłać wolumin do trybu offline,](storsimple-8000-manage-volumes-u2.md#take-a-volume-offline) aby przetraktować je w tryb offline.
    
    > [!IMPORTANT]
-   > Upewnij się, czy wykonano woluminy w tryb offline na hoście po pierwsze, zanim zaczną woluminy w tryb offline na urządzeniu. Jeśli nie wykonasz woluminy w tryb offline na hoście, może prowadzić do uszkodzenia danych.
+   > Przed przełączeniem woluminów do trybu offline na urządzeniu w trybie offline woluminów na hoście należy najpierw przetraktować woluminy w trybie offline. Jeśli woluminy nie przejmą woluminów w tryb offline na hoście, może to potencjalnie doprowadzić do uszkodzenia danych.
    
-4. Przejdź z powrotem do **wykaz kopii zapasowych** karcie, a następnie wybierz zestaw kopii zapasowych. Kliknij prawym przyciskiem myszy, a następnie z menu kontekstowego wybierz pozycję **przywrócić**.
+4. Przejdź wstecz do karty **Wykaz kopii zapasowych** i wybierz zestaw kopii zapasowych. Kliknij prawym przyciskiem myszy, a następnie z menu kontekstowego wybierz polecenie **Przywróć**.
 
-    ![Lista zestawu kopii zapasowych](./media/storsimple-8000-restore-from-backup-set-u2/restorebu1.png)
+    ![Lista zestawów kopii zapasowych](./media/storsimple-8000-restore-from-backup-set-u2/restorebu1.png)
 
-5. Użytkownik jest monitowany o potwierdzenie. Zapoznaj się z informacjami przywracania, a następnie zaznacz pole wyboru potwierdzenia.
+5. Pojawi się monit o potwierdzenie. Przejrzyj informacje o przywracania, a następnie zaznacz pole wyboru potwierdzenia.
    
     ![Strona potwierdzenia](./media/storsimple-8000-restore-from-backup-set-u2/restorebu2.png)
 
-7. Kliknij przycisk **przywrócić**. Spowoduje to zainicjowanie zadania przywracania, który można wyświetlić, uzyskując dostęp do **zadań** strony.
+7. Kliknij **przycisk Przywróć**. Spowoduje to zainicjowanie zadania przywracania, które można wyświetlić, uzyskując dostęp do strony **Zadania.**
 
    ![Strona potwierdzenia](./media/storsimple-8000-restore-from-backup-set-u2/restorebu5.png)
 
-8. Po zakończeniu przywracania Sprawdź, czy zawartość woluminów są zastępowane przez woluminy z kopii zapasowej.
+8. Po zakończeniu przywracania sprawdź, czy zawartość woluminów jest zastępowana woluminami z kopii zapasowej.
 
 
-## <a name="if-the-restore-fails"></a>W przypadku niepowodzenia przywracania
+## <a name="if-the-restore-fails"></a>Jeśli przywracanie nie powiedzie się
 
-Zostanie wyświetlony alert, jeśli operacja przywracania nie powiedzie się z jakiegokolwiek powodu. W takiej sytuacji należy odświeżyć listy kopii zapasowych, aby sprawdzić, czy kopia zapasowa jest nadal ważny. Jeśli kopia zapasowa jest prawidłowa, i przywracasz z chmury, następnie problemy z łącznością mogą być przyczyną problemu.
+Zostanie wyświetlony alert, jeśli operacja przywracania nie powiedzie się z jakiegokolwiek powodu. W takim przypadku należy odświeżyć listę kopii zapasowych, aby sprawdzić, czy kopia zapasowa jest nadal prawidłowa. Jeśli kopia zapasowa jest prawidłowa i są przywracane z chmury, a następnie problemy z łącznością może być przyczyną problemu.
 
-Aby ukończyć operację przywracania, przełącz go w trybie offline na hoście i spróbuj ponownie wykonać operację przywracania. Należy pamiętać, że wszelkie modyfikacje danych woluminów, które były wykonywane podczas procesu przywracania zostaną utracone.
+Aby zakończyć operację przywracania, należy przetraktować wolumin na hoście i ponowić próbę operacji przywracania. Należy zauważyć, że wszelkie modyfikacje danych woluminu, które zostały wykonane podczas procesu przywracania zostaną utracone.
 
-## <a name="next-steps"></a>Kolejne kroki
-* Dowiedz się, jak [woluminów StorSimple zarządzanie](storsimple-8000-manage-volumes-u2.md).
-* Dowiedz się, jak [korzystać z usługi Menedżer urządzeń StorSimple do administrowania urządzeniem StorSimple](storsimple-8000-manager-service-administration.md).
+## <a name="next-steps"></a>Następne kroki
+* Dowiedz się, jak [zarządzać woluminami StorSimple](storsimple-8000-manage-volumes-u2.md).
+* Dowiedz się, jak [zarządzać urządzeniem StorSimple za pomocą usługi StorSimple Device Manager.](storsimple-8000-manager-service-administration.md)
 

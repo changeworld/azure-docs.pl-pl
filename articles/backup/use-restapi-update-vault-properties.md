@@ -1,39 +1,39 @@
 ---
-title: Aktualizowanie konfiguracji magazynu Recovery Services przy użyciu interfejsu API REST
-description: W tym artykule dowiesz się, jak zaktualizować konfigurację magazynu za pomocą interfejsu API REST.
+title: Aktualizowanie konfiguracji magazynu usług odzyskiwania za pomocą interfejsu API REST
+description: W tym artykule dowiesz się, jak zaktualizować konfigurację magazynu przy użyciu interfejsu API REST.
 ms.topic: conceptual
 ms.date: 12/06/2019
 ms.assetid: 9aafa5a0-1e57-4644-bf79-97124db27aa2
 ms.openlocfilehash: 6cecbb18e0cd6f548e1688ef978f10dcee7d9fbc
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79252365"
 ---
-# <a name="update-azure-recovery-services-vault-configurations-using-rest-api"></a>Aktualizowanie konfiguracji magazynu Recovery Services platformy Azure przy użyciu interfejsu API REST
+# <a name="update-azure-recovery-services-vault-configurations-using-rest-api"></a>Aktualizowanie konfiguracji magazynu usług odzyskiwania platformy Azure przy użyciu interfejsu API REST
 
-W tym artykule opisano sposób aktualizowania konfiguracji związanych z kopiami zapasowymi w usłudze Azure Recovery Services magazyn przy użyciu interfejsu API REST.
+W tym artykule opisano sposób aktualizowania konfiguracji powiązanych z tworzeniem kopii zapasowych w magazynie usług Azure Recovery Services przy użyciu interfejsu API REST.
 
 ## <a name="soft-delete-state"></a>Stan usuwania nietrwałego
 
-Usuwanie kopii zapasowych chronionego elementu jest istotną operacją, która musi być monitorowana. Aby chronić przed przypadkowym usunięciem, magazyn usługi Azure Recovery Services ma możliwość usuwania nietrwałego. Ta funkcja umożliwia klientom przywrócenie usuniętych kopii zapasowych w razie potrzeby w okresie po usunięciu.
+Usuwanie kopii zapasowych chronionego elementu jest istotną operacją, która musi być monitorowana. Aby chronić przed przypadkowymi usunięciami, magazyn usług Azure Recovery Services ma funkcję usuwania nietrwałego. Ta funkcja umożliwia klientom przywracanie usuniętych kopii zapasowych, jeśli to konieczne, w okresie po usunięciu.
 
-Ale istnieją scenariusze, w których ta możliwość nie jest wymagana. Nie można usunąć magazynu usługi Azure Recovery Services, jeśli w nim znajdują się elementy kopii zapasowej, nawet nietrwałe usunięte. Może to stanowić problem, jeśli magazyn musi być natychmiast usunięty. Na przykład: operacje wdrażania często czyści utworzone zasoby w tym samym przepływie pracy. Wdrożenie może utworzyć magazyn, skonfigurować kopie zapasowe dla elementu, wykonać przywracanie testowe, a następnie wykonać operację usuwania elementów kopii zapasowych i magazynu. Jeśli usunięcie magazynu nie powiedzie się, całe wdrożenie może się nie powieść. Wyłączenie usuwania nietrwałego jest jedynym sposobem na zagwarantowanie natychmiastowego usunięcia.
+Istnieją jednak scenariusze, w których ta funkcja nie jest wymagana. Nie można usunąć magazynu usług odzyskiwania platformy Azure, jeśli znajdują się w niej elementy kopii zapasowej, nawet usunięte nietrwale. Może to stanowić problem, jeśli magazyn musi zostać natychmiast usunięty. Na przykład: operacje wdrażania często czyszczą utworzone zasoby w tym samym przepływie pracy. Wdrożenie może utworzyć magazyn, skonfigurować kopie zapasowe dla elementu, wykonać przywracanie testowe, a następnie przystąpić do usuwania elementów kopii zapasowej i magazynu. Jeśli usunięcie magazynu nie powiedzie się, całe wdrożenie może zakończyć się niepowodzeniem. Wyłączenie usuwania nietrwałego jest jedynym sposobem zagwarantowania natychmiastowego usunięcia.
 
-W związku z tym klient musi uważnie wybrać, czy wyłączyć usuwanie nietrwałe dla określonego magazynu, w zależności od tego scenariusza. Aby uzyskać więcej informacji, zobacz [artykuł usuwanie nietrwałe](backup-azure-security-feature-cloud.md#soft-delete).
+W związku z tym klient musi starannie wybrać, czy wyłączyć soft-delete dla określonego magazynu w zależności od scenariusza. Aby uzyskać więcej informacji, zobacz [artykuł o usuwaniu nietrwałym](backup-azure-security-feature-cloud.md#soft-delete).
 
-### <a name="fetch-soft-delete-state-using-rest-api"></a>Pobieranie stanu nietrwałego usuwania przy użyciu interfejsu API REST
+### <a name="fetch-soft-delete-state-using-rest-api"></a>Pobieranie stanu usuwania nietrwałego przy użyciu interfejsu API REST
 
-Domyślnie stan usuwania nietrwałego zostanie włączony dla nowo utworzonego magazynu Recovery Services. Aby pobrać/zaktualizować stan usuwania nietrwałego dla magazynu, użyj [dokumentu interfejsu API REST](https://docs.microsoft.com/rest/api/backup/backupresourcevaultconfigs) powiązanego z konfiguracją magazynu kopii zapasowych.
+Domyślnie stan usuwania nietrwałego będzie włączony dla każdego nowo utworzonego magazynu usług odzyskiwania. Aby pobrać/zaktualizować stan usuwania nietrwałego dla magazynu, użyj [dokumentu interfejsu API interfejsu REST](https://docs.microsoft.com/rest/api/backup/backupresourcevaultconfigs) związanych z konfiguracyjnym magazynu kopii zapasowych
 
-Aby pobrać bieżący stan usuwania nietrwałego dla magazynu, użyj następującej operacji *Get*
+Aby pobrać bieżący stan usuwania nietrwałego dla przechowalni, użyj następującej operacji *GET*
 
 ```http
 GET https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupconfig/vaultconfig?api-version=2019-05-13
 ```
 
-Identyfikator URI GET ma `{subscriptionId}`, `{vaultName}``{vaultresourceGroupName}` parametrów. W tym przykładzie `{vaultName}` jest "testVault", a `{vaultresourceGroupName}` to "testVaultRG". Ponieważ wszystkie wymagane parametry są określone w identyfikatorze URI, nie ma potrzeby oddzielnej treści żądania.
+Identyfikator URI `{subscriptionId}`GET `{vaultName}` `{vaultresourceGroupName}` ma , , parametry. W tym `{vaultName}` przykładzie jest "testVault" i `{vaultresourceGroupName}` jest "testVaultRG". Ponieważ wszystkie wymagane parametry są podane w identyfikatorze URI, nie ma potrzeby oddzielnej treści żądania.
 
 ```http
 GET https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/Microsoft.RecoveryServices/vaults/testVault/backupconfig/vaultconfig?api-version=2019-05-13
@@ -41,15 +41,15 @@ GET https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000
 
 #### <a name="responses"></a>Odpowiedzi
 
-Poniższa odpowiedź dla operacji "GET" została pokazana poniżej:
+Pomyślna odpowiedź dla operacji "GET" jest pokazana poniżej:
 
-|Name (Nazwa)  |Typ  |Opis  |
+|Nazwa  |Typ  |Opis  |
 |---------|---------|---------|
-|200 OK     |   [BackupResourceVaultConfig](https://docs.microsoft.com/rest/api/backup/backupresourcevaultconfigs/get#backupresourcevaultconfigresource)      | OK        |
+|200 ok.     |   [Kopia zapasowaWwsoconfig](https://docs.microsoft.com/rest/api/backup/backupresourcevaultconfigs/get#backupresourcevaultconfigresource)      | OK        |
 
 ##### <a name="example-response"></a>Przykładowa odpowiedź
 
-Po przesłaniu żądania "GET" zostanie zwrócona odpowiedź 200 (powodzenie).
+Po przesłaniu żądania "GET" zwracana jest odpowiedź 200 (pomyślna).
 
 ```json
 {
@@ -63,15 +63,15 @@ Po przesłaniu żądania "GET" zostanie zwrócona odpowiedź 200 (powodzenie).
 }
 ```
 
-### <a name="update-soft-delete-state-using-rest-api"></a>Zaktualizuj stan usuwania nietrwałego za pomocą interfejsu API REST
+### <a name="update-soft-delete-state-using-rest-api"></a>Aktualizowanie stanu usuwania nietrwałego przy użyciu interfejsu API REST
 
-Aby zaktualizować stan nietrwałego usuwania magazynu usługi Recovery Services przy użyciu interfejsu API REST, należy użyć następującej operacji *patch*
+Aby zaktualizować stan usuwania nietrwałego magazynu usług odzyskiwania przy użyciu interfejsu API REST, należy użyć następującej operacji *PATCH*
 
 ```http
 PATCH https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupconfig/vaultconfig?api-version=2019-05-13
 ```
 
-Identyfikator URI poprawki ma `{subscriptionId}`, `{vaultName}`, `{vaultresourceGroupName}` parametry. W tym przykładzie `{vaultName}` jest "testVault", a `{vaultresourceGroupName}` to "testVaultRG". Jeśli zamienimy identyfikator URI o powyższe wartości, identyfikator URI będzie wyglądać następująco.
+Identyfikator URI `{subscriptionId}`patcha ma parametry `{vaultName}`, . `{vaultresourceGroupName}` W tym `{vaultName}` przykładzie jest "testVault" i `{vaultresourceGroupName}` jest "testVaultRG". Jeśli zastąpimy identyfikator URI z powyższymi wartościami, identyfikator URI będzie wyglądać następująco.
 
 ```http
 PATCH https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/Microsoft.RecoveryServices/vaults/testVault/backupconfig/vaultconfig?api-version=2019-05-13
@@ -79,20 +79,20 @@ PATCH https://management.azure.com/Subscriptions/00000000-0000-0000-0000-0000000
 
 #### <a name="create-the-request-body"></a>Tworzenie treści żądania
 
-Następujące typowe definicje są używane do tworzenia treści żądania
+TOn następujące wspólne definicje są używane do tworzenia treści żądania
 
-Aby uzyskać więcej informacji, zapoznaj się z [dokumentacją interfejsu API REST](https://docs.microsoft.com/rest/api/backup/backupresourcevaultconfigs/update#request-body) .
+Więcej informacji można znaleźć [w dokumentacji interfejsu API REST](https://docs.microsoft.com/rest/api/backup/backupresourcevaultconfigs/update#request-body)
 
-|Name (Nazwa)  |Wymagane  |Typ  |Opis  |
+|Nazwa  |Wymagany  |Typ  |Opis  |
 |---------|---------|---------|---------|
-|Element ETag     |         |   Ciąg      |  Opcjonalny element eTag       |
-|lokalizacja     |  {1&gt;true&lt;1}       |Ciąg         |   Lokalizacja zasobu      |
-|właściwości     |         | [VaultProperties](https://docs.microsoft.com/rest/api/recoveryservices/vaults/createorupdate#vaultproperties)        |  Właściwości magazynu       |
-|tagów     |         | Obiekt        |     Tagi zasobów    |
+|Etag     |         |   Ciąg      |  Opcjonalny eTag       |
+|location     |  true       |Ciąg         |   Lokalizacja zasobu      |
+|properties     |         | [Właściwości VaultProperties](https://docs.microsoft.com/rest/api/recoveryservices/vaults/createorupdate#vaultproperties)        |  Właściwości przechowalni       |
+|tags     |         | Obiekt        |     Tagi zasobów    |
 
 #### <a name="example-request-body"></a>Przykładowa treść żądania
 
-Poniższy przykład służy do aktualizowania stanu nietrwałego usuwania do "Disabled".
+Poniższy przykład służy do aktualizacji stanu usuwania nietrwałego do "wyłączone".
 
 ```json
 {
@@ -105,15 +105,15 @@ Poniższy przykład służy do aktualizowania stanu nietrwałego usuwania do "Di
 
 #### <a name="responses"></a>Odpowiedzi
 
-Poniższa odpowiedź dla operacji "PATCH" została pokazana poniżej:
+Poniżej przedstawiono pomyślną odpowiedź na operację "PATCH":
 
-|Name (Nazwa)  |Typ  |Opis  |
+|Nazwa  |Typ  |Opis  |
 |---------|---------|---------|
-|200 OK     |   [BackupResourceVaultConfig](https://docs.microsoft.com/rest/api/backup/backupresourcevaultconfigs/get#backupresourcevaultconfigresource)      | OK        |
+|200 ok.     |   [Kopia zapasowaWwsoconfig](https://docs.microsoft.com/rest/api/backup/backupresourcevaultconfigs/get#backupresourcevaultconfigresource)      | OK        |
 
 ##### <a name="example-response"></a>Przykładowa odpowiedź
 
-Po przesłaniu żądania "Poprawka" zostanie zwrócona odpowiedź 200 (powodzenie).
+Po przesłaniu żądania "PATCH" zwracana jest odpowiedź 200 (pomyślna).
 
 ```json
 {
@@ -129,9 +129,9 @@ Po przesłaniu żądania "Poprawka" zostanie zwrócona odpowiedź 200 (powodzeni
 
 ## <a name="next-steps"></a>Następne kroki
 
-[Utwórz zasady tworzenia kopii zapasowej dla tworzenia kopii zapasowej maszyny wirtualnej platformy Azure w tym magazynie](backup-azure-arm-userestapi-createorupdatepolicy.md).
+[Utwórz zasady tworzenia kopii zapasowych do tworzenia kopii zapasowych maszyny Wirtualnej platformy Azure w tym magazynie](backup-azure-arm-userestapi-createorupdatepolicy.md).
 
-Aby uzyskać więcej informacji na temat interfejsów API REST platformy Azure, zobacz następujące dokumenty:
+Aby uzyskać więcej informacji na temat interfejsów API usługi Azure REST, zobacz następujące dokumenty:
 
-- [Interfejs API REST dostawcy usługi Azure Recovery Services](/rest/api/recoveryservices/)
-- [Rozpoczynanie pracy z interfejsem API REST platformy Azure](/rest/api/azure/)
+- [Interfejs API REST dostawcy usług odzyskiwania platformy Azure](/rest/api/recoveryservices/)
+- [Get started with Azure REST API (Rozpoczęcie pracy z interfejsem API REST platformy Azure)](/rest/api/azure/)

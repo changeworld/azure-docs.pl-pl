@@ -1,87 +1,87 @@
 ---
-title: Informacje o wersji szablonów urządzeń dla aplikacji IoT Central platformy Azure | Microsoft Docs
-description: Wykonaj iterację szablonów urządzeń, tworząc nowe wersje i bez wpływu na urządzenia połączone na żywo
+title: Opis wersji szablonu urządzenia dla aplikacji Usługi Azure IoT Central | Dokumenty firmy Microsoft
+description: Iteruj nad szablonami urządzeń, tworząc nowe wersje i nie wpływając na swoje urządzenia podłączone na żywo
 author: sarahhubbard
 ms.author: sahubbar
 ms.date: 12/09/2019
-ms.topic: conceptual
+ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 530208ed82c95187fac2173aa763ef5507f56b0b
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: bb77d1a09cb2692765c4c834ce617d13465d4d67
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77018214"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80157572"
 ---
-# <a name="create-a-new-device-template-version"></a>Utwórz nową wersję szablonu urządzenia
+# <a name="create-a-new-device-template-version"></a>Tworzenie nowej wersji szablonu urządzenia
 
 
 
-Usługa Azure IoT Central umożliwia szybkie opracowywanie aplikacji IoT. Możesz szybko wykonać iterację w projektach szablonów urządzeń, dodając, edytując lub usuwając możliwości, widoki i dostosowania urządzeń. Po opublikowaniu szablonu urządzenia model możliwości urządzenia będzie widoczny jako **opublikowany** z ikonami blokowania obok modelu. Aby wprowadzić zmiany w modelu możliwości urządzenia, należy utworzyć nową wersję szablonu urządzenia. W każdej chwili można edytować właściwości, dostosowania i widoki chmury bez konieczności podania wersji szablonu urządzenia. Po zapisaniu którejkolwiek z tych zmian można opublikować szablon urządzenia, aby udostępnić najnowsze zmiany dla operatora do wyświetlenia w Device Explorer.
+Usługa Azure IoT Central umożliwia szybkie tworzenie aplikacji IoT. Możesz szybko iterować projekty szablonów urządzeń, dodając, edytując lub usuwając funkcje urządzenia, widoki i dostosowania. Po opublikowaniu szablonu urządzenia model możliwości urządzenia jest wyświetlany jako **Opublikowany** z ikonami kłód obok modelu. Aby wprowadzić zmiany w modelu możliwości urządzenia, należy utworzyć nową wersję szablonu urządzenia. Tymczasem właściwości chmury, dostosowania i widoki mogą być edytowane w dowolnym momencie bez konieczności wersji szablonu urządzenia. Po zapisaniu którejkolwiek z tych zmian można opublikować szablon urządzenia, aby udostępnić operatorowi najnowsze zmiany do wyświetlenia w Eksploratorze urządzeń.
 
 > [!NOTE]
-> Aby dowiedzieć się więcej na temat tworzenia szablonu urządzenia [, zobacz Konfigurowanie szablonu urządzenia i zarządzanie nim](howto-set-up-template.md)
+> Aby dowiedzieć się więcej o tworzeniu szablonu urządzenia, zobacz [Konfigurowanie szablonu urządzenia i zarządzanie nim](howto-set-up-template.md)
 
-## <a name="add-customizations-to-the-device-template-without-versioning"></a>Dodawanie dostosowań do szablonu urządzenia bez obsługi wersji
+## <a name="add-customizations-to-the-device-template-without-versioning"></a>Dodawanie dostosowań do szablonu urządzenia bez przechowywania wersji
 
-Niektóre elementy możliwości urządzenia można edytować bez konieczności korzystania z wersji szablonu i interfejsów urządzeń. Na przykład niektóre z tych pól obejmują nazwę wyświetlaną, typ semantyczny, wartość minimalną, wartość maksymalną, miejsca dziesiętne, kolor, jednostkę, jednostkę wyświetlania, komentarz i opis. Aby dodać jedno z następujących dostosowań:
+Niektóre elementy funkcji urządzenia można edytować bez konieczności wyświetlania wersji szablonu urządzenia i interfejsów. Na przykład niektóre z tych pól obejmują nazwę wyświetlaną, typ semantyczny, wartość minimalną, wartość maksymalną, miejsca dziesiętne, kolor, jednostkę, jednostkę wyświetlania, komentarz i opis. Aby dodać jedno z tych dostosowań:
 
-1. Przejdź do strony **Szablony urządzeń** .
+1. Przejdź do strony **Szablony urządzeń.**
 1. Wybierz szablon urządzenia, który chcesz dostosować.
-1. Wybierz kartę **Dostosowywanie** .
-1. Wszystkie możliwości zdefiniowane w modelu możliwości urządzenia zostaną wyświetlone w tym miejscu. Wszystkie pola, które można edytować w tym miejscu, mogą być zapisywane i używane w całej aplikacji bez konieczności korzystania z wersji szablonu urządzenia. Jeśli istnieją pola, które chcesz edytować, są przeznaczone tylko do odczytu, aby je zmienić, musisz mieć wersję szablonu urządzenia. Wybierz pole, które chcesz edytować, a następnie wprowadź nowe wartości.
-1. Kliknij pozycję **Zapisz**. Teraz te wartości zastępują wszystkie elementy, które zostały początkowo zapisane w szablonie urządzenia i będą używane w całej aplikacji.
+1. Wybierz kartę **Dostosowywanie.**
+1. Wszystkie funkcje zdefiniowane w modelu możliwości urządzenia zostaną wymienione tutaj. Wszystkie pola, które można tu edytować, można zapisywać i używać w całej aplikacji, bez konieczności tworzenia wersji szablonu urządzenia. Jeśli istnieją pola, które chcesz edytować, które są tylko do odczytu, należy wersję szablonu urządzenia, aby je zmienić. Wybierz pole, które chcesz edytować, i wprowadź w nowych wartościach.
+1. Kliknij przycisk **Zapisz**. Teraz te wartości zastąpią wszystko, co zostało pierwotnie zapisane w szablonie urządzenia i będzie używane w całej aplikacji.
 
 ## <a name="versioning-a-device-template"></a>Przechowywanie wersji szablonu urządzenia
 
-Utworzenie nowej wersji szablonu urządzenia spowoduje utworzenie wersji roboczej szablonu, w którym można edytować model możliwości urządzenia. Wszystkie opublikowane interfejsy zostaną opublikowane, dopóki nie zostaną one w wersji pojedynczej. Aby można było zmodyfikować opublikowany interfejs, należy najpierw utworzyć nową wersję szablonu urządzenia.
+Utworzenie nowej wersji szablonu urządzenia spowoduje utworzenie wersji roboczej szablonu, w której można edytować model możliwości urządzenia. Wszystkie opublikowane interfejsy pozostaną opublikowane, dopóki nie zostaną indywidualnie wersjowane. Aby zmodyfikować opublikowany interfejs, należy najpierw utworzyć nową wersję szablonu urządzenia.
 
-W przypadku próby edytowania części modelu możliwości urządzenia, którego nie można edytować, w sekcji dostosowania szablonu urządzenia należy tylko wersja. 
+Szablon urządzenia powinien być wersjona tylko podczas próby edycji części modelu możliwości urządzenia, której nie można edytować w sekcji dostosowania szablonu urządzenia. 
 
-Aby uzyskać wersję szablonu urządzenia:
+Aby wersja szablonu urządzenia:
 
-1. Przejdź do strony **Szablony urządzeń** .
-1. Wybierz szablon urządzenia, do którego próbujesz uzyskać wersję.
-1. Kliknij przycisk **wersji** w górnej części strony i nadaj szablonowi nową nazwę. Sugerowano nową nazwę, którą można edytować.
-1. Kliknij pozycję **Utwórz**.
-1. Teraz Twój szablon urządzenia jest w trybie wersji roboczej. Twoje interfejsy są nadal zablokowane i muszą być edytowane osobno. 
+1. Przejdź do strony **Szablony urządzeń.**
+1. Wybierz szablon urządzenia, który próbujesz wersją.
+1. Kliknij przycisk **Wersja** u góry strony i nadaj szablonowi nową nazwę. Zaproponowaliśmy nową nazwę, którą można edytować.
+1. Kliknij przycisk **Utwórz**.
+1. Teraz szablon urządzenia jest w trybie roboczym. Zobaczysz, że interfejsy są nadal zablokowane i muszą być indywidualnie wersjowane do edycji. 
 
 ### <a name="versioning-an-interface"></a>Przechowywanie wersji interfejsu
 
-Wersja interfejsu pozwala na dodawanie, aktualizowanie i usuwanie funkcji w interfejsie, który został już utworzony. 
+Przechowywanie wersji interfejsu umożliwia dodawanie, aktualizowanie i usuwanie możliwości wewnątrz interfejsu, który został już utworzony. 
 
-Aby uzyskać wersję interfejsu:
+W celu wersji interfejsu:
 
-1. Przejdź do strony **Szablony urządzeń** .
-1. Wybierz szablon urządzenia w trybie wersji roboczej.
-1. Wybierz interfejs, który znajduje się w trybie opublikowanym, który chcesz wersji i edytować.
-1. Kliknij przycisk **wersji** w górnej części strony interfejsu. 
-1. Kliknij pozycję **Utwórz**.
-1. Interfejs jest teraz w trybie wersji roboczej. Będziesz mieć możliwość dodawania lub edytowania możliwości do interfejsu bez przerywania istniejących dostosowań i widoków. 
-
-> [!NOTE]
-> Nie można wersji ani edytować standardowych interfejsów publikowanych przez usługę Azure IoT. Te standardowe interfejsy są używane do certyfikacji urządzeń.
+1. Przejdź do strony **Szablony urządzeń.**
+1. Wybierz szablon urządzenia w trybie roboczym.
+1. Wybierz interfejs, który jest w trybie opublikowanym, który chcesz wersji i edytować.
+1. Kliknij przycisk **Wersja** u góry strony interfejsu. 
+1. Kliknij przycisk **Utwórz**.
+1. Teraz interfejs jest w trybie roboczym. Będzie można dodawać lub edytować możliwości do interfejsu bez przerywania istniejących dostosowań i widoków. 
 
 > [!NOTE]
-> Po opublikowaniu interfejsu nie można usunąć jego możliwości nawet w trybie wersji roboczej. Możliwości można edytować lub dodawać tylko do interfejsu w trybie wersji roboczej.
+> Standardowe interfejsy opublikowane przez usługę Azure IoT nie mogą być wersjonami ani edytowane. Te standardowe interfejsy są używane do certyfikacji urządzeń.
+
+> [!NOTE]
+> Po opublikowaniu interfejsu nie można usunąć żadnych jego możliwości nawet w trybie roboczym. Możliwości można edytować lub dodawać do interfejsu tylko w trybie roboczym.
 
 
-## <a name="migrate-a-device-across-device-template-versions"></a>Migrowanie urządzenia w różnych wersjach szablonów urządzeń
+## <a name="migrate-a-device-across-device-template-versions"></a>Migrowanie urządzenia między wersjami szablonów urządzeń
 
-Można utworzyć wiele wersji szablonu urządzenia. Z biegiem czasu będziesz mieć wiele połączonych urządzeń korzystających z tych szablonów urządzeń. Możliwe jest Migrowanie urządzeń z jednej wersji szablonu urządzenia do innej. W poniższych krokach opisano sposób migrowania urządzenia:
+Można utworzyć wiele wersji szablonu urządzenia. Z biegiem czasu będziesz mieć wiele podłączonych urządzeń przy użyciu tych szablonów urządzeń. Urządzenia można migrować z jednej wersji szablonu urządzenia do innej. W poniższych krokach opisano sposób migracji urządzenia:
 
-1. Przejdź do strony **Device Explorer** .
-1. Wybierz urządzenie, które ma być migrowane do innej wersji.
+1. Przejdź do strony **Eksploratora urządzeń.**
+1. Wybierz urządzenie, które chcesz przeprowadzić migrację do innej wersji.
 1. Wybierz pozycję **Migruj**.
-1. Wybierz szablon urządzenia z numerem wersji, z którym chcesz migrować urządzenie, i wybierz pozycję **Migruj**.
+1. Wybierz szablon urządzenia z numerem wersji, na który chcesz przeprowadzić migrację urządzenia, i wybierz pozycję **Migruj**.
 
-![Jak migrować urządzenie](media/howto-version-device-template/pick-version.png)
+![Jak przeprowadzić migrację urządzenia](media/howto-version-device-template/pick-version.png)
 
 ## <a name="next-steps"></a>Następne kroki
 
-Teraz, kiedy wiesz już, jak używać wersji szablonów urządzeń w aplikacji IoT Central platformy Azure, Oto sugerowany następny krok:
+Teraz, gdy dowiesz się, jak używać wersji szablonu urządzenia w aplikacji Azure IoT Central, oto sugerowany następny krok:
 
 > [!div class="nextstepaction"]
-> [Jak utworzyć reguły telemetrii](tutorial-create-telemetry-rules.md)
+> [Jak utworzyć reguły telemetryczne](tutorial-create-telemetry-rules.md)

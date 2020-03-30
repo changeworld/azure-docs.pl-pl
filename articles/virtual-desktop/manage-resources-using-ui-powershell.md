@@ -1,5 +1,5 @@
 ---
-title: Wdrażanie narzędzia do zarządzania dla pulpitu wirtualnego systemu Windows przy użyciu nazwy głównej usługi platformy Azure
+title: Wdrażanie narzędzia do zarządzania pulpitem wirtualnym systemu Windows przy użyciu jednostki usługi — Azure
 description: Jak wdrożyć narzędzie do zarządzania dla pulpitu wirtualnego systemu Windows przy użyciu programu PowerShell.
 services: virtual-desktop
 author: Heidilohr
@@ -9,65 +9,65 @@ ms.date: 01/10/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 0838edb03c4868548f3d09f14d71ec7016e670a4
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/11/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79127795"
 ---
-# <a name="deploy-a-management-tool-with-powershell"></a>Wdrażanie narzędzia do zarządzania przy użyciu programu PowerShell
+# <a name="deploy-a-management-tool-with-powershell"></a>Wdrażanie narzędzia do zarządzania za pomocą programu PowerShell
 
-W tym artykule przedstawiono sposób wdrażania narzędzia do zarządzania przy użyciu programu PowerShell.
+W tym artykule pokazano, jak wdrożyć narzędzie do zarządzania przy użyciu programu PowerShell.
 
-## <a name="important-considerations"></a>Ważne zagadnienia
+## <a name="important-considerations"></a>Istotne zagadnienia
 
-Każda subskrypcja dzierżawy usługi Azure Active Directory (Azure AD) wymaga oddzielnego wdrożenia narzędzia do zarządzania. To narzędzie nie obsługuje scenariuszy usługi Azure AD Business-to-Business (B2B). 
+Subskrypcja dzierżawy usługi Azure Active Directory (Azure AD) wymaga własnego oddzielnego wdrożenia narzędzia do zarządzania. To narzędzie nie obsługuje scenariuszy usługi Azure AD Business-to-Business (B2B). 
 
-To narzędzie do zarządzania jest przykładem. Firma Microsoft zapewni ważne aktualizacje zabezpieczeń i ich jakości. [Kod źródłowy jest dostępny w](https://github.com/Azure/RDS-Templates/tree/master/wvd-templates/wvd-management-ux/deploy)serwisie GitHub. Bez względu na to, czy jesteś klientem, czy partnerem, zachęcamy do dostosowania narzędzia, aby zaspokoić potrzeby biznesowe.
+To narzędzie do zarządzania jest próbką. Firma Microsoft zapewni ważne aktualizacje zabezpieczeń i jakości. [Kod źródłowy jest dostępny w usłudze GitHub](https://github.com/Azure/RDS-Templates/tree/master/wvd-templates/wvd-management-ux/deploy). Niezależnie od tego, czy jesteś klientem, czy partnerem, zachęcamy do dostosowania narzędzia do potrzeb biznesowych.
 
 Następujące przeglądarki są zgodne z narzędziem do zarządzania:
 
-- Google Chrome 68 lub nowsza
-- Microsoft Edge 40,15063 lub nowsza
-- Mozilla Firefox 52,0 lub nowsza
-- Przeglądarka Safari 10 lub nowsza (tylko macOS)
+- Google Chrome 68 lub nowsze
+- Microsoft Edge 40.15063 lub nowsze
+- Mozilla Firefox 52.0 lub nowsza
+- Safari 10 lub nowsze (tylko macOS)
 
 ## <a name="what-you-need-to-deploy-the-management-tool"></a>Co jest potrzebne do wdrożenia narzędzia do zarządzania
 
-Przed wdrożeniem narzędzia do zarządzania musisz mieć Azure Active Directory użytkownika (Azure AD), aby utworzyć rejestrację aplikacji i wdrożyć interfejs użytkownika zarządzania. Ten użytkownik musi:
+Przed wdrożeniem narzędzia do zarządzania, trzeba użytkownika usługi Azure Active Directory (Azure AD) do utworzenia rejestracji aplikacji i wdrożenia interfejsu użytkownika zarządzania. Ten użytkownik musi:
 
-- Masz uprawnienia do tworzenia zasobów w ramach subskrypcji platformy Azure
-- Masz uprawnienia do tworzenia aplikacji usługi Azure AD. Wykonaj następujące kroki, aby sprawdzić, czy użytkownik ma wymagane uprawnienia, postępując zgodnie z instrukcjami w obszarze [wymagane uprawnienia](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions).
+- Mieć uprawnienia do tworzenia zasobów w ramach subskrypcji platformy Azure
+- Mieć uprawnienia do tworzenia aplikacji usługi Azure AD. Wykonaj następujące kroki, aby sprawdzić, czy użytkownik ma wymagane uprawnienia, postępując zgodnie z instrukcjami w [Required permissions](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions).
 
-W celu pomyślnego wdrożenia i skonfigurowania narzędzia do zarządzania należy najpierw pobrać następujące skrypty programu PowerShell z [repozytorium RDS-templates GitHub](https://github.com/Azure/RDS-Templates/tree/master/wvd-templates/wvd-management-ux/deploy/scripts) i zapisać je w tym samym folderze na komputerze lokalnym.
+Aby pomyślnie wdrożyć i skonfigurować narzędzie do zarządzania, należy najpierw pobrać następujące skrypty programu PowerShell z [repozytorium GitHub szablonów usług pulpitu zdalnego](https://github.com/Azure/RDS-Templates/tree/master/wvd-templates/wvd-management-ux/deploy/scripts) i zapisać je w tym samym folderze na komputerze lokalnym.
 
-  - createWvdMgmtUxAppRegistration. ps1
-  - updateWvdMgmtUxApiUrl. ps1
+  - tworzenieWvdMgmtUxAppRegistration.ps1
+  - aktualizacjaWvdMgmtUxApiUrl.ps1
 
-Po wdrożeniu i skonfigurowaniu narzędzia do zarządzania zalecamy poproszenie użytkownika o uruchomienie interfejsu użytkownika zarządzania, aby upewnić się, że wszystko działa. Użytkownik, który uruchamia interfejs użytkownika zarządzania, musi mieć przypisanie roli, które umożliwia im wyświetlanie lub edytowanie dzierżawy pulpitów wirtualnych systemu Windows.
+Po wdrożeniu i skonfigurowaniu narzędzia do zarządzania zaleca się poprosić użytkownika o uruchomienie interfejsu użytkownika zarządzania, aby upewnić się, że wszystko działa. Użytkownik uruchamiany interfejsu użytkownika zarządzania musi mieć przypisanie roli, które umożliwia mu wyświetlanie lub edytowanie dzierżawy pulpitu wirtualnego systemu Windows.
 
 ## <a name="set-up-powershell"></a>Konfigurowanie programu PowerShell
 
-Zacznij od zalogowania się do modułów AZ i Azure AD PowerShell. Oto jak się zalogować:
+Rozpocznij, logując się do modułów Az i Azure AD PowerShell. Aby się zalogować:
 
-1. Otwórz program PowerShell jako administrator i przejdź do katalogu, w którym zapisano skrypty programu PowerShell.
-2. Zaloguj się do platformy Azure przy użyciu konta, które ma uprawnienia właściciela lub współautora w ramach subskrypcji platformy Azure, która ma zostać użyta do utworzenia narzędzia do zarządzania, uruchamiając następujące polecenie cmdlet:
+1. Otwórz program PowerShell jako administrator i przejdź do katalogu, w którym zostały zapisane skrypty programu PowerShell.
+2. Zaloguj się na platformę Azure przy użyciu konta, które ma uprawnienia właściciela lub współautora w ramach subskrypcji platformy Azure, której zamierzasz użyć do utworzenia narzędzia do zarządzania, uruchamiając następujące polecenie cmdlet:
 
     ```powershell
     Login-AzAccount
     ```
 
-3. Uruchom następujące polecenie cmdlet, aby zalogować się do usługi Azure AD przy użyciu tego samego konta, którego użyto w module AZ PowerShell:
+3. Uruchom następujące polecenie cmdlet, aby zalogować się do usługi Azure AD przy użyciu tego samego konta, które jest używane dla modułu Programu PowerShell:
 
     ```powershell
     Connect-AzureAD
     ```
 
-4. Następnie przejdź do folderu, w którym zapisano dwa skrypty programu PowerShell z repozytorium usług pulpitu zdalnego w witrynie GitHub.
+4. Następnie przejdź do folderu, w którym zostały zapisane dwa skrypty programu PowerShell z repozytorium GitHub szablonów usług PULPITU ZDALNEGO.
 
-Pozostaw okno programu PowerShell użyte do logowania się w celu uruchomienia dodatkowych poleceń cmdlet programu PowerShell podczas logowania.
+Zachowaj okno programu PowerShell używane do logowania się otwarte, aby uruchomić dodatkowe polecenia cmdlet programu PowerShell po zalogowaniu się.
 
-## <a name="create-an-azure-active-directory-app-registration"></a>Tworzenie Azure Active Directory rejestracji aplikacji
+## <a name="create-an-azure-active-directory-app-registration"></a>Tworzenie rejestracji aplikacji usługi Azure Active Directory
 
 Uruchom następujące polecenia, aby utworzyć rejestrację aplikacji z wymaganymi uprawnieniami interfejsu API:
 
@@ -78,11 +78,11 @@ $subscriptionId = Read-Host -Prompt "Enter the Azure subscription ID where you w
 .\createWvdMgmtUxAppRegistration.ps1 -AppName $appName -SubscriptionId $subscriptionId
 ```
 
-Po zakończeniu rejestracji aplikacji usługi Azure AD można wdrożyć narzędzie do zarządzania programu.
+Po zakończeniu rejestracji aplikacji usługi Azure AD można wdrożyć narzędzie do zarządzania.
 
 ## <a name="deploy-the-management-tool"></a>Wdrażanie narzędzia do zarządzania
 
-Uruchom następujące polecenia programu PowerShell, aby wdrożyć narzędzie do zarządzania i skojarzyć je z właśnie utworzoną jednostką usługi:
+Uruchom następujące polecenia programu PowerShell, aby wdrożyć narzędzie do zarządzania i skojarzyć go z jednostką usługi, którą właśnie utworzono:
      
 ```powershell
 $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
@@ -101,11 +101,11 @@ New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName `
     -Verbose
 ```
 
-Po utworzeniu aplikacji sieci Web należy dodać identyfikator URI przekierowania do aplikacji usługi Azure AD w celu pomyślnego zalogowania użytkowników.
+Po utworzeniu aplikacji sieci web należy dodać identyfikator URI przekierowania do aplikacji usługi Azure AD, aby pomyślnie zalogować się do użytkowników.
 
-## <a name="set-the-redirect-uri"></a>Ustaw identyfikator URI przekierowania
+## <a name="set-the-redirect-uri"></a>Ustawianie identyfikatora URI przekierowania
 
-Uruchom następujące polecenia programu PowerShell, aby pobrać adres URL aplikacji sieci Web i ustawić go jako identyfikator URI przekierowania uwierzytelniania (nazywany również adresem URL odpowiedzi):
+Uruchom następujące polecenia programu PowerShell, aby pobrać adres URL aplikacji internetowej i ustawić go jako identyfikator URI przekierowania uwierzytelniania (nazywany także adresem URL odpowiedzi):
 
 ```powershell
 $webApp = Get-AzWebApp -ResourceGroupName $resourceGroupName -Name $appName
@@ -113,55 +113,55 @@ $redirectUri = "https://" + $webApp.DefaultHostName + "/"
 Get-AzureADApplication -All $true | where { $_.AppId -match $servicePrincipalCredentials.UserName } | Set-AzureADApplication -ReplyUrls $redirectUri  
 ```
 
-Teraz, po dodaniu identyfikatora URI przekierowania, należy najpierw zaktualizować adres URL interfejsu API, dzięki czemu narzędzie do zarządzania może współdziałać z usługą zaplecza API.
+Po dodaniu identyfikatora URI przekierowania należy zaktualizować adres URL interfejsu API, aby narzędzie do zarządzania mogły wchodzić w interakcje z usługą zaplecza interfejsu API.
 
-## <a name="update-the-api-url-for-the-web-application"></a>Zaktualizuj adres URL interfejsu API dla aplikacji sieci Web
+## <a name="update-the-api-url-for-the-web-application"></a>Aktualizowanie adresu URL interfejsu API dla aplikacji sieci Web
 
-Uruchom następujący skrypt, aby zaktualizować konfigurację adresu URL interfejsu API w frontonie aplikacji sieci Web:
+Uruchom następujący skrypt, aby zaktualizować konfigurację adresu URL interfejsu API w interfejsie aplikacji sieci web:
 
 ```powershell
 .\updateWvdMgmtUxApiUrl.ps1 -AppName $appName -SubscriptionId $subscriptionId
 ```
 
-Teraz, gdy aplikacja internetowa narzędzia do zarządzania została w pełni skonfigurowana, czas na zweryfikowanie aplikacji usługi Azure AD i zapewnienie zgody.
+Teraz, gdy masz w pełni skonfigurowane narzędzie do zarządzania aplikacji sieci web, nadszedł czas, aby zweryfikować aplikację usługi Azure AD i wyrazić zgodę.
 
-## <a name="verify-the-azure-ad-application-and-provide-consent"></a>Weryfikowanie aplikacji usługi Azure AD i wyrażanie zgody
+## <a name="verify-the-azure-ad-application-and-provide-consent"></a>Weryfikowanie aplikacji usługi Azure AD i udzielanie zgody
 
-Aby sprawdzić konfigurację aplikacji usługi Azure AD i zapewnić zgodę:
+Aby zweryfikować konfigurację aplikacji usługi Azure AD i udzielić zgody:
 
-1. Otwórz przeglądarkę internetową i zaloguj się do [Azure Portal](https://portal.azure.com/) przy użyciu konta administracyjnego.
-2. Na pasku wyszukiwania w górnej części Azure Portal Wyszukaj pozycję **rejestracje aplikacji** i wybierz element w obszarze **usługi**.
-3. Wybierz pozycję **wszystkie aplikacje** i Wyszukaj unikatową nazwę aplikacji podaną dla skryptu programu PowerShell w temacie [Tworzenie Azure Active Directory rejestracji aplikacji](#create-an-azure-active-directory-app-registration).
-4. W panelu po lewej stronie przeglądarki wybierz pozycję **uwierzytelnianie** i upewnij się, że identyfikator URI przekierowania jest taki sam jak adres URL aplikacji sieci Web dla narzędzia do zarządzania, jak pokazano na poniższej ilustracji.
+1. Otwórz przeglądarkę internetową i zaloguj się do [witryny Azure portal](https://portal.azure.com/) za pomocą konta administracyjnego.
+2. Na pasku wyszukiwania u góry witryny Azure portal wyszukaj **rejestracje aplikacji** i wybierz element w obszarze **Usługi**.
+3. Wybierz **wszystkie aplikacje** i wyszukaj unikatową nazwę aplikacji podana dla skryptu programu PowerShell w [obszarze Tworzenie rejestracji aplikacji usługi Azure Active Directory](#create-an-azure-active-directory-app-registration).
+4. W panelu po lewej stronie przeglądarki wybierz **pozycję Uwierzytelnianie** i upewnij się, że identyfikator URI przekierowania jest taki sam jak adres URL aplikacji sieci web dla narzędzia do zarządzania, jak pokazano na poniższej ilustracji.
    
-   [![stronie Uwierzytelnianie z wprowadzonym identyfikatorem URI przekierowania](media/management-ui-redirect-uri-inline.png)](media/management-ui-redirect-uri-expanded.png#lightbox)
+   [![Strona uwierzytelniania z wprowadzonym](media/management-ui-redirect-uri-inline.png) identyfikatorem URI przekierowania](media/management-ui-redirect-uri-expanded.png#lightbox)
 
-5. W lewym panelu wybierz pozycję **uprawnienia interfejsu API** , aby potwierdzić, że uprawnienia zostały dodane. Jeśli jesteś administratorem globalnym, wybierz przycisk **Udziel zgody administratorowi na `tenantname`** i postępuj zgodnie z instrukcjami wyświetlanymi w oknie dialogowym, aby zapewnić zgodę administratora na swoją organizację.
+5. W lewym panelu wybierz **uprawnienia interfejsu API,** aby potwierdzić, że uprawnienia zostały dodane. Jeśli jesteś administratorem globalnym, wybierz przycisk **Udziel zgody `tenantname` administratora** i postępuj zgodnie z monitami o okno dialogowe, aby udzielić zgody administratora w organizacji.
     
-    [![stronę uprawnień interfejsu API](media/management-ui-permissions-inline.png)](media/management-ui-permissions-expanded.png#lightbox)
+    [![Strona](media/management-ui-permissions-inline.png) Uprawnień interfejsu API](media/management-ui-permissions-expanded.png#lightbox)
 
-Teraz możesz zacząć korzystać z narzędzia do zarządzania.
+Teraz można rozpocząć korzystanie z narzędzia do zarządzania.
 
 ## <a name="use-the-management-tool"></a>Korzystanie z narzędzia do zarządzania
 
-Teraz, po skonfigurowaniu narzędzia do zarządzania w dowolnym momencie, możesz je uruchomić w dowolnym miejscu. Poniżej przedstawiono sposób uruchomienia narzędzia:
+Teraz, gdy masz skonfigurowane narzędzie do zarządzania w dowolnym momencie, możesz go uruchomić w dowolnym miejscu i czasie. Oto jak uruchomić narzędzie:
 
-1. Otwórz adres URL aplikacji sieci Web w przeglądarce internetowej. Jeśli nie pamiętasz adresu URL, możesz zalogować się do platformy Azure, znaleźć usługę App Service wdrożoną dla narzędzia do zarządzania, a następnie wybrać adres URL.
+1. Otwórz adres URL aplikacji internetowej w przeglądarce internetowej. Jeśli nie pamiętasz adresu URL, możesz zalogować się na platformie Azure, znaleźć usługę aplikacji wdrożoną dla narzędzia do zarządzania, a następnie wybrać adres URL.
 2. Zaloguj się przy użyciu poświadczeń pulpitu wirtualnego systemu Windows.
    
    > [!NOTE]
-   > Jeśli nie przyznano zgody administratora podczas konfigurowania narzędzia do zarządzania, każdy użytkownik, który się zaloguje, będzie musiał podać własną zgodę użytkownika w celu korzystania z tego narzędzia.
+   > Jeśli podczas konfigurowania narzędzia do zarządzania nie udzielono zgody administratora, każdy użytkownik, który się zaloguje, będzie musiał wyrazić zgodę użytkownika, aby móc korzystać z tego narzędzia.
 
-3. Po wyświetleniu monitu o wybranie grupy dzierżawców wybierz z listy rozwijanej pozycję **Domyślna grupa dzierżawców** .
-4. Po wybraniu **domyślnej grupy dzierżawców**menu powinno być wyświetlane po lewej stronie okna. W tym menu Znajdź nazwę grupy dzierżawców i wybierz ją.
+3. Po wyświetleniu monitu o wybranie grupy dzierżawy wybierz z listy rozwijanej pozycję **Domyślna grupa dzierżawców.**
+4. Po wybraniu **domyślnej grupy dzierżawy**po lewej stronie okna powinno pojawić się menu. W tym menu znajdź nazwę grupy dzierżawy i wybierz ją.
    
    > [!NOTE]
-   > Jeśli masz niestandardową grupę dzierżawców, wprowadź nazwę ręcznie zamiast wybierać ją z listy rozwijanej.
+   > Jeśli masz niestandardową grupę dzierżawy, wprowadź ją ręcznie, zamiast wybierać ją z listy rozwijanej.
 
-## <a name="report-issues"></a>Zgłoś problemy
+## <a name="report-issues"></a>Zgłaszanie problemów
 
-Jeśli występują problemy z narzędziem do zarządzania lub innymi narzędziami pulpitu wirtualnego systemu Windows, postępuj zgodnie z instrukcjami w temacie [Azure Resource Manager templates for usługi pulpitu zdalnego](https://github.com/Azure/RDS-Templates/blob/master/README.md) , aby zgłosić je w serwisie GitHub.
+Jeśli natkniesz się na jakiekolwiek problemy z narzędziem do zarządzania lub innymi narzędziami pulpitu wirtualnego systemu Windows, postępuj zgodnie ze [wskazówkami w szablonach usługi Azure Resource Manager dla usług pulpitu zdalnego,](https://github.com/Azure/RDS-Templates/blob/master/README.md) aby zgłosić je w usłudze GitHub.
 
 ## <a name="next-steps"></a>Następne kroki
 
-Teraz, gdy wiesz już, jak wdrożyć narzędzie do zarządzania i połączyć się z nim, możesz dowiedzieć się, jak używać Azure Service Health do monitorowania problemów z usługami i klasyfikatorów kondycji. Aby dowiedzieć się więcej, zobacz [Samouczek dotyczący konfigurowania alertów usługi](./set-up-service-alerts.md).
+Teraz, gdy już wiesz, jak wdrożyć i połączyć się z narzędziem do zarządzania, możesz dowiedzieć się, jak używać usługi Azure Service Health do monitorowania problemów z usługą i poradatoriów kondycji. Aby dowiedzieć się więcej, zobacz nasz [samouczek Konfigurowanie alertów usługi](./set-up-service-alerts.md).

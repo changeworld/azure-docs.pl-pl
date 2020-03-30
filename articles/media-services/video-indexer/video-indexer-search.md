@@ -1,7 +1,7 @@
 ---
-title: Znajdowanie dokładnego momentu w filmach wideo — Video Indexer
+title: Wyszukiwanie dokładnych momentów w filmach za pomocą indeksatora wideo
 titleSuffix: Azure Media Services
-description: W tym temacie pokazano, jak znaleźć dokładną chwilę w filmach wideo przy użyciu Video Indexer.
+description: Dowiedz się, jak wyszukiwać dokładne momenty w filmach za pomocą indeksatora wideo.
 services: media-services
 author: Juliako
 manager: femila
@@ -10,47 +10,49 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 05/15/2019
 ms.author: juliako
-ms.openlocfilehash: 8ebf7606d1a0932cc2254e14a40a2fff550fd35f
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 1c3326456fefbbef9228cf26b5821f306cd21601
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73833792"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80127912"
 ---
-# <a name="find-exact-moments-within-videos"></a>Znajdowanie konkretnych momentów w wideo
+# <a name="search-for-exact-moments-in-videos-with-video-indexer"></a>Wyszukiwanie dokładnych momentów w filmach za pomocą indeksatora wideo
 
-W tym temacie przedstawiono opcje wyszukiwania umożliwiające znalezienie dokładnego momentu w filmach wideo.
+W tym temacie przedstawiono opcje wyszukiwania, które umożliwiają wyszukiwanie dokładnych momentów w filmach.
 
-1. Przejdź do witryny internetowej [Video Indexer](https://www.videoindexer.ai/) i zaloguj się.
-2. Przeszukaj wszystkie filmy wideo na Twoim koncie.
+1. Przejdź do witryny [indeksatora](https://www.videoindexer.ai/) wideo i zaloguj się.
+2. Wyszukaj wszystkie filmy na swoim koncie.
 
-    W poniższym przykładzie wyszukamy wszystkie filmy wideo, które mówią o zabezpieczeniach i w których Satya pojawia się.
+    W poniższym przykładzie wyszukujemy wszystkie filmy, które mówią o bezpieczeństwie i w których pojawia się Satya.
 
-    ![Wyszukiwanie](./media/video-indexer-search/video-indexer-search01.png)
-3. Przeszukaj podsumowanie informacji o filmie wideo.
+    ![Wyszukiwanie wideo w indeksatorze wideo](./media/video-indexer-search/video-indexer-search01.png)
 
-    Następnie możesz przeszukać w filmie wideo, klikając pozycję **Odtwórz** na filmie wideo. Następnie możesz wyszukać w filmie wideo, wybierając kartę **Wyszukiwanie** . 
+3. Przeszukaj podsumowane statystyki filmu.
 
-    W poniższym przykładzie wyszukamy "Secure" w wybranym filmie wideo.
+    Następnie możesz wyszukać w filmie, wybierając przycisk **Odtwórz** na filmie. Następnie możesz wyszukać dokładne momenty w filmie, wybierając kartę **Wyszukiwanie.**
 
-    ![Wyszukiwanie](./media/video-indexer-search/video-indexer-search02.png)
+    W poniższym przykładzie wyszukujemy "bezpieczne" wewnątrz wybranego filmu.
 
-    Po kliknięciu jednego z wyników gracz zostanie pożądany do tego momentu w filmie wideo. Możesz uzyskać informacje o widoku odtwarzacza/analizy i synchronizacji w aplikacji. Aby uzyskać więcej informacji, zobacz [osadzanie Video Indexer elementów widget w aplikacji](video-indexer-embed-widgets.md). 
-4. Przeszukaj szczegółowy podział wideo.
-    
-    Jeśli chcesz utworzyć własny klip na podstawie znalezionego filmu wideo, naciśnij przycisk **Edytuj** . Na tej stronie znajduje się film wideo wraz ze szczegółowymi informacjami na temat filtrów. Aby uzyskać więcej informacji, zobacz [Wyświetlanie i edytowanie Video Indexer Insights](video-indexer-view-edit.md). 
+    ![Wyszukiwanie w klipie wideo za pomocą indeksatora wideo](./media/video-indexer-search/video-indexer-search02.png)
 
-    Możesz wyszukać w filmie wideo, aby wyświetlić tylko te, które Cię interesują, i użyć szczegółowych informacji do filtrowania części, które mają być wyświetlane. Po zakończeniu możesz wyświetlić podgląd klipu i nacisnąć przycisk **Publikuj** , aby utworzyć nowy klip, który pojawia się w galerii.
-    
-    W poniższym przykładzie przeszukano tekst "rzeczywistość mieszana". Zastosowano również dodatkowe filtry, jak pokazano na poniższym ekranie.
-    
-    ![Wyszukiwanie](./media/video-indexer-search/video-indexer-search03.png)
+    Jeśli wybierzesz jeden z wyników, odtwarzacz doprowadzi Cię do tego momentu w filmie. Możesz osiągnąć widok i synchronizację odtwarzacza/statystyk w aplikacji. Aby uzyskać więcej informacji, zobacz [Osadzanie widżetów indeksatora wideo w aplikacji](video-indexer-embed-widgets.md).
 
-## <a name="next-steps"></a>Następne kroki 
+4. Przeszukaj szczegółowy podział filmu.
 
-Po znalezieniu wideo, z którym chcesz współpracować, możesz kontynuować przetwarzanie wideo, zgodnie z opisem w jednym z następujących tematów: 
+    Jeśli chcesz utworzyć własny klip na podstawie znalezionego klipu wideo, wybierz przycisk **Edytuj.** Na tej stronie przedstawiono film wraz z jego statystykami jako filtrami. Aby uzyskać więcej informacji, zobacz [Wyświetlanie i edytowanie statystyk indeksatora wideo](video-indexer-view-edit.md).
 
-- [Korzystaj z szczegółowego wglądu w dane wideo](use-editor-create-project.md)
+    Możesz wyszukiwać dokładne momenty w filmie, aby pokazać tylko te linie, które Cię interesują. Użyj bocznych statystyk, aby filtrować części, które chcesz zobaczyć. Po zakończeniu można wyświetlić podgląd klipu i wybrać pozycję **Publikuj,** aby utworzyć nowy klip wyświetlany w galerii.
+
+    W poniższym przykładzie szukaliśmy tekstu "rzeczywistość mieszana". Zastosowaliśmy również dodatkowe filtry, jak pokazano na poniższym ekranie.
+
+    ![Wyszukaj dokładny moment w indeksatorze wideo](./media/video-indexer-search/video-indexer-search03.png)
+
+## <a name="next-steps"></a>Następne kroki
+
+Po znalezieniu dokładnego momentu w filmie, z którym chcesz pracować, możesz kontynuować przetwarzanie wideo. Aby uzyskać więcej informacji, zobacz następujące tematy:
+
+- [Korzystaj z głębokich spostrzeżeń swoich filmów](use-editor-create-project.md)
 - [Przetwarzanie zawartości przy użyciu interfejsu REST API usługi Video Indexer](video-indexer-use-apis.md)
 - [Osadzanie widgetów wizualnych w aplikacji](video-indexer-embed-widgets.md)
 

@@ -1,34 +1,35 @@
 ---
-title: Rozwiązywanie problemów z dysków dołączonych do maszyn wirtualnych platformy Azure | Dokumentacja firmy Microsoft
-description: Zawiera łącza do rozwiązywania problemów z zasobami dla wirtualnych dysków twardych (VHD) maszyny wirtualnej platformy Azure.
+title: Rozwiązywanie problemów z dyskami podłączonymi do maszyn wirtualnych platformy Azure | Dokumenty firmy Microsoft
+description: Zawiera łącza do zasobów rozwiązywania problemów z wirtualnymi dyskami twardymi maszyny wirtualnej platformy Azure(VHD).
 services: storage
 author: roygara
 ms.service: storage
-ms.topic: article
+ms.subservice: blobs
+ms.topic: conceptual
 ms.date: 10/31/2018
 ms.author: rogarana
 ms.reviewer: wmgries
-ms.openlocfilehash: c00fdf3ad02edc1faf0d3257d3836a1c2f44d682
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b81c0947327dc8e84c5d3fbbecde3aa31313cc70
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65150768"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80061181"
 ---
-# <a name="troubleshoot-disks-attached-to-azure-vms"></a>Rozwiązywanie problemów z dysków dołączonych do maszyn wirtualnych platformy Azure 
+# <a name="troubleshoot-disks-attached-to-azure-vms"></a>Rozwiązywanie problemów z dyskami podłączonymi do maszyn wirtualnych platformy Azure 
 
-Azure Virtual Machines (VMs) polegają na wirtualne dyski twarde (VHD) dla dysku systemu operacyjnego i wszystkie dołączone dyski danych. Wirtualne dyski twarde są przechowywane jako stronicowe obiekty BLOB w co najmniej jedno konto usługi Azure Storage. W tym artykule wskazuje rozwiązywania typowych problemów, które mogą wystąpić przy użyciu wirtualnych dysków twardych. 
+Maszyny wirtualne platformy Azure (VM) polegają na wirtualnych dyskach twardych (VHD) dla dysku systemu operacyjnego i wszystkich dołączonych dysków z danymi. Dyski VHD są przechowywane jako obiekty blob strony w co najmniej jednym kontie usługi Azure Storage. W tym artykule wskazano do rozwiązywania problemów z zawartością dla typowych problemów, które mogą pojawić się z VHDs. 
 
-## <a name="troubleshoot-storage-deletion-errors-for-a-vm"></a>Rozwiązywanie problemów z usuwaniem magazynu dla maszyny Wirtualnej
+## <a name="troubleshoot-storage-deletion-errors-for-a-vm"></a>Rozwiązywanie problemów z błędami usuwania magazynu dla maszyny Wirtualnej
 
-W niektórych przypadkach może wystąpić błąd podczas usuwania zasobów magazynu, gdy maszyna wirtualna, w ramach wdrożenia usługi Resource Manager zawiera dołączonych wirtualnych dysków twardych. Aby uzyskać pomoc w rozwiązaniu tego problemu zobacz jeden z następujących artykułów: 
+W niektórych przypadkach może wystąpić błąd podczas usuwania zasobu magazynu, gdy maszyna wirtualna we wdrożeniu Menedżera zasobów zawiera dołączone dyski VHD. Aby uzyskać pomoc dotyczącą rozwiązania tego problemu, zobacz jeden z następujących artykułów: 
 
-  * Na maszynach wirtualnych systemu Linux: [Błędy usuwania magazynu podczas wdrażania usługi Resource Manager](../../virtual-machines/linux/storage-resource-deletion-errors.md)  
-  * Na maszynach wirtualnych Windows: [Błędy usuwania magazynu podczas wdrażania usługi Resource Manager](../../virtual-machines/windows/storage-resource-deletion-errors.md)  
+  * Na maszynach wirtualnych z systemem Linux: [błędy usuwania magazynu we wdrażaniu Menedżera zasobów](../../virtual-machines/linux/storage-resource-deletion-errors.md)  
+  * Na maszynach wirtualnych systemu Windows: [błędy usuwania magazynu we wdrażaniu Menedżera zasobów](../../virtual-machines/windows/storage-resource-deletion-errors.md)  
 
-## <a name="troubleshoot-unexpected-reboots-of-vms-with-attached-vhds"></a>Rozwiązywanie problemów z nieoczekiwane ponowne uruchamianie maszyn wirtualnych z dołączonymi dyskami VHD
+## <a name="troubleshoot-unexpected-reboots-of-vms-with-attached-vhds"></a>Rozwiązywanie problemów z nieoczekiwanym ponownym uruchomieniem maszyn wirtualnych za pomocą dołączonych wirtualnych
 
-Jeśli wystąpi nieoczekiwane ponowne uruchamianie maszyny Wirtualnej o dużej liczby dołączonych wirtualnych dysków twardych, zobacz jeden z następujących artykułów:
+Jeśli wystąpią nieoczekiwane ponowne uruchomienie maszyny Wirtualnej z dużą liczbą dołączonych wirtualnych elementów, zobacz jeden z następujących artykułów:
 
-  * Na maszynach wirtualnych systemu Linux: [Nieoczekiwane ponowne uruchamianie maszyn wirtualnych z dołączonymi dyskami VHD](../../virtual-machines/linux/unexpected-reboots-attached-vhds.md)
-  * Na maszynach wirtualnych Windows: [Nieoczekiwane ponowne uruchamianie maszyn wirtualnych z dołączonymi dyskami VHD](../../virtual-machines/linux/unexpected-reboots-attached-vhds.md)
+  * Na maszynach wirtualnych z systemem Linux: [nieoczekiwane ponowne uruchomienie maszyn wirtualnych z dołączonymi vhdami](../../virtual-machines/linux/unexpected-reboots-attached-vhds.md)
+  * Na maszynach wirtualnych systemu Windows: [nieoczekiwane ponowne uruchomienie maszyn wirtualnych z dołączonymi wirtualnymi](../../virtual-machines/linux/unexpected-reboots-attached-vhds.md)

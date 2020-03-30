@@ -10,54 +10,54 @@ ms.author: dpalled
 manager: cshankar
 ms.custom: include file
 ms.openlocfilehash: f097479b67a7b48eca4a2710db3bd7eed6ddc982
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/04/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77013694"
 ---
-Poniżej przedstawiono podsumowanie kluczowych limitów dostępności.
+Poniżej podsumowano limity kluczy w ogólnej dostępności.
 
-### <a name="sku-ingress-rates-and-capacities"></a>Stawki i pojemności jednostki SKU
+### <a name="sku-ingress-rates-and-capacities"></a>Stawki i zdolności wnikaniu jednostek SKU
 
-Stawki za transfery danych w warstwie S1 i S2 zapewniają elastyczność podczas konfigurowania nowego środowiska Time Series Insights.
+Szybkość i przepustowość jednostek SKU s1 i S2 zapewniają elastyczność podczas konfigurowania nowego środowiska usługi Time Series Insights.
 
-| Pojemność jednostki SKU S1 | Szybkość transferu danych przychodzących | Maksymalna pojemność magazynu
+| Pojemność jednostki SKU S1 | Wskaźnik transferu wnikacza | Maksymalna pojemność pamięci masowej
 | --- | --- | --- |
-| 1 | 1 GB (1 000 000 zdarzeń) | 30 GB (30 000 000 zdarzeń) miesięcznie |
-| 10 | 10 GB (10 000 000 zdarzeń) | 300 GB (zdarzenia 300 000 000) miesięcznie |
+| 1 | 1 GB (1 milion zdarzeń) | 30 GB (30 milionów zdarzeń) miesięcznie |
+| 10 | 10 GB (10 milionów zdarzeń) | 300 GB (300 milionów zdarzeń) miesięcznie |
 
-| Pojemność jednostki SKU S2 | Szybkość transferu danych przychodzących | Maksymalna pojemność magazynu
+| Pojemność jednostki SKU S2 | Wskaźnik transferu wnikacza | Maksymalna pojemność pamięci masowej
 | --- | --- | --- |
-| 1 | 10 GB (10 000 000 zdarzeń) | 300 GB (zdarzenia 300 000 000) miesięcznie |
-| 10 | 100 GB (zdarzenia 100 000 000) | 3 TB (3 000 000 000 zdarzeń) miesięcznie |
+| 1 | 10 GB (10 milionów zdarzeń) | 300 GB (300 milionów zdarzeń) miesięcznie |
+| 10 | 100 GB (100 milionów wydarzeń) | 3 TB (3 miliardy zdarzeń) miesięcznie |
 
 > [!NOTE]
-> Pojemności są skalowane liniowie, więc jednostka SKU S1 z pojemnością 2 obsługuje 2 GB (2 000 000) zdarzeń na dzień i 60 GB (60 000 000 zdarzeń) miesięcznie.
+> Możliwości są skalowane liniowo, więc jednostka SKU S1 o pojemności 2 obsługuje 2 GB (2 miliony) zdarzeń dziennie i 60 GB (60 milionów zdarzeń) miesięcznie.
 
-Środowiska jednostki SKU S2 obsługują znacznie więcej zdarzeń miesięcznie i mają znacznie wyższą wydajność transferu danych przychodzących.
+Środowiska SKU S2 obsługują znacznie więcej zdarzeń miesięcznie i mają znacznie wyższą pojemność transferu przychodzącego.
 
-| JSZ  | Liczba zdarzeń miesięcznie  | Rozmiar zdarzenia miesięcznie  | Liczba zdarzeń na minutę | Rozmiar zdarzenia na minutę  |
+| SKU  | Liczba zdarzeń na miesiąc  | Rozmiar wydarzenia na miesiąc  | Liczba zdarzeń na minutę | Rozmiar zdarzenia na minutę  |
 |---------|---------|---------|---------|---------|
-| S1     |   30 000 000     |  30 GB     |  720    |  720 KB   |
- |S2     |   300 000 000    |   300 GB   | 7 200   | 7 200 KB  |
+| S1     |   30 milionów     |  30 GB     |  720    |  720 KB   |
+ |S2     |   300 milionów    |   300 GB   | 7,200   | 7200 KB  |
 
-### <a name="property-limits"></a>Limity właściwości
+### <a name="property-limits"></a>Limity nieruchomości
 
-Limity właściwości GA zależą od wybranego środowiska jednostki SKU. Podane właściwości zdarzenia mają odpowiednie kolumny JSON, CSV i wykresu, które mogą być wyświetlane w [eksploratorze Time Series Insights](https://docs.microsoft.com/azure/time-series-insights/time-series-quickstart).
+Limity właściwości GA zależą od wybranego środowiska jednostki SKU. Podane właściwości zdarzeń mają odpowiednie kolumny JSON, CSV i wykresu, które można wyświetlać w [Eksploratorze wglądu w szeregi czasowe.](https://docs.microsoft.com/azure/time-series-insights/time-series-quickstart)
 
-| JSZ | Właściwości maksymalne |
+| SKU | Maksymalna liczba właściwości |
 | --- | --- |
-| S1 | Właściwości 600 (kolumny) |
-| S2 | Właściwości 800 (kolumny) |
+| S1 | 600 właściwości (kolumny) |
+| S2 | 800 właściwości (kolumny) |
 
 ### <a name="event-sources"></a>Źródła zdarzeń
 
 Obsługiwane są maksymalnie dwa źródła zdarzeń na wystąpienie. 
 
-* Dowiedz się, jak [dodać Źródło centrum zdarzeń](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-how-to-add-an-event-source-eventhub).
-* Skonfiguruj [Źródło Centrum IoT](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-how-to-add-an-event-source-iothub).
+* Dowiedz się, jak [dodać źródło centrum zdarzeń](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-how-to-add-an-event-source-eventhub).
+* Konfigurowanie [źródła centrum IoT](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-how-to-add-an-event-source-iothub).
 
-### <a name="api-limits"></a>Limity interfejsu API
+### <a name="api-limits"></a>Limity API
 
-Limity interfejsu API REST dla Time Series Insights ogólnej dostępności są określone w [dokumentacji interfejsu API REST](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#limits).
+Limity interfejsu API REST dla ogólnej dostępności usługi Time Series Insights są określone w [dokumentacji referencyjnej interfejsu API REST](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#limits).

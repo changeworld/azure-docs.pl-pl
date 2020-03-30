@@ -1,5 +1,5 @@
 ---
-title: 'Szybki start: Utwórz potok ciągłej integracji/ciągłego wdrażania dla języka programowania go za pomocą Azure DevOps Projects'
+title: 'Szybki start: tworzenie potoku ciągłej integracji/ciągłego wdrażania dla języka programowania Go za pomocą usługi Azure DevOps Projects'
 description: Usługa DevOps Projects ułatwia rozpoczęcie pracy na platformie Azure. Umożliwia uruchomienie aplikacji języka programowania Go w usłudze platformy Azure w kilku prostych krokach.
 ms.prod: devops
 ms.technology: devops-cicd
@@ -17,10 +17,10 @@ ms.author: mlearned
 ms.custom: mvc
 monikerRange: vsts
 ms.openlocfilehash: f7429a6de05a301b579354d722ad354b78ce6cbf
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "70899669"
 ---
 # <a name="create-a-cicd-pipeline-for-go-by-using-azure-devops-projects"></a>Tworzenie potoku ciągłej integracji/ciągłego wdrażania dla języka Go za pomocą usługi Azure DevOps Projects
@@ -33,7 +33,7 @@ Jeśli nie masz subskrypcji platformy Azure, możesz uzyskać ją bezpłatnie za
 
 Usługa DevOps Projects tworzy potok ciągłej integracji/ciągłego wdrażania w usłudze Azure Pipelines. Możesz utworzyć nową organizację usługi Azure DevOps lub użyć istniejącej organizacji. Usługa DevOps Projects tworzy również zasoby platformy Azure w wybranej subskrypcji platformy Azure.
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
+1. Zaloguj się do [Portalu Azure](https://portal.azure.com).
 
 1. W okienku po lewej stronie wybierz pozycję **Utwórz zasób**.
 
@@ -45,7 +45,7 @@ Usługa DevOps Projects tworzy potok ciągłej integracji/ciągłego wdrażania 
 
 1. Wybierz przykładową aplikację języka **Go**, a następnie wybierz pozycję **Dalej**.  
     
-1. Domyślną strukturą jest struktura **Prosta aplikacja języka Go**. Wybierz opcję **Dalej**.  
+1. Domyślną strukturą jest struktura **Prosta aplikacja języka Go**. Wybierz **pozycję Dalej**.  
     Wybrana poprzednio struktura aplikacji decyduje o dostępnym typie celów wdrożenia usługi platformy Azure. 
     
 1. Pozostaw domyślną usługę platformy Azure i wybierz pozycję **Dalej**.
@@ -135,7 +135,7 @@ Usługa DevOps Projects automatycznie konfiguruje pełny potok ciągłej integra
 1. Wybierz pozycję **Zatwierdzenia**.  
     Ten widok przedstawia zatwierdzenia kodu skojarzone z danym wdrożeniem. 
 
-1. Wybierz pozycję **Dzienniki**.  
+1. Wybierz **dzienniki**.  
     Dzienniki zawierają przydatne informacje na temat procesu wdrażania. Możesz je wyświetlać zarówno podczas wdrażania, jak i po jego zakończeniu.
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów

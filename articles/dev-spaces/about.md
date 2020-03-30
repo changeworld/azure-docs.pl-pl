@@ -1,51 +1,51 @@
 ---
-title: Wprowadzenie do Azure Dev Spaces
+title: Wprowadzenie do przestrzeni deweloperskich platformy Azure
 services: azure-dev-spaces
 ms.date: 05/07/2019
 ms.topic: overview
-description: Dowiedz się, jak Azure Dev Spaces zapewnia szybkie, iteracyjne środowisko programistyczne Kubernetes dla zespołów w klastrach usługi Azure Kubernetes Service
-keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, polecenia kubectl, k8s
+description: Dowiedz się, jak usługa Azure Dev Spaces zapewnia szybkie, iteracyjne środowisko programistyczne Kubernetes dla zespołów w klastrach usługi Azure Kubernetes
+keywords: Docker, Kubernetes, Azure, AKS, Usługa Azure Kubernetes, kontenery, kubectl, k8s
 manager: gwallace
 ms.openlocfilehash: 586b19070ec36517add21f7aac86ddf15121be2d
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "79240702"
 ---
-# <a name="introduction-to-azure-dev-spaces"></a>Wprowadzenie do Azure Dev Spaces
+# <a name="introduction-to-azure-dev-spaces"></a>Wprowadzenie do przestrzeni deweloperskich platformy Azure
 
-Azure Dev Spaces zapewnia szybkie, iteracyjne środowisko programistyczne Kubernetes dla zespołów w klastrach usługi Azure Kubernetes Service (AKS). Azure Dev Spaces umożliwia również debugowanie i testowanie wszystkich składników aplikacji w AKS z minimalną konfiguracją maszyny deweloperskiej bez replikowania lub tworzenia zależności.
+Usługa Azure Dev Spaces zapewnia szybkie, iteracyjne środowisko programistyczne Kubernetes dla zespołów w klastrach usługi Azure Kubernetes (AKS). Usługa Azure Dev Spaces umożliwia również debugowanie i testowanie wszystkich składników aplikacji w usłudze AKS przy minimalnej konfiguracji komputera deweloperskiego, bez replikowania lub tworzenia szyderczych zależności.
 
 ![](media/azure-dev-spaces/collaborate-graphic.gif)
 
 ## <a name="how-azure-dev-spaces-simplifies-kubernetes-development"></a>W jaki sposób usługa Azure Dev Spaces upraszcza opracowywanie kontenerów Kubernetes
 
-Azure Dev Spaces ułatwia zespołom skoncentrowanie się na opracowywaniu i szybkiej iteracji aplikacji mikrousług przez umożliwienie zespołom pracy bezpośrednio z całą architekturą mikrousług lub aplikacją działającą w AKS. Azure Dev Spaces również umożliwia niezależne aktualizowanie części architektury mikrousług w izolacji bez wpływu na resztę klastra AKS lub innych deweloperów. Azure Dev Spaces jest przeznaczony do tworzenia i testowania w środowiskach deweloperskich i testowych niższego poziomu i nie jest przeznaczony do uruchamiania w produkcyjnych klastrach AKS.
+Usługa Azure Dev Spaces pomaga zespołom skupić się na rozwoju i szybkiej iteracji aplikacji mikrousług, umożliwiając zespołom bezpośrednią pracę z całą architekturą mikrousług lub aplikacją działającą w usłudze AKS. Usługa Azure Dev Spaces zapewnia również sposób niezależnej aktualizacji części architektury mikrousług w izolacji bez wpływu na resztę klastra AKS lub innych deweloperów. Usługa Azure Dev Spaces służy do tworzenia i testowania w środowiskach deweloperskich i testowych niższego poziomu i nie jest przeznaczona do uruchamiania w produkcyjnych klastrach AKS.
 
-Ponieważ zespoły mogą współdziałać z całą aplikacją i współpracować bezpośrednio w AKS, Azure Dev Spaces:
+Ponieważ zespoły mogą pracować z całą aplikacją i współpracować bezpośrednio w aks, Azure Dev Spaces:
 
 * Minimalizuje konfigurację komputera lokalnego
-* Skraca czas instalacji dla nowych deweloperów w zespole
-* Zwiększa prędkość zespołu przez szybszą iterację
-* Zmniejsza liczbę nadmiarowych środowisk programistycznych i integracji, ponieważ członkowie zespołu mogą współużytkować klaster
-* Eliminuje konieczność replikowania lub makietowania zależności
-* Usprawnia współpracę między zespołami programistycznymi, a także z zespołami, z którymi pracują, takich jak zespoły DevOps
+* Skraca czas konfiguracji dla nowych programistów w zespole
+* Zwiększa prędkość drużyny dzięki szybszej iteracji
+* Zmniejsza liczbę nadmiarowych środowisk programowych i integracyjnych, ponieważ członkowie zespołu mogą współużytkować klaster
+* Eliminuje konieczność replikowania lub mock up zależności
+* Usprawnia współpracę między zespołami programistyzajdu, a także zespołami, z którymi współpracują, takimi jak zespoły DevOps
 
-Azure Dev Spaces udostępnia narzędzia do generowania zasobów platformy Docker i Kubernetes dla projektów. To narzędzie umożliwia łatwe dodawanie nowych i istniejących aplikacji do przestrzeni deweloperskiej i innych klastrów AKS.
+Usługa Azure Dev Spaces udostępnia narzędzia do generowania zasobów platformy Docker i Kubernetes dla projektów. To narzędzie umożliwia łatwe dodawanie nowych i istniejących aplikacji zarówno do przestrzeni deweloperskiej, jak i innych klastrów AKS.
 
-Aby uzyskać więcej informacji na temat działania Azure Dev Spaces, zobacz [How to Azure dev Spaces działa i jest skonfigurowana][how-dev-spaces-works].
+Aby uzyskać więcej informacji na temat działania usługi Azure Dev Spaces, zobacz [Jak działa usługa Azure Dev Spaces i jest skonfigurowana.][how-dev-spaces-works]
 
 ## <a name="supported-regions-and-configurations"></a>Obsługiwane regiony i konfiguracje
 
-Azure Dev Spaces jest obsługiwana tylko przez klastry AKS w [niektórych regionach][supported-regions]. Usługa Azure Dev Spaces obsługuje korzystanie z [interfejsu wiersza polecenia platformy Azure](/cli/azure/install-azure-cli?view=azure-cli-latest) lub programu [Visual Studio Code](https://code.visualstudio.com/download) za pomocą [rozszerzenia usługi Azure Dev Spaces](https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds) zainstalowanego w systemie Linux, MacOS lub Windows 8 bądź nowszym, aby umożliwić tworzenie i uruchamianie aplikacje w usłudze AKS. Obsługuje ona również korzystanie z [programu Visual Studio](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs) zainstalowanego w systemie Windows 8 lub nowszym. W przypadku programu Visual Studio 2019 będzie potrzebne obciążenie Programowanie na platformie Azure. W przypadku programu Visual Studio 2017 będzie potrzebne obciążenie programowanie sieci Web i [Visual Studio Tools for Kubernetes](https://aka.ms/get-vsk8stools).
+Usługa Azure Dev Spaces jest obsługiwana tylko przez klastry AKS w [niektórych regionach.][supported-regions] Usługa Azure Dev Spaces obsługuje korzystanie z [interfejsu wiersza polecenia platformy Azure](/cli/azure/install-azure-cli?view=azure-cli-latest) lub programu [Visual Studio Code](https://code.visualstudio.com/download) za pomocą [rozszerzenia usługi Azure Dev Spaces](https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds) zainstalowanego w systemie Linux, MacOS lub Windows 8 bądź nowszym, aby umożliwić tworzenie i uruchamianie aplikacje w usłudze AKS. Obsługuje również przy użyciu [programu Visual Studio](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs) zainstalowanego w systemie Windows 8 lub nowszym. W programie Visual Studio 2019 potrzebne będzie obciążenie programu Azure Development. W programie Visual Studio 2017 potrzebne będzie obciążenie web development i [narzędzia programu Visual Studio dla aplikacji Kubernetes.](https://aka.ms/get-vsk8stools)
 
 ## <a name="next-steps"></a>Następne kroki
 
-Dowiedz się więcej o szybkim, iteracyjnym programowaniu dla zespołów, które Azure Dev Spaces z zespołem szybki start dla deweloperów.
+Dowiedz się więcej o szybkim, iteracyjnym rozwoju dla zespołów z usługą Azure Dev Spaces dzięki szybkiemurozku dla tworzenia zespołów.
 
 > [!div class="nextstepaction"]
-> [Programowanie zespołowe — Szybki Start](quickstart-team-development.md)
+> [Szybki start rozwoju zespołu](quickstart-team-development.md)
 
 
 [how-dev-spaces-works]: how-dev-spaces-works.md

@@ -1,61 +1,60 @@
 ---
-title: Utwórz pierwszą funkcję bezserwerową z Azure Portal
+title: Tworzenie pierwszej funkcji w witrynie Azure Portal
 description: Dowiedz się, jak utworzyć pierwszą funkcję platformy Azure do wykonywania bezserwerowego przy użyciu witryny Azure Portal.
 ms.assetid: 96cf87b9-8db6-41a8-863a-abb828e3d06d
 ms.topic: quickstart
-ms.date: 03/28/2018
+ms.date: 03/06/2020
 ms.custom: mvc, devcenter, cc996988-fb4f-47
-ms.openlocfilehash: 3e5513d8730f455b220fa480eb99ce9c29216210
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: e7bb5e7b387c3ab1140a3fe475911bd0e428e2a5
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79241290"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80057031"
 ---
 # <a name="create-your-first-function-in-the-azure-portal"></a>Tworzenie pierwszej funkcji w witrynie Azure Portal
 
-Usługa Azure Functions umożliwia wykonywanie kodu w środowisku [bezserwerowym](https://azure.microsoft.com/solutions/serverless/) bez konieczności uprzedniego tworzenia maszyny wirtualnej lub publikowania aplikacji internetowej. W tym artykule dowiesz się, jak za pomocą funkcji utworzyć funkcję "Hello World" w Azure Portal.
-
-![Tworzenie aplikacji funkcji w witrynie Azure Portal](./media/functions-create-first-azure-function/function-app-in-portal-editor.png)
+Usługa Azure Functions umożliwia uruchamianie kodu w środowisku bezserwerowym bez konieczności tworzenia maszyny wirtualnej (VM) lub publikowania aplikacji sieci web. W tym artykule dowiesz się, jak używać usługi Azure Functions do tworzenia funkcji wyzwalanych HTTP "hello world" w witrynie Azure portal.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-> [!NOTE]
-> C#Deweloperzy powinni rozważyć [utworzenie pierwszej funkcji w programie Visual Studio 2019](functions-create-your-first-function-visual-studio.md) zamiast w portalu. 
+Jeśli jesteś deweloperem języka C#, należy rozważyć [utworzenie pierwszej funkcji w programie Visual Studio 2019,](functions-create-your-first-function-visual-studio.md) a nie w portalu. 
 
-## <a name="log-in-to-azure"></a>Logowanie się do platformy Azure
+## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
 
-Zaloguj się do witryny Azure Portal pod adresem <https://portal.azure.com> przy użyciu danych konta Azure.
+Zaloguj się do [witryny Azure portal](https://portal.azure.com) za pomocą konta platformy Azure.
 
 ## <a name="create-a-function-app"></a>Tworzenie aplikacji funkcji
 
-Do obsługi wykonywania funkcji potrzebna jest aplikacja funkcji. Aplikacja funkcji umożliwia grupowanie funkcji jako jednostki logicznej, co ułatwia zarządzanie, wdrażanie, skalowanie i udostępnianie zasobów.
+Do obsługi wykonywania funkcji potrzebna jest aplikacja funkcji. Aplikacja funkcji umożliwia grupowanie funkcji jako jednostki logicznej w celu łatwiejszego zarządzania, wdrażania, skalowania i udostępniania zasobów.
 
 [!INCLUDE [Create function app Azure portal](../../includes/functions-create-function-app-portal.md)]
 
-Następnie należy utworzyć funkcję w nowej aplikacji funkcji.
+Następnie utwórz funkcję w nowej aplikacji funkcji.
 
-## <a name="create-function"></a>Tworzenie funkcji wyzwalanej przez protokół HTTP
+## <a name="create-an-http-triggered-function"></a><a name="create-function"></a>Tworzenie funkcji wyzwalanej przez protokół HTTP
 
-1. Rozwiń nową aplikację funkcji, a następnie wybierz przycisk **+** obok opcji **Functions**, wybierz opcję **W portalu** i wybierz opcję **Kontynuuj**.
+1. Rozwiń nową aplikację funkcyjną, wybierz **+** przycisk obok pozycji **Funkcje**, wybierz pozycję W **portalu**, a następnie wybierz pozycję **Kontynuuj**.
 
-    ![Funkcje — szybki start do wybierania platformy.](./media/functions-create-first-azure-function/function-app-quickstart-choose-portal.png)
+    ![Funkcje szybkiego startu przy wyborze platformy.](./media/functions-create-first-azure-function/function-app-quickstart-choose-portal.png)
 
-1. Wybierz opcję **Element WebHook + interfejs API**, a następnie wybierz opcję **Utwórz**.
+1. Wybierz **pozycję WebHook + API**, a następnie wybierz pozycję **Utwórz**.
 
     ![Szybkie rozpoczynanie pracy z usługą Functions w witrynie Azure Portal.](./media/functions-create-first-azure-function/function-app-quickstart-node-webhook.png)
 
-Funkcja zostanie utworzona przy użyciu szablonu funkcji wyzwalanej przez protokół HTTP właściwego dla danego języka.
+   Funkcja zostanie utworzona przy użyciu szablonu funkcji wyzwalanej przez protokół HTTP właściwego dla danego języka.
 
 Możesz teraz uruchomić nową funkcję, wysyłając żądanie HTTP.
 
 ## <a name="test-the-function"></a>Testowanie funkcji
 
-1. W nowej funkcji kliknij pozycję **</> Pobierz adres URL funkcji** w prawym górnym rogu, wybierz pozycję **domyślne (klawisz funkcji)** , a następnie kliknij pozycję **Kopiuj**. 
+1. W nowej funkcji wybierz **</> Pobierz adres URL funkcji** w prawym górnym rogu. 
+
+1. W oknie dialogowym **Pobierz adres URL funkcji** wybierz pozycję **domyślny (klawisz funkcji)** z listy rozwijanej, a następnie wybierz pozycję **Kopiuj**. 
 
     ![Kopiowanie adresu URL funkcji z witryny Azure Portal](./media/functions-create-first-azure-function/function-app-develop-tab-testing.png)
 
-2. Wklej adres URL funkcji do paska adresu przeglądarki. Dodaj wartość ciągu zapytania `&name=<yourname>` na końcu tego adresu URL, a następnie naciśnij klawisz `Enter` na klawiaturze, aby wykonać żądanie. W przeglądarce powinna zostać wyświetlona odpowiedź zwrócona przez funkcję.  
+1. Wklej adres URL funkcji do paska adresu przeglądarki. Dodaj wartość `&name=<your_name>` ciągu zapytania na końcu tego adresu URL i naciśnij klawisz Enter, aby uruchomić żądanie. 
 
     Poniższy przykład przedstawia odpowiedź w przeglądarce:
 
@@ -63,7 +62,7 @@ Możesz teraz uruchomić nową funkcję, wysyłając żądanie HTTP.
 
     Adres URL żądania zawiera klucz, który domyślnie jest wymagany do uzyskania dostępu do funkcji za pośrednictwem protokołu HTTP.
 
-3. Gdy funkcja działa, informacje o śledzeniu są zapisywane w dziennikach. Aby wyświetlić dane wyjściowe śledzenia z poprzedniego wykonania, wróć do funkcji w portalu, a następnie kliknij strzałkę w dół w dolnej części ekranu, aby rozwinąć pozycję **Dzienniki**.
+1. Gdy funkcja działa, informacje o śledzeniu są zapisywane w dziennikach. Aby wyświetlić dane wyjściowe śledzenia z poprzedniego wykonania, wróć do funkcji w portalu i wybierz strzałkę u dołu ekranu, aby rozwinąć **dzienniki**.
 
    ![Podgląd dziennika usługi Functions w witrynie Azure Portal.](./media/functions-create-first-azure-function/function-view-logs.png)
 
@@ -73,8 +72,5 @@ Możesz teraz uruchomić nową funkcję, wysyłając żądanie HTTP.
 
 ## <a name="next-steps"></a>Następne kroki
 
-Utworzono aplikację funkcji z prostą funkcją wyzwalaną przez protokół HTTP.  
-
 [!INCLUDE [Next steps note](../../includes/functions-quickstart-next-steps.md)]
 
-Aby uzyskać więcej informacji, zobacz [Powiązania protokołu HTTP w usłudze Azure Functions](functions-bindings-http-webhook.md).

@@ -1,5 +1,5 @@
 ---
-title: 'Szybki start: Tworzenie potoku ciągłej integracji/ciągłego wdrażania dla języka PHP za pomocą usługi Azure DevOps Projects'
+title: 'Szybki start: tworzenie potoku ciągłej integracji/ciągłego wdrażania dla języka PHP za pomocą usługi Azure DevOps Projects'
 description: Usługa DevOps Projects ułatwia rozpoczęcie pracy na platformie Azure. Umożliwia uruchomienie aplikacji w wybranej usłudze platformy Azure w kilku prostych krokach.
 ms.prod: devops
 ms.technology: devops-cicd
@@ -17,10 +17,10 @@ ms.author: mlearned
 ms.custom: mvc
 monikerRange: vsts
 ms.openlocfilehash: 7c097c2a7247c9cad6cdce8a89059ee8d90d159e
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "70899588"
 ---
 # <a name="create-a-cicd-pipeline-for-php-with-azure-devops-projects"></a>Tworzenie potoku ciągłej integracji/ciągłego wdrażania dla języka PHP za pomocą usługi Azure DevOps Projects
@@ -37,7 +37,7 @@ Jeśli nie masz subskrypcji platformy Azure, możesz uzyskać ją bezpłatnie za
 
 1. W lewym okienku wybierz ikonę **Utwórz zasób**, a następnie wyszukaj hasło **DevOps Projects**.  
 
-3. Wybierz pozycję **Utwórz**.
+3. Wybierz **pozycję Utwórz**.
 
     ![Rozpoczynanie konfigurowania ciągłego dostarczania](_img/azure-devops-project-php/fullbrowser.png)
 
@@ -102,7 +102,7 @@ W tym momencie powinna być widoczna trwająca kompilacja. Wprowadzone zmiany s�
 
 1. W górnej części potoku kompilacji wybierz jego nazwę.
 
-1. Zmień nazwę potoku kompilacji na bardziej opisową, wybierz pozycję **Zapisz i dodaj do kolejki**, a następnie wybierz pozycję **Zapisz**.
+1. Zmień nazwę potoku kompilacji na coś bardziej opisowego, wybierz, **Zapisz & kolejki**, a następnie wybierz pozycję **Zapisz**.
 
 1. W obszarze nazwy potoku kompilacji wybierz pozycję **Historia**.   
     W okienku **Historia** zostanie wyświetlony dziennik inspekcji ostatnio wprowadzonych zmian w kompilacji. Usługa Azure Pipelines śledzi wszelkie zmiany wprowadzone do potoku kompilacji i pozwala na porównanie wersji.
@@ -130,13 +130,13 @@ W tym momencie powinna być widoczna trwająca kompilacja. Wprowadzone zmiany s�
 
 1. Po prawej stronie wybierz pozycję **Wyświetl wydania**, aby wyświetlić historię wydań.
 
-1. Wybierz symbol wielokropka (...) obok jednego z wydań i wybierz pozycję **Otwórz**.  
+1. Wybierz wielokropek (...) obok jednego z wydań, a następnie wybierz pozycję **Otwórz**.  
         W tym widoku jest kilka menu, z którymi możesz się zapoznać, na przykład podsumowanie wersji, skojarzone elementy robocze i testy.
 
 1. Wybierz pozycję **Zatwierdzenia**.  
         Ten widok przedstawia zatwierdzenia kodu skojarzone z konkretnym wdrożeniem. 
 
-1. Wybierz pozycję **Dzienniki**.  
+1. Wybierz **dzienniki**.  
         Dzienniki zawierają przydatne informacje na temat procesu wdrażania. Mogą być wyświetlane zarówno podczas wdrożeń, jak i po nich.
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów

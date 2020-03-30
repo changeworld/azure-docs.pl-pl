@@ -1,53 +1,69 @@
 ---
-title: Wdrażanie zasobów przy użyciu programu PowerShell i szablonu
-description: Użyj Azure Resource Manager i Azure PowerShell do wdrożenia zasobów na platformie Azure. Zasoby są zdefiniowane w szablonie usługi Resource Manager.
+title: Wdrażanie zasobów za pomocą programu PowerShell i szablonu
+description: Użyj usługi Azure Resource Manager i Azure PowerShell do wdrażania zasobów na platformie Azure. Zasoby są zdefiniowane w szablonie usługi Resource Manager.
 ms.topic: conceptual
-ms.date: 08/21/2019
-ms.openlocfilehash: c31cde9d3023c49a03f4a7a6c434c16405c88bea
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.date: 03/16/2020
+ms.openlocfilehash: e595aa8f86a24e59c8e00d24ea8e9dcb0875a8f4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79273880"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80153271"
 ---
-# <a name="deploy-resources-with-resource-manager-templates-and-azure-powershell"></a>Deploy resources with Resource Manager templates and Azure PowerShell (Wdrażanie zasobów za pomocą szablonów usługi Resource Manager i programu Azure PowerShell)
+# <a name="deploy-resources-with-arm-templates-and-azure-powershell"></a>Wdrażanie zasobów za pomocą szablonów ARM i programu Azure PowerShell
 
-Dowiedz się, jak używać Azure PowerShell z szablonami Menedżer zasobów do wdrażania zasobów na platformie Azure. Aby uzyskać więcej informacji na temat pojęć związanych z wdrażaniem rozwiązań platformy Azure i zarządzaniem nimi, zobacz [Omówienie wdrażania szablonów](overview.md).
+Dowiedz się, jak używać szablonów usługi Azure PowerShell z usługą Azure Resource Manager (ARM) do wdrażania zasobów na platformie Azure. Aby uzyskać więcej informacji na temat koncepcji wdrażania rozwiązań platformy Azure i zarządzania nimi, zobacz [omówienie wdrażania szablonów](overview.md).
 
 ## <a name="deployment-scope"></a>Zakres wdrożenia
 
-Wdrożenie można określić w ramach subskrypcji platformy Azure lub grupy zasobów w ramach subskrypcji. W większości przypadków wdrożenie zostanie ukierunkowane na grupę zasobów. Wdrożenia subskrypcji umożliwiają stosowanie zasad i przypisań ról w ramach subskrypcji. W celu utworzenia grupy zasobów i wdrożenia do niej zasobów należy również użyć wdrożeń subskrypcji. W zależności od zakresu wdrożenia używane są inne polecenia.
+Wdrożenie można kierować do grupy zasobów, subskrypcji, grupy zarządzania lub dzierżawy. W większości przypadków zostaniesz skierowany do grupy zasobów. Aby zastosować zasady i przypisania ról w większym zakresie, użyj subskrypcji, grupy zarządzania lub wdrożeń dzierżawy. Podczas wdrażania w ramach subskrypcji można utworzyć grupę zasobów i wdrożyć do niej zasoby.
 
-Aby wdrożyć w **grupie zasobów**, użyj polecenie [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment):
+W zależności od zakresu wdrożenia należy użyć różnych poleceń.
+
+Aby wdrożyć w **grupie zasobów,** należy użyć [new-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment):
 
 ```azurepowershell
 New-AzResourceGroupDeployment -ResourceGroupName <resource-group-name> -TemplateFile <path-to-template>
 ```
 
-Aby wdrożyć w **ramach subskrypcji**, użyj polecenie [New-AzDeployment](/powershell/module/az.resources/new-azdeployment):
+Aby wdrożyć w **ramach subskrypcji,** należy użyć funkcji New-AzSubscriptionDeployment:
 
 ```azurepowershell
-New-AzDeployment -Location <location> -TemplateFile <path-to-template>
+New-AzSubscriptionDeployment -Location <location> -TemplateFile <path-to-template>
 ```
 
-Aby uzyskać więcej informacji o wdrożeniach na poziomie subskrypcji, zobacz [Tworzenie grup zasobów i zasobów na poziomie subskrypcji](deploy-to-subscription.md).
+Aby uzyskać więcej informacji na temat wdrożeń na poziomie subskrypcji, zobacz [Tworzenie grup zasobów i zasobów na poziomie subskrypcji](deploy-to-subscription.md).
 
-Obecnie wdrożenia grup zarządzania są obsługiwane tylko za pomocą interfejsu API REST. Aby uzyskać więcej informacji o wdrożeniach na poziomie grupy zarządzania, zobacz [Tworzenie zasobów na poziomie grupy zarządzania](deploy-to-management-group.md).
+Aby wdrożyć je w **grupie zarządzania,** należy użyć programu [New-AzManagementGroupDeployment](/powershell/module/az.resources/New-AzManagementGroupDeployment).
 
-W przykładach w tym artykule są używane wdrożenia grup zasobów.
+```azurepowershell
+New-AzManagementGroupDeployment -Location <location> -TemplateFile <path-to-template>
+```
+
+Aby uzyskać więcej informacji na temat wdrożeń na poziomie grupy zarządzania, zobacz [Tworzenie zasobów na poziomie grupy zarządzania](deploy-to-management-group.md).
+
+Aby wdrożyć w **dzierżawie,** należy użyć [new-AzTenantDeployment](/powershell/module/az.resources/new-aztenantdeployment).
+
+```azurepowershell
+New-AzTenantDeployment -Location <location> -TemplateFile <path-to-template>
+```
+
+Aby uzyskać więcej informacji na temat wdrożeń na poziomie dzierżawy, zobacz [Tworzenie zasobów na poziomie dzierżawy.](deploy-to-tenant.md)
+
+Przykłady w tym artykule używają wdrożeń grup zasobów.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Musisz mieć szablon do wdrożenia. Jeśli jeszcze tego nie zrobiono, Pobierz i Zapisz [przykładowy szablon](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json) z repozytorium szablonów szybkiego startu platformy Azure. Nazwa pliku lokalnego użyta w tym artykule to **c:\MyTemplates\azuredeploy.JSON**.
+Do wdrożenia potrzebny jest szablon. Jeśli jeszcze go nie masz, pobierz i zapisz [przykładowy szablon](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json) z repozytorium szablonów szybki start platformy Azure. Nazwa pliku lokalnego użyta w tym artykule to **c:\MyTemplates\azuredeploy.json**.
 
-Jeśli nie używasz usługi Azure Cloud Shell do wdrażania szablonów, musisz zainstalować Azure PowerShell i nawiązać połączenie z platformą Azure:
+Jeśli nie używasz usługi Azure Cloud Shell do wdrażania szablonów, musisz zainstalować program Azure PowerShell i połączyć się z platformą Azure:
 
-- **Zainstaluj Azure PowerShell polecenia cmdlet na komputerze lokalnym.** Aby uzyskać więcej informacji, zobacz [Rozpoczynanie pracy z programem Azure PowerShell](/powershell/azure/get-started-azureps).
-- **Połącz się z platformą Azure za pomocą polecenia [Connect-AZAccount](/powershell/module/az.accounts/connect-azaccount)** . Jeśli masz wiele subskrypcji platformy Azure, może być również konieczne uruchomienie [polecenie Set-AzContext](/powershell/module/Az.Accounts/Set-AzContext). Aby uzyskać więcej informacji, zobacz [Korzystanie z wielu subskrypcji platformy Azure](/powershell/azure/manage-subscriptions-azureps).
+- **Zainstaluj polecenia cmdlet programu Azure PowerShell na komputerze lokalnym.** Aby uzyskać więcej informacji, zobacz [Rozpoczynanie pracy z programem Azure PowerShell](/powershell/azure/get-started-azureps).
+- **Połącz się z platformą Azure przy użyciu [connect-AZAccount](/powershell/module/az.accounts/connect-azaccount)**. Jeśli masz wiele subskrypcji platformy Azure, może być również konieczne uruchomienie [Set-AzContext](/powershell/module/Az.Accounts/Set-AzContext). Aby uzyskać więcej informacji, zobacz [Używanie wielu subskrypcji platformy Azure](/powershell/azure/manage-subscriptions-azureps).
 
-## <a name="deploy-local-template"></a>Wdróż szablon lokalny
+## <a name="deploy-local-template"></a>Wdrażanie szablonu lokalnego
 
-Poniższy przykład tworzy grupę zasobów i wdraża szablon z komputera lokalnego. Nazwa grupy zasobów może zawierać tylko znaki alfanumeryczne, kropki, podkreślenia, łączniki i nawiasy. Może składać się z maksymalnie 90 znaków. Nie może kończyć się kropką.
+Poniższy przykład tworzy grupę zasobów i wdraża szablon z komputera lokalnego. Nazwa grupy zasobów może zawierać tylko znaki alfanumeryczne, kropki, podkreślenia, łączniki i nawiasy. Może to być do 90 znaków. To nie może zakończyć się w okresie.
 
 ```azurepowershell
 $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
@@ -60,11 +76,11 @@ New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName `
 
 Wdrożenie może potrwać kilka minut.
 
-## <a name="deploy-remote-template"></a>Wdróż zdalny szablon
+## <a name="deploy-remote-template"></a>Wdrażanie szablonu zdalnego
 
-Zamiast przechowywania szablonów Menedżer zasobów na komputerze lokalnym, warto przechowywać je w lokalizacji zewnętrznej. Szablony można przechowywać w repozytorium kontroli źródła (na przykład GitHub). Możesz również przechowywać je na koncie usługi Azure Storage w celu uzyskania dostępu współdzielonego w organizacji.
+Zamiast przechowywać szablony ARM na komputerze lokalnym, możesz chcieć przechowywać je w lokalizacji zewnętrznej. Szablony można przechowywać w repozytorium kontroli źródła (na przykład GitHub). Można też przechowywać je na koncie magazynu platformy Azure w celu uzyskania dostępu współużytkowego w organizacji.
 
-Aby wdrożyć szablon zewnętrzny, użyj parametru **TemplateUri** . Użyj identyfikatora URI w przykładzie, aby wdrożyć przykładowy szablon z usługi GitHub.
+Aby wdrożyć szablon zewnętrzny, należy użyć parametru **TemplateUri.** Użyj identyfikatora URI w przykładzie, aby wdrożyć przykładowy szablon z usługi GitHub.
 
 ```azurepowershell
 $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
@@ -75,13 +91,13 @@ New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName `
   -TemplateUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json
 ```
 
-Poprzedni przykład wymaga publicznie dostępnego identyfikatora URI dla szablonu, który działa w większości scenariuszy, ponieważ szablon nie powinien zawierać poufnych danych. Jeśli musisz określić dane poufne (na przykład hasło administratora), przekaż tę wartość jako bezpieczny parametr. Jeśli jednak nie chcesz, aby szablon był dostępny publicznie, możesz go chronić, przechowując go w prywatnym kontenerze magazynu. Informacje o wdrażaniu szablonu wymagającego tokenu sygnatury dostępu współdzielonego (SAS) znajdują się w temacie [Deploy Private Template with SAS token](secure-template-with-sas-token.md). Aby przejść przez samouczek, zobacz [Samouczek: integracja Azure Key Vault w Menedżer zasobów Template Deployment](template-tutorial-use-key-vault.md).
+W poprzednim przykładzie wymaga publicznie dostępnego identyfikatora URI dla szablonu, który działa w większości scenariuszy, ponieważ szablon nie powinien zawierać poufnych danych. Jeśli musisz określić poufne dane (takie jak hasło administratora), przekaż tę wartość jako bezpieczny parametr. Jednak jeśli nie chcesz, aby szablon był publicznie dostępny, możesz go chronić, przechowując go w kontenerze magazynu prywatnego. Aby uzyskać informacje dotyczące wdrażania szablonu, który wymaga tokenu sygnatury dostępu współdzielonego (SAS), zobacz [Wdrażanie szablonu prywatnego za pomocą tokenu sygnatury dostępu Współdzielonego.](secure-template-with-sas-token.md) Aby przejść do samouczka, zobacz [Samouczek: Integrowanie usługi Azure Key Vault we wdrażaniu szablonu ARM](template-tutorial-use-key-vault.md).
 
-## <a name="deploy-from-azure-cloud-shell"></a>Wdrażanie z poziomu usługi Azure Cloud Shell
+## <a name="deploy-from-azure-cloud-shell"></a>Wdrażanie z usługi Azure Cloud Shell
 
-Za pomocą [Azure Cloud Shell](https://shell.azure.com) można wdrożyć szablon. Aby wdrożyć szablon zewnętrzny, podaj identyfikator URI szablonu. Aby wdrożyć szablon lokalny, należy najpierw załadować szablon do konta magazynu dla Cloud Shell. Aby przekazać pliki do powłoki, wybierz ikonę menu **przekazywanie/pobieranie plików** z okna powłoki.
+Za pomocą usługi [Azure Cloud Shell](https://shell.azure.com) można wdrożyć szablon. Aby wdrożyć szablon zewnętrzny, podaj identyfikator URI szablonu. Aby wdrożyć szablon lokalny, należy najpierw załadować szablon do konta magazynu dla usługi Cloud Shell. Aby przesłać pliki do powłoki, wybierz ikonę menu **Przekaż/Pobierz pliki** z okna powłoki.
 
-Aby otworzyć usługę Cloud Shell, przejdź do [https://shell.azure.com](https://shell.azure.com)lub wybierz opcję **Wypróbuj** z następującej sekcji kodu:
+Aby otworzyć powłokę chmury, [https://shell.azure.com](https://shell.azure.com)przejdź do , lub wybierz **Try-It** z następującej sekcji kodu:
 
 ```azurepowershell-interactive
 $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
@@ -92,15 +108,15 @@ New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName `
   -TemplateUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json
 ```
 
-Aby wkleić kod do powłoki, kliknij prawym przyciskiem myszy wewnątrz powłoki, a następnie wybierz **Wklej**.
+Aby wkleić kod do powłoki, kliknij prawym przyciskiem myszy wewnątrz powłoki, a następnie wybierz polecenie **Wklej**.
 
-## <a name="pass-parameter-values"></a>Przekaż wartości parametrów
+## <a name="pass-parameter-values"></a>Wartości parametrów przebiegu
 
 Aby przekazać wartości parametrów, można użyć parametrów wbudowanych lub pliku parametrów.
 
 ### <a name="inline-parameters"></a>Parametry wbudowane
 
-Aby przekazać parametry wbudowane, Podaj nazwy parametru za pomocą polecenia `New-AzResourceGroupDeployment`. Na przykład aby przekazać ciąg i tablicę do szablonu, użyj:
+Aby przekazać parametry wbudowane, podaj `New-AzResourceGroupDeployment` nazwy parametru za pomocą polecenia. Na przykład, aby przekazać ciąg i tablicę do szablonu, użyj:
 
 ```powershell
 $arrayParam = "value1", "value2"
@@ -110,7 +126,7 @@ New-AzResourceGroupDeployment -ResourceGroupName testgroup `
   -exampleArray $arrayParam
 ```
 
-Możesz również pobrać zawartość pliku i podać tę zawartość jako parametr wbudowany.
+Można również uzyskać zawartość pliku i podać tę zawartość jako parametr wbudowany.
 
 ```powershell
 $arrayParam = "value1", "value2"
@@ -120,9 +136,9 @@ New-AzResourceGroupDeployment -ResourceGroupName testgroup `
   -exampleArray $arrayParam
 ```
 
-Pobieranie wartości parametru z pliku jest przydatne, gdy trzeba podać wartości konfiguracyjne. Można na przykład udostępnić [wartości z usługi Cloud-init dla maszyny wirtualnej z systemem Linux](../../virtual-machines/linux/using-cloud-init.md).
+Uzyskanie wartości parametru z pliku jest przydatne, gdy trzeba podać wartości konfiguracji. Na przykład można podać [wartości cloud-init dla maszyny wirtualnej systemu Linux.](../../virtual-machines/linux/using-cloud-init.md)
 
-Jeśli musisz przekazać tablicę obiektów, Utwórz tabele skrótów w programie PowerShell i Dodaj je do tablicy. Przekaż tę tablicę jako parametr podczas wdrażania.
+Jeśli chcesz przekazać w tablicy obiektów, należy utworzyć tabele mieszania w programie PowerShell i dodać je do tablicy. Przekaż tę tablicę jako parametr podczas wdrażania.
 
 ```powershell
 $hash1 = @{ Name = "firstSubnet"; AddressPrefix = "10.0.0.0/24"}
@@ -135,11 +151,11 @@ New-AzResourceGroupDeployment -ResourceGroupName testgroup `
 
 ### <a name="parameter-files"></a>Pliki parametrów
 
-Zamiast przekazywać parametry jako wartości wbudowane w skrypcie, można ułatwić korzystanie z pliku JSON, który zawiera wartości parametrów. Plik parametru może być plikiem lokalnym lub zewnętrznym z dostępnym identyfikatorem URI.
+Zamiast przekazywania parametrów jako wartości wbudowanych w skrypcie, może być łatwiej użyć pliku JSON, który zawiera wartości parametrów. Plik parametrów może być plikiem lokalnym lub zewnętrznym z dostępnym identyfikatorem URI.
 
-Aby uzyskać więcej informacji na temat pliku parametrów, zobacz [Tworzenie pliku parametrów Menedżer zasobów](parameter-files.md).
+Aby uzyskać więcej informacji na temat pliku parametrów, zobacz [Tworzenie pliku parametrów Menedżera zasobów](parameter-files.md).
 
-Aby przekazać lokalny plik parametrów, użyj parametru **TemplateParameterFile** :
+Aby przekazać lokalny plik parametrów, użyj parametru **TemplateParameterFile:**
 
 ```powershell
 New-AzResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName ExampleResourceGroup `
@@ -147,7 +163,7 @@ New-AzResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName Example
   -TemplateParameterFile c:\MyTemplates\storage.parameters.json
 ```
 
-Aby przekazać zewnętrzny plik parametrów, użyj parametru **TemplateParameterUri** :
+Aby przekazać plik parametrów zewnętrznych, użyj parametru **TemplateParameterUri:**
 
 ```powershell
 New-AzResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName ExampleResourceGroup `
@@ -155,16 +171,16 @@ New-AzResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName Example
   -TemplateParameterUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.parameters.json
 ```
 
-## <a name="test-template-deployments"></a>Wdrożenia szablonów testowych
+## <a name="test-template-deployments"></a>Testowanie wdrożeń szablonów
 
-Aby przetestować wartości szablonu i parametrów bez faktycznego wdrażania zasobów, użyj polecenie [test-AzResourceGroupDeployment](/powershell/module/az.resources/test-azresourcegroupdeployment). 
+Aby przetestować wartości szablonu i parametrów bez faktycznego wdrażania jakichkolwiek zasobów, należy użyć [funkcji Test-AzResourceGroupDeployment](/powershell/module/az.resources/test-azresourcegroupdeployment). 
 
 ```powershell
 Test-AzResourceGroupDeployment -ResourceGroupName ExampleResourceGroup `
   -TemplateFile c:\MyTemplates\azuredeploy.json -storageAccountType Standard_GRS
 ```
 
-Jeśli nie wykryto żadnych błędów, polecenie kończy się bez odpowiedzi. Jeśli zostanie wykryty błąd, polecenie zwróci komunikat o błędzie. Na przykład przekazanie nieprawidłowej wartości dla jednostki SKU konta magazynu zwróci następujący błąd:
+Jeśli nie zostaną wykryte żadne błędy, polecenie zakończy się bez odpowiedzi. Jeśli zostanie wykryty błąd, polecenie zwraca komunikat o błędzie. Na przykład przekazanie niepoprawnej wartości dla jednostki SKU konta magazynu zwraca następujący błąd:
 
 ```powershell
 Test-AzResourceGroupDeployment -ResourceGroupName testgroup `
@@ -177,7 +193,7 @@ Message : Deployment template validation failed: 'The provided value 'badSku' fo
 Details :
 ```
 
-Jeśli szablon zawiera błąd składniowy, polecenie zwróci błąd wskazujący, że nie można przeanalizować szablonu. Komunikat wskazuje numer wiersza i położenie błędu analizy.
+Jeśli szablon ma błąd składniowy, polecenie zwraca błąd wskazujący, że nie można przeanalizować szablonu. Komunikat wskazuje numer wiersza i położenie błędu analizy.
 
 ```powershell
 Test-AzResourceGroupDeployment : After parsing a value an unexpected character was encountered: 
@@ -186,7 +202,7 @@ Test-AzResourceGroupDeployment : After parsing a value an unexpected character w
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Aby wrócić do pomyślnego wdrożenia, gdy wystąpi błąd, zobacz [wycofywanie po pomyślnym wdrożeniu](rollback-on-error.md).
-- Aby określić sposób obsługi zasobów, które istnieją w grupie zasobów, ale nie są zdefiniowane w szablonie, zobacz [Azure Resource Manager trybami wdrożenia](deployment-modes.md).
-- Aby zrozumieć, jak definiować parametry w szablonie, zobacz [Opis struktury i składni szablonów Azure Resource Manager](template-syntax.md).
-- Informacje o wdrażaniu szablonu wymagającego tokenu SAS można znaleźć w temacie [Deploy Private Template with SAS token](secure-template-with-sas-token.md).
+- Aby przywrócić pomyślne wdrożenie po wyświetleniu błędu, zobacz [Wycofywanie w przypadku błędu do pomyślnego wdrożenia](rollback-on-error.md).
+- Aby określić sposób obsługi zasobów, które istnieją w grupie zasobów, ale nie są zdefiniowane w szablonie, zobacz [Tryby wdrażania usługi Azure Resource Manager](deployment-modes.md).
+- Aby dowiedzieć się, jak zdefiniować parametry w szablonie, zobacz [Opis struktury i składni szablonów ARM](template-syntax.md).
+- Aby uzyskać informacje dotyczące wdrażania szablonu, który wymaga tokenu sygnatury dostępu Współdzielonego, zobacz [Wdrażanie szablonu prywatnego za pomocą tokenu sygnatury dostępu Współdzielonego](secure-template-with-sas-token.md).

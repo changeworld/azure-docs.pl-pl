@@ -1,42 +1,42 @@
 ---
-title: Wyzwalacz czasomierza dla Azure Functions
-description: Dowiedz się, jak używać wyzwalaczy czasomierzy w Azure Functions.
+title: Wyzwalacz czasomierza dla funkcji platformy Azure
+description: Dowiedz się, jak używać wyzwalaczy czasomierza w usłudze Azure Functions.
 author: craigshoemaker
 ms.assetid: d2f013d1-f458-42ae-baf8-1810138118ac
 ms.topic: reference
 ms.date: 09/08/2018
 ms.author: cshoe
 ms.custom: ''
-ms.openlocfilehash: f4fdf25fa1403b8429e7ad7e7fc644d0355b1324
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 566d6ccf43024692e19bcd6639fe5cfbbba0660d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79277156"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80056410"
 ---
-# <a name="timer-trigger-for-azure-functions"></a>Wyzwalacz czasomierza dla Azure Functions 
+# <a name="timer-trigger-for-azure-functions"></a>Wyzwalacz czasomierza dla funkcji platformy Azure 
 
-W tym artykule opisano sposób pracy z wyzwalaczami czasomierza w Azure Functions. Wyzwalacz Timer pozwala uruchamiać funkcję zgodnie z harmonogramem. 
+W tym artykule wyjaśniono, jak pracować z wyzwalaczami czasomierza w usłudze Azure Functions. Wyzwalacz czasomierza umożliwia uruchamianie funkcji zgodnie z harmonogramem. 
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
-## <a name="packages---functions-1x"></a>Pakiety — funkcje 1.x
+## <a name="packages---functions-1x"></a>Pakiety - Funkcje 1.x
 
-Wyzwalacz czasomierza jest dostępny w pakiecie NuGet [Microsoft. Azure. WebJobs. Extensions](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions) w wersji 2. x. Kod źródłowy pakietu znajduje się w repozytorium [Azure-WebJobs-SDK-Extensions — rozszerzenia](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/v2.x/src/WebJobs.Extensions/Extensions/Timers/) GitHub.
+Wyzwalacz czasomierza znajduje się w pakiecie [Microsoft.Azure.WebJobs.Extensions](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions) NuGet w wersji 2.x. Kod źródłowy pakietu znajduje się w repozytorium GitHub w [zakresie azure-webjobs-sdk-extensions.](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/v2.x/src/WebJobs.Extensions/Extensions/Timers/)
 
 [!INCLUDE [functions-package-auto](../../includes/functions-package-auto.md)]
 
-## <a name="packages---functions-2x-and-higher"></a>Pakiety — funkcje 2. x i nowsze
+## <a name="packages---functions-2x-and-higher"></a>Pakiety — funkcje 2.x lub nowsze
 
-Wyzwalacz czasomierza jest dostępny w pakiecie NuGet [Microsoft. Azure. WebJobs. Extensions](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions) w wersji 3. x. Kod źródłowy pakietu znajduje się w repozytorium [Azure-WebJobs-SDK-Extensions — rozszerzenia](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Timers/) GitHub.
+Wyzwalacz czasomierza znajduje się w pakiecie [Microsoft.Azure.WebJobs.Extensions](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions) NuGet w wersji 3.x. Kod źródłowy pakietu znajduje się w repozytorium GitHub w [zakresie azure-webjobs-sdk-extensions.](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Timers/)
 
 [!INCLUDE [functions-package-auto](../../includes/functions-package-auto.md)]
 
 ## <a name="example"></a>Przykład
 
-# <a name="c"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C #](#tab/csharp)
 
-Poniższy przykład pokazuje [ C# funkcję](functions-dotnet-class-library.md) , która jest wykonywana za każdym razem, gdy minuty mają wartość widoczną przez pięć (na przykład jeśli funkcja zaczyna się od 18:57:00, następna wydajność będzie równa 19:00:00). Obiekt [`TimerInfo`](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Timers/TimerInfo.cs) jest przekazaniem do funkcji.
+W poniższym przykładzie pokazano [funkcję Języka C#,](functions-dotnet-class-library.md) która jest wykonywana za każdym razem, gdy minuty mają wartość podzielną przez pięć (np. jeśli funkcja rozpoczyna się o 18:57:00, następna wydajność będzie o 19:00:00). Obiekt [`TimerInfo`](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Timers/TimerInfo.cs) jest przekazywany do funkcji.
 
 ```cs
 [FunctionName("TimerTriggerCSharp")]
@@ -50,11 +50,11 @@ public static void Run([TimerTrigger("0 */5 * * * *")]TimerInfo myTimer, ILogger
 }
 ```
 
-# <a name="c-script"></a>[C#Napisy](#tab/csharp-script)
+# <a name="c-script"></a>[Skrypt języka C#](#tab/csharp-script)
 
-Poniższy przykład przedstawia powiązanie wyzwalacza czasomierza w pliku *Function. JSON* i [ C# funkcji skryptu](functions-reference-csharp.md) , która używa powiązania. Funkcja zapisuje dziennik wskazujący, czy to wywołanie funkcji jest spowodowane pominiętym wystąpieniem harmonogramu. Obiekt [`TimerInfo`](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Timers/TimerInfo.cs) jest przekazaniem do funkcji.
+W poniższym przykładzie pokazano powiązanie wyzwalacza czasomierza w pliku *function.json* i [funkcję skryptu Języka C#,](functions-reference-csharp.md) która używa powiązania. Funkcja zapisuje dziennik wskazujący, czy wywołanie tej funkcji jest spowodowane wystąpieniem nieodebranego harmonogramu. Obiekt [`TimerInfo`](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Timers/TimerInfo.cs) jest przekazywany do funkcji.
 
-Oto dane powiązania w pliku *Function. JSON* :
+Oto dane powiązania w pliku *function.json:*
 
 ```json
 {
@@ -65,7 +65,7 @@ Oto dane powiązania w pliku *Function. JSON* :
 }
 ```
 
-Poniżej przedstawiono kod skryptu języka C#:
+Oto kod skryptu języka C#:
 
 ```csharp
 public static void Run(TimerInfo myTimer, ILogger log)
@@ -78,11 +78,11 @@ public static void Run(TimerInfo myTimer, ILogger log)
 }
 ```
 
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[Javascript](#tab/javascript)
 
-W poniższym przykładzie pokazano powiązanie wyzwalacza czasomierza w pliku *Function. JSON* oraz [funkcja języka JavaScript](functions-reference-node.md) , która używa powiązania. Funkcja zapisuje dziennik wskazujący, czy to wywołanie funkcji jest spowodowane pominiętym wystąpieniem harmonogramu. [Obiekt Timer](#usage) jest przenoszona do funkcji.
+W poniższym przykładzie pokazano powiązanie wyzwalacza czasomierza w pliku *function.json* i [funkcję JavaScript,](functions-reference-node.md) która używa powiązania. Funkcja zapisuje dziennik wskazujący, czy wywołanie tej funkcji jest spowodowane wystąpieniem nieodebranego harmonogramu. [Obiekt czasomierza](#usage) jest przekazywany do funkcji.
 
-Oto dane powiązania w pliku *Function. JSON* :
+Oto dane powiązania w pliku *function.json:*
 
 ```json
 {
@@ -93,7 +93,7 @@ Oto dane powiązania w pliku *Function. JSON* :
 }
 ```
 
-Poniżej przedstawiono kod JavaScript:
+Oto kod JavaScript:
 
 ```JavaScript
 module.exports = function (context, myTimer) {
@@ -111,9 +111,9 @@ module.exports = function (context, myTimer) {
 
 # <a name="python"></a>[Python](#tab/python)
 
-Poniższy przykład używa powiązania wyzwalacza czasomierza, którego konfiguracja została opisana w pliku *Function. JSON* . Rzeczywista [funkcja języka Python](functions-reference-python.md) , która używa powiązania, jest opisana w pliku  *__init__. PR* . Obiekt przesłany do funkcji jest [obiektem typu Azure. Functions. TimerRequest](/python/api/azure-functions/azure.functions.timerrequest). Logika funkcji zapisuje w dziennikach wskazujący, czy bieżące wywołanie jest spowodowane pominiętym wystąpieniem harmonogramu. 
+W poniższym przykładzie użyto powiązania wyzwalacza czasomierza, którego konfiguracja jest opisana w pliku *function.json.* Rzeczywista [funkcja Języka Python,](functions-reference-python.md) która używa powiązania jest opisana w pliku * __.py init.__* Obiekt przekazany do funkcji jest typu [azure.functions.TimerRequest obiektu](/python/api/azure-functions/azure.functions.timerrequest). Logika funkcji zapisuje w dziennikach wskazujących, czy bieżące wywołanie jest spowodowane wystąpieniem nieodebranego harmonogramu. 
 
-Oto dane powiązania w pliku *Function. JSON* :
+Oto dane powiązania w pliku *function.json:*
 
 ```json
 {
@@ -124,7 +124,7 @@ Oto dane powiązania w pliku *Function. JSON* :
 }
 ```
 
-Oto kod języka Python:
+Oto kod Pythona:
 
 ```python
 import datetime
@@ -145,7 +145,7 @@ def main(mytimer: func.TimerRequest) -> None:
 
 # <a name="java"></a>[Java](#tab/java)
 
-Następująca przykładowa funkcja wyzwala i wykonuje co pięć minut. Adnotacja `@TimerTrigger` w funkcji definiuje harmonogram przy użyciu tego samego formatu ciągu co [cronus](https://en.wikipedia.org/wiki/Cron#CRON_expression).
+Poniższa przykładowa funkcja wyzwala i wykonuje co pięć minut. Adnotacja `@TimerTrigger` w funkcji definiuje harmonogram przy użyciu tego samego formatu ciągu co [wyrażenia CRON](https://en.wikipedia.org/wiki/Cron#CRON_expression).
 
 ```java
 @FunctionName("keepAlive")
@@ -162,13 +162,13 @@ public void keepAlive(
 
 ## <a name="attributes-and-annotations"></a>Atrybuty i adnotacje
 
-# <a name="c"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C #](#tab/csharp)
 
-W [ C# bibliotekach klas](functions-dotnet-class-library.md)Użyj [TimerTriggerAttribute](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Timers/TimerTriggerAttribute.cs).
+W [bibliotekach klas języka C#](functions-dotnet-class-library.md)użyj [atrybutu TimerTriggerAttribute](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Timers/TimerTriggerAttribute.cs).
 
-Konstruktor atrybutu przyjmuje wyrażenie typu CRONUS lub `TimeSpan`. `TimeSpan` można używać tylko wtedy, gdy aplikacja funkcji jest uruchomiona w planie App Service. `TimeSpan` nie jest obsługiwana w przypadku funkcji użycia ani elastycznych wersji Premium.
+Konstruktor atrybutu przyjmuje wyrażenie CRON `TimeSpan`lub . Aplikacji można `TimeSpan` używać tylko wtedy, gdy aplikacja funkcji jest uruchomiona w planie usługi app service. `TimeSpan`nie jest obsługiwany dla zużycia lub elastycznych funkcji premium.
 
-Poniższy przykład przedstawia wyrażenie firmy CRONUS:
+W poniższym przykładzie pokazano wyrażenie CRON:
 
 ```csharp
 [FunctionName("TimerTriggerCSharp")]
@@ -182,21 +182,21 @@ public static void Run([TimerTrigger("0 */5 * * * *")]TimerInfo myTimer, ILogger
 }
 ```
 
-# <a name="c-script"></a>[C#Napisy](#tab/csharp-script)
+# <a name="c-script"></a>[Skrypt języka C#](#tab/csharp-script)
 
-Atrybuty nie są obsługiwane przez C# skrypt.
+Atrybuty nie są obsługiwane przez skrypt języka C#.
 
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[Javascript](#tab/javascript)
 
-Atrybuty nie są obsługiwane przez język JavaScript.
+Atrybuty nie są obsługiwane przez javascript.
 
 # <a name="python"></a>[Python](#tab/python)
 
-Atrybuty nie są obsługiwane przez język Python.
+Atrybuty nie są obsługiwane przez Pythona.
 
 # <a name="java"></a>[Java](#tab/java)
 
-Adnotacja `@TimerTrigger` w funkcji definiuje harmonogram przy użyciu tego samego formatu ciągu co [cronus](https://en.wikipedia.org/wiki/Cron#CRON_expression).
+Adnotacja `@TimerTrigger` w funkcji definiuje harmonogram przy użyciu tego samego formatu ciągu co [wyrażenia CRON](https://en.wikipedia.org/wiki/Cron#CRON_expression).
 
 ```java
 @FunctionName("keepAlive")
@@ -211,27 +211,27 @@ public void keepAlive(
 
 ---
 
-## <a name="configuration"></a>Konfiguracja
+## <a name="configuration"></a>Konfigurowanie
 
-W poniższej tabeli objaśniono właściwości konfiguracji powiązań ustawiane w pliku *Function. JSON* i `TimerTrigger` atrybutu.
+W poniższej tabeli opisano właściwości konfiguracji powiązania, które można `TimerTrigger` ustawić w pliku *function.json* i atrybut.
 
-|Właściwość Function.JSON | Właściwość atrybutu |Opis|
+|właściwość function.json | Właściwość atrybutu |Opis|
 |---------|---------|----------------------|
-|**type** | Nie dotyczy | Musi być ustawiona na wartość "timerTrigger". Ta właściwość jest ustawiana automatycznie po utworzeniu wyzwalacza w witrynie Azure portal.|
-|**direction** | Nie dotyczy | Musi być równa "in". Ta właściwość jest ustawiana automatycznie po utworzeniu wyzwalacza w witrynie Azure portal. |
-|**Nazwij** | Nie dotyczy | Nazwa zmiennej, która reprezentuje obiekt timer w kodzie funkcji. | 
-|**schedule**|**ScheduleExpression**|[Wyrażenie CRONUS](#ncrontab-expressions) lub wartość [TimeSpan](#timespan) . `TimeSpan` może być używana tylko dla aplikacji funkcji uruchamianej w planie App Service. Możesz umieścić wyrażenie harmonogramu w ustawieniu aplikacji i ustawić tę właściwość na nazwę ustawienia aplikacji zawiniętej w **%** znaki, jak w tym przykładzie: "% ScheduleAppSetting%". |
-|**runOnStartup**|**RunOnStartup**|Jeśli `true`, funkcja jest wywoływana po uruchomieniu środowiska uruchomieniowego. Na przykład środowisko uruchomieniowe jest uruchamiane, gdy aplikacja funkcji zostanie wznowiona po przejściu w stan bezczynności z powodu braku aktywności. gdy aplikacja funkcji zostanie ponownie uruchomiona z powodu zmiany funkcji i gdy aplikacja funkcji jest skalowana w dół. Tak więc **runOnStartup** powinna być rzadko ustawiona na `true`, szczególnie w środowisku produkcyjnym. |
-|**useMonitor**|**UseMonitor**|Ustaw wartość `true` lub `false`, aby wskazać, czy harmonogram ma być monitorowany. Harmonogram monitorowania utrzymuje harmonogramy, aby pomóc w zapewnieniu, że harmonogram jest prawidłowo obsługiwany nawet po ponownym uruchomieniu wystąpień aplikacji funkcji. Jeśli nie ustawiono jawnie, wartość domyślna to `true` dla harmonogramów z interwałem cyklu większym lub równym 1 minucie. W przypadku harmonogramów, które wyzwalają więcej niż raz na minutę, wartość domyślna to `false`.
+|**Typu** | Nie dotyczy | Musi być ustawiona na "timerTrigger". Ta właściwość jest ustawiana automatycznie podczas tworzenia wyzwalacza w witrynie Azure portal.|
+|**Kierunku** | Nie dotyczy | Musi być ustawiona na "in". Ta właściwość jest ustawiana automatycznie podczas tworzenia wyzwalacza w witrynie Azure portal. |
+|**Nazwa** | Nie dotyczy | Nazwa zmiennej reprezentującej obiekt czasomierza w kodzie funkcji. | 
+|**Harmonogram**|**HarmonogramWyrażenie**|Wyrażenie [CRON](#ncrontab-expressions) lub [timespan](#timespan) wartość. A `TimeSpan` może służyć tylko dla aplikacji funkcji, która działa w planie usługi aplikacji. Wyrażenie harmonogramu można umieścić w ustawieniu aplikacji i ustawić tę **%** właściwość na nazwę ustawienia aplikacji opakowane w znaki, jak w tym przykładzie: "%ScheduleAppSetting%". |
+|**uruchamianie runOn**|**Uruchamianie RunOn**|Jeśli `true`funkcja jest wywoływana po uruchomieniu środowiska wykonawczego. Na przykład środowisko wykonawcze uruchamia się, gdy aplikacja funkcji wznawia się po przejściu bezczynności z powodu braku aktywności. po ponownym uruchomieniu aplikacji funkcji z powodu zmiany funkcji i gdy aplikacja funkcji jest skalowana w poziomie. Więc **runOnStartup** rzadko, jeśli `true`kiedykolwiek być ustawione na , zwłaszcza w produkcji. |
+|**useMonitor (monitor)**|**UseMonitor (UseMonitor)**|Ustaw `true` lub `false` wskaż, czy harmonogram powinien być monitorowany. Monitorowanie harmonogramu będzie się powtarzać, aby ułatwić prawidłowe zapewnienie prawidłowego zachowania harmonogramu, nawet po ponownym uruchomieniu wystąpień aplikacji funkcji. Jeśli nie jest ustawiona `true` jawnie, wartość domyślna jest dla harmonogramów, które mają interwał cyklu większy lub równy 1 minuta. W przypadku harmonogramów wyzwalających więcej niż `false`raz na minutę wartość domyślna to .
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
 > [!CAUTION]
-> Zalecamy ustawienie **runOnStartup** na `true` w środowisku produkcyjnym. Użycie tego ustawienia sprawia, że kod jest wykonywany w bardzo nieprzewidywalnym czasie. W niektórych ustawieniach produkcyjnych te dodatkowe wykonania mogą spowodować znacznie wyższe koszty dla aplikacji hostowanych w planach zużycia. Na przykład po włączeniu **runOnStartup** wyzwalacz jest wywoływany za każdym razem, gdy aplikacja funkcji jest skalowana. Upewnij się, że w pełni zrozumiesz zachowanie środowiska produkcyjnego przed włączeniem **runOnStartup** w środowisku produkcyjnym.   
+> Zaleca się ustawienie **runOnStartup** do `true` w środowisku produkcyjnym. Za pomocą tego ustawienia sprawia, że kod jest wykonywany w bardzo nieprzewidywalnych czasach. W niektórych ustawieniach produkcji te dodatkowe wykonania mogą spowodować znacznie wyższe koszty dla aplikacji hostowanych w planach zużycia. Na przykład z **runOnStartup** włączone wyzwalacz jest wywoływany za każdym razem, gdy aplikacja funkcji jest skalowany. Upewnij się, że w pełni zrozumieć zachowanie produkcyjne funkcji przed włączeniem **runOnStartup** w produkcji.   
 
 ## <a name="usage"></a>Sposób użycia
 
-Po wywołaniu funkcji wyzwalacza czasomierza obiekt Timer jest przenoszona do funkcji. Poniższy kod JSON to przykładowa reprezentacja obiektu Timer.
+Po wywołaniu funkcji wyzwalacza czasomierza obiekt czasomierza jest przekazywany do funkcji. Poniższy JSON jest przykładową reprezentacją obiektu czasomierza.
 
 ```json
 {
@@ -246,11 +246,11 @@ Po wywołaniu funkcji wyzwalacza czasomierza obiekt Timer jest przenoszona do fu
 }
 ```
 
-Właściwość `IsPastDue` jest `true`, gdy bieżące wywołanie funkcji jest późniejsze niż zaplanowana. Na przykład ponowne uruchomienie aplikacji funkcji może spowodować utratę wywołania.
+Właściwość `IsPastDue` `true` jest, gdy bieżące wywołanie funkcji jest później niż zaplanowano. Na przykład ponowne uruchomienie aplikacji funkcji może spowodować pominięcie wywołania.
 
 ## <a name="ncrontab-expressions"></a>Wyrażenia NCRONTAB 
 
-Azure Functions rozpoznaje wyrażenia NCRONTAB przy użyciu biblioteki [NCronTab](https://github.com/atifaziz/NCrontab) . Wyrażenie NCRONTAB jest podobne do wyrażenia CRONUS, z tą różnicą, że zawiera dodatkowe szóste pole na początku do użycia dla dokładności czasu w sekundach:
+Usługa Azure Functions używa biblioteki [NCronTab](https://github.com/atifaziz/NCrontab) do interpretowania wyrażeń NCRONTAB. Wyrażenie NCRONTAB jest podobne do wyrażenia CRON, z tą różnicą, że zawiera dodatkowe szóste pole na początku, które ma być używane dla precyzji czasu w sekundach:
 
 `{second} {minute} {hour} {day} {month} {day-of-week}`
 
@@ -258,96 +258,96 @@ Każde pole może mieć jeden z następujących typów wartości:
 
 |Typ  |Przykład  |Po wyzwoleniu  |
 |---------|---------|---------|
-|Określona wartość |<nobr>"0 5 * * * *"</nobr>|at hh: 05:00, gdzie HH jest co godzinę (raz na godzinę)|
-|Wszystkie wartości (`*`)|<nobr>"0 * 5 * * *"</nobr>|o godzinie 5: mm: 00 codziennie, gdzie mm jest co minutę godziny (60 razy dziennie)|
-|Zakres (operator`-`)|<nobr>"5-7 * * * * *"</nobr>|w hh: mm: 05, gg: mm: 06, i hh: mm: 07, gdzie hh: mm jest co minutę co godzinę (3 razy na minutę)|
-|Zestaw wartości (operator`,`)|<nobr>"5, 8, 10 * * * * *"</nobr>|w hh: mm: 05, gg: mm: 08, i hh: mm: 10, gdzie hh: mm jest co minutę co godzinę (3 razy na minutę)|
-|Wartość interwału (`/` operator)|<nobr>"0 */5 * * * *"</nobr>|w hh: 00:00, gg: 05:00, gg: 10:00, i tak dalej, do hh: 55:00, gdzie HH jest co godzinę (12 razy w ciągu godziny)|
+|Określona wartość |<nobr>"0 5 * * * *"</nobr>|o hh:05:00 gdzie hh jest co godzinę (raz na godzinę)|
+|Wszystkie wartości`*`( )|<nobr>"0 * 5 * * *"</nobr>|codziennie o 5:mm:00, gdzie mm jest co minutę (60 razy dziennie)|
+|Zakres (operator)`-`|<nobr>"5-7 * * * * *"</nobr>|w hh:mm:05,hh:mm:06 i hh:mm:07, gdzie hh:mm jest co minutę co godzinę (3 razy na minutę)|
+|Zestaw wartości (operator)`,`|<nobr>"5,8,10 * * * * *"</nobr>|w hh:mm:05,hh:mm:08 i hh:mm:10 gdzie hh:mm jest co minutę co godzinę (3 razy na minutę)|
+|Wartość interwału (operator)`/`|<nobr>"0 */5 * * * *"</nobr>|o hh:00:00, hh:05:00, hh:10:00 i tak dalej przez hh:55:00 gdzie hh jest co godzinę (12 razy na godzinę)|
 
 [!INCLUDE [functions-cron-expressions-months-days](../../includes/functions-cron-expressions-months-days.md)]
 
 ### <a name="ncrontab-examples"></a>Przykłady NCRONTAB
 
-Poniżej przedstawiono kilka przykładów wyrażeń NCRONTAB, których można użyć dla wyzwalacza czasomierza w Azure Functions.
+Oto kilka przykładów wyrażeń NCRONTAB, których można użyć dla wyzwalacza czasomierza w usłudze Azure Functions.
 
 |Przykład|Po wyzwoleniu  |
 |---------|---------|
-|`"0 */5 * * * *"`|co pięć minut|
-|`"0 0 * * * *"`|raz w górnej części co godzinę|
-|`"0 0 */2 * * *"`|co dwie godziny|
-|`"0 0 9-17 * * *"`|co godzinę od 9 do 5 PM|
-|`"0 30 9 * * *"`|Codziennie o godzinie 9:30|
-|`"0 30 9 * * 1-5"`|at 9:30 AM każdego dnia tygodnia|
-|`"0 30 9 * Jan Mon"`|o godzinie 9:30, co poniedziałek w styczniu|
+|`"0 */5 * * * *"`|raz na pięć minut|
+|`"0 0 * * * *"`|raz na górze co godzinę|
+|`"0 0 */2 * * *"`|raz na dwie godziny|
+|`"0 0 9-17 * * *"`|raz na godzinę od 9:00 do 17:00|
+|`"0 30 9 * * *"`|o 9:30 każdego dnia|
+|`"0 30 9 * * 1-5"`|o 9:30 w każdy dzień powszedni|
+|`"0 30 9 * Jan Mon"`|o 9:30 w każdy poniedziałek stycznia|
 
 
-### <a name="ncrontab-time-zones"></a>NCRONTAB strefy czasowe
+### <a name="ncrontab-time-zones"></a>Strefy czasowe NCRONTAB
 
-Liczby w wyrażeniu firmy CRONUS odwołują się do daty i godziny, a nie przedziału czasu. Na przykład 5 w polu `hour` odnosi się do 5:00 AM, nie co 5 godzin.
+Liczby w wyrażeniu CRON odnoszą się do godziny i daty, a nie do przedziału czasu. Na przykład 5 w `hour` polu odnosi się do 5:00 AM, a nie co 5 godzin.
 
-Domyślna strefa czasowa używana z wyrażeniami firmy CRONUS jest uniwersalnym czasem koordynowanym (UTC). Aby wyszukać wyrażenie firmy CRONUS na podstawie innej strefy czasowej, należy utworzyć ustawienie aplikacji dla aplikacji funkcji o nazwie `WEBSITE_TIME_ZONE`. Ustaw wartość na nazwę żądanej strefy czasowej, jak pokazano w [indeksie strefy czasowej firmy Microsoft](https://technet.microsoft.com/library/cc749073).
+Domyślną strefą czasową używaną z wyrażeniami CRON jest skoordynowany czas uniwersalny (UTC). Aby wyrażenie CRON było oparte na innej strefie czasowej, `WEBSITE_TIME_ZONE`utwórz ustawienie aplikacji dla aplikacji funkcyjnej o nazwie . Ustaw wartość na nazwę żądanej strefy czasowej, jak pokazano w [indeksie strefy czasowej firmy Microsoft](https://technet.microsoft.com/library/cc749073).
 
   > [!NOTE]
-  > `WEBSITE_TIME_ZONE` nie jest obecnie obsługiwana w planie zużycia systemu Linux.
+  > `WEBSITE_TIME_ZONE`nie jest obecnie obsługiwana w planie zużycia linuksa.
 
-Na przykład *Wschodni czas standardowy* to UTC-05:00. Aby wyzwalacz czasomierza był wyzwalany codziennie o godzinie 10:00, należy użyć następującego wyrażenia NCRONTAB, które jest kontem dla strefy czasowej UTC:
+Na przykład *wschodni czas standardowy* to UTC-05:00. Aby uruchomić wyzwalacz czasomierza codziennie o godzinie 10:00 AM EST, użyj następującego wyrażenia NCRONTAB, które uwzględnia strefę czasową UTC:
 
 ```
 "0 0 15 * * *"
 ``` 
 
-Lub Utwórz ustawienia aplikacji dla aplikacji funkcji o nazwie `WEBSITE_TIME_ZONE` i ustaw wartość na **Wschodni czas standardowy**.  Następnie używa następującego wyrażenia NCRONTAB: 
+Możesz też utworzyć ustawienie aplikacji `WEBSITE_TIME_ZONE` dla aplikacji o nazwie funkcji i ustawić wartość na **Wschodni czas standardowy**.  Następnie używa następującego wyrażenia NCRONTAB: 
 
 ```
 "0 0 10 * * *"
 ``` 
 
-W przypadku korzystania z `WEBSITE_TIME_ZONE`czas jest dostosowywany do zmian czasu w określonej strefie czasowej, na przykład czasu letniego. 
+Podczas korzystania `WEBSITE_TIME_ZONE`z programu czas jest dostosowywany do zmian czasu w określonej strefie czasowej, takich jak czas letni. 
 
 ## <a name="timespan"></a>przedział_czasu
 
- `TimeSpan` może być używana tylko dla aplikacji funkcji uruchamianej w planie App Service.
+ A `TimeSpan` może służyć tylko dla aplikacji funkcji, która działa w planie usługi aplikacji.
 
-W przeciwieństwie do wyrażenia CRONUS wartość `TimeSpan` określa przedział czasu między każdym wywołaniem funkcji. Gdy funkcja kończy działanie po upływie określonego interwału, czasomierz natychmiast wywołuje funkcję.
+W przeciwieństwie do `TimeSpan` wyrażenia CRON wartość określa przedział czasu między każdym wywołaniem funkcji. Gdy funkcja zostanie ukończona po uruchomieniu dłużej niż określony interwał, czasomierz natychmiast wywołuje funkcję ponownie.
 
-W postaci ciągu format `TimeSpan` jest `hh:mm:ss`, gdy `hh` jest krótszy niż 24. Gdy dwie pierwsze cyfry mają wartość 24 lub większą, format jest `dd:hh:mm`. Oto kilka przykładów:
+Wyrażony jako ciąg, `TimeSpan` format `hh:mm:ss` `hh` jest, gdy jest mniejsza niż 24. Gdy pierwsze dwie cyfry mają 24 lub `dd:hh:mm`więcej, format jest . Oto kilka przykładów:
 
 |Przykład |Po wyzwoleniu  |
 |---------|---------|
 |"01:00:00" | co godzinę        |
 |"00:01:00"|co minutę         |
-|"24:00:00" | co 24 godziny        |
-|"1,00:00:00" | Codziennie        |
+|"24:00:00" | co 24 dni        |
+|"1.00:00:00" | Codziennie        |
 
 ## <a name="scale-out"></a>Skalowanie w poziomie
 
-Jeśli aplikacja funkcji jest skalowana do wielu wystąpień, tylko jedno wystąpienie funkcji wyzwalanej przez czasomierz jest uruchamiane we wszystkich wystąpieniach.
+Jeśli aplikacja funkcji jest skalowana w poziomie do wielu wystąpień, tylko jedno wystąpienie funkcji wyzwalanej czasomierzem jest uruchamiane we wszystkich wystąpieniach.
 
-## <a name="function-apps-sharing-storage"></a>Magazyn udostępniania aplikacji funkcji
+## <a name="function-apps-sharing-storage"></a>Aplikacje funkcyjne współużytkują Magazyn
 
-W przypadku udostępniania kont magazynu w aplikacjach funkcji, które nie są wdrożone w usłudze App Service, może być konieczne jawne przypisanie identyfikatora hosta do poszczególnych aplikacji.
+Jeśli udostępniasz konta magazynu w aplikacjach funkcji, które nie są wdrażane w usłudze aplikacji, może być konieczne jawne przypisanie identyfikatora hosta do każdej aplikacji.
 
 | Wersja funkcji | Ustawienie                                              |
 | ----------------- | ---------------------------------------------------- |
-| 2. x (i nowsze)  | Zmienna środowiskowa `AzureFunctionsWebHost__hostid` |
-| 1.x               | `id` w pliku *host. JSON*                                  |
+| 2.x (i więcej)  | `AzureFunctionsWebHost__hostid`zmienna środowiskowa |
+| 1.x               | `id`w *host.json*                                  |
 
-Możesz pominąć wartość identyfikującą lub ręcznie ustawić konfigurację identyfikującą każdą aplikację funkcji na inną wartość.
+Można pominąć wartość identyfikującą lub ręcznie ustawić konfigurację identyfikującą każdej aplikacji funkcyjnej na inną wartość.
 
-Wyzwalacz czasomierza korzysta z blokady magazynu, aby upewnić się, że istnieje tylko jedno wystąpienie czasomierza, gdy aplikacja funkcji jest skalowana do wielu wystąpień. Jeśli dwie aplikacje funkcji mają tę samą konfigurację identyfikującą i każdy z nich używa wyzwalacza czasomierza, tylko jeden czasomierz jest uruchamiany.
+Wyzwalacz czasomierza używa blokady magazynu, aby upewnić się, że istnieje tylko jedno wystąpienie czasomierza, gdy aplikacja funkcji skaluje się w poziomie do wielu wystąpień. Jeśli dwie aplikacje funkcji współużytkują tę samą konfigurację identyfikującą, a każda używa wyzwalacza czasomierza, uruchamia się tylko jeden czasomierz.
 
-## <a name="retry-behavior"></a>Zachowanie przy ponowieniu próby
+## <a name="retry-behavior"></a>Ponów próbę zachowania
 
-W przeciwieństwie do wyzwalacza kolejki wyzwalacz czasomierza nie ponawia próby po awarii funkcji. Gdy funkcja nie powiedzie się, nie zostanie wywołana ponownie do następnego czasu zgodnie z harmonogramem.
+W przeciwieństwie do wyzwalacza kolejki wyzwalacz czasomierza nie ponawia próby po awarii funkcji. Gdy funkcja nie powiedzie się, nie jest wywoływana ponownie, aż następnym razem w harmonogramie.
 
 ## <a name="troubleshooting"></a>Rozwiązywanie problemów
 
-Aby uzyskać informacje o tym, co zrobić, gdy wyzwalacz czasomierza nie działa zgodnie z oczekiwaniami, zobacz temat [badanie i zgłaszanie problemów z wyzwalaczami wyzwalanymi przez funkcję Timer, które nie są wyzwalane](https://github.com/Azure/azure-functions-host/wiki/Investigating-and-reporting-issues-with-timer-triggered-functions-not-firing).
+Aby uzyskać informacje o tym, co zrobić, gdy wyzwalacz czasomierza nie działa zgodnie z oczekiwaniami, zobacz [Badanie i raportowanie problemów z wyzwalanym funkcjami czasomierza.](https://github.com/Azure/azure-functions-host/wiki/Investigating-and-reporting-issues-with-timer-triggered-functions-not-firing)
 
 ## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Przejdź do przewodnika Szybki Start korzystającego z wyzwalacza czasomierza](functions-create-scheduled-function.md)
+> [Przejdź do szybkiego startu, który używa wyzwalacza czasomierza](functions-create-scheduled-function.md)
 
 > [!div class="nextstepaction"]
-> [Dowiedz się więcej o wyzwalaczach i powiązaniach usługi Azure Functions](functions-triggers-bindings.md)
+> [Dowiedz się więcej o wyzwalaczach i powiązaniach funkcji platformy Azure](functions-triggers-bindings.md)

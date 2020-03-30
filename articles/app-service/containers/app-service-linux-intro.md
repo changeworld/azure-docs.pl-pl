@@ -1,19 +1,19 @@
 ---
-title: Uruchamianie kodu w domyślnych kontenerach systemu Linux
-description: Azure App Service można uruchomić kod w wstępnie skompilowanych kontenerach systemu Linux. Dowiedz się, jak uruchamiać aplikacje sieci Web systemu Linux na platformie Azure.
+title: Uruchamianie kodu na domyślnych kontenerach Systemu Linux
+description: Usługa Azure App Service może uruchamiać kod na wstępnie utworzonych kontenerach systemu Linux. Dowiedz się, jak możesz uruchamiać aplikacje internetowe systemu Linux na platformie Azure.
 keywords: azure app service, linux, oss
 author: msangapu-msft
 ms.assetid: bc85eff6-bbdf-410a-93dc-0f1222796676
 ms.topic: overview
 ms.date: 1/11/2019
 ms.author: msangapu
-ms.custom: seodec18
-ms.openlocfilehash: 65352b8f8f85f5e7a2e25ae99d5ca3368ad78711
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.custom: mvc, seodec18
+ms.openlocfilehash: 27f085543869b1a77db9c97ca2e7ae7d3d3b7b88
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79126517"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80046415"
 ---
 # <a name="introduction-to-azure-app-service-on-linux"></a>Wprowadzenie do usługi Azure App Service w systemie Linux
 
@@ -21,7 +21,7 @@ ms.locfileid: "79126517"
 
 ## <a name="languages"></a>Języki
 
-Usługa App Service w systemie Linux obsługuje szereg wbudowanych obrazów w celu zwiększenia produktywności deweloperów. Języki obejmują: Node. js, Java (JRE 8 & JRE 11), PHP, Python, .NET Core i Ruby. Uruchom [`az webapp list-runtimes --linux`](https://docs.microsoft.com/cli/azure/webapp?view=azure-cli-latest#az-webapp-list-runtimes) , aby wyświetlić najnowsze Języki i obsługiwane wersje. Jeśli aplikacja wymaga środowiska uruchomieniowego, które nie jest obsługiwane we wbudowanych obrazach, skorzystaj z instrukcji dotyczących sposobu [tworzenia własnego obrazu platformy Docker](tutorial-custom-docker-image.md), aby wykonać wdrożenie w usłudze Web App for Containers.
+Usługa App Service w systemie Linux obsługuje szereg wbudowanych obrazów w celu zwiększenia produktywności deweloperów. Języki: Node.js, Java (JRE 8 & JRE 11), PHP, Python, .NET Core i Ruby. Uruchom, [`az webapp list-runtimes --linux`](https://docs.microsoft.com/cli/azure/webapp?view=azure-cli-latest#az-webapp-list-runtimes) aby wyświetlić najnowsze języki i obsługiwane wersje. Jeśli aplikacja wymaga środowiska uruchomieniowego, które nie jest obsługiwane we wbudowanych obrazach, skorzystaj z instrukcji dotyczących sposobu [tworzenia własnego obrazu platformy Docker](tutorial-custom-docker-image.md), aby wykonać wdrożenie w usłudze Web App for Containers.
 
 ## <a name="deployments"></a>Wdrożenia
 
@@ -54,18 +54,18 @@ Sprawdź [Pulpit nawigacyjny stanu platformy Azure](https://azure.microsoft.com/
 
 Witryna Azure Portal wyświetla tylko te funkcje, które obecnie działają dla usługi Web App for Containers. Kiedy włączymy więcej funkcji, będą one widoczne w portalu.
 
-App Service w systemie Linux jest obsługiwana tylko w przypadku planów usługi App Service w warstwach [bezpłatna, podstawowa, standardowa i Premium](https://azure.microsoft.com/pricing/details/app-service/plans/) i nie ma warstwy [udostępnionej](https://azure.microsoft.com/pricing/details/app-service/plans/) . Nie można utworzyć aplikacji sieci Web systemu Linux w planie App Service, na którym jest już obsługiwany Web Apps w systemie innym niż Linux.  
+Usługa App Service w systemie Linux jest obsługiwana tylko z planami usługi aplikacji [Bezpłatna, Podstawowa, Standardowa i Premium](https://azure.microsoft.com/pricing/details/app-service/plans/) i nie ma [warstwy udostępnionej.](https://azure.microsoft.com/pricing/details/app-service/plans/) Nie można utworzyć aplikacji sieci Web systemu Linux w planie usługi app service, który już hostuje aplikacje internetowe inne niż Linux.  
 
-W oparciu o bieżące ograniczenie dla tej samej grupy zasobów nie można mieszać aplikacji systemu Windows i Linux w tym samym regionie.
+Na podstawie bieżącego ograniczenia dla tej samej grupy zasobów nie można mieszać aplikacji systemu Windows i Linux w tym samym regionie.
 
 ## <a name="troubleshooting"></a>Rozwiązywanie problemów
 
 > [!NOTE]
-> Dostępna jest nowa funkcja rejestrowania zintegrowanego z usługą [Azure Monitoring (wersja zapoznawcza)](https://docs.microsoft.com/azure/app-service/troubleshoot-diagnostic-logs#send-logs-to-azure-monitor-preview) . 
+> Istnieje nowa zintegrowana funkcja rejestrowania za pomocą [usługi Azure Monitoring (wersja zapoznawcza).](https://docs.microsoft.com/azure/app-service/troubleshoot-diagnostic-logs#send-logs-to-azure-monitor-preview) 
 >
 >
 
-Jeśli nie można uruchomić aplikacji lub chcesz sprawdzić rejestrowanie z aplikacji, sprawdź dzienniki platformy Docker w katalogu LogFiles. Dostęp do tego katalogu można uzyskać za pomocą witryny funkcji SCM lub za pośrednictwem protokołu FTP. Aby rejestrować `stdout` i `stderr` z kontenera, należy włączyć **Rejestrowanie aplikacji** w obszarze **dzienniki App Service**. To ustawienie jest stosowane od razu. App Service wykrywa zmianę i automatycznie ponownie uruchamia kontener.
+Jeśli nie można uruchomić aplikacji lub chcesz sprawdzić rejestrowanie z aplikacji, sprawdź dzienniki platformy Docker w katalogu LogFiles. Dostęp do tego katalogu można uzyskać za pomocą witryny funkcji SCM lub za pośrednictwem protokołu FTP. `stdout` Aby zarejestrować `stderr` i z kontenera, należy włączyć **rejestrowanie aplikacji** w obszarze **Dzienniki usługi app service**. To ustawienie jest stosowane od razu. Usługa App Service wykrywa zmianę i automatycznie uruchamia kontener.
 
 Dostęp do witryny SCM można uzyskać za pomocą opcji **Narzędzia zaawansowane** w menu **Narzędzia programistyczne**.
 
@@ -81,7 +81,7 @@ Następujące artykuły ułatwią rozpoczęcie pracy z usługą App Service w sy
 * [Java](quickstart-java.md)
 * [Python](quickstart-python.md)
 * [Ruby](quickstart-ruby.md)
-* [Go](quickstart-docker-go.md)
+* [Przejdź](quickstart-docker-go.md)
 * [Aplikacje z wieloma kontenerami](quickstart-multi-container.md)
 
 Aby uzyskać więcej informacji na temat usługi App Service dla systemu Linux, zobacz:

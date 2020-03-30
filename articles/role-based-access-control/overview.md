@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/11/2019
+ms.date: 03/19/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 2ef528438591006be6e4cdec508dd15a7fb0a143
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 6e3313e3ae201d0b730d8582fed9659d89f0d0c1
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79240107"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80063053"
 ---
 # <a name="what-is-role-based-access-control-rbac-for-azure-resources"></a>Co to jest kontrola dostępu oparta na rolach (RBAC) dla zasobów platformy Azure?
 
@@ -46,7 +46,7 @@ Najlepszym rozwiązaniem podczas planowania strategii kontroli dostępu jest prz
 
 ## <a name="how-rbac-works"></a>Jak działa kontrola dostępu oparta na rolach
 
-Jeśli korzystasz z kontroli dostępu opartej na rolach, sterowanie dostępem polega na tworzeniu przypisań ról. To kluczowa koncepcja, opisująca sposób egzekwowania uprawnień. Przypisanie roli składa się z trzech elementów: podmiotu zabezpieczeń, definicji roli i zakresu.
+Jeśli korzystasz z kontroli dostępu opartej na rolach, sterowanie dostępem polega na tworzeniu przypisań ról. Jest to kluczowa koncepcja do zrozumienia — w jaki sposób uprawnienia są wymuszane. Przypisanie roli składa się z trzech elementów: podmiotu zabezpieczeń, definicji roli i zakresu.
 
 ### <a name="security-principal"></a>Podmiot zabezpieczeń
 
@@ -61,20 +61,20 @@ Jeśli korzystasz z kontroli dostępu opartej na rolach, sterowanie dostępem po
 
 ### <a name="role-definition"></a>Definicja roli
 
-*Definicja roli* to zbiór uprawnień. Zwykle jest nazywana *rolą*. Definicja roli określa dozwolone operacje, na przykład odczyt, zapis, czy usuwanie. Role mogą być ogólne, na przykład „właściciel”, lub szczegółowe, na przykład „czytelnik maszyny wirtualnej”.
+*Definicja roli* to zbiór uprawnień. Zazwyczaj jest to po prostu nazywana *rolą.* Definicja roli określa dozwolone operacje, na przykład odczyt, zapis, czy usuwanie. Role mogą być ogólne, na przykład „właściciel”, lub szczegółowe, na przykład „czytelnik maszyny wirtualnej”.
 
 ![Definicja roli w przypisaniu roli](./media/overview/rbac-role-definition.png)
 
 Na platformie Azure można korzystać z kilku [ról wbudowanych](built-in-roles.md). Poniżej wymieniono cztery podstawowe role wbudowane. Pierwsze trzy są stosowane do wszystkich typów zasobów.
 
 - [Właściciel](built-in-roles.md#owner) — ma pełny dostęp do wszystkich zasobów i jest uprawniony do przydzielania dostępu innym osobom.
-- [Współautor](built-in-roles.md#contributor) — może tworzyć wszystkie typy zasobów platformy Azure i zarządzać nimi, ale nie może przydzielać dostępu innym osobom.
+- [Współautor](built-in-roles.md#contributor) — można tworzyć i zarządzać wszystkimi typami zasobów platformy Azure, ale nie można udzielić dostępu do innych.
 - [Czytelnik](built-in-roles.md#reader) — może wyświetlać istniejące zasoby platformy Azure.
 - [Administrator dostępu użytkowników](built-in-roles.md#user-access-administrator) — może zarządzać dostępem użytkowników do zasobów platformy Azure.
 
 Pozostałe role wbudowane umożliwiają zarządzanie określonymi zasobami platformy Azure. Na przykład rola [współautora maszyny wirtualnej](built-in-roles.md#virtual-machine-contributor) umożliwia użytkownikowi tworzenie maszyn wirtualnych i zarządzanie nimi. Jeśli role wbudowane nie spełniają potrzeb Twojej organizacji, możesz tworzyć własne [role niestandardowe dla zasobów platformy Azure](custom-roles.md).
 
-Platforma Azure zawiera operacje na danych, które umożliwiają udzielenie dostępu do danych w ramach obiektu. Jeśli na przykład użytkownik ma uprawnienie do odczytu na koncie magazynu, może odczytywać obiekty blob lub komunikaty na tym koncie magazynu. Aby uzyskać więcej informacji, zobacz [Omówienie definicji ról dla zasobów platformy Azure](role-definitions.md).
+Platforma Azure ma operacje danych, które umożliwiają udzielenie dostępu do danych w obrębie obiektu. Jeśli na przykład użytkownik ma uprawnienie do odczytu na koncie magazynu, może odczytywać obiekty blob lub komunikaty na tym koncie magazynu. Aby uzyskać więcej informacji, zobacz [Omówienie definicji ról dla zasobów platformy Azure](role-definitions.md).
 
 ### <a name="scope"></a>Zakres
 
@@ -84,7 +84,7 @@ Na platformie Azure można określić zakres na różnych poziomach: [grupy zarz
 
 ![Zakres w przypisaniu roli](./media/overview/rbac-scope.png)
 
-Gdy udzielisz dostępu w zakresie nadrzędnym, te uprawnienia są dziedziczone przez zakresy podrzędne. Na przykład:
+Gdy udzielisz dostępu w zakresie nadrzędnym, te uprawnienia są dziedziczone przez zakresy podrzędne. Przykład:
 
 - Jeśli przypiszesz użytkownikowi rolę [Właściciel](built-in-roles.md#owner) w zakresie grupy zarządzania, ten użytkownik będzie mógł zarządzać wszystkimi elementami we wszystkich subskrypcjach w grupie zarządzania.
 - Jeśli przypiszesz rolę [czytelnika](built-in-roles.md#reader) do grupy na poziomie subskrypcji, członkowie tej grupy będą mogli wyświetlać wszystkie grupy zasobów i zasoby w ramach tej subskrypcji.
@@ -98,17 +98,17 @@ Na poniższym diagramie przedstawiono przykład przypisania roli. W tym przykła
 
 ![Przypisanie roli w celu kontroli dostępu](./media/overview/rbac-overview.png)
 
-Przypisania ról można tworzyć, korzystając z witryny Azure Portal, interfejsu wiersza polecenia platformy Azure, programu Azure PowerShell, zestawów Azure SDK lub interfejsów API REST. W każdej grupie zarządzania można przyporządkować do **2000** ról w ramach każdej subskrypcji i przypisań ról **500** . Aby móc tworzyć i usuwać przypisania ról, potrzebne są uprawnienia `Microsoft.Authorization/roleAssignments/*`. Te uprawnienia można przyznać za pomocą ról [Właściciel](built-in-roles.md#owner) i [Administrator dostępu użytkowników](built-in-roles.md#user-access-administrator).
+Przypisania ról można tworzyć, korzystając z witryny Azure Portal, interfejsu wiersza polecenia platformy Azure, programu Azure PowerShell, zestawów Azure SDK lub interfejsów API REST. W każdej subskrypcji może być maksymalnie **2000** przypisań ról i **500** przypisań ról w każdej grupie zarządzania. Aby móc tworzyć i usuwać przypisania ról, potrzebne są uprawnienia `Microsoft.Authorization/roleAssignments/*`. Te uprawnienia można przyznać za pomocą ról [Właściciel](built-in-roles.md#owner) i [Administrator dostępu użytkowników](built-in-roles.md#user-access-administrator).
 
 ## <a name="multiple-role-assignments"></a>Przypisania wielu ról
 
-Co więc się dzieje w przypadku wielu nakładających się przypisań ról? RBAC jest modelem addytywnym, dzięki czemu Twoje czynne uprawnienia są dodatkiem do przypisań ról. Rozważmy poniższy przykład, w którym użytkownikowi przypisano rolę Współautor w zakresie subskrypcji i rolę Czytelnik w grupie zasobów. Dodanie uprawnień Współautor i Czytelnik daje faktycznie rolę Współautor dla grupy zasobów. Dlatego w tym przypadku przypisanie roli Czytelnik nie ma żadnego znaczenia.
+Co więc się dzieje w przypadku wielu nakładających się przypisań ról? RBAC jest modelem addytywnym, więc twoje skuteczne uprawnienia są sumą przypisań ról. Rozważmy poniższy przykład, w którym użytkownikowi przypisano rolę Współautor w zakresie subskrypcji i rolę Czytelnik w grupie zasobów. Suma uprawnień współautora i uprawnienia czytnika jest skutecznie rolę współautora dla grupy zasobów. Dlatego w tym przypadku przypisanie roli Czytelnik nie ma żadnego znaczenia.
 
 ![Przypisania wielu ról](./media/overview/rbac-multiple-roles.png)
 
 ## <a name="deny-assignments"></a>Przypisania odmowy
 
-Poprzedni model kontroli dostępu opartego na rolach umożliwiał wyłącznie zezwolenie, bez możliwości odmowy. Obecny model obsługuje w ograniczony sposób również przypisania odmowy. Podobnie jak przypisanie roli *przypisanie odmowy* dołącza zestaw akcji odmowy do użytkownika, grupy, jednostki usługi lub tożsamości zarządzanej w określonym zakresie w celu odmowy dostępu. Przypisanie roli definiuje zestaw akcji, które są *dozwolone*, podczas gdy przypisanie odmowy definiuje zestaw akcji, które są *niedozwolone*. Innymi słowy przypisanie odmowy uniemożliwia użytkownikom wykonywanie określonych akcji, nawet jeśli przypisanie roli daje im taki dostęp. Przypisanie odmowy ma pierwszeństwo przed przypisaniem roli. Aby uzyskać więcej informacji, zobacz [Opis odmawiania przypisań dla zasobów platformy Azure](deny-assignments.md).
+Poprzedni model kontroli dostępu opartego na rolach umożliwiał wyłącznie zezwolenie, bez możliwości odmowy. Obecny model obsługuje w ograniczony sposób również przypisania odmowy. Podobnie jak przypisanie roli *przypisanie odmowy* dołącza zestaw akcji odmowy do użytkownika, grupy, jednostki usługi lub tożsamości zarządzanej w określonym zakresie w celu odmowy dostępu. Przypisanie roli definiuje zestaw akcji, które są *dozwolone*, podczas gdy przypisanie odmowy definiuje zestaw akcji, które są *niedozwolone*. Innymi słowy przypisanie odmowy uniemożliwia użytkownikom wykonywanie określonych akcji, nawet jeśli przypisanie roli daje im taki dostęp. Przypisanie odmowy ma pierwszeństwo przed przypisaniem roli. Aby uzyskać więcej informacji, zobacz [Opis odmów przydziałów dla zasobów platformy Azure](deny-assignments.md).
 
 ## <a name="how-rbac-determines-if-a-user-has-access-to-a-resource"></a>W jaki sposób kontrola dostępu oparta na rolach określa, czy użytkownik ma dostęp do zasobu
 
@@ -126,7 +126,7 @@ Poniżej przedstawiono główne kroki wykorzystywane przez kontrolę dostępu op
 
 1. Usługa Azure Resource Manager określa, czy akcja w wywołaniu interfejsu API należy do ról, jakie użytkownik posiada względem tego zasobu.
 
-1. Jeśli użytkownik nie ma roli zawierającej daną akcję w wymaganym zakresie, następuje odmowa dostępu. W przeciwnym razie usługa Azure Resource Manager sprawdza, czy ma w tej sytuacji zastosowanie przypisanie odmowy.
+1. Jeśli użytkownik nie ma roli z akcji w żądanym zakresie, dostęp nie jest przyznawany. W przeciwnym razie usługa Azure Resource Manager sprawdza, czy ma w tej sytuacji zastosowanie przypisanie odmowy.
 
 1. Jeśli tak, dostęp jest blokowany. Jeśli nie, dostęp jest udzielany.
 
@@ -136,7 +136,7 @@ Poniżej przedstawiono główne kroki wykorzystywane przez kontrolę dostępu op
 
 ## <a name="next-steps"></a>Następne kroki
 
-- [Szybki Start: wyświetlanie dostępu użytkownika do zasobów platformy Azure przy użyciu Azure Portal](check-access.md)
+- [Szybki start: wyświetlanie dostępu użytkownika do zasobów platformy Azure przy użyciu witryny Azure portal](check-access.md)
 - [Zarządzanie dostępem do zasobów platformy Azure za pomocą kontroli dostępu opartej na rolach i witryny Azure Portal](role-assignments-portal.md)
 - [Understand the different roles in Azure (Omówienie ról na platformie Azure)](rbac-and-directory-admin-roles.md)
 - [Enterprise Cloud Adoption: Resource access management in Azure (Wdrożenie rozwiązania Enterprise Cloud: zarządzanie dostępem do zasobów na platformie Azure)](/azure/cloud-adoption-framework/govern/resource-consistency/resource-access-management)

@@ -5,61 +5,62 @@ services: azure-resource-manager
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: include
-ms.date: 01/03/2020
+ms.date: 03/19/2020
 ms.author: tomfitz
 ms.custom: include file
-ms.openlocfilehash: 6d8f29e9272f3e05bb585c032240cce67c37d2bf
-ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
+ms.openlocfilehash: a00291182059506aeab9cde965fa4cbd5177ecf7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/05/2020
-ms.locfileid: "75665141"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80132109"
 ---
-1. Aby wyświetlić Tagi dla zasobu lub grupy zasobów, poszukaj istniejących tagów w przeglądzie. Jeśli wcześniej nie zastosowano tagów, lista będzie pusta.
-   
-     ![Wyświetl Tagi dla zasobu lub grupy zasobów](./media/resource-manager-tag-resources/view-tags.png)
-1. Aby dodać tag, wybierz **pozycję kliknij tutaj, aby dodać tagi**.
+Jeśli użytkownik nie ma wymaganego dostępu do stosowania tagów, możesz przypisać rolę **Współautor tagów** do użytkownika. Aby uzyskać więcej informacji, zobacz [Samouczek: Udzielanie użytkownikowi dostępu do zasobów platformy Azure przy użyciu funkcji RBAC i witryny Azure portal](../articles/role-based-access-control/quickstart-assign-role-user-portal.md).
 
-1. Podaj nazwę i wartość. Wybierz **+** , aby dodać tag.
-   
-     ![Dodaj tag](./media/resource-manager-tag-resources/add-tag.png)
-1. Kontynuuj dodawanie tagów zgodnie z wymaganiami. Po zakończeniu wybierz pozycję **Zapisz**.
-   
-     ![Zapisz Tagi](./media/resource-manager-tag-resources/save-tags.png)
-1. Tagi są teraz wyświetlane w przeglądzie.
-   
-     ![Pokaż Tagi](./media/resource-manager-tag-resources/view-new-tags.png)
-1. Aby dodać lub usunąć tag, wybierz pozycję **Zmień**.
-   
-1. Aby usunąć tag, wybierz ikonę kosza. Następnie wybierz pozycję **Zapisz**.
+1. Aby wyświetlić znaczniki zasobu lub grupy zasobów, poszukaj istniejących tagów w przeglądzie. Jeśli wcześniej nie zastosowano tagów, lista będzie pusta.
 
-     ![Usuń tag](./media/resource-manager-tag-resources/delete-tag.png)
+   ![Wyświetlanie znaczników dla grupy zasobów lub zasobów](./media/resource-manager-tag-resources/view-tags.png)
 
+1. Aby dodać znacznik, wybierz pozycję **Kliknij tutaj, aby dodać znaczniki**.
 
-Aby zbiorczo przypisać Tagi do wielu zasobów:
+1. Podaj nazwę i wartość.
 
-1. Z dowolnej listy zasobów zaznacz pole wyboru dla zasobów, dla których chcesz przypisać tag.
+   ![Dodawanie tagu](./media/resource-manager-tag-resources/add-tag.png)
 
-     ![Wybierz wiele zasobów](./media/resource-manager-tag-resources/select-multiple-resources.png)
+1. Kontynuuj dodawanie tagów w razie potrzeby. Po zakończeniu wybierz pozycję **Zapisz**.
 
-1. Wybierz pozycję **Przypisz Tagi**
+   ![Zapisywanie tagów](./media/resource-manager-tag-resources/save-tags.png)
 
-     ![Przypisz tagi](./media/resource-manager-tag-resources/assign-tags.png)
+1. Znaczniki są teraz wyświetlane w przeglądzie.
 
-1. Po każdej nazwie i wartości wybierz pozycję **+** . Po zakończeniu wybierz pozycję **Przypisz**.
+   ![Pokaż znaczniki](./media/resource-manager-tag-resources/view-new-tags.png)
 
-     ![Wybierz pozycję Przypisz](./media/resource-manager-tag-resources/select-assign.png)
+1. Aby dodać lub usunąć znacznik, wybierz opcję **Zmień**.
 
-Aby wyświetlić wszystkie zasoby ze znacznikiem:
+1. Aby usunąć znacznik, wybierz ikonę kosza. Następnie wybierz pozycję **Zapisz**.
 
-1. W menu Azure Portal wybierz pozycję **wszystkie usługi**. Wybierz opcję **Ogólne**, a następnie **Tagi**.
+   ![Usuń znacznik](./media/resource-manager-tag-resources/delete-tag.png)
 
-     ![Znajdź przez tag](./media/resource-manager-tag-resources/find-tags-general.png)
+Aby zbiorczo przypisać znaczniki do wielu zasobów:
 
-1. Wybierz tag do wyświetlania zasobów.
+1. Z dowolnej listy zasobów zaznacz pole wyboru dla zasobów, które chcesz przypisać tag. Następnie wybierz pozycję **Przypisz znaczniki**.
 
-     ![Wybierz tag](./media/resource-manager-tag-resources/select-tag.png)
+   ![Zaznaczanie wielu zasobów](./media/resource-manager-tag-resources/select-multiple-resources.png)
 
-1. Wyświetlane są wszystkie zasoby z tym tagiem.
+1. Dodaj nazwy i wartości. Po zakończeniu wybierz pozycję **Zapisz**.
 
-     ![Wyświetl zasoby według tagu](./media/resource-manager-tag-resources/view-resources-by-tag.png)
+   ![Wybierz pozycję Przypisz](./media/resource-manager-tag-resources/select-assign.png)
+
+Aby wyświetlić wszystkie zasoby za pomocą tagu:
+
+1. W menu portalu platformy Azure wyszukaj **tagi**. Wybierz go z dostępnych opcji.
+
+   ![Znajdź według tagu](./media/resource-manager-tag-resources/find-tags-general.png)
+
+1. Wybierz znacznik do wyświetlania zasobów.
+
+   ![Wybierz znacznik](./media/resource-manager-tag-resources/select-tag.png)
+
+1. Zostaną wyświetlone wszystkie zasoby z tym tagiem.
+
+   ![Wyświetlanie zasobów według tagu](./media/resource-manager-tag-resources/view-resources-by-tag.png)

@@ -9,10 +9,10 @@ ms.date: 03/21/2018
 ms.author: subsarma
 ms.custom: include file for PowerShell for Azure DNS
 ms.openlocfilehash: 32c516ccee3a9f4f7604a3e330285703a776b47d
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67133705"
 ---
 ## <a name="set-up-azure-powershell-for-azure-dns"></a>Konfigurowanie programu Azure PowerShell dla usługi Azure DNS
@@ -38,7 +38,7 @@ Find-Module -Name AzureRM.Dns
 Find-Module -Name AzureRM.Network 
 ``` 
  
-Dane wyjściowe powyższych poleceń wymaga pokazać, że program azurerm.DNS jest w wersji 4.1.0 lub nowszej, a program AzureRM.Network jest w wersji 5.4.0 lub nowszej.  
+Dane wyjściowe powyższych poleceń musi pokazać, że wersja usługi AzureRM.Dns jest wersja 4.1.0 lub nowsza, a dla azurerm.network jest 5.4.0 lub nowsza wersja.  
 
 Jeśli w systemie są wcześniejsze wersje, możesz zainstalować najnowszą wersję programu Azure PowerShell lub pobrać i zainstalować powyższe moduły z galerii programu PowerShell, korzystając z linków obok wersji modułu. Następnie możesz zainstalować je przy użyciu poniższych poleceń. Oba moduły są wymagane i są w pełni zgodne z poprzednimi wersjami. 
 
@@ -52,7 +52,7 @@ Install-Module -Name AzureRM.Network -Force
 
 ### <a name="sign-in-to-your-azure-account"></a>Zaloguj się do swojego konta platformy Azure
 
-Otwórz konsolę programu PowerShell i połącz się ze swoim kontem. Aby uzyskać więcej informacji, zobacz [Zaloguj się przy użyciu usługi AzureRM](/powershell/azure/azurerm/authenticate-azureps).
+Otwórz konsolę programu PowerShell i połącz się ze swoim kontem. Aby uzyskać więcej informacji, zobacz [Logowanie się za pomocą usługi AzureRM](/powershell/azure/azurerm/authenticate-azureps).
 
 ```powershell
 Connect-AzureRmAccount
@@ -74,7 +74,7 @@ Select-AzureRmSubscription -SubscriptionName "your_subscription_name"
 
 ### <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
 
-Usługa Azure Resource Manager wymaga, aby wszystkie grupy zasobów określały lokalizację. Ta lokalizacja będzie używana jako domyślna lokalizacja dla zasobów w danej grupie zasobów. Ponieważ jednak wszystkie zasoby DNS są globalne, a nie regionalne, wybór lokalizacji grupy zasobów nie ma wpływu na usługę Azure DNS.
+Usługa Azure Resource Manager wymaga, żeby wszystkie grupy zasobów miały lokalizację. Ta lokalizacja będzie używana jako domyślna lokalizacja dla zasobów w danej grupie zasobów. Ponieważ jednak wszystkie zasoby DNS są globalne, a nie regionalne, wybór lokalizacji grupy zasobów nie ma wpływu na usługę Azure DNS.
 
 Ten krok można pominąć, jeśli używasz istniejącej grupy zasobów.
 

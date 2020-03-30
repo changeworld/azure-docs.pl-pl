@@ -1,27 +1,27 @@
 ---
-title: Konfigurowanie aplikacji systemu Linux Python
-description: Dowiedz się, jak skonfigurować wstępnie skonstruowany kontener języka Python dla aplikacji. W tym artykule przedstawiono najczęstsze zadania konfiguracyjne.
+title: Konfigurowanie aplikacji Linux Python
+description: Dowiedz się, jak skonfigurować wstępnie utworzony kontener języka Python dla aplikacji. W tym artykule przedstawiono najczęstsze zadania konfiguracyjne.
 ms.topic: quickstart
 ms.date: 03/28/2019
 ms.reviewer: astay; kraigb
-ms.custom: seodec18
-ms.openlocfilehash: d2c5a094c45eeca779a33a39261bd3fc17d53d1a
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.custom: mvc, seodec18
+ms.openlocfilehash: 8a9276f73c1d9bdf0289f41bb59340b29f5a2575
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77913858"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80046019"
 ---
-# <a name="configure-a-linux-python-app-for-azure-app-service"></a>Konfigurowanie aplikacji systemu Linux w języku Python dla Azure App Service
+# <a name="configure-a-linux-python-app-for-azure-app-service"></a>Konfigurowanie aplikacji systemu Linux Python dla usługi Azure App Service
 
-W tym artykule opisano, jak usługa [Azure App Service](app-service-linux-intro.md) uruchamia aplikacje języka Python i jak można dostosować zachowanie usługi App Service w razie potrzeby. Aplikacje języka Python muszą zostać wdrożone ze wszystkimi wymaganymi modułami [PIP](https://pypi.org/project/pip/) .
+W tym artykule opisano, jak usługa [Azure App Service](app-service-linux-intro.md) uruchamia aplikacje języka Python i jak można dostosować zachowanie usługi App Service w razie potrzeby. Aplikacje Języka Python muszą być wdrożone ze wszystkimi wymaganymi modułami [pip.](https://pypi.org/project/pip/)
 
-Aparat wdrażania App Service automatycznie aktywuje środowisko wirtualne i uruchamia `pip install -r requirements.txt` podczas wdrażania [repozytorium git](../deploy-local-git.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)lub [pakiet ZIP](../deploy-zip.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json) z procesami kompilacji, które zostały włączone.
+Aparat wdrażania usługi App Service automatycznie aktywuje `pip install -r requirements.txt` środowisko wirtualne i działa dla Ciebie po wdrożeniu [repozytorium Git](../deploy-local-git.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)lub [pakietu Zip](../deploy-zip.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json) z włączonymi procesami kompilacji.
 
-Ten przewodnik zawiera najważniejsze pojęcia i instrukcje dla deweloperów języka Python, którzy używają wbudowanego kontenera systemu Linux w App Service. Jeśli nie korzystasz z Azure App Service, musisz najpierw wykonać samouczek [przewodnika Szybki Start](quickstart-python.md) i [Python z programem PostgreSQL](tutorial-python-postgresql-app.md) .
+Ten przewodnik zawiera kluczowe pojęcia i instrukcje dla deweloperów języka Python, którzy używają wbudowanego kontenera systemu Linux w usłudze App Service. Jeśli nigdy nie używałeś usługi Azure App Service, należy najpierw wykonać szybki [start języka Python](quickstart-python.md) i python z [postgresql samouczka.](tutorial-python-postgresql-app.md)
 
 > [!NOTE]
-> System Linux jest obecnie zalecaną opcją uruchamiania aplikacji w języku Python w App Service. Aby uzyskać informacje na temat opcji systemu Windows, zobacz [Python w systemie windows App Service](https://docs.microsoft.com/visualstudio/python/managing-python-on-azure-app-service).
+> Linux jest obecnie zalecaną opcją uruchamiania aplikacji Pythona w usłudze App Service. Aby uzyskać informacje na temat opcji systemu Windows, zobacz [Python w języku Windows smak usługi App Service](https://docs.microsoft.com/visualstudio/python/managing-python-on-azure-app-service).
 >
 
 ## <a name="show-python-version"></a>Wyświetlanie wersji języka Python
@@ -48,31 +48,31 @@ Uruchom następujące polecenie w usłudze [Cloud Shell](https://shell.azure.com
 az webapp config set --resource-group <resource-group-name> --name <app-name> --linux-fx-version "PYTHON|3.7"
 ```
 
-## <a name="customize-build-automation"></a>Dostosuj automatyzację kompilacji
+## <a name="customize-build-automation"></a>Dostosowywanie automatyzacji kompilacji
 
-Jeśli aplikacja zostanie wdrożona za pomocą usługi Git lub zip z włączonym automatyzacją kompilacji, App Service kroki automatyzacji kompilacji w następującej kolejności:
+Jeśli wdrożysz aplikację przy użyciu pakietów Git lub zip z włączoną automatyzacją kompilacji, kroki automatyzacji kompilacji usługi App Service w następującej kolejności:
 
-1. Uruchom skrypt niestandardowy, jeśli został określony przez `PRE_BUILD_SCRIPT_PATH`.
+1. Uruchom skrypt niestandardowy, jeśli jest określony przez `PRE_BUILD_SCRIPT_PATH`plik .
 1. Uruchom polecenie `pip install -r requirements.txt`.
-1. Jeśli *manage.py* znajduje się w katalogu głównym repozytorium, uruchom *manage.py collectstatic*. Jeśli jednak `DISABLE_COLLECTSTATIC` jest ustawiona na `true`, ten krok zostanie pominięty.
-1. Uruchom skrypt niestandardowy, jeśli został określony przez `POST_BUILD_SCRIPT_PATH`.
+1. Jeśli *manage.py* zostanie znaleziony w katalogu głównym repozytorium, uruchom *manage.py collectstatic*. Jednak jeśli `DISABLE_COLLECTSTATIC` jest `true`ustawiona na , ten krok jest pomijany.
+1. Uruchom skrypt niestandardowy, jeśli jest określony przez `POST_BUILD_SCRIPT_PATH`plik .
 
-`PRE_BUILD_COMMAND`, `POST_BUILD_COMMAND`i `DISABLE_COLLECTSTATIC` są zmiennymi środowiskowymi, które są domyślnie puste. Aby uruchomić polecenia przed kompilacją, zdefiniuj `PRE_BUILD_COMMAND`. Aby uruchomić polecenia po kompilacji, zdefiniuj `POST_BUILD_COMMAND`. Aby wyłączyć uruchamianie collectstatic podczas kompilowania aplikacji Django, ustaw `DISABLE_COLLECTSTATIC=true`.
+`PRE_BUILD_COMMAND`, `POST_BUILD_COMMAND`i `DISABLE_COLLECTSTATIC` są zmienne środowiskowe, które są domyślnie puste. Aby uruchomić polecenia przed kompilacją, zdefiniuj `PRE_BUILD_COMMAND`plik . Aby uruchomić polecenia po kompilacji, zdefiniuj `POST_BUILD_COMMAND`plik . Aby wyłączyć uruchamianie collectstatic podczas tworzenia `DISABLE_COLLECTSTATIC=true`aplikacji Django, ustaw .
 
-W poniższym przykładzie określono dwie zmienne do szeregu poleceń, oddzielone przecinkami.
+Poniższy przykład określa dwie zmienne do serii poleceń, oddzielone przecinkami.
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings PRE_BUILD_COMMAND="echo foo, scripts/prebuild.sh"
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings POST_BUILD_COMMAND="echo foo, scripts/postbuild.sh"
 ```
 
-Aby uzyskać dodatkowe zmienne środowiskowe umożliwiające dostosowanie automatyzacji kompilacji, zobacz [Konfiguracja Oryx](https://github.com/microsoft/Oryx/blob/master/doc/configuration.md).
+Aby uzyskać dodatkowe zmienne środowiskowe w celu dostosowania automatyzacji kompilacji, zobacz [Konfiguracja Oryx](https://github.com/microsoft/Oryx/blob/master/doc/configuration.md).
 
-Aby uzyskać więcej informacji na temat sposobu uruchamiania App Service i tworzenia aplikacji w języku Python w systemie Linux, zobacz [dokumentację Oryx: sposób wykrywania i kompilowania aplikacji w języku Python](https://github.com/microsoft/Oryx/blob/master/doc/runtimes/python.md).
+Aby uzyskać więcej informacji na temat sposobu działania i tworzenia aplikacji Języka Python w systemie Linux, zobacz [dokumentację Oryx: Jak aplikacje Python są wykrywane i budowane](https://github.com/microsoft/Oryx/blob/master/doc/runtimes/python.md).
 
 ## <a name="container-characteristics"></a>Właściwości kontenera
 
-Aplikacje języka Python wdrożone w celu App Service w systemie Linux działają w kontenerze platformy Docker, który jest zdefiniowany w [repozytorium usługi GitHub App Service Python](https://github.com/Azure-App-Service/python). Konfiguracje obrazów można znaleźć w katalogach specyficznych dla danej wersji.
+Aplikacje Języka Python wdrożone w usłudze App Service w systemie Linux działają w kontenerze platformy Docker zdefiniowanym w [repozytorium Usługi aplikacji Python GitHub](https://github.com/Azure-App-Service/python). Konfiguracje obrazów można znaleźć w katalogach specyficznych dla wersji.
 
 Ten kontener ma następujące cechy:
 
@@ -102,7 +102,7 @@ W przypadku aplikacji Django usługa App Service szuka pliku o nazwie `wsgi.py` 
 gunicorn --bind=0.0.0.0 --timeout 600 <module>.wsgi
 ```
 
-Jeśli chcesz mieć większą kontrolę nad poleceniem uruchamiania, użyj [niestandardowego polecenia uruchamiania](#customize-startup-command) i zamień wartość `<module>` na nazwę modułu zawierającego plik *wsgi.py*.
+Jeśli chcesz uzyskać bardziej szczegółową kontrolę nad poleceniem `<module>` uruchamiania, użyj [niestandardowego polecenia uruchamiania](#customize-startup-command) i zastąp nazwą modułu zawierającego *wsgi.py*.
 
 ### <a name="flask-app"></a>Aplikacja Flask
 
@@ -115,7 +115,7 @@ gunicorn --bind=0.0.0.0 --timeout 600 application:app
 gunicorn --bind=0.0.0.0 --timeout 600 app:app
 ```
 
-Jeśli główny moduł aplikacji znajduje się w innym pliku, użyj innej nazwy dla obiektu aplikacji, a jeśli chcesz podać dodatkowe argumenty dla serwera Gunicorn, użyj [niestandardowego polecenia uruchamiania](#customize-startup-command).
+Jeśli główny moduł aplikacji znajduje się w innym pliku, użyj innej nazwy obiektu aplikacji lub chcesz podać dodatkowe argumenty gunicornowi, użyj [niestandardowego polecenia uruchamiania](#customize-startup-command).
 
 ### <a name="default-behavior"></a>Zachowanie domyślne
 
@@ -125,13 +125,13 @@ Jeśli usługa App Service nie znajdzie polecenia niestandardowego, aplikacji Dj
 
 ## <a name="customize-startup-command"></a>Dostosowywanie polecenia uruchamiania
 
-Aby kontrolować zachowanie kontenera podczas uruchamiania, możesz podać niestandardowe polecenie uruchamiania serwera Gunicorn. W tym celu należy uruchomić następujące polecenie w [Cloud Shell](https://shell.azure.com):
+Aby kontrolować zachowanie kontenera podczas uruchamiania, możesz podać niestandardowe polecenie uruchamiania serwera Gunicorn. Aby to zrobić, uruchomi następujące polecenie w [przysłonie chmury:](https://shell.azure.com)
 
 ```azurecli-interactive
 az webapp config set --resource-group <resource-group-name> --name <app-name> --startup-file "<custom-command>"
 ```
 
-Na przykład jeśli masz aplikację z kolbą, której moduł główny to *Hello.py* , a obiekt aplikacji do kolby w tym pliku ma nazwę `myapp`, wówczas *\<> niestandardowe polecenie* jest następujące:
+Na przykład, jeśli masz aplikację Flask, której moduł główny jest *hello.py,* a obiekt `myapp`aplikacji Flask w tym pliku ma nazwę ,>* \<polecenia niestandardowego* jest następujący:
 
 ```bash
 gunicorn --bind=0.0.0.0 --timeout 600 hello:myapp
@@ -143,9 +143,9 @@ Jeśli moduł główny znajduje się w podfolderze, takim jak `website`, określ
 gunicorn --bind=0.0.0.0 --timeout 600 --chdir website hello:myapp
 ```
 
-Możesz również dodać wszelkie dodatkowe argumenty dla Gunicorn, aby *\<> niestandardowego-polecenia*, takich jak `--workers=4`. Aby uzyskać więcej informacji, zobacz [Running Gunicorn](https://docs.gunicorn.org/en/stable/run.html) (Uruchamianie serwera Gunicorn) (docs.gunicorn.org).
+Można również dodać dodatkowe argumenty dla Gunicorn do `--workers=4` * \<>niestandardowego *polecenia, takie jak . Aby uzyskać więcej informacji, zobacz [Running Gunicorn](https://docs.gunicorn.org/en/stable/run.html) (Uruchamianie serwera Gunicorn) (docs.gunicorn.org).
 
-Aby użyć serwera innego niż Gunicorn, takiego jak [aiohttp](https://aiohttp.readthedocs.io/en/stable/web_quickstart.html), można zamienić *\<niestandardowe-polecenie >* , tak jak to:
+Aby użyć serwera innego niż Gunicorn, takiego jak [aiohttp,](https://aiohttp.readthedocs.io/en/stable/web_quickstart.html)można zastąpić * \<niestandardowe>polecenia* czymś takim:
 
 ```bash
 python3.7 -m aiohttp.web -H localhost -P 8080 package.module:init_func
@@ -156,7 +156,7 @@ python3.7 -m aiohttp.web -H localhost -P 8080 package.module:init_func
 
 ## <a name="access-environment-variables"></a>Uzyskiwanie dostępu do zmiennych środowiskowych
 
-W App Service można [ustawić ustawienia aplikacji](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings) poza kodem aplikacji. Następnie można uzyskiwać do nich dostęp przy użyciu standardowego wzorca [os.environ](https://docs.python.org/3/library/os.html#os.environ). Aby na przykład uzyskać dostęp do ustawienia aplikacji o nazwie `WEBSITE_SITE_NAME`, użyj następującego kodu:
+W usłudze App Service możesz [ustawić ustawienia aplikacji](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings) poza kodem aplikacji. Następnie można uzyskiwać do nich dostęp przy użyciu standardowego wzorca [os.environ](https://docs.python.org/3/library/os.html#os.environ). Aby na przykład uzyskać dostęp do ustawienia aplikacji o nazwie `WEBSITE_SITE_NAME`, użyj następującego kodu:
 
 ```python
 os.environ['WEBSITE_SITE_NAME']
@@ -187,19 +187,19 @@ Popularne platformy internetowe umożliwiają dostęp do informacji `X-Forwarded
 - Uruchom ponownie usługę App Service, poczekaj 15–20 sekund i sprawdź ponownie aplikację.
 - Upewnij się, że używasz usługi App Service dla systemu Linux, a nie wystąpienia opartego na systemie Windows. W interfejsie wiersza polecenia platformy Azure uruchom polecenie `az webapp show --resource-group <resource_group_name> --name <app_service_name> --query kind`, zastępując zmienne `<resource_group_name>` i `<app_service_name>` odpowiednimi wartościami. Powinny zostać wyświetlone dane wyjściowe `app,linux`. W przeciwnym razie ponownie utwórz usługę App Service i wybierz system Linux.
 - Połącz się bezpośrednio z usługą App Service przy użyciu konsoli SSH lub Kudu, a następnie sprawdź, czy Twoje pliki znajdują się w katalogu *site/wwwroot*. Jeśli pliki nie istnieją, sprawdź proces wdrażania i ponownie wdróż aplikację.
-- Jeśli pliki istnieją, oznacza to, że usługa App Service nie mogła zidentyfikować określonego pliku startowego. Sprawdź, czy aplikacja ma strukturę zgodną z oczekiwaniami usługi App Service dla platformy [Django](#django-app) lub [Flask](#flask-app), albo użyj [niestandardowego polecenia uruchamiania](#customize-startup-command).
+- Jeśli pliki istnieją, oznacza to, że usługa App Service nie mogła zidentyfikować określonego pliku startowego. Sprawdź, czy aplikacja jest skonstruowana zgodnie z oczekiwaniami usługi App Service dla [Django](#django-app) lub [Flask,](#flask-app)lub użyj [niestandardowego polecenia uruchamiania.](#customize-startup-command)
 - **W przeglądarce jest wyświetlany komunikat „Usługa niedostępna”.** W przeglądarce upłynął limit czasu oczekiwania na odpowiedź usługi App Service, co wskazuje, że usługa App Service uruchomiła serwer Gunicorn, ale argumenty określające kod aplikacji są niepoprawne.
 - Odśwież okno przeglądarki, zwłaszcza jeśli korzystasz z niższych warstw cenowych w planie usługi App Service. Na przykład podczas korzystania z warstw bezpłatnych aplikacja może być uruchamiana dłużej i zacznie odpowiadać po odświeżeniu okna przeglądarki.
-- Sprawdź, czy aplikacja ma strukturę zgodną z oczekiwaniami usługi App Service dla platformy [Django](#django-app) lub [Flask](#flask-app), albo użyj [niestandardowego polecenia uruchamiania](#customize-startup-command).
-- [Dostęp do strumienia dzienników](#access-diagnostic-logs).
+- Sprawdź, czy aplikacja jest skonstruowana zgodnie z oczekiwaniami usługi App Service dla [Django](#django-app) lub [Flask,](#flask-app)lub użyj [niestandardowego polecenia uruchamiania.](#customize-startup-command)
+- [Dostęp do strumienia dziennika](#access-diagnostic-logs).
 
 ## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Samouczek: aplikacja w języku Python z PostgreSQL](tutorial-python-postgresql-app.md)
+> [Samouczek: Aplikacja Python z PostgreSQL](tutorial-python-postgresql-app.md)
 
 > [!div class="nextstepaction"]
-> [Samouczek: wdrażanie z repozytorium kontenera prywatnego](tutorial-custom-docker-image.md)
+> [Samouczek: Wdrażanie z prywatnego repozytorium kontenerów](tutorial-custom-docker-image.md)
 
 > [!div class="nextstepaction"]
-> [App Service Linux — często zadawane pytania](app-service-linux-faq.md)
+> [Często zadawane pytania dotyczące usługi aplikacji Linux](app-service-linux-faq.md)

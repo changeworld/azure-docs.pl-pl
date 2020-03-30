@@ -1,6 +1,6 @@
 ---
-title: Użyj identyfikatora URI Azure Data Lake Storage Gen2
-description: Użyj identyfikatora URI Azure Data Lake Storage Gen2
+title: Korzystanie z identyfikatora URI usługi Azure Data Lake Storage Gen2
+description: Korzystanie z identyfikatora URI usługi Azure Data Lake Storage Gen2
 author: normesta
 ms.topic: conceptual
 ms.author: normesta
@@ -9,43 +9,43 @@ ms.service: storage
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: jamesbak
 ms.openlocfilehash: 04df30c2a97e865d23999df26768b38cb38be607
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68855561"
 ---
-# <a name="use-the-azure-data-lake-storage-gen2-uri"></a>Użyj identyfikatora URI Azure Data Lake Storage Gen2
+# <a name="use-the-azure-data-lake-storage-gen2-uri"></a>Korzystanie z identyfikatora URI usługi Azure Data Lake Storage Gen2
 
-Sterownik systemu [plików Hadoop](https://www.aosabook.org/en/hdfs.html) zgodny z Azure Data Lake Storage Gen2 jest znany przez jego identyfikator `abfs` schematu (system plików obiektów blob platformy Azure). W przypadku innych sterowników systemu plików Hadoop sterownik ABFS korzysta z formatu identyfikatora URI do adresowania plików i katalogów w ramach konta z możliwością Data Lake Storage Gen2.
+Sterownik [systemu plików Hadoop,](https://www.aosabook.org/en/hdfs.html) który jest zgodny z usługą Azure `abfs` Data Lake Storage Gen2 jest znany przez jego identyfikator schematu (Azure Blob File System). Zgodnie z innymi sterownikami Systemu Plików Hadoop, sterownik ABFS wykorzystuje format URI do adresowania plików i katalogów w ramach konta obsługującego usługę Data Lake Storage Gen2.
 
 ## <a name="uri-syntax"></a>Składnia identyfikatora URI
 
-Składnia identyfikatora URI dla Data Lake Storage Gen2 jest zależna od tego, czy konto magazynu zostało skonfigurowane w taki sposób, że Data Lake Storage Gen2 jako domyślny system plików.
+Składnia identyfikatora URI dla usługi Data Lake Storage Gen2 zależy od tego, czy twoje konto magazynu jest skonfigurowane tak, aby usługa Data Lake Storage Gen2 była domyślnym systemem plików.
 
-Jeśli konto obsługujące Data Lake Storage Gen2, które ma zostać rozadresowane, **nie jest** ustawione jako domyślny system plików podczas tworzenia konta, składnia identyfikatora URI w postaci skróconej jest następująca:
+Jeśli konto obsługujące usługę Data Lake Storage Gen2, które chcesz rozwiązać, **nie jest** ustawione jako domyślny system plików podczas tworzenia konta, wówczas skrócona składnia identyfikatora URI jest następująca:
 
 <pre>abfs[s]<sup>1</sup>://&lt;file_system&gt;<sup>2</sup>@&lt;account_name&gt;<sup>3</sup>.dfs.core.windows.net/&lt;path&gt;<sup>4</sup>/&lt;file_name&gt;<sup>5</sup></pre>
 
-1. **Identyfikator schematu**: `abfs` Protokół jest używany jako identyfikator schematu. Istnieje możliwość nawiązywania połączenia z usługą Secure Socket Layer (SSL) lub bez niej. Służy `abfss` do nawiązywania połączenia z bezpiecznym połączeniem warstwy gniazda.
+1. **Identyfikator schematu** `abfs` : Protokół jest używany jako identyfikator schematu. Można połączyć się z połączeniem ssl (secure socket layer) lub bez niego. Służy `abfss` do łączenia się z bezpiecznym połączeniem warstwy gniazda.
 
-2. **System plików**: Lokalizacja nadrzędna, w której znajdują się pliki i foldery. Są one takie same jak kontenery w usłudze Azure Storage BLOB Service.
+2. **System plików**: Lokalizacja nadrzędna, w którym znajdują się pliki i foldery. Jest to taka sama jak kontenery w usłudze Azure Storage Obiektów Blobs.
 
-3. **Nazwa konta**: Nazwa nadana kontu magazynu podczas tworzenia.
+3. **Nazwa konta**: nazwa nadana kontu magazynu podczas tworzenia.
 
-4. **Ścieżki**: Przedstawiona kreska ukośna (`/`) reprezentacja struktury katalogów.
+4. **Ścieżki: Przecięcie**do`/`przodu rozdzielone ( ) reprezentacja struktury katalogów.
 
-5. **Nazwa pliku**: Nazwa pojedynczego pliku. Ten parametr jest opcjonalny w przypadku adresowania katalogu.
+5. **Nazwa pliku**: Nazwa pojedynczego pliku. Ten parametr jest opcjonalny, jeśli adresujesz katalog.
 
-Jeśli jednak konto, które ma zostać rozadresowane, jest ustawione jako domyślny system plików podczas tworzenia konta, składnia identyfikatora URI w postaci skróconej jest następująca:
+Jeśli jednak konto, które chcesz zaajmi adres, jest ustawione jako domyślny system plików podczas tworzenia konta, wówczas skrócona składnia identyfikatora URI jest następująca:
 
 <pre>/&lt;path&gt;<sup>1</sup>/&lt;file_name&gt;<sup>2</sup></pre>
 
-1. **Ścieżka**: Przedstawiona kreska ukośna (`/`) reprezentacja struktury katalogów.
+1. **Ścieżka:** Przecięcie do`/`przodu rozdzielone ( ) reprezentacja struktury katalogów.
 
 2. **Nazwa pliku**: Nazwa pojedynczego pliku.
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-- [Korzystanie z usługi Azure Data Lake Storage Gen2 w połączeniu z klastrami usługi Azure HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
+- [Korzystanie z usługi Azure Data Lake Storage Gen2 z klastrami usługi Azure HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)

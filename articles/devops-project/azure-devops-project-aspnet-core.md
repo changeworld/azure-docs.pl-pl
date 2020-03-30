@@ -1,5 +1,5 @@
 ---
-title: 'Szybki start: Tworzenie potoku ciągłej integracji/ciągłego wdrażania dla platformy .NET za pomocą usługi DevOps Projects'
+title: 'Szybki start: tworzenie potoku ciągłej integracji/ciągłego wdrażania dla platformy .NET za pomocą usługi Azure DevOps Projects'
 description: Usługa Azure DevOps Projects ułatwia rozpoczęcie pracy na platformie Azure. Umożliwia uruchomienie aplikacji .NET w wybranej usłudze platformy Azure w kilku prostych krokach.
 ms.prod: devops
 ms.technology: devops-cicd
@@ -17,10 +17,10 @@ ms.author: mlearned
 ms.custom: mvc
 monikerRange: vsts
 ms.openlocfilehash: 7d2ccdfa1fe553d0795a82856dd255f4a54138bf
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "70898020"
 ---
 # <a name="create-a-cicd-pipeline-for-net-with-azure-devops-projects"></a>Tworzenie potoku ciągłej integracji/ciągłego wdrażania dla platformy .NET za pomocą usługi DevOps Projects
@@ -37,7 +37,7 @@ Usługa DevOps Projects tworzy potok ciągłej integracji/ciągłego wdrażania 
 
 1. W lewym okienku wybierz ikonę **Utwórz zasób** na pasku nawigacyjnym po lewej stronie, a następnie wyszukaj hasło **DevOps Projects**.  
 
-3.  Wybierz pozycję **Utwórz**.
+3.  Wybierz **pozycję Utwórz**.
 
     ![Rozpoczynanie ciągłego dostarczania](_img/azure-devops-project-aspnet-core/fullbrowser.png)
 
@@ -47,21 +47,21 @@ Usługa DevOps Projects tworzy potok ciągłej integracji/ciągłego wdrażania 
 
    ![Struktura .NET](_img/azure-devops-project-aspnet-core/chooselanguagedotnet.png)
 
-2. Ten przykład to aplikacja ASP.NET Core MVC. Wybierz platformę aplikacji **.NET Core** , a następnie wybierz przycisk **dalej**.    
+2. Ten przykład to aplikacja ASP.NET Core MVC. Wybierz platformę aplikacji **.NET Core,** a następnie wybierz przycisk **Dalej**.    
     
-3. Wybierz pozycję **aplikacja sieci Web systemu Windows** jako element docelowy wdrożenia, a następnie wybierz pozycję **dalej**. Opcjonalnie możesz wybrać inne usługi platformy Azure dla danego wdrożenia. Wybrana wcześniej struktura aplikacji określa typ miejsca docelowego wdrożenia usługi platformy Azure, który jest dostępny tutaj.
+3. Wybierz **pozycję Windows Web App** jako miejsce docelowe wdrożenia, a następnie wybierz pozycję **Dalej**. Opcjonalnie można wybrać inne usługi platformy Azure dla wdrożenia. Struktura aplikacji, który został wybrany wcześniej, określa typ docelowego wdrażania usługi platformy Azure jest dostępny w tym miejscu.
 
 ## <a name="configure-azure-devops-and-an-azure-subscription"></a>Konfigurowanie usługi Azure DevOps i subskrypcji platformy Azure 
 
-1. Wprowadź **nazwę projektu**.
+1. Wprowadź **nazwę programu Project**.
 
-2. Utwórz nową organizację bezpłatnej **usługi Azure DevOps** lub wybierz istniejącą organizację z listy rozwijanej.
+2. Utwórz nową bezpłatną **organizację DevOps** azure lub wybierz istniejącą organizację z listy rozwijanej.
 
-3. Wybierz swoją **subskrypcję platformy Azure**, wprowadź nazwę **aplikacji sieci Web** lub wybierz ją jako **domyślną.** Po kilku minutach przegląd wdrożenia DevOps Projects zostanie wyświetlony w Azure Portal. 
+3. Wybierz subskrypcję **platformy Azure**, wprowadź nazwę aplikacji **sieci Web** lub wprowadź wartość domyślną, a następnie wybierz pozycję **Gotowe**. Po kilku minutach omówienie wdrażania projektów DevOps jest wyświetlane w witrynie Azure portal. 
 
-4. Wybierz pozycję **Przejdź do zasobu** , aby wyświetlić pulpit nawigacyjny projektu DevOps. W prawym górnym rogu Przypnij **projekt** do pulpitu nawigacyjnego, aby uzyskać szybki dostęp. Przykładowa aplikacja jest skonfigurowana w repozytorium w **organizacji usługi Azure DevOps**. Kompilacja jest wykonywana, a Twoja aplikacja jest wdrażana na platformie Azure.
+4. Wybierz **pozycję Przejdź do zasobu,** aby wyświetlić pulpit nawigacyjny projektu DevOps. W prawym górnym rogu przypnij **projekt** do pulpitu nawigacyjnego, aby uzyskać szybki dostęp. Przykładowa aplikacja jest konfigurażana w repozytorium w **organizacji Azure DevOps**. Kompilacja jest wykonywana, a aplikacja jest wdrażana na platformie Azure.
 
-5. Pulpit nawigacyjny zapewnia wgląd do repozytorium kodu, potoku ciągłej integracji/ciągłego wdrażania i aplikacji na platformie Azure. W obszarze zasoby platformy Azure wybierz pozycję **Przeglądaj** , aby wyświetlić uruchomioną aplikację.
+5. Pulpit nawigacyjny zapewnia wgląd do repozytorium kodu, potoku ciągłej integracji/ciągłego wdrażania i aplikacji na platformie Azure. Po prawej stronie w obszarze zasoby platformy Azure wybierz pozycję **Przeglądaj,** aby wyświetlić uruchomiającą aplikację.
 
    ![Widok pulpitu nawigacyjnego](_img/azure-devops-project-aspnet-core/dashboardnopreview.png) 
 
@@ -69,17 +69,17 @@ Usługa DevOps Projects tworzy potok ciągłej integracji/ciągłego wdrażania 
 
 Usługa DevOps Projects utworzyła repozytorium Git w usłudze Azure Repos lub GitHub. Aby wyświetlić repozytorium i wprowadzić zmiany w kodzie aplikacji, wykonaj poniższe kroki:
 
-1. Z lewej strony pulpitu nawigacyjnego usługi DevOps Projects wybierz link dla gałęzi **master**. Ten link otwiera widok nowo utworzonego repozytorium Git.
+1. Po lewej stronie pulpitu nawigacyjnego Projekty DevOps wybierz łącze dla gałęzi **głównej.** Ten link otwiera widok nowo utworzonego repozytorium Git.
 
-2. W następnych kilku krokach można użyć przeglądarki sieci Web, aby wprowadzić zmiany w kodzie i zatwierdzić je bezpośrednio w gałęzi **głównej** . Możesz również sklonować repozytorium Git w ulubionym środowisku IDE, wybierając **klon** w prawym górnym rogu strony repozytorium. 
+2. W następnych kilku krokach można użyć przeglądarki sieci web, aby wprowadzić i zatwierdzić zmiany kodu bezpośrednio do gałęzi **głównej.** Możesz również sklonować repozytorium Git w swoim ulubionym IDE, wybierając **Clone** z prawej strony repozytorium. 
 
-3. Po lewej stronie przejdź do struktury plików aplikacji do **Application/ASPNET-Core-dotnet-Core/Pages/index. cshtml**.
+3. Po lewej stronie przejdź do struktury pliku aplikacji do **aplikacji/aspnet-core-dotnet-core/Pages/Index.cshtml**.
 
 4. Wybierz pozycję **Edytuj** i wprowadź zmianę w nagłówku h2. Wpisz na przykład hasło **Zaczynamy pracę z usługą Azure DevOps Projects** lub wprowadź inną zmianę.
 
       ![Edytowanie kodu](_img/azure-devops-project-aspnet-core/codechange.png)
 
-5. Wybierz pozycję **Zatwierdź**, pozostaw komentarz i ponownie wybierz pozycję **Zatwierdź** .
+5. Wybierz **pozycję Zatwierdź**, pozostaw komentarz i ponownie wybierz pozycję **Zatwierdź.**
 
 6. W przeglądarce przejdź do pulpitu nawigacyjnego projektu usługi Azure DevOps.  W tym momencie powinna być widoczna trwająca kompilacja. Wprowadzone zmiany są automatycznie kompilowane i wdrażane za pośrednictwem potoku ciągłej integracji/ciągłego wdrażania.
 
@@ -90,7 +90,7 @@ W poprzednim kroku usługa Azure DevOps Projects automatycznie skonfigurowała p
 1. U góry pulpitu nawigacyjnego usługi DevOps Projects wybierz pozycję **Potoki kompilacji**.  
 Ten link otwiera kartę przeglądarki i potok kompilacji usługi Azure DevOps dla nowego projektu.
 
-1. Wybierz symbol wielokropka (...).  Ta akcja powoduje otwarcie menu, w którym możesz uruchomić kilka działań, takich jak dodawanie nowej kompilacji do kolejki, wstrzymywanie kompilacji i edytowanie potoku kompilacji.
+1. Wybierz wielokropek (...).  Ta akcja otwiera menu, w którym można rozpocząć kilka działań, takich jak kolejkowanie nowej kompilacji, wstrzymywanie kompilacji i edytowanie potoku kompilacji.
 
 1. Wybierz pozycję **Edit** (Edytuj).
 
@@ -135,7 +135,7 @@ Dostępnych jest kilka menu, z którymi możesz się zapoznać, na przykład pod
 1. Wybierz pozycję **Zatwierdzenia**.   
 Ten widok przedstawia zatwierdzenia kodu skojarzone z konkretnym wdrożeniem. 
 
-1. Wybierz pozycję **Dzienniki**.  
+1. Wybierz **dzienniki**.  
 Dzienniki zawierają przydatne informacje na temat procesu wdrażania. Mogą być wyświetlane zarówno podczas wdrożeń, jak i po nich.
 
 
@@ -150,6 +150,6 @@ Aby dowiedzieć się więcej na temat modyfikowania potoków kompilacji i wydani
 > [!div class="nextstepaction"]
 > [Dostosowywanie procesu ciągłego wdrażania](https://docs.microsoft.com/azure/devops/pipelines/release/define-multistage-release-process?view=vsts)
 
-## <a name="videos"></a>Wideo
+## <a name="videos"></a>Filmy wideo
 
 > [!VIDEO https://www.youtube.com/embed/itwqMf9aR0w]

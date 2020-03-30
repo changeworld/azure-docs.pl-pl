@@ -14,16 +14,16 @@ ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: juliako
 ms.openlocfilehash: 7b5569738721038beadc78d94c81393803b6d36a
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79250987"
 ---
 # <a name="scenarios-and-availability-of-media-services-features-across-datacenters"></a>Scenariusze i dostępność funkcji usługi Media Services w centrach danych
 
 > [!NOTE]
-> Do usługi Media Services w wersji 2 nie są już dodawane żadne nowe funkcje. <br/>Zapoznaj się z najnowszą wersją, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Zobacz też [wskazówki dotyczące migracji od wersji 2 do V3](../latest/migrate-from-v2-to-v3.md)
+> Do usługi Media Services w wersji 2 nie są już dodawane żadne nowe funkcje. <br/>Sprawdź najnowszą wersję usługi [Media Services w wersji 3](https://docs.microsoft.com/azure/media-services/latest/). Zobacz też [wskazówki dotyczące migracji z wersji 2 do v3](../latest/migrate-from-v2-to-v3.md)
 
 Usługa Microsoft Azure Media Services (AMS) umożliwia bezpieczne przekazywanie, przechowywanie, kodowanie i tworzenie pakietów zawartości wideo lub audio na potrzeby transmisji strumieniowej na żądanie i na żywo do różnych klientów (np. odbiorników TV, komputerów i urządzeń przenośnych).
 
@@ -37,11 +37,11 @@ W tym temacie przedstawiono typowe scenariusze dostarczania zawartości [na żyw
 
 Do rozpoczęcia korzystania z usługi Azure Media Services potrzebne są:
 
-* Konto platformy Azure. Jeśli nie masz konta, możesz utworzyć bezpłatne konto próbne w zaledwie kilka minut. Aby uzyskać szczegółowe informacje, zobacz temat [Bezpłatna wersja próbna systemu Azure](https://azure.microsoft.com).
+* Konto platformy Azure. Jeśli nie masz konta, możesz utworzyć bezpłatne konto próbne w zaledwie kilka minut. Aby uzyskać szczegółowe informacje, zobacz [Bezpłatna wersja próbna platformy Azure](https://azure.microsoft.com).
 * Konto usługi Azure Media Services. Aby uzyskać więcej informacji, zobacz temat [Tworzenie konta](media-services-portal-create-account.md).
 * Punkt końcowy przesyłania strumieniowego, z którego chcesz strumieniowo przesyłać zawartość, musi mieć stan **Uruchomiony**.
 
-    Po utworzeniu konta usługi AMS zostanie do niego dodany **domyślny** punkt końcowy przesyłania strumieniowego mający stan **Zatrzymany**. Aby rozpocząć przesyłanie strumieniowe zawartości oraz korzystać z dynamicznego tworzenia pakietów i szyfrowania, punkt końcowy przesyłania strumieniowego musi mieć stan **Uruchomiony**.
+    Po utworzeniu konta AMS **domyślny** punkt końcowy przesyłania strumieniowego jest dodawany do twojego konta w stanie **Zatrzymane.** Aby rozpocząć przesyłanie strumieniowe zawartości oraz korzystać z dynamicznego tworzenia pakietów i szyfrowania, punkt końcowy przesyłania strumieniowego musi mieć stan **Uruchomiony**.
 
 ### <a name="commonly-used-objects-when-developing-against-the-ams-odata-model"></a>Najczęściej używane obiekty podczas projektowania w modelu AMS OData
 
@@ -79,7 +79,7 @@ Aby uzyskać informacje na temat dostępności w centrach danych, zobacz sekcję
 2. Wykonaj kodowanie do zestawu plików MP4 o adaptacyjnej szybkości transmisji bitów. Zastosuj opcję szyfrowania magazynu w odniesieniu do elementu zawartości wyjściowej.
 3. Utwórz klucz szyfrowania zawartości dla elementu zawartości, który ma zostać dynamicznie zaszyfrowany podczas odtwarzania.
 4. Skonfiguruj zasady autoryzacji klucza zawartości.
-5. Skonfiguruj zasady dostarczania elementu zawartości (używane podczas dynamicznego tworzenia pakietów i dynamicznego szyfrowania).
+5. Skonfiguruj zasady dostarczania zasobu (stosowane podczas pakowania dynamicznego i szyfrowania dynamicznego).
 6. Opublikuj element zawartości, tworząc lokalizator OnDemand.
 7. Prześlij strumieniowo opublikowaną zawartość.
 
@@ -104,14 +104,14 @@ Aby uzyskać informacje na temat dostępności w centrach danych, zobacz sekcję
     W przypadku użycia lokalizatora SAS zawartość zostanie pobrana z magazynu Azure Blob Storage. W takim przypadku nie są konieczne punkty końcowe przesyłania strumieniowego w stanie uruchomionym.
 4. Pobierz progresywnie zawartość.
 
-## <a id="live_scenarios"></a>Dostarczanie zdarzeń transmisji strumieniowej na żywo 
+## <a name="delivering-live-streaming-events"></a><a id="live_scenarios"></a>Dostarczanie zdarzeń transmisji strumieniowej na żywo 
 
 1. Pozyskaj zawartość na żywo przy użyciu różnych protokołów transmisji strumieniowej na żywo (np. RTMP lub Smooth Streaming).
 2. (Opcjonalnie) Zakoduj strumień w formie strumienia o adaptacyjnej szybkości transmisji bitów.
 3. Wyświetl podgląd transmisji strumieniowej na żywo.
 4. Dostarczaj zawartość za pośrednictwem wspólnych protokołów przesyłania strumieniowego (np. MPEG DASH, Smooth, HLS) bezpośrednio do klientów lub do usługi Content Delivery Network (CDN) w celu dalszej dystrybucji
 
-    lub
+    — lub —
 
     zarejestruj i przechowaj pozyskaną zawartość do celów przesyłania strumieniowego w późniejszym czasie (wideo na żądanie).
 
@@ -143,7 +143,7 @@ Usługa Azure Media Services udostępnia narzędzia potrzebne do tworzenia zaawa
 
 Usługa Media Services obsługuje integrację z usługą Azure CDN. Aby uzyskać informacje o sposobie włączania usługi Azure CDN, zobacz temat [Zarządzanie punktami końcowymi przesyłania strumieniowego na koncie usługi Media Services](media-services-portal-manage-streaming-endpoints.md).
 
-## <a id="scaling"></a>Skalowanie konta usługi Media Services
+## <a name="scaling-a-media-services-account"></a><a id="scaling"></a>Skalowanie konta usługi Media Services
 
 Klienci usługi AMS mogą skalować punkty końcowe przesyłania strumieniowego, przetwarzanie multimediów i przechowywanie na swoich kontach usługi AMS.
 
@@ -151,17 +151,17 @@ Klienci usługi AMS mogą skalować punkty końcowe przesyłania strumieniowego,
 
     Punkty końcowe przesyłania strumieniowego **Premium** są odpowiednie w przypadku zaawansowanych obciążeń, ponieważ zapewniają dedykowaną i skalowalną pojemność przepustowości. Klienci, którzy mają punkt końcowy przesyłania strumieniowego **Premium**, domyślnie uzyskują jedną jednostkę przesyłania strumieniowego (SU, streaming unit). Punkt końcowy przesyłania strumieniowego można skalować poprzez dodawanie jednostek SU. Każdy jednostka SU zwiększa pojemność przepustowości aplikacji. Aby uzyskać więcej informacji na temat skalowania punktów końcowych przesyłania strumieniowego **Premium**, zobacz temat [Skalowanie punktów końcowych przesyłania strumieniowego](media-services-portal-scale-streaming-endpoints.md).
 
-* Konto usługi Media Services jest skojarzone z typem jednostki zarezerwowanej określającym szybkość, z jaką są przetwarzane zadania przetwarzania multimediów. Można wybrać jeden z następujących typów jednostki zarezerwowanej: **S1**, **S2** lub **S3**. Na przykład to samo zadanie kodowania jest wykonywane szybciej przy użyciu typu jednostki zarezerwowanej **S2** niż w przypadku użycia typu **S1**.
+* Konto usługi Media Services jest skojarzone z typem jednostki zarezerwowanej określającym szybkość, z jaką są przetwarzane zadania przetwarzania multimediów. Można wybrać między następującymi typami jednostek zarezerwowanych: **S1**, **S2**lub **S3**. Na przykład to samo zadanie kodowania jest wykonywane szybciej przy użyciu typu jednostki zarezerwowanej **S2** niż w przypadku użycia typu **S1**.
 
-    Oprócz określenia typu jednostki zarezerwowanej można określić aprowizację swojego konta przy użyciu **jednostek zarezerwowanych** (RU, Reserved Unit). Liczba zainicjowanych jednostek zarezerwowanych określa liczbę zadań multimedialnych, które mogą być przetwarzane jednocześnie w ramach danego konta.
+    Oprócz określania typu jednostki zarezerwowanej można określić, aby aprowizować konto za pomocą **jednostek zarezerwowanych** (RUs). Liczba zainicjowanych jednostek zarezerwowanych określa liczbę zadań multimedialnych, które mogą być przetwarzane jednocześnie w ramach danego konta.
 
     >[!NOTE]
     >Jednostki zarezerwowane przekształcają wszystkie operacje przetwarzania multimediów do postaci równoległej, uwzględniając zadania Indeksowania za pomocą usługi Azure Media Indexer. Jednak w przeciwieństwie do kodowania zadania indeksowania nie są przetwarzane szybciej przy użyciu szybszych jednostek zarezerwowanych.
 
-    Aby uzyskać więcej informacji, zobacz temat [Skalowanie przetwarzania multimediów](media-services-portal-scale-media-processing.md).
+    Aby uzyskać więcej informacji, zobacz [Skalowanie przetwarzania multimediów](media-services-portal-scale-media-processing.md).
 * Możliwe jest także skalowanie konta usługi Media Services przez dodanie do niego kont magazynu. Pojemność każdego konta magazynu jest ograniczona do 500 TB. Aby rozszerzyć pojemność magazynu poza ograniczenia domyślne, można dołączyć wiele kont magazynu do jednego konta usługi Media Services. Aby uzyskać więcej informacji, zobacz temat [Zarządzanie kontami magazynu](meda-services-managing-multiple-storage-accounts.md).
 
-## <a id="availability"></a>Dostępność funkcji usługi Media Services w centrach danych
+## <a name="availability-of-media-services-features-across-datacenters"></a><a id="availability"></a>Dostępność funkcji usługi Media Services w centrach danych
 
 Ta sekcja zawiera szczegółowe informacje o dostępności funkcji usługi Media Services w centrach danych.
 
@@ -177,9 +177,9 @@ Klienci usługi Media Services mogą wybrać **Standardowy** punkt końcowy prze
 
 #### <a name="availability"></a>Dostępność
 
-|Name (Nazwa)|Stan|Centra danych
+|Nazwa|Stan|Centra danych
 |---|---|---|
-|Standardowy|Ogólna dostępność|Wszystkie|
+|Standardowa|Ogólna dostępność|Wszystkie|
 |Premium|Ogólna dostępność|Wszystkie|
 
 ### <a name="live-encoding"></a>Kodowanie na żywo
@@ -204,7 +204,7 @@ Usługa AMS oferuje dwa kodery na żądanie: **Media Encoder Standard** i **Medi
 Analiza multimediów to kolekcja składników mowy i obrazu, które ułatwiają organizacjom i przedsiębiorstwom pozyskiwanie przydatnych informacji z posiadanych plików wideo. Aby uzyskać więcej informacji, zobacz temat [Przegląd analiz usługi Azure Media Services](media-services-analytics-overview.md).
 
 > [!NOTE]
-> Niektóre procesory multimediów analitycznych zostaną wycofane. Aby uzyskać daty wycofania, zobacz temat [starsze składniki](legacy-components.md) .
+> Niektóre procesory multimediów analitycznych zostaną wycofane. W przypadku dat wycofania zobacz temat [starszych składników.](legacy-components.md)
 
 #### <a name="availability"></a>Dostępność
 
@@ -225,7 +225,7 @@ Usługi Microsoft Azure Media Services umożliwiają zabezpieczenie multimediów
 
 |Szyfrowanie|Stan|Centra danych|
 |---|---|---| 
-|Storage|Ogólna dostępność|Wszystkie|
+|Magazyn|Ogólna dostępność|Wszystkie|
 |Klucze AES-128|Ogólna dostępność|Wszystkie|
 |FairPlay|Ogólna dostępność|Wszystkie|
 |PlayReady|Ogólna dostępność|Wszystkie|
@@ -257,7 +257,7 @@ Aby uzyskać więcej informacji, zobacz sekcję opisującą [skalowanie](#scalin
 
 ## <a name="additional-notes"></a>Uwagi dodatkowe
 
-* Widevine to usługa świadczona przez firmę Google Inc. z zastrzeżeniem warunków użytkowania i zasad zachowania poufności informacji w firmie Google, Inc.
+* Widevine jest usługą świadczoną przez Google Inc. i podlega warunkom korzystania z usługi oraz Polityce prywatności Firmy Google, Inc.
 
 ## <a name="next-steps"></a>Następne kroki
 
@@ -265,6 +265,6 @@ Przejrzyj ścieżki szkoleniowe dotyczące usługi Media Services.
 
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Przekaż opinię
+## <a name="provide-feedback"></a>Przekazywanie opinii
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 

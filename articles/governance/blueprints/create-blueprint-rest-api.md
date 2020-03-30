@@ -1,23 +1,23 @@
 ---
-title: 'Szybki Start: Tworzenie strategii przy użyciu interfejsu API REST'
-description: W tym przewodniku szybki start używasz planów platformy Azure do tworzenia, definiowania i wdrażania artefaktów przy użyciu interfejsu API REST.
+title: 'Szybki start: tworzenie planu za pomocą interfejsu API REST'
+description: W tym przewodniku Szybki start można użyć planów platformy Azure do tworzenia, definiowania i wdrażania artefaktów przy użyciu interfejsu API REST.
 ms.date: 02/26/2020
 ms.topic: quickstart
 ms.openlocfilehash: 3e7e7c67822eec939c7d7752f8771d3b486abc3c
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "79241542"
 ---
-# <a name="quickstart-define-and-assign-an-azure-blueprint-with-rest-api"></a>Szybki Start: Definiowanie i przypisywanie Azure Blueprint przy użyciu interfejsu API REST
+# <a name="quickstart-define-and-assign-an-azure-blueprint-with-rest-api"></a>Szybki start: definiowanie i przypisywanie planu azure za pomocą interfejsu API REST
 
 Znajomość sposobu tworzenia i przypisywania strategii umożliwia definiowanie typowych wzorców tworzenia konfiguracji wielokrotnego użytku, które można szybko wdrażać, w oparciu o szablony usługi Resource Manager, zasady, zabezpieczenia itd. Z tego samouczka dowiesz się, jak za pomocą usługi Azure Blueprints wykonywać niektóre typowe zadania związane z tworzeniem, publikowaniem i przypisywaniem strategii w organizacji, takie jak:
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free).
-- Zarejestruj dostawcę zasobów `Microsoft.Blueprint`. Aby uzyskać instrukcje, zobacz [dostawcy zasobów i ich typy](../../azure-resource-manager/management/resource-providers-and-types.md).
+- Jeśli nie masz subskrypcji platformy Azure, utwórz [bezpłatne konto](https://azure.microsoft.com/free) przed rozpoczęciem.
+- Zarejestruj `Microsoft.Blueprint` dostawcę zasobów. Aby uzyskać wskazówki dojazdu, zobacz [Dostawcy zasobów i typy](../../azure-resource-manager/management/resource-providers-and-types.md).
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
@@ -63,7 +63,7 @@ Każdy identyfikator URI interfejsu API REST zawiera używane zmienne, które mu
 - `{subscriptionId}` — zastąp swoim identyfikatorem subskrypcji
 
 > [!NOTE]
-> Plany mogą być również tworzone na poziomie subskrypcji. Aby zapoznać się z przykładem, zobacz [Tworzenie strategii na przykład subskrypcji](/rest/api/blueprints/blueprints/createorupdate#subscriptionblueprint).
+> Plany mogą być również tworzone na poziomie subskrypcji. Aby zobaczyć przykład, zobacz [tworzenie planu w przykładzie subskrypcji](/rest/api/blueprints/blueprints/createorupdate#subscriptionblueprint).
 
 1. Utwórz obiekt _strategii_ początkowej. **Treść żądania** zawiera właściwości strategii, wszystkie grupy zasobów, które mają zostać utworzone, oraz wszystkie parametry poziomu strategii. Parametry są określane podczas przypisywania i używane przez artefakty dodane w kolejnych krokach.
 
@@ -329,7 +329,7 @@ Każdy identyfikator URI interfejsu API REST zawiera używane zmienne, które mu
 - `{YourMG}` — zastąp identyfikatorem swojej grupy zarządzania
 - `{subscriptionId}` — zastąp swoim identyfikatorem subskrypcji
 
-1. Podaj jednostce usługi Azure Blueprint rolę **Właściciel** w subskrypcji docelowej. Identyfikator AppId jest statyczny (`f71766dc-90d9-4b7d-bd9d-4499c4331c3f`), ale nazwa główna usługi różni się w zależności od dzierżawy. Szczegółowych informacji na temat dzierżawy można żądać, używając poniższego interfejsu API REST. Korzysta on z [interfejsu API programu Graph usługi Azure Active Directory](../../active-directory/develop/active-directory-graph-api.md), który ma inną autoryzację.
+1. Podaj jednostce usługi Azure Blueprint rolę **Właściciel** w subskrypcji docelowej. Identyfikator AppId jest`f71766dc-90d9-4b7d-bd9d-4499c4331c3f`statyczny ( ), ale identyfikator jednostki usługi zależy od dzierżawy. Szczegółowych informacji na temat dzierżawy można żądać, używając poniższego interfejsu API REST. Korzysta on z [interfejsu API programu Graph usługi Azure Active Directory](../../active-directory/develop/active-directory-graph-api.md), który ma inną autoryzację.
 
    - Identyfikator URI interfejsu API REST
 
@@ -432,7 +432,7 @@ Aby usunąć samą strategię, wykonaj następującą operację interfejsu API R
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym przewodniku szybki start utworzono, przypisano i usunięto plan z interfejsem API REST. Aby dowiedzieć się więcej na temat planów platformy Azure, przejdź do artykułu dotyczącego cyklu życia planu.
+W tym przewodniku Szybki start utworzono, przypisano i usunięto plan za pomocą interfejsu API REST. Aby dowiedzieć się więcej o planach platformy Azure, przejdź do artykułu cyklu życia planu.
 
 > [!div class="nextstepaction"]
 > [Dowiedz się więcej o cyklu życia planu](./concepts/lifecycle.md)

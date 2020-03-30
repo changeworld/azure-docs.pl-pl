@@ -2,16 +2,16 @@
 title: Eksportowanie certyfikatów emulatora usługi Azure Cosmos DB
 description: W przypadku programowania w językach i środowiskach uruchomieniowych, które nie korzystają z magazynu certyfikatów systemu Windows, należy wyeksportować certyfikaty SSL i zarządzać nimi. Ten wpis zawiera instrukcje krok po kroku.
 ms.service: cosmos-db
-ms.topic: tutorial
+ms.topic: conceptual
 ms.date: 05/23/2019
 author: deborahc
 ms.author: dech
-ms.openlocfilehash: a398c10511fdd3891a2c429f0ef46869dcc48922
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 623837b30038ef8524aef1e87aeb5933204925a6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66244447"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80156025"
 ---
 # <a name="export-the-azure-cosmos-db-emulator-certificates-for-use-with-java-python-and-nodejs"></a>Eksportowanie certyfikatów emulatora usługi Azure Cosmos DB do użycia w językach Java, Python i Node.js
 
@@ -44,11 +44,11 @@ Oba certyfikaty można wygenerować ponownie, klikając pozycję **Reset Data** 
 
     ![Eksportowanie lokalnego emulatora usługi Azure Cosmos DB — krok 2](./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-2.png)
 
-3. Kliknij pozycję **Kopiuj do pliku...** .
+3. Kliknij pozycję **Kopiuj do pliku...**.
 
     ![Eksportowanie lokalnego emulatora usługi Azure Cosmos DB — krok 3](./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-3.png)
 
-4. Kliknij przycisk **Dalej**.
+4. Kliknij przycisk **alej**.
 
     ![Eksportowanie lokalnego emulatora usługi Azure Cosmos DB — krok 4](./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-4.png)
 
@@ -56,7 +56,7 @@ Oba certyfikaty można wygenerować ponownie, klikając pozycję **Reset Data** 
 
     ![Eksportowanie lokalnego emulatora usługi Azure Cosmos DB — krok 5](./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-5.png)
 
-6. Kliknij pozycję **Certyfikat X.509 szyfrowany algorytmem Base-64 (.CER)** , a następnie przycisk **Dalej**.
+6. Kliknij pozycję **Certyfikat X.509 szyfrowany algorytmem Base-64 (.CER)**, a następnie przycisk **Dalej**.
 
     ![Eksportowanie lokalnego emulatora usługi Azure Cosmos DB — krok 6](./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-6.png)
 
@@ -70,7 +70,7 @@ Oba certyfikaty można wygenerować ponownie, klikając pozycję **Reset Data** 
 
 ## <a name="how-to-use-the-certificate-in-java"></a>Sposób użycia certyfikatu w środowisku Java
 
-Podczas uruchamiania aplikacji w języku Java lub aplikacje bazy danych MongoDB, które używają klienta Java łatwiej jest je zainstalować certyfikat w domyślnym magazynie certyfikatów Java niż przekazywanie `-Djavax.net.ssl.trustStore=<keystore> -Djavax.net.ssl.trustStorePassword="<password>"` flag. Na przykład dołączona [aplikacja demonstracyjna Java](https://localhost:8081/_explorer/index.html) zależy od domyślnego magazynu certyfikatów.
+Podczas uruchamiania aplikacji Java lub mongodb, które używają klienta Java łatwiej jest zainstalować certyfikat `-Djavax.net.ssl.trustStore=<keystore> -Djavax.net.ssl.trustStorePassword="<password>"` w domyślnym magazynie certyfikatów Java niż przekazywanie flag. Na przykład dołączona [aplikacja demonstracyjna Java](https://localhost:8081/_explorer/index.html) zależy od domyślnego magazynu certyfikatów.
 
 Postępuj zgodnie z instrukcjami w artykule [Dodawanie certyfikatu do magazynu certyfikatów Java CA](https://docs.microsoft.com/azure/java-add-certificate-ca-store), aby zaimportować certyfikat X.509 do domyślnego magazynu certyfikatów Java. Pamiętaj, że podczas uruchamiania narzędzia keytool będziesz pracować w katalogu %JAVA_HOME%.
 

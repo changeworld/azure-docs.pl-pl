@@ -1,53 +1,53 @@
 ---
-title: Zmień ustawienia aplikacji platformy Azure IoT Central | Microsoft Docs
-description: Jako administrator, jak zarządzać aplikacją IoT Central platformy Azure, zmieniając nazwę aplikacji, adres URL, przekazanie obrazu i Usuń aplikację
+title: Zmienianie ustawień aplikacji Azure IoT Central | Dokumenty firmy Microsoft
+description: Jak zarządzać aplikacją Azure IoT Central, zmieniając nazwę aplikacji, adres URL, obraz przekazywania i usuwanie aplikacji jako administratora.
 author: viv-liu
 ms.author: viviali
 ms.date: 11/27/2019
-ms.topic: conceptual
+ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: ae0b4c1675228bfa2083b37a0460ff85c2714f50
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 7b77ea9e0e1f322cb5ef0bc63885c3ccce1b76f6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77025796"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80158689"
 ---
-# <a name="change-iot-central-application-settings"></a>Zmień ustawienia IoT Central aplikacji
+# <a name="change-iot-central-application-settings"></a>Zmienianie ustawień aplikacji IoT Central
 
 
 
-W tym artykule opisano, jak administrator może zarządzać aplikacją przez zmianę nazwy aplikacji i adresu URL, przekazanie obrazu i usunięcie aplikacji w aplikacji IoT Central platformy Azure.
+W tym artykule opisano, jak jako administrator możesz zarządzać aplikacją, zmieniając nazwę i adres URL aplikacji, przekazując obraz i usuwając aplikację w aplikacji Azure IoT Central.
 
-Aby uzyskać dostęp do sekcji **Administracja** i korzystać z niej, musisz mieć rolę **administratora** dla aplikacji IoT Central platformy Azure. Jeśli utworzysz aplikację IoT Central platformy Azure, zostanie ona automatycznie przypisana do roli **administratora** dla tej aplikacji.
+Aby uzyskać dostęp do sekcji **Administracja** i korzystać z niej, musisz być w roli **administratora** dla aplikacji Azure IoT Central. Jeśli tworzysz aplikację Azure IoT Central, automatycznie zostaniesz przypisany do roli **administratora** dla tej aplikacji.
 
-## <a name="change-application-name-and-url"></a>Zmień nazwę i adres URL aplikacji
+## <a name="change-application-name-and-url"></a>Zmienianie nazwy i adresu URL aplikacji
 
-Na stronie **Ustawienia aplikacji** można zmienić nazwę i adres URL aplikacji, a następnie wybrać pozycję **Zapisz**.
+Na stronie **Ustawienia aplikacji** możesz zmienić nazwę i adres URL aplikacji, a następnie wybrać pozycję **Zapisz**.
 
-![Strona Ustawienia aplikacji](media/howto-administer/image0-a.png)
+![Strona ustawień aplikacji](media/howto-administer/image0-a.png)
 
-Jeśli administrator utworzy niestandardowy motyw dla aplikacji, ta strona zawiera opcję ukrycia **nazwy aplikacji** w interfejsie użytkownika. Ta opcja jest przydatna, jeśli logo aplikacji w motywie niestandardowym zawiera nazwę aplikacji. Aby uzyskać więcej informacji, zobacz [Dostosowywanie interfejsu użytkownika usługi Azure IoT Central](./howto-customize-ui.md).
+Jeśli administrator utworzy niestandardowy motyw dla aplikacji, ta strona zawiera opcję ukrycia **nazwy aplikacji** w interfejsie użytkownika. Ta opcja jest przydatna, jeśli logo aplikacji w motywie niestandardowym zawiera nazwę aplikacji. Aby uzyskać więcej informacji, zobacz [Dostosowywanie interfejsu użytkownika centrali Usługi Azure IoT](./howto-customize-ui.md).
 
 > [!Note]
-> Jeśli zmienisz adres URL, stary adres URL może zostać podjęty przez innego klienta IoT Central platformy Azure. Jeśli tak się stanie, nie jest już dostępny do użycia. Gdy zmienisz adres URL, stary adres URL nie będzie już działać i musisz powiadomić użytkowników o nowym adresie URL do użycia.
+> Jeśli zmienisz adres URL, stary adres URL może zostać przejęty przez innego klienta usługi Azure IoT Central. Jeśli tak się stanie, nie jest już dostępny do użycia. Gdy zmienisz adres URL, stary adres URL przestanie działać i musisz powiadomić użytkowników o nowym adresie URL, który ma być używany.
 
 ## <a name="delete-an-application"></a>Usuwanie aplikacji
 
-Aby trwale usunąć aplikację IoT Central, użyj przycisku **Usuń** . Ta akcja powoduje trwałe usunięcie wszystkich danych, które są skojarzone z aplikacją.
+Użyj przycisku **Usuń,** aby trwale usunąć aplikację IoT Central. Ta akcja trwale usuwa wszystkie dane skojarzone z aplikacją.
 
 > [!Note]
-> Aby usunąć aplikację, musisz mieć również uprawnienia do usuwania zasobów w ramach subskrypcji platformy Azure wybranej podczas tworzenia aplikacji. Aby dowiedzieć się więcej, zobacz [Korzystanie z kontroli dostępu opartej na rolach w celu zarządzania dostępem do zasobów subskrypcji platformy Azure](https://docs.microsoft.com/azure/active-directory/role-based-access-control-configure).
+> Aby usunąć aplikację, musisz mieć również uprawnienia do usuwania zasobów w subskrypcji platformy Azure wybranej podczas tworzenia aplikacji. Aby dowiedzieć się więcej, zobacz [Zarządzanie dostępem do zasobów subskrypcji platformy Azure za pomocą kontroli dostępu opartej na rolach.](https://docs.microsoft.com/azure/active-directory/role-based-access-control-configure)
 
 ## <a name="manage-programmatically"></a>Zarządzanie programistyczne
 
-Pakiety SDK IoT Central Azure Resource Manager są dostępne dla węzłów, Python, C#Ruby, Java i go. Za pomocą tych pakietów można tworzyć, wyświetlać, aktualizować i usuwać IoT Central aplikacje. Pakiety obejmują pomocników do zarządzania uwierzytelnianiem i obsługą błędów.
+Pakiety SDK usługi IoT Central Azure Resource Manager są dostępne dla node, Python, C#, Ruby, Java i Go. Za pomocą tych pakietów można tworzyć, listy, aktualizować lub usuwać aplikacje IoT Central. Pakiety obejmują pomocników do zarządzania uwierzytelnianiem i obsługą błędów.
 
-Przykłady korzystania z zestawów SDK Azure Resource Manager można znaleźć w [https://github.com/emgarten/iotcentral-arm-sdk-examples](https://github.com/emgarten/iotcentral-arm-sdk-examples).
+Przykłady używania zestawów SDK usługi Azure Resource [https://github.com/emgarten/iotcentral-arm-sdk-examples](https://github.com/emgarten/iotcentral-arm-sdk-examples)Manager można znaleźć pod adresem .
 
-Aby dowiedzieć się więcej, zobacz następujące repozytoria i pakiety usługi GitHub:
+Aby dowiedzieć się więcej, zobacz następujące repozytoria i pakiety GitHub:
 
 | Język | Repozytorium | Pakiet |
 | ---------| ---------- | ------- |
@@ -56,8 +56,8 @@ Aby dowiedzieć się więcej, zobacz następujące repozytoria i pakiety usługi
 | C# | [https://github.com/Azure/azure-sdk-for-net](https://github.com/Azure/azure-sdk-for-net) | [https://www.nuget.org/packages/Microsoft.Azure.Management.IotCentral](https://www.nuget.org/packages/Microsoft.Azure.Management.IotCentral)
 | Ruby | [https://github.com/Azure/azure-sdk-for-ruby](https://github.com/Azure/azure-sdk-for-ruby) | [https://rubygems.org/gems/azure_mgmt_iot_central](https://rubygems.org/gems/azure_mgmt_iot_central)
 | Java | [https://github.com/Azure/azure-sdk-for-java](https://github.com/Azure/azure-sdk-for-java) | [https://search.maven.org/search?q=a:azure-mgmt-iotcentral](https://search.maven.org/search?q=a:azure-mgmt-iotcentral)
-| Go | [https://github.com/Azure/azure-sdk-for-go](https://github.com/Azure/azure-sdk-for-go) | [https://github.com/Azure/azure-sdk-for-go](https://github.com/Azure/azure-sdk-for-go)
+| Przejdź | [https://github.com/Azure/azure-sdk-for-go](https://github.com/Azure/azure-sdk-for-go) | [https://github.com/Azure/azure-sdk-for-go](https://github.com/Azure/azure-sdk-for-go)
 
 ## <a name="next-steps"></a>Następne kroki
 
-Teraz, gdy wiesz już, jak administrować aplikacją IoT Central platformy Azure, sugerowanym następnym krokiem jest zapoznanie się z tematem [Zarządzanie użytkownikami i rolami](howto-manage-users-roles.md) w usłudze Azure IoT Central.
+Teraz, gdy dowiesz się, jak administrować aplikacją Azure IoT Central, sugerowanym następnym krokiem jest zapoznanie się [z zarządzaniem użytkownikami i rolami](howto-manage-users-roles.md) w usłudze Azure IoT Central.

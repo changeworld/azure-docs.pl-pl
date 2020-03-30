@@ -1,6 +1,6 @@
 ---
-title: Opcje rozwiązania Azure Internet rzeczy (IoT)
-description: Wskazówki dotyczące wyboru między usługami platformowymi lub zarządzaną platformą aplikacji w celu tworzenia rozwiązania IoT. Podejście usługi platformy używa usług takich jak IoT Hub i Digital bliźniaczych reprezentacji jako bloków konstrukcyjnych. Rozwiązanie zarządzanej platformy aplikacji używa IoT Central, aby szybko rozpocząć pracę.
+title: Opcje rozwiązania Usługi Azure Internet of Things (IoT)
+description: Wskazówki dotyczące wybierania między usługami platformy lub podejście platformy aplikacji zarządzanych do tworzenia rozwiązania IoT. Podejście usługi platformy używa usług, takich jak Usługa IoT Hub i Digital Twins jako bloków konstrukcyjnych. Podejście platformy aplikacji zarządzanych używa usługi IoT Central, aby szybko rozpocząć pracę.
 author: dominicbetts
 ms.service: iot-fundamentals
 services: iot-fundamentals
@@ -8,71 +8,71 @@ ms.topic: overview
 ms.date: 02/05/2020
 ms.author: dobett
 ms.openlocfilehash: 046116addf643d6c0eb0faf2f821b6ef78d440c6
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/06/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77050340"
 ---
-# <a name="choose-the-right-iot-solution"></a>Wybierz odpowiednie rozwiązanie IoT
+# <a name="choose-the-right-iot-solution"></a>Wybieranie odpowiedniego rozwiązania IoT
 
-Aby zbudować rozwiązanie IoT dla Twojej firmy, zazwyczaj wybiera się użycie *usług platformy* lub rozwiązania *zarządzanej platformy aplikacji* .
+Aby utworzyć rozwiązanie IoT dla twojej firmy, zazwyczaj wybierasz używanie *usług platformy* lub podejścia *platformy aplikacji zarządzanych.*
 
-Usługi platformy zapewniają bloki konstrukcyjne dla dostosowanych i elastycznych aplikacji IoT. Masz więcej opcji do wyboru i kodu podczas łączenia urządzeń oraz pozyskiwania, przechowywania i analizowania danych. Usługi platformy Azure IoT obejmują produkty IoT Hub i Azure Digital bliźniaczych reprezentacji.
+Usługi platformy stanowią elementy konstrukcyjne dla niestandardowych i elastycznych aplikacji IoT. Masz więcej opcji do wyboru i kodu podczas łączenia urządzeń i pozyskiwania, przechowywania i analizowania danych. Usługi platformy Azure IoT obejmują produkty usługi Azure IoT Hub i usługi Azure Digital Twins.
 
-Zarządzana platforma aplikacji pozwala szybko rozpocząć Kompilowanie aplikacji niż usługi platformy przez zmniejszenie liczby decyzji wymaganych do osiągnięcia wyników. Platforma aplikacji zarządzanej zajmuje się większością elementów rozwiązania, dzięki czemu możesz skupić się na dodawaniu wiedzy branżowej oraz skalowaniu i łączeniu urządzeń. Usługa Azure IoT Central to zarządzana platforma aplikacji.
+Platforma aplikacji zarządzanych umożliwia rozpoczęcie tworzenia aplikacji szybciej niż usługi platformy, zmniejszając liczbę decyzji potrzebnych do osiągnięcia wyników. Platforma aplikacji zarządzanych zajmuje się większością elementów rozwiązania, dzięki czemu można skupić się na dodawaniu wiedzy branżowej oraz skalowaniu i łączeniu urządzeń. Usługa Azure IoT Central to platforma aplikacji zarządzanych.
 
-Aby wybrać jeden z tych dwóch metod, należy rozważyć następujące kwestie:
+Aby wybrać jedną z tych dwóch metod, należy wziąć pod uwagę:
 
 - Jak chcesz zarządzać rozwiązaniem.
-- Jakiego poziomu dostosowania i kontroli chcesz umieścić w rozwiązaniu.
-- Jakiej struktury cenowej chcesz użyć.
+- Jaki poziom dostosowywania i kontroli chcesz nad rozwiązaniem.
+- Jaka struktura cenowa ma być chybieniem.
 
 ## <a name="management"></a>Zarządzanie
 
-Gdzie chcesz spędzać czas i zasoby związane z zarządzaniem systemem? 
+Gdzie chcesz spędzić czas i zasoby związane z zarządzaniem systemem? 
 
-- Wybierz podejście do usług platformy, aby mieć pełną kontrolę nad podstawowymi usługami w rozwiązaniu. Na przykład chcesz:
+- Wybierz podejście usług platformy, aby mieć pełną kontrolę nad podstawowych usług w rozwiązaniu. Na przykład, chcesz:
 
-    - Zarządzaj skalowaniem i zabezpieczaniem usług, aby sprostać potrzebom.
-    - Korzystaj z ekspertyzy wewnętrznych lub partnerskich, aby dołączać urządzenia i udostępniać usługi.
+    - Zarządzaj skalowaniem i zabezpieczaniem usług, aby spełnić Twoje potrzeby.
+    - Skorzystaj z wiedzy specjalistycznej firmy lub partnerów w zakresie urządzeń pokładowych i świadczenia usług.
 
-- Wybierz podejście do platformy zarządzanej aplikacji, aby skorzystać z platformy, która obsługuje skalowanie, zabezpieczenia i zarządzanie aplikacjami i urządzeniami IoT.
+- Wybierz podejście platformy aplikacji zarządzanych, aby skorzystać z platformy obsługującej skalę, zabezpieczenia i zarządzanie aplikacjami i urządzeniami IoT.
 
 ## <a name="control"></a>Kontrola
 
 Jakie elementy rozwiązania chcesz dostosować?
 
-- Wybierz podejście do usług platformy dla łącznego dostosowywania i kontroli nad architekturą rozwiązania.
+- Wybierz podejście usług platformy dla całkowitego dostosowania i kontroli nad architekturą rozwiązania.
 
-- Wybierz podejście do platformy zarządzanej aplikacji, aby dostosować znakowanie, pulpity nawigacyjne, role użytkowników, urządzenia i dane telemetryczne. Nie ma jednak potrzeby obsługi bazowego obciążenia związanego z zarządzaniem systemem IoT.
+- Wybierz podejście platformy aplikacji zarządzanych, aby dostosować znakowanie, pulpity nawigacyjne, role użytkowników, urządzenia i dane telemetryczne. Jednak nie chcesz obsłużyć podstawowe obciążenie związane z zarządzaniem systemem IoT.
 
-## <a name="pricing"></a>Ceny
+## <a name="pricing"></a>Cennik
 
-Jakiej struktury cenowej najlepiej pasuje do Twoich potrzeb?
+Jaka struktura cenowa najlepiej odpowiada Twoim potrzebom?
 
-- Wybierz podejście do usług platformy, aby dostosować usługi i kontrolować moje ogólne koszty.
+- Wybierz podejście usług platformy, aby dostosować usługi i kontrolować moje całkowite koszty.
 
-- Wybierz podejście do platformy zarządzanej aplikacji, aby uzyskać prostą, przewidywalną strukturę cenową.
+- Wybierz podejście platformy aplikacji zarządzanych dla prostej, przewidywalnej struktury cenowej.
 
 ## <a name="summary"></a>Podsumowanie
 
-Podejście do usług platformy jest odpowiednie dla firmy z rozwiązaniem w chmurze i wiedzą dotyczącym urządzeń, które chcą:
+Podejście do usług platformy jest odpowiednie dla firmy z rozwiązaniem w chmurze i doświadczeniem w zakresie urządzeń, które chcą:
 
 - Dostosuj usługi w rozwiązaniu.
-- Mieć wysoki poziom kontroli nad usługami w rozwiązaniu.
-- W pełni Dostosuj rozwiązanie.
+- Mieć wysoki stopień kontroli nad usługami w rozwiązaniu.
+- W pełni dostosuj rozwiązanie.
 
-Podejście do platformy zarządzanej aplikacji jest odpowiednie dla firmy, która:
+Podejście platformy aplikacji zarządzanych jest odpowiednie dla firmy, która:
 
-- Nie chcemy przydzielić rozległych zasobów do projektowania systemu, programowania i zarządzania.
-- Chce mieć przewidywalną strukturę cenową.
-- Program chce mieć pewne możliwości dostosowywania.
+- Nie chce przeznaczać rozległych zasobów na projektowanie, rozwój i zarządzanie systemem.
+- Czy chcesz przewidywalną strukturę cen.
+- Czy chcesz pewne możliwości dostosowywania.
 
 ## <a name="next-steps"></a>Następne kroki
 
-Aby uzyskać bardziej szczegółowy opis różnych usług i platform oraz jak są używane, zobacz temat [usługi i technologie Azure IoT](iot-services-and-technologies.md).
+Aby uzyskać bardziej kompleksowe wyjaśnienie różnych usług i platform oraz sposobu ich wykorzystania, zobacz [usługi i technologie Azure IoT.](iot-services-and-technologies.md)
 
-Aby dowiedzieć się więcej na temat kluczowych atrybutów pomyślnych rozwiązań IoT, zobacz [8 atrybuty pomyślnych rozwiązań IoT](https://aka.ms/8attributes) .
+Aby dowiedzieć się więcej o kluczowych atrybutach udanych rozwiązań IoT, zobacz [8 atrybutów pomyślnych rozwiązań IoT](https://aka.ms/8attributes) w białej księdze.
 
 Szczegółowe omówienie architektury IoT można znaleźć w temacie [Architektura referencyjna IoT platformy Microsoft Azure](https://aka.ms/iotrefarchitecture).

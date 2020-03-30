@@ -1,6 +1,6 @@
 ---
-title: Walidacja danych wejściowych — Microsoft Threat Modeling Tool — Azure | Microsoft Docs
-description: środki zaradcze dla zagrożeń ujawnionych w Threat Modeling Tool
+title: Sprawdzanie poprawności danych wejściowych — narzędzie microsoft do modelowania zagrożeń — Azure | Dokumenty firmy Microsoft
+description: zagrożeniach ujawnionych w narzędziu do modelowania zagrożeń
 services: security
 documentationcenter: na
 author: jegeib
@@ -16,31 +16,31 @@ ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
 ms.openlocfilehash: f443bf3111d2ab97874bdc62ec1370d17e2fc406
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/01/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68728054"
 ---
-# <a name="security-frame-input-validation--mitigations"></a>Ramka zabezpieczeń: Walidacja danych wejściowych | Środki zaradcze 
-| Produkt/usługę | Artykuł |
+# <a name="security-frame-input-validation--mitigations"></a>Ramka zabezpieczeń: Sprawdzanie poprawności danych wejściowych | Czynniki 
+| Produkt/usługa | Artykuł |
 | --------------- | ------- |
-| **Aplikacja sieci Web** | <ul><li>[Wyłącz obsługę skryptów XSLT dla wszystkich transformacji przy użyciu niezaufanych arkuszy stylów](#disable-xslt)</li><li>[Upewnij się, że każda Strona, która może zawierać zawartość z kontrolowanymi przez użytkownika, jest niedostępna z automatycznego wykrywania MIME](#out-sniffing)</li><li>[Ograniczanie lub wyłączanie rozpoznawania jednostek XML](#xml-resolution)</li><li>[Aplikacje korzystające z protokołu HTTP. sys wykonują weryfikację nieprawidłowego adresu URL](#app-verification)</li><li>[Upewnij się, że podczas akceptowania plików od użytkowników są stosowane odpowiednie kontrolki](#controls-users)</li><li>[Upewnij się, że parametry bezpieczne dla typu są używane w aplikacji sieci Web na potrzeby dostępu do danych](#typesafe)</li><li>[Użyj oddzielnych klas powiązania modelu lub listy filtrów powiązań, aby zapobiec usterce przypisywania grupowego MVC](#binding-mvc)</li><li>[Koduj niezaufane dane wyjściowe sieci Web przed renderowaniem](#rendering)</li><li>[Wykonaj walidację danych wejściowych i filtrowanie dla wszystkich właściwości modelu typu String](#typemodel)</li><li>[Narzędzie Oczyszczanie powinno być stosowane w polach formularza akceptujących wszystkie znaki, np. Edytor tekstu sformatowanego](#richtext)</li><li>[Nie przypisuj elementów DOM do ujścia, które nie mają wbudowanego kodowania](#inbuilt-encode)</li><li>[Sprawdź poprawność wszystkich przekierowań w aplikacji, które są zamknięte lub bezpiecznie gotowe](#redirect-safe)</li><li>[Implementuj sprawdzanie poprawności danych wejściowych dla wszystkich parametrów typu String zaakceptowanych przez metody kontrolera](#string-method)</li><li>[Ustaw limit czasu górnego limitu dla przetwarzania wyrażenia regularnego, aby zapobiec występowaniu z powodu nieprawidłowych wyrażeń regularnych](#dos-expression)</li><li>[Unikaj używania języka HTML. Raw w widokach Razor](#html-razor)</li></ul> | 
-| **Baza danych** | <ul><li>[Nie używaj zapytań dynamicznych w procedurach składowanych](#stored-proc)</li></ul> |
-| **Interfejs API sieci Web** | <ul><li>[Upewnij się, że Walidacja modelu odbywa się w metodach interfejsu API sieci Web](#validation-api)</li><li>[Implementuj sprawdzanie poprawności danych wejściowych dla wszystkich parametrów typu String zaakceptowanych przez metody interfejsu API sieci Web](#string-api)</li><li>[Upewnij się, że parametry bezpieczne dla typu są używane w interfejsie API sieci Web na potrzeby dostępu do danych](#typesafe-api)</li></ul> | 
-| **Baza danych dokumentów platformy Azure** | <ul><li>[Użyj sparametryzowanych zapytań SQL dla Azure Cosmos DB](#sql-docdb)</li></ul> | 
-| **WCF** | <ul><li>[Walidacja danych wejściowych WCF za poorednictwem powiązania schematu](#schema-binding)</li><li>[WCF — walidacja danych wejściowych za pomocą inspektorów parametrów](#parameters)</li></ul> |
+| **Aplikacja internetowa** | <ul><li>[Wyłączanie skryptów XSLT dla wszystkich przekształceń przy użyciu niezaufanych arkuszy stylów](#disable-xslt)</li><li>[Upewnij się, że każda strona, która może zawierać zawartość kontrolowaną przez użytkownika, rezygnuje z automatycznego wąchania MIME](#out-sniffing)</li><li>[Utwardzanie lub wyłączanie rozpoznawania jednostek XML](#xml-resolution)</li><li>[Aplikacje wykorzystujące http.sys przeprowadzają weryfikację kanonizacji adresów URL](#app-verification)</li><li>[Upewnij się, że podczas akceptowania plików od użytkowników obowiązują odpowiednie mechanizmy kontroli](#controls-users)</li><li>[Upewnij się, że parametry bezpieczne dla typu są używane w aplikacji sieci Web w celu uzyskania dostępu do danych](#typesafe)</li><li>[Użyj oddzielnych klas powiązań modelu lub list filtrów powiązania, aby zapobiec podatności na przydział masy MVC](#binding-mvc)</li><li>[Kodowanie niezaufanego wyjścia sieci Web przed renderowaniem](#rendering)</li><li>[Wykonywanie sprawdzania poprawności danych wejściowych i filtrowania we wszystkich właściwościach modelu typu ciągu](#typemodel)</li><li>[Sanityzacji należy stosować w polach formularza, które akceptują wszystkie znaki, np.](#richtext)</li><li>[Nie przypisywać elementów DOM do zlewów, które nie mają wbudowanego kodowania](#inbuilt-encode)</li><li>[Sprawdź poprawność wszystkich przekierowań w aplikacji są zamknięte lub wykonane bezpiecznie](#redirect-safe)</li><li>[Implementowanie sprawdzania poprawności danych wejściowych dla wszystkich parametrów typu ciągu akceptowanych przez metody kontrolera](#string-method)</li><li>[Ustaw górny limit limitu czasu przetwarzania wyrażeń regularnych, aby zapobiec dos z powodu złych wyrażeń regularnych](#dos-expression)</li><li>[Unikaj używania html.raw w widokach Razor](#html-razor)</li></ul> | 
+| **baza danych** | <ul><li>[Nie używaj zapytań dynamicznych w procedurach przechowywanych](#stored-proc)</li></ul> |
+| **Interfejs API sieci Web** | <ul><li>[Upewnij się, że sprawdzanie poprawności modelu odbywa się w metodach interfejsu API sieci Web](#validation-api)</li><li>[Implementowanie sprawdzania poprawności danych wejściowych dla wszystkich parametrów typu ciągu akceptowanych przez metody interfejsu API sieci Web](#string-api)</li><li>[Upewnij się, że parametry bezpieczne dla typu są używane w interfejsie API sieci Web w celu uzyskania dostępu do danych](#typesafe-api)</li></ul> | 
+| **Baza danych dokumentów platformy Azure** | <ul><li>[Używanie sparametryzowanych zapytań SQL dla usługi Azure Cosmos DB](#sql-docdb)</li></ul> | 
+| **WCF** | <ul><li>[Sprawdzanie poprawności danych wejściowych WCF za pomocą powiązania schematu](#schema-binding)</li><li>[WCF- Sprawdzanie poprawności danych wejściowych za pośrednictwem inspektorów parametrów](#parameters)</li></ul> |
 
-## <a id="disable-xslt"></a>Wyłącz obsługę skryptów XSLT dla wszystkich transformacji przy użyciu niezaufanych arkuszy stylów
+## <a name="disable-xslt-scripting-for-all-transforms-using-untrusted-style-sheets"></a><a id="disable-xslt"></a>Wyłączanie skryptów XSLT dla wszystkich przekształceń przy użyciu niezaufanych arkuszy stylów
 
 | Tytuł                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Aplikacja internetowa | 
 | **Faza SDL**               | Kompilacja |  
 | **Odpowiednie technologie** | Ogólny |
-| **Atrybuty**              | ND  |
-| **Wołują**              | [Zabezpieczenia XSLT](https://msdn.microsoft.com/library/ms763800(v=vs.85).aspx), [XsltSettings. EnableScript — Właściwość](https://msdn.microsoft.com/library/system.xml.xsl.xsltsettings.enablescript.aspx) |
-| **Kroki** | Język XSLT obsługuje skrypty w arkuszach stylów `<msxml:script>` przy użyciu elementu. Pozwala to na używanie funkcji niestandardowych w transformację XSLT. Skrypt jest wykonywany w kontekście procesu wykonującego transformację. Skrypt XSLT musi być wyłączony w niezaufanym środowisku, aby zapobiec wykonywaniu niezaufanego kodu. *W przypadku korzystania z platformy .NET:* Obsługa skryptów XSLT jest domyślnie wyłączona; należy jednak upewnić się, że nie został on jawnie włączony przy użyciu `XsltSettings.EnableScript` właściwości.|
+| **Atrybuty**              | Nie dotyczy  |
+| **Odwołania**              | [XSLT Security](https://msdn.microsoft.com/library/ms763800(v=vs.85).aspx), [Właściwość XsltSettings.EnableScript](https://msdn.microsoft.com/library/system.xml.xsl.xsltsettings.enablescript.aspx) |
+| **Kroki** | XSLT obsługuje skrypty wewnątrz `<msxml:script>` arkuszy stylów przy użyciu elementu. Dzięki temu funkcje niestandardowe mają być używane w transformacji XSLT. Skrypt jest wykonywany w kontekście procesu wykonywania transformacji. Skrypt XSLT musi być wyłączony, gdy w niezaufanym środowisku, aby zapobiec wykonywaniu niezaufanego kodu. *W przypadku korzystania z platformy .NET:* Skrypty XSLT są domyślnie wyłączone; jednak należy upewnić się, że nie została `XsltSettings.EnableScript` jawnie włączona za pośrednictwem właściwości.|
 
 ### <a name="example"></a>Przykład 
 
@@ -50,34 +50,34 @@ settings.EnableScript = true; // WRONG: THIS SHOULD BE SET TO false
 ```
 
 ### <a name="example"></a>Przykład
-W przypadku korzystania z programu MSXML 6,0 obsługa skryptów XSLT jest domyślnie wyłączona; należy jednak upewnić się, że nie został jawnie włączony przy użyciu właściwości obiektu DOM XML AllowXsltScript. 
+Jeśli używasz msxml 6.0, skrypty XSLT jest domyślnie wyłączone; należy jednak upewnić się, że nie została ona jawnie włączona za pośrednictwem właściwości obiektu XML DOM AllowXsltScript. 
 
 ```csharp
 doc.setProperty("AllowXsltScript", true); // WRONG: THIS SHOULD BE SET TO false
 ```
 
 ### <a name="example"></a>Przykład
-Jeśli używasz programu MSXML 5 lub starszego, skrypty XSLT są domyślnie włączone i należy je jawnie wyłączyć. Ustaw właściwość obiektu DOM XML AllowXsltScript na false. 
+Jeśli używasz MSXML 5 lub poniżej, skrypty XSLT jest domyślnie włączona i należy jawnie wyłączyć go. Ustaw właściwość obiektu XML DOM AllowXsltScript na wartość false. 
 
 ```csharp
 doc.setProperty("AllowXsltScript", false); // CORRECT. Setting to false disables XSLT scripting.
 ```
 
-## <a id="out-sniffing"></a>Upewnij się, że każda Strona, która może zawierać zawartość z kontrolowanymi przez użytkownika, jest niedostępna z automatycznego wykrywania MIME
+## <a name="ensure-that-each-page-that-could-contain-user-controllable-content-opts-out-of-automatic-mime-sniffing"></a><a id="out-sniffing"></a>Upewnij się, że każda strona, która może zawierać zawartość kontrolowaną przez użytkownika, rezygnuje z automatycznego wąchania MIME
 
 | Tytuł                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Aplikacja internetowa | 
 | **Faza SDL**               | Kompilacja |  
 | **Odpowiednie technologie** | Ogólny |
-| **Atrybuty**              | ND  |
-| **Wołują**              | [Część zabezpieczeń programu IE8 — Kompleksowa ochrona](https://blogs.msdn.com/ie/archive/2008/07/02/ie8-security-part-v-comprehensive-protection.aspx)  |
-| **Kroki** | <p>Dla każdej strony, która może zawierać zawartość do kontrolowania, należy użyć nagłówka `X-Content-Type-Options:nosniff`http. Aby zapewnić zgodność z tym wymaganiem, można ustawić wymaganą stronę nagłówka na stronie tylko dla stron, które mogą zawierać zawartość sterowaną przez użytkownika, lub można ustawić ją globalnie dla wszystkich stron w aplikacji.</p><p>Każdy typ pliku dostarczonego z serwera sieci Web ma skojarzony [Typ MIME](https://en.wikipedia.org/wiki/Mime_type) (nazywany również *typem Content-Type*), który opisuje charakter zawartości (czyli obraz, tekst, aplikacja itp.)</p><p>Nagłówek X-Content-options jest nagłówkiem HTTP, który umożliwia deweloperom określenie, że ich zawartość nie powinna być wykrywaniem MIME. Ten nagłówek jest przeznaczony do ograniczania ataków z wykrywaniem MIME. Obsługa tego nagłówka została dodana w programie Internet Explorer 8 (IE8)</p><p>Tylko użytkownicy programu Internet Explorer 8 (IE8) będą mogli korzystać z opcji X-Content-Type. Poprzednie wersje programu Internet Explorer nie respektują obecnie nagłówka X-Content-Type-Options</p><p>Program Internet Explorer 8 (i nowsze) to jedyne główne przeglądarki służące do implementowania funkcji rezygnacji z wykrywania MIME. Jeśli i gdy inne główne przeglądarki (Firefox, Safari, Chrome) implementują podobne funkcje, to zalecenie zostanie zaktualizowane w celu uwzględnienia również składni dla tych przeglądarek</p>|
+| **Atrybuty**              | Nie dotyczy  |
+| **Odwołania**              | [IE8 Security Part V - Kompleksowa ochrona](https://blogs.msdn.com/ie/archive/2008/07/02/ie8-security-part-v-comprehensive-protection.aspx)  |
+| **Kroki** | <p>Dla każdej strony, która może zawierać zawartość kontrolowaną `X-Content-Type-Options:nosniff`przez użytkownika, należy użyć nagłówka HTTP . Aby spełnić to wymaganie, można ustawić wymaganą stronę nagłówka według strony tylko dla tych stron, które mogą zawierać zawartość kontrolowaną przez użytkownika, lub można ustawić ją globalnie dla wszystkich stron w aplikacji.</p><p>Każdy typ pliku dostarczanego z serwera sieci web ma skojarzony [typ MIME](https://en.wikipedia.org/wiki/Mime_type) (nazywany także *typem zawartości),* który opisuje charakter zawartości (czyli obraz, tekst, aplikację itp.)</p><p>Nagłówek X-Content-Type-Options jest nagłówkiem HTTP, który umożliwia deweloperom określenie, że ich zawartość nie powinna być wąchaniem MIME. Ten nagłówek jest przeznaczony do łagodzenia ataków MIME-Sniffing. Obsługa tego nagłówka została dodana w programie Internet Explorer 8 (IE8)</p><p>Tylko użytkownicy programu Internet Explorer 8 (IE8) będą korzystać z opcji typu zawartości X. Poprzednie wersje programu Internet Explorer nie są obecnie zgodne z nagłówkiem X-Content-Type-Options</p><p>Internet Explorer 8 (i nowsze) są jedynymi głównymi przeglądarkami, które zaimplementują funkcję rezygnacji mime-sniffing. Jeśli inne główne przeglądarki (Firefox, Safari, Chrome) zaimplementują podobne funkcje, to zalecenie zostanie zaktualizowane w celu uwzględnienia składni dla tych przeglądarek, jak również</p>|
 
 ### <a name="example"></a>Przykład
 Aby włączyć wymagany nagłówek globalnie dla wszystkich stron w aplikacji, można wykonać jedną z następujących czynności: 
 
-* Dodaj nagłówek w pliku Web. config, jeśli aplikacja jest hostowana przez Internet Information Services (IIS) 7 
+* Dodaj nagłówek w pliku web.config, jeśli aplikacja jest obsługiwana przez internetowe usługi informacyjne (IIS) 7 
 
 ```
 <system.webServer> 
@@ -89,7 +89,7 @@ Aby włączyć wymagany nagłówek globalnie dla wszystkich stron w aplikacji, m
 </system.webServer> 
 ```
 
-* Dodawanie nagłówka za pomocą globalnej aplikacji\_BeginRequest 
+* Dodawanie nagłówka za\_pośrednictwem globalnego application BeginRequest 
 
 ``` 
 void Application_BeginRequest(object sender, EventArgs e)
@@ -132,16 +132,16 @@ public class XContentTypeOptionsModule : IHttpModule
 this.Response.Headers[""X-Content-Type-Options""] = ""nosniff""; 
 ``` 
 
-## <a id="xml-resolution"></a>Ograniczanie lub wyłączanie rozpoznawania jednostek XML
+## <a name="harden-or-disable-xml-entity-resolution"></a><a id="xml-resolution"></a>Utwardzanie lub wyłączanie rozpoznawania jednostek XML
 
 | Tytuł                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Aplikacja internetowa | 
 | **Faza SDL**               | Kompilacja |  
 | **Odpowiednie technologie** | Ogólny |
-| **Atrybuty**              | ND  |
-| **Wołują**              | [Rozszerzanie jednostek XML](https://capec.mitre.org/data/definitions/197.html), [ataki typu "odmowa usługi" i Obrona](https://msdn.microsoft.com/magazine/ee335713.aspx), [Omówienie zabezpieczeń programu MSXML](https://msdn.microsoft.com/library/ms754611(v=VS.85).aspx), [najlepsze rozwiązania dotyczące zabezpieczania kodu MSXML](https://msdn.microsoft.com/library/ms759188(VS.85).aspx), [odwołania do protokołu NSXMLParserDelegate](https://developer.apple.com/library/ios/#documentation/cocoa/reference/NSXMLParserDelegate_Protocol/Reference/Reference.html), [rozpoznawanie odwołań zewnętrznych ](https://msdn.microsoft.com/library/5fcwybb2.aspx) |
-| **Kroki**| <p>Chociaż nie jest on szeroko używany, istnieje funkcja XML, która umożliwia analizatorowi XML rozszerzanie jednostek makr o wartości zdefiniowane w obrębie samego dokumentu lub ze źródeł zewnętrznych. Na przykład dokument może definiować jednostkę "NazwaFirmy" z wartością "Microsoft", tak aby w przypadku każdego tekstu "&companyname;" pojawił się w dokumencie, jest on automatycznie zastępowany tekstem firmy Microsoft. Lub dokument może zdefiniować jednostkę "MSFTStock", która odwołuje się do zewnętrznej usługi sieci Web, aby pobrać bieżącą wartość firmy Microsoft.</p><p>W każdym momencie "&MSFTStock;" pojawia się w dokumencie, jest automatycznie zastępowana bieżącą ceną zapasową. Jednak ta funkcja może być nadużywana do tworzenia warunków odmowy usługi (DoS). Osoba atakująca może zagnieździć wiele jednostek, aby utworzyć dekompresyjnej XML rozszerzający, który zużywa całą dostępną pamięć w systemie. </p><p>Alternatywnie może utworzyć odwołanie zewnętrzne, które przesyła strumieniowo nieskończoną ilość danych lub po prostu zawiesza wątek. W związku z tym wszystkie zespoły muszą całkowicie wyłączyć wewnętrzne i/lub zewnętrzne rozwiązanie do rozpoznawania jednostek XML, jeśli ich aplikacja nie używa tej funkcji, lub ręcznie ograniczyć ilość pamięci i czas, jaką aplikacja może wykorzystać do rozpoznawania jednostek, jeśli ta funkcja jest absolutnie konieczne. Jeśli aplikacja nie wymaga rozpoznawania jednostek, wyłącz ją. </p>|
+| **Atrybuty**              | Nie dotyczy  |
+| **Odwołania**              | [Rozszerzenie jednostki XML,](https://capec.mitre.org/data/definitions/197.html) [ataki i zabezpieczenia typu "odmowa usługi" XML,](https://msdn.microsoft.com/magazine/ee335713.aspx) [omówienie zabezpieczeń MSXML,](https://msdn.microsoft.com/library/ms754611(v=VS.85).aspx) [najważniejsze wskazówki dotyczące zabezpieczania kodu MSXML,](https://msdn.microsoft.com/library/ms759188(VS.85).aspx) [odwołanie do protokołu NSXMLParserDelegate](https://developer.apple.com/library/ios/#documentation/cocoa/reference/NSXMLParserDelegate_Protocol/Reference/Reference.html), [rozpoznawanie odwołań zewnętrznych](https://msdn.microsoft.com/library/5fcwybb2.aspx) |
+| **Kroki**| <p>Chociaż nie jest powszechnie używany, istnieje funkcja XML, która umożliwia analizatorowi XML rozwijanie jednostek makr z wartościami zdefiniowanymi w samym dokumencie lub ze źródeł zewnętrznych. Na przykład dokument może zdefiniować jednostkę "companyname" z wartością "Microsoft", tak aby za każdym razem, gdy tekst " "&companyname;pojawia się w dokumencie, został automatycznie zastąpiony tekstem Microsoft. Lub dokument może zdefiniować jednostkę "MSFTStock", która odwołuje się do zewnętrznej usługi sieci web, aby pobrać bieżącą wartość akcji firmy Microsoft.</p><p>Następnie w&MSFTStock;dowolnym momencie " " pojawia się w dokumencie, jest automatycznie zastępowany aktualną ceną akcji. Jednak ta funkcja może być nadużywane do tworzenia warunków odmowa usługi (DoS). Osoba atakująca może zagnieździć wiele jednostek, aby utworzyć wykładniczą bombę XML rozszerzenia, która zużywa całą dostępną pamięć w systemie. </p><p>Alternatywnie może utworzyć odwołanie zewnętrzne, które strumieniuje z powrotem nieskończoną ilość danych lub po prostu zawiesza wątku. W rezultacie wszystkie zespoły muszą całkowicie wyłączyć wewnętrzne i/lub zewnętrzne rozpoznawanie jednostek XML, jeśli ich aplikacja jej nie używa, lub ręcznie ograniczyć ilość pamięci i czas, który aplikacja może wykorzystać do rozpoznawania jednostek, jeśli ta funkcja jest absolutnie konieczna. Jeśli rozpoznawanie jednostek nie jest wymagane przez aplikację, a następnie wyłączyć go. </p>|
 
 ### <a name="example"></a>Przykład
 W przypadku kodu .NET Framework można użyć następujących metod:
@@ -159,10 +159,10 @@ XmlReaderSettings settings = new XmlReaderSettings();
 settings.DtdProcessing = DtdProcessing.Prohibit;
 XmlReader reader = XmlReader.Create(stream, settings);
 ```
-Należy zauważyć, że wartość domyślna `ProhibitDtd` w `XmlReaderSettings` parametrze in ma wartość `XmlTextReader` true, ale w jej wartość jest równa false. Jeśli używasz tabela XmlReaderSettings, nie musisz jawnie ustawiać opcji ProhibitDtd na true, ale jest to zalecane w celu zapewnienia bezpieczeństwa. Należy również zauważyć, że Klasa XmlDocument domyślnie zezwala na rozpoznawanie jednostek. 
+Należy zauważyć, że `ProhibitDtd` `XmlReaderSettings` wartość domyślna `XmlTextReader` w jest true, ale w nim jest false. Jeśli używasz XmlReaderSettings, nie trzeba ustawić ProhibitDtd true jawnie, ale jest zalecane ze względu na bezpieczeństwo, że to zrobić. Należy również zauważyć, że XmlDocument klasa umożliwia rozdzielczość jednostki domyślnie. 
 
 ### <a name="example"></a>Przykład
-Aby wyłączyć rozpoznawanie jednostek dla obiektów XmlDocuments, użyj `XmlDocument.Load(XmlReader)` przeciążenia metody Load i ustaw odpowiednie właściwości w argumencie XmlReader, aby wyłączyć rozpoznawanie, jak pokazano w poniższym kodzie: 
+Aby wyłączyć rozdzielczość jednostki dla XmlDocuments, użyj `XmlDocument.Load(XmlReader)` przeciążenia Load metody i ustawić odpowiednie właściwości w xmlReader argument, aby wyłączyć rozdzielczość, jak pokazano w następującym kodzie: 
 
 ```csharp
 XmlReaderSettings settings = new XmlReaderSettings();
@@ -173,7 +173,7 @@ doc.Load(reader);
 ```
 
 ### <a name="example"></a>Przykład
-Jeśli wyłączenie rozpoznawania jednostek nie jest możliwe dla aplikacji, należy ustawić właściwość tabela XmlReaderSettings. MaxCharactersFromEntities na rozsądną wartość zgodnie z potrzebami aplikacji. Spowoduje to ograniczenie wpływu potencjalnych ataków na rozwinięcie wykładnicze. Poniższy kod zawiera przykład tego podejścia: 
+Jeśli wyłączenie rozpoznawania jednostek nie jest możliwe dla aplikacji, należy ustawić XmlReaderSettings.MaxCharactersFromEntities właściwość rozsądnej wartości zgodnie z potrzebami aplikacji. Ograniczy to wpływ potencjalnych wykładniczych ataków DoS ekspansji. Poniższy kod zawiera przykład tego podejścia: 
 
 ```csharp
 XmlReaderSettings settings = new XmlReaderSettings();
@@ -183,7 +183,7 @@ XmlReader reader = XmlReader.Create(stream, settings);
 ```
 
 ### <a name="example"></a>Przykład
-Jeśli musisz rozpoznać jednostki wbudowane, ale nie musisz rozpoznawać jednostek zewnętrznych, ustaw właściwość tabela XmlReaderSettings. XmlResolver na wartość null. Przykład: 
+Jeśli trzeba rozpoznać jednostki wbudowane, ale nie trzeba rozpoznawać jednostek zewnętrznych, ustaw właściwość XmlReaderSettings.XmlResolver na wartość null. Przykład: 
 
 ```csharp
 XmlReaderSettings settings = new XmlReaderSettings();
@@ -192,32 +192,32 @@ settings.MaxCharactersFromEntities = 1000;
 settings.XmlResolver = null;
 XmlReader reader = XmlReader.Create(stream, settings);
 ```
-Należy pamiętać, że w programie MSXML6 ProhibitDTD jest ustawiona na true (domyślnie wyłączenie przetwarzania DTD). W przypadku kodu Apple OSX/iOS istnieją dwa parsery XML, których można użyć: NSXMLParser i libXML2. 
+Należy zauważyć, że w MSXML6, ProhibitDTD jest ustawiona na true (wyłączenie przetwarzania DTD) domyślnie. W przypadku kodu Apple OSX/iOS dostępne są dwa analizatory XML: NSXMLParser i libXML2. 
 
-## <a id="app-verification"></a>Aplikacje korzystające z protokołu HTTP. sys wykonują weryfikację nieprawidłowego adresu URL
-
-| Tytuł                   | Szczegóły      |
-| ----------------------- | ------------ |
-| **Składnik**               | Aplikacja internetowa | 
-| **Faza SDL**               | Kompilacja |  
-| **Odpowiednie technologie** | Ogólny |
-| **Atrybuty**              | ND  |
-| **Wołują**              | ND  |
-| **Kroki** | <p>Wszystkie aplikacje, które używają protokołu HTTP. sys, powinny być zgodne z następującymi wskazówkami:</p><ul><li>Ogranicz długość adresu URL do nie więcej niż 16 384 znaków (ASCII lub Unicode). Jest to bezwzględna maksymalna długość adresu URL oparta na domyślnym ustawieniu Internet Information Services (IIS) 6. Witryny sieci Web powinny dążyć do krótszej długości niż to możliwe</li><li>Użyj standardowych klas operacji we/wy plików .NET Framework (takich jak FileStream), ponieważ będą one korzystać z reguł kanonizacji w programie .NET FX</li><li>Jawnie Kompiluj listę dozwolonych nazw znanych plików</li><li>Jawnie Odrzuć znane pliki, nie będzie można odrzucać programu UrlScan: exe, bat, cmd, com, htw, IDA, IDQ, HTR, IDC, SHTM [l], STM, Printer, ini, pol, dat</li><li>Przechwyć następujące wyjątki:<ul><li>System. ArgumentException (dla nazw urządzeń)</li><li>System. NotSupportedException (dla strumieni danych)</li><li>System. IO. FileNotFoundException (dla nieprawidłowych nazw plików)</li><li>System. IO. DirectoryNotFoundException (dla nieprawidłowego ucieczki katalogów)</li></ul></li><li>*Nie należy* wywoływać interfejsów API we/wy plików Win32. Na nieprawidłowym adresie URL bezpiecznie zwracają błąd 400 do użytkownika i Rejestruj rzeczywistą wartość błędu.</li></ul>|
-
-## <a id="controls-users"></a>Upewnij się, że podczas akceptowania plików od użytkowników są stosowane odpowiednie kontrolki
+## <a name="applications-utilizing-httpsys-perform-url-canonicalization-verification"></a><a id="app-verification"></a>Aplikacje wykorzystujące http.sys przeprowadzają weryfikację kanonizacji adresów URL
 
 | Tytuł                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Aplikacja internetowa | 
 | **Faza SDL**               | Kompilacja |  
 | **Odpowiednie technologie** | Ogólny |
-| **Atrybuty**              | ND  |
-| **Wołują**              | [Przekazywanie plików bez ograniczeń](https://www.owasp.org/index.php/Unrestricted_File_Upload), [tabela sygnatur plików](https://www.garykessler.net/library/file_sigs.html) |
-| **Kroki** | <p>Przekazane pliki stanowią znaczące zagrożenie dla aplikacji.</p><p>Pierwszym krokiem w wielu atakach jest uzyskanie pewnego kodu do systemu. Następnie osoba atakująca musi znaleźć sposób, aby uzyskać kod wykonywany. Użycie przekazywania plików pomaga osobie atakującej wykonać pierwszy krok. Konsekwencje nieograniczonego przekazywania plików mogą się różnić, łącznie z ukończeniem przejęcia systemu, przeciążonym systemem plików lub bazą danych, przekazywaniem ataków do systemów zaplecza i prostą.</p><p>Jest to zależne od tego, co aplikacja zawiera przekazany plik, a w szczególności w miejscu, w którym jest przechowywany. Brak walidacji plików po stronie serwera. Do funkcji przekazywania plików należy zaimplementować następujące kontrolki zabezpieczeń:</p><ul><li>Sprawdzanie rozszerzenia pliku (akceptowany jest tylko prawidłowy zestaw dozwolonych typów plików)</li><li>Maksymalny limit rozmiaru pliku</li><li>Nie należy przekazywać pliku do programu Webroot; Lokalizacja powinna być katalogiem na dysku innym niż system.</li><li>Należy postępować zgodnie z konwencją nazewnictwa, w taki sposób, że nazwa przekazanego pliku ma pewną losowość, więc aby zapobiec nadpisaniu plików</li><li>Pliki powinny być skanowane w poszukiwaniu oprogramowania antywirusowego przed zapisaniem na dysku</li><li>Upewnij się, że nazwa pliku i wszelkie inne metadane (np. ścieżka pliku) są weryfikowane pod kątem złośliwych znaków</li><li>Należy sprawdzić podpis formatu pliku, aby uniemożliwić użytkownikowi przekazanie zamaskowanego pliku (np. przekazanie pliku exe przez zmianę rozszerzenia do txt)</li></ul>| 
+| **Atrybuty**              | Nie dotyczy  |
+| **Odwołania**              | Nie dotyczy  |
+| **Kroki** | <p>Każda aplikacja korzystająca z http.sys powinna postępować zgodnie z tymi wytycznymi:</p><ul><li>Ogranicz długość adresu URL do nie więcej niż 16 384 znaków (ASCII lub Unicode). Jest to bezwzględna maksymalna długość adresu URL oparta na domyślnym ustawieniu usług internetowych (IIS) 6. Strony internetowe powinny dążyć do długości krótszej niż to, jeśli to możliwe</li><li>Użyj standardowych klas we/wy pliku .NET Framework (takich jak FileStream), ponieważ będą one korzystać z reguł kanonizacji w .NET FX</li><li>Jawnie tworzenie listy dozwolonych znanych nazwy plików</li><li>Jawnie odrzucić znane typy plików nie będzie służyć UrlScan odrzuca: exe, bat, cmd, com, htw, ida, idq, htr, idc, shtm[l], stm, drukarka, ini, pol, dat plików</li><li>Złap następujące wyjątki:<ul><li>System.ArgumentException (dla nazw urządzeń)</li><li>System.NotSupportedException (dla strumieni danych)</li><li>System.IO.FileNotFoundException (dla nieprawidłowych nazwy plików ominęły)</li><li>System.IO.DirectoryNotFoundException (dla nieprawidłowych identyfikatorów ekustaw)</li></ul></li><li>*Nie* wywoływaj interfejsów API we/wy pliku Win32. Na nieprawidłowy adres URL bezpiecznie zwrócić błąd 400 do użytkownika i rejestrować rzeczywisty błąd.</li></ul>|
+
+## <a name="ensure-appropriate-controls-are-in-place-when-accepting-files-from-users"></a><a id="controls-users"></a>Upewnij się, że podczas akceptowania plików od użytkowników obowiązują odpowiednie mechanizmy kontroli
+
+| Tytuł                   | Szczegóły      |
+| ----------------------- | ------------ |
+| **Składnik**               | Aplikacja internetowa | 
+| **Faza SDL**               | Kompilacja |  
+| **Odpowiednie technologie** | Ogólny |
+| **Atrybuty**              | Nie dotyczy  |
+| **Odwołania**              | [Nieograniczone przekazywanie plików](https://www.owasp.org/index.php/Unrestricted_File_Upload), [Tabela podpisów plików](https://www.garykessler.net/library/file_sigs.html) |
+| **Kroki** | <p>Przesłane pliki stanowią znaczne zagrożenie dla aplikacji.</p><p>Pierwszym krokiem w wielu ataków jest uzyskanie kodu do systemu, który ma zostać zaatakowany. Następnie atak musi tylko znaleźć sposób, aby uzyskać kod wykonany. Użycie przekazywania plików pomaga osobie atakującej wykonać pierwszy krok. Konsekwencje nieograniczonego przekazywania plików mogą się różnić, w tym całkowite przejęcie systemu, przeciążony system plików lub baza danych, przekazywanie ataków do systemów zaplecza i proste zniesławienie.</p><p>To zależy od tego, co aplikacja robi z przesłanym plikiem, a zwłaszcza gdzie jest przechowywany. Brak sprawdzania poprawności przekazywania plików po stronie serwera. Następujące zabezpieczenia powinny być zaimplementowane dla funkcji przekazywania plików:</p><ul><li>Sprawdzanie rozszerzenia pliku (akceptowany powinien być tylko prawidłowy zestaw dozwolonego typu pliku)</li><li>Maksymalny limit rozmiaru pliku</li><li>Plik nie powinien być przesyłany do webroot; lokalizacja powinna być katalogiem na dysku niesystemowym</li><li>Należy przestrzegać konwencji nazewnictwa, aby nazwa przesłana pliku miała pewną losowość, aby zapobiec zastępowaniu plików</li><li>Pliki powinny być skanowane w poszukiwaniu wirusa przed zapisaniem na dysku</li><li>Upewnij się, że nazwa pliku i inne metadane (np. ścieżka pliku) są sprawdzane pod kątem złośliwych znaków</li><li>Należy sprawdzić podpis formatu pliku, aby uniemożliwić użytkownikowi przesłanie pliku maskowanego (np. przesłanie pliku exe przez zmianę rozszerzenia na txt)</li></ul>| 
 
 ### <a name="example"></a>Przykład
-Ostatni punkt dotyczący weryfikacji podpisu w formacie pliku znajduje się w poniższej klasie, aby uzyskać szczegółowe informacje: 
+Aby uzyskać ostatni punkt dotyczący sprawdzania poprawności podpisu formatu pliku, zapoznaj się z poniższą klasą, aby uzyskać szczegółowe informacje: 
 
 ```csharp
         private static Dictionary<string, List<byte[]>> fileSignature = new Dictionary<string, List<byte[]>>
@@ -321,19 +321,19 @@ Ostatni punkt dotyczący weryfikacji podpisu w formacie pliku znajduje się w po
         }
 ```
 
-## <a id="typesafe"></a>Upewnij się, że parametry bezpieczne dla typu są używane w aplikacji sieci Web na potrzeby dostępu do danych
+## <a name="ensure-that-type-safe-parameters-are-used-in-web-application-for-data-access"></a><a id="typesafe"></a>Upewnij się, że parametry bezpieczne dla typu są używane w aplikacji sieci Web w celu uzyskania dostępu do danych
 
 | Tytuł                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Aplikacja internetowa | 
 | **Faza SDL**               | Kompilacja |  
 | **Odpowiednie technologie** | Ogólny |
-| **Atrybuty**              | ND  |
-| **Wołują**              | ND  |
-| **Kroki** | <p>Jeśli używasz kolekcji Parameters, SQL traktuje dane wejściowe jako wartość literału, a nie jako kod wykonywalny. Kolekcja Parameters może służyć do wymuszania ograniczeń typu i długości danych wejściowych. Wartości spoza zakresu wyzwalają wyjątek. Jeśli parametry SQL z bezpiecznym typem nie są używane, osoby atakujące mogą mieć możliwość wykonywania ataków iniekcji osadzonych w niefiltrowanych danych wejściowych.</p><p>Używaj parametrów typu Safe podczas konstruowania zapytań SQL, aby uniknąć możliwych ataków iniekcji kodu SQL, które mogą wystąpić w przypadku niefiltrowanych danych wejściowych. Można użyć parametrów typu Safe z procedurami składowanymi i dynamicznych instrukcji SQL. Parametry są traktowane jako wartości literału przez bazę danych, a nie jako kod wykonywalny. Parametry są również sprawdzane pod kątem typu i długości.</p>|
+| **Atrybuty**              | Nie dotyczy  |
+| **Odwołania**              | Nie dotyczy  |
+| **Kroki** | <p>Jeśli używasz parametrów kolekcji, SQL traktuje dane wejściowe jest jako wartość literału, a następnie jako kod wykonywalny. Kolekcja Parameters może służyć do wymuszania ograniczeń typu i długości danych wejściowych. Wartości poza zakresem wyzwalają wyjątek. Jeśli parametry SQL bezpieczne dla typu nie są używane, osoby atakujące mogą być w stanie wykonać ataki iniekcji, które są osadzone w niefiltrowanych danych wejściowych.</p><p>Użyj parametrów typu bezpieczne podczas konstruowania zapytań SQL, aby uniknąć ewentualnych ataków iniekcji SQL, które mogą wystąpić przy niefiltrowanych danych wejściowych. Można użyć parametrów typu bezpieczne z procedurami przechowywanymi i z dynamicznymi instrukcjami SQL. Parametry są traktowane jako wartości literału przez bazę danych, a nie jako kod wykonywalny. Parametry są również sprawdzane pod kątem typu i długości.</p>|
 
 ### <a name="example"></a>Przykład 
-Poniższy kod przedstawia sposób używania parametrów bezpiecznego typu z SqlParameterCollection podczas wywoływania procedury składowanej. 
+Poniższy kod pokazuje, jak używać parametrów typu bezpieczne z SqlParameterCollection podczas wywoływania procedury składowanej. 
 
 ```csharp
 using System.Data;
@@ -349,29 +349,29 @@ myCommand.SelectCommand.Parameters["@au_id"].Value = SSN.Text;
 myCommand.Fill(userDataset);
 }  
 ```
-W poprzednim przykładzie kodu wartość wejściowa nie może być dłuższa niż 11 znaków. Jeśli dane nie są zgodne z typem lub długością zdefiniowaną przez parametr, Klasa SqlParameter zgłasza wyjątek. 
+W poprzednim przykładzie kodu wartość wejściowa nie może być dłuższa niż 11 znaków. Jeśli dane nie są zgodne z typem lub długością zdefiniowaną przez parametr, klasa SqlParameter zgłasza wyjątek. 
 
-## <a id="binding-mvc"></a>Użyj oddzielnych klas powiązania modelu lub listy filtrów powiązań, aby zapobiec usterce przypisywania grupowego MVC
+## <a name="use-separate-model-binding-classes-or-binding-filter-lists-to-prevent-mvc-mass-assignment-vulnerability"></a><a id="binding-mvc"></a>Użyj oddzielnych klas powiązań modelu lub list filtrów powiązania, aby zapobiec podatności na przydział masy MVC
 
 | Tytuł                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Aplikacja internetowa | 
 | **Faza SDL**               | Kompilacja |  
 | **Odpowiednie technologie** | MVC5, MVC6 |
-| **Atrybuty**              | ND  |
-| **Wołują**              | [Atrybuty metadanych](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.metadatatypeattribute), [luki w zabezpieczeniach klucza publicznego i łagodzenie](https://github.com/blog/1068-public-key-security-vulnerability-and-mitigation), [pełny Przewodnik po przypisaniu do grup w ASP.NET MVC](https://odetocode.com/Blogs/scott/archive/2012/03/11/complete-guide-to-mass-assignment-in-asp-net-mvc.aspx), [wprowadzenie z EF przy użyciu MVC](https://www.asp.net/mvc/tutorials/getting-started-with-ef-using-mvc/implementing-basic-crud-functionality-with-the-entity-framework-in-asp-net-mvc-application#overpost) |
-| **Kroki** | <ul><li>**Kiedy należy szukać luk w zabezpieczeniach?-** Luki w zabezpieczeniach wykorzystujących przede wszystkim mogą wystąpić w dowolnym miejscu klasy modelu z danych wejściowych użytkownika. Struktury, takie jak MVC, mogą reprezentować dane użytkowników w niestandardowych klasach platformy .NET, w tym zwykłych obiektów CLR (POCOs). MVC automatycznie wypełnia te klasy modelu danymi z żądania, zapewniając wygodną reprezentację do celów związanych z danymi wejściowymi użytkownika. Gdy klasy te zawierają właściwości, które nie powinny być ustawiane przez użytkownika, aplikacja może być narażona na ataki wykorzystujące nadmierne Księgowanie, które umożliwiają kontrolę nad danymi, które nigdy nie są przeznaczone dla aplikacji. Podobnie jak powiązanie modelu MVC, technologie dostępu do baz danych, takie jak mapowania obiektów i relacyjnych, takie jak Entity Framework często również obsługują używanie obiektów POCO do reprezentowania danych bazy danych. Te klasy modelu danych zapewniają taką samą wygodę w zakresie pracy z danymi bazy danych, jak MVC w przypadku danych wejściowych użytkownika. Ponieważ zarówno MVC, jak i baza danych obsługują podobne modele, takie jak obiekty POCO, łatwo jest ponownie używać tych samych klas w obu celach. W tej sytuacji nie można zachować separacji obaw i jest to jeden typowy obszar, w którym niezamierzone właściwości są ujawniane w ramach powiązania modelu, umożliwiając ataki z wykorzystaniem nadmiernego księgowania.</li><li>**Dlaczego nie należy używać niefiltrowanych klas modelu bazy danych jako parametrów do akcji MVC?-** Ponieważ powiązanie modelu MVC spowoduje powiązanie elementów w tej klasie. Nawet jeśli dane nie są wyświetlane w widoku, złośliwy użytkownik może wysłać żądanie HTTP z uwzględnieniem tych danych, a MVC powiąże się z tym, że Klasa bazy danych jest kształtem danych, który powinien zostać zaakceptowany dla danych wejściowych użytkownika.</li><li>**Dlaczego warto zadbać o kształt używany do powiązania modelu?-** Użycie powiązania modelu ASP.NET MVC z zbyt szerokimi modelami uwidacznia aplikację w przypadku ataków z nadmiernym zaksięgowaniem. Użycie nadwyżkowe w księgowaniu umożliwia osobom atakującym zmianę danych aplikacji poza zamierzonym deweloperem, na przykład zastępowanie cen dla elementu lub uprawnień zabezpieczeń dla konta. Aplikacje powinny używać modeli powiązań specyficznych dla akcji (lub określonych dozwolonych list filtrów właściwości) w celu zapewnienia jawnego kontraktu dla niezaufanych danych wejściowych, które mają być dozwolone za pośrednictwem powiązania modelu.</li><li>**Czy istnieją oddzielne modele powiązań tylko duplikowanie kodu?-** Nie. jest to kwestia oddzielenia problemów. W przypadku ponownego użycia modeli baz danych w metodach akcji jest wymawiana Każda właściwość (lub podwłaściwość) w tej klasie może być ustawiana przez użytkownika w żądaniu HTTP. Jeśli nie jest to, co chcesz zrobić z MVC, potrzebujesz listy filtrów lub oddzielnego kształtu klasy do wyświetlania MVC, jakie dane mogą pochodzić z danych wejściowych użytkownika.</li><li>**Czy jeśli mam oddzielne modele powiązań dla danych wejściowych użytkownika, czy muszę duplikować wszystkie atrybuty mojej adnotacji z danymi?-** Niekoniecznie. Można użyć klasy MetadataAttribute w klasie modelu bazy danych do łączenia metadanych z klasą powiązań modelu. Należy zauważyć, że typ, do którego odwołuje się obiekt sqldatatypeattribute, musi być podzbiorem typu odwołania (może mieć mniej właściwości, ale nie więcej).</li><li>**Przeniesienie danych między modelami wejściowymi użytkownika i modelami baz danych to żmudnym. Czy mogę po prostu skopiować wszystkie właściwości przy użyciu odbicia? -** Tak. Jedyne właściwości, które pojawiają się w modelach powiązań, to te, które zostały uznane za bezpieczne dla danych wejściowych użytkownika. Nie istnieje powód zabezpieczeń, który uniemożliwia używanie odbicia do kopiowania wszystkich właściwości, które istnieją we wspólnych między tymi dwoma modelami.</li><li>**Co około [bind (exclude = "â € ¦")]. Czy mogę użyć tego, czy nie ma oddzielnych modeli powiązań? —** Ta metoda nie jest zalecana. Użycie [bind (exclude = "â € ¦")] oznacza, że każda nowa właściwość jest domyślnie powiązana. Po dodaniu nowej właściwości istnieje dodatkowy krok, który należy pamiętać, aby zachować bezpieczeństwo, a nie aby projekt był zabezpieczony domyślnie. W zależności od tego, czy ta lista jest sprawdzana przez dewelopera za każdym razem, gdy właściwość jest dodawana jest ryzykowna.</li><li>**Is [bind (include = "â € ¦")] przydatny do edycji operacji?-** Znaleziono. [Bind (include = "â € ¦")] jest odpowiednia tylko dla operacji wstawiania w stylu (Dodawanie nowych danych). W przypadku operacji aktualizowania w stylu (korygowania istniejących danych) Użyj innego podejścia, takiego jak posiadanie oddzielnych modeli powiązań lub przekazanie jawnej listy dozwolonych właściwości do UpdateModel lub TryUpdateModel. Dodanie atrybutu [bind (include = "â € ¦")] w operacji edycji oznacza, że MVC utworzy wystąpienie obiektu i ustawi tylko wymienione właściwości, pozostawiając wszystkie inne wartości domyślne. Gdy dane zostaną utrwalone, całkowicie zastąpią istniejącą jednostkę, resetuje wartości dla wszystkich pominiętych właściwości do ich wartości domyślnych. Na przykład jeśli właściwość IsAdmin została pominięta z atrybutu [bind (include = "â € ¦")] w operacji edycji, każdy użytkownik, którego nazwa była edytowana za pomocą tej akcji, zostanie zresetowany do wartości IsAdmin = false (każdy zmodyfikowany użytkownik utraci stan administratora). Jeśli chcesz uniemożliwić aktualizacje niektórych właściwości, użyj jednego z innych podejścia powyżej. Należy zauważyć, że niektóre wersje narzędzi MVC generują klasy kontrolerów z [bind (include = "â € ¦")] w ramach edycji akcji i oznaczają, że usunięcie właściwości z tej listy uniemożliwi wylogowanie. Jednakże, jak opisano powyżej, takie podejście nie działa zgodnie z oczekiwaniami i zamiast tego zresetuje wszystkie dane we właściwościach pominiętych do ich wartości domyślnych.</li><li>**Czy w przypadku operacji tworzenia są jakieś ograniczenia używające [bind (include = "â € ¦")], a nie oddzielnych modeli powiązań?-** Opcję. Najpierw to podejście nie działa w przypadku scenariuszy edycji, co wymaga utrzymania dwóch oddzielnych podejścia do ograniczenia wszystkich luk w zabezpieczeniach. Po drugie, oddzielne modele powiązań wymuszają rozdzielenie problemów między kształtem używanym do wprowadzania danych przez użytkownika a kształtem używanym do trwałości, coś [bind (include = "â € ¦")] nie robi. Po trzecie należy zauważyć, że [bind (include = "â € ¦")] może obsługiwać tylko właściwości najwyższego poziomu; w atrybucie nie można zezwalać tylko na fragmenty właściwości podrzędnych (takie jak "Details.Name"). Na koniec, a najprawdopodobniej jest to najważniejsze, przy użyciu [bind (include = "â € ¦")] dodaje dodatkowy krok, który należy zapamiętać w dowolnym momencie, gdy Klasa jest używana do powiązania modelu. Jeśli nowa metoda akcji wiąże się bezpośrednio z klasą danych i zapomni, aby zawierała atrybut [bind (include = "â € ¦")], może być narażony na ataki wykorzystujące nadmierne Księgowanie, więc wartość [bind (include = "â € ¦")] jest nieco mniej bezpieczna. Jeśli używasz [bind (include = "â € ¦")], pamiętaj o tym, aby określić go za każdym razem, gdy klasy danych są wyświetlane jako parametry metody akcji.</li><li>**Co należy zrobić w przypadku operacji tworzenia, co obejmuje atrybut [bind (include = "â € ¦")] w samej klasie modelu? Czy to podejście nie pozwala uniknąć konieczności umieszczania atrybutu na każdej metodzie działania? —** To podejście działa w niektórych przypadkach. Przy użyciu [bind (include = "â € ¦")] na samym typie modelu (a nie w parametrach akcji przy użyciu tej klasy), nie trzeba pamiętać, aby uwzględnić atrybut [bind (include = "â € ¦")] w każdej metodzie działania. Użycie atrybutu bezpośrednio w klasie efektywnie tworzy osobny obszar powierzchni tej klasy na potrzeby powiązania modeli. Jednak takie podejście zezwala tylko na jeden kształt powiązania modelu na klasę modelu. Jeśli jedna metoda akcji wymaga zezwolenia na powiązanie modelu pola (na przykład akcja tylko administrator, która aktualizuje role użytkowników), a inne akcje muszą uniemożliwiać powiązanie modelu z tym polem, ta metoda nie będzie działała. Każda klasa może mieć tylko jeden kształt powiązania modelu; Jeśli różne akcje wymagają różnych kształtów powiązania modelu, muszą one reprezentować te oddzielne kształty przy użyciu oddzielnych klas powiązań modelu lub oddzielnych atrybutów [bind (include = "â € ¦")] w metodach akcji.</li><li>**Co to są modele powiązań? Czy są one takie same jak modele widoku? —** Te dwie powiązane koncepcje. Termin model powiązania odwołuje się do klasy modelu używanej na liście parametrów akcji (kształt przeszedł z powiązania modelu MVC do metody Action). Model widoku terminu odwołuje się do klasy modelu przekazaną z metody akcji do widoku. Użycie modelu specyficznego dla widoku jest powszechnym podejściem do przekazywania danych z metody akcji do widoku. Często ten kształt jest również odpowiedni dla powiązania modelu, a model widoku terminu może służyć do odwoływania się do tego samego modelu, który jest używany w obu miejscach. Aby była precyzyjna, ta procedura zawiera szczegółowe informacje na temat modeli powiązań, skoncentrowanych na kształcie przekazanym do działania, który jest celem przypisywania grupowego.</li></ul>| 
+| **Atrybuty**              | Nie dotyczy  |
+| **Odwołania**              | [Atrybuty metadanych,](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.metadatatypeattribute) [Luka w zabezpieczeniach klucza publicznego i łagodzenie,](https://github.com/blog/1068-public-key-security-vulnerability-and-mitigation) [Kompletny przewodnik po przypisaniu masy w ASP.NET MVC](https://odetocode.com/Blogs/scott/archive/2012/03/11/complete-guide-to-mass-assignment-in-asp-net-mvc.aspx), [Wprowadzenie do EF przy użyciu MVC](https://www.asp.net/mvc/tutorials/getting-started-with-ef-using-mvc/implementing-basic-crud-functionality-with-the-entity-framework-in-asp-net-mvc-application#overpost) |
+| **Kroki** | <ul><li>**Kiedy należy szukać luk w zabezpieczeniach dotyczących nadmiernego publikowania?** Luki w zabezpieczeniach nadmiernego publikowania mogą wystąpić w dowolnym miejscu, w które należy powiązać klasy modelu z danych wejściowych użytkownika. Struktury, takie jak MVC może reprezentować dane użytkownika w niestandardowych klas .NET, w tym zwykły stary CLR obiektów (POCO). MVC automatycznie wypełnia te klasy modelu danymi z żądania, zapewniając wygodną reprezentację do obsługi danych wejściowych użytkownika. Gdy te klasy zawierają właściwości, które nie powinny być ustawiane przez użytkownika, aplikacja może być narażony na ataki nadmiernego publikowania, które umożliwiają użytkownikowi kontrolę nad danymi, które aplikacja nigdy nie zamierzała. Podobnie jak powiązanie modelu MVC, technologie dostępu do bazy danych, takie jak obiekty/relacyjne mapery, takie jak Entity Framework, często obsługują również obiekty POCO do reprezentowania danych bazy danych. Te klasy modelu danych zapewniają taką samą wygodę w kontaktach z danymi bazy danych, jak MVC w kontaktach z danymi wejściowymi użytkownika. Ponieważ zarówno MVC, jak i bazy danych obsługują podobne modele, takie jak obiekty POCO, wydaje się łatwe do ponownego użycia tych samych klas do obu celów. Ta praktyka nie zachowuje separacji problemów i jest jednym z wspólnych obszarów, w którym niezamierzone właściwości są narażone na powiązanie modelu, umożliwiając nadmierne publikowanie ataków.</li><li>**Dlaczego nie powinienem używać moich niefiltrowanych klas modelu bazy danych jako parametrów do moich akcji MVC? -** Ponieważ powiązanie modelu MVC będzie wiązać wszystko w tej klasie. Nawet jeśli dane nie są wyświetlane w widoku, złośliwy użytkownik może wysłać żądanie HTTP z tymi danymi, a MVC chętnie powiąże go, ponieważ akcja mówi, że klasa bazy danych jest kształtem danych, które powinien zaakceptować dla danych wejściowych użytkownika.</li><li>**Dlaczego powinienem dbać o kształt używany do wiązania modelu?** Za pomocą ASP.NET wiązania modelu MVC z modeli zbyt szeroki udostępnia aplikacji do nadmiernego publikowania ataków. Nadmierne księgowanie może umożliwić atakującym zmianę danych aplikacji poza to, co deweloper zamierzał, takich jak zastąpienie ceny dla elementu lub uprawnień zabezpieczeń dla konta. Aplikacje powinny używać modeli wiązania specyficzne dla akcji (lub określonych list filtrów dozwolonych właściwości) w celu zapewnienia jawnej umowy dla niezaufanych danych wejściowych, aby umożliwić za pośrednictwem powiązania modelu.</li><li>**Czy posiadanie oddzielnych modeli wiązania po prostu duplikuje kod? -** Nie, jest to kwestia rozdzielenia obaw. Jeśli ponownie użyć modeli bazy danych w metodach akcji, mówisz, że każda właściwość (lub podwładna) w tej klasie może być ustawiona przez użytkownika w żądaniu HTTP. Jeśli nie jest to, co chcesz MVC zrobić, trzeba listy filtrów lub kształt klasy oddzielne, aby pokazać MVC, jakie dane mogą pochodzić z danych wejściowych użytkownika zamiast.</li><li>**Jeśli mam oddzielne modele wiązania dla wprowadzania danych przez użytkownika, czy muszę powielić wszystkie moje atrybuty adnotacji danych? -** Niekoniecznie. Można użyć MetadataTypeAttribute w klasie modelu bazy danych, aby połączyć się z metadanymi w klasie wiązania modelu. Wystarczy zauważyć, że typ, do którego odwołuje się Atrybut MetadataTypeAttribute musi być podzbiorem typu odwołującego się (może mieć mniej właściwości, ale nie więcej).</li><li>**Przenoszenie danych między modelami wprowadzania danych użytkownika i modeli baz danych jest nużące. Czy mogę po prostu skopiować wszystkie właściwości za pomocą odbicia? -** Tak. Tylko właściwości, które pojawiają się w modelach wiązania są te, które zostały określone jako bezpieczne dla danych wejściowych użytkownika. Nie ma powodu zabezpieczeń, który uniemożliwia użycie odbicia do kopiowania wszystkich właściwości, które istnieją wspólne między tymi dwoma modelami.</li><li>**Co [Bind(Exclude ="â€¦")]. Czy mogę używać tego zamiast oddzielnych modeli wiązania? -** Takie podejście nie jest zalecane. Użycie funkcji [Bind(Exclude ="â€¦")] oznacza, że każda nowa właściwość jest domyślnie powiązana. Po dodaniu nowej właściwości, istnieje dodatkowy krok do zapamiętania, aby zachować rzeczy bezpieczne, a nie o projekt być bezpieczne domyślnie. W zależności od dewelopera sprawdzanie tej listy za każdym razem, gdy właściwość jest dodawany jest ryzykowne.</li><li>**Czy [Bind(Include ="â€¦")] jest przydatny w operacjach edycji? -** №. [Bind(Include ="â€¦")] nadaje się tylko do operacji w stylu INSERT (dodawanie nowych danych). W przypadku operacji w stylu UPDATE (poprawianie istniejących danych) należy użyć innego podejścia, takiego jak oddzielne modele wiązania lub przekazanie jawnej listy dozwolonych właściwości do UpdateModel lub TryUpdateModel. Dodanie atrybutu [Bind(Include ="â€¦")] w operacji edycji oznacza, że MVC utworzy wystąpienie obiektu i ustawi tylko wymienione właściwości, pozostawiając wszystkie inne przy ich wartościach domyślnych. Gdy dane są zachowywane, całkowicie zastąpi istniejącą jednostkę, resetując wartości dla wszystkich pominiętych właściwości do ich wartości domyślnych. Na przykład jeśli IsAdmin został pominięty w [Bind(Include ="â€¦")] w operacji edycji, każdy użytkownik, którego nazwa została edytowana za pomocą tej akcji, zostanie zresetowany do IsAdmin = false (każdy edytowany użytkownik utraciłby status administratora). Jeśli chcesz zapobiec aktualizacji niektórych właściwości, należy użyć jednego z innych metod powyżej. Należy zauważyć, że niektóre wersje narzędzi MVC generują klasy kontrolera z [Bind(Include ="â€¦")] w akcje edycji i sugerują, że usunięcie właściwości z tej listy zapobiegnie nadmiernemu publikowaniu ataków. Jednak jak opisano powyżej, to podejście nie działa zgodnie z oczekiwaniami i zamiast tego spowoduje zresetowanie wszystkich danych w pominiętych właściwości do ich wartości domyślnych.</li><li>**Czy w przypadku operacji tworzenia istnieją jakieś zastrzeżenia używające [Bind(Include ="â€¦")] zamiast oddzielnych modeli wiązania? -** Tak. Po pierwsze to podejście nie działa w przypadku edytowania scenariuszy, wymagając obsługi dwóch oddzielnych podejść w celu wyeliminowania wszystkich luk w zabezpieczeniach związanych z nadmiernym księgowaniem. Po drugie oddzielne modele wiązania wymuszają rozdzielenie problemów między kształtem używanym do wprowadzania danych przez użytkownika a kształtem używanym do trwałości, czego nie robi coś [Bind(Include ="â€¦")]. Po trzecie, należy zauważyć, że [Bind(Include ="â€¦")] może obsługiwać tylko właściwości najwyższego poziomu; nie można zezwolić tylko na części właściwości podrzędnych (takie jak "Details.Name") w atrybucie. Na koniec i być może najważniejsze, przy użyciu [Bind(Include ="â€¦")] dodaje dodatkowy krok, który musi być zapamiętany za każdym razem, gdy klasa jest używana do wiązania modelu. Jeśli nowa metoda akcji wiąże się bezpośrednio z klasą danych i zapomni dołączyć atrybut [Bind(Include ="â€¦")], może być narażony na ataki nadmiernego publikowania, więc podejście [Bind(Include ="â€¦")] jest domyślnie nieco mniej bezpieczne. Jeśli używasz [Bind(Include ="â€¦")], należy zawsze pamiętać, aby określić go za każdym razem, gdy klasy danych są wyświetlane jako parametry metody akcji.</li><li>**W przypadku operacji tworzenia, co z umieszczeniem atrybutu [Bind(Include ="â€¦")] w samej klasie modelu? Czy to podejście nie pozwala uniknąć konieczności zapamiętywania umieszczania atrybutu na każdej metodzie działania? -** Takie podejście działa w niektórych przypadkach. Za pomocą [Bind(Include ="â€¦")] na samym typie modelu (a nie na parametry akcji przy użyciu tej klasy), nie pozwala pamiętać o uwzględnienie [Bind(Include ="â€¦")] atrybut dla każdej metody akcji. Za pomocą atrybutu bezpośrednio na klasy skutecznie tworzy oddzielny obszar powierzchni tej klasy do celów wiązania modelu. Jednak takie podejście pozwala tylko na jeden kształt wiązania modelu na klasę modelu. Jeśli jedna metoda akcji musi zezwolić na powiązanie modelu pola (na przykład akcję tylko dla administratora, która aktualizuje role użytkowników) i inne akcje muszą zapobiec wiązaniu modelu tego pola, to podejście nie będzie działać. Każda klasa może mieć tylko jeden kształt wiązania modelu; Jeśli różne akcje potrzebują różnych kształtów wiązania modelu, muszą reprezentować te oddzielne kształty przy użyciu oddzielnych klas wiązania modelu lub oddzielnych atrybutów [Bind(Include ="â€¦")] w metodach akcji.</li><li>**Co to są modele wiązania? Czy są to samo, co modele widoku? -** Są to dwie powiązane koncepcje. Termin model wiązania odnosi się do klasy modelu używanej na liście parametrów akcji (kształt przeszedł z wiązania modelu MVC do metody akcji). Model widoku terminu odnosi się do klasy modelu przekazywane z metody akcji do widoku. Za pomocą modelu specyficznego dla widoku jest wspólne podejście do przekazywania danych z metody akcji do widoku. Często ten kształt jest również odpowiedni dla wiązania modelu, a termin model widoku może służyć do odwoływania się do tego samego modelu używanego w obu miejscach. Aby być precyzyjnym, procedura ta mówi konkretnie o wiążących modelach, koncentrując się na kształcie przekazanym do działania, co ma znaczenie dla celów masowego przydzielania.</li></ul>| 
 
-## <a id="rendering"></a>Koduj niezaufane dane wyjściowe sieci Web przed renderowaniem
+## <a name="encode-untrusted-web-output-prior-to-rendering"></a><a id="rendering"></a>Kodowanie niezaufanego wyjścia sieci Web przed renderowaniem
 
 | Tytuł                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Aplikacja internetowa | 
 | **Faza SDL**               | Kompilacja |  
-| **Odpowiednie technologie** | Generic, Web Forms, MVC5, MVC6 |
-| **Atrybuty**              | ND  |
-| **Wołują**              | [Jak zapobiegać skryptom między lokacjami w programie ASP.NET](https://msdn.microsoft.com/library/ms998274.aspx), [skrypty](https://cwe.mitre.org/data/definitions/79.html)międzywitrynowe, zapobieganie atakom między lokacjami i [Ściągawka arkusz](https://www.owasp.org/index.php/XSS_(Cross_Site_Scripting)_Prevention_Cheat_Sheet) |
-| **Kroki** | Skrypty między lokacjami (powszechnie skracane jako XSS) to wektor ataków dla Usługi online lub dowolnej aplikacji/składnika, który wykorzystuje dane wejściowe z sieci Web. Luki w zabezpieczeniach XSS mogą umożliwić atakującemu wykonanie skryptu na komputerze innego użytkownika za pośrednictwem zagrożonej aplikacji sieci Web. Złośliwe skrypty mogą służyć do kradzieży plików cookie i w inny sposób manipulowania komputerem ofiary za pomocą języka JavaScript. Ataki XSS są blokowane przez zweryfikowanie danych wprowadzonych przez użytkownika, upewniając się, że są poprawnie sformułowane i kodowane, zanim zostaną renderowane na stronie sieci Web. Sprawdzanie poprawności danych wejściowych i Kodowanie wyjściowe można wykonać przy użyciu biblioteki ochrony sieci Web. W przypadku kodu zarządzanego (\#C, VB.net itp.) należy użyć co najmniej jednej odpowiedniej metody kodowania z biblioteki ochrony sieci Web (Anti-XSS) w zależności od kontekstu, w którym dane wejściowe użytkownika są obsługiwane:| 
+| **Odpowiednie technologie** | Ogólny, Formularze internetowe, MVC5, MVC6 |
+| **Atrybuty**              | Nie dotyczy  |
+| **Odwołania**              | [Jak zapobiec cross-site skryptów w ASP.NET](https://msdn.microsoft.com/library/ms998274.aspx), [Cross-site Scripting](https://cwe.mitre.org/data/definitions/79.html), [XSS (Cross Site Scripting) Zapobieganie Cheat Sheet](https://www.owasp.org/index.php/XSS_(Cross_Site_Scripting)_Prevention_Cheat_Sheet) |
+| **Kroki** | Skrypty między witrynami (zwykle skracane jako XSS) to wektor ataku dla usług online lub dowolnej aplikacji/składnika, która zużywa dane wejściowe z sieci Web. Luki w zabezpieczeniach XSS mogą umożliwiać osobie atakującej wykonanie skryptu na komputerze innego użytkownika za pośrednictwem zagrożonej aplikacji sieci web. Złośliwe skrypty mogą być używane do kradzieży plików cookie i w inny sposób manipulowania komputerem ofiary za pośrednictwem języka JavaScript. XSS jest zapobiegana przez sprawdzanie poprawności danych wejściowych użytkownika, upewniając się, że jest dobrze sformułowany i kodowania przed renderowaniem na stronie sieci web. Sprawdzanie poprawności danych wejściowych i kodowania danych wyjściowych można wykonać za pomocą biblioteki ochrony sieci Web. W przypadku kodu\#zarządzanego (C , VB.NET itp.) użyj jednej lub więcej odpowiednich metod kodowania z biblioteki ochrony sieci Web (Anti-XSS), w zależności od kontekstu, w którym dane wejściowe użytkownika są manifestowane:| 
 
 ### <a name="example"></a>Przykład
 
@@ -387,41 +387,41 @@ W poprzednim przykładzie kodu wartość wejściowa nie może być dłuższa ni�
 * Encoder.LdapEncode 
 ```
 
-## <a id="typemodel"></a>Wykonaj walidację danych wejściowych i filtrowanie dla wszystkich właściwości modelu typu String
+## <a name="perform-input-validation-and-filtering-on-all-string-type-model-properties"></a><a id="typemodel"></a>Wykonywanie sprawdzania poprawności danych wejściowych i filtrowania we wszystkich właściwościach modelu typu ciągu
 
 | Tytuł                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Aplikacja internetowa | 
 | **Faza SDL**               | Kompilacja |  
-| **Odpowiednie technologie** | Generic, MVC5, MVC6 |
-| **Atrybuty**              | ND  |
-| **Wołują**              | [Dodawanie walidacji](https://www.asp.net/mvc/overview/getting-started/introduction/adding-validation), [Weryfikowanie danych modelu w aplikacji MVC](https://msdn.microsoft.com/library/dd410404(v=vs.90).aspx), [reguły identyfikatorów GUID dla aplikacji ASP.NET MVC](https://msdn.microsoft.com/magazine/dd942822.aspx) |
-| **Kroki** | <p>Wszystkie parametry wejściowe muszą zostać sprawdzone przed użyciem ich w aplikacji, aby upewnić się, że aplikacja jest chroniona przed złośliwymi danymi wejściowymi użytkownika. Sprawdź poprawność wartości wejściowych przy użyciu walidacji wyrażenia regularnego po stronie serwera z strategią walidacji dozwolonych. Nieoczyszczone dane wejściowe użytkownika/parametry przesłane do metod mogą spowodować luki w zabezpieczeniach iniekcji kodu.</p><p>W przypadku aplikacji sieci Web punkty wejścia mogą również zawierać pola formularza, QueryString, cookies, nagłówki HTTP i parametry usługi sieci Web.</p><p>Następujące sprawdzenia poprawności danych wejściowych należy wykonać po powiązaniu modelu:</p><ul><li>Do właściwości modelu należy dodać adnotację ze RegularExpressioną, aby akceptować dozwolone znaki i maksymalną dopuszczalną długość</li><li>Metody kontrolera powinny wykonywać ModelStateą ważność</li></ul>|
+| **Odpowiednie technologie** | Ogólny, MVC5, MVC6 |
+| **Atrybuty**              | Nie dotyczy  |
+| **Odwołania**              | [Dodawanie sprawdzania poprawności,](https://www.asp.net/mvc/overview/getting-started/introduction/adding-validation) [sprawdzanie poprawności danych modelu w aplikacji MVC,](https://msdn.microsoft.com/library/dd410404(v=vs.90).aspx)zasady [przewodnie dla aplikacji ASP.NET MVC](https://msdn.microsoft.com/magazine/dd942822.aspx) |
+| **Kroki** | <p>Wszystkie parametry wejściowe muszą zostać zweryfikowane, zanim zostaną użyte w aplikacji, aby upewnić się, że aplikacja jest chroniona przed złośliwymi plikami wejściowymi użytkownika. Sprawdź poprawność wartości wejściowych przy użyciu weryfikacji wyrażenia regularnego po stronie serwera za pomocą strategii sprawdzania poprawności białej listy. Niezaajnasłowione dane wejściowe użytkownika / parametry przekazywane do metod mogą powodować luki w wstrzyknięciu kodu.</p><p>W przypadku aplikacji sieci web punkty wejścia mogą również zawierać pola formularza, połączenia z plikami QueryStrings, pliki cookie, nagłówki HTTP i parametry usługi sieci web.</p><p>Następujące kontrole sprawdzania poprawności danych wejściowych muszą być wykonywane po powiązaniu modelu:</p><ul><li>Właściwości modelu powinny być opisywane adnotacją RegularExpression, do akceptowania dozwolonych znaków i maksymalnej dopuszczalnej długości</li><li>Metody kontrolera powinny spełniać ważność modelstate</li></ul>|
 
-## <a id="richtext"></a>Narzędzie Oczyszczanie powinno być stosowane w polach formularza akceptujących wszystkie znaki, np. Edytor tekstu sformatowanego
-
-| Tytuł                   | Szczegóły      |
-| ----------------------- | ------------ |
-| **Składnik**               | Aplikacja internetowa | 
-| **Faza SDL**               | Kompilacja |  
-| **Odpowiednie technologie** | Ogólny |
-| **Atrybuty**              | ND  |
-| **Wołują**              | [Koduj niebezpieczne dane wejściowe](https://msdn.microsoft.com/library/ff647397.aspx#paght000003_step3), [Sanitizer HTML](https://github.com/mganss/HtmlSanitizer) |
-| **Kroki** | <p>Zidentyfikuj wszystkie znaczniki statycznej znaczników, których chcesz użyć. Typowym celem jest ograniczenie formatowania do bezpiecznych elementów HTML, takich jak `<b>` (pogrubienie) i `<i>` (kursywa).</p><p>Przed zapisaniem danych kodowanie HTML. Dzięki temu złośliwe skrypty są bezpieczne, powodując, że są obsługiwane jako tekst, a nie jako kod wykonywalny.</p><ol><li>Wyłącz weryfikację żądania ASP.NET przez dodanie atrybutu ValidateRequest = "false" do \@ dyrektywy Page</li><li>Koduj dane wejściowe ciągu za pomocą metody HtmlEncode</li><li>Użyj elementu StringBuilder i Wywołaj jego metodę Replace, aby selektywnie usunąć kodowanie elementów HTML, które mają być dozwolone.</li></ol><p>Strona w odwołaniach powoduje wyłączenie walidacji żądania ASP.NET przez ustawienie `ValidateRequest="false"`. HTML — koduje dane wejściowe i wybiórczo zezwala `<b>` na i `<i>` Alternatywnie, można również użyć biblioteki .NET do oczyszczania html.</p><p>HtmlSanitizer to biblioteka .NET do czyszczenia fragmentów HTML i dokumentów z konstrukcji, które mogą prowadzić do ataków typu XSS. Używa AngleSharp do analizowania, manipulowania i renderowania kodu HTML i CSS. HtmlSanitizer można zainstalować jako pakiet NuGet, a dane wejściowe użytkownika mogą być przesyłane za pomocą odpowiednich metod oczyszczania HTML lub CSS, jak ma to zastosowanie, po stronie serwera. Należy pamiętać, że oczyszczanie jako kontroli zabezpieczeń należy traktować tylko jako ostatnią opcję.</p><p>Sprawdzanie poprawności danych wejściowych i kodowania danych wyjściowych jest traktowane jako lepsza kontrola zabezpieczeń.</p> |
-
-## <a id="inbuilt-encode"></a>Nie przypisuj elementów DOM do ujścia, które nie mają wbudowanego kodowania
+## <a name="sanitization-should-be-applied-on-form-fields-that-accept-all-characters-eg-rich-text-editor"></a><a id="richtext"></a>Sanityzacji należy stosować w polach formularza, które akceptują wszystkie znaki, np.
 
 | Tytuł                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Aplikacja internetowa | 
 | **Faza SDL**               | Kompilacja |  
 | **Odpowiednie technologie** | Ogólny |
-| **Atrybuty**              | ND  |
-| **Wołują**              | ND  |
-| **Kroki** | W wielu funkcjach JavaScript domyślnie nie jest używane kodowanie. W przypadku przypisywania niezaufanych danych wejściowych do elementów DOM za pośrednictwem takich funkcji może wystąpić wykonanie skryptu między lokacjami (XSS).| 
+| **Atrybuty**              | Nie dotyczy  |
+| **Odwołania**              | [Kodowanie niebezpiecznych danych wejściowych](https://msdn.microsoft.com/library/ff647397.aspx#paght000003_step3), [dezynfekcji HTML](https://github.com/mganss/HtmlSanitizer) |
+| **Kroki** | <p>Zidentyfikuj wszystkie statyczne znaczniki, których chcesz użyć. Powszechną praktyką jest ograniczenie formatowania do `<b>` bezpiecznych elementów HTML, takich jak (pogrubienie) i `<i>` (kursywa).</p><p>Przed zapisaniem danych należy zakodować je w formacie HTML. Dzięki temu każdy złośliwy skrypt jest bezpieczny, powodując, że jest obsługiwany jako tekst, a nie jako kod wykonywalny.</p><ol><li>Wyłącz sprawdzanie poprawności żądania ASP.NET przez dodanie atrybutu ValidateRequest="false" do dyrektywy \@ Page</li><li>Kodowanie danych wejściowych ciągu za pomocą metody HtmlEncode</li><li>Użyj StringBuilder i wywołać jego Replace metody selektywnie usunąć kodowanie na elementy HTML, które chcesz zezwolić</li></ol><p>Strona w odwołaniach wyłącza sprawdzanie poprawności żądania `ValidateRequest="false"`ASP.NET, ustawiając . To HTML koduje dane wejściowe i `<b>` `<i>` selektywnie pozwala i alternatywnie, .NET biblioteki do dezynfekcji HTML mogą być również używane.</p><p>HtmlSanitizer to biblioteka .NET do czyszczenia fragmentów HTML i dokumentów z konstrukcji, które mogą prowadzić do ataków XSS. Używa AngleSharp do analizować, manipulować i renderować HTML i CSS. HtmlSanitizer można zainstalować jako pakiet NuGet, a dane wejściowe użytkownika mogą być przekazywane za pośrednictwem odpowiednich metod dezynfekcji HTML lub CSS, w zależności od przypadku, po stronie serwera. Należy pamiętać, że sanitization jako kontrola bezpieczeństwa powinna być traktowana tylko jako ostatnia opcja.</p><p>Sprawdzanie poprawności danych wejściowych i kodowania danych wyjściowych są uważane za lepsze mechanizmy kontroli zabezpieczeń.</p> |
+
+## <a name="do-not-assign-dom-elements-to-sinks-that-do-not-have-inbuilt-encoding"></a><a id="inbuilt-encode"></a>Nie przypisywać elementów DOM do zlewów, które nie mają wbudowanego kodowania
+
+| Tytuł                   | Szczegóły      |
+| ----------------------- | ------------ |
+| **Składnik**               | Aplikacja internetowa | 
+| **Faza SDL**               | Kompilacja |  
+| **Odpowiednie technologie** | Ogólny |
+| **Atrybuty**              | Nie dotyczy  |
+| **Odwołania**              | Nie dotyczy  |
+| **Kroki** | Wiele funkcji javascript nie koduje domyślnie. Podczas przypisywania niezaufanych danych wejściowych do elementów DOM za pośrednictwem takich funkcji, może spowodować wykonanie skryptu krzyżowego (XSS).| 
 
 ### <a name="example"></a>Przykład
-Poniżej przedstawiono niebezpieczne przykłady: 
+Oto niepewne przykłady: 
 
 ```
 document.getElementByID("div1").innerHtml = value;
@@ -429,61 +429,61 @@ $("#userName").html(res.Name);
 return $('<div/>').html(value)
 $('body').append(resHTML);   
 ```
-Nie używaj `innerHtml`; zamiast tego `innerText`Użyj. Podobnie zamiast `$("#elm").html()`, użyj`$("#elm").text()` 
+Nie używaj `innerHtml`; zamiast tego `innerText`użyj . Podobnie, zamiast `$("#elm").html()`, użyj`$("#elm").text()` 
 
-## <a id="redirect-safe"></a>Sprawdź poprawność wszystkich przekierowań w aplikacji, które są zamknięte lub bezpiecznie gotowe
+## <a name="validate-all-redirects-within-the-application-are-closed-or-done-safely"></a><a id="redirect-safe"></a>Sprawdź poprawność wszystkich przekierowań w aplikacji są zamknięte lub wykonane bezpiecznie
 
 | Tytuł                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Aplikacja internetowa | 
 | **Faza SDL**               | Kompilacja |  
 | **Odpowiednie technologie** | Ogólny |
-| **Atrybuty**              | ND  |
-| **Wołują**              | [Struktura autoryzacji OAuth 2,0 — otwarte readresatory](https://tools.ietf.org/html/rfc6749#section-10.15) |
-| **Kroki** | <p>Projektowanie aplikacji wymagającej przekierowania do lokalizacji dostarczonej przez użytkownika musi ograniczyć możliwość przekierowania na wstępnie zdefiniowaną "bezpieczną" listę witryn lub domen. Wszystkie przekierowania w aplikacji muszą być zamknięte/bezpieczne.</p><p>W tym celu:</p><ul><li>Identyfikuj wszystkie przekierowania</li><li>Zaimplementuj odpowiednie środki zaradcze dla każdego przekierowania. Odpowiednie środki zaradcze obejmują Przekieruj dozwolonych lub potwierdzenie użytkownika. Jeśli witryna sieci Web lub usługa z luką typu "Open redirect" używa dostawców tożsamości usługi Facebook/OAuth/OpenID Connect, osoba atakująca może wykraść token logowania użytkownika i spersonifikować tego użytkownika. Jest to nieodłączne ryzyko w przypadku korzystania z protokołu OAuth, który jest opisany w dokumencie RFC 6749 "Struktura autoryzacji uwierzytelniania OAuth 2,0", sekcja 10,15 "otwarte przekierowania" — Podobnie poświadczenia użytkowników mogą zostać naruszone przez Spear ataki wyłudzaniane przy użyciu funkcji Otwórz przekierowania.</li></ul>|
+| **Atrybuty**              | Nie dotyczy  |
+| **Odwołania**              | [Ramy autoryzacji OAuth 2.0 — otwarte readresatory](https://tools.ietf.org/html/rfc6749#section-10.15) |
+| **Kroki** | <p>Projekt aplikacji wymagający przekierowania do lokalizacji dostarczonej przez użytkownika musi ograniczać możliwe cele przekierowania do wstępnie zdefiniowanej "bezpiecznej" listy lokacji lub domen. Wszystkie przekierowania w aplikacji muszą być zamknięte/bezpieczne.</p><p>W tym celu:</p><ul><li>Identyfikowanie wszystkich przekierowań</li><li>Zaimplementuj odpowiednie środki zaradcze dla każdego przekierowania. Odpowiednie środki zaradcze obejmują przekierowanie na białej liście lub potwierdzenie użytkownika. Jeśli witryna sieci Web lub usługa z otwartą luką w zabezpieczeniach przekierowania korzysta z dostawców tożsamości Facebook/OAuth/OpenID, osoba atakująca może ukraść token logowania użytkownika i podszyć się pod niego. Jest to nieodłączne ryzyko podczas korzystania z OAuth, co jest udokumentowane w RFC 6749 "The OAuth 2.0 Authorization Framework", Sekcja 10.15 "Otwarte przekierowania" Podobnie, poświadczenia użytkowników mogą zostać naruszone przez ataki phishingowe spear za pomocą otwartych przekierowań</li></ul>|
 
-## <a id="string-method"></a>Implementuj sprawdzanie poprawności danych wejściowych dla wszystkich parametrów typu String zaakceptowanych przez metody kontrolera
-
-| Tytuł                   | Szczegóły      |
-| ----------------------- | ------------ |
-| **Składnik**               | Aplikacja internetowa | 
-| **Faza SDL**               | Kompilacja |  
-| **Odpowiednie technologie** | Generic, MVC5, MVC6 |
-| **Atrybuty**              | ND  |
-| **Wołują**              | [Sprawdzanie poprawności danych modelu w aplikacji MVC](https://msdn.microsoft.com/library/dd410404(v=vs.90).aspx), [reguły identyfikatorów guid dla aplikacji ASP.NET MVC](https://msdn.microsoft.com/magazine/dd942822.aspx) |
-| **Kroki** | W przypadku metod, które po prostu akceptują typ danych pierwotnych i nie są modelami jako argumentem, należy wykonać walidację danych wejściowych przy użyciu wyrażenia regularnego. Tutaj wyrażenie regularne. IsMatch powinno być używane z prawidłowym wzorcem wyrażenia regularnego. Jeśli dane wejściowe nie pasują do określonego wyrażenia regularnego, formant nie powinien kontynuować działania i należy wyświetlić odpowiednie ostrzeżenie dotyczące błędu walidacji.| 
-
-## <a id="dos-expression"></a>Ustaw limit czasu górnego limitu dla przetwarzania wyrażenia regularnego, aby zapobiec występowaniu z powodu nieprawidłowych wyrażeń regularnych
+## <a name="implement-input-validation-on-all-string-type-parameters-accepted-by-controller-methods"></a><a id="string-method"></a>Implementowanie sprawdzania poprawności danych wejściowych dla wszystkich parametrów typu ciągu akceptowanych przez metody kontrolera
 
 | Tytuł                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Aplikacja internetowa | 
 | **Faza SDL**               | Kompilacja |  
-| **Odpowiednie technologie** | Generic, Web Forms, MVC5, MVC6  |
-| **Atrybuty**              | ND  |
-| **Wołują**              | [Właściwość DefaultRegexMatchTimeout](https://msdn.microsoft.com/library/system.web.configuration.httpruntimesection.defaultregexmatchtimeout.aspx) |
-| **Kroki** | Aby zapewnić ataki typu "odmowa usługi" na nieprawidłowo utworzone wyrażenia regularne, które powodują wiele operacji wycofywania, należy ustawić domyślny limit czasu dla globalnego. Jeśli czas przetwarzania trwa dłużej niż zdefiniowany górny limit, zostałby zgłoszony wyjątek limitu czasu. Jeśli nic nie jest skonfigurowane, limit czasu byłby nieskończony.| 
+| **Odpowiednie technologie** | Ogólny, MVC5, MVC6 |
+| **Atrybuty**              | Nie dotyczy  |
+| **Odwołania**              | [Sprawdzanie poprawności danych modelu w aplikacji MVC,](https://msdn.microsoft.com/library/dd410404(v=vs.90).aspx) [zasady przewodnie dla aplikacji ASP.NET MVC](https://msdn.microsoft.com/magazine/dd942822.aspx) |
+| **Kroki** | Dla metod, które po prostu zaakceptować typ danych pierwotnych, a nie modele jako argument, sprawdzanie poprawności danych wejściowych przy użyciu wyrażenia regularnego należy wykonać. Tutaj Regex.IsMatch powinny być używane z prawidłowym wzorem regex. Jeśli dane wejściowe nie są zgodne z określonym wyrażeniem regularnym, formant nie powinien być kontynuowany i powinno być wyświetlane odpowiednie ostrzeżenie dotyczące niepowodzenia sprawdzania poprawności.| 
+
+## <a name="set-upper-limit-timeout-for-regular-expression-processing-to-prevent-dos-due-to-bad-regular-expressions"></a><a id="dos-expression"></a>Ustaw górny limit limitu czasu przetwarzania wyrażeń regularnych, aby zapobiec dos z powodu złych wyrażeń regularnych
+
+| Tytuł                   | Szczegóły      |
+| ----------------------- | ------------ |
+| **Składnik**               | Aplikacja internetowa | 
+| **Faza SDL**               | Kompilacja |  
+| **Odpowiednie technologie** | Ogólny, Formularze internetowe, MVC5, MVC6  |
+| **Atrybuty**              | Nie dotyczy  |
+| **Odwołania**              | [Właściwość DefaultRegexMatchTimeout](https://msdn.microsoft.com/library/system.web.configuration.httpruntimesection.defaultregexmatchtimeout.aspx) |
+| **Kroki** | Aby zapewnić ataki typu "odmowa usługi" na źle utworzone wyrażenia regularne, które powodują wiele wycofywania, ustaw domyślny limit czasu na zwłoki globalnej. Jeśli czas przetwarzania trwa dłużej niż zdefiniowany górny limit, to zgłosić wyjątek timeout. Jeśli nic nie jest skonfigurowany, limit czasu będzie nieskończony.| 
 
 ### <a name="example"></a>Przykład
-Na przykład następująca konfiguracja spowoduje zgłoszenie RegexMatchTimeoutException, jeśli przetwarzanie trwa ponad 5 sekund: 
+Na przykład następująca konfiguracja zrzuci RegexMatchTimeoutException, jeśli przetwarzanie trwa dłużej niż 5 sekund: 
 
 ```csharp
 <httpRuntime targetFramework="4.5" defaultRegexMatchTimeout="00:00:05" />
 ```
 
-## <a id="html-razor"></a>Unikaj używania języka HTML. Raw w widokach Razor
+## <a name="avoid-using-htmlraw-in-razor-views"></a><a id="html-razor"></a>Unikaj używania html.raw w widokach Razor
 
 | Tytuł                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Aplikacja internetowa | 
 | **Faza SDL**               | Kompilacja |  
 | **Odpowiednie technologie** | MVC5, MVC6 |
-| **Atrybuty**              | ND  |
-| **Wołują**              | ND  |
-| Krok | ASP.NET strony sieci Web (Razor) wykonują automatyczne kodowanie HTML. Wszystkie ciągi wydrukowane przez osadzony kod Nuggets (@ Blocks) są automatycznie kodowane w formacie HTML. Jednak gdy `HtmlHelper.Raw` Metoda jest wywoływana, zwraca znacznik, który nie jest zakodowany w formacie HTML. Jeśli `Html.Raw()` używana jest metoda pomocnika, pomija automatyczną ochronę kodowania, którą zapewnia Razor.|
+| **Atrybuty**              | Nie dotyczy  |
+| **Odwołania**              | Nie dotyczy  |
+| Krok | ASP.NET strony internetowe (Razor) wykonują automatyczne kodowanie HTML. Wszystkie ciągi drukowane przez osadzone bryłki kodu (@ bloki) są automatycznie zakodowane w formacie HTML. Jednak gdy `HtmlHelper.Raw` metoda jest wywoływana, zwraca znaczników, który nie jest zakodowany HTML. Jeśli `Html.Raw()` używana jest metoda pomocnika, pomija ona automatyczną ochronę przed kodowaniem, którą zapewnia Razor.|
 
 ### <a name="example"></a>Przykład
-Poniżej znajduje się niebezpieczny przykład: 
+Oto niepewny przykład: 
 
 ```csharp
 <div class="form-group">
@@ -494,21 +494,21 @@ Poniżej znajduje się niebezpieczny przykład:
         </div>
 </div>
 ```
-Nie używaj `Html.Raw()` , chyba że potrzebujesz wyświetlania znaczników. Ta metoda nie wykonuje niejawnie kodowania danych wyjściowych. Użyj innych pomocników ASP.NET, np.,`@Html.DisplayFor()` 
+Nie należy `Html.Raw()` używać, chyba że trzeba wyświetlić znaczniki. Ta metoda nie wykonuje kodowania danych wyjściowych niejawnie. Użyj innych pomocników ASP.NET np.`@Html.DisplayFor()` 
 
-## <a id="stored-proc"></a>Nie używaj zapytań dynamicznych w procedurach składowanych
+## <a name="do-not-use-dynamic-queries-in-stored-procedures"></a><a id="stored-proc"></a>Nie używaj zapytań dynamicznych w procedurach przechowywanych
 
 | Tytuł                   | Szczegóły      |
 | ----------------------- | ------------ |
-| **Składnik**               | Database (Baza danych) | 
+| **Składnik**               | baza danych | 
 | **Faza SDL**               | Kompilacja |  
 | **Odpowiednie technologie** | Ogólny |
-| **Atrybuty**              | ND  |
-| **Wołują**              | ND  |
-| **Kroki** | <p>Atak polegający na wstrzyknięciu kodu SQL wykorzystuje luki w zabezpieczeniach sprawdzania poprawności danych wejściowych w celu uruchomienia dowolnych poleceń w bazie danych. Może wystąpić, gdy aplikacja używa danych wejściowych do konstruowania dynamicznych instrukcji SQL w celu uzyskania dostępu do bazy danych. Może również wystąpić, jeśli kod używa procedur składowanych, które są przenoszone ciągi, które zawierają nieprzetworzone dane wejściowe użytkownika. Za pomocą ataku iniekcja SQL, osoba atakująca może wykonywać dowolne polecenia w bazie danych. Wszystkie instrukcje SQL (w tym instrukcje SQL w procedurach składowanych) muszą mieć wartość sparametryzowane. Sparametryzowane instrukcje SQL będą akceptować znaki, które mają specjalne znaczenie dla SQL (takie jak pojedynczy cudzysłów) bez problemów, ponieważ są jednoznacznie wpisane. |
+| **Atrybuty**              | Nie dotyczy  |
+| **Odwołania**              | Nie dotyczy  |
+| **Kroki** | <p>Atak iniekcji SQL wykorzystuje luki w weryfikacji danych wejściowych, aby uruchomić dowolne polecenia w bazie danych. Może wystąpić, gdy aplikacja używa danych wejściowych do konstruowania dynamicznych instrukcji SQL, aby uzyskać dostęp do bazy danych. Może również wystąpić, jeśli kod używa procedur przechowywanych, które są przekazywane ciągi, które zawierają nieprzetworzone dane wejściowe użytkownika. Za pomocą ataku iniekcji SQL osoba atakująca może wykonywać dowolne polecenia w bazie danych. Wszystkie instrukcje SQL (w tym instrukcje SQL w procedurach przechowywanych) muszą być parametryzowane. Sparametryzowane instrukcje SQL będą akceptować znaki, które mają specjalne znaczenie dla SQL (jak pojedynczy cudzysłów) bez problemów, ponieważ są one silnie wpisane. |
 
 ### <a name="example"></a>Przykład
-Poniżej znajduje się przykład niezabezpieczonej dynamicznej procedury składowanej: 
+Oto przykład niezabezpieczonych dynamicznych procedur składowanych: 
 
 ```csharp
 CREATE PROCEDURE [dbo].[uspGetProductsByCriteria]
@@ -556,19 +556,19 @@ AS
        END
 ```
 
-## <a id="validation-api"></a>Upewnij się, że Walidacja modelu odbywa się w metodach interfejsu API sieci Web
+## <a name="ensure-that-model-validation-is-done-on-web-api-methods"></a><a id="validation-api"></a>Upewnij się, że sprawdzanie poprawności modelu odbywa się w metodach interfejsu API sieci Web
 
 | Tytuł                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Interfejs API sieci Web | 
 | **Faza SDL**               | Kompilacja |  
 | **Odpowiednie technologie** | MVC5, MVC6 |
-| **Atrybuty**              | ND  |
-| **Wołują**              | [Walidacja modelu w interfejsie API sieci Web ASP.NET](https://www.asp.net/web-api/overview/formats-and-model-binding/model-validation-in-aspnet-web-api) |
-| **Kroki** | Gdy klient wysyła dane do internetowego interfejsu API, przed wykonaniem jakiegokolwiek przetwarzania wymagane jest zweryfikowanie danych. W przypadku internetowych interfejsów API ASP.NET, które akceptują modele jako dane wejściowe, należy używać adnotacji danych w modelach do ustawiania reguł walidacji dla właściwości modelu.|
+| **Atrybuty**              | Nie dotyczy  |
+| **Odwołania**              | [Sprawdzanie poprawności modelu w ASP.NET interfejsie API sieci Web](https://www.asp.net/web-api/overview/formats-and-model-binding/model-validation-in-aspnet-web-api) |
+| **Kroki** | Gdy klient wysyła dane do internetowego interfejsu API, jest obowiązkowe, aby sprawdzić poprawność danych przed wykonaniem przetwarzania. W przypadku ASP.NET interfejsów API sieci Web, które akceptują modele jako dane wejściowe, użyj adnotacji danych w modelach, aby ustawić reguły sprawdzania poprawności właściwości modelu.|
 
 ### <a name="example"></a>Przykład
-Poniższy kod ilustruje takie samo: 
+Poniższy kod demonstruje to samo: 
 
 ```csharp
 using System.ComponentModel.DataAnnotations;
@@ -589,7 +589,7 @@ namespace MyApi.Models
 ```
 
 ### <a name="example"></a>Przykład
-W metodzie działania kontrolerów interfejsu API ważność modelu musi być jawnie sprawdzona, jak pokazano poniżej: 
+W metodzie akcji kontrolerów interfejsu API ważność modelu musi być jawnie sprawdzona, jak pokazano poniżej: 
 
 ```csharp
 namespace MyApi.Controllers
@@ -613,30 +613,30 @@ namespace MyApi.Controllers
 }
 ```
 
-## <a id="string-api"></a>Implementuj sprawdzanie poprawności danych wejściowych dla wszystkich parametrów typu String zaakceptowanych przez metody interfejsu API sieci Web
+## <a name="implement-input-validation-on-all-string-type-parameters-accepted-by-web-api-methods"></a><a id="string-api"></a>Implementowanie sprawdzania poprawności danych wejściowych dla wszystkich parametrów typu ciągu akceptowanych przez metody interfejsu API sieci Web
 
 | Tytuł                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Interfejs API sieci Web | 
 | **Faza SDL**               | Kompilacja |  
-| **Odpowiednie technologie** | Ogólne, MVC 5, MVC 6 |
-| **Atrybuty**              | ND  |
-| **Wołują**              | [Sprawdzanie poprawności danych modelu w aplikacji MVC](https://msdn.microsoft.com/library/dd410404(v=vs.90).aspx), [reguły identyfikatorów guid dla aplikacji ASP.NET MVC](https://msdn.microsoft.com/magazine/dd942822.aspx) |
-| **Kroki** | W przypadku metod, które po prostu akceptują typ danych pierwotnych i nie są modelami jako argumentem, należy wykonać walidację danych wejściowych przy użyciu wyrażenia regularnego. Tutaj wyrażenie regularne. IsMatch powinno być używane z prawidłowym wzorcem wyrażenia regularnego. Jeśli dane wejściowe nie pasują do określonego wyrażenia regularnego, formant nie powinien kontynuować działania i należy wyświetlić odpowiednie ostrzeżenie dotyczące błędu walidacji.|
+| **Odpowiednie technologie** | Ogólny, MVC 5, MVC 6 |
+| **Atrybuty**              | Nie dotyczy  |
+| **Odwołania**              | [Sprawdzanie poprawności danych modelu w aplikacji MVC,](https://msdn.microsoft.com/library/dd410404(v=vs.90).aspx) [zasady przewodnie dla aplikacji ASP.NET MVC](https://msdn.microsoft.com/magazine/dd942822.aspx) |
+| **Kroki** | Dla metod, które po prostu zaakceptować typ danych pierwotnych, a nie modele jako argument, sprawdzanie poprawności danych wejściowych przy użyciu wyrażenia regularnego należy wykonać. Tutaj Regex.IsMatch powinny być używane z prawidłowym wzorem regex. Jeśli dane wejściowe nie są zgodne z określonym wyrażeniem regularnym, formant nie powinien być kontynuowany i powinno być wyświetlane odpowiednie ostrzeżenie dotyczące niepowodzenia sprawdzania poprawności.|
 
-## <a id="typesafe-api"></a>Upewnij się, że parametry bezpieczne dla typu są używane w interfejsie API sieci Web na potrzeby dostępu do danych
+## <a name="ensure-that-type-safe-parameters-are-used-in-web-api-for-data-access"></a><a id="typesafe-api"></a>Upewnij się, że parametry bezpieczne dla typu są używane w interfejsie API sieci Web w celu uzyskania dostępu do danych
 
 | Tytuł                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Interfejs API sieci Web | 
 | **Faza SDL**               | Kompilacja |  
 | **Odpowiednie technologie** | Ogólny |
-| **Atrybuty**              | ND  |
-| **Wołują**              | ND  |
-| **Kroki** | <p>Jeśli używasz kolekcji Parameters, SQL traktuje dane wejściowe jako wartość literału, a nie jako kod wykonywalny. Kolekcja Parameters może służyć do wymuszania ograniczeń typu i długości danych wejściowych. Wartości spoza zakresu wyzwalają wyjątek. Jeśli parametry SQL z bezpiecznym typem nie są używane, osoby atakujące mogą mieć możliwość wykonywania ataków iniekcji osadzonych w niefiltrowanych danych wejściowych.</p><p>Używaj parametrów typu Safe podczas konstruowania zapytań SQL, aby uniknąć możliwych ataków iniekcji kodu SQL, które mogą wystąpić w przypadku niefiltrowanych danych wejściowych. Można użyć parametrów typu Safe z procedurami składowanymi i dynamicznych instrukcji SQL. Parametry są traktowane jako wartości literału przez bazę danych, a nie jako kod wykonywalny. Parametry są również sprawdzane pod kątem typu i długości.</p>|
+| **Atrybuty**              | Nie dotyczy  |
+| **Odwołania**              | Nie dotyczy  |
+| **Kroki** | <p>Jeśli używasz parametrów kolekcji, SQL traktuje dane wejściowe jest jako wartość literału, a następnie jako kod wykonywalny. Kolekcja Parameters może służyć do wymuszania ograniczeń typu i długości danych wejściowych. Wartości poza zakresem wyzwalają wyjątek. Jeśli parametry SQL bezpieczne dla typu nie są używane, osoby atakujące mogą być w stanie wykonać ataki iniekcji, które są osadzone w niefiltrowanych danych wejściowych.</p><p>Użyj parametrów typu bezpieczne podczas konstruowania zapytań SQL, aby uniknąć ewentualnych ataków iniekcji SQL, które mogą wystąpić przy niefiltrowanych danych wejściowych. Można użyć parametrów typu bezpieczne z procedurami przechowywanymi i z dynamicznymi instrukcjami SQL. Parametry są traktowane jako wartości literału przez bazę danych, a nie jako kod wykonywalny. Parametry są również sprawdzane pod kątem typu i długości.</p>|
 
 ### <a name="example"></a>Przykład
-Poniższy kod przedstawia sposób używania parametrów bezpiecznego typu z SqlParameterCollection podczas wywoływania procedury składowanej. 
+Poniższy kod pokazuje, jak używać parametrów typu bezpieczne z SqlParameterCollection podczas wywoływania procedury składowanej. 
 
 ```csharp
 using System.Data;
@@ -652,37 +652,37 @@ myCommand.SelectCommand.Parameters["@au_id"].Value = SSN.Text;
 myCommand.Fill(userDataset);
 }  
 ```
-W poprzednim przykładzie kodu wartość wejściowa nie może być dłuższa niż 11 znaków. Jeśli dane nie są zgodne z typem lub długością zdefiniowaną przez parametr, Klasa SqlParameter zgłasza wyjątek. 
+W poprzednim przykładzie kodu wartość wejściowa nie może być dłuższa niż 11 znaków. Jeśli dane nie są zgodne z typem lub długością zdefiniowaną przez parametr, klasa SqlParameter zgłasza wyjątek. 
 
-## <a id="sql-docdb"></a>Użyj sparametryzowanych zapytań SQL dla Cosmos DB
+## <a name="use-parameterized-sql-queries-for-cosmos-db"></a><a id="sql-docdb"></a>Używanie sparametrowanych zapytań SQL dla usługi Cosmos DB
 
 | Tytuł                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Baza danych dokumentów platformy Azure | 
 | **Faza SDL**               | Kompilacja |  
 | **Odpowiednie technologie** | Ogólny |
-| **Atrybuty**              | ND  |
-| **Wołują**              | [Zapowiedź programu SQL parametryzacja w Azure Cosmos DB](https://azure.microsoft.com/blog/announcing-sql-parameterization-in-documentdb/) |
-| **Kroki** | Chociaż Azure Cosmos DB obsługuje tylko zapytania tylko do odczytu, iniekcja SQL jest wciąż możliwa, jeśli zapytania są konstruowane przez połączenie z danymi wejściowymi użytkownika. Użytkownik może mieć możliwość uzyskania dostępu do danych, do których nie należy uzyskiwać dostępu w obrębie tej samej kolekcji, przez rozdanie złośliwych zapytań SQL. Użyj sparametryzowanych zapytań SQL, jeśli zapytania są konstruowane na podstawie danych wejściowych użytkownika. |
+| **Atrybuty**              | Nie dotyczy  |
+| **Odwołania**              | [Ogłaszanie parametryzacji SQL w usłudze Azure Cosmos DB](https://azure.microsoft.com/blog/announcing-sql-parameterization-in-documentdb/) |
+| **Kroki** | Mimo że usługa Azure Cosmos DB obsługuje tylko kwerendy tylko do odczytu, iniekcja SQL jest nadal możliwe, jeśli kwerendy są konstruowane przez łączenie z danymi wejściowymi użytkownika. Może być możliwe dla użytkownika, aby uzyskać dostęp do danych, które nie powinny być dostępne w ramach tej samej kolekcji przez tworzenie złośliwych zapytań SQL. Użyj sparametryzowanych zapytań SQL, jeśli kwerendy są konstruowane na podstawie danych wejściowych użytkownika. |
 
-## <a id="schema-binding"></a>Walidacja danych wejściowych WCF za poorednictwem powiązania schematu
-
-| Tytuł                   | Szczegóły      |
-| ----------------------- | ------------ |
-| **Składnik**               | WCF | 
-| **Faza SDL**               | Kompilacja |  
-| **Odpowiednie technologie** | Ogólne, NET Framework 3 |
-| **Atrybuty**              | ND  |
-| **Wołują**              | [MSDN](https://msdn.microsoft.com/library/ff647820.aspx) |
-| **Kroki** | <p>Brak walidacji prowadzi do różnych ataków iniekcji typu.</p><p>Weryfikacja komunikatów reprezentuje jedną linię obrony w ochronie aplikacji WCF. To podejście umożliwia Weryfikowanie komunikatów przy użyciu schematów w celu ochrony operacji usługi WCF przed atakami złośliwego klienta. Sprawdź poprawność wszystkich komunikatów odebranych przez klienta, aby chronić klienta przed atakiem przez złośliwą usługę. Sprawdzanie poprawności komunikatów umożliwia Weryfikowanie komunikatów, gdy operacje korzystają z kontraktów komunikatów lub kontraktów danych, których nie można wykonać za pomocą weryfikacji parametrów. Sprawdzanie poprawności komunikatów umożliwia tworzenie logiki walidacji w schematach, co zapewnia większą elastyczność i skrócenie czasu projektowania. Schematy mogą być ponownie używane w różnych aplikacjach w organizacji, tworząc standardy dla reprezentacji danych. Ponadto funkcja weryfikacji komunikatów umożliwia ochronę operacji w przypadku korzystania z bardziej złożonych typów danych obejmujących kontrakty reprezentujące logikę biznesową.</p><p>Aby przeprowadzić weryfikację wiadomości, należy najpierw zbudować schemat, który reprezentuje operacje usługi i typy danych używane przez te operacje. Następnie utworzysz klasę .NET, która implementuje niestandardowego inspektora komunikatów klienta i niestandardowego inspektora komunikatów dyspozytora, aby zweryfikować komunikaty wysyłane/odbierane do/z usługi. Następnie należy zaimplementować niestandardowe zachowanie punktu końcowego, aby umożliwić weryfikację komunikatów zarówno na kliencie, jak i w usłudze. Na koniec należy zaimplementować niestandardowy element konfiguracji w klasie, która umożliwia uwidocznienie rozszerzonego niestandardowego zachowania punktu końcowego w pliku konfiguracji usługi lub klienta ".</p>|
-
-## <a id="parameters"></a>WCF — walidacja danych wejściowych za pomocą inspektorów parametrów
+## <a name="wcf-input-validation-through-schema-binding"></a><a id="schema-binding"></a>Sprawdzanie poprawności danych wejściowych WCF za pomocą powiązania schematu
 
 | Tytuł                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | WCF | 
 | **Faza SDL**               | Kompilacja |  
-| **Odpowiednie technologie** | Ogólne, NET Framework 3 |
-| **Atrybuty**              | ND  |
-| **Wołują**              | [MSDN](https://msdn.microsoft.com/library/ff647875.aspx) |
-| **Kroki** | <p>Dane wejściowe i walidacja danych przedstawiają jedną ważną linię obrony w ochronie aplikacji WCF. Należy sprawdzić poprawność wszystkich parametrów uwidocznionych w operacjach usługi WCF, aby chronić usługę przed atakiem złośliwego klienta. Z drugiej strony należy również sprawdzić poprawność wszystkich zwracanych wartości odebranych przez klienta, aby chronić klienta przed atakiem przez złośliwą usługę</p><p>Funkcja WCF oferuje różne punkty rozszerzalności, które umożliwiają dostosowanie zachowania środowiska uruchomieniowego WCF przez tworzenie rozszerzeń niestandardowych. Inspektorzy komunikatów i inspektory parametrów to dwa mechanizmy rozszerzalności służące do uzyskania większej kontroli nad danymi przekazywanymi między klientem a usługą. Inspektorów parametrów należy używać do sprawdzania poprawności danych wejściowych i używania inspektorów komunikatów tylko wtedy, gdy trzeba sprawdzić cały komunikat przepływający do i z usługi.</p><p>Aby przeprowadzić walidację danych wejściowych, należy utworzyć klasę platformy .NET i zaimplementować niestandardowy Inspektor parametrów w celu sprawdzenia poprawności parametrów operacji w usłudze. Następnie zostanie zaimplementowane niestandardowe zachowanie punktu końcowego w celu włączenia walidacji zarówno na kliencie, jak i w usłudze. Na koniec zostanie wdrożony niestandardowy element konfiguracji w klasie, która umożliwia uwidocznienie rozszerzonego niestandardowego zachowania punktu końcowego w pliku konfiguracyjnym usługi lub kliencie programu.</p>|
+| **Odpowiednie technologie** | Ogólny, NET Framework 3 |
+| **Atrybuty**              | Nie dotyczy  |
+| **Odwołania**              | [MSDN](https://msdn.microsoft.com/library/ff647820.aspx) |
+| **Kroki** | <p>Brak walidacji prowadzi do różnych ataków iniekcji typu.</p><p>Sprawdzanie poprawności wiadomości reprezentuje jeden wiersz obrony w ochronie aplikacji WCF. Dzięki takiemu podejściu można sprawdzić poprawność wiadomości przy użyciu schematów w celu ochrony operacji usługi WCF przed atakiem złośliwego klienta. Sprawdź poprawność wszystkich wiadomości odebranych przez klienta, aby chronić klienta przed atakiem złośliwej usługi. Sprawdzanie poprawności wiadomości umożliwia sprawdzanie poprawności wiadomości, gdy operacje zużywają kontrakty wiadomości lub kontrakty danych, których nie można wykonać przy użyciu sprawdzania poprawności parametrów. Sprawdzanie poprawności komunikatów umożliwia tworzenie logiki sprawdzania poprawności wewnątrz schematów, zapewniając w ten sposób większą elastyczność i skracając czas opracowywania. Schematy mogą być ponownie stosowane w różnych aplikacjach wewnątrz organizacji, tworząc standardy reprezentacji danych. Ponadto sprawdzanie poprawności wiadomości umożliwia ochronę operacji, gdy zużywają one bardziej złożone typy danych obejmujące kontrakty reprezentujące logikę biznesową.</p><p>Aby wykonać sprawdzanie poprawności wiadomości, najpierw skompilować schemat, który reprezentuje operacje usługi i typy danych używane przez te operacje. Następnie należy utworzyć klasę .NET, która implementuje niestandardowy inspektor wiadomości klienta i inspektor wiadomości niestandardowego dyspozytora, aby sprawdzić poprawność wiadomości wysłanych/odebranych do/z usługi. Następnie należy zaimplementować zachowanie niestandardowego punktu końcowego, aby włączyć sprawdzanie poprawności wiadomości na kliencie i w usłudze. Na koniec zaimplementujesz niestandardowy element konfiguracji w klasie, który umożliwia uwidacznianie rozszerzonego niestandardowego zachowania punktu końcowego w pliku konfiguracyjnym usługi lub klienta"</p>|
+
+## <a name="wcf--input-validation-through-parameter-inspectors"></a><a id="parameters"></a>WCF- Sprawdzanie poprawności danych wejściowych za pośrednictwem inspektorów parametrów
+
+| Tytuł                   | Szczegóły      |
+| ----------------------- | ------------ |
+| **Składnik**               | WCF | 
+| **Faza SDL**               | Kompilacja |  
+| **Odpowiednie technologie** | Ogólny, NET Framework 3 |
+| **Atrybuty**              | Nie dotyczy  |
+| **Odwołania**              | [MSDN](https://msdn.microsoft.com/library/ff647875.aspx) |
+| **Kroki** | <p>Sprawdzanie poprawności danych i danych reprezentuje jedną ważną linię obrony w ochronie aplikacji WCF. Należy sprawdzić poprawność wszystkich parametrów ujawnionych w operacjach usługi WCF, aby chronić usługę przed atakiem złośliwego klienta. Z drugiej strony należy również sprawdzić poprawność wszystkich wartości zwracane odebranych przez klienta, aby chronić klienta przed atakiem złośliwej usługi</p><p>WCF zapewnia różne punkty rozszerzalności, które umożliwiają dostosowanie zachowania środowiska uruchomieniowego WCF przez tworzenie rozszerzeń niestandardowych. Inspektorzy komunikatów i inspektorzy parametrów to dwa mechanizmy rozszerzalności używane w celu uzyskania większej kontroli nad danymi przekazywaniem między klientem a usługą. Inspektorów parametrów należy używać do sprawdzania poprawności danych wejściowych i używać inspektorów komunikatów tylko wtedy, gdy trzeba sprawdzić całą wiadomość przepływającą do i z usługi.</p><p>Aby wykonać sprawdzanie poprawności danych wejściowych, należy utworzyć klasę .NET i zaimplementować inspektora parametrów niestandardowych w celu sprawdzania poprawności parametrów w operacjach w usłudze. Następnie zaimplementujesz niestandardowe zachowanie punktu końcowego, aby włączyć sprawdzanie poprawności zarówno na kliencie, jak i w usłudze. Na koniec zaimplementujesz niestandardowy element konfiguracji w klasie, który umożliwia udostępnienie rozszerzonego niestandardowego zachowania punktu końcowego w pliku konfiguracyjnym usługi lub klienta</p>|

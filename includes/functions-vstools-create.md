@@ -5,39 +5,37 @@ services: functions
 author: ggailey777
 ms.service: azure-functions
 ms.topic: include
-ms.date: 03/05/2019
+ms.date: 03/06/2020
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: 3d93d3aa3e4e646f8e054f96f17bbe4a011d422d
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: 034e966d259f1ca5f22eec5935013de32c883b59
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77211445"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80056555"
 ---
-Szablon projektu usługi Azure Functions w programie Visual Studio umożliwia utworzenie projektu, który można opublikować w aplikacji funkcji na platformie Azure. Aplikacja funkcji umożliwia grupowanie funkcji jako jednostki logicznej, co ułatwia zarządzanie, wdrażanie, skalowanie i udostępnianie zasobów.
+Szablon projektu usługi Azure Functions w programie Visual Studio tworzy projekt, który można opublikować w aplikacji funkcji na platformie Azure. Za pomocą aplikacji funkcji można grupować funkcje jako jednostkę logiczną w celu łatwiejszego zarządzania, wdrażania, skalowania i udostępniania zasobów.
 
-1. W programie Visual Studio w menu **plik** wybierz pozycję **Nowy** **projekt** > .
+1. W programie Visual Studio w menu **Plik** wybierz polecenie **Nowy** > **projekt**.
 
-1. W oknie dialogowym **Utwórz nowy projekt** Wyszukaj `functions`, wybierz szablon **Azure Functions** i wybierz przycisk **dalej**.
+1. W **obszarze Tworzenie nowego projektu**wprowadź *funkcje* w polu wyszukiwania, a następnie wybierz szablon **Usługi Azure.**
 
-1. Wprowadź nazwę projektu, a następnie wybierz pozycję **Utwórz**. Nazwa aplikacji funkcji musi być prawidłową nazwą przestrzeni nazw C#, dlatego nie należy używać znaków podkreślenia, łączników ani znaków innych niż alfanumeryczne.
+1. W **obszarze Konfigurowanie nowego projektu**wprowadź nazwę **projektu** dla projektu, a następnie wybierz pozycję **Utwórz**. Nazwa aplikacji funkcji musi być prawidłową nazwą przestrzeni nazw C#, dlatego nie należy używać znaków podkreślenia, łączników ani znaków innych niż alfanumeryczne.
 
-1. W obszarze **Tworzenie nowej aplikacji Azure Functions**Użyj następujących opcji:
+1. W przypadku **nowego &lt;projektu&gt; —** ustawienia nazwy projektu należy użyć wartości w poniższej tabeli:
 
-    + **Azure Functions v2 (.NET Core)**
-    + **Wyzwalacz HTTP**
-    + **Konto magazynu**: **emulator magazynu**
-    + **Poziom autoryzacji**: **anonimowe** 
-
-    | Opcja      | Sugerowana wartość  | Opis                      |
+    | Ustawienie      | Wartość  | Opis                      |
     | ------------ |  ------- |----------------------------------------- |
-    | **Środowisko uruchomieniowe funkcji** | **Azure Functions 2. x <br />(.NET Core)** | To ustawienie powoduje utworzenie projektu funkcji, który używa środowiska uruchomieniowego w wersji 2. x Azure Functions, który obsługuje program .NET Core. Usługa Azure Functions 1.x obsługuje program .NET Framework. Aby uzyskać więcej informacji, zobacz [wersja Docelowa Azure Functions środowiska uruchomieniowego](../articles/azure-functions/functions-versions.md).   |
-    | **Szablon funkcji** | **Wyzwalacz HTTP** | To ustawienie powoduje utworzenie funkcji wyzwalanej przez żądanie HTTP. |
-    | **Konto magazynu**  | **Emulator magazynu** | Wyzwalacz HTTP nie korzysta z połączenia konta usługi Azure Storage. Wszystkie inne typy wyzwalaczy wymagają prawidłowych parametrów połączenia konta magazynu. Ponieważ funkcje wymagają konta magazynu, jeden jest przypisywany lub tworzony podczas publikowania projektu na platformie Azure. |
-    | **Poziom autoryzacji** | **Anonimowe** | Utworzona funkcja może zostać wyzwolona przez dowolnego klienta bez podawania klucza. To ustawienie autoryzacji ułatwia testowanie nowej funkcji. Aby uzyskać więcej informacji na temat kluczy i autoryzacji, zobacz sekcję [Authorization keys (Klucze autoryzacji)](../articles/azure-functions/functions-bindings-http-webhook-trigger.md#authorization-keys) w artykule [HTTP and webhook bindings (Powiązania protokołu HTTP i elementów webhook)](../articles/azure-functions/functions-bindings-http-webhook.md). |
+    | **Środowisko wykonawcze funkcji** | **Usługi Azure <br />Functions w wersji 2 (.NET Core)** | Ta wartość tworzy projekt funkcji, który używa środowiska wykonawczego w wersji 2.x usługi Azure Functions, która obsługuje .NET Core. Usługa Azure Functions 1.x obsługuje program .NET Framework. Aby uzyskać więcej informacji, zobacz [omówienie wersji środowiska wykonawczego usługi Azure Functions](../articles/azure-functions/functions-versions.md).   |
+    | **Szablon funkcji** | **Wyzwalacz HTTP** | Ta wartość tworzy funkcję wyzwalaną przez żądanie HTTP. |
+    | **Konto magazynu**  | **Emulator magazynu** | Ponieważ funkcja platformy Azure wymaga konta magazynu, jeden jest przypisany lub utworzony podczas publikowania projektu na platformie Azure. Wyzwalacz HTTP nie używa ciągu połączenia konta usługi Azure Storage; wszystkie inne typy wyzwalaczy wymagają prawidłowego ciągu połączenia konta usługi Azure Storage.  |
+    | **Prawa dostępu** | **Anonimowe** | Utworzona funkcja może zostać wyzwolona przez dowolnego klienta bez podawania klucza. To ustawienie autoryzacji ułatwia testowanie nowej funkcji. Aby uzyskać więcej informacji na temat kluczy i autoryzacji, zobacz [Klucze autoryzacji](../articles/azure-functions/functions-bindings-http-webhook-trigger.md#authorization-keys) oraz [powiązania HTTP i webhook](../articles/azure-functions/functions-bindings-http-webhook.md). |
     
-    > [!NOTE]
-    > Upewnij się, że ustawisz **poziom autoryzacji** na `Anonymous`. Jeśli wybierzesz domyślny poziom `Function`, musisz przedstawić [klucz funkcji](../articles/azure-functions/functions-bindings-http-webhook-trigger.md#authorization-keys) w żądaniach, aby uzyskać dostęp do punktu końcowego funkcji.
+
     
-4. Wybierz pozycję **Utwórz** , aby utworzyć projekt funkcji i funkcję wyzwalaną przez protokół http.
+    ![Ustawienia projektu usługi Azure Functions](./media/functions-vs-tools-create/functions-project-settings.png)
+
+    Upewnij się, że ustawiłeś **prawa dostępu** na **Anonimowy**. Jeśli wybierzesz domyślny poziom **funkcji,** musisz przedstawić [klucz funkcyjny](../articles/azure-functions/functions-bindings-http-webhook-trigger.md#authorization-keys) w żądaniach dostępu do punktu końcowego funkcji.
+
+1. Wybierz **przycisk OK,** aby utworzyć projekt funkcji i funkcję wyzwalaną przez HTTP.
