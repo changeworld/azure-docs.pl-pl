@@ -1,6 +1,6 @@
 ---
-title: Wyświetlanie, Dodawanie i usuwanie przypisań pakietu dostępu w usłudze Azure AD uprawnienia zarządzania — Azure Active Directory
-description: Dowiedz się, jak wyświetlać, dodawać i usuwać przypisania dla pakietu dostępu w Azure Active Directory Zarządzanie uprawnieniami.
+title: Wyświetlanie, dodawanie i usuwanie przydziałów dla pakietu dostępu w zarządzaniu uprawnieniami usługi Azure AD — usługa Azure Active Directory
+description: Dowiedz się, jak wyświetlać, dodawać i usuwać przydziały dla pakietu dostępu w zarządzaniu uprawnieniami usługi Azure Active Directory.
 services: active-directory
 documentationCenter: ''
 author: msaburnley
@@ -17,93 +17,93 @@ ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d5a2107974cd63c0d02aaeb555430453c39990bd
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79262024"
 ---
-# <a name="view-add-and-remove-assignments-for-an-access-package-in-azure-ad-entitlement-management"></a>Wyświetlanie, Dodawanie i usuwanie przypisań pakietu dostępu w usłudze Azure AD uprawnienia zarządzania
+# <a name="view-add-and-remove-assignments-for-an-access-package-in-azure-ad-entitlement-management"></a>Wyświetlanie, dodawanie i usuwanie przydziałów dla pakietu dostępu w zarządzaniu uprawnieniami usługi Azure AD
 
-W usłudze Azure AD uprawnienia do zarządzania można zobaczyć, kto został przypisany do pakietów, ich zasad i stanu. Jeśli pakiet dostępu ma odpowiednie zasady, możesz również bezpośrednio przypisać użytkownika do pakietu dostępu. W tym artykule opisano sposób wyświetlania, dodawania i usuwania przypisań dla pakietów dostępu.
+W zarządzania uprawnieniami usługi Azure AD można zobaczyć, kto został przypisany do pakietów dostępu, ich zasad i stanu. Jeśli pakiet dostępu ma odpowiednie zasady, można również bezpośrednio przypisać użytkownika do pakietu dostępu. W tym artykule opisano sposób wyświetlania, dodawania i usuwania przypisań dla pakietów dostępu.
 
-## <a name="view-who-has-an-assignment"></a>Wyświetl, kto ma przypisanie
+## <a name="view-who-has-an-assignment"></a>Wyświetlanie, kto ma przypisanie
 
-**Rola wymagana wstępnie:** Administrator globalny, administrator użytkownika, właściciel katalogu lub Menedżer pakietów dostępu
+**Rola wstępna:** Administrator globalny, administrator użytkownika, właściciel katalogu lub menedżer pakietów programu Access
 
-1. W Azure Portal kliknij pozycję **Azure Active Directory** , a następnie kliknij pozycję **Zarządzanie tożsamościami**.
+1. W witrynie Azure portal kliknij pozycję **Usługa Azure Active Directory,** a następnie kliknij pozycję **Zarządzanie tożsamościami**.
 
-1. W menu po lewej stronie kliknij pozycję **pakiety dostępu** , a następnie otwórz pakiet dostępu.
+1. W menu po lewej stronie kliknij pozycję **Pakiety programu Access,** a następnie otwórz pakiet dostępu.
 
-1. Kliknij pozycję **przypisania** , aby wyświetlić listę aktywnych przypisań.
+1. Kliknij **pozycję Przydziały,** aby wyświetlić listę aktywnych przypisań.
 
     ![Lista przypisań do pakietu dostępu](./media/entitlement-management-access-package-assignments/assignments-list.png)
 
 1. Kliknij określone przypisanie, aby wyświetlić dodatkowe szczegóły.
 
-1. Aby wyświetlić listę przypisań, dla których nie zainicjowano prawidłowo wszystkich ról zasobów, kliknij stan filtru i wybierz pozycję **dostarczanie**.
+1. Aby wyświetlić listę przypisań, które nie miały poprawnie aprowizowanych wszystkich ról zasobów, kliknij stan filtru i wybierz pozycję **Dostarczanie**.
 
-    Aby wyświetlić dodatkowe szczegóły dotyczące błędów dostarczania, można zlokalizować odpowiednie żądanie użytkownika na stronie **żądania** .
+    Dodatkowe informacje na temat błędów dostarczania można wyświetlić, lokalizując odpowiednie żądanie użytkownika na stronie **Żądania.**
 
-1. Aby wyświetlić wygasłe przypisania, kliknij stan filtru i wybierz pozycję **wygasłe**.
+1. Aby wyświetlić wygasłe przydziały, kliknij stan filtru i wybierz pozycję **Wygasłe**.
 
-1. Aby pobrać plik CSV z filtrowanej listy, kliknij przycisk **Pobierz**.
+1. Aby pobrać plik CSV z listy filtrowanych, kliknij przycisk **Pobierz**.
 
-### <a name="viewing-assignments-programmatically"></a>Programistyczne Wyświetlanie przypisań
+### <a name="viewing-assignments-programmatically"></a>Programowe wyświetlanie przydziałów
 
-Możesz również pobrać przypisania w pakiecie dostępu przy użyciu Microsoft Graph.  Użytkownik w odpowiedniej roli z aplikacją, która ma delegowane uprawnienia `EntitlementManagement.ReadWrite.All`, może wywołać interfejs API, aby [wyświetlić listę accessPackageAssignments](https://docs.microsoft.com/graph/api/accesspackageassignment-list?view=graph-rest-beta).
+Przydziały można również pobierać w pakiecie dostępu za pomocą programu Microsoft Graph.  Użytkownik w odpowiedniej roli z aplikacją, `EntitlementManagement.ReadWrite.All` która ma delegowane uprawnienie można wywołać interfejsu API do [listy accessPackageAssignments](https://docs.microsoft.com/graph/api/accesspackageassignment-list?view=graph-rest-beta).
 
-## <a name="directly-assign-a-user"></a>Bezpośrednie przypisanie użytkownika
+## <a name="directly-assign-a-user"></a>Bezpośrednie przypisywanie użytkownika
 
-W niektórych przypadkach może być konieczne bezpośrednie przypisanie określonych użytkowników do pakietu dostępu, dzięki czemu użytkownicy nie muszą przechodzić przez proces żądania pakietu dostępu. Aby bezpośrednio przypisywać użytkowników, pakiet dostępu musi mieć zasady umożliwiające bezpośrednie przypisania administratora.
+W niektórych przypadkach można bezpośrednio przypisać określonych użytkowników do pakietu dostępu, dzięki czemu użytkownicy nie muszą przechodzić przez proces żądania pakietu dostępu. Aby bezpośrednio przypisać użytkowników, pakiet dostępu musi mieć zasady, które umożliwiają bezpośrednie przypisania administratora.
 
-**Rola wymagana wstępnie:** Administrator globalny, administrator użytkownika, właściciel katalogu lub Menedżer pakietów dostępu
+**Rola wstępna:** Administrator globalny, administrator użytkownika, właściciel katalogu lub menedżer pakietów programu Access
 
-1. W Azure Portal kliknij pozycję **Azure Active Directory** , a następnie kliknij pozycję **Zarządzanie tożsamościami**.
+1. W witrynie Azure portal kliknij pozycję **Usługa Azure Active Directory,** a następnie kliknij pozycję **Zarządzanie tożsamościami**.
 
-1. W menu po lewej stronie kliknij pozycję **pakiety dostępu** , a następnie otwórz pakiet dostępu.
+1. W menu po lewej stronie kliknij pozycję **Pakiety programu Access,** a następnie otwórz pakiet dostępu.
 
-1. W menu po lewej stronie kliknij pozycję **przypisania**.
+1. W menu po lewej stronie kliknij pozycję **Przydziały**.
 
-1. Kliknij pozycję **nowe przypisanie** , aby otworzyć aplet Dodaj użytkownika do pakietu.
+1. Kliknij **pozycję Nowe przypisanie,** aby otworzyć aplikuj użytkownika, aby uzyskać dostęp do pakietu.
 
-    ![Przypisania — Dodawanie użytkownika do pakietu dostępu](./media/entitlement-management-access-package-assignments/assignments-add-user.png)
+    ![Przydziały — dodawanie użytkownika do pakietu dostępu](./media/entitlement-management-access-package-assignments/assignments-add-user.png)
 
-1. Kliknij przycisk **Dodaj użytkowników** , aby wybrać użytkowników, do których chcesz przypisać ten pakiet dostępu.
+1. Kliknij **pozycję Dodaj użytkowników,** aby wybrać użytkowników, do których chcesz przypisać ten pakiet dostępu.
 
-1. Z listy **Wybierz zasady** wybierz zasady, według których będą podlegać przyszłe żądania i cykl życia użytkowników. Jeśli chcesz, aby wybrani użytkownicy mieli inne ustawienia zasad, kliknij pozycję **Utwórz nowe zasady** , aby dodać nowe zasady.
+1. Na liście **Wybierz zasady** wybierz zasadę, zgodnie z którą przyszłe żądania i cykl życia użytkowników będą zarządzane i śledzone. Jeśli chcesz, aby wybrani użytkownicy mieli różne ustawienia zasad, możesz kliknąć przycisk **Utwórz nowe zasady,** aby dodać nową zasadę.
 
-1. Ustaw datę i godzinę, o której chcesz rozpocząć i zakończyć przypisanie wybranych użytkowników. Jeśli data zakończenia nie zostanie podana, zostaną użyte ustawienia cyklu życia zasad.
+1. Ustaw datę i godzinę rozpoczęcia i zakończenia przypisania wybranych użytkowników. Jeśli data zakończenia nie zostanie podana, zostaną użyte ustawienia cyklu życia zasad.
 
-1. Opcjonalnie możesz podać uzasadnienie dla bezpośredniego przypisania do przechowywania rekordów.
+1. Opcjonalnie podaj uzasadnienie bezpośredniego przypisania do przechowywania dokumentacji.
 
-1. Kliknij przycisk **Dodaj** , aby bezpośrednio przypisać wybranych użytkowników do pakietu dostępu.
+1. Kliknij **przycisk Dodaj,** aby bezpośrednio przypisać wybranych użytkowników do pakietu dostępu.
 
-    Po kilku chwilach kliknij pozycję **Odśwież** , aby wyświetlić użytkowników na liście przydziałów.
+    Po kilku chwilach kliknij przycisk **Odśwież,** aby wyświetlić użytkowników na liście Przydziały.
 
-### <a name="directly-assigning-users-programmatically"></a>Programowe przypisywanie użytkowników bezpośrednio
+### <a name="directly-assigning-users-programmatically"></a>Bezpośrednie przypisywanie użytkowników programowo
 
-Możesz również bezpośrednio przypisać użytkownika do pakietu dostępu przy użyciu Microsoft Graph.  Użytkownik w odpowiedniej roli z aplikacją, która ma delegowane uprawnienia `EntitlementManagement.ReadWrite.All`, może wywołać interfejs API, aby [utworzyć accessPackageAssignmentRequest](https://docs.microsoft.com/graph/api/accesspackageassignmentrequest-post?view=graph-rest-beta).
+Można również bezpośrednio przypisać użytkownika do pakietu dostępu za pomocą programu Microsoft Graph.  Użytkownik w odpowiedniej roli z aplikacją, `EntitlementManagement.ReadWrite.All` która ma delegowane uprawnienia można wywołać interfejsu API, aby [utworzyć accessPackageAssignmentRequest](https://docs.microsoft.com/graph/api/accesspackageassignmentrequest-post?view=graph-rest-beta).
 
 ## <a name="remove-an-assignment"></a>Usuwanie przypisania
 
-**Rola wymagana wstępnie:** Administrator globalny, administrator użytkownika, właściciel katalogu lub Menedżer pakietów dostępu
+**Rola wstępna:** Administrator globalny, administrator użytkownika, właściciel katalogu lub menedżer pakietów programu Access
 
-1. W Azure Portal kliknij pozycję **Azure Active Directory** , a następnie kliknij pozycję **Zarządzanie tożsamościami**.
+1. W witrynie Azure portal kliknij pozycję **Usługa Azure Active Directory,** a następnie kliknij pozycję **Zarządzanie tożsamościami**.
 
-1. W menu po lewej stronie kliknij pozycję **pakiety dostępu** , a następnie otwórz pakiet dostępu.
+1. W menu po lewej stronie kliknij pozycję **Pakiety programu Access,** a następnie otwórz pakiet dostępu.
 
-1. W menu po lewej stronie kliknij pozycję **przypisania**.
+1. W menu po lewej stronie kliknij pozycję **Przydziały**.
  
 1. Kliknij pole wyboru obok użytkownika, którego przypisanie chcesz usunąć z pakietu dostępu. 
 
-1. Kliknij przycisk **Usuń** w górnej części okienka po lewej stronie. 
+1. Kliknij przycisk **Usuń** u góry lewego okienka. 
  
-    ![Przypisania — Usuwanie użytkownika z pakietu dostępu](./media/entitlement-management-access-package-assignments/remove-assignment-select-remove-assignment.png)
+    ![Przydziały — usuwanie użytkownika z pakietu dostępu](./media/entitlement-management-access-package-assignments/remove-assignment-select-remove-assignment.png)
 
-    Zostanie wyświetlone powiadomienie informujące o tym, że przypisanie zostało usunięte. 
+    Pojawi się powiadomienie informujące o usunięciu przypisania. 
 
 ## <a name="next-steps"></a>Następne kroki
 
-- [Żądanie zmiany i ustawienia pakietu dostępu](entitlement-management-access-package-request-policy.md)
+- [Zmienianie żądania i ustawień pakietu dostępu](entitlement-management-access-package-request-policy.md)
 - [Wyświetlanie raportów i dzienników](entitlement-management-reports.md)

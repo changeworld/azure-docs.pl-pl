@@ -1,146 +1,262 @@
 ---
-title: Wymiana oświadczeń interfejsu API REST jako Walidacja
+title: REST API twierdzi, że jest wybrana jako weryfikacja
 titleSuffix: Azure AD B2C
-description: Przewodnik dotyczący tworzenia Azure AD B2Cych podróży użytkowników, które współdziałają z usługami RESTful.
+description: Przewodnik do tworzenia usługi Azure AD B2C podróży użytkownika, który współdziała z usług RESTful.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 08/21/2019
+ms.date: 03/26/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 7100498d99068941bcd7ca48b6cbcaa271fbb095
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: a4902e96cd41a02953b6686b5d52d7912b27809f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78189076"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80330816"
 ---
-# <a name="walkthrough-integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-user-journey-as-validation-on-user-input"></a>Wskazówki: integruje wymianę oświadczeń interfejsu API REST w trakcie Azure AD B2C użytkownika
+# <a name="walkthrough-integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-user-journey-to-validate-user-input"></a>Przewodnik: Integrowanie wymiany oświadczeń interfejsu API REST w podróży użytkownika usługi Azure AD B2C w celu sprawdzania poprawności danych wejściowych użytkownika
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Platforma Identity Experience Framework (IEF), która jest zależna od Azure Active Directory B2C (Azure AD B2C) umożliwia deweloperom tożsamości integrację interakcji z interfejsem API RESTful w podróży użytkownika.
+Struktura środowiska tożsamości (IEF), która stanowi podstawę usługi Azure Active Directory B2C (Azure AD B2C) umożliwia deweloperom tożsamości zintegrowanie interakcji z interfejsem API RESTful w podróży użytkownika.  Na końcu tego przewodnika będzie można utworzyć proces użytkownika usługi Azure AD B2C, który współdziała z [usługami RESTful](custom-policy-rest-api-intro.md) w celu sprawdzenia poprawności danych wejściowych użytkownika.
 
-Po zakończeniu tego instruktażu będziesz mieć możliwość utworzenia Azure AD B2Cej podróży użytkowników, która współdziała z usługami RESTful.
+W tym scenariuszu dodamy możliwość dla użytkowników, aby wprowadzić numer lojalnościowy na stronie rejestracji usługi Azure AD B2C. Sprawdzimy, czy ta kombinacja wiadomości e-mail i numeru lojalnościowego jest mapowana na kod promocyjny, wysyłając te dane do interfejsu API REST. Jeśli interfejs API REST znajdzie kod promocyjny dla tego użytkownika, zostanie on zwrócony do usługi Azure AD B2C. Na koniec kod promocyjny zostanie wstawiony do oświadczeń tokenu dla aplikacji do użycia.
 
-IEF wysyła dane w oświadczeniach i odbiera dane z powrotem w oświadczeniach. Interakcja z interfejsem API:
-
-- Może być zaprojektowana jako wymiana oświadczeń interfejsu API REST lub jako profil weryfikacji, który odbywa się w ramach kroku aranżacji.
-- Zazwyczaj sprawdza poprawność danych wejściowych użytkownika. Jeśli wartość użytkownika zostanie odrzucona, użytkownik może spróbować ponownie wprowadzić prawidłową wartość, aby otrzymać komunikat o błędzie.
-
-Interakcję można także zaprojektować jako krok aranżacji. Aby uzyskać więcej informacji, zobacz [Przewodnik: Integrowanie wymiany oświadczeń interfejsu API REST w ramach kursu Azure AD B2C użytkownika jako kroku aranżacji](custom-policy-rest-api-claims-exchange.md).
-
-W przypadku przykładowego profilu weryfikacji będziemy używać profilu Edytuj podróż użytkownika w pliku Start Pack ProfileEdit. XML.
-
-Możemy sprawdzić, czy nazwa podana przez użytkownika w profilu Edytuj nie jest częścią listy wykluczeń.
+Można również zaprojektować interakcję jako krok aranżacji. Jest to odpowiednie, gdy interfejs API REST nie będzie sprawdzania poprawności danych na ekranie i zawsze zwracać oświadczenia. Aby uzyskać więcej informacji, zobacz [Przewodnik: Integrowanie wymiany oświadczeń interfejsu API REST w podróży użytkownika usługi Azure AD B2C jako krok aranżacji.](custom-policy-rest-api-claims-exchange.md)
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Dzierżawa Azure AD B2C skonfigurowana do ukończenia rejestracji/logowania do konta lokalnego, zgodnie z opisem w temacie [wprowadzenie](custom-policy-get-started.md).
-- Punkt końcowy interfejsu API REST do współpracy z usługą. W tym instruktażu skonfigurujemy witrynę demonstracyjną o nazwie [WingTipGames](https://wingtipgamesb2c.azurewebsites.net/) z usługą interfejsu API REST.
+- Wykonaj kroki opisane w [wprowadzenie do zasad niestandardowych](custom-policy-get-started.md). Aby zarejestrować się i zalogować za pomocą kont lokalnych, powinny być dostępne robocze zasady niestandardowe.
+- Dowiedz się, jak [zintegrować wymianę oświadczeń interfejsu API REST w zasadach niestandardowych usługi Azure AD B2C.](custom-policy-rest-api-intro.md)
 
-## <a name="step-1-prepare-the-rest-api-function"></a>Krok 1. Przygotowanie funkcji interfejsu API REST
+## <a name="prepare-a-rest-api-endpoint"></a>Przygotowywanie punktu końcowego interfejsu API REST
 
-> [!NOTE]
-> Konfiguracja funkcji interfejsu API REST jest poza zakresem tego artykułu. [Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-reference) oferuje doskonały zestaw narzędzi do tworzenia usług RESTful w chmurze.
+W tym instruktażu powinien mieć interfejs API REST, który sprawdza, czy adres e-mail jest zarejestrowany w systemie zaplecza z identyfikatorem lojalnościowym. Jeśli jest zarejestrowany, interfejs API REST powinien zwrócić kod promocyjny rejestracji, który klient może wykorzystać do zakupu towarów w aplikacji. W przeciwnym razie interfejs API REST powinien zwrócić komunikat o błędzie HTTP 409: "Identyfikator lojalności '{loyalty ID}' nie jest skojarzony z adresem e-mail '{email}'."
 
-Utworzyliśmy funkcję platformy Azure, która otrzymuje rolę, której oczekuje jako `playerTag`. Funkcja sprawdza poprawność tego, czy to stwierdzenie istnieje. Możesz uzyskać dostęp do kompletnego kodu funkcji platformy Azure w serwisie [GitHub](https://github.com/Azure-Samples/active-directory-b2c-advanced-policies/tree/master/AzureFunctionsSamples).
+Poniższy kod JSON ilustruje dane usługi Azure AD B2C zostanie wysłany do punktu końcowego interfejsu API REST. 
 
-```csharp
-if (requestContentAsJObject.playerTag == null)
+```json
 {
-  return request.CreateResponse(HttpStatusCode.BadRequest);
+    "email": "User email address",
+    "language": "Current UI language",
+    "loyaltyId": "User loyalty ID"
 }
-
-var playerTag = ((string) requestContentAsJObject.playerTag).ToLower();
-
-if (playerTag == "mcvinny" || playerTag == "msgates123" || playerTag == "revcottonmarcus")
-{
-  return request.CreateResponse<ResponseContent>(
-    HttpStatusCode.Conflict,
-    new ResponseContent
-    {
-      version = "1.0.0",
-      status = (int) HttpStatusCode.Conflict,
-      userMessage = $"The player tag '{requestContentAsJObject.playerTag}' is already used."
-    },
-    new JsonMediaTypeFormatter(),
-    "application/json");
-}
-
-return request.CreateResponse(HttpStatusCode.OK);
 ```
 
-IEF oczekuje `userMessage`, że funkcja platformy Azure zwraca wartość. To zgłoszenie będzie prezentowane jako ciąg dla użytkownika, Jeśli weryfikacja nie powiedzie się, na przykład w przypadku zwrócenia w poprzednim przykładzie stanu konfliktu 409.
+Gdy interfejs API REST weryfikuje dane, musi zwrócić http 200 (Ok), z następującymi danymi JSON:
 
-## <a name="step-2-configure-the-restful-api-claims-exchange-as-a-technical-profile-in-your-trustframeworkextensionsxml-file"></a>Krok 2. Konfigurowanie protokołu API RESTful jako profilu technicznego w pliku TrustFrameworkExtensions. XML
+```json
+{
+    "promoCode": "24534"
+}
+```
 
-Profil techniczny to pełna konfiguracja programu Exchange wymaganego przez usługę RESTful. Otwórz plik TrustFrameworkExtensions. XML i Dodaj następujący fragment kodu XML wewnątrz elementu `<ClaimsProviders>`.
+Jeśli sprawdzanie poprawności nie powiodło się, interfejs API REST musi `userMessage` zwrócić HTTP 409 (Konflikt), z elementem JSON. IEF oczekuje `userMessage` oświadczenia, że interfejs API REST zwraca. To oświadczenie zostanie przedstawione jako ciąg do użytkownika, jeśli sprawdzanie poprawności nie powiedzie się.
 
-> [!NOTE]
-> W poniższym kodzie XML dostawca RESTful `Version=1.0.0.0` został opisany jako protokół. Rozważmy ją jako funkcję, która będzie współdziałać z usługą zewnętrzną. <!-- TODO: A full definition of the schema can be found...link to RESTful Provider schema definition>-->
+```json
+{
+    "version": "1.0.1",
+    "status": 409,
+    "userMessage": "LoyaltyId ID '1234' is not associated with 'david@contoso.com' email address."
+}
+```
+
+Konfiguracja punktu końcowego interfejsu API REST wykracza poza zakres tego artykułu. Utworzyliśmy przykład [usługi Azure Functions.](https://docs.microsoft.com/azure/azure-functions/functions-reference) Dostęp do pełnego kodu funkcji platformy Azure można uzyskać w [witrynie GitHub.](https://github.com/azure-ad-b2c/rest-api/tree/master/source-code/azure-function)
+
+## <a name="define-claims"></a>Definiowanie oświadczeń
+
+Oświadczenie zapewnia tymczasowe przechowywanie danych podczas wykonywania zasad usługi Azure AD B2C. Można zadeklarować oświadczenia w sekcji [schemat oświadczeń.](claimsschema.md) 
+
+1. Otwórz plik rozszerzeń zasad. Na przykład <em> `SocialAndLocalAccounts/` </em>.
+1. Wyszukaj [element BuildingBlocks.](buildingblocks.md) Jeśli element nie istnieje, dodaj go.
+1. Znajdź [ClaimsSchema](claimsschema.md) element. Jeśli element nie istnieje, dodaj go.
+1. Dodaj następujące oświadczenia do **claimsschema** elementu.  
+
+```xml
+<ClaimType Id="loyaltyId">
+  <DisplayName>Your loyalty ID</DisplayName>
+  <DataType>string</DataType>
+  <UserInputType>TextBox</UserInputType>
+</ClaimType>
+<ClaimType Id="promoCode">
+  <DisplayName>Your promo code</DisplayName>
+  <DataType>string</DataType>
+  <UserInputType>Paragraph</UserInputType>
+</ClaimType>
+  <ClaimType Id="userLanguage">
+  <DisplayName>User UI language (used by REST API to return localized error messages)</DisplayName>
+  <DataType>string</DataType>
+</ClaimType>
+```
+
+## <a name="configure-the-restful-api-technical-profile"></a>Konfigurowanie profilu technicznego interfejsu API RESTful 
+
+Spokojny [profil techniczny](restful-technical-profile.md) zapewnia wsparcie dla wzajemnego połączenia z własną usługą RESTful. Usługa Azure AD B2C wysyła dane do `InputClaims` usługi RESTful `OutputClaims` w kolekcji i odbiera dane z powrotem w kolekcji. Znajdź **ClaimsProviders** element i dodać nowego dostawcy oświadczeń w następujący sposób:
 
 ```xml
 <ClaimsProvider>
-    <DisplayName>REST APIs</DisplayName>
-    <TechnicalProfiles>
-        <TechnicalProfile Id="AzureFunctions-CheckPlayerTagWebHook">
-            <DisplayName>Check Player Tag Web Hook Azure Function</DisplayName>
-            <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.RestfulProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
-            <Metadata>
-                <Item Key="ServiceUrl">https://wingtipb2cfuncs.azurewebsites.net/api/CheckPlayerTagWebHook?code=L/05YRSpojU0nECzM4Tp3LjBiA2ZGh3kTwwp1OVV7m0SelnvlRVLCg==</Item>
-                <Item Key="SendClaimsIn">Body</Item>
-                <!-- Set AuthenticationType to Basic or ClientCertificate in production environments -->
-                <Item Key="AuthenticationType">None</Item>
-                <!-- REMOVE the following line in production environments -->
-                <Item Key="AllowInsecureAuthInProduction">true</Item>
-            </Metadata>
-            <InputClaims>
-                <InputClaim ClaimTypeReferenceId="givenName" PartnerClaimType="playerTag" />
-            </InputClaims>
-            <UseTechnicalProfileForSessionManagement ReferenceId="SM-Noop" />
-        </TechnicalProfile>
-        <TechnicalProfile Id="SelfAsserted-ProfileUpdate">
-            <ValidationTechnicalProfiles>
-                <ValidationTechnicalProfile ReferenceId="AzureFunctions-CheckPlayerTagWebHook" />
-            </ValidationTechnicalProfiles>
-        </TechnicalProfile>
-    </TechnicalProfiles>
+  <DisplayName>REST APIs</DisplayName>
+  <TechnicalProfiles>
+    <TechnicalProfile Id="REST-ValidateProfile">
+      <DisplayName>Check loyaltyId Azure Function web hook</DisplayName>
+      <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.RestfulProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+      <Metadata>
+        <Item Key="ServiceUrl">https://your-account.azurewebsites.net/api/ValidateProfile?code=your-code</Item>
+        <Item Key="SendClaimsIn">Body</Item>
+        <!-- Set AuthenticationType to Basic or ClientCertificate in production environments -->
+        <Item Key="AuthenticationType">None</Item>
+        <!-- REMOVE the following line in production environments -->
+        <Item Key="AllowInsecureAuthInProduction">true</Item>
+      </Metadata>
+      <InputClaims>
+        <!-- Claims sent to your REST API -->
+        <InputClaim ClaimTypeReferenceId="loyaltyId" />
+        <InputClaim ClaimTypeReferenceId="email" />
+        <InputClaim ClaimTypeReferenceId="userLanguage" PartnerClaimType="lang" DefaultValue="{Culture:LCID}" AlwaysUseDefaultValue="true" />
+      </InputClaims>
+      <OutputClaims>
+        <!-- Claims parsed from your REST API -->
+        <OutputClaim ClaimTypeReferenceId="promoCode" />
+      </OutputClaims>
+      <UseTechnicalProfileForSessionManagement ReferenceId="SM-Noop" />
+    </TechnicalProfile>
+  </TechnicalProfiles>
 </ClaimsProvider>
 ```
 
-Element `InputClaims` definiuje oświadczenia, które będą wysyłane z IEF do usługi REST. W tym przykładzie zawartość `givenName` żądania zostanie wysłana do usługi REST jako `playerTag`. W tym przykładzie IEF nie oczekuje z powrotem oświadczeń. Zamiast tego czeka na odpowiedź z usługi REST i działa na podstawie otrzymanych kodów stanu.
+W tym przykładzie `userLanguage` zostanie wysłany do `lang` usługi REST, jak w ramach ładunku JSON. Wartość `userLanguage` oświadczenia zawiera bieżący identyfikator języka użytkownika. Aby uzyskać więcej informacji, zobacz [program rozpoznawania oświadczeń](claim-resolver-overview.md).
 
-Komentarze powyżej `AuthenticationType` i `AllowInsecureAuthInProduction` określają zmiany, które należy wykonać po przejściu do środowiska produkcyjnego. Aby dowiedzieć się, jak zabezpieczyć interfejsy API usługi RESTful w środowisku produkcyjnym, zobacz [Secure RESTful interfejsy API z uwierzytelnianiem Basic](secure-rest-api-dotnet-basic-auth.md) i [Secure RESTful API z uwierzytelnianiem certyfikatu](secure-rest-api-dotnet-certificate-auth.md).
+Komentarze powyżej `AuthenticationType` `AllowInsecureAuthInProduction` i określić zmiany, które należy wprowadzić podczas przenoszenia do środowiska produkcyjnego. Aby dowiedzieć się, jak zabezpieczyć interfejsy API restful do produkcji, zobacz [Bezpieczny interfejs API restful](secure-rest-api.md).
 
-## <a name="step-3-include-the-restful-service-claims-exchange-in-self-asserted-technical-profile-where-you-want-to-validate-the-user-input"></a>Krok 3. uwzględnienie wymiany oświadczeń usługi RESTful w profilu technicznym, w którym chcesz sprawdzić poprawność danych wejściowych użytkownika
+## <a name="validate-the-user-input"></a>Sprawdzanie poprawności danych wejściowych użytkownika
 
-Typowym zastosowaniem kroku walidacji jest interakcja z użytkownikiem. Wszystkie interakcje, w których użytkownik powinien podać dane wejściowe, są *profilami technicznymi z własnym potwierdzeń*. W tym przykładzie dodamy weryfikację do profilu technicznego z własnymi potwierdzeń ProfileUpdate. Jest to profil techniczny, którego używa plik zasad jednostki uzależnionej (RP) `Profile Edit`.
+Aby uzyskać numer lojalnościowy użytkownika podczas rejestracji, należy zezwolić użytkownikowi na wprowadzenie tych danych na ekranie. Dodaj oświadczenie wyjściowe **loyaltyId** do strony rejestracji, dodając je do elementu istniejącego profilu `OutputClaims` technicznego rejestracji. Określ całą listę oświadczeń danych wyjściowych, aby kontrolować kolejność, w jakiej oświadczenia są prezentowane na ekranie.  
 
-Aby dodać wymianę oświadczeń do profilu technicznego z własnym potwierdzeniem:
+Dodaj odwołanie do profilu technicznego sprawdzania poprawności do profilu `REST-ValidateProfile`technicznego rejestracji, który wywołuje . Nowy profil techniczny sprawdzania poprawności zostanie dodany `<ValidationTechnicalProfiles>` do górnej części kolekcji zdefiniowanej w zasadach podstawowych. To zachowanie oznacza, że tylko po pomyślnym sprawd owiednie poprawności usługa Azure AD B2C przechodzi do tworzenia konta w katalogu.   
 
-1. Otwórz plik TrustFrameworkBase. XML i Wyszukaj `<TechnicalProfile Id="SelfAsserted-ProfileUpdate">`.
-2. Przejrzyj konfigurację tego profilu technicznego. Zwróć uwagę na to, jak program Exchange z użytkownikiem jest definiowany jako oświadczenia, które zostanie poproszony o użytkownika (oświadczenia wejściowe), i oświadczenia, które będą oczekiwane z powrotem od dostawcy z własnym potwierdzeniem (oświadczeń wyjściowych).
-3. Wyszukaj `TechnicalProfileReferenceId="SelfAsserted-ProfileUpdate`i zwróć uwagę, że ten profil jest wywoływany w ramach aranżacji krok 5 `<UserJourney Id="ProfileEdit">`.
+1. Znajdź **ClaimsProviders** element. Dodaj nowego dostawcę oświadczeń w następujący sposób:
 
-## <a name="step-4-upload-and-test-the-profile-edit-rp-policy-file"></a>Krok 4. przekazanie i przetestowanie profilu Edytuj plik zasad RP
+    ```xml
+    <ClaimsProvider>
+      <DisplayName>Local Account</DisplayName>
+      <TechnicalProfiles>
+        <TechnicalProfile Id="LocalAccountSignUpWithLogonEmail">
+          <OutputClaims>
+            <OutputClaim ClaimTypeReferenceId="email" PartnerClaimType="Verified.Email" Required="true"/>
+            <OutputClaim ClaimTypeReferenceId="newPassword" Required="true"/>
+            <OutputClaim ClaimTypeReferenceId="reenterPassword" Required="true"/>
+            <OutputClaim ClaimTypeReferenceId="displayName"/>
+            <OutputClaim ClaimTypeReferenceId="givenName"/>
+            <OutputClaim ClaimTypeReferenceId="surName"/>
+            <!-- Required to present the text box to collect the data from the user -->
+            <OutputClaim ClaimTypeReferenceId="loyaltyId"/>
+            <!-- Required to pass the promoCode returned from "REST-ValidateProfile" 
+            to subsequent orchestration steps and token issuance-->
+            <OutputClaim ClaimTypeReferenceId="promoCode" />
+          </OutputClaims>
+          <ValidationTechnicalProfiles>
+            <ValidationTechnicalProfile ReferenceId="REST-ValidateProfile" />
+          </ValidationTechnicalProfiles>
+        </TechnicalProfile>
+      </TechnicalProfiles>
+    </ClaimsProvider>
+    <ClaimsProvider>
+      <DisplayName>Self Asserted</DisplayName>
+      <TechnicalProfiles>
+        <TechnicalProfile Id="SelfAsserted-Social">
+          <InputClaims>
+            <InputClaim ClaimTypeReferenceId="email" />
+          </InputClaims>
+            <OutputClaims>
+            <OutputClaim ClaimTypeReferenceId="email" />
+            <OutputClaim ClaimTypeReferenceId="displayName"/>
+            <OutputClaim ClaimTypeReferenceId="givenName"/>
+            <OutputClaim ClaimTypeReferenceId="surname"/>
+            <!-- Required to present the text box to collect the data from the user -->
+            <OutputClaim ClaimTypeReferenceId="loyaltyId"/>
+            <!-- Required to pass the promoCode returned from "REST-ValidateProfile" 
+            to subsequent orchestration steps and token issuance-->
+            <OutputClaim ClaimTypeReferenceId="promoCode" />
+          </OutputClaims>
+          <ValidationTechnicalProfiles>
+            <ValidationTechnicalProfile ReferenceId="REST-ValidateProfile"/>
+          </ValidationTechnicalProfiles>
+        </TechnicalProfile>
+      </TechnicalProfiles>
+    </ClaimsProvider>
+    ```
 
-1. Przekaż nową wersję pliku TrustFrameworkExtensions. XML.
-2. Użyj **teraz uruchomienia** , aby przetestować plik zasad RP Edytuj profil.
-3. Przetestuj sprawdzanie poprawności, podając jedną z istniejących nazw (na przykład mcvinny) w polu **Nazwa** . Jeśli wszystko jest prawidłowo skonfigurowane, powinien zostać wyświetlony komunikat z informacją o tym, że tag odtwarzacza jest już używany.
+## <a name="include-a-claim-in-the-token"></a>Dołącz roszczenie do tokenu 
+
+Aby zwrócić oświadczenie kodu promocyjnego z powrotem do aplikacji jednostki uzależniającej, dodaj oświadczenie danych wyjściowych do <em> `SocialAndLocalAccounts/` </em> pliku. Oświadczenie danych wyjściowych pozwoli oświadczenia, które mają zostać dodane do tokenu po pomyślnej podróży użytkownika i zostaną wysłane do aplikacji. Zmodyfikuj element profilu technicznego w `promoCode` sekcji jednostki uzależniona, aby dodać jako oświadczenie wyjściowe.
+ 
+```xml
+<RelyingParty>
+  <DefaultUserJourney ReferenceId="SignUpOrSignIn" />
+  <TechnicalProfile Id="PolicyProfile">
+    <DisplayName>PolicyProfile</DisplayName>
+    <Protocol Name="OpenIdConnect" />
+    <OutputClaims>
+      <OutputClaim ClaimTypeReferenceId="displayName" />
+      <OutputClaim ClaimTypeReferenceId="givenName" />
+      <OutputClaim ClaimTypeReferenceId="surname" />
+      <OutputClaim ClaimTypeReferenceId="email" />
+      <OutputClaim ClaimTypeReferenceId="objectId" PartnerClaimType="sub"/>
+      <OutputClaim ClaimTypeReferenceId="identityProvider" />
+      <OutputClaim ClaimTypeReferenceId="tenantId" AlwaysUseDefaultValue="true" DefaultValue="{Policy:TenantObjectId}" />
+      <OutputClaim ClaimTypeReferenceId="promoCode" DefaultValue="" />
+    </OutputClaims>
+    <SubjectNamingInfo ClaimType="sub" />
+  </TechnicalProfile>
+</RelyingParty>
+```
+
+## <a name="test-the-custom-policy"></a>Testowanie zasad niestandardowych
+
+1. Zaloguj się do [Portalu Azure](https://portal.azure.com).
+1. Upewnij się, że używasz katalogu, który zawiera dzierżawę usługi Azure AD, wybierając filtr **subskrypcja Katalog +** w górnym menu i wybierając katalog zawierający dzierżawę usługi Azure AD.
+1. Wybierz **pozycję Wszystkie usługi** w lewym górnym rogu witryny Azure portal, a następnie wyszukaj i wybierz pozycję **Rejestracje aplikacji.**
+1. Wybierz **platformę środowiska tożsamości**.
+1. Wybierz **pozycję Przekaż zasady niestandardowe**, a następnie przekaż zmienione pliki zasad: *TrustFrameworkExtensions.xml*i *SignUpOrSignin.xml*. 
+1. Wybierz przekazane zasady rejestracji lub logowania, a następnie kliknij przycisk **Uruchom teraz.**
+1. Powinieneś być w stanie zarejestrować się przy użyciu adresu e-mail.
+1. Kliknij link **Zarejestruj się teraz.**
+1. W **pliku Identyfikator lojalnościowy**wpisz 1234 i kliknij przycisk **Kontynuuj**. W tym momencie powinien zostać wyświetlony komunikat o błędzie sprawdzania poprawności.
+1. Zmień na inną wartość i kliknij przycisk **Kontynuuj**.
+1. Token wysłany z powrotem `promoCode` do aplikacji zawiera oświadczenie.
+
+```json
+{
+  "typ": "JWT",
+  "alg": "RS256",
+  "kid": "X5eXk4xyojNFum1kl2Ytv8dlNP4-c57dO6QGTVBwaNk"
+}.{
+  "exp": 1584295703,
+  "nbf": 1584292103,
+  "ver": "1.0",
+  "iss": "https://contoso.b2clogin.com/f06c2fe8-709f-4030-85dc-38a4bfd9e82d/v2.0/",
+  "aud": "e1d2612f-c2bc-4599-8e7b-d874eaca1ee1",
+  "acr": "b2c_1a_signup_signin",
+  "nonce": "defaultNonce",
+  "iat": 1584292103,
+  "auth_time": 1584292103,
+  "name": "Emily Smith",
+  "email": "emily@outlook.com",
+  "given_name": "Emily",
+  "family_name": "Smith",
+  "promoCode": "84362"
+  ...
+}
+```
 
 ## <a name="next-steps"></a>Następne kroki
 
-[Modyfikowanie profilu Edycja i Rejestracja użytkownika w celu zebrania dodatkowych informacji od użytkowników](custom-policy-custom-attributes.md)
-
-[Przewodnik: integruje wymianę oświadczeń interfejsu API REST w ramach przejazdu Azure AD B2C użytkownika w ramach kroku aranżacji](custom-policy-rest-api-claims-exchange.md)
-
-[Dokumentacja: profil techniczny RESTful](restful-technical-profile.md)
-
 Aby dowiedzieć się, jak zabezpieczyć interfejsy API, zobacz następujące artykuły:
 
-* [Zabezpieczanie interfejsu API usługi RESTful przy użyciu uwierzytelniania podstawowego (nazwa użytkownika i hasło)](secure-rest-api-dotnet-basic-auth.md)
-* [Zabezpieczanie interfejsu API usługi RESTful przy użyciu certyfikatów klienta](secure-rest-api-dotnet-certificate-auth.md)
+- [Przewodnik: Integrowanie wymiany oświadczeń interfejsu API REST w podróży użytkownika usługi Azure AD B2C jako krok aranżacji](custom-policy-rest-api-claims-exchange.md)
+- [Zabezpiecz swój interfejs API RESTful](secure-rest-api.md)
+- [Referencje: RESTful profil techniczny](restful-technical-profile.md)

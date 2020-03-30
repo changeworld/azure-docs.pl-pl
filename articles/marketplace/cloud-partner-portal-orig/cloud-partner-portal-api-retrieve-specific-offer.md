@@ -1,29 +1,28 @@
 ---
-title: Pobierz konkretny interfejs API oferty | Portal Azure Marketplace
-description: Interfejs API pobiera określoną ofertę w przestrzeni nazw wydawcy.
-services: Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+title: Pobieranie interfejsu API określonej oferty | Azure Marketplace
+description: Interfejs API pobiera określoną ofertę w obszarze nazw wydawcy.
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
 ms.date: 09/13/2018
-ms.author: pabutler
-ms.openlocfilehash: 030fb221b9227acf9c5dcda8797b106e51f56d64
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: a83b664bb770a88f3c4c13a672655e736a46ca75
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73827347"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80280460"
 ---
-<a name="retrieve-a-specific-offer"></a>Pobierz konkretną ofertę
+<a name="retrieve-a-specific-offer"></a>Pobieranie określonej oferty
 =========================
 
-Pobiera określoną ofertę w przestrzeni nazw wydawcy.  
+Pobiera określoną ofertę w obszarze nazw wydawcy.  
 
-Możesz również pobrać określoną wersję oferty lub pobrać ofertę w gniazdach roboczych, widoku lub produkcji. Jeśli gniazdo nie jest określone, wartość domyślna to `draft`. Próba pobrania oferty, która nie została wcześniej przeglądana lub opublikowana, spowoduje wystąpienie błędu `404 Not Found`.
+Można również pobrać określoną wersję oferty lub pobrać ofertę w wersji roboczej, widoku lub gniazdach produkcyjnych. Jeśli gniazdo nie jest określone, `draft`wartością domyślną jest . Próba pobrania oferty, która nie została wyświetlona w wersji `404 Not Found` zapoznawczej lub opublikowana, spowoduje błąd.
 
 > [!WARNING]
-> Wartość wpisu tajnego dla pól typu wpisu tajnego nie zostanie pobrana przez ten interfejs API.
+> Wartości tajne dla pól typu tajnego nie zostaną pobrane przez ten interfejs API.
 
 ``` http
     GET https://cloudpartner.azure.com/api/publishers/<publisherId>/offers/<offerId>?api-version=2017-10-31
@@ -41,11 +40,11 @@ Możesz również pobrać określoną wersję oferty lub pobrać ofertę w gniaz
 
 | **Nazwa**    | **Opis**                                                                          | **Typ danych** |
 |-------------|------------------------------------------------------------------------------------------|---------------|
-| publisherId | publisherId. Na przykład contoso                                                        | Ciąg        |
-| OfferId     | Identyfikator GUID, który jednoznacznie identyfikuje ofertę.                                                 | Ciąg        |
-| version     | Wersja pobranej oferty. Domyślnie pobierana jest Najnowsza wersja oferty. | Liczba całkowita       |
-| SlotId      | Gniazdo, z którego ma zostać pobrana oferta, może być jedną z:      <br/>  - `Draft` (domyślnie) Pobiera wersję oferty aktualnie w wersji roboczej.  <br/>  -  `Preview` Pobiera wersję oferty aktualnie w wersji zapoznawczej.     <br/>  -  `Production` pobiera aktualną wersję oferty w środowisku produkcyjnym.          |      podstawowe |
-| wersja interfejsu API | Najnowsza wersja interfejsu API                                                                    | Date          |
+| identyfikator wydawcy | identyfikator wydawcy. Na przykład Contoso                                                        | Ciąg        |
+| offerId     | Guid, który jednoznacznie identyfikuje ofertę.                                                 | Ciąg        |
+| version     | Wersja pobieranej oferty. Domyślnie pobierana jest najnowsza wersja oferty. | Liczba całkowita       |
+| slotId (ida)      | Gniazdo, z którego ma zostać pobrana oferta, może być jednym z:      <br/>  - `Draft`(domyślnie) pobiera wersję oferty aktualnie w wersji roboczej.  <br/>  -  `Preview`pobiera wersję oferty aktualnie w wersji zapoznawczej.     <br/>  -  `Production`pobiera wersję oferty aktualnie w produkcji.          |      enum |
+| api-version | Najnowsza wersja interfejsu API                                                                    | Data          |
 |  |  |  |
 
 
@@ -59,7 +58,7 @@ Możesz również pobrać określoną wersję oferty lub pobrać ofertę w gniaz
 |  |  |
 
 
-<a name="body-example"></a>Przykład treści
+<a name="body-example"></a>Przykład ciała
 ------------
 
 ### <a name="response"></a>Odpowiedź
@@ -171,24 +170,24 @@ Możesz również pobrać określoną wersję oferty lub pobrać ofertę w gniaz
 
 |  **Nazwa**       |   **Opis**                                                                                                               |
 |  -------------  |   -----------------------------------------------------------------------------------------------------                         |
-|  offerTypeId    | Identyfikuje typ oferty                                                                                                    |
-|  publisherId    | Unikatowy identyfikator wydawcy                                                                                              |
-|  status         | Stan oferty. Aby uzyskać listę możliwych wartości, zobacz temat [status oferty](#offer-status) poniżej.                                  |
+|  offerTypeId    | Określa typ oferty                                                                                                    |
+|  identyfikator wydawcy    | Unikatowy identyfikator wydawcy                                                                                              |
+|  status         | Status oferty. Aby uzyskać listę możliwych wartości, zobacz [Stan oferty](#offer-status) poniżej.                                  |
 |  Identyfikator             | Identyfikator GUID, który jednoznacznie identyfikuje ofertę                                                                                         |
-|  version        | Bieżąca wersja oferty. Nie można zmodyfikować właściwości Version przez klienta. Zwiększa się po każdej publikacji.    |
-|  Definicji     | Rzeczywista definicja obciążenia                                                                                               |
-|  changedTime    | Data i godzina UTC ostatniej modyfikacji oferty                                                                                   |
+|  version        | Aktualna wersja oferty. Właściwość version nie może być modyfikowana przez klienta. Jest zwiększany po każdym publikowaniu.    |
+|  definicja     | Rzeczywista definicja obciążenia pracą                                                                                               |
+|  zmienionaCzas    | Data daty UTC, kiedy oferta została ostatnio zmodyfikowana                                                                                   |
 |  |  |
 
 
 ### <a name="response-status-codes"></a>Kody stanu odpowiedzi
 
-| **Kodu**  | **Opis**                                                                                                                 |
+| **Code**  | **Opis**                                                                                                                 |
 |  ------   | ------------------------------------------------------------------------------------------------------------------------------- |
-|  200      | `OK` — żądanie zostało pomyślnie przetworzone i wszystkie oferty w ramach wydawcy zostały zwrócone do klienta.               |
-|  400      | `Bad/Malformed request` — treść odpowiedzi błędu może zawierać więcej informacji.                                                 |
-|  403      | `Forbidden` — klient nie ma dostępu do określonego obszaru nazw.                                                        |
-|  404      | `Not found` — określona jednostka nie istnieje. Klient powinien sprawdzić publisherId, offerId i wersję (jeśli jest określona).      |
+|  200      | `OK`- Żądanie zostało pomyślnie przetworzone, a wszystkie oferty pod wydawcą zostały zwrócone klientowi.               |
+|  400      | `Bad/Malformed request`- Treść odpowiedzi na błędy może zawierać więcej informacji.                                                 |
+|  403      | `Forbidden`- Klient nie ma dostępu do określonego obszaru nazw.                                                        |
+|  404      | `Not found`- Określona jednostka nie istnieje. Klient powinien sprawdzić publisherId, offerId i wersja (jeśli określono).      |
 |  |  |
 
 
@@ -196,11 +195,11 @@ Możesz również pobrać określoną wersję oferty lub pobrać ofertę w gniaz
 
 |  **Nazwa**                   |   **Opis**                             |
 | --------------------------- |  -------------------------------------------- |
-|  NeverPublished             | Oferta nie została nigdy opublikowana.               |
-|  NotStarted                 | Oferta jest nowa, ale nie została uruchomiona.              |
-|  WaitingForPublisherReview  | Oferta oczekuje na zatwierdzenie przez wydawcę.      |
-|  Działanie                    | Przesyłanie oferty jest przetwarzane.          |
-|  Powodzenie                  | Przesyłanie oferty zostało zakończone.    |
-|  Anulowane                   | Przesyłanie oferty zostało anulowane.                |
-|  Niepowodzenie                     | Nie można przesłać oferty.                      |
+|  NeverPublished (NigdyPublished)             | Oferta nigdy nie została opublikowana.               |
+|  NotStarted (Nierozpoczęcie)                 | Oferta jest nowa, ale nie została uruchomiona.              |
+|  OczekiwanieforPublisherReview  | Oferta czeka na zatwierdzenie przez wydawcę.      |
+|  Działanie                    | Rozpatrywane jest składanie ofert.          |
+|  Powodzenie                  | Złożenie oferty zakończyło się przetwarzaniem.    |
+|  Anulowane                   | Składanie ofert zostało anulowane.                |
+|  Niepowodzenie                     | Składanie ofert nie powiodło się.                      |
 |  |  |

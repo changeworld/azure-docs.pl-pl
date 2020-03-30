@@ -1,79 +1,78 @@
 ---
-title: Konfigurowanie zarządzania liderem w programie Marketo | Portal Azure Marketplace
-description: Skonfiguruj zarządzanie potencjalnymi klientami dla programu Marketo dla klientów portalu Azure Marketplace.
-services: Azure, Marketplace, commercial marketplace, Partner Center
+title: Konfigurowanie zarządzania potencjalnymi klientami w Marketo | Azure Marketplace
+description: Skonfiguruj zarządzanie potencjalnymi klientami dla marketo dla platformy Azure.
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.author: evansma
-ms.openlocfilehash: 8d13e8c3aeabf6d3fdea80ffddbae47b80adc139
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 35d57d117f6308863965ffd789c0e28bedd0f301
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73812134"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80281514"
 ---
-# <a name="configure-lead-management-in-marketo"></a>Konfigurowanie zarządzania potencjalnymi klientami w programie Marketo
+# <a name="configure-lead-management-in-marketo"></a>Konfigurowanie zarządzania potencjalnymi klientami w Marketo
 
-W tym artykule opisano, jak skonfigurować system CRM dla programu Marketo, aby przetwarzać potencjalni klienci z oferty w portalu Marketplace.
+W tym artykule opisano, jak skonfigurować system Marketo CRM do przetwarzania potencjalnych klientów sprzedaży z oferty marketplace.
 
-## <a name="set-up-your-marketo-crm-system"></a>Skonfiguruj system CRM dla programu Marketo
+## <a name="set-up-your-marketo-crm-system"></a>Skonfiguruj swój system Marketo CRM
 
-1. Zaloguj się do programu Marketo.
-2. Wybierz pozycję **projekt Studio**.
-    ![projekt Market](./media/commercial-marketplace-lead-management-instructions-marketo/marketo-1.png)
+1. Zaloguj się do Marketo.
+2. Wybierz **Design Studio**.
+    ![Studio Projektowe Marketo](./media/commercial-marketplace-lead-management-instructions-marketo/marketo-1.png)
 
-3.  Wybierz pozycję **nowy formularz**.
-    nowy formularz ![Market](./media/commercial-marketplace-lead-management-instructions-marketo/marketo-2.png)
+3.  Wybierz **pozycję Nowy formularz**.
+    ![Marketo nowa forma](./media/commercial-marketplace-lead-management-instructions-marketo/marketo-2.png)
 
 4.  Wypełnij wymagane pola w nowym formularzu, a następnie wybierz pozycję **Utwórz**.
-    ![Marketo Utwórz nowy formularz](./media/commercial-marketplace-lead-management-instructions-marketo/marketo-3.png)
+    ![Marketo tworzenie nowego formularza](./media/commercial-marketplace-lead-management-instructions-marketo/marketo-3.png)
 
-5.  W polu Szczegóły pola wybierz pozycję **Zakończ**.
-    formularz zakończenia ![Marketa](./media/commercial-marketplace-lead-management-instructions-marketo/marketo-4.png)
+5.  W obszarze Szczegóły pola wybierz pozycję **Zakończ**.
+    ![Formularz wykończenia Marketo](./media/commercial-marketplace-lead-management-instructions-marketo/marketo-4.png)
 
-6.  Zatwierdź i Zamknij.
+6.  Zatwierdź i zamknij.
 
 7. Na karcie *MarketplaceLeadBacked* wybierz pozycję **Osadź kod**. 
 
-    ![Osadź kod](./media/commercial-marketplace-lead-management-instructions-marketo/marketo-6.png)
+    ![Kod osadzania](./media/commercial-marketplace-lead-management-instructions-marketo/marketo-6.png)
 
-8. Kod osadzania programu Marketo wyświetla kod podobny do poniższego przykładu.
+8. Marketo Embed Code wyświetla kod podobny do poniższego przykładu.
 
     ```
     <form id="mktoForm_1179"></form>
     <script>MktoForms2.loadForm("("//app-ys12.marketo.com", "123-PQR-789", 1179);</script>
     ```
 
-9. Skopiuj wartości poniższych pól wyświetlanych w formularzu kodu osadzania. Te wartości zostaną użyte do skonfigurowania oferty, aby otrzymywać potencjalni klienci w następnym kroku. W następnym przykładzie przedstawiono Przewodnik dotyczący uzyskiwania wymaganych identyfikatorów z przykładu kodu osadzania programu Marketo.
+9. Skopiuj wartości poniższych pól wyświetlanych w formularzu Kod osadzania. Użyjesz tych wartości, aby skonfigurować ofertę do odbierania potencjalnych klientów w następnym kroku. Użyj następnego przykładu jako przewodnika do uzyskiwania identyfikatorów, których potrzebujesz w przykładzie Marketo Embed Code.
 
     - Identyfikator serwera = **ys12**
     - Identyfikator Munchkin = **123-PQR-789**
     - Identyfikator formularza = **1179**
 
-    **Inny sposób ustalenia tych wartości**
+    **Innym sposobem, aby dowiedzieć się tych wartości**
 
-    - Identyfikator serwera znajduje się w adresie URL wystąpienia programu Marketo, na przykład "`serverID.marketo.com`".
-    - Aby uzyskać identyfikator munching subskrypcji, przejdź do menu Administrator > Munchkin w polu "Identyfikator konta Munchkin" lub z pierwszej części poddomeny hosta interfejsu API REST usługi Marketo: `https://{Munchkin ID}.mktorest.com`.
-    - Identyfikator formularza jest IDENTYFIKATORem formularza kodu osadzania utworzonego w kroku 7 w celu kierowania potencjalnych klientów z portalu Marketplace.
+    - Identyfikator serwera znajduje się w adresie URL wystąpienia Marketo, na przykład "`serverID.marketo.com`".
+    - Uzyskaj identyfikator Munching ID subskrypcji, przechodząc do menu Administrator>Munchkin w polu "Identyfikator konta Munchkin" lub z pierwszej części poddomeny hosta interfejsu Marketo REST: `https://{Munchkin ID}.mktorest.com`.
+    - Identyfikator formularza to identyfikator formularza Embed Code utworzonego w kroku 7 w celu kierowania potencjalnych klientów z naszego rynku.
 
-## <a name="configure-your-offer-to-send-leads-to-marketo"></a>Konfigurowanie oferty do wysyłania potencjalnych klientów do programu Marketo
+## <a name="configure-your-offer-to-send-leads-to-marketo"></a>Skonfiguruj ofertę wysyłania potencjalnych klientów do Marketo
 
-Gdy wszystko jest gotowe do skonfigurowania informacji dotyczących zarządzania potencjalnym liderem oferty w portalu wydawców, wykonaj następujące czynności: 
+Gdy będziesz gotowy skonfigurować informacje o zarządzaniu potencjalnymi klientami dla oferty w portalu publikowania, wykonaj poniższe czynności: 
 
-1. Przejdź do strony **Konfiguracja oferty** dla swojej oferty.
-1. Wybierz pozycję **Połącz** w sekcji Zarządzanie potencjalnymi klientami. 
+1. Przejdź do strony **Ustawienia oferty** dla swojej oferty.
+1. Wybierz **pozycję Połącz** w sekcji Zarządzanie potencjalnymi klientami. 
 
-    ![Zarządzanie potencjalnymi klientami — łączenie](./media/commercial-marketplace-lead-management-instructions-marketo/lead-management-connect.png)
+    ![Zarządzanie potencjalnymi klientami - Połącz](./media/commercial-marketplace-lead-management-instructions-marketo/lead-management-connect.png)
 
-1. W oknie podręcznym szczegóły połączenia wybierz pozycję **Marketo** dla miejsca docelowego potencjalnego klienta.
+1. W oknie podręcznym Szczegóły połączenia wybierz **pozycję Marketo** dla miejsca docelowego potencjalnego klienta.
 
-    ![Wybierz miejsce docelowe potencjalnego klienta](./media/commercial-marketplace-lead-management-instructions-marketo/choose-lead-destination.png)
+    ![Wybieranie miejsca docelowego potencjalnego klienta](./media/commercial-marketplace-lead-management-instructions-marketo/choose-lead-destination.png)
 
-4. Podaj **Identyfikator serwera**, **Identyfikator konta munching**i **Identyfikator formularza**.
+4. Podaj **identyfikator serwera,** **identyfikator konta munching**i **identyfikator formularza**.
 
     >[!Note]
-    >Musisz zakończyć konfigurowanie reszty oferty i opublikować ją przed odebraniem potencjalnych klientów do oferty. 
+    >Musisz zakończyć konfigurowanie pozostałej części oferty i opublikować ją, zanim będzie można odbierać potencjalnych klientów dla oferty. 
 

@@ -1,103 +1,103 @@
 ---
-title: Wersja zapoznawcza wdrożenia usługi Azure Service Fabric Docker Compose
-description: Usługa Azure Service Fabric akceptuje format Docker Compose, aby ułatwić organizowanie istniejących kontenerów przy użyciu Service Fabric. Ta funkcja jest obecnie w wersji zapoznawczej.
+title: Wersja dorozjudowa usługi Azure Service Fabric Comone Deployment Preview
+description: Usługa Azure Service Fabric akceptuje format docker compose, aby ułatwić organizowanie istniejących kontenerów przy użyciu sieci szkieletowej usług. Ta obsługa jest obecnie w wersji zapoznawczej.
 ms.topic: conceptual
 ms.date: 2/23/2018
 ms.openlocfilehash: f84dd0ecb7a4002182c8455bfd86354d794a6f7c
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79282460"
 ---
-# <a name="docker-compose-deployment-support-in-azure-service-fabric-preview"></a>Obsługa wdrażania Docker Compose w usłudze Azure Service Fabric (wersja zapoznawcza)
+# <a name="docker-compose-deployment-support-in-azure-service-fabric-preview"></a>Obsługa wdrażania tworzenia docker w sieci szkieletowej usługi Azure (wersja zapoznawcza)
 
-Platforma Docker używa pliku [Docker-Compose. yml](https://docs.docker.com/compose) do definiowania aplikacji wielokontenerowych. Aby ułatwić klientom zaznajomionym z platformą Docker w celu organizowania istniejących aplikacji kontenera w usłudze Azure Service Fabric, w tej platformie dodaliśmy obsługę wersji zapoznawczej dla Docker Compose wdrożenia w sposób natywny. Service Fabric może akceptować wersję 3 lub nowszą plików `docker-compose.yml`. 
+Docker używa pliku [docker-compose.yml](https://docs.docker.com/compose) do definiowania aplikacji z wieloma kontenerami. Aby ułatwić klientom zaznajomionym z platformą Docker organizowanie istniejących aplikacji kontenerów w sieci szkieletowej usług Azure, uwzględniliśmy obsługę w wersji zapoznawczej wdrożenia docker compose natywnie na platformie. Usługa Sieci szkieletowej może akceptować pliki w wersji 3 i nowszej. `docker-compose.yml` 
 
-Ponieważ ta obsługa jest dostępna w wersji zapoznawczej, obsługiwane są tylko podzbiór dyrektyw redagowania.
+Ponieważ ta obsługa jest w wersji zapoznawczej, tylko podzbiór compose dyrektyw jest obsługiwany.
 
-Aby użyć tej wersji zapoznawczej, należy utworzyć klaster z wersją 5,7 lub nowszą Service Fabric środowiska uruchomieniowego za pomocą Azure Portal wraz z odpowiednim zestawem SDK. 
+Aby użyć tej wersji zapoznawczej, utwórz klaster w wersji 5.7 lub większej środowiska uruchomieniowego sieci szkieletowej usług za pośrednictwem witryny Azure portal wraz z odpowiednim zestawem SDK. 
 
 > [!NOTE]
-> Ta funkcja jest w wersji zapoznawczej i nie jest obsługiwana w środowisku produkcyjnym.
-> Poniższe przykłady zależą od środowiska uruchomieniowego w wersji 6,0 i SDK w wersji 2,8.
+> Ta funkcja jest w wersji zapoznawczej i nie jest obsługiwana w produkcji.
+> Poniższe przykłady są oparte na wersji 6.0 środowiska wykonawczego i SDK w wersji 2.8.
 
-## <a name="deploy-a-docker-compose-file-on-service-fabric"></a>Wdróż plik Docker Compose na Service Fabric
+## <a name="deploy-a-docker-compose-file-on-service-fabric"></a>Wdrażanie pliku compose docker w sieci szkieletowej usług
 
-Następujące polecenia tworzą aplikację Service Fabric (o nazwie `fabric:/TestContainerApp`), którą można monitorować i zarządzać jak dowolną inną aplikacją Service Fabric. Można użyć określonej nazwy aplikacji na potrzeby zapytań dotyczących kondycji.
-Service Fabric rozpoznaje wartość "Deploymentname" jako identyfikator wdrożenia redagowania.
+Następujące polecenia tworzą aplikację sieci szkieletowej usług (o nazwie `fabric:/TestContainerApp`), którą można monitorować i zarządzać jak każda inna aplikacja sieci szkieletowej usług. Można użyć określonej nazwy aplikacji dla kwerend dotyczących kondycji.
+Sieci szkieletowej usług rozpoznaje "DeploymentName" jako identyfikator wdrożenia compose.
 
 ### <a name="use-powershell"></a>Korzystanie z programu PowerShell
 
-Utwórz Service Fabric Tworzenie wdrożenia z pliku Docker-Compose. yml, uruchamiając następujące polecenie w programie PowerShell:
+Utwórz wdrożenie redagowania sieci szkieletowej usług z pliku docker-compose.yml, uruchamiając następujące polecenie w programie PowerShell:
 
 ```powershell
 New-ServiceFabricComposeDeployment -DeploymentName TestContainerApp -Compose docker-compose.yml [-RegistryUserName <>] [-RegistryPassword <>] [-PasswordEncrypted]
 ```
 
-`RegistryUserName` i `RegistryPassword` zapoznaj się z nazwą użytkownika i hasłem rejestru kontenerów. Po zakończeniu wdrażania możesz sprawdzić jego stan przy użyciu następującego polecenia:
+`RegistryUserName`i `RegistryPassword` odnoszą się do nazwy użytkownika i hasła rejestru kontenerów. Po zakończeniu wdrożenia można sprawdzić jego stan za pomocą następującego polecenia:
 
 ```powershell
 Get-ServiceFabricComposeDeploymentStatus -DeploymentName TestContainerApp
 ```
 
-Aby usunąć wdrożenie redagowania za pomocą programu PowerShell, użyj następującego polecenia:
+Aby usunąć wdrożenie Redpose za pośrednictwem programu PowerShell, użyj następującego polecenia:
 
 ```powershell
 Remove-ServiceFabricComposeDeployment  -DeploymentName TestContainerApp
 ```
 
-Aby rozpocząć uaktualnianie redagowania przy użyciu programu PowerShell, użyj następującego polecenia:
+Aby rozpocząć uaktualnianie wdrożenia compose za pośrednictwem programu PowerShell, użyj następującego polecenia:
 
 ```powershell
 Start-ServiceFabricComposeDeploymentUpgrade -DeploymentName TestContainerApp -Compose docker-compose-v2.yml -Monitored -FailureAction Rollback
 ```
 
-Aby wycofać uaktualnienie tworzenia i wdrażania za pomocą programu PowerShell, użyj następującego polecenia:
+Aby wycofać uaktualnienie wdrożenia compose za pośrednictwem programu PowerShell, należy użyć następującego polecenia:
 
 ```powershell
 Start-ServiceFabricComposeDeploymentRollback -DeploymentName TestContainerApp
 ```
 
-Po zaakceptowaniu uaktualnienia można śledzić postęp uaktualniania przy użyciu następującego polecenia:
+Po zaakceptowaniu uaktualnienia postęp uaktualnienia można śledzić za pomocą następującego polecenia:
 
 ```powershell
 Get-ServiceFabricComposeDeploymentUpgrade -DeploymentName TestContainerApp
 ```
 
-### <a name="use-azure-service-fabric-cli-sfctl"></a>Korzystanie z interfejsu wiersza polecenia platformy Azure Service Fabric (sfctl)
+### <a name="use-azure-service-fabric-cli-sfctl"></a>Użyj interfejsu wiersza polecenia sieci szkieletowej usługi Azure (sfctl)
 
-Alternatywnie, można użyć następującego Service Fabric polecenia interfejsu CLI:
+Alternatywnie można użyć następującego polecenia interfejsu wiersza polecenia sieci szkieletowej usług:
 
 ```shell
 sfctl compose create --deployment-name TestContainerApp --file-path docker-compose.yml [ [ --user --encrypted-pass ] | [ --user --has-pass ] ] [ --timeout ]
 ```
 
-Po utworzeniu wdrożenia można sprawdzić jego stan przy użyciu następującego polecenia:
+Po utworzeniu wdrożenia można sprawdzić jego stan za pomocą następującego polecenia:
 
 ```shell
 sfctl compose status --deployment-name TestContainerApp [ --timeout ]
 ```
 
-Aby usunąć wdrożenie redagowania, użyj następującego polecenia:
+Aby usunąć wdrożenie Redpose, użyj następującego polecenia:
 
 ```shell
 sfctl compose remove  --deployment-name TestContainerApp [ --timeout ]
 ```
 
-Aby rozpocząć uaktualnianie wdrożenia redagowania, użyj następującego polecenia:
+Aby rozpocząć uaktualnienie wdrażania compose, użyj następującego polecenia:
 
 ```shell
 sfctl compose upgrade --deployment-name TestContainerApp --file-path docker-compose-v2.yml [ [ --user --encrypted-pass ] | [ --user --has-pass ] ] [--upgrade-mode Monitored] [--failure-action Rollback] [ --timeout ]
 ```
 
-Aby wycofać uaktualnienie redagowania wdrożenia, użyj następującego polecenia:
+Aby wycofać uaktualnienie wdrożenia compose, należy użyć następującego polecenia:
 
 ```shell
 sfctl compose upgrade-rollback --deployment-name TestContainerApp [ --timeout ]
 ```
 
-Po zaakceptowaniu uaktualnienia można śledzić postęp uaktualniania przy użyciu następującego polecenia:
+Po zaakceptowaniu uaktualnienia postęp uaktualnienia można śledzić za pomocą następującego polecenia:
 
 ```shell
 sfctl compose upgrade-status --deployment-name TestContainerApp
@@ -105,52 +105,52 @@ sfctl compose upgrade-status --deployment-name TestContainerApp
 
 ## <a name="supported-compose-directives"></a>Obsługiwane dyrektywy redagowania
 
-Ta wersja zapoznawcza obsługuje podzestaw opcji konfiguracji w formacie tworzenia wersji 3, w tym następujące elementy podstawowe:
+Ten podgląd obsługuje podzbiór opcji konfiguracji z formatu Compose w wersji 3, w tym następujące elementy podstawowe:
 
-* Usługi > wdrażanie > replik
-* Usługi > Wdróż > rozmieszczenia > ograniczenia
-* Usługi > wdrożyć limity > zasobów >
-    * -Procesor-udziały
+* Usługi > wdrażania replik >
+* > wdrażania > > usług
+* Usługi > wdrażanie > limitów > zasobów
+    * -cpu-udziały
     * -pamięć
-    * -pamięć — wymiana
-* > Polecenia usług
-* Usługi > środowiska
-* > Portów usług
-* > Obrazu usług
-* Izolacja > usług (tylko dla systemu Windows)
-* > Rejestrowania > sterownika usługi
-* Usługi > rejestrowanie > > opcji sterowników
-* Wolumin & Wdróż wolumin >
+    * -zamiana pamięci
+* Usługi > polecenia
+* Usługi > środowisko
+* Usługi > porty
+* Obraz > usług
+* Usługi > izolacji (tylko dla systemu Windows)
+* Sterownik > rejestrowania usług >
+* Usługi > opcje > > > sterowników
+* Wolumin & wdrożenia > woluminu
 
-Skonfiguruj klaster do wymuszania limitów zasobów, zgodnie z opisem w temacie [Service Fabric zarządzanie zasobami](service-fabric-resource-governance.md). Wszystkie inne dyrektywy Docker Compose nie są obsługiwane w tej wersji zapoznawczej.
+Skonfiguruj klaster do wymuszania limitów zasobów, zgodnie z opisem w [zarządzania zasobami sieci szkieletowej usług](service-fabric-resource-governance.md). Wszystkie inne dyrektywy dokowania są nieobsługiwały dla tej wersji zapoznawczej.
 
-### <a name="ports-section"></a>Sekcja porty
+### <a name="ports-section"></a>Sekcja Porty
 
-W sekcji Porty określ protokół http lub https, który będzie używany przez odbiornik usługi Service Fabric. Dzięki temu protokół punktu końcowego zostanie prawidłowo opublikowany przy użyciu usługi nazewnictwa, aby umożliwić zwrotny serwer proxy do przesyłania dalej żądań:
-* Aby kierować do niezabezpieczonych Service Fabric redagowania, określ **/http**. Na przykład- **"80:80/http"** .
-* Aby kierować do usługi w celu zabezpieczenia Service Fabric redagowania, określ **/https**. Na przykład- **"443:443/https"** .
+Określ protokół http lub https w sekcji Porty, który będzie używany przez odbiornik usług sieci szkieletowej usług. Zapewni to, że protokół punktu końcowego jest poprawnie opublikowany za pomocą usługi nazewnictwa, aby umożliwić odwrotny serwer proxy do przesyłania dalej żądań:
+* Aby przekierować do niezabezpieczonych usług redagowania sieci szkieletowej usług, należy określić **/http**. Na przykład - **"80:80/http"**.
+* Aby trasować do bezpiecznego usługi redagowania sieci szkieletowej usług, należy określić **/https**. Na przykład - **"443:443/https"**.
 
 > [!NOTE]
-> Składnia sekcji portów/http i/HTTPS jest specyficzna dla Service Fabric w celu zarejestrowania poprawnego adresu URL odbiornika Service Fabric.  Jeśli składnia redagowania pliku platformy Docker jest programowo zweryfikowana, może to spowodować błąd walidacji.
+> Składnia sekcji /http i /https Ports jest specyficzna dla sieci szkieletowej usług w celu zarejestrowania prawidłowego adresu URL odbiornika sieci szkieletowej usług.  Jeśli składnia pliku docker jest programowo sprawdzana, może to spowodować błąd sprawdzania poprawności.
 
 ## <a name="servicednsname-computation"></a>Obliczenia ServiceDnsName
 
-Jeśli nazwa usługi określona w pliku redagowania to w pełni kwalifikowana nazwa domeny (to oznacza, że zawiera kropkę [.]), nazwa DNS zarejestrowana przez Service Fabric jest `<ServiceName>` (łącznie z kropką). W przeciwnym razie każdy segment ścieżki w nazwie aplikacji staje się etykietą domeny w nazwie DNS usługi, a pierwszy segment ścieżki staje się etykietą domeny najwyższego poziomu.
+Jeśli nazwa usługi określona w pliku Redpose jest w pełni kwalifikowaną nazwą domeny (oznacza to, że zawiera `<ServiceName>` kropkę [.]), nazwa DNS zarejestrowana przez sieci szkieletowej usług jest (w tym kropka). Jeśli nie, każdy segment ścieżki w nazwie aplikacji staje się etykietą domeny w nazwie DNS usługi, a pierwszy segment ścieżki staje się etykietą domeny najwyższego poziomu.
 
-Na przykład jeśli określona nazwa aplikacji ma `fabric:/SampleApp/MyComposeApp`, `<ServiceName>.MyComposeApp.SampleApp` być zarejestrowana nazwa DNS.
+Na przykład, jeśli określona `fabric:/SampleApp/MyComposeApp` `<ServiceName>.MyComposeApp.SampleApp` nazwa aplikacji jest , będzie zarejestrowana nazwa DNS.
 
-## <a name="compose-deployment-instance-definition-versus-service-fabric-app-model-type-definition"></a>Utwórz wdrożenie (definicję wystąpienia), a Service Fabric model aplikacji (definicja typu)
+## <a name="compose-deployment-instance-definition-versus-service-fabric-app-model-type-definition"></a>Redagowanie wdrożenia (definicja wystąpienia) w porównaniu z modelem aplikacji sieci szkieletowej usług (definicja typu)
 
-Plik Docker-Compose. yml zawiera opis zestawu kontenerów, w tym ich właściwości i konfiguracje.
-Na przykład plik może zawierać zmienne środowiskowe i porty. Można także określić parametry wdrożenia, takie jak ograniczenia umieszczania, limity zasobów i nazwy DNS, w pliku Docker-Compose. yml.
+Plik docker-compose.yml opisuje wdrażalny zestaw kontenerów, w tym ich właściwości i konfiguracje.
+Na przykład plik może zawierać zmienne środowiskowe i porty. W pliku docker-compose.yml można również określić parametry wdrożenia, takie jak ograniczenia umieszczania, limity zasobów i nazwy DNS.
 
-[Model aplikacji Service Fabric](service-fabric-application-model.md) korzysta z typów usług i typów aplikacji, w których można korzystać z wielu wystąpień aplikacji tego samego typu. Na przykład można mieć jedno wystąpienie aplikacji na każdego klienta. Ten model oparty na typie obsługuje wiele wersji tego samego typu aplikacji, które są zarejestrowane w środowisku uruchomieniowym.
+[Model aplikacji sieci szkieletowej usług](service-fabric-application-model.md) używa typów usług i typów aplikacji, gdzie można mieć wiele wystąpień aplikacji tego samego typu. Na przykład można mieć jedno wystąpienie aplikacji na klienta. Ten model oparty na typie obsługuje wiele wersji tego samego typu aplikacji, który jest zarejestrowany w czasie wykonywania.
 
-Na przykład klient A może mieć utworzoną aplikację z typem 1,0 of AppTypeA, a klient B może mieć inną aplikację z wystąpieniem tego samego typu i wersji. Typy aplikacji definiuje się w manifestach aplikacji, a podczas tworzenia aplikacji należy określić nazwę i parametry wdrożenia aplikacji.
+Na przykład klient A może mieć wystąpienia aplikacji z typem 1.0 AppTypeA, a klient B może mieć inną aplikację wystąpienia z tego samego typu i wersji. Typy aplikacji w manifestach aplikacji i określić nazwę aplikacji i parametry wdrożenia podczas tworzenia aplikacji.
 
-Chociaż ten model oferuje elastyczność, planuje również obsługę prostszego, opartego na wystąpieniach modelu wdrażania, w którym typy są niejawne w pliku manifestu. W tym modelu każda aplikacja pobiera swój własny manifest niezależny. Przeglądamy ten proces, dodając obsługę Docker-Compose. yml, który jest formatem wdrożenia opartym na wystąpieniach.
+Mimo że ten model oferuje elastyczność, planujemy również obsługiwać prostszy, oparty na wystąpieniu model wdrażania, w którym typy są niejawne z pliku manifestu. W tym modelu każda aplikacja pobiera swój własny niezależny manifest. Wyświetlamy podgląd tego wysiłku, dodając obsługę docker-compose.yml, który jest formatem wdrażania opartym na wystąpieniu.
 
 ## <a name="next-steps"></a>Następne kroki
 
-* Zapoznaj się z [modelem aplikacji Service Fabric](service-fabric-application-model.md)
+* Przeczytaj o [modelu aplikacji sieci szkieletowej usług](service-fabric-application-model.md)
 * [Get started with Service Fabric CLI](service-fabric-cli.md) (Wprowadzenie do interfejsu wiersza polecenia usługi Service Fabric)

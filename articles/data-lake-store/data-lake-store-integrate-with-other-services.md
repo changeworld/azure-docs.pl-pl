@@ -1,6 +1,6 @@
 ---
-title: Integrowanie usługi Azure Data Lake Storage Gen1 z innymi usługami platformy Azure | Dokumentacja firmy Microsoft
-description: Zrozumienie, jak usługi Azure Data Lake Storage Gen1 integruje się z innymi usługami platformy Azure
+title: Integracja usługi Azure Data Lake Storage Gen1 z innymi usługami platformy Azure | Dokumenty firmy Microsoft
+description: Dowiedz się, jak usługa Azure Data Lake Storage Gen1 integruje się z innymi usługami platformy Azure
 documentationcenter: ''
 services: data-lake-store
 author: twooley
@@ -12,61 +12,61 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: e28863f9980d6403bef1f88de01b7a9b5271b444
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 43024b63a355646f607adbb6623cc6c349374ea8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60197089"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79535599"
 ---
-# <a name="integrating-azure-data-lake-storage-gen1-with-other-azure-services"></a>Integrowanie usługi Azure Data Lake Storage Gen1 z innymi usługami platformy Azure
-Azure Data Lake Storage Gen1 może służyć w połączeniu z innymi usługami platformy Azure w celu realizacji szerszego zakresu scenariuszy. Następujący artykuł zawiera listę usług, które Data Lake Storage Gen1 można zintegrować z.
+# <a name="integrating-azure-data-lake-storage-gen1-with-other-azure-services"></a>Integracja usługi Azure Data Lake Storage Gen1 z innymi usługami platformy Azure
+Usługa Azure Data Lake Storage Gen1 może być używana w połączeniu z innymi usługami platformy Azure, aby włączyć szerszy zakres scenariuszy. W poniższym artykule wymieniono usługi, z którymi można zintegrować program Data Lake Storage Gen1.
 
-## <a name="use-data-lake-storage-gen1-with-azure-hdinsight"></a>Data Lake Storage Gen1 za pomocą usługi Azure HDInsight
-Możesz aprowizować [Azure HDInsight](https://azure.microsoft.com/documentation/learning-paths/hdinsight-self-guided-hadoop-training/) klastra, który używa Data Lake Storage Gen1 jako zgodna z systemem HDFS magazynu. W tej wersji w przypadku klastrów usługi Hadoop i platformy Storm w Windows i Linux, można użyć Data Lake Storage Gen1 tylko jako dodatkowego magazynu. Takie klastry nadal korzystać z usługi Azure Storage (WASB) jako magazyn domyślny. Jednak w przypadku klastrów HBase w systemach Windows i Linux, możesz użyć Data Lake Storage Gen1 jako magazynu domyślnego i/lub dodatkowego miejsca do magazynowania.
+## <a name="use-data-lake-storage-gen1-with-azure-hdinsight"></a>Korzystanie z usługi Data Lake Storage Gen1 w usłudze Azure HDInsight
+Można aprowizować klaster [usługi Azure HDInsight,](https://azure.microsoft.com/documentation/learning-paths/hdinsight-self-guided-hadoop-training/) który używa magazynu usługi Data Lake Gen1 jako magazynu zgodnego z usługą HDFS. W tej wersji dla klastrów Hadoop i Storm w systemach Windows i Linux można używać usługi Data Lake Storage Gen1 tylko jako dodatkowego magazynu. Takie klastry nadal używają usługi Azure Storage (WASB) jako magazynu domyślnego. Jednak w przypadku klastrów HBase w systemach Windows i Linux można użyć usługi Data Lake Storage Gen1 jako magazynu domyślnego lub dodatkowego magazynu lub obu tych obrażeń.
 
-Aby uzyskać instrukcje dotyczące sposobu inicjowania obsługi klastra HDInsight z Data Lake Storage Gen1 zobacz:
+Aby uzyskać instrukcje dotyczące sposobu aprowizowania klastra HDInsight przy pomocą usługi Data Lake Storage Gen1, zobacz:
 
-* [Aprowizowanie klastra usługi HDInsight przy użyciu Data Lake Storage Gen1 przy użyciu witryny Azure Portal](data-lake-store-hdinsight-hadoop-use-portal.md)
-* [Aprowizowanie klastra usługi HDInsight za pomocą programu Data Lake Storage Gen1 jako magazynem domyślnym przy użyciu programu Azure PowerShell](data-lake-store-hdinsight-hadoop-use-powershell-for-default-storage.md)
-* [Aprowizowanie klastra usługi HDInsight za pomocą programu Data Lake Storage Gen1 jako dodatkowego magazynu za pomocą programu Azure PowerShell](data-lake-store-hdinsight-hadoop-use-powershell.md)
+* [Aprowizuj klaster usługi HDInsight przy użyciu usługi Data Lake Storage Gen1 przy użyciu witryny Azure Portal](data-lake-store-hdinsight-hadoop-use-portal.md)
+* [Aprowizuj klaster usługi HDInsight przy użyciu magazynu usługi Data Lake Storage Gen1 jako magazynu domyślnego przy użyciu programu Azure PowerShell](data-lake-store-hdinsight-hadoop-use-powershell-for-default-storage.md)
+* [Aprowizuj klaster usługi HDInsight za pomocą usługi Data Lake Storage Gen1 jako dodatkowego magazynu przy użyciu programu Azure PowerShell](data-lake-store-hdinsight-hadoop-use-powershell.md)
 
-## <a name="use-data-lake-storage-gen1-with-azure-data-lake-analytics"></a>Data Lake Storage Gen1 za pomocą usługi Azure Data Lake Analytics
-[Usługa Azure Data Lake Analytics](../data-lake-analytics/data-lake-analytics-overview.md) umożliwia pracę z danymi Big Data w skali chmury. Dynamicznie udostępnia zasoby i umożliwia analizowanie terabajtów, a nawet eksabajtów danych, które mogą być przechowywane w liczbie obsługiwanych źródeł danych, jeden z nich jest Data Lake Storage Gen1. Usługa Data Lake Analytics jest specjalnie zoptymalizowana pod kątem pracy z Gen1 magazynu Data Lake — zapewnia najwyższy poziom wydajności, przepływności i przetwarzania równoległego na potrzeby obciążeń dużymi ilościami danych.
+## <a name="use-data-lake-storage-gen1-with-azure-data-lake-analytics"></a>Korzystanie z usługi Data Lake Storage Gen1 w usłudze Azure Data Lake Analytics
+[Usługa Azure Data Lake Analytics](../data-lake-analytics/data-lake-analytics-overview.md) umożliwia pracę z big data w skali chmury. Dynamicznie aporuje zasoby i umożliwia analizowanie terabajtów lub nawet eksabajtów danych, które mogą być przechowywane w wielu obsługiwanych źródłach danych, z których jednym jest Data Lake Storage Gen1. Usługa Data Lake Analytics jest specjalnie zoptymalizowana do pracy z usługą Data Lake Storage Gen1 — zapewnia najwyższy poziom wydajności, przepływności i równoległości dla obciążeń dużych zbiorów danych.
 
-Aby uzyskać instrukcje dotyczące sposobu używania usługi Data Lake Analytics przy użyciu Data Lake Storage Gen1, zobacz [Rozpoczynanie pracy z usługą Data Lake Analytics przy użyciu Data Lake Storage Gen1](../data-lake-analytics/data-lake-analytics-get-started-portal.md).
+Aby uzyskać instrukcje dotyczące korzystania z usługi Data Lake Analytics z funkcją Data Lake Storage Gen1, zobacz Wprowadzenie do [usługi Data Lake Analytics przy użyciu usługi Data Lake Storage Gen1](../data-lake-analytics/data-lake-analytics-get-started-portal.md).
 
-## <a name="use-data-lake-storage-gen1-with-azure-data-factory"></a>Data Lake Storage Gen1 za pomocą usługi Azure Data Factory
-Możesz użyć [usługi Azure Data Factory](https://azure.microsoft.com/services/data-factory/) pozyskiwać dane z tabel platformy Azure, usługi Azure SQL Database, Azure SQL DataWarehouse, obiektów blob usługi Azure Storage i lokalnych baz danych. Trwa jest "pełnoprawnym obywatelem" w ekosystemie platformy Azure, Azure Data Factory może służyć do organizowania pozyskiwania danych ze źródła tych Data Lake Storage Gen1.
+## <a name="use-data-lake-storage-gen1-with-azure-data-factory"></a>Korzystanie z usługi Data Lake Storage Gen1 w usłudze Azure Data Factory
+[Usługa Azure Data Factory](https://azure.microsoft.com/services/data-factory/) umożliwia pozyskiwania danych z tabel platformy Azure, bazy danych SQL Azure, usługi Azure SQL DataWarehouse, obiektów blob usługi Azure Storage i lokalnych baz danych. Będąc obywatelem pierwszej klasy w ekosystemie platformy Azure, usługa Azure Data Factory może służyć do organizowania pozyskiwania danych z tego źródła do usługi Data Lake Storage Gen1.
 
-Aby uzyskać instrukcje dotyczące sposobu używania usługi Azure Data Factory za pomocą programu Data Lake Storage Gen1, zobacz [przenoszenie danych do i z Data Lake Storage Gen1 przy użyciu usługi Data Factory](../data-factory/connector-azure-data-lake-store.md).
+Aby uzyskać instrukcje dotyczące korzystania z usługi Azure Data Factory z usługą Data Lake Storage Gen1, zobacz [Przenoszenie danych do i z usługi Data Lake Storage Gen1 przy użyciu usługi Data Factory](../data-factory/connector-azure-data-lake-store.md).
 
-## <a name="copy-data-from-azure-storage-blobs-into-data-lake-storage-gen1"></a>Kopiowanie danych z obiektów blob usługi Azure Storage do Data Lake Storage Gen1
-Azure Data Lake Storage Gen1 udostępnia narzędzia wiersza polecenia narzędzia AdlCopy, która umożliwia kopiowanie danych z usługi Azure Blob Storage do konta Data Lake Storage Gen1. Aby uzyskać więcej informacji, zobacz [kopiowanie danych z obiektów blob usługi Azure Storage do Data Lake Storage Gen1](data-lake-store-copy-data-azure-storage-blob.md).
+## <a name="copy-data-from-azure-storage-blobs-into-data-lake-storage-gen1"></a>Kopiowanie danych z obiektów blob usługi Azure Storage do usługi Data Lake Storage Gen1
+Usługa Azure Data Lake Storage Gen1 udostępnia narzędzie wiersza polecenia AdlCopy, które umożliwia kopiowanie danych z usługi Azure Blob Storage na konto Usługi Data Lake Storage Gen1. Aby uzyskać więcej informacji, zobacz [Kopiowanie danych z obiektów blob usługi Azure Storage do usługi Data Lake Storage Gen1](data-lake-store-copy-data-azure-storage-blob.md).
 
-## <a name="copy-data-between-azure-sql-database-and-data-lake-storage-gen1"></a>Kopiowanie danych między środowiskiem usługi Azure SQL Database i Data Lake Storage Gen1
-Przy użyciu narzędzia Apache Sqoop do importowania i eksportowania danych między Azure SQL Database i Data Lake Storage Gen1. Aby uzyskać więcej informacji, zobacz [Gen1 programu Data Lake Storage i Azure SQL database przy użyciu narzędzia Sqoop kopiować dane między](data-lake-store-data-transfer-sql-sqoop.md).
+## <a name="copy-data-between-azure-sql-database-and-data-lake-storage-gen1"></a>Kopiowanie danych między usługą Azure SQL Database i data lake storage Gen1
+Apache Sqoop służy do importowania i eksportowania danych między usługą Azure SQL Database i Data Lake Storage Gen1. Aby uzyskać więcej informacji, zobacz [Kopiowanie danych między bazą danych Data Lake Storage Gen1 i bazą danych SQL platformy Azure przy użyciu funkcji Sqoop](data-lake-store-data-transfer-sql-sqoop.md).
 
-## <a name="use-data-lake-storage-gen1-with-stream-analytics"></a>Data Lake Storage Gen1 za pomocą usługi Stream Analytics
-Data Lake Storage Gen1 jako dane wyjściowe służy do przechowywania danych przesyłane strumieniowo przy użyciu usługi Azure Stream Analytics. Aby uzyskać więcej informacji, zobacz [Stream dane z rozszerzenia Azure Storage Blob do Data Lake Storage Gen1 przy użyciu usługi Azure Stream Analytics](data-lake-store-stream-analytics.md).
+## <a name="use-data-lake-storage-gen1-with-stream-analytics"></a>Korzystanie z usługi Data Lake Storage Gen1 w usłudze Stream Analytics
+Można użyć Data Lake Storage Gen1 jako jeden z wyjść do przechowywania danych przesyłanych strumieniowo przy użyciu usługi Azure Stream Analytics. Aby uzyskać więcej informacji, zobacz [Przesyłanie strumieniowe danych z obiektu blob usługi Azure Storage do usługi Data Lake Storage Gen1 przy użyciu usługi Azure Stream Analytics.](data-lake-store-stream-analytics.md)
 
-## <a name="use-data-lake-storage-gen1-with-power-bi"></a>Data Lake Storage Gen1 za pomocą usługi Power BI
-Usługa Power BI umożliwia importowanie danych z konta Data Lake Storage Gen1 do analizy i wizualizacji danych. Aby uzyskać więcej informacji, zobacz [analizy danych Data Lake Storage Gen1 przy użyciu usługi Power BI](data-lake-store-power-bi.md).
+## <a name="use-data-lake-storage-gen1-with-power-bi"></a>Korzystanie z usługi Data Lake Storage Gen1 w usłudze Power BI
+Za pomocą usługi Power BI można importować dane z konta Data Lake Storage Gen1 w celu analizowania i wizualizowania danych. Aby uzyskać więcej informacji, zobacz [Analizowanie danych w programie Data Lake Storage Gen1 przy użyciu usługi Power BI](data-lake-store-power-bi.md).
 
-## <a name="use-data-lake-storage-gen1-with-data-catalog"></a>Za pomocą usług Data Lake Storage Gen1 wykazu danych
-Dane z Data Lake Storage Gen1 możesz zarejestrować się do usługi Azure Data Catalog, aby stał się wykrywalny w całej organizacji danych. Aby uzyskać więcej informacji, zobacz [zarejestrować dane z Data Lake Storage Gen1 w usłudze Azure Data Catalog](data-lake-store-with-data-catalog.md).
+## <a name="use-data-lake-storage-gen1-with-data-catalog"></a>Korzystanie z usługi Data Lake Storage Gen1 z wykazem danych
+Można zarejestrować dane z usługi Data Lake Storage Gen1 w usłudze Azure Data Catalog, aby dane były wykrywalne w całej organizacji. Aby uzyskać więcej informacji, zobacz [Rejestrowanie danych z usługi Data Lake Storage Gen1 w usłudze Azure Data Catalog](data-lake-store-with-data-catalog.md).
 
-## <a name="use-data-lake-storage-gen1-with-sql-server-integration-services-ssis"></a>Za pomocą usług Data Lake Storage Gen1 usług SQL Server Integration Services (SSIS)
-Nawiązywanie połączeń z Data Lake Storage Gen1 pakietu SSIS, można użyć Menedżera połączeń Data Lake Storage Gen1 w SSIS. Aby uzyskać więcej informacji, zobacz [Użyj Data Lake Storage Gen1 przy użyciu funkcji SSIS](https://docs.microsoft.com/sql/integration-services/connection-manager/azure-data-lake-store-connection-manager).
+## <a name="use-data-lake-storage-gen1-with-sql-server-integration-services-ssis"></a>Korzystanie z usługi Data Lake Storage Gen1 z usługami integracji programu SQL Server (SSIS)
+Za pomocą menedżera połączeń Data Lake Storage Gen1 w SSIS można połączyć pakiet SSIS z usługą Data Lake Storage Gen1. Aby uzyskać więcej informacji, zobacz [Korzystanie z usługi Data Lake Storage Gen1 z SSIS](https://docs.microsoft.com/sql/integration-services/connection-manager/azure-data-lake-store-connection-manager).
 
-## <a name="use-data-lake-storage-gen1-with-sql-data-warehouse"></a>Za pomocą usług Data Lake Storage Gen1 usługa SQL Data Warehouse
-Program PolyBase umożliwia ładowanie danych z Data Lake Storage Gen1 do usługi SQL Data Warehouse. Aby uzyskać więcej informacji, zobacz [Użyj Data Lake Storage Gen1 z usługą SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-load-from-azure-data-lake-store.md).
+## <a name="use-data-lake-storage-gen1-with-sql-data-warehouse"></a>Korzystanie z usługi Data Lake Storage Gen1 z magazynem danych SQL
+Za pomocą polybase można załadować dane z usługi Data Lake Storage Gen1 do magazynu danych SQL. Aby uzyskać więcej informacji, zobacz [Korzystanie z magazynu danych Lake Gen1 z magazynem danych SQL](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-load-from-azure-data-lake-store.md).
 
-## <a name="use-data-lake-storage-gen1-with-azure-event-hubs"></a>Data Lake Storage Gen1 za pomocą usługi Azure Event Hubs
-Za pomocą usługi Azure Data Lake Storage Gen1 archiwum i przechwytywania danych odebranych przez usługi Azure Event Hubs. Aby uzyskać więcej informacji, zobacz [Użyj Data Lake Storage Gen1 za pomocą usługi Azure Event Hubs](data-lake-store-archive-eventhub-capture.md).
+## <a name="use-data-lake-storage-gen1-with-azure-event-hubs"></a>Korzystanie z usługi Data Lake Storage Gen1 w usłudze Azure Event Hubs
+Za pomocą usługi Azure Data Lake Storage Gen1 można archiwizować i przechwytywać dane odebrane przez usługi Azure Event Hubs. Aby uzyskać więcej informacji, zobacz [Korzystanie z usługi Data Lake Storage Gen1 w usłudze Azure Event Hubs](data-lake-store-archive-eventhub-capture.md).
 
-## <a name="see-also"></a>Zobacz także
+## <a name="see-also"></a>Zobacz też
 * [Omówienie usługi Azure Data Lake Storage Gen1](data-lake-store-overview.md)
-* [Rozpoczynanie pracy z usługą Data Lake Storage Gen1 przy użyciu portalu](data-lake-store-get-started-portal.md)
-* [Rozpoczynanie pracy z usługą Data Lake Storage Gen1 przy użyciu programu PowerShell](data-lake-store-get-started-powershell.md)  
+* [Wprowadzenie do usługi Data Lake Storage Gen1 przy użyciu portalu](data-lake-store-get-started-portal.md)
+* [Wprowadzenie do usługi Data Lake Storage Gen1 przy użyciu programu PowerShell](data-lake-store-get-started-powershell.md)  
 

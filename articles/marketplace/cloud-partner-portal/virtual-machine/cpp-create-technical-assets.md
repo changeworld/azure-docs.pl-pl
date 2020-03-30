@@ -1,81 +1,80 @@
 ---
-title: Utwórz zasoby techniczne dla oferty maszyny wirtualnej w portalu Azure Marketplace
+title: Tworzenie zasobów technicznych dla oferty maszyny wirtualnej dla portalu Azure Marketplace
 description: W tym artykule wyjaśniono, jak utworzyć zasoby techniczne dla oferty maszyny wirtualnej w portalu Azure Marketplace.
-services: Azure, Marketplace, Cloud Partner Portal,
-author: pbutlerm
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/20/2018
-ms.author: pabutler
-ms.openlocfilehash: 45d0ff5b7b3fea1566b13b61bd01cc17da61e4b3
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 57f56a341cfc3db6a5f0664503809e6ab6cf3d3d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73824514"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80278028"
 ---
-# <a name="create-technical-assets-for-a-virtual-machine-offer"></a>Utwórz zasoby techniczne dla oferty maszyny wirtualnej
+# <a name="create-technical-assets-for-a-virtual-machine-offer"></a>Tworzenie zasobów technicznych dla oferty maszyny wirtualnej
 
-Ta sekcja zawiera szczegółowe instrukcje dotyczące tworzenia i konfigurowania zasobów technicznych dla oferty maszyny wirtualnej (VM) dla witryny Azure Marketplace.  Maszyna wirtualna zawiera dwa składniki: wirtualny dysk twardy (VHD) rozwiązania i opcjonalne skojarzone dyski danych.  
+W tej sekcji można przejść przez tworzenie i konfigurowanie zasobów technicznych dla oferty maszyny wirtualnej (VM) dla portalu Azure Marketplace.  Maszyna wirtualna zawiera dwa składniki: wirtualny dysk twardy rozwiązania (VHD) i opcjonalne skojarzone dyski danych.  
 
-- *Wirtualne dyski twarde (VHD)* , zawierające system operacyjny i rozwiązanie, które zostaną wdrożone w ramach oferty portalu Azure Marketplace. Proces przygotowywania dysku VHD różni się w zależności od tego, czy jest to maszyna wirtualna oparta na systemie Linux, Windows, czy niestandardowa.
-- *Dyski z danymi* reprezentują dedykowany magazyn trwały dla maszyny wirtualnej. *Nie* należy używać wirtualnego dysku twardego rozwiązania (na przykład dysku `C:`) do przechowywania informacji trwałych.
+- *Wirtualne dyski twarde (VHD)*, zawierające system operacyjny i rozwiązanie, które można wdrożyć z ofertą portalu Azure Marketplace. Proces przygotowywania dysku wirtualnego różni się w zależności od tego, czy jest to maszyna wirtualna oparta na systemie Linux, windows, czy niestandardowa.
+- *Dyski danych reprezentują dedykowany,* trwały magazyn dla maszyny wirtualnej. *Nie* używaj rozwiązania VHD (na `C:` przykład dysku) do przechowywania trwałych informacji.
 
-Obraz maszyny wirtualnej zawiera dysk z systemem operacyjnym i co najmniej jeden dysk z danymi. Na dysku jest wymagany jeden wirtualny dysk twardy. Nawet puste dyski danych wymagają utworzenia dysku VHD.
-Musisz skonfigurować system operacyjny maszyny wirtualnej, rozmiar maszyny wirtualnej, porty do otwarcia oraz do 15 dołączonych dysków danych.
+Obraz maszyny Wirtualnej zawiera jeden dysk systemu operacyjnego i zero lub więcej dysków z danymi. Na dysk potrzebny jest jeden dysk WIRTUALNY. Nawet puste dyski danych wymagają utworzenia dysku VHD.
+Należy skonfigurować system operacyjny maszyny Wirtualnej, rozmiar maszyny Wirtualnej, porty do otwarcia i maksymalnie 15 dołączonych dysków z danymi.
 
 > [!TIP] 
-> Niezależnie od używanego systemu operacyjnego należy dodać minimalną liczbę dysków z danymi, które są wymagane przez jednostkę SKU. Klienci nie mogą usunąć dysków, które są częścią obrazu w czasie wdrażania, ale mogą zawsze dodawać dyski w trakcie wdrażania lub po nim. 
+> Niezależnie od używanego systemu operacyjnego dodaj tylko minimalną liczbę dysków danych potrzebnych przez jednostkę SKU. Klienci nie mogą usuwać dysków, które są częścią obrazu w czasie wdrażania, ale zawsze mogą dodawać dyski podczas lub po wdrożeniu. 
 
 > [!IMPORTANT]
-> *Nie zmieniaj liczby dysków w nowej wersji obrazu.* Jeśli konieczne jest ponowne skonfigurowanie dysków danych w obrazie, należy zdefiniować nową jednostkę SKU. Opublikowanie nowej wersji obrazu z różnymi liczbami dysków będzie miało możliwość przerwania nowego wdrożenia opartego na nowej wersji obrazu w przypadku automatycznego skalowania, automatycznego wdrażania rozwiązań za pośrednictwem Azure Resource Manager szablonów i innych scenariuszy.
+> *Nie należy zmieniać liczby dysków w nowej wersji obrazu.* Jeśli należy ponownie skonfigurować dyski danych na obrazie, zdefiniuj nową jednostkę SKU. Publikowanie nowej wersji obrazu z różnych liczników dysków będzie mieć potencjał podziału nowego wdrożenia na podstawie nowej wersji obrazu w przypadku automatycznego skalowania, automatyczne wdrażanie rozwiązań za pośrednictwem szablonów usługi Azure Resource Manager i innych scenariuszy.
 
 [!INCLUDE [updated-for-az](../../../../includes/updated-for-az.md)]
 
 ## <a name="fundamental-technical-knowledge"></a>Podstawowa wiedza techniczna
 
-Projektowanie, kompilowanie i testowanie tych zasobów zabiera czas i wymaga znajomości wiedzy technicznej platformy Azure oraz technologii używanych do tworzenia oferty. Poza domeną rozwiązania Zespół inżynieryjny powinien znać następujące technologie firmy Microsoft: 
--   Podstawowe informacje o [usługach platformy Azure](https://azure.microsoft.com/services/) 
--   [Projektowanie i tworzenie architektury aplikacji platformy Azure](https://azure.microsoft.com/solutions/architecture/)
--   Wiedza praktyczna [Virtual Machines platformy](https://azure.microsoft.com/services/virtual-machines/)Azure, [usługi Azure Storage](https://azure.microsoft.com/services/?filter=storage) i [sieci platformy Azure](https://azure.microsoft.com/services/?filter=networking)
--   Wiedza o pracy [Azure Resource Manager](https://azure.microsoft.com/features/resource-manager/)
--   Wiedza o pracy w formacie [JSON](https://www.json.org/)
+Projektowanie, tworzenie i testowanie tych zasobów wymaga czasu i wymaga wiedzy technicznej zarówno platformy Azure, jak i technologii używanych do tworzenia oferty. Oprócz domeny rozwiązania zespół inżynierów powinien posiadać wiedzę na temat następujących technologii firmy Microsoft: 
+-   Podstawowa wiedza o [usługach platformy Azure](https://azure.microsoft.com/services/) 
+-   Jak [projektować i projektować aplikacje platformy Azure](https://azure.microsoft.com/solutions/architecture/)
+-   Wiedza robocza na temat [maszyn wirtualnych platformy Azure,](https://azure.microsoft.com/services/virtual-machines/) [usługi Azure Storage](https://azure.microsoft.com/services/?filter=storage) i sieci [azure](https://azure.microsoft.com/services/?filter=networking)
+-   Wiedza robocza na temat [usługi Azure Resource Manager](https://azure.microsoft.com/features/resource-manager/)
+-   Wiedza robocza [json](https://www.json.org/)
 
 
 ## <a name="suggested-tools"></a>Sugerowane narzędzia 
 
-Wybierz jedno lub oba z następujących środowisk skryptów, aby ułatwić zarządzanie dyskami VHD i maszynami wirtualnymi:
+Wybierz jedno lub oba z następujących środowisk skryptów, aby ułatwić zarządzanie wirtualnymi i maszynami wirtualnymi:
 -   [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview)
 -   [Interfejs wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure)
 
-Ponadto zalecamy Dodawanie następujących narzędzi do środowiska deweloperskiego: 
+Ponadto zaleca się dodanie następujących narzędzi do środowiska programistycznego: 
 
--   [Azure Storage Explorer](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer)
--   [Visual Studio Code](https://code.visualstudio.com/)
-    *   Rozszerzenie: [narzędzia Azure Resource Manager](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)
-    *   Rozszerzenie: [Beautify](https://marketplace.visualstudio.com/items?itemName=HookyQR.beautify)
-    *   Rozszerzenie: [PRETTIFY JSON](https://marketplace.visualstudio.com/items?itemName=mohsen1.prettify-json)
+-   [Eksplorator usługi Azure Storage](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer)
+-   [Kod programu Visual Studio](https://code.visualstudio.com/)
+    *   Rozszerzenie: [narzędzia usługi Azure Resource Manager](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)
+    *   Rozszerzenie: [Upiększyć](https://marketplace.visualstudio.com/items?itemName=HookyQR.beautify)
+    *   Rozszerzenie: [Prettify JSON](https://marketplace.visualstudio.com/items?itemName=mohsen1.prettify-json)
 
-Sugerujemy również przeglądanie dostępnych narzędzi na stronie [usługi Azure narzędzia deweloperskie](https://azure.microsoft.com/tools/) i, jeśli używasz programu Visual Studio, [Visual Studio Marketplace](https://marketplace.visualstudio.com/).
+Sugerujemy również przejrzenie dostępnych narzędzi na stronie [Narzędzia deweloperskie platformy Azure](https://azure.microsoft.com/tools/) oraz, jeśli używasz programu Visual Studio, portalu Visual Studio [Marketplace.](https://marketplace.visualstudio.com/)
 
 
 ## <a name="next-steps"></a>Następne kroki
 
-W kolejnych artykułach w tej sekcji omówiono kroki tworzenia i rejestrowania tych zasobów maszyn wirtualnych:
+Kolejne artykuły w tej sekcji przenikają przez kroki tworzenia i rejestrowania tych zasobów maszyn wirtualnych:
 
-1. [Tworzenie wirtualnego dysku twardego zgodnego z platformą Azure](./cpp-create-vhd.md) wyjaśnia, jak utworzyć dysk VHD oparty na systemie Linux lub Windows, który jest zgodny z platformą Azure.  Zawiera najlepsze rozwiązania, takie jak rozmiar, poprawki i przygotowywanie maszyny wirtualnej do przekazania.
+1. [Utwórz wirtualny dysk twardy zgodny z platformą Azure](./cpp-create-vhd.md) wyjaśnia, jak utworzyć dysk VHD oparty na systemie Linux lub Windows, który jest zgodny z platformą Azure.  Zawiera najlepsze rozwiązania, takie jak zmiana rozmiaru, poprawki i przygotowanie maszyny Wirtualnej do przekazywania.
 
-2. [Aby nawiązać połączenie z maszyną wirtualną](./cpp-connect-vm.md) , Wyjaśnij, jak zdalnie nawiązać połączenie z nowo utworzoną maszyną wirtualną i zalogować się do niej.  W tym artykule wyjaśniono również, jak zatrzymać maszynę wirtualną, aby zaoszczędzić na kosztach użycia.
+2. [Połącz się z maszyną wirtualną](./cpp-connect-vm.md) wyjaśniono, jak zdalnie połączyć się z nowo utworzoną maszyną wirtualną i zalogować się do niej.  W tym artykule wyjaśniono również, jak zatrzymać maszynę wirtualną, aby zaoszczędzić na kosztach użycia.
 
-3. [Konfiguracja maszyny wirtualnej](./cpp-configure-vm.md) wyjaśnia, jak wybrać prawidłowy rozmiar wirtualnego dysku twardego, uogólnić obraz, zastosować najnowsze aktualizacje (poprawki) i zaplanować konfiguracje niestandardowe.
+3. [Skonfiguruj maszynę wirtualną,](./cpp-configure-vm.md) wyjaśniając, jak wybrać odpowiedni rozmiar dysku VHD, uogólnić obraz, zastosować najnowsze aktualizacje (poprawki) i zaplanować konfiguracje niestandardowe.
 
-4. [Wdróż maszynę wirtualną na podstawie wirtualnego dysku twardego](./cpp-deploy-vm-vhd.md) objaśnia sposób rejestrowania maszyny wirtualnej na podstawie dysku VHD wdrożonego na platformie Azure.  Zawiera listę wymaganych narzędzi oraz sposób ich użycia w celu utworzenia obrazu maszyny wirtualnej użytkownika, a następnie wdrożenia go na platformie Azure przy użyciu skryptów [Microsoft Azure Portal](https://ms.portal.azure.com/) lub PowerShell. 
+4. [Wdrażanie maszyny wirtualnej z wirtualnego dysku twardego](./cpp-deploy-vm-vhd.md) wyjaśnia, jak zarejestrować maszynę wirtualną z dysku wirtualnego wdrożonego w usłudze Azure.  Zawiera listę wymaganych narzędzi i jak ich używać do tworzenia obrazu maszyny Wirtualnej użytkownika, a następnie wdrożyć go na platformie Azure przy użyciu [witryny Microsoft Azure portal](https://ms.portal.azure.com/) lub skryptów programu PowerShell. 
 
-5. [Certyfikowanie obrazu maszyny wirtualnej](./cpp-certify-vm.md) wyjaśnia sposób testowania i przesyłania obrazu maszyny wirtualnej na potrzeby certyfikacji w portalu Azure Marketplace. Wyjaśniono, gdzie uzyskać *Narzędzie do testowania certyfikacji dla certyfikowanych narzędzi platformy Azure* oraz jak używać tego narzędzia do certyfikowania obrazu maszyny wirtualnej. 
+5. [Certyfikuj obraz maszyny wirtualnej](./cpp-certify-vm.md) wyjaśnia, jak przetestować i przesłać obraz maszyny wirtualnej do certyfikacji usługi Azure Marketplace. Wyjaśniono, gdzie można uzyskać *narzędzie do testowania certyfikacji dla narzędzia z certyfikatem platformy Azure* i jak użyć tego narzędzia do certyfikacji obrazu maszyny Wirtualnej. 
 
-6. [Uzyskaj identyfikator URI SAS](./cpp-get-sas-uri.md) wyjaśnia, jak uzyskać identyfikator URI sygnatury dostępu współdzielonego (SAS) dla obrazów maszyn wirtualnych.
+6. [Pobierz identyfikator URI sygnatury dostępu](./cpp-get-sas-uri.md) Współdzielonego wyjaśnia, jak uzyskać identyfikator URI podpisu dostępu współdzielonego (SAS) dla obrazu maszyny Wirtualnej.
  
-W ramach [wspólnego artykułu często występujące problemy z adresem URL sygnatury dostępu współdzielonego](./cpp-common-sas-url-issues.md) zawierają kilka typowych problemów, które mogą wystąpić przy użyciu identyfikatorów URI SAS i odpowiednich możliwych rozwiązań.
+Jako artykuł pomocniczy [typowe problemy z adresem URL podpisu dostępu współdzielonego](./cpp-common-sas-url-issues.md) zawiera listę niektórych typowych problemów, które mogą wystąpić przy użyciu identyfikatorów URI sygnatury dostępu Współdzielonego i odpowiednich możliwych rozwiązań.
 
-Po wykonaniu wszystkich powyższych kroków będziesz gotowy do [opublikowania oferty maszyny wirtualnej](./cpp-publish-offer.md) w portalu Azure Marketplace.
+Po wykonaniu wszystkich tych kroków, będzie można opublikować [ofertę maszyny Wirtualnej](./cpp-publish-offer.md) do portalu Azure Marketplace.

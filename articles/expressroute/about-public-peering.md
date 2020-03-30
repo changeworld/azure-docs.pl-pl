@@ -1,80 +1,80 @@
 ---
-title: Tworzenie publicznej komunikacji równorzędnej Azure ExpressRoute i zarządzanie nią
-description: Dowiedz się więcej na temat publicznej komunikacji równorzędnej Azure i zarządzaj nią
+title: Tworzenie publicznej komunikacji równorzędnej usługi Azure ExpressRoute i zarządzanie nimi
+description: Dowiedz się więcej o publicznej komunikacji równorzędnej platformy Azure i zarządzanie nimi
 services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
 ms.date: 12/16/2019
 ms.author: cherylmc
-ms.openlocfilehash: bae44f67a485546ba29148a114d88df198f7c3e6
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 8c1afac834fb9abb2cbf82f16f046a1624b251f1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79280926"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79481137"
 ---
-# <a name="create-and-manage-expressroute-public-peering"></a>Tworzenie publicznej komunikacji równorzędnej ExpressRoute i zarządzanie nią
+# <a name="create-and-manage-expressroute-public-peering"></a>Tworzenie publicznej komunikacji równorzędnej usługi ExpressRoute i zarządzanie nim
 
 > [!div class="op_single_selector"]
-> * [Artykuł — publiczna Komunikacja równorzędna](about-public-peering.md)
-> * [Wideo — publiczna Komunikacja równorzędna](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-azure-public-peering-for-your-expressroute-circuit)
-> * [Artykuł — Komunikacja równorzędna firmy Microsoft](expressroute-circuit-peerings.md#microsoftpeering)
+> * [Artykuł — komunikacja równorzędna dla społeczeństwa](about-public-peering.md)
+> * [Wideo - Komunikacja publiczna](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-azure-public-peering-for-your-expressroute-circuit)
+> * [Artykuł — komunikacja równorzędna firmy Microsoft](expressroute-circuit-peerings.md#microsoftpeering)
 >
 
-W tym artykule opisano tworzenie publicznej konfiguracji routingu komunikacji równorzędnej dla obwodu usługi ExpressRoute i zarządzanie nią. Możesz również sprawdzić stan komunikacji równorzędnej, aktualizowanie jej lub usuwanie i cofanie aprowizacji. Ten artykuł dotyczy obwodów Menedżer zasobów, które zostały utworzone przed zaniechaniem publicznej komunikacji równorzędnej. Jeśli masz poprzednio istniejący obwód (utworzony przed przestarzałą publiczną komunikację równorzędną), możesz zarządzać/konfigurować publiczną komunikację równorzędną przy użyciu [Azure PowerShell](#powershell), [interfejsu wiersza polecenia platformy Azure](#cli)i [Azure Portal](#portal).
+Ten artykuł ułatwia tworzenie i zarządzanie publiczną konfiguracją routingu komunikacji równorzędnej dla obwodu usługi ExpressRoute. Można również sprawdzić stan, zaktualizować lub usunąć i anulować komunikację równorzędową. Ten artykuł dotyczy obwodów Menedżera zasobów utworzonych przed przestarzałym przestarzałym komunikacją równorzędną. Jeśli masz wcześniej istniejący obwód (utworzony przed przestarzałym przestarzałym publicznym układem równorzędnym), możesz zarządzać i konfigurować komunikację równorzędną między publiczną za pomocą [platformy Azure PowerShell,](#powershell) [interfejsu wiersza polecenia platformy Azure](#cli)i portalu [Azure.](#portal)
 
 >[!NOTE]
->Publiczna Komunikacja równorzędna jest przestarzała. Nie można utworzyć publicznej komunikacji równorzędnej w nowych obwodach usługi ExpressRoute. Jeśli korzystasz z nowego obwodu usługi ExpressRoute, użyj [komunikacji równorzędnej firmy Microsoft](expressroute-circuit-peerings.md#microsoftpeering) dla usług platformy Azure.
+>Komunikacja równorzędna publiczna jest przestarzała. Nie można utworzyć publicznego komunikacji równorzędnej w nowych obwodach usługi ExpressRoute. Jeśli masz nowy obwód usługi ExpressRoute, zamiast tego użyj [komunikacji równorzędnej firmy Microsoft](expressroute-circuit-peerings.md#microsoftpeering) dla swoich usług platformy Azure.
 >
 
 ## <a name="connectivity"></a>Łączność
 
-Połączenie jest zawsze inicjowane z sieci WAN z usługami Microsoft Azure. Usługi Microsoft Azure nie będą mogły inicjować połączeń do sieci za pomocą tej domeny routingu. Jeśli obwód usługi ExpressRoute jest włączony dla publicznej komunikacji równorzędnej Azure, możesz uzyskać dostęp do [publicznych zakresów adresów IP używanych na platformie Azure](../virtual-network/virtual-network-ip-addresses-overview-arm.md#public-ip-addresses) w ramach obwodu.
+Łączność jest zawsze inicjowana z sieci WAN do usług platformy Microsoft Azure. Usługi platformy Microsoft Azure nie będą mogły inicjować połączeń z siecią za pośrednictwem tej domeny routingu. Jeśli twój obwód usługi ExpressRoute jest włączony dla publicznej komunikacji równorzędnej platformy Azure, można uzyskać dostęp do [publicznych zakresów adresów IP używanych na platformie Azure](../virtual-network/virtual-network-ip-addresses-overview-arm.md#public-ip-addresses) za pomocą obwodu.
 
-Po włączeniu publicznej komunikacji równorzędnej można nawiązać połączenie z większością usług platformy Azure. Firma Microsoft nie umożliwiają selektywne wybierz usługi, dla których firma Microsoft anonsować trasy do.
+Po włączeniu komunikacji równorzędnej publicznej można połączyć się z większością usług platformy Azure. Nie zezwalamy na selektywne wybieranie usług, do których reklamujemy trasy.
 
-* Usługi, takie jak Azure Storage, SQL Database i websites, są oferowane na publicznych adresach IP.
-* Za pomocą publicznej domeny routingu komunikacji równorzędnej można łączyć się prywatnie z usługami hostowanymi na publicznych adresach IP, w tym w odniesieniu do adresów VIP usług w chmurze.
-* Można publicznej komunikacji równorzędnej domeny nawiązać połączenie z sieci Obwodowej i połączyć się z wszystkich usług platformy Azure dla swoich publicznych adresów IP z poziomu sieci WAN bez konieczności nawiązywania połączenia przez internet.
+* Usługi, takie jak Usługa Azure Storage, bazy danych SQL i witryny sieci Web są oferowane na publicznych adresach IP.
+* Za pośrednictwem domeny routingu komunikacji równorzędnej publicznej można prywatnie łączyć się z usługami hostowanymi na publicznych adresach IP, w tym z adresami VIP usług w chmurze.
+* Możesz połączyć publiczną domenę komunikacji równorzędnej z witryną DMZ i połączyć się ze wszystkimi usługami platformy Azure na ich publicznych adresach IP z sieci WAN bez konieczności łączenia się za pośrednictwem Internetu.
 
-## <a name="services"></a>Services
+## <a name="services"></a><a name="services"></a>Usług
 
-W tej sekcji przedstawiono usługi dostępne za pośrednictwem publicznej komunikacji równorzędnej. Ponieważ publiczna Komunikacja równorzędna jest przestarzała, nie istnieje plan dodawania nowych lub dodatkowych usług do publicznej komunikacji równorzędnej. Jeśli używasz publicznej komunikacji równorzędnej, a usługa, której chcesz używać, jest obsługiwana tylko za pośrednictwem komunikacji równorzędnej firmy Microsoft, musisz przełączyć się do komunikacji równorzędnej firmy Microsoft. Listę obsługiwanych usług można znaleźć w temacie [Komunikacja równorzędna firmy Microsoft](expressroute-faqs.md#microsoft-peering) .
+W tej sekcji przedstawiono usługi dostępne za publiczne komunikacji równorzędnej. Ponieważ komunikacja równorzędna publicznych jest przestarzała, nie ma planu dodawania nowych lub dodatkowych usług do komunikacji równorzędnej publicznej. Jeśli używasz komunikacji równorzędnej publicznej, a usługa, której chcesz używać, jest obsługiwana tylko przez komunikację równorzędną firmy Microsoft, musisz przełączyć się na komunikację równorzędną firmy Microsoft. Zobacz [Komunikacja równorzędna firmy Microsoft,](expressroute-faqs.md#microsoft-peering) aby uzyskać listę obsługiwanych usług.
 
-**Obsługiwał**
+**Obsługiwane:**
 
 * Power BI
-* Większość usług platformy Azure są obsługiwane. Bezpośrednio Sprawdź usługę, która ma zostać użyta do zweryfikowania pomocy technicznej.
+* Większość usług platformy Azure są obsługiwane. Sprawdź bezpośrednio z usługą, której chcesz użyć do zweryfikowania pomocy technicznej.
 
-**Nieobsługiwane:**
+**Nie jest obsługiwane:**
   * CDN
   * Azure Front Door
   * Serwer uwierzytelniania wieloskładnikowego (starsza wersja)
   * Traffic Manager
 
-Aby sprawdzić dostępność określonej usługi, możesz sprawdzić dokumentację tej usługi, aby sprawdzić, czy istnieje zastrzeżony zakres opublikowany dla tej usługi. Następnie można wyszukać zakresy adresów IP usługi docelowej i porównać z zakresami wymienionymi w obszarze [zakresy adresów IP platformy Azure i Tagi usług — plik XML chmury publicznej](https://www.microsoft.com/download/details.aspx?id=56519). Możesz również otworzyć bilet pomocy technicznej dla omawianej usługi, aby uzyskać wyjaśnienie.
+Aby sprawdzić dostępność dla określonej usługi, można sprawdzić dokumentację dla tej usługi, aby sprawdzić, czy istnieje zarezerwowany zakres opublikowany dla tej usługi. Następnie można wyszukać zakresy adresów IP usługi docelowej i porównać z zakresami wymienionymi w [plikach XML zakresów adresów IP platformy Azure i tagów usług — Public Cloud](https://www.microsoft.com/download/details.aspx?id=56519). Alternatywnie można otworzyć bilet pomocy technicznej dla danej usługi w celu wyjaśnienia.
 
-## <a name="compare"></a>Porównanie komunikacji równorzędnej
+## <a name="peering-comparison"></a><a name="compare"></a>Porównanie komunikacji równorzędnej
 
 [!INCLUDE [peering comparison](../../includes/expressroute-peering-comparison.md)]
 
 > [!NOTE]
-> Publiczna Komunikacja równorzędna Azure ma 1 adres IP translatora adresów sieciowych skojarzony z każdą sesją BGP. W przypadku więcej niż 2 adresów IP translatora adresów sieciowych Przenieś do komunikacji równorzędnej firmy Microsoft. Komunikacja równorzędna firmy Microsoft umożliwia skonfigurowanie własnych alokacji NAT, a także Używanie filtrów tras dla selektywnych anonsów prefiksów. Aby uzyskać więcej informacji, zobacz [przenoszenie do komunikacji równorzędnej firmy Microsoft](https://docs.microsoft.com/azure/expressroute/how-to-move-peering).
+> Publiczna komunikacja równorzędna platformy Azure ma 1 adres IP NAT skojarzony z każdą sesją BGP. W przypadku więcej niż 2 adresów IP NAT przejdź do komunikacji równorzędnej firmy Microsoft. Komunikacja równorzędna firmy Microsoft umożliwia konfigurowanie własnych alokacji translatora i odpowiedzi na usługi, a także używanie filtrów tras do selektywnych reklam prefiksów. Aby uzyskać więcej informacji, zobacz [Przechodzenie do komunikacji równorzędnej firmy Microsoft](https://docs.microsoft.com/azure/expressroute/how-to-move-peering).
 >
 
 ## <a name="custom-route-filters"></a>Niestandardowe filtry tras
 
-W ramach sieci, aby używać tylko trasy, czego potrzebujesz, możesz zdefiniować filtry tras niestandardowych. Szczegółowe informacje na temat konfiguracji routingu można znaleźć na stronie [routingu](expressroute-routing.md) .
+Można zdefiniować niestandardowe filtry tras w sieci, aby korzystać tylko z tras, których potrzebujesz. Szczegółowe informacje na temat konfiguracji routingu można znaleźć na stronie [Routing.](expressroute-routing.md)
 
-## <a name="powershell"></a>Azure PowerShell kroki
+## <a name="azure-powershell-steps"></a><a name="powershell"></a>Kroki programu Azure PowerShell
 
 
 [!INCLUDE [CloudShell](../../includes/expressroute-cloudshell-powershell-about.md)]
 
-Ponieważ publiczna Komunikacja równorzędna jest przestarzała, nie można skonfigurować publicznej komunikacji równorzędnej na nowym obwodzie ExpressRoute.
+Ponieważ komunikacja równorzędna publiczna jest przestarzała, nie można skonfigurować komunikacji równorzędnej w nowym obwodzie usługi ExpressRoute.
 
-1. Sprawdź, czy jest dostępny obwód ExpressRoute, który jest obsługiwany, a także włączony. Skorzystaj z następującego przykładu:
+1. Sprawdź, czy masz obwód usługi ExpressRoute, który jest aprowizowany, a także włączony. Skorzystaj z następującego przykładu:
 
    ```azurepowershell-interactive
    Get-AzExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "ExpressRouteResourceGroup"
@@ -105,7 +105,7 @@ Ponieważ publiczna Komunikacja równorzędna jest przestarzała, nie można sko
    ServiceKey                       : **************************************
    Peerings                         : []
    ```
-2. Skonfiguruj publiczną konfigurację równorzędną Azure dla obwodu. Upewnij się, że masz następujące informacje, zanim przejdziesz dalej.
+2. Skonfiguruj publiczną konfigurację równorzędną Azure dla obwodu. Przed kontynuowaniem upewnij się, że masz następujące informacje.
 
    * Podsieć /30 dla połączenia podstawowego. Musi to być prawidłowy publiczny prefiks IPv4.
    * Podsieć /30 dla połączenia dodatkowego. Musi to być prawidłowy publiczny prefiks IPv4.
@@ -114,7 +114,7 @@ Ponieważ publiczna Komunikacja równorzędna jest przestarzała, nie można sko
    * Opcjonalnie:
    * Skrót MD5, jeśli zdecydujesz się go użyć.
 
-   Z poniższego przykładu, aby skonfigurować publiczną komunikację równorzędną Azure dla obwodu
+   Uruchom poniższy przykład, aby skonfigurować publiczną komunikację równorzędną platformy Azure dla obwodu
 
    ```azurepowershell-interactive
    Add-AzExpressRouteCircuitPeeringConfig -Name "AzurePublicPeering" -ExpressRouteCircuit $ckt -PeeringType AzurePublicPeering -PeerASN 100 -PrimaryPeerAddressPrefix "12.0.0.0/30" -SecondaryPeerAddressPrefix "12.0.0.4/30" -VlanId 100
@@ -122,7 +122,7 @@ Ponieważ publiczna Komunikacja równorzędna jest przestarzała, nie można sko
    Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
    ```
 
-   Jeśli zdecydujesz się używać skrótu MD5, skorzystaj z następującego przykładu:
+   Jeśli zdecydujesz się użyć skrótu MD5, użyj następującego przykładu:
 
    ```azurepowershell-interactive
    Add-AzExpressRouteCircuitPeeringConfig -Name "AzurePublicPeering" -ExpressRouteCircuit $ckt -PeeringType AzurePublicPeering -PeerASN 100 -PrimaryPeerAddressPrefix "12.0.0.0/30" -SecondaryPeerAddressPrefix "12.0.0.4/30" -VlanId 100  -SharedKey "A1B2C3D4"
@@ -135,9 +135,9 @@ Ponieważ publiczna Komunikacja równorzędna jest przestarzała, nie można sko
    > 
    >
 
-### <a name="getpublic"></a>Aby uzyskać szczegółowe informacje dotyczące publicznej komunikacji równorzędnej Azure
+### <a name="to-get-azure-public-peering-details"></a><a name="getpublic"></a>Aby uzyskać szczegółowe informacje dotyczące publicznej komunikacji równorzędnej platformy Azure
 
-Można uzyskać szczegółów konfiguracji, za pomocą następującego polecenia cmdlet:
+Szczegóły konfiguracji można uzyskać przy użyciu następującego polecenia cmdlet:
 
 ```azurepowershell-interactive
   $ckt = Get-AzExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "ExpressRouteResourceGroup"
@@ -145,9 +145,9 @@ Można uzyskać szczegółów konfiguracji, za pomocą następującego polecenia
   Get-AzExpressRouteCircuitPeeringConfig -Name "AzurePublicPeering" -Circuit $ckt
   ```
 
-### <a name="updatepublic"></a>Aby zaktualizować konfigurację publicznej komunikacji równorzędnej Azure
+### <a name="to-update-azure-public-peering-configuration"></a><a name="updatepublic"></a>Aby zaktualizować konfigurację publicznej komunikacji równorzędnej Azure
 
-Możesz zaktualizować dowolną część konfiguracji, korzystając z następującego przykładu. W tym przykładzie identyfikator sieci VLAN obwodu jest aktualizowany z 200 do 600.
+Dowolną część konfiguracji można zaktualizować, korzystając z poniższego przykładu. W tym przykładzie identyfikator sieci VLAN obwodu jest aktualizowany z 200 do 600.
 
 ```azurepowershell-interactive
 Set-AzExpressRouteCircuitPeeringConfig  -Name "AzurePublicPeering" -ExpressRouteCircuit $ckt -PeeringType AzurePublicPeering -PeerASN 100 -PrimaryPeerAddressPrefix "123.0.0.0/30" -SecondaryPeerAddressPrefix "123.0.0.4/30" -VlanId 600
@@ -155,21 +155,21 @@ Set-AzExpressRouteCircuitPeeringConfig  -Name "AzurePublicPeering" -ExpressRoute
 Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
 ```
 
-### <a name="deletepublic"></a>Aby usunąć publiczną komunikację równorzędną Azure
+### <a name="to-delete-azure-public-peering"></a><a name="deletepublic"></a>Aby usunąć publiczną komunikację równorzędną Azure
 
-Możesz usunąć konfigurację komunikacji równorzędnej, uruchamiając w poniższym przykładzie:
+Konfigurację komunikacji równorzędnej można usunąć, uruchamiając następujący przykład:
 
 ```azurepowershell-interactive
 Remove-AzExpressRouteCircuitPeeringConfig -Name "AzurePublicPeering" -ExpressRouteCircuit $ckt
 Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
 ```
 
-## <a name="cli"></a>Kroki interfejsu wiersza polecenia platformy Azure
+## <a name="azure-cli-steps"></a><a name="cli"></a>Kroki interfejsu wiersza polecenia platformy Azure
 
 
 [!INCLUDE [CloudShell](../../includes/expressroute-cloudshell-powershell-about.md)]
 
-1. Sprawdź obwód usługi ExpressRoute, aby upewnić się, jest aprowizowana i włączona. Skorzystaj z następującego przykładu:
+1. Sprawdź obwód usługi ExpressRoute, aby upewnić się, że jest aprowizowana, a także włączona. Skorzystaj z następującego przykładu:
 
    ```azurecli-interactive
    az network express-route list
@@ -177,7 +177,7 @@ Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
 
    Odpowiedź jest podobna do poniższego przykładu:
 
-   ```azurecli
+   ```output
    "allowClassicOperations": false,
    "authorizations": [],
    "circuitProvisioningState": "Enabled",
@@ -206,21 +206,21 @@ Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
    "type": "Microsoft.Network/expressRouteCircuits]
    ```
 
-2. Skonfiguruj publiczną konfigurację równorzędną Azure dla obwodu. Upewnij się, że masz następujące informacje, zanim przejdziesz dalej.
+2. Skonfiguruj publiczną konfigurację równorzędną Azure dla obwodu. Przed kontynuowaniem upewnij się, że masz następujące informacje.
 
    * Podsieć /30 dla połączenia podstawowego. Musi to być prawidłowy publiczny prefiks IPv4.
    * Podsieć /30 dla połączenia dodatkowego. Musi to być prawidłowy publiczny prefiks IPv4.
    * Prawidłowy identyfikator sieci VLAN do ustanowienia tej komunikacji równorzędnej jest włączony. Upewnij się, że żadna inna komunikacja równorzędna w obwodzie nie używa tego samego identyfikatora VLAN.
    * Numer AS do komunikacji równorzędnej. Możesz używać 2-bajtowych i 4-bajtowych numerów AS.
-   * **Opcjonalne-** Skrót MD5, jeśli zdecydujesz się na użycie jednego z nich.
+   * **Opcjonalnie -** Skrót MD5, jeśli zdecydujesz się go użyć.
 
-   Uruchom poniższy przykład, aby skonfigurować publiczną komunikację równorzędną Azure dla obwodu:
+   Uruchom poniższy przykład, aby skonfigurować publiczne komunikacji równorzędnej platformy Azure dla obwodu:
 
    ```azurecli-interactive
    az network express-route peering create --circuit-name MyCircuit --peer-asn 100 --primary-peer-subnet 12.0.0.0/30 -g ExpressRouteResourceGroup --secondary-peer-subnet 12.0.0.4/30 --vlan-id 200 --peering-type AzurePublicPeering
    ```
 
-   Jeśli zdecydujesz się używać skrótu MD5, skorzystaj z następującego przykładu:
+   Jeśli zdecydujesz się użyć skrótu MD5, użyj następującego przykładu:
 
    ```azurecli-interactive
    az network express-route peering create --circuit-name MyCircuit --peer-asn 100 --primary-peer-subnet 12.0.0.0/30 -g ExpressRouteResourceGroup --secondary-peer-subnet 12.0.0.4/30 --vlan-id 200 --peering-type AzurePublicPeering --SharedKey "A1B2C3D4"
@@ -229,9 +229,9 @@ Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
    > [!IMPORTANT]
    > Pamiętaj, aby określić numer AS jako ASN komunikacji równorzędnej, a nie ASN klienta.
 
-### <a name="getpublic"></a>Aby wyświetlić szczegóły dotyczące publicznej komunikacji równorzędnej Azure
+### <a name="to-view-azure-public-peering-details"></a><a name="getpublic"></a>Aby wyświetlić szczegóły dotyczące publicznej komunikacji równorzędnej Azure
 
-Można uzyskać szczegółów konfiguracji, korzystając z następującego przykładu:
+Szczegóły konfiguracji można uzyskać, korzystając z następującego przykładu:
 
 ```azurecli
 az network express-route peering show -g ExpressRouteResourceGroup --circuit-name MyCircuit --name AzurePublicPeering
@@ -239,7 +239,7 @@ az network express-route peering show -g ExpressRouteResourceGroup --circuit-nam
 
 Dane wyjściowe są podobne do poniższego przykładu:
 
-```azurecli
+```output
 {
   "azureAsn": 12076,
   "etag": "W/\"2e97be83-a684-4f29-bf3c-96191e270666\"",
@@ -264,41 +264,41 @@ Dane wyjściowe są podobne do poniższego przykładu:
 }
 ```
 
-### <a name="updatepublic"></a>Aby zaktualizować konfigurację publicznej komunikacji równorzędnej Azure
+### <a name="to-update-azure-public-peering-configuration"></a><a name="updatepublic"></a>Aby zaktualizować konfigurację publicznej komunikacji równorzędnej Azure
 
-Możesz zaktualizować dowolną część konfiguracji, korzystając z następującego przykładu. W tym przykładzie identyfikator sieci VLAN obwodu jest aktualizowany z 200 do 600.
+Dowolną część konfiguracji można zaktualizować, korzystając z poniższego przykładu. W tym przykładzie identyfikator sieci VLAN obwodu jest aktualizowany z 200 do 600.
 
 ```azurecli-interactive
 az network express-route peering update --vlan-id 600 -g ExpressRouteResourceGroup --circuit-name MyCircuit --name AzurePublicPeering
 ```
 
-### <a name="deletepublic"></a>Aby usunąć publiczną komunikację równorzędną Azure
+### <a name="to-delete-azure-public-peering"></a><a name="deletepublic"></a>Aby usunąć publiczną komunikację równorzędną Azure
 
-Możesz usunąć konfigurację komunikacji równorzędnej, uruchamiając w poniższym przykładzie:
+Konfigurację komunikacji równorzędnej można usunąć, uruchamiając następujący przykład:
 
 ```azurecli-interactive
 az network express-route peering delete -g ExpressRouteResourceGroup --circuit-name MyCircuit --name AzurePublicPeering
 ```
 
-## <a name="portal"></a>Azure Portal kroki
+## <a name="azure-portal-steps"></a><a name="portal"></a>Kroki portalu platformy Azure
 
-Aby skonfigurować komunikację równorzędną, należy użyć kroków programu PowerShell lub interfejsu wiersza polecenia zawartych w tym artykule. Aby zarządzać komunikacją równorzędną, można użyć poniższych sekcji. W celu uzyskania informacji te kroki wyglądają podobnie do zarządzania [komunikacji równorzędnej firmy Microsoft w portalu](expressroute-howto-routing-portal-resource-manager.md#msft).
+Aby skonfigurować komunikację równorzędnych, należy użyć kroki programu PowerShell lub interfejsu wiersza polecenia zawarte w tym artykule. Aby zarządzać komunikacją równorzędną, możesz użyć poniższych sekcji. Aby uzyskać odwołanie, te kroki wyglądają podobnie do zarządzania [komunikacją równorzędną firmy Microsoft w portalu](expressroute-howto-routing-portal-resource-manager.md#msft).
 
-### <a name="get"></a>Aby wyświetlić szczegóły dotyczące publicznej komunikacji równorzędnej Azure
+### <a name="to-view-azure-public-peering-details"></a><a name="get"></a>Aby wyświetlić szczegóły dotyczące publicznej komunikacji równorzędnej Azure
 
-Wyświetl właściwości publicznej komunikacji równorzędnej Azure, wybierając komunikację równorzędną w portalu.
+Wyświetl właściwości komunikacji równorzędnej platformy Azure, wybierając komunikację równorzędową w portalu.
 
-### <a name="update"></a>Aby zaktualizować konfigurację publicznej komunikacji równorzędnej Azure
+### <a name="to-update-azure-public-peering-configuration"></a><a name="update"></a>Aby zaktualizować konfigurację publicznej komunikacji równorzędnej Azure
 
-Wybierz wiersz dla komunikacji równorzędnej, a następnie zmodyfikuj właściwości komunikacji równorzędnej.
+Wybierz wiersz do komunikacji równorzędnej, a następnie zmodyfikuj właściwości komunikacji równorzędnej.
 
-### <a name="delete"></a>Aby usunąć publiczną komunikację równorzędną Azure
+### <a name="to-delete-azure-public-peering"></a><a name="delete"></a>Aby usunąć publiczną komunikację równorzędną Azure
 
-Usuń konfigurację komunikacji równorzędnej, wybierając ikonę Usuń.
+Usuń konfigurację komunikacji równorzędnej, wybierając ikonę usuwania.
 
 ## <a name="next-steps"></a>Następne kroki
 
-Następny krok, [Połącz sieć wirtualną z obwodem ExpressRoute](expressroute-howto-linkvnet-arm.md).
+Następny [krok: Połącz sieć wirtualną z obwodem usługi ExpressRoute](expressroute-howto-linkvnet-arm.md).
 
 * Więcej informacji na temat przepływów pracy usługi ExpressRoute znajduje się w artykule [ExpressRoute workflows](expressroute-workflows.md) (Przepływy pracy usługi ExpressRoute).
 * Aby uzyskać więcej informacji o komunikacji równorzędnej obwodu, zobacz artykuł [ExpressRoute circuits and routing domains](expressroute-circuit-peerings.md) (Obwody i domeny routingu usługi ExpressRoute).

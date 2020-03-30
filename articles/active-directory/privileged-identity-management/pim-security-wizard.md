@@ -1,6 +1,6 @@
 ---
-title: Kreator zabezpieczeń ról usługi Azure AD w programie PIM-Azure Active Directory | Microsoft Docs
-description: Opisuje Kreatora zabezpieczeń, za pomocą którego można konwertować trwałe uprzywilejowane przypisania ról usługi Azure AD w celu kwalifikowania się do korzystania z Azure AD Privileged Identity Management (PIM).
+title: Kreator zabezpieczeń ról usługi Azure AD w usłudze PIM — usługa Azure Active Directory | Dokumenty firmy Microsoft
+description: W tym artykule opisano kreatora zabezpieczeń, którego można użyć do konwersji stałych uprzywilejowanych przypisań ról usługi Azure AD na kwalifikujące się przy użyciu usługi Azure AD Privileged Identity Management (PIM).
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -15,59 +15,59 @@ ms.author: curtand
 ms.custom: pim ; H1Hack27Feb2017
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 04bd0993873568ba7cce368ddd9277ed356b636c
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79266574"
 ---
-# <a name="azure-ad-roles-security-wizard-in-privileged-identity-management"></a>Kreator zabezpieczeń ról usługi Azure AD w Privileged Identity Management
+# <a name="azure-ad-roles-security-wizard-in-privileged-identity-management"></a>Kreator zabezpieczeń ról usługi Azure AD w zarządzania tożsamościami uprzywilejowanymi
 
-Jeśli jesteś pierwszą osobą, która będzie używać Privileged Identity Management (PIM) w organizacji Azure Active Directory (Azure AD), zostanie wyświetlony Kreator umożliwiający rozpoczęcie pracy. Kreator pomaga zrozumieć zagrożenia bezpieczeństwa dotyczące tożsamości uprzywilejowanych i użyć Privileged Identity Management, aby zmniejszyć te zagrożenia. Nie musisz wprowadzać żadnych zmian w istniejących przypisaniach ról w kreatorze, jeśli wolisz zrobić to później.
+Jeśli jesteś pierwszą osobą, która używa zarządzania tożsamościami uprzywilejowanymi (PIM) w organizacji usługi Azure Active Directory (Azure AD), zostanie wyświetlony kreator, aby rozpocząć. Kreator pomaga zrozumieć zagrożenia bezpieczeństwa tożsamości uprzywilejowanych i jak używać zarządzania tożsamościami uprzywilejowanymi w celu zmniejszenia tych zagrożeń. Nie trzeba wprowadzać żadnych zmian w istniejących przypisaniach ról w kreatorze, jeśli wolisz to zrobić później.
 
-## <a name="wizard-overview"></a>Przegląd Kreatora
+## <a name="wizard-overview"></a>Omówienie kreatora
 
-Zanim Twoja organizacja zacznie korzystać z Privileged Identity Management, wszystkie przypisania ról są trwałe: użytkownicy są zawsze w tych rolach, nawet jeśli nie są w pełni niepotrzebnymi uprawnieniami. Pierwszy krok kreatora pokazuje listę ról z wysokim poziomem uprawnień oraz liczbę użytkowników, którzy obecnie znajdują się w tych rolach. Aby dowiedzieć się więcej o użytkownikach w przypadku, gdy co najmniej jeden z nich nie jest znany, można przejść do konkretnej roli.
+Zanim organizacja zacznie korzystać z zarządzania tożsamościami uprzywilejowanymi, wszystkie przypisania ról są trwałe: użytkownicy są zawsze w tych rolach, nawet jeśli obecnie nie potrzebują swoich uprawnień. W pierwszym kroku kreatora przedstawiono listę ról o wysokich uprzywilejowanich oraz liczbę użytkowników, którzy obecnie pełnią te role. Można przejść do określonej roli, aby dowiedzieć się więcej o użytkownikach, jeśli jeden lub więcej z nich nie jest zaznajomionych.
 
-Drugi krok kreatora daje możliwość zmiany przypisań ról administratorów.  
+Drugi krok kreatora umożliwia zmianę przypisania ról administratora.  
 
 > [!WARNING]
-> Ważne jest, aby mieć co najmniej jednego administratora globalnego i więcej niż jednego administratora roli uprzywilejowanej z kontem organizacyjnym (nie konto Microsoft). Jeśli istnieje tylko jeden administrator ról uprzywilejowanych, organizacja nie może zarządzać Privileged Identity Management, jeśli to konto zostanie usunięte.
-> Ponadto należy zachować stałe przypisania ról, jeśli użytkownik ma konto Microsoft (innymi słowy, konto używane do logowania się do usług firmy Microsoft, takich jak Skype i Outlook.com). Jeśli planujesz wymagać uwierzytelniania wieloskładnikowego na potrzeby aktywacji dla tej roli, ten użytkownik zostanie zablokowany.
+> Ważne jest, aby mieć co najmniej jednego administratora globalnego i więcej niż jednego administratora ról uprzywilejowanych z kontem organizacyjnym (a nie kontem Microsoft). Jeśli istnieje tylko jeden administrator ról uprzywilejowanych, organizacja nie może zarządzać zarządzaniem tożsamościami uprzywilejowanymi, jeśli to konto zostanie usunięte.
+> Ponadto należy zachować przypisania ról na stałe, jeśli użytkownik ma konto Microsoft (innymi słowy konto, którego używa do logowania się do usług firmy Microsoft, takich jak Skype i Outlook.com). Jeśli planujesz wymagać uwierzytelniania wieloskładnikowego do aktywacji dla tej roli, ten użytkownik zostanie zablokowany.
 
 ## <a name="run-the-wizard"></a>Uruchamianie kreatora
 
-1. Zaloguj się do [Azure portal](https://portal.azure.com/).
+1. Zaloguj się do [Portalu Azure](https://portal.azure.com/).
 
-1. Otwórz **Azure AD Privileged Identity Management**.
+1. Otwórz **zarządzanie tożsamościami uprzywilejowanymi usługą Azure AD**.
 
-1. Wybierz pozycję **role usługi Azure AD** , a następnie wybierz pozycję **Kreator**.
+1. Wybierz **role usługi Azure AD,** a następnie wybierz pozycję **Kreator**.
 
-    ![Role usługi Azure AD — Strona Kreatora przedstawiająca 3 kroki służące do uruchamiania Kreatora](./media/pim-security-wizard/wizard-start.png)
+    ![Role usługi Azure AD — strona kreatora zawierająca 3 kroki do uruchomienia kreatora](./media/pim-security-wizard/wizard-start.png)
 
-1. Wybierz pozycję **1 odkryj role uprzywilejowane**.
+1. Wybierz **1 Odkryj role uprzywilejowane**.
 
-1. Przejrzyj listę ról uprzywilejowanych, aby zobaczyć, którzy użytkownicy są trwale lub uprawnieni.
+1. Przejrzyj listę ról uprzywilejowanych, aby zobaczyć, którzy użytkownicy są stali lub uprawnieni.
 
-    ![Odkryj role uprzywilejowane — okienko roli przedstawiające trwałe i kwalifikujące się elementy członkowskie](./media/pim-security-wizard/discover-privileged-roles-users.png)
+    ![Odnajduj role uprzywilejowane — okienko roli przedstawiające stałych i kwalifikujących się członków](./media/pim-security-wizard/discover-privileged-roles-users.png)
 
-1. Wybierz pozycję **dalej** , aby wybrać użytkowników lub grupy, które chcesz kwalifikować.
+1. Wybierz **przycisk Dalej,** aby wybrać użytkowników lub grupy, które chcesz zakwalifikować.
 
-    ![Konwertuj elementy członkowskie na kwalifikujące się strony z opcjami wyboru członków, którzy mają kwalifikować się do ról](./media/pim-security-wizard/convert-members-eligible.png)
+    ![Konwertuj członków na kwalifikującą się stronę z opcjami wyboru członków, których chcesz zakwalifikować do ról](./media/pim-security-wizard/convert-members-eligible.png)
 
-1. Po wybraniu opcji użytkownicy lub grupy wybierz pozycję **dalej**.
+1. Po wybraniu użytkowników lub grup wybierz pozycję **Dalej**.
 
-    ![Przejrzyj zmiany na stronie zawierającej elementy członkowskie z trwałymi przypisaniami ról, które zostaną przekonwertowane](./media/pim-security-wizard/review-changes.png)
+    ![Przejrzyj stronę zmian przedstawiającą członków ze stałymi przypisaniami ról, które zostaną przekonwertowane](./media/pim-security-wizard/review-changes.png)
 
-1. Wybierz **przycisk OK** , aby przekonwertować trwałe przypisania na kwalifikujące się.
+1. Wybierz **przycisk OK,** aby przekonwertować przypisania stałe na kwalifikujące się.
 
     Po zakończeniu konwersji zobaczysz powiadomienie.
 
-    ![Powiadomienie pokazujące stan konwersji](./media/pim-security-wizard/notification-completion.png)
+    ![Powiadomienie o stanie konwersji](./media/pim-security-wizard/notification-completion.png)
 
-Jeśli zachodzi potrzeba przekonwertowania innych przypisań ról uprzywilejowanych, można uruchomić kreatora ponownie. Jeśli chcesz użyć interfejsu Privileged Identity Management zamiast kreatora, zobacz [Przypisywanie ról usługi Azure AD w Privileged Identity Management](pim-how-to-add-role-to-user.md).
+Jeśli konieczne jest przekonwertowanie innych przypisania ról uprzywilejowanych na kwalifikujące się, można ponownie uruchomić kreatora. Jeśli chcesz użyć interfejsu zarządzania tożsamościami uprzywilejowanymi zamiast kreatora, zobacz [Przypisywanie ról usługi Azure AD w zarządzania tożsamościami uprzywilejowanymi](pim-how-to-add-role-to-user.md).
 
 ## <a name="next-steps"></a>Następne kroki
 
-- [Przypisywanie ról usługi Azure AD w Privileged Identity Management](pim-how-to-add-role-to-user.md)
-- [Udzielanie dostępu innym administratorom w celu zarządzania Privileged Identity Management](pim-how-to-give-access-to-pim.md)
+- [Przypisywanie ról usługi Azure AD w zarządzania tożsamościami uprzywilejowanymi](pim-how-to-add-role-to-user.md)
+- [Udzielanie dostępu innym administratorom do zarządzania zarządzaniem tożsamościami uprzywilejowanymi](pim-how-to-give-access-to-pim.md)

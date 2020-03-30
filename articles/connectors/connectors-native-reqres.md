@@ -1,6 +1,6 @@
 ---
-title: Odbieraj wywołania i odpowiadaj na nie przy użyciu protokołu HTTPS
-description: Obsługa przychodzących żądań HTTPS z usług zewnętrznych przy użyciu Azure Logic Apps
+title: Odbieranie i odpowiadanie na połączenia przy użyciu protokołu HTTPS
+description: Obsługa przychodzących żądań HTTPS z usług zewnętrznych przy użyciu aplikacji Azure Logic Apps
 services: logic-apps
 ms.suite: integration
 ms.reviewers: klam, logicappspm
@@ -8,24 +8,24 @@ ms.topic: conceptual
 ms.date: 03/12/2020
 tags: connectors
 ms.openlocfilehash: d65b81f18d4dcb0ee97a21a7edec885e308bd8d4
-ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79297303"
 ---
-# <a name="receive-and-respond-to-inbound-https-requests-in-azure-logic-apps"></a>Odbieranie przychodzących żądań HTTPS i odpowiadanie na nie w Azure Logic Apps
+# <a name="receive-and-respond-to-inbound-https-requests-in-azure-logic-apps"></a>Odbieranie i odpowiadanie na przychodzące żądania HTTPS w usłudze Azure Logic Apps
 
-Za pomocą [Azure Logic Apps](../logic-apps/logic-apps-overview.md) i wbudowanego wyzwalacza żądań lub akcji odpowiedzi można tworzyć automatyczne zadania i przepływy pracy, które odbierają i reagują na przychodzące żądania HTTPS. Na przykład możesz mieć aplikację logiki:
+Dzięki [usłudze Azure Logic Apps](../logic-apps/logic-apps-overview.md) i wbudowanej akcji wyzwalacza lub odpowiedzi żądania można tworzyć zautomatyzowane zadania i przepływy pracy odbierające przychodzące żądania HTTPS i odpowiadać na nie. Na przykład możesz mieć aplikację logiki:
 
-* Odbieraj żądania HTTPS dotyczące danych i odpowiadaj na nie w lokalnej bazie danych.
-* Wyzwalanie przepływu pracy po wystąpieniu zewnętrznego zdarzenia elementu webhook.
-* Odbieraj i odpowiadaj na wywołanie HTTPS z innej aplikacji logiki.
+* Odbieranie i odpowiadanie na żądanie HTTPS dotyczące danych w lokalnej bazie danych.
+* Wyzwalanie przepływu pracy, gdy nastąpi zewnętrzne zdarzenie elementu webhook.
+* Odbieranie i odpowiadanie na wywołanie HTTPS z innej aplikacji logiki.
 
 > [!NOTE]
-> Wyzwalacz żądania obsługuje *tylko* Transport Layer Security (TLS) 1,2 dla wywołań przychodzących. Wywołania wychodzące nadal obsługują protokoły TLS 1,0, 1,1 i 1,2. Aby uzyskać więcej informacji, zobacz [Rozwiązywanie problemu z protokołem TLS 1,0](https://docs.microsoft.com/security/solving-tls1-problem).
+> Wyzwalacz żądania obsługuje *tylko* transport warstwy zabezpieczeń (TLS) 1.2 dla połączeń przychodzących. Połączenia wychodzące nadal obsługują TLS 1.0, 1.1 i 1.2. Aby uzyskać więcej informacji, zobacz [Rozwiązywanie problemu z TLS 1.0](https://docs.microsoft.com/security/solving-tls1-problem).
 >
-> Jeśli widzisz błędy uzgadniania protokołu SSL, upewnij się, że korzystasz z protokołu TLS 1,2. W przypadku wywołań przychodzących Oto obsługiwane mechanizmy szyfrowania:
+> Jeśli widzisz błędy uzgadniania SSL, upewnij się, że używasz protokołu TLS 1.2. W przypadku połączeń przychodzących oto obsługiwane mechanizmy szyfrowania:
 >
 > * TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384
 > * TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256
@@ -38,37 +38,37 @@ Za pomocą [Azure Logic Apps](../logic-apps/logic-apps-overview.md) i wbudowaneg
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Subskrypcja platformy Azure. Jeśli nie masz subskrypcji, możesz [zarejestrować się w celu uzyskania bezpłatnego konta platformy Azure](https://azure.microsoft.com/free/).
+* Subskrypcja platformy Azure. Jeśli nie masz subskrypcji, możesz [założyć bezpłatne konto platformy Azure.](https://azure.microsoft.com/free/)
 
-* Podstawowa wiedza na temat [aplikacji logiki](../logic-apps/logic-apps-overview.md). Jeśli dopiero zaczynasz tworzyć aplikacje logiki, Dowiedz się, [jak utworzyć pierwszą aplikację logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+* Podstawowa wiedza na temat [aplikacji logicznych](../logic-apps/logic-apps-overview.md). Jeśli jesteś nowy w aplikacjach logiki, dowiedz się, [jak utworzyć pierwszą aplikację logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
 <a name="add-request"></a>
 
 ## <a name="add-request-trigger"></a>Dodaj wyzwalacz żądania
 
-Ten wbudowany wyzwalacz tworzy ręcznie możliwy do przełączenia punkt końcowy HTTPS, który może odbierać *tylko* przychodzące żądania HTTPS. Po wystąpieniu tego zdarzenia wyzwalacz uruchamia i uruchamia aplikację logiki. Aby uzyskać więcej informacji na temat podstawowej definicji JSON wyzwalacza i sposobu wywoływania tego wyzwalacza, zobacz [Typ wyzwalacza żądania](../logic-apps/logic-apps-workflow-actions-triggers.md#request-trigger) oraz [przepływy pracy wywołania, wyzwalacza lub zagnieżdżania z punktami końcowymi http w Azure Logic Apps](../logic-apps/logic-apps-http-endpoint.md).
+Ten wbudowany wyzwalacz tworzy ręcznie wywoływany punkt końcowy HTTPS, który może odbierać *tylko* przychodzące żądania HTTPS. Gdy to zdarzenie się dzieje, wyzwalacz uruchamia i uruchamia aplikację logiki. Aby uzyskać więcej informacji na temat podstawowej definicji JSON wyzwalacza i sposobu wywoływania tego wyzwalacza, zobacz [Typ wyzwalacza żądania](../logic-apps/logic-apps-workflow-actions-triggers.md#request-trigger) i [przepływy pracy Wywołania, wyzwalania lub zagnieżdżania z punktami końcowymi HTTP w usłudze Azure Logic Apps](../logic-apps/logic-apps-http-endpoint.md).
 
-1. Zaloguj się do [Azure portal](https://portal.azure.com). Tworzenia pustej aplikacji logiki.
+1. Zaloguj się do [Portalu Azure](https://portal.azure.com). Tworzenia pustej aplikacji logiki.
 
-1. Gdy zostanie otwarty projektant aplikacji logiki, w polu wyszukiwania wprowadź ciąg "żądanie HTTP" jako filtr. Z listy Wyzwalacze wybierz wyzwalacz **po odebraniu żądania HTTP** , który jest pierwszym krokiem w przepływie pracy aplikacji logiki.
+1. Po otwarciu projektanta aplikacji logiki w polu wyszukiwania wprowadź "żądanie http" jako filtr. Z listy wyzwalaczy wybierz wyzwalacz **po odebraniu żądania HTTP,** który jest pierwszym krokiem w przepływie pracy aplikacji logiki.
 
    ![Wybierz wyzwalacz żądania](./media/connectors-native-reqres/select-request-trigger.png)
 
-   Wyzwalacz żądania zawiera następujące właściwości:
+   Wyzwalacz żądania pokazuje następujące właściwości:
 
    ![Wyzwalacz żądania](./media/connectors-native-reqres/request-trigger.png)
 
-   | Nazwa właściwości | Nazwa właściwości JSON | Wymagane | Opis |
+   | Nazwa właściwości | Nazwa właściwości JSON | Wymagany | Opis |
    |---------------|--------------------|----------|-------------|
-   | **ADRES URL POST PROTOKOŁU HTTP** | dawaj | Tak | Adres URL punktu końcowego, który jest generowany po zapisaniu aplikacji logiki i jest używany do wywoływania aplikacji logiki |
-   | **Schemat JSON treści żądania** | `schema` | Nie | Schemat JSON, który opisuje właściwości i wartości w treści żądania przychodzącego |
+   | **Adres URL WPISU HTTP** | {brak} | Tak | Adres URL punktu końcowego, który jest generowany po zapisaniu aplikacji logiki i służy do wywoływania aplikacji logiki |
+   | **Schemat JSON treści żądania** | `schema` | Nie | Schemat JSON opisujący właściwości i wartości w treści żądania przychodzącego |
    |||||
 
-1. W polu **schemat JSON treści żądania** opcjonalnie wprowadź schemat JSON, który opisuje treść w żądaniu przychodzącym, na przykład:
+1. W polu **Schemat JSON treści żądania** opcjonalnie wprowadź schemat JSON, który opisuje treść w żądaniu przychodzącym, na przykład:
 
    ![Przykładowy schemat JSON](./media/connectors-native-reqres/provide-json-schema.png)
 
-   Projektant używa tego schematu do generowania tokenów dla właściwości w żądaniu. Dzięki temu aplikacja logiki może analizować, wykorzystywać i przekazywać dane z żądania za pośrednictwem wyzwalacza do przepływu pracy.
+   Projektant używa tego schematu do generowania tokenów dla właściwości w żądaniu. W ten sposób aplikacja logiki może analizować, zużywać i przekazywać dane z żądania za pośrednictwem wyzwalacza do przepływu pracy.
 
    Oto przykładowy schemat:
 
@@ -114,11 +114,11 @@ Ten wbudowany wyzwalacz tworzy ręcznie możliwy do przełączenia punkt końcow
    }
    ```
 
-   Po wprowadzeniu schematu JSON Projektant wyświetla przypomnienie, aby uwzględnić w żądaniu nagłówek `Content-Type` i ustawić wartość tego nagłówka na `application/json`. Aby uzyskać więcej informacji, zobacz temat [Obsługa typów zawartości](../logic-apps/logic-apps-content-type.md).
+   Po wprowadzeniu schematu JSON projektant pokazuje przypomnienie o `Content-Type` dołączeniu nagłówka do żądania `application/json`i ustawienie tej wartości nagłówka na . Aby uzyskać więcej informacji, zobacz [Obsługa typów zawartości](../logic-apps/logic-apps-content-type.md).
 
-   ![Przypomnienie o uwzględnieniu nagłówka "Content-Type"](./media/connectors-native-reqres/include-content-type.png)
+   ![Przypomnienie o dołączeniu nagłówka "Typ zawartości"](./media/connectors-native-reqres/include-content-type.png)
 
-   Oto, jak wygląda ten nagłówek w formacie JSON:
+   Oto jak ten nagłówek wygląda w formacie JSON:
 
    ```json
    {
@@ -126,17 +126,17 @@ Ten wbudowany wyzwalacz tworzy ręcznie możliwy do przełączenia punkt końcow
    }
    ```
 
-   Aby wygenerować schemat JSON, który jest oparty na oczekiwanym ładunku (danych), można użyć narzędzia, takiego jak [JSONSchema.NET](https://jsonschema.net)lub wykonać następujące czynności:
+   Aby wygenerować schemat JSON oparty na oczekiwanym ładunku (danych), można użyć narzędzia, takiego jak [JSONSchema.net,](https://jsonschema.net)lub wykonać następujące kroki:
 
-   1. W wyzwalaczu żądania wybierz pozycję **Użyj przykładowego ładunku do wygenerowania schematu**.
+   1. W wyzwalaczu Żądanie wybierz opcję **Użyj przykładowego ładunku do wygenerowania schematu**.
 
-      ![Generuj schemat na podstawie ładunku](./media/connectors-native-reqres/generate-from-sample-payload.png)
+      ![Generowanie schematu z ładunku](./media/connectors-native-reqres/generate-from-sample-payload.png)
 
-   1. Wprowadź przykładowy ładunek i wybierz pozycję **gotowe**.
+   1. Wprowadź ładunek próbki i wybierz pozycję **Gotowe**.
 
-      ![Generuj schemat na podstawie ładunku](./media/connectors-native-reqres/enter-payload.png)
+      ![Generowanie schematu z ładunku](./media/connectors-native-reqres/enter-payload.png)
 
-      Oto przykład ładunku:
+      Oto przykładowy ładunek:
 
       ```json
       {
@@ -155,106 +155,106 @@ Ten wbudowany wyzwalacz tworzy ręcznie możliwy do przełączenia punkt końcow
       }
       ```
 
-1. Aby określić dodatkowe właściwości, Otwórz listę **Dodaj nowy parametr** i wybierz parametry, które chcesz dodać.
+1. Aby określić dodatkowe właściwości, otwórz listę **Dodaj nowy parametr** i wybierz parametry, które chcesz dodać.
 
-   | Nazwa właściwości | Nazwa właściwości JSON | Wymagane | Opis |
+   | Nazwa właściwości | Nazwa właściwości JSON | Wymagany | Opis |
    |---------------|--------------------|----------|-------------|
-   | **Metoda** | `method` | Nie | Metoda, która musi być używana przez żądanie przychodzące do wywoływania aplikacji logiki |
-   | **Ścieżka względna** | `relativePath` | Nie | Ścieżka względna parametru, który może zostać zaakceptowany przez adres URL punktu końcowego aplikacji logiki |
+   | **Metoda** | `method` | Nie | Metoda, której żądanie przychodzące musi używać do wywoływania aplikacji logiki |
+   | **Ścieżka względna** | `relativePath` | Nie | Ścieżka względna parametru, który może zaakceptować adres URL punktu końcowego aplikacji logiki |
    |||||
 
-   Ten przykład dodaje właściwość **metody** :
+   W tym przykładzie dodaje **Method** właściwości:
 
-   ![Dodaj parametr metody](./media/connectors-native-reqres/add-parameters.png)
+   ![Parametr Dodaj metodę](./media/connectors-native-reqres/add-parameters.png)
 
-   Właściwość **Metoda** zostanie wyświetlona w wyzwalaczu, aby można było wybrać metodę z listy.
+   **Method** Właściwość pojawia się w wyzwalaczu, dzięki czemu można wybrać metodę z listy.
 
-   ![Select — metoda](./media/connectors-native-reqres/select-method.png)
+   ![Wybierz metodę](./media/connectors-native-reqres/select-method.png)
 
-1. Teraz Dodaj kolejną akcję w następnym kroku w przepływie pracy. W obszarze wyzwalacza wybierz pozycję **Następny krok** , aby znaleźć akcję, którą chcesz dodać.
+1. Teraz dodaj kolejną akcję jako następny krok w przepływie pracy. W obszarze wyzwalacza wybierz **pozycję Następny krok,** aby znaleźć akcję, którą chcesz dodać.
 
-   Na przykład można odpowiedzieć na żądanie, [dodając akcję odpowiedzi](#add-response), której można użyć do zwrócenia dostosowanej odpowiedzi i opisanej w dalszej części tego tematu.
+   Na przykład można odpowiedzieć na żądanie, [dodając akcję Odpowiedź](#add-response), której można użyć do zwrócenia dostosowanej odpowiedzi i jest opisana w dalszej części tego tematu.
 
-   Aplikacja logiki utrzymuje otwarte żądanie przychodzące tylko przez jedną minutę. Przy założeniu, że przepływ pracy aplikacji logiki zawiera akcję odpowiedzi, jeśli aplikacja logiki nie zwróci odpowiedzi po upływie tego czasu, aplikacja logiki zwróci `504 GATEWAY TIMEOUT` do obiektu wywołującego. W przeciwnym razie, jeśli aplikacja logiki nie zawiera akcji odpowiedzi, aplikacja logiki natychmiast zwróci odpowiedź `202 ACCEPTED` do obiektu wywołującego.
+   Aplikacja logiki utrzymuje żądanie przychodzące otwarte tylko przez jedną minutę. Zakładając, że przepływ pracy aplikacji logiki zawiera response akcji, jeśli aplikacja logiki nie zwraca `504 GATEWAY TIMEOUT` odpowiedzi po tym czasie przechodzi, aplikacja logiki zwraca do obiektu wywołującego. W przeciwnym razie jeśli aplikacja logiki nie zawiera response akcji, aplikacja logiki natychmiast zwraca `202 ACCEPTED` odpowiedź do wywołującego.
 
-1. Gdy skończysz, Zapisz aplikację logiki. Na pasku narzędzi projektanta wybierz pozycję **Zapisz**. 
+1. Po zakończeniu zapisz aplikację logiki. Na pasku narzędzi projektanta wybierz pozycję **Zapisz**. 
 
-   Ten krok generuje adres URL służący do wysyłania żądania wyzwalającego aplikację logiki. Aby skopiować ten adres URL, wybierz ikonę kopiowania obok adresu URL.
+   Ten krok generuje adres URL do użycia do wysyłania żądania, które wyzwala aplikację logiki. Aby skopiować ten adres URL, wybierz ikonę kopiowania obok adresu URL.
 
-   ![Adres URL używany do wyzwalania aplikacji logiki](./media/connectors-native-reqres/generated-url.png)
+   ![Adres URL do użycia wyzwalania aplikacji logiki](./media/connectors-native-reqres/generated-url.png)
 
-1. Aby wyzwolić aplikację logiki, Wyślij HTTP POST do wygenerowanego adresu URL. Można na przykład użyć narzędzia, takiego jak [Poster](https://www.getpostman.com/).
+1. Aby wyzwolić aplikację logiki, wyślij wpis HTTP do wygenerowanego adresu URL. Na przykład można użyć narzędzia, takiego jak [Listonosz](https://www.getpostman.com/).
 
-### <a name="trigger-outputs"></a>Wyjściowe wyzwalacza
+### <a name="trigger-outputs"></a>Wyjścia wyzwalające
 
-Poniżej znajduje się więcej informacji na temat danych wyjściowych wyzwalacza żądania:
+Oto więcej informacji na temat wyjść z wyzwalacza żądania:
 
 | Nazwa właściwości JSON | Typ danych | Opis |
 |--------------------|-----------|-------------|
-| `headers` | Obiekt | Obiekt JSON, który opisuje nagłówki z żądania |
-| `body` | Obiekt | Obiekt JSON, który opisuje zawartość treści z żądania |
+| `headers` | Obiekt | Obiekt JSON opisujący nagłówki z żądania |
+| `body` | Obiekt | Obiekt JSON opisujący zawartość treści z żądania |
 ||||
 
 <a name="add-response"></a>
 
-## <a name="add-a-response-action"></a>Dodaj akcję odpowiedzi
+## <a name="add-a-response-action"></a>Dodawanie akcji Odpowiedź
 
-Możesz użyć akcji odpowiedzi, aby odpowiedzieć na ładunek (dane) do przychodzącego żądania HTTPS, ale tylko w aplikacji logiki, która jest wyzwalana przez żądanie HTTPS. Akcję odpowiedzi można dodać w dowolnym momencie w przepływie pracy. Aby uzyskać więcej informacji na temat podstawowej definicji JSON dla tego wyzwalacza, zobacz [Typ akcji odpowiedź](../logic-apps/logic-apps-workflow-actions-triggers.md#response-action).
+Akcji Odpowiedź można użyć, aby odpowiedzieć ładunkiem (danymi) na przychodzące żądanie HTTPS, ale tylko w aplikacji logiki, która jest wyzwalana przez żądanie HTTPS. Akcję Odpowiedź można dodać w dowolnym momencie przepływu pracy. Aby uzyskać więcej informacji na temat podstawowej definicji JSON dla tego wyzwalacza, zobacz [typ akcji Odpowiedź](../logic-apps/logic-apps-workflow-actions-triggers.md#response-action).
 
-Aplikacja logiki utrzymuje otwarte żądanie przychodzące tylko przez jedną minutę. Przy założeniu, że przepływ pracy aplikacji logiki zawiera akcję odpowiedzi, jeśli aplikacja logiki nie zwróci odpowiedzi po upływie tego czasu, aplikacja logiki zwróci `504 GATEWAY TIMEOUT` do obiektu wywołującego. W przeciwnym razie, jeśli aplikacja logiki nie zawiera akcji odpowiedzi, aplikacja logiki natychmiast zwróci odpowiedź `202 ACCEPTED` do obiektu wywołującego.
+Aplikacja logiki utrzymuje żądanie przychodzące otwarte tylko przez jedną minutę. Zakładając, że przepływ pracy aplikacji logiki zawiera response akcji, jeśli aplikacja logiki nie zwraca `504 GATEWAY TIMEOUT` odpowiedzi po tym czasie przechodzi, aplikacja logiki zwraca do obiektu wywołującego. W przeciwnym razie jeśli aplikacja logiki nie zawiera response akcji, aplikacja logiki natychmiast zwraca `202 ACCEPTED` odpowiedź do wywołującego.
 
 > [!IMPORTANT]
-> Jeśli akcja odpowiedzi zawiera te nagłówki, Logic Apps usuwa te nagłówki z wygenerowanego komunikatu odpowiedzi bez wyświetlania ostrzeżenia lub błędu:
+> Jeśli akcja Odpowiedź zawiera te nagłówki, aplikacje logiki usuwa te nagłówki z wygenerowanego komunikatu odpowiedzi bez wyświetlania ostrzeżenia lub błędu:
 >
 > * `Allow`
-> * `Content-*` z następującymi wyjątkami: `Content-Disposition`, `Content-Encoding`i `Content-Type`
+> * `Content-*`z tymi wyjątkami: `Content-Disposition`, `Content-Encoding`, i`Content-Type`
 > * `Cookie`
 > * `Expires`
 > * `Last-Modified`
 > * `Set-Cookie`
 > * `Transfer-Encoding`
 >
-> Mimo że Logic Apps nie zatrzyma zapisywania aplikacji logiki, które mają akcję odpowiedzi z tymi nagłówkami, Logic Apps ignoruje te nagłówki.
+> Mimo że aplikacje logiki nie powstrzyma cię od zapisywania aplikacji logiki, które mają akcję Odpowiedź z tymi nagłówkami, aplikacje logiki ignoruje te nagłówki.
 
-1. W Projektancie aplikacji logiki w kroku, w którym chcesz dodać akcję odpowiedzi, wybierz pozycję **nowy krok**.
+1. W projektancie aplikacji logiki w kroku, w którym chcesz dodać akcję Odpowiedź, wybierz pozycję **Nowy krok**.
 
-   Na przykład przy użyciu wyzwalacza żądania z wcześniejszych wersji:
+   Na przykład przy użyciu wyzwalacza żądania z wcześniej:
 
    ![Dodaj nowy krok](./media/connectors-native-reqres/add-response.png)
 
-   Aby dodać akcję między krokami, przesuń wskaźnik myszy nad strzałkę między tymi krokami. Wybierz wyświetlony znak plus ( **+** ), a następnie wybierz pozycję **Dodaj akcję**.
+   Aby dodać akcję między krokami, przesuń wskaźnik myszy na strzałkę między tymi krokami. Wybierz wyświetlony znak**+** plus ( ), a następnie wybierz pozycję **Dodaj akcję**.
 
-1. W obszarze **Wybierz akcję**w polu wyszukiwania wprowadź "odpowiedź" jako filtr, a następnie wybierz akcję **odpowiedź** .
+1. W obszarze **Wybierz akcję**w polu wyszukiwania wprowadź jako filtr "odpowiedź" i wybierz akcję **Odpowiedź.**
 
-   ![Wybierz akcję odpowiedzi](./media/connectors-native-reqres/select-response-action.png)
+   ![Wybierz akcję Odpowiedź](./media/connectors-native-reqres/select-response-action.png)
 
-   Wyzwalacz żądania jest zwinięty w tym przykładzie dla uproszczenia.
+   Wyzwalacz żądania jest zwinięty w tym przykładzie dla prostoty.
 
-1. Dodaj wszystkie wartości, które są wymagane dla komunikatu odpowiedzi. 
+1. Dodaj wszystkie wartości, które są wymagane dla wiadomości odpowiedzi. 
 
-   W niektórych polach kliknięcie wewnątrz nich spowoduje otwarcie listy zawartości dynamicznej. Następnie można wybrać tokeny reprezentujące dostępne dane wyjściowe z poprzednich kroków w przepływie pracy. Właściwości ze schematu określonego w poprzednim przykładzie pojawiają się teraz na liście zawartości dynamicznej.
+   W niektórych polach kliknięcie w ich polach powoduje otwarcie dynamicznej listy zawartości. Następnie można wybrać tokeny, które reprezentują dostępne dane wyjściowe z poprzednich kroków w przepływie pracy. Właściwości ze schematu określonego we wcześniejszym przykładzie są teraz wyświetlane na liście zawartości dynamicznej.
 
-   Na przykład dla pola **nagłówki** Dołącz `Content-Type` jako nazwę klucza, a następnie ustaw wartość klucza na `application/json` jak wspomniano wcześniej w tym temacie. Dla pola **treść** możesz wybrać pozycję wyzwalanie danych wyjściowych z listy zawartości dynamicznej.
+   Na przykład dla **nagłówków** pole, uwzględnić `Content-Type` jako nazwę klucza `application/json` i ustawić wartość klucza, jak wspomniano wcześniej w tym temacie. W polu **Treść** można wybrać dane wyjściowe treści wyzwalacza z listy zawartości dynamicznej.
 
    ![Szczegóły akcji odpowiedzi](./media/connectors-native-reqres/response-details.png)
 
-   Aby wyświetlić nagłówki w formacie JSON, wybierz polecenie **Przełącz do widoku tekstu**.
+   Aby wyświetlić nagłówki w formacie JSON, wybierz pozycję **Przełącz do widoku tekstu**.
 
-   ![Nagłówki — Przełącz do widoku tekstu](./media/connectors-native-reqres/switch-to-text-view.png)
+   ![Nagłówki — przełączanie do widoku tekstu](./media/connectors-native-reqres/switch-to-text-view.png)
 
-   Poniżej znajduje się więcej informacji na temat właściwości, które można ustawić w akcji odpowiedzi. 
+   Oto więcej informacji na temat właściwości, które można ustawić w odpowiedzi akcji. 
 
-   | Nazwa właściwości | Nazwa właściwości JSON | Wymagane | Opis |
+   | Nazwa właściwości | Nazwa właściwości JSON | Wymagany | Opis |
    |---------------|--------------------|----------|-------------|
    | **Kod stanu** | `statusCode` | Tak | Kod stanu do zwrócenia w odpowiedzi |
-   | **Nagłówki** | `headers` | Nie | Obiekt JSON, który opisuje jeden lub więcej nagłówków do uwzględnienia w odpowiedzi |
-   | **Treść** | `body` | Nie | Treść odpowiedzi |
+   | **Nagłówki** | `headers` | Nie | Obiekt JSON opisujący jeden lub więcej nagłówków do uwzględnienia w odpowiedzi |
+   | **Treść** | `body` | Nie | Organ reagowania |
    |||||
 
-1. Aby określić dodatkowe właściwości, takie jak schemat JSON dla treści odpowiedzi, Otwórz listę **Dodaj nowy parametr** i wybierz parametry, które chcesz dodać.
+1. Aby określić dodatkowe właściwości, takie jak schemat JSON dla treści odpowiedzi, otwórz listę **Dodaj nowy parametr** i wybierz parametry, które chcesz dodać.
 
-1. Gdy skończysz, Zapisz aplikację logiki. Na pasku narzędzi projektanta wybierz pozycję **Zapisz**. 
+1. Po zakończeniu zapisz aplikację logiki. Na pasku narzędzi projektanta wybierz pozycję **Zapisz**. 
 
 ## <a name="next-steps"></a>Następne kroki
 
-* [Łączniki dla Logic Apps](../connectors/apis-list.md)
+* [Łączniki dla usługi Logic Apps](../connectors/apis-list.md)

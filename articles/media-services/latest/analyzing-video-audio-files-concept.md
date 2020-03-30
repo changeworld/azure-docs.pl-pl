@@ -1,7 +1,7 @@
 ---
 title: Analizowanie plików wideo i audio
 titleSuffix: Azure Media Services
-description: Dowiedz się, jak analizować zawartość audio i wideo przy użyciu AudioAnalyzerPreset i VideoAnalyzerPreset w Azure Media Services.
+description: Dowiedz się, jak analizować zawartość audio i wideo przy użyciu audioanalyzerPreset i VideoAnalyzerPreset w usłudze Azure Media Services.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -13,66 +13,66 @@ ms.topic: article
 ms.date: 01/30/2020
 ms.author: juliako
 ms.openlocfilehash: 1d28fc37b98493322b9e201ac899b7911dd1d705
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79269889"
 ---
-# <a name="analyze-video-and-audio-files-with-azure-media-services"></a>Analizowanie plików wideo i audio przy użyciu Azure Media Services
+# <a name="analyze-video-and-audio-files-with-azure-media-services"></a>Analizowanie plików wideo i audio za pomocą usługi Azure Media Services
 
-Azure Media Services v3 umożliwia wyodrębnienie szczegółowych informacji z plików wideo i audio przy użyciu Video Indexer. W tym artykule opisano ustawienia wstępne programu Media Services v3 Analyzer używane do wyodrębniania szczegółowych informacji. Aby uzyskać bardziej szczegółowe informacje, można korzystać bezpośrednio z usługi Video Indexer. Aby zrozumieć, kiedy należy użyć Video Indexer a Media Services ustawień wstępnych analizatora, zapoznaj się z [dokumentem porównania](../video-indexer/compare-video-indexer-with-media-services-presets.md).
+Usługa Azure Media Services w wersji 3 umożliwia wyodrębnianie szczegółowych informacji z plików wideo i audio za pomocą indeksatora wideo. W tym artykule opisano predefiniowane ustawienia analizatora usługi Media Services w wersji 3 używane do wyodrębniania tych szczegółowych informacji. Aby uzyskać bardziej szczegółowe informacje, można korzystać bezpośrednio z usługi Video Indexer. Aby zrozumieć, kiedy używać predefiniowanych ustawień analizatora wideo i programu Media Services, zapoznaj się z [dokumentem porównawczym](../video-indexer/compare-video-indexer-with-media-services-presets.md).
 
-Aby analizować zawartość przy użyciu ustawień wstępnych Media Services v3, należy utworzyć **transformację** i przesłać **zadanie** , które używa jednego z następujących ustawień wstępnych: [VideoAnalyzerPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#videoanalyzerpreset) lub **AudioAnalyzerPreset**. Samouczek przedstawiający sposób używania **VideoAnalyzerPreset**można znaleźć w temacie [Analizowanie wideo za pomocą Azure Media Services](analyze-videos-tutorial-with-api.md).
+Aby analizować zawartość przy użyciu ustawień predefiniowanych usługi Media Services w wersji 3, należy utworzyć **transformowanie** i przesłać **zadanie,** które używa jednego z następujących ustawień: [VideoAnalyzerPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#videoanalyzerpreset) lub **AudioAnalyzerPreset**. Aby zapoznać się z samouczkiem przedstawiającym sposób korzystania z **funkcji VideoAnalyzerPreset**, zobacz [Analizowanie klipów wideo za pomocą usługi Azure Media Services](analyze-videos-tutorial-with-api.md).
 
 > [!NOTE]
 > Jeśli używasz wstępnych ustawień analizatora wideo lub dźwięku, skorzystaj z witryny Azure Portal i ustaw na koncie 10 jednostek zarezerwowanych multimediów S3. Aby uzyskać więcej informacji, zobacz temat [Scale media processing (Skalowanie przetwarzania multimediów)](media-reserved-units-cli-how-to.md).
 
 ## <a name="compliance-privacy-and-security"></a>Zgodność, ochrona prywatności i zabezpieczenia
 
-Ważną kwestią jest przestrzeganie wszystkich obowiązujących przepisów dotyczących używania Video Indexer i nie można używać Video Indexer lub żadnej innej usługi platformy Azure w sposób naruszający prawa innych lub mogą być szkodliwe dla innych osób. Przed przekazaniem jakichkolwiek filmów wideo, w tym wszelkich danych biometrycznych, do usługi Video Indexer na potrzeby przetwarzania i przechowywania, należy dysponować wszystkimi właściwymi prawami, w tym wszystkimi odpowiednimi komunikatami o zgodzie, z poszczególnych osób w filmie wideo. Aby dowiedzieć się o zgodności, ochronie prywatności i bezpieczeństwie w Video Indexer, [warunki Cognitive Services](https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/)firmy Microsoft. W celu zachowania poufności informacji firmy Microsoft i obsługi danych należy zapoznać się z zasadami [zachowania poufności informacji](https://privacy.microsoft.com/PrivacyStatement)firmy Microsoft, tematami dotyczącymi [usług online](https://www.microsoft.com/licensing/product-licensing/products) ("Ost") i [uzupełnieniem przetwarzania danych](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=67) ("DPA"). Dodatkowe informacje o ochronie prywatności, takie jak przechowywanie danych, usuwanie/niszczenie, są dostępne w pliku OST i [tutaj](../video-indexer/faq.md). Korzystając z Video Indexer, wyrażasz zgodę na związanie Cognitive Services warunkami, OST, DPA i zasad zachowania poufności informacji.
+Jako ważne przypomnienie musisz przestrzegać wszystkich obowiązujących przepisów podczas korzystania z indeksatora wideo i nie możesz używać indeksatora wideo ani żadnej innej usługi platformy Azure w sposób, który narusza prawa innych osób lub może być szkodliwy dla innych osób. Przed przesłaniem jakichkolwiek filmów, w tym jakichkolwiek danych biometrycznych, do usługi Video Indexer w celu przetwarzania i przechowywania, Użytkownik musi mieć wszystkie odpowiednie prawa, w tym wszystkie odpowiednie zgody, od osób w filmie. Aby dowiedzieć się więcej o zgodności, prywatności i bezpieczeństwie w programie Video Indexer, [postanowienia dotyczące usług Microsoft Cognitive Services](https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/). W przypadku zobowiązań firmy Microsoft w zakresie ochrony prywatności i postępowania z danymi użytkownika należy zapoznać się z [Zasadami zachowania poufności informacji](https://privacy.microsoft.com/PrivacyStatement)firmy Microsoft, [Postanowieniami dotyczącymi usług online](https://www.microsoft.com/licensing/product-licensing/products) ("OST") i [uzupełnieniem dotyczącym przetwarzania danych](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=67) ("DPA"). Dodatkowe informacje o prywatności, w tym dotyczące przechowywania, usuwania/niszczenia danych, są dostępne w OST i [tutaj](../video-indexer/faq.md). Korzystając z Video Indexer, użytkownik wyraża zgodę na przestrzeganie Warunków świadczenia usług Cognitive Services, OST, DPA i Polityki prywatności.
 
 ## <a name="built-in-presets"></a>Wbudowane ustawienia wstępne
 
-Media Services obecnie obsługuje następujące wbudowane ustawienia wstępne analizatora:  
+Usługi Media Services obsługują obecnie następujące wbudowane ustawienia predefiniowane analizatora:  
 
-|**Nazwa ustawienia wstępnego**|**Scenariusz**|**Szczegóły**|
+|**Nazwa predefiniowane**|**Scenariusz**|**Szczegóły**|
 |---|---|---|
-|[AudioAnalyzerPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#audioanalyzerpreset)|Analizowanie dźwięku|Ustawienie wstępne stosuje wstępnie zdefiniowany zestaw operacji analitycznych opartych na formacie AI, w tym transkrypcję mowy. Obecnie ustawienie wstępne obsługuje przetwarzanie zawartości przy użyciu jednej ścieżki audio zawierającej mowę w jednym języku. Możesz określić język dla ładunku audio w danych wejściowych przy użyciu formatu BCP-47 "Language tag-region". Obsługiwane języki to angielski ("en-US" i "pl-GB"), hiszpański ("es-ES" i "es-MX"), francuski ("fr-FR"), włoski ("it-IT"), japoński ("ja-JP"), portugalski ("pt-BR"), chiński ("zh-CN"), niemiecki ("de-DE"), arabski ("AR-EG" i "AR-SY"), rosyjski ("ru-RU"), Hindi ("Hi-IN") i koreański ("ko-KR").<br/><br/> Jeśli język nie jest określony lub ma wartość null, funkcja automatycznego wykrywania języka wybiera pierwszy wykryty język i kontynuuje w wybranym języku dla czasu trwania pliku. Funkcja automatycznego wykrywania języka jest obecnie obsługiwana w języku angielskim, chińskim, francuskim, niemieckim, włoskim, japońskim, hiszpańskim, rosyjskim i portugalskim. Nie obsługuje on dynamicznego przełączania między językami po wykryciu pierwszego języka. Funkcja automatycznego wykrywania języka działa najlepiej z nagraniami dźwiękowymi z wyraźnie dostrzegalną mową. Jeśli automatyczne wykrywanie języka nie odnajdzie języka, transkrypcja powróci do języka angielskiego.|
-|[VideoAnalyzerPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#videoanalyzerpreset)|Analizowanie audio i wideo|Wyodrębnia szczegółowe informacje (bogate metadane) zarówno z audio, jak i wideo, a następnie wyprowadza plik w formacie JSON. Możesz określić, czy podczas przetwarzania pliku wideo chcesz wyodrębnić szczegółowe informacje o usłudze audio. Aby uzyskać więcej informacji, zobacz [Analizowanie wideo](analyze-videos-tutorial-with-api.md).|
-|[FaceDetectorPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#facedetectorpreset)|Wykrywanie twarzy znajdujących się w wideo|Opisuje ustawienia, które mają być używane podczas analizowania wideo w celu wykrycia wszystkich obecnych twarzy.|
+|[AudioAnalyzerPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#audioanalyzerpreset)|Analizowanie dźwięku|Predefiniowane stosuje wstępnie zdefiniowany zestaw operacji analizy opartych na si, w tym transkrypcji mowy. Obecnie preset obsługuje przetwarzanie zawartości za pomocą jednej ścieżki audio, która zawiera mowę w jednym języku. Język ładunku audio można określić w danych wejściowych przy użyciu formatu BCP-47 "regionu tagu języka". Obsługiwane języki to angielski ("en-US" i "en-GB"), hiszpański ("es-ES" i "es-MX"), francuski ("fr-FR"), włoski ("it-IT"), japoński ("es-ES" i "es-MX"), francuski ("fr-FR"), włoski ("it-IT"), japoński ("es-ES" ja-JP"),portugalski ("pt-BR"), chiński ("zh-CN"), niemiecki ("de-DE"), arabski ("ar-EG" i "ar-SY"), rosyjski ("ru-RU"), hindi ("hi-IN") i koreański ("ko-KR").<br/><br/> Jeśli język nie jest określony lub ustawiony na wartość null, automatyczne wykrywanie języka wybiera pierwszy wykryty język i kontynuuje z wybranym językiem przez cały czas trwania pliku. Funkcja automatycznego wykrywania języka obsługuje obecnie język angielski, chiński, francuski, niemiecki, włoski, japoński, hiszpański, rosyjski i portugalski. Nie obsługuje dynamicznego przełączania między językami po wykryciu pierwszego języka. Funkcja automatycznego wykrywania języka działa najlepiej z nagraniami audio z wyraźnie dostrzegalną mową. Jeśli automatyczne wykrywanie języka nie może znaleźć języka, transkrypcja powróci do języka angielskiego.|
+|[WideoAnalyzerPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#videoanalyzerpreset)|Analizowanie dźwięku i wideo|Wyodrębnia szczegółowe informacje (bogate metadane) zarówno z audio, jak i wideo i wyprowadza plik w formacie JSON. Można określić, czy podczas przetwarzania pliku wideo mają być wyodrębniane tylko szczegółowe informacje audio. Aby uzyskać więcej informacji, zobacz [Analizowanie wideo](analyze-videos-tutorial-with-api.md).|
+|[FaceDetectorPreset (Przedstawianie twarzy)](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#facedetectorpreset)|Wykrywanie twarzy obecnych w filmie|Opisuje ustawienia, które mają być używane podczas analizowania wideo w celu wykrycia wszystkich obecnych twarzy.|
 
 ### <a name="audioanalyzerpreset"></a>AudioAnalyzerPreset
 
-Ustawienie wstępne umożliwia wyodrębnienie wielu szczegółowych informacji audio z pliku audio lub wideo. Dane wyjściowe obejmują plik JSON (ze wszystkimi szczegółowymi informacjami) i plik VTT dla transkrypcji audio. To ustawienie wstępne akceptuje właściwość, która określa język pliku wejściowego w postaci ciągu [BCP47](https://tools.ietf.org/html/bcp47) . Szczegółowe informacje o dźwięku obejmują:
+Predefiniowane ustawienia umożliwiają wyodrębnianie wielu szczegółowych informacji audio z pliku audio lub wideo. Dane wyjściowe zawierają plik JSON (ze wszystkimi spostrzeżeniami) i plik VTT dla transkrypcji audio. To ustawienie wstępne akceptuje właściwość, która określa język pliku wejściowego w postaci ciągu [BCP47.](https://tools.ietf.org/html/bcp47) Szczegółowe informacje audio obejmują:
 
-* **Transkrypcja audio**: transkrypcja wyrazów mówionych z sygnaturami czasowymi. Obsługiwane są wiele języków.
-* **Indeksowanie prezentera**: mapowanie głośników i odpowiednich słów wymawiających.
-* **Analiza tonacjii mowy**: dane wyjściowe analizy tonacji wykonane na transkrypcji audio.
-* **Słowa kluczowe**: słowa kluczowe, które są wyodrębniane z transkrypcji audio.
+* **Transkrypcja audio:** Transkrypcja wypowiedzianych słów z sygnaturami czasowymi. Obsługiwanych jest wiele języków.
+* **Indeksowanie prelegentów:** Mapowanie głośników i odpowiadających im słów mówionych.
+* **Analiza tonacji mowy:** Dane wyjściowe analizy tonacji wykonywanej na transkrypcji audio.
+* **Słowa kluczowe:** Słowa kluczowe wyodrębnione z transkrypcji audio.
 
-### <a name="videoanalyzerpreset"></a>VideoAnalyzerPreset
+### <a name="videoanalyzerpreset"></a>WideoAnalyzerPreset
 
-Ustawienie wstępne pozwala wyodrębnić wiele szczegółowych informacji audio i wideo z pliku wideo. Dane wyjściowe obejmują plik JSON (ze wszystkimi szczegółowymi informacjami), plik VTT dla transkrypcji wideo oraz kolekcję miniatur. To ustawienie wstępne akceptuje również ciąg [BCP47](https://tools.ietf.org/html/bcp47) (reprezentujący język filmu wideo) jako właściwość. Szczegółowe informacje wideo obejmują wszystkie szczegółowe informacje o danych audio wymienione powyżej oraz następujące dodatkowe elementy:
+Predefiniowane ustawienia umożliwiają wyodrębnianie wielu szczegółowych informacji audio i wideo z pliku wideo. Dane wyjściowe obejmują plik JSON (ze wszystkimi spostrzeżeniami), plik VTT dla transkrypcji wideo i zbiór miniatur. To ustawienie wstępne akceptuje również ciąg [BCP47](https://tools.ietf.org/html/bcp47) (reprezentujący język wideo) jako właściwość. Szczegółowe informacje wideo obejmują wszystkie powyższe spostrzeżenia audio oraz następujące dodatkowe elementy:
 
-* **Śledzenie twarzy**: czas, w którym twarze są obecne w filmie wideo. Każda z nich ma identyfikator kroju i odpowiednią kolekcję miniatur.
-* **Tekst wizualny**: tekst wykrywany za pomocą optycznego rozpoznawania znaków. Tekst jest sygnaturą czasową, a także używany do wyodrębniania słów kluczowych (oprócz transkrypcji audio).
-* **Klatki kluczowe**: Kolekcja klatek kluczowych wyodrębnionych z filmu wideo.
-* **Moderowanie zawartości wizualnej**: część filmów wideo oflagowanych jako osoba dorosła lub erotycznej.
-* **Adnotacja**: Wynik dodawania adnotacji do filmów wideo opartych na wstępnie zdefiniowanym modelu obiektów
+* **Śledzenie twarzy:** czas, w którym twarze są obecne w filmie. Każda twarz ma identyfikator twarzy i odpowiednią kolekcję miniatur.
+* **Tekst wizualny:** tekst wykryty za pomocą optycznego rozpoznawania znaków. Tekst jest oznaczony sygnaturą czasową i służy również do wyodrębniania słów kluczowych (oprócz transkrypcji audio).
+* **Klatki kluczowe:** zbiór klatek kluczowych wyodrębnionych z filmu.
+* **Moderowanie treści wizualnych:** część filmów oznaczonych jako dorosła lub rasowa.
+* **Adnotacja:** Wynik dodawania adnotacji do filmów na podstawie wstępnie zdefiniowanego modelu obiektu
 
-## <a name="insightsjson-elements"></a>Insights. JSON — elementy
+## <a name="insightsjson-elements"></a>insights.json elementy
 
-Dane wyjściowe obejmują plik JSON (Insights. JSON) ze wszystkimi szczegółowymi informacjami znalezionymi w pliku wideo lub dźwiękiem. KOD JSON może zawierać następujące elementy:
+Dane wyjściowe zawierają plik JSON (insights.json) ze wszystkimi spostrzeżeniami znalezionymi w wideo lub audio. JSON może zawierać następujące elementy:
 
-### <a name="transcript"></a>zapisy
+### <a name="transcript"></a>Zapis
 
-|Name (Nazwa)|Opis|
+|Nazwa|Opis|
 |---|---|
 |id|Identyfikator wiersza.|
-|tekst|Samego transkrypcji.|
-|language|Język transkrypcji. Przeznaczone do obsługi transkrypcji, w których każdy wiersz może mieć inny język.|
-|wystąpienia|Lista przedziałów czasu, w których pojawił się ten wiersz. Jeśli wystąpienie jest transkrypcją, będzie miało tylko 1 wystąpienie.|
+|tekst|Sam zapis.|
+|language|Język transkrypcji. Przeznaczone do obsługi transkrypcji, gdzie każdy wiersz może mieć inny język.|
+|Wystąpień|Lista zakresów czasu, w których pojawiła się ta linia. Jeśli wystąpienie jest transkrypcja, będzie miał tylko 1 wystąpienie.|
 
 Przykład:
 
@@ -103,15 +103,15 @@ Przykład:
 ] 
 ```
 
-### <a name="ocr"></a>aparat
+### <a name="ocr"></a>Ocr
 
-|Name (Nazwa)|Opis|
+|Nazwa|Opis|
 |---|---|
-|id|Identyfikator wiersza OCR.|
+|id|Identyfikator linii OCR.|
 |tekst|Tekst OCR.|
-|zachowanie|Wiarygodność rozpoznawania.|
+|ufność|Zaufanie do uznania.|
 |language|Język OCR.|
-|wystąpienia|Lista przedziałów czasu, w których wystąpiło to OCR (ten sam OCR może występować wiele razy).|
+|Wystąpień|Lista zakresów czasu, w których pojawił się ten OCR (ten sam OCR może pojawić się wiele razy).|
 
 ```json
 "ocr": [
@@ -146,21 +146,21 @@ Przykład:
   ],
 ```
 
-### <a name="faces"></a>ściank
+### <a name="faces"></a>Twarze
 
-|Name (Nazwa)|Opis|
+|Nazwa|Opis|
 |---|---|
-|id|Identyfikator kroju.|
-|name|Nazwa kroju. Może to być "nieznany #0", zidentyfikowanego osobistości lub osoby przeszkolonej przez klienta.|
-|zachowanie|Niepewność identyfikacji kroju.|
-|description|Opis osobistości. |
-|thumbnailId|Identyfikator miniatury tej czołowej.|
-|knownPersonId|Wewnętrzny identyfikator (jeśli jest znaną osobą).|
-|ReferenceId|Identyfikator Bing (jeśli jest to osobistości Bing).|
-|referenceType|Obecnie tylko Bing.|
-|title|Tytuł (jeśli jest to osobistości — na przykład "dyrektor naczelny firmy Microsoft").|
-|imageUrl|Adres URL obrazu, jeśli jest to osobistości.|
-|wystąpienia|Wystąpienia, w których pojawiła się Strona w danym przedziale czasu. Każde wystąpienie ma również thumbnailsId. |
+|id|Identyfikator twarzy.|
+|name|Nazwa twarzy. Może to być "Nieznany #0", zidentyfikowana celebrytka lub osoba przeszkolona przez klienta.|
+|ufność|Pewność identyfikacji twarzy.|
+|description|Opis celebrytki. |
+|thumbnailId|Identyfikator miniatury tej twarzy.|
+|knownPersonId|Wewnętrzny identyfikator (jeśli jest to znana osoba).|
+|referenceId|Bing ID (jeśli jest to gwiazda Bing).|
+|typ odwołania|Obecnie tylko Bing.|
+|title|Tytuł (jeśli jest sławna , na przykład "Ceo Microsoftu").|
+|Imageurl|Adres URL obrazu, jeśli jest gwiazdą.|
+|Wystąpień|Przypadki, w których twarz pojawiła się w danym przedziale czasu. Każde wystąpienie ma również thumbnailsId. |
 
 ```json
 "faces": [{
@@ -191,13 +191,13 @@ Przykład:
 }]
 ```
 
-### <a name="shots"></a>zrzutów
+### <a name="shots"></a>Zdjęć
 
-|Name (Nazwa)|Opis|
+|Nazwa|Opis|
 |---|---|
-|id|Identyfikator zrzutu.|
-|Ramki kluczowe|Lista kluczowych klatek w ramach zrzutu (każdy ma identyfikator i listę zakresów czasu wystąpienia). Wystąpienia klatek kluczowych mają pole thumbnailId z IDENTYFIKATORem miniatury klatki kluczowej.|
-|wystąpienia|Lista zakresów czasu tego zrzutu (zrzuty mają tylko 1 wystąpienie).|
+|id|Identyfikator strzału.|
+|Klatek kluczowych|Lista klatek kluczowych w kadrze (każda z nich ma identyfikator i listę zakresów czasu wystąpień). Wystąpienia ramek kluczowych mają pole miniaturid z identyfikatorem miniatury klatki kluczowej.|
+|Wystąpień|Lista zakresów czasowych tego strzału (strzały mają tylko 1 instancję).|
 
 ```json
 "Shots": [
@@ -248,27 +248,27 @@ Przykład:
   ]
 ```
 
-### <a name="statistics"></a>Statystyki
+### <a name="statistics"></a>statystyki
 
-|Name (Nazwa)|Opis|
+|Nazwa|Opis|
 |---|---|
-|CorrespondenceCount|Liczba zbieżności wideo.|
-|WordCount|Liczba wyrazów na prelegenta.|
-|SpeakerNumberOfFragments|Ilość fragmentów, które są w filmie wideo.|
-|SpeakerLongestMonolog|Najdłuższa monologa. Jeśli prelegent znajduje się w monolog, jest on uwzględniony. Wyciszenie na początku i na końcu monolog zostaje usunięte.|
-|SpeakerTalkToListenRatio|Obliczenia opierają się na czasie poświęcanym na monolog osoby mówiącej (bez wyciszenia między nimi) podzieloną przez łączny czas wideo. Czas jest zaokrąglany do trzeciego punktu dziesiętnego.|
+|Konto korespondencyjne|Liczba korespondencji w filmie.|
+|Wordcount|Liczba słów na mówcę.|
+|GłośnikNumberOfFragments|Ilość fragmentów, które głośnik ma w filmie.|
+|GłośnikLongestMonolog|Najdłuższy monolog prelegenta. Jeśli głośnik ma wyciszenia wewnątrz monologu jest dołączony. Cisza na początku i koniec monologu jest usuwany.|
+|GłośnikTalkToListenRatio|Obliczenia są oparte na czasie spędzonym na monologu prelegenta (bez ciszy pomiędzy) podzielonym przez całkowity czas filmu. Czas jest zaokrąglany do trzeciego przecinka dziesiętnego.|
 
 
-### <a name="sentiments"></a>mową
+### <a name="sentiments"></a>Uczucia
 
-Mową są agregowane według pola sentimentType (pozytywna/neutralna/ujemna). Na przykład 0-0,1, 0,1-0,2.
+Nastroje są agregowane według ich sentimentType pola (dodatnie/neutralne/ujemne). Na przykład 0-0.1, 0.1-0.2.
 
-|Name (Nazwa)|Opis|
+|Nazwa|Opis|
 |---|---|
-|id|Identyfikator tonacji.|
-|averageScore |Średnia wszystkich ocen wszystkich wystąpień tego typu tonacji — wartość dodatnia/neutralna/ujemna|
-|wystąpienia|Lista przedziałów czasu, w których wystąpiła ta tonacji.|
-|sentimentType |Typem może być "dodatnia", "neutralna" lub "ujemna".|
+|id|Identyfikator sentymentu.|
+|średniaSkus |Średnia wszystkich wyników wszystkich wystąpień tego typu tonacji - Dodatnia/Neutralna/Ujemna|
+|Wystąpień|Lista zakresów czasu, w których pojawił się ten sentyment.|
+|sentimentType |Typ może być "Dodatni", "Neutralny" lub "Ujemny".|
 
 ```json
 "sentiments": [
@@ -296,14 +296,14 @@ Mową są agregowane według pola sentimentType (pozytywna/neutralna/ujemna). Na
 ]
 ```
 
-### <a name="labels"></a>etykiety
+### <a name="labels"></a>Etykiety
 
-|Name (Nazwa)|Opis|
+|Nazwa|Opis|
 |---|---|
 |id|Identyfikator etykiety.|
-|name|Nazwa etykiety (na przykład "Computer", "TV").|
-|language|Nazwa etykiety językowej (po translacji). BCP-47|
-|wystąpienia|Lista przedziałów czasu, w których pojawiła się Ta etykieta (etykieta może być wyświetlana wiele razy). Każde wystąpienie ma pole zaufania. |
+|name|Nazwa etykiety (na przykład "Komputer", "TV").|
+|language|Język nazwy etykiety (po przetłumaczeniu). BCP-47|
+|Wystąpień|Lista zakresów czasu, w których pojawiła się ta etykieta (etykieta może pojawić się wiele razy). Każde wystąpienie ma pole zaufania. |
 
 ```json
 "labels": [
@@ -354,15 +354,15 @@ Mową są agregowane według pola sentimentType (pozytywna/neutralna/ujemna). Na
   ] 
 ```
 
-### <a name="keywords"></a>słowa kluczowe
+### <a name="keywords"></a>keywords (słowa kluczowe)
 
-|Name (Nazwa)|Opis|
+|Nazwa|Opis|
 |---|---|
 |id|Identyfikator słowa kluczowego.|
 |tekst|Tekst słowa kluczowego.|
-|zachowanie|Wiarygodność rozpoznawania słowa kluczowego.|
-|language|Język słowa kluczowego (w przypadku tłumaczenia).|
-|wystąpienia|Lista przedziałów czasu, w których pojawiło się to słowo kluczowe (słowo kluczowe może występować wiele razy).|
+|ufność|Zaufanie do rozpoznawania słowa kluczowego.|
+|language|Język słowa kluczowego (po przetłumaczeniu).|
+|Wystąpień|Lista zakresów czasu, w których pojawiło się to słowo kluczowe (słowo kluczowe może pojawić się wiele razy).|
 
 ```json
 "keywords": [
@@ -403,16 +403,16 @@ Mową są agregowane według pola sentimentType (pozytywna/neutralna/ujemna). Na
 
 #### <a name="visualcontentmoderation"></a>visualContentModeration
 
-Blok visualContentModeration zawiera zakresy czasu, które Video Indexer mogły mieć zawartość dla dorosłych. Jeśli visualContentModeration jest pusty, nie ma zidentyfikowanej treści dla dorosłych.
+VisualContentModeration blok zawiera zakresy czasu, które Indeksator wideo znaleźć potencjalnie treści dla dorosłych. Jeśli visualContentModeration jest pusty, nie ma żadnych treści dla dorosłych, który został zidentyfikowany.
 
-Filmy wideo, które mają zawierać zawartość dla dorosłych lub erotycznej, mogą być dostępne tylko w widoku prywatnym. Użytkownicy mogą przesłać żądanie dotyczące przeglądu zawartości przez człowieka, w takim przypadku atrybut `IsAdult` będzie zawierał wynik przeglądu przez człowieka.
+Filmy, które zawierają treści dla dorosłych lub treści rasistowskich, mogą być dostępne tylko do wyświetlania prywatnego. Użytkownicy mogą przesłać wniosek o przegląd treści przez `IsAdult` człowieka, w którym to przypadku atrybut będzie zawierał wynik ludzkiej recenzji.
 
-|Name (Nazwa)|Opis|
+|Nazwa|Opis|
 |---|---|
 |id|Identyfikator moderowania zawartości wizualnej.|
-|adultScore|Wynik dla dorosłych (z usługi Content moderator).|
-|racyScore|Wynik erotycznej (z moderowaniem zawartości).|
-|wystąpienia|Lista przedziałów czasu, w których pojawiło się to moderowanie zawartości wizualnej.|
+|adultScore (dorosłyScore)|Wynik dla dorosłych (od moderatora treści).|
+|racyScore (racyScore)|Racy wynik (z moderacji treści).|
+|Wystąpień|Lista zakresów czasu, w których pojawiła się ta umiar zawartości wizualnej.|
 
 ```json
 "VisualContentModeration": [
@@ -442,4 +442,4 @@ Filmy wideo, które mają zawierać zawartość dla dorosłych lub erotycznej, m
 ```
 ## <a name="next-steps"></a>Następne kroki
 
-[Samouczek: analizowanie wideo za pomocą Azure Media Services](analyze-videos-tutorial-with-api.md)
+[Samouczek: analizowanie wideo za pomocą usługi Azure Media Services](analyze-videos-tutorial-with-api.md)

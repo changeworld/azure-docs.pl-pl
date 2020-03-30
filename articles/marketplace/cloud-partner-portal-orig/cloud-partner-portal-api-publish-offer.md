@@ -1,24 +1,23 @@
 ---
-title: Publikowanie oferty | Portal Azure Marketplace
-description: Interfejs API umożliwiający opublikowanie określonej oferty.
-services: Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+title: Publikowanie oferty | Azure Marketplace
+description: INTERFEJSU API, aby opublikować określoną ofertę.
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
 ms.date: 09/13/2018
-ms.author: pabutler
-ms.openlocfilehash: b7ad8086c417cf1f14d9116fa4abcb0a88030922
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 4163bf5727c327d559b81db42f99684aa0cc8d5b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73819653"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80280528"
 ---
 <a name="publish-an-offer"></a>Publikowanie oferty
 ================
 
-Uruchamia proces publikowania dla określonej oferty. To wywołanie jest długotrwałą operacją.
+Rozpoczyna proces publikowania dla określonej oferty. To wywołanie jest długotrwałą operacją.
 
   `POST  https://cloudpartner.azure.com/api/publishers/<publisherId>/offers/<offerId>/publish?api-version=2017-10-31`
 
@@ -27,9 +26,9 @@ Uruchamia proces publikowania dla określonej oferty. To wywołanie jest długot
 
 |  **Nazwa**      |    **Opis**                               |  **Typ danych** |
 |  ------------- |  ------------------------------------            |   -----------  |
-|  publisherId   | Identyfikator wydawcy, na przykład `contoso`      |   Ciąg       |
-|  OfferId       | Identyfikator oferty                                 |   Ciąg       |
-|  wersja interfejsu API   | Najnowsza wersja interfejsu API                        |   Date         |
+|  identyfikator wydawcy   | Identyfikator wydawcy, na przykład`contoso`      |   Ciąg       |
+|  offerId       | Identyfikator oferty                                 |   Ciąg       |
+|  api-version   | Najnowsza wersja interfejsu API                        |   Data         |
 |  |  |
 
 
@@ -43,7 +42,7 @@ Uruchamia proces publikowania dla określonej oferty. To wywołanie jest długot
 |  |  |
 
 
-<a name="body-example"></a>Przykład treści
+<a name="body-example"></a>Przykład ciała
 ------------
 
 ### <a name="request"></a>Żądanie
@@ -61,7 +60,7 @@ Uruchamia proces publikowania dla określonej oferty. To wywołanie jest długot
 
 |  **Nazwa**               |   **Opis**                                                                                 |
 |  ---------------------  | ------------------------------------------------------------------------------------------------- |
-|  powiadomienie — wiadomości e-mail    | Rozdzielana przecinkami lista adresów e-mail, które mają być powiadamiane o postępie operacji publikowania. |
+|  wiadomości e-mail z powiadomieniami    | Oddzielona przecinkami lista adresów e-mail, które mają być powiadamiane o postępie operacji publikowania. |
 |  |  |
 
 
@@ -74,16 +73,16 @@ Uruchamia proces publikowania dla określonej oferty. To wywołanie jest długot
 
 |  **Nazwa**             |    **Wartość**                                                                 |
 |  -------------------- | ---------------------------------------------------------------------------- |
-| Lokalizacja operacji    | Adres URL, do którego można wykonać zapytanie w celu ustalenia bieżącego stanu operacji.    |
+| Operacja-lokalizacja    | Adres URL, który można zbadać, aby określić bieżący stan operacji.    |
 |  |  |
 
 
 ### <a name="response-status-codes"></a>Kody stanu odpowiedzi
 
-| **Kodu** |  **Opis**                                                                                                                           |
+| **Code** |  **Opis**                                                                                                                           |
 | ------   |  ----------------------------------------------------------------------------------------------------------------------------------------- |
-| 202   | `Accepted` — żądanie zostało pomyślnie zaakceptowane. Odpowiedź zawiera lokalizację, która może służyć do śledzenia uruchomionej operacji. |
-| 400   | `Bad/Malformed request` — treść odpowiedzi na błąd może dostarczyć więcej informacji.                                                               |
-| 422   | `Un-processable entity`-wskazuje, że nie można sprawdzić poprawności jednostki do opublikowania.                                                        |
-| 404   | `Not found` — jednostka określona przez klienta nie istnieje.                                                                              |
+| 202   | `Accepted`- Wniosek został pomyślnie przyjęty. Odpowiedź zawiera lokalizację, która może służyć do śledzenia operacji, która jest uruchomiona. |
+| 400   | `Bad/Malformed request`- Jednostka reagowania na błędy może dostarczyć więcej informacji.                                                               |
+| 422   | `Un-processable entity`- Wskazuje, że jednostka, która ma zostać opublikowana nie powiodło się sprawdzanie poprawności.                                                        |
+| 404   | `Not found`- Jednostka określona przez klienta nie istnieje.                                                                              |
 |  |  |

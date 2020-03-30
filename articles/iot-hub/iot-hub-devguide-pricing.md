@@ -1,6 +1,6 @@
 ---
-title: Zrozumienie cennika usługi Azure IoT Hub | Dokumentacja firmy Microsoft
-description: Przewodnik dewelopera — dowiedzieć się, jak metod rozliczania i cen współpracuje z usługą IoT Hub, w tym przykłady pracy.
+title: Opis cen usługi Azure IoT Hub | Dokumenty firmy Microsoft
+description: Przewodnik dla deweloperów — informacje o tym, jak pomiary i ceny działają z Centrum IoT, w tym przepracowane przykłady.
 author: robinsh
 manager: philmea
 ms.author: robinsh
@@ -9,59 +9,59 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 03/11/2019
 ms.openlocfilehash: 9b6db1b7171652ea5ace4db370b72dc22b6bdc90
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79271228"
 ---
 # <a name="azure-iot-hub-pricing-information"></a>Informacje o cenach usługi Azure IoT Hub
 
-[Cennik usługi Azure IoT Hub](https://azure.microsoft.com/pricing/details/iot-hub) udostępnia ogólne informacje o różnych jednostkach SKU i cenach dla IoT Hub. Ten artykuł zawiera więcej informacji na temat sposobu różnych funkcji usługi IoT Hub są mierzone jako komunikaty przez usługę IoT Hub.
+[Cennik usługi Azure IoT Hub](https://azure.microsoft.com/pricing/details/iot-hub) zawiera ogólne informacje na temat różnych jednostek SKU i cen dla usługi IoT Hub. Ten artykuł zawiera dodatkowe szczegóły dotyczące sposobu, w jaki różne funkcje usługi IoT Hub są mierzone jako komunikaty przez centrum IoT Hub.
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-partial.md)]
 
 ## <a name="charges-per-operation"></a>Opłaty za operację
 
-| Operacja | Informacja o rozliczeniach | 
+| Operacja | Informacje rozliczeniowe | 
 | --------- | ------------------- |
-| Operacje rejestru tożsamości <br/> (Tworzenie, pobieranie, listy, aktualizowanie i usuwanie) | Nie są naliczane. |
-| Komunikaty z urządzenia do chmury | Pomyślnie wysłane wiadomości są naliczane we fragmentach po 4 KB na ruch przychodzący do usługi IoT Hub. Na przykład komunikat 6-KB jest rozliczany według 2 komunikaty. |
-| Komunikaty z chmury do urządzenia | Pomyślnie wysłane wiadomości są rozliczane we fragmentach po 4 KB, na przykład komunikat 6-KB jest rozliczany według 2 komunikaty. |
-| Operacje przekazywania plików | Transfer plików do usługi Azure Storage nie jest mierzone przez usługę IoT Hub. Komunikaty rozpoczęcia i zakończenia transferu plików są naliczane zgodnie z messaged mierzone w przyrostach o rozmiarze 4 KB. Na przykład transfer pliku o rozmiarze 10 MB jest naliczany jako dwa komunikaty oprócz kosztu usługi Azure Storage. |
-| Metody bezpośrednie | Pomyślne żądania metod są rozliczone w fragmentach o rozmiarach 4 KB, a odpowiedzi są rozliczone w przypadku fragmentów o rozmiarach 4 KB jako dodatkowych komunikatów. Żądania odłączone urządzenia są rozliczane jako komunikaty we fragmentach po 4 KB. Na przykład metoda o treści 4 KB, która skutkuje odpowiedzią bez treści urządzenia, jest naliczana za dwa komunikaty. Metody z treścią 6-KB, powstałego w odpowiedzi na 1 KB z urządzenia jest rozliczane jako dwa komunikaty żądania plus inny komunikat odpowiedzi. |
-| Bliźniacza reprezentacja urządzenia i moduł odczytuje | Bliźniacze odczyty z urządzenia lub moduł i z powrotem rozwiązania end są rozliczane jako wiadomości we fragmentach 512-bajtowego. Na przykład odczytywania bliźniaczego elementu 6-KB jest rozliczane jako wiadomości o 12. |
-| Bliźniacza reprezentacja urządzenia i moduł aktualizacji (tagów i właściwości) | Liczba aktualizacji bliźniaczej reprezentacji z urządzenia lub modułu i zapleczem rozwiązania są rozliczane jako komunikaty we fragmentach 512-bajtowego. Na przykład odczytywania bliźniaczego elementu 6-KB jest rozliczane jako wiadomości o 12. |
-| Zapytania dotyczące bliźniaczych reprezentacji urządzeń i modułu | Zapytania są rozliczane jako komunikaty, w zależności od rozmiaru wynik we fragmentach 512-bajtowego. |
-| Operacje zadań <br/> (tworzenie, aktualizowanie, wyświetlanie, usuwanie) | Nie są naliczane. |
-| Operacje dotyczące zadań poszczególnych urządzeń. | Operacje dotyczące zadań (na przykład liczba aktualizacji bliźniaczej reprezentacji i metody) są naliczane w zwykły sposób. Na przykład zadanie, co w wywołaniach metod 1000 żądań na 1 KB i pusta treść odpowiedzi jest rozliczany według 1000 komunikatów. |
-| Komunikaty utrzymywania aktywności | Podczas korzystania z protokołów AMQP lub protokołu MQTT, komunikatów wymienianych do nawiązania połączenia i wiadomości wymieniane w negocjacji nie są naliczane. |
+| Operacje rejestru tożsamości <br/> (tworzenie, pobieranie, listy, aktualizacji, usuwania) | Nie naładowana. |
+| Komunikaty z urządzenia do chmury | Pomyślnie wysłane wiadomości są naliczane w 4 KB fragmentów przy przychodzących do Usługi IoT Hub. Na przykład wiadomość o 6 KB jest naliczana na 2 wiadomości. |
+| Komunikaty z chmury do urządzenia | Pomyślnie wysłane wiadomości są naliczane w fragmentach 4 KB, na przykład wiadomość o masie 6 KB jest naliczana 2 wiadomości. |
+| Operacje przekazywania plików | Transfer plików do usługi Azure Storage nie jest mierzony przez centrum IoT Hub. Komunikaty inicjacji i zakończenia transferu plików są naliczane jako messaged mierzone w przyrostach 4 KB. Na przykład przeniesienie pliku o rozmiarze 10 MB jest naliczane jako dwie wiadomości oprócz kosztu usługi Azure Storage. |
+| Metody bezpośrednie | Pomyślne żądania metody są naliczane w fragmentach 4 KB, a odpowiedzi są naliczane w fragmentach 4 KB jako dodatkowe wiadomości. Żądania do rozłączonych urządzeń są naliczane jako wiadomości we fragmentach 4 KB. Na przykład metoda z treścią 4 KB, która powoduje odpowiedź bez treści z urządzenia, jest ładowana jako dwie wiadomości. Metoda z treścią 6 KB, która powoduje odpowiedź 1 KB z urządzenia, jest naliczana jako dwie wiadomości dla żądania plus inny komunikat dla odpowiedzi. |
+| Odczyty bliźniaczej funkcji urządzenia i modułu | Bliźniacze odczyty z urządzenia lub modułu i z zaplecza rozwiązania są ładowane jako wiadomości w 512-bajtowych fragmentach. Na przykład odczytu bliźniaczej reprezentacji 6 KB jest naliczana jako 12 wiadomości. |
+| Aktualizacje bliźniaczej reprezentacji urządzeń i modułów (znaczniki i właściwości) | Bliźniacze aktualizacje z urządzenia lub modułu i z zaplecza rozwiązania są ładowane jako wiadomości w 512-bajtowych fragmentach. Na przykład odczytu bliźniaczej reprezentacji 6 KB jest naliczana jako 12 wiadomości. |
+| Zapytania bliźniacze dwie urządzenia i modułu | Zapytania są naliczane jako wiadomości w zależności od rozmiaru wyniku w 512-bajtowych fragmentach. |
+| Operacje zadań <br/> (tworzenie, aktualizowanie, wyświetlanie, usuwanie) | Nie naładowana. |
+| Zadania na urządzenie | Operacje zadań (takie jak bliźniacze aktualizacje i metody) są naliczane normalnie. Na przykład zadanie powodujące 1000 wywołań metody z żądaniami 1 KB i odpowiedziami pustymi treściami jest obciążone 1000 wiadomości. |
+| Wiadomości o utrzymaniu przy życiu | W przypadku korzystania z protokołów AMQP lub MQTT wiadomości wymieniane w celu nawiązania połączenia i wiadomości wymieniane w negocjacjach nie są naliczane. |
 
 > [!NOTE]
-> Wszystkie rozmiary są obliczane, biorąc pod uwagę rozmiar ładunku w bajtach (ramek protokołu jest ignorowany). Dla wiadomości, które mają właściwości i treści, rozmiar jest obliczany w sposób niezależny od protokołu. Aby uzyskać więcej informacji, zobacz [format komunikatu IoT Hub](iot-hub-devguide-messages-construct.md).
+> Wszystkie rozmiary są obliczane z uwzględnieniem rozmiaru ładunku w bajtach (ramki protokołu są ignorowane). Dla wiadomości, które mają właściwości i treść, rozmiar jest obliczany w sposób niezależny od protokołu. Aby uzyskać więcej informacji, zobacz [Format wiadomości Usługi IoT Hub](iot-hub-devguide-messages-construct.md).
 
 ## <a name="example-1"></a>Przykład #1
 
-Urządzenie wysyła jeden komunikat urządzenia do chmury 1 KB na minutę do usługi IoT Hub, który jest odczytywany przez usługę Azure Stream Analytics. Zaplecze rozwiązania wywołuje metodę (z 512-bajtowym ładunkiem) na urządzeniu co 10 minut, aby wyzwolić konkretną akcję. Urządzenie odpowiada metody z wynikiem bajty 200.
+Urządzenie wysyła jeden komunikat z urządzeniami do chmury o wartości 1 KB na minutę do usługi IoT Hub, który jest następnie odczytywany przez usługę Azure Stream Analytics. Zaplecze rozwiązania wywołuje metodę (z ładunkiem 512 bajtów) na urządzeniu co 10 minut, aby wyzwolić określoną akcję. Urządzenie reaguje na metodę z wynikiem 200 bajtów.
 
 Urządzenie zużywa:
 
-* Jeden komunikat * 60 minut * 24 godziny = 1440 wiadomości dziennie w przypadku komunikatów z urządzenia do chmury.
-* Dwa żądania i odpowiedzi * 6 razy na godzinę * 24 godziny = 288 komunikaty dla metod.
+* Jedna wiadomość * 60 minut * 24 godziny = 1440 wiadomości dziennie dla wiadomości z urządzenia do chmury.
+* Dwa żądania plus odpowiedź * 6 razy na godzinę * 24 godziny = 288 wiadomości dla metod.
 
-To obliczenie daje w sumie 1728 komunikatów dziennie.
+To obliczenie daje łącznie 1728 wiadomości dziennie.
 
 ## <a name="example-2"></a>Przykład #2
 
-Urządzenie wysyła jeden komunikat z urządzenia do chmury 100 KB co godzinę. Aktualizuje również jego bliźniaczej reprezentacji urządzenia z ładunkami 1 KB co cztery godziny. Rozwiązania zakończenia, raz dziennie, odczytuje bliźniaczej reprezentacji urządzenia 14 KB i aktualizuje go z ładunkami 512-bajtowych w celu zmiany konfiguracji.
+Urządzenie wysyła jedną wiadomość o wartości 100 KB między urządzeniami do chmury co godzinę. Aktualizuje również bliźniaczej reprezentacji urządzenia ładunki 1 KB co cztery godziny. Zaplecze rozwiązania, raz dziennie, odczytuje bliźniaczej reprezentacji urządzenia 14 KB i aktualizuje go za pomocą ładunków 512-bajtowych, aby zmienić konfiguracje.
 
 Urządzenie zużywa:
 
-* 25 wiadomości (100 KB/4 KB) * 24 godziny na komunikaty z urządzenia do chmury.
-* Dwa komunikaty (1 KB/o rozmiarze 0,5 KB) * sześć razy dziennie w przypadku aktualizacji bliźniaczej reprezentacji urządzenia.
+* 25 (100 KB / 4 KB) wiadomości * 24 godziny dla wiadomości z urządzenia do chmury.
+* Dwa komunikaty (1 KB / 0.5 KB) * sześć razy dziennie dla aktualizacji bliźniaczych urządzeń.
 
-To obliczenie daje w sumie 612 komunikatów dziennie.
+To obliczenie daje łącznie 612 komunikatów dziennie.
 
-Zaplecze rozwiązania korzysta z 28 wiadomości (14 KB/o rozmiarze 0,5 KB) można odczytać bliźniaczej reprezentacji urządzenia, a także jeden komunikat, aby zaktualizować go, w sumie 29 wiadomości.
+Zaplecze rozwiązania zużywa 28 komunikatów (14 KB / 0,5 KB), aby odczytać bliźniaczej reprezentacji urządzenia, a także jedną wiadomość, aby go zaktualizować, w sumie 29 wiadomości.
 
-W sumie 641 komunikatów na dzień, korzystać z urządzenia i zapleczem rozwiązania.
+W sumie urządzenie i zaplecze rozwiązania zużywają 641 komunikatów dziennie.

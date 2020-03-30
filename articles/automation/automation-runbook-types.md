@@ -1,118 +1,118 @@
 ---
-title: Azure Automation typy elementów Runbook
-description: 'W tym artykule opisano różne typy elementów Runbook, których można użyć w Azure Automation i zagadnienia, które należy wziąć pod uwagę podczas określania, który typ ma być używany. '
+title: Typy elementów runbook automatyzacji platformy Azure
+description: 'W tym artykule opisano różne typy elementów runbook, których można użyć w usłudze Azure Automation i zagadnienia, które należy wziąć pod uwagę przy określaniu typu, którego chcesz użyć. '
 services: automation
 ms.subservice: process-automation
 ms.date: 03/05/2019
 ms.topic: conceptual
 ms.openlocfilehash: 6346c29210b6390f11c884ff51e0b60af89bbbb7
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79278612"
 ---
-# <a name="azure-automation-runbook-types"></a>Azure Automation typy elementów Runbook
+# <a name="azure-automation-runbook-types"></a>Typy elementów runbook usługi Azure Automation
 
-Azure Automation obsługuje kilka typów elementów Runbook, które zostały krótko opisane w poniższej tabeli.  W poniższych sekcjach znajdują się dodatkowe informacje o każdym typie, w tym zagadnienia dotyczące sytuacji, w których należy użyć każdego z nich
+Usługa Azure Automation obsługuje kilka typów elementów runbook, które są krótko opisane w poniższej tabeli.  Poniższe sekcje zawierają dalsze informacje na temat każdego typu, w tym kwestie dotyczące tego, kiedy należy z nich korzystać.
 
 | Typ | Opis |
 |:--- |:--- |
-| [Element graficzny](#graphical-runbooks)|W oparciu o program Windows PowerShell i całkowicie utworzony i zmodyfikowany w edytorze graficznym w Azure Portal. |
-| [Graficzny przepływ pracy programu PowerShell](#graphical-runbooks)|W oparciu o przepływ pracy programu Windows PowerShell i całkowicie utworzony i zmodyfikowany w edytorze graficznym w Azure Portal. |
-| [PowerShell](#powershell-runbooks) |Element runbook tekstu, oparte na skrypt programu Windows PowerShell. |
-| [Przepływ pracy programu PowerShell](#powershell-workflow-runbooks)|Element runbook tekstu, oparte na przepływie pracy programu Windows PowerShell. |
-| [Python](#python-runbooks) |Tekstowy element Runbook oparty na języku Python. |
+| [Element graficzny](#graphical-runbooks)|Na podstawie programu Windows PowerShell i utworzone i edytowane całkowicie w edytorze graficznym w witrynie Azure portal. |
+| [Graficzny przepływ pracy programu PowerShell](#graphical-runbooks)|Na podstawie przepływu pracy programu Windows PowerShell i utworzone i edytowane całkowicie w edytorze graficznym w witrynie Azure portal. |
+| [Powershell](#powershell-runbooks) |Podręcznik na podstawie skryptu programu Windows PowerShell. |
+| [Przepływ pracy programu PowerShell](#powershell-workflow-runbooks)|Podręcznikowy program runbook oparty na przepływie pracy programu Windows PowerShell. |
+| [Python](#python-runbooks) |Podręcznik podstawowy oparty na Pythonie. |
 
-## <a name="graphical-runbooks"></a>Graficzne elementy Runbook
+## <a name="graphical-runbooks"></a>Graficzne programy runbook
 
-[Graficzne](automation-runbook-types.md#graphical-runbooks) i graficzne elementy Runbook przepływu pracy programu PowerShell są tworzone i edytowane w edytorze graficznym w Azure Portal.  Możesz wyeksportować je do pliku, a następnie zaimportować je do innego konta usługi Automation. Ale nie można ich tworzyć ani edytować za pomocą innego narzędzia. Graficzne elementy Runbook generują kod programu PowerShell, ale nie można bezpośrednio przeglądać ani modyfikować kodu. Graficzne elementy Runbook nie mogą być konwertowane na jeden z [formatów tekstowych](automation-runbook-types.md)ani nie można przekonwertować tekstu elementu Runbook na format graficzny. Graficzne elementy Runbook można przekonwertować na graficzne elementy Runbook przepływu pracy programu PowerShell podczas importowania i w inny sposób.
+[Graficzne](automation-runbook-types.md#graphical-runbooks) i graficzne programy PowerShell Workflow runbooks są tworzone i edytowane za pomocą edytora graficznego w witrynie Azure portal.  Można wyeksportować je do pliku, a następnie zaimportować do innego konta automatyzacji. Nie można ich jednak tworzyć ani edytować za pomocą innego narzędzia. Graficzne programy runbook generują kod programu PowerShell, ale nie można bezpośrednio wyświetlić ani zmodyfikować kodu. Eksmisków graficznych nie można przekonwertować na jeden z [formatów tekstowych](automation-runbook-types.md)ani nie można przekonwertować podręcznika na format graficzny. Graficzne programy runbook można konwertować na graficzne programy runbook przepływu pracy programu PowerShell podczas importowania i odwrotnie.
 
 ### <a name="advantages"></a>Zalety
 
-* Visual INSERT-link-Konfiguruj model tworzenia
-* Skup się na przepływie danych przez proces
-* Wizualizacja reprezentuje procesy zarządzania
-* Dołącz inne elementy Runbook jako podrzędne elementy Runbook, aby utworzyć przepływy pracy wysokiego poziomu
-* Zachęca do programowania modularnego
+* Wizualny model tworzenia konfiguracji wstawiania łączy
+* Skoncentruj się na przepływie danych przez proces
+* Wizualne reprezentowanie procesów zarządzania
+* Uwzględnianie innych śmięty jako umniech ydów podrzędnych w celu tworzenia przepływów pracy wysokiego poziomu
+* Zachęca do programowania modułowego
 
 ### <a name="limitations"></a>Ograniczenia
 
-* Nie można edytować elementu Runbook poza Azure Portal.
-* Może wymagać działania kodu zawierającego kod programu PowerShell do wykonywania złożonej logiki.
-* Nie można wyświetlić lub bezpośrednio edytować kodu programu PowerShell tworzonego przez graficzny przepływ pracy. Możesz wyświetlić kod utworzony w ramach jakichkolwiek działań kodu.
-* Nie można wykonać w ramach hybrydowego procesu roboczego elementu Runbook systemu Linux
+* Nie można edytować uruchomieniu poza witryną Azure portal.
+* Może wymagać działania Code zawierającego kod programu PowerShell do wykonywania złożonej logiki.
+* Nie można wyświetlić ani bezpośrednio edytować kodu programu PowerShell utworzonego przez graficzny przepływ pracy. Można wyświetlić kod utworzony w dowolnej działaniach Code.
+* Nie można uruchomić w hybrydowym uziemiacza systemu Linux
 
-## <a name="powershell-runbooks"></a>Elementy runbook programu PowerShell
+## <a name="powershell-runbooks"></a>Runbooki programu PowerShell
 
-Elementy runbook programu PowerShell są oparte na programie Windows PowerShell.  Możesz bezpośrednio edytować kod elementu Runbook przy użyciu edytora tekstu w Azure Portal.  Można również użyć dowolnego edytora tekstu w trybie offline i [zaimportować element Runbook](manage-runbooks.md) do Azure Automation.
+Podręczniki programu PowerShell są oparte na programie Windows PowerShell.  Bezpośrednio edytować kod życiówki za pomocą edytora tekstu w witrynie Azure portal.  Można również użyć dowolnego edytora tekstu w trybie offline i [zaimportować program runbook](manage-runbooks.md) do usługi Azure Automation.
 
 ### <a name="advantages"></a>Zalety
 
-* Zaimplementuj wszystkie złożonej logiki przy użyciu programu PowerShell kodu bez przeprowadzania dodatkowej złożoności przepływu pracy programu PowerShell.
-* Element Runbook uruchamia się szybciej niż w elementach runbook przepływu pracy programu PowerShell, ponieważ nie musi on być skompilowany przed uruchomieniem.
-* Mogą być uruchamiane na platformie Azure lub w hybrydowych procesach roboczych elementów Runbook dla systemów Linux i Windows
+* Zaimplementuj całą złożoną logikę za pomocą kodu programu PowerShell bez dodatkowych złożoności przepływu pracy programu PowerShell.
+* Runbook uruchamia się szybciej niż runbook przepływu pracy programu PowerShell, ponieważ nie trzeba kompilować przed uruchomieniem.
+* Można uruchomić na platformie Azure lub na obu hybrydowych robotach runbook systemu Linux i Windows
 
 ### <a name="limitations"></a>Ograniczenia
 
 * Musi być zaznajomiony ze skryptami programu PowerShell.
 * Nie można użyć [przetwarzania równoległego](automation-powershell-workflow.md#parallel-processing) do wykonywania wielu akcji równolegle.
-* Nie można użyć [punktów kontrolnych](automation-powershell-workflow.md#checkpoints) w celu wznowienia elementu Runbook, jeśli wystąpi błąd.
-* Elementy Runbook przepływu pracy programu PowerShell i graficzne elementy Runbook można dołączać tylko jako podrzędne elementy Runbook za pomocą polecenia cmdlet Start-AzureAutomationRunbook, które tworzy nowe zadanie.
+* Nie można użyć [punktów kontrolnych,](automation-powershell-workflow.md#checkpoints) aby wznowić element runbook, jeśli występuje błąd.
+* Runbooki przepływu pracy programu PowerShell i graficzne życiorysy można uwzględnić tylko jako podręczniki podrzędne przy użyciu polecenia cmdlet Start-AzureAutomationRunbook, które tworzy nowe zadanie.
 
 ### <a name="known-issues"></a>Znane problemy
 
-Poniżej przedstawiono bieżące znane problemy dotyczące elementów Runbook programu PowerShell.
+Poniżej przedstawiono bieżące znane problemy z podręcznikami runbook programu PowerShell.
 
-* Elementy Runbook programu PowerShell nie mogą pobrać nieszyfrowanego [zasobu zmiennej](automation-variables.md) z wartością null.
-* Elementy Runbook programu PowerShell nie mogą pobrać [zasobu zmiennej](automation-variables.md) z *~* w nazwie.
-* Proces Get-Process w pętli w elemencie Runbook programu PowerShell może ulec awarii po około 80 iteracjach.
-* Element Runbook programu PowerShell może zakończyć się niepowodzeniem, jeśli próbuje napisać dużą ilość danych do strumienia wyjściowego jednocześnie.   Zazwyczaj można obejść ten problem, wprowadzając tylko potrzebne informacje podczas pracy z dużymi obiektami.  Na przykład zamiast umieszczania czegoś takiego jak *Get-Process*, można wyprowadzić tylko wymagane pola za pomocą polecenia *Get-Process | Wybierz pozycję ProcessName, procesor CPU*.
+* Nie można pobrać niezaszyfrowanego [zasobu zmiennej](automation-variables.md) o wartości null.
+* Nie można pobrać [składnika aktywów zmiennych](automation-variables.md) w *~* nazwie.
+* Get-Process w pętli w elemicie runbook programu PowerShell może ulec awarii po około 80 iteracji.
+* Runbook programu PowerShell może zakończyć się niepowodzeniem, jeśli próbuje zapisać dużą ilość danych do strumienia wyjściowego na raz.   Zazwyczaj można obejść ten problem, wyprowadzając tylko informacje potrzebne podczas pracy z dużymi obiektami.  Na przykład zamiast wyprowadzać coś takiego jak *Get-Process,* można wyprowadzić tylko wymagane pola za pomocą *get-process | Wybierz ProcessName, CPU*.
 
-## <a name="powershell-workflow-runbooks"></a>Elementy Runbook przepływu pracy programu PowerShell
+## <a name="powershell-workflow-runbooks"></a>Runy przepływu pracy programu PowerShell
 
-Elementy Runbook przepływu pracy programu PowerShell są tekstowymi elementami Runbook opartymi na [przepływie pracy programu Windows PowerShell](automation-powershell-workflow.md).  Możesz bezpośrednio edytować kod elementu Runbook przy użyciu edytora tekstu w Azure Portal.  Można również użyć dowolnego edytora tekstu w trybie offline i [zaimportować element Runbook](manage-runbooks.md) do Azure Automation.
-
-### <a name="advantages"></a>Zalety
-
-* Zaimplementuj wszystkie złożonej logiki przy użyciu kodu przepływu pracy programu PowerShell.
-* Jeśli wystąpi błąd, użyj [punktów kontrolnych](automation-powershell-workflow.md#checkpoints) w celu wznowienia działania elementu Runbook.
-* [Przetwarzanie równoległe](automation-powershell-workflow.md#parallel-processing) służy do równoległego wykonywania wielu akcji.
-* Może zawierać inne graficzne elementy Runbook i elementy Runbook przepływu pracy programu PowerShell jako podrzędne elementy Runbook do tworzenia przepływów pracy wysokiego poziomu.
-
-### <a name="limitations"></a>Ograniczenia
-
-* Autor musi znać przepływ pracy programu PowerShell.
-* Element Runbook musi zająć się dodatkową złożonością przepływu pracy programu PowerShell, takich jak [obiekty deserializowane](automation-powershell-workflow.md#code-changes).
-* Element Runbook zajmuje więcej czasu start niż elementy runbook programu PowerShell, który musi być skompilowany przed uruchomieniem.
-* Elementy Runbook programu PowerShell można dołączać tylko jako podrzędne elementy Runbook za pomocą polecenia cmdlet Start-AzureAutomationRunbook, które tworzy nowe zadanie.
-* Nie można wykonać w ramach hybrydowego procesu roboczego elementu Runbook systemu Linux
-
-## <a name="python-runbooks"></a>Elementy Runbook języka Python
-
-Kompilacja elementów Runbook języka Python w języku Python 2.  Możesz bezpośrednio edytować kod elementu Runbook przy użyciu edytora tekstu w Azure Portal lub za pomocą edytora tekstu w trybie offline i [zaimportować element Runbook](manage-runbooks.md) do Azure Automation.
+Runy przepływu pracy programu PowerShell są podręcznikami runbook opartymi na przepływie pracy programu [Windows PowerShell](automation-powershell-workflow.md).  Bezpośrednio edytować kod życiówki za pomocą edytora tekstu w witrynie Azure portal.  Można również użyć dowolnego edytora tekstu w trybie offline i [zaimportować program runbook](manage-runbooks.md) do usługi Azure Automation.
 
 ### <a name="advantages"></a>Zalety
 
-* Korzystaj z niezawodnych bibliotek języka Python.
-* Mogą być uruchamiane na platformie Azure lub w obu hybrydowych procesach roboczych elementów Runbook w systemie Linux. Hybrydowe procesy robocze elementów Runbook systemu Windows są obsługiwane z zainstalowanym środowiskiem [Python 2.7](https://www.python.org/downloads/release/latest/python2) .
+* Zaimplementuj całą złożoną logikę za pomocą kodu przepływu pracy programu PowerShell.
+* Użyj [punktów kontrolnych,](automation-powershell-workflow.md#checkpoints) aby wznowić element runbook, jeśli występuje błąd.
+* Użyj [przetwarzania równoległego](automation-powershell-workflow.md#parallel-processing) do wykonywania wielu akcji równolegle.
+* Może zawierać inne programy runbook graficzne i runbook przepływu pracy programu PowerShell jako umownicza podrzędne w celu tworzenia przepływów pracy wysokiego poziomu.
 
 ### <a name="limitations"></a>Ograniczenia
 
-* Musi być zaznajomiony ze skryptami języka Python.
-* Tylko język Python 2 jest obsługiwany, co oznacza, że funkcje języka Python 3 nie powiodą się.
-* Aby można było korzystać z bibliotek innych firm, należy [zaimportować pakiet](python-packages.md) do konta usługi Automation, które ma być używane.
+* Autor musi być zaznajomiony z przepływem pracy programu PowerShell.
+* Runbook musi radzić sobie z dodatkową złożonością przepływu pracy programu PowerShell, takich jak [obiekty deserializowane.](automation-powershell-workflow.md#code-changes)
+* Uruchomienie jest trwa dłużej niż runbook programu PowerShell, ponieważ musi zostać skompilowane przed uruchomieniem.
+* Podręczniki programu PowerShell można uwzględnić tylko jako podrzędne podręczniki, korzystając z polecenia cmdlet Start-AzureAutomationRunbook, które tworzy nowe zadanie.
+* Nie można uruchomić w hybrydowym uziemiacza systemu Linux
+
+## <a name="python-runbooks"></a>Runbooki pythona
+
+Python runbooks kompilować w Pythonie 2.  Można bezpośrednio edytować kod życiornika za pomocą edytora tekstu w witrynie Azure portal lub za pomocą edytora tekstu w trybie offline i [zaimportować element runbook](manage-runbooks.md) do usługi Azure Automation.
+
+### <a name="advantages"></a>Zalety
+
+* Korzystaj z niezawodnych bibliotek Pythona.
+* Można uruchomić na platformie Azure lub na obu hybrydowych workers y uruchomieniu systemu Linux. Hybrydowe środowiska owe pracowników systemu Windows są obsługiwane z [zainstalowanym systemem Python2.7.](https://www.python.org/downloads/release/latest/python2)
+
+### <a name="limitations"></a>Ograniczenia
+
+* Musi być zaznajomiony z skryptów Pythona.
+* Tylko Python 2 jest obecnie obsługiwany, co oznacza, że określone funkcje Pythona 3 nie powiodą się.
+* Aby korzystać z bibliotek innych firm, należy [zaimportować pakiet](python-packages.md) do konta automatyzacji, aby był używany.
 
 ## <a name="considerations"></a>Zagadnienia do rozważenia
 
-Należy wziąć pod uwagę następujące dodatkowe zagadnienia podczas określania typu, który ma być używany dla określonego elementu Runbook.
+Należy wziąć pod uwagę następujące dodatkowe uwagi przy określaniu, który typ ma być używany dla określonego elementów runbook.
 
-* Nie można konwertować elementów Runbook z graficznej na typ tekstowy ani w inny sposób.
-* Istnieją ograniczenia dotyczące używania elementów Runbook różnych typów jako podrzędnego elementu Runbook. Aby uzyskać więcej informacji, zobacz [podrzędne elementy Runbook w Azure Automation](automation-child-runbooks.md).
+* Nie można konwertować tekstów z graficznego na tekstowy ani na odwrót.
+* Istnieją ograniczenia dotyczące używania elementów runbook różnych typów jako elementów elementów śmiętnych podrzędnych. Aby uzyskać więcej informacji, zobacz [Podrzędne elementy runbook w usłudze Azure Automation](automation-child-runbooks.md).
 
 ## <a name="next-steps"></a>Następne kroki
 
-* Aby dowiedzieć się więcej na temat graficznego tworzenia elementów Runbook, zobacz [Tworzenie graficzne w Azure Automation](automation-graphical-authoring-intro.md)
-* Aby zrozumieć różnice między programem PowerShell i przepływami pracy programu PowerShell dla elementów Runbook, zobacz temat [Omówienie przepływu pracy programu Windows PowerShell](automation-powershell-workflow.md) .
-* Aby uzyskać więcej informacji na temat tworzenia lub importowania elementu Runbook, zobacz [Tworzenie lub importowanie elementu Runbook](manage-runbooks.md)
-* Aby uzyskać więcej informacji na temat programu PowerShell, w tym modułów dokumentacji i uczenia dotyczącej języka, zapoznaj się z dokumentacją programu [PowerShell](https://docs.microsoft.com/powershell/scripting/overview).
+* Aby dowiedzieć się więcej o tworzeniem uruchomieniu grafików, zobacz [Tworzenie graficzne w usłudze Azure Automation](automation-graphical-authoring-intro.md)
+* Aby zrozumieć różnice między przepływami pracy programu PowerShell i PowerShell dla uruchomieniu, zobacz [Uczenie się przepływu pracy programu Windows PowerShell](automation-powershell-workflow.md)
+* Aby uzyskać więcej informacji na temat tworzenia lub importowania ekwiwania ekwiwania, zobacz [Tworzenie lub importowanie ekwiwania ekwiwania](manage-runbooks.md)
+* Aby uzyskać więcej informacji na temat programu PowerShell, w tym odwoływania się do języka i modułów szkoleniowych, zobacz [Dokumenty programu PowerShell](https://docs.microsoft.com/powershell/scripting/overview).

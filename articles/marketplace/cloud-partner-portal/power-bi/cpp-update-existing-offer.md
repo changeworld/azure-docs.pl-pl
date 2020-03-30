@@ -1,68 +1,67 @@
 ---
-title: Aktualizowanie oferty aplikacji Power BI | Portal Azure Marketplace
+title: Aktualizowanie oferty aplikacji Usługi Power BI | Azure Marketplace
 description: Zaktualizuj ofertę aplikacji Power BI po jej opublikowaniu w witrynie Microsoft AppSource Marketplace.
-services: Azure, AppSource, Marketplace, Cloud Partner Portal, Power BI
-author: v-miclar
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 01/31/2019
-ms.author: pabutler
-ms.openlocfilehash: 8e535b89ad370e42857a466aa772c1e13eeff11b
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 04e10b9c5410d15d3509829af7502c9a93c7267d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73818711"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80281633"
 ---
-# <a name="update-a-power-bi-app-offer"></a>Aktualizowanie oferty aplikacji Power BI
+# <a name="update-a-power-bi-app-offer"></a>Aktualizowanie oferty aplikacji Usługi Power BI
 
-W tym artykule opisano sposób aktualizowania oferty aplikacji Microsoft Power BI w [Portal Cloud partner](https://cloudpartner.azure.com/) , a następnie ponownego opublikowania oferty. Poniżej przedstawiono niektóre typowe przyczyny aktualizowania oferty:
+W tym artykule pokazano, jak zaktualizować ofertę aplikacji Microsoft Power BI App w [portalu cloud partnerów,](https://cloudpartner.azure.com/) a następnie ponownie opublikować ofertę. Oto kilka typowych powodów, dla których warto zaktualizować ofertę:
 
-- Aby zaktualizować zawartość aplikacji w Power BI i uzyskać adres URL instalacji z nowo spakowanej aplikacji
-- Aby zaktualizować metadane portalu Azure Marketplace (informacje dotyczące sprzedaży, marketingu lub pomocy technicznej)
+- Aby zaktualizować zawartość aplikacji w usłudze Power BI i uzyskać adres URL instalacji z nowo spakowanej aplikacji
+- Aby zaktualizować metadane usługi Azure Marketplace (informacje i zasoby dotyczące sprzedaży, marketingu lub pomocy technicznej)
  
-Użyj funkcji **porównania** i **historii** portalu, aby śledzić zmiany takie jak te.
+Użyj funkcji **Porównania** i **Historii** portalu, aby śledzić takie zmiany.
 
 ## <a name="common-update-operations"></a>Typowe operacje aktualizacji
 
-Niektórych atrybutów oferty aplikacji Power BI nie można zmienić po opublikowaniu oferty w usłudze AppSource. Niedozwolone zmiany obejmują **Identyfikator oferty** i **identyfikator wydawcy**. Jednak nadal można zmienić szeroką gamę cech. Poniżej przedstawiono niektóre typowe zmiany.
+Niektóre atrybuty oferty aplikacji Usługi Power BI nie można zmienić po opublikowaniu oferty w usłudze AppSource. Niedozwolone zmiany obejmują **identyfikator oferty** i **identyfikator wydawcy.** Ale nadal można zmienić szeroki zakres cech. Oto kilka typowych zmian.
 
-### <a name="update-app-content-in-power-bi"></a>Aktualizowanie zawartości aplikacji w Power BI
+### <a name="update-app-content-in-power-bi"></a>Aktualizowanie zawartości aplikacji w usłudze Power BI
 
-Aplikacje Power BI są często aktualizowane okresowo przy użyciu nowej zawartości, poprawek zabezpieczeń, funkcji i tak dalej. Po zmianie aplikacji zaktualizuj jej adres URL instalacji, wykonując następujące czynności:
+Aplikacje usługi Power BI są często okresowo aktualizowane o nową zawartość, poprawki zabezpieczeń, funkcje itd. Po zmianie aplikacji zaktualizuj jej adres URL instalacji, wykonując następujące kroki:
 
-1.  Zaloguj się do [Portal Cloud partner](https://cloudpartner.azure.com/).
-2.  W obszarze **wszystkie oferty**Znajdź ofertę, którą chcesz zaktualizować.
+1.  Zaloguj się do [portalu cloud partner](https://cloudpartner.azure.com/).
+2.  W obszarze **Wszystkie oferty**znajdź ofertę, którą chcesz zaktualizować.
 3.  Na karcie **Informacje techniczne** wprowadź nowy adres URL instalacji.
-4.  Wybierz pozycję **Opublikuj** , aby uruchomić przepływ pracy w celu opublikowania nowej wersji aplikacji do AppSource.
+4.  Wybierz **pozycję Publikuj,** aby uruchomić przepływ pracy, aby opublikować nową wersję aplikacji w u źródła usług AppSource.
 
 
 ### <a name="update-the-offers-marketplace-metadata"></a>Aktualizowanie metadanych witryny Marketplace oferty
 
-Metadane portalu Marketplace oferty obejmują nazwę firmy, logo i inne informacje. Aby zaktualizować metadane, wykonaj następujące kroki:
+Metadane witryny Marketplace oferty obejmują nazwę firmy, logo i inne informacje. Aby zaktualizować metadane, wykonaj następujące czynności:
 
-1.  Zaloguj się do [Portal Cloud partner](https://cloudpartner.azure.com/).
-2.  W obszarze **wszystkie oferty**Znajdź ofertę, którą chcesz zaktualizować.
-3.  Na karcie **szczegóły witryny sklepu** Zmień metadane, postępując zgodnie z instrukcjami podanymi w artykule [Power BI karcie Szczegóły witryny sklepu App](./cpp-storefront-details-tab.md).
-4.  Wybierz pozycję **Publikuj** , aby uruchomić przepływ pracy w celu opublikowania zmian.
+1.  Zaloguj się do [portalu cloud partner](https://cloudpartner.azure.com/).
+2.  W obszarze **Wszystkie oferty**znajdź ofertę, którą chcesz zaktualizować.
+3.  Na karcie **Szczegóły sklepu** zmień metadane, postępując zgodnie z instrukcjami z artykułu Karta Szczegóły sklepu aplikacji Power BI [app Storefront](./cpp-storefront-details-tab.md).
+4.  Wybierz **pozycję Publikuj,** aby uruchomić przepływ pracy, aby opublikować zmiany.
 
 
-## <a name="the-compare-feature"></a>Funkcja Compare
+## <a name="the-compare-feature"></a>Funkcja Porównaj
 
-Gdy aktualizujesz opublikowaną ofertę, możesz sprawdzić wprowadzone zmiany. Aby użyć funkcji **porównania** :
+Podczas aktualizowania opublikowanej oferty możesz sprawdzić wprowadzone zmiany. Aby użyć funkcji **Porównaj:**
 
-1.  W dowolnym momencie w procesie edycji wybierz przycisk **porównania** oferty.
+1.  W dowolnym momencie procesu edycji wybierz przycisk **Porównaj** ofertę.
 
     ![Przycisk Porównaj](./media/compare-feature-button.png)
 
-2.  Wyświetl wersje zasobów i metadanych marketingowych obok siebie.
+2.  Wyświetlanie wersji obok siebie zasobów marketingowych i metadanych.
 
 
-## <a name="history-of-publishing-actions"></a>Historia akcji publikowania
+## <a name="history-of-publishing-actions"></a>Historia działań wydawniczych
 
-Aby wyświetlić historię publikowania oferty, po lewej stronie portal Cloud Partner Otwórz kartę **historia** . W tym miejscu zobaczysz historię działań z sygnaturami czasowymi w ofertach AppSource.
+Aby wyświetlić historię publikacji oferty, po lewej stronie portalu Cloud Partner Portal otwórz kartę **Historia.** W tym miejscu zobaczysz historię akcji oznaczonych sygnaturą czasową w ofertach appsource.
 
 ## <a name="next-steps"></a>Następne kroki
 
-W portal Cloud Partner regularnie korzystaj [ze szczegółowych](../../cloud-partner-portal-orig/si-getting-started.md) informacji o sprzedawcy, aby znaleźć przydatne informacje o klientach i użyciu portalu Marketplace.  
+W portalu Cloud Partner Portal regularnie korzystaj ze [statystyk sprzedawcy,](../../cloud-partner-portal-orig/si-getting-started.md) aby znaleźć przydatne informacje o klientach i użytkowaniu w Marketplace.  

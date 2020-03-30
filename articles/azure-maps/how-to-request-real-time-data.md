@@ -1,59 +1,59 @@
 ---
-title: Żądaj danych tranzytowych w czasie rzeczywistym | Mapy Microsoft Azure
-description: Zażądaj danych w czasie rzeczywistym przy użyciu usługi mobilności Maps Microsoft Azure.
-author: farah-alyasari
-ms.author: v-faalya
+title: Żądanie danych tranzytowych w czasie rzeczywistym | Mapy platformy Microsoft Azure
+description: Żądaj danych w czasie rzeczywistym za pomocą usługi mobilności Microsoft Azure Maps.
+author: philmea
+ms.author: philmea
 ms.date: 09/06/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 9710366bdb7d8e86c8abb54b29b8dde3cc315692
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: d3145181a863bf8188dd0b0bb52cd2efc662ce2f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77209906"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80335482"
 ---
-# <a name="request-real-time-data-using-the-azure-maps-mobility-service"></a>Żądanie danych w czasie rzeczywistym przy użyciu usługi mobilności Azure Maps
+# <a name="request-real-time-data-using-the-azure-maps-mobility-service"></a>Żądanie danych w czasie rzeczywistym przy użyciu usługi mobilności usługi Azure Maps
 
-W tym artykule pokazano, jak za pomocą [usługi mobilności](https://aka.ms/AzureMapsMobilityService) Azure Maps żądania danych tranzytowych w czasie rzeczywistym.
+W tym artykule pokazano, jak używać usługi Azure Maps [Mobility Service](https://aka.ms/AzureMapsMobilityService) do żądania przesyłania danych w czasie rzeczywistym.
 
 W tym artykule dowiesz się, jak:
 
 
- * Żądaj następnych przyjęć w czasie rzeczywistym dla wszystkich wierszy, które docierają do danego zatrzymania
- * Zażądaj informacji w czasie rzeczywistym dla danej stacji dokowania roweru.
+ * Zamów następne przyjazdy w czasie rzeczywistym dla wszystkich linii przybywających na danym przystanku
+ * Poproś o informacje w czasie rzeczywistym dla danej stacji dokującej dla rowerów.
 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Najpierw musisz mieć konto Azure Maps i klucz subskrypcji, aby wykonać dowolne wywołania interfejsów API Azure Maps publicznego przesyłania. Aby uzyskać więcej informacji, postępuj zgodnie z instrukcjami podanymi w temacie [Tworzenie konta](quick-demo-map-app.md#create-an-account-with-azure-maps) w celu utworzenia konta Azure Maps. Postępuj zgodnie z instrukcjami w temacie [Pobieranie klucza podstawowego](quick-demo-map-app.md#get-the-primary-key-for-your-account) , aby uzyskać klucz podstawowy dla Twojego konta. Aby uzyskać więcej informacji na temat uwierzytelniania w Azure Maps, zobacz [Zarządzanie uwierzytelnianiem w programie Azure Maps](./how-to-manage-authentication.md).
+Najpierw musisz mieć konto usługi Azure Maps i klucz subskrypcji, aby wykonywać wszelkie wywołania interfejsów API transportu publicznego usługi Azure Maps. Aby uzyskać informacje, postępuj zgodnie z instrukcjami w [tworzenie konta](quick-demo-map-app.md#create-an-account-with-azure-maps) w celu utworzenia konta usługi Azure Maps. Wykonaj kroki opisane w [celu uzyskania klucza podstawowego,](quick-demo-map-app.md#get-the-primary-key-for-your-account) aby uzyskać klucz podstawowy dla swojego konta. Aby uzyskać więcej informacji na temat uwierzytelniania w usłudze Azure Maps, zobacz [zarządzanie uwierzytelnianiem w usłudze Azure Maps](./how-to-manage-authentication.md).
 
 
-W tym artykule jest wykorzystywana [aplikacja Poster](https://www.getpostman.com/apps) do kompilowania wywołań REST. Możesz użyć dowolnego preferowanego środowiska deweloperskiego interfejsu API.
+W tym artykule używa [aplikacji Postman](https://www.getpostman.com/apps) do tworzenia wywołań REST. Można użyć dowolnego środowiska programistycznego interfejsu API, które wolisz.
 
 
-## <a name="request-real-time-arrivals-for-a-stop"></a>Żądaj przyjęć w czasie rzeczywistym na potrzeby zatrzymania
+## <a name="request-real-time-arrivals-for-a-stop"></a>Poproś o przyjazdy w czasie rzeczywistym, aby zatrzymać
 
-Aby można było zażądać danych o nadejściu w czasie rzeczywistym określonego tranzytu publicznego, należy wysłać żądanie do [interfejsu API przybycia w czasie rzeczywistym](https://aka.ms/AzureMapsMobilityRealTimeArrivals) [usługi mobilności](https://aka.ms/AzureMapsMobilityService)Azure Maps. Do ukończenia żądania potrzebne są **metroID** i **stopID** . Aby dowiedzieć się więcej o tym, jak zażądać tych parametrów, zobacz nasz przewodnik dotyczący [żądania publicznych tras tranzytowych](https://aka.ms/AMapsHowToGuidePublicTransitRouting). 
+Aby zażądać danych o przyjazdach w czasie rzeczywistym określonego przystanku transportu publicznego, należy złożyć wniosek do [interfejsu API przylotów w czasie rzeczywistym](https://aka.ms/AzureMapsMobilityRealTimeArrivals) usługi azure maps [mobilności.](https://aka.ms/AzureMapsMobilityService) Aby wypełnić żądanie, musisz **metroID** i **stopID.** Aby dowiedzieć się więcej o tym, jak zażądać tych parametrów, zapoznaj się z naszym przewodnikiem, jak [żądać tras transportu publicznego.](https://aka.ms/AMapsHowToGuidePublicTransitRouting) 
 
-Użyjmy "522" jako identyfikatora Metro, który jest IDENTYFIKATORem Metro dla obszaru "Seattle – Tacoma – Bellevue, WA". Użyj "522---2060603" jako identyfikatora zatrzymania, ta magistrala zatrzymuje się o godzinie "ne 24 St & 162nd Ave ne, Bellevue WA". Aby poprosić o następne pięć danych o nadejściu w czasie rzeczywistym dla wszystkich następnych na żywo przyjęć, wykonaj następujące czynności:
+Użyjmy "522" jako naszego identyfikatora metra, który jest identyfikatorem metra dla obszaru "Seattle-Tacoma-Bellevue, WA". Użyj "522---2060603" jako identyfikator przystanku, ten przystanek autobusowy znajduje się pod adresem "Ne 24th St & 162nd Ave Ne, Bellevue WA". Aby uzyskać kolejne pięć danych o przyjazdach w czasie rzeczywistym, dla wszystkich następnych przylotów na żywo na tym przystanku, wykonaj następujące kroki:
 
-1. Otwórz aplikację Poster i Utwórz kolekcję do przechowywania żądań. W górnej części aplikacji Poster wybierz pozycję **Nowy**. W oknie **Tworzenie nowego** okna wybierz pozycję **Kolekcja**.  Nadaj kolekcji nazwę i wybierz przycisk **Utwórz** .
+1. Otwórz aplikację Postman i utwórzmy kolekcję do przechowywania żądań. U góry aplikacji Listonosz wybierz pozycję **Nowy**. W oknie **Utwórz nowy** wybierz pozycję **Kolekcja**.  Nazwij kolekcję i wybierz przycisk **Utwórz.**
 
-2. Aby utworzyć żądanie, wybierz pozycję **nowe** ponownie. W oknie **Tworzenie nowego** okna wybierz pozycję **Żądaj**. Wprowadź **nazwę żądania** dla żądania. Wybierz kolekcję utworzoną w poprzednim kroku jako lokalizację, w której ma zostać zapisane żądanie. Następnie wybierz pozycję **Zapisz**.
+2. Aby utworzyć żądanie, wybierz ponownie pozycję **Nowy.** W oknie **Utwórz nowy** wybierz pozycję **Żądaj**. Wprowadź **nazwę żądania** dla żądania. Wybierz kolekcję utworzoną w poprzednim kroku jako lokalizację, w której ma być zapisywane żądanie. Następnie wybierz pozycję **Zapisz**.
 
-    ![Utwórz żądanie w programie Poster](./media/how-to-request-transit-data/postman-new.png)
+    ![Tworzenie żądania w listonoszu](./media/how-to-request-transit-data/postman-new.png)
 
-3. Wybierz metodę **Get** http na karcie Konstruktor i wprowadź następujący adres URL, aby utworzyć żądanie Get. Zastąp `{subscription-key}`Azure Maps kluczem podstawowym.
+3. Wybierz metodę **GET** HTTP na karcie konstruktora i wprowadź następujący adres URL, aby utworzyć żądanie GET. Zamień `{subscription-key}`klucz podstawowy usługi Azure Maps.
 
     ```HTTP
     https://atlas.microsoft.com/mobility/realtime/arrivals/json?subscription-key={subscription-key}&api-version=1.0&metroId=522&query=522---2060603&transitType=bus
     ```
 
-4. Po pomyślnym żądaniu otrzymasz poniższą odpowiedź.  Należy zauważyć, że parametr "ScheduleType" określa, czy szacowany czas przybycia jest oparty na danych w czasie rzeczywistym, czy statycznym.
+4. Po pomyślnym żądaniu otrzymasz następującą odpowiedź.  Należy zauważyć, że parametr "scheduleType" określa, czy szacowany czas przybycia jest oparty na danych w czasie rzeczywistym lub statycznych.
 
     ```JSON
     {
@@ -119,26 +119,26 @@ Użyjmy "522" jako identyfikatora Metro, który jest IDENTYFIKATORem Metro dla o
     ```
 
 
-## <a name="real-time-data-for-bike-docking-station"></a>Dane czasu rzeczywistego dla stacji dokującej roweru
+## <a name="real-time-data-for-bike-docking-station"></a>Dane w czasie rzeczywistym dla stacji dokującej dla rowerów
 
-[Interfejs API uzyskiwania informacji o dockce zadokowanych](https://aka.ms/AzureMapsMobilityTransitDock) umożliwia użytkownikom żądanie informacji statycznych i w czasie rzeczywistym. Na przykład użytkownicy mogą żądać informacji dotyczących dostępności i wakatów dla roweru lub stacji dokującej Scooter. [Interfejs API uzyskiwania informacji o Docku przejazdu](https://aka.ms/AzureMapsMobilityTransitDock) jest również częścią [usługi mobilności](https://aka.ms/AzureMapsMobilityService)Azure Maps.
+[Interfejs API Get Transit Dock Info](https://aka.ms/AzureMapsMobilityTransitDock) umożliwia użytkownikom żądanie informacji statycznych i w czasie rzeczywistym. Użytkownicy mogą na przykład poprosić o informacje o dostępności i pustostanach dla roweru lub stacji dokującej do hulajnogi. [Interfejs API Informacji o doku tranzytowym](https://aka.ms/AzureMapsMobilityTransitDock) jest również częścią usługi [mobilności](https://aka.ms/AzureMapsMobilityService)usługi Azure Maps .
 
-Aby można było wysłać żądanie do [interfejsu API uzyskiwania informacji o Docku przejścia](https://aka.ms/AzureMapsMobilityTransitDock), konieczne będzie **dockId** dla tej stacji. Identyfikator dokowania można uzyskać, wysyłając żądanie wyszukiwania do [interfejsu API pobierania w pobliżu](https://aka.ms/AzureMapsMobilityNearbyTransit) z parametrem **ObjectType** przypisanym do elementu "bikeDock". Wykonaj poniższe kroki, aby uzyskać dane czasu rzeczywistego stacji dokującej dla rowerów.
+Aby złożyć żądanie do [interfejsu API Pobierz informacje o doku tranzytowym,](https://aka.ms/AzureMapsMobilityTransitDock)potrzebny jest adres **dokującej** dla tej stacji. Identyfikator stacji dokującej można uzyskać, wysyłając żądanie wyszukiwania do [interfejsu API Get Nearby Transit](https://aka.ms/AzureMapsMobilityNearbyTransit) z parametrem **objectType** przypisanym do "bikeDock". Wykonaj poniższe czynności, aby uzyskać w czasie rzeczywistym dane stacji dokującej dla rowerów.
 
 
-### <a name="get-dock-id"></a>Pobierz identyfikator dokowania
+### <a name="get-dock-id"></a>Uzyskaj identyfikator stacji dokującej
 
-Aby uzyskać **dockID**, wykonaj poniższe kroki, aby wysłać żądanie do interfejsu API uzyskiwania bliskiej tranzytu:
+Aby uzyskać **dockID,** wykonaj poniższe czynności, aby poprosić o interfejs API Pobierz dostęp do tranzytu w pobliżu:
 
-1. W programie Poster kliknij pozycję **nowe żądanie** , | **Pobierz żądanie** i nadaj mu nazwę **Identyfikator dokowania**.
+1. W poście kliknij pozycję **Żądanie nowego żądania** | **GET** i nazwij go Pobierz identyfikator **stacji dokującej**.
 
-2.  Na karcie Konstruktor wybierz metodę **Get** http, wprowadź następujący adres URL żądania, a następnie kliknij przycisk **Wyślij**.
+2.  Na karcie Konstruktor wybierz metodę **POBIERZ** HTTP, wprowadź następujący adres URL żądania i kliknij przycisk **Wyślij**.
  
     ```HTTP
     https://atlas.microsoft.com/mobility/transit/nearby/json?subscription-key={subscription-key}&api-version=1.0&metroId=121&query=40.7663753,-73.9627498&radius=100&objectType=bikeDock
     ```
 
-3. Po pomyślnym żądaniu otrzymasz poniższą odpowiedź. Zwróć uwagę, że mamy teraz **Identyfikator** w odpowiedzi, który może być później używany jako parametr zapytania w żądaniu do interfejsu API uzyskiwania informacji o Docku przejścia.
+3. Po pomyślnym żądaniu otrzymasz następującą odpowiedź. Należy zauważyć, że mamy teraz **identyfikator** w odpowiedzi, który może być później używany jako parametr kwerendy w żądaniu do interfejsu API Get Transit Dock Info.
 
     ```JSON
     {
@@ -175,13 +175,13 @@ Aby uzyskać **dockID**, wykonaj poniższe kroki, aby wysłać żądanie do inte
     ```
 
 
-### <a name="get-real-time-bike-dock-status"></a>Pobieranie stanu dokowania roweru w czasie rzeczywistym
+### <a name="get-real-time-bike-dock-status"></a>Uzyskaj status stacji dokującej rowerowej w czasie rzeczywistym
 
-Wykonaj poniższe kroki, aby wysłać żądanie do interfejsu API uzyskiwania informacji o Docku tranzytowym w celu uzyskania danych w czasie rzeczywistym dla wybranego doku.
+Wykonaj poniższe czynności, aby poprosić o interfejs API Pobierz informacje o doku tranzytowym, aby uzyskać dane w czasie rzeczywistym dla wybranej stacji dokującej.
 
-1. W programie Poster kliknij pozycję **nowe żądanie** | **Pobierz żądanie** i nadaj jej nazwę **Pobierz dane w czasie rzeczywistym**.
+1. W poście kliknij pozycję **Żądanie nowego żądania** | **GET** i nazwij go Pobierz **dane dokowania w czasie rzeczywistym**.
 
-2.  Na karcie Konstruktor wybierz metodę **Get** http, wprowadź następujący adres URL żądania, a następnie kliknij przycisk **Wyślij**.
+2.  Na karcie Konstruktor wybierz metodę **POBIERZ** HTTP, wprowadź następujący adres URL żądania i kliknij przycisk **Wyślij**.
  
     ```HTTP
     https://atlas.microsoft.com/mobility/transit/dock/json?subscription-key={subscription-key}&api-version=1.0&query=121---4640799
@@ -208,12 +208,12 @@ Wykonaj poniższe kroki, aby wysłać żądanie do interfejsu API uzyskiwania in
 
 ## <a name="next-steps"></a>Następne kroki
 
-Dowiedz się, jak żądać danych tranzytowych przy użyciu usługi mobilności:
+Dowiedz się, jak żądać danych tranzytowych za pomocą usługi mobilności:
 
 > [!div class="nextstepaction"]
-> [Jak żądać danych tranzytowych](how-to-request-transit-data.md)
+> [Jak zażądać danych tranzytowych](how-to-request-transit-data.md)
 
-Zapoznaj się z dokumentacją interfejsu API usługi Azure Maps Mobility:
+Zapoznaj się z dokumentacją interfejsu API usługi mobilności usługi Azure Maps:
 
 > [!div class="nextstepaction"]
 > [Dokumentacja interfejsu API usługi mobilności](https://aka.ms/AzureMapsMobilityService)

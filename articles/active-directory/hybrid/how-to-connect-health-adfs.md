@@ -19,14 +19,14 @@ ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: bbd1ad6178e0120bf8414fc424b79254e306d2c2
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79261569"
 ---
 # <a name="monitor-ad-fs-using-azure-ad-connect-health"></a>Monitorowanie usług AD FS za pomocą programu Azure AD Connect Health
-Poniższa dokumentacja dotyczy monitorowania infrastruktury usług AD FS przy użyciu programu Azure AD Connect Health. Aby uzyskać informacje na temat monitorowania Azure AD Connect (Sync) z Azure AD Connect Health, zobacz [używanie Azure AD Connect Health do synchronizacji](how-to-connect-health-sync.md). Ponadto aby uzyskać informacje na temat monitorowania Active Directory Domain Services przy użyciu Azure AD Connect Health, zobacz [używanie Azure AD Connect Health z AD DS](how-to-connect-health-adds.md).
+Poniższa dokumentacja dotyczy monitorowania infrastruktury usług AD FS przy użyciu programu Azure AD Connect Health. Aby uzyskać informacje na temat monitorowania usługi Azure AD Connect (Sync) za pomocą usługi Azure AD Connect Health, zobacz [Korzystanie z usługi Azure AD Connect Health for Sync](how-to-connect-health-sync.md). Ponadto aby uzyskać informacje na temat monitorowania usług domenowych Active Directory za pomocą usługi Azure AD Connect Health, zobacz [Korzystanie z usługi Azure AD Connect Health z usługami AD DS](how-to-connect-health-adds.md).
 
 ## <a name="alerts-for-ad-fs"></a>Alerty dla usług AD FS
 Sekcja Alerty programu Azure AD Connect Health udostępnia listę aktywnych alertów. Każdy alert zawiera istotne informacje, kroki do rozwiązania problemu i linki do powiązanej dokumentacji.
@@ -51,7 +51,7 @@ Aby wybrać dodatkowe metryki, określić zakres czasu lub zmienić grupowanie, 
 
 |Grupuj według | Co oznacza grupowanie i dlaczego jest przydatne? |
 | --- | --- |
-| Wszyscy | Pokazuje łączną liczbę żądań przetworzonych przez wszystkie serwery usług AD FS.|
+| Wszystkie | Pokazuje łączną liczbę żądań przetworzonych przez wszystkie serwery usług AD FS.|
 | Aplikacja | Grupuj wszystkie żądania na podstawie docelowej jednostki zależnej. To grupowanie przydaje się, aby sprawdzić, która aplikacja ma największy procentowy udział w całkowitym ruchu sieciowym. |
 |  Serwer |Grupuje wszystkie żądania na podstawie serwera, który przetwarzał żądanie. Dzięki takiemu grupowaniu można sprawdzić rozkład obciążenia dla całego ruchu sieciowego.
 | Urządzenia dołączone w miejscu pracy |Grupuje wszystkie te żądania, które pochodzą z urządzeń dołączonych w miejscu pracy (znane). Dzięki takiemu grupowaniu można sprawdzić, czy do Twoich zasobów uzyskują dostęp urządzenia nieznane dla infrastruktury do obsługi tożsamości. |
@@ -72,7 +72,7 @@ Aby wybrać dodatkowe metryki, określić zakres czasu lub zmienić grupowanie, 
 
 |Grupuj według | Co oznacza grupowanie i dlaczego jest przydatne? |
 | --- | --- |
-|Wszyscy |Ta metryka zapewnia liczenie średniej liczby użytkowników korzystających z usługi federacyjnej w wybranym przedziale czasu. Użytkownicy nie są zgrupowani. <br>Średnia zależy od wybranego przedziału czasu. |
+|Wszystkie |Ta metryka zapewnia liczenie średniej liczby użytkowników korzystających z usługi federacyjnej w wybranym przedziale czasu. Użytkownicy nie są zgrupowani. <br>Średnia zależy od wybranego przedziału czasu. |
 | Aplikacja |Grupuje średnią liczbę użytkowników na podstawie aplikacji docelowej (jednostki zależnej). Dzięki takiemu grupowaniu można sprawdzić, ilu użytkowników korzysta z danej aplikacji. |
 
 ## <a name="performance-monitoring-for-ad-fs"></a>Monitorowanie wydajności dla usług AD FS
@@ -121,5 +121,5 @@ Raport zawiera następujące informacje:
 ## <a name="related-links"></a>Powiązane linki
 * [Azure AD Connect Health](whatis-hybrid-identity-health.md)
 * [Instalowanie agenta programu Azure AD Connect Health](how-to-connect-health-agent-install.md)
-* [Raport dotyczący ryzykownego adresu IP](how-to-connect-health-adfs-risky-ip.md)
+* [Ryzykowny raport IP](how-to-connect-health-adfs-risky-ip.md)
 
