@@ -1,6 +1,6 @@
 ---
-title: Konfigurowanie ustawień platformy Spark — Azure HDInsight
-description: Jak wyświetlać i konfigurować ustawienia Apache Spark dla klastra usługi Azure HDInsight
+title: Konfigurowanie ustawień platformy Spark — usługa Azure HDInsight
+description: Jak wyświetlić i skonfigurować ustawienia platformy Apache Spark dla klastra usługi Azure HDInsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,39 +9,39 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/17/2019
 ms.openlocfilehash: 48f19e5da8c7703cc597518246c2f62ebce3ae17
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79272021"
 ---
 # <a name="configure-apache-spark-settings"></a>Konfigurowanie ustawień platformy Apache Spark
 
-Klaster Spark HDInsight An obejmuje instalację biblioteki [Apache Spark](https://spark.apache.org/) .  Każdy klaster usługi HDInsight zawiera domyślne parametry konfiguracji dla wszystkich zainstalowanych usług, w tym Spark.  Kluczowym aspektem zarządzania klastrem usługi HDInsight Apache Hadoop jest monitorowanie obciążenia, w tym zadań platformy Spark, aby upewnić się, że zadania działają w przewidywalny sposób. Aby najlepiej uruchamiać zadania platformy Spark, należy rozważyć konfigurację klastra fizycznego podczas określania sposobu optymalizowania konfiguracji logicznej klastra.
+Klaster platformy HDInsight Spark zawiera instalację biblioteki [Platformy Apache Spark.](https://spark.apache.org/)  Każdy klaster HDInsight zawiera domyślne parametry konfiguracji dla wszystkich zainstalowanych usług, w tym spark.  Kluczowym aspektem zarządzania klastrem HDInsight Apache Hadoop jest monitorowanie obciążenia, w tym spark Jobs, aby upewnić się, że zadania są uruchomione w przewidywalny sposób. Aby najlepiej uruchomić zadania platformy Spark, należy wziąć pod uwagę konfigurację klastra fizycznego podczas określania sposobu optymalizacji konfiguracji logicznej klastra.
 
-Domyślny Klaster Apache Spark usługi HDInsight zawiera następujące węzły: trzy węzły [Apache ZooKeeper](https://zookeeper.apache.org/) , dwa węzły główne i jeden lub więcej węzłów procesu roboczego:
+Domyślny klaster platformy Spark usługi HDInsight Apache zawiera następujące węzły: trzy węzły [Apache ZooKeeper,](https://zookeeper.apache.org/) dwa węzły główne i jeden lub więcej węzłów procesu roboczego:
 
-![Architektura usługi HDInsight Spark](./media/apache-spark-settings/spark-hdinsight-arch.png)
+![Architektura Spark HDInsight](./media/apache-spark-settings/spark-hdinsight-arch.png)
 
-Liczba maszyn wirtualnych i rozmiary maszyn wirtualnych dla węzłów w klastrze usługi HDInsight może również wpływać na konfigurację platformy Spark. Inne niż domyślne wartości konfiguracji usługi HDInsight często wymagają niedomyślnych wartości konfiguracji platformy Spark. Podczas tworzenia klastra usługi HDInsight Spark są wyświetlane sugerowane rozmiary maszyn wirtualnych dla każdego składnika. Obecnie [zoptymalizowane pod kątem pamięci rozmiary maszyn wirtualnych z systemem Linux](../../virtual-machines/linux/sizes-memory.md) dla platformy Azure to D12 w wersji 2 lub nowszej.
+Liczba maszyn wirtualnych i rozmiary maszyn wirtualnych dla węzłów w klastrze HDInsight może również mieć wpływ na konfigurację platformy Spark. Nieniezyczne wartości konfiguracji HDInsight często wymagają nieokrążących wartości konfiguracji platformy Spark. Podczas tworzenia klastra platformy SPARK programu HDInsight wyświetlane są sugerowane rozmiary maszyn wirtualnych dla każdego ze składników. Obecnie [zoptymalizowane pod kątem pamięci rozmiary maszyn wirtualnych systemu Linux](../../virtual-machines/linux/sizes-memory.md) dla platformy Azure są D12 v2 lub większe.
 
 ## <a name="apache-spark-versions"></a>Wersje Apache Spark
 
-Użyj najlepszej wersji platformy Spark dla klastra.  Usługa HDInsight obejmuje kilka wersji zarówno platformy Spark, jak i usługi HDInsight.  Każda wersja platformy Spark zawiera zestaw domyślnych ustawień klastra.  
+Użyj najlepszej wersji platformy Spark dla klastra.  Usługa HDInsight zawiera kilka wersji zarówno platformy Spark, jak i hdinsight.  Każda wersja programu Spark zawiera zestaw domyślnych ustawień klastra.  
 
-Podczas tworzenia nowego klastra istnieje wiele wersji platformy Spark do wyboru. Aby zapoznać się z pełną listą, [składniki i wersje usługi HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning)
+Podczas tworzenia nowego klastra, istnieje wiele wersji platformy Spark do wyboru. Aby wyświetlić pełną listę, [składniki i wersje programu HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning)
 
 
 > [!NOTE]  
-> Domyślna wersja Apache Spark w usłudze HDInsight może ulec zmianie bez powiadomienia. Jeśli masz zależność wersji, firma Microsoft zaleca, aby określić tę konkretną wersję podczas tworzenia klastrów przy użyciu zestawu .NET SDK, Azure PowerShell i klasycznego interfejsu wiersza polecenia platformy Azure.
+> Domyślna wersja platformy Apache Spark w usłudze HDInsight może ulec zmianie bez powiadomienia. Jeśli masz zależność wersji, firma Microsoft zaleca określenie tej konkretnej wersji podczas tworzenia klastrów przy użyciu zestawu .NET SDK, Azure PowerShell i klasycznego interfejsu wiersza polecenia platformy Azure.
 
 Apache Spark ma trzy lokalizacje konfiguracji systemu:
 
-* Właściwości platformy Spark kontrolują większość parametrów aplikacji i można je ustawiać przy użyciu obiektu `SparkConf` lub za pośrednictwem właściwości systemu Java.
-* Zmienne środowiskowe mogą służyć do ustawiania ustawień dla komputera, takich jak adres IP, za pomocą skryptu `conf/spark-env.sh` w każdym węźle.
-* Rejestrowanie można skonfigurować za `log4j.properties`.
+* Właściwości platformy Spark kontrolują większość parametrów aplikacji `SparkConf` i można je ustawić za pomocą obiektu lub za pomocą właściwości systemu Java.
+* Zmienne środowiskowe mogą służyć do ustawiania ustawień na komputerze, `conf/spark-env.sh` takich jak adres IP, za pośrednictwem skryptu w każdym węźle.
+* Rejestrowanie można skonfigurować `log4j.properties`za pomocą programu .
 
-W przypadku wybrania określonej wersji platformy Spark klaster zawiera domyślne ustawienia konfiguracji.  Domyślne wartości konfiguracji platformy Spark można zmienić przy użyciu niestandardowego pliku konfiguracji platformy Spark.  Poniżej przedstawiono przykład.
+Po wybraniu określonej wersji programu Spark klaster zawiera domyślne ustawienia konfiguracji.  Domyślne wartości konfiguracji platformy Spark można zmienić przy użyciu niestandardowego pliku konfiguracyjnego platformy Spark.  Przykład przedstawiono poniżej.
 
 ```
 spark.hadoop.io.compression.codecs org.apache.hadoop.io.compress.GzipCodec
@@ -51,89 +51,89 @@ spark.sql.files.maxPartitionBytes 1099511627776
 spark.sql.files.openCostInBytes 1099511627776
 ```
 
-W przykładzie przedstawionym powyżej zastąpił kilka wartości domyślnych dla pięciu parametrów konfiguracji platformy Spark.  Oto koder-dekoder kompresji, Apache Hadoop MapReduce podzielić minimalny rozmiar i rozmiary bloków Parquet, a także wartości domyślne dla partycji SQL i otwartych rozmiarów plików.  Te zmiany konfiguracji są wybierane, ponieważ skojarzone dane i zadania (w tym przykładzie dane genomiki) mają szczególne cechy, które będą działać lepiej przy użyciu tych niestandardowych ustawień konfiguracji.
+Przykład pokazany powyżej zastępuje kilka wartości domyślnych dla pięciu parametrów konfiguracji platformy Spark.  Są to kodek kompresji, Apache Hadoop MapReduce split minimalny rozmiar i parkiet rozmiary bloku, a także partycji Spar SQL i otwartych rozmiarów plików wartości domyślnych.  Te zmiany konfiguracji są wybierane, ponieważ skojarzone dane i zadania (w tym przykładzie dane genomowe) mają określone cechy, które będą działać lepiej przy użyciu tych niestandardowych ustawień konfiguracji.
 
 ---
 
-## <a name="view-cluster-configuration-settings"></a>Wyświetl ustawienia konfiguracji klastra
+## <a name="view-cluster-configuration-settings"></a>Wyświetlanie ustawień konfiguracji klastra
 
-Przed przeprowadzeniem optymalizacji wydajności w klastrze Sprawdź bieżące ustawienia konfiguracji klastra usługi HDInsight. Uruchom pulpit nawigacyjny usługi HDInsight z Azure Portal, klikając link **pulpitu nawigacyjnego** w okienku klaster Spark. Zaloguj się przy użyciu nazwy użytkownika i hasła administratora klastra.
+Sprawdź bieżące ustawienia konfiguracji klastra usługi HDInsight przed wykonaniem optymalizacji wydajności w klastrze. Uruchom pulpit nawigacyjny usługi HDInsight z witryny Azure portal, klikając łącze **pulpitu nawigacyjnego** w okienku klastra platformy Spark. Zaloguj się przy użyciu nazwy użytkownika i hasła administratora klastra.
 
-Zostanie wyświetlony interfejs użytkownika sieci Web Apache Ambari z widokiem pulpitu nawigacyjnego metryk użycia zasobów klastra kluczy.  Na pulpicie nawigacyjnym Ambari przedstawiono konfigurację Apache Spark i inne zainstalowane usługi. Pulpit nawigacyjny zawiera kartę **historia konfiguracji** , w której można wyświetlić informacje o konfiguracji wszystkich zainstalowanych usług, w tym Spark.
+Pojawi się interfejs użytkownika sieci Web Apache Ambari z widokiem pulpitu nawigacyjnego metryk wykorzystania zasobów klastra kluczy.  Pulpit nawigacyjny Ambari pokazuje konfigurację platformy Spark Apache i inne zainstalowane usługi. Pulpit nawigacyjny zawiera kartę **Historia konfiguracji,** na której można wyświetlić informacje o konfiguracji wszystkich zainstalowanych usług, w tym platformy Spark.
 
-Aby wyświetlić wartości konfiguracyjne dla Apache Spark, wybierz pozycję **historia konfiguracji**, a następnie wybierz pozycję **Spark2**.  Wybierz kartę **konfiguracje** , a następnie wybierz pozycję `Spark` (lub `Spark2`, w zależności od używanej wersji) na liście usług.  Zostanie wyświetlona lista wartości konfiguracyjnych dla klastra:
+Aby wyświetlić wartości konfiguracyjne programu Apache Spark, wybierz pozycję **Historia konfiguracji**, a następnie wybierz **spark2**.  Wybierz kartę **Konfiguracje,** `Spark` a `Spark2`następnie wybierz łącze (lub , w zależności od wersji) na liście usług.  Zobaczysz listę wartości konfiguracji klastra:
 
 ![Konfiguracje platformy Spark](./media/apache-spark-settings/spark-configurations.png)
 
-Aby wyświetlić i zmienić poszczególne wartości konfiguracji platformy Spark, Wybierz dowolne łącze z słowem "Spark" w tytule łącza.  Konfiguracje dla platformy Spark zawierają wartości konfiguracji niestandardowej i zaawansowane w następujących kategoriach:
+Aby wyświetlić i zmienić poszczególne wartości konfiguracji platformy Spark, wybierz dowolne łącze ze słowem "iskra" w tytule łącza.  Konfiguracje platformy Spark obejmują zarówno niestandardowe, jak i zaawansowane wartości konfiguracji w następujących kategoriach:
 
-* Niestandardowe Spark2 — domyślne
-* Niestandardowe Spark2 — metryki-właściwości
-* Zaawansowane Spark2 — domyślne
-* Advanced Spark2 — ENV
-* Advanced spark2-Hive-site-override
+* Niestandardowe ustawienia domyślne Spark2
+* Niestandardowe właściwości spark2-metrics
+* Zaawansowane domyślne ustawienia spark2
+* Zaawansowana spark2-env
+* Zaawansowane zastępowanie spark2-hive-site
 
-W przypadku utworzenia niedomyślnego zestawu wartości konfiguracji można także wyświetlić historię aktualizacji konfiguracji.  Ta historia konfiguracji może ułatwić sprawdzenie, która konfiguracja niedomyślna ma optymalną wydajność.
+Jeśli utworzysz nieobezawione wartości wartości konfiguracji, można również wyświetlić historię aktualizacji konfiguracji.  Ta historia konfiguracji może być przydatna, aby zobaczyć, która konfiguracja nienawiąca ma optymalną wydajność.
 
 > [!NOTE]  
-> Aby zobaczyć, ale nie zmieniać, typowe ustawienia konfiguracji klastra Spark, wybierz kartę **środowisko** w INTERFEJSIE **interfejsu użytkownika zadania Spark** najwyższego poziomu.
+> Aby wyświetlić, ale nie zmienić, typowe ustawienia konfiguracji klastra Platformy Spark, wybierz kartę **Środowisko** w interfejsie **interfejsu użytkownika zadania programu Spark** najwyższego poziomu.
 
-## <a name="configuring-spark-executors"></a>Konfigurowanie programów wykonujących testy Spark
+## <a name="configuring-spark-executors"></a>Konfigurowanie executorów platformy Spark
 
-Na poniższym diagramie przedstawiono obiekty Key Spark: program sterownika i skojarzony z nim kontekst platformy Spark oraz Menedżer klastra i *węzły procesu roboczego* .  Każdy węzeł procesu roboczego obejmuje moduł wykonujący, pamięć podręczną i *n* wystąpień zadań.
+Na poniższym diagramie przedstawiono kluczowe obiekty platformy Spark: program sterownika i skojarzony z nim kontekst platformy Spark oraz menedżera klastra i *jego* n węzły procesu roboczego.  Każdy węzeł procesu roboczego zawiera executor, pamięć podręczną i *n* wystąpień zadań.
 
 ![Obiekty klastra](./media/apache-spark-settings/hdi-spark-architecture.png)
 
-Zadania platformy Spark korzystają z zasobów procesów roboczych, szczególnie pamięci, dlatego należy dostosować wartości konfiguracji platformy Spark dla modułów wykonujących procesy robocze.
+Zadania platformy Spark używają zasobów procesu roboczego, w szczególności pamięci, dlatego często dostosowuje wartości konfiguracji platformy Spark dla executorów węzła procesu roboczego.
 
-Trzy kluczowe parametry, które są często dostosowywane do dostrajania konfiguracji platformy Spark w celu poprawy wymagań aplikacji, to `spark.executor.instances`, `spark.executor.cores`i `spark.executor.memory`. Program wykonujący to proces uruchomiony dla aplikacji platformy Spark. Program wykonujący działa w węźle procesu roboczego i jest odpowiedzialny za zadania aplikacji. Dla każdego klastra domyślna liczba modułów wykonujących i rozmiary wykonawcze są obliczane na podstawie liczby węzłów procesu roboczego i rozmiaru węzła procesu roboczego. Są one przechowywane w `spark-defaults.conf` w węzłach głównych klastra.  Można edytować te wartości w uruchomionym klastrze, wybierając łącze **niestandardowe Spark-Defaults** w interfejsie użytkownika sieci Web Ambari.  Po wprowadzeniu zmian zostanie wyświetlony monit z interfejsem użytkownika w celu **ponownego uruchomienia** wszystkich objętych usług.
+Trzy kluczowe parametry, które są często dostosowywane do `spark.executor.instances`konfiguracji `spark.executor.cores`platformy `spark.executor.memory`Spark w celu poprawy wymagań aplikacji to , i . Executor to proces uruchomiony dla aplikacji Spark. Wykonawca działa w węźle procesu roboczego i jest odpowiedzialny za zadania dla aplikacji. Dla każdego klastra domyślna liczba executors i rozmiary wykonawcy jest obliczana na podstawie liczby węzłów procesu roboczego i rozmiaru węzła procesu roboczego. Są one `spark-defaults.conf` przechowywane w węzłach głównego klastra.  Wartości te można edytować w uruchomionym klastrze, wybierając **łącze Niestandardowe domyślne iskiery** w interfejsie użytkownika sieci Web Ambari.  Po wkonaniu zmian zostanie wyświetlony monit użytkownika o **ponowne uruchomienie** wszystkich usług, których dotyczy problem.
 
 > [!NOTE]  
-> Te trzy parametry konfiguracji można skonfigurować na poziomie klastra (dla wszystkich aplikacji uruchamianych w klastrze), a także dla każdej pojedynczej aplikacji.
+> Te trzy parametry konfiguracji można skonfigurować na poziomie klastra (dla wszystkich aplikacji uruchamianych w klastrze), a także określić dla każdej aplikacji.
 
-Innym źródłem informacji o zasobach używanych przez funkcje wykonawcze platformy Spark jest interfejs użytkownika aplikacji platformy Spark.  W interfejsie użytkownika platformy Spark wybierz kartę **wykonawcy** , aby wyświetlić widok podsumowania i szczegółów konfiguracji i zasobów używanych przez program wykonujący.  Te widoki mogą pomóc w ustaleniu, czy należy zmienić wartości domyślne dla funkcji wykonawczych platformy Spark dla całego klastra, czy dla określonego zestawu wykonań.
+Innym źródłem informacji o zasobach używanych przez funkcje wykonawcze platformy Spark jest interfejs użytkownika aplikacji platformy Spark.  W interfejsie użytkownika platformy Spark wybierz kartę **Executors,** aby wyświetlić widoki Podsumowanie i szczegóły konfiguracji i zasobów zużywanych przez wykonawców.  Te widoki mogą pomóc w ustaleniu, czy należy zmienić wartości domyślne dla funkcji wykonawczych platformy Spark dla całego klastra, czy dla określonego zestawu wykonań.
 
-![Testy platformy Spark](./media/apache-spark-settings/apache-spark-executors.png)
+![Wykonawcy iskry](./media/apache-spark-settings/apache-spark-executors.png)
 
-Alternatywnie można użyć interfejsu API REST Ambari, aby programowo sprawdzić ustawienia konfiguracji klastra usługi HDInsight i usługi Spark.  Więcej informacji można znaleźć w [dokumentacji interfejsu API Apache Ambari w witrynie GitHub](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md).
+Alternatywnie można użyć interfejsu API AMbari REST do programowej weryfikacji ustawień konfiguracji klastra HDInsight i Spark.  Więcej informacji można znaleźć w [aplikacji Apache Ambari API reference on GitHub](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md).
 
 W zależności od obciążenia platformy Spark może się okazać, że bardziej zoptymalizowane wykonania zadań platformy Spark zapewnia niedomyślna konfiguracja platformy Spark.  Należy przeprowadzić testy porównawcze z przykładowymi obciążeniami, aby zweryfikować wszelkie niedomyślne konfiguracje klastrów.  Poniżej wymieniono niektóre typowe parametry, których dostosowanie warto rozważyć:
 
-* `--num-executors` ustawia liczbę modułów wykonujących.
-* `--executor-cores` ustawia liczbę rdzeni dla każdego wykonawcy. Zalecamy użycie wykonawców o rozmiarze średnim, ponieważ inne procesy zużywają również część dostępnej pamięci.
-* `--executor-memory` steruje rozmiarem pamięci (rozmiarem sterty) każdego wykonawcy w ramach [przędzy Apache Hadoop](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html)i należy pozostawić pewną ilość pamięci do wykonania.
+* `--num-executors`ustawia liczbę wykonawców.
+* `--executor-cores`ustawia liczbę rdzeni dla każdego wykonawcy. Zaleca się używanie wykonawców średniej wielkości, ponieważ inne procesy również zużywają część dostępnej pamięci.
+* `--executor-memory`steruje rozmiarem pamięci (rozmiar sterty) każdego wykonawcy na [Apache Hadoop YARN](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html), i musisz pozostawić trochę pamięci do wykonania narzutów.
 
-Oto przykład dwóch węzłów procesu roboczego z różnymi wartościami konfiguracji:
+Oto przykład dwóch węzłów procesu roboczego o różnych wartościach konfiguracyjnych:
 
-![Dwie konfiguracje węzłów](./media/apache-spark-settings/executor-configuration.png)
+![Konfiguracje dwóch węzłów](./media/apache-spark-settings/executor-configuration.png)
 
-Na poniższej liście przedstawiono parametry pamięci programu wykonującego testy.
+Na poniższej liście przedstawiono kluczowe parametry pamięci egzekutora platformy Spark.
 
-* `spark.executor.memory` definiuje łączną ilość pamięci dostępną dla wykonawcy.
-* `spark.storage.memoryFraction` (domyślnie ~ 60%) Określa ilość pamięci dostępną do przechowywania utrwalonych odporne.
-* `spark.shuffle.memoryFraction` (domyślnie ~ 20%) definiuje ilość pamięci zarezerwowanej do losowego użycia.
-* `spark.storage.unrollFraction` i `spark.storage.safetyFraction` (łącznie ~ 30% całkowitej ilości pamięci) — te wartości są używane wewnętrznie przez platformę Spark i nie powinny być zmieniane.
+* `spark.executor.memory`określa całkowitą ilość pamięci dostępnej dla wykonawcy.
+* `spark.storage.memoryFraction`(domyślnie ~60%) określa ilość pamięci dostępnej do przechowywania utrwalonych RDD.
+* `spark.shuffle.memoryFraction`(domyślnie ~20%) określa ilość pamięci zarezerwowanej do przetasowania.
+* `spark.storage.unrollFraction`i `spark.storage.safetyFraction` (w sumie ~30% całkowitej pamięci) - wartości te są używane wewnętrznie przez Spark i nie powinny być zmieniane.
 
-PRZĘDZa kontroluje maksymalną sumę pamięci używaną przez kontenery w każdym węźle Spark. Na poniższym diagramie przedstawiono relacje poszczególnych węzłów między obiektami konfiguracji PRZĘDZenia a obiektami Spark.
+YARN kontroluje maksymalną sumę pamięci używanej przez kontenery w każdym węźle Spark. Na poniższym diagramie przedstawiono relacje między obiektami konfiguracji YARN a obiektami Spark.
 
-![Zarządzanie pamięcią w ramach PRZĘDZy](./media/apache-spark-settings/hdi-yarn-spark-memory.png)
+![Zarządzanie pamięcią iskry przędzy](./media/apache-spark-settings/hdi-yarn-spark-memory.png)
 
-## <a name="change-parameters-for-an-application-running-in-jupyter-notebook"></a>Zmień parametry aplikacji uruchomionej w notesie Jupyter
+## <a name="change-parameters-for-an-application-running-in-jupyter-notebook"></a>Zmienianie parametrów aplikacji uruchomionej w notesie Jupyter
 
-Klastry Spark w usłudze HDInsight zawierają domyślnie wiele składników. Każdy z tych składników zawiera domyślne wartości konfiguracji, które można przesłonić w razie konieczności.
+Klastry platformy Spark w umiań HDInsight domyślnie zawierają wiele składników. Każdy z tych składników zawiera domyślne wartości konfiguracji, które można zastąpić w razie potrzeby.
 
-* Spark Core — Spark Core, Spark SQL, interfejsy API przesyłania strumieniowego Spark, GraphX i Apache Spark MLlib.
-* Anaconda — Menedżer pakietów języka Python.
-* [Apache usługi Livy](https://livy.incubator.apache.org/) — interfejs API REST Apache Spark używany do przesyłania zadań zdalnych do klastra usługi HDInsight Spark.
-* Notesy [Jupyter](https://jupyter.org/) i [Apache Zeppelin](https://zeppelin.apache.org/) — interaktywny interfejs użytkownika oparty na przeglądarce służący do interakcji z klastrem Spark.
-* Sterownik ODBC — łączy klastry Spark w usłudze HDInsight z narzędziami analizy biznesowej, takimi jak Microsoft Power BI i Tableau.
+* Spark Core - Spark Core, Spark SQL, Spark streaming API, GraphX i Apache Spark MLlib.
+* Anaconda - menedżer pakietów python.
+* [Apache Livy](https://livy.incubator.apache.org/) - interfejs API Apache Spark REST, używany do przesyłania zadań zdalnych do klastra platformy SPARK usługi HDInsight.
+* [Notebooki Jupyter](https://jupyter.org/) i [Apache Zeppelin](https://zeppelin.apache.org/) — interaktywny interfejs użytkownika oparty na przeglądarce do interakcji z klastrem Spark.
+* Sterownik ODBC — łączy klastry platformy Spark w programie HDInsight z narzędziami analizy biznesowej (BI), takimi jak Microsoft Power BI i Tableau.
 
-W przypadku aplikacji uruchamianych w notesie Jupyter Użyj polecenia `%%configure`, aby wprowadzić zmiany w konfiguracji z poziomu notesu. Te zmiany konfiguracji zostaną zastosowane do zadań platformy Spark uruchomionych z wystąpienia notesu. Należy wprowadzić takie zmiany na początku aplikacji, przed uruchomieniem pierwszej komórki kodu. Zmieniona konfiguracja zostanie zastosowana do sesji usługi Livy, gdy zostanie utworzona.
+W przypadku aplikacji działających w notesie `%%configure` Jupyter użyj polecenia, aby wprowadzić zmiany konfiguracji z poziomu samego notesu. Te zmiany konfiguracji zostaną zastosowane do zadań platformy Spark uruchamiane z wystąpienia notesu. Należy wprowadzić takie zmiany na początku aplikacji, przed uruchomieniem pierwszej komórki kodu. Zmieniona konfiguracja jest stosowana do sesji Livy po jej utworzeniu.
 
 > [!NOTE]  
-> Aby zmienić konfigurację na późniejszym etapie w aplikacji, użyj parametru `-f` (Wymuś). Jednak cały postęp w aplikacji zostanie utracony.
+> Aby zmienić konfigurację na późniejszym etapie `-f` aplikacji, należy użyć parametru (siła). Jednak wszystkie postępy w aplikacji zostaną utracone.
 
-Poniższy kod przedstawia sposób zmiany konfiguracji aplikacji uruchomionej w notesie Jupyter.
+Poniższy kod pokazuje, jak zmienić konfigurację aplikacji uruchomionej w notesie Jupyter.
 
 ```
 %%configure
@@ -142,12 +142,12 @@ Poniższy kod przedstawia sposób zmiany konfiguracji aplikacji uruchomionej w n
 
 ## <a name="conclusion"></a>Podsumowanie
 
-Istnieją różne podstawowe ustawienia konfiguracji, które należy monitorować i dostosowywać w celu zapewnienia, że zadania platformy Spark działają w przewidywalny i wydajny sposób. Te ustawienia pomagają określić najlepszą konfigurację klastra platformy Spark dla określonych obciążeń.  Konieczne będzie również monitorowanie wykonywania długotrwałych i/lub czasochłonnych wykonań zadań platformy Spark.  Najczęstsze centrum wyzwań pozwala na wykorzystanie pamięci z powodu nieprawidłowych konfiguracji (szczególnie programów wykonujących nieprawidłowe rozmiary), długotrwałych operacji i zadań, które powodują kartezjańskiego operacji.
+Istnieje wiele podstawowych ustawień konfiguracji, które należy monitorować i dostosowywać, aby zapewnić, że zadania platformy Spark są uruchamiane w przewidywalny i wydajny sposób. Te ustawienia pomagają określić najlepszą konfigurację klastra platformy Spark dla poszczególnych obciążeń.  Należy również monitorować wykonywanie długotrwałych i/lub zużywających zasoby wykonania zadań Platformy Spark.  Najczęstsze wyzwania koncentrują się wokół ciśnienia pamięci z powodu nieprawidłowych konfiguracji (szczególnie niepoprawnie wielkości executors), długotrwałych operacji i zadań, które powodują operacje kartezjańskie.
 
 ## <a name="next-steps"></a>Następne kroki
 
-* [Apache Hadoop składniki i wersje dostępne w usłudze HDInsight?](../hdinsight-component-versioning.md)
-* [Zarządzanie zasobami klastra Apache Spark w usłudze HDInsight](apache-spark-resource-manager.md)
+* [Apache Hadoop komponenty i wersje dostępne z HDInsight?](../hdinsight-component-versioning.md)
+* [Zarządzanie zasobami klastra Platformy Spark apache w programie HDInsight](apache-spark-resource-manager.md)
 * [Konfigurowanie klastrów w usłudze HDInsight przy użyciu technologii Apache Hadoop, Apache Spark, Apache Kafka i innych](../hdinsight-hadoop-provision-linux-clusters.md)
-* [Konfiguracja Apache Spark](https://spark.apache.org/docs/latest/configuration.html)
-* [Uruchamianie Apache Spark na Apache Hadoop PRZĘDZy](https://spark.apache.org/docs/latest/running-on-yarn.html)
+* [Konfiguracja iskry Apache](https://spark.apache.org/docs/latest/configuration.html)
+* [Uruchamianie Apache Spark na Apache Hadoop YARN](https://spark.apache.org/docs/latest/running-on-yarn.html)

@@ -1,45 +1,45 @@
 ---
-title: Zarządzanie wystąpieniami w Durable Functions — Azure
-description: Dowiedz się, jak zarządzać wystąpieniami w rozszerzeniu Durable Functions Azure Functions.
+title: Zarządzanie wystąpieniami w funkcjach trwałych — Azure
+description: Dowiedz się, jak zarządzać wystąpieniami w rozszerzeniu Funkcje trwałe dla usługi Azure Functions.
 author: cgillum
 ms.topic: conceptual
 ms.date: 11/02/2019
 ms.author: azfuncdf
 ms.openlocfilehash: 07a96fdd6350d8db38a92c23e510afb05f7416fb
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79277754"
 ---
-# <a name="manage-instances-in-durable-functions-in-azure"></a>Zarządzanie wystąpieniami w Durable Functions na platformie Azure
+# <a name="manage-instances-in-durable-functions-in-azure"></a>Zarządzanie wystąpieniami w funkcjach trwałych na platformie Azure
 
-Jeśli używasz rozszerzenia [Durable Functions](durable-functions-overview.md) Azure Functions lub chcesz rozpocząć wykonywanie tego działania, upewnij się, że najlepiej jest z niego korzystać. Aby zoptymalizować Durable Functions wystąpienia aranżacji, możesz dowiedzieć się więcej o sposobach zarządzania nimi. Ten artykuł zawiera szczegółowe informacje o każdej operacji zarządzania wystąpieniem.
+Jeśli używasz rozszerzenia [funkcje trwałe](durable-functions-overview.md) dla usługi Azure Functions lub chcesz rozpocząć ten sposób, upewnij się, że otrzymujesz najlepsze użycie z niego. Można zoptymalizować wystąpienia aranżacji funkcji trwałych, dowiedzieć się więcej o tym, jak nimi zarządzać. Ten artykuł zawiera szczegółowe informacje na temat każdej operacji zarządzania wystąpieniami.
 
-Można na przykład uruchamiać i kończyć wystąpienia oraz wykonywać zapytania o wystąpienia, w tym możliwość wykonywania zapytań o wszystkie wystąpienia i wystąpienia zapytań za pomocą filtrów. Ponadto możesz wysyłać zdarzenia do wystąpień, poczekać na zakończenie aranżacji i pobrać adresy URL elementu webhook zarządzania HTTP. W tym artykule opisano również inne operacje zarządzania, w tym wystąpienia odwracania, przeczyszczania historii wystąpień i usuwania centrum zadań.
+Można rozpocząć i zakończyć wystąpienia, na przykład i można wysyłać zapytania wystąpień, w tym możliwość kwerendy wszystkich wystąpień i wystąpień kwerendy z filtrów. Ponadto można wysyłać zdarzenia do wystąpień, czekać na zakończenie aranżacji i pobierać adresy URL elementów webhook zarządzania HTTP. W tym artykule opisano również inne operacje zarządzania, w tym przewijanie wystąpień, czyszczenie historii wystąpień i usuwanie centrum zadań.
 
-W Durable Functions są dostępne opcje implementacji każdej z tych operacji zarządzania. W tym artykule przedstawiono przykłady, które używają [Azure Functions Core Tools](../functions-run-local.md) zarówno dla programuC#.NET (), jak i języka JavaScript.
+W funkcji trwałych, masz opcje, jak chcesz zaimplementować każdą z tych operacji zarządzania. W tym artykule przedstawiono przykłady korzystające z [podstawowych narzędzi azure functions](../functions-run-local.md) dla platformy .NET (C#) i JavaScript.
 
-## <a name="start-instances"></a>Wystąpienia uruchamiania
+## <a name="start-instances"></a>Początkowe wystąpienia
 
-Ważne jest, aby uruchomić wystąpienie aranżacji. Jest to często wykonywane, gdy używasz powiązania Durable Functions w wyzwalaczu innej funkcji.
+Ważne jest, aby móc rozpocząć wystąpienie aranżacji. Jest to często wykonywane, gdy używasz trwałe funkcje powiązania w wyzwalaczu innej funkcji.
 
-Metoda `StartNewAsync` (.NET) lub `startNew` (JavaScript) dla [powiązania klienta aranżacji](durable-functions-bindings.md#orchestration-client) uruchamia nowe wystąpienie. Wewnętrznie metoda ta enqueues komunikat do kolejki sterującej, która następnie wyzwala początek funkcji o określonej nazwie, która używa [powiązania wyzwalacza aranżacji](durable-functions-bindings.md#orchestration-trigger).
+Metoda `StartNewAsync` (.NET) `startNew` lub (JavaScript) na [powiązanie klienta aranżacji](durable-functions-bindings.md#orchestration-client) uruchamia nowe wystąpienie. Wewnętrznie ta metoda umieszcza w kolejce komunikat w kolejce formantu, który następnie wyzwala początek funkcji o określonej nazwie, która używa [powiązania wyzwalacza aranżacji](durable-functions-bindings.md#orchestration-trigger).
 
 Ta operacja asynchroniczna kończy się po pomyślnym zaplanowaniu procesu aranżacji.
 
 Parametry uruchamiania nowego wystąpienia aranżacji są następujące:
 
-* **Name**: nazwa funkcji programu Orchestrator do zaplanowania.
-* **Wejście**: wszystkie dane, które można serializować w formacie JSON, które powinny być przesyłane jako dane wejściowe do funkcji programu Orchestrator.
-* **InstanceId**: (opcjonalnie) unikatowy identyfikator wystąpienia. Jeśli ten parametr nie zostanie określony, metoda używa identyfikatora losowego.
+* **Nazwa**: Nazwa funkcji koordynatora do zaplanowania.
+* **Dane wejściowe:** Wszelkie dane z serializable JSON, które powinny być przekazywane jako dane wejściowe do funkcji koordynatora.
+* **InstanceId**: (Opcjonalnie) Unikatowy identyfikator wystąpienia. Jeśli ten parametr nie zostanie określony, metoda używa losowego identyfikatora.
 
 > [!TIP]
-> Użyj losowego identyfikatora wystąpienia. Losowe identyfikatory wystąpień pomagają zapewnić równoważną dystrybucję obciążenia podczas skalowania funkcji programu Orchestrator na wielu maszynach wirtualnych. Prawidłowy czas użycia nielosowych identyfikatorów wystąpień to, gdy identyfikator musi pochodzić ze źródła zewnętrznego lub gdy wdrażany jest wzorzec [pojedynczego programu Orchestrator](durable-functions-singletons.md) .
+> Użyj losowego identyfikatora dla identyfikatora wystąpienia. Identyfikatory wystąpienia losowe pomagają zapewnić równy rozkład obciążenia podczas skalowania funkcji koordynatora na wielu maszynach wirtualnych. Odpowiedni czas, aby użyć identyfikatorów wystąpienia nielosowych jest, gdy identyfikator musi pochodzić z zewnętrznego źródła lub podczas implementowania [wzorca programu orkiestrowego singleton.](durable-functions-singletons.md)
 
 Poniższy kod jest przykładową funkcją, która uruchamia nowe wystąpienie aranżacji:
 
-# <a name="c"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C #](#tab/csharp)
 
 ```csharp
 [FunctionName("HelloWorldManualStart")]
@@ -54,13 +54,13 @@ public static async Task Run(
 ```
 
 > [!NOTE]
-> Poprzedni C# kod jest przeznaczony dla Durable Functions 2. x. W przypadku Durable Functions 1. x należy użyć atrybutu `OrchestrationClient` zamiast atrybutu `DurableClient` i należy użyć typu parametru `DurableOrchestrationClient` zamiast `IDurableOrchestrationClient`. Aby uzyskać więcej informacji o różnicach między wersjami, zobacz artykuł dotyczący [wersji Durable Functions](durable-functions-versions.md) .
+> Poprzedni kod języka C# jest dla funkcji trwałych 2.x. W przypadku funkcji trwałych 1.x należy `OrchestrationClient` użyć `DurableClient` atrybutu zamiast atrybutu `DurableOrchestrationClient` i zamiast `IDurableOrchestrationClient`parametru . Aby uzyskać więcej informacji na temat różnic między wersjami, zobacz [wersje funkcji trwałych](durable-functions-versions.md) artykułu.
 
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[Javascript](#tab/javascript)
 
-<a name="javascript-function-json"></a>O ile nie określono inaczej, przykłady na tej stronie używają wyzwalacza HTTP z następującym poleceniem Function. JSON.
+<a name="javascript-function-json"></a>O ile nie określono inaczej, przykłady na tej stronie używają wyzwalacza HTTP z następującą funkcją.json.
 
-**Function. JSON**
+**funkcja.json**
 
 ```json
 {
@@ -87,9 +87,9 @@ public static async Task Run(
 ```
 
 > [!NOTE]
-> Ten przykład dotyczy Durable Functions wersja 2. x. W wersji 1. x Użyj `orchestrationClient` zamiast `durableClient`.
+> W tym przykładzie jest przeznaczony dla funkcji trwałych w wersji 2.x. W wersji 1.x `orchestrationClient` użyj `durableClient`zamiast .
 
-**index. js**
+**indeks.js**
 
 ```javascript
 const df = require("durable-functions");
@@ -104,58 +104,58 @@ module.exports = async function(context, input) {
 
 ---
 
-### <a name="azure-functions-core-tools"></a>Azure Functions Core Tools
+### <a name="azure-functions-core-tools"></a>Podstawowe narzędzia funkcji platformy Azure
 
-Można również uruchomić wystąpienie bezpośrednio przy użyciu [Azure Functions Core Tools](../functions-run-local.md) `durable start-new` polecenie. Przyjmuje następujące parametry:
+Wystąpienie można również uruchomić bezpośrednio za pomocą polecenia [Podstawowe narzędzia](../functions-run-local.md) `durable start-new` azure functions. Przyjmuje następujące parametry:
 
-* **`function-name` (wymagane)** : nazwa funkcji do uruchomienia.
-* **`input` (opcjonalnie)** : dane wejściowe funkcji, wbudowane lub za pomocą pliku JSON. Dla plików Dodaj prefiks do ścieżki do pliku z `@`, takich jak `@path/to/file.json`.
-* **`id` (opcjonalnie)** : identyfikator wystąpienia aranżacji. Jeśli ten parametr nie jest określony, polecenie używa losowego identyfikatora GUID.
-* **`connection-string-setting` (opcjonalnie)** : Nazwa ustawienia aplikacji zawierającego parametry połączenia magazynu do użycia. Wartość domyślna to AzureWebJobsStorage.
-* **`task-hub-name` (opcjonalnie)** : nazwa centrum zadań Durable Functions do użycia. Wartość domyślna to DurableFunctionsHub. Można to również skonfigurować w pliku [host. JSON](durable-functions-bindings.md#host-json) przy użyciu DurableTask: HubName.
+* (wymagane) : Nazwa funkcji do uruchomienia. ** `function-name` **
+* (opcjonalnie) : Wejście do funkcji, w linii lub za pośrednictwem pliku JSON. ** `input` ** W przypadku plików dodaj prefiks do `@`ścieżki do `@path/to/file.json`pliku za pomocą , takiego jak .
+* (opcjonalnie) : Identyfikator wystąpienia aranżacji. ** `id` ** Jeśli ten parametr nie zostanie określony, polecenie użyje losowego identyfikatora GUID.
+* (opcjonalnie) : Nazwa ustawienia aplikacji zawierającego ciąg połączenia magazynu do użycia. ** `connection-string-setting` ** Wartość domyślna to AzureWebJobsStorage.
+* (opcjonalnie) : Nazwa centrum zadań Funkcje trwałe do użycia. ** `task-hub-name` ** Wartość domyślna to DurableFunctionsHub. Można również ustawić to w [host.json](durable-functions-bindings.md#host-json) przy użyciu durableTask:HubName.
 
 > [!NOTE]
-> Polecenia podstawowych narzędzi zakładają, że są one uruchamiane z katalogu głównego aplikacji funkcji. Jeśli jawnie podano parametry `connection-string-setting` i `task-hub-name`, można uruchomić polecenia z dowolnego katalogu. Chociaż można uruchamiać te polecenia bez uruchomienia hosta aplikacji funkcji, może się okazać, że nie można obserwować niektórych efektów, chyba że host jest uruchomiony. Na przykład polecenie `start-new` enqueues komunikat uruchamiania w docelowym centrum zadań, ale aranżacja nie działa w rzeczywistości, chyba że jest uruchomiony proces hosta aplikacji funkcji, który może przetworzyć komunikat.
+> Polecenia Narzędzia podstawowe zakładają, że uruchamiasz je z katalogu głównego aplikacji funkcji. Jeśli jawnie `connection-string-setting` podasz `task-hub-name` i parametry, można uruchomić polecenia z dowolnego katalogu. Chociaż można uruchomić te polecenia bez uruchomionego hosta aplikacji funkcji, może się okazać, że nie można zaobserwować niektórych efektów, chyba że host jest uruchomiony. Na przykład `start-new` polecenie w kolejce komunikat start do centrum zadań docelowych, ale aranżacji faktycznie nie działa, chyba że istnieje uruchomiony proces hosta aplikacji funkcji, który może przetwarzać komunikat.
 
-Następujące polecenie uruchamia funkcję o nazwie HelloWorld i przekazuje zawartość `counter-data.json` pliku:
+Następujące polecenie uruchamia funkcję o nazwie HelloWorld i przekazuje `counter-data.json` do niego zawartość pliku:
 
 ```bash
 func durable start-new --function-name HelloWorld --input @counter-data.json --task-hub-name TestTaskHub
 ```
 
-## <a name="query-instances"></a>Wystąpienia zapytań
+## <a name="query-instances"></a>Wystąpienia kwerend
 
-W ramach wysiłków związanych z zarządzaniem aranżacjami najprawdopodobniej trzeba będzie zebrać informacje o stanie wystąpienia aranżacji (na przykład czy zostało zakończone normalnie lub zakończone niepowodzeniem).
+W ramach wysiłków na rzecz zarządzania aranżacjami, najprawdopodobniej trzeba będzie zebrać informacje o stanie wystąpienia aranżacji (na przykład, czy został ukończony normalnie lub nie powiodło się).
 
-`GetStatusAsync` (.NET) lub metoda `getStatus` (JavaScript) dla [powiązania klienta aranżacji](durable-functions-bindings.md#orchestration-client) wysyła zapytanie o stan wystąpienia aranżacji.
+Metoda `GetStatusAsync` (.NET) `getStatus` lub (JavaScript) w powiązaniu [klienta aranżacji](durable-functions-bindings.md#orchestration-client) pyta o stan wystąpienia aranżacji.
 
 Przyjmuje `instanceId` (wymagane), `showHistory` (opcjonalnie), `showHistoryOutput` (opcjonalnie) i `showInput` (opcjonalnie) jako parametry.
 
-* **`showHistory`** : Jeśli ustawiono na `true`, odpowiedź zawiera historię wykonywania.
-* **`showHistoryOutput`** : Jeśli ustawiono na `true`, historia wykonywania zawiera dane wyjściowe działania.
-* **`showInput`** : Jeśli ustawiono na `false`, odpowiedź nie będzie zawierać wejścia funkcji. Wartością domyślną jest `true`.
+* **`showHistory`**: Jeśli `true`ustawiona na , odpowiedź zawiera historię wykonywania.
+* **`showHistoryOutput`**: Jeśli `true`ustawiono na , historia wykonywania zawiera dane wyjściowe działania.
+* **`showInput`**: Jeśli `false`ustawiona na , odpowiedź nie będzie zawierać danych wejściowych funkcji. Wartością domyślną jest `true`.
 
 Metoda zwraca obiekt o następujących właściwościach:
 
-* **Name**: nazwa funkcji programu Orchestrator.
-* **InstanceId**: identyfikator wystąpienia aranżacji (powinien być taki sam jak `instanceId` Input).
-* **CreatedTime**: godzina, o której uruchomiono funkcję programu Orchestrator.
-* **LastUpdatedTime**: godzina ostatniego przetworzenia punktu kontrolnego aranżacji.
-* **Wejście**: dane wejściowe funkcji jako wartość JSON. To pole nie jest wypełnione, jeśli `showInput` ma wartość false.
-* **CustomStatus**: niestandardowy stan aranżacji w formacie JSON.
-* **Dane wyjściowe**: dane wyjściowe funkcji jako wartości JSON (Jeśli funkcja została ukończona). Jeśli działanie programu Orchestrator nie powiodło się, ta właściwość zawiera szczegóły błędu. Jeśli funkcja programu Orchestrator została zakończona, ta właściwość zawiera przyczynę zakończenia (jeśli istnieje).
-* **RuntimeStatus**: jedna z następujących wartości:
-  * **Oczekiwanie**: wystąpienie zostało zaplanowane, ale jeszcze nie zostało uruchomione.
-  * **Uruchomione**: wystąpienie zostało uruchomione.
-  * **Ukończono**: wystąpienie zostało zakończone normalnie.
-  * **ContinuedAsNew**: wystąpienie zostało uruchomione ponownie z nową historią. Ten stan jest stanem przejściowym.
-  * **Niepowodzenie**: wystąpienie nie powiodło się z powodu błędu.
-  * **Przerwano**: wystąpienie zostało zatrzymane w sposób nieoczekiwany.
-* **Historia**: historia wykonywania aranżacji. To pole jest wypełniane tylko wtedy, gdy `showHistory` jest ustawiona na `true`.
+* **Nazwa**: Nazwa funkcji koordynatora.
+* **Identyfikator wystąpienia:** Identyfikator wystąpienia aranżacji (powinien być `instanceId` taki sam jak dane wejściowe).
+* **CreatedTime**: Czas, w którym funkcja koordynatora rozpoczęła działanie.
+* **LastUpdatedTime:** czas, w którym aranżacji ostatnio checkpointed.
+* **Dane wejściowe:** Wejście funkcji jako wartość JSON. To pole nie jest `showInput` wypełniane, jeśli jest false.
+* **CustomStatus**: Niestandardowy stan aranżacji w formacie JSON.
+* **Wyjście:** Dane wyjściowe funkcji jako wartość JSON (jeśli funkcja została ukończona). Jeśli funkcja koordynatora nie powiodła się, ta właściwość zawiera szczegóły błędu. Jeśli funkcja koordynatora została zakończona, ta właściwość zawiera przyczynę zakończenia (jeśli istnieje).
+* **RuntimeStatus**: Jedna z następujących wartości:
+  * **Oczekujące:** Wystąpienie zostało zaplanowane, ale nie zostało jeszcze uruchomione.
+  * **Uruchamianie:** Wystąpienie zostało uruchomione.
+  * **Zakończone**: Wystąpienie zostało ukończone normalnie.
+  * **ContinuedAsNew**: Wystąpienie zostało ponownie uruchomione z nową historią. Ten stan jest stanem przejściowym.
+  * **Nie powiodło się:** wystąpienie nie powiodło się z powodu błędu.
+  * **Zakończone**: Wystąpienie zostało nagle zatrzymane.
+* **Historia**: Historia wykonania aranżacji. To pole jest `showHistory` wypełniane `true`tylko wtedy, gdy jest ustawione na .
 
-Ta metoda zwraca `null` (.NET) lub `undefined` (JavaScript), jeśli wystąpienie nie istnieje.
+Ta metoda `null` zwraca (.NET) lub `undefined` (JavaScript), jeśli wystąpienie nie istnieje.
 
-# <a name="c"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C #](#tab/csharp)
 
 ```csharp
 [FunctionName("GetStatus")]
@@ -169,9 +169,9 @@ public static async Task Run(
 ```
 
 > [!NOTE]
-> Poprzedni C# kod jest przeznaczony dla Durable Functions 2. x. W przypadku Durable Functions 1. x należy użyć atrybutu `OrchestrationClient` zamiast atrybutu `DurableClient` i należy użyć typu parametru `DurableOrchestrationClient` zamiast `IDurableOrchestrationClient`. Aby uzyskać więcej informacji o różnicach między wersjami, zobacz artykuł dotyczący [wersji Durable Functions](durable-functions-versions.md) .
+> Poprzedni kod języka C# jest dla funkcji trwałych 2.x. W przypadku funkcji trwałych 1.x należy `OrchestrationClient` użyć `DurableClient` atrybutu zamiast atrybutu `DurableOrchestrationClient` i zamiast `IDurableOrchestrationClient`parametru . Aby uzyskać więcej informacji na temat różnic między wersjami, zobacz [wersje funkcji trwałych](durable-functions-versions.md) artykułu.
 
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[Javascript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -184,43 +184,43 @@ module.exports = async function(context, instanceId) {
 }
 ```
 
-Zobacz [Uruchamianie wystąpień](#javascript-function-json) dla konfiguracji Function. JSON.
+Zobacz [Uruchom wystąpienia](#javascript-function-json) dla konfiguracji function.json.
 
 ---
 
-### <a name="azure-functions-core-tools"></a>Azure Functions Core Tools
+### <a name="azure-functions-core-tools"></a>Podstawowe narzędzia funkcji platformy Azure
 
-Istnieje również możliwość bezpośredniego pobrania stanu wystąpienia aranżacji przy użyciu [Azure Functions Core Tools](../functions-run-local.md) `durable get-runtime-status` polecenie. Przyjmuje następujące parametry:
+Jest również możliwe, aby uzyskać stan wystąpienia aranżacji bezpośrednio, za pomocą polecenia [Podstawowe narzędzia](../functions-run-local.md) `durable get-runtime-status` azure functions. Przyjmuje następujące parametry:
 
-* **`id` (wymagane)** : identyfikator wystąpienia aranżacji.
-* **`show-input` (opcjonalnie)** : Jeśli ustawiona na `true`, odpowiedź zawiera dane wejściowe funkcji. Wartością domyślną jest `false`.
-* **`show-output` (opcjonalnie)** : Jeśli ustawiona na `true`, odpowiedź zawiera dane wyjściowe funkcji. Wartością domyślną jest `false`.
-* **`connection-string-setting` (opcjonalnie)** : Nazwa ustawienia aplikacji zawierającego parametry połączenia magazynu do użycia. Wartość domyślna to `AzureWebJobsStorage`.
-* **`task-hub-name` (opcjonalnie)** : nazwa centrum zadań Durable Functions do użycia. Wartość domyślna to `DurableFunctionsHub`. Można ją również ustawić w pliku [host. JSON](durable-functions-bindings.md#host-json)przy użyciu DurableTask: HubName.
+* (wymagane) : Identyfikator wystąpienia aranżacji. ** `id` **
+* (opcjonalnie) : `true`Jeśli ustawiono na , odpowiedź zawiera wejście funkcji. ** `show-input` ** Wartością domyślną jest `false`.
+* (opcjonalnie) : `true`Jeśli ustawiono na , odpowiedź zawiera dane wyjściowe funkcji. ** `show-output` ** Wartością domyślną jest `false`.
+* (opcjonalnie) : Nazwa ustawienia aplikacji zawierającego ciąg połączenia magazynu do użycia. ** `connection-string-setting` ** Wartość domyślna to `AzureWebJobsStorage`.
+* (opcjonalnie) : Nazwa centrum zadań Funkcje trwałe do użycia. ** `task-hub-name` ** Wartość domyślna to `DurableFunctionsHub`. Można go również ustawić w [host.json](durable-functions-bindings.md#host-json), przy użyciu durableTask:HubName.
 
-Następujące polecenie pobiera stan (łącznie z danymi wejściowymi i wyjściowymi) wystąpienia z IDENTYFIKATORem wystąpienia aranżacji 0ab8c55a66644d68a3a8b220b12d209c. Przyjęto założenie, że uruchomiono polecenie `func` z katalogu głównego aplikacji funkcji:
+Następujące polecenie pobiera stan (w tym dane wejściowe i wyjściowe) wystąpienia o identyfikatorze wystąpienia aranżacji o identyfikatorze 0ab8c55a66644d68a3a8b220b12d209c. Przyjęto założenie, że `func` polecenie jest uruchamiane z katalogu głównego aplikacji funkcyjnej:
 
 ```bash
 func durable get-runtime-status --id 0ab8c55a66644d68a3a8b220b12d209c --show-input true --show-output true
 ```
 
-Za pomocą polecenia `durable get-history` można pobrać historię wystąpienia aranżacji. Przyjmuje następujące parametry:
+Za pomocą `durable get-history` polecenia można pobrać historię wystąpienia aranżacji. Przyjmuje następujące parametry:
 
-* **`id` (wymagane)** : identyfikator wystąpienia aranżacji.
-* **`connection-string-setting` (opcjonalnie)** : Nazwa ustawienia aplikacji zawierającego parametry połączenia magazynu do użycia. Wartość domyślna to `AzureWebJobsStorage`.
-* **`task-hub-name` (opcjonalnie)** : nazwa centrum zadań Durable Functions do użycia. Wartość domyślna to `DurableFunctionsHub`. Można ją również ustawić w pliku host. JSON przy użyciu durableTask: HubName.
+* (wymagane) : Identyfikator wystąpienia aranżacji. ** `id` **
+* (opcjonalnie) : Nazwa ustawienia aplikacji zawierającego ciąg połączenia magazynu do użycia. ** `connection-string-setting` ** Wartość domyślna to `AzureWebJobsStorage`.
+* (opcjonalnie) : Nazwa centrum zadań Funkcje trwałe do użycia. ** `task-hub-name` ** Wartość domyślna to `DurableFunctionsHub`. Można go również ustawić w host.json, przy użyciu durableTask:HubName.
 
 ```bash
 func durable get-history --id 0ab8c55a66644d68a3a8b220b12d209c
 ```
 
-## <a name="query-all-instances"></a>Badaj wszystkie wystąpienia
+## <a name="query-all-instances"></a>Kwerenda we wszystkich wystąpieniach
 
-Zamiast wysyłać zapytania do jednego wystąpienia w ramach aranżacji, może się okazać, że jest bardziej wydajna kwerenda wszystkich jednocześnie.
+Zamiast kwerendy jedno wystąpienie w aranżacji w czasie, może okazać się bardziej wydajne do kwerendy wszystkich z nich naraz.
 
-Można użyć metody `GetStatusAsync` (.NET) lub `getStatusAll` (JavaScript) do wykonywania zapytań o Stanach wszystkich wystąpień aranżacji. W programie .NET można przekazać obiekt `CancellationToken` w przypadku, gdy chcesz go anulować. Metoda zwraca obiekty z tymi samymi właściwościami co Metoda `GetStatusAsync` z parametrami.
+Za pomocą `GetStatusAsync` metody (.NET) lub `getStatusAll` (JavaScript) można zbadać stany wszystkich wystąpień aranżacji. W .NET można przekazać `CancellationToken` obiekt w przypadku, gdy chcesz go anulować. Metoda zwraca obiekty o tych samych właściwościach co `GetStatusAsync` metoda z parametrami.
 
-# <a name="c"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C #](#tab/csharp)
 
 ```csharp
 [FunctionName("GetAllStatus")]
@@ -238,9 +238,9 @@ public static async Task Run(
 ```
 
 > [!NOTE]
-> Poprzedni C# kod jest przeznaczony dla Durable Functions 2. x. W przypadku Durable Functions 1. x należy użyć atrybutu `OrchestrationClient` zamiast atrybutu `DurableClient` i należy użyć typu parametru `DurableOrchestrationClient` zamiast `IDurableOrchestrationClient`. Aby uzyskać więcej informacji o różnicach między wersjami, zobacz artykuł dotyczący [wersji Durable Functions](durable-functions-versions.md) .
+> Poprzedni kod języka C# jest dla funkcji trwałych 2.x. W przypadku funkcji trwałych 1.x należy `OrchestrationClient` użyć `DurableClient` atrybutu zamiast atrybutu `DurableOrchestrationClient` i zamiast `IDurableOrchestrationClient`parametru . Aby uzyskać więcej informacji na temat różnic między wersjami, zobacz [wersje funkcji trwałych](durable-functions-versions.md) artykułu.
 
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[Javascript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -255,30 +255,30 @@ module.exports = async function(context, req) {
 };
 ```
 
-Zobacz [Uruchamianie wystąpień](#javascript-function-json) dla konfiguracji Function. JSON.
+Zobacz [Uruchom wystąpienia](#javascript-function-json) dla konfiguracji function.json.
 
 ---
 
-### <a name="azure-functions-core-tools"></a>Azure Functions Core Tools
+### <a name="azure-functions-core-tools"></a>Podstawowe narzędzia funkcji platformy Azure
 
-Istnieje również możliwość bezpośredniej kwerendy wystąpień przy użyciu [Azure Functions Core Tools](../functions-run-local.md) `durable get-instances` polecenie. Przyjmuje następujące parametry:
+Jest również możliwe do bezpośredniego zapytania wystąpień, za pomocą polecenia [Podstawowe narzędzia](../functions-run-local.md) `durable get-instances` azure functions. Przyjmuje następujące parametry:
 
-* **`top` (opcjonalnie)** : to polecenie obsługuje stronicowanie. Ten parametr odnosi się do liczby wystąpień pobranych dla żądania. Wartość domyślna to 10.
-* **`continuation-token` (opcjonalnie)** : token wskazujący stronę lub sekcję wystąpień do pobrania. Każde wykonanie `get-instances` zwraca token do następnego zestawu wystąpień.
-* **`connection-string-setting` (opcjonalnie)** : Nazwa ustawienia aplikacji zawierającego parametry połączenia magazynu do użycia. Wartość domyślna to `AzureWebJobsStorage`.
-* **`task-hub-name` (opcjonalnie)** : nazwa centrum zadań Durable Functions do użycia. Wartość domyślna to `DurableFunctionsHub`. Można ją również ustawić w pliku [host. JSON](durable-functions-bindings.md#host-json)przy użyciu DurableTask: HubName.
+* (opcjonalnie) : To polecenie obsługuje stronicowanie. ** `top` ** Ten parametr odpowiada liczbie wystąpień pobranych na żądanie. Wartość domyślna to 10.
+* (opcjonalnie) : Token wskazujący, która strona lub sekcja wystąpień ma być pobierana. ** `continuation-token` ** Każde `get-instances` wykonanie zwraca token do następnego zestawu wystąpień.
+* (opcjonalnie) : Nazwa ustawienia aplikacji zawierającego ciąg połączenia magazynu do użycia. ** `connection-string-setting` ** Wartość domyślna to `AzureWebJobsStorage`.
+* (opcjonalnie) : Nazwa centrum zadań Funkcje trwałe do użycia. ** `task-hub-name` ** Wartość domyślna to `DurableFunctionsHub`. Można go również ustawić w [host.json](durable-functions-bindings.md#host-json), przy użyciu durableTask:HubName.
 
 ```bash
 func durable get-instances
 ```
 
-## <a name="query-instances-with-filters"></a>Zapytania o wystąpienia z filtrami
+## <a name="query-instances-with-filters"></a>Wystąpienia kwerend z filtrami
 
-Co zrobić, jeśli nie potrzebujesz wszystkich informacji, które mogą być używane przez zapytanie wystąpienia standardowego? Na przykład co zrobić, jeśli szukasz tylko czasu utworzenia aranżacji lub stanu środowiska uruchomieniowego aranżacji? Możesz zawęzić zapytanie, stosując filtry.
+Co zrobić, jeśli tak naprawdę nie potrzebujesz wszystkich informacji, które może dostarczyć zapytanie o wystąpienie standardowe? Na przykład co zrobić, jeśli po prostu szukasz czasu tworzenia aranżacji lub stanu środowiska uruchomieniowego aranżacji? Kwerendę można zawęzić, stosując filtry.
 
-Użyj metody `GetStatusAsync` (.NET) lub `getStatusBy` (JavaScript), aby uzyskać listę wystąpień aranżacji zgodnych z zestawem wstępnie zdefiniowanych filtrów.
+Użyj `GetStatusAsync` metody (.NET) lub `getStatusBy` (JavaScript), aby uzyskać listę wystąpień aranżacji, które pasują do zestawu wstępnie zdefiniowanych filtrów.
 
-# <a name="c"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C #](#tab/csharp)
 
 ```csharp
 [FunctionName("QueryStatus")]
@@ -304,9 +304,9 @@ public static async Task Run(
 ```
 
 > [!NOTE]
-> Poprzedni C# kod jest przeznaczony dla Durable Functions 2. x. W przypadku Durable Functions 1. x należy użyć atrybutu `OrchestrationClient` zamiast atrybutu `DurableClient` i należy użyć typu parametru `DurableOrchestrationClient` zamiast `IDurableOrchestrationClient`. Aby uzyskać więcej informacji o różnicach między wersjami, zobacz artykuł dotyczący [wersji Durable Functions](durable-functions-versions.md) .
+> Poprzedni kod języka C# jest dla funkcji trwałych 2.x. W przypadku funkcji trwałych 1.x należy `OrchestrationClient` użyć `DurableClient` atrybutu zamiast atrybutu `DurableOrchestrationClient` i zamiast `IDurableOrchestrationClient`parametru . Aby uzyskać więcej informacji na temat różnic między wersjami, zobacz [wersje funkcji trwałych](durable-functions-versions.md) artykułu.
 
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[Javascript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -329,35 +329,35 @@ module.exports = async function(context, req) {
 };
 ```
 
-Zobacz [Uruchamianie wystąpień](#javascript-function-json) dla konfiguracji Function. JSON.
+Zobacz [Uruchom wystąpienia](#javascript-function-json) dla konfiguracji function.json.
 
 ---
 
-### <a name="azure-functions-core-tools"></a>Azure Functions Core Tools
+### <a name="azure-functions-core-tools"></a>Podstawowe narzędzia funkcji platformy Azure
 
-W Azure Functions Core Tools można również użyć polecenia `durable get-instances` z filtrami. Oprócz powyższych parametrów `top`, `continuation-token`, `connection-string-setting`i `task-hub-name`, można użyć trzech parametrów filtru (`created-after`, `created-before`i `runtime-status`).
+W narzędziach podstawowe usług Azure Functions `durable get-instances` można również użyć polecenia z filtrami. Oprócz `top`wyżej wymienionych parametrów `continuation-token` `connection-string-setting`, `task-hub-name` i parametrów można użyć`created-after`trzech `created-before`parametrów filtru ( , , i `runtime-status`).
 
-* **`created-after` (opcjonalnie)** : Pobierz wystąpienia utworzone po tej dacie/godzinie (UTC). Zaakceptowane daty i godziny w formacie ISO 8601.
-* **`created-before` (opcjonalnie)** : Pobierz wystąpienia utworzone przed tą datą/godziną (UTC). Zaakceptowane daty i godziny w formacie ISO 8601.
-* **`runtime-status` (opcjonalnie)** : Pobierz wystąpienia z określonym stanem (na przykład uruchomioną lub ukończoną). Może zapewnić wiele stanów (rozdzielonych spacjami).
-* **`top` (opcjonalnie)** : liczba wystąpień pobranych dla żądania. Wartość domyślna to 10.
-* **`continuation-token` (opcjonalnie)** : token wskazujący stronę lub sekcję wystąpień do pobrania. Każde wykonanie `get-instances` zwraca token do następnego zestawu wystąpień.
-* **`connection-string-setting` (opcjonalnie)** : Nazwa ustawienia aplikacji zawierającego parametry połączenia magazynu do użycia. Wartość domyślna to `AzureWebJobsStorage`.
-* **`task-hub-name` (opcjonalnie)** : nazwa centrum zadań Durable Functions do użycia. Wartość domyślna to `DurableFunctionsHub`. Można ją również ustawić w pliku [host. JSON](durable-functions-bindings.md#host-json)przy użyciu DurableTask: HubName.
+* (opcjonalnie) : Pobierz wystąpienia utworzone po tej dacie/godzinie (UTC). ** `created-after` ** Iso 8601 sformatowany datetimes akceptowane.
+* (opcjonalnie) : Pobierz wystąpienia utworzone przed tą datą/godziną (UTC). ** `created-before` ** Iso 8601 sformatowany datetimes akceptowane.
+* (opcjonalnie) : Pobierz wystąpienia o określonym stanie (na przykład uruchomione lub ukończone). ** `runtime-status` ** Może zapewnić wiele stanów (oddzielone spacjami).
+* (opcjonalnie) : Liczba wystąpień pobranych na żądanie. ** `top` ** Wartość domyślna to 10.
+* (opcjonalnie) : Token wskazujący, która strona lub sekcja wystąpień ma być pobierana. ** `continuation-token` ** Każde `get-instances` wykonanie zwraca token do następnego zestawu wystąpień.
+* (opcjonalnie) : Nazwa ustawienia aplikacji zawierającego ciąg połączenia magazynu do użycia. ** `connection-string-setting` ** Wartość domyślna to `AzureWebJobsStorage`.
+* (opcjonalnie) : Nazwa centrum zadań Funkcje trwałe do użycia. ** `task-hub-name` ** Wartość domyślna to `DurableFunctionsHub`. Można go również ustawić w [host.json](durable-functions-bindings.md#host-json), przy użyciu durableTask:HubName.
 
-Jeśli nie podano żadnych filtrów (`created-after`, `created-before`lub `runtime-status`), polecenie po prostu pobiera wystąpienia `top`, bez względu na stan lub czas utworzenia środowiska uruchomieniowego.
+Jeśli nie podasz żadnych`created-after`filtrów `created-before`( `runtime-status`, , lub `top` ), polecenie po prostu pobiera wystąpienia, bez względu na stan środowiska uruchomieniowego lub czas tworzenia.
 
 ```bash
 func durable get-instances --created-after 2018-03-10T13:57:31Z --created-before  2018-03-10T23:59Z --top 15
 ```
 
-## <a name="terminate-instances"></a>Przerwij wystąpienia
+## <a name="terminate-instances"></a>Kończenie wystąpień
 
-Jeśli masz wystąpienie aranżacji, które trwa zbyt długo lub musisz zatrzymać je przed zakończeniem z dowolnego powodu, będziesz mieć możliwość jej zakończenia.
+Jeśli masz wystąpienie aranżacji, które trwa zbyt długo, aby uruchomić lub po prostu trzeba go zatrzymać, zanim zakończy się z jakiegokolwiek powodu, masz możliwość, aby zakończyć go.
 
-Aby przerwać wystąpienia, można użyć `TerminateAsync` (.NET) lub metody `terminate` (JavaScript) [powiązania klienta aranżacji](durable-functions-bindings.md#orchestration-client) . Dwa parametry to `instanceId` i ciąg `reason`, które są zapisywane w dziennikach i do stanu wystąpienia.
+Można użyć `TerminateAsync` metody (.NET) `terminate` lub (JavaScript) [powiązania klienta aranżacji,](durable-functions-bindings.md#orchestration-client) aby zakończyć wystąpienia. Dwa parametry są `instanceId` i `reason` ciąg, które są zapisywane do dzienników i stanu wystąpienia.
 
-# <a name="c"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C #](#tab/csharp)
 
 ```csharp
 [FunctionName("TerminateInstance")]
@@ -371,9 +371,9 @@ public static Task Run(
 ```
 
 > [!NOTE]
-> Poprzedni C# kod jest przeznaczony dla Durable Functions 2. x. W przypadku Durable Functions 1. x należy użyć atrybutu `OrchestrationClient` zamiast atrybutu `DurableClient` i należy użyć typu parametru `DurableOrchestrationClient` zamiast `IDurableOrchestrationClient`. Aby uzyskać więcej informacji o różnicach między wersjami, zobacz artykuł dotyczący [wersji Durable Functions](durable-functions-versions.md) .
+> Poprzedni kod języka C# jest dla funkcji trwałych 2.x. W przypadku funkcji trwałych 1.x należy `OrchestrationClient` użyć `DurableClient` atrybutu zamiast atrybutu `DurableOrchestrationClient` i zamiast `IDurableOrchestrationClient`parametru . Aby uzyskać więcej informacji na temat różnic między wersjami, zobacz [wersje funkcji trwałych](durable-functions-versions.md) artykułu.
 
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[Javascript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -386,25 +386,25 @@ module.exports = async function(context, instanceId) {
 };
 ```
 
-Zobacz [Uruchamianie wystąpień](#javascript-function-json) dla konfiguracji Function. JSON.
+Zobacz [Uruchom wystąpienia](#javascript-function-json) dla konfiguracji function.json.
 
 ---
 
-Zakończone wystąpienie będzie ostatecznie przenoszone do stanu `Terminated`. Jednak to przejście nie zostanie wykonane natychmiast. Zamiast tego operacja Terminate zostanie umieszczona w kolejce w centrum zadań wraz z innymi operacjami dla tego wystąpienia. Można użyć interfejsów API [zapytania wystąpienia](#query-instances) , aby wiedzieć, kiedy przerwane wystąpienie faktycznie osiągnęło stan `Terminated`.
+Zakończone wystąpienie zostanie ostatecznie przejście `Terminated` do stanu. Jednak to przejście nie nastąpi natychmiast. Zamiast tego operacja zakończenia zostanie śmiga w kolejce w centrum zadań wraz z innymi operacjami dla tego wystąpienia. Można użyć [interfejsów API kwerendy wystąpienia,](#query-instances) aby wiedzieć, `Terminated` kiedy zakończone wystąpienie rzeczywiście osiągnął stan.
 
 > [!NOTE]
-> Przerwanie wystąpienia nie jest obecnie propagowane. Funkcje działania i podzbiory są wykonywane do zakończenia, bez względu na to, czy zostało przerwane wystąpienie aranżacji, które je wywołało.
+> Zakończenie wystąpienia nie jest obecnie propagowane. Funkcje działania i podaranżacji uruchomić do zakończenia, niezależnie od tego, czy zostało zakończone wystąpienie aranżacji, który je nazwał.
 
-### <a name="azure-functions-core-tools"></a>Azure Functions Core Tools
+### <a name="azure-functions-core-tools"></a>Podstawowe narzędzia funkcji platformy Azure
 
-Możesz również przerwać wystąpienie aranżacji bezpośrednio przy użyciu [Azure Functions Core Tools](../functions-run-local.md) `durable terminate` polecenie. Przyjmuje następujące parametry:
+Można również zakończyć wystąpienie aranżacji bezpośrednio, za pomocą polecenia [Podstawowe narzędzia](../functions-run-local.md) `durable terminate` azure functions. Przyjmuje następujące parametry:
 
-* **`id` (wymagane)** : identyfikator wystąpienia aranżacji do przerwania.
-* **`reason` (opcjonalnie)** : Przyczyna zakończenia.
-* **`connection-string-setting` (opcjonalnie)** : Nazwa ustawienia aplikacji zawierającego parametry połączenia magazynu do użycia. Wartość domyślna to `AzureWebJobsStorage`.
-* **`task-hub-name` (opcjonalnie)** : nazwa centrum zadań Durable Functions do użycia. Wartość domyślna to `DurableFunctionsHub`. Można ją również ustawić w pliku [host. JSON](durable-functions-bindings.md#host-json)przy użyciu DurableTask: HubName.
+* (wymagane) : Identyfikator wystąpienia aranżacji do zakończenia. ** `id` **
+* (opcjonalnie) : Powód rozwiązania umowy. ** `reason` **
+* (opcjonalnie) : Nazwa ustawienia aplikacji zawierającego ciąg połączenia magazynu do użycia. ** `connection-string-setting` ** Wartość domyślna to `AzureWebJobsStorage`.
+* (opcjonalnie) : Nazwa centrum zadań Funkcje trwałe do użycia. ** `task-hub-name` ** Wartość domyślna to `DurableFunctionsHub`. Można go również ustawić w [host.json](durable-functions-bindings.md#host-json), przy użyciu durableTask:HubName.
 
-Następujące polecenie kończy wystąpienie aranżacji o IDENTYFIKATORze 0ab8c55a66644d68a3a8b220b12d209c:
+Następujące polecenie kończy wystąpienie aranżacji o identyfikatorze 0ab8c55a66644d68a3a8b220b12d209c:
 
 ```bash
 func durable terminate --id 0ab8c55a66644d68a3a8b220b12d209c --reason "It was time to be done."
@@ -412,17 +412,17 @@ func durable terminate --id 0ab8c55a66644d68a3a8b220b12d209c --reason "It was ti
 
 ## <a name="send-events-to-instances"></a>Wysyłanie zdarzeń do wystąpień
 
-W niektórych scenariuszach ważne jest, aby funkcja programu Orchestrator mogła czekać i słuchać zdarzeń zewnętrznych. Obejmuje to [funkcje monitorowania](durable-functions-overview.md#monitoring) i funkcje, które oczekują na [interakcję przez człowieka](durable-functions-overview.md#human).
+W niektórych scenariuszach ważne jest, aby funkcje programu orchestrator mogły czekać i słuchać zdarzeń zewnętrznych. Obejmuje to [funkcje monitora](durable-functions-overview.md#monitoring) i funkcje, które czekają na [interakcję z człowiekiem.](durable-functions-overview.md#human)
 
-Wysyłać powiadomienia o zdarzeniach do uruchomionych wystąpień przy użyciu metody `RaiseEventAsync` (.NET) lub metody `raiseEvent` (JavaScript) [powiązania klienta aranżacji](durable-functions-bindings.md#orchestration-client). Wystąpienia, które mogą obsługiwać te zdarzenia, to te, które oczekują na wywołanie `WaitForExternalEvent` (.NET) lub do wywołania `waitForExternalEvent` (JavaScript).
+Wysyłaj powiadomienia o zdarzeniach do `RaiseEventAsync` uruchomionych wystąpień `raiseEvent` przy użyciu metody (.NET) lub metody (JavaScript) [powiązania klienta aranżacji](durable-functions-bindings.md#orchestration-client). Wystąpienia, które mogą obsługiwać te zdarzenia są `WaitForExternalEvent` te, które oczekują na `waitForExternalEvent` wywołanie (.NET) lub ulegając wywołaniu (JavaScript).
 
-Parametry do `RaiseEventAsync` (.NET) i `raiseEvent` (JavaScript) są następujące:
+Parametry `RaiseEventAsync` (.NET) i `raiseEvent` (JavaScript) są następujące:
 
-* **InstanceId**: unikatowy identyfikator wystąpienia.
-* **EventName**: Nazwa zdarzenia do wysłania.
-* **EVENTDATA**: ładunek do serializacji JSON do wysłania do wystąpienia.
+* **Identyfikator wystąpienia:** unikatowy identyfikator wystąpienia.
+* **Nazwa zdarzenia:** Nazwa zdarzenia do wysłania.
+* **EventData**: Ładunek seryjny JSON do wysłania do wystąpienia.
 
-# <a name="c"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C #](#tab/csharp)
 
 ```csharp
 [FunctionName("RaiseEvent")]
@@ -436,9 +436,9 @@ public static Task Run(
 ```
 
 > [!NOTE]
-> Poprzedni C# kod jest przeznaczony dla Durable Functions 2. x. W przypadku Durable Functions 1. x należy użyć atrybutu `OrchestrationClient` zamiast atrybutu `DurableClient` i należy użyć typu parametru `DurableOrchestrationClient` zamiast `IDurableOrchestrationClient`. Aby uzyskać więcej informacji o różnicach między wersjami, zobacz artykuł dotyczący [wersji Durable Functions](durable-functions-versions.md) .
+> Poprzedni kod języka C# jest dla funkcji trwałych 2.x. W przypadku funkcji trwałych 1.x należy `OrchestrationClient` użyć `DurableClient` atrybutu zamiast atrybutu `DurableOrchestrationClient` i zamiast `IDurableOrchestrationClient`parametru . Aby uzyskać więcej informacji na temat różnic między wersjami, zobacz [wersje funkcji trwałych](durable-functions-versions.md) artykułu.
 
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[Javascript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -451,22 +451,22 @@ module.exports = async function(context, instanceId) {
 };
 ```
 
-Zobacz [Uruchamianie wystąpień](#javascript-function-json) dla konfiguracji Function. JSON.
+Zobacz [Uruchom wystąpienia](#javascript-function-json) dla konfiguracji function.json.
 
 ---
 
 > [!NOTE]
-> Jeśli nie istnieje wystąpienie aranżacji o określonym IDENTYFIKATORze wystąpienia, komunikat o zdarzeniu zostanie odrzucony. Jeśli wystąpienie istnieje, ale jeszcze nie oczekuje na zdarzenie, zdarzenie będzie przechowywane w stanie wystąpienia do momentu, gdy będzie gotowe do odebrania i przetworzenia.
+> Jeśli nie ma wystąpienia aranżacji o określonym identyfikatorze wystąpienia, komunikat o zdarzeniu zostanie odrzucony. Jeśli wystąpienie istnieje, ale nie jest jeszcze oczekiwanie na zdarzenie, zdarzenie będzie przechowywane w stanie wystąpienia, dopóki nie będzie gotowy do odebraniu i przetworzenia.
 
-### <a name="azure-functions-core-tools"></a>Azure Functions Core Tools
+### <a name="azure-functions-core-tools"></a>Podstawowe narzędzia funkcji platformy Azure
 
-Możesz również podnieść zdarzenie do wystąpienia aranżacji bezpośrednio przy użyciu [Azure Functions Core Tools](../functions-run-local.md) `durable raise-event` polecenie. Przyjmuje następujące parametry:
+Zdarzenie można również również wywołać bezpośrednio do wystąpienia aranżacji za pomocą polecenia [Podstawowe narzędzia](../functions-run-local.md) `durable raise-event` azure functions. Przyjmuje następujące parametry:
 
-* **`id` (wymagane)** : identyfikator wystąpienia aranżacji.
-* **`event-name`** : Nazwa zdarzenia do podniesienia.
-* **`event-data` (opcjonalnie)** : dane do wysłania do wystąpienia aranżacji. Może to być ścieżka do pliku JSON lub można dostarczyć dane bezpośrednio w wierszu polecenia.
-* **`connection-string-setting` (opcjonalnie)** : Nazwa ustawienia aplikacji zawierającego parametry połączenia magazynu do użycia. Wartość domyślna to `AzureWebJobsStorage`.
-* **`task-hub-name` (opcjonalnie)** : nazwa centrum zadań Durable Functions do użycia. Wartość domyślna to `DurableFunctionsHub`. Można ją również ustawić w pliku [host. JSON](durable-functions-bindings.md#host-json)przy użyciu DurableTask: HubName.
+* (wymagane) : Identyfikator wystąpienia aranżacji. ** `id` **
+* **`event-name`**: Nazwa wydarzenia do podniesienia.
+* (opcjonalnie) : Dane do wysłania do wystąpienia aranżacji. ** `event-data` ** Może to być ścieżka do pliku JSON lub można podać dane bezpośrednio w wierszu polecenia.
+* (opcjonalnie) : Nazwa ustawienia aplikacji zawierającego ciąg połączenia magazynu do użycia. ** `connection-string-setting` ** Wartość domyślna to `AzureWebJobsStorage`.
+* (opcjonalnie) : Nazwa centrum zadań Funkcje trwałe do użycia. ** `task-hub-name` ** Wartość domyślna to `DurableFunctionsHub`. Można go również ustawić w [host.json](durable-functions-bindings.md#host-json), przy użyciu durableTask:HubName.
 
 ```bash
 func durable raise-event --id 0ab8c55a66644d68a3a8b220b12d209c --event-name MyEvent --event-data @eventdata.json
@@ -476,27 +476,27 @@ func durable raise-event --id 0ab8c55a66644d68a3a8b220b12d209c --event-name MyEv
 func durable raise-event --id 1234567 --event-name MyOtherEvent --event-data 3
 ```
 
-## <a name="wait-for-orchestration-completion"></a>Poczekaj na zakończenie aranżacji
+## <a name="wait-for-orchestration-completion"></a>Poczekaj na ukończenie aranżacji
 
-W długotrwałych aranżacjach warto oczekiwać i uzyskać wyniki aranżacji. W takich przypadkach warto również zdefiniować przedział czasu dla aranżacji. W przypadku przekroczenia limitu czasu, zamiast wyników należy zwrócić stan aranżacji.
+W długotrwałych aranżacji, można poczekać i uzyskać wyniki aranżacji. W takich przypadkach jest również przydatne, aby można było zdefiniować limit czasu na aranżacji. Jeśli limit czasu zostanie przekroczony, stan aranżacji powinny być zwracane zamiast wyników.
 
-Za pomocą metody `WaitForCompletionOrCreateCheckStatusResponseAsync` (.NET) lub `waitForCompletionOrCreateCheckStatusResponse` (JavaScript) można uzyskać dane wyjściowe z wystąpienia aranżacji synchronicznie. Domyślnie te metody używają wartości domyślnej 10 sekund dla `timeout`i 1 sekundę dla `retryInterval`.  
+Metoda `WaitForCompletionOrCreateCheckStatusResponseAsync` (.NET) `waitForCompletionOrCreateCheckStatusResponse` lub (JavaScript) może służyć do synchronicznie uzyskać rzeczywiste dane wyjściowe z wystąpienia aranżacji. Domyślnie metody te używają domyślnej wartości 10 sekund `timeout`dla `retryInterval`programu , a 1 sekundy dla .  
 
-Oto przykład funkcji wyzwalacza HTTP, która pokazuje, jak używać tego interfejsu API:
+Oto przykładowa funkcja wyzwalacza HTTP, która pokazuje, jak korzystać z tego interfejsu API:
 
-# <a name="c"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C #](#tab/csharp)
 
 [!code-csharp[Main](~/samples-durable-functions/samples/precompiled/HttpSyncStart.cs)]
 
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[Javascript](#tab/javascript)
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/HttpSyncStart/index.js)]
 
-Zobacz [Uruchamianie wystąpień](#javascript-function-json) dla konfiguracji Function. JSON.
+Zobacz [Uruchom wystąpienia](#javascript-function-json) dla konfiguracji function.json.
 
 ---
 
-Wywołaj funkcję z następującym wierszem. Użyj 2 sekund dla limitu czasu i 0,5 sekund dla interwału ponawiania próby:
+Wywołanie funkcji z następującym wierszem. Użyj 2 sekund dla limitu czasu i 0,5 sekundy dla interwału ponawiania:
 
 ```bash
     http POST http://localhost:7071/orchestrators/E1_HelloSequence/wait?timeout=2&retryInterval=0.5
@@ -504,7 +504,7 @@ Wywołaj funkcję z następującym wierszem. Użyj 2 sekund dla limitu czasu i 0
 
 W zależności od czasu wymaganego do uzyskania odpowiedzi z wystąpienia aranżacji istnieją dwa przypadki:
 
-* Wystąpienia aranżacji zakończone w określonym limicie czasu (w tym przypadku 2 sekund), a odpowiedź to rzeczywiste dane wyjściowe wystąpienia aranżacji, dostarczone synchronicznie:
+* Wystąpienia aranżacji zostaną ukończone w ramach zdefiniowanego limitu czasu (w tym przypadku 2 sekundy), a odpowiedź jest rzeczywistym wyjściem wystąpienia aranżacji, dostarczanym synchronicznie:
 
     ```http
         HTTP/1.1 200 OK
@@ -519,7 +519,7 @@ W zależności od czasu wymaganego do uzyskania odpowiedzi z wystąpienia aranż
         ]
     ```
 
-* Wystąpienia aranżacji nie mogą zakończyć się w określonym limicie czasu, a odpowiedź jest domyślnie opisana w temacie [odnajdowanie adresów URL interfejsu API protokołu HTTP](durable-functions-http-api.md):
+* Wystąpienia aranżacji nie mogą być ukończone w ramach zdefiniowanego limitu czasu, a odpowiedź jest domyślną odpowiedzią opisaną w [odnajdowaniu adresów URL interfejsu API HTTP:](durable-functions-http-api.md)
 
     ```http
         HTTP/1.1 202 Accepted
@@ -538,27 +538,27 @@ W zależności od czasu wymaganego do uzyskania odpowiedzi z wystąpienia aranż
     ```
 
 > [!NOTE]
-> Format adresów URL elementu webhook może się różnić w zależności od używanej wersji hosta Azure Functions. Poprzedni przykład dotyczy hosta Azure Functions 2,0.
+> Format adresów URL elementu webhook może się różnić, w zależności od wersji hosta usługi Azure Functions, który jest uruchomiony. Poprzednim przykładem jest host usługi Azure Functions 2.0.
 
-## <a name="retrieve-http-management-webhook-urls"></a>Pobierz adresy URL elementu webhook zarządzania HTTP
+## <a name="retrieve-http-management-webhook-urls"></a>Pobieranie adresów URL elementów webhook do zarządzania http
 
-Możesz użyć systemu zewnętrznego do monitorowania lub zgłaszania zdarzeń do aranżacji. Systemy zewnętrzne mogą komunikować się z Durable Functions za pośrednictwem adresów URL elementu webhook, które są częścią domyślnej odpowiedzi opisanej w [odnajdowaniu adresów URL interfejsu API protokołu HTTP](durable-functions-http-features.md#http-api-url-discovery). Adresy URL elementu webhook mogą być alternatywnie dostępne programowo przy użyciu [powiązania klienta aranżacji](durable-functions-bindings.md#orchestration-client). Przy użyciu metod `CreateHttpManagementPayload` (.NET) lub `createHttpManagementPayload` (JavaScript) można uzyskać obiekt możliwy do serializacji, który zawiera te adresy URL elementu webhook.
+Za pomocą systemu zewnętrznego można monitorować lub podnosić zdarzenia do aranżacji. Systemy zewnętrzne mogą komunikować się z funkcjami trwałymi za pośrednictwem adresów URL elementu webhook, które są częścią domyślnej odpowiedzi opisanej w [odnajdowaniu adresów URL interfejsu API HTTP](durable-functions-http-features.md#http-api-url-discovery). Adresy URL elementu webhook można również uzyskać programowo przy użyciu [powiązania klienta aranżacji.](durable-functions-bindings.md#orchestration-client) Metody `CreateHttpManagementPayload` (.NET) `createHttpManagementPayload` lub (JavaScript) mogą być używane do uzyskania pliku serializable obiektu zawierającego te adresy URL elementu webhook.
 
-Metody `CreateHttpManagementPayload` (.NET) i `createHttpManagementPayload` (JavaScript) mają jeden parametr:
+Metody `CreateHttpManagementPayload` (.NET) `createHttpManagementPayload` i (JavaScript) mają jeden parametr:
 
-* **InstanceId**: unikatowy identyfikator wystąpienia.
+* **instanceId**: unikatowy identyfikator wystąpienia.
 
 Metody zwracają obiekt z następującymi właściwościami ciągu:
 
-* **Identyfikator**: identyfikator wystąpienia aranżacji (powinien być taki sam jak `InstanceId` dane wejściowe).
-* **StatusQueryGetUri**: adres URL stanu wystąpienia aranżacji.
-* **SendEventPostUri**: adres URL "zgłoś zdarzenie" wystąpienia aranżacji.
-* **TerminatePostUri**: adres URL "Terminate" wystąpienia aranżacji.
-* **PurgeHistoryDeleteUri**: adres URL "Przeczyść historię" wystąpienia aranżacji.
+* **Identyfikator:** Identyfikator wystąpienia aranżacji (powinien być taki `InstanceId` sam jak dane wejściowe).
+* **StatusQueryGetUri:** Adres URL stanu wystąpienia aranżacji.
+* **SendEventPostUri**: Adres URL "raise event" wystąpienia aranżacji.
+* **TerminatePostUri**: Adres URL "terminate" wystąpienia aranżacji.
+* **PurgeHistoryDeleteUri:** Adres URL "historii przeczyszczenia" wystąpienia aranżacji.
 
-Funkcje mogą wysyłać wystąpienia tych obiektów do systemów zewnętrznych w celu monitorowania lub wywoływania zdarzeń dotyczących odpowiednich aranżacji, jak pokazano w następujących przykładach:
+Funkcje mogą wysyłać wystąpienia tych obiektów do systemów zewnętrznych w celu monitorowania lub podnoszenia zdarzeń w odpowiednich aranżacjach, jak pokazano w poniższych przykładach:
 
-# <a name="c"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C #](#tab/csharp)
 
 ```csharp
 [FunctionName("SendInstanceInfo")]
@@ -578,9 +578,9 @@ public static void SendInstanceInfo(
 ```
 
 > [!NOTE]
-> Poprzedni C# kod jest przeznaczony dla Durable Functions 2. x. W przypadku Durable Functions 1. x należy użyć `DurableActivityContext` zamiast `IDurableActivityContext`, należy użyć atrybutu `OrchestrationClient` zamiast atrybutu `DurableClient` i należy użyć typu parametru `DurableOrchestrationClient` zamiast `IDurableOrchestrationClient`. Aby uzyskać więcej informacji o różnicach między wersjami, zobacz artykuł dotyczący [wersji Durable Functions](durable-functions-versions.md) .
+> Poprzedni kod języka C# jest dla funkcji trwałych 2.x. W przypadku funkcji trwałych 1.x `DurableActivityContext` należy użyć zamiast atrybutu `IDurableActivityContext`, należy użyć `OrchestrationClient` atrybutu zamiast atrybutu `DurableClient` i należy użyć typu `DurableOrchestrationClient` parametru `IDurableOrchestrationClient`zamiast . Aby uzyskać więcej informacji na temat różnic między wersjami, zobacz [wersje funkcji trwałych](durable-functions-versions.md) artykułu.
 
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[Javascript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -598,25 +598,25 @@ modules.exports = async function(context, ctx) {
 };
 ```
 
-Zobacz [Uruchamianie wystąpień](#javascript-function-json) dla konfiguracji Function. JSON.
+Zobacz [Uruchom wystąpienia](#javascript-function-json) dla konfiguracji function.json.
 
 ---
 
-## <a name="rewind-instances-preview"></a>Przewiń do tyłu wystąpienia (wersja zapoznawcza)
+## <a name="rewind-instances-preview"></a>Wystąpienia przewijania do tyłu (wersja zapoznawcza)
 
-Jeśli masz błąd aranżacji z nieoczekiwanej przyczyny, możesz *przewinąć* wystąpienie do poprzedniego stanu w dobrej kondycji, korzystając z interfejsu API skompilowanego do tego celu.
-
-> [!NOTE]
-> Ten interfejs API nie jest przeznaczony do zastępowania w celu zapewnienia prawidłowej obsługi błędów i zasad ponawiania. Zamiast tego jest przeznaczona do użycia tylko w przypadkach, w których wystąpienia aranżacji kończą się niepowodzeniem z nieoczekiwanych przyczyn. Aby uzyskać więcej informacji na temat obsługi błędów i zasad ponawiania, zobacz artykuł [Obsługa błędów](durable-functions-error-handling.md) .
-
-Użyj metody `RewindAsync` (.NET) lub `rewind` (JavaScript) [powiązania klienta aranżacji](durable-functions-bindings.md#orchestration-client) w celu przełączenia aranżacji do stanu *uruchomienia* . Ta metoda spowoduje również ponowne uruchomienie operacji lub niepowodzeń wykonania aranżacji podrzędnej, które spowodowały błąd aranżacji.
-
-Załóżmy na przykład, że masz przepływ pracy obejmujący serię [zatwierdzeń ludzkich](durable-functions-overview.md#human). Załóżmy, że istnieje szereg funkcji działania, które powiadamiają kogoś o konieczności zatwierdzenia i oczekują odpowiedzi w czasie rzeczywistym. Po odebraniu odpowiedzi przez wszystkie działania zatwierdzenia lub przekroczeniu limitu czasu inne działanie nie powiedzie się z powodu błędnej konfiguracji aplikacji, na przykład parametrów połączenia z bazą danych. Wynikiem jest niepowodzenie aranżacji w przepływie pracy. Za pomocą interfejsu API `RewindAsync` (.NET) lub `rewind` (JavaScript) administrator aplikacji może naprawić błąd konfiguracji i przewinąć niepowodzenie aranżacji do stanu bezpośrednio przed awarią. Żadna z kroków interakcji między ludźmi nie musi zostać ponownie zatwierdzona, a organizacja może teraz pomyślnie zakończyć pracę.
+Jeśli masz błąd aranżacji z nieoczekiwanego powodu, można *przewinąć* wystąpienie do stanu wcześniej dobrej kondycji przy użyciu interfejsu API utworzonego w tym celu.
 
 > [!NOTE]
-> Funkcja *przewijania do tyłu* nie obsługuje zawijania wystąpień aranżacji korzystających z trwałych czasomierzy.
+> Ten interfejs API nie jest przeznaczony do zastąpienia prawidłowej obsługi błędów i zasad ponawiania prób. Raczej jest przeznaczony do użycia tylko w przypadkach, gdy wystąpienia aranżacji nie powiedzie się z nieoczekiwanych powodów. Aby uzyskać więcej informacji na temat obsługi błędów i zasad ponawiania prób, zobacz artykuł [Obsługa błędów.](durable-functions-error-handling.md)
 
-# <a name="c"></a>[C#](#tab/csharp)
+Użyj `RewindAsync` metody (.NET) lub `rewind` (JavaScript) powiązania klienta [aranżacji,](durable-functions-bindings.md#orchestration-client) aby przywrócić aranżację do stanu *uruchamiania.* Ta metoda będzie również ponownie uruchomić działania lub sub-orchestration niepowodzenia wykonywania, które spowodowały błąd aranżacji.
+
+Załóżmy na przykład, że masz przepływ pracy obejmujący serię [zatwierdzeń ludzkich.](durable-functions-overview.md#human) Załóżmy, że istnieje szereg funkcji działania, które powiadamiają kogoś, że ich zatwierdzenie jest potrzebne, i poczekaj na odpowiedź w czasie rzeczywistym. Po otrzymaniu odpowiedzi lub upływu czasu wszystkich działań zatwierdzania, załóżmy, że inne działanie kończy się niepowodzeniem z powodu błędnej konfiguracji aplikacji, takiej jak nieprawidłowy ciąg połączenia bazy danych. Wynikiem jest błąd aranżacji głęboko w przepływie pracy. Za `RewindAsync` pomocą interfejsu API `rewind` (.NET) lub (JavaScript) administrator aplikacji może naprawić błąd konfiguracji i przewinąć nieudaną aranżację z powrotem do stanu bezpośrednio przed awarią. Żaden z kroków interakcji człowieka nie muszą być ponownie zatwierdzone, a aranżacja może teraz zakończyć się pomyślnie.
+
+> [!NOTE]
+> Funkcja *przewijania* do tyłu nie obsługuje przewijania wystąpień aranżacji, które używają trwałych czasomierzy.
+
+# <a name="c"></a>[C #](#tab/csharp)
 
 ```csharp
 [FunctionName("RewindInstance")]
@@ -630,9 +630,9 @@ public static Task Run(
 ```
 
 > [!NOTE]
-> Poprzedni C# kod jest przeznaczony dla Durable Functions 2. x. W przypadku Durable Functions 1. x należy użyć atrybutu `OrchestrationClient` zamiast atrybutu `DurableClient` i należy użyć typu parametru `DurableOrchestrationClient` zamiast `IDurableOrchestrationClient`. Aby uzyskać więcej informacji o różnicach między wersjami, zobacz artykuł dotyczący [wersji Durable Functions](durable-functions-versions.md) .
+> Poprzedni kod języka C# jest dla funkcji trwałych 2.x. W przypadku funkcji trwałych 1.x należy `OrchestrationClient` użyć `DurableClient` atrybutu zamiast atrybutu `DurableOrchestrationClient` i zamiast `IDurableOrchestrationClient`parametru . Aby uzyskać więcej informacji na temat różnic między wersjami, zobacz [wersje funkcji trwałych](durable-functions-versions.md) artykułu.
 
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[Javascript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -645,18 +645,18 @@ module.exports = async function(context, instanceId) {
 };
 ```
 
-Zobacz [Uruchamianie wystąpień](#javascript-function-json) dla konfiguracji Function. JSON.
+Zobacz [Uruchom wystąpienia](#javascript-function-json) dla konfiguracji function.json.
 
 ---
 
-### <a name="azure-functions-core-tools"></a>Azure Functions Core Tools
+### <a name="azure-functions-core-tools"></a>Podstawowe narzędzia funkcji platformy Azure
 
-Możesz również bezpośrednio przewinąć wystąpienie aranżacji przy użyciu [Azure Functions Core Tools](../functions-run-local.md) `durable rewind` polecenie. Przyjmuje następujące parametry:
+Można również przewinąć wystąpienie aranżacji bezpośrednio za pomocą polecenia [Podstawowe narzędzia](../functions-run-local.md) `durable rewind` azure functions. Przyjmuje następujące parametry:
 
-* **`id` (wymagane)** : identyfikator wystąpienia aranżacji.
-* **`reason` (opcjonalnie)** : Przyczyna odwinięcia wystąpienia aranżacji.
-* **`connection-string-setting` (opcjonalnie)** : Nazwa ustawienia aplikacji zawierającego parametry połączenia magazynu do użycia. Wartość domyślna to `AzureWebJobsStorage`.
-* **`task-hub-name` (opcjonalnie)** : nazwa centrum zadań Durable Functions do użycia. Domyślnie jest używana nazwa centrum zadań w pliku [host. JSON](durable-functions-bindings.md#host-json) .
+* (wymagane) : Identyfikator wystąpienia aranżacji. ** `id` **
+* (opcjonalnie) : Przyczyna przewijania instancji aranżacji. ** `reason` **
+* (opcjonalnie) : Nazwa ustawienia aplikacji zawierającego ciąg połączenia magazynu do użycia. ** `connection-string-setting` ** Wartość domyślna to `AzureWebJobsStorage`.
+* (opcjonalnie) : Nazwa centrum zadań Funkcje trwałe do użycia. ** `task-hub-name` ** Domyślnie używana jest nazwa centrum zadań w pliku [host.json.](durable-functions-bindings.md#host-json)
 
 ```bash
 func durable rewind --id 0ab8c55a66644d68a3a8b220b12d209c --reason "Orchestrator failed and needs to be revived."
@@ -664,11 +664,11 @@ func durable rewind --id 0ab8c55a66644d68a3a8b220b12d209c --reason "Orchestrator
 
 ## <a name="purge-instance-history"></a>Przeczyść historię wystąpień
 
-Aby usunąć wszystkie dane skojarzone z aranżacją, można przeczyścić historię wystąpień. Na przykład możesz chcieć usunąć wszystkie wiersze tabeli platformy Azure oraz duże obiekty blob komunikatów powiązane z ukończonym wystąpieniem. W tym celu należy użyć metody `PurgeInstanceHistoryAsync` (.NET) lub `purgeInstanceHistory` (JavaScript) [powiązania klienta aranżacji](durable-functions-bindings.md#orchestration-client).
+Aby usunąć wszystkie dane skojarzone z aranżacji, można przeczyścić historię wystąpień. Na przykład można usunąć wszystkie wiersze tabeli platformy Azure i duże obiekty blob wiadomości skojarzone z ukończonym wystąpieniem. Aby to zrobić, `PurgeInstanceHistoryAsync` użyj metody `purgeInstanceHistory` (.NET) lub (JavaScript) [powiązania klienta aranżacji](durable-functions-bindings.md#orchestration-client).
 
-Ta metoda ma dwa przeciążenia. Pierwsze Przeciążenie Przeczyszcza historię według identyfikatora wystąpienia aranżacji:
+Ta metoda ma dwa przeciążenia. Pierwsze przeciążenie przeczyszcza historię przez identyfikator wystąpienia aranżacji:
 
-# <a name="c"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C #](#tab/csharp)
 
 ```csharp
 [FunctionName("PurgeInstanceHistory")]
@@ -680,7 +680,7 @@ public static Task Run(
 }
 ```
 
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[Javascript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -691,13 +691,13 @@ module.exports = async function(context, instanceId) {
 };
 ```
 
-Zobacz [Uruchamianie wystąpień](#javascript-function-json) dla konfiguracji Function. JSON.
+Zobacz [Uruchom wystąpienia](#javascript-function-json) dla konfiguracji function.json.
 
 ---
 
-W następnym przykładzie pokazano funkcję wyzwalaną przez czasomierz, która Przeczyszcza historię wszystkich wystąpień aranżacji, które zakończyły się po upływie określonego interwału czasu. W tym przypadku usuwa dane dla wszystkich wystąpień zakończonych 30 lub więcej dni temu. Zaplanowano uruchomienie raz dziennie, przy 12% AM:
+W następnym przykładzie pokazano funkcję wyzwalaną czasomierzem, która przeczyści historię dla wszystkich wystąpień aranżacji, które zostały ukończone po określonym przedziale czasu. W takim przypadku usuwa dane dla wszystkich wystąpień ukończonych 30 lub więcej dni temu. Zaplanowano go raz dziennie, o godzinie 12:00:
 
-# <a name="c"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C #](#tab/csharp)
 
 ```csharp
 [FunctionName("PurgeInstanceHistory")]
@@ -716,13 +716,13 @@ public static Task Run(
 ```
 
 > [!NOTE]
-> Poprzedni C# kod jest przeznaczony dla Durable Functions 2. x. W przypadku Durable Functions 1. x należy użyć atrybutu `OrchestrationClient` zamiast atrybutu `DurableClient` i należy użyć typu parametru `DurableOrchestrationClient` zamiast `IDurableOrchestrationClient`. Aby uzyskać więcej informacji o różnicach między wersjami, zobacz artykuł dotyczący [wersji Durable Functions](durable-functions-versions.md) .
+> Poprzedni kod języka C# jest dla funkcji trwałych 2.x. W przypadku funkcji trwałych 1.x należy `OrchestrationClient` użyć `DurableClient` atrybutu zamiast atrybutu `DurableOrchestrationClient` i zamiast `IDurableOrchestrationClient`parametru . Aby uzyskać więcej informacji na temat różnic między wersjami, zobacz [wersje funkcji trwałych](durable-functions-versions.md) artykułu.
 
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[Javascript](#tab/javascript)
 
-Metoda `purgeInstanceHistoryBy` może służyć do warunkowego przeczyszczania historii wystąpień dla wielu wystąpień.
+Metoda `purgeInstanceHistoryBy` może służyć do warunkowego przeczyszczanie historii wystąpień dla wielu wystąpień.
 
-**Function. JSON**
+**funkcja.json**
 
 ```json
 {
@@ -744,9 +744,9 @@ Metoda `purgeInstanceHistoryBy` może służyć do warunkowego przeczyszczania h
 ```
 
 > [!NOTE]
-> Ten przykład dotyczy Durable Functions wersja 2. x. W wersji 1. x Użyj `orchestrationClient` zamiast `durableClient`.
+> W tym przykładzie jest przeznaczony dla funkcji trwałych w wersji 2.x. W wersji 1.x `orchestrationClient` użyj `durableClient`zamiast .
 
-**index. js**
+**indeks.js**
 
 ```javascript
 const df = require("durable-functions");
@@ -763,19 +763,19 @@ module.exports = async function (context, myTimer) {
 ---
 
 > [!NOTE]
-> Aby operacja przeczyszczania historii zakończyła się powodzeniem, stan czasu wykonywania wystąpienia docelowego musi **być zakończony**, **zakończony**lub **Niepowodzenie**.
+> Aby operacja historii przeczyszczenie powiodła się, stan środowiska uruchomieniowego wystąpienia docelowego musi zostać **zakończony,** **zakończony**lub **zakończony.**
 
-### <a name="azure-functions-core-tools"></a>Azure Functions Core Tools
+### <a name="azure-functions-core-tools"></a>Podstawowe narzędzia funkcji platformy Azure
 
-Historię wystąpienia aranżacji można przeczyścić, używając polecenia [Azure Functions Core Tools](../functions-run-local.md) `durable purge-history`. Podobnie jak w drugim C# przykładzie w poprzedniej sekcji, Przeczyszcza historię wszystkich wystąpień aranżacji utworzonych w określonym przedziale czasu. Możliwe jest dalsze filtrowanie przeczyszczonych wystąpień według stanu środowiska uruchomieniowego. Polecenie ma kilka parametrów:
+Historia wystąpienia aranżacji można przeczyścić za pomocą polecenia [Podstawowe narzędzia](../functions-run-local.md) `durable purge-history` azure functions. Podobnie jak w drugim przykładzie Języka C# w poprzedniej sekcji, przeczyści historię dla wszystkich wystąpień aranżacji utworzonych w określonym przedziale czasu. Można dodatkowo filtrować wyczyszczone wystąpienia według stanu środowiska uruchomieniowego. Polecenie ma kilka parametrów:
 
-* **`created-after` (opcjonalnie)** : Przeczyść historię wystąpień utworzonych po tej dacie/godzinie (UTC). Zaakceptowane daty i godziny w formacie ISO 8601.
-* **`created-before` (opcjonalnie)** : Przeczyść historię wystąpień utworzonych przed tą datą/godziną (UTC). Zaakceptowane daty i godziny w formacie ISO 8601.
-* **`runtime-status` (opcjonalnie)** : Przeczyść historię wystąpień z określonym stanem (na przykład uruchomioną lub ukończoną). Może zapewnić wiele stanów (rozdzielonych spacjami).
-* **`connection-string-setting` (opcjonalnie)** : Nazwa ustawienia aplikacji zawierającego parametry połączenia magazynu do użycia. Wartość domyślna to `AzureWebJobsStorage`.
-* **`task-hub-name` (opcjonalnie)** : nazwa centrum zadań Durable Functions do użycia. Domyślnie jest używana nazwa centrum zadań w pliku [host. JSON](durable-functions-bindings.md#host-json) .
+* (opcjonalnie) : Przeczyść historię wystąpień utworzonych po tej dacie/godzinie (UTC). ** `created-after` ** Iso 8601 sformatowany datetimes akceptowane.
+* (opcjonalnie) : Przeczyść historię wystąpień utworzonych przed tą datą/godziną (UTC). ** `created-before` ** Iso 8601 sformatowany datetimes akceptowane.
+* (opcjonalnie) : Przeczyść historię wystąpień o określonym stanie (na przykład uruchomione lub ukończone). ** `runtime-status` ** Może zapewnić wiele stanów (oddzielone spacjami).
+* (opcjonalnie) : Nazwa ustawienia aplikacji zawierającego ciąg połączenia magazynu do użycia. ** `connection-string-setting` ** Wartość domyślna to `AzureWebJobsStorage`.
+* (opcjonalnie) : Nazwa centrum zadań Funkcje trwałe do użycia. ** `task-hub-name` ** Domyślnie używana jest nazwa centrum zadań w pliku [host.json.](durable-functions-bindings.md#host-json)
 
-Następujące polecenie usuwa historię wszystkich wystąpień zakończonych niepowodzeniem, które zostały utworzone przed 14 listopada 2018 o 7:35 PM (UTC).
+Następujące polecenie usuwa historię wszystkich nieudanych wystąpień utworzonych przed 14 listopada 2018 r. o godzinie 19:35 (UTC).
 
 ```bash
 func durable purge-history --created-before 2018-11-14T19:35:00.0000000Z --runtime-status failed
@@ -783,12 +783,12 @@ func durable purge-history --created-before 2018-11-14T19:35:00.0000000Z --runti
 
 ## <a name="delete-a-task-hub"></a>Usuwanie centrum zadań
 
-Za pomocą polecenia [Azure Functions Core Tools](../functions-run-local.md) `durable delete-task-hub` można usunąć wszystkie artefakty magazynu skojarzone z konkretnym centrum zadań, w tym tabele, kolejki i obiekty blob usługi Azure Storage. Polecenie ma dwa parametry:
+Za pomocą polecenia [Podstawowe narzędzia](../functions-run-local.md) `durable delete-task-hub` azure functions można usunąć wszystkie artefakty magazynu skojarzone z centrum zadań określonego zadania, w tym tabele magazynu platformy Azure, kolejki i obiekty blob. Polecenie ma dwa parametry:
 
-* **`connection-string-setting` (opcjonalnie)** : Nazwa ustawienia aplikacji zawierającego parametry połączenia magazynu do użycia. Wartość domyślna to `AzureWebJobsStorage`.
-* **`task-hub-name` (opcjonalnie)** : nazwa centrum zadań Durable Functions do użycia. Domyślnie jest używana nazwa centrum zadań w pliku [host. JSON](durable-functions-bindings.md#host-json) .
+* (opcjonalnie) : Nazwa ustawienia aplikacji zawierającego ciąg połączenia magazynu do użycia. ** `connection-string-setting` ** Wartość domyślna to `AzureWebJobsStorage`.
+* (opcjonalnie) : Nazwa centrum zadań Funkcje trwałe do użycia. ** `task-hub-name` ** Domyślnie używana jest nazwa centrum zadań w pliku [host.json.](durable-functions-bindings.md#host-json)
 
-Następujące polecenie usuwa wszystkie dane usługi Azure Storage skojarzone z centrum zadań `UserTest`.
+Następujące polecenie usuwa wszystkie dane magazynu platformy `UserTest` Azure skojarzone z centrum zadań.
 
 ```bash
 func durable delete-task-hub --task-hub-name UserTest
@@ -797,7 +797,7 @@ func durable delete-task-hub --task-hub-name UserTest
 ## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Dowiedz się, jak obsługiwać przechowywanie wersji](durable-functions-versioning.md)
+> [Dowiedz się, jak radzić sobie z przechowywaniem wersji](durable-functions-versioning.md)
 
 > [!div class="nextstepaction"]
-> [Wbudowana dokumentacja interfejsu API protokołu HTTP do zarządzania wystąpieniami](durable-functions-http-api.md)
+> [Wbudowane odwołanie do interfejsu API HTTP do zarządzania wystąpieniami](durable-functions-http-api.md)

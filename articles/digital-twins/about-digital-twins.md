@@ -1,5 +1,5 @@
 ---
-title: Omówienie usługi Azure Digital bliźniaczych reprezentacji | Microsoft Docs
+title: Omówienie — cyfrowe bliźniacze platformy Azure | Dokumenty firmy Microsoft
 description: Dowiedz się więcej o usłudze Azure Digital Twins, rozwiązaniu IoT platformy Azure do analizy przestrzennej.
 ms.author: alinast
 author: alinamstanciu
@@ -10,21 +10,21 @@ ms.service: digital-twins
 services: digital-twins
 ms.custom: mvc
 ms.openlocfilehash: 91386eaf7753f2aefada2d1423a11b366c3ee924
-ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/14/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "79370903"
 ---
-# <a name="overview-of-azure-digital-twins-preview"></a>Omówienie usługi Azure Digital bliźniaczych reprezentacji Preview
+# <a name="overview-of-azure-digital-twins-preview"></a>Omówienie usługi Azure Digital Twins Preview
 
 [!INCLUDE [digital-twins-preview-limit-alert](../../includes/digital-twins-preview-limit-alert.md)]
 
-Azure Digital bliźniaczych reprezentacji w wersji zapoznawczej to usługa Azure IoT, która tworzy kompleksowe modele środowiska fizycznego. Umożliwia ona tworzenie grafów analizy przestrzennej do modelowania relacji i interakcji między osobami, obszarami i urządzeniami.
+Usługa Azure Digital Twins Preview to usługa Azure IoT, która tworzy kompleksowe modele środowiska fizycznego. Umożliwia ona tworzenie grafów analizy przestrzennej do modelowania relacji i interakcji między osobami, obszarami i urządzeniami.
 
 Usługa Azure Digital Twins pozwala na wykonywanie zapytań o dane z obszaru fizycznego, zamiast z wielu różnorodnych czujników. Ta usługa pomaga w konstruowaniu środowisk wielokrotnego użytku o wysokim stopniu skalowalności, rozpoznających przestrzeń, które łączą dane przesyłane strumieniowo z cyfrowego i fizycznego świata. Twoje aplikacje są rozszerzone o te wyjątkowo dobrze dobrane funkcje kontekstowe. 
 
-Usługa Azure Digital bliźniaczych reprezentacji ma zastosowanie do wszystkich typów środowisk, takich jak magazyny, biura, szkoły, szpitale i banki. Można jej używać nawet w przypadku stadionów, fabryk, parkingów, parków, sieci inteligentnych i miast. Poniżej przedstawiono kilka scenariuszy, w których usługa Azure Digital bliźniaczych reprezentacji może być przydatna:
+Usługa Azure Digital Twins ma zastosowanie do wszystkich typów środowisk, takich jak magazyny, biura, szkoły, szpitale i banki. Można jej używać nawet w przypadku stadionów, fabryk, parkingów, parków, sieci inteligentnych i miast. Oto kilka scenariuszy, w których usługa Azure Digital Twins może być pomocna:
 
 - Przewidywanie potrzeb związanych z konserwacją w fabryce.
 - Analizowanie wymagań energetycznych w czasie rzeczywistym dla sieci elektrycznej.
@@ -35,7 +35,7 @@ Usługa Azure Digital bliźniaczych reprezentacji ma zastosowanie do wszystkich 
 - Analizowanie poziomów zajętości budynku.
 - Znajdowanie najbardziej zajętej kasy w sklepie.
 
-Każdy rzeczywisty scenariusz biznesowy to prawdopodobnie odpowiednie wystąpienie cyfrowe można zainicjować za pomocą usługi Azure Digital bliźniaczych reprezentacji.
+Niezależnie od rzeczywistego scenariusza biznesowego jest prawdopodobnie odpowiednie wystąpienie cyfrowe mogą być aprowidzone za pośrednictwem usługi Azure Digital Twins.
 
 W poniższym klipie wideo bardziej szczegółowo omówiono usługę Azure Digital Twins.
 
@@ -53,9 +53,9 @@ Wyobraź sobie inteligentną aplikację narzędziową, która obejmuje kilka mie
 
 ### <a name="digital-twin-object-models"></a>Cyfrowe modele obiektów bliźniaczych
 
-[Cyfrowe modele obiektów bliźniaczych](./concepts-objectmodel-spatialgraph.md#digital-twins-object-models) to wstępnie zdefiniowane protokoły urządzeń i schematy danych. Dopasowują one potrzebę specyficzną dla domeny rozwiązania, aby przyspieszyć i uprościć programowanie.
+[Cyfrowe modele obiektów bliźniaczych](./concepts-objectmodel-spatialgraph.md#digital-twins-object-models) to wstępnie zdefiniowane protokoły urządzeń i schematy danych. Dostosowują one potrzeby specyficzne dla danej domeny rozwiązania, aby przyspieszyć i uprościć program.
 
-Na przykład aplikacja pokojowa może korzystać ze wstępnie zdefiniowanych typów miejsca, takich jak kampus, budynek, piętro i pokój.
+Na przykład aplikacja obłożenia pokoju może używać wstępnie zdefiniowanych typów przestrzeni, takich jak kampus, budynek, piętro i pomieszczenie.
 
 ### <a name="multiple-and-nested-tenants"></a>Wiele dzierżaw i dzierżawy zagnieżdżone
 
@@ -95,9 +95,9 @@ Usługa Azure Digital Twins przydaje się do reprezentowania świata fizycznego 
 
 Usługa Azure Digital Twins używa usługi Azure IoT Hub w celu łączenia urządzeń IoT i czujników, które na bieżąco aktualizują dane ze świata fizycznego. Na poniższym diagramie pokazano, jak usługa Azure Digital Twins odnosi się do innych usług Azure IoT.
 
-[![Azure Digital bliźniaczych reprezentacji to usługa oparta na platformie Azure IoT Hub](media/overview/azure-digital-twins-in-iot-ecosystem.png)](media/overview/azure-digital-twins-in-iot-ecosystem.png#lightbox)
+[![Usługa Azure Digital Twins to usługa oparta na usłudze Azure IoT Hub](media/overview/azure-digital-twins-in-iot-ecosystem.png)](media/overview/azure-digital-twins-in-iot-ecosystem.png#lightbox)
 
-Aby uzyskać więcej informacji na temat IoT, Przeczytaj [technologie i rozwiązania Azure IoT](../iot-fundamentals/iot-services-and-technologies.md).
+Aby uzyskać więcej informacji na temat IoT, przeczytaj [technologie i rozwiązania Azure IoT](../iot-fundamentals/iot-services-and-technologies.md).
 
 ## <a name="next-steps"></a>Następne kroki
 

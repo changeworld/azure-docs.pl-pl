@@ -1,6 +1,6 @@
 ---
 title: Dostosowywanie reguł przy użyciu interfejsu wiersza polecenia — Zapora aplikacji sieci Web platformy Azure
-description: Ten artykuł zawiera informacje dotyczące sposobu dostosowywania reguł zapory aplikacji sieci Web w Application Gateway przy użyciu interfejsu wiersza polecenia platformy Azure.
+description: Ten artykuł zawiera informacje dotyczące dostosowywania reguł zapory aplikacji sieci Web w bramie aplikacji za pomocą interfejsu wiersza polecenia platformy Azure.
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
@@ -8,29 +8,29 @@ ms.date: 11/14/2019
 ms.author: victorh
 ms.topic: article
 ms.openlocfilehash: 8e8aaa9458619bc937c5bb11c450f3197b92f451
-ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74048531"
 ---
 # <a name="customize-web-application-firewall-rules-using-the-azure-cli"></a>Dostosowywanie reguł zapory aplikacji sieci Web przy użyciu interfejsu wiersza polecenia platformy Azure
 
-Zapora aplikacji sieci Web Application Gateway Azure (WAF) zapewnia ochronę aplikacji sieci Web. Te zabezpieczenia są udostępniane przez zestaw reguł programu Open Web Application Security (OWASP) Core (KSR). Niektóre reguły mogą spowodować fałszywie dodatnie i blokować rzeczywisty ruch. Z tego powodu Application Gateway oferuje możliwość dostosowywania grup reguł i reguł. Aby uzyskać więcej informacji na temat określonych grup reguł i reguł, zobacz [Lista zasad i reguł reguł KSR aplikacji sieci Web](application-gateway-crs-rulegroups-rules.md).
+Zapora aplikacji bramy aplikacji azure (WAF) zapewnia ochronę aplikacji sieci web. Zabezpieczenia te są dostarczane przez podstawowy zestaw reguł projektu OWASP (Open Web Application Security Project). Niektóre reguły mogą powodować fałszywe alarmy i blokować rzeczywisty ruch. Z tego powodu brama aplikacji umożliwia dostosowanie grup reguł i reguł. Aby uzyskać więcej informacji na temat określonych grup i reguł reguł, zobacz [Lista grup reguł i reguł crs zapory aplikacji sieci Web](application-gateway-crs-rulegroups-rules.md).
 
-## <a name="view-rule-groups-and-rules"></a>Wyświetlanie zasad i grup reguł
+## <a name="view-rule-groups-and-rules"></a>Wyświetlanie grup reguł i reguł
 
-Poniższy przykład kodu pokazuje, jak wyświetlać reguły i grupy reguł, które można konfigurować.
+Poniższe przykłady kodu pokazują, jak wyświetlić reguły i grupy reguł, które można skonfigurować.
 
-### <a name="view-rule-groups"></a>Wyświetl grupy reguł
+### <a name="view-rule-groups"></a>Wyświetlanie grup reguł
 
-Poniższy przykład pokazuje, jak wyświetlić grupy reguł:
+W poniższym przykładzie pokazano, jak wyświetlić grupy reguł:
 
 ```azurecli-interactive
 az network application-gateway waf-config list-rule-sets --type OWASP
 ```
 
-Następujące dane wyjściowe to obcięta odpowiedź z powyższego przykładu:
+Następujące dane wyjściowe są obciętą odpowiedzią z poprzedniego przykładu:
 
 ```json
 [
@@ -77,13 +77,13 @@ Następujące dane wyjściowe to obcięta odpowiedź z powyższego przykładu:
 
 ### <a name="view-rules-in-a-rule-group"></a>Wyświetlanie reguł w grupie reguł
 
-Poniższy przykład pokazuje, jak wyświetlić reguły w określonej grupie reguł:
+W poniższym przykładzie pokazano, jak wyświetlić reguły w określonej grupie reguł:
 
 ```azurecli-interactive
 az network application-gateway waf-config list-rule-sets --group "REQUEST-910-IP-REPUTATION"
 ```
 
-Następujące dane wyjściowe to obcięta odpowiedź z powyższego przykładu:
+Następujące dane wyjściowe są obciętą odpowiedzią z poprzedniego przykładu:
 
 ```json
 [
@@ -114,7 +114,7 @@ Następujące dane wyjściowe to obcięta odpowiedź z powyższego przykładu:
 ]
 ```
 
-## <a name="disable-rules"></a>Wyłączanie reguł
+## <a name="disable-rules"></a>Wyłącz reguły
 
 Poniższy przykład wyłącza reguły `910018` i `910017` na bramie aplikacji:
 
@@ -122,22 +122,22 @@ Poniższy przykład wyłącza reguły `910018` i `910017` na bramie aplikacji:
 az network application-gateway waf-config set --resource-group AdatumAppGatewayRG --gateway-name AdatumAppGateway --enabled true --rule-set-version 3.0 --disabled-rules 910018 910017
 ```
 
-## <a name="mandatory-rules"></a>Reguły obowiązkowe
+## <a name="mandatory-rules"></a>Przepisy obowiązkowe
 
-Poniższa lista zawiera warunki, które powodują, że WAF zablokują żądanie w trybie zapobiegania (w trybie wykrywania są rejestrowane jako wyjątki). Nie można ich skonfigurować ani wyłączyć:
+Poniższa lista zawiera warunki, które powodują, że WAF zablokować żądanie w trybie zapobiegania (w trybie wykrywania są rejestrowane jako wyjątki). Tych nie można skonfigurować ani wyłączyć:
 
-* Nie można przeanalizować treści żądania w wyniku zablokowania żądania, chyba że inspekcja treści jest wyłączona (XML, JSON, dane formularza)
+* Niesprzejęcie analizy treści żądania powoduje zablokowanie żądania, chyba że inspekcja ciała jest wyłączona (XML, JSON, dane formularza)
 * Długość danych treści żądania (bez plików) jest większa niż skonfigurowany limit
-* Treść żądania (w tym pliki) jest większa niż limit
-* Wystąpił błąd wewnętrzny w aparacie WAF
+* Treść żądania (łącznie z plikami) jest większa niż limit
+* Wystąpił błąd wewnętrzny w silniku WAF
 
-Specyficzne dla KSR 3. x:
+CRS 3.x specyficzne:
 
-* Próg limitu przychodzącego wyniku anomalii
+* Wynik anomalii ruchu przychodzącego przekroczył próg
 
 ## <a name="next-steps"></a>Następne kroki
 
-Po skonfigurowaniu wyłączonych reguł można dowiedzieć się, jak wyświetlić dzienniki WAF. Aby uzyskać więcej informacji, zobacz [Application Gateway Diagnostics](../../application-gateway/application-gateway-diagnostics.md#diagnostic-logging).
+Po skonfigurowaniu wyłączonych reguł możesz dowiedzieć się, jak wyświetlać dzienniki WAF. Aby uzyskać więcej informacji, zobacz [Diagnostyka bramy aplikacji](../../application-gateway/application-gateway-diagnostics.md#diagnostic-logging).
 
 [fig1]: ./media/application-gateway-customize-waf-rules-portal/1.png
 [1]: ./media/application-gateway-customize-waf-rules-portal/figure1.png

@@ -1,29 +1,29 @@
 ---
-title: Szczegóły struktury przypisania zasad
-description: Zawiera opis definicji przypisania zasad używanej przez Azure Policy do powiązania definicji zasad i parametrów z zasobami do oceny.
+title: Szczegóły struktury przypisywania zasad
+description: W tym artykule opisano definicję przypisania zasad używaną przez usługę Azure Policy do powiązania definicji zasad i parametrów z zasobami do oceny.
 ms.date: 09/23/2019
 ms.topic: conceptual
 ms.openlocfilehash: f03c654dfc4c8dfdf2bdc5103a5961b4d8ce1e64
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79265300"
 ---
 # <a name="azure-policy-assignment-structure"></a>Struktura przypisań usługi Azure Policy
 
-Przypisania zasad są używane przez Azure Policy do definiowania zasobów, które są przypisane do zasad lub inicjatyw. Przypisanie zasad pozwala określić wartości parametrów dla tej grupy zasobów w czasie przypisywania, dzięki czemu można ponownie użyć definicji zasad, które odnoszą się do tych samych właściwości zasobów z różnymi potrzebami zgodności.
+Przypisania zasad są używane przez usługę Azure Policy do definiowania, które zasoby są przypisywane, które zasady lub inicjatywy. Przypisanie zasad można określić wartości parametrów dla tej grupy zasobów w czasie przydziału, dzięki czemu można ponownie użyć definicji zasad, które dotyczą tych samych właściwości zasobów z różnych potrzeb zgodności.
 
-Aby utworzyć przypisanie zasad, należy użyć formatu JSON. Przypisanie zasad zawiera elementy dla:
+JSON służy do tworzenia przypisania zasad. Przypisanie zasad zawiera elementy dla:
 
-- Nazwa wyświetlana
+- nazwa wyświetlana
 - description
 - metadane
-- Tryb wymuszania
-- Definicja zasad
+- tryb egzekwowania
+- definicja zasad
 - parameters
 
-Na przykład poniższy kod JSON przedstawia przypisanie zasad w trybie _DoNotEnforce_ z parametrami dynamicznymi:
+Na przykład następujący JSON pokazuje przypisanie zasad w trybie _DoNotEnforce_ z parametrami dynamicznymi:
 
 ```json
 {
@@ -47,34 +47,34 @@ Na przykład poniższy kod JSON przedstawia przypisanie zasad w trybie _DoNotEnf
 }
 ```
 
-Wszystkie przykłady Azure Policy znajdują się na [Azure Policy próbkach](../samples/index.md).
+Wszystkie przykłady zasad platformy Azure znajdują się w [przykładach zasad platformy Azure.](../samples/index.md)
 
-## <a name="display-name-and-description"></a>Nazwę wyświetlaną i opis
+## <a name="display-name-and-description"></a>Wyświetlana nazwa i opis
 
-Użyj **DisplayName** i **Description** , aby zidentyfikować przypisanie zasad i zapewnić kontekst do użycia z określonym zestawem zasobów. **Nazwa wyświetlana** ma maksymalną długość _128_ znaków i **Opis** ma maksymalną długość _512_ znaków.
+**DisplayName** i **opis** służy do identyfikowania przypisania zasad i podaj kontekst do jego użycia z określonym zestawem zasobów. **displayName** ma maksymalną długość _128_ znaków i **opis** maksymalną długość _512_ znaków.
 
-## <a name="enforcement-mode"></a>Tryb wymuszania
+## <a name="enforcement-mode"></a>Tryb egzekwowania
 
-Właściwość **wymuszmode** zapewnia klientom możliwość testowania wyniku zasad w istniejących zasobach bez zainicjowania efektu zasad ani wyzwalania wpisów w [dzienniku aktywności platformy Azure](../../../azure-monitor/platform/platform-logs-overview.md). Ten scenariusz jest często określany jako "What If" i wyrównany do bezpiecznych praktyk wdrażania. **wymuszanie** różni się od [wyłączonego](./effects.md#disabled) efektu, ponieważ ten efekt uniemożliwia wykonywanie oceny zasobów.
+Właściwość **enforcementMode** zapewnia klientom możliwość testowania wyników zasad dotyczących istniejących zasobów bez inicjowania efektu zasad lub wyzwalania wpisów w [dzienniku aktywności platformy Azure.](../../../azure-monitor/platform/platform-logs-overview.md) Ten scenariusz jest powszechnie określany jako "Co jeśli" i dostosowuje się do bezpiecznych praktyk wdrażania. **enforcementMode** różni się od [wyłączonego](./effects.md#disabled) efektu, ponieważ ten efekt zapobiega oceny zasobów w ogóle.
 
 Ta właściwość ma następujące wartości:
 
-|Tryb |Wartość JSON |Typ |Koryguj ręcznie |Wpis dziennika aktywności |Opis |
+|Tryb |Wartość JSON |Typ |Korygowanie ręcznie |Wpis dziennika aktywności |Opis |
 |-|-|-|-|-|-|
-|Enabled (Włączony) |Domyślne |ciąg |Yes |Yes |Efekt zasad jest wymuszany podczas tworzenia lub aktualizowania zasobu. |
-|Disabled (Wyłączony) |DoNotEnforce |ciąg |Yes |Nie | Efekt zasad nie jest wymuszany podczas tworzenia lub aktualizowania zasobu. |
+|Enabled (Włączony) |Domyślne |ciąg |Tak |Tak |Efekt zasad jest wymuszany podczas tworzenia lub aktualizowania zasobów. |
+|Disabled (Wyłączony) |DoNotEnforce (DoNotEnforce) |ciąg |Tak |Nie | Efekt zasad nie jest wymuszany podczas tworzenia lub aktualizowania zasobów. |
 
-Jeśli w definicji zasad lub inicjatywy nie określono **wymuszania** , używana jest wartość _Domyślna_ . [Zadania korygowania](../how-to/remediate-resources.md) można uruchamiać dla zasad [deployIfNotExists](./effects.md#deployifnotexists) , nawet jeśli ustawienie **wymuszania** ma wartość _DoNotEnforce_.
+Jeśli **tryb enforcementMode** nie jest określony w definicji zasad lub inicjatywy, używana jest wartość _Domyślna._ [Zadania korygowania](../how-to/remediate-resources.md) można uruchomić dla [wdrażaniaIfNotExists](./effects.md#deployifnotexists) zasad, nawet wtedy, gdy **enforcementMode** jest ustawiona na _DoNotEnforce_.
 
 ## <a name="policy-definition-id"></a>Identyfikator definicji zasad
 
-To pole musi zawierać pełną nazwę ścieżki definicji zasad lub definicji inicjatywy.
-`policyDefinitionId` jest ciągiem, a nie tablicą. Zaleca się, aby w zamian była często przypisywanych wielu zasad w celu użycia [inicjatywy](./definition-structure.md#initiatives) .
+To pole musi być pełną nazwą ścieżki definicji zasad lub definicji inicjatywy.
+`policyDefinitionId`jest ciągiem, a nie tablicą. Zaleca się, aby w przypadku często przypisywanych do siebie wielu zasad, zamiast tego użyć [inicjatywy.](./definition-structure.md#initiatives)
 
 ## <a name="parameters"></a>Parametry
 
-Ten segment przydziału zasad zawiera wartości parametrów zdefiniowanych w [definicji zasad lub definicji inicjatywy](./definition-structure.md#parameters).
-Dzięki temu projektowi można ponownie używać zasad lub definicji inicjatywy z różnymi zasobami, ale sprawdzać różne wartości biznesowe lub wyniki.
+Ten segment przypisania zasad zawiera wartości parametrów zdefiniowanych w [definicji zasad lub definicji inicjatywy](./definition-structure.md#parameters).
+Ten projekt umożliwia ponowne użycie definicji zasad lub inicjatywy z różnymi zasobami, ale sprawdź różne wartości biznesowe lub wyniki.
 
 ```json
 "parameters": {
@@ -87,12 +87,12 @@ Dzięki temu projektowi można ponownie używać zasad lub definicji inicjatywy 
 }
 ```
 
-W tym przykładzie parametry wcześniej zdefiniowane w definicji zasad są `prefix` i `suffix`. To konkretne przypisanie zasad ustawia `prefix` na **Wydział** i `suffix` do **-LC**. Ta sama definicja zasad jest wielokrotnego użytku z innym zestawem parametrów dla innego działu, zmniejszając duplikowanie i złożoność definicji zasad przy jednoczesnym zapewnianiu elastyczności.
+W tym przykładzie parametry zdefiniowane wcześniej `prefix` w `suffix`definicji zasad są i . To konkretne przypisanie zasad `prefix` ustawia `suffix` **deptA** i **-LC**. Ta sama definicja zasad jest wielokrotnego użytku z innym zestawem parametrów dla innego działu, zmniejszając powielanie i złożoność definicji zasad, zapewniając jednocześnie elastyczność.
 
 ## <a name="next-steps"></a>Następne kroki
 
 - Dowiedz się więcej o [strukturze definicji zasad](./definition-structure.md).
-- Dowiedz się, jak [programowo utworzyć zasady](../how-to/programmatically-create.md).
-- Dowiedz się, jak [uzyskać dane zgodności](../how-to/get-compliance-data.md).
-- Dowiedz się, jak [skorygować niezgodne zasoby](../how-to/remediate-resources.md).
-- Zapoznaj się z informacjami o tym, czym jest Grupa zarządzania, aby [zorganizować swoje zasoby za pomocą grup zarządzania platformy Azure](../../management-groups/overview.md).
+- Dowiedz się, jak [programowo tworzyć zasady](../how-to/programmatically-create.md).
+- Dowiedz się, jak [uzyskać dane dotyczące zgodności](../how-to/get-compliance-data.md).
+- Dowiedz się, jak [korygować niezgodne zasoby](../how-to/remediate-resources.md).
+- Sprawdź, czym jest grupa zarządzania, [organizuj swoje zasoby za pomocą grup zarządzania platformy Azure](../../management-groups/overview.md).

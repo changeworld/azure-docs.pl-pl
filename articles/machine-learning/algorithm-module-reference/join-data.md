@@ -1,7 +1,7 @@
 ---
-title: 'Dołącz dane: odwołanie do modułu'
+title: 'Dane sprzężenia: Odwołanie do modułu'
 titleSuffix: Azure Machine Learning
-description: Dowiedz się, jak scalić zestawy danych za pomocą modułu Join Data JOIN w Azure Machine Learning.
+description: Dowiedz się, jak scalić zestawy danych za pomocą modułu dołączanie danych w usłudze Azure Machine Learning.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,63 +9,63 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 11/19/2019
-ms.openlocfilehash: a154874f4f1026b36da473ba18788fc804609ac9
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.openlocfilehash: 38606f424e38fc68519181f485b5b698d0705d6a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77152231"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79477582"
 ---
 # <a name="join-data"></a>Łączenie danych
 
-W tym artykule opisano sposób korzystania z modułu **dołączania danych** w programie Azure Machine Learning Designer (wersja zapoznawcza) w celu scalenia dwóch zestawów danych przy użyciu operacji łączenia w stylu bazy danych.  
+W tym artykule opisano, jak używać modułu **Dołącz dane** w projektancie usługi Azure Machine Learning (wersja zapoznawcza) do scalania dwóch zestawów danych przy użyciu operacji sprzężenia w stylu bazy danych.  
 
-## <a name="how-to-configure-join-data"></a>Jak skonfigurować dane sprzężenia
+## <a name="how-to-configure-join-data"></a>Jak skonfigurować dane dołączania
 
-Aby wykonać sprzężenie na dwóch zestawach danych, powinny one być powiązane z kolumną klucza. Obsługiwane są również klucze złożone używające wielu kolumn. 
+Aby wykonać sprzężenie na dwóch zestawach danych, powinny one być powiązane przez kolumnę klucza. Obsługiwane są również klucze złożone przy użyciu wielu kolumn. 
 
 1. Dodaj zestawy danych, które chcesz połączyć, a następnie przeciągnij moduł **Dołącz dane** do potoku. 
 
-    Moduł można znaleźć w kategorii **Przekształcanie danych** w obszarze **manipulowanie**.
+    Moduł można znaleźć w kategorii **Transformacja danych** w obszarze **Manipulacja**.
 
-1. Połącz zestawy danych z modułem **Join Data** . 
+1. Połącz zestawy danych z modułem **Dołącz dane.** 
  
-1. Wybierz pozycję **Uruchom selektor kolumny** , aby wybrać kolumny klucza. Pamiętaj, aby wybrać kolumny dla wejść w lewo i w prawo.
+1. Wybierz **selektor kolumny Uruchom,** aby wybrać kolumny kluczy. Pamiętaj, aby wybrać kolumny dla lewego i prawego wejścia.
 
-    Dla pojedynczego klucza:
+    Dla pojedynczego klawisza:
 
-    Wybierz jedną kolumnę klucza dla obu danych wejściowych.
+    Wybierz pojedynczą kolumnę klucza dla obu wejść.
     
     Dla klucza złożonego:
 
-    Zaznacz wszystkie kolumny kluczy od lewej i prawej strony w tej samej kolejności. Moduł **łączenia danych** zostanie dołączony do tabel, gdy wszystkie kolumny klucza są zgodne. Zaznacz opcję **Zezwalaj na duplikowanie i Zachowaj kolejność kolumn w zaznaczeniu** , jeśli kolejność kolumn nie jest taka sama jak oryginalna tabela. 
+    Zaznacz wszystkie kolumny kluczy z lewego wejścia i prawego wejścia w tej samej kolejności. Moduł **Dołącz dane** dołączy do tabel, gdy wszystkie kolumny kluczy są zgodne. Zaznacz opcję **Zezwalaj na duplikaty i zachowaj kolejność kolumn w zaznaczeniu,** jeśli kolejność kolumn nie jest taka sama jak w oryginalnej tabeli. 
 
-    ![Selektor kolumn](media/module/join-data-column-selector.png)
+    ![selektor kolumn](media/module/join-data-column-selector.png)
 
 
-1. Wybierz opcję **Uwzględnij wielkość** liter, jeśli chcesz zachować czułość wielkości liter w sprzężeniu kolumny tekstowej. 
+1. Zaznacz opcję **Dopasuj wielkość liter,** jeśli chcesz zachować wielkość liter w sprzęcie kolumny tekstowej. 
    
-1. Użyj listy rozwijanej **Typ sprzężenia** , aby określić sposób łączenia zestawów danych.  
+1. Lista rozwijana **typu sprzężenia** służy do określania sposobu łączenia zestawów danych.  
   
-    * **Sprzężenie wewnętrzne**: *sprzężenie wewnętrzne* jest najpopularniejszą operacją Join. Zwraca połączone wiersze tylko wtedy, gdy wartości kolumn klucza są zgodne.  
+    * **Sprzężenie wewnętrzne:** *Sprzężenie wewnętrzne* jest najczęstszą operacją sprzężenia. Zwraca połączone wiersze tylko wtedy, gdy wartości kolumn klucza są zgodne.  
   
-    * **Lewe sprzężenie zewnętrzne**: *lewe sprzężenie zewnętrzne* zwraca dołączone wiersze dla wszystkich wierszy z tabeli po lewej. Gdy wiersz w lewej tabeli nie ma pasujących wierszy w prawej tabeli, zwracany wiersz zawiera brakujące wartości dla wszystkich kolumn, które pochodzą z prawej tabeli. Możesz również określić wartość zastępczą dla brakujące wartości.  
+    * **Lewe sprzężenie zewnętrzne:** *Lewe sprzężenie zewnętrzne* zwraca połączone wiersze dla wszystkich wierszy z lewej tabeli. Gdy wiersz w lewej tabeli nie ma pasujących wierszy w prawej tabeli, zwrócony wiersz zawiera brakujące wartości dla wszystkich kolumn, które pochodzą z prawej tabeli. Można również określić wartość zastępczą dla brakujących wartości.  
   
-    * **Pełne sprzężenie zewnętrzne**: *pełne sprzężenie zewnętrzne* zwraca wszystkie wiersze z tabeli po lewej (**Tabela1**) i z prawej tabeli (**tabela2**).  
+    * **Pełne sprzężenie** *zewnętrzne: Pełne sprzężenie zewnętrzne* zwraca wszystkie wiersze z lewej**tabeli (tabela1)** i z prawej**tabeli (tabela2).**  
   
-         W przypadku każdego z wierszy w tabeli, które nie mają pasujących wierszy w drugim, wynik zawiera wiersz zawierający brakujące wartości.  
+         Dla każdego z wierszy w każdej tabeli, które nie mają pasujących wierszy w drugiej, wynik zawiera wiersz zawierający brakujące wartości.  
   
-    * **Lewe odłączenie**: *lewe odłączenie* zwraca tylko wartości z tabeli po lewej, gdy wartości kolumn klucza są zgodne.  
+    * **Lewe półskładnienie:** *Lewe półskładnik* zwraca tylko wartości z lewej tabeli, gdy wartości kolumn klucza są zgodne.  
 
-1. Dla opcji **Zachowaj kolumny klucza prawego w połączonej tabeli**:
+1. Dla opcji **Zachowaj prawe kolumny kluczy w tabeli połączonej:**
 
     * Wybierz tę opcję, aby wyświetlić klucze z obu tabel wejściowych.
-    * Usuń zaznaczenie, aby zwrócić tylko kolumny klucza z lewej strony.
+    * Usuń zaznaczenie, aby zwrócić tylko kolumny kluczy z lewego wejścia.
 
-1. Uruchamianie potoku.
+1. Prześlij potok.
 
-1. Aby wyświetlić wyniki, kliknij prawym przyciskiem myszy **dane sprzężenia** i wybierz polecenie **Wizualizuj**.
+1. Aby wyświetlić wyniki, kliknij prawym przyciskiem myszy **pozycję Dołącz do danych** i wybierz polecenie **Wizualizuj**.
 
 ## <a name="next-steps"></a>Następne kroki
 
-Zapoznaj się z [zestawem modułów dostępnych](module-reference.md) do Azure Machine Learning. 
+Zobacz [zestaw modułów dostępnych dla](module-reference.md) usługi Azure Machine Learning. 

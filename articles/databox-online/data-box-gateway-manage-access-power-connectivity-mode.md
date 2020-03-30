@@ -1,6 +1,6 @@
 ---
-title: Azure Data Box Gateway dostęp do urządzenia, Włączanie i tryb łączności
-description: Zawiera opis sposobu zarządzania dostępem, możliwością i trybem łączności dla urządzenia Azure Data Box Gateway, które ułatwia transfer danych do platformy Azure
+title: Dostęp do urządzenia usługi Azure Data Box Gateway, tryb zasilania i łączności
+description: W tym artykule opisano sposób zarządzania trybem dostępu, zasilania i łączności dla urządzenia usługi Azure Data Box Gateway, które ułatwia przesyłanie danych na platformę Azure
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,78 +8,78 @@ ms.subservice: gateway
 ms.topic: article
 ms.date: 06/03/2019
 ms.author: alkohli
-ms.openlocfilehash: e2e82c551117f2ae96e026b39c08ccf56e7ce8e2
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: e4d85bd460c39964c9f42ac946e3522f5f129c1c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79265456"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79474445"
 ---
-# <a name="manage-access-power-and-connectivity-mode-for-your-azure-data-box-gateway"></a>Zarządzanie dostępem, możliwością i trybem łączności dla Azure Data Box Gateway
+# <a name="manage-access-power-and-connectivity-mode-for-your-azure-data-box-gateway"></a>Zarządzanie trybem dostępu, zasilania i łączności bramy usługi Azure Data Box Gateway
 
-W tym artykule opisano sposób zarządzania dostępem, możliwością i trybem łączności dla Azure Data Box Gateway. Te operacje są wykonywane za pośrednictwem lokalnego interfejsu użytkownika sieci Web lub Azure Portal.
+W tym artykule opisano sposób zarządzania trybem dostępu, zasilania i łączności bramy usługi Azure Data Box Gateway. Te operacje są wykonywane za pośrednictwem lokalnego interfejsu użytkownika sieci web lub witryny Azure portal.
 
 W tym artykule omówiono sposób wykonywania następujących zadań:
 
 > [!div class="checklist"]
-> * Zarządzanie dostępem do urządzeń
+> * Zarządzanie dostępem do urządzenia
 > * Zarządzanie trybem łączności
-> * Zarządzanie mocą
+> * Zarządzanie zasilaniem
 
-## <a name="manage-device-access"></a>Zarządzanie dostępem do urządzeń
+## <a name="manage-device-access"></a>Zarządzanie dostępem do urządzenia
 
-Dostęp do urządzenia Data Box Gateway jest kontrolowany przy użyciu hasła urządzenia. Hasło można zmienić za pomocą lokalnego interfejsu użytkownika sieci Web. Możesz również zresetować hasło urządzenia w Azure Portal.
+Dostęp do urządzenia Data Box Gateway jest kontrolowany przez użycie hasła urządzenia. Hasło można zmienić za pośrednictwem lokalnego interfejsu użytkownika sieci Web. Hasło urządzenia można również zresetować w witrynie Azure portal.
 
 ### <a name="change-device-password"></a>Zmienianie hasła urządzenia
 
 Wykonaj następujące kroki w lokalnym interfejsie użytkownika, aby zmienić hasło urządzenia.
 
-1. W lokalnym interfejsie użytkownika sieci Web przejdź do pozycji **konserwacja, > zmienić hasła**.
-2. Wprowadź bieżące hasło, a następnie nowe hasło. Podane hasło musi zawierać od 8 do 16 znaków. Hasło musi zawierać 3 z następujących znaków: wielkie litery, małe litery, cyfry i znaki specjalne. Potwierdź nowe hasło.
+1. W lokalnym interfejsie użytkownika sieci Web przejdź do **ustawienia konserwacji > zmiana hasła**.
+2. Wprowadź bieżące hasło, a następnie nowe hasło. Podane hasło musi zawierać od 8 do 16 znaków. Hasło musi zawierać 3 z następujących znaków: wielkie, małe, numeryczne i znaki specjalne. Potwierdź nowe hasło.
 
     ![Zmień hasło](media/data-box-gateway-manage-access-power-connectivity-mode/change-password-1.png)
 
-3. Kliknij pozycję **Zmień hasło**.
+3. Kliknij **pozycję Zmień hasło**.
  
 ### <a name="reset-device-password"></a>Resetowanie hasła urządzenia
 
-Resetowanie przepływu pracy nie wymaga od użytkownika odwoływania starego hasła i jest przydatne, gdy hasło zostanie utracone. Ten przepływ pracy jest wykonywany w Azure Portal.
+Przepływ pracy resetowania nie wymaga od użytkownika odwołania starego hasła i jest przydatny w przypadku utraty hasła. Ten przepływ pracy jest wykonywany w witrynie Azure portal.
 
-1. W Azure Portal przejdź do **omówienia > Resetowanie hasła administratora**.
+1. W witrynie Azure portal przejdź do **pozycji Przegląd > Resetowanie hasła administratora**.
 
     ![Resetowanie hasła](media/data-box-gateway-manage-access-power-connectivity-mode/reset-password-1.png)
 
  
-2. Wprowadź nowe hasło, a następnie potwierdź je. Podane hasło musi zawierać od 8 do 16 znaków. Hasło musi zawierać 3 z następujących znaków: wielkie litery, małe litery, cyfry i znaki specjalne. Kliknij przycisk **Resetuj**.
+2. Wprowadź nowe hasło, a następnie potwierdź. Podane hasło musi zawierać od 8 do 16 znaków. Hasło musi zawierać 3 z następujących znaków: wielkie, małe, numeryczne i znaki specjalne. Kliknij **przycisk Resetuj**.
 
     ![Resetowanie hasła](media/data-box-gateway-manage-access-power-connectivity-mode/reset-password-2.png)
 
-## <a name="manage-resource-access"></a>Zarządzanie dostępem do zasobów
+## <a name="manage-resource-access"></a>Zarządzenie dostępem do zasobów
 
-Aby utworzyć zasób Data Box Edge/Data Box Gateway, IoT Hub i zasobów usługi Azure Storage, musisz mieć uprawnienia jako współautor lub wyższy na poziomie grupy zasobów. Wymagane są także odpowiednie dostawcy zasobów do zarejestrowania. W przypadku wszelkich operacji, które obejmują klucz aktywacji i poświadczenia, wymagane są również uprawnienia do Azure Active Directory interfejs API programu Graph. Opisano je w poniższych sekcjach.
+Aby utworzyć bramę usługi Data Box Edge/Data Box Gateway, IoT Hub i zasób usługi Azure Storage, potrzebujesz uprawnień jako współautor lub wyższy na poziomie grupy zasobów. Należy również odpowiednich dostawców zasobów, które mają być zarejestrowane. W przypadku wszystkich operacji, które obejmują klucz aktywacji i poświadczenia, wymagane są również uprawnienia do interfejsu API wykresu usługi Azure Active Directory. Są one opisane w poniższych sekcjach.
 
-### <a name="manage-microsoft-azure-active-directory-graph-api-permissions"></a>Zarządzanie uprawnieniami interfejsu API Microsoft Azure Active Directory Graph
+### <a name="manage-microsoft-graph-api-permissions"></a>Zarządzanie uprawnieniami interfejsu API programu Microsoft Graph
 
-Podczas generowania klucza aktywacji dla urządzenia Data Box Edge lub wykonywania żadnych operacji wymagających poświadczeń wymagane są uprawnienia do Azure Active Directory interfejs API programu Graph. Operacje, które wymagają poświadczeń, mogą być następujące:
+Podczas generowania klucza aktywacji dla urządzenia Data Box Edge lub wykonywania operacji, które wymagają poświadczeń, potrzebujesz uprawnień do interfejsu API programu Microsoft Graph. Operacje, które wymagają poświadczeń może być:
 
 -  Tworzenie udziału ze skojarzonym kontem magazynu.
--  Tworzenie użytkownika, który może uzyskiwać dostęp do udziałów na urządzeniu.
+-  Tworzenie użytkownika, który może uzyskać dostęp do udziałów na urządzeniu.
 
-Musisz mieć `User` dostęp do dzierżawy Active Directory, ponieważ musisz mieć możliwość `Read all directory objects`. Nie możesz być użytkownikiem-gościem, ponieważ nie ma uprawnień do `Read all directory objects`. Jeśli jesteś gościem, niektóre operacje, takie jak generowanie klucza aktywacji, tworzenie udziału na urządzeniu Data Box Edge i tworzenie użytkownika, zakończą się niepowodzeniem.
+Powinien mieć `User` dostęp do dzierżawy usługi Active Directory, ponieważ trzeba być w stanie `Read all directory objects`. Nie możesz być użytkownikiem-gościem, ponieważ nie `Read all directory objects`ma uprawnień do . Jeśli jesteś gościem, niektóre operacje, takie jak generowanie klucza aktywacji, tworzenie udziału na urządzeniu Data Box Edge i tworzenie użytkownika, zakończą się niepowodzeniem.
 
-Aby uzyskać więcej informacji na temat zapewniania dostępu użytkownikom w celu Azure Active Directory interfejs API programu Graph, zobacz [domyślny dostęp dla administratorów, użytkowników i użytkowników-Gości](https://docs.microsoft.com/previous-versions/azure/ad/graph/howto/azure-ad-graph-api-permission-scopes#default-access-for-administrators-users-and-guest-users-).
+Aby uzyskać więcej informacji na temat zapewniania użytkownikom dostępu do interfejsu API programu Microsoft Graph, zobacz [Odwołanie do uprawnień programu Microsoft Graph](https://docs.microsoft.com/graph/permissions-reference).
 
-### <a name="register-resource-providers"></a>Rejestrowanie dostawcy zasobów
+### <a name="register-resource-providers"></a>Rejestrowanie dostawców zasobów
 
-Aby udostępnić zasób na platformie Azure (w modelu Azure Resource Manager), potrzebny jest dostawca zasobów, który obsługuje tworzenie tego zasobu. Na przykład, aby zainicjować obsługę administracyjną maszyny wirtualnej, w subskrypcji powinien być dostępny dostawca zasobów Microsoft. COMPUTE.
+Aby aprowizować zasób na platformie Azure (w modelu usługi Azure Resource Manager), potrzebujesz dostawcy zasobów, który obsługuje tworzenie tego zasobu. Na przykład, aby aprowizować maszynę wirtualną, powinien mieć dostawca zasobów "Microsoft.Compute" dostępny w ramach subskrypcji.
  
-Dostawcy zasobów są rejestrowani na poziomie subskrypcji. Domyślnie każda nowa subskrypcja platformy Azure ma wstępnie zarejestrowaną listę najczęściej stosowanych dostawców zasobów. Dostawca zasobów dla elementu "Microsoft. DataBoxEdge" nie jest uwzględniony na tej liście.
+Dostawcy zasobów są rejestrowani na poziomie subskrypcji. Domyślnie każda nowa subskrypcja platformy Azure ma wstępnie zarejestrowaną listę najczęściej stosowanych dostawców zasobów. Dostawca zasobów dla firmy Microsoft.DataBoxEdge nie znajduje się na tej liście.
 
-Nie musisz przyznawać uprawnień dostępu dla poziomu subskrypcji, aby użytkownicy mogli tworzyć zasoby takie jak "Microsoft. DataBoxEdge" w grupach zasobów, do których mają prawa właściciela, o ile dostawcy zasobów dla tych zasobów są już użytkownikiem.
+Nie musisz udzielać uprawnień dostępu do poziomu subskrypcji, aby użytkownicy mogli tworzyć zasoby, takie jak "Microsoft.DataBoxEdge" w swoich grupach zasobów, na których mają prawa właściciela, o ile dostawcy zasobów dla tych zasobów są już Zarejestrowany.
 
-Przed podjęciem próby utworzenia dowolnego zasobu upewnij się, że dostawca zasobów został zarejestrowany w ramach subskrypcji. Jeśli dostawca zasobów nie jest zarejestrowany, należy się upewnić, że użytkownik tworzący nowy zasób ma wystarczającą ilość uprawnień do zarejestrowania wymaganego dostawcy zasobów na poziomie subskrypcji. Jeśli nie zostało to jeszcze zrobione, zobaczysz następujący komunikat o błędzie:
+Przed podjęciem próby utworzenia dowolnego zasobu upewnij się, że dostawca zasobów jest zarejestrowany w subskrypcji. Jeśli dostawca zasobów nie jest zarejestrowany, należy upewnić się, że użytkownik tworzący nowy zasób ma wystarczająco dużo praw, aby zarejestrować wymaganego dostawcy zasobów na poziomie subskrypcji. Jeśli nie zrobiłeś tego, a następnie zobaczysz następujący błąd:
 
-*Nazwa subskrypcji \<subskrypcji > nie ma uprawnień do rejestrowania dostawców zasobów: Microsoft. DataBoxEdge.*
+*Nazwa \<subskrypcji> nie ma uprawnień do rejestrowania dostawców zasobów: Microsoft.DataBoxEdge.*
 
 
 Aby uzyskać listę zarejestrowanych dostawców zasobów w bieżącej subskrypcji, uruchom następujące polecenie:
@@ -88,48 +88,48 @@ Aby uzyskać listę zarejestrowanych dostawców zasobów w bieżącej subskrypcj
 Get-AzResourceProvider -ListAvailable |where {$_.Registrationstate -eq "Registered"}
 ```
 
-W przypadku urządzenia Data Box Edge `Microsoft.DataBoxEdge` powinny być zarejestrowane. Aby zarejestrować `Microsoft.DataBoxEdge`, administrator subskrypcji powinien uruchomić następujące polecenie:
+W przypadku urządzenia `Microsoft.DataBoxEdge` Data Box Edge należy zarejestrować. Aby `Microsoft.DataBoxEdge`się zarejestrować, administrator subskrypcji powinien uruchomić następujące polecenie:
 
 ```PowerShell
 Register-AzResourceProvider -ProviderNamespace Microsoft.DataBoxEdge
 ```
 
-Aby uzyskać więcej informacji na temat rejestrowania dostawcy zasobów, zobacz [Rozwiązywanie problemów dotyczących rejestracji dostawcy zasobów](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-register-provider-errors).
+Aby uzyskać więcej informacji na temat rejestrowania dostawcy zasobów, zobacz [Rozwiązywanie błędów podczas rejestracji dostawcy zasobów](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-register-provider-errors).
 
 ## <a name="manage-connectivity-mode"></a>Zarządzanie trybem łączności
 
-Niezależnie od domyślnego trybu normalnego, urządzenie można również uruchomić w trybie częściowo rozłączonym lub rozłączonym. Każdy z tych trybów jest opisany poniżej:
+Oprócz domyślnego trybu normalnego urządzenie może również działać w trybie częściowo odłączony lub odłączony. Każdy z tych trybów jest opisany poniżej:
 
-- **Częściowo Rozłączono** — w tym trybie urządzenie nie może przekazać żadnych danych do udziałów, jednak można nimi zarządzać za pośrednictwem Azure Portal.
+- **Częściowo rozłączone** — w tym trybie urządzenie nie może przekazać żadnych danych do udziałów, jednak można zarządzać za pośrednictwem witryny Azure portal.
 
-    Ten tryb jest zazwyczaj używany w przypadku taryfowej sieci satelitarnej i celem jest Minimalizacja użycia przepustowości sieci. W przypadku operacji monitorowania urządzeń może nadal występować minimalne zużycie sieci.
+    Ten tryb jest zwykle używany w przypadku taryfowej sieci satelitarnej, a celem jest zminimalizowanie zużycia przepustowości sieci. Minimalne zużycie sieci może nadal występować w przypadku operacji monitorowania urządzeń.
 
-- **Rozłączono** — w tym trybie urządzenie jest w pełni odłączone od chmury, a operacje przekazywania i pobierania w chmurze są wyłączone. Urządzenie może być zarządzane tylko za pośrednictwem lokalnego interfejsu użytkownika sieci Web.
+- **Rozłączono** — w tym trybie urządzenie jest całkowicie odłączone od chmury i zarówno przesyłanie w chmurze, jak i pobieranie są wyłączone. Urządzeniem można zarządzać tylko za pośrednictwem lokalnego interfejsu użytkownika sieci Web.
 
-    Ten tryb jest zazwyczaj używany, gdy chcesz przełączyć urządzenie do trybu offline.
+    Ten tryb jest zwykle używany, gdy chcesz przetraktować urządzenie w tryb offline.
 
-Aby zmienić tryb urządzenia, wykonaj następujące kroki:
+Aby zmienić tryb urządzenia, wykonaj następujące czynności:
 
-1. W lokalnym interfejsie użytkownika sieci Web urządzenia przejdź do pozycji **konfiguracja > Ustawienia chmury**.
-2. Wyłącz **przekazywanie i pobieranie w chmurze**.
-3. Aby uruchomić urządzenie w trybie częściowo rozłączona, Włącz **zarządzanie Azure Portal**.
+1. W lokalnym interfejsie użytkownika urządzenia przejdź do **ustawień konfiguracji > chmury**.
+2. Wyłącz **przesyłanie i pobieranie w chmurze**.
+3. Aby uruchomić urządzenie w trybie częściowo rozłączony, włącz **zarządzanie portalem Azure**.
 
     ![Tryb łączności](media/data-box-gateway-manage-access-power-connectivity-mode/connectivity-mode-1.png)
  
-4. Aby uruchomić urządzenie w trybie rozłączonym, wyłącz **zarządzanie Azure Portal**. Teraz urządzenie można zarządzać tylko za pośrednictwem lokalnego interfejsu użytkownika sieci Web.
+4. Aby uruchomić urządzenie w trybie rozłączania, wyłącz **zarządzanie portalem Azure**. Teraz urządzeniem można zarządzać tylko za pośrednictwem lokalnego interfejsu użytkownika sieci Web.
 
     ![Tryb łączności](media/data-box-gateway-manage-access-power-connectivity-mode/connectivity-mode-2.png)
 
-## <a name="manage-power"></a>Zarządzanie mocą
+## <a name="manage-power"></a>Zarządzanie zasilaniem
 
-Możesz zamknąć lub ponownie uruchomić urządzenie wirtualne przy użyciu lokalnego interfejsu użytkownika sieci Web. Zaleca się, aby przed ponownym uruchomieniem przełączyć udziały w tryb offline na hoście, a następnie na urządzeniu. Ta akcja minimalizuje wszelką możliwość uszkodzenia danych.
+Można wyłączyć lub ponownie uruchomić urządzenie wirtualne przy użyciu lokalnego interfejsu użytkownika sieci Web. Zaleca się, aby przed ponownym uruchomieniem przełączyć udziały w tryb offline na hoście, a następnie na urządzeniu. Ta akcja minimalizuje możliwość uszkodzenia danych.
 
-1. W lokalnym interfejsie użytkownika sieci Web przejdź do pozycji **konserwacja > ustawienia zarządzania**.
-2. Kliknij przycisk **Zamknij** lub **Uruchom ponownie** w zależności od tego, co chcesz zrobić.
+1. W lokalnym interfejsie użytkownika sieci Web przejdź do **ustawienia konserwacji > zasilania**.
+2. Kliknij **przycisk Zamknij** lub Uruchom **ponownie** w zależności od tego, co zamierzasz zrobić.
 
-    ![Ustawienia zasilacza](media/data-box-gateway-manage-access-power-connectivity-mode/shut-down-restart-1.png)
+    ![Ustawienia zasilania](media/data-box-gateway-manage-access-power-connectivity-mode/shut-down-restart-1.png)
 
-3. Po wyświetleniu monitu o potwierdzenie kliknij przycisk **tak** , aby wykonać operację.
+3. Po wyświetleniu monitu o potwierdzenie kliknij przycisk **Tak,** aby kontynuować.
 
 > [!NOTE]
-> Jeśli wyłączysz urządzenie wirtualne, musisz uruchomić urządzenie za pomocą funkcji zarządzania funkcją hypervisor.
+> Jeśli wyłączysz urządzenie wirtualne, musisz uruchomić urządzenie za pomocą zarządzania hipernadzorcami.
