@@ -9,17 +9,17 @@ ms.date: 01/14/2020
 ms.author: tamram
 ms.custom: include file
 ms.openlocfilehash: 73c2b742ede21a4e86d717d994f8ebc4f16389c9
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77157226"
 ---
 Opcje nadmiarowości dla konta magazynu obejmują:
 
-* Magazyn lokalnie nadmiarowy (LRS): prosta, tania strategia nadmiarowości. Dane są kopiowane synchronicznie trzykrotnie w regionie podstawowym.
-* Magazyn strefowo nadmiarowy (ZRS): nadmiarowość dla scenariuszy wymagających wysokiej dostępności. Dane są kopiowane synchronicznie w trzech strefach dostępności platformy Azure w regionie podstawowym.
-* Magazyn Geograficznie nadmiarowy (GRS): wieloregionalna nadmiarowość do ochrony przed awarią regionalną. Dane są kopiowane synchronicznie do regionu podstawowego, a następnie kopiowane asynchronicznie do regionu pomocniczego. Aby uzyskać dostęp do odczytu do danych w regionie pomocniczym, Włącz magazyn Geograficznie nadmiarowy z dostępem do odczytu (RA-GRS).
-* Magazyn Geograficznie nadmiarowy (GZRS) (wersja zapoznawcza): nadmiarowość dla scenariuszy wymagających zarówno wysokiej dostępności, jak i maksymalnej trwałości. Dane są kopiowane synchronicznie w trzech strefach dostępności platformy Azure w regionie podstawowym, a następnie kopiowane asynchronicznie do regionu pomocniczego. Aby uzyskać dostęp do odczytu do danych w regionie pomocniczym, Włącz strefę geograficzną z dostępem do odczytu (RA-GZRS).
+* Lokalnie nadmiarowa pamięć masowa (LRS): prosta, tania strategia nadmiarowości. Dane są kopiowane synchronicznie trzy razy w regionie podstawowym.
+* Magazyn strefowy (ZRS): nadmiarowość w scenariuszach wymagających wysokiej dostępności. Dane są kopiowane synchronicznie w trzech strefach dostępności platformy Azure w regionie podstawowym.
+* Magazyn geograficznie nadmiarowy (GRS): Nadmiarowość międzyregionalna w celu ochrony przed regionalnymi awariami. Dane są kopiowane synchronicznie trzy razy w regionie podstawowym, a następnie kopiowane asynchronicznie do regionu pomocniczego. Aby uzyskać dostęp do odczytu danych w regionie pomocniczym, włącz magazyn geograficzny dostępu do odczytu (RA-GRS).
+* Magazyn nadmiarowy ze strefy geograficznej (GZRS) (wersja zapoznawcza): nadmiarowość w scenariuszach wymagających zarówno wysokiej dostępności, jak i maksymalnej trwałości. Dane są kopiowane synchronicznie w trzech strefach dostępności platformy Azure w regionie podstawowym, a następnie kopiowane asynchronicznie do regionu pomocniczego. Aby uzyskać dostęp do odczytu danych w regionie pomocniczym, włącz magazyn geograficzny dostępu do strefy odczytu (RA-GZRS).
 
-Aby uzyskać więcej informacji na temat opcji nadmiarowości w usłudze Azure Storage, zobacz [nadmiarowość usługi Azure Storage](../articles/storage/common/storage-redundancy.md).
+Aby uzyskać więcej informacji na temat opcji nadmiarowości w usłudze Azure Storage, zobacz [Nadmiarowość usługi Azure Storage](../articles/storage/common/storage-redundancy.md).

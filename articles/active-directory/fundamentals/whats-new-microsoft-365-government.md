@@ -1,6 +1,6 @@
 ---
-title: Co nowego w usłudze Azure AD w Microsoft 365 instytucji rządowych? | Microsoft Docs
-description: Dowiedz się więcej o zmianach w usłudze Azure Active Directory (Azure AD) w wystąpieniu chmury Microsoft 365 dla instytucji rządowych, które może mieć wpływ na Ciebie.
+title: Co nowego w usłudze Azure AD w usłudze Microsoft 365 dla instytucji rządowych? | Microsoft Docs
+description: Dowiedz się więcej o niektórych zmianach w usłudze Azure Active Directory (Azure AD) w wystąpieniu chmury dla instytucji rządowych usługi Microsoft 365, które mogą mieć wpływ na Ciebie.
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -14,52 +14,52 @@ ms.date: 05/07/2019
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 48a7e5e810e509a97b6010218532f6e7dff0b73f
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/18/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77425548"
 ---
-# <a name="whats-new-for-azure-active-directory-in-microsoft-365-government"></a>Co nowego w Azure Active Directory w Microsoft 365 instytucji rządowych
+# <a name="whats-new-for-azure-active-directory-in-microsoft-365-government"></a>Co nowego w usłudze Azure Active Directory w usłudze Microsoft 365 dla instytucji rządowych
 
-Wprowadziliśmy pewne zmiany w usłudze Azure Active Directory (Azure AD) w wystąpieniu chmury Microsoft 365 dla instytucji rządowych, które ma zastosowanie do klientów korzystających z następujących usług:
+Wprowadzono pewne zmiany w usłudze Azure Active Directory (Azure AD) w wystąpieniu chmury usługi Microsoft 365 dla instytucji rządowych, które ma zastosowanie do klientów korzystających z następujących usług:
 
-- Microsoft Azure Government
+- Platforma Microsoft Azure dla instytucji rządowych
 
-- Microsoft 365e — Zarząd — wysoka
+- Microsoft 365 Rząd – GCC High
 
 - Microsoft 365 rząd — DoD
 
-Ten artykuł nie ma zastosowania do Microsoft 365 instytucji rządowych — w przypadku klientów z systemem w zatoce.
+Ten artykuł nie dotyczy klientów usługi Microsoft 365 government — GCC.
 
-## <a name="changes-to-the-initial-domain-name"></a>Zmiany początkowej nazwy domeny
+## <a name="changes-to-the-initial-domain-name"></a>Zmiany w początkowej nazwie domeny
 
-Podczas początkowego rejestrowania w organizacji dla Microsoft 365ej usługi online dla instytucji rządowych zostanie wyświetlony monit o wybranie nazwy domeny organizacji `<your-domain-name>.onmicrosoft.com`. Jeśli masz już nazwę domeny z sufiksem. com, nic się nie zmieni.
+Podczas początkowej rejestracji w organizacji do usługi online dla instytucji rządowych usługi Microsoft 365, `<your-domain-name>.onmicrosoft.com`zostałeś poproszony o wybranie nazwy domeny organizacji, . Jeśli masz już nazwę domeny z sufiksem .com, nic się nie zmieni.
 
-Jeśli jednak rejestrujesz się w celu skorzystania z nowej usługi Microsoft 365 instytucji rządowych, zostanie wyświetlony monit o wybranie nazwy domeny przy użyciu sufiksu `.us`. Tak więc zostanie `<your-domain-name>.onmicrosoft.us`.
+Jeśli jednak rejestrujesz się w nowej usłudze microsoft 365 dla instytucji rządowych, zostaniesz poproszony o wybranie nazwy domeny przy użyciu sufiksu. `.us` Tak, to `<your-domain-name>.onmicrosoft.us`będzie .
 
 >[!Note]
->Ta zmiana nie dotyczy żadnych klientów, którzy są zarządzani przez dostawców usług w chmurze (CSP).
+>Ta zmiana nie ma zastosowania do klientów zarządzanych przez dostawców usług w chmurze (CSP).
 
-## <a name="changes-to-portal-access"></a>Zmiany dostępu do portalu
+## <a name="changes-to-portal-access"></a>Zmiany w dostępie do portalu
 
-Zaktualizowaliśmy punkty końcowe portalu dla Microsoft Azure Government, Microsoft 365 dla instytucji rządowych — do szkoły wyższej i Microsoft 365 dla instytucji rządowych — DoD, jak pokazano w [tabeli mapowania punktu końcowego](#endpoint-mapping).
+Zaktualizowaliśmy punkty końcowe portalu dla platformy Microsoft Azure Dla instytucji rządowych, microsoft 365 government — GCC High i Microsoft 365 Government — DoD, jak pokazano w [tabeli mapowania punktów końcowych.](#endpoint-mapping)
 
-Wcześniej klienci mogą zalogować się przy użyciu portali platformy Azure (portal.azure.com) i pakietu Office 365 (portal.office.com). Dzięki tej aktualizacji klienci muszą teraz zalogować się przy użyciu określonych Microsoft Azure Government, Microsoft 365 dla instytucji rządowych — w zatoce i Microsoft 365ych portalach rządowych i DoD.
+Wcześniej klienci mogli logował się przy użyciu portali platformy Azure (portal.azure.com) i usługi Office 365 (portal.office.com). Dzięki tej aktualizacji klienci muszą teraz zalogować się przy użyciu określonych portali Microsoft Azure Government, Microsoft 365 Government — GCC High i Microsoft 365 Government — DoD portali.
 
-## <a name="endpoint-mapping"></a>Mapowanie punktów końcowych
+## <a name="endpoint-mapping"></a>Mapowanie punktu końcowego
 
 W poniższej tabeli przedstawiono punkty końcowe dla wszystkich klientów:
 
-| Name (Nazwa) | Szczegóły punktu końcowego |
+| Nazwa | Szczegóły punktu końcowego |
 |------|------------------|
-| Portali |Microsoft Azure Government: https://portal.azure.us<p>Microsoft 365e: https://portal.office365.us<p>Microsoft 365 rząd — DoD: https://portal.apps.mil |
-| Punkt końcowy urzędu Azure Active Directory | https://login.microsoftonline.us |
-| Microsoft Graph API dla Microsoft 365 instytucji rządowych — w ramach programu w zatoce | https://graph.microsoft.us |
-| Interfejs API Microsoft Graph dla Microsoft 365 dla instytucji rządowych — DoD | https://dod-graph.microsoft.us |
-| Punkty końcowe usług Azure Government Services | Aby uzyskać szczegółowe informacje, zobacz [przewodnik dewelopera Azure Government](https://docs.microsoft.com/azure/azure-government/documentation-government-developer-guide) |
-| Microsoft 365 rząd — wysokie punkty końcowe w usłudze w zatoce | Aby uzyskać szczegółowe informacje, zobacz tematy dotyczące [górnych punktów końcowych pakietu Office 365 USA](https://docs.microsoft.com/office365/enterprise/office-365-u-s-government-gcc-high-endpoints) |
-| Microsoft 365 rząd — DoD | Aby uzyskać szczegółowe informacje, zobacz [Office 365 Stany Zjednoczone i punkty końcowe dla instytucji rządowych USA](https://docs.microsoft.com/office365/enterprise/office-365-u-s-government-dod-endpoints) |
+| Portale |Platforma Microsoft Azure dla instytucji rządowych:https://portal.azure.us<p>Microsoft 365 rząd — GCC High:https://portal.office365.us<p>Microsoft 365 rząd — DoD:https://portal.apps.mil |
+| Punkt końcowy urzędu usługi Azure Active Directory | https://login.microsoftonline.us |
+| Microsoft Graph API dla microsoft 365 rząd - GCC High | https://graph.microsoft.us |
+| Interfejs API programu Microsoft Graph dla usługi Microsoft 365 Government — DoD | https://dod-graph.microsoft.us |
+| Punkty końcowe usług azure dla instytucji rządowych | Aby uzyskać szczegółowe informacje, zobacz [Przewodnik dla deweloperów platformy Azure dla instytucji rządowych](https://docs.microsoft.com/azure/azure-government/documentation-government-developer-guide) |
+| Microsoft 365 Government - GCC High endpoints | Aby uzyskać szczegółowe informacje, zobacz [U.S. Government U.S. GCC High endpoints](https://docs.microsoft.com/office365/enterprise/office-365-u-s-government-gcc-high-endpoints) |
+| Microsoft 365 Government - DoD | Aby uzyskać szczegółowe informacje, zobacz [Punkty końcowe usługi Office 365 dla instytucji rządowych](https://docs.microsoft.com/office365/enterprise/office-365-u-s-government-dod-endpoints) |
 
 ## <a name="next-steps"></a>Następne kroki
 
@@ -67,8 +67,8 @@ Więcej informacji można znaleźć w tych artykułach:
 
 - [Co to jest platforma Azure Government?](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome)
 
-- [Aktualizacja punktu końcowego urzędu usługi AAD Azure Government](https://devblogs.microsoft.com/azuregov/azure-government-aad-authority-endpoint-update/)
+- [Aktualizacja punktu końcowego urzędu instytucji rządowych platformy Azure](https://devblogs.microsoft.com/azuregov/azure-government-aad-authority-endpoint-update/)
 
-- [Microsoft Graph punkty końcowe w chmurze dla instytucji rządowych USA](https://developer.microsoft.com/graph/blogs/new-microsoft-graph-endpoints-in-us-government-cloud/)
+- [Punkty końcowe programu Microsoft Graph w chmurze instytucji rządowych w Stanach Zjednoczonych](https://developer.microsoft.com/graph/blogs/new-microsoft-graph-endpoints-in-us-government-cloud/)
 
-- [Pakiet Office 365 dla instytucji rządowych Stanów Zjednoczonych i DoD.](https://docs.microsoft.com/office365/servicedescriptions/office-365-platform-service-description/office-365-us-government/gcc-high-and-dod)
+- [Office 365 Us Government GCC High i DoD](https://docs.microsoft.com/office365/servicedescriptions/office-365-platform-service-description/office-365-us-government/gcc-high-and-dod)

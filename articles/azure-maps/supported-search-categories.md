@@ -1,6 +1,6 @@
 ---
-title: Wyszukaj kategorie | Mapy Microsoft Azure
-description: Ten artykuł zawiera informacje na temat obsługiwanych kategorii wyszukiwania w Microsoft Azure Maps.
+title: Kategorie wyszukiwania | Mapy platformy Microsoft Azure
+description: W tym artykule dowiesz się o obsługiwanych kategoriach wyszukiwania w usługach Microsoft Azure Maps.
 author: sataneja
 ms.author: sataneja
 ms.date: 05/14/2018
@@ -9,124 +9,124 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.openlocfilehash: 9dbcae6e3947576a7d2bc204c2a3a6fb2e95953d
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/04/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76988295"
 ---
-# <a name="azure-maps-supported-categories"></a>Azure Maps obsługiwanych kategorii
+# <a name="azure-maps-supported-categories"></a>Obsługiwane kategorie usługi Azure Maps
 
-Podczas [wyszukiwania kategorii](https://docs.microsoft.com/rest/api/maps/search/getsearchpoicategory) w poszukiwaniu interesujących punktów należy użyć setek obsługiwanych kategorii. Poniżej znajduje się lista kodów kategorii dla obsługiwanych nazw kategorii. Kody kategorii są generowane dla kategorii najwyższego poziomu. Wszystkie podkategorie współdzielą ten sam kod kategorii. Ta lista kategorii może ulec zmianie z nowymi wersjami danych.
+Podczas [wyszukiwania kategorii](https://docs.microsoft.com/rest/api/maps/search/getsearchpoicategory) w interesujących miejsc, istnieje ponad sto obsługiwanych kategorii. Poniżej znajduje się lista kodów kategorii dla obsługiwanych nazw kategorii. Kody kategorii są generowane dla kategorii najwyższego poziomu. Wszystkie podkategorie mają ten sam kod kategorii. Ta lista kategorii może ulec zmianie wraz z nowymi wersjami danych.
 
 <br/>
 
-| **Kod kategorii** | **Kategorie zgodne z kodem** |
+| **Kod kategorii** | **Pasujący kod kategorii** |
 | --- | --- |
-| Brama dostępu\_ | dostęp do linii lotniczych, brama zabezpieczeń, dostęp do stacji, Brama dostępu |
-| Wydział\_administracyjnych | Prowincja, czwarta kolejność, Podział administracyjny, Podział administracyjny pierwszej kolejności, historyczny Podział administracyjny innej kolejności, stanowisko z podziałem administracyjnym z czwartej kolejności, miejsce podziału administracyjnego drugiego rzędu, zależnie polityczne jednostka, zapełnione miejsce, stanowisko podziału administracyjnego innej firmy, wypełnione miejsca, Podział administracyjny w drugiej kolejności, miejsce podziału administracyjnego pierwszej kolejności, Wydział administracyjny, wypełniona miejscowość, region historyczny, historyczne lokacja, zapełniona historyczna, rozliczenia Izraela, historyczny Podział administracyjny z czwartą kolejnością, Podział administracyjny z piątą kolejnością, Podział administracyjny pierwszego porządku podmiot, historyczny Wydział administracyjny, siedziba instytucji rządowej, oddział administracyjny w drugiej kolejności, kapitał jednostki politycznej |
-| ADVENTURE\_SPORTS\_VENUE | Rejon firmy Adventure Sport |
-| ROLNICTWA | Ogrodnictwo, główny producent, rolnictwo, Farma, Village, Farmstead, Homestead, obszar wypasu, wspólna, akwakultura, farmy, obszar połowowy, nabiał, pola (s) |
-| ZGŁASZAJĄCE | Urząd prywatny, Urząd wojskowy, Heliport, zamknięty, średni Port lotniczy, duży port lotniczy, mały port lotniczy, Airfield, Seaplane Base, urząd publiczny, prywatny port |
-| Rozrywka\_PARK | Rozrywka Zręcznościowe, rozrywka miejsce, rozrywka Park |
-| DEALER\_SAMOCHODOWych | ATV/Snowmobile, łodzie, magistrala, motocykle, ciężarówka, samorekreacyjne pojazdy, samochód, samochodowy dealer |
-| RACHUNK | Bank, banki, bankowe: |
-| SEKWENCJE | sekwencje, plażach |
-| KOMPILOWAnie punktu\_ | Kompilowanie (punkt) |
-| Firma\_PARK | Parkowanie biznesowe, obszar branżowy |
-| CAFE\_PUB | Internet kawiarni, herbata (kawiarni), Internet kawiarni, kawiarni, kawiarnia, microbrewery/piwo,, Pub, kawiarni/pub, kawiarni/pub |
-| GRUNTy KEMPINGowe\_ | samotworzenie, lokacja kempingowa, Ziemia kempingowa |
-| \_PRANIe samochodu | pranie samochodu |
-| \_gotówkowy | Automater, dozownik gotówkowy |
-| KASYNOWE | kasynowe |
-| KINOW | dysk — w kinowej, kinowej |
-| CENTRUM\_miasto | klub, obszar administracyjny, miasto, środek |
-| SKOJARZENIe\_klubu | Klub sekwencje, klub kija hokejowego, Stowarzyszenie klubu |
-| Szkoła\_UNIVERSITY | Student kolegium/kolegium społecznościowe, szkoły/Uniwersytet, szkoły szkolne, Uniwersytet |
-| Budynek\_KOMERCYJNego | Tworzenie pakietu Office, zaparkowanie kwatery głównej, budynek komercyjny |
-| CENTRUM\_społeczności | centrum społeczności |
-| Przedsiębiorstwo | Elektronika, produkcja, usługi danych komputerowych, technologie zdrowia publicznego, zróżnicowane finanse, zadawanie zwierząt, linie lotnicze, wypożyczenie sprzętu, świadczenie usług, przesyłki/przesyłki/transport, warstwy magistrali, naprawa urządzeń domowych, usługi czyszczące, producenci OEM, usługi podatkowe, oleje naturalne, usługi Funeral Service mortuaries, działania tunelu mostkowego, urządzenia przenośne, inżynieria mechaniczna, usługi, doradcy inwestycyjne, reklamy/Marketing, przeniesienie magazynu, instytucji oszczędności, ubezpieczeń, oprogramowania komputerowego, środków farmaceutycznych, zaopatrzenia, usług ślubu, technologii rolniczej, nieruchomości, taksówki, usługi Limousine wahadła, dzierżawy za karty magistrali, górnictwo, technologie publikowania, telefon kablowy, dystrybucja/eksport/eksportowanie, firma, azyl, kopalnie węgla, elementy |
-| COURTHOUSE | courthouse |
-| CENTRUM\_KULTURowego | centrum kulturowe |
-| Zwiększ WCIĘCIE | Zwiększ wcięcie |
-| Magazyn\_działu | Magazyn działu |
-| LEKARZEM | Lekarze generalny, specjalista, lekarz |
-| Stacja\_pojazdu\_ELEKTRYCZNEgo | Stacja pojazdu elektrycznego |
-| DAJĄC | dając |
-| AWARYJNe\_\_MEDYCZNEj | opieka medyczna awaryjna |
-| ROZRYWCE | rozrywce |
-| ZAMIAN | Gold Exchange, wymiana walutowa, wymiana giełdowa, wymiana |
-| \_Konwencja\_CENTER | centrum Konwencji wystawcy |
-| TERMINAL\_prom | prom, Terminal promu |
-| Stacja\_ognia\_BRIGADE | Stacja/Brigade pożarowa |
-| Przekroczenie granicy\_ | Przekroczenie granicy |
-| URZĄDZENIA\_paliw | pomieszczenia paliwowe |
-| Funkcja\_geograficzna | wnęki, Cove, panoramy, ustawienia regionalne, pierścienie, minerały i gorąca, Marsh/Swamp/vlei, kamieniołomy, przekroczenia, Dolina, szczytowy pik, Reef, wydma, Lagoon, zwykły/płaski, Rapids, Przylądek, Plateau, języka Oasis kopiarka, Crater Lake, Cliff (s), Hill, pustynia, Portage, Glacier (s), Gully, Geyser, Koral Reef (s), Gap, perski, Jetty, Ghat, dziura, Crater jezior, gaz, Islet, Crater (s), wyspy:, headwaters, wysunięcie, Hills, gorące sprężyny, furrow, anabranch |
-| KURS\_GOLF | kurs golfowy |
-| Biuro\_instytucji RZĄDowych | obszar kolejności 5, obszar zamówienia 8, obszar zamówienia 9, obszar zamówienia 2, obszar zamówienia 7, obszar w porządku 3, Supra Narodowy, obszar zamówienia 4, obszar zamówienia 6, Biuro rządowe, placówka dyplomatyczna, instytucja rządowa w Stanach Zjednoczonych, Urząd administracji lokalnej |
-| \_usługi\_opieki ZDROWOTNEj | Bank krwiodawstwa, usługa osobista, osobista opieka, jednostka pogotowości, usługa opieki zdrowotnej, leprosarium, Sanatorium, szpital, medycyna, Klinika |
-| HELIPAD\_helikopter\_SPOCZNIK | spocznik Helipad/helikopter |
-| Wynajem\_dni WOLNYch | Bungalow, Cottage, Chalet, Villa, Apartment, wynajem świątecznych |
-| \_w SZPITALach | specjalne, szpitale w chińskiej medycyny, szpitale dla dzieci, ogólne, Szpital/Klinika |
-| HOTEL\_MOTEL | złoży kabiny, domy, hotelu, Hotel, REST, Motel, Hostel, Hotel/Motel, Resthouse, Hammock (s), Dom |
-| \_ing\_RINK | Rinka lodu |
-| Ważne\_TURYSTYCZNe\_przyciągania nie | budynek, Obserwatorium, Arch, Tunnel, Statue, wieża, mostek, planetarium, Mausoleum/słaby, Monument, otwór wodna, naturalny przyciągania nie, ważna baza turystyczna, przyciągania nie, piramidy, Promenade, Pagoda, Castle, Palace, ostrosłup, Fort, Brama, kraj |
-| Tworzenie\_przemysłowych | odlewnie, paliwo, budynek przemysłowe, fabryka |
-| \_wypoczynek | pucharing, snooker, Pool bilardowej, latający klub, odpowiedzialna Studio szkoły, sauna, solarium Massage, rekreacyjny, spa |
-| BIBLIOTEKI | biblioteki |
-| \_PRODUKCYJNy | Produkcja |
-| MARINA | basen Yacht, Marina |
-| DO | supermarketse, rolnicy, publiczne, nieformalne, rynek |
-| Funkcja\_multimediów | Obiekt multimedialny |
-| Instalacja\_WOJSKOWej | Baza wojskowa, stacja ochrony wybrzeża, instalacja wojskowa, podstawa okrętowa |
-| \_owanie organizacji\_OFFICE | Biuro dotyczące mechanicznej organizacji |
-| PRZEBIEG\_górski | przebieg górski |
-| MUZEÓW | muzeów |
-| Rezerwacja\_NATYWNych | Rezerwacja natywna, rezerwacja |
-| NIGHTLIFE | Słupek, klub karaoke, klub jazzowy, klub prywatny, pasek win, klub komedia, Cocktail Bar, Discotheque, Nightlife |
-| Organizacja\_\_RZĄDowej | Organizacja nierządowa |
-| Otwórz obszar\_\_PARKowanie | Otwórz obszar parkingowy, przeparkowanie partii |
-| RÓŻNYCH | miejscowość, bezpłatna strefa handlu, koło ruchu, nieznany |
-| PARKING\_warsztat | Warsztat parkingowy |
-| Zaparkowanie\_\_obszaru | Witryna historyczna, Lakeshore, Seashore, rzeka Scenic obszar, obszar polowania połowowego, Battlefield, zimy Sport, Pochylnia uruchamiania łodzi, konserwowanie, obszar lasu, obszar rekreacyjny,, Cemetery obszar Wilderness, parkowanie obszaru rekreacyjnego, lasy:, Las, ogrody, ogródki, rezerwa dzikia, rezerwa na charakter, stacja lasu, rezerwa na łowiectwo, rezerwacja lasów, parkowanie |
-| Stacja\_BENZYNy | Stacja benzyn |
-| APTEKa | apteka, Dispensary |
-| Umieść\_\_świątyń | Ashram, Synagogue, Mosque, Gurudwara, staro cerkiewno, Temple, miejsce świątyń, misja, Retreat, Temple (s), witryna religijna, centrum religijne, Monastery, z upustu |
-| PLACÓWKa\_policji | obszar porządku 1, stacja policji, wpis policji |
-| PORT\_\_magazynu | przystani:, basen dokujący, port, port/pomieszczenie magazynu, Dockyard, Docker |
-| Opublikuj\_OFFICE | lokalne, urząd pocztowy |
-| PODSTAWOWE narzędzie do\_zasobów\_ | podstawowy zasób/narzędzie, stacja elektryczna, roślina separatora oleju |
-| UDOGODNIENIe\_\_ | więzienia, więzienie i Korekcja |
-| PUBLICZNa\_e TERENy | pies Subway, toaleta, Łódź szosowa, Biuro biletów transportu dla pasażerów, Skrzynka publiczna |
-| \_transportu\_publicznego | Zatrzymywanie autokarów, zatrzymywanie magistrali, stojaki, zatrzymywanie, zatrzymywanie, transport publiczny, stacja metra, stacja Railroad, stacja magistrali, Railroad zatrzymanie |
-| Stacja\_SZYNy | Krajowa, naziemna szyna, linia miejska (Sub), stacja kolejowa |
-| CZYNSZ\_\_samochodu\_ego | Wynajem samochodu |
-| Wynajem\_samochodu\_\_ | Wynajem samochodu |
-| Napraw\_funkcji | Bodyshops, opony (opon), usługi naprawcze, sklepy zajmujące się wymianą samochodów, ogólne wsparcie do naprawy samochodu |
-| POMIESZCZENIE\_BADAWCZych | placówka badawcza |
-| Zakwaterowanie\_MIESZKALNych | społeczność z emeryturami, Townhouse złożonej, złożona/Apartament, złożona, Condominium złożona, zamieszkania, zakwaterowanie mieszkalne |
-| Restauracja | Niemiecki, haitański-Cajun, holenderski, Banquet pokoje, Bistro, izraelski, słowacki, jamajski, Vegetarian, owoce morza, wietnamski, maltański, Sichuan, walijski, chiński, japoński, algierski, Californian, Fusion, Shandong, pasek podłączany, Savoy, hiszpański, Birr, tajwański, pierścienie, irański, kanadyjski, amerykański, norweski, francuski, Hunan, Polynesian, Afgani, drogowy, azjatycki, szwajcarski, Erotic, Crêperie, Surinam,, brytyjski, , Guangdong, Azjatycki (inne), Buffet, Sushi, mongolski, Międzynarodowy, MUSSELS, tajski, wenezuelskie, Rumanian, kurczak, zup, Kosher, Steak Yogurt/sok, włoski, koreański, Cypriot, bośniacki, Boliviano, Dominikana, belgijski, tunezyjski, szkocki, angielski, pakistański, czeski, hawajski, Maghrib, tybetański, Arabia, Middle, chilijska, Szanghaj, sudański,, birmański, Scandinavian, Soul, runku,,, Urugwajskie, bufetach, fiński, afrykański, Korsykański, syryjskie, Karaibów, Dongbei, rosyjski, kratka, odrzucanie, szybkie żywność, Australia, irlandzkie, Pub żywność, fondue, Rosyjska, Rosyjska, duńska, Provençal, teppanyaki, indyjski, maurytyjska, zachodnie,, portugalski, Nuevo, szwedzki, Snacks, marokański, Sandwich, kubański, restauracja |
-| OBSZAR\_restauracji | obszar restauracji |
-| OBSZAR\_REST | obszar REST, zatrzymane miejsce |
-| Widok\_SCENIC\_PANORAMICZNy | Widok Scenic/panoramiczny, punkt obserwacyjny |
-| SŁUŻBOWEGO | Szkoła kulinarna, szkoły podstawowe, szkoły sztuki, starsi szkoły, szkoły szkolne, szkoły szkolne, szkoły sportowe, Preschool, wysoka Szkoła, szkoły szkolne, szkolenia zawodowe, szkoły specjalne, szkoły, szkoły techniczne i szkoły wojskowe, szkoły rolnicze |
-| SKLEPU | gniazdo produkcyjne, produkty zabezpieczeń, Sklep świąteczny, Opticians, ogród domu: oświetlenie, Lottery Shop, instrumenty muzyczne, Nail Salon, ogród domu: malowanie dekorowania nazwy, hobby/bezpłatny czas, Newsagents tobacconists, Akcesoria odzieżowe: specjalne, suche odkurzacze, torby leatherwear, dostawy PET, Akcesoria odzieżowe: dzieci, wyposażenie materiału do produkcji, y, zegarki i Office IT: konsument Elektronika, elektryczny, Office IT:&#39;Zdjęcia z fotografiami&#39;, CD s, wideo, pranie, Akcesoria odzieżowe: mężczyźni, Florists, dom, dom, Books, morski sprzęt elektroniczny, napoje spożywcze: rynki spożywcze, ogród domu: pokrycia dywanowe i podłogowe, fotokopie, akcesoria do urządzeń przenośnych, mobilność, rozrywka, gry, specjalne produkty spożywcze, Akcesoria odzieżowe: ogólne, napoje spożywcze: Bakers, dostosowywanie Sklepu, prezenty, karty urządzenie elektryczne, elektryczne, biurowe: wyposażenie biurowe, laboratorium fotograficzne/programowanie, trefle hurtowe, ogród domu: Armatura mebli, wykorzystując zalety lokalny, napoje spożywcze: Butchers, magazyn odmian, napoje spożywcze: sklepy żywnościowe, napoje spożywcze: wyroby spirytusowe, magazyny narkotyków, meble/sprzęt domowy, instalacje elektryczne, biuro w domu: dostawy komputerowe, wynajem dysków CD/wideo, Materiały medyczne: fishmongers, estetyki, Odzież Akcesoria: kobiety, agenci podróży, sprzedaż detaliczna, sklep recyklingowy, ogród domu: szyba szklana, sprzęt, Agenci nieruchomości, wyroby szklane/ceramiczne, Delicatessen, ogród domu: Kuchnie bathrooms, stacja stanowisk, hairdressersy, w których znajdują się: Artykuły spożywcze, napoje spożywcze: zielonych artykułów spożywczych, wygoda do sklepu, sklep |
-| ZAKUPY\_centrum | Pasaż, centrum zakupów |
-| CENTRUM\_sportowych | dyscyplina sportowa, sąd squash, centrum klubów z dziedziny przydatności, centrum sportowe |
-| PRZYBLIŻA Stadion | telepiłka, piłka, siatkówki, wyścigi, wiele przeznaczeniów, sporty mechaniczne, Cricket ziemi, rugby ziemi, lody kija hokejowego, Athletic, pomór koni, Basketball, piłka, Stadium, Athletic |
-| BASEN\_ | basen |
-| Sąd\_tenis | Sąd tenis |
-| PROFILI | Amphitheater, z korytarzem, śniadaniem, teatrem, centrum muzyczne, Opera, Cabaret, teatr, budynek domu |
-| TURYSTYCZNe\_INFORMATION\_OFFICE | turystyczne Biuro informacyjne |
-| SYGNALIZACJa\_ | Sygnalizacja świetlna |
-| RUCH\_SERVICE\_CENTER | Wydział kontroli ruchu, ruch usługi Traffic Center |
-| \_ruchu | znak ruchu sieciowego |
-| SYSTEM\_końcowego | Adventure pojazdy, wspinanie się skały, koń, rower górski, górach, system Trail |
-| Rejestracja\_transportu\_urzędu certyfikacji | Urząd Transportowy/Rejestracja pojazdu |
-| Zatrzymywanie\_CIĘŻARÓWKi | zatrzymanie ciężarówki |
-| WETERYNARII | placówka weterynaryjna, lekarz weterynarii |
-| WODA\_SPORT | Sport wodny |
-| WAŻENIE stacji\_ | ważenie wag, stacja ważona |
-| DOBROSTAN\_organizacji | Organizacja dobrobytu |
-| WINERY | Winery |
-| Ogrody\_ARBORETA\_botaniczne\_OGRODu | Parkowanie dzikie, arboretay, ogrody wodne |
+| BRAMA DOSTĘPU\_ | dostęp do linii lotniczych, brama bezpieczeństwa, dostęp do stacji, brama dostępu |
+| PODZIAŁ\_ADMINISTRACYJNY | czwartego rzędu, podział administracyjny pierwszego rzędu, historyczny podział administracyjny trzeciego rzędu, siedziba wydziału administracyjnego czwartego rzędu, siedziba drugiego rzędu podziału administracyjnego, zależna jednostka, miejsce zaludnione, siedziba trzeciego rzędu podziału administracyjnego, miejsca zaludnione, podział administracyjny drugiego rzędu, siedziba wydziału administracyjnego pierwszego rzędu, podział administracyjny, zaludniona miejscowość, region historyczny, historyczny miejsce, historyczne zaludnione miejsce, osada izraelska, historyczny podział administracyjny czwartego rzędu, podział administracyjny piątego rzędu, historyczny podział administracyjny pierwszego rzędu, dział administracyjny trzeciego rzędu, historyczny polityczny podmiot, historyczny podział administracyjny, siedziba rządu podmiotu politycznego, historyczny podział administracyjny drugiego rzędu, kapitał podmiotu politycznego |
+| MIEJSCE\_\_SPORTÓW PRZYGODOWYCH | miejsce sportów przygodowych |
+| Rolnictwa | ogrodnictwo, producent surowców, rolnictwo, gospodarstwo rolne, gospodarstwo rolne, gospodarstwo domowe, obszar wypasu, wspólny, obiekt akwakultury, gospodarstwa, obszar połowowy, nabiał, pole(-y) |
+| Lotnisko | władza prywatna, władza wojskowa, heliport, zamknięty, średnie lotnisko, duże lotnisko, małe lotnisko, lotnisko, baza wodnosamolodów, władza publiczna, port balonowy, lotnisko |
+| PARK\_ROZRYWKI | salon gier, miejsce rozrywki, park rozrywki |
+| DEALER\_MOTORYZACYJNY | atv/skuter śnieżny, łódź, autobus, motocykl, ciężarówka, van, pojazdy rekreacyjne, samochód, dealer motoryzacyjny |
+| Bank | bank, banki, banki |
+| Beach | plaża, plaże |
+| PUNKT\_BUDOWY | budynek (punkt) |
+| PARK\_BIZNESOWY | park biznesowy, obszar przemysłowy |
+| CAFE\_PUB | kafejka internetowa, herbaciarnia, kawiarnia, kafejka internetowa, kawiarnia, kawiarnia, minibrowar/ogródek piwny, pub, kawiarnia/pub, kawiarnia/pub |
+| POLE\_NAMIOTOWE | rekreacyjne, przyczepa kempingowa, pole kempingowe |
+| MYJNIA SAMOCHODOWA\_ | Myjnia |
+| DYSTRYBUTOR\_GOTÓWKI | bankomat, bankomat |
+| Kasyno | Kasyno |
+| Kino | kino, kino |
+| CENTRUM\_MIASTA | sąsiedztwo, obszar administracyjny, centrum miasta, centrum |
+| STOWARZYSZENIE\_KLUBOWE | klub plażowy, klub hokejowy, stowarzyszenie klubowe |
+| UNIWERSYTET\_UNIWERSYTECKI | junior college/community college, college/uniwersytet, uczelnia, szkoła przygotowawcza, uniwersytet |
+| BUDYNEK\_HANDLOWY | budynek biurowy, siedziba parku, budynek handlowy |
+| CENTRUM\_SPOŁECZNOŚCI | centrum społeczności |
+| Firmy | elektronika, produkcja, usługi danych komputerowych, technologie zdrowia publicznego, zróżnicowane finanse, schronisko dla zwierząt, linia lotnicza, wypożyczalnia sprzętu, serwis, dostawa poczty/paczki/frachtu, linie autobusowe, naprawa urządzeń gospodarstwa domowego, usługi sprzątania, oem, usługi podatkowe, gaz ziemny ropy naftowej, usługi prawne, budownictwo, telekomunikacja, transport, produkcja samochodów, chemikalia, pogrzebowe pogrzebowe, operacje tuneli mostowych, samochody, inżynieria mechaniczna, usługi, doradcy inwestycyjni, reklama/marketing, magazynowanie ruchome, instytucja oszczędnościowa, ubezpieczenie, oprogramowanie komputerowe, farmaceutyki, catering, usługi weselne, technologia rolnicza, nieruchomości, taksówka, limuzyna wahadłowa, wynajem czarterów autobusowych, górnictwo, technologie wydawnicze, telefon kablowy, dystrybucja importu/eksportu, firma, azyl, kopalnie węgla, nieruchomości, browar, kopalnia złota(-y) |
+| Sądu | Sądu |
+| CENTRUM\_KULTURY | centrum kultury |
+| Dentysta | Dentysta |
+| DOM\_TOWAROWY | dom towarowy |
+| Lekarz | lekarz ogólny, specjalista, lekarz |
+| STACJA\_\_POJAZDÓW ELEKTRYCZNYCH | stacja pojazdów elektrycznych |
+| Ambasada | Ambasada |
+| \_RATOWNICTWO\_MEDYCZNE | ratownictwo medyczne |
+| Rozrywka | Rozrywka |
+| Exchange | wymiana złota, kantor, giełda papierów wartościowych, giełda |
+| CENTRUM\_\_KONGRESOWE WYSTAWY | centrum kongresowe wystawy |
+| TERMINAL\_PROMOWY | prom, terminal promowy |
+| \_STRAŻ POŻARNA\_ | straż pożarna/brygada |
+| PRZEKRACZANIE GRANICY\_ | przekraczanie granicy |
+| URZĄDZENIA\_PALIWOWE | urządzenia paliwowe |
+| FUNKCJA\_GEOGRAFICZNA | zatoka, zatoka, pan, lokalizacja, grzbiet, mineralne / gorące źródła, dobrze, zbiornik, bagno / bagno / vlei, kamieniołom, przejście rzeki, dolina, szczyt górski, rafa, wydma, laguna, zwykły / płaski, rapids, przylądek, płaskowyż, oaza, port, jaskinia, skały, cecha geograficzna, cypla(-y), wyspy, przylądek, molo, jezioro kraterowe, klif(-y), wzgórze, pustynia, portage, lodowiec(s), wąwóz, gejzer, rafa koralowa(-y), szczelina, zatoka, molo, wąwóz, otwór, jezioro kraterowe, pole gazowe, wysepka, krater(s), zatoczki, żwir(s), obszar złamania, wrzos, wąwóz(s), wąwóz wody, wisząca dolina, wzgórza, gorące źródła, bruzda, anabranch |
+| POLE\_GOLFOWE | Golfowe |
+| URZĄD\_RZĄDOWY | zamówić 5 obszar, zamówić 8 obszar, zamówić 9 obszar, porządek 2 obszar, zamów 7 obszar, zamów 3 obszar, supra krajowych, zamówienie 4 obszar, zamówić 6 obszar, urząd rządowy, placówka dyplomatyczna, ustanowienie rządu Stanów Zjednoczonych, urząd samorządu terytorialnego, dom celny, urząd celny |
+| SŁUŻBA\_ZDROWIA\_ | bank krwi, służba osobista, placówka opieki osobistej, oddział pogotowia ratunkowego, służba zdrowia, trąd, sanatorium, szpital, centrum medyczne, klinika |
+| LĄDOWISKO\_\_HELIKOPTERA NA LĄDOWISKO DLA HELIKOPTERÓW | lądowisko dla helikopterów/helikopterów |
+| WYNAJEM\_WAKACYJNY | bungalow, domek letniskowy, domek letniskowy, willa, apartament, wynajem wakacyjny |
+| POLIKLINIKA SZPITALNA\_ | specjalny, szpital medycyny chińskiej, szpital dla kobiet dzieci, ogólny, szpital/poliklinika |
+| MOTEL\_HOTELOWY | domki letniskowe, pensjonaty ze śniadaniem, hotel, obozy wypoczynkowe, motel, ośrodek wypoczynkowy, hostel, hotel/motel, restaunij, hamaki, pensjonat |
+| LODOWISKO\_\_ | lodowisko |
+| WAŻNA\_\_ATRAKCJA TURYSTYCZNA | budynek, obserwatorium, łuk, tunel, statua, wieża, most, planetarium, mauzoleum/grób, pomnik, dziura w wodzie, atrakcja przyrodnicza, ważna atrakcja turystyczna, promenada, piramidy, pagoda, zamek, pałac, pustelnia, piramida, fort, brama, dom wiejski, tama, latarnia morska, grób |
+| BUDYNEK\_PRZEMYSŁOWY | odlewnia, magazyn paliwa, budynek przemysłowy, fabryka |
+| CENTRUM\_REKREACJI | kręgle, snooker, bilard bilard basenowy, latający klub, szkoła tańca studio, sauna, masaż solarium, centrum rekreacyjne, spa |
+| BIBLIOTEKA | biblioteka |
+| ZAKŁAD\_PRODUKCYJNY | zakład produkcyjny |
+| Marina | basen jachtowy, przystań |
+| Rynku | hipermarkety supermarketów, rolnicy, publiczni, nieformalni, |
+| OBIEKT\_MULTIMEDIALNY | media |
+| INSTALACJA WOJSKOWA\_ | baza wojskowa, stacja straży przybrzeżnej, instalacja wojskowa, baza morska |
+| BIURO\_ORGANIZACJI\_MOTORYZACYJNEJ | biuro organizacji motoryzacyjnej |
+| PRZEŁĘCZ GÓRSKA\_ | przełęcz górska |
+| Muzeum | Muzeum |
+| REZERWACJA NATYWNA\_ | rezerwacja natywna, rezerwacja |
+| Życie nocne | bar, klub karaoke, klub jazzowy, prywatny klub, winiarnia, klub komediowy, koktajl bar, dyskoteka, życie nocne |
+| ORGANIZACJA\_POZARZĄDOWA\_ | organizacja pozarządowa |
+| OTWARTY\_\_PARKING | parking otwarty, parking |
+| Innych | lokalizacja, strefa wolnego handlu, rondo, nieznany |
+| GARAŻ\_ | Parking |
+| PARK\_\_REKREACYJNY | miejsce historyczne, wybrzeże, wybrzeże, obszar krajobrazowy rzeki, obszar łowiecki, pole bitwy, sport zimowy, rampa do wodowania łodzi, rezerwat, teren leśny, teren rekreacyjny, ośrodek narciarski, cmentarz, park historyczny, parkway, pomnik, teren targowy, teren piknikowy, obszar dzikiej przyrody, park rekreacyjny, las(-y), skamieniały las, ogród(-y), rezerwat przyrody, rezerwat przyrody, stacja leśna, rezerwat myśliwski, rezerwat leśny, park |
+| STACJA\_BENZYNOWA | stacja benzynowa |
+| Apteka | apteka, przychodnia |
+| MIEJSCE\_\_KULTU | aśram, synagoga, meczet, gurudwara, kościół, świątynia, miejsce kultu, misja, rekolekcje, świątynia(-y), miejsce kultu, centrum religijne, klasztor, klasztor |
+| POSTERUNEK POLICJI\_ | miejsce 1, posterunek policji, posterunek policji |
+| OBIEKT\_\_MAGAZYNOWY PORT | port(-y), dokowanie, port, port/magazyn, stocznia, dok(-y) |
+| POCZTA\_ | lokalny, poczta |
+| NARZĘDZIE\_\_ZASOBÓW PODSTAWOWYCH | podstawowy zasób/użyteczność, elektrownia, separator gazu i oleju |
+| ZAKŁAD\_POPRAWCZY WIĘZIENNY\_ | więzienie, więzienie/zakład poprawczy |
+| UDOGODNIENIA\_PUBLICZNE | metro dla pieszych, Toaleta, ratownictwo drogowe, kasa transportu pasażerskiego, publiczna skrzynka telefoniczna, udogodnienia publiczne, centrum komunikacyjne |
+| PRZYSTANEK\_TRANSPORTU PUBLICZNEGO\_ | przystanek autobusowy, przystanek autobusowy, postoj taksówek, przystanek tramwajowy, przystanek komunikacji miejskiej, stacja metra, stacja kolejowa, dworzec autobusowy, przystanek kolejowy |
+| DWORZEC KOLEJOWY\_ | krajowa, bocznica kolejowa, metro, (sub) miejski, dworzec kolejowy |
+| WYNAJMIJ\_\_OBIEKT SAMOCHODOWY\_ | wypożyczalnia samochodów |
+| WYNAJEM\_\_PARKINGU\_ | wynajem-a-parking |
+| NAPRAWA\_ | warsztaty lakiernicze, usługi opony (opony), warsztaty naprawcze, warsztaty wymiany szkła samochodowego, serwis naprawy samochodów ogólnych, montaż sprzedaży akcesoriów samochodowych, naprawa motocykli, naprawa samochodów ciężarowych, zakład naprawczy |
+| PLACÓWKA BADAWCZA\_ | placówka badawcza |
+| ZAKWATEROWANIE\_MIESZKANIOWE | wspólnota emerytalna, kompleks kamienic, kompleks mieszkaniowy, kompleks kondominium, osiedle mieszkaniowe, kwatery mieszkalne |
+| Restaurant | niemiecki, kreolski-cajun, holenderski, sale bankietowe, bistro, izraelski, słowacki, jamajski, wegetariański, owoce morza, wietnamski, maltański, syczuański, walijski, chiński, japoński, algierski, kalifornijski, fusion, Shandong, bar sałatkowy, Sabaudia an, hiszpański, etiopski, tajwański, pączki, Irański, Kanadyjski, Amerykański, Norweski, Francuski, Hunan, Polinezyjski, afgański, przydrożny, Azjatycki, szwajcarski, erotyczny, crêperie, Surinamski, Egipski, Węgierski, Nepalski, grill, gorący garnek, hamburgery, śródziemnomorski, Latynoamerykański, tapas, brytyjski, meksykański , Guangdong, azjatycki (inny), bufet, sushi, mongolski, międzynarodowy, małże, tajski, wenezuelski, rumuński, kurczak, zupa, koszerne, steak house, jogurt/bar sok, włoski, koreański, cypryjski, bośniacki, boliwijski, dominikański, belgijski, tunezyjski, szkocki, angielski, pakistański, czeski, hawajski, maghrib, tybetański, arabski, bliskowschodnia, chilijski, szanghajski, filipiński, sudański, ormiański, birmański, brazylijski, skandynawski, bułgarski, dusza, Kolumbijczyk, żydowska, pizza, Sycylijski, organiczny, grecki, baskijski, Urugwajski, kawiarnie, fiński, afrykański, Korsykański, Syryjski, Karaiby, Dongbei, Rosyjski, grill, nabierz, fast food, Australijski, Irlandzki, pub, fondue, libański, indonezyjski, duński, prowansalski, teppanyaki, indyjski, mauretański, zachodni kontynentalny, peruwiański, kambodżański, przekąski, szwedzki, makrobiotyczny, lodziarni, słowiański, turecki, argentyński, austriacki, egzotyczny portugalski, luksemburski, marokański, kanapka, restauracja kubańska |
+| STREFA\_RESTAURATORSKA | strefa restauracji |
+| OBSZAR\_ODPOCZYNKU | miejsce odpoczynku, miejsce zatrzymania |
+| MALOWNICZY\_\_WIDOK PANORAMICZNY | widok malowniczy/panoramiczny, punkt obserwacyjny |
+| Szkoła | szkoła kulinarna, szkoła podstawowa, szkoła artystyczna, liceum ogólnokształcące, szkoła jazdy, szkoła językowa, szkoła sportowa, przedszkole, liceum, gimnazjum, kształcenie zawodowe, szkoła specjalna, placówka opieki nad dziećmi, szkoła, technikum, szkoła wojskowa, szkoła rolnicza |
+| Sklep | wylot fabryki, produkty bezpieczeństwa, Boże Narodzenie / sklep wakacyjny, optycy, ogród domowy: oświetlenie, sklep loteryjny, instrumenty muzyczne, salon paznokci, ogród domowy: dekoracje malarskie, hobby / czas wolny, kioski tytoniu, akcesoria odzieżowe: specjalność, pralnie chemiczne, torby skórzane, artykuły dla zwierząt domowych, akcesoria odzieżowe: dzieci, sprzęt budowlany, biżuteria, zegarki zegarowe, akcesoria odzieżowe: naprawy obuwia, ogród domowy: zasłony / tekstylia, elektryczne, biuro: elektronika, elektryczność, biuro to: aparat&#39;s fotografia, cd&#39;s, dvd, pralnia, akcesoria odzieżowe: mężczyźni, kwiaciarnie, lombard, księgarnie, morski sprzęt elektroniczny, napoje spożywcze: targi spożywcze, ogród domowy: dywan/wykładziny podłogowe, kserokopia, akcesoria sprzęt do żeglowania, sklep z telefonami komórkowymi, gry z zabawkami, specjalistyczne produkty spożywcze, akcesoria odzieżowe: ogólne, napoje spożywcze: piekarze, krawiec, prezenty, karty, nowości, pamiątki, usługi dla zwierząt, odzież ze sprzętu sportowego, sklep z pieczęciami, elektryczne, biurowe: sprzęt biurowy, laboratorium fotograficzne/rozwój, hurtownie klubów, ogród domowy: wyposażenie mebli, lokalne specjały, napoje spożywcze: rzeźnicy, sklepy z odmianami, napoje spożywcze: sklepy spożywcze, napoje spożywcze: napoje spirytusowe, apteka, meble/wyposażenie domu, elektryczny, biurowy: materiały komputerowe, cd/video rental, sprzęt medyczny, artykuły rolnicze, salon kosmetyczny, ogród domowy: usługi centrów ogrodowych, napoje spożywcze: sprzedawcy ryb, kosmetyki, akcesoria odzieżowe, odzież: damska, podróżne agenci, punkt sprzedaży detalicznej, sklep recyklingowy, ogród domowy: szklane okna, sprzęt, agenci nieruchomości, szkło/ceramika, delikatesy, ogród domowy: kuchnie łazienkowe, stacja zakładów, fryzjerzy fryzjerzy, napoje spożywcze, artykuły spożywcze, napoje spożywcze: zielony sklep spożywczy, sklepy spożywcze, przejazd przez sklep z butelkami, ogród domowy: centra do samodzielnego wykonania, antykwariaty/sztuka, sklep, sklep |
+| CENTRUM\_HANDLOWE | centrum handlowe, centrum handlowe |
+| CENTRUM\_SPORTOWE | sport tematyczny, kort do squasha, centrum fitness, centrum sportowe |
+| Stadium | netball, piłka nożna, baseball, tor wyścigowy, wielofunkcyjny, sport motorowy, boisko do krykieta, boisko do rugby, hokej na lodzie, atletyczny, wyścigi konne, koszykówka, piłka nożna, stadion, boisko sportowe, tor wyścigowy |
+| BASEN\_ | Basen |
+| KORT\_TENISOWY | kort tenisowy |
+| Teatr | amfiteatr, sala koncertowa, teatr obiadowy, centrum muzyczne, opera, kabaret, teatr, opera |
+| BIURO\_\_INFORMACJI TURYSTYCZNEJ | biuro informacji turystycznej |
+| SYGNALIZACJA ŚWIETLNA\_ | sygnalizacja świetlna |
+| CENTRUM\_\_OBSŁUGI RUCHU DROGOWEGO | wydział kontroli ruchu drogowego, centrum obsługi ruchu |
+| ZNAK\_DROGOWY | znak drogowy |
+| TRAIL\_SYSTEM | pojazd przygodowy, wspinaczka skałkowa, jazda konna, rower górski, turystyka piesza, system szlaków |
+| REJESTRACJA\_\_POJAZDÓW URZĘDU TRANSPORTU | urząd transportu/rejestracja pojazdów |
+| PRZYSTANEK DLA CIĘŻARÓWEK\_ | zatrzymanie samochodu ciężarowych |
+| Lekarza weterynarii | zakład weterynaryjny, lekarz weterynarii |
+| SPORTY WODNE\_ | sport wodny |
+| STACJA\_WAGOWA | wagi, stację wagowa |
+| ORGANIZACJA\_OPIEKI SPOŁECZNEJ | organizacja opieki społecznej |
+| Winery | Winery |
+| OGRÓD\_ZOOLOGICZNY\_\_ARBORETA OGRÓD BOTANICZNY | park przyrody, park morski w zoo wodnym, ogrody botaniczne arboreta, zoo, ogrody zoologiczne, ogród botaniczny arboreta |

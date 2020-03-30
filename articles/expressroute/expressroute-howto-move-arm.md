@@ -1,6 +1,6 @@
 ---
-title: 'Azure ExpressRoute: Przenieś obwody klasyczne do Menedżer zasobów'
-description: Ta strona zawiera opis sposobu przenoszenie obwodu klasycznego modelu wdrażania usługi Resource Manager przy użyciu programu PowerShell.
+title: 'Azure ExpressRoute: Przenoszenie klasycznych obwodów do Menedżera zasobów'
+description: Na tej stronie opisano sposób przenoszenia obwodu klasycznego do modelu wdrażania Menedżera zasobów przy użyciu programu PowerShell.
 services: expressroute
 author: ganesr
 ms.service: expressroute
@@ -8,31 +8,31 @@ ms.topic: conceptual
 ms.date: 02/25/2019
 ms.author: cherylmc
 ms.openlocfilehash: 4e49a3bc803733f5e78207fa3573c93395924d6a
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74080170"
 ---
-# <a name="move-expressroute-circuits-from-classic-to-resource-manager-deployment-model-using-powershell"></a>Przenoszenie obwodów usługi ExpressRoute z klasycznego modelu wdrażania usługi Resource Manager przy użyciu programu PowerShell
+# <a name="move-expressroute-circuits-from-classic-to-resource-manager-deployment-model-using-powershell"></a>Przenoszenie obwodów usługi ExpressRoute z klasycznego do modelu wdrażania Menedżera zasobów przy użyciu programu PowerShell
 
-Aby użyć obwodu usługi ExpressRoute dla wdrożeń klasycznych, jak i modelem wdrażania usługi Resource Manager, należy przenieść obwód modelu wdrażania usługi Resource Manager. Poniższe sekcje ułatwiają przenoszenie obwodu za pomocą programu PowerShell.
+Aby użyć obwodu usługi ExpressRoute zarówno dla modeli wdrażania klasycznego, jak i modelu wdrażania Menedżera zasobów, należy przenieść obwód do modelu wdrażania Menedżera zasobów. Poniższe sekcje ułatwią przenoszenie obwodu za pomocą programu PowerShell.
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
 [!INCLUDE [updated-for-az](../../includes/hybrid-az-ps.md)]
 
-* Sprawdź, czy na komputerze zainstalowano lokalnie i AZ Azure PowerShell module. Aby uzyskać więcej informacji, zobacz [Instalowanie i konfigurowanie programu Azure PowerShell](/powershell/azure/overview).
-* Upewnij się, że użytkownik przejrzał [wymagania wstępne](expressroute-prerequisites.md), [wymagania dotyczące routingu](expressroute-routing.md), i [przepływy pracy](expressroute-workflows.md) przed rozpoczęciem konfiguracji.
-* Zapoznaj się z informacjami, który znajduje się w obszarze [przenoszenie obwodu usługi ExpressRoute z modelu klasycznego do usługi Resource Manager](expressroute-move.md). Upewnij się, że w pełni rozumiesz limity i ograniczenia.
-* Sprawdź, że obwód jest w pełni funkcjonalne w klasycznym modelu wdrażania.
-* Upewnij się, że grupa zasobów, który został utworzony w modelu wdrażania usługi Resource Manager.
+* Sprawdź, czy zainstalowano moduły klasyczne i Az Azure PowerShell lokalnie na komputerze. Aby uzyskać więcej informacji, zobacz [Instalowanie i konfigurowanie programu Azure PowerShell](/powershell/azure/overview).
+* Przed rozpoczęciem konfiguracji upewnij się, że zostały [sprawdzone wymagania wstępne,](expressroute-prerequisites.md) [wymagania dotyczące routingu](expressroute-routing.md)i [przepływy pracy.](expressroute-workflows.md)
+* Przejrzyj informacje podane w obszarze [Przenoszenie obwodu usługi ExpressRoute z klasycznego do Menedżera zasobów](expressroute-move.md). Upewnij się, że w pełni rozumiesz ograniczenia i ograniczenia.
+* Sprawdź, czy obwód jest w pełni operacyjny w klasycznym modelu wdrażania.
+* Upewnij się, że masz grupę zasobów, która została utworzona w modelu wdrażania Menedżera zasobów.
 
 ## <a name="move-an-expressroute-circuit"></a>Przenoszenie obwodu usługi ExpressRoute
 
-### <a name="step-1-gather-circuit-details-from-the-classic-deployment-model"></a>Krok 1: Zebranie informacji obwodu z klasycznego modelu wdrażania
+### <a name="step-1-gather-circuit-details-from-the-classic-deployment-model"></a>Krok 1: Zbieranie szczegółów obwodu z klasycznego modelu wdrażania
 
-Zaloguj się do klasycznego środowiska platformy Azure i Zbierz klucza usługi.
+Zaloguj się do klasycznego środowiska platformy Azure i zbierz klucz usługi.
 
 1. Zaloguj się do swojego konta platformy Azure.
 
@@ -53,15 +53,15 @@ Zaloguj się do klasycznego środowiska platformy Azure i Zbierz klucza usługi.
    Import-Module 'C:\Program Files\WindowsPowerShell\Modules\Azure\5.1.1\ExpressRoute\ExpressRoute.psd1'
    ```
 
-4. Użyj poniższego polecenia cmdlet, aby pobrać klucze usługi dla wszystkich obwodów usługi ExpressRoute. Po pobraniu klucze, należy skopiować **klucza usługi** obwodu, który chcesz przenieść do modelu wdrażania usługi Resource Manager.
+4. Użyj polecenia cmdlet poniżej, aby uzyskać klucze serwisowe dla wszystkich obwodów usługi ExpressRoute. Po pobraniu kluczy skopiuj **klucz usługi** obwodu, który chcesz przenieść do modelu wdrażania Menedżera zasobów.
 
    ```powershell
    Get-AzureDedicatedCircuit
    ```
 
-### <a name="step-2-sign-in-and-create-a-resource-group"></a>Krok 2: Zaloguj się i Utwórz grupę zasobów
+### <a name="step-2-sign-in-and-create-a-resource-group"></a>Krok 2: Zaloguj się i utwórz grupę zasobów
 
-Zaloguj się do środowiska usługi Resource Manager i Utwórz nową grupę zasobów.
+Zaloguj się do środowiska Menedżera zasobów i utwórz nową grupę zasobów.
 
 1. Zaloguj się do środowiska usługi Azure Resource Manager.
 
@@ -75,80 +75,80 @@ Zaloguj się do środowiska usługi Resource Manager i Utwórz nową grupę zaso
    Get-AzSubscription -SubscriptionName "<Enter Subscription Name here>" | Select-AzSubscription
    ```
 
-3. Zmodyfikuj fragmencie kodu poniżej, aby utworzyć nową grupę zasobów, jeśli nie masz jeszcze grupy zasobów.
+3. Zmodyfikuj poniższy fragment kodu, aby utworzyć nową grupę zasobów, jeśli nie masz jeszcze grupy zasobów.
 
    ```powershell
    New-AzResourceGroup -Name "DemoRG" -Location "West US"
    ```
 
-### <a name="step-3-move-the-expressroute-circuit-to-the-resource-manager-deployment-model"></a>Krok 3: Przenoszenie obwodu usługi ExpressRoute do modelu wdrażania usługi Resource Manager
+### <a name="step-3-move-the-expressroute-circuit-to-the-resource-manager-deployment-model"></a>Krok 3: Przeniesienie obwodu usługi ExpressRoute do modelu wdrażania Menedżera zasobów
 
-Teraz można przystąpić do przenoszenie obwodów usługi ExpressRoute z klasycznego modelu wdrażania do modelu wdrażania usługi Resource Manager. Przed kontynuowaniem zapoznaj się z informacjami w [przenoszenie obwodu usługi ExpressRoute z klasycznego modelu wdrażania usługi Resource Manager](expressroute-move.md).
+Teraz można przystąpić do przenoszenia obwodu usługi ExpressRoute z klasycznego modelu wdrażania do modelu wdrażania Menedżera zasobów. Przed kontynuowaniem zapoznaj się z informacjami podanymi w [obszarze Przenoszenie obwodu usługi ExpressRoute z klasycznego do modelu wdrażania Menedżera zasobów](expressroute-move.md).
 
-Aby przenieść obwodu, Modyfikuj, a następnie uruchom poniższy fragment kodu:
+Aby przenieść obwód, zmodyfikuj i uruchom następujący fragment kodu:
 
 ```powershell
 Move-AzExpressRouteCircuit -Name "MyCircuit" -ResourceGroupName "DemoRG" -Location "West US" -ServiceKey "<Service-key>"
 ```
 
-W trybie klasycznym obwodu usługi ExpressRoute nie ma koncepcji jest powiązany z obszarem. Jednak w usłudze Resource Manager, każdy zasób musi być zamapowany na region platformy Azure. Region określony w poleceniu cmdlet Move-AzExpressRouteCircuit może być w dowolnym regionie. Do celów organizacji można wybrać region, który reprezentuje blisko swojej lokalizacji komunikacji równorzędnej.
+W trybie klasycznym obwód usługi ExpressRoute nie ma pojęcia, że jest powiązany z regionem. Jednak w Menedżerze zasobów każdy zasób musi być mapowany do regionu platformy Azure. Region określony w poleceniu cmdlet Move-AzExpressRouteCircuit może technicznie być dowolnym regionem. Do celów organizacyjnych można wybrać region, który ściśle reprezentuje twoją lokalizację komunikacji równorzędnej.
 
 > [!NOTE]
-> Po zakończeniu przenoszenia nową nazwę, która znajduje się w poprzednim poleceniu cmdlet będzie wykorzystywana do adresowania zasobów. Zasadniczo można zmienić nazwy obwodu.
+> Po zakończeniu przenoszenia nowa nazwa wymieniona w poprzednim pomieści zostanie użyta do rozwiązania problemu zasobu. Zasadniczo zmieniono nazwę obwodu.
 > 
 
-## <a name="modify-circuit-access"></a>Modyfikowanie obwodu dostępu
+## <a name="modify-circuit-access"></a>Modyfikowanie dostępu do obwodu
 
-### <a name="to-enable-expressroute-circuit-access-for-both-deployment-models"></a>Aby włączyć dostęp obwodu usługi ExpressRoute dla obu modeli wdrażania
+### <a name="to-enable-expressroute-circuit-access-for-both-deployment-models"></a>Aby włączyć dostęp do obwodu usługi ExpressRoute dla obu modeli wdrażania
 
-Po przeniesieniu obwód usługi ExpressRoute klasycznego modelu wdrażania usługi Resource Manager, aby umożliwić dostęp do obu modeli wdrażania. Uruchom następujące polecenia cmdlet, aby umożliwić dostęp do obu modelach wdrażania:
+Po przeniesieniu klasycznego obwodu usługi ExpressRoute do modelu wdrażania Menedżera zasobów można włączyć dostęp do obu modeli wdrażania. Uruchom następujące polecenia cmdlet, aby umożliwić dostęp do obu modeli wdrażania:
 
-1. Uzyskaj szczegółowe informacje obwodu.
+1. Uzyskaj szczegółowe informacje o obwodzie.
 
    ```powershell
    $ckt = Get-AzExpressRouteCircuit -Name "DemoCkt" -ResourceGroupName "DemoRG"
    ```
 
-2. Ustaw "Zezwalaj na klasyczne operacje" na wartość TRUE.
+2. Ustaw wartość "Zezwalaj na operacje klasyczne" na TRUE.
 
    ```powershell
    $ckt.AllowClassicOperations = $true
    ```
 
-3. Zaktualizuj obwodu. Po tej operacji zakończyło się pomyślnie, będzie można wyświetlić obwód w klasycznym modelu wdrażania.
+3. Zaktualizuj obwód. Po pomyślnym zakończeniu tej operacji będzie można wyświetlić obwód w klasycznym modelu wdrażania.
 
    ```powershell
    Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
    ```
 
-4. Uruchom następujące polecenie cmdlet, aby uzyskać szczegółowe informacje z obwodem usługi ExpressRoute. Musi być można zobaczyć klucz usługi na liście.
+4. Uruchom następujące polecenie cmdlet, aby uzyskać szczegółowe informacje o obwodzie usługi ExpressRoute. Musi być widoczny na liście klucz usługi.
 
    ```powershell
    get-azurededicatedcircuit
    ```
 
-5. Możesz teraz zarządzać łącza z obwodem usługi ExpressRoute za pomocą poleceń modelu wdrożenia klasycznego dla klasycznych sieci wirtualnych i poleceń usługi Resource Manager dla sieci wirtualnych usługi Resource Manager. Następujące artykuły ułatwiają zarządzanie łącza z obwodem usługi ExpressRoute:
+5. Teraz można zarządzać łączami do obwodu usługi ExpressRoute przy użyciu klasycznych poleceń modelu wdrażania dla klasycznych sieci wirtualnych i poleceń Menedżera zasobów dla sieci wirtualnych Menedżera zasobów. Poniższe artykuły ułatwiają zarządzanie łączami do obwodu usługi ExpressRoute:
 
-    * [Łączenie sieci wirtualnej na obwód usługi ExpressRoute w modelu wdrażania usługi Resource Manager](expressroute-howto-linkvnet-arm.md)
-    * [Łączenie sieci wirtualnej na obwód usługi ExpressRoute w klasycznym modelu wdrażania](expressroute-howto-linkvnet-classic.md)
+    * [Łączenie sieci wirtualnej z obwodem usługi ExpressRoute w modelu wdrażania Menedżera zasobów](expressroute-howto-linkvnet-arm.md)
+    * [Łączenie sieci wirtualnej z obwodem usługi ExpressRoute w klasycznym modelu wdrażania](expressroute-howto-linkvnet-classic.md)
 
 ### <a name="to-disable-expressroute-circuit-access-to-the-classic-deployment-model"></a>Aby wyłączyć dostęp obwodu usługi ExpressRoute do klasycznego modelu wdrażania
 
 Uruchom następujące polecenia cmdlet, aby wyłączyć dostęp do klasycznego modelu wdrażania.
 
-1. Uzyskaj szczegółowe informacje obwodu usługi ExpressRoute.
+1. Szczegółowe informacje na temat obwodu usługi ExpressRoute.
 
    ```powershell
    $ckt = Get-AzExpressRouteCircuit -Name "DemoCkt" -ResourceGroupName "DemoRG"
    ```
 
-2. Ustaw "Zezwalaj na klasyczne operacje" na wartość FALSE.
+2. Ustaw wartość "Zezwalaj na operacje klasyczne" na WARTOŚĆ FAŁSZ.
 
    ```powershell
    $ckt.AllowClassicOperations = $false
    ```
 
-3. Zaktualizuj obwodu. Po tej operacji zakończyło się pomyślnie, nie można wyświetlić obwód w klasycznym modelu wdrażania.
+3. Zaktualizuj obwód. Po pomyślnym zakończeniu tej operacji nie będzie można wyświetlić obwodu w klasycznym modelu wdrażania.
 
    ```powershell
    Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
@@ -157,4 +157,4 @@ Uruchom następujące polecenia cmdlet, aby wyłączyć dostęp do klasycznego m
 ## <a name="next-steps"></a>Następne kroki
 
 * [Tworzenie i modyfikowanie routingu dla obwodu usługi ExpressRoute](expressroute-howto-routing-arm.md)
-* [Łączenie sieci wirtualnej na obwód usługi ExpressRoute](expressroute-howto-linkvnet-arm.md)
+* [Łączenie sieci wirtualnej z obwodem usługi ExpressRoute](expressroute-howto-linkvnet-arm.md)

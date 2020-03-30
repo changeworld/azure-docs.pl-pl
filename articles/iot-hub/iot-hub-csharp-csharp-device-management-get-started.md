@@ -1,6 +1,6 @@
 ---
-title: Rozpoczynanie pracy z usługą Azure IoT Hub Device Management (.NET/.NET) | Microsoft Docs
-description: Jak zainicjować zdalne ponowne uruchomienie urządzenia za pomocą usługi Azure IoT Hub Device Management. Zestaw SDK urządzeń Azure IoT dla platformy .NET służy do implementowania aplikacji symulowanego urządzenia, która obejmuje metodę bezpośrednią i zestaw SDK usługi Azure IoT dla platformy .NET, aby zaimplementować aplikację usługi, która wywołuje metodę bezpośrednią.
+title: Wprowadzenie do zarządzania urządzeniami usługi Azure IoT Hub (.NET/.NET) | Dokumenty firmy Microsoft
+description: Jak za pomocą zarządzania urządzeniami usługi Azure IoT Hub do inicjowania ponownego uruchomienia urządzenia zdalnego. Użyj zestawu SDK urządzenia Usługi Azure IoT dla platformy .NET w celu zaimplementowania aplikacji symulowanego urządzenia, która zawiera metodę bezpośrednią i zestaw SDK usługi Azure IoT dla platformy .NET w celu zaimplementowania aplikacji usługi, która wywołuje metodę bezpośrednią.
 author: robinsh
 manager: philmea
 ms.service: iot-hub
@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 08/20/2019
 ms.author: robinsh
 ms.openlocfilehash: 3b37d7e049e7daabbbb4fe1a7b49feb654e8accc
-ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77110263"
 ---
 # <a name="get-started-with-device-management-net"></a>Wprowadzenie do zarządzania urządzeniami (.NET)
@@ -22,68 +22,68 @@ ms.locfileid: "77110263"
 
 Ten samouczek przedstawia sposób wykonania następujących czynności:
 
-* Użyj Azure Portal, aby utworzyć Centrum IoT Hub i utworzyć tożsamość urządzenia w centrum IoT.
+* Użyj witryny Azure Portal, aby utworzyć centrum IoT i utworzyć tożsamość urządzenia w centrum IoT hub.
 
-* Utwórz aplikację symulowanego urządzenia, która zawiera metodę bezpośrednią, która uruchamia ponownie to urządzenie. Metody bezpośrednie są wywoływane z chmury.
+* Utwórz aplikację symulowanego urządzenia, która zawiera bezpośrednią metodę ponownego uruchomienia tego urządzenia. Metody bezpośrednie są wywoływane z chmury.
 
-* Tworzenie aplikacji konsolowej .NET, która wywołuje metodę bezpośredniego ponownego uruchomienia w aplikacji symulowanego urządzenia za pośrednictwem Centrum IoT.
+* Utwórz aplikację konsoli .NET, która wywołuje metodę bezpośredniego ponownego uruchomienia w aplikacji symulowanego urządzenia za pośrednictwem centrum IoT hub.
 
 Na końcu tego samouczka będziesz mieć dwie aplikacje konsolowe .NET:
 
-* **SimulateManagedDevice**. Ta aplikacja łączy się z Centrum IoT Hub przy użyciu utworzonej wcześniej tożsamości urządzenia, odbiera metodę bezpośredniego ponownego uruchomienia, symuluje rozruch fizyczny i raportuje godzinę ostatniego ponownego uruchomienia.
+* **SimulateManagedDevice**. Ta aplikacja łączy się z centrum IoT hub z tożsamości urządzenia utworzone wcześniej, odbiera metodę bezpośredniego ponownego uruchomienia, symuluje fizyczny ponowny rozruch i raportuje czas ostatniego ponownego uruchomienia.
 
-* **TriggerReboot**. Ta aplikacja wywołuje metodę bezpośrednią w aplikacji symulowanego urządzenia, wyświetla odpowiedź i wyświetla zaktualizowane raportowane właściwości.
+* **TriggerReboot**. Ta aplikacja wywołuje metodę bezpośrednią w aplikacji symulowanego urządzenia, wyświetla odpowiedź i wyświetla zaktualizowane zgłoszone właściwości.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 * Program Visual Studio.
 
-* Aktywne konto platformy Azure. Jeśli nie masz konta, możesz utworzyć [bezpłatne konto](https://azure.microsoft.com/pricing/free-trial/) w zaledwie kilka minut.
+* Aktywne konto platformy Azure. Jeśli go nie masz, możesz utworzyć [bezpłatne konto](https://azure.microsoft.com/pricing/free-trial/) w zaledwie kilka minut.
 
-* Upewnij się, że port 8883 jest otwarty w zaporze. W przykładzie urządzenia w tym artykule jest używany protokół MQTT, który komunikuje się przez port 8883. Ten port może być blokowany w niektórych firmowych i edukacyjnych środowiskach sieciowych. Aby uzyskać więcej informacji i sposobów obejścia tego problemu, zobacz [nawiązywanie połączenia z IoT Hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
+* Upewnij się, że port 8883 jest otwarty w zaporze. Przykład urządzenia w tym artykule używa protokołu MQTT, który komunikuje się za pomocą portu 8883. Ten port może być zablokowany w niektórych środowiskach sieci firmowych i edukacyjnych. Aby uzyskać więcej informacji i sposobów obejść ten problem, zobacz [Łączenie się z centrum IoT Hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
 
 ## <a name="create-an-iot-hub"></a>Tworzenie centrum IoT Hub
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
-## <a name="register-a-new-device-in-the-iot-hub"></a>Rejestrowanie nowego urządzenia w usłudze IoT Hub
+## <a name="register-a-new-device-in-the-iot-hub"></a>Zarejestruj nowe urządzenie w centrum IoT
 
 [!INCLUDE [iot-hub-include-create-device](../../includes/iot-hub-include-create-device.md)]
 
-## <a name="get-the-iot-hub-connection-string"></a>Pobierz parametry połączenia usługi IoT Hub
+## <a name="get-the-iot-hub-connection-string"></a>Pobierz ciąg połączenia koncentratora IoT
 
 [!INCLUDE [iot-hub-howto-device-management-shared-access-policy-text](../../includes/iot-hub-howto-device-management-shared-access-policy-text.md)]
 
 [!INCLUDE [iot-hub-include-find-service-connection-string](../../includes/iot-hub-include-find-service-connection-string.md)]
 
-## <a name="trigger-a-remote-reboot-on-the-device-using-a-direct-method"></a>Wyzwalanie zdalnego ponownego uruchomienia na urządzeniu przy użyciu metody bezpośredniej
+## <a name="trigger-a-remote-reboot-on-the-device-using-a-direct-method"></a>Wyzwalanie zdalnego ponownego uruchomienia urządzenia przy użyciu metody bezpośredniej
 
-W tej sekcji utworzysz aplikację konsolową .NET, za pomocą C#której zostanie zainicjowany zdalny ponowny rozruch na urządzeniu przy użyciu metody bezpośredniej. Aplikacja używa zapytań o bliźniaczych urządzeniach do wykrywania czasu ostatniego rozruchu dla tego urządzenia.
+W tej sekcji utworzysz aplikację konsoli .NET przy użyciu języka C#, która inicjuje zdalny ponowny rozruch na urządzeniu przy użyciu metody bezpośredniej. Aplikacja używa zapytań bliźniaczej reprezentacji urządzenia, aby odkryć ostatni czas ponownego uruchomienia dla tego urządzenia.
 
 1. W programie Visual Studio wybierz pozycję **Utwórz nowy projekt**.
 
-1. W obszarze **Utwórz nowy projekt**Znajdź i wybierz szablon projektu **aplikacja konsoli (.NET Framework)** , a następnie wybierz przycisk **dalej**.
+1. W **obszarze Tworzenie nowego projektu**znajdź i wybierz szablon projektu aplikacji konsoli **(.NET Framework),** a następnie wybierz pozycję **Dalej**.
 
-1. W obszarze **Konfigurowanie nowego projektu**Nadaj projektowi nazwę *TriggerReboot*i wybierz pozycję .NET Framework w wersji 4.5.1 lub nowszej. Wybierz pozycję **Utwórz**.
+1. W **obszarze Konfiguruj nowy projekt nazwij**projekt *TriggerReboot*i wybierz opcję .NET Framework w wersji 4.5.1 lub nowszej. Wybierz **pozycję Utwórz**.
 
     ![Nowy projekt Visual C# Windows Classic Desktop](./media/iot-hub-csharp-csharp-device-management-get-started/create-trigger-reboot-configure.png)
 
-1. W **Eksplorator rozwiązań**kliknij prawym przyciskiem myszy projekt **TriggerReboot** , a następnie wybierz pozycję **Zarządzaj pakietami NuGet**.
+1. W **Eksploratorze rozwiązań**kliknij prawym przyciskiem myszy projekt **TriggerReboot,** a następnie wybierz polecenie **Zarządzaj pakietami NuGet**.
 
-1. Wybierz pozycję **Przeglądaj**, a następnie wyszukaj i wybierz pozycję **Microsoft. Azure. Devices**. Wybierz pozycję **Zainstaluj** , aby zainstalować pakiet **Microsoft. Azure. Devices** .
+1. Wybierz **pozycję Przeglądaj**, a następnie wyszukaj i wybierz pozycję **Microsoft.Azure.Devices**. Wybierz **pozycję Zainstaluj,** aby zainstalować pakiet **Microsoft.Azure.Devices.**
 
     ![Okno Menedżera pakietów NuGet](./media/iot-hub-csharp-csharp-device-management-get-started/create-trigger-reboot-nuget-devices.png)
 
-   Ten krok spowoduje pobranie, zainstalowanie i dodanie odwołania do pakietu NuGet [zestawu SDK usługi Azure IoT](https://www.nuget.org/packages/Microsoft.Azure.Devices/) oraz jego zależności.
+   Ten krok pobiera, instaluje i dodaje odwołanie do pakietu [NuGet usługi Azure IoT i](https://www.nuget.org/packages/Microsoft.Azure.Devices/) jego zależności.
 
-1. Dodaj następujące instrukcje `using` w górnej części pliku **Program.cs**:
+1. Dodaj następujące `using` instrukcje w górnej części pliku **Program.cs:**
 
    ```csharp
    using Microsoft.Azure.Devices;
    using Microsoft.Azure.Devices.Shared;
    ```
 
-1. Dodaj następujące pola do klasy **Program**: Zastąp `{iot hub connection string}` wartość symbolu zastępczego parametrami połączenia IoT Hub skopiowanymi wcześniej w polu [Pobierz parametry połączenia usługi IoT Hub](#get-the-iot-hub-connection-string).
+1. Dodaj następujące pola do klasy **Program**: Zastąp wartość symbolu `{iot hub connection string}` zastępczego ciągiem połączenia usługi IoT Hub skopiowanym wcześniej w polu Pobierz ciąg połączenia centrum [IoT](#get-the-iot-hub-connection-string).
 
    ```csharp
    static RegistryManager registryManager;
@@ -92,7 +92,7 @@ W tej sekcji utworzysz aplikację konsolową .NET, za pomocą C#której zostanie
    static string targetDevice = "myDeviceId";
    ```
 
-1. Dodaj następującą metodę do klasy **Program**.  Ten kod pobiera dwuosiową urządzenie do ponownego rozruchu i wyprowadza raportowane właściwości.
+1. Dodaj następującą metodę do klasy **Program**.  Ten kod pobiera bliźniaczej reprezentacji urządzenia dla urządzenia ponownego uruchamiania i wyprowadza zgłoszone właściwości.
 
    ```csharp
    public static async Task QueryTwinRebootReported()
@@ -102,7 +102,7 @@ W tej sekcji utworzysz aplikację konsolową .NET, za pomocą C#której zostanie
    }
    ```
 
-1. Dodaj następującą metodę do klasy **Program**.  Ten kod inicjuje ponowny rozruch urządzenia przy użyciu metody bezpośredniej.
+1. Dodaj następującą metodę do klasy **Program**.  Ten kod inicjuje ponowne uruchomienie na urządzeniu przy użyciu metody bezpośredniej.
 
    ```csharp
    public static async Task StartReboot()
@@ -128,52 +128,52 @@ W tej sekcji utworzysz aplikację konsolową .NET, za pomocą C#której zostanie
    Console.ReadLine();
    ```
 
-1. Wybierz pozycję **kompilacja** > **Kompiluj rozwiązanie**.
+1. Wybierz **opcję Zbuduj** > **rozwiązanie kompilacji**.
 
 > [!NOTE]
-> W tym samouczku wykonywane jest tylko jedno zapytanie dotyczące raportowanych właściwości urządzenia. W kodzie produkcyjnym zalecamy sondowanie w celu wykrywania zmian raportowanych właściwości.
+> Ten samouczek wykonuje tylko jedną kwerendę dla zgłoszonych właściwości urządzenia. W kodzie produkcyjnym zaleca się sondowanie w celu wykrycia zmian w zgłoszonych właściwościach.
 
 ## <a name="create-a-simulated-device-app"></a>Tworzenie aplikacji symulowanego urządzenia
 
 W tej sekcji omówiono następujące zagadnienia:
 
-* Utwórz aplikację konsolową platformy .NET, która odpowiada na bezpośrednią metodę wywoływaną przez chmurę.
+* Utwórz aplikację konsoli platformy .NET, która odpowiada na metodę bezpośrednią wywoływaną przez chmurę.
 
-* Wyzwalanie ponownego uruchomienia symulowanego urządzenia.
+* Wyzwalanie symulowanego ponownego uruchomienia urządzenia.
 
-* Korzystając z raportowanych właściwości, można włączyć funkcję sznurów odosiowych urządzeń w celu zidentyfikowania urządzeń i czasu ostatniego ponownego uruchomienia.
+* Użyj zgłoszonych właściwości, aby włączyć zapytania bliźniaczej reprezentacji urządzenia do identyfikowania urządzeń i kiedy zostały ostatnio ponownie uruchomione.
 
-Aby utworzyć aplikację symulowanego urządzenia, wykonaj następujące kroki:
+Aby utworzyć aplikację symulowanego urządzenia, wykonaj następujące czynności:
 
-1. W programie Visual Studio w już utworzonym rozwiązaniu TriggerReboot wybierz pozycję **plik** > **Nowy** > **Project**. W obszarze **Utwórz nowy projekt**Znajdź i wybierz szablon projektu **aplikacja konsoli (.NET Framework)** , a następnie wybierz przycisk **dalej**.
+1. W programie Visual Studio w już utworzonym rozwiązaniu TriggerReboot wybierz pozycję **Plik** > **nowego** > **projektu**. W **obszarze Tworzenie nowego projektu**znajdź i wybierz szablon projektu aplikacji konsoli **(.NET Framework),** a następnie wybierz pozycję **Dalej**.
 
-1. W obszarze **Konfigurowanie nowego projektu**Nazwij projekt *SimulateManagedDevice*, a w polu **rozwiązanie**wybierz pozycję **Dodaj do rozwiązania**. Wybierz pozycję **Utwórz**.
+1. W **obszarze Konfiguruj nowy projekt nazwij**projekt *SimulateManagedDevice*, a w przypadku **rozwiązania**wybierz pozycję Dodaj **do rozwiązania**. Wybierz **pozycję Utwórz**.
 
-    ![Nazwa i Dodawanie projektu do rozwiązania](./media/iot-hub-csharp-csharp-device-management-get-started/configure-device-app.png)
+    ![Nadaj nazwę i dodaj projekt do rozwiązania](./media/iot-hub-csharp-csharp-device-management-get-started/configure-device-app.png)
 
-1. W Eksplorator rozwiązań kliknij prawym przyciskiem myszy nowy projekt **SimulateManagedDevice** , a następnie wybierz pozycję **Zarządzaj pakietami NuGet**.
+1. W Eksploratorze rozwiązań kliknij prawym przyciskiem myszy nowy projekt **SimulateManagedDevice,** a następnie wybierz pozycję **Zarządzaj pakietami NuGet**.
 
-1. Wybierz pozycję **Przeglądaj**, a następnie wyszukaj i wybierz pozycję **Microsoft. Azure. Devices. Client**. Wybierz pozycję **Zainstaluj**.
+1. Wybierz **pozycję Przeglądaj**, a następnie wyszukaj i wybierz pozycję **Microsoft.Azure.Devices.Client**. Wybierz pozycję **Zainstaluj**.
 
-    ![Aplikacja kliencka Menedżera pakietów NuGet](./media/iot-hub-csharp-csharp-device-management-get-started/create-device-nuget-devices-client.png)
+    ![Aplikacja klienta okna Menedżera pakietów NuGet](./media/iot-hub-csharp-csharp-device-management-get-started/create-device-nuget-devices-client.png)
 
-   Ten krok spowoduje pobranie, zainstalowanie i dodanie odwołania do pakietu NuGet [zestawu SDK urządzenia usługi Azure IoT](https://www.nuget.org/packages/Microsoft.Azure.Devices.Client/) oraz jego zależności.
+   Ten krok pobiera, instaluje i dodaje odwołanie do pakietu [NuGet zestawu NuGet urządzenia Usługi Azure IoT](https://www.nuget.org/packages/Microsoft.Azure.Devices.Client/) i jego zależności.
 
-1. Dodaj następujące instrukcje `using` w górnej części pliku **Program.cs**:
+1. Dodaj następujące `using` instrukcje w górnej części pliku **Program.cs:**
 
     ```csharp
     using Microsoft.Azure.Devices.Client;
     using Microsoft.Azure.Devices.Shared;
     ```
 
-1. Dodaj następujące pola do klasy **Program**: Zastąp `{device connection string}` wartość symbolu zastępczego parametrami połączenia urządzenia zanotowanymi wcześniej w temacie [Rejestrowanie nowego urządzenia w usłudze IoT Hub](#register-a-new-device-in-the-iot-hub).
+1. Dodaj następujące pola do klasy **Program**: Zastąp wartość symbolu `{device connection string}` zastępczego ciągiem połączenia urządzenia, który został wcześniej odnotowany w polu Zarejestruj nowe urządzenie w centrum [IoT hub](#register-a-new-device-in-the-iot-hub).
 
     ```csharp
     static string DeviceConnectionString = "{device connection string}";
     static DeviceClient Client = null;
     ```
 
-1. Dodaj następujące polecenie, aby zaimplementować metodę bezpośrednią na urządzeniu:
+1. Dodaj następujące elementy, aby zaimplementować metodę bezpośrednią na urządzeniu:
 
    ```csharp
    static Task<MethodResponse> onReboot(MethodRequest methodRequest, object userContext)
@@ -207,7 +207,7 @@ Aby utworzyć aplikację symulowanego urządzenia, wykonaj następujące kroki:
    }
    ```
 
-1. Na koniec Dodaj następujący kod do metody **Main** , aby otworzyć połączenie z Centrum IoT Hub i zainicjować odbiornik metody:
+1. Na koniec dodaj następujący kod do **Main** metody, aby otworzyć połączenie z centrum IoT hub i zainicjować odbiornik metody:
 
    ```csharp
    try
@@ -234,25 +234,25 @@ Aby utworzyć aplikację symulowanego urządzenia, wykonaj następujące kroki:
    }
    ```
 
-1. W Eksplorator rozwiązań kliknij prawym przyciskiem myszy rozwiązanie, a następnie wybierz pozycję **Ustaw projekty startowe**.
+1. W Eksploratorze rozwiązań kliknij prawym przyciskiem myszy rozwiązanie, a następnie wybierz pozycję **Ustaw projekty startowe**.
 
-1. Dla **typowych właściwości** > **projekt startowy**wybierz pozycję **pojedynczy projekt startowy**, a następnie wybierz projekt **SimulateManagedDevice** . Aby zapisać zmiany, wybierz pozycję **OK**.
+1. W przypadku**projektu uruchamiania** **wspólnych właściwości** > wybierz **pojedynczy projekt startowy**, a następnie wybierz projekt **SimulateManagedDevice.** Aby zapisać zmiany, wybierz pozycję **OK**.
 
-1. Wybierz pozycję **kompilacja** > **Kompiluj rozwiązanie**.
+1. Wybierz **opcję Zbuduj** > **rozwiązanie kompilacji**.
 
 > [!NOTE]
-> Dla uproszczenia ten samouczek nie zawiera opisu wdrożenia żadnych zasad ponawiania. W kodzie produkcyjnym należy wdrożyć zasady ponawiania (np. wykładniczy wycofywania), zgodnie z sugestią w [obsłudze błędów przejściowych](/azure/architecture/best-practices/transient-faults).
+> Dla uproszczenia ten samouczek nie zawiera opisu wdrożenia żadnych zasad ponawiania. W kodzie produkcyjnym należy zaimplementować zasady ponawiania prób (takie jak wykładnicze wycofywanie), zgodnie z sugestią w [przypadku obsługi błędów przejściowych.](/azure/architecture/best-practices/transient-faults)
 
 ## <a name="run-the-apps"></a>Uruchamianie aplikacji
 
-Teraz można przystąpić do uruchamiania aplikacji.
+Teraz możesz uruchomić aplikacje.
 
-1. Aby uruchomić aplikację urządzenia .NET **SimulateManagedDevice**, w Eksplorator rozwiązań kliknij prawym przyciskiem myszy projekt **SimulateManagedDevice** , wybierz polecenie **Debuguj**, a następnie wybierz polecenie **Uruchom nowe wystąpienie**. Aplikacja powinna rozpocząć nasłuchiwanie wywołań metod z Centrum IoT Hub.
+1. Aby uruchomić aplikację urządzenia .NET **SimulateManagedDevice**w Eksploratorze rozwiązań, kliknij prawym przyciskiem myszy projekt **SimulateManagedDevice,** wybierz polecenie **Debug**, a następnie wybierz pozycję **Rozpocznij nowe wystąpienie**. Aplikacja powinna rozpocząć nasłuchiwania wywołań metod z centrum IoT Hub.
 
-1. Gdy urządzenie jest połączone i oczekuje na wywołania metody, kliknij prawym przyciskiem myszy projekt **TriggerReboot** , wybierz polecenie **Debuguj**, a następnie wybierz polecenie **Uruchom nowe wystąpienie**.
+1. Następnie urządzenie jest połączone i oczekuje na wywołania metody, kliknij prawym przyciskiem myszy projekt **TriggerReboot,** wybierz **debugowanie**, a następnie wybierz pozycję **Rozpocznij nowe wystąpienie**.
 
-   Powinien pojawić się "ponowne uruchomienie!" zapisany w konsoli programu **SimulatedManagedDevice** i raportowane właściwości urządzenia, w tym czas ostatniego ponownego uruchomienia, zapisany w konsoli **TriggerReboot** .
+   Powinieneś zobaczyć "Ponowne uruchomienie!" zapisane w konsoli **SimulatedManagedDevice** i zgłoszone właściwości urządzenia, które obejmują ostatni czas ponownego uruchomienia, zapisane w konsoli **TriggerReboot.**
 
-    ![Uruchom aplikację usługi i urządzenia](./media/iot-hub-csharp-csharp-device-management-get-started/combinedrun.png)
+    ![Uruchamianie aplikacji usługi i urządzenia](./media/iot-hub-csharp-csharp-device-management-get-started/combinedrun.png)
 
 [!INCLUDE [iot-hub-dm-followup](../../includes/iot-hub-dm-followup.md)]

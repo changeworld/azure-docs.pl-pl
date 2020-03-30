@@ -1,6 +1,6 @@
 ---
-title: Wysyłanie i odbieranie zdarzeń z usługi Azure Event Hubs przy użyciu języka Java (starsza wersja)
-description: Ten artykuł zawiera Przewodnik dotyczący tworzenia aplikacji Java, która wysyła/odbiera zdarzenia do/z usługi Azure Event Hubs przy użyciu starego pakietu Azure-eventhubs.
+title: Wysyłanie lub odbieranie zdarzeń z usługi Azure Event Hubs przy użyciu języka Java (starsza wersja)
+description: Ten artykuł zawiera przewodnik tworzenia aplikacji Java, która wysyła/odbiera zdarzenia do/z usługi Azure Event Hubs przy użyciu starego pakietu azure eventhubs.
 services: event-hubs
 author: spelluru
 ms.service: event-hubs
@@ -9,39 +9,39 @@ ms.topic: quickstart
 ms.date: 02/11/2020
 ms.author: spelluru
 ms.openlocfilehash: 2c9baa4c0e048419ece09b954cee1af21b1f0cc1
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77158013"
 ---
-# <a name="use-java-to-send-events-to-or-receive-events-from-azure-event-hubs-azure-eventhubs"></a>Wysyłanie zdarzeń do i odbieranie zdarzeń z usługi Azure Event Hubs (Azure-eventhubs) przy użyciu języka Java
+# <a name="use-java-to-send-events-to-or-receive-events-from-azure-event-hubs-azure-eventhubs"></a>Używanie języka Java do wysyłania zdarzeń do usługi Azure Event Hubs lub odbierania ich z usługi Azure Event Hubs (azure-eventhubs)
 
-W tym przewodniku szybki start pokazano, jak wysyłać zdarzenia do i odbierać zdarzenia z centrum zdarzeń przy użyciu pakietu Java **platformy Azure eventhubs** .
+Ten przewodnik Szybki start pokazuje, jak wysyłać zdarzenia i odbierać zdarzenia z centrum zdarzeń przy użyciu pakietu **Java azure eventhubs.**
 
 > [!WARNING]
-> Ten przewodnik Szybki Start używa starych pakietów **Azure-eventhubs** i **Azure-eventhubs-EPH** . Przewodnik Szybki Start, który używa najnowszego pakietu **Azure-Messaging-eventhubs** , znajduje się w temacie [wysyłanie i odbieranie zdarzeń za pomocą usługi Azure-Messaging-eventhubs](get-started-java-send-v2.md). Aby przenieść aplikację z używania starego pakietu do nowego, zapoznaj się z [przewodnikiem migrowania z usługi Azure-eventhubs do platformy Azure-Messaging-eventhubs](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/eventhubs/azure-messaging-eventhubs/migration-guide.md). 
+> Ten przewodnik Szybki start używa starych pakietów **azure-eventhubs** i **azure-eventhubs-eph.** Aby uzyskać przewodnik Szybki start, który korzysta z najnowszego pakietu **azure-messaging-eventhubs,** zobacz [Wysyłanie i odbieranie zdarzeń przy użyciu witryn azure-messaging-eventhubs.](get-started-java-send-v2.md) Aby przenieść aplikację z używania starego pakietu do nowego, zobacz [Przewodnik do migracji z azure eventhubs do azure-messaging-eventhubs](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/eventhubs/azure-messaging-eventhubs/migration-guide.md). 
 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Jeśli dopiero zaczynasz w usłudze Azure Event Hubs, zapoznaj się z tematem [Event Hubs Overview](event-hubs-about.md) przed wykonaniem tego przewodnika Szybki Start. 
+Jeśli jesteś nowy w usłudze Azure Event Hubs, zobacz [Centrum zdarzeń omówienie](event-hubs-about.md) przed rozpoczęciem tego przewodnika Szybki start. 
 
 Do wykonania kroków tego przewodnika Szybki start niezbędne jest spełnienie następujących wymagań wstępnych:
 
-- **Subskrypcja Microsoft Azure**. Do korzystania z usług platformy Azure, w tym usługi Azure Event Hubs, potrzebna jest subskrypcja.  Jeśli nie masz istniejącego konta platformy Azure, możesz zarejestrować się w celu korzystania z [bezpłatnej wersji próbnej](https://azure.microsoft.com/free/) lub skorzystać z korzyści dla subskrybentów MSDN podczas [tworzenia konta](https://azure.microsoft.com).
-- Środowisko projektowe Java. Ten przewodnik Szybki Start używa [Przezaćmienia](https://www.eclipse.org/).
-- **Utwórz przestrzeń nazw Event Hubs i centrum zdarzeń**. Pierwszym krokiem jest skorzystanie z witryny [Azure Portal](https://portal.azure.com) w celu utworzenia przestrzeni nazw typu Event Hubs i uzyskania poświadczeń zarządzania wymaganych przez aplikację do komunikacji z centrum zdarzeń. Aby utworzyć przestrzeń nazw i centrum zdarzeń, wykonaj procedurę opisaną w [tym artykule](event-hubs-create.md). Następnie Pobierz wartość klucza dostępu dla centrum zdarzeń, wykonując instrukcje podane w artykule: [pobieranie parametrów połączenia](event-hubs-get-connection-string.md#get-connection-string-from-the-portal). Używasz klucza dostępu w kodzie zapisanym w dalszej części tego przewodnika Szybki Start. Domyślna nazwa klucza to: **RootManageSharedAccessKey**.
+- **Subskrypcja platformy Microsoft Azure**. Aby korzystać z usług platformy Azure, w tym usługi Azure Event Hubs, potrzebujesz subskrypcji.  Jeśli nie masz istniejącego konta platformy Azure, możesz zarejestrować się w celu [uzyskania bezpłatnej wersji próbnej](https://azure.microsoft.com/free/) lub skorzystać z korzyści dla subskrybenta MSDN podczas [tworzenia konta.](https://azure.microsoft.com)
+- Środowisko programistyczne Java. Ten szybki start używa [Eclipse](https://www.eclipse.org/).
+- **Utwórz obszar nazw Centrów zdarzeń i centrum zdarzeń**. Pierwszym krokiem jest użycie [witryny Azure Portal](https://portal.azure.com) do utworzenia obszaru nazw typu Event Hubs i uzyskania poświadczeń zarządzania, których aplikacja potrzebuje do komunikowania się z centrum zdarzeń. Aby utworzyć przestrzeń nazw i centrum zdarzeń, wykonaj procedurę opisaną w [tym artykule](event-hubs-create.md). Następnie uzyskaj wartość klucza dostępu dla Centrum zdarzeń, wykonując instrukcje z artykułu: [Pobierz parametry połączenia](event-hubs-get-connection-string.md#get-connection-string-from-the-portal). Klucz dostępu w kodzie, który piszesz w dalszej części tego przewodnika Szybki start. Domyślna nazwa klucza to: **RootManageSharedAccessKey**.
 
 ## <a name="send-events"></a>Wysyłanie zdarzeń 
-W tej sekcji pokazano, jak utworzyć aplikację Java do wysyłania zdarzeń do centrum zdarzeń. 
+W tej sekcji pokazano, jak utworzyć aplikację Java do wysyłania zdarzeń centrum zdarzeń. 
 
 > [!NOTE]
-> Ten przewodnik Szybki start możesz pobrać jako przykład z witryny [GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples/Java/Basic/SimpleSend), zastąpić ciągi `EventHubConnectionString` i `EventHubName` wartościami swojego centrum zdarzeń, a następnie uruchomić go. Alternatywnie możesz wykonać kroki opisane w tym przewodniku Szybki Start, aby utworzyć własne.
+> Ten przewodnik Szybki start możesz pobrać jako przykład z witryny [GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples/Java/Basic/SimpleSend), zastąpić ciągi `EventHubConnectionString` i `EventHubName` wartościami swojego centrum zdarzeń, a następnie uruchomić go. Alternatywnie można wykonać kroki opisane w tym przewodniku Szybki start, aby utworzyć własne.
 
-### <a name="add-reference-to-azure-event-hubs-library"></a>Dodaj odwołanie do biblioteki usługi Azure Event Hubs
+### <a name="add-reference-to-azure-event-hubs-library"></a>Dodawanie odwołania do biblioteki usługi Azure Event Hubs
 
-Biblioteka klienta Java dla Event Hubs jest dostępna do użycia w projektach Maven z [repozytorium Central Maven](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-eventhubs%22). Można odwołać się do tej biblioteki za pomocą następującej deklaracji zależności w pliku projektu Maven:
+Biblioteka klienta Java dla centrów zdarzeń jest dostępna do użytku w projektach Maven z [repozytorium Maven Central.](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-eventhubs%22) Do tej biblioteki można odwołać się przy użyciu następującej deklaracji zależności wewnątrz pliku projektu Maven:
 
 ```xml
 <dependency>
@@ -51,13 +51,13 @@ Biblioteka klienta Java dla Event Hubs jest dostępna do użycia w projektach Ma
 </dependency>
 ```
 
-W przypadku różnych typów środowisk kompilacji można jawnie uzyskać najnowsze wydane pliki JAR z [repozytorium Maven Central](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-eventhubs%22).  
+W przypadku różnych typów środowisk kompilacji można jawnie uzyskać najnowsze zwolnione pliki JAR z [repozytorium Maven Central](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-eventhubs%22).  
 
-W przypadku prostego wydawcy zdarzeń zaimportuj pakiet *com. Microsoft. Azure. eventhubs* dla klas klienta Event Hubs i pakietu *com. Microsoft. Azure. ServiceBus* dla klas narzędzi, takich jak typowe wyjątki, które są udostępniane klientowi usługi Azure Service Bus Messaging. 
+W przypadku prostego wydawcy zdarzeń zaimportuj pakiet *com.microsoft.azure.eventhubs* dla klas klientów centrów zdarzeń i pakiet *com.microsoft.azure.servicebus* dla klas narzędzi, takich jak typowe wyjątki, które są współużytkowane klientowi obsługi wiadomości usługi Azure Service Bus. 
 
 ### <a name="write-code-to-send-messages-to-the-event-hub"></a>Pisanie kodu w celu wysyłania komunikatów do centrum zdarzeń
 
-Na potrzeby poniższego przykładu należy w ulubionym środowisku programowania Java utworzyć nowy projekt Maven dla aplikacji konsoli lub powłoki. Dodaj klasę o nazwie `SimpleSend`i Dodaj następujący kod do klasy:
+Na potrzeby poniższego przykładu należy w ulubionym środowisku programowania Java utworzyć nowy projekt Maven dla aplikacji konsoli lub powłoki. Dodaj klasę `SimpleSend`o nazwie i dodaj do klasy następujący kod:
 
 ```java
 import com.google.gson.Gson;
@@ -84,9 +84,9 @@ public class SimpleSend {
  }
 ```
 
-### <a name="construct-connection-string"></a>Utworzyć parametry połączenia
+### <a name="construct-connection-string"></a>Konstruuj parametry połączenia
 
-Klasa ConnectionStringBuilder służy do konstruowania wartość parametrów połączenia w celu przekazania do wystąpienia klienta usługi Event Hubs. Zastąp symbole zastępcze wartości, które zostały uzyskane podczas tworzenia przestrzeni nazw i Centrum zdarzeń:
+Klasa ConnectionStringBuilder służy do konstruowania wartości ciągu połączenia w celu przekazania do wystąpienia klienta centrum zdarzeń. Zastąp symbole zastępcze wartościami uzyskanymi podczas tworzenia obszaru nazw i centrum zdarzeń:
 
 ```java
         final ConnectionStringBuilder connStr = new ConnectionStringBuilder()
@@ -96,9 +96,9 @@ Klasa ConnectionStringBuilder służy do konstruowania wartość parametrów po�
                 .setSasKey("SHARED ACCESS KEY");
 ```
 
-### <a name="write-code-to-send-events"></a>Pisanie kodu w celu wysyłania zdarzeń
+### <a name="write-code-to-send-events"></a>Napisz kod do wysyłania zdarzeń
 
-Utwórz zdarzenie pojedynczej poprzez przekształcanie ciąg do jego kodowania UTF-8 bajtów. Następnie utwórz nowe wystąpienie klienta usługi Event Hubs z parametrów połączenia i wysyłanie wiadomości:   
+Utwórz zdarzenie pojedynczej, przekształcając ciąg w jego kodowanie bajtów UTF-8. Następnie utwórz nowe wystąpienie klienta usługi Event Hubs z ciągu połączenia i wyślij wiadomość:   
 
 ```java 
         final Gson gson = new GsonBuilder().create();
@@ -138,17 +138,17 @@ Utwórz zdarzenie pojedynczej poprzez przekształcanie ciąg do jego kodowania U
 
 ``` 
 
-Tworzenie i uruchom program i upewnij się, że nie ma żadnych błędów.
+Skompiluj i uruchom program i upewnij się, że nie ma żadnych błędów.
 
 Gratulacje! Wysłano komunikaty do centrum zdarzeń.
 
-### <a name="appendix-how-messages-are-routed-to-eventhub-partitions"></a>Dodatek: Jak wiadomości są kierowane do partycji Centrum zdarzeń
+### <a name="appendix-how-messages-are-routed-to-eventhub-partitions"></a>Dodatek: Jak wiadomości są kierowane do partycji EventHub
 
-Przed pobraniem wiadomości przez konsumentów, mają do opublikowania partycji najpierw przez wydawców. Po opublikowaniu wiadomości do Centrum zdarzeń, które synchronicznie przy użyciu metody sendSync() obiektu com.microsoft.azure.eventhubs.EventHubClient, wiadomości mogą zostać wysłane do określonej partycji lub rozpowszechniane do wszystkich partycji, dostępne w sposób działania okrężnego w zależności od tego, czy klucz partycji jest określony, czy nie.
+Zanim wiadomości są pobierane przez konsumentów, muszą być publikowane na partycjach najpierw przez wydawców. Gdy wiadomości są publikowane w Centrum zdarzeń synchronicznie przy użyciu metody sendSync() w obiekcie com.microsoft.azure.eventhubs.EventHubClient, wiadomość może zostać wysłana do określonej partycji lub rozprowadzona do wszystkich dostępnych partycji w sposób okrężny w zależności od tego, czy klucz partycji jest określony, czy nie.
 
-Jeśli nie określono ciąg reprezentujący klucz partycji, klucz zostanie skrótu do określenia partycji do wysłania zdarzenia do.
+Po określeniu ciągu reprezentującego klucz partycji klucz zostanie on hashed, aby określić, do której partycji ma zostać wysłane zdarzenie.
 
-Jeśli nie ustawiono klucza partycji, następnie komunikaty będą round robined do wszystkich dostępnych partycji
+Gdy klucz partycji nie jest ustawiony, wiadomości będą zaokrąglane do wszystkich dostępnych partycji
 
 ```java
 // Serialize the event into bytes
@@ -170,30 +170,30 @@ eventHubClient.closeSync();
 ```
 
 ## <a name="receive-events"></a>Odbieranie zdarzeń
-Kod w tym samouczku jest oparty na [kodzie EventProcessorSample w usłudze GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples/Java/Basic/EventProcessorSample), który można sprawdzić, aby zobaczyć pełną działającą aplikację.
+Kod w tym samouczku jest oparty na [kodzie EventProcessorSample na GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples/Java/Basic/EventProcessorSample), który można sprawdzić, aby zobaczyć pełną działającą aplikację.
 
 ### <a name="receive-messages-with-eventprocessorhost-in-java"></a>Odbieranie komunikatów EventProcessorHost w języku Java
 
-**Klasy eventprocessorhost** to Klasa języka Java, która upraszcza odbieranie zdarzeń z Event Hubs przez zarządzanie trwałymi punktami kontrolnymi i równoległymi odbiorami z tych Event Hubs. Za pomocą klasy EventProcessorHost, można podzielić zdarzenia między wieloma odbiornikami, nawet w przypadku hostowania w różnych węzłach. W tym przykładzie przedstawiono, jak używać klasy EventProcessorHost dla jednego odbiornika.
+**EventProcessorHost** to klasa Java, która upraszcza odbieranie zdarzeń z centrów zdarzeń, zarządzając trwałymi punktami kontrolnymi i równoległymi odbierami z tych centrów zdarzeń. Za pomocą EventProcessorHost, można podzielić zdarzenia między wielu odbiorników, nawet wtedy, gdy hostowane w różnych węzłach. W tym przykładzie przedstawiono, jak używać klasy EventProcessorHost dla jednego odbiornika.
 
 ### <a name="create-a-storage-account"></a>Tworzenie konta magazynu
 
-Aby korzystać z klasy eventprocessorhost, musisz mieć konto usługi Azure Storage [konto magazynu platformy Azure]:
+Aby korzystać z usługi EventProcessorHost, musisz mieć [konto usługi Azure Storage][konto usługi Azure Storage]:
 
-1. Zaloguj się do [Azure Portal](https://portal.azure.com)i wybierz pozycję **Utwórz zasób** po lewej stronie ekranu.
-2. Wybierz pozycję **Magazyn**, a następnie pozycję **konto magazynu**. W oknie **Tworzenie konta magazynu** wpisz nazwę konta magazynu. Wypełnij pozostałe pola, wybierz żądany region, a następnie wybierz pozycję **Utwórz**.
+1. Zaloguj się w [witrynie Azure portal](https://portal.azure.com)i wybierz pozycję **Utwórz zasób** po lewej stronie ekranu.
+2. Wybierz **pozycję Magazyn**, a następnie wybierz pozycję Konto **magazynu**. W oknie **Tworzenie konta magazynu** wpisz nazwę konta magazynu. Wypełnij pozostałe pola, wybierz żądany region, a następnie wybierz pozycję **Utwórz**.
    
-    ![Tworzenie konta magazynu w Azure Portal](./media/event-hubs-dotnet-framework-getstarted-receive-eph/create-azure-storage-account.png)
+    ![Tworzenie konta magazynu w witrynie Azure portal](./media/event-hubs-dotnet-framework-getstarted-receive-eph/create-azure-storage-account.png)
 
-3. Wybierz nowo utworzone konto magazynu, a następnie wybierz pozycję **klucze dostępu**:
+3. Wybierz nowo utworzone konto magazynu, a następnie wybierz pozycję **Klucze dostępu:**
    
-    ![Uzyskaj klucze dostępu w Azure Portal](./media/event-hubs-dotnet-framework-getstarted-receive-eph/select-azure-storage-access-keys.png)
+    ![Uzyskiwanie kluczy dostępu w witrynie Azure portal](./media/event-hubs-dotnet-framework-getstarted-receive-eph/select-azure-storage-access-keys.png)
 
-    Skopiuj wartość klucz 1 do lokalizacji tymczasowej. Będziesz jej używać w dalszej części tego samouczka.
+    Skopiuj wartość key1 do lokalizacji tymczasowej. Będziesz jej używać w dalszej części tego samouczka.
 
 ### <a name="create-a-java-project-using-the-eventprocessor-host"></a>Tworzenie projektu języka Java za pomocą hosta EventProcessor
 
-Biblioteka klienta Java dla Event Hubs jest dostępna do użycia w projektach Maven z [repozytorium Central Maven](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-eventhubs-eph%22)i może być przywoływana przy użyciu następującej deklaracji zależności w pliku projektu Maven: 
+Biblioteka klienta Java dla centrów zdarzeń jest dostępna do użycia w projektach Maven z [repozytorium Centralnego Maven](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-eventhubs-eph%22)i można się do niej odwoływać przy użyciu następującej deklaracji zależności wewnątrz pliku projektu Maven: 
 
 ```xml
 <dependency>
@@ -208,9 +208,9 @@ Biblioteka klienta Java dla Event Hubs jest dostępna do użycia w projektach Ma
 </dependency>
 ```
 
-W przypadku różnych typów środowisk kompilacji można jawnie uzyskać najnowsze wydane pliki JAR z [repozytorium Maven Central](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-eventhubs-eph%22).
+W przypadku różnych typów środowisk kompilacji można jawnie uzyskać najnowsze zwolnione pliki JAR z [repozytorium Maven Central](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-eventhubs-eph%22).
 
-1. Na potrzeby poniższego przykładu należy w ulubionym środowisku programowania Java utworzyć nowy projekt Maven dla aplikacji konsoli lub powłoki. Klasa jest nazywana `ErrorNotificationHandler`.     
+1. Na potrzeby poniższego przykładu należy w ulubionym środowisku programowania Java utworzyć nowy projekt Maven dla aplikacji konsoli lub powłoki. Klasa jest `ErrorNotificationHandler`nazywana .     
    
     ```java
     import java.util.function.Consumer;
@@ -225,7 +225,7 @@ W przypadku różnych typów środowisk kompilacji można jawnie uzyskać najnow
         }
     }
     ```
-2. Użyj następującego kodu, aby utworzyć nową klasę o nazwie `EventProcessorSample`. Zastąp symbole zastępcze wartości użyte do utworzenia event hub i konto magazynu:
+2. Użyj następującego kodu, aby utworzyć nową klasę o nazwie `EventProcessorSample`. Zastąp symbole zastępcze wartościami używanymi podczas tworzenia centrum zdarzeń i konta magazynu:
    
    ```java
    package com.microsoft.azure.eventhubs.samples.eventprocessorsample;
@@ -315,7 +315,7 @@ W przypadku różnych typów środowisk kompilacji można jawnie uzyskać najnow
            System.out.println("End of sample");
        }
     ```
-3. Utwórz jedną więcej klas o nazwie `EventProcessor`, używając następującego kodu:
+3. Utwórz jeszcze `EventProcessor`jedną klasę o nazwie , używając następującego kodu:
    
     ```java
     public static class EventProcessor implements IEventProcessor
@@ -380,15 +380,15 @@ W przypadku różnych typów środowisk kompilacji można jawnie uzyskać najnow
     }
     ```
 
-Instrukcje w tym samouczku obejmują użycie pojedynczego wystąpienia hosta EventProcessorHost. Aby zwiększyć przepływność, zaleca się uruchomienie wielu wystąpień klasy EventProcessorHost, najlepiej na oddzielnych komputerach.  Zapewnia także nadmiarowości. W tych przypadkach różne wystąpienia automatycznie koordynują się ze sobą w celu równoważenia obciążenia odebranych zdarzeń. Jeśli chcesz, aby wiele odbiorników przetwarzało *wszystkie* zdarzenia, musisz użyć koncepcji **ConsumerGroup**. W przypadku odbierania zdarzeń z różnych komputerów dobrym rozwiązaniem może być określenie nazw wystąpień hosta EventProcessorHost w oparciu o komputery (lub role), w których są one wdrażane.
+Instrukcje w tym samouczku obejmują użycie pojedynczego wystąpienia hosta EventProcessorHost. Aby zwiększyć przepływność, zaleca się uruchomienie wielu wystąpień EventProcessorHost, najlepiej na oddzielnych komputerach.  Zapewnia również nadmiarowość. W tych przypadkach różne wystąpienia automatycznie koordynują się ze sobą w celu równoważenia obciążenia odebranych zdarzeń. Jeśli chcesz, aby wiele odbiorników przetwarzało *wszystkie* zdarzenia, musisz użyć koncepcji **ConsumerGroup**. W przypadku odbierania zdarzeń z różnych komputerów dobrym rozwiązaniem może być określenie nazw wystąpień hosta EventProcessorHost w oparciu o komputery (lub role), w których są one wdrażane.
 
-### <a name="publishing-messages-to-eventhub"></a>Publikowanie komunikatów do Centrum zdarzeń
+### <a name="publishing-messages-to-eventhub"></a>Publikowanie wiadomości w ujrze eventhub
 
-Przed pobraniem wiadomości przez konsumentów, mają do opublikowania partycji najpierw przez wydawców. Warto zauważyć, że po opublikowaniu wiadomości do Centrum zdarzeń, które synchronicznie przy użyciu metody sendSync() obiektu com.microsoft.azure.eventhubs.EventHubClient, wiadomości mogą zostać wysłane do określonej partycji lub dystrybuowane do wszystkich dostępnych partycji w sposób okrężny w zależności od tego, czy określono klucza partycji, czy nie.
+Zanim wiadomości są pobierane przez konsumentów, muszą być publikowane na partycjach najpierw przez wydawców. Warto zauważyć, że gdy wiadomości są publikowane w Centrum zdarzeń synchronicznie przy użyciu metody sendSync() w obiekcie com.microsoft.azure.eventhubs.EventHubClient, wiadomość może zostać wysłana do określonej partycji lub rozprowadzona do wszystkich dostępnych partycji w sposób okrężny w zależności od tego, czy klucz partycji jest określony, czy nie.
 
-Gdy określona jest ciąg reprezentujący klucz partycji, klucz jest przekazywane do określenia partycji do wysłania zdarzenia do.
+Po określeniu ciągu reprezentującego klucz partycji klucz jest skrótowy, aby określić, do której partycji należy wysłać zdarzenie.
 
-Jeśli nie ustawiono klucza partycji, następnie wiadomości są round robined do wszystkich dostępnych partycji
+Gdy klucz partycji nie jest ustawiony, wiadomości są okrężne do wszystkich dostępnych partycji
 
 ```java
 // Serialize the event into bytes
@@ -406,21 +406,21 @@ eventHubClient.sendSync(sendEvent, partitionKey);
 
 ```
 
-### <a name="implementing-a-custom-checkpointmanager-for-eventprocessorhost-eph"></a>Implementowanie niestandardowego CheckpointManager EventProcessorHost (EPH)
+### <a name="implementing-a-custom-checkpointmanager-for-eventprocessorhost-eph"></a>Implementowanie niestandardowego programu CheckpointManager dla usługi EventProcessorHost (EPH)
 
-Interfejs API udostępnia mechanizm do implementowania Menedżera niestandardowego punktu kontrolnego dla scenariuszy, w którym nie jest zgodny z danego przypadku użycia w implementacji domyślnej.
+Interfejs API udostępnia mechanizm do zaimplementowania menedżera niestandardowych punktów kontrolnych dla scenariuszy, w których domyślna implementacja nie jest zgodna z przypadkiem użycia.
 
-Menedżer punktów kontrolnych domyślne korzysta z magazynu obiektów blob, ale Jeśli zastąpisz Menedżer punktów kontrolnych, używane przez EPH z Twojej własnej implementacji, możesz użyć dowolnego magazynu, które chcesz wykonać kopię implementacji Menedżera punktu kontrolnego.
+Domyślny menedżer punktów kontrolnych używa magazynu obiektów blob, ale jeśli zastąpisz menedżera punktów kontrolnych używanego przez EPH z własną implementacją, możesz użyć dowolnego magazynu, który ma zostać poparty implementacją menedżera punktów kontrolnych.
 
-Utwórz klasę, która implementuje com.microsoft.azure.eventprocessorhost.ICheckpointManager interfejsu
+Tworzenie klasy implementacji interfejsu com.microsoft.azure.eventprocessorhost.ICheckpointManager
 
-Użyj niestandardowych implementacji Menedżer punktów kontrolnych (com.microsoft.azure.eventprocessorhost.ICheckpointManager)
+Użyj niestandardowej implementacji menedżera punktów kontrolnych (com.microsoft.azure.eventprocessorhost.ICheckpointManager)
 
-W ramach implementacji można zastąpić domyślny mechanizm tworzenia punktów kontrolnych i zaimplementować własne punkty kontrolne na podstawie własnego magazynu danych (na przykład SQL Server, CosmosDB i pamięci podręcznej platformy Azure dla Redis). Zaleca się, że magazyn używany do wykonania kopii implementacji Menedżera punktu kontrolnego jest dostępny dla wszystkich wystąpień EPH skuteczność przetwarzania zdarzeń dla grupy odbiorców.
+W ramach implementacji można zastąpić domyślny mechanizm punktów kontrolnych i zaimplementować nasze własne punkty kontrolne na podstawie własnego magazynu danych (takich jak SQL Server, CosmosDB i Azure Cache for Redis). Zaleca się, że magazyn używany do kopii zapasowej implementacji menedżera punktów kontrolnych jest dostępny dla wszystkich wystąpień EPH, które przetwarzają zdarzenia dla grupy konsumentów.
 
-Możesz użyć dowolnego magazynu danych, która jest dostępna w danym środowisku.
+Można użyć dowolnego magazynu danych, który jest dostępny w danym środowisku.
 
-Klasa com.microsoft.azure.eventprocessorhost.EventProcessorHost zapewnia dwa konstruktory, które pozwalają na zastąpienie Menedżera punktu kontrolnego dla swojej klasy EventProcessorHost.
+Com.microsoft.azure.eventprocessorhost.EventProcessorHost klasy zapewnia dwa konstruktory, które umożliwiają zastąpienie menedżera punktu kontrolnego dla EventProcessorHost.
 
 
 ## <a name="next-steps"></a>Następne kroki

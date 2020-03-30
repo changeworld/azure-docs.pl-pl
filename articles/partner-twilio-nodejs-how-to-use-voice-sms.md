@@ -1,6 +1,6 @@
 ---
-title: Korzystanie z programu Twilio do obsługi wiadomości głosowych, VoIP i SMS na platformie Azure
-description: Dowiedz się, jak nawiązać połączenie telefoniczne i wysłać wiadomość SMS z usługą interfejsu API Twilio na platformie Azure. Przykłady kodu zapisywane w języku Node. js.
+title: Korzystanie z usługi Twilio dla obsługi wiadomości głosowych, voip i wiadomości SMS na platformie Azure
+description: Dowiedz się, jak nawiązać połączenie telefoniczne i wysłać wiadomość SMS za pomocą usługi interfejsu API usługi Twilio na platformie Azure. Przykłady kodu napisane w pliku Node.js.
 services: ''
 documentationcenter: nodejs
 author: georgewallace
@@ -13,61 +13,61 @@ ms.topic: article
 ms.date: 11/25/2014
 ms.author: gwallace
 ms.openlocfilehash: 164bedffcf9a1aca9f1fa46dea254fb928abcf04
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "69637267"
 ---
-# <a name="using-twilio-for-voice-voip-and-sms-messaging-in-azure"></a>Korzystanie z programu Twilio do obsługi wiadomości głosowych, VoIP i SMS na platformie Azure
-W tym przewodniku pokazano, jak tworzyć aplikacje, które komunikują się z Twilio i Node. js na platformie Azure.
+# <a name="using-twilio-for-voice-voip-and-sms-messaging-in-azure"></a>Korzystanie z usługi Twilio dla obsługi wiadomości głosowych, voip i wiadomości SMS na platformie Azure
+W tym przewodniku pokazano, jak tworzyć aplikacje, które komunikują się z usługą Twilio i node.js na platformie Azure.
 
 <a id="whatis"/>
 
 ## <a name="what-is-twilio"></a>Co to jest Twilio?
-Twilio to platforma interfejsu API, która ułatwia deweloperom tworzenie i odbieranie połączeń telefonicznych, wysyłanie i odbieranie wiadomości SMS oraz osadzanie połączeń VoIP w aplikacjach mobilnych opartych na przeglądarce i natywnych. Zacznijmy od tego, jak to działa przed nakazaniem.
+Twilio to platforma interfejsu API, która ułatwia deweloperom nawiązywać i odbierać połączenia telefoniczne, wysyłać i odbierać wiadomości tekstowe oraz osadzać połączenia VoIP w aplikacjach mobilnych opartych na przeglądarce i natywnych. Porozmawiajmy krótko o tym, jak to działa przed nurkowaniem.
 
-### <a name="receiving-calls-and-text-messages"></a>Otrzymywanie wywołań i wiadomości SMS
-Twilio umożliwia deweloperom [kupowanie programowalnych numerów telefonów][purchase_phone] , które mogą być używane do wysyłania i odbierania połączeń oraz wiadomości tekstowych. Gdy numer Twilio odbiera wywołanie przychodzące lub tekst, Twilio wyśle aplikację sieci Web, wysyłając żądanie HTTP POST lub GET, z prośbą o instrukcje dotyczące obsługi wywołania lub tekstu. Serwer odpowie na żądanie HTTP Twilio z [TwiML][twiml], prostym zestawem tagów XML zawierającym instrukcje dotyczące obsługi wywołania lub tekstu. W tej chwili zobaczymy przykłady TwiML.
+### <a name="receiving-calls-and-text-messages"></a>Odbieranie połączeń i wiadomości tekstowych
+Usługa Twilio umożliwia deweloperom [zakup programowalnych numerów telefonów,][purchase_phone] które mogą być używane zarówno do wysyłania, jak i odbierania połączeń i wiadomości tekstowych. Gdy numer usługi Twilio odbiera przychodzące połączenie lub tekst, aplikacja Twilio wyśle aplikacji sieci web żądanie HTTP POST lub GET, z prośbą o instrukcje dotyczące obsługi połączenia lub tekstu. Serwer odpowie na żądanie HTTP usługi Twilio za pomocą [TwiML][twiml], prostego zestawu znaczników XML, które zawierają instrukcje dotyczące obsługi połączenia lub tekstu. Zobaczymy przykłady TwiML w ciągu zaledwie jednej chwili.
 
-### <a name="making-calls-and-sending-text-messages"></a>Wykonywanie wywołań i wysyłanie wiadomości SMS
-Wykonując żądania HTTP do interfejsu API usługi sieci Web Twilio, deweloperzy mogą wysyłać wiadomości SMS lub inicjować wychodzące rozmowy telefoniczne. Dla połączeń wychodzących Deweloper musi także określić adres URL, który zwraca instrukcje TwiML, jak obsłużyć połączenie wychodzące po powiązaniu.
+### <a name="making-calls-and-sending-text-messages"></a>Nawiązywki do połączeń i wysyłanie wiadomości tekstowych
+Wykonując żądania HTTP do interfejsu API usługi sieci web usługi Twilio, deweloperzy mogą wysyłać wiadomości tekstowe lub inicjować wychodzące połączenia telefoniczne. W przypadku wywołań wychodzących deweloper musi również określić adres URL, który zwraca instrukcje TwiML dotyczące obsługi połączenia wychodzącego po jego nawiązaniu.
 
 ### <a name="embedding-voip-capabilities-in-ui-code-javascript-ios-or-android"></a>Osadzanie możliwości VoIP w kodzie interfejsu użytkownika (JavaScript, iOS lub Android)
-Twilio udostępnia zestaw SDK po stronie klienta, który umożliwia włączenie dowolnej przeglądarki sieci Web na komputerze stacjonarnym, aplikacji dla systemu iOS lub aplikacji systemu Android do telefonu VoIP. W tym artykule opisano, jak używać technologii VoIP wywołującej w przeglądarce. Oprócz *zestawu SDK Twilio języka JavaScript* działającego w przeglądarce, aplikacja po stronie serwera (aplikacja Node. js) musi być używana do wydawania "tokenu możliwości" klientowi JavaScript. Więcej informacji o korzystaniu z technologii VoIP w środowisku Node. js można znaleźć [na blogu Twilio dev][voipnode].
+Usługa Twilio udostępnia sdk po stronie klienta, który może przekształcić dowolną przeglądarkę internetową, aplikację na iOS lub aplikację na Androida w telefon VoIP. W tym artykule skupimy się na tym, jak korzystać z połączeń VoIP w przeglądarce. Oprócz *SDK javascript usługi Twilio* działającego w przeglądarce, aplikacja po stronie serwera (nasza aplikacja node.js) musi być używana do wystawiania klientowi JavaScript "tokenu możliwości". Możesz przeczytać więcej na temat korzystania z VoIP z node.js [na blogu dewelopera Twilio][voipnode].
 
 <a id="signup"/>
 
-## <a name="sign-up-for-twilio-microsoft-discount"></a>Rejestracja w usłudze Twilio (rabat firmy Microsoft)
-Przed rozpoczęciem korzystania z usług Twilio należy najpierw [zarejestrować się w celu utworzenia konta][signup]. Microsoft Azure klienci otrzymują specjalne zniżki — [Pamiętaj o tym, aby zarejestrować się w tym miejscu][signup].
+## <a name="sign-up-for-twilio-microsoft-discount"></a>Zarejestruj się w usłudze Twilio (rabat Microsoft)
+Przed skorzystaniem z usług usługi Twilio należy najpierw [założyć konto][signup]. Klienci platformy Microsoft Azure otrzymują specjalną zniżkę - [zarejestruj się tutaj!][signup]
 
 <a id="azuresite"/>
 
-## <a name="create-and-deploy-a-nodejs-azure-website"></a>Tworzenie i wdrażanie witryny sieci Web platformy Azure w języku Node. js
-Następnie musisz utworzyć witrynę sieci Web w języku Node. js działającą na platformie Azure. [Oficjalna dokumentacja tego elementu][azure_new_site]znajduje się tutaj. Na wysokim poziomie można wykonać następujące czynności:
+## <a name="create-and-deploy-a-nodejs-azure-website"></a>Tworzenie i wdrażanie witryny sieci Web usługi Azure w witrynie sieci Web usługi node.js
+Następnie należy utworzyć witrynę internetową node.js działającą na platformie Azure. [Oficjalna dokumentacja w tym zakresie znajduje się tutaj][azure_new_site]. Na wysokim poziomie, będziesz robić następujące czynności:
 
-* Zarejestrowanie się w celu korzystania z konta platformy Azure, jeśli go nie masz
+* Rejestracja konta platformy Azure, jeśli jeszcze go nie masz
 * Tworzenie nowej witryny sieci Web za pomocą konsoli administracyjnej platformy Azure
-* Dodawanie obsługi kontroli źródła (przyjęto założenie, że korzystasz z narzędzia Git)
-* Tworzenie pliku `server.js` przy użyciu prostej aplikacji sieci Web Node. js
+* Dodawanie obsługi kontroli źródła (zakładamy, że użyłeś git)
+* Tworzenie pliku `server.js` za pomocą prostej aplikacji sieci Web node.js
 * Wdrażanie tej prostej aplikacji na platformie Azure
 
 <a id="twiliomodule"/>
 
 ## <a name="configure-the-twilio-module"></a>Konfigurowanie modułu Twilio
-Następnie zaczniemy pisać prostą aplikację Node. js, która umożliwia korzystanie z interfejsu API Twilio. Przed rozpoczęciem należy skonfigurować nasze poświadczenia konta Twilio.
+Następnie rozpoczniemy pisanie prostej aplikacji node.js, która korzysta z interfejsu API usługi Twilio. Zanim zaczniemy, musimy skonfigurować nasze poświadczenia konta usługi Twilio.
 
-### <a name="configuring-twilio-credentials-in-system-environment-variables"></a>Konfigurowanie poświadczeń Twilio w zmiennych środowiskowych systemu
-Aby żądania były uwierzytelniane na zapleczu Twilio, potrzebujemy identyfikatora SID konta i tokenu uwierzytelniania, który działa jako nazwa użytkownika i hasło ustawione dla konta Twilio. Najbezpieczniejszym sposobem konfigurowania tych funkcji do użycia z modułem węzła na platformie Azure jest systemowe zmienne środowiskowe, które można ustawić bezpośrednio w konsoli administracyjnej platformy Azure.
+### <a name="configuring-twilio-credentials-in-system-environment-variables"></a>Konfigurowanie poświadczeń usługi Twilio w zmiennych środowiska systemowego
+Aby tworzyć uwierzytelnione żądania względem zaplecza usługi Twilio, potrzebujemy naszego konta SID i tokenu uwierzytelniania, które działają jako nazwa użytkownika i hasło ustawione dla naszego konta Twilio. Najbezpieczniejszym sposobem skonfigurowania ich do użycia z modułem węzła na platformie Azure są zmienne środowiskowe systemu, które można ustawić bezpośrednio w konsoli administracyjnej platformy Azure.
 
-Wybierz witrynę sieci Web środowiska Node. js, a następnie kliknij link "Konfiguruj".  Jeśli przewiniesz bit w dół, zobaczysz obszar, w którym można ustawić właściwości konfiguracji dla aplikacji.  Wprowadź swoje poświadczenia konta Twilio ([znajdujące się w konsoli Twilio][twilio_console]), jak pokazano na ekranie — upewnij `TWILIO_ACCOUNT_SID` się `TWILIO_AUTH_TOKEN`, że nazwy są odpowiednie i odpowiednio:
+Wybierz witrynę internetową node.js i kliknij łącze "KONFIGURUJ".  Jeśli przewiń nieco w dół, zobaczysz obszar, w którym można ustawić właściwości konfiguracji dla aplikacji.  Wprowadź poświadczenia konta usługi Twilio[(znajdujące się na konsoli usługi Twilio)][twilio_console]w sposób pokazany — upewnij się, że je nadają `TWILIO_ACCOUNT_SID` i, `TWILIO_AUTH_TOKEN`odpowiednio:
 
 ![Konsola administracyjna platformy Azure][azure-admin-console]
 
-Po skonfigurowaniu tych zmiennych należy ponownie uruchomić aplikację w konsoli platformy Azure.
+Po skonfigurowaniu tych zmiennych uruchom ponownie aplikację w konsoli platformy Azure.
 
-### <a name="declaring-the-twilio-module-in-packagejson"></a>Deklarowanie modułu Twilio w pliku Package. JSON
-Następnie musimy utworzyć plik Package. JSON, aby zarządzać swoimi zależnościami modułu węzła za pośrednictwem [npm]. Na tym samym poziomie, co `server.js` plik utworzony w samouczku *platformy Azure/Node. js* , Utwórz plik o nazwie `package.json`.  W tym pliku Umieść następujące elementy:
+### <a name="declaring-the-twilio-module-in-packagejson"></a>Deklarowanie modułu usługi Twilio w pliku package.json
+Następnie musimy utworzyć package.json do zarządzania naszymi zależnościami modułu węzła za pośrednictwem [npm]. Na tym samym `server.js` poziomie co plik utworzony w samouczku *azure/node.js* utwórz plik o nazwie `package.json`.  W tym pliku umieść następujące miejsca:
 
 ```json
 {
@@ -88,12 +88,12 @@ Następnie musimy utworzyć plik Package. JSON, aby zarządzać swoimi zależno�
 }
 ```
 
-To deklaruje moduł Twilio jako zależność, a także popularne [środowisko sieci Web Express][express] i aparat szablonów EJS.  Teraz wszystko jest gotowe. Napiszmy jakiś kod!
+Deklaruje moduł twilio jako zależność, a także popularną [platformę sieci Web Express][express] i aparat szablonów EJS.  Dobra, teraz wszyscy jesteśmy ustawiene - napiszmy jakiś kod!
 
 <a id="makecall"/>
 
-## <a name="make-an-outbound-call"></a>Utwórz wywołanie wychodzące
-Utwórzmy prosty formularz, który będzie nawiązać połączenie z wybranym przez nas liczbą. `server.js`Otwórz program i wprowadź następujący kod. Należy pamiętać, że w tym miejscu jest wyświetlany komunikat "CHANGE_ME" — Wprowadź nazwę witryny sieci Web platformy Azure:
+## <a name="make-an-outbound-call"></a>Nawiązywania połączenia wychodzącego
+Stwórzmy prosty formularz, który spowoduje połączenie z numerem, który wybierzemy. Otwórz `server.js`i wprowadź następujący kod. Uwaga, gdzie mówi "CHANGE_ME" - umieść nazwę swojej witryny azure tam:
 
 ```javascript
 // Module dependencies
@@ -165,7 +165,7 @@ app.listen(app.get('port'), function(){
 });
 ```
 
-Następnie Utwórz katalog o nazwie `views` w tym katalogu, Utwórz plik o nazwie `index.ejs` z następującą zawartością:
+Następnie utwórz katalog `views` o nazwie - wewnątrz tego `index.ejs` katalogu, utwórz plik o nazwie z następującą zawartością:
 
 ```html
 <!DOCTYPE html>
@@ -187,12 +187,12 @@ Następnie Utwórz katalog o nazwie `views` w tym katalogu, Utwórz plik o nazwi
 </html>
 ```
 
-Teraz Wdróż swoją witrynę sieci Web na platformie Azure i Otwórz stronę główną. W polu tekstowym powinno być możliwe wprowadzanie numeru telefonu i otrzymywanie wywołania z numeru Twilio!
+Teraz rozmieszcz swoją witrynę sieci Web na platformie Azure i otwórz swój dom. Powinieneś być w stanie wprowadzić swój numer telefonu w polu tekstowym i odebrać połączenie z numeru Twilio!
 
 <a id="sendmessage"/>
 
-## <a name="send-an-sms-message"></a>Wyślij wiadomość SMS
-Teraz Skonfigurujmy interfejs użytkownika i logikę obsługi formularzy w celu wysłania wiadomości SMS. Otwórz i Dodaj następujący kod po ostatnim `app.post`wywołaniu: `server.js`
+## <a name="send-an-sms-message"></a>Wysyłanie wiadomości SMS
+Teraz skonfigurujmy interfejs użytkownika i logikę obsługi formularzy, aby wysłać wiadomość tekstową. Otwórz `server.js`i dodaj następujący kod po ostatnim `app.post`wywołaniu do:
 
 ```javascript
 app.post('/sms', (request, response) => {
@@ -216,7 +216,7 @@ app.post('/sms', (request, response) => {
 });
 ```
 
-W `views/index.ejs`programie Dodaj kolejną formę poniżej pierwszej, aby przesłać numer i wiadomość tekstową:
+W `views/index.ejs`, dodaj inny formularz pod pierwszym, aby przesłać numer i wiadomość tekstową:
 
 ```html
 <form action="/sms" method="POST">
@@ -228,19 +228,19 @@ W `views/index.ejs`programie Dodaj kolejną formę poniżej pierwszej, aby przes
 </form>
 ```
 
-Wdróż ponownie aplikację na platformie Azure, a teraz powinna być w stanie przesłać ten formularz i wysłać do siebie wiadomość SMS.
+Ponownie wdrożyć aplikację na platformie Azure, a teraz powinieneś być w stanie przesłać ten formularz i wysłać sobie (lub któregokolwiek z twoich najbliższych znajomych) wiadomość tekstową!
 
 <a id="nextsteps"/>
 
 ## <a name="next-steps"></a>Następne kroki
-Znasz już podstawy używania środowiska Node. js i Twilio do tworzenia aplikacji, które komunikują się z usługą. Jednak te przykłady stanowią jedynie ułameką powierzchnię możliwości z Twilio i Node. js. Aby uzyskać więcej informacji na temat używania Twilio z Node. js, zapoznaj się z następującymi zasobami:
+Teraz poznaliśmy podstawy używania node.js i Twilio do tworzenia aplikacji, które się komunikują. Ale te przykłady ledwo zarysować powierzchnię, co jest możliwe z Twilio i node.js. Aby uzyskać więcej informacji przy użyciu usługi Twilio z node.js, zapoznaj się z następującymi zasobami:
 
-* [Dokumenty oficjalnych modułów][docs]
-* [Samouczek dotyczący technologii VoIP z aplikacjami Node. js][voipnode]
-* [Votr — aplikacja do głosowania z programem SMS w czasie rzeczywistym przy użyciu środowiska Node. js i CouchDB (trzy części)][votr]
-* [Tworzenie par programów w przeglądarce przy użyciu środowiska Node. js][pair]
+* [Oficjalne dokumenty modułu][docs]
+* [Samouczek na temat VoIP z aplikacjami node.js][voipnode]
+* [Votr - aplikacja do głosowania SMS w czasie rzeczywistym z node.js i CouchDB (trzy części)][votr]
+* [Sparowanie programowania w przeglądarce z node.js][pair]
 
-Mamy nadzieję, że lubisz działanie hakerskie Node. js i Twilio na platformie Azure!
+Mamy nadzieję, że uwielbiasz hakowanie node.js i Twilio na platformie Azure!
 
 [purchase_phone]: https://www.twilio.com/console/phone-numbers/search
 [twiml]: https://www.twilio.com/docs/api/twiml

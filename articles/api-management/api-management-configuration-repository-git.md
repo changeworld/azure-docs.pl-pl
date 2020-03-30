@@ -1,6 +1,6 @@
 ---
-title: Konfigurowanie usługi API Management przy użyciu narzędzia Git-Azure | Microsoft Docs
-description: Dowiedz się, jak zapisać i skonfigurować konfigurację usługi API Management za pomocą narzędzia Git.
+title: Konfigurowanie usługi zarządzania interfejsami API przy użyciu platformy Git — Azure | Dokumenty firmy Microsoft
+description: Dowiedz się, jak zapisać i skonfigurować konfigurację usługi api Management za pomocą git.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -13,76 +13,76 @@ ms.topic: article
 ms.date: 03/12/2019
 ms.author: apimpm
 ms.openlocfilehash: 9bbd62bc05e03641c2abe9308d9238bef23877c2
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71104963"
 ---
-# <a name="how-to-save-and-configure-your-api-management-service-configuration-using-git"></a>Jak zapisać i skonfigurować konfigurację usługi API Management przy użyciu narzędzia Git
+# <a name="how-to-save-and-configure-your-api-management-service-configuration-using-git"></a>Jak konfigurować i zapisywać konfigurację usługi API Management za pomocą narzędzia Git
 
-Każde wystąpienie usługi API Management obsługuje bazę danych konfiguracji zawierającą informacje o konfiguracji i metadanych wystąpienia usługi. Zmiany można wprowadzać w wystąpieniu usługi przez zmianę ustawienia w Azure Portal przy użyciu polecenia cmdlet programu PowerShell lub wywołania interfejsu API REST. Oprócz tych metod można także zarządzać konfiguracją wystąpienia usługi za pomocą narzędzia Git, włączając scenariusze zarządzania usługami, takie jak:
+Każde wystąpienie usługi zarządzania interfejsami API przechowuje bazę danych konfiguracji zawierającą informacje o konfiguracji i metadanych wystąpienia usługi. Zmiany można ww ciągu wystąpienia usługi, zmieniając ustawienie w witrynie Azure portal, przy użyciu polecenia cmdlet programu PowerShell lub wywołanie interfejsu API REST. Oprócz tych metod można również zarządzać konfiguracją wystąpienia usługi przy użyciu git, włączając scenariusze zarządzania usługami, takie jak:
 
-* Przechowywanie wersji konfiguracji — Pobierz i Zapisz różne wersje konfiguracji usługi
-* Zmiany konfiguracji zbiorczej — wprowadzanie zmian do wielu części konfiguracji usługi w lokalnym repozytorium i integrowanie zmian z powrotem na serwerze z jedną operacją
-* Znajomość narzędzia Git łańcucha narzędzi i przepływu pracy — korzystanie z narzędzi git i przepływów pracy, które już znasz
+* Wersja konfiguracjna — pobieranie i przechowywanie różnych wersji konfiguracji usługi
+* Zbiorcze zmiany konfiguracji — wprowadzanie zmian w wielu częściach konfiguracji usługi w lokalnym repozytorium i integrowanie zmian z powrotem na serwerze za pomocą jednej operacji
+* Znany pęk narzędzi Git i przepływ pracy — użyj narzędzi Git i obiegów pracy, które już znasz
 
-Na poniższym diagramie przedstawiono omówienie różnych sposobów konfigurowania wystąpienia usługi API Management.
+Na poniższym diagramie przedstawiono omówienie różnych sposobów konfigurowania wystąpienia usługi zarządzania interfejsami API.
 
-![Konfiguracja usługi git][api-management-git-configure]
+![Konfiguracja git][api-management-git-configure]
 
-Po wprowadzeniu zmian w usłudze za pomocą Azure Portal, poleceń cmdlet programu PowerShell lub interfejsu API REST zarządzasz swoją bazą danych konfiguracji usługi przy użyciu `https://{name}.management.azure-api.net` punktu końcowego, jak pokazano po prawej stronie diagramu. Po lewej stronie diagramu pokazano, jak można zarządzać konfiguracją usługi przy użyciu repozytorium git i git dla usługi znajdującej się na `https://{name}.scm.azure-api.net`stronie.
+Po wprowadzeniu zmian w usłudze przy użyciu portalu Azure portal, polecenia cmdlet programu PowerShell `https://{name}.management.azure-api.net` lub interfejsu API REST, zarządzasz bazą danych konfiguracji usługi przy użyciu punktu końcowego, jak pokazano po prawej stronie diagramu. Po lewej stronie diagramu pokazano, jak można zarządzać konfiguracją usługi za pomocą repozytorium Git i Git dla usługi znajdującej się w `https://{name}.scm.azure-api.net`.
 
-Poniższe kroki zawierają omówienie zarządzania wystąpieniem usługi API Management przy użyciu narzędzia Git.
+Poniższe kroki zawierają omówienie zarządzania wystąpieniem usługi zarządzania interfejsami API za pomocą git.
 
-1. Dostęp do konfiguracji narzędzia Git w usłudze
-2. Zapisywanie bazy danych konfiguracji usługi w repozytorium git
-3. Klonowanie repozytorium Git na komputerze lokalnym
-4. Pobierz najnowsze repozytorium do komputera lokalnego, a następnie Zatwierdź i wypchnij zmiany z powrotem do repozytorium
-5. Wdróż zmiany z repozytorium w bazie danych konfiguracji usługi
+1. Dostęp do konfiguracji Git w usłudze
+2. Zapisywanie bazy danych konfiguracji usługi w repozytorium Git
+3. Klonuj repozytorium Git do lokalnej maszyny
+4. Pociągnij najnowsze repozytorium do lokalnego komputera i zaobciągnij zmiany i wypchnij zmiany z powrotem do repozytorium
+5. Wdrażanie zmian z repozytorium w bazie danych konfiguracji usługi
 
-W tym artykule opisano sposób włączania i używania narzędzia Git do zarządzania konfiguracją usługi i zawierania odwołań do plików i folderów w repozytorium git.
+W tym artykule opisano sposób włączania i używania git do zarządzania konfiguracją usługi i zawiera odwołanie do plików i folderów w repozytorium Git.
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
-## <a name="access-git-configuration-in-your-service"></a>Dostęp do konfiguracji narzędzia Git w usłudze
+## <a name="access-git-configuration-in-your-service"></a>Dostęp do konfiguracji Git w usłudze
 
-Aby wyświetlić i skonfigurować ustawienia konfiguracji narzędzia Git, kliknij menu **zabezpieczenia** i przejdź do karty **repozytorium konfiguracji** .
+Aby wyświetlić i skonfigurować ustawienia konfiguracji Git, możesz kliknąć menu **Zabezpieczenia** i przejść do karty **Repozytorium konfiguracji.**
 
-![Włącz system GIT][api-management-enable-git]
+![Włącz GIT][api-management-enable-git]
 
 > [!IMPORTANT]
-> Wszystkie wpisy tajne, które nie są zdefiniowane jako wartości nazwane, będą przechowywane w repozytorium i pozostaną w swojej historii do momentu wyłączenia i ponownego włączenia dostępu git. Nazwane wartości zapewniają bezpieczne miejsce do zarządzania stałymi wartościami ciągów, w tym wpisy tajne, we wszystkich konfiguracjach i zasadach interfejsu API, dlatego nie trzeba przechowywać ich bezpośrednio w instrukcjach zasad. Aby uzyskać więcej informacji, zobacz [jak używać nazwanych wartości w zasadach usługi Azure API Management](api-management-howto-properties.md).
+> Wszelkie wpisy tajne, które nie są zdefiniowane jako nazwane wartości będą przechowywane w repozytorium i pozostaną w jego historii, dopóki nie wyłączysz i ponownie włączysz dostęp Git. Nazwane wartości zapewniają bezpieczne miejsce do zarządzania wartościami ciągów stałych, w tym wpisami tajnymi, we wszystkich konfiguracjach interfejsu API i zasadach, dzięki czemu nie trzeba przechowywać ich bezpośrednio w instrukcjach zasad. Aby uzyskać więcej informacji, zobacz [Jak używać nazwanych wartości w zasadach usługi Azure API Management](api-management-howto-properties.md).
 >
 >
 
-Aby uzyskać informacje na temat włączania lub wyłączania dostępu git przy użyciu interfejsu API REST, zobacz [Włączanie lub wyłączanie dostępu git przy użyciu interfejsu API REST](/rest/api/apimanagement/2019-01-01/tenantaccess?EnableGit).
+Aby uzyskać informacje na temat włączania lub wyłączania dostępu Git za pomocą interfejsu API REST, zobacz [Włączanie lub wyłączanie dostępu Git za pomocą interfejsu API REST](/rest/api/apimanagement/2019-01-01/tenantaccess?EnableGit).
 
-## <a name="to-save-the-service-configuration-to-the-git-repository"></a>Aby zapisać konfigurację usługi w repozytorium git
+## <a name="to-save-the-service-configuration-to-the-git-repository"></a>Aby zapisać konfigurację usługi w repozytorium Git
 
-Pierwszym krokiem przed klonem repozytorium jest zapisanie bieżącego stanu konfiguracji usługi do repozytorium. Kliknij pozycję **Zapisz w repozytorium**.
+Pierwszym krokiem przed sklonowaniem repozytorium jest zapisanie bieżącego stanu konfiguracji usługi w repozytorium. Kliknij **przycisk Zapisz do repozytorium**.
 
-Wprowadź odpowiednie zmiany na ekranie potwierdzenia i kliknij przycisk **OK** , aby zapisać.
+Wykonuj żądane zmiany na ekranie potwierdzenia i kliknij przycisk **Ok,** aby zapisać.
 
-Po kilku chwilach konfiguracja zostanie zapisana i zostanie wyświetlony stan konfiguracji repozytorium, łącznie z datą i godziną ostatniej zmiany konfiguracji oraz ostatnią synchronizacją między konfiguracją usługi i repozytorium.
+Po kilku chwilach konfiguracja jest zapisywana i wyświetlany jest stan konfiguracji repozytorium, w tym data i godzina ostatniej zmiany konfiguracji oraz ostatnia synchronizacja między konfiguracją usługi a repozytorium.
 
 Po zapisaniu konfiguracji w repozytorium można ją sklonować.
 
-Aby uzyskać informacje na temat wykonywania tej operacji przy użyciu interfejsu API REST, zobacz temat [zatwierdzenie migawki konfiguracji przy użyciu interfejsu API REST](/rest/api/apimanagement/2019-01-01/tenantaccess?CommitSnapshot).
+Aby uzyskać informacje na temat wykonywania tej operacji przy użyciu interfejsu API REST, zobacz [Zatwierdzanie migawki konfiguracji przy użyciu interfejsu API REST](/rest/api/apimanagement/2019-01-01/tenantaccess?CommitSnapshot).
 
 ## <a name="to-clone-the-repository-to-your-local-machine"></a>Aby sklonować repozytorium na komputerze lokalnym
 
-Aby sklonować repozytorium, potrzebny jest adres URL repozytorium, nazwę użytkownika i hasło. Aby uzyskać nazwę użytkownika i inne poświadczenia, kliknij przycisk **dostępu poświadczenia** w górnej części strony.
+Aby sklonować repozytorium, potrzebujesz adresu URL do repozytorium, nazwy użytkownika i hasła. Aby uzyskać nazwę użytkownika i inne poświadczenia, kliknij **poświadczenia programu Access** u góry strony.
 
-Aby wygenerować hasło, należy najpierw upewnić się , że wygaśnięcie jest ustawione na żądaną datę i godzinę wygaśnięcia, a następnie kliknij przycisk **Generuj**.
+Aby **wygenerować** hasło, najpierw upewnij się, że data i godzina wygaśnięcia jest ustawiona na żądaną datę i godzinę wygaśnięcia, a następnie kliknij przycisk **Generuj**.
 
 > [!IMPORTANT]
-> Zanotuj to hasło. Gdy opuścisz Tę stronę, hasło nie zostanie wyświetlone ponownie.
+> Zanotuj to hasło. Po opuszczeniu tej strony hasło nie zostanie ponownie wyświetlone.
 >
 
-W poniższych przykładach użyto narzędzia Git bash z usługi [git dla systemu Windows](https://www.git-scm.com/downloads) , ale można użyć dowolnego narzędzia Git, które znasz.
+Poniższe przykłady używają narzędzia Git Bash z [Git dla Windows,](https://www.git-scm.com/downloads) ale możesz użyć dowolnego narzędzia Git, które znasz.
 
-Otwórz narzędzie Git w żądanym folderze i uruchom następujące polecenie, aby sklonować repozytorium git do komputera lokalnego przy użyciu polecenia dostarczonego przez Azure Portal.
+Otwórz narzędzie Git w żądanym folderze i uruchom następujące polecenie, aby sklonować repozytorium git na komputerze lokalnym, używając polecenia dostarczonego przez witrynę Azure portal.
 
 ```
 git clone https://{name}.scm.azure-api.net/
@@ -90,42 +90,42 @@ git clone https://{name}.scm.azure-api.net/
 
 Po wyświetleniu monitu podaj nazwę użytkownika i hasło.
 
-Jeśli wystąpią jakieś błędy, spróbuj zmodyfikować `git clone` polecenie, aby zawierało nazwę użytkownika i hasło, jak pokazano w poniższym przykładzie.
+Jeśli pojawią się błędy, spróbuj `git clone` zmodyfikować polecenie, aby uwzględnić nazwę użytkownika i hasło, jak pokazano w poniższym przykładzie.
 
 ```
 git clone https://username:password@{name}.scm.azure-api.net/
 ```
 
-Jeśli wystąpi błąd, spróbuj zakodować adres URL części polecenia. Aby to zrobić, należy otworzyć program Visual Studio i wydać następujące polecenie w **oknie bezpośrednim**. Aby otworzyć **okno bezpośrednie**, Otwórz dowolne rozwiązanie lub projekt w programie Visual Studio (lub Utwórz nową pustą aplikację konsolową) i wybierz **pozycję Windows**, **natychmiastowe** z menu **Debuguj** .
+Jeśli to zapewnia błąd, spróbuj adres URL kodowania część hasła polecenia. Jednym z szybkich sposobów, aby to zrobić, jest otwarcie programu Visual Studio i wydanie następującego polecenia w **oknie bezpośrednim.** Aby otworzyć **okno natychmiastowe,** otwórz dowolne rozwiązanie lub projekt w programie Visual Studio (lub utwórz nową pustą aplikację konsoli) i wybierz polecenie **Windows**, **Immediate** z menu **debugowania.**
 
 ```
 ?System.Net.WebUtility.UrlEncode("password from the Azure portal")
 ```
 
-Użyj zakodowanego hasła wraz z nazwą użytkownika i lokalizacją repozytorium, aby skonstruować polecenie git.
+Użyj zakodowanego hasła wraz z nazwą użytkownika i lokalizacją repozytorium, aby utworzyć polecenie git.
 
 ```
 git clone https://username:url encoded password@{name}.scm.azure-api.net/
 ```
 
-Po sklonowaniu repozytorium można wyświetlać i korzystać z niego w lokalnym systemie plików. Aby uzyskać więcej informacji, zobacz informacje [o strukturze plików i folderów w lokalnym repozytorium git](#file-and-folder-structure-reference-of-local-git-repository).
+Po sklonowaniu repozytorium można wyświetlać je i pracować z nim w lokalnym systemie plików. Aby uzyskać więcej informacji, zobacz [Odwołanie do struktury plików i folderów lokalnego repozytorium Git](#file-and-folder-structure-reference-of-local-git-repository).
 
-## <a name="to-update-your-local-repository-with-the-most-current-service-instance-configuration"></a>Aby zaktualizować repozytorium lokalne przy użyciu najnowszej konfiguracji wystąpienia usługi
+## <a name="to-update-your-local-repository-with-the-most-current-service-instance-configuration"></a>Aby zaktualizować lokalne repozytorium przy obliczu najnowszej konfiguracji wystąpienia usługi
 
-Jeśli wprowadzisz zmiany w wystąpieniu usługi API Management w Azure Portal lub przy użyciu interfejsu API REST, musisz zapisać te zmiany w repozytorium, aby można było zaktualizować lokalne repozytorium przy użyciu najnowszych zmian. W tym celu kliknij pozycję **Zapisz konfigurację do repozytorium** na karcie **repozytorium konfiguracji** w Azure Portal, a następnie wydaj następujące polecenie w lokalnym repozytorium.
+Jeśli wprowadzasz zmiany w wystąpieniu usługi zarządzania interfejsami API w witrynie Azure portal lub przy użyciu interfejsu API REST, należy zapisać te zmiany w repozytorium, zanim będzie można zaktualizować lokalne repozytorium za pomocą najnowszych zmian. Aby to zrobić, kliknij przycisk **Zapisz konfigurację do repozytorium** na karcie **Repozytorium konfiguracji** w witrynie Azure Portal, a następnie wydaj następujące polecenie w lokalnym repozytorium.
 
 ```
 git pull
 ```
 
-Przed uruchomieniem `git pull` upewnij się, że jesteś w folderze lokalnego repozytorium. Jeśli wykonano `git clone` polecenie po prostu, należy zmienić katalog na repozytorium, uruchamiając polecenie podobne do poniższego.
+Przed `git pull` uruchomieniem upewnij się, że znajdujesz się w folderze dla lokalnego repozytorium. Jeśli `git clone` właśnie ukończyłeś polecenie, musisz zmienić katalog na repozytorium, uruchamiając polecenie podobne do poniższego.
 
 ```
 cd {name}.scm.azure-api.net/
 ```
 
-## <a name="to-push-changes-from-your-local-repo-to-the-server-repo"></a>Aby wypchnąć zmiany z repozytorium lokalnego do repozytorium serwera
-Aby wypchnąć zmiany z repozytorium lokalnego do repozytorium serwera, należy zatwierdzić zmiany, a następnie wypchnąć je do repozytorium serwera. Aby zatwierdzić zmiany, Otwórz narzędzie poleceń git, przejdź do katalogu lokalnego repozytorium i wydaj następujące polecenia.
+## <a name="to-push-changes-from-your-local-repo-to-the-server-repo"></a>Aby wypchnąć zmiany z lokalnego repozytorium do repozytorium serwera
+Aby wypchnąć zmiany z repozytorium lokalnego do repozytorium serwera, należy zatwierdzić zmiany, a następnie wypchnąć je do repozytorium serwera. Aby zatwierdzić zmiany, otwórz narzędzie do poleceń Git, przełącz się do katalogu lokalnego repozytorium i wydaj następujące polecenia.
 
 ```
 git add --all
@@ -138,48 +138,48 @@ Aby wypchnąć wszystkie zatwierdzenia do serwera, uruchom następujące polecen
 git push
 ```
 
-## <a name="to-deploy-any-service-configuration-changes-to-the-api-management-service-instance"></a>Aby wdrożyć wszystkie zmiany konfiguracji usługi w wystąpieniu usługi API Management
+## <a name="to-deploy-any-service-configuration-changes-to-the-api-management-service-instance"></a>Aby wdrożyć zmiany konfiguracji usługi w wystąpieniu usługi api Management
 
-Gdy lokalne zmiany zostaną zatwierdzone i wypychane do repozytorium serwera, można je wdrożyć w wystąpieniu usługi API Management.
+Po zaajsnięciu i wypchnięciu lokalnych zmian do repozytorium serwera można je wdrożyć w wystąpieniu usługi zarządzania interfejsami API.
 
-Aby uzyskać informacje na temat wykonywania tej operacji przy użyciu interfejsu API REST, zobacz [wdrażanie usługi git zmian w bazie danych konfiguracji przy użyciu interfejsu API REST](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/tenantconfiguration).
+Aby uzyskać informacje na temat wykonywania tej operacji przy użyciu interfejsu API REST, zobacz [Wdrażanie zmian git w bazie danych konfiguracji przy użyciu interfejsu API REST](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/tenantconfiguration).
 
-## <a name="file-and-folder-structure-reference-of-local-git-repository"></a>Dokumentacja struktury plików i folderów w lokalnym repozytorium git
+## <a name="file-and-folder-structure-reference-of-local-git-repository"></a>Odwołanie do struktury plików i folderów lokalnego repozytorium Git
 
 Pliki i foldery w lokalnym repozytorium git zawierają informacje o konfiguracji wystąpienia usługi.
 
 | Element | Opis |
 | --- | --- |
-| główny interfejs API — folder zarządzania |Zawiera konfigurację najwyższego poziomu dla wystąpienia usługi |
-| folder interfejsów API |Zawiera konfigurację interfejsów API w wystąpieniu usługi |
-| folder grup |Zawiera konfigurację grup w wystąpieniu usługi |
+| główny folder zarządzania interfejsami api |Zawiera konfigurację najwyższego poziomu dla wystąpienia usługi |
+| folder apis |Zawiera konfigurację apis w wystąpieniu usługi |
+| folder grupy |Zawiera konfigurację grup w wystąpieniu usługi |
 | folder zasad |Zawiera zasady w wystąpieniu usługi |
-| folder portalStyles |Zawiera konfigurację dostosowań portalu deweloperów w wystąpieniu usługi |
-| folder produkty |Zawiera konfigurację produktów w wystąpieniu usługi |
+| folder portalStyles |Zawiera konfigurację dostosowań portalu dewelopera w wystąpieniu usługi |
+| folder produktów |Zawiera konfigurację produktów w wystąpieniu usługi |
 | folder szablonów |Zawiera konfigurację szablonów wiadomości e-mail w wystąpieniu usługi |
 
-Każdy folder może zawierać jeden lub więcej plików, a w niektórych przypadkach jeden lub więcej folderów, na przykład folder dla każdego interfejsu API, produktu lub grupy. Pliki w poszczególnych folderach są specyficzne dla typu jednostki opisanego przez nazwę folderu.
+Każdy folder może zawierać jeden lub więcej plików, a w niektórych przypadkach jeden lub więcej folderów, na przykład folder dla każdego interfejsu API, produktu lub grupy. Pliki w każdym folderze są specyficzne dla typu jednostki opisanego przez nazwę folderu.
 
-| Typ pliku | Cel |
+| Typ pliku | Przeznaczenie |
 | --- | --- |
-| json |Informacje o konfiguracji odpowiedniej jednostki |
-| html |Opisy dotyczące jednostki, często wyświetlane w portalu dla deweloperów |
+| json |Informacje o konfiguracji odpowiedniej encji |
+| html |Opisy dotyczące encji, często wyświetlane w portalu dla deweloperów |
 | xml |Instrukcje zasad |
-| kaskad |Arkusze stylów dla dostosowywania portalu deweloperów |
+| css |Arkusze stylów do dostosowywania portalu dla deweloperów |
 
-Te pliki można tworzyć, usuwać, edytować i zarządzać nimi w lokalnym systemie plików, a zmiany wdrożone z powrotem do wystąpienia usługi API Management.
+Pliki te można tworzyć, usuwać, edytować i zarządzać w lokalnym systemie plików, a zmiany wdrożone z powrotem do wystąpienia usługi zarządzania interfejsami API.
 
 > [!NOTE]
-> Następujące jednostki nie są zawarte w repozytorium git i nie można ich skonfigurować przy użyciu usługi git.
+> Następujące jednostki nie są zawarte w repozytorium Git i nie można skonfigurować przy użyciu git.
 >
 > * [Użytkownicy](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/user)
 > * [Subskrypcje](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/subscription)
 > * [Nazwane wartości](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/property)
-> * Jednostki portalu dla deweloperów inne niż style
+> * Encje portalu deweloperów inne niż style
 >
 
-### <a name="root-api-management-folder"></a>Główny interfejs API — folder zarządzania
-Folder główny `api-management` `configuration.json` zawiera plik zawierający informacje najwyższego poziomu dotyczące wystąpienia usługi w następującym formacie.
+### <a name="root-api-management-folder"></a>Główny folder zarządzania interfejsami api
+Folder `api-management` główny zawiera `configuration.json` plik zawierający informacje najwyższego poziomu o wystąpieniu usługi w następującym formacie.
 
 ```json
 {
@@ -198,74 +198,74 @@ Folder główny `api-management` `configuration.json` zawiera plik zawierający 
 }
 ```
 
-Pierwsze cztery`RegistrationEnabled`ustawienia (, `UserRegistrationTerms`, `UserRegistrationTermsEnabled`i `UserRegistrationTermsConsentRequired`) są mapowane na następujące ustawienia na karcie **tożsamości** w sekcji **zabezpieczenia** .
+Pierwsze cztery ustawienia`RegistrationEnabled` `UserRegistrationTerms`( `UserRegistrationTermsEnabled`, `UserRegistrationTermsConsentRequired`, , i ) są mapowane do następujących ustawień na karcie **Tożsamości** w sekcji **Zabezpieczenia.**
 
-| Ustawienie tożsamości | Mapuje do |
+| Ustawienie tożsamości | Mapy do |
 | --- | --- |
-| RegistrationEnabled |Obecność dostawcy tożsamości **nazwy użytkownika i hasła** |
-| UserRegistrationTerms |**Warunki użytkowania w** polu tekstowym tworzenia konta użytkownika |
-| UserRegistrationTermsEnabled |Pole wyboru **Pokaż warunki użytkowania na stronie rejestracji** |
-| UserRegistrationTermsConsentRequired |Pole wyboru **wymaganie zgody** |
-| RequireUserSigninEnabled |Pole wyboru **Przekieruj użytkowników anonimowych do strony logowania** |
+| RegistrationEnabled |Obecność dostawcy **tożsamości nazwy użytkownika i hasła** |
+| Ustawienia rejestracji użytkowników |**Warunki użytkowania w skrzynce** tekstowej rejestracji użytkownika |
+| UserRegistrationTermsEnabled |**Pole** wyboru Pokaż warunki użytkowania na stronie rejestracji |
+| Wymagane ustawienia użytkownika |Pole wyboru **Wymagaj zgody** |
+| Wymagajużydnikusyer |**Przekierowywanie użytkowników anonimowych do** strony logowania |
 
-Kolejne cztery`DelegationEnabled`ustawienia (, `DelegationUrl`, `DelegatedSubscriptionEnabled`i `DelegationValidationKey`) są mapowane na następujące ustawienia na karcie delegowanie w sekcji **zabezpieczenia** .
+Następne cztery ustawienia`DelegationEnabled` `DelegationUrl`( `DelegatedSubscriptionEnabled`, `DelegationValidationKey`, , i ) są mapowane do następujących ustawień na karcie **Delegowanie** w sekcji **Zabezpieczenia.**
 
-| Ustawienie delegowania | Mapuje do |
+| Ustawienie delegowania | Mapy do |
 | --- | --- |
-| DelegationEnabled |Pole wyboru **delegowania logowania & logowania** |
-| DelegationUrl |Pole tekstowe **adresu URL punktu końcowego delegowania** |
-| DelegatedSubscriptionEnabled |Pole wyboru **delegowania subskrypcji produktu** |
-| DelegationValidationKey |Pole tekstowe **delegowania klucza weryfikacji** |
+| DelegowanieWnie |Pole wyboru **& rejestracji delegowania logowania** |
+| DelegaturaUrl |Pole **tekstowe adresu URL punktu końcowego delegowania** |
+| DelegowaneSubskrypcjaWniejszą |Pole wyboru **Delegowanie subskrypcji produktu** |
+| Klucz dotacji delegowania |**Pole tekstowe Klucz sprawdzania poprawności delegowania** |
 
-Ustawienie `$ref-policy`końcowe, mapuje na plik globalnych zestawień zasad dla wystąpienia usługi.
+Ostateczne ustawienie `$ref-policy`, mapuje plik instrukcji zasad globalnych dla wystąpienia usługi.
 
-### <a name="apis-folder"></a>folder interfejsów API
-`apis` Folder zawiera folder dla każdego interfejsu API w wystąpieniu usługi, który zawiera następujące elementy.
+### <a name="apis-folder"></a>folder apis
+Folder `apis` zawiera folder dla każdego interfejsu API w wystąpieniu usługi, który zawiera następujące elementy.
 
-* `apis\<api name>\configuration.json`— Konfiguracja interfejsu API i zawiera informacje o adresie URL usługi wewnętrznej bazy danych i operacjach. Są to te same informacje, które zostałyby zwrócone w przypadku wywołania [funkcji Pobierz konkretny interfejs API](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/apis/get) `export=true` w formacie in `application/json` .
-* `apis\<api name>\api.description.html`— jest to opis interfejsu API i odpowiada `description` właściwości [jednostki interfejsu API](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.table._entity_property).
-* `apis\<api name>\operations\`-Ten folder zawiera `<operation name>.description.html` pliki, które są mapowane na operacje w interfejsie API. Każdy plik zawiera opis pojedynczej operacji w interfejsie API, która jest mapowana na `description` Właściwość [jednostki operacji](https://docs.microsoft.com/rest/api/visualstudio/operations/list#operationproperties) w interfejsie API REST.
+* `apis\<api name>\configuration.json`- jest to konfiguracja interfejsu API i zawiera informacje o adresie URL usługi wewnętrznej bazy danych i operacji. Jest to te same informacje, które zostaną zwrócone, `export=true` jeśli `application/json` były do wywołania Pobierz określonego [interfejsu API](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/apis/get) w formacie.
+* `apis\<api name>\api.description.html`- jest to opis API i odpowiada `description` właściwości [jednostki API](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.table._entity_property).
+* `apis\<api name>\operations\`- ten `<operation name>.description.html` folder zawiera pliki, które mapują operacje w interfejsie API. Każdy plik zawiera opis pojedynczej operacji w interfejsie `description` API, który mapuje do właściwości [jednostki operacji](https://docs.microsoft.com/rest/api/visualstudio/operations/list#operationproperties) w interfejsie API REST.
 
-### <a name="groups-folder"></a>folder grup
-`groups` Folder zawiera folder dla każdej grupy zdefiniowanej w wystąpieniu usługi.
+### <a name="groups-folder"></a>folder grupy
+Folder `groups` zawiera folder dla każdej grupy zdefiniowanej w wystąpieniu usługi.
 
-* `groups\<group name>\configuration.json`-Konfiguracja grupy. Są to te same informacje, które zostałyby zwrócone w przypadku wywołania operacji [Pobierz określoną grupę](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/group/get) .
-* `groups\<group name>\description.html`-jest to opis grupy i odpowiada `description` właściwości [jednostki grupy](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-group-entity).
+* `groups\<group name>\configuration.json`- jest to konfiguracja dla grupy. Jest to te same informacje, które zostaną zwrócone, jeśli były do wywołania [Get operacji określonej grupy.](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/group/get)
+* `groups\<group name>\description.html`- jest to opis grupy i odpowiada `description` właściwości [jednostki grupy](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-group-entity).
 
 ### <a name="policies-folder"></a>folder zasad
-`policies` Folder zawiera instrukcje zasad dla Twojego wystąpienia usługi.
+Folder `policies` zawiera instrukcje zasad dla wystąpienia usługi.
 
-* `policies\global.xml`-zawiera zasady zdefiniowane w globalnym zakresie dla Twojego wystąpienia usługi.
-* `policies\apis\<api name>\`— Jeśli masz jakieś zasady zdefiniowane w zakresie interfejsu API, są one zawarte w tym folderze.
-* `policies\apis\<api name>\<operation name>\`folder — Jeśli masz jakieś zasady zdefiniowane w zakresie operacji, są one zawarte w tym folderze w `<operation name>.xml` plikach, które mapują do instrukcji zasad dla każdej operacji.
-* `policies\products\`— Jeśli masz jakieś zasady zdefiniowane w zakresie produktu, są one zawarte w tym folderze, który zawiera `<product name>.xml` pliki, które są mapowane na oświadczenia zasad dla każdego produktu.
+* `policies\global.xml`- zawiera zasady zdefiniowane w zakresie globalnym dla wystąpienia usługi.
+* `policies\apis\<api name>\`- jeśli masz jakieś zasady zdefiniowane w zakresie INTERFEJSU API, są one zawarte w tym folderze.
+* `policies\apis\<api name>\<operation name>\`folder - jeśli masz żadnych zasad zdefiniowanych w zakresie operacji, są one zawarte w tym folderze w `<operation name>.xml` plikach, które mapują do instrukcji zasad dla każdej operacji.
+* `policies\products\`- jeśli masz jakieś zasady zdefiniowane w zakresie produktu, są `<product name>.xml` one zawarte w tym folderze, który zawiera pliki, które mapują do instrukcji zasad dla każdego produktu.
 
 ### <a name="portalstyles-folder"></a>folder portalStyles
-`portalStyles` Folder zawiera konfiguracje i arkusze stylów dla dostosowań portalu deweloperów dla wystąpienia usługi.
+Folder `portalStyles` zawiera arkusze konfiguracji i stylów dla dostosowań portalu dewelopera dla wystąpienia usługi.
 
-* `portalStyles\configuration.json`-zawiera nazwy arkuszy stylów używanych przez portal dla deweloperów
-* `portalStyles\<style name>.css`-Każdy `<style name>.css` plik zawiera style dla portalu dla deweloperów (`Preview.css` i `Production.css` domyślnie).
+* `portalStyles\configuration.json`- zawierają nazwy arkuszy stylów używanych przez portal deweloperów
+* `portalStyles\<style name>.css`- `<style name>.css` każdy plik zawiera style`Preview.css` dla `Production.css` portalu dewelopera ( i domyślnie).
 
-### <a name="products-folder"></a>folder produkty
-`products` Folder zawiera folder dla każdego produktu zdefiniowanego w wystąpieniu usługi.
+### <a name="products-folder"></a>folder produktów
+Folder `products` zawiera folder dla każdego produktu zdefiniowanego w wystąpieniu usługi.
 
-* `products\<product name>\configuration.json`— jest to konfiguracja produktu. Są to te same informacje, które zostałyby zwrócone w przypadku wywołania operacji [pobierania określonego produktu](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/product/get) .
-* `products\<product name>\product.description.html`-Opis produktu i odpowiada `description` właściwości [jednostki produktu](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-product-entity) w interfejsie API REST.
+* `products\<product name>\configuration.json`- jest to konfiguracja produktu. Jest to te same informacje, które zostaną zwrócone, jeśli były do wywołania [Get operacji określonego produktu.](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/product/get)
+* `products\<product name>\product.description.html`- jest to opis produktu i odpowiada `description` właściwości [podmiotu produktu](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-product-entity) w INTERFEJSIE REST.
 
-### <a name="templates"></a>szablony
-Folder zawiera konfigurację [szablonów wiadomości e-mail](api-management-howto-configure-notifications.md) wystąpienia usługi. `templates`
+### <a name="templates"></a>szablonów
+Folder `templates` zawiera konfigurację [szablonów wiadomości e-mail](api-management-howto-configure-notifications.md) wystąpienia usługi.
 
-* `<template name>\configuration.json`— konfiguracja szablonu wiadomości e-mail.
-* `<template name>\body.html`-treść szablonu wiadomości e-mail.
+* `<template name>\configuration.json`- jest to konfiguracja szablonu wiadomości e-mail.
+* `<template name>\body.html`- jest to treść szablonu wiadomości e-mail.
 
 ## <a name="next-steps"></a>Następne kroki
 Aby uzyskać informacje na temat innych sposobów zarządzania wystąpieniem usługi, zobacz:
 
 * Zarządzanie wystąpieniem usługi przy użyciu następujących poleceń cmdlet programu PowerShell
-  * [Dokumentacja poleceń cmdlet programu PowerShell wdrożenia usługi](https://docs.microsoft.com/powershell/module/wds)
-  * [Dokumentacja poleceń cmdlet programu PowerShell zarządzania usługami](https://docs.microsoft.com/powershell/azure/servicemanagement/overview)
-* Zarządzanie wystąpieniem usługi za pomocą interfejsu API REST
-  * [Dokumentacja interfejsu API REST API Management](/rest/api/apimanagement/)
+  * [Wdrażanie usług — dokumentacja poleceń cmdlet programu PowerShell](https://docs.microsoft.com/powershell/module/wds)
+  * [Zarządzanie usługami — dokumentacja poleceń cmdlet programu PowerShell](https://docs.microsoft.com/powershell/azure/servicemanagement/overview)
+* Zarządzanie wystąpieniem usługi przy użyciu interfejsu API REST
+  * [Odwołanie do interfejsu API REST zarządzania interfejsem API](/rest/api/apimanagement/)
 
 
 [api-management-enable-git]: ./media/api-management-configuration-repository-git/api-management-enable-git.png

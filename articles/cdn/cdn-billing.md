@@ -1,6 +1,6 @@
 ---
-title: Informacje dotyczące rozliczeń Azure CDN | Microsoft Docs
-description: Ten często zadawane pytania opisują sposób działania Azure CDN rozliczeń.
+title: Opis rozliczeń usługi Azure cdn | Dokumenty firmy Microsoft
+description: W tym często zadawanych pytaniach opisano, jak działa rozliczenia usługi Azure CDN.
 services: cdn
 documentationcenter: ''
 author: mdgattuso
@@ -15,22 +15,22 @@ ms.topic: article
 ms.date: 09/13/2019
 ms.author: magattus
 ms.openlocfilehash: e2827a11f4ec2a5c0467c3699cd9990aaf7ae97a
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73495477"
 ---
 # <a name="understanding-azure-cdn-billing"></a>Omówienie rozliczania za usługę Azure CDN
 
-Ten często zadawane pytania przedstawia strukturę rozliczania zawartości hostowanej przez usługę Azure Content Delivery Network (CDN).
+W tym często zadawanym faq opisano strukturę rozliczeń zawartości hostowanych przez usługę Azure Content Delivery Network (CDN).
 
-## <a name="what-is-a-billing-region"></a>Co to jest region rozliczeniowy?
-Region rozliczeniowy jest obszar geograficzny używany do określania, jaka stawka jest naliczana za dostarczanie obiektów z Azure CDN. Bieżące strefy rozliczeń i ich regiony są następujące:
+## <a name="what-is-a-billing-region"></a>Co to jest region rozliczeń?
+Region rozliczeń to obszar geograficzny używany do określenia, jaka stawka jest naliczana za dostarczanie obiektów z usługi Azure CDN. Bieżące strefy rozliczeniowe i ich regiony są następujące:
 
 - Strefa 1: Ameryka Północna, Europa, Bliski Wschód i Afryka
 
-- Strefa 2: Azja i Pacyfik (włącznie z Japonią)
+- Strefa 2: Azja i Pacyfik (w tym Japonia)
 
 - Strefa 3: Ameryka Południowa
 
@@ -38,60 +38,60 @@ Region rozliczeniowy jest obszar geograficzny używany do określania, jaka staw
 
 - Strefa 5: Indie
 
-Aby uzyskać informacje o regionach punktów obecności (POP), zobacz [Azure CDN lokalizacje pop według regionów](https://docs.microsoft.com/azure/cdn/cdn-pop-locations). Na przykład punkt obecności znajdujący się w Meksyku znajduje się w regionie Ameryka Północna i dlatego jest uwzględniony w strefie 1. 
+Aby uzyskać informacje o regionach punktu obecności (POP), zobacz [Lokalizacje pop usługi Azure CDN według regionów](https://docs.microsoft.com/azure/cdn/cdn-pop-locations). Na przykład pop znajduje się w Meksyku jest w regionie Ameryki Północnej i dlatego jest uwzględniony w strefie 1. 
 
-Aby uzyskać informacje na temat cennika Azure CDN, zobacz [Cennik usługi Content Delivery Network](https://azure.microsoft.com/pricing/details/cdn/).
+Aby uzyskać informacje na temat cen usługi Azure CDN, zobacz [Cennik sieci dostarczania zawartości](https://azure.microsoft.com/pricing/details/cdn/).
 
-## <a name="how-are-delivery-charges-calculated-by-region"></a>Jak są naliczane opłaty za dostarczanie według regionów?
-Obszar rozliczeń Azure CDN jest oparty na lokalizacji serwera źródłowego dostarczającego zawartość do użytkownika końcowego. Lokalizacja docelowa (fizyczna) klienta nie jest uważana za region rozliczenia.
+## <a name="how-are-delivery-charges-calculated-by-region"></a>W jaki sposób opłaty za dostawę są obliczane według regionu?
+Region rozliczeń usługi Azure CDN jest oparty na lokalizacji serwera źródłowego dostarczającego zawartość do użytkownika końcowego. Miejsce docelowe (lokalizacja fizyczna) klienta nie jest uważane za region rozliczeń.
 
-Na przykład jeśli użytkownik znajdujący się w Meksyku wystawi żądanie, a to żądanie jest obsługiwany przez serwer znajdujący się w Stany Zjednoczone POP z powodu komunikacji równorzędnej lub ruchu, obszar rozliczeń będzie Stany Zjednoczone.
+Jeśli na przykład użytkownik znajdujący się w Meksyku wystawia żądanie, a to żądanie jest obsługiwane przez serwer znajdujący się w amerykańskim połączeniu adresów POP z powodu komunikacji równorzędnej lub warunków drogowych, regionem rozliczeniowym będą Stany Zjednoczone.
 
-## <a name="what-is-a-billable-azure-cdn-transaction"></a>Co to jest transakcja Azure CDN rozliczana?
-Każde żądanie HTTP (S) kończące się w sieci CDN jest zdarzeniem rozliczanym, które obejmuje wszystkie typy odpowiedzi: sukces, Niepowodzenie lub inne. Jednak różne odpowiedzi mogą generować różne ilości ruchu. Na przykład *nie można modyfikować 304* i inne odpowiedzi tylko do nagłówka generują niewielki ruch, ponieważ są to niewielka odpowiedź nagłówka; Podobnie odpowiedzi na błędy (na przykład *nie znaleziono 404*) są płatne, ale ponoszą niewielki koszt ze względu na mały ładunek odpowiedzi.
+## <a name="what-is-a-billable-azure-cdn-transaction"></a>Co to jest transakcja usługi Azure CDN podlegania rozliczane?
+Każde żądanie HTTP(S), które kończy się w sieci CDN, jest zdarzeniem podlegacym rozliczaniu, które obejmuje wszystkie typy odpowiedzi: sukces, niepowodzenie lub inne. Jednak różne odpowiedzi mogą generować różne kwoty ruchu. Na przykład *304 Nie zmodyfikowane* i inne odpowiedzi tylko do nagłówka generują niewielki ruch, ponieważ są one odpowiedzią małego nagłówka; podobnie, odpowiedzi na błędy (na przykład *404 Nie znaleziono)* są rozliczane, ale ponoszą niewielki koszt ze względu na niewielki ładunek odpowiedzi.
 
-## <a name="what-other-azure-costs-are-associated-with-azure-cdn-use"></a>Jakie inne koszty platformy Azure są skojarzone z Azure CDN użycia?
-Korzystanie z Azure CDN również wiąże się z niektórymi opłatami za użycie usług używanych jako źródło dla obiektów. Te koszty są zwykle małą częścią całkowitego kosztu użycia usługi CDN.
+## <a name="what-other-azure-costs-are-associated-with-azure-cdn-use"></a>Jakie inne koszty platformy Azure są skojarzone z korzystaniem z usługi Azure CDN?
+Korzystanie z usługi Azure CDN wiąże się również z pewnymi opłatami za użycie usług używanych jako źródło dla obiektów. Koszty te stanowią zazwyczaj niewielki ułamek całkowitego kosztu użycia sieci CDN.
 
-Jeśli używasz magazynu obiektów blob platformy Azure jako źródła zawartości, naliczane są również następujące opłaty za magazyn pamięci podręcznej:
+Jeśli używasz magazynu obiektów Blob platformy Azure jako źródła zawartości, poniesiesz również następujące opłaty za magazyn dla wypełnień pamięci podręcznej:
 
-- Rzeczywiste użycie GB: rzeczywisty magazyn obiektów źródłowych.
+- Rzeczywiste GB używane: rzeczywiste przechowywanie obiektów źródłowych.
 
-- Transakcje: w razie potrzeby w celu wypełnienia pamięci podręcznej.
+- Transakcje: W razie potrzeby, aby wypełnić pamięć podręczną.
 
-- Transfery w GB: ilość danych transferowanych w celu wypełnienia pamięci podręcznych usługi CDN.
+- Transfery w GB: ilość danych przesłanych do wypełnienia pamięci podręcznych sieci CDN.
 
 > [!NOTE]
-> Od października 2019, jeśli używasz Azure CDN firmy Microsoft, koszt transferu danych z pochodzenia hostowanego na platformie Azure do punktów obecności w sieci CDN jest bezpłatny. Azure CDN z Verizon i Azure CDN z Akamai podlegają kursom opisanym poniżej.
+> Od października 2019 r. jeśli korzystasz z usługi Azure CDN firmy Microsoft, koszt transferu danych z aplikacji Origins hostowanych na platformie Azure do punktu wyjścia usługi CDN jest bezpłatny. Usługa Azure CDN firmy Verizon i azure CDN firmy Akamai podlega stawkom opisanym poniżej.
 
-Aby uzyskać więcej informacji na temat rozliczeń usługi Azure Storage, zobacz [Opis rozliczeń usługi Azure Storage — przepustowość, transakcje i pojemność](https://blogs.msdn.microsoft.com/windowsazurestorage/2010/07/08/understanding-windows-azure-storage-billing-bandwidth-transactions-and-capacity/).
+Aby uzyskać więcej informacji na temat rozliczeń usługi Azure Storage, zobacz [Opis rozliczeń usługi Azure Storage — przepustowość, transakcje i pojemność.](https://blogs.msdn.microsoft.com/windowsazurestorage/2010/07/08/understanding-windows-azure-storage-billing-bandwidth-transactions-and-capacity/)
 
-W przypadku korzystania z *dostarczania usług hostowanych*opłaty będą naliczane w następujący sposób:
+Jeśli korzystasz z *usługi hostowanego,* opłaty zostaną naliczone w następujący sposób:
 
-- Czas obliczeń na platformie Azure: wystąpienia obliczeniowe, które działają jako źródło.
+- Czas obliczeń platformy Azure: wystąpienia obliczeń, które działają jako źródło.
 
-- Transfer obliczeń na platformie Azure: transfer danych z wystąpień obliczeniowych w celu wypełnienia pamięci podręcznych Azure CDN.
+- Transfer obliczeń platformy Azure: transfery danych z wystąpień obliczeniowych w celu wypełnienia pamięci podręcznych usługi Azure CDN.
 
-Jeśli klient używa żądań zakresu bajtów (niezależnie od usługi pochodzenia), mają zastosowanie następujące zagadnienia:
+Jeśli klient używa żądań zakresu bajtów (niezależnie od usługi pochodzenia), zastosowanie mają następujące zagadnienia:
 
-- *Żądanie dotyczące zakresu bajtów* jest transakcją rozliczaną w sieci CDN. Gdy klient wystawia żądanie dotyczące zakresu bajtów, to żądanie dotyczy podzestawu (zakresu) obiektu. Usługa CDN odpowiada wyłącznie częściowej zawartości, której dotyczy żądanie. Ta część odpowiedzi jest transakcją rozliczaną, a kwota transferu jest ograniczona do rozmiaru odpowiedzi zakresu (plus nagłówki).
+- *Żądanie zakresu bajtów* jest transakcją podlegania rozliczaniu w sieci CDN. Gdy klient wystawia żądanie zakresu bajtów, to żądanie dotyczy podzbioru (zakresu) obiektu. Sieć CDN odpowiada tylko częścią żądanej zawartości. Ta częściowa odpowiedź jest transakcją podlegalną do rozliczenia, a kwota transferu jest ograniczona do rozmiaru odpowiedzi zakresu (plus nagłówki).
 
-- Gdy żądanie dociera tylko do części obiektu (przez określenie nagłówka z zakresem bajtów), Sieć CDN może pobrać cały obiekt do swojej pamięci podręcznej. W związku z tym, mimo że transakcja rozliczana z sieci CDN dotyczy częściowej odpowiedzi, transakcja rozliczana od źródła może dotyczyć pełnego rozmiaru obiektu.
+- Gdy żądanie dociera tylko do części obiektu (przez określenie nagłówka zakresu bajtów), sieć CDN może pobrać cały obiekt do swojej pamięci podręcznej. W rezultacie, mimo że transakcja podlegające rozliczaniu z sieci CDN jest dla częściowej odpowiedzi, transakcji rozliczane od źródła może obejmować pełny rozmiar obiektu.
 
-## <a name="how-much-transfer-activity-occurs-to-support-the-cache"></a>Ile działań związanych z transferem ma obsługiwać pamięć podręczną?
-Za każdym razem, gdy punkt obecności usługi CDN musi wypełnić pamięć podręczną, wysyła żądanie do źródła dla obiektu w pamięci podręcznej. W związku z tym źródło ponosi transakcję rozliczaną za każdy chybień w pamięci podręcznej. Liczba chybień w pamięci podręcznej zależy od kilku czynników:
+## <a name="how-much-transfer-activity-occurs-to-support-the-cache"></a>Ile działania transferu występuje do obsługi pamięci podręcznej?
+Za każdym razem, gdy punkt obecności cdn musi wypełnić swoją pamięć podręczną, żąda do źródła dla obiektu buforowanego. W rezultacie pochodzenie ponosi rozliczalną transakcję na każdej miss pamięci podręcznej. Liczba pominiętych pamięci podręcznej zależy od wielu czynników:
 
-- Jak ma być dostępna zawartość pamięci podręcznej: Jeśli zawartość ma wysoką wartość czasu wygaśnięcia (Time-to-Live)/Expiration i jest często używana, więc pozostaje popularna w pamięci podręcznej, a następnie większość obciążenia jest obsługiwana przez sieć CDN. Typowy dobry współczynnik trafień pamięci podręcznej jest również większy niż 90%, co oznacza, że mniej niż 10% żądań klientów musi powrócić do źródła, w przypadku chybień w pamięci podręcznej lub odświeżenia obiektu.
+- Jak buforowalna zawartość jest: Jeśli zawartość ma wysoki czas wygaśnięcia (czas wygaśnięcia)/wygaśnięcia wartości i jest często dostępny, więc pozostaje popularny w pamięci podręcznej, a następnie zdecydowana większość obciążenia jest obsługiwana przez sieć CDN. Typowy dobry współczynnik trafień pamięci podręcznej wynosi znacznie ponad 90%, co oznacza, że mniej niż 10% żądań klientów musi powrócić do źródła, aby uzyskać pominięcie pamięci podręcznej lub odświeżenie obiektu.
 
-- Liczba węzłów potrzebnych do załadowania obiektu: za każdym razem, gdy węzeł ładuje obiekt ze źródła, ponosi transakcję rozliczaną. W związku z tym większa zawartość globalna (dostępną z większej liczby węzłów) skutkuje bardziej obciążanymi transakcjami.
+- Ile węzłów trzeba załadować obiekt: Za każdym razem, gdy węzeł ładuje obiekt od początku układu współrzędnych, nalicza transakcję podlegającego rozliczaniu. W rezultacie więcej globalnej zawartości (dostępnej z większej liczby węzłów) powoduje więcej transakcji podlegania rozliczaniu.
 
-- Wpływ na czas wygaśnięcia: wyższy czas TTL dla obiektu oznacza, że musi być pobierany z mniejszego poziomu pochodzenia. Oznacza to również, że klienci, tacy jak przeglądarki, mogą buforować obiekt więcej, co może zmniejszyć liczbę transakcji do sieci CDN.
+- Wpływ TTL: Wyższy czas wygaśnięcia obiektu oznacza, że musi być pobierany ze źródła rzadziej. Oznacza to również, że klienci, takich jak przeglądarki, można buforować obiekt dłużej, co może zmniejszyć transakcje do sieci CDN.
 
-## <a name="which-origin-services-are-eligible-for-free-data-transfer-with-azure-cdn-from-microsoft"></a>Które usługi pochodzenia kwalifikują się do bezpłatnego transferu danych z Azure CDN firmy Microsoft? 
-W przypadku korzystania z jednej z następujących usług platformy Azure jako źródła CDN nie zostanie naliczona opłata za transfer danych z punktu początkowego do punktów POP usługi CDN. 
+## <a name="which-origin-services-are-eligible-for-free-data-transfer-with-azure-cdn-from-microsoft"></a>Które usługi pochodzenia kwalifikują się do bezpłatnego transferu danych za pomocą usługi Azure CDN od firmy Microsoft? 
+Jeśli używasz jednej z następujących usług platformy Azure jako źródła usługi CDN, nie zostanie naliczona opłata z transferu danych z pochodzenia do punktami pocp usługi CDN. 
 
 - Azure Storage
-- Azure Media Services
+- Usługi multimediów platformy Azure
 - Azure Virtual Machines
 - Virtual Network
 - Moduł równoważenia obciążenia
@@ -104,7 +104,7 @@ W przypadku korzystania z jednej z następujących usług platformy Azure jako �
 - Azure Firewall
 - Azure Front Door Service
 - Azure Bastion
-- Usługa Azure App Service
+- Usługa aplikacji platformy Azure
 - Azure Functions
 - Azure Data Factory
 - Usługa Azure API Management
@@ -117,5 +117,5 @@ W przypadku korzystania z jednej z następujących usług platformy Azure jako �
 - Baza danych Azure SQL Database
 - Azure Cache for Redis
 
-## <a name="how-do-i-manage-my-costs-most-effectively"></a>Jak najlepiej Jak mogę zarządzać moimi kosztami?
-Ustaw najdłuższy możliwy czas wygaśnięcia dla zawartości. 
+## <a name="how-do-i-manage-my-costs-most-effectively"></a>Jak zarządzać kosztami najskuteczniej?
+Ustaw najdłuższy możliwy czas wygaśnięcia zawartości. 

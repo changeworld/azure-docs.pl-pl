@@ -1,6 +1,6 @@
 ---
-title: Wprowadzenie do usługi queue storage przy użyciu programu Visual Studio (ASP.NET Core)
-description: Jak rozpocząć korzystanie z usługi Azure queue storage w projekcie ASP.NET Core w programie Visual Studio
+title: Wprowadzenie do magazynu kolejek przy użyciu programu Visual Studio (ASP.NET Core)
+description: Jak rozpocząć korzystanie z magazynu kolejek platformy Azure w projekcie ASP.NET Core w programie Visual Studio
 services: storage
 author: ghogen
 manager: jillfra
@@ -14,29 +14,29 @@ ms.date: 11/14/2017
 ms.author: ghogen
 ROBOTS: NOINDEX,NOFOLLOW
 ms.openlocfilehash: 5cdf6f2644788674df91b533c9444fc88ab30b09
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72300021"
 ---
-# <a name="get-started-with-queue-storage-and-visual-studio-connected-services-aspnet-core"></a>Wprowadzenie do usługi queue storage i usług połączonych programu Visual Studio (ASP.NET Core)
+# <a name="get-started-with-queue-storage-and-visual-studio-connected-services-aspnet-core"></a>Wprowadzenie do magazynu kolejek i usług połączonych z programem Visual Studio (ASP.NET Core)
 
 [!INCLUDE [storage-try-azure-tools-queues](../../includes/storage-try-azure-tools-queues.md)]
 
-W tym artykule opisano sposób rozpoczynania pracy z usługą Azure queue storage w programie Visual Studio po utworzeniu lub przywoływaniu konta usługi Azure Storage w projekcie ASP.NET Core przy użyciu funkcji **usługi połączone** programu Visual Studio. Operacja **połączone usługi** instaluje odpowiednie pakiety NuGet w celu uzyskania dostępu do usługi Azure Storage w projekcie i dodaje parametry połączenia dla konta magazynu do plików konfiguracji projektu. (Zobacz [dokumentację magazynu](https://azure.microsoft.com/documentation/services/storage/) , aby uzyskać ogólne informacje na temat usługi Azure Storage).
+W tym artykule opisano, jak rozpocząć korzystanie z magazynu kolejki platformy Azure w programie Visual Studio po utworzeniu konta magazynu platformy Azure lub odwoływaniu się do niego w projekcie ASP.NET Core przy użyciu funkcji **Połączonych usług** programu Visual Studio. **Operacja Połączone usługi** instaluje odpowiednie pakiety NuGet, aby uzyskać dostęp do magazynu platformy Azure w projekcie i dodaje parametry połączenia dla konta magazynu do plików konfiguracji projektu. (Zobacz [dokumentację magazynu, aby](https://azure.microsoft.com/documentation/services/storage/) uzyskać ogólne informacje na temat usługi Azure Storage).
 
-Azure queue storage to usługa służąca do przechowywania dużej liczby komunikatów, do których można uzyskać dostęp z dowolnego miejsca na świecie za pośrednictwem uwierzytelnionych połączeń przy użyciu protokołu HTTP lub HTTPS. Jeden komunikat w kolejce może mieć długość do 64 kilobajtów (KB), a Kolejka może zawierać miliony komunikatów, do łącznego limitu pojemności konta magazynu. Zobacz też wprowadzenie do [usługi Azure queue storage przy użyciu platformy .NET](../storage/queues/storage-dotnet-how-to-use-queues.md) , aby uzyskać szczegółowe informacje na temat programistycznego manipulowania kolejkami.
+Usługa Azure queue storage to usługa do przechowywania dużej liczby wiadomości, do których można uzyskać dostęp z dowolnego miejsca na świecie za pośrednictwem uwierzytelnionych wywołań przy użyciu protokołu HTTP lub HTTPS. Pojedyncza kolejka może mieć rozmiar do 64 kilobajtów (KB), a kolejka może zawierać miliony wiadomości, do całkowitego limitu pojemności konta magazynu. Zobacz też [Wprowadzenie do usługi Azure Queue storage przy użyciu platformy .NET, aby](../storage/queues/storage-dotnet-how-to-use-queues.md) uzyskać szczegółowe informacje na temat programowego manipulowania kolejkami.
 
-Aby rozpocząć, najpierw utwórz kolejkę platformy Azure na koncie magazynu. W tym artykule pokazano, jak utworzyć kolejkę w C# programie oraz jak wykonywać podstawowe operacje na kolejkach, takie jak dodawanie, modyfikowanie, odczytywanie i usuwanie komunikatów w kolejce.  Kod używa biblioteki klienta usługi Azure Storage dla platformy .NET. Aby uzyskać więcej informacji na temat ASP.NET, zobacz [ASP.NET](https://www.asp.net).
+Aby rozpocząć, najpierw utwórz kolejkę platformy Azure na koncie magazynu. W tym artykule pokazano, jak utworzyć kolejkę w języku C# i jak wykonywać podstawowe operacje kolejki, takie jak dodawanie, modyfikowanie, czytanie i usuwanie wiadomości kolejki.  Kod używa biblioteki klienta usługi Azure Storage dla platformy .NET. Aby uzyskać więcej informacji na temat ASP.NET, zobacz [ASP.NET](https://www.asp.net).
 
-Niektóre interfejsy API usługi Azure Storage są asynchroniczne, a w kodzie w tym artykule przyjęto, że metody asynchroniczne są używane. Aby uzyskać więcej informacji, zobacz [programowanie asynchroniczne](https://docs.microsoft.com/dotnet/csharp/async) .
+Niektóre interfejsy API usługi Azure Storage są asynchroniczne, a kod w tym artykule zakłada, że używane są metody asynchroniczne. Aby uzyskać więcej informacji, zobacz [programowanie asynchroniczne.](https://docs.microsoft.com/dotnet/csharp/async)
 
-## <a name="access-queues-in-code"></a>Dostęp do kolejek w kodzie
+## <a name="access-queues-in-code"></a>Kolejki dostępu w kodzie
 
-Aby uzyskać dostęp do kolejek w projektach ASP.NET Core, należy uwzględnić następujące C# elementy w dowolnym pliku źródłowym, który uzyskuje dostęp do usługi Azure queue storage. Użyj całego kodu przed kodem w poniższych sekcjach.
+Aby uzyskać dostęp do kolejek w projektach ASP.NET Core, dołącz następujące elementy w dowolnym pliku źródłowym języka C#, który uzyskuje dostęp do magazynu kolejki platformy Azure. Użyj całego tego kodu przed kodem w sekcjach, które należy wykonać.
 
-1. Dodaj wymagane instrukcje `using`:
+1. Dodaj niezbędne `using` instrukcje:
     ```cs
     using Microsoft.Framework.Configuration;
     using Microsoft.WindowsAzure.Storage;
@@ -45,20 +45,20 @@ Aby uzyskać dostęp do kolejek w projektach ASP.NET Core, należy uwzględnić 
     using LogLevel = Microsoft.Framework.Logging.LogLevel;
     ```
 
-1. Pobierz obiekt `CloudStorageAccount` reprezentujący informacje o koncie magazynu. Użyj poniższego kodu, aby uzyskać parametry połączenia magazynu i informacje o koncie magazynu z konfiguracji usługi platformy Azure:
+1. Pobierz `CloudStorageAccount` obiekt, który reprezentuje informacje o koncie magazynu. Użyj następującego kodu, aby uzyskać parametry połączenia magazynu i informacje o koncie magazynu z konfiguracji usługi platformy Azure:
 
     ```cs
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
         CloudConfigurationManager.GetSetting("<storage-account-name>_AzureStorageConnectionString"));
     ```
 
-1. Pobierz obiekt `CloudQueueClient` w celu odwoływania się do obiektów kolejki na koncie magazynu:
+1. Pobierz `CloudQueueClient` obiekt, aby odwoływać się do obiektów kolejki na koncie magazynu:
 
     ```cs
     // Create the CloudQueueClient object for the storage account.
     CloudQueueClient queueClient = storageAccount.CreateCloudQueueClient();
     ```
-1. Pobierz obiekt `CloudQueue`, aby odwołać się do określonej kolejki:
+1. Pobierz `CloudQueue` obiekt, aby odwołać się do określonej kolejki:
 
     ```cs
     // Get a reference to the CloudQueue named "messagequeue"
@@ -67,16 +67,16 @@ Aby uzyskać dostęp do kolejek w projektach ASP.NET Core, należy uwzględnić 
 
 ### <a name="create-a-queue-in-code"></a>Tworzenie kolejki w kodzie
 
-Aby utworzyć kolejkę platformy Azure w kodzie, wywołaj `CreateIfNotExistsAsync`:
+Aby utworzyć kolejkę platformy `CreateIfNotExistsAsync`Azure w kodzie, zadzwoń:
 
 ```cs
 // Create the CloudQueue if it does not exist.
 await messageQueue.CreateIfNotExistsAsync();
 ```
 
-## <a name="add-a-message-to-a-queue"></a>Dodawanie komunikatu do kolejki
+## <a name="add-a-message-to-a-queue"></a>Dodawanie wiadomości do kolejki
 
-Aby wstawić komunikat do istniejącej kolejki, Utwórz nowy obiekt `CloudQueueMessage`, a następnie Wywołaj metodę `AddMessageAsync`. Obiekt `CloudQueueMessage` można utworzyć na podstawie ciągu (w formacie UTF-8) lub tablicy bajtowej.
+Aby wstawić wiadomość do istniejącej `CloudQueueMessage` kolejki, utwórz `AddMessageAsync` nowy obiekt, a następnie wywołaj metodę. Obiekt `CloudQueueMessage` może być utworzony z ciągu (w formacie UTF-8) lub tablicy bajtowej.
 
 ```cs
 // Create a message and add it to the queue.
@@ -84,23 +84,23 @@ CloudQueueMessage message = new CloudQueueMessage("Hello, World");
 await messageQueue.AddMessageAsync(message);
 ```
 
-## <a name="read-a-message-in-a-queue"></a>Odczytaj wiadomość w kolejce
+## <a name="read-a-message-in-a-queue"></a>Czytanie wiadomości w kolejce
 
-Możesz uzyskać wgląd w komunikat z przodu kolejki bez usuwania go z kolejki, wywołując metodę `PeekMessageAsync`:
+Możesz zajrzeć do wiadomości z przodu kolejki bez usuwania go z `PeekMessageAsync` kolejki, wywołując metodę:
 
 ```cs
 // Peek the next message in the queue.
 CloudQueueMessage peekedMessage = await messageQueue.PeekMessageAsync();
 ```
 
-## <a name="read-and-remove-a-message-in-a-queue"></a>Odczytywanie i usuwanie komunikatu w kolejce
+## <a name="read-and-remove-a-message-in-a-queue"></a>Odczytywanie i usuwanie wiadomości w kolejce
 
-Twój kod może usunąć (z kolejki) komunikat w kolejce w dwóch krokach.
+Kod można usunąć (dequeue) wiadomość z kolejki w dwóch krokach.
 
-1. Wywołaj `GetMessageAsync`, aby uzyskać następny komunikat w kolejce. Komunikat zwrócony z `GetMessageAsync` stał się niewidoczny dla każdego innego kodu odczytującego komunikaty z tej kolejki. Domyślnie komunikat pozostanie niewidoczny przez 30 sekund.
-1. Aby zakończyć usuwanie komunikatu z kolejki, wywołaj `DeleteMessageAsync`.
+1. Wywołanie, `GetMessageAsync` aby uzyskać następną wiadomość w kolejce. Wiadomość zwrócona `GetMessageAsync` staje się niewidoczna dla innych wiadomości odczytu kodu z tej kolejki. Domyślnie komunikat pozostanie niewidoczny przez 30 sekund.
+1. Aby zakończyć usuwanie wiadomości z `DeleteMessageAsync`kolejki, zadzwoń do niego .
 
-Ten dwuetapowy proces usuwania komunikatów gwarantuje, że jeśli kod nie będzie w stanie przetworzyć komunikatu z powodu awarii sprzętu lub oprogramowania, inne wystąpienie kodu będzie w stanie uzyskać ten sam komunikat i ponowić próbę. Poniższy kod wywołuje `DeleteMessageAsync` bezpośrednio po przetworzeniu komunikatu:
+Ten dwuetapowy proces usuwania komunikatów gwarantuje, że jeśli kod nie będzie w stanie przetworzyć komunikatu z powodu awarii sprzętu lub oprogramowania, inne wystąpienie kodu będzie w stanie uzyskać ten sam komunikat i ponowić próbę. Następujące wywołania `DeleteMessageAsync` kodu zaraz po przetworzyniu wiadomości:
 
 ```cs
 // Get the next message in the queue.
@@ -112,9 +112,9 @@ CloudQueueMessage retrievedMessage = await messageQueue.GetMessageAsync();
 await messageQueue.DeleteMessageAsync(retrievedMessage);
 ```
 
-## <a name="additional-options-for-dequeuing-messages"></a>Dodatkowe opcje związane z dekolejką komunikatów
+## <a name="additional-options-for-dequeuing-messages"></a>Dodatkowe opcje usuwania wiadomości z kolejkowania
 
-Istnieją dwa sposoby dostosowywania pobierania komunikatów z kolejki. Po pierwsze można uzyskać komunikaty zbiorczo (do 32). Po drugie można ustawić dłuższy lub krótszy limit czasu niewidoczności, dzięki czemu kod będzie mieć więcej lub mniej czasu na pełne przetworzenie każdego komunikatu. Poniższy przykład kodu używa metody `GetMessages`, aby pobrać 20 komunikatów w jednym wywołaniu. Następnie przetwarza każdy komunikat przy użyciu pętli `foreach`. Ustawia również limitu czasu niewidoczności na pięć minut dla każdego komunikatu. Należy zauważyć, że czasomierz pięciu minut jest uruchamiany dla wszystkich komunikatów w tym samym czasie, więc po upływie pięciu minut wszystkie komunikaty, które nie zostały usunięte, staną się ponownie widoczne.
+Istnieją dwa sposoby dostosowywania pobierania wiadomości z kolejki. Po pierwsze można uzyskać komunikaty zbiorczo (do 32). Po drugie można ustawić dłuższy lub krótszy limit czasu niewidoczności, dzięki czemu kod będzie mieć więcej lub mniej czasu na pełne przetworzenie każdego komunikatu. Poniższy przykład kodu `GetMessages` używa metody, aby uzyskać 20 wiadomości w jednym wywołaniu. Następnie przetwarza każdą wiadomość `foreach` za pomocą pętli. Ustawia również limitu czasu niewidoczności na pięć minut dla każdego komunikatu. Należy zauważyć, że pięciominutowy timer uruchamia się dla wszystkich wiadomości w tym samym czasie, więc po upływie pięciu minut wszystkie wiadomości, które nie zostały usunięte, stają się ponownie widoczne.
 
 ```cs
 // Retrieve 20 messages at a time, keeping those messages invisible for 5 minutes, 
@@ -129,7 +129,7 @@ foreach (CloudQueueMessage message in messageQueue.GetMessages(20, TimeSpan.From
 
 ## <a name="get-the-queue-length"></a>Pobieranie długości kolejki
 
-Możesz uzyskać szacunkową liczbę komunikatów w kolejce. Metoda `FetchAttributes` prosi usługę kolejki o pobranie atrybutów kolejki, łącznie z liczbą komunikatów. Właściwość `ApproximateMethodCount` zwraca ostatnią wartość pobraną przez metodę `FetchAttributes` bez wywoływania usługi kolejki.
+Możesz uzyskać szacunkową liczbę komunikatów w kolejce. Metoda `FetchAttributes` prosi usługę kolejki, aby pobrać atrybuty kolejki, w tym liczbę wiadomości. Właściwość `ApproximateMethodCount` zwraca ostatnią wartość pobraną `FetchAttributes` przez metodę, bez wywoływania usługi kolejki.
 
 ```cs
 // Fetch the queue attributes.
@@ -142,9 +142,9 @@ int? cachedMessageCount = messageQueue.ApproximateMessageCount;
 Console.WriteLine("Number of messages in queue: " + cachedMessageCount);
 ```
 
-## <a name="use-the-async-await-pattern-with-common-queue-apis"></a>Używanie wzorca Async-await ze wspólnymi interfejsami API kolejki
+## <a name="use-the-async-await-pattern-with-common-queue-apis"></a>Użyj wzorca Async-Await ze wspólnymi interfejsami API kolejki
 
-Ten przykład pokazuje, jak używać wzorca Async-await ze wspólnymi interfejsami API kolejki kończącymi się `Async`. Gdy używana jest Metoda asynchroniczna, wzorce asynchroniczne-await zawieszają wykonywanie lokalne do momentu ukończenia wywołania. To zachowanie umożliwia bieżącemu wątkowi wykonywanie innych zadań, które pomagają uniknąć wąskich gardeł w zakresie wydajności i poprawiać ogólną czas odpowiedzi aplikacji.
+W tym przykładzie pokazano, jak używać wzorca asynchronii z typowymi interfejsami API kolejki kończącymi się na `Async`. Gdy używana jest metoda asynchroniowa, wzorzec asynchronii zawiesza wykonanie lokalne do momentu zakończenia wywołania. To zachowanie umożliwia bieżącego wątku do innych prac, które pomaga uniknąć wąskich gardeł wydajności i poprawia ogólną szybkość reakcji aplikacji.
 
 ```cs
 // Create a message to add to the queue.
@@ -165,7 +165,7 @@ Console.WriteLine("Deleted message");
 
 ## <a name="delete-a-queue"></a>Usuwanie kolejki
 
-Aby usunąć kolejkę i wszystkie znajdujące się w niej komunikaty, wywołaj metodę `Delete` w obiekcie queue:
+Aby usunąć kolejkę i wszystkie zawarte w `Delete` niej wiadomości, należy wywołać metodę w obiekcie kolejki:
 
 ```cs
 // Delete the queue.

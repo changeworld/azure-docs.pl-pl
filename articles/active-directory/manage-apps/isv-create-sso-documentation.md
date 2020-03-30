@@ -1,6 +1,6 @@
 ---
-title: Utwórz & publikowanie dokumentacji logowania jednokrotnego dla aplikacji
-description: Wskazówki dla niezależnych dostawców oprogramowania w ramach integracji z usługą Azure Active Directory
+title: Tworzenie & publikowanie dokumentacji logowania jednokrotnego dla aplikacji
+description: Wskazówki dotyczące integracji z usługą Azure Active Directory dla niezależnych dostawców oprogramowania
 services: active-directory
 author: barbaraselden
 manager: CelesteDG
@@ -13,51 +13,51 @@ ms.author: baselden
 ms.reviewer: jeeds
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: cb223ec8ab7b5c053136c78d3b4ca30ad4da4e18
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74232281"
 ---
 # <a name="create-and-publish-single-sign-on-documentation-for-your-application"></a>Tworzenie i publikowanie dokumentacji logowania jednokrotnego dla aplikacji   
 
-## <a name="documentation-on-your-site"></a>Dokumentacja witryny
+## <a name="documentation-on-your-site"></a>Dokumentacja na twojej stronie
 
-Łatwość wdrażania jest istotnym czynnikiem w podejmowaniu decyzji dotyczących oprogramowania w przedsiębiorstwie. Łatwa w obsłudze dokumentacja pozwala klientom na ich wdrażanie i zmniejsza koszty pomocy technicznej. Pracując z tysiącami dostawców oprogramowania, firma Microsoft widziała, co działa.
+Łatwość wdrażania jest istotnym czynnikiem w podejmowaniu decyzji dotyczących oprogramowania dla przedsiębiorstw. Przejrzysta, łatwa do naśladowania dokumentacja wspiera klientów w ich podróży adopcyjnej i zmniejsza koszty pomocy technicznej. Współpracując z tysiącami dostawców oprogramowania, Microsoft widział, co działa.
 
-Zalecamy, aby dokumentacja w witrynie zawierała co najmniej następujące elementy.
+Zaleca się, aby dokumentacja w witrynie zawierała co najmniej następujące elementy.
 
-* Wprowadzenie do funkcji logowania jednokrotnego
+* Wprowadzenie do funkcji SSO
 
   * Obsługiwane protokoły
 
   * Wersja i jednostka SKU
 
-  * Lista obsługiwanych dostawców tożsamości z linkami do dokumentacji
+  * Lista obsługiwanych dostawców tożsamości z łączami dokumentacji
 
-* Informacje o licencjonowaniu dla aplikacji
+* Informacje o licencjonowaniu aplikacji
 
-* Kontrola dostępu oparta na rolach na potrzeby konfigurowania logowania jednokrotnego
+* Kontrola dostępu oparta na rolach do konfigurowania usługi SSO
 
-* Kroki konfiguracji logowania jednokrotnego
+* Kroki konfiguracji szosyfikacyjne
 
   * Elementy konfiguracji interfejsu użytkownika dla SAML z oczekiwanymi wartościami od dostawcy
 
-  * Informacje o dostawcy usług, które mają zostać przesłane do dostawców tożsamości
+  * Informacje o dostawcy usług, które mają być przekazywane dostawcom tożsamości
 
 * Jeśli OIDC/OAuth
 
-  * Lista uprawnień wymaganych do wyrażania zgody z uzasadnieniem biznesowym
+  * Lista uprawnień wymaganych do uzyskania zgody z uzasadnieniami biznesowymi
 
-* Kroki testowania dla użytkowników pilotażowych
+* Etapy testowania dla użytkowników pilotażowych
 
 * Informacje dotyczące rozwiązywania problemów, w tym kody błędów i komunikaty
 
-* Mechanizmy obsługi dla klientów
+* Mechanizmy wsparcia dla klientów
 
 ## <a name="documentation-on-the-microsoft-site"></a>Dokumentacja w witrynie firmy Microsoft
 
-Po wyświetleniu listy aplikacji za pomocą galerii aplikacji Azure Active Directory, która również publikuje aplikację w portalu Azure Marketplace, firma Microsoft będzie generować dokumentację dla naszych klientów, którzy objaśniają proces krok po kroku. Przykład można zobaczyć [tutaj](https://aka.ms/appstutorial). Ta dokumentacja jest tworzona na podstawie przesłanej do galerii i można ją łatwo zaktualizować w przypadku wprowadzania zmian w aplikacji przy użyciu konta usługi GitHub.
+Po wyświetleniu listy aplikacji z galerią aplikacji usługi Azure Active Directory, która również publikuje aplikację w portalu Azure Marketplace, firma Microsoft wygeneruje dokumentację dla naszych wspólnych klientów wyjaśniającą proces krok po kroku. Możesz zobaczyć przykład [tutaj](https://aka.ms/appstutorial). Ta dokumentacja jest tworzona na podstawie przesłania do galerii i można ją łatwo zaktualizować, jeśli wprowadzasz zmiany w aplikacji przy użyciu konta GitHub.
 
 ## <a name="next-steps"></a>Następne kroki
 

@@ -12,10 +12,10 @@ ms.topic: overview
 ms.date: 01/15/2020
 ms.author: curtand
 ms.openlocfilehash: c95ae2e48a7d5a3b9e9e28b1d4e14b670205c043
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77062289"
 ---
 # <a name="what-is-the-microsoft-authenticator-app"></a>Czym jest aplikacja Microsoft Authenticator?
@@ -24,20 +24,20 @@ Aplikacja Microsoft Authenticator pomaga w logowaniu się do kont, jeśli używa
 
 Aplikacji Microsoft Authenticator można używać na wiele sposobów, na przykład:
 
-- Odpowiedz na monit o uwierzytelnienie po zalogowaniu się przy użyciu nazwy użytkownika i hasła.
+- Odpowiadanie na monit o uwierzytelnienie po zalogowaniu się przy użyciu nazwy użytkownika i hasła.
 
-- Zaloguj się bez wprowadzania hasła przy użyciu nazwy użytkownika, aplikacji uwierzytelniania i urządzenia przenośnego z odciskiem palca, z własnej sieci lub numeru PIN.
+- Zaloguj się bez wprowadzania hasła, używając nazwy użytkownika, aplikacji uwierzytelniającej i urządzenia mobilnego za pomocą odcisku palca, twarzy lub kodu PIN.
 
-- Jako generator kodu dla innych kont, które obsługują aplikacje uwierzytelniające.
+- Jako generator kodu dla innych kont, które obsługują aplikacje uwierzytelniającego.
 
 > [!Important]
-> Aplikacja Microsoft Authenticator współpracuje z dowolnym kontem korzystającym z weryfikacji dwuskładnikowej i obsługuje standardy hasła jednorazowego (TOTP) oparte na czasie.
+> Aplikacja Microsoft Authenticator współpracuje z dowolnym kontem, które korzysta z weryfikacji dwuskładnikowej i obsługuje oparte na czasie standardy haseł jednorazowych (TOTP).
 >
->Ten artykuł jest przeznaczony dla użytkowników próbujących pobrać i użyć aplikacji Microsoft Authenticator jako metody weryfikacji zabezpieczeń. Jeśli jesteś administratorem, który szuka informacji o sposobie włączania logowania bez hasła przy użyciu aplikacji uwierzytelniania dla pracowników i innych funkcji, zobacz [Włączanie logowania bezhasłem przy użyciu aplikacji Microsoft Authenticator (wersja zapoznawcza)](https://docs.microsoft.com/azure/active-directory/authentication/howto-authentication-passwordless-phone).
+>Ten artykuł jest przeznaczony dla użytkowników próbujących pobrać i używać aplikacji Microsoft Authenticator jako metody weryfikacji zabezpieczeń. Jeśli jesteś administratorem szukającym informacji o tym, jak włączyć logowanie bez hasła przy użyciu aplikacji Authenticator dla pracowników i innych zastosowań, zobacz [Włącz logowanie bez hasła za pomocą aplikacji Microsoft Authenticator (wersja zapoznawcza).](https://docs.microsoft.com/azure/active-directory/authentication/howto-authentication-passwordless-phone)
 
 ## <a name="terminology"></a>Terminologia
 
-| Okres|Opis|
+| Termin|Opis|
 | ----|-----------|
 | Weryfikacja dwuskładnikowa | Proces weryfikacji, który wymaga specjalnego użycia tylko dwóch rodzajów informacji o weryfikacji, takich jak hasło i numer PIN. Aplikacja Microsoft Authenticator obsługuje zarówno standardową weryfikację dwuskładnikową, jak i logowanie bez hasła. |
 | Multi-Factor Authentication (MFA) | Wszystkie weryfikacje dwuskładnikowe są odmianami uwierzytelniania wieloskładnikowego, które wymaga użycia *co najmniej* dwóch rodzajów informacji o weryfikacji, w zależności od wymagań organizacji. |

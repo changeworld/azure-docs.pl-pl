@@ -9,13 +9,13 @@ ms.topic: quickstart
 ms.date: 01/05/2019
 ms.author: lbosq
 ms.openlocfilehash: e38f3e2029bdc8dc8c13ce330e37053d491317f3
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "68736644"
 ---
-# <a name="quickstart-create-a-graph-database-in-azure-cosmos-db-using-php-and-the-azure-portal"></a>Szybki start: tworzenie grafowej bazy danych w usłudze Azure Cosmos DB przy użyciu języka PHP i witryny Azure Portal
+# <a name="quickstart-create-a-graph-database-in-azure-cosmos-db-using-php-and-the-azure-portal"></a>Szybki start: tworzenie bazy danych wykresów w usłudze Azure Cosmos DB przy użyciu php i witryny Azure portal
 
 > [!div class="op_single_selector"]
 > * [Konsola Gremlin](create-graph-gremlin-console.md)
@@ -64,7 +64,7 @@ Teraz przejdźmy do pracy z kodem. Sklonujemy aplikację interfejsu API języka 
     cd "C:\git-samples"
     ```
 
-3. Uruchom następujące polecenie w celu sklonowania przykładowego repozytorium. To polecenie tworzy kopię przykładowej aplikacji na komputerze. 
+3. Uruchom następujące polecenie w celu sklonowania przykładowego repozytorium. To polecenie tworzy kopię aplikacji przykładowej na komputerze. 
 
     ```bash
     git clone https://github.com/Azure-Samples/azure-cosmos-db-graph-php-getting-started.git
@@ -72,7 +72,7 @@ Teraz przejdźmy do pracy z kodem. Sklonujemy aplikację interfejsu API języka 
 
 ## <a name="review-the-code"></a>Przeglądanie kodu
 
-Ten krok jest opcjonalny. Jeśli chcesz dowiedzieć się, jak zasoby bazy danych są tworzone w kodzie, możesz przejrzeć poniższe fragmenty kodu. Wszystkie fragmenty kodu pochodzą z pliku connect.php w folderze C:\git-samples\azure-cosmos-db-graph-php-getting-started\. W przeciwnym razie możesz od razu przejść do sekcji [Aktualizowanie parametrów połączenia](#update-your-connection-information). 
+Ten krok jest opcjonalny. Jeśli chcesz się dowiedzieć, jak zasoby bazy danych są tworzone w kodzie, możesz przejrzeć poniższe fragmenty kodu. Wszystkie fragmenty kodu pochodzą z pliku connect.php w folderze C:\git-samples\azure-cosmos-db-graph-php-getting-started\. W przeciwnym razie możesz od razu przejść do sekcji [Aktualizacja parametrów połączenia](#update-your-connection-information). 
 
 * Obiekt `connection` bazy danych Gremlin jest inicjowany na początku pliku `connect.php` przy użyciu obiektu `$db`.
 
@@ -194,7 +194,7 @@ Teraz możesz wrócić do Eksploratora danych i zobaczyć wierzchołki dodane do
 
    ![Tworzenie nowych dokumentów w Eksploratorze danych w witrynie Azure Portal](./media/create-graph-php/azure-cosmosdb-data-explorer-expanded.png)
 
-2. Na liście **Wyniki** zwróć uwagę na nowych użytkowników dodanych do grafu. Wybierz pozycję **Ben** i zwróć uwagę, że są one podłączone do działania. Możesz przenosić wierzchołki, przeciągając je i upuszczając, zmieniać powiększenie przy użyciu kółka myszy oraz powiększać rozmiar grafu przy użyciu podwójnej strzałki. 
+2. Na liście **Wyniki** zwróć uwagę na nowych użytkowników dodanych do grafu. Wybierz **ben** i zwróć uwagę, że są one połączone z robin. Możesz przenosić wierzchołki, przeciągając je i upuszczając, zmieniać powiększenie przy użyciu kółka myszy oraz powiększać rozmiar grafu przy użyciu podwójnej strzałki. 
 
    ![Nowe wierzchołki grafu w Eksploratorze danych w witrynie Azure Portal](./media/create-graph-php/azure-cosmosdb-graph-explorer-new.png)
 
@@ -204,13 +204,13 @@ Teraz możesz wrócić do Eksploratora danych i zobaczyć wierzchołki dodane do
 
 4. Wprowadź etykietę *osoba*.
 
-5. Kliknij pozycję **Dodaj właściwość**, aby dodać poszczególne poniższe właściwości. Zauważ, że możesz utworzyć unikatowe właściwości dla każdej osoby w grafie. Wymagany jest tylko klucz **identyfikatora** .
+5. Kliknij **przycisk Dodaj właściwość,** aby dodać każdą z następujących właściwości. Zauważ, że możesz utworzyć unikatowe właściwości dla każdej osoby w grafie. Wymagany jest tylko klucz **doid.**
 
     Klucz | Wartość | Uwagi
     ----|----|----
-    **id** | ashley | Unikatowy identyfikator wierzchołka. Jeśli nie określono identyfikatora, zostanie on wygenerowany.
-    **skorygowan** | kobieta | 
-    **TechNet** | java | 
+    **Identyfikator** | ashley | Unikatowy identyfikator wierzchołka. Jeśli nie określono identyfikatora, zostanie on wygenerowany.
+    **płeć** | kobieta | 
+    **techniczne** | java | 
 
     > [!NOTE]
     > W tym przewodniku Szybki start tworzona jest kolekcja niepartycjonowana. Niemniej jednak, jeśli utworzysz kolekcję partycjonowaną poprzez określenie klucza partycji podczas tworzenia kolekcji, musisz uwzględnić klucz partycji jako klucz w każdym nowym wierzchołku. 
@@ -223,11 +223,11 @@ Teraz możesz wrócić do Eksploratora danych i zobaczyć wierzchołki dodane do
 
 9. Kliknij pozycję **Dodaj właściwość**, aby dodać poszczególne poniższe właściwości:
     
-    Klucz | Value | Uwagi
+    Klucz | Wartość | Uwagi
     ----|----|----
-    **id** | rakesh | Unikatowy identyfikator wierzchołka. Jeśli nie określono identyfikatora, zostanie on wygenerowany.
-    **skorygowan** | mężczyzna | 
-    **służbowego** | MIT | 
+    **Identyfikator** | rakesh | Unikatowy identyfikator wierzchołka. Jeśli nie określono identyfikatora, zostanie on wygenerowany.
+    **płeć** | mężczyzna | 
+    **szkoła** | MIT | 
 
 10. Kliknij przycisk **OK**. 
 

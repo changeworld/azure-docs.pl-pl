@@ -1,6 +1,6 @@
 ---
-title: Metryki w Azure Monitor — Event Hubs platformy Azure | Microsoft Docs
-description: Ten artykuł zawiera informacje dotyczące sposobu używania funkcji monitorowania platformy Azure do monitorowania usługi Azure Event Hubs
+title: Metryki w usłudze Azure Monitor — usługi Azure Event Hubs | Dokumenty firmy Microsoft
+description: Ten artykuł zawiera informacje dotyczące używania usługi Azure Monitoring do monitorowania usługi Azure Event Hubs
 services: event-hubs
 documentationcenter: .NET
 author: ShubhaVijayasarathy
@@ -16,126 +16,126 @@ ms.custom: seodec18
 ms.date: 09/18/2019
 ms.author: shvija
 ms.openlocfilehash: 96c346f4359740fda5638dfdbe5735c5bdfce8c9
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77162654"
 ---
-# <a name="azure-event-hubs-metrics-in-azure-monitor"></a>Metryki usługi Azure Event Hubs w Azure Monitor
+# <a name="azure-event-hubs-metrics-in-azure-monitor"></a>Metryki usługi Azure Event Hubs na platformie Azure Monitor
 
-Metryki Event Hubs zapewniają stan Event Hubs zasobów w ramach subskrypcji platformy Azure. Bogaty zestaw danych metryk możesz ocenić ogólną kondycję usługi event hubs, nie tylko na poziomie przestrzeni nazw, ale na poziomie jednostki. Te statystyki może być ważne, ponieważ one pomóc Ci do monitorowania stanu usługi event hubs. Metryki może również pomóc główną przyczynę problemów bez konieczności skontaktuj się z działem pomocy technicznej platformy Azure.
+Metryki usługi Event Hubs zapewniają stan zasobów usługi Event Hubs w ramach subskrypcji platformy Azure. Dzięki bogatemu zestawowi danych metryk można ocenić ogólną kondycję centrów zdarzeń nie tylko na poziomie obszaru nazw, ale także na poziomie jednostki. Te statystyki mogą być ważne, ponieważ pomagają one monitorować stan centrów zdarzeń. Metryki mogą również pomóc w rozwiązywaniu problemów z przyczynami źródłowymi bez konieczności kontaktowania się z pomocą techniczną platformy Azure.
 
-Usługa Azure Monitor zapewnia interfejsy użytkownika ujednolicone monitorowanie z przekraczaniem różne usługi platformy Azure. Aby uzyskać więcej informacji, zobacz [monitorowanie w Microsoft Azure](../monitoring-and-diagnostics/monitoring-overview.md) i [pobieranie metryk Azure monitor z przykładem platformy .NET](https://github.com/Azure-Samples/monitor-dotnet-metrics-api) w witrynie GitHub.
+Usługa Azure Monitor udostępnia ujednolicone interfejsy użytkownika do monitorowania w różnych usługach platformy Azure. Aby uzyskać więcej informacji, zobacz [monitorowanie na platformie Microsoft Azure](../monitoring-and-diagnostics/monitoring-overview.md) i pobieranie [metryki usługi Azure Monitor z .NET](https://github.com/Azure-Samples/monitor-dotnet-metrics-api) próbki w usłudze GitHub.
 
-## <a name="access-metrics"></a>Dostęp do metryk
+## <a name="access-metrics"></a>Dostęp do danych
 
-Usługa Azure Monitor zapewnia wiele sposobów, aby dostęp do metryk. Możesz uzyskać dostęp do metryk przy użyciu [Azure Portal](https://portal.azure.com)lub użyć interfejsów API Azure monitor (REST i .NET) oraz rozwiązań do analizy, takich jak Log Analytics i Event Hubs. Aby uzyskać więcej informacji, zobacz [monitorowanie danych zebranych przez Azure monitor](../azure-monitor/platform/data-platform.md).
+Usługa Azure Monitor udostępnia wiele sposobów dostępu do metryk. Można uzyskać dostęp do metryk za pośrednictwem [witryny Azure portal](https://portal.azure.com)lub użyć interfejsów API usługi Azure Monitor (REST i .NET) i rozwiązań analitycznych, takich jak usługa Log Analytics i usługi Event Hubs. Aby uzyskać więcej informacji, zobacz [Monitorowanie danych zebranych przez usługę Azure Monitor](../azure-monitor/platform/data-platform.md).
 
-Metryki są domyślnie włączone i możesz uzyskać dostęp z ostatnich 30 dni danych. Jeśli zachodzi potrzeba Zachowaj dane przez dłuższy okres czasu, można archiwizować dane metryk do konta usługi Azure Storage. Ta konfiguracja jest skonfigurowana w [ustawieniach diagnostycznych](../azure-monitor/platform/diagnostic-settings.md) w Azure monitor.
+Metryki są domyślnie włączone i można uzyskać dostęp do ostatnich 30 dni danych. Jeśli chcesz zachować dane przez dłuższy okres czasu, możesz archiwizować dane metryk na koncie usługi Azure Storage. Jest to skonfigurowane w [ustawieniach diagnostycznych](../azure-monitor/platform/diagnostic-settings.md) w usłudze Azure Monitor.
 
 
-## <a name="access-metrics-in-the-portal"></a>Dostęp do metryk w portalu
+## <a name="access-metrics-in-the-portal"></a>Dostęp do danych w portalu
 
-Można monitorować metryki w czasie w [Azure Portal](https://portal.azure.com). Jak wyświetlić żądania zakończone powodzeniem i żądania przychodzące na poziomie konta można znaleźć w poniższym przykładzie:
+Metryki można monitorować w czasie w [witrynie Azure portal](https://portal.azure.com). W poniższym przykładzie pokazano, jak wyświetlić pomyślne żądania i przychodzące żądania na poziomie konta:
 
-![Wyświetl metryki pomyślne][1]
+![Wyświetlanie pomyślnych danych][1]
 
-Można również uzyskać dostęp do metryk bezpośrednio za pośrednictwem przestrzeni nazw. Aby to zrobić, wybierz przestrzeń nazw, a następnie kliknij pozycję **metryki**. Aby wyświetlić metryki odfiltrowane do zakresu centrum zdarzeń, wybierz centrum zdarzeń, a następnie kliknij pozycję **metryki**.
+Można również uzyskać dostęp do metryk bezpośrednio za pośrednictwem obszaru nazw. Aby to zrobić, wybierz obszar nazw, a następnie kliknij **pozycję Metryki**. Aby wyświetlić metryki filtrowane do zakresu centrum zdarzeń, wybierz centrum zdarzeń, a następnie kliknij pozycję **Metryki**.
 
-Dla metryk, obsługa wymiarów możesz filtrować z żądaną wartością jak pokazano w poniższym przykładzie:
+W przypadku metryk pomocniczych wymiarów należy filtrować z żądaną wartością wymiaru, jak pokazano w poniższym przykładzie:
 
-![Filtrowanie za pomocą wartości wymiaru][2]
+![Filtr z wartością wymiaru][2]
 
 ## <a name="billing"></a>Rozliczenia
 
-Korzystanie z metryk w Azure Monitor jest obecnie bezpłatne. Jednak jeśli używasz dodatkowych rozwiązań, które pozyskiwania danych metryk, może zostać naliczona według tych rozwiązań. Na przykład opłaty są naliczane przez usługę Azure Storage archiwizowania danych metryk z kontem usługi Azure Storage. Opłaty są naliczane także przez platformę Azure, jeśli dane metryk są przesyłane strumieniowo do dzienników Azure Monitor w celu przeprowadzenia zaawansowanej analizy.
+Korzystanie z metryk w usłudze Azure Monitor jest obecnie bezpłatne. Jeśli jednak używasz dodatkowych rozwiązań, które pochłonie dane metryki, mogą być rozliczane przez te rozwiązania. Na przykład są rozliczane przez usługę Azure Storage, jeśli archiwum danych metryk do konta usługi Azure Storage. Są również rozliczane przez platformę Azure, jeśli przesyłasz strumieniowo dane metryk do dzienników usługi Azure Monitor w celu zaawansowanej analizy.
 
-Następujące metryki umożliwiają przegląd kondycji usługi. 
+Poniższe metryki zapewniają przegląd kondycji usługi. 
 
 > [!NOTE]
-> Firma Microsoft jest wycofano kilka metryk, ponieważ są one przenoszone pod inną nazwą. Może to wymagać aktualizacji odwołaniami. Oznaczona za pomocą słowa kluczowego "przestarzałe" metryk nie będą obsługiwane przyszłości.
+> Jesteśmy przestarzałe kilka metryk, ponieważ są one przenoszone pod inną nazwą. Może to wymagać aktualizacji odwołań. Dane oznaczone słowem kluczowym "przestarzałe" nie będą obsługiwane w przyszłości.
 
-Wszystkie wartości metryk są wysyłane do usługi Azure Monitor na minutę. Stopień szczegółowości czasu określa interwał czasu, dla której są prezentowane wartości metryk. Interwał czasu obsługiwane wszystkie metryki usługi Event Hubs to 1 minuta.
+Wszystkie wartości metryk są wysyłane do usługi Azure Monitor co minutę. Ziarnistość czasu definiuje przedział czasu, dla którego są prezentowane wartości metryk. Obsługiwany interwał czasu dla wszystkich metryk usługi Event Hubs wynosi 1 minutę.
 
-## <a name="request-metrics"></a>Metryki żądania
+## <a name="request-metrics"></a>Żądania metryki
 
-Zlicza żądania operacji danych i zarządzania.
-
-| Nazwa metryki | Opis |
-| ------------------- | ----------------- |
-| Żądania przychodzące  | Liczba żądań kierowanych do usługi Azure Event Hubs w określonym czasie. <br/><br/> Jednostka: liczba <br/> Typ agregacji: łączna liczba <br/> Dimension: EntityName |
-| Żądania zakończone powodzeniem    | Liczba żądań zakończonych powodzeniem kierowanych do usługi Azure Event Hubs w określonym czasie. <br/><br/> Jednostka: liczba <br/> Typ agregacji: łączna liczba <br/> Dimension: EntityName |
-| Błędy serwera  | Liczba żądań, które nie zostały przetworzone z powodu błędu w usłudze Azure Event Hubs w określonym czasie. <br/><br/>Jednostka: liczba <br/> Typ agregacji: łączna liczba <br/> Dimension: EntityName |
-|Błędy użytkownika |Liczba żądań, które nie zostały przetworzone z powodu błędów użytkowników w określonym czasie.<br/><br/> Jednostka: liczba <br/> Typ agregacji: łączna liczba <br/> Dimension: EntityName|
-|Błędy przekroczenia limitu przydziału |Liczba żądań przekroczyła dostępny limit przydziału. Aby uzyskać więcej informacji na temat przydziałów Event Hubs, zobacz [ten artykuł](event-hubs-quotas.md) .<br/><br/> Jednostka: liczba <br/> Typ agregacji: łączna liczba <br/> Dimension: EntityName|
-
-## <a name="throughput-metrics"></a>Dane pomiarowe przepływności
+Zlicza liczbę żądań operacji danych i zarządzania.
 
 | Nazwa metryki | Opis |
 | ------------------- | ----------------- |
-|Ograniczone żądania |Liczba żądań, które zostały ograniczone, ponieważ przekroczono użycie jednostek przepływności.<br/><br/> Jednostka: liczba <br/> Typ agregacji: łączna liczba <br/> Dimension: EntityName|
+| Żądania przychodzące  | Liczba żądań do usługi Azure Event Hubs w określonym okresie. <br/><br/> Jednostka: Liczba <br/> Typ agregacji: Suma <br/> Wymiar: Nazwa elementu |
+| Pomyślne żądania    | Liczba pomyślnych żądań złożonych do usługi Usługi Azure Event Hubs w określonym okresie. <br/><br/> Jednostka: Liczba <br/> Typ agregacji: Suma <br/> Wymiar: Nazwa elementu |
+| Błędy serwera  | Liczba żądań nie są przetwarzane z powodu błędu w usłudze Usługi Azure Event Hubs w określonym okresie. <br/><br/>Jednostka: Liczba <br/> Typ agregacji: Suma <br/> Wymiar: Nazwa elementu |
+|Błędy użytkownika |Liczba żądań nie przetworzonych z powodu błędów użytkownika w określonym czasie.<br/><br/> Jednostka: Liczba <br/> Typ agregacji: Suma <br/> Wymiar: Nazwa elementu|
+|Przekroczone błędy przydziału |Liczba żądań przekroczyła dostępny przydział. Zobacz [ten artykuł,](event-hubs-quotas.md) aby uzyskać więcej informacji na temat przydziałów usługi Event Hubs.<br/><br/> Jednostka: Liczba <br/> Typ agregacji: Suma <br/> Wymiar: Nazwa elementu|
+
+## <a name="throughput-metrics"></a>Metryki przepływności
+
+| Nazwa metryki | Opis |
+| ------------------- | ----------------- |
+|Ograniczone żądania |liczba żądań, które zostały ograniczone, ponieważ przekroczono użycie jednostek przepływności.<br/><br/> Jednostka: Liczba <br/> Typ agregacji: Suma <br/> Wymiar: Nazwa elementu|
 
 ## <a name="message-metrics"></a>Metryki wiadomości
 
 | Nazwa metryki | Opis |
 | ------------------- | ----------------- |
-|Komunikaty przychodzące |Liczba zdarzeń lub komunikaty wysyłane do usługi Event Hubs w określonym czasie.<br/><br/> Jednostka: liczba <br/> Typ agregacji: łączna liczba <br/> Dimension: EntityName|
-|Komunikaty wychodzące |Liczba zdarzeń lub komunikatów są pobierane z usługi Event Hubs w określonym czasie.<br/><br/> Jednostka: liczba <br/> Typ agregacji: łączna liczba <br/> Dimension: EntityName|
-|Przychodzące bajty |Liczba bajtów wysłanych do usługi Azure Event Hubs w określonym czasie.<br/><br/> Jednostka: bajty <br/> Typ agregacji: łączna liczba <br/> Dimension: EntityName|
-|Bajty wychodzące |Liczba bajtów jest pobierane z usługi Azure Event Hubs w określonym czasie.<br/><br/> Jednostka: bajty <br/> Typ agregacji: łączna liczba <br/> Dimension: EntityName|
+|Wiadomości przychodzące |Liczba zdarzeń lub wiadomości wysłanych do centrów zdarzeń w określonym okresie.<br/><br/> Jednostka: Liczba <br/> Typ agregacji: Suma <br/> Wymiar: Nazwa elementu|
+|Wiadomości wychodzące |Liczba zdarzeń lub wiadomości pobranych z centrów zdarzeń w określonym okresie.<br/><br/> Jednostka: Liczba <br/> Typ agregacji: Suma <br/> Wymiar: Nazwa elementu|
+|Bajty przychodzące |Liczba bajtów wysłanych do usługi Usługi Azure Event Hubs w określonym okresie.<br/><br/> Jednostka: Bajty <br/> Typ agregacji: Suma <br/> Wymiar: Nazwa elementu|
+|Bajty wychodzące |Liczba bajtów pobranych z usługi Azure Event Hubs w określonym okresie.<br/><br/> Jednostka: Bajty <br/> Typ agregacji: Suma <br/> Wymiar: Nazwa elementu|
 
 ## <a name="connection-metrics"></a>Metryki połączeń
 
 | Nazwa metryki | Opis |
 | ------------------- | ----------------- |
-|Połączeń ActiveConnections |Liczba aktywnych połączeń w przestrzeni nazw, a także w jednostce.<br/><br/> Jednostka: liczba <br/> Typ agregacji: łączna liczba <br/> Dimension: EntityName|
-|Otwarte połączenia |Liczba otwartych połączeń.<br/><br/> Jednostka: liczba <br/> Typ agregacji: łączna liczba <br/> Dimension: EntityName|
-|Połączenia zamknięte |Liczba zamkniętych połączeń.<br/><br/> Jednostka: liczba <br/> Typ agregacji: łączna liczba <br/> Dimension: EntityName|
+|ActiveConnections (Aktywne połączenia) |Liczba aktywnych połączeń w obszarze nazw, a także w jednostce.<br/><br/> Jednostka: Liczba <br/> Typ agregacji: Suma <br/> Wymiar: Nazwa elementu|
+|Połączenia otwarte |Liczba otwartych połączeń.<br/><br/> Jednostka: Liczba <br/> Typ agregacji: Suma <br/> Wymiar: Nazwa elementu|
+|Połączenia zamknięte |Liczba zamkniętych połączeń.<br/><br/> Jednostka: Liczba <br/> Typ agregacji: Suma <br/> Wymiar: Nazwa elementu|
 
-## <a name="event-hubs-capture-metrics"></a>Event Hubs Capture metryki
+## <a name="event-hubs-capture-metrics"></a>Metryki przechwytywania centrów zdarzeń
 
-Możesz monitorować metryki usługi Event Hubs Capture, gdy można włączyć funkcję przechwytywania usługi event hubs. Następujące metryki opisują, jakie można monitorować za pomocą włączono funkcję przechwytywania.
+Metryki przechwytywania centrów zdarzeń można monitorować po włączeniu funkcji Przechwytywanie dla centrów zdarzeń. Poniżej opisano, co można monitorować z włączoną funkcją przechwytywania.
 
 | Nazwa metryki | Opis |
 | ------------------- | ----------------- |
-|Zaległości przechwytywania |Liczba bajtów, które mają dopiero zostać przechwycone do wybranego miejsca docelowego.<br/><br/> Jednostka: bajty <br/> Typ agregacji: łączna liczba <br/> Dimension: EntityName|
-|Przechwycone komunikaty |Liczba komunikatów lub zdarzeń, które są przechwytywane do wybranego miejsca docelowego w określonym czasie.<br/><br/> Jednostka: liczba <br/> Typ agregacji: łączna liczba <br/> Dimension: EntityName|
-|Przechwycone bajty |Liczba bajtów, które są przechwytywane do wybranego miejsca docelowego w określonym czasie.<br/><br/> Jednostka: bajty <br/> Typ agregacji: łączna liczba <br/> Dimension: EntityName|
+|Przechwytywanie zaległości |Liczba bajtów, które nie zostały jeszcze przechwycone do wybranego miejsca docelowego.<br/><br/> Jednostka: Bajty <br/> Typ agregacji: Suma <br/> Wymiar: Nazwa elementu|
+|Przechwycone wiadomości |Liczba wiadomości lub zdarzeń, które są przechwytywane do wybranego miejsca docelowego w określonym czasie.<br/><br/> Jednostka: Liczba <br/> Typ agregacji: Suma <br/> Wymiar: Nazwa elementu|
+|Przechwycone bajty |Liczba bajtów przechwyconych do wybranego miejsca docelowego w określonym czasie.<br/><br/> Jednostka: Bajty <br/> Typ agregacji: Suma <br/> Wymiar: Nazwa elementu|
 
 ## <a name="metrics-dimensions"></a>Wymiary metryki
 
-Usługa Azure Event Hubs obsługuje następujące wymiary metryk w usłudze Azure Monitor. Dodawanie wymiarów do metryk jest opcjonalne. Jeśli nie dodasz wymiarów, metryki są określone na poziomie przestrzeni nazw. 
+Usługa Azure Event Hubs obsługuje następujące wymiary metryk w usłudze Azure Monitor. Dodawanie wymiarów do danych jest opcjonalne. Jeśli wymiary nie zostaną dodane, metryki są określane na poziomie obszaru nazw. 
 
 | Nazwa metryki | Opis |
 | ------------------- | ----------------- |
-|EntityName| Usługa Event Hubs obsługuje jednostek Centrum zdarzeń w przestrzeni nazw.|
+|Nazwa elementu| Usługa Event Hubs obsługuje encje centrum zdarzeń w obszarze nazw.|
 
-## <a name="azure-monitor-integration-with-siem-tools"></a>Integracja Azure Monitor z narzędziami SIEM
-Kierowanie danych monitorowania (dzienników aktywności, dzienników diagnostycznych itp.) do centrum zdarzeń z Azure Monitor pozwala łatwo zintegrować z narzędziami do zarządzania informacjami i zdarzeniami zabezpieczeń (SIEM). Aby uzyskać więcej informacji, zobacz następujące artykuły/wpisy w blogu:
+## <a name="azure-monitor-integration-with-siem-tools"></a>Integracja usługi Azure Monitor z narzędziami SIEM
+Routing danych monitorowania (dzienniki aktywności, dzienniki diagnostyki itp.) do centrum zdarzeń za pomocą usługi Azure Monitor umożliwia łatwą integrację z narzędziami SIEM (Security Information and Event Management). Aby uzyskać więcej informacji, zobacz następujące artykuły/wpisy w blogu:
 
-- [Przesyłanie strumieniowe danych monitorowania platformy Azure do centrum zdarzeń w celu użycia przez narzędzie zewnętrzne](../azure-monitor/platform/stream-monitoring-data-event-hubs.md)
-- [Wprowadzenie do Azure Log Integration](../security/fundamentals/azure-log-integration-overview.md)
+- [Przesyłanie strumieniowe danych monitorowania platformy Azure do centrum zdarzeń w celu użycia za pomocą narzędzia zewnętrznego](../azure-monitor/platform/stream-monitoring-data-event-hubs.md)
+- [Wprowadzenie do integracji dzienników platformy Azure](../security/fundamentals/azure-log-integration-overview.md)
 - [Integrowanie platformy Azure Monitor z narzędziami SIEM](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/)
 
-W scenariuszu, w którym narzędzie SIEM korzysta z danych dziennika z centrum zdarzeń, jeśli nie są wyświetlane żadne komunikaty przychodzące lub komunikaty przychodzące nie są wyświetlane na wykresie metryk, wykonaj następujące kroki:
+W scenariuszu, w którym narzędzie SIEM zużywa dane dziennika z centrum zdarzeń, jeśli nie widzisz żadnych wiadomości przychodzących lub widzisz wiadomości przychodzące, ale nie ma wiadomości wychodzących na wykresie metryk, wykonaj następujące kroki:
 
-- Jeśli nie ma **komunikatów przychodzących**, oznacza to, że usługa Azure monitor nie przenosi dzienników inspekcji/diagnostyki do centrum zdarzeń. W tym scenariuszu Otwórz bilet pomocy technicznej z zespołem Azure Monitor. 
-- Jeśli istnieją komunikaty przychodzące, ale **nie wychodzące wiadomości**, oznacza to, że aplikacja Siem nie odczytuje komunikatów. Skontaktuj się z dostawcą SIEM, aby określić, czy konfiguracja centrum zdarzeń jest poprawna.
+- Jeśli **nie ma żadnych wiadomości przychodzących,** oznacza to, że usługa Azure Monitor nie przenosi dzienników inspekcji/diagnostyki do centrum zdarzeń. Otwórz bilet pomocy technicznej z zespołem usługi Azure Monitor w tym scenariuszu. 
+- jeśli są przychodzące wiadomości, ale **nie wychodzących wiadomości,** oznacza to, że aplikacja SIEM nie odczytuje wiadomości. Skontaktuj się z dostawcą SIEM, aby ustalić, czy konfiguracja centrum zdarzeń tych aplikacji jest poprawna.
 
 
 ## <a name="next-steps"></a>Następne kroki
 
-* Zobacz [Omówienie monitorowania platformy Azure](../monitoring-and-diagnostics/monitoring-overview.md).
-* [Pobierz metryki Azure monitor z przykładem platformy .NET](https://github.com/Azure-Samples/monitor-dotnet-metrics-api) w witrynie GitHub. 
+* Zobacz [omówienie monitorowania platformy Azure](../monitoring-and-diagnostics/monitoring-overview.md).
+* [Pobieranie metryk usługi Azure Monitor z](https://github.com/Azure-Samples/monitor-dotnet-metrics-api) próbki .NET w usłudze GitHub. 
 
 Aby uzyskać więcej informacji na temat usługi Event Hubs, skorzystaj z następujących linków:
 
-- Wprowadzenie do samouczka Event Hubs
+- Wprowadzenie do samouczka centrum zdarzeń
     - [.NET Core](get-started-dotnet-standard-send-v2.md)
     - [Java](get-started-java-send-v2.md)
     - [Python](get-started-python-send-v2.md)
-    - [JavaScript](get-started-java-send-v2.md)
+    - [Javascript](get-started-java-send-v2.md)
 * [Event Hubs — często zadawane pytania](event-hubs-faq.md)
 * [Przykładowe aplikacje korzystające z usługi Event Hubs](https://github.com/Azure/azure-event-hubs/tree/master/samples)
 

@@ -1,6 +1,6 @@
 ---
 title: Co to jest bezpieczny koncentrator wirtualny?
-description: Informacje o bezpiecznych centrach wirtualnych
+description: Informacje o bezpiecznych koncentratorach wirtualnych
 author: vhorne
 ms.service: firewall-manager
 services: firewall-manager
@@ -8,28 +8,28 @@ ms.topic: conceptual
 ms.date: 10/09/2019
 ms.author: victorh
 ms.openlocfilehash: d93c3b47c518962bf45762b846eaf53e490ae8f8
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73518439"
 ---
 # <a name="what-is-a-secured-virtual-hub"></a>Co to jest bezpieczny koncentrator wirtualny?
 
 [!INCLUDE [Preview](../../includes/firewall-manager-preview-notice.md)]
 
-Koncentrator wirtualny to zarządzana przez firmę Microsoft Sieć wirtualna, która umożliwia łączność z innych zasobów. Gdy koncentrator wirtualny jest tworzony na podstawie wirtualnej sieci WAN w Azure Portal, jako jej składniki są tworzone wirtualne i bramy koncentratora wirtualnego (opcjonalnie).
+Centrum wirtualne to zarządzana przez firmę Microsoft sieć wirtualna, która umożliwia łączność z innymi zasobami. Gdy centrum wirtualne jest tworzony z wirtualnej sieci WAN w witrynie Azure portal, wirtualna sieć wirtualna centrum i bramy (opcjonalnie) są tworzone jako jego składniki.
 
-*Bezpiecznym* koncentratorem wirtualnym jest [Wirtualne Centrum sieci WAN platformy Azure](../virtual-wan/virtual-wan-about.md#resources) ze skojarzonymi zasadami zabezpieczeń i routingu skonfigurowanymi przez Menedżera zapory platformy Azure. Bezpieczne centra wirtualne umożliwiają łatwe tworzenie architektur gwiazdy i satelitów z natywnymi usługami zabezpieczeń dla zarządzania ruchem i ochrony. 
+*Zabezpieczone* centrum wirtualne to [centrum wirtualnej sieci WAN platformy Azure](../virtual-wan/virtual-wan-about.md#resources) z skojarzonymi zasadami zabezpieczeń i routingu skonfigurowanym przez usługę Azure Firewall Manager. Bezpieczne koncentratory wirtualne umożliwia łatwe tworzenie architektur typu hub-and-spoke i przechodnie z natywnymi usługami zabezpieczeń dla zarządzania ruchem i ochrony. 
 
-Możesz użyć bezpiecznego koncentratora wirtualnego jako zarządzanej centralnej sieci wirtualnej bez łączności Premium. Zastępuje ona centralną sieć wirtualną, która była wcześniej wymagana do wdrożenia zapory platformy Azure. Ponieważ zabezpieczone centrum wirtualne zapewnia automatyczne Routing, nie ma potrzeby konfigurowania własnych UDR (tras zdefiniowanych przez użytkownika) w celu kierowania ruchu przez zaporę.
+Zabezpieczonego koncentratora wirtualnego można użyć jako zarządzanej centralnej sieci wirtualnej bez łączności on-prem. Zastępuje centralną witrynę wirtualną, która była wcześniej wymagana dla wdrożenia zapory platformy Azure. Ponieważ zabezpieczony koncentrator wirtualny zapewnia automatyczne routing, nie ma potrzeby konfigurowania własnych UDR (tras zdefiniowanych przez użytkownika) do kierowania ruchu przez zaporę.
 
-Istnieje również możliwość użycia zabezpieczonych koncentratorów wirtualnych w ramach pełnej architektury wirtualnej sieci WAN. Ta architektura zapewnia bezpieczną, zoptymalizowaną i zautomatyzowaną łączność z gałęzią z usługą i za pośrednictwem platformy Azure. Można wybrać usługi do ochrony i zarządzania ruchem sieciowym, w tym zaporą platformy Azure i dostawcami innych firm jako usługi (SECaaS).
+Istnieje również możliwość korzystania z zabezpieczonych koncentratorów wirtualnych w ramach pełnej architektury wirtualnej sieci WAN. Ta architektura zapewnia bezpieczną, zoptymalizowaną i zautomatyzowaną łączność z gałęzią do platformy Azure i za pośrednictwem platformy Azure. Można wybrać usługi do ochrony i zarządzania ruchem sieciowym, w tym Zapory Azure i innych zabezpieczeń innych firm jako usługi (SECaaS) dostawców.
 
-## <a name="create-a-secured-virtual-hub"></a>Tworzenie bezpiecznego centrum wirtualnego
+## <a name="create-a-secured-virtual-hub"></a>Tworzenie zabezpieczonego koncentratora wirtualnego
 
-Korzystając z Menedżera zapory w Azure Portal, można utworzyć nowe bezpieczne lub przekonwertować istniejące centrum wirtualne utworzone wcześniej przy użyciu wirtualnej sieci WAN platformy Azure.
+Korzystając z Menedżera zapór w witrynie Azure portal, można utworzyć nowe zabezpieczone centrum wirtualne lub przekonwertować istniejące centrum wirtualne, które zostały wcześniej utworzone przy użyciu wirtualnej sieci WAN platformy Azure.
 
 ## <a name="next-steps"></a>Następne kroki
 
-Aby utworzyć zabezpieczone centrum wirtualne i użyć go do zabezpieczenia i zarządzania siecią gwiazdy i satelity, zobacz [Samouczek: Zabezpieczanie sieci w chmurze za pomocą Menedżera zapory platformy Azure przy użyciu Azure Portal](secure-cloud-network.md).
+Aby utworzyć zabezpieczone centrum wirtualne i używać go do zabezpieczania i zarządzania siecią koncentratora i szprychy, zobacz [Samouczek: Zabezpiecz sieć w chmurze za pomocą usługi Azure Firewall Manager przy użyciu witryny Azure portal](secure-cloud-network.md).

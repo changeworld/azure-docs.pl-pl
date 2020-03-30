@@ -1,6 +1,6 @@
 ---
-title: Usuń chmurę prywatną rozwiązań Azure VMware (Automatyczna synchronizacja)
-description: Opisuje, jak usunąć chmurę prywatną do automatycznej synchronizacji.
+title: Usuwanie rozwiązania VMware platformy Azure przez chmurę prywatną CloudSimple
+description: W tym artykule opisano sposób usuwania cloudSimple private cloud.
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/06/2019
@@ -8,54 +8,54 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 77cbfb19c3861bac517142f7491e6b1a5fb4ca27
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 6bc3e7030c500ea2d6072a1cce0f0b3d9fc62801
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77024759"
 ---
-# <a name="delete-an-avs-private-cloud"></a>Usuń chmurę prywatną do automatycznej synchronizacji
+# <a name="delete-a-cloudsimple-private-cloud"></a>Usuwanie chmury prywatnej CloudSimple
 
-Funkcja automatycznej synchronizacji zapewnia elastyczność usuwania chmury prywatnej automatycznej synchronizacji. Chmura prywatna do automatycznej synchronizacji składa się z co najmniej jednego klastra vSphere. Każdy klaster może zawierać od 3 do 16 węzłów. Po usunięciu chmury prywatnej automatycznej synchronizacji wszystkie klastry zostaną usunięte.
+CloudSimple zapewnia elastyczność, aby usunąć private cloud.  Chmura prywatna składa się z jednego lub więcej klastrów vSphere. Każdy klaster może mieć od 3 do 16 węzłów. Po usunięciu chmury prywatnej wszystkie klastry zostaną usunięte.
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
-Usunięcie chmury prywatnej automatycznej synchronizacji spowoduje usunięcie całej chmury prywatnej automatycznej synchronizacji. Wszystkie składniki chmury prywatnej automatycznej synchronizacji zostaną usunięte. Aby zachować jakiekolwiek dane, należy wykonać kopię zapasową danych w magazynie lokalnym lub w usłudze Azure Storage.
+Usunięcie chmury prywatnej powoduje usunięcie całej chmury prywatnej.  Wszystkie składniki chmury prywatnej zostaną usunięte.  Jeśli chcesz zachować dane, upewnij się, że masz kopię zapasową danych do magazynu lokalnego lub magazynu platformy Azure.
 
-Składniki chmury prywatnej do automatycznej synchronizacji obejmują:
+Składniki chmury prywatnej obejmują:
 
-* Automatyczna synchronizacja węzłów
+* Węzły CloudSimple
 * Maszyny wirtualne
 * Sieci VLAN/podsieci
-* Wszystkie dane użytkownika przechowywane w chmurze prywatnej automatycznej synchronizacji
-* Wszystkie załączniki reguły zapory do sieci VLAN/podsieci
+* Wszystkie dane użytkownika przechowywane w chmurze prywatnej
+* Wszystkie załączniki reguł zapory do sieci VLAN/Podsieci
 
-## <a name="sign-in-to-azure"></a>Zaloguj się w usłudze Azure
+## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
 
-Zaloguj się do witryny Azure Portal pod adresem [https://portal.azure.com](https://portal.azure.com).
+Zaloguj się do witryny Azure portal w [https://portal.azure.com](https://portal.azure.com).
 
-## <a name="delete-an-avs-private-cloud"></a>Usuń chmurę prywatną do automatycznej synchronizacji
+## <a name="delete-a-private-cloud"></a>Usuwanie chmury prywatnej
 
-1. [Uzyskaj dostęp do portalu automatycznej synchronizacji](access-cloudsimple-portal.md).
+1. [Uzyskaj dostęp do portalu CloudSimple](access-cloudsimple-portal.md).
 
-2. Otwórz stronę **zasoby** .
+2. Otwórz stronę **Zasoby.**
 
-3. Kliknij chmurę prywatną automatycznej synchronizacji, którą chcesz usunąć
+3. Kliknij chmurę prywatną, którą chcesz usunąć
 
-4. Na stronie Podsumowanie kliknij przycisk **Usuń**.
+4. Na stronie podsumowania kliknij pozycję **Usuń**.
 
-    ![Usuń swoją chmurę prywatną](media/delete-private-cloud.png)
+    ![Usuwanie chmury prywatnej](media/delete-private-cloud.png)
 
-5. Na stronie Potwierdzenie wprowadź nazwę chmury prywatnej automatycznej synchronizacji, a następnie kliknij przycisk **Usuń**. 
+5. Na stronie potwierdzenia wprowadź nazwę chmury prywatnej i kliknij przycisk **Usuń**. 
 
-    ![Usuń swoją chmurę prywatną do automatycznej synchronizacji — Potwierdź](media/delete-private-cloud-confirm.png)
+    ![Usuwanie chmury prywatnej - potwierdź](media/delete-private-cloud-confirm.png)
 
-Chmura prywatna w wersji zaautomatycznej jest oznaczona do usunięcia. Proces usuwania rozpocznie się po trzech godzinach i usuwa chmurę prywatną automatycznej synchronizacji.
+Chmura prywatna jest oznaczona do usunięcia.  Proces usuwania rozpoczyna się po trzech godzinach i usuwa private cloud.
 
 > [!CAUTION]
-> Węzły należy usunąć po usunięciu chmury prywatnej automatycznej synchronizacji. Pomiary węzłów będą kontynuowane, dopóki węzły nie zostaną usunięte z subskrypcji.
+> Węzły muszą zostać usunięte po usunięciu chmury prywatnej.  Pomiar węzłów będzie kontynuowany do węzłów są usuwane z subskrypcji.
 
 ## <a name="next-steps"></a>Następne kroki
 
-* [Usuń węzły](delete-nodes.md)
+* [Usuwanie węzłów](delete-nodes.md)

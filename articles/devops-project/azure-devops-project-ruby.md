@@ -1,5 +1,5 @@
 ---
-title: 'Szybki start: Tworzenie potoku ciągłej integracji/ciągłego wdrażania dla środowiska Ruby on Rails za pomocą usługi Azure DevOps Projects'
+title: 'Szybki start: tworzenie potoku ciągłej integracji/ciągłego wdrażania dla środowiska Ruby on Rails za pomocą usługi Azure DevOps Projects'
 description: Usługa Azure DevOps Projects ułatwia rozpoczęcie pracy na platformie Azure. Możesz uruchomić aplikację internetową języka Ruby w usłudze platformy Azure w kilku prostych krokach.
 ms.prod: devops
 ms.technology: devops-cicd
@@ -17,10 +17,10 @@ ms.author: mlearned
 ms.custom: mvc
 monikerRange: vsts
 ms.openlocfilehash: 5cb47cdd76d1de284c4dc6dbdfbfedd0095653ab
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "70899566"
 ---
 # <a name="create-a-cicd-pipeline-for-ruby-on-rails-by-using-azure-devops-projects"></a>Tworzenie potoku ciągłej integracji/ciągłego wdrażania dla środowiska Ruby on Rails za pomocą usługi Azure DevOps Projects
@@ -33,7 +33,7 @@ Jeśli nie masz subskrypcji platformy Azure, możesz uzyskać ją bezpłatnie za
 
 Usługa Azure DevOps Projects tworzy potok ciągłej integracji/ciągłego wdrażania w usłudze Azure Repos. Możesz utworzyć nową organizację usługi Azure DevOps lub użyć istniejącej organizacji. Usługa DevOps Projects tworzy również zasoby platformy Azure w wybranej subskrypcji platformy Azure.
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
+1. Zaloguj się do [Portalu Azure](https://portal.azure.com).
 
 1. W okienku po lewej stronie wybierz pozycję **Utwórz zasób**.
 
@@ -137,7 +137,7 @@ Usługa DevOps Projects automatycznie konfiguruje pełny potok ciągłej integra
 1. Wybierz pozycję **Zatwierdzenia**.  
     Ten widok przedstawia zatwierdzenia kodu skojarzone z danym wdrożeniem. 
 
-1. Wybierz pozycję **Dzienniki**.  
+1. Wybierz **dzienniki**.  
     Dzienniki zawierają przydatne informacje na temat procesu wdrażania. Możesz je wyświetlać zarówno podczas wdrażania, jak i po jego zakończeniu.
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów

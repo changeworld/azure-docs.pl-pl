@@ -1,6 +1,6 @@
 ---
-title: Filtrowanie zaawansowane — Azure Event Grid IoT Edge | Microsoft Docs
-description: Zaawansowane filtrowanie w Event Grid na IoT Edge.
+title: Zaawansowane filtrowanie — usługa Azure Event Grid IoT Edge | Dokumenty firmy Microsoft
+description: Zaawansowane filtrowanie w siatce zdarzeń w umyw ioT edge.
 author: HiteshMadan
 manager: rajarv
 ms.author: himad
@@ -10,18 +10,18 @@ ms.topic: article
 ms.service: event-grid
 services: event-grid
 ms.openlocfilehash: d7fdc5074f3c92eea4f236a9b1f7c823b930f391
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/28/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72992563"
 ---
 # <a name="advanced-filtering"></a>Filtrowanie zaawansowane
-Event Grid umożliwia określanie filtrów dla każdej właściwości w ładunku JSON. Te filtry są modelowane jako zestaw warunków `AND`, z każdym warunkiem zewnętrznym, które mają opcjonalne warunki wewnętrzne `OR`. Dla każdego warunku `AND` należy określić następujące wartości:
+Usługa Event Grid umożliwia określenie filtrów na dowolnej właściwości w ładunku json. Filtry te są modelowane `AND` jako zestaw warunków, przy `OR` czym każdy warunek zewnętrzny ma opcjonalne warunki wewnętrzne. Dla `AND` każdego warunku należy określić następujące wartości:
 
-* `OperatorType` — typ porównania.
-* `Key` — ścieżka JSON do właściwości, dla której ma zostać zastosowany filtr.
-* `Value` — wartość odniesienia, względem której jest uruchamiany filtr (lub) `Values` — zestaw wartości referencyjnych, względem których jest uruchamiany filtr.
+* `OperatorType`- Rodzaj porównania.
+* `Key`- Ścieżka json do właściwości, na której należy zastosować filtr.
+* `Value`- Wartość referencyjna, względem której filtr `Values` jest uruchamiany (lub) — zestaw wartości referencyjnych, względem których filtr jest uruchamiany.
 
 ## <a name="json-syntax"></a>Składnia JSON
 
@@ -46,55 +46,55 @@ Składnia JSON dla filtru zaawansowanego jest następująca:
 
 ## <a name="filtering-on-array-values"></a>Filtrowanie wartości tablicy
 
-Event Grid nie obsługuje filtrowania na tablicy wartości dzisiaj. Jeśli zdarzenie przychodzące ma wartość tablicową dla klucza filtru zaawansowanego, Operacja dopasowania nie powiedzie się. Zdarzenie przychodzące nie jest zgodne z subskrypcją zdarzeń.
+Usługa Event Grid nie obsługuje obecnie filtrowania tablicy wartości. Jeśli zdarzenie przychodzące ma wartość tablicy dla klucza filtru zaawansowanego, pasująca operacja kończy się niepowodzeniem. Zdarzenie przychodzące kończy się nie pasujące do subskrypcji zdarzenia.
 
-## <a name="and-or-not-semantics"></a>I-lub-nie-semantyka
+## <a name="and-or-not-semantics"></a>Semantyka I-OR-NOT
 
-Zwróć uwagę, że w przykładowym kodzie JSON podanym wcześniej `AdvancedFilters` jest tablicą. Każdy `AdvancedFilter` element tablicy należy traktować jako warunek `AND`.
+Należy zauważyć, że w przykładzie json podane wcześniej, `AdvancedFilters` jest tablicą. Każdy element `AdvancedFilter` tablicy `AND` jako warunek.
 
-Dla operatorów, które obsługują wiele wartości (takich jak `NumberIn`, `NumberNotIn`, `StringIn`itd.), każda wartość jest traktowana jako warunek `OR`. Dlatego `StringBeginsWith("a", "b", "c")` będzie pasować do dowolnej wartości ciągu, która rozpoczyna się od `a` lub `b` lub `c`.
+Dla operatorów obsługujących wiele `NumberIn` `NumberNotIn`wartości `StringIn`(takich jak , , itp.), każda wartość jest traktowana `OR` jako warunek. Tak, `StringBeginsWith("a", "b", "c")` a będzie pasować do dowolnej `a` wartości `b` `c`ciągu, który zaczyna się albo lub lub .
 
 > [!CAUTION]
-> Operatory NOT-`NumberNotIn` i `StringNotIn` zachowują się jak i warunki dla każdej wartości podaną w `Values` polu.
+> Operatory NOT `NumberNotIn` `StringNotIn` - i zachowują się jako `Values` warunki i dla każdej wartości podanej w polu.
 >
-> Nie spowoduje to, że filtr akceptuje wszystkie filtry i obniża przeznaczenie filtrowania.
+> Nie spowoduje to, że filtr accept-all filtr i pokonać cel filtrowania.
 
-## <a name="floating-point-rounding-behavior"></a>Zachowanie zaokrąglania liczb zmiennoprzecinkowych
+## <a name="floating-point-rounding-behavior"></a>Zachowanie zaokrąglania zmiennoprzecinkowego
 
-Event Grid używa typu .NET `decimal` do obsługi wszystkich wartości liczbowych. Wartości liczbowe określone w pliku JSON subskrypcji zdarzeń nie podlegają działaniu zaokrąglenia liczb zmiennoprzecinkowych.
+Usługa Event Grid `decimal` używa typu .NET do obsługi wszystkich wartości liczbowych. Wartości liczbowe określone w subskrypcji zdarzenia JSON nie podlegają zachowanie zaokrąglania zmiennoprzecinkowego.
 
-## <a name="case-sensitivity-of-string-filters"></a>Rozróżnianie wielkości liter w filtrach ciągów
+## <a name="case-sensitivity-of-string-filters"></a>Wielkość liter filtrów ciągów
 
-Wszystkie porównania ciągów nie uwzględniają wielkości liter. Nie ma możliwości zmiany tego zachowania już dziś.
+Wszystkie porównania ciągów są niewrażliwe na wielkości liter. Nie ma sposobu, aby zmienić to zachowanie dzisiaj.
 
-## <a name="allowed-advanced-filter-keys"></a>Dozwolone zaawansowane klucze filtru
+## <a name="allowed-advanced-filter-keys"></a>Dozwolone zaawansowane klucze filtrów
 
-Właściwość `Key` może być dobrze znaną właściwości najwyższego poziomu lub być ścieżką JSON z wieloma kropkami, gdzie każda kropka oznacza przechodzenie do zagnieżdżonego obiektu JSON.
+Właściwość `Key` może być dobrze znaną właściwością najwyższego poziomu lub ścieżką json z wieloma kropkami, gdzie każda kropka oznacza przechodzenie do zagnieżdżonego obiektu json.
 
-Event Grid nie ma żadnego specjalnego znaczenia dla znaku `$` w kluczu, w przeciwieństwie do specyfikacji wykryto.
+Usługa Event Grid nie ma żadnego `$` specjalnego znaczenia dla znaku w kluczu, w przeciwieństwie do specyfikacji JSONPath.
 
 ### <a name="event-grid-schema"></a>Schemat siatki zdarzeń
 
-Dla zdarzeń w schemacie Event Grid:
+W przypadku zdarzeń w schemacie siatki zdarzeń:
 
 * ID
 * Temat
-* Temat
-* Klasę
-* wersja
-* Data. Prop1
-* Data. prop * Prop2. Prop3. Prop4. Prop5
+* Podmiot
+* Typ zdarzenia
+* DataVersion (Wersja danych)
+* Dane.Prop1
+* Data.Prop*Prop2.Prop3.Prop4.Prop5
 
 ### <a name="custom-event-schema"></a>Niestandardowy schemat zdarzeń
 
-Nie ma ograniczeń dotyczących `Key` w schemacie zdarzeń niestandardowych, ponieważ Event Grid nie wymusza żadnego schematu Envelope w ładunku.
+Nie ma żadnych ograniczeń `Key` w schemacie zdarzeń niestandardowych, ponieważ usługa Event Grid nie wymusza żadnego schematu koperty na ładunku.
 
-## <a name="numeric-single-value-filter-examples"></a>Przykłady filtrów liczbowych o pojedynczej wartości
+## <a name="numeric-single-value-filter-examples"></a>Przykłady filtrów jednowartośćowych liczbowych
 
-* NumberGreaterThan
-* NumberGreaterThanOrEquals
-* NumberLessThan
-* NumberLessThanOrEquals
+* LiczbaGreaterThan
+* LiczbaGreaterThanOrEquals
+* Liczba Bezduszny
+* NumberLessThanOrEquals (Liczba bezliory)
 
 ```json
 {
@@ -125,10 +125,10 @@ Nie ma ograniczeń dotyczących `Key` w schemacie zdarzeń niestandardowych, pon
 }
 ```
 
-## <a name="numeric-range-value-filter-examples"></a>Przykłady filtru wartości numerycznych
+## <a name="numeric-range-value-filter-examples"></a>Przykłady filtrów zakresu i wartości liczbowych
 
-* Numer w
-* NumberNotIn
+* LiczbaIn
+* LiczbaNotIn
 
 ```json
 {
@@ -149,13 +149,13 @@ Nie ma ograniczeń dotyczących `Key` w schemacie zdarzeń niestandardowych, pon
 }
 ```
 
-## <a name="string-range-value-filter-examples"></a>Przykłady filtru wartości dla zakresu ciągów
+## <a name="string-range-value-filter-examples"></a>Przykłady filtrów zakresu ciągów
 
-* StringContains
+* CiągiZawiera
 * StringBeginsWith
 * StringEndsWith
-* Ciąg w
-* StringNotIn
+* StringIn (Ciągin)
+* StringNotIn (Niemy w ciągu ręczną
 
 ```json
 {
@@ -191,9 +191,9 @@ Nie ma ograniczeń dotyczących `Key` w schemacie zdarzeń niestandardowych, pon
 }
 ```
 
-## <a name="boolean-single-value-filter-examples"></a>Przykłady filtru pojedynczej wartości logicznej
+## <a name="boolean-single-value-filter-examples"></a>Przykłady filtrów logicznych z jedną wartością
 
-* BoolEquals
+* BoolEquals ( BoolEquals )
 
 ```json
 {

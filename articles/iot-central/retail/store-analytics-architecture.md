@@ -1,6 +1,6 @@
 ---
-title: Architektura usługi Store Analytics
-description: Dowiedz się, jak utworzyć aplikację do analizy w sklepie przy użyciu szablonu aplikacji do wyewidencjonowania w IoT Central
+title: Architektura analizy sklepu
+description: Dowiedz się, jak utworzyć aplikację analityczną w sklepie przy użyciu szablonu aplikacji realizacji transakcji w centrum IoT
 author: avneets
 ms.author: avneets
 ms.date: 10/13/2019
@@ -10,49 +10,49 @@ ms.subservice: iot-central-retail
 services: iot-central
 manager: eliotgra
 ms.openlocfilehash: 6c2514bd078cc3feee4bd2802cf314079b824311
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77022124"
 ---
-# <a name="in-store-analytics-architecture"></a>Architektura analizy w sklepie
+# <a name="in-store-analytics-architecture"></a>Architektura analityczna w sklepie
 
 
 
-Rozwiązania do analizy w sklepie umożliwiają monitorowanie różnych warunków w środowisku magazynu detalicznego. Te rozwiązania można skompilować przy użyciu jednego z szablonów aplikacji w ramach IoT Central i architektury poniżej jako wskazówki.
+Rozwiązania analityczne w sklepie umożliwiają monitorowanie różnych warunków w środowisku sklepu detalicznego. Rozwiązania te można sbudować przy użyciu jednego z szablonów aplikacji w UIO IoT Central i architektury poniżej jako wskazówki.
 
 
-![Analiza sklepu IoT Central Azure](./media/architecture/store-analytics-architecture-frame.png)
+![Azure IoT Central Store Analytics](./media/architecture/store-analytics-architecture-frame.png)
 
-- Zbiór czujników IoT wysyłających dane telemetryczne do urządzenia bramy
-- Urządzenia bramy wysyłające dane telemetryczne i agregowane szczegółowe dane do IoT Central
-- Ciągły eksport danych do żądanej usługi platformy Azure na potrzeby manipulowania
-- Dane mogą być uporządkowane w żądanym formacie i wysyłane do usługi magazynu
-- Aplikacje biznesowe mogą wykonywać zapytania dotyczące danych i generować szczegółowe informacje, które umożliwiają wykonywanie operacji sprzedaży detalicznej
+- Zestaw czujników IoT wysyłających dane telemetryczne do urządzenia bramy
+- Urządzenia bramy wysyłające dane telemetryczne i zagregowane szczegółowe informacje do usługi IoT Central
+- Ciągły eksport danych do żądanej usługi platformy Azure w celu manipulacji
+- Dane mogą być uporządkowane w żądanym formacie i wysyłane do usługi przechowywania
+- Aplikacje biznesowe mogą wyszukiwać dane i generować szczegółowe informacje, które zasilają operacje detaliczne
  
-Przyjrzyjmy się kluczowym składnikom, które zwykle odgrywają część w rozwiązaniu do analizy w sklepie.
+Przyjrzyjmy się kluczowym składnikom, które zazwyczaj odgrywają rolę w rozwiązaniu analitycznym w sklepie.
 
-## <a name="condition-monitoring-sensors"></a>Czujniki monitorowania warunku
+## <a name="condition-monitoring-sensors"></a>Czujniki monitorowania stanu
 
-Rozwiązanie IoT rozpoczyna się od zestawu czujników przechwytywania znaczących sygnałów z w środowisku magazynu detalicznego. Jest to odzwierciedlone przez różne rodzaje czujników z lewej strony diagramu architektury powyżej.
+Rozwiązanie IoT rozpoczyna się od zestawu czujników przechwytujących znaczące sygnały z poziomu środowiska sklepu detalicznego. Jest to odzwierciedlone przez różne rodzaje czujników po lewej stronie diagramu architektury powyżej.
 
 ## <a name="gateway-devices"></a>Urządzenia bramy
 
-Wiele czujników IoT może strumieniowo pokazywać surowe sygnały bezpośrednio do chmury lub do urządzenia bramy znajdującego się w jego sąsiedztwie. Urządzenie bramy wykonuje agregację danych na granicy przed wysłaniem szczegółowych informacji do IoT Central aplikacji. Urządzenia bramy są również odpowiedzialne za przekazywanie operacji na urządzenia czujnika i sterowanie nim, gdy ma to zastosowanie. 
+Wiele czujników IoT może przesyłać surowe sygnały bezpośrednio do chmury lub do urządzenia bramy znajdującego się w ich pobliżu. Urządzenie bramy wykonuje agregację danych na krawędzi przed wysłaniem szczegółowych informacji podsumowujących do aplikacji IoT Central. Urządzenia bramy są również odpowiedzialne za przekazywanie operacji poleceń i sterowania do urządzeń czujników, jeśli ma to zastosowanie. 
 
 ## <a name="iot-central-application"></a>Aplikacja IoT Central
 
-Aplikacja platformy Azure IoT Central pozyskiwanie danych z różnych rodzajów czujników IoT jako urządzeń z bramą w sklepie detalicznym oraz generowanie zestawu istotnych informacji.
+Aplikacja Azure IoT Central pobuje dane z różnych rodzajów czujników IoT, a także urządzeń bramy w środowisku sklepu detalicznego i generuje zestaw istotnych informacji.
 
-Usługa Azure IoT Central zapewnia również dostosowane środowisko operatora magazynu umożliwiające im zdalne monitorowanie urządzeń infrastruktury i zarządzanie nimi.
+Usługa Azure IoT Central zapewnia również dostosowane środowisko operatorowi sklepu, umożliwiając zdalne monitorowanie urządzeń infrastruktury i zarządzanie nimi.
 
-## <a name="data-transform"></a>Przekształcanie danych
-Aplikację IoT Central platformy Azure w ramach rozwiązania można skonfigurować do eksportowania nieprzetworzonych lub zagregowanych informacji do zestawu usługi Azure PaaS (platformy jako usługi), które umożliwiają manipulowanie danymi i wzbogacają te informacje przed przekazaniem ich do firmy Aplikacja. 
+## <a name="data-transform"></a>Transformacja danych
+Aplikację Azure IoT Central w ramach rozwiązania można skonfigurować do eksportowania surowych lub zagregowanych szczegółowych informacji do zestawu usług Azure PaaS (Platform-as-a Service), które mogą wykonywać manipulowanie danymi i wzbogacać te informacje przed ich lądowaniem w firmie Aplikacji. 
 
 ## <a name="business-application"></a>Aplikacja biznesowa
-Dane IoT mogą służyć do zarządzania różnymi rodzajami aplikacji firmowych wdrożonymi w środowisku handlu detalicznego. Menedżer sklepu detalicznego lub członek personelu może używać tych aplikacji do wizualizacji szczegółowych informacji o firmie i wykonywania znaczących działań w czasie rzeczywistym. Aby dowiedzieć się, jak utworzyć pulpit nawigacyjny Power BI w czasie rzeczywistym dla Twojego zespołu sprzedaży detalicznej, postępuj zgodnie z [samouczkiem](./tutorial-in-store-analytics-create-app-pnp.md).
+Dane IoT mogą służyć do zasilania różnych rodzajów aplikacji biznesowych wdrożonych w środowisku sieci sprzedaży detalicznej. Kierownik sklepu detalicznego lub pracownik może używać tych aplikacji do wizualizacji informacji biznesowych i podejmowania znaczących działań w czasie rzeczywistym. Aby dowiedzieć się, jak zbudować pulpit nawigacyjny usługi Power BI w czasie rzeczywistym dla zespołu handlu detalicznego, wykonaj [samouczek](./tutorial-in-store-analytics-create-app-pnp.md).
 
 ## <a name="next-steps"></a>Następne kroki
-* Rozpocznij pracę z szablonami aplikacji do [wyewidencjonowania analizy w sklepie](https://aka.ms/checkouttemplate) oraz [monitorowania w sklepie](https://aka.ms/conditiontemplate) . 
-* Zapoznaj się z [samouczkiem kompleksowym](https://aka.ms/storeanalytics-tutorial) , który przeprowadzi Cię przez proces tworzenia rozwiązania przy użyciu jednego z szablonów aplikacji do analizy w sklepie.
+* Wprowadzenie do szablonów aplikacji [do realizacji transakcji analytics w sklepie](https://aka.ms/checkouttemplate) i monitorowania stanu analizy w [sklepie.](https://aka.ms/conditiontemplate) 
+* Zapoznaj się z [samouczkiem end](https://aka.ms/storeanalytics-tutorial) to end, który przeprowadzi Cię przez sposób tworzenia rozwiązania przy użyciu jednego z szablonów aplikacji analizy w sklepie.

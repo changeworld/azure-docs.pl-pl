@@ -1,6 +1,6 @@
 ---
-title: ActiveDirectoryInteractive nawiązuje połączenie z serwerem SQL
-description: C#Przykład kodu z objaśnieniami do nawiązywania połączenia z Azure SQL Database przy użyciu trybu SqlAuthenticationMethod. ActiveDirectoryInteractive.
+title: ActiveDirectoryInteractive łączy się z sql
+description: Przykład kodu języka C# z objaśnieniami, aby połączyć się z usługą Azure SQL Database przy użyciu sqlauthenticationMethod.ActiveDirectoryInteractive mode.
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -12,142 +12,142 @@ ms.author: MirekS
 ms.reviewer: GeneMi, vanto
 ms.date: 10/11/2019
 ms.openlocfilehash: 5e7d58e5e0fc79e407e77ae9d73314a1d5d22666
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73692302"
 ---
-# <a name="connect-to-azure-sql-database-with-azure-multi-factor-authentication"></a>Nawiązywanie połączenia z usługą Azure SQL Database przy użyciu usługi Azure Multi-Factor Authentication
+# <a name="connect-to-azure-sql-database-with-azure-multi-factor-authentication"></a>Łączenie się z usługą Azure SQL Database za pomocą uwierzytelniania wieloskładnikowego platformy Azure
 
-Ten artykuł zawiera C# program, który nawiązuje połączenie z Azure SQL Database. Program używa uwierzytelniania w trybie interaktywnym, który obsługuje [usługę Azure Multi-Factor Authentication](https://docs.microsoft.com/azure/active-directory/authentication/concept-mfa-howitworks).
+Ten artykuł zawiera program języka C#, który łączy się z usługą Azure SQL Database. Program korzysta z uwierzytelniania w trybie interaktywnym, które obsługuje [uwierzytelnianie wieloskładnikowe platformy Azure.](https://docs.microsoft.com/azure/active-directory/authentication/concept-mfa-howitworks)
 
-Aby uzyskać więcej informacji na temat obsługi Multi-Factor Authentication dla narzędzi SQL, zobacz [Azure Active Directory support w narzędziach danych SQL Server (SSDT)](https://docs.microsoft.com/sql/ssdt/azure-active-directory).
+Aby uzyskać więcej informacji na temat obsługi uwierzytelniania wieloskładnikowego dla narzędzi SQL, zobacz [Obsługa usługi Azure Active Directory w narzędziach SQL Server Data Tools (SSDT)](https://docs.microsoft.com/sql/ssdt/azure-active-directory).
 
-## <a name="multi-factor-authentication-for-azure-sql-database"></a>Multi-Factor Authentication Azure SQL Database
+## <a name="multi-factor-authentication-for-azure-sql-database"></a>Uwierzytelnianie wieloskładnikowe dla bazy danych SQL usługi Azure
 
-Począwszy od .NET Framework w wersji 4.7.2, Wyliczenie [`SqlAuthenticationMethod`](https://docs.microsoft.com/dotnet/api/system.data.sqlclient.sqlauthenticationmethod) ma nową wartość: `ActiveDirectoryInteractive`. W programie klienckim C# wartość enum kieruje system do korzystania z trybu interaktywnego Azure Active Directory (Azure AD), który obsługuje Multi-Factor Authentication do łączenia się z bazą danych Azure SQL. Użytkownik, który uruchamia program, widzi następujące okna dialogowe:
+Począwszy od programu .NET Framework w wersji 4.7.2, wyliczenie [`SqlAuthenticationMethod`](https://docs.microsoft.com/dotnet/api/system.data.sqlclient.sqlauthenticationmethod) ma nową wartość: `ActiveDirectoryInteractive`. W programie języka C# klienta wartość wyliczenia kieruje system do korzystania z trybu interaktywnego usługi Azure Active Directory (Azure AD), który obsługuje uwierzytelnianie wieloskładnikowe, aby połączyć się z bazą danych SQL platformy Azure. Użytkownik uruchamiany program widzi następujące okna dialogowe:
 
-* Okno dialogowe, w którym jest wyświetlana nazwa użytkownika usługi Azure AD z prośbą o podanie hasła użytkownika.
+* Okno dialogowe, w które wyświetla nazwę użytkownika usługi Azure AD i prosi o hasło użytkownika.
 
-   Jeśli domena użytkownika jest federacyjny przy użyciu usługi Azure AD, to okno dialogowe nie zostanie wyświetlone, ponieważ nie jest wymagana żadna wartość hasła.
+   Jeśli domena użytkownika jest sfederowana z usługą Azure AD, to okno dialogowe nie jest wyświetlane, ponieważ hasło nie jest potrzebne.
 
-   Jeśli zasady usługi Azure AD nakładają Multi-Factor Authentication na użytkownika, wyświetlane są następne dwa okna dialogowe.
+   Jeśli zasady usługi Azure AD nakładają uwierzytelnianie wieloskładnikowe na użytkownika, zostaną wyświetlone następne dwa okna dialogowe.
 
-* Gdy użytkownik po raz pierwszy przejdzie przez Multi-Factor Authentication, system wyświetli okno dialogowe z prośbą o numer telefonu komórkowego do wysyłania wiadomości tekstowych do programu. Każdy komunikat zawiera *kod weryfikacyjny* , który użytkownik musi wprowadzić w następnym oknie dialogowym.
+* Gdy użytkownik po raz pierwszy przechodzi przez uwierzytelnianie wieloskładnikowe, system wyświetla okno dialogowe z prośbą o numer telefonu komórkowego do wysyłania wiadomości tekstowych. Każda wiadomość zawiera *kod weryfikacyjny,* który użytkownik musi wprowadzić w następnym oknie dialogowym.
 
-* Okno dialogowe z prośbą o Multi-Factor Authentication kod weryfikacyjny, który system wysłał do telefonu komórkowego.
+* Okno dialogowe z prośbą o kod weryfikacyjny uwierzytelniania wieloskładnikowego, który system wysłał na telefon komórkowy.
 
-Aby uzyskać informacje na temat sposobu konfigurowania usługi Azure AD w celu wymagania Multi-Factor Authentication, zobacz [wprowadzenie do usługi azure Multi-Factor Authentication w chmurze](https://docs.microsoft.com/azure/multi-factor-authentication/multi-factor-authentication-get-started-cloud).
+Aby uzyskać informacje dotyczące konfigurowania usługi Azure AD do uwierzytelniania wieloskładnikowego, zobacz [Wprowadzenie do uwierzytelniania wieloskładnikowego platformy Azure w chmurze](https://docs.microsoft.com/azure/multi-factor-authentication/multi-factor-authentication-get-started-cloud).
 
-Zrzuty ekranu tych okien dialogowych, zobacz [Konfigurowanie uwierzytelniania wieloskładnikowego dla SQL Server Management Studio i usługi Azure AD](sql-database-ssms-mfa-authentication-configure.md).
+Aby uzyskać zrzuty ekranu tych okien dialogowych, zobacz [Konfigurowanie uwierzytelniania wieloskładnikowego dla programu SQL Server Management Studio i usługi Azure AD](sql-database-ssms-mfa-authentication-configure.md).
 
 > [!TIP]
-> .NET Framework interfejsów API można wyszukiwać za pomocą [strony narzędzia przeglądarki interfejsu API platformy .NET](https://docs.microsoft.com/dotnet/api/).
+> Interfejsy API programu .NET Framework można przeszukiwać za pomocą [strony narzędzia przeglądarka interfejsu API .NET](https://docs.microsoft.com/dotnet/api/).
 >
-> Możesz również wyszukiwać bezpośrednio za pomocą [opcjonalnego parametru "Term =&lt;wartość wyszukiwania&gt;](https://docs.microsoft.com/dotnet/api/?term=SqlAuthenticationMethod).
+> Można również wyszukiwać bezpośrednio za pomocą [opcjonalnego&lt;parametru wartości&gt; wyszukiwania ? term= wyszukiwania](https://docs.microsoft.com/dotnet/api/?term=SqlAuthenticationMethod).
 
-## <a name="configure-your-c-application-in-the-azure-portal"></a>Skonfiguruj C# aplikację w Azure Portal
+## <a name="configure-your-c-application-in-the-azure-portal"></a>Konfigurowanie aplikacji języka C# w witrynie Azure portal
 
-Przed rozpoczęciem należy utworzyć i udostępnić [serwer Azure SQL Database](sql-database-get-started-portal.md) .
+Przed rozpoczęciem należy utworzyć i udostępnić [serwer bazy danych SQL Azure.](sql-database-get-started-portal.md)
 
-### <a name="register-your-app-and-set-permissions"></a>Zarejestruj aplikację i Ustaw uprawnienia
+### <a name="register-your-app-and-set-permissions"></a>Rejestrowanie aplikacji i ustawianie uprawnień
 
-Aby można było korzystać z uwierzytelniania usługi C# Azure AD, program musi być zarejestrowany jako aplikacja usługi Azure AD. Aby zarejestrować aplikację, musisz być administratorem usługi Azure AD lub użytkownikiem przypisaną rolą *dewelopera aplikacji* usługi Azure AD. Aby uzyskać więcej informacji na temat przypisywania ról, zobacz [Przypisywanie ról administratora i niebędących administratorami do użytkowników z Azure Active Directory](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal).
+Aby użyć uwierzytelniania usługi Azure AD, program języka C# musi zarejestrować się jako aplikacja usługi Azure AD. Aby zarejestrować aplikację, musisz być administratorem usługi Azure AD lub użytkownikem przypisanym roli *dewelopera aplikacji* usługi Azure AD. Aby uzyskać więcej informacji na temat przypisywania ról, zobacz [Przypisywanie ról administratora i osób niebędących administratorami użytkownikom za pomocą usługi Azure Active Directory](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal).
 
-Zakończenie rejestracji aplikacji powoduje wygenerowanie i wyświetlenie **identyfikatora aplikacji**. Program musi dołączyć ten identyfikator, aby nawiązać połączenie.
+Ukończenie rejestracji aplikacji generuje i wyświetla **identyfikator aplikacji**. Program musi zawierać ten identyfikator, aby się połączyć.
 
-Aby zarejestrować i ustawić wymagane uprawnienia dla aplikacji:
+Aby zarejestrować i ustawić niezbędne uprawnienia dla aplikacji:
 
-1. W Azure Portal wybierz pozycję **Azure Active Directory** > **rejestracje aplikacji** > **nową rejestrację**.
+1. W witrynie Azure portal wybierz pozycję**Rejestracje** > aplikacji **usługi Azure Active Directory** > Nowa**rejestracja**.
 
     ![Rejestracja aplikacji](media/active-directory-interactive-connect-azure-sql-db/image1.png)
 
-    Po utworzeniu rejestracji aplikacji jest generowana i wyświetlana wartość **identyfikatora aplikacji** .
+    Po utworzeniu rejestracji aplikacji wartość **identyfikatora aplikacji** jest generowana i wyświetlana.
 
     ![Wyświetlany identyfikator aplikacji](media/active-directory-interactive-connect-azure-sql-db/image2.png)
 
-2. Wybierz pozycję **uprawnienia interfejsu API** > **Dodaj uprawnienie**.
+2. Wybierz **uprawnienia** > interfejsu API**Dodaj uprawnienie**.
 
     ![Ustawienia uprawnień dla zarejestrowanej aplikacji](media/active-directory-interactive-connect-azure-sql-db/sshot-registered-app-settings-required-permissions-add-api-access-c32.png)
 
-3. Wybierz **interfejsy API Moja organizacja używa** > wpisz **Azure SQL Database** do > wyszukiwania i wybierz pozycję **Azure SQL Database**.
+3. Wybierz **interfejsy API, których moja organizacja używa** > wpisz usługę Azure SQL **Database** w > wyszukiwania i wybierz usługę Azure **SQL Database**.
 
-    ![Dodawanie dostępu do interfejsu API dla Azure SQL Database](media/active-directory-interactive-connect-azure-sql-db/sshot-registered-app-settings-required-permissions-add-api-access-Azure-sql-db-d11.png)
+    ![Dodawanie dostępu do interfejsu API dla bazy danych SQL usługi Azure](media/active-directory-interactive-connect-azure-sql-db/sshot-registered-app-settings-required-permissions-add-api-access-Azure-sql-db-d11.png)
 
-4. Wybierz **uprawnienia delegowane** > **user_impersonation** > **Dodaj uprawnienia**.
+4. Wybierz **pozycję Uprawnienia delegowane** > **user_impersonation** > **Dodaj uprawnienia**.
 
-    ![Delegowanie uprawnień do interfejsu API dla Azure SQL Database](media/active-directory-interactive-connect-azure-sql-db/sshot-add-api-access-azure-sql-db-delegated-permissions-checkbox-e14.png)
+    ![Delegowanie uprawnień do interfejsu API dla bazy danych SQL usługi Azure](media/active-directory-interactive-connect-azure-sql-db/sshot-add-api-access-azure-sql-db-delegated-permissions-checkbox-e14.png)
 
-### <a name="set-an-azure-ad-admin-for-your-sql-database-server"></a>Ustawianie administratora usługi Azure AD dla serwera SQL Database
+### <a name="set-an-azure-ad-admin-for-your-sql-database-server"></a>Ustawianie administratora usługi Azure AD dla serwera bazy danych SQL
 
-Aby C# program mógł zostać uruchomiony, administrator programu Azure SQL Server musi przypisać administratora usługi Azure AD dla serwera SQL Database. 
+Aby program języka C# był uruchamiany, administrator serwera SQL platformy Azure musi przypisać administratora usługi Azure AD dla serwera bazy danych SQL. 
 
-Na stronie **SQL Server** wybierz pozycję **Active Directory administrator** > **Ustaw administratora**.
+Na stronie **SQL Server** wybierz pozycję **Administrator** > usługi Active Directory**Ustaw administratora**.
 
-Więcej informacji o administratorach i użytkownikach usługi Azure AD dla Azure SQL Database można znaleźć w temacie zrzuty ekranu w artykule [Konfigurowanie i zarządzanie Azure Active Directory uwierzytelnianiem przy użyciu SQL Database](sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server).
+Aby uzyskać więcej informacji na temat administratorów i użytkowników usługi Azure AD dla usługi Azure SQL Database, zobacz zrzuty ekranu w [obszarze Konfigurowanie uwierzytelniania usługi Azure Active Directory i zarządzanie nim za pomocą bazy danych SQL](sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server).
 
 ### <a name="add-a-non-admin-user-to-a-specific-database-optional"></a>Dodawanie użytkownika niebędącego administratorem do określonej bazy danych (opcjonalnie)
 
-Administrator usługi Azure AD dla serwera SQL Database może uruchomić C# Przykładowy program. Użytkownik usługi Azure AD może uruchomić ten program, jeśli znajdują się w bazie danych. Administrator SQL usługi Azure AD lub użytkownik usługi Azure AD, który istnieje już w bazie danych i ma uprawnienia `ALTER ANY USER` do bazy danych, może dodać użytkownika.
+Administrator usługi Azure AD dla serwera bazy danych SQL może uruchomić przykładowy program języka C#. Użytkownik usługi Azure AD można uruchomić program, jeśli znajdują się w bazie danych. Administrator SQL usługi Azure AD lub użytkownik usługi Azure AD, `ALTER ANY USER` który istnieje już w bazie danych i ma uprawnienia do bazy danych można dodać użytkownika.
 
-Możesz dodać użytkownika do bazy danych za pomocą polecenia SQL [`Create User`](https://docs.microsoft.com/sql/t-sql/statements/create-user-transact-sql) . Może to być na przykład `CREATE USER [<username>] FROM EXTERNAL PROVIDER`.
+Można dodać użytkownika do bazy danych [`Create User`](https://docs.microsoft.com/sql/t-sql/statements/create-user-transact-sql) za pomocą polecenia SQL. Może to być na przykład `CREATE USER [<username>] FROM EXTERNAL PROVIDER`.
 
-Aby uzyskać więcej informacji, zobacz [używanie uwierzytelniania Azure Active Directory na potrzeby uwierzytelniania przy użyciu SQL Database, wystąpienia zarządzanego lub SQL Data Warehouse](sql-database-aad-authentication.md).
+Aby uzyskać więcej informacji, zobacz [Używanie uwierzytelniania usługi Azure Active Directory do uwierzytelniania przy użyciu bazy danych SQL, wystąpienia zarządzanego lub magazynu danych SQL](sql-database-aad-authentication.md).
 
 ## <a name="new-authentication-enum-value"></a>Nowa wartość wyliczenia uwierzytelniania
 
-C# Przykład opiera się na przestrzeni nazw [`System.Data.SqlClient`](https://docs.microsoft.com/dotnet/api/system.data.sqlclient) . Szczególnym zainteresowaniem Multi-Factor Authentication jest Wyliczenie `SqlAuthenticationMethod`, które ma następujące wartości:
+Przykład języka C# [`System.Data.SqlClient`](https://docs.microsoft.com/dotnet/api/system.data.sqlclient) opiera się na obszarze nazw. Szczególne zainteresowanie dla uwierzytelniania wieloskładnikowego jest wyliczenie, `SqlAuthenticationMethod`który ma następujące wartości:
 
 - `SqlAuthenticationMethod.ActiveDirectoryInteractive`
 
-   Użyj tej wartości przy użyciu nazwy użytkownika usługi Azure AD w celu zaimplementowania Multi-Factor Authentication. Ta wartość jest skoncentrowana na obecnym artykule. Zapewnia interaktywne środowisko, wyświetlając okna dialogowe dla hasła użytkownika, a następnie Multi-Factor Authentication sprawdzanie poprawności, jeśli na tym użytkowniku nałożono Multi-Factor Authentication. Ta wartość jest dostępna od .NET Framework w wersji 4.7.2.
+   Ta wartość służy do implementowania uwierzytelniania wieloskładnikowego za pomocą nazwy użytkownika usługi Azure AD. Ta wartość jest przedmiotem niniejszego artykułu. Tworzy interaktywne środowisko, wyświetlając okna dialogowe dla hasła użytkownika, a następnie dla sprawdzania poprawności uwierzytelniania wieloskładnikowego, jeśli uwierzytelnianie wieloskładnikowe jest narzucone na tego użytkownika. Ta wartość jest dostępna począwszy od programu .NET Framework w wersji 4.7.2.
 
 - `SqlAuthenticationMethod.ActiveDirectoryIntegrated`
 
-  Użyj tej wartości dla konta *federacyjnego* . W przypadku konta federacyjnego nazwa użytkownika jest znana dla domeny systemu Windows. Ta metoda uwierzytelniania nie obsługuje Multi-Factor Authentication.
+  Użyj tej wartości dla konta *federacyjnego.* W przypadku konta federacyjnego nazwa użytkownika jest znana domenie systemu Windows. Ta metoda uwierzytelniania nie obsługuje uwierzytelniania wieloskładnikowego.
 
 - `SqlAuthenticationMethod.ActiveDirectoryPassword`
 
-  Użyj tej wartości do uwierzytelniania, które wymaga nazwy użytkownika i hasła usługi Azure AD. Azure SQL Database wykonuje uwierzytelnianie. Ta metoda nie obsługuje Multi-Factor Authentication.
+  Użyj tej wartości do uwierzytelniania, który wymaga nazwy użytkownika usługi Azure AD i hasła. Usługa Azure SQL Database wykonuje uwierzytelnianie. Ta metoda nie obsługuje uwierzytelniania wieloskładnikowego.
 
-## <a name="set-c-parameter-values-from-the-azure-portal"></a>Ustawianie C# wartości parametrów z Azure Portal
+## <a name="set-c-parameter-values-from-the-azure-portal"></a>Ustawianie wartości parametrów języka C# z witryny Azure portal
 
-Aby C# program mógł zostać pomyślnie uruchomiony, należy przypisać odpowiednie wartości do pól statycznych. Pokazane tutaj są pola z przykładowymi wartościami. Pokazane są również lokalizacje Azure Portal, w których można uzyskać potrzebne wartości.
+Aby program C# został pomyślnie uruchomiony, należy przypisać odpowiednie wartości do pól statycznych. Pokazane tutaj są pola z przykładowymi wartościami. Pokazano również lokalizacje witryny azure portal, gdzie można uzyskać potrzebne wartości.
 
-| Nazwa pola statycznego | Przykładowa wartość | Gdzie w Azure Portal |
+| Nazwa pola statycznego | Przykładowa wartość | Gdzie w witrynie Azure portal |
 | :---------------- | :------------ | :-------------------- |
-| Az_SQLDB_svrName | "my-sqldb-svr.database.windows.net" | **Serwery SQL** > **filtrowania według nazwy** |
-| AzureAD_UserID | "auser\@abc.onmicrosoft.com" | **Azure Active Directory** > **użytkownika** > **nowego użytkownika-gościa** |
-| Initial_DatabaseName | "baza danych" | **Serwery sql** > **baz danych SQL** |
-| ClientApplicationID | "a94f9c62-97fe-4d19-b06d-111111111111" | **Azure Active Directory** > **rejestracje aplikacji** > **wyszukiwania według nazwy** > **Identyfikator aplikacji** |
-| RedirectUri | nowy identyfikator URI ("https://mywebserver.com/") | **Azure Active Directory** > **rejestracje aplikacji** > **wyszukiwania według nazwy** >  *[twoja aplikacja-Rejestracja]*  > **Ustawienia** > **RedirectURIs**<br /><br />W tym artykule wszystkie prawidłowe wartości są poprawne dla RedirectUri, ponieważ nie są używane w tym miejscu. |
+| Az_SQLDB_svrName | "my-sqldb-svr.database.windows.net" | **Serwery** > SQL**Filtruj według nazwy** |
+| AzureAD_UserID | "auser\@abc.onmicrosoft.com" | **Nowy** > **użytkownik** > usługi Azure Active Directory**użytkownik-gość** |
+| Initial_DatabaseName | "myDatabase" | **Bazy** > **danych SQL** serwerów SQL |
+| Identyfikator aplikacji klienta | "a94f9c62-97fe-4d19-b06d-1111111111111111111" | **Rejestracje** >  > **aplikacji**usługi Azure Active Directory**Wyszukiwanie według nazwy** > **identyfikator aplikacji** |
+| RedirectUri (RedirectUri) | nowy Uri("https://mywebserver.com/") | **Rejestracje** >  > **aplikacji**usługi Azure Active Directory**Wyszukiwanie według nazwy** > [Ustawienia rejestracji*aplikacji]* > **RedirectURIs** **Settings** > <br /><br />W tym artykule wszelkie prawidłowe wartości jest w porządku dla RedirectUri, ponieważ nie jest używany w tym miejscu. |
 | &nbsp; | &nbsp; | &nbsp; |
 
-## <a name="verify-with-sql-server-management-studio"></a>Weryfikuj przy użyciu SQL Server Management Studio
+## <a name="verify-with-sql-server-management-studio"></a>Weryfikowanie za pomocą programu SQL Server Management Studio
 
-Przed uruchomieniem C# programu warto sprawdzić, czy konfiguracja i konfiguracje są poprawne w SQL Server Management Studio (SSMS). Wszelkie C# błędy programu można następnie zawęzić do kodu źródłowego.
+Przed uruchomieniem programu C# warto sprawdzić, czy konfiguracje i konfiguracje są poprawne w programie SQL Server Management Studio (SSMS). Każdy błąd programu C# można następnie zawęzić do kodu źródłowego.
 
-### <a name="verify-sql-database-firewall-ip-addresses"></a>Weryfikowanie SQL Database adresów IP zapory
+### <a name="verify-sql-database-firewall-ip-addresses"></a>Weryfikowanie adresów IP zapory bazy danych SQL
 
-Uruchom narzędzie SSMS z tego samego komputera, w tym samym budynku, w którym planujesz uruchomić C# program. W przypadku tego testu każdy tryb **uwierzytelniania** jest prawidłowy. Jeśli istnieją jakieś oznaki, że Zapora serwera bazy danych nie akceptuje adresu IP, zobacz [Azure SQL Database reguły zapory na poziomie serwera i na poziomie bazy danych](sql-database-firewall-configure.md) , aby uzyskać pomoc.
+Uruchom system SSMS z tego samego komputera, w tym samym budynku, w którym planujesz uruchomić program C#. W tym teście każdy tryb **uwierzytelniania** jest OK. Jeśli istnieją jakiekolwiek wskazania, że zapora serwera bazy danych nie akceptuje adresu IP, zobacz [Reguły zapory na poziomie serwera i bazy danych na poziomie bazy danych azure,](sql-database-firewall-configure.md) aby uzyskać pomoc.
 
-### <a name="verify-azure-active-directory-multi-factor-authentication"></a>Sprawdź Azure Active Directory Multi-Factor Authentication
+### <a name="verify-azure-active-directory-multi-factor-authentication"></a>Weryfikowanie uwierzytelniania wieloskładnikowego usługi Azure Active Directory
 
-Ponownie uruchom program SSMS, tym razem z **uwierzytelnianiem** ustawionym na **Active Directory — uniwersalna z obsługą usługi MFA**. Ta opcja wymaga programu SSMS w wersji 17,5 lub nowszej.
+Uruchom ponownie SSMS, tym razem z **uwierzytelnianiem** ustawionym na **Active Directory - Uniwersalny z obsługą usługi MFA**. Ta opcja wymaga systemu SSMS w wersji 17.5 lub nowszej.
 
-Aby uzyskać więcej informacji, zobacz [konfigurowanie Multi-Factor Authentication dla programu SSMS i usługi Azure AD](sql-database-ssms-mfa-authentication-configure.md).
+Aby uzyskać więcej informacji, zobacz [Konfigurowanie uwierzytelniania wieloskładnikowego dla usług SSMS i usługi Azure AD](sql-database-ssms-mfa-authentication-configure.md).
 
 > [!NOTE]
-> Jeśli jesteś użytkownikiem-gościem w bazie danych, musisz również podać nazwę domeny usługi Azure AD dla bazy danych: Wybierz **opcje** > **nazwy domeny usługi AD lub identyfikatora dzierżawy**. Aby znaleźć nazwę domeny w Azure Portal, wybierz pozycję **Azure Active Directory** > **niestandardowe nazwy domen**. W C# przykładzie programu podanie nazwy domeny nie jest konieczne.
+> Jeśli jesteś użytkownikiem-gościem w bazie danych, musisz również podać nazwę domeny usługi Azure AD dla bazy danych: Wybierz **opcje** > **nazwa domeny usługi AD lub identyfikator dzierżawy**. Aby znaleźć nazwę domeny w witrynie Azure portal, wybierz pozycję**Niestandardowe nazwy domen**usługi Azure Active **Directory** > . W przykładowym programie języka C# podanie nazwy domeny nie jest konieczne.
 
-## <a name="c-code-example"></a>C#przykład kodu
+## <a name="c-code-example"></a>Przykład kodu języka C#
 
-Przykładowy C# program opiera się na zestawie dll [*Microsoft. IdentityModel. clients. ActiveDirectory*](https://docs.microsoft.com/dotnet/api/microsoft.identitymodel.clients.activedirectory) .
+Przykładowy program Języka C# opiera się na zestawie bibliotek dll [*Microsoft.IdentityModel.Clients.ActiveDirectory.*](https://docs.microsoft.com/dotnet/api/microsoft.identitymodel.clients.activedirectory)
 
-Aby zainstalować ten pakiet, w programie Visual Studio wybierz pozycję **projekt** > **Zarządzanie pakietami NuGet**. Wyszukaj i zainstaluj **Microsoft. IdentityModel. clients. ActiveDirectory**.
+Aby zainstalować ten pakiet, w programie Visual Studio wybierz pozycję **Project** > **Manage NuGet Packages**. Wyszukaj i zainstaluj **program Microsoft.IdentityModel.Clients.ActiveDirectory**.
 
-Jest to przykładowy kod C# źródłowy.
+Jest to przykład kodu źródłowego języka C#.
 
 ```csharp
 
@@ -317,7 +317,7 @@ namespace ADInteractive5
 
 &nbsp;
 
-Jest to przykład danych wyjściowych C# testu.
+Jest to przykład danych wyjściowych testu języka C#.
 
 ```
 [C:\Test\VSProj\ADInteractive5\ADInteractive5\bin\Debug\]
@@ -335,6 +335,6 @@ In method 'AcquireTokenAsync', case_0 == '.ActiveDirectoryInteractive'.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 > [!IMPORTANT]
-> Moduł Azure Resource Manager programu PowerShell jest nadal obsługiwany przez Azure SQL Database, ale wszystkie przyszłe Programowanie dla modułu AZ. SQL. W przypadku tych poleceń cmdlet zobacz [AzureRM. SQL](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Argumenty poleceń polecenia AZ module i w modułach AzureRm są zasadniczo identyczne.
+> Moduł usługi PowerShell Azure Resource Manager jest nadal obsługiwany przez usługę Azure SQL Database, ale wszystkie przyszłe prace rozwojowe są przeznaczone dla modułu Az.Sql. Aby uzyskać następujące polecenia cmdlet, zobacz [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Argumenty dla poleceń w module Az i w modułach AzureRm są zasadniczo identyczne.
 
 - [Get-AzSqlServerActiveDirectoryAdministrator](https://docs.microsoft.com/powershell/module/az.sql/get-azsqlserveractivedirectoryadministrator)

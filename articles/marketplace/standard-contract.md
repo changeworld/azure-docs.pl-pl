@@ -1,54 +1,53 @@
 ---
-title: Kontrakt standardowy | Azure
-description: Kontrakt standardowy dla portalu Azure Marketplace i AppSource
-services: Azure, Marketplace, Compute, Storage, Networking
-author: ChJenk
+title: Umowa standardowa | Azure
+description: Umowa standardowa dla portalu Azure Marketplace i usługi AppSource
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/19/2019
-ms.author: v-chjen
-ms.openlocfilehash: dc8edf2b6e4a1204e7edd515da9323896049eb13
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.author: dsindona
+ms.openlocfilehash: 00a83a1b3005043f317ed49cafa735540cd21793
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74228204"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80284963"
 ---
-# <a name="standard-contract-for-the-microsoft-commercial-marketplace"></a>Standardowa umowa dla komercyjnego portalu Microsoft Marketplace
+# <a name="standard-contract-for-the-microsoft-commercial-marketplace"></a>Umowa standardowa dla komercyjnego rynku firmy Microsoft
 
-Aby uprościć proces zakupów dla klientów i zmniejszyć złożoność prawną dla dostawców oprogramowania, firma Microsoft oferuje standardową umowę dotyczącą komercyjnej witryny Marketplace firmy Microsoft w celu ułatwienia realizacji transakcji w portalu Marketplace. Zamiast przedstawiać niestandardowe warunki i postanowienia, Komercyjni wydawcy portalu Marketplace mogą zaoferować swoje oprogramowanie zgodnie z umową standardową, której klienci muszą jedynie Zweryfikuj i akceptować. Kontrakt standardowy można znaleźć tutaj: [https://go.microsoft.com/fwlink/?linkid=2041178](https://go.microsoft.com/fwlink/?linkid=2041178).
+Aby uprościć proces zaopatrzenia dla klientów i zmniejszyć złożoność prawną dostawców oprogramowania, firma Microsoft oferuje umowę standardową dla komercyjnego rynku firmy Microsoft w celu ułatwienia transakcji na rynku. Zamiast tworzyć niestandardowe warunki, wydawcy komercyjnego rynku mogą zdecydować się na oferowanie swojego oprogramowania w ramach standardowej umowy, którą klienci muszą zweryfikować i zaakceptować tylko raz. Umowę standardową można znaleźć [https://go.microsoft.com/fwlink/?linkid=2041178](https://go.microsoft.com/fwlink/?linkid=2041178)tutaj: .
 
-Warunki i postanowienia oferty są definiowane podczas tworzenia oferty w centrum partnerskim lub w portal Cloud Partner. Możesz wybrać opcję użycia standardowej umowy dla komercyjnej witryny Marketplace firmy Microsoft zamiast podawania własnych niestandardowych warunków i postanowień.
-
->[!Note]
->Po opublikowaniu oferty przy użyciu standardowej umowy dotyczącej komercyjnej witryny Marketplace firmy Microsoft nie będziesz w stanie korzystać ze swoich niestandardowych warunków i postanowień. Jest to scenariusz "lub". Możesz zaoferować swoje rozwiązanie w ramach standardowej umowy *lub* własnych warunków i postanowień. Jeśli chcesz zmodyfikować warunki kontraktu standardowego, możesz to zrobić za pomocą standardowych poprawek kontraktu.
-
-## <a name="standard-contract-amendments"></a>Standardowe zmiany kontraktu
-
-Standardowe zmiany umów umożliwiają wydawcom wybranie standardowej kontraktu dla uproszczenia oraz dostosowane warunki dla ich produktu lub firmy. Klienci muszą jedynie przejrzeć zmiany w umowie, jeśli zostali już zrecenzowani i zaakceptowali umowę standardową firmy Microsoft.
-
-Istnieją dwa rodzaje zmian dostępnych dla komercyjnych wydawców portalu Marketplace:
-
-* Uniwersalne zmiany: te zmiany są powszechnie stosowane do standardowej umowy dla wszystkich klientów. Uniwersalne zmiany są wyświetlane dla każdego klienta oferty w przepływie zakupu. Aby można było korzystać z oferty, klienci muszą zaakceptować warunki umowy standardowej i poprawki.
-
-* Zmiany niestandardowe: te zmiany są specjalnymi zmianami w standardowej umowie, które są przeznaczone dla określonych klientów tylko za pośrednictwem identyfikatorów dzierżaw platformy Azure. Wydawcy mogą wybrać dzierżawcę, do którego chce się kierować. Tylko klienci z dzierżawy będą widzieć niestandardowe warunki zmiany w przepływie zakupu oferty.  Aby można było korzystać z oferty, klienci muszą zaakceptować warunki umowy standardowej i poprawki.
+Warunki oferty są definiowane podczas tworzenia oferty w Centrum partnerów lub w portalu Cloud Partner Portal. Zamiast udostępniać własne niestandardowe warunki, można wybrać opcję korzystania z kontraktu standardowego dla komercyjnego portalu Microsoft marketplace.
 
 >[!Note]
->Te dwa typy zmian stosują się między sobą. Klienci z niestandardowymi zmianami otrzymają także uniwersalną zmianę do standardowej umowy podczas zakupu.
+>Po opublikowaniu oferty przy użyciu umowy standardowej dla komercyjnego rynku firmy Microsoft nie można korzystać z własnych niestandardowych warunków. Jest to scenariusz "lub". Oferujesz swoje rozwiązanie w ramach umowy standardowej *lub* własnych warunków. Jeśli chcesz zmodyfikować warunki Umowy Standardowej, możesz to zrobić poprzez standardowe zmiany umowy.
 
-Możesz skorzystać z standardowej umowy dotyczącej komercyjnej witryny Marketplace firmy Microsoft, aby uzyskać następujące typy ofert: aplikacje platformy Azure (szablony rozwiązań i aplikacje zarządzane), Virtual Machines, kontenery, aplikacje kontenerów, moduły IoT Edge i SaaS .
+## <a name="standard-contract-amendments"></a>Zmiany w umowie standardowej
 
-## <a name="customer-experience"></a>Obsługa klienta
+Standardowe zmiany umowy umożliwiają wydawcom wybór umowy standardowej dla uproszczenia i dostosowanych warunków dla ich produktu lub firmy. Klienci muszą zapoznać się ze zmianami umowy tylko wtedy, gdy już przejrzeli i zaakceptowali umowę standardową firmy Microsoft.
 
-W ramach funkcji odnajdywania w witrynie Azure Marketplace lub AppSource klienci będą mogli zobaczyć warunki skojarzone z ofertą jako standardową umowę dla komercyjnego portalu Microsoft Marketplace oraz wszystkie uniwersalne zmiany.
+Wydawcy rynku komercyjnego mają do dyspozycji dwa rodzaje zmian:
 
-![Azure Portal funkcji wykrywania klienta.](media/marketplace-publishers-guide/azure-discovery-process.png)
+* Uniwersalne zmiany: Zmiany te są powszechnie stosowane do umowy standardowej dla wszystkich klientów. Uniwersalne zmiany są wyświetlane każdemu klientowi oferty w przepływie zakupu. Klienci muszą zaakceptować warunki Umowy Standardowej i zmiany, zanim będą mogli skorzystać z Twojej oferty.
 
-W ramach procesu zakupu w Azure Portal klienci będą mogli zapoznać się z postanowieniami związanymi z ofertą jako standardową umową dotyczącą komercyjnego portalu Microsoft Marketplace oraz wszelkimi zmianami specyficznymi dla wszystkich uniwersalnych i/lub dzierżawców.
+* Zmiany niestandardowe: Te zmiany są specjalnymi zmianami umowy standardowej, które są przeznaczone dla określonych klientów tylko za pośrednictwem identyfikatorów dzierżawy platformy Azure. Wydawcy mogą wybrać dzierżawę, na którą mają być kierowane. Tylko klienci z najemcy zostaną przedstawieni z niestandardowymi warunkami zmian w przepływie zakupu oferty.  Klienci muszą zaakceptować warunki Umowy Standardowej i zmiany, zanim będą mogli skorzystać z Twojej oferty.
 
-![Azure Portal możliwości zakupu klientów.](media/marketplace-publishers-guide/azure-purchase-process.png)
+>[!Note]
+>Te dwa rodzaje poprawek kumulują się jeden na drugim. Klienci objęci niestandardowymi zmianami otrzymają również uniwersalną zmianę umowy standardowej podczas zakupu.
 
-## <a name="api"></a>Interfejs API
+Umowę standardową dla komercyjnego portalu Microsoft można wykorzystać dla następujących typów ofert: Aplikacje platformy Azure (szablony rozwiązań i aplikacje zarządzane), maszyny wirtualne, kontenery, aplikacje kontenerów, moduły usługi IoT edge i usługi SaaS .
 
-Klienci mogą używać Get-AzureRmMarketplaceTerms, aby pobrać warunki oferty i zaakceptować ją. W danych wyjściowych polecenia cmdlet zostanie zwrócony kontrakt standardowy i skojarzone zmiany.
+## <a name="customer-experience"></a>obsługa klienta
+
+Podczas odnajdowania w portalu Azure marketplace lub AppSource klienci będą mogli zobaczyć warunki skojarzone z ofertą jako umowę standardową dla komercyjnego portalu Microsoft i wszelkie uniwersalne zmiany.
+
+![Środowisko odnajdywania klientów w witrynie Azure portal.](media/marketplace-publishers-guide/azure-discovery-process.png)
+
+Podczas procesu zakupu w witrynie Azure portal klienci będą mogli zobaczyć warunki skojarzone z ofertą jako umowę standardową dla komercyjnego rynku firmy Microsoft oraz wszelkie uniwersalne i/lub specyficzne dla dzierżawy zmiany.
+
+![Środowisko zakupu klienta w witrynie Azure portal.](media/marketplace-publishers-guide/azure-purchase-process.png)
+
+## <a name="api"></a>interfejs API
+
+Klienci mogą używać Get-AzureRmMarketplaceTerms, aby pobrać warunki oferty i zaakceptować ją. Umowa standardowa i związane z nim zmiany zostaną zwrócone w danych wyjściowych polecenia cmdlet.

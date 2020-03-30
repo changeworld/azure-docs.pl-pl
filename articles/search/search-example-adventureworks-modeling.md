@@ -1,7 +1,7 @@
 ---
-title: 'Przykład: Modelowanie bazy danych spisu AdventureWorks'
+title: 'Przykład: Modelowanie bazy danych AdventureWorks Inventory'
 titleSuffix: Azure Cognitive Search
-description: Dowiedz się, jak modelować dane relacyjne, przekształcając je w spłaszczony zestaw danych, na potrzeby indeksowania i wyszukiwania pełnotekstowego w usłudze Azure Wyszukiwanie poznawcze.
+description: Dowiedz się, jak modelować dane relacyjne, przekształcając je w spłaszczony zestaw danych do indeksowania i wyszukiwania pełnotekstowego w usłudze Azure Cognitive Search.
 author: HeidiSteen
 manager: nitinme
 ms.service: cognitive-search
@@ -9,65 +9,65 @@ ms.topic: conceptual
 ms.date: 09/05/2019
 ms.author: heidist
 ms.openlocfilehash: edb6162724938962df8a7340afea6e930a0b1049
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72792997"
 ---
-# <a name="example-model-the-adventureworks-inventory-database-for-azure-cognitive-search"></a>Przykład: Modelowanie bazy danych magazynu AdventureWorks dla platformy Azure Wyszukiwanie poznawcze
+# <a name="example-model-the-adventureworks-inventory-database-for-azure-cognitive-search"></a>Przykład: Modelowanie bazy danych AdventureWorks Inventory dla usługi Azure Cognitive Search
 
-Usługa Azure Wyszukiwanie poznawcze akceptuje spłaszczony zestaw wierszy jako dane wejściowe do [potoku indeksowania (pozyskiwania danych)](search-what-is-an-index.md). Jeśli dane źródłowe pochodzą z SQL Server relacyjnej bazy danych, w tym artykule przedstawiono jedno podejście do tworzenia spłaszczonego zestawu wierszy przed indeksowaniem przy użyciu przykładowej bazy danych AdventureWorks.
+Usługa Azure Cognitive Search akceptuje spłaszczony zestaw wierszy jako dane wejściowe do [potoku indeksowania (pozyskiwania danych).](search-what-is-an-index.md) Jeśli dane źródłowe pochodzą z relacyjnej bazy danych programu SQL Server, w tym artykule pokazano jedno podejście do tworzenia spłaszczone rowset przed indeksowania, przy użyciu AdventureWorks przykładowej bazy danych jako przykład.
 
-## <a name="about-adventureworks"></a>Informacje o AdventureWorks
+## <a name="about-adventureworks"></a>Więcej o: AdventureWorks
 
-Jeśli masz wystąpienie SQL Server, możesz zapoznać się z [przykładową bazą danych AdventureWorks](https://docs.microsoft.com/sql/samples/adventureworks-install-configure?view=sql-server-2017). Wśród tabel uwzględnionych w tej bazie danych znajdują się pięć tabel, które ujawniają informacje o produkcie.
+Jeśli masz wystąpienie programu SQL Server, możesz znać [przykładową bazę danych AdventureWorks](https://docs.microsoft.com/sql/samples/adventureworks-install-configure?view=sql-server-2017). Wśród tabel zawartych w tej bazie danych jest pięć tabel, które ujawniają informacje o produkcie.
 
-+ **ProductModel**: Nazwa
-+ **Produkt**: nazwa, kolor, koszt, rozmiar, waga, obraz, Kategoria (każdy wiersz jest przyłączany do określonego ProductModel)
-+ **ProductDescription**: Opis
-+ **ProductModelProductDescription**: locale (każdy wiersz jest przyłączany do ProductModel do określonego ProductDescription dla określonego języka)
-+ **ProductCategory**: nazwa, Kategoria nadrzędna
++ **ProductModel**: nazwa
++ **Produkt**: nazwa, kolor, koszt, rozmiar, waga, obraz, kategoria (każdy wiersz łączy się z określonym ProductModel)
++ **ProductDescription**: opis
++ **ProductModelProductDescription**: ustawienia regionalne (każdy wiersz łączy ProductModel do określonego ProductDescription dla określonego języka)
++ **Kategoria produktu**: nazwa, kategoria nadrzędna
 
-Łączenie wszystkich tych danych z spłaszczonym zestawem wierszy, które można przetworzyć w indeks wyszukiwania, jest celem tego przykładu. 
+Połączenie wszystkich tych danych w spłaszczony zestaw wierszy, które mogą być spożywane w indeksie wyszukiwania jest celem tego przykładu. 
 
-## <a name="considering-our-options"></a>Rozważanie naszych opcji
+## <a name="considering-our-options"></a>Biorąc pod uwagę nasze opcje
 
-Podejście algorytmie byłoby indeksować wszystkie wiersze z tabeli produktów (przyłączone tam, gdzie to stosowne), ponieważ tabela produktów zawiera najbardziej szczegółowe informacje. Jednak takie podejście uwidacznia indeks wyszukiwania na postrzegane duplikaty w zestawie wyników. Na przykład model Road-650 jest dostępny w dwóch kolorach i sześciu rozmiarach. Dla zapytania o "rowery Bikes" można następnie pomieścić dwanaście wystąpień tego samego modelu, zróżnicowane tylko według rozmiaru i koloru. Pozostałe sześć modeli specyficznych dla dróg relegated się na świecie zweryfikowałoe: druga strona.
+Naiwnym podejściem byłoby indeksować wszystkie wiersze z product tabeli (połączone w stosownych przypadkach), ponieważ Product tabeli ma najbardziej szczegółowych informacji. Jednak takie podejście będzie uwidocznić indeks wyszukiwania do postrzeganych duplikatów w pliku wyników. Na przykład model Road-650 jest dostępny w dwóch kolorach i sześciu rozmiarach. Zapytanie dotyczące "rowerów szosowych" byłoby następnie zdominowane przez dwanaście wystąpień tego samego modelu, zróżnicowanych tylko pod względem rozmiaru i koloru. Pozostałe sześć modeli specyficznych dla dróg zostanie zdegradowanych do dosyć świata wyszukiwania: strona druga.
 
   ![Lista produktów](./media/search-example-adventureworks/products-list.png "Lista produktów")
  
-Należy zauważyć, że model Road-650 ma 12 opcji. Wiersze "jeden do wielu" są najlepiej reprezentowane jako pola wielowartościowe lub pola wartości wstępnie zagregowanych w indeksie wyszukiwania.
+Należy zauważyć, że model Road-650 ma dwanaście opcji. Wiersze jednostek jeden do wielu najlepiej są reprezentowane jako pola wielowartościowe lub wstępnie zagregowane pola wartości w indeksie wyszukiwania.
 
-Rozwiązanie tego problemu nie jest tak proste jak przeniesienie docelowego indeksu do tabeli ProductModel. Spowoduje to zignorowanie ważnych danych w tabeli Product, które powinny być reprezentowane w wynikach wyszukiwania.
+Rozwiązanie tego problemu nie jest tak proste, jak przeniesienie indeksu docelowego do tabeli ProductModel. W ten sposób można zignorować ważne dane w product tabeli, które nadal powinny być reprezentowane w wynikach wyszukiwania.
 
-## <a name="use-a-collection-data-type"></a>Użyj typu danych kolekcji
+## <a name="use-a-collection-data-type"></a>Używanie typu danych kolekcji
 
-"Prawidłowe podejście" polega na użyciu funkcji wyszukiwania w schemacie, która nie ma bezpośredniego operatora równoległego w modelu bazy danych: **Kolekcja (EDM. String)** . Ta konstrukcja jest definiowana w schemacie indeksu Wyszukiwanie poznawcze platformy Azure. Typ danych kolekcji jest używany, gdy trzeba przedstawić listę pojedynczych ciągów, a nie bardzo długi (pojedynczy) ciąg. Jeśli masz Tagi lub słowa kluczowe, użyj typu danych kolekcji dla tego pola.
+"Poprawne podejście" polega na wykorzystaniu funkcji schematu wyszukiwania, która nie ma bezpośredniego równoległego w modelu bazy danych: **Collection(Edm.String).** Ta konstrukcja jest zdefiniowana w schemacie indeksu usługi Azure Cognitive Search. Typ danych kolekcji jest używany, gdy trzeba reprezentować listę poszczególnych ciągów, a nie bardzo długi (pojedynczy) ciąg. Jeśli masz tagi lub słowa kluczowe, należy użyć typu danych kolekcji dla tego pola.
 
-Przez definiowanie pól indeksu wielowartościowego **kolekcji (EDM. String)** dla "Color", "size" i "Image" informacje pomocnicze są zachowywane dla aspektów i filtrowania bez zanieczyszczania indeksu ze zduplikowanymi wpisami. Analogicznie Zastosuj funkcje agregujące do pól liczbowych produktu, indeksowanie **minListPrice** zamiast każdego pojedynczego produktu **listPrice**.
+Definiując wielowartościowe pola indeksu **Collection(Edm.String)** dla "color", "size" i "image", informacje pomocnicze są zachowywane do fasetowania i filtrowania bez zanieczyszczania indeksu zduplikowanymi wpisami. Podobnie zastosuj funkcje agregujące do pól liczbowych Produktu, indeksując **minListPrice** zamiast każdej **pojedynczej listy produktówCece**.
 
-Mając indeks z tymi strukturami, wyszukiwanie "Mountain Bikes" będzie zawierać odrębne modele roweru, przy zachowaniu ważnych metadanych, takich jak kolor, rozmiar i najniższa cena. Poniższy zrzut ekranu przedstawia ilustrację.
+Biorąc pod uwagę indeks z tych struktur, wyszukiwanie "rowery górskie" pokaże dyskretne modele rowerów, przy jednoczesnym zachowaniu ważnych metadanych, takich jak kolor, rozmiar i najniższa cena. Poniższy zrzut ekranu zawiera ilustrację.
 
-  ![Przykład wyszukiwania roweru górskiego](./media/search-example-adventureworks/mountain-bikes-visual.png "Przykład wyszukiwania roweru górskiego")
+  ![Przykład wyszukiwania rowerów górskich](./media/search-example-adventureworks/mountain-bikes-visual.png "Przykład wyszukiwania rowerów górskich")
 
 ## <a name="use-script-for-data-manipulation"></a>Używanie skryptu do manipulowania danymi
 
-Niestety, tego typu modelowania nie można łatwo osiągnąć za poorednictwem instrukcji SQL. Zamiast tego należy użyć prostego skryptu NodeJS do załadowania danych, a następnie zamapowania ich do jednostek JSON przyjaznych dla wyszukiwania.
+Niestety tego typu modelowania nie można łatwo osiągnąć za pomocą instrukcji SQL sam. Zamiast tego użyj prostego skryptu NodeJS, aby załadować dane, a następnie zamapuj je na przyjazne dla wyszukiwania jednostki JSON.
 
-Ostateczne mapowanie wyszukiwania bazy danych wygląda następująco:
+Końcowe mapowanie wyszukiwania bazy danych wygląda następująco:
 
-+ Model (EDM. String: wyszukiwanie, filtrowanie, pobieranie) z "ProductModel.Name"
-+ description_en (EDM. String: wyszukiwanie) z "ProductDescription" dla modelu, gdzie Culture = "pl"
-+ Color (kolekcja (EDM. String): możliwość wyszukiwania, filtrowania, tworzenia i pobierania): unikatowe wartości z "Product. Color" dla modelu
-+ size (kolekcja (EDM. String): możliwość wyszukiwania, filtrowania, tworzenia i pobierania): unikatowe wartości z "Product. size" dla modelu
-+ Image (Collection (EDM. String): możliwy do pobrania): unikatowe wartości z "Product. ThumbnailPhoto" dla modelu
-+ minStandardCost (EDM. Double: możliwość filtrowania, tworzenia i sortowania): agregowanie minimum wszystkich "Product. StandardCost" dla modelu
-+ minListPrice (EDM. Double: możliwość filtrowania, tworzenia i sortowania): agregowanie minimum wszystkich "Product. ListPrice" dla modelu
-+ minWeight (EDM. Double: możliwość filtrowania, tworzenia i sortowania): zagregowana wartość minimalna wszystkich "Product. wag" dla modelu
-+ Produkty (kolekcja (EDM. String): możliwość wyszukiwania, filtrowania, pobierania): unikatowe wartości z "Product.Name" dla modelu
++ model (Edm.String: przeszukiwalny, filtrowany, można go pobrać) z "ProductModel.Name"
++ description_en (Edm.String: searchable) z "ProductDescription" dla modelu, w którym culture='en'
++ color (Collection(Edm.String): przeszukiwalny, filtrowany, typowalny, można go pobrać): unikatowe wartości z "Product.Color" dla modelu
++ size (Kolekcja(Edm.String): przeszukiwalny, filtrowany, typowalny, można go pobrać): unikatowe wartości z "Produktu.Rozmiar" dla modelu
++ obraz (Kolekcja(Edm.String): możliwe do pobrania): unikatowe wartości z "Product.ThumbnailPhoto" dla modelu
++ minStandardCost (Edm.Double: filtrowalne, typowalne, sortowalne, możliwe do pobrania): zagregowane minimum wszystkich "Product.StandardCost" dla modelu
++ minListPrice (Edm.Double: filtrowalne, typowalne, sortowalne, możliwe do pobrania): zagregowane minimum wszystkich "Product.ListPrice" dla modelu
++ minWeight (Edm.Double: filtrowalne, fasetowalne, sortowalne, możliwe do pobrania): zagregowane minimum wszystkich "Product.Weight" dla modelu
++ produkty (Kolekcja(Edm.String): przeszukiwalne, filtrowalne, możliwe do pobrania): unikalne wartości z "Product.Name" dla modelu
 
-Po dołączeniu tabeli ProductModel do produktu i ProductDescription Użyj [lodash](https://lodash.com/) (lub LINQ in C#), aby szybko przekształcić zestaw wyników:
+Po dołączeniu do tabeli ProductModel z produktem i ProductDescription użyj [lodash](https://lodash.com/) (lub Linq w języku C#), aby szybko przekształcić zestaw wyników:
 
 ```javascript
 var records = queryYourDatabase();
@@ -93,7 +93,7 @@ var models = _(records)
   .value();
 ```
 
-Wynikowy kod JSON wygląda następująco:
+Wynikowy JSON wygląda następująco:
 
 ```json
 [
@@ -137,7 +137,7 @@ Wynikowy kod JSON wygląda następująco:
 ]
 ```
 
-Na koniec jest to zapytanie SQL zwracające początkowy zestaw rekordów. Moduł [MSSQL](https://www.npmjs.com/package/mssql) npm został użyty do załadowania danych do aplikacji NodeJS.
+Na koniec oto zapytanie SQL, aby zwrócić początkowy rekord. Użyłem modułu [mssql](https://www.npmjs.com/package/mssql) npm, aby załadować dane do mojej aplikacji NodeJS.
 
 ```T-SQL
 SELECT
@@ -163,4 +163,4 @@ WHERE
 ## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Przykład: wielopoziom Taksonomie aspektów na platformie Azure Wyszukiwanie poznawcze](search-example-adventureworks-multilevel-faceting.md)
+> [Przykład: Taksonomie wielopoziomowe w usłudze Azure Cognitive Search](search-example-adventureworks-multilevel-faceting.md)

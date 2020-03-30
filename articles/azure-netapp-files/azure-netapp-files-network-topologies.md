@@ -1,6 +1,6 @@
 ---
-title: Wskazówki dotyczące planowania Azure NetApp Files sieci | Microsoft Docs
-description: Opisuje wskazówki, które mogą pomóc w zaprojektowaniu efektywnej architektury sieci przy użyciu Azure NetApp Files.
+title: Wskazówki dotyczące planowania sieci usługi Azure NetApp Files | Dokumenty firmy Microsoft
+description: W tym artykule opisano wskazówki, które mogą pomóc w projektowaniu efektywnej architektury sieci przy użyciu plików NetApp platformy Azure.
 services: azure-netapp-files
 documentationcenter: ''
 author: ram-kakani
@@ -15,116 +15,116 @@ ms.topic: conceptual
 ms.date: 05/08/2019
 ms.author: b-juche
 ms.openlocfilehash: 8e6a1c3472c6b20b27cf181edbeeb96ab71eb58d
-ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/31/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73242475"
 ---
 # <a name="guidelines-for-azure-netapp-files-network-planning"></a>Wytyczne dotyczące planowania sieci usługi Azure NetApp Files
 
-Planowanie architektury sieci to kluczowy element projektowania dowolnej infrastruktury aplikacji. Ten artykuł pomaga w projektowaniu efektywnej architektury sieci na potrzeby obciążeń, aby korzystać z zaawansowanych możliwości Azure NetApp Files.
+Planowanie architektury sieci jest kluczowym elementem projektowania dowolnej infrastruktury aplikacji. Ten artykuł ułatwia projektowanie efektywnej architektury sieci dla obciążeń, aby korzystać z rozbudowanych możliwości plików NetApp platformy Azure.
 
-Woluminy Azure NetApp Files są zaprojektowane w celu zapełnienia w podsieć specjalnego przeznaczenia o nazwie [delegowana podsieć](https://docs.microsoft.com/azure/virtual-network/virtual-network-manage-subnet) w ramach Virtual Network platformy Azure. Z tego względu można uzyskać dostęp do woluminów bezpośrednio z sieci wirtualnej, z sieci wirtualnych komunikacji równorzędnej w tym samym regionie lub lokalnie za pośrednictwem bramy Virtual Network (ExpressRoute lub VPN Gateway) w razie potrzeby. Podsieć jest przeznaczona dla Azure NetApp Files i nie ma łączności z innymi usługami platformy Azure ani z Internetem.
+Woluminy usługi Azure NetApp Files są przeznaczone do umieszczenia w podsieci specjalnego przeznaczenia o nazwie [delegowanej podsieci](https://docs.microsoft.com/azure/virtual-network/virtual-network-manage-subnet) w sieci wirtualnej platformy Azure. W związku z tym można uzyskać dostęp do woluminów bezpośrednio z sieci wirtualnej, z równorzędnych sieci wirtualnych w tym samym regionie lub z lokalnego za pośrednictwem bramy sieci wirtualnej (usługi ExpressRoute lub bramy sieci VPN), jeśli to konieczne. Podsieć jest dedykowana do plików NetApp platformy Azure i nie ma łączności z innymi usługami platformy Azure lub Internetem.
 
 ## <a name="considerations"></a>Zagadnienia do rozważenia  
 
-Należy pamiętać o kilku kwestiach związanych z planowaniem Azure NetApp Files sieci.
+Należy zrozumieć kilka zagadnień podczas planowania dla sieci Azure NetApp Files.
 
 ### <a name="constraints"></a>Ograniczenia
 
-Poniższe funkcje nie są obecnie obsługiwane w przypadku Azure NetApp Files: 
+Poniższe funkcje są obecnie nieobsługiwały dla usługi Azure NetApp Files: 
 
-* Sieciowe grupy zabezpieczeń (sieciowych grup zabezpieczeń) zastosowane do delegowanej podsieci
-* Trasy zdefiniowane przez użytkownika (UDR) z prefiksem adresu jako podsieć usługi Azure NetApp Files
-* Zasady platformy Azure (na przykład niestandardowe zasady nazewnictwa) w interfejsie Azure NetApp Files
-* Usługi równoważenia obciążenia dla ruchu Azure NetApp Filesowego
+* Sieciowe grupy zabezpieczeń (NSG) stosowane do delegowanej podsieci
+* Trasy zdefiniowane przez użytkownika (UDR) z prefiksem adresu jako podsieci plików NetApp platformy Azure
+* Zasady platformy Azure (na przykład niestandardowe zasady nazewnictwa) w interfejsie plików NetApp platformy Azure
+* Moduły równoważenia obciążenia dla ruchu plików NetApp platformy Azure
 
-Następujące ograniczenia dotyczące sieci mają zastosowanie do Azure NetApp Files:
+Następujące ograniczenia sieciowe dotyczą plików NetApp platformy Azure:
 
-* Liczba adresów IP używanych w sieci wirtualnej z Azure NetApp Files (w tym sieci wirtualnych komunikacji równorzędnej) nie może przekraczać 1000. Pracujemy nad zwiększeniem tego limitu, aby spełnić wymagania dotyczące skalowania klientów. W tymczasowym przypadku, jeśli potrzebujesz więcej adresów IP, skontaktuj się z naszym zespołem pomocy technicznej, korzystając z przypadku użycia i wymaganego limitu.
+* Liczba obiektów IP używanych w sieci wirtualnej z plikami NetApp platformy Azure (w tym równorzędnych sieci wirtualnych) nie może przekraczać 1000. Pracujemy nad zwiększeniem tego limitu, aby sprostać wymaganiom klientów. W międzyczasie, jeśli potrzebujesz więcej wiadomości IP, skontaktuj się z naszym zespołem pomocy technicznej z przypadkiem użycia i wymaganym limitem.
 * W każdej sieci wirtualnej Azure Virtual Network (VNet) można delegować tylko jedną podsieć do usługi Azure NetApp Files.
 
 
 ### <a name="supported-network-topologies"></a>Obsługiwane topologie sieci
 
-W poniższej tabeli opisano topologie sieci obsługiwane przez Azure NetApp Files.  Opisano w nim również obejścia dla nieobsługiwanych topologii. 
+W poniższej tabeli opisano topologie sieci obsługiwane przez usługi Azure NetApp Files.  Opisano w nim również obejścia nieobsługiwionych topologii. 
 
-|    Topologie    |    Jest obsługiwana    |     Obejście    |
+|    Topologie    |    Jest obsługiwany    |     Obejście    |
 |-------------------------------------------------------------------------------------------------------------------------------|--------------------|-----------------------------------------------------------------------------|
 |    Łączność z woluminem w lokalnej sieci wirtualnej    |    Tak    |         |
-|    Łączność z woluminem w równorzędnej sieci wirtualnej (ten sam region)    |    Tak    |         |
-|    Łączność z woluminem w równorzędnej sieci wirtualnej (między regionem lub globalną komunikację równorzędną)    |    Nie    |    Brak    |
-|    Łączność z woluminem za pośrednictwem bramy ExpressRoute    |    Tak    |         |
-|    Łączność z miejsca lokalnego do woluminu w sieci wirtualnej szprych za pośrednictwem bramy ExpressRoute i komunikacji równorzędnej sieci wirtualnej z tranzytem bramy    |    Tak    |        |
-|    Łączność między lokacjami lokalnymi a woluminem w sieci wirtualnej szprych za pośrednictwem bramy sieci VPN    |    Tak    |         |
-|    Łączność między lokacjami lokalnymi a woluminem w sieci wirtualnej szprych za pośrednictwem bramy VPN i komunikacji równorzędnej sieci wirtualnej z tranzytem bramy    |    Tak    |         |
+|    Łączność z woluminem w sieci wirtualnej równorzędnej (ten sam region)    |    Tak    |         |
+|    Łączność z woluminem w równorzędnej sieci wirtualnej (region krzyżowy lub globalna komunikacja równorzędna)    |    Nie    |    Brak    |
+|    Łączność z woluminem za 2000 usługi ExpressRoute    |    Tak    |         |
+|    Łączność z lokalnego do woluminu w sieci wirtualnej szprychy za pomocą bramy usługi ExpressRoute i komunikacji równorzędnej sieci wirtualnej z przesyłaniem bramy    |    Tak    |        |
+|    Łączność z lokalnego do woluminu w sieci wirtualnej szprychy za pośrednictwem bramy sieci VPN    |    Tak    |         |
+|    Łączność z lokalnego do woluminu w sieci wirtualnej szprychy za pośrednictwem bramy sieci VPN i komunikacji równorzędnej sieci wirtualnej z przesyłaniem bramy    |    Tak    |         |
 
 
-## <a name="virtual-network-for-azure-netapp-files-volumes"></a>Sieć wirtualna dla woluminów Azure NetApp Files
+## <a name="virtual-network-for-azure-netapp-files-volumes"></a>Sieć wirtualna dla woluminów plików NetApp platformy Azure
 
-W tej sekcji opisano pojęcia, które ułatwiają planowanie sieci wirtualnych.
+W tej sekcji opisano pojęcia, które pomagają w planowaniu sieci wirtualnej.
 
 ### <a name="azure-virtual-networks"></a>Sieci wirtualne platformy Azure
 
-Przed zainicjowaniem obsługi woluminu Azure NetApp Files należy utworzyć sieć wirtualną platformy Azure lub użyć jej, która już istnieje w subskrypcji. Sieć wirtualna definiuje granicę sieci dla woluminu.  Aby uzyskać więcej informacji na temat tworzenia sieci wirtualnych, zobacz [dokumentację usługi Azure Virtual Network](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview).
+Przed zainicjowaniem obsługi administracyjnej woluminu plików NetApp platformy Azure należy utworzyć sieć wirtualną platformy Azure lub użyć sieci wirtualnej, która już istnieje w ramach subskrypcji. Sieć wirtualna definiuje granicę sieci woluminu.  Aby uzyskać więcej informacji na temat tworzenia sieci wirtualnych, zobacz [dokumentację sieci wirtualnej platformy Azure](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview).
 
 ### <a name="subnets"></a>Podsieci
 
-Podsieci segmentuje sieć wirtualną w oddzielnych przestrzeniach adresowych, które są używane przez zasoby platformy Azure.  Woluminy Azure NetApp Files są zawarte w podsieci w specjalnym przeznaczeniu nazywanym [delegowaną podsiecią](https://docs.microsoft.com/azure/virtual-network/virtual-network-manage-subnet). 
+Podsieci segment sieci wirtualnej do oddzielnych przestrzeni adresowych, które są użyteczne przez zasoby platformy Azure w nich.  Woluminy usługi Azure NetApp Files znajdują się w podsieci specjalnego przeznaczenia zwanej [podsiecią delegowanej](https://docs.microsoft.com/azure/virtual-network/virtual-network-manage-subnet). 
 
-Delegowanie podsieci daje jawne uprawnienia do usługi Azure NetApp Files do tworzenia zasobów specyficznych dla usługi w podsieci.  Używa unikatowego identyfikatora podczas wdrażania usługi. W takim przypadku tworzony jest interfejs sieciowy, aby umożliwić łączność z Azure NetApp Files.
+Delegowanie podsieci daje jawne uprawnienia do usługi Azure NetApp Files do tworzenia zasobów specyficznych dla usługi w podsieci.  Używa unikatowego identyfikatora podczas wdrażania usługi. W takim przypadku tworzony jest interfejs sieciowy, aby umożliwić łączność z plikami NetApp platformy Azure.
 
-Jeśli używasz nowej sieci wirtualnej, możesz utworzyć podsieć i delegować podsieć do Azure NetApp Files, wykonując instrukcje podane w temacie [delegowanie podsieci do Azure NetApp Files](azure-netapp-files-delegate-subnet.md). Istnieje również możliwość delegowania istniejącej pustej podsieci, która nie została jeszcze delegowana do innych usług.
+Jeśli używasz nowej sieci wirtualnej, możesz utworzyć podsieć i delegować podsieć do usługi Azure NetApp Files, postępując zgodnie z instrukcjami w [aplikacji Delegowanie podsieci do plików NetApp platformy Azure.](azure-netapp-files-delegate-subnet.md) Można również delegować istniejącą pustą podsieć, która nie jest jeszcze delegowana do innych usług.
 
-Jeśli sieć wirtualna jest połączona z inną siecią wirtualną, nie można rozszerzyć przestrzeni adresowej sieci wirtualnej. Z tego powodu należy utworzyć nową delegowaną podsieć w obszarze adresów sieci wirtualnej. Jeśli musisz rozszerzyć przestrzeń adresową, musisz usunąć komunikację równorzędną sieci wirtualnej przed zwiększeniem przestrzeni adresowej.
+Jeśli sieć wirtualna jest równorzędna z inną siecią wirtualną, nie można rozwinąć przestrzeni adresowej sieci wirtualnej. Z tego powodu nowa podsieć delegowane musi zostać utworzona w przestrzeni adresowej sieci wirtualnej. Jeśli chcesz rozszerzyć przestrzeń adresową, należy usunąć komunikację równorzędnych sieci wirtualnej przed rozwinięciem przestrzeni adresowej.
 
-### <a name="udrs-and-nsgs"></a>UDR i sieciowych grup zabezpieczeń
+### <a name="udrs-and-nsgs"></a>UDR i NSG
 
-Trasy zdefiniowane przez użytkownika (UDR) i sieciowe grupy zabezpieczeń (sieciowych grup zabezpieczeń) nie są obsługiwane w delegowanych podsieciach dla Azure NetApp Files.
+Trasy zdefiniowane przez użytkownika (UDR) i sieciowe grupy zabezpieczeń (NSG) nie są obsługiwane w podsieciach delegowanych dla plików NetApp Usługi Azure.
 
-Aby obejść ten sposób, można zastosować sieciowych grup zabezpieczeń do innych podsieci, które zezwalają na ruch do i z delegowanej podsieci Azure NetApp Files.  
+Aby obejść ten problem, można zastosować sieciowe sieciowe do innych podsieci, które zezwalają lub odmawiają ruchu do i z podsieci delegowanej usługi Azure NetApp Files.  
 
-## <a name="azure-native-environments"></a>Środowiska natywne platformy Azure
+## <a name="azure-native-environments"></a>Środowiska macierzyste platformy Azure
 
-Na poniższym diagramie przedstawiono środowisko platformy Azure w języku macierzystym:
+Na poniższym diagramie przedstawiono środowisko natywne platformy Azure:
 
-![Środowisko sieci natywnej platformy Azure](../media/azure-netapp-files/azure-netapp-files-network-azure-native-environment.png)
+![Środowisko sieci natywne platformy Azure](../media/azure-netapp-files/azure-netapp-files-network-azure-native-environment.png)
 
 ### <a name="local-vnet"></a>Lokalna sieć wirtualna
 
-Podstawowym scenariuszem jest utworzenie lub nawiązanie połączenia z woluminem Azure NetApp Files z maszyny wirtualnej (VM) w tej samej sieci wirtualnej. W przypadku sieci wirtualnej 2 na powyższym diagramie wolumin 1 jest tworzony w delegowanej podsieci i można go zainstalować na maszynie wirtualnej 1 w podsieci domyślnej.
+Podstawowym scenariuszem jest utworzenie lub połączenie z woluminem usługi Azure NetApp Files z maszyny wirtualnej (VM) w tej samej sieci wirtualnej. Dla sieci wirtualnej 2 na powyższym diagramie wolumin 1 jest tworzony w podsieci delegowanej i może być zainstalowany na maszynie Wirtualnej 1 w domyślnej podsieci.
 
-### <a name="vnet-peering"></a>Wirtualne sieci równorzędne
+### <a name="vnet-peering"></a>Komunikacja równorzędna sieci wirtualnych
 
-Jeśli masz dodatkowe sieci wirtualnych w tym samym regionie, które potrzebują dostępu do zasobów każdego z nich, sieci wirtualnych można połączyć za pomocą [komunikacji równorzędnej sieci wirtualnej](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview) , aby zapewnić bezpieczną łączność za pośrednictwem infrastruktury platformy Azure. 
+Jeśli masz dodatkowe sieci wirtualne w tym samym regionie, które wymagają dostępu do zasobów innych, sieci wirtualne mogą być połączone przy użyciu [komunikacji równorzędnej sieci wirtualnej,](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview) aby włączyć bezpieczną łączność za pośrednictwem infrastruktury platformy Azure. 
 
-Rozważ użycie sieci VNet 2 i sieci wirtualnej 3 na powyższym diagramie. Jeśli maszyna wirtualna 1 musi nawiązać połączenie z maszyną wirtualną 2 lub 2, lub jeśli maszyna wirtualna 2 musi nawiązać połączenie z maszyną wirtualną 1 lub wolumin 1, należy włączyć komunikację równorzędną sieci wirtualnej między siecią wirtualną 2 i siecią wirtualną 3. 
+Należy wziąć pod uwagę sieci wirtualnej 2 i sieci wirtualnej 3 na powyższym diagramie. Jeśli maszyna wirtualna 1 musi połączyć się z maszyną wirtualną 2 lub woluminem 2 lub jeśli maszyna wirtualna 2 musi połączyć się z maszyną wirtualną 1 lub woluminem 1, należy włączyć komunikację równorzędnych sieci wirtualnej między siecią wirtualną 2 i siecią wirtualną 3. 
 
-Ponadto Rozważmy scenariusz, w którym sieć wirtualna 1 jest połączona z siecią VNet 2, a sieć wirtualna 2 jest połączona z siecią VNet 3 w tym samym regionie. Zasoby z sieci wirtualnej 1 mogą łączyć się z zasobami na platformie sieci wirtualnej 2, ale nie mogą łączyć się z zasobami w VNet 3, chyba że sieć wirtualna 1 i Sieć wirtualna 3 są połączone za pomocą komunikacji równorzędnej. 
+Ponadto należy wziąć pod uwagę scenariusz, w którym sieć wirtualna 1 jest równorzędna z siecią wirtualną 2, a sieć wirtualna 2 jest równorzędna z siecią wirtualną 3 w tym samym regionie. Zasoby z sieci wirtualnej 1 można połączyć się z zasobami w sieci wirtualnej 2, ale nie można połączyć się z zasobami w sieci wirtualnej 3, chyba że sieć wirtualna 1 i sieć wirtualna 3 są równorzędne. 
 
-Na powyższym diagramie, chociaż maszyna wirtualna 3 może połączyć się z woluminem 1, maszyna wirtualna 4 nie może nawiązać połączenia z woluminem 2.  Przyczyną tego jest to, że sieci wirtualnych szprych nie są połączone za pomocą komunikacji równorzędnej, a _Routing tranzytowy nie jest obsługiwany w przypadku komunikacji równorzędnej sieci_wirtualnych.
+Na powyższym diagramie, chociaż maszyna wirtualna 3 może łączyć się z woluminem 1, maszyna wirtualna 4 nie może połączyć się z woluminem 2.  Powodem tego jest to, że szprychowe sieci wirtualne nie są równorzędne, a _routing tranzytowy nie jest obsługiwany przez komunikację równorzędnie sieci wirtualnej_.
 
 ## <a name="hybrid-environments"></a>Środowiska hybrydowe
 
 Na poniższym diagramie przedstawiono środowisko hybrydowe: 
 
-![Środowisko sieci hybrydowej](../media/azure-netapp-files/azure-netapp-files-network-hybrid-environment.png)
+![Hybrydowe środowisko sieciowe](../media/azure-netapp-files/azure-netapp-files-network-hybrid-environment.png)
 
-W scenariuszu hybrydowym aplikacje z lokalnych centrów danych potrzebują dostępu do zasobów na platformie Azure.  W takim przypadku należy rozłożyć centrum danych na platformę Azure lub korzystać z usług natywnych platformy Azure lub odzyskiwania po awarii. Aby uzyskać informacje na temat sposobu łączenia wielu zasobów lokalnych z zasobami na platformie Azure za pośrednictwem sieci VPN typu lokacja-lokacja lub ExpressRoute, zobacz [VPN Gateway temat Opcje planowania](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways?toc=%2fazure%2fvirtual-network%2ftoc.json#planningtable) .
+W scenariuszu hybrydowym aplikacje z lokalnych centrów danych potrzebują dostępu do zasobów na platformie Azure.  Ma to miejsce niezależnie od tego, czy chcesz rozszerzyć centrum danych na platformę Azure, czy chcesz użyć usług natywnych platformy Azure, czy do odzyskiwania po awarii. Zobacz [opcje planowania bramy sieci VPN,](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways?toc=%2fazure%2fvirtual-network%2ftoc.json#planningtable) aby uzyskać informacje na temat łączenia wielu zasobów lokalnych z zasobami na platformie Azure za pośrednictwem sieci VPN typu lokacja lokacja lub usługi ExpressRoute.
 
-W hybrydowej topologii gwiazdy koncentratora Sieć wirtualna na platformie Azure działa jako centralny punkt łączności z siecią lokalną. Szprychy są sieci wirtualnych za pomocą komunikacji równorzędnej z centrum i mogą być używane do izolowania obciążeń.
+W hybrydowej topologii szprychy koncentratora sieci wirtualnej centrum na platformie Azure działa jako centralny punkt łączności z siecią lokalną. Szprychy są sieci wirtualne równorzędne z koncentratora i mogą być używane do izolowania obciążeń.
 
-W zależności od konfiguracji można połączyć zasoby lokalne z zasobami w centrum i szprych.
+W zależności od konfiguracji można połączyć zasoby lokalne z zasobami w centrum i szprychami.
 
-W topologii zilustrowanej powyżej, Sieć lokalna jest połączona z centralną siecią wirtualną na platformie Azure, a w tym samym regionie istnieje 2 szprychy sieci wirtualnych z siecią wirtualną koncentratora.  W tym scenariuszu opcje łączności obsługiwane dla woluminów Azure NetApp Files są następujące:
+W topologii zilustrowane powyżej sieci lokalnej jest podłączony do sieci wirtualnej koncentratora na platformie Azure i istnieją 2 szprychy sieci wirtualne w tym samym regionie równorzędne z sieci wirtualnej centrum.  W tym scenariuszu opcje łączności obsługiwane dla woluminów plików NetApp usługi Azure są następujące:
 
-* Zasoby lokalne VM 1 i VM 2 mogą łączyć się z woluminem 1 w centrum za pośrednictwem sieci VPN lub obwodu ExpressRoute. 
-* Lokalne zasoby maszyn wirtualnych 1 i VM 2 mogą łączyć się z woluminem 2 lub 3 za pośrednictwem sieci VPN typu lokacja-lokacja i regionalnej sieci równorzędnej.
-* Maszyna wirtualna 3 w koncentratorze sieci wirtualnej może nawiązać połączenie z woluminem 2 w sieci VNET sieci wirtualnej 1 i 3 w szprychy/2.
-* W przypadku maszyny wirtualnej 4 z sieci wirtualnej szprych 1 i VM 5 z szprychy sieci wirtualnej 2 można nawiązać połączenie z woluminem 1 w sieci wirtualnej centrum.
+* Zasoby lokalne Maszyny Wirtualne 1 i VM 2 mogą łączyć się z woluminem 1 w koncentratorze za pośrednictwem usługi VPN lokacja lokacja lub obwodu usługi ExpressRoute. 
+* Zasoby lokalne Maszyny Wirtualne 1 i VM 2 mogą łączyć się z woluminem 2 lub woluminem 3 za pośrednictwem sieci VPN między lokacjami i regionalnej komunikacji równorzędnej sieci wirtualnej.
+* Maszyna wirtualna 3 w sieci wirtualnej koncentratora może łączyć się z woluminem 2 w sieci wirtualnej szprychy 1 i woluminie 3 w sieci wirtualnej szprychy 2.
+* Maszyna wirtualna 4 z szprychy VNet 1 i VM 5 z szprychy VNet 2 można połączyć się z woluminu 1 w sieci wirtualnej koncentratora.
 
-Maszyna wirtualna 4 w sieci wirtualnej szprych 1 nie może nawiązać połączenia z woluminem 3 w sieci wirtualnej szprych 2. Ponadto maszyna wirtualna 5 w VNet2 szprych nie może nawiązać połączenia z woluminem 2 w sieci wirtualnej szprych 1. Dzieje się tak, ponieważ sieci wirtualnych szprych nie są równorzędne i _Routing tranzytowy nie jest obsługiwany za pośrednictwem komunikacji równorzędnej sieci wirtualnej_.
+VM 4 w szprychowej sieci wirtualnej 1 nie może połączyć się z woluminem 3 w sieci wirtualnej szprychy 2. Ponadto VM 5 w szprychy VNet2 nie może połączyć się z woluminem 2 w szprychy VNet 1. Dzieje się tak, ponieważ sieci wirtualne szprychy nie są równorzędne, a _routing tranzytowy nie jest obsługiwany przez komunikację równorzędnie sieci wirtualnej_.
 
 ## <a name="next-steps"></a>Następne kroki
 

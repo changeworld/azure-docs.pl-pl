@@ -1,64 +1,60 @@
 ---
-title: NDv2 — seria Virtual Machines platformy Azure
-description: Specyfikacje dotyczące maszyn wirtualnych z serii NDv2.
+title: Seria NDv2 — maszyny wirtualne platformy Azure
+description: Dane techniczne maszyn wirtualnych serii NDv2.
 services: virtual-machines
 author: vikancha
 ms.service: virtual-machines
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: lahugh
-ms.openlocfilehash: 1aa2a6402a58ba69a7b5999803bb10d48169a035
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.openlocfilehash: 8a2d275501816dd504130b255b73a752c5615f0d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78267436"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80247286"
 ---
-# <a name="updated-ndv2-series-preview"></a>Zaktualizowana seria NDv2 (wersja zapoznawcza)
+# <a name="updated-ndv2-series"></a>Zaktualizowano serię NDv2
 
-Maszyna wirtualna z serii NDv2 to nowa dołączenie do rodziny procesorów GPU przeznaczonej do potrzeb najbardziej wymagających obciążeń procesora GPU, uczenia maszynowego, symulacji i wdrożenia HPC.
+Maszyna wirtualna z serii NDv2 to nowy dodatek do rodziny procesorów graficznych zaprojektowany z myślą o potrzebach najbardziej wymagających obciążeń AI przyspieszanych przez procesory graficzne, uczenia maszynowego, symulacji i hpc.
 
-NDv2 jest obsługiwany przez 8 NVIDIA Tesla V100 NVLINK-podłączonych procesorów GPU, z których każdy ma 32 GB pamięci GPU. Każda maszyna wirtualna NDv2 ma także 40 rdzenie procesora Intel Xeon Platinum 8168 (Skylake) i 672 GiB pamięci systemowej.
+NDv2 jest zasilany przez 8 procesorów graficznych NVIDIA Tesla V100 NVLINK, z których każdy ma 32 GB pamięci GPU. Każdy NDv2 VM ma również 40 niedemotliwych rdzeni Intel Xeon Platinum 8168 (Skylake) i 672 GiB pamięci systemowej.
 
-Wystąpienia NDv2 zapewniają doskonałą wydajność obciążeń HPC i AI wykorzystujących jądra CUDA z zoptymalizowanymi procesorami GPU, a także wiele narzędzi typu AI, ML i analitycznego, które obsługują Przyspieszenie GPU ", takie jak TensorFlow, Pytorch, Caffe, RAPIDS i inne platform.
+Wystąpienia NDv2 zapewniają doskonałą wydajność dla obciążeń HPC i AI z wykorzystaniem jąder obliczeniowych zoptymalizowanych pod kątem procesora GRAFICZNEGO CUDA oraz wielu narzędzi AI, ML i analitycznych, które obsługują akcelerację GPU "out-of-box", takich jak TensorFlow, Pytorch, Caffe, RAPIDS i inne Ram.
 
-Krytycznie, NDv2 jest zbudowany na potrzeby skalowania w górę i skalowalnego w górę (włącznie z 8 procesorami GPU na maszynę wirtualną) i skalowania w poziomie (z obsługą wielu maszyn wirtualnych współpracujących) obciążeń. Seria NDv2 obsługuje teraz sieci 100-Gigabit InfiniBand EDR zaplecza, podobnie jak te dostępne w serii HB maszyny wirtualnej HPC, aby umożliwić klastrowanie o wysokiej wydajności dla scenariuszy równoległych, w tym rozmieszczonych szkoleń dla AI i ML. Ta sieć zaplecza obsługuje wszystkie główne protokoły InfiniBand, włącznie z tymi, które są używane przez biblioteki NCCL2 firmy NVIDIA, umożliwiając bezproblemowe klastrowanie procesorów GPU.
+Krytycznie, NDv2 jest przeznaczony zarówno do intensywnego skalowania obliczeniowego (wykorzystanie 8 procesorów GPU na maszynę wirtualną), jak i skalowania w poziomie (wykorzystanie wielu maszyn wirtualnych współpracujących ze sobą). Seria NDv2 obsługuje teraz sieć zaplecza EDR 100-gigabitowego InfiniBand EDR, podobną do tej dostępnej w serii HB HPC VM, aby umożliwić klastrowanie o wysokiej wydajności dla równoległych scenariuszy, w tym rozproszonych szkoleń dla AI i ML. Ta sieć zaplecza obsługuje wszystkie główne protokoły InfiniBand, w tym protokoły stosowane przez biblioteki NCCL2 firmy NVIDIA, co pozwala na bezproblemowe klastrowanie procesorów graficznych.
 
-
-> [!NOTE]
-> Podczas [włączania funkcji InfiniBand](https://docs.microsoft.com/azure/virtual-machines/workloads/hpc/enable-infiniband) na maszynie wirtualnej ND40rs_v2 należy użyć sterownika 1.0.0.1 Mellanox OFED.
+> Podczas [włączania infiniband](https://docs.microsoft.com/azure/virtual-machines/workloads/hpc/enable-infiniband) na maszynie wirtualnej ND40rs_v2, należy użyć sterownika Mellanox OFED 4.7-1.0.0.1.
 >
-> Ze względu na zwiększoną ilość pamięci GPU Nowa maszyna wirtualna ND40rs_v2 wymaga użycia [maszyn wirtualnych 2. generacji](https://docs.microsoft.com/azure/virtual-machines/windows/generation-2) i obrazów w portalu Marketplace. 
+> Ze względu na zwiększoną pamięć GPU, nowy ND40rs_v2 maszyny Wirtualnej wymaga użycia [maszyn wirtualnych generacji 2](https://docs.microsoft.com/azure/virtual-machines/windows/generation-2) i obrazów z portalu Marketplace. 
 >
-> [Utwórz konto, aby zażądać wczesnego dostępu do wersji zapoznawczej maszyny wirtualnej NDv2.](https://aka.ms/AzureNDrv2Preview)
->
-> Uwaga: ND40s_v2 z 16 GB pamięci na procesor GPU nie jest już dostępny do wersji zapoznawczej i został zastąpiony przez zaktualizowane ND40rs_v2.
+> Uwaga: ND40s_v2 z 16 GB pamięci na GPU nie jest już dostępny w wersji zapoznawczej i został zastąpiony przez zaktualizowany ND40rs_v2.
 
 <br>
 
-Premium Storage: obsługiwane
+Pamięć masowa w wersji premium: obsługiwane
 
-Buforowanie Premium Storage: obsługiwane
+Buforowanie magazynu w wersji Premium: obsługiwane
 
-Migracja na żywo: nieobsługiwane
+Migracja na żywo: nie jest obsługiwana
 
-Aktualizacje z zachowaniem pamięci: nieobsługiwane
+Aktualizacje zachowywania pamięci: nie są obsługiwane
 
-InfiniBand: obsługiwane
+InfiniBand: Obsługiwane
 
-| Rozmiar | Procesor wirtualny | Pamięć: GiB | Magazyn tymczasowy (SSD): GiB | Procesory GPU | Pamięć procesora GPU: GiB | Maks. liczba dysków danych | Maksymalna przepływność niebuforowanych dysków: liczba operacji we/wy na sekundę / MB/s | Maksymalna przepustowość sieci | Maksymalna liczba kart sieciowych |
+| Rozmiar | Procesor wirtualny | Pamięć: GiB | Magazyn tymczasowy (SSD): GiB | Procesory GPU | Pamięć GPU: GiB | Maks. liczba dysków danych | Maksymalna przepływność niebuforowanych dysków: liczba operacji we/wy na sekundę / MB/s | Maksymalna przepustowość sieci | Maksymalna liczba kart sieciowych |
 |---|---|---|---|---|---|---|---|---|---|
-| Standard_ND40rs_v2 | 40 | 672 | 2948 | 8 V100 32 GB (NVLink) | 16 | 32 | 80000/800 | 24000 MB/s | 8 |
+| Standard_ND40rs_v2 | 40 | 672 | 2948 | 8 V100 32 GB (NVLink) | 32 | 32 | 80000 / 800 | 24000 Mb/s | 8 |
 
 [!INCLUDE [virtual-machines-common-sizes-table-defs](../../includes/virtual-machines-common-sizes-table-defs.md)]
 
 ## <a name="supported-operating-systems-and-drivers"></a>Obsługiwane systemy operacyjne i sterowniki
 
-Aby skorzystać z możliwości procesora GPU maszyn wirtualnych z serii N, należy zainstalować sterowniki graficznego procesora NVIDIA.
+Aby korzystać z możliwości procesorów GPU maszyn wirtualnych z serii N platformy Azure, należy zainstalować sterowniki gpu nvidia.
 
-[Rozszerzenie sterownika NVIDIA GPU](./extensions/hpccompute-gpu-windows.md) instaluje odpowiednie sterowniki NVIDIA CUDA lub Grid na maszynie wirtualnej z serii N. Zainstaluj rozszerzenie lub Zarządzaj nim przy użyciu Azure Portal lub narzędzi, takich jak szablony Azure PowerShell lub Azure Resource Manager. Zapoznaj się z [dokumentacją rozszerzenia sterownika graficznego procesora NVIDIA](./extensions/hpccompute-gpu-windows.md) dla obsługiwanych systemów operacyjnych i kroków wdrażania. Aby uzyskać ogólne informacje o rozszerzeniach maszyn wirtualnych, zobacz [rozszerzenia i funkcje maszyny wirtualnej platformy Azure](./extensions/overview.md).
+[Rozszerzenie sterownika GPU NVIDIA](./extensions/hpccompute-gpu-linux.md) instaluje odpowiednie sterowniki NVIDIA CUDA lub GRID na maszynie wirtualnej z serii N. Zainstaluj rozszerzenie lub zarządzaj nim za pomocą witryny Azure portal lub narzędzi, takich jak szablony programu Azure PowerShell lub Usługi Azure Resource Manager. Aby uzyskać ogólne informacje na temat rozszerzeń maszyn wirtualnych, zobacz [rozszerzenia i funkcje maszyny wirtualnej platformy Azure](./extensions/overview.md).
 
-W przypadku wybrania opcji ręcznego instalowania sterowników procesora GPU firmy NVIDIA należy zapoznać się z tematem Konfiguracja [sterownika procesora GPU dla systemu Windows](./windows/n-series-driver-setup.md) lub [n-Series](./linux/n-series-driver-setup.md) w systemie Linux dla obsługiwanych systemów operacyjnych, sterowników, instalacji i kroków weryfikacyjnych.
+Jeśli zdecydujesz się zainstalować sterowniki GPU NVIDIA ręcznie, zobacz [Konfiguracja sterowników GPU serii N dla systemu Linux](./linux/n-series-driver-setup.md).
 
 ## <a name="other-sizes"></a>Inne rozmiary
 
@@ -71,4 +67,4 @@ W przypadku wybrania opcji ręcznego instalowania sterowników procesora GPU fir
 
 ## <a name="next-steps"></a>Następne kroki
 
-Dowiedz się więcej o tym, jak [usługa Azure COMPUTE units (ACU)](acu.md) może pomóc w porównaniu wydajności obliczeniowej w ramach jednostek SKU platformy Azure.
+Dowiedz się więcej o tym, jak [jednostki obliczeniowe platformy Azure (ACU)](acu.md) mogą pomóc w porównywaniu wydajności obliczeniowej w jednostkach SKU platformy Azure.

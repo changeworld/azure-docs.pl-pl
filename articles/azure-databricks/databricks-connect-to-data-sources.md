@@ -1,6 +1,6 @@
 ---
-title: 'Łączenie się z różnymi źródłami danych z Azure Databricks '
-description: Dowiedz się, jak nawiązać połączenie z usługą Azure SQL Database, Azure Data Lake Store, BLOB Storage, Cosmos DB, Event Hubs i Azure SQL Data Warehouse z Azure Databricks.
+title: 'Łączenie się z różnymi źródłami danych z usługi Azure Databricks '
+description: Dowiedz się, jak połączyć się z usługą Azure SQL Database, usługa Azure Data Lake Store, magazyn obiektów blob, usługa Cosmos DB, centra zdarzeń i usługa Azure SQL Data Warehouse z usługi Azure Databricks.
 services: azure-databricks
 author: mamccrea
 ms.reviewer: jasonh
@@ -10,50 +10,50 @@ ms.topic: conceptual
 ms.date: 03/21/2018
 ms.author: mamccrea
 ms.openlocfilehash: 80ec9b2bbf10d8f500e7f9e0369faca3b9663633
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/16/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74129390"
 ---
-# <a name="connect-to-data-sources-from-azure-databricks"></a>Łączenie ze źródłami danych z Azure Databricks
+# <a name="connect-to-data-sources-from-azure-databricks"></a>Łączenie się ze źródłami danych z usługi Azure Databricks
 
-Ten artykuł zawiera linki do wszystkich różnych źródeł danych na platformie Azure, które mogą być połączone z Azure Databricks. Postępuj zgodnie z przykładami w tych linkach, aby wyodrębnić dane ze źródeł danych platformy Azure (na przykład Azure Blob Storage, Azure Event Hubs itp.) do klastra Azure Databricks i uruchamiać na nich zadania analityczne. 
+Ten artykuł zawiera łącza do wszystkich różnych źródeł danych na platformie Azure, które mogą być połączone z usługi Azure Databricks. Postępuj zgodnie z przykładami w tych łączach, aby wyodrębnić dane ze źródeł danych platformy Azure (na przykład usługi Azure Blob Storage, usługi Azure Event Hubs itp.) do klastra usługi Azure Databricks i uruchomić zadania analityczne na nich. 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Musisz mieć obszar roboczy Azure Databricks i klaster Spark. Postępuj zgodnie z instrukcjami w punkcie wprowadzenie [do Azure Databricks](quickstart-create-databricks-workspace-portal.md).
+* Musisz mieć obszar roboczy usługi Azure Databricks i klaster platformy Spark. Postępuj zgodnie z instrukcjami w [wprowadzenie do usługi Azure Databricks](quickstart-create-databricks-workspace-portal.md).
 
-## <a name="data-sources-for-azure-databricks"></a>Źródła danych dla Azure Databricks
+## <a name="data-sources-for-azure-databricks"></a>Źródła danych dla usługi Azure Databricks
 
-Poniższa lista zawiera źródła danych na platformie Azure, których można używać z Azure Databricks. Aby uzyskać pełną listę źródeł danych, które mogą być używane z Azure Databricks, zobacz [źródła danych dla Azure Databricks](/azure/databricks/data/data-sources/index).
+Poniższa lista zawiera źródła danych na platformie Azure, których można używać z usługą Azure Databricks. Aby uzyskać pełną listę źródeł danych, które mogą być używane z usługą Azure Databricks, zobacz [Źródła danych dla usługi Azure Databricks](/azure/databricks/data/data-sources/index).
 
-- [Baza danych SQL Azure](/azure/databricks/data/data-sources/sql-databases)
+- [Baza danych SQL platformy Azure](/azure/databricks/data/data-sources/sql-databases)
 
-    Ten link udostępnia interfejs API Dataframe służący do łączenia się z bazami danych SQL przy użyciu JDBC oraz jak sterować równoległością odczytów za pośrednictwem interfejsu JDBC. W tym temacie przedstawiono szczegółowe przykłady użycia interfejsu API Scala z skróconymi przykładami języka Python i Spark SQL na końcu.
+    To łącze zawiera interfejs API DataFrame do łączenia się z bazami danych SQL przy użyciu JDBC i jak kontrolować równoległość odczytów za pośrednictwem interfejsu JDBC. W tym temacie przedstawiono szczegółowe przykłady przy użyciu scala interfejsu API, z skróconymi przykładami języka Python i Spark SQL na końcu.
 - [Azure Data Lake Storage](/azure/databricks/data/data-sources/azure/azure-datalake-gen2)
 
-    Ten link zawiera przykłady użycia jednostki usługi Azure Active Directory do uwierzytelniania przy użyciu Azure Data Lake Storage. Zawiera również instrukcje dotyczące sposobu uzyskiwania dostępu do danych w Azure Data Lake Storage z Azure Databricks.
+    To łącze zawiera przykłady dotyczące sposobu uwierzytelniania za pomocą jednostki usługi Azure Active Directory w celu uwierzytelnienia za pomocą usługi Azure Data Lake Storage. Zawiera również instrukcje dotyczące uzyskiwania dostępu do danych w usłudze Azure Data Lake Storage z usługi Azure Databricks.
 
-- [Azure Blob Storage](/azure/databricks/data/data-sources/azure/azure-storage)
+- [Magazyn obiektów blob platformy Azure](/azure/databricks/data/data-sources/azure/azure-storage)
 
-    Ten link zawiera przykłady dotyczące bezpośredniego dostępu do usługi Azure Blob Storage z Azure Databricks przy użyciu klucza dostępu lub SAS dla danego kontenera. Link zawiera również informacje dotyczące uzyskiwania dostępu do usługi Azure Blob Storage z Azure Databricks przy użyciu interfejsu API RDD.
+    To łącze zawiera przykłady dotyczące bezpośredniego dostępu do usługi Azure Blob Storage z usługi Azure Databricks przy użyciu klucza dostępu lub sygnatury dostępu współdzielonego dla danego kontenera. Łącze zawiera również informacje na temat uzyskiwania dostępu do usługi Azure Blob Storage z usługi Azure Databricks przy użyciu interfejsu API RDD.
 
-- [Usługi Azure Cosmos DB](/azure/databricks/data/data-sources/azure/cosmosdb-connector)
+- [Azure Cosmos DB](/azure/databricks/data/data-sources/azure/cosmosdb-connector)
 
-    Ten link zawiera instrukcje dotyczące korzystania z [Azure Cosmos DB łącznika Spark](https://github.com/Azure/azure-cosmosdb-spark) z Azure Databricks w celu uzyskania dostępu do danych w Azure Cosmos DB.
+    Ta łącze zawiera instrukcje dotyczące korzystania z [łącznika platformy Azure Cosmos DB Spark](https://github.com/Azure/azure-cosmosdb-spark) z usługi Azure Databricks w celu uzyskania dostępu do danych w usłudze Azure Cosmos DB.
 
 - [Azure Event Hubs](/azure/event-hubs/event-hubs-spark-connector)
 
-    Ten link zawiera instrukcje dotyczące korzystania z [łącznika usługi azure Event Hubs Spark](https://github.com/Azure/azure-event-hubs-spark) z Azure Databricks w celu uzyskania dostępu do danych w usłudze Azure Event Hubs.
+    To łącze zawiera instrukcje dotyczące korzystania z [łącznika platformy Azure Event Hubs Spark](https://github.com/Azure/azure-event-hubs-spark) z usługi Azure Databricks w celu uzyskania dostępu do danych w usłudze Azure Event Hubs.
 
-- [Azure SQL Data Warehouse](/azure/databricks/data/data-sources/azure/sql-data-warehouse)
+- [Magazyn danych SQL platformy Azure](/azure/databricks/data/data-sources/azure/sql-data-warehouse)
 
-    Ten link zawiera instrukcje dotyczące korzystania z łącznika Azure SQL Data Warehouse w celu nawiązania połączenia z Azure Databricks.
+    To łącze zawiera instrukcje dotyczące używania łącznika usługi Azure SQL Data Warehouse do łączenia się z usługi Azure Databricks.
     
 
 ## <a name="next-steps"></a>Następne kroki
 
-Aby dowiedzieć się więcej o źródłach, z których można importować dane do Azure Databricks, zobacz [źródła danych dla Azure Databricks](/azure/databricks/data/data-sources/index).
+Aby dowiedzieć się więcej o źródłach, z których można importować dane do usługi Azure Databricks, zobacz [Źródła danych dla usługi Azure Databricks](/azure/databricks/data/data-sources/index).
 
 

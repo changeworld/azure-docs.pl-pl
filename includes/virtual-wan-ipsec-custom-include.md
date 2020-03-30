@@ -9,19 +9,19 @@ ms.date: 10/07/2019
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: f7167cbb26e69941cade01ab8c0b8d9dc633f0d2
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/09/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72168381"
 ---
 Podczas pracy z niestandardowymi zasadami protokołu IPsec należy pamiętać o następujących wymaganiach:
 
-* **IKE** -dla protokołu IKE można wybrać dowolny parametr z szyfrowania IKE oraz dowolny parametr z integralności IKE i dowolny parametr z grupy DH.
-* **IPSec** — w przypadku protokołu IPSec można wybrać dowolny parametr z szyfrowania IPSec oraz dowolny parametr z integralności IPSec i PFS. W przypadku GCM dowolnego z parametrów szyfrowania IPsec lub integralności protokołu IPsec parametry obu ustawień muszą mieć wartość GCM.
+* **IKE** — w przypadku usługi IKE można wybrać dowolny parametr z szyfrowania IKE oraz dowolny parametr z ike integrity oraz dowolny parametr z grupy DH.
+* **Protokół IPsec** — w przypadku protokołu IPsec można wybrać dowolny parametr z szyfrowania IPsec oraz dowolny parametr z integralności protokołu IPsec oraz doskonałe usługi utajnienia utajnienia utajnienia utajnienia zabezpieczeń. Jeśli którykolwiek z parametrów szyfrowania IPsec lub IPsec Integrity jest GCM, parametry dla obu ustawień muszą być GCM.
 
 >[!NOTE]
-> W przypadku niestandardowych zasad protokołu IPsec nie ma koncepcji obiektu odpowiadającego ani inicjatora (w przeciwieństwie do domyślnych zasad protokołu IPsec). Obie strony (lokalna i Brama sieci VPN platformy Azure) będą używać tych samych ustawień dla usług IKE phase 1 i IKE Phase 2. Obsługiwane są zarówno protokoły IKEv1, jak i IKEv2. Brak obsługi platformy Azure jako obiektu odpowiadającego.
+> W niestandardowych zasadach protokołu IPsec nie ma pojęcia obiektu odpowiadającego i inicjatora (w przeciwieństwie do domyślnych zasad protokołu IPsec). Obie strony (lokalnie i brama sieci VPN platformy Azure) będą używać tych samych ustawień dla fazy 1 i IKE Phase 2. Obsługiwane są protokoły IKEv1 i IKEv2. Nie ma obsługi platformy Azure tylko jako obiekt odpowiadający.
 >
 
 **Dostępne ustawienia i parametry**

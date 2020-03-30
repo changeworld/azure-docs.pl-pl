@@ -1,48 +1,47 @@
 ---
-title: Informacje o interfejsie API portal Cloud Partner | Portal Azure Marketplace
-description: Opis, wymagania wstępne do użycia oraz lista operacji interfejsu API portalu Marketplace.
-services: Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+title: Dokumentacja interfejsu API portalu partnerów w chmurze | Azure Marketplace
+description: Opis, wymagania wstępne do użycia i lista operacji interfejsu API w portalu marketplace.
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/13/2018
-ms.author: pabutler
-ms.openlocfilehash: b6591e1780d03cbfaff70fbd19ec3dfd274fae79
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 296c667876807bdd05a6281de461df76207b5490
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73819617"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80288550"
 ---
-<a name="cloud-partner-portal-api-reference"></a>Dokumentacja interfejsu API portal Cloud Partner
+<a name="cloud-partner-portal-api-reference"></a>Odwołanie do interfejsu API portalu partnerów w chmurze
 ==================================
 
-Interfejsy API REST portal Cloud Partner umożliwiają pobieranie programistyczne i manipulowanie obciążeniami, ofertami i profilami wydawcy. Interfejsy API używają kontroli dostępu opartej na rolach (RBAC) do wymuszania prawidłowych uprawnień w czasie przetwarzania.
+Interfejsy API REST portalu partnerów w chmurze umożliwiają programowe pobieranie i manipulowanie obciążeniami, ofertami i profilami wydawców. Interfejsy API używają kontroli dostępu opartej na rolach (RBAC) do wymuszania poprawnych uprawnień w czasie przetwarzania.
 
-Ta dokumentacja zawiera szczegółowe informacje techniczne dotyczące portal Cloud Partner interfejsów API REST. Próbki ładunku w tym dokumencie są przeznaczone tylko do celów informacyjnych i mogą ulec zmianie po dodaniu nowych funkcji.
+To odwołanie zawiera szczegóły techniczne interfejsów API REST portalu programu Cloud Partner Portal. Próbki ładunku w tym dokumencie są tylko w celach informacyjnych i mogą ulec zmianie w miarę dodawania nowych funkcji.
 
 
 <a name="prerequisites-and-considerations"></a>Wymagania wstępne i zagadnienia
 -------------------------------
 
-Przed użyciem interfejsów API należy zapoznać się z tematem:
+Przed użyciem interfejsów API należy przejrzeć:
 
-- W artykule dotyczącym [wymagań wstępnych](./cloud-partner-portal-api-prerequisites.md) dowiesz się, jak dodać jednostkę usługi do konta i uzyskać token dostępu Azure Active Directory (Azure AD) na potrzeby uwierzytelniania. 
-- Dwie [kontrolki współbieżności](./cloud-partner-portal-api-concurrency-control.md).
-strategie dostępne do wywoływania tych interfejsów API.
-- Dodatkowe [zagadnienia dotyczące](./cloud-partner-portal-api-considerations.md)interfejsów API, takie jak przechowywanie wersji i obsługa błędów.
+- Artykuł [wymagań wstępnych,](./cloud-partner-portal-api-prerequisites.md) aby dowiedzieć się, jak dodać jednostkę usługi do konta i uzyskać token dostępu usługi Azure Active Directory (Azure AD) do uwierzytelniania. 
+- Kontrola dwóch [współbieżności](./cloud-partner-portal-api-concurrency-control.md).
+dostępnych strategii wywoływania tych interfejsów API.
+- Dodatkowe [zagadnienia dotyczące](./cloud-partner-portal-api-considerations.md)interfejsu API, takie jak przechowywanie wersji i obsługa błędów.
 
 
 <a name="common-tasks"></a>Typowe zadania
 ------------
-Te szczegółowe informacje dotyczące interfejsów API do wykonywania następujących typowych zadań.
+To odwołanie szczegóły interfejsów API do wykonywania następujących typowych zadań.
 
 
-### <a name="offers"></a>Oferta
+### <a name="offers"></a>Oferty
 
 -   [Pobierz wszystkie oferty](./cloud-partner-portal-api-retrieve-offers.md)
--   [Pobierz konkretną ofertę](./cloud-partner-portal-api-retrieve-specific-offer.md)
+-   [Pobieranie określonej oferty](./cloud-partner-portal-api-retrieve-specific-offer.md)
 -   [Pobieranie stanu oferty](./cloud-partner-portal-api-retrieve-offer-status.md)
 -   [Tworzenie oferty](./cloud-partner-portal-api-creating-offer.md)
 -   [Publikowanie oferty](./cloud-partner-portal-api-publish-offer.md)
@@ -58,7 +57,7 @@ Te szczegółowe informacje dotyczące interfejsów API do wykonywania następuj
 
 ### <a name="other-tasks"></a>Inne zadania
 
--   [Ustawianie cen dla ofert maszyn wirtualnych](./cloud-partner-portal-api-setting-price.md)
+-   [Ustawianie cen ofert dla maszyn wirtualnych](./cloud-partner-portal-api-setting-price.md)
 
 ### <a name="troubleshooting"></a>Rozwiązywanie problemów
 

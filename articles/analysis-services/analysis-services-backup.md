@@ -1,6 +1,6 @@
 ---
-title: Azure Analysis Services kopii zapasowej i przywracania bazy danych | Microsoft Docs
-description: W tym artykule opisano sposób tworzenia kopii zapasowych i przywracania metadanych modelu oraz danych z bazy danych Azure Analysis Services.
+title: Tworzenie kopii zapasowych i przywracanie bazy danych usług Azure Analysis Services | Dokumenty firmy Microsoft
+description: W tym artykule opisano sposób tworzenia kopii zapasowych i przywracania metadanych modelu i danych z bazy danych usług Azure Analysis Services.
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
@@ -8,22 +8,22 @@ ms.date: 10/30/2019
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: 3f63ecf560a14248fed6dea53c30a27acdf9a938
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73573444"
 ---
 # <a name="backup-and-restore"></a>Tworzenie kopii zapasowej i przywracanie
 
-Tworzenie kopii zapasowych baz danych modeli tabelarycznych w Azure Analysis Services jest znacznie takie samo jak dla Analysis Services lokalnych. Podstawowa różnica polega na tym, że pliki kopii zapasowej są przechowywane. Pliki kopii zapasowej muszą być zapisane w kontenerze na [koncie usługi Azure Storage](../storage/common/storage-create-storage-account.md). Możesz użyć już istniejącego konta magazynu i kontenera lub można je utworzyć podczas konfigurowania ustawień magazynu dla serwera.
+Tworzenie kopii zapasowych baz danych modelu tabelaryczne w usłudze Azure Analysis Services jest tak samo jak w przypadku lokalnych usług analysis services. Podstawową różnicą jest miejsce przechowywania plików kopii zapasowej. Pliki kopii zapasowej muszą być zapisane w kontenerze na [koncie magazynu platformy Azure](../storage/common/storage-create-storage-account.md). Można użyć konta magazynu i kontenera, który już masz, lub można je utworzyć podczas konfigurowania ustawień magazynu dla serwera.
 
 > [!NOTE]
-> Utworzenie konta magazynu może spowodować powstanie nowej usługi do rozliczania. Aby dowiedzieć się więcej, zobacz [Cennik usługi Azure Storage](https://azure.microsoft.com/pricing/details/storage/blobs/).
+> Utworzenie konta magazynu może spowodować powstanie nowej usługi podlegającej rozliczaniu. Aby dowiedzieć się więcej, zobacz [Cennik usługi Azure Storage](https://azure.microsoft.com/pricing/details/storage/blobs/).
 > 
 > 
 
-Kopie zapasowe są zapisywane z rozszerzeniem ABF. Dla modeli tabelarycznych w pamięci są przechowywane zarówno dane modelu, jak i metadane. W przypadku modeli tabelarycznych zapytania bezpośredniego są przechowywane tylko metadane modelu. Kopie zapasowe mogą być kompresowane i szyfrowane w zależności od wybranych opcji.
+Kopie zapasowe są zapisywane z rozszerzeniem .abf. W przypadku modeli tabelarów w pamięci przechowywane są zarówno dane modelu, jak i metadane. W przypadku modeli tabelarykowych zapytania bezpośredniego są przechowywane tylko metadane modelu. Kopie zapasowe mogą być kompresowane i szyfrowane, w zależności od dostępnych opcji.
 
 
 ## <a name="configure-storage-settings"></a>Konfigurowanie ustawień magazynu
@@ -31,78 +31,78 @@ Przed utworzeniem kopii zapasowej należy skonfigurować ustawienia magazynu dla
 
 
 ### <a name="to-configure-storage-settings"></a>Aby skonfigurować ustawienia magazynu
-1.  W obszarze **ustawienia**> Azure Portal kliknij pozycję **kopia zapasowa**.
+1.  W witrynie Azure portal > **Ustawienia**kliknij pozycję **Kopia zapasowa**.
 
     ![Kopie zapasowe w ustawieniach](./media/analysis-services-backup/aas-backup-backups.png)
 
-2.  Kliknij pozycję **włączone**, a następnie kliknij pozycję **ustawienia magazynu**.
+2.  Kliknij **pozycję Włączone**, a następnie kliknij pozycję Ustawienia **magazynu**.
 
-    ![Włączenie](./media/analysis-services-backup/aas-backup-enable.png)
+    ![Włączanie](./media/analysis-services-backup/aas-backup-enable.png)
 
-3. Wybierz konto magazynu lub Utwórz nowe.
+3. Wybierz swoje konto magazynu lub utwórz nowe.
 
-4. Wybierz kontener lub Utwórz nowy.
+4. Wybierz kontener lub utwórz nowy.
 
     ![Wybieranie kontenera](./media/analysis-services-backup/aas-backup-container.png)
 
 5. Zapisz ustawienia kopii zapasowej.
 
-    ![Zapisz ustawienia kopii zapasowej](./media/analysis-services-backup/aas-backup-save.png)
+    ![Zapisywanie ustawień kopii zapasowej](./media/analysis-services-backup/aas-backup-save.png)
 
-## <a name="backup"></a>Backup
+## <a name="backup"></a>Tworzenie kopii zapasowych
 
-### <a name="to-backup-by-using-ssms"></a>Aby utworzyć kopię zapasową przy użyciu programu SSMS
+### <a name="to-backup-by-using-ssms"></a>Aby wykonać kopię zapasową przy użyciu usługi SSMS
 
-1. W programie SSMS kliknij prawym przyciskiem myszy bazę danych > **utworzyć kopię zapasową**.
+1. W pliku SSMS kliknij prawym przyciskiem myszy bazę danych > **tworzenie kopii zapasowej**.
 
-2. W obszarze **kopia zapasowa bazy danych** > **kopii zapasowej**, kliknij przycisk **Przeglądaj**.
+2. W**pliku kopii zapasowej bazy** **danych** > kliknij pozycję **Przeglądaj**.
 
-3. W oknie dialogowym **Zapisz plik jako** Sprawdź ścieżkę folderu, a następnie wpisz nazwę pliku kopii zapasowej. 
+3. W oknie dialogowym **Zapisywanie pliku jako** sprawdź ścieżkę folderu, a następnie wpisz nazwę pliku kopii zapasowej. 
 
-4. W oknie dialogowym **kopia zapasowa bazy danych** wybierz pozycję Opcje.
+4. W oknie **dialogowym Kopia zapasowa bazy danych** wybierz pozycję opcje.
 
-    **Zezwalaj na zastępowanie pliku** — wybierz tę opcję, aby zastąpić pliki kopii zapasowej o tej samej nazwie. Jeśli ta opcja nie jest zaznaczona, zapisywany plik nie może mieć takiej samej nazwy jak plik, który już istnieje w tej samej lokalizacji.
+    **Zezwalaj na zastępowanie pliku** — wybierz tę opcję, aby zastąpić pliki kopii zapasowych o tej samej nazwie. Jeśli ta opcja nie jest zaznaczona, zapisywany plik nie może mieć takiej samej nazwy jak plik, który już istnieje w tej samej lokalizacji.
 
-    **Zastosuj kompresję** — wybierz tę opcję, aby skompresować plik kopii zapasowej. Skompresowane pliki kopii zapasowej oszczędzają miejsce na dysku, ale wymagają nieco wyższego użycia procesora CPU. 
+    **Zastosuj kompresję** — wybierz tę opcję, aby skompresować plik kopii zapasowej. Skompresowane pliki kopii zapasowych oszczędzają miejsce na dysku, ale wymagają nieco większego wykorzystania procesora. 
 
-    **Szyfruj plik kopii zapasowej** — wybierz tę opcję, aby zaszyfrować plik kopii zapasowej. Ta opcja wymaga hasła dostarczonego przez użytkownika w celu zabezpieczenia pliku kopii zapasowej. Hasło uniemożliwia odczytywanie danych kopii zapasowych w inny sposób niż operacja przywracania. Jeśli zdecydujesz się na szyfrowanie kopii zapasowych, Zapisz je w bezpiecznym miejscu.
+    **Szyfruj plik kopii zapasowej** — wybierz tę opcję, aby zaszyfrować plik kopii zapasowej. Ta opcja wymaga hasła dostarczonego przez użytkownika w celu zabezpieczenia pliku kopii zapasowej. Hasło zapobiega odczytywanie danych kopii zapasowej w jakikolwiek inny sposób niż operacja przywracania. Jeśli zdecydujesz się zaszyfrować kopie zapasowe, przechowuj je w bezpiecznej lokalizacji.
 
-5. Kliknij przycisk **OK** , aby utworzyć i zapisać plik kopii zapasowej.
+5. Kliknij **przycisk OK,** aby utworzyć i zapisać plik kopii zapasowej.
 
 
 ### <a name="powershell"></a>PowerShell
-Użyj polecenia cmdlet [Backup-ASDatabase](https://docs.microsoft.com/powershell/module/sqlserver/backup-asdatabase) .
+Użyj polecenia cmdlet [Backup-ASDatabase.](https://docs.microsoft.com/powershell/module/sqlserver/backup-asdatabase)
 
 ## <a name="restore"></a>Przywracanie
-Podczas przywracania plik kopii zapasowej musi znajdować się na koncie magazynu skonfigurowanym dla serwera. Jeśli musisz przenieść plik kopii zapasowej z lokalizacji lokalnej na konto magazynu, użyj [Eksplorator usługi Microsoft Azure Storage](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer) lub narzędzia wiersza polecenia [AzCopy](../storage/common/storage-use-azcopy.md) . 
+Podczas przywracania plik kopii zapasowej musi znajdować się na koncie magazynu skonfigurowanym dla serwera. Jeśli chcesz przenieść plik kopii zapasowej z lokalizacji lokalnej do konta magazynu, użyj [Eksploratora usługi Microsoft Azure Storage](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer) lub narzędzia wiersza polecenia [AzCopy.](../storage/common/storage-use-azcopy.md) 
 
 
 
 > [!NOTE]
-> W przypadku przywracania z serwera lokalnego należy usunąć wszystkich użytkowników domeny z ról modelu i dodać je z powrotem do ról jako Azure Active Directory użytkownicy.
+> Jeśli przywracasz z serwera lokalnego, należy usunąć wszystkich użytkowników domeny z ról modelu i dodać je z powrotem do ról jako użytkownicy usługi Azure Active Directory.
 > 
 > 
 
-### <a name="to-restore-by-using-ssms"></a>Aby przywrócić za pomocą programu SSMS
+### <a name="to-restore-by-using-ssms"></a>Aby przywrócić za pomocą SSMS
 
-1. W programie SSMS kliknij prawym przyciskiem myszy bazę danych > **przywracanie**.
+1. W pliku SSMS kliknij prawym przyciskiem myszy bazę danych > **przywracanie**.
 
-2. W oknie dialogowym **kopia zapasowa bazy danych** w **pliku kopii zapasowej**kliknij przycisk **Przeglądaj**.
+2. W oknie dialogowym **Kopia zapasowa bazy danych** w pliku kopii **zapasowej**kliknij pozycję **Przeglądaj**.
 
-3. W oknie dialogowym **Lokalizowanie plików bazy danych** wybierz plik, który chcesz przywrócić.
+3. W oknie **dialogowym Lokalizowanie plików bazy danych** wybierz plik, który chcesz przywrócić.
 
-4. W obszarze **Przywróć bazę danych**wybierz bazę danych.
+4. W **przywracanie bazy danych**wybierz bazę danych.
 
-5. Określ opcje. Opcje zabezpieczeń muszą być zgodne z opcjami tworzenia kopii zapasowych użytymi podczas tworzenia kopii zapasowej.
+5. Określ opcje. Opcje zabezpieczeń muszą być zgodne z opcjami tworzenia kopii zapasowej używanymi podczas wykonywania kopii zapasowej.
 
 
 ### <a name="powershell"></a>PowerShell
 
-Użyj polecenia cmdlet [Restore-ASDatabase](https://docs.microsoft.com/powershell/module/sqlserver/restore-asdatabase) .
+Użyj polecenia cmdlet [Restore-ASDatabase.](https://docs.microsoft.com/powershell/module/sqlserver/restore-asdatabase)
 
 
 ## <a name="related-information"></a>Informacje pokrewne
 
 [Konta usługi Azure Storage](../storage/common/storage-create-storage-account.md)  
 [Wysoka dostępność](analysis-services-bcdr.md)     
-[Zarządzaj Azure Analysis Services](analysis-services-manage.md)
+[Zarządzanie usługami analizy platformy Azure](analysis-services-manage.md)

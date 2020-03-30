@@ -1,7 +1,7 @@
 ---
-title: Umiejętność tonacji
+title: Umiejętności poznawcze sentymentu
 titleSuffix: Azure Cognitive Search
-description: Wyodrębnij pozytywnie negatywny wynik tonacji z tekstu w potoku wzbogacenia AI na platformie Azure Wyszukiwanie poznawcze.
+description: Wyodrębnij wynik pozytywnych i negatywnych tonacji z tekstu w potoku wzbogacania sztucznej inteligencji w usłudze Azure Cognitive Search.
 manager: nitinme
 author: luiscabrer
 ms.author: luisca
@@ -9,52 +9,52 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: cc3aab703b9c5ffcb5f3280060417ce32fcec2fc
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72791909"
 ---
-# <a name="sentiment-cognitive-skill"></a>Umiejętność tonacji
+# <a name="sentiment-cognitive-skill"></a>Umiejętności poznawcze sentymentu
 
-Umiejętność **tonacji** ocenia niestrukturalny tekst wzdłuż zwracanej do dodatniej wartości składnika Continuum, a dla każdego rekordu zwraca wynik liczbowy z zakresu od 0 do 1. Wyniki zbliżone do wartości 1 wskazują na pozytywną tonację, a wyniki zbliżone do wartości 0 wskazują na negatywną tonację. Ta umiejętność używa modeli uczenia maszynowego zapewnianych przez [Analiza tekstu](https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview) w Cognitive Services.
+**Funkcja Sentyment** ocenia tekst nieustrukturyzowany wzdłuż kontinuum dodatnio-ujemnego, a dla każdego rekordu zwraca wynik liczbowy z 0 do 1. Wyniki zbliżone do 1 wskazują na pozytywne nastroje, a wyniki bliskie 0 wskazują na negatywne nastroje. Ta umiejętność korzysta z modeli uczenia maszynowego dostarczonych przez [analizę tekstu](https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview) w usługach Cognitive Services.
 
 > [!NOTE]
-> Podczas rozszerzania zakresu przez zwiększenie częstotliwości przetwarzania, Dodawanie większej liczby dokumentów lub Dodawanie algorytmów AI, należy [dołączyć Cognitive Services rozliczanego zasobu](cognitive-search-attach-cognitive-services.md). Opłaty naliczane podczas wywoływania interfejsów API w Cognitive Services oraz do wyodrębniania obrazów w ramach etapu łamania dokumentu w usłudze Azure Wyszukiwanie poznawcze. Nie są naliczane opłaty za Wyodrębnianie tekstu z dokumentów.
+> W miarę rozszerzania zakresu poprzez zwiększanie częstotliwości przetwarzania, dodawanie większej liczby dokumentów lub dodawanie kolejnych algorytmów sztucznej inteligencji należy [dołączyć rozliczany zasób usług Cognitive Services.](cognitive-search-attach-cognitive-services.md) Opłaty naliczane podczas wywoływania interfejsów API w usługach Cognitive Services i wyodrębniania obrazu w ramach etapu pękania dokumentów w usłudze Azure Cognitive Search. Nie ma żadnych opłat za wyodrębnianie tekstu z dokumentów.
 >
-> Do wykonania wbudowanych umiejętności są naliczane opłaty za istniejące [Cognitive Services cena płatność zgodnie z rzeczywistym](https://azure.microsoft.com/pricing/details/cognitive-services/)użyciem. Cennik wyodrębniania obrazów został opisany na [stronie cennika usługi Azure wyszukiwanie poznawcze](https://go.microsoft.com/fwlink/?linkid=2042400).
+> Wykonanie wbudowanych umiejętności jest naliczane według istniejącej [ceny płatności zgodnie z rzeczywistymi oczekiwaniami.](https://azure.microsoft.com/pricing/details/cognitive-services/) Ceny wyodrębniania obrazów są opisane na [stronie cennika usługi Azure Cognitive Search](https://go.microsoft.com/fwlink/?linkid=2042400).
 
 
 ## <a name="odatatype"></a>@odata.type  
-Microsoft. umiejętności. Text. SentimentSkill
+Microsoft.Skills.Text.SentimentSkill
 
 ## <a name="data-limits"></a>Limity danych
-Maksymalny rozmiar rekordu powinien składać się z 5000 znaków mierzonych przez [`String.Length`](https://docs.microsoft.com/dotnet/api/system.string.length). Jeśli musisz podzielić dane przed wysłaniem ich do analizatora tonacji, użyj [umiejętności podziału tekstu](cognitive-search-skill-textsplit.md).
+Maksymalny rozmiar rekordu powinien wynosić 5000 [`String.Length`](https://docs.microsoft.com/dotnet/api/system.string.length)znaków mierzonych za pomocą pliku . Jeśli musisz podzielić dane przed wysłaniem ich do analizatora tonacji, użyj [umiejętności Dzielenie tekstu](cognitive-search-skill-textsplit.md).
 
 
 ## <a name="skill-parameters"></a>Parametry umiejętności
 
-W parametrach jest rozróżniana wielkość liter.
+W nazwach parametrów jest rozróżniana wielkość liter.
 
 | Nazwa parametru |                      |
 |----------------|----------------------|
-| defaultLanguageCode | obowiązkowe Kod języka, który ma zostać zastosowany do dokumentów, które nie określają jawnie języka. <br/> Zapoznaj się [z pełną listą obsługiwanych języków](../cognitive-services/text-analytics/text-analytics-supported-languages.md) |
+| domyślny Kod Języka | (opcjonalnie) Kod języka do zastosowania do dokumentów, które nie określają języka jawnie. <br/> Zobacz [Pełna lista obsługiwanych języków](../cognitive-services/text-analytics/text-analytics-supported-languages.md) |
 
-## <a name="skill-inputs"></a>Dane wejściowe kwalifikacji 
+## <a name="skill-inputs"></a>Wprowadzanie umiejętności 
 
 | Nazwa wejściowa | Opis |
 |--------------------|-------------|
-| tekst | Tekst do analizy.|
-| languageCode  |  Obowiązkowe Ciąg wskazujący język rekordów. Jeśli ten parametr nie jest określony, wartością domyślną jest "en". <br/>Zapoznaj się [z pełną listą obsługiwanych języków](../cognitive-services/text-analytics/text-analytics-supported-languages.md).|
+| tekst | Tekst, który ma być analizowany.|
+| languageCode  |  (Opcjonalnie) Ciąg wskazujący język rekordów. Jeśli ten parametr nie jest określony, wartością domyślną jest "en". <br/>Zobacz [Pełna lista obsługiwanych języków](../cognitive-services/text-analytics/text-analytics-supported-languages.md).|
 
 ## <a name="skill-outputs"></a>Wyniki umiejętności
 
 | Nazwa wyjściowa | Opis |
 |--------------------|-------------|
-| dały | Wartość z zakresu od 0 do 1 reprezentująca tonacji przeanalizowanego tekstu. Wartości zbliżone do 0 mają ujemną tonacji, blisko 0,5 mają neutralną tonacji, a wartości zbliżone do 1 mają dodatnie tonacji.|
+| wynik | Wartość z 0 do 1 reprezentująca tonację analizowanego tekstu. Wartości bliskie 0 mają negatywne nastroje, blisko 0,5 mają neutralny sentyment, a wartości bliskie 1 mają pozytywne nastroje.|
 
 
-##  <a name="sample-definition"></a>Definicja Przykładowa
+##  <a name="sample-definition"></a>Przykładowa definicja
 
 ```json
 {
@@ -111,12 +111,12 @@ W parametrach jest rozróżniana wielkość liter.
 ```
 
 ## <a name="notes"></a>Uwagi
-Jeśli wartość jest pusta, wynik tonacji nie jest zwracany dla tych rekordów.
+Jeśli jest pusty, wynik tonacji nie jest zwracany dla tych rekordów.
 
 ## <a name="error-cases"></a>Przypadki błędów
-Jeśli język nie jest obsługiwany, zostanie wygenerowany błąd i nie zostanie zwrócony żaden wynik tonacji.
+Jeśli język nie jest obsługiwany, generowany jest błąd i nie zwracany jest wynik tonacji.
 
-## <a name="see-also"></a>Zobacz także
+## <a name="see-also"></a>Zobacz też
 
 + [Wbudowane umiejętności](cognitive-search-predefined-skills.md)
-+ [Jak zdefiniować zestawu umiejętności](cognitive-search-defining-skillset.md)
++ [Jak zdefiniować zestaw umiejętności](cognitive-search-defining-skillset.md)

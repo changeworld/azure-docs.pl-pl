@@ -1,158 +1,158 @@
 ---
-title: Przywracanie SAP HANA baz danych na maszynach wirtualnych platformy Azure
-description: W tym artykule opisano sposób przywracania SAP HANA baz danych uruchomionych w usłudze Azure Virtual Machines.
+title: Przywracanie baz danych SAP HANA na maszynach wirtualnych platformy Azure
+description: W tym artykule dowiedz się, jak przywrócić bazy danych SAP HANA, które są uruchomione na maszynach wirtualnych platformy Azure.
 ms.topic: conceptual
 ms.date: 11/7/2019
 ms.openlocfilehash: 999edba61177758ad9039e81e789efcef99ca1de
-ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74287920"
 ---
-# <a name="restore-sap-hana-databases-on-azure-vms"></a>Przywracanie SAP HANA baz danych na maszynach wirtualnych platformy Azure
+# <a name="restore-sap-hana-databases-on-azure-vms"></a>Przywracanie baz danych SAP HANA na maszynach wirtualnych platformy Azure
 
-W tym artykule opisano sposób przywracania SAP HANA baz danych uruchomionych na maszynie wirtualnej platformy Azure (VM), Azure Backup których kopia zapasowa została utworzona w magazynie Azure Backup Recovery Services. Przywracanie może służyć do tworzenia kopii danych dla scenariuszy deweloperskich/testowych lub powrotu do poprzedniego stanu.
+W tym artykule opisano sposób przywracania baz danych SAP HANA, które są uruchomione na maszynie wirtualnej platformy Azure (VM), które usługa Azure Backup ma kopię zapasową w magazynie usług odzyskiwania kopii zapasowych platformy Azure. Przywraca może służyć do tworzenia kopii danych dla scenariuszy deweloper/test lub powrócić do poprzedniego stanu.
 
-Aby uzyskać więcej informacji na temat tworzenia kopii zapasowych SAP HANA baz danych, zobacz [Tworzenie kopii zapasowych SAP HANA baz danych na maszynach wirtualnych platformy Azure](https://docs.microsoft.com/azure/backup/backup-azure-sap-hana-database).
+Aby uzyskać więcej informacji, jak zrobić zamiejscowy program SAP HANA baz danych, zobacz [Tworzenie kopii zapasowych baz danych SAP HANA na maszynach wirtualnych platformy Azure.](https://docs.microsoft.com/azure/backup/backup-azure-sap-hana-database)
 
 ## <a name="restore-to-a-point-in-time-or-to-a-recovery-point"></a>Przywracanie do punktu w czasie lub do punktu odzyskiwania
 
-Azure Backup można przywrócić SAP HANA baz danych uruchomionych na maszynach wirtualnych platformy Azure w następujący sposób:
+Usługa Azure Backup może przywrócić bazy danych SAP HANA, które są uruchomione na maszynach wirtualnych platformy Azure w następujący sposób:
 
-* Przywracanie do określonej daty lub czasu (w drugim) przy użyciu kopii zapasowych dziennika. Azure Backup automatycznie określa odpowiednie pełne, różnicowe kopie zapasowe i łańcuch kopii zapasowych dziennika, które są wymagane do przywrócenia w oparciu o wybrany czas.
+* Przywróć do określonej daty lub godziny (do drugiej) przy użyciu kopii zapasowych dziennika. Usługa Azure Backup automatycznie określa odpowiednie pełne, różnicowe kopie zapasowe i łańcuch kopii zapasowych dziennika, które są wymagane do przywrócenia na podstawie wybranego czasu.
 
-* Przywróć do konkretnej pełnej lub różnicowej kopii zapasowej, aby przywrócić do określonego punktu odzyskiwania.
+* Przywróć do określonej pełnej lub różnicowej kopii zapasowej, aby przywrócić do określonego punktu odzyskiwania.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 Przed przywróceniem bazy danych należy zwrócić uwagę na następujące kwestie:
 
-* Bazę danych można przywrócić tylko do wystąpienia SAP HANA, które znajduje się w tym samym regionie.
+* Bazę danych można przywrócić tylko do wystąpienia SAP HANA, które znajduje się w tym samym regionie
 
-* Wystąpienie docelowe musi być zarejestrowane w tym samym magazynie co Źródło
+* Wystąpienie docelowe musi być zarejestrowane w tym samym magazynie co źródło
 
-* Azure Backup nie może zidentyfikować dwóch różnych wystąpień SAP HANA na tej samej maszynie wirtualnej. W związku z tym przywracanie danych z jednego wystąpienia do innego na tej samej maszynie wirtualnej nie jest możliwe
+* Usługa Azure Backup nie może zidentyfikować dwóch różnych wystąpień SAP HANA na tej samej maszynie wirtualnej. W związku z tym przywracanie danych z jednego wystąpienia do drugiego na tej samej maszynie wirtualnej nie jest możliwe
 
-* Aby upewnić się, że docelowe wystąpienie SAP HANA jest gotowe do przywrócenia, sprawdź stan **gotowości do utworzenia kopii zapasowej** :
+* Aby upewnić się, że docelowe wystąpienie SAP HANA jest gotowe do przywrócenia, sprawdź jego stan **gotowości do tworzenia kopii zapasowych:**
 
-  * Otwieranie magazynu, w którym zarejestrowano wystąpienie SAP HANA docelowego
+  * Otwórz magazyn, w którym zarejestrowane jest docelowe wystąpienie SAP HANA
 
-  * Na pulpicie nawigacyjnym magazynu w obszarze **wprowadzenie**wybierz pozycję **kopia zapasowa**
+  * Na pulpicie nawigacyjnym przechowalni w obszarze **Wprowadzenie**wybierz pozycję **Kopia zapasowa**
 
-![Tworzenie kopii zapasowej na pulpicie nawigacyjnym magazynu](media/sap-hana-db-restore/getting-started-backup.png)
+![Tworzenie kopii zapasowej na pulpicie nawigacyjnym przechowalni](media/sap-hana-db-restore/getting-started-backup.png)
 
-* W obszarze **kopia zapasowa**w obszarze **co chcesz utworzyć kopię zapasową?** wybierz **SAP HANA na maszynie wirtualnej platformy Azure**
+* W **obszarze Kopia zapasowa**w obszarze **Co chcesz wykonać kopię zapasową?** wybierz **sap HANA w usłudze Azure VM**
 
-![Wybierz SAP HANA na maszynie wirtualnej platformy Azure](media/sap-hana-db-restore/sap-hana-backup.png)
+![Wybieranie sap hana w usłudze Azure VM](media/sap-hana-db-restore/sap-hana-backup.png)
 
-* W obszarze **odnajdowanie baz danych na maszynach wirtualnych** kliknij pozycję **Wyświetl szczegóły.**
+* W obszarze **Odkryj db w maszynach wirtualnych** kliknij **zobacz szczegóły**
 
 ![Wyświetl szczegóły](media/sap-hana-db-restore/view-details.png)
 
-* Przejrzyj **gotowość do tworzenia kopii zapasowej** docelowej maszyny wirtualnej
+* Przejrzyj **gotowość do tworzenia kopii zapasowych** docelowej maszyny Wirtualnej
 
 ![Serwery chronione](media/sap-hana-db-restore/protected-servers.png)
 
-* Aby dowiedzieć się więcej na temat typów przywracania obsługiwanych przez SAP HANA, zapoznaj się z artykułem SAP HANA Uwaga [1642148](https://launchpad.support.sap.com/#/notes/1642148)
+* Aby dowiedzieć się więcej o typach przywracania, które obsługuje SAP HANA, zapoznaj się z notatką SAP HANA [1642148](https://launchpad.support.sap.com/#/notes/1642148)
 
 ## <a name="restore-a-database"></a>Przywracanie bazy danych
 
-* Otwórz magazyn, w którym zarejestrowano bazę danych SAP HANA, która ma zostać przywrócona
+* Otwórz magazyn, w którym jest rejestrowana baza danych SAP HANA, która ma zostać przywrócona
 
-* Na pulpicie nawigacyjnym magazynu w obszarze **chronione elementy**wybierz pozycję **elementy kopii zapasowej** .
+* Na pulpicie nawigacyjnym **przechowalni**w obszarze Elementy chronione wybierz pozycję **Zapasy zapasowe**
 
 ![Elementy kopii zapasowej](media/sap-hana-db-restore/backup-items.png)
 
-* W obszarze **elementy kopii zapasowej**w obszarze **Typ zarządzania kopiami zapasowymi** wybierz pozycję **SAP HANA na maszynie wirtualnej platformy Azure**
+* W **elementach kopii zapasowej**w obszarze Typ **zarządzania kopiami zapasowymi** wybierz **SAP HANA w usłudze Azure VM**
 
 ![Typ zarządzania kopiami zapasowymi](media/sap-hana-db-restore/backup-management-type.png)
 
-* Wybierz bazę danych do przywrócenia
+* Wybierz bazę danych, która ma zostać przywrócona
 
  ![Baza danych do przywrócenia](media/sap-hana-db-restore/database-to-restore.png)
 
-* Przejrzyj menu Baza danych. Zawiera informacje o kopii zapasowej bazy danych, w tym:
+* Przejrzyj menu bazy danych. Zawiera informacje o kopii zapasowej bazy danych, w tym:
 
   * Najstarsze i najnowsze punkty przywracania
 
   * Stan kopii zapasowej dziennika dla ostatnich 24 i 72 godzin dla bazy danych
 
-![Menu bazy danych](media/sap-hana-db-restore/database-menu.png)
+![Menu Bazy danych](media/sap-hana-db-restore/database-menu.png)
 
-* Wybierz pozycję **Przywróć bazę danych**
+* Wybierz **pozycję Przywróć bazę danych**
 
-* W obszarze **Przywracanie konfiguracji**Określ, gdzie (lub jak) przywrócić dane:
+* W obszarze **Konfiguraj przywracania**określ, gdzie (lub jak) ma być przywracane dane:
 
-  * **Lokalizacja alternatywna**: Przywracanie bazy danych do alternatywnej lokalizacji i zachowywanie oryginalnej źródłowej bazy danych.
+  * **Lokalizacja alternatywna:** Przywróć bazę danych do lokalizacji alternatywnej i zachowaj oryginalną źródłową bazę danych.
 
-  * **Zastąp bazę**danych: Przywróć dane do tego samego wystąpienia SAP HANA co oryginalne źródło. Ta opcja zastępuje oryginalną bazę danych.
+  * **Zastąp DB:** Przywróć dane do tego samego wystąpienia SAP HANA jako oryginalnego źródła. Ta opcja zastępuje oryginalną bazę danych.
 
 ![Przywróć konfigurację](media/sap-hana-db-restore/restore-configuration.png)
 
-### <a name="restore-to-alternate-location"></a>Przywróć do lokalizacji alternatywnej
+### <a name="restore-to-alternate-location"></a>Przywracanie do lokalizacji alternatywnej
 
-* W menu **Przywróć konfigurację** w obszarze **gdzie należy przywrócić**wybierz pozycję **Lokalizacja alternatywna**.
+* W menu **Przywróć konfigurację** w obszarze **Gdzie przywrócić**wybierz pozycję **Lokalizacja alternatywna**.
 
-![Przywróć do lokalizacji alternatywnej](media/sap-hana-db-restore/restore-alternate-location.png)
+![Przywracanie do lokalizacji alternatywnej](media/sap-hana-db-restore/restore-alternate-location.png)
 
 * Wybierz nazwę hosta SAP HANA i nazwę wystąpienia, do którego chcesz przywrócić bazę danych.
-* Sprawdź, czy docelowe wystąpienie SAP HANA jest gotowe do przywrócenia, zapewniając **gotowość do wykonania kopii zapasowej.** Więcej informacji można znaleźć w [sekcji wymagania wstępne](#prerequisites) .
+* Sprawdź, czy docelowe wystąpienie SAP HANA jest gotowe do przywrócenia, zapewniając jego **gotowość do tworzenia kopii zapasowych.** Aby uzyskać więcej informacji, zapoznaj się z [sekcją wymagań wstępnych.](#prerequisites)
 * W polu **Nazwa przywróconej bazy danych** wprowadź nazwę docelowej bazy danych.
 
 > [!NOTE]
-> Przywracanie kontenerów pojedyncza baza danych (SDC) musi być zgodne z tymi [sprawdzeniami](backup-azure-sap-hana-database-troubleshoot.md#single-container-database-sdc-restore).
+> Przywraca kontener pojedynczej bazy danych (SDC) musi wykonać te [kontrole](backup-azure-sap-hana-database-troubleshoot.md#single-container-database-sdc-restore).
 
-* Jeśli ma to zastosowanie, wybierz opcję **Zastąp, jeśli baza danych o takiej samej nazwie już istnieje w wybranym wystąpieniu platformy Hana**.
+* Jeśli ma to zastosowanie, wybierz opcję **Zastąp, jeśli baza danych o tej samej nazwie już istnieje w wybranym wystąpieniu HANA**.
 * Kliknij przycisk **OK**.
 
-![Przywracanie konfiguracji — Ekran końcowy](media/sap-hana-db-restore/restore-configuration-last.png)
+![Konfiguracja przywracania — ekran końcowy](media/sap-hana-db-restore/restore-configuration-last.png)
 
-* W obszarze **Wybierz punkt przywracania**wybierz pozycję **dzienniki (punkt w czasie)** , aby [przywrócić do określonego punktu w czasie](#restore-to-a-specific-point-in-time). Lub wybierz opcję **pełna & różnicowa** , aby [przywrócić do określonego punktu odzyskiwania](#restore-to-a-specific-recovery-point).
+* W **obszarze Wybierz punkt przywracania**wybierz pozycję **Dzienniki (punkt w czasie),** aby [przywrócić do określonego punktu w czasie](#restore-to-a-specific-point-in-time). Lub wybierz **opcję Pełny & Różnicowy,** aby [przywrócić do określonego punktu odzyskiwania](#restore-to-a-specific-recovery-point).
 
-### <a name="restore-and-overwrite"></a>Przywróć i Zastąp
+### <a name="restore-and-overwrite"></a>Przywracanie i zastępowanie
 
-* W menu **Przywróć konfigurację** w obszarze **gdzie można przywrócić**wybierz opcję **Zastąp bazę danych** > **OK**.
+* W menu **Przywróć konfigurację** w obszarze **Gdzie przywrócić**wybierz pozycję **Zastąpełnij DB** > **OK**.
 
 ![Zastąp bazę danych](media/sap-hana-db-restore/overwrite-db.png)
 
-* W obszarze **Wybierz punkt przywracania**wybierz pozycję **dzienniki (punkt w czasie)** , aby [przywrócić do określonego punktu w czasie](#restore-to-a-specific-point-in-time). Lub wybierz opcję **pełna & różnicowa** , aby [przywrócić do określonego punktu odzyskiwania](#restore-to-a-specific-recovery-point).
+* W **obszarze Wybierz punkt przywracania**wybierz pozycję **Dzienniki (punkt w czasie),** aby [przywrócić do określonego punktu w czasie](#restore-to-a-specific-point-in-time). Lub wybierz **opcję Pełny & Różnicowy,** aby [przywrócić do określonego punktu odzyskiwania](#restore-to-a-specific-recovery-point).
 
 ### <a name="restore-to-a-specific-point-in-time"></a>Przywracanie do określonego punktu w czasie
 
-Jeśli wybrano opcję **dzienniki (punkt w czasie)** jako typ przywracania, wykonaj następujące czynności:
+Jeśli jako typ przywracania **wybrano dzienniki (punkt w czasie),** wykonaj następujące czynności:
 
-* Wybierz punkt odzyskiwania z grafu dziennika, a następnie wybierz **przycisk OK** , aby wybrać punkt przywracania.
+* Wybierz punkt odzyskiwania z wykresu dziennika i wybierz **przycisk OK,** aby wybrać punkt przywracania.
 
 ![Punkt przywracania](media/sap-hana-db-restore/restore-point.png)
 
 * W menu **Przywracanie** wybierz pozycję **Przywróć**, aby uruchomić zadanie przywracania.
 
-![Wybierz pozycję Przywróć](media/sap-hana-db-restore/restore-restore.png)
+![Wybierz przycisk przywracania](media/sap-hana-db-restore/restore-restore.png)
 
-* Śledź postęp przywracania w obszarze **powiadomień** lub śledź go, wybierając pozycję **Przywróć zadania** w menu Baza danych.
+* Śledź postęp przywracania w obszarze **Powiadomienia** lub śledź go, wybierając **pozycję Przywróć zadania** w menu bazy danych.
 
-![Przywracanie zostało wyzwolone pomyślnie](media/sap-hana-db-restore/restore-triggered.png)
+![Przywracanie wyzwolić pomyślnie](media/sap-hana-db-restore/restore-triggered.png)
 
 ### <a name="restore-to-a-specific-recovery-point"></a>Przywracanie do określonego punktu odzyskiwania
 
-Jeśli wybrano opcję **pełny & różnicowa** jako typ przywracania, wykonaj następujące czynności:
+Jeśli jako typ przywracania wybrano opcję **Pełny & różnicowy,** wykonaj następujące czynności:
 
-* Wybierz punkt odzyskiwania z listy i wybierz pozycję **OK** , aby wybrać punkt przywracania.
+* Wybierz punkt odzyskiwania z listy i wybierz **przycisk OK,** aby wybrać punkt przywracania.
 
-![Przywróć określony punkt odzyskiwania](media/sap-hana-db-restore/specific-recovery-point.png)
+![Przywracanie określonego punktu odzyskiwania](media/sap-hana-db-restore/specific-recovery-point.png)
 
 * W menu **Przywracanie** wybierz pozycję **Przywróć**, aby uruchomić zadanie przywracania.
 
-![Uruchom zadanie przywracania](media/sap-hana-db-restore/restore-specific.png)
+![Rozpocznij zadanie przywracania](media/sap-hana-db-restore/restore-specific.png)
 
-* Śledź postęp przywracania w obszarze **powiadomień** lub śledź go, wybierając pozycję **Przywróć zadania** w menu Baza danych.
+* Śledź postęp przywracania w obszarze **Powiadomienia** lub śledź go, wybierając **pozycję Przywróć zadania** w menu bazy danych.
 
-![Postęp przywracania](media/sap-hana-db-restore/restore-progress.png)
+![Przywracanie postępu](media/sap-hana-db-restore/restore-progress.png)
 
 > [!NOTE]
-> W przypadku przywracania wielu baz danych (MDC) po przywróceniu bazy danych systemowych do wystąpienia docelowego jeden musi ponownie uruchomić skrypt przed rejestracją. Kolejne Przywracanie bazy danych dzierżawy zakończy się powodzeniem. Aby dowiedzieć się więcej, zobacz [temat Rozwiązywanie problemów — przywracanie MDC](backup-azure-sap-hana-database-troubleshoot.md#multiple-container-database-mdc-restore).
+> W wielu kontenerów bazy danych (MDC) przywraca po system DB jest przywracany do wystąpienia docelowego, trzeba ponownie uruchomić skrypt rejestracji wstępnej. Tylko wtedy kolejne przywraca bazy danych dzierżawy zakończy się pomyślnie. Aby dowiedzieć się więcej, zapoznaj się [z temat rozwiązywania problemów — przywracanie MDC](backup-azure-sap-hana-database-troubleshoot.md#multiple-container-database-mdc-restore).
 
 ## <a name="next-steps"></a>Następne kroki
 
-* [Dowiedz się, jak](sap-hana-db-manage.md) zarządzać bazami danych SAP HANA kopia zapasowa przy użyciu Azure Backup
+* [Dowiedz się, jak](sap-hana-db-manage.md) zarządzać bazami danych SAP HANA, które są archiwizowane przy użyciu usługi Azure Backup

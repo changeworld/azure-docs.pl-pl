@@ -14,24 +14,24 @@ ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: 94c9a2b6a46262ad293da9ca3ba493d6f898c870
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/08/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77085842"
 ---
 # <a name="user-gets-consent-for-several-resources-using-msalnet"></a>Użytkownik otrzymuje zgodę na kilka zasobów przy użyciu MSAL.NET
-Punkt końcowy platformy tożsamości firmy Microsoft nie pozwala na uzyskanie tokenu dla kilku zasobów jednocześnie. W przypadku korzystania z biblioteki uwierzytelniania firmy Microsoft dla platformy .NET (MSAL.NET) parametr zakresy w metodzie pozyskiwania tokenów powinien zawierać tylko zakresy dla pojedynczego zasobu. Można jednak wstępnie wyrazić zgodę na kilka zasobów, określając dodatkowe zakresy przy użyciu metody `.WithExtraScopeToConsent` Builder.
+Punkt końcowy platformy tożsamości firmy Microsoft nie pozwala na uzyskanie tokenu dla kilku zasobów naraz. W przypadku korzystania z biblioteki uwierzytelniania firmy Microsoft dla platformy .NET (MSAL.NET) parametr zakresów w metodzie tokenu nabycia powinien zawierać tylko zakresy dla pojedynczego zasobu. Można jednak wstępnie wyrazić zgodę na kilka zasobów z `.WithExtraScopeToConsent` góry, określając dodatkowe zakresy przy użyciu metody konstruktora.
 
 > [!NOTE]
-> Uzyskanie zgody na kilka zasobów działa w przypadku platformy tożsamości firmy Microsoft, ale nie dla Azure AD B2C. Azure AD B2C obsługuje tylko zgodę z uprawnieniami administratora, a nie za zgodą użytkownika.
+> Uzyskiwanie zgody na kilka zasobów działa dla platformy tożsamości firmy Microsoft, ale nie dla usługi Azure AD B2C. Usługa Azure AD B2C obsługuje tylko zgodę administratora, a nie zgodę użytkownika.
 
-Na przykład jeśli masz dwa zasoby, które mają 2 zakresy każdy:
+Na przykład jeśli masz dwa zasoby, które mają po 2 zakresy:
 
-- https:\//mytenant.onmicrosoft.com/customerapi (z 2 zakresami `customer.read` i `customer.write`)
-- https:\//mytenant.onmicrosoft.com/vendorapi (z 2 zakresami `vendor.read` i `vendor.write`)
+- https:\//mytenant.onmicrosoft.com/customerapi (z 2 `customer.read` zakresami i `customer.write`)
+- https:\//mytenant.onmicrosoft.com/vendorapi (z 2 `vendor.read` zakresami i `vendor.write`)
 
-Należy użyć modyfikatora `.WithExtraScopeToConsent`, który ma parametr *extraScopesToConsent* , jak pokazano w następującym przykładzie:
+Należy użyć `.WithExtraScopeToConsent` modyfikatora, który ma *parametr extraScopesToConsent,* jak pokazano w poniższym przykładzie:
 
 ```csharp
 string[] scopesForCustomerApi = new string[]
@@ -52,7 +52,7 @@ var result = await app.AcquireTokenInteractive(scopesForCustomerApi)
                      .ExecuteAsync();
 ```
 
-Spowoduje to uzyskanie tokenu dostępu dla pierwszego internetowego interfejsu API. Następnie, gdy musisz uzyskać dostęp do drugiego internetowego interfejsu API, możesz w trybie dyskretnym uzyskać token z pamięci podręcznej tokenów:
+Spowoduje to uzyskanie tokenu dostępu dla pierwszego interfejsu API sieci web. Następnie, gdy trzeba uzyskać dostęp do drugiego interfejsu API sieci web można dyskretnie uzyskać token z pamięci podręcznej tokenu:
 
 ```csharp
 AcquireTokenSilent(scopesForVendorApi, accounts.FirstOrDefault()).ExecuteAsync();

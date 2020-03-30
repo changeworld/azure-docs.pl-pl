@@ -5,16 +5,16 @@ ms.service: app-service-mobile
 ms.topic: include
 ms.date: 08/23/2018
 ms.openlocfilehash: 346f63109e673692d425ede6bdbcb6f633af80bb
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68857458"
 ---
-**ZapleczeC#platformy .NET ()** :
+**.NET zaplecza (C#)**:
   
-1. W programie Visual Studio kliknij prawym przyciskiem myszy projekt serwera, kliknij polecenie **Zarządzaj pakietami NuGet**, Wyszukaj `Microsoft.Azure.NotificationHubs`, a następnie kliknij przycisk **Instaluj**. Spowoduje to zainstalowanie biblioteki Notification Hubs na potrzeby wysyłania powiadomień z zaplecza.
-2. W projekcie programu Visual Studio w zapleczu, > Otwórz pozycję controllers**TodoItemController.cs**. W górnej części pliku Dodaj następującą `using` instrukcję:
+1. W programie Visual Studio kliknij prawym przyciskiem myszy projekt `Microsoft.Azure.NotificationHubs`serwera i kliknij polecenie **Zarządzaj pakietami NuGet**, wyszukaj , a następnie kliknij polecenie **Zainstaluj**. Spowoduje to zainstalowanie biblioteki Centrum powiadomień do wysyłania powiadomień z wewnętrznej bazy danych.
+2. W projekcie programu Visual Studio zaplecza otwórz **TodoItemController.cs kontrolery** > **.** W górnej części pliku dodaj `using` następującą instrukcję:
 
     ```csharp
     using Microsoft.Azure.Mobile.Server.Config;
@@ -63,13 +63,13 @@ ms.locfileid: "68857458"
     }
     ```
 
-4. Opublikuj ponownie projekt serwera.
+4. Ponownie opublikuj projekt serwera.
 
 **Wewnętrzna baza danych Node.js**:
 
-1. Skonfiguruj projekt zaplecza.    
+1. Skonfiguruj projekt wewnętrznej bazy danych.    
 
-2. Zastąp skrypt tabeli TodoItem. js następującym kodem:
+2. Zastąp skrypt tabeli todoitem.js następującym kodem:
 
     ```javascript
     var azureMobileApps = require('azure-mobile-apps'),
@@ -110,4 +110,4 @@ ms.locfileid: "68857458"
     module.exports = table;
     ```
 
-3. Podczas edytowania pliku na komputerze lokalnym należy ponownie opublikować projekt serwera.
+3. Podczas edytowania pliku na komputerze lokalnym ponownie opublikuj projekt serwera.

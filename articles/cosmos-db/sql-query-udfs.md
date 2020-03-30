@@ -1,25 +1,25 @@
 ---
-title: Funkcje zdefiniowane przez użytkownika (UDF) w Azure Cosmos DB
-description: Dowiedz się więcej o funkcjach zdefiniowanych przez użytkownika w programie Azure Cosmos DB.
+title: Funkcje zdefiniowane przez użytkownika (UDF) w usłudze Azure Cosmos DB
+description: Dowiedz się więcej o funkcjach zdefiniowanych przez użytkownika w usłudze Azure Cosmos DB.
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/31/2019
 ms.author: mjbrown
 ms.openlocfilehash: b67202da7293ef55cfe3390ca676f7944da80fba
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/19/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "69614336"
 ---
-# <a name="user-defined-functions-udfs-in-azure-cosmos-db"></a>Funkcje zdefiniowane przez użytkownika (UDF) w Azure Cosmos DB
+# <a name="user-defined-functions-udfs-in-azure-cosmos-db"></a>Funkcje zdefiniowane przez użytkownika (UDF) w usłudze Azure Cosmos DB
 
-Interfejs API SQL zapewnia obsługę funkcji zdefiniowanych przez użytkownika (UDF). Za pomocą skalarnej UDF można przekazać zero lub wiele argumentów i zwrócić wynik pojedynczego argumentu. Interfejs API sprawdza każdy argument pod kątem dozwolonych wartości JSON.  
+Interfejs API SQL zapewnia obsługę funkcji zdefiniowanych przez użytkownika (UDF). Za pomocą skalarnych plików UDF można przekazać w zeru lub wielu argumentach i zwrócić wynik pojedynczego argumentu. Interfejs API sprawdza każdy argument jako legalne wartości JSON.  
 
-Interfejs API rozszerza składnię SQL w celu obsługi niestandardowej logiki aplikacji przy użyciu UDF. Możesz zarejestrować UDF z interfejsem API SQL i odwoływać się do nich w zapytaniach SQL. Tak naprawdę funkcje zdefiniowane przez użytkownika są w sposób zaawansowany projektowane na potrzeby wywoływania z zapytań. Jako współrzuty UDF nie mają dostępu do obiektu kontekstu, takiego jak inne typy JavaScript, takie jak procedury składowane i wyzwalacze. Zapytania są tylko do odczytu i mogą być uruchamiane w replikach podstawowych lub pomocniczych. UDF, w przeciwieństwie do innych typów języka JavaScript, są przeznaczone do uruchamiania w replikach pomocniczych.
+Interfejs API rozszerza składnię SQL do obsługi niestandardowej logiki aplikacji przy użyciu plików UDF. Można zarejestrować pliki UDF za pomocą interfejsu API SQL i odwoływać się do nich w kwerendach SQL. Tak naprawdę funkcje zdefiniowane przez użytkownika są w sposób zaawansowany projektowane na potrzeby wywoływania z zapytań. W konsekwencji pliki UDF nie mają dostępu do obiektu kontekstowego, podobnie jak inne typy JavaScript, takie jak procedury składowane i wyzwalacze. Kwerendy są tylko do odczytu i można uruchomić na replikach podstawowych lub pomocniczych. Pliki UDF, w przeciwieństwie do innych typów JavaScript, są przeznaczone do uruchamiania w replikach pomocniczych.
 
-Poniższy przykład rejestruje UDF w kontenerze elementu w bazie danych Cosmos. W przykładzie tworzony jest `REGEX_MATCH`format UDF o nazwie. Akceptuje dwie wartości `input` ciągu JSON i `pattern`i sprawdza, czy pierwsze pasuje do wzorca określonego w drugim przy użyciu `string.match()` funkcji JavaScript.
+Poniższy przykład rejestruje UDF w kontenerze towarów w bazie danych usługi Cosmos. W przykładzie utworzy się `REGEX_MATCH`UDF, którego nazwa jest . Akceptuje dwie wartości ciągu JSON `pattern`i , i sprawdza, `input` czy pierwszy pasuje do `string.match()` wzorca określonego w drugim przy użyciu funkcji JavaScript.
 
 ## <a name="examples"></a>Przykłady
 
@@ -37,7 +37,7 @@ Poniższy przykład rejestruje UDF w kontenerze elementu w bazie danych Cosmos. 
            regexMatchUdf).Result;  
 ```
 
-Teraz Użyj tego formatu UDF w projekcji zapytania. Należy zakwalifikować UDF z prefiksem `udf.` z rozróżnianiem wielkości liter podczas wywoływania ich z poziomu zapytań.
+Teraz użyj tego UDF w projekcji kwerendy. Należy zakwalifikować UDFs z prefiksem `udf.` z uwzględnieniem wielkości liter podczas wywoływania ich z wewnątrz kwerend.
 
 ```sql
     SELECT udf.REGEX_MATCH(Families.address.city, ".*eattle")
@@ -57,7 +57,7 @@ Wyniki są następujące:
     ]
 ```
 
-Można użyć formatu UDF kwalifikowana z `udf.` prefiksem wewnątrz filtra, tak jak w poniższym przykładzie:
+Można użyć UDF kwalifikowany `udf.` z prefiksem wewnątrz filtru, jak w poniższym przykładzie:
 
 ```sql
     SELECT Families.id, Families.address.city
@@ -74,9 +74,9 @@ Wyniki są następujące:
     }]
 ```
 
-W zasadzie UDF są prawidłowymi wyrażeniami skalarnymi, których można używać zarówno w projekcjach, jak i w filtrach.
+W istocie pliki UDF są prawidłowymi wyrażeniami skalarnymi, których można używać zarówno w rzutach, jak i filtrach.
 
-Aby rozwijać możliwości UDF, należy zapoznać się z innym przykładem logiki warunkowej:
+Aby rozwinąć moc plików UDF, przyjrzyj się innemu przykładowi z logiką warunkową:
 
 ```javascript
        UserDefinedFunction seaLevelUdf = new UserDefinedFunction()
@@ -100,7 +100,7 @@ Aby rozwijać możliwości UDF, należy zapoznać się z innym przykładem logik
                 seaLevelUdf);
 ```
 
-Poniższy przykład wykonuje funkcję UDF:
+Poniższy przykład wykonuje UDF:
 
 ```sql
     SELECT f.address.city, udf.SEALEVEL(f.address.city) AS seaLevel
@@ -122,12 +122,12 @@ Wyniki są następujące:
     ]
 ```
 
-Jeśli właściwości, do których odwołują się parametry UDF, nie są dostępne w wartości JSON, parametr jest traktowany jako undefined, a wywołanie UDF jest pomijane. Podobnie, jeśli wynik UDF jest niezdefiniowany, nie jest zawarty w wyniku.
+Jeśli właściwości, o których mowa w parametrach UDF, nie są dostępne w wartości JSON, parametr jest uważany za niezdefiniowany, a wywołanie UDF jest pomijane. Podobnie jeśli wynik UDF jest niezdefiniowany, nie jest uwzględniony w wyniku.
 
-Jak przedstawiono w powyższych przykładach, UDF integruje możliwości języka JavaScript z interfejsem API SQL. UDF zapewniają bogaty programowalny interfejs do wykonywania złożonej procedury, logiki warunkowej z pomocą wbudowanych funkcji środowiska uruchomieniowego języka JavaScript. Interfejs API SQL udostępnia argumenty UDF dla każdego elementu źródłowego w bieżącym etapie przetwarzania lub ZAZNACZania klauzuli. Wynik jest bezproblemowo zawarty w ogólnym potoku wykonywania. Podsumowując, UDF to doskonałe narzędzia do wykonywania złożonej logiki biznesowej w ramach zapytań.
+Jak pokazują powyższe przykłady, pliki UDF integrują moc języka JavaScript z interfejsem API SQL. Pliki UDF zapewniają bogaty programowalny interfejs do wykonywania złożonych proceduralnych, warunkowych logiki za pomocą wbudowanych funkcji środowiska wykonawczego JavaScript. Interfejs API SQL udostępnia argumenty do plików UDF dla każdego elementu źródłowego na bieżącym etapie przetwarzania klauzuli WHERE lub SELECT. Wynik jest bezproblemowo włączone w potoku wykonywania ogólnej. Podsumowując, pliki UDF są doskonałymi narzędziami do wykonywania złożonych logiki biznesowej w ramach zapytań.
 
 ## <a name="next-steps"></a>Następne kroki
 
-- [Wprowadzenie do Azure Cosmos DB](introduction.md)
+- [Wprowadzenie do usługi Azure Cosmos DB](introduction.md)
 - [Funkcje systemowe](sql-query-system-functions.md)
-- [Agreguje](sql-query-aggregates.md)
+- [Agregacje](sql-query-aggregates.md)

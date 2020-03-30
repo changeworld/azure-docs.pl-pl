@@ -1,30 +1,29 @@
 ---
 title: Plik dyrektywy include
 description: Plik dyrektywy include
-services: azure-policy
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 06/05/2019
+ms.date: 03/25/2020
 ms.author: dacoulte
-ms.custom: include file
-ms.openlocfilehash: ea87e51e66985f860cd6d10595a32facde1dc639
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: 19b43c857058b3af50db3bc1b42ec1ae558ee884
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "67133366"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80272666"
 ---
-Dla każdego typu obiektu dla Azure Policy istnieje maksymalna liczba. Wpis _Zakres_ oznacza subskrypcję lub [grupę zarządzania](../articles/governance/management-groups/overview.md).
+Istnieje maksymalna liczba dla każdego typu obiektu dla zasad platformy Azure. Wpis _Zakres_ oznacza subskrypcję lub [grupę zarządzania](../articles/governance/management-groups/overview.md).
 
-| Gdzie | Elementy | Maksymalna liczba |
+| Lokalizacja | Elementy | Maksymalna liczba |
 |---|---|---|
-| Scope | Definicje zasad | 500 |
-| Scope | Definicje inicjatyw | 100 |
+| Zakres | Definicje zasad | 500 |
+| Zakres | Definicje inicjatyw | 100 |
 | Dzierżawa | Definicje inicjatyw | 1000 |
-| Scope | Zasady lub przypisania inicjatywy | 100 |
+| Zakres | Przypisania zasad lub inicjatyw | 100 |
 | Definicja zasad | Parametry | 20 |
 | Definicja inicjatywy | Zasady | 100 |
 | Definicja inicjatywy | Parametry | 100 |
-| Zasady lub przypisania inicjatywy | Wykluczenia (notScopes) | 400 |
-| Reguła zasad | Zagnieżdżone uwarunkowania | 512 |
+| Przypisania zasad lub inicjatyw | Wykluczenia (notScopes) | 400 |
+| Reguła zasad | Zagnieżdżone warunki warunkowe | 512 |
+| Zadanie korygowania | Resources | 1000 |
