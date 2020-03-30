@@ -1,6 +1,6 @@
 ---
-title: Rozszerzenie maszyny wirtualnej z systemem Linux dla Azure Backup
-description: Wykonaj kopię zapasową spójnej aplikacji maszyny wirtualnej z Azure Backup przy użyciu rozszerzenia migawki maszyny wirtualnej
+title: Rozszerzenie systemu Linux migawka maszyny Wirtualnej dla usługi Azure Backup
+description: Wykonywanie spójnej kopii zapasowej maszyny wirtualnej z usługi Azure Backup przy użyciu rozszerzenia migawki maszyny Wirtualnej
 services: backup, virtual-machines-linux
 documentationcenter: ''
 author: trinadhkotturu
@@ -10,27 +10,29 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.date: 12/17/2018
 ms.author: trinadhk
-ms.openlocfilehash: d2af6b6c981a2fcbce38546196aa84f1e6be4e38
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: d0ad54c19749d670f9ab753e1e6d8eb130475ffc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79250350"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79415118"
 ---
-# <a name="vm-snapshot-linux-extension-for-azure-backup"></a>Rozszerzenie maszyny wirtualnej z systemem Linux dla Azure Backup
+# <a name="vm-snapshot-linux-extension-for-azure-backup"></a>Rozszerzenie systemu Linux migawka maszyny Wirtualnej dla usługi Azure Backup
 
 
 
-Azure Backup zapewnia obsługę tworzenia kopii zapasowych obciążeń z zasobów lokalnych do chmury i wykonywania kopii zapasowych w magazynie Recovery Services. Azure Backup używa rozszerzenia migawki maszyny wirtualnej w celu utworzenia kopii zapasowej maszyny wirtualnej platformy Azure spójnej na poziomie aplikacji bez konieczności zamykania maszyny wirtualnej. Rozszerzenie systemu Linux migawki maszyny wirtualnej jest publikowane i obsługiwane przez firmę Microsoft w ramach usługi Azure Backup. Azure Backup zainstaluje rozszerzenie jako część pierwszej zaplanowanej kopii zapasowej wyzwalane po włączeniu kopii zapasowej. Ten dokument zawiera szczegółowe informacje o obsługiwanych platformach, konfiguracjach i opcjach wdrażania dla rozszerzenia migawki maszyny wirtualnej.
+Usługa Azure Backup zapewnia obsługę tworzenia kopii zapasowych obciążeń z lokalnych do chmurze i tworzenia kopii zapasowych zasobów w chmurze do magazynu usług odzyskiwania. Usługa Azure Backup używa rozszerzenia migawki maszyny Wirtualnej, aby wykonać spójną kopię zapasową maszyny wirtualnej platformy Azure bez konieczności zamykania maszyny wirtualnej. Rozszerzenie systemu Windows Snapshot na maszynie VM jest publikowane i obsługiwane przez firmę Microsoft w ramach usługi Azure Backup. Usługa Azure Backup zainstaluje rozszerzenie jako część pierwszego zaplanowanego uruchomienia kopii zapasowej, umożliwiającego tworzenie kopii zapasowej. Ten dokument zawiera szczegółowe informacje na temat obsługiwanych platform, konfiguracji i opcji wdrażania rozszerzenia migawki maszyny Wirtualnej.
+
+Rozszerzenie VMSnapshot jest wyświetlane w witrynie Azure portal tylko dla nie zarządzanych maszyn wirtualnych.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 ### <a name="operating-system"></a>System operacyjny
-Aby uzyskać listę obsługiwanych systemów operacyjnych, zapoznaj się z [systemami operacyjnymi obsługiwanymi przez program Azure Backup](../../backup/backup-azure-arm-vms-prepare.md#before-you-start)
+Lista obsługiwanych systemów operacyjnych znajduje się w [części Systemy operacyjne obsługiwane przez usługę Azure Backup](../../backup/backup-azure-arm-vms-prepare.md#before-you-start)
 
 ## <a name="extension-schema"></a>Schemat rozszerzenia
 
-Poniższy kod JSON pokazuje schemat rozszerzenia migawki maszyny wirtualnej. Rozszerzenie wymaga identyfikatora zadania — identyfikuje zadanie tworzenia kopii zapasowej, które wyzwoliło migawkę na maszynie wirtualnej, identyfikator URI obiektu BLOB, a stan operacji migawki jest zapisywana, zaplanowany czas rozpoczęcia migawki, rejestruje identyfikator URI obiektu BLOB — dzienniki odpowiadające zadanie migawki są zapisywane, objstr reprezentacja dysków maszyn wirtualnych i metadanych.  Ponieważ te ustawienia powinny być traktowane jako dane poufne, powinny być przechowywane w konfiguracji chronionego ustawienia. Dane platformy Azure ustawienia rozszerzenia chronione maszyny Wirtualnej jest zaszyfrowany i odszyfrowane tylko na docelowej maszynie wirtualnej. Należy pamiętać, że te ustawienia są zalecane do przekazywania z usługi Azure Backup tylko jako część zadania tworzenia kopii zapasowej.
+Poniżej przedstawiono schemat rozszerzenia migawki maszyny Wirtualnej. Rozszerzenie wymaga identyfikatora zadania — identyfikuje zadanie tworzenia kopii zapasowej, które wyzwoliło migawkę na maszynie Wirtualnej, stan obiektu blob uri - gdzie stan operacji migawki jest zapisywany, zaplanowany czas rozpoczęcia migawki, dzienniki uri obiektów blob - gdzie dzienniki odpowiadające zadaniu migawki są zapisywane, objstr- reprezentacja dysków maszyn wirtualnych i metadanych.  Ponieważ te ustawienia powinny być traktowane jako poufne dane, powinny być przechowywane w konfiguracji ustawień chronionych. Dane ustawień chronionych przez rozszerzenie maszyny Wirtualnej platformy Azure są szyfrowane i odszyfrowywane tylko na docelowej maszynie wirtualnej. Należy pamiętać, że te ustawienia są zalecane do przekazania z usługi Azure Backup tylko w ramach zadania kopii zapasowej.
 
 ```json
 {
@@ -60,13 +62,13 @@ Poniższy kod JSON pokazuje schemat rozszerzenia migawki maszyny wirtualnej. Roz
 
 ### <a name="property-values"></a>Wartości właściwości
 
-| Name (Nazwa) | Wartość / przykład | Typ danych |
+| Nazwa | Wartość / Przykład | Typ danych |
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | date |
-| taskId | e07354cf-041e-4370-929f-25a319ce8933_1 | ciąg |
-| commandStartTimeUTCTicks | 6.36458 e + 17 | ciąg |
+| identyfikator zadania | e07354cf-041e-4370-929f-25a319ce8933_1 | ciąg |
+| commandStartTimeUTCTicks | 6.36458E+17 | ciąg |
 | locale | pl-pl | ciąg |
-| objectStr | Kodowanie tablicy identyfikatorów URI sygnatury dostępu współdzielonego — "blobSASUri": ["https:\/\/sopattna5365.blob.core.windows.net\/VHD\/vmubuntu1404ltsc201652903941. VHD? OHR = 2014-02-14 & SR = b & SIG = TywkROXL1zvhXcLujtCut8g3jTpgbE6JpSWRLZxAdtA% 3D & St = 2017-11-09T14% 3A23% 3A28Z & SE = 2017-11-09T17% 3A38% 3A28Z & sopattna8461.blob.Core.Windows.NET = RW", "https:\/\/\/VHD\/vmubuntu1404ltsc-20160629-122418. VHD? OHR = 2014-02-14 & SR = b & SIG = 5S0A6YDWvVwqPAkzWXVy% 2BS% 2FqMwzFMbamT5upwx05v8Q% 3D & St = 2017-11-09T14% 3A23% 3A28Z & SE = 2017-11-09T17% 3A38% 3A28Z & Sp = RW "," https:\/\/sopattna8461.blob.core.windows.net\/bootdiagnostics-vmubuntu1-deb58392-ed5e-48be-9228-ff681b0cd3ee\/vmubuntu1404ltsc-20160629-122541. VHD? OHR = 2014-02-14 & SR = b & SIG = X0Me2djByksBBMVXMGIUrcycvhQSfjYvqKLeRA7nBD4% 3D & St = 2017-11-09T14% 3A23% 3A28Z & SE = 2017-11-09T17% 3A38% 3A28Z & Sp = RW "," https:\/\/sopattna5365.blob.core.windows.net\/VHD\/vmubuntu1404ltsc-20160701-163922. VHD? OHR = 2014-02-14 & SR = b & SIG = oXvtK2IXCNqWv7fpjc7TAzFDpc1GoXtT7r% 2BC% 2BNIAork% 3D & St = 2017-11-09T14% 3A23% 3A28Z & SE = 2017-11-09T17% 3A38% 3A28Z & Sp = RW "," https:\/\/sopattna5365.blob.core.windows.net\/VHD\/vmubuntu1404ltsc-20170705-124311. VHD? OHR = 2014-02-14 & SR = b & SIG = ZUM9d28Mvvm% 2FfrhJ71TFZh0Ni90m38bBs3zMl% 2FQ9rs0% 3D & St = 2017-11-09T14% 3A23% 3A28Z & SE = 2017-11-09T17% 3A38% 3A28Z & Sp = RW "] | ciąg |
+| objectStr | Kodowanie tablicy sas uri- "blobSASUri":\/\/\/["https: sopattna5365.blob.core.windows.net\/vhds vmubuntu1404ltsc201652903941.vhd?sv=2014-02-2014-02-201414&sr=b&sig=TywkROXL1zvhXcLujtCut8g3jTpgbE6JpSWRLZxAdtA%3D&st=2017-11-09T14%3A23%3A28Z&se=2017-11-09T17%3A38%3A28Z\/&\/sp=rw", "https:\/\/&sopattna8461.blob.core.windows.net vhds vmubuntu1404ltsc-20160629-122418.vhd?sv=2014-02-14&sr=b&sig= 5S0A6YDWvVwqPAkzWXVy%2BS%2FqMwzFMbamT5upwx05v8Q%3D&st=2017-11-09T14%3A23%3A28Z&se=2017-11-09T17%3A38%3A28Z&sp=rw", "https:\/\/sopattna8461.blob.core.windows.net\/bootdiagnostics-vmubuntu1-deb58392-ed5e-48be-9228-ff681b0cd3ee\/vmubunbuntu1404ltsc-20160629-122541.vhd?sv=2014-02-14&sr=b&sig=X0Me2djByksBBMVXMGIUrcycvhQSfjYvqKLeRA7nBD4%3D&st=2017-11-09T14%3A23%3A28Z&se=2017-11-09T17%3A38%3A28Z&sp=rw", " https:\/\/sopattna5365.blob.core.windows.net\/vhds\/vmubuntu1404ltsc-20160701-163922.vhd?sv=2014-02-14&sr=b&sig=oXvtK2IXCNqWv7fpjc7TAzFDpc1GoXtT7r%2BC%2BNIAork%3D&st=2017-11-09T14%13A23%3A28Z&se=2017-11-09T17%3A38%3A28Z&sp=rw", "https:\/\/sopattna5365.blob.core.windows.net\/vhds\/vmubuntu1404ltsc-20170705-124311.vhd?sv=2014-02-14&sr=b&sig=ZUM9d28Mvvm% 2FfrhJ71TFZh0Ni90m38bBs3zMl%2FQ9rs0%3D&st=2017-11-09T14%14%13A23%3A28Z&se=2017-11-09T17%3A38%3A28Z&sp=rw"] | ciąg |
 | logsBlobUri | https://seapod01coord1exsapk732.blob.core.windows.net/bcdrextensionlogs-d45d8a1c-281e-4bc8-9d30-3b25176f68ea/sopattna-vmubuntu1404ltsc.v2.Logs.txt?sv=2014-02-14&sr=b&sig=DbwYhwfeAC5YJzISgxoKk%2FEWQq2AO1vS1E0rDW%2FlsBw%3D&st=2017-11-09T14%3A33%3A29Z&se=2017-11-09T17%3A38%3A29Z&sp=rw | ciąg |
 | statusBlobUri | https://seapod01coord1exsapk732.blob.core.windows.net/bcdrextensionlogs-d45d8a1c-281e-4bc8-9d30-3b25176f68ea/sopattna-vmubuntu1404ltsc.v2.Status.txt?sv=2014-02-14&sr=b&sig=96RZBpTKCjmV7QFeXm5IduB%2FILktwGbLwbWg6Ih96Ao%3D&st=2017-11-09T14%3A33%3A29Z&se=2017-11-09T17%3A38%3A29Z&sp=rw | ciąg |
 
@@ -74,12 +76,12 @@ Poniższy kod JSON pokazuje schemat rozszerzenia migawki maszyny wirtualnej. Roz
 
 ## <a name="template-deployment"></a>Wdrażanie na podstawie szablonu
 
-Rozszerzenia maszyn wirtualnych platformy Azure można wdrażać przy użyciu szablonów usługi Azure Resource Manager. Jednak zalecanym sposobem dodawania rozszerzenia migawki maszyny wirtualnej jest włączenie funkcji tworzenia kopii zapasowej na maszynie wirtualnej. Można to osiągnąć za pomocą szablonu Menedżer zasobów.  Przykładowy szablon Menedżer zasobów, który umożliwia wykonywanie kopii zapasowych na maszynie wirtualnej, można znaleźć w [galerii szybki start platformy Azure](https://azure.microsoft.com/resources/templates/101-recovery-services-backup-vms/).
+Rozszerzenia maszyn wirtualnych platformy Azure można wdrożyć za pomocą szablonów usługi Azure Resource Manager. Jednak zalecanym sposobem dodawania rozszerzenia migawki maszyny wirtualnej do maszyny wirtualnej jest włączenie kopii zapasowej na maszynie wirtualnej. Można to osiągnąć za pomocą szablonu Menedżera zasobów.  Przykładowy szablon Menedżera zasobów, który umożliwia tworzenie kopii zapasowych na maszynie wirtualnej, można znaleźć w [Galerii szybkiego startu platformy Azure](https://azure.microsoft.com/resources/templates/101-recovery-services-backup-vms/).
 
 
-## <a name="azure-cli-deployment"></a>Wdrażania interfejs wiersza polecenia platformy Azure
+## <a name="azure-cli-deployment"></a>Wdrożenie interfejsu wiersza polecenia platformy Azure
 
-Interfejs wiersza polecenia platformy Azure umożliwia tworzenie kopii zapasowych na maszynie wirtualnej. Po włączeniu kopii zapasowej, pierwsze zaplanowane zadanie tworzenia kopii zapasowej zainstaluje rozszerzenie migawki maszyny wirtualnej na maszynie wirtualnej.
+Interfejsu wiersza polecenia platformy Azure można włączyć tworzenie kopii zapasowych na maszynie wirtualnej. Post włącz kopię zapasową, pierwsze zaplanowane zadanie tworzenia kopii zapasowej zainstaluje rozszerzenie migawki maszyny Wirtualnej na maszynie Wirtualnej.
 
 ```azurecli
 az backup protection enable-for-vm \
@@ -89,26 +91,26 @@ az backup protection enable-for-vm \
     --policy-name DefaultPolicy
 ```
 
-## <a name="troubleshoot-and-support"></a>Rozwiązywanie problemów i pomocy technicznej
+## <a name="troubleshoot-and-support"></a>Rozwiązywanie problemów i pomoc techniczna
 
 ### <a name="troubleshoot"></a>Rozwiązywanie problemów
 
-Dane dotyczące stanu wdrożeń rozszerzenia można pobrać z witryny Azure portal i za pomocą wiersza polecenia platformy Azure. Aby wyświetlić stan wdrożenia rozszerzeń dla danej maszyny Wirtualnej, uruchom następujące polecenie, używając wiersza polecenia platformy Azure.
+Dane dotyczące stanu wdrożeń rozszerzeń można pobrać z witryny Azure portal i przy użyciu interfejsu wiersza polecenia platformy Azure. Aby wyświetlić stan wdrożenia rozszerzeń dla danej maszyny Wirtualnej, uruchom następujące polecenie przy użyciu interfejsu wiersza polecenia platformy Azure.
 
 ```azurecli
 az vm extension list --resource-group myResourceGroup --vm-name myVM -o table
 ```
 
-Dane wyjściowe wykonywania rozszerzenia jest rejestrowany w następującym pliku:
+Dane wyjściowe wykonania rozszerzenia są rejestrowane w następującym pliku:
 
 ```
 /var/log/waagent.log
 ```
 
-### <a name="error-codes-and-their-meanings"></a>Kody błędów i ich znaczenie
+### <a name="error-codes-and-their-meanings"></a>Kody błędów i ich znaczenia
 
-Informacje dotyczące rozwiązywania problemów można znaleźć w [przewodniku rozwiązywania problemów z maszyną wirtualną platformy Azure](../../backup/backup-azure-vms-troubleshoot.md).
+Informacje dotyczące rozwiązywania problemów można znaleźć w [przewodniku rozwiązywania problemów z tworzeniem kopii zapasowych maszyn wirtualnych platformy Azure](../../backup/backup-azure-vms-troubleshoot.md).
 
 ### <a name="support"></a>Pomoc techniczna
 
-Jeśli potrzebujesz więcej pomocy w dowolnym punkcie tego artykułu, możesz skontaktować się z ekspertami platformy Azure na [forach MSDN i Stack Overflow](https://azure.microsoft.com/support/forums/). Alternatywnie mogą zgłaszać zdarzenia pomocy technicznej platformy Azure. Przejdź do [witryny pomocy technicznej systemu Azure](https://azure.microsoft.com/support/options/) i wybierz pozycję Uzyskaj pomoc techniczną. Aby uzyskać informacje o korzystaniu z pomocy technicznej platformy Azure, przeczytaj temat [Microsoft Azure support — często zadawane pytania](https://azure.microsoft.com/support/faq/).
+Jeśli potrzebujesz więcej pomocy w dowolnym momencie tego artykułu, możesz skontaktować się z ekspertami platformy Azure na [forach MSDN Azure i Stack Overflow](https://azure.microsoft.com/support/forums/). Alternatywnie można zgłosić zdarzenie pomocy technicznej platformy Azure. Przejdź do [witryny pomocy technicznej platformy Azure](https://azure.microsoft.com/support/options/) i wybierz pozycję Uzyskaj pomoc techniczną. Aby uzyskać informacje na temat korzystania z pomocy technicznej platformy Azure, przeczytaj często zadawane [pytania dotyczące pomocy technicznej platformy Microsoft Azure](https://azure.microsoft.com/support/faq/).

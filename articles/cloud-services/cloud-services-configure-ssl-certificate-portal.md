@@ -1,6 +1,6 @@
 ---
-title: Konfigurowanie protokołu SSL dla usługi w chmurze | Microsoft Docs
-description: Informacje na temat określania punktu końcowego HTTPS dla roli sieci Web oraz przekazywania certyfikatu SSL w celu zabezpieczenia aplikacji. W poniższych przykładach użyto Azure Portal.
+title: Konfigurowanie usługi SSL dla usługi w chmurze | Dokumenty firmy Microsoft
+description: Dowiedz się, jak określić punkt końcowy HTTPS dla roli sieci web i jak przekazać certyfikat SSL w celu zabezpieczenia aplikacji. W tych przykładach użyto witryny Azure portal.
 services: cloud-services
 documentationcenter: .net
 author: tgore03
@@ -9,44 +9,44 @@ ms.topic: article
 ms.date: 05/26/2017
 ms.author: tagore
 ms.openlocfilehash: 6ddb7001f770a9d8aea38d1a4698e15c167aeaa4
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79273139"
 ---
-# <a name="configuring-ssl-for-an-application-in-azure"></a>Konfigurowanie protokołu SSL dla aplikacji na platformie Azure
+# <a name="configuring-ssl-for-an-application-in-azure"></a>Konfigurowanie ssl dla aplikacji na platformie Azure
 
-Szyfrowanie SSL (Secure Socket Layer) to najczęściej stosowana Metoda zabezpieczania danych wysyłanych przez Internet. W ramach tego typowego zadania omówiono sposób określania punktu końcowego HTTPS dla roli sieci Web oraz przekazywania certyfikatu SSL w celu zabezpieczenia aplikacji.
+Szyfrowanie SSL (Secure Socket Layer) jest najczęściej stosowaną metodą zabezpieczania danych przesyłanych przez Internet. W tym typowym zadaniu omówiono sposób określania punktu końcowego protokołu HTTPS dla roli sieci web i przekazywania certyfikatu SSL w celu zabezpieczenia aplikacji.
 
 > [!NOTE]
-> Procedury opisane w tym zadaniu dotyczą platformy Azure Cloud Services; Aby uzyskać App Services, zobacz [ten](../app-service/configure-ssl-bindings.md)temat.
+> Procedury w tym zadaniu dotyczą usług w chmurze azure; w przypadku usług app services, zobacz [ten](../app-service/configure-ssl-bindings.md)plik .
 >
 
-To zadanie używa wdrożenia produkcyjnego. Informacje o korzystaniu z wdrożenia przejściowego znajdują się na końcu tego tematu.
+To zadanie używa wdrożenia produkcyjnego. Informacje na temat korzystania z wdrożenia przemieszczania znajduje się na końcu tego tematu.
 
-Przeczytaj [ten](cloud-services-how-to-create-deploy-portal.md) pierwszy, jeśli nie utworzono jeszcze usługi w chmurze.
+Przeczytaj [to](cloud-services-how-to-create-deploy-portal.md) najpierw, jeśli nie utworzono jeszcze usługi w chmurze.
 
-## <a name="step-1-get-an-ssl-certificate"></a>Krok 1. Uzyskiwanie certyfikatu SSL
-Aby skonfigurować protokół SSL dla aplikacji, należy najpierw uzyskać certyfikat SSL, który został podpisany przez urząd certyfikacji (CA), zaufaną stronę trzecią, która wystawia certyfikaty w tym celu. Jeśli jeszcze tego nie zrobiono, należy uzyskać go od firmy, która sprzedaje certyfikaty SSL.
+## <a name="step-1-get-an-ssl-certificate"></a>Krok 1: Uzyskaj certyfikat SSL
+Aby skonfigurować ssl dla aplikacji, należy najpierw uzyskać certyfikat SSL podpisany przez urząd certyfikacji (CA), zaufaną firmę trzecią, która wystawia w tym celu certyfikaty. Jeśli jeszcze go nie masz, musisz go uzyskać od firmy, która sprzedaje certyfikaty SSL.
 
 Certyfikat musi spełniać następujące wymagania dotyczące certyfikatów SSL na platformie Azure:
 
 * Certyfikat musi zawierać klucz prywatny.
-* Należy utworzyć certyfikat do wymiany kluczy, który można wyeksportować do pliku wymiany informacji osobistych (pfx).
-* Nazwa podmiotu certyfikatu musi być zgodna z domeną używaną do uzyskiwania dostępu do usługi w chmurze. Nie można uzyskać certyfikatu SSL z urzędu certyfikacji dla domeny cloudapp.net. Musisz uzyskać niestandardową nazwę domeny, która będzie używana podczas uzyskiwania dostępu do usługi. W przypadku żądania certyfikatu od urzędu certyfikacji nazwa podmiotu certyfikatu musi być zgodna z niestandardową nazwą domeny używaną w celu uzyskania dostępu do aplikacji. Na przykład jeśli nazwa domeny niestandardowej to **contoso.com** , żądanie certyfikatu z urzędu certyfikacji dla * **. contoso.com** lub **www\.contoso.com**.
-* Certyfikat musi mieć co najmniej 2048-bitowe szyfrowanie.
+* Certyfikat musi zostać utworzony w celu wymiany kluczy, który można wyeksportować do pliku wymiany informacji osobistych (pfx).
+* Nazwa podmiotu certyfikatu musi być zgodna z domeną używaną do uzyskiwania dostępu do usługi w chmurze. Nie można uzyskać certyfikatu SSL od urzędu certyfikacji (CA) dla domeny cloudapp.net. Musisz uzyskać niestandardową nazwę domeny, aby używać podczas uzyskiwania dostępu do usługi. Podczas żądania certyfikatu od urzędu certyfikacji nazwa podmiotu certyfikatu musi być zgodna z niestandardową nazwą domeny używaną do uzyskiwania dostępu do aplikacji. Na przykład, jeśli niestandardowa nazwa domeny jest **contoso.com** żądanie certyfikatu od urzędu certyfikacji dla ***.contoso.com** lub **www\.contoso.com**.
+* Certyfikat musi używać szyfrowania 2048-bitowego.
 
-W celach testowych można [utworzyć](cloud-services-certs-create.md) certyfikat z podpisem własnym i użyć go. Certyfikat z podpisem własnym nie jest uwierzytelniany przez urząd certyfikacji i może używać domeny cloudapp.net jako adresu URL witryny sieci Web. Na przykład następujące zadanie używa certyfikatu z podpisem własnym, w którym nazwa pospolita (CN) użyta w certyfikacie jest **sslexample.cloudapp.NET**.
+Do celów testowych można [utworzyć](cloud-services-certs-create.md) i używać certyfikatu z podpisem własnym. Certyfikat z podpisem własnym nie jest uwierzytelniony za pośrednictwem urzędu certyfikacji i może używać domeny cloudapp.net jako adresu URL witryny sieci Web. Na przykład następujące zadanie używa certyfikatu z podpisem własnym, w którym nazwa pospolita (CN) używana w certyfikacie jest **sslexample.cloudapp.net**.
 
-Następnie należy dołączyć informacje o certyfikacie w definicji usługi i plikach konfiguracji usługi.
+Następnie należy dołączyć informacje o certyfikacie w plikach definicji usługi i konfiguracji usługi.
 
 <a name="modify"> </a>
 
-## <a name="step-2-modify-the-service-definition-and-configuration-files"></a>Krok 2. modyfikowanie definicji usługi i plików konfiguracji
-Aplikacja musi być skonfigurowana do korzystania z certyfikatu i należy dodać punkt końcowy HTTPS. W związku z tym należy zaktualizować definicję usługi i pliki konfiguracji usługi.
+## <a name="step-2-modify-the-service-definition-and-configuration-files"></a>Krok 2: Modyfikowanie definicji usługi i plików konfiguracyjnych
+Aplikacja musi być skonfigurowana do używania certyfikatu i musi zostać dodany punkt końcowy HTTPS. W rezultacie definicji usługi i pliki konfiguracji usługi muszą zostać zaktualizowane.
 
-1. W środowisku programistycznym Otwórz plik definicji usługi (CSDEF), Dodaj sekcję **Certyfikaty** w sekcji **rola** Webi podaj następujące informacje o certyfikacie (i certyfikatach pośrednich):
+1. W środowisku deweloperskim otwórz plik definicji usługi (CSDEF), dodaj sekcję **Certyfikaty** w sekcji **WebRole** i dołącz następujące informacje o certyfikacie (i certyfikatach pośrednich):
 
    ```xml
     <WebRole name="CertificateTesting" vmsize="Small">
@@ -72,16 +72,16 @@ Aplikacja musi być skonfigurowana do korzystania z certyfikatu i należy dodać
     </WebRole>
     ```
 
-   Sekcja **Certyfikaty** definiuje nazwę certyfikatu, jego lokalizację oraz nazwę magazynu, w którym się znajduje.
+   Sekcja **Certyfikaty** definiuje nazwę naszego certyfikatu, jego lokalizację i nazwę magazynu, w którym się znajduje.
 
-   Uprawnienia (atrybut`permissionLevel`) można ustawić na jedną z następujących wartości:
+   Uprawnienia (atrybut)`permissionLevel` można ustawić na jedną z następujących wartości:
 
-   | Wartość uprawnienia | Opis |
+   | Wartość uprawnień | Opis |
    | --- | --- |
-   | limitedOrElevated |**(Ustawienie domyślne)** Wszystkie procesy ról mogą uzyskać dostęp do klucza prywatnego. |
-   | pełny |Tylko podwyższone procesy mogą uzyskać dostęp do klucza prywatnego. |
+   | limitedOrElevated |**(Domyślnie)** Wszystkie procesy roli mogą uzyskiwać dostęp do klucza prywatnego. |
+   | Podwyższone |Tylko podwyższone poziomach procesów może uzyskać dostęp do klucza prywatnego. |
 
-2. W pliku definicji usługi Dodaj element **InputEndpoint** w sekcji **punkty końcowe** , aby włączyć protokół https:
+2. W pliku definicji usługi dodaj element **InputEndpoint** w sekcji **Punkty końcowe,** aby włączyć protokół HTTPS:
 
    ```xml
     <WebRole name="CertificateTesting" vmsize="Small">
@@ -94,7 +94,7 @@ Aplikacja musi być skonfigurowana do korzystania z certyfikatu i należy dodać
     </WebRole>
     ```
 
-3. W pliku definicji usługi Dodaj element **Binding** w sekcji **sites** . Ten element dodaje powiązanie HTTPS w celu zamapowania punktu końcowego na lokację:
+3. W pliku definicji usługi dodaj element **powiązania** w sekcji **Witryny.** Ten element dodaje powiązanie HTTPS do mapowania punktu końcowego do witryny:
 
    ```xml
     <WebRole name="CertificateTesting" vmsize="Small">
@@ -110,8 +110,8 @@ Aplikacja musi być skonfigurowana do korzystania z certyfikatu i należy dodać
     </WebRole>
     ```
 
-   Wszystkie wymagane zmiany w pliku definicji usługi zostały ukończone; jednak nadal trzeba dodać informacje o certyfikacie do pliku konfiguracji usługi.
-4. W pliku konfiguracji usługi (CSCFG), ServiceConfiguration. Cloud. cscfg Dodaj wartość **certyfikatów** z certyfikatem. Poniższy przykładowy kod zawiera szczegóły sekcji **Certyfikaty** , z wyjątkiem wartości odcisku palca.
+   Wszystkie wymagane zmiany w pliku definicji usługi zostały zakończone; ale nadal trzeba dodać informacje o certyfikacie do pliku konfiguracji usługi.
+4. W pliku konfiguracji usługi (CSCFG), ServiceConfiguration.Cloud.cscfg, dodaj **wartość certyfikatów** do wartości certyfikatu. Poniższy przykład kodu zawiera szczegółowe informacje o **certyfikaty** sekcji, z wyjątkiem wartości odcisku palca.
 
    ```xml
     <Role name="Deployment">
@@ -128,53 +128,53 @@ Aplikacja musi być skonfigurowana do korzystania z certyfikatu i należy dodać
     </Role>
     ```
 
-(W tym przykładzie zastosowano algorytm **SHA1** dla algorytmu odcisku palca. Określ odpowiednią wartość dla algorytmu odcisku palca certyfikatu.
+(W tym przykładzie używa **sha1** dla algorytmu odcisku palca. Określ odpowiednią wartość dla algorytmu odcisku palca certyfikatu.)
 
-Teraz, gdy pliki definicji usługi i konfiguracji usługi zostały zaktualizowane, należy spakować wdrożenie na potrzeby przekazywania na platformę Azure. Jeśli używasz **cspack**, nie używaj flagi **/generateConfigurationFile** , ponieważ spowoduje to zastąpienie właśnie wstawionych informacji o certyfikacie.
+Teraz, gdy pliki definicji usługi i konfiguracji usługi zostały zaktualizowane, spakować wdrożenie do przekazania na platformę Azure. Jeśli używasz **cspack**, nie używaj **/generateConfigurationFile** flagi, ponieważ spowoduje to zastąpienie informacji o po prostu wstawionych.
 
-## <a name="step-3-upload-a-certificate"></a>Krok 3. przekazywanie certyfikatu
-Połącz z Azure Portal i...
+## <a name="step-3-upload-a-certificate"></a>Krok 3: Przekazywanie certyfikatu
+Połącz się z portalem Azure i...
 
-1. W sekcji **wszystkie zasoby** w portalu wybierz usługę w chmurze.
+1. W sekcji **Wszystkie zasoby** portalu wybierz usługę w chmurze.
 
     ![Publikowanie usługi w chmurze](media/cloud-services-configure-ssl-certificate-portal/browse.png)
 
-2. Kliknij pozycję **Certyfikaty**.
+2. Kliknij **pozycję Certyfikaty**.
 
-    ![Kliknij ikonę Certyfikaty](media/cloud-services-configure-ssl-certificate-portal/certificate-item.png)
+    ![Kliknij ikonę certyfikatów](media/cloud-services-configure-ssl-certificate-portal/certificate-item.png)
 
-3. Kliknij przycisk **Przekaż** w górnej części obszaru certyfikaty.
+3. Kliknij **pozycję Przekaż** u góry obszaru certyfikatów.
 
-    ![Kliknij element menu przekazanie](media/cloud-services-configure-ssl-certificate-portal/Upload_menu.png)
+    ![Kliknij element menu Przekaż](media/cloud-services-configure-ssl-certificate-portal/Upload_menu.png)
 
 4. Podaj **plik**, **hasło**, a następnie kliknij przycisk **Przekaż** u dołu obszaru wprowadzania danych.
 
-## <a name="step-4-connect-to-the-role-instance-by-using-https"></a>Krok 4. Nawiązywanie połączenia z wystąpieniem roli przy użyciu protokołu HTTPS
-Teraz, gdy wdrożenie jest uruchomione na platformie Azure, możesz połączyć się z nim przy użyciu protokołu HTTPS.
+## <a name="step-4-connect-to-the-role-instance-by-using-https"></a>Krok 4: Łączenie się z wystąpieniem roli przy użyciu protokołu HTTPS
+Teraz, gdy wdrożenie jest uruchomione na platformie Azure, można połączyć się z nim przy użyciu protokołu HTTPS.
 
-1. Kliknij **adres URL witryny** , aby otworzyć przeglądarkę sieci Web.
+1. Kliknij **adres URL witryny,** aby otworzyć przeglądarkę internetową.
 
    ![Kliknij adres URL witryny](media/cloud-services-configure-ssl-certificate-portal/navigate.png)
 
-2. W przeglądarce sieci Web zmodyfikuj link, aby używał **protokołu HTTPS** zamiast **protokołu HTTP**, a następnie odwiedź stronę.
+2. W przeglądarce internetowej zmodyfikuj łącze, aby użyć **https** zamiast **http**, a następnie odwiedź stronę.
 
    > [!NOTE]
-   > Jeśli używasz certyfikatu z podpisem własnym, podczas przechodzenia do punktu końcowego HTTPS skojarzonego z certyfikatem z podpisem własnym może zostać wyświetlony komunikat o błędzie certyfikatu w przeglądarce. Użycie certyfikatu podpisanego przez zaufany urząd certyfikacji eliminuje ten problem; w międzyczasie można zignorować ten błąd. (Inna opcja polega na dodaniu certyfikatu z podpisem własnym do magazynu certyfikatów zaufanego urzędu certyfikacji użytkownika).
+   > Jeśli używasz certyfikatu z podpisem własnym, podczas przeglądania punktu końcowego HTTPS skojarzonego z certyfikatem z podpisem własnym może pojawić się błąd certyfikatu w przeglądarce. Używanie certyfikatu podpisanego przez zaufany urząd certyfikacji eliminuje ten problem; w międzyczasie można zignorować błąd. (Inną opcją jest dodanie certyfikatu z podpisem własnym do magazynu certyfikatów zaufanych certyfikatów użytkownika).
    >
    >
 
    ![Podgląd witryny](media/cloud-services-configure-ssl-certificate-portal/show-site.png)
 
    > [!TIP]
-   > Jeśli chcesz użyć protokołu SSL do wdrożenia przejściowego, a nie wdrożenia produkcyjnego, musisz najpierw określić adres URL używany do wdrożenia przejściowego. Po wdrożeniu usługi w chmurze adres URL środowiska przejściowego jest określany przez **Identyfikator GUID identyfikatora wdrożenia** w tym formacie: `https://deployment-id.cloudapp.net/`  
+   > Jeśli chcesz użyć SSL dla wdrożenia przejściowego zamiast wdrożenia produkcyjnego, musisz najpierw określić adres URL używany do wdrożenia przejściowego. Po wdrożeniu usługi w chmurze adres URL środowiska przejściowego jest określany przez identyfikator **guiD identyfikatora wdrożenia** w tym formacie:`https://deployment-id.cloudapp.net/`  
    >
-   > Utwórz certyfikat z nazwą pospolitą (CN) równą adresowi URL opartemu na identyfikatorze GUID (na przykład **328187776e774ceda8fc57609d404462.cloudapp.NET**). Użyj portalu, aby dodać certyfikat do usługi w chmurze przemieszczanej. Następnie należy dodać informacje o certyfikacie do plików CSDEF i CSCFG, ponownie spakować aplikację i zaktualizować wdrożenie przemieszczane, aby użyć nowego pakietu.
+   > Utwórz certyfikat o nazwie pospolitej (CN) równej adresowi URL opartemu na identyfikatorze GUID (na przykład **328187776e774ceda8fc57609d404462.cloudapp.net**). Użyj portalu, aby dodać certyfikat do usługi w chmurze etapowej. Następnie dodaj informacje o certyfikacie do plików CSDEF i CSCFG, przepakuj aplikację i zaktualizuj wdrożenie etapowe, aby użyć nowego pakietu.
    >
 
 ## <a name="next-steps"></a>Następne kroki
 * [Ogólna konfiguracja usługi w chmurze](cloud-services-how-to-configure-portal.md).
 * Dowiedz się, jak [wdrożyć usługę w chmurze](cloud-services-how-to-create-deploy-portal.md).
-* Skonfiguruj [niestandardową nazwę domeny](cloud-services-custom-domain-name-portal.md).
+* Konfigurowanie [niestandardowej nazwy domeny](cloud-services-custom-domain-name-portal.md).
 * [Zarządzanie usługą w chmurze](cloud-services-how-to-manage-portal.md).
 
 

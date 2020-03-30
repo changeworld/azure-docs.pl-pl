@@ -1,6 +1,6 @@
 ---
-title: Jak używać że program perfinsights Linux w Microsoft Azure | Microsoft Docs
-description: Dowiedz się, jak używać że program perfinsights do rozwiązywania problemów z wydajnością maszyn wirtualnych z systemem Linux.
+title: Jak korzystać z systemu PerfInsights Linux na platformie Microsoft Azure| Dokumenty firmy Microsoft
+description: Uczy się, jak używać PerfInsights do rozwiązywania problemów z wydajnością maszyny Wirtualnej systemu Linux.
 services: virtual-machines-linux'
 documentationcenter: ''
 author: anandhms
@@ -14,82 +14,82 @@ ms.topic: troubleshooting
 ms.date: 7/10/2019
 ms.author: genli
 ms.openlocfilehash: 19b2fcaed2c80d4ca52ada9f9f0898479e73bcf2
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79266990"
 ---
 # <a name="how-to-use-perfinsights"></a>Korzystanie z narzędzia PerfInsights
 
-[Że program perfinsights Linux](https://aka.ms/perfinsightslinuxdownload) to narzędzie do samodzielnego rozwiązywania problemów, które zbiera i analizuje dane diagnostyczne i zawiera raport, który pomaga rozwiązywać problemy z wydajnością maszyn wirtualnych z systemem Linux na platformie Azure. Że program perfinsights można uruchamiać na obsługiwanych maszynach wirtualnych jako autonomiczne narzędzie lub bezpośrednio z portalu przy użyciu narzędzia [Diagnostyka wydajności dla maszyn wirtualnych platformy Azure](performance-diagnostics.md).
+[PerfInsights Linux](https://aka.ms/perfinsightslinuxdownload) to samopomocowe narzędzie diagnostyczne, które zbiera i analizuje dane diagnostyczne i udostępnia raport ułatwiające rozwiązywanie problemów z wydajnością maszyn wirtualnych systemu Linux na platformie Azure. PerfInsights można uruchomić na obsługiwanych maszynach wirtualnych jako narzędzie autonomiczne lub bezpośrednio z portalu przy użyciu [diagnostyki wydajności dla maszyn wirtualnych platformy Azure.](performance-diagnostics.md)
 
-Jeśli występują problemy z wydajnością maszyn wirtualnych przed skontaktowaniem się z pomocą techniczną, Uruchom to narzędzie.
+Jeśli występują problemy z wydajnością maszyn wirtualnych, przed skontaktowaniem się z pomocą techniczną, uruchom to narzędzie.
 
 ## <a name="supported-troubleshooting-scenarios"></a>Obsługiwane scenariusze rozwiązywania problemów
 
-Że program perfinsights może zbierać i analizować kilka rodzajów informacji. W poniższych sekcjach omówiono typowe scenariusze.
+PerfInsights można zbierać i analizować kilka rodzajów informacji. W poniższych sekcjach otoczy się typowe scenariusze.
 
-### <a name="quick-performance-analysis"></a>Analiza szybkiej wydajności
+### <a name="quick-performance-analysis"></a>Szybka analiza wydajności
 
-W tym scenariuszu są zbierane podstawowe informacje, takie jak Konfiguracja magazynu i sprzętowa maszyny wirtualnej, różne dzienniki, w tym:
+W tym scenariuszu zbiera podstawowe informacje, takie jak magazyn i konfiguracja sprzętu maszyny wirtualnej, różne dzienniki, w tym:
 
 - Informacje o systemie operacyjnym
 
 - Informacje o urządzeniu PCI
 
-- Ogólne Dzienniki systemu operacyjnego gościa
+- Ogólne dzienniki systemu operacyjnego gościa
 
-- Pliki konfiguracji
+- Pliki konfiguracyjne
 
-- Informacje dotyczące magazynu
+- Informacje o przechowywaniu
 
-- Konfiguracja maszyny wirtualnej platformy Azure (zebrana przy użyciu [usługi azure instance Metadata Service](https://docs.microsoft.com/azure/virtual-machines/windows/instance-metadata-service))
+- Konfiguracja maszyny wirtualnej platformy Azure (zbierane przy użyciu [usługi metadanych wystąpienia platformy Azure)](https://docs.microsoft.com/azure/virtual-machines/windows/instance-metadata-service)
 
-- Lista uruchomionych procesów, dysku, pamięci i użycia procesora CPU
+- Lista uruchomionych procesów, dysków, pamięci i użycia procesora CPU
 
 - Informacje o sieci
 
-Jest to pasywna kolekcja informacji, która nie powinna mieć wpływu na system.
+Jest to pasywny zbiór informacji, które nie powinny mieć wpływu na system.
 
 >[!Note]
->Scenariusz analizy szybkiej wydajności jest automatycznie uwzględniany w każdym z następujących scenariuszy:
+>Scenariusz szybkiej analizy wydajności jest automatycznie uwzględniany w każdym z następujących scenariuszy:
 
 ### <a name="performance-analysis"></a>Analiza wydajności
 
 Ten scenariusz jest podobny do szybkiej analizy wydajności, ale umożliwia przechwytywanie informacji diagnostycznych przez dłuższy czas.
 
-## <a name="what-kind-of-information-is-collected-by-perfinsights"></a>Jakiego rodzaju informacje są zbierane przez że program perfinsights
+## <a name="what-kind-of-information-is-collected-by-perfinsights"></a>Jakiego rodzaju informacje są zbierane przez PerfInsights
 
-Zbierane są informacje o maszynie wirtualnej z systemem Linux, systemie operacyjnym, blokowych urządzeniach, odbiorcach zasobów, konfiguracji i różnych dziennikach. Więcej szczegółów:
+Zbierane są informacje o maszynie wirtualnej, systemie operacyjnym, urządzeniach blokowych, wysokowydajnych konsumentach zasobów, konfiguracji i różnych dziennikach. Poniżej przedstawiono więcej informacji:
 
 - System operacyjny
-  - Dystrybucja i wersja systemu Linux
+  - Dystrybucja i wersja Linuksa
   - Informacje o jądrze
-  - Informacje o sterowniku
+  - Informacje o kierowcy
 
 - Sprzęt
-  - Urządzenia PCI [`*`]
+  - Urządzenia PCI`*`[ ]
 
 - Procesy i pamięć
-  - Lista procesów (nazwa zadania, użyta pamięć, otwarte pliki)
+  - Lista procesów (nazwa zadania, używana pamięć, otwarte pliki)
   - Całkowita, dostępna i wolna pamięć fizyczna
-  - Całkowita, dostępna i wolna pamięć wymiany
-  - Profilowanie przechwytywania użycia procesora CPU i procesów w 5-sekundowych interwałach
-  - Profilowanie przechwytywania procesów użycia pamięci w przedziale czasu 5 sekund
+  - Całkowita, dostępna i bezpłatna pamięć wymiany
+  - Profilowanie przechwytywania procesora i przetwarza użycie procesora w odstępach 5-sekundowych
+  - Profilowanie przechwytywania wykorzystania pamięci procesów w odstępach 5-sekundowych
 
-- Sieć  
-  - Lista kart sieciowych z statystykami kart
+- Obsługa sieci  
+  - Lista kart sieciowych ze statystykami kart
   - Tabela routingu sieciowego
   - Otwarte porty i stan
 
-- Storage
+- Magazyn
   - Lista zablokowanych urządzeń
   - Lista partycji
   - Lista punktów instalacji
   - Informacje o woluminie MDADM
   - Informacje o woluminie LVM
-  - Profilowanie przechwytywania na wszystkich dyskach w interwale 5-sekundowych
+  - Przechwytywanie profilowania na wszystkich dyskach w odstępie 5 sekund
 
 - Dzienniki
   - /var/log/messages
@@ -103,67 +103,67 @@ Zbierane są informacje o maszynie wirtualnej z systemem Linux, systemie operacy
   - /var/log/cloud-init-output.log
   - /var/log/gpu-manager.log
   - /var/log/waagent.log
-  - /var/log/Azure/[folder rozszerzenia]/\*dziennik\*
+  - /var/log/azure/[folder rozszerzenia]/\*dziennik\*
   - /var/opt/microsoft/omsconfig/omsconfig.log
   - /var/opt/microsoft/omsagent/log/omsagent.log
   - /etc/waagent.config
-  - Dane wyjściowe journalctl z ostatnich pięciu dni
+  - Dane wyjściowe dziennika w ciągu ostatnich pięciu dni
 
 - [Metadane wystąpienia maszyny wirtualnej platformy Azure](https://docs.microsoft.com/azure/virtual-machines/windows/instance-metadata-service)
 
 >[!Note]
->[`*`] Informacje o magistrali PCI nie są jeszcze zbierane w ramach dystrybucji Debian i SLES
+>[`*`] Informacje PCI nie są jeszcze zbierane w dystrybucjach Debiana i SLES
 
-## <a name="run-the-perfinsights-linux-on-your-vm"></a>Uruchamianie że program perfinsights systemu Linux na maszynie wirtualnej
+## <a name="run-the-perfinsights-linux-on-your-vm"></a>Uruchamianie systemu PerfInsights Linux na maszynie wirtualnej
 
 ### <a name="what-do-i-have-to-know-before-i-run-the-tool"></a>Co muszę wiedzieć przed uruchomieniem narzędzia
 
 #### <a name="tool-requirements"></a>Wymagania dotyczące narzędzi
 
-- To narzędzie musi być uruchomione na maszynie wirtualnej, na której występuje problem z wydajnością.
-- Na maszynie wirtualnej musi być zainstalowany język Python 2,7
+- To narzędzie musi być uruchomione na maszynie Wirtualnej, która ma problem z wydajnością.
+- Python 2.7 musi być zainstalowany na maszynie Wirtualnej
 
 - Obecnie obsługiwane są następujące dystrybucje:
 
     | Dystrybucja               | Wersja                                         |
     |----------------------------|-------------------------------------------------|
-    | Serwer Oracle Linux        | 6,10 [`*`], 7,3, 7,6, 7,5 (Oracle-Database-EE 13,8 — obraz portalu Marketplace)|
-    | CentOS                     | 6,5 [`*`], 7,6                                    |
-    | RHEL                       | 7,2, 7,5, 8,0 [`*`]                               |
+    | Serwer Oracle Linux        | 6.10`*`[ ], 7.3, 7.6, 7.5 (Obraz rynku Oracle-Database-Ee 13.8)|
+    | CentOS                     | 6.5`*`[ ], 7.6                                    |
+    | RHEL                       | 7.2, 7.5, 8.0 [`*`]                               |
     | Ubuntu                     | 14.04, 16.04, 18.04                               |
     | Debian                     | 8, 9, 10 [`*`]                                    |
-    | SLES                       | 12 SP4 [`*`]                                      |
+    | SLES                       | 12 SP4`*`[ ]                                      |
     |                            |                                                   |
 
 >[!Note]
->[`*`] Zapoznaj się z sekcją [znane problemy](#known-issues)
+>[`*`] Zapoznaj się z sekcją [Znane problemy](#known-issues)
 
 ### <a name="known-issues"></a>Znane problemy
 
-- RHEL 8 nie ma domyślnie zainstalowanego języka Python. Aby uruchomić system że program perfinsights Linux, musisz najpierw zainstalować środowisko Python 2,7
+- RHEL 8 nie ma domyślnie zainstalowanego języka Python. Aby uruchomić PerfInsights Linux, musisz najpierw zainstalować Pythona 2.7
 
-- Zbieranie informacji o agencie gościa może zakończyć się niepowodzeniem w witrynie CentOS 6. x
+- Zbieranie informacji przez agenta gościa może zakończyć się niepowodzeniem w centos 6.x
 
-- Informacje o urządzeniach PCI nie są zbierane w ramach dystrybucji opartych na Debian
+- Informacje o urządzeniach PCI nie są zbierane w dystrybucjach opartych na Debianie
 
-- Informacje LVM są częściowo zbierane w przypadku niektórych dystrybucji
+- Informacje LVM są częściowo zbierane w niektórych dystrybucjach
 
-### <a name="how-do-i-run-perfinsights"></a>Jak mogę Uruchom że program perfinsights
+### <a name="how-do-i-run-perfinsights"></a>Jak uruchomić PerfInsights
 
-Możesz uruchomić że program perfinsights na maszynie wirtualnej, instalując diagnostykę wydajności Azure z Azure Portal. Można go również uruchomić jako autonomiczne narzędzie.
+PerfInsights można uruchomić na maszynie wirtualnej, instalując diagnostykę wydajności platformy Azure z witryny Azure portal. Można również uruchomić go jako narzędzie autonomiczne.
 
 >[!Note]
->Że program perfinsights po prostu zbiera i analizuje dane. Nie wprowadza żadnych zmian w systemie.
+>PerfInsights po prostu zbiera i analizuje dane. Nie wprowadzać żadnych zmian w systemie.
 
-#### <a name="install-and-run-perfinsights-from-the-azure-portal"></a>Instalowanie i uruchamianie że program perfinsights z poziomu Azure Portal
+#### <a name="install-and-run-perfinsights-from-the-azure-portal"></a>Instalowanie i uruchamianie perfInsights z witryny Azure portal
 
-Aby uzyskać więcej informacji na temat tej opcji, zobacz [Diagnostyka wydajności Azure](performance-diagnostics.md).  
+Aby uzyskać więcej informacji na temat tej opcji, zobacz [Diagnostyka wydajności platformy Azure](performance-diagnostics.md).  
 
-#### <a name="run-perfinsights-in-standalone-mode"></a>Uruchom że program perfinsights w trybie autonomicznym
+#### <a name="run-perfinsights-in-standalone-mode"></a>Uruchamianie perfInsights w trybie autonomicznym
 
-Aby uruchomić narzędzie że program perfinsights, wykonaj następujące kroki:
+Aby uruchomić narzędzie PerfInsights, wykonaj następujące kroki:
 
-1. Pobierz [że program perfinsights. tar. gz](https://aka.ms/perfinsightslinuxdownload) do folderu na maszynie wirtualnej i Wyodrębnij zawartość przy użyciu poniższych poleceń z terminalu.
+1. Pobierz [plik PerfInsights.tar.gz](https://aka.ms/perfinsightslinuxdownload) do folderu na maszynie wirtualnej i wyodrębnij zawartość za pomocą poniższych poleceń z terminala.
 
    ```bash
    wget https://download.microsoft.com/download/9/F/8/9F80419C-D60D-45F1-8A98-718855F25722/PerfInsights.tar.gz
@@ -173,85 +173,85 @@ Aby uruchomić narzędzie że program perfinsights, wykonaj następujące kroki:
    tar xzvf PerfInsights.tar.gz
    ```
 
-2. Przejdź do folderu, który zawiera plik `perfinsights.py`, a następnie uruchom `perfinsights.py`, aby wyświetlić dostępne parametry wiersza polecenia.
+2. Przejdź do folderu `perfinsights.py` zawierającego plik, a następnie uruchom, `perfinsights.py` aby wyświetlić dostępne parametry wiersza polecenia.
 
     ```bash
     cd <the path of PerfInsights folder>
     sudo python perfinsights.py
     ```
 
-    ![Zrzut ekranu przedstawiający dane wyjściowe wiersza polecenia że program perfinsights systemu Linux](media/how-to-use-perfinsights-linux/perfinsights-linux-commandline.png)
+    ![Zrzut ekranu przedstawiający dane wyjściowe wiersza polecenia PerfInsights Linux](media/how-to-use-perfinsights-linux/perfinsights-linux-commandline.png)
 
-    Podstawowa składnia do uruchamiania scenariuszy że program perfinsights jest następująca:
+    Podstawowa składnia uruchamiania scenariuszy PerfInsights jest:
 
     ```bash
     sudo python perfinsights.py -r <ScenarioName> -d [duration]<H | M | S> [AdditionalOptions]
     ```
 
-    Możesz użyć poniższego przykładu, aby uruchomić scenariusz analizy szybkiej wydajności przez 1 minutę i utworzyć wyniki w folderze/tmp/Output:
+    Poniższy przykład służy do uruchamiania scenariusza szybkiej analizy wydajności przez 1 minutę i tworzenia wyników w folderze /tmp/output:
 
     ```bash
     sudo python perfinsights.py -r quick -d 1M -a -o /tmp/output
     ```
 
-    Możesz użyć poniższego przykładu, aby uruchomić scenariusz analizy wydajności dla 5 minut i przekazać wynikowe kulki do konta magazynu:
+    Poniższy przykład służy do uruchamiania scenariusza analizy wydajności przez 5 minut i przesyłania kuli smoły wynik do konta magazynu:
 
     ```bash
     sudo python perfinsights.py -r vmslow -d 300S -a -t <StorageAccountName> -k <StorageAccountKey> -i <full resource Uri of the current VM>
     ```
 
     >[!Note]
-    >Przed uruchomieniem scenariusza że program perfinsights prosi użytkownika o zgodę na udostępnienie informacji diagnostycznych i zaakceptowanie umowy licencyjnej. Użyj opcji **-a lub--Accept-zrzeczenia i-share-Diagnostics** , aby pominąć te komunikaty.
+    >Przed uruchomieniem scenariusza Program PerfInsights monituje użytkownika o wyrażenie zgody na udostępnianie informacji diagnostycznych i wyrażenie zgody na umowy licencyjnej użytkownika. Użyj opcji **-a lub --accept-disclaimer-and-share-diagnostics,** aby pominąć te monity.
     >
-    >Jeśli masz aktywny bilet pomocy technicznej z firmą Microsoft i uruchomiono że program perfinsights na żądanie inżyniera pomocy technicznej, z którym pracujesz, upewnij się, że numer biletu pomocy technicznej jest używany przy użyciu opcji **-s lub--support-Request** .
+    >Jeśli masz aktywny bilet pomocy technicznej z firmą Microsoft i uruchomione PerfInsights na żądanie inżyniera pomocy technicznej, z którymi pracujesz, upewnij się, że podanie numeru biletu pomocy technicznej przy użyciu opcji **-s lub --support-request.**
 
-Po zakończeniu przebiegu nowy plik tar pojawia się w tym samym folderze co że program perfinsights, chyba że zostanie określony folder wyjściowy. Nazwa pliku to **PerformanceDiagnostics\_rrrr-mm-dd\_HH-mm-SS-FFF. tar. gz.** Możesz wysłać ten plik do agenta pomocy technicznej na potrzeby analizy lub otworzyć raport w pliku, aby przejrzeć wyniki i zalecenia.
+Po zakończeniu uruchamiania nowy plik tar pojawia się w tym samym folderze co PerfInsights, chyba że nie określono folderu wyjściowego. Nazwa pliku to **PerformanceDiagnostics\_yyyy-MM-dd\_hh-mm-ss-fff.tar.gz.** Możesz wysłać ten plik do agenta pomocy technicznej do analizy lub otworzyć raport wewnątrz pliku, aby przejrzeć wyniki i zalecenia.
 
 ## <a name="review-the-diagnostics-report"></a>Przejrzyj raport diagnostyczny
 
-W pliku **PerformanceDiagnostics\_rrrr-mm-dd\_HH-mm-SS-FFF. tar. gz** można znaleźć raport HTML, który zawiera szczegółowe informacje o wynikach że program perfinsights. Aby przejrzeć raport, rozwiń plik **PerformanceDiagnostics\_rrrr-mm-dd\_HH-mm-SS-FFF. tar. gz** , a następnie otwórz plik **że program perfinsights raportu. html** .
+W pliku **PerformanceDiagnostics\_\_yyyy-MM-dd hh-mm-ss-fff.tar.gz** można znaleźć raport HTML, który szczegółowo opisuje ustalenia dotyczące perfInsights. Aby przejrzeć raport, rozwiń plik **PerformanceDiagnostics\_\_yyyy-MM-dd hh-mm-ss-fff.tar.gz,** a następnie otwórz plik **PerfInsights Report.html.**
 
 ### <a name="overview-tab"></a>Karta Przegląd
 
-Karta **Przegląd** zawiera podstawowe informacje dotyczące uruchamiania i maszyn wirtualnych. Karta **wyniki** zawiera podsumowanie zaleceń ze wszystkich różnych sekcji raportu że program perfinsights.
+Karta **Przegląd** zawiera podstawowe szczegóły przebiegu i informacje o maszynie wirtualnej. Na karcie **Wyniki** jest wyświetlane podsumowanie zaleceń ze wszystkich sekcji raportu PerfInsights.
 
-![Zrzut ekranu przedstawiający raport że program perfinsights](media/how-to-use-perfinsights-linux/perfinsights-linux-overview.png)  
-![Zrzut ekranu przedstawiający raport że program perfinsights](media/how-to-use-perfinsights-linux/perfinsights-linux-findings-tab.png)
+![Zrzut ekranu przedstawiający raport PerfInsights](media/how-to-use-perfinsights-linux/perfinsights-linux-overview.png)  
+![Zrzut ekranu przedstawiający raport PerfInsights](media/how-to-use-perfinsights-linux/perfinsights-linux-findings-tab.png)
 
 > [!NOTE]
-> Ustalenia sklasyfikowane jako duże są znanymi problemami, które mogą powodować problemy z wydajnością. Ustalenia sklasyfikowane jako średnie reprezentują nieoptymalne konfiguracje, które nie muszą powodować problemów z wydajnością. Ustalenia sklasyfikowane jako niskie są tylko w instrukcjach informacyjnych.
+> Wyniki sklasyfikowane jako wysokie są znane problemy, które mogą powodować problemy z wydajnością. Wyniki sklasyfikowane jako średnie reprezentują nieoptymalne konfiguracje, które niekoniecznie powodują problemy z wydajnością. Wyniki sklasyfikowane jako niskie są tylko instrukcje informacyjne.
 
-Przejrzyj zalecenia i linki dla wszystkich dużych i średnich wyników. Dowiedz się, jak mogą one wpływać na wydajność, a także najlepsze rozwiązania dotyczące konfiguracji zoptymalizowanych pod kątem wydajności.
+Przejrzyj zalecenia i linki do wszystkich wysokich i średnich ustaleń. Dowiedz się, jak mogą one wpływać na wydajność, a także o najlepszych rozwiązaniach dotyczących konfiguracji zoptymalizowanych pod kątem wydajności.
 
-### <a name="cpu-tab"></a>Karta CPU
+### <a name="cpu-tab"></a>Karta Procesora
 
-Karta **CPU** zawiera informacje dotyczące użycia procesora CPU w całym systemie podczas uruchamiania że program perfinsights. Informacje dotyczące wysokich okresów użycia procesora CPU i najlepszych długotrwałych klientów korzystających z procesora CPU będą pomocne w rozwiązywaniu problemów związanych z PROCESORem.
+Karta **Procesora CPU** zawiera informacje o zużyciu procesora CPU w całym systemie podczas uruchamiania PerfInsights. Informacje o okresach wysokiego użycia procesora CPU i najlepszych długo działających konsumentów procesora CPU będą pomocne w rozwiązywaniu problemów związanych z wysokim procesorem CPU.
 
-![Zrzut ekranu przedstawiający kartę CPU raportu że program perfinsights](media/how-to-use-perfinsights-linux/perfinsights-linux-cpu-tab.png)
+![Zrzut ekranu przedstawiający kartę Procesor z raportem perfInsights](media/how-to-use-perfinsights-linux/perfinsights-linux-cpu-tab.png)
 
-### <a name="storage-tab"></a>Karta magazyn
+### <a name="storage-tab"></a>Karta Magazyn
 
-Sekcja **spostrzeżenia** zawiera różne wyniki i zalecenia dotyczące magazynu.
+Sekcja **Wyniki** zawiera różne ustalenia i zalecenia dotyczące przechowywania.
 
-**Urządzenia blokowe** i inne powiązane sekcje, takie **jak Partitions**, **LVM**i **MDADM** , opisują sposób, w jaki urządzenia blokujące są skonfigurowane i powiązane ze sobą.
+Karty **Blokuj urządzenia** i inne powiązane sekcje, takie jak **Partycje,** **LVM**i **MDADM,** opisują sposób konfigurowania i powiązanych ze sobą urządzeń blokowych.
 
-![Zrzut ekranu karty magazyn](media/how-to-use-perfinsights-linux/perfinsights-linux-storage-tab.png)  
+![Zrzut ekranu przedstawiający kartę magazynowania](media/how-to-use-perfinsights-linux/perfinsights-linux-storage-tab.png)  
 ![Zrzut ekranu przedstawiający kartę MDADM](media/how-to-use-perfinsights-linux/perfinsights-linux-mdadm-config.png)
 
-### <a name="linux-tab"></a>Karta systemu Linux
+### <a name="linux-tab"></a>Karta Linux
 
-Karta **Linux** zawiera informacje na temat sprzętu i systemu operacyjnego działającego na maszynie wirtualnej. Szczegóły obejmują listę uruchomionych procesów i informacji o agentach gościa, magistrali PCI, PROCESORAch, sterownikach i sterownikach LIS.
+Karta **Linux** zawiera informacje o sprzęcie i systemie operacyjnym uruchomionym na maszynie wirtualnej. Szczegóły obejmują listę uruchomionych procesów i informacje o sterownikach Agent gościa, PCI, CPU, Drivers i LIS.
 
-![Zrzut ekranu karty z systemem Linux](media/how-to-use-perfinsights-linux/perfinsights-linux-tab.png)
+![Zrzut ekranu przedstawiający kartę Linux](media/how-to-use-perfinsights-linux/perfinsights-linux-tab.png)
 
 ## <a name="next-steps"></a>Następne kroki
 
-Dzienniki diagnostyczne i raporty można przekazać do pomoc techniczna firmy Microsoft do dalszej analizy. Podczas pracy z pracownikami pomoc techniczna firmy Microsoft mogą zażądać przesyłania danych wyjściowych generowanych przez że program perfinsights w celu uzyskania pomocy w procesie rozwiązywania problemów.
+Dzienniki diagnostyczne i raporty można przekazać do pomocy technicznej firmy Microsoft w celu dalszego zapoznania się z tym programem. Podczas pracy z personelem pomocy technicznej firmy Microsoft mogą zażądać przesłania danych wyjściowych generowanych przez program PerfInsights w celu pomocy w procesie rozwiązywania problemów.
 
-Poniższy zrzut ekranu przedstawia komunikat podobny do następującego:
+Poniższy zrzut ekranu przedstawia komunikat podobny do tego, co może pojawić się:
 
-![Zrzut ekranu przedstawiający przykładowy komunikat z pomoc techniczna firmy Microsoft](media/how-to-use-perfinsights-linux/support-email.png)
+![Zrzut ekranu przedstawiający przykładowy komunikat pomocy technicznej firmy Microsoft](media/how-to-use-perfinsights-linux/support-email.png)
 
-Postępuj zgodnie z instrukcjami wyświetlanymi w komunikacie, aby uzyskać dostęp do obszaru roboczego transferu plików. Aby zwiększyć bezpieczeństwo, należy zmienić hasło przy pierwszym użyciu.
+Postępuj zgodnie z instrukcjami w komunikacie, aby uzyskać dostęp do obszaru roboczego transferu plików. Aby uzyskać dodatkowe bezpieczeństwo, musisz zmienić hasło przy pierwszym użyciu.
 
-Po zalogowaniu zostanie wyświetlone okno dialogowe umożliwiające przekazanie pliku **PerformanceDiagnostics\_rrrr-mm-dd\_HH-mm-SS-FFF. tar. gz** , który został zebrany przez że program perfinsights.
+Po zalogowaniu się znajdziesz okno dialogowe, w które można przesłać plik **PerformanceDiagnostics\_\_yyyy-MM-dd hh-mm-ss-fff.tar.gz,** który został zebrany przez Plik PerfInsights.

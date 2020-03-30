@@ -1,7 +1,7 @@
 ---
-title: Video Indexer scen, zrzutów i klatek kluczowych
+title: Sceny, ujęcia i klatki kluczowe indeksatora wideo
 titleSuffix: Azure Media Services
-description: Ten temat zawiera omówienie Video Indexer scen, zrzutów i klatek kluczowych.
+description: W tym temacie przedstawiono omówienie scen, ujęć i klatek kluczowych indeksatora wideo.
 services: media-services
 author: Juliako
 manager: femila
@@ -11,52 +11,52 @@ ms.topic: article
 ms.date: 07/05/2019
 ms.author: juliako
 ms.openlocfilehash: a833fd808049cfce95b182910e50e38d3c39f4e5
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79245943"
 ---
 # <a name="scenes-shots-and-keyframes"></a>Sceny, ujęcia i klatki kluczowe
 
-Video Indexer obsługuje segmentacji wideo na jednostki czasowe na podstawie właściwości strukturalnych i semantycznych. Ta funkcja umożliwia klientom łatwe przeglądanie i Edytowanie zawartości wideo w oparciu o różne stopnia szczegółowości. Na przykład na podstawie scen, zrzutów i klatek kluczowych opisanych w tym temacie.   
+Indeksator wideo obsługuje segmentowanie filmów na jednostki czasowe na podstawie właściwości strukturalnych i semantycznych. Ta funkcja umożliwia klientom łatwe przeglądanie, zarządzanie i edytowanie zawartości wideo na podstawie różnych ziarnistości. Na przykład na podstawie scen, ujęć i klatek kluczowych opisanych w tym temacie.   
 
 ![Sceny, ujęcia i klatki kluczowe](./media/scenes-shots-keyframes/scenes-shots-keyframes.png)
  
 ## <a name="scene-detection"></a>Wykrywanie sceny  
  
-Video Indexer określa, kiedy scena zmienia się w wideo na podstawie podpowiedzi wizualizacji. Scena przedstawia pojedyncze zdarzenie i składa się z szeregu kolejnych zrzutów, które są semantycznie powiązane. Miniatura sceny to pierwsza klatka kluczowa podstawowego zrzutu. Indeksator wideo segmentuje wideo w scenach na podstawie spójności kolorów dla kolejnych zrzutów i pobiera godzinę rozpoczęcia i zakończenia każdej sceny. Wykrywanie sceny jest uznawane za trudne zadanie, ponieważ obejmuje to obliczanie ilości semantycznych aspektów wideo.
+Indeksator wideo określa, kiedy scena zmienia się w filmie na podstawie wskazówek wizualnych. Scena przedstawia pojedyncze zdarzenie i składa się z serii kolejnych ujęć, które są semantycznie związane. Miniatura sceny jest pierwszą klatką kluczową jej podstawowego ujęcia. Indeksator wideo segmentuje film w sceny na podstawie spójności kolorów w kolejnych ujęciach i pobiera czas rozpoczęcia i zakończenia każdej sceny. Wykrywanie sceny jest uważane za trudne zadanie, ponieważ polega na kwantyfikacji semantycznych aspektów filmów.
 
 > [!NOTE]
-> Dotyczy wideo, które zawiera co najmniej 3 sceny.
+> Dotyczy filmów zawierających co najmniej 3 sceny.
 
-## <a name="shot-detection"></a>Wykrywanie zrzutu
+## <a name="shot-detection"></a>Wykrywanie strzałów
 
-Video Indexer określa, kiedy zrzut zmienia się w filmie wideo na podstawie podpowiedzi wizualizacji, śledząc jednocześnie przekroczenia i stopniowe przejścia w schemacie kolorów sąsiadujących ramek. Metadane zrzutu obejmują godzinę początkową i końcową oraz listę klatek kluczowych zawartych w tym zrzucie. Zrzuty to kolejne ramki pobierane z tego samego aparatu w tym samym czasie.
+Indeksator wideo określa, kiedy ujęcie zmienia się w filmie na podstawie wskazówek wizualnych, śledząc zarówno nagłe, jak i stopniowe przejścia w schemacie kolorów sąsiednich klatek. Metadane ujęcia zawierają godzinę rozpoczęcia i zakończenia, a także listę klatek kluczowych zawartych w tym zdjęciu. Zdjęcia są kolejnymi klatkami pobranymi z tego samego aparatu w tym samym czasie.
 
 ## <a name="keyframe-detection"></a>Wykrywanie klatek kluczowych
 
-Video Indexer wybiera ramki, które najlepiej reprezentują każdy zrzut. Klatki kluczowe to reprezentatywne ramki wybrane z całego wideo w oparciu o właściwości estetyczne (na przykład kontrast i trwałość). Video Indexer pobiera listę identyfikatorów klatek kluczowych jako część metadanych zrzutu, na podstawie których klienci mogą wyodrębnić klatkę kluczową jako obraz o wysokiej rozdzielczości.  
+Indeksator wideo wybiera klatki, które najlepiej reprezentują każde ujęcie. Klatki kluczowe to reprezentatywne klatki wybrane z całego filmu na podstawie właściwości estetycznych (na przykład kontrastu i stabilności). Indeksator wideo pobiera listę identyfikatorów klatek kluczowych jako część metadanych ujęcia, na podstawie których klienci mogą wyodrębnić klatkę kluczową jako obraz o wysokiej rozdzielczości.  
 
 ### <a name="extracting-keyframes"></a>Wyodrębnianie klatek kluczowych
 
-Aby wyodrębnić ramki kluczowe o wysokiej rozdzielczości dla filmu wideo, należy najpierw przekazać i zindeksować wideo.
+Aby wyodrębnić klatki kluczowe o wysokiej rozdzielczości dla filmu, należy najpierw przesłać i zindeksować film.
 
-![Ramki kluczowe](./media/scenes-shots-keyframes/extracting-keyframes.png)
+![Klatek kluczowych](./media/scenes-shots-keyframes/extracting-keyframes.png)
 
-#### <a name="with-the-video-indexer-website"></a>Z witryną Video Indexer
+#### <a name="with-the-video-indexer-website"></a>Ze stroną video indexer
 
-Aby wyodrębnić ramki kluczowe przy użyciu witryny sieci Web Video Indexer, Przekaż i Indeksuj wideo. Po zakończeniu zadania indeksowania kliknij przycisk **Pobierz** i wybierz pozycję **artefakty (zip)** . Spowoduje to pobranie folderu artefaktów do komputera. 
+Aby wyodrębnić klatki kluczowe za pomocą witryny video Indexer, prześlij i zindeksuj film. Po zakończeniu zadania indeksowania kliknij przycisk **Pobierz** i wybierz **opcję Artefakty (ZIP).** Spowoduje to pobranie folderu artefaktów na komputer. 
 
-![Ramki kluczowe](./media/scenes-shots-keyframes/extracting-keyframes2.png)
+![Klatek kluczowych](./media/scenes-shots-keyframes/extracting-keyframes2.png)
  
-Rozpakuj i Otwórz folder. W folderze *_KeyframeThumbnail* i znajdziesz wszystkie ramki kluczowe, które zostały wyodrębnione z filmu wideo. 
+Rozpaj i otwórz folder. W folderze *_KeyframeThumbnail* znajdziesz wszystkie klatki kluczowe, które zostały wyodrębnione z filmu. 
 
-#### <a name="with-the-video-indexer-api"></a>Za pomocą interfejsu API Video Indexer
+#### <a name="with-the-video-indexer-api"></a>Z interfejsem API indeksatora wideo
 
-Aby uzyskać ramki kluczowe przy użyciu interfejsu API Video Indexer, Przekaż i Indeksuj wideo przy użyciu połączenia [przekazywania wideo](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Upload-Video?) . Po zakończeniu zadania indeksowania Wywołaj polecenie [Pobierz indeks wideo](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Get-Video-Index?). Pozwoli to uzyskać wszystkie szczegółowe informacje, które Video Indexer wyodrębnione z zawartości w pliku JSON.  
+Aby uzyskać klatki kluczowe za pomocą interfejsu API indeksatora wideo, prześlij i zindeksuj film za pomocą połączenia [Przekaż wideo.](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Upload-Video?) Po zakończeniu zadania indeksowania [wywołaj](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Get-Video-Index?)wywołanie get video index . To daje wszystkie spostrzeżenia, że indeksator wideo wyodrębnione z zawartości w pliku JSON.  
 
-Otrzymasz listę identyfikatorów klatek kluczowych w ramach metadanych poszczególnych zrzutów. 
+Otrzymasz listę identyfikatorów klatek kluczowych jako część metadanych każdego zdjęcia. 
 
 ```json
 "shots":[  
@@ -98,35 +98,35 @@ Otrzymasz listę identyfikatorów klatek kluczowych w ramach metadanych poszczeg
 ]
 ```
 
-Teraz musisz uruchomić każdy z tych identyfikatorów klatek kluczowych w wywołaniu Get thumbnails ( [Pobierz miniatury](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Get-Video-Thumbnail?) ). Spowoduje to pobranie wszystkich obrazów klatek kluczowych do komputera. 
+Teraz musisz uruchomić każdy z tych identyfikatorów klatek kluczowych w wywołaniu [Pobierz miniatury.](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Get-Video-Thumbnail?) Spowoduje to pobranie każdego z obrazów klatki kluczowej na komputer. 
 
-## <a name="editorial-shot-type-detection"></a>Wykrywanie typu zrzutu redakcyjnego
+## <a name="editorial-shot-type-detection"></a>Wykrywanie typu strzału redakcyjnego
 
-Ramki kluczowe są skojarzone ze zrzutami w wyjściowym kodzie JSON. 
+Klatki kluczowe są skojarzone z ujęciami w wyjściowym JSON. 
 
-Typ zrzutu skojarzony z pojedynczym zdjęciem w formacie JSON usługi Insights reprezentuje jego typ redakcyjny. Te cechy typów zastrzelonych mogą być przydatne podczas edytowania wideo do klipów, przyczep lub podczas wyszukiwania określonego stylu klatki kluczowej dla celów artystycznych. Różne typy są określane na podstawie analizy pierwszej klatki kluczowej każdego z nich. Zrzuty są identyfikowane przez skalę, rozmiar i lokalizację powierzchni występujących w pierwszej klatce kluczowej. 
+Typ strzału skojarzony z pojedynczym strzałem w szczegółowych informacjach JSON reprezentuje jego typ redakcyjny. Te cechy typu ujęcia mogą okazać się przydatne podczas edycji filmów w klipach, zwiastunach lub podczas wyszukiwania określonego stylu klatki kluczowej do celów artystycznych. Różne typy są określane na podstawie analizy pierwszej klatki kluczowej każdego zdjęcia. Zdjęcia są identyfikowane przez skalę, rozmiar i położenie ścian pojawiających się w pierwszej klatce kluczowej. 
 
-Rozmiar i skala zrzutu są ustalane na podstawie odległości między kamerą i powierzchnią występującą w ramce. Korzystając z tych właściwości, Video Indexer wykrywa następujące typy zrzutów:
+Rozmiar i skala ujęcia są określane na podstawie odległości między kamerą a twarzami wyświetlanymi w kadrze. Korzystając z tych właściwości, indeksator wideo wykrywa następujące typy stręców:
 
-* Szeroki: pokazuje treść całej osoby.
-* Średni: pokazuje górną treść osoby i jej głowę.
-* Zamknij: głównie pokazuje głowę osoby.
-* Skrajne Zamknięcie: pokazuje głowę osoby wypełniającej ekran. 
+* Szeroki: pokazuje ciało całej osoby.
+* Medium: pokazuje górną część ciała i twarz osoby.
+* Zbliżenie: pokazuje głównie twarz osoby.
+* Ekstremalne zbliżenie: pokazuje twarz osoby wypełniającej ekran. 
 
-Typy zrzutów można także określić według lokalizacji znaków tematu w odniesieniu do środka ramki. Ta właściwość definiuje następujące typy zrzutów w Video Indexer:
+Typy śrutowania można również określić na podstawie położenia znaków tematu względem środka ramki. Ta właściwość definiuje następujące typy elementów strzału w indeksatorze wideo:
 
-* Lewa strona: osoba pojawia się w lewej części ramki.
-* Wyśrodkuj na środku: osoba pojawia się w centralnym regionie ramki.
-* Prawa strona: osoba pojawia się po prawej stronie ramki.
-* Na zewnątrz: osoba zostanie wyświetlona w ustawieniu na zewnątrz.
-* Pozostała: osoba zostanie wyświetlona w ustawieniu pomieszczeń.
+* Lewa ściana: osoba pojawia się po lewej stronie ramki.
+* Ściana środkowa: osoba pojawia się w centralnym regionie ramki.
+* Prawa ściana: osoba pojawia się po prawej stronie ramki.
+* Na zewnątrz: osoba pojawia się na zewnątrz.
+* Wewnątrz: osoba pojawia się w pomieszczeniu.
 
 Dodatkowe cechy:
 
-* Dwa zrzuty: pokazuje powierzchnie dwóch osób o średnim rozmiarze.
+* Dwa ujęcia: pokazuje twarze dwóch osób średniej wielkości.
 * Wiele twarzy: więcej niż dwie osoby.
 
 
 ## <a name="next-steps"></a>Następne kroki
 
-[Sprawdzanie Video Indexer danych wyjściowych wytwarzanych przez interfejs API](video-indexer-output-json-v2.md#scenes)
+[Sprawdź dane wyjściowe indeksatora wideo wytwarzane przez interfejs API](video-indexer-output-json-v2.md#scenes)
