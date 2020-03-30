@@ -14,10 +14,10 @@ ms.date: 12/21/2018
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: 8994079cf18a9af5f5e1368761015bbd8b836bd9
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "74790907"
 ---
 # <a name="quickstart-create-a-sql-server-windows-virtual-machine-with-azure-powershell"></a>Szybki start: tworzenie maszyny wirtualnej z programem SQL Server i systemem Windows przy użyciu usługi Azure PowerShell
@@ -28,12 +28,12 @@ Ten przewodnik Szybki start przeprowadza użytkownika przez proces tworzenia mas
 > - W tym przewodniku Szybki start przedstawiono ścieżkę szybkiego aprowizowania maszyny wirtualnej SQL i nawiązywania z nią połączenia. Aby uzyskać więcej informacji na temat innych opcji programu Azure PowerShell dotyczących tworzenia maszyn wirtualnych SQL, zobacz [Provisioning guide for SQL Server VMs with Azure PowerShell](virtual-machines-windows-ps-sql-create.md) (Przewodnik aprowizowania dla maszyn wirtualnych z programem SQL Server za pomocą programu Azure PowerShell).
 > - Jeśli masz pytania dotyczące maszyn wirtualnych programu SQL Server, zobacz [Często zadawane pytania](virtual-machines-windows-sql-server-iaas-faq.md).
 
-## <a id="subscription"></a> Uzyskiwanie subskrypcji platformy Azure
+## <a name="get-an-azure-subscription"></a><a id="subscription"></a>Uzyskaj subskrypcję platformy Azure
 
-Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Jeśli nie masz subskrypcji platformy Azure, utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) przed rozpoczęciem.
 
 
-## <a id="powershell"></a> Uzyskiwanie programu Azure PowerShell
+## <a name="get-azure-powershell"></a><a id="powershell"></a> Uzyskiwanie programu Azure PowerShell
 
 [!INCLUDE [updated-for-az.md](../../../../includes/updated-for-az.md)]
 
@@ -47,7 +47,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 1. Powinien zostać wyświetlony ekran z monitem o podanie poświadczeń. Użyj tego samego adresu e-mail i hasła, którego używasz do logowania w witrynie Azure Portal.
 
-## <a name="create-a-resource-group"></a>Utwórz grupę zasobów
+## <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
 
 1. Zdefiniuj zmienną z unikatową nazwą grupy zasobów. Aby uprościć pozostałą część poradnika Szybki start, reszta poleceń będzie używać tej nazwy jako podstawy dla innych nazw zasobów.
 

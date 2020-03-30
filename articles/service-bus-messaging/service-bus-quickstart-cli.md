@@ -10,29 +10,29 @@ ms.topic: quickstart
 ms.date: 04/10/2019
 ms.author: spelluru
 ms.openlocfilehash: e34599b12b8b0c487c6813038951b051d1eaf425
-ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/30/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "66400257"
 ---
-# <a name="quickstart-use-the-azure-cli-to-create-a-service-bus-queue"></a>Szybki start: używanie interfejsu wiersza polecenia do tworzenia kolejki usługi Service Bus
+# <a name="quickstart-use-the-azure-cli-to-create-a-service-bus-queue"></a>Szybki start: tworzenie kolejki usługi Service Bus za pomocą interfejsu wiersza polecenia platformy Azure
 W tym przewodniku Szybki start opisano, jak wysyłać i odbierać komunikaty za pomocą usługi Service Bus przy użyciu interfejsu wiersza polecenia Azure oraz biblioteki Java usługi Service Bus. Jeśli interesują Cię inne szczegóły techniczne, możesz [przeczytać wyjaśnienie](#understand-the-sample-code) dotyczące kluczowych elementów przykładowego kodu.
 
 [!INCLUDE [howto-service-bus-queues](../../includes/howto-service-bus-queues.md)]
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-Jeśli nie masz subskrypcji platformy Azure, możesz utworzyć [bezpłatne konto] [ free account] przed przystąpieniem do wykonywania.
+Jeśli nie masz subskrypcji platformy Azure, możesz utworzyć [bezpłatne konto][free account] przed rozpoczęciem.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 ## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
-Jeśli używasz **wypróbuj** przycisk, aby uruchomienie usługi Cloud Shell, zaloguj się do platformy Azure przy użyciu poświadczeń. 
+Jeśli używasz przycisku **Wypróbuj,** aby uruchomić powłokę w chmurze, zaloguj się na platformie Azure przy użyciu poświadczeń. 
 
-Jeśli w usłudze Cloud Shell jest uruchomiony w przeglądarce sieci Web albo bezpośrednio lub w witrynie Azure portal przejdź do **Bash** Jeśli widzisz **PowerShell** w lewym górnym rogu usługi Cloud Shell. 
+Jeśli uruchomiono powłokę chmury w przeglądarce sieci Web bezpośrednio lub w witrynie Azure portal, przełącz się do **bash,** jeśli widzisz **program PowerShell** w lewym górnym rogu powłoki chmury. 
 
 ## <a name="use-the-azure-cli-to-create-resources"></a>Używanie interfejsu wiersza polecenia platformy Azure do utworzenia zasobów
-W usłudze Cloud Shell w wierszu polecenia programu Bash wydaj następujące polecenia w celu zainicjowania zasobów usługi Service Bus. Pamiętaj, aby zastąpić wszystkie elementy zastępcze odpowiednimi wartościami: Przykładowy program Java oczekuje, że nazwa kolejki to BasicQueue, więc nie należy jej zmieniać. Chcieć kopiowania/wklejania polecenia pojedynczo, dzięki czemu można zastąpić wartości, można uruchomić. 
+W usłudze Cloud Shell w wierszu polecenia programu Bash wydaj następujące polecenia w celu zainicjowania zasobów usługi Service Bus. Pamiętaj, aby zastąpić wszystkie symbole zastępcze odpowiednimi wartościami: Przykładowy program Java oczekuje, że nazwa kolejki będzie podstawową kolejką, więc nie należy jej zmieniać. Można skopiować/wkleić polecenia jeden po drugim, aby można było zastąpić wartości przed ich uruchomieniem. 
 
 ```azurecli-interactive
 # Create a resource group
@@ -368,11 +368,11 @@ void registerReceiver(QueueClient queueClient, ExecutorService executorService) 
 ```
 
 > [!NOTE]
-> Możesz zarządzać zasobami usługi Service Bus przy użyciu [Eksploratora usługi Service Bus](https://github.com/paolosalvatori/ServiceBusExplorer/). Eksplorator usługi Service Bus pozwala użytkownikom na łączenie do przestrzeni nazw usługi Service Bus i administrować jednostek obsługi komunikatów w łatwy sposób. To narzędzie zawiera zaawansowane funkcje, takie jak funkcja Importuj/Eksportuj lub możliwość testowania tematu, kolejek, subskrypcji, usługi przekazywania, usługi notification hubs i centrów zdarzeń. 
+> Zasoby usługi Service Bus można zarządzać za pomocą [Eksploratora magistrali usług](https://github.com/paolosalvatori/ServiceBusExplorer/). Eksplorator usługi Service Bus umożliwia użytkownikom łączenie się z obszarem nazw usługi Service Bus i administrowanie jednostkami obsługi wiadomości w łatwy sposób. Narzędzie zapewnia zaawansowane funkcje, takie jak funkcje importu/eksportu lub możliwość testowania tematu, kolejek, subskrypcji, usług przekazywania, centrów powiadomień i centrów zdarzeń. 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-W tym artykule utworzono przestrzeń nazw usługi Service Bus oraz inne zasoby wymagane do wysyłania i odbierania komunikatów z kolejki. Aby dowiedzieć się więcej na temat pisania kodu w celu wysyłania i odbierania wiadomości, przejdź do samouczków w **wysyłania i odbierania komunikatów** sekcji. 
+W tym artykule utworzono przestrzeń nazw usługi Service Bus oraz inne zasoby wymagane do wysyłania i odbierania komunikatów z kolejki. Aby dowiedzieć się więcej na temat pisania kodu do wysyłania i odbierania wiadomości, przejdź do samouczków w sekcji **Wysyłanie i odbieranie wiadomości.** 
 
 > [!div class="nextstepaction"]
 > [Wysyłanie i odbieranie komunikatów](service-bus-dotnet-get-started-with-queues.md)

@@ -1,7 +1,7 @@
 ---
-title: Tworzenie i Uruchamianie prostych skryptów języka R
+title: Tworzenie i uruchamianie prostych skryptów języka R
 titleSuffix: Azure SQL Database Machine Learning Services (preview)
-description: Uruchom proste skrypty języka R w Azure SQL Database Machine Learning Services (wersja zapoznawcza).
+description: Uruchamianie prostych skryptów języka R w usługach azure SQL Database Machine Learning Services (wersja zapoznawcza).
 services: sql-database
 ms.service: sql-database
 ms.subservice: machine-learning
@@ -14,35 +14,35 @@ ms.reviewer: davidph
 manager: cgronlun
 ms.date: 04/11/2019
 ms.openlocfilehash: 5b2f8231952d25f5858f8e06a957f1056ecc3651
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/28/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "76768490"
 ---
-# <a name="quickstart-create-and-run-simple-r-scripts-in-azure-sql-database-machine-learning-services-preview"></a>Szybki Start: Tworzenie i Uruchamianie prostych skryptów języka R w Azure SQL Database Machine Learning Services (wersja zapoznawcza)
+# <a name="quickstart-create-and-run-simple-r-scripts-in-azure-sql-database-machine-learning-services-preview"></a>Szybki start: tworzenie i uruchamianie prostych skryptów języka R w usługach azure SQL Database Machine Learning Services (wersja zapoznawcza)
 
-W tym przewodniku szybki start utworzysz i uruchomisz zestaw skryptów języka R przy użyciu Machine Learning Services (w języku R) w Azure SQL Database.
+W tym przewodniku Szybki start utworzysz i uruchomisz zestaw skryptów języka R przy użyciu usług uczenia maszynowego (z R) w bazie danych SQL azure.
 
 [!INCLUDE[ml-preview-note](../../includes/sql-database-ml-preview-note.md)]
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Konto platformy Azure z aktywną subskrypcją. [Utwórz konto bezpłatnie](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
-- [Baza danych Azure SQL Database](sql-database-single-database-get-started.md) z [regułą zapory na poziomie serwera](sql-database-server-level-firewall-rule.md)
-- [Machine Learning Services](sql-database-machine-learning-services-overview.md) z włączonym językiem R. [Zarejestruj się, aby wypróbować wersję zapoznawczą](sql-database-machine-learning-services-overview.md#signup).
+- Konto platformy Azure z aktywną subskrypcją. [Utwórz konto za darmo](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+- [Baza danych SQL platformy Azure](sql-database-single-database-get-started.md) z [regułą zapory na poziomie serwera](sql-database-server-level-firewall-rule.md)
+- [Usługi uczenia maszynowego](sql-database-machine-learning-services-overview.md) z włączoną funkcją języka R. [Zarejestruj się w wersji zapoznawczej](sql-database-machine-learning-services-overview.md#signup).
 - Program [SQL Server Management Studio](/sql/ssms/sql-server-management-studio-ssms) (SSMS)
 
 > [!NOTE]
 > W okresie publicznej wersji zapoznawczej firma Microsoft dołączy Cię i włączy usługę Machine Learning dla Twojej istniejącej lub nowej bazy danych.
 
-Ten przykład używa procedury składowanej [sp_execute_external_script](/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql) , aby otoczyć poprawnie sformułowany skrypt języka R.
+W tym przykładzie użyto procedury składowanej [sp_execute_external_script](/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql) do zawijania poprawnie sformułowanego skryptu języka R.
 
 ## <a name="run-a-simple-script"></a>Uruchamianie prostego skryptu
 
-Aby uruchomić skrypt języka R, przekazanie go jako argumentu do procedury składowanej systemu [sp_execute_external_script](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql).
+Aby uruchomić skrypt R, przekażesz go jako argument do procedury składowanej w [systemie, sp_execute_external_script](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql).
 
-W poniższych krokach opisano uruchamianie tego przykładowego skryptu języka R w usłudze SQL Database:
+W poniższych krokach zostanie uruchomiony ten przykładowy skrypt języka R w bazie danych SQL:
 
 ```r
 a <- 1
@@ -54,11 +54,11 @@ print(c(c, d))
 
 1. Otwórz program **SQL Server Management Studio** i nawiąż połączenie z usługą SQL Database.
 
-   Jeśli potrzebujesz pomocy przy nawiązywaniu połączenia, zobacz [Szybki Start: użyj SQL Server Management Studio, aby nawiązać połączenie i wysłać zapytanie do bazy danych Azure SQL](sql-database-connect-query-ssms.md).
+   Jeśli potrzebujesz pomocy w nawiązywania połączenia, zobacz [Szybki start: Łączenie i wykonywanie zapytań o bazę danych SQL i wykonywanie zapytań o kwerendę .](sql-database-connect-query-ssms.md)
 
-1. Przekaż kompletny skrypt języka R do [sp_execute_external_script](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql) procedury składowanej.
+1. Przekaż pełny skrypt języka R do [sp_execute_external_script](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql) procedury składowanej.
 
-   Skrypt jest przesyłany za pomocą argumentu `@script`. Wszystkie elementy wewnątrz argumentu `@script` muszą być prawidłowym kodem R.
+   Skrypt jest przekazywany przez `@script` argument. Wszystko wewnątrz `@script` argumentu musi być prawidłowy kod R.
 
     ```sql
     EXECUTE sp_execute_external_script @language = N'R'
@@ -71,15 +71,15 @@ print(c(c, d))
     '
     ```
 
-   Jeśli wystąpią błędy, może to być spowodowane tym, że publiczna wersja zapoznawcza usług Machine Learning Services (z językiem R) nie jest włączona dla usługi SQL Database. Zobacz powyższe [wymagania wstępne](#prerequisites) .
+   Jeśli wystąpią błędy, może to być spowodowane tym, że publiczna wersja zapoznawcza usług Machine Learning Services (z językiem R) nie jest włączona dla usługi SQL Database. Zobacz [Wymagania wstępne](#prerequisites) powyżej.
 
    > [!NOTE]
-   > Jeśli jesteś administratorem, możesz uruchomić kod zewnętrzny automatycznie. Można udzielić uprawnienia innym użytkownikom przy użyciu polecenia:
-   <br>**Przyznaj wykonaj dowolny skrypt zewnętrzny do** *\<nazwy użytkownika\>* .
+   > Jeśli jesteś administratorem, możesz automatycznie uruchomić kod zewnętrzny. Za pomocą polecenia można udzielić uprawnień innym użytkownikom:
+   <br>**Przyznaj wykonanie dowolnego skryptu zewnętrznego do** * \<nazwy użytkownika\>*.
 
-2. Obliczany jest prawidłowy wynik, a funkcja R `print` zwraca wynik do okna **komunikatów** .
+2. Obliczany jest prawidłowy `print` wynik, a funkcja R zwraca wynik do okna **Wiadomości.**
 
-   powinien on wyglądać podobnie do tego.
+   To powinno wyglądać mniej więcej tak.
 
     **Results**
 
@@ -88,9 +88,9 @@ print(c(c, d))
     0.5 2
     ```
 
-## <a name="run-a-hello-world-script"></a>Uruchamianie skryptu Hello worldowego
+## <a name="run-a-hello-world-script"></a>Uruchamianie skryptu Hello World
 
-Typowy przykładowy skrypt to ten, który po prostu wyprowadza ciąg "Hello world". Uruchom następujące polecenie.
+Typowy przykładowy skrypt jest taki, który po prostu wyprowadza ciąg "Hello World". Uruchom następujące polecenie.
 
 ```sql
 EXECUTE sp_execute_external_script @language = N'R'
@@ -100,14 +100,14 @@ WITH RESULT SETS(([Hello World] INT));
 GO
 ```
 
-Dane wejściowe tej procedury składowanej obejmują:
+Dane wejściowe do tej procedury składowanej obejmują:
 
 | | |
 |-|-|
-| @language | definiuje rozszerzenie języka do wywołania, w tym przypadku R |
-| @script | definiuje polecenia przesłane do środowiska uruchomieniowego języka R. Cały skrypt języka R musi być ujęty w ten argument, jako tekst w formacie Unicode. Można również dodać tekst do zmiennej typu **nvarchar** , a następnie wywołać zmienną |
-| @input_data_1 | dane zwrócone przez zapytanie, przekazana do środowiska uruchomieniowego języka R, które zwraca dane do SQL Server jako ramki danych |
-|Z ZESTAWAMI WYNIKÓW | klauzula definiuje schemat zwracanej tabeli danych dla SQL Server, dodając "Hello world" jako nazwę kolumny ( **int** ) dla typu danych |
+| @language | definiuje rozszerzenie języka, aby wywołać, w tym przypadku R |
+| @script | definiuje polecenia przekazywane do środowiska wykonawczego R. Cały skrypt R musi być ujęty w tym argumie, jako tekst Unicode. Można również dodać tekst do zmiennej typu **nvarchar,** a następnie wywołać zmienną |
+| @input_data_1 | dane zwracane przez kwerendę, przekazywane do środowiska wykonawczego języka R, które zwraca dane do programu SQL Server jako ramki danych |
+|Z ZESTAWAMI WYNIKÓW | klauzula definiuje schemat tabeli zwróconych danych dla programu SQL Server, dodając "Hello World" jako nazwę kolumny, **int** dla typu danych |
 
 Polecenie wyprowadza następujący tekst:
 
@@ -117,9 +117,9 @@ Polecenie wyprowadza następujący tekst:
 
 ## <a name="use-inputs-and-outputs"></a>Korzystanie z danych wejściowych i wyjściowych
 
-Domyślnie [sp_execute_external_script](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql) akceptuje pojedynczy zestaw danych jako dane wejściowe, co jest zazwyczaj podawane w postaci prawidłowego zapytania SQL. Następnie zwraca pojedynczą ramkę danych języka R jako dane wyjściowe.
+Domyślnie [sp_execute_external_script](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql) akceptuje pojedynczy zestaw danych jako dane wejściowe, które zazwyczaj są podasz w postaci prawidłowej kwerendy SQL. Następnie zwraca pojedynczą ramkę danych R jako dane wyjściowe.
 
-Na razie Użyjmy domyślnych zmiennych wejściowych i wyjściowych [sp_execute_external_script](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql): **InputDataSet** i **OutputDataSet**.
+Na razie użyjmy domyślnych zmiennych wejściowych i wyjściowych [sp_execute_external_script:](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql) **InputDataSet** i **OutputDataSet**.
 
 1. Utwórz małą tabelę danych testowych.
 
@@ -137,7 +137,7 @@ Na razie Użyjmy domyślnych zmiennych wejściowych i wyjściowych [sp_execute_e
     GO
     ```
 
-1. Użyj instrukcji `SELECT`, aby zbadać tabelę.
+1. Instrukcja `SELECT` służy do wykonywania zapytań o tabelę.
   
     ```sql
     SELECT *
@@ -148,7 +148,7 @@ Na razie Użyjmy domyślnych zmiennych wejściowych i wyjściowych [sp_execute_e
 
     ![Zawartość tabeli RTestData](./media/sql-database-quickstart-r-create-script/select-rtestdata.png)
 
-1. Uruchom następujący skrypt języka R. Pobiera dane z tabeli przy użyciu instrukcji `SELECT`, przekazuje je za pośrednictwem środowiska uruchomieniowego języka R i zwraca dane jako ramkę danych. Klauzula `WITH RESULT SETS` definiuje schemat zwracanej tabeli danych dla SQL Database, dodając nazwę kolumny *NewColName*.
+1. Uruchom następujący skrypt języka R. Pobiera dane z tabeli przy `SELECT` użyciu instrukcji, przekazuje je przez środowisko uruchomieniowe języka R i zwraca dane jako ramkę danych. Klauzula `WITH RESULT SETS` definiuje schemat tabeli zwróconych danych dla bazy danych SQL, dodając nazwę kolumny *NewColName*.
 
     ```sql
     EXECUTE sp_execute_external_script @language = N'R'
@@ -161,7 +161,7 @@ Na razie Użyjmy domyślnych zmiennych wejściowych i wyjściowych [sp_execute_e
 
     ![Dane wyjściowe skryptu języka R, który zwraca dane z tabeli](./media/sql-database-quickstart-r-create-script/r-output-rtestdata.png)
 
-1. Teraz Zmieńmy nazwy zmiennych wejściowych i wyjściowych. Domyślnymi nazwami zmiennych wejściowych i wyjściowych są **InputDataSet** i **OutputDataSet**, ten skrypt zmienia nazwy na **SQL_in** i **SQL_out**:
+1. Teraz zmieńmy nazwy zmiennych wejściowych i wyjściowych. Domyślne nazwy zmiennych wejściowych i wyjściowych to **InputDataSet** i **OutputDataSet**, ten skrypt zmienia nazwy na **SQL_in** i **SQL_out:**
 
     ```sql
     EXECUTE sp_execute_external_script @language = N'R'
@@ -172,14 +172,14 @@ Na razie Użyjmy domyślnych zmiennych wejściowych i wyjściowych [sp_execute_e
     WITH RESULT SETS(([NewColName] INT NOT NULL));
     ```
 
-    Należy pamiętać, że w języku R jest rozróżniana wielkość liter. Zmienne wejściowe i wyjściowe używane w skrypcie języka R (**SQL_out**, **SQL_in**) muszą być zgodne z wartościami zdefiniowanymi przy użyciu `@input_data_1_name` i `@output_data_1_name`, w tym z uwzględnieniem wielkości liter.
+    Należy zauważyć, że R jest rozróżniana wielkość liter. Zmienne wejściowe i wyjściowe używane w skrypcie R (**SQL_out** **,** `@input_data_1_name` SQL_in `@output_data_1_name`) muszą być zgodne z wartościami zdefiniowanymi z i , w tym przypadek.
 
    > [!TIP]
    > Tylko jeden wejściowy zestaw danych może być przekazywany jako parametr i można zwrócić tylko jeden zestaw danych. Jednak można wywoływać inne zestawy danych z wewnątrz kodu języka R i można zwrócić dane wyjściowe innych typów oprócz zestawu danych. Możesz także dodać słowo kluczowe OUTPUT do dowolnego parametru, aby był zwracany z wynikami.
 
-1. Możesz również generować wartości tylko przy użyciu skryptu języka R bez danych wejściowych (`@input_data_1` jest ustawiona na wartość puste).
+1. Można również wygenerować wartości tylko przy`@input_data_1` użyciu skryptu R bez danych wejściowych ( jest ustawiona na pustą).
 
-   Poniższy skrypt wyświetla tekst "Hello" i "World".
+   Poniższy skrypt wyprowadza tekst "hello" i "world".
 
     ```sql
     EXECUTE sp_execute_external_script @language = N'R'
@@ -205,7 +205,7 @@ EXECUTE sp_execute_external_script @language = N'R'
 GO
 ```
 
-Funkcja `print` języka R zwraca wersję do okna **Komunikaty**. W poniższym przykładzie danych wyjściowych można zobaczyć, że SQL Database w tym przypadku ma zainstalowany język R w wersji 3.4.4.
+Funkcja `print` języka R zwraca wersję do okna **Komunikaty**. W poniższym przykładzie danych wyjściowych widać, że baza danych SQL w tym przypadku ma zainstalowaną wersję języka R 3.4.4.
 
 **Results**
 
@@ -232,7 +232,7 @@ nickname       Someone to Lean On
 
 Firma Microsoft udostępnia wiele pakietów języka R wstępnie instalowanych z usługami Machine Learning Services w usłudze SQL Database.
 
-Aby wyświetlić listę zainstalowanych pakietów języka R, w tym informacje o wersji, zależnościach, licencji i ścieżce biblioteki, uruchom następujący skrypt.
+Aby wyświetlić listę pakietów języka R, w tym informacje o wersji, zależnościach, licencji i ścieżce biblioteki, uruchom następujący skrypt.
 
 ```SQL
 EXEC sp_execute_external_script @language = N'R'
@@ -247,7 +247,7 @@ WITH result sets((
             ));
 ```
 
-Dane wyjściowe pochodzą z `installed.packages()` w języku R i są zwracane jako zestaw wyników.
+Dane wyjściowe `installed.packages()` pochodzi z w R i jest zwracany jako zestaw wyników.
 
 **Results**
 
@@ -255,13 +255,13 @@ Dane wyjściowe pochodzą z `installed.packages()` w języku R i są zwracane ja
 
 ## <a name="next-steps"></a>Następne kroki
 
-Aby utworzyć model uczenia maszynowego przy użyciu języka R w SQL Database, postępuj zgodnie z tym przewodnikiem Szybki Start:
+Aby utworzyć model uczenia maszynowego przy użyciu języka R w bazie danych SQL, wykonaj ten szybki start:
 
 > [!div class="nextstepaction"]
-> [Tworzenie i uczenie modelu predykcyjnego w języku R z Azure SQL Database Machine Learning Services (wersja zapoznawcza)](sql-database-quickstart-r-train-score-model.md)
+> [Tworzenie i szkolenie modelu predykcyjnego w języku R za pomocą usług azure sql database machine learning services (wersja zapoznawcza)](sql-database-quickstart-r-train-score-model.md)
 
-Aby uzyskać więcej informacji na Azure SQL Database Machine Learning Services z językiem R (wersja zapoznawcza), zobacz następujące artykuły.
+Aby uzyskać więcej informacji na temat usług Azure SQL Database Machine Learning Services z R (wersja zapoznawcza), zobacz następujące artykuły.
 
-- [Azure SQL Database Machine Learning Services z językiem R (wersja zapoznawcza)](sql-database-machine-learning-services-overview.md)
-- [Zapisuj zaawansowane funkcje języka R w Azure SQL Database przy użyciu Machine Learning Services (wersja zapoznawcza)](sql-database-machine-learning-services-functions.md)
-- [Pracuj z danymi języka R i SQL w Azure SQL Database Machine Learning Services (wersja zapoznawcza)](sql-database-machine-learning-services-data-issues.md)
+- [Usługi azure SQL Database Machine Learning services z r (wersja zapoznawcza)](sql-database-machine-learning-services-overview.md)
+- [Pisanie zaawansowanych funkcji języka R w bazie danych SQL usługi Azure przy użyciu usług uczenia maszynowego (wersja zapoznawcza)](sql-database-machine-learning-services-functions.md)
+- [Praca z danymi języka R i SQL w usługach azure SQL Database Machine Learning Services (wersja zapoznawcza)](sql-database-machine-learning-services-data-issues.md)

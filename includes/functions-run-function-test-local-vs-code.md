@@ -5,32 +5,32 @@ ms.topic: include
 ms.date: 01/12/2020
 ms.author: glenga
 ms.openlocfilehash: f4af3c202d4f00c4ac3041921175c92226f0db7c
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/02/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "76964157"
 ---
 ## <a name="run-the-function-locally"></a>Lokalne uruchamianie funkcji
 
-Visual Studio Code integruje się z [Azure Functions Core Tools](../articles/azure-functions/functions-run-local.md) , aby umożliwić uruchomienie tego projektu na lokalnym komputerze deweloperskim przed opublikowaniem na platformie Azure.
+Program Visual Studio Code integruje się z [podstawowymi narzędziami usługi Azure Functions,](../articles/azure-functions/functions-run-local.md) aby umożliwić uruchomienie tego projektu na lokalnym komputerze deweloperskim przed opublikowaniem na platformie Azure.
 
 1. Aby wywołać funkcję, naciśnij klawisz F5, aby uruchomić projekt aplikacji funkcji. Dane wyjściowe z pakietu Core Tools są wyświetlane na panelu **terminalu**.
 
-1. Jeśli nie zainstalowano jeszcze Azure Functions Core Tools, wybierz opcję **Zainstaluj** w wierszu polecenia. Po zainstalowaniu podstawowych narzędzi aplikacja zostanie uruchomiona na panelu **terminalu** . Można zobaczyć punkt końcowy adresu URL funkcji wyzwalanej przez protokół HTTP, działającej lokalnie. 
+1. Jeśli nie zainstalowano jeszcze podstawowych narzędzi usługi Azure Functions, wybierz pozycję **Zainstaluj** w wierszu polecenia. Po zainstalowaniu narzędzi podstawowych aplikacja zostanie uruchomiony w panelu **Terminal.** Punkt końcowy adresu URL funkcji wyzwalanej przez HTTP jest uruchomiony lokalnie. 
 
     ![Lokalne dane wyjściowe platformy Azure](./media/functions-run-function-test-local-vs-code/functions-vscode-f5.png)
 
-1. Po uruchomieniu podstawowych narzędzi przejdź do następującego adresu URL, aby wykonać żądanie GET, które zawiera `?name=Functions` ciągu zapytania.
+1. Po uruchomieniu narzędzia Core, przejdź do następującego adresu `?name=Functions` URL, aby wykonać żądanie GET, który zawiera ciąg zapytania.
 
     <http://localhost:7071/api/HttpExample?name=Functions>
 
-1. Zostanie zwrócona odpowiedź, która wygląda podobnie do następującej w przeglądarce:
+1. Zwracana jest odpowiedź, która wygląda następująco w przeglądarce:
 
     ![Odpowiedź hosta localhost funkcji wyświetlona w przeglądarce](./media/functions-run-function-test-local-vs-code/functions-test-local-browser.png)
 
-1. Informacje o żądaniu są wyświetlane w panelu **terminalu** .
+1. Informacje o żądaniu są wyświetlane w panelu **Terminal.**
 
-    ![Wykonanie funkcji w panelu terminalu](./media/functions-run-function-test-local-vs-code/function-execution-terminal.png)
+    ![Wykonywanie funkcji w panelu Terminal](./media/functions-run-function-test-local-vs-code/function-execution-terminal.png)
 
-1. Naciśnij klawisze CTRL + C, aby zatrzymać podstawowe narzędzia i rozłączyć debuger.
+1. Naciśnij klawisze Ctrl +C, aby zatrzymać narzędzia core i odłączyć debuger.

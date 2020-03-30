@@ -9,27 +9,27 @@ ms.date: 04/05/2019
 ms.author: sngun
 ms.custom: include file
 ms.openlocfilehash: 64c900e01496dad0d5f6a96d8d790ae0c2a8c95a
-ms.sourcegitcommit: 9cbd5b790299f080a64bab332bb031543c2de160
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/08/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78927349"
 ---
-Możesz użyć zapytań w Eksplorator danych, aby pobrać i filtrować dane.
+Za pomocą kwerend w Eksploratorze danych można pobierać i filtrować dane.
 
-1. W górnej części karty **elementy** w Eksplorator danych zapoznaj się z domyślną `SELECT * FROM c`kwerendy. To zapytanie pobiera i wyświetla wszystkie dokumenty w kolekcji w kolejności identyfikatorów. 
+1. U góry karty **Elementy** w Eksploratorze `SELECT * FROM c`danych przejrzyj kwerendę domyślną . Ta kwerenda pobiera i wyświetla wszystkie dokumenty w kolekcji w kolejności identyfikatora. 
    
    ![Domyślne zapytanie w Eksploratorze danych to „SELECT * FROM c”](./media/cosmos-db-create-sql-api-query-data/azure-cosmosdb-data-explorer-query.png)
    
-1. Aby zmienić zapytanie, wybierz pozycję **Edytuj filtr**, Zastąp domyślne zapytanie `ORDER BY c._ts DESC`, a następnie wybierz pozycję **Zastosuj filtr**.
+1. Aby zmienić kwerendę, wybierz pozycję Edytuj `ORDER BY c._ts DESC` **filtr,** zastąp kwerendę domyślną , a następnie wybierz pozycję Zastosuj **filtr**.
    
    ![Zmień zapytanie domyślne przez dodanie ORDER BY c._ts DESC i kliknij pozycję Zastosuj filtr](./media/cosmos-db-create-sql-api-query-data/azure-cosmosdb-data-explorer-edit-query.png)
 
-   Zmodyfikowane zapytanie wyświetla dokumenty w kolejności malejącej na podstawie ich sygnatury czasowej, dlatego teraz drugi dokument jest wyświetlany na liście jako pierwszy. 
+   Zmodyfikowana kwerenda wyświetla dokumenty w kolejności malejącej na podstawie ich sygnatury czasowej, więc teraz drugi dokument jest wyświetlany jako pierwszy. 
    
-   ![Zmieniono zapytanie na ORDER BY c. _ts DESC i kliknąć przycisk Zastosuj filtr](./media/cosmos-db-create-sql-api-query-data/azure-cosmosdb-data-explorer-edited-query.png)
+   ![Zmieniono kwerendę na KOLEJNOŚĆ według _ts DESC i kliknij przycisk Zastosuj filtr](./media/cosmos-db-create-sql-api-query-data/azure-cosmosdb-data-explorer-edited-query.png)
 
-Jeśli znasz składnię SQL, możesz wprowadzić dowolne obsługiwane [zapytania SQL](../articles/cosmos-db/sql-api-sql-query.md) w polu predykatu zapytania. Za pomocą Eksplorator danych można także tworzyć procedury składowane, UDF i wyzwalacze dla logiki biznesowej po stronie serwera. 
+Jeśli znasz składnię SQL, możesz wprowadzić wszystkie obsługiwane [kwerendy SQL](../articles/cosmos-db/sql-api-sql-query.md) w polu predykatu kwerendy. Za pomocą Eksploratora danych można również tworzyć procedury przechowywane, pliki UDF i wyzwalacze dla logiki biznesowej po stronie serwera. 
 
-Eksplorator danych zapewnia łatwy Azure Portal dostęp do wszystkich wbudowanych funkcji dostępu do danych programistycznych dostępnych w interfejsach API. Portal umożliwia również skalowanie przepływności, uzyskiwanie kluczy i parametrów połączenia oraz Przeglądanie metryk i umowy SLA dla konta Azure Cosmos DB. 
+Eksplorator danych zapewnia łatwy dostęp do witryny Azure portal do wszystkich wbudowanych funkcji dostępu do danych programowych dostępnych w interfejsach API. Portal służy również do skalowania przepływności, uzyskania kluczy i ciągów połączeń oraz przeglądania metryk i SLA dla konta usługi Azure Cosmos DB. 
 

@@ -1,74 +1,74 @@
 ---
-title: Importowanie i eksportowanie danych przy użyciu projektów z podglądem Azure Notebooks
-description: Dowiedz się, jak przenieść dane do projektu Azure Notebooks w wersji zapoznawczej ze źródeł zewnętrznych oraz jak eksportować dane z projektu.
+title: Importowanie i eksportowanie danych za pomocą projektów w wersji Zapoznawczej notesów platformy Azure
+description: Dowiedz się, jak przenieść dane do projektu usługi Azure Notebooks Preview ze źródeł zewnętrznych i jak eksportować dane z projektu.
 ms.topic: how-to
 ms.date: 12/04/2018
 ms.openlocfilehash: e1d4a52ab7f4ad2ca3438af4bc87bec0b79f34d1
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75646980"
 ---
-# <a name="work-with-data-files-in-azure-notebooks-preview-projects"></a>Pracuj z plikami danych w projektach Azure Notebooks w wersji zapoznawczej
+# <a name="work-with-data-files-in-azure-notebooks-preview-projects"></a>Praca z plikami danych w projektach usługi Azure Notebooks Preview
 
-Dane są lifeblood wiele notesów programu Jupyter, szczególnie notesów używane do analizy danych. Za pomocą notesów usługi Azure można łatwo importować z wielu źródeł do projektu, a następnie użyć tych danych z notesami. Może również mieć notesów Generowanie danych przechowywanych w projekcie, który następnie można pobrać do użycia w innym miejscu.
+Dane są życiodajną krwi wielu notebooków Jupyter, zwłaszcza notebooków używanych do nauki o danych. Za pomocą notesów platformy Azure można łatwo importować z różnych źródeł do projektu, a następnie używać tych danych z notesów. Notesy mogą również generować dane przechowywane w projekcie, które można następnie pobrać do użycia w innym miejscu.
 
 [!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
-**Danych** menu w uruchomionej notesu zawiera także **przekazywanie** i **Pobierz** poleceń, które działają z plików w projekcie, a także pliki tymczasowe dla bieżącego Sesja notesu.
+Menu **Dane** w uruchomionym notesie udostępnia również polecenia **Przekazywanie** i **Pobieranie,** które działają z plikami w projekcie, a także z plikami tymczasowymi dla bieżącej sesji notesu.
 
-Umożliwia także kodu w notesie dostępu z różnych źródeł danych bezpośrednio do dołączania plików w ramach projektu. Można również uzyskać dostęp dowolne dane za pomocą poleceń w komórce kodu. Ponieważ te dane są przechowywane w zmiennych w ramach sesji Notes, nie zostaną zapisane w projekcie chyba że specjalnie wygenerować plików projektu za pomocą kodu.
+Można również użyć kodu w notesie, aby uzyskać bezpośredni dostęp do różnych źródeł danych, w tym plików w projekcie. Można również uzyskać dostęp do dowolnych danych za pomocą poleceń w komórce kodu. Ponieważ takie dane są przechowywane w zmiennych w sesji notesu, nie zostaną zapisane w projekcie, chyba że używasz kodu do specjalnie generowania plików projektu.
 
-Praca z kodem w danych najlepiej wystąpił w uruchomionej Notes, sama: w tym celu zapoznaj się [wprowadzenie do danych w notesie przykładowe notesów usługi Azure](https://notebooks.azure.com/Microsoft/projects/samples/html/Getting%20to%20your%20Data%20in%20Azure%20Notebooks.ipynb).
+Praca z kodem w danych jest najlepiej doświadczony w samym uruchomionym notesie: w tym celu zapoznaj się [z przykładowym notesem Uzyskiwanie do danych w notesie notesu usługi Azure Notess.](https://notebooks.azure.com/Microsoft/projects/samples/html/Getting%20to%20your%20Data%20in%20Azure%20Notebooks.ipynb)
 
-W dalszej części tego artykułu zawiera szczegółowe informacje dotyczące operacji na plikach na poziomie projektu.
+Poniżej dalsza część artykułu Zawiera szczegółowe informacje na temat operacji na plikach na poziomie projektu.
 
 ## <a name="import-data"></a>Importowanie danych
 
-Przenoszenie plików do projektu na pulpicie nawigacyjnym projektu lub w ramach notesu uruchomionego za pomocą **danych** menu lub poleceń, takich jak `curl`.
+Pliki można przenosić do projektu z pulpitu nawigacyjnego projektu lub w uruchomionym notesie za pomocą menu **Dane** lub polecenia, takiego jak `curl`.
 
-### <a name="import-files-from-the-project-dashboard"></a>Importowanie plików z poziomu pulpitu nawigacyjnego projektu
+### <a name="import-files-from-the-project-dashboard"></a>Importowanie plików z pulpitu nawigacyjnego projektu
 
-1. W projekcie przejdź do folderu, w której chcesz zaimportować pliki.
+1. W projekcie przejdź do folderu, w którym chcesz zaimportować pliki.
 
-1. Wybierz **przekazywanie** polecenia, a następnie opcję **z adresu URL** lub **z komputera** i odpowiednie szczegóły danych, który chcesz zaimportować do projektu:
+1. Wybierz polecenie **Przekaż,** a następnie **z adresu URL** lub z **komputera** i wyświetlaj niezbędne szczegóły dla danych, które chcesz zaimportować:
 
-   - **Z adresu URL**: Wprowadź adres źródła w **adres URL pliku** pola i nazwę pliku, aby przypisać do Notes w projekcie w **nazwy pliku** pola. Następnie wybierz pozycję **+ Dodaj plik** można dodać adres URL do listy przekazywania. Powtórz te czynności dla wszelkich dodatkowych adresów URL, a następnie wybierz **gotowe**.
+   - **Z adresu URL:** Wprowadź adres źródłowy w polu **Adres URL pliku** i nazwę pliku, aby przypisać go do notesu w projekcie w polu Nazwa **pliku.** Następnie wybierz **pozycję + Dodaj plik,** aby dodać adres URL do listy przekazywania. Powtórz proces dla dodatkowych adresów URL, a następnie wybierz pozycję **Gotowe**.
 
-     ![Przekaż z adresu URL okna podręcznego](media/quickstarts/upload-from-url-popup.png)
+     ![Prześlij z wyskakujących okienków adresu URL](media/quickstarts/upload-from-url-popup.png)
 
-   - **Z poziomu komputera**: przeciągnij i upuść pliki w okienku wyskakującym lub wybierz **Wybieranie plików**, a następnie wyszukaj i wybierz pliki danych, który chcesz zaimportować. Można usunąć lub wybrać dowolną liczbę plików dowolnego typu i formatu, ponieważ to Ty kodu w notesie, otwórz plik i analizować swoje dane.
+   - **Z komputera**: Przeciągnij i upuść pliki do okna podręcznego lub wybierz **pozycję Wybierz pliki,** a następnie przejdź do i wybierz pliki danych, które chcesz zaimportować. Można upuścić lub wybrać dowolną liczbę plików dowolnego typu i formatu, ponieważ do kodu w notesie, aby otworzyć plik i przeanalizować jego dane.
 
-     ![Przekaż z komputera okna podręcznego](media/quickstarts/upload-from-computer-popup.png)
+     ![Prześlij z okna podręcznego komputera](media/quickstarts/upload-from-computer-popup.png)
 
-1. Po zaimportowaniu plików są wyświetlane na pulpicie nawigacyjnym projekt i są dostępne w ramach kodu notesu przy użyciu nazw względnych ścieżek do folderu zawierającego.
+1. Po zaimportowaniu pliki są wyświetlane na pulpicie nawigacyjnym projektu i są dostępne w kodzie notesu przy użyciu względnych nazwacianów ścieżek do folderu zawierającego.
 
-### <a name="import-files-from-the-file-menu-in-a-notebook"></a>Importowanie plików z menu plik w notesie
+### <a name="import-files-from-the-file-menu-in-a-notebook"></a>Importowanie plików z menu Plik w notesie
 
-1. W uruchomionej Notes, wybierz **pliku** > **przekazywanie** polecenia:
+1. W uruchomionym notesie wybierz polecenie**Przekazywanie** **pliku:** > 
 
-    ![Plik polecenia menu przekazywania w ramach notesu](media/file-menu-upload.png)
+    ![Polecenie menu Przekazywanie pliku w notesie](media/file-menu-upload.png)
 
-1. W wyświetlonym oknie dialogowym Przejdź do, a następnie zaznacz pliki, które chcesz przekazać. Możesz wybrać dowolną liczbę plików dowolnego typu. Wybierz **Otwórz** po zakończeniu.
+1. W oknie dialogowym, które się otworzy, przejdź do i wybierz pliki, które chcesz przekazać. Można wybrać dowolną liczbę plików dowolnego typu. Wybierz **otwórz** po zakończeniu.
 
-1. W **stan przekazywania** okna podręcznego, który jest wyświetlany, wybierz **Folder docelowy** z listy rozwijanej:
+1. W wyświetlonym okienku **stanu przekazywania** wybierz **folder docelowy** z listy rozwijanej:
 
-    - Folder sesji ( *~/* ): przesyła pliki do bieżącej sesji Notes, ale nie tworzy pliki w projekcie. Folder sesji jest równorzędny folder projektu, ale nie jest zachowana po zakończeniu sesji. Aby uzyskać dostęp do plików sesji w kodzie, prefiks nazw plików ze ścieżką względną *... /* .
+    - Folder sesji*~/* ( ): Przesyła pliki do bieżącej sesji notesu, ale nie tworzy plików w projekcie. Folder sesji jest elementem równorzędnym folderu projektu, ale nie utrzymywala się po zakończeniu sesji. Aby uzyskać dostęp do plików sesji w kodzie, przedrostek nazwy plików ze ścieżką względną *.. /*.
 
-        Za pomocą folderu sesji jest przydatne do eksperymentowania i pozwala uniknąć przeładowania projekt z plikami, może być lub może nie być potrzebna w dłuższym okresie. Można również przekazać pliki do folderu sesji, który miało identyczne nazwy plików w projekcie, bez powodowania konfliktów i bez konieczności zmień nazwy plików. Na przykład, załóżmy, że masz jedną wersję *data.csv* w projekcie, ale chcesz eksperymentować z inną wersję *data.csv*. Przekazując plik do folderu, w sesji, można uruchomić Notes, przy użyciu danych w przekazanym pliku (odwołując się do niego w kodzie za pomocą *... /Data.csv*) zamiast dane w pliku projektu.
+        Korzystanie z folderu sesji jest przydatne do eksperymentowania i pozwala uniknąć zaśmiecania projektu plikami, które mogą lub nie mogą być potrzebne w dłuższej perspektywie. Można również przekazać pliki do folderu sesji, które mają identyczne nazwy do plików w projekcie bez powodowania konfliktów i bez konieczności zmiany nazwy plików. Załóżmy na przykład, że masz już jedną wersję *pliku data.csv* w projekcie, ale chcesz eksperymentować z inną wersją *pliku data.csv*. Przesyłając plik do folderu sesji, można uruchomić notes przy użyciu danych w przekazanym pliku (odnosząc się do niego w kodzie za pomocą *.. /data.csv*), a nie dane w pliku projektu.
 
-    - Folder projektu ( */project*): przekazywanie plików do projektu, gdzie można uzyskać dostęp przy użyciu nazw względnych ścieżek w kodzie. Próba przekazania pliku do tego folderu jest taka sama jak przekazać plik na pulpicie nawigacyjnym projekt. Plik jest zapisywany z projektem i jest dostępny w nowszych sesji.
+    - Folder projektu (*/project*): przesyła pliki do projektu, do którego można uzyskać dostęp przy użyciu względnych nazwacianów ścieżek w kodzie. Przekazywanie pliku do tego folderu jest takie samo jak przekazywanie pliku na pulpicie nawigacyjnym projektu. Plik jest zapisywany wraz z projektem i jest dostępny w późniejszych sesjach.
 
-        Przekazywanie zakończy się niepowodzeniem, jeśli zostanie podjęta próba przekazania pliku o takiej samej nazwie jako jedna, która już istnieje w projekcie. Aby zastąpić plik, Przekaż nowy plik na pulpicie nawigacyjnym projektu zamiast tego, które zapewnia opcję zastąpienia.
+        Przekazywanie kończy się niepowodzeniem, jeśli spróbujesz przekazać plik o takiej samej nazwie jak ten, który już istnieje w projekcie. Aby zastąpić plik, przekaż nowy plik z pulpitu nawigacyjnego projektu, co daje możliwość nadpisywania.
 
-1. Wybierz **Rozpocznij przekazywanie** aby ukończyć proces.
+1. Wybierz **pozycję Rozpocznij przesyłanie,** aby zakończyć proces.
 
 ### <a name="create-or-import-files-using-commands"></a>Tworzenie lub importowanie plików za pomocą poleceń
 
-Można użyć polecenia w terminalu lub w komórce kodu języka Python do tworzenia plików w folderach projektu i sesji. Na przykład poleceń, takich jak `curl` i `wget` bezpośredniego pobrania plików z Internetu.
+Polecenia w terminalu lub w komórce kodu języka Python umożliwiają tworzenie plików zarówno w folderach projektu, jak i sesji. Na przykład polecenia, `curl` `wget` takie jak i pobierają pliki bezpośrednio z Internetu.
 
-Aby pobrać pliki w terminalu, zaznacz **terminalu** polecenia na pulpicie nawigacyjnym projekt, a następnie wprowadź odpowiednie polecenia:
+Aby pobrać pliki w terminalu, wybierz polecenie **Terminal** na pulpicie nawigacyjnym projektu, a następnie wprowadź odpowiednie polecenia:
 
 ```bash
 curl https://raw.githubusercontent.com/petroleum101/figures/db46e7f48b8aab67a0dfe31696f6071fb7a84f1e/oil_price/oil_price.csv -o oil_price.csv
@@ -76,42 +76,42 @@ curl https://raw.githubusercontent.com/petroleum101/figures/db46e7f48b8aab67a0df
 wget https://raw.githubusercontent.com/petroleum101/figures/db46e7f48b8aab67a0dfe31696f6071fb7a84f1e/oil_price/oil_price.csv -o oil_price.csv
 ```
 
-Korzystając z języka Python komórce kodu w notesie, prefiks poleceń z `!`.
+Podczas korzystania z komórki kodu języka Python w `!`notesie, prefiks poleceń z .
 
-Folder projektu jest domyślnym folderem, więc określanie Nazwa pliku docelowego, takie jak *oil_price.csv* tworzy plik w projekcie. Aby utworzyć plik sesji, należy przed nazwą *... /* jak *... /oil_price.csv*.
+Folder projektu jest folderem domyślnym, więc określenie docelowej nazwy pliku, takiej jak *oil_price.csv,* powoduje utworzenie pliku w projekcie. Aby utworzyć plik sesji, przedrostek nazwę *.. /* jak w *.. /oil_price.csv*.
 
 ### <a name="create-files-in-code"></a>Tworzenie plików w kodzie
 
-Korzystając z kodu, który tworzy plik, takich jak pandas `write_csv` funkcji, nazwy ścieżek są zawsze względne wobec folderu projektu. Za pomocą *... /* tworzy plik sesji, który jest pomijany, jeśli notes jest zostało zatrzymane i zamknięte.
+Podczas korzystania z kodu, który tworzy `write_csv` plik, takich jak pandas funkcji, nazwy ścieżek są zawsze względem folderu projektu. Korzystanie z *.. /* tworzy plik sesji, który jest odrzucany, gdy notes jest zatrzymywał się i zamykany.
 
-## <a name="export-files"></a>Pliki eksportu
+## <a name="export-files"></a>Eksportowanie plików
 
-Możesz wyeksportować dane na pulpicie nawigacyjnym projektu lub z poziomu notesu.
+Dane można eksportować z pulpitu nawigacyjnego projektu lub z poziomu notesu.
 
-## <a name="export-files-from-the-project-dashboard"></a>Eksportuj pliki na pulpicie nawigacyjnym projektu
+## <a name="export-files-from-the-project-dashboard"></a>Eksportowanie plików z pulpitu nawigacyjnego projektu
 
-Na pulpicie nawigacyjnym projektu kliknij prawym przyciskiem myszy plik, a następnie wybierz pozycję **Pobierz**:
+Na pulpicie nawigacyjnym projektu kliknij prawym przyciskiem myszy plik i wybierz polecenie **Pobierz:**
 
-![Pobierz polecenia menu kontekstowego elementu projektu](media/download-command.png)
+![Polecenie Pobierz w menu kontekstowym elementu projektu](media/download-command.png)
 
-Możesz również wybrać plik i użyj **Pobierz** polecenia (skrót klawiaturowy: d) na pulpicie nawigacyjnym:
+Można również wybrać plik i użyć polecenia **Pobierz** (skrót klawiaturowy: d) na pulpicie nawigacyjnym:
 
-![Pobierz polecenia paska narzędzi na pulpit nawigacyjny projektu](media/download-command-toolbar.png)
+![Polecenie Pobierz pasek narzędzi na pulpicie nawigacyjnym projektu](media/download-command-toolbar.png)
 
-## <a name="export-files-from-the-data-menu-in-a-notebook"></a>Eksportuj pliki z menu dane w notesie
+## <a name="export-files-from-the-data-menu-in-a-notebook"></a>Eksportowanie plików z menu Dane w notesie
 
-1. Wybierz **pliku** > **Pobierz** polecenia menu:
+1. Wybierz polecenie menu**Pobieranie** **pliku:** > 
 
-    ![Polecenia menu pobierania danych w ramach notesu](media/file-menu-download.png)
+    ![Polecenie menu Pobieranie danych w notesie](media/file-menu-download.png)
 
-1. Okno podręczne zostanie wyświetlone foldery w sesji; *projektu* folder zawiera pliki projektu:
+1. Zostanie wyświetleni okno podręczne z folderami w sesji; folder *projektu* zawiera pliki projektu:
 
-    ![Polecenie popup pobierania danych, w którym można wybrać pliki i foldery](media/file-menu-download-popup.png)
+    ![Wyskakujące okienko polecenia Pobieranie danych, w którym wybierasz pliki i foldery](media/file-menu-download-popup.png)
 
-1. Zaznacz pola wyboru po lewej stronie, plików i folderów, które chcesz pobrać, a następnie wybierz **Pobierz wybrane**.
+1. Zaznacz pola po lewej stronie plików i folderów, które chcesz pobrać, a następnie wybierz pozycję **Pobierz zaznaczone**.
 
-1. Notes przygotowuje pojedynczej *zip* plik zawierający wybrane pliki, które można następnie Zapisz jako użytkownik zwykle wykonać z poziomu przeglądarki. Tworzy notes *zip* plików, nawet wtedy, gdy pobieranie pojedynczego pliku.
+1. Notes przygotowuje pojedynczy plik *zip* zawierający wybrane pliki, które następnie można zapisać w zwykły sposób z przeglądarki. Notes tworzy plik *zip* nawet po pobraniu pojedynczego pliku.
 
 ## <a name="next-steps"></a>Następne kroki
 
-- [Dostęp do danych w chmurze w notesie](access-data-resources-jupyter-notebooks.md)
+- [Dostęp do danych z chmury w notesie](access-data-resources-jupyter-notebooks.md)

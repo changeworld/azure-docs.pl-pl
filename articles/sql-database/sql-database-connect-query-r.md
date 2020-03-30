@@ -1,7 +1,7 @@
 ---
-title: Używanie języka R z Machine Learning Services do wykonywania zapytań względem bazy danych (wersja zapoznawcza)
+title: Używanie języka R z usługami uczenia maszynowego do wykonywania zapytań o bazę danych (wersja zapoznawcza)
 titleSuffix: Azure SQL Database Machine Learning Services (preview)
-description: W tym artykule pokazano, jak używać skryptu języka R z usługą Azure SQL Database Machine Learning Services do nawiązywania połączeń z bazą danych Azure SQL i wykonywania zapytań przy użyciu instrukcji języka Transact-SQL.
+description: W tym artykule pokazano, jak używać skryptu języka R z usługami uczenia maszynowego bazy danych SQL platformy Azure, aby połączyć się z bazą danych SQL platformy Azure i zbadać ją przy użyciu instrukcji Transact-SQL.
 services: sql-database
 ms.service: sql-database
 ms.subservice: machine-learning
@@ -14,38 +14,38 @@ ms.reviewer: davidph, carlrab
 manager: cgronlun
 ms.date: 05/29/2019
 ms.openlocfilehash: 7103afc29e4021d950d9a3634b190f4439ecfe8d
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/28/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "76768509"
 ---
-# <a name="quickstart-use-r-with-machine-learning-services-to-query-an-azure-sql-database-preview"></a>Szybki Start: używanie języka R z Machine Learning Services do wykonywania zapytań w bazie danych Azure SQL Database (wersja zapoznawcza)
+# <a name="quickstart-use-r-with-machine-learning-services-to-query-an-azure-sql-database-preview"></a>Szybki start: używanie języka R z usługami uczenia maszynowego do wykonywania zapytań o bazę danych SQL platformy Azure (wersja zapoznawcza)
 
-W tym przewodniku szybki start użyjesz języka R z usługą Machine Learning Services, aby nawiązać połączenie z bazą danych SQL Azure i użyć instrukcji T-SQL do wykonywania zapytań dotyczących danych.
+W tym przewodniku Szybki start używasz języka R z usługami uczenia maszynowego do łączenia się z bazą danych SQL platformy Azure i używania instrukcji T-SQL do wykonywania zapytań o dane.
 
 [!INCLUDE[ml-preview-note](../../includes/sql-database-ml-preview-note.md)]
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Konto platformy Azure z aktywną subskrypcją. [Utwórz konto bezpłatnie](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
-- [Baza danych SQL Azure](sql-database-single-database-get-started.md)
-- [Machine Learning Services](sql-database-machine-learning-services-overview.md) z włączonym językiem R. [Zarejestruj się, aby wypróbować wersję zapoznawczą](sql-database-machine-learning-services-overview.md#signup).
+- Konto platformy Azure z aktywną subskrypcją. [Utwórz konto za darmo](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+- [Baza danych SQL platformy Azure](sql-database-single-database-get-started.md)
+- [Usługi uczenia maszynowego](sql-database-machine-learning-services-overview.md) z włączoną funkcją języka R. [Zarejestruj się w wersji zapoznawczej](sql-database-machine-learning-services-overview.md#signup).
 - Program [SQL Server Management Studio](/sql/ssms/sql-server-management-studio-ssms) (SSMS)
 
 > [!IMPORTANT]
-> Skrypty w tym artykule są przeznaczone do korzystania z bazy danych firmy **Adventure Works** .
+> Skrypty w tym artykule są zapisywane w celu użycia bazy danych **Adventure Works.**
 
 > [!NOTE]
-> W publicznej wersji zapoznawczej firma Microsoft będzie dołączana i umożliwia włączenie uczenia maszynowego dla istniejącej lub nowej bazy danych, jednak opcja wdrożenia wystąpienia zarządzanego nie jest obecnie obsługiwana.
+> Podczas publicznej wersji zapoznawczej firma Microsoft włączy urządzenie do uczenia maszynowego dla istniejącej lub nowej bazy danych, jednak opcja wdrażania wystąpienia zarządzanego nie jest obecnie obsługiwana.
 
-Machine Learning Services z R to funkcja usługi Azure SQL Database służąca do wykonywania skryptów języka R w bazie danych. Aby uzyskać więcej informacji, zobacz [Projekt R](https://www.r-project.org/).
+Usługi uczenia maszynowego z języka R to funkcja bazy danych SQL platformy Azure używana do wykonywania skryptów R w bazie danych. Aby uzyskać więcej informacji, zobacz [projekt R](https://www.r-project.org/).
 
 ## <a name="get-sql-server-connection-information"></a>Uzyskiwanie informacji o połączeniu z serwerem SQL
 
 Uzyskaj parametry połączenia potrzebne do nawiązania połączenia z bazą danych Azure SQL Database. W następnych procedurach będą potrzebne w pełni kwalifikowana nazwa serwera lub nazwa hosta, nazwa bazy danych i informacje logowania.
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com/).
+1. Zaloguj się do [Portalu Azure](https://portal.azure.com/).
 
 2. Otwórz stronę **Bazy danych SQL** lub **Wystąpienia zarządzane SQL**.
 
@@ -55,11 +55,11 @@ Uzyskaj parametry połączenia potrzebne do nawiązania połączenia z bazą dan
 
 1. Otwórz program **SQL Server Management Studio** i nawiąż połączenie z usługą SQL Database.
 
-   Jeśli potrzebujesz pomocy przy nawiązywaniu połączenia, zobacz [Szybki Start: użyj SQL Server Management Studio, aby nawiązać połączenie i wysłać zapytanie do bazy danych Azure SQL](sql-database-connect-query-ssms.md).
+   Jeśli potrzebujesz pomocy w nawiązywania połączenia, zobacz [Szybki start: Łączenie i wykonywanie zapytań o bazę danych SQL i wykonywanie zapytań o kwerendę .](sql-database-connect-query-ssms.md)
 
-1. Przekaż kompletny skrypt języka R do [sp_execute_external_script](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql) procedury składowanej.
+1. Przekaż pełny skrypt języka R do [sp_execute_external_script](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql) procedury składowanej.
 
-   Skrypt jest przesyłany za pomocą argumentu `@script`. Wszystkie elementy wewnątrz argumentu `@script` muszą być prawidłowym kodem R.
+   Skrypt jest przekazywany przez `@script` argument. Wszystko wewnątrz `@script` argumentu musi być prawidłowy kod R.
    
    >[!IMPORTANT]
    >Kod w tym przykładzie używa przykładowych danych AdventureWorksLT, które można wybrać jako źródło podczas tworzenia bazy danych. Jeśli baza danych zawiera różne dane, w zapytaniu SELECT należy użyć tabel z własnej bazy danych. 
@@ -72,17 +72,17 @@ Uzyskaj parametry połączenia potrzebne do nawiązania połączenia z bazą dan
     ```
 
    > [!NOTE]
-   > Jeśli wystąpią błędy, może to być spowodowane tym, że publiczna wersja zapoznawcza usług Machine Learning Services (z językiem R) nie jest włączona dla usługi SQL Database. Zobacz powyższe [wymagania wstępne](#prerequisites) .
+   > Jeśli wystąpią błędy, może to być spowodowane tym, że publiczna wersja zapoznawcza usług Machine Learning Services (z językiem R) nie jest włączona dla usługi SQL Database. Zobacz [Wymagania wstępne](#prerequisites) powyżej.
 
 ## <a name="run-the-code"></a>Uruchamianie kodu
 
-1. Wykonaj [sp_execute_external_script](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql) procedury składowanej.
+1. Wykonaj [sp_execute_external_script](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql) procedura składowana.
 
-1. Sprawdź, czy pierwsze 20 wierszy kategorii/produktu jest zwracanych w oknie **komunikaty** .
+1. Sprawdź, czy w oknie **Wiadomości** są zwracane 20 wierszy kategorii/produktu.
 
 ## <a name="next-steps"></a>Następne kroki
 
-- [Projektowanie pierwszej bazy danych Azure SQL Database](sql-database-design-first-database.md)
+- [Projektowanie pierwszej bazy danych SQL platformy Azure](sql-database-design-first-database.md)
 - [Azure SQL Database Machine Learning Services (z językiem R)](sql-database-machine-learning-services-overview.md)
-- [Twórz i uruchamiaj proste skrypty języka R w Azure SQL Database Machine Learning Services (wersja zapoznawcza)](sql-database-quickstart-r-create-script.md)
-- [Zapisuj zaawansowane funkcje języka R w Azure SQL Database przy użyciu Machine Learning Services (wersja zapoznawcza)](sql-database-machine-learning-services-functions.md)
+- [Tworzenie i uruchamianie prostych skryptów języka R w usługach azure SQL Database Machine Learning Services (wersja zapoznawcza)](sql-database-quickstart-r-create-script.md)
+- [Pisanie zaawansowanych funkcji języka R w bazie danych SQL usługi Azure przy użyciu usług uczenia maszynowego (wersja zapoznawcza)](sql-database-machine-learning-services-functions.md)

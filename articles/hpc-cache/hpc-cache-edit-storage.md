@@ -1,71 +1,71 @@
 ---
-title: Aktualizuj cele magazynu pamięci podręcznej platformy Azure HPC
-description: Jak edytować cele magazynu pamięci podręcznej platformy Azure HPC
+title: Aktualizowanie obiektów docelowych pamięci masowej HPC usługi Azure
+description: Jak edytować obiekty docelowe magazynu hpc usługi Azure
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 1/08/2020
 ms.author: rohogue
 ms.openlocfilehash: 5635bfc6ea5faea41b125037c76c0b8635e0f528
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75867006"
 ---
 # <a name="edit-storage-targets"></a>Edytowanie lokalizacji docelowych magazynu
 
-Można usunąć lub zmodyfikować miejsce docelowe magazynu z poziomu strony **miejsca docelowe magazynu** pamięci podręcznej.
+Można usunąć lub zmodyfikować miejsce docelowe magazynu ze strony **obiektów docelowych magazynu** pamięci podręcznej.
 
-## <a name="remove-a-storage-target"></a>Usuń miejsce docelowe magazynu
+## <a name="remove-a-storage-target"></a>Usuwanie miejsca docelowego magazynu
 
-Aby usunąć miejsce docelowe magazynu, wybierz je z listy i kliknij przycisk **Usuń** .
+Aby usunąć miejsce docelowe magazynu, zaznacz go na liście i kliknij przycisk **Usuń.**
 
-Ta akcja powoduje usunięcie skojarzenia obiektu docelowego magazynu z tym systemem pamięci podręcznej platformy Azure HPC, ale nie powoduje zmiany systemu magazynu zaplecza. Na przykład jeśli użyto kontenera magazynu obiektów blob platformy Azure, kontener i jego zawartość nadal istnieją po usunięciu z pamięci podręcznej. Możesz dodać kontener do innej pamięci podręcznej platformy Azure HPC, dodać go ponownie do tej pamięci podręcznej lub usunąć za pomocą Azure Portal.
+Ta akcja usuwa skojarzenia docelowego magazynu z tym systemem pamięci podręcznej HPC azure, ale nie zmienia systemu magazynu zaplecza. Na przykład jeśli użyto kontenera magazynu obiektów Blob platformy Azure, kontener i jego zawartość nadal istnieją po usunięciu go z pamięci podręcznej. Kontener można dodać do innej pamięci podręcznej HPC platformy Azure, ponownie dodać go do tej pamięci podręcznej lub usunąć za pomocą witryny Azure portal.
 
 Wszelkie zmiany plików przechowywane w pamięci podręcznej są zapisywane w systemie magazynu zaplecza przed usunięciem miejsca docelowego magazynu. Ten proces może potrwać godzinę lub dłużej, jeśli wiele zmienionych danych znajduje się w pamięci podręcznej.
 
-## <a name="update-storage-targets"></a>Aktualizuj cele magazynu
+## <a name="update-storage-targets"></a>Aktualizowanie obiektów docelowych magazynu
 
-Można edytować cele magazynu w celu zmodyfikowania niektórych ich właściwości. Różne właściwości można edytować w przypadku różnych typów magazynu:
+Można edytować obiekty docelowe magazynu, aby zmodyfikować niektóre z ich właściwości. Różne właściwości są edytowalne dla różnych typów magazynu:
 
-* W przypadku obiektów docelowych usługi BLOB Storage można zmienić ścieżkę przestrzeni nazw.
+* W przypadku obiektów docelowych magazynu obiektów blob można zmienić ścieżkę obszaru nazw.
 
 * W przypadku obiektów docelowych magazynu NFS można zmienić następujące właściwości:
 
-  * Ścieżka przestrzeni nazw
+  * Ścieżka obszaru nazw
   * Model użycia
-  * Eksportuj
-  * Eksportuj podkatalog
+  * Eksportowanie
+  * Eksportowanie podkatalogu
 
-Nie można edytować nazwy, typu lub systemu magazynu zaplecza magazynu (kontenera obiektów blob lub nazwy hosta lub adresu IP systemu plików NFS). Aby zmienić te właściwości, należy usunąć miejsce docelowe magazynu i utworzyć zamiennik z nową wartością.
+Nie można edytować nazwy, typu ani systemu magazynu zaplecza magazynu magazynu (kontener obiektów Blob lub adres hosta/IP usługi NFS). Jeśli chcesz zmienić te właściwości, usuń miejsce docelowe magazynu i utwórz zastąpienie nową wartością.
 
 Aby zmodyfikować miejsce docelowe magazynu, kliknij nazwę obiektu docelowego magazynu, aby otworzyć jego stronę szczegółów. Niektóre pola na stronie można edytować.
 
-![zrzut ekranu przedstawiający stronę Edytowanie miejsca docelowego magazynu NFS](media/hpc-cache-edit-storage-nfs.png)
+![zrzut ekranu strony edycji obiektu docelowego magazynu systemu plików NFS](media/hpc-cache-edit-storage-nfs.png)
 
-## <a name="update-an-nfs-storage-target"></a>Aktualizowanie miejsca docelowego magazynu NFS
+## <a name="update-an-nfs-storage-target"></a>Aktualizowanie miejsca docelowego magazynu systemu plików NFS
 
-W przypadku miejsca docelowego magazynu NFS można zaktualizować kilka właściwości. (Skorzystaj z powyższego zrzutu ekranu, aby zapoznać się z przykładową stroną Edytuj).
+W przypadku miejsca docelowego magazynu systemu plików NFS można zaktualizować kilka właściwości. (Zapoznaj się z powyższym zrzutem ekranu, aby uzyskać przykładową stronę edycji).
 
-* **Model użycia** — model użycia ma wpływ na sposób przechowywania danych w pamięci podręcznej. Aby dowiedzieć się więcej, zapoznaj się z tematem [Wybieranie modelu użycia](hpc-cache-add-storage.md#choose-a-usage-model) .
-* **Ścieżka wirtualnej przestrzeni nazw** — ścieżka używana przez klientów do instalowania tego miejsca docelowego magazynu. Zapoznaj [się z tematem planowanie zagregowanej przestrzeni nazw](hpc-cache-namespace.md) w celu uzyskania szczegółów.
-* **Ścieżka eksportu NFS** — eksport systemu magazynu do użycia dla tej ścieżki przestrzeni nazw.
-* **Ścieżka podkatalogu** — podkatalog (w ramach eksportu) do skojarzenia z tą ścieżką przestrzeni nazw. Pozostaw to pole puste, jeśli nie musisz określać podkatalogu.
+* **Model użycia** — model użycia wpływa na sposób przechowywania danych w pamięci podręcznej. Przeczytaj [artykuł Wybierz model użycia,](hpc-cache-add-storage.md#choose-a-usage-model) aby dowiedzieć się więcej.
+* **Ścieżka wirtualnego obszaru nazw** — ścieżka używana przez klientów do instalowania tego miejsca docelowego magazynu. Przeczytaj [planowanie zagregowanego obszaru nazw, aby](hpc-cache-namespace.md) uzyskać szczegółowe informacje.
+* **Ścieżka eksportu systemu plików NFS** — eksportowanie systemu magazynu do użycia dla tej ścieżki obszaru nazw.
+* **Ścieżka podkatalogu** — podkatalog (w obszarze eksportu) do skojarzenia z tą ścieżką obszaru nazw. Pozostaw to pole puste, jeśli nie trzeba określać podkatalogu.
 
-Każda ścieżka przestrzeni nazw musi mieć unikatową kombinację eksportu i podkatalogu. Oznacza to, że nie można wykonać dwóch różnych ścieżek związanych z klientem do dokładnie tego samego katalogu w systemie magazynu zaplecza.
+Każda ścieżka obszaru nazw wymaga unikatowej kombinacji eksportu i podkatalogu. Oznacza to, że nie można wykonać dwie różne ścieżki skierowane do klienta do dokładnie tego samego katalogu w systemie magazynu zaplecza.
 
-Po wprowadzeniu zmian kliknij przycisk **OK** , aby zaktualizować miejsce docelowe magazynu, lub kliknij przycisk **Anuluj** , aby odrzucić zmiany.
+Po wszuszczeniu kliknij przycisk **OK,** aby zaktualizować miejsce docelowe magazynu, lub kliknij przycisk **Anuluj,** aby odrzucić zmiany.
 
-## <a name="update-an-azure-blob-storage-target"></a>Aktualizowanie celu usługi Azure Blob Storage
+## <a name="update-an-azure-blob-storage-target"></a>Aktualizowanie obiektu docelowego magazynu obiektów Blob platformy Azure
 
-Strona szczegóły obiektu docelowego usługi BLOB Storage umożliwia modyfikowanie ścieżki wirtualnej przestrzeni nazw.
+Strona szczegółów obiektu docelowego magazynu obiektów blob umożliwia modyfikowanie ścieżki wirtualnego obszaru nazw.
 
-![zrzut ekranu przedstawiający stronę Edytowanie elementu docelowego usługi BLOB Storage](media/hpc-cache-edit-storage-blob.png)
+![zrzut ekranu przedstawiający stronę edycji obiektu docelowego magazynu obiektów blob](media/hpc-cache-edit-storage-blob.png)
 
-Po zakończeniu kliknij przycisk **OK** , aby zaktualizować miejsce docelowe magazynu, lub kliknij przycisk **Anuluj** , aby odrzucić zmiany.
+Po zakończeniu kliknij przycisk **OK,** aby zaktualizować miejsce docelowe magazynu, lub kliknij przycisk **Anuluj,** aby odrzucić zmiany.
 
 ## <a name="next-steps"></a>Następne kroki
 
-* Przeczytaj temat [Dodawanie elementów docelowych magazynu](hpc-cache-add-storage.md) , aby dowiedzieć się więcej o tych opcjach.
-* Zapoznaj [się z tematem planowanie zagregowanej przestrzeni nazw,](hpc-cache-namespace.md) Aby uzyskać więcej porad dotyczących używania ścieżek wirtualnych.
+* Przeczytaj [artykuł Dodaj obiekty docelowe magazynu,](hpc-cache-add-storage.md) aby dowiedzieć się więcej o tych opcjach.
+* Przeczytaj [artykuł Planowanie zagregowanego obszaru nazw,](hpc-cache-namespace.md) aby uzyskać więcej wskazówek dotyczących korzystania ze ścieżek wirtualnych.

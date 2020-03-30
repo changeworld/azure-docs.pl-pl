@@ -1,6 +1,6 @@
 ---
 title: Omówienie zabezpieczeń przedsiębiorstwa w usłudze Azure HDInsight
-description: Poznaj różne metody zapewniające bezpieczeństwo przedsiębiorstw w usłudze Azure HDInsight.
+description: Poznaj różne metody zapewnienia bezpieczeństwa przedsiębiorstwa w usłudze Azure HDInsight.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -8,91 +8,91 @@ ms.service: hdinsight
 ms.topic: overview
 ms.date: 03/03/2020
 ms.openlocfilehash: 95bfe7d7788133d8548598cb30c8084bf64a977f
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "78267722"
 ---
 # <a name="overview-of-enterprise-security-in-azure-hdinsight"></a>Omówienie zabezpieczeń przedsiębiorstwa w usłudze Azure HDInsight
 
-Usługa Azure HDInsight oferuje różne metody zaspokajania potrzeb związanych z bezpieczeństwem przedsiębiorstwa. Większość z tych rozwiązań nie jest domyślnie aktywowana. Ta elastyczność umożliwia wybranie funkcji zabezpieczeń, które są najważniejsze dla Ciebie, i pomaga uniknąć płacenia za niepotrzebne funkcje. Oznacza to również, że jest odpowiedzialny za zapewnienie, że dla instalacji i środowiska są włączone odpowiednie rozwiązania.
+Usługa Azure HDInsight oferuje szereg metod, które odpowiadają twoim potrzebom w zakresie zabezpieczeń przedsiębiorstwa. Większość z tych rozwiązań nie jest domyślnie aktywowana. Ta elastyczność pozwala wybrać funkcje zabezpieczeń, które są dla Ciebie najważniejsze, i pomaga uniknąć płacenia za funkcje, których nie chcesz. Oznacza to również, że twoim obowiązkiem jest upewnienie się, że odpowiednie rozwiązania są włączone dla twojej konfiguracji i środowiska.
 
-Ten artykuł dotyczy rozwiązań zabezpieczeń dzielących rozwiązania w zakresie zabezpieczeń na linie czterech tradycyjnych filarów zabezpieczeń: zabezpieczenia obwodowe, uwierzytelnianie, autoryzacja i szyfrowanie.
+W tym artykule omówiono rozwiązania zabezpieczeń, dzieląc rozwiązania zabezpieczeń na wzór czterech tradycyjnych filarów zabezpieczeń: zabezpieczeń obwodowych, uwierzytelniania, autoryzacji i szyfrowania.
 
-W tym artykule wprowadzono również **pakiet Enterprise Security usługi Azure HDInsight (ESP)** , która zapewnia uwierzytelnianie oparte na Active Directory, obsługę wieloużytkownikom oraz kontrolę dostępu opartą na rolach dla klastrów usługi HDInsight.
+W tym artykule przedstawiono również **pakiet zabezpieczeń usługi Azure HDInsight Enterprise Security Package (ESP),** który zapewnia uwierzytelnianie oparte na usłudze Active Directory, obsługę wielu użytkowników i kontrolę dostępu opartą na rolach dla klastrów HDInsight.
 
 ## <a name="enterprise-security-pillars"></a>Filary zabezpieczeń przedsiębiorstwa
 
-Jednym ze sposobów na wyszukanie zabezpieczeń przedsiębiorstwa jest dzielenie rozwiązań zabezpieczeń na cztery główne grupy w oparciu o typ formantu. Te grupy są również nazywane filarami zabezpieczeń i są następujące: zabezpieczenia obwodowe, uwierzytelnianie, autoryzacja i szyfrowanie.
+Jednym ze sposobów patrzenia na zabezpieczenia przedsiębiorstwa dzieli rozwiązania zabezpieczeń na cztery główne grupy w zależności od typu kontroli. Grupy te są również nazywane filarami zabezpieczeń i są następujące: zabezpieczenia obwodowe, uwierzytelnianie, autoryzacja i szyfrowanie.
 
-### <a name="perimeter-security"></a>Zabezpieczenia obwodu
+### <a name="perimeter-security"></a>Zabezpieczenia obwodowe
 
-Zabezpieczenia obwodowe w usłudze HDInsight są realizowane za poorednictwem [sieci wirtualnych](../hdinsight-plan-virtual-network-deployment.md). Administrator przedsiębiorstwa może utworzyć klaster w sieci wirtualnej (VNET) i użyć sieciowych grup zabezpieczeń (sieciowej grupy zabezpieczeń) w celu ograniczenia dostępu do sieci wirtualnej. Tylko dozwolone adresy IP w regułach sieciowej grupy zabezpieczeń dla ruchu przychodzącego będą mogły komunikować się z klastrem usługi HDInsight. Ta konfiguracja zapewnia ochronę obwodową.
+Bezpieczeństwo obwodowe w HDInsight uzyskuje się za pośrednictwem [sieci wirtualnych.](../hdinsight-plan-virtual-network-deployment.md) Administrator przedsiębiorstwa może utworzyć klaster wewnątrz sieci wirtualnej (VNET) i użyć sieciowych grup zabezpieczeń (NSG) w celu ograniczenia dostępu do sieci wirtualnej. Tylko dozwolone adresy IP w przychodzących regułach sieciowej grupy sieciowej będą mogły komunikować się z klastrem HDInsight. Ta konfiguracja zapewnia zabezpieczenia obwodowe.
 
-Wszystkie klastry wdrożone w sieci wirtualnej również mają prywatny punkt końcowy, który jest rozpoznawany jako prywatny adres IP wewnątrz sieci wirtualnej na potrzeby prywatnego dostępu HTTP do bram klastra.
+Wszystkie klastry wdrożone w sieci wirtualnej będą również miały prywatny punkt końcowy, który jest rozpoznawany na prywatnym adresie IP wewnątrz sieci wirtualnej dla prywatnego dostępu HTTP do bram klastra.
 
 ### <a name="authentication"></a>Uwierzytelnianie
 
-[Pakiet Enterprise Security](apache-domain-joined-architecture.md) z usługi HDInsight zapewnia uwierzytelnianie oparte na Active Directoryach, obsługa przez wiele użytkowników oraz kontrolę dostępu opartą na rolach. Integracja Active Directory jest realizowana przy użyciu [Azure Active Directory Domain Services](../../active-directory-domain-services/overview.md). Dzięki tym funkcjom można utworzyć klaster usługi HDInsight połączony z zarządzaną domeną Active Directory. Następnie można skonfigurować listę pracowników w przedsiębiorstwie, którzy mogą uwierzytelniać się w klastrze i logować się do niego.
+[Pakiet zabezpieczeń przedsiębiorstwa](apache-domain-joined-architecture.md) firmy HDInsight zapewnia uwierzytelnianie oparte na usłudze Active Directory, obsługę wielu użytkowników i kontrolę dostępu opartą na rolach. Integracja z usługą Active Directory jest osiągana za pomocą [usług domenowych Active Directory platformy Azure](../../active-directory-domain-services/overview.md). Dzięki tym funkcjom można utworzyć klaster HDInsight, który jest połączony z zarządzaną domeną usługi Active Directory. Następnie można skonfigurować listę pracowników z przedsiębiorstwa, którzy mogą uwierzytelniać się i logować do klastra.
 
-W przypadku tej konfiguracji pracownicy przedsiębiorstwa mogą zalogować się do węzłów klastra przy użyciu ich poświadczeń domeny. Mogą oni również używać poświadczeń domeny do uwierzytelniania z innymi zatwierdzonymi punktami końcowymi, takimi jak Apache Ambari views, ODBC, JDBC, PowerShell i interfejsy API REST do współpracy z klastrem.
+Dzięki tej konfiguracji pracownicy przedsiębiorstwa mogą logować się do węzłów klastra przy użyciu poświadczeń domeny. Mogą również używać swoich poświadczeń domeny do uwierzytelniania przy użyciu innych zatwierdzonych punktów końcowych, takich jak Apache Ambari Views, ODBC, JDBC, PowerShell i REST API do interakcji z klastrem.
 
 ### <a name="authorization"></a>Autoryzacja
 
-Najlepszym rozwiązaniem w przypadku większości przedsiębiorstw jest upewnienie się, że nie każdy pracownik ma dostęp do wszystkich zasobów przedsiębiorstwa. Analogicznie, administrator może definiować zasady kontroli dostępu opartej na rolach dla zasobów klastra. Ta wartość jest dostępna tylko w klastrach ESP.
+Najlepszym rozwiązaniem, które stosuje większość przedsiębiorstw, jest upewnienie się, że nie każdy pracownik ma dostęp do wszystkich zasobów przedsiębiorstwa. Podobnie administrator może zdefiniować zasady kontroli dostępu oparte na rolach dla zasobów klastra. Jest to dostępne tylko w klastrach ESP.
 
-Administrator usługi Hadoop może skonfigurować kontrolę dostępu opartą na rolach (RBAC), aby zabezpieczyć platformę Apache [Hive](apache-domain-joined-run-hive.md), [HBase](apache-domain-joined-run-hbase.md)i [Kafka](apache-domain-joined-run-kafka.md) przy użyciu tych wtyczek w usłudze Apache Ranger. Skonfigurowanie zasad RBAC umożliwia kojarzenie uprawnień z rolą w organizacji. Ta warstwa abstrakcji ułatwia zapewnienie, że osoby mają tylko uprawnienia niezbędne do wykonywania swoich obowiązków służbowych. Ranger umożliwia także inspekcję dostępu do danych pracowników i wszelkich zmian dokonanych w zasadach kontroli dostępu.
+Administrator hadoop może skonfigurować kontrolę dostępu opartą na rolach (RBAC) w celu zabezpieczenia Apache [Hive](apache-domain-joined-run-hive.md), [HBase](apache-domain-joined-run-hbase.md)i [Kafka](apache-domain-joined-run-kafka.md) za pomocą tych wtyczek w Apache Ranger. Konfigurowanie zasad RBAC umożliwia skojarzenie uprawnień z rolą w organizacji. Ta warstwa abstrakcji ułatwia zapewnienie, że ludzie mają tylko uprawnienia potrzebne do wykonywania swoich obowiązków służbowych. Ranger umożliwia również inspekcję dostępu do danych pracowników i wszelkich zmian dokonanych w zasadach kontroli dostępu.
 
-Na przykład administrator może skonfigurować środowisko [Apache Ranger](https://ranger.apache.org/) do ustawiania zasad kontroli dostępu dla usługi Hive. Ta funkcja zapewnia filtrowanie na poziomie wiersza i kolumny (Maskowanie danych) i filtruje poufne dane przed nieautoryzowanymi użytkownikami.
+Na przykład administrator może skonfigurować środowisko [Apache Ranger](https://ranger.apache.org/) do ustawiania zasad kontroli dostępu dla usługi Hive. Ta funkcja zapewnia filtrowanie na poziomie wiersza i kolumny (maskowanie danych) i filtruje poufne dane od nieautoryzowanych użytkowników.
 
 ### <a name="auditing"></a>Inspekcja
 
-Inspekcja całego dostępu do zasobów klastra i danych jest niezbędna do śledzenia nieautoryzowanego lub niezamierzonego dostępu do zasobów. Jest to ważne, aby chronić zasoby klastra usługi HDInsight przed nieautoryzowanymi użytkownikami i zabezpieczać dane.
+Inspekcja całego dostępu do zasobów klastra i danych jest niezbędna do śledzenia nieautoryzowanego lub niezamierzonego dostępu do zasobów. Jest to równie ważne, jak ochrona zasobów klastra HDInsight przed nieautoryzowanymi użytkownikami i zabezpieczanie danych.
 
-Administrator może wyświetlić i zgłosić cały dostęp do zasobów i danych klastra usługi HDInsight. Administrator może również wyświetlać i raportować wszystkie zmiany zasad kontroli dostępu utworzonych w ramach obsługiwanych przez Apache Ranger punktów końcowych.
+Administrator może wyświetlać i raportować cały dostęp do zasobów i danych klastra HDInsight. Administrator może również wyświetlać i zgłaszać wszystkie zmiany w zasadach kontroli dostępu utworzonych w punktach końcowych obsługiwanych przez Apache Ranger.
 
-Aby uzyskać dostęp do dzienników inspekcji oprogramowania Apache Ranger i Ambari oraz dzienników dostępu SSH, [włącz Azure monitor](../hdinsight-hadoop-oms-log-analytics-tutorial.md#cluster-auditing) i Wyświetl tabele, które udostępniają rekordy inspekcji.
+Aby uzyskać dostęp do dzienników inspekcji Apache Ranger i Ambari oraz dzienników dostępu ssh, [włącz usługę Azure Monitor](../hdinsight-hadoop-oms-log-analytics-tutorial.md#cluster-auditing) i wyświetl tabele, które zapewniają rekordy inspekcji.
 
 ### <a name="encryption"></a>Szyfrowanie
 
-Ochrona danych jest istotna dla spełnienia wymagań dotyczących zabezpieczeń i zgodności w organizacji. Wraz z ograniczaniem dostępu do danych przed nieautoryzowanymi pracownikami należy go zaszyfrować.
+Ochrona danych jest ważna dla spełnienia wymagań dotyczących zabezpieczeń i zgodności organizacji. Wraz z ograniczeniem dostępu do danych od nieautoryzowanych pracowników należy je zaszyfrować.
 
-Oba magazyny danych dla klastrów usługi HDInsight, Azure Blob Storage i Azure Data Lake Storage Gen1/Gen2 obsługują przezroczyste szyfrowanie po stronie serwera [dla danych](../../storage/common/storage-service-encryption.md) przechowywanych w spoczynku. Bezpieczne klastry usługi HDInsight bezproblemowo współpracują z tą możliwością szyfrowania danych po stronie serwera.
+Oba magazyny danych dla klastrów HDInsight, magazyn obiektów Blob platformy Azure i usługa Azure Data Lake Storage Gen1/Gen2 obsługują przezroczyste [szyfrowanie danych](../../storage/common/storage-service-encryption.md) po stronie serwera w stanie spoczynku. Bezpieczne klastry HDInsight bezproblemowo będą współpracować z tą funkcją szyfrowania danych po stronie serwera w spoczynku.
 
 ### <a name="compliance"></a>Zgodność
 
-Oferty zgodności z platformą Azure są oparte na różnych typach gwarancji, w tym formalnych certyfikatach, zaświadczeniu, atestacji, autoryzacji i ocenach wyprodukowanych przez niezależne przedsiębiorstwa audytorów innych firm, zmiany umowne, samooceny i dokumenty ze wskazówkami dla klientów wytwarzane przez firmę Microsoft. Informacje o zgodności usługi HDInsight można znaleźć w [Centrum zaufania firmy Microsoft](https://www.microsoft.com/trust-center) i [Omówienie zgodności Microsoft Azure](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942).
+Oferty zgodności platformy Azure są oparte na różnych rodzajach gwarancji, w tym formalnych certyfikatach, zaświadczeniach, walidacjach, zezwoleniach i ocenach sporządzanych przez niezależne zewnętrzne firmy audytorów, zmiany umowy, samooceny i dokumentów dotyczących porad dotyczących klientów opracowanych przez firmę Microsoft. Aby uzyskać informacje o zgodności usługi HDInsight, zobacz [Centrum zaufania firmy Microsoft](https://www.microsoft.com/trust-center) i [omówienie zgodności platformy Microsoft Azure](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942).
 
-## <a name="shared-responsibility-model"></a>Współużytkowany model odpowiedzialności
+## <a name="shared-responsibility-model"></a>Model wspólnej odpowiedzialności
 
-Poniższy obraz podsumowuje główne obszary zabezpieczeń systemu i dostępne dla Ciebie rozwiązania zabezpieczeń. Wyróżnia także, które obszary zabezpieczeń są odpowiedzialne za klienta i które obszary są odpowiedzialne za usługę HDInsight jako usługodawcę.
+Na poniższej ilustracji podsumowano główne obszary zabezpieczeń systemu i rozwiązania zabezpieczeń, które są dostępne w każdym z nich. Podkreśla również, które obszary bezpieczeństwa są twoim obowiązkiem jako klienta i które obszary są odpowiedzialne za HDInsight jako usługodawcę.
 
-![Udostępniony diagram obowiązków usługi HDInsight](./media/hdinsight-security-overview/hdinsight-shared-responsibility.png)
+![Diagram współodpowiedzialności hdinsight](./media/hdinsight-security-overview/hdinsight-shared-responsibility.png)
 
-Poniższa tabela zawiera linki do zasobów dla każdego typu rozwiązania zabezpieczeń.
+Poniższa tabela zawiera łącza do zasobów dla każdego typu rozwiązania zabezpieczeń.
 
-| Obszar zabezpieczeń | Dostępne rozwiązania | Osoba odpowiedzialna |
+| Obszar bezpieczeństwa | Dostępne rozwiązania | Strona odpowiedzialna |
 |---|---|---|
-| Zabezpieczenia dostępu do danych | Konfigurowanie [kontroli dostępu listy ACL](../../storage/blobs/data-lake-storage-access-control.md) dla Azure Data Lake Storage Gen1 i Gen2  | Klient |
-|  | Włącz Właściwość ["wymagany bezpieczny transfer"](../../storage/common/storage-require-secure-transfer.md) na kontach magazynu. | Klient |
-|  | Konfigurowanie zapór i sieci wirtualnych [usługi Azure Storage](../../storage/common/storage-network-security.md) | Klient |
-|  | Konfigurowanie [punktów końcowych usługi sieci wirtualnej platformy Azure](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview) dla Cosmos DB i [usługi Azure SQL DB](https://docs.microsoft.com/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview) | Klient |
-|  | Upewnij się, że [szyfrowanie TLS](../../storage/common/storage-security-tls.md) jest włączone na potrzeby przesyłania danych. | Klient |
-|  | Konfigurowanie [kluczy zarządzanych przez klienta](../../storage/common/storage-encryption-keys-portal.md) do szyfrowania za pomocą usługi Azure Storage | Klient |
-| Zabezpieczenia aplikacji i oprogramowania pośredniczącego | Integracja z usługą AAD — DS i [Konfigurowanie uwierzytelniania](apache-domain-joined-configure-using-azure-adds.md) | Klient |
-|  | Konfigurowanie zasad [autoryzacji Apache Ranger](apache-domain-joined-run-hive.md) | Klient |
-|  | Korzystanie z [dzienników Azure monitor](../hdinsight-hadoop-oms-log-analytics-tutorial.md) | Klient |
-| Zabezpieczenia systemu operacyjnego | Tworzenie klastrów z najnowszym bezpiecznym obrazem podstawowym | Klient |
-|  | Zapewnianie [stosowania poprawek systemu operacyjnego](../hdinsight-os-patching.md) w regularnych odstępach czasu | Klient |
+| Zabezpieczenia dostępu do danych | Konfigurowanie [list kontroli dostępu](../../storage/blobs/data-lake-storage-access-control.md) dla usługi Azure Data Lake Storage Gen1 i Gen2  | Klient |
+|  | Włącz właściwość ["Bezpieczne wymagane przeniesienie"](../../storage/common/storage-require-secure-transfer.md) na kontach magazynu. | Klient |
+|  | Konfigurowanie [zapór usługi Azure Storage](../../storage/common/storage-network-security.md) i sieci wirtualnych | Klient |
+|  | Konfigurowanie [punktów końcowych usługi sieci wirtualnej platformy Azure](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview) dla usługi Cosmos DB i usługi Azure SQL [DB](https://docs.microsoft.com/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview) | Klient |
+|  | Upewnij się, że [szyfrowanie TLS](../../storage/common/storage-security-tls.md) jest włączone dla przesyłanych danych. | Klient |
+|  | Konfigurowanie [kluczy zarządzanych przez klienta](../../storage/common/storage-encryption-keys-portal.md) do szyfrowania usługi Azure Storage | Klient |
+| Zabezpieczenia aplikacji i oprogramowania pośredniczącego | Integracja z usługą AAD-DS i [konfigurowanie uwierzytelniania](apache-domain-joined-configure-using-azure-adds.md) | Klient |
+|  | Konfigurowanie zasad [autoryzacji Łowców Apache](apache-domain-joined-run-hive.md) | Klient |
+|  | Korzystanie z [dzienników usługi Azure Monitor](../hdinsight-hadoop-oms-log-analytics-tutorial.md) | Klient |
+| Bezpieczeństwo systemu operacyjnego | Tworzenie klastrów z najnowszym bezpiecznym obrazem podstawowym | Klient |
+|  | Zapewnianie [łatanie systemu operacyjnego](../hdinsight-os-patching.md) w regularnych odstępach czasu | Klient |
 | Bezpieczeństwo sieci | Konfigurowanie [sieci wirtualnej](../hdinsight-plan-virtual-network-deployment.md) |
-|  | Skonfiguruj [reguły sieciowej grupy zabezpieczeń (sieciowej grupy zabezpieczeń) dla ruchu przychodzącego](../hdinsight-plan-virtual-network-deployment.md#networktraffic) | Klient |
+|  | Konfigurowanie [reguł grupy zabezpieczeń sieci przychodzącej](../hdinsight-plan-virtual-network-deployment.md#networktraffic) | Klient |
 |  | Konfigurowanie [ograniczenia ruchu wychodzącego](../hdinsight-restrict-outbound-traffic.md) za pomocą zapory | Klient |
-| Zwirtualizowana infrastruktura | Nie dotyczy | HDInsight (dostawca usług w chmurze) |
-| Zabezpieczenia infrastruktury fizycznej | Nie dotyczy | HDInsight (dostawca usług w chmurze) |
+| Zwirtualizowanej infrastruktury | Nie dotyczy | HDInsight (dostawca chmury) |
+| Bezpieczeństwo infrastruktury fizycznej | Nie dotyczy | HDInsight (dostawca chmury) |
 
 ## <a name="next-steps"></a>Następne kroki
 
-* [Planowanie klastrów usługi HDInsight przy użyciu ESP](apache-domain-joined-architecture.md)
-* [Konfigurowanie klastrów usługi HDInsight przy użyciu ESP](apache-domain-joined-configure.md)
-* [Zarządzanie klastrami usługi HDInsight przy użyciu protokołu ESP](apache-domain-joined-manage.md)
+* [Planowanie klastrów HDInsight za pomocą esp](apache-domain-joined-architecture.md)
+* [Konfigurowanie klastrów usługi HDInsight za pomocą usługi ESP](apache-domain-joined-configure.md)
+* [Zarządzanie klastrami HDInsight za pomocą esp](apache-domain-joined-manage.md)

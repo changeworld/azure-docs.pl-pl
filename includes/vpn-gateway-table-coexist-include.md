@@ -9,13 +9,13 @@ ms.date: 04/26/2019
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: a10e4fc96f475fe26ca27ddec2e805086d661a50
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67183112"
 ---
-| **Model/metoda wdrażania** | **Azure Portal** | **Program PowerShell** | 
+| **Model/metoda wdrażania** | **Portal Azure** | **Powershell** | 
 | --- | --- | --- |
 | Resource Manager | **Obsługiwane** | [Samouczek](../articles/expressroute/expressroute-howto-coexist-resource-manager.md)|
-| Wdrożenie klasyczne | **Nieobsługiwane** | [Samouczek](../articles/expressroute/expressroute-howto-coexist-classic.md) |
+| Wdrożenie klasyczne | **Nie obsługiwane** | [Samouczek](../articles/expressroute/expressroute-howto-coexist-classic.md) |

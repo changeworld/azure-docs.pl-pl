@@ -6,10 +6,10 @@ ms.topic: quickstart
 ms.date: 09/19/2017
 ms.custom: mvc
 ms.openlocfilehash: 73f8d23dcd53b4cbbb3fbd902c789e868c2b021b
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "75769187"
 ---
 # <a name="add-messages-to-an-azure-storage-queue-using-functions"></a>Dodawanie komunikatów do kolejki usługi Azure Storage przy użyciu funkcji
@@ -20,13 +20,13 @@ W usłudze Azure Functions powiązania danych wejściowych i wyjściowych zapewn
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby ukończyć ten przewodnik Szybki Start:
+Aby ukończyć ten przewodnik Szybki start:
 
 * Postępuj zgodnie z instrukcjami znajdującymi się w kroku [Tworzenie pierwszej funkcji w witrynie Azure Portal](functions-create-first-azure-function.md) i nie wykonuj kroku **Oczyszczanie zasobów**. W tym przewodniku Szybki start tworzona jest aplikacja funkcji i funkcja używana w tym miejscu.
 
 * Zainstaluj [Eksplorator usługi Microsoft Azure Storage](https://storageexplorer.com/). To narzędzie będzie służyć do sprawdzania komunikatów w kolejce tworzonych za pomocą powiązania danych wyjściowych.
 
-## <a name="add-binding"></a>Dodawanie powiązania danych wyjściowych
+## <a name="add-an-output-binding"></a><a name="add-binding"></a>Dodawanie powiązania danych wyjściowych
 
 W tej sekcji użyjesz interfejsu użytkownika portalu w celu dodania powiązania danych wyjściowych usługi Queue Storage do wcześniej utworzonej funkcji. To powiązanie umożliwi utworzenie komunikatu w kolejce za pomocą minimalnej ilości kodu. Nie będzie konieczne pisanie kodu na potrzeby zadań, takich jak otwieranie połączenia z magazynem, tworzenie kolejki lub pobieranie odwołania do kolejki. Te zadania zostaną wykonane za pomocą środowiska uruchomieniowego usługi Azure Functions i powiązania danych wyjściowych kolejki.
 
@@ -34,9 +34,9 @@ W tej sekcji użyjesz interfejsu użytkownika portalu w celu dodania powiązania
 
 1. Wybierz funkcję utworzoną we wcześniejszym przewodniku Szybki start.
 
-1. Wybierz pozycję **zintegruj > nowe dane wyjściowe > Azure queue storage**.
+1. Wybierz **pozycję Zintegruj > nowe dane wyjściowe > usługi Azure Queue Storage**.
 
-1. Kliknij pozycję **Wybierz**.
+1. Kliknij **pozycję Wybierz**.
 
     ![Dodaj powiązanie danych wyjściowych kolejki magazynu do funkcji w witrynie Azure Portal.](./media/functions-integrate-storage-queue-output-binding/function-add-queue-storage-output-binding.png)
 
@@ -66,7 +66,7 @@ W tej sekcji dodasz kod służący do zapisywania komunikatu do kolejki wyjścio
 
 1. Zaktualizuj kod funkcji w zależności od języka funkcji:
 
-    # <a name="ctabcsharp"></a>[C\#](#tab/csharp)
+    # <a name="c"></a>[C\#](#tab/csharp)
 
     Dodaj parametr **outputQueueItem** do sygnatury metody, jak pokazano w poniższym przykładzie.
 
@@ -84,7 +84,7 @@ W tej sekcji dodasz kod służący do zapisywania komunikatu do kolejki wyjścio
     outputQueueItem.Add("Name passed to the function: " + name);
     ```
 
-    # <a name="javascripttabnodejs"></a>[JavaScript](#tab/nodejs)
+    # <a name="javascript"></a>[Javascript](#tab/nodejs)
 
     Dodaj kod używający powiązania danych wyjściowych w ramach obiektu `context.bindings` w celu utworzenia komunikatu w kolejce. Dodaj ten kod przed instrukcją `context.done`.
 

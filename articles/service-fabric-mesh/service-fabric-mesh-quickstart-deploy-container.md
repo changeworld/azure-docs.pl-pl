@@ -1,15 +1,15 @@
 ---
-title: Szybki Start — wdrażanie Hello world na platformie Azure Service Fabric siatkę
+title: Szybki start — wdrażanie hello world w sieci szkieletowej usług Azure
 description: W tym przewodniku Szybki start przedstawiono sposób wdrażania aplikacji usługi Service Fabric Mesh w usłudze Azure Service Fabric Mesh.
 author: dkkapur
 ms.author: dekapur
 ms.date: 11/27/2018
 ms.topic: quickstart
 ms.openlocfilehash: ce897b6e0e9d6a0b9b672907a64f4683f907b677
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "75458962"
 ---
 # <a name="quickstart-deploy-hello-world-to-service-fabric-mesh"></a>Szybki start: wdrażanie aplikacji Hello World w usłudze Service Fabric Mesh
@@ -25,7 +25,7 @@ Jeśli nie masz jeszcze konta platformy Azure, przed rozpoczęciem utwórz [bezp
 ## <a name="set-up-service-fabric-mesh-cli"></a>Konfigurowanie interfejsu wiersza polecenia usługi Service Fabric Mesh 
 Podczas pracy z tym przewodnikiem Szybki start możesz użyć usługi Azure Cloud Shell lub lokalnej instalacji interfejsu wiersza polecenia platformy Azure. Zainstaluj moduł rozszerzenia interfejsu wiersza polecenia usługi Azure Service Fabric Mesh, korzystając z tych [instrukcji](service-fabric-mesh-howto-setup-cli.md).
 
-## <a name="sign-in-to-azure"></a>Zaloguj się w usłudze Azure
+## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
 Zaloguj się do platformy Azure i wybierz swoją subskrypcję.
 
 ```azurecli-interactive
@@ -93,7 +93,7 @@ az mesh code-package-log get --resource-group myResourceGroup --application-name
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Gdy wszystko będzie gotowe do usunięcia aplikacji, uruchom polecenie [AZ Group Delete][az-group-delete] , aby usunąć grupę zasobów oraz zasoby aplikacji i sieci, które zawiera.
+Gdy wszystko będzie gotowe do usunięcia aplikacji, uruchom polecenie [az group delete][az-group-delete], aby usunąć grupę zasobów oraz zawarte w niej zasoby aplikacji i sieci.
 
 ```azurecli-interactive
 az group delete --name myResourceGroup

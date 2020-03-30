@@ -1,20 +1,20 @@
 ---
-title: Szybki Start — Tworzenie obiektu BLOB przy użyciu Azure Portal
+title: Szybki start — tworzenie obiektu blob za pomocą witryny Azure portal
 titleSuffix: Azure Storage
 description: W tym przewodniku Szybki start witryna Azure Portal jest używana w ramach magazynu obiektów (blob). Następnie przy użyciu witryny Azure Portal przekażesz obiekt blob do usługi Azure Storage, pobierzesz obiekt blob i wyświetlisz obiekty blob w kontenerze.
 services: storage
 author: tamram
-ms.custom: mvc
 ms.service: storage
+ms.subservice: blobs
 ms.topic: quickstart
 ms.date: 12/04/2019
 ms.author: tamram
-ms.openlocfilehash: 1e5ccc9d427755ea4274e836e81e3e324fffa39d
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 3ceeb878121782ea3664e1ed62d5d632b606f08e
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79241052"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80061391"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-with-the-azure-portal"></a>Szybki start: przekazywanie, pobieranie i wyświetlanie listy obiektów blob za pomocą witryny Azure Portal
 
@@ -29,10 +29,10 @@ Dzięki temu przewodnikowi Szybki start dowiesz się, w jaki sposób za pomocą 
 Aby utworzyć kontener w witrynie Azure Portal, wykonaj następujące kroki:
 
 1. W witrynie Azure Portal przejdź do swojego nowego konta magazynu.
-2. W menu po lewej stronie konta magazynu przewiń do sekcji **BLOB Service** , a następnie wybierz pozycję **Containers (kontenery**).
+2. W menu po lewej stronie konta magazynu przewiń do sekcji **usługi obiektów Blob,** a następnie wybierz pozycję **Kontenery**.
 3. Wybierz przycisk **+ Kontener**.
 4. Wpisz nazwę nowego kontenera. Nazwa kontenera musi być zapisana małymi literami, zaczynać się literą lub cyfrą i może zawierać tylko litery, cyfry i znak kreski (-). Aby uzyskać dodatkowe informacje o regułach nazewnictwa kontenerów i obiektów blob, zobacz [Nazewnictwo i odwołania do kontenerów, obiektów blob i metadanych](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata).
-5. Ustaw poziom dostępu publicznego do kontenera. Domyślny poziom to **Prywatny (bez dostępu anonimowego)** .
+5. Ustaw poziom dostępu publicznego do kontenera. Domyślny poziom to **Prywatny (bez dostępu anonimowego)**.
 6. Wybierz przycisk **OK**, aby utworzyć kontener.
 
     ![Zrzut ekranu przedstawiający sposób tworzenia kontenera w witrynie Azure Portal](media/storage-quickstart-blobs-portal/create-container.png)
@@ -45,13 +45,13 @@ Aby przekazać blokowy obiekt blob do nowego kontenera w witrynie Azure Portal, 
 
 1. W witrynie Azure Portal przejdź do kontenera utworzonego w poprzedniej sekcji.
 2. Wybierz kontener, aby wyświetlić listę obiektów blob, które zawiera. Ponieważ ten kontener jest nowy, nie będzie jeszcze zawierał żadnych obiektów blob.
-3. Wybierz przycisk **Przekaż** , aby otworzyć blok przekazywanie
-4. Przeglądaj lokalny system plików, aby znaleźć plik do przekazania jako blokowy obiekt BLOB
+3. Wybierz przycisk **Przekaż,** aby otworzyć ostrze przesyłania
+4. Przeglądanie lokalnego systemu plików w celu znalezienia pliku do przesłania jako blokowego obiektu blob
      
     ![Zrzut ekranu pokazujący sposób przekazywania obiektu blob z dysku lokalnego](media/storage-quickstart-blobs-portal/upload-blob.png)
 
-5. Opcjonalnie rozwiń sekcję Zaawansowane, aby zdefiniować inne ustawienia, takie jak typ uwierzytelniania, warstwa dostępu lub ścieżka folderu wirtualnego.
-6. Wybierz przycisk **Przekaż** , aby zatwierdzić przekazywanie
+5. Opcjonalnie rozwiń sekcję zaawansowaną, aby zdefiniować inne ustawienia, takie jak typ uwierzytelniania, warstwa dostępu lub ścieżka folderu wirtualnego.
+6. Wybierz przycisk **Przekaż,** aby zatwierdzić przekazywanie
 7. Przekaż w ten sposób dowolną liczbę obiektów blob. Nowe obiekty blob zostaną wyświetlone w kontenerze.
 
 ## <a name="download-a-block-blob"></a>Pobieranie blokowego obiektu blob
@@ -69,7 +69,7 @@ Aby usunąć kontener:
 
 1. W witrynie Azure Portal przejdź do listy kontenerów w ramach swojego konta magazynu.
 2. Wybierz kontener do usunięcia.
-3. Wybierz przycisk **Więcej** ( **...** ), a następnie wybierz pozycję **Usuń**.
+3. Wybierz przycisk **Więcej** (**... **), a następnie wybierz pozycję **Usuń**.
 4. Potwierdź, że chcesz usunąć kontener.
 
 ## <a name="next-steps"></a>Następne kroki

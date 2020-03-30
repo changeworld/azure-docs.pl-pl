@@ -1,28 +1,28 @@
 ---
-title: Funkcje szablonu — wartość liczbowa
-description: Opisuje funkcje, które mają być używane w szablonie Azure Resource Manager do pracy z liczbami.
+title: Funkcje szablonu - numeryczne
+description: W tym artykule opisano funkcje używane w szablonie usługi Azure Resource Manager do pracy z liczbami.
 ms.topic: conceptual
 ms.date: 11/08/2017
-ms.openlocfilehash: 91aa637701acb278e81b7eb86aa3ae2db15acc28
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 2ca5c539036d002b83b8141132a0ebf2530dc6af
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79273659"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80156348"
 ---
-# <a name="numeric-functions-for-azure-resource-manager-templates"></a>Funkcje liczbowe dla Azure Resource Manager szablonów
+# <a name="numeric-functions-for-arm-templates"></a>Funkcje numeryczne dla szablonów ARM
 
-Menedżer zasobów udostępnia następujące funkcje do pracy z liczbami całkowitymi:
+Menedżer zasobów udostępnia następujące funkcje do pracy z liczbami całkowitymi w szablonie usługi Azure Resource Manager (ARM):
 
-* [dodana](#add)
-* [Funkcji copyindex](#copyindex)
-* [służąc](#div)
+* [add](#add)
+* [copyIndex (copyIndex)](#copyindex)
+* [div](#div)
 * [float](#float)
-* [ZAOKR](#int)
-* [Maksymalny](#max)
-* [długości](#min)
-* [Funkcja](#mod)
-* [mul](#mul)
+* [int](#int)
+* [Max](#max)
+* [Min](#min)
+* [Mod](#mod)
+* [Mul](#mul)
 * [Sub](#sub)
 
 <a id="add" />
@@ -32,18 +32,18 @@ Menedżer zasobów udostępnia następujące funkcje do pracy z liczbami całkow
 ## <a name="add"></a>add
 `add(operand1, operand2)`
 
-Zwraca sumę dwóch podanych liczb całkowitych.
+Zwraca sumę dwóch podanych liczby całkowitej.
 
 ### <a name="parameters"></a>Parametry
 
 | Parametr | Wymagany | Typ | Opis |
-|:--- |:--- |:--- |:--- | 
-|operand1 |Yes |int |Pierwsza liczba do dodania. |
-|Operand2 |Yes |int |Druga liczba do dodania. |
+|:--- |:--- |:--- |:--- |
+|operand1 |Tak |int |Pierwszy numer do dodania. |
+|operand2 |Tak |int |Drugi numer do dodania. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
-Liczba całkowita, która zawiera sumę parametrów.
+Liczba całkowita zawierająca sumę parametrów.
 
 ### <a name="example"></a>Przykład
 
@@ -80,61 +80,61 @@ Poniższy [przykładowy szablon](https://github.com/Azure/azure-docs-json-sample
 }
 ```
 
-Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi będą:
+Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi to:
 
-| Name (Nazwa) | Typ | Wartość |
+| Nazwa | Typ | Wartość |
 | ---- | ---- | ----- |
-| AddResult | Int | 8 |
+| addResult (wynik) | int | 8 |
 
-Aby wdrożyć ten przykładowy szablon przy użyciu wiersza polecenia platformy Azure, należy użyć:
+Aby wdrożyć ten przykładowy szablon za pomocą interfejsu wiersza polecenia platformy Azure, należy użyć:
 
 ```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/add.json
+az deployment group create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/add.json
 ```
 
-Aby wdrożyć ten przykładowy szablon przy użyciu programu PowerShell, należy użyć:
+Aby wdrożyć ten przykładowy szablon za pomocą programu PowerShell, należy użyć:
 
 ```powershell
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/add.json 
+New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/add.json
 ```
 
 <a id="copyindex" />
 
-## <a name="copyindex"></a>Funkcji copyindex
+## <a name="copyindex"></a>copyIndex (copyIndex)
 `copyIndex(loopName, offset)`
 
-Zwraca indeks pętli iteracji. 
+Zwraca indeks pętli iteracji.
 
 ### <a name="parameters"></a>Parametry
 
 | Parametr | Wymagany | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| loopName | Nie | ciąg | Nazwa pętli do pobrania iteracji. |
-| offset |Nie |int |Liczba, która ma zostać dodana do wartości iteracji opartej na zero. |
+| nazwa pętli | Nie | ciąg | Nazwa pętli do uzyskania iteracji. |
+| przesunięcie |Nie |int |Liczba dodania do wartości iteracji opartej na wartości zerowej. |
 
 ### <a name="remarks"></a>Uwagi
 
-Ta funkcja jest zawsze używana z obiektem **copy** . Jeśli nie podano wartości dla **przesunięcia**, zwracana jest bieżąca wartość iteracji. Wartość iteracji zaczyna się od zera. Pętli iteracji można używać podczas definiowania zasobów lub zmiennych.
+Ta funkcja jest zawsze używana z obiektem **kopiowania.** Jeśli nie podano żadnej wartości dla **przesunięcia,** zwracana jest bieżąca wartość iteracji. Wartość iteracji zaczyna się od zera. Podczas definiowania zasobów lub zmiennych można użyć pętli iteracji.
 
-Właściwość **loopname** pozwala określić, czy funkcji copyindex odwołuje się do iteracji zasobu, czy do iteracji właściwości. Jeśli nie podano wartości dla **loopname**, używana jest bieżąca iteracja typu zasobu. Podaj wartość dla parametru **loopname** podczas iterowania właściwości. 
- 
-Pełny opis sposobu korzystania z usługi **funkcji copyindex**można znaleźć w temacie [Tworzenie wielu wystąpień zasobów w Azure Resource Manager](copy-resources.md).
+Właściwość **loopName** umożliwia określenie, czy copyIndex odnosi się do iteracji zasobu lub iteracji właściwości. Jeśli dla **loopName**nie jest podana żadna wartość, używana jest bieżąca iteracja typu zasobu. Podaj wartość **loopName** podczas iteracji we właściwości.
 
-Aby zapoznać się z przykładem użycia **funkcji copyindex** podczas definiowania zmiennej, zobacz [zmienne](template-syntax.md#variables).
+Aby uzyskać pełny opis sposobu korzystania z **copyIndex,** zobacz [Tworzenie wielu wystąpień zasobów w usłudze Azure Resource Manager](copy-resources.md).
+
+Na przykład użycia **copyIndex** podczas definiowania zmiennej zobacz [Zmienne](template-syntax.md#variables).
 
 ### <a name="example"></a>Przykład
 
-Poniższy przykład przedstawia pętlę kopiowania i wartość indeksu zawartą w nazwie. 
+W poniższym przykładzie przedstawiono pętlę kopiowania i wartość indeksu zawartą w nazwie.
 
 ```json
-"resources": [ 
-  { 
-    "name": "[concat('examplecopy-', copyIndex())]", 
-    "type": "Microsoft.Web/sites", 
-    "copy": { 
-      "name": "websitescopy", 
-      "count": "[parameters('count')]" 
-    }, 
+"resources": [
+  {
+    "name": "[concat('examplecopy-', copyIndex())]",
+    "type": "Microsoft.Web/sites",
+    "copy": {
+      "name": "websitescopy",
+      "count": "[parameters('count')]"
+    },
     ...
   }
 ]
@@ -149,14 +149,14 @@ Liczba całkowita reprezentująca bieżący indeks iteracji.
 ## <a name="div"></a>div
 `div(operand1, operand2)`
 
-Zwraca podział liczby całkowitej z dwóch podanych liczb całkowitych.
+Zwraca podział liczby całkowitej dwóch podanych liczby całkowitej.
 
 ### <a name="parameters"></a>Parametry
 
 | Parametr | Wymagany | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| operand1 |Yes |int |Podzielona liczba. |
-| Operand2 |Yes |int |Liczba, która jest używana do dzielenia. Nie może mieć wartości 0. |
+| operand1 |Tak |int |Liczba podzielona. |
+| operand2 |Tak |int |Liczba używana do dzielenia. Nie może być 0. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
@@ -197,22 +197,22 @@ Poniższy [przykładowy szablon](https://github.com/Azure/azure-docs-json-sample
 }
 ```
 
-Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi będą:
+Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi to:
 
-| Name (Nazwa) | Typ | Wartość |
+| Nazwa | Typ | Wartość |
 | ---- | ---- | ----- |
-| divResult | Int | 2 |
+| divResult | int | 2 |
 
-Aby wdrożyć ten przykładowy szablon przy użyciu wiersza polecenia platformy Azure, należy użyć:
+Aby wdrożyć ten przykładowy szablon za pomocą interfejsu wiersza polecenia platformy Azure, należy użyć:
 
 ```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/div.json
+az deployment group create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/div.json
 ```
 
-Aby wdrożyć ten przykładowy szablon przy użyciu programu PowerShell, należy użyć:
+Aby wdrożyć ten przykładowy szablon za pomocą programu PowerShell, należy użyć:
 
 ```powershell
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/div.json 
+New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/div.json
 ```
 
 <a id="float" />
@@ -220,20 +220,20 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 ## <a name="float"></a>float
 `float(arg1)`
 
-Konwertuje wartość na liczbę zmiennoprzecinkową. Ta funkcja jest używana tylko podczas przekazywania parametrów niestandardowych do aplikacji, na przykład aplikacji logiki.
+Konwertuje wartość na liczbę zmiennoprzecinową. Tej funkcji należy używać tylko podczas przekazywania parametrów niestandardowych do aplikacji, takich jak aplikacja logiki.
 
 ### <a name="parameters"></a>Parametry
 
 | Parametr | Wymagany | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| arg1 |Yes |ciąg lub int |Wartość do przekonwertowania na liczbę zmiennoprzecinkową. |
+| argument1 |Tak |ciąg lub int |Wartość do konwersji na liczbę zmiennoprzecinową. |
 
 ### <a name="return-value"></a>Wartość zwracana
-Zmiennoprzecinkowa numer.
+Liczba zmiennoprzecinowa.
 
 ### <a name="example"></a>Przykład
 
-Poniższy przykład pokazuje, jak używać metody zmiennoprzecinkowej do przekazywania parametrów do aplikacji logiki:
+W poniższym przykładzie pokazano, jak używać float do przekazywania parametrów do aplikacji logiki:
 
 ```json
 {
@@ -254,28 +254,28 @@ Poniższy przykład pokazuje, jak używać metody zmiennoprzecinkowej do przekaz
 ## <a name="int"></a>int
 `int(valueToConvert)`
 
-Konwertuje określoną wartość na liczbę całkowitą.
+Konwertuje określoną wartość na liczę całkowitą.
 
 ### <a name="parameters"></a>Parametry
 
 | Parametr | Wymagany | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| valueToConvert |Yes |ciąg lub int |Wartość do przekonwertowania na liczbę całkowitą. |
+| wartośćToKonwert |Tak |ciąg lub int |Wartość do konwersji na całkowitą. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
-Liczba całkowita przekonwertowanej wartości.
+Liczba całkowita przekonwertowanych wartości.
 
 ### <a name="example"></a>Przykład
 
-Poniższy [przykładowy szablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/int.json) konwertuje wartość parametru dostarczoną przez użytkownika na liczbę całkowitą.
+Poniższy [przykładowy szablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/int.json) konwertuje wartość parametru dostarczoną przez użytkownika na wartość całkowitą.
 
 ```json
 {
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
-        "stringToConvert": { 
+        "stringToConvert": {
             "type": "string",
             "defaultValue": "4"
         }
@@ -291,19 +291,19 @@ Poniższy [przykładowy szablon](https://github.com/Azure/azure-docs-json-sample
 }
 ```
 
-Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi będą:
+Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi to:
 
-| Name (Nazwa) | Typ | Wartość |
+| Nazwa | Typ | Wartość |
 | ---- | ---- | ----- |
-| intResult | Int | 4 |
+| intResult | int | 4 |
 
-Aby wdrożyć ten przykładowy szablon przy użyciu wiersza polecenia platformy Azure, należy użyć:
+Aby wdrożyć ten przykładowy szablon za pomocą interfejsu wiersza polecenia platformy Azure, należy użyć:
 
 ```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/int.json
+az deployment group create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/int.json
 ```
 
-Aby wdrożyć ten przykładowy szablon przy użyciu programu PowerShell, należy użyć:
+Aby wdrożyć ten przykładowy szablon za pomocą programu PowerShell, należy użyć:
 
 ```powershell
 New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/int.json
@@ -311,24 +311,24 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 <a id="max" />
 
-## <a name="max"></a>maks.
+## <a name="max"></a>max
 `max (arg1)`
 
-Zwraca maksymalną wartość z tablicy liczb całkowitych lub rozdzielaną przecinkami listę liczb całkowitych.
+Zwraca maksymalną wartość z tablicy liczby całkowitych lub listy liczby całkowitych oddzielonych przecinkami.
 
 ### <a name="parameters"></a>Parametry
 
 | Parametr | Wymagany | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| arg1 |Yes |tablica liczb całkowitych lub rozdzielana przecinkami lista liczb całkowitych |Kolekcja, w której ma zostać uzyskana wartość maksymalna. |
+| argument1 |Tak |tablica liczby całkowitej lub oddzielona przecinkami lista liczby całkowitej |Kolekcja, aby uzyskać maksymalną wartość. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
-Liczba całkowita reprezentująca wartość maksymalną z kolekcji.
+Liczba całkowita reprezentująca maksymalną wartość z kolekcji.
 
 ### <a name="example"></a>Przykład
 
-Poniższy [przykładowy szablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/max.json) pokazuje, jak używać Max z tablicą i listą liczb całkowitych:
+Poniższy [przykładowy szablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/max.json) pokazuje, jak używać max z tablicą i listą liczby całkowitej:
 
 ```json
 {
@@ -354,20 +354,20 @@ Poniższy [przykładowy szablon](https://github.com/Azure/azure-docs-json-sample
 }
 ```
 
-Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi będą:
+Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi to:
 
-| Name (Nazwa) | Typ | Wartość |
+| Nazwa | Typ | Wartość |
 | ---- | ---- | ----- |
-| arrayOutput | Int | 5 |
-| intOutput | Int | 5 |
+| arrayOutput | int | 5 |
+| intOutput (Nieuprzejmych) | int | 5 |
 
-Aby wdrożyć ten przykładowy szablon przy użyciu wiersza polecenia platformy Azure, należy użyć:
+Aby wdrożyć ten przykładowy szablon za pomocą interfejsu wiersza polecenia platformy Azure, należy użyć:
 
 ```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/max.json
+az deployment group create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/max.json
 ```
 
-Aby wdrożyć ten przykładowy szablon przy użyciu programu PowerShell, należy użyć:
+Aby wdrożyć ten przykładowy szablon za pomocą programu PowerShell, należy użyć:
 
 ```powershell
 New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/max.json
@@ -375,24 +375,24 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 <a id="min" />
 
-## <a name="min"></a>min.
+## <a name="min"></a>min
 `min (arg1)`
 
-Zwraca minimalną wartość z tablicy liczb całkowitych lub rozdzielaną przecinkami listę liczb całkowitych.
+Zwraca wartość minimalną z tablicy liczby całkowitych lub listy liczby całkowitych oddzielonych przecinkami.
 
 ### <a name="parameters"></a>Parametry
 
 | Parametr | Wymagany | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| arg1 |Yes |tablica liczb całkowitych lub rozdzielana przecinkami lista liczb całkowitych |Kolekcja, w której ma zostać uzyskana wartość minimalna. |
+| argument1 |Tak |tablica liczby całkowitej lub oddzielona przecinkami lista liczby całkowitej |Kolekcja, aby uzyskać minimalną wartość. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
-Liczba całkowita reprezentująca wartość minimalną z kolekcji.
+Liczba całkowita reprezentująca minimalną wartość z kolekcji.
 
 ### <a name="example"></a>Przykład
 
-Poniższy [przykładowy szablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/min.json) pokazuje, jak używać min z tablicą i listą liczb całkowitych:
+Poniższy [przykładowy szablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/min.json) pokazuje, jak używać min z tablicą i listą liczby całkowitej:
 
 ```json
 {
@@ -418,20 +418,20 @@ Poniższy [przykładowy szablon](https://github.com/Azure/azure-docs-json-sample
 }
 ```
 
-Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi będą:
+Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi to:
 
-| Name (Nazwa) | Typ | Wartość |
+| Nazwa | Typ | Wartość |
 | ---- | ---- | ----- |
-| arrayOutput | Int | 0 |
-| intOutput | Int | 0 |
+| arrayOutput | int | 0 |
+| intOutput (Nieuprzejmych) | int | 0 |
 
-Aby wdrożyć ten przykładowy szablon przy użyciu wiersza polecenia platformy Azure, należy użyć:
+Aby wdrożyć ten przykładowy szablon za pomocą interfejsu wiersza polecenia platformy Azure, należy użyć:
 
 ```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/min.json
+az deployment group create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/min.json
 ```
 
-Aby wdrożyć ten przykładowy szablon przy użyciu programu PowerShell, należy użyć:
+Aby wdrożyć ten przykładowy szablon za pomocą programu PowerShell, należy użyć:
 
 ```powershell
 New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/min.json
@@ -439,24 +439,24 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 <a id="mod" />
 
-## <a name="mod"></a>Funkcja
+## <a name="mod"></a>Mod
 `mod(operand1, operand2)`
 
-Zwraca resztę z dzielenia liczb całkowitych przy użyciu dwóch podanych liczb całkowitych.
+Zwraca pozostałą część podziału liczby całkowitej przy użyciu dwóch podanych liczby całkowitej.
 
 ### <a name="parameters"></a>Parametry
 
 | Parametr | Wymagany | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| operand1 |Yes |int |Podzielona liczba. |
-| Operand2 |Yes |int |Liczba, która jest używana do dzielenia, nie może wynosić 0. |
+| operand1 |Tak |int |Liczba podzielona. |
+| operand2 |Tak |int |Liczba, która jest używana do dzielenia, Nie może być 0. |
 
 ### <a name="return-value"></a>Wartość zwracana
-Liczba całkowita reprezentująca resztę.
+Liczba całkowita reprezentująca pozostałą część.
 
 ### <a name="example"></a>Przykład
 
-Poniższy [przykładowy szablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/mod.json) Zwraca resztę z dzielenia jednego parametru przez inny parametr.
+Poniższy [przykładowy szablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/mod.json) zwraca pozostałą część dzielenia jednego parametru przez inny parametr.
 
 ```json
 {
@@ -489,19 +489,19 @@ Poniższy [przykładowy szablon](https://github.com/Azure/azure-docs-json-sample
 }
 ```
 
-Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi będą:
+Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi to:
 
-| Name (Nazwa) | Typ | Wartość |
+| Nazwa | Typ | Wartość |
 | ---- | ---- | ----- |
-| modResult | Int | 1 |
+| modResult ( modResult ) | int | 1 |
 
-Aby wdrożyć ten przykładowy szablon przy użyciu wiersza polecenia platformy Azure, należy użyć:
+Aby wdrożyć ten przykładowy szablon za pomocą interfejsu wiersza polecenia platformy Azure, należy użyć:
 
 ```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/mod.json
+az deployment group create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/mod.json
 ```
 
-Aby wdrożyć ten przykładowy szablon przy użyciu programu PowerShell, należy użyć:
+Aby wdrożyć ten przykładowy szablon za pomocą programu PowerShell, należy użyć:
 
 ```powershell
 New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/mod.json
@@ -509,21 +509,21 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 <a id="mul" />
 
-## <a name="mul"></a>mul
+## <a name="mul"></a>Mul
 `mul(operand1, operand2)`
 
-Zwraca iloczyn dwóch podanych liczb całkowitych.
+Zwraca mnożenie dwóch podanych liczby całkowitej.
 
 ### <a name="parameters"></a>Parametry
 
 | Parametr | Wymagany | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| operand1 |Yes |int |Pierwsza liczba do pomnożenia. |
-| Operand2 |Yes |int |Druga liczba do pomnożenia. |
+| operand1 |Tak |int |Pierwsza liczba do pomnożenia. |
+| operand2 |Tak |int |Druga liczba do pomnożenia. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
-Liczba całkowita reprezentująca iloczyn.
+Liczba całkowita reprezentująca mnożenie.
 
 ### <a name="example"></a>Przykład
 
@@ -560,19 +560,19 @@ Poniższy [przykładowy szablon](https://github.com/Azure/azure-docs-json-sample
 }
 ```
 
-Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi będą:
+Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi to:
 
-| Name (Nazwa) | Typ | Wartość |
+| Nazwa | Typ | Wartość |
 | ---- | ---- | ----- |
-| mulResult | Int | 15 |
+| mulResult (wynik) | int | 15 |
 
-Aby wdrożyć ten przykładowy szablon przy użyciu wiersza polecenia platformy Azure, należy użyć:
+Aby wdrożyć ten przykładowy szablon za pomocą interfejsu wiersza polecenia platformy Azure, należy użyć:
 
 ```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/mul.json
+az deployment group create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/mul.json
 ```
 
-Aby wdrożyć ten przykładowy szablon przy użyciu programu PowerShell, należy użyć:
+Aby wdrożyć ten przykładowy szablon za pomocą programu PowerShell, należy użyć:
 
 ```powershell
 New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/mul.json
@@ -580,24 +580,24 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 <a id="sub" />
 
-## <a name="sub"></a>sub
+## <a name="sub"></a>Sub
 `sub(operand1, operand2)`
 
-Zwraca odejmowanie dwóch podanych liczb całkowitych.
+Zwraca odejmowanie dwóch podanych liczby całkowitej.
 
 ### <a name="parameters"></a>Parametry
 
 | Parametr | Wymagany | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| operand1 |Yes |int |Liczba odjęta od. |
-| Operand2 |Yes |int |Liczba, która jest odejmowana. |
+| operand1 |Tak |int |Liczba, od którą jest odejmowana. |
+| operand2 |Tak |int |Liczba, która jest odejmowana. |
 
 ### <a name="return-value"></a>Wartość zwracana
 Liczba całkowita reprezentująca odejmowanie.
 
 ### <a name="example"></a>Przykład
 
-Poniższy [przykładowy szablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/sub.json) odejmuje jeden parametr z innego parametru.
+Poniższy [przykładowy szablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/sub.json) odejmuje jeden parametr od innego parametru.
 
 ```json
 {
@@ -630,27 +630,27 @@ Poniższy [przykładowy szablon](https://github.com/Azure/azure-docs-json-sample
 }
 ```
 
-Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi będą:
+Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi to:
 
-| Name (Nazwa) | Typ | Wartość |
+| Nazwa | Typ | Wartość |
 | ---- | ---- | ----- |
-| Wynik | Int | 4 |
+| podresult | int | 4 |
 
-Aby wdrożyć ten przykładowy szablon przy użyciu wiersza polecenia platformy Azure, należy użyć:
+Aby wdrożyć ten przykładowy szablon za pomocą interfejsu wiersza polecenia platformy Azure, należy użyć:
 
 ```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/sub.json
+az deployment group create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/sub.json
 ```
 
-Aby wdrożyć ten przykładowy szablon przy użyciu programu PowerShell, należy użyć:
+Aby wdrożyć ten przykładowy szablon za pomocą programu PowerShell, należy użyć:
 
 ```powershell
 New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/sub.json
 ```
 
 ## <a name="next-steps"></a>Następne kroki
-* Opis sekcji w szablonie Azure Resource Manager można znaleźć w temacie [tworzenie Azure Resource Manager szablonów](template-syntax.md).
-* Aby scalić wiele szablonów, zobacz [Używanie połączonych szablonów z Azure Resource Manager](linked-templates.md).
-* Aby powtórzyć określoną liczbę razy podczas tworzenia typu zasobu, zobacz [Tworzenie wielu wystąpień zasobów w Azure Resource Manager](copy-resources.md).
-* Aby dowiedzieć się, jak wdrożyć utworzony szablon, zobacz [wdrażanie aplikacji przy użyciu szablonu Azure Resource Manager](deploy-powershell.md).
+* Aby uzyskać opis sekcji w szablonie usługi Azure Resource Manager, zobacz [Tworzenie szablonów usługi Azure Resource Manager](template-syntax.md).
+* Aby scalić wiele szablonów, zobacz [Używanie połączonych szablonów z usługą Azure Resource Manager](linked-templates.md).
+* Aby iterować określoną liczbę razy podczas tworzenia typu zasobu, zobacz [Tworzenie wielu wystąpień zasobów w usłudze Azure Resource Manager](copy-resources.md).
+* Aby zobaczyć, jak wdrożyć utworzony szablon, zobacz [Wdrażanie aplikacji za pomocą szablonu usługi Azure Resource Manager](deploy-powershell.md).
 

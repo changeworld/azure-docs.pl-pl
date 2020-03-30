@@ -8,10 +8,10 @@ ms.date: 09/14/2018
 ms.author: antchu
 ms.custom: include file
 ms.openlocfilehash: 0a228f6d8b4f72acd3783f27bf192fe6bd13f988
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "75392143"
 ---
 ## <a name="create-an-azure-signalr-service-instance"></a>Tworzenie wystąpienia usługi Azure SignalR Service
@@ -32,12 +32,12 @@ Twoja aplikacja nawiąże połączenie z wystąpieniem usługi SignalR na platfo
     | **Subskrypcja** | Twoja subskrypcja | Subskrypcja, w ramach której jest tworzone to nowe wystąpienie usługi SignalR Service. | 
     | **[Grupa zasobów](../../azure-resource-manager/management/overview.md)** |  myResourceGroup | Nazwa nowej grupy zasobów, w której ma zostać utworzone wystąpienie usługi SignalR Service. | 
     | **Lokalizacja** | Zachodnie stany USA | Wybierz [region](https://azure.microsoft.com/regions/) blisko siebie. |
-    | **Warstwa cenowa** | Bezpłatnie | Wypróbuj bezpłatnie usługę Azure SignalR Service. |
+    | **Warstwa cenowa** | Bezpłatna | Wypróbuj bezpłatnie usługę Azure SignalR Service. |
     | **Liczba jednostek** |  Nie dotyczy | Liczba jednostek określa liczbę połączeń, które może akceptować wystąpienie usługi SignalR Service. Można to skonfigurować tylko w warstwie Standardowa. |
-    | **Tryb usługi** |  Bez serwerów | Do użytku z interfejsem API REST Azure Functions lub. |
+    | **Tryb serwisowy** |  Praca bezserwerowa | Do użytku z usługą Azure Functions lub REST API. |
 
     ![Tworzenie usługi SignalR Service](../media/signalr-quickstart-azure-functions-javascript/signalr-quickstart-create.png)
 
 1. Wybierz pozycję **Utwórz**, aby rozpocząć wdrażanie wystąpienia usługi SignalR Service.
 
-1. Po wdrożeniu wystąpienia otwórz je w portalu i Znajdź jego stronę ustawień. Zmień ustawienie trybu usługi na *bezserwerowe* tylko wtedy, gdy korzystasz z usługi Azure Signal Service za pośrednictwem Azure Functions powiązania lub interfejsu API REST. Pozostaw je w trybie *klasycznym* lub *domyślnym* , w przeciwnym razie.
+1. Po wdrożeniu wystąpienia otwórz je w portalu i znajdź jego stronę Ustawienia. Zmień ustawienie trybu usługi na *Serverless* tylko wtedy, gdy używasz usługi Azure SignalR za pośrednictwem powiązania usługi Azure Functions lub interfejsu API REST. Pozostaw go w *klasycznym* lub *domyślnym* w inny sposób.

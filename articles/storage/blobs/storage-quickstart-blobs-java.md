@@ -1,6 +1,6 @@
 ---
-title: 'Szybki Start: Biblioteka usługi Azure Blob Storage V12 — Java'
-description: W tym przewodniku szybki start dowiesz się, jak używać biblioteki klienckiej usługi Azure Blob Storage w wersji 12 dla języka Java do tworzenia kontenera i obiektu BLOB w magazynie obiektów BLOB (Object). Następnie dowiesz się, jak pobrać obiekt blob na komputer lokalny i jak wyświetlać listę wszystkich obiektów blob w kontenerze.
+title: 'Szybki start: biblioteka magazynu obiektów Blob platformy Azure w wersji 12 — Java'
+description: W tym przewodniku Szybki start dowiesz się, jak utworzyć kontener i obiektowy magazyn za pomocą biblioteki klienta magazynu obiektów Blob platformy Azure w wersji 12 dla języka Java. Następnie dowiesz się, jak pobrać obiekt blob na komputer lokalny i jak wyświetlać listę wszystkich obiektów blob w kontenerze.
 author: mhopkins-msft
 ms.author: mhopkins
 ms.date: 01/27/2020
@@ -8,39 +8,39 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.openlocfilehash: c883653754e1f69d3b2d79b256d57a036c70b58e
-ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "78330147"
 ---
-# <a name="quickstart-manage-blobs-with-java-v12-sdk"></a>Szybki Start: Zarządzanie obiektami BLOB za pomocą zestawu SDK V12 języka Java
+# <a name="quickstart-manage-blobs-with-java-v12-sdk"></a>Szybki start: zarządzanie obiektami blob za pomocą sdk Java w wersji 12
 
-W tym przewodniku szybki start nauczysz się zarządzać obiektami BLOB przy użyciu języka Java. Obiekty blob są obiektami, które mogą przechowywać duże ilości danych tekstowych lub binarnych, w tym obrazy, dokumenty, multimedia strumieniowe i dane archiwalne. Będziesz przekazywać, pobierać i wyświetlać listy obiektów blob, a następnie tworzyć i usuwać kontenery.
+W tym przewodniku Szybki start nauczysz się zarządzać obiektami blob za pomocą języka Java. Obiekty blob to obiekty, które mogą zawierać duże ilości danych tekstowych lub binarnych, w tym obrazy, dokumenty, multimedia strumieniowe i dane archiwum. Będziesz przesyłać, pobierać i wystawiać obiekty blob, a także tworzyć i usuwać kontenery.
 
-[Dokumentacja referencyjna interfejsu API](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/index.html) |  | pakietu [ | ](https://docs.microsoft.com/azure/storage/common/storage-samples-java?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#blob-samples) [kod źródłowy biblioteki](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-blob) [(Maven)](https://mvnrepository.com/artifact/com.azure/azure-storage-blob?repo=jcenter)
+[Dokumentacja](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/index.html) | referencyjna interfejsu API[Przykłady pakietu kodu źródłowego](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-blob) | (Maven) kod[źródłowy](https://docs.microsoft.com/azure/storage/common/storage-samples-java?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#blob-samples) [(Maven)](https://mvnrepository.com/artifact/com.azure/azure-storage-blob?repo=jcenter) | 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Konto platformy Azure z aktywną subskrypcją. [Utwórz konto bezpłatnie](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
-- Konto usługi Azure Storage. [Create a storage account (Tworzenie konta magazynu)](../common/storage-account-create.md).
-- [Zestaw Java Development Kit (JDK)](/java/azure/jdk/?view=azure-java-stable) w wersji 8 lub nowszej.
+- Konto platformy Azure z aktywną subskrypcją. [Utwórz konto za darmo](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+- Konto usługi Azure Storage. [Utwórz konto magazynu](../common/storage-account-create.md).
+- [Zestaw Java Development Kit (JDK)](/java/azure/jdk/?view=azure-java-stable) w wersji 8 lub wyższej.
 - [Apache Maven](https://maven.apache.org/download.cgi).
 
 > [!NOTE]
-> Aby rozpocząć pracę z poprzednią wersją zestawu SDK, zobacz [Szybki Start: Zarządzanie obiektami BLOB za pomocą zestawu Java V8 SDK](storage-quickstart-blobs-java-legacy.md).
+> Aby rozpocząć pracę z poprzednią wersją SDK, zobacz [Szybki start: Zarządzanie obiektami blob za pomocą pliku Java v8 SDK](storage-quickstart-blobs-java-legacy.md).
 
 [!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
 ## <a name="setting-up"></a>Konfigurowanie
 
-W tej sekcji omówiono przygotowanie projektu do pracy z biblioteką klienta usługi Azure Blob Storage V12 for Java.
+W tej sekcji przeprowadzi Cię proces przygotowania projektu do pracy z biblioteką klienta magazynu obiektów Blob platformy Azure w wersji 12 dla oprogramowania Java.
 
 ### <a name="create-the-project"></a>Tworzenie projektu
 
-Utwórz aplikację Java o nazwie *BLOB-Start-V12*.
+Utwórz aplikację Java o nazwie *blob-szybki start-v12*.
 
-1. W oknie konsoli (na przykład cmd, PowerShell lub bash) Użyj Maven, aby utworzyć nową aplikację konsolową o nazwie *BLOB-szybkiego startu-V12*. Wpisz następujące polecenie **MVN** , aby utworzyć "Hello World!" Projekt Java.
+1. W oknie konsoli (takim jak cmd, PowerShell lub Bash) użyj maven, aby utworzyć nową aplikację konsoli o nazwie *blob-szybki start-v12*. Wpisz następujące polecenie **mvn,** aby utworzyć "Hello world!" projektu Java.
 
    ```console
    mvn archetype:generate -DgroupId=com.blobs.quickstart \
@@ -50,7 +50,7 @@ Utwórz aplikację Java o nazwie *BLOB-Start-V12*.
                           -DinteractiveMode=false
    ```
 
-1. Dane wyjściowe generowania projektu powinny wyglądać następująco:
+1. Dane wyjściowe z generowania projektu powinny wyglądać mniej więcej tak:
 
     ```console
     [INFO] Scanning for projects...
@@ -93,7 +93,7 @@ Utwórz aplikację Java o nazwie *BLOB-Start-V12*.
    cd blob-quickstart-v12
    ```
 
-1. W obszarze *obiekt BLOB — szybki start V12* katalog Utwórz inny katalog o nazwie *dane*. Jest to miejsce, w którym są tworzone i przechowywane pliki danych obiektów BLOB.
+1. Z boku katalogu *blob-szybki start-v12* należy utworzyć inny katalog o nazwie *data*. W tym miejscu zostaną utworzone i przechowywane pliki danych obiektów blob.
 
     ```console
     mkdir data
@@ -101,7 +101,7 @@ Utwórz aplikację Java o nazwie *BLOB-Start-V12*.
 
 ### <a name="install-the-package"></a>Zainstaluj pakiet
 
-Otwórz plik *pliku pom. XML* w edytorze tekstów. Dodaj następujący element zależności do grupy zależności.
+Otwórz plik *pom.xml* w edytorze tekstu. Dodaj następujący element zależności do grupy zależności.
 
 ```xml
 <dependency>
@@ -115,10 +115,10 @@ Otwórz plik *pliku pom. XML* w edytorze tekstów. Dodaj następujący element z
 
 Z katalogu projektu:
 
-1. Przejdź do katalogu */src/Main/Java/com/Blobs/QuickStart*
-1. Otwórz plik *App. Java* w edytorze
-1. Usuń instrukcję `System.out.println("Hello world!");`
-1. Dodaj dyrektywy `import`
+1. Przejdź do *katalogu /src/main/java/com/blobs/quickstart*
+1. Otwieranie pliku *App.java* w edytorze
+1. Usuwanie `System.out.println("Hello world!");` instrukcji
+1. Dodawanie `import` dyrektyw
 
 Oto kod:
 
@@ -142,42 +142,42 @@ public class App
 
 [!INCLUDE [storage-quickstart-credentials-include](../../../includes/storage-quickstart-credentials-include.md)]
 
-## <a name="object-model"></a>Model obiektów
+## <a name="object-model"></a>Model obiektu
 
-Usługa Azure Blob Storage jest zoptymalizowana pod kątem przechowywania dużych ilości danych bez struktury. Dane bez struktury są danymi, które nie są zgodne z żadnym modelem lub definicją danych, jak na przykład dane tekstowe lub binarne. Magazyn obiektów blob oferuje trzy typy zasobów:
+Usługa Azure Blob storage jest zoptymalizowana pod kątem przechowywania ogromnych ilości nieustrukturyzowanych danych. Dane bez struktury są danymi, które nie są zgodne z żadnym modelem lub definicją danych, jak na przykład dane tekstowe lub binarne. Magazyn obiektów blob oferuje trzy typy zasobów:
 
 * Konto magazynu
 * Kontener na koncie magazynu
-* Obiekt BLOB w kontenerze
+* Obiekt blob w kontenerze
 
 Na poniższym diagramie przedstawiono relacje między tymi zasobami.
 
 ![Diagram architektury magazynu obiektów blob](./media/storage-blobs-introduction/blob1.png)
 
-Użyj następujących klas języka Java do korzystania z tych zasobów:
+Użyj następujących klas Java do interakcji z tymi zasobami:
 
-* [BlobServiceClient](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/BlobServiceClient.html): Klasa `BlobServiceClient` umożliwia manipulowanie zasobami usługi Azure Storage i kontenerami obiektów BLOB. Konto magazynu zapewnia przestrzeń nazw najwyższego poziomu dla Blob service.
-* [BlobServiceClientBuilder](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/BlobServiceClientBuilder.html): Klasa `BlobServiceClientBuilder` udostępnia interfejs API programu Fluent Builder, który pomaga ułatwić konfigurację i tworzenie wystąpień `BlobServiceClient` obiektów.
-* [BlobContainerClient](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/BlobContainerClient.html): Klasa `BlobContainerClient` umożliwia manipulowanie kontenerami usługi Azure Storage i ich obiektami BLOB.
-* [BlobClient](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/BlobClient.html): Klasa `BlobClient` umożliwia manipulowanie obiektami BLOB usługi Azure Storage.
-* [BlobItem](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/models/BlobItem.html): Klasa `BlobItem` reprezentuje pojedyncze obiekty blob zwrócone przez wywołanie do `listBlobsFlat`.
+* [BlobServiceClient:](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/BlobServiceClient.html) `BlobServiceClient` Klasa umożliwia manipulowanie zasobami usługi Azure Storage i kontenerami obiektów blob. Konto magazynu udostępnia obszar nazw najwyższego poziomu dla usługi obiektów Blob.
+* [BlobServiceClientBuilder:](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/BlobServiceClientBuilder.html) `BlobServiceClientBuilder` Klasa zapewnia płynny interfejs API konstruktora, aby `BlobServiceClient` ułatwić konfigurację i tworzenie wystąpienia obiektów.
+* [BlobContainerClient:](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/BlobContainerClient.html) `BlobContainerClient` Klasa umożliwia manipulowanie kontenerami usługi Azure Storage i ich obiektów blob.
+* [BlobClient:](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/BlobClient.html) `BlobClient` Klasa umożliwia manipulowanie obiektów blob usługi Azure Storage.
+* [BlobItem](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/models/BlobItem.html): `BlobItem` Klasa reprezentuje poszczególne obiekty blob zwrócone z wywołania do `listBlobsFlat`.
 
 ## <a name="code-examples"></a>Przykłady kodu
 
-Te przykładowe fragmenty kodu pokazują, jak wykonać następujące czynności za pomocą biblioteki klienckiej usługi Azure Blob Storage dla języka Java:
+Te przykładowe fragmenty kodu pokazują, jak wykonać następujące czynności za pomocą biblioteki klienta magazynu obiektów Blob platformy Azure dla środowiska Java:
 
-* [Pobierz parametry połączenia](#get-the-connection-string)
+* [Pobieranie parametrów połączenia](#get-the-connection-string)
 * [Tworzenie kontenera](#create-a-container)
-* [Przekazywanie obiektów BLOB do kontenera](#upload-blobs-to-a-container)
-* [Wyświetlanie listy obiektów BLOB w kontenerze](#list-the-blobs-in-a-container)
-* [Pobieranie obiektów BLOB](#download-blobs)
+* [Przekazywanie obiektów blob do kontenera](#upload-blobs-to-a-container)
+* [Wyświetlanie listy obiektów blob w kontenerze](#list-the-blobs-in-a-container)
+* [Pobieranie obiektów blob](#download-blobs)
 * [Usuwanie kontenera](#delete-a-container)
 
 ### <a name="get-the-connection-string"></a>Pobieranie parametrów połączenia
 
-Poniższy kod pobiera parametry połączenia dla konta magazynu ze zmiennej środowiskowej utworzonej w sekcji [Konfigurowanie parametrów połączenia magazynu](#configure-your-storage-connection-string) .
+Poniższy kod pobiera parametry połączenia dla konta magazynu ze zmiennej środowiskowej utworzonej w sekcji [Konfigurowanie ciągu połączenia magazynu.](#configure-your-storage-connection-string)
 
-Dodaj następujący kod w metodzie `Main`:
+Dodaj ten kod `Main` wewnątrz metody:
 
 ```java
 System.out.println("Azure Blob storage v12 - Java quickstart sample\n");
@@ -193,14 +193,14 @@ String connectStr = System.getenv("AZURE_STORAGE_CONNECTION_STRING");
 
 ### <a name="create-a-container"></a>Tworzenie kontenera
 
-Określ nazwę nowego kontenera. Poniższy kod dołącza wartość identyfikatora UUID do nazwy kontenera, aby upewnić się, że jest ona unikatowa.
+Zdecyduj o nazwie nowego kontenera. Poniższy kod dołącza wartość UUID do nazwy kontenera, aby upewnić się, że jest unikatowa.
 
 > [!IMPORTANT]
 > Nazwy kontenerów muszą być zapisane małymi literami. Aby uzyskać więcej informacji o nazewnictwie kontenerów i obiektów blob, zobacz temat [Nazewnictwo i odwoływanie się do kontenerów, obiektów blob i metadanych](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata).
 
-Następnie Utwórz wystąpienie klasy [BlobContainerClient](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/BlobContainerClient.html) , a następnie Wywołaj metodę [Create](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/BlobContainerClient.html#create--) , aby utworzyć kontener na koncie magazynu.
+Następnie należy utworzyć wystąpienie [klasy BlobContainerClient,](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/BlobContainerClient.html) a następnie wywołać metodę [create,](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/BlobContainerClient.html#create--) aby faktycznie utworzyć kontener na koncie magazynu.
 
-Dodaj ten kod na końcu metody `Main`:
+Dodaj ten kod na `Main` końcu metody:
 
 ```java
 // Create a BlobServiceClient object which will be used to create a container client
@@ -213,15 +213,15 @@ String containerName = "quickstartblobs" + java.util.UUID.randomUUID();
 BlobContainerClient containerClient = blobServiceClient.createBlobContainer(containerName);
 ```
 
-### <a name="upload-blobs-to-a-container"></a>Przekazywanie obiektów BLOB do kontenera
+### <a name="upload-blobs-to-a-container"></a>Przekazywanie obiektów blob do kontenera
 
-Następujący fragment kodu:
+Fragment kodu w brzmieniu:
 
-1. Tworzy plik tekstowy w lokalnym katalogu *danych* .
-1. Pobiera odwołanie do obiektu [BlobClient](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/BlobClient.html) przez wywołanie metody [getBlobClient](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/BlobContainerClient.html#getBlobClient-java.lang.String-) kontenera z sekcji [Create a Container](#create-a-container) .
-1. Przekazuje lokalny plik tekstowy do obiektu BLOB, wywołując metodę [uploadFromFile](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/BlobClient.html#uploadFromFile-java.lang.String-) . Ta metoda tworzy obiekt BLOB, jeśli jeszcze nie istnieje, ale nie zastępuje go, jeśli tak się dzieje.
+1. Tworzy plik tekstowy w lokalnym katalogu *danych.*
+1. Pobiera odwołanie do [obiektu BlobClient,](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/BlobClient.html) wywołując [getBlobClient](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/BlobContainerClient.html#getBlobClient-java.lang.String-) metody w kontenerze z [Create sekcji kontenera.](#create-a-container)
+1. Przekazuje lokalny plik tekstowy do obiektu blob, wywołując [metodę uploadFromFile.](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/BlobClient.html#uploadFromFile-java.lang.String-) Ta metoda tworzy obiekt blob, jeśli jeszcze nie istnieje, ale nie zastąpi go, jeśli tak.
 
-Dodaj ten kod na końcu metody `Main`:
+Dodaj ten kod na `Main` końcu metody:
 
 ```java
 // Create a local file in the ./data/ directory for uploading and downloading
@@ -245,9 +245,9 @@ blobClient.uploadFromFile(localPath + fileName);
 
 ### <a name="list-the-blobs-in-a-container"></a>Wyświetlanie listy obiektów blob w kontenerze
 
-Utwórz listę obiektów BLOB w kontenerze, wywołując metodę [listBlobs](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/BlobContainerClient.html#listBlobs--) . W takim przypadku tylko jeden obiekt BLOB został dodany do kontenera, więc operacja tworzenia listy zwraca tylko jeden obiekt BLOB.
+Lista obiektów blob w kontenerze, wywołując [listBlobs](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/BlobContainerClient.html#listBlobs--) metody. W takim przypadku tylko jeden obiekt blob został dodany do kontenera, więc operacja listy zwraca tylko ten jeden obiekt blob.
 
-Dodaj ten kod na końcu metody `Main`:
+Dodaj ten kod na `Main` końcu metody:
 
 ```java
 System.out.println("\nListing blobs...");
@@ -260,9 +260,9 @@ for (BlobItem blobItem : containerClient.listBlobs()) {
 
 ### <a name="download-blobs"></a>Pobieranie obiektów blob
 
-Pobierz utworzony wcześniej obiekt BLOB, wywołując metodę [downloadToFile](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/specialized/BlobClientBase.html#downloadToFile-java.lang.String-) . Przykładowy kod dodaje sufiks "DOWNLOAD" do nazwy pliku, aby można było zobaczyć oba pliki w lokalnym systemie plików.
+Pobierz poprzednio utworzony obiekt blob, wywołując [metodę downloadToFile.](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/specialized/BlobClientBase.html#downloadToFile-java.lang.String-) Przykładowy kod dodaje sufiks "POBIERZ" do nazwy pliku, dzięki czemu można zobaczyć oba pliki w lokalnym systemie plików.
 
-Dodaj ten kod na końcu metody `Main`:
+Dodaj ten kod na `Main` końcu metody:
 
 ```java
 // Download the blob to a local file
@@ -277,11 +277,11 @@ blobClient.downloadToFile(localPath + downloadFileName);
 
 ### <a name="delete-a-container"></a>Usuwanie kontenera
 
-Poniższy kod czyści zasoby utworzone przez aplikację przez usunięcie całego kontenera przy użyciu metody [delete](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/BlobContainerClient.html#delete--) . Powoduje również usunięcie plików lokalnych utworzonych przez aplikację.
+Poniższy kod czyści zasoby utworzone przez aplikację, usuwając cały kontener przy użyciu metody [usuwania.](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/BlobContainerClient.html#delete--) Usuwa również pliki lokalne utworzone przez aplikację.
 
-Aplikacja wstrzymuje się do wprowadzania danych przez użytkownika, wywołując `System.console().readLine()` przed usunięciem obiektu BLOB, kontenera i plików lokalnych. Jest to dobry szansa, aby sprawdzić, czy zasoby zostały utworzone prawidłowo, przed ich usunięciem.
+Aplikacja wstrzymuje wprowadzanie danych przez użytkownika, wywołując `System.console().readLine()` przed usunięciem obiektów blob, kontenera i plików lokalnych. Jest to dobra okazja, aby sprawdzić, czy zasoby zostały utworzone poprawnie, zanim zostaną usunięte.
 
-Dodaj ten kod na końcu metody `Main`:
+Dodaj ten kod na `Main` końcu metody:
 
 ```java
 // Clean up
@@ -300,27 +300,27 @@ System.out.println("Done");
 
 ## <a name="run-the-code"></a>Uruchamianie kodu
 
-Ta aplikacja tworzy plik testowy w folderze lokalnym i przekazuje go do magazynu obiektów BLOB. Przykład następnie wyświetla listę obiektów BLOB w kontenerze i pobiera plik z nową nazwą, aby można było porównać stare i nowe pliki.
+Ta aplikacja tworzy plik testowy w folderze lokalnym i przekazuje go do magazynu obiektów Blob. W przykładzie następnie wyświetla listę obiektów blob w kontenerze i pobiera plik o nowej nazwie, dzięki czemu można porównać stare i nowe pliki.
 
-Przejdź do katalogu zawierającego plik *pliku pom. XML* i skompiluj projekt przy użyciu następującego polecenia `mvn`.
+Przejdź do katalogu zawierającego plik *pom.xml* i skompiluj projekt za pomocą następującego `mvn` polecenia.
 
 ```console
 mvn compile
 ```
 
-Następnie Skompiluj pakiet.
+Następnie skompiluj pakiet.
 
 ```console
 mvn package
 ```
 
-Uruchom następujące polecenie `mvn`, aby uruchomić aplikację.
+Uruchom następujące `mvn` polecenie, aby wykonać aplikację.
 
 ```console
 mvn exec:java -Dexec.mainClass="com.blobs.quickstart.App" -Dexec.cleanupDaemonThreads=false
 ```
 
-Dane wyjściowe aplikacji są podobne do następujących:
+Dane wyjściowe aplikacji są podobne do następującego przykładu:
 
 ```output
 Azure Blob storage v12 - Java quickstart sample
@@ -341,18 +341,18 @@ Deleting the local source and downloaded files...
 Done
 ```
 
-Przed rozpoczęciem procesu oczyszczania Sprawdź, czy w folderze *danych* są dwa pliki. Możesz je otworzyć i sprawdzić, czy są identyczne.
+Przed rozpoczęciem procesu oczyszczania sprawdź folder *danych* pod kątem dwóch plików. Możesz je otworzyć i sprawdzić, czy są identyczne.
 
-Po zweryfikowaniu plików naciśnij klawisz **Enter** , aby usunąć pliki testowe i zakończyć demonstrację.
+Po zweryfikowaniu plików naciśnij klawisz **Enter,** aby usunąć pliki testowe i zakończyć prezentację.
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym przewodniku szybki start przedstawiono sposób przekazywania, pobierania i wyświetlania listy obiektów BLOB za pomocą języka Java.
+W tym przewodniku Szybki start dowiesz się, jak przesyłać, pobierać i wystawiać obiekty blob za pomocą oprogramowania Java.
 
-Aby wyświetlić przykładowe aplikacje dla magazynu obiektów blob, przejdź do:
+Aby wyświetlić przykładowe aplikacje magazynu obiektów Blob, przejdź do:
 
 > [!div class="nextstepaction"]
-> [Przykłady języka Java dla zestawu SDK usługi Azure Blob Storage V12](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-blob/src/samples/java/com/azure/storage/blob)
+> [Przykłady środowiska Azure Blob Storage SDK w wersji 12 Java](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-blob/src/samples/java/com/azure/storage/blob)
 
-* Aby dowiedzieć się więcej, zobacz [zestaw Azure SDK dla języka Java](https://github.com/Azure/azure-sdk-for-java/blob/master/README.md).
-* Samouczki, przykłady, Przewodniki Szybki Start i inne dokumenty można znaleźć [na platformie Azure dla deweloperów chmury Java](/azure/java/).
+* Aby dowiedzieć się więcej, zobacz [zestaw SDK platformy Azure dla języka Java](https://github.com/Azure/azure-sdk-for-java/blob/master/README.md).
+* Aby uzyskać samouczki, przykłady, przewodniki Szybki start i inną dokumentację, odwiedź witrynę [Azure for Java cloud developers](/azure/java/).

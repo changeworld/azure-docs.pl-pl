@@ -1,6 +1,6 @@
 ---
-title: Monitorowanie opcji - sprzętowego modułu zabezpieczeń platformy Azure w wersji dedykowanej | Dokumentacja firmy Microsoft
-description: Omówienie platformy Azure w wersji dedykowanej sprzętowego modułu zabezpieczeń monitorowanie obowiązki i opcje monitorowania
+title: Opcje monitorowania — dedykowany moduł HSM platformy Azure | Dokumenty firmy Microsoft
+description: Omówienie opcji monitorowania dedykowanego modułu HSM platformy Azure i obowiązków związanych z monitorowaniem
 services: dedicated-hsm
 author: msmbaldwin
 manager: rkarlin
@@ -13,34 +13,34 @@ ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: mbaldwin
 ms.openlocfilehash: 3fde577a6b0efb7584e1c9efd57c95583ebe4ec9
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "70881422"
 ---
-# <a name="azure-dedicated-hsm-monitoring"></a>Monitorowanie platformy Azure w wersji dedykowanej przez moduł HSM
+# <a name="azure-dedicated-hsm-monitoring"></a>Monitorowanie dedykowanego modułu HSM platformy Azure
 
-Usługi Azure w wersji dedykowanej przez moduł HSM zapewnia pełną odpowiedzialność administracyjna kontroli i zarządzania urządzenia fizycznego do użycia wyłącznie klientów. Urządzenia udostępnione [modelu sprzętowego modułu zabezpieczeń firmy Gemalto SafeNet Luna 7 A790](https://safenet.gemalto.com/data-encryption/hardware-security-modules-hsms/safenet-network-hsm/).  Microsoft będzie miał nie dostęp administracyjny, w raz udostępnionych przez klienta, po przekroczeniu załącznika fizyczny port szeregowy rolę monitorowania. W rezultacie klienci są odpowiedzialni za typowe działania operacyjne są wykonywane w tym kompleksowe monitorowanie i dziennika analizy.
-Klienci są w pełni odpowiedzialny za aplikacje, użyć modułów HSM, które powinny współpracować z firmy Gemalto pomocy technicznej lub pomocy doradcze. Ze względu na zakres klienta własności higieny operacyjnej nie jest możliwe, firma Microsoft oferuje wszelkiego rodzaju gwarancja wysokiej dostępności dla tej usługi. Jest klienta ponosić odpowiedzialność za zapewnienie ich aplikacji są poprawnie skonfigurowane w celu uzyskania wysokiej dostępności. Firma Microsoft będzie monitorować i obsługa urządzenia kondycji oraz łączności sieciowej.
+Usługa Azure Dedicated HSM zapewnia fizyczne urządzenie do wyłącznego użytku klienta z pełną kontrolą administracyjną i odpowiedzialnością za zarządzanie. Udostępnione urządzenie jest [Gemalto SafeNet Luna 7 HSM model A790](https://safenet.gemalto.com/data-encryption/hardware-security-modules-hsms/safenet-network-hsm/).  Firma Microsoft nie będzie miała dostępu administracyjnego po zainicjowaniu administracyjnym przez klienta, poza fizycznym załącznikiem portu szeregowego jako roli monitorowania. W rezultacie klienci są odpowiedzialni za typowe działania operacyjne, w tym kompleksowe monitorowanie i analizę dzienników.
+Klienci są w pełni odpowiedzialni za aplikacje korzystające z modułów HSM i powinni współpracować z Gemalto w celu uzyskania pomocy technicznej lub konsultacji. Ze względu na zakres własności klienta higieny operacyjnej firma Microsoft nie może zaoferować żadnej gwarancji wysokiej dostępności dla tej usługi. Obowiązkiem klienta jest upewnienie się, że ich aplikacje są poprawnie skonfigurowane w celu osiągnięcia wysokiej dostępności. Firma Microsoft będzie monitorować i utrzymywać kondycję urządzenia i łączność sieciową.
 
-## <a name="microsoft-monitoring"></a>Firma Microsoft monitoruje
+## <a name="microsoft-monitoring"></a>Monitorowanie firmy Microsoft
 
-Urządzenia firmy Gemalto SafeNet używana ma domyślnie SNMP i portu szeregowego jako opcje monitorowania urządzenia. Microsoft został użyty połączenia port szeregowy, zgodnie z fizycznego oznacza, że można połączyć się z urządzeniem, aby pobierać podstawowe dane telemetryczne dotyczące kondycji urządzeń. Obejmuje to elementy, takie jak temperatury i stan składnika takich jak zasilacze i wentylatory.
-Aby to osiągnąć, firma Microsoft korzysta z innych niż administracyjne roli "Monitoruj" na urządzeniu firmy Gemalto. Ta rola zapewnia możliwość pobierania danych telemetrycznych, ale mu dostęp do wszystkich urządzeń pod kątem zadań administracyjnych, lub w jakikolwiek sposób wyświetlania informacji kryptograficznych. Naszym klientom mogą mieć pewność, że ich urządzenia są naprawdę własne zarządzania, administracji i na użytek poufnych magazynu kluczy kryptograficznych. W przypadku, gdy każdy klient nie jest spełniony przy użyciu tego minimalnego dostępu do podstawowe monitorowanie kondycji, mają możliwość wyłączenia konto monitorowania. Oczywiste skutkiem tego jest, że firma Microsoft zastrzega sobie żadne informacje, a więc generuje możliwość zapewnienia aktywnego powiadomienia o kondycji urządzenia. W tej sytuacji klient jest odpowiedzialny za kondycji urządzenia.
-Sama funkcja monitor jest skonfigurowany do sondowanie co 10 minut można pobrać danych o kondycji urządzenia. Ze względu na charakter podatne błąd komunikacji szeregowej dopiero po kilku wskaźników kondycji ujemna w okresie jednej godziny będą alert wygenerowany. Ten alert ostatecznie będzie prowadzić do komunikacji z klientami proaktywne powiadamianie problem.
-W zależności od rodzaju problemu znalazłoby się właściwego sposobu działania, aby zmniejszyć wpływ i zagwarantować korygowania niskiego ryzyka. Na przykład awaria zasilania jest procedury wymienić z nie wynikowy naruszanie zdarzeń, dzięki czemu mogą być wykonywane przy użyciu mały wpływ i minimalnego ryzyka dla operacji. Inne procedury może wymagać urządzenia zeroized i anulowanie aprowizacji, aby zminimalizować ryzyko zabezpieczeń do klienta. W tej sytuacji klient będzie zainicjować obsługę administracyjną alternatywnego urządzenia, ponowne przyłączenie wysokiej dostępności parowania, dlatego wyzwolenie synchronizacji urządzeń. W krótkim czasie przy minimalnym zakłóceniu i najniższego ryzyko związane z zabezpieczeniami spowoduje przywrócenie normalnego funkcjonowania.  
+Urządzenie Gemalto SafeNet w użyciu ma domyślnie SNMP i port szeregowy jako opcje monitorowania urządzenia. Firma Microsoft użyła połączenia portu szeregowego jako fizycznego środka do łączenia się z urządzeniem w celu pobrania podstawowych danych telemetrycznych dotyczących kondycji urządzenia. Obejmuje to elementy, takie jak temperatura i stan komponentów, takie jak zasilacze i wentylatory.
+Aby to osiągnąć, firma Microsoft używa niead administrative "monitor" rolę skonfigurowaną na urządzeniu Gemalto. Ta rola daje możliwość pobierania danych telemetrycznych, ale nie daje dostępu do urządzenia pod względem zadania administracyjnego lub w jakikolwiek sposób przeglądania informacji kryptograficznych. Nasi klienci mogą mieć pewność, że ich urządzenie jest naprawdę ich własne do zarządzania, administrowania i używania do przechowywania poufnych kluczy kryptograficznych. W przypadku, gdy klient nie jest zadowolony z tego minimalnego dostępu do podstawowego monitorowania kondycji, mają możliwość wyłączenia konta monitorowania. Oczywistą konsekwencją tego jest to, że Firma Microsoft nie będzie miała żadnych informacji, a zatem nie będzie miała możliwości zapewnienia proaktywnego powiadamiania o problemach ze zdrowiem urządzenia. W tej sytuacji klient jest odpowiedzialny za kondycję urządzenia.
+Sama funkcja monitora jest skonfigurowana do sondowania urządzenia co 10 minut w celu uzyskania danych dotyczących kondycji. Ze względu na podatny na błędy charakter komunikacji szeregowej, tylko po wielu negatywnych wskaźników kondycji w ciągu jednej godziny zostanie podniesiony alert. Ten alert ostatecznie doprowadzi do proaktywnej komunikacji z klientem powiadamiającej o problemie.
+W zależności od charakteru problemu podjętoby odpowiednie działania w celu zmniejszenia wpływu i zapewnienia działań naprawczych niskiego ryzyka. Na przykład awaria zasilania jest procedurą wymiany na gorąco bez wynikowego zdarzenia sabotażu, dzięki czemu można je wykonać przy niskim wpływie i minimalnym ryzyku pracy. Inne procedury mogą wymagać wyzeritwa i anulowania obsługi administracyjnej urządzenia w celu zminimalizowania ryzyka dla klienta. W tej sytuacji klient będzie aprowizować alternatywne urządzenie, ponownie dołączyć do parowania wysokiej dostępności, wyzwalając w ten sposób synchronizację urządzenia. Normalna praca zostałaby wznowiona w minimalnym czasie, przy minimalnych zakłóceniach i najniższym ryzyku bezpieczeństwa.  
 
 ## <a name="customer-monitoring"></a>Monitorowanie klienta
 
-Korzyści z użytkowania usługi w wersji dedykowanej przez moduł HSM jest formant, który klient pobiera urządzenia, szczególnie biorąc pod uwagę że chmurze dostarczane urządzenia. Wynikiem tej kontrolki jest odpowiedzialny za monitorowanie i zarządzanie nią kondycji urządzenia. Urządzenia firmy Gemalto SafeNet zawiera wskazówki dotyczące implementacji protokołu SNMP i Syslog. Klienci usługi w wersji dedykowanej sprzętowego modułu zabezpieczeń są zalecane do stosowania, to nawet wtedy, gdy konto Microsoft monitor pozostaje aktywna należy wziąć pod uwagę jej obowiązkowe wyłączenie konta monitora programu Microsoft.
-Albo techniki, które są dostępne pozwoliłoby klienta w celu zidentyfikowania problemów i pomocy technicznej firmy Microsoft do zainicjowania pracy korygowania odpowiednie wywołania.
+Propozycją wartości dedykowanej usługi HSM jest kontrola, którą klient otrzymuje od urządzenia, zwłaszcza biorąc pod uwagę, że jest to urządzenie dostarczane w chmurze. Konsekwencją tej kontroli jest odpowiedzialność za monitorowanie kondycji urządzenia i zarządzanie nim. Urządzenie Gemalto SafeNet jest wyposażone w wskazówki dotyczące implementacji SNMP i Syslog. Klienci dedykowanej usługi HSM powinni używać tej usługi nawet wtedy, gdy konto monitora Microsoft pozostaje aktywne i należy uznać je za obowiązkowe, jeśli wyłączą konto monitora Microsoft.
+Dostępna każda z dostępnych technik umożliwia klientowi identyfikowanie problemów i wywoływanie pomocy technicznej firmy Microsoft w celu zainicjowania odpowiednich prac naprawczych.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Zaleca się, że wszystkie najważniejsze pojęcia związane z usługi, takie jak wysoka dostępność i bezpieczeństwo na przykład są dobrze zrozumiałe przed dowolnego Inicjowanie obsługi administracyjnej urządzeń i projektu aplikacji lub wdrożenia. Dodatkowe tematy poziomu pojęcia:
+Zaleca się, aby wszystkie kluczowe pojęcia usługi, takie jak wysoka dostępność i zabezpieczenia, na przykład były dobrze rozumiane przed każdym projektem lub wdrożeniem inicjowania obsługi administracyjnej urządzenia i projektowania aplikacji. Dalsze tematy na poziomie koncepcji:
 
 * [Wysoka dostępność](high-availability.md)
 * [Zabezpieczenia fizyczne](physical-security.md)
-* [Sieć](networking.md)
+* [Obsługa sieci](networking.md)
 * [Możliwości obsługi](supportability.md)

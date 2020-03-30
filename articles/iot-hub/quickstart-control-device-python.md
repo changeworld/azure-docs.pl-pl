@@ -11,33 +11,33 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 01/09/2020
 ms.openlocfilehash: 0ff404e4b13fdb3e174387c17064c5ae58acd246
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "78675549"
 ---
 # <a name="quickstart-control-a-device-connected-to-an-iot-hub-python"></a>Szybki start: kontrolowanie urządzenia podłączonego do centrum IoT (Python)
 
 [!INCLUDE [iot-hub-quickstarts-2-selector](../../includes/iot-hub-quickstarts-2-selector.md)]
 
-W tym przewodniku szybki start użyjesz metody bezpośredniej do kontrolowania symulowanego urządzenia połączonego z platformą Azure IoT Hub. IoT Hub to usługa platformy Azure, która umożliwia zarządzanie urządzeniami IoT z chmury i pozyskiwanie dużych ilości danych telemetrycznych urządzeń do chmury w celu przechowania lub przetworzenia. Możesz użyć metod bezpośrednich, aby zdalnie zmieniać zachowanie urządzenia podłączonego do centrum IoT. W tym przewodniku Szybki Start są używane dwie aplikacje języka Python: aplikacja symulowanego urządzenia, która odpowiada na metody bezpośrednie wywoływane z aplikacji zaplecza i aplikacji zaplecza, która wywołuje metody bezpośrednie na symulowanym urządzeniu.
+W tym przewodniku Szybki start można użyć metody bezpośredniej do kontrolowania symulowanego urządzenia połączonego z usługą Azure IoT Hub. Usługa IoT Hub to usługa platformy Azure, która umożliwia zarządzanie urządzeniami IoT z chmury i pozyskiwania dużych ilości danych telemetrycznych urządzeń do chmury w celu przechowywania lub przetwarzania. Możesz użyć metod bezpośrednich, aby zdalnie zmieniać zachowanie urządzenia podłączonego do centrum IoT. Ten przewodnik Szybki start używa dwóch aplikacji języka Python: symulowanej aplikacji urządzenia, która odpowiada na bezpośrednie metody wywoływane z aplikacji zaplecza i aplikacji zaplecza, która wywołuje metody bezpośrednie na symulowanym urządzeniu.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Konto platformy Azure z aktywną subskrypcją. [Utwórz je bezpłatnie](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+* Konto platformy Azure z aktywną subskrypcją. [Utwórz jeden za darmo](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 
-* [Python 3.7 +](https://www.python.org/downloads/). W przypadku innych obsługiwanych wersji języka Python zobacz [funkcje urządzenia IoT Azure](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device#azure-iot-device-features).
+* [Python 3.7+](https://www.python.org/downloads/). Aby uzyskać inne wersje obsługiwanego języka Python, zobacz [Funkcje urządzeń Usługi Azure IoT](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device#azure-iot-device-features).
 
-* [Przykładowy projekt w języku Python](https://github.com/Azure-Samples/azure-iot-samples-python/archive/master.zip).
+* [Przykładowy projekt języka Python](https://github.com/Azure-Samples/azure-iot-samples-python/archive/master.zip).
 
-* Port 8883 otwarty w zaporze. Przykład urządzenia w tym przewodniku szybki start używa protokołu MQTT, który komunikuje się przez port 8883. Ten port może być blokowany w niektórych firmowych i edukacyjnych środowiskach sieciowych. Aby uzyskać więcej informacji i sposobów obejścia tego problemu, zobacz [nawiązywanie połączenia z IoT Hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
+* Port 8883 otwarty w zaporze. Próbka urządzenia w tym przewodniku Szybki start korzysta z protokołu MQTT, który komunikuje się za pomocą portu 8883. Ten port może być zablokowany w niektórych środowiskach sieci firmowych i edukacyjnych. Aby uzyskać więcej informacji i sposobów obejść ten problem, zobacz [Łączenie się z centrum IoT Hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-### <a name="add-azure-iot-extension"></a>Dodawanie rozszerzenia usługi Azure IoT
+### <a name="add-azure-iot-extension"></a>Dodawanie rozszerzenia IoT platformy Azure
 
-Uruchom następujące polecenie, aby dodać rozszerzenie IoT Microsoft Azure dla interfejsu wiersza polecenia platformy Azure do wystąpienia Cloud Shell. Rozszerzenie IoT dodaje do interfejsu wiersza polecenia platformy Azure IoT Hub, IoT Edge i usługi IoT Device Provisioning Service (DPS).
+Uruchom następujące polecenie, aby dodać rozszerzenie IoT usługi Microsoft Azure dla interfejsu wiersza polecenia platformy Azure do wystąpienia usługi Cloud Shell. Rozszerzenie IoT dodaje IoT Hub, IoT Edge i Usługi inicjowania obsługi administracyjnej urządzeń IoT (DPS) polecenia do interfejsu wiersza polecenia platformy Azure.
 
 ```azurecli-interactive
 az extension add --name azure-iot
@@ -57,11 +57,11 @@ Jeśli ukończono poprzedni przewodnik [Szybki start: wysyłanie danych telemetr
 
 Zanim urządzenie będzie mogło nawiązać połączenie, należy je najpierw zarejestrować w centrum IoT. W tym przewodniku Szybki start opisano rejestrowanie urządzenia symulowanego przy użyciu usługi Azure Cloud Shell.
 
-1. Uruchom następujące polecenie w Azure Cloud Shell, aby utworzyć tożsamość urządzenia.
+1. Uruchom następujące polecenie w usłudze Azure Cloud Shell, aby utworzyć tożsamość urządzenia.
 
     **YourIoTHubName**: zamień ten symbol zastępczy poniżej na wybraną nazwę centrum IoT Hub.
 
-    **MyPythonDevice**: jest to nazwa urządzenia, które jest rejestrowany. Zaleca się użycie **MyPythonDevice** , jak pokazano. W przypadku wybrania innej nazwy dla urządzenia należy również użyć tej nazwy w tym artykule i zaktualizować nazwę urządzenia w przykładowych aplikacjach przed ich uruchomieniem.
+    **MyPythonDevice**: Jest to nazwa zarejestrowanego urządzenia. Zaleca się stosowanie **MyPythonDevice,** jak pokazano na rysunku. Jeśli wybierzesz inną nazwę urządzenia, musisz również użyć tej nazwy w tym artykule i zaktualizować nazwę urządzenia w przykładowych aplikacjach przed ich uruchomieniem.
 
     ```azurecli-interactive
     az iot hub device-identity create --hub-name {YourIoTHubName} --device-id MyPythonDevice
@@ -96,17 +96,17 @@ Zanim urządzenie będzie mogło nawiązać połączenie, należy je najpierw za
 
    `HostName={YourIoTHubName}.azure-devices.net;SharedAccessKeyName=service;SharedAccessKey={YourSharedAccessKey}`
 
-    Użyjesz tej wartości w dalszej części tego przewodnika Szybki start. Te parametry połączenia z usługą różnią się od parametrów połączenia urządzenia zanotowanych w poprzednim kroku.
+    Użyjesz tej wartości w dalszej części tego przewodnika Szybki start. Ten ciąg połączenia usługi różni się od ciągu połączenia urządzenia, który został odnotowany w poprzednim kroku.
 
 ## <a name="listen-for-direct-method-calls"></a>Nasłuchiwanie wywołań metod bezpośrednich
 
-Aplikacja urządzenia symulowanego łączy się z punktem końcowym właściwym dla urządzenia w centrum IoT, wysyła symulowane dane telemetryczne i nasłuchuje wywołań metod bezpośrednich z centrum. W tym przewodniku Szybki start wywołanie metody bezpośredniej z centrum nakazuje urządzeniu zmienić interwał wysyłania danych telemetrycznych. Symulowane urządzenie wysyła potwierdzenie z powrotem do centrum po wykonaniu metody bezpośredniej.
+Aplikacja urządzenia symulowanego łączy się z punktem końcowym właściwym dla urządzenia w centrum IoT, wysyła symulowane dane telemetryczne i nasłuchuje wywołań metod bezpośrednich z centrum. W tym przewodniku Szybki start wywołanie metody bezpośredniej z centrum nakazuje urządzeniu zmienić interwał wysyłania danych telemetrycznych. Symulowane urządzenie wysyła potwierdzenie z powrotem do koncentratora po wykonaniu metody bezpośredniej.
 
 1. W lokalnym oknie terminalu przejdź do folderu głównego przykładowego projektu Python. Następnie przejdź do folderu **iot-hub\Quickstarts\simulated-device-2**.
 
 1. Otwórz plik **SimulatedDevice.py** w wybranym edytorze tekstów.
 
-    Zastąp wartość zmiennej `CONNECTION_STRING` parametrami połączenia urządzenia, które zostały wykonane wcześniej jako uwagi. Następnie Zapisz zmiany w **SimulatedDevice.py**.
+    Zastąp `CONNECTION_STRING` wartość zmiennej ciągiem połączenia urządzenia, który został zanotowany wcześniej. Następnie zapisz zmiany **w SimulatedDevice.py**.
 
 1. W lokalnym oknie terminalu uruchom następujące polecenia, aby zainstalować wymagane biblioteki dla aplikacji urządzenia symulowanego:
 
@@ -126,13 +126,13 @@ Aplikacja urządzenia symulowanego łączy się z punktem końcowym właściwym 
 
 ## <a name="call-the-direct-method"></a>Wywoływanie metody bezpośredniej
 
-Aplikacja zaplecza łączy się z punktem końcowym po stronie usługi w usłudze IoT Hub. Aplikacja wykonuje bezpośrednie wywołania metody do urządzenia za pośrednictwem Centrum IoT Hub i nasłuchuje pod kątem potwierdzeń. Aplikacja zaplecza usługi IoT Hub zwykle działa w chmurze.
+Aplikacja zaplecza łączy się z punktem końcowym po stronie usługi w usłudze IoT Hub. Aplikacja wykonuje bezpośrednie wywołania metody do urządzenia za pośrednictwem centrum IoT hub i nasłuchuje potwierdzeń. Aplikacja zaplecza usługi IoT Hub zwykle działa w chmurze.
 
 1. W innym lokalnym oknie terminalu przejdź do folderu głównego przykładowego projektu Python. Następnie przejdź do folderu **iot-hub\Quickstarts\back-end-application**.
 
 1. Otwórz plik **BackEndApplication.py** w wybranym edytorze tekstów.
 
-    Zastąp wartość zmiennej `CONNECTION_STRING` parametrami połączenia usługi, które zostały wykonane wcześniej w notatce. Następnie Zapisz zmiany w **BackEndApplication.py**.
+    Zastąp `CONNECTION_STRING` wartość zmiennej ciągiem połączenia usługi, który został zanotowany wcześniej. Następnie zapisz zmiany w **BackEndApplication.py**.
 
 1. W lokalnym oknie terminalu uruchom następujące polecenia, aby zainstalować wymagane biblioteki dla aplikacji urządzenia symulowanego:
 
@@ -146,7 +146,7 @@ Aplikacja zaplecza łączy się z punktem końcowym po stronie usługi w usłudz
     python BackEndApplication.py
     ```
 
-    Na poniższym zrzucie ekranu przedstawiono dane wyjściowe, gdy aplikacja wysyła wywołanie metody bezpośredniej do urządzenia i otrzymuje potwierdzenie:
+    Poniższy zrzut ekranu przedstawia dane wyjściowe, gdy aplikacja wywołuje metodę bezpośrednią do urządzenia i otrzymuje potwierdzenie:
 
     ![Uruchamianie aplikacji zaplecza](./media/quickstart-control-device-python/backend-application.png)
 

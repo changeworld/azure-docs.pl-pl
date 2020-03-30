@@ -8,15 +8,15 @@ ms.date: 10/18/2018
 ms.custom: mvc
 ms.topic: overview
 ms.openlocfilehash: 3359d99d7e20bbced8950171fa34592fd2612500
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "76930397"
 ---
 # <a name="an-introduction-to-azure-automation"></a>Wprowadzenie do usługi Azure Automation
 
-Usługa Azure Automation oferuje opartą na chmurze usługę automatyzacji i konfiguracji, która zapewnia spójne zarządzanie w środowiskach platformy Azure i spoza niej. Obejmuje ona automatyzację procesów, zarządzanie aktualizacjami i funkcje konfiguracji. Usługa Azure Automation zapewnia pełną kontrolę podczas wdrażania, działania i likwidacji obciążeń i zasobów.
+Usługa Azure Automation udostępnia opartą na chmurze usługę automatyzacji i konfiguracji, która zapewnia spójne zarządzanie w środowiskach platformy Azure i w innych środowiskach. Obejmuje ona automatyzację procesów, zarządzanie aktualizacjami i funkcje konfiguracji. Usługa Azure Automation zapewnia pełną kontrolę podczas wdrażania, działania i likwidacji obciążeń i zasobów.
 Ten artykuł zawiera krótkie omówienie usługi Azure Automation i odpowiedzi na niektóre często zadawane pytania. Aby uzyskać więcej informacji o różnych możliwościach, odwiedź linki zawarte w tym omówieniu.
 
 ## <a name="azure-automation-capabilities"></a>Możliwości usługi Azure Automation
@@ -37,7 +37,7 @@ Możesz uzyskać spis zasobów gościa w celu umożliwienia wglądu w zainstalow
 
 Aktualizuj systemy Windows i Linux w środowiskach hybrydowych za pomocą usługi Azure Automation. Uzyskasz widoczność zgodności aktualizacji na platformie Azure, lokalnie i w innych chmurach. Możesz utworzyć harmonogram wdrożenia w celu zorganizowania instalacji aktualizacji w ramach określonego okna konserwacji. Jeśli nie można zainstalować aktualizacji na maszynie, możesz wykluczyć te aktualizacje z wdrożenia.
 
-### <a name="shared-resources"></a>Współdzielone zasoby
+### <a name="shared-resources"></a><a name="shared-resources"></a>Udostępnione zasoby
 
 Usługa Azure Automation zawiera zestaw współdzielonych zasobów, które ułatwiają automatyzowanie i konfigurowanie środowiska odpowiednio do skali.
 
@@ -54,7 +54,7 @@ Usługa Azure Automation zawiera zestaw współdzielonych zasobów, które ułat
 
 Usługa Azure Automation umożliwia [integrację z kontrolą źródła](source-control-integration.md), która wspiera konfigurację jako kod, gdzie elementy Runbook i konfiguracje można sprawdzić w systemie kontroli źródła.
 
-### <a name="role-based-access-control"></a>Kontrola dostępu oparta na rolach
+### <a name="role-based-access-control"></a>Kontrola dostępu na podstawie ról
 
 Usługa Azure Automation obsługuje kontrolę dostępu na podstawie ról w celu kontrolowania dostępu do konta usługi Automation i jego zasobów. Aby dowiedzieć się więcej na temat konfiguracji kontroli dostępu na podstawie ról dla konta usługi Automation, elementów Runbook i zadań, zobacz temat [Kontrola dostępu oparta na rolach w usłudze Azure Automation](automation-role-based-access-control.md).
 
@@ -85,5 +85,5 @@ Możesz przejrzeć ceny usługi Azure Automation na stronie [cennika](https://az
 ## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Create an automation account](automation-quickstart-create-account.md) (Tworzenie konta automatyzacji)
+> [Tworzenie konta automatyzacji](automation-quickstart-create-account.md)
 

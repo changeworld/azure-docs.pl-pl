@@ -1,6 +1,6 @@
 ---
-title: Kopiuj dane ze źródeł dostępu Microsoft Access
-description: Informacje o kopiowaniu danych z źródeł dostępu do obsługiwanych magazynów danych z programu Microsoft Access w ramach programu w potoku Azure Data Factory.
+title: Kopiowanie danych ze źródeł programu Microsoft Access
+description: Dowiedz się, jak kopiować dane ze źródeł programu Microsoft Access do obsługiwanych magazynów danych ujścia przy użyciu działania kopiowania w potoku usługi Azure Data Factory.
 services: data-factory
 ms.author: jingwang
 author: linda33wj
@@ -12,54 +12,54 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/27/2019
 ms.openlocfilehash: d6110065e28b8f179cd1d113107fb3508e1c3e44
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75892541"
 ---
-# <a name="copy-data-from-and-to-microsoft-access-data-stores-using-azure-data-factory"></a>Kopiowanie danych z i do magazynów danych programu Microsoft Access przy użyciu Azure Data Factory
+# <a name="copy-data-from-and-to-microsoft-access-data-stores-using-azure-data-factory"></a>Kopiowanie danych z i do magazynów danych programu Microsoft Access przy użyciu usługi Azure Data Factory
 
-W tym artykule opisano sposób używania działania kopiowania w Azure Data Factory do kopiowania danych z magazynu danych programu Microsoft Access. Opiera się na [omówienie działania kopiowania](copy-activity-overview.md) artykułu, który przedstawia ogólne omówienie działania kopiowania.
+W tym artykule opisano, jak skopiować dane z magazynu danych programu Microsoft Access za pomocą działania kopiowania w usłudze Azure Data Factory. Opiera się na [omówienie działania kopiowania](copy-activity-overview.md) artykuł, który przedstawia ogólny przegląd działania kopiowania.
 
-## <a name="supported-capabilities"></a>Obsługiwane funkcje
+## <a name="supported-capabilities"></a>Obsługiwane możliwości
 
 Ten łącznik programu Microsoft Access jest obsługiwany dla następujących działań:
 
-- [Działanie kopiowania](copy-activity-overview.md) z [obsługiwaną macierzą źródłową/ujścia](copy-activity-overview.md)
-- [Działanie Lookup](control-flow-lookup-activity.md)
+- [Kopiowanie aktywności](copy-activity-overview.md) z [obsługiwaną macierzą źródło/ujście](copy-activity-overview.md)
+- [Działanie odnośnika](control-flow-lookup-activity.md)
 
-Dane z programu Microsoft Access source można kopiować do dowolnego obsługiwanego magazynu danych ujścia. Aby uzyskać listę magazynów danych, obsługiwane przez działanie kopiowania jako źródła/ujścia, zobacz [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats) tabeli.
+Dane można kopiować ze źródła programu Microsoft Access do dowolnego obsługiwanego magazynu danych ujścia. Aby uzyskać listę magazynów danych, które są obsługiwane jako źródła/pochłaniacze przez działanie kopiowania, zobacz tabelę [Obsługiwane magazyny danych.](copy-activity-overview.md#supported-data-stores-and-formats)
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby użyć tego łącznika programu Microsoft Access, należy wykonać następujące:
+Aby korzystać z tego łącznika programu Microsoft Access, należy:
 
-- Skonfiguruj samodzielny Integration Runtime. Zobacz [własne środowisko IR](create-self-hosted-integration-runtime.md) artykuł, aby uzyskać szczegółowe informacje.
-- Zainstaluj sterownik Microsoft Access ODBC dla magazynu danych na maszynie Integration Runtime.
+- Konfigurowanie środowiska wykonawczego integracji hostowanego samodzielnie. Zobacz [self-hosted Integration Runtime](create-self-hosted-integration-runtime.md) artykułu, aby uzyskać szczegółowe informacje.
+- Zainstaluj sterownik ODBC programu Microsoft Access dla magazynu danych na komputerze runtime integracji.
 
 >[!NOTE]
->Wersja Microsoft Access 2016 sterownika ODBC nie współpracuje z tym łącznikiem. Zamiast tego użyj sterownika w wersji 2013 lub 2010.
+>Microsoft Access 2016 wersja sterownika ODBC nie działa z tym łącznikiem. Zamiast tego użyj wersji sterownika 2013 lub 2010.
 
 ## <a name="getting-started"></a>Wprowadzenie
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
-Poniższe sekcje zawierają szczegółowe informacje o właściwościach, które są używane do definiowania jednostek Data Factory specyficznych dla łącznika Microsoft Access Connector.
+W poniższych sekcjach znajdują się szczegółowe informacje o właściwościach, które są używane do definiowania jednostek usługi Data Factory specyficznych dla łącznika programu Microsoft Access.
 
-## <a name="linked-service-properties"></a>Właściwości usługi połączonej
+## <a name="linked-service-properties"></a>Połączone właściwości usługi
 
-Następujące właściwości są obsługiwane dla połączonej usługi Microsoft Access:
+W przypadku połączonej usługi programu Microsoft Access są obsługiwane następujące właściwości:
 
-| Właściwość | Opis | Wymagane |
+| Właściwość | Opis | Wymagany |
 |:--- |:--- |:--- |
-| type | Właściwość Type musi mieć wartość: **MicrosoftAccess** | Tak |
-| connectionString | Parametry połączenia ODBC z wyjątkiem części poświadczenia. Można określić parametry połączenia lub użyć systemu DSN (nazwa źródła danych) skonfigurowanego na maszynie Integration Runtime (w związku z tym nadal należy określić część poświadczeń w połączonej usłudze).<br> Możesz również wprowadzić hasło w Azure Key Vault i ściągnąć konfigurację   `password`z parametrów połączenia. Aby uzyskać więcej informacji, zapoznaj się z [poświadczeniami przechowywania w Azure Key Vault](store-credentials-in-key-vault.md) .| Tak |
-| authenticationType | Typ uwierzytelniania używany do nawiązywania połączenia z magazynem danych programu Microsoft Access.<br/>Dozwolone wartości to: **podstawowe** i **anonimowe**. | Tak |
-| userName | Określ nazwę użytkownika w przypadku korzystania z uwierzytelniania podstawowego. | Nie |
-| hasło | Określ hasło dla konta użytkownika określonego dla nazwy użytkownika. Oznacz to pole jako SecureString, aby bezpiecznie przechowywać w usłudze Data Factory lub [odwołanie wpisu tajnego przechowywanych w usłudze Azure Key Vault](store-credentials-in-key-vault.md). | Nie |
-| poświadczenia | Część poświadczeń dostępu do parametrów połączenia określona w formacie wartości właściwości specyficznej dla sterownika. Oznacz to pole jako element SecureString. | Nie |
-| connectVia | [Środowiska Integration Runtime](concepts-integration-runtime.md) ma być używany do łączenia się z magazynem danych. Samodzielna Integration Runtime jest wymagana, jak wspomniano w [wymaganiach wstępnych](#prerequisites). |Tak |
+| type | Właściwość typu musi być ustawiona na: **MicrosoftAccess** | Tak |
+| Parametry połączenia | Parametry połączenia ODBC z wyłączeniem części poświadczeń. Można określić parametry połączenia lub użyć systemu DSN (nazwa źródła danych) skonfigurowany na komputerze środowiska wykonawczego integracji (nadal trzeba określić część poświadczeń w połączonej usłudze odpowiednio).<br> Można również umieścić hasło w usłudze `password` Azure Key Vault i wyciągnąć konfigurację z ciągu połączenia.Więcej informacji można znaleźć [w witrynie Store credentials w usłudze Azure Key Vault.](store-credentials-in-key-vault.md) | Tak |
+| authenticationType | Typ uwierzytelniania używany do łączenia się z magazynem danych programu Microsoft Access.<br/>Dozwolone wartości to: **Podstawowe** i **Anonimowe**. | Tak |
+| userName | Określ nazwę użytkownika, jeśli używasz uwierzytelniania podstawowego. | Nie |
+| hasło | Określ hasło dla konta użytkownika określonego dla nazwy użytkownika. Oznacz to pole jako SecureString, aby bezpiecznie przechowywać go w fabryce danych lub [odwołaj się do klucza tajnego przechowywanego w usłudze Azure Key Vault.](store-credentials-in-key-vault.md) | Nie |
+| poświadczenia | Część poświadczeń dostępu ciągu połączenia określona w formacie właściwości-wartość specyficzne dla sterownika. Oznacz to pole jako SecureString. | Nie |
+| connectVia | [Środowisko wykonawcze integracji,](concepts-integration-runtime.md) które mają być używane do łączenia się z magazynem danych. Środowisko wykonawcze integracji hostowane samodzielnie jest wymagane, jak wspomniano w [wymaganiach wstępnych.](#prerequisites) |Tak |
 
 **Przykład:**
 
@@ -87,14 +87,14 @@ Następujące właściwości są obsługiwane dla połączonej usługi Microsoft
 
 ## <a name="dataset-properties"></a>Właściwości zestawu danych
 
-Aby uzyskać pełną listę sekcje i właściwości dostępne Definiowanie zestawów danych, zobacz [zestawów danych](concepts-datasets-linked-services.md) artykułu. Ta sekcja zawiera listę właściwości obsługiwanych przez zestaw danych programu Microsoft Access.
+Aby uzyskać pełną listę sekcji i właściwości dostępnych do definiowania zestawów danych, zobacz artykuł [o zestawach danych.](concepts-datasets-linked-services.md) Ta sekcja zawiera listę właściwości obsługiwanych przez zestaw danych programu Microsoft Access.
 
 Aby skopiować dane z programu Microsoft Access, obsługiwane są następujące właściwości:
 
-| Właściwość | Opis | Wymagane |
+| Właściwość | Opis | Wymagany |
 |:--- |:--- |:--- |
-| type | Właściwość Type zestawu danych musi być ustawiona na wartość: **MicrosoftAccessTable** | Tak |
-| tableName | Nazwa tabeli w programie Microsoft Access. | Nie dla źródła (Jeśli określono "zapytanie" w źródle aktywności);<br/>Tak dla ujścia |
+| type | Właściwość typu zestawu danych musi być ustawiona na: **MicrosoftAccessTable** | Tak |
+| tableName | Nazwa tabeli w programie Microsoft Access. | Nie dla źródła (jeśli określono "zapytanie" w źródle działania);<br/>Tak dla zlewu |
 
 **Przykład**
 
@@ -116,16 +116,16 @@ Aby skopiować dane z programu Microsoft Access, obsługiwane są następujące 
 
 ## <a name="copy-activity-properties"></a>Właściwości działania kopiowania
 
-Aby uzyskać pełną listę sekcje i właściwości dostępne do definiowania działań zobacz [potoki](concepts-pipelines-activities.md) artykułu. Ta sekcja zawiera listę właściwości obsługiwanych przez program Microsoft Access source.
+Aby uzyskać pełną listę sekcji i właściwości dostępnych do definiowania działań, zobacz [Pipelines](concepts-pipelines-activities.md) artykułu. Ta sekcja zawiera listę właściwości obsługiwanych przez źródło programu Microsoft Access.
 
-### <a name="microsoft-access-as-source"></a>Microsoft Access jako źródło
+### <a name="microsoft-access-as-source"></a>Program Microsoft Access jako źródło
 
-Aby skopiować dane z magazynu danych zgodnego z programem Microsoft Access, w sekcji **Źródło** działania kopiowania są obsługiwane następujące właściwości:
+Aby skopiować dane z magazynu danych zgodnych z programem Microsoft Access, w sekcji **źródła** działania kopiowania obsługiwane są następujące właściwości:
 
-| Właściwość | Opis | Wymagane |
+| Właściwość | Opis | Wymagany |
 |:--- |:--- |:--- |
-| type | Właściwość Type źródła działania Copy musi być ustawiona na wartość: **MicrosoftAccessSource** | Tak |
-| query | Użyj zapytania niestandardowego do odczytywania danych. Na przykład: `"SELECT * FROM MyTable"`. | Nie (Jeśli określono parametr "tableName" w zestawie danych) |
+| type | Właściwość typu źródła działania kopiowania musi być ustawiona na: **MicrosoftAccessSource** | Tak |
+| query | Użyj kwerendy niestandardowej, aby odczytać dane. Na przykład: `"SELECT * FROM MyTable"`. | Nie (jeśli określono "nazwa tabela" w zestawie danych) |
 
 **Przykład:**
 
@@ -159,9 +159,9 @@ Aby skopiować dane z magazynu danych zgodnego z programem Microsoft Access, w s
 ]
 ```
 
-## <a name="lookup-activity-properties"></a>Właściwości działania Lookup
+## <a name="lookup-activity-properties"></a>Właściwości działania odnośnika
 
-Aby dowiedzieć się więcej o właściwościach, sprawdź [działanie Lookup (wyszukiwanie](control-flow-lookup-activity.md)).
+Aby dowiedzieć się więcej o właściwościach, sprawdź [działanie odnośnika](control-flow-lookup-activity.md).
 
 ## <a name="next-steps"></a>Następne kroki
-Aby uzyskać listę magazynów danych obsługiwanych jako źródła i ujścia działania kopiowania w usłudze Azure Data Factory, zobacz [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats).
+Aby uzyskać listę magazynów danych obsługiwanych jako źródła i pochłaniacze przez działanie kopiowania w usłudze Azure Data Factory, zobacz [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats).

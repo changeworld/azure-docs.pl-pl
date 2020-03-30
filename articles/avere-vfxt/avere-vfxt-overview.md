@@ -7,10 +7,10 @@ ms.topic: overview
 ms.date: 01/13/2020
 ms.author: rohogue
 ms.openlocfilehash: a9dab2ca844feb1c24dfffc48b4f29cd1a311314
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "76153195"
 ---
 # <a name="what-is-avere-vfxt-for-azure"></a>Co to jest system Avere vFXT for Azure?
@@ -19,13 +19,13 @@ System Avere vFXT for Azure to rozwiązanie pamięci podręcznej systemu plików
 
 System Avere vFXT obsługuje następujące typowe scenariusze obliczeniowe:
 
-* Architektura chmury hybrydowej — avere vFXT dla platformy Azure może współdziałać z systemem magazynu sprzętowego, który zapewnia korzyści obliczeniowe w chmurze bez konieczności przenoszenia plików.
+* Architektura chmury hybrydowej — Avere vFXT for Azure może współpracować ze sprzętowym systemem magazynowania, który zapewnia korzyści z przetwarzania w chmurze bez konieczności przenoszenia plików.
 
-* Przemieszczanie w chmurze — avere vFXT for Azure może pomóc w przenoszeniu danych do chmury dla jednego projektu lub "Unieś" i przesunąć cały przepływ pracy na stałe.
+* Chmura bursting — Avere vFXT for Azure może pomóc przenieść dane do chmury dla jednego projektu lub "lift and shift" całego przepływu pracy na stałe.
 
 ![diagram przedstawiający szczegółowe informacje o systemie Avere vFXT w ramach subskrypcji platformy Azure podłączonym do magazynu obiektów blob i lokalnego centrum danych](media/avere-vfxt-hybrid.png)
 
-Avere vFXT for Azure najlepiej nadaje się w następujących sytuacjach:
+Avere vFXT for Azure najlepiej nadaje się do następujących sytuacji:
 
 * Operacje z dużą liczbą odczytów dla obciążeń HPC
 * Aplikacje korzystające ze wspólnego protokołu systemu plików NFS
@@ -44,9 +44,9 @@ W branży multimediów i rozrywki klaster Avere vFXT może przyspieszyć dostęp
 
 ### <a name="life-sciences"></a>Nauki przyrodnicze
 
-Avere vFXT umożliwia naukowcom uruchamianie pomocniczych przepływów pracy analizy w usłudze Azure COMPUTE i dostęp do danych genomiki bez względu na ich lokalizację.
+Avere vFXT umożliwia badaczom uruchamianie wtórnych przepływów pracy analizy w usłudze Azure Compute i uzyskiwanie dostępu do danych genomicznych bez względu na ich lokalizację.
 
-W badaniach farmaceutycznych avere klastry vFXT mogą przyspieszyć odnajdywanie narkotyków, pomagając badaczom w przewidywaniu interakcji narkotyków i analizowaniu danych badawczych.
+W badaniach farmaceutycznych klastry Avere vFXT mogą przyspieszyć odkrywanie leków, pomagając naukowcom przewidzieć interakcje między lekami a celami i analizować dane badawcze.
 
 ### <a name="financial-services-analytics"></a>Analiza usług finansowych
 
@@ -75,8 +75,8 @@ Avere vFXT for Azure używa następujących zasobów platformy Azure:
 
 ## <a name="next-steps"></a>Następne kroki
 
-Zapoznaj się z tymi artykułami, aby zaplanować i utworzyć własne avere vFXT dla wdrożenia platformy Azure.
+Przeczytaj te artykuły, aby zaplanować i utworzyć własne wdrożenie Avere vFXT dla platformy Azure.
 
-* [Planowanie systemu](avere-vfxt-deploy-plan.md)
+* [Zaplanuj swój system](avere-vfxt-deploy-plan.md)
 * [Omówienie wdrażania](avere-vfxt-deploy-overview.md)
 * [Tworzenie systemu vFXT](avere-vfxt-deploy.md)

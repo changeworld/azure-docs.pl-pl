@@ -8,10 +8,10 @@ ms.date: 07/21/2017
 ms.author: gamonroy
 ms.custom: mvc
 ms.openlocfilehash: c0ef7255a087dd5dc26532316deab337f9eff715
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "76271583"
 ---
 # <a name="deprecated-introduction-to-azure-container-service-for-kubernetes"></a>(PRZESTARZAŁE) Wprowadzenie do usługi Azure Container Service dla rozwiązania Kubernetes
@@ -46,7 +46,7 @@ Diagram architektury rozwiązania Kubernetes wdrażanej za pomocą usługi Azure
 
 ![Usługa Azure Container Service skoordynowana do użycia narzędzia Kubernetes.](media/acs-intro/kubernetes.png)
 
-## <a name="videos"></a>Filmy
+## <a name="videos"></a>Filmy wideo
 
 Obsługa klastra Kubernetes w usłudze Azure Container Service (Azure Friday, styczeń 2017 r.):
 

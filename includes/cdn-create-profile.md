@@ -9,10 +9,10 @@ ms.date: 05/24/2018
 ms.author: cfowler
 ms.custom: include file
 ms.openlocfilehash: 8aa6cb3f10b86a6821cd93190ecc2135508739cb
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67593990"
 ---
 ## <a name="create-a-new-cdn-profile"></a>Tworzenie nowego profilu CDN
@@ -27,11 +27,11 @@ Profil usługi CDN jest kontenerem dla punktów końcowych usługi CDN i określ
    
     ![Wybierz zasób usługi CDN](./media/cdn-create-profile/cdn-new-resource.png)
 
-    Zostanie wyświetlone okienko **Profil usługi CDN**.
+    Pojawi się okienko **profilu sieci CDN.**
 
 3. Dla ustawień profilu usługi CDN należy użyć wartości podanych w poniższej tabeli:
    
-    | Ustawienie  | Value |
+    | Ustawienie  | Wartość |
     | -------- | ----- |
     | **Nazwa** | Jako nazwę profilu wprowadź *my-cdn-profile-123*. Ta nazwa musi być globalnie unikatowa; jeśli jest już używana, można wprowadzić inną nazwę. |
     | **Subskrypcja** | Z listy rozwijanej wybierz subskrypcję platformy Azure. |

@@ -8,20 +8,20 @@ ms.date: 02/26/2018
 ms.author: iainfou
 ms.custom: H1Hack27Feb2017, mvc, devcenter
 ms.openlocfilehash: cfd0f8a9a3180b14b4da9dc61e252054fe06628c
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "78274169"
 ---
 # <a name="deprecated-deploy-kubernetes-cluster-for-linux-containers"></a>(PRZESTARZAŁE) Szybki start — wdrażanie klastra Kubernetes dla kontenerów systemu Linux
 
 > [!TIP]
-> Aby uzyskać zaktualizowaną wersję tego przewodnika Szybki Start korzystającego z usługi Azure Kubernetes, zobacz [Szybki Start: Wdrażanie klastra usługi Azure Kubernetes Service (AKS)](../../aks/kubernetes-walkthrough.md).
+> Aby uzyskać zaktualizowaną wersję tego przewodnika Szybki start, który korzysta z usługi Azure Kubernetes, zobacz [Szybki start: Wdrażanie klastra usługi Azure Kubernetes (AKS).](../../aks/kubernetes-walkthrough.md)
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
-W tym przewodniku szybki start klaster Kubernetes jest wdrażany przy użyciu interfejsu wiersza polecenia platformy Azure. Następnie w klastrze jest wdrażana i uruchamiana aplikacja obsługująca wiele kontenerów, która składa się z frontonu internetowego i wystąpienia pamięci podręcznej Redis. Po ukończeniu aplikacja będzie dostępna w Internecie. 
+W tym przewodniku Szybki start klaster kubernetes jest wdrażany przy użyciu interfejsu wiersza polecenia platformy Azure. Następnie w klastrze jest wdrażana i uruchamiana aplikacja obsługująca wiele kontenerów, która składa się z frontonu internetowego i wystąpienia pamięci podręcznej Redis. Po ukończeniu aplikacja będzie dostępna w Internecie. 
 
 Przykładowa aplikacja używana w tym dokumencie jest napisana w języku Python. Koncepcje i kroki przedstawione w tym miejscu mogą być używane do wdrożenia dowolnego obrazu kontenera w klastrze Kubernetes. Kod, plik Dockerfile i wstępnie utworzony plik manifestu rozwiązania Kubernetes powiązane z tym projektem są dostępne w [witrynie GitHub](https://github.com/Azure-Samples/azure-voting-app-redis.git).
 
@@ -29,13 +29,13 @@ Przykładowa aplikacja używana w tym dokumencie jest napisana w języku Python.
 
 Na potrzeby tego przewodnika Szybki start założono, że masz podstawową wiedzę na temat pojęć związanych z rozwiązaniem Kubernetes. Aby uzyskać szczegółowe informacje na jego temat, zapoznaj się z [dokumentacją rozwiązania Kubernetes]( https://kubernetes.io/docs/home/).
 
-Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Jeśli nie masz subskrypcji platformy Azure, utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) przed rozpoczęciem.
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
 Jeśli zdecydujesz się zainstalować interfejs wiersza polecenia i korzystać z niego lokalnie, ten przewodnik szybkiego startu będzie wymagał interfejsu wiersza polecenia platformy Azure w wersji 2.0.4 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie interfejsu, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure]( /cli/azure/install-azure-cli). 
 
-## <a name="create-a-resource-group"></a>Utwórz grupę zasobów
+## <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
 
 Utwórz grupę zasobów za pomocą polecenia [az group create](/cli/azure/group#az-group-create). Grupa zasobów platformy Azure to logiczna grupa przeznaczona do wdrażania zasobów platformy Azure i zarządzania nimi. 
 
@@ -104,7 +104,7 @@ k8s-master-14ad53a1-0   Ready,SchedulingDisabled   10m       v1.6.6
 
 Plik manifestu rozwiązania Kubernetes definiuje żądany stan klastra, w tym informacje o obrazach kontenera, które powinny zostać uruchomione. W tym przykładzie manifest służy do tworzenia wszystkich obiektów potrzebnych do uruchomienia aplikacji Azure Vote. 
 
-Utwórz plik o nazwie `azure-vote.yml` i skopiuj go do poniższego kodu YAML. Jeśli pracujesz w usłudze Azure Cloud Shell, ten plik można utworzyć przy użyciu serwera vi lub Nano tak jak podczas pracy w systemie wirtualnym lub fizycznym.
+Utwórz plik o nazwie `azure-vote.yml` i skopiuj go do poniższego kodu YAML. Jeśli pracujesz w usłudze Azure Cloud Shell, ten plik można utworzyć przy użyciu programu vi lub Nano, tak jak podczas pracy w systemie wirtualnym lub fizycznym.
 
 ```yaml
 apiVersion: apps/v1beta1
@@ -192,7 +192,7 @@ Aby monitorować postęp, użyj polecenia [kubectl get-service](https://kubernet
 kubectl get service azure-vote-front --watch
 ```
 
-Początkowo adres **EXTERNAL-IP** dla usługi *azure-vote-front* pojawia się jako *oczekujący*. Po zmianie adresu EXTERNAL-IP z *oczekującego* na *adres IP*, użyj polecenia `CTRL-C`, aby zatrzymać proces śledzenia narzędzia kubectl. 
+Początkowo adres **EXTERNAL-IP** dla usługi *azure-vote-front* jest wyświetlany jako *oczekujący*. Po zmianie adresu EXTERNAL-IP z *oczekującego* na *adres IP*, użyj polecenia `CTRL-C`, aby zatrzymać proces śledzenia narzędzia kubectl. 
   
 ```output
 azure-vote-front   10.0.34.242   <pending>     80:30676/TCP   7s

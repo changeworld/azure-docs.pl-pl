@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: jingwang
 ms.openlocfilehash: b838e411e2795405c439a4107daab7aa8f033059
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76021175"
 ---
 ## <a name="verify-the-output"></a>Sprawdzanie danych wyjściowych
@@ -16,11 +16,11 @@ Potok automatycznie tworzy folder wyjściowy w kontenerze obiektów blob adftuto
 
 1. W witrynie Azure Portal na stronie kontenera **adftutorial** kliknij przycisk **Odśwież**, aby wyświetlić folder wyjściowy. 
     
-    ![Odśwież](media/data-factory-quickstart-verify-output-cleanup/output-refresh.png)
+    ![Odświeżanie](media/data-factory-quickstart-verify-output-cleanup/output-refresh.png)
 2. Kliknij folder **dane wyjściowe** na liście folderów. 
 2. Upewnij się, że plik **emp.txt** jest kopiowany do folderu wyjściowego. 
 
-    ![Odśwież](media/data-factory-quickstart-verify-output-cleanup/output-file.png)
+    ![Odświeżanie](media/data-factory-quickstart-verify-output-cleanup/output-file.png)
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 Zasoby, które zostały utworzone w ramach tego przewodnika Szybki start, możesz wyczyścić na dwa sposoby. Możesz usunąć [grupę zasobów platformy Azure](../articles/azure-resource-manager/management/overview.md) zawierającą wszystkie zasoby w tej grupie. Jeśli chcesz zachować inne zasoby bez zmian, usuń tylko fabrykę danych utworzoną w tym samouczku.

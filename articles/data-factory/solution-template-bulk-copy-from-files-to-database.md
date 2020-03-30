@@ -1,6 +1,6 @@
 ---
-title: Kopiuj zbiorczo z plików do bazy danych
-description: Dowiedz się, jak używać szablonu rozwiązania do zbiorczego kopiowania danych z Azure Data Lake Storage Gen2 do usługi Azure Synapse Analytics/Azure SQL Database.
+title: Kopiowanie zbiorcze z plików do bazy danych
+description: Dowiedz się, jak używać szablonu rozwiązania do zbiorczego kopiowania danych z usługi Azure Data Lake Storage Gen2 do usługi Azure Synapse Analytics / Azure SQL Database.
 services: data-factory
 author: linda33wj
 ms.author: jingwang
@@ -9,59 +9,59 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/08/2020
 ms.openlocfilehash: ae250c7d15801789ad22955845cfa535ed91f2c1
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/13/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75921155"
 ---
-# <a name="bulk-copy-from-files-to-database"></a>Kopiuj zbiorczo z plików do bazy danych
+# <a name="bulk-copy-from-files-to-database"></a>Kopiowanie zbiorcze z plików do bazy danych
 
-W tym artykule opisano szablon rozwiązania, którego można użyć do zbiorczego kopiowania danych z Azure Data Lake Storage Gen2 do usługi Azure Synapse Analytics/Azure SQL Database.
+W tym artykule opisano szablon rozwiązania, którego można użyć do zbiorczego kopiowania danych z usługi Azure Data Lake Storage Gen2 do usługi Azure Synapse Analytics / Azure SQL Database.
 
 ## <a name="about-this-solution-template"></a>Informacje o tym szablonie rozwiązania
 
-Ten szablon pobiera pliki ze źródła Azure Data Lake Storage Gen2. Następnie iteruje każdy plik w źródle i kopiuje go do docelowego magazynu danych. 
+Ten szablon pobiera pliki ze źródła usługi Azure Data Lake Storage Gen2. Następnie iteruje nad każdym plikiem w źródle i kopiuje plik do docelowego magazynu danych. 
 
-Obecnie ten szablon obsługuje tylko kopiowanie danych w formacie **DelimitedText** . Pliki w innych formatach danych można również pobrać ze źródłowego magazynu danych, ale nie można ich skopiować do docelowego magazynu danych.  
+Obecnie ten szablon obsługuje tylko kopiowanie danych w formacie **DelimitedText.** Pliki w innych formatach danych można również pobrać ze źródłowego magazynu danych, ale nie można ich skopiować do docelowego magazynu danych.  
 
 Szablon zawiera trzy działania:
-- Działanie **Get Metadata** pobiera pliki z Azure Data Lake Storage Gen2 i przekazuje je do kolejnego działania *foreach* .
-- Działanie **foreach** pobiera pliki z działania *Get Metadata* i iteruje każdy plik w działaniu *kopiowania* .
-- Działanie **kopiowania** znajduje się w działaniu *foreach* , aby skopiować każdy plik ze źródłowego magazynu danych do docelowego magazynu danych.
+- Pobierz działanie **metadanych** pobiera pliki z usługi Azure Data Lake Storage Gen2 i przekazuje je do kolejnych *forEach* działania.
+- **ForEach** działania pobiera pliki z *Get Metadata* działania i iteruje każdy plik do *copy* działania.
+- **Działanie kopiowania** znajduje się w *forEach* działania, aby skopiować każdy plik z magazynu danych źródłowych do magazynu danych docelowych.
 
 Szablon definiuje następujące dwa parametry:
-- *SourceContainer* to ścieżka do głównego kontenera, w którym dane są kopiowane z Azure Data Lake Storage Gen2. 
-- *SourceDirectory* to ścieżka katalogu głównego kontenera, w którym dane są kopiowane z Azure Data Lake Storage Gen2.
+- *SourceContainer* jest ścieżką kontenera głównego, z którego dane są kopiowane w usłudze Azure Data Lake Storage Gen2. 
+- *SourceDirectory* to ścieżka katalogu w kontenerze głównym, z którego dane są kopiowane w usłudze Azure Data Lake Storage Gen2.
 
-## <a name="how-to-use-this-solution-template"></a>Jak używać tego szablonu rozwiązania
+## <a name="how-to-use-this-solution-template"></a>Jak korzystać z tego szablonu rozwiązania
 
-1. Przejdź do szablonu **kopiowania zbiorczego z plików do bazy danych** . Utwórz **nowe** połączenie ze źródłowym magazynem Gen2. Należy pamiętać, że "GetMetadataDataset" i "SourceDataset" są odwołaniami do tego samego połączenia z źródłowym magazynem plików.
+1. Przejdź do szablonu **Kopiowanie zbiorcze z plików do bazy danych.** Utwórz **nowe** połączenie ze źródłowym magazynem Gen2. Należy pamiętać, że "GetMetadataDataset" i "SourceDataset" są odwołania do tego samego połączenia magazynu plików źródłowych.
 
-    ![Utwórz nowe połączenie z magazynem danych źródłowych](media/solution-template-bulk-copy-from-files-to-database/source-connection.png)
+    ![Tworzenie nowego połączenia ze źródłowym magazynem danych](media/solution-template-bulk-copy-from-files-to-database/source-connection.png)
 
-2. Utwórz **nowe** połączenie z magazynem danych ujścia, do którego kopiowane są dane.
+2. Utwórz **nowe** połączenie z magazynem danych ujścia, do którego kopiujesz dane.
 
-    ![Utwórz nowe połączenie z magazynem danych ujścia](media/solution-template-bulk-copy-from-files-to-database/destination-connection.png)
+    ![Tworzenie nowego połączenia z magazynem danych ujścia](media/solution-template-bulk-copy-from-files-to-database/destination-connection.png)
     
-3. Wybierz przycisk **Użyj tego szablonu**.
+3. Wybierz pozycję **Użyj tego szablonu**.
 
     ![Użyj tego szablonu](media/solution-template-bulk-copy-from-files-to-database/use-template.png)
     
-4. Zobaczysz utworzony potok, jak pokazano w następującym przykładzie:
+4. Zostanie wyświetlony potok utworzony w sposób pokazany w poniższym przykładzie:
 
-    ![Przeglądanie potoku](media/solution-template-bulk-copy-from-files-to-database/new-pipeline.png)
+    ![Przejrzyj potok](media/solution-template-bulk-copy-from-files-to-database/new-pipeline.png)
 
     > [!NOTE]
-    > Jeśli wybierzesz pozycję **Azure Synapse Analytics (wcześniej SQL DW)** jako miejsce docelowe danych w **kroku 2** wymienionym powyżej, musisz wprowadzić połączenie z magazynem obiektów blob platformy Azure na potrzeby przemieszczania, zgodnie z wymaganiami SQL Data Warehouse Base. Jak pokazano na poniższym zrzucie ekranu, szablon automatycznie wygeneruje *ścieżkę magazynu* dla magazynu obiektów BLOB. Sprawdź, czy kontener został utworzony po uruchomieniu potoku.
+    > Jeśli wybrano **usługę Azure Synapse Analytics (dawniej SQL DW)** jako miejsce docelowe danych w **kroku 2** wymienionych powyżej, należy wprowadzić połączenie z magazynem obiektów Blob platformy Azure w celu przeprowadzenia przemieszczania, zgodnie z wymaganiami bazy danych SQL Data Warehouse. Jak pokazano na poniższym zrzucie ekranu, szablon automatycznie wygeneruje *ścieżkę magazynu* dla magazynu obiektów blob. Sprawdź, czy kontener został utworzony po uruchomieniu potoku.
         
-    ![Ustawienie bazy](media/solution-template-bulk-copy-from-files-to-database/staging-account.png)
+    ![Ustawienie bazy polibałowej](media/solution-template-bulk-copy-from-files-to-database/staging-account.png)
 
-5. Wybierz pozycję **Debuguj**, wprowadź **Parametry**, a następnie wybierz pozycję **Zakończ**.
+5. Wybierz **debugowanie**, wprowadź **parametry**, a następnie wybierz **zakończ**.
 
-    ![Kliknij pozycję * * Debuguj * *](media/solution-template-bulk-copy-from-files-to-database/debug-run.png)
+    ![Kliknij przycisk **Debugowanie**](media/solution-template-bulk-copy-from-files-to-database/debug-run.png)
 
-6. Po pomyślnym zakończeniu przebiegu potoku zobaczysz wyniki podobne do następującego przykładu:
+6. Po pomyślnym zakończeniu wykonywania uruchomienia potoku zostaną wyświetlne wyniki podobne do następującego przykładu:
 
     ![Przejrzyj wynik](media/solution-template-bulk-copy-from-files-to-database/run-succeeded.png)
 

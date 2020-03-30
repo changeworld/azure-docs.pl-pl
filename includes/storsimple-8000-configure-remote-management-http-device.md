@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 473bc0a58fe49c7f454c81402b57ddce7fc745b2
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67183292"
 ---
 #### <a name="to-configure-remote-management-on-cloud-appliance"></a>Aby skonfigurować zdalne zarządzanie w urządzeniu w chmurze
@@ -27,7 +27,7 @@ ms.locfileid: "67183292"
 
     1. Upewnij się, że pole **Włącz administrację zdalną** zostało zaznaczone.
     2. Ustawieniem domyślnym jest łączenie za pośrednictwem protokołu HTTPS. Możesz wybrać opcję połączenia przy użyciu protokołu HTTP. Łączenie za pośrednictwem protokołu HTTP jest dopuszczalne tylko w sieciach zaufanych. Upewnij się, że protokół HTTP został włączony.
-    3. Na pasku poleceń u góry bloku kliknij pozycję **... Więcej**, a następnie kliknij pozycję **Pobierz certyfikat**, aby pobrać certyfikat zdalnego zarządzania. Możesz określić lokalizację, w której chcesz zapisać plik. Certyfikat trzeba zainstalować na kliencie lub maszynie hosta, która zostanie użyta do nawiązania połączenia z urządzeniem w chmurze.
+    3. Z paska poleceń w górnej części ostrza kliknij **... Więcej,** a następnie kliknij przycisk **Pobierz certyfikat,** aby pobrać certyfikat zdalnego zarządzania. Możesz określić lokalizację, w której chcesz zapisać plik. Certyfikat trzeba zainstalować na kliencie lub maszynie hosta, która zostanie użyta do nawiązania połączenia z urządzeniem w chmurze.
 
         ![Blok Zdalne zarządzanie](./media/storsimple-8000-configure-remote-management-http-device/sca-remote-manage4.png)
 5. Kliknij przycisk **Zapisz** i po wyświetleniu monitu potwierdź zmiany.

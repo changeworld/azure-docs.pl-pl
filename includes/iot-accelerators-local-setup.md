@@ -9,19 +9,19 @@ ms.date: 01/17/2019
 ms.author: avneet723
 ms.custom: include file
 ms.openlocfilehash: 1f567b3d083853f9bb342bfad462e8545caa6480
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67183664"
 ---
 ## <a name="download-the-source-code"></a>Pobierz kod źródłowy
 
-Zdalne monitorowanie repozytoriów kodu źródłowego zawierają kod źródłowy i pliki konfiguracji platformy Docker, należy uruchomić mikrousługi obrazów platformy Docker.
+Repozytoria kodu źródłowego zdalnego monitorowania zawierają kod źródłowy i pliki konfiguracyjne platformy Docker, które są potrzebne do uruchamiania obrazów platformy Docker mikrousług.
 
-Aby sklonować i utworzyć lokalną wersję repozytorium, użyj środowiska wiersza polecenia można przejść do odpowiedniego folderu na komputerze lokalnym. Następnie uruchom jedno z następujących zestawów poleceń, aby sklonować albo repozytorium .NET:
+Aby sklonować i utworzyć lokalną wersję repozytorium, użyj środowiska wiersza polecenia, aby przejść do odpowiedniego folderu na komputerze lokalnym. Następnie uruchom jeden z następujących zestawów poleceń, aby sklonować repozytorium .NET:
 
-Aby pobrać najnowszą wersję implementacji mikrousługi platformy .NET, uruchom polecenie:
+Aby pobrać najnowszą wersję implementacji mikrousług .NET, uruchom:
 
 ```cmd/sh
 git clone --recurse-submodules https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet.git
@@ -33,47 +33,47 @@ git submodule foreach git pull origin master
 ```
 
 > [!NOTE]
-> Te polecenia Pobierz kod źródłowy wszystkie mikrousługi oprócz skryptów, których można używać do uruchamiania mikrousługi lokalnie. Mimo że nie ma potrzeby kodu źródłowego, aby uruchomić mikrousług na platformie Docker, kod źródłowy jest przydatne, jeśli planujesz później zmodyfikować akcelerator rozwiązań i lokalne testowanie zmian.
+> Te polecenia pobrać kod źródłowy dla wszystkich mikrousług oprócz skryptów używanych do uruchamiania mikrousług lokalnie. Chociaż nie potrzebujesz kodu źródłowego do uruchamiania mikrousług w docker, kod źródłowy jest przydatne, jeśli później planujesz zmodyfikować akcelerator rozwiązań i przetestować zmiany lokalnie.
 
-## <a name="deploy-the-azure-services"></a>Wdrażaj usługi platformy Azure
+## <a name="deploy-the-azure-services"></a>Wdrażanie usług platformy Azure
 
-Mimo że w tym artykule pokazano, jak uruchomić mikrousługi lokalnie, są one zależne od usług platformy Azure działające w chmurze. Użyj poniższego skryptu wdrażania usług platformy Azure. W poniższych przykładach skryptów przyjęto założenie, że używasz repozytorium .NET na maszynie Windows. Jeśli pracujesz w innym środowisku, Dostosuj ścieżek, rozszerzeń plików i separatorami ścieżki odpowiednio.
+Chociaż w tym artykule pokazano, jak uruchomić mikrousług lokalnie, zależą one od usług platformy Azure uruchomionych w chmurze. Użyj następującego skryptu, aby wdrożyć usługi platformy Azure. Poniższe przykłady skryptów zakładają, że używasz repozytorium .NET na komputerze z systemem Windows. Jeśli pracujesz w innym środowisku, dostosuj odpowiednio ścieżki, rozszerzenia plików i separatory ścieżek.
 
 ### <a name="create-new-azure-resources"></a>Tworzenie nowych zasobów platformy Azure
 
-Jeśli jeszcze nie utworzono wymaganych zasobów platformy Azure, wykonaj następujące kroki:
+Jeśli nie utworzono jeszcze wymaganych zasobów platformy Azure, wykonaj następujące kroki:
 
-1. W środowisku wiersza polecenia i przejdź do **\services\scripts\local\launch** folderu w sklonowanej kopii repozytorium.
+1. W środowisku wiersza polecenia przejdź do folderu **\services\scripts\local\launch** w sklonowanej kopii repozytorium.
 
-1. Uruchom następujące polecenia, aby zainstalować **komputerów** interfejsu wiersza polecenia narzędzia i zaloguj się do konta platformy Azure:
+1. Uruchom następujące polecenia, aby zainstalować narzędzie **interfejsu wiersza** polecenia pcs i zalogować się na swoje konto platformy Azure:
 
     ```cmd
     npm install -g iot-solutions
     pcs login
     ```
 
-1. Uruchom **start.cmd** skryptu. Skrypt wyświetli monit o podanie następujących informacji:
+1. Uruchom skrypt **start.cmd.** Skrypt monituje o następujące informacje:
    * Nazwa rozwiązania.
    * Subskrypcja platformy Azure, która ma być używana.
    * Lokalizacja centrum danych platformy Azure do użycia.
 
-     Skrypt tworzy grupę zasobów na platformie Azure, nazwą rozwiązania. Ta grupa zasobów zawiera zasoby platformy Azure, który korzysta z akceleratora rozwiązań. Można usunąć tej grupy zasobów, gdy nie są już potrzebne odpowiednich zasobów.
+     Skrypt tworzy grupę zasobów na platformie Azure o nazwie rozwiązania. Ta grupa zasobów zawiera zasoby platformy Azure używane przez akcelerator rozwiązań. Tę grupę zasobów można usunąć, gdy nie są już potrzebne odpowiednie zasoby.
 
-     Skrypt ten dodaje również zestaw zmiennych środowiskowych z prefiksem **komputerów** na komputer lokalny. Te zmienne środowiskowe zawierają szczegółowe informacje dotyczące monitorowania zdalnego był możliwy odczyt z zasobem usługi Azure Key Vault. Ten zasób usługi Key Vault jest, gdzie zdalne monitorowanie odczyta jego wartości konfiguracji z.
+     Skrypt dodaje również zestaw zmiennych środowiskowych z prefiksem **PCS** do komputera lokalnego. Te zmienne środowiskowe zawierają szczegółowe informacje dotyczące zdalnego monitorowania, aby móc odczytywać z zasobu usługi Azure Key Vault. Ten zasób magazynu kluczy to miejsce, z którego zdalne monitorowanie odczyta wartości konfiguracji.
 
      > [!TIP]
-     > Po ukończeniu działania skryptu, zapisuje również zmiennych środowiskowych w pliku o nazwie  **\<folderu macierzystego\>\\.pcs\\\<Nazwa rozwiązania\>ENV** . Można je dla wdrożenia akcelerator rozwiązań w przyszłości. Należy pamiętać, że wszelkie zmienne środowiskowe, ustaw na komputerze lokalnym zastąpić wartości w **usług\\skrypty\\lokalnego\\ENV** plików po uruchomieniu **docker-compose**.
+     > Po zakończeniu skryptu zapisuje również zmienne środowiskowe w pliku o nazwie ** \<\>nazwa rozwiązania .env\>\\\\\<folderu macierzystego**. pcs . Można ich używać do przyszłych wdrożeń akceleratora rozwiązań. Należy zauważyć, że wszystkie zmienne środowiskowe ustawione na komputerze lokalnym zastępują wartości w **skryptach\\\\usług\\lokalnego** pliku env po uruchomieniu **docker-compose**.
 
-1. Zamknij ze środowiska wiersza polecenia.
+1. Wyjdź ze środowiska wiersza polecenia.
 
-### <a name="use-existing-azure-resources"></a>Użyj istniejących zasobów platformy Azure
+### <a name="use-existing-azure-resources"></a>Korzystanie z istniejących zasobów platformy Azure
 
-Jeśli już utworzono wymaganych zasobów platformy Azure, utwórz odpowiednie zmienne środowiskowe na komputerze lokalnym.
-Ustaw zmienne środowiskowe do wykonania poniższych czynności:
-* **PCS_KEYVAULT_NAME** — Nazwa zasobu usługi Azure Key Vault
-* **PCS_AAD_APPID** — identyfikator aplikacji usługi AAD
-* **PCS_AAD_APPSECRET** — klucz tajny aplikacji usługi AAD
+Jeśli utworzono już wymagane zasoby platformy Azure, utwórz odpowiednie zmienne środowiskowe na komputerze lokalnym.
+Ustaw zmienne środowiskowe dla następujących:
+* **PCS_KEYVAULT_NAME** — nazwa zasobu usługi Azure Key Vault
+* **PCS_AAD_APPID** - Identyfikator aplikacji AAD
+* **PCS_AAD_APPSECRET** - Tajna aplikacja AAD
 
-Wartości konfiguracji będą odczytywane z tego zasobu usługi Azure Key Vault. Te zmienne środowiskowe mogą być zapisane w  **\<folderu macierzystego\>\\.pcs\\\<Nazwa rozwiązania\>ENV** pliku z wdrożenia. Należy pamiętać, że zmienne środowiskowe ustawione na komputerze lokalnym, Zastąp wartości w **usług\\skrypty\\lokalnego\\ENV** plików po uruchomieniu **narzędzia docker compose**.
+Wartości konfiguracji będą odczytywane z tego zasobu usługi Azure Key Vault. Te zmienne środowiskowe mogą być zapisywane w ** \<\>\\pliku\\\<\>.env folderu macierzystego** z wdrożenia. Należy zauważyć, że zmienne środowiskowe ustawione na komputerze lokalnym zastępują wartości w **skryptach\\\\usług\\lokalnego** pliku env po uruchomieniu **docker-compose**.
 
-Niektórych elementów konfiguracji wymaganych przez mikrousługi są przechowywane w wystąpieniu **usługi Key Vault** utworzony na początkowym wdrożeniu. Odpowiednie zmienne w magazynie keyvault powinien być modyfikowany, zgodnie z potrzebami.
+Niektóre konfiguracje wymagane przez mikrousługi są przechowywane w wystąpieniu **usługi Key Vault,** który został utworzony podczas początkowego wdrażania. Odpowiednie zmienne w keyvault powinny być modyfikowane w razie potrzeby.

@@ -16,10 +16,10 @@ ms.date: 05/09/2018
 ms.author: magattus
 ms.custom: mvc
 ms.openlocfilehash: 4158df06b4eea175a4225e478325f8f151795850
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "75660634"
 ---
 # <a name="what-is-a-content-delivery-network-on-azure"></a>Co to jest sieć dostarczania zawartości na platformie Azure?
@@ -35,10 +35,10 @@ Zalety używania usługi Azure CDN do dostarczania zasobów witryn internetowych
 
 Aby wyświetlić listę bieżących lokalizacji węzłów usługi CDN, zobacz [Lokalizacje POP usługi Azure CDN](cdn-pop-locations.md).
 
-## <a name="how-it-works"></a>Zasady działania
+## <a name="how-it-works"></a>Jak to działa
 ![Omówienie usługi CDN](./media/cdn-overview/cdn-overview.png)
 
-1. Użytkownik (Alice) żąda pliku (nazywanego również zasobem) przy użyciu adresu URL ze specjalną nazwą domeny, taką jak _&lt;nazwa punktu końcowego&gt;_ .azureedge.net. Ta nazwa może być nazwą hosta punktu końcowego lub domeną niestandardową. System DNS kieruje żądanie do lokalizacji POP o najwyższej wydajności — zwykle jest to punkt POP znajdujący się geograficznie najbliżej użytkownika.
+1. Użytkownik (Alicja) żąda pliku (nazywanego również zasobem) przy użyciu adresu URL ze specjalną nazwą domeny, taką jak _ &lt;nazwa&gt;punktu końcowego_.azureedge.net. Ta nazwa może być nazwą hosta punktu końcowego lub domeną niestandardową. System DNS kieruje żądanie do lokalizacji POP o najwyższej wydajności — zwykle jest to punkt POP znajdujący się geograficznie najbliżej użytkownika.
     
 2. Jeśli żaden serwer brzegowy w punkcie POP nie ma pliku w swojej pamięci podręcznej, punkt POP żąda pliku z serwera pochodzenia. Serwerem pochodzenia może być aplikacja internetowa platformy Azure, usługa Azure Cloud Service, konto usługi Azure Storage lub dowolny publicznie dostępny serwer internetowy.
    
@@ -64,7 +64,7 @@ Aby dowiedzieć się więcej o limitach subskrypcji usługi CDN, zobacz [Limity 
 ## <a name="azure-cdn-features"></a>Funkcje usługi Azure CDN
 Usługa Azure CDN oferuje następujące kluczowe funkcje:
 
-- [Przyspieszanie witryn dynamicznych](cdn-dynamic-site-acceleration.md)
+- [Dynamiczne przyspieszanie witryny](cdn-dynamic-site-acceleration.md)
 - [Reguły buforowania sieci CDN](cdn-caching-rules.md)
 - [Obsługa domen niestandardowych HTTPS](cdn-custom-ssl.md)
 - [Dzienniki diagnostyczne platformy Azure](cdn-azure-diagnostic-logs.md)

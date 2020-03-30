@@ -1,5 +1,5 @@
 ---
-title: 'Azure VPN Gateway: przegląd — konfiguracje bramy o wysokiej dostępności'
+title: 'Usługa Azure VPN Gateway: omówienie — konfiguracje bramy o wysokiej dostępności'
 description: Ten artykuł zawiera omówienie opcji konfiguracji o wysokiej dostępności przy użyciu bram Azure VPN Gateway.
 services: vpn-gateway
 author: yushwang
@@ -8,16 +8,16 @@ ms.topic: article
 ms.date: 09/24/2016
 ms.author: yushwang
 ms.openlocfilehash: 91fb0896238881130bd02916f8fd579eee9bd16b
-ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75779624"
 ---
 # <a name="highly-available-cross-premises-and-vnet-to-vnet-connectivity"></a>Połączenia obejmujące wiele lokalizacji i połączenia między sieciami wirtualnymi o wysokiej dostępności
 Ten artykuł zawiera omówienie opcji konfiguracji połączeń obejmujących wiele lokalizacji i połączeń między sieciami wirtualnymi o wysokiej dostępności przy użyciu bram Azure VPN Gateway.
 
-## <a name = "activestandby"></a>Informacje o nadmiarowości bramy sieci VPN platformy Azure
+## <a name="about-azure-vpn-gateway-redundancy"></a><a name = "activestandby"></a>Informacje o nadmiarowości bramy Azure VPN Gateway
 Każda brama Azure VPN Gateway składa się z dwóch wystąpień działających w konfiguracji aktywne-w gotowości. W przypadku każdej planowanej konserwacji lub nieplanowanych zakłóceń działania aktywnego wystąpienia wystąpienie w trybie gotowości automatycznie przejmie zadanie (tryb failover) i wznowi połączenia typu lokacja-lokacja (S2S) przez sieć VPN lub między sieciami wirtualnymi. Przełączenie spowoduje krótką przerwę w działaniu. W przypadku planowanej konserwacji łączność powinna zostać przywrócona w ciągu od 10 do 15 sekund. W przypadku nieplanowanych awarii odzyskiwanie połączenia potrwa dłużej — od ok. 1 do 1,5 minuty w najgorszym przypadku. W przypadku połączeń sieci VPN typu punkt-lokacja (P2S) między klientami i bramą połączenia P2S zostaną rozłączone, a użytkownicy będą musieli ponownie nawiązać połączenia z poziomu maszyn klienckich.
 
 ![Konfiguracja aktywne-w gotowości](./media/vpn-gateway-highlyavailable/active-standby.png)
@@ -29,19 +29,19 @@ Dostępnych jest kilka opcji umożliwiających zapewnienie wyższej dostępnośc
 * Brama Azure VPN Gateway w konfiguracji aktywne-aktywne
 * Połączenie obu tych opcji
 
-### <a name = "activeactiveonprem"></a>Wiele lokalnych urządzeń sieci VPN
+### <a name="multiple-on-premises-vpn-devices"></a><a name = "activeactiveonprem"></a>Wiele lokalnych urządzeń sieci VPN
 Można nawiązywać połączenie z bramą Azure VPN Gateway z sieci lokalnej przy użyciu wielu urządzeń, jak przedstawiono na poniższym diagramie:
 
 ![Wiele lokalnych połączeń sieci VPN](./media/vpn-gateway-highlyavailable/multiple-onprem-vpns.png)
 
 Ta konfiguracja zapewnia wiele aktywnych tuneli z tej samej bramy Azure VPN Gateway do urządzeń lokalnych w tej samej lokalizacji. Istnieją pewne wymagania i ograniczenia:
 
-1. Należy utworzyć wiele połączeń typu lokacja-lokacja sieci VPN z urządzeń sieci VPN do platformy Azure. W przypadku łączenia wielu urządzeń sieci VPN z tej samej sieci lokalnej z platformą Azure należy utworzyć jedną bramę sieć lokalną dla każdego urządzenia sieci VPN i jedno połączenie z bramy sieci VPN platformy Azure z każdą bramą sieci lokalnej.
+1. Należy utworzyć wiele połączeń typu lokacja-lokacja sieci VPN z urządzeń sieci VPN do platformy Azure. Po połączeniu wielu urządzeń sieci VPN z tej samej sieci lokalnej z platformą Azure należy utworzyć jedną bramę sieci lokalnej dla każdego urządzenia sieci VPN i jedno połączenie z bramy sieci VPN platformy Azure do każdej bramy sieci lokalnej.
 2. Bramy sieci lokalnej odpowiadające urządzeniom sieci VPN muszą mieć unikatowe publiczne adresy IP we właściwości „GatewayIpAddress”.
 3. Ta konfiguracja wymaga użycia protokołu BGP. Każda brama sieci lokalnej reprezentującą urządzenie sieci VPN musi mieć unikatowy adres IP elementu równorzędnego protokołu BGP określony we właściwości „BgpPeerIpAddress”.
 4. Wartości w polu właściwości AddressPrefix w poszczególnych bramach sieci lokalnej nie mogą się nakładać. Należy określić wartość właściwości „BgpPeerIpAddress” w formacie /32 CIDR w polu AddressPrefix, na przykład 10.200.200.254/32.
 5. Należy użyć protokołu BGP, aby anonsować te same prefiksy co prefiksy sieci lokalnej dla bramy Azure VPN Gateway, a cały ruch będzie jednocześnie przekazywany przy użyciu tych tuneli.
-6. Należy użyć równorzędnego routingu z obsługą wielu ścieżek (ECMP).
+6. Należy użyć marszruty wielościeżkowej o równym koszcie (ECMP).
 7. Każde połączenie jest wliczane do maksymalnej liczby tuneli bramy Azure VPN Gateway wynoszącej 10 dla podstawowych i standardowych jednostek SKUs oraz 30 dla jednostek SKU wysokiej wydajności. 
 
 W tej konfiguracji brama Azure VPN Gateway jest nadal w trybie aktywny-w gotowości, dlatego będzie mieć miejsce to samo zachowanie i krótka przerwa jak w opisie [powyżej](#activestandby). Ta konfiguracja chroni przed awariami lub przerwami w działaniu sieci lokalnej i urządzeń sieci VPN.

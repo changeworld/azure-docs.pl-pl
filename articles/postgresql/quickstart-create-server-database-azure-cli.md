@@ -1,6 +1,6 @@
 ---
-title: 'Szybki Start: Tworzenie serwera — interfejs wiersza polecenia platformy Azure — Azure Database for PostgreSQL — pojedynczy serwer'
-description: Przewodnik Szybki Start dotyczący tworzenia Azure Database for PostgreSQL-pojedynczego serwera przy użyciu interfejsu wiersza polecenia platformy Azure.
+title: 'Szybki start: Tworzenie serwera — narzędzie interfejsu wiersza polecenia platformy Azure — usługa Azure Database for PostgreSQL — pojedynczy serwer'
+description: Przewodnik Szybki start, aby utworzyć usługę Azure Database for PostgreSQL — pojedynczy serwer przy użyciu interfejsu wiersza polecenia platformy Azure (interfejs wiersza polecenia).
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
@@ -9,31 +9,31 @@ ms.topic: quickstart
 ms.date: 06/25/2019
 ms.custom: mvc
 ms.openlocfilehash: ed78d3dd4e6fbde10c69403cc3dcff24072dc676
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "75358057"
 ---
-# <a name="quickstart-create-an-azure-database-for-postgresql---single-server-using-the-azure-cli"></a>Szybki Start: Tworzenie serwera Azure Database for PostgreSQL-pojedynczego przy użyciu interfejsu wiersza polecenia platformy Azure
+# <a name="quickstart-create-an-azure-database-for-postgresql---single-server-using-the-azure-cli"></a>Szybki start: tworzenie bazy danych platformy Azure dla postgreSQL — pojedynczy serwer przy użyciu interfejsu wiersza polecenia platformy Azure
 
 > [!TIP]
-> Rozważ użycie prostsze [AZ Postgres](/cli/azure/ext/db-up/postgres#ext-db-up-az-postgres-up) w interfejsie wiersza polecenia platformy Azure (obecnie w wersji zapoznawczej). Wypróbuj [Przewodnik Szybki Start](./quickstart-create-server-up-azure-cli.md).
+> Należy rozważyć użycie prostszego [az postgres do](/cli/azure/ext/db-up/postgres#ext-db-up-az-postgres-up) polecenia interfejsu wiersza polecenia platformy Azure (obecnie w wersji zapoznawczej). Wypróbuj [szybki start](./quickstart-create-server-up-azure-cli.md).
 
 Azure Database for PostgreSQL to usługa zarządzana, która umożliwia uruchamianie i skalowanie w chmurze baz danych PostgreSQL o wysokiej dostępności, a także zarządzanie nimi. Interfejs wiersza polecenia platformy Azure umożliwia tworzenie zasobów Azure i zarządzanie nimi z poziomu wiersza polecenia lub skryptów. W tym przewodniku Szybki start przedstawiono, jak utworzyć serwer usługi Azure Database for PostgreSQL w [grupie zasobów platformy Azure](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) za pomocą interfejsu wiersza polecenia platformy Azure.
 
-Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne](https://azure.microsoft.com/free/) konto.
+Jeśli nie masz subskrypcji platformy Azure, utwórz [bezpłatne](https://azure.microsoft.com/free/) konto przed rozpoczęciem.
 
 [!INCLUDE [cloud-shell-try-it](../../includes/cloud-shell-try-it.md)]
 
 Jeśli zdecydujesz się zainstalować interfejs wiersza polecenia i korzystać z niego lokalnie, ten artykuł będzie wymagał interfejsu wiersza polecenia platformy Azure w wersji 2.0 lub nowszej. Aby sprawdzić zainstalowaną wersję, uruchom polecenie `az --version`. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure]( /cli/azure/install-azure-cli). 
 
-Jeśli używasz interfejsu wiersza polecenia lokalnie, musisz zalogować się na swoje konto za pomocą polecenia [AZ login](/cli/azure/authenticate-azure-cli?view=interactive-log-in) . Zanotuj Właściwość **ID** z danych wyjściowych polecenia dla odpowiadającej nazwy subskrypcji.
+Jeśli używasz interfejsu wiersza polecenia lokalnie, musisz zalogować się na swoje konto za pomocą polecenia [az login.](/cli/azure/authenticate-azure-cli?view=interactive-log-in) Należy zwrócić uwagę na właściwość **ID** z danych wyjściowych polecenia dla odpowiedniej nazwy subskrypcji.
 ```azurecli-interactive
 az login
 ```
 
-Jeśli masz wiele subskrypcji, wybierz odpowiednią subskrypcję, w ramach której powinny być naliczane opłaty za ten zasób. Wybierz określony identyfikator subskrypcji na Twoim koncie za pomocą polecenia [az account set](/cli/azure/account). Zastąp Właściwość **ID** z polecenia **AZ login** Output dla subskrypcji do symbolu zastępczego identyfikatora subskrypcji.
+Jeśli masz wiele subskrypcji, wybierz odpowiednią subskrypcję, w ramach której powinny być naliczane opłaty za ten zasób. Wybierz określony identyfikator subskrypcji na Twoim koncie za pomocą polecenia [az account set](/cli/azure/account). Zastąp właściwość **ID** z danych **wyjściowych logowania az** dla subskrypcji do symbolu zastępczego identyfikatora subskrypcji.
 ```azurecli-interactive
 az account set --subscription <subscription id>
 ```
@@ -72,7 +72,7 @@ Wartość parametru sku-name jest zgodna z konwencją {warstwa cenowa}\_{generac
 
 Aby ustalić poprawne wartości dla poszczególnych regionów i warstw, zapoznaj się z dokumentacją [warstw cenowych](./concepts-pricing-tiers.md).
 
-W poniższym przykładzie serwer PostgreSQL 9.6 o nazwie `mydemoserver` zostanie utworzony w grupie zasobów `myresourcegroup` w regionie Zachodnie stany USA przy użyciu identyfikatora logowania administratora serwera `myadmin`. Jest to serwer **generacji 4** **ogólnego przeznaczenia** z **2 rdzeni wirtualnych**. Zastąp zmienną `<server_admin_password>` swoją własną wartością.
+W poniższym przykładzie serwer PostgreSQL 9.6 o nazwie `mydemoserver` zostanie utworzony w grupie zasobów `myresourcegroup` w regionie Zachodnie stany USA przy użyciu identyfikatora logowania administratora serwera `myadmin`. Jest to serwer **4. generacji** **ogólnego przeznaczenia** z 2 **rdzeniami wirtualnymi**. Zastąp zmienną `<server_admin_password>` swoją własną wartością.
 ```azurecli-interactive
 az postgres server create --resource-group myresourcegroup --name mydemoserver  --location westus --admin-user myadmin --admin-password <server_admin_password> --sku-name GP_Gen4_2 --version 9.6
 ```
@@ -146,7 +146,7 @@ Jeśli na Twoim komputerze klienckim jest zainstalowany program PostgreSQL, moż
    ```
 
    > [!TIP]
-   > Jeśli wolisz używać ścieżki URL w celu nawiązania połączenia z usługą Postgres, adres URL Koduj znak @ w nazwie użytkownika z `%40`. Na przykład parametry połączenia dla PSQL byłyby,
+   > Jeśli wolisz użyć ścieżki adresu URL do łączenia się z postgresem, koduj znak @ w nazwie użytkownika za pomocą `%40`programu . Na przykład ciąg połączenia dla psql będzie,
    > ```
    > psql postgresql://myadmin%40mydemoserver@mydemoserver.postgres.database.azure.com:5432/postgres
    > ```
@@ -157,7 +157,7 @@ Jeśli na Twoim komputerze klienckim jest zainstalowany program PostgreSQL, moż
    CREATE DATABASE mypgsqldb;
    ```
 
-3. W wierszu polecenia wykonaj poniższe polecenie, aby przełączyć połączenie na nowo utworzoną bazę danych **mypgsqldb**:
+3. W wierszu polecenia wykonaj następujące polecenie, aby przełączyć połączenie z nowo utworzoną bazą danych **mypgsqldb**:
    ```sql
    \c mypgsqldb
    ```
@@ -180,15 +180,15 @@ pgAdmin to narzędzie open source używane z bazą danych PostgreSQL. Aplikację
 
     Parametr narzędzia pgAdmin |Wartość|Opis
     ---|---|---
-    Nazwa lub adres hosta | Nazwa serwera | Wartość nazwy serwera, która została użyta wcześniej podczas tworzenia serwera usługi Azure Database for PostgreSQL. Przykładowy serwer to **mydemoserver.postgres.database.azure.com**. Użyj w pełni kwalifikowanej nazwy domeny ( **\*.postgres.database.azure.com**), jak pokazano w przykładzie. Jeśli nie pamiętasz nazwy serwera, postępuj zgodnie z instrukcjami w poprzedniej sekcji, aby uzyskać informacje dotyczące połączenia. 
+    Nazwa lub adres hosta | Nazwa serwera | Wartość nazwy serwera, która została użyta wcześniej podczas tworzenia serwera usługi Azure Database for PostgreSQL. Przykładowy serwer to **mydemoserver.postgres.database.azure.com**. Użyj w pełni kwalifikowanej nazwy domeny (**\*.postgres.database.azure.com**), jak pokazano w przykładzie. Jeśli nie pamiętasz nazwy serwera, postępuj zgodnie z instrukcjami w poprzedniej sekcji, aby uzyskać informacje dotyczące połączenia. 
     Port | 5432 | Port używany podczas łączenia z serwerem usługi Azure Database for PostgreSQL. 
     Baza danych konserwacji | *postgres* | Domyślna nazwa bazy danych wygenerowana przez system.
-    Nazwa użytkownika | Nazwa logowania administratora serwera | Nazwa logowania administratora serwera, którą podano wcześniej podczas tworzenia serwera usługi Azure Database for PostgreSQL. Jeśli nie pamiętasz nazwy użytkownika, postępuj zgodnie z instrukcjami w poprzedniej sekcji, aby uzyskać informacje dotyczące połączenia. Format to *Nazwa użytkownika\@ServerName*.
+    Nazwa użytkownika | Nazwa logowania administratora serwera | Nazwa logowania administratora serwera, którą podano wcześniej podczas tworzenia serwera usługi Azure Database for PostgreSQL. Jeśli nie pamiętasz nazwy użytkownika, postępuj zgodnie z instrukcjami w poprzedniej sekcji, aby uzyskać informacje dotyczące połączenia. Format to *\@nazwa serwera nazwy użytkownika*.
     Hasło | Hasło administratora | Hasło wybrane podczas tworzenia serwera wcześniej w tym przewodniku Szybki start.
     Rola | Pozostaw puste | Nie trzeba podawać nazwy roli w tym momencie. Pozostaw pole puste.
-    Tryb SSL | *Wymagane* | Tryb SSL można ustawić na karcie SSL pgAdmin. Domyślnie wszystkie serwery Azure Database for PostgreSQL są tworzone z włączonym wymuszaniem protokołu SSL. Aby wyłączyć wymuszanie protokołu SSL, zobacz [Wymuszanie protokołu SSL](./concepts-ssl-connection-security.md).
+    Tryb SSL | *Wymagane* | Tryb SSL można ustawić w zakładce SSL pgAdmin. Domyślnie wszystkie serwery usługi Azure Database for PostgreSQL są tworzone z włączonym wymuszaniem ssl. Aby wyłączyć wymuszanie protokołu SSL, zobacz [Wymuszanie protokołu SSL](./concepts-ssl-connection-security.md).
     
-5. Wybierz pozycję **Zapisz**.
+5. Wybierz **pozycję Zapisz**.
 
 6. W okienku **Przeglądarka** z lewej strony rozwiń węzeł **Serwery**. Wybierz serwer, np. **mydemoserver**. Kliknij, aby się z nim połączyć.
 

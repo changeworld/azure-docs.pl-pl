@@ -1,18 +1,17 @@
 ---
 title: Funkcja czasu wygaśnięcia (TTL) poszczególnych dokumentów w bazie danych MongoDB w usłudze Azure Cosmos DB
 description: Dowiedz się, jak ustawić wartość czasu wygaśnięcia przy użyciu interfejsu API usługi Azure Cosmos DB dla bazy danych MongoDB w celu automatycznego przeczyszczania ich z systemu po upływie określonego czasu.
-author: rockboyfor
-ms.author: v-yeche
+author: sivethe
+ms.author: sivethe
 ms.service: cosmos-db
 ms.devlang: javascript
 ms.topic: quickstart
-origin.date: 12/26/2018
-ms.date: 03/18/2019
+ms.date: 12/26/2018
 ms.openlocfilehash: cd6cb68014eea00077328f39c2c9bf0a1f7fb679
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "61330697"
 ---
 # <a name="expire-data-with-azure-cosmos-dbs-api-for-mongodb"></a>Wygasanie danych za pomocą interfejsu API usługi Azure Cosmos DB dla bazy danych MongoDB
@@ -39,7 +38,7 @@ Polecenie w powyższym przykładzie powoduje utworzenie indeksu z funkcjonalnoś
 > [!NOTE]
 > **_ts** jest polem właściwym dla usługi Cosmos DB i nie można do niego uzyskać dostępu z klientów bazy danych MongoDB. Jest zastrzeżoną właściwością (systemową), która zawiera sygnaturę czasową ostatniej modyfikacji dokumentu.
 >
-
+    
 Dodatkowo — przykład w języku C#: 
 
 ```csharp
@@ -73,13 +72,10 @@ globaldb:PRIMARY> db.coll.insert({id:1, location: "Paris", ttl: NumberLong(21474
 
 ## <a name="how-to-activate-the-per-document-ttl-feature"></a>Jak aktywować funkcję czasu wygaśnięcia poszczególnych dokumentów
 
-<!-- Verify successfully on mongodb TTL-->
 Funkcję czasu wygaśnięcia poszczególnych dokumentów można aktywować za pomocą interfejsu API usługi Azure Cosmos DB dla bazy danych MongoDB.
 
-![Zrzut ekranu przedstawiający TTL dokumentu na aktywowanie funkcji w portalu](./media/mongodb-ttl/mongodb_portal_ttl.png) 
+![Zrzut ekranu przedstawiający aktywację funkcji TTL dla dokumentu w portalu](./media/mongodb-ttl/mongodb_portal_ttl.png) 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 * [Expire data in Azure Cosmos DB automatically with time to live](../cosmos-db/time-to-live.md) (Automatyczne wygasanie danych w usłudze Azure Cosmos DB przy użyciu czasu wygaśnięcia)
 * [Indexing your Cosmos database configured with Azure Cosmos DB's API for MongoDB](../cosmos-db/mongodb-indexing.md) (Indeksowanie bazy danych usługi Cosmos skonfigurowanej przy użyciu interfejsu API usługi Azure Cosmos DB dla bazy danych MongoDB)
-
-<!-- Update_Description: update meta properties, wording update -->

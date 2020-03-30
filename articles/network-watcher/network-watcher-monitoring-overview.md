@@ -15,19 +15,19 @@ ms.date: 04/24/2018
 ms.author: damendo
 ms.custom: mvc
 ms.openlocfilehash: 81621a2b63eec804aaa7c74e1d77b06ef1adb79a
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "76844993"
 ---
 # <a name="what-is-azure-network-watcher"></a>Co to jest Azure Network Watcher?
 
-Azure Network Watcher to usługa, która udostępnia narzędzia umożliwiające monitorowanie, diagnozowanie, wyświetlanie metryk i włączanie lub wyłączanie dzienników zasobów w sieci wirtualnej platformy Azure. Network Watcher zaprojektowano do monitorowania i naprawy kondycji sieci usług IaaS (infrastruktura jako usługa), w tym Virtual Machines, sieci wirtualnych, bram aplikacji, modułów równoważenia obciążenia itp. Uwaga: nie jest ona przeznaczona dla i nie będzie działała w przypadku monitorowania PaaS lub analizy sieci Web. 
+Azure Network Watcher to usługa, która udostępnia narzędzia umożliwiające monitorowanie, diagnozowanie, wyświetlanie metryk i włączanie lub wyłączanie dzienników zasobów w sieci wirtualnej platformy Azure. Network Watcher jest przeznaczony do monitorowania i naprawy kondycji sieci produktów IaaS (Infrastructure-as-a-Service), która obejmuje maszyny wirtualne, sieci wirtualne, bramy aplikacji, moduły równoważenia obciążenia itp. Uwaga: Nie jest przeznaczony do monitorowania PaaS lub analizy sieci Web i nie będzie działać. 
 
 ## <a name="monitoring"></a>Monitorowanie
 
-### <a name = "connection-monitor"></a>Monitorowanie komunikacji między maszyną wirtualną a punktem końcowym
+### <a name="monitor-communication-between-a-virtual-machine-and-an-endpoint"></a><a name = "connection-monitor"></a>Monitorowanie komunikacji między maszyną wirtualną a punktem końcowym
 
 Punkty końcowe mogą być inną maszyną wirtualną (VM), w pełni kwalifikowaną nazwą domeny (FQDN), identyfikatorem URI (Uniform Resource Identifier) lub adresem IPv4. *Monitor połączenia* umożliwia monitorowanie komunikacji w regularnych odstępach czasu i informuje o dostępności, opóźnieniu i zmianach topologii sieci między maszyną wirtualną a punktem końcowym. Przykładem może być maszyna wirtualna serwera sieci Web, która komunikuje się z maszyną wirtualną serwera baz danych. Możesz nie wiedzieć, że pewien członek organizacji zastosował niestandardową trasę lub regułę zabezpieczeń na maszynie wirtualnej serwera sieci Web lub serwera baz danych albo też w podsieci.
 
@@ -55,7 +55,7 @@ Podczas wdrażania maszyny wirtualnej platforma Azure stosuje wobec niej kilka d
 
 Po utworzeniu sieci wirtualnej platforma Azure tworzy kilka domyślnych tras wychodzącego ruchu sieciowego. Ruch wychodzący ze wszystkich zasobów, takich jak maszyny wirtualne wdrożone w sieci wirtualnej, jest kierowany w oparciu o trasy domyślne platformy Azure. Można zastąpić trasy domyślne platformy Azure lub utworzyć dodatkowe trasy. Może się okazać, że maszyna wirtualna nie może już komunikować się z innymi zasobami ze względu na określoną trasę. Funkcja *następnego przeskoku* umożliwia określenie źródłowego i docelowego adresu IPv4. Funkcja ta przeprowadza wówczas testy komunikacji i informuje o typie następnego przeskoku używanego do kierowania ruchu. Następnie w celu rozwiązania problemu z routingiem można usunąć, zmienić lub dodać trasę. Dowiedz się więcej o funkcji [następnego przeskoku](diagnose-vm-network-routing-problem.md).
 
-### <a name="connection-troubleshoot"></a>Diagnozowanie połączeń wychodzących z maszyny wirtualnej
+### <a name="diagnose-outbound-connections-from-a-vm"></a><a name="connection-troubleshoot"></a>Diagnozowanie połączeń wychodzących z maszyny wirtualnej
 
 Funkcja *rozwiązywania problemów z połączeniami* umożliwia testowanie połączenia między daną maszyną wirtualną a inną maszyną wirtualną, nazwą FQDN, identyfikatorem URI lub adresem IPv4. Test zwraca informacje podobne do zwracanych przez funkcję [monitora połączenia](#connection-monitor), ale testuje połączenie w określonym momencie, zamiast monitorować je w czasie, tak jak robi to monitor połączenia. Dowiedz się więcej na temat rozwiązywania problemów z połączeniami przy użyciu funkcji [rozwiązywania problemów z połączeniem](network-watcher-connectivity-overview.md).
 

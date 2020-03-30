@@ -1,5 +1,5 @@
 ---
-title: Szybki Start — tworzenie Azure Analysis Services przy użyciu Azure Analysis Services programu PowerShell | Microsoft Docs
+title: Szybki start — tworzenie usług Analizy platformy Azure przy użyciu usług PowerShell Azure Analysis Services | Dokumenty firmy Microsoft
 description: Dowiedz się, jak utworzyć serwer usług Azure Analysis Services przy użyciu programu PowerShell
 author: minewiskan
 ms.service: azure-analysis-services
@@ -8,10 +8,10 @@ ms.date: 07/29/2019
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: 071c44136d917874843bdf080de775ec6739937a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "75442866"
 ---
 # <a name="quickstart-create-a-server---powershell"></a>Szybki start: tworzenie serwera — PowerShell
@@ -24,7 +24,7 @@ W tym przewodniku Szybki start opisano, jak utworzyć serwer usługi Azure Analy
 
 - **Subskrypcja platformy Azure**: odwiedź stronę [bezpłatnej wersji próbnej platformy Azure](https://azure.microsoft.com/offers/ms-azr-0044p/), aby utworzyć konto.
 - **Azure Active Directory**: subskrypcja musi być skojarzona z dzierżawą usługi Azure Active Directory i musisz mieć konto w tym katalogu. Aby dowiedzieć się więcej, zobacz [Authentication and user permissions (Uwierzytelnianie i uprawnienia użytkownika)](analysis-services-manage-users.md).
-- Zainstalowanie programu **Azure PowerShell**. Aby dowiedzieć się, jaka wersja została zainstalowana, uruchom polecenie `Get-Module -ListAvailable Az`. Aby przeprowadzić instalację lub uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-Az-ps).
+- **Program Azure PowerShell**. Aby dowiedzieć się, jaka wersja została zainstalowana, uruchom polecenie `Get-Module -ListAvailable Az`. Aby przeprowadzić instalację lub uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-Az-ps).
 
 ## <a name="import-azanalysisservices-module"></a>Importowanie modułu Az.AnalysisServices
 
@@ -34,7 +34,7 @@ Aby utworzyć serwer w ramach subskrypcji, należy użyć modułu [Az.AnalysisSe
 Import-Module Az.AnalysisServices
 ```
 
-## <a name="sign-in-to-azure"></a>Zaloguj się w usłudze Azure
+## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
 
 Zaloguj się do subskrypcji platformy Azure przy użyciu polecenia [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount). Postępuj zgodnie z instrukcjami wyświetlanymi na ekranie.
 
@@ -72,6 +72,6 @@ Remove-AzAnalysisServicesServer -Name "myserver" -ResourceGroupName "myResourceG
 W tym przewodniku Szybki start przedstawiono, jak utworzyć serwer w ramach subskrypcji platformy Azure przy użyciu programu PowerShell. Teraz, po utworzeniu serwera, możesz go zabezpieczyć, konfigurując (opcjonalną) zaporę serwera. Możesz też dodać do serwera podstawowy przykładowy model danych bezpośrednio w portalu. Przykładowy model służy do zdobywania wiedzy na temat konfigurowania ról modelowej bazy danych oraz testowania połączeń klienckich. Aby dowiedzieć się więcej, przejdź do samouczka dotyczącego dodawania przykładowego modelu.
 
 > [!div class="nextstepaction"]
-> [Szybki start: konfigurowanie zapory serwera — Portal](analysis-services-qs-firewall.md)      
+> [Szybki start: Konfigurowanie zapory serwera — portal](analysis-services-qs-firewall.md)      
 > [!div class="nextstepaction"]
 > [Tutorial: Add a sample model to your server](analysis-services-create-sample-model.md) (Samouczek: dodawanie przykładowego modelu do serwera)

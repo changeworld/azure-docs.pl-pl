@@ -1,6 +1,6 @@
 ---
-title: 'Szybki start: Wykonywanie zapytań dotyczących danych w Interfejsie sieci Web Eksploratora danych platformy Azure'
-description: W tym przewodniku Szybki Start dowiesz się, jak wykonywać zapytania i udostępnianie danych w interfejs sieci Web w Eksploratorze danych platformy Azure.
+title: 'Szybki start: zapytanie o dane w usłudze Azure Data Explorer Web UI'
+description: W tym przewodniku Szybki start dowiesz się, jak wyszukiwać i udostępniać dane w interfejsie użytkownika usługi Azure Data Explorer w sieci Web.
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
@@ -8,17 +8,17 @@ ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 07/04/2019
 ms.openlocfilehash: 145e452a3a914e1026d6da11f2ce38e85fa724f0
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "67797186"
 ---
-# <a name="quickstart-query-data-in-azure-data-explorer-web-ui"></a>Szybki start: Wykonywanie zapytań dotyczących danych w Interfejsie sieci Web Eksploratora danych platformy Azure
+# <a name="quickstart-query-data-in-azure-data-explorer-web-ui"></a>Szybki start: zapytanie o dane w usłudze Azure Data Explorer Web UI
 
 Azure Data Explorer to szybka i wysoce skalowalna usługa eksploracji danych na potrzeby danych dziennika i telemetrycznych. Usługa Azure Data Explorer udostępnia aplikację internetową, która umożliwia uruchamianie i udostępnianie zapytań. Aplikacja jest dostępna w witrynie Azure Portal oraz jako autonomiczna aplikacja internetowa. W tym artykule będziesz pracować w wersji autonomicznej, która pozwala łączyć się z wieloma klastrami i udostępniać linki bezpośrednie do zapytań.
 
-Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto platformy Azure](https://azure.microsoft.com/free/).
+Jeśli nie masz subskrypcji platformy Azure, utwórz [bezpłatne konto platformy Azure](https://azure.microsoft.com/free/) przed rozpoczęciem.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -38,11 +38,11 @@ Zanim zaczniesz uruchamiać zapytania, musisz dodać połączenie do co najmniej
 
 1. W lewym górnym rogu aplikacji wybierz pozycję **Dodaj klaster**.
 
-1. W **klastra Dodaj** okno dialogowe, wprowadź identyfikator URI, a następnie wybierz **Dodaj**.
+1. W oknie dialogowym **Dodawanie klastra** wprowadź identyfikator URI, a następnie wybierz pozycję **Dodaj**.
 
-   Może używać klastrze help identyfikatora URI, `https://help.kusto.windows.net`. Jeśli masz własny klaster, podaj identyfikator URI klastra. Na przykład `https://mydataexplorercluster.westus.kusto.windows.net` jak na poniższej ilustracji:
+   Można użyć identyfikatora URI `https://help.kusto.windows.net`klastra pomocy, . Jeśli masz własny klaster, podaj identyfikator URI klastra. Na przykład, `https://mydataexplorercluster.westus.kusto.windows.net` jak na poniższej ilustracji:
 
-    ![Identyfikator URI w portalu serwera](media/web-query-data/server-uri.png)
+    ![Identyfikator URI serwera w portalu](media/web-query-data/server-uri.png)
 
 1. W okienku po lewej stronie powinien być teraz wyświetlany klaster **help**. Rozwiń bazę danych **Samples**, aby wyświetlić przykładowe tabele, do których masz dostęp.
 
@@ -151,7 +151,7 @@ Gdy już znasz sposób działania podstawowych zapytań, zobaczmy, jak możesz d
 
     Ten panel działa podobnie jak lista pól tabeli przestawnej w programie Excel, umożliwiając wykonywanie dodatkowych analiz w samej siatce.
 
-1. Wybierz opcję **Tryb przestawny**, a następnie przeciągnij kolumny w następujący sposób: kolumnę **State** do pola **Grupy wierszy**, kolumnę **DamageProperty** do pola **Wartości** i kolumnę **EventType** do pola **Etykiety kolumn**.  
+1. Zaznacz pozycję **Tryb tabeli przestawnej**, a następnie przeciągnij kolumny w następujący sposób: kolumnę **State** do pola **Grupy wierszy**, kolumnę **DamageProperty** do pola **Wartości** i kolumnę **EventType** do pola **Etykiety kolumn**.  
 
     ![Tryb przestawny](media/web-query-data/pivot-mode.png)
 
@@ -191,4 +191,4 @@ W tym przewodniku Szybki start nie zostały utworzone żadne zasoby, ale jeśli 
 
 ## <a name="next-steps"></a>Następne kroki
 
-[Pisanie zapytań dla usługi Azure Data Explorer](write-queries.md)
+[Pisanie zapytań dla Eksploratora danych platformy Azure](write-queries.md)

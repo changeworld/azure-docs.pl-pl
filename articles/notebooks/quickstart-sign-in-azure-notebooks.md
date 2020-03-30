@@ -1,62 +1,62 @@
 ---
-title: Zaloguj się do wersji zapoznawczej Azure Notebooks
-description: Szybko zaloguj się do Azure Notebooks wersja zapoznawcza i ustaw identyfikator użytkownika, który umożliwia dostęp do zapisanych projektów i udostępnianie notesów innym osobom.
+title: Logowanie się do usługi Azure Notebooks Preview
+description: Szybko zaloguj się w usłudze Azure Notebooks Preview i ustaw identyfikator użytkownika, który umożliwia dostęp do zapisanych projektów i udostępnianie notesów innym osobom.
 ms.topic: quickstart
 ms.date: 04/15/2019
 ms.openlocfilehash: b6572a7c0b965b2b72916db577b47eff4f1921c0
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "75647020"
 ---
-# <a name="quickstart-sign-in-and-set-a-user-id-for-azure-notebooks-preview"></a>Szybki Start: Logowanie i Ustawianie identyfikatora użytkownika na potrzeby wersji zapoznawczej Azure Notebooks
+# <a name="quickstart-sign-in-and-set-a-user-id-for-azure-notebooks-preview"></a>Szybki start: zaloguj się i ustaw identyfikator użytkownika w wersji Zapoznawczej notesów platformy Azure
 
-Mimo że można zawsze wyświetlić notesy platformy Azure, bez logowania, musisz zarejestrować się uruchamianie notesów, dostęp do zapisanych projektów i notesy i udostępniać innym użytkownikom notesów programu.
+Chociaż zawsze możesz wyświetlać notesy platformy Azure bez logowania się, musisz zalogować się, aby uruchamiać notesy, uzyskiwać dostęp do zapisanych projektów i notesów oraz udostępniać notesy innym osobom.
 
 [!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
-## <a name="sign-in"></a>Zaloguj
+## <a name="sign-in"></a>Logowanie
 
-1. Wybierz **Zaloguj** u góry po prawej stronie [notebooks.azure.com](https://notebooks.azure.com/).
+1. Wybierz **pozycję Zaloguj** się w prawym górnym rogu [notebooks.azure.com](https://notebooks.azure.com/).
 
-    ![Lokalizacja polecenia Zaloguj się na notesy platformy Azure](media/accounts/sign-in-command.png)
+    ![Lokalizacja polecenia logowania w notesach platformy Azure](media/accounts/sign-in-command.png)
 
-1. Po wyświetleniu monitu wprowadź adres e-mail Account Microsoft pracy lub służbowe konto i wybierz **dalej**. Typy kont zostały opisane na [Twoje konto użytkownika dla usługi Azure notesów](azure-notebooks-user-account.md). Jeśli nie masz Account Microsoft lub chcesz wprowadzić jeden do użycia z notesów usługi Azure, wybierz opcję **utworzyć**:
+1. Po wyświetleniu monitu wprowadź adres e-mail konta Microsoft lub konta służbowego i wybierz pozycję **Dalej**. Typy kont są opisane na [koncie użytkownika notesów platformy Azure](azure-notebooks-user-account.md). Jeśli nie masz konta Microsoft lub chcesz je utworzyć do użytku specjalnie z notesami platformy Azure, wybierz pozycję **Utwórz jedno:**
 
-    ![Utwórz nowe polecenie konta Microsoft w monit logowania](media/accounts/create-new-microsoft-account.png)
+    ![Tworzenie nowego polecenia logowania konta Microsoft](media/accounts/create-new-microsoft-account.png)
 
     > [!Tip]
-    > Jeśli spróbujesz utworzyć nowe konto przy użyciu adresu e-mail, z którym jest już skojarzone konto, może zostać wyświetlony komunikat "nie można utworzyć konta w tym miejscu przy użyciu służbowego adresu e-mail. Użyj osobistej poczty e-mail, takiej jak Gmail lub Yahoo!, lub Utwórz nową wiadomość e-mail w programie Outlook. W takim przypadku spróbuj zalogować się przy użyciu służbowego adresu e-mail bez tworzenia nowego konta.
+    > Jeśli spróbujesz utworzyć nowe konto z adresem e-mail, który ma już skojarzone konto, możesz zobaczyć komunikat "Nie możesz zarejestrować się tutaj przy roboczym lub szkolnym adresie e-mail. Użyj osobistej poczty e-mail, takiej jak Gmail lub Yahoo!, lub uzyskaj nową wiadomość e-mail programu Outlook." W takim przypadku spróbuj zalogować się przy za pomocą służbowego adresu e-mail bez tworzenia nowego konta.
 
-1. Wprowadź hasło po wyświetleniu monitu.
+1. Po wyświetleniu monitu wprowadź hasło.
 
-1. Jeśli logujesz się po raz pierwszy, notesów usługi Azure z pytaniem o zezwolenie na dostęp do tego konta. Wybierz **tak** aby kontynuować:
+1. Jeśli logujesz się po raz pierwszy, notesy platformy Azure proszą o pozwolenie na dostęp do konta. Wybierz **opcję Tak,** aby kontynuować:
 
-    ![Wiersz uprawnień konta](media/accounts/account-permission-prompt.png)
+    ![Monit o uprawnienia do konta](media/accounts/account-permission-prompt.png)
 
-## <a name="set-a-user-id"></a>Ustaw identyfikator użytkownika
+## <a name="set-a-user-id"></a>Ustawianie identyfikatora użytkownika
 
-1. Po pierwszym zalogowaniu masz przypisaną Identyfikatora użytkownika tymczasowych, takich jak "anon-idrca3". Zawsze, gdy masz identyfikator użytkownika, który rozpoczyna się od "anon-", notesy platformy Azure wyświetli monit o utworzenie własnego Identyfikatora. Identyfikator użytkownika jest używany dowolny adres URL uzyskany na udostępnianie projektów i notebooki, więc wybierz element, który jest unikatowy i zrozumiała dla Ciebie.
+1. Po pierwszym zalogowaniu, masz przypisany tymczasowy identyfikator użytkownika, takich jak "anon-idrca3". Za każdym razem, gdy masz identyfikator użytkownika, który zaczyna się od "anon-", Notesy platformy Azure monituje o utworzenie własnego identyfikatora. Identyfikator użytkownika jest używany w dowolnym adresie URL, który można uzyskać do udostępniania projektów i notesów, więc wybierz coś, co jest unikalne i znaczące dla Ciebie.
 
-    ![Monit o podanie Identyfikatora użytkownika dla notesów usługi Azure](media/accounts/create-user-id.png)
+    ![Monitowanie o wprowadzenie identyfikatora użytkownika notesów platformy Azure](media/accounts/create-user-id.png)
 
-    Jeśli wybierzesz **nie, dziękuję**, notesy platformy Azure w dalszym ciągu wyświetlenie monitu o nazwę użytkownika każdym zalogowaniu. W dowolnym momencie można również ustawić identyfikator użytkownika usługi [profilu użytkownika](azure-notebooks-user-profile.md).
+    Jeśli wybierzesz **opcję Nie dla podziękowań,** notesy platformy Azure będą monitować o identyfikator użytkownika przy każdym loguchieniu. Identyfikator użytkownika można również ustawić w dowolnym momencie w [profilu użytkownika.](azure-notebooks-user-profile.md)
 
-1. Po pomyślnym zalogowaniu notesy platformy Azure przechodzi do strony swojego profilu publicznego, w którym można wybrać **edytować informacje o profilu** Wypełnij pozostałe informacje (Aby uzyskać więcej informacji, zobacz [swój profil i identyfikator użytkownika](azure-notebooks-user-profile.md)):
+1. Po pomyślnym zalogowaniu się notesy platformy Azure przechodzą do publicznej strony profilu, na której można wybrać **pozycję Edytuj informacje o profilu,** aby wypełnić pozostałe informacje (aby uzyskać więcej informacji, zobacz Twój profil i identyfikator [użytkownika):](azure-notebooks-user-profile.md)
 
-    ![Widok początkowy strony profilu notesy platformy Azure](media/accounts/profile-page-new.png)
+    ![Początkowy widok strony profilu notesów platformy Azure](media/accounts/profile-page-new.png)
 
 > [!NOTE]
-> Jeśli zobaczysz komunikat "identyfikator użytkownika jest już używany", spróbuj użyć innego identyfikatora. Identyfikatory użytkowników są unikatowe dla wszystkich kont Azure Notebooks, a Azure Notebooks również rezerwują pewne identyfikatory użytkowników, takie jak nazwy marki firmy Microsoft.
+> Jeśli zostanie wyświetlony komunikat "Nazwa użytkownika jest już używana", spróbuj użyć innego identyfikatora. Identyfikatory użytkowników są unikatowe na wszystkich kontach notesów platformy Azure, a notesy platformy Azure rezerwują również niektóre identyfikatory użytkowników, takie jak nazwy marek firmy Microsoft.
 
 ## <a name="sign-out"></a>Wyloguj
 
-Aby się wylogować, wybierz swoją nazwę użytkownika w prawym górnym rogu strony, a następnie wybierz **Wyloguj**:
+Aby się wylogować, wybierz swoją nazwę użytkownika w prawym górnym rogu strony, a następnie wybierz pozycję **Wyloguj:**
 
-![Lokalizacja polecenia wylogowania w notesy platformy Azure](media/accounts/sign-out-command.png)
+![Lokalizacja polecenia wylogowywania w notesach platformy Azure](media/accounts/sign-out-command.png)
 
 ## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Szybki Start: Tworzenie i udostępnianie notesu](quickstart-create-share-jupyter-notebook.md)
+> [Szybki start: tworzenie notesu i udostępnianie go](quickstart-create-share-jupyter-notebook.md)

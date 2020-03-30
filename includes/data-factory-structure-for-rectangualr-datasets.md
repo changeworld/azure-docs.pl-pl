@@ -5,25 +5,25 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: jingwang
 ms.openlocfilehash: 1ab404b838af65dcb75395dfeee1ca0553e497a1
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67183901"
 ---
 ## <a name="specifying-structure-definition-for-rectangular-datasets"></a>Określanie definicji struktury dla prostokątnych zestawów danych
-Sekcja struktury w zestawach danych JSON jest **opcjonalne** sekcji prostokątny tabel (wiersze i kolumny) i zawiera kolekcję kolumn dla tabeli. W sekcji struktury użyje albo udostępnianie informacji o typie dla konwersji typu lub sposób mapowania kolumn. W poniższych sekcjach opisano te funkcje szczegółowo. 
+Sekcja struktury w zestawach danych JSON jest **opcjonalną** sekcją dla tabel prostokątnych (z wierszami & kolumnami) i zawiera zbiór kolumn dla tabeli. Użyjesz sekcji struktury do dostarczania informacji o typie dla konwersji typów lub mapowania kolumn. W poniższych sekcjach opisano te funkcje szczegółowo. 
 
 Każda kolumna zawiera następujące właściwości:
 
-| Właściwość | Opis | Wymagane |
+| Właściwość | Opis | Wymagany |
 | --- | --- | --- |
 | name |Nazwa kolumny. |Tak |
-| type |Typ danych kolumny. Zobacz więcej szczegółów typu konwersje sekcji poniżej dotyczącą tego, możesz określić informacje o typie |Nie |
-| culture |Kultura ma być używany, gdy typ jest określony, a typ architektury .NET, Datetime i Datetimeoffset oparte na platformie .NET. Wartość domyślna to "en-us". |Nie |
-| format |Ciąg formatu, które ma być używany, gdy typ jest określony, a .NET typu Datetime i Datetimeoffset. |Nie |
+| type |Typ danych kolumny. Zobacz sekcję konwersji typów poniżej, aby uzyskać więcej informacji na temat tego, kiedy należy określić informacje o typie |Nie |
+| kultura |.NET na podstawie kultury, która ma być używana, gdy typ jest określony i jest typu .NET Datetime lub Datetimeoffset. Wartość domyślna to "en-us". |Nie |
+| format |Ciąg formatu, który ma być używany, gdy typ jest określony i jest typu .NET Datetime lub Datetimeoffset. |Nie |
 
-Poniższy przykład pokazuje sekcji strukturze JSON dla tabeli, która ma trzy kolumny userid, nazwę oraz lastlogindate.
+W poniższym przykładzie przedstawiono sekcję struktury JSON dla tabeli, która ma trzy kolumny userid, name i lastlogindate.
 
 ```json
 "structure": 
@@ -34,31 +34,31 @@ Poniższy przykład pokazuje sekcji strukturze JSON dla tabeli, która ma trzy k
 ],
 ```
 
-Użyj następujących wytycznych dla umieszczania "strukturę" informacji i co należy uwzględnić w **struktury** sekcji.
+Skorzystaj z poniższych wytycznych dotyczących tego, kiedy należy uwzględnić informacje o "strukturze" i co należy uwzględnić w sekcji **struktury.**
 
-* **W przypadku źródeł danych ze strukturą** czy Magazyn informacji schematu i typu danych wraz z danymi, sama (źródeł, takich jak SQL Server, Oracle, tabela platformy Azure itp.), należy określić w sekcji "strukturę" tylko wtedy, gdy chcesz wykonać mapowania kolumn z określonego źródła kolumny do określonych kolumn w ujścia i ich nazwy nie są takie same (szczegółowe informacje w poniższej sekcji mapowania kolumn). 
+* **Dla ustrukturyzowanych źródeł danych,** które przechowują schemat danych i wpisywać informacje wraz z samymi danymi (źródła takie jak SQL Server, Oracle, tabela platformy Azure itp.), należy określić sekcję "struktura" tylko wtedy, gdy chcesz zrobić mapowanie kolumn określonych kolumn źródłowych do określonych kolumn w zmieniu, a ich nazwy nie są takie same (zobacz szczegóły w sekcji mapowania kolumn poniżej). 
   
-    Jak wspomniano powyżej, informacje o typie jest opcjonalny w sekcji "strukturę". W przypadku strukturalnych źródeł informacji o typie jest już dostępny w ramach definicji zestawu danych w magazynie danych, dlatego nie należy używać informacji o typie przy dodawaniu w sekcji "strukturę".
-* **Dla schematu do źródeł danych odczytu (w szczególności obiektów blob platformy Azure)** istnieje możliwość przechowywania danych bez przechowywania żadnych informacji schematu lub typu z danymi. Dla tych typów źródeł danych powinien zawierać "strukturę" w następujących przypadkach 2:
-  * Chcesz wykonać mapowania kolumn.
-  * Gdy zestaw danych jest źródłem w działaniu kopiowania, możesz podać informacje o typie w "strukturę" i usługi data factory użyje informacji o tym typie do konwersji na typy natywne ujścia. Zobacz [przenoszenie danych do i z usługi Azure Blob](../articles/data-factory/v1/data-factory-azure-blob-connector.md) artykuł, aby uzyskać więcej informacji.
+    Jak wspomniano powyżej, informacje o typie są opcjonalne w sekcji "struktura". W przypadku źródeł strukturalnych informacje o typie są już dostępne jako część definicji zestawu danych w magazynie danych, więc nie należy dołączać informacji o typie, jeśli zostanie uwzględniona sekcja "struktura".
+* **Dla schematu w źródłach odczytu danych (w szczególności azure blob)** można wybrać do przechowywania danych bez przechowywania żadnych schematów lub wpisywać informacje z danymi. Dla tych typów źródeł danych należy uwzględnić "strukturę" w następujących 2 przypadkach:
+  * Chcesz zrobić mapowanie kolumn.
+  * Gdy zestaw danych jest źródłem w copy działania, można podać informacje o typie w "struktura" i fabryka danych użyje tego typu informacji do konwersji do typów macierzystych dla ujścia. Aby uzyskać więcej [informacji, zobacz Przenoszenie danych do i z usługi Azure Blob.](../articles/data-factory/v1/data-factory-azure-blob-connector.md)
 
-### <a name="supported-net-based-types"></a>Obsługiwane. Typy sieci
-Usługi Data factory obsługuje następujące zgodny ze specyfikacją zgodne .NET na podstawie typu wartości udostępnienie informacji o typie w "structure" dla schematu na dane odczytu źródeł, takich jak usługi Azure blob.
+### <a name="supported-net-based-types"></a>Obsługiwane. Typy oparte na sieci
+Fabryka danych obsługuje następujące wartości typu .NET zgodne ze specyfikacją CLS w celu zapewnienia informacji o typie w "strukturze" dla schematu w źródłach odczytu danych, takich jak obiekt blob platformy Azure.
 
 * Int16
 * Int32 
 * Int64
 * Single
 * Double
-* Decimal
-* Byte[]
-* Bool
-* String 
-* Guid
-* Datetime
+* Wartość dziesiętna
+* Bajt[]
+* Wartość logiczna
+* Ciąg 
+* Guid (identyfikator GUID)
+* Datetime (data/godzina)
 * Datetimeoffset
 * Zakres czasu 
 
-Dla typu Datetime i Datetimeoffset również Opcjonalnie możesz określić ciąg "kultury" & "format" ułatwiają analizowanie niestandardowego ciągu daty/godziny. Zobacz przykład poniżej konwersji typu.
+Dla Datetime & Datetimeoffset można również opcjonalnie określić ciąg "culture" & "format", aby ułatwić analizowanie niestandardowego ciągu Datetime. Poniżej znajduje się przykładowa konwersja typu.
 

@@ -5,13 +5,13 @@ ms.topic: include
 ms.date: 11/25/2018
 ms.author: crdun
 ms.openlocfilehash: e81d11c01ef1cd8cb1ca6b63e48554cc46d146ee
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67183915"
 ---
-* W programie Xcode, naciśnij klawisz **Uruchom** i uruchomić aplikację na urządzeniu z systemem iOS (dokonany wybór push nie będzie działać w symulatorów). Kliknij przycisk **OK** do akceptowania powiadomienia wypychane, a to żądanie wystąpi przy pierwszym uruchomieniu aplikacji.
-* W aplikacji, Dodaj nowy element, a następnie kliknij przycisk **+** .
-* Sprawdź, czy powiadomienie zostanie odebrana, a następnie kliknij przycisk **OK** aby odrzucić powiadomienie. Pomyślnie ukończono ten samouczek.
+* W programie Xcode naciśnij przycisk **Uruchom** i uruchom aplikację na urządzeniu z systemem iOS (należy pamiętać, że wypychanie nie będzie działać na symulatorach). Kliknij **przycisk OK,** aby zaakceptować powiadomienia wypychane; to żądanie występuje przy pierwszym uruchomieniu aplikacji.
+* W aplikacji dodaj nowy element **+** i kliknij przycisk .
+* Sprawdź, czy powiadomienie zostało odebrane, a następnie kliknij przycisk **OK,** aby odrzucić powiadomienie. Ten samouczek został pomyślnie ukończony.
 

@@ -10,10 +10,10 @@ author: sakash279
 ms.author: akshanka
 ms.reviewer: sngun
 ms.openlocfilehash: 20c799f89394dd8978f120097b054a9adf9f1280
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/28/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "76770737"
 ---
 # <a name="azure-table-storage-overview"></a>Omówienie usługi Azure Table Storage
@@ -30,10 +30,10 @@ Usługa Table Storage umożliwia przechowywanie elastycznych zestawów danych, t
 
 * [Microsoft Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) jest bezpłatną aplikacją autonomiczną oferowaną przez firmę Microsoft, która umożliwia wizualną pracę z danymi w usłudze Azure Storage w systemach Windows, macOS i Linux.
 
-* [Rozpoczynanie pracy z usługą Azure Cosmos DB interfejs API tabel i usługą Azure Table Storage przy użyciu zestawu .NET SDK](table-storage-how-to-use-dotnet.md)
+* [Rozpoczynanie pracy z interfejsem API tabel usługi Azure Cosmos DB oraz usługą Azure Table Storage przy użyciu zestawu SDK platformy .NET](table-storage-how-to-use-dotnet.md)
 
 * Przejrzyj dokumentację referencyjną usługi Table service, aby uzyskać szczegółowe informacje o dostępnych interfejsach API:
 
-    * [Dokumentacja biblioteki klienta usługi Storage dla programu .NET](https://go.microsoft.com/fwlink/?LinkID=390731&clcid=0x409)
+    * [Biblioteka klienta magazynu dla odwołania .NET](https://go.microsoft.com/fwlink/?LinkID=390731&clcid=0x409)
 
-    * [Dokumentacja interfejsu API REST](https://msdn.microsoft.com/library/azure/dd179355)
+    * [Odwołanie do interfejsu API REST](https://msdn.microsoft.com/library/azure/dd179355)

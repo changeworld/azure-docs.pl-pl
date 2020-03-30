@@ -1,5 +1,5 @@
 ---
-title: 'Szybki Start: Tworzenie serwera — interfejs wiersza polecenia platformy Azure — Azure Database for MySQL'
+title: 'Szybki start: Tworzenie serwera — narzędzie interfejsu wiersza polecenia platformy Azure — usługa Azure Database for MySQL'
 description: W tym przewodniku Szybki start opisano, jak utworzyć serwer usługi Azure Database for MySQL w grupie zasobów platformy Azure za pomocą interfejsu wiersza polecenia platformy Azure.
 author: ajlam
 ms.author: andrela
@@ -9,20 +9,20 @@ ms.topic: quickstart
 ms.date: 01/09/2019
 ms.custom: mvc
 ms.openlocfilehash: acf5f3cdf761e1773d6e9384a4ceb99a645ed7cc
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "74773521"
 ---
-# <a name="quickstart-create-an-azure-database-for-mysql-server-using-azure-cli"></a>Szybki Start: Tworzenie serwera Azure Database for MySQL przy użyciu interfejsu wiersza polecenia platformy Azure
+# <a name="quickstart-create-an-azure-database-for-mysql-server-using-azure-cli"></a>Szybki start: tworzenie bazy danych platformy Azure dla serwera MySQL przy użyciu interfejsu wiersza polecenia platformy Azure
 
 > [!TIP]
-> Rozważ użycie prostszego polecenia [AZ MySQL up](/cli/azure/ext/db-up/mysql#ext-db-up-az-mysql-up) Azure CLI (obecnie w wersji zapoznawczej). Wypróbuj [Przewodnik Szybki Start](./quickstart-create-server-up-azure-cli.md).
+> Należy rozważyć użycie prostszego [az mysql się](/cli/azure/ext/db-up/mysql#ext-db-up-az-mysql-up) polecenia interfejsu wiersza polecenia platformy Azure (obecnie w wersji zapoznawczej). Wypróbuj [szybki start](./quickstart-create-server-up-azure-cli.md).
 
 W tym przewodniku Szybki start opisano, jak utworzyć serwer usługi Azure Database for MySQL w grupie zasobów platformy Azure za pomocą interfejsu wiersza polecenia platformy Azure w czasie około pięciu minut. Interfejs wiersza polecenia platformy Azure umożliwia tworzenie zasobów Azure i zarządzanie nimi z poziomu wiersza polecenia lub skryptów.
 
-Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne](https://azure.microsoft.com/free/) konto.
+Jeśli nie masz subskrypcji platformy Azure, utwórz [bezpłatne](https://azure.microsoft.com/free/) konto przed rozpoczęciem.
 
 [!INCLUDE [cloud-shell-try-it](../../includes/cloud-shell-try-it.md)]
 
@@ -33,7 +33,7 @@ Jeśli masz wiele subskrypcji, wybierz odpowiednią subskrypcję, w której zas�
 az account set --subscription 00000000-0000-0000-0000-000000000000
 ```
 
-## <a name="create-a-resource-group"></a>Utwórz grupę zasobów
+## <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
 Utwórz [grupę zasobów platformy Azure](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) za pomocą polecenia [az group create](/cli/azure/group#az-group-create). Grupa zasobów to logiczny kontener przeznaczony do wdrażania zasobów platformy Azure i zarządzania nimi w formie grupy.
 
 Poniższy przykład obejmuje tworzenie grupy zasobów o nazwie `myresourcegroup` w lokalizacji `westus`.
@@ -43,7 +43,7 @@ az group create --name myresourcegroup --location westus
 ```
 
 ## <a name="create-an-azure-database-for-mysql-server"></a>Tworzenie serwera usługi Azure Database for MySQL
-Utwórz serwer usługi Azure Database for MySQL za pomocą polecenia **[az mysql server create](/cli/azure/mysql/server#az-mysql-server-create)** . Serwer umożliwia zarządzanie wieloma bazami danych. Zwykle dla każdego projektu lub użytkownika używana jest oddzielna baza danych.
+Utwórz serwer usługi Azure Database for MySQL za pomocą polecenia **[az mysql server create](/cli/azure/mysql/server#az-mysql-server-create)**. Serwer umożliwia zarządzanie wieloma bazami danych. Zwykle dla każdego projektu lub użytkownika używana jest oddzielna baza danych.
 
 **Ustawienie** | **Wartość przykładowa** | **Opis**
 ---|---|---
@@ -78,7 +78,7 @@ az mysql server create --resource-group myresourcegroup --name mydemoserver  --l
 > 
 
 ## <a name="configure-firewall-rule"></a>Konfigurowanie reguły zapory
-Utwórz regułę zapory na poziomie serwera usługi Azure Database for MySQL za pomocą polecenia **[az mysql server firewall-rule create](/cli/azure/mysql/server/firewall-rule#az-mysql-server-firewall-rule-create)** . Reguła zapory na poziomie serwera pozwala aplikacji zewnętrznej, takiej jak narzędzie wiersza polecenia **mysql.exe** lub program MySQL Workbench, na nawiązywanie połączeń z Twoim serwerem przez zaporę usługi Azure MySQL. 
+Utwórz regułę zapory na poziomie serwera usługi Azure Database for MySQL za pomocą polecenia **[az mysql server firewall-rule create](/cli/azure/mysql/server/firewall-rule#az-mysql-server-firewall-rule-create)**. Reguła zapory na poziomie serwera pozwala aplikacji zewnętrznej, takiej jak narzędzie wiersza polecenia **mysql.exe** lub program MySQL Workbench, na nawiązywanie połączeń z Twoim serwerem przez zaporę usługi Azure MySQL. 
 
 Poniższy przykład powoduje utworzenie reguły zapory o nazwie `AllowMyIP`, która zezwala na połączenia z określonego adresu IP – 192.168.0.1. Zastąp ten adres adresem IP lub zakresem adresów IP odpowiednim dla urządzeń, z których będzie nawiązywane połączenie. 
 
@@ -100,7 +100,7 @@ W poniższym przykładzie jest wyłączane wymuszanie protokołu SSL na Twoim se
  az mysql server update --resource-group myresourcegroup --name mydemoserver --ssl-enforcement Disabled
  ```
 
-## <a name="get-the-connection-information"></a>Uzyskiwanie informacji o połączeniu
+## <a name="get-the-connection-information"></a>Pobieranie informacji o połączeniu
 
 Aby nawiązać połączenie z serwerem, musisz podać informacje o hoście i poświadczenia dostępu.
 
@@ -223,7 +223,7 @@ Jeśli te zasoby nie są Ci potrzebne do pracy z innym przewodnikiem Szybki star
 az group delete --name myresourcegroup
 ```
 
-Jeśli po prostu chcesz usunąć jeden z nowo utworzonych serwerów, możesz uruchomić polecenie **[az mysql server delete](/cli/azure/mysql/server#az-mysql-server-delete)** .
+Jeśli po prostu chcesz usunąć jeden z nowo utworzonych serwerów, możesz uruchomić polecenie **[az mysql server delete](/cli/azure/mysql/server#az-mysql-server-delete)**.
 ```azurecli-interactive
 az mysql server delete --resource-group myresourcegroup --name mydemoserver
 ```

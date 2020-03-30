@@ -1,6 +1,6 @@
 ---
-title: Co to jest Privileged Identity Management? — Azure AD | Microsoft Docs
-description: Zawiera omówienie Azure AD Privileged Identity Management (PIM).
+title: Co to jest zarządzanie tożsamościami uprzywilejowanymi? - Usługa Azure AD | Dokumenty firmy Microsoft
+description: Zawiera omówienie zarządzania tożsamościami uprzywilejowanymi usługi Azure AD (PIM).
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -15,23 +15,23 @@ ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c1f0708f0674633ddfee8b84388a2d96f2a04636
-ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "74899983"
 ---
 # <a name="what-is-azure-ad-privileged-identity-management"></a>Co to jest usługa Azure AD Privileged Identity Management?
 
-Usługa Azure Active Directory (Azure AD) Privileged Identity Management (PIM) to usługa, która umożliwia zarządzanie i sterowanie dostępem do ważnych zasobów w organizacji oraz monitorowanie go. Te zasoby obejmują zasoby w usłudze Azure AD, na platformie Azure oraz w innych usługach online firmy Microsoft, takich jak Office 365 lub Microsoft Intune.
+Usługa Azure Active Directory (Azure AD) Privileged Identity Management (PIM) to usługa, która umożliwia zarządzanie i sterowanie dostępem do ważnych zasobów w organizacji oraz monitorowanie go. Zasoby te obejmują zasoby usługi Azure AD, platformy Azure i innych usług online firmy Microsoft, takich jak Office 365 lub Microsoft Intune.
 
-## <a name="reasons-to-use"></a>Przyczyny użycia
+## <a name="reasons-to-use"></a>Powody, dla których warto
 
 Organizacje dążą do zminimalizowania liczby osób, które mają dostęp do zabezpieczonych informacji lub zasobów, ponieważ zmniejsza to prawdopodobieństwo uzyskania dostępu do nich przez użytkownika mającego złe zamiary lub przypadkowej modyfikacji poufnych zasobów przez osobę uprawnioną. Jednak użytkownicy nadal muszą wykonywać operacje uprzywilejowane w usłudze Azure AD, na platformie Azure, w usłudze Office 365 i w aplikacjach SaaS. Organizacje mogą przyznać użytkownikom dostęp uprzywilejowany just-in-time (JIT) do zasobów platformy Azure i do usługi Azure AD. Istnieje potrzeba nadzorowania sposobu, w jaki ci użytkownicy korzystają z uprawnień administratora.
 
-## <a name="what-does-it-do"></a>Do czego służy?
+## <a name="what-does-it-do"></a>Co to robi?
 
-Privileged Identity Management zapewnia aktywację roli opartej na czasie i zatwierdzania, aby ograniczyć ryzyko nadmiernego, niepotrzebnego lub nieużywanego dostępu do zasobów, które Cię interesują. Oto niektóre z najważniejszych funkcji Privileged Identity Management:
+Uprzywilejowane zarządzanie tożsamościami zapewnia zależną od czasu i aktywację ról opartą na zatwierdzaniu, aby ograniczyć ryzyko nadmiernego, niepotrzebnego lub niewłaściwego dostępu uprawnień dostępu do zasobów, na których Ci zależy. Oto niektóre z kluczowych funkcji zarządzania tożsamościami uprzywilejowanymi:
 
 - Zapewnianie dostępu uprzywilejowanego **just-in-time** do usługi Azure AD i zasobów platformy Azure
 - Przypisywanie **czasowego** dostępu do zasobów przy użyciu daty rozpoczęcia i zakończenia
@@ -42,37 +42,37 @@ Privileged Identity Management zapewnia aktywację roli opartej na czasie i zatw
 - Przeprowadzanie **przeglądów dostępu** w celu upewnienia się, że użytkownicy nadal potrzebują ról
 - Pobieranie **historii inspekcji** w celu przeprowadzenia inspekcji wewnętrznej lub zewnętrznej
 
-## <a name="what-can-i-do-with-it"></a>Co mogę zrobić z nim?
+## <a name="what-can-i-do-with-it"></a>Co mogę z nim zrobić?
 
-Po skonfigurowaniu Privileged Identity Management zobaczysz opcje **zadania**, **Zarządzaj**i **działania** w menu nawigacji po lewej stronie. Jako administrator możesz wybrać między zarządzaniem **rolami usługi Azure AD** i rolami **zasobów platformy Azure**. Po wybraniu typu ról do zarządzania zostanie wyświetlony podobny zestaw opcji dla danego typu roli.
+Po skonfigurowaniu zarządzania tożsamościami uprzywilejowanymi w menu nawigacji po lewej stronie pojawią się opcje **Zadania,** **Zarządzanie**i **Aktywność.** Jako administrator możesz wybrać między zarządzaniem **rolami usługi Azure AD** i rolami **zasobów platformy Azure**. Po wybraniu typu ról do zarządzania zostanie wyświetlony podobny zestaw opcji dla danego typu roli.
 
-![Zrzut ekranu przedstawiający Privileged Identity Management w Azure Portal](./media/pim-configure/pim-quickstart.png)
+![Zrzut ekranu przedstawiający zarządzanie tożsamościami uprzywilejowanymi w witrynie Azure portal](./media/pim-configure/pim-quickstart.png)
 
-## <a name="who-can-do-what"></a>Kto może zrobić?
+## <a name="who-can-do-what"></a>Kto może co zrobić?
 
-Jeśli jesteś pierwszą osobą, która ma być używana Privileged Identity Management, automatycznie przypiszesz role [administrator zabezpieczeń](../users-groups-roles/directory-assign-admin-roles.md#security-administrator) i [administrator ról uprzywilejowanych](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator) w katalogu.
+Jeśli jesteś pierwszą osobą, która korzysta z zarządzania tożsamościami uprzywilejowanymi, automatycznie w katalogu automatycznie przypisano role [Administratora zabezpieczeń](../users-groups-roles/directory-assign-admin-roles.md#security-administrator) i [Administratora ról uprzywilejowanych.](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator)
 
-W przypadku ról usługi Azure AD w Privileged Identity Management tylko użytkownik należący do roli administrator ról uprzywilejowanych może zarządzać przypisaniami innych administratorów. Można [udzielić dostępu innym administratorom do zarządzania Privileged Identity Management](pim-how-to-give-access-to-pim.md). Administratorzy globalni, administratorzy zabezpieczeń, czytelnicy globalni i czytelnicy zabezpieczeń mogą również wyświetlać przypisania do ról usługi Azure AD w Privileged Identity Management.
+W przypadku ról usługi Azure AD w dziale Zarządzanie tożsamościami uprzywilejowanymi tylko użytkownik, który jest w roli Administrator ról uprzywilejowanych, może zarządzać przydziałami dla innych administratorów. Można [udzielić dostępu innym administratorom do zarządzania zarządzaniem tożsamościami uprzywilejowanymi](pim-how-to-give-access-to-pim.md). Administratorzy globalni, administratorzy zabezpieczeń, czytniki globalne i czytniki zabezpieczeń mogą również wyświetlać przypisania do ról usługi Azure AD w dziale Zarządzanie tożsamościami uprzywilejowanymi.
 
-W przypadku ról zasobów platformy Azure w Privileged Identity Management tylko administrator subskrypcji, właściciel zasobu lub administrator dostępu użytkowników do zasobów może zarządzać przypisaniami innych administratorów. Użytkownicy, którzy są administratorami ról uprzywilejowanych, administratorzy zabezpieczeń lub czytelnicy zabezpieczeń, domyślnie nie mają dostępu do wyświetlania przypisań do ról zasobów platformy Azure w Privileged Identity Management.
+W przypadku ról zasobów platformy Azure w dziale Zarządzanie tożsamościami uprzywilejowanymi tylko administrator subskrypcji, właściciel zasobu lub administrator programu User Access mogą zarządzać przydziałami dla innych administratorów. Użytkownicy, którzy są administratorami ról uprzywilejowanych, administratorami zabezpieczeń lub czytnikami zabezpieczeń, nie mają domyślnie dostępu do wyświetlania przypisań do ról zasobów platformy Azure w dziale Zarządzanie tożsamościami uprzywilejowanymi.
 
 ## <a name="scenarios"></a>Scenariusze
 
 Usługa Privileged Identity Management obsługuje następujące scenariusze:
 
-### <a name="privileged-role-administrator-permissions"></a>Uprawnienia administratora ról uprzywilejowanych
+### <a name="privileged-role-administrator-permissions"></a>Uprawnienia administratora roli uprzywilejowanej
 
 - Włączanie zatwierdzeń dla określonych ról
-- Określ użytkowników lub grupy osoby zatwierdzającej do zatwierdzania żądań
+- Określanie użytkowników lub grup zatwierdzającej do zatwierdzania żądań
 - Wyświetlanie historii żądań i zatwierdzeń dla wszystkich ról uprzywilejowanych
 
 ### <a name="approver-permissions"></a>Uprawnienia osoby zatwierdzającej
 
 - Wyświetlanie oczekujących zatwierdzeń (żądań)
-- Zatwierdź lub Odrzuć żądania podniesienia uprawnień roli (pojedyncza i zbiorcza)
-- Podaj uzasadnienie zatwierdzenia lub odrzucenia
+- Zatwierdzanie lub odrzucanie żądań podniesienia poziomu roli (pojedyncze i zbiorcze)
+- Podaj uzasadnienie mojej zgody lub odrzucenia
 
-### <a name="eligible-role-user-permissions"></a>Uprawnienia uprawnionych użytkowników roli
+### <a name="eligible-role-user-permissions"></a>Uprawnienia użytkowników kwalifikującej się roli
 
 - Żądanie aktywacji roli wymagającej zatwierdzenia
 - Wyświetlanie stanu żądania uaktywnienia
@@ -80,7 +80,7 @@ Usługa Privileged Identity Management obsługuje następujące scenariusze:
 
 ## <a name="terminology"></a>Terminologia
 
-Aby lepiej zrozumieć Privileged Identity Management i dokumentację, należy zapoznać się z poniższymi postanowieniami.
+Aby lepiej zrozumieć Zarządzanie tożsamościami uprzywilejowanymi i jego dokumentację, należy przejrzeć następujące warunki.
 
 | Termin lub pojęcie | Kategoria przypisania roli | Opis |
 | --- | --- | --- |
@@ -100,10 +100,10 @@ Aby lepiej zrozumieć Privileged Identity Management i dokumentację, należy za
 
 [!INCLUDE [Azure AD Premium P2 license](../../../includes/active-directory-p2-license.md)]
 
-Aby uzyskać informacje na temat licencji dla użytkowników, zobacz [wymagania dotyczące licencji, aby użyć Privileged Identity Management](subscription-requirements.md).
+Aby uzyskać informacje o licencjach dla użytkowników, zobacz [Wymagania licencyjne dotyczące korzystania z zarządzania tożsamościami uprzywilejowanymi](subscription-requirements.md).
 
 ## <a name="next-steps"></a>Następne kroki
 
-- [Wymagania licencyjne dotyczące używania Privileged Identity Management](subscription-requirements.md)
+- [Wymagania licencyjne dotyczące korzystania z zarządzania tożsamościami uprzywilejowanymi](subscription-requirements.md)
 - [Zabezpieczanie uprzywilejowanego dostępu dla wdrożeń hybrydowych i wdrożeń w chmurze w usłudze Azure AD](../users-groups-roles/directory-admin-roles-secure.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)
-- [Wdróż Privileged Identity Management](pim-deployment-plan.md)
+- [Wdrażanie usługi Privileged Identity Management](pim-deployment-plan.md)

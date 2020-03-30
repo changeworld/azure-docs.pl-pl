@@ -12,10 +12,10 @@ ms.custom: mvc
 ms.date: 01/07/2019
 ms.author: mbaldwin
 ms.openlocfilehash: 4e2953b107b017d032e737e2878472166c677839
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "78194958"
 ---
 # <a name="what-is-azure-key-vault"></a>Co to jest usługa Azure Key Vault?
@@ -24,8 +24,8 @@ Usługa Azure Key Vault pomaga rozwiązać następujące problemy:
 
 - **Zarządzanie wpisami tajnymi** — usługa Azure Key Vault może służyć do bezpiecznego przechowywania i ścisłego kontrolowania dostępu do tokenów, haseł, certyfikatów, kluczy interfejsu API i innych wpisów tajnych.
 - **Zarządzanie kluczami** — usługa Azure Key Vault może być także używana jako rozwiązanie do zarządzania kluczami. Usługa Azure Key Vault ułatwia tworzenie i kontrolowanie kluczy szyfrowania używanych do szyfrowania danych. 
-- **Zarządzanie certyfikatami** — Azure Key Vault to również usługa, która umożliwia łatwe inicjowanie obsługi i wdrażanie publicznych i prywatnych certyfikatów Transport Layer Security/SSL (TLS/SSL) do użycia z platformą Azure i wewnętrznymi zasobami połączonymi. 
-- **Przechowuj wpisy tajne objęte sprzętowymi modułami zabezpieczeń** — tajne i klucze mogą być chronione przez oprogramowanie lub FIPS 140-2 poziom 2 sprawdzony sprzętowych modułów zabezpieczeń
+- **Zarządzanie certyfikatami** — usługa Azure Key Vault to również usługa, która umożliwia łatwe udostępnianie, zarządzanie i wdrażanie publicznych i prywatnych certyfikatów TLS/SSL (Secure Layer Layer) dla transportu do użytku z platformą Azure i wewnętrznymi połączonymi zasobami. 
+- **Przechowywanie wpisów tajnych wspieranych przez sprzętowe moduły zabezpieczeń** — wpisy tajne i klucze mogą być chronione przez oprogramowanie lub zatwierdzone moduły HSM poziomu 2 FIPS 140-2
 
 ## <a name="why-use-azure-key-vault"></a>Jakie są zalety korzystania z usługi Azure Key Vault?
 
@@ -43,7 +43,7 @@ Udzielenie dostępu do magazynu kluczy wywołującemu użytkownikowi lub aplikac
 
 Uwierzytelnianie jest wykonywane za pośrednictwem usługi Azure Active Directory. Autoryzacja może odbywać się przy użyciu funkcji kontroli dostępu na podstawie ról (RBAC, role-based access control) lub zasad dostępu usługi Key Vault. Funkcja RBAC jest używana do obsługi zarządzania magazynami, a zasady dostępu do magazynu kluczy są używane podczas próby uzyskania dostępu do danych przechowywanych w magazynie.
 
-Usługa Azure Key Vault może być chroniona za pomocą programowego lub sprzętowego modułu HSM. W przypadku sytuacji wymagających dodatkowych zabezpieczeń możesz zaimportować klucz do modułu HSM lub wygenerować w nim klucze, które nigdy nie opuszczają modułu HSM. Firma Microsoft używa oprogramowanie wspomagające nCipher sprzętowych modułów zabezpieczeń. Za pomocą narzędzi oprogramowanie wspomagające nCipher można przenieść klucz z modułu HSM do Azure Key Vault.
+Usługa Azure Key Vault może być chroniona za pomocą programowego lub sprzętowego modułu HSM. W przypadku sytuacji wymagających dodatkowych zabezpieczeń możesz zaimportować klucz do modułu HSM lub wygenerować w nim klucze, które nigdy nie opuszczają modułu HSM. Firma Microsoft używa sprzętowych modułów zabezpieczeń nCipher. Za pomocą narzędzi nCipher można przenieść klucz z modułu HSM do usługi Azure Key Vault.
 
 Usługa Azure Key Vault została zaprojektowana w taki sposób, aby firma Microsoft nie miała wglądu w Twoje dane ani nie mogła ich wyodrębnić.
 
@@ -53,15 +53,15 @@ Po utworzeniu kilku magazynów usługi Key Vault może zajść potrzeba monitoro
 
 - Archiwizowanie na koncie magazynu.
 - Przesyłanie strumieniowe do centrum zdarzeń.
-- Wyślij dzienniki do Azure Monitor dzienników.
+- Wyślij dzienniki do dzienników usługi Azure Monitor.
 
 Kontrolujesz dzienniki i możesz je zabezpieczyć przez ograniczenie dostępu, a także możesz usunąć dzienniki, które nie są już potrzebne.
 
 ### <a name="simplified-administration-of-application-secrets"></a>Uproszczone administrowanie wpisami tajnymi aplikacji
 
-W przypadku przechowywania cennych danych należy wykonać kilka czynności. Informacje o zabezpieczeniach muszą być zabezpieczone, muszą być zgodne z cyklem życia i muszą być wysoce dostępne. Usługa Azure Key Vault upraszcza proces spełnienia tych wymagań przez:
+W przypadku przechowywania cennych danych należy wykonać kilka czynności. Informacje o bezpieczeństwie muszą być zabezpieczone, muszą być zgodne z cyklem życia i muszą być wysoce dostępne. Usługa Azure Key Vault upraszcza proces spełnienia tych wymagań przez:
 
-- Usunięcie potrzeby znajomości sprzętowych modułów zabezpieczeń.
+- Usunięcie konieczności posiadania wewnętrznego wiedzy na temat sprzętowych modułów zabezpieczeń.
 - Skalowanie w górę w krótkim czasie w celu spełnienia nagłego zapotrzebowania organizacji.
 - Replikowanie zawartości usługi Key Vault w regionie do regionu pomocniczego. Replikacja danych zapewnia wysoką dostępność i eliminuje konieczność wykonywania jakichkolwiek czynności przez administratora w celu wyzwolenia trybu failover.
 - Udostępnianie standardowych opcji administrowania platformą Azure za pośrednictwem portalu, interfejsu wiersza polecenia platformy Azure i programu PowerShell.
@@ -81,4 +81,4 @@ Samą usługę Key Vault można zintegrować z kontami magazynu, centrami zdarze
 ## <a name="next-steps"></a>Następne kroki
 
 - [Szybki start: tworzenie usługi Azure Key Vault przy użyciu interfejsu wiersza polecenia](quick-create-cli.md)
-- [Konfigurowanie aplikacji internetowej platformy Azure w celu odczytu wpisu tajnego z usługi Key Vault](tutorial-web-application-keyvault.md)
+- [Konfigurowanie aplikacji sieci Web platformy Azure do odczytu klucza tajnego z magazynu kluczy](tutorial-web-application-keyvault.md)

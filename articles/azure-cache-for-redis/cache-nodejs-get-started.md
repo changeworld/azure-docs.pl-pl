@@ -1,5 +1,5 @@
 ---
-title: 'Szybki Start: korzystanie z usługi Azure cache for Redis za pomocą środowiska Node. js'
+title: 'Szybki start: używanie pamięci podręcznej Azure dla funkcji Redis z plikem Node.js'
 description: W tym przewodniku Szybki start dowiesz się, jak używać usługi Azure Cache for Redis w środowisku Node.js oraz node_redis.
 author: yegu-ms
 ms.service: cache
@@ -9,20 +9,20 @@ ms.date: 05/21/2018
 ms.author: yegu
 ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019
 ms.openlocfilehash: 07e2d6f174e5af4af9bdcac73dc74f5cf061ed41
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "78300489"
 ---
-# <a name="quickstart-use-azure-cache-for-redis-with-nodejs"></a>Szybki Start: korzystanie z usługi Azure cache for Redis za pomocą środowiska Node. js
+# <a name="quickstart-use-azure-cache-for-redis-with-nodejs"></a>Szybki start: używanie pamięci podręcznej Azure dla funkcji Redis z plikem Node.js
 
-W tym przewodniku szybki start dodaliśmy usługę Azure cache for Redis do aplikacji node. js w celu uzyskania dostępu do bezpiecznej, dedykowanej pamięci podręcznej, która jest dostępna z dowolnej aplikacji na platformie Azure.
+W tym przewodniku Szybki start włączysz usługę Azure Cache for Redis do aplikacji Node.js, aby mieć dostęp do bezpiecznej, dedykowanej pamięci podręcznej dostępnej z dowolnej aplikacji na platformie Azure.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Subskrypcja platformy Azure — [Utwórz ją bezpłatnie](https://azure.microsoft.com/free/)
-- [node_redis](https://github.com/mranney/node_redis), którą można zainstalować za pomocą polecenia `npm install redis`. 
+- Subskrypcja platformy Azure — [utwórz bezpłatną subskrypcję](https://azure.microsoft.com/free/)
+- [node_redis](https://github.com/mranney/node_redis), które można zainstalować za `npm install redis`pomocą polecenia . 
 
 Przykłady użycia innych klientów Node.js można znaleźć w dokumentacji poszczególnych klientów Node.js wymienionych na stronie [klientów Node.js usługi Redis](https://redis.io/clients#nodejs).
 
@@ -55,9 +55,9 @@ Nie należy tworzyć nowych połączeń dla każdej operacji w kodzie. Zamiast t
 
 ## <a name="create-a-new-nodejs-app"></a>Tworzenie nowej aplikacji na platformie Node.js
 
-Utwórz nowy plik skryptu o nazwie *redistest.js*. Użyj `npm install redis bluebird` polecenia, aby zainstalować wymagane pakiety.
+Utwórz nowy plik skryptu o nazwie *redistest.js*. Użyj polecenia, `npm install redis bluebird` aby zainstalować wymagane pakiety.
 
-Dodaj do pliku poniższy przykład kodu JavaScript. W tym kodzie pokazano sposób podłączania do wystąpienia usługi Azure Cache for Redis przy użyciu nazwy hosta pamięci podręcznej i kluczowych zmiennych środowiskowych. W kodzie jest również przechowywana i pobierana wartość ciągu w pamięci podręcznej. Następuje wykonanie poleceń `PING` i `CLIENT LIST`. Aby uzyskać więcej przykładów użycia usługi Redis z klientem [node_redis](https://github.com/mranney/node_redis), zobacz [https://redis.js.org/](https://redis.js.org/).
+Dodaj do pliku poniższy przykład kodu JavaScript. W tym kodzie pokazano sposób podłączania do wystąpienia usługi Azure Cache for Redis przy użyciu nazwy hosta w pamięci podręcznej i kluczowych zmiennych środowiskowych. W kodzie jest również przechowywana i pobierana wartość ciągu w pamięci podręcznej. Następuje wykonanie poleceń `PING` i `CLIENT LIST`. Aby uzyskać więcej przykładów użycia usługi Redis z klientem [node_redis](https://github.com/mranney/node_redis), zobacz [https://redis.js.org/](https://redis.js.org/).
 
 ```js
 var redis = require("redis");
@@ -107,7 +107,7 @@ node redistest.js
 
 W poniższym przykładzie widać, że klucz `Message` miał już w pamięci podręcznej wartość, która została ustawiona za pomocą konsoli Redis w witrynie Azure Portal. Aplikacja zaktualizowała tę wartość w pamięci podręcznej. Aplikacja również wykonała polecenia `PING` i `CLIENT LIST`.
 
-![Zakończono działanie aplikacji Redis Cache](./media/cache-nodejs-get-started/redis-cache-app-complete.png)
+![Ukończono aplikację Redis Cache](./media/cache-nodejs-get-started/redis-cache-app-complete.png)
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
@@ -121,17 +121,17 @@ W przeciwnym razie po zakończeniu pracy z przykładową aplikacją poradnika Sz
 
 Zaloguj się do witryny [Azure Portal](https://portal.azure.com) i wybierz pozycję **Grupy zasobów**.
 
-W polu tekstowym **Filtruj według nazwy** wprowadź nazwę grupy zasobów. Instrukcje w tym artykule używają grupy zasobów o nazwie *TestResources*. W grupie zasobów na liście wynik wybierz pozycję **...** , a następnie **Usuń grupę zasobów**.
+W polu tekstowym **Filtruj według nazwy** wprowadź nazwę grupy zasobów. Instrukcje w tym artykule używają grupy zasobów o nazwie *TestResources*. W grupie zasobów na liście wyników wybierz pozycję **...** a następnie **Usuń grupę zasobów**.
 
-![Usuń grupę zasobów platformy Azure](./media/cache-nodejs-get-started/redis-cache-delete-resource-group.png)
+![Usuwanie grupy zasobów platformy Azure](./media/cache-nodejs-get-started/redis-cache-delete-resource-group.png)
 
-Zobaczysz prośbę o potwierdzenie usunięcia grupy zasobów. Aby potwierdzić, wprowadź nazwę grupy zasobów, a następnie wybierz pozycję **Usuń**.
+Zobaczysz prośbę o potwierdzenie usunięcia grupy zasobów. Wprowadź nazwę grupy zasobów, aby potwierdzić, a następnie wybierz pozycję **Usuń**.
 
 Po krótkim czasie grupa zasobów i wszystkie zawarte w niej zasoby zostaną usunięte.
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym przewodniku Szybki start przedstawiono sposób użycia usługi Azure Cache for Redis z poziomu aplikacji platformy Node.js. Przejdź do kolejnego Szybkiego startu, w którym wyjaśniono użycie usługi Microsoft Azure Cache for Redis z poziomu aplikacji internetowej ASP.NET.
+W tym przewodniku Szybki start przedstawiono sposób użycia usługi Azure Cache for Redis z poziomu aplikacji platformy Node.js. Przejdź do kolejnego Szybkiego startu, w którym wyjaśniono, jak używać usługi Microsoft Azure Cache for Redis z poziomu aplikacji internetowej ASP.NET.
 
 > [!div class="nextstepaction"]
 > [Tworzenie na platformie ASP.NET aplikacji internetowej, która korzysta z usługi Microsoft Azure Cache for Redis.](./cache-web-app-howto.md)

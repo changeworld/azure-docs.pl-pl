@@ -1,5 +1,5 @@
 ---
-title: Kopiowanie danych w Blob Storage przy użyciu Azure Data Factory
+title: Kopiowanie danych w magazynie obiektów Blob przy użyciu usługi Azure Data Factory
 description: Tworzenie fabryki danych platformy Azure w celu skopiowania danych między lokalizacjami w usłudze Azure Blob Storage.
 services: data-factory
 documentationcenter: ''
@@ -14,30 +14,30 @@ ms.topic: quickstart
 ms.date: 01/22/2018
 ms.author: jingwang
 ms.openlocfilehash: 7f527d3c57f086e7941505a9ca4396885c746762
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "75440081"
 ---
-# <a name="quickstart-create-an-azure-data-factory-using-powershell"></a>Szybki Start: Tworzenie fabryki danych Azure przy użyciu programu PowerShell
+# <a name="quickstart-create-an-azure-data-factory-using-powershell"></a>Szybki start: tworzenie fabryki danych platformy Azure przy użyciu programu PowerShell
 
-> [!div class="op_single_selector" title1="Wybierz używaną wersję usługi Data Factory:"]
+> [!div class="op_single_selector" title1="Wybierz wersję używanej usługi Data Factory:"]
 > * [Wersja 1](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 > * [Bieżąca wersja](quickstart-create-data-factory-powershell.md)
 
-Ten samouczek szybki start opisuje sposób używania programu PowerShell w celu utworzenia usługi Azure Data Factory. Potok tworzony w tej fabryce danych **kopiuje** dane z jednego folderu do innego folderu w usłudze Azure Blob Storage. Aby zapoznać się z samouczkiem dotyczącym **przekształcania** danych za pomocą usługi Azure Data Factory, zobacz [Tutorial: Transform data using Spark (Samouczek: Przekształcanie danych przy użyciu usługi Spark)](transform-data-using-spark.md).
+Ten samouczek szybki start opisuje sposób używania programu PowerShell w celu utworzenia usługi Azure Data Factory. Potok utworzony w tej fabryce danych **kopiuje** dane z jednego folderu do innego folderu w magazynie obiektów blob platformy Azure. Aby zapoznać się z samouczkiem na temat **przekształcania** danych przy użyciu usługi Azure Data Factory, zobacz [Samouczek: Przekształcanie danych przy użyciu platformy Spark](transform-data-using-spark.md).
 
 > [!NOTE]
 > Ten artykuł nie zawiera szczegółowego wprowadzenia do usługi Data Factory. Aby zapoznać się z wprowadzeniem do usługi Azure Data Factory, zobacz [Wprowadzenie do usługi Azure Data Factory](introduction.md).
 
 [!INCLUDE [data-factory-quickstart-prerequisites](../../includes/data-factory-quickstart-prerequisites.md)]
 
-### <a name="azure-powershell"></a>Program Azure PowerShell
+### <a name="azure-powershell"></a>Azure PowerShell
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Zainstaluj najnowsze moduły programu Azure PowerShell, wykonując instrukcje podane w temacie [Instalowanie i konfigurowanie programu Azure PowerShell](/powershell/azure/install-Az-ps).
+Zainstaluj najnowsze moduły programu Azure PowerShell, postępując zgodnie z instrukcjami w [temacie Jak zainstalować i skonfigurować program Azure PowerShell](/powershell/azure/install-Az-ps).
 
 #### <a name="log-in-to-powershell"></a>Logowanie do programu PowerShell
 
@@ -55,7 +55,7 @@ Zainstaluj najnowsze moduły programu Azure PowerShell, wykonując instrukcje po
     Get-AzSubscription
     ```
 
-4. Jeśli z kontem jest skojarzonych wiele subskrypcji, uruchom poniższe polecenie, aby wybrać subskrypcję, z którą chcesz pracować. Zastąp parametr **SubscriptionId** identyfikatorem Twojej subskrypcji platformy Azure:
+4. Jeśli z kontem jest skojarzonych wiele subskrypcji, uruchom poniższe polecenie, aby wybrać subskrypcję, z którą chcesz pracować. Zamień **identyfikator subscriptionid** na identyfikator subskrypcji platformy Azure:
 
     ```powershell
     Select-AzSubscription -SubscriptionId "<SubscriptionId>"
@@ -88,7 +88,7 @@ Zainstaluj najnowsze moduły programu Azure PowerShell, wykonując instrukcje po
     $dataFactoryName = "ADFQuickStartFactory";
     ```
 
-4. Aby utworzyć fabrykę danych, uruchom następujące polecenie cmdlet **Set-AzDataFactoryV2** , używając właściwości Location i ResourceGroupName ze zmiennej $ResGrp:
+4. Aby utworzyć fabrykę danych, uruchom następujące polecenie cmdlet **Set-AzDataFactoryV2** przy użyciu właściwości Lokalizacja i ResourceGroupName ze zmiennej $ResGrp:
 
     ```powershell
     $DataFactory = Set-AzDataFactoryV2 -ResourceGroupName $ResGrp.ResourceGroupName `
@@ -138,7 +138,7 @@ Utwórz połączone usługi w fabryce danych w celu połączenia swoich magazyn�
     Set-Location 'C:\ADFv2QuickStartPSH'
     ```
 
-3. Uruchom polecenie cmdlet **Set-AzDataFactoryV2LinkedService** , aby utworzyć połączoną usługę: **AzureStorageLinkedService**.
+3. Uruchom polecenie cmdlet **Set-AzDataFactoryV2LinkedService** w celu utworzenia połączonej usługi: **AzureStorageLinkedService**.
 
     ```powershell
     Set-AzDataFactoryV2LinkedService -DataFactoryName $DataFactory.DataFactoryName `
@@ -155,12 +155,12 @@ Utwórz połączone usługi w fabryce danych w celu połączenia swoich magazyn�
     Properties        : Microsoft.Azure.Management.DataFactory.Models.AzureBlobStorageLinkedService
     ```
 
-## <a name="create-datasets"></a>Utwórz zestawy danych
+## <a name="create-datasets"></a>Tworzenie zestawów danych
 
 W tej procedurze tworzone są dwa zestawy danych: **InputDataset** i **OutputDataset**. Te zestawy danych są typu **Binary**. Odwołują się one do połączonej usługi Azure Storage utworzonej w poprzedniej sekcji.
 Wejściowy zestaw danych reprezentuje dane źródłowe w folderze wejściowym. W definicji wejściowego zestawu danych określany jest kontener obiektów blob (**adftutorial**), folder (**input**) i plik (**emp.txt**), który zawiera dane źródłowe.
 Wyjściowy zestaw danych reprezentuje dane, które są kopiowane do lokalizacji docelowej. W definicji wyjściowego zestawu danych określany jest kontener obiektów blob (**adftutorial**), folder (**output**) i plik, do którego kopiowane są dane. 
-1. Utwórz plik JSON o nazwie **InputDataset. JSON** w folderze **C:\ADFv2QuickStartPSH** o następującej zawartości:
+1. Utwórz plik JSON o nazwie **InputDataset.json** w folderze **C:\ADFv2QuickStartPSH** z następującą zawartością:
 
     ```json
     {
@@ -184,7 +184,7 @@ Wyjściowy zestaw danych reprezentuje dane, które są kopiowane do lokalizacji 
     }
     ```
 
-2. Aby utworzyć zestaw danych: **InputDataset**, uruchom polecenie cmdlet **Set-AzDataFactoryV2Dataset** .
+2. Aby utworzyć zestaw danych: **InputDataset**, uruchom polecenie cmdlet **Set-AzDataFactoryV2Dataset.**
 
     ```powershell
     Set-AzDataFactoryV2Dataset -DataFactoryName $DataFactory.DataFactoryName `
@@ -202,7 +202,7 @@ Wyjściowy zestaw danych reprezentuje dane, które są kopiowane do lokalizacji 
     Properties        : Microsoft.Azure.Management.DataFactory.Models.BinaryDataset
     ```
 
-3. Powtórz kroki, aby utworzyć wyjściowy zestaw danych. Utwórz plik JSON o nazwie **OutputDataset. JSON** w folderze **C:\ADFv2QuickStartPSH** o następującej zawartości:
+3. Powtórz kroki, aby utworzyć wyjściowy zestaw danych. Utwórz plik JSON o nazwie **OutputDataset.json** w folderze **C:\ADFv2QuickStartPSH** z następującą zawartością:
 
     ```json
     {
@@ -225,7 +225,7 @@ Wyjściowy zestaw danych reprezentuje dane, które są kopiowane do lokalizacji 
     }
     ```
 
-4. Uruchom polecenie cmdlet **Set-AzDataFactoryV2Dataset** , aby utworzyć zestaw **danych**.
+4. Uruchom polecenie cmdlet **Set-AzDataFactoryV2Dataset,** aby utworzyć **zestaw outdataset**.
 
     ```powershell
     Set-AzDataFactoryV2Dataset -DataFactoryName $DataFactory.DataFactoryName `
@@ -244,7 +244,7 @@ Wyjściowy zestaw danych reprezentuje dane, które są kopiowane do lokalizacji 
     ```
 ## <a name="create-a-pipeline"></a>Tworzenie potoku
 
-W tej procedurze utworzysz potok za pomocą działania kopiowania, które korzysta z wejściowych i wyjściowych zestawów danych. Działanie kopiowania służy do kopiowania danych z pliku określonego w ustawieniach wejściowego zestawu danych do pliku określonego w ustawieniach wyjściowego zestawu danych.  
+W tej procedurze utworzysz potok z działaniem kopiowania, który używa wejściowych i wyjściowych zestawów danych. Działanie kopiowania służy do kopiowania danych z pliku określonego w ustawieniach wejściowego zestawu danych do pliku określonego w ustawieniach wyjściowego zestawu danych.  
 
 1. Utwórz plik JSON o nazwie **Adfv2QuickStartPipeline.json** w folderze **C:\Adfv2QuickStartPSH** o następującej zawartości:
 
@@ -300,7 +300,7 @@ W tej procedurze utworzysz potok za pomocą działania kopiowania, które korzys
     }
     ```
 
-2. Aby utworzyć potok: **Adfv2QuickStartPipeline**, uruchom polecenie cmdlet **Set-AzDataFactoryV2Pipeline** .
+2. Aby utworzyć potok: **Adfv2QuickStartPipeline**, Uruchom polecenie cmdlet **Set-AzDataFactoryV2Pipeline.**
 
     ```powershell
     $DFPipeLine = Set-AzDataFactoryV2Pipeline `
@@ -312,9 +312,9 @@ W tej procedurze utworzysz potok za pomocą działania kopiowania, które korzys
 
 ## <a name="create-a-pipeline-run"></a>Tworzenie uruchomienia potoku
 
-W tym kroku utworzysz uruchomienie potoku.
+W tym kroku należy utworzyć przebieg potoku.
 
-Uruchom polecenie cmdlet **Invoke-AzDataFactoryV2Pipeline** , aby utworzyć uruchomienie potoku. Polecenie cmdlet zwraca identyfikator uruchomienia potoku w celu monitorowania w przyszłości.
+Uruchom polecenie cmdlet **Invoke-AzDataFactoryV2Pipeline,** aby utworzyć uruchomienie potoku. Polecenie cmdlet zwraca identyfikator uruchomienia potoku w celu monitorowania w przyszłości.
 
   ```powershell
 $RunId = Invoke-AzDataFactoryV2Pipeline `

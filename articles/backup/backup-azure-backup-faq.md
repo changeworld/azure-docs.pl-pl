@@ -3,12 +3,12 @@ title: Odpowiedzi na często zadawane pytania
 description: 'Odpowiedzi na typowe pytania dotyczące funkcji usługi Azure Backup, w tym magazynów usług Recovery Services, elementów, których kopie zapasowe można tworzyć, sposobu działania, szyfrowania i ograniczeń. '
 ms.topic: conceptual
 ms.date: 07/07/2019
-ms.openlocfilehash: db09a31154b680097b6b46e8f9e2cce2ad09d108
-ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
+ms.openlocfilehash: 039666c4b54da6ac5444f5aa5acda5f1bb438782
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78255019"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80156059"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Azure Backup — często zadawane pytania
 
@@ -22,7 +22,7 @@ Tak. Maksymalnie można utworzyć 500 magazynów usługi Recovery Services na ob
 
 ### <a name="are-there-limits-on-the-number-of-serversmachines-that-can-be-registered-against-each-vault"></a>Czy istnieją ograniczenia dotyczące liczby serwerów/maszyn, które można zarejestrować w każdym magazynie?
 
-W magazynie można zarejestrować maksymalnie 1000 maszyn wirtualnych platformy Azure. Jeśli używany jest agent usługi Kopia zapasowa Microsoft Azure, można zarejestrować do 50 agentów usługi Kopia zapasowa Microsoft Azure na magazyn. Można także zarejestrować 50 serwerów usługi Kopia zapasowa Microsoft Azure / serwerów DPM na magazyn.
+W magazynie można zarejestrować maksymalnie 1000 maszyn wirtualnych platformy Azure. Jeśli używasz agenta kopii zapasowej platformy Microsoft Azure, możesz zarejestrować maksymalnie 50 agentów MARS na magazyn. Możesz też zarejestrować 50 serwerów MABS/DPM w skarbcu.
 
 ### <a name="how-many-datasourcesitems-can-be-protected-in-a-vault"></a>Ile źródeł danych / elementów można objąć ochroną w magazynie?
 
@@ -75,7 +75,7 @@ Tak.
 
 Usługa Azure Backup obsługuje następujące systemy operacyjne w przypadku tworzenia kopii zapasowych plików i folderów oraz aplikacji chronionych przy użyciu serwera usługi Azure Backup i programu DPM.
 
-**OS** | **SKU** | **Szczegóły**
+**System operacyjny** | **Numer jednostki magazynowej** | **Szczegóły**
 --- | --- | ---
 Stacja robocza | |
 Windows 10 (wersja 64-bitowa) | Enterprise, Pro, Home | Na maszynach powinny być uruchomione najnowsze dodatki Service Pack i aktualizacje.
@@ -117,13 +117,13 @@ W poniższej tabeli opisano sposób ustalania rozmiaru dla każdego źródła da
 --- | ---
 Wolumin |Ilość danych kopii zapasowej z jednego woluminu maszyny wirtualnej, którego kopia zapasowa jest wykonywana.
 Baza danych programu SQL Server |Rozmiar pojedynczej bazy danych SQL, której kopia zapasowa jest wykonywana.
-Sharepoint | Suma baz danych z zawartością i danymi konfiguracyjnymi w farmie programu SharePoint, której kopia zapasowa jest wykonywana.
+Program SharePoint | Suma baz danych z zawartością i danymi konfiguracyjnymi w farmie programu SharePoint, której kopia zapasowa jest wykonywana.
 Exchange |Suma wszystkich baz danych programu Exchange w serwerze Exchange, którego kopia zapasowa jest wykonywana.
 Stan systemu/BMR |Każda pojedyncza kopia BMR lub stanu systemu komputera, którego kopia zapasowa jest wykonywana.
 
 ### <a name="is-there-a-limit-on-the-amount-of-data-backed-up-using-a-recovery-services-vault"></a>Czy istnieje ograniczenie ilości danych kopii zapasowej utworzonej przy użyciu magazynu usługi Recovery Services?
 
-Nie ma żadnego limitu łącznej ilości danych, których kopię zapasową można utworzyć przy użyciu magazynu Recovery Services. Poszczególne źródła danych (inne niż maszyny wirtualne platformy Azure) mogą mieć maksymalnie 54 400 GB pamięci. Aby uzyskać więcej informacji na temat limitów, zobacz [sekcję limity magazynu w macierzy obsługi](https://docs.microsoft.com/azure/backup/backup-support-matrix#vault-support).
+Nie ma limitu całkowitej ilości danych, które można uzupełnić za pomocą magazynu usług odzyskiwania. Poszczególne źródła danych (inne niż maszyny wirtualne platformy Azure) mogą mieć maksymalnie rozmiar 54 400 GB. Aby uzyskać więcej informacji na temat limitów, zobacz [sekcję limity przechowalni w macierzy obsługi](https://docs.microsoft.com/azure/backup/backup-support-matrix#vault-support).
 
 ### <a name="why-is-the-size-of-the-data-transferred-to-the-recovery-services-vault-smaller-than-the-data-selected-for-backup"></a>Dlaczego rozmiar danych przesyłanych do magazynu usługi Recovery Services jest mniejszy niż rozmiar danych wybranych do utworzenia kopii zapasowej?
 
@@ -214,7 +214,7 @@ Klucz szyfrowania powinien składać się z co najmniej 16 znaków, gdy używasz
 
 ### <a name="what-happens-if-i-misplace-the-encryption-key-can-i-recover-the-data-can-microsoft-recover-the-data"></a>Co się stanie, jeśli klucz szyfrowania zostanie zgubiony przez użytkownika? Czy można odzyskać dane? Czy firma Microsoft może odzyskać dane?
 
-Klucz używany do szyfrowania danych kopii zapasowej znajduje się tylko w Twojej lokacji. Firma Microsoft nie przechowuje kopii klucza na platformie Azure i nie ma do niego dostępu. W przypadku utraty klucza firma Microsoft nie może odzyskać danych kopii zapasowej.
+Klucz używany do szyfrowania danych kopii zapasowej znajduje się tylko w Twojej lokacji. Firma Microsoft nie przechowuje kopii na platformie Azure i nie ma żadnego dostępu do klucza. W przypadku utraty klucza firma Microsoft nie może odzyskać danych kopii zapasowej.
 
 ## <a name="next-steps"></a>Następne kroki
 

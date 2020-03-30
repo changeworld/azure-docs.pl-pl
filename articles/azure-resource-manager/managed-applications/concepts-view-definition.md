@@ -1,32 +1,32 @@
 ---
-title: Przegląd definicji widoku
-description: Opisuje koncepcję tworzenia definicji widoku dla Azure Managed Applications.
+title: Omówienie definicji widoku
+description: W tym artykule opisano koncepcję tworzenia definicji widoku dla aplikacji zarządzanych platformy Azure.
 ms.topic: conceptual
 ms.author: lazinnat
 author: lazinnat
 ms.date: 06/12/2019
 ms.openlocfilehash: d0c60f5738bf634f9d43d6d4f0d78c1239b7ff3c
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75650697"
 ---
-# <a name="view-definition-artifact-in-azure-managed-applications"></a>Wyświetl artefakt definicji w Azure Managed Applications
+# <a name="view-definition-artifact-in-azure-managed-applications"></a>Wyświetlanie artefaktu definicji w aplikacjach zarządzanych platformy Azure
 
-Definicja widoku to opcjonalny artefakt w Azure Managed Applications. Umożliwia ona Dostosowywanie strony przegląd i Dodawanie kolejnych widoków, takich jak metryki i zasoby niestandardowe.
+Definicja widoku jest opcjonalnym artefaktem w aplikacjach zarządzanych platformy Azure. Umożliwia dostosowanie strony przeglądu i dodać więcej widoków, takich jak metryki i zasoby niestandardowe.
 
 Ten artykuł zawiera omówienie artefaktu definicji widoku i jego możliwości.
 
 ## <a name="view-definition-artifact"></a>Wyświetlanie artefaktu definicji
 
-Artefakt definicji widoku musi mieć nazwę **galerii. JSON** i znajdować się na tym samym poziomie, co **createUiDefinition. JSON** i **mainTemplate. JSON** w pakiecie. zip, który tworzy definicję aplikacji zarządzanej. Aby dowiedzieć się, jak utworzyć pakiet ZIP i opublikować definicję aplikacji zarządzanej, zobacz temat [Publikowanie definicji aplikacji zarządzanej przez platformę Azure](publish-managed-app-definition-quickstart.md)
+Artefakt definicji widoku musi być nazwany **viewDefinition.json** i umieszczony na tym samym poziomie co **createUiDefinition.json** i **mainTemplate.json** w pakiecie zip, który tworzy definicję aplikacji zarządzanej. Aby dowiedzieć się, jak utworzyć pakiet zip i opublikować definicję aplikacji [zarządzanej, zobacz Publikowanie definicji aplikacji zarządzanej platformy Azure](publish-managed-app-definition-quickstart.md)
 
-## <a name="view-definition-schema"></a>Widok schematu definicji
+## <a name="view-definition-schema"></a>Wyświetlanie schematu definicji
 
-Plik **galerii. JSON** ma tylko jedną właściwość `views` najwyższego poziomu, która jest tablicą widoków. Każdy widok jest wyświetlany w interfejsie użytkownika aplikacji zarządzanej jako osobny element menu w spisie treści. Każdy widok ma właściwość `kind`, która ustawia typ widoku. Musi być ustawiona na jedną z następujących wartości: [Overview](#overview), [Metrics](#metrics), [CustomResources](#custom-resources), [Associations](#associations). Aby uzyskać więcej informacji, zobacz bieżący [schemat JSON dla galerii. JSON](https://schema.management.azure.com/schemas/viewdefinition/0.0.1-preview/ViewDefinition.json#).
+Plik **viewDefinition.json** ma tylko `views` jedną właściwość najwyższego poziomu, która jest tablicą widoków. Każdy widok jest wyświetlany w interfejsie użytkownika aplikacji zarządzanej jako oddzielny element menu w spisie treści. Każdy widok `kind` ma właściwość, która ustawia typ widoku. Musi być ustawiona na jedną z następujących wartości: [Przegląd](#overview), [Metryki](#metrics), [CustomResources](#custom-resources), [Skojarzenia](#associations). Aby uzyskać więcej informacji, zobacz [bieżący schemat JSON dla pliku viewDefinition.json](https://schema.management.azure.com/schemas/viewdefinition/0.0.1-preview/ViewDefinition.json#).
 
-Przykładowy kod JSON dla definicji widoku:
+Przykładowy JSON dla definicji widoku:
 
 ```json
 {
@@ -103,11 +103,11 @@ Przykładowy kod JSON dla definicji widoku:
 }
 ```
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 `"kind": "Overview"`
 
-Po udostępnieniu tego widoku w pliku **galerii. JSON**zastępuje on domyślną stronę przeglądu w aplikacji zarządzanej.
+Po podaniu tego widoku w **pliku viewDefinition.json**zastępuje on domyślną stronę Przegląd w aplikacji zarządzanej.
 
 ```json
 {
@@ -125,19 +125,19 @@ Po udostępnieniu tego widoku w pliku **galerii. JSON**zastępuje on domyślną 
 }
 ```
 
-|Właściwość|Wymagane|Opis|
+|Właściwość|Wymagany|Opis|
 |---------|---------|---------|
-|nagłówek|Nie|Nagłówek strony przegląd.|
+|nagłówek|Nie|Nagłówek strony przeglądu.|
 |description|Nie|Opis aplikacji zarządzanej.|
-|polecenia|Nie|Tablica dodatkowych przycisków paska narzędzi na stronie Przegląd, zobacz [polecenia](#commands).|
+|polecenia|Nie|Tablica dodatkowych przycisków paska narzędzi strony przeglądu, zobacz [polecenia](#commands).|
 
-![Przegląd](./media/view-definition/overview.png)
+![Omówienie](./media/view-definition/overview.png)
 
 ## <a name="metrics"></a>Metryki
 
 `"kind": "Metrics"`
 
-Widok metryki umożliwia zbieranie i agregowanie danych z zasobów aplikacji zarządzanych w ramach [metryk Azure monitor](../../azure-monitor/platform/data-platform-metrics.md).
+Widok metryki umożliwia zbieranie i agregowanie danych z zasobów zarządzanych aplikacji w [metrykach usługi Azure Monitor.](../../azure-monitor/platform/data-platform-metrics.md)
 
 ```json
 {
@@ -164,28 +164,28 @@ Widok metryki umożliwia zbieranie i agregowanie danych z zasobów aplikacji zar
 }
 ```
 
-|Właściwość|Wymagane|Opis|
+|Właściwość|Wymagany|Opis|
 |---------|---------|---------|
 |displayName|Nie|Wyświetlany tytuł widoku.|
 |version|Nie|Wersja platformy używana do renderowania widoku.|
-|schematy|Tak|Tablica wykresów na stronie metryk.|
+|Wykresy|Tak|Tablica wykresów strony metryki.|
 
 ### <a name="chart"></a>Wykres
 
-|Właściwość|Wymagane|Opis|
+|Właściwość|Wymagany|Opis|
 |---------|---------|---------|
 |displayName|Tak|Wyświetlany tytuł wykresu.|
-|wykrestype|Nie|Wizualizacja, która ma być używana na potrzeby tego wykresu. Domyślnie używa wykresu liniowego. Obsługiwane typy wykresów: `Bar, Line, Area, Scatter`.|
-|metrics|Tak|Tablica metryk do wykreślenia na tym wykresie. Aby dowiedzieć się więcej o metrykach obsługiwanych w Azure Portal, zobacz temat [obsługiwane metryki z Azure monitor](../../azure-monitor/platform/metrics-supported.md)|
+|typ wykresu|Nie|Wizualizacja do użycia na tym wykresie. Domyślnie używa wykresu liniowego. Obsługiwane typy `Bar, Line, Area, Scatter`wykresów: .|
+|metrics|Tak|Tablica metryk do wykreślenia na tym wykresie. Aby dowiedzieć się więcej o metrykach obsługiwanych w witrynie Azure portal, zobacz [Obsługiwane metryki za pomocą usługi Azure Monitor](../../azure-monitor/platform/metrics-supported.md)|
 
 ### <a name="metric"></a>Metryka
 
-|Właściwość|Wymagane|Opis|
+|Właściwość|Wymagany|Opis|
 |---------|---------|---------|
 |name|Tak|Nazwa metryki.|
-|aggregationType|Tak|Typ agregacji, który ma być używany dla tej metryki. Obsługiwane typy agregacji: `none, sum, min, max, avg, unique, percentile, count`|
-|przestrzeń nazw|Nie|Dodatkowe informacje do użycia podczas określania poprawnego dostawcy metryk.|
-|resourceTagFilter|Nie|Tablica tagów zasobów (zostanie oddzielona `or` Word), dla której będą wyświetlane metryki. Dotyczy filtru typu zasobu.|
+|Aggregationtype|Tak|Typ agregacji do użycia dla tej metryki. Obsługiwane typy agregacji:`none, sum, min, max, avg, unique, percentile, count`|
+|namespace|Nie|Dodatkowe informacje do użycia podczas określania dostawcy poprawnych metryk.|
+|resourceTagFilter|Nie|Tablica znaczników zasobów (zostanie `or` oddzielona wyrazem), dla której będą wyświetlane metryki. Dotyczy filtru typu zasobu.|
 |resourceType|Tak|Typ zasobu, dla którego będą wyświetlane metryki.|
 
 ![Metryki](./media/view-definition/metrics.png)
@@ -194,9 +194,9 @@ Widok metryki umożliwia zbieranie i agregowanie danych z zasobów aplikacji zar
 
 `"kind": "CustomResources"`
 
-Można zdefiniować wiele widoków tego typu. Każdy widok przedstawia **unikatowy** niestandardowy typ zasobu od niestandardowego dostawcy zdefiniowanego w **mainTemplate. JSON**. Aby zapoznać się z wprowadzeniem do dostawców niestandardowych, zobacz [Omówienie usługi Custom Providers w wersji zapoznawczej](../custom-providers/overview.md).
+Można zdefiniować wiele widoków tego typu. Każdy widok reprezentuje **unikatowy** niestandardowy typ zasobu zdefiniowanego przez niestandardowego dostawcę w **pliku mainTemplate.json**. Aby zapoznać się z wprowadzeniem do dostawców niestandardowych, zobacz [omówienie dostawców niestandardowych dostawców platformy Azure](../custom-providers/overview.md).
 
-W tym widoku można wykonywać operacje GET, PUT, DELETE i POST dla niestandardowego typu zasobu. Operacje POST mogą być globalnymi akcjami niestandardowymi lub akcjami niestandardowymi w kontekście niestandardowego typu zasobu.
+W tym widoku można wykonać operacje GET, PUT, DELETE i POST dla niestandardowego typu zasobu. Operacje POST mogą być globalnymi akcjami niestandardowymi lub akcjami niestandardowymi w kontekście niestandardowego typu zasobu.
 
 ```json
 {
@@ -224,21 +224,21 @@ W tym widoku można wykonywać operacje GET, PUT, DELETE i POST dla niestandardo
 }
 ```
 
-|Właściwość|Wymagane|Opis|
+|Właściwość|Wymagany|Opis|
 |---------|---------|---------|
-|displayName|Tak|Wyświetlany tytuł widoku. Tytuł powinien być **unikatowy** dla każdego widoku CustomResources w pliku **galerii. JSON**.|
+|displayName|Tak|Wyświetlany tytuł widoku. Tytuł powinien być **unikatowy** dla każdego widoku CustomResources w **pliku viewDefinition.json**.|
 |version|Nie|Wersja platformy używana do renderowania widoku.|
-|resourceType|Tak|Niestandardowy typ zasobu. Musi być **unikatowym** niestandardowym typem zasobu niestandardowego dostawcy.|
-|Ikona|Nie|Ikona widoku. Lista przykładowych ikon jest zdefiniowana w [schemacie JSON](https://schema.management.azure.com/schemas/viewdefinition/0.0.1-preview/ViewDefinition.json#).|
-|createUIDefinition|Nie|Utwórz schemat definicji interfejsu użytkownika dla polecenia Utwórz zasób niestandardowy. Wprowadzenie do tworzenia definicji interfejsu użytkownika można znaleźć w temacie [wprowadzenie do CreateUiDefinition](create-uidefinition-overview.md)|
-|polecenia|Nie|Tablica dodatkowych przycisków paska narzędzi widoku CustomResources, zobacz [polecenia](#commands).|
-|Kolumny|Nie|Tablica kolumn zasobu niestandardowego. Jeśli nie została zdefiniowana, kolumna `name` będzie wyświetlana domyślnie. Kolumna musi mieć `"key"` i `"displayName"`. W polu klucz Podaj klucz właściwości, która ma być wyświetlana w widoku. Jeśli jest zagnieżdżony, użyj kropki jako ogranicznika, na przykład `"key": "name"` lub `"key": "properties.property1"`. W polu Nazwa wyświetlana Podaj nazwę wyświetlaną właściwości, która ma być wyświetlana w widoku. Możesz również podać Właściwość `"optional"`. Po ustawieniu na wartość true kolumna jest domyślnie ukryta w widoku.|
+|resourceType|Tak|Niestandardowy typ zasobu. Musi być **unikatowy** typ zasobu niestandardowego dostawcy niestandardowego.|
+|Ikonę|Nie|Ikona widoku. Lista przykładowych ikon jest zdefiniowana w [schemacie JSON](https://schema.management.azure.com/schemas/viewdefinition/0.0.1-preview/ViewDefinition.json#).|
+|tworzeniedefinicji UI|Nie|Utwórz schemat definicji interfejsu użytkownika w celu utworzenia polecenia zasobu niestandardowego. Aby zapoznać się z wprowadzeniem do tworzenia definicji interfejsu użytkownika, zobacz [Wprowadzenie do createudefdefition](create-uidefinition-overview.md)|
+|polecenia|Nie|Tablica dodatkowych przycisków paska narzędzi w widoku CustomResources, zobacz [polecenia](#commands).|
+|columns|Nie|Tablica kolumn zasobu niestandardowego. Jeśli nie `name` zdefiniowano, kolumna będzie wyświetlana domyślnie. Kolumna musi `"key"` `"displayName"`mieć i . Dla klucza, podaj klucz właściwości do wyświetlenia w widoku. Jeśli zagnieżdżona, użyj kropki `"key": "name"` jako `"key": "properties.property1"`ogranicznika, na przykład lub . Dla nazwy wyświetlanej podaj nazwę wyświetlaną właściwości do wyświetlenia w widoku. Goście mogą również `"optional"` zapewnić właściwość. Po ustawieniu wartości true kolumna jest domyślnie ukryta w widoku.|
 
-![CustomResources](./media/view-definition/customresources.png)
+![Niestandardowe źródła zasobów](./media/view-definition/customresources.png)
 
 ## <a name="commands"></a>Polecenia
 
-Polecenia to tablica dodatkowych przycisków paska narzędzi, które są wyświetlane na stronie. Każde polecenie reprezentuje akcję POST z niestandardowego dostawcy platformy Azure, która została zdefiniowana w pliku **mainTemplate. JSON**. Aby zapoznać się z wprowadzeniem do dostawców niestandardowych, zobacz [Omówienie dostawców niestandardowych platformy Azure](../custom-providers/overview.md).
+Polecenia to tablica dodatkowych przycisków paska narzędzi, które są wyświetlane na stronie. Każde polecenie reprezentuje akcję POST z dostawcy niestandardowego platformy Azure zdefiniowaną w **pliku mainTemplate.json**. Aby zapoznać się z wprowadzeniem do dostawców niestandardowych, zobacz [omówienie dostawców niestandardowych platformy Azure.](../custom-providers/overview.md)
 
 ```json
 {
@@ -253,20 +253,20 @@ Polecenia to tablica dodatkowych przycisków paska narzędzi, które są wyświe
 }
 ```
 
-|Właściwość|Wymagane|Opis|
+|Właściwość|Wymagany|Opis|
 |---------|---------|---------|
 |displayName|Tak|Wyświetlana nazwa przycisku polecenia.|
-|Ścieżka|Tak|Nazwa akcji dostawcy niestandardowego. Akcja musi być zdefiniowana w **mainTemplate. JSON**.|
-|Ikona|Nie|Ikona przycisku polecenia. Lista przykładowych ikon jest zdefiniowana w [schemacie JSON](https://schema.management.azure.com/schemas/viewdefinition/0.0.1-preview/ViewDefinition.json#).|
-|createUIDefinition|Nie|Utwórz schemat definicji interfejsu użytkownika dla polecenia. Wprowadzenie do tworzenia definicji interfejsu użytkownika można znaleźć w temacie [wprowadzenie do CreateUiDefinition](create-uidefinition-overview.md).|
+|ścieżka|Tak|Nazwa akcji dostawcy niestandardowego. Akcja musi być zdefiniowana w **mainTemplate.json**.|
+|Ikonę|Nie|Ikona przycisku polecenia. Lista przykładowych ikon jest zdefiniowana w [schemacie JSON](https://schema.management.azure.com/schemas/viewdefinition/0.0.1-preview/ViewDefinition.json#).|
+|tworzeniedefinicji UI|Nie|Utwórz schemat definicji interfejsu użytkownika dla polecenia. Aby zapoznać się z wprowadzeniem do tworzenia definicji interfejsu użytkownika, zobacz [Wprowadzenie do createuidefinition](create-uidefinition-overview.md).|
 
-## <a name="associations"></a>Związku
+## <a name="associations"></a>Stowarzyszenia
 
 `"kind": "Associations"`
 
-Można zdefiniować wiele widoków tego typu. Ten widok pozwala połączyć istniejące zasoby z zarządzaną aplikacją za pomocą dostawcy niestandardowego zdefiniowanego w **mainTemplate. JSON**. Aby zapoznać się z wprowadzeniem do dostawców niestandardowych, zobacz [Omówienie usługi Custom Providers w wersji zapoznawczej](../custom-providers/overview.md).
+Można zdefiniować wiele widoków tego typu. Ten widok umożliwia łączenie istniejących zasobów z aplikacją zarządzaną za pośrednictwem niestandardowego dostawcy zdefiniowanego w **pliku mainTemplate.json**. Aby zapoznać się z wprowadzeniem do dostawców niestandardowych, zobacz [omówienie dostawców niestandardowych dostawców platformy Azure](../custom-providers/overview.md).
 
-W tym widoku można rozłożyć istniejące zasoby platformy Azure na podstawie `targetResourceType`. Po wybraniu zasobu zostanie utworzone żądanie dołączania do **publicznego** dostawcy niestandardowego, które może zastosować efekt uboczny do zasobu. 
+W tym widoku można rozszerzyć istniejące `targetResourceType`zasoby platformy Azure na podstawie pliku . Gdy zasób jest zaznaczony, utworzy żądanie dołączania do **publicznego** dostawcy niestandardowego, który może zastosować efekt uboczny do zasobu. 
 
 ```json
 {
@@ -280,19 +280,19 @@ W tym widoku można rozłożyć istniejące zasoby platformy Azure na podstawie 
 }
 ```
 
-|Właściwość|Wymagane|Opis|
+|Właściwość|Wymagany|Opis|
 |---------|---------|---------|
-|displayName|Tak|Wyświetlany tytuł widoku. Tytuł powinien być **unikatowy** dla każdego widoku skojarzenia w pliku **galerii. JSON**.|
+|displayName|Tak|Wyświetlany tytuł widoku. Tytuł powinien być **unikatowy** dla każdego widoku Skojarzenia w **pliku viewDefinition.json**.|
 |version|Nie|Wersja platformy używana do renderowania widoku.|
-|targetResourceType|Tak|Docelowy typ zasobu. Jest to typ zasobu, który będzie wyświetlany na potrzeby dołączania do zasobów.|
-|createUIDefinition|Nie|Utwórz schemat definicji interfejsu użytkownika dla polecenia Utwórz zasób skojarzenia. Wprowadzenie do tworzenia definicji interfejsu użytkownika można znaleźć w temacie [wprowadzenie do CreateUiDefinition](create-uidefinition-overview.md)|
+|targetResourceType|Tak|Typ zasobu docelowego. Jest to typ zasobu, który będzie wyświetlany dla dołączania zasobów.|
+|tworzeniedefinicji UI|Nie|Utwórz schemat definicji interfejsu użytkownika dla polecenia utwórz zasób skojarzenia. Aby zapoznać się z wprowadzeniem do tworzenia definicji interfejsu użytkownika, zobacz [Wprowadzenie do createudefdefition](create-uidefinition-overview.md)|
 
-## <a name="looking-for-help"></a>Szukasz pomocy
+## <a name="looking-for-help"></a>Szukam pomocy
 
-Jeśli masz pytania dotyczące Azure Managed Applications, spróbuj zadać pytanie na [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-managedapps). Podobne pytanie mogło zostać już zgłoszone i nie udzielono odpowiedzi, więc najpierw należy sprawdzić przed opublikowaniem. Dodaj tag `azure-managedapps`, aby uzyskać szybką odpowiedź!
+Jeśli masz pytania dotyczące aplikacji zarządzanych platformy Azure, spróbuj zadać pytanie w sprawie [Przepełnienie stosu](https://stackoverflow.com/questions/tagged/azure-managedapps). Podobne pytanie mogło już zostać zadane i udzielono odpowiedzi, więc sprawdź najpierw przed wysłaniem. Dodaj tag, `azure-managedapps` aby uzyskać szybką odpowiedź!
 
 ## <a name="next-steps"></a>Następne kroki
 
 - Aby zapoznać się z wprowadzeniem do aplikacji zarządzanych, zobacz [Azure Managed Application overview](overview.md) (Omówienie aplikacji zarządzanych platformy Azure).
-- Aby zapoznać się z wprowadzeniem do dostawców niestandardowych, zobacz [Omówienie dostawców niestandardowych platformy Azure](../custom-providers/overview.md).
-- Aby utworzyć aplikację zarządzaną platformy Azure z dostawcami niestandardowymi platformy Azure, zobacz [Samouczek: Tworzenie aplikacji zarządzanej przy użyciu akcji dostawcy niestandardowego i typów zasobów](tutorial-create-managed-app-with-custom-provider.md)
+- Aby zapoznać się z wprowadzeniem do dostawców niestandardowych, zobacz [omówienie dostawców niestandardowych platformy Azure.](../custom-providers/overview.md)
+- Aby utworzyć aplikację zarządzaną platformy Azure przy wsparciu dostawców niestandardowych platformy Azure, zobacz [Samouczek: Tworzenie aplikacji zarządzanej przy zastosowaniu akcji dostawcy niestandardowego i typów zasobów](tutorial-create-managed-app-with-custom-provider.md)

@@ -1,5 +1,5 @@
 ---
-title: Aplikacja konsolowa korzystająca z interfejsu API Azure Cosmos DB MongoDB i golang SDK
+title: Aplikacja konsoli przy użyciu interfejsu API usługi Azure Cosmos DB dla mongodb i golang SDK
 description: Przykładowy kod w języku Golang, którego można używać do nawiązywania połączeń i wykonywania zapytań przy użyciu interfejsu API MongoDB usługi Azure Cosmos DB.
 author: markjbrown
 ms.author: mjbrown
@@ -8,13 +8,13 @@ ms.subservice: cosmosdb-mongo
 ms.topic: quickstart
 ms.date: 12/26/2018
 ms.openlocfilehash: c717a8d5baa57ce780fbbc0d25e67c2509ca86fc
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "75441945"
 ---
-# <a name="quickstart-build-a-console-app-using-azure-cosmos-dbs-api-for-mongodb-and-golang-sdk"></a>Szybki Start: Tworzenie aplikacji konsolowej przy użyciu interfejsu API Azure Cosmos DB MongoDB i golang SDK
+# <a name="quickstart-build-a-console-app-using-azure-cosmos-dbs-api-for-mongodb-and-golang-sdk"></a>Szybki start: tworzenie aplikacji konsoli przy użyciu interfejsu API usługi Azure Cosmos DB dla mongodb i golang SDK
 
 > [!div class="op_single_selector"]
 > * [.NET](create-mongodb-dotnet.md)
@@ -33,7 +33,7 @@ Innymi słowy, aplikacja w języku Golang wie jedynie, że łączy się przy uż
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Subskrypcja platformy Azure. Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free). 
+- Subskrypcja platformy Azure. Jeśli nie masz subskrypcji platformy Azure, utwórz [bezpłatne konto](https://azure.microsoft.com/free) przed rozpoczęciem. 
 
   [!INCLUDE [cosmos-db-emulator-mongodb](../../includes/cosmos-db-emulator-mongodb.md)]
 
@@ -129,9 +129,9 @@ defer session.Close()
 session.SetSafe(&mgo.Safe{})
 ```
 
-Metoda **mgo.Dial()** jest używana w przypadku braku połączenia SSL. W przypadku połączenia SSL wymagana jest metoda **mgo.DialWithInfo()** .
+Metoda **mgo.Dial()** jest używana w przypadku braku połączenia SSL. W przypadku połączenia SSL wymagana jest metoda **mgo.DialWithInfo()**.
 
-Do utworzenia obiektu sesji używane jest wystąpienie obiektu **DialWithInfo{}** . Po ustanowieniu sesji można uzyskać dostęp do kolekcji, używając poniższego fragmentu kodu:
+Do utworzenia obiektu sesji używane jest wystąpienie obiektu **DialWithInfo{}**. Po ustanowieniu sesji można uzyskać dostęp do kolekcji, używając poniższego fragmentu kodu:
 
 ```go
 collection := session.DB("database").C("package")
@@ -251,4 +251,4 @@ Wróć do witryny Azure Portal, aby zobaczyć swój dokument w Eksploratorze dan
 W tym przewodniku Szybki start wyjaśniono sposób tworzenia konta usługi Cosmos i uruchamiania aplikacji w języku Golang. Teraz możesz zaimportować dodatkowe dane do swojej bazy danych usługi Cosmos. 
 
 > [!div class="nextstepaction"]
-> [Importuj dane usługi MongoDB do usługi Azure Cosmos DB](mongodb-migrate.md)
+> [Importowanie danych z bazy danych MongoDB do usługi Azure Cosmos DB](mongodb-migrate.md)

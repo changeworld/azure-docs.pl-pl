@@ -9,15 +9,15 @@ ms.date: 01/23/2019
 ms.author: danlep
 ms.custom: include file
 ms.openlocfilehash: cd97c61e7493249785293ae331713ba1a98efee3
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/12/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "67183786"
 ---
 ## <a name="run-image-from-registry"></a>Uruchamianie obrazu z rejestru
 
-Teraz można ściągać i uruchamiać `hello-world:v1` obraz kontenera z rejestru kontenerów przy użyciu przebiegu [Docker][docker-run]:
+Teraz można ściągnąć i uruchomić obraz kontenera `hello-world:v1` z rejestru kontenerów za pomocą polecenia [docker run][docker-run]:
 
 ```
 docker run <acrLoginServer>/hello-world:v1  

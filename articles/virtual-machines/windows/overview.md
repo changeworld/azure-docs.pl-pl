@@ -1,6 +1,6 @@
 ---
 title: Omówienie maszyn wirtualnych z systemem Windows na platformie Azure
-description: Omówienie maszyn wirtualnych z systemem Windows na platformie Azure.
+description: Omówienie maszyn wirtualnych systemu Windows na platformie Azure.
 services: virtual-machines-windows
 author: cynthn
 manager: gwallace
@@ -12,10 +12,10 @@ ms.date: 11/14/2019
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: efcbdb2ebd7f4830214dbd0f2ea2ea1cfe36c3de
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "75893516"
 ---
 # <a name="windows-virtual-machines-in-azure"></a>Maszyny wirtualne z systemem Windows na platformie Azure
@@ -51,7 +51,7 @@ W poniższej tabeli przedstawiono wybrane metody uzyskania dostępu do listy dos
 | Metoda | Opis |
 | --- | --- |
 | Portal Azure |Wybór lokalizacji z listy podczas tworzenia maszyny wirtualnej. |
-| Program Azure PowerShell |Użyj polecenia [Get-AzLocation](https://docs.microsoft.com/powershell/module/az.resources/get-azlocation). |
+| Azure PowerShell |Użyj polecenia [Get-AzLocation](https://docs.microsoft.com/powershell/module/az.resources/get-azlocation). |
 | Interfejs API REST |Użycie operacji [wyświetlania listy lokalizacji](https://docs.microsoft.com/rest/api/resources/subscriptions). |
 | Interfejs wiersza polecenia platformy Azure |Użyj operacji [az account list-locations](https://docs.microsoft.com/cli/azure/account?view=azure-cli-latest). |
 
@@ -62,13 +62,13 @@ Platforma Azure oferuje najlepszą w branży umowę dotyczącą poziomu usług g
 ## <a name="vm-size"></a>Rozmiar maszyny wirtualnej
 [Rozmiar](sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) maszyny wirtualnej zależy od obciążenia, które ma zostać uruchomione. Wybrany rozmiar ma więc wpływ na takie czynniki jak moc procesora, pamięć i przestrzeń dyskowa. W ramach platformy Azure dostępna jest szeroka gama rozmiarów umożliwiających wykorzystanie produktu do wielu różnych zastosowań.
 
-Na platformie Azure obowiązuje [cena za godzinę](https://azure.microsoft.com/pricing/details/virtual-machines/windows/), która jest określana na podstawie rozmiaru maszyny wirtualnej i jej systemu operacyjnego. W przypadku rozpoczętych godzin opłaty są pobierane tylko za faktycznie wykorzystane minuty. Magazyn jest wyceniany oddzielnie; związane z nim opłaty są także pobierane osobno.
+Platforma Azure pobiera [cenę godzinową](https://azure.microsoft.com/pricing/details/virtual-machines/windows/) na podstawie rozmiaru maszyny Wirtualnej i systemu operacyjnego. W przypadku rozpoczętych godzin opłaty są pobierane tylko za faktycznie wykorzystane minuty. Magazyn jest wyceniany oddzielnie; związane z nim opłaty są także pobierane osobno.
 
 ## <a name="vm-limits"></a>Limity maszyn wirtualnych
 Subskrypcje mają domyślne [limity przydziałów](../../azure-resource-manager/management/azure-subscription-service-limits.md), które mogą mieć wpływ na wdrożenie wielu maszyn wirtualnych w projekcie. Aktualny limit dla każdej subskrypcji wynosi 20 maszyn wirtualnych na region. Limity można zwiększyć, [wypełniając odpowiednio bilet pomocy technicznej](../../azure-portal/supportability/resource-manager-core-quotas-request.md)
 
 ### <a name="operating-system-disks-and-images"></a>Dyski i obrazy z systemem operacyjnym
-System operacyjny i dane maszyny wirtualnej są przechowywane na [wirtualnym dysku twardym (VHD)](managed-disks-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Wirtualne dyski twarde są również używane do obsługi obrazów, spośród których można wybierać, chcąc zainstalować system operacyjny. 
+Maszyny wirtualne używają [wirtualnych dysków twardych (VHD)](managed-disks-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) do przechowywania swojego systemu operacyjnego i danych. Wirtualne dyski twarde są również używane do obsługi obrazów, spośród których można wybierać, chcąc zainstalować system operacyjny. 
 
 Na platformie Azure jest dostępnych wiele [obrazów z portalu Marketplace](https://azure.microsoft.com/marketplace/virtual-machines/), których można używać z różnymi wersjami i typami systemów operacyjnych Windows Server. Obrazy z Marketplace są oznaczone nazwą wydawcy i oferty, jednostką SKU i wersją (zwykle najnowszą). Obsługiwane są tylko 64-bitowe systemy operacyjne. Aby uzyskać więcej informacji dotyczących obsługiwanych systemów operacyjnych gościa, ról oraz funkcji, zobacz temat [Microsoft server software support for Microsoft Azure virtual machines](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines) (Obsługa oprogramowania serwera Microsoft maszyn wirtualnych Microsoft Azure).
 
@@ -77,9 +77,9 @@ W poniższej tabeli pokazano, jak można znaleźć informacje o obrazie.
 | Metoda | Opis |
 | --- | --- |
 | Portal Azure |Wartości są podawane automatycznie po wybraniu obrazu, który ma zostać użyty. |
-| Program Azure PowerShell |[Get-AzVMImagePublisher](https://docs.microsoft.com/powershell/module/az.compute/get-azvmimagepublisher) -Location *lokalizacja*<BR>[Get-AzVMImageOffer](https://docs.microsoft.com/powershell/module/az.compute/get-azvmimageoffer) -Location *lokalizacja* -Publisher *nazwaWydawcy*<BR>[Get-AzVMImageSku](https://docs.microsoft.com/powershell/module/az.compute/get-azvmimagesku) -Location *lokalizacja* -Publisher *nazwaWydawcy* -Offer *nazwaOferty* |
+| Azure PowerShell |[Get-AzVMImagePublisher](https://docs.microsoft.com/powershell/module/az.compute/get-azvmimagepublisher) -Location *lokalizacja*<BR>[Get-AzVMImageOffer](https://docs.microsoft.com/powershell/module/az.compute/get-azvmimageoffer) -Location *lokalizacja* -Publisher *nazwaWydawcy*<BR>[Get-AzVMImageSku](https://docs.microsoft.com/powershell/module/az.compute/get-azvmimagesku) -Location *lokalizacja* -Publisher *nazwaWydawcy* -Offer *nazwaOferty* |
 | Interfejsy API REST |[Wyświetl listę wydawców obrazów](https://docs.microsoft.com/rest/api/compute/platformimages/platformimages-list-publishers)<BR>[Wyświetl listę ofert obrazów](https://docs.microsoft.com/rest/api/compute/platformimages/platformimages-list-publisher-offers)<BR>[Wyświetl listę jednostek SKU obrazów](https://docs.microsoft.com/rest/api/compute/platformimages/platformimages-list-publisher-offer-skus) |
-| Interfejs wiersza polecenia platformy Azure |[az vm image list-publishers](https://docs.microsoft.com/cli/azure/vm/image?view=azure-cli-latest) --location *lokalizacja*<BR>[az vm image list-offers](https://docs.microsoft.com/cli/azure/vm/image?view=azure-cli-latest) --location *lokalizacja* --publisher *nazwa_wydawcy*<BR>[az vm image list-skus](https://docs.microsoft.com/cli/azure/vm?view=azure-cli-latest) --location *lokalizacja* --publisher *nazwa_wydawcy* --offer *nazwa_oferty*|
+| Interfejs wiersza polecenia platformy Azure |[az vm image list-publishers](https://docs.microsoft.com/cli/azure/vm/image?view=azure-cli-latest) --location *lokalizacja*<BR>[az vm image list-offers](https://docs.microsoft.com/cli/azure/vm/image?view=azure-cli-latest) --location location --publisher publisherName az vm image list-offers --location location --publisher *publisherName Az* vm image list-offers --location *location* --publisher publisherName Az<BR>[az vm image list-skus](https://docs.microsoft.com/cli/azure/vm?view=azure-cli-latest) --location *lokalizacja* --publisher *nazwa_wydawcy* --offer *nazwa_oferty*|
 
 Istnieje możliwość [przesłania i użycia własnego obrazu](upload-generalized-managed.md) — nazwa wydawcy, oferta i jednostka SKU nie są wtedy używane.
 
@@ -92,23 +92,23 @@ Typowe zadania można realizować przy użyciu różnych rozszerzeń:
 * **Wdrażanie konfiguracji i zarządzanie nimi** — [rozszerzenie Konfiguracja żądanego stanu (Desired State Configuration, DSC) programu PowerShell](extensions-dsc-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) ułatwia skonfigurowanie żądanego stanu na maszynie wirtualnej w celu zarządzania konfiguracjami i środowiskami.
 * **Zbieranie danych diagnostycznych** — [rozszerzenie Diagnostyka Azure](extensions-diagnostics-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) ułatwia skonfigurowanie maszyny wirtualnej w celu zbierania danych diagnostycznych używanych do monitorowania kondycji aplikacji.
 
-### <a name="related-resources"></a>Zasoby powiązane
+### <a name="related-resources"></a>Powiązane zasoby
 Zasoby wymienione w tej tabeli są używane przez maszynę wirtualną i muszą istnieć lub zostać utworzone podczas jej tworzenia.
 
-| Zasób | Wymagane | Opis |
+| Zasób | Wymagany | Opis |
 | --- | --- | --- |
 | [Grupa zasobów](../../azure-resource-manager/management/overview.md) |Tak |Maszyna wirtualna musi być zawarta w grupie zasobów. |
 | [Konto magazynu](../../storage/common/storage-create-storage-account.md) |Tak |Maszyna wirtualna wymaga konta magazynu do przechowywania wirtualnych dysków twardych. |
 | [Sieć wirtualna](../../virtual-network/virtual-networks-overview.md) |Tak |Maszyna wirtualna musi należeć do sieci wirtualnej. |
 | [Publiczny adres IP](../../virtual-network/virtual-network-ip-addresses-overview-arm.md) |Nie |Maszyna wirtualna może mieć przypisany publiczny adres IP umożliwiający uzyskiwanie do niej dostępu zdalnego. |
 | [Interfejs sieciowy](../../virtual-network/virtual-network-network-interface.md) |Tak |Maszyna wirtualna wymaga interfejsu sieciowego do komunikacji w sieci. |
-| [Dyski danych](attach-managed-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) |Nie |Maszyna wirtualna może zawierać dyski danych zwiększające jej pojemność. |
+| [Dyski z danymi](attach-managed-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) |Nie |Maszyna wirtualna może zawierać dyski danych zwiększające jej pojemność. |
 
 ## <a name="next-steps"></a>Następne kroki
 
-Utwórz pierwszą maszynę wirtualną.
+Stwórz swoją pierwszą maszynę wirtualną!
 
 - [Portal](quick-create-portal.md)
-- [Program PowerShell](quick-create-powershell.md)
+- [Powershell](quick-create-powershell.md)
 - [Interfejs wiersza polecenia platformy Azure](quick-create-cli.md)
 

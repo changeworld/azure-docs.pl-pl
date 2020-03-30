@@ -1,7 +1,7 @@
 ---
-title: Tworzenie i uczenie modelu predykcyjnego w języku R
+title: Tworzenie i szkolenie modelu predykcyjnego w R
 titleSuffix: Azure SQL Database Machine Learning Services (preview)
-description: Utwórz prosty model predykcyjny w języku R przy użyciu Azure SQL Database Machine Learning Services (wersja zapoznawcza), a następnie przeprzewidywania wyniku przy użyciu nowych danych.
+description: Utwórz prosty model predykcyjny w języku R przy użyciu usług azure sql database machine learning services (wersja zapoznawcza), a następnie przewidzieć wynik przy użyciu nowych danych.
 services: sql-database
 ms.service: sql-database
 ms.subservice: machine-learning
@@ -14,51 +14,51 @@ ms.reviewer: davidph
 manager: cgronlun
 ms.date: 04/11/2019
 ms.openlocfilehash: a54d418f668d8c7292c8332c1b14c4df45e59308
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/28/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "76768463"
 ---
-# <a name="quickstart-create-and-train-a-predictive-model-in-r-with-azure-sql-database-machine-learning-services-preview"></a>Szybki Start: Tworzenie i uczenie modelu predykcyjnego w języku R z Azure SQL Database Machine Learning Services (wersja zapoznawcza)
+# <a name="quickstart-create-and-train-a-predictive-model-in-r-with-azure-sql-database-machine-learning-services-preview"></a>Szybki start: tworzenie i szkolenie modelu predykcyjnego w języku R za pomocą usług Azure SQL Database Machine Learning Services (wersja zapoznawcza)
 
-W tym przewodniku szybki start utworzysz i nauczysz model predykcyjny przy użyciu języka R, Zapisz model w tabeli w bazie danych, a następnie użyj modelu do przewidywania wartości z nowych danych przy użyciu Machine Learning Services (R) w Azure SQL Database.
+W tym przewodniku Szybki start można utworzyć i wyszkolić model predykcyjny przy użyciu języka R, zapisać model do tabeli w bazie danych, a następnie użyć modelu do przewidywania wartości z nowych danych przy użyciu usług uczenia maszynowego (z R) w bazie danych SQL azure.
 
 [!INCLUDE[ml-preview-note](../../includes/sql-database-ml-preview-note.md)]
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Konto platformy Azure z aktywną subskrypcją. [Utwórz konto bezpłatnie](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
-- [Baza danych Azure SQL Database](sql-database-single-database-get-started.md) z [regułą zapory na poziomie serwera](sql-database-server-level-firewall-rule.md)
-- [Machine Learning Services](sql-database-machine-learning-services-overview.md) z włączonym językiem R. [Zarejestruj się, aby wypróbować wersję zapoznawczą](sql-database-machine-learning-services-overview.md#signup).
+- Konto platformy Azure z aktywną subskrypcją. [Utwórz konto za darmo](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+- [Baza danych SQL platformy Azure](sql-database-single-database-get-started.md) z [regułą zapory na poziomie serwera](sql-database-server-level-firewall-rule.md)
+- [Usługi uczenia maszynowego](sql-database-machine-learning-services-overview.md) z włączoną funkcją języka R. [Zarejestruj się w wersji zapoznawczej](sql-database-machine-learning-services-overview.md#signup).
 - Program [SQL Server Management Studio](/sql/ssms/sql-server-management-studio-ssms) (SSMS)
 
 > [!NOTE]
 > W okresie publicznej wersji zapoznawczej firma Microsoft dołączy Cię i włączy usługę Machine Learning dla Twojej istniejącej lub nowej bazy danych.
 
-W tym przykładzie użyto prostego modelu regresji do przewidywania odległości zatrzymywania samochodu w oparciu o szybkość przy użyciu zestawu danych **samochodów** zawartych w języku R.
+W tym przykładzie użyto prostego modelu regresji do przewidywania drogi hamowania samochodu na podstawie prędkości przy użyciu zestawu danych **samochodów** dołączonego do języka R.
 
 > [!TIP]
-> Wiele zestawów danych jest dołączonych do środowiska uruchomieniowego języka R, aby uzyskać listę zainstalowanych zestawów danych, wpisz `library(help="datasets")` z wiersza polecenia języka R.
+> Wiele zestawów danych są dołączone do środowiska wykonawczego R, aby uzyskać `library(help="datasets")` listę zainstalowanych zestawów danych, wpisz z wiersza polecenia R.
 
-## <a name="create-and-train-a-predictive-model"></a>Tworzenie i uczenie modelu predykcyjnego
+## <a name="create-and-train-a-predictive-model"></a>Tworzenie i szkolenie modelu predykcyjnego
 
-Dane dotyczące szybkości samochodu w zestawie danych **samochodów** zawierają dwie **kolumny: wartość** numeryczna i **szybkość**. Dane obejmują wiele zatrzymywania obserwacji o różnych szybkościach. Z tych danych utworzysz model regresji liniowej, który opisuje relację między szybkością samochodu i odległością wymaganą do zatrzymania samochodu.
+Dane prędkości samochodu w zestawie **danych samochodów** zawiera dwie kolumny, zarówno numeryczne: **dist** i **prędkości**. Dane obejmują wiele obserwacji zatrzymania przy różnych prędkościach. Na podstawie tych danych utworzysz model regresji liniowej opisujący relację między prędkością samochodu a odległością wymaganą do zatrzymania samochodu.
 
 Wymagania modelu liniowego są proste:
-- Zdefiniuj formułę opisującą relację między zależną *szybkością* zmiennej i niezależną *odległością*zmiennej.
+- Zdefiniuj formułę opisującą relację między zależną *zmienną prędkością* a niezależną *zmienną odległością*.
 - Podaj dane wejściowe do użycia w uczenia modelu.
 
 > [!TIP]
-> Jeśli potrzebujesz odświeżacza dla modeli liniowych, Wypróbuj ten samouczek, w którym opisano proces instalowania modelu przy użyciu rxLinMod: [Dopasowywanie modeli liniowych](https://docs.microsoft.com/machine-learning-server/r/how-to-revoscaler-linear-model)
+> Jeśli potrzebujesz odświeżacza w modelach liniowych, wypróbuj ten samouczek opisujący proces dopasowywania modelu za pomocą rxLinMod: [Dopasowanie modeli liniowych](https://docs.microsoft.com/machine-learning-server/r/how-to-revoscaler-linear-model)
 
-W poniższych krokach skonfigurujesz dane szkoleniowe, tworzysz model regresji, wyszkolesz go przy użyciu danych szkoleniowych, a następnie zapiszesz model w tabeli SQL.
+W poniższych krokach skonfigurujesz dane szkoleniowe, utworzysz model regresji, przeszkolisz go przy użyciu danych szkoleniowych, a następnie zapiszesz model w tabeli SQL.
 
 1. Otwórz program **SQL Server Management Studio** i nawiąż połączenie z usługą SQL Database.
 
-   Jeśli potrzebujesz pomocy przy nawiązywaniu połączenia, zobacz [Szybki Start: użyj SQL Server Management Studio, aby nawiązać połączenie i wysłać zapytanie do bazy danych Azure SQL](sql-database-connect-query-ssms.md).
+   Jeśli potrzebujesz pomocy w nawiązywania połączenia, zobacz [Szybki start: Łączenie i wykonywanie zapytań o bazę danych SQL i wykonywanie zapytań o kwerendę .](sql-database-connect-query-ssms.md)
 
-1. Utwórz tabelę **CarSpeed** , aby zapisać dane szkoleniowe.
+1. Utwórz tabelę **CarSpeed,** aby zapisać dane szkoleniowe.
 
     ```sql
     CREATE TABLE dbo.CarSpeed (
@@ -78,9 +78,9 @@ W poniższych krokach skonfigurujesz dane szkoleniowe, tworzysz model regresji, 
     GO
     ```
 
-1. Utwórz model regresji przy użyciu `rxLinMod`. 
+1. Utwórz model regresji przy użyciu programu `rxLinMod`. 
 
-   Aby skompilować model, należy zdefiniować formułę w kodzie R, a następnie przekazać dane szkoleniowe **CarSpeed** jako parametr wejściowy.
+   Aby utworzyć model, należy zdefiniować formułę wewnątrz kodu R, a następnie przekazać dane **szkoleniowe CarSpeed** jako parametr wejściowy.
 
     ```sql
     DROP PROCEDURE IF EXISTS generate_linear_model;
@@ -104,9 +104,9 @@ W poniższych krokach skonfigurujesz dane szkoleniowe, tworzysz model regresji, 
 
      Pierwszy argument funkcji rxLinMod to parametr *formula*, który definiuje odległość jako zależną od prędkości. Dane wejściowe są przechowywane w zmiennej `CarsData`, która jest wypełniana przez zapytanie SQL.
 
-1. Utwórz tabelę, w której przechowujesz model, aby można było go używać później do prognozowania. 
+1. Utwórz tabelę, w której można przechowywać model, dzięki czemu można go użyć później do prognozowania. 
 
-   Wyjście pakietu języka R, który tworzy model, jest zazwyczaj **obiektem binarnym**, dlatego tabela musi mieć kolumnę typu **varbinary (max)** .
+   Dane wyjściowe pakietu R, który tworzy model jest zwykle **obiekt binarny**, więc tabela musi mieć kolumnę **VARBINARY(max)** typu.
 
     ```sql
     CREATE TABLE dbo.stopping_distance_models (
@@ -115,7 +115,7 @@ W poniższych krokach skonfigurujesz dane szkoleniowe, tworzysz model regresji, 
         );
     ```
 
-1. Teraz Wywołaj procedurę składowaną, wygeneruj model i Zapisz go w tabeli.
+1. Teraz wywołaj procedurę składowaną, wygeneruj model i zapisz go w tabeli.
 
    ```sql
    INSERT INTO dbo.stopping_distance_models (model)
@@ -128,7 +128,7 @@ W poniższych krokach skonfigurujesz dane szkoleniowe, tworzysz model regresji, 
    Violation of PRIMARY KEY constraint...Cannot insert duplicate key in object bo.stopping_distance_models
    ```
 
-   Jedną z opcji, aby uniknąć tego błędu, jest aktualizacja nazwy dla każdego nowego modelu. Możesz na przykład zmienić nazwę na bardziej opisową i uwzględnić typ modelu, datę jego utworzenia i tak dalej.
+   Jedną z opcji, aby uniknąć tego błędu jest zaktualizowanie nazwy dla każdego nowego modelu. Możesz na przykład zmienić nazwę na bardziej opisową i uwzględnić typ modelu, datę jego utworzenia i tak dalej.
 
    ```sql
    UPDATE dbo.stopping_distance_models
@@ -136,11 +136,11 @@ W poniższych krokach skonfigurujesz dane szkoleniowe, tworzysz model regresji, 
    WHERE model_name = 'default model'
    ```
 
-## <a name="view-the-table-of-coefficients"></a>Wyświetl tabelę współczynników
+## <a name="view-the-table-of-coefficients"></a>Wyświetlanie tabeli współczynników
 
 Ogólnie rzecz biorąc, dane wyjściowe języka R z procedury składowanej [sp_execute_external_script](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql) są ograniczone do jednej ramki danych. Jednak można zwracać dane wyjściowe innych typów, na przykład wartości skalarne, oprócz ramki danych.
 
-Załóżmy na przykład, że chcesz nauczyć model, ale natychmiast wyświetlić tabelę współczynników z modelu. W tym celu należy utworzyć tabelę współczynników jako główny zestaw wyników i wyprowadzić przeszkolony model w zmiennej SQL. Możesz natychmiast ponownie użyć modelu przez wywołanie zmiennej lub zapisać model w tabeli, jak pokazano poniżej.
+Załóżmy na przykład, że chcesz trenować model, ale natychmiast wyświetlić tabelę współczynników z modelu. W tym celu należy utworzyć tabelę współczynników jako główny zestaw wyników i wyprowadzić przeszkolony model w zmiennej SQL. Można natychmiast ponownie użyć modelu, wywołując zmienną lub można zapisać model do tabeli, jak pokazano poniżej.
 
 ```sql
 DECLARE @model VARBINARY(max)
@@ -173,13 +173,13 @@ VALUES (
 
 ![Przeszkolony model z dodatkowymi danymi wyjściowymi](./media/sql-database-quickstart-r-train-score-model/r-train-model-with-additional-output.png)
 
-## <a name="score-new-data-using-the-trained-model"></a>Ocena nowych danych przy użyciu przeszkolonego modelu
+## <a name="score-new-data-using-the-trained-model"></a>Zdobywaj nowe dane przy użyciu wyszkolonego modelu
 
-*Ocenianie* to termin używany w nauce danych do oznaczania generowania prognoz, prawdopodobieństwa lub innych wartości na podstawie nowych danych podawanych do przeszkolonego modelu. Model utworzony w poprzedniej sekcji służy do oceny prognoz dotyczących nowych danych.
+*Scoring* jest terminem używanym w analizie danych do oznaczania generowania prognoz, prawdopodobieństw lub innych wartości na podstawie nowych danych podawanych do wyszkolonego modelu. Użyjesz modelu utworzonego w poprzedniej sekcji, aby uzyskać punkty prognoz względem nowych danych.
 
-Zwróć uwagę, że oryginalne dane szkoleniowe zatrzymują się na prędkości 25 mil na godzinę. To dlatego, że oryginalne dane były oparte na doświadczeniu z 1920 roku! Możesz się zastanawiać, jak długo zajmiemy się działaniem urządzenia przenośnego z 1920s, aby zatrzymać je tak szybko, jak 60 mph, a nawet 100 mph? Aby odpowiedzieć na to pytanie, możesz podać nowe wartości szybkości dla modelu.
+Zwróć uwagę, że oryginalne dane szkoleniowe zatrzymują się na prędkości 25 mil na godzinę. To dlatego, że oryginalne dane były oparte na doświadczeniu z 1920 roku! Można się zastanawiać, jak długo zajęłoby samochód z 1920 roku, aby zatrzymać, jeśli może dostać się dzieje tak szybko, jak 60 mph lub nawet 100 mph? Aby odpowiedzieć na to pytanie, można podać kilka nowych wartości prędkości do modelu.
 
-1. Utwórz tabelę z nową szybkością danych.
+1. Utwórz tabelę z nowymi danymi prędkości.
 
    ```sql
     CREATE TABLE dbo.NewCarSpeed (
@@ -198,19 +198,19 @@ Zwróć uwagę, że oryginalne dane szkoleniowe zatrzymują się na prędkości 
         , (100)
    ```
 
-2. Przewidywanie odległości zatrzymywania od tych nowych wartości prędkości.
+2. Przewiduj drogę hamowania na podstawie tych nowych wartości prędkości.
 
-   Ponieważ model jest oparty na algorytmie **rxLinMod** dostarczonym jako część pakietu **kolekcję funkcji revoscaler** , należy wywołać funkcję [rxPredict](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/rxpredict) zamiast ogólnej funkcji R `predict`.
+   Ponieważ model jest oparty na algorytm **rxLinMod** pod warunkiem, jako część pakietu **RevoScaleR, wywołanie** `predict` [rxPredict](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/rxpredict) funkcji, a nie ogólnej funkcji R.
 
-   Ten przykładowy skrypt:
-   - Używa instrukcji SELECT, aby uzyskać jeden model z tabeli
+   W tym przykładzie skryptu:
+   - Używa instrukcji SELECT, aby uzyskać pojedynczy model z tabeli
    - Przekazuje go jako parametr wejściowy
-   - Wywołuje funkcję `unserialize` w modelu
-   - Stosuje funkcję `rxPredict` z odpowiednimi argumentami do modelu.
-   - Udostępnia nowe dane wejściowe
+   - Wywołuje `unserialize` funkcję w modelu
+   - Stosuje `rxPredict` funkcję z odpowiednimi argumentami do modelu
+   - Dostarcza nowe dane wejściowe
 
    > [!TIP]
-   > W przypadku oceniania w czasie rzeczywistym zobacz [funkcje serializacji](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/rxserializemodel) udostępniane przez kolekcję funkcji revoscaler.
+   > Aby uzyskać punktację w czasie rzeczywistym, zobacz [funkcje serializacji](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/rxserializemodel) dostarczane przez RevoScaleR.
 
    ```sql
     DECLARE @speedmodel VARBINARY(max) = (
@@ -242,15 +242,15 @@ Zwróć uwagę, że oryginalne dane szkoleniowe zatrzymują się na prędkości 
    ![Zestaw wyników dla przewidywania drogi zatrzymania](./media/sql-database-quickstart-r-train-score-model/r-predict-stopping-distance-resultset.png)
 
 > [!NOTE]
-> W tym przykładowym skrypcie funkcja `str` jest dodawana podczas fazy testowania, aby sprawdzić schemat danych zwracanych z języka R. Instrukcję można usunąć później.
+> W tym przykładzie `str` skryptu funkcja jest dodawana podczas fazy testowania, aby sprawdzić schemat danych zwracanych z języka R. Instrukcję można usunąć później.
 >
-> Nazwy kolumn użytych w skrypcie języka R niekoniecznie są przekazywane do danych wyjściowych procedury składowanej. W tym miejscu klauzula WITH RESULTS definiuje kilka nowych nazw kolumn.
+> Nazwy kolumn użytych w skrypcie języka R niekoniecznie są przekazywane do danych wyjściowych procedury składowanej. W tym miejscu klauzula WITH RESULTS definiuje niektóre nowe nazwy kolumn.
 
 ## <a name="next-steps"></a>Następne kroki
 
-Aby uzyskać więcej informacji na Azure SQL Database Machine Learning Services z językiem R (wersja zapoznawcza), zobacz następujące artykuły.
+Aby uzyskać więcej informacji na temat usług Azure SQL Database Machine Learning Services z R (wersja zapoznawcza), zobacz następujące artykuły.
 
-- [Azure SQL Database Machine Learning Services z językiem R (wersja zapoznawcza)](sql-database-machine-learning-services-overview.md)
-- [Twórz i uruchamiaj proste skrypty języka R w Azure SQL Database Machine Learning Services (wersja zapoznawcza)](sql-database-quickstart-r-create-script.md)
-- [Zapisuj zaawansowane funkcje języka R w Azure SQL Database przy użyciu Machine Learning Services (wersja zapoznawcza)](sql-database-machine-learning-services-functions.md)
-- [Pracuj z danymi języka R i SQL w Azure SQL Database Machine Learning Services (wersja zapoznawcza)](sql-database-machine-learning-services-data-issues.md)
+- [Usługi azure SQL Database Machine Learning services z r (wersja zapoznawcza)](sql-database-machine-learning-services-overview.md)
+- [Tworzenie i uruchamianie prostych skryptów języka R w usługach azure SQL Database Machine Learning Services (wersja zapoznawcza)](sql-database-quickstart-r-create-script.md)
+- [Pisanie zaawansowanych funkcji języka R w bazie danych SQL usługi Azure przy użyciu usług uczenia maszynowego (wersja zapoznawcza)](sql-database-machine-learning-services-functions.md)
+- [Praca z danymi języka R i SQL w usługach azure SQL Database Machine Learning Services (wersja zapoznawcza)](sql-database-machine-learning-services-data-issues.md)

@@ -9,47 +9,47 @@ ms.date: 07/18/2018
 ms.author: alkohli
 ms.custom: include file
 ms.openlocfilehash: 65d5a88f7b5d059deb633f062639e455c64ef2f7
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67183755"
 ---
 #### <a name="to-install-updates-via-the-azure-portal"></a>Aby zainstalować aktualizacje za pośrednictwem witryny Azure Portal
 
 1. Przejdź do menedżera urządzeń StorSimple i wybierz pozycję **Urządzenia**. Na liście urządzeń połączonych z usługą wybierz i kliknij urządzenie, które chcesz zaktualizować.
 
-2. W obszarze **ustawienia**, kliknij przycisk **aktualizacji urządzenia**.  
+2. W obszarze **Ustawienia**kliknij pozycję **Aktualizacje urządzenia**.  
 
-3. Zostanie wyświetlony komunikat, jeśli aktualizacje oprogramowania są dostępne. Aby sprawdzić dostępność aktualizacji, możesz także kliknąć pozycję **Skanuj**. Zanotuj wersji oprogramowania, które są uruchomione. 
+3. Zostanie wyświetlony komunikat, jeśli aktualizacje oprogramowania są dostępne. Aby sprawdzić dostępność aktualizacji, możesz także kliknąć pozycję **Skanuj**. Zanotuj wersję oprogramowania, którą uruchamiasz. 
 
     ![aktualizowanie urządzenia](../includes/media/storsimple-virtual-array-install-update-via-portal-11/azupdate3m1.png)
 
-    Otrzymasz powiadomienie, gdy skanowanie zostanie uruchomione i zakończy się pomyślnie.
+    Użytkownik zostanie powiadomiony o pomyślnym rozpoczęciu i pomyślnym zakończeniu skanowania.
  
-4. Po przeskanowaniu aktualizacji kliknij pozycję **Pobierz aktualizacje**. W obszarze **nowe aktualizacje**, zapoznaj się z informacjami o wersji. Należy również zauważyć, po pobraniu aktualizacji, należy sprawdzić, czy. Kliknij przycisk **OK**.
+4. Po przeskanowaniu aktualizacji kliknij pozycję **Pobierz aktualizacje**. W obszarze **Nowe aktualizacje**przejrzyj informacje o wersji. Należy również pamiętać, że po pobraniu aktualizacji należy potwierdzić instalację. Kliknij przycisk **OK**.
 
     ![aktualizowanie urządzenia](../includes/media/storsimple-virtual-array-install-update-via-portal-11/azupdate6m.png)
 
     Otrzymasz powiadomienie, gdy przekazywanie zostanie uruchomione i zakończy się pomyślnie.
 
-5. W obszarze **aktualizacji urządzenia**, kliknij przycisk **zainstalować**.
+5. W obszarze **Aktualizacje urządzenia**kliknij pozycję **Zainstaluj**.
 
      ![aktualizowanie urządzenia](../includes/media/storsimple-virtual-array-install-update-via-portal-11/azupdate11m1.png)
 
-6. W obszarze **nowe aktualizacje**, zostanie wyświetlone ostrzeżenie, że aktualizacja ma szkodliwe. Ponieważ macierz wirtualna to urządzenie o jednym węźle, urządzenie zostanie ponownie uruchomione po zaktualizowaniu. Spowoduje to zakłócenie wszystkich operacji we/wy. Kliknij przycisk **OK**, aby zainstalować aktualizacje.
+6. W obszarze **Nowe aktualizacje**zostaniesz ostrzeżony, że aktualizacja jest uciążliwa. Ponieważ macierz wirtualna to urządzenie o jednym węźle, urządzenie zostanie ponownie uruchomione po zaktualizowaniu. Spowoduje to zakłócenie wszystkich operacji we/wy. Kliknij przycisk **OK**, aby zainstalować aktualizacje.
 
     ![aktualizowanie urządzenia](../includes/media/storsimple-virtual-array-install-update-via-portal-11/azupdate12m.png)
 
     Otrzymasz powiadomienie o uruchomieniu zadania instalacji.
 
-7.  Po pomyślnym ukończeniu działania zadania instalacji, kliknij przycisk **Wyświetl zadanie** łącza. Ta akcja spowoduje przejście do **Zainstaluj aktualizacje** bloku. W tym miejscu możesz wyświetlić szczegółowe informacje o zadaniu. 
+7.  Po pomyślnym zakończeniu zadania instalacji kliknij pozycję **Wyświetl łącze Zlecenia.** Ta akcja spowoduje przejście do bloku **Zainstaluj aktualizacje.** W tym miejscu możesz wyświetlić szczegółowe informacje o zadaniu. 
 
     ![aktualizowanie urządzenia](../includes/media/storsimple-virtual-array-install-update-via-portal-11/azupdate16m1.png)
 
-8. Jeśli rozpoczęto macierz wirtualna z oprogramowaniem w wersji Update 1 (10.0.10296.0), są uruchomione 1.1 aktualizacji i gotowe. Możesz pominąć pozostałe kroki. 
+8. Jeśli uruchomiono z macierzy wirtualnej z systemem aktualizacji oprogramowania 1 (10.0.10296.0), teraz jest uruchomiona aktualizacja 1.1 i są gotowe. Pozostałe kroki można pominąć. 
 
-    Jeśli rozpoczęto macierz wirtualna z oprogramowaniem w wersji Update 0.6 (10.0.10293.0), teraz są aktualizowane na aktualizację 1.0. Wyświetlony inny komunikat wskazujący, że są dostępne aktualizacje. Powtórz kroki 4 – 7, aby zainstalować aktualizację 1.1.
+    Jeśli rozpoczęto pracę z macierzą wirtualną z uruchomiono wersję oprogramowania Update 0.6 (10.0.10293.0), zostaniesz zaktualizowany do aktualizacji 1.0. Zostanie wyświetlony inny komunikat informujący, że aktualizacje są dostępne. Powtórz kroki 4-7, aby zainstalować aktualizację 1.1.
 
     
 

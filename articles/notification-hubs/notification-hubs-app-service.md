@@ -1,6 +1,6 @@
 ---
-title: Notification Hubs integrację z usługą App Service Mobile Apps
-description: Dowiedz się, jak usługa Azure Notification Hubs współpracuje z Azure App Service Mobile Apps.
+title: Integracja centrów powiadomień z aplikacjami mobilnymi usługi App Service
+description: Dowiedz się, jak usługa Azure Notification Hubs współpracuje z aplikacjami mobilnymi usługi Azure App Service.
 author: sethmanheim
 manager: femila
 editor: jwargo
@@ -18,10 +18,10 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
 ms.openlocfilehash: e6c4fb767e6237f390cdb467b35c323f637bebf2
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/17/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "76264156"
 ---
 # <a name="integration-with-app-service-mobile-apps"></a>Integracja z usługą App Service Mobile Apps
@@ -45,4 +45,4 @@ Oto niektóre udogodnienia dla deweloperów wynikające z tej integracji:
   - *Wypychanie do urządzenia*: zestawy SDK automatycznie używają identyfikatora instalacji funkcji Mobile Apps jako identyfikatora GUID do rejestracji w usłudze Notification Hubs, oszczędzając deweloperom pracy związanej z obsługą identyfikatorów GUID wielu usług.
 - **Model instalacji**: funkcja Mobile Apps współpracuje z najnowszym modelem wypychania usługi Notification Hubs w celu reprezentowania wszystkich właściwości wypychania skojarzonych z urządzeniem w instalacji JSON, które są zgodne z usługami powiadomień push i łatwe w użyciu.
 - **Elastyczność**: deweloperzy mogą zawsze pracować bezpośrednio za pomocą usługi Notification Hubs nawet po integracji.
-- **Zintegrowane środowisko pracy w witrynie [Azure Portal](https://portal.azure.com)** : wypychanie jako możliwość ma wizualną reprezentację w funkcji Mobile Apps, a deweloperzy mogą z łatwością pracować przy użyciu skojarzonego centrum powiadomień za pomocą funkcji Mobile Apps.
+- **Zintegrowane środowisko pracy w witrynie [Azure Portal](https://portal.azure.com)**: wypychanie jako możliwość ma wizualną reprezentację w funkcji Mobile Apps, a deweloperzy mogą z łatwością pracować przy użyciu skojarzonego centrum powiadomień za pomocą funkcji Mobile Apps.

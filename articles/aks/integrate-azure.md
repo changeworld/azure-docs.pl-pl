@@ -6,10 +6,10 @@ ms.topic: overview
 ms.date: 12/05/2017
 ms.author: zarhoads
 ms.openlocfilehash: 2eddedea7d626a92e21442c81aa49e00491958a1
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "78273020"
 ---
 # <a name="integrate-with-azure-managed-services-using-open-service-broker-for-azure-osba"></a>Integracja z usługami zarządzanymi przez platformę Azure przy użyciu usługi Open Service Broker for Azure (OSBA)
@@ -19,9 +19,9 @@ Razem z [wykazem usług Kubernetes][kubernetes-service-catalog] usługa Open Ser
 ## <a name="prerequisites"></a>Wymagania wstępne
 * Subskrypcja platformy Azure
 
-* Interfejs wiersza polecenia platformy Azure: należy [zainstalować lokalnie][azure-cli-install]lub użyć go w [Azure Cloud Shell][azure-cloud-shell].
+* Interfejs wiersza polecenia platformy Azure: [zainstaluj tę funkcję lokalnie][azure-cli-install] lub użyj jej w usłudze [Azure Cloud Shell][azure-cloud-shell].
 
-* Helm interfejs wiersza polecenia 2.7 +: [Zainstaluj go lokalnie][helm-cli-install]lub użyj go w [Azure Cloud Shell][azure-cloud-shell].
+* Interfejs wiersza polecenia narzędzia Helm 2.7+: [zainstaluj tę funkcję lokalnie][helm-cli-install] lub użyj jej w usłudze [Azure Cloud Shell][azure-cloud-shell].
 
 * Uprawnienia do tworzenia jednostki usługi z rolą współautora w subskrypcji platformy Azure
 
@@ -31,7 +31,7 @@ Razem z [wykazem usług Kubernetes][kubernetes-service-catalog] usługa Open Ser
 
 Pierwszym krokiem jest zainstalowanie wykazu usług w klastrze usługi Kubernetes przy użyciu planu narzędzia Helm.
 
-Przejdź do [https://shell.azure.com](https://shell.azure.com) , aby otworzyć Cloud Shell w przeglądarce.
+Przejdź [https://shell.azure.com](https://shell.azure.com) do, aby otworzyć Cloud Shell w przeglądarce.
 
 Uaktualnij instalację programu Tiller (serwera narzędzia Helm) w klastrze:
 
