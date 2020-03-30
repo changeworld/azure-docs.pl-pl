@@ -5,50 +5,50 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 51e1fd18b52d7e215ba43be540156199fb41778e
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67183265"
 ---
-#### <a name="to-attach-the-sas-cables"></a>Aby dołączyć kabli SAS
-1. Zidentyfikuj podstawowe i obudowy EBOD. Dwie obudowy, można zidentyfikować, analizując ich odpowiednich płaszczyznach Wstecz. Zobacz poniższy obraz, aby uzyskać wskazówki. 
+#### <a name="to-attach-the-sas-cables"></a>Aby podłączyć kable SAS
+1. Zidentyfikuj obudowy podstawowe i EBOD. Obie obudowy można zidentyfikować, patrząc na ich odpowiednie tylne płaszczyzny. Zapoznaj się z poniższą ilustracją, aby uzyskać wskazówki. 
    
-    ![Tworzenie kopii płaszczyzny podstawowej i obudów EBOD](./media/storsimple-sas-cable-8600/HCSBackplaneofprimaryandEBODenclosure.png)
+    ![Tylna płaszczyzna obudów podstawowych i EBOD](./media/storsimple-sas-cable-8600/HCSBackplaneofprimaryandEBODenclosure.png)
    
-    **Tworzenie kopii widoku podstawowych i obudowy EBOD**
+    **Widok wstecz obudowy pierwotnej i EBOD**
    
    | Label | Opis |
    |:--- |:--- |
-   | 1 |Podstawowy obudowy |
+   | 1 |Obudowa podstawowa |
    | 2 |Obudowa EBOD |
-2. Znajdź numery seryjne podstawowej i obudowy EBOD. Nalepki numer seryjny jest dołączone do tyłu Wyczyść z każdej obudowie. Numery seryjne musi być taka sama na obu obudowy. [Skontaktuj się z Microsoft Support](../articles/storsimple/storsimple-contact-microsoft-support.md) natychmiast, jeśli numery seryjne nie są zgodne. Widać na ilustracji, aby zlokalizować numerów seryjnych.
+2. Znajdź numery seryjne w obudowach podstawowych i EBOD. Naklejka z numerem seryjnym jest przymocowana do tylnego ucha każdej obudowy. Numery seryjne muszą być identyczne w obu obu obudowach. Jeśli numery seryjne nie są zgodne, należy natychmiast [skontaktować się z pomocą techniczną](../articles/storsimple/storsimple-contact-microsoft-support.md) firmy Microsoft. Zobacz poniższą ilustrację, aby zlokalizować numery seryjne.
    
-    ![Widok tyłu przedstawiający numer seryjny obudowy](./media/storsimple-sas-cable-8600/HCSRearviewofenclosureindicatinglocationofserialnumbersticker.png)
+    ![Widok z tyłu obudowy z numerem seryjnym](./media/storsimple-sas-cable-8600/HCSRearviewofenclosureindicatinglocationofserialnumbersticker.png)
    
-    **Lokalizacja nalepkę numer seryjny**
+    **Lokalizacja naklejki z numerem seryjnym**
    
    | Label | Opis |
    |:--- |:--- |
-   | 1 |Wyczyść obudowa |
-3. Za pomocą podanego kabli SAS obudowy EBOD połączyć się z podstawowym obudowy w następujący sposób:
+   | 1 |Ucho obudowy |
+3. Za pomocą dostarczonych kabli SAS można podłączyć obudowę EBOD do obudowy podstawowej w następujący sposób:
    
-   1. Zidentyfikuj cztery porty SAS w obudowie podstawowego i obudowy EBOD. Porty sygnatury dostępu Współdzielonego są oznaczone jako EBOD na podstawowym obudowy i odpowiadają A port na obudowę EBOD, jak pokazano na sygnatury dostępu Współdzielonego okablowania na ilustracji poniżej.
-   2. Użyj podana kabli SAS, tak aby połączyć z A. porty EBOD
-   3. Powinny być połączone portu EBOD na kontrolerze 0, A port kontrolera EBOD 0. Port EBOD na kontrolerze 1 powinien być połączony element port kontrolera EBOD 1. Widać na ilustracji, aby uzyskać wskazówki. 
+   1. Zidentyfikuj cztery porty SAS w obudowie podstawowej i obudowie EBOD. Porty SAS są oznaczone jako EBOD w obudowie podstawowej i odpowiadają portowi A w obudowie EBOD, jak pokazano na ilustracji okablowania SAS poniżej.
+   2. Użyj dostarczonych kabli SAS, aby podłączyć port EBOD do portu A.
+   3. Port EBOD na kontrolerze 0 powinien być podłączony do portu A na kontrolerze EBOD 0. Port EBOD na kontrolerze 1 powinien być podłączony do portu A na kontrolerze EBOD 1. Zapoznaj się z poniższą ilustracją, aby uzyskać wskazówki. 
       
-      ![Sygnatury dostępu Współdzielonego okablowania dla Twojego urządzenia](./media/storsimple-sas-cable-8600/HCSSAScablingforyourdevice.png)
+      ![Okablowanie SAS dla twojego urządzenia](./media/storsimple-sas-cable-8600/HCSSAScablingforyourdevice.png)
       
-      **Sygnatury dostępu Współdzielonego okablowania**
+      **Okablowanie SAS**
       
       | Label | Opis |
       |:--- |:--- |
-      | A |Podstawowy obudowy |
+      | A |Obudowa podstawowa |
       | B |Obudowa EBOD |
       | 1 |Kontroler 0 |
       | 2 |Kontroler 1 |
-      | 3 |Kontrolera EBOD 0 |
-      | 4 |Kontrolera EBOD 1 |
-      | 5, 6 |Portów SAS na podstawowym obudowa (EBOD etykietami) |
-      | 7, 8 |Portów SAS w obudowie EBOD (Port A) |
+      | 3 |Sterownik EBOD 0 |
+      | 4 |Sterownik EBOD 1 |
+      | 5, 6 |Porty SAS w obudowie podstawowej (oznaczone etykietą EBOD) |
+      | 7, 8 |Porty SAS w obudowie EBOD (port A) |
 

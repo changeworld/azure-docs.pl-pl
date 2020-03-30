@@ -5,14 +5,14 @@ ms.service: app-service-mobile
 ms.topic: include
 ms.date: 08/23/2018
 ms.openlocfilehash: baf0f07002a21a8e4e60bc17186107b471243202
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67183738"
 ---
-1. Utwórz nową klasę w projekcie o nazwie `ToDoBroadcastReceiver`.
-2. Dodaj następujące instrukcje using **ToDoBroadcastReceiver** klasy:
+1. Utwórz nową klasę w `ToDoBroadcastReceiver`projekcie o nazwie .
+2. Dodaj następujące instrukcje przy użyciu **do Klasy ToDoBroadcastReceiver:**
 
     ```csharp
     using Gcm.Client;
@@ -20,7 +20,7 @@ ms.locfileid: "67183738"
     using Newtonsoft.Json.Linq;
     ```
 
-3. Dodaj następujące żądania uprawnień pomiędzy **przy użyciu** instrukcji i **przestrzeni nazw** deklaracji:
+3. Dodaj następujące żądania uprawnień między **instrukcjami using** a deklaracją **obszaru nazw:**
 
     ```csharp
     [assembly: Permission(Name = "@PACKAGE_NAME@.permission.C2D_MESSAGE")]
@@ -32,7 +32,7 @@ ms.locfileid: "67183738"
     [assembly: UsesPermission(Name = "android.permission.WAKE_LOCK")]
     ```
 
-4. Zastąp istniejące **ToDoBroadcastReceiver** klasy definicji następującym kodem:
+4. Zastąp istniejącą definicję klasy **ToDoBroadcastReceiver** następującą:
 
     ```csharp
     [BroadcastReceiver(Permission = Gcm.Client.Constants.PERMISSION_GCM_INTENTS)]
@@ -49,9 +49,9 @@ ms.locfileid: "67183738"
     }
     ```
 
-    W powyższym kodzie, musisz zastąpić *`<PROJECT_NUMBER>`* numerem projektu przypisane przez firmę Google podczas aprowizacji aplikacji w portalu Google developer portal. 
+    W powyższym kodzie *`<PROJECT_NUMBER>`* musisz zastąpić numer projektu przypisany przez Google podczas inicjowania obsługi administracyjnej aplikacji w portalu dla programistów Google. 
 
-5. W pliku projektu ToDoBroadcastReceiver.cs, Dodaj następujący kod, który definiuje **PushHandlerService** klasy:
+5. W pliku projektu ToDoBroadcastReceiver.cs dodaj następujący kod definiujący klasę **PushHandlerService:**
 
     ```csharp
     // The ServiceAttribute must be applied to the class.
@@ -63,12 +63,12 @@ ms.locfileid: "67183738"
     }
     ```
 
-    Należy zauważyć, że ta klasa jest pochodną **GcmServiceBase** i **usługi** należy zastosować atrybut do tej klasy.
+    Należy zauważyć, że ta klasa pochodzi od **GcmServiceBase** i że **service** atrybut musi być stosowany do tej klasy.
 
     > [!NOTE]
-    > **GcmServiceBase** klasy implementuje **OnRegistered()** , **OnUnRegistered()** , **OnMessage()** i  **OnError()** metody. Konieczne jest przesłonięcie tych metod w **PushHandlerService** klasy.
+    > Klasa **GcmServiceBase** implementuje metody **OnRegistered()**, **OnUnRegistered()**, **OnMessage()** i **OnError().** Należy zastąpić te metody w **PushHandlerService** klasy.
 
-6. Dodaj następujący kod do **PushHandlerService** klasę, która zastępuje **OnRegistered** programu obsługi zdarzeń.
+6. Dodaj następujący kod do **klasy PushHandlerService,** która zastępuje program obsługi zdarzeń **OnRegistered.**
 
     ```csharp
     protected override void OnRegistered(Context context, string registrationId)
@@ -109,9 +109,9 @@ ms.locfileid: "67183738"
     }
     ```
 
-    Ta metoda używa Identyfikatora rejestracji zwróconego GCM do rejestrowania dla powiadomień wypychanych na platformie Azure. Tylko można dodać tagi do rejestracji po jego utworzeniu. Aby uzyskać więcej informacji, zobacz [jak: Dodawanie tagów do instalacji urządzeń, aby umożliwić wypychania do znaczników](../articles/app-service-mobile/app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#tags).
+    Ta metoda używa zwróconego identyfikatora rejestracji usługi GCM do rejestrowania się na platformie Azure w celu otrzymywanania powiadomień wypychanych. Tagi można dodawać do rejestracji dopiero po jej utworzeniu. Aby uzyskać więcej informacji, zobacz [Jak: Dodawanie tagów do instalacji urządzenia w celu włączenia funkcji push-to-tags](../articles/app-service-mobile/app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#tags).
 
-7. Zastąp **OnMessage** method in Class metoda **PushHandlerService** następującym kodem:
+7. Zastąp **OnMessage** metody w **PushHandlerService** z następującym kodem:
 
     ```csharp
     protected override void OnMessage(Context context, Intent intent)
@@ -149,7 +149,7 @@ ms.locfileid: "67183738"
     }
     ```
 
-8. Zastąp **OnUnRegistered()** i **OnError()** metody z następującym kodem.
+8. Zastąp metody **OnUnRegistered()** i **OnError()** następującym kodem.
 
     ```csharp
     protected override void OnUnRegistered(Context context, string registrationId)

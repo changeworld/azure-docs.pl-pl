@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: a5c62c67cd401c043352b06e6e6070a7fc0f1296
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67183269"
 ---
 #### <a name="to-connect-through-the-serial-console"></a>Aby nawiązać połączenie za pośrednictwem konsoli szeregowej
@@ -21,7 +21,7 @@ ms.locfileid: "67183269"
 5. W okienku po prawej stronie zmień wartość pola **Typ połączenia** na **Szeregowe**.
 6. W okienku po prawej stronie wpisz odpowiedni port COM. Upewnij się, że parametry konfiguracji portu zostały ustawione w następujący sposób:
    
-   * Szybkość: 115,200
+   * Szybkość: 115 200
    * Bity danych: 8
    * Bity stopu: 1
    * Parzystość: Brak

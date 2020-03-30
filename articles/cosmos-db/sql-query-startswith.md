@@ -1,6 +1,6 @@
 ---
-title: STARTSWITH w języku zapytań Azure Cosmos DB
-description: Dowiedz się więcej o funkcji STARTSWITH systemu SQL w Azure Cosmos DB.
+title: STARTSWITH w języku zapytań usługi Azure Cosmos DB
+description: Dowiedz się więcej o funkcji systemu SQL STARTSWITH w usłudze Azure Cosmos DB.
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
@@ -8,14 +8,14 @@ ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 9ed49c067946186f8b79f67bad0a460113eacb73
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78295712"
 ---
 # <a name="startswith-azure-cosmos-db"></a>STARTSWITH (Azure Cosmos DB)
- Zwraca wartość logiczną wskazującą, czy pierwszy ciąg wyrażenia rozpoczyna się od drugiego.  
+ Zwraca wartość logiczną wskazującą, czy pierwsze wyrażenie ciągu rozpoczyna się od drugiego.  
   
 ## <a name="syntax"></a>Składnia
   
@@ -29,15 +29,15 @@ STARTSWITH(<str_expr1>, <str_expr2>)
    Jest wyrażeniem ciągu.
   
 *str_expr2*  
-   Jest wyrażeniem ciągu, które ma zostać porównane z początkiem *str_expr1*.
+   Jest wyrażeniem ciągu, które należy porównać z początkiem *str_expr1*.
 
-## <a name="return-types"></a>Typy zwracane
+## <a name="return-types"></a>Typy zwrotów
   
   Zwraca wyrażenie logiczne.  
   
 ## <a name="examples"></a>Przykłady
   
-  Poniższy przykład sprawdza, jeśli ciąg "abc" rozpoczyna się znakiem "b" i "a".  
+  Poniższy przykład sprawdza, czy ciąg "abc" zaczyna się od "b" i "a".  
   
 ```sql
 SELECT STARTSWITH("abc", "b") AS s1, STARTSWITH("abc", "a") AS s2  
@@ -51,10 +51,10 @@ SELECT STARTSWITH("abc", "b") AS s1, STARTSWITH("abc", "a") AS s2
 
 ## <a name="remarks"></a>Uwagi
 
-Ta funkcja systemowa będzie korzystać z [indeksu zakresu](index-policy.md#includeexclude-strategy).
+Ta funkcja systemu będzie korzystać z [indeksu zakresu](index-policy.md#includeexclude-strategy).
 
 ## <a name="next-steps"></a>Następne kroki
 
-- [Azure Cosmos DB funkcje ciągów](sql-query-string-functions.md)
-- [Azure Cosmos DB funkcje systemowe](sql-query-system-functions.md)
-- [Wprowadzenie do Azure Cosmos DB](introduction.md)
+- [Funkcje ciągów usługi Azure Cosmos DB](sql-query-string-functions.md)
+- [Funkcje systemowe Usługi Azure Cosmos DB](sql-query-system-functions.md)
+- [Wprowadzenie do usługi Azure Cosmos DB](introduction.md)

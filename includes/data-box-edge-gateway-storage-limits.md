@@ -5,19 +5,19 @@ ms.topic: include
 ms.date: 01/30/2019
 ms.author: alkohli
 ms.openlocfilehash: 94fe099984fae77c65658d7085a8540ff4f2448b
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67183687"
 ---
-W tej sekcji opisano limity dla usługi Azure Storage i wymagane konwencje nazewnictwa dla usługi Azure Files, obiekty BLOB typu block platformy Azure i Azure stronicowych obiektów blob, jeśli ma to zastosowanie do krawędzi pola danych/bramy danych usługi. Należy uważnie przeczytać limity magazynu i postępować zgodnie z zaleceniami.
+W tej sekcji opisano limity dla usługi Azure Storage i wymagane konwencje nazewnictwa dla plików Azure, bloków obiektów blob platformy Azure i obiektów blob strony platformy Azure, zgodnie z zastosowaniem usługi Data Box Gateway/Data Box Edge. Dokładnie przejrzyj limity magazynowania i postępuj zgodnie ze wszystkimi zaleceniami.
 
-Aby uzyskać najnowsze informacje o limitach magazynu platformy Azure i najlepsze rozwiązania dotyczące nazewnictwa udziałów, kontenerów i plików przejdź do:
+Aby uzyskać najnowsze informacje na temat limitów usług magazynu platformy Azure i najlepszych rozwiązań dotyczących nazewnictwa udziałów, kontenerów i plików, przejdź do:
 
-- [Nazewnictwo i odwołania do kontenerów](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata)
+- [Nazywanie i odwoływanie się do kontenerów](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata)
 - [Nazywanie i przywoływanie udziałów](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata)
-- [Blokowe obiekty BLOB i konwencje blob strony](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs)
+- [Konwencje bloków obiektów blob i stronicowych obiektów blob](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs)
 
 > [!IMPORTANT]
-> Jeśli istnieją pliki lub katalogi, które przekraczają limity usługi Azure Storage lub nie są zgodne z konwencjami nazewnictwa plików/obiektów Blob platformy Azure, następnie te pliki lub katalogi są nie pozyskane do usługi Azure Storage za pośrednictwem usługi krawędź pole danych/bramy pola danych.
+> Jeśli istnieją jakiekolwiek pliki lub katalogi, które przekraczają limity usługi Usługi Azure Storage lub nie są zgodne z konwencjami nazewnictwa plików azure/obiektów blob, te pliki lub katalogi nie są wychwytywały do usługi Azure Storage za pośrednictwem usługi Data Box Gateway/Data Box Edge.

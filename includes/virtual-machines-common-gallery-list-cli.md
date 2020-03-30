@@ -9,40 +9,40 @@ ms.date: 09/20/2018
 ms.author: cynthn
 ms.custom: include file
 ms.openlocfilehash: 1ec3ecdafb8e475f5f13372789528612ccd7b8b9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "66226004"
 ---
-## <a name="using-rbac-to-share-images"></a>Przy użyciu funkcji RBAC do udostępniania obrazów
+## <a name="using-rbac-to-share-images"></a>Udostępnianie obrazów za pomocą funkcji RBAC
 
-Obrazy można udostępniać między subskrypcjami przy użyciu kontroli dostępu opartej na rolach (RBAC). Każdy użytkownik, który ma uprawnienia odczytu do wersji obrazu, nawet w różnych subskrypcjach, będzie można wdrożyć maszynę wirtualną przy użyciu wersji obrazu.
+Obrazy można udostępniać w różnych subskrypcjach przy użyciu kontroli dostępu opartej na rolach (RBAC). Każdy użytkownik, który ma uprawnienia do odczytu do wersji obrazu, nawet w ramach subskrypcji, będzie mógł wdrożyć maszynę wirtualną przy użyciu wersji obrazu.
 
-Aby uzyskać więcej informacji na temat udostępniania zasobów przy użyciu funkcji RBAC, zobacz [zarządzanie dostępem przy użyciu RBAC i wiersza polecenia platformy Azure](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli).
+Aby uzyskać więcej informacji na temat udostępniania zasobów przy użyciu funkcji RBAC, zobacz [Zarządzanie dostępem przy użyciu funkcji RBAC i interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli).
 
 
 ## <a name="list-information"></a>Informacje o liście
 
-Pobieranie lokalizacji, stanu i innych informacji na temat galerie dostępnych obrazów, za pomocą [listy sig az](/cli/azure/sig#az-sig-list).
+Uzyskaj lokalizację, status i inne informacje na temat dostępnych galerii obrazów za pomocą [listy az sig](/cli/azure/sig#az-sig-list).
 
 ```azurecli-interactive 
 az sig list -o table
 ```
 
-Lista definicji obraz w galerii, w tym informacje o typie systemu operacyjnego i stanu, przy użyciu [az sig definicję obrazu listy](/cli/azure/sig/image-definition#az-sig-image-definition-list).
+Lista definicji obrazów w galerii, w tym informacje o typie i stanie systemu operacyjnego, za pomocą [listy az sig image-definition](/cli/azure/sig/image-definition#az-sig-image-definition-list).
 
 ```azurecli-interactive 
 az sig image-definition list --resource-group myGalleryRG --gallery-name myGallery -o table
 ```
 
-Utwórz listę wersji udostępnionego obrazu w galerii, za pomocą [az sig wersję obrazu listy](/cli/azure/sig/image-version#az-sig-image-version-list).
+Lista wersji obrazu udostępnionego w galerii, za pomocą [listy az sig image-version](/cli/azure/sig/image-version#az-sig-image-version-list).
 
 ```azurecli-interactive
 az sig image-version list --resource-group myGalleryRG --gallery-name myGallery --gallery-image-definition myImageDefinition -o table
 ```
 
-Pobierz identyfikator wersji obrazów przy użyciu [Pokaż wersję obrazu sig az](/cli/azure/sig/image-version#az-sig-image-version-show).
+Pobierz identyfikator wersji obrazu za pomocą [az sig image-version show](/cli/azure/sig/image-version#az-sig-image-version-show).
 
 ```azurecli-interactive
 az sig image-version show \

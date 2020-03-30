@@ -1,6 +1,6 @@
 ---
-title: Azure Portal skróty klawiaturowe | Microsoft Docs
-description: Azure Portal obsługuje globalne skróty klawiaturowe ułatwiające wykonywanie akcji, nawigowanie i przechodzenie do lokalizacji w Azure Portal.
+title: Skróty klawiaturowe usługi Azure portal | Dokumenty firmy Microsoft
+description: Portal Azure obsługuje globalne skróty klawiaturowe ułatwiające wykonywanie akcji, nawigację i przechodzenie do lokalizacji w witrynie Azure portal.
 services: azure-portal
 documentationcenter: ''
 author: adamabmsft
@@ -16,42 +16,42 @@ ms.date: 12/20/2019
 ms.author: mblythe
 ms.custom: accessibility
 ms.openlocfilehash: e42dfc82fa0db028894dd77225621e867d79dac6
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75641337"
 ---
-# <a name="keyboard-shortcuts-in-the-azure-portal"></a>Skróty klawiaturowe w Azure Portal
+# <a name="keyboard-shortcuts-in-the-azure-portal"></a>Skróty klawiaturowe w witrynie Azure portal
 
-W tym artykule przedstawiono skróty klawiaturowe, które działają wszędzie w Azure Portal. Poszczególne usługi mogą mieć własne skróty klawiaturowe.
+W tym artykule wymieniono skróty klawiaturowe, które działają wszędzie w witrynie Azure portal. Poszczególne usługi mogą mieć własne skróty klawiaturowe.
 
 ## <a name="actions"></a>Akcje
 
-|Akcja do wykonania |Naciśnij |
+|Akcja do wykonania |Klawisze do naciśnięcia |
 | --- | --- |
 |Tworzenie zasobu|G+N|
 |Otwórz **wszystkie usługi**|G+B|
 |Wyszukaj zasoby, usługi i dokumenty|G+/|
-|Wyszukaj elementy menu zasobów|CTRL+/ |
-|Przenieś w górę wybrany lewy element paska bocznego |ALT + SHIFT + Strzałka w górę|
-|Przenieś zaznaczony lewy element paska bocznego w dół |ALT + SHIFT + Strzałka w dół|
+|Szukaj elementów menu zasobów|CTRL+/ |
+|Przechodzenie w górę zaznaczonego lewego elementu paska bocznego |ALT+Shift+strzałka w górę|
+|Przenoszenie zaznaczonego lewego elementu na pasku bocznym w dół |ALT+Shift+strzałka w dół|
 
 ## <a name="navigation"></a>Nawigacja
 
-|Aby wykonać tę nawigację |Naciśnij |
+|Aby wykonać tę nawigację |Klawisze do naciśnięcia |
 | --- | --- |
-|Przenieś fokus na pasek poleceń |G+, |
-|Przełącz fokus między nagłówkiem a lewym paskiem bocznym | G+. |
+|Przenoszenie fokusu na pasek poleceń |G+, |
+|Przełączanie fokusu między nagłówkiem a lewym paskiem bocznym | G+. |
 
-## <a name="go-to"></a>Przejdź kolejno do pozycji
+## <a name="go-to"></a>Przejdź do
 
-|Aby przejść do tej lokalizacji |Naciśnij |
+|Aby przejść do tej lokalizacji |Klawisze do naciśnięcia |
 | --- | --- |
 |Przejdź do **pulpitu nawigacyjnego** |G+D |
 |Przejdź do **wszystkich zasobów**|G+A |
 |Przejdź do **grup zasobów**|G+R |
-|Otwórz lewy element paska bocznego w tym miejscu |G + Number|
+|Otwórz lewy element paska bocznego w tej pozycji |G+liczba|
 
 ## <a name="next-steps"></a>Następne kroki
 

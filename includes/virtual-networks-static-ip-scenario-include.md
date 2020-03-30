@@ -2,19 +2,19 @@
 author: genlin
 ms.service: virtual-network
 ms.topic: include
-ms.date: 11/09/2018
+ms.date: 02/14/2020
 ms.author: genli
-ms.openlocfilehash: d40f8fb263c5838d523108a1df7be99aba587354
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 280943bd965c4799ce294321129d1088be9c0caf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67183140"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80060476"
 ---
 ## <a name="scenario"></a>Scenariusz
-Aby lepiej zilustrować jak skonfigurować statyczny adres IP dla maszyny Wirtualnej, w tym dokumencie użyje poniższego scenariusza.
 
-![Scenariusz sieci wirtualnych](./media/virtual-networks-static-ip-scenario-include/static-ip-scenario.png)
+Aby lepiej zilustrować sposób konfigurowania statycznego adresu IP dla maszyny Wirtualnej, w tym dokumencie użyto tego scenariusza:
 
-W tym scenariuszu utworzysz Maszynę wirtualną o nazwie **DNS01** w **frontonu** podsieci i ustaw go do korzystania ze statycznego adresu IP z **192.168.1.101**.
+![Scenariusz sieci wirtualnej: podsieci front-end i back-end ze statycznym adresem IP dla podsieci frontowej](./media/virtual-networks-static-ip-scenario-include/static-ip-scenario.png)
 
+W tym scenariuszu utworzysz maszynę wirtualną o nazwie *DNS01* w podsieci *FrontEnd,* a następnie ustawisz ją tak, aby używała statycznego adresu IP *192.168.1.101*.
