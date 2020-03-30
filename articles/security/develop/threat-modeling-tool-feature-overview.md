@@ -1,6 +1,6 @@
 ---
-title: Omówienie funkcji Microsoft Threat Modeling Tool — Azure
-description: Dowiedz się więcej o wszystkich funkcjach dostępnych w Threat Modeling Tool
+title: Omówienie funkcji narzędzia do modelowania zagrożeń firmy Microsoft — platforma Azure
+description: Dowiedz się więcej o wszystkich funkcjach dostępnych w narzędziu do modelowania zagrożeń
 author: jegeib
 ms.author: jegeib
 ms.service: security
@@ -8,30 +8,30 @@ ms.subservice: security-develop
 ms.topic: article
 ms.date: 08/17/2017
 ms.openlocfilehash: 88eea0eb2bceb0f6322381a94d4339cbdfa662c0
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/31/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75552121"
 ---
-# <a name="threat-modeling-tool-feature-overview"></a>Omówienie funkcji Threat Modeling Tool
+# <a name="threat-modeling-tool-feature-overview"></a>Omówienie funkcji narzędzia do modelowania zagrożeń
 
-Threat Modeling Tool może pomóc w zaspokojeniu potrzeb modelowania zagrożeń. Aby uzyskać podstawowe wprowadzenie do narzędzia, zobacz Wprowadzenie do [Threat Modeling Tool](threat-modeling-tool-getting-started.md).
+Narzędzie do modelowania zagrożeń może pomóc w spełnieniu potrzeb modelowania zagrożeń. Aby uzyskać podstawowe wprowadzenie do narzędzia, zobacz [Wprowadzenie do narzędzia do modelowania zagrożeń](threat-modeling-tool-getting-started.md).
 
 > [!NOTE]
->Threat Modeling Tool jest często aktualizowana, więc sprawdź, czy ten przewodnik często zawiera najnowsze funkcje i ulepszenia.
+>Narzędzie do modelowania zagrożeń jest często aktualizowane, dlatego często sprawdzaj ten przewodnik, aby zobaczyć nasze najnowsze funkcje i ulepszenia.
 
 Aby otworzyć pustą stronę, wybierz pozycję **Utwórz model**.
 
 ![Pusta strona](./media/threat-modeling-tool-feature-overview/tmtstart.png)
 
-Aby wyświetlić funkcje aktualnie dostępne w narzędziu, należy użyć modelu zagrożeń utworzonego przez nasz zespół w przykładowym [wprowadzeniem](threat-modeling-tool-getting-started.md) .
+Aby wyświetlić funkcje obecnie dostępne w narzędziu, użyj modelu zagrożeń utworzonego przez nasz zespół w przykładzie [Wprowadzenie.](threat-modeling-tool-getting-started.md)
 
-![Podstawowy model zagrożeń](./media/threat-modeling-tool-feature-overview/basictmt.png)
+![Podstawowy model zagrożenia](./media/threat-modeling-tool-feature-overview/basictmt.png)
 
 ## <a name="navigation"></a>Nawigacja
 
-Przed przedyskutowaniem wbudowanych funkcji przejdźmy do najważniejszych składników znalezionych w narzędziu.
+Zanim omówimy wbudowane funkcje, przejrzyjmy główne składniki znalezione w narzędziu.
 
 ### <a name="menu-items"></a>Elementy menu
 
@@ -39,37 +39,37 @@ Przed przedyskutowaniem wbudowanych funkcji przejdźmy do najważniejszych skła
 
 ![Elementy menu](./media/threat-modeling-tool-feature-overview/menuitems.png)
 
-| Etykieta                               | Szczegóły      |
+| Label                               | Szczegóły      |
 | --------------------------------------- | ------------ |
-| **Plik** | <ul><li>Otwieranie, zapisywanie i zamykanie plików</li><li>Zaloguj się i wyloguj się z kont usługi OneDrive.</li><li>Udostępnij linki (Wyświetl i edytuj).</li><li>Wyświetl informacje o pliku.</li><li>Zastosuj nowy szablon do istniejących modeli.</li></ul> |
-| **Edytowanie** | Akcje cofania i ponawiania, a także kopiowanie, wklejanie i usuwanie. |
-| **Widok** | <ul><li>Przełączaj się między widokiem **Analizowanie** i **projektowanie** .</li><li>Otwórz zamknięte okna (na przykład wzorników, właściwości elementów i komunikatów).</li><li>Zresetuj układ do ustawień domyślnych.</li></ul> |
-| **Diagram** | Dodawanie i usuwanie diagramów oraz poruszanie się po kartach diagramów. |
-| **Raporty** | Twórz raporty HTML, aby udostępniać je innym osobom. |
-| **Pomoc** | Znajdź przewodniki ułatwiające korzystanie z tego narzędzia. |
+| **Plik** | <ul><li>Otwieranie, zapisywanie i zamykanie plików</li><li>Zaloguj się i wyloguj się z kont usługi OneDrive.</li><li>Udostępnianie łączy (wyświetlanie i edytowanie).</li><li>Wyświetlanie informacji o pliku.</li><li>Zastosuj nowy szablon do istniejących modeli.</li></ul> |
+| **Edytuj** | Cofanie i ponawianie akcji, a także kopiowanie, wklejanie i usuwanie. |
+| **Widok** | <ul><li>Przełączanie między widokami **Analiza** i **Projekt.**</li><li>Otwórz zamknięte okna (na przykład wzorniki, właściwości elementu i komunikaty).</li><li>Zresetuj układ do ustawień domyślnych.</li></ul> |
+| **Diagram** | Dodawanie i usuwanie diagramów oraz przechodzenie między kartami diagramów. |
+| **Raporty** | Tworzenie raportów HTML w celu udostępniania innym osobom. |
+| **Pomoc** | Znajdź przewodniki ułatwiające korzystanie z narzędzia. |
 
-Symbole są skrótami dla menu najwyższego poziomu:
+Symbole są skrótami do menu najwyższego poziomu:
 
 | Symbol                               | Szczegóły      |
 | --------------------------------------- | ------------ |
 | **Otwórz** | Otwiera nowy plik. |
-| **Zapisywanie** | Zapisuje bieżący plik. |
-| **Projektowanie** | Otwiera widok **projekt** , w którym można tworzyć modele. |
+| **Zapisz** | Zapisuje bieżący plik. |
+| **Projekt** | Otwiera widok **Projekt,** w którym można tworzyć modele. |
 | **Analiza** | Pokazuje wygenerowane zagrożenia i ich właściwości. |
 | **Dodaj diagram** | Dodaje nowy diagram (podobny do nowych kart w programie Excel). |
-| **Usuń diagram** | Usuwa bieżący diagram. |
-| **Kopiuj/Wytnij/Wklej** | Kopiuje, wycina i wkleja elementy. |
-| **Cofnij/ponów** | Cofa i wykonuje akcje. |
-| **Powiększ/Pomniejsz** | Powiększa i zmniejsza diagram, aby uzyskać lepszy widok. |
-| **Opinia** | Otwiera forum MSDN. |
+| **Usuwanie diagramu** | Usuwa bieżący diagram. |
+| **Kopiowanie/wycinanie/wklejanie** | Kopiuje, wycina i wkleja elementy. |
+| **Cofanie/ponawianie** | Cofa i ponawia akcje. |
+| **Powiększanie/pomniejszanie** | Powiększa i pomniejsza diagram, aby uzyskać lepszy widok. |
+| **Opinie** | Otwiera forum MSDN. |
 
 ### <a name="canvas"></a>Kanwa
 
-Kanwa to miejsce, w którym można przeciągać i upuszczać elementy. Przeciąganie i upuszczanie to najszybszy i najbardziej wydajny sposób tworzenia modeli. Możesz również kliknąć prawym przyciskiem myszy i wybrać pozycję elementy z menu, aby dodać ogólne wersje elementów, jak pokazano poniżej:
+Kanwa to przestrzeń, w której przeciągasz i upuszczasz elementy. Przeciąganie i upuszczanie jest najszybszym i najbardziej efektywnym sposobem tworzenia modeli. Można również kliknąć prawym przyciskiem myszy i wybrać elementy z menu, aby dodać ogólne wersje elementów, jak pokazano na rysunku:
 
-#### <a name="drop-the-stencil-on-the-canvas"></a>Upuść wzornik na kanwie
+#### <a name="drop-the-stencil-on-the-canvas"></a>Upuść wzornik na płótnie
 
-![Porzucenie kanwy](./media/threat-modeling-tool-feature-overview/canvasdrop1.png)
+![Upuszczenie kanwy](./media/threat-modeling-tool-feature-overview/canvasdrop1.png)
 
 #### <a name="select-the-stencil"></a>Wybierz wzornik
 
@@ -77,74 +77,74 @@ Kanwa to miejsce, w którym można przeciągać i upuszczać elementy. Przeciąg
 
 ### <a name="stencils"></a>Wzorników
 
-W oparciu o wybrany szablon można znaleźć wszystkie wzorniki dostępne do użycia. Jeśli nie możesz znaleźć odpowiednich elementów, użyj innego szablonu. Można też zmodyfikować szablon, aby odpowiadał Twoim potrzebom. Ogólnie rzecz biorąc, można znaleźć kombinację kategorii takich jak:
+Na podstawie wybranego szablonu można znaleźć wszystkie wzorniki dostępne do użycia. Jeśli nie możesz znaleźć odpowiednich elementów, użyj innego szablonu. Możesz też zmodyfikować szablon, aby dopasować go do swoich potrzeb. Ogólnie rzecz biorąc, można znaleźć kombinację kategorii, takich jak te:
 
 | Nazwa wzornika                               | Szczegóły      |
 | --------------------------------------- | ------------ |
-| **Podstawowych** | Aplikacje, wtyczki przeglądarki, wątki, maszyny wirtualne |
-| **Zewnętrzna aktor** | Dostawcy uwierzytelniania, przeglądarki, użytkownicy, aplikacje sieci Web |
-| **Magazyn danych** | Pamięć podręczna, magazyn, pliki konfiguracji, bazy danych, rejestr |
-| **Przepływ danych** | Binary, ALPC, HTTP, HTTPS/TLS/SSL, IOCTL, IPSec, nazwany potok, RPC/DCOM, SMB, UDP |
-| **Granica linii/obramowania zaufania** | Sieci firmowe, Internet, maszyna, Piaskownica, tryb użytkownika/jądra |
+| **Proces** | Aplikacje, wtyczki przeglądarki, wątki, maszyny wirtualne |
+| **Zewnętrzny interakator** | Dostawcy uwierzytelniania, przeglądarki, użytkownicy, aplikacje internetowe |
+| **Magazyn danych** | Pamięć podręczna, przechowywanie, pliki konfiguracyjne, bazy danych, rejestr |
+| **Przepływ danych** | Binarny, ALPC, HTTP, HTTPS/TLS/SSL, IOCTL, IPSec, nazwany potok, RPC/DCOM, SMB, UDP |
+| **Granica linii zaufania/granicy obramowania** | Sieci firmowe, Internet, maszyna, piaskownica, tryb użytkownika/jądra |
 
-### <a name="notesmessages"></a>Uwagi/wiadomości
+### <a name="notesmessages"></a>Notatki/wiadomości
 
 | Składnik                               | Szczegóły      |
 | --------------------------------------- | ------------ |
-| **Komunikaty** | Wewnętrzna logika narzędzi, która ostrzega użytkowników za każdym razem, gdy wystąpi błąd, taki jak brak przepływów danych między elementami. |
-| **Uwagi** | Ręczne notatki są dodawane do pliku przez zespoły inżynieryjne w całym procesie projektowania i recenzowania. |
+| **Wiadomości** | Wewnętrzna logika narzędzia, która ostrzega użytkowników, gdy występuje błąd, takich jak brak przepływów danych między elementami. |
+| **Uwagi** | Notatki ręczne są dodawane do pliku przez zespoły inżynierów w trakcie procesu projektowania i przeglądu. |
 
 ### <a name="element-properties"></a>Właściwości elementu
 
-Właściwości elementu różnią się w zależności od wybranych elementów. Poza granicami zaufania wszystkie inne elementy zawierają trzy opcje ogólne:
+Właściwości elementu różnią się w zależności od wybranych elementów. Oprócz granic zaufania wszystkie inne elementy zawierają trzy ogólne wybory:
 
 | Właściwość elementu                               | Szczegóły      |
 | --------------------------------------- | ------------ |
-| **Nazwa** | Jest to przydatne w przypadku nazywania procesów, sklepów, aktorów i przepływów, dzięki czemu można je łatwo rozpoznać. |
-| **Poza zakresem** | W przypadku wybrania element jest pobierany z matrycy generacji zagrożeń (niezalecane). |
-| **Przyczyna braku zakresu** | Pole uzasadnienia, aby umożliwić użytkownikom dowiedzieć się, dlaczego została wybrana poza zakresem. |
+| **Nazwa** | Przydatne do nazywania procesów, sklepów, interakcjorów i przepływów, dzięki czemu są one łatwo rozpoznawane. |
+| **Poza zakresem** | Jeśli ta opcja jest zaznaczona, element jest wyjęty z macierzy generowania zagrożeń (nie jest zalecane). |
+| **Powód braku zakresu** | Pole Uzasadnienie, aby poinformować użytkowników, dlaczego nie ma zakresu został wybrany. |
 
-Właściwości są zmieniane w poszczególnych kategoriach elementów. Zaznacz każdy element, aby sprawdzić dostępne opcje. Możesz też otworzyć szablon, aby dowiedzieć się więcej. Zapoznaj się z funkcjami.
+Właściwości są zmieniane w ramach każdej kategorii elementów. Wybierz każdy element, aby sprawdzić dostępne opcje. Możesz też otworzyć szablon, aby dowiedzieć się więcej. Przejrzyjmy funkcje.
 
 ## <a name="welcome-screen"></a>Ekran powitalny
 
-Po otwarciu aplikacji zobaczysz ekran **powitalny** .
+Po otwarciu aplikacji zostanie wyświetlony ekran **powitalny.**
 
-### <a name="open-a-model"></a>Otwórz model
+### <a name="open-a-model"></a>Otwieranie modelu
 
-Zatrzymaj wskaźnik myszy nad **otwartym modelem** , aby odsłonić dwie opcje: **Otwórz z tego komputera** i **Otwórz z usługi OneDrive**. Pierwsza opcja powoduje otwarcie ekranu **otwieranie pliku** . Druga opcja przeprowadzi Cię przez proces logowania do usługi OneDrive. Po pomyślnym uwierzytelnieniu można wybrać foldery i pliki.
+Umieść wskaźnik myszy **na otwórz model,** aby wyświetlić dwie opcje: **Otwórz z tego komputera** i Otwórz z usługi **OneDrive**. Pierwsza opcja otwiera ekran **Otwieranie pliku.** Druga opcja prowadzi przez proces logowania do usługi OneDrive. Po pomyślnym uwierzytelnieniu można wybrać foldery i pliki.
 
 ![Otwórz model](./media/threat-modeling-tool-feature-overview/openmodel.png)
 
-![Otwórz z komputera lub OneDrive](./media/threat-modeling-tool-feature-overview/openmodel2.png)
+![Otwieranie z komputera lub usługi OneDrive](./media/threat-modeling-tool-feature-overview/openmodel2.png)
 
 ### <a name="feedback-suggestions-and-issues"></a>Opinie, sugestie i problemy
 
-Po wybraniu **opinii, sugestii i problemów**przejdź do forum MSDN dla narzędzi SDL. Możesz odczytywać inne osoby, które mówią o tym narzędziu, w tym o obejściach i nowych pomysłach.
+Po **wybraniu opinii, sugestii i problemów**przejdź do forum MSDN dla narzędzi SDL. Możesz przeczytać, co inni mówią o narzędziu, w tym obejścia i nowe pomysły.
 
 ![Opinia](./media/threat-modeling-tool-feature-overview/feedback.png)
 
-## <a name="design-view"></a>widok Projekt
+## <a name="design-view"></a>Widok projektu
 
-Po otwarciu lub utworzeniu nowego modelu zostanie otwarty widok **projekt** .
+Po otwarciu lub utworzeniu nowego modelu zostanie otwarty widok **Projekt.**
 
 ### <a name="add-elements"></a>Dodawanie elementów
 
-Elementy w siatce można dodać na dwa sposoby:
+Elementy na siatce można dodawać na dwa sposoby:
 
-- **Przeciągnij i upuść**: Przeciągnij żądany element do siatki. Następnie użyj właściwości elementu, aby podać dodatkowe informacje.
-- **Kliknij prawym**przyciskiem myszy: kliknij prawym przyciskiem myszy w dowolnym miejscu siatki, a następnie wybierz pozycję elementy z menu rozwijanego. Na ekranie zostanie wyświetlona ogólna reprezentacja elementu, który został wybrany.
+- **Przeciąganie i upuszczanie:** Przeciągnij żądany element do siatki. Następnie użyj właściwości elementu, aby zapewnić dodatkowe informacje.
+- **Kliknij prawym przyciskiem myszy**: Kliknij prawym przyciskiem myszy dowolne miejsce na siatce i wybierz elementy z menu rozwijanego. Na ekranie pojawi się ogólna reprezentacja wybranego elementu.
 
-### <a name="connect-elements"></a>Połącz elementy
+### <a name="connect-elements"></a>Łączenie elementów
 
 Elementy można łączyć na dwa sposoby:
 
-- **Przeciągnij i upuść**: Przeciągnij żądany przepływu danych do siatki, a następnie połącz oba punkty końcowe z odpowiednimi elementami.
-- **Kliknij przycisk + SHIFT**: kliknij pierwszy element (wysyłając dane), naciśnij i przytrzymaj klawisz Shift, a następnie wybierz drugi element (dane odebrane). Kliknij prawym przyciskiem myszy, a następnie wybierz pozycję **Połącz**. Jeśli używasz przepływu danych dwukierunkowych, kolejność nie jest tak ważna.
+- **Przeciąganie i upuszczanie:** Przeciągnij żądany przepływ danych do siatki i połącz oba końce z odpowiednimi elementami.
+- **Kliknij + Shift**: Kliknij pierwszy element (wysyłanie danych), naciśnij i przytrzymaj klawisz Shift, a następnie wybierz drugi element (odbieranie danych). Kliknij prawym przyciskiem myszy, a następnie wybierz polecenie **Połącz**. Jeśli używasz dwukierunkowego przepływu danych, kolejność nie jest tak ważna.
 
 ### <a name="properties"></a>Właściwości
 
- Aby wyświetlić właściwości, które można zmodyfikować w wzornikach, wybierz wzornik, a informacje są wypełniane odpowiednio. Poniższy przykład ukazuje przed i po przeciągnięciu wzornika **bazy danych** na diagram:
+ Aby wyświetlić właściwości, które mogą być modyfikowane we wzornikach, wybierz wzornik i informacje wypełnia odpowiednio. Poniższy przykład pokazuje przed i po wzornik **bazy danych** jest przeciągany na diagramie:
 
 #### <a name="before"></a>Przed
 
@@ -156,49 +156,49 @@ Elementy można łączyć na dwa sposoby:
 
 ### <a name="messages"></a>Komunikaty
 
-Jeśli utworzysz model zagrożeń i zapomnisz połączyć przepływy danych z elementami, otrzymasz powiadomienie. Komunikat można zignorować lub można wykonać instrukcje, aby rozwiązać problem. 
+Jeśli utworzysz model zagrożeń i zapomnisz połączyć przepływy danych z elementami, otrzymasz powiadomienie. Możesz zignorować wiadomość lub postępować zgodnie z instrukcjami, aby rozwiązać problem. 
 
 ![Komunikaty](./media/threat-modeling-tool-feature-overview/messages.png)
 
 ### <a name="notes"></a>Uwagi
 
-Aby dodać uwagi do diagramu, przełącz się z karty **komunikaty** na kartę **notatki** .
+Aby dodać notatki do diagramu, przełącz się z karty **Wiadomości** na kartę **Notatki.**
 
 ## <a name="analysis-view"></a>Widok analizy
 
-Po skompilowaniu diagramu wybierz symbol **analizy** (Lupa) na pasku narzędzi skróty, aby przełączyć się do widoku **analizy** .
+Po utworzeniu diagramu wybierz symbol **Analiza** (lupę) na pasku narzędzi skróty, aby przełączyć się do widoku **Analiza.**
 
 ![Widok analizy](./media/threat-modeling-tool-feature-overview/analysisview.png)
 
-### <a name="generated-threat-selection"></a>Wybór wygenerowanego zagrożenia
+### <a name="generated-threat-selection"></a>Wygenerowany wybór zagrożenia
 
-Po wybraniu zagrożenia można użyć trzech odrębnych funkcji:
+Po wybraniu zagrożenia można użyć trzech różnych funkcji:
 
 | Funkcja                               | Informacje      |
 | --------------------------------------- | ------------ |
-| **Wskaźnik odczytu** | <p>Zagrożenie jest oznaczone jako przeczytane, co pomaga śledzić przeglądane elementy.</p><p>![Wskaźnik odczytu/odczytania](./media/threat-modeling-tool-feature-overview/readmode.png)</p> |
-| **Fokus interakcji** | <p>Wyróżniono interakcje na diagramie należącym do zagrożenia.</p><p>![Fokus interakcji](./media/threat-modeling-tool-feature-overview/interactionfocus.png)</p> |
-| **Właściwości zagrożenia** | <p>Dodatkowe informacje o zagrożeniu pojawiają się w oknie **Właściwości zagrożeń** .</p><p>Właściwości zagrożenia ![](./media/threat-modeling-tool-feature-overview/threatproperties.png)</p> |
+| **Wskaźnik odczytu** | <p>Zagrożenie jest oznaczone jako przeczytane, co ułatwia śledzenie recenzowanych elementów.</p><p>![Wskaźnik odczytu/nieprzeczytane](./media/threat-modeling-tool-feature-overview/readmode.png)</p> |
+| **Koncentracja na interakcji** | <p>Interakcja na diagramie, który należy do zagrożenia jest wyróżniona.</p><p>![Koncentracja na interakcji](./media/threat-modeling-tool-feature-overview/interactionfocus.png)</p> |
+| **Właściwości zagrożenia** | <p>Dodatkowe informacje o zagrożeniu są wyświetlane w oknie **Właściwości zagrożenia.**</p><p>![Właściwości zagrożenia](./media/threat-modeling-tool-feature-overview/threatproperties.png)</p> |
 
 ### <a name="priority-change"></a>Zmiana priorytetu
 
-Można zmienić poziom priorytetu każdego z wygenerowanych zagrożeń. Różne kolory ułatwiają identyfikowanie zagrożeń o wysokim poziomie, średnim i niskim priorytecie.
+Można zmienić poziom priorytetu każdego wygenerowanego zagrożenia. Różne kolory ułatwiają identyfikowanie zagrożeń o wysokim, średnim i niskim priorytecie.
 
 ![Zmiana priorytetu](./media/threat-modeling-tool-feature-overview/prioritychange.png)
 
-### <a name="threat-properties-editable-fields"></a>Pola edytowalne właściwości zagrożeń
+### <a name="threat-properties-editable-fields"></a>Pola edytowalne właściwości zagrożenia
 
-Jak widać na poprzedniej ilustracji, można zmienić informacje wygenerowane przez narzędzie. Możesz również dodać informacje do określonych pól, takich jak uzasadnienie. Te pola są generowane przez szablon. Jeśli potrzebujesz więcej informacji dotyczących poszczególnych zagrożeń, możesz wprowadzić modyfikacje.
+Jak widać na poprzednim obrazie, można zmienić informacje generowane przez narzędzie. Można również dodać informacje do niektórych pól, takich jak uzasadnienie. Te pola są generowane przez szablon. Jeśli potrzebujesz więcej informacji dla każdego zagrożenia, możesz wprowadzić zmiany.
 
 ![Właściwości zagrożenia](./media/threat-modeling-tool-feature-overview/threatproperties.png)
 
 ## <a name="reports"></a>Raporty
 
-Po zakończeniu zmieniania priorytetów i aktualizacji stanu każdego z wygenerowanych zagrożeń można zapisać plik i/lub wydrukować raport. Przejdź do **raportu** > **Utwórz pełny raport**. Nadaj raportowi nazwę i zobacz coś podobnego do poniższej ilustracji:
+Po zakończeniu zmiany priorytetów i aktualizacji stanu każdego wygenerowanego zagrożenia można zapisać plik i/lub wydrukować raport. Przejdź do **raportu** > **Utwórz pełny raport**. Nazwij raport, a powinieneś zobaczyć coś podobnego do następującego obrazu:
 
 ![Raport](./media/threat-modeling-tool-feature-overview/report.png)
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Wyślij swoje pytania, komentarze i problemy do tmtextsupport@microsoft.com. **[Pobierz](https://aka.ms/threatmodelingtool)** Threat Modeling Tool, aby rozpocząć pracę.
-- Aby współtworzyć szablon dla społeczności, przejdź do naszej strony serwisu [GitHub](https://github.com/Microsoft/threat-modeling-templates) .
+- Wyślij swoje pytania, uwagi tmtextsupport@microsoft.comi wątpliwości do . **[Pobierz](https://aka.ms/threatmodelingtool)** narzędzie do modelowania zagrożeń, aby rozpocząć.
+- Aby dodać szablon dla społeczności, przejdź do naszej strony [GitHub.](https://github.com/Microsoft/threat-modeling-templates)

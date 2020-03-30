@@ -9,15 +9,15 @@ ms.date: 04/09/2018
 ms.author: jdial
 ms.custom: include file
 ms.openlocfilehash: c63160d7514dccb0d2a9c2879db6d3fd614e1a96
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "75646396"
 ---
 > [!div class="op_single_selector"]
-> * [Azure Portal](../articles/virtual-network/virtual-network-multiple-ip-addresses-portal.md)
-> * [Program PowerShell](../articles/virtual-network/virtual-network-multiple-ip-addresses-powershell.md)
+> * [Portal Azure](../articles/virtual-network/virtual-network-multiple-ip-addresses-portal.md)
+> * [Powershell](../articles/virtual-network/virtual-network-multiple-ip-addresses-powershell.md)
 > * [Interfejs wiersza polecenia platformy Azure](../articles/virtual-network/virtual-network-multiple-ip-addresses-cli.md)
 >
 

@@ -1,6 +1,6 @@
 ---
-title: Kopiowanie danych z systemu plików HDFS przy użyciu Azure Data Factory
-description: Informacje o kopiowaniu danych z chmury lub lokalnego źródła systemu plików HDFS do obsługiwanych magazynów danych ujścia przy użyciu działania kopiowania w potoku Azure Data Factory.
+title: Kopiowanie danych z usługi HDFS przy użyciu usługi Azure Data Factory
+description: Dowiedz się, jak kopiować dane z chmury lub lokalnego źródła HDFS do obsługiwanych magazynów danych ujścia przy użyciu działania kopiowania w potoku usługi Azure Data Factory.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -12,57 +12,57 @@ ms.topic: conceptual
 ms.date: 12/10/2019
 ms.author: jingwang
 ms.openlocfilehash: 2cd76afa9412e89c57cfb6c357eb164ce5d3d1c4
-ms.sourcegitcommit: 8b37091efe8c575467e56ece4d3f805ea2707a64
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75830432"
 ---
-# <a name="copy-data-from-hdfs-using-azure-data-factory"></a>Kopiowanie danych z systemu plików HDFS przy użyciu Azure Data Factory
-> [!div class="op_single_selector" title1="Wybierz używaną wersję usługi Data Factory:"]
+# <a name="copy-data-from-hdfs-using-azure-data-factory"></a>Kopiowanie danych z usługi HDFS przy użyciu usługi Azure Data Factory
+> [!div class="op_single_selector" title1="Wybierz wersję używanej usługi Data Factory:"]
 > * [Wersja 1](v1/data-factory-hdfs-connector.md)
 > * [Bieżąca wersja](connector-hdfs.md)
 
-W tym artykule opisano sposób kopiowania danych z serwera HDFS. Aby dowiedzieć się więcej na temat usługi Azure Data Factory, przeczytaj [artykuł wprowadzający](introduction.md).
+W tym artykule opisano sposób kopiowania danych z serwera HDFS. Aby dowiedzieć się więcej o usłudze Azure Data Factory, przeczytaj [artykuł wprowadzający](introduction.md).
 
-## <a name="supported-capabilities"></a>Obsługiwane funkcje
+## <a name="supported-capabilities"></a>Obsługiwane możliwości
 
-Ten łącznik systemu plików HDFS jest obsługiwany dla następujących działań:
+To złącze HDFS jest obsługiwane dla następujących działań:
 
-- [Działanie kopiowania](copy-activity-overview.md) z [obsługiwaną macierzą źródłową/ujścia](copy-activity-overview.md)
-- [Działanie Lookup](control-flow-lookup-activity.md)
+- [Kopiowanie aktywności](copy-activity-overview.md) z [obsługiwaną macierzą źródło/ujście](copy-activity-overview.md)
+- [Działanie odnośnika](control-flow-lookup-activity.md)
 
-Ten łącznik systemu plików HDFS obsługuje tylko następujące:
+W szczególności to złącze HDFS obsługuje:
 
-- Kopiowanie plików przy użyciu **systemu Windows** (Kerberos) lub uwierzytelniania **anonimowego** .
-- Kopiowanie plików przy użyciu protokołu **webhdfs** lub **wbudowanej obsługi pomocą distcp** .
-- Kopiowanie plików jako — jest lub analizowania/Generowanie plików za pomocą [obsługiwane formaty plików i kodery-dekodery kompresji](supported-file-formats-and-compression-codecs.md).
+- Kopiowanie plików przy użyciu **systemu Windows** (Kerberos) lub uwierzytelniania **anonimowego.**
+- Kopiowanie plików przy użyciu protokołu **webhdfs** lub wbudowanej obsługi **DistCp.**
+- Kopiowanie plików w stanie jednakowym lub analizowanie/generowanie plików za pomocą [obsługiwanych formatów plików i kodeków kompresji](supported-file-formats-and-compression-codecs.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 [!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 
 > [!NOTE]
-> Upewnij się, że Integration Runtime ma dostęp do **wszystkich** elementów [nazwa węzła Server]: [nazwa węzła port] i [serwery węzłów danych]: [port węzła danych] klastra Hadoop. Domyślny [nazwa portu węzła] to 50070, a domyślny [port węzła danych] to 50075.
+> Upewnij się, że środowisko wykonawcze integracji może uzyskać dostęp do **WSZYSTKICH** [serwera węzłów nazw]:[port węzła nazwy] i [serwery węzłów danych]:[port węzła danych] klastra Hadoop. Domyślnie [port węzła nazwy] to 50070, a domyślnie [port węzła danych] to 50075.
 
 ## <a name="getting-started"></a>Wprowadzenie
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
-Poniższe sekcje zawierają szczegółowe informacje dotyczące właściwości, które są używane do definiowania jednostek Data Factory specyficznych dla systemu plików HDFS.
+Poniższe sekcje zawierają szczegółowe informacje o właściwościach, które są używane do definiowania jednostek fabryki danych specyficznych dla usługi HDFS.
 
-## <a name="linked-service-properties"></a>Właściwości usługi połączonej
+## <a name="linked-service-properties"></a>Połączone właściwości usługi
 
-Dla połączonej usługi HDFS są obsługiwane następujące właściwości:
+Następujące właściwości są obsługiwane dla usługi połączonej z usługą HDFS:
 
-| Właściwość | Opis | Wymagane |
+| Właściwość | Opis | Wymagany |
 |:--- |:--- |:--- |
-| type | Właściwość Type musi mieć wartość: **HDFS**. | Tak |
-| url |Adres URL systemu plików HDFS |Tak |
-| authenticationType | Dozwolone wartości to: **Anonymous**lub **Windows**. <br><br> Aby skorzystać z **uwierzytelniania Kerberos** dla łącznika HDFS, zapoznaj się z [tą sekcją](#use-kerberos-authentication-for-hdfs-connector) , aby odpowiednio skonfigurować środowisko lokalne. |Tak |
-| userName |Nazwa użytkownika dla uwierzytelniania systemu Windows. W przypadku uwierzytelniania Kerberos Określ `<username>@<domain>.com`. |Tak (w przypadku uwierzytelniania systemu Windows) |
-| hasło |Hasło do uwierzytelniania systemu Windows. Oznacz to pole jako SecureString, aby bezpiecznie przechowywać w usłudze Data Factory lub [odwołanie wpisu tajnego przechowywanych w usłudze Azure Key Vault](store-credentials-in-key-vault.md). |Tak (w przypadku uwierzytelniania systemu Windows) |
-| connectVia | [Środowiska Integration Runtime](concepts-integration-runtime.md) ma być używany do łączenia się z magazynem danych. Dowiedz się więcej z sekcji [wymagania wstępne](#prerequisites) . Jeśli nie zostanie określony, używa domyślnego środowiska Azure Integration Runtime. |Nie |
+| type | Właściwość typu musi być ustawiona na: **Hdfs**. | Tak |
+| url |Adres URL do plików TWARDYCH |Tak |
+| authenticationType | Dozwolone wartości to: **Anonimowy**lub **Windows**. <br><br> Aby użyć **uwierzytelniania Kerberos** dla łącznika HDFS, zapoznaj się z [tą sekcją,](#use-kerberos-authentication-for-hdfs-connector) aby odpowiednio skonfigurować środowisko lokalne. |Tak |
+| userName |Nazwa użytkownika do uwierzytelniania systemu Windows. W przypadku uwierzytelniania `<username>@<domain>.com`Kerberos określ opcję . |Tak (dla uwierzytelniania systemu Windows) |
+| hasło |Hasło do uwierzytelniania systemu Windows. Oznacz to pole jako SecureString, aby bezpiecznie przechowywać go w fabryce danych lub [odwołaj się do klucza tajnego przechowywanego w usłudze Azure Key Vault.](store-credentials-in-key-vault.md) |Tak (dla uwierzytelniania systemu Windows) |
+| connectVia | [Środowisko wykonawcze integracji,](concepts-integration-runtime.md) które mają być używane do łączenia się z magazynem danych. Dowiedz się więcej z sekcji [Wymagania wstępne.](#prerequisites) Jeśli nie zostanie określony, używa domyślnego środowiska wykonawczego integracji platformy Azure. |Nie |
 
 **Przykład: używanie uwierzytelniania anonimowego**
 
@@ -84,7 +84,7 @@ Dla połączonej usługi HDFS są obsługiwane następujące właściwości:
 }
 ```
 
-**Przykład: używanie uwierzytelniania systemu Windows**
+**Przykład: korzystanie z uwierzytelniania systemu Windows**
 
 ```json
 {
@@ -110,17 +110,17 @@ Dla połączonej usługi HDFS są obsługiwane następujące właściwości:
 
 ## <a name="dataset-properties"></a>Właściwości zestawu danych
 
-Aby uzyskać pełną listę sekcje i właściwości dostępne Definiowanie zestawów danych, zobacz [zestawów danych](concepts-datasets-linked-services.md) artykułu. 
+Aby uzyskać pełną listę sekcji i właściwości dostępnych do definiowania zestawów danych, zobacz artykuł [Zestawy danych.](concepts-datasets-linked-services.md) 
 
 [!INCLUDE [data-factory-v2-file-formats](../../includes/data-factory-v2-file-formats.md)] 
 
-Następujące właściwości są obsługiwane w systemie plików HDFS w obszarze Ustawienia `location` w zestawie danych opartym na formacie:
+Następujące właściwości są obsługiwane dla systemu `location` plików HDFS w ustawieniach w zestawie danych opartym na formacie:
 
-| Właściwość   | Opis                                                  | Wymagane |
+| Właściwość   | Opis                                                  | Wymagany |
 | ---------- | ------------------------------------------------------------ | -------- |
-| type       | Właściwość Type w obszarze `location` w elemencie DataSet musi być ustawiona na wartość **HdfsLocation**. | Tak      |
-| folderPath | Ścieżka do folderu. Jeśli chcesz użyć symboli wieloznacznych do filtrowania folderów, pomiń to ustawienie i określ ustawienia źródła działania. | Nie       |
-| fileName   | Nazwa pliku pod podanym folderPath. Jeśli chcesz użyć symboli wieloznacznych do filtrowania plików, pomiń to ustawienie i określ ustawienia źródła działania. | Nie       |
+| type       | Właściwość typu `location` w obszarze w zestawie danych musi być ustawiona na **HdfsLocation**. | Tak      |
+| folderPath | Ścieżka do folderu. Jeśli chcesz użyć symbolu wieloznacznego do filtrowania folderu, pomiń to ustawienie i określ w ustawieniach źródła aktywności. | Nie       |
+| fileName   | Nazwa pliku pod danym folderPath. Jeśli chcesz użyć symbolu wieloznacznego do filtrowania plików, pomiń to ustawienie i określ w ustawieniach źródła aktywności. | Nie       |
 
 **Przykład:**
 
@@ -150,27 +150,27 @@ Następujące właściwości są obsługiwane w systemie plików HDFS w obszarze
 
 ## <a name="copy-activity-properties"></a>Właściwości działania kopiowania
 
-Aby uzyskać pełną listę sekcje i właściwości dostępne do definiowania działań zobacz [potoki](concepts-pipelines-activities.md) artykułu. Ta sekcja zawiera listę właściwości obsługiwanych przez źródło systemu plików HDFS.
+Aby uzyskać pełną listę sekcji i właściwości dostępnych do definiowania działań, zobacz [Pipelines](concepts-pipelines-activities.md) artykułu. Ta sekcja zawiera listę właściwości obsługiwanych przez źródło HDFS.
 
-### <a name="hdfs-as-source"></a>System plików HDFS jako źródło
+### <a name="hdfs-as-source"></a>HDFS jako źródło
 
 [!INCLUDE [data-factory-v2-file-formats](../../includes/data-factory-v2-file-formats.md)] 
 
-Następujące właściwości są obsługiwane dla systemu plików HDFS w obszarze Ustawienia `storeSettings` w źródle kopiowania opartego na formacie:
+Następujące właściwości są obsługiwane dla systemu `storeSettings` plików HDFS w ustawieniach w źródle kopiowania opartego na formacie:
 
-| Właściwość                 | Opis                                                  | Wymagane                                      |
+| Właściwość                 | Opis                                                  | Wymagany                                      |
 | ------------------------ | ------------------------------------------------------------ | --------------------------------------------- |
-| type                     | Właściwość Type w obszarze `storeSettings` musi być ustawiona na wartość **HdfsReadSettings**. | Tak                                           |
-| recursive                | Wskazuje, czy dane są odczytywane cyklicznie z podfolderów lub tylko z określonego folderu. Zwróć uwagę, że gdy cyklicznego jest ustawiona na wartość PRAWDA, a obiekt sink magazynem opartych na plikach, pusty folder lub podfolder nie jest kopiowany lub utworzono obiekt sink. Dozwolone wartości to **true** (ustawienie domyślne) i **false**. | Nie                                            |
-| wildcardFolderPath       | Ścieżka folderu z symbolami wieloznacznymi do filtrowania folderów źródłowych. <br>Dozwolone symbole wieloznaczne to: `*` (dopasowuje zero lub więcej znaków) i `?` (dopasowuje zero lub pojedynczy znak); Użyj `^`, aby wyjść, jeśli rzeczywista nazwa folderu ma symbol wieloznaczny lub ten znak ucieczki wewnątrz. <br>Zobacz więcej przykładów w [przykładach folderów i filtrów plików](#folder-and-file-filter-examples). | Nie                                            |
-| wildcardFileName         | Nazwa pliku z symbolami wieloznacznymi pod daną folderPath/wildcardFolderPath do filtrowania plików źródłowych. <br>Dozwolone symbole wieloznaczne to: `*` (dopasowuje zero lub więcej znaków) i `?` (dopasowuje zero lub pojedynczy znak); Użyj `^`, aby wyjść, jeśli rzeczywista nazwa folderu ma symbol wieloznaczny lub ten znak ucieczki wewnątrz.  Zobacz więcej przykładów w [przykładach folderów i filtrów plików](#folder-and-file-filter-examples). | Tak, jeśli nie określono `fileName` w zestawie danych |
-| modifiedDatetimeStart    | Filtr plików, na podstawie atrybutu: ostatniej modyfikacji. Pliki zostanie wybrana, w przypadku ich godzina ostatniej modyfikacji w okresie między `modifiedDatetimeStart` i `modifiedDatetimeEnd`. Czas jest stosowany do strefy czasowej UTC w formacie "2018-12-01T05:00:00Z". <br> Właściwości może mieć wartość NULL, która oznacza, że żaden filtr atrybutu pliku zostaną zastosowane do zestawu danych.  Gdy `modifiedDatetimeStart` ma wartość daty/godziny, ale `modifiedDatetimeEnd` ma wartość NULL, oznacza pliki, których ostatniej modyfikacji atrybut jest większa niż lub równe wartością daty/godziny, zostanie wybrany.  Gdy `modifiedDatetimeEnd` ma wartość daty/godziny, ale `modifiedDatetimeStart` ma wartość NULL, oznacza to, pliki, których ostatniej modyfikacji atrybut jest mniejsza niż wartość daty i godziny zostanie wybrany. | Nie                                            |
+| type                     | Właściwość typu `storeSettings` w obszarze musi być ustawiona na **HdfsReadSettings**. | Tak                                           |
+| Cykliczne                | Wskazuje, czy dane są odczytywane cyklicznie z podfolderów, czy tylko z określonego folderu. Należy zauważyć, że gdy cykliczne jest ustawiona na true i ujście jest magazyn oparty na plikach, pusty folder lub podfolder nie jest kopiowany lub tworzony w zlewie. Dozwolone wartości są **prawdziwe** (domyślnie) i **false**. | Nie                                            |
+| Ścieżka wieloznacznaFolderPath       | Ścieżka folderu ze znakami wieloznaczowymi do filtrowania folderów źródłowych. <br>Dozwolone symbole wieloznaczne to: `*` (dopasowuje zero lub więcej znaków) i `?` (pasuje do zera lub pojedynczego znaku); użyj, `^` aby uciec, jeśli rzeczywista nazwa folderu ma symbol wieloznaczny lub ten znak ucieczki wewnątrz. <br>Zobacz więcej przykładów w [przykładach filtru folderów i plików](#folder-and-file-filter-examples). | Nie                                            |
+| symboli wieloznacznychFileName         | Nazwa pliku ze znakami wieloznacznymi pod danym folderpath/wildcardFolderPath do filtrowania plików źródłowych. <br>Dozwolone symbole wieloznaczne to: `*` (dopasowuje zero lub więcej znaków) i `?` (pasuje do zera lub pojedynczego znaku); użyj, `^` aby uciec, jeśli rzeczywista nazwa folderu ma symbol wieloznaczny lub ten znak ucieczki wewnątrz.  Zobacz więcej przykładów w [przykładach filtru folderów i plików](#folder-and-file-filter-examples). | Tak, `fileName` jeśli nie jest określony w zestawie danych |
+| modifiedDatetimeStart    | Filtr plików na podstawie atrybutu: Ostatnia modyfikacja. Pliki zostaną wybrane, jeśli ich ostatni zmodyfikowany czas `modifiedDatetimeStart` `modifiedDatetimeEnd`mieści się w przedziale czasu między i . Czas jest stosowany do strefy czasowej UTC w formacie "2018-12-01T05:00:00Z". <br> Właściwości mogą mieć wartość NULL, co oznacza, że do zestawu danych nie zostanie zastosowany żaden filtr atrybutów pliku.  Gdy `modifiedDatetimeStart` ma wartość `modifiedDatetimeEnd` datetime, ale jest null, oznacza to, że pliki, których ostatni zmodyfikowany atrybut jest większa lub równa z wartości datetime zostaną wybrane.  Gdy `modifiedDatetimeEnd` ma wartość `modifiedDatetimeStart` datetime, ale jest null, oznacza to, że pliki, których ostatni zmodyfikowany atrybut jest mniejsza niż wartość datetime zostaną wybrane. | Nie                                            |
 | modifiedDatetimeEnd      | Tak samo jak powyżej.                                               | Nie                                            |
-| distcpSettings | Grupa właściwości przy użyciu systemu HDFS pomocą distcp. | Nie |
-| resourceManagerEndpoint | Punkt końcowy Menedżer zasobów przędzy | Tak, jeśli używasz pomocą distcp |
-| tempScriptPath | Ścieżka folderu używana do przechowywania skryptu poleceń temp pomocą distcp. Plik skryptu jest generowany przez Data Factory i zostanie usunięty po zakończeniu zadania kopiowania. | Tak, jeśli używasz pomocą distcp |
-| distcpOptions | Dodatkowe opcje dostępne dla polecenia pomocą distcp. | Nie |
-| maxConcurrentConnections | Liczba połączeń, które mają być jednocześnie połączone z magazynem magazynu. Określ tylko wtedy, gdy chcesz ograniczyć współbieżne połączenie z magazynem danych. | Nie                                            |
+| distcpSettings | Grupa właściwości podczas korzystania z DistCp usługi HDFS. | Nie |
+| resourceManagerEndpoint | Punkt końcowy Menedżera zasobów Yarn | Tak w przypadku korzystania z DistCp |
+| ścieżka tempScriptPath | Ścieżka folderu używana do przechowywania skryptu polecenia temp DistCp. Plik skryptu jest generowany przez fabrykę danych i zostanie usunięty po zakończeniu zadania kopiowania. | Tak w przypadku korzystania z DistCp |
+| distcpOpcje | Dodatkowe opcje dostępne dla polecenia DistCp. | Nie |
+| maxConcurrentConnections (Połączenie maksymalne) | Liczba połączeń do łączenia się z magazynem magazynowym jednocześnie. Określ tylko wtedy, gdy chcesz ograniczyć jednoczesne połączenie z magazynem danych. | Nie                                            |
 
 **Przykład:**
 
@@ -218,90 +218,90 @@ Następujące właściwości są obsługiwane dla systemu plików HDFS w obszarz
 
 ### <a name="folder-and-file-filter-examples"></a>Przykłady filtrów folderów i plików
 
-W tej sekcji opisano skutki zachowania ścieżki folderu i nazwy pliku z filtrami symboli wieloznacznych.
+W tej sekcji opisano wynikowe zachowanie ścieżki folderu i nazwy pliku za pomocą filtrów wieloznacznych.
 
-| folderPath | fileName             | recursive | Źródłowa Struktura folderu i wynik filtru (pliki **pogrubione** są pobierane) |
+| folderPath | fileName             | Cykliczne | Struktura folderów źródłowych i wynik filtru (pliki **pogrubione** są pobierane) |
 | :--------- | :------------------- | :-------- | :----------------------------------------------------------- |
-| `Folder*`  | (puste, Użyj domyślnego) | false     | FolderA<br/>&nbsp;&nbsp;&nbsp;&nbsp;**File1.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;**File2.json**<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4.json<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5.csv<br/>AnotherFolderB<br/>&nbsp;&nbsp;&nbsp;&nbsp;File6.csv |
-| `Folder*`  | (puste, Użyj domyślnego) | true      | FolderA<br/>&nbsp;&nbsp;&nbsp;&nbsp;**File1.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;**File2.json**<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File3.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File4.json**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File5.csv**<br/>AnotherFolderB<br/>&nbsp;&nbsp;&nbsp;&nbsp;File6.csv |
-| `Folder*`  | `*.csv`              | false     | FolderA<br/>&nbsp;&nbsp;&nbsp;&nbsp;**File1.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2.json<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4.json<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5.csv<br/>AnotherFolderB<br/>&nbsp;&nbsp;&nbsp;&nbsp;File6.csv |
-| `Folder*`  | `*.csv`              | true      | FolderA<br/>&nbsp;&nbsp;&nbsp;&nbsp;**File1.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2.json<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File3.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4.json<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File5.csv**<br/>AnotherFolderB<br/>&nbsp;&nbsp;&nbsp;&nbsp;File6.csv |
+| `Folder*`  | (pusty, użyj domyślnie) | false     | FolderA ( folderA )<br/>&nbsp;&nbsp;&nbsp;&nbsp;**Plik1.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;**Plik2.json**<br/>&nbsp;&nbsp;&nbsp;&nbsp;Podfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Plik3.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Plik4.json<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Plik5.csv<br/>InnyFolderb<br/>&nbsp;&nbsp;&nbsp;&nbsp;Plik 6.csv |
+| `Folder*`  | (pusty, użyj domyślnie) | true      | FolderA ( folderA )<br/>&nbsp;&nbsp;&nbsp;&nbsp;**Plik1.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;**Plik2.json**<br/>&nbsp;&nbsp;&nbsp;&nbsp;Podfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Plik3.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Plik4.json**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Plik5.csv**<br/>InnyFolderb<br/>&nbsp;&nbsp;&nbsp;&nbsp;Plik 6.csv |
+| `Folder*`  | `*.csv`              | false     | FolderA ( folderA )<br/>&nbsp;&nbsp;&nbsp;&nbsp;**Plik1.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;Plik2.json<br/>&nbsp;&nbsp;&nbsp;&nbsp;Podfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Plik3.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Plik4.json<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Plik5.csv<br/>InnyFolderb<br/>&nbsp;&nbsp;&nbsp;&nbsp;Plik 6.csv |
+| `Folder*`  | `*.csv`              | true      | FolderA ( folderA )<br/>&nbsp;&nbsp;&nbsp;&nbsp;**Plik1.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;Plik2.json<br/>&nbsp;&nbsp;&nbsp;&nbsp;Podfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Plik3.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Plik4.json<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Plik5.csv**<br/>InnyFolderb<br/>&nbsp;&nbsp;&nbsp;&nbsp;Plik 6.csv |
 
-## <a name="use-distcp-to-copy-data-from-hdfs"></a>Używanie pomocą distcp do kopiowania danych z systemu plików HDFS
+## <a name="use-distcp-to-copy-data-from-hdfs"></a>Kopiowanie danych z usługi HDFS za pomocą protokołu DistCp
 
-[Pomocą distcp](https://hadoop.apache.org/docs/current3/hadoop-distcp/DistCp.html) jest natywnym narzędziem wiersza polecenia usługi Hadoop do wykonywania kopii rozproszonej w klastrze usługi Hadoop. Po uruchomieniu polecenia pomocą distcp najpierw zostanie wystawiona lista wszystkich plików do skopiowania, utworzenie kilku zadań mapy w klastrze usługi Hadoop, a każde zadanie mapy spowoduje skopiowanie danych binarnych ze źródła do ujścia.
+[DistCp](https://hadoop.apache.org/docs/current3/hadoop-distcp/DistCp.html) jest natywnym narzędziem wiersza polecenia Hadoop do kopiowania rozproszonego w klastrze Hadoop. Po uruchomieniu polecenia Distcp najpierw wyświetli listę wszystkich plików do skopiowania, utworzy kilka zadań mapy w klastrze Hadoop, a każde zadanie mapy wykona kopię binarną ze źródła do ujścia.
 
-Obsługa działań kopiowania przy użyciu pomocą distcp do kopiowania plików jako-do obiektów blob platformy Azure (w tym [kopii etapowej](copy-activity-performance.md)) lub Azure Data Lake Store, w którym to przypadku można w pełni wykorzystać możliwości klastra zamiast uruchamiać je na samodzielnym Integration Runtime. Zapewni to lepszą przepływność kopiowania, zwłaszcza jeśli klaster jest bardzo wydajny. W oparciu o konfigurację w Azure Data Factory, działanie Copy automatycznie konstruuje polecenie pomocą distcp, przesłać je do klastra usługi Hadoop i monitorować stan kopiowania.
+Kopiuj obsługę działań przy użyciu DistCp do kopiowania plików w stanie takim, w jakim jest w obszarze Blob platformy Azure (w tym [kopia etapowa)](copy-activity-performance.md)lub w sklepie Azure Data Lake Store, w którym to przypadku może w pełni wykorzystać moc klastra zamiast działać w własnym czasie wykonywania integracji. Zapewni lepszą przepływność kopiowania, zwłaszcza jeśli klaster jest bardzo wydajny. Na podstawie konfiguracji w usłudze Azure Data Factory, skopiuj działanie automatycznie utworzyć polecenie distcp, przesłać do klastra Hadoop i monitorować stan kopiowania.
 
 ### <a name="prerequisites"></a>Wymagania wstępne
 
-Aby użyć pomocą distcp do kopiowania plików z systemem HDFS do obiektu blob platformy Azure (w tym kopii przygotowanej) lub Azure Data Lake Store upewnij się, że klaster usługi Hadoop spełnia wymagania poniżej:
+Aby użyć protokołu DistCp do kopiowania plików z usługi HDFS do obiektu Blob platformy Azure (w tym kopii etapowej) lub usługi Azure Data Lake Store, upewnij się, że klaster Hadoop spełnia poniższe wymagania:
 
-1. Usługi MapReduce i przędzy są włączone.
-2. Wersja przędzy to 2,5 lub nowsza.
-3. Serwer HDFS jest zintegrowany z docelowym magazynem danych — obiektem blob platformy Azure lub Azure Data Lake Store:
+1. Usługi MapReduce i Yarn są włączone.
+2. Wersja przędzy jest 2.5 lub wyższa.
+3. Serwer HDFS jest zintegrowany z docelowym magazynem danych — obiektem blob platformy Azure lub sklepem Usługi Azure Data Lake Store:
 
-    - System plików obiektów blob platformy Azure jest natywnie obsługiwany od wersji Hadoop 2,7. Wystarczy określić ścieżkę jar w konfiguracji ENV usługi Hadoop.
-    - System plików Azure Data Lake Store jest spakowany od platformy Hadoop 3.0.0-alpha1. Jeśli klaster usługi Hadoop jest niższy niż ta wersja, należy ręcznie zaimportować powiązane z usługą ADLS pakiety jar (Azure-datalake-Store. jar) do klastra z tego [miejsca](https://hadoop.apache.org/releases.html)i określić ścieżkę jar w konfiguracji ENV usługi Hadoop.
+    - Usługa Azure Blob FileSystem jest natywnie obsługiwana od czasu usługi Hadoop 2.7. Wystarczy określić ścieżkę jar w uduszeniu env config.
+    - Usługa Azure Data Lake Store FileSystem jest pakowany począwszy od Usługi Hadoop 3.0.0-alpha1. Jeśli klaster Hadoop jest niższy niż ta wersja, należy ręcznie zaimportować pakiety jar związane z usługą ADLS (azure-datalake-store.jar) do [klastra w tym miejscu](https://hadoop.apache.org/releases.html)i określić ścieżkę jar w usłudze Hadoop env config.
 
-4. Przygotuj folder tymczasowy w systemie plików HDFS. Ten folder tymczasowy służy do przechowywania skryptu powłoki pomocą distcp, więc zajmie miejsce na poziomie KB.
-5. Upewnij się, że konto użytkownika podane w połączonej usłudze HDFS ma uprawnienie do przesyłania aplikacji w ramach przędzy; b) mają uprawnienia do tworzenia podfolderu, plików do odczytu i zapisu w powyższym folderze tymczasowym.
+4. Przygotuj folder tymczasowy w hdfs. Ten folder tymczasowy jest używany do przechowywania skryptu powłoki DistCp, dzięki czemu zajmuje miejsce na poziomie KB.
+5. Upewnij się, że konto użytkownika podane w usłudze połączonej HDFS ma uprawnienia do a) składania wniosków w Yarn; b) mają uprawnienia do tworzenia podfolderów, odczytu / zapisu plików w powyższym folderze tymczasowym.
 
 ### <a name="configurations"></a>Konfiguracje
 
-Zobacz sekcję pomocą distcp powiązane konfiguracje i przykłady w obszarze [HDFS jako źródło](#hdfs-as-source) .
+Zobacz konfiguracje związane z DistCp i przykłady w [hdfs jako sekcji źródłowej.](#hdfs-as-source)
 
-## <a name="use-kerberos-authentication-for-hdfs-connector"></a>Używanie uwierzytelniania Kerberos dla łącznika HDFS
+## <a name="use-kerberos-authentication-for-hdfs-connector"></a>Używanie uwierzytelniania Kerberos dla złącza HDFS
 
-Dostępne są dwie opcje konfigurowania środowiska lokalnego w taki sposób, aby korzystały z uwierzytelniania Kerberos w ramach łącznika systemu plików HDFS. Możesz wybrać ten, który lepiej pasuje do Twojego przypadku.
-* Opcja 1: [Przyłącz się do samodzielnej maszyny Integration Runtime w obszarze Kerberos](#kerberos-join-realm)
-* Opcja 2: [Włącz wzajemne zaufanie między domeną systemu Windows i obszarem Kerberos](#kerberos-mutual-trust)
+Istnieją dwie opcje konfigurowania środowiska lokalnego, tak aby używać uwierzytelniania Kerberos w łączniku HDFS. Możesz wybrać ten, który lepiej pasuje do Twojej sprawy.
+* Opcja 1: [Dołącz do samodzielnego współorganizowanego komputera wykonawczego integracji w królestwie Kerberos](#kerberos-join-realm)
+* Opcja 2: [Włączanie wzajemnego zaufania między domeną systemu Windows a domeną Protokołu Kerberos](#kerberos-mutual-trust)
 
-### <a name="kerberos-join-realm"></a>Opcja 1: Przyłącz się do samodzielnej maszyny Integration Runtime w obszarze Kerberos
+### <a name="option-1-join-self-hosted-integration-runtime-machine-in-kerberos-realm"></a><a name="kerberos-join-realm"></a>Opcja 1: Dołącz do samodzielnego współorganizowanego komputera wykonawczego integracji w królestwie Kerberos
 
 #### <a name="requirements"></a>Wymagania
 
-* Samodzielna maszyna Integration Runtime musi przyłączyć obszar Kerberos i nie może dołączać do żadnej domeny systemu Windows.
+* Komputer środowiska wykonawczego integracji hostowanego samodzielnie musi dołączyć do obszaru Kerberos i nie może dołączyć do żadnej domeny systemu Windows.
 
 #### <a name="how-to-configure"></a>Jak skonfigurować
 
-**Na samodzielnym komputerze Integration Runtime:**
+**Na komputerze środowiska wykonawczego integracji hostowanego samodzielnie:**
 
-1.  Uruchom narzędzie **Ksetup** , aby skonfigurować serwer i obszar KDC protokołu Kerberos.
+1.  Uruchom narzędzie **Ksetup,** aby skonfigurować serwer i obszar KDC protokołu Kerberos.
 
-    Komputer musi być skonfigurowany jako członek grupy roboczej, ponieważ obszar Kerberos różni się od domeny systemu Windows. Można to osiągnąć przez ustawienie obszaru protokołu Kerberos i dodanie serwera KDC w następujący sposób. Zastąp *REALM.com* własnymi obszarami w miarę potrzeb.
+    Komputer musi być skonfigurowany jako członek grupy roboczej, ponieważ obszar Protokołu Kerberos różni się od domeny systemu Windows. Można to osiągnąć, ustawiając obszar Kerberos i dodając serwer centrum dystrybucji danych w następujący sposób. W razie potrzeby wymień *REALM.COM* na własne, odpowiednie królestwo.
 
             C:> Ksetup /setdomain REALM.COM
             C:> Ksetup /addkdc REALM.COM <your_kdc_server_address>
 
-    Po wykonaniu tych dwóch poleceń **ponownie uruchom** maszynę.
+    **Uruchom ponownie** komputer po wykonaniu tych 2 poleceń.
 
-2.  Sprawdź konfigurację przy użyciu polecenia **Ksetup** . Dane wyjściowe powinny wyglądać następująco:
+2.  Sprawdź konfigurację za pomocą polecenia **Ksetup.** Dane wyjściowe powinny być takie:
 
             C:> Ksetup
             default realm = REALM.COM (external)
             REALM.com:
                 kdc = <your_kdc_server_address>
 
-**W Azure Data Factory:**
+**W fabryce danych platformy Azure:**
 
-* Skonfiguruj łącznik HDFS przy użyciu **uwierzytelniania systemu Windows** razem z nazwą główną i hasłem protokołu Kerberos w celu nawiązania połączenia ze źródłem danych systemu plików HDFS. Sprawdź sekcję [Właściwości połączonej usługi HDFS](#linked-service-properties) w szczegółach konfiguracji.
+* Skonfiguruj łącznik HDFS przy użyciu **uwierzytelniania systemu Windows** wraz z główną nazwą i hasłem protokołu Kerberos, aby połączyć się ze źródłem danych HDFS. Sprawdź sekcję [Właściwości usługi połączonej usługi HDFS,](#linked-service-properties) aby uzyskać szczegółowe informacje o konfiguracji.
 
-### <a name="kerberos-mutual-trust"></a>Opcja 2: Włącz wzajemne zaufanie między domeną systemu Windows i obszarem Kerberos
+### <a name="option-2-enable-mutual-trust-between-windows-domain-and-kerberos-realm"></a><a name="kerberos-mutual-trust"></a>Opcja 2: Włączanie wzajemnego zaufania między domeną systemu Windows a domeną Protokołu Kerberos
 
 #### <a name="requirements"></a>Wymagania
 
-*   Samodzielna maszyna Integration Runtime musi przyłączyć się do domeny systemu Windows.
-*   Musisz mieć uprawnienia do aktualizowania ustawień kontrolera domeny.
+*   Komputer środowiska wykonawczego integracji hostowanego samodzielnie musi dołączyć do domeny systemu Windows.
+*   Aby zaktualizować ustawienia kontrolera domeny, potrzebne jest uprawnienie.
 
 #### <a name="how-to-configure"></a>Jak skonfigurować
 
 > [!NOTE]
-> W razie konieczności Zastąp REALM.COM i AD.COM w poniższym samouczku do własnego obszaru i kontrolera domeny.
+> W razie potrzeby zamień REALM.COM i AD.COM na własny odpowiedni sferę i kontroler domeny.
 
 **Na serwerze KDC:**
 
-1. Edytuj konfigurację centrum dystrybucji kluczy w pliku **krb5. conf** , aby umożliwić zaufanie centrum dystrybucji kluczy do domeny systemu Windows, odwołując się do następującego szablonu konfiguracji. Domyślnie konfiguracja znajduje się w lokalizacji **/etc/krb5.conf**.
+1. Edytuj konfigurację centrum dystrybucji kluczy w pliku **krb5.conf,** aby umożliwić administratorowi usługi Windows zaufanie do domeny systemu Windows w odniesieniu do następującego szablonu konfiguracji. Domyślnie konfiguracja znajduje się na **/etc/krb5.conf**.
 
            [logging]
             default = FILE:/var/log/krb5libs.log
@@ -337,85 +337,85 @@ Dostępne są dwie opcje konfigurowania środowiska lokalnego w taki sposób, ab
              REALM.COM = .
             }
 
-   Po skonfigurowaniu należy **ponownie uruchomić** usługę centrum dystrybucji kluczy.
+   **Uruchom ponownie** usługę centrum dystrybucji kluczy po zakończeniu konfiguracji.
 
-2. Przygotuj podmiot zabezpieczeń o nazwie **KRBTGT/obszaru. COM\@AD.com** na serwerze KDC przy użyciu następującego polecenia:
+2. Przygotuj podmiot o nazwie **krbtgt/REALM.COM\@AD.COM** na serwerze KDC za pomocą następującego polecenia:
 
            Kadmin> addprinc krbtgt/REALM.COM@AD.COM
 
-3. W pliku konfiguracji usługi **Hadoop. Security. auth_to_local** HDFS Dodaj `RULE:[1:$1@$0](.*\@AD.COM)s/\@.*//`.
+3. W pliku konfiguracyjnym usługi **hadoop.security.auth_to_local,** dodaj `RULE:[1:$1@$0](.*\@AD.COM)s/\@.*//`.
 
 **Na kontrolerze domeny:**
 
-1.  Uruchom następujące polecenia **Ksetup** , aby dodać wpis obszaru:
+1.  Uruchom następujące polecenia **Ksetup,** aby dodać wpis obszaru:
 
             C:> Ksetup /addkdc REALM.COM <your_kdc_server_address>
             C:> ksetup /addhosttorealmmap HDFS-service-FQDN REALM.COM
 
-2.  Ustanów relację zaufania z domeny systemu Windows do obszaru Kerberos. [hasło] jest hasłem dla głównego elementu **KRBTGT/obszaru. COM\@AD.com**.
+2.  Ustanawianie zaufania z domeny systemu Windows do obszaru Kerberos. [hasło] to hasło do głównego **krbtgt/REALM.COM\@AD.COM**.
 
             C:> netdom trust REALM.COM /Domain: AD.COM /add /realm /passwordt:[password]
 
-3.  Wybierz algorytm szyfrowania używany w protokole Kerberos.
+3.  Wybierz algorytm szyfrowania używany w protokołu Kerberos.
 
-    1. Przejdź do Menedżer serwera > zasady grupy Zarządzanie > domeny > zasady grupy obiektów > domyślnych lub aktywnych zasad domeny i Edytuj.
+    1. Przejdź do usługi Menedżer serwera > zarządzanie zasadami grupy > obiekty zasad grupy > domeny > domyślne lub aktywne zasady domeny oraz edytuj.
 
-    2. W oknie podręcznym **Edytor zarządzania zasadami grupy** przejdź do pozycji konfiguracja komputera > zasady > ustawienia systemu Windows > ustawienia zabezpieczeń > zasady lokalne > opcje zabezpieczeń i skonfiguruj **zabezpieczenia sieci: Skonfiguruj typy szyfrowania dozwolone dla protokołu Kerberos**.
+    2. W oknie **podręcznym Edytor zarządzania zasadami grupy** przejdź do pozycji Konfiguracja komputera > Zasady > ustawienia systemu Windows > ustawienia zabezpieczeń > zasady lokalne > opcje zabezpieczeń i skonfiguruj **zabezpieczenia sieciowe: Konfigurowanie typów szyfrowania dozwolonych dla protokołu Kerberos**.
 
-    3. Wybierz algorytm szyfrowania, który ma być używany podczas nawiązywania połączenia z centrum dystrybucji kluczy. Zazwyczaj można po prostu wybrać wszystkie opcje.
+    3. Wybierz algorytm szyfrowania, którego chcesz użyć podczas łączenia się z kedz. Często można po prostu wybrać wszystkie opcje.
 
-        ![Typy szyfrowania dla protokołu Kerberos](media/connector-hdfs/config-encryption-types-for-kerberos.png)
+        ![Typy szyfrowania konfiguracji dla protokołu Kerberos](media/connector-hdfs/config-encryption-types-for-kerberos.png)
 
-    4. Użyj polecenia **Ksetup** , aby określić algorytm szyfrowania, który ma być używany w konkretnym obszarze.
+    4. Użyj polecenia **Ksetup,** aby określić algorytm szyfrowania, który ma być używany w określonym pliku REALM.
 
                 C:> ksetup /SetEncTypeAttr REALM.COM DES-CBC-CRC DES-CBC-MD5 RC4-HMAC-MD5 AES128-CTS-HMAC-SHA1-96 AES256-CTS-HMAC-SHA1-96
 
-4.  Utwórz mapowanie między kontem domeny i podmiotem zabezpieczeń protokołu Kerberos, aby użyć podmiotu zabezpieczeń Kerberos w domenie systemu Windows.
+4.  Utwórz mapowanie między kontem domeny a podmiotem zabezpieczeń Protokołu Kerberos, aby używać podmiotu zabezpieczeń Protokołu Kerberos w domenie systemu Windows.
 
-    1. Uruchom narzędzia administracyjne > **Active Directory Użytkownicy i komputery**.
+    1. Uruchom narzędzia administracyjne > **użytkowników i komputerów usługi Active Directory**.
 
-    2. Skonfiguruj funkcje zaawansowane, klikając pozycję **wyświetl** > **funkcje zaawansowane**.
+    2. Skonfiguruj zaawansowane funkcje, klikając pozycję **Wyświetl** > **funkcje zaawansowane**.
 
-    3. Znajdź konto, do którego chcesz utworzyć mapowania, a następnie kliknij prawym przyciskiem myszy, aby wyświetlić **mapowania nazw** > kliknij kartę **nazwy Kerberos** .
+    3. Znajdź konto, na którym chcesz utworzyć mapowania, a następnie kliknij prawym przyciskiem myszy, aby wyświetlić **mapowania nazw** > kliknij kartę **Nazwy protokołu Kerberos.**
 
-    4. Dodaj podmiot zabezpieczeń z obszaru.
+    4. Dodaj podmiot z obszaru.
 
-        ![Zamapuj tożsamość zabezpieczeń](media/connector-hdfs/map-security-identity.png)
+        ![Tożsamość zabezpieczeń mapy](media/connector-hdfs/map-security-identity.png)
 
-**Na samodzielnym komputerze Integration Runtime:**
+**Na komputerze środowiska wykonawczego integracji hostowanego samodzielnie:**
 
-* Aby dodać wpis obszaru, uruchom następujące polecenia **Ksetup** .
+* Uruchom następujące polecenia **Ksetup,** aby dodać wpis obszaru.
 
             C:> Ksetup /addkdc REALM.COM <your_kdc_server_address>
             C:> ksetup /addhosttorealmmap HDFS-service-FQDN REALM.COM
 
-**W Azure Data Factory:**
+**W fabryce danych platformy Azure:**
 
-* Skonfiguruj łącznik HDFS przy użyciu **uwierzytelniania systemu Windows** razem z kontem domeny lub podmiotem zabezpieczeń protokołu Kerberos, aby nawiązać połączenie ze źródłem danych HDFS. Sprawdź sekcję [Właściwości połączonej usługi HDFS](#linked-service-properties) w szczegółach konfiguracji.
+* Skonfiguruj łącznik HDFS przy użyciu **uwierzytelniania systemu Windows** wraz z kontem domeny lub podmiotem zabezpieczeń Kerberos, aby połączyć się ze źródłem danych HDFS. Sprawdź sekcję [Właściwości usługi połączonej usługi HDFS,](#linked-service-properties) aby uzyskać szczegółowe informacje o konfiguracji.
 
-## <a name="lookup-activity-properties"></a>Właściwości działania Lookup
+## <a name="lookup-activity-properties"></a>Właściwości działania odnośnika
 
-Aby dowiedzieć się więcej o właściwościach, sprawdź [działanie Lookup (wyszukiwanie](control-flow-lookup-activity.md)).
+Aby dowiedzieć się więcej o właściwościach, sprawdź [działanie odnośnika](control-flow-lookup-activity.md).
 
 ## <a name="legacy-models"></a>Starsze modele
 
 >[!NOTE]
->Następujące modele są nadal obsługiwane w celu zapewnienia zgodności z poprzednimi wersjami. Użytkownik chce użyć nowego modelu wymienionego w powyższych sekcjach, przechodząc do przodu, a interfejs użytkownika tworzenia ADF został przełączony w celu wygenerowania nowego modelu.
+>Następujące modele są nadal obsługiwane jako — dla zgodności z powrotem. Zaleca się użycie nowego modelu wymienionego w powyższych sekcjach w przyszłości, a interfejs użytkownika tworzenia podajnikiem ADF przełączył się na generowanie nowego modelu.
 
-### <a name="legacy-dataset-model"></a>Model starszego zestawu danych
+### <a name="legacy-dataset-model"></a>Starszy model zestawu danych
 
-| Właściwość | Opis | Wymagane |
+| Właściwość | Opis | Wymagany |
 |:--- |:--- |:--- |
-| type | Właściwość typu elementu dataset musi być równa: **udziału plików** |Tak |
-| folderPath | Ścieżka do folderu. Filtr symboli wieloznacznych jest obsługiwany, dozwolone symbole wieloznaczne to: `*` (dopasowuje zero lub więcej znaków) i `?` (dopasowuje zero lub pojedynczy znak); Użyj `^`, aby wyjść, jeśli rzeczywista nazwa pliku ma symbol wieloznaczny lub ten znak ucieczki wewnątrz. <br/><br/>Przykłady: RootFolder/subfolder/, Zobacz więcej przykładów w [przykładach folderów i filtrów plików](#folder-and-file-filter-examples). |Tak |
-| fileName |  **Filtr nazwy lub symbol wieloznaczny** dla plików w ramach określonego "folderPath". Jeśli nie określisz wartości dla tej właściwości, zestaw danych wskazuje wszystkie pliki w folderze. <br/><br/>Dla filtru, dozwolone symbole wieloznaczne są: `*` (dopasowuje zero lub więcej znaków) i `?` (dopasowuje zero lub jeden znak).<br/>— Przykład 1: `"fileName": "*.csv"`<br/>— Przykład 2: `"fileName": "???20180427.txt"`<br/>Użyj `^`, aby wyjść, jeśli rzeczywista nazwa folderu ma symbol wieloznaczny lub ten znak ucieczki wewnątrz. |Nie |
-| modifiedDatetimeStart | Filtr plików, na podstawie atrybutu: ostatniej modyfikacji. Pliki zostanie wybrana, w przypadku ich godzina ostatniej modyfikacji w okresie między `modifiedDatetimeStart` i `modifiedDatetimeEnd`. Czas jest stosowany do strefy czasowej UTC w formacie "2018-12-01T05:00:00Z". <br/><br/> Należy pamiętać, że będzie to miało wpływ na ogólną wydajność przenoszenia danych przez włączenie tego ustawienia, jeśli chcesz, aby filtr plików był objęty dużą ilością plików. <br/><br/> Właściwości mogą mieć wartość NULL, co oznacza, że żaden filtr atrybutu pliku nie zostanie zastosowany do zestawu danych.  Gdy `modifiedDatetimeStart` ma wartość daty/godziny, ale `modifiedDatetimeEnd` ma wartość NULL, oznacza pliki, których ostatniej modyfikacji atrybut jest większa niż lub równe wartością daty/godziny, zostanie wybrany.  Gdy `modifiedDatetimeEnd` ma wartość daty/godziny, ale `modifiedDatetimeStart` ma wartość NULL, oznacza to, pliki, których ostatniej modyfikacji atrybut jest mniejsza niż wartość daty i godziny zostanie wybrany.| Nie |
-| modifiedDatetimeEnd | Filtr plików, na podstawie atrybutu: ostatniej modyfikacji. Pliki zostanie wybrana, w przypadku ich godzina ostatniej modyfikacji w okresie między `modifiedDatetimeStart` i `modifiedDatetimeEnd`. Czas jest stosowany do strefy czasowej UTC w formacie "2018-12-01T05:00:00Z". <br/><br/> Należy pamiętać, że będzie to miało wpływ na ogólną wydajność przenoszenia danych przez włączenie tego ustawienia, jeśli chcesz, aby filtr plików był objęty dużą ilością plików. <br/><br/> Właściwości mogą mieć wartość NULL, co oznacza, że żaden filtr atrybutu pliku nie zostanie zastosowany do zestawu danych.  Gdy `modifiedDatetimeStart` ma wartość daty/godziny, ale `modifiedDatetimeEnd` ma wartość NULL, oznacza pliki, których ostatniej modyfikacji atrybut jest większa niż lub równe wartością daty/godziny, zostanie wybrany.  Gdy `modifiedDatetimeEnd` ma wartość daty/godziny, ale `modifiedDatetimeStart` ma wartość NULL, oznacza to, pliki, których ostatniej modyfikacji atrybut jest mniejsza niż wartość daty i godziny zostanie wybrany.| Nie |
-| format | Jeśli chcesz **skopiuj pliki — jest** między opartych na plikach magazynów (kopia binarna), Pomiń sekcji format w obu definicji zestawu danych wejściowych i wyjściowych.<br/><br/>Jeśli chcesz analizować pliki o określonym formacie, obsługiwane są następujące typy formatu plików: **TextFormat**, **formatu jsonformat**, **AvroFormat**, **OrcFormat**, **ParquetFormat**. Ustaw **typu** właściwości w obszarze format ma jedną z następujących wartości. Aby uzyskać więcej informacji, zobacz [Format tekstu](supported-file-formats-and-compression-codecs-legacy.md#text-format), [formatu Json](supported-file-formats-and-compression-codecs-legacy.md#json-format), [Avro Format](supported-file-formats-and-compression-codecs-legacy.md#avro-format), [Orc Format](supported-file-formats-and-compression-codecs-legacy.md#orc-format), i [formatu Parquet](supported-file-formats-and-compression-codecs-legacy.md#parquet-format) sekcje. |Brak (tylko w przypadku scenariusza kopia binarna) |
-| compression | Określ typ i poziom kompresji danych. Aby uzyskać więcej informacji, zobacz [obsługiwane formaty plików i kodery-dekodery kompresji](supported-file-formats-and-compression-codecs-legacy.md#compression-support).<br/>Obsługiwane typy to: **GZip**, **Deflate**, **BZip2**, i **ZipDeflate**.<br/>Są obsługiwane poziomy: **optymalna** i **najszybciej**. |Nie |
+| type | Właściwość typu zestawu danych musi być ustawiona na: **FileShare** |Tak |
+| folderPath | Ścieżka do folderu. Filtr symboli wieloznacznych jest obsługiwany, `*` dozwolone symbole wieloznaczne `?` to: (dopasowuje zero lub więcej znaków) i (pasuje do zera lub pojedynczego znaku); użyj, `^` aby uciec, jeśli rzeczywista nazwa pliku ma symbol wieloznaczny lub ten znak ucieczki wewnątrz. <br/><br/>Przykłady: rootfolder/subfolder/, zobacz więcej przykładów w [przykładach filtrów folderów i plików](#folder-and-file-filter-examples). |Tak |
+| fileName |  **Nazwa lub symbol wieloznaczny filtr** dla plików w ramach określonego "folderPath". Jeśli nie określisz wartości dla tej właściwości, zestaw danych wskazuje wszystkie pliki w folderze. <br/><br/>W przypadku filtru dozwolone symbole wieloznaczne `*` to: `?` (dopasowuje zero lub więcej znaków) i (pasuje do zera lub pojedynczego znaku).<br/>- Przykład 1:`"fileName": "*.csv"`<br/>- Przykład 2:`"fileName": "???20180427.txt"`<br/>Użyj, `^` aby uciec, jeśli rzeczywista nazwa folderu ma symbol wieloznaczny lub ten znak ucieczki wewnątrz. |Nie |
+| modifiedDatetimeStart | Filtr plików na podstawie atrybutu: Ostatnia modyfikacja. Pliki zostaną wybrane, jeśli ich ostatni zmodyfikowany czas `modifiedDatetimeStart` `modifiedDatetimeEnd`mieści się w przedziale czasu między i . Czas jest stosowany do strefy czasowej UTC w formacie "2018-12-01T05:00:00Z". <br/><br/> Należy pamiętać, że ogólna wydajność przenoszenia danych będzie mieć wpływ, włączając to ustawienie, gdy chcesz wykonać filtr plików z ogromnych ilości plików. <br/><br/> Właściwości mogą mieć wartość NULL, co oznacza, że do zestawu danych nie zostanie zastosowany żaden filtr atrybutów pliku.  Gdy `modifiedDatetimeStart` ma wartość `modifiedDatetimeEnd` datetime, ale jest null, oznacza to, że pliki, których ostatni zmodyfikowany atrybut jest większa lub równa z wartości datetime zostaną wybrane.  Gdy `modifiedDatetimeEnd` ma wartość `modifiedDatetimeStart` datetime, ale jest null, oznacza to, że pliki, których ostatni zmodyfikowany atrybut jest mniejsza niż wartość datetime zostaną wybrane.| Nie |
+| modifiedDatetimeEnd | Filtr plików na podstawie atrybutu: Ostatnia modyfikacja. Pliki zostaną wybrane, jeśli ich ostatni zmodyfikowany czas `modifiedDatetimeStart` `modifiedDatetimeEnd`mieści się w przedziale czasu między i . Czas jest stosowany do strefy czasowej UTC w formacie "2018-12-01T05:00:00Z". <br/><br/> Należy pamiętać, że ogólna wydajność przenoszenia danych będzie mieć wpływ, włączając to ustawienie, gdy chcesz wykonać filtr plików z ogromnych ilości plików. <br/><br/> Właściwości mogą mieć wartość NULL, co oznacza, że do zestawu danych nie zostanie zastosowany żaden filtr atrybutów pliku.  Gdy `modifiedDatetimeStart` ma wartość `modifiedDatetimeEnd` datetime, ale jest null, oznacza to, że pliki, których ostatni zmodyfikowany atrybut jest większa lub równa z wartości datetime zostaną wybrane.  Gdy `modifiedDatetimeEnd` ma wartość `modifiedDatetimeStart` datetime, ale jest null, oznacza to, że pliki, których ostatni zmodyfikowany atrybut jest mniejsza niż wartość datetime zostaną wybrane.| Nie |
+| format | Jeśli chcesz **skopiować pliki jako znajdujące się** między magazynami opartymi na plikach (kopia binarna), pomiń sekcję formatu w definicjach danych wejściowych i wyjściowych.<br/><br/>Jeśli chcesz przeanalizować pliki w określonym formacie, obsługiwane są następujące typy formatów plików: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**, **ParquetFormat**. Ustaw właściwość **typu** w formacie na jedną z tych wartości. Aby uzyskać więcej informacji, zobacz [Sekcje Format tekstu,](supported-file-formats-and-compression-codecs-legacy.md#text-format) [Format Json,](supported-file-formats-and-compression-codecs-legacy.md#json-format) [Format Avro,](supported-file-formats-and-compression-codecs-legacy.md#avro-format) [Format orków](supported-file-formats-and-compression-codecs-legacy.md#orc-format)i [Format parkietu.](supported-file-formats-and-compression-codecs-legacy.md#parquet-format) |Nie (tylko w przypadku scenariusza kopiowania binarnego) |
+| kompresja | Określ typ i poziom kompresji danych. Aby uzyskać więcej informacji, zobacz [Obsługiwane formaty plików i kodeki kompresji](supported-file-formats-and-compression-codecs-legacy.md#compression-support).<br/>Obsługiwane typy to: **GZip**, **Deflate**, **BZip2**i **ZipDeflate**.<br/>Obsługiwane poziomy to: **Optymalne** i **najszybsze**. |Nie |
 
 >[!TIP]
->Aby skopiować wszystkie pliki w folderze, określ **folderPath** tylko.<br>Aby skopiować pojedynczy plik o określonej nazwie, należy określić **folderPath** z część z folderem i **fileName** z nazwą pliku.<br>Aby skopiować podzestaw plików w folderze, podaj **folderPath** z część z folderem i **fileName** z filtr z symbolami wieloznacznymi.
+>Aby skopiować wszystkie pliki w folderze, określ tylko **folderPath.**<br>Aby skopiować pojedynczy plik o podanej nazwie, określ **folderPath** z częścią **folderu** i nazwą pliku z nazwą pliku.<br>Aby skopiować podzbiór plików w folderze, określ **folderPath** z częścią folderu i **fileName** z filtrem wieloznacznym.
 
 **Przykład:**
 
@@ -447,19 +447,19 @@ Aby dowiedzieć się więcej o właściwościach, sprawdź [działanie Lookup (w
 }
 ```
 
-### <a name="legacy-copy-activity-source-model"></a>Model źródłowy starszego działania kopiowania
+### <a name="legacy-copy-activity-source-model"></a>Starszy model źródła działania kopiowania
 
-| Właściwość | Opis | Wymagane |
+| Właściwość | Opis | Wymagany |
 |:--- |:--- |:--- |
-| type | Właściwość Type źródła działania Copy musi być ustawiona na wartość: **HdfsSource** |Tak |
-| recursive | Wskazuje, czy dane są odczytywane cyklicznie z folderów podrzędnych lub tylko z określonego folderu. Należy pamiętać podczas cyklicznego jest ustawiona na wartość PRAWDA, a obiekt sink jest magazynu opartego na pliku, pusty folder/podrzędnych — folder nie będą kopiowane utworzone w ujścia.<br/>Dozwolone wartości to: **true** (ustawienie domyślne), **false** | Nie |
-| distcpSettings | Grupa właściwości przy użyciu systemu HDFS pomocą distcp. | Nie |
-| resourceManagerEndpoint | Punkt końcowy Menedżer zasobów przędzy | Tak, jeśli używasz pomocą distcp |
-| tempScriptPath | Ścieżka folderu używana do przechowywania skryptu poleceń temp pomocą distcp. Plik skryptu jest generowany przez Data Factory i zostanie usunięty po zakończeniu zadania kopiowania. | Tak, jeśli używasz pomocą distcp |
-| distcpOptions | Dodatkowe opcje dostępne dla polecenia pomocą distcp. | Nie |
-| maxConcurrentConnections | Liczba połączeń, które mają być jednocześnie połączone z magazynem magazynu. Określ tylko wtedy, gdy chcesz ograniczyć współbieżne połączenie z magazynem danych. | Nie |
+| type | Właściwość typu źródła działania kopiowania musi być ustawiona na: **HdfsSource** |Tak |
+| Cykliczne | Wskazuje, czy dane są odczytywane cyklicznie z podfolderów, czy tylko z określonego folderu. Uwaga, gdy rekursywny jest ustawiony na true i sink jest magazyn oparty na plikach, pusty folder /podfolder nie zostaną skopiowane / utworzone w zlewie.<br/>Dozwolone wartości to: **true** (default), **false** | Nie |
+| distcpSettings | Grupa właściwości podczas korzystania z DistCp usługi HDFS. | Nie |
+| resourceManagerEndpoint | Punkt końcowy Menedżera zasobów Yarn | Tak w przypadku korzystania z DistCp |
+| ścieżka tempScriptPath | Ścieżka folderu używana do przechowywania skryptu polecenia temp DistCp. Plik skryptu jest generowany przez fabrykę danych i zostanie usunięty po zakończeniu zadania kopiowania. | Tak w przypadku korzystania z DistCp |
+| distcpOpcje | Dodatkowe opcje dostępne dla polecenia DistCp. | Nie |
+| maxConcurrentConnections (Połączenie maksymalne) | Liczba połączeń do łączenia się z magazynem magazynowym jednocześnie. Określ tylko wtedy, gdy chcesz ograniczyć jednoczesne połączenie z magazynem danych. | Nie |
 
-**Przykład: Źródło HDFS w działaniu kopiowania przy użyciu pomocą distcp**
+**Przykład: źródło HDFS w aktywności kopiowania przy użyciu DistCp**
 
 ```json
 "source": {
@@ -473,4 +473,4 @@ Aby dowiedzieć się więcej o właściwościach, sprawdź [działanie Lookup (w
 ```
 
 ## <a name="next-steps"></a>Następne kroki
-Aby uzyskać listę magazynów danych obsługiwanych jako źródła i ujścia działania kopiowania w usłudze Azure Data Factory, zobacz [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats).
+Aby uzyskać listę magazynów danych obsługiwanych jako źródła i pochłaniacze przez działanie kopiowania w usłudze Azure Data Factory, zobacz [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats).

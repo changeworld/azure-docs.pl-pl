@@ -1,21 +1,21 @@
 ---
-title: Różnice w usłudze Azure Service Fabric w systemach Linux i Windows
+title: Różnice między siecią szkieletową usług Azure między systemami Linux i Windows
 description: Różnice między usługą Azure Service Fabric w systemie Linux a usługą Azure Service Fabric w systemie Windows.
 ms.topic: conceptual
 ms.date: 2/23/2018
 ms.custom: sfrev
 ms.openlocfilehash: c064291491110b17c172a561afbd1e65d6c08d06
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75748531"
 ---
 # <a name="differences-between-service-fabric-on-linux-and-windows"></a>Różnice między usługą Service Fabric w systemach Linux i Windows
 
-Pewne funkcje, które są obsługiwane w systemie Windows, nie są jeszcze obsługiwane w systemie Linux. Po pewnym czasie zestawy funkcji będą działać w obydwu systemach i w każdej nowej wersji ta różnica między funkcjami będzie się zmniejszać. Między najnowszymi dostępnymi wersjami istnieją następujące różnice.
+Pewne funkcje, które są obsługiwane w systemie Windows, nie są jeszcze obsługiwane w systemie Linux. Po pewnym czasie zestawy funkcji będą działać w obydwu systemach i w każdej nowej wersji ta różnica między funkcjami będzie się zmniejszać. Następujące różnice istnieją między najnowszymi dostępnymi wersjami.
 
-* Wysłannika (zwrotny serwer proxy) jest w wersji zapoznawczej w systemie Linux
+* Wysłannik (Reverse Proxy) jest w wersji zapoznawczej na Linuksie
 * Autonomiczny instalator dla systemu Linux nie jest dostępny w systemie Linux
 * Przekierowywanie konsoli (nieobsługiwane w klastrach produkcyjnych w systemie Linux ani Windows)
 * Usługa analizy błędów w systemie Linux
@@ -83,6 +83,6 @@ Pewne funkcje, które są obsługiwane w systemie Windows, nie są jeszcze obsł
 * [Przygotowywanie środowiska projektowego w systemie Linux](service-fabric-get-started-linux.md)
 * [Przygotowywanie środowiska projektowego w systemie OSX](service-fabric-get-started-mac.md)
 * [Create and deploy your first Service Fabric Java application on Linux using Yeoman](service-fabric-create-your-first-linux-application-with-java.md) (Tworzenie i wdrażanie pierwszej aplikacji Java usługi Service Fabric w systemie Linux przy użyciu programu Yeoman)
-* [Create and deploy your first Service Fabric Java application on Linux using Service Fabric Plugin for Eclipse](service-fabric-get-started-eclipse.md) (Tworzenie i wdrażanie pierwszej aplikacji Java usługi Service Fabric w systemie Linux przy użyciu wtyczki usługi Service Fabric dla środowiska Eclipse)
+* [Tworzenie i wdrażanie pierwszej aplikacji Java usługi fabric w systemie Linux przy użyciu wtyczki sieci szkieletowej usługi eclipse](service-fabric-get-started-eclipse.md)
 * [Create your first CSharp application on Linux](service-fabric-create-your-first-linux-application-with-csharp.md) (Tworzenie pierwszej aplikacji CSharp w systemie Linux)
 * [Use the Service Fabric CLI to manage your applications](service-fabric-application-lifecycle-sfctl.md) (Zarządzanie aplikacjami przy użyciu interfejsu wiersza polecenia usługi Service Fabric)

@@ -1,6 +1,6 @@
 ---
-title: Tworzenie filtrów za pomocą interfejsu API REST Azure Media Services v3
-description: W tym temacie opisano sposób tworzenia filtrów, więc klienta można ich używać do określonych sekcji strumienia strumienia. Usługa Media Services tworzy manifestów dynamicznych w celu uzyskania tego selektywne przesyłania strumieniowego.
+title: Tworzenie filtrów za pomocą interfejsu API REST usługi Azure Media Services w wersji 3
+description: W tym temacie opisano sposób tworzenia filtrów, aby klient mógł ich używać do przesyłania strumieniowego określonych sekcji strumienia. Usługa Media Services tworzy dynamiczne manifesty w celu osiągnięcia tego selektywnego przesyłania strumieniowego.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,35 +14,35 @@ ms.topic: article
 ms.date: 06/13/2019
 ms.author: juliako
 ms.openlocfilehash: f9134dd3bc926e6e2f454e5187e03365e91ed22a
-ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75780338"
 ---
 # <a name="creating-filters-with-media-services-rest-api"></a>Tworzenie filtrów za pomocą interfejsu API REST usługi Media Services
 
-Podczas dostarczania zawartości do klientów (przesyłanie strumieniowe wydarzeń na żywo lub wideo na żądanie) klienta może wymagać większej elastyczności niż opisane w pliku manifestu zasobu domyślnego. Usługa Azure Media Services umożliwia definiowanie filtrów kont i zasobów filtry dla zawartości. 
+Podczas dostarczania zawartości klientom (przesyłanie strumieniowe wydarzeń na żywo lub wideo na żądanie) klient może potrzebować większej elastyczności niż opisana w pliku manifestu domyślnego zasobu. Usługa Azure Media Services umożliwia definiowanie filtrów kont i filtrów zasobów dla zawartości. 
 
-Aby uzyskać szczegółowy opis tej funkcji i scenariuszy, w których są używane, zobacz [dynamiczne manifesty](filters-dynamic-manifest-overview.md) i [filtry](filters-concept.md).
+Aby uzyskać szczegółowy opis tej funkcji i scenariuszy, w których jest używana, zobacz [Dynamiczne manifesty](filters-dynamic-manifest-overview.md) i [filtry](filters-concept.md).
 
-W tym temacie pokazano, jak zdefiniować filtr dla wideo na żądanie zasobów i utworzyć za pomocą interfejsów API REST [filtrów kont](https://docs.microsoft.com/rest/api/media/accountfilters) i [filtry zasobów](https://docs.microsoft.com/rest/api/media/assetfilters). 
+W tym temacie pokazano, jak zdefiniować filtr zasobu Wideo na żądanie i użyć interfejsów API REST do [utworzenia filtrów kont](https://docs.microsoft.com/rest/api/media/accountfilters) i [filtrów zasobów](https://docs.microsoft.com/rest/api/media/assetfilters). 
 
 > [!NOTE]
-> Pamiętaj o przejrzeniu [presentationTimeRange](filters-concept.md#presentationtimerange).
+> Upewnij się, że przegląd [prezentacjiTimeRange](filters-concept.md#presentationtimerange).
 
 ## <a name="prerequisites"></a>Wymagania wstępne 
 
-Aby wykonać kroki opisane w tym temacie, musisz:
+Aby wykonać kroki opisane w tym temacie, należy:
 
-- Przegląd [filtrów i manifestów dynamicznych](filters-dynamic-manifest-overview.md).
-- [Konfigurowanie narzędzia Postman dla wywołania interfejsu API REST usługi Azure Media Services](media-rest-apis-with-postman.md).
+- Przejrzyj [filtry i manifesty dynamiczne](filters-dynamic-manifest-overview.md).
+- [Skonfiguruj listonosz dla wywołań interfejsu API REST usługi Azure Media Services](media-rest-apis-with-postman.md).
 
-    Pamiętaj, aby postępować zgodnie z ostatnim krokiem w temacie [pobieranie tokenu usługi Azure AD](media-rest-apis-with-postman.md#get-azure-ad-token). 
+    Upewnij się, że postępuj zgodnie z ostatnim krokiem w temacie [Pobierz token usługi Azure AD](media-rest-apis-with-postman.md#get-azure-ad-token). 
 
-## <a name="define-a-filter"></a>Określa filtr  
+## <a name="define-a-filter"></a>Definiowanie filtru  
 
-Poniżej przedstawiono **treść żądania** przykładu, który definiuje warunki wybór ścieżki, które są dodawane do manifestu. Ten filtr zawiera wszystkie ścieżki audio, które są zgodne ze standardem EC-3 i wszystkie ścieżki wideo, które mają szybkość transmisji bitów w zakresie 0-1000000.
+Poniżej przedstawiono **przykład treści żądania,** który definiuje warunki wyboru ścieżki, które są dodawane do manifestu. Filtr ten zawiera wszystkie ścieżki audio, które są EC-3 i wszelkie ścieżki wideo, które mają szybkość transmisji bitów w zakresie 0-1000000.
 
 ```json
 {
@@ -81,51 +81,51 @@ Poniżej przedstawiono **treść żądania** przykładu, który definiuje warunk
 }
 ```
 
-## <a name="create-account-filters"></a>Tworzenie filtrów konta
+## <a name="create-account-filters"></a>Tworzenie filtrów kont
 
-W kolekcji Postman, która został pobrany, wybierz **filtrów kont**->**tworzenia lub aktualizacji Filtr konta**.
+W pobranej kolekcji Listonosz wybierz pozycję **Filtry**->kont**Utwórz lub zaktualizuj filtr kont**.
 
-**Umieścić** metoda żądania HTTP jest podobny do:
+Metoda żądania **PUT** HTTP jest podobna do:
 
 ```
 PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Media/mediaServices/{accountName}/accountFilters/{filterName}?api-version=2018-07-01
 ```
 
-Wybierz **treści** kartę i wklej dane json kod [wcześniej zdefiniowaną](#define-a-filter).
+Wybierz kartę **Treść** i wklej zdefiniowany [wcześniej](#define-a-filter)kod json .
 
 Wybierz pozycję **Wyślij**. 
 
 Filtr został utworzony.
 
-Aby uzyskać więcej informacji, zobacz [tworzenia lub aktualizacji](https://docs.microsoft.com/rest/api/media/accountfilters/createorupdate). Zobacz też [JSON Przykłady filtrów](https://docs.microsoft.com/rest/api/media/accountfilters/createorupdate#create-an-account-filter).
+Aby uzyskać więcej informacji, zobacz [Tworzenie lub aktualizowanie](https://docs.microsoft.com/rest/api/media/accountfilters/createorupdate). Zobacz też [przykłady JSON dla filtrów](https://docs.microsoft.com/rest/api/media/accountfilters/createorupdate#create-an-account-filter).
 
 ## <a name="create-asset-filters"></a>Tworzenie filtrów zasobów  
 
-W pobranej kolekcji "Media Services v3" Wybierz pozycję **zasoby**->**Utwórz lub zaktualizuj filtr zasobów**.
+W pobranej kolekcji Postman usługi "Media Services w wersji 3" wybierz pozycję **Zasoby**->**Utwórz lub zaktualizuj filtr zasobów**.
 
-**Umieścić** metoda żądania HTTP jest podobny do:
+Metoda żądania **PUT** HTTP jest podobna do:
 
 ```
 PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Media/mediaServices/{accountName}/assets/{assetName}/assetFilters/{filterName}?api-version=2018-07-01
 ```
 
-Wybierz **treści** kartę i wklej dane json kod [wcześniej zdefiniowaną](#define-a-filter).
+Wybierz kartę **Treść** i wklej zdefiniowany [wcześniej](#define-a-filter)kod json .
 
 Wybierz pozycję **Wyślij**. 
 
-Filtr zasób został utworzony.
+Filtr zasobów został utworzony.
 
-Aby uzyskać szczegółowe informacje na temat Utwórz lub zaktualizuj zasób filtrów, zobacz [tworzenia lub aktualizacji](https://docs.microsoft.com/rest/api/media/assetfilters/createorupdate). Zobacz też [JSON Przykłady filtrów](https://docs.microsoft.com/rest/api/media/assetfilters/createorupdate#create-an-asset-filter). 
+Aby uzyskać szczegółowe informacje na temat tworzenia lub aktualizowania filtrów zasobów, zobacz [Tworzenie lub aktualizowanie](https://docs.microsoft.com/rest/api/media/assetfilters/createorupdate). Zobacz też [przykłady JSON dla filtrów](https://docs.microsoft.com/rest/api/media/assetfilters/createorupdate#create-an-asset-filter). 
 
 ## <a name="associate-filters-with-streaming-locator"></a>Kojarzenie filtrów z lokalizatorem przesyłania strumieniowego
 
-Można określić listę filtrów zasobów lub kont, które mają zastosowanie do lokalizatora przesyłania strumieniowego. [Pakowarka dynamiczna (punkt końcowy przesyłania strumieniowego)](dynamic-packaging-overview.md) stosuje tę listę filtrów razem z tymi, które są określone przez klienta w adresie URL. Ta kombinacja generuje [manifest dynamiczny](filters-dynamic-manifest-overview.md), który jest oparty na filtrach w adresach URL i filtrach określonych w lokalizatorze przesyłania strumieniowego. Zalecamy użycie tej funkcji, jeśli chcesz zastosować filtry, ale nie chcesz ujawniać nazw filtrów w adresie URL.
+Można określić listę filtrów zasobów lub kont, które miałyby zastosowanie do lokalizatora przesyłania strumieniowego. [Pakiet pakiet dynamiczny (punkt końcowy przesyłania strumieniowego)](dynamic-packaging-overview.md) stosuje tę listę filtrów wraz z tymi określonymi przez klienta w adresie URL. Ta kombinacja generuje [manifest dynamiczny](filters-dynamic-manifest-overview.md), który jest oparty na filtrach w adresie URL + filtry określone na lokalizatora przesyłania strumieniowego. Zaleca się użycie tej funkcji, jeśli chcesz zastosować filtry, ale nie chcesz ujawniać nazw filtrów w adresie URL.
 
-Aby utworzyć i skojarzyć filtry z lokalizatorem przesyłania strumieniowego przy użyciu usługi REST, użyj kontenerów [przesyłania strumieniowego — tworzenie](https://docs.microsoft.com/rest/api/media/streaminglocators/create) interfejsu API i określanie `properties.filters` w [treści żądania](https://docs.microsoft.com/rest/api/media/streaminglocators/create#request-body).
+Aby utworzyć i skojarzyć filtry z lokalizatorem przesyłania strumieniowego przy użyciu `properties.filters` funkcji REST, użyj [lokalizatorów przesyłania strumieniowego — Tworzenie](https://docs.microsoft.com/rest/api/media/streaminglocators/create) interfejsu API i określ w treści [żądania](https://docs.microsoft.com/rest/api/media/streaminglocators/create#request-body).
                                 
-## <a name="stream-using-filters"></a>Strumieniowe Używanie filtrów
+## <a name="stream-using-filters"></a>Przesyłanie strumieniowe przy użyciu filtrów
 
-Po zdefiniowaniu filtrów klienci mogą używać ich w adresie URL przesyłania strumieniowego. Filtry mogą być stosowane do protokołów przesyłania strumieniowego z adaptacyjną szybkością transmisji bitów: Apple HTTP Live Streaming (HLS), MPEG-KRESKa i Smooth Streaming.
+Po zdefiniowaniu filtrów klienci mogą używać ich w adresie URL przesyłania strumieniowego. Filtry mogą być stosowane do adaptacyjnych protokołów przesyłania strumieniowego szybkości transmisji bitów: Apple HTTP Live Streaming (HLS), MPEG-DASH i Smooth Streaming.
 
 W poniższej tabeli przedstawiono kilka przykładów adresów URL z filtrami:
 
@@ -137,4 +137,4 @@ W poniższej tabeli przedstawiono kilka przykładów adresów URL z filtrami:
 
 ## <a name="next-steps"></a>Następne kroki
 
-[Stream filmów wideo](stream-files-tutorial-with-rest.md) 
+[Przesyłanie strumieniowe filmów](stream-files-tutorial-with-rest.md) 

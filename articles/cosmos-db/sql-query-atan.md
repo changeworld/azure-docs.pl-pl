@@ -1,6 +1,6 @@
 ---
-title: ATAN w języku zapytań Azure Cosmos DB
-description: Dowiedz się więcej o tym, jak Funkcja systemowa SQL ATAN (tangens) w Azure Cosmos DB zwraca kąt w radianach, którego tangens to określone wyrażenie liczbowe
+title: Usługa ATAN w języku zapytań usługi Azure Cosmos DB
+description: Dowiedz się, jak funkcja systemu SQL Arctangent (ATAN) w usłudze Azure Cosmos DB zwraca kąt w radianach, których styczna jest określonym wyrażeniem liczbowym
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
@@ -8,13 +8,13 @@ ms.date: 03/04/2020
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 899c94a939be7825dca82522eab235bde9252896
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78302682"
 ---
-# <a name="atan-azure-cosmos-db"></a>ATAN (Azure Cosmos DB)
+# <a name="atan-azure-cosmos-db"></a>Usługa ATAN (usługa Azure Cosmos DB)
  Zwraca kąt w radianach, którego tangens jest określonym wyrażeniem liczbowym. Ta funkcja jest również nazywana arcus tangens.  
   
 ## <a name="syntax"></a>Składnia
@@ -26,15 +26,15 @@ ATAN(<numeric_expr>)
 ## <a name="arguments"></a>Argumenty
   
 *numeric_expr*  
-   To wyrażenie liczbowe.  
+   Jest wyrażeniem liczbowym.  
   
-## <a name="return-types"></a>Typy zwracane
+## <a name="return-types"></a>Typy zwrotów
   
-  Zwraca wartość wyrażenia liczbowego.  
+  Zwraca wyrażenie liczbowe.  
   
 ## <a name="examples"></a>Przykłady
   
-  Poniższy przykład zwraca `ATAN` określonej wartości.  
+  Poniższy przykład `ATAN` zwraca określoną wartość.  
   
 ```sql
 SELECT ATAN(-45.01) AS atan  
@@ -48,10 +48,10 @@ SELECT ATAN(-45.01) AS atan
   
 ## <a name="remarks"></a>Uwagi
 
-Ta funkcja systemowa nie będzie używać indeksu.
+Ta funkcja systemu nie będzie korzystać z indeksu.
 
 ## <a name="next-steps"></a>Następne kroki
 
-- [Funkcje matematyczne Azure Cosmos DB](sql-query-mathematical-functions.md)
-- [Azure Cosmos DB funkcje systemowe](sql-query-system-functions.md)
-- [Wprowadzenie do Azure Cosmos DB](introduction.md)
+- [Funkcje matematyczne Usługi Azure Cosmos DB](sql-query-mathematical-functions.md)
+- [Funkcje systemowe Usługi Azure Cosmos DB](sql-query-system-functions.md)
+- [Wprowadzenie do usługi Azure Cosmos DB](introduction.md)

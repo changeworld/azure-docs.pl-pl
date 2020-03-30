@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 48a3326dbe0e9eed4a5490e720248555586d189c
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67183283"
 ---
 ### <a name="to-take-a-backup"></a>Aby utworzyć kopię zapasową
@@ -29,7 +29,7 @@ ms.locfileid: "67183283"
 
 5. W bloku **Dodaj pierwszy harmonogram**:
 
-    1. Wybierz typ kopii zapasowej. Aby szybciej przeprowadzać operacje przywracania, wybierz pozycję **Migawka lokalna**. Aby zachować odporność danych, wybierz pozycję **Migawka w chmurze**.
+    1. Wybierz typ kopii zapasowej. Aby uzyskać szybsze przywracanie, **wybierz** lokalną migawkę. Aby uzyskać odporność danych, wybierz migawkę **chmury.**
     2. Określ częstotliwość wykonywania kopii zapasowych w minutach, godzinach, dniach lub tygodniach.
     3. Wybierz czas przechowywania. Opcje przechowywania zależą od częstotliwości tworzenia kopii zapasowej. Na przykład w przypadku zasad dziennych można określić zasady przechowywania w tygodniach, natomiast czas przechowywania w przypadku zasad miesięcznych jest wyrażany w miesiącach.
     4. Wybierz datę i godzinę rozpoczęcia dla zasad tworzenia kopii zapasowej.

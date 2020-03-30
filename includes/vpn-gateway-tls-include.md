@@ -9,14 +9,14 @@ ms.date: 07/27/2018
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 0d5c3b55d20be19d4aeb92b82d6e44d417259a7b
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/21/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67183057"
 ---
-1. Aby otworzyć wiersz polecenia z podwyższonym poziomem uprawnień, kliknij prawym przyciskiem myszy pozycję **wiersz polecenia** i wybierz polecenie **Uruchom jako administrator**.
-2. Uruchom następujące polecenia w wierszu polecenia:
+1. Otwórz wiersz polecenia z podwyższonymi uprawnieniami, klikając prawym przyciskiem myszy **wiersz polecenia** i wybierając polecenie Uruchom **jako administrator**.
+2. W wierszu polecenia wpisz następujące polecenia:
 
    ```
    reg add HKLM\SYSTEM\CurrentControlSet\Services\RasMan\PPP\EAP\13 /v TlsVersion /t REG_DWORD /d 0xfc0
@@ -30,8 +30,8 @@ ms.locfileid: "67183057"
    * [KB2977292](https://www.catalog.update.microsoft.com/Search.aspx?q=KB2977292)
 
 4. Uruchom ponownie komputer.
-5. Nawiązywanie połączenia z siecią VPN.
+5. Połącz się z siecią VPN.
 
 > [!NOTE]
-> Jeśli używasz starszej wersji systemu Windows 10 (10240), musisz ustawić powyższy klucz rejestru.
+> Będziesz musiał ustawić powyższy klucz rejestru, jeśli korzystasz ze starszej wersji systemu Windows 10 (10240).
 >

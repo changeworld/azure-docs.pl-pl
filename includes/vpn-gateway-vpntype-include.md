@@ -9,15 +9,15 @@ ms.date: 03/21/2018
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: b3907882df09bfae1d6453fbffbd3e7562554f7c
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67183113"
 ---
-* **PolicyBased:** Sieci VPN typu PolicyBased wcześniej były nazywane statycznymi bramami routingu w klasycznym modelu wdrażania. Sieci VPN oparte na zasadach szyfrują i kierowania pakietów przez tunel protokołu IPsec na podstawie zasad protokołu IPsec, skonfigurowane przy użyciu kombinacji prefiksów adresów między siecią lokalną a siecią wirtualną platformy Azure. Zasady (lub selektor ruchu) są zazwyczaj zdefiniowane jako lista dostępu w konfiguracji urządzenia sieci VPN. Wartość dla typu sieci PolicyBased VPN jest *PolicyBased*. Podczas korzystania z sieci VPN PolicyBased, należy pamiętać o następujących ograniczeniach:
+* **Zasady oparte na:** Sieci VPN oparte na zasadach były wcześniej nazywane statycznymi bramami routingu w klasycznym modelu wdrażania. Sieci VPN oparte na zasadach szyfrują i kierują pakiety za pośrednictwem tuneli IPsec na podstawie zasad IPsec skonfigurowanych przy kombinacji prefiksów adresów między siecią lokalną a siecią wirtualną platformy Azure. Zasady (lub selektor ruchu) są zazwyczaj zdefiniowane jako lista dostępu w konfiguracji urządzenia sieci VPN. Wartość typu sieci VPN opartej na zasadach to *PolicyBased*. Korzystając z sieci VPN opartej na zasadach, należy pamiętać o następujących ograniczeniach:
   
-  * Sieci VPN typu PolicyBased można **tylko** można używać na podstawowej jednostki SKU bramy. Ten typ sieci VPN nie jest zgodny z innych jednostkach SKU bramy.
-  * Może mieć tylko 1 tunel, korzystając z sieci VPN typu PolicyBased.
-  * Sieci VPN typu PolicyBased można używać tylko dla połączeń S2S i tylko w przypadku niektórych konfiguracji. Większość konfiguracji bramy sieci VPN wymagają sieci VPN typu RouteBased.
-* **RouteBased**: Sieci VPN typu RouteBased wcześniej były nazywane dynamicznymi bramami routingu w klasycznym modelu wdrażania. Sieci VPN typu RouteBased używają "tras" w IP przesyłania dalej lub tabeli routingu do kierowania pakietów do odpowiednich interfejsów tuneli. W dalszej kolejności interfejsy tuneli szyfrują lub odszyfrowują pakiety wchodzące do tuneli lub wychodzące z nich. Zasady (lub selektor ruchu) dla sieci VPN typu RouteBased są skonfigurowane jako dowolna dowolna (lub symbole wieloznaczne). Jest wartością dla typu sieci VPN typu RouteBased *RouteBased*.
+  * Sieci VPN oparte na zasadach mogą być używane **tylko** w jednostce SKU bramy podstawowej. Ten typ sieci VPN nie jest zgodny z innymi jednostkami SKU bramy.
+  * Podczas korzystania z sieci VPN opartej na zasadach można mieć tylko 1 tunel.
+  * Sieci VPN opartych na zasadach można używać tylko dla połączeń S2S i tylko dla niektórych konfiguracji. Większość konfiguracji bramy sieci VPN wymaga sieci VPN opartej na routinie.
+* **RouteBased**: Sieci VPN oparte na routebased były wcześniej nazywane dynamicznymi bramami routingu w klasycznym modelu wdrażania. Sieci VPN oparte na routebased używają "tras" w tabeli przekierowania lub routingu IP do kierowania pakietów do odpowiednich interfejsów tunelowych. W dalszej kolejności interfejsy tuneli szyfrują lub odszyfrowują pakiety wchodzące do tuneli lub wychodzące z nich. Zasady (lub selektor ruchu) dla sieci VPN opartych na trasach są skonfigurowane jako karty typu dowolny (lub symboli wieloznacznych). Wartość typu sieci VPN opartej na routisłówsło *routebased*.

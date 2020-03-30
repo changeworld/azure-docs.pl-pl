@@ -5,14 +5,14 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: 2ae72045ae18d84eac2a6d619d94e3a9e49415ae
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67183229"
 ---
-## <a name="issue-custom-image-provisioning-errors"></a>Problem: Niestandardowy obraz; błędy inicjowania obsługi administracyjnej
-Błędy inicjowania obsługi administracyjnej wystąpić, jeśli przekazywanie lub przechwytywania obrazu uogólnionej maszyny Wirtualnej jako obrazu wyspecjalizowanej maszyny Wirtualnej lub na odwrót. Pierwsza spowoduje błąd limitu czasu inicjowania obsługi administracyjnej i jego spowoduje błąd inicjowania obsługi administracyjnej. Aby wdrożyć niestandardowy obraz bez błędów, upewnij się, że typ obrazu nie zmienia się podczas procesu przechwytywania.
+## <a name="issue-custom-image-provisioning-errors"></a>Problem: Obraz niestandardowy; inicjowania obsługi administracyjnej błędy
+Błędy inicjowania obsługi administracyjnej pojawiają się, jeśli przekażesz lub przechwycisz uogólniony obraz maszyny Wirtualnej jako wyspecjalizowany obraz maszyny Wirtualnej lub odwrotnie. Pierwszy spowoduje błąd limitu czasu inicjowania obsługi administracyjnej, a drugi spowoduje błąd inicjowania obsługi administracyjnej. Aby wdrożyć obraz niestandardowy bez błędów, należy upewnić się, że typ obrazu nie zmienia się podczas procesu przechwytywania.
 
-Poniższa tabela zawiera listę możliwych kombinacji uogólniony, wyspecjalizowana obrazów i typ błędu, które można napotkać, co należy zrobić, aby naprawić błędy.
+W poniższej tabeli wymieniono możliwe kombinacje obrazów uogólnionych i wyspecjalizowanych, typ błędu, który napotkasz i co należy zrobić, aby naprawić błędy.
 

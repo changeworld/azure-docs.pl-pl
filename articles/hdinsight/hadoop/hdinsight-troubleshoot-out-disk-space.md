@@ -1,6 +1,6 @@
 ---
-title: Za mało miejsca na dysku w węźle klastra w usłudze Azure HDInsight
-description: Rozwiązywanie problemów dotyczących miejsca na dysku węzła klastra Apache Hadoop w usłudze Azure HDInsight.
+title: W węźle klastra zabraknie miejsca na dysku w usłudze Azure HDInsight
+description: Rozwiązywanie problemów z przestrzenią dyskową węzła klastra Apache Hadoop w usłudze Azure HDInsight.
 ms.service: hdinsight
 ms.topic: troubleshooting
 author: hrasheed-msft
@@ -8,42 +8,42 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 08/05/2019
 ms.openlocfilehash: fbfd82473b68f5032d19834ac809191d498a5a67
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75894126"
 ---
-# <a name="scenario-cluster-node-runs-out-of-disk-space-in-azure-hdinsight"></a>Scenariusz: brak miejsca na dysku w węźle klastra w usłudze Azure HDInsight
+# <a name="scenario-cluster-node-runs-out-of-disk-space-in-azure-hdinsight"></a>Scenariusz: w węźle klastra zabraknie miejsca na dysku w usłudze Azure HDInsight
 
-W tym artykule opisano kroki rozwiązywania problemów oraz możliwe rozwiązania problemów występujących w przypadku współpracy z klastrami usługi Azure HDInsight.
+W tym artykule opisano kroki rozwiązywania problemów i możliwe rozwiązania problemów podczas interakcji z klastrami usługi Azure HDInsight.
 
 ## <a name="issue"></a>Problem
 
-Zadanie może zakończyć się niepowodzeniem z komunikatem o błędzie podobnym do: `/usr/hdp/2.6.3.2-14/hadoop/libexec/hadoop-config.sh: fork: No space left on device.`
+Zadanie może zakończyć się niepowodzeniem z komunikatem o błędzie podobnym do:`/usr/hdp/2.6.3.2-14/hadoop/libexec/hadoop-config.sh: fork: No space left on device.`
 
-Możesz też otrzymywać alerty Apache Ambari podobne do: `local-dirs usable space is below configured utilization percentage`.
+Lub może pojawić się alert Apache `local-dirs usable space is below configured utilization percentage`Ambari podobne do: .
 
 ## <a name="cause"></a>Przyczyna
 
-Pamięć podręczna aplikacji Apache przędza mogła korzystać z całego dostępnego miejsca na dysku. Aplikacja Spark prawdopodobnie działa wydajnie.
+Pamięć podręczna aplikacji Apache Yarn mogła zużyła całe dostępne miejsce na dysku. Aplikacja Spark jest prawdopodobnie uruchomiony nieefektywnie.
 
-## <a name="resolution"></a>Rozdzielczość
+## <a name="resolution"></a>Rozwiązanie
 
-1. Użyj interfejsu użytkownika Ambari, aby określić, który węzeł kończy miejsce na dysku.
+1. Użyj interfejsu użytkownika Ambari, aby określić, w którym węźle zabraknie miejsca na dysku.
 
-1. Ustal, który folder w węźle niepokojące przyczynia się do większości miejsca na dysku. Najpierw Użyj protokołu SSH do węzła, a następnie uruchom `df`, aby wyświetlić listę użycia dysku dla wszystkich instalacji. Zwykle jest to `/mnt`, który jest dyskiem tymczasowym używanym przez OSS. Możesz wprowadzić do folderu, a następnie wpisać `sudo du -hs`, aby wyświetlić podsumowywane rozmiary plików w folderze. Jeśli zobaczysz folder podobny do `/mnt/resource/hadoop/yarn/local/usercache/livy/appcache/application_1537280705629_0007`, oznacza to, że aplikacja nadal działa. Przyczyną może być RDD trwałość lub pośrednie losowe pliki.
+1. Określ, który folder w węźle niepokojące przyczynia się do większości miejsca na dysku. SSH do węzła, `df` a następnie uruchom do listy użycia dysku dla wszystkich instalacji. Zwykle jest `/mnt` to dysk tymczasowy używany przez OSS. Można wprowadzić folder, a `sudo du -hs` następnie wpisać, aby wyświetlić podsumowane rozmiary plików w folderze. Jeśli widzisz folder podobny `/mnt/resource/hadoop/yarn/local/usercache/livy/appcache/application_1537280705629_0007`do , oznacza to, że aplikacja jest nadal uruchomiona. Może to być spowodowane trwałością RDD lub pośrednimi plikami losowymi.
 
-1. Aby wyeliminować problem, Kasuj aplikację, która zwolni miejsce na dysku używane przez tę aplikację.
+1. Aby złagodzić problem, zabić aplikację, która zwolni miejsce na dysku używane przez tę aplikację.
 
-1. Aby ostatecznie rozwiązać ten problem, Zoptymalizuj aplikację.
+1. Aby ostatecznie rozwiązać ten problem, zoptymalizuj aplikację.
 
 ## <a name="next-steps"></a>Następne kroki
 
-Jeśli problem nie został wyświetlony lub nie można rozwiązać problemu, odwiedź jeden z następujących kanałów, aby uzyskać więcej pomocy:
+Jeśli nie widzisz problemu lub nie możesz rozwiązać problemu, odwiedź jeden z następujących kanałów, aby uzyskać więcej pomocy technicznej:
 
-* Uzyskaj odpowiedzi od ekspertów platformy Azure za pośrednictwem [pomocy technicznej dla społeczności platformy Azure](https://azure.microsoft.com/support/community/).
+* Uzyskaj odpowiedzi od ekspertów platformy Azure za pośrednictwem [pomocy technicznej platformy Azure Community.](https://azure.microsoft.com/support/community/)
 
-* Połącz się z [@AzureSupport](https://twitter.com/azuresupport) — oficjalne Microsoft Azure konto, aby usprawnić obsługę klienta, łącząc społeczność platformy Azure z właściwymi zasobami: odpowiedziami, pomocą techniczną i ekspertami.
+* Połącz [@AzureSupport](https://twitter.com/azuresupport) się z — oficjalnym kontem platformy Microsoft Azure w celu poprawy jakości obsługi klienta, łącząc społeczność platformy Azure z odpowiednimi zasobami: odpowiedziami, pomocą techniczną i ekspertami.
 
-* Jeśli potrzebujesz więcej pomocy, możesz przesłać żądanie pomocy technicznej z [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Na pasku menu wybierz pozycję **Obsługa** , a następnie otwórz Centrum **pomocy i obsługi technicznej** . Aby uzyskać szczegółowe informacje, zobacz [jak utworzyć żądanie pomocy technicznej platformy Azure](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request). Dostęp do pomocy w zakresie zarządzania subskrypcjami i rozliczeń jest dostępny w ramach subskrypcji Microsoft Azure, a pomoc techniczna jest świadczona za pomocą jednego z [planów pomocy technicznej systemu Azure](https://azure.microsoft.com/support/plans/).
+* Jeśli potrzebujesz więcej pomocy, możesz przesłać żądanie pomocy z [witryny Azure portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Wybierz **pozycję Obsługa z** paska menu lub otwórz centrum pomocy + pomocy **technicznej.** Aby uzyskać bardziej szczegółowe informacje, zapoznaj się z [instrukcjami tworzenia żądania pomocy technicznej platformy Azure.](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request) Dostęp do obsługi zarządzania subskrypcjami i rozliczeń jest dołączony do subskrypcji platformy Microsoft Azure, a pomoc techniczna jest świadczona za pośrednictwem jednego z [planów pomocy technicznej platformy Azure.](https://azure.microsoft.com/support/plans/)

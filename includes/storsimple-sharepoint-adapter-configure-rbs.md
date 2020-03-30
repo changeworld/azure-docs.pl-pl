@@ -5,61 +5,61 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: f84fe995e65d2b67aaaf4ff9acc4a6a44ce607dc
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67183271"
 ---
 > [!NOTE]
-> Podczas wprowadzania zmian do adaptera StorSimple dla konfiguracji SPZ programu SharePoint, użytkownik musi być zalogowany przy użyciu konta użytkownika, który należy do grupy Administratorzy domeny. Ponadto należy uzyskać dostęp do strony konfiguracji z poziomu przeglądarki uruchomionych na tym samym hoście jako witryny Administracja centralna.
+> Podczas wprowadzania zmian w konfiguracji StorSimple Adapter for SharePoint SPZ musisz być zalogowany przy za pomocą konta użytkownika należącego do grupy Administratorzy domeny. Ponadto należy uzyskać dostęp do strony konfiguracji z przeglądarki uruchomionej na tym samym hoście co administracja centralna.
 > 
 > 
 
 #### <a name="to-configure-rbs"></a>Aby skonfigurować SPZ
-1. Otwórz stronę administracji centralnej programu SharePoint, a następnie przejdź do **ustawień systemowych**. 
-2. W **Azure StorSimple** kliknij **skonfigurować Adapter usługi StorSimple**.
+1. Otwórz stronę Administracja centralna programu SharePoint i przejdź do **pozycji Ustawienia systemowe**. 
+2. W sekcji **Azure StorSimple** kliknij pozycję **Konfiguruj kartę StorSimple**.
    
-    ![Skonfiguruj Adapter usługi StorSimple](./media/storsimple-sharepoint-adapter-configure-rbs/HCS_SSASP_ConfigRBS1-include.png) 
-3. Na **skonfigurować Adapter usługi StorSimple** strony:
+    ![Konfigurowanie karty StorSimple](./media/storsimple-sharepoint-adapter-configure-rbs/HCS_SSASP_ConfigRBS1-include.png) 
+3. Na stronie **Konfigurowanie karty StorSimple:**
    
-   1. Upewnij się, że **umożliwić ścieżkę edycji** pole wyboru jest zaznaczone.
-   2. W polu tekstowym wpisz ścieżkę Universal Naming Convention (UNC) z magazynu obiektów BLOB.
+   1. Upewnij się, że pole wyboru **Włącz ścieżkę edycji** jest zaznaczone.
+   2. W polu tekstowym wpisz ścieżkę universal naming convention (UNC) magazynu obiektów BLOB.
       
       > [!NOTE]
-      > Wolumin magazynu obiektów BLOB musi być hostowany na woluminie iSCSI skonfigurowane na urządzeniu StorSimple.
+      > Wolumin magazynu obiektów BLOB musi być obsługiwany na woluminie iSCSI skonfigurowanym na urządzeniu StorSimple.
 
-   3. Kliknij przycisk **Włącz** znajdujący się poniżej każdej z baz danych zawartości, które chcesz skonfigurować Magazyn zdalny.
+   3. Kliknij przycisk **Włącz** poniżej każdej z baz danych zawartości, które chcesz skonfigurować do magazynu zdalnego.
       
       > [!NOTE]
-      > Magazyn obiektów BLOB musi być udostępniony i osiągalny przez wszystkie frontowych serwerach sieci web (WFE), a konto użytkownika, który jest skonfigurowany dla farmy serwerów programu SharePoint musi mieć dostęp do udziału.
+      > Magazyn obiektów BLOB musi być współużytkowany i osiągalny przez wszystkie serwery frontonu sieci Web (WFE), a konto użytkownika skonfigurowane dla farmy serwerów programu SharePoint musi mieć dostęp do udziału.
       
-      ![Włącz dostawcę SPZ](./media/storsimple-sharepoint-adapter-configure-rbs/HCS_SSASP_ConfigRBS2-include.png)
+      ![Włączanie dostawcy SPZ](./media/storsimple-sharepoint-adapter-configure-rbs/HCS_SSASP_ConfigRBS2-include.png)
       
-      Po włączeniu lub wyłączeniu SPZ, zostanie również wyświetlony następujący komunikat.
+      Po włączeniu lub wyłączeniu SPZ zostanie wyświetlony następujący komunikat.
       
-      ![Konfigurowanie Wyłącz Włącz Adapter usługi StorSimple](./media/storsimple-sharepoint-adapter-configure-rbs/HCS_ConfigureStorSimpleAdapterEnableDisableMessage-include.png)
+      ![Skonfiguruj włącz kartę StorSimple Disable](./media/storsimple-sharepoint-adapter-configure-rbs/HCS_ConfigureStorSimpleAdapterEnableDisableMessage-include.png)
 
-   4. Kliknij przycisk **aktualizacji** przycisk, aby zastosować konfigurację. Po kliknięciu **aktualizacji** przycisk, będzie można zaktualizować stanu konfiguracji SPZ na wszystkich serwerach frontonu internetowego i całej farmy będzie włączona SPZ. Zostanie wyświetlony następujący komunikat.
+   4. Kliknij przycisk **Aktualizuj,** aby zastosować konfigurację. Po kliknięciu przycisku **Aktualizuj** stan konfiguracji SPZ zostanie zaktualizowany na wszystkich serwerach WFE, a cała farma będzie włączona rbs. Zostanie wyświetlony następujący komunikat.
       
       ![Komunikat o konfiguracji karty](./media/storsimple-sharepoint-adapter-configure-rbs/HCS_SSASP_ConfigRBS3-include.png)
       
       > [!NOTE]
-      > Jeśli konfigurujesz SPZ farmy programu SharePoint z bardzo dużą liczbą baz danych (większe niż 200), strony sieci web Administracja centralna programu SharePoint może upłynąć limit czasu. Jeśli ma to miejsce, należy odświeżyć stronę. Nie wpływa to na proces konfiguracji.
+      > Jeśli konfigurujesz SPZ dla farmy programu SharePoint z bardzo dużą liczbą baz danych (większą niż 200), strona sieci Web administracji centralnej programu SharePoint może się prze uiścić limit czasu. W takim przypadku odśwież stronę. Nie ma to wpływu na proces konfiguracji.
 
 4. Sprawdź konfigurację:
    
-   1. Zaloguj się do witryny sieci Web Administracja centralna programu SharePoint i przejdź do **skonfigurować Adapter usługi StorSimple** strony.
-   2. Sprawdź szczegóły konfiguracji, aby upewnić się, że są one zgodne ustawienia, które zostały wprowadzone. 
-5. Sprawdź, czy SPZ działa prawidłowo:
+   1. Zaloguj się w witrynie sieci Web administracji centralnej programu SharePoint i przejdź do strony **Konfigurowanie karty StorSimple.**
+   2. Sprawdź szczegóły konfiguracji, aby upewnić się, że są one zgodne z wprowadzonymi ustawieniami. 
+5. Sprawdź, czy SPZ działa poprawnie:
    
-   1. Przekaż dokument w programie SharePoint. 
-   2. Przejdź do ścieżki UNC, który został skonfigurowany. Upewnij się, że struktura katalogów SPZ został utworzony i czy zawiera przekazany obiekt.
-6. (Opcjonalnie) Możesz użyć RBS Microsoft `Migrate()` polecenia cmdlet programu PowerShell, dołączone do programu SharePoint, aby przeprowadzić migrację istniejącej zawartości obiektu BLOB z urządzeniem StorSimple. Aby uzyskać więcej informacji, zobacz [migracji zawartości do lub z SPZ w programie SharePoint 2013] [ 6] lub [migracji zawartości do lub z SPZ (SharePoint Foundation 2010)] [7].
-7. (Opcjonalnie) W instalacjach testu można sprawdzić, czy obiekty BLOB zostały przeniesione z zawartością bazy danych w następujący sposób: 
+   1. Przekazywanie dokumentu do programu SharePoint. 
+   2. Przejdź do skonfigurowaną ścieżkę UNC. Upewnij się, że struktura katalogu SPZ została utworzona i że zawiera przekazany obiekt.
+6. (Opcjonalnie) Za pomocą polecenia cmdlet Programu Microsoft RBS `Migrate()` PowerShell dołączonego do programu SharePoint można przeprowadzić migrację istniejącej zawartości obiektu BLOB na urządzenie StorSimple. Aby uzyskać więcej informacji, zobacz [Migrowanie zawartości do lub z SPZ w programie SharePoint 2013][6] lub [Migrowanie zawartości do lub z SPZ (SharePoint Foundation 2010)][7]lub z nich .
+7. (Opcjonalnie) W instalacjach testowych można sprawdzić, czy obiekty BLOB zostały przeniesione z bazy danych zawartości w następujący sposób: 
    
    1. Uruchom program SQL Management Studio.
-   2. Uruchom zapytanie ListBlobsInDB_2010.sql lub ListBlobsInDB_2013.sql w następujący sposób.
+   2. Uruchom kwerendę ListBlobsInDB_2010.sql lub ListBlobsInDB_2013.sql w następujący sposób.
       
       ```
       **ListBlobsInDB_2013.sql**
@@ -102,16 +102,16 @@ ms.locfileid: "67183271"
         GO
       ```
       
-      Jeśli SPZ została skonfigurowana prawidłowo, wartości NULL powinna pojawić się w kolumnie SizeOfContentInDB dla dowolnego obiektu, który został przekazany i pomyślnie zewnętrznych z SPZ.
-8. (Opcjonalnie) Po skonfigurowaniu SPZ i przenieść całą zawartość obiektu BLOB z urządzeniem StorSimple, możesz przenieść bazę danych zawartości na urządzeniu. Jeśli wybierzesz przenieść bazę danych zawartości, zaleca się skonfigurować Magazyn bazy danych zawartości na urządzenia jako wolumin podstawowy. Następnie korzystaj ze sprawdzonych najlepszych rozwiązań programu SQL Server do migracji bazy danych zawartości z urządzeniem StorSimple. 
+      Jeśli SPZ został poprawnie skonfigurowany, wartość NULL powinna pojawić się w kolumnie SizeOfContentInDB dla każdego obiektu, który został przekazany i pomyślnie zewnętrzny z SPZ.
+8. (Opcjonalnie) Po skonfigurowaniu SPZ i przeniesienie całej zawartości obiektu BLOB do urządzenia StorSimple można przenieść bazę danych zawartości na urządzenie. Jeśli zdecydujesz się przenieść bazę danych zawartości, zaleca się skonfigurowanie magazynu bazy danych zawartości na urządzeniu jako woluminu podstawowego. Następnie należy użyć ustalonych najlepszych rozwiązań programu SQL Server, aby przeprowadzić migrację bazy danych zawartości do urządzenia StorSimple. 
    
    > [!NOTE]
-   > Przenoszenie bazy danych zawartości na urządzeniu jest obsługiwana tylko w przypadku serii StorSimple 8000 (jest nieobsługiwany w przypadku serii 5000 i 7000).
+   > Przenoszenie bazy danych zawartości na urządzenie jest obsługiwane tylko dla serii StorSimple 8000 (nie jest obsługiwana dla serii 5000 lub 7000).
    
-   Jeśli obiekty BLOB i bazy danych zawartości są przechowywane w oddzielnych woluminów na urządzeniu StorSimple, zaleca się skonfigurować je w ten sam kontener woluminów. Daje to gwarancję, że ich zostanie skopiowana ze sobą.
+   Jeśli dyski BLOB i bazy danych zawartości są przechowywane w oddzielnych woluminach na urządzeniu StorSimple, zaleca się skonfigurowanie ich w tym samym kontenerze woluminów. Gwarantuje to, że będą one wspierane razem.
    
    > [!WARNING]
-   > Jeśli nie włączono SPZ, zaleca się przeniesienie bazy danych zawartości z urządzeniem StorSimple. To jest Konfiguracja nieprzetestowanych.
+   > Jeśli nie włączono SPZ, nie zaleca się przenoszenia bazy danych zawartości do urządzenia StorSimple. Jest to konfiguracja nieprzetestowana.
    
 9. Przejdź do następnego kroku: [Konfigurowanie wyrzucania elementów bezużytecznych](#configure-garbage-collection).
 

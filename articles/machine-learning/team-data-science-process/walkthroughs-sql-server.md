@@ -1,6 +1,6 @@
 ---
-title: Analiza w programie SQL Server przy użyciu języka R, Python i T-SQL — zespołu danych dla celów naukowych
-description: Przykłady, które przeprowadzą do analizy predykcyjnej za pomocą języka R, Python i T-SQL w SQL Server.
+title: Analytics na sql server z R, Python i T-SQL - Team Data Science Process
+description: Przykłady, które przechodzą przez użycie R, Python i T-SQL w programie SQL Server do analizy predykcyjnej.
 services: machine-learning
 author: marktab
 manager: marktab
@@ -12,41 +12,41 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 880ee0a4a1eb396312ea9692b7586d724d6fd410
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75864098"
 ---
-# <a name="sql-server-data-science-walkthroughs-using-r-python-and-t-sql"></a>SQL Server przewodniki dotyczące analizy danych przy użyciu języka R, Python i T-SQL
+# <a name="sql-server-data-science-walkthroughs-using-r-python-and-t-sql"></a>Wskazówki dotyczące nauki o danych programu SQL Server przy użyciu języków R, Python i T-SQL
 
-Te przewodniki używać programu SQL Server, SQL Server R Services i usług programu SQL Server języka Python do analizy predykcyjnej. Kod R i Python jest wdrażany w procedurach składowanych. One wykonaj kroki opisane w procesie nauki o danych zespołu. Omówienie procesu do nauki o danych zespołu, zobacz [danych dla celów naukowych](overview.md). 
+Te wskazówki używają SQL Server, SQL Server R Services i SQL Server Python Services do analizy predykcyjnej. Kod języka R i Python jest wdrażany w procedurach przechowywanych. Wykonaj one kroki opisane w procesie nauki o danych zespołu. Aby zapoznać się z omówieniem procesu nauki o danych zespołu, zobacz [Proces nauki o danych](overview.md). 
 
-Przewodniki dotyczące przetwarzania dodatkowe dane, które są wykonywane w procesie nauki o danych zespołu są pogrupowane według **platformy** używane. Zobacz [przewodniki dotyczące wykonywania procesu do nauki o danych zespołu](walkthroughs.md) do podziału na pozycje z tych przykładów.
-
-
-## <a name="predict-taxi-tips-using-python-and-sql-queries-with-sql-server"></a>Przewidywanie napiwków przy użyciu zapytań SQL i języka Python z programem SQL Server 
-
-W instruktażu [Use SQL Server](sql-walkthrough.md) pokazano, jak tworzyć i wdrażać modele klasyfikacji i regresji uczenia maszynowego.  Dane to publicznie dostępny zestaw danych o wykorzystaniu NYC i taryfy.
+Dodatkowe wskazówki do nauki o danych, które wykonują proces nauki o danych zespołu są pogrupowane według **platformy,** której używają. Zobacz [wskazówki wykonujące proces nauki o danych zespołu](walkthroughs.md) dla itemization tych przykładów.
 
 
-## <a name="predict-taxi-tips-using-microsoft-r-with-sql-server"></a>Przewidywanie napiwków przy użyciu Microsoft R z programem SQL Server 
+## <a name="predict-taxi-tips-using-python-and-sql-queries-with-sql-server"></a>Przewidywanie porad dotyczących taksówek przy użyciu zapytań języka Python i SQL za pomocą programu SQL Server 
 
-W instruktażu [Use SQL Server R Services](https://msdn.microsoft.com/library/mt612857.aspx) pokazano, jak skompilować i wdrożyć model języka R w celu SQL Server. Przewodnik jest przeznaczony do wprowadzenia deweloperom języka R do usługi R Services (In-Database).
-
-
-## <a name="predict-taxi-tips-using-r-from-t-sql-or-stored-procedures-with-sql-server"></a>Przewidywanie napiwków przy użyciu języka R, T-SQL lub procedur składowanych z programem SQL Server
-
-[Przewodnika do nauki o danych języków R i programu SQL Server](https://docs.microsoft.com/sql/advanced-analytics/tutorials/walkthrough-data-science-end-to-end-walkthrough) udostępnia w programowaniu w języku SQL przy użyciu środowiska tworzenia zaawansowane rozwiązanie analityczne przy użyciu języka Transact-SQL przy użyciu usługi R Services programu SQL Server, aby operacjonalizować rozwiązania do pakietu języka R. 
+W przewodniku [Użyj programu SQL Server](sql-walkthrough.md) pokazano, jak tworzyć i wdrażać modele klasyfikacji i regresji uczenia maszynowego.  Dane są publicznie dostępne nyc taksówką i zestaw danych taryfy.
 
 
-## <a name="predict-taxi-tips-using-python-in-sql-server-stored-procedures"></a>Przewidywanie napiwków dla procedur składowanych serwera SQL Server przy użyciu języka Python
+## <a name="predict-taxi-tips-using-microsoft-r-with-sql-server"></a>Przewidywanie porad dotyczących taksówek przy użyciu programu Microsoft R z programem SQL Server 
 
-[Użycie języka T-SQL przy użyciu usług programu SQL Server Python](https://docs.microsoft.com/sql/advanced-analytics/tutorials/sqldev-in-database-python-for-sql-developers) przewodnik zawiera w programowaniu w języku SQL przy użyciu środowiska tworzenia usługi machine learning rozwiązanie w programie SQL Server. Pokazuje sposób zintegrować aplikację języka Python, dodając kod języka Python do procedur składowanych.
+W przewodniku [Użyj usług SQL Server R](https://msdn.microsoft.com/library/mt612857.aspx) pokazano, jak skompilować i wdrożyć model języka R w programie SQL Server. Instruktaż ma na celu wprowadzenie deweloperów R do usług R (w bazie danych).
+
+
+## <a name="predict-taxi-tips-using-r-from-t-sql-or-stored-procedures-with-sql-server"></a>Przewidywanie porad dotyczących taksówek przy użyciu języka R z języka T-SQL lub procedur przechowywanych za pomocą programu SQL Server
+
+Przewodnik [do nauki o danych dla języka R i SQL Server](https://docs.microsoft.com/sql/advanced-analytics/tutorials/walkthrough-data-science-end-to-end-walkthrough) zapewnia programistom SQL doświadczenie w tworzeniu zaawansowanego rozwiązania analitycznego z transact-SQL przy użyciu usług SQL Server R w celu operacjonalizacji rozwiązania R. 
+
+
+## <a name="predict-taxi-tips-using-python-in-sql-server-stored-procedures"></a>Przewidywanie porad dotyczących taksówek przy użyciu języka Python w procedurach przechowywanych w programie SQL Server
+
+Przewodnik [Użyj T-SQL z usługami SQL Server Python Services](https://docs.microsoft.com/sql/advanced-analytics/tutorials/sqldev-in-database-python-for-sql-developers) zapewnia programistom SQL doświadczenie w tworzeniu rozwiązania uczenia maszynowego w programie SQL Server. Pokazuje, jak włączyć Python do aplikacji, dodając kod Języka Python do procedur przechowywanych.
 
 
 ## <a name="next-steps"></a>Następne kroki
 
-Aby uzyskać omówienie najważniejsze składniki wchodzące w skład procesu do nauki o danych zespołu, zobacz [przegląd danych zespołu dla celów naukowych](overview.md).
+Aby zapoznać się z omówieniem kluczowych składników, które składają się na proces nauki o danych zespołu, zobacz [omówienie procesu nauki o danych zespołu.](overview.md)
 
-Omówienie cyklu życia procesu do nauki o danych zespołu, używanej do organizowania projektów do nauki o danych, zobacz [cykl życia zespołowego danych naukowych](lifecycle.md). Cykl życia zawiera opis kroków, od początku do końca, że projekty zazwyczaj należy wykonać podczas są wykonywane. 
+Aby zapoznać się z omówień cyklu życia procesu nauki o danych zespołu, którego można użyć do struktury projektów nauki o danych, zobacz [cykl życia procesu nauki o danych zespołu.](lifecycle.md) Cykl życia określa kroki, od początku do końca, które projekty zwykle wykonaj, gdy są one wykonywane. 

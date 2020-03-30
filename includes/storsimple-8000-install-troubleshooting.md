@@ -5,16 +5,16 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: ebe112103bc3eb30239e80095db9bb91a33bebf3
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67183426"
 ---
 ## <a name="troubleshooting-update-failures"></a>Rozwiązywanie problemów dotyczących niepowodzenia aktualizacji
 **Co się stanie, jeśli zostanie wyświetlone powiadomienie o niepowodzeniu testów przed uaktualnieniem?**
 
-Jeśli test wstępny nie powiedzie się, przeczytaj informacje z paska powiadomień szczegółowych w dolnej części strony. Znajdują się tam wskazówki dotyczące rodzaju testu wstępnego, który się nie powiódł. Na przykład otrzymasz powiadomienie, które nie powiodły test kondycji kontrolera i test kondycji składnika sprzętowego. Przejdź do **Monitor > kondycja sprzętu**. Należy się upewnić, że oba kontrolery są w dobrej kondycji i w trybie online. Należy również upewnić się, że wszystkie składniki sprzętowe w urządzeniu StorSimple są wyświetlane będące w dobrej kondycji, w tym bloku. Po spełnieniu tych warunków można spróbować zainstalować aktualizacje. Jeśli nie jesteś w stanie rozwiązać problemów związanych ze składnikami sprzętowymi, konieczne będzie skontaktowanie się z pomocą techniczną firmy Microsoft w celu uzyskania dalszych instrukcji.
+Jeśli test wstępny nie powiedzie się, przeczytaj informacje z paska powiadomień szczegółowych w dolnej części strony. Znajdują się tam wskazówki dotyczące rodzaju testu wstępnego, który się nie powiódł. Na przykład otrzymasz powiadomienie, że sprawdzanie kondycji kontrolera i sprawdzanie kondycji składnika sprzętowego nie powiodło się. Przejdź do **monitoruj > kondycję sprzętu**. Musisz upewnić się, że oba kontrolery są w dobrej kondycji i online. Należy również upewnić się, że wszystkie składniki sprzętowe w urządzeniu StorSimple są wyświetlane w dobrej kondycji w tym bloku. Po spełnieniu tych warunków można spróbować zainstalować aktualizacje. Jeśli nie jesteś w stanie rozwiązać problemów związanych ze składnikami sprzętowymi, konieczne będzie skontaktowanie się z pomocą techniczną firmy Microsoft w celu uzyskania dalszych instrukcji.
 
 **Co zrobić, jeśli pojawi się komunikat o błędzie „Nie można zainstalować aktualizacji”, a zaleceniem jest odwołanie się do przewodnika rozwiązywania problemów dotyczących aktualizacji w celu określenia przyczyny awarii?**
 

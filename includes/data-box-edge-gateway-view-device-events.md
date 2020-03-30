@@ -5,15 +5,15 @@ ms.topic: include
 ms.date: 04/15/2019
 ms.author: alkohli
 ms.openlocfilehash: 0d47137e3149563903d4adcaaf34e72ddad043f7
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67183680"
 ---
-Wykonaj następujące kroki w witrynie Azure portal, aby wyświetlić zdarzenia urządzenia.
+Aby wyświetlić zdarzenie urządzenia, należy wykonać następujące kroki w witrynie Azure Portal.
 
-1. W witrynie Azure portal przejdź do krawędzi sieci urządzenia Data Box / zasobu bramy pola danych, a następnie przejdź do **monitorowanie > zdarzenia urządzenia**.
-2. Zaznacz zdarzenie i wyświetlić szczegóły alertu. Podejmij odpowiednią akcję, aby rozwiązać problem alertu.
+1. W witrynie Azure portal przejdź do zasobu Data Box Edge/Data Box Gateway, a następnie przejdź do **monitorowania zdarzeń > urządzenia.**
+2. Wybierz zdarzenie i wyświetl szczegóły alertu. Podejmij odpowiednie działania, aby rozwiązać warunek alertu.
 
-    ![Wybierz zdarzenia i wyświetlenia jej szczegółów](media/data-box-edge-gateway-view-device-events/view-device-events.png)
+    ![Wybieranie szczegółów wydarzenia i wyświetlania](media/data-box-edge-gateway-view-device-events/view-device-events.png)

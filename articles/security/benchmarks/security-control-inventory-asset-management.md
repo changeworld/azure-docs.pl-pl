@@ -1,6 +1,6 @@
 ---
-title: Kontrola zabezpieczeń platformy Azure — Zarządzanie zapasami i zasobami
-description: Spis kontroli zabezpieczeń i zarządzanie zasobami
+title: Kontrola zabezpieczeń platformy Azure — zarządzanie zapasami i zasobami
+description: Zarządzanie zapasami i zasobami kontroli zabezpieczeń
 author: msmbaldwin
 manager: rkarlin
 ms.service: security
@@ -9,27 +9,27 @@ ms.date: 12/30/2019
 ms.author: mbaldwin
 ms.custom: security-recommendations
 ms.openlocfilehash: 2f24012a69a7673426644a8ded6162cd1021938e
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/14/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75930058"
 ---
-# <a name="security-control-inventory-and-asset-management"></a>Kontrola zabezpieczeń: Zarządzanie zapasami i zasobami
+# <a name="security-control-inventory-and-asset-management"></a>Kontrola bezpieczeństwa: zarządzanie zapasami i zasobami
 
-Rekomendacje dotyczące spisu i zarządzania zasobami koncentrują się na rozwiązywaniu problemów związanych z aktywnie zarządzaniem (spisem, śledzeniem i korygowaniem) wszystkich zasobów platformy Azure, dzięki czemu tylko autoryzowane zasoby mają dostęp, a nieautoryzowane i niezarządzane zasoby są zidentyfikowane i usunięte.
+Zalecenia dotyczące zarządzania zapasami i zasobami koncentrują się na rozwiązywaniu problemów związanych z aktywnym zarządzaniem (zapasami, śledzeniem i poprawianiem) wszystkich zasobów platformy Azure, dzięki czemu dostęp mają tylko autoryzowane zasoby, a nieautoryzowane i niezarządzane zasoby są zidentyfikowane i usunięte.
 
-## <a name="61-use-azure-asset-discovery"></a>6,1: Użyj odnajdywania zasobów platformy Azure
+## <a name="61-use-azure-asset-discovery"></a>6.1: Korzystanie z odnajdowania zasobów platformy Azure
 
-| Identyfikator platformy Azure | Identyfikatory WNP | Odpowiedzialność |
+| Identyfikator platformy Azure | Identyfikatory SIC | Odpowiedzialność |
 |--|--|--|
-| 6.1 | 1,1, 1,2, 1,3, 1,4, 9,1, 12,1 | Klient |
+| 6.1 | 1.1, 1.2, 1.3, 1.4, 9.1, 12.1 | Klient |
 
-Korzystając z grafu zasobów platformy Azure, można wysyłać zapytania/odnajdywać wszystkie zasoby (takie jak obliczenia, magazyn, Sieć, porty i protokoły itp.) w ramach subskrypcji.  Upewnij się, że masz odpowiednie uprawnienia (odczyt) w dzierżawie i Wylicz wszystkie subskrypcje platformy Azure oraz zasoby w ramach subskrypcji.
+Użyj usługi Azure Resource Graph do wykonywania zapytań/odnajdywanie wszystkich zasobów (takich jak zasoby obliczeniowe, magazyn, sieć, porty i protokoły itp.) w ramach subskrypcji.  Upewnij się, odpowiednie (odczytu) uprawnienia w dzierżawie i wyliczyć wszystkie subskrypcje platformy Azure, a także zasoby w ramach subskrypcji.
 
-Mimo że klasyczne zasoby platformy Azure mogą zostać odnalezione za pośrednictwem grafu zasobów, zdecydowanie zaleca się tworzenie i używanie Azure Resource Manager zasobów do przodu.
+Chociaż klasyczne zasoby platformy Azure mogą zostać wykryte za pomocą wykresu zasobów, zdecydowanie zaleca się tworzenie i używanie zasobów usługi Azure Resource Manager w przyszłości.
 
-Jak tworzyć zapytania przy użyciu grafu zasobów platformy Azure:
+Jak tworzyć zapytania za pomocą programu Azure Resource Graph:
 
 https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
 
@@ -37,182 +37,182 @@ Jak wyświetlić subskrypcje platformy Azure:
 
 https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0
 
-Opis kontroli RBAC platformy Azure:
+Poznaj usługę Azure RBAC:
 
 https://docs.microsoft.com/azure/role-based-access-control/overview
 
-## <a name="62-maintain-asset-metadata"></a>6,2: Konserwowanie metadanych zasobów
+## <a name="62-maintain-asset-metadata"></a>6.2: Obsługa metadanych zasobów
 
-| Identyfikator platformy Azure | Identyfikatory WNP | Odpowiedzialność |
+| Identyfikator platformy Azure | Identyfikatory SIC | Odpowiedzialność |
 |--|--|--|
 | 6.2 | 1.5 | Klient |
 
-Zastosowanie tagów do zasobów platformy Azure, dzięki czemu metadane są logicznie zorganizowane w taksonomię.
+Zastosuj tagi do zasobów platformy Azure, dając metadane logicznie zorganizować je w taksonomii.
 
-Tworzenie i używanie tagów:
+Jak tworzyć i używać tagów:
 
 https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
 
-## <a name="63-delete-unauthorized-azure-resources"></a>6,3: Usuń nieautoryzowane zasoby platformy Azure
+## <a name="63-delete-unauthorized-azure-resources"></a>6.3: Usuwanie nieautoryzowanych zasobów platformy Azure
 
-| Identyfikator platformy Azure | Identyfikatory WNP | Odpowiedzialność |
+| Identyfikator platformy Azure | Identyfikatory SIC | Odpowiedzialność |
 |--|--|--|
 | 6.3 | 1.6 | Klient |
 
-W razie potrzeby można używać tagowania, grup zarządzania i oddzielnych subskrypcji, aby organizować i śledzić zasoby. Regularnie Uzgadniaj spis i zapewnij, że nieautoryzowane zasoby są usuwane z subskrypcji w odpowiednim czasie.
+W stosownych przypadkach należy używać tagowania, grup zarządzania i oddzielnych subskrypcji, aby organizować i śledzić zasoby. Regularnie uzgadniaj zapasy i upewnij się, że nieautoryzowane zasoby są usuwane z subskrypcji w odpowiednim czasie.
 
 Jak utworzyć dodatkowe subskrypcje platformy Azure:
 
 https://docs.microsoft.com/azure/billing/billing-create-subscription
 
-Jak utworzyć Grupy zarządzania:
+Jak utworzyć grupy zarządzania:
 
 https://docs.microsoft.com/azure/governance/management-groups/create
 
-Tworzenie i używanie tagów:
+Jak tworzyć i używać tagów:
 
 https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
 
-## <a name="64-maintain-an-inventory-of-approved-azure-resources-and-software-titles"></a>6,4: przechowywanie spisu zatwierdzonych zasobów platformy Azure i tytułów oprogramowania
+## <a name="64-maintain-an-inventory-of-approved-azure-resources-and-software-titles"></a>6.4: Obsługa spisu zatwierdzonych zasobów i tytułów oprogramowania platformy Azure
 
-| Identyfikator platformy Azure | Identyfikatory WNP | Odpowiedzialność |
+| Identyfikator platformy Azure | Identyfikatory SIC | Odpowiedzialność |
 |--|--|--|
 | 6.4 | 2.1 | Klient |
 
 Zdefiniuj zatwierdzone zasoby platformy Azure i zatwierdzone oprogramowanie dla zasobów obliczeniowych.
 
-## <a name="65-monitor-for-unapproved-azure-resources"></a>6,5: Monitoruj niezatwierdzone zasoby platformy Azure
+## <a name="65-monitor-for-unapproved-azure-resources"></a>6.5: Monitoruj niezatwierdzone zasoby platformy Azure
 
-| Identyfikator platformy Azure | Identyfikatory WNP | Odpowiedzialność |
+| Identyfikator platformy Azure | Identyfikatory SIC | Odpowiedzialność |
 |--|--|--|
-| 6.5 | 2,3, 2,4 | Klient |
+| 6.5 | 2.3, 2.4 | Klient |
 
-Użyj Azure Policy, aby umieścić ograniczenia dotyczące typu zasobów, które można utworzyć w ramach subskrypcji.
+Użyj zasad platformy Azure, aby wprowadzić ograniczenia dotyczące typu zasobów, które można utworzyć w ramach subskrypcji.
 
-Użyj grafu zasobów platformy Azure do wykonywania zapytań/odnajdywania zasobów w ramach subskrypcji. &nbsp;upewnić się, że wszystkie zasoby platformy Azure obecne w środowisku są zatwierdzone.
+Użyj usługi Azure Resource Graph do wykonywania zapytań/odnajdywanie zasobów w ramach ich subskrypcji. &nbsp;Upewnij się, że wszystkie zasoby platformy Azure obecne w środowisku są zatwierdzone.
 
-Jak skonfigurować Azure Policy i zarządzać nimi:
+Jak skonfigurować zasady platformy Azure i zarządzać nimi:
 
 https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
-Jak tworzyć zapytania za pomocą usługi Azure Graph:
+Jak tworzyć zapytania za pomocą programu Azure Graph:
 
 https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
 
-## <a name="66-monitor-for-unapproved-software-applications-within-compute-resources"></a>6,6: Monitoruj niezatwierdzone aplikacje oprogramowania w ramach zasobów obliczeniowych
+## <a name="66-monitor-for-unapproved-software-applications-within-compute-resources"></a>6.6: Monitorowanie niezatwierdzonych aplikacji w zasobach obliczeniowych
 
-| Identyfikator platformy Azure | Identyfikatory WNP | Odpowiedzialność |
+| Identyfikator platformy Azure | Identyfikatory SIC | Odpowiedzialność |
 |--|--|--|
 | 6.6 | 2.3/2.4 | Klient |
 
-Użyj spisu maszyn wirtualnych platformy Azure, aby zautomatyzować zbieranie informacji o całym oprogramowaniu na Virtual Machines. W Azure Portal są dostępne nazwy, wersje, Wydawca i czas odświeżania oprogramowania. Aby uzyskać dostęp do daty instalacji i innych informacji, Włącz diagnostykę na poziomie gościa i Przenieś dzienniki zdarzeń systemu Windows do obszaru roboczego Log Analytics.
+Użyj usługi Azure virtual machine Inventory, aby zautomatyzować zbieranie informacji o całym oprogramowaniu na maszynach wirtualnych. Czas nazwy oprogramowania, wersji, wydawcy i odświeżania jest dostępny w witrynie Azure portal. Aby uzyskać dostęp do daty instalacji i innych informacji, włącz diagnostykę na poziomie gościa i przenieś dzienniki zdarzeń systemu Windows do obszaru roboczego analizy dzienników.
 
-Jak włączyć Spis maszyn wirtualnych platformy Azure:
+Jak włączyć zasoby reklamowe maszyn wirtualnych platformy Azure:
 
 https://docs.microsoft.com/azure/automation/automation-tutorial-installed-software
 
-## <a name="67-remove-unapproved-azure-resources-and-software-applications"></a>6,7: Usuń niezatwierdzone zasoby platformy Azure i aplikacje oprogramowania
+## <a name="67-remove-unapproved-azure-resources-and-software-applications"></a>6.7: Usuwanie niezatwierdzonych zasobów platformy Azure i aplikacji
 
-| Identyfikator platformy Azure | Identyfikatory WNP | Odpowiedzialność |
+| Identyfikator platformy Azure | Identyfikatory SIC | Odpowiedzialność |
 |--|--|--|
 | 6.7 | 2.5 | Klient |
 
-Użyj Azure Security Center monitorowania integralności plików (Change Tracking) i spisu maszyn wirtualnych, aby zidentyfikować całe oprogramowanie zainstalowane w Virtual Machines. Możesz zaimplementować własny proces usuwania nieautoryzowanego oprogramowania. Do zidentyfikowania niezatwierdzonego oprogramowania można również użyć rozwiązania innej firmy.
+Użyj monitorowania integralności plików (śledzenia zmian) usługi Azure Security Center i spisu maszyn wirtualnych, aby zidentyfikować całe oprogramowanie zainstalowane na maszynach wirtualnych. Można zaimplementować własny proces usuwania nieautoryzowanego oprogramowania. Można również użyć rozwiązania innej firmy do identyfikacji niezatwierdzone oprogramowanie.
 
-Jak używać monitorowania integralności plików:
+Jak korzystać z monitorowania integralności plików:
 
 https://docs.microsoft.com/azure/security-center/security-center-file-integrity-monitoring#using-file-integrity-monitoring
 
-Opis Change Tracking platformy Azure:
+Poznaj śledzenie zmian na platformie Azure:
 
 https://docs.microsoft.com/azure/automation/change-tracking
 
-Jak włączyć Spis maszyn wirtualnych platformy Azure:
+Jak włączyć spis maszyn wirtualnych platformy Azure:
 
 https://docs.microsoft.com/azure/automation/automation-tutorial-installed-software
 
-## <a name="68-use-only-approved-applications"></a>6,8: Używaj tylko zatwierdzonych aplikacji
+## <a name="68-use-only-approved-applications"></a>6.8: Używaj wyłącznie zatwierdzonych aplikacji
 
-| Identyfikator platformy Azure | Identyfikatory WNP | Odpowiedzialność |
+| Identyfikator platformy Azure | Identyfikatory SIC | Odpowiedzialność |
 |--|--|--|
 | 6.8 | 2,6 | Klient |
 
-Użyj Azure Security Center adaptacyjnych kontroli aplikacji, aby upewnić się, że tylko autoryzowane oprogramowanie i wszystkie nieautoryzowane oprogramowanie zostało zablokowane na platformie Azure Virtual Machines.
+Użyj kontroli aplikacji adaptacyjnych usługi Azure Security Center, aby upewnić się, że tylko autoryzowane oprogramowanie jest wykonywane, a wszystkie nieautoryzowane oprogramowanie jest blokowane w wykonywaniu na maszynach wirtualnych platformy Azure.
 
-Jak używać Azure Security Center adaptacyjnych kontroli aplikacji:
+Jak korzystać z formantów aplikacji adaptacyjnych usługi Azure Security Center:
 
 https://docs.microsoft.com/azure/security-center/security-center-adaptive-application
 
-## <a name="69-use-only-approved-azure-services"></a>6,9: Używaj tylko zatwierdzonych usług platformy Azure
+## <a name="69-use-only-approved-azure-services"></a>6.9: Korzystaj tylko z zatwierdzonych usług platformy Azure
 
-| Identyfikator platformy Azure | Identyfikatory WNP | Odpowiedzialność |
+| Identyfikator platformy Azure | Identyfikatory SIC | Odpowiedzialność |
 |--|--|--|
 | 6.9 | 2,6 | Klient |
 
-Użyj Azure Policy, aby ograniczyć usługi, które możesz udostępnić w danym środowisku.
+Użyj zasad platformy Azure, aby ograniczyć usługi, które można aprowizować w swoim środowisku.
 
-Jak skonfigurować Azure Policy i zarządzać nimi:
+Jak skonfigurować zasady platformy Azure i zarządzać nimi:
 
 https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
-Jak odmówić określonego typu zasobu Azure Policy:
+Jak odmówić określonego typu zasobu za pomocą usługi Azure Policy:
 
 https://docs.microsoft.com/azure/governance/policy/samples/not-allowed-resource-types
 
-## <a name="610-implement-approved-application-list"></a>6,10: Zaimplementuj listę zatwierdzonych aplikacji
+## <a name="610-implement-approved-application-list"></a>6.10: Wdrożenie listy zatwierdzonych wniosków
 
-| Identyfikator platformy Azure | Identyfikatory WNP | Odpowiedzialność |
+| Identyfikator platformy Azure | Identyfikatory SIC | Odpowiedzialność |
 |--|--|--|
 | 6.1 | 2.7 | Klient |
 
-Użyj Azure Security Center adaptacyjnych kontrolek aplikacji, aby określić typy plików, których może dotyczyć reguła lub które nie mogą być stosowane.
+Użyj formantów aplikacji adaptacyjnych usługi Azure Security Center, aby określić typy plików, do których reguła może, ale nie, zastosować.
 
-Zaimplementuj rozwiązanie innych firm, jeśli nie spełnia ono wymagań.
+Zaimplementuj rozwiązanie innych firm, jeśli nie spełnia to wymagań.
 
-Jak używać Azure Security Center adaptacyjnych kontroli aplikacji:
+Jak korzystać z formantów aplikacji adaptacyjnych usługi Azure Security Center:
 
 https://docs.microsoft.com/azure/security-center/security-center-adaptive-application
 
-## <a name="611-limit-users-ability-to-interact-with-azure-resource-manager-via-scripts"></a>6,11: Ogranicz możliwość korzystania przez użytkowników z Azure Resource Manager za pośrednictwem skryptów
+## <a name="611-limit-users-ability-to-interact-with-azure-resource-manager-via-scripts"></a>6.11: Ograniczanie użytkownikom możliwości interakcji z usługą Azure Resource Manager za pomocą skryptów
 
-| Identyfikator platformy Azure | Identyfikatory WNP | Odpowiedzialność |
+| Identyfikator platformy Azure | Identyfikatory SIC | Odpowiedzialność |
 |--|--|--|
-| 6,11 | 2.8 | Klient |
+| 6.11 | 2,8 | Klient |
 
-Użyj dostępu warunkowego platformy Azure, aby ograniczyć możliwość współpracy użytkowników z Azure Resource Manager przez skonfigurowanie &quot;bloku dostępu&quot; dla aplikacji &quot;Microsoft Azure Management&quot;.
+Użyj dostępu warunkowego platformy Azure, aby ograniczyć użytkownikom &quot;możliwość&quot; interakcji &quot;z usługą Azure Resource Manager, konfigurując blok dostępu dla aplikacji Microsoft Azure Management.&quot;
 
-Jak skonfigurować dostęp warunkowy w celu blokowania dostępu do Azure Resource Manager:
+Jak skonfigurować dostęp warunkowy, aby zablokować dostęp do usługi Azure Resource Manager:
 
 https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management
 
-## <a name="612-limit-users-ability-to-execute-scripts-within-compute-resources"></a>6,12: Ogranicz możliwość wykonywania skryptów w zasobach obliczeniowych przez użytkowników
+## <a name="612-limit-users-ability-to-execute-scripts-within-compute-resources"></a>6.12: Ograniczenie możliwości wykonywania skryptów przez użytkowników w zasobach obliczeniowych
 
-| Identyfikator platformy Azure | Identyfikatory WNP | Odpowiedzialność |
+| Identyfikator platformy Azure | Identyfikatory SIC | Odpowiedzialność |
 |--|--|--|
-| 6,12 | 2.8 | Klient |
+| 6.12 | 2,8 | Klient |
 
-Użyj określonych konfiguracji systemu operacyjnego lub zasobów innych firm, aby ograniczyć możliwość wykonywania skryptów w ramach zasobów obliczeniowych platformy Azure.
+Użyj konfiguracji specyficznych dla systemu operacyjnego lub zasobów innych firm, aby ograniczyć zdolność użytkowników do wykonywania skryptów w zasobach obliczeniowych platformy Azure.
 
-Na przykład Sterowanie wykonywaniem skryptu programu PowerShell w środowiskach systemu Windows:
+Na przykład sposób sterowania wykonywaniem skryptów programu PowerShell w środowiskach systemu Windows:
 
 https://docs.microsoft.com/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-6
 
-## <a name="613-physically-or-logically-segregate-high-risk-applications"></a>6,13: fizyczne lub logiczne rozdzielenie aplikacji wysokiego ryzyka
+## <a name="613-physically-or-logically-segregate-high-risk-applications"></a>6.13: Fizycznie lub logicznie segregować aplikacje wysokiego ryzyka
 
-| Identyfikator platformy Azure | Identyfikatory WNP | Odpowiedzialność |
+| Identyfikator platformy Azure | Identyfikatory SIC | Odpowiedzialność |
 |--|--|--|
-| 6,13 | 2.9 | Klient |
+| 6.13 | 2.9 | Klient |
 
-Oprogramowanie wymagane do działania biznesowego, ale może powodować większe ryzyko dla organizacji, powinno być odizolowane w ramach własnej maszyny wirtualnej i/lub sieci wirtualnej i dostatecznie zabezpieczone za pomocą zapory platformy Azure lub sieciowej grupy zabezpieczeń.
+Oprogramowanie, które jest wymagane dla operacji biznesowych, ale może nieść większe ryzyko dla organizacji, powinno być odizolowane w obrębie własnej maszyny wirtualnej i/lub sieci wirtualnej i wystarczająco zabezpieczone za pomocą zapory azure lub sieciowej grupy zabezpieczeń.
 
 Jak utworzyć sieć wirtualną:
 
 https://docs.microsoft.com/azure/virtual-network/quick-create-portal
 
-Jak utworzyć sieciowej grupy zabezpieczeń z konfiguracją zabezpieczeń:
+Jak utworzyć nsg z config zabezpieczeń:
 
 https://docs.microsoft.com/azure/virtual-network/tutorial-filter-network-traffic
 
 ## <a name="next-steps"></a>Następne kroki
 
-Zobacz następną kontrolę zabezpieczeń: [bezpieczna konfiguracja](security-control-secure-configuration.md)
+Zobacz następną kontrolę zabezpieczeń: [Bezpieczna konfiguracja](security-control-secure-configuration.md)

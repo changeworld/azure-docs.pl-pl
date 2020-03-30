@@ -1,6 +1,6 @@
 ---
-title: 'Generowanie i eksportowanie certyfikatów dla punktu do lokacji: Linux: CLI'
-description: Utwórz certyfikat główny z podpisem własnym, wyeksportuj klucz publiczny i Wygeneruj certyfikaty klienta przy użyciu interfejsu wiersza polecenia systemu Linux (klient strongswan).
+title: 'Generowanie i eksportowanie certyfikatów dla point-to-site: Linux: CLI'
+description: Utwórz certyfikat główny z podpisem własnym, wyeksportuj klucz publiczny i wygeneruj certyfikaty klientów przy użyciu interfejsu wiersza polecenia systemu Linux (strongSwan).
 titleSuffix: Azure VPN Gateway
 services: vpn-gateway
 author: anzaman
@@ -9,17 +9,17 @@ ms.topic: article
 ms.date: 08/14/2019
 ms.author: alzam
 ms.openlocfilehash: a0f996ff2805da4dd5af400642eef2506c228d33
-ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75779760"
 ---
 # <a name="generate-and-export-certificates"></a>Generowanie i eksportowanie certyfikatów
 
-Połączenia punkt-lokacja używają certyfikatów do uwierzytelniania. W tym artykule pokazano, jak utworzyć certyfikat główny z podpisem własnym i wygenerować certyfikaty klienta przy użyciu interfejsu wiersza polecenia systemu Linux i klient strongswan. Jeśli szukasz różnych instrukcji dotyczących certyfikatów, zobacz artykuły dotyczące [programu PowerShell](vpn-gateway-certificates-point-to-site.md) lub [MakeCert](vpn-gateway-certificates-point-to-site-makecert.md) . Aby uzyskać informacje na temat sposobu instalowania klient strongswan przy użyciu graficznego interfejsu użytkownika zamiast interfejsu wiersza polecenia, zobacz kroki opisane w artykule dotyczącym [konfiguracji klienta](point-to-site-vpn-client-configuration-azure-cert.md#install) .
+Połączenia typu "punkt-lokacja" używają certyfikatów do uwierzytelniania. W tym artykule pokazano, jak utworzyć certyfikat główny z podpisem własnym i wygenerować certyfikaty klienta przy użyciu interfejsu wiersza polecenia systemu Linux i strongSwan. Jeśli szukasz różnych instrukcji certyfikatów, zobacz artykuły [programu Powershell](vpn-gateway-certificates-point-to-site.md) lub [MakeCert.](vpn-gateway-certificates-point-to-site-makecert.md) Aby uzyskać informacje dotyczące sposobu instalowania strongSwan przy użyciu interfejsu użytkownika zamiast interfejsu wiersza polecenia, zobacz kroki w artykule [konfiguracji klienta.](point-to-site-vpn-client-configuration-azure-cert.md#install)
 
-## <a name="install-strongswan"></a>Zainstaluj klient strongswan
+## <a name="install-strongswan"></a>Zainstaluj strongSwan
 
 [!INCLUDE [strongSwan Install](../../includes/vpn-gateway-strongswan-install-include.md)]
 
@@ -29,4 +29,4 @@ Połączenia punkt-lokacja używają certyfikatów do uwierzytelniania. W tym ar
 
 ## <a name="next-steps"></a>Następne kroki
 
-Kontynuuj konfigurację typu punkt-lokacja, aby [tworzyć i instalować pliki konfiguracji klienta sieci VPN](point-to-site-vpn-client-configuration-azure-cert.md#linuxinstallcli).
+Kontynuuj konfigurowanie punktu do lokacji, aby [utworzyć i zainstalować pliki konfiguracyjne klienta sieci VPN](point-to-site-vpn-client-configuration-azure-cert.md#linuxinstallcli).

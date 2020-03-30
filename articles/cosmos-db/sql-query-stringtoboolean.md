@@ -1,6 +1,6 @@
 ---
-title: StringToBoolean w języku zapytań Azure Cosmos DB
-description: Dowiedz się więcej o funkcji StringToBoolean systemu SQL w Azure Cosmos DB.
+title: StringToBoolean w języku kwerend usługi Azure Cosmos DB
+description: Dowiedz się więcej o funkcji systemu SQL StringToBoolean w usłudze Azure Cosmos DB.
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
@@ -8,14 +8,14 @@ ms.date: 03/03/2020
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: ce11db91eff51e669f0917fbf34b1d560d0e9f07
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78296545"
 ---
-# <a name="stringtoboolean-azure-cosmos-db"></a>StringToBoolean (Azure Cosmos DB)
- Zwraca wyrażenie tłumaczone na wartość logiczną. Jeśli wyrażenia nie można przetłumaczyć, funkcja zwraca wartość undefined.  
+# <a name="stringtoboolean-azure-cosmos-db"></a>StringToBoolean (usługa Azure Cosmos DB)
+ Zwraca wyrażenie przetłumaczone na wartość logiczną. Jeśli nie można przetłumaczyć wyrażenia, zwraca niezdefiniowane.  
   
 ## <a name="syntax"></a>Składnia
   
@@ -28,17 +28,17 @@ StringToBoolean(<str_expr>)
 *str_expr*  
    Jest wyrażeniem ciągu, które ma być analizowane jako wyrażenie logiczne.  
   
-## <a name="return-types"></a>Typy zwracane
+## <a name="return-types"></a>Typy zwrotów
   
   Zwraca wyrażenie logiczne lub niezdefiniowane.  
   
 ## <a name="examples"></a>Przykłady
   
-  Poniższy przykład pokazuje, jak `StringToBoolean` działa w różnych typach. 
+  W poniższym `StringToBoolean` przykładzie pokazano, jak zachowuje się w różnych typach. 
  
- Poniżej przedstawiono przykłady z prawidłowymi danymi wejściowymi.
+ Poniżej przedstawiono przykłady z prawidłowym wejściem.
 
-Biały znak jest dozwolony tylko przed lub po "prawda"/"fałsz".
+Odstęp jest dozwolony tylko przed lub po "true"/"false".
 
 ```sql
 SELECT 
@@ -53,9 +53,9 @@ SELECT
 [{"b1": true, "b2": false, "b3": false}]
 ```  
 
-Poniżej przedstawiono przykłady z nieprawidłowymi danymi wejściowymi.
+Poniżej przedstawiono przykłady z nieprawidłowym wprowadzaniem danych.
 
- Wartości logiczne uwzględniają wielkość liter i muszą być zapisywane ze wszystkimi małymi literami, np. "true" i "false".
+ Wartości logiczne są rozróżniane i muszą być zapisywane ze wszystkimi małych liter, czyli "true" i "false".
 
 ```sql
 SELECT 
@@ -69,7 +69,7 @@ Tutaj znajduje się zestaw wyników.
 [{}]
 ``` 
 
-Wyrażenie przesłane zostanie przeanalizowane jako wyrażenie logiczne; te dane wejściowe nie są obliczane do typu Boolean i w ten sposób zwracają niezdefiniowane.
+Przekazane wyrażenie będzie analizowane jako wyrażenie logiczne; te dane wejściowe nie są do oceny typu logicznego i w ten sposób zwracają niezdefiniowane.
 
 ```sql
 SELECT 
@@ -88,10 +88,10 @@ Tutaj znajduje się zestaw wyników.
 
 ## <a name="remarks"></a>Uwagi
 
-Ta funkcja systemowa nie będzie używać indeksu.
+Ta funkcja systemu nie będzie korzystać z indeksu.
 
 ## <a name="next-steps"></a>Następne kroki
 
-- [Azure Cosmos DB funkcje ciągów](sql-query-string-functions.md)
-- [Azure Cosmos DB funkcje systemowe](sql-query-system-functions.md)
-- [Wprowadzenie do Azure Cosmos DB](introduction.md)
+- [Funkcje ciągów usługi Azure Cosmos DB](sql-query-string-functions.md)
+- [Funkcje systemowe Usługi Azure Cosmos DB](sql-query-system-functions.md)
+- [Wprowadzenie do usługi Azure Cosmos DB](introduction.md)

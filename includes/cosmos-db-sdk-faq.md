@@ -5,33 +5,33 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: sngun
 ms.openlocfilehash: 99dddd86c9348c9791d3012b382298bb020e63c9
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67182982"
 ---
-**1. Jak klienci zgłasza Ustępujący zestawu SDK?**
+**1. W jaki sposób klienci zostaną powiadomieni o wycofanym SDK?**
 
-Firma Microsoft zapewni 12-miesięcznego powiadomienie w celu obsługi Ustępujący zestawu SDK w celu ułatwienia płynne przejście do obsługiwanym zestawem SDK. Co więcej klienci zostaną powiadomieni za pośrednictwem różnych komunikacji kanały — portalu zarządzania systemu Azure, Centrum deweloperów, wpis w blogu i bezpośrednią komunikację można przypisać administratorów usługi.
+Firma Microsoft zapewni powiadomienie z 12-miesięcznym wyprzedzeniem po zakończeniu obsługi wycofanego sdk w celu ułatwienia płynnego przejścia do obsługiwanego sdk. Ponadto klienci będą powiadamiani za pośrednictwem różnych kanałów komunikacji — Azure Management Portal, Developer Center, wpis w blogu i bezpośredniej komunikacji z przypisanymi administratorami usług.
 
-**2. Klienci, mogą tworzyć aplikacje przy użyciu "przywrócenia" wycofane usługi Azure Cosmos DB zestawu SDK w okresie 12-miesięcznego?** 
+**2. Czy klienci mogą tworzyć aplikacje przy użyciu wycofanego sdk usługi Azure Cosmos DB w okresie 12 miesięcy?** 
 
-Tak, klienci będą mogli korzystać pełny dostęp, tworzyć, wdrażać i modyfikować aplikacje przy użyciu "przywrócenia" wycofane usługi Azure Cosmos DB zestawu SDK w trakcie 12-miesięcznego okresu prolongaty. W trakcie 12-miesięcznego okresu prolongaty klientów doradza się przeprowadzić migrację do nowszej obsługiwanej wersji zestawu SDK usługi Azure Cosmos DB zgodnie z potrzebami.
+Tak, klienci będą mieli pełny dostęp do autora, wdrażania i modyfikowania aplikacji przy użyciu wycofanych sdk usługi Azure Cosmos DB w okresie prolongaty 12 miesięcy. Podczas 12-miesięcznego okresu prolongaty zaleca się klientom migrację do nowszej obsługiwanej wersji sdk usługi Azure Cosmos DB, stosownie do przypadku.
 
-**3. Można klientów w tworzeniu i modyfikowaniu aplikacji przy użyciu wycofane zestawu SDK programu usługi Azure Cosmos DB po 12-miesięcznego okresu powiadomienia?**
+**3. Czy klienci mogą tworzyć i modyfikować aplikacje przy użyciu wycofanego sdk usługi Azure Cosmos DB po 12-miesięcznym okresie powiadamiania?**
 
-Zestaw SDK zostaną wycofane po 12-miesięcznego okresu powiadomień. Dostęp do usługi Azure Cosmos DB aplikacje przy użyciu wycofane zestawu SDK nie będzie możliwe przez platformę Azure Cosmos DB. Ponadto firma Microsoft nie oferuje techniczną wycofane zestawu SDK.
+Po upływie 12 miesięcy okresu powiadomienia sdk zostanie wycofany. Każdy dostęp do usługi Azure Cosmos DB przez aplikacje przy użyciu wycofanego zestawu SDK nie będą dozwolone przez platformę usługi Azure Cosmos DB. Ponadto firma Microsoft nie zapewni obsługi klienta w wycofanym sdku.
 
-**4. Co się stanie, aby klient korzysta z aplikacji, które korzystają z nieobsługiwanej wersji zestawu SDK usługi Azure Cosmos DB?**
+**4. Co się stanie z uruchomionymi aplikacjami Klienta, które korzystają z nieobsługiconej wersji SDK usługi Azure Cosmos DB?**
 
-Podjętych w celu połączenia z usługą Azure Cosmos DB przy użyciu wycofane wersji zestawu SDK będą odrzucane. 
+Wszelkie próby połączenia się z usługą Azure Cosmos DB z wycofaną wersją SDK zostaną odrzucone. 
 
-**5. Nowe funkcje i możliwości one stosowane do wszystkich innych wycofane zestawy SDK?**
+**5. Czy nowe funkcje i funkcje będą stosowane do wszystkich nienasyconych sdk?**
 
-Nowe funkcje i możliwości będą dodawane tylko do nowych wersji. Jeśli używasz starego, bez wycofania wersji zestawu SDK dla żądań w usłudze Azure Cosmos DB będą nadal działać jak poprzednie, ale nie będziesz mieć dostępu do żadnych nowych funkcji.  
+Nowe funkcje i funkcje zostaną dodane tylko do nowych wersji. Jeśli używasz starej, nieudzielonejedna, wersja SDK żądania do usługi Azure Cosmos DB będzie nadal działać jako poprzedni, ale nie będzie miał dostępu do żadnych nowych możliwości.  
 
-**6. Co należy zrobić, jeśli nie można zaktualizować aplikację przed daty?**
+**6. Co należy zrobić, jeśli nie mogę zaktualizować zgłoszenia przed datą daty daty daty daty daty daty ścięcia?**
 
-Zalecamy możliwie jak najszybciej Uaktualnij na najnowszy zestaw SDK. Po oznakowanego przechodzenia na emeryturę zestawu SDK będą dostępne 12 miesięcy, aby zaktualizować aplikację. Jeśli z jakiegokolwiek powodu, nie można ukończyć aktualizacji aplikacji w tym przedziale czasowym, skontaktuj się [Cosmos DB zespołu](mailto:askcosmosdb@microsoft.com) i zażądać ich pomocy przed dacie.
+Zaleca się uaktualnienie do najnowszego sdk jak najszybciej. Po oznaczeniu SDK na emeryturę będziesz miał 12 miesięcy na zaktualizowanie aplikacji. Jeśli z jakiegokolwiek powodu nie można ukończyć aktualizacji aplikacji w tym przedziale czasowym, skontaktuj się z [zespołem usługi Cosmos DB](mailto:askcosmosdb@microsoft.com) i poproś o pomoc przed datą odcięcia.
 

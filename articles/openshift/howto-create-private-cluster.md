@@ -1,35 +1,35 @@
 ---
-title: Tworzenie prywatnego klastra przy użyciu systemu Azure Red Hat OpenShift 3,11 | Microsoft Docs
-description: Tworzenie prywatnego klastra przy użyciu usługi Azure Red Hat OpenShift 3,11
+title: Tworzenie prywatnego klastra za pomocą usługi Azure Red Hat OpenShift 3.11 | Dokumenty firmy Microsoft
+description: Tworzenie klastra prywatnego za pomocą usługi Azure Red Hat OpenShift 3.11
 author: sakthi-vetrivel
 ms.author: suvetriv
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 03/02/2020
-keywords: ARO, OpenShift, prywatny klaster, Red Hat
+keywords: aro, openshift, prywatny klaster, czerwony kapelusz
 ms.openlocfilehash: b34b5d622527742447847102526eba9ee6ca220d
-ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78399421"
 ---
-# <a name="create-a-private-cluster-with-azure-red-hat-openshift-311"></a>Tworzenie prywatnego klastra przy użyciu usługi Azure Red Hat OpenShift 3,11
+# <a name="create-a-private-cluster-with-azure-red-hat-openshift-311"></a>Tworzenie klastra prywatnego za pomocą usługi Azure Red Hat OpenShift 3.11
 
 > [!IMPORTANT]
-> Klastry prywatne z systemem Red Hat OpenShift (ARO) są obecnie dostępne tylko w prywatnej wersji zapoznawczej w regionie Wschodnie stany USA 2. Zaakceptowanie prywatnej wersji zapoznawczej odbywa się tylko przez zaproszenie. Przed podjęciem próby włączenia tej funkcji upewnij się, że subskrypcja została zarejestrowana.
+> Klastry prywatne Azure Red Hat OpenShift (ARO) są obecnie dostępne tylko w prywatnej wersji zapoznawczej we wschodnich stanach USA 2. Akceptacja prywatnej wersji zapoznawczej odbywa się wyłącznie na zaproszenie. Przed podjęciem próby włączenia tej funkcji należy zarejestrować subskrypcję.
 
 Klastry prywatne zapewniają następujące korzyści:
 
-* Klastry prywatne nie ujawniają składników płaszczyzny kontroli klastra (takich jak serwery interfejsu API) na publicznym adresie IP.
-* Sieć wirtualna klastra prywatnego jest konfigurowana przez klientów, co pozwala na skonfigurowanie sieci w taki sposób, aby zezwalała na komunikację równorzędną z innymi sieciami wirtualnymi, w tym w środowiskach ExpressRoute. Możesz również skonfigurować niestandardowy serwer DNS w sieci wirtualnej, aby zintegrować z usługami wewnętrznymi.
+* Klastry prywatne nie uwidaczniają składników płaszczyzny kontroli klastra (takich jak serwery interfejsu API) na publicznym adresie IP.
+* Sieć wirtualna klastra prywatnego jest konfigurowana przez klientów, co umożliwia skonfigurowanie sieci w celu umożliwienia komunikacji równorzędnej z innymi sieciami wirtualnymi, w tym środowiskami usługi ExpressRoute. Można również skonfigurować niestandardowy system DNS w sieci wirtualnej w celu integracji z usługami wewnętrznymi.
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
 > [!NOTE]
-> Ta funkcja wymaga wersji 2019-10-27-Preview interfejsu API HTTP ARO. Nie jest jeszcze obsługiwane w interfejsie wiersza polecenia platformy Azure.
+> Ta funkcja wymaga wersji 2019-10-27-podgląd interfejsu API HTTP ARO. Nie jest jeszcze obsługiwana w platformie Azure CLI.
 
-Pola w poniższym fragmencie kodu konfiguracji są nowe i muszą być dołączone do konfiguracji klastra. `managementSubnetCidr` musi znajdować się w sieci wirtualnej klastra i jest używana przez platformę Azure do zarządzania klastrem.
+Pola w poniższym fragmentie kodu konfiguracji są nowe i muszą być uwzględnione w konfiguracji klastra. `managementSubnetCidr`musi znajdować się w sieci wirtualnej klastra i jest używany przez platformę Azure do zarządzania klastrem.
 
 ```json
 properties:
@@ -40,22 +40,22 @@ properties:
      privateApiServer: true
 ```
 
-Klaster prywatny można wdrożyć za pomocą przykładowych skryptów przedstawionych poniżej. Po wdrożeniu klastra wykonaj polecenie `cluster get` i sprawdź Właściwość `properties.FQDN`, aby określić prywatny adres IP serwera interfejsu API OpenShift.
+Klaster prywatny można wdrożyć przy użyciu przykładowych skryptów podanych poniżej. Po wdrożeniu klastra `cluster get` wykonaj polecenie `properties.FQDN` i wyświetl właściwość, aby określić prywatny adres IP serwera interfejsu API OpenShift.
 
-Sieć wirtualna klastra zostanie utworzona z uprawnieniami, aby można było ją zmodyfikować. Następnie można skonfigurować sieć w celu uzyskania dostępu do sieci wirtualnej (ExpressRoute, sieci VPN, komunikacji równorzędnej sieci wirtualnej) zgodnie z potrzebami.
+Sieć wirtualna klastra zostanie utworzona z uprawnieniami, dzięki czemu można ją zmodyfikować. Następnie można skonfigurować sieć, aby uzyskać dostęp do sieci wirtualnej (Usługi ExpressRoute, VPN, komunikacja równorzędna sieci wirtualnej) zgodnie z wymaganiami dla Twoich potrzeb.
 
-Jeśli zmienisz serwery nazw DNS w sieci wirtualnej klastra, musisz wydać aktualizację w klastrze z właściwością `properties.RefreshCluster` ustawioną na `true`, aby umożliwić odtwarzanie maszyn wirtualnych. Ta aktualizacja umożliwi im pobranie nowych serwery nazw.
+Jeśli zmienisz serwery nazw DNS w sieci wirtualnej klastra, musisz wydać `properties.RefreshCluster` aktualizację `true` klastra z właściwością ustawioną na tak, aby maszyny wirtualne mogły zostać ponownie zaaimagedowane. Ta aktualizacja pozwoli im odebrać nowe serwery nazw.
 
-## <a name="sample-configuration-scripts"></a>Przykładowe skrypty konfiguracyjne
+## <a name="sample-configuration-scripts"></a>Przykładowe skrypty konfiguracji
 
-Użyj przykładowych skryptów w tej sekcji, aby skonfigurować i wdrożyć swój prywatny klaster.
+Użyj przykładowych skryptów w tej sekcji, aby skonfigurować i wdrożyć klaster prywatny.
 
 ### <a name="environment"></a>Środowisko
 
-Wypełnij zmienne środowiskowe poniżej, używając własnych wartości.
+Wypełnij poniższe zmienne środowiskowe jako przy użyciu własnych wartości.
 
 > [!NOTE]
-> Lokalizacja musi być ustawiona na `eastus2`, ponieważ jest ona obecnie jedyną obsługiwaną lokalizacją dla klastrów prywatnych.
+> Lokalizacja musi być `eastus2` ustawiona na to, ponieważ jest to obecnie jedyna obsługiwana lokalizacja dla klastrów prywatnych.
 
 ``` bash
 export CLUSTER_NAME=
@@ -68,9 +68,9 @@ export CLIENT_ID=
 export SECRET=
 ```
 
-### <a name="private-clusterjson"></a>plik Private-Cluster. JSON
+### <a name="private-clusterjson"></a>prywatna cluster.json
 
-Korzystając ze zmiennych środowiskowych zdefiniowanych powyżej, poniżej przedstawiono przykładową konfigurację klastra z włączonym klastrem prywatnym.
+Przy użyciu zmiennych środowiskowych zdefiniowanych powyżej, w tym miejscu jest konfiguracja klastra próbki z klastra prywatnego włączone.
 
 ```json
 {
@@ -135,7 +135,7 @@ Korzystając ze zmiennych środowiskowych zdefiniowanych powyżej, poniżej prze
 
 ## <a name="deploy-a-private-cluster"></a>Wdrażanie klastra prywatnego
 
-Po skonfigurowaniu klastra prywatnego z przykładowymi skryptami należy uruchomić następujące polecenie, aby wdrożyć swój prywatny klaster.
+Po skonfigurowaniu klastra prywatnego przy za pomocą przykładowych skryptów powyższych, uruchom następujące polecenie, aby wdrożyć klaster prywatny.
 
 ``` bash
 az group create --name $CLUSTER_NAME --location $LOCATION

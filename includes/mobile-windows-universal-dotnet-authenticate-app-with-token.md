@@ -5,17 +5,17 @@ ms.topic: include
 ms.date: 11/25/2018
 ms.author: crdun
 ms.openlocfilehash: d71d52257b6e8cfa243207c9bfdb5c7de7d3dd37
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67183912"
 ---
-1. W pliku MainPage.xaml.cs projektu, Dodaj następujący kod **przy użyciu** instrukcji:
+1. W pliku projektu MainPage.xaml.cs dodaj następujące **instrukcje:**
    
         using System.Linq;        
         using Windows.Security.Credentials;
-2. Zastąp **metody AuthenticateAsync** metoda następującym kodem:
+2. Zastąp metodę **AuthenticateAsync** następującym kodem:
    
         private async System.Threading.Tasks.Task<bool> AuthenticateAsync()
         {
@@ -84,13 +84,13 @@ ms.locfileid: "67183912"
             return success;
         }
    
-    W tej wersji programu **metody AuthenticateAsync**, aplikacja próbuje użyć poświadczeń przechowywanych w **PasswordVault** dostęp do usługi. Regularne logowania również odbywa się po nie przechowywanych poświadczeń.
+    W tej wersji **AuthenticateAsync**aplikacja próbuje użyć poświadczeń przechowywanych w **PasswordVault,** aby uzyskać dostęp do usługi. Regularne logowanie jest również wykonywane, gdy nie ma przechowywanych poświadczeń.
    
    > [!NOTE]
-   > Buforowany token mogły wygasnąć, a po uwierzytelnieniu wygaśnięcia tokenu może również wystąpić, gdy aplikacja jest w użyciu. Aby dowiedzieć się, jak określić, jeśli token wygasł, zobacz [Sprawdź, czy tokeny uwierzytelniania wygasłe](https://aka.ms/jww5vp). Jako rozwiązanie do obsługi błędów autoryzacji związane z tokenami wygasające, zobacz wpis [oraz usług Caching i obsługiwanie wygasłych tokenów w usługach Azure Mobile Services zarządzanego zestawu SDK](https://blogs.msdn.com/b/carlosfigueira/archive/2014/03/13/caching-and-handling-expired-tokens-in-azure-mobile-services-managed-sdk.aspx). 
+   > Token buforowany może wygasnąć, a wygaśnięcie tokenu może również wystąpić po uwierzytelnieniu, gdy aplikacja jest w użyciu. Aby dowiedzieć się, jak ustalić, czy token wygasł, zobacz [Sprawdzanie wygasłych tokenów uwierzytelniania.](https://aka.ms/jww5vp) Aby uzyskać rozwiązanie do obsługi błędów autoryzacji związanych z wygasającymi tokenami, zobacz [buforowanie i obsługę wygasłych tokenów w zarządzanym sdk azure mobile services](https://blogs.msdn.com/b/carlosfigueira/archive/2014/03/13/caching-and-handling-expired-tokens-in-azure-mobile-services-managed-sdk.aspx). 
    > 
    > 
-3. Uruchom ponownie aplikację dwa razy.
+3. Uruchom ponownie aplikację dwukrotnie.
    
-    Należy zauważyć, że w pierwszym rozruchu, zaloguj się przy użyciu dostawcy ponownie jest wymagana. Jednak na drugie ponowne uruchomienie buforowane poświadczenia są używane i logowania jest pomijany. 
+    Należy zauważyć, że przy pierwszym uruchomieniu ponowne logowanie się u dostawcy jest wymagane. Jednak przy drugim ponownym uruchomieniu są używane poświadczenia buforowane i logowania jest pomijany. 
 
