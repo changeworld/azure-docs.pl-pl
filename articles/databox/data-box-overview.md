@@ -10,10 +10,10 @@ ms.topic: overview
 ms.date: 09/17/2019
 ms.author: alkohli
 ms.openlocfilehash: a3e27cf427de3a33f71d6f4a0af9b1590abeb573
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "79240716"
 ---
 # <a name="what-is-azure-data-box"></a>Co to jest usługa Azure Data Box?
@@ -68,7 +68,7 @@ Urządzenie Data Box ma w tej wersji następujące cechy.
 | Nośniki do transferu danych                                     | Przewody 10 GbE Ethernet, RJ45 i miedziany SFP+  |
 | Zabezpieczenia                                                | Wytrzymała obudowa urządzenia z antywłamaniowymi śrubami. <br> Nalepki umożliwiające wykrycie naruszenia umieszczone w dolnej części urządzenia.|
 | Szybkość transferu danych                                      | Do 80 TB w ciągu jednego dnia przy zastosowaniu interfejsu sieciowego 10 GbE.        |
-| Serwer                                              | Lokalny internetowy interfejs użytkownika — jednorazowa konfiguracja początkowa. <br> Witryna Azure Portal — bieżące zarządzanie urządzeniem.        |
+| Zarządzanie                                              | Lokalny internetowy interfejs użytkownika — jednorazowa konfiguracja początkowa. <br> Witryna Azure Portal — bieżące zarządzanie urządzeniem.        |
 
 ## <a name="data-box-components"></a>Składniki rozwiązania Data Box
 
@@ -109,9 +109,9 @@ W trakcie tego procesu będziesz otrzymywać powiadomienia e-mail o wszystkich z
 
 ## <a name="region-availability"></a>Dostępność w danym regionie
 
-Urządzenie Data Box może transferować dane na podstawie regionu, w którym wdrożono usługę, kraju/regionu, do którego urządzenie jest dostarczane, oraz docelowego konta usługi Azure Storage, na którym są przesyłane dane. 
+Data Box można przesyłać dane na podstawie regionu, w którym usługa jest wdrażana, kraju/regionu, do którego urządzenie jest wysyłane, a docelowe konto magazynu platformy Azure, w którym są przesyłane dane. 
 
-- **Dostępność usługi** — Aby uzyskać informacje na temat dostępności regionów, przejdź do pozycji [produkty platformy Azure dostępne według regionów](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all). Urządzenie Data Box można również wdrożyć w chmurze Azure Government. Aby uzyskać więcej informacji, zobacz [co to jest Azure Government?](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome).
+- **Dostępność usługi** — aby uzyskać informacje na temat dostępności regionu, przejdź do [produktów platformy Azure dostępnych według regionu](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all). Data Box można również wdrożyć w chmurze azure dla instytucji rządowych. Aby uzyskać więcej informacji, zobacz [Co to jest platforma Azure government?](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome).
 
 - **Docelowe konta magazynu** — konta magazynu do przechowywania danych są dostępne we wszystkich regionach świadczenia usługi Azure, w których ta usługa jest dostępna.  
 

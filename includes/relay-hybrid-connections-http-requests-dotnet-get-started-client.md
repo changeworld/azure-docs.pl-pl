@@ -9,17 +9,17 @@ ms.date: 08/16/2018
 ms.author: clemensv
 ms.custom: include file
 ms.openlocfilehash: ce29cd03de46e1d93d7f1f28f9f5184cd59a57e7
-ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "79200341"
 ---
 ### <a name="create-a-console-application"></a>Tworzenie aplikacji konsolowej
 
 Jeśli opcja „Wymaga autoryzacji klienta” została wyłączona podczas tworzenia usługi Relay, możesz wysyłać żądania na adres połączeń hybrydowych za pomocą dowolnej przeglądarki. Aby uzyskać dostęp do chronionych punktów końcowych, musisz utworzyć i przekazać token w nagłówku `ServiceBusAuthorization` pokazanym w tym miejscu.
 
-W programie Visual Studio utwórz nowy projekt **Aplikacja konsoli (.NET Framework)** .
+W programie Visual Studio utwórz nowy projekt **Aplikacja konsoli (.NET Framework)**.
 
 ### <a name="add-the-relay-nuget-package"></a>Dodawanie pakietu NuGet usługi Relay
 

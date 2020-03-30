@@ -1,6 +1,6 @@
 ---
-title: Publikowanie funkcji na platformie Azure przy użyciu języka Java i Maven/Gradle
-description: Utwórz i Opublikuj funkcję wyzwalaną przez protokół HTTP na platformie Azure przy użyciu języka Java i Maven lub Gradle.
+title: Publikowanie funkcji na platformie Azure za pomocą języka Java i Maven/Gradle
+description: Tworzenie i publikowanie funkcji wyzwalanej przez protokół HTTP na platformie Azure za pomocą języka Java i Maven lub Gradle.
 author: KarlErickson
 ms.author: karler
 ms.topic: quickstart
@@ -8,15 +8,15 @@ ms.date: 08/10/2018
 ms.custom: mvc, devcenter, seo-java-july2019, seo-java-august2019, seo-java-september2019
 zone_pivot_groups: java-build-tools-set
 ms.openlocfilehash: ad3b38a12020c56c31e03879b3fbcb9a8dda25f1
-ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "79136871"
 ---
-# <a name="quickstart-use-java-and-mavengradle-to-create-and-publish-a-function-to-azure"></a>Szybki Start: używanie języka Java i Maven/Gradle do tworzenia i publikowania funkcji na platformie Azure
+# <a name="quickstart-use-java-and-mavengradle-to-create-and-publish-a-function-to-azure"></a>Szybki start: tworzenie i publikowanie funkcji na platformie Azure za pomocą funkcji Java i Maven/Gradle
 
-W tym artykule opisano sposób kompilowania i publikowania funkcji języka Java w celu Azure Functions za pomocą narzędzia wiersza polecenia Maven/Gradle. Gdy wszystko będzie gotowe, kod funkcji jest uruchamiany na platformie Azure w [planie hostingu bezserwerowym](functions-scale.md#consumption-plan) i jest wyzwalany przez żądanie HTTP.
+W tym artykule pokazano, jak skompilować i opublikować funkcję Java w usłudze Azure Functions za pomocą narzędzia wiersza polecenia Maven/Gradle. Po zakończeniu kodu funkcji jest uruchamiany na platformie Azure w [planie hostingu bezserwerowym](functions-scale.md#consumption-plan) i jest wyzwalany przez żądanie HTTP.
 
 <!--
 > [!NOTE] 
@@ -29,13 +29,13 @@ Aby opracowywać funkcje przy użyciu języka Java, musisz mieć zainstalowane n
 
 - Zestaw [Java Developer Kit](https://aka.ms/azure-jdks), wersja 8
 - [Interfejs wiersza polecenia platformy Azure]
-- [Azure Functions Core Tools](./functions-run-local.md#v2) w wersji 2.6.666 lub nowszej
+- [Narzędzia podstawowe usług Azure Functions w](./functions-run-local.md#v2) wersji 2.6.666 lub wyższej
 ::: zone pivot="java-build-tools-maven" 
 - Narzędzie [Apache Maven](https://maven.apache.org), wersja 3.0 lub nowsza
 ::: zone-end
 
 ::: zone pivot="java-build-tools-gradle"  
-- [Gradle](https://gradle.org/), wersja 4,10 lub nowsza
+- [Gradle](https://gradle.org/), wersja 4.10 i powyżej
 ::: zone-end 
 
 Potrzebna jest również aktywna subskrypcja platformy Azure. [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
@@ -44,7 +44,7 @@ Potrzebna jest również aktywna subskrypcja platformy Azure. [!INCLUDE [quickst
 > [!IMPORTANT]
 > Aby wykonać wszystkie czynności opisane w tym przewodniku Szybki start, dla zmiennej środowiskowej JAVA_HOME należy ustawić lokalizację instalacji zestawu JDK.
 
-## <a name="prepare-a-functions-project"></a>Przygotuj projekt funkcji
+## <a name="prepare-a-functions-project"></a>Przygotowywanie projektu funkcji
 
 ::: zone pivot="java-build-tools-maven" 
 W pustym folderze uruchom następujące polecenie, aby wygenerować projekt usługi Functions z [archetypu narzędzia Maven](https://maven.apache.org/guides/introduction/introduction-to-archetypes.html).
@@ -54,26 +54,26 @@ mvn archetype:generate -DarchetypeGroupId=com.microsoft.azure -DarchetypeArtifac
 ```
 
 > [!NOTE]
-> Jeśli używasz programu PowerShell, pamiętaj, aby dodać "" wokół parametrów.
+> Jeśli używasz programu Powershell, pamiętaj, aby dodać "" wokół parametrów.
 
 > [!NOTE]
-> Jeśli występują problemy z uruchomieniem polecenia, należy zapoznać się z używaną wersją `maven-archetype-plugin`. Ponieważ uruchamiasz polecenie w pustym katalogu bez pliku `.pom`, może być podjęta próba użycia wtyczki starszej wersji od `~/.m2/repository/org/apache/maven/plugins/maven-archetype-plugin`, jeśli uaktualniono Maven ze starszej wersji. Jeśli tak, spróbuj usunąć katalog `maven-archetype-plugin` i ponownie uruchomić polecenie.
+> Jeśli występują problemy z uruchomieniem polecenia, zapoznaj się `maven-archetype-plugin` z używaną wersją. Ponieważ polecenie jest uruchomione w pustym `.pom` katalogu bez pliku, może to być próba użycia `~/.m2/repository/org/apache/maven/plugins/maven-archetype-plugin` wtyczki starszej wersji, jeśli uaktualniono maven ze starszej wersji. Jeśli tak, spróbuj usunąć `maven-archetype-plugin` katalog i ponownie uruchomić polecenie.
 
-Maven prosi o podanie wartości, które są potrzebne, aby zakończyć Generowanie projektu przy wdrożeniu. Po wyświetleniu monitu podaj następujące wartości:
+Maven prosi o wartości potrzebne do zakończenia generowania projektu podczas wdrażania. Po wyświetleniu monitu podaj następujące wartości:
 
 | Wartość | Opis |
 | ----- | ----------- |
-| **groupId** | Wartość, która jednoznacznie identyfikuje projekt we wszystkich projektach, zgodnie z [regułami nazewnictwa pakietów](https://docs.oracle.com/javase/specs/jls/se6/html/packages.html#7.7) dla języka Java. Przykłady w tym przewodniku szybki start używają `com.fabrikam.functions`. |
-| **artifactId** | Wartość, która jest nazwą jar, bez numeru wersji. Przykłady w tym przewodniku szybki start używają `fabrikam-functions`. |
-| **Wersja** | Wybierz wartość domyślną `1.0-SNAPSHOT`. |
-| **Package** | Wartość, która jest pakiet języka Java dla wygenerowanego kodu funkcji. Użyj wartości domyślnej. Przykłady w tym przewodniku szybki start używają `com.fabrikam.functions`. |
-| **Argumentu** | Globalnie unikatowa nazwa identyfikująca nową aplikację funkcji na platformie Azure. Użyj wartości domyślnej, która jest _artifactId_ dołączona z liczbą losową. Zanotuj tę wartość, która będzie potrzebna później. |
-| **appRegion** | Wybierz [region](https://azure.microsoft.com/regions/) w swojej okolicy lub w pobliżu innych usług, do których Twoje funkcje uzyskują dostęp. Wartość domyślna to `westus`. Uruchom to polecenie [Interfejs wiersza polecenia platformy Azure] , aby uzyskać listę wszystkich regionów:<br/>`az account list-locations --query '[].{Name:name}' -o tsv` |
-| **resourceGroup** | Nazwa nowej [grupy zasobów](../azure-resource-manager/management/overview.md) , w której ma zostać utworzona aplikacja funkcji. Użyj `myResourceGroup`, który jest używany w przykładach w tym przewodniku Szybki Start. Grupa zasobów musi być unikatowa dla Twojej subskrypcji platformy Azure.|
+| **groupId** | Wartość, która jednoznacznie identyfikuje projekt we wszystkich projektach, zgodnie z [regułami nazewnictwa pakietów](https://docs.oracle.com/javase/specs/jls/se6/html/packages.html#7.7) dla języka Java. Przykłady w tym użyczynaniu przewodnika `com.fabrikam.functions`Szybki start . |
+| **artifactId (ida artefaktu)** | Wartość, która jest nazwą słoika, bez numeru wersji. Przykłady w tym użyczynaniu przewodnika `fabrikam-functions`Szybki start . |
+| **Wersja** | Wybierz wartość domyślną . `1.0-SNAPSHOT` |
+| **Pakiet** | Wartość, która jest pakietem Java dla wygenerowanego kodu funkcji. Użyj wartości domyślnej. Przykłady w tym użyczynaniu przewodnika `com.fabrikam.functions`Szybki start . |
+| **Appname** | Globalnie unikatowa nazwa identyfikująca nową aplikację funkcji na platformie Azure. Użyj wartości domyślnej, która jest _artifactId_ dołączone z numerem losowym. Zanotuj tę wartość, będziesz jej potrzebować później. |
+| **appRegion** | Wybierz [region](https://azure.microsoft.com/regions/) w swojej okolicy lub w pobliżu innych usług, do których Twoje funkcje uzyskują dostęp. Wartość domyślna to `westus`. Uruchom to polecenie [interfejsu wiersza polecenia platformy Azure,] aby uzyskać listę wszystkich regionów:<br/>`az account list-locations --query '[].{Name:name}' -o tsv` |
+| **grupa zasobów** | Nazwa nowej [grupy zasobów,](../azure-resource-manager/management/overview.md) w której ma być utworzona aplikacja funkcji. Użyj `myResourceGroup`, który jest używany przez przykłady w tym przewodniku Szybki start. Grupa zasobów musi być unikatowa dla subskrypcji platformy Azure.|
 
-Wpisz `Y` lub naciśnij klawisz ENTER, aby potwierdzić.
+Wpisz `Y` lub naciśnij klawisz Enter, aby potwierdzić.
 
-Maven tworzy pliki projektu w nowym folderze o nazwie _artifactId_, w tym przykładzie `fabrikam-functions`. Uruchom następujące polecenie, aby zmienić katalog na utworzony folder projektu.
+Maven tworzy pliki projektu w nowym folderze o nazwie _artifactId_, który w tym przykładzie jest `fabrikam-functions`. Uruchom następujące polecenie, aby zmienić katalog na utworzony folder projektu.
 ```bash
 cd fabrikam-function
 ```
@@ -87,7 +87,7 @@ git clone https://github.com/Azure-Samples/azure-functions-samples-java.git
 cd azure-functions-samples-java/
 ```
 
-Otwórz `build.gradle` i Zmień `appName` w poniższej sekcji na unikatową nazwę, aby uniknąć konfliktu nazw domen podczas wdrażania na platformie Azure. 
+Otwórz `build.gradle` i `appName` zmień w poniższej sekcji na unikatową nazwę, aby uniknąć konfliktu nazw domen podczas wdrażania na platformie Azure. 
 
 ```gradle
 azurefunctions {
@@ -103,14 +103,14 @@ azurefunctions {
 ```
 ::: zone-end
 
-Otwórz plik New Function. Java ze ścieżki *src/Main/Java* w edytorze tekstów i przejrzyj wygenerowany kod. Ten kod jest funkcją [wyzwalaną przez protokół http](functions-bindings-http-webhook.md) , która umożliwia echo treści żądania. 
+Otwórz nowy plik Function.java ze ścieżki *src/main/java* w edytorze tekstu i przejrzyj wygenerowany kod. Ten kod jest funkcją [wyzwalaną HTTP,](functions-bindings-http-webhook.md) która odzwierciedla treść żądania. 
 
 > [!div class="nextstepaction"]
 > [Wystąpił problem](https://www.research.net/r/javae2e?tutorial=functions-maven-quickstart&step=generate-project)
 
 ## <a name="run-the-function-locally"></a>Lokalne uruchamianie funkcji
 
-Uruchom następujące polecenie, aby skompilować, a następnie Uruchom projekt funkcji:
+Uruchom następujące polecenie do kompilacji, a następnie uruchom projekt funkcji:
 
 ::: zone pivot="java-build-tools-maven" 
 ```bash
@@ -126,7 +126,7 @@ gradle azureFunctionsRun
 ```
 ::: zone-end 
 
-Dane wyjściowe będą wyglądać podobnie jak następujące Azure Functions Core Tools w przypadku uruchamiania projektu lokalnie:
+Po uruchomieniu projektu lokalnie zostaną wyświetlone następujące dane wyjściowe:
 
 ```output
 ...
@@ -140,7 +140,7 @@ Http Functions:
 ...
 ```
 
-Wyzwól funkcję z wiersza polecenia przy użyciu zwinięcia w nowym oknie terminalu:
+Wyzwolić funkcję z wiersza polecenia za pomocą cURL w nowym oknie terminala:
 
 ```bash
 curl -w "\n" http://localhost:7071/api/HttpExample --data AzureFunctions
@@ -149,21 +149,21 @@ curl -w "\n" http://localhost:7071/api/HttpExample --data AzureFunctions
 ```output
 Hello AzureFunctions!
 ```
-[Klucz funkcji](functions-bindings-http-webhook-trigger.md#authorization-keys) nie jest wymagany w przypadku uruchamiania lokalnego. Aby zatrzymać wykonywanie kodu funkcji, użyj polecenia `Ctrl+C` w oknie terminala.
+[Klucz funkcyjny](functions-bindings-http-webhook-trigger.md#authorization-keys) nie jest wymagany podczas uruchamiania lokalnego. Aby zatrzymać wykonywanie kodu funkcji, użyj polecenia `Ctrl+C` w oknie terminala.
 
 > [!div class="nextstepaction"]
 > [Wystąpił problem](https://www.research.net/r/javae2e?tutorial=functions-maven-quickstart&step=local-run)
 
 ## <a name="deploy-the-function-to-azure"></a>Wdrażanie funkcji na platformie Azure
 
-Aplikacja funkcji i powiązane zasoby są tworzone na platformie Azure podczas pierwszego wdrożenia aplikacji funkcji. Przed wdrożeniem programu Użyj polecenia [AZ login](/cli/azure/authenticate-azure-cli) Azure CLI, aby zalogować się do subskrypcji platformy Azure. 
+Aplikacja funkcji i powiązane zasoby są tworzone na platformie Azure podczas pierwszego wdrażania aplikacji funkcji. Przed wdrożeniem należy użyć polecenia interfejsu wiersza polecenia interfejsu wiersza polecenia platformy Azure [az,](/cli/azure/authenticate-azure-cli) aby zalogować się do subskrypcji platformy Azure. 
 
 ```azurecli
 az login
 ```
 
 > [!TIP]
-> Jeśli Twoje konto ma dostęp do wielu subskrypcji, użyj polecenie [AZ Account Set](/cli/azure/account#az-account-set) , aby ustawić domyślną subskrypcję tej sesji. 
+> Jeśli Twoje konto może uzyskać dostęp do wielu subskrypcji, użyj [konta AZ ustawionego,](/cli/azure/account#az-account-set) aby ustawić domyślną subskrypcję dla tej sesji. 
 
 Użyj następującego polecenia, aby wdrożyć projekt w nowej aplikacji funkcji. 
 
@@ -182,14 +182,14 @@ gradle azureFunctionsDeploy
 
 Spowoduje to utworzenie następujących zasobów na platformie Azure:
 
-+ Grupa zasobów. Nazwana z _podaną w podanej_ nazwie.
-+ Konto magazynu. Wymagane przez funkcje. Nazwa jest generowana losowo na podstawie wymagań dotyczących nazw kont magazynu.
-+ Plan usługi App Service. Hosting bezserwerowy dla aplikacji funkcji w określonym _appRegion_. Nazwa jest generowana losowo.
-+ Aplikacja funkcji. Aplikacja funkcji jest jednostką wdrażania i wykonywania dla funkcji. Nazwa jest _nazwą użytkownika,_ dołączona przy użyciu losowo wygenerowanego numeru. 
++ Grupa zasobów. Nazwany z _resourceGroup,_ które podano.
++ Konto magazynu. Wymagane przez funkcje. Nazwa jest generowana losowo na podstawie wymagań dotyczących nazwy konta magazynu.
++ Plan usługi aplikacji. Hosting bezserwerowy dla aplikacji funkcji w określonej _aplikacjiRegion_. Nazwa jest generowana losowo.
++ Aplikacja funkcyjna. Aplikacja funkcji jest jednostką wdrażania i wykonywania dla funkcji. Nazwa jest _appName_, dołączane z losowo generowanym numerem. 
 
-Wdrożenie obejmuje również pakiety plików projektu i wdraża je w nowej aplikacji funkcji przy użyciu [wdrożenia zip](functions-deployment-technologies.md#zip-deploy)z włączonym trybem uruchamiania z pakietu.
+Wdrożenie również pakiety plików projektu i wdraża je do nowej aplikacji funkcji za pomocą [wdrożenia zip](functions-deployment-technologies.md#zip-deploy), z włączonym trybem uruchamiania z pakietu.
 
-Po zakończeniu wdrażania zobaczysz adres URL, za pomocą którego możesz uzyskiwać dostęp do punktów końcowych aplikacji funkcji. Ponieważ wyzwalany przez siebie wyzwalacz protokołu HTTP używa `authLevel = AuthorizationLevel.FUNCTION`, należy uzyskać klucz funkcji, aby wywołać punkt końcowy funkcji za pośrednictwem protokołu HTTP. Najprostszym sposobem uzyskania klucza funkcji jest z [Azure Portal].
+Po zakończeniu wdrażania zostanie wyświetlony adres URL, którego można użyć do uzyskania dostępu do punktów końcowych aplikacji funkcji. Ponieważ wyzwalacz HTTP, który `authLevel = AuthorizationLevel.FUNCTION`opublikowaliśmy używa, musisz uzyskać klawisz funkcyjny, aby wywołać punkt końcowy funkcji za pośrednictwem protokołu HTTP. Najprostszym sposobem uzyskania klucza funkcji jest [portal Azure.]
 
 > [!div class="nextstepaction"]
 > [Wystąpił problem](https://www.research.net/r/javae2e?tutorial=functions-maven-quickstart&step=deploy)
@@ -198,27 +198,27 @@ Po zakończeniu wdrażania zobaczysz adres URL, za pomocą którego możesz uzys
 
 <!--- We can updates this to remove portal dependency after the Maven archetype returns the full URLs with keys on publish (https://github.com/microsoft/azure-maven-plugins/issues/571). -->
 
-Możesz uzyskać adres URL wymagany do wyzwolenia funkcji przy użyciu klucza funkcji z Azure Portal. 
+Możesz uzyskać adres URL wymagany do wyzwolenia funkcji za pomocą klucza funkcyjnego z witryny Azure portal. 
 
-1. Przejdź do [Azure Portal], zaloguj się, _wpisz nazwę aplikacji funkcji w polu_ **wyszukiwania** w górnej części strony, a następnie naciśnij klawisz ENTER.
+1. Przejdź do [witryny Azure portal], zaloguj się, wpisz _appName_ aplikacji funkcji w **search** u góry strony i naciśnij enter.
  
-1. W aplikacji funkcji rozwiń pozycję **funkcje (tylko do odczytu)** , wybierz funkcję, a następnie wybierz opcję **</> Pobierz adres URL funkcji** w prawym górnym rogu. 
+1. W aplikacji funkcji rozwiń **pozycję Funkcje (Tylko do odczytu)**, wybierz funkcję, a następnie wybierz **</> Pobierz adres URL funkcji** w prawym górnym rogu. 
 
     ![Kopiowanie adresu URL funkcji z witryny Azure Portal](./media/functions-create-java-maven/get-function-url-portal.png)
 
-1. Wybierz pozycję **domyślne (klawisz funkcyjny)** i wybierz pozycję **Kopiuj**. 
+1. Wybierz **pozycję domyślną (klawisz funkcyjny)** i wybierz pozycję **Kopiuj**. 
 
-Możesz teraz użyć skopiowanego adresu URL, aby uzyskać dostęp do funkcji.
+Możesz teraz użyć skopiowanego adresu URL, aby uzyskać dostęp do swojej funkcji.
 
 ## <a name="verify-the-function-in-azure"></a>Weryfikowanie funkcji na platformie Azure
 
-Aby sprawdzić aplikację funkcji działającą na platformie Azure przy użyciu `cURL`, Zastąp adres URL z poniższego przykładu adresem URL skopiowanym z portalu.
+Aby zweryfikować aplikację funkcji `cURL`działającą na platformie Azure przy użyciu programu , zastąp adres URL z poniższego przykładu adresem URL skopiowanym z portalu.
 
 ```console
 curl -w "\n" https://fabrikam-functions-20190929094703749.azurewebsites.net/api/HttpExample?code=zYRohsTwBlZ68YF.... --data AzureFunctions
 ```
 
-Spowoduje to wysłanie żądania POST do punktu końcowego funkcji z `AzureFunctions` w treści żądania. Zostanie wyświetlona następująca odpowiedź.
+Spowoduje to wysłanie żądania POST `AzureFunctions` do punktu końcowego funkcji z treścią żądania. Pojawi się następująca odpowiedź.
 
 ```output
 Hello AzureFunctions!
@@ -229,11 +229,11 @@ Hello AzureFunctions!
 
 ## <a name="next-steps"></a>Następne kroki
 
-Utworzono projekt funkcji języka Java z funkcją wyzwalaną przez protokół HTTP, uruchom go na komputerze lokalnym i wdrożony na platformie Azure. Teraz możesz rozłożyć funkcję przez...
+Utworzono projekt funkcji Java z funkcją wyzwalaną http, uruchom go na komputerze lokalnym i wdrożono go na platformie Azure. Teraz rozszerz swoją funkcję o...
 
 > [!div class="nextstepaction"]
-> [Dodawanie powiązania danych wyjściowych kolejki usługi Azure Storage](functions-add-output-binding-storage-queue-java.md)
+> [Dodawanie powiązania wyjściowego kolejki usługi Azure Storage](functions-add-output-binding-storage-queue-java.md)
 
 
 [Interfejs wiersza polecenia platformy Azure]: /cli/azure
-[Azure Portal]: https://portal.azure.com
+[Portal Azure]: https://portal.azure.com

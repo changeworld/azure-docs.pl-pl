@@ -1,5 +1,5 @@
 ---
-title: Uaktualnij do warstwy Standardowa — Azure Security Center
+title: Uaktualnienie do warstwy Standardowa — Usługa Azure Security Center
 description: Ten przewodnik Szybki start przedstawia, jak zmienić warstwę cenową usługi Security Center na wyższą warstwę Standardowa w celu zapewnienia dodatkowych zabezpieczeń.
 services: security-center
 documentationcenter: na
@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 12/3/2018
 ms.author: memildin
 ms.openlocfilehash: 26d62f2c027a093ba518b98fa37ce3a31a14f175
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "73664283"
 ---
 # <a name="quickstart-onboard-your-azure-subscription-to-security-center-standard"></a>Szybki start: dołączanie subskrypcji platformy Azure do usługi Security Center w warstwie Standardowa
@@ -33,8 +33,8 @@ Aby zmienić warstwę subskrypcji na wyższą warstwę Standardowa, musisz mieć
 
 ## <a name="enable-your-azure-subscription"></a>Włączanie subskrypcji platformy Azure
 
-1. Zaloguj się w witrynie [Azure Portal](https://azure.microsoft.com/features/azure-portal/).
-2. W menu platformy **Microsoft Azure** wybierz pozycję **Security Center**. Zostanie otwarte okno **Security Center — Przegląd**.
+1. Zaloguj się do [witryny Azure portal](https://azure.microsoft.com/features/azure-portal/).
+2. W menu **Microsoft Azure** wybierz pozycję **Centrum zabezpieczeń**. Zostanie otwarte okno **Security Center — Przegląd**.
 
    ![Security Center — Przegląd][2]
 
@@ -54,7 +54,7 @@ Na potrzeby przewodników Szybki start i samouczków usługi Security Center mus
 
 1. W menu głównym usługi Security Center wybierz pozycję **Wprowadzenie**.
  
-   ![Rozpocznij][4]
+   ![Wprowadzenie][4]
 
 2. W obszarze **Uaktualnienie** usługa Security Center wyświetla listę subskrypcji i obszarów roboczych, które kwalifikują się do dołączenia. 
    - Możesz kliknąć listę rozwijaną **Zastosuj wersję próbną**, aby wyświetlić listę wszystkich subskrypcji i obszarów roboczych ze stanem kwalifikacji do korzystania z wersji próbnej.
@@ -72,31 +72,31 @@ Jeśli jest włączona automatyczna aprowizacja, usługa Security Center instalu
 
 Aby włączyć automatyczną aprowizację programu Microsoft Monitoring Agent:
 
-1. W menu głównym Security Center wybierz pozycję **cennik & Ustawienia**.
-2. W wierszu subskrypcji kliknij subskrypcję, dla której chcesz zmienić ustawienia.
+1. W menu głównym Centrum zabezpieczeń wybierz pozycję **Ustawienia & cennika**.
+2. W wierszu subskrypcji kliknij subskrypcję, w której chcesz zmienić ustawienia.
 3. Na karcie **Zbieranie danych** ustaw opcję **Automatyczna aprowizacja** na wartość **Wł**.
-4. Wybierz pozycję **Zapisz**.
+4. Wybierz **pozycję Zapisz**.
 ---
   ![Włączanie automatycznej aprowizacji][6]
 
 Dzięki temu nowemu wglądowi w maszyny wirtualne platformy Azure usługa Security Center może udostępniać dodatkowe zalecenia dotyczące stanu aktualizacji systemu, konfiguracji zabezpieczeń systemu operacyjnego i ochrony punktów końcowych, a także generować dodatkowe alerty zabezpieczeń.
 
-  ![Polecane elementy][8]
+  ![Zalecenia][8]
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 Inne przewodniki szybkiego startu i samouczki w tej kolekcji bazują na tym przewodniku. Jeśli zamierzasz kontynuować pracę z kolejnymi przewodnikami szybkiego startu i samouczkami, w dalszym ciągu korzystaj z warstwy standardowej i zachowaj włączoną automatyczną aprowizację. Jeśli nie zamierzasz kontynuować lub chcesz wrócić do warstwy bezpłatnej:
 
-1. Wróć do menu głównego Security Center i wybierz pozycję **cennik & Ustawienia**.
-2. Kliknij subskrypcję, którą chcesz zmienić w ramach warstwy Bezpłatna.
+1. Wróć do menu głównego Centrum zabezpieczeń i wybierz **ustawienia & cennika**.
+2. Kliknij subskrypcję, którą chcesz zmienić na warstwę bezpłatną.
 3. Wybierz pozycje **Warstwa cenowa** i **Bezpłatna**, aby zmienić subskrypcję z warstwy standardowej na warstwę bezpłatną.
-5. Wybierz pozycję **Zapisz**.
+5. Wybierz **pozycję Zapisz**.
 
 Jeśli chcesz wyłączyć automatyczną aprowizację:
 
-1. Wróć do menu głównego Security Center i wybierz pozycję **cennik & Ustawienia**.
-2. Wyczyść subskrypcję, dla której chcesz wyłączyć automatyczne Inicjowanie obsługi administracyjnej.
+1. Wróć do menu głównego Centrum zabezpieczeń i wybierz **ustawienia & cennika**.
+2. Wyczyść subskrypcję, na której chcesz wyłączyć automatyczne inicjowanie obsługi administracyjnej.
 3. Na karcie **Zbieranie danych** ustaw opcję **Automatyczna aprowizacja** na wartość **Wył**.
-4. Wybierz pozycję **Zapisz**.
+4. Wybierz **pozycję Zapisz**.
 
 >[!NOTE]
 > Wyłączenie automatycznej aprowizacji nie powoduje usunięcia programu Microsoft Monitoring Agent z maszyn wirtualnych platformy Azure, na których aprowizowano agenta. Wyłączenie automatycznej aprowizacji powoduje ograniczenie monitorowania zabezpieczeń dla zasobów.

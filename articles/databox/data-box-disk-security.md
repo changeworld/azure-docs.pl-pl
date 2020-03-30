@@ -1,6 +1,6 @@
 ---
-title: Microsoft Azure Data Box Disk funkcje zabezpieczeń | Microsoft Docs danych
-description: Opisuje funkcje zabezpieczeń zaimplementowane dla Azure Data Box Disk, rozwiązanie w chmurze, które umożliwia Transferowanie dużych ilości danych na platformę Azure
+title: Funkcje zabezpieczeń dysku usługi Microsoft Azure Data Box | Dokumenty firmy Microsoft w danych
+description: W tym artykule opisano funkcje zabezpieczeń zaimplementowane dla usługi Azure Data Box Disk, rozwiązania w chmurze, które umożliwia przesyłanie dużych ilości danych na platformę Azure
 services: databox
 author: alkohli
 ms.service: databox
@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: alkohli
 ms.openlocfilehash: 59cce6d89bc863ad489a8ed37c7f284d3085c775
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/11/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79117275"
 ---
 # <a name="azure-data-box-disk-security-and-data-protection"></a>Zabezpieczenia i ochrona danych w usłudze Azure Data Box Disk
@@ -72,7 +72,7 @@ W usłudze Azure Data Box Disk dane osobowe są zbierane i wyświetlane w nastę
 
   - Nazwisko osoby kontaktowej
   - Numer telefonu
-  - Email
+  - Adres e-mail
   - Adres
   - Miasto
   - Kod pocztowy

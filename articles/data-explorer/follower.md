@@ -1,6 +1,6 @@
 ---
-title: Dołączanie baz danych w usłudze Azure Eksplorator danych przy użyciu funkcji programu databaseal
-description: Dowiedz się więcej na temat sposobu dołączania baz danych na platformie Azure Eksplorator danych przy użyciu funkcji działania bazy danych.
+title: Dołączanie baz danych w Eksploratorze danych platformy Azure za pomocą funkcji bazy danych zwolenników
+description: Dowiedz się, jak dołączyć bazy danych w Eksploratorze danych platformy Azure przy użyciu funkcji bazy danych elementu śledzącego.
 author: orspod
 ms.author: orspodek
 ms.reviewer: gabilehner
@@ -8,40 +8,40 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 11/07/2019
 ms.openlocfilehash: f6dbdb54c1c5a5d477c3ccb988963758faab83b0
-ms.sourcegitcommit: d322d0a9d9479dbd473eae239c43707ac2c77a77
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79140018"
 ---
-# <a name="use-follower-database-to-attach-databases-in-azure-data-explorer"></a>Używanie bazy danych programu do uzupełniania w celu dołączania baz danych na platformie Azure Eksplorator danych
+# <a name="use-follower-database-to-attach-databases-in-azure-data-explorer"></a>Dołączanie baz danych w Eksploratorze danych platformy Azure za pomocą bazy danych zwolenników
 
-Funkcja programu do wykonywania w **bazie danych** umożliwia dołączenie bazy danych znajdującej się w innym klastrze do klastra usługi Azure Eksplorator danych. **Baza danych** programu sprawdzającego jest dołączona w trybie *tylko do odczytu* , dzięki czemu można wyświetlać dane i uruchamiać zapytania dotyczące danych, które zostały wprowadzone do **bazy danych lidera**. Baza danych programu do wykonania synchronizuje zmiany w bazach danych liderów. Ze względu na synchronizację istnieje opóźnienie danych z kilku sekund do kilku minut w czasie dostępności danych. Długość opóźnienia czasu zależy od całkowitego rozmiaru metadanych bazy danych lidera. Bazy danych lidera i programu do wykonania używają tego samego konta magazynu, aby pobrać dane. Magazyn jest własnością lidera bazy danych. Baza danych programu, która wyświetla dane bez konieczności pozyskiwania danych. Ponieważ dołączona baza danych jest bazą danych tylko do odczytu, nie można modyfikować danych, tabel i zasad w bazie danych z wyjątkiem [zasad buforowania](#configure-caching-policy), [podmiotów zabezpieczeń](#manage-principals)i [uprawnień](#manage-permissions). Nie można usunąć dołączonych baz danych. Muszą być odłączone przez lidera lub osoby wykonujące i tylko wtedy, gdy można je usunąć. 
+Funkcja **bazy danych elementu śledzącego** umożliwia dołączenie bazy danych znajdującej się w innym klastrze do klastra usługi Azure Data Explorer. **Baza danych zwolennika** jest dołączona w trybie tylko do *odczytu,* dzięki czemu można wyświetlić dane i uruchomić kwerendy dotyczące danych, które zostały pojone do **bazy danych lidera**. Baza danych zwolennika synchronizuje zmiany w bazach danych lidera. Ze względu na synchronizację, istnieje opóźnienie danych od kilku sekund do kilku minut w dostępności danych. Długość opóźnienia zależy od ogólnego rozmiaru metadanych bazy danych lidera. Bazy danych lidera i zwolennika używają tego samego konta magazynu do pobierania danych. Magazyn jest własnością bazy danych leader. Baza danych osoby śledzącej wyświetla dane bez konieczności ich pozyskiwania. Ponieważ załączona baza danych jest bazą danych tylko do odczytu, danych, tabel i zasad w bazie danych nie można modyfikować z wyjątkiem [zasad buforowania,](#configure-caching-policy) [podmiotów](#manage-principals)i [uprawnień.](#manage-permissions) Nie można usunąć dołączonych baz danych. Muszą być odłączone przez lidera lub zwolennika i tylko wtedy mogą zostać usunięte. 
 
-Dołączanie bazy danych do innego klastra przy użyciu funkcji działania w ramach infrastruktury do udostępniania danych między organizacjami i zespołami. Ta funkcja jest przydatna do segregowania zasobów obliczeniowych w celu ochrony środowiska produkcyjnego z nieprodukcyjnych przypadków użycia. W celu skojarzenia kosztu klastra usługi Azure Eksplorator danych z firmą, która uruchamia zapytania dotyczące danych, można również użyć programu.
+Dołączanie bazy danych do innego klastra przy użyciu możliwości zwolennika jest używany jako infrastruktura do udostępniania danych między organizacjami i zespołami. Funkcja ta jest przydatna do segregować zasoby obliczeniowe w celu ochrony środowiska produkcyjnego przed nieprodukcyjnymi przypadkami użycia. Osoba śledząca może również służyć do skojarzenia kosztu klastra usługi Azure Data Explorer z stroną, która uruchamia kwerendy dotyczące danych.
 
-## <a name="which-databases-are-followed"></a>Które bazy danych są obserwowane?
+## <a name="which-databases-are-followed"></a>Które bazy danych są przestrzegane?
 
-* Klaster może być zgodny z jedną bazą danych, kilkoma bazami danych lub wszystkimi bazami danych klastra lidera. 
-* Pojedynczy klaster może być zgodny z bazami danych z wielu klastrów liderów. 
-* Klaster może zawierać obie bazy danych i liderów baz danych
+* Klaster może śledzić jedną bazę danych, kilka baz danych lub wszystkie bazy danych klastra linii odniesienia. 
+* Pojedynczy klaster może śledzić bazy danych z wielu klastrów linii odniesienia. 
+* Klaster może zawierać zarówno bazy danych zwolenników, jak i bazy danych lidera
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-1. Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
-1. [Utwórz klaster i bazę danych](/azure/data-explorer/create-cluster-database-portal) dla lidera i podążania.
-1. Pozyskiwanie [danych](/azure/data-explorer/ingest-sample-data) do lidera bazy danych przy użyciu jednej z różnych metod omówionych w [omówieniu](/azure/data-explorer/ingest-data-overview)pozyskiwania.
+1. Jeśli nie masz subskrypcji platformy Azure, [utwórz bezpłatne konto](https://azure.microsoft.com/free/) przed rozpoczęciem.
+1. [Tworzenie klastra i bazy danych](/azure/data-explorer/create-cluster-database-portal) dla lidera i zwolennika.
+1. [Połknąć dane](/azure/data-explorer/ingest-sample-data) do bazy danych lidera przy użyciu jednej z różnych metod omówionych w [przeglądzie pozyskiwania](/azure/data-explorer/ingest-data-overview).
 
 ## <a name="attach-a-database"></a>Dołączanie bazy danych
 
-Istnieją różne metody, których można użyć do dołączenia bazy danych. W tym artykule omówiono sposób dołączania bazy danych C# przy użyciu szablonu lub Azure Resource Manager. Aby dołączyć bazę danych, musisz mieć uprawnienia do klastra lidera i klastra programu z instrukcjami. Aby uzyskać więcej informacji o uprawnieniach, zobacz [Zarządzanie uprawnieniami](#manage-permissions).
+Istnieją różne metody, których można użyć do dołączenia bazy danych. W tym artykule omówimy dołączanie bazy danych przy użyciu języka C# lub szablonu usługi Azure Resource Manager. Aby dołączyć bazę danych, musisz mieć uprawnienia do klastra linii odniesienia i klastra wpisowego. Aby uzyskać więcej informacji o uprawnieniach, zobacz [zarządzanie uprawnieniami](#manage-permissions).
 
-### <a name="attach-a-database-using-c"></a>Dołącz bazę danych przy użyciu poleceniaC#
+### <a name="attach-a-database-using-c"></a>Dołączanie bazy danych przy użyciu języka C #
 
-#### <a name="needed-nugets"></a>Wymagane NuGet
+#### <a name="needed-nugets"></a>Potrzebne NuGets
 
-* Zainstaluj [Microsoft. Azure. Management. Kusto](https://www.nuget.org/packages/Microsoft.Azure.Management.Kusto/).
-* Zainstaluj [Microsoft. Rest. ClientRuntime. Azure. Authentication na potrzeby uwierzytelniania](https://www.nuget.org/packages/Microsoft.Rest.ClientRuntime.Azure.Authentication).
+* Zainstaluj [plik Microsoft.Azure.Management.kusto](https://www.nuget.org/packages/Microsoft.Azure.Management.Kusto/).
+* Zainstaluj [system Microsoft.Rest.ClientRuntime.Azure.Authentication w celu uwierzytelnienia](https://www.nuget.org/packages/Microsoft.Rest.ClientRuntime.Azure.Authentication).
 
 #### <a name="code-example"></a>Przykład kodu
 
@@ -79,7 +79,7 @@ var attachedDatabaseConfigurations = resourceManagementClient.AttachedDatabaseCo
 
 ### <a name="attach-a-database-using-python"></a>Dołączanie bazy danych przy użyciu języka Python
 
-#### <a name="needed-modules"></a>Moduły wymagające
+#### <a name="needed-modules"></a>Potrzebne moduły
 
 ```
 pip install azure-common
@@ -125,9 +125,9 @@ attached_database_configuration_properties = AttachedDatabaseConfiguration(clust
 poller = kusto_management_client.attached_database_configurations.create_or_update(follower_resource_group_name, follower_cluster_name, attached_database_Configuration_name, attached_database_configuration_properties)
 ```
 
-### <a name="attach-a-database-using-an-azure-resource-manager-template"></a>Dołączanie bazy danych przy użyciu szablonu Azure Resource Manager
+### <a name="attach-a-database-using-an-azure-resource-manager-template"></a>Dołączanie bazy danych przy użyciu szablonu usługi Azure Resource Manager
 
-W tej sekcji dowiesz się, jak dołączyć bazę danych do istniejącej klastra przy użyciu [szablonu Azure Resource Manager](../azure-resource-manager/management/overview.md). 
+W tej sekcji nauczysz się dołączać bazę danych do istniejącego clusera przy użyciu [szablonu usługi Azure Resource Manager](../azure-resource-manager/management/overview.md). 
 
 ```json
 {
@@ -196,41 +196,41 @@ W tej sekcji dowiesz się, jak dołączyć bazę danych do istniejącej klastra 
 
 ### <a name="deploy-the-template"></a>Wdrożenie szablonu 
 
-Szablon Azure Resource Manager można wdrożyć za [pomocą Azure Portal](https://portal.azure.com) lub przy użyciu programu PowerShell.
+Szablon usługi Azure Resource Manager można wdrożyć [przy użyciu witryny Azure portal](https://portal.azure.com) lub przy użyciu programu PowerShell.
 
-   ![wdrożenie szablonu](media/follower/template-deployment.png)
+   ![wdrażanie szablonów](media/follower/template-deployment.png)
 
 
 |**Ustawienie**  |**Opis**  |
 |---------|---------|
-|Nazwa klastra z flagami     |  Nazwa klastra programu monitujących; gdzie szablon zostanie wdrożony.  |
-|Nazwa dołączonych konfiguracji bazy danych    |    Nazwa dołączonego obiektu konfiguracji bazy danych. Nazwa może być dowolnym ciągiem, który jest unikatowy na poziomie klastra.     |
-|Nazwa bazy danych     |      Nazwa bazy danych, która ma zostać zastosowana. Jeśli chcesz postępować zgodnie z bazami danych lidera, użyj znaku "*".   |
-|Identyfikator zasobu klastra lidera    |   Identyfikator zasobu dla klastra lidera.      |
-|Rodzaj modyfikacji domyślnych podmiotów zabezpieczeń    |   Domyślny rodzaj modyfikacji głównej. Może być `Union`, `Replace` lub `None`. Aby uzyskać więcej informacji na temat domyślnego rodzaju modyfikacji podmiotu zabezpieczeń, zobacz [Podstawowe polecenie kontroli rodzaju modyfikacji](/azure/kusto/management/cluster-follower?branch=master#alter-follower-database-principals-modification-kind).      |
-|Lokalizacja   |   Lokalizacja wszystkich zasobów. Lider i osoba wykonująca musi znajdować się w tej samej lokalizacji.       |
+|Nazwa klastra awersji     |  Nazwa klastra naśladowczego; gdzie zostanie wdrożony szablon.  |
+|Nazwa dołączonych konfiguracji bazy danych    |    Nazwa dołączonego obiektu konfiguracji bazy danych. Nazwa może być dowolny ciąg, który jest unikatowy na poziomie klastra.     |
+|Nazwa bazy danych     |      Nazwa bazy danych, której należy przestrzegać. Jeśli chcesz śledzić wszystkie bazy danych lidera, użyj '*'.   |
+|Identyfikator zasobu klastra linii odniesienia    |   Identyfikator zasobu klastra linii odniesienia.      |
+|Domyślny rodzaj modyfikacji zleceniodawców    |   Domyślny główny rodzaj modyfikacji. Może `Union`być `Replace` `None`, lub . Aby uzyskać więcej informacji na temat domyślnego rodzaju modyfikacji głównej, zobacz [polecenie kontroli rodzaju modyfikacji głównej](/azure/kusto/management/cluster-follower?branch=master#alter-follower-database-principals-modification-kind).      |
+|Lokalizacja   |   Lokalizacja wszystkich zasobów. Lider i naśladowca muszą znajdować się w tym samym miejscu.       |
  
-### <a name="verify-that-the-database-was-successfully-attached"></a>Weryfikowanie, czy baza danych została pomyślnie dołączona
+### <a name="verify-that-the-database-was-successfully-attached"></a>Sprawdzanie, czy baza danych została pomyślnie dołączona
 
-Aby sprawdzić, czy baza danych została pomyślnie dołączona, Znajdź dołączone bazy danych w [Azure Portal](https://portal.azure.com). 
+Aby sprawdzić, czy baza danych została pomyślnie dołączona, znajdź dołączone bazy danych w [witrynie Azure portal](https://portal.azure.com). 
 
-1. Przejdź do klastra programu reserwer i wybierz pozycję **bazy danych** .
-1. Wyszukaj nowe bazy danych tylko do odczytu z listy baz danych.
+1. Przejdź do klastra zwolenników i wybierz pozycję **Bazy danych**
+1. Wyszukaj nowe bazy danych tylko do odczytu na liście baz danych.
 
-    ![Baza danych z flagami tylko do odczytu](media/follower/read-only-follower-database.png)
+    ![Baza danych osób obserwowanych tylko do odczytu](media/follower/read-only-follower-database.png)
 
-Alternatywnie:
+Inna możliwość:
 
-1. Przejdź do klastra lidera i wybierz pozycję **bazy danych**
-2. Sprawdź, czy odpowiednie bazy danych są oznaczone jako **udostępniane innym osobom** > **tak**
+1. Przejdź do klastra linii odniesienia i wybierz **pozycję Bazy danych**
+2. Sprawdź, czy odpowiednie bazy danych są oznaczone jako **udostępnione innym** > **Tak**
 
-    ![Odczytuj i zapisuj dołączone bazy danych](media/follower/read-write-databases-shared.png)
+    ![Odczytywanie i zapisywanie załączonych baz danych](media/follower/read-write-databases-shared.png)
 
-## <a name="detach-the-follower-database-using-c"></a>Odłączanie bazy danych programu używającego programuC# 
+## <a name="detach-the-follower-database-using-c"></a>Odłącz bazę danych zwolennika za pomocą języka C # 
 
-### <a name="detach-the-attached-follower-database-from-the-follower-cluster"></a>Odłączanie dołączonej bazy danych programu z instrukcjami z klastra programu reserwer
+### <a name="detach-the-attached-follower-database-from-the-follower-cluster"></a>Odłącz załączoną bazę danych zwolennika od klastra zwolennika
 
-Klaster programu z instrukcjami może odłączać wszelkie dołączone bazy danych w następujący sposób:
+Klaster zwolennika może odłączyć dowolną dołączoną bazę danych w następujący sposób:
 
 ```csharp
 var tenantId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Directory (tenant) ID
@@ -252,9 +252,9 @@ var attachedDatabaseConfigurationsName = "uniqueName";
 resourceManagementClient.AttachedDatabaseConfigurations.Delete(followerResourceGroupName, followerClusterName, attachedDatabaseConfigurationsName);
 ```
 
-### <a name="detach-the-attached-follower-database-from-the-leader-cluster"></a>Odłączanie dołączonej bazy danych programu do wykonania z klastra lidera
+### <a name="detach-the-attached-follower-database-from-the-leader-cluster"></a>Odłącz załączoną bazę danych zwolennika od klastra linii odniesienia
 
-Klaster lidera może odłączyć dowolną dołączoną bazę danych w następujący sposób:
+Klaster linii odniesienia może odłączyć dowolną dołączoną bazę danych w następujący sposób:
 
 ```csharp
 var tenantId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Directory (tenant) ID
@@ -282,11 +282,11 @@ var followerDatabaseDefinition = new FollowerDatabaseDefinition()
 resourceManagementClient.Clusters.DetachFollowerDatabases(leaderResourceGroupName, leaderClusterName, followerDatabaseDefinition);
 ```
 
-## <a name="detach-the-follower-database-using-python"></a>Odłączanie bazy danych programu monitujących przy użyciu języka Python
+## <a name="detach-the-follower-database-using-python"></a>Odłącz bazę danych zwolennika za pomocą języka Python
 
-### <a name="detach-the-attached-follower-database-from-the-follower-cluster"></a>Odłączanie dołączonej bazy danych programu z instrukcjami z klastra programu reserwer
+### <a name="detach-the-attached-follower-database-from-the-follower-cluster"></a>Odłącz załączoną bazę danych zwolennika od klastra zwolennika
 
-Klaster programu z instrukcjami może odłączać wszelkie dołączone bazy danych w następujący sposób:
+Klaster zwolennika może odłączyć dowolną dołączoną bazę danych w następujący sposób:
 
 ```python
 from azure.mgmt.kusto import KustoManagementClient
@@ -315,9 +315,9 @@ attached_database_configurationName = "uniqueName"
 poller = kusto_management_client.attached_database_configurations.delete(follower_resource_group_name, follower_cluster_name, attached_database_configurationName)
 ```
 
-### <a name="detach-the-attached-follower-database-from-the-leader-cluster"></a>Odłączanie dołączonej bazy danych programu do wykonania z klastra lidera
+### <a name="detach-the-attached-follower-database-from-the-leader-cluster"></a>Odłącz załączoną bazę danych zwolennika od klastra linii odniesienia
 
-Klaster lidera może odłączyć dowolną dołączoną bazę danych w następujący sposób:
+Klaster linii odniesienia może odłączyć dowolną dołączoną bazę danych w następujący sposób:
 
 ```python
 
@@ -354,37 +354,37 @@ cluster_resource_id = "/subscriptions/" + follower_subscription_id + "/resourceG
 poller = kusto_management_client.clusters.detach_follower_databases(resource_group_name = leader_resource_group_name, cluster_name = leader_cluster_name, cluster_resource_id = cluster_resource_id, attached_database_configuration_name = attached_database_configuration_name)
 ```
 
-## <a name="manage-principals-permissions-and-caching-policy"></a>Zarządzaj podmiotami zabezpieczeń, uprawnieniami i zasadami buforowania
+## <a name="manage-principals-permissions-and-caching-policy"></a>Zarządzanie podmiotami, uprawnieniami i zasadami buforowania
 
-### <a name="manage-principals"></a>Zarządzaj podmiotami zabezpieczeń
+### <a name="manage-principals"></a>Zarządzanie podmiotami
 
-Podczas dołączania bazy danych określ **"domyślny rodzaj modyfikacji**". Domyślnie zachowuje lidera kolekcja baz danych [autoryzowanych podmiotów zabezpieczeń](/azure/kusto/management/access-control/index#authorization)
+Podczas dołączania bazy danych należy określić **"domyślny rodzaj modyfikacji podmiotów"**. Domyślnie jest utrzymanie kolekcji bazy danych lidera [upoważnionych zleceniodawców](/azure/kusto/management/access-control/index#authorization)
 
-|**Natur** |**Opis**  |
+|**Rodzaju** |**Opis**  |
 |---------|---------|
-|**Unii**     |   Dołączone podmioty zabezpieczeń bazy danych zawsze będą zawierać pierwotne podmioty zabezpieczeń bazy danych oraz dodatkowe nowe podmioty zabezpieczeń dodane do bazy danych programu do wykonania.      |
-|**Stępować**   |    Brak dziedziczenia podmiotów zabezpieczeń z oryginalnej bazy danych. Dla dołączonej bazy danych należy utworzyć nowe podmioty zabezpieczeń.     |
-|**Dawaj**   |   Dołączone podmioty zabezpieczeń bazy danych zawierają tylko główne bazy danych bez dodatkowych podmiotów zabezpieczeń.      |
+|**Unia**     |   Dołączone podmioty bazy danych zawsze będzie zawierać oryginalne podmioty bazy danych oraz dodatkowe nowe podmioty dodane do bazy danych zwolennika.      |
+|**Zastąpić**   |    Brak dziedziczenia zleceniodawców z oryginalnej bazy danych. Nowe podmioty muszą zostać utworzone dla dołączonej bazy danych.     |
+|**Brak**   |   Dołączone podmioty bazy danych obejmują tylko podmioty oryginalnej bazy danych bez dodatkowych podmiotów.      |
 
-Aby uzyskać więcej informacji na temat używania poleceń sterowania do konfigurowania autoryzowanych podmiotów zabezpieczeń, zobacz [polecenia sterowania do zarządzania klastrem programu](/azure/kusto/management/cluster-follower).
+Aby uzyskać więcej informacji na temat używania poleceń sterujących do konfigurowania autoryzowanych podmiotów, zobacz [Sterowanie poleceniami zarządzania klastrem zwolenników](/azure/kusto/management/cluster-follower).
 
 ### <a name="manage-permissions"></a>Zarządzaj uprawnieniami
 
-Zarządzanie uprawnieniem do bazy danych tylko do odczytu jest takie samo jak w przypadku wszystkich typów baz danych. Zobacz [Zarządzanie uprawnieniami w Azure Portal](/azure/data-explorer/manage-database-permissions#manage-permissions-in-the-azure-portal).
+Zarządzanie uprawnieniami do bazy danych tylko do odczytu jest taka sama jak dla wszystkich typów baz danych. Zobacz [zarządzanie uprawnieniami w witrynie Azure portal](/azure/data-explorer/manage-database-permissions#manage-permissions-in-the-azure-portal).
 
 ### <a name="configure-caching-policy"></a>Konfigurowanie zasad buforowania
 
-Administrator bazy danych może zmodyfikować [Zasady buforowania](/azure/kusto/management/cache-policy) dołączonej bazy danych lub dowolnej z jej tabel w klastrze hostingu. Wartość domyślna zachowuje lidera kolekcja baz danych i zasad buforowania na poziomie tabeli. Można na przykład mieć 30-dniową zasadę buforowania dla lidera bazy danych do uruchamiania miesięcznego raportowania oraz trzy dni zasad buforowania w bazie danych programu, aby wykonać zapytanie dotyczące tylko najnowszych danych w celu rozwiązywania problemów. Aby uzyskać więcej informacji na temat używania poleceń sterowania do konfigurowania zasad buforowania w bazie danych lub tabeli programu, zobacz [polecenia sterowania do zarządzania klastrem programu](/azure/kusto/management/cluster-follower).
+Administrator bazy danych zwolennika można zmodyfikować [zasady buforowania](/azure/kusto/management/cache-policy) dołączonej bazy danych lub dowolnej z jego tabel w klastrze hostingu. Domyślnie jest utrzymanie kolekcji bazy danych lidera bazy danych i zasad buforowania na poziomie tabeli. Można na przykład mieć 30 dni buforowania zasad w bazie danych lidera do uruchamiania raportowania miesięcznego i trzydniowe zasady buforowania w bazie danych zwolenników do kwerendy tylko ostatnie dane do rozwiązywania problemów. Aby uzyskać więcej informacji na temat używania poleceń sterujących do konfigurowania zasad buforowania w bazie danych lub tabeli [zwolennika, zobacz Sterowanie poleceniami zarządzania klastrem zwolenników](/azure/kusto/management/cluster-follower).
 
 ## <a name="limitations"></a>Ograniczenia
 
-* Te klastry muszą znajdować się w tym samym regionie.
-* Pozyskiwanie [strumieniowe](/azure/data-explorer/ingest-data-streaming) nie może być używane w przypadku bazy danych, która jest stosowana.
-* Szyfrowanie danych przy użyciu [kluczy zarządzanych przez klienta](/azure/data-explorer/security#customer-managed-keys-with-azure-key-vault) nie jest obsługiwane zarówno w przypadku klastrów lidera, jak i z nich. 
-* Nie można usunąć bazy danych, która jest dołączona do innego klastra przed odłączeniem.
-* Nie można usunąć klastra, który ma bazę danych dołączoną do innego klastra przed odłączeniem.
-* Nie można zatrzymać klastra, który ma połączone z nim bazy danych (y). 
+* Grupowanie naśladowcze i liderów musi znajdować się w tym samym regionie.
+* Nie można używać [pozyskiwania danych strumieniowych](/azure/data-explorer/ingest-data-streaming) w bazie danych, która jest przestrzegana.
+* Szyfrowanie danych przy użyciu [kluczy zarządzanych przez klienta](/azure/data-explorer/security#customer-managed-keys-with-azure-key-vault) nie jest obsługiwane zarówno w klastrach linii odniesienia, jak i dla osób śledzących. 
+* Nie można usunąć bazy danych, która jest dołączona do innego klastra przed odłączeniem go.
+* Nie można usunąć klastra, który ma bazę danych dołączoną do innego klastra przed odłączeniem go.
+* Nie można zatrzymać klastra, który ma dołączonej bazy danych zwolennika lub lidera. 
 
 ## <a name="next-steps"></a>Następne kroki
 
-* Aby uzyskać informacje na temat konfiguracji klastra z flagami, zobacz [polecenia sterowania do zarządzania klastrem programu](/azure/kusto/management/cluster-follower).
+* Aby uzyskać informacje na temat konfiguracji klastra [zwolenników, zobacz Sterowanie poleceniami zarządzania klastrem zwolenników](/azure/kusto/management/cluster-follower).

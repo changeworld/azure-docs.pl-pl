@@ -1,65 +1,65 @@
 ---
-title: Informacje o metadanych konfiguracji usługi Azure łańcucha bloków Workbench
-description: Omówienie metadanych konfiguracji aplikacji Azure łańcucha bloków Workbench Preview.
+title: Odwołanie do metadanych konfiguracji systemu Azure Blockchain Workbench
+description: Omówienie metadanych konfiguracji aplikacji Azure Blockchain Workbench Preview.
 ms.date: 12/09/2019
 ms.topic: article
 ms.reviewer: brendal
 ms.openlocfilehash: 661e795f0e85f872b1072a8f641b8938115c5d7a
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79252196"
 ---
-# <a name="azure-blockchain-workbench-configuration-reference"></a>Dokumentacja konfiguracji usługi Azure łańcucha bloków Workbench
+# <a name="azure-blockchain-workbench-configuration-reference"></a>Odwołanie do konfiguracji programu Azure Blockchain Workbench
 
-Aplikacje Workbench platformy Azure łańcucha bloków są przepływami pracy wieloskładnikowymi zdefiniowanymi przez metadane konfiguracji i kod kontraktu inteligentnego. Metadane konfiguracji definiują ogólne przepływy pracy i model interakcji aplikacji łańcucha bloków. Inteligentne kontrakty definiują logikę biznesową aplikacji łańcucha bloków. Workbench używa konfiguracji i inteligentnego kodu kontraktu do generowania środowiska użytkownika aplikacji łańcucha bloków.
+Aplikacje Azure Blockchain Workbench to wielozadaniowe przepływy pracy zdefiniowane przez metadane konfiguracji i inteligentny kod kontraktu. Metadane konfiguracji definiują ogólne przepływy pracy i model interakcji aplikacji łańcucha bloków. Inteligentne kontrakty definiują logikę biznesową aplikacji blockchain. Workbench używa konfiguracji i inteligentnego kodu umowy do generowania środowiska użytkownika aplikacji blockchain.
 
 Metadane konfiguracji określają następujące informacje dla każdej aplikacji łańcucha bloków:
 
-* Nazwa i opis aplikacji łańcucha bloków
-* Unikatowe role dla użytkowników, którzy mogą działać lub uczestniczyć w aplikacji łańcucha bloków
-* Co najmniej jeden przepływ pracy. Każdy przepływ pracy działa jako maszyna stanu do sterowania przepływem logiki biznesowej. Przepływy pracy mogą być niezależne lub współpracujące ze sobą.
+* Nazwa i opis aplikacji blockchain
+* Unikalne role dla użytkowników, którzy mogą działać lub uczestniczyć w aplikacji blockchain
+* Co najmniej jeden przepływ pracy. Każdy przepływ pracy działa jako maszyna stanu do kontrolowania przepływu logiki biznesowej. Przepływy pracy mogą być niezależne lub współdziałać ze sobą.
 
 Każdy zdefiniowany przepływ pracy określa następujące elementy:
 
 * Nazwa i opis przepływu pracy
-* Stany przepływu pracy.  Każdy stan jest etapem w przepływie sterowania logiki biznesowej. 
+* stanach przepływu pracy.  Każdy stan jest etapem przepływu sterowania logiki biznesowej. 
 * Akcje przejścia do następnego stanu
-* Role użytkowników, które mogą inicjować poszczególne akcje
+* Role użytkowników mogą inicjować każdą akcję
 * Inteligentne kontrakty reprezentujące logikę biznesową w plikach kodu
 
 ## <a name="application"></a>Aplikacja
 
-Aplikacja łańcucha bloków zawiera metadane konfiguracji, przepływy pracy i role użytkowników, którzy mogą działać lub wchodzić w skład aplikacji.
+Aplikacja blockchain zawiera metadane konfiguracji, przepływy pracy i role użytkowników, którzy mogą działać lub uczestniczyć w aplikacji.
 
 | Pole | Opis | Wymagany |
 |-------|-------------|:--------:|
-| ApplicationName | Unikatowa nazwa aplikacji. Odpowiedni kontrakt inteligentny musi używać tej samej **ApplicationName** dla odpowiedniej klasy kontraktu.  | Yes |
-| DisplayName | Przyjazna nazwa wyświetlana aplikacji. | Yes |
+| ApplicationName | Unikatowa nazwa aplikacji. Odpowiednia umowa inteligentna musi używać tej samej **nazwy aplikacji** dla odpowiedniej klasy kontraktu.  | Tak |
+| DisplayName | Przyjazna nazwa wyświetlana aplikacji. | Tak |
 | Opis | Opis aplikacji. | Nie |
-| ApplicationRoles | Kolekcja [ApplicationRoles](#application-roles). Role użytkowników, którzy mogą działać lub uczestniczyć w aplikacji.  | Yes |
-| Przepływy | Kolekcja [przepływów pracy](#workflows). Każdy przepływ pracy działa jako maszyna stanu do sterowania przepływem logiki biznesowej. | Yes |
+| ZastosowanieRole | Zbieranie [zaułek aplikacji](#application-roles). Role użytkowników, którzy mogą działać lub uczestniczyć w aplikacji.  | Tak |
+| Przepływy | Kolekcja [przepływów pracy](#workflows). Każdy przepływ pracy działa jako maszyna stanu do kontrolowania przepływu logiki biznesowej. | Tak |
 
-Aby zapoznać się z przykładem, zobacz [przykład pliku konfiguracji](#configuration-file-example).
+Na przykład zobacz [przykład pliku konfiguracji](#configuration-file-example).
 
 ## <a name="workflows"></a>Przepływy
 
-Logika biznesowa aplikacji może być modelowana jako maszyna stanu, w której podejmowana jest akcja powodująca przechodzenie przepływu logiki biznesowej z jednego stanu do drugiego. Przepływ pracy to zbiór takich stanów i akcji. Każdy przepływ pracy składa się z co najmniej jednej inteligentnej umowy, która reprezentuje logikę biznesową w plikach kodu. Kontrakt wykonywalny jest wystąpieniem przepływu pracy.
+Logika biznesowa aplikacji może być modelowany jako maszyny stanu, gdzie podjęcie akcji powoduje przepływ logiki biznesowej, aby przejść z jednego stanu do drugiego. Przepływ pracy jest zbiorem takich stanów i akcji. Każdy przepływ pracy składa się z jednego lub więcej inteligentnych kontraktów, które reprezentują logikę biznesową w plikach kodu. Kontrakt wykonywalny jest wystąpieniem przepływu pracy.
 
-| Pole | Opis | Wymagany | Maksymalna długość |
+| Pole | Opis | Wymagany | Długość maksymalna |
 |-------|-------------|:--------:|-----------:|
-| Name (Nazwa) | Unikatowa nazwa przepływu pracy. Odpowiedni kontrakt inteligentny musi używać tej samej **nazwy** dla odpowiedniej klasy kontraktu. | Yes | 50 |
-| DisplayName | Przyjazna nazwa wyświetlana przepływu pracy. | Yes | 255 |
+| Nazwa | Unikatowa nazwa przepływu pracy. Odpowiednia umowa inteligentna musi używać tej samej **nazwy** dla odpowiedniej klasy kontraktu. | Tak | 50 |
+| DisplayName | Przyjazna nazwa wyświetlana przepływu pracy. | Tak | 255 |
 | Opis | Opis przepływu pracy. | Nie | 255 |
-| Inicjatorów | Kolekcja [ApplicationRoles](#application-roles). Role przypisane do użytkowników, którzy mają uprawnienia do tworzenia kontraktów w przepływie pracy. | Yes | |
-| StartState | Nazwa początkowego stanu przepływu pracy. | Yes | |
-| Właściwości | Kolekcja [identyfikatorów](#identifiers). Reprezentuje dane, które mogą być odczytywane w łańcuchu lub wizualizowane w narzędziu środowisko użytkownika. | Yes | |
-| Konstruktor | Definiuje parametry wejściowe do tworzenia wystąpienia przepływu pracy. | Yes | |
-| Funkcje | Kolekcja [funkcji](#functions) , które mogą być wykonywane w przepływie pracy. | Yes | |
-| Stany | Kolekcja [Stanów](#states)przepływu pracy. | Yes | |
+| Inicjatorów | Zbieranie [zaułek aplikacji](#application-roles). Role przypisane do użytkowników, którzy są upoważnieni do tworzenia kontraktów w przepływie pracy. | Tak | |
+| Stan początkowy | Nazwa stanu początkowego przepływu pracy. | Tak | |
+| Właściwości | Zbieranie [identyfikatorów](#identifiers). Reprezentuje dane, które mogą być odczytywane poza łańcuchem lub wizualizowane w narzędziu środowiska użytkownika. | Tak | |
+| Konstruktor | Definiuje parametry wejściowe do tworzenia wystąpienia przepływu pracy. | Tak | |
+| Funkcje | Kolekcja [funkcji,](#functions) które mogą być wykonywane w przepływie pracy. | Tak | |
+| Stany | Kolekcja [stanów](#states)przepływu pracy . | Tak | |
 
-Aby zapoznać się z przykładem, zobacz [przykład pliku konfiguracji](#configuration-file-example).
+Na przykład zobacz [przykład pliku konfiguracji](#configuration-file-example).
 
 ## <a name="type"></a>Typ
 
@@ -67,20 +67,20 @@ Obsługiwane typy danych.
 
 | Typ | Opis |
 |-------|-------------|
-| Ulica  | Typ adresu łańcucha bloków, taki jak *kontrakty* lub *Użytkownicy*. |
-| tablica    | Tablica jednopoziomowa typu Integer, bool, Money lub Time. Tablice mogą być statyczne lub dynamiczne. Użyj **elementu ElementType** , aby określić typ danych elementów w tablicy. Zobacz [Przykładowa konfiguracja](#example-configuration-of-type-array). |
-| logiczna     | Boolean — Typ danych. |
-| przedsiębiorc | Adres typu kontraktu. |
-| Wyliczenia     | Wyliczany zestaw nazwanych wartości. W przypadku korzystania z typu enum należy również określić listę EnumValues. Każda wartość jest ograniczona do 255 znaków. Prawidłowe znaki wartości to wielkie i małe litery (A-Z, a-z) i cyfry (0-9). Zobacz [przykład konfiguracji i użycia w postaci stałej](#example-configuration-of-type-enum). |
-| int      | Integer — typ danych. |
-| money    | Typ danych walutowych. |
+| adres  | Typ adresu łańcucha bloków, taki jak *kontrakty* lub *użytkownicy.* |
+| tablica    | Tablica pojedynczego poziomu typu liczba całkowita, bool, pieniądze lub czas. Tablice mogą być statyczne lub dynamiczne. Użyj **elementuType,** aby określić typ danych elementów w tablicy. Zobacz [przykładowa konfiguracja](#example-configuration-of-type-array). |
+| bool     | Typ danych logicznych. |
+| Umowy | Adres typu umowy. |
+| enum     | Wyliczony zestaw nazwanych wartości. Korzystając z typu wyliczenia, należy również określić listę EnumValues. Każda wartość jest ograniczona do 255 znaków. Prawidłowe znaki wartości obejmują wielkie i małe litery (A-Z, a-z) i cyfry (0-9). Zobacz [przykład konfiguracji i użycia w solidity](#example-configuration-of-type-enum). |
+| int      | Typ danych liczby całkowitej. |
+| pieniędzy    | Typ danych pieniężnych. |
 | state    | Stan przepływu pracy. |
-| ciąg  | String — typ danych. maksymalnie 4000 znaków. Zobacz [Przykładowa konfiguracja](#example-configuration-of-type-string). |
-| Użytkownik     | Adres typu użytkownika. |
+| ciąg  | Są to dane typu ciąg. Maksymalnie 4000 znaków. Zobacz [przykładowa konfiguracja](#example-configuration-of-type-string). |
+| użytkownik     | Adres typu użytkownika. |
 | time     | Typ danych czasu. |
 |`[ Application Role Name ]`| Dowolna nazwa określona w roli aplikacji. Ogranicza użytkowników do tego typu roli. |
 
-### <a name="example-configuration-of-type-array"></a>Przykładowa konfiguracja typu Array
+### <a name="example-configuration-of-type-array"></a>Przykładowa konfiguracja tablicy typów
 
 ```json
 {
@@ -96,9 +96,9 @@ Obsługiwane typy danych.
 }
 ```
 
-#### <a name="using-a-property-of-type-array"></a>Używanie właściwości typu Array
+#### <a name="using-a-property-of-type-array"></a>Korzystanie z właściwości tablicy typu
 
-Jeśli zdefiniujesz właściwość jako tablicę typu w konfiguracji, musisz dołączyć jawną funkcję Get, aby zwrócić publiczną właściwość typu tablicy w postaci stałej. Na przykład:
+Jeśli właściwość zostanie zdefiniowana jako tablica typów w konfiguracji, należy dołączyć jawną funkcję get, aby zwrócić właściwość publiczną typu tablicy w solidity. Przykład:
 
 ```
 function GetQuotes() public constant returns (int[]) {
@@ -106,7 +106,7 @@ function GetQuotes() public constant returns (int[]) {
 }
 ```
 
-### <a name="example-configuration-of-type-string"></a>Przykładowa konfiguracja typu String
+### <a name="example-configuration-of-type-string"></a>Przykładowa konfiguracja ciągu tekstowego
 
 ``` json
 {
@@ -119,7 +119,7 @@ function GetQuotes() public constant returns (int[]) {
 }
 ```
 
-### <a name="example-configuration-of-type-enum"></a>Przykładowa konfiguracja typu enum
+### <a name="example-configuration-of-type-enum"></a>Przykładowa konfiguracja typu wyliczenia
 
 ``` json
 {
@@ -133,17 +133,17 @@ function GetQuotes() public constant returns (int[]) {
 }
 ```
 
-#### <a name="using-enumeration-type-in-solidity"></a>Używanie typu wyliczenia w postaci stałej
+#### <a name="using-enumeration-type-in-solidity"></a>Używanie typu wyliczenia w funkcji Solidity
 
-Gdy Wyliczenie jest zdefiniowane w konfiguracji, można użyć typów wyliczeniowych w postaci stałej. Na przykład można zdefiniować Wyliczenie o nazwie PropertyTypeEnum.
+Po zdefiniowaniu wyliczenia w konfiguracji można użyć typów wyliczenia w solidity. Na przykład można zdefiniować wyliczenie o nazwie PropertyTypeEnum.
 
 ```
 enum PropertyTypeEnum {House, Townhouse, Condo, Land} PropertyTypeEnum public PropertyType; 
 ```
 
-Lista ciągów musi być zgodna między konfiguracją a inteligentnym kontraktem, aby były prawidłowe i spójne deklaracje w łańcucha bloków Workbench.
+Lista ciągów musi być zgodna między konfiguracją a inteligentnym kontraktem, aby były prawidłowe i spójne deklaracje w Blockchain Workbench.
 
-Przykład przypisania:
+Przykład przydziału:
 
 ```
 PropertyType = PropertyTypeEnum.Townhouse;
@@ -170,7 +170,7 @@ Definiuje parametry wejściowe dla wystąpienia przepływu pracy.
 
 | Pole | Opis | Wymagany |
 |-------|-------------|:--------:|
-| Parametry | Kolekcja [identyfikatorów](#identifiers) wymaganych do zainicjowania kontraktu inteligentnego. | Yes |
+| Parametry | Zbieranie [identyfikatorów wymaganych](#identifiers) do zainicjowania inteligentnego kontraktu. | Tak |
 
 ### <a name="constructor-example"></a>Przykład konstruktora
 
@@ -201,12 +201,12 @@ Definiuje parametry wejściowe dla wystąpienia przepływu pracy.
 
 Definiuje funkcje, które mogą być wykonywane w przepływie pracy.
 
-| Pole | Opis | Wymagany | Maksymalna długość |
+| Pole | Opis | Wymagany | Długość maksymalna |
 |-------|-------------|:--------:|-----------:|
-| Name (Nazwa) | Unikatowa nazwa funkcji. Odpowiedni kontrakt inteligentny musi używać tej samej **nazwy** dla odpowiedniej funkcji. | Yes | 50 |
-| DisplayName | Przyjazna nazwa wyświetlana funkcji. | Yes | 255 |
+| Nazwa | Unikatowa nazwa funkcji. Odpowiednia umowa inteligentna musi używać tej samej **nazwy** dla odpowiedniej funkcji. | Tak | 50 |
+| DisplayName | Przyjazna nazwa wyświetlana funkcji. | Tak | 255 |
 | Opis | Opis funkcji | Nie | 255 |
-| Parametry | Kolekcja [identyfikatorów](#identifiers) odpowiadająca parametrom funkcji. | Yes | |
+| Parametry | Zbieranie [identyfikatorów](#identifiers) odpowiadających parametrom funkcji. | Tak | |
 
 ### <a name="functions-example"></a>Przykład funkcji
 
@@ -249,16 +249,16 @@ Definiuje funkcje, które mogą być wykonywane w przepływie pracy.
 
 Kolekcja unikatowych stanów w ramach przepływu pracy. Każdy stan przechwytuje krok w przepływie sterowania logiki biznesowej. 
 
-| Pole | Opis | Wymagany | Maksymalna długość |
+| Pole | Opis | Wymagany | Długość maksymalna |
 |-------|-------------|:--------:|-----------:|
-| Name (Nazwa) | Unikatowa nazwa stanu. Odpowiedni kontrakt inteligentny musi używać tej samej **nazwy** dla danego stanu. | Yes | 50 |
-| DisplayName | Przyjazna nazwa wyświetlana stanu. | Yes | 255 |
+| Nazwa | Unikatowa nazwa stanu. Odpowiednia umowa inteligentna musi używać tej samej **nazwy** dla odpowiedniego stanu. | Tak | 50 |
+| DisplayName | Przyjazna nazwa wyświetlana stanu. | Tak | 255 |
 | Opis | Opis stanu. | Nie | 255 |
-| PercentComplete | Wartość całkowita wyświetlana w interfejsie użytkownika łańcucha bloków Workbench do wyświetlania postępu w przepływie sterowania logiki biznesowej. | Yes | |
-| Styl | Wskazówka wizualna wskazująca, czy stan reprezentuje stan powodzenie lub niepowodzenie. Istnieją dwie prawidłowe wartości: `Success` lub `Failure`. | Yes | |
-| Między | Kolekcja dostępnych [przejść](#transitions) od bieżącego stanu do następnego zestawu Stanów. | Nie | |
+| Percentcomplete | Wartość całkowita wyświetlana w interfejsie użytkownika Blockchain Workbench, aby pokazać postęp w przepływie sterowania logiką biznesową. | Tak | |
+| Styl | Wizualna wskazówka wskazująca, czy stan reprezentuje stan sukcesu lub awarii. Istnieją dwie prawidłowe `Success` `Failure`wartości: lub . | Tak | |
+| Przejścia | Kolekcja dostępnych [przejść](#transitions) z bieżącego stanu do następnego zestawu stanów. | Nie | |
 
-### <a name="states-example"></a>Stany — przykład
+### <a name="states-example"></a>Przykład państw
 
 ``` json
 "States": [
@@ -314,18 +314,18 @@ Kolekcja unikatowych stanów w ramach przepływu pracy. Każdy stan przechwytuje
   ]
 ```
 
-## <a name="transitions"></a>Między
+## <a name="transitions"></a>Przejścia
 
-Dostępne akcje do następnego stanu. Co najmniej jedna rola użytkownika może wykonać akcję w każdym stanie, w którym akcja może spowodować przejście stanu do innego stanu w przepływie pracy. 
+Dostępne akcje do następnego stanu. Co najmniej jedna rola użytkownika może wykonać akcję w każdym stanie, w którym akcja może przejść stan do innego stanu w przepływie pracy. 
 
 | Pole | Opis | Wymagany |
 |-------|-------------|:--------:|
-| AllowedRoles | Lista ról aplikacji, które mogą inicjować przejście. Wszyscy użytkownicy określonej roli mogą być w stanie wykonać tę akcję. | Nie |
-| AllowedInstanceRoles | Lista ról użytkownika uczestniczących lub określonych w kontrakcie inteligentnym, które mogą inicjować przejście. Role wystąpienia są zdefiniowane we **właściwościach** w przepływach pracy. AllowedInstanceRoles reprezentuje użytkownika biorącego udział w wystąpieniu kontraktu inteligentnego. AllowedInstanceRoles dają możliwość ograniczenia podejmowania akcji do roli użytkownika w wystąpieniu kontraktu.  Na przykład możesz chcieć zezwolić tylko na zakończenie przez użytkownika, który utworzył kontrakt (obiektem InstanceOwner), a nie wszystkich użytkowników w typie roli (właściciela), jeśli określono rolę w AllowedRoles. | Nie |
-| DisplayName | Przyjazna nazwa wyświetlana przejścia. | Yes |
+| Dozwolone Zaniechy | Lista ról aplikacji może zainicjować przejście. Wszyscy użytkownicy określonej roli mogą być w stanie wykonać akcję. | Nie |
+| DozwoloneZażenia InstanceRole | Lista ról użytkowników uczestniczących lub określone w umowie inteligentnej może zainicjować przejście. Role wystąpień są definiowane we **właściwościach** w przepływach pracy. AllowedInstanceRoles reprezentują użytkownika uczestniczącego w wystąpieniu umowy inteligentnej. AllowedInstanceRoles daje możliwość ograniczenia podejmowania akcji do roli użytkownika w wystąpieniu umowy.  Na przykład można zezwolić tylko użytkownikowi, który utworzył kontrakt (InstanceOwner), aby móc zakończyć, a nie wszystkich użytkowników w typie roli (Właściciel), jeśli określono rolę w AllowedRoles. | Nie |
+| DisplayName | Przyjazna nazwa wyświetlana przejścia. | Tak |
 | Opis | Opis przejścia. | Nie |
-| Funkcja | Nazwa funkcji, w której ma zostać zainicjowane przejście. | Yes |
-| NextStates | Kolekcja potencjalnych następnych Stanów po pomyślnym przejściu. | Yes |
+| Funkcja | Nazwa funkcji inicjującej przejście. | Tak |
+| Następnestany | Kolekcja potencjalnych następnych stanów po pomyślnym przejściu. | Tak |
 
 ### <a name="transitions-example"></a>Przykład przejścia
 
@@ -361,11 +361,11 @@ Dostępne akcje do następnego stanu. Co najmniej jedna rola użytkownika może 
 
 ## <a name="application-roles"></a>Role aplikacji
 
-Role aplikacji definiują zestaw ról, które mogą być przypisane do użytkowników, którzy chcą działać lub uczestniczyć w aplikacji. Role aplikacji mogą służyć do ograniczania akcji i udziału w aplikacji łańcucha bloków oraz odpowiednich przepływów pracy. 
+Role aplikacji definiują zestaw ról, które można przypisać do użytkowników, którzy chcą działać lub uczestniczyć w aplikacji. Role aplikacji mogą być używane do ograniczania akcji i uczestnictwa w aplikacji blockchain i odpowiednich przepływach pracy. 
 
-| Pole | Opis | Wymagany | Maksymalna długość |
+| Pole | Opis | Wymagany | Długość maksymalna |
 |-------|-------------|:--------:|-----------:|
-| Name (Nazwa) | Unikatowa nazwa roli aplikacji. Odpowiedni kontrakt inteligentny musi używać tej samej **nazwy** dla odpowiedniej roli. Nazwy typów podstawowych są zastrzeżone. Nie można nazwać roli aplikacji o takiej samej nazwie jak [Typ](#type)| Yes | 50 |
+| Nazwa | Unikatowa nazwa roli aplikacji. Odpowiednia umowa inteligentna musi używać tej samej **nazwy** dla odpowiedniej roli. Nazwy typów podstawowych są zarezerwowane. Nie można nazwać roli aplikacji o takiej samej nazwie jak [Typ](#type)| Tak | 50 |
 | Opis | Opis roli aplikacji. | Nie | 255 |
 
 ### <a name="application-roles-example"></a>Przykład ról aplikacji
@@ -384,14 +384,14 @@ Role aplikacji definiują zestaw ról, które mogą być przypisane do użytkown
 ```
 ## <a name="identifiers"></a>Identyfikatory
 
-Identyfikatory reprezentują kolekcję informacji używanych do opisywania właściwości przepływu pracy, konstruktora i parametrów funkcji. 
+Identyfikatory reprezentują zbiór informacji używanych do opisywania właściwości przepływu pracy, konstruktora i parametrów funkcji. 
 
-| Pole | Opis | Wymagany | Maksymalna długość |
+| Pole | Opis | Wymagany | Długość maksymalna |
 |-------|-------------|:--------:|-----------:|
-| Name (Nazwa) | Unikatowa nazwa właściwości lub parametru. Odpowiedni kontrakt inteligentny musi używać tej samej **nazwy** dla odpowiedniej właściwości lub parametru. | Yes | 50 |
-| DisplayName | Przyjazna nazwa wyświetlana właściwości lub parametru. | Yes | 255 |
+| Nazwa | Unikatowa nazwa właściwości lub parametru. Odpowiednia umowa inteligentna musi używać tej samej **nazwy** dla odpowiedniej właściwości lub parametru. | Tak | 50 |
+| DisplayName | Przyjazna nazwa wyświetlana właściwości lub parametru. | Tak | 255 |
 | Opis | Opis właściwości lub parametru. | Nie | 255 |
-| Typ | [Typ danych](#type)właściwości. | Yes |
+| Typ | [Typ danych](#type)właściwości . | Tak |
 
 ### <a name="identifiers-example"></a>Przykład identyfikatorów
 
@@ -416,13 +416,13 @@ Identyfikatory reprezentują kolekcję informacji używanych do opisywania wła�
 ]
 ```
 
-## <a name="configuration-file-example"></a>Przykład pliku konfiguracji
+## <a name="configuration-file-example"></a>Przykład pliku konfiguracyjnego
 
-Transfer zasobów to inteligentny scenariusz kontraktu służący do kupowania i sprzedawania zasobów o wysokiej wartości, które wymagają inspektora i rzeczoznawca. Sprzedawcy mogą wyświetlić listę swoich zasobów przez utworzenie wystąpienia kontraktu inteligentnego transferu zasobów. Kupujący mogą robić oferty przez podejmowanie działań w ramach kontraktu inteligentnego, a inne strony mogą podejmować działania w celu sprawdzenia lub oceny elementu zawartości. Gdy element zawartości zostanie oznaczony jako kontrolowany i wyciągnięty, kupujący i sprzedający potwierdzi sprzedaż ponownie, zanim kontrakt zostanie ustawiony jako zakończony. W każdym momencie procesu wszyscy uczestnicy mają wgląd w stan kontraktu w miarę jego aktualizowania. 
+Przeniesienie aktywów to inteligentny scenariusz umowy na zakup i sprzedaż aktywów o wysokiej wartości, które wymagają inspektora i rzeczoznawcy. Sprzedający mogą wystawiać swoje zasoby, tworząc inteligentną umowę przeniesienia aktywów. Kupujący mogą złożyć oferty, podejmując działania w sprawie inteligentnego kontraktu, a inne strony mogą podjąć działania w celu sprawdzenia lub oceny zasobu. Gdy składnik aktywów zostanie oznaczony zarówno w kontrolowanych, jak i ocenionych, kupujący i sprzedający ponownie potwierdzą sprzedaż przed zakończeniem umowy. W każdym punkcie procesu wszyscy uczestnicy mają wgląd w stan umowy, jak jest aktualizowana. 
 
-Aby uzyskać więcej informacji, w tym pliki kodu, zobacz [przykład transferu zasobów dla usługi Azure łańcucha bloków Workbench](https://github.com/Azure-Samples/blockchain/tree/master/blockchain-workbench/application-and-smart-contract-samples/asset-transfer)
+Aby uzyskać więcej informacji, w tym pliki kodu, zobacz [przykład przeniesienia zasobów dla programu Azure Blockchain Workbench](https://github.com/Azure-Samples/blockchain/tree/master/blockchain-workbench/application-and-smart-contract-samples/asset-transfer)
 
-Następujący plik konfiguracji dotyczy przykładowego transferu zasobów:
+Następujący plik konfiguracyjny dotyczy przykładowego przeniesienia zasobów:
 
 ``` json
 {

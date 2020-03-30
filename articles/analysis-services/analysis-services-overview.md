@@ -1,6 +1,6 @@
 ---
 title: Co to jest Azure Analysis Services? | Microsoft Docs
-description: Dowiedz się więcej o Azure Analysis Services — w pełni zarządzana platforma jako usługa (PaaS), która zapewnia modele danych klasy korporacyjnej w chmurze.
+description: Dowiedz się więcej o usłudze Azure Analysis Services, w pełni zarządzanej platformie jako usługi (PaaS), która udostępnia modele danych klasy korporacyjnej w chmurze.
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: overview
@@ -8,17 +8,17 @@ ms.date: 02/20/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: 3a18218635b5fc576bd9255eb73c136756ac3caa
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "79240604"
 ---
 # <a name="what-is-azure-analysis-services"></a>Co to są usługi Azure Analysis Services?
 
 ![Azure Analysis Services](./media/analysis-services-overview/aas-overview-aas-icon.png)
 
-Azure Analysis Services to w pełni zarządzana platforma jako usługa (PaaS), która oferuje modele danych klasy korporacyjnej w chmurze. Zaawansowane funkcje mieszania i modelowania umożliwiają łączenie danych z wielu źródeł, definiowanie metryk oraz zabezpieczanie danych w jednym zaufanym tabelarycznym modelu danych semantycznych. Model danych umożliwia użytkownikom łatwiejsze i szybsze przeglądanie ogromnych ilości danych na potrzeby analizy danych ad hoc.
+Azure Analysis Services to w pełni zarządzana platforma jako usługa (PaaS), która oferuje modele danych klasy korporacyjnej w chmurze. Zaawansowane funkcje mieszania i modelowania umożliwiają łączenie danych z wielu źródeł, definiowanie metryk oraz zabezpieczanie danych w jednym zaufanym tabelarycznym modelu danych semantycznych. Model danych zapewnia użytkownikom łatwiejszy i szybszy sposób przeglądania ogromnych ilości danych do analizy danych ad hoc.
 
 ![Źródła danych](./media/analysis-services-overview/aas-overview-overall.png)
 
@@ -34,7 +34,7 @@ Usługi Azure Analysis Services można zintegrować z wieloma usługami platform
 
 ## <a name="the-right-tier-when-you-need-it"></a>Odpowiednia warstwa dopasowana do potrzeb
 
-Usługa Azure Analysis Services jest dostępna w warstwach **Deweloper**, **Podstawowa** i **Standardowa**. W ramach każdej warstwy planowanie kosztów różni się w zależności od mocy obliczeniowej, jednostek przetwarzania zapytań (jednostek qpu) i rozmiaru pamięci. Plan w ramach warstwy wybiera się podczas tworzenia serwera. W ramach tej samej warstwy można zmieniać plany w górę lub w dół albo przejść na wyższą warstwę, ale nie można przejść z warstwy wyższej na niższą.
+Usługa Azure Analysis Services jest dostępna w warstwach **Deweloper**, **Podstawowa** i **Standardowa**. W ramach każdej warstwy koszty planu różnią się w zależności od mocy obliczeniowej, jednostek przetwarzania zapytań (QPU) i rozmiaru pamięci. Plan w ramach warstwy wybiera się podczas tworzenia serwera. W ramach tej samej warstwy można zmieniać plany w górę lub w dół albo przejść na wyższą warstwę, ale nie można przejść z warstwy wyższej na niższą.
 
 ### <a name="developer-tier"></a>Warstwa Deweloper
 
@@ -47,7 +47,7 @@ Ta warstwa jest zalecana w przypadku scenariuszy związanych z oceną, programow
 
 ### <a name="basic-tier"></a>Warstwa Podstawowa
 
-Warstwa polecana w przypadku rozwiązań produkcyjnych z niewielkimi modelami tabelarycznymi, ograniczoną współbieżnością użytkowników i prostymi wymaganiami dotyczącymi odświeżania danych. Skalowanie w poziomie repliki zapytań *jest niedostępne* dla tej warstwy. Perspektywy, wiele partycji ani funkcje modelu tabelarycznego DirectQuery *nie są obsługiwane* w tej warstwie.  
+Warstwa polecana w przypadku rozwiązań produkcyjnych z niewielkimi modelami tabelarycznymi, ograniczoną współbieżnością użytkowników i prostymi wymaganiami dotyczącymi odświeżania danych. Skalowanie w poziomie repliki kwerendy *nie jest dostępne* dla tej warstwy. Perspektywy, wiele partycji ani funkcje modelu tabelarycznego DirectQuery *nie są obsługiwane* w tej warstwie.  
 
 |Planowanie  |Jednostki QPU  |Pamięć (GB)  |
 |---------|---------|---------|
@@ -128,17 +128,17 @@ Można utworzyć pulę zapytania z nawet siedmioma dodatkowymi replikami zapytan
 
 Podobnie jak w przypadku zmiany warstw można skalować repliki zapytania w poziomie zgodnie z potrzebami. Konfiguracja skalowania w poziomie jest możliwa w portalu lub przy użyciu interfejsów API REST. Aby dowiedzieć się więcej, zobacz [Azure Analysis Services scale-out (Skalowanie usługi Azure Analysis Services w poziomie)](analysis-services-scale-out.md).
 
-## <a name="pricing"></a>Ceny
+## <a name="pricing"></a>Cennik
 
 Łączny koszt zależy od wielu czynników, na przykład wybranego regionu, warstwy, replik zapytania i wstrzymywania/wznawiania. Do określenia typowych cen dla danego regionu można użyć kalkulatora [cen usługi Azure Analysis Services](https://azure.microsoft.com/pricing/details/analysis-services/). To narzędzie oblicza ceny dla wystąpienia jednego serwera w pojedynczym regionie. Pamiętaj, że opłaty za repliki zapytania są naliczane przy użyciu tej samej stawki, co w przypadku serwera. 
 
 ## <a name="built-on-sql-server-analysis-services"></a>Powstałe na bazie usług SQL Server Analysis Services
 
-Usługi Azure Analysis Services są zgodne z wieloma wspaniałymi funkcjami, które już istnieją w usługach SQL Server Analysis Services Enterprise Edition. Usługa Azure Analysis Services obsługuje modele tabelaryczne na [poziomie zgodności](analysis-services-compat-level.md) 1200 lub wyższym. Modele tabelaryczne to relacyjne konstrukcje modelowania (model, tabele, kolumny) wyrażone w postaci definicji obiektów metadanych tabelarycznych w kodzie języka TMSL (Tabular Model Scripting Language) i modelu TOM (Tabular Model Object). Obsługiwane są partycje, perspektywy, zabezpieczenia na poziomie wierszy, relacje dwukierunkowe i przekształcenia\*. Modele wielowymiarowe ani dodatek PowerPivot dla programu SharePoint *nie są* obsługiwane w usłudze Azure Analysis Services.
+Usługi Azure Analysis Services są zgodne z wieloma wspaniałymi funkcjami, które już istnieją w usługach SQL Server Analysis Services Enterprise Edition. Usługa Azure Analysis Services obsługuje modele tabelaryczne na [poziomie zgodności](analysis-services-compat-level.md) 1200 lub wyższym. Modele tabelaryczne to relacyjne konstrukcje modelowania (model, tabele, kolumny) wyrażone w postaci definicji obiektów metadanych tabelarycznych w kodzie języka TMSL (Tabular Model Scripting Language) i modelu TOM (Tabular Model Object). Obsługiwane są partycje, perspektywy, zabezpieczenia na poziomie wierszy, relacje dwukierunkowe i przekształcenia\*. Modele wielowymiarowe i program PowerPivot dla programu SharePoint *nie są* obsługiwane w usługach Azure Analysis Services.
 
 Modele tabelaryczne w trybie w pamięci i DirectQuery są obsługiwane. Modele tabelaryczne w trybie w pamięci (tryb domyślny) obsługują wiele źródeł danych. Ponieważ model danych jest wysoce skompresowany i buforowany w pamięci, ten tryb udostępnia najszybszą odpowiedź na zapytanie dotyczące dużych ilości danych. Zapewnia on także większą elastyczność w przypadku złożonych zestawów danych i zapytań. Partycjonowanie umożliwia ładowanie przyrostowe, zwiększa możliwości przetwarzania równoległego i zmniejsza zużycie pamięci. Inne zaawansowane funkcje modelowania danych, takie jak tabele obliczeniowe, oraz wszystkie funkcje języka DAX są obsługiwane. Modele w pamięci muszą być odświeżane (przetwarzane) w celu aktualizacji informacji buforowanych na podstawie źródeł danych. Dzięki obsłudze jednostek usług platformy Azure nienadzorowane operacje odświeżania przy użyciu programu PowerShell, modelu TOM, języka TMSL i stylu REST oferują elastyczność w zakresie sprawdzania aktualności danych. 
 
-Tryb DirectQuery* używa relacyjnej bazy danych zaplecza do magazynowania i wykonywania zapytań. Bardzo duże zestawy danych w pojedynczym SQL Server, SQL Server magazynu danych, Azure SQL Database, usłudze Azure Synapse Analytics (SQL Data Warehouse), programie Oracle i źródłach danych programu Teradata. Zestawy danych zaplecza mogą przekraczać rozmiar dostępnej pamięci zasobów serwera. Złożone scenariusze odświeżania modeli danych nie są potrzebne. Istnieją również pewne ograniczenia, takie jak ograniczone typy źródeł danych, ograniczenia Formuły języka DAX i niektóre zaawansowane funkcje modelowania danych nie są obsługiwane. Przed zidentyfikowaniem odpowiadającego Ci trybu zobacz [DirectQuery mode](https://docs.microsoft.com/analysis-services/tabular-models/directquery-mode-ssas-tabular) (Tryb DirectQuery).
+Tryb DirectQuery* używa relacyjnej bazy danych zaplecza do magazynowania i wykonywania zapytań. Bardzo duże zestawy danych w pojedynczych źródłach danych SQL Server, SQL Server Data Warehouse, Azure SQL Database, Azure Synapse Analytics (SQL Data Warehouse), Oracle i Teradata są obsługiwane. Zestawy danych zaplecza mogą przekraczać rozmiar dostępnej pamięci zasobów serwera. Złożone scenariusze odświeżania modeli danych nie są potrzebne. Istnieją również pewne ograniczenia, takie jak ograniczone typy źródeł danych, ograniczenia formuły języka DAX i niektóre zaawansowane funkcje modelowania danych nie są obsługiwane. Przed zidentyfikowaniem odpowiadającego Ci trybu zobacz [DirectQuery mode](https://docs.microsoft.com/analysis-services/tabular-models/directquery-mode-ssas-tabular) (Tryb DirectQuery).
 
 \* Dostępność funkcji zależy od warstwy.
 
@@ -148,7 +148,7 @@ Modele tabelaryczne w usłudze Azure Analysis Services obsługują wiele różny
 
 ## <a name="compatibility-level"></a>Poziom zgodności
 
-Poziom zgodności dotyczy zachowań specyficznych dla wersji w aparacie Analysis Services. Azure Analysis Services obsługuje modele tabelaryczne na poziomach zgodności 1200 i wyższych. Aby dowiedzieć się więcej, zobacz [poziom zgodności dla modeli tabelarycznych](https://docs.microsoft.com/analysis-services/tabular-models/compatibility-level-for-tabular-models-in-analysis-services).
+Poziom zgodności odnosi się do zachowań specyficznych dla wydania w aparatie usług Analysis Services. Usługa Azure Analysis Services obsługuje modele tabelaryczne na poziomie zgodności 1200 lub wyższym. Aby dowiedzieć się więcej, zobacz [Poziom zgodności modeli tabelarów .](https://docs.microsoft.com/analysis-services/tabular-models/compatibility-level-for-tabular-models-in-analysis-services)
 
 
 ## <a name="your-data-is-secure"></a>Twoje dane są bezpieczne
@@ -200,15 +200,15 @@ Aby dowiedzieć się więcej na temat zabezpieczeń platformy Azure, zobacz [Mic
 
 ### <a name="visual-studio"></a>Visual Studio
 
-Opracowywanie i wdrażanie modeli przy użyciu programu Visual Studio z projektami Analysis Services. Rozszerzenie projekty Analysis Services zawiera szablony i kreatory umożliwiające szybkie rozpoczęcie pracy. Środowisko tworzenia modelu w programie Visual Studio zawiera teraz nowoczesne zapytania dotyczące źródła danych pobieranie danych i funkcje programu mashup dla tabelarycznych modeli 1400 i wyższych. Jeśli znasz już funkcję Get Data w programach Power BI Desktop i Excel 2016, wiesz już, jak łatwo tworzy się wysoce dostosowywalne zapytania do źródeł danych. 
+Tworzenie i wdrażanie modeli za pomocą programu Visual Studio za pomocą projektów Analysis Services. Rozszerzenie projektów analysis services zawiera szablony i kreatory, które szybko cię wydłużają. Środowisko tworzenia modelu w programie Visual Studio zawiera teraz nowoczesne zapytanie źródła danych Pobierz dane i funkcje mashup dla modeli tabelaryczne 1400 i wyższe. Jeśli znasz już funkcję Get Data w programach Power BI Desktop i Excel 2016, wiesz już, jak łatwo tworzy się wysoce dostosowywalne zapytania do źródeł danych. 
 
-Projekty Analysis Services firmy Microsoft są dostępne jako bezpłatny możliwy do zainstalowania pakiet VSIX. [Pobierz z witryny Marketplace](https://marketplace.visualstudio.com/items?itemName=ProBITools.MicrosoftAnalysisServicesModelingProjects). Rozszerzenie współpracuje z dowolną wersją programu Visual Studio 2017 lub nowszą, w tym bezpłatną wersję Community.
+Microsoft Analysis Services Projects jest dostępny jako bezpłatny pakiet VSIX do zainstalowania. [Pobierz z witryny Marketplace](https://marketplace.visualstudio.com/items?itemName=ProBITools.MicrosoftAnalysisServicesModelingProjects). Rozszerzenie działa z dowolną wersją programu Visual Studio 2017 i nowszych, w tym z bezpłatną wersją społeczności.
 
-### <a name="sql-server-management-studio"></a>Sql Server Management Studio
+### <a name="sql-server-management-studio"></a>SQL Server Management Studio
 
 Zarządzaj serwerami i bazami danych modeli przy użyciu [programu SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms). Łącz się ze swoimi serwerami w chmurze. Uruchamiaj skrypty TMSL bezpośrednio z okna zapytań XMLA i automatyzuj zadania za pomocą skryptów TMSL i programu PowerShell. Nowe funkcje i możliwości pojawiają się bardzo szybko — program SSMS jest aktualizowany co miesiąc.
 
-### <a name="powershell"></a>Program PowerShell
+### <a name="powershell"></a>PowerShell
 
 Zadania zarządzania zasobami serwerowymi, takie jak tworzenie zasobów serwera, zawieszanie lub wznawianie operacji serwerowych czy zmienianie poziomu (warstwy) serwera, korzystają z poleceń cmdlet programu Azure PowerShell. Inne zadania do zarządzania bazami danych, takie jak dodawanie lub usuwanie członków ról, przetwarzanie czy uruchamianie skryptów TMSL używają poleceń cmdlet w module SqlServer. Aby dowiedzieć się więcej, zobacz [Zarządzanie usługami Azure Analysis Services przy użyciu programu PowerShell](analysis-services-powershell.md).
 
@@ -224,7 +224,7 @@ Nowoczesne narzędzia do eksploracji i wizualizacji danych, takie jak Power BI, 
 
 ## <a name="monitoring-and-diagnostics"></a>Monitorowanie i diagnostyka
 
-Usługa Azure Analysis Services została zintegrowana z metrykami platformy Azure, co zapewnia dużą liczbę metryk specyficznych dla zasobów, aby ułatwić monitorowanie wydajności i kondycji serwerów. Aby dowiedzieć się więcej, zobacz [monitorowanie metryk serwera](analysis-services-monitor.md). Rejestruj metryki przy użyciu [dzienników diagnostycznych zasobów platformy Azure](../azure-monitor/platform/platform-logs-overview.md). Monitoruj i wysyłaj dzienniki do usługi [Azure Storage](https://azure.microsoft.com/services/storage/), przesyłaj je strumieniowo do usługi [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) i eksportuj je do [dzienników usługi Azure Monitor](https://azure.microsoft.com/services/log-analytics/) dostępnej na platformie [Azure](https://www.microsoft.com/cloud-platform/operations-management-suite). Aby dowiedzieć się więcej, zobacz [Setup diagnostic logging](analysis-services-logging.md) (Konfigurowanie rejestrowania diagnostycznego).
+Usługa Azure Analysis Services została zintegrowana z metrykami platformy Azure, co zapewnia dużą liczbę metryk specyficznych dla zasobów, aby ułatwić monitorowanie wydajności i kondycji serwerów. Aby dowiedzieć się więcej, zobacz [Monitorowanie metryk serwera](analysis-services-monitor.md). Rejestruj metryki przy użyciu [dzienników diagnostycznych zasobów platformy Azure](../azure-monitor/platform/platform-logs-overview.md). Monitoruj i wysyłaj dzienniki do usługi [Azure Storage](https://azure.microsoft.com/services/storage/), przesyłaj je strumieniowo do usługi [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) i eksportuj je do [dzienników usługi Azure Monitor](https://azure.microsoft.com/services/log-analytics/) dostępnej na platformie [Azure](https://www.microsoft.com/cloud-platform/operations-management-suite). Aby dowiedzieć się więcej, zobacz [Setup diagnostic logging](analysis-services-logging.md) (Konfigurowanie rejestrowania diagnostycznego).
 
 Usługa Azure Analysis Services obsługuje również [dynamiczne widoki zarządzania (DMV)](https://docs.microsoft.com/analysis-services/instances/use-dynamic-management-views-dmvs-to-monitor-analysis-services). W oparciu o składnię języka SQL widoki DMV współdziałają z zestawami wierszy schematu, które zwracają metadane i informacje dotyczące monitorowania wystąpienia serwera.
 
@@ -232,7 +232,7 @@ Usługa Azure Analysis Services obsługuje również [dynamiczne widoki zarządz
 
 W tej sekcji została przedstawiona dokumentacja dotycząca usługi Azure Analysis Services. Spis treści po lewej stronie ekranu przeglądarki umożliwia wyszukiwanie artykułów. 
 
-Ponieważ Azure Analysis Services modele tabelaryczne są znacznie takie same jak modele tabelaryczne w SQL Server Analysis Services, istnieje obszerna biblioteka udostępnionych samouczków modelowania danych, pojęć, procedur, deweloperów i artykułów referencyjnych dostępnych w [SQL Server Analysis Services dokumentacji](https://docs.microsoft.com/analysis-services/analysis-services-overview). Artykuły w dokumentacji usług SQL Server Analysis Services pokazują, czy mają zastosowanie również do usługi Azure Analysis Services — w tym celu pod tytułem jest dodawany baner DOTYCZY.
+Ponieważ modele tabelaryczne usług Azure Analysis Services są tak samo jak modele tabelaryczne w usługach SQL Server Analysis Services, w dokumentacji programu SQL Server Analysis Services znajduje się obszerna biblioteka udostępnionych samouczków modelowania danych, artykułów koncepcyjnych, proceduralnych, deweloperskich i [referencyjnych.](https://docs.microsoft.com/analysis-services/analysis-services-overview) Artykuły w dokumentacji usług SQL Server Analysis Services pokazują, czy mają zastosowanie również do usługi Azure Analysis Services — w tym celu pod tytułem jest dodawany baner DOTYCZY.
 
 ![Dokumentacja udostępniona](./media/analysis-services-overview/aas-overview-applies-to.png)
 
@@ -248,7 +248,7 @@ W dokumentacji dotyczącej usługi Azure Analysis Services są używane równie�
 
 ## <a name="blogs"></a>Blogi
 
-Wszystko zmienia się tak szybko. Pobierz najnowsze informacje na [blogu Power BI](https://powerbi.microsoft.com/blog/category/analysis-services/) i [blogu platformy Azure](https://azure.microsoft.com/blog/).
+Wszystko zmienia się tak szybko. Uzyskaj najnowsze informacje na [temat bloga usługi Power BI](https://powerbi.microsoft.com/blog/category/analysis-services/) i [bloga platformy Azure](https://azure.microsoft.com/blog/).
 
 ## <a name="community"></a>Społeczność
 

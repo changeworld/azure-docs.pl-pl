@@ -1,5 +1,5 @@
 ---
-title: Kohorty użycia platformy Azure Application Insights | Microsoft Docs
+title: Kohorty użycia usługi Azure Application Insights | Dokumenty firmy Microsoft
 description: Analizowanie różnych zestawów lub użytkowników, sesji, zdarzeń lub operacji, które mają coś wspólnego
 ms.topic: conceptual
 author: NumberByColors
@@ -7,107 +7,107 @@ ms.author: daviste
 ms.date: 04/10/2018
 ms.reviewer: mbullwin
 ms.openlocfilehash: 0c552e8f3e732c49da02b2f5704fb9cf312fb3e8
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77671090"
 ---
-# <a name="application-insights-cohorts"></a>Application Insights kohorty
+# <a name="application-insights-cohorts"></a>Kohorty usługi Application Insights
 
-Kohorta to zbiór użytkowników, sesji, zdarzeń lub operacji, które mają coś wspólnego. W usłudze Azure Application Insights kohorty są definiowane przez zapytanie analityczne. W przypadkach, gdy konieczne jest wielokrotne analizowanie określonego zestawu użytkowników lub zdarzeń, kohorty może zapewnić większą elastyczność, aby dokładnie określić odpowiedni zestaw.
+Kohorta to zestaw użytkowników, sesji, zdarzeń lub operacji, które mają coś wspólnego. W usłudze Azure Application Insights kohorty są definiowane przez kwerendę analityczną. W przypadkach, gdy trzeba wielokrotnie analizować określony zestaw użytkowników lub zdarzeń, kohorty mogą dać ci większą elastyczność, aby wyrazić dokładnie ten zestaw, który Cię interesuje.
 
-![Okienko kohorty](./media/usage-cohorts/001.png)
+![Okienko Kohorty](./media/usage-cohorts/001.png)
 
 ## <a name="cohorts-versus-basic-filters"></a>Kohorty a filtry podstawowe
 
-Kohorty są używane w sposób podobny do filtrów. Definicje kohorty są tworzone na podstawie niestandardowych zapytań analitycznych, dzięki czemu są znacznie bardziej dostosowywalne i złożone. W przeciwieństwie do filtrów, można zapisać kohorty, tak aby inni członkowie zespołu mogli je ponownie wykorzystać.
+Kohorty są stosowane w sposób podobny do filtrów. Ale definicje kohorty są zbudowane na podstawie niestandardowych zapytań analitycznych, więc są znacznie bardziej elastyczne i złożone. W przeciwieństwie do filtrów można zapisywać kohorty, aby inni członkowie zespołu mogli ich ponownie wykorzystać.
 
-Możesz zdefiniować kohorta użytkowników, którzy mają wszystkie próby nowej funkcji w aplikacji. Tę kohortaę można zapisać w zasobie Application Insights. W przyszłości można łatwo analizować tę zapisaną grupę określonych użytkowników.
+Można zdefiniować kohortę użytkowników, którzy wypróbowali nową funkcję w aplikacji. Tę kohortę można zapisać w zasobie usługi Application Insights. W przyszłości można łatwo analizować tę zapisaną grupę konkretnych użytkowników.
 
 > [!NOTE]
-> Po ich utworzeniu kohorty są dostępne w narzędziach użytkownicy, sesje, zdarzenia i Przepływy użytkownika.
+> Po ich utworzeniu kohorty są dostępne w narzędziach Użytkownicy, Sesje, Zdarzenia i Przepływy użytkowników.
 
-## <a name="example-engaged-users"></a>Przykład: zazaangażowani użytkownicy
+## <a name="example-engaged-users"></a>Przykład: Zaangażowani użytkownicy
 
-Twój zespół definiuje użytkownika zaangażowanego jako każdego, kto korzysta z aplikacji pięć lub więcej razy w danym miesiącu. W tej sekcji definiujesz kohorta tych użytkowników.
+Zespół definiuje zaangażowanego użytkownika jako każdego, kto korzysta z aplikacji pięć lub więcej razy w danym miesiącu. W tej sekcji można zdefiniować kohortę tych zaangażowanych użytkowników.
 
-1. Otwórz narzędzie kohorty.
+1. Otwórz narzędzie Kohorty.
 
-2. Wybierz kartę **Galeria szablonów** . Zostanie wyświetlona kolekcja szablonów dla różnych kohorty.
+2. Wybierz kartę **Galeria szablonów.** Zostanie wyświetlony zbiór szablonów dla różnych kohort.
 
-3. Wybierz pozycję **zaangażowani Użytkownicy — według dni**.
+3. Wybierz **zaangażowanych użytkowników - według używanych dni**.
 
-    Dla tego kohorta istnieją trzy parametry:
-    * **Działania**, w których można wybrać zdarzenia i wyświetlenia stron jako "użycie".
+    Istnieją trzy parametry dla tej kohorty:
+    * **Działania**, gdzie można wybrać, które zdarzenia i widoki strony są liczone jako "użycie".
     * **Okres**, definicja miesiąca.
-    * **UsedAtLeastCustom**, liczba przypadków, w których użytkownicy będą musieli użyć elementu w okresie do zliczenia jako zaangażowany.
+    * **UsedAtLeastCustom**, ile razy użytkownicy muszą użyć czegoś w okresie, aby liczyć jako zaangażowany.
 
-4. Zmień wartość **UsedAtLeastCustom** na **5 dni**i pozostaw domyślny **okres** 28 dni.
+4. Zmień **UsedAtLeastCustom** na **5+ dni**i pozostaw **okres** domyślnie 28 dni.
 
-    ![Zazaangażowani użytkownicy](./media/usage-cohorts/003.png)
+    ![Zaangażowani użytkownicy](./media/usage-cohorts/003.png)
 
-    Teraz ten kohorta reprezentuje wszystkie identyfikatory użytkowników wysłane z dowolnym zdarzeniem niestandardowym lub wyświetleniem strony 5 osobnych dni w ciągu ostatnich 28.
+    Teraz ta kohorta reprezentuje wszystkie identyfikatory użytkowników wysłane z dowolnym zdarzeniem niestandardowym lub widokiem strony w ciągu 5 oddzielnych dni w ciągu ostatnich 28.
 
-5. Wybierz pozycję **Zapisz**.
+5. Wybierz **pozycję Zapisz**.
 
    > [!TIP]
-   > Nadaj nazwę kohorta, na przykład "Użytkownicy zaangażowani" (5 dni). Zapisz ją w obszarze "Moje raporty" lub "udostępnione raporty", w zależności od tego, czy chcesz, aby kohorta te osoby, które mają dostęp do tego zasobu Application Insights.
+   > Nadaj swojej kohortie nazwę, na przykład "Zaangażowani użytkownicy (5+ dni)." Zapisz go w "Moje raporty" lub "Udostępnione raporty", w zależności od tego, czy chcesz, aby inne osoby, które mają dostęp do tego zasobu usługi Application Insights, aby zobaczyć tę kohortę.
 
-6. Wybierz pozycję **z powrotem do galerii**.
+6. Wybierz **pozycję Powrót do galerii**.
 
-### <a name="what-can-you-do-by-using-this-cohort"></a>Co można zrobić za pomocą tego kohorta?
+### <a name="what-can-you-do-by-using-this-cohort"></a>Co można zrobić za pomocą tej kohorty?
 
-Otwórz narzędzie użytkownicy. W polu listy rozwijanej **Pokaż** wybierz kohorta utworzony w obszarze **Użytkownicy, do których należysz**.
+Otwórz narzędzie Użytkownicy. Z listy rozwijanej **Pokaż** wybierz kohortę utworzoną w obszarze **Użytkownicy należący do**.
 
-Teraz narzędzie użytkownicy jest filtrowane do kohorta użytkowników:
+Teraz narzędzie Użytkownicy jest filtrowane do tej kohorty użytkowników:
 
-![Okienko użytkownicy przefiltrowane do określonego kohorta](./media/usage-cohorts/004.png)
+![Okienko Użytkownicy filtrowane do określonej kohorty](./media/usage-cohorts/004.png)
 
-Oto kilka istotnych kwestii, które należy zauważyć:
+Kilka ważnych rzeczy do zauważenia:
 
-* Nie można utworzyć tego zestawu za poorednictwem zwykłych filtrów. Logika daty jest bardziej zaawansowana.
-* Można dodatkowo filtrować ten kohorta za pomocą zwykłych filtrów w narzędziu użytkownicy. Mimo że kohorta jest zdefiniowany w 28-dniowym systemie Windows, można nadal dostosować zakres czasu w narzędziu użytkownicy do 30, 60 lub 90 dni.
+* Nie można utworzyć tego zestawu za pomocą zwykłych filtrów. Logika daty jest bardziej zaawansowana.
+* Tę kohortę można dodatkowo filtrować, korzystając z zwykłych filtrów w narzędziu Użytkownicy. Tak więc chociaż kohorta jest zdefiniowana w oknach 28-dniowych, nadal można dostosować zakres czasu w narzędziu Użytkownicy do 30, 60 lub 90 dni.
 
-Te filtry obsługują bardziej zaawansowane pytania, których nie można wyrazić za pomocą konstruktora zapytań. Przykładem są _osoby, które były zaangażowane w ciągu ostatnich 28 dni. Jak działają te same osoby w ciągu ostatnich 60 dni?_
+Filtry te obsługują bardziej zaawansowane pytania, które są niemożliwe do wyrażenia za pośrednictwem konstruktora zapytań. Przykładem są _ludzie, którzy byli zaangażowani w ciągu ostatnich 28 dni. Jak zachowywali się ci sami ludzie w ciągu ostatnich 60 dni?_
 
-## <a name="example-events-cohort"></a>Przykład: zdarzenia kohorta
+## <a name="example-events-cohort"></a>Przykład: Kohorta zdarzeń
 
-Możesz również kohorty zdarzenia. W tej sekcji definiujesz kohorta zdarzeń i wyświetleń stron. Następnie zobaczysz, jak korzystać z nich z innych narzędzi. Ten kohorta może definiować zestaw zdarzeń, które zespół traktuje _aktywne użycie_ lub zestaw związany z określoną nową funkcją.
+Można również tworzyć kohorty wydarzeń. W tej sekcji można zdefiniować kohortę zdarzeń i wyświetleń strony. Następnie widzisz, jak z nich korzystać z innych narzędzi. Ta kohorta może zdefiniować zestaw zdarzeń, które zespół uważa za _aktywne użycie_ lub zestaw związany z pewną nową funkcją.
 
-1. Otwórz narzędzie kohorty.
+1. Otwórz narzędzie Kohorty.
 
-2. Wybierz kartę **Galeria szablonów** . Zostanie wyświetlona kolekcja szablonów dla różnych kohorty.
+2. Wybierz kartę **Galeria szablonów.** Zobaczysz zbiór szablonów dla różnych kohort.
 
-3. Wybierz **Selektor zdarzeń**.
+3. Wybierz **selektor zdarzeń**.
 
     ![Zrzut ekranu przedstawiający selektor zdarzeń](./media/usage-cohorts/006.png)
 
-4. W polu listy rozwijanej **działania** wybierz zdarzenia, które mają znajdować się w kohorta.
+4. W polu rozwijany **Działania** wybierz zdarzenia, które mają znajdować się w kohorcie.
 
-5. Zapisz kohorta i nadaj mu nazwę.
+5. Zapisz kohortę i nadaj jej nazwę.
 
-## <a name="example-active-users-where-you-modify-a-query"></a>Przykład: aktywni użytkownicy, którzy modyfikują zapytanie
+## <a name="example-active-users-where-you-modify-a-query"></a>Przykład: Aktywni użytkownicy, w których modyfikujesz kwerendę
 
-Poprzednie dwie kohorty zostały zdefiniowane przy użyciu pól rozwijanych. Ale można także definiować kohorty za pomocą zapytań analitycznych w celu uzyskania całkowitej elastyczności. Aby dowiedzieć się, jak utworzyć kohorta użytkowników ze Zjednoczonego Królestwa.
+Poprzednie dwie kohorty zostały zdefiniowane za pomocą pól rozwijanych. Ale można również zdefiniować kohorty za pomocą zapytań analitycznych dla całkowitej elastyczności. Aby zobaczyć, jak, utwórz kohortę użytkowników z Wielkiej Brytanii.
 
-![Animowany obraz idący poprzez użycie narzędzia kohorty](./media/usage-cohorts/cohorts0001.gif)
+![Animowany obraz przechodzący przez narzędzie Kohorty](./media/usage-cohorts/cohorts0001.gif)
 
-1. Otwórz narzędzie kohorty, wybierz kartę **Galeria szablonów** , a następnie wybierz pozycję **puste użytkownicy kohorta**.
+1. Otwórz narzędzie Kohorty, wybierz kartę **Galeria szablonów** i wybierz **pozycję Kohorta Użytkownicy puste**.
 
-    ![Kohorta pustej użytkowników](./media/usage-cohorts/001.png)
+    ![Pusta kohorta użytkowników](./media/usage-cohorts/001.png)
 
     Istnieją trzy sekcje:
-   * Sekcja tekstowa promocji, w której można opisać kohorta bardziej szczegółowo dla innych członków zespołu.
+   * Sekcja tekstu Markdown, w której opisujesz kohortę bardziej szczegółowo dla innych osób w twoim zespole.
 
-   * Sekcja parametrów, w której można tworzyć własne parametry, takie jak **działania** i inne pola rozwijane z poprzednich dwóch przykładów.
+   * Sekcja parametry, w której można tworzyć własne parametry, takie jak **Działania** i inne pola rozwijane z poprzednich dwóch przykładów.
 
-   * Sekcja zapytania, w której definiujesz kohorta przy użyciu zapytania analizy.
+   * Sekcja kwerendy, w której kohorta jest definiowana przy użyciu kwerendy analitycznej.
 
-     W sekcji zapytania [napiszesz zapytanie analityczne](/azure/kusto/query). Zapytanie wybiera określony zestaw wierszy opisujących kohorta, które chcesz zdefiniować. Narzędzie kohorty następnie niejawnie dodaje "| Podsumuj według klauzuli user_Id "do zapytania. Te dane są wyświetlane poniżej zapytania w tabeli, dzięki czemu można upewnić się, że zapytanie zwraca wyniki.
+     W sekcji kwerendy [piszesz kwerendę analityczną](/azure/kusto/query). Kwerenda wybiera określony zestaw wierszy, które opisują kohortę, którą chcesz zdefiniować. Następnie narzędzie Kohorty domyślnie dodaje "| podsumować przez user_Id" klauzuli do kwerendy. Te dane są wyświetlane pod zapytaniem poniżej kwerendy w tabeli, dzięki czemu można upewnić się, że kwerenda zwraca wyniki.
 
      > [!NOTE]
-     > Jeśli nie widzisz zapytania, spróbuj zmienić rozmiar sekcji, aby uczynić ją wyższą i ujawnić zapytanie. Animowany plik GIF na początku tej sekcji ilustruje zachowanie zmiany rozmiarów.
+     > Jeśli kwerenda nie jest widoczna, spróbuj zwymiarować sekcję, aby była wyższa i wyświetlić kwerendę. Animowany plik gif na początku tej sekcji ilustruje zachowanie zmiany rozmiaru.
 
 2. Skopiuj i wklej następujący tekst do edytora zapytań:
 
@@ -116,22 +116,22 @@ Poprzednie dwie kohorty zostały zdefiniowane przy użyciu pól rozwijanych. Ale
     | where client_CountryOrRegion == "United Kingdom"
     ```
 
-3. Wybierz pozycję **Uruchom zapytanie**. Jeśli nie widzisz identyfikatorów użytkowników w tabeli, przejdź do kraju/regionu, w którym Twoja aplikacja ma użytkowników.
+3. Wybierz pozycję **Uruchom zapytanie**. Jeśli nie widzisz identyfikatorów użytkowników wyświetlanych w tabeli, zmień ją na kraj/region, w którym aplikacja ma użytkowników.
 
-4. Zapisz i nazwij kohorta.
+4. Zapisz i nazwij kohortę.
 
 ## <a name="frequently-asked-questions"></a>Często zadawane pytania
 
-_Kohorta użytkowników z określonego kraju/regionu. Gdy porównuję ten kohorta w narzędziu użytkownicy, aby po prostu ustawić filtr w tym kraju/regionie, widzę różne wyniki. Zalet?_
+_Zdefiniowałem kohortę użytkowników z określonego kraju/regionu. Kiedy porównuję tę kohortę w narzędziu Użytkownicy, aby po prostu ustawiać filtr w tym kraju /regionie, widzę różne wyniki. Dlaczego?_
 
-Kohorty i filtry są różne. Załóżmy, że masz kohorta użytkowników ze Zjednoczonego Królestwa (zdefiniowane jak w poprzednim przykładzie), a następnie porównasz jej wyniki w celu ustawienia filtru "kraj lub region = Zjednoczone Królestwo".
+Kohorty i filtry są różne. Załóżmy, że masz kohortę użytkowników z Wielkiej Brytanii (zdefiniowaną jak w poprzednim przykładzie) i porównasz jej wyniki z ustawieniem filtru "Kraj lub region = Wielka Brytania".
 
-* Wersja kohorta pokazuje wszystkie zdarzenia użytkowników, którzy otrzymali jedno lub więcej wydarzeń z Zjednoczonego Królestwa w bieżącym przedziale czasu. Jeśli podzieli według kraju lub regionu, najkorzystniej widzisz wiele krajów i regionów.
-* Wersja filtrów zawiera tylko zdarzenia ze Zjednoczonego Królestwa. Ale jeśli podzielę według kraju lub regionu, zobaczysz tylko Zjednoczone Królestwo.
+* Wersja kohortowa zawiera wszystkie zdarzenia od użytkowników, którzy wysłali jedno lub więcej zdarzeń z Wielkiej Brytanii w bieżącym zakresie czasu. Jeśli dzielisz się według kraju lub regionu, prawdopodobnie zobaczysz wiele krajów i regionów.
+* Wersja filtrów zawiera tylko zdarzenia z Wielkiej Brytanii. Ale jeśli podzielisz się według kraju lub regionu, zobaczysz tylko Wielką Brytanię.
 
 ## <a name="learn-more"></a>Dowiedz się więcej
 
-* [Język zapytań analitycznych](https://go.microsoft.com/fwlink/?linkid=856587)
-* [Użytkownicy, sesje, zdarzenia](usage-segmentation.md)
+* [Język zapytań usługi Analytics](https://go.microsoft.com/fwlink/?linkid=856587)
+* [Użytkownicy, sesje, wydarzenia](usage-segmentation.md)
 * [Przepływy użytkownika](usage-flows.md)
-* [Przegląd użycia](usage-overview.md)
+* [Omówienie użycia](usage-overview.md)

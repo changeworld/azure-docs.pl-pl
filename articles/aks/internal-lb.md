@@ -1,34 +1,34 @@
 ---
 title: Tworzenie wewnętrznego modułu równoważenia obciążenia w usłudze Azure Kubernetes Service (AKS)
-description: Dowiedz się, jak utworzyć i użyć wewnętrznego modułu równoważenia obciążenia, aby udostępnić swoje usługi za pomocą usługi Azure Kubernetes Service (AKS).
+description: Dowiedz się, jak utworzyć i używać wewnętrznego modułu równoważenia obciążenia, aby udostępnić swoje usługi za pomocą usługi Azure Kubernetes Service (AKS).
 services: container-service
 ms.topic: article
 ms.date: 03/04/2019
 ms.openlocfilehash: ff102ebe50dd4d2169090718ced9e550701b1b09
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79259411"
 ---
-# <a name="use-an-internal-load-balancer-with-azure-kubernetes-service-aks"></a>Korzystanie z wewnętrznego modułu równoważenia obciążenia z usługą Azure Kubernetes Service (AKS)
+# <a name="use-an-internal-load-balancer-with-azure-kubernetes-service-aks"></a>Użyj wewnętrznego modułu równoważenia obciążenia z usługą Azure Kubernetes Service (AKS)
 
-Aby ograniczyć dostęp do aplikacji w usłudze Azure Kubernetes Service (AKS), można utworzyć i użyć wewnętrznego modułu równoważenia obciążenia. Wewnętrzny moduł równoważenia obciążenia sprawia, że usługa Kubernetes jest dostępna tylko dla aplikacji działających w tej samej sieci wirtualnej co klaster Kubernetes. W tym artykule opisano sposób tworzenia i używania wewnętrznego modułu równoważenia obciążenia z usługą Azure Kubernetes Service (AKS).
+Aby ograniczyć dostęp do aplikacji w usłudze Azure Kubernetes Service (AKS), można utworzyć i używać wewnętrznego modułu równoważenia obciążenia. Wewnętrzny moduł równoważenia obciążenia sprawia, że usługa Kubernetes jest dostępna tylko dla aplikacji działających w tej samej sieci wirtualnej co klaster Kubernetes. W tym artykule pokazano, jak utworzyć i używać wewnętrznego modułu równoważenia obciążenia za pomocą usługi Azure Kubernetes Service (AKS).
 
 > [!NOTE]
-> Azure Load Balancer jest dostępny w dwóch jednostkach SKU — *podstawowa* i *standardowa*. Domyślnie standardowa jednostka SKU jest używana podczas tworzenia klastra AKS.  Podczas tworzenia usługi przy użyciu typu jako modułu równoważenia obciążenia otrzymasz ten sam typ LB jak podczas aprowizacji klastra. Aby uzyskać więcej informacji, zobacz [porównanie jednostki SKU modułu równoważenia obciążenia platformy Azure][azure-lb-comparison].
+> Moduł równoważenia obciążenia platformy Azure jest dostępny w dwóch jednostkach SKU — *Basic* i *Standard*. Domyślnie standardowa jednostka SKU jest używana podczas tworzenia klastra AKS.  Podczas tworzenia usługi z typem jako LoadBalancer, otrzymasz ten sam typ LB, jak podczas aprowizowania klastra. Aby uzyskać więcej informacji, zobacz [porównanie jednostki SKU modułu równoważenia obciążenia platformy Azure][azure-lb-comparison].
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
-W tym artykule przyjęto założenie, że masz istniejący klaster AKS. Jeśli potrzebujesz klastra AKS, zapoznaj się z przewodnikiem Szybki Start AKS [przy użyciu interfejsu wiersza polecenia platformy Azure][aks-quickstart-cli] lub [przy użyciu Azure Portal][aks-quickstart-portal].
+W tym artykule przyjęto założenie, że masz istniejący klaster AKS. Jeśli potrzebujesz klastra AKS, zobacz szybki start usługi AKS [przy użyciu interfejsu wiersza polecenia platformy Azure][aks-quickstart-cli] lub za pomocą portalu [Azure.][aks-quickstart-portal]
 
-Konieczne jest również zainstalowanie i skonfigurowanie interfejsu wiersza polecenia platformy Azure w wersji 2.0.59 lub nowszej. Uruchom polecenie  `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczne jest zainstalowanie lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure][install-azure-cli].
+Potrzebne są również zainstalowane i skonfigurowane i skonfigurowane narzędzia Azure CLI w wersji 2.0.59 lub nowszej. Uruchom polecenie  `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczne będzie przeprowadzenie instalacji lub uaktualnienia, zobacz  [Instalowanie interfejsu wiersza polecenia platformy Azure][install-azure-cli].
 
-Nazwa główna usługi klastra AKS wymaga uprawnień do zarządzania zasobami sieci, jeśli używana jest istniejąca podsieć lub Grupa zasobów. Ogólnie rzecz biorąc Przypisz rolę *współautor sieci* do nazwy głównej usługi w odniesieniu do zasobów delegowanych. Aby uzyskać więcej informacji o uprawnieniach, zobacz [delegowanie dostępu AKS do innych zasobów platformy Azure][aks-sp].
+Podmiot zabezpieczeń usługi klastrowania usługi AKS wymaga uprawnień do zarządzania zasobami sieciowymi, jeśli używasz istniejącej podsieci lub grupy zasobów. Ogólnie rzecz biorąc przypisz rolę *współautora sieci* do jednostki usługi na delegowanych zasobów. Aby uzyskać więcej informacji na temat uprawnień, zobacz [Delegowanie dostępu AKS do innych zasobów platformy Azure][aks-sp].
 
 ## <a name="create-an-internal-load-balancer"></a>Utwórz wewnętrzny moduł równoważenia obciążenia.
 
-Aby utworzyć wewnętrzny moduł równoważenia obciążenia, Utwórz manifest usługi o nazwie `internal-lb.yaml` przy użyciu *modułu równoważenia* obciążenia typu usługi i *Azure-load-module —* adnotacja wewnętrzna, jak pokazano w następującym przykładzie:
+Aby utworzyć wewnętrzny moduł równoważenia `internal-lb.yaml` obciążenia, utwórz manifest usługi o nazwie o typie usługi *LoadBalancer* i adnotację *azure-load-balance-internal,* jak pokazano w poniższym przykładzie:
 
 ```yaml
 apiVersion: v1
@@ -45,7 +45,7 @@ spec:
     app: internal-app
 ```
 
-Wdróż wewnętrzny moduł równoważenia obciążenia przy użyciu [polecenia kubectl Zastosuj][kubectl-apply] i określ nazwę manifestu YAML:
+Wdrażanie wewnętrznego modułu równoważenia obciążenia przy użyciu [aplikacji kubectl][kubectl-apply] i określ nazwę manifestu YAML:
 
 ```console
 kubectl apply -f internal-lb.yaml
@@ -53,7 +53,7 @@ kubectl apply -f internal-lb.yaml
 
 Moduł równoważenia obciążenia platformy Azure jest tworzony w grupie zasobów węzła i połączony z tą samą siecią wirtualną co klaster AKS.
 
-Po wyświetleniu szczegółów usługi adres IP wewnętrznego modułu równoważenia obciążenia jest wyświetlany w kolumnie *zewnętrzny adres IP* . W tym kontekście *zewnętrzny* jest w odniesieniu do zewnętrznego interfejsu modułu równoważenia obciążenia, a nie otrzymuje publicznego zewnętrznego adresu IP. Zmiana adresu IP z *\<oczekujących\>* na rzeczywisty wewnętrzny adres IP może potrwać minutę lub dwa, jak pokazano w następującym przykładzie:
+Podczas wyświetlania szczegółów usługi adres IP wewnętrznego modułu równoważenia obciążenia jest wyświetlany w kolumnie *EXTERNAL-IP.* W tym kontekście *External* jest w odniesieniu do interfejsu zewnętrznego modułu równoważenia obciążenia, a nie, że odbiera publiczny, zewnętrzny adres IP. Zmiana adresu IP z * \<oczekującego\> * na rzeczywisty wewnętrzny adres IP może potrwać minutę lub dwie, jak pokazano w poniższym przykładzie:
 
 ```
 $ kubectl get service internal-app
@@ -62,9 +62,9 @@ NAME           TYPE           CLUSTER-IP    EXTERNAL-IP   PORT(S)        AGE
 internal-app   LoadBalancer   10.0.248.59   10.240.0.7    80:30555/TCP   2m
 ```
 
-## <a name="specify-an-ip-address"></a>Określ adres IP
+## <a name="specify-an-ip-address"></a>Określanie adresu IP
 
-Jeśli chcesz użyć określonego adresu IP z wewnętrznym modułem równoważenia obciążenia, Dodaj właściwość *loadBalancerIP* do manifestu YAML modułu równoważenia obciążenia. Określony adres IP musi znajdować się w tej samej podsieci co klaster AKS i nie może być już przypisany do zasobu.
+Jeśli chcesz użyć określonego adresu IP z wewnętrznym modułem równoważenia obciążenia, dodaj właściwość *loadBalancerIP* do manifestu modułu równoważenia obciążenia YAML. Określony adres IP musi znajdować się w tej samej podsieci co klaster AKS i nie może być już przypisany do zasobu.
 
 ```yaml
 apiVersion: v1
@@ -82,7 +82,7 @@ spec:
     app: internal-app
 ```
 
-Po wdrożeniu i wyświetleniu szczegółów usługi adres IP w kolumnie *External-IP* odzwierciedla określony adres IP:
+Po wdrożeniu i wyświetleniu szczegółów usługi adres IP w kolumnie *EXTERNAL-IP* odzwierciedla określony adres IP:
 
 ```
 $ kubectl get service internal-app
@@ -93,9 +93,9 @@ internal-app   LoadBalancer   10.0.184.168   10.240.0.25   80:30225/TCP   4m
 
 ## <a name="use-private-networks"></a>Korzystanie z sieci prywatnych
 
-Podczas tworzenia klastra AKS można określić zaawansowane ustawienia sieci. Takie podejście umożliwia wdrożenie klastra w istniejącej sieci wirtualnej platformy Azure i podsieci. Jednym z scenariuszy jest wdrożenie klastra AKS w sieci prywatnej połączonej ze środowiskiem lokalnym i uruchamianie usług dostępnych wewnętrznie. Aby uzyskać więcej informacji, zobacz Konfigurowanie własnych podsieci sieci wirtualnej za pomocą usługi [korzystającą wtyczki kubenet][use-kubenet] lub [Azure CNI][advanced-networking].
+Podczas tworzenia klastra AKS można określić zaawansowane ustawienia sieciowe. Takie podejście umożliwia wdrożenie klastra w istniejącej sieci wirtualnej platformy Azure i podsieci. Jednym ze scenariuszy jest wdrożenie klastra AKS w sieci prywatnej podłączonej do środowiska lokalnego i uruchomienie usług dostępnych tylko wewnętrznie. Aby uzyskać więcej informacji, zobacz konfigurowanie własnych podsieci sieci wirtualnej za pomocą [aplikacji Kubenet][use-kubenet] lub [Azure CNI][advanced-networking].
 
-Nie są wymagane żadne zmiany w poprzednich krokach w celu wdrożenia wewnętrznego modułu równoważenia obciążenia w klastrze AKS, który korzysta z sieci prywatnej. Moduł równoważenia obciążenia jest tworzony w tej samej grupie zasobów co klaster AKS, ale połączony z prywatną siecią wirtualną i podsiecią, jak pokazano w następującym przykładzie:
+Nie są potrzebne żadne zmiany w poprzednich krokach, aby wdrożyć wewnętrzny moduł równoważenia obciążenia w klastrze AKS korzystającym z sieci prywatnej. Moduł równoważenia obciążenia jest tworzony w tej samej grupie zasobów co klaster AKS, ale połączony z prywatną siecią wirtualną i podsiecią, jak pokazano w poniższym przykładzie:
 
 ```
 $ kubectl get service internal-app
@@ -105,11 +105,11 @@ internal-app   LoadBalancer   10.1.15.188   10.0.0.35     80:31669/TCP   1m
 ```
 
 > [!NOTE]
-> Może być konieczne przyznanie jednostce usługi dla klastra AKS roli *współautor sieci* do grupy zasobów, w której są wdrożone zasoby sieci wirtualnej platformy Azure. Wyświetl nazwę główną usługi za pomocą [AZ AKS show][az-aks-show], taką jak `az aks show --resource-group myResourceGroup --name myAKSCluster --query "servicePrincipalProfile.clientId"`. Aby utworzyć przypisanie roli, użyj polecenia [AZ role przypisanie Create][az-role-assignment-create] .
+> Może być konieczne przyznanie jednostki usługi dla klastra AKS roli *współautora sieci* do grupy zasobów, w której są wdrażane zasoby sieci wirtualnej platformy Azure. Zobacz jednostkę usługi z [az aks show][az-aks-show], takich jak `az aks show --resource-group myResourceGroup --name myAKSCluster --query "servicePrincipalProfile.clientId"`. Aby utworzyć przypisanie roli, użyj polecenia [utwórz przypisanie roli az.][az-role-assignment-create]
 
-## <a name="specify-a-different-subnet"></a>Określ inną podsieć
+## <a name="specify-a-different-subnet"></a>Określanie innej podsieci
 
-Aby określić podsieć dla modułu równoważenia obciążenia, Dodaj do usługi adnotację *Azure-load-module-Internal-Subnet* . Określona podsieć musi znajdować się w tej samej sieci wirtualnej co klaster AKS. Po wdrożeniu *zewnętrzny adres IP* modułu równoważenia obciążenia jest częścią określonej podsieci.
+Aby określić podsieć dla modułu równoważenia obciążenia, dodaj adnotację *azure-load-balancer-internal-subnet* do usługi. Określona podsieć musi znajdować się w tej samej sieci wirtualnej co klaster AKS. Po wdrożeniu adres *EXTERNAL-IP* modułu równoważenia obciążenia jest częścią określonej podsieci.
 
 ```yaml
 apiVersion: v1
@@ -127,15 +127,15 @@ spec:
     app: internal-app
 ```
 
-## <a name="delete-the-load-balancer"></a>Usuwanie usługi równoważenia obciążenia
+## <a name="delete-the-load-balancer"></a>Usuwanie modułu równoważenia obciążenia
 
-Po usunięciu wszystkich usług, które korzystają z wewnętrznego modułu równoważenia obciążenia, sam moduł równoważenia obciążenia również zostaje usunięty.
+Po usunięciu wszystkich usług korzystających z wewnętrznego modułu równoważenia obciążenia, sam moduł równoważenia obciążenia jest również usuwany.
 
-Możesz również bezpośrednio usunąć usługę jako z dowolnym zasobem Kubernetes, takim jak `kubectl delete service internal-app`, co spowoduje również usunięcie bazowego modułu równoważenia obciążenia platformy Azure.
+Można również bezpośrednio usunąć usługę, jak w przypadku dowolnego `kubectl delete service internal-app`zasobu Kubernetes, takich jak , który również następnie usuwa podstawowy moduł równoważenia obciążenia platformy Azure.
 
 ## <a name="next-steps"></a>Następne kroki
 
-Dowiedz się więcej o usługach Kubernetes Services w [dokumentacji usług Kubernetes Services][kubernetes-services].
+Dowiedz się więcej o usługach Kubernetes w [dokumentacji usług Kubernetes][kubernetes-services].
 
 <!-- LINKS - External -->
 [kubectl-apply]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply
