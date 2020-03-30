@@ -1,7 +1,7 @@
 ---
 title: Dostrajanie hiperparametrów modelu
 titleSuffix: Azure Machine Learning
-description: Dowiedz się, jak użyć modułu dostrajania parametrów modelu w Azure Machine Learning, aby przeznaczyć wartość parametru na model w celu określenia optymalnych ustawień parametrów.
+description: Dowiedz się, jak użyć modułu Tune Model Hyperparameters w usłudze Azure Machine Learning do wykonywania wyciągnięcia po kursach w modelu w celu określenia optymalnych ustawień parametrów.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,145 +9,145 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 02/11/2020
-ms.openlocfilehash: 112a7f7aa61984b2ce9bd8400c629fe62db55584
-ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
+ms.openlocfilehash: ff0ccbf201f2b83dd446859d8054d115a70f402e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77137901"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80064158"
 ---
 # <a name="tune-model-hyperparameters"></a>Dostrajanie hiperparametrów modelu
 
-W tym artykule opisano, jak używać modułu dostrajania parametrów modelu w programie Azure Machine Learning Designer (wersja zapoznawcza). Celem jest określenie optymalnych parametrów dla modelu uczenia maszynowego. Moduł kompiluje i testuje wiele modeli przy użyciu różnych kombinacji ustawień. Porównuje metryki dla wszystkich modeli w celu uzyskania kombinacji ustawień. 
+W tym artykule opisano, jak używać modułu Tune Model Hyperparameters w projektancie usługi Azure Machine Learning (wersja zapoznawcza). Celem jest określenie optymalnych hiperparametrów dla modelu uczenia maszynowego. Moduł tworzy i testuje wiele modeli przy użyciu różnych kombinacji ustawień. Porównuje metryki we wszystkich modelach, aby uzyskać kombinacje ustawień. 
 
-*Parametr* terms i *parametr preparameter* mogą być mylące. *Parametry* modelu są ustawiane w okienku właściwości. Zasadniczo ten moduł wykonuje *odczyszczenie parametrów* względem określonych ustawień parametrów. Poznasz optymalny zestaw _parametrów_, które mogą być różne dla każdego określonego drzewa decyzyjnego, zestawu danych lub metody regresji. Proces znajdowania optymalnej konfiguracji jest czasami nazywany *dostrajaniem*. 
+*Parametr* terminów i *hiperparametr* może być mylące. Parametry modelu są *to,* co można ustawić w prawym okienku modułu. Zasadniczo moduł ten wykonuje *wyciągnięcie po parametrze* w określonych ustawieniach parametrów. Uczy się optymalnego zestawu _hiperparametrów_, które mogą być różne dla każdego określonego drzewa decyzyjnego, zestawu danych lub metody regresji. Proces znajdowania optymalnej konfiguracji jest czasami nazywany *strojeniem*. 
 
-Moduł obsługuje następującą metodę wyszukiwania optymalnych ustawień modelu: *zintegrowane uczenie i dostrajanie.* W tej metodzie należy skonfigurować zestaw parametrów do użycia. Następnie pozwól, aby moduł przekroczy wiele kombinacji. Moduł mierzy dokładność do momentu znalezienia "najlepszego" modelu. W przypadku większości modułów szkoleniowych można wybrać parametry, które należy zmienić podczas procesu szkolenia, a które powinny pozostać stałe.
+Moduł obsługuje następującą metodę znajdowania optymalnych ustawień dla modelu: *zintegrowany pociąg i dostrojenie.* W tej metodzie można skonfigurować zestaw parametrów do użycia. Następnie pozwól modułowi iterować za pośrednictwem wielu kombinacji. Moduł mierzy dokładność, dopóki nie znajdzie "najlepszego" modelu. W przypadku większości modułów uczących można wybrać, które parametry należy zmienić podczas procesu szkolenia, a które powinny pozostać stałe.
 
-W zależności od tego, jak długo proces strojenia ma działać, możesz zdecydować się na wyczerpujące przetestowanie wszystkich kombinacji. Lub można skrócić proces, ustanawiając siatkę kombinacji parametrów i testując losowo podzestaw siatki parametrów.
+W zależności od tego, jak długo ma być uruchamiany proces strojenia, możesz zdecydować się na wyczerpujące przetestowanie wszystkich kombinacji. Można też skrócić proces, ustanawiając siatkę kombinacji parametrów i testując losowy podzbiór siatki parametrów.
 
-Ta metoda generuje model szkolony, który można zapisać do ponownego użycia.  
+Ta metoda generuje wyszkolony model, który można zapisać do ponownego użycia.  
 
 > [!TIP] 
-> Można wykonać powiązane zadanie. Przed rozpoczęciem dostrajania Zastosuj wybór funkcji, aby określić kolumny lub zmienne, które mają największą wartość informacji.
+> Możesz wykonać powiązane zadanie. Przed rozpoczęciem dostrajania zastosuj wybór operacji, aby określić kolumny lub zmienne, które mają najwyższą wartość informacji.
 
-## <a name="how-to-configure-tune-model-hyperparameters"></a>Jak skonfigurować dostrojenie parametrów modelu  
+## <a name="how-to-configure-tune-model-hyperparameters"></a>Jak skonfigurować tune modelu hiperparametry  
 
-Poznanie optymalnych parametrów modelu uczenia maszynowego wymaga znacznego użycia potoków.
+Uczenie się optymalnych hiperparametrów dla modelu uczenia maszynowego wymaga znacznego wykorzystania potoków.
 
-### <a name="train-a-model-by-using-a-parameter-sweep"></a>Uczenie modelu przy użyciu odchylenia parametrów  
+### <a name="train-a-model-by-using-a-parameter-sweep"></a>Trenuj model przy użyciu wyciągnięcia po kursach  
 
-W tej sekcji opisano, jak wykonać podstawowe odwzorowanie parametrów, które pociąga za pomocą modułu strojenia modelu.
+W tej sekcji opisano sposób wykonywania wyciągnięcia po ścieżce parametrów podstawowych, które trenuje model przy użyciu modułu Tune Model Hyperparameters.
 
-1.  Dodaj moduł dostrajania parametrów modelu do potoku w projektancie.
+1.  Dodaj moduł Tune Model Hyperparameters do potoku w projektancie.
 
-2.  Połącz niepociąg model z lewej strony wejściowej. 
+2.  Połącz nieprzeszkolony model z lewym wejściem. 
 
 
 
-4.  Dodaj zestaw danych, który ma być używany na potrzeby szkolenia, i połącz go z środkowym wejściem parametrów strojenia modelu.  
+4.  Dodaj zestaw danych, którego chcesz użyć do szkolenia, i podłącz go do środkowego wejścia Hyperparameters modelu tune.  
 
-    Opcjonalnie, jeśli masz oznakowany zestaw danych, możesz połączyć go z najbardziej przyłączonym portem wejściowym (**opcjonalny zestaw danych walidacji**). Pozwala to mierzyć dokładność podczas uczenia i dostrajania.
+    Opcjonalnie, jeśli masz oznakowany zestaw danych, możesz podłączyć go do prawego portu wejściowego **(Opcjonalny zestaw danych sprawdzania poprawności).** Dzięki temu można mierzyć dokładność podczas treningu i strojenia.
 
-5.  W prawym panelu strojenia parametrów modelu wybierz wartość dla **trybu odchylenia parametru**. Ta opcja określa, jak są wybierane parametry.
+5.  W prawym panelu Hyperparametrów tune model wybierz wartość **dla trybu zamiatanie parametrów**. Ta opcja określa sposób wybierania parametrów.
 
-    - **Cała siatka**: w przypadku wybrania tej opcji moduł jest pętlą względem siatki wstępnie zdefiniowanej przez system, aby wypróbować różne kombinacje i zidentyfikować najlepszą naukę. Ta opcja jest przydatna, gdy nie wiesz, jakie są ustawienia najlepszych parametrów, i chcesz wypróbować wszystkie możliwe kombinacje wartości.
+    - **Cała siatka**: Po wybraniu tej opcji moduł zapętla się nad siatką wstępnie zdefiniowaną przez system, aby wypróbować różne kombinacje i zidentyfikować najlepszego ucznia. Ta opcja jest przydatna, gdy nie wiesz, jakie mogą być najlepsze ustawienia parametrów i chcesz wypróbować wszystkie możliwe kombinacje wartości.
 
-    - **Losowe wyczyszczenie**: po wybraniu tej opcji moduł będzie losowo wybierać wartości parametrów w zakresie zdefiniowanym przez system. Należy określić maksymalną liczbę uruchomień wykonywanych przez moduł. Ta opcja jest przydatna, gdy chcesz zwiększyć wydajność modelu przy użyciu wybranych przez siebie metryk, ale nadal zachowuj zasoby obliczeniowe.    
+    - **Losowe wyciągnięcie po**ścieżce : Po wybraniu tej opcji moduł losowo wybierze wartości parametrów w zakresie zdefiniowanym przez system. Należy określić maksymalną liczbę przebiegów, które mają być wykonywane przez moduł. Ta opcja jest przydatna, gdy chcesz zwiększyć wydajność modelu przy użyciu metryk do wyboru, ale nadal oszczędzać zasoby obliczeniowe.    
 
-6.  Dla **kolumny etykieta**Otwórz selektor kolumny, aby wybrać jedną kolumnę etykiety.
+6.  W **polu Etykieta otwórz**selektor kolumny, aby wybrać pojedynczą kolumnę etykiety.
 
-7.  Wybierz liczbę uruchomień:
+7.  Wybierz liczbę przebiegów:
 
-    1. **Maksymalna liczba przebiegów na losowym wyczyszczeniu: w**przypadku wybrania losowego wycierania można określić, ile razy model ma być szkolony, używając losowej kombinacji wartości parametrów.
+    1. **Maksymalna liczba przebiegów na losowym wyciągnięciu po ścieżce**: Jeśli wybierzesz losowe wyciągnięcie po ścieżce, można określić, ile razy model powinien być przeszkolony, używając losowej kombinacji wartości parametrów.
 
-8.  W celu **określania rankingu**wybierz pojedynczą metrykę, która ma być używana do klasyfikowania modeli.
+8.  W przypadku **rankingu**wybierz jedną metrykę, która będzie używana do klasyfikowania modeli.
 
-    Po uruchomieniu odchylenia parametrów moduł oblicza wszystkie odpowiednie metryki dla typu modelu i zwraca je w raporcie **wyniki odchylenia** . Moduł używa oddzielnych metryk dla modeli regresji i klasyfikacji.
+    Po uruchomieniu wyciągnięcia po parametrze moduł oblicza wszystkie odpowiednie metryki dla typu modelu i zwraca je w raporcie **wyników wyciągnięcia po ścieżce.** Moduł używa oddzielnych metryk dla modeli regresji i klasyfikacji.
 
-    Wybrana Metryka określa jednak, w jaki sposób modele są klasyfikowane. Tylko górny model, uporządkowany według wybranej metryki, jest wyprowadzany jako model przeszkolony do użycia na potrzeby oceniania.
+    Jednak metryka, która wybierzesz określa, jak modele są klasyfikowane. Tylko top model, w rankingu według wybranej metryki, jest dane wyjściowe jako wyszkolony model do użycia do oceniania.
 
-9.  W przypadku **losowego inicjatora**wprowadź liczbę, która ma być używana do uruchamiania odchylenia parametrów. 
+9.  W przypadku **losowego materiału siewnego**wprowadź liczbę, która ma być używana do rozpoczęcia wyciągnięcia po parametrze. 
 
-10. Uruchamianie potoku.
+10. Prześlij potok.
 
-## <a name="results-of-hyperparameter-tuning"></a>Wyniki strojenia parametru
+## <a name="results-of-hyperparameter-tuning"></a>Wyniki strojenia hiperparametryczne
 
 Po zakończeniu szkolenia:
 
 + Aby wyświetlić zestaw metryk dokładności dla najlepszego modelu, kliknij prawym przyciskiem myszy moduł, a następnie wybierz polecenie **Wizualizuj**.
 
-    Dane wyjściowe obejmują wszystkie metryki dokładności, które są stosowane do typu modelu, ale Metryka wybrana do klasyfikacji określa model, który jest uznawany za "Najlepsza".
+    Dane wyjściowe obejmują wszystkie metryki dokładności, które mają zastosowanie do typu modelu, ale metryka wybrana do rankingu określa, który model jest uważany za "najlepszy".
 
-+ Aby zapisać migawkę przeszkolonego modelu, wybierz kartę dane **wyjściowe** w prawym panelu modułu **uczenie modelu** . Wybierz ikonę **zarejestruj zestaw danych** , aby zapisać model jako moduł wielokrotnego użytku.
++ Aby zapisać migawkę uczonego modelu, wybierz kartę **Wyjścia** w prawym panelu modułu **Modelu pociągu.** Wybierz ikonę **Zarejestruj zestaw danych,** aby zapisać model jako moduł wielokrotnego wyboru.
 
 
 ## <a name="technical-notes"></a>Uwagi techniczne
 
-Ta sekcja zawiera szczegóły i porady dotyczące implementacji.
+Ta sekcja zawiera szczegóły implementacji i porady.
 
-### <a name="how-a-parameter-sweep-works"></a>Jak działa odczyszczenie parametrów
+### <a name="how-a-parameter-sweep-works"></a>Jak działa wyciągnięcie po parametrach
 
-Podczas konfigurowania odchylenia parametrów należy zdefiniować zakres wyszukiwania. Wyszukiwanie może używać skończonej liczby parametrów wybranych losowo. Lub może to być wyczerpujące wyszukiwanie na zdefiniowanej przestrzeni parametrów.
+Podczas konfigurowania wyciągnięcia po parametrze definiuje się zakres wyszukiwania. Wyszukiwanie może używać skończonej liczby parametrów wybranych losowo. Lub może to być wyczerpujące wyszukiwanie w przestrzeni parametrów, które definiujesz.
 
-+ **Losowe wyczyszczenie**: Ta opcja pociąga za model przy użyciu zestawu iteracji. 
++ **Losowe wyciągnięcie po**ścieżce: Ta opcja trenuje model przy użyciu określonej liczby iteracji. 
 
-  Należy określić zakres wartości do iteracji, a moduł używa losowo wybranego podzbioru tych wartości. Wartości są wybierane z zastępowaniem, co oznacza, że numery wcześniej wybrane losowo nie są usuwane z puli dostępnych numerów. Dlatego, że jakakolwiek wybrana wartość pozostaje taka sama we wszystkich przebiegach.  
+  Należy określić zakres wartości do iteracji ponad i moduł używa losowo wybrany podzbiór tych wartości. Wartości są wybierane z wymianą, co oznacza, że liczby wcześniej wybrane losowo nie są usuwane z puli dostępnych numerów. Tak więc szansa na dowolną wartość jest wybrana pozostaje taka sama we wszystkich przejściach.  
 
-+ **Cała siatka**: Opcja używania całej siatki oznacza, że każda kombinacja jest testowana. Ta opcja jest najbardziej dokładna, ale wymaga najwięcej czasu. 
++ **Cała siatka**: Opcja użycia całej siatki oznacza, że każda kombinacja jest testowana. Ta opcja jest najbardziej dokładna, ale wymaga najwięcej czasu. 
 
 ### <a name="controlling-the-length-and-complexity-of-training"></a>Kontrolowanie długości i złożoności szkolenia
 
-Iterowanie wielu kombinacji ustawień może być czasochłonne, więc moduł oferuje kilka sposobów ograniczenia procesu:
+Iteracja w wielu kombinacjach ustawień może być czasochłonna, więc moduł udostępnia kilka sposobów na ograniczenie procesu:
 
 + Ogranicz liczbę iteracji używanych do testowania modelu.
-+ Ogranicz obszar parametru.
-+ Ogranicz liczbę iteracji i miejsce parametru.
++ Ogranicz odstęp parametru.
++ Ogranicz zarówno liczbę iteracji, jak i spację parametrów.
 
-Zalecamy, aby przetworzyć ustawienia, aby określić najbardziej wydajną metodę szkolenia dla określonego zestawu danych i modelu.
+Zaleca się potok z ustawieniami, aby określić najbardziej efektywną metodę szkolenia na określonym zestawie danych i modelu.
 
 ### <a name="choosing-an-evaluation-metric"></a>Wybieranie metryki oceny
 
-Po zakończeniu testowania Model przedstawia raport zawierający informacje o dokładności dla każdego modelu, aby można było przejrzeć wyniki metryk:
+Po zakończeniu testowania model przedstawia raport, który zawiera dokładność dla każdego modelu, dzięki czemu można przejrzeć wyniki metryki:
 
 - Jednolity zestaw metryk jest używany dla wszystkich modeli klasyfikacji binarnej.
-- Dokładność jest używana dla wszystkich modeli klasyfikacji wieloklasowej.
-- Dla modeli regresji jest używany inny zestaw metryk. 
+- Dokładność jest używana we wszystkich wieloklasowych modelach klasyfikacji.
+- Inny zestaw metryk jest używany dla modeli regresji. 
 
-Jednak podczas uczenia należy wybrać *jedną* metrykę do użycia w celu klasyfikowania modeli, które są generowane podczas procesu dostrajania. Może się okazać, że Najlepsza Metryka zależy od problemu biznesowego i kosztu fałszywych dodatnich i fałszywych wartości ujemnych.
+Jednak podczas szkolenia należy wybrać *pojedynczą* metrykę do użycia w rankingu modeli, które są generowane podczas procesu strojenia. Może się okazać, że najlepsza metryka różni się w zależności od problemu biznesowego i kosztów fałszywych alarmów i fałszywych negatywów.
 
-#### <a name="metrics-used-for-binary-classification"></a>Metryki używane na potrzeby klasyfikacji binarnej
+#### <a name="metrics-used-for-binary-classification"></a>Metryki używane do klasyfikacji binarnej
 
--   **Dokładność** jest proporcją prawdziwych wyników do łącznych przypadków.  
+-   **Dokładność** to odsetek prawdziwych wyników do wszystkich przypadków.  
 
--   **Precyzja** jest proporcją prawdziwych wyników do pozytywnych wyników.  
+-   **Precyzja** to proporcja prawdziwych wyników do pozytywnych wyników.  
 
--   Funkcja **odwoływania** to ułamek wszystkich poprawnych wyników dla wszystkich wyników.  
+-   **Przypomnijmy,** że jest ułamek wszystkich prawidłowych wyników na wszystkie wyniki.  
 
--   **F-Score** to miara, która równoważy precyzję i odzyskanie.  
+-   **F-score** jest miarą, która równoważy precyzję i wycofanie.  
 
--   **AUC** jest wartością, która reprezentuje obszar pod krzywą, gdy fałszywe wartości dodatnie są kreślone na osi x i prawdziwe wartości dodatnie są kreślone na osi y.  
+-   **AUC** jest wartością reprezentującą obszar pod krzywą, gdy na osi x kreślone są fałszywe alarmy, a na osi y są kreślone prawdziwe wartości dodatnie.  
 
--   **Średnia utrata dzienników** to różnica między dwoma dystrybucjami prawdopodobieństwa: wartość true i jeden w modelu.  
+-   **Średnia strata dziennika** jest różnica między dwóch rozkładów prawdopodobieństwa: true jeden i jeden w modelu.  
 
-#### <a name="metrics-used-for-regression"></a>Metryki używane na potrzeby regresji
+#### <a name="metrics-used-for-regression"></a>Metryki używane do regresji
 
--   Średni **błąd bezwzględny** uśrednia wszystkie błędy w modelu, gdzie *błąd* oznacza odległość przewidywanej wartości od prawdziwej wartości. Często jest skracana jako *Mae*.  
+-   **Średni błąd bezwzględny** uśrednia wszystkie błędy w modelu, gdzie *błąd* oznacza odległość przewidywanej wartości od wartości rzeczywistej. To jest często skracane jako *MAE*.  
 
--   **Element główny średniej wartości w kwadracie** mierzy średnią kwadratów błędów, a następnie pobiera element główny tej z nich. Często jest skracana jako *RMSE*.  
+-   **Korzeń średniego kwadratu błąd** mierzy średnią kwadratów błędów, a następnie pobiera katalog główny tej wartości. To jest często skracane jako *RMSE*.  
 
--   **Względny błąd bezwzględny** reprezentuje błąd jako procent wartości prawdziwej.  
+-   **Względny błąd bezwzględny** reprezentuje błąd jako procent wartości rzeczywistej.  
 
--   **Kwadratowy błąd względny** normalizuje łączny kwadratowy błąd dzielący przez łączny kwadratowy błąd prognozowanych wartości.  
+-   **Względny kwadratowy błąd** normalizuje całkowity kwadratowy błąd przez podzielenie przez całkowity kwadrat błędu przewidywanych wartości.  
 
--   **Współczynnik wyznaczania** jest pojedynczą liczbą, która wskazuje, jak dobre dane pasują do modelu. Wartość jednego oznacza, że model dokładnie dopasowuje dane. Wartość zero oznacza, że dane są losowo lub w przeciwnym razie nie można dopasować do modelu. Często nazywa się *r<sup>2</sup>* , *r<sup>2</sup>* lub *r-kwadrat*.  
+-   **Współczynnik oznaczania** jest pojedynczą liczbą, która wskazuje, jak dobrze dane pasują do modelu. Wartość jednego oznacza, że model dokładnie pasuje do danych. Wartość zero oznacza, że dane są losowe lub w inny sposób nie mogą być dostosowane do modelu. Często nazywa się *r<sup>2,</sup>* *R<sup>2</sup>* lub *r-kwadrat.*  
 
-### <a name="modules-that-dont-support-a-parameter-sweep"></a>Moduły, które nie obsługują odchylenia parametrów
+### <a name="modules-that-dont-support-a-parameter-sweep"></a>Moduły, które nie obsługują wyciągnięcia po parametrze
 
-Prawie wszyscy użytkownicy w Azure Machine Learning obsługują krzyżowe sprawdzanie poprawności przy użyciu zintegrowanego odchylenia parametru, który umożliwia wybranie parametrów do potoku. Jeśli dowiedzenie nie obsługuje ustawiania zakresu wartości, można nadal używać go do wzajemnego sprawdzania poprawności. W takim przypadku do odchylenia jest wybierany zakres dozwolonych wartości. 
+Prawie wszyscy uczniowie w usłudze Azure Machine Learning obsługują krzyżowe sprawdzanie poprawności za pomocą zintegrowanego wyciągnięcia po ścieżce parametrów, które umożliwia wybranie parametrów do potoku. Jeśli uczeń nie obsługuje ustawiania zakresu wartości, nadal można go używać w krzyżowej weryfikacji. W takim przypadku dla wyciągnięcia po ścieżce wyboru jest wybrany zakres dozwolonych wartości. 
 
 
 ## <a name="next-steps"></a>Następne kroki
 
-Zapoznaj się z [zestawem modułów dostępnych](module-reference.md) do Azure Machine Learning. 
+Zobacz [zestaw modułów dostępnych dla](module-reference.md) usługi Azure Machine Learning. 
 

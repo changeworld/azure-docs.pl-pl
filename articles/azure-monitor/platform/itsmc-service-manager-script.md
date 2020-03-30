@@ -1,41 +1,41 @@
 ---
-title: Zautomatyzowany skrypt służący do tworzenia Service Manager aplikacji sieci Web w celu nawiązania połączenia z łącznik zarządzania usługami IT na platformie Azure | Microsoft Docs
-description: Utwórz Service Manager aplikację sieci Web za pomocą zautomatyzowanego skryptu, aby nawiązać połączenie z usługą łącznik zarządzania usługami IT na platformie Azure i centralnie monitorować elementy robocze narzędzia ITSM oraz zarządzać nimi.
+title: Tworzenie aplikacji sieci Web dla łącznika zarządzania usługami
+description: Utwórz aplikację sieci Web programu Service Manager przy użyciu automatycznego skryptu do łączenia się z łącznikiem zarządzania usługami IT na platformie Azure oraz centralnego monitorowania elementów roboczych ITSM i zarządzania nimi.
 ms.subservice: logs
 ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 01/23/2018
-ms.openlocfilehash: f224e58905e2989caf16259e383726595c0206d5
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: decb674c2b55b93a81169c540ee04713bdf2799e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77672195"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80054854"
 ---
-# <a name="create-service-manager-web-app-using-the-automated-script"></a>Tworzenie aplikacji sieci Web Service Manager przy użyciu skryptu automatycznego
+# <a name="create-service-manager-web-app-using-the-automated-script"></a>Tworzenie aplikacji sieci Web programu Service Manager przy użyciu skryptu automatycznego
 
-Użyj poniższego skryptu, aby utworzyć aplikację sieci Web dla wystąpienia Service Manager. Więcej informacji na temat połączenia Service Manager jest tutaj: [aplikacja sieci Web Service Manager](../../azure-monitor/platform/itsmc-connections.md#create-and-deploy-service-manager-web-app-service)
+Użyj następującego skryptu, aby utworzyć aplikację sieci Web dla wystąpienia programu Service Manager. Więcej informacji o połączeniu z usługą Service Manager można znaleźć tutaj: [Aplikacja sieci Web programu Service Manager](../../azure-monitor/platform/itsmc-connections.md#create-and-deploy-service-manager-web-app-service)
 
 Uruchom skrypt, podając następujące wymagane szczegóły:
 
 - Szczegóły subskrypcji platformy Azure
 - Nazwa grupy zasobów
 - Lokalizacja
-- Szczegóły serwera Service Manager (nazwa serwera, domena, nazwa użytkownika i hasło)
-- Prefiks nazwy witryny dla aplikacji sieci Web
-- ServiceBus przestrzeń nazw.
+- Szczegóły serwera programu Service Manager (nazwa serwera, domena, nazwa użytkownika i hasło)
+- Prefiks nazwy witryny aplikacji sieci Web
+- Obszar nazw servicebus.
 
-Skrypt utworzy aplikację sieci Web przy użyciu podanej nazwy (wraz z kilkoma dodatkowymi ciągami, aby była unikatowa). Generuje **adres URL aplikacji sieci Web**, **Identyfikator klienta**i **klucz tajny klienta**.
+Skrypt utworzy aplikację sieci Web przy użyciu nazwy, która została określona (wraz z kilkoma dodatkowymi ciągami, aby uczynić ją unikatową). Generuje adres **URL aplikacji sieci Web,** **identyfikator klienta**i **klucz tajny klienta**.
 
-Zapisz te wartości, które będą potrzebne podczas tworzenia połączenia z łącznik zarządzania usługami IT.
+Zapisz te wartości, będą potrzebne te wartości podczas tworzenia połączenia z it service management connector.
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
- Windows Management Framework 5,0 lub nowszy.
-Domyślnie system Windows 10 ma 5,1. Możesz pobrać strukturę z tego [miejsca](https://www.microsoft.com/download/details.aspx?id=50395):
+ Struktura zarządzania systemem Windows 5.0 lub wyższa.
+Windows 10 ma domyślnie 5.1. Możesz pobrać ramę [tutaj:](https://www.microsoft.com/download/details.aspx?id=50395)
 
 Użyj następującego skryptu:
 

@@ -13,12 +13,12 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 02/05/2020
 tags: azure-synapse
-ms.openlocfilehash: eb4e7907c3dcffed035307c2084160ce6051be13
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 98b21969ce86f84b20fbe78dbdf3002769ef65f5
+ms.sourcegitcommit: d0fd35f4f0f3ec71159e9fb43fcd8e89d653f3f2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79409953"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80387873"
 ---
 # <a name="data-discovery--classification-for-azure-sql-database-and-azure-synapse-analytics"></a>Odnajdowanie danych & klasyfikacji dla usługi Azure SQL Database i usługi Azure Synapse Analytics
 
@@ -89,17 +89,11 @@ Po zdefiniowaniu zasad dla całej dzierżawy można kontynuować klasyfikację p
 
 4. Aby pobrać raport w formacie programu Excel, kliknij opcję **Eksportuj** w górnym menu okna.
 
-   ![Eksportuj do programu Excel](./media/sql-data-discovery-and-classification/3_data_classification_export_report.png)
-
 5. <a id="step-5"></a>Aby rozpocząć klasyfikowanie danych, kliknij **kartę Klasyfikacja** u góry okna.
-
-    ![Klasyfikowanie danych](./media/sql-data-discovery-and-classification/4_data_classification_classification_tab_click.png)
 
 6. Aparat klasyfikacji skanuje bazę danych w poszukiwaniu kolumn zawierających potencjalnie poufne dane i udostępnia listę **zalecanych klasyfikacji kolumn**. Aby wyświetlić i zastosować zalecenia dotyczące klasyfikacji:
 
-   - Aby wyświetlić listę zalecanych klasyfikacji kolumn, kliknij panel rekomendacji u dołu okna:
-
-      ![Klasyfikowanie danych](./media/sql-data-discovery-and-classification/5_data_classification_recommendations_panel.png)
+   - Aby wyświetlić listę zalecanych klasyfikacji kolumn, kliknij panel rekomendacji u dołu okna
 
    - Przejrzyj listę zaleceń — aby zaakceptować zalecenie dla określonej kolumny, zaznacz pole wyboru w lewej kolumnie odpowiedniego wiersza. Można również *oznaczyć wszystkie zalecenia* jako zaakceptowane, zaznaczając pole wyboru w nagłówku tabeli rekomendacji.
 
@@ -107,21 +101,15 @@ Po zdefiniowaniu zasad dla całej dzierżawy można kontynuować klasyfikację p
 
    - Aby zastosować wybrane rekomendacje, kliknij niebieski przycisk **Zaakceptuj wybrane rekomendacje.**
 
-      ![Stosowanie zaleceń](./media/sql-data-discovery-and-classification/7_data_classification_accept_selected_recommendations.png)
-
 7. Kolumny można również **klasyfikować ręcznie** jako alternatywną lub dodatkowo do klasyfikacji opartej na zaleceniach:
 
    - Kliknij **dodaj klasyfikację** w górnym menu okna.
-
-      ![Ręczne dodawanie klasyfikacji](./media/sql-data-discovery-and-classification/8_data_classification_add_classification_button.png)
 
    - W otwartym oknie kontekstu wybierz schemat > tabelę > kolumnę, którą chcesz sklasyfikować, oraz etykietę typu informacji i czułości. Następnie kliknij niebieski przycisk **Dodaj klasyfikację** u dołu okna kontekstu.
 
       ![Wybierz kolumnę do sklasyfikowania](./media/sql-data-discovery-and-classification/9_data_classification_manual_classification.png)
 
 8. Aby ukończyć klasyfikację i trwale oznaczyć (oznaczyć) kolumny bazy danych nowymi metadanymi klasyfikacji, kliknij **przycisk Zapisz** w górnym menu okna.
-
-   ![Zapisz](./media/sql-data-discovery-and-classification/10_data_classification_save.png)
 
 ## <a name="auditing-access-to-sensitive-data"></a><a id="subheading-3"></a>Inspekcja dostępu do poufnych danych
 

@@ -1,17 +1,17 @@
 ---
-title: Samouczek — skalowanie aplikacji w Azure App Service przy użyciu rozwiązania ansible
-description: Dowiedz się, jak skalować aplikację w górę w Azure App Service
+title: Samouczek — skalowanie aplikacji w usłudze Azure App Service przy użyciu ansible
+description: Dowiedz się, jak skalować aplikację w usłudze Azure App Service
 keywords: ansible, azure, devops, bash, playbook, Azure App Service, Web App, scale, Java
 ms.topic: tutorial
 ms.date: 04/30/2019
 ms.openlocfilehash: 9eb50922361c817de8047dece4849a9b221677f0
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74155912"
 ---
-# <a name="tutorial-scale-apps-in-azure-app-service-using-ansible"></a>Samouczek: skalowanie aplikacji w Azure App Service przy użyciu rozwiązania ansible
+# <a name="tutorial-scale-apps-in-azure-app-service-using-ansible"></a>Samouczek: skalowanie aplikacji w usłudze Azure App Service przy użyciu ansible
 
 [!INCLUDE [ansible-27-note.md](../../includes/ansible-27-note.md)]
 
@@ -22,22 +22,22 @@ ms.locfileid: "74155912"
 > [!div class="checklist"]
 >
 > * Pobieranie faktów dotyczących istniejącego planu usługi App Service
-> * Skaluj w górę plan App Service do S2 z trzema pracownikami
+> * Skalowanie planu usługi app service do S2 z trzema pracownikami
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 [!INCLUDE [open-source-devops-prereqs-azure-subscription.md](../../includes/open-source-devops-prereqs-azure-subscription.md)]
 [!INCLUDE [ansible-prereqs-cloudshell-use-or-vm-creation2.md](../../includes/ansible-prereqs-cloudshell-use-or-vm-creation2.md)]
-- **Aplikacja Azure App Service** — Jeśli nie masz aplikacji Azure App Service, [skonfiguruj aplikację w Azure App Service przy użyciu rozwiązania ansible](ansible-create-configure-azure-web-apps.md).
+- **Aplikacja usługi Azure App Service** — jeśli nie masz aplikacji usługi Azure App Service, [skonfiguruj aplikację w usłudze Azure App Service przy użyciu funkcji Ansible.](ansible-create-configure-azure-web-apps.md)
 
-## <a name="scale-up-an-app"></a>Skalowanie aplikacji w górę
+## <a name="scale-up-an-app"></a>Skalowanie w górę aplikacji
 
-Istnieją dwa przepływy pracy do skalowania: *skalowanie w górę* i w *poziomie*.
+Istnieją dwa przepływy pracy do skalowania: *skalowanie w górę* i *skalowanie w poziomie*.
 
-**Skaluj w górę:** Aby skalować w górę środki w celu uzyskania większej ilości zasobów. Te zasoby obejmują procesor CPU, pamięć, miejsce na dysku, maszyny wirtualne i wiele innych. Możesz skalować aplikację, zmieniając warstwę cenową planu App Service, do którego należy aplikacja. 
-**Skalowanie w poziomie:** Aby skalować w poziomie, Zwiększ liczbę wystąpień maszyn wirtualnych, na których działa aplikacja. W zależności od warstwy cenowej planu App Service można skalować w poziomie do maksymalnie 20 wystąpień. [Skalowanie](/azure/azure-monitor/platform/autoscale-get-started) automatyczne umożliwia skalowanie liczby wystąpień automatycznie na podstawie wstępnie zdefiniowanych reguł i harmonogramów.
+**Skalowanie w górę:** Skalowanie w górę oznacza pozyskanie większej ilości zasobów. Zasoby te obejmują procesor, pamięć, miejsce na dysku, maszyny wirtualne i inne. Skalowanie w górę aplikacji przez zmianę warstwy cenowej planu usługi app service, do którego należy aplikacja. 
+**Skalowanie w poziomie:** Skalowanie w poziomie oznacza zwiększenie liczby wystąpień maszyn wirtualnych, które uruchamiają aplikację. W zależności od warstwy cenowej planu usługi App Service można skalować w poziomie do 20 wystąpień. [Skalowanie automatyczne](/azure/azure-monitor/platform/autoscale-get-started) umożliwia automatyczne skalowanie liczby wystąpień na podstawie wstępnie zdefiniowanych reguł i harmonogramów.
 
-Kod element PlayBook w tej sekcji definiuje następującą operację:
+Kod podręcznika w tej sekcji definiuje następującą operację:
 
 * Pobieranie faktów dotyczących istniejącego planu usługi App Service
 * Aktualizowanie planu usługi App Service do warstwy S2 z trzema procesami roboczymi
@@ -80,13 +80,13 @@ Zapisz następujący podręcznik jako `webapp_scaleup.yml`:
       var: facts.appserviceplans[0].sku
 ```
 
-Uruchom element PlayBook przy użyciu polecenia `ansible-playbook`:
+Uruchom podręcznik za `ansible-playbook` pomocą polecenia:
 
 ```bash
 ansible-playbook webapp_scaleup.yml
 ```
 
-Po uruchomieniu element PlayBook są wyświetlane dane wyjściowe podobne do następujących:
+Po uruchomieniu podręcznika zobaczysz dane wyjściowe podobne do następujących wyników:
 
 ```Output
 PLAY [localhost] 

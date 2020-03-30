@@ -1,70 +1,69 @@
 ---
-title: Konfigurowanie zarządzania liderem w usłudze Salesforce | Portal Azure Marketplace
-description: Skonfiguruj zarządzanie potencjalnymi klientami w usłudze Salesforce dla klientów portalu Azure Marketplace.
-services: Azure, Marketplace, commercial marketplace, Partner Center
+title: Konfigurowanie zarządzania potencjalnymi klientami dla Salesforce | Azure Marketplace
+description: Konfigurowanie zarządzania potencjalnymi klientami w salesforce dla klientów w portalu Azure Marketplace.
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.author: evansma
-ms.openlocfilehash: bdd3bb50fc69083c73eb01a84bf0fb0db82a8a65
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 1720026b4beff941b02a60cd1c755a043d66bdb5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73812152"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80281497"
 ---
-# <a name="configure-lead-management-for-salesforce"></a>Konfigurowanie zarządzania liderem w usłudze Salesforce
+# <a name="configure-lead-management-for-salesforce"></a>Konfigurowanie zarządzania potencjalnymi klientami dla Salesforce
 
-W tym artykule opisano sposób konfigurowania systemu Salesforce do przetwarzania potencjalnych klientów z oferty w portalu Marketplace.
+W tym artykule opisano sposób konfigurowania systemu Salesforce do przetwarzania potencjalnych klientów z oferty marketplace.
 
 ## <a name="set-up-your-salesforce-system"></a>Konfigurowanie systemu Salesforce
 
-1. Zaloguj się do usługi Salesforce.
-2. Jeśli używasz środowiska oświetlenia usługi Salesforce.
-    1. Wybierz pozycję **Instalator** ze strony głównej usługi Salesforce.
-    ![](./media/commercial-marketplace-lead-management-instructions-salesforce/salesforce-1.png) instalacji usługi Salesforce
+1. Zaloguj się do Salesforce.
+2. Jeśli korzystasz z środowiska oświetlenia Salesforce.
+    1. Wybierz **pozycję Ustawienia** ze strony głównej salesforce.
+    ![Konfiguracja salesforce](./media/commercial-marketplace-lead-management-instructions-salesforce/salesforce-1.png)
 
-    1. Na stronie Instalator przejdź do okienka nawigacji po lewej stronie, aby uzyskać dostęp do **narzędzi platformy — > ustawienia funkcji — > Marketing-> sieć Web-potencjalny klient**.
-    ![](./media/commercial-marketplace-lead-management-instructions-salesforce/salesforce-2.png) sieci Web do potencjalnego klienta usługi Salesforce
+    1. Na stronie Ustawienia przejdź przez lewą nawigację do **platform Narzędzia >Ustawienia funkcji >Marketing->Web-to-Lead**.
+    ![Salesforce Web-to-Lead](./media/commercial-marketplace-lead-management-instructions-salesforce/salesforce-2.png)
 
-3. Jeśli korzystasz z klasycznego środowiska Salesforce:
-    1. Wybierz pozycję **Instalator** ze strony głównej usługi Salesforce.
-    ![klasycznej konfiguracji usługi Salesforce](./media/commercial-marketplace-lead-management-instructions-salesforce/salesforce-classic-setup.png)
+3. Jeśli korzystasz z usługi Salesforce Classic:
+    1. Wybierz **pozycję Ustawienia** ze strony głównej salesforce.
+    ![Konfiguracja klasyczna Salesforce](./media/commercial-marketplace-lead-management-instructions-salesforce/salesforce-classic-setup.png)
 
-    1. Na stronie Instalator przejdź do okienka nawigacji po lewej stronie, aby **skompilować > dostosowywanie > potencjalni klienci > sieci Web do potencjalnego klienta**.
-    ![klasyczne](./media/commercial-marketplace-lead-management-instructions-salesforce/salesforce-classic-web-to-lead.png) sieci Web dla usługi Salesforce
+    1. Na stronie Ustawienia przejdź przez lewą nawigację do **build ->Customize->Leads->Web-to-Lead**.
+    ![Salesforce klasyczny web-to-lead](./media/commercial-marketplace-lead-management-instructions-salesforce/salesforce-classic-web-to-lead.png)
 
-Pozostałe instrukcje są takie same, niezależnie od tego, którego środowiska usługi Salesforce używasz.
+Pozostałe instrukcje są takie same, niezależnie od tego, którego doświadczenia Salesforce używasz.
 
-4. Na **stronie Konfiguracja sieci Web-potencjalny klient**wybierz przycisk **Utwórz formularz sieci Web-potencjalny klient** .
-5. W obszarze **Konfiguracja sieci Web-klient**wybierz pozycję **Utwórz formularz sieć Web-potencjalny klient**.
-    ![Salesforce — konfiguracja sieci Web-klient](./media/commercial-marketplace-lead-management-instructions-salesforce/salesforce-3.png)
+4. Na **stronie Ustawienia web-to-lead**wybierz przycisk **Utwórz formularz web-to-lead.**
+5. W **ustawieniach web-to-lead**wybierz pozycję **Utwórz formularz Web-to-Lead**.
+    ![Salesforce — konfiguracja sieci Web do potencjalnych osób](./media/commercial-marketplace-lead-management-instructions-salesforce/salesforce-3.png)
 
-6. Na **formularzu Utwórz sieć Web-potencjalny klient**upewnij się, że ustawienie `the Include reCAPTCHA in HTML` nie jest zaznaczone, a następnie wybierz pozycję **Generuj**. 
-    ![Salesforce — Tworzenie formularza sieci Web do potencjalnego klienta](./media/commercial-marketplace-lead-management-instructions-salesforce/salesforce-4.png)
+6. W formularzu **Utwórz formularz web-to-lead**upewnij się, że `the Include reCAPTCHA in HTML` ustawienie jest niezaznaczone i wybierz pozycję **Generuj**. 
+    ![Salesforce — tworzenie formularza web-to-lead](./media/commercial-marketplace-lead-management-instructions-salesforce/salesforce-4.png)
 
-7. Zostanie wyświetlony jakiś tekst HTML. Wyszukaj tekst "OID" i skopiuj **wartość identyfikatora OID** z tekstu HTML (tylko tekst między znakami cudzysłowu) i Zapisz go. Ta wartość zostanie wklejona w polu **identyfikator organizacji** w portalu wydawców.
-    ![Salesforce — Tworzenie formularza sieci Web do potencjalnego klienta](./media/commercial-marketplace-lead-management-instructions-salesforce/salesforce-5.png)
+7. Zostanie wyświetlony tekst HTML. Wyszukaj tekst "oid" i skopiuj **wartość oid** z tekstu HTML (tylko tekst pomiędzy cudzysłowami) i zapisz go. Tę wartość wkleisz w polu **Identyfikator organizacji** w portalu publikowania.
+    ![Salesforce — tworzenie formularza web-to-lead](./media/commercial-marketplace-lead-management-instructions-salesforce/salesforce-5.png)
 
-8. Wybrano **Zakończono**.
+8. Wybrane **zaznaczone zakończone**.
 
-## <a name="configure-your-offer-to-send-leads-to-salesforce"></a>Konfigurowanie oferty do wysyłania potencjalnych klientów do usługi Salesforce
+## <a name="configure-your-offer-to-send-leads-to-salesforce"></a>Konfigurowanie oferty do wysyłania potencjalnych klientów do Salesforce
 
-Gdy wszystko jest gotowe do skonfigurowania informacji dotyczących zarządzania potencjalnym liderem oferty w portalu wydawców, wykonaj następujące czynności:
+Gdy będziesz gotowy skonfigurować informacje o zarządzaniu potencjalnymi klientami dla oferty w portalu publikowania, wykonaj poniższe czynności:
 
-1. Przejdź do strony **Konfiguracja oferty** dla swojej oferty.
-1. Wybierz pozycję **Połącz** w sekcji Zarządzanie potencjalnymi klientami.
-    ![zarządzanie potencjalnymi klientami — łączenie](./media/commercial-marketplace-lead-management-instructions-salesforce/lead-management-connect.png)
+1. Przejdź do strony **Ustawienia oferty** dla swojej oferty.
+1. Wybierz **pozycję Połącz** w sekcji Zarządzanie potencjalnymi klientami.
+    ![Zarządzanie potencjalnymi klientami - Połącz](./media/commercial-marketplace-lead-management-instructions-salesforce/lead-management-connect.png)
 
-1. W oknie podręcznym szczegóły połączenia wybierz pozycję **Salesforce** dla **miejsca docelowego potencjalnego klienta** i wklej w `oid` z formularza Web-to-potencjalny klient utworzony w ramach wcześniejszych kroków w polu **identyfikator organizacji** .
+1. W oknie podręcznym Szczegóły połączenia wybierz pozycję **Salesforce** dla miejsca `oid` **docelowego potencjalnego klienta** i wklej formularz z sieci Web do potencjalnego klienta, który został utworzony, wykonując wcześniejsze kroki w polu Identyfikator **organizacji.**
 
-1. Wybierz pozycję **Zapisz**. 
+1. Wybierz **pozycję Zapisz**. 
 
     >[!Note]
-    >Musisz zakończyć konfigurowanie reszty oferty i opublikować ją przed odebraniem potencjalnych klientów do oferty.
+    >Musisz zakończyć konfigurowanie pozostałej części oferty i opublikować ją, zanim będzie można odbierać potencjalnych klientów dla oferty.
 
-    ![Szczegóły połączenia — wybierz miejsce docelowe potencjalnego klienta](./media/commercial-marketplace-lead-management-instructions-salesforce/choose-lead-destination.png)
+    ![Szczegóły połączenia — wybieranie miejsca docelowego potencjalnego klienta](./media/commercial-marketplace-lead-management-instructions-salesforce/choose-lead-destination.png)
 
-    ![Szczegóły połączenia — wybierz miejsce docelowe potencjalnego klienta](./media/commercial-marketplace-lead-management-instructions-salesforce/connection-details.png)
+    ![Szczegóły połączenia — wybieranie miejsca docelowego potencjalnego klienta](./media/commercial-marketplace-lead-management-instructions-salesforce/connection-details.png)

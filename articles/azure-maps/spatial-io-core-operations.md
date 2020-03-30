@@ -1,62 +1,62 @@
 ---
-title: Podstawowe operacje we/wy | Mapy Microsoft Azure
-description: Dowiedz się, jak skutecznie odczytywać i zapisywać dane XML i rozdzielane przy użyciu bibliotek podstawowych z przestrzennego modułu we/wy.
-author: farah-alyasari
-ms.author: v-faalya
+title: Podstawowe operacje we/wy | Mapy platformy Microsoft Azure
+description: Dowiedz się, jak skutecznie odczytywać i zapisywać dane XML i rozdzielane przy użyciu podstawowych bibliotek z przestrzennego modułu We/Wy.
+author: philmea
+ms.author: philmea
 ms.date: 03/03/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: d2a82fd5d9ba958fd6490a83ecbbe0a4bdf820a0
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 0b8fe1b319dc480879944d28f10645025a8cb38e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78370936"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80371441"
 ---
 # <a name="core-io-operations"></a>Podstawowe operacje we/wy
 
-Oprócz udostępniania narzędzi do odczytywania plików danych przestrzennych, w module we/wy przestrzennym są udostępniane podstawowe biblioteki podstawowe umożliwiające szybkie i wydajne odczytywanie i zapisywanie danych XML oraz ograniczanie ich.
+Oprócz dostarczania narzędzi do odczytywania plików danych przestrzennych, przestrzenny moduł We/Wy udostępnia podstawowe biblioteki bazowe do odczytu i zapisu XML i rozdzielanych danych szybko i wydajnie.
 
-Przestrzeń nazw `atlas.io.core` zawiera dwie klasy niskiego poziomu, które mogą szybko odczytywać i zapisywać dane CSV i XML. Te klasy bazowe zużywają czytelników i moduły zapisujące danych przestrzennych w module we/wy. Korzystaj z nich, aby dodać dodatkową obsługę odczytu i zapisu dla plików CSV lub XML.
+Obszar `atlas.io.core` nazw zawiera dwie klasy niskiego poziomu, które mogą szybko odczytywać i zapisywać dane CSV i XML. Te klasy podstawowe zasilają czytniki danych przestrzennych i moduł i moduł we/wy w module Spatial IO. Możesz ich używać, aby dodać dodatkową obsługę odczytu i zapisu plików CSV lub XML.
  
-## <a name="read-delimited-files"></a>Odczytuj Pliki rozdzielane
+## <a name="read-delimited-files"></a>Odczytywanie rozdzielonych plików
 
-Klasa `atlas.io.core.CsvReader` odczytuje ciągi zawierające rozdzielane zestawy danych. Ta klasa udostępnia dwie metody odczytu danych:
+Klasa `atlas.io.core.CsvReader` odczytuje ciągi, które zawierają rozdzielone zestawy danych. Ta klasa zawiera dwie metody odczytu danych:
 
-- Funkcja `read` odczytaje pełny zestaw danych i zwróci 2-wymiarową tablicę ciągów reprezentujących wszystkie komórki z rozdzielanego zestawu danych.
-- Funkcja `getNextRow` odczytuje każdy wiersz tekstu w rozdzielonym zestawie danych i zwraca tablicę zawierającą ciąg reprezentujący wszystkie komórki w tym wierszu zestawu danych. Użytkownik może przetwarzać wiersz i usunąć niepotrzebną pamięć z tego wiersza przed przetworzeniem następnego wiersza. Dlatego funkcja ma więcej wydajnej pamięci.
+- Funkcja `read` odczytuje pełny zestaw danych i zwróci dwuwymiarową tablicę ciągów reprezentujących wszystkie komórki rozdzielonego zestawu danych.
+- Funkcja `getNextRow` odczytuje każdy wiersz tekstu w rozdzielanym zestawie danych i zwraca tablicę ciągów reprezentującą wszystkie komórki w tym wierszu zestawu danych. Użytkownik może przetworzyć wiersz i usunąć niepotrzebną pamięć z tego wiersza przed przetworzeniem następnego wiersza. Tak, funkcja jest bardziej wydajne pamięci.
 
-Domyślnie czytnik będzie używał znaku przecinka jako ogranicznika. Ogranicznik można jednak zmienić na dowolny pojedynczy znak lub ustawić na `'auto'`. Po ustawieniu na `'auto'`czytelnik przeanalizuje pierwszy wiersz tekstu w ciągu. Następnie wybierze najbardziej typowy znak z poniższej tabeli, aby użyć jako ogranicznika.
+Domyślnie czytelnik użyje znaku przecinka jako ogranicznika. Jednak ogranicznik można zmienić na dowolny `'auto'`pojedynczy znak lub ustawić na . Po ustawieniu `'auto'`na czytnik przeanalizuje pierwszy wiersz tekstu w ciągu. Następnie wybierze najczęstszy znak z poniższej tabeli, aby użyć go jako ogranicznika.
 
 | | |
 | :-- | :-- |
-| Pliku | `,` |
+| Przecinek | `,` |
 | Tab | `\t` |
-| Wodzie | `|` |
+| Rury | `|` |
 
-Ten czytnik obsługuje również kwalifikatory tekstu, które są używane do obsługi komórek zawierających znak ogranicznika. Znak cudzysłowu (`'"'`) jest domyślnym kwalifikatorem tekstu, ale można go zmienić na dowolny pojedynczy znak.
+Ten czytnik obsługuje również kwalifikatory tekstu, które są używane do obsługi komórek, które zawierają znak ogranicznika. Znak cudzysłowu (`'"'`) jest domyślnym kwalifikatorem tekstu, ale można go zmienić na dowolny pojedynczy znak.
 
-## <a name="write-delimited-files"></a>Pliki rozdzielane zapisem
+## <a name="write-delimited-files"></a>Zapisywanie rozdzielanych plików
 
-`atlas.io.core.CsvWriter` zapisuje tablicę obiektów jako ciąg rozdzielany. Dowolny pojedynczy znak może być używany jako ogranicznik lub kwalifikator tekstu. Domyślny ogranicznik jest przecinek (`','`), a domyślny kwalifikator tekstu jest znakiem cudzysłowu (`'"'`).
+Zapisuje `atlas.io.core.CsvWriter` tablicę obiektów jako ciąg rozdzielany. Dowolny pojedynczy znak może być używany jako ogranicznik lub kwalifikator tekstu. Domyślnym ogranicznikiem`','`jest przecinek ( ) a`'"'`domyślnym kwalifikatorem tekstu jest znak cudzysłowu ( ).
 
-Aby użyć tej klasy, wykonaj następujące czynności:
+Aby użyć tej klasy, wykonaj poniższe czynności:
 
-- Utwórz wystąpienie klasy i opcjonalnie Ustaw ogranicznik niestandardowy lub kwalifikator tekstu.
-- Zapisz dane do klasy przy użyciu funkcji `write` lub funkcji `writeRow`. Dla funkcji `write` Przekaż trójwymiarową tablicę obiektów reprezentujących wiele wierszy i komórek. Aby użyć funkcji `writeRow`, należy przekazać tablicę obiektów reprezentujących wiersz danych z wieloma kolumnami.
-- Wywołaj funkcję `toString`, aby pobrać rozdzielany ciąg. 
-- Opcjonalnie Wywołaj metodę `clear`, aby można było ponownie używać składnika zapisywania i zmniejszyć jego alokację zasobów, lub wywołaj metodę `delete`, aby usunąć wystąpienie składnika zapisywania.
+- Utwórz wystąpienie klasy i opcjonalnie ustaw niestandardowy ogranicznik lub kwalifikator tekstu.
+- Zapisuj dane do `write` klasy `writeRow` za pomocą funkcji lub funkcji. Dla `write` tej funkcji przekaż dwuwymiarową tablicę obiektów reprezentujących wiele wierszy i komórek. Aby użyć `writeRow` tej funkcji, należy przekazać tablicę obiektów reprezentujących wiersz danych z wieloma kolumnami.
+- Wywołanie `toString` funkcji, aby pobrać ciąg rozdzielany. 
+- Opcjonalnie wywołać `clear` metodę, aby moduł zapisujący wielokrotnego wykorzystania i `delete` zmniejszyć jego alokacji zasobów lub wywołać metodę, aby pozbyć się wystąpienia modułu zapisującego.
 
 > [!Note]
-> Liczba zapisanych kolumn zostanie ograniczona do liczby komórek w pierwszym wierszu danych przesłanych do składnika zapisywania.
+> Liczba zapisanych kolumn będzie ograniczona do liczby komórek w pierwszym wierszu danych przekazanych do modułu zapisującego.
 
 ## <a name="read-xml-files"></a>Odczytywanie plików XML
 
-Klasa `atlas.io.core.SimpleXmlReader` jest szybsza podczas analizowania plików XML niż `DOMParser`. Jednak Klasa `atlas.io.core.SimpleXmlReader` wymaga dobrze sformatowania plików XML. Pliki XML, które nie są poprawnie sformatowane, na przykład brakujące tagi zamykające prawdopodobnie spowodują wystąpienie błędu.
+Klasa `atlas.io.core.SimpleXmlReader` jest szybsza podczas analizowania `DOMParser`plików XML niż . Jednak `atlas.io.core.SimpleXmlReader` klasa wymaga plików XML, aby być dobrze sformatowany. Pliki XML, które nie są dobrze sformatowane, na przykład brakujące tagi zamykające, prawdopodobnie spowoduje błąd.
 
-Poniższy kod ilustruje sposób użycia klasy `SimpleXmlReader` do analizy ciągu XML w obiekcie JSON i serializacji go w żądanym formacie.
+Poniższy kod pokazuje, jak `SimpleXmlReader` używać klasy do analizowania ciągu XML w obiekcie JSON i serializacji go w żądanym formacie.
 
 ```javascript
 //Create an instance of the SimpleXmlReader and parse an XML string into a JSON object.
@@ -78,11 +78,11 @@ if (xmlDoc && xmlDoc.root && xmlDoc.root.tagName && xmlDoc.root.tagName === '<Yo
 }
 ```
 
-## <a name="write-xml-files"></a>Zapisz pliki XML
+## <a name="write-xml-files"></a>Pisanie plików XML
 
-Klasa `atlas.io.core.SimpleXmlWriter` zapisuje poprawnie sformatowane dane XML w wydajny sposób pamięci.
+Klasa `atlas.io.core.SimpleXmlWriter` zapisuje dobrze sformatowany kod XML w sposób efektywny pamięci.
 
-Poniższy kod ilustruje sposób użycia klasy `SimpleXmlWriter` w celu wygenerowania dobrze sformatowanego ciągu XML.
+Poniższy kod pokazuje, jak `SimpleXmlWriter` używać klasy do generowania dobrze sformatowanego ciągu XML.
 
 ```javascript
 //Create an instance of the SimpleXmlWriter class.
@@ -128,21 +128,21 @@ Wygenerowany kod XML z powyższego kodu będzie wyglądać następująco.
 
 ## <a name="next-steps"></a>Następne kroki
 
-Dowiedz się więcej na temat klas i metod używanych w tym artykule:
+Dowiedz się więcej o klasach i metodach użytych w tym artykule:
 
 > [!div class="nextstepaction"]
-> [CsvReader](https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/atlas.io.core.csvreader)
+> [CsvReader (CsvReader)](https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/atlas.io.core.csvreader)
 
 > [!div class="nextstepaction"]
-> [CsvWriter](https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/atlas.io.core.csvwriter)
+> [CsvWriter (Pisarz csv)](https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/atlas.io.core.csvwriter)
 
 > [!div class="nextstepaction"]
 > [SimpleXmlReader](https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/atlas.io.core.simplexmlreader)
 
 > [!div class="nextstepaction"]
-> [SimpleXmlWriter](https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/atlas.io.core.simplexmlwriter)
+> [ProstyXmlWriter](https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/atlas.io.core.simplexmlwriter)
 
-Zapoznaj się z następującymi artykułami, aby uzyskać więcej przykładów kodu do dodania do Twoich map:
+Aby uzyskać więcej przykładów kodu do dodania do map, zobacz następujące artykuły:
 
 > [!div class="nextstepaction"]
 > [Szczegóły obsługiwanego formatu danych](spatial-io-supported-data-format-details.md)

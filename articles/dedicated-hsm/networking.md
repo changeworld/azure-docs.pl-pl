@@ -1,6 +1,6 @@
 ---
-title: Zagadnienia dotyczące sieci — sprzętowego modułu zabezpieczeń platformy Azure w wersji dedykowanej | Dokumentacja firmy Microsoft
-description: Omówienie sieci zagadnienia, które dotyczą wdrożeń platformy Azure w wersji dedykowanej w module HSM
+title: Zagadnienia dotyczące sieci — dedykowany moduł HSM platformy Azure | Dokumenty firmy Microsoft
+description: Omówienie zagadnień dotyczących sieci mających zastosowanie do wdrożeń dedykowanego modułu HSM platformy Azure
 services: dedicated-hsm
 author: msmbaldwin
 manager: rkarlin
@@ -13,83 +13,83 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: mbaldwin
 ms.openlocfilehash: 044930c9df7b54515b9b66426a6b05aa9517a3a1
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "70881290"
 ---
-# <a name="azure-dedicated-hsm-networking"></a>Sieci platformy Azure w wersji dedykowanej przez moduł HSM
+# <a name="azure-dedicated-hsm-networking"></a>Dedykowana sieć HSM platformy Azure
 
-Azure w wersji dedykowanej przez sprzętowy moduł zabezpieczeń wymaga bardzo bezpiecznego środowiska sieciowego. Dotyczy to czy jest poziomu usługi Azure cloud do klienta środowiska informatycznego (lokalnie), za pomocą aplikacji rozproszonych lub scenariuszy wysokiej dostępności. Sieć Azure udostępnia to wiąże się z czterech różnych obszarów, które muszą być kierowane.
+Dedykowany moduł HSM platformy Azure wymaga wysoce bezpiecznego środowiska sieciowego. Dotyczy to niezależnie od tego, czy jest z chmury platformy Azure z powrotem do środowiska IT klienta (lokalnie), przy użyciu aplikacji rozproszonych lub scenariuszy wysokiej dostępności. Usługa Azure Networking zapewnia to i istnieją cztery odrębne obszary, które należy rozwiązać.
 
-- Tworzenie urządzenia sprzętowego modułu zabezpieczeń w Twojej sieci wirtualnej (VNet) na platformie Azure
-- Połączenie środowiska lokalnego do zasobów w chmurze w celu skonfigurowania i zarządzanie urządzeniami przez moduł HSM
-- Tworzenie i łączenie sieci wirtualnych między łączące zasobów aplikacji i urządzeń przez moduł HSM
-- Łączenie sieci wirtualnych między regionami komunikacji między, a także umożliwia realizację scenariuszy wysokiej dostępności
+- Tworzenie urządzeń HSM wewnątrz sieci wirtualnej (VNet) na platformie Azure
+- Łączenie zasobów lokalnych z zasobami chmurowymi w celu konfiguracji i zarządzania urządzeniami HSM
+- Tworzenie i łączenie sieci wirtualnych dla zasobów aplikacji łączących się i urządzeń HSM
+- Łączenie sieci wirtualnych w różnych regionach w celu komunikacji wzajemnej, a także w celu umożliwienia scenariuszy wysokiej dostępności
 
-## <a name="virtual-network-for-your-dedicated-hsms"></a>Sieć wirtualna dla sprzętowych modułów zabezpieczeń użytkownika w wersji dedykowanej
+## <a name="virtual-network-for-your-dedicated-hsms"></a>Sieć wirtualna dla dedykowanych modułów HSM
 
-Dedykowanych sprzętowych modułów zabezpieczeń są zintegrowane w sieci wirtualnej i umieścić we własnej sieci prywatnej klientów na platformie Azure. Dzięki temu dostęp do urządzeń z maszyn wirtualnych lub zasobów obliczeniowych w sieci wirtualnej.  
-Aby uzyskać więcej informacji na temat integracji usług platformy Azure w sieci wirtualnej i możliwości zapewnia, zobacz [sieć wirtualna dla usług platformy Azure](../virtual-network/virtual-network-for-azure-services.md) dokumentacji.
+Dedykowane moduły HSM są zintegrowane z siecią wirtualną i umieszczane w sieci prywatnej klientów na platformie Azure. Umożliwia to dostęp do urządzeń z maszyn wirtualnych lub zasobów obliczeniowych w sieci wirtualnej.  
+Aby uzyskać więcej informacji na temat integrowania usług platformy Azure z siecią wirtualną i możliwości, które zapewnia, zobacz dokumentację [sieci wirtualnej dla platformy Azure.](../virtual-network/virtual-network-for-azure-services.md)
 
 ### <a name="virtual-networks"></a>Sieci wirtualne
 
-Przed zainicjowaniem obsługi administracyjnej urządzeń w wersji dedykowanej przez moduł HSM, klienci będą najpierw musisz utworzyć sieć wirtualną na platformie Azure lub użyj jednego, który już istnieje w subskrypcji klientów. Sieć wirtualna definiuje obwodu zabezpieczeń dla urządzenia HSM w wersji dedykowanej. Aby uzyskać więcej informacji na temat tworzenia sieci wirtualnych, zobacz [dokumentacja usługi virtual network](../virtual-network/virtual-networks-overview.md).
+Przed inicjowania obsługi administracyjnej dedykowane urządzenie HSM, klienci będą najpierw trzeba utworzyć sieć wirtualną na platformie Azure lub użyć jednego, który już istnieje w subskrypcji klientów. Sieć wirtualna definiuje obwód zabezpieczeń dla dedykowanego urządzenia HSM. Aby uzyskać więcej informacji na temat tworzenia sieci wirtualnych, zobacz [dokumentację sieci wirtualnej](../virtual-network/virtual-networks-overview.md).
 
 ### <a name="subnets"></a>Podsieci
 
-Podsieci sieci wirtualnej na segmenty na oddzielne przestrzenie adresowe można używać przez zasoby platformy Azure, które można umieścić w nich. Dedykowanych sprzętowych modułów zabezpieczeń są wdrażane w podsieci sieci wirtualnej. Każdego urządzenia w wersji dedykowanej przez moduł HSM, które zostało wdrożone w podsieci klienta otrzyma prywatny adres IP z tej podsieci. Podsieć, w której wdrożono urządzenie HSM, musi być jawnie delegowana do usługi: Microsoft. HardwareSecurityModules/modułów dedicatedhsms. Spowoduje to przydzielenie określonych uprawnień do usługi przez sprzętowy moduł zabezpieczeń w przypadku wdrożenia w tej podsieci. Delegowanie do dedykowanych sprzętowych modułów zabezpieczeń nakłada pewne ograniczenia zasad, w tej podsieci. Sieciowe grupy zabezpieczeń (NSG), a trasy zdefiniowane przez użytkownika (Udr) aktualnie nie są obsługiwane w podsieciach delegowanego. W rezultacie po podsieci jest delegowane do dedykowanych sprzętowych modułów zabezpieczeń, może tylko służyć do wdrażania zasobów przez moduł HSM. Zakończy się niepowodzeniem wdrożenia innych zasobów klientów w tej podsieci.
+Podsieci segmentują sieć wirtualną na oddzielne przestrzenie adresowe, z których można dzielić zasoby platformy Azure, które w nich umieszczasz. Dedykowane moduły HSM są wdrażane w podsieci w sieci wirtualnej. Każde dedykowane urządzenie HSM wdrożone w podsieci klienta otrzyma prywatny adres IP z tej podsieci. Podsieć, w której jest wdrażane urządzenie HSM, musi zostać jawnie delegowana do usługi: Microsoft.HardwareSecurityModules/dedicatedHSMs. Daje to pewne uprawnienia do usługi HSM do wdrożenia w podsieci. Delegowanie do dedykowanych modułów HSM nakłada pewne ograniczenia zasad na podsieć. Sieciowe grupy zabezpieczeń (NSG) i trasy zdefiniowane przez użytkownika (UDR) nie są obecnie obsługiwane w podsieciach delegowanych. W rezultacie po delegowaniu podsieci do dedykowanych modułów HSM może służyć tylko do wdrażania zasobów modułu HSM. Wdrożenie innych zasobów klienta do podsieci zakończy się niepowodzeniem.
 
 
 ### <a name="expressroute-gateway"></a>Brama usługi ExpressRoute
 
-Wymaganie bieżącej architektury jest konfiguracji bramy usługi ER w podsieci klientów, gdzie urządzenia HSM musi być umieszczona umożliwia integrację urządzenia sprzętowego modułu zabezpieczeń na platformie Azure. Ta brama ER nie mogą być wykorzystywane do łączenia z lokalizacjami lokalnymi na urządzeniach przez moduł HSM klientów na platformie Azure.
+Wymaganiem bieżącej architektury jest konfiguracja bramy ER w podsieci klientów, w której należy umieścić urządzenie HSM, aby umożliwić integrację urządzenia HSM z platformą Azure. Tej bramy ER nie można wykorzystać do łączenia lokalizacji lokalnych z urządzeniami HSM klientów na platformie Azure.
 
-## <a name="connecting-your-on-premises-it-to-azure"></a>Łączenie z lokalnymi IT na platformie Azure
+## <a name="connecting-your-on-premises-it-to-azure"></a>Łączenie lokalnego rozwiązania IT z platformą Azure
 
-Podczas tworzenia zasobów w chmurze, jest typowy potrzebę prywatne połączenie lokalne zasoby IT. W przypadku dedykowanego sprzętowego modułu zabezpieczeń są głównie to oprogramowanie klienckie przez moduł HSM skonfigurować urządzenia sprzętowego modułu zabezpieczeń oraz działań, takich jak tworzenie kopii zapasowych i ściąganie dzienników z sprzętowych modułów zabezpieczeń dla analizy. Punkt kluczowe decyzje, w tym miejscu to rodzaj połączenia, jako dostępne są opcje.  Najbardziej elastyczna opcja to sieci VPN typu lokacja-lokacja, ponieważ prawdopodobnie będą wielu zasobów w środowisku lokalnym, które wymagają bezpiecznej komunikacji z zasobami (w tym sprzętowych modułów zabezpieczeń) w chmurze platformy Azure. Będzie to wymagało organizacji klienta, aby urządzenie sieci VPN, aby ułatwić połączenia. Połączenie sieci VPN typu punkt-lokacja może służyć w przypadku tylko pojedynczy punkt końcowy w środowisku lokalnym takich jak pojedynczy administracyjnej stacji roboczej.
-Aby uzyskać więcej informacji na temat opcji łączności, zobacz [bramy sieci VPN, opcje planowania](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json#planningtable).
+Podczas tworzenia zasobów opartych na chmurze jest to typowe wymaganie dla połączenia prywatnego z powrotem do lokalnych zasobów IT. W przypadku dedykowanego modułu HSM będzie to głównie dla oprogramowania klienta modułu HSM do konfigurowania urządzeń HSM, a także dla działań, takich jak kopie zapasowe i ściąganie dzienników z modułów HSM do analizy. Kluczowym punktem decyzyjnym jest tutaj charakter połączenia, ponieważ istnieją opcje.  Najbardziej elastyczną opcją jest sieć VPN typu lokacja lokacja, ponieważ prawdopodobnie będzie wiele zasobów lokalnych, które wymagają bezpiecznej komunikacji z zasobami (w tym modułami HSM) w chmurze platformy Azure. Będzie to wymagało organizacji klienta, aby mieć urządzenie sieci VPN w celu ułatwienia połączenia. Połączenie sieci VPN typu punkt-lokacja może być używane, jeśli lokalnie istnieje tylko jeden punkt końcowy, taki jak pojedyncza stacja robocza administracyjna.
+Aby uzyskać więcej informacji na temat opcji łączności, zobacz [Opcje planowania bramy sieci VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json#planningtable).
 
 > [!NOTE]
-> W tej chwili usługi ExpressRoute nie jest opcją dla połączenia z zasobami lokalnymi. Należy również zauważyć, że brama usługi ExpressRoute używane zgodnie z powyższym opisem, nie dla połączeń z infrastrukturą lokalną.
+> Obecnie usługa ExpressRoute nie jest opcją połączenia z zasobami lokalnymi. Należy również zauważyć, że brama usługi ExpressRoute używana w sposób opisany powyżej nie jest przeznaczony do połączeń z infrastrukturą lokalną.
 
-### <a name="point-to-site-vpn"></a>Sieci VPN typu punkt lokacja
+### <a name="point-to-site-vpn"></a>Sieć VPN typu punkt-lokacja
 
-Punkt lokacja wirtualnej sieci prywatnej jest najprostsza forma bezpiecznego połączenia z jednym punktem końcowym w środowisku lokalnym. Może to być istotne, jeśli chcesz mieć tylko jednego administracyjną stację roboczą dla opartych na platformie Azure z dedykowanych sprzętowych modułów zabezpieczeń.
+Wirtualna sieć prywatna typu "punkt-lokacja" jest najprostszą formą bezpiecznego połączenia z jednym punktem końcowym lokalnie. Może to być istotne, jeśli zamierzasz mieć tylko jedną stację roboczą administracyjną dla dedykowanych modułów HSM opartych na platformie Azure.
 
-### <a name="site-to-site-vpn"></a>Sieci VPN typu lokacja lokacja
+### <a name="site-to-site-vpn"></a>Sieć VPN typu lokacja-lokacja
 
-Lokacja lokacja wirtualnej sieci prywatnej zezwala na potrzeby bezpiecznej komunikacji między opartych na platformie Azure w wersji dedykowanej sprzętowych modułów zabezpieczeń oraz lokalnej usługi IT. Przyczyną tego jest posiadanie funkcji tworzenia kopii zapasowych dla lokalnego modułu HSM i wymaganie połączenia między nimi w celu uruchomienia kopii zapasowej.
+Wirtualna sieć prywatna lokacja-lokacja umożliwia bezpieczną komunikację między dedykowanymi modułami HSM opartymi na platformie Azure a lokalnymi rozwiązaniami IT. Powodem jest posiadanie funkcji tworzenia kopii zapasowych dla lokalnego modułu HSM i wymaga połączenia między nimi do uruchamiania kopii zapasowej.
 
 ## <a name="connecting-virtual-networks"></a>Łączenie sieci wirtualnych
 
-Typowe wdrożenie architektury przez sprzętowy moduł zabezpieczeń w wersji dedykowanej rozpocznie się za pomocą jednej sieci wirtualnej i odpowiednich podsieci, w którym są tworzone i aprowizacji urządzenia sprzętowego modułu zabezpieczeń. W tym samym regionie może również występować dodatkowe sieci wirtualne i podsieci dla składników aplikacji, które czyniłyby, Użyj sprzętowego modułu zabezpieczeń w wersji dedykowanej. Aby umożliwić komunikację między tymi sieciami, używamy komunikacji równorzędnej sieci wirtualnej.
+Typowa architektura wdrażania dedykowanego modułu HSM rozpocznie się od jednej sieci wirtualnej i odpowiedniej podsieci, w której tworzone i aprowizowani są urządzenia HSM. W tym samym regionie mogą istnieć dodatkowe sieci wirtualne i podsieci dla składników aplikacji, które będą korzystać z dedykowanego modułu HSM. Aby umożliwić komunikację między tymi sieciami, używamy komunikacji równorzędnej sieci wirtualnej.
 
 ### <a name="virtual-network-peering"></a>Wirtualne sieci równorzędne
 
-W przypadku wielu sieci wirtualnych w regionie, które wymagają dostępu do zasobów siebie nawzajem komunikacji równorzędnej sieci wirtualnej może służyć do tworzenia kanałów bezpiecznej komunikacji między nimi.  Wirtualne sieci równorzędne zapewnia nie tylko bezpiecznej komunikacji, ale zapewnia również o małych opóźnieniach i dużej przepustowości połączenia między zasobami na platformie Azure.
+Gdy istnieje wiele sieci wirtualnych w regionie, które muszą uzyskać dostęp do zasobów innych, virtual network peering może służyć do tworzenia bezpiecznych kanałów komunikacji między nimi.  Komunikacja równorzędna sieci wirtualnej zapewnia nie tylko bezpieczną komunikację, ale także zapewnia połączenia o małym opóźnieniu i dużej przepustowości między zasobami na platformie Azure.
 
-![Komunikacja równorzędna w sieci](media/networking/peering.png)
+![komunikacja równorzędna w sieci](media/networking/peering.png)
 
-## <a name="connecting-across-azure-regions"></a>Łączenie różnych regionach platformy Azure
+## <a name="connecting-across-azure-regions"></a>Łączenie się w regionach platformy Azure
 
-Urządzenia sprzętowego modułu zabezpieczeń mają możliwość, za pomocą biblioteki oprogramowania, aby przekierować ruch do alternatywnego modułu HSM. Przekierowywanie ruchu jest przydatne, jeśli urządzenia nie lub dostępu do urządzenia zostaną utracone. Scenariusze regionalnym poziomie awarii, można zminimalizować przez wdrożenie modułów HSM w innych regionach i włączenie komunikacji między sieciami wirtualnymi w różnych regionach.
+Urządzenia HSM mają możliwość, za pośrednictwem bibliotek oprogramowania, aby przekierować ruch do alternatywnego modułu HSM. Przekierowanie ruchu jest przydatne w przypadku awarii urządzeń lub utraty dostępu do urządzenia. Scenariusze awarii na poziomie regionalnym można złagodzić, wdrażając moduły HSM w innych regionach i włączając komunikację między sieciami wirtualnymi w różnych regionach.
 
-### <a name="cross-region-ha-using-vpn-gateway"></a>Między regionami wysokiej dostępności przy użyciu bramy sieci VPN
+### <a name="cross-region-ha-using-vpn-gateway"></a>Wiele ha regionu przy użyciu bramy sieci VPN
 
-Dla aplikacji dystrybuowanych globalnie lub scenariuszy rozwiązania regionalnej pracy awaryjnej wysokiej dostępności jest wymagany do łączenia sieci wirtualnych między regionami. Za pomocą platformy Azure w wersji dedykowanej przez moduł HSM wysoką dostępność można osiągnąć za pomocą bramy sieci VPN, która udostępnia bezpieczny tunel między dwiema sieciami wirtualnymi. Aby uzyskać więcej informacji na temat połączeń sieci wirtualnej między sieciami wirtualnymi przy użyciu bramy sieci VPN, zobacz artykuł [co to jest usługa VPN Gateway?](../vpn-gateway/vpn-gateway-about-vpngateways.md#V2V)
+W przypadku aplikacji rozproszonych globalnie lub dla regionalnych scenariuszy pracy awaryjnej o wysokiej dostępności jest wymagane połączenie sieci wirtualnych między regionami. Dzięki dedykowanemu modułowi HSM platformy Azure można osiągnąć wysoką dostępność przy użyciu bramy sieci VPN, która zapewnia bezpieczny tunel między dwiema sieciami wirtualnymi. Aby uzyskać więcej informacji na temat połączeń sieci wirtualnej do sieci wirtualnej przy użyciu bramy sieci VPN, zobacz artykuł ["Co to jest brama sieci VPN?For](../vpn-gateway/vpn-gateway-about-vpngateways.md#V2V) more information on Vnet-to-Vnet connections using VPN Gateway, see the article titled What is VPN Gateway?
 
 > [!NOTE]
-> Globalne wirtualne sieci równorzędne jest niedostępna w łączności między regionami, które scenariusze za pomocą dedykowanych sprzętowych modułów zabezpieczeń, w tym czasie i bramy sieci VPN należy użyć. 
+> Globalna komunikacja równorzędna sieci wirtualnej nie jest dostępna w scenariuszach łączności między regionami z dedykowanymi modułami HSM w tej chwili i zamiast tego należy użyć bramy sieci VPN. 
 
-![globalne wirtualne sieci](media/networking/global-vnet.png)
+![global-vnet](media/networking/global-vnet.png)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - [Często zadawane pytania](faq.md)
 - [Możliwości obsługi](supportability.md)
 - [Wysoka dostępność](high-availability.md)
 - [Zabezpieczenia fizyczne](physical-security.md)
-- [Monitorowanie](monitoring.md)
-- [Architektura wdrożenia](deployment-architecture.md)
+- [Monitorowania](monitoring.md)
+- [Architektura wdrażania](deployment-architecture.md)

@@ -1,34 +1,32 @@
 ---
-title: Lista kontrolna publikowania dla AppSource | Portal Azure Marketplace
-description: Lista kontrolna publikowania dla AppSource.
-services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
-author: jm-aditi-ms
-manager: pabutler
+title: Lista kontrolna publikowania dla appsource | Azure Marketplace
+description: Publikowanie listy kontrolnej dla źródła usług AppSource.
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/05/2018
-ms.author: ellacroi
-ms.openlocfilehash: 3a40816604df510eb66d6ea7bccbe86f8c327406
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 7fcf23d1a599199adfc5a50f76a7b72b96ece7a8
+ms.sourcegitcommit: d0fd35f4f0f3ec71159e9fb43fcd8e89d653f3f2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73822638"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80387737"
 ---
-# <a name="publishing-checklist-for-appsource"></a>Lista kontrolna publikowania dla AppSource  
+# <a name="publishing-checklist-for-appsource"></a>Lista kontrolna dotycząca publikowania w usłudze AppSource  
 
-Przed rozpoczęciem procesu publikowania Przejrzyj wymagane składniki.  
+Przejrzyj wymagane składniki przed rozpoczęciem procesu publikowania.  
 
-Następujące artefakty są wymagane do opublikowania aplikacji w witrynie AppSource.  
+Następujące artefakty są wymagane do opublikowania aplikacji w u źródła usług AppSource.  
 
 ## <a name="checklist"></a>Lista kontrolna  
 
-| Typ listy | Typ oferty | Publikowanie artefaktu |   
+| Typ aukcji | Typ oferty | Artefakt publikowania |   
 |:--- |:--- |:--- |  
-| List | Usługa doradcza | <table> <tr><th>Szczegóły witryny dotyczącej Sklepu</th></tr> <tr><td>Nazwa oferty (200 znaków)</td></tr> <tr><td>Opis (2 000 znaków)</td></tr> <tr><td>Identyfikator programu MPN</td></tr> <tr><td>Dostępność kraju/regionu</td></tr> <tr><td>Odpowiednie branże, kategorie i słowa kluczowe wyszukiwania</td></tr> <tr><td>Zrzuty ekranu (1280x720; maksimum 5)</td></tr> <tr><td>Dokumenty marketingowe (maksymalnie 3)</td></tr> <tr><td>Miejsce docelowe potencjalnego klienta</td></tr> <tr><td>Logo firmy (48x48, 216x216)</td></tr> <tr><td>Kompetencje</td></tr> <tr><td>Wideo z omówieniem produktu (opcjonalnie)</td></tr> </table> |  
+| List | Usługi konsultingowe | <table> <tr><th>Szczegóły witryny sklepowej</th></tr> <tr><td>Nazwa oferty (200 znaków)</td></tr> <tr><td>Opis (2000 znaków)</td></tr> <tr><td>Identyfikator MPN</td></tr> <tr><td>Dostępność kraju/regionu</td></tr> <tr><td>Odpowiednie branże, kategorie i słowa kluczowe wyszukiwania</td></tr> <tr><td>Zrzuty ekranu (1280x720; maksymalnie 5)</td></tr> <tr><td>Dokumenty marketingowe (maksymalnie 3)</td></tr> <tr><td>Miejsce docelowe potencjalnego klienta</td></tr> <tr><td>Logo firmy (48x48, 216x216)</td></tr> <tr><td>Kompetencje</td></tr> <tr><td>Wideo z omówieniem produktu (opcjonalnie)</td></tr> </table> |  
 
 ## <a name="next-steps"></a>Następne kroki
-*   Odwiedź stronę [przewodnika po wydawcy portalu Azure Marketplace i AppSource](./marketplace-publishers-guide.md) .  
+*   Odwiedź stronę [Przewodnik po portalu Azure Marketplace i Przewodnik dla wydawców appsource.](./marketplace-publishers-guide.md)  
 
 ---

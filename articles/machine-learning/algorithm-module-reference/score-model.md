@@ -1,7 +1,7 @@
 ---
-title: 'Model oceny: odwołanie do modułu'
+title: 'Model wyników: Odwołanie do modułu'
 titleSuffix: Azure Machine Learning
-description: Dowiedz się, jak używać modułu modelu Score w Azure Machine Learning do generowania prognoz przy użyciu przeszkolonego modelu klasyfikacji lub regresji.
+description: Dowiedz się, jak używać modułu score model w usłudze Azure Machine Learning do generowania prognoz przy użyciu uczonych klasyfikacji lub modelu regresji.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,47 +9,47 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 02/11/2020
-ms.openlocfilehash: c06d1268abe8afdeb03668131c3c61cfbafa44cd
-ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
+ms.openlocfilehash: 56d8cad05a42da8de680ade487dddee9a97aab3a
+ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77138174"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80364172"
 ---
 # <a name="score-model-module"></a>Moduł Score Model (Generowanie wyników przez model)
 
-W tym artykule opisano moduł w programie Azure Machine Learning Designer (wersja zapoznawcza).
+W tym artykule opisano moduł w projektancie usługi Azure Machine Learning (wersja zapoznawcza).
 
-Ten moduł służy do generowania prognoz przy użyciu przeszkolonego modelu klasyfikacji lub regresji.
+Ten moduł służy do generowania prognoz przy użyciu przeszkolonych klasyfikacji lub modelu regresji.
 
 ## <a name="how-to-use"></a>Jak stosować
 
-1. Dodaj moduł **modelu oceny** do potoku.
+1. Dodaj **wynik modelu** modułu do potoku.
 
-2. Dołącz model przeszkolony i zestaw danych zawierający nowe dane wejściowe. 
+2. Dołącz przeszkolony model i zestaw danych zawierający nowe dane wejściowe. 
 
-    Dane powinny mieć format zgodny z typem używanego modelu nauczonego. Schemat wejściowego zestawu danych powinien również zwykle odpowiadać schematowi danych używanych do uczenia modelu.
+    Dane powinny być w formacie zgodnym z typem modelu przeszkolonego, którego używasz. Schemat wejściowego zestawu danych powinien również ogólnie odpowiadać schematowi danych używanych do trenowania modelu.
 
-3. Uruchamianie potoku.
+3. Prześlij potok.
 
 ## <a name="results"></a>Wyniki
 
-Po wygenerowaniu zestawu wyników przy użyciu [modelu oceny](./score-model.md):
+Po wygenerowaniu zestawu wyników przy użyciu [modelu score:](./score-model.md)
 
-+ Generowanie zestawu metryk używanych do oceny dokładności modelu (wydajność).  można połączyć zestaw danych oceny z [modelem](./evaluate-model.md), 
-+ Kliknij prawym przyciskiem myszy moduł i wybierz polecenie **Wizualizacja** , aby wyświetlić przykładowe wyniki.
-+ Zapisz wyniki w zestawie danych.
++ Aby wygenerować zestaw metryk używanych do oceny dokładności (wydajności) modelu, można połączyć zestaw danych punktowanych z [oceną modelu,](./evaluate-model.md) 
++ Kliknij prawym przyciskiem myszy moduł i wybierz pozycję **Wizualizuj,** aby wyświetlić próbkę wyników.
+<!-- + To Save the results to a dataset. -->
 
-Wynik lub przewidywana wartość może być w wielu różnych formatach, w zależności od modelu i danych wejściowych:
+Wynik lub przewidywana wartość mogą być w wielu różnych formatach, w zależności od modelu i danych wejściowych:
 
-- W przypadku modeli klasyfikacji [model oceny](./score-model.md) generuje prognozowaną wartość klasy, a także prawdopodobieństwo wartości przewidywanej.
-- W przypadku modeli regresji [model oceny](./score-model.md) generuje tylko przewidywaną wartość liczbową.
+- W przypadku modeli klasyfikacji [score model](./score-model.md) wyprowadza przewidywaną wartość dla klasy, a także prawdopodobieństwo przewidywanej wartości.
+- Dla modeli regresji [Score Model](./score-model.md) generuje tylko przewidywaną wartość liczbową.
 
 
-## <a name="publish-scores-as-a-web-service"></a>Publikowanie wyników jako usługi sieci Web
+## <a name="publish-scores-as-a-web-service"></a>Publikowanie wyników jako usługi sieci web
 
-Typowym użyciem oceniania jest zwrócenie danych wyjściowych w ramach predykcyjnej usługi sieci Web. Aby uzyskać więcej informacji, zobacz ten samouczek dotyczący tworzenia usługi sieci Web opartej na potoku w Azure Machine Learning:
+Typowym zastosowaniem oceniania jest zwrócenie danych wyjściowych w ramach predykcyjnej usługi sieci web. Aby uzyskać więcej informacji, zobacz [ten samouczek](https://docs.microsoft.com/azure/machine-learning/tutorial-designer-automobile-price-deploy) dotyczący wdrażania punktu końcowego w czasie rzeczywistym na podstawie potoku w projektancie usługi Azure Machine Learning.
 
 ## <a name="next-steps"></a>Następne kroki
 
-Zapoznaj się z [zestawem modułów dostępnych](module-reference.md) do Azure Machine Learning. 
+Zobacz [zestaw modułów dostępnych dla](module-reference.md) usługi Azure Machine Learning. 

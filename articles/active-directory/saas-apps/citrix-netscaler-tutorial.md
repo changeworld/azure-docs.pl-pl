@@ -11,17 +11,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 12/13/2019
+ms.date: 03/27/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 785242a2cf51571a6d13b2b4691d33e46369bf94
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 7400c8288d8901460e462ce43b69815e178a718c
+ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75977910"
+ms.lasthandoff: 03/29/2020
+ms.locfileid: "80384011"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-integration-with-citrix-netscaler-kerberos-based-authentication"></a>Samouczek: Integracja z logiem jednokrotnym usługi Azure Active Directory z usługą Citrix NetScaler (uwierzytelnianie oparte na protokół Kerberos)
 
@@ -31,7 +30,7 @@ W tym samouczku dowiesz się, jak zintegrować program Citrix NetScaler z usług
 * Włącz automatyczne logowanie użytkowników do usługi Citrix NetScaler za pomocą ich kont usługi Azure AD.
 * Zarządzaj kontami w jednej centralnej lokalizacji — witrynie Azure Portal.
 
-Aby dowiedzieć się więcej o integracji aplikacji z usługą Azure AD z aplikacją —SaaS( SaaS), zobacz [Co to jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Aby dowiedzieć się więcej o integracji aplikacji z usługą Azure AD z aplikacją —SaaS( SaaS), zobacz [Co to jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -51,6 +50,8 @@ W tym samouczku można skonfigurować i przetestować samouszeńców usługi Azu
 * [Uwierzytelnianie oparte na protokół Kerberos dla programu Citrix NetScaler](#publish-the-web-server)
 
 * [Uwierzytelnianie oparte na nagłówku dla programu Citrix NetScaler](header-citrix-netscaler-tutorial.md#publish-the-web-server)
+
+* Po skonfigurowaniu programu Citrix NetScaler można wymusić kontrolę sesji, która chroni eksfiltrację i infiltrację poufnych danych organizacji w czasie rzeczywistym. Kontrola sesji rozciąga się od dostępu warunkowego. [Dowiedz się, jak wymusić kontrolę nad sesją za pomocą programu Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
 
 ## <a name="add-citrix-netscaler-from-the-gallery"></a>Dodaj Citrix NetScaler z galerii
 
@@ -102,7 +103,7 @@ Aby włączyć usługę Azure AD SSO przy użyciu witryny Azure portal, wykonaj 
 
     1. W polu tekstowym **Identyfikator** wprowadź adres URL zawierający następujący wzorzec:`https://<Your FQDN>`
 
-    1. W polu tekstowym **Odpowiedz na adres URL** wprowadź adres URL zawierający następujący wzorzec:`https://<Your FQDN>/CitrixAuthService/AuthService.asmx`
+    1. W polu tekstowym **Odpowiedz na adres URL** wprowadź adres URL zawierający następujący wzorzec:`http(s)://<Your FQDN>.of.vserver/cgi/samlauth`
 
 1. Aby skonfigurować aplikację w trybie **inicjowanym przez dodatek,** wybierz pozycję **Ustaw dodatkowe adresy URL** i wykonaj następujący krok:
 
@@ -456,10 +457,14 @@ Po wybraniu kafelka Citrix NetScaler w Panelu dostępu należy zalogować się a
 
 - [Lista samouczków dotyczących integrowania aplikacji SaaS z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Co to jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Co to jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
 
 - [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
 - [Wypróbuj program Citrix NetScaler z usługą Azure AD](https://aad.portal.azure.com/)
 
 - [Konfigurowanie logowania jednokrotnego programu Citrix NetScaler w celu uwierzytelniania opartego na nagłówku](header-citrix-netscaler-tutorial.md)
+
+- [Co to jest kontrola sesji w usłudze Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+
+- [Jak chronić Citrix NetScaler dzięki zaawansowanej widoczności i sterowaniu](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)

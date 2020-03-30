@@ -1,5 +1,5 @@
 ---
-title: 'Szybki Start: Tworzenie Load Balancer publicznego — interfejs wiersza polecenia platformy Azure'
+title: Szybki start:Tworzenie publicznego modułu równoważenia obciążenia — narzędzie Azure CLI
 titleSuffix: Azure Load Balancer
 description: W tym samouczku przedstawiono sposób tworzenia publicznego modułu równoważenia obciążenia przy użyciu interfejsu wiersza polecenia platformy Azure
 services: load-balancer
@@ -17,22 +17,22 @@ ms.workload: infrastructure-services
 ms.date: 01/25/2019
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: fdbd002ac946f3ac3a1a67980905d4ed6f5510c5
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: 1f6a05fdfc28adf412ffbd1402e37b69d1c51634
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77470347"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79477769"
 ---
-# <a name="quickstart-create-a-standard-load-balancer-to-load-balance-vms-using-azure-cli"></a>Szybki Start: Tworzenie usługa Load Balancer w warstwie Standardowa równoważenia obciążenia maszyn wirtualnych przy użyciu interfejsu wiersza polecenia platformy Azure
+# <a name="quickstart-create-a-standard-load-balancer-to-load-balance-vms-using-azure-cli"></a>Szybki start: tworzenie standardowego modułu równoważenia obciążenia w celu równoważenia obciążenia maszyn wirtualnych przy użyciu interfejsu wiersza polecenia platformy Azure
 
-W tym przewodniku szybki start przedstawiono sposób tworzenia Load Balancer publicznego. W celu przetestowania modułu równoważenia obciążenia wdrożysz dwie maszyny wirtualne z systemem Ubuntu Server i zrównoważysz obciążenie aplikacji internetowej między dwiema maszynami wirtualnymi.
+Ten przewodnik Szybki start pokazuje, jak utworzyć publiczny moduł równoważenia obciążenia. W celu przetestowania modułu równoważenia obciążenia wdrożysz dwie maszyny wirtualne z systemem Ubuntu Server i zrównoważysz obciążenie aplikacji internetowej między dwiema maszynami wirtualnymi.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)] 
 
 Jeśli zdecydujesz się zainstalować interfejs wiersza polecenia i korzystać z niego lokalnie, ten samouczek będzie wymagał interfejsu wiersza polecenia platformy Azure w wersji 2.0.28 lub nowszej. Aby dowiedzieć się, jaka wersja jest używana, uruchom polecenie `az --version`. Jeśli konieczna będzie instalacja lub uaktualnienie interfejsu, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure]( /cli/azure/install-azure-cli).
 
-## <a name="create-a-resource-group"></a>Utwórz grupę zasobów
+## <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
 
 Utwórz grupę zasobów za pomocą polecenia [az group create](https://docs.microsoft.com/cli/azure/group). Grupa zasobów platformy Azure to logiczny kontener przeznaczony do wdrażania zasobów platformy Azure i zarządzania nimi.
 
@@ -46,22 +46,22 @@ W poniższym przykładzie zostanie utworzona grupa zasobów o nazwie *myResource
 
 ## <a name="create-a-public-ip-address"></a>Tworzenie publicznego adresu IP
 
-Aby uzyskać dostęp do aplikacji internetowej za pośrednictwem Internetu, potrzebujesz publicznego adresu IP modułu równoważenia obciążenia. Użyj [AZ Network Public-IP Create](https://docs.microsoft.com/cli/azure/network/public-ip) , aby utworzyć strefę Standard nadmiarowy publiczny adres IP o nazwie *myPublicIP* w *myResourceGroupSLB*.
+Aby uzyskać dostęp do aplikacji internetowej za pośrednictwem Internetu, potrzebujesz publicznego adresu IP modułu równoważenia obciążenia. Użyj [tworzenia az network public-ip,](https://docs.microsoft.com/cli/azure/network/public-ip) aby utworzyć strefę standardową nadmiarowy publiczny adres IP o nazwie *myPublicIP* w *myResourceGroupSLB*.
 
 ```azurecli-interactive
   az network public-ip create --resource-group myResourceGroupSLB --name myPublicIP --sku standard
 ```
 
-Aby utworzyć strefowy publiczny adres IP w strefie 1, użyj:
+Aby utworzyć strefowy publiczny adres IP w strefie 1, należy:
 
 ```azurecli-interactive
   az network public-ip create --resource-group myResourceGroupSLB --name myPublicIP --sku standard --zone 1
 ```
 
-Użyj ```-SKU Basic```, aby utworzyć podstawowy publiczny adres IP. Podstawowe publiczne adresy IP nie są zgodne z usługą równoważenia obciążenia w **warstwie Standardowa** . Firma Microsoft zaleca używanie **standardu** dla obciążeń produkcyjnych.
+Służy `-SKU Basic` do tworzenia podstawowego publicznego adresu IP. Podstawowe publiczne wiadomości IP nie są zgodne ze **standardowym modułem** równoważenia obciążenia. Firma Microsoft zaleca stosowanie **standardu** dla obciążeń produkcyjnych.
 
 > [!IMPORTANT]
-> W pozostałej części tego przewodnika Szybki Start przyjęto założenie, że w ramach procesu wyboru jednostki SKU zostanie wybrana **standardowa** jednostka SKU.
+> Pozostała część tego przewodnika Szybki start zakłada, że **standardowa** jednostka SKU jest wybierana podczas procesu wyboru jednostki SKU powyżej.
 
 ## <a name="create-azure-load-balancer"></a>Tworzenie modułu równoważenia obciążenia platformy Azure
 
@@ -73,7 +73,7 @@ W tej sekcji opisano szczegółowo procedurę tworzenia i konfigurowania następ
 
 ### <a name="create-the-load-balancer"></a>Tworzenie modułu równoważenia obciążenia
 
-Za pomocą polecenia [az network lb create](https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest) utwórz publiczną usługę Azure Load Balancer o nazwie **myLoadBalancer**, zawierającą pulę frontonu o nazwie **myFrontEnd** i pulę zaplecza o nazwie **myBackEndPool**, która jest skojarzona z publicznym adresem IP **myPublicIP** utworzonym w poprzednim kroku. Użyj ```--sku basic```, aby utworzyć podstawowy publiczny adres IP. Firma Microsoft zaleca użycie standardowej jednostki SKU dla obciążeń produkcyjnych.
+Utwórz publiczny moduł równoważenia obciążenia platformy Azure za pomocą [sieci az lb create](https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest) o nazwie **myLoadBalancer,** która zawiera pulę frontonu o nazwie **myFrontEnd**, pulę wewnętrznej bazy danych o nazwie **myBackEndPool,** która jest skojarzona z publicznym adresem IP **myPublicIP** utworzonym w poprzednim kroku. Służy `--sku basic` do tworzenia podstawowego publicznego adresu IP. Firma Microsoft zaleca standardowe jednostki SKU dla obciążeń produkcyjnych.
 
 ```azurecli-interactive
   az network lb create \
@@ -83,10 +83,10 @@ Za pomocą polecenia [az network lb create](https://docs.microsoft.com/cli/azure
     --public-ip-address myPublicIP \
     --frontend-ip-name myFrontEnd \
     --backend-pool-name myBackEndPool       
-  ```
+```
 
 > [!IMPORTANT]
-> W pozostałej części tego przewodnika Szybki Start przyjęto założenie, że w ramach procesu wyboru jednostki SKU zostanie wybrana **standardowa** jednostka SKU.
+> Pozostała część tego przewodnika Szybki start zakłada, że **standardowa** jednostka SKU jest wybierana podczas procesu wyboru jednostki SKU powyżej.
 
 ### <a name="create-the-health-probe"></a>Tworzenie sondy kondycji
 
@@ -133,7 +133,8 @@ Utwórz sieć wirtualną o nazwie *myVnet* z podsiecią o nazwie *mySubnet* w gr
     --name myVnet \
     --subnet-name mySubnet
 ```
-###  <a name="create-a-network-security-group"></a>Tworzenie sieciowej grupy zabezpieczeń
+
+### <a name="create-a-network-security-group"></a>Tworzenie sieciowej grupy zabezpieczeń
 
 W przypadku usługi Load Balancer w warstwie Standardowa maszyny wirtualne w adresie zaplecza muszą mieć karty sieciowe, które należą do sieciowej grupy zabezpieczeń. Utwórz sieciową grupę zabezpieczeń w celu zdefiniowania połączeń przychodzących do sieci wirtualnej.
 
@@ -161,6 +162,7 @@ Utwórz regułę sieciowej grupy zabezpieczeń, aby zezwalać na połączenia pr
     --access allow \
     --priority 200
 ```
+
 ### <a name="create-nics"></a>Tworzenie kart sieciowych
 
 Utwórz trzy interfejsy sieciowe za pomocą polecenia [az network nic create](/cli/azure/network/nic#az-network-nic-create) i skojarz je z publicznym adresem IP i sieciową grupą zabezpieczeń. 
@@ -200,7 +202,7 @@ Utwórz trzy interfejsy sieciowe za pomocą polecenia [az network nic create](/c
 
 W tym przykładzie utworzysz trzy maszyny wirtualne, które będą używane jako serwery zaplecza dla modułu równoważenia obciążenia. Aby sprawdzić, czy moduł równoważenia obciążenia został utworzony pomyślnie, zainstalujesz także serwer NGINX na maszynach wirtualnych.
 
-Jeśli tworzysz podstawową Load Balancer z podstawowym publicznym adresem IP, musisz utworzyć zestaw dostępności za pomocą ([AZ VM availabilityset Create](/cli/azure/network/nic) , aby dodać maszyny wirtualne do programu. Standardowe usługi równoważenia obciążenia nie wymagają tego dodatkowego kroku. Firma Microsoft zaleca używanie standardu.
+Jeśli tworzysz podstawowy moduł równoważenia obciążenia z podstawowym publicznym adresem IP, musisz utworzyć zestaw dostępności przy użyciu ([az vm availabilityset create](/cli/azure/network/nic) to add your virtual machines into. Standardowe moduły równoważenia obciążenia nie wymagają tego dodatkowego kroku. Firma Microsoft zaleca korzystanie ze standardu.
 
 ### <a name="create-three-virtual-machines"></a>Tworzenie trzech maszyn wirtualnych
 
@@ -246,11 +248,11 @@ runcmd:
   - npm init
   - npm install express -y
   - nodejs index.js
-``` 
- 
+```
+
 Utwórz maszyny wirtualne za pomocą polecenia [az vm create](/cli/azure/vm#az-vm-create).
 
- ```azurecli-interactive
+```azurecli-interactive
 
   az vm create \
     --resource-group myResourceGroupSLB \
@@ -283,6 +285,7 @@ Utwórz maszyny wirtualne za pomocą polecenia [az vm create](/cli/azure/vm#az-v
     --no-wait
 
 ```
+
 Wdrażanie maszyn wirtualnych może potrwać kilka minut.
 
 ## <a name="test-the-load-balancer"></a>Testowanie modułu równoważenia obciążenia
@@ -295,17 +298,19 @@ Aby uzyskać publiczny adres IP modułu równoważenia obciążenia, użyj polec
     --name myPublicIP \
     --query [ipAddress] \
     --output tsv
-``` 
+```
+
    ![Testowanie modułu równoważenia obciążenia](./media/load-balancer-standard-public-cli/running-nodejs-app.png)
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
 Gdy grupa zasobów nie będzie już potrzebna, możesz użyć polecenia [az group delete](/cli/azure/group#az-group-delete), aby usunąć grupę zasobów, moduł równoważenia obciążenia oraz wszystkie pokrewne zasoby.
 
-```azurecli-interactive 
+```azurecli-interactive
   az group delete --name myResourceGroupSLB
 ```
-## <a name="next-steps"></a>Następne kroki
-W tym przewodniku szybki start utworzono usługa Load Balancer w warstwie Standardowa, dołączono do niego maszyny wirtualne, skonfigurowano regułę ruchu Load Balancer, sondę kondycji, a następnie przetestowano Load Balancer. Aby dowiedzieć się więcej na temat Azure Load Balancer, przejdź do [Azure Load Balancer samouczków](tutorial-load-balancer-standard-public-zone-redundant-portal.md).
 
-Dowiedz się więcej na temat [stref Load Balancer i dostępności](load-balancer-standard-availability-zones.md).
+## <a name="next-steps"></a>Następne kroki
+W tym przewodniku Szybki start utworzono standardowy moduł równoważenia obciążenia, dołączono do niego maszyny wirtualne, skonfigurowano regułę ruchu modułu równoważenia obciążenia, sondę kondycji, a następnie przetestowano moduł równoważenia obciążenia. Aby dowiedzieć się więcej o modułie równoważenia obciążenia platformy Azure, przejdź do [samouczków dotyczący równoważenia obciążenia platformy Azure](tutorial-load-balancer-standard-public-zone-redundant-portal.md).
+
+Dowiedz się więcej o [strefach równoważenia obciążenia i dostępności](load-balancer-standard-availability-zones.md).

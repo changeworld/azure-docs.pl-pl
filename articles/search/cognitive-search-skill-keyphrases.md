@@ -1,7 +1,7 @@
 ---
-title: wyodrębnianie kluczowych fraz umiejętności poznawcze
+title: Kluczowe wyrażenie Ekstrakcja umiejętności poznawczych
 titleSuffix: Azure Cognitive Search
-description: Oblicza tekst niestrukturalny, a dla każdego rekordu zwraca listę kluczowych fraz w potoku wzbogacenia AI na platformie Azure Wyszukiwanie poznawcze.
+description: Oblicza tekst bez struktury i dla każdego rekordu zwraca listę kluczowych fraz w potoku wzbogacania sztucznej inteligencji w usłudze Azure Cognitive Search.
 manager: nitinme
 author: luiscabrer
 ms.author: luisca
@@ -9,47 +9,47 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: ccdd25d82af2b4893260af18dac818816d9e4579
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72791973"
 ---
-#   <a name="key-phrase-extraction-cognitive-skill"></a>wyodrębnianie kluczowych fraz umiejętności poznawcze
+#   <a name="key-phrase-extraction-cognitive-skill"></a>Kluczowe wyrażenie Ekstrakcja umiejętności poznawczych
 
-Umiejętność **wyodrębnianie kluczowych fraz** oblicza niestrukturalny tekst, a dla każdego rekordu zwraca listę fraz kluczowych. Ta umiejętność używa modeli uczenia maszynowego zapewnianych przez [Analiza tekstu](https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview) w Cognitive Services.
+**Umiejętności Wyodrębnianie fraz kluczowych** ocenia tekst nieustrukturyzowany, a dla każdego rekordu zwraca listę kluczowych fraz. Ta umiejętność korzysta z modeli uczenia maszynowego dostarczonych przez [analizę tekstu](https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview) w usługach Cognitive Services.
 
-Ta funkcja jest przydatna, jeśli trzeba szybko identyfikować główne punkty rozmowy w rekordzie. Na przykład w przypadku tekstu wejściowego "żywność została deliciousa i wystąpiła wspaniałe zatrudnienie" usługa zwraca "żywność" i "wspaniałe personel".
+Ta funkcja jest przydatna, jeśli trzeba szybko zidentyfikować główne punkty rozmowy w rekordzie. Na przykład, biorąc pod uwagę tekst wejściowy "Jedzenie było pyszne i nie było wspaniały personel", usługa zwraca "jedzenie" i "wspaniały personel".
 
 > [!NOTE]
-> Podczas rozszerzania zakresu przez zwiększenie częstotliwości przetwarzania, Dodawanie większej liczby dokumentów lub Dodawanie algorytmów AI, należy [dołączyć Cognitive Services rozliczanego zasobu](cognitive-search-attach-cognitive-services.md). Opłaty naliczane podczas wywoływania interfejsów API w Cognitive Services oraz do wyodrębniania obrazów w ramach etapu łamania dokumentu w usłudze Azure Wyszukiwanie poznawcze. Nie są naliczane opłaty za Wyodrębnianie tekstu z dokumentów.
+> W miarę rozszerzania zakresu poprzez zwiększanie częstotliwości przetwarzania, dodawanie większej liczby dokumentów lub dodawanie kolejnych algorytmów sztucznej inteligencji należy [dołączyć rozliczany zasób usług Cognitive Services.](cognitive-search-attach-cognitive-services.md) Opłaty naliczane podczas wywoływania interfejsów API w usługach Cognitive Services i wyodrębniania obrazu w ramach etapu pękania dokumentów w usłudze Azure Cognitive Search. Nie ma żadnych opłat za wyodrębnianie tekstu z dokumentów.
 >
-> Do wykonania wbudowanych umiejętności są naliczane opłaty za istniejące [Cognitive Services cena płatność zgodnie z rzeczywistym](https://azure.microsoft.com/pricing/details/cognitive-services/)użyciem. Cennik wyodrębniania obrazów został opisany na [stronie cennika usługi Azure wyszukiwanie poznawcze](https://go.microsoft.com/fwlink/?linkid=2042400).
+> Wykonanie wbudowanych umiejętności jest naliczane według istniejącej [ceny płatności zgodnie z rzeczywistymi oczekiwaniami.](https://azure.microsoft.com/pricing/details/cognitive-services/) Ceny wyodrębniania obrazów są opisane na [stronie cennika usługi Azure Cognitive Search](https://go.microsoft.com/fwlink/?linkid=2042400).
 
 
 ## <a name="odatatype"></a>@odata.type  
-Microsoft. umiejętności. Text. KeyPhraseExtractionSkill 
+Microsoft.Skills.Text.KeyPhraseExtractionSkill 
 
 ## <a name="data-limits"></a>Limity danych
-Maksymalny rozmiar rekordu powinien składać się z 50 000 znaków mierzonych przez [`String.Length`](https://docs.microsoft.com/dotnet/api/system.string.length). Jeśli konieczne jest rozbicie danych przed wysłaniem ich do wyodrębniania kluczowych fraz, rozważ użycie [umiejętności podziału tekstu](cognitive-search-skill-textsplit.md).
+Maksymalny rozmiar rekordu powinien wynosić 50 000 [`String.Length`](https://docs.microsoft.com/dotnet/api/system.string.length)znaków mierzonych za pomocą pliku . Jeśli musisz podzielić dane przed wysłaniem ich do ekstraktora fraz kluczowych, rozważ użycie [umiejętności Dzielenie tekstu](cognitive-search-skill-textsplit.md).
 
 ## <a name="skill-parameters"></a>Parametry umiejętności
 
-W parametrach jest rozróżniana wielkość liter.
+W nazwach parametrów jest rozróżniana wielkość liter.
 
 | Dane wejściowe                | Opis |
 |---------------------|-------------|
-| defaultLanguageCode | Obowiązkowe Kod języka, który ma zostać zastosowany do dokumentów, które nie określają jawnie języka.  Jeśli kod języka domyślnego nie zostanie określony, jako domyślny kod języka zostanie użyty język angielski (EN). <br/> Zapoznaj się [z pełną listą obsługiwanych języków](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages). |
-| maxKeyPhraseCount   | Obowiązkowe Maksymalna liczba kluczowych fraz do wygenerowania. |
+| domyślny Kod Języka | (Opcjonalnie) Kod języka do zastosowania do dokumentów, które nie określają języka jawnie.  Jeśli domyślny kod języka nie jest określony, angielski (en) będzie używany jako domyślny kod języka. <br/> Zobacz [Pełna lista obsługiwanych języków](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages). |
+| maksymalnynalicznik Klawiatury   | (Opcjonalnie) Maksymalna liczba kluczowych fraz do wyprodukowania. |
 
-## <a name="skill-inputs"></a>Dane wejściowe kwalifikacji
+## <a name="skill-inputs"></a>Wprowadzanie umiejętności
 
 | Dane wejściowe     | Opis |
 |--------------------|-------------|
-| tekst | Tekst do analizy.|
-| languageCode  |  Ciąg wskazujący język rekordów. Jeśli ten parametr nie jest określony, kod języka domyślnego będzie używany do analizowania rekordów. <br/>Zapoznaj się [z pełną listą obsługiwanych języków](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages)|
+| tekst | Tekst, który ma być analizowany.|
+| languageCode  |  Ciąg wskazujący język rekordów. Jeśli ten parametr nie jest określony, domyślny kod języka będzie używany do analizowania rekordów. <br/>Zobacz [Pełna lista obsługiwanych języków](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages)|
 
-##  <a name="sample-definition"></a>Definicja Przykładowa
+##  <a name="sample-definition"></a>Przykładowa definicja
 
 ```json
  {
@@ -116,11 +116,11 @@ W parametrach jest rozróżniana wielkość liter.
 
 
 ## <a name="errors-and-warnings"></a>Błędy i ostrzeżenia
-Jeśli podano nieobsługiwany kod języka, zostanie wygenerowany błąd i frazy kluczy nie są wyodrębniane.
-Jeśli tekst jest pusty, zostanie wygenerowane ostrzeżenie.
-Jeśli tekst jest większy niż 50 000 znaków, przeanalizowane zostaną tylko pierwsze 50 000 znaki i zostanie wygenerowane ostrzeżenie.
+Jeśli podasz nieobsługinięty kod języka, zostanie wygenerowany błąd i kluczowe frazy nie zostaną wyodrębnione.
+Jeśli tekst jest pusty, zostanie wysuń ostrzeżenie.
+Jeśli tekst jest większy niż 50 000 znaków, tylko pierwsze 50 000 znaków zostanie przeanalizowanych i zostanie wydane ostrzeżenie.
 
-## <a name="see-also"></a>Zobacz także
+## <a name="see-also"></a>Zobacz też
 
 + [Wbudowane umiejętności](cognitive-search-predefined-skills.md)
-+ [Jak zdefiniować zestawu umiejętności](cognitive-search-defining-skillset.md)
++ [Jak zdefiniować zestaw umiejętności](cognitive-search-defining-skillset.md)

@@ -1,23 +1,23 @@
 ---
-title: Zarządzanie dyskami zarządzanymi
-description: Dowiedz się więcej o rozdziałach dysków i sposobie ich działania w przypadku usługi Azure Premium dysków SSD.
+title: Rozerwanie dysku zarządzanego
+description: Dowiedz się więcej o rozrywaniu dysku i o tym, jak działa dla dysków SSD w wersji Premium platformy Azure.
 author: roygara
 ms.author: rogarana
-ms.date: 10/22/2019
+ms.date: 03/28/2019
 ms.topic: conceptual
 ms.service: virtual-machines
 ms.subservice: disks
-ms.openlocfilehash: f5ec4cb63db1522153c0600d719a22e4744cb4d7
-ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
+ms.openlocfilehash: 4cac3c3e5346fa9c8ab68a4238d64419060a0967
+ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "78970715"
+ms.lasthandoff: 03/29/2020
+ms.locfileid: "80385201"
 ---
-# <a name="premium-ssd-bursting-preview"></a>SSD w warstwie Premiuming (wersja zapoznawcza)
+# <a name="premium-ssd-bursting"></a>Premium SSD pęknięcie
 
 [!INCLUDE [managed-disks-bursting](../../../includes/managed-disks-bursting.md)]
 
 ## <a name="next-steps"></a>Następne kroki
 
-[Dołączanie dysku danych do maszyny wirtualnej z systemem Linux przy użyciu portalu](attach-disk-portal.md)
+[Dołączanie dysku danych do maszyny Wirtualnej z systemem Linux za pomocą portalu](attach-disk-portal.md)

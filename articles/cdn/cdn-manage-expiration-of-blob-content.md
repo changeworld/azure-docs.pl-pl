@@ -1,7 +1,7 @@
 ---
-title: Zarządzanie wygaśnięciem magazynu obiektów blob platformy Azure
+title: Zarządzanie wygaśnięciem magazynu obiektów Blob platformy Azure
 titleSuffix: Azure Content Delivery Network
-description: Dowiedz się więcej na temat opcji kontrolowania czasu wygaśnięcia dla obiektów BLOB w pamięci podręcznej Azure CDN.
+description: Dowiedz się więcej o opcjach kontrolowania czasu do żywo dla obiektów blob w buforowaniu usługi Azure CDN.
 services: cdn
 documentationcenter: ''
 author: zhangmanling
@@ -16,84 +16,84 @@ ms.topic: article
 ms.date: 02/1/2018
 ms.author: mazha
 ms.openlocfilehash: f28282a802e4b38fadc05c7090fa2a2af154de54
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74083154"
 ---
-# <a name="manage-expiration-of-azure-blob-storage-in-azure-cdn"></a>Zarządzanie wygaśnięciem usługi Azure Blob Storage w Azure CDN
+# <a name="manage-expiration-of-azure-blob-storage-in-azure-cdn"></a>Zarządzanie wygaśnięciem magazynu obiektów Blob platformy Azure w usłudze Azure CDN
 > [!div class="op_single_selector"]
 > * [Zawartość sieci Web platformy Azure](cdn-manage-expiration-of-cloud-service-content.md)
-> * [Azure Blob Storage](cdn-manage-expiration-of-blob-content.md)
+> * [Magazyn obiektów Blob platformy Azure](cdn-manage-expiration-of-blob-content.md)
 > 
 > 
 
-[Usługa BLOB Storage](../storage/common/storage-introduction.md#blob-storage) w usłudze Azure Storage to jeden z kilku źródeł opartych na platformie Azure zintegrowanych z usługą Azure Content Delivery Network (CDN). Wszystkie publicznie dostępne zawartość obiektów BLOB mogą być buforowane w Azure CDN do momentu, gdy upłynie czas wygaśnięcia (TTL). Czas wygaśnięcia jest określany przez nagłówek `Cache-Control` w odpowiedzi HTTP z serwera pochodzenia. W tym artykule opisano kilka sposobów ustawiania nagłówka `Cache-Control` w obiekcie BLOB w usłudze Azure Storage.
+[Usługa magazynu obiektów Blob](../storage/common/storage-introduction.md#blob-storage) w usłudze Azure Storage jest jednym z kilku źródeł opartych na platformie Azure zintegrowanych z usługą Azure Content Delivery Network (CDN). Wszelkie publicznie dostępne zawartości obiektu blob mogą być buforowane w usłudze Azure CDN, dopóki nie upłynie jego czas wygaśnięcia (TTL). Czas wygaśnięcia jest `Cache-Control` określany przez nagłówek w odpowiedzi HTTP z serwera pochodzenia. W tym artykule opisano kilka `Cache-Control` sposobów, które można ustawić nagłówek na obiekt blob w usłudze Azure Storage.
 
-Ustawienia pamięci podręcznej można również kontrolować przy użyciu Azure Portal przez ustawienie reguł buforowania usługi CDN. Jeśli utworzysz regułę buforowania i ustawisz jej zachowanie buforowania w celu **przesłonięcia** lub **obejścia pamięci podręcznej**, ustawienia pamięci podręcznej podane w tym artykule zostaną zignorowane. Aby uzyskać informacje na temat ogólnych pojęć dotyczących buforowania, zobacz [jak działa buforowanie](cdn-how-caching-works.md).
+Można również kontrolować ustawienia pamięci podręcznej z witryny Azure portal, ustawiając reguły buforowania usługi CDN. Jeśli utworzysz regułę buforowania i ustawisz jej zachowanie buforowania na **Zastąpal** lub **Pomiń pamięć podręczną,** ustawienia buforowania podane przez źródło, omówione w tym artykule, są ignorowane. Aby uzyskać informacje na temat ogólnych pojęć buforowania, zobacz [Jak działa buforowanie](cdn-how-caching-works.md).
 
 > [!TIP]
-> Można ustawić wartość brak czasu wygaśnięcia dla obiektu BLOB. W takim przypadku Azure CDN automatycznie stosuje domyślny czas wygaśnięcia o wartości siedem dni, chyba że w Azure Portal skonfigurowano reguły buforowania. Ten domyślny czas TTL dotyczy tylko optymalizacji ogólnego dostarczania w sieci Web. W przypadku optymalizacji dużych plików domyślny czas wygaśnięcia wynosi jeden dzień, a w przypadku optymalizacji przesyłania strumieniowego multimediów domyślny czas wygaśnięcia wynosi jeden rok.
+> Można ustawić brak czasu wygaśnięcia obiektu blob. W takim przypadku usługa Azure CDN automatycznie stosuje domyślny czas wygaśnięcia z siedmiu dni, chyba że skonfigurowane są reguły buforowania w witrynie Azure portal. Ten domyślny czas wygaśnięcia ma zastosowanie tylko do ogólnych optymalizacji dostarczania w sieci Web. W przypadku optymalizacji dużych plików domyślny czas wygaśnięcia wynosi jeden dzień, a w przypadku optymalizacji przesyłania strumieniowego multimediów domyślny czas wygaśnięcia wynosi jeden rok.
 > 
-> Aby uzyskać więcej informacji o tym, jak działa Azure CDN, aby przyspieszyć dostęp do obiektów blob i innych plików, zobacz [Omówienie usługi Azure Content Delivery Network](cdn-overview.md).
+> Aby uzyskać więcej informacji na temat działania usługi Azure CDN w celu przyspieszenia dostępu do obiektów blob i innych plików, zobacz [Omówienie sieci dostarczania zawartości platformy Azure](cdn-overview.md).
 > 
-> Aby uzyskać więcej informacji o usłudze Azure Blob Storage, zobacz [wprowadzenie do usługi BLOB Storage](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-introduction).
+> Aby uzyskać więcej informacji na temat magazynu obiektów Blob platformy Azure, zobacz [Wprowadzenie do magazynu obiektów Blob.](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-introduction)
  
 
-## <a name="setting-cache-control-headers-by-using-cdn-caching-rules"></a>Ustawianie nagłówków kontroli pamięci podręcznej przy użyciu reguł buforowania sieci CDN
-Preferowaną metodą ustawiania nagłówka `Cache-Control` obiektu BLOB jest użycie reguł buforowania w Azure Portal. Aby uzyskać więcej informacji na temat reguł buforowania usługi CDN, zobacz [kontrola Azure CDN buforowania przy użyciu reguł buforowania](cdn-caching-rules.md).
+## <a name="setting-cache-control-headers-by-using-cdn-caching-rules"></a>Ustawianie nagłówków cache-control przy użyciu reguł buforowania sieci CDN
+Preferowaną metodą ustawiania nagłówka `Cache-Control` obiektu blob jest użycie reguł buforowania w witrynie Azure portal. Aby uzyskać więcej informacji na temat reguł buforowania sieci CDN, zobacz [Kontrolowanie zachowania buforowania usługi Azure CDN za pomocą reguł buforowania](cdn-caching-rules.md).
 
 > [!NOTE] 
-> Reguły buforowania są dostępne tylko dla **Azure CDN Standard from Verizon** i **Azure CDN Standard from Akamai** profile. W przypadku **Azure CDN Premium z profilów Verizon** należy użyć [aparatu reguł Azure CDN](cdn-rules-engine.md) w portalu **zarządzania** , aby korzystać z podobnych funkcji.
+> Reguły buforowania są dostępne tylko dla **usługi Azure CDN Standard firmy Verizon** i Azure **CDN Standard z profilów Akamai.** W przypadku profilów **usługi Azure CDN Premium z verizon** należy użyć aparatu reguł usługi Azure [CDN](cdn-rules-engine.md) w portalu **zarządzania** dla podobnych funkcji.
 
-**Aby przejść do strony reguły buforowania usługi CDN**:
+**Aby przejść do strony reguł buforowania sieci CDN:**
 
-1. W Azure Portal wybierz profil CDN, a następnie wybierz punkt końcowy dla obiektu BLOB.
+1. W witrynie Azure portal wybierz profil usługi CDN, a następnie wybierz punkt końcowy obiektu blob.
 
 2. W lewym okienku w obszarze Ustawienia zaznacz pole **Reguły buforowania**.
 
-   ![Przycisk reguły buforowania usługi CDN](./media/cdn-manage-expiration-of-blob-content/cdn-caching-rules-btn.png)
+   ![Przycisk reguł buforowania sieci CDN](./media/cdn-manage-expiration-of-blob-content/cdn-caching-rules-btn.png)
 
    Zostanie wyświetlona strona **Reguły buforowania**.
 
-   ![Strona buforowania usługi CDN](./media/cdn-manage-expiration-of-blob-content/cdn-caching-page.png)
+   ![Strona buforowania sieci CDN](./media/cdn-manage-expiration-of-blob-content/cdn-caching-page.png)
 
 
-**Aby ustawić nagłówki kontroli pamięci podręcznej usługi BLOB Storage przy użyciu globalnych reguł buforowania:**
+**Aby ustawić nagłówki cache-control usługi magazynu obiektów blob przy użyciu globalnych reguł buforowania:**
 
-1. W obszarze **globalne reguły buforowania**Ustaw **zachowanie buforowania ciągu zapytania** , aby **zignorować ciągi zapytań** i ustawić **zachowanie buforowania** w celu **przesłonięcia**.
+1. W obszarze **Globalne reguły buforowania**ustaw **zachowanie buforowania ciągów zapytań** tak, aby **ignoruj ciągi zapytań** i ustaw **zachowanie buforowania** na **Zastąpalanie**.
       
-2. W przypadku **czasu wygaśnięcia pamięci podręcznej**wprowadź 3600 w polu **sekundy** lub 1 w polu **godziny** . 
+2. W przypadku **czasu wygaśnięcia pamięci podręcznej**wprowadź 3600 w polu **Sekundy** lub 1 w polu **Godziny.** 
 
-   ![Przykład globalnych zasad buforowania usługi CDN](./media/cdn-manage-expiration-of-blob-content/cdn-global-caching-rules-example.png)
+   ![Przykład globalnych reguł buforowania sieci CDN](./media/cdn-manage-expiration-of-blob-content/cdn-global-caching-rules-example.png)
 
-   Ta Globalna reguła buforowania ustawia czas trwania pamięci podręcznej o jedną godzinę i ma wpływ na wszystkie żądania do punktu końcowego. Zastępuje wszystkie `Cache-Control` lub `Expires` nagłówki HTTP, które są wysyłane przez serwer pochodzenia określony przez punkt końcowy.   
+   Ta globalna reguła buforowania ustawia czas trwania pamięci podręcznej jednej godziny i wpływa na wszystkie żądania do punktu końcowego. Zastępuje wszystkie `Cache-Control` nagłówki `Expires` lub HTTP, które są wysyłane przez serwer pochodzenia określony przez punkt końcowy.   
 
-3. Wybierz pozycję **Zapisz**.
+3. Wybierz **pozycję Zapisz**.
  
-**Aby ustawić nagłówki kontroli pamięci podręcznej pliku BLOB przy użyciu niestandardowych reguł buforowania:**
+**Aby ustawić nagłówki cache-control pliku obiektu blob przy użyciu niestandardowych reguł buforowania:**
 
-1. W obszarze **niestandardowe reguły buforowania**Utwórz dwa warunki dopasowywania:
+1. W obszarze **Niestandardowe reguły buforowania**utwórz dwa warunki dopasowania:
 
-     A. W przypadku pierwszego warunku dopasowywania Ustaw **warunek dopasowania** na wartość **Path** i wprowadź `/blobcontainer1/*` dla **wartości Match**. Ustaw **zachowanie buforowania** w celu **przesłonięcia** i wprowadź 4 w polu **godziny** .
+     A. Dla pierwszego warunku dopasowania ustaw warunek `/blobcontainer1/*` **dopasowania** na **Ścieżkę** i wprowadź wartość **Dopasowania**. Ustaw **zachowanie buforowania,** aby **zastąpić** i wprowadź 4 w polu **Godziny.**
 
-    B. Dla drugiego warunku dopasowywania Ustaw **warunek dopasowania** na wartość **Path** i wprowadź `/blobcontainer1/blob1.txt` w celu **dopasowania wartości**. Ustaw **zachowanie buforowania** w celu **przesłonięcia** i wprowadź wartość 2 w polu **godziny** .
+    B. W przypadku drugiego warunku dopasowania ustaw `/blobcontainer1/blob1.txt` warunek **dopasowania** na **Ścieżkę** i wprowadź wartość **Dopasowania**. Ustaw **zachowanie buforowania,** aby **zastąpić** i wprowadź 2 w polu **Godziny.**
 
     ![Przykład niestandardowych reguł buforowania usługi CDN](./media/cdn-manage-expiration-of-blob-content/cdn-custom-caching-rules-example.png)
 
-    Pierwsza Niestandardowa reguła buforowania ustawia czas trwania pamięci podręcznej wynoszący cztery godziny dla wszystkich plików obiektów BLOB w folderze `/blobcontainer1` na serwerze źródłowym określonym przez punkt końcowy. Druga reguła zastępuje pierwszą regułę dla `blob1.txt` pliku obiektu BLOB i ustawia dla niej okres istnienia pamięci podręcznej wynoszący 2 godziny.
+    Pierwsza niestandardowa reguła buforowania ustawia czas trwania pamięci podręcznej `/blobcontainer1` wynoszący cztery godziny dla wszystkich plików obiektów blob w folderze na serwerze pochodzenia określonym przez punkt końcowy. Druga reguła zastępuje pierwszą regułę `blob1.txt` tylko dla pliku obiektu blob i ustawia czas trwania pamięci podręcznej wynoszący dwie godziny.
 
-2. Wybierz pozycję **Zapisz**.
+2. Wybierz **pozycję Zapisz**.
 
 
-## <a name="setting-cache-control-headers-by-using-azure-powershell"></a>Ustawianie nagłówków kontroli pamięci podręcznej przy użyciu Azure PowerShell
+## <a name="setting-cache-control-headers-by-using-azure-powershell"></a>Ustawianie nagłówków kontroli pamięci podręcznej przy użyciu programu Azure PowerShell
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-[Azure PowerShell](/powershell/azure/overview) to jeden z najszybszych i najbardziej zaawansowanych sposobów administrowania usługami platformy Azure. Użyj polecenia cmdlet `Get-AzStorageBlob`, aby uzyskać odwołanie do obiektu BLOB, a następnie ustaw właściwość `.ICloudBlob.Properties.CacheControl`. 
+[Usługa Azure PowerShell](/powershell/azure/overview) to jeden z najszybszych i najpotężniejszych sposobów administrowania usługami platformy Azure. Użyj `Get-AzStorageBlob` polecenia cmdlet, aby uzyskać odwołanie do `.ICloudBlob.Properties.CacheControl` obiektu blob, a następnie ustawić właściwość. 
 
-Na przykład:
+Przykład:
 
 ```powershell
 # Create a storage context
@@ -110,14 +110,14 @@ $blob.ICloudBlob.SetProperties()
 ```
 
 > [!TIP]
-> Za pomocą programu PowerShell można także [zarządzać profilami i punktami końcowymi usługi CDN](cdn-manage-powershell.md).
+> Za pomocą programu PowerShell można również [zarządzać profilami i punktami końcowymi sieci CDN.](cdn-manage-powershell.md)
 > 
 >
 
 ## <a name="setting-cache-control-headers-by-using-net"></a>Ustawianie nagłówków kontroli pamięci podręcznej przy użyciu platformy .NET
-Aby określić nagłówek `Cache-Control` obiektu BLOB przy użyciu kodu platformy .NET, użyj [biblioteki klienta usługi Azure Storage dla platformy .NET](../storage/blobs/storage-dotnet-how-to-use-blobs.md) , aby ustawić właściwość [polecenia cloudblob. Properties. CacheControl](/dotnet/api/microsoft.azure.storage.blob.blobproperties.cachecontrol) .
+Aby określić `Cache-Control` nagłówek obiektu blob przy użyciu kodu .NET, użyj [biblioteki klienta usługi Azure Storage dla platformy .NET,](../storage/blobs/storage-dotnet-how-to-use-blobs.md) aby ustawić właściwość [CloudBlob.Properties.CacheControl.](/dotnet/api/microsoft.azure.storage.blob.blobproperties.cachecontrol)
 
-Na przykład:
+Przykład:
 
 ```csharp
 class Program
@@ -147,40 +147,40 @@ class Program
 ```
 
 > [!TIP]
-> Istnieją więcej przykładów kodu platformy .NET dostępnych w [przykładach BLOB Storage platformy Azure dla platformy .NET](https://azure.microsoft.com/documentation/samples/storage-blob-dotnet-getting-started/).
+> W przykładach usługi [Azure Blob Storage dla platformy .NET](https://azure.microsoft.com/documentation/samples/storage-blob-dotnet-getting-started/)dostępnych jest więcej przykładów kodu platformy .NET.
 > 
 
-## <a name="setting-cache-control-headers-by-using-other-methods"></a>Ustawianie nagłówków kontroli pamięci podręcznej przy użyciu innych metod
+## <a name="setting-cache-control-headers-by-using-other-methods"></a>Ustawianie nagłówków cache-control przy użyciu innych metod
 
-### <a name="azure-storage-explorer"></a>Eksplorator magazynu Azure
-Za pomocą [Eksplorator usługi Azure Storage](https://azure.microsoft.com/features/storage-explorer/)można wyświetlać i edytować zasoby magazynu obiektów blob, w tym takie właściwości, jak Właściwość *CacheControl* . 
+### <a name="azure-storage-explorer"></a>Eksplorator usługi Azure Storage
+Za [pomocą Eksploratora usługi Azure Storage](https://azure.microsoft.com/features/storage-explorer/)można wyświetlać i edytować zasoby magazynu obiektów blob, w tym właściwości, takie jak *właściwość CacheControl.* 
 
-Aby zaktualizować właściwość *CacheControl* obiektu BLOB za pomocą Eksplorator usługi Azure Storage:
-   1. Wybierz obiekt BLOB, a następnie wybierz pozycję **Właściwości** z menu kontekstowego. 
-   2. Przewiń w dół do właściwości *CacheControl* .
+Aby zaktualizować *właściwość CacheControl* obiektu blob za pomocą Eksploratora usługi Azure Storage:
+   1. Wybierz obiekt blob, a następnie wybierz **polecenie Właściwości** z menu kontekstowego. 
+   2. Przewiń w dół do *CacheControl* właściwości.
    3. Wprowadź wartość, a następnie wybierz pozycję **Zapisz**.
 
 
-![Właściwości Eksplorator usługi Azure Storage](./media/cdn-manage-expiration-of-blob-content/cdn-storage-explorer-properties.png)
+![Właściwości Eksploratora usługi Azure Storage](./media/cdn-manage-expiration-of-blob-content/cdn-storage-explorer-properties.png)
 
 ### <a name="azure-command-line-interface"></a>Interfejs wiersza polecenia platformy Azure
-Za pomocą [interfejsu wiersza polecenia](https://docs.microsoft.com/cli/azure) (CLI) platformy Azure można zarządzać zasobami obiektów blob platformy Azure z poziomu wiersza polecenia. Aby ustawić nagłówek kontroli pamięci podręcznej podczas przekazywania obiektu BLOB za pomocą interfejsu wiersza polecenia platformy Azure, ustaw właściwość *cacheControl* przy użyciu przełącznika `-p`. Poniższy przykład pokazuje, jak ustawić czas wygaśnięcia na godzinę (3600 s):
+Za pomocą [interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure) (CLI) można zarządzać zasobami obiektów blob platformy Azure z wiersza polecenia. Aby ustawić nagłówek kontroli pamięci podręcznej podczas przekazywania obiektu blob z interfejsu `-p` wiersza polecenia platformy Azure, należy ustawić *cacheControl* właściwości przy użyciu przełącznika. W poniższym przykładzie pokazano, jak ustawić czas wygaśnięcia na jedną godzinę (3600 sekund):
   
 ```azurecli
 azure storage blob upload -c <connectionstring> -p cacheControl="max-age=3600" .\<blob name> <container name> <blob name>
 ```
 
-### <a name="azure-storage-services-rest-api"></a>Interfejs API REST usług Azure Storage
-Korzystając z [interfejsu API REST usług Azure Storage](/rest/api/storageservices/) , można jawnie ustawić właściwość *x-MS-BLOB-Cache-Control* , wykonując następujące operacje na żądanie:
+### <a name="azure-storage-services-rest-api"></a>Interfejs API REST usług magazynu platformy Azure
+Za pomocą [interfejsu API REST usług magazynu platformy Azure](/rest/api/storageservices/) można jawnie ustawić właściwość *x-ms-blob-cache-control* przy użyciu następujących operacji na żądanie:
   
-   - [Put Blob](/rest/api/storageservices/Put-Blob)
+   - [Wstawianie obiektu blob](/rest/api/storageservices/Put-Blob)
    - [Umieść listę zablokowanych](/rest/api/storageservices/Put-Block-List)
-   - [Ustawianie właściwości obiektu BLOB](/rest/api/storageservices/Set-Blob-Properties)
+   - [Ustawianie właściwości obiektu blob](/rest/api/storageservices/Set-Blob-Properties)
 
 ## <a name="testing-the-cache-control-header"></a>Testowanie nagłówka Cache-Control
-Można łatwo zweryfikować ustawienia czasu wygaśnięcia obiektów BLOB. Za pomocą [narzędzi deweloperskich](https://developer.microsoft.com/microsoft-edge/platform/documentation/f12-devtools-guide/)przeglądarki Sprawdź, czy obiekt BLOB zawiera nagłówek odpowiedzi `Cache-Control`. Do sprawdzenia nagłówków odpowiedzi można także użyć narzędzia, takiego jak [Wget](https://www.gnu.org/software/wget/), [Poster](https://www.getpostman.com/)lub [programu Fiddler](https://www.telerik.com/fiddler) .
+Można łatwo zweryfikować ustawienia czasu wygaśnięcia obiektów blob. Za pomocą [narzędzi programistycznych](https://developer.microsoft.com/microsoft-edge/platform/documentation/f12-devtools-guide/)przeglądarki sprawdź, czy `Cache-Control` obiekt blob zawiera nagłówek odpowiedzi. Można również użyć narzędzia, takiego jak [Wget,](https://www.gnu.org/software/wget/) [Listonosz](https://www.getpostman.com/)lub [Skrzypek,](https://www.telerik.com/fiddler) aby sprawdzić nagłówki odpowiedzi.
 
 ## <a name="next-steps"></a>Następne kroki
-* [Dowiedz się, jak zarządzać wygasaniem zawartości usługi w chmurze w Azure CDN](cdn-manage-expiration-of-cloud-service-content.md)
-* [Informacje o pojęciach dotyczących buforowania](cdn-how-caching-works.md)
+* [Dowiedz się, jak zarządzać wygaśnięciem zawartości usługi w chmurze w usłudze Azure CDN](cdn-manage-expiration-of-cloud-service-content.md)
+* [Dowiedz się więcej o pojęciach dotyczących buforowania](cdn-how-caching-works.md)
 

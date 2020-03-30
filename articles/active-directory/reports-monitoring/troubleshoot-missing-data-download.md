@@ -1,5 +1,5 @@
 ---
-title: 'Rozwiązywanie problemów: Brak danych w pobranych dziennikach aktywności | Microsoft Docs'
+title: 'Rozwiązywanie problemów: Brakujące dane w pobranych dziennikach aktywności | Dokumenty firmy Microsoft'
 description: Zawiera rozwiązanie problemu dotyczącego braku danych w pobranych dziennikach aktywności usługi Azure Active Directory.
 services: active-directory
 documentationcenter: ''
@@ -18,13 +18,13 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ee07fdb6f8a4e69600297bdb16b6ad74793f10c9
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74007723"
 ---
-# <a name="i-cant-find-all-the-data-in-the-azure-active-directory-activity-logs-i-downloaded"></a>Nie mogę znaleźć wszystkich danych w pobranych dziennikach aktywności Azure Active Directory
+# <a name="i-cant-find-all-the-data-in-the-azure-active-directory-activity-logs-i-downloaded"></a>Nie mogę znaleźć wszystkich danych w pobranych dziennikach aktywności usługi Azure Active Directory
 
 ## <a name="symptoms"></a>Objawy
 
@@ -34,7 +34,7 @@ Pobrano dzienniki aktywności (inspekcji lub logowania), ale nie widać wszystki
  
 ## <a name="cause"></a>Przyczyna
 
-Po pobraniu dzienników aktywności w Azure Portal ograniczamy do 250 000 rekordów, posortowanych według ostatnio używanych elementów. 
+Podczas pobierania dzienników aktywności w witrynie Azure portal, możemy ograniczyć skalę do 250 000 rekordów, posortowane według najnowszych najpierw. 
 
 ## <a name="resolution"></a>Rozwiązanie
 
@@ -42,5 +42,5 @@ Można wykorzystać [interfejsy API raportowania usługi Azure AD](concept-repor
 
 ## <a name="next-steps"></a>Następne kroki
 
-* [Raporty Azure Active Directory często zadawane pytania](reports-faq.md)
+* [Raporty usługi Azure Active Directory – często zadawane pytania](reports-faq.md)
 

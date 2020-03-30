@@ -1,36 +1,36 @@
 ---
-title: Omówienie zasad SSL dla usługi Azure Application Gateway
-description: Dowiedz się, jak skonfigurować zasady protokołu SSL dla usługi Azure Application Gateway i zmniejszyć obciążenie szyfrowania i odszyfrowywania z farmy serwerów zaplecza.
+title: Omówienie zasad protokołu TLS dla bramy aplikacji platformy Azure
+description: Dowiedz się, jak skonfigurować zasady TLS dla usługi Azure Application Gateway i zmniejszyć obciążenie związane z szyfrowaniem i odszyfrowywaniem z farmy serwerów zaplecza.
 services: application gateway
 author: amsriva
 ms.service: application-gateway
 ms.topic: article
 ms.date: 11/16/2019
 ms.author: amsriva
-ms.openlocfilehash: fe70bd5994d835bdc2651a64d35c988ea38b8511
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 871cb930e867002d8af1e7755de27d4873327543
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75770037"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80257380"
 ---
-# <a name="application-gateway-ssl-policy-overview"></a>Omówienie zasad protokołu SSL Application Gateway
+# <a name="application-gateway-tls-policy-overview"></a>Omówienie zasad TLS bramy aplikacji
 
-Usługi Azure Application Gateway można używać do scentralizowanego zarządzania certyfikatami SSL i zmniejszania obciążenia szyfrowania i odszyfrowywania z farmy serwerów zaplecza. Ta Scentralizowana obsługa protokołu SSL umożliwia również określenie centralnych zasad protokołu SSL, które są odpowiednie dla wymagań bezpieczeństwa organizacji. Pomaga to spełnić wymagania dotyczące zgodności, a także wskazówki dotyczące zabezpieczeń i zalecane rozwiązania.
+Za pomocą usługi Azure Application Gateway można scentralizować zarządzanie certyfikatami TLS/SSL oraz zmniejszyć obciążenie związane z szyfrowaniem i odszyfrowywaniem z farmy serwerów zaplecza. Ta scentralizowana obsługa protokołu TLS umożliwia również określenie centralnej zasady TLS dostosowanej do wymagań zabezpieczeń organizacji. Pomaga to spełnić wymagania dotyczące zgodności, a także wskazówki dotyczące zabezpieczeń i zalecane praktyki.
 
-Zasady protokołu SSL obejmują kontrolę wersji protokołu SSL, a także mechanizmy szyfrowania i kolejność, w jakiej szyfry są używane podczas uzgadniania protokołu SSL. Application Gateway oferuje dwa mechanizmy kontrolowania zasad protokołu SSL. Można użyć wstępnie zdefiniowanych zasad lub zasad niestandardowych.
+Zasady TLS obejmują kontrolę nad wersją protokołu TLS, a także mechanizmami szyfrowania i kolejnością, w jakiej szyfry są używane podczas uzgadniania TLS. Brama aplikacji oferuje dwa mechanizmy kontrolowania zasad TLS. Można użyć wstępnie zdefiniowanych zasad lub zasad niestandardowych.
 
-## <a name="predefined-ssl-policy"></a>Wstępnie zdefiniowane zasady SSL
+## <a name="predefined-tls-policy"></a>Wstępnie zdefiniowane zasady TLS
 
-Application Gateway ma trzy wstępnie zdefiniowane zasady zabezpieczeń. Bramę można skonfigurować przy użyciu dowolnej z tych zasad, aby uzyskać odpowiedni poziom zabezpieczeń. Nazwy zasad są oznaczane przez rok i miesiąc, w których zostały skonfigurowane. Każda zasada oferuje różne wersje protokołów SSL i mechanizmy szyfrowania. Zalecamy używanie najnowszych zasad protokołu SSL w celu zapewnienia najlepszego zabezpieczenia protokołu SSL.
+Brama aplikacji ma trzy wstępnie zdefiniowane zasady zabezpieczeń. Bramę można skonfigurować przy każdej z tych zasad, aby uzyskać odpowiedni poziom zabezpieczeń. Nazwy zasad są opisywane przez rok i miesiąc, w którym zostały skonfigurowane. Każda zasada oferuje różne wersje protokołów TLS i mechanizmy szyfrowania. Zaleca się korzystanie z najnowszych zasad TLS, aby zapewnić najlepsze zabezpieczenia TLS.
 
 ### <a name="appgwsslpolicy20150501"></a>AppGwSslPolicy20150501
 
 |Właściwość  |Wartość  |
 |---|---|
 |Nazwa     | AppGwSslPolicy20150501        |
-|MinProtocolVersion     | TLSv1_0        |
-|Domyślne| True (jeśli nie określono żadnych wstępnie zdefiniowanych zasad) |
+|Wersja MinProtocolVersion     | TLSv1_0        |
+|Domyślne| Wartość true (jeśli nie określono wstępnie zdefiniowanych zasad) |
 |CipherSuites     |TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384<br>TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256<br>TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384<br>TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256<br>TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA<br>TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA<br>TLS_DHE_RSA_WITH_AES_256_GCM_SHA384<br>TLS_DHE_RSA_WITH_AES_128_GCM_SHA256<br>TLS_DHE_RSA_WITH_AES_256_CBC_SHA<br>TLS_DHE_RSA_WITH_AES_128_CBC_SHA<br>TLS_RSA_WITH_AES_256_GCM_SHA384<br>TLS_RSA_WITH_AES_128_GCM_SHA256<br>TLS_RSA_WITH_AES_256_CBC_SHA256<br>TLS_RSA_WITH_AES_128_CBC_SHA256<br>TLS_RSA_WITH_AES_256_CBC_SHA<br>TLS_RSA_WITH_AES_128_CBC_SHA<br>TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384<br>TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256<br>TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384<br>TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256<br>TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA<br>TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA<br>TLS_DHE_DSS_WITH_AES_256_CBC_SHA256<br>TLS_DHE_DSS_WITH_AES_128_CBC_SHA256<br>TLS_DHE_DSS_WITH_AES_256_CBC_SHA<br>TLS_DHE_DSS_WITH_AES_128_CBC_SHA<br>TLS_RSA_WITH_3DES_EDE_CBC_SHA<br>TLS_DHE_DSS_WITH_3DES_EDE_CBC_SHA |
   
 ### <a name="appgwsslpolicy20170401"></a>AppGwSslPolicy20170401
@@ -38,8 +38,8 @@ Application Gateway ma trzy wstępnie zdefiniowane zasady zabezpieczeń. Bramę 
 |Właściwość  |Wartość  |
 |   ---      |  ---       |
 |Nazwa     | AppGwSslPolicy20170401        |
-|MinProtocolVersion     | TLSv1_1        |
-|Domyślne| Fałsz |
+|Wersja MinProtocolVersion     | TLSv1_1        |
+|Domyślne| False |
 |CipherSuites     |TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256<br>TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384<br>TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA<br>TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA<br>TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256<br>TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384<br>TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384<br>TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256<br>TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA<br>TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA<br>TLS_RSA_WITH_AES_256_GCM_SHA384<br>TLS_RSA_WITH_AES_128_GCM_SHA256<br>TLS_RSA_WITH_AES_256_CBC_SHA256<br>TLS_RSA_WITH_AES_128_CBC_SHA256<br>TLS_RSA_WITH_AES_256_CBC_SHA<br>TLS_RSA_WITH_AES_128_CBC_SHA |
   
 ### <a name="appgwsslpolicy20170401s"></a>AppGwSslPolicy20170401S
@@ -47,23 +47,23 @@ Application Gateway ma trzy wstępnie zdefiniowane zasady zabezpieczeń. Bramę 
 |Właściwość  |Wartość  |
 |---|---|
 |Nazwa     | AppGwSslPolicy20170401S        |
-|MinProtocolVersion     | TLSv1_2        |
-|Domyślne| Fałsz |
+|Wersja MinProtocolVersion     | TLSv1_2        |
+|Domyślne| False |
 |CipherSuites     |TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256 <br>    TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384 <br>    TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA <br>TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA <br>TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256<br>TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384<br>TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384<br>TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256<br>TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA<br>TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA<br>TLS_RSA_WITH_AES_256_GCM_SHA384<br>TLS_RSA_WITH_AES_128_GCM_SHA256<br>TLS_RSA_WITH_AES_256_CBC_SHA256<br>TLS_RSA_WITH_AES_128_CBC_SHA256<br>TLS_RSA_WITH_AES_256_CBC_SHA<br>TLS_RSA_WITH_AES_128_CBC_SHA<br> |
 
-## <a name="custom-ssl-policy"></a>Niestandardowe zasady protokołu SSL
+## <a name="custom-tls-policy"></a>Niestandardowe zasady TLS
 
-Jeśli konieczne jest skonfigurowanie wstępnie zdefiniowanych zasad SSL dla wymagań, należy zdefiniować własne niestandardowe zasady protokołu SSL. Przy użyciu niestandardowych zasad protokołu SSL masz pełną kontrolę nad minimalną wersją protokołu SSL do obsługi, a także obsługiwanymi mechanizmami szyfrowania i ich kolejności priorytetów.
+Jeśli wstępnie zdefiniowane zasady TLS muszą być skonfigurowane dla twoich wymagań, należy zdefiniować własne niestandardowe zasady TLS. Dzięki niestandardowej polityce TLS masz pełną kontrolę nad minimalną wersją protokołu TLS do obsługi, a także obsługiwanymi mechanizmami szyfrowania i ich kolejnością priorytetów.
  
-### <a name="ssl-protocol-versions"></a>Wersje protokołu SSL
+### <a name="tlsssl-protocol-versions"></a>Wersje protokołów TLS/SSL
 
-* Protokoły SSL 2,0 i 3,0 są domyślnie wyłączone dla wszystkich bram aplikacji. Te wersje protokołu nie są konfigurowalne.
-* Niestandardowe zasady protokołu SSL umożliwiają wybranie jednego z trzech następujących protokołów jako minimalnej wersji protokołu SSL dla bramy: TLSv1_0, TLSv1_1 i TLSv1_2.
-* Jeśli żadna zasada SSL nie zostanie zdefiniowana, wszystkie trzy protokoły (TLSv1_0, TLSv1_1 i TLSv1_2) będą włączone.
+* SSL 2.0 i 3.0 są domyślnie wyłączone dla wszystkich bram aplikacji. Te wersje protokołu nie są konfigurowalne.
+* Niestandardowe zasady TLS umożliwiają wybranie jednego z następujących trzech protokołów jako minimalnej wersji protokołu TLS dla bramy: TLSv1_0, TLSv1_1 i TLSv1_2.
+* Jeśli nie zdefiniowano żadnych zasad TLS, wszystkie trzy protokoły (TLSv1_0, TLSv1_1 i TLSv1_2) są włączone.
 
-### <a name="cipher-suites"></a>Mechanizmy szyfrowania
+### <a name="cipher-suites"></a>Zestawy szyfrowania
 
-Application Gateway obsługuje następujące mechanizmy szyfrowania, z których można wybrać zasady niestandardowe. Porządkowanie mechanizmów szyfrowania określa kolejność priorytetów podczas negocjowania protokołu SSL.
+Brama aplikacji obsługuje następujące mechanizmy szyfrowania, z których można wybrać zasady niestandardowe. Kolejność mechanizmów szyfrowania określa kolejność priorytetów podczas negocjacji TLS.
 
 
 - TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
@@ -96,10 +96,10 @@ Application Gateway obsługuje następujące mechanizmy szyfrowania, z których 
 - TLS_DHE_DSS_WITH_3DES_EDE_CBC_SHA
 
 > [!NOTE]
-> Mechanizmy szyfrowania SSL używane na potrzeby połączenia są również oparte na typie używanego certyfikatu. W przypadku połączeń między klientem a bramą aplikacji używane mechanizmy szyfrowania są oparte na typie certyfikatów serwera w odbiorniku bramy aplikacji. W usłudze Application Gateway do połączeń puli zaplecza używane mechanizmy szyfrowania są oparte na typie certyfikatów serwera na serwerach puli zaplecza.
+> Mechanizmy szyfrowania TLS używane dla połączenia są również oparte na typie używanego certyfikatu. W przypadku połączeń bramy klient-aplikacja używane mechanizmy szyfrowania są oparte na typie certyfikatów serwera w detektorze bramy aplikacji. W bramie aplikacji do połączeń puli wewnętrznej bazy danych używane mechanizmy szyfrowania są oparte na typie certyfikatów serwera na serwerach puli wewnętrznej bazy danych.
 
 ## <a name="known-issue"></a>Znany problem
-Application Gateway v2 nie obsługuje obecnie następujących szyfrów:
+Brama aplikacji w wersji 2 nie obsługuje obecnie następujących szyfrów:
 - DHE-RSA-AES128-GCM-SHA256
 - DHE-RSA-AES128-SHA
 - DHE-RSA-AES256-GCM-SHA384
@@ -111,4 +111,4 @@ Application Gateway v2 nie obsługuje obecnie następujących szyfrów:
 
 ## <a name="next-steps"></a>Następne kroki
 
-Aby dowiedzieć się, jak skonfigurować zasady protokołu SSL, zobacz [Konfigurowanie zasad SSL w bramie aplikacji](application-gateway-configure-ssl-policy-powershell.md).
+Aby nauczyć się konfigurować zasady TLS, zobacz [Konfigurowanie wersji zasad TLS i pakietów szyfrowania w bramie aplikacji](application-gateway-configure-ssl-policy-powershell.md).

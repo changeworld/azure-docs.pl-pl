@@ -1,151 +1,149 @@
 ---
-title: Konfigurowanie urządzenia Azure Migrate dla funkcji Hyper-V
-description: Dowiedz się, jak skonfigurować urządzenie Azure Migrate do oceniania i migrowania maszyn wirtualnych funkcji Hyper-V.
+title: Konfigurowanie urządzenia migracji platformy Azure dla funkcji Hyper-V
+description: Dowiedz się, jak skonfigurować urządzenie migracji platformy Azure do oceny i migracji maszyn wirtualnych funkcji Hyper-V.
 ms.topic: article
-ms.date: 11/19/2019
-ms.openlocfilehash: 8199525a118ffca2cfc03734283eb26facba8483
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.date: 03/23/2020
+ms.openlocfilehash: 80db2c1d4f5482604ca1507174b127c150f76044
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77598344"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80336815"
 ---
 # <a name="set-up-an-appliance-for-hyper-v-vms"></a>Konfigurowanie urządzenia dla maszyn wirtualnych funkcji Hyper-V
 
-W tym artykule opisano sposób konfigurowania urządzenia Azure Migrate, jeśli oceniasz maszyny wirtualne funkcji Hyper-V za pomocą narzędzia do oceny Azure Migrate Server, lub migrujesz maszyny wirtualne VMware do platformy Azure za pomocą narzędzia migracji Azure Migrate Server.
+W tym artykule opisano sposób konfigurowania urządzenia migracji platformy Azure do oceny maszyn wirtualnych funkcji Hyper-V za pomocą narzędzia [Azure Migrate:Server Assessment.](migrate-services-overview.md#azure-migrate-server-assessment-tool)
 
-Urządzenie maszyny wirtualnej funkcji Hyper-V jest lekkim urządzeniem używanym przez Azure Migrate oceny/migracji serwera, aby wykonać następujące czynności:
+Urządzenie migracji platformy Azure to [lekkie](migrate-appliance.md) urządzenie używane przez usługę Azure Migrate:Server Assessment/Migration do odnajdywania lokalnych maszyn wirtualnych z programem Hyper V i wysyłania metadanych/danych dotyczących wydajności maszyn wirtualnych na platformę Azure.
 
-- Odnajdywanie lokalnych maszyn wirtualnych funkcji Hyper-V.
-- Wysyłanie metadanych i danych wydajności dla odnalezionych maszyn wirtualnych w celu Azure Migrate oceny/migracji serwera.
-
-[Dowiedz się więcej](migrate-appliance.md) o urządzeniu Azure Migrate.
+Urządzenie migracji platformy Azure do oceny maszyn wirtualnych funkcji Hyper-V można skonfigurować przy użyciu pobranego szablonu dysku VHD lub skryptu instalacyjnego programu PowerShell. W tym artykule opisano sposób konfigurowania urządzenia przy użyciu szablonu VHD. Jeśli chcesz skonfigurować urządzenie za pomocą skryptu, postępuj zgodnie z instrukcjami w [tym artykule](deploy-appliance-script.md).
 
 
-## <a name="appliance-deployment-steps"></a>Kroki wdrażania urządzenia
+## <a name="appliance-deployment-vhd"></a>Wdrażanie urządzeń (VHD)
 
-Aby skonfigurować urządzenie:
-- Pobierz skompresowany wirtualny dysk twardy funkcji Hyper-V z Azure Portal.
-- Utwórz urządzenie i sprawdź, czy może nawiązać połączenie z oceną serwera Azure Migrate.
-- Skonfiguruj urządzenie po raz pierwszy i zarejestruj je w projekcie Azure Migrate.
+Aby skonfigurować urządzenie przy użyciu szablonu VHD:
+
+- Pobierz skompresowany dysk VHD funkcji Hyper-V z witryny Azure portal.
+- Utwórz urządzenie i sprawdź, czy można połączyć się z oceną serwera migracji platformy Azure.
+- Skonfiguruj urządzenie po raz pierwszy i zarejestruj go w projekcie migracji platformy Azure.
 
 ## <a name="download-the-vhd"></a>Pobierz dysk VHD
 
-Pobierz szablon skompresowanego dysku VHD dla urządzenia.
+Pobierz spakowany szablon VHD dla urządzenia.
 
-1. W obszarze **cele migracji** > **serwery** > **Azure Migrate: Ocena serwera**, kliknij przycisk **odkryj**.
-2. W obszarze **odnajdywanie maszyn** > **są zwirtualizowane maszyny?** kliknij przycisk **tak, z funkcją Hyper-V**.
-3. Kliknij pozycję **Pobierz** , aby pobrać plik VHD.
+1. W **obszarze** > Cele migracji**Serwery** > **usługi Azure Migrate: Ocena serwera**kliknij przycisk **Odkryj**.
+2. W **discover maszyny** > **Czy twoje maszyny są zwirtualizowane?**, kliknij **przycisk Tak, z Hyper-V**.
+3. Kliknij **przycisk Pobierz,** aby pobrać plik VHD.
 
-    ![Pobierz maszynę wirtualną](./media/how-to-set-up-appliance-hyper-v/download-appliance-hyperv.png)
+    ![Pobieranie maszyny wirtualnej](./media/how-to-set-up-appliance-hyper-v/download-appliance-hyperv.png)
 
 
-### <a name="verify-security"></a>Weryfikuj zabezpieczenia
+### <a name="verify-security"></a>Weryfikowanie zabezpieczeń
 
-Przed wdrożeniem należy sprawdzić, czy spakowany plik jest bezpieczny.
+Przed wdrożeniem pliku jest bezpieczny, zanim go wdrożysz.
 
 1. Na maszynie, na którą pobrano plik, otwórz okno wiersza polecenia administratora.
-2. Uruchom następujące polecenie, aby wygenerować skrót dla wirtualnego dysku twardego
+2. Uruchom następujące polecenie, aby wygenerować skrót dla dysku VHD
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
     - Przykład użycia: ```C:\>CertUtil -HashFile C:\AzureMigrate\AzureMigrate.vhd SHA256```
-3.  W przypadku 2.19.11.12 w wersji urządzenia wygenerowany skrót powinien być zgodny z tymi [ustawieniami](https://docs.microsoft.com/azure/migrate/tutorial-assess-hyper-v#verify-security).
+3.  W przypadku urządzenia w wersji 2.19.11.12 wygenerowany skrót powinien być zgodny z tymi [ustawieniami.](https://docs.microsoft.com/azure/migrate/tutorial-assess-hyper-v#verify-security)
 
 
 
 
 ## <a name="create-the-appliance-vm"></a>Tworzenie maszyny wirtualnej urządzenia
 
-Zaimportuj pobrany plik i Utwórz maszynę wirtualną.
+Zaimportuj pobrany plik i utwórz maszynę wirtualną.
 
-1. Wyodrębnij plik skompresowanego dysku VHD do folderu na hoście funkcji Hyper-V, który będzie obsługiwał maszynę wirtualną urządzenia. Trzy foldery są wyodrębniane.
-2. Otwórz Menedżera funkcji Hyper-V. W obszarze **Akcje**kliknij pozycję **Importuj maszynę wirtualną**.
+1. Wyodrębnij spakowany plik VHD do folderu na hoście funkcji Hyper-V, który będzie obsługiwał maszynę wirtualną urządzenia. Wyodrębnione są trzy foldery.
+2. Otwórz Menedżera funkcji Hyper-V. W **akcji**kliknij pozycję **Importuj maszynę wirtualną**.
 
-    ![Wdrażanie wirtualnego dysku twardego](./media/how-to-set-up-appliance-hyper-v/deploy-vhd.png)
+    ![Wdrażanie dysku VHD](./media/how-to-set-up-appliance-hyper-v/deploy-vhd.png)
 
-2. Po **rozpoczęciu pracy**Kreatora importu maszyny wirtualnej > kliknij przycisk **dalej**.
-3. W obszarze **lokalizowanie folderu**określ folder zawierający wyodrębniony wirtualny dysk twardy. Następnie kliknij przycisk **Next** (Dalej).
-1. W obszarze **Wybierz maszynę wirtualną**kliknij przycisk **dalej**.
-2. W obszarze **Wybierz typ importu**kliknij pozycję **Kopiuj maszynę wirtualną (Utwórz nowy unikatowy identyfikator)** . Następnie kliknij przycisk **Next** (Dalej).
-3. W obszarze **Wybierz lokalizację docelową**pozostaw ustawienie domyślne. Kliknij przycisk **Dalej**.
-4. W obszarze **foldery magazynu**pozostaw ustawienie domyślne. Kliknij przycisk **Dalej**.
-5. W obszarze **Wybierz sieć**Określ przełącznik wirtualny, który będzie używany przez maszynę wirtualną. Przełącznik wymaga połączenia z Internetem, aby wysyłać dane do platformy Azure.
-6. W obszarze **Podsumowanie**przejrzyj ustawienia. Następnie kliknij przycisk **Zakończ**.
-7. W Menedżerze funkcji Hyper-V > **Virtual Machines**Uruchom maszynę wirtualną.
+2. W Kreatorze importu maszyny wirtualnej > **przed rozpoczęciem**kliknij przycisk **Dalej**.
+3. W **obszarze Znajdź folder**określ folder zawierający wyodrębniony dysk VHD. Następnie kliknij przycisk **Dalej**.
+1. W **obszarze Wybierz maszynę wirtualną**kliknij przycisk **Dalej**.
+2. W **2014 r. kliknij**pozycję **Kopiuj maszynę wirtualną (utwórz nowy unikatowy identyfikator).** Następnie kliknij przycisk **Dalej**.
+3. W **obszarze Wybierz miejsce docelowe**pozostaw ustawienie domyślne. Kliknij przycisk **alej**.
+4. W **folderach magazynu**pozostaw ustawienie domyślne. Kliknij przycisk **alej**.
+5. W **obszarze Wybierz sieć**określ przełącznik wirtualny, którego będzie używać maszyna wirtualna. Przełącznik wymaga łączności z Internetem, aby wysłać dane na platformę Azure.
+6. W **podsumowaniu**przejrzyj ustawienia. Następnie kliknij przycisk **Zakończ**.
+7. W Menedżerze funkcji Hyper-V > **maszyn wirtualnych**uruchom maszynę wirtualną.
 
 
 ### <a name="verify-appliance-access-to-azure"></a>Weryfikowanie dostępu urządzenia do platformy Azure
 
-Upewnij się, że maszyna wirtualna urządzenia może połączyć się z [adresami URL platformy Azure](migrate-appliance.md#url-access).
+Upewnij się, że maszyna wirtualna urządzenia może łączyć się z [adresami URL platformy Azure](migrate-appliance.md#url-access).
 
 ## <a name="configure-the-appliance"></a>Konfigurowanie urządzenia
 
-Skonfiguruj urządzenie po raz pierwszy.
+Skonfiguruj urządzenie po raz pierwszy. Jeśli urządzenie zostanie wdrożone przy użyciu skryptu zamiast dysku wirtualnego, pierwsze dwa kroki w procedurze nie mają zastosowania.
 
-1. W Menedżerze funkcji Hyper-V > **Virtual Machines**kliknij prawym przyciskiem myszy maszynę wirtualną > **Połącz**.
-2. Podaj język, strefę czasową i hasło dla urządzenia.
-3. Otwórz przeglądarkę na dowolnym komputerze, który może nawiązać połączenie z maszyną wirtualną, a następnie otwórz adres URL aplikacji sieci Web urządzenia: **https://*Nazwa urządzenia lub adres IP*: 44368**.
+1. W programie Hyper-V Manager > **maszyn wirtualnych**kliknij prawym przyciskiem myszy maszynę wirtualną > **Connect**.
+2. Podaj język, strefę czasową i hasło urządzenia.
+3. Otwórz przeglądarkę na dowolnym komputerze, który może połączyć się z maszyną wirtualną, i otwórz adres URL aplikacji internetowej urządzenia: **https:// nazwę urządzenia lub adres*IP:* 44368**.
 
-   Możesz też otworzyć aplikację na pulpicie urządzenia, klikając skrót do aplikacji.
-1. W aplikacji internetowej > **skonfigurować wymagania wstępne**, wykonaj następujące czynności:
-    - **Licencja**: zaakceptuj postanowienia licencyjne i przeczytaj informacje o innych firmach.
-    - **Łączność**: aplikacja sprawdza, czy maszyna wirtualna ma dostęp do Internetu. Jeśli maszyna wirtualna używa serwera proxy:
-        - Kliknij pozycję **Ustawienia serwera proxy**i określ adres serwera proxy i port nasłuchujący w formularzu http://ProxyIPAddress lub http://ProxyFQDN.
+   Alternatywnie możesz otworzyć aplikację z pulpitu urządzenia, klikając skrót do aplikacji.
+1. W aplikacji sieci web > **Konfigurowanie wymagań wstępnych**wykonaj następujące czynności:
+    - **Licencja**: Zaakceptuj postanowienia licencyjne i przeczytaj informacje innych firm.
+    - **Łączność:** Aplikacja sprawdza, czy maszyna wirtualna ma dostęp do Internetu. Jeśli maszyna wirtualna używa serwera proxy:
+        - Kliknij pozycję **Ustawienia serwera proxy**i określ adres http://ProxyIPAddress http://ProxyFQDNserwera proxy i port nasłuchiwania w formularzu lub .
         - Jeśli serwer proxy wymaga uwierzytelnienia, wprowadź poświadczenia.
         - Obsługiwane są tylko serwery proxy HTTP.
-    - **Synchronizacja czasu**: godzina została zweryfikowana. Czas na urządzeniu powinien być zsynchronizowany z czasem Internetu, aby funkcja odnajdywania maszyn wirtualnych działała prawidłowo.
-    - **Instalowanie aktualizacji**: ocena serwera Azure Migrate sprawdza, czy na urządzeniu zainstalowano najnowsze aktualizacje.
+    - **Synchronizacja czasu:** czas jest weryfikowany. Czas na urządzeniu powinien być zsynchronizowany z czasem internetowym, aby odnajdowanie maszyn wirtualnych działało poprawnie.
+    - **Zainstaluj aktualizacje:** Ocena programu Azure Migrate Server sprawdza, czy urządzenie ma zainstalowane najnowsze aktualizacje.
 
-### <a name="register-the-appliance-with-azure-migrate"></a>Zarejestruj urządzenie w Azure Migrate
+### <a name="register-the-appliance-with-azure-migrate"></a>Zarejestruj urządzenie za pomocą usługi Azure Migrate
 
-1. Kliknij przycisk **Zaloguj**. Jeśli ta wartość nie jest wyświetlana, upewnij się, że w przeglądarce wyłączono blokowanie wyskakujących okienek.
-2. Na nowej karcie Zaloguj się przy użyciu poświadczeń platformy Azure.
-    - Zaloguj się przy użyciu nazwy użytkownika i hasła.
-    - Logowanie przy użyciu numeru PIN nie jest obsługiwane.
-3. Po pomyślnym zalogowaniu Wróć do aplikacji sieci Web.
-4. Wybierz subskrypcję, w której został utworzony projekt Azure Migrate. Następnie wybierz projekt.
+1. Kliknij **pozycję Zaloguj**się . Jeśli nie jest wyświetlany, upewnij się, że wyłączono blokowanie wyskakujących wyskakujących w przeglądarce.
+2. Na nowej karcie zaloguj się przy użyciu poświadczeń platformy Azure.
+    - Zaloguj się przy użyciu swojej nazwy użytkownika i hasła.
+    - Logowanie za pomocą numeru PIN nie jest obsługiwane.
+3. Po pomyślnym zalogowaniu wróć do aplikacji sieci web.
+4. Wybierz subskrypcję, w której został utworzony projekt migracji platformy Azure. Następnie wybierz projekt.
 5. Określ nazwę urządzenia. Nazwa powinna być alfanumeryczna z 14 znakami lub mniej.
-6. Kliknij pozycję **zarejestruj**.
+6. Kliknij **pozycję Zarejestruj**.
 
 
-### <a name="delegate-credentials-for-smb-vhds"></a>Delegowanie poświadczeń dla wirtualnych dysków twardych SMB
+### <a name="delegate-credentials-for-smb-vhds"></a>Delegowanie poświadczeń dla identyfikatorów VHD SMB
 
-Jeśli używasz dysków VHD w systemie technologii, musisz włączyć delegowanie poświadczeń z urządzenia do hostów funkcji Hyper-V. W tym celu z urządzenia:
+Jeśli używasz wirtualnych identyfikatorów na małych i średnich przedsiębiorstwach, należy włączyć delegowanie poświadczeń z urządzenia do hostów funkcji Hyper-V. Aby to zrobić z urządzenia:
 
-1. Na maszynie wirtualnej urządzenia Uruchom to polecenie. HyperVHost1/HyperVHost2 są przykładowymi nazwami hostów.
+1. Na maszynie Wirtualnej urządzenia uruchom to polecenie. HyperVHost1/HyperVHost2 są przykładowymi nazwami hostów.
 
     ```
     Enable-WSManCredSSP -Role Client -DelegateComputer HyperVHost1.contoso.com HyperVHost2.contoso.com -Force
     ```
 
-2. Alternatywnie należy to zrobić w Edytor lokalnych zasad grupy na urządzeniu:
-    - W **zasadach komputera lokalnego** > **Konfiguracja komputera**, kliknij pozycję **Szablony administracyjne** > **system** > **Delegowanie poświadczeń**.
-    - Kliknij dwukrotnie pozycję **Zezwól na delegowanie świeżych poświadczeń**i wybierz pozycję **włączone**.
-    - W obszarze **Opcje**kliknij pozycję **Pokaż**, a następnie na liście Dodaj każdego hosta funkcji Hyper-V, który ma zostać odnajdowany, przy użyciu **usługi WSMAN/** jako prefiksu.
-    - W obszarze **Delegowanie poświadczeń**kliknij dwukrotnie pozycję **Zezwól na delegowanie świeżych poświadczeń z uwierzytelnianiem serwera tylko NTLM**. Ponownie Dodaj każdy host funkcji Hyper-V, który ma zostać odnalezienie do listy, przy użyciu **usługi WSMAN/** jako prefiksu.
+2. Alternatywnie, należy to zrobić w edytorze lokalnych zasad grupy na urządzeniu:
+    - W**okolicy konfiguracji komputera** **lokalnego** > kliknij pozycję**Delegowanie poświadczeń****systemu** >  **szablonów administracyjnych** > .
+    - Kliknij dwukrotnie pozycję **Zezwalaj na delegowanie nowych poświadczeń**i wybierz pozycję **Włączone**.
+    - W **obszarze Opcje**kliknij pozycję **Pokaż**i dodaj do listy każdy host funkcji Hyper-V, który chcesz odkryć, z **wsmanem/** jako prefiksem.
+    - W **obszarze Delegowanie poświadczeń**kliknij dwukrotnie pozycję **Zezwalaj na delegowanie nowych poświadczeń za pomocą uwierzytelniania serwera tylko dla usługi NTLM**. Ponownie dodaj do listy każdy host funkcji Hyper-V, który chcesz odkryć, z **wsman/** jako prefiksem.
 
-## <a name="start-continuous-discovery"></a>Uruchom odnajdywanie ciągłe
+## <a name="start-continuous-discovery"></a>Rozpocznij ciągłe odnajdowanie
 
-Połącz się z urządzeniem z hostami lub klastrami funkcji Hyper-V, a następnie Uruchom odnajdywanie maszyn wirtualnych.
+Połącz się z urządzenia do hostów lub klastrów funkcji Hyper-V i rozpocznij odnajdowanie maszyn wirtualnych.
 
-1. W polu **Nazwa użytkownika** i **hasło**określ poświadczenia konta, które będą używane przez urządzenie do odnajdywania maszyn wirtualnych. Określ przyjazną nazwę dla poświadczeń, a następnie kliknij pozycję **Zapisz szczegóły**.
-2. Kliknij pozycję **Dodaj hosta**i określ szczegóły hosta/klastra funkcji Hyper-V.
-3. Kliknij pozycję **Validate** (Waliduj). Po walidacji wyświetlana jest liczba maszyn wirtualnych, które mogą zostać odnalezione na każdym hoście/klastrze.
-    - Jeśli walidacja nie powiedzie się dla hosta, przejrzyj błąd, umieszczając kursor nad ikoną w kolumnie **stan** . Usuń problemy i ponownie sprawdź poprawność.
-    - Aby usunąć hosty lub klastry, wybierz pozycję > **Usuń**.
+1. W **obszarze Nazwa użytkownika** i **Hasło**określ poświadczenia konta, których urządzenie będzie używać do odnajdywać maszyny wirtualne. Określ przyjazną nazwę poświadczeń i kliknij przycisk **Zapisz szczegóły**.
+2. Kliknij **pozycję Dodaj hosta**i określ szczegóły hosta/klastra funkcji Hyper-V.
+3. Kliknij pozycję **Validate** (Waliduj). Po weryfikacji wyświetlana jest liczba maszyn wirtualnych, które można odnajdować na każdym hoście/klastrze.
+    - Jeśli sprawdzanie poprawności nie powiedzie się dla hosta, przejrzyj błąd, najeżdżając kursorem na ikonę w kolumnie **Stan.** Rozwiązywanie problemów i sprawdzanie poprawności ponownie.
+    - Aby usunąć hosty lub klastry, zaznacz > **Usuń**.
     - Nie można usunąć określonego hosta z klastra. Można usunąć tylko cały klaster.
-    - Można dodać klaster, nawet jeśli występują problemy z konkretnymi hostami w klastrze.
-4. Po sprawdzeniu poprawności kliknij przycisk **Zapisz i Rozpocznij odnajdywanie** , aby rozpocząć proces odnajdywania.
+    - Można dodać klaster, nawet jeśli występują problemy z określonymi hostami w klastrze.
+4. Po weryfikacji kliknij przycisk **Zapisz i rozpocznij odnajdowanie,** aby rozpocząć proces odnajdywania.
 
-Spowoduje to uruchomienie odnajdywania. Metadane wykrytych maszyn wirtualnych mogą pojawić się w Azure Portal około 15 minut.
+To rozpoczyna odnajdowanie. Trwa około 15 minut dla metadanych odnalezionych maszyn wirtualnych do wyświetlenia w witrynie Azure portal.
 
 ## <a name="verify-vms-in-the-portal"></a>Weryfikowanie maszyn wirtualnych w portalu
 
-Po zakończeniu odnajdywania możesz sprawdzić, czy maszyny wirtualne są widoczne w portalu.
+Po zakończeniu odnajdywania można sprawdzić, czy maszyny wirtualne są wyświetlane w portalu.
 
-1. Otwórz pulpit nawigacyjny Azure Migrate.
-2. W **Azure Migrate serwery** > **Azure Migrate: Strona Ocena serwera** kliknij ikonę, która wyświetla liczbę **odnalezionych serwerów**.
+1. Otwórz pulpit nawigacyjny migracji platformy Azure.
+2. W **obszarze Migracja platformy Azure — serwery, strona** > **Migracja platformy Azure: Ocena serwera,** kliknij ikonę, która wyświetla liczbę **odnalezionych serwerów**.
 
 
 ## <a name="next-steps"></a>Następne kroki
 
-Wypróbuj [ocenę funkcji Hyper-V](tutorial-assess-hyper-v.md) dzięki ocenie serwera Azure Migrate.
+Wypróbuj [ocenę funkcji Hyper-V](tutorial-assess-hyper-v.md) za pomocą oceny serwera migracji usługi Azure.

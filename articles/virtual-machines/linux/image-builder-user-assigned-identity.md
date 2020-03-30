@@ -1,6 +1,6 @@
 ---
 title: Tworzenie obrazu maszyny wirtualnej i używanie tożsamości zarządzanej przypisanej przez użytkownika do uzyskiwania dostępu do plików w usłudze Azure Storage (wersja zapoznawcza)
-description: Utwórz obraz maszyny wirtualnej za pomocą narzędzia Azure Image Builder, który może uzyskiwać dostęp do plików przechowywanych w usłudze Azure Storage przy użyciu tożsamości zarządzanej przypisanej przez użytkownika.
+description: Utwórz obraz maszyny wirtualnej przy użyciu usługi Azure Image Builder, która może uzyskiwać dostęp do plików przechowywanych w usłudze Azure Storage przy użyciu tożsamości zarządzanej przypisanej przez użytkownika.
 author: cynthn
 ms.author: cynthn
 ms.date: 05/02/2019
@@ -8,28 +8,28 @@ ms.topic: article
 ms.service: virtual-machines-linux
 ms.subservice: imaging
 manager: gwallace
-ms.openlocfilehash: f3990037d75f9f77eaedc7ec4049f14814216d9c
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.openlocfilehash: 27f4073efc8647d331faa14afbda0e15f92b8d50
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78944976"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80060746"
 ---
-# <a name="create-an-image-and-use-a-user-assigned-managed-identity-to-access-files-in-azure-storage"></a>Tworzenie obrazu i używanie tożsamości zarządzanej przypisanej przez użytkownika w celu uzyskiwania dostępu do plików w usłudze Azure Storage 
+# <a name="create-an-image-and-use-a-user-assigned-managed-identity-to-access-files-in-azure-storage"></a>Tworzenie obrazu i używanie tożsamości zarządzanej przypisanej przez użytkownika do uzyskiwania dostępu do plików w usłudze Azure Storage 
 
-Usługa Azure Image Builder obsługuje używanie skryptów lub kopiowanie plików z wielu lokalizacji, takich jak GitHub i Azure Storage itp. Aby można było korzystać z nich, muszą one mieć dostęp zewnętrznie do programu Azure Image Builder, ale obiekty blob usługi Azure Storage mogą być chronione przy użyciu tokenów SAS.
+Usługa Azure Image Builder obsługuje używanie skryptów lub kopiowanie plików z wielu lokalizacji, takich jak GitHub i azure storage itp. Aby z nich korzystać, muszą być dostępne zewnętrznie dla usługi Azure Image Builder, ale można chronić obiekty BLOB usługi Azure Storage przy użyciu tokenów sygnatury dostępu Współdzielonego.
 
-W tym artykule pokazano, jak utworzyć dostosowany obraz przy użyciu konstruktora obrazów maszyn wirtualnych platformy Azure, w którym usługa będzie korzystać z [tożsamości zarządzanej przypisanej przez użytkownika](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) w celu uzyskiwania dostępu do plików w usłudze Azure Storage w celu dostosowania obrazu, bez konieczności udostępnienia publicznie plików lub skonfigurowania tokenów SAS.
+W tym artykule pokazano, jak utworzyć niestandardowy obraz przy użyciu konstruktora obrazów maszyny Wirtualnej platformy Azure, gdzie usługa będzie używać [tożsamości zarządzanej przypisanej](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) przez użytkownika do uzyskiwania dostępu do plików w magazynie platformy Azure w celu dostosowania obrazu, bez konieczności upubliczniania plików lub konfigurowania tokenów sygnatury dostępu współdzielonego.
 
-W poniższym przykładzie utworzysz dwie grupy zasobów, jedna zostanie użyta w przypadku obrazu niestandardowego, a druga będzie hostować konto usługi Azure Storage, które zawiera plik skryptu. Symuluje to realne scenariusze, w których mogą występować artefakty kompilacji lub pliki obrazów na różnych kontach magazynu poza konstruktorem obrazów. Utworzysz tożsamość przypisaną przez użytkownika, a następnie przyznasz te uprawnienia do odczytu pliku skryptu, ale nie ustawisz publicznego dostępu do tego pliku. Następnie użyjesz konfiguratora powłoki do pobrania i uruchomienia tego skryptu z konta magazynu.
+W poniższym przykładzie utworzysz dwie grupy zasobów, jedna będzie używana dla obrazu niestandardowego, a druga będzie hostować konto usługi Azure Storage, które zawiera plik skryptu. Symuluje to rzeczywisty scenariusz, w którym możesz mieć artefakty kompilacji lub pliki obrazów na różnych kontach magazynu, poza Konstruktorem obrazów. Utworzysz tożsamość przypisaną przez użytkownika, a następnie przyznasz uprawnienia do odczytu pliku skryptu, ale nie ustawisz żadnego publicznego dostępu do tego pliku. Następnie użyjesz konfiguratora powłoki, aby pobrać i uruchomić ten skrypt z konta magazynu.
 
 
 > [!IMPORTANT]
-> Usługa Azure Image Builder jest obecnie dostępna w publicznej wersji zapoznawczej.
+> Usługa Azure Image Builder jest obecnie w publicznej wersji zapoznawczej.
 > Ta wersja zapoznawcza nie jest objęta umową dotyczącą poziomu usług i nie zalecamy korzystania z niej w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą być nieobsługiwane lub ograniczone. Aby uzyskać więcej informacji, zobacz [Uzupełniające warunki korzystania z wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-## <a name="register-the-features"></a>Rejestrowanie funkcji
-Aby korzystać z usługi Azure Image Builder w wersji zapoznawczej, należy zarejestrować nową funkcję.
+## <a name="register-the-features"></a>Zarejestruj funkcje
+Aby korzystać z usługi Azure Image Builder podczas podglądu, należy zarejestrować nową funkcję.
 
 ```azurecli-interactive
 az feature register --namespace Microsoft.VirtualMachineImages --name VirtualMachineTemplatePreview
@@ -49,7 +49,7 @@ az provider show -n Microsoft.VirtualMachineImages | grep registrationState
 az provider show -n Microsoft.Storage | grep registrationState
 ```
 
-Jeśli nie powiedzie się, uruchom następujące polecenie:
+Jeśli nie mówią zarejestrowane, uruchom następujące czynności:
 
 ```azurecli-interactive
 az provider register -n Microsoft.VirtualMachineImages
@@ -58,12 +58,12 @@ az provider register -n Microsoft.Storage
 ```
 
 
-## <a name="create-a-resource-group"></a>Utwórz grupę zasobów
+## <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
 
-Będziemy wielokrotnie używać niektórych informacji, więc utworzymy pewne zmienne do przechowywania tych informacji.
+Będziemy wielokrotnie wykorzystywać niektóre informacje, więc utworzymy pewne zmienne do przechowywania tych informacji.
 
 
-```azurecli-interactive
+```console
 # Image resource group name 
 imageResourceGroup=aibmdimsi
 # storage resource group
@@ -76,15 +76,15 @@ imageName=aibCustLinuxImgMsi01
 runOutputName=u1804ManImgMsiro
 ```
 
-Utwórz zmienną dla identyfikatora subskrypcji. Można to zrobić przy użyciu `az account show | grep id`.
+Utwórz zmienną dla identyfikatora subskrypcji. Można to uzyskać `az account show | grep id`za pomocą programu .
 
-```azurecli-interactive
+```console
 subscriptionID=<Your subscription ID>
 ```
 
-Utwórz grupy zasobów dla obrazu i magazynu skryptów.
+Utwórz grupy zasobów zarówno dla obrazu, jak i magazynu skryptów.
 
-```azurecli-interactive
+```console
 # create resource group for image template
 az group create -n $imageResourceGroup -l $location
 # create resource group for the script storage
@@ -92,7 +92,7 @@ az group create -n $strResourceGroup -l $location
 ```
 
 
-Utwórz magazyn i skopiuj przykładowy skrypt do niego z usługi GitHub.
+Utwórz magazyn i skopiuj przykładowy skrypt do niego z gitHub.
 
 ```azurecli-interactive
 # script storage account
@@ -119,7 +119,7 @@ az storage blob copy start \
 
 
 
-Nadaj konstruktorowi obrazu uprawnienia do tworzenia zasobów w grupie zasobów obrazu. Wartość `--assignee` to identyfikator rejestracji aplikacji dla usługi Image Builder. 
+Nadaj konstruktorowi obrazów uprawnienia do tworzenia zasobów w grupie zasobów obrazów. Wartość `--assignee` jest identyfikatorem rejestracji aplikacji dla usługi Image Builder. 
 
 ```azurecli-interactive
 az role assignment create \
@@ -131,7 +131,7 @@ az role assignment create \
 
 ## <a name="create-user-assigned-managed-identity"></a>Tworzenie tożsamości zarządzanej przypisanej przez użytkownika
 
-Utwórz tożsamość i przypisz uprawnienia dla konta magazynu skryptów. Aby uzyskać więcej informacji, zobacz [tożsamość zarządzana przypisana przez użytkownika](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm#user-assigned-managed-identity).
+Utwórz tożsamość i przypisz uprawnienia do konta magazynu skryptów. Aby uzyskać więcej informacji, zobacz [Tożsamość zarządzana przypisana przez użytkownika](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm#user-assigned-managed-identity).
 
 ```azurecli-interactive
 # Create the user assigned identity 
@@ -150,9 +150,9 @@ imgBuilderId=/subscriptions/$subscriptionID/resourcegroups/$imageResourceGroup/p
 
 ## <a name="modify-the-example"></a>Modyfikowanie przykładu
 
-Pobierz przykładowy plik JSON i skonfiguruj go przy użyciu utworzonych zmiennych.
+Pobierz przykładowy plik .json i skonfiguruj go przy tak utworzonych zmiennych.
 
-```azurecli-interactive
+```console
 curl https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/7_Creating_Custom_Image_using_MSI_to_Access_Storage/helloImageTemplateMsi.json -o helloImageTemplateMsi.json
 sed -i -e "s/<subscriptionID>/$subscriptionID/g" helloImageTemplateMsi.json
 sed -i -e "s/<rgName>/$imageResourceGroup/g" helloImageTemplateMsi.json
@@ -176,7 +176,7 @@ az resource create \
     -n helloImageTemplateMsi01
 ```
 
-Uruchom kompilację obrazu.
+Rozpocznij kompilację obrazu.
 
 ```azurecli-interactive
 az resource invoke-action \
@@ -192,7 +192,7 @@ Poczekaj na zakończenie kompilacji. Może to potrwać około 15 minut.
 
 Utwórz maszynę wirtualną na podstawie obrazu. 
 
-```bash
+```azurecli
 az vm create \
   --resource-group $imageResourceGroup \
   --name aibImgVm00 \
@@ -202,15 +202,15 @@ az vm create \
   --generate-ssh-keys
 ```
 
-Po utworzeniu maszyny wirtualnej Rozpocznij sesję SSH z maszyną wirtualną.
+Po utworzeniu maszyny Wirtualnej uruchom sesję SSH z maszyną wirtualną.
 
-```azurecli-interactive
+```console
 ssh aibuser@<publicIp>
 ```
 
-Obraz został dostosowany wraz z komunikatem dnia zaraz po nawiązaniu połączenia SSH.
+Powinieneś zobaczyć obraz został dostosowany z Wiadomością dnia, gdy tylko połączenie SSH zostanie nawiązane!
 
-```console
+```output
 
 *******************************************************
 **            This VM was built from the:            **
@@ -221,7 +221,7 @@ Obraz został dostosowany wraz z komunikatem dnia zaraz po nawiązaniu połącze
 
 ## <a name="clean-up"></a>Czyszczenie
 
-Gdy skończysz, możesz usunąć te zasoby, jeśli nie są już potrzebne.
+Po zakończeniu można usunąć zasoby, jeśli nie są już potrzebne.
 
 ```azurecli-interactive
 az identity delete --ids $imgBuilderId
@@ -235,4 +235,4 @@ az group delete -n $strResourceGroup
 
 ## <a name="next-steps"></a>Następne kroki
 
-Jeśli masz problemy z pracą z konstruktorem obrazów platformy Azure, zobacz [Rozwiązywanie problemów](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md?toc=%2fazure%2fvirtual-machines%context%2ftoc.json).
+Jeśli masz jakiekolwiek problemy z pracą z usługą Azure Image Builder, zobacz [Rozwiązywanie problemów](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md?toc=%2fazure%2fvirtual-machines%context%2ftoc.json).

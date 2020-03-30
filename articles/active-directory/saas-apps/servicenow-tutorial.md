@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 01/31/2020
+ms.date: 03/25/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c18613233d6dec59c76db120ed7f089dfbb5fbac
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 8fe6c857e5b0c2f48f27c167c177dbf1f4651986
+ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77046717"
+ms.lasthandoff: 03/29/2020
+ms.locfileid: "80384113"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-servicenow"></a>Samouczek: Integracja rejestracji jednokrotnej usługi Azure Active Directory (Logowanie jednokrotne) z usługą ServiceNow
 
@@ -52,7 +52,7 @@ W tym samouczku można skonfigurować i przetestować samouszeńców usługi Azu
 
 * ServiceNow obsługuje [automatyczne inicjowanie obsługi administracyjnej użytkowników](servicenow-provisioning-tutorial.md).
 
-* Po skonfigurowaniu ServiceNow można wymusić kontrolę sesji, które chronią eksfiltracji i infiltracji poufnych danych organizacji w czasie rzeczywistym. Kontrola sesji rozciąga się od dostępu warunkowego. [Dowiedz się, jak wymusić kontrolę nad sesją za pomocą programu Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
+* Po skonfigurowaniu ServiceNow można wymusić formanty sesji, które chronią eksfiltracji i infiltracji poufnych danych organizacji w czasie rzeczywistym. Formanty sesji rozciągają się od dostępu warunkowego. [Dowiedz się, jak wymusić kontrolę nad sesją za pomocą programu Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
 
 * Aplikację ServiceNow Classic (Mobile) można skonfigurować za pomocą usługi Azure AD w celu włączenia usługi SSO. Obsługuje zarówno użytkowników Androida, jak i iOS. W tym samouczku można skonfigurować i przetestować samouszeńców usługi Azure AD w środowisku testowym.
 
@@ -93,11 +93,18 @@ Wykonaj następujące kroki, aby włączyć usługę Azure AD SSO w witrynie Azu
 
    ![Zrzut ekranu przedstawiający konfigurowanie logowania jednokrotnego ze stroną SAML z wyróżnioną ikoną pióra](common/edit-urls.png)
 
-4. W sekcji **Podstawowa konfiguracja SAML** wykonaj następujące czynności:
+1. W sekcji **Podstawowa konfiguracja SAML** wykonaj następujące czynności:
 
-    a. W **polu Zaloguj się na adres URL**wprowadź adres URL, który używa następującego wzorca:`https://<instance-name>.service-now.com/navpage.do`
+    a. W **polu Zaloguj się na adres URL**wprowadź adres URL, który używa następującego wzorca:`https://instance.service-now.com/login_with_sso.do?glide_sso_id=<sys_id of the sso configuration>`
 
     b. W **identyfikatorze (identyfikatorze jednostki)** wprowadź adres URL, który używa następującego wzorca:`https://<instance-name>.service-now.com`
+
+    d. W przypadku **adresu URL odpowiedzi**wprowadź jeden z następujących adresów URL:
+
+    |||
+    |-|-|
+    | `https://instancename.service-now.com/navpage.do` |
+    | `https://instancename.service-now.com/customer.do` | 
 
     > [!NOTE]
     > To nie są rzeczywiste wartości. Należy zaktualizować te wartości za pomocą rzeczywistego adresu URL logowania i identyfikatora, który jest wyjaśniony w dalszej części samouczka. Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
@@ -160,9 +167,16 @@ W tej sekcji włączysz B.Simon do korzystania z logowania jednokrotnego platfor
 
 4. W sekcji **Podstawowa konfiguracja SAML** wykonaj następujące czynności:
 
-    a. W polu **Wpisz adres URL**logowania wprowadź adres URL, który używa następującego wzorca:`https://<instance-name>.service-now.com/navpage.do`
+    a. W polu **Wpisz adres URL**logowania wprowadź adres URL, który używa następującego wzorca:`https://instance.service-now.com/login_with_sso.do?glide_sso_id=<sys_id of the sso configuration>`
 
     b. W polu **Identyfikator (identyfikator jednostki)** wprowadź adres URL, który używa następującego wzorca:`https://<instance-name>.service-now.com`
+
+    d. W przypadku **adresu URL odpowiedzi**wprowadź jeden z następujących adresów URL:
+
+    |||
+    |-|-|
+    | `https://instancename.service-now.com/navpage.do` |
+    | `https://instancename.service-now.com/customer.do` |
 
     > [!NOTE]
     > To nie są rzeczywiste wartości. Należy zaktualizować te wartości za pomocą rzeczywistego adresu URL logowania i identyfikatora, który jest wyjaśniony w dalszej części samouczka. Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
@@ -183,7 +197,7 @@ W tej sekcji włączysz B.Simon do korzystania z logowania jednokrotnego platfor
 
 1. Zaloguj się do swojej aplikacji ServiceNow jako administrator.
 
-2. Aktywuj wtyczkę **Integration - Multiple Provider, logowanie jednokrotne,** wykonując następujące kroki:
+1. Aktywuj wtyczkę **Integration - Multiple Provider, logowanie jednokrotne,** wykonując następujące kroki:
 
     a. W lewym okienku wyszukaj sekcję **Definicja systemu** w polu wyszukiwania, a następnie wybierz pozycję **Wtyczki**.
 
@@ -201,11 +215,11 @@ W tej sekcji włączysz B.Simon do korzystania z logowania jednokrotnego platfor
 
      ![Zrzut ekranu przedstawiający okno dialogowe Aktywowanie wtyczki z wyróżnioną wyróżnioną funkcją Aktywuj](./media/servicenow-tutorial/tutorial_activate1.png "Aktywuj wtyczkę")
 
-3. W lewym okienku wyszukaj sekcję **Samosojom samoso** dla wielu dostawców na pasku wyszukiwania, a następnie wybierz pozycję **Właściwości**.
+1. W lewym okienku wyszukaj sekcję **Samosojom samoso** dla wielu dostawców na pasku wyszukiwania, a następnie wybierz pozycję **Właściwości**.
 
     ![Zrzut ekranu przedstawiający sekcję SSO dla wielu dostawców z wyróżnionym łączem samosoi dla wielu dostawców i właściwości](./media/servicenow-tutorial/tutorial_servicenow_06.png "Konfigurowanie adresu URL aplikacji")
 
-4. W oknie dialogowym **Właściwości jednokrotne wielu dostawców** wykonaj następujące czynności:
+1. W oknie dialogowym **Właściwości jednokrotne wielu dostawców** wykonaj następujące czynności:
 
     ![Zrzut ekranu przedstawiający okno dialogowe Właściwości jednokrotnego wielu dostawców](./media/servicenow-tutorial/ic7694981.png "Konfigurowanie adresu URL aplikacji")
 
@@ -215,11 +229,11 @@ W tej sekcji włączysz B.Simon do korzystania z logowania jednokrotnego platfor
 
     * Dla **włącz rejestrowanie debugowania dla integracji logowania jednokrotnego wielu dostawców,** wybierz **tak**.
 
-    * W polu **w tabeli użytkownika, które...**, wprowadź **user_name**.
+    * W polu **w tabeli użytkownika, które...**, wprowadź **adres e-mail**.
   
     * Wybierz **pozycję Zapisz**.
 
-6. Usługę ServiceNow można skonfigurować automatycznie lub ręcznie. Aby skonfigurować usługę ServiceNow automatycznie, wykonaj następujące czynności:
+1. Usługę ServiceNow można skonfigurować automatycznie lub ręcznie. Aby skonfigurować usługę ServiceNow automatycznie, wykonaj następujące czynności:
 
     1. Wróć do strony logowania jednokrotnego **ServiceNow** w witrynie Azure portal.
 
@@ -274,11 +288,16 @@ W tej sekcji włączysz B.Simon do korzystania z logowania jednokrotnego platfor
 
              ![Zrzut ekranu przedstawiający stronę z wyróżnioną pozycją Test Connection](./media/servicenow-tutorial/tutorial_activate2.png "Aktywuj wtyczkę")
 
+             > [!NOTE]
+             > Jeśli połączenie testowe nie powiódł się i nie można aktywować tego połączenia, usługa ServiceNow oferuje przełącznik zastępowania. Musisz wprowadzić **Sys_properties. LISTA** w **nawigacji wyszukiwania** i otworzy nową stronę Właściwości systemu. W tym miejscu należy utworzyć nową właściwość o nazwie **glide.authenticate.multisso.test.mandatory** z **typem danych** jako **Prawda/Fałsz,** a następnie ustawić **wartość** jako **False**.
+
+             > ![Zrzut ekranu przedstawiający stronę Wyniki testów](./media/servicenow-tutorial/testconnection-fail.png "Konfigurowanie logowania jednokrotnego")
+        
           1. Gdy zostaniesz poproszony o podanie danych uwierzytelniających, wprowadź je. Zobaczysz następną stronę. Oczekiwany jest błąd **wyników testu logowania** logowania logowania. Zignoruj błąd i wybierz pozycję **Aktywuj**.
 
              ![Zrzut ekranu przedstawiający stronę Wyniki testów](./media/servicenow-tutorial/servicenowactivate.png "Konfigurowanie logowania jednokrotnego")
   
-6. Aby skonfigurować **usługę ServiceNow** ręcznie, wykonaj następujące czynności:
+1. Aby skonfigurować **usługę ServiceNow** ręcznie, wykonaj następujące czynności:
 
     1. Zaloguj się do swojej aplikacji ServiceNow jako administrator.
 
@@ -319,12 +338,17 @@ W tej sekcji włączysz B.Simon do korzystania z logowania jednokrotnego platfor
 
         * Upewnij się, że zasada `urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified` **NameID** jest ustawiona na wartość.
 
-        * Wybierz **pozycję Zaawansowane**. W **polu użytkownika**wprowadź adres **e-mail** lub **user_name**, w zależności od tego, które pole jest używane do jednoznacznej identyfikacji użytkowników we wdrożeniu ServiceNow.
+        * Wybierz **pozycję Zaawansowane**. W **polu użytkownika**wprowadź adres **e-mail**.
 
             > [!NOTE]
             > Można skonfigurować usługę Azure AD do emitowania identyfikatora użytkownika usługi Azure AD (nazwa główna użytkownika) lub adresu e-mail jako unikatowego identyfikatora w tokenie SAML. W tym celu przechodząc do **servicenow** > **atrybuty** > **logowania jednokrotnego** sekcji witryny Azure portal i mapowanie żądanego pola do **atrybutu nameidentifier.** Wartość przechowywana dla wybranego atrybutu w usłudze Azure AD (na przykład nazwa główna użytkownika) musi być zgodna z wartością przechowywaną w servicenow dla wprowadzonego pola (na przykład user_name).
 
         * Wybierz **opcję Testuj połączenie** w prawym górnym rogu strony.
+
+          > [!NOTE]
+          > Jeśli połączenie testowe nie powiódł się i nie można aktywować tego połączenia, usługa ServiceNow oferuje przełącznik zastępowania. Musisz wprowadzić **Sys_properties. LISTA** w **nawigacji wyszukiwania** i otworzy nową stronę Właściwości systemu. W tym miejscu należy utworzyć nową właściwość o nazwie **glide.authenticate.multisso.test.mandatory** z **typem danych** jako **Prawda/Fałsz,** a następnie ustawić **wartość** jako **False**.
+
+          > ![Zrzut ekranu przedstawiający stronę Wyniki testów](./media/servicenow-tutorial/testconnection-fail.png "Konfigurowanie logowania jednokrotnego")
 
         * Gdy zostaniesz poproszony o podanie danych uwierzytelniających, wprowadź je. Zobaczysz następną stronę. Oczekiwany jest błąd **wyników testu logowania** logowania logowania. Zignoruj błąd i wybierz pozycję **Aktywuj**.
 
@@ -420,7 +444,7 @@ Celem tej sekcji jest utworzenie użytkownika o nazwie B.Simon w ServiceNow. Ser
 
     d. Dla **Clock Skew**, wprowadź **60**.
 
-    e. W polu **Użytkownika**wprowadź **adres e-mail** lub **user_name**, w zależności od tego, które pole jest używane do jednoznacznej identyfikacji użytkowników we wdrożeniu ServiceNow.
+    e. W polu **Użytkownik**wprowadź adres **e-mail**.
 
     > [!NOTE]
     > Można skonfigurować usługę Azure AD do emitowania identyfikatora użytkownika usługi Azure AD (nazwa główna użytkownika) lub adresu e-mail jako unikatowego identyfikatora w tokenie SAML. W tym celu przechodząc do **servicenow** > **atrybuty** > **logowania jednokrotnego** sekcji witryny Azure portal i mapowanie żądanego pola do **atrybutu nameidentifier.** Wartość przechowywana dla wybranego atrybutu w usłudze Azure AD (na przykład nazwa główna użytkownika) musi być zgodna z wartością przechowywaną w servicenow dla wprowadzonego pola (na przykład user_name).
@@ -450,7 +474,7 @@ Po wybraniu kafelka ServiceNow w Panelu dostępu należy automatycznie zalogowa�
     *  Wprowadź **nazwę** B.simon@contoso.comużytkownika , jak .
 
     *  Wybierz **OPCJĘ UŻYJ LOGOWANIA ZEWNĘTRZNEGO**. Zostaniesz przekierowany do strony usługi Azure AD w celu zalogowania się.
-    
+
     *  Wprowadź poświadczenia. Jeśli istnieje uwierzytelnianie innych firm lub włączono jakąkolwiek inną funkcję zabezpieczeń, użytkownik musi odpowiednio odpowiedzieć. Zostanie wyświetlona **strona główna** aplikacji.
 
         ![Zrzut ekranu przedstawiający stronę główną aplikacji](./media/servicenow-tutorial/test02.png)
@@ -467,6 +491,6 @@ Po wybraniu kafelka ServiceNow w Panelu dostępu należy automatycznie zalogowa�
 
 - [Wypróbuj usługę ServiceNow z usługą Azure AD](https://aad.portal.azure.com)
 
-- [Co to jest kontrola sesji w usłudze Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Co to jest kontrola sesji w usłudze Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/protect-servicenow)
 
-- [Jak chronić ServiceNow dzięki zaawansowanej widoczności i kontrolom](https://docs.microsoft.com/cloud-app-security/protect-servicenow)
+- [Jak chronić ServiceNow dzięki zaawansowanej widoczności i kontrolom](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)

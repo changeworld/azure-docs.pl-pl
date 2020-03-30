@@ -1,6 +1,6 @@
 ---
-title: Schemat zdarzeń w usłudze Azure konfiguracji aplikacji usługi Azure siatki zdarzeń
-description: Opisuje właściwości, które są dostarczane dla zdarzeń konfiguracji aplikacji platformy Azure za pomocą usługi Azure Event Grid
+title: Schemat zdarzenia usługi Azure Event Grid konfiguracji aplikacji platformy Azure
+description: W tym artykule opisano właściwości, które są dostarczane dla zdarzeń konfiguracji aplikacji platformy Azure za pomocą usługi Azure Event Grid
 services: event-grid
 author: jimmyca
 ms.service: event-grid
@@ -8,30 +8,30 @@ ms.topic: reference
 ms.date: 05/30/2019
 ms.author: jimmyca
 ms.openlocfilehash: fe0274f723692eea3cfd25cc0e9e146b35dce2ae
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "66735784"
 ---
-# <a name="azure-event-grid-event-schema-for-azure-app-configuration"></a>Schemat zdarzeń Azure Event Grid dla konfiguracji aplikacji usługi Azure
+# <a name="azure-event-grid-event-schema-for-azure-app-configuration"></a>Schemat zdarzenia usługi Azure Event Grid dla konfiguracji aplikacji platformy Azure
 
-Ten artykuł zawiera właściwości i schematu dla zdarzeń konfiguracji aplikacji platformy Azure. Aby zapoznać się z wprowadzeniem do schematów zdarzeń, zobacz [schematu zdarzeń usługi Azure Event Grid](event-schema.md).
+Ten artykuł zawiera właściwości i schemat zdarzeń konfiguracji aplikacji platformy Azure. Aby zapoznać się ze schematem zdarzeń, zobacz [Schemat zdarzeń usługi Azure Event Grid](event-schema.md).
 
-Aby uzyskać listę przykładowych skryptów i samouczków, zobacz [źródła zdarzeń konfiguracji aplikacji usługi Azure](event-sources.md#app-configuration).
+Aby uzyskać listę przykładowych skryptów i samouczków, zobacz [Źródło zdarzeń konfiguracji aplikacji platformy Azure](event-sources.md#app-configuration).
 
-## <a name="available-event-types"></a>Zdarzenie dostępne typy
+## <a name="available-event-types"></a>Dostępne typy zdarzeń
 
-Konfiguracja aplikacji platformy Azure generuje następujące typy zdarzeń:
+Usługa Azure App Configuration emituje następujące typy zdarzeń:
 
 | Typ zdarzenia | Opis |
 | ---------- | ----------- |
-| Microsoft.AppConfiguration.KeyValueModified | Wywoływane po utworzeniu lub zastąpić pary klucz wartość. |
-| Microsoft.AppConfiguration.KeyValueDeleted | Wywoływane, gdy klucz wartość zostanie usunięta. |
+| Microsoft.AppConfiguration.KeyValueModified | Wywoływane po utworzeniu lub zastąpieniu wartości klucza. |
+| Microsoft.AppConfiguration.KeyValueDeleted | Wywoływane po usunięciu wartości klucza. |
 
-## <a name="example-event"></a>Przykład zdarzenia
+## <a name="example-event"></a>Przykładowe zdarzenie
 
-Poniższy przykład przedstawia schematu to zdarzenie zmodyfikowane pary klucz wartość: 
+Poniższy przykład przedstawia schemat zdarzenia zmodyfikowanego wartości klucza: 
 
 ```json
 [{
@@ -50,7 +50,7 @@ Poniższy przykład przedstawia schematu to zdarzenie zmodyfikowane pary klucz w
 }]
 ```
 
-Schemat zdarzenia usuniętego pary klucz wartość są podobne: 
+Schemat usuniętego zdarzenia wartości klucza jest podobny: 
 
 ```json
 [{
@@ -71,29 +71,29 @@ Schemat zdarzenia usuniętego pary klucz wartość są podobne:
  
 ## <a name="event-properties"></a>Właściwości zdarzenia
 
-Zdarzenie zawiera następujące dane najwyższego poziomu:
+Zdarzenie ma następujące dane najwyższego poziomu:
 
 | Właściwość | Typ | Opis |
 | -------- | ---- | ----------- |
-| topic | string | Zasobów Pełna ścieżka do źródła zdarzeń. To pole nie jest zapisywalna. Usługa Event Grid udostępnia tę wartość. |
-| subject | string | Ścieżka zdefiniowana przez wydawcę na temat zdarzenia. |
-| eventType | string | Jeden z typów zdarzeń zarejestrowane dla tego źródła zdarzeń. |
-| eventTime | string | Czas, którego zdarzenie jest generowane na podstawie czasu UTC dostawcy. |
-| id | string | Unikatowy identyfikator zdarzenia. |
-| data | obiekt | Dane zdarzenia konfiguracji aplikacji. |
-| dataVersion | string | Wersja schematu dla obiektu danych. Wydawca Określa wersję schematu. |
-| metadataVersion | string | Wersja schematu dla metadanych zdarzenia. Usługa Event Grid definiuje schemat właściwości najwyższego poziomu. Usługa Event Grid udostępnia tę wartość. |
+| temat | ciąg | Pełna ścieżka zasobu do źródła zdarzeń. To pole nie jest zapisywalne. Ta wartość jest podawana przez usługę Event Grid. |
+| Temat | ciąg | Zdefiniowana przez wydawcę ścieżka do tematu zdarzenia. |
+| Eventtype | ciąg | Jeden z zarejestrowanych typów zdarzeń dla tego źródła zdarzeń. |
+| eventTime | ciąg | Czas, w której zdarzenie jest generowane na podstawie czasu UTC dostawcy. |
+| id | ciąg | Unikatowy identyfikator zdarzenia. |
+| dane | obiekt | Dane zdarzenia konfiguracji aplikacji. |
+| dataVersion | ciąg | Wersja schematu obiektu danych. Wydawca definiuje wersję schematu. |
+| metadataVersion | ciąg | Wersja schematu metadanych zdarzenia. Usługa Event Grid definiuje schemat właściwości najwyższego poziomu. Ta wartość jest podawana przez usługę Event Grid. |
 
 Obiekt danych ma następujące właściwości:
 
 | Właściwość | Typ | Opis |
 | -------- | ---- | ----------- |
-| key | string | Klucz klucz wartość, która została zmieniona lub usunięta. |
-| label | string | Etykieta, jeśli istnieje klucz wartość, która została zmieniona lub usunięta. |
-| etag | string | Aby uzyskać `KeyValueModified` tag etag nowy klucz wartość. Aby uzyskać `KeyValueDeleted` tag etag klucz wartość, która została usunięta. |
+| key | ciąg | Klucz klucza wartość, który został zmodyfikowany lub usunięty. |
+| label | ciąg | Etykieta, jeśli istnieje, wartości klucza, który został zmodyfikowany lub usunięty. |
+| Etag | ciąg | Dla `KeyValueModified` etag nowej wartości klucza. Dla `KeyValueDeleted` etag wartości klucza, który został usunięty. |
  
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-* Wprowadzenie do usługi Azure Event Grid, zobacz [co to jest usługa Event Grid?](overview.md)
+* Aby uzyskać wprowadzenie do usługi Azure Event Grid, zobacz [Co to jest siatka zdarzeń?](overview.md)
 * Aby uzyskać więcej informacji na temat tworzenia subskrypcji usługi Azure Event Grid, zobacz [schemat subskrypcji usługi Event Grid](subscription-creation-schema.md).
-* Wprowadzenie do pracy ze zdarzeniami konfiguracji aplikacji platformy Azure, zobacz [zdarzenia konfiguracji aplikacji usługi Azure Route — interfejs wiersza polecenia Azure](../azure-app-configuration/howto-app-configuration-event.md?toc=%2fazure%2fevent-grid%2ftoc.json). 
+* Aby zapoznać się ze zmianami dotyczących pracy z konfiguracją aplikacji platformy Azure, zobacz [Kierowanie zdarzeń konfiguracji aplikacji platformy Azure — Interfejsu wiersza polecenia platformy Azure.](../azure-app-configuration/howto-app-configuration-event.md?toc=%2fazure%2fevent-grid%2ftoc.json) 

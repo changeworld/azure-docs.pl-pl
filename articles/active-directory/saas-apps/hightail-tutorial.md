@@ -1,6 +1,6 @@
 ---
-title: 'Samouczek: Azure Active Directory integrację logowania jednokrotnego (SSO) z usługą Hightail | Microsoft Docs'
-description: Dowiedz się, jak skonfigurować Logowanie jednokrotne między Azure Active Directory i Hightail.
+title: 'Samouczek: Integracja rejestracji jednokrotnej usługi Azure Active Directory (Logowanie jednokrotne) z hightail | Dokumenty firmy Microsoft'
+description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługą Azure Active Directory a hightail.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -17,86 +17,86 @@ ms.date: 09/10/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6d06dea6f1d2fa762a2e885ae98e1c0c4b3293ba
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "72596244"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-hightail"></a>Samouczek: Azure Active Directory integracji logowania jednokrotnego (SSO) z usługą Hightail
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-hightail"></a>Samouczek: Integracja rejestracji jednokrotnej usługi Azure Active Directory (Logowanie jednokrotne) z hightail
 
-W tym samouczku dowiesz się, jak zintegrować usługę Hightail z usługą Azure Active Directory (Azure AD). Po zintegrowaniu usługi Hightail z usługą Azure AD można:
+W tym samouczku dowiesz się, jak zintegrować Hightail z usługą Azure Active Directory (Azure AD). Po zintegrowaniu Hightail z usługą Azure AD można:
 
-* Kontrolka w usłudze Azure AD, która ma dostęp do Hightail.
-* Zezwól użytkownikom na automatyczne logowanie się do usługi Hightail przy użyciu kont w usłudze Azure AD.
-* Zarządzaj kontami w jednej centralnej lokalizacji — Azure Portal.
+* Kontrola w usłudze Azure AD, który ma dostęp do Hightail.
+* Włącz użytkownikom automatyczne logowanie do Hightail za pomocą ich kont usługi Azure AD.
+* Zarządzaj kontami w jednej centralnej lokalizacji — witrynie Azure Portal.
 
-Aby dowiedzieć się więcej o integracji aplikacji SaaS z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne przy użyciu Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Aby dowiedzieć się więcej o integracji aplikacji SaaS z usługą Azure AD, zobacz [Co to jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby rozpocząć, potrzebne są następujące elementy:
+Aby rozpocząć, potrzebujesz następujących elementów:
 
-* Subskrypcja usługi Azure AD. Jeśli nie masz subskrypcji, możesz uzyskać [bezpłatne konto](https://azure.microsoft.com/free/).
-* Subskrypcja z włączonym logowaniem jednokrotnym (SSO) Hightail.
+* Subskrypcja usługi Azure AD. Jeśli nie masz subskrypcji, możesz uzyskać [bezpłatne konto.](https://azure.microsoft.com/free/)
+* Subskrypcja z włączoną funkcją logowania jednokrotnego (SSO) hightail.
 
 ## <a name="scenario-description"></a>Opis scenariusza
 
-W tym samouczku skonfigurujesz i testujesz Logowanie jednokrotne usługi Azure AD w środowisku testowym.
+W tym samouczku można skonfigurować i przetestować samouszeńców usługi Azure AD w środowisku testowym.
 
-* Hightail obsługuje usługę **SP i dostawcy tożsamości** zainicjowano Logowanie jednokrotne
-* Hightail obsługuje Inicjowanie obsługi użytkowników **just in Time**
+* Hightail obsługuje **sp i idp** zainicjowane SSO
+* Hightail obsługuje **inicjowanie** obsługi administracyjnej użytkowników just in time
 
 > [!NOTE]
-> Identyfikator tej aplikacji to stała wartość ciągu, dlatego można skonfigurować tylko jedno wystąpienie w jednej dzierżawie.
+> Identyfikator tej aplikacji jest stałą wartością ciągu, więc tylko jedno wystąpienie można skonfigurować w jednej dzierżawie.
 
 ## <a name="adding-hightail-from-the-gallery"></a>Dodawanie Hightail z galerii
 
-Aby skonfigurować integrację programu Hightail z usługą Azure AD, musisz dodać Hightail z galerii do listy zarządzanych aplikacji SaaS.
+Aby skonfigurować integrację Hightail z usługą Azure AD, należy dodać Hightail z galerii do listy zarządzanych aplikacji SaaS.
 
-1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com) przy użyciu służbowego lub osobistego konta Microsoft.
-1. W okienku nawigacji po lewej stronie wybierz usługę **Azure Active Directory** .
-1. Przejdź do **aplikacji przedsiębiorstwa** , a następnie wybierz pozycję **wszystkie aplikacje**.
+1. Zaloguj się do [witryny Azure portal](https://portal.azure.com) przy użyciu konta służbowego lub konta firmy Microsoft.
+1. W lewym okienku nawigacji wybierz usługę **Azure Active Directory.**
+1. Przejdź do **aplikacji korporacyjnych,** a następnie wybierz pozycję **Wszystkie aplikacje**.
 1. Aby dodać nową aplikację, wybierz pozycję **Nowa aplikacja**.
 1. W sekcji **Dodaj z galerii** wpisz **Hightail** w polu wyszukiwania.
-1. Wybierz pozycję **Hightail** from panel wyników, a następnie Dodaj aplikację. Poczekaj kilka sekund, gdy aplikacja zostanie dodana do dzierżawy.
+1. Wybierz **pozycję Hightail** z panelu wyników, a następnie dodaj aplikację. Poczekaj kilka sekund, gdy aplikacja zostanie dodana do dzierżawy.
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-hightail"></a>Skonfiguruj i przetestuj Logowanie jednokrotne w usłudze Azure AD dla Hightail
+## <a name="configure-and-test-azure-ad-single-sign-on-for-hightail"></a>Konfigurowanie i testowanie logowania jednokrotnego usługi Azure AD dla hightail
 
-Skonfiguruj i przetestuj Logowanie jednokrotne usługi Azure AD za pomocą Hightail przy użyciu użytkownika testowego o nazwie **B. Simon**. Aby logowanie jednokrotne działało, należy ustanowić relację linku między użytkownikiem usługi Azure AD i powiązanym użytkownikiem w Hightail.
+Konfigurowanie i testowanie usługi Azure AD SSO za pomocą hightail przy użyciu użytkownika testowego o nazwie **B.Simon**. Aby użytkownik łączony sytuować działał, należy ustanowić relację łącza między użytkownikiem usługi Azure AD a powiązanym użytkownikiem w hightail.
 
-Aby skonfigurować i przetestować Logowanie jednokrotne usługi Azure AD za pomocą Hightail, wykonaj następujące bloki konstrukcyjne:
+Aby skonfigurować i przetestować usługę Azure AD SSO za pomocą usługi Hightail, wykonaj następujące bloki konstrukcyjne:
 
-1. **[Skonfiguruj Logowanie jednokrotne usługi Azure AD](#configure-azure-ad-sso)** , aby umożliwić użytkownikom korzystanie z tej funkcji.
-    * **[Utwórz użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować Logowanie jednokrotne w usłudze Azure AD za pomocą usługi B. Simon.
-    * **[Przypisz użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić usłudze B. Simon korzystanie z logowania jednokrotnego w usłudze Azure AD.
-1. **[Skonfiguruj Logowanie jednokrotne](#configure-hightail-sso)** w usłudze Hightail, aby skonfigurować ustawienia logowania jednokrotnego na stronie aplikacji.
-    * **[Utwórz użytkownika testowego Hightail](#create-hightail-test-user)** , aby dysponować odpowiednikiem B. Simon w Hightail, która jest połączona z reprezentacją użytkownika w usłudze Azure AD.
-1. **[Przetestuj Logowanie jednokrotne](#test-sso)** — aby sprawdzić, czy konfiguracja działa.
+1. **[Skonfiguruj samouszeńcę usługi Azure AD](#configure-azure-ad-sso)** — aby umożliwić użytkownikom korzystanie z tej funkcji.
+    * **[Utwórz użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować logowanie jednokrotne usługi Azure AD za pomocą usługi B.Simon.
+    * **[Przypisz użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić B.Simon używać logowania jednokrotnego usługi Azure AD.
+1. **[Skonfiguruj hightail sygingowy](#configure-hightail-sso)** — aby skonfigurować ustawienia logowania jednokrotnego po stronie aplikacji.
+    * **[Utwórz użytkownika testowego Hightail](#create-hightail-test-user)** — aby mieć odpowiednik B.Simon w Hightail, który jest połączony z reprezentacją użytkownika usługi Azure AD.
+1. **[Test SSO](#test-sso)** - aby sprawdzić, czy konfiguracja działa.
 
-## <a name="configure-azure-ad-sso"></a>Konfigurowanie logowania jednokrotnego w usłudze Azure AD
+## <a name="configure-azure-ad-sso"></a>Konfigurowanie rejestracji jednokrotnej w usłudze Azure AD
 
-Wykonaj następujące kroki, aby włączyć logowanie jednokrotne usługi Azure AD w Azure Portal.
+Wykonaj następujące kroki, aby włączyć usługę Azure AD SSO w witrynie Azure portal.
 
-1. W [Azure Portal](https://portal.azure.com/)na stronie integracja aplikacji **Hightail** Znajdź sekcję **Zarządzanie** i wybierz pozycję **Logowanie jednokrotne**.
+1. W [witrynie Azure portal](https://portal.azure.com/)na stronie integracji aplikacji **Hightail** znajdź sekcję **Zarządzaj** i wybierz **opcję logowania jednokrotnego**.
 1. Na stronie **Wybierz metodę logowania jednokrotnego** wybierz pozycję **SAML**.
-1. Na stronie **Konfigurowanie logowania jednokrotnego przy użyciu języka SAML** kliknij ikonę Edytuj/pióro, aby określić **podstawową konfigurację języka SAML** , aby edytować ustawienia.
+1. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą saml** kliknij ikonę edycji/pióra dla **podstawowej konfiguracji SAML,** aby edytować ustawienia.
 
    ![Edycja podstawowej konfiguracji protokołu SAML](common/edit-urls.png)
 
-1. Jeśli chcesz skonfigurować aplikację w trybie inicjalizacji **dostawcy tożsamości** , w sekcji **Podstawowa konfiguracja SAML** wprowadź wartości dla następujących pól:
+1. W sekcji **Podstawowa konfiguracja SAML,** jeśli chcesz skonfigurować aplikację w trybie inicjowanym **przez IDP,** wprowadź wartości dla następujących pól:
 
-    W polu tekstowym **adres URL odpowiedzi** wpisz adres url: `https://www.hightail.com/samlLogin?phi_action=app/samlLogin&subAction=handleSamlResponse`
+    W polu tekstowym **Odpowiedz na adres URL** wpisz adres URL:`https://www.hightail.com/samlLogin?phi_action=app/samlLogin&subAction=handleSamlResponse`
 
-1. Kliknij przycisk **Ustaw dodatkowe adresy URL** i wykonaj następujący krok, jeśli chcesz skonfigurować aplikację w trybie inicjowania przez **dostawcę usług**:
+1. Kliknij **pozycję Ustaw dodatkowe adresy URL** i wykonaj następujący krok, jeśli chcesz skonfigurować aplikację w trybie inicjowanym w sp: **SP**
 
-    W polu tekstowym **Adres URL logowania** wpisz adres URL: `https://www.hightail.com/loginSSO`
+    W polu **tekstowym "Podpisywanie adresu URL"** wpisz adres URL:`https://www.hightail.com/loginSSO`
 
-1. Aplikacja Hightail oczekuje potwierdzeń SAML w określonym formacie, co wymaga dodania niestandardowych mapowań atrybutów do konfiguracji atrybutów tokenu SAML. Poniższy zrzut ekranu przedstawia listę atrybutów domyślnych.
+1. Hightail aplikacja oczekuje potwierdzeń SAML w określonym formacie, który wymaga, aby dodać niestandardowe mapowania atrybutów do konfiguracji atrybutów tokenu SAML. Poniższy zrzut ekranu przedstawia listę atrybutów domyślnych.
 
     ![image](common/default-attributes.png)
 
-1. Oprócz powyższych, aplikacja Hightail oczekuje kilku atrybutów do przekazania z powrotem w odpowiedzi SAML, które przedstawiono poniżej. Te atrybuty są również wstępnie wypełnione, ale można je sprawdzić zgodnie z wymaganiami.
+1. Oprócz powyższej aplikacji Hightail oczekuje kilka więcej atrybutów, które mają być przekazywane z powrotem w odpowiedzi SAML, które są pokazane poniżej. Te atrybuty są również wstępnie wypełnione, ale można je przejrzeć zgodnie z wymaganiami.
 
     | Nazwa | Atrybut źródłowy|
     | -------- |-------- |
@@ -105,64 +105,64 @@ Wykonaj następujące kroki, aby włączyć logowanie jednokrotne usługi Azure 
     | Adres e-mail | user.mail |
     | Tożsamość użytkownika | user.mail |
 
-1. Na stronie **Konfigurowanie logowania jednokrotnego przy użyciu języka SAML** w sekcji **certyfikat podpisywania SAML** Znajdź **certyfikat (base64)** i wybierz pozycję **Pobierz** , aby pobrać certyfikat i zapisać go na komputerze.
+1. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą saml** w sekcji **Saml Podpisywanie certyfikatów** znajdź **certyfikat (Base64)** i wybierz **pozycję Pobierz,** aby pobrać certyfikat i zapisać go na komputerze.
 
     ![Link do pobierania certyfikatu](common/certificatebase64.png)
 
-1. W sekcji **Konfigurowanie Hightail** skopiuj odpowiednie adresy URL na podstawie wymagania.
+1. W sekcji **Konfigurowanie hightail** skopiuj odpowiednie adresy URL na podstawie wymagań.
 
     ![Kopiowanie adresów URL konfiguracji](common/copy-configuration-urls.png)
 
 > [!NOTE]
-> Przed skonfigurowaniem logowania jednokrotnego w aplikacji Hightail należy białej liście domen poczty e-mail z zespołem Hightail, tak aby wszyscy użytkownicy korzystający z tej domeny mogli korzystać z funkcji logowania jednokrotnego.
+> Przed skonfigurowaniem logowania jednokrotnego w aplikacji Hightail, proszę białej listy domeny e-mail z zespołem Hightail, tak aby wszyscy użytkownicy, którzy korzystają z tej domeny mogą korzystać z funkcji logowania jednokrotnego.
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 
-W tej sekcji utworzysz użytkownika testowego w Azure Portal o nazwie B. Simon.
+W tej sekcji utworzysz użytkownika testowego w witrynie Azure portal o nazwie B.Simon.
 
-1. W lewym okienku w Azure Portal wybierz pozycję **Azure Active Directory**, wybierz pozycję **Użytkownicy**, a następnie wybierz pozycję **Wszyscy użytkownicy**.
-1. Wybierz przycisk **Nowy użytkownik** w górnej części ekranu.
-1. We właściwościach **użytkownika** wykonaj następujące kroki:
+1. Z lewego okienka w witrynie Azure portal wybierz pozycję **Azure Active Directory**, wybierz pozycję **Użytkownicy**, a następnie wybierz pozycję **Wszyscy użytkownicy**.
+1. Wybierz **pozycję Nowy użytkownik** u góry ekranu.
+1. We właściwościach **Użytkownika** wykonaj następujące kroki:
    1. W polu **Nazwa** wprowadź wartość `B.Simon`.  
-   1. W polu **Nazwa użytkownika** wprowadź username@companydomain.extension. Na przykład `B.Simon@contoso.com`.
+   1. W polu **Nazwa użytkownika** username@companydomain.extensionwprowadź pole . Na przykład `B.Simon@contoso.com`.
    1. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu **Hasło**.
    1. Kliknij przycisk **Utwórz**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
-W tej sekcji włączysz usługę B. Simon, aby korzystać z logowania jednokrotnego na platformie Azure przez przyznanie dostępu do usługi Hightail.
+W tej sekcji włączysz B.Simon do korzystania z logowania jednokrotnego platformy Azure, przyznając dostęp do Hightail.
 
-1. W Azure Portal wybierz pozycję **aplikacje dla przedsiębiorstw**, a następnie wybierz pozycję **wszystkie aplikacje**.
-1. Na liście Aplikacje wybierz pozycję **Hightail**.
-1. Na stronie Przegląd aplikacji Znajdź sekcję **Zarządzanie** i wybierz pozycję **Użytkownicy i grupy**.
+1. W portalu Azure wybierz pozycję **Aplikacje dla przedsiębiorstw**, a następnie wybierz pozycję **Wszystkie aplikacje**.
+1. Na liście aplikacji wybierz **hightail**.
+1. Na stronie przegląd aplikacji znajdź sekcję **Zarządzaj** i wybierz pozycję **Użytkownicy i grupy**.
 
    ![Link „Użytkownicy i grupy”](common/users-groups-blade.png)
 
-1. Wybierz pozycję **Dodaj użytkownika**, a następnie w oknie dialogowym **Dodawanie przypisania** wybierz pozycję **Użytkownicy i grupy** .
+1. Wybierz **pozycję Dodaj użytkownika**, a następnie wybierz pozycję **Użytkownicy i grupy** w oknie dialogowym Dodawanie **przydziału.**
 
-    ![Link Dodaj użytkownika](common/add-assign-user.png)
+    ![Łącze Dodaj użytkownika](common/add-assign-user.png)
 
-1. W oknie dialogowym **Użytkownicy i grupy** wybierz pozycję **B. Simon** z listy Użytkownicy, a następnie kliknij przycisk **Wybierz** w dolnej części ekranu.
-1. Jeśli oczekujesz dowolnej wartości roli w potwierdzeniu SAML, w oknie dialogowym **Wybierz rolę** wybierz odpowiednią rolę dla użytkownika z listy, a następnie kliknij przycisk **Wybierz** w dolnej części ekranu.
-1. W oknie dialogowym **Dodawanie przypisania** kliknij przycisk **Przypisz**.
+1. W oknie dialogowym **Użytkownicy i grupy** wybierz pozycję **B.Simon** z listy Użytkownicy, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
+1. Jeśli oczekujesz dowolnej wartości roli w asercji SAML, w oknie dialogowym **Wybierz rolę** wybierz odpowiednią rolę dla użytkownika z listy, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
+1. W oknie dialogowym **Dodawanie przydziału** kliknij przycisk **Przypisz.**
 
-## <a name="configure-hightail-sso"></a>Konfigurowanie logowania jednokrotnego Hightail
+## <a name="configure-hightail-sso"></a>Konfigurowanie sytcha liczby SSO hightail
 
-1. Aby zautomatyzować konfigurację w programie Hightail, należy zainstalować **Moje aplikacje bezpieczne logowanie do przeglądarki** , klikając pozycję **Zainstaluj rozszerzenie**.
+1. Aby zautomatyzować konfigurację w Hightail, musisz zainstalować **rozszerzenie przeglądarki My Apps Secure Sign-in,** klikając pozycję Zainstaluj **rozszerzenie**.
 
-    ![Rozszerzenie moje aplikacje](common/install-myappssecure-extension.png)
+    ![Rozszerzenie Moje aplikacje](common/install-myappssecure-extension.png)
 
-1. Po dodaniu rozszerzenia do przeglądarki kliknij pozycję **Skonfiguruj** , aby przekierować użytkownika do aplikacji Hightail. Z tego miejsca podaj poświadczenia administratora, aby zalogować się do usługi Hightail. Rozszerzenie przeglądarki automatycznie skonfiguruje aplikację i automatyzuje kroki 3-6.
+1. Po dodaniu rozszerzenia do przeglądarki, kliknij **Set up Hightail** skieruje Cię do aplikacji Hightail. Stamtąd podaj poświadczenia administratora, aby zalogować się do Hightail. Rozszerzenie przeglądarki automatycznie skonfiguruje aplikację dla Ciebie i zautomatyzuje kroki 3-6.
 
-    ![Konfiguracja konfiguracji](common/setup-sso.png)
+    ![Konfiguracja instalacji](common/setup-sso.png)
 
-1. Jeśli chcesz ręcznie skonfigurować Hightail, w innym oknie przeglądarki Otwórz Portal administratora **Hightail** .
+1. Jeśli chcesz ręcznie skonfigurować Hightail, w innym oknie przeglądarki otwórz portal administratora **Hightail.**
 
-1. Kliknij **ikonę użytkownika** w prawym górnym rogu strony. 
+1. Kliknij **ikonę Użytkownika** w prawym górnym rogu strony. 
 
     ![Konfigurowanie logowania jednokrotnego](./media/hightail-tutorial/configure1.png)
 
-1. Kliknij pozycję **Wyświetl kartę Konsola administracyjna** .
+1. Kliknij pozycję **Wyświetl konsolę administracyjną.**
 
     ![Konfigurowanie logowania jednokrotnego](./media/hightail-tutorial/configure2.png)
 
@@ -170,33 +170,33 @@ W tej sekcji włączysz usługę B. Simon, aby korzystać z logowania jednokrotn
 
     ![Konfigurowanie logowania jednokrotnego](./media/hightail-tutorial/configure3.png)
 
-    a. W polu tekstowym **adres URL logowania** wklej wartość **adresu URL logowania** skopiowanego z Azure Portal.
+    a. W polu tekstowym **Adres URL logowania** wklej wartość adresu URL **logowania** skopiowanego z witryny Azure portal.
 
-    b. Otwórz certyfikat zakodowany w formacie Base-64 w Notatniku pobranym z Azure Portal Skopiuj zawartość tego pliku do schowka, a następnie wklej go do pola tekstowego **certyfikatu SAML** .
+    b. Otwórz w Notatniku swój certyfikat zakodowany w formacie base-64 pobrany z witryny Azure Portal, skopiuj zawartość do schowka, a następnie wklej ją w polu tekstowym **Certyfikat SAML**.
 
-    d. Kliknij przycisk **Kopiuj** , aby skopiować adres URL odbiorcy protokołu SAML dla danego wystąpienia i wkleić go w polu tekstowym **adres URL odpowiedzi** w sekcji **Podstawowa konfiguracja SAML** w Azure Portal.
+    d. Kliknij **przycisk KOPIUJ,** aby skopiować adres URL konsumenta SAML dla swojego wystąpienia i wkleić go w skrzynce tekstowej **Adres URL odpowiedzi** w sekcji **Podstawowa konfiguracja SAML** w witrynie Azure portal.
 
-    d. Kliknij pozycję **Zapisz konfiguracje**.
+    d. Kliknij **pozycję Zapisz konfiguracje**.
 
 ### <a name="create-hightail-test-user"></a>Utwórz użytkownika testowego Hightail
 
-W tej sekcji użytkownik o nazwie Britta Simon jest tworzony w Hightail. Hightail obsługuje Inicjowanie obsługi użytkowników just in Time, która jest domyślnie włączona. W tej sekcji nie musisz niczego robić. Jeśli użytkownik nie istnieje jeszcze w usłudze Hightail, zostanie utworzony nowy po uwierzytelnieniu.
+W tej sekcji użytkownik o nazwie Britta Simon jest tworzony w Hightail. Hightail obsługuje just-in-time inicjowania obsługi administracyjnej użytkowników, który jest domyślnie włączony. W tej sekcji nie musisz niczego robić. Jeśli użytkownik jeszcze nie istnieje w Hightail, nowy jest tworzony po uwierzytelnieniu.
 
 > [!NOTE]
 > Jeśli musisz ręcznie utworzyć użytkownika, musisz skontaktować się z [zespołem pomocy technicznej Hightail](mailto:support@hightail.com).
 
-## <a name="test-sso"></a>Testuj Logowanie jednokrotne 
+## <a name="test-sso"></a>Test SSO 
 
 W tej sekcji przetestujesz konfigurację logowania jednokrotnego usługi Azure AD przy użyciu panelu dostępu.
 
-Po kliknięciu kafelka Hightail w panelu dostępu należy automatycznie zalogować się do Hightail, dla którego skonfigurowano Logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
+Po kliknięciu kafelka Hightail w Panelu dostępu należy automatycznie zalogować się do hightailu, dla którego skonfigurowano logującą się logującą logującą. Aby uzyskać więcej informacji na temat Panelu dostępu, zobacz [Wprowadzenie do Panelu dostępu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>Zasoby dodatkowe
 
-- [ Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Lista samouczków dotyczących integrowania aplikacji SaaS z usługą Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-- [Wypróbuj Hightail z usługą Azure AD](https://aad.portal.azure.com/)
+- [Wypróbuj hightail z usługą Azure AD](https://aad.portal.azure.com/)

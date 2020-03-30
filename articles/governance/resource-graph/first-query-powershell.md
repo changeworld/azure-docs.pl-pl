@@ -1,16 +1,16 @@
 ---
-title: 'Szybki Start: pierwsze zapytanie programu PowerShell'
-description: W tym przewodniku szybki start wykonaj kroki umożliwiające włączenie modułu Graf zasobów Azure PowerShell i uruchomienie pierwszego zapytania.
+title: 'Szybki start: Twoja pierwsza kwerenda programu PowerShell'
+description: W tym przewodniku Szybki start należy wykonać kroki, aby włączyć moduł wykres zasobów dla programu Azure PowerShell i uruchomić pierwsze zapytanie.
 ms.date: 11/21/2019
 ms.topic: quickstart
 ms.openlocfilehash: dd96324671f46f98d5b6c8bae1839a5b02d38b23
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "79240660"
 ---
-# <a name="quickstart-run-your-first-resource-graph-query-using-azure-powershell"></a>Szybki Start: uruchamianie pierwszego zapytania grafu zasobów przy użyciu Azure PowerShell
+# <a name="quickstart-run-your-first-resource-graph-query-using-azure-powershell"></a>Szybki start: uruchamianie pierwszej kwerendy programu Resource Graph przy użyciu programu Azure PowerShell
 
 Pierwszym krokiem do korzystania z usługi Azure Resource Graph jest zainstalowanie modułu dla programu Azure PowerShell. Ten przewodnik Szybki start przeprowadzi Cię przez proces dodawania modułu do instalacji programu Azure PowerShell.
 
@@ -18,13 +18,13 @@ Po zakończeniu tego procesu będziesz mieć moduł dodany do wybranej instalacj
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne](https://azure.microsoft.com/free/) konto.
+Jeśli nie masz subskrypcji platformy Azure, utwórz [bezpłatne](https://azure.microsoft.com/free/) konto przed rozpoczęciem.
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
 ## <a name="add-the-resource-graph-module"></a>Dodaj moduł usługi Resource Graph
 
-Aby włączyć program Azure PowerShell do wykonywania zapytań do usługi Azure Resource Graph, musisz dodać moduł. Tego modułu można używać z zainstalowanym lokalnie programem PowerShell, z [Azure Cloud Shell](https://shell.azure.com)lub z [obrazem platformy Docker programu PowerShell](https://hub.docker.com/_/microsoft-powershell).
+Aby włączyć program Azure PowerShell do wykonywania zapytań do usługi Azure Resource Graph, musisz dodać moduł. Tego modułu można używać z zainstalowanym lokalnie programem PowerShell, z [usługą Azure Cloud Shell](https://shell.azure.com)lub z [obrazem platformy PowerShell Docker.](https://hub.docker.com/_/microsoft-powershell)
 
 ### <a name="base-requirements"></a>Wymagania podstawowe
 
@@ -45,7 +45,7 @@ Moduł usługi Resource Graph dla programu PowerShell to **Az.ResourceGraph**.
    Install-Module -Name Az.ResourceGraph
    ```
 
-1. Sprawdź, czy moduł został zaimportowany, a to Najnowsza wersja (0.7.5):
+1. Sprawdź, czy moduł został zaimportowany i jest najnowszą wersją (0.7.5):
 
    ```azurepowershell-interactive
    # Get a list of commands for the imported Az.ResourceGraph module
@@ -88,7 +88,7 @@ Teraz, gdy moduł programu Azure PowerShell został dodany do Twojego wybranego 
 Gdy końcowe zapytanie zostanie uruchomione wielokrotnie, zakładając, że nic się nie zmieniło w Twoim środowisku, zwrócone wyniki będą spójne i zgodne z oczekiwaniami — uporządkowane według właściwości **Name**, ale nadal ograniczone do pięciu pierwszych wyników.
 
 > [!NOTE]
-> Jeśli zapytanie nie zwraca wyników z subskrypcji, do której już masz dostęp, należy zauważyć, że `Search-AzGraph` polecenie cmdlet domyślnie ma subskrypcje w domyślnym kontekście. Aby wyświetlić listę identyfikatorów subskrypcji, które są częścią kontekstu domyślnego, uruchom tę `(Get-AzContext).Account.ExtendedProperties.Subscriptions` Jeśli chcesz przeszukać wszystkie subskrypcje, do których masz dostęp, możesz ustawić PSDefaultParameterValues dla `Search-AzGraph` polecenia cmdlet, uruchamiając `$PSDefaultParameterValues=@{"Search-AzGraph:Subscription"= $(Get-AzSubscription).ID}`
+> Jeśli kwerenda nie zwraca wyników z subskrypcji, do której `Search-AzGraph` masz już dostęp, należy pamiętać, że polecenie cmdlet domyślnie obsługuje subskrypcje w kontekście domyślnym. Aby wyświetlić listę identyfikatorów subskrypcji, które są częścią `(Get-AzContext).Account.ExtendedProperties.Subscriptions` domyślnego kontekstu uruchom to Jeśli chcesz wyszukać we wszystkich subskrypcjach, do `Search-AzGraph` których masz dostęp, można ustawić PSDefaultParameterValues dla polecenia cmdlet, uruchamiając`$PSDefaultParameterValues=@{"Search-AzGraph:Subscription"= $(Get-AzSubscription).ID}`
    
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
@@ -107,7 +107,7 @@ Uninstall-Module -Name 'Az.ResourceGraph'
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym przewodniku szybki start dodano moduł grafu zasobów do środowiska Azure PowerShell i zostanie uruchomione pierwsze zapytanie. Aby dowiedzieć się więcej na temat języka grafu zasobów, przejdź do strony szczegółów języka zapytań.
+W tym przewodniku Szybki start dodano moduł wykres zasobów do środowiska programu Azure PowerShell i uruchomisz pierwsze zapytanie. Aby dowiedzieć się więcej o języku wykresu zasobów, przejdź do strony szczegółów języka kwerendy.
 
 > [!div class="nextstepaction"]
-> [Uzyskaj więcej informacji na temat języka zapytań](./concepts/query-language.md)
+> [Uzyskaj więcej informacji o języku kwerendy](./concepts/query-language.md)

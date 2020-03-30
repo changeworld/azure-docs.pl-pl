@@ -9,20 +9,20 @@ ms.date: 03/05/2019
 ms.author: robinsh
 ms.custom: include file
 ms.openlocfilehash: 178236f774b0e1a6fe20c73afe0e7fd6965e67a5
-ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67235399"
 ---
-Teraz, gdy Twoje punkty końcowe i trasy wiadomości są skonfigurowane, można wyświetlić ich konfiguracji w portalu. Zaloguj się do [witryny Azure portal](https://portal.azure.com) i przejdź do **grup zasobów**. Następnie wybierz grupę zasobów, a następnie wybierz swoje Centrum (nazwa Centrum rozpoczyna się od `ContosoTestHub` w ramach tego samouczka). Zostanie wyświetlony w okienku usługi IoT Hub.
+Teraz, gdy punkty końcowe i trasy wiadomości są skonfigurowane, można wyświetlić ich konfigurację w portalu. Zaloguj się do [witryny Azure portal](https://portal.azure.com) i przejdź do **grup zasobów**. Następnie wybierz grupę zasobów, a następnie wybierz centrum `ContosoTestHub` (nazwa centrum zaczyna się od tego samouczka). Zobaczysz okienko Centrum IoT.
 
-![Ekran właściwości usługi IoT Hub](./media/iot-hub-include-view-routing-in-portal/01-show-hub-properties.png)
+![Ekran właściwości centrum IoT](./media/iot-hub-include-view-routing-in-portal/01-show-hub-properties.png)
 
-W obszarze Opcje dla Centrum IoT Hub, wybierz **Routing komunikatów**. Wyświetlane są trasy, które zostały skonfigurowane pomyślnie.
+W opcjach Centrum IoT wybierz pozycję **Routing wiadomości**. Trasy, które zostały pomyślnie skonfigurowane są wyświetlane.
 
-![Trasy, które można skonfigurować](./media/iot-hub-include-view-routing-in-portal/02-show-message-routes.png)
+![Trasy, które ustawisz](./media/iot-hub-include-view-routing-in-portal/02-show-message-routes.png)
 
-Na **routing komunikatów** ekranu, wybierz opcję **niestandardowe punkty końcowe** się punktów końcowych, które zostały zdefiniowane dla trasy.
+Na ekranie **Routing wiadomości** wybierz **pozycję Niestandardowe punkty końcowe,** aby wyświetlić punkty końcowe zdefiniowane dla tras.
 
-![Punkty końcowe dla trasy](./media/iot-hub-include-view-routing-in-portal/03-show-routing-endpoints.png)
+![Punkty końcowe ustawione dla tras](./media/iot-hub-include-view-routing-in-portal/03-show-routing-endpoints.png)
