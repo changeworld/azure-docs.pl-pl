@@ -1,6 +1,6 @@
 ---
-title: Konfigurowanie prywatnych adresów IP dla maszyn wirtualnych (klasycznych) — Azure PowerShell | Microsoft Docs
-description: Dowiedz się, jak skonfigurować prywatne adresy IP dla maszyn wirtualnych (klasycznych) przy użyciu programu PowerShell.
+title: Konfigurowanie prywatnych adresów IP dla maszyn wirtualnych (klasycznych) — azure powershell | Dokumenty firmy Microsoft
+description: Dowiedz się, jak skonfigurować prywatne adresy IP dla maszyn wirtualnych (Classic) przy użyciu programu PowerShell.
 services: virtual-network
 documentationcenter: na
 author: genlin
@@ -17,13 +17,13 @@ ms.date: 02/02/2016
 ms.author: genli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 00a4f282da3a943516ffce584247ac20935526b5
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71058723"
 ---
-# <a name="configure-private-ip-addresses-for-a-virtual-machine-classic-using-powershell"></a>Konfigurowanie prywatnych adresów IP dla maszyny wirtualnej (klasycznej) przy użyciu programu PowerShell
+# <a name="configure-private-ip-addresses-for-a-virtual-machine-classic-using-powershell"></a>Konfigurowanie prywatnych adresów IP dla maszyny wirtualnej (Classic) przy użyciu programu PowerShell
 
 [!INCLUDE [virtual-networks-static-private-ip-selectors-classic-include](../../includes/virtual-networks-static-private-ip-selectors-classic-include.md)]
 
@@ -31,14 +31,14 @@ ms.locfileid: "71058723"
 
 [!INCLUDE [azure-arm-classic-important-include](../../includes/azure-arm-classic-important-include.md)]
 
-W tym artykule opisano klasyczny model wdrażania. Możesz również [Zarządzanie statyczny prywatny adres IP w modelu wdrażania usługi Resource Manager](virtual-networks-static-private-ip-arm-ps.md).
+W tym artykule opisano klasyczny model wdrażania. Statyczny prywatny adres IP można również [zarządzać statycznym adresem IP w modelu wdrażania Menedżera zasobów](virtual-networks-static-private-ip-arm-ps.md).
 
 [!INCLUDE [virtual-networks-static-ip-scenario-include](../../includes/virtual-networks-static-ip-scenario-include.md)]
 
-Przykładowe polecenia programu PowerShell poniżej oczekują, że zostało już utworzone proste środowisko. Jeśli chcesz uruchomić polecenia w taki sposób, aby były wyświetlane w tym dokumencie, najpierw Skompiluj środowisko testowe opisane w temacie [Tworzenie sieci wirtualnej](virtual-networks-create-vnet-classic-netcfg-ps.md).
+Przykładowe polecenia programu PowerShell poniżej oczekują prostego środowiska już utworzone. Jeśli chcesz uruchomić polecenia, ponieważ są one wyświetlane w tym dokumencie, najpierw skompiluj środowisko testowe opisane w [polu Utwórz sieć wirtualną](virtual-networks-create-vnet-classic-netcfg-ps.md).
 
 ## <a name="how-to-verify-if-a-specific-ip-address-is-available"></a>Jak sprawdzić, czy określony adres IP jest dostępny
-Aby sprawdzić, czy adres IP *192.168.1.101* jest dostępny w sieci wirtualnej o nazwie *TestVNet*, uruchom następujące polecenie programu PowerShell i sprawdź wartość parametru *IsAvailable*:
+Aby sprawdzić, czy adres IP *192.168.1.101* jest dostępny w sieci wirtualnej o nazwie *TestVNet*, uruchom następujące polecenie programu PowerShell i sprawdź wartość *isavailable:*
 
     Test-AzureStaticVNetIP –VNetName TestVNet –IPAddress 192.168.1.101 
 
@@ -51,7 +51,7 @@ Oczekiwane dane wyjściowe:
     OperationStatus      : Succeeded
 
 ## <a name="how-to-specify-a-static-private-ip-address-when-creating-a-vm"></a>Jak określić statyczny prywatny adres IP podczas tworzenia maszyny Wirtualnej
-Poniższy skrypt programu PowerShell tworzy nową usługę w chmurze o nazwie *TestService*, a następnie pobiera obraz z platformy Azure, tworzy maszynę wirtualną o nazwie *DNS01* w nowej usłudze w chmurze przy użyciu pobranego obrazu, ustawia maszynę wirtualną jako podsieć o nazwie *fronton*i ustawia *192.168.1.7* jako statyczny prywatny adres IP dla maszyny wirtualnej:
+Poniższy skrypt programu PowerShell tworzy nową usługę w chmurze o nazwie *TestService,* a następnie pobiera obraz z platformy Azure, tworzy maszynę wirtualną o nazwie *DNS01* w nowej usłudze w chmurze przy użyciu pobranego obrazu, ustawia maszynę wirtualną w podsieci o nazwie *FrontEnd*i ustawia *192.168.1.7* jako statyczny prywatny adres IP dla maszyny Wirtualnej:
 
     New-AzureService -ServiceName TestService -Location "Central US"
     $image = Get-AzureVMImage | where {$_.ImageName -like "*RightImage-Windows-2012R2-x64*"}
@@ -70,7 +70,7 @@ Oczekiwane dane wyjściowe:
     New-AzureVM          3b99a86d-84f8-04e5-888e-b6fc3c73c4b9 Succeeded  
 
 ## <a name="how-to-retrieve-static-private-ip-address-information-for-a-vm"></a>Jak pobrać statyczne prywatne informacje o adresie IP dla maszyny Wirtualnej
-Aby wyświetlić informacje o statycznym prywatnym adresie IP dla maszyny wirtualnej utworzonej za pomocą powyższego skryptu, uruchom następujące polecenie programu PowerShell i obserwuj wartości dla *adresu IP*:
+Aby wyświetlić statyczne prywatne informacje o adresie IP dla maszyny Wirtualnej utworzonej za pomocą skryptu powyżej, uruchom następujące polecenie programu PowerShell i obserwuj wartości *adresu IpAddress:*
 
     Get-AzureVM -Name DNS01 -ServiceName TestService
 
@@ -104,7 +104,7 @@ Oczekiwane dane wyjściowe:
     OperationStatus             : OK
 
 ## <a name="how-to-remove-a-static-private-ip-address-from-a-vm"></a>Jak usunąć statyczny prywatny adres IP z maszyny Wirtualnej
-Aby usunąć statyczny prywatny adres IP dodany do maszyny wirtualnej w powyższym skrypcie, uruchom następujące polecenie programu PowerShell:
+Aby usunąć statyczny prywatny adres IP dodany do maszyny Wirtualnej w powyższych skryptach, uruchom następujące polecenie programu PowerShell:
 
     Get-AzureVM -ServiceName TestService -Name DNS01 |
       Remove-AzureStaticVNetIP |
@@ -116,8 +116,8 @@ Oczekiwane dane wyjściowe:
     -------------------- -----------                          ---------------
     Update-AzureVM       052fa6f6-1483-0ede-a7bf-14f91f805483 Succeeded
 
-## <a name="how-to-add-a-static-private-ip-address-to-an-existing-vm"></a>Jak dodać statyczny prywatny adres IP do istniejącej maszyny wirtualnej
-Aby dodać statyczny prywatny adres IP do maszyny wirtualnej utworzonej przy użyciu skryptu powyżej, uruchom następujące polecenie:
+## <a name="how-to-add-a-static-private-ip-address-to-an-existing-vm"></a>Jak dodać statyczny prywatny adres IP do istniejącej maszyny Wirtualnej
+Aby dodać statyczny prywatny adres IP do maszyny Wirtualnej utworzonej przy użyciu powyższego skryptu, uruchom następujące polecenie:
 
     Get-AzureVM -ServiceName TestService -Name DNS01 |
       Set-AzureStaticVNetIP -IPAddress 192.168.1.7 |
@@ -129,12 +129,12 @@ Oczekiwane dane wyjściowe:
     -------------------- -----------                          ---------------
     Update-AzureVM       77d8cae2-87e6-0ead-9738-7c7dae9810cb Succeeded 
 
-## <a name="set-ip-addresses-within-the-operating-system"></a>Ustawić adresy IP w ramach systemu operacyjnego
+## <a name="set-ip-addresses-within-the-operating-system"></a>Ustawianie adresów IP w systemie operacyjnym
 
-Zalecane jest, że nie zostanie statycznie przypisany prywatny adres IP, przypisany do maszyny wirtualnej platformy Azure w ramach systemu operacyjnego maszyny wirtualnej, o ile to konieczne. Jeśli ręcznie ustawić jako prywatny adres IP w ramach systemu operacyjnego, upewnij się, że jest ten sam adres jako prywatny adres IP przypisany do maszyny Wirtualnej platformy Azure, lub można utracić łączność z maszyną wirtualną. Należy nigdy ręcznie przypisać publiczny adres IP przypisany do maszyny wirtualnej platformy Azure w ramach systemu operacyjnego maszyny wirtualnej.
+Zaleca się, aby nie statycznie przypisywać prywatny adres IP przypisany do maszyny wirtualnej platformy Azure w systemie operacyjnym maszyny wirtualnej, chyba że jest to konieczne. Jeśli ręcznie ustawisz prywatny adres IP w systemie operacyjnym, upewnij się, że jest to ten sam adres, co prywatny adres IP przypisany do maszyny Wirtualnej platformy Azure lub możesz utracić łączność z maszyną wirtualną. Nigdy nie należy ręcznie przypisywać publicznego adresu IP przypisanego do maszyny wirtualnej platformy Azure w systemie operacyjnym maszyny wirtualnej.
 
-## <a name="next-steps"></a>Kolejne kroki
-* Dowiedz się więcej o [publiczny adres IP zarezerwowany](virtual-networks-reserved-public-ip.md) adresów.
-* Dowiedz się więcej o [na poziomie wystąpienia publicznego adresu IP (ILPIP)](virtual-networks-instance-level-public-ip.md) adresów.
-* Zapoznaj się z [zarezerwowanych adresów IP REST API](https://msdn.microsoft.com/library/azure/dn722420.aspx).
+## <a name="next-steps"></a>Następne kroki
+* Dowiedz się więcej o [zarezerwowanych publicznych](virtual-networks-reserved-public-ip.md) adresach IP.
+* Dowiedz się więcej o publicznych adresach [IP (ILPIP) na poziomie wystąpienia.](virtual-networks-instance-level-public-ip.md)
+* Zapoznaj się z [zastrzeżonymi interfejsami API odpoczynku IP](https://msdn.microsoft.com/library/azure/dn722420.aspx).
 

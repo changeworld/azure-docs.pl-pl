@@ -5,23 +5,23 @@ ms.date: 05/09/2019
 ms.topic: article
 ms.reviewer: mmercuri
 ms.openlocfilehash: 6e1f160c3563a280548c74ebe84f30bf08945c3f
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/22/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74324792"
 ---
 # <a name="using-azure-blockchain-workbench-data-with-microsoft-power-bi"></a>Korzystanie z danych usługi Azure Blockchain Workbench w usłudze Microsoft Power BI
 
-Usługa Microsoft Power BI umożliwia łatwe generowanie zaawansowanych raportów z baz danych SQL DB przy użyciu usługi Power BI Desktop, a następnie publikowanie ich w witrynie [https://www.powerbi.com](https://www.powerbi.com).
+Usługa Microsoft Power BI umożliwia łatwe generowanie zaawansowanych raportów z baz danych [https://www.powerbi.com](https://www.powerbi.com)bazy danych SQL DB przy użyciu programu Power BI Desktop, a następnie publikowanie ich w programie .
 
 Ten artykuł zawiera przewodnik krok po kroku, w którym przedstawiono instrukcje dotyczące połączenia z bazą danych SQL Database usługi Azure Blockchain Workbench z poziomu programu Power BI Desktop, tworzenia raportu i wdrażania go w witrynie powerbi.com.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Pobierz [Power BI Desktop](https://aka.ms/pbidesktopstore).
+* Pobierz [program Power BI Desktop](https://aka.ms/pbidesktopstore).
 
-## <a name="connecting-power-bi-to-data-in-azure-blockchain-workbench"></a>Łączenie Power BI z danymi w usłudze Azure łańcucha bloków Workbench
+## <a name="connecting-power-bi-to-data-in-azure-blockchain-workbench"></a>Łączenie usługi Power BI z danymi w usłudze Azure Blockchain Workbench
 
 1.  Otwórz program Power BI Desktop.
 2.  Wybierz pozycję **Pobieranie danych**.
@@ -43,7 +43,7 @@ Ten artykuł zawiera przewodnik krok po kroku, w którym przedstawiono instrukcj
 
     ![Nawigator](./media/data-powerbi/navigator.png)
 
-7.  Wybierz widoki, które mają zostać uwzględnione. W celach demonstracyjnych zawieramy **vwContractAction**, który zawiera szczegółowe informacje o akcjach, które zostały wykonane w ramach kontraktu.
+7.  Wybierz widoki, które mają zostać uwzględnione. W celach demonstracyjnych dołączamy **vwContractAction**, która zawiera szczegółowe informacje na temat działań, które miały miejsce na umowie.
 
     ![Wybieranie widoków](./media/data-powerbi/select-views.png)
 

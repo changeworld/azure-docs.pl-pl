@@ -1,7 +1,7 @@
 ---
-title: 'Model krzyżowego sprawdzania poprawności: odwołanie do modułu'
+title: 'Model cross validate: odwołanie do modułu'
 titleSuffix: Azure Machine Learning
-description: Dowiedz się, jak używać modułu wielovalidate model w Azure Machine Learning do podawania krzyżowego szacunków parametrów dla modeli klasyfikacji lub regresji przez Partycjonowanie danych.
+description: Dowiedz się, jak używać modułu modelu krzyżowego sprawdzania poprawności w usłudze Azure Machine Learning do sprawdzania poprawności krzyżowej oszacowań parametrów dla modeli klasyfikacji lub regresji przez partycjonowanie danych.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,121 +9,121 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 02/11/2020
-ms.openlocfilehash: 6dd8246d5751609e2f20ee9d5e519529752940f7
-ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
+ms.openlocfilehash: 7550bb7c6bbf7602245f9a9f1ac006ce693b36a8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77137529"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79477650"
 ---
 # <a name="cross-validate-model"></a>Krzyżowa weryfikacja modelu
 
-W tym artykule opisano sposób korzystania z modułu weryfikacji krzyżowej w programie Azure Machine Learning Designer (wersja zapoznawcza). *Wzajemne sprawdzanie poprawności* jest techniką często używaną w uczeniu maszynowym do oceny zmienności zestawu danych i niezawodności dowolnego modelu przeszkolonego za pomocą tych danych.  
+W tym artykule opisano, jak używać modułu Cross Validate Model w projektancie usługi Azure Machine Learning (wersja zapoznawcza). *Krzyżowe sprawdzanie poprawności* jest techniką często używaną w uczeniu maszynowym do oceny zmienności zestawu danych i niezawodności dowolnego modelu przeszkolonego za pomocą tych danych.  
 
-Moduł sprawdzania poprawności krzyżowej przyjmuje jako wejściowy zestaw danych, wraz z niesprawdzonym modelem klasyfikacji lub regresji. Dzieli zestaw danych na pewną liczbę podzestawów (*zgięcia*), kompiluje model dla każdego zgięcia, a następnie zwraca zestaw statystyk dokładności dla każdego złożenia. Porównując statystyki dokładności dla wszystkich zagięć, można interpretować jakość zestawu danych. Następnie można zrozumieć, czy model jest podatny na różnice w danych.  
+Moduł Cross Validate Model przyjmuje jako wejście zestaw danych oznaczony etykietą, wraz z nieprzeszkolonym modelem klasyfikacji lub regresji. Dzieli zestaw danych na pewną liczbę*podzbiorów (fałdy),* tworzy model na każdym krotnie, a następnie zwraca zestaw statystyk dokładności dla każdego krotnie. Porównując statystyki dokładności dla wszystkich zagęszków, można interpretować jakość zestawu danych. Następnie można zrozumieć, czy model jest podatny na różnice w danych.  
 
-Model weryfikacji krzyżowej zwraca również przewidywane wyniki i prawdopodobieństwa dla zestawu danych, dzięki czemu można ocenić niezawodność prognoz.  
+Cross Validate Model zwraca również przewidywane wyniki i prawdopodobieństwa dla zestawu danych, dzięki czemu można ocenić niezawodność prognoz.  
 
-### <a name="how-cross-validation-works"></a>Jak działa sprawdzanie krzyżowe
+### <a name="how-cross-validation-works"></a>Jak działa krzyżowa walidacja
 
-1. Wzajemne sprawdzanie poprawności dzieli dane szkoleniowe na zgięcia. 
+1. Krzyżowa walidacja losowo dzieli dane szkoleniowe na fałdy. 
 
-   Algorytm domyślnie przyjmuje wartość 10, jeśli zestaw danych nie został wcześniej podzielony na partycje. Aby podzielić zestaw danych na inną liczbę zagięć, można użyć [partycji i przykładowego](partition-and-sample.md) modułu i wskazać, ile zagięć ma być używanych.  
+   Algorytm domyślnie 10 zagięci, jeśli wcześniej nie partycjonowane zestawu danych. Aby podzielić zestaw danych na inną liczbę zagęszków, można użyć modułu [Partycja i Próbka](partition-and-sample.md) i wskazać liczbę zagęszków do użycia.  
 
-2.  Moduł ustawia dane w zgięciu 1 do użycia na potrzeby walidacji. (Jest to czasami nazywane *wstrzymania zgięciem*). Moduł używa pozostałych zagięć do uczenia modelu. 
+2.  Moduł odstawi dane w złożeniu 1 do użycia do sprawdzania poprawności. (Jest to czasami nazywane *krotnie wstrzymania*.) Moduł używa pozostałych zagęszków do szkolenia modelu. 
 
-    Jeśli na przykład utworzysz pięć zagięć, moduł generuje pięć modeli podczas weryfikacji krzyżowej. Moduł pociąga za sobą cztery piąte danych. Sprawdza każdy model w pozostałej jednej piątej.  
+    Na przykład jeśli utworzysz pięć razy, moduł generuje pięć modeli podczas sprawdzania poprawności krzyżowej. Moduł trenuje każdy model przy użyciu czterech piątych danych. Testuje każdy model na pozostałej jednej piątej.  
 
-3.  Podczas testowania modelu dla każdego zgięcia moduł szacuje wiele statystyk dokładności. Które statystyki są używane przez moduł, zależy od typu modelu, który jest oceniany. Różne statystyki są używane do obliczania modeli klasyfikacji zamiast modeli regresji.  
+3.  Podczas testowania modelu dla każdego krotnie moduł ocenia wiele statystyk dokładności. Statystyki używane przez moduł zależą od typu ocenianego modelu. Różne statystyki są używane do oceny modeli klasyfikacji w porównaniu do modeli regresji.  
 
-4.  Po zakończeniu procesu kompilowania i oceny dla wszystkich zgięcia model krzyżowy umożliwia wygenerowanie zestawu metryk wydajności i wyników oceny dla wszystkich danych. Zapoznaj się z tymi metrykami, aby sprawdzić, czy pojedyncze zgięcie ma wysoką lub niską dokładność. 
+4.  Po zakończeniu procesu tworzenia i oceny dla wszystkich zagięć, Cross Validate Model generuje zestaw metryk wydajności i wyniki uzyskane dla wszystkich danych. Przejrzyj te dane, aby zobaczyć, czy pojedynczy krotnie ma wysoką lub niską dokładność. 
 
-### <a name="advantages-of-cross-validation"></a>Zalety wzajemnej weryfikacji
+### <a name="advantages-of-cross-validation"></a>Zalety krzyżowej walidacji
 
-Inny i typowy sposób oceny modelu polega na podzieleniu danych na zestaw szkoleniowy i testowy przy użyciu [danych podziału](split-data.md), a następnie zweryfikowaniu modelu na danych szkoleniowych. Ale krzyżowe sprawdzanie poprawności zapewnia pewne korzyści:  
+Innym i powszechnym sposobem oceny modelu jest podzielenie danych na zestaw szkoleń i testów przy użyciu [podziału danych,](split-data.md)a następnie sprawdzenie poprawności modelu na danych szkoleniowych. Ale krzyżowa walidacja oferuje pewne zalety:  
 
--   Wzajemne sprawdzanie poprawności używa większej ilości danych testowych.
+-   Krzyżowa walidacja używa więcej danych testowych.
 
-    Wzajemne sprawdzanie poprawności mierzy wydajność modelu z określonymi parametrami w większym obszarze danych. Oznacza to, że krzyżowe sprawdzanie poprawności używa całego zestawu danych szkoleniowych dla szkolenia i oceny, a nie od części. Z drugiej strony, jeśli sprawdzasz poprawność modelu przy użyciu danych wygenerowanych z losowego podziału, zazwyczaj szacujesz model na tylko 30% lub mniej dostępnych danych.  
+    Krzyżowa walidacja mierzy wydajność modelu z określonymi parametrami w większej przestrzeni danych. Oznacza to, że krzyżowe sprawdzanie poprawności używa całego zestawu danych szkolenia dla szkolenia i oceny, zamiast części. Z drugiej strony, jeśli sprawdź poprawność modelu przy użyciu danych generowanych z losowego podziału, zazwyczaj oceniasz model tylko na 30 procent lub mniej dostępnych danych.  
 
-    Jednak ze względu na to, że wzajemne sprawdzanie poprawności pociąga i weryfikuje model wielokrotnie w większym zestawie danych, jest znacznie bardziej intensywnie czasochłonne. Sprawdzanie poprawności losowej może zająć dużo czasu.  
+    Jednak ponieważ krzyżowa sprawdzanie poprawności pociągów i sprawdza poprawność modelu wiele razy w większym zestawie danych, jest znacznie bardziej obciążają obliczeniowo. Trwa znacznie dłużej niż sprawdzanie poprawności na losowym podziału.  
 
--   Wzajemne sprawdzanie poprawności oblicza zarówno zestaw danych, jak i model.
+-   Krzyżowe sprawdzanie poprawności ocenia zarówno zestaw danych, jak i model.
 
-    Krzyżowe sprawdzanie poprawności nie powoduje po prostu mierzenia dokładności modelu. Daje również pewne pomysły dotyczące reprezentatywnego zestawu danych oraz sposobu, w jaki model może być zróżnicowany w danych.  
+    Krzyżowe sprawdzanie poprawności nie po prostu zmierzyć dokładność modelu. Daje również pewne pojęcie o tym, jak reprezentatywny jest zestaw danych i jak wrażliwe modelu może być na różnice w danych.  
 
-## <a name="how-to-use-cross-validate-model"></a>Jak używać modelu weryfikacji krzyżowej
+## <a name="how-to-use-cross-validate-model"></a>Jak korzystać z modelu Cross Validate
 
-Jeśli zestaw danych jest duży, proces sprawdzania poprawności może zająć dużo czasu.  Dlatego można użyć modelu weryfikacji krzyżowej w początkowej fazie kompilowania i testowania modelu. W tej fazie można oszacować dobrą jakość parametrów modelu (przy założeniu, że czas obliczeń jest dopuszczalny). Następnie można wyszkolić i oszacować model przy użyciu ustanowionych parametrów z [modelem uczenia](train-model.md) i [oszacować moduły modelu](evaluate-model.md) .
+Sprawdzanie poprawności krzyżowej może zająć dużo czasu, aby uruchomić, jeśli zestaw danych jest duży.  Dlatego można użyć Cross Validate Model w początkowej fazie tworzenia i testowania modelu. W tej fazie można ocenić dobroć parametrów modelu (przy założeniu, że czas obliczeń jest dopuszczalny). Następnie można trenować i oceniać model przy użyciu ustalonych parametrów za pomocą [train model](train-model.md) i [oceń modelu](evaluate-model.md) modułów.
 
-W tym scenariuszu nauczysz się i testujesz model przy użyciu modelu krzyżowego sprawdzania poprawności.
+W tym scenariuszu zarówno pociągu i przetestować model przy użyciu cross validate modelu.
 
-1. Dodaj moduł odweryfikuj model do potoku. Można go znaleźć w programie Azure Machine Learning Designer, w kategorii **ocena & model oceniania** . 
+1. Dodaj moduł Cross Validate Model do potoku. Można go znaleźć w projektancie usługi Azure Machine Learning, w **kategorii Ocena & ocena modelu.** 
 
-2. Połącz dane wyjściowe z dowolnym modelem klasyfikacji lub regresji. 
+2. Połącz dane wyjściowe dowolnego modelu klasyfikacji lub regresji. 
 
-    Na przykład jeśli korzystasz z **dwuetapowego drzewa decyzyjnego klasy** do klasyfikacji, skonfiguruj model przy użyciu żądanych parametrów. Następnie przeciągnij łącznik z **nauczenia portu modelu** klasyfikatora do zgodnego portu modelu krzyżowego sprawdzania poprawności. 
+    Na przykład jeśli używasz **dwóch klas promowane drzewo decyzji** do klasyfikacji, należy skonfigurować model z parametrów, które chcesz. Następnie przeciągnij łącznik z portu **modelu nieprzeszkolonego** klasyfikatora do pasującego portu Cross Validate Model. 
 
     > [!TIP] 
-    > Nie jest konieczne uczenie modelu, ponieważ model weryfikacji krzyżowej automatycznie pociąga za siebie model w ramach oceny.  
-3.  W porcie **zestawu danych** modelu krzyżowego sprawdzania poprawności Połącz każdy zestaw danych szkolenia z etykietą.  
+    > Nie trzeba trenować modelu, ponieważ cross-validate model automatycznie trenuje modelu w ramach oceny.  
+3.  Na **porcie Zestawu danych** modelu krzyżowego sprawdzania poprawności połącz dowolny zestaw danych szkolenia z etykietami.  
 
-4.  W prawym panelu modelu krzyżowego walidacji kliknij pozycję **Edytuj kolumnę**. Wybierz pojedynczą kolumnę zawierającą etykietę klasy lub wartość przewidywalną. 
+4.  W prawym panelu Cross Validate Model kliknij pozycję **Edytuj kolumnę**. Wybierz pojedynczą kolumnę zawierającą etykietę klasy lub przewidywalną wartość. 
 
-5. Ustaw wartość parametru **losowego inicjatora** , jeśli chcesz powtórzyć wyniki weryfikacji krzyżowej po kolejnych uruchomieniach na tych samych danych.  
+5. Ustaw wartość dla **Random seed** parametr, jeśli chcesz powtórzyć wyniki krzyżowego sprawdzania poprawności w kolejnych uruchamia na tych samych danych.  
 
-6. Uruchamianie potoku.
+6. Prześlij potok.
 
-7. Opis raportów można znaleźć w sekcji [Results (wyniki](#results) ).
+7. Zobacz sekcję [Wyniki,](#results) aby uzyskać opis raportów.
 
 ## <a name="results"></a>Wyniki
 
-Po ukończeniu wszystkich iteracji model krzyżowego sprawdzania poprawności tworzy wyniki dla całego zestawu danych. Tworzy również metryki wydajności, których można użyć do oceny jakości modelu.
+Po zakończeniu wszystkich iteracji Cross Validate Model tworzy wyniki dla całego zestawu danych. Tworzy również metryki wydajności, których można użyć do oceny jakości modelu.
 
-### <a name="scored-results"></a>Wyniki oceny
+### <a name="scored-results"></a>Wyniki z wynikiem
 
-Pierwsze dane wyjściowe modułu zawierają dane źródłowe dla każdego wiersza, a także niektóre wartości przewidywane i powiązane prawdopodobieństwa. 
+Pierwsze dane wyjściowe modułu zawiera dane źródłowe dla każdego wiersza, wraz z niektórych przewidywanych wartości i powiązanych prawdopodobieństw. 
 
-Aby wyświetlić wyniki, w potoku kliknij prawym przyciskiem myszy moduł modelu krzyżowego sprawdzania poprawności. Wybierz pozycję **Wizualizuj wyniki z wynikami**.
+Aby wyświetlić wyniki, w potoku kliknij prawym przyciskiem myszy moduł Cross Validate Model. Wybierz **pozycję Wizualizuj wyniki ocenione**.
 
 | Nazwa nowej kolumny      | Opis                              |
 | -------------------- | ---------------------------------------- |
-| Etykiety z wynikami        | Ta kolumna jest dodawana na końcu zestawu danych. Zawiera wartość przewidywaną dla każdego wiersza. |
-| Oceny prawdopodobieństwa | Ta kolumna jest dodawana na końcu zestawu danych. Wskazuje szacowane prawdopodobieństwo wartości w **etykietach z wynikami**. |
-| Numer zgięcia          | Wskazuje indeks (liczony od zera) złożenia, do którego przypisano każdy wiersz danych podczas weryfikacji krzyżowej. |
+| Etykiety z wynikami        | Ta kolumna jest dodawana na końcu zestawu danych. Zawiera przewidywaną wartość dla każdego wiersza. |
+| Prawdopodobieństwo zdobycia bramki | Ta kolumna jest dodawana na końcu zestawu danych. Wskazuje szacowane prawdopodobieństwo wartości w **etykietach punktowane .** |
+| Liczba złóż          | Wskazuje indeks oparty na wartości zerowej krotnie, do którym przypisano każdy wiersz danych podczas sprawdzania poprawności krzyżowej. |
 
  ### <a name="evaluation-results"></a>Wyniki oceny
 
-Drugi raport jest pogrupowany według zgięcia. Należy pamiętać, że podczas wykonywania, krzyżowy Walidacja modelu losowo dzieli dane szkoleniowe na *n* zgięcia (domyślnie 10). W każdej iteracji w zestawie danych, krzyżowego sprawdzania poprawności modelu używa jednego zgięcia jako zestawu danych walidacji. Używa pozostałego zgięcia *n-1* do uczenia modelu. Każdy z modeli *n* jest testowany na dane we wszystkich innych zgięciach.
+Drugi raport jest pogrupowany według fałd. Należy pamiętać, że podczas wykonywania Cross Validate Model losowo dzieli dane szkolenia na *n* folds (domyślnie 10). W każdej iteracji nad zestawem danych Model sprawdzania poprawności krzyżowej używa jednego krotnie jako zestawu danych sprawdzania poprawności. Używa pozostałych fałd *n-1* do treningu modelu. Każdy z *n* modeli jest testowany na danych we wszystkich innych fałdach.
 
-W tym raporcie zgięcia są wyświetlane według wartości indeksu w kolejności rosnącej.  Aby zamówić w dowolnej innej kolumnie, można zapisać wyniki jako zestaw danych.
+W tym raporcie fałdy są wymienione według wartości indeksu, w porządku rosnącym.  Aby zamówić w dowolnej innej kolumnie, można zapisać wyniki jako zestaw danych.
 
-Aby wyświetlić wyniki, w potoku kliknij prawym przyciskiem myszy moduł modelu krzyżowego sprawdzania poprawności. Wybierz opcję **Wizualizuj wyniki oceny według**złożenia.
+Aby wyświetlić wyniki, w potoku kliknij prawym przyciskiem myszy moduł Cross Validate Model. Wybierz **opcję Wizualizuj wyniki oceny według krotnie**.
 
 
 |Nazwa kolumny| Opis|
 |----|----|
-|Numer zgięcia| Identyfikator dla każdego złożenia. Jeśli utworzono pięć zgięciów, będą dostępne pięć podzestawów danych z numerami od 0 do 4.
-|Liczba przykładów w złożeniu|Liczba wierszy przypisanych do każdego zgięcia. Powinny one być w przybliżeniu równe. |
+|Liczba zagięcia| Identyfikator dla każdej krotnie. Jeśli utworzono pięć razy, będzie pięć podzbiorów danych, ponumerowane od 0 do 4.
+|Liczba przykładów w składanym|Liczba wierszy przypisanych do każdej krotnie. Powinny być mniej więcej równe. |
 
 
-Moduł zawiera również następujące metryki dla każdego zgięcia, w zależności od typu modelu, który oceniasz: 
+Moduł zawiera również następujące metryki dla każdego zagięcia, w zależności od typu ocenianego modelu: 
 
-+ **Modele klasyfikacji**: dokładność, odwołanie, F-Score, AUC, dokładność  
++ **Modele klasyfikacji**: Precyzja, przywołanie, wynik F, AUC, dokładność  
 
-+ **Modele regresji**: średni błąd bezwzględny, główny, średni, błąd względny, błąd bezwzględny, względny błąd kwadratowy i współczynnik wyznaczania
++ **Modele regresji**: Średni błąd bezwzględny, średni błąd kwadratowy, względny błąd bezwzględny, względny błąd kwadratowy i współczynnik oznaczania
 
 
 ## <a name="technical-notes"></a>Uwagi techniczne  
 
-+ Najlepszym rozwiązaniem jest ujednolicenie zestawów danych przed ich użyciem do wzajemnego sprawdzania poprawności. 
++ Jest najlepszym rozwiązaniem do normalizacji zestawów danych przed użyciem ich do sprawdzania poprawności krzyżowej. 
 
-+ Sprawdzanie poprawności modelu krzyżowego jest znacznie bardziej czasochłonne i trwa dłużej niż w przypadku zweryfikowania modelu przy użyciu losowo podzielonego zestawu danych. Przyczyną jest to, że model krzyżowego sprawdzania poprawności pociąga i weryfikuje model wielokrotnie.
++ Model sprawdzania poprawności krzyżowej jest znacznie bardziej intensywny pod względem obliczeniowym i trwa dłużej niż w przypadku zweryfikowanego modelu przy użyciu losowo podzielonego zestawu danych. Powodem jest, że Cross Validate model pociągów i sprawdza poprawność modelu wiele razy.
 
-+ Nie trzeba podzielić zestawu danych na zestawy szkoleniowe i testowe w przypadku używania krzyżowego sprawdzania poprawności do mierzenia dokładności modelu. 
++ Nie ma potrzeby dzielenia zestawu danych na zestawy szkoleniowe i testowe podczas korzystania z krzyżowego sprawdzania poprawności do pomiaru dokładności modelu. 
 
 
 ## <a name="next-steps"></a>Następne kroki
 
-Zapoznaj się z [zestawem modułów dostępnych](module-reference.md) do Azure Machine Learning. 
+Zobacz [zestaw modułów dostępnych dla](module-reference.md) usługi Azure Machine Learning. 
 

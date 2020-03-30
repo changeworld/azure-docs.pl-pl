@@ -1,20 +1,20 @@
 ---
-title: Wspólne lokalizowanie maszyn wirtualnych z systemem Linux
-description: Dowiedz się więcej na temat sposobu lokalizowania zasobów maszyn wirtualnych platformy Azure w celu zwiększenia opóźnienia.
+title: Współlokuj maszyny wirtualne z systemem Linux
+description: Dowiedz się, jak współlokowanie zasobów maszyny Wirtualnej platformy Azure może zwiększyć opóźnienia.
 ms.service: virtual-machines
 ms.topic: article
 ms.date: 10/30/2019
 ms.author: zivr
 ms.openlocfilehash: d2fd8a2cd7dac7b1d3c78691c84a861d924005ce
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79250285"
 ---
-# <a name="co-locate-resources-for-improved-latency"></a>Wspólne Lokalizowanie zasobów w celu uzyskania lepszych opóźnień
+# <a name="co-locate-resources-for-improved-latency"></a>Kololokuj zasoby w celu zwiększenia opóźnień
 
-Podczas wdrażania aplikacji na platformie Azure rozproszenie wystąpień między regionami lub strefami dostępności tworzy opóźnienie sieci, co może mieć wpływ na ogólną wydajność aplikacji. 
+Podczas wdrażania aplikacji na platformie Azure rozmieszczanie wystąpień w różnych regionach lub strefach dostępności tworzy opóźnienie sieci, co może mieć wpływ na ogólną wydajność aplikacji. 
 
 ## <a name="proximity-placement-groups"></a>Grupy umieszczania w pobliżu
 
@@ -22,10 +22,10 @@ Podczas wdrażania aplikacji na platformie Azure rozproszenie wystąpień międz
 
 ## <a name="next-steps"></a>Następne kroki
 
-Wdróż maszynę wirtualną w [grupie umieszczania sąsiedztwa](proximity-placement-groups.md) przy użyciu interfejsu wiersza polecenia platformy Azure.
+Wdrażanie maszyny Wirtualnej do [grupy miejsc docelowych zbliżeniowych](proximity-placement-groups.md) przy użyciu interfejsu wiersza polecenia platformy Azure.
 
-Dowiedz się, jak [testować opóźnienia sieci](https://aka.ms/TestNetworkLatency?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+Dowiedz się, jak [przetestować opóźnienie sieci](https://aka.ms/TestNetworkLatency?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
-Dowiedz się, jak [zoptymalizować przepływność sieci](https://docs.microsoft.com/azure/virtual-network/virtual-network-optimize-network-bandwidth?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).  
+Dowiedz się, jak [zoptymalizować przepustowość sieci.](https://docs.microsoft.com/azure/virtual-network/virtual-network-optimize-network-bandwidth?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)  
 
-Dowiedz się, jak [używać grup umieszczania zbliżeniowe z aplikacjami SAP](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-proximity-placement-scenarios?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+Dowiedz się, jak [korzystać z grup miejsc docelowych zbliżeniowych w aplikacjach SAP.](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-proximity-placement-scenarios?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)

@@ -1,6 +1,6 @@
 ---
-title: Tworzenie potoku Apache Spark Machine Learning — Azure HDInsight
-description: Użyj biblioteki Apache Spark Machine Learning, aby utworzyć potoki danych w usłudze Azure HDInsight.
+title: Tworzenie potoku uczenia maszynowego Platformy Apache Spark — usługa Azure HDInsight
+description: Użyj biblioteki uczenia maszynowego Apache Spark do tworzenia potoków danych w usłudze Azure HDInsight.
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
@@ -9,33 +9,33 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 07/22/2019
 ms.openlocfilehash: b0de9103fd022dc74e7c75017a602eb6701686fe
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73494666"
 ---
 # <a name="create-an-apache-spark-machine-learning-pipeline"></a>Tworzenie potoku uczenia maszynowego platformy Apache Spark
 
-Skalowalna biblioteka Machine Learning Apache Spark (MLlib) zapewnia możliwości modelowania w środowisku rozproszonym. Pakiet Spark [`spark.ml`](https://spark.apache.org/docs/latest/ml-pipeline.html) to zestaw interfejsów API wysokiego poziomu wbudowanych w ramki danych. Te interfejsy API ułatwiają tworzenie i dostrajanie praktycznych potoków uczenia maszynowego.  Program *Spark Machine Learning* odwołuje się do tego interfejsu API opartego na ramce Dataframe MLlib, a nie starszego interfejsu API potoku opartego na RDD.
+Skalowalna biblioteka uczenia maszynowego apache Spark (MLlib) zapewnia możliwości modelowania w środowisku rozproszonym. Pakiet [`spark.ml`](https://spark.apache.org/docs/latest/ml-pipeline.html) Spark to zestaw interfejsów API wysokiego poziomu opartych na dataframes. Te interfejsy API ułatwiają tworzenie i dostrajanie praktycznych potoków uczenia maszynowego.  *Uczenie maszynowe platformy Spark* odnosi się do tego interfejsu API opartego na platformie Danych MLlib, a nie do starszego interfejsu API potoku opartego na platformie RDD.
 
-Potok uczenia maszynowego (ML) to kompletny przepływ pracy łączący wiele algorytmów uczenia maszynowego. Aby przetwarzać dane i uczyć się na nich, należy wykonać wiele czynności, co wymaga sekwencji algorytmów. Potoki definiują etapy i kolejność procesu uczenia maszynowego. W MLlib etapy potoku są reprezentowane przez określoną sekwencję PipelineStages, w których transformator i szacowania wykonują zadania.
+Potok uczenia maszynowego (ML) to kompletny przepływ pracy łączący ze sobą wiele algorytmów uczenia maszynowego. Może istnieć wiele kroków wymaganych do przetwarzania i uczenia się na podstawie danych, wymagających sekwencji algorytmów. Potoki definiują etapy i kolejność procesu uczenia maszynowego. W MLlib etapy potoku są reprezentowane przez określoną sekwencję PipelineStages, gdzie Transformer i Estymator każdy wykonywać zadania.
 
-Transformator jest algorytmem, który przekształca jedną ramkę danych z inną przy użyciu metody `transform()`. Na przykład transformator funkcji może odczytać jedną kolumnę ramki Data, mapując ją do innej kolumny i wyprowadza nową ramkę danych z dołączoną do niej kolumną.
+Transformator jest algorytmem, który przekształca jeden DataFrame `transform()` do innego przy użyciu metody. Na przykład transformator operacji może odczytać jedną kolumnę dataframe, zamapować go do innej kolumny i wyprowadzić nowy DataFrame z mapowane kolumny dołączone do niego.
 
-Szacowania jest abstrakcją algorytmów uczenia i jest odpowiedzialny za Instalowanie i uczenie się zestawu danych w celu utworzenia transformatora. Szacowania implementuje metodę o nazwie `fit()`, która akceptuje ramkę danych i tworzy ramkę danych, która jest transformatorem.
+Estymator jest abstrakcja algorytmów uczenia się i jest odpowiedzialny za dopasowanie lub szkolenia na zestaw danych do produkcji Transformer. Estymator implementuje metodę `fit()`o nazwie , która akceptuje DataFrame i tworzy DataFrame, który jest Transformer.
 
-Każde wystąpienie bezstanowe transformatora lub szacowania ma własny unikatowy identyfikator, który jest używany podczas określania parametrów. Oba te parametry używają jednolitego interfejsu API.
+Każde bezstanowe wystąpienie Transformatora lub Estymatora ma swój własny unikatowy identyfikator, który jest używany podczas określania parametrów. Oba używają jednolitego interfejsu API do określania tych parametrów.
 
 ## <a name="pipeline-example"></a>Przykład potoku
 
-Aby zademonstrować praktyczne użycie potoku z tablicą, w tym przykładzie użyto pliku danych `HVAC.csv` przykładowego, który jest wstępnie załadowany do domyślnego magazynu dla klastra usługi HDInsight, Azure Storage lub Data Lake Storage. Aby wyświetlić zawartość pliku, przejdź do katalogu `/HdiSamples/HdiSamples/SensorSampleData/hvac`. `HVAC.csv` zawiera zestaw godzin zarówno w przypadku, jak i rzeczywiste temperatury dla systemów HVAC (*ogrzewania, wentylacji i*klimatyzacji) w różnych budynkach. Celem jest uczenie modelu danych i utworzenie prognozy dla danego budynku.
+Aby zademonstrować praktyczne użycie potoku uczenia maszynowego, w tym przykładzie użyto przykładowego `HVAC.csv` pliku danych, który jest wstępnie załadowany do domyślnego magazynu dla klastra USŁUGI HDInsight, usługi Azure Storage lub Data Lake Storage. Aby wyświetlić zawartość pliku, przejdź `/HdiSamples/HdiSamples/SensorSampleData/hvac` do katalogu. `HVAC.csv`zawiera zestaw czasów z docelowymi i rzeczywistymi temperaturami dla systemów HVAC *(ogrzewanie, wentylacja i klimatyzacja)* w różnych budynkach. Celem jest szkolenie modelu na danych i stworzenie prognozowanej temperatury dla danego budynku.
 
 Następujący kod:
 
-1. Definiuje `LabeledDocument`, w którym są przechowywane `BuildingID`, `SystemInfo` (identyfikator i wiek systemu) oraz `label` (1,0, jeśli kompilacja jest zbyt gorąca, 0,0 w przeciwnym razie).
-2. Tworzy niestandardową funkcję parsera `parseDocument`, która pobiera wiersz (wiersz) danych i określa, czy kompilacja jest "gorąca", porównując docelową temperaturę z rzeczywistą temperaturą.
-3. Stosuje parser podczas wyodrębniania danych źródłowych.
+1. Definiuje `LabeledDocument`, który przechowuje `BuildingID`, `SystemInfo` (identyfikator systemu i wiek) `label` i a (1,0, jeśli budynek jest zbyt gorący, 0.0 w przeciwnym razie).
+2. Tworzy niestandardową funkcję `parseDocument` analizatora, która przyjmuje wiersz (wiersz) danych i określa, czy budynek jest "gorący", porównując temperaturę docelową z rzeczywistą temperaturą.
+3. Stosuje analizator podczas wyodrębniania danych źródłowych.
 4. Tworzy dane szkoleniowe.
 
 ```python
@@ -78,11 +78,11 @@ documents = data.filter(lambda s: "Date" not in s).map(parseDocument)
 training = documents.toDF()
 ```
 
-Ten przykładowy potok ma trzy etapy: `Tokenizer` i `HashingTF` (obie transformatory) i `Logistic Regression` (szacowania).  Wyodrębnione i przeanalizowane dane w `training` Dataframe przechodzą przez potok po wywołaniu `pipeline.fit(training)`.
+Ten przykładowy potok `Tokenizer` ma `HashingTF` trzy etapy: `Logistic Regression` i (oba Transformers) i (Estymator).  Wyodrębnione i przeanalizowane dane `training` w DataFrame przepływa `pipeline.fit(training)` przez potok, gdy jest wywoływana.
 
-1. Pierwszy etap, `Tokenizer`, dzieli kolumnę wejściową `SystemInfo` (składającą się z identyfikatora systemowego i wartości wieku) do `words`j kolumny wyjściowej. Ta nowa kolumna `words` zostanie dodana do ramki Dataframe. 
-2. Drugi etap `HashingTF`, konwertuje nową kolumnę `words` na wektory funkcji. Ta nowa kolumna `features` zostanie dodana do ramki Dataframe. Te pierwsze dwa etapy to Transformatory. 
-3. Trzeci etap, `LogisticRegression`, to szacowania, a więc potok wywołuje metodę `LogisticRegression.fit()` w celu utworzenia `LogisticRegressionModel`. 
+1. Pierwszy etap `Tokenizer`dzieli kolumnę `SystemInfo` wejściową (składającą się z identyfikatora `words` systemu i wartości wieku) na kolumnę wyjściową. Ta `words` nowa kolumna zostanie dodana do elementu DataFrame. 
+2. Drugi etap `HashingTF`, konwertuje `words` nową kolumnę na wektory operacji. Ta `features` nowa kolumna zostanie dodana do elementu DataFrame. Te dwa pierwsze etapy to Transformery. 
+3. Trzeci etap, `LogisticRegression`jest Estymatorem, a więc `LogisticRegression.fit()` rurociąg wywołuje `LogisticRegressionModel`metodę do produkcji . 
 
 ```python
 tokenizer = Tokenizer(inputCol="SystemInfo", outputCol="words")
@@ -95,7 +95,7 @@ pipeline = Pipeline(stages=[tokenizer, hashingTF, lr])
 model = pipeline.fit(training)
 ```
 
-Aby wyświetlić nowe `words` i `features` kolumny dodane przez Transformatory `Tokenizer` i `HashingTF` oraz próbkę `LogisticRegression` szacowania, uruchom metodę `PipelineModel.transform()` w pierwotnej ramce Dataframe. W kodzie produkcyjnym następnym krokiem jest przekazanie testowej ramki danych w celu zweryfikowania szkolenia.
+Aby wyświetlić `words` `features` nowe i kolumny `Tokenizer` `HashingTF` dodane przez i transformatorów i próbki `LogisticRegression` `PipelineModel.transform()` estymatora, uruchom metodę na oryginalnej DataFrame. W kodzie produkcyjnym następnym krokiem będzie przekazać w testie DataFrame, aby sprawdzić poprawność szkolenia.
 
 ```python
 peek = model.transform(training)
@@ -130,8 +130,8 @@ peek.show()
 only showing top 20 rows
 ```
 
-Obiekt `model` może być teraz używany do prognozowania. Aby uzyskać pełny przykład tej aplikacji do uczenia maszynowego i instrukcje krok po kroku dotyczące ich uruchamiania, zobacz [Tworzenie aplikacji Apache Spark Machine Learning w usłudze Azure HDInsight](apache-spark-ipython-notebook-machine-learning.md).
+Obiekt `model` może teraz służyć do przewidywania. Aby uzyskać pełną próbkę tej aplikacji uczenia maszynowego i instrukcje krok po kroku dotyczące jej uruchamiania, zobacz [Tworzenie aplikacji uczenia maszynowego Platformy Spark apache na platformie Azure HDInsight.](apache-spark-ipython-notebook-machine-learning.md)
 
 ## <a name="see-also"></a>Zobacz też
 
-* [Nauka danych przy użyciu Scala i Apache Spark na platformie Azure](../../machine-learning/team-data-science-process/scala-walkthrough.md)
+* [Data Science przy użyciu Scala i Apache Spark na platformie Azure](../../machine-learning/team-data-science-process/scala-walkthrough.md)

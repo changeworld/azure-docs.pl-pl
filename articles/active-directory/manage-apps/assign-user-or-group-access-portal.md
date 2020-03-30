@@ -1,6 +1,6 @@
 ---
-title: Przypisywanie użytkownika lub grupy do aplikacji dla przedsiębiorstw w usłudze Azure AD
-description: Jak wybrać aplikację dla przedsiębiorstw, aby przypisać do niej użytkownika lub grupę w Azure Active Directory
+title: Przypisywanie użytkownika lub grupy do aplikacji przedsiębiorstwa w usłudze Azure AD
+description: Jak wybrać aplikację przedsiębiorstwa, aby przypisać do niej użytkownika lub grupę w usłudze Azure Active Directory
 services: active-directory
 author: msmimart
 manager: CelesteDG
@@ -8,66 +8,91 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 10/24/2019
+ms.date: 02/21/2020
 ms.author: mimart
 ms.reviewer: luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3a5135f97ffb7d29c9fd928382ca4344beaa654d
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 186e36e4625a60362c54972b16b53f0f3e6753fa
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74274739"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79409196"
 ---
-# <a name="assign-a-user-or-group-to-an-enterprise-app-in-azure-active-directory"></a>Przypisywanie użytkownika lub grupy do aplikacji dla przedsiębiorstw w Azure Active Directory
+# <a name="assign-a-user-or-group-to-an-enterprise-app-in-azure-active-directory"></a>Przypisywanie użytkownika lub grupy do aplikacji przedsiębiorstwa w usłudze Azure Active Directory
 
-Aby przypisać użytkownika lub grupę do aplikacji dla przedsiębiorstw, należy przypisać dowolne z tych ról administratora: Administrator globalny, administrator aplikacji, administrator aplikacji w chmurze lub przypisany jako właściciel aplikacji przedsiębiorstwa.  W przypadku aplikacji firmy Microsoft (takich jak aplikacje pakietu Office 365) należy używać programu PowerShell do przypisywania użytkowników do aplikacji dla przedsiębiorstw.
+W tym artykule pokazano, jak przypisać użytkowników lub grupy do aplikacji korporacyjnych w usłudze Azure Active Directory (Azure AD), z poziomu witryny Azure portal lub przy użyciu programu PowerShell. Po przypisaniu użytkownika do aplikacji aplikacja jest wyświetlana w [panelu dostępu Moje aplikacje](https://myapps.microsoft.com/) użytkownika w celu ułatwienia dostępu. Jeśli aplikacja udostępnia role, można również przypisać określoną rolę do użytkownika.
+
+Aby uzyskać większą kontrolę, niektóre typy aplikacji korporacyjnych można skonfigurować tak, aby [wymagały przypisania użytkownika](#configure-an-application-to-require-user-assignment). 
+
+Aby [przypisać użytkownika lub grupę do aplikacji przedsiębiorstwa,](#assign-users-or-groups-to-an-app-via-the-azure-portal)musisz zalogować się jako administrator globalny, administrator aplikacji, administrator aplikacji w chmurze lub przypisany właściciel aplikacji przedsiębiorstwa.
 
 > [!NOTE]
-> Wymagania dotyczące licencjonowania funkcji omówionych w tym artykule znajdują się na [stronie cennika Azure Active Directory](https://azure.microsoft.com/pricing/details/active-directory).
+> Przypisanie oparte na grupach wymaga usługi Azure Active Directory Premium P1 lub P2 edition. Przypisanie oparte na grupach jest obsługiwane tylko dla grup zabezpieczeń. Członkostwo w grupach zagnieżdżonych i grupy usługi Office 365 nie są obecnie obsługiwane. Aby uzyskać więcej wymagań licencyjnych dotyczących funkcji omówionych w tym artykule, zobacz [stronę cennika usługi Azure Active Directory](https://azure.microsoft.com/pricing/details/active-directory). 
 
-## <a name="assign-a-user-to-an-app---portal"></a>Przypisywanie użytkownika do portalu aplikacji
+## <a name="configure-an-application-to-require-user-assignment"></a>Konfigurowanie aplikacji w celu wymagania przypisania przez użytkownika
 
-1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com) przy użyciu konta, które jest administratorem globalnym katalogu.
-1. Wybierz pozycję **wszystkie usługi**, wpisz Azure Active Directory w polu tekstowym, a następnie wybierz klawisz **Enter**.
-1. Wybierz pozycję **aplikacje dla przedsiębiorstw**.
-1. W okienku **aplikacje dla przedsiębiorstw — wszystkie aplikacje** zostanie wyświetlona lista aplikacji, którymi można zarządzać. Wybierz aplikację.
-1. W okienku ***nazwa_aplikacji*** (czyli okienku z nazwą wybranej aplikacji w tytule) wybierz pozycję **Użytkownicy & grupy**.
-1. W okienku ***nazwa_aplikacji*** **— Użytkownicy i grupy** wybierz pozycję **Dodaj użytkownika**.
-1. W okienku **Dodaj przypisanie** wybierz pozycję **Użytkownicy i grupy**.
+W przypadku następujących typów aplikacji można wymagać od użytkowników przypisania ich do aplikacji, zanim będą mogli uzyskać do niej dostęp:
+
+- Aplikacje skonfigurowane do rejestracji sfederowanej (Logowanie jednokrotne) z uwierzytelnianiem opartym na SAML
+- Aplikacje proxy aplikacji korzystające z uwierzytelniania wstępnego usługi Azure Active Directory
+- Aplikacje utworzone na platformie aplikacji usługi Azure AD, które używają uwierzytelniania OAuth 2.0 / OpenID Connect po zgodę użytkownika lub administratora na tę aplikację.
+
+Gdy przypisanie użytkownika jest wymagane, tylko ci użytkownicy, których jawnie przypisujesz do aplikacji, będą mogli się zalogować. Mogą uzyskać dostęp do aplikacji na stronie Moje aplikacje lub za pomocą bezpośredniego linku. 
+
+Jeśli przypisanie nie jest *wymagane*, ponieważ ta opcja została ustawiona na **Nie** lub ponieważ aplikacja używa innego trybu jedno i samodzielnego, każdy użytkownik będzie mógł uzyskać dostęp do aplikacji, jeśli ma bezpośrednie łącze do aplikacji lub **adres URL dostępu użytkownika** na stronie **Właściwości** aplikacji. 
+
+To ustawienie nie ma wpływu na to, czy aplikacja jest wyświetlana w panelu Dostęp do aplikacji Moje aplikacje. Aplikacje są wyświetlane w panelach dostępu Moje aplikacje użytkowników po przypisaniu użytkownika lub grupy do aplikacji. Aby uzyskać informacje na temat tła, zobacz [Zarządzanie dostępem do aplikacji](what-is-access-management.md).
+
+
+Aby wymagać przypisania użytkownika dla aplikacji:
+
+1. Zaloguj się do [witryny Azure portal](https://portal.azure.com) za pomocą konta administratora lub jako właściciel aplikacji.
+
+2. Wybierz pozycję **Azure Active Directory**. W menu nawigacji po lewej stronie wybierz pozycję **Aplikacje przedsiębiorstwa**.
+
+3. Wybierz aplikację z listy. Jeśli nie widzisz aplikacji, zacznij wpisywać jej nazwę w polu wyszukiwania. Możesz też użyć kontrolek filtru, aby wybrać typ aplikacji, stan lub widoczność, a następnie wybrać **pozycję Zastosuj**.
+
+4. W menu nawigacji po lewej stronie wybierz polecenie **Właściwości**.
+
+5. Upewnij się, że wymagane **przypisanie użytkownika?** przełącznik jest ustawiony na **Tak**.
+
+   > [!NOTE]
+   > Jeśli **przełącznik Przypisanie użytkownika jest niedostępne,** można użyć programu PowerShell, aby ustawić właściwość appRoleAssignmentRequired na rzeczoznawcy usługi.
+
+6. Wybierz przycisk **Zapisz** u góry ekranu.
+
+## <a name="assign-users-or-groups-to-an-app-via-the-azure-portal"></a>Przypisywanie użytkowników lub grup do aplikacji za pośrednictwem witryny Azure portal
+
+1. Zaloguj się do [witryny Azure portal](https://portal.azure.com) za pomocą konta administratora globalnego, administratora aplikacji lub administratora aplikacji w chmurze lub jako przypisany właściciel aplikacji przedsiębiorstwa.
+2. Wybierz pozycję **Azure Active Directory**. W menu nawigacji po lewej stronie wybierz pozycję **Aplikacje przedsiębiorstwa**.
+3. Wybierz aplikację z listy. Jeśli nie widzisz aplikacji, zacznij wpisywać jej nazwę w polu wyszukiwania. Możesz też użyć kontrolek filtru, aby wybrać typ aplikacji, stan lub widoczność, a następnie wybrać **pozycję Zastosuj**.
+4. W menu nawigacji po lewej stronie wybierz pozycję **Użytkownicy i grupy**.
+   > [!NOTE]
+   > Jeśli chcesz przypisać użytkowników do aplikacji Microsoft Applications, takich jak aplikacje office 365, niektóre z tych aplikacji używają programu PowerShell. 
+5. Wybierz przycisk **Dodaj użytkownika.**
+6. W okienku **Dodawanie przydziału** wybierz pozycję **Użytkownicy i grupy**.
+7. Wybierz użytkownika lub grupę, którą chcesz przypisać do aplikacji, lub zacznij wpisywać nazwę użytkownika lub grupy w polu wyszukiwania. Można wybrać wielu użytkowników i grupy, a wybrane opcje pojawią się w obszarze **Wybrane elementy**.
+8. Po zakończeniu kliknij przycisk **Wybierz**.
 
    ![Przypisywanie użytkownika lub grupy do aplikacji](./media/assign-user-or-group-access-portal/assign-users.png)
 
-1. W okienku **Użytkownicy i grupy** wybierz co najmniej jednego użytkownika lub grupę z listy, a następnie wybierz przycisk **Wybierz** w dolnej części okienka.
-1. W okienku **Dodaj przypisanie** wybierz pozycję **rola**. Następnie w okienku **Wybierz rolę** wybierz rolę, która ma zostać zastosowana do wybranych użytkowników lub grup, a następnie wybierz pozycję **OK** w dolnej części okienka.
-1. W okienku **Dodaj przypisanie** wybierz przycisk **Przypisz** w dolnej części okienka. Przypisani użytkownicy lub grupy mają uprawnienia zdefiniowane przez wybraną rolę dla tej aplikacji dla przedsiębiorstw.
+9. W okienku **Użytkownicy i grupy** wybierz jednego lub więcej użytkowników lub grup z listy, a następnie wybierz przycisk **Wybierz** u dołu okienka.
+10. Jeśli aplikacja obsługuje go, można przypisać rolę do użytkownika lub grupy. W okienku **Dodawanie przydziału** wybierz pozycję **Wybierz rolę**. Następnie w okienku **Wybierz rolę** wybierz rolę, która ma być stosowana do wybranych użytkowników lub grup, a następnie wybierz **przycisk OK** u dołu okienka. 
 
-## <a name="allow-all-users-to-access-an-app---portal"></a>Zezwalaj wszystkim użytkownikom na dostęp do portalu aplikacji
+    > [!NOTE]
+    > Jeśli aplikacja nie obsługuje wyboru roli, przypisana jest domyślna rola dostępu. W takim przypadku aplikacja zarządza poziomem dostępu użytkowników.
 
-1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com) przy użyciu konta, które jest administratorem globalnym katalogu.
-1. Wybierz pozycję **wszystkie usługi**, wpisz Azure Active Directory w polu tekstowym, a następnie wybierz klawisz **Enter**.
-1. Wybierz pozycję **aplikacje dla przedsiębiorstw**.
-1. W okienku **aplikacje dla przedsiębiorstw** wybierz pozycję **wszystkie aplikacje**. Ta lista zawiera aplikacje, którymi można zarządzać.
-1. W okienku **aplikacje dla przedsiębiorstw — wszystkie aplikacje** wybierz aplikację.
-1. W okienku ***nazwa_aplikacji*** wybierz pozycję **Właściwości**.
-1. W okienku  ***nazwa_aplikacji* -właściwości** Ustaw **wymagane przypisanie użytkownika?** wartość **nie**.
+2. W okienku **Dodawanie przydziału** wybierz przycisk **Przypisz** u dołu okienka.
 
-**Wymagane przypisanie użytkownika?** opcja:
-
-- Jeśli ta opcja jest ustawiona na tak, użytkownicy muszą najpierw zostać przypisani do tej aplikacji, zanim będą mogli uzyskać do niej dostęp.
-- Jeśli ta opcja jest ustawiona na wartość nie, wszyscy użytkownicy, którzy przejdą do adresu URL bezpośredniego linku do aplikacji lub adresu URL aplikacji, będą mieli dostęp
-- Nie ma wpływu na to, czy aplikacja jest wyświetlana w panelu dostępu do aplikacji. Aby wyświetlić aplikację w panelu dostępu, należy przypisać do aplikacji odpowiedniego użytkownika lub grupę.
-- Działa tylko z aplikacjami w chmurze skonfigurowanymi do logowania jednokrotnego w protokole SAML, aplikacji serwera proxy aplikacji, które używają Azure Active Directory wstępnego uwierzytelniania lub aplikacji utworzonych bezpośrednio na platformie aplikacji usługi Azure AD, która korzysta z uwierzytelniania OAuth 2,0/OpenID Connect, gdy użytkownik lub administrator wyraził zgodę na tę aplikację. Zobacz [Logowanie jednokrotne dla aplikacji](what-is-single-sign-on.md). Zobacz [Konfigurowanie sposobu, w jaki użytkownicy końcowi wyrażają zgodę na aplikację](configure-user-consent.md).
-- Ta opcja nie obowiązuje, gdy aplikacja jest skonfigurowana dla dowolnego z trybów logowania jednokrotnego.
-
-## <a name="assign-a-user-to-an-app---powershell"></a>Przypisywanie użytkownika do aplikacji — PowerShell
+## <a name="assign-users-or-groups-to-an-app-via-powershell"></a>Przypisywanie użytkowników lub grup do aplikacji za pośrednictwem programu PowerShell
 
 1. Otwórz wiersz polecenia programu Windows PowerShell z podwyższonym poziomem uprawnień.
 
    > [!NOTE]
-   > Należy zainstalować moduł AzureAD (Użyj polecenia `Install-Module -Name AzureAD`). Jeśli zostanie wyświetlony monit o zainstalowanie modułu NuGet lub nowego modułu Azure Active Directory v2 PowerShell, wpisz Y i naciśnij klawisz ENTER.
+   > Należy zainstalować moduł AzureAD (użyj `Install-Module -Name AzureAD`polecenia ). Jeśli zostanie wyświetlony monit o zainstalowanie modułu NuGet lub nowego modułu programu PowerShell usługi Azure Active Directory V2, wpisz Y i naciśnij klawisz ENTER.
 
-1. Uruchom `Connect-AzureAD` i zaloguj się przy użyciu konta administratora globalnego.
+1. Uruchamianie `Connect-AzureAD` konta użytkownika administratora globalnego i logowanie się do tego konta administratora globalnego.
 1. Użyj następującego skryptu, aby przypisać użytkownika i rolę do aplikacji:
 
     ```powershell
@@ -85,15 +110,15 @@ Aby przypisać użytkownika lub grupę do aplikacji dla przedsiębiorstw, należ
     New-AzureADUserAppRoleAssignment -ObjectId $user.ObjectId -PrincipalId $user.ObjectId -ResourceId $sp.ObjectId -Id $appRole.Id
     ```
 
-Więcej informacji o sposobie przypisywania użytkownika do roli aplikacji można znaleźć w dokumentacji usługi [New-AzureADUserAppRoleAssignment](https://docs.microsoft.com/powershell/module/azuread/new-azureaduserapproleassignment?view=azureadps-2.0)
+Aby uzyskać więcej informacji na temat przypisywania użytkownika do roli aplikacji, odwiedź dokumentację [nowego podpisu AzureADUserAppRoleAssignment](https://docs.microsoft.com/powershell/module/azuread/new-azureaduserapproleassignment?view=azureadps-2.0)
 
-Aby przypisać grupę do aplikacji dla przedsiębiorstw, należy zamienić `Get-AzureADUser` z `Get-AzureADGroup`.
+Aby przypisać grupę do aplikacji dla `Get-AzureADUser` przedsiębiorstwa, należy zastąpić `Get-AzureADGroup`go .
 
 ### <a name="example"></a>Przykład
 
-Ten przykład przypisuje użytkownikowi Britta Simon do aplikacji [analizy w miejscu pracy firmy Microsoft](https://products.office.com/business/workplace-analytics) przy użyciu programu PowerShell.
+W tym przykładzie przypisuje użytkownika Britta Simon do aplikacji [Microsoft Workplace Analytics](https://products.office.com/business/workplace-analytics) za pomocą programu PowerShell.
 
-1. W programie PowerShell Przypisz odpowiednie wartości do zmiennych $username, $app _name i $app _role_name.
+1. W programie PowerShell przypisz odpowiednie wartości do zmiennych $username, $app_name i $app_role_name.
 
     ```powershell
     # Assign the values to the variables
@@ -101,7 +126,7 @@ Ten przykład przypisuje użytkownikowi Britta Simon do aplikacji [analizy w mie
     $app_name = "Workplace Analytics"
     ```
 
-1. W tym przykładzie nie wiemy, co to jest dokładna nazwa roli aplikacji, którą chcemy przypisać do Britta Simon. Uruchom następujące polecenia, aby uzyskać użytkownika ($user) i nazwę główną usługi ($sp) przy użyciu nazwy UPN użytkownika i nazw wyświetlanych jednostki usługi.
+1. W tym przykładzie nie wiemy, jaka jest dokładna nazwa roli aplikacji, którą chcemy przypisać do Britta Simon. Uruchom następujące polecenia, aby uzyskać użytkownika ($user) i jednostki usługi ($sp) przy użyciu nazwy UPN użytkownika i nazwy wyświetlane głównej usługi.
 
     ```powershell
     # Get the user to assign, and the service principal for the app to assign to
@@ -109,11 +134,11 @@ Ten przykład przypisuje użytkownikowi Britta Simon do aplikacji [analizy w mie
     $sp = Get-AzureADServicePrincipal -Filter "displayName eq '$app_name'"
     ```
 
-1. Uruchom polecenie `$sp.AppRoles`, aby wyświetlić role dostępne dla aplikacji do analizy w miejscu pracy. W tym przykładzie chcemy przypisać rolę analityka (ograniczony dostęp) Britta Simon.
+1. Uruchom polecenie, `$sp.AppRoles` aby wyświetlić role dostępne dla aplikacji Workplace Analytics. W tym przykładzie chcemy przypisać Britta Simon analityka (ograniczony dostęp) rola.
 
-   ![Pokazuje role dostępne dla użytkownika przy użyciu roli analiza w miejscu pracy](./media/assign-user-or-group-access-portal/workplace-analytics-role.png)
+   ![Pokazuje role dostępne dla użytkownika przy użyciu roli analizy w miejscu pracy](./media/assign-user-or-group-access-portal/workplace-analytics-role.png)
 
-1. Przypisz nazwę roli do zmiennej `$app_role_name`.
+1. Przypisz nazwę roli `$app_role_name` do zmiennej.
 
     ```powershell
     # Assign the values to the variables
@@ -128,9 +153,15 @@ Ten przykład przypisuje użytkownikowi Britta Simon do aplikacji [analizy w mie
     New-AzureADUserAppRoleAssignment -ObjectId $user.ObjectId -PrincipalId $user.ObjectId -ResourceId $sp.ObjectId -Id $appRole.Id
     ```
 
+## <a name="related-articles"></a>Pokrewne artykuły:
+
+- [Dowiedz się więcej o dostępie użytkowników końcowych do aplikacji](end-user-experiences.md)
+- [Planowanie wdrożenia panelu dostępu usługi Azure AD](access-panel-deployment-plan.md)
+- [Zarządzanie dostępem do aplikacji](what-is-access-management.md)
+ 
 ## <a name="next-steps"></a>Następne kroki
 
 - [Zobacz wszystkie moje grupy](../fundamentals/active-directory-groups-view-azure-portal.md)
-- [Usuwanie przypisania użytkownika lub grupy z aplikacji dla przedsiębiorstw](remove-user-or-group-access-portal.md)
-- [Wyłączanie logowania użytkownika dla aplikacji dla przedsiębiorstw](disable-user-sign-in-portal.md)
-- [Zmiana nazwy lub logo aplikacji dla przedsiębiorstw](change-name-or-logo-portal.md)
+- [Usuwanie przypisania użytkownika lub grupy z aplikacji przedsiębiorstwa](remove-user-or-group-access-portal.md)
+- [Wyłączanie logów użytkowników dla aplikacji dla przedsiębiorstwa](disable-user-sign-in-portal.md)
+- [Zmienianie nazwy lub logo aplikacji przedsiębiorstwa](change-name-or-logo-portal.md)

@@ -1,5 +1,5 @@
 ---
-title: Korzystanie z Load Balancer wewnętrznego — Azure Application Gateway
+title: Używanie z wewnętrznym modułem równoważenia obciążenia — brama aplikacji platformy Azure
 description: Ta strona zawiera instrukcje dotyczące tworzenia, konfigurowania, uruchamiania i usuwania bramy aplikacji platformy Azure za pomocą wewnętrznego modułu równoważenia obciążenia na potrzeby usługi Azure Resource Manager
 services: application-gateway
 author: vhorne
@@ -8,13 +8,13 @@ ms.topic: article
 ms.date: 11/13/2019
 ms.author: victorh
 ms.openlocfilehash: 9fbde84c499ba5b086ce812de63602c626b416b0
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/19/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74179332"
 ---
-# <a name="create-an-application-gateway-with-an-internal-load-balancer-ilb"></a>Tworzenie bramy aplikacji przy użyciu wewnętrznego modułu równoważenia obciążenia (ILB)
+# <a name="create-an-application-gateway-with-an-internal-load-balancer-ilb"></a>Tworzenie bramy aplikacji z wewnętrznym modułem równoważenia obciążenia (ILB)
 
 Usługę Azure Application Gateway można skonfigurować z internetowym wirtualnym adresem IP lub wewnętrznym punktem końcowym niepołączonym z Internetem, znanym także jako punkt końcowy wewnętrznego modułu równoważenia obciążenia. Konfigurowanie bramy przy użyciu wewnętrznego modułu równoważenia obciążenia jest pomocne w przypadku wewnętrznych aplikacji LOB niepołączonych z Internetem. Ta opcja jest również przydatna w przypadku usług i warstw w aplikacji wielowarstwowej, która znajduje się w granicach zabezpieczeń bez połączenia z Internetem, ale nadal wymaga dystrybucji obciążenia z działaniem okrężnym, lepkości sesji lub zakończenia protokołu SSL (Secure Sockets Layer).
 
@@ -24,15 +24,15 @@ W tym artykule przeprowadzimy Cię przez proces konfigurowania bramy aplikacji p
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-1. Zainstaluj najnowszą wersję modułu Azure PowerShell, postępując zgodnie z [instrukcjami dotyczącymi instalacji](/powershell/azure/install-az-ps).
+1. Zainstaluj najnowszą wersję modułu programu Azure PowerShell, postępując zgodnie z [instrukcjami instalacji.](/powershell/azure/install-az-ps)
 2. Utworzysz sieć wirtualną i podsieć dla usługi Application Gateway. Upewnij się, że z podsieci nie korzystają żadne maszyny wirtualne ani wdrożenia w chmurze. Usługa Application Gateway musi sama znajdować się w podsieci sieci wirtualnej.
 3. Serwery konfigurowane do używania bramy aplikacji muszą być umieszczone w sieci wirtualnej lub z przypisanym adresem IP/VIP lub mieć w niej utworzone punkty końcowe.
 
 ## <a name="what-is-required-to-create-an-application-gateway"></a>Co jest wymagane do utworzenia bramy aplikacji?
 
 * **Pula serwerów zaplecza:** lista adresów IP serwerów zaplecza. Adresy IP na liście powinny należeć do sieci wirtualnej, ale w innej podsieci bramy aplikacji, lub być publicznymi bądź wirtualnymi adresami IP.
-* **Ustawienia puli serwerów zaplecza:** każda pula ma ustawienia, takie jak port, protokół i koligacja oparta na plikach cookie. Te ustawienia są powiązane z pulą i są stosowane do wszystkich serwerów w tej puli.
-* **Port frontonu:** port publiczny, który jest otwierany w bramie aplikacji. Ruch trafia do tego portu, a następnie jest przekierowywany do jednego z serwerów zaplecza.
+* **Ustawienia puli serwerów zaplecza:** Każda pula ma ustawienia, takie jak port, protokół i koligacja oparta na plikach cookie. Te ustawienia są powiązane z pulą i są stosowane do wszystkich serwerów w tej puli.
+* **Port front-end:** Ten port jest portem publicznym otwierany na bramie aplikacji. Ruch trafia do tego portu, a następnie jest przekierowywany do jednego z serwerów zaplecza.
 * **Odbiornik:** odbiornik ma port frontonu, protokół (Http lub Https, z uwzględnieniem wielkości liter) oraz nazwę certyfikatu SSL (w przypadku konfigurowania odciążania protokołu SSL).
 * **Reguła:** reguła wiąże odbiornik z pulą serwerów zaplecza i umożliwia zdefiniowanie, do której puli serwerów zaplecza ma być przekierowywany ruch w przypadku trafienia do określonego odbiornika. Obecnie jest obsługiwana tylko reguła *podstawowa*. Reguła *podstawowa* to dystrybucja obciążenia z działaniem okrężnym.
 
@@ -84,9 +84,9 @@ Utwórz nową grupę zasobów (ten krok można pominąć, jeśli używasz istnie
 New-AzResourceGroup -Name appgw-rg -location "West US"
 ```
 
-Usługa Azure Resource Manager wymaga, żeby wszystkie grupy zasobów miały lokalizację. Będzie ona używana jako domyślna lokalizacja dla zasobów w danej grupie zasobów. Upewnij się, że we wszystkich poleceniach służących do tworzenia bramy aplikacji jest używana ta sama grupa zasobów.
+Usługa Azure Resource Manager wymaga, żeby wszystkie grupy zasobów miały lokalizację. Będzie ona używana jako domyślna lokalizacja zasobów w danej grupie. Upewnij się, że we wszystkich poleceniach służących do tworzenia bramy aplikacji jest używana ta sama grupa zasobów.
 
-W poprzednim przykładzie została utworzona grupa zasobów o nazwie "appgw-RG" i lokalizacji "zachodnie stany USA".
+W poprzednim przykładzie utworzyliśmy grupę zasobów o nazwie "appgw-rg" i lokalizację "Zachodnie stany USA".
 
 ## <a name="create-a-virtual-network-and-a-subnet-for-the-application-gateway"></a>Tworzenie sieci wirtualnej i podsieci dla bramy aplikacji
 
@@ -98,7 +98,7 @@ W poniższym przykładzie pokazano, jak utworzyć sieć wirtualną przy użyciu 
 $subnetconfig = New-AzVirtualNetworkSubnetConfig -Name subnet01 -AddressPrefix 10.0.0.0/24
 ```
 
-Ten krok przypisuje zakres adresów 10.0.0.0/24 do zmiennej podsieci, która ma zostać użyta do utworzenia sieci wirtualnej.
+Ten krok przypisuje zakres adresów 10.0.0.0/24 do zmiennej podsieci, która ma być używana do utworzenia sieci wirtualnej.
 
 ### <a name="step-2"></a>Krok 2
 
@@ -106,7 +106,7 @@ Ten krok przypisuje zakres adresów 10.0.0.0/24 do zmiennej podsieci, która ma 
 $vnet = New-AzVirtualNetwork -Name appgwvnet -ResourceGroupName appgw-rg -Location "West US" -AddressPrefix 10.0.0.0/16 -Subnet $subnetconfig
 ```
 
-Ten krok powoduje utworzenie sieci wirtualnej o nazwie "appgwvnet" w grupie zasobów "appgw-RG" dla regionu zachodnie stany USA przy użyciu prefiksu 10.0.0.0/16 z podsiecią 10.0.0.0/24.
+Ten krok tworzy sieć wirtualną o nazwie "appgwvnet" w grupie zasobów "appgw-rg" dla regionu Zachodnie stany USA przy użyciu prefiksu 10.0.0.0/16 z podsiecią 10.0.0.0/24.
 
 ### <a name="step-3"></a>Krok 3
 
@@ -114,7 +114,7 @@ Ten krok powoduje utworzenie sieci wirtualnej o nazwie "appgwvnet" w grupie zaso
 $subnet = $vnet.subnets[0]
 ```
 
-Ten krok powoduje przypisanie obiektu podsieci do zmiennej $subnet w celu wykonania następnych kroków.
+Ten krok przypisuje obiekt podsieci do $subnet zmiennej dla następnych kroków.
 
 ## <a name="create-an-application-gateway-configuration-object"></a>Tworzenie obiektu konfiguracji bramy aplikacji
 
@@ -124,7 +124,7 @@ Ten krok powoduje przypisanie obiektu podsieci do zmiennej $subnet w celu wykona
 $gipconfig = New-AzApplicationGatewayIPConfiguration -Name gatewayIP01 -Subnet $subnet
 ```
 
-Ten krok powoduje utworzenie konfiguracji adresu IP bramy aplikacji o nazwie "gatewayIP01". Uruchomiona usługa Application Gateway wybierze adres IP ze skonfigurowanej podsieci i skieruje ruch sieciowy do adresów IP w puli adresów IP zaplecza. Pamiętaj, że każde wystąpienie będzie mieć jeden adres IP.
+Ten krok tworzy konfigurację IP bramy aplikacji o nazwie "gatewayIP01". Uruchomiona usługa Application Gateway wybierze adres IP ze skonfigurowanej podsieci i skieruje ruch sieciowy do adresów IP w puli adresów IP zaplecza. Pamiętaj, że każde wystąpienie będzie mieć jeden adres IP.
 
 ### <a name="step-2"></a>Krok 2
 
@@ -132,7 +132,7 @@ Ten krok powoduje utworzenie konfiguracji adresu IP bramy aplikacji o nazwie "ga
 $pool = New-AzApplicationGatewayBackendAddressPool -Name pool01 -BackendIPAddresses 10.1.1.8,10.1.1.9,10.1.1.10
 ```
 
-Ten krok umożliwia skonfigurowanie puli adresów IP zaplecza o nazwie "pool01" z adresami IP "10.1.1.8, 10.1.1.9, 10.1.1.10". Są to adresy IP odbierające ruch sieciowy pochodzący z punktu końcowego adresu IP frontonu. Powyższe adresy IP można zastąpić własnymi dodawanymi punktami końcowymi adresów IP aplikacji.
+Ten krok konfiguruje pulę adresów IP zaplecza o nazwie "pool01" z adresami IP "10.1.1.8, 10.1.1.9, 10.1.1.10". Są to adresy IP odbierające ruch sieciowy pochodzący z punktu końcowego adresu IP frontonu. Powyższe adresy IP można zastąpić własnymi dodawanymi punktami końcowymi adresów IP aplikacji.
 
 ### <a name="step-3"></a>Krok 3
 
@@ -140,7 +140,7 @@ Ten krok umożliwia skonfigurowanie puli adresów IP zaplecza o nazwie "pool01" 
 $poolSetting = New-AzApplicationGatewayBackendHttpSettings -Name poolsetting01 -Port 80 -Protocol Http -CookieBasedAffinity Disabled
 ```
 
-Ten krok umożliwia skonfigurowanie ustawienia bramy aplikacji "poolsetting01" dla ruchu sieciowego ze zrównoważonym obciążeniem w puli zaplecza.
+Ten krok konfiguruje ustawienie bramy aplikacji "poolsetting01" dla ruchu sieciowego z równoważeniem obciążenia w puli zaplecza.
 
 ### <a name="step-4"></a>Krok 4
 
@@ -148,7 +148,7 @@ Ten krok umożliwia skonfigurowanie ustawienia bramy aplikacji "poolsetting01" d
 $fp = New-AzApplicationGatewayFrontendPort -Name frontendport01  -Port 80
 ```
 
-Ten krok umożliwia skonfigurowanie portu adresu IP frontonu o nazwie "frontendport01" dla ILB.
+Ten krok konfiguruje front-endowy port IP o nazwie "frontendport01" dla równoważenia obciążenia sieciowego.
 
 ### <a name="step-5"></a>Krok 5
 
@@ -156,7 +156,7 @@ Ten krok umożliwia skonfigurowanie portu adresu IP frontonu o nazwie "frontendp
 $fipconfig = New-AzApplicationGatewayFrontendIPConfig -Name fipconfig01 -Subnet $subnet
 ```
 
-Ten krok powoduje utworzenie konfiguracji adresu IP frontonu o nazwie "fipconfig01" i skojarzenie jej z prywatnym adresem IP z bieżącej podsieci sieci wirtualnej.
+Ten krok tworzy konfigurację ip frontonu o nazwie "fipconfig01" i kojarzy ją z prywatnym adresem IP z bieżącej podsieci sieci wirtualnej.
 
 ### <a name="step-6"></a>Krok 6
 
@@ -164,7 +164,7 @@ Ten krok powoduje utworzenie konfiguracji adresu IP frontonu o nazwie "fipconfig
 $listener = New-AzApplicationGatewayHttpListener -Name listener01  -Protocol Http -FrontendIPConfiguration $fipconfig -FrontendPort $fp
 ```
 
-Ten krok powoduje utworzenie odbiornika o nazwie "listener01" i skojarzenie portu frontonu z konfiguracją adresów IP frontonu.
+Ten krok tworzy odbiornik o nazwie "listener01" i kojarzy port front-end do konfiguracji IP front-end.
 
 ### <a name="step-7"></a>Krok 7
 
@@ -172,7 +172,7 @@ Ten krok powoduje utworzenie odbiornika o nazwie "listener01" i skojarzenie port
 $rule = New-AzApplicationGatewayRequestRoutingRule -Name rule01 -RuleType Basic -BackendHttpSettings $poolSetting -HttpListener $listener -BackendAddressPool $pool
 ```
 
-Ten krok powoduje utworzenie reguły routingu modułu równoważenia obciążenia o nazwie "rule01", która służy do konfigurowania zachowania modułu równoważenia obciążenia.
+Ten krok tworzy regułę routingu modułu równoważenia obciążenia o nazwie "rule01", która konfiguruje zachowanie modułu równoważenia obciążenia.
 
 ### <a name="step-8"></a>Krok 8
 
@@ -180,10 +180,10 @@ Ten krok powoduje utworzenie reguły routingu modułu równoważenia obciążeni
 $sku = New-AzApplicationGatewaySku -Name Standard_Small -Tier Standard -Capacity 2
 ```
 
-Ten krok umożliwia skonfigurowanie rozmiaru wystąpienia bramy aplikacji.
+Ten krok konfiguruje rozmiar wystąpienia bramy aplikacji.
 
 > [!NOTE]
-> Wartość domyślna dla pojemności wynosi 2. W obszarze Nazwa jednostki SKU można wybrać między Standard_Small, Standard_Medium i Standard_Large.
+> Wartość domyślna dla Capacity to 2. W przypadku nazwy Sku możesz wybierać między Standard_Small, Standard_Medium i Standard_Large.
 
 ## <a name="create-an-application-gateway-by-using-new-azureapplicationgateway"></a>Tworzenie bramy aplikacji przy użyciu polecenia New-AzureApplicationGateway
 
@@ -193,11 +193,11 @@ Tworzy bramę aplikacji ze wszystkimi elementami konfiguracji z poprzednich krok
 $appgw = New-AzApplicationGateway -Name appgwtest -ResourceGroupName appgw-rg -Location "West US" -BackendAddressPools $pool -BackendHttpSettingsCollection $poolSetting -FrontendIpConfigurations $fipconfig  -GatewayIpConfigurations $gipconfig -FrontendPorts $fp -HttpListeners $listener -RequestRoutingRules $rule -Sku $sku
 ```
 
-W tym kroku zostanie utworzona Brama aplikacji ze wszystkimi elementami konfiguracji z poprzednich kroków. W przykładzie brama aplikacji ma nazwę „appgwtest”.
+Ten krok tworzy bramę aplikacji ze wszystkimi elementami konfiguracji z poprzednich kroków. W przykładzie brama aplikacji ma nazwę „appgwtest”.
 
 ## <a name="delete-an-application-gateway"></a>Usuwanie bramy aplikacji
 
-Aby usunąć bramę aplikacji, należy wykonać następujące czynności w kolejności:
+Aby usunąć bramę aplikacji, należy wykonać następujące czynności w następującej kolejności:
 
 1. Użyj polecenia cmdlet `Stop-AzApplicationGateway`, aby zatrzymać bramę.
 2. Użyj polecenia cmdlet `Remove-AzApplicationGateway`, aby usunąć bramę.
@@ -213,7 +213,7 @@ $getgw =  Get-AzApplicationGateway -Name appgwtest -ResourceGroupName appgw-rg
 
 ### <a name="step-2"></a>Krok 2
 
-Użyj polecenia `Stop-AzApplicationGateway`, aby zatrzymać bramę aplikacji. Ten przykład pokazuje `Stop-AzApplicationGateway` polecenie cmdlet w pierwszym wierszu, a następnie dane wyjściowe.
+Użyj polecenia `Stop-AzApplicationGateway`, aby zatrzymać bramę aplikacji. W tym `Stop-AzApplicationGateway` przykładzie pokazano polecenie cmdlet w pierwszym wierszu, a następnie dane wyjściowe.
 
 ```powershell
 Stop-AzApplicationGateway -ApplicationGateway $getgw  
@@ -262,6 +262,6 @@ Jeśli chcesz skonfigurować odciążanie protokołu SSL, zobacz artykuł [Confi
 
 Więcej ogólnych informacji na temat opcji równoważenia obciążenia możesz znaleźć w następujących artykułach:
 
-* [Azure Load Balancer](https://azure.microsoft.com/documentation/services/load-balancer/)
+* [Moduł równoważenia obciążenia platformy Azure](https://azure.microsoft.com/documentation/services/load-balancer/)
 * [Azure Traffic Manager](https://azure.microsoft.com/documentation/services/traffic-manager/)
 

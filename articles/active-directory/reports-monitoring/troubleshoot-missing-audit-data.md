@@ -1,5 +1,5 @@
 ---
-title: Rozwiązywanie problemów z brakującymi danymi w dziennikach aktywności | Microsoft Docs
+title: Rozwiązywanie problemów z brakami danych w dziennikach aktywności | Dokumenty firmy Microsoft
 description: Zawiera rozwiązanie problemu dotyczącego braku danych w dziennikach aktywności usługi Azure Active Directory.
 services: active-directory
 documentationcenter: ''
@@ -18,10 +18,10 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9c335a4d30846f7c1b4dbd6b6aedc4d100a9b43a
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74014287"
 ---
 # <a name="troubleshoot-missing-data-in-the-azure-active-directory-activity-logs"></a>Rozwiązywanie problemów: Brak danych w dziennikach aktywności usługi Azure Active Directory 
@@ -94,6 +94,6 @@ Dostępne są dwie opcje przechowywania danych przez czas dłuższy niż 30 dni.
 ## <a name="next-steps"></a>Następne kroki
 
 * [Przechowywanie danych dotyczących raportowania usługi Azure AD](reference-reports-data-retention.md).
-* [Opóźnienia raportowania w usłudze Azure Active Directory](reference-reports-latencies.md).
+* [Opóźnienia raportowania usługi Azure Active Directory](reference-reports-latencies.md).
 * [Często zadawane pytania dotyczące raportowania usługi Azure Active Directory](reports-faq.md).
 

@@ -1,69 +1,71 @@
 ---
-title: Optymalizowanie zapytań dzienników w Azure Monitor
-description: Najlepsze rozwiązania dotyczące optymalizowania zapytań dzienników w Azure Monitor.
+title: Optymalizuj zapytania dzienników w usłudze Azure Monitor
+description: Najważniejsze wskazówki dotyczące optymalizacji zapytań dziennika w usłudze Azure Monitor.
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/28/2019
-ms.openlocfilehash: 7316415a0f0c423a8a37477020a4ffd0ec044d73
-ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
+ms.openlocfilehash: c32731ce2de2b0f886a1e21ee8ccad3996e395eb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/14/2020
-ms.locfileid: "79369475"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79480270"
 ---
-# <a name="optimize-log-queries-in-azure-monitor"></a>Optymalizowanie zapytań dzienników w Azure Monitor
-Dzienniki Azure Monitor korzystają z [usługi Azure Eksplorator danych (ADX)](/azure/data-explorer/) do przechowywania danych dziennika i uruchamiania zapytań w celu analizowania tych danych. Tworzy, zarządza i obsługuje klastry ADX oraz optymalizuje je do obciążeń analizy dzienników. Po uruchomieniu zapytania jest on zoptymalizowany i kierowany do odpowiedniego klastra ADX, który przechowuje dane obszaru roboczego. Zarówno dzienniki Azure Monitor, jak i Azure Eksplorator danych korzystają z wielu automatycznych mechanizmów optymalizacji zapytań. Chociaż Optymalizacja automatyczna zapewnia znaczący wzrost, w niektórych przypadkach można znacznie poprawić wydajność zapytań. W tym artykule opisano zagadnienia dotyczące wydajności i kilka technik rozwiązywania tych problemów.
+# <a name="optimize-log-queries-in-azure-monitor"></a>Optymalizuj zapytania dzienników w usłudze Azure Monitor
+Dzienniki usługi Azure Monitor używają [usługi Azure Data Explorer (ADX)](/azure/data-explorer/) do przechowywania danych dziennika i uruchamiania zapytań do analizowania tych danych. Tworzy, zarządza i utrzymuje klastry ADX dla Ciebie i optymalizuje je pod kątem obciążenia analizy dziennika. Po uruchomieniu kwerendy jest zoptymalizowana i kierowana do odpowiedniego klastra ADX, który przechowuje dane obszaru roboczego. Dzienniki usługi Azure Monitor i Eksplorator danych platformy Azure używają wielu mechanizmów automatycznej optymalizacji zapytań. Podczas automatycznej optymalizacji zapewniają znaczny wzrost, są one w niektórych przypadkach, gdzie można znacznie zwiększyć wydajność kwerendy. W tym artykule wyjaśniono zagadnienia dotyczące wydajności i kilka technik, aby je naprawić.
 
-Większość technik jest wspólna dla zapytań, które są uruchamiane bezpośrednio na platformie Azure Eksplorator danych i w dziennikach Azure Monitor, chociaż kilka unikatowych zagadnień dotyczących dzienników Azure Monitor, które zostały omówione w tym miejscu. Aby uzyskać więcej porad dotyczących optymalizacji Eksplorator danych platformy Azure, zobacz [najlepsze rozwiązania dotyczące zapytań](/azure/kusto/query/best-practices).
+Większość technik są wspólne dla kwerend, które są uruchamiane bezpośrednio w usłudze Azure Data Explorer i dzienników usługi Azure Monitor, chociaż istnieje kilka unikatowych dzienników usługi Azure Monitor, które zostały omówione w tym miejscu. Aby uzyskać więcej wskazówek dotyczących optymalizacji usługi Azure Data Explorer, zobacz [Najważniejsze wskazówki dotyczące kwerendy.](/azure/kusto/query/best-practices)
 
 Zoptymalizowane zapytania będą:
 
-- Uruchamiaj szybciej, skracaj łączny czas wykonywania zapytania.
-- Mniejsza szansa na ograniczenie lub odrzucanie.
+- Uruchom szybciej, zmniejszyć ogólny czas wykonywania kwerendy.
+- Mają mniejsze szanse na ograniczenie lub odrzucenie.
 
-Należy zwrócić szczególną uwagę na zapytania, które są używane do przekroczenia bieżącego i użycia na rozerwanie, takich jak pulpity nawigacyjne, alerty, Logic Apps i Power BI. W takich przypadkach wpływ nieskutecznego zapytania jest znaczny.
+Należy zwrócić szczególną uwagę na zapytania, które są używane do powtarzających się i bursty użytkowania, takich jak pulpity nawigacyjne, alerty, aplikacje logiki i usługi Power BI. Wpływ nieskuteczne zapytanie w tych przypadkach jest znaczny.
 
-## <a name="query-performance-pane"></a>Okienko wydajności zapytań
-Po uruchomieniu zapytania w Log Analytics kliknij strzałkę w dół powyżej wyników zapytania, aby wyświetlić okienko wydajności zapytania, które pokazuje wyniki kilku wskaźników wydajności dla zapytania. Te wskaźniki wydajności są opisane w następnej sekcji.
+## <a name="query-performance-pane"></a>Okienko wydajności kwerendy
+Po uruchomieniu kwerendy w usłudze Log Analytics kliknij strzałkę w dół nad wynikami kwerendy, aby wyświetlić okienko wydajności kwerendy, które pokazuje wyniki kilku wskaźników wydajności kwerendy. Te wskaźniki wydajności są opisane w poniższej sekcji.
 
-![Okienko wydajności zapytań](media/query-optimization/query-performance-pane.png)
-
-
-## <a name="query-performance-indicators"></a>Wskaźniki wydajności zapytań
-
-Następujące wskaźniki wydajności zapytań są dostępne dla każdego wykonywanego zapytania:
-
-- [Łączny czas CPU](#total-cpu): ogólne obliczenia używane do przetwarzania zapytania we wszystkich węzłach obliczeniowych. Reprezentuje czas używany do przetwarzania, analizowania i pobierania danych. 
-
-- [Dane używane do przetworzenia zapytania](#data-used-for-processed-query): dane ogólne, do których uzyskano dostęp do przetwarzania zapytania. Wpływ na rozmiar tabeli docelowej, użyty zakres czasu, zastosowane filtry i liczbę kolumn, do których istnieją odwołania.
-
-- [Przedział czasu przetworzonego zapytania](#time-span-of-the-processed-query): różnica między najnowszymi i najstarszymi danymi, do których uzyskano dostęp do przetwarzania zapytania. Wpływ na jawny zakres czasu określony dla zapytania.
-
-- [Wiek przetworzonych danych](#age-of-processed-data): przerwy między nimi i najstarszych danych, do których uzyskano dostęp do przetwarzania zapytania. Ma wysoce wpływ na wydajność pobierania danych.
-
-- [Liczba obszarów roboczych](#number-of-workspaces): ile obszarów roboczych zostało uzyskanych podczas przetwarzania zapytania z powodu niejawnego lub jawnego wyboru.
-
-- [Liczba regionów](#number-of-regions): ile regionów było dostępnych podczas przetwarzania zapytania na podstawie niejawnego lub jawnego wyboru obszarów roboczych. Zapytania w wielu regionach są znacznie mniej wydajne i wskaźniki wydajności stanowią część pokrycia.
-
-- [Równoległość](#parallelism): wskazuje, ile systemu było w stanie wykonać to zapytanie w wielu węzłach. Dotyczy tylko zapytań, które mają duże użycie procesora CPU. Wpływ na użycie określonych funkcji i operatorów.
+![Okienko wydajności kwerendy](media/query-optimization/query-performance-pane.png)
 
 
-## <a name="total-cpu"></a>Łączny czas procesora
-Rzeczywisty procesor obliczeniowy, który został zainwestowany w celu przetworzenia tego zapytania we wszystkich węzłach przetwarzania zapytań. Ponieważ większość zapytań jest wykonywanych na dużej liczbie węzłów, zwykle będzie znacznie większa niż czas trwania wykonywania zapytania. 
+## <a name="query-performance-indicators"></a>Wskaźniki wydajności kwerendy
 
-Czas przetwarzania zapytania jest poświęcany na:
-- Pobieranie danych — pobieranie starych danych zajmie więcej czasu niż pobranie ostatnich danych.
-- Przetwarzanie danych — logika i ocena danych. 
+Następujące wskaźniki wydajności kwerendy są dostępne dla każdej kwerendy, która jest wykonywana:
 
-Oprócz czasu spędzonego w węzłach przetwarzania zapytań istnieje dodatkowy czas, który jest poświęcany przez Azure Monitor dzienników: uwierzytelniaj użytkownika i sprawdź, czy mogą oni uzyskać dostęp do tych danych, zlokalizować magazyn danych, przeanalizować zapytanie i przydzielić przetwarzanie zapytania nich. Ten czas nie jest uwzględniany w łącznym czasie procesora CPU.
+- [Całkowita wartość procesora:](#total-cpu)Ogólne obliczenia używane do przetwarzania kwerendy we wszystkich węzłach obliczeniowych. Reprezentuje czas używany do obliczania, analizowania i pobierania danych. 
 
-Niektóre polecenia i funkcje zapytania są intensywnie używane do użycia procesora CPU. Jest to szczególnie prawdziwe w przypadku poleceń, które analizują dane JSON i XML lub wyodrębniają złożone wyrażenia regularne. Takie analizowanie może być wykonywane jawnie za pośrednictwem funkcji [parse_json ()](/azure/kusto/query/parsejsonfunction) lub [parse_xml ()](/azure/kusto/query/parse-xmlfunction) lub niejawnie w przypadku odwoływania się do kolumn dynamicznych.
+- [Dane używane do przetworzonej kwerendy:](#data-used-for-processed-query)Ogólne dane, które zostały uzyskiczone do przetworzenia kwerendy. Pod wpływem rozmiaru tabeli docelowej, używanego przedziału czasu, zastosowanych filtrów i liczby kolumn, do których się odwołuje.
 
-Te funkcje zużywają procesor proporcjonalnie do liczby wierszy, które są przetwarzane. Najbardziej wydajna Optymalizacja polega na dodaniu tam przypadków, w których warunki w zapytaniu mogą odfiltrować dowolną liczbę rekordów, zanim funkcja intensywnie korzysta z procesora CPU.
+- [Przedział czasu przetworzonej kwerendy:](#time-span-of-the-processed-query)Odstęp między najnowszymi i najstarszymi danymi, do których dostęp uzyskał dostęp do przetworzenia kwerendy. Wpływ jawnego zakresu czasu określonego dla kwerendy.
 
-Na przykład następujące zapytania generują dokładnie ten sam wynik, ale drugi jest najbardziej wydajny jako warunek [WHERE](/azure/kusto/query/whereoperator) przed analizą wyklucza wiele rekordów:
+- [Wiek przetworzonych danych:](#age-of-processed-data)różnica między teraz a najstarszymi danymi, do których dostęp uzyskał, aby przetworzyć kwerendę. To bardzo wpływa na wydajność pobierania danych.
+
+- [Liczba obszarów roboczych:](#number-of-workspaces)Ile obszarów roboczych było dostępnych podczas przetwarzania kwerendy z powodu niejawnego lub jawnego wyboru.
+
+- [Liczba regionów:](#number-of-regions)Ile regionów było dostępnych podczas przetwarzania zapytań na podstawie niejawnego lub jawnego wyboru obszarów roboczych. Zapytania wieloregionowe są znacznie mniej wydajne, a wskaźniki wydajności stanowią częściowy zasięg.
+
+- [Równoległość:](#parallelism)Wskazuje, ile system był w stanie wykonać tę kwerendę w wielu węzłach. Dotyczy tylko zapytań, które mają wysokie zużycie procesora CPU. Pod wpływem korzystania z określonych funkcji i operatorów.
+
+
+## <a name="total-cpu"></a>Całkowita wartość procesora
+Rzeczywisty procesor obliczeniowy, który został zainwestowany w celu przetworzenia tej kwerendy we wszystkich węzłach przetwarzania kwerend. Ponieważ większość zapytań są wykonywane na dużej liczbie węzłów, to zwykle będzie znacznie większy niż czas trwania kwerendy faktycznie miały do wykonania. 
+
+Czas przetwarzania zapytań jest poświęcwana na:
+- Pobieranie danych — pobieranie starych danych zużywa więcej czasu niż pobieranie najnowszych danych.
+- Przetwarzanie danych – logika i ocena danych. 
+
+Poza czasem spędzonym w węzłach przetwarzania kwerend, istnieje dodatkowy czas, który jest spędzany przez dzienniki usługi Azure Monitor, aby: uwierzytelnić użytkownika i sprawdzić, czy mogą uzyskać dostęp do tych danych, zlokalizować magazyn danych, przeanalizować kwerendę i przydzielić przetwarzanie kwerendy Węzłów. Ten czas nie jest uwzględniony w zapytaniu całkowity czas procesora CPU.
+
+### <a name="early-filtering-of-records-prior-of-using-high-cpu-functions"></a>Wczesne filtrowanie rekordów przed użyciem wysokich funkcji procesora
+
+Niektóre polecenia i funkcje kwerendy są ciężkie w ich zużycie procesora CPU. Jest to szczególnie ważne w przypadku poleceń, które analizują JSON i XML lub wyodrębniają złożone wyrażenia regularne. Takie analizowanie może odbywać się jawnie za pośrednictwem funkcji [parse_json()](/azure/kusto/query/parsejsonfunction) lub [parse_xml()](/azure/kusto/query/parse-xmlfunction) lub niejawnie w przypadku odwoływania się do kolumn dynamicznych.
+
+Te funkcje zużywają procesora CPU proporcjonalnie do liczby wierszy, które przetwarzają. Najbardziej efektywną optymalizacją jest dodanie warunków na początku kwerendy, które mogą odfiltrować jak najwięcej rekordów, jak to możliwe przed wykonaniem funkcji intensywnie korzystającej z procesora CPU.
+
+Na przykład następujące zapytania dają dokładnie taki sam wynik, ale drugi jest zdecydowanie najbardziej efektywny, jak warunek [where](/azure/kusto/query/whereoperator) przed analizowanie wyklucza wiele rekordów:
 
 ```Kusto
 //less efficient
@@ -86,8 +88,10 @@ SecurityEvent
 | where FileHash != "" // No need to filter out %SYSTEM32 here as it was removed before
 ```
 
-Zapytania zawierające klauzule [WHERE](/azure/kusto/query/whereoperator) w ocenianej kolumnie, a nie w kolumnach, które są fizycznie obecne w zestawie danych tracą wydajność. Filtrowanie dla ocenionych kolumn uniemożliwia pewne optymalizacje systemu, gdy są obsługiwane duże zestawy danych.
-Na przykład następujące zapytania dają dokładnie ten sam wynik, ale druga jest bardziej wydajna, gdy warunek [WHERE](/azure/kusto/query/whereoperator) odwołuje się do kolumny wbudowanej
+### <a name="avoid-using-evaluated-where-clauses"></a>Unikaj używania ocenianych klauzul gdzie
+
+Kwerendy, które [zawierają, gdzie](/azure/kusto/query/whereoperator) klauzule w ocenianej kolumnie, a nie w kolumnach, które są fizycznie obecne w zestawie danych, tracą wydajność. Filtrowanie na ocenianych kolumnach zapobiega niektórym optymalizacjom systemu podczas obsługi dużych zestawów danych.
+Na przykład następujące zapytania dają dokładnie taki sam wynik, ale drugi jest bardziej wydajny, ponieważ [warunek, w którym](/azure/kusto/query/whereoperator) jest używany, odnosi się do wbudowanej kolumny
 
 ```Kusto
 //less efficient
@@ -104,11 +108,13 @@ Heartbeat
 | summarize count() by Computer
 ```
 
-Chociaż niektóre polecenia agregujące, takie jak [Max ()](/azure/kusto/query/max-aggfunction), [sum ()](/azure/kusto/query/sum-aggfunction), [Count ()](/azure/kusto/query/count-aggfunction)i [AVG ()](/azure/kusto/query/avg-aggfunction) mają niski wpływ na procesor CPU ze względu na ich logikę, inne są bardziej skomplikowane i obejmują algorytmy heurystyczne i oszacowania, które umożliwiają ich wydajne wykonywanie. Na przykład, [DCount ()](/azure/kusto/query/dcount-aggfunction) używa algorytmu HyperLogLog, aby zapewnić ścisłe oszacowanie do odrębnej liczby dużych zestawów danych bez faktycznego zliczania każdej wartości; funkcje percentylu są podobne do przybliżania przy użyciu najbliższego algorytmu percentylu rangi. Kilka poleceń zawiera opcjonalne parametry w celu zmniejszenia ich wpływu. Na przykład funkcja [MakeSet ()](/azure/kusto/query/makeset-aggfunction) ma opcjonalny parametr definiujący maksymalny rozmiar zestawu, który znacząco wpływa na procesor i pamięć.
+### <a name="use-effective-aggregation-commands-and-dimmentions-in-summarize-and-join"></a>Użyj skutecznych poleceń agregacji i przyciemnień w podsumowaniu i sprzężeniu
 
-Polecenia [Join](/azure/kusto/query/joinoperator?pivots=azuremonitor) i [podsumowujące](/azure/kusto/query/summarizeoperator) mogą spowodować wysokie wykorzystanie procesora CPU podczas przetwarzania dużego zestawu danych. Ich złożoność jest bezpośrednio związana z liczbą możliwych wartości, które są określane jako *Kardynalność*kolumn, które są używane jako `by` podsumowujące lub jako atrybuty sprzężenia. Aby uzyskać wyjaśnienie i optymalizację przyłączania i podsumowywania, zobacz artykuły z dokumentacją i porady dotyczące optymalizacji.
+Podczas gdy niektóre polecenia agregacji, takie jak [max()](/azure/kusto/query/max-aggfunction), [sum()](/azure/kusto/query/sum-aggfunction), [count()](/azure/kusto/query/count-aggfunction)i [avg()](/azure/kusto/query/avg-aggfunction) mają niewielki wpływ procesora ze względu na ich logikę, inne są bardziej złożone i zawierają heurystykę i szacunki, które pozwalają na ich wydajne wykonanie. Na przykład [dcount()](/azure/kusto/query/dcount-aggfunction) używa algorytmu HyperLogLog, aby zapewnić dokładne oszacowanie do odrębnej liczby dużych zestawów danych bez faktycznie zliczania każdej wartości; funkcje percentyla robią podobne przybliżenia przy użyciu algorytmu percentyla najbliższej rangi. Kilka poleceń zawiera opcjonalne parametry, aby zmniejszyć ich wpływ. Na przykład funkcja [makeset()](/azure/kusto/query/makeset-aggfunction) ma opcjonalny parametr definiujący maksymalny rozmiar zestawu, co znacząco wpływa na procesor i pamięć.
 
-Na przykład następujące zapytania dają dokładnie ten sam wynik, ponieważ **CounterPath** jest zawsze jeden do jednego zmapowany do **CounterName** i **ObjectName**. Druga z nich jest bardziej wydajna, ponieważ wymiar agregacji jest mniejszy:
+[Dołączanie](/azure/kusto/query/joinoperator?pivots=azuremonitor) i [podsumowanie](/azure/kusto/query/summarizeoperator) poleceń może spowodować wysokie wykorzystanie procesora CPU podczas przetwarzania dużego zestawu danych. Ich złożoność jest bezpośrednio związana z liczbą możliwych wartości, określanych jako *kardynalność*, kolumn, które są używane jako `by` in summarize lub jako atrybuty sprzężenia. Aby uzyskać wyjaśnienie i optymalizację sprzężenia i podsumowania, zobacz ich artykuły dokumentacji i wskazówki dotyczące optymalizacji.
+
+Na przykład następujące kwerendy dają dokładnie taki sam wynik, ponieważ **CounterPath** jest zawsze jeden do jednego mapowane do **CounterName** i **ObjectName**. Drugi jest bardziej wydajny, ponieważ wymiar agregacji jest mniejszy:
 
 ```Kusto
 //less efficient
@@ -123,9 +129,9 @@ Perf
 by CounterPath
 ```
 
-Użycie procesora CPU może również mieć wpływ na warunki lub kolumny rozszerzone, które wymagają intensywnego przetwarzania danych. Wszystkie proste porównania ciągów, takie jak [równości = =](/azure/kusto/query/datatypes-string-operators) i [StartsWith](/azure/kusto/query/datatypes-string-operators) , mają mniej więcej na ten sam wpływ na procesor, podczas gdy zaawansowane dopasowania tekstu mają większy wpływ. [W odróżnieniu od operatora](/azure/kusto/query/datatypes-string-operators) [Contains](/azure/kusto/query/datatypes-string-operators) jest bardziej wydajne. Ze względu na techniki obsługi ciągów bardziej wydajne jest wyszukiwanie ciągów, które są dłuższe niż cztery znaki niż krótkie ciągi.
+Na zużycie procesora CPU może mieć również wpływ warunki lub rozszerzone kolumny, które wymagają intensywnego przetwarzania. Wszystkie trywialne porównania ciągów, takie jak [equal ==](/azure/kusto/query/datatypes-string-operators) i [startswith](/azure/kusto/query/datatypes-string-operators) mają mniej więcej taki sam wpływ procesora, podczas gdy zaawansowane dopasowania tekstu mają większy wpływ. W szczególności [ma](/azure/kusto/query/datatypes-string-operators) operator jest bardziej wydajne, że [zawiera](/azure/kusto/query/datatypes-string-operators) operatora. Ze względu na techniki obsługi ciągów, jest bardziej efektywne szukać ciągów, które są dłuższe niż cztery znaki niż krótkie ciągi.
 
-Na przykład następujące zapytania dają podobne wyniki, w zależności od zasad nazewnictwa komputerów, ale druga z nich jest bardziej wydajna:
+Na przykład następujące kwerendy dają podobne wyniki, w zależności od zasady nazewnictwa komputera, ale druga jest bardziej wydajna:
 
 ```Kusto
 //less efficient – due to filter based on contains
@@ -148,17 +154,20 @@ Heartbeat
 ```
 
 > [!NOTE]
-> Ten wskaźnik przedstawia tylko procesor CPU z klastra bezpośredniego. W zapytaniu obejmującym wiele regionów reprezentuje tylko jeden z regionów. W zapytaniu obejmującym wiele obszarów roboczych może nie zawierać wszystkich obszarów roboczych.
+> Wskaźnik ten przedstawia tylko procesora CPU z bezpośredniego klastra. W kwerendzie wieloregionowej będzie reprezentować tylko jeden z regionów. W kwerendzie wieloprzestrzeniowej może nie zawierać wszystkich obszarów roboczych.
 
 
-## <a name="data-used-for-processed-query"></a>Dane używane do przetworzenia zapytania
+## <a name="data-used-for-processed-query"></a>Dane używane do przetworzonej kwerendy
 
-Krytycznym czynnikiem w przetwarzaniu zapytania jest ilość danych, które są skanowane i używane do przetwarzania zapytań. Usługa Azure Eksplorator danych korzysta z agresywnych optymalizacji, które znacząco zmniejszają ilość danych w porównaniu z innymi platformami danych. Nadal istnieją kluczowe czynniki w zapytaniu, które mogą mieć wpływ na używany wolumin danych.
-W dziennikach Azure Monitor kolumna **TimeGenerated** służy jako sposób indeksowania danych. Ograniczanie wartości **TimeGenerated** do tak wąskiego zakresu, jak to możliwe, spowoduje znaczne zwiększenie wydajności zapytań przez znaczne ograniczenie ilości danych, które należy przetworzyć.
+Kluczowym czynnikiem w przetwarzaniu kwerendy jest ilość danych, która jest skanowana i używana do przetwarzania kwerendy. Usługa Azure Data Explorer używa agresywnych optymalizacji, które znacznie zmniejszają ilość danych w porównaniu z innymi platformami danych. Mimo to istnieją krytyczne czynniki w kwerendzie, które mogą mieć wpływ na wolumin danych, który jest używany.
 
-Innym czynnikiem, który zwiększa dane procesu, jest użycie dużej liczby tabel. Dzieje się tak zazwyczaj, gdy `search *` i `union *` polecenia są używane. Te polecenia wymuszają, aby system obliczał i skanował dane ze wszystkich tabel w obszarze roboczym. W niektórych przypadkach w obszarze roboczym mogą znajdować się setki tabel. Spróbuj uniknąć możliwie największej ilości miejsca przy użyciu funkcji wyszukiwania * lub dowolnego wyszukiwania bez określania zakresu dla konkretnej tabeli.
+W dziennikach usługi Azure Monitor kolumna **TimeGenerated** jest używana jako sposób indeksowania danych. Ograniczenie **timegenerated** wartości do jak zawęzić zakres, jak to możliwe spowoduje znaczną poprawę wydajności kwerendy przez znaczne ograniczenie ilości danych, które mają być przetwarzane.
 
-Na przykład następujące zapytania dają dokładnie ten sam wynik, ale ostatni z nich jest najbardziej wydajny:
+### <a name="avoid-unnecessary-use-of-search-and-union-operators"></a>Unikanie niepotrzebnego korzystania z operatorów wyszukiwania i unii
+
+Innym czynnikiem, który zwiększa dane, które są procesem jest użycie dużej liczby tabel. Zwykle dzieje `search *` się `union *` tak, gdy używane są polecenia. Polecenia te wymuszają system do oceny i skanowania danych ze wszystkich tabel w obszarze roboczym. W niektórych przypadkach może istnieć setki tabel w obszarze roboczym. Staraj się unikać jak najwięcej za pomocą "szukaj *" lub wyszukiwania bez określania zakresu do konkretnej tabeli.
+
+Na przykład następujące zapytania dają dokładnie taki sam wynik, ale ostatni jest zdecydowanie najbardziej efektywny:
 
 ```Kusto
 // This version scans all tables though only Perf has this kind of data
@@ -178,9 +187,11 @@ Perf
 | summarize count(), avg(CounterValue)  by Computer
 ```
 
-Inną metodą zredukowania ilości danych jest w [przypadku](/azure/kusto/query/whereoperator) wczesnych warunków w zapytaniu. Platforma Azure Eksplorator danych obejmuje pamięć podręczną, która pozwala na określenie, które partycje zawierają dane istotne dla określonego warunku WHERE. Na przykład, jeśli zapytanie zawiera `where EventID == 4624`, będzie ono dystrybuowane tylko do węzłów, które obsługują partycje ze zgodnymi zdarzeniami.
+### <a name="add-early-filters-to-the-query"></a>Dodawanie wczesnych filtrów do kwerendy
 
-Poniższe przykładowe zapytania dają dokładnie ten sam wynik, ale druga jest bardziej wydajna:
+Inną metodą zmniejszenia ilości danych jest, aby mieć [warunki](/azure/kusto/query/whereoperator) na początku kwerendy. Platforma Azure Data Explorer zawiera pamięć podręczną, która informuje, które partycje zawierają dane, które są istotne dla określonego warunku gdzie. Na przykład jeśli kwerenda zawiera `where EventID == 4624` następnie będzie dystrybuować kwerendę tylko do węzłów, które obsługują partycje z pasującymi zdarzeniami.
+
+Następujące przykładowe kwerendy dają dokładnie taki sam wynik, ale drugi jest bardziej wydajny:
 
 ```Kusto
 //less efficient
@@ -194,9 +205,11 @@ SecurityEvent
 | summarize LoginSessions = dcount(LogonGuid) by Account
 ```
 
-Ponieważ Eksplorator danych platformy Azure to kolumnowy magazyn danych, pobieranie każdej kolumny jest niezależne od innych. Liczba kolumn, które są pobierane bezpośrednio wpływa na cały rozmiar danych. Należy uwzględnić tylko kolumny w danych wyjściowych, które są potrzebne, [Podsumowując](/azure/kusto/query/summarizeoperator) wyniki lub [projekcję](/azure/kusto/query/projectoperator) określonych kolumn. Usługa Azure Eksplorator danych ma kilka optymalizacji, aby zmniejszyć liczbę pobranych kolumn. Jeśli określa, że kolumna nie jest wymagana, na przykład jeśli nie jest przywoływana w poleceniu [podsumowywania](/azure/kusto/query/summarizeoperator) , nie zostanie ona pobrana.
+### <a name="reduce-the-number-of-columns-that-is-retrieved"></a>Zmniejszanie liczby pobieranych kolumn
 
-Na przykład drugie zapytanie może przetwarzać trzy razy więcej danych, ponieważ nie musi pobrać jednej kolumny, ale trzy:
+Ponieważ Usługa Azure Data Explorer jest magazynem danych kolumnowych, pobieranie każdej kolumny jest niezależne od innych. Liczba pobieranych kolumn ma bezpośredni wpływ na ogólną ilość danych. Należy uwzględnić tylko kolumny w danych wyjściowych, które są potrzebne przez [podsumowanie](/azure/kusto/query/summarizeoperator) wyników lub [rzutowanie](/azure/kusto/query/projectoperator) określonych kolumn. Usługa Azure Data Explorer ma kilka optymalizacji, aby zmniejszyć liczbę pobranych kolumn. Jeśli stwierdzi, że kolumna nie jest potrzebna, na przykład jeśli nie odwołuje się do niego w [poleceniu podsumować,](/azure/kusto/query/summarizeoperator) nie będzie go pobrać.
+
+Na przykład druga kwerenda może przetwarzać trzy razy więcej danych, ponieważ musi pobrać nie jedną kolumnę, ale trzy:
 
 ```Kusto
 //Less columns --> Less data
@@ -209,16 +222,18 @@ SecurityEvent
 | summarize count(), dcount(EventID), avg(Level) by Computer  
 ```
 
-## <a name="time-span-of-the-processed-query"></a>Przedział czasu przetworzonego zapytania
+## <a name="time-span-of-the-processed-query"></a>Przedział czasu przetworzonej kwerendy
 
-Wszystkie dzienniki dzienników Azure Monitor są partycjonowane według kolumny **TimeGenerated** . Liczba dostępnych partycji jest bezpośrednio związana z przedziałem czasu. Skrócenie zakresu czasu jest najbardziej wydajnym sposobem zapewnienia wykonywania zapytania o monit.
+Wszystkie dzienniki w dziennikach usługi Azure Monitor są podzielone na partycje zgodnie z **kolumną TimeGenerated.** Liczba partycji, które są dostępne są bezpośrednio związane z przedziału czasu. Zmniejszenie zakresu czasu jest najbardziej efektywnym sposobem zapewnienia wykonywania zapytania monitu.
 
-Zakres czasu można ustawić za pomocą selektora zakresu czasu na ekranie Log Analytics, zgodnie z opisem w temacie [zakres zapytania dziennika i zakres czasu w Log Analytics Azure monitor](scope.md#time-range). Jest to zalecana metoda, ponieważ wybrany zakres czasu jest przesyłany do zaplecza przy użyciu metadanych zapytania. 
+Zakres czasu można ustawić za pomocą selektora zakresu czasu na ekranie Usługi Log Analytics, zgodnie z opisem w [obszarze Zakres zapytania dziennika i zakres czasu w usłudze Azure Monitor Log Analytics](scope.md#time-range). Jest to zalecana metoda, ponieważ wybrany zakres czasu jest przekazywany do wewnętrznej bazy danych przy użyciu metadanych kwerendy. 
 
-Alternatywną metodą jest jawne uwzględnienie warunku [WHERE](/azure/kusto/query/whereoperator) w **TimeGenerated** w zapytaniu. Tej metody należy użyć, ponieważ gwarantuje to, że przedział czasu jest stały, nawet gdy zapytanie jest używane z innego interfejsu.
-Należy upewnić się, że wszystkie części zapytania mają filtry **TimeGenerated** . Gdy zapytanie zawiera podzapytania pobierające dane z różnych tabel lub tej samej tabeli, każda musi zawierać własny warunek [WHERE](/azure/kusto/query/whereoperator) .
+Alternatywną metodą jest jawnie [dołączyć, gdzie](/azure/kusto/query/whereoperator) warunek **timegenerated** w kwerendzie. Należy użyć tej metody, ponieważ zapewnia, że przedział czasu jest stały, nawet wtedy, gdy kwerenda jest używana z innego interfejsu.
+Należy upewnić się, że wszystkie części kwerendy mają **filtry TimeGenerated.** Gdy kwerenda ma podzespołów pobierania danych z różnych tabel lub tej samej tabeli, każdy musi zawierać [własne, gdzie](/azure/kusto/query/whereoperator) warunek.
 
-Na przykład w poniższym zapytaniu, gdy tabela **wydajności** będzie skanowana tylko przez ostatni dzień, tabela **pulsu** zostanie przeskanowana w celu uzyskania całej historii, co może być maksymalnie dwa lata:
+### <a name="make-sure-all-sub-queries-have-timegenerated-filter"></a>Upewnij się, że wszystkie kwerendy podrzędne mają filtr TimeGenerated
+
+Na przykład w poniższej kwerendzie, podczas gdy **tabela Perf** będzie skanowana tylko przez ostatni dzień, **tabela Pulsu** zostanie zeskanowana dla całej jej historii, która może wynosić do dwóch lat:
 
 ```Kusto
 Perf
@@ -231,7 +246,7 @@ Perf
 ) on Computer
 ```
 
-Typowy przypadek, w którym występuje błąd jest używany do znajdowania ostatniego wystąpienia [arg_max ()](/azure/kusto/query/arg-max-aggfunction) . Na przykład:
+Typowym przypadkiem, gdy wystąpi taki błąd, jest [użycie arg_max()](/azure/kusto/query/arg-max-aggfunction) w celu znalezienia najnowszego wystąpienia. Przykład:
 
 ```Kusto
 Perf
@@ -245,7 +260,7 @@ by Computer
 ) on Computer
 ```
 
-Można to łatwo naprawić, dodając filtr czasu w wewnętrznej kwerendzie:
+Można to łatwo poprawić, dodając filtr czasu w wewnętrznej kwerendzie:
 
 ```Kusto
 Perf
@@ -259,9 +274,9 @@ by Computer
 ) on Computer
 ```
 
-Innym przykładem tego błędu jest wykonywanie filtrowania zakresu czasu zaraz po [Unii](/azure/kusto/query/unionoperator?pivots=azuremonitor) w kilku tabelach. Podczas wykonywania Unii każde podzapytanie powinno być objęte zakresem. Można użyć instrukcji [Let](/azure/kusto/query/letstatement) , aby zapewnić spójność zakresu.
+Innym przykładem tego błędu jest podczas wykonywania filtrowania zakresu czasu tuż po [unii](/azure/kusto/query/unionoperator?pivots=azuremonitor) przez kilka tabel. Podczas wykonywania unii, każda kwerenda podrzędna powinna być w zakresie. Instrukcji let można [użyć,](/azure/kusto/query/letstatement) aby zapewnić spójność zakresu.
 
-Na przykład następujące zapytanie przeskanuje wszystkie dane w tabelach *pulsu* i *wydajności* , a nie tylko na ostatni 1 dzień:
+Na przykład następująca kwerenda przeskanuje wszystkie dane w tabelach *Pulsu i* *Perf,* a nie tylko w ciągu ostatniego dnia:
 
 ```Kusto
 Heartbeat 
@@ -273,7 +288,7 @@ Heartbeat
 | summarize min(TimeGenerated) by Computer
 ```
 
-To zapytanie powinno być ustalone w następujący sposób:
+Ta kwerenda powinna zostać ustalona w następujący sposób:
 
 ```Kusto
 let MinTime = ago(1d);
@@ -287,67 +302,69 @@ Heartbeat
 | summarize min(TimeGenerated) by Computer
 ```
 
-Pomiar jest zawsze większy niż określony czas rzeczywisty. Na przykład jeśli filtr zapytania wynosi 7 dni, system może skanować 7,5 lub 8,1 dni. Wynika to z faktu, że system dzieli dane na fragmenty w zmiennym rozmiarze. Aby upewnić się, że wszystkie odpowiednie rekordy są skanowane, skanuje całą partycję, która może obejmować kilka godzin, a nawet kilka dni.
+### <a name="time-span-measurement-limitations"></a>Ograniczenia pomiaru przedziału czasowego
 
-Istnieje kilka przypadków, w których system nie może zapewnić dokładnego pomiaru zakresu czasu. Zdarza się to w większości przypadków, gdy zapytanie obejmuje mniej niż dzień lub zapytania obejmujące wiele obszarów roboczych.
+Pomiar jest zawsze większy niż określony rzeczywisty czas. Na przykład jeśli filtr w kwerendzie wynosi 7 dni, system może skanować 7,5 lub 8,1 dnia. Dzieje się tak, ponieważ system dzieli dane na fragmenty o zmiennym rozmiarze. Aby upewnić się, że wszystkie odpowiednie rekordy są skanowane, skanuje całą partycję, która może obejmować kilka godzin, a nawet więcej niż jeden dzień.
+
+Istnieje kilka przypadków, w których system nie może zapewnić dokładnego pomiaru zakresu czasu. Dzieje się tak w większości przypadków, gdy zakres kwerendy mniej niż jeden dzień lub w kwerendach wielu obszarów roboczych.
 
 
 > [!IMPORTANT]
-> Ten wskaźnik przedstawia tylko dane przetworzone w bezpośrednim klastrze. W zapytaniu obejmującym wiele regionów reprezentuje tylko jeden z regionów. W zapytaniu obejmującym wiele obszarów roboczych może nie zawierać wszystkich obszarów roboczych.
+> Wskaźnik ten przedstawia tylko dane przetwarzane w bezpośrednim klastrze. W kwerendzie wieloregionowej będzie reprezentować tylko jeden z regionów. W kwerendzie wieloprzestrzeniowej może nie zawierać wszystkich obszarów roboczych.
 
-## <a name="age-of-processed-data"></a>Wiek przetworzonych danych
-Usługa Azure Eksplorator danych korzysta z kilku warstw magazynowania: lokalnych dysków SSD i znacznie wolniejszych obiektów blob platformy Azure. Im nowsze dane, tym wyższy jest szansa, że jest ona przechowywana w bardziej wydajnej warstwie z mniejszym opóźnieniem, co skraca czas trwania zapytania i procesor CPU. Oprócz samych danych system ma również pamięć podręczną dla metadanych. Im starsze dane, tym mniej szansa, że metadane będą znajdować się w pamięci podręcznej.
+## <a name="age-of-processed-data"></a>Wiek przetwarzanych danych
+Usługa Azure Data Explorer używa kilku warstw magazynu: w pamięci, dysków SSD lokalnych i znacznie wolniejszych obiektów blob platformy Azure. Im nowsze dane, tym wyższa jest szansa, że jest przechowywany w warstwie bardziej wydajne z mniejszym opóźnieniem, zmniejszając czas trwania kwerendy i procesora CPU. Inne niż dane, system ma również pamięć podręczną metadanych. Im starsze dane, tym mniejsza szansa, że ich metadane będą w pamięci podręcznej.
 
-Niektóre zapytania wymagają użycia starych danych, ale zdarzają się sytuacje, w których stare dane są używane przez pomyłkę. Dzieje się tak, gdy zapytania są wykonywane bez podawania zakresu czasu w metadanych, a nie wszystkie odwołania do tabeli obejmują filtr w kolumnie **TimeGenerated** . W takich przypadkach system przeskanuje wszystkie dane, które są przechowywane w tej tabeli. Gdy przechowywanie danych jest długie, może obejmować wiele przedziałów czasu, a tym samym dane, które są tak stare jak okres przechowywania danych.
+Podczas gdy niektóre zapytania wymagają użycia starych danych, istnieją przypadki, w których stare dane są używane przez pomyłkę. Dzieje się tak, gdy kwerendy są wykonywane bez zapewnienia zakresu czasu w ich meta-danych i nie wszystkie odwołania do tabeli obejmują filtr w **TimeGenerated** kolumny. W takich przypadkach system przeskanuje wszystkie dane, które są przechowywane w tej tabeli. Gdy przechowywanie danych jest długa, może obejmować długi zakres czasu, a tym samym dane, które są tak stare, jak okres przechowywania danych.
 
-Takie przypadki mogą być na przykład następujące:
+Takie przypadki mogą być na przykład:
 
-- Nie ustawiono zakresu czasu w Log Analytics z podzapytaniem, które nie jest ograniczone. Zobacz przykład powyżej.
+- Nie ustawia zakresu czasu w usłudze Log Analytics za pomocą zapytania podrzędnego, które nie jest ograniczone. Zobacz przykład powyżej.
 - Korzystanie z interfejsu API bez parametrów opcjonalnych zakresu czasu.
-- Korzystanie z klienta, który nie wymusza przedziału czasu, takiego jak łącznik Power BI.
+- Korzystanie z klienta, który nie wymusza zakresu czasu, takiego jak złącze usługi Power BI.
 
-Zapoznaj się z przykładami i uwagami w sekcji poprzedniej, ponieważ są one również odpowiednie w tym przypadku.
+Zobacz przykłady i notatki w sekcji pervious, ponieważ są one również istotne w tym przypadku.
 
 ## <a name="number-of-regions"></a>Liczba regionów
 Istnieje kilka sytuacji, w których pojedyncze zapytanie może być wykonywane w różnych regionach:
 
-- Gdy kilka obszarów roboczych jest jawnie wymienionych i znajdują się w różnych regionach.
-- Gdy zapytanie o zakres zasobów pobiera dane, a dane są przechowywane w wielu obszarach roboczych, które znajdują się w różnych regionach.
+- Gdy kilka obszarów roboczych są jawnie wymienione i znajdują się w różnych regionach.
+- Gdy kwerenda o zakresie zasobów pobiera dane, a dane są przechowywane w wielu obszarach roboczych, które znajdują się w różnych regionach.
 
-Wykonywanie zapytań między regionami wymaga, aby system mógł serializować i przesłać do dużych fragmentów danych pośrednich, które są zwykle znacznie większe niż końcowe wyniki zapytania. Pozwala również ograniczyć możliwość wykonywania optymalizacji, algorytmów heurystycznych i wykorzystania pamięci podręcznych przez system.
-Jeśli nie ma żadnej prawdziwej przyczyny skanowania wszystkich tych regionów, należy dostosować zakres tak, aby obejmował mniejszą liczbę regionów. Jeśli zakres zasobów jest zminimalizowany, ale nadal są używane wiele regionów, może się to zdarzyć z powodu błędu konfiguracji. Na przykład dzienniki inspekcji i ustawienia diagnostyczne są wysyłane do różnych obszarów roboczych w różnych regionach lub wiele konfiguracji ustawień diagnostycznych. 
+Wykonywanie kwerendy między regionami wymaga, aby system serializował i przesyłał w wewnętrznej bazy danych duże fragmenty danych pośrednich, które są zwykle znacznie większe niż wyniki końcowe kwerendy. Ogranicza również zdolność systemu do wykonywania optymalizacji, heurystyki i korzystania z pamięci podręcznej.
+Jeśli nie ma żadnego rzeczywistego powodu, aby skanować wszystkie te regiony, należy dostosować zakres, tak aby obejmował mniej regionów. Jeśli zakres zasobu jest zminimalizowany, ale nadal wiele regionów są używane, może się zdarzyć z powodu błędnej konfiguracji. Na przykład dzienniki inspekcji i ustawienia diagnostyczne są wysyłane do różnych obszarów roboczych w różnych regionach lub istnieje wiele konfiguracji ustawień diagnostycznych. 
 
 > [!IMPORTANT]
-> Gdy zapytanie jest uruchamiane w kilku regionach, pomiary procesora i danych nie będą dokładne i będą przedstawiać pomiar tylko w jednym z regionów.
+> Gdy kwerenda jest uruchamiana w kilku regionach, pomiary procesora CPU i danych nie będą dokładne i będą reprezentować pomiar tylko w jednym z regionów.
 
 ## <a name="number-of-workspaces"></a>Liczba obszarów roboczych
-Obszary robocze są kontenerami logicznymi, które są używane do segregowania i administrowania danymi dzienników. Zaplecze optymalizuje umieszczanie obszarów roboczych w klastrach fizycznych w wybranym regionie.
+Obszary robocze są kontenery logiczne, które są używane do segregowania i administrowania danymi dzienników. Wewnętrznej bazy danych optymalizuje miejsca docelowe obszaru roboczego w klastrach fizycznych w wybranym regionie.
 
 Użycie wielu obszarów roboczych może wynikać z: 
 
-- Gdzie kilka obszarów roboczych jest jawnie wymienionych.
-- Gdy zapytanie o zakres zasobów pobiera dane, a dane są przechowywane w wielu obszarach roboczych.
+- Gdzie kilka obszarów roboczych są jawnie wymienione.
+- Gdy kwerenda o zakresie zasobów pobiera dane, a dane są przechowywane w wielu obszarach roboczych.
  
-Wykonywanie zapytań między regionami i między klastrami wymaga, aby system mógł serializować i przesłać do dużych fragmentów danych pośrednich, które są zwykle znacznie większe niż końcowe wyniki zapytania. Pozwala również ograniczyć możliwość wykonywania optymalizacji, algorytmów heurystycznych i wykorzystania pamięci podręcznych przez system.
+Wykonywanie zapytań między regionami i między klastrami wymaga, aby system serializował i przesyłał w wewnętrznej bazy danych duże fragmenty danych pośrednich, które są zwykle znacznie większe niż wyniki końcowe kwerendy. Ogranicza również zdolność systemu do wykonywania optymalizacji, heurystyki i korzystania z pamięci podręcznej.
 
 > [!IMPORTANT]
-> W niektórych scenariuszach obejmujących wiele obszarów roboczych pomiary procesora i danych nie będą dokładne i będą reprezentować tylko niektóre obszary robocze.
+> W niektórych scenariuszach z wieloma obszarami roboczymi pomiary procesora CPU i danych nie będą dokładne i będą reprezentować pomiar tylko dla kilku obszarów roboczych.
 
-## <a name="parallelism"></a>Równoległości
-Dzienniki Azure Monitor korzystają z dużych klastrów usługi Azure Eksplorator danych do uruchamiania zapytań. te klastry różnią się w zależności od liczby węzłów obliczeniowych. System automatycznie skaluje klastry zgodnie z logiką i pojemnością umieszczenia obszaru roboczego.
+## <a name="parallelism"></a>Równoległości prostych
+Dzienniki usługi Azure Monitor używa dużych klastrów Usługi Azure Data Explorer do uruchamiania kwerend, a te klastry różnią się skalą, potencjalnie uzyskując do kilkudziesięciu węzłów obliczeniowych. System automatycznie skaluje klastry zgodnie z logiką i pojemnością umieszczania obszaru roboczego.
 
-Aby efektywnie wykonać zapytanie, jest ono partycjonowane i dystrybuowane do węzłów obliczeniowych na podstawie danych, które są wymagane do przetwarzania. Istnieją sytuacje, w których system nie może wykonać tej czynności efektywnie. Może to prowadzić do długiego czasu trwania zapytania. 
+Aby skutecznie wykonać kwerendę, jest ona podzielona na partycje i dystrybuowana do węzłów obliczeniowych na podstawie danych wymaganych do jego przetwarzania. Istnieją sytuacje, w których system nie może tego skutecznie zrobić. Może to prowadzić do długiego czasu trwania kwerendy. 
 
-Zachowania zapytań, które mogą obniżyć równoległość, obejmują:
+Zachowania kwerend, które mogą zmniejszyć równoległość obejmują:
 
-- Użycie funkcji serializacji i okna, takich jak [operator serializacji](/azure/kusto/query/serializeoperator), [Next ()](/azure/kusto/query/nextfunction), [poprzedni ()](/azure/kusto/query/prevfunction)i funkcje [wiersza](/azure/kusto/query/rowcumsumfunction) . W niektórych z tych przypadków można używać szeregów czasowych i funkcji analitycznych użytkownika. Nieefektywna Serializacja może również wystąpić, jeśli następujące operatory nie znajdują się na końcu zapytania: [zakres](/azure/kusto/query/rangeoperator), [Sortowanie](/azure/kusto/query/sortoperator), [kolejność](/azure/kusto/query/orderoperator), [Top](/azure/kusto/query/topoperator), [Top-hitters](/azure/kusto/query/tophittersoperator), [GetSchema](/azure/kusto/query/getschemaoperator).
--   Użycie funkcji agregacji [DCount ()](/azure/kusto/query/dcount-aggfunction) wymusza, aby system miał centralną kopię różnych wartości. Gdy skala danych jest wysoka, rozważ użycie opcjonalnych parametrów funkcji DCount do zredukowania dokładności.
--   W wielu przypadkach operator [Join](/azure/kusto/query/joinoperator?pivots=azuremonitor) obniżyć ogólną wartość równoległości. Badaj rozłączenie losowe jako alternatywę w przypadku problemów z wydajnością.
--   W zapytaniach dotyczących zakresu zasobów, kontrole kontroli RBAC przedwykonawcy mogą być pokutujące w sytuacjach, gdy istnieje bardzo duża liczba przypisań RBAC. Może to prowadzić do dłuższego sprawdzenia, które mogłoby spowodować zmniejszenie równoległości. Na przykład zapytanie jest wykonywane w ramach subskrypcji, w której istnieją tysiące zasobów, a każdy zasób ma wiele przypisań roli na poziomie zasobu, a nie w ramach subskrypcji lub grupy zasobów.
--   Jeśli zapytanie przetwarza małe fragmenty danych, jego równoległość będzie niska, ponieważ system nie rozwiąże go w wielu węzłach obliczeniowych.
+- Użycie funkcji serializacji i okien, takich jak [operator serializacji](/azure/kusto/query/serializeoperator), [next()](/azure/kusto/query/nextfunction), [prev()](/azure/kusto/query/prevfunction)i funkcje [wiersza.](/azure/kusto/query/rowcumsumfunction) Szeregi czasowe i funkcje analizy użytkowników mogą być używane w niektórych z tych przypadków. Nieefektywna serializacja może się również zdarzyć, jeśli na końcu zapytania używane są następujące operatory: [zakres](/azure/kusto/query/rangeoperator), [sort ,](/azure/kusto/query/sortoperator) [order](/azure/kusto/query/orderoperator), [top](/azure/kusto/query/topoperator), [top-hitters](/azure/kusto/query/tophittersoperator), [getschema](/azure/kusto/query/getschemaoperator).
+-    Użycie funkcji agregacji [dcount()](/azure/kusto/query/dcount-aggfunction) zmusza system do centralnej kopii różnych wartości. Gdy skala danych jest wysoka, należy rozważyć użycie funkcji dcount opcjonalne parametry, aby zmniejszyć dokładność.
+-    W wielu przypadkach operator [sprzężenia](/azure/kusto/query/joinoperator?pivots=azuremonitor) obniża ogólny równoległość. Sprawdź shuffle sprzężenia jako alternatywę, gdy wydajność jest problematyczna.
+-    W kwerendach zakresu zasobów kontrole RBAC przed wykonaniem mogą występnąć w sytuacjach, gdy istnieje bardzo duża liczba przypisań RBAC. Może to prowadzić do dłuższych kontroli, które mogłyby spowodować niższy równoległość. Na przykład kwerenda jest wykonywana w ramach subskrypcji, w której istnieją tysiące zasobów, a każdy zasób ma wiele przypisań ról na poziomie zasobu, a nie w grupie subskrypcji lub zasobów.
+-    Jeśli kwerenda przetwarza małe fragmenty danych, jego równoległość będzie niska, ponieważ system nie rozłoży go na wiele węzłów obliczeniowych.
 
 
 
 ## <a name="next-steps"></a>Następne kroki
 
-- [Dokumentacja języka zapytań Kusto](/azure/kusto/query/).
+- [Dokumentacja referencyjna dla języka zapytań Kusto](/azure/kusto/query/).

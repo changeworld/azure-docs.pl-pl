@@ -1,7 +1,7 @@
 ---
-title: 'Tworzenie modelu języka Python: odwołanie do modułu'
+title: 'Tworzenie modelu Języka Python: odwołanie do modułu'
 titleSuffix: Azure Machine Learning
-description: Dowiedz się, jak używać modułu tworzenia modelu języka Python w Azure Machine Learning, aby utworzyć niestandardowy moduł modelowania lub przetwarzania danych.
+description: Dowiedz się, jak użyć modułu Tworzenie modelu języka Python w usłudze Azure Machine Learning w celu utworzenia niestandardowego modułu modelowania lub przetwarzania danych.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,36 +10,36 @@ author: likebupt
 ms.author: keli19
 ms.date: 11/19/2019
 ms.openlocfilehash: 929938bba9c9512ecfd663a540cf4a7ebbf68e2b
-ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/14/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79371821"
 ---
-# <a name="create-python-model-module"></a>Utwórz moduł modelu języka Python
+# <a name="create-python-model-module"></a>Tworzenie modułu modelu języka Python
 
-W tym artykule opisano moduł w programie Azure Machine Learning Designer (wersja zapoznawcza).
+W tym artykule opisano moduł w projektancie usługi Azure Machine Learning (wersja zapoznawcza).
 
-Dowiedz się, jak za pomocą modułu tworzenia modelu języka Python utworzyć niepociąg model ze skryptu języka Python. Model można oprzeć na dowolnym zasobie, który znajduje się w pakiecie języka Python w środowisku projektanta Azure Machine Learning. 
+Dowiedz się, jak użyć modułu Tworzenie modelu języka Python, aby utworzyć nieprzeszkolony model ze skryptu Języka Python. Model można oprzeć na dowolnym uczniu, który jest zawarty w pakiecie języka Python w środowisku projektanta usługi Azure Machine Learning. 
 
-Po utworzeniu modelu można użyć [modelu uczenia](train-model.md) do uczenia modelu w zestawie danych, podobnie jak w przypadku innych dowolnych informacji w Azure Machine Learning. Przeszkolony model można przesłać do [modelu oceny](score-model.md) , aby dokonać prognoz. Następnie można zapisać szkolony model i opublikować przepływ pracy oceniania jako usługę sieci Web.
+Po utworzeniu modelu można użyć [modelu pociągu](train-model.md) do uczenia modelu na zestawie danych, jak każdy inny uczeń w usłudze Azure Machine Learning. Przeszkolony model można przekazać do [score model](score-model.md) do prognozowania. Następnie można zapisać przeszkolony model i opublikować przepływ pracy oceniania jako usługę sieci web.
 
 > [!WARNING]
-> Obecnie nie jest możliwe przekazanie wynikowych wyników modelu języka Python do [oceny modelu](evaluate-model.md). Jeśli trzeba oszacować model, można napisać niestandardowy skrypt języka Python i uruchomić go przy użyciu modułu [uruchamiania skryptu języka Python](execute-python-script.md) .  
+> Obecnie nie jest możliwe przekazanie wyników ocenianego modelu Języka Python w celu [oceny modelu.](evaluate-model.md) Jeśli chcesz ocenić model, możesz napisać niestandardowy skrypt języka Python i uruchomić go przy użyciu modułu [Wykonywanie skryptu Pythona.](execute-python-script.md)  
 
 
 ## <a name="configure-the-module"></a>Konfigurowanie modułu
 
-Korzystanie z tego modułu wymaga pośredniej lub specjalistycznej wiedzy o języku Python. Moduł obsługuje korzystanie z dowolnych informacji, które znajdują się w pakietach języka Python zainstalowanych już w Azure Machine Learning. Zapoznaj się z wstępnie zainstalowaną listą pakietów języka Python w artykule [wykonywanie skryptu języka Python](execute-python-script.md).
+Korzystanie z tego modułu wymaga pośredniej lub specjalistycznej wiedzy języka Python. Moduł obsługuje korzystanie z dowolnego ucznia, który jest zawarty w pakietach Pythona już zainstalowanych w usłudze Azure Machine Learning. Zobacz listę preinstalowanych pakietów Pythona w [języku Execute Python Script](execute-python-script.md).
   
 
-W tym artykule pokazano, jak używać metody **Create Python model** z prostym potokiem. Oto diagram potoku:
+W tym artykule pokazano, jak używać **tworzenia modelu języka Python** za pomocą prostego potoku. Oto diagram potoku:
 
 ![Diagram tworzenia modelu języka Python](./media/module/create-python-model.png)
 
-1. Wybierz pozycję **Utwórz model Python**i Edytuj skrypt, aby zaimplementować proces modelowania lub zarządzania danymi. Model można utworzyć na podstawie dowolnych informacji, które znajdują się w pakiecie Python w środowisku Azure Machine Learning.
+1. Wybierz **pozycję Utwórz model języka Python**i edytuj skrypt, aby zaimplementować proces modelowania lub zarządzania danymi. Model można oprzeć na dowolnym uczniu, który jest zawarty w pakiecie języka Python w środowisku usługi Azure Machine Learning.
 
-   Następujący przykładowy kod klasyfikatora algorytm Bayesa Bayesa używa popularnego pakietu *skryptu sklearn* :
+   Poniższy przykładowy kod klasyfikatora Naive Bayes używa popularnego pakietu *sklearn:*
 
    ```Python
 
@@ -73,11 +73,11 @@ W tym artykule pokazano, jak używać metody **Create Python model** z prostym p
 
    ```
 
-1. Połącz moduł **Create Python model** , który właśnie został utworzony, aby **szkolić model** i **model oceny**.
+1. Połącz moduł **Utwórz model Języka Python,** który został właśnie utworzony w celu **modelu pociągu** i **modelu wyników**.
 
-1. Jeśli musisz oszacować model, Dodaj moduł [skryptu języka Python](execute-python-script.md) i Edytuj skrypt języka Python.
+1. Jeśli chcesz ocenić model, dodaj moduł [Wykonaj skrypt języka Python](execute-python-script.md) i edytuj skrypt Pythona.
 
-   Następujący skrypt to przykładowy kod oceny:
+   Poniższy skrypt to przykładowy kod oceny:
 
    ```Python
 
@@ -118,4 +118,4 @@ W tym artykule pokazano, jak używać metody **Create Python model** z prostym p
 
 ## <a name="next-steps"></a>Następne kroki
 
-Zapoznaj się z [zestawem modułów dostępnych](module-reference.md) do Azure Machine Learning. 
+Zobacz [zestaw modułów dostępnych dla](module-reference.md) usługi Azure Machine Learning. 

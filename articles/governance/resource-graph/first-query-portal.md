@@ -1,59 +1,59 @@
 ---
-title: 'Szybki Start: pierwsze zapytanie w portalu'
-description: W tym przewodniku szybki start wykonaj kroki, aby uruchomić pierwsze zapytanie z Azure Portal przy użyciu Eksploratora Azure Resource Graph.
+title: 'Szybki start: Pierwsze zapytanie portalu'
+description: W tym przewodniku Szybki start wykonaj kroki, aby uruchomić pierwszą kwerendę z witryny Azure portal przy użyciu Eksploratora wykresu zasobów platformy Azure.
 ms.date: 11/21/2019
 ms.topic: quickstart
 ms.openlocfilehash: 5cf355e78ad51e06d7ba27d48dd352f35b4c0740
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/22/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "74406795"
 ---
-# <a name="quickstart-run-your-first-resource-graph-query-using-azure-resource-graph-explorer"></a>Szybki Start: uruchamianie pierwszego zapytania grafu zasobów przy użyciu Eksploratora Azure Resource Graph
+# <a name="quickstart-run-your-first-resource-graph-query-using-azure-resource-graph-explorer"></a>Szybki start: uruchamianie pierwszej kwerendy wykresu zasobów przy użyciu Eksploratora wykresu zasobów platformy Azure
 
-Możliwości wykresu zasobów platformy Azure są dostępne bezpośrednio w Azure Portal za pomocą Eksploratora Azure Resource Graph. Eksplorator wykresów zasobów zawiera umożliwia przeglądania informacje o typach zasobów Azure Resource Manager i właściwościach, które można badać. Eksplorator grafu zasobów udostępnia również czysty interfejs do pracy z wieloma zapytaniami, oceniając wyniki, a nawet konwertując wyniki niektórych zapytań na wykres, który może zostać przypięty do pulpitu nawigacyjnego platformy Azure.
+Możliwości programu Azure Resource Graph są dostępne bezpośrednio w witrynie Azure portal za pośrednictwem Eksploratora wykresów zasobów platformy Azure. Eksplorator wykresu zasobów udostępnia informacje do przeglądania dotyczące typów zasobów usługi Azure Resource Manager i właściwości, które można wysyłać. Eksplorator wykresów zasobów udostępnia również czysty interfejs do pracy z wieloma zapytaniami, oceny wyników, a nawet konwertowania wyników niektórych zapytań na wykres, który można przypiąć do pulpitu nawigacyjnego platformy Azure.
 
-Na końcu tego przewodnika Szybki Start będziesz używać Azure Portal i Eksploratora grafów zasobów do uruchamiania pierwszej kwerendy grafu zasobów i przypiętia wyników do pulpitu nawigacyjnego.
+Na końcu tego przewodnika Szybki start zostanie użyta usługa Azure portal i Eksplorator wykresów zasobów do uruchomienia pierwszej kwerendy wykresu zasobów i przypięte wyniki do pulpitu nawigacyjnego.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne](https://azure.microsoft.com/free/) konto.
+Jeśli nie masz subskrypcji platformy Azure, utwórz [bezpłatne](https://azure.microsoft.com/free/) konto przed rozpoczęciem.
 
 ## <a name="run-your-first-resource-graph-query"></a>Uruchamianie pierwszego zapytania usługi Resource Graph
 
-Otwórz [Azure Portal](https://portal.azure.com) , aby znaleźć i użyć Eksploratora grafu zasobów, wykonując następujące kroki, aby uruchomić pierwszą kwerendę wykresu zasobów:
+Otwórz [witrynę Azure Portal,](https://portal.azure.com) aby znaleźć i użyć Eksploratora wykresów zasobów, wykonując następujące kroki, aby uruchomić pierwszą kwerendę wykresu zasobów:
 
-1. W okienku po lewej stronie wybierz pozycję **Wszystkie usługi**. Wyszukaj i wybierz pozycję **Eksplorator grafów zasobów**.
+1. W okienku po lewej stronie wybierz pozycję **Wszystkie usługi**. Wyszukaj i wybierz **Eksploratora wykresów zasobów**.
 
-1. W części **kwerenda 1** okna wprowadź `Resources | project name, type | limit 5` kwerendy i wybierz pozycję **Uruchom zapytanie**.
+1. W części **kwerendy 1** okna wprowadź `Resources | project name, type | limit 5` kwerendę i wybierz pozycję **Uruchom kwerendę**.
 
    > [!NOTE]
-   > Ponieważ ten przykład zapytania nie zawiera modyfikatora sortowania, takiego jak `order by`, uruchomienie tego zapytania wiele razy może spowodować, że zostanie wyznaczony inny zestaw zasobów dla każdego żądania.
+   > Ponieważ w tym przykładzie kwerendy nie `order by`udostępnia modyfikatora sortowania, takiego jak , uruchamianie tej kwerendy wiele razy może przynieść inny zestaw zasobów na żądanie.
 
-1. Zapoznaj się z odpowiedzią zapytania na karcie **wyniki** . Wybierz kartę **komunikaty** , aby wyświetlić szczegółowe informacje o zapytaniu, w tym liczbę wyników i czas trwania zapytania. Błędy, jeśli istnieją, są wyświetlane na tej karcie.
+1. Przejrzyj odpowiedź na kwerendę na karcie **Wyniki.** Wybierz kartę **Wiadomości,** aby wyświetlić szczegółowe informacje o kwerendzie, w tym liczbę wyników i czas trwania kwerendy. Błędy, jeśli występują, są wyświetlane na tej karcie.
 
-1. Zaktualizuj zapytanie, aby `order by` Właściwość **name** : `Resources | project name, type | limit 5 | order by name asc`. Następnie wybierz pozycję **Uruchom zapytanie**.
+1. Zaktualizuj kwerendę do `order by` właściwości **Name:** `Resources | project name, type | limit 5 | order by name asc`. Następnie wybierz pozycję **Uruchom kwerendę**.
 
    > [!NOTE]
    > Tak samo jak w przypadku pierwszego zapytania, wielokrotne uruchomienie tego zapytania prawdopodobnie zwróci inny zestaw zasobów dla każdego żądania. Kolejność poleceń zapytania jest ważna. W tym przykładzie polecenie `order by` następuje po poleceniu `limit`. Spowoduje to najpierw ograniczenie wyników zapytania, a następnie ich uporządkowanie.
 
-1. Zaktualizuj zapytanie, aby najpierw `order by` Właściwość **name** , a następnie `limit` do pięciu pierwszych wyników: `Resources | project name, type | order by name asc | limit 5`. Następnie wybierz pozycję **Uruchom zapytanie**.
+1. Zaktualizuj `order by` kwerendę, `limit` aby najpierw właściwości `Resources | project name, type | order by name asc | limit 5` **Name,** a następnie do pięciu najlepszych wyników: . Następnie wybierz pozycję **Uruchom kwerendę**.
 
-Gdy ostateczne zapytanie jest uruchamiane kilka razy, przy założeniu, że żadne zmiany w środowisku nie są zmieniane, zwrócone wyniki są spójne i oczekiwane przez właściwość **name** , ale nadal są ograniczone do pięciu pierwszych wyników.
+Gdy kwerenda końcowa jest uruchamiana kilka razy, przy założeniu, że nic w środowisku się nie zmienia, zwracane wyniki są spójne i zgodnie z oczekiwaniami — uporządkowane przez **Name** właściwości, ale nadal ograniczone do pięciu najlepszych wyników.
 
 ### <a name="schema-browser"></a>Przeglądarka schematów
 
-Przeglądarka schematów znajduje się w lewym okienku Eksploratora grafów zasobów. Ta lista zasobów zawiera wszystkie _typy_ zasobów platformy Azure, które są obsługiwane przez usługę Azure Resource Graph i które istnieją w dzierżawie, do której masz dostęp. Rozszerzanie typu zasobu lub podwłaściwości pokazuje właściwości podrzędne, których można użyć do utworzenia kwerendy wykresu zasobów.
+Przeglądarka schematów znajduje się w lewym okienku Eksploratora wykresu zasobów. Ta lista zasobów zawiera wszystkie _typy zasobów_ platformy Azure, które są obsługiwane przez usługę Azure Resource Graph i które istnieją w dzierżawie, do której masz dostęp. Rozwijanie typu zasobu lub właściwości podrzędnych pokazuje właściwości podrzędne, które mogą być używane do tworzenia kwerendy wykresu zasobów.
 
-Wybór typu zasobu powoduje umieszczenie `where type =="<resource type>"` w polu zapytania. Wybranie jednej z właściwości podrzędnych powoduje dodanie `where <propertyName> == "INSERT_VALUE_HERE"` do pola zapytania.
-Przeglądarka schematów to doskonały sposób odnajdywania właściwości do użycia w zapytaniach. Pamiętaj, aby zamienić _wartość wstaw\_\_tym miejscu_ na własną wartość, Dostosuj zapytanie o warunki, operatory i funkcje, aby osiągnąć zamierzone wyniki.
+Zaznaczenie typu zasobu w `where type =="<resource type>"` polu kwerendy. Zaznaczenie jednej z właściwości `where <propertyName> == "INSERT_VALUE_HERE"` podrzędnych dodaje się do pola kwerendy.
+Przeglądarka schematów to świetny sposób na odnajdywanie właściwości do użycia w kwerendach. Pamiętaj, aby zastąpić _INSERT\_VALUE\_HERE_ własną wartością, dostosuj zapytanie do warunków, operatorów i funkcji, aby osiągnąć zamierzone rezultaty.
 
-## <a name="create-a-chart-from-the-resource-graph-query"></a>Tworzenie wykresu na podstawie zapytania wykresu zasobów
+## <a name="create-a-chart-from-the-resource-graph-query"></a>Tworzenie wykresu na podstawie kwerendy Wykres zasobów
 
-Po uruchomieniu ostatniego zapytania powyżej, jeśli wybierzesz kartę **wykresy** , zostanie wyświetlony komunikat "zestaw wyników nie jest zgodny z wizualizacją wykresu kołowego". Zapytania, które nie mogą zostać wprowadzone do wykresu, mogą zawierać kwerendy, które zapewniają liczbę zasobów. Korzystając z [przykładowych maszyn wirtualnych typu zapytanie-liczba](./samples/starter.md#count-virtual-machines-by-os-type), Utwórz wizualizację z zapytania grafu zasobów.
+Po uruchomieniu ostatniej kwerendy powyżej, jeśli **wybierzesz kartę Wykresy,** zostanie wyświetlony komunikat, że "zestaw wyników nie jest zgodny z wizualizacją wykresu kołowego". Kwerendy, które listy wyników nie mogą być wykonane na wykresie, ale kwerendy, które zapewniają liczbę zasobów można. Za pomocą [przykładowej kwerendy — zliczanie maszyn wirtualnych według typu systemu operacyjnego](./samples/starter.md#count-virtual-machines-by-os-type), utwórzmy wizualizację z kwerendy Wykres zasobów.
 
-1. W części **kwerenda 1** okna wprowadź następujące zapytanie i wybierz polecenie **Uruchom zapytanie**.
+1. W części **kwerendy 1** okna wprowadź następującą kwerendę i wybierz pozycję **Uruchom kwerendę**.
 
    ```kusto
    Resources
@@ -61,65 +61,65 @@ Po uruchomieniu ostatniego zapytania powyżej, jeśli wybierzesz kartę **wykres
    | summarize count() by tostring(properties.storageProfile.osDisk.osType)
    ```
 
-1. Wybierz kartę **wyniki** i pamiętaj, że odpowiedź dla tego zapytania zawiera liczby.
+1. Wybierz kartę **Wyniki** i zwróć uwagę, że odpowiedź dla tej kwerendy zawiera liczby.
 
-1. Wybierz kartę **wykresy** . Teraz zapytanie prowadzi do wizualizacji. Zmień typ z _Wybierz typ wykresu.._ . na _Wykres słupkowy_ lub _wykres pierścieniowy_ , aby eksperymentować z dostępnymi opcjami wizualizacji.
+1. Wybierz kartę **Wykresy.** Teraz wyniki kwerendy w wizualizacje. Zmień typ z _Wybierz typ wykresu..._ na _wykres słupkowy_ lub _pierścieniowy,_ aby eksperymentować z dostępnymi opcjami wizualizacji.
 
-## <a name="pin-the-query-visualization-to-a-dashboard"></a>Przypinanie wizualizacji zapytania do pulpitu nawigacyjnego
+## <a name="pin-the-query-visualization-to-a-dashboard"></a>Przypinanie wizualizacji kwerendy do pulpitu nawigacyjnego
 
-Wyniki zapytania, które można wizualizować, można przypinać do jednego z pulpitów nawigacyjnych. Po uruchomieniu zapytania powyżej wykonaj następujące kroki:
+Po wprowadzeniu wyników z kwerendy, która może być wizualizowana, wizualizacja danych może być przypięta do jednego z pulpitów nawigacyjnych. Po uruchomieniu zapytania powyżej wykonaj następujące kroki:
 
-1. Wybierz pozycję **Zapisz** i podaj nazwę "maszyny wirtualne według typu systemu operacyjnego". Następnie wybierz pozycję **Zapisz** w dolnej części okienka po prawej stronie.
+1. Wybierz **pozycję Zapisz** i podaj nazwę "Maszyny wirtualne według typu systemu operacyjnego". Następnie wybierz **pozycję Zapisz** u dołu prawego okienka.
 
-1. Wybierz pozycję **Uruchom zapytanie** , aby ponownie uruchomić zapytanie, które zostało zapisane.
+1. Wybierz **pozycję Uruchom kwerendę,** aby ponownie uruchomić kwerendę, która została zapisana.
 
-1. Na karcie **wykresy** wybierz wizualizację danych. Następnie wybierz pozycję **Przypnij do pulpitu nawigacyjnego**.
+1. Na karcie **Wykresy** wybierz wizualizację danych. Następnie wybierz **pozycję Przypnij do pulpitu nawigacyjnego**.
 
-1. Wybierz wyświetlone powiadomienie portalu lub wybierz pozycję **pulpit nawigacyjny** w okienku po lewej stronie.
+1. Wybierz wyświetlane powiadomienie portalu lub wybierz **pulpit nawigacyjny** z lewego okienka.
 
-Zapytanie jest teraz dostępne na pulpicie nawigacyjnym z tytułem kafelka pasującego do nazwy zapytania. Jeśli zapytanie zostało anulowane, gdy zostało przypięte, jego nazwa to "Query 1".
+Kwerenda jest teraz dostępna na pulpicie nawigacyjnym z tytułem kafelka pasującego do nazwy kwerendy. Jeśli kwerenda została niezapisane, gdy została przypięta, zamiast tego nosi nazwę "Kwerenda 1".
 
-Zapytanie i wyniki wizualizacji danych, które można uruchamiać i aktualizować po każdym załadowaniu pulpitu nawigacyjnego, zapewniające czas rzeczywisty i dynamiczny wgląd w środowisko platformy Azure bezpośrednio w przepływie pracy.
-
-> [!NOTE]
-> Zapytania, które powodują, że lista może być również przypięta do pulpitu nawigacyjnego. Funkcja nie jest ograniczona do wizualizacji danych zapytań.
-
-## <a name="import-example-resource-graph-explorer-dashboards"></a>Importuj przykładowe pulpity nawigacyjne Eksploratora grafów zasobów
-
-Aby przedstawić przykłady zapytań dotyczących wykresów zasobów i jak można użyć Eksploratora grafów zasobów do usprawnienia przepływu pracy Azure Portal, wypróbuj te przykładowe pulpity nawigacyjne.
-
-- [Eksplorator grafów zasobów — przykładowy pulpit nawigacyjny #1](https://github.com/Azure-Samples/Governance/blob/master/src/resource-graph/portal-dashboards/sample-1/resourcegraphexplorer-sample-1.json)
-
-  [Przykładowy przykład obrazu ![dla przykładowego pulpitu nawigacyjnego #1](./media/arge-sample1-small.png)](./media/arge-sample1-large.png#lightbox)
-
-- [Eksplorator grafów zasobów — przykładowy pulpit nawigacyjny #2](https://github.com/Azure-Samples/Governance/blob/master/src/resource-graph/portal-dashboards/sample-2/resourcegraphexplorer-sample-2.json)
-
-  [Przykładowy przykład obrazu ![dla przykładowego pulpitu nawigacyjnego #2](./media/arge-sample2-small.png)](./media/arge-sample2-large.png#lightbox)
+Wizualizacja zapytań i wynikowych danych jest uruchamiana i aktualizowana za każdym razem, gdy pulpit nawigacyjny jest ładowany, zapewniając szczegółowe informacje w czasie rzeczywistym i dynamiczne do środowiska platformy Azure bezpośrednio w przepływie pracy.
 
 > [!NOTE]
-> Liczniki i wykresy w powyższym przykładowym zrzucie ekranu nawigacyjnego będą się różnić w zależności od środowiska platformy Azure.
+> Kwerendy, które powodują listę można również przypiąć do pulpitu nawigacyjnego. Ta funkcja nie ogranicza się do wizualizacji danych zapytań.
 
-1. Wybierz i Pobierz przykładowy pulpit nawigacyjny, który chcesz oszacować.
+## <a name="import-example-resource-graph-explorer-dashboards"></a>Importowanie przykładowych pulpitów nawigacyjnych Eksploratora wykresów zasobów
 
-1. W obszarze Azure Portal wybierz pozycję **pulpit nawigacyjny** w okienku po lewej stronie.
+Aby podać przykłady zapytań wykresu zasobów i jak Eksplorator wykresu zasobów może służyć do zwiększenia przepływu pracy witryny Azure portal, wypróbuj te przykładowe pulpity nawigacyjne.
 
-1. Wybierz pozycję **Przekaż**, a następnie Znajdź i wybierz pobrany przykładowy plik pulpitu nawigacyjnego. Następnie wybierz pozycję **Otwórz**.
+- [Eksplorator wykresów zasobów — przykładowy pulpit nawigacyjny #1](https://github.com/Azure-Samples/Governance/blob/master/src/resource-graph/portal-dashboards/sample-1/resourcegraphexplorer-sample-1.json)
 
-Zaimportowany pulpit nawigacyjny jest automatycznie wyświetlany. Ponieważ teraz istnieje ona w Azure Portal, możesz eksplorować i wprowadzać zmiany w miarę potrzeb lub tworzyć nowe pulpity nawigacyjne z przykładu, aby udostępnić swoje zespoły. Aby uzyskać więcej informacji na temat pracy z pulpitami nawigacyjnymi, zobacz [Tworzenie i udostępnianie pulpitów nawigacyjnych w Azure Portal](../../azure-portal/azure-portal-dashboards.md).
+  [![Przykładowy obraz przykładowego pulpitu nawigacyjnego #1](./media/arge-sample1-small.png)](./media/arge-sample1-large.png#lightbox)
+
+- [Eksplorator wykresów zasobów — przykładowy pulpit nawigacyjny #2](https://github.com/Azure-Samples/Governance/blob/master/src/resource-graph/portal-dashboards/sample-2/resourcegraphexplorer-sample-2.json)
+
+  [![Przykładowy obraz przykładowego pulpitu nawigacyjnego #2](./media/arge-sample2-small.png)](./media/arge-sample2-large.png#lightbox)
+
+> [!NOTE]
+> Liczby i wykresy w powyższym przykładowym panelu zrzuty ekranu będą się różnić w zależności od środowiska platformy Azure.
+
+1. Wybierz i pobierz przykładowy pulpit nawigacyjny, który chcesz ocenić.
+
+1. W witrynie Azure portal wybierz **pulpit nawigacyjny** z lewego okienka.
+
+1. Wybierz **pozycję Przekaż**, a następnie znajdź i wybierz pobrany przykładowy plik pulpitu nawigacyjnego. Następnie wybierz pozycję **Otwórz**.
+
+Importowany pulpit nawigacyjny jest wyświetlany automatycznie. Ponieważ obecnie istnieje w witrynie Azure portal, można eksplorować i wprowadzać zmiany w razie potrzeby lub utworzyć nowe pulpity nawigacyjne z przykładu do udostępniania zespołom. Aby uzyskać więcej informacji na temat pracy z pulpitami nawigacyjnymi, zobacz [Tworzenie i udostępnianie pulpitów nawigacyjnych w witrynie Azure portal](../../azure-portal/azure-portal-dashboards.md).
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Jeśli chcesz usunąć przykładowe pulpity nawigacyjne grafu zasobów ze środowiska Azure Portal, możesz to zrobić, wykonując następujące czynności:
+Jeśli chcesz usunąć przykładowe pulpity nawigacyjne wykresu zasobów ze środowiska witryny Azure portal, możesz to zrobić za pomocą następujących kroków:
 
-1. Wybierz pozycję **pulpit nawigacyjny** w okienku po lewej stronie.
+1. Wybierz **pozycję Pulpit nawigacyjny** z lewego okienka.
 
-1. Z listy rozwijanej pulpit nawigacyjny wybierz Pulpit nawigacyjny przykładowy Wykres zasobów, który chcesz usunąć.
+1. Z listy rozwijanej pulpitu nawigacyjnego wybierz przykładowy pulpit nawigacyjny wykresu zasobów, który chcesz usunąć.
 
-1. Wybierz pozycję **Usuń** z menu Pulpit nawigacyjny w górnej części pulpitu nawigacyjnego i wybierz pozycję **OK** , aby potwierdzić.
+1. Wybierz **polecenie Usuń** z menu pulpitu nawigacyjnego u góry pulpitu nawigacyjnego i wybierz pozycję **Ok,** aby potwierdzić.
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym przewodniku szybki start użyto Eksploratora Azure Resource Graph do uruchomienia pierwszego zapytania i przeszukasz przykłady pulpitu nawigacyjnego obsługiwane przez Wykres zasobów. Aby dowiedzieć się więcej na temat języka grafu zasobów, przejdź do strony szczegółów języka zapytań.
+W tym przewodniku Szybki start użyto eksploratora programu Azure Resource Graph explorer do uruchomienia pierwszego zapytania i przyjrzano się przykładom pulpitu nawigacyjnego obsługiwanego przez program Resource Graph. Aby dowiedzieć się więcej o języku wykresu zasobów, przejdź do strony szczegółów języka kwerendy.
 
 > [!div class="nextstepaction"]
-> [Uzyskaj więcej informacji na temat języka zapytań](./concepts/query-language.md)
+> [Uzyskaj więcej informacji o języku kwerendy](./concepts/query-language.md)

@@ -1,6 +1,6 @@
 ---
 title: Co się stało z moim projektem usługi w chmurze?
-description: Opisuje, co się dzieje w projekcie usług w chmurze po nawiązaniu połączenia z kontem usługi Azure Storage przy użyciu usług połączonych programu Visual Studio
+description: W tym artykule opisano, co dzieje się w projekcie usług w chmurze po nawiązaniu połączenia z kontem magazynu platformy Azure przy użyciu połączonych usług programu Visual Studio
 services: storage
 author: ghogen
 manager: jillfra
@@ -14,30 +14,30 @@ ms.date: 12/02/2016
 ms.author: ghogen
 ROBOTS: NOINDEX,NOFOLLOW
 ms.openlocfilehash: ac5a635b687e51ddd34899717497548296c2fc23
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72298767"
 ---
-# <a name="what-happened-to-my-cloud-services-project-visual-studio-azure-storage-connected-service"></a>Co się stało z projektem usług Cloud Services (usługa połączona z usługą Visual Studio Azure Storage)?
-## <a name="references-added"></a>Dodane odwołania
-Pakiet NuGet usługi Azure Storage został dodany do projektu programu Visual Studio.  
-Ten pakiet dodaje następujące odwołania platformy .NET:
+# <a name="what-happened-to-my-cloud-services-project-visual-studio-azure-storage-connected-service"></a>Co się stało z moim projektem usług w chmurze (usługa połączona z usługą Visual Studio Azure Storage)?
+## <a name="references-added"></a>Dodano odwołania
+Pakiet Azure Storage NuGet został dodany do projektu programu Visual Studio.  
+Ten pakiet dodaje następujące odwołania .NET:
 
-* **Microsoft. Data. EDM**
-* **Microsoft. Data. OData**
-* **Microsoft. Data. Services. Client**
-* **Microsoft. WindowsAzure. Configuration**
-* **Microsoft. WindowsAzure. Storage**
-* **Newtonsoft. JSON**
-* **System. Data**
-* **System. przestrzenny**
+* **Microsoft.Data.Edm**
+* **Microsoft.Data.OData**
+* **Microsoft.Data.Services.Klient**
+* **Microsoft.WindowsAzure.Konfiguracja**
+* **Microsoft.WindowsAzure.Storage**
+* **Newtonsoft.Json**
+* **System.Data**
+* **System.Przestrzenny**
 
 ## <a name="connection-string-for-azure-storage-added"></a>Dodano parametry połączenia dla usługi Azure Storage
-Elementy zostały utworzone przy użyciu parametrów połączenia wybranego konta magazynu i klucza. Wprowadzono modyfikacje następujących plików:
+Elementy zostały utworzone przy połączeniowym i kluczu wybranego konta magazynu. Wprowadzono modyfikacje następujących plików:
 
-* **ServiceDefinition. csdef**
-* **ServiceConfiguration. Cloud. cscfg**
-* **ServiceConfiguration. local. cscfg**
+* **UsługaDefinicja.csdef**
+* **UsługaConfiguration.Cloud.cscfg**
+* **UsługaConfiguration.Local.cscfg**
 

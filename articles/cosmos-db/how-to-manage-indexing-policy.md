@@ -1,27 +1,27 @@
 ---
-title: Zarządzanie zasadami indeksowania w Azure Cosmos DB
-description: Dowiedz się, jak zarządzać zasadami indeksowania, dołączać lub wykluczać właściwość z indeksowania, jak definiować indeksowanie za pomocą różnych zestawów SDK Azure Cosmos DB
+title: Zarządzanie zasadami indeksowania w usłudze Azure Cosmos DB
+description: Dowiedz się, jak zarządzać zasadami indeksowania, dołączać lub wykluczać właściwość z indeksowania, jak definiować indeksowanie przy użyciu różnych zestawów SDK usługi Azure Cosmos DB
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: thweiss
 ms.openlocfilehash: 58a1ee13afa76b152723cb71d4037f9c31cc8d4e
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79252079"
 ---
-# <a name="manage-indexing-policies-in-azure-cosmos-db"></a>Zarządzanie zasadami indeksowania w Azure Cosmos DB
+# <a name="manage-indexing-policies-in-azure-cosmos-db"></a>Zarządzanie zasadami indeksowania w usłudze Azure Cosmos DB
 
-W Azure Cosmos DB dane są indeksowane zgodnie z [zasadami indeksowania](index-policy.md) , które są zdefiniowane dla każdego kontenera. Domyślne zasady indeksowania dla nowo utworzonych kontenerów wymuszają indeksy zakresu dla wszelkich ciągów i liczb. Te zasady można zastąpić własnymi niestandardowymi zasadami indeksowania.
+W usłudze Azure Cosmos DB dane są indeksowane zgodnie z [zasadami indeksowania,](index-policy.md) które są zdefiniowane dla każdego kontenera. Domyślne zasady indeksowania dla nowo utworzonych kontenerów wymuszają indeksy zakresu dla wszelkich ciągów i liczb. Te zasady można zastąpić własnymi niestandardowymi zasadami indeksowania.
 
 ## <a name="indexing-policy-examples"></a>Przykłady zasad indeksowania
 
-Poniżej przedstawiono kilka przykładów zasad indeksowania pokazywanych w [ich formacie JSON](index-policy.md#include-exclude-paths), które są widoczne na Azure Portal. Te same parametry można ustawić za pomocą interfejsu wiersza polecenia platformy Azure lub dowolnego zestawu SDK.
+Oto kilka przykładów zasad indeksowania wyświetlane w [formacie JSON](index-policy.md#include-exclude-paths), który jest jak są one udostępniane w witrynie Azure portal. Te same parametry można ustawić za pomocą interfejsu wiersza polecenia platformy Azure lub dowolnego zestawu SDK.
 
-### <a name="opt-out-policy-to-selectively-exclude-some-property-paths"></a>Wycofaj zasady, aby selektywnie wykluczać niektóre ścieżki właściwości
+### <a name="opt-out-policy-to-selectively-exclude-some-property-paths"></a>Zasady rezygnacji w celu selektywnego wykluczania niektórych ścieżek właściwości
 
 ```json
     {
@@ -42,7 +42,7 @@ Poniżej przedstawiono kilka przykładów zasad indeksowania pokazywanych w [ich
     }
 ```
 
-Ta zasada indeksowania jest równoważna z tą, która ręcznie ustawia wartości domyślne ```kind```, ```dataType```i ```precision```. Te właściwości nie są już wymagane do jawnego ustawiania i można je pominąć z poziomu zasad indeksowania w całości (jak pokazano w powyższym przykładzie).
+Ta zasada indeksowania jest równoważna tej, ```kind``` ```dataType```poniżej, która ręcznie ustawia , oraz ```precision``` ich wartości domyślnych. Te właściwości nie są już konieczne do jawnego ustawiania i można je całkowicie pominąć z zasad indeksowania (jak pokazano w powyższym przykładzie).
 
 ```json
     {
@@ -75,7 +75,7 @@ Ta zasada indeksowania jest równoważna z tą, która ręcznie ustawia wartośc
     }
 ```
 
-### <a name="opt-in-policy-to-selectively-include-some-property-paths"></a>Zasady zgody na wybiórcze uwzględnienie niektórych ścieżek właściwości
+### <a name="opt-in-policy-to-selectively-include-some-property-paths"></a>Zasady opt-in, aby selektywnie zawierać niektóre ścieżki właściwości
 
 ```json
     {
@@ -96,7 +96,7 @@ Ta zasada indeksowania jest równoważna z tą, która ręcznie ustawia wartośc
     }
 ```
 
-Ta zasada indeksowania jest równoważna z tą, która ręcznie ustawia wartości domyślne ```kind```, ```dataType```i ```precision```. Te właściwości nie są już wymagane do jawnego ustawiania i można je pominąć z poziomu zasad indeksowania w całości (jak pokazano w powyższym przykładzie).
+Ta zasada indeksowania jest równoważna tej, ```kind``` ```dataType```poniżej, która ręcznie ustawia , oraz ```precision``` ich wartości domyślnych. Te właściwości nie są już konieczne do jawnego ustawiania i można je całkowicie pominąć z zasad indeksowania (jak pokazano w powyższym przykładzie).
 
 ```json
     {
@@ -138,9 +138,9 @@ Ta zasada indeksowania jest równoważna z tą, która ręcznie ustawia wartośc
 ```
 
 > [!NOTE] 
-> Zwykle zaleca się użycie zasad indeksowania **rezygnacji** , aby Azure Cosmos DB aktywnie indeksować wszelkie nowe właściwości, które mogą zostać dodane do modelu.
+> Ogólnie zaleca się użycie zasad indeksowania **rezygnacji,** aby umożliwić usłudze Azure Cosmos DB proaktywne indeksowanie wszelkich nowych właściwości, które mogą zostać dodane do modelu.
 
-### <a name="using-a-spatial-index-on-a-specific-property-path-only"></a>Używanie indeksu przestrzennego tylko dla określonej ścieżki właściwości
+### <a name="using-a-spatial-index-on-a-specific-property-path-only"></a>Używanie indeksu przestrzennego tylko na określonej ścieżce właściwości
 
 ```json
 {
@@ -172,9 +172,9 @@ Ta zasada indeksowania jest równoważna z tą, która ręcznie ustawia wartośc
 
 ## <a name="composite-indexing-policy-examples"></a>Przykłady złożonych zasad indeksowania
 
-Oprócz dołączania lub wykluczania ścieżek dla poszczególnych właściwości można również określić indeks złożony. Jeśli chcesz wykonać zapytanie, które ma klauzulę `ORDER BY` dla wielu właściwości, wymagany jest [indeks złożony](index-policy.md#composite-indexes) dla tych właściwości. Ponadto indeksy złożone będą mieć korzyść wydajności dla zapytań, które mają filtr i mają klauzulę ORDER BY dla różnych właściwości.
+Oprócz dołączania lub wykluczania ścieżek dla poszczególnych właściwości, można również określić indeks złożony. Jeśli chcesz wykonać kwerendę, która `ORDER BY` ma klauzulę dla wielu właściwości, wymagany jest [indeks złożony](index-policy.md#composite-indexes) dla tych właściwości. Ponadto indeksy złożone będą miały korzyści wydajności dla kwerend, które mają filtr i mają klauzulę ORDER BY na różne właściwości.
 
-### <a name="composite-index-defined-for-name-asc-age-desc"></a>Indeks złożony zdefiniowany dla (nazwa ASC, opis wieku):
+### <a name="composite-index-defined-for-name-asc-age-desc"></a>Zdefiniowany indeks złożony (nazwa asc, age desc):
 
 ```json
     {  
@@ -201,7 +201,7 @@ Oprócz dołączania lub wykluczania ścieżek dla poszczególnych właściwośc
     }
 ```
 
-Powyższy indeks złożony w polu Nazwa i wiek są wymagane dla #1 zapytań i #2 zapytań:
+Powyższy złożony indeks nazwy i wieku jest wymagany dla #1 i #2 kwerendy:
 
 #1 kwerendy:
 
@@ -219,7 +219,7 @@ Powyższy indeks złożony w polu Nazwa i wiek są wymagane dla #1 zapytań i #2
     ORDER BY c.name DESC, c.age ASC
 ```
 
-Ten złożony indeks będzie korzystać z #3 zapytań i #4 zapytań i optymalizowania filtrów:
+Ten złożony indeks przyniesie korzyści #3 kwerendy i #4 zapytań i zoptymalizuje filtry:
 
 #3 kwerendy:
 
@@ -238,9 +238,9 @@ FROM c
 WHERE c.name = "Tim" AND c.age > 18
 ```
 
-### <a name="composite-index-defined-for-name-asc-age-asc-and-name-asc-age-desc"></a>Indeks złożony zdefiniowany dla (nazwa ASC, wiek ASC) i (nazwa ASC, opis wieku):
+### <a name="composite-index-defined-for-name-asc-age-asc-and-name-asc-age-desc"></a>Zdefiniowany indeks złożony (nazwa ASC, wiek ASC) i (nazwa ASC, wiek DESC):
 
-W ramach tych samych zasad indeksowania można zdefiniować wiele różnych indeksów złożonych.
+Można zdefiniować wiele różnych indeksów złożonych w ramach tej samej zasady indeksowania.
 
 ```json
     {  
@@ -277,9 +277,9 @@ W ramach tych samych zasad indeksowania można zdefiniować wiele różnych inde
     }
 ```
 
-### <a name="composite-index-defined-for-name-asc-age-asc"></a>Indeks złożony zdefiniowany dla (nazwa ASC, wiek ASC):
+### <a name="composite-index-defined-for-name-asc-age-asc"></a>Zdefiniowany indeks złożony (nazwa ASC, wiek ASC):
 
-Określenie zamówienia jest opcjonalne. Jeśli nie zostanie określony, kolejność jest rosnąca.
+Jest opcjonalne, aby określić kolejność. Jeśli nie zostanie określony, kolejność jest rosnąco.
 
 ```json
 {  
@@ -304,9 +304,9 @@ Określenie zamówienia jest opcjonalne. Jeśli nie zostanie określony, kolejno
 }
 ```
 
-### <a name="excluding-all-property-paths-but-keeping-indexing-active"></a>Wykluczanie wszystkich ścieżek właściwości, ale utrzymywanie aktywności indeksowania
+### <a name="excluding-all-property-paths-but-keeping-indexing-active"></a>Wykluczanie wszystkich ścieżek właściwości, ale utrzymywanie aktywnej indeksowania
 
-Tych zasad można używać w sytuacjach, gdy [Funkcja czasu wygaśnięcia (TTL)](time-to-live.md) jest aktywna, ale nie jest wymagany żaden dodatkowy indeks (aby użyć Azure Cosmos dB jako czystego magazynu klucz-wartość).
+Ta zasada może służyć w sytuacjach, gdy [funkcja czas wygaśnięcia (TTL)](time-to-live.md) jest aktywna, ale nie jest wymagany indeks pomocniczy (do używania usługi Azure Cosmos DB jako magazynu czystej wartości klucza).
 
 ```json
     {
@@ -320,7 +320,7 @@ Tych zasad można używać w sytuacjach, gdy [Funkcja czasu wygaśnięcia (TTL)]
 
 ### <a name="no-indexing"></a>Brak indeksowania
 
-Te zasady spowodują wyłączenie indeksowania. Jeśli `indexingMode` jest ustawiona na `none`, nie można ustawić czasu wygaśnięcia dla kontenera.
+Ta zasada wyłączy indeksowanie. Jeśli `indexingMode` jest `none`ustawiona na , nie można ustawić czasu wygaśnięcia w kontenerze.
 
 ```json
     {
@@ -330,47 +330,47 @@ Te zasady spowodują wyłączenie indeksowania. Jeśli `indexingMode` jest ustaw
 
 ## <a name="updating-indexing-policy"></a>Aktualizowanie zasad indeksowania
 
-W Azure Cosmos DB zasady indeksowania można aktualizować przy użyciu dowolnej z poniższych metod:
+W usłudze Azure Cosmos DB zasady indeksowania można zaktualizować przy użyciu dowolnej z poniższych metod:
 
-- z Azure Portal
-- Korzystanie z interfejsu wiersza polecenia platformy Azure
-- przy użyciu programu PowerShell
-- Korzystanie z jednego z zestawów SDK
+- z witryny Azure portal
+- korzystanie z interfejsu wiersza polecenia platformy Azure
+- korzystanie z programu PowerShell
+- przy użyciu jednego z sdk
 
-[Aktualizacja zasad indeksowania](index-policy.md#modifying-the-indexing-policy) wyzwala transformację indeksu. Postęp tego przekształcenia może być również śledzony z zestawów SDK.
+[Aktualizacja zasad indeksowania](index-policy.md#modifying-the-indexing-policy) wyzwala transformację indeksu. Postęp tej transformacji można również śledzić z SDK.
 
 > [!NOTE]
-> Podczas aktualizowania zasad indeksowania zapisy do Azure Cosmos DB będą nieprzerwane. Podczas ponownego indeksowania zapytania mogą zwracać częściowe wyniki w miarę aktualizowania indeksu.
+> Podczas aktualizowania zasad indeksowania zapisy w usłudze Azure Cosmos DB będą nieprzerwane. Podczas ponownego indeksowania kwerendy mogą zwracać częściowe wyniki w miarę aktualizowanania indeksu.
 
 ## <a name="use-the-azure-portal"></a>Korzystanie z witryny Azure Portal
 
-Kontenery usługi Azure Cosmos przechowują swoje zasady indeksowania jako dokument JSON, który Azure Portal umożliwia bezpośrednie edytowanie.
+Kontenery usługi Azure Cosmos przechowują swoje zasady indeksowania jako dokument JSON, który portal Azure umożliwia bezpośrednią edycję.
 
-1. Zaloguj się do [Azure portal](https://portal.azure.com/).
+1. Zaloguj się do [Portalu Azure](https://portal.azure.com/).
 
 1. Utwórz nowe konto usługi Azure Cosmos lub wybierz istniejące.
 
-1. Otwórz okienko **Eksplorator danych** i wybierz kontener, w którym chcesz korzystać.
+1. Otwórz okienko **Eksploratora danych** i wybierz kontener, nad który chcesz pracować.
 
-1. Kliknij pozycję **skaluj & ustawienia**.
+1. Kliknij przycisk **Skaluj & Ustawienia**.
 
-1. Modyfikowanie dokumentu JSON zasad indeksowania (Zobacz przykłady [poniżej](#indexing-policy-examples))
+1. Modyfikowanie dokumentu JSON zasad indeksowania (patrz przykłady [poniżej)](#indexing-policy-examples)
 
-1. Po zakończeniu kliknij przycisk **Zapisz** .
+1. Gdy wszystko będzie gotowe, kliknij przycisk **Zapisz**.
 
 ![Zarządzanie indeksowaniem przy użyciu witryny Azure Portal](./media/how-to-manage-indexing-policy/indexing-policy-portal.png)
 
 ## <a name="use-the-azure-cli"></a>Używanie interfejsu wiersza polecenia platformy Azure
 
-Aby utworzyć kontener z niestandardowymi zasadami indeksowania, zobacz [Tworzenie kontenera z niestandardowymi zasadami indeksu przy użyciu interfejsu wiersza polecenia](manage-with-cli.md#create-a-container-with-a-custom-index-policy)
+Aby utworzyć kontener z niestandardową zasadą indeksowania zobacz Tworzenie [kontenera z niestandardowymi zasadami indeksu przy użyciu interfejsu wiersza polecenia](manage-with-cli.md#create-a-container-with-a-custom-index-policy)
 
 ## <a name="use-powershell"></a>Korzystanie z programu PowerShell
 
-Aby utworzyć kontener z niestandardowymi zasadami indeksowania, zobacz [Tworzenie kontenera z niestandardowymi zasadami indeksu przy użyciu programu PowerShell](manage-with-powershell.md#create-container-custom-index)
+Aby utworzyć kontener z niestandardową zasadą indeksowania zobacz Tworzenie [kontenera z niestandardowymi zasadami indeksu przy użyciu programu Powershell](manage-with-powershell.md#create-container-custom-index)
 
-## <a name="use-the-net-sdk-v2"></a>Korzystanie z zestawu .NET SDK V2
+## <a name="use-the-net-sdk-v2"></a>Korzystanie z pliku .NET SDK V2
 
-Obiekt `DocumentCollection` z [zestawu .NET SDK V2](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/) uwidacznia Właściwość `IndexingPolicy`, która umożliwia zmianę `IndexingMode` i dodanie lub usunięcie `IncludedPaths` i `ExcludedPaths`.
+Obiekt `DocumentCollection` z [.NET SDK v2](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/) `IndexingPolicy` udostępnia właściwość, `IndexingMode` która umożliwia `IncludedPaths` zmianę `ExcludedPaths`i dodać lub usunąć i .
 
 ```csharp
 // Retrieve the container's details
@@ -389,7 +389,7 @@ containerResponse.Resource.IndexingPolicy.CompositeIndexes.Add(new Collection<Co
 await client.ReplaceDocumentCollectionAsync(containerResponse.Resource);
 ```
 
-Aby śledzić postęp transformacji indeksu, przekaż obiekt `RequestOptions`, który ustawia właściwość `PopulateQuotaInfo` na `true`.
+Aby śledzić postęp transformacji `RequestOptions` indeksu, `PopulateQuotaInfo` przekaż `true`obiekt, który ustawia właściwość na .
 
 ```csharp
 // retrieve the container's details
@@ -398,9 +398,9 @@ ResourceResponse<DocumentCollection> container = await client.ReadDocumentCollec
 long indexTransformationProgress = container.IndexTransformationProgress;
 ```
 
-## <a name="use-the-net-sdk-v3"></a>Korzystanie z zestawu .NET SDK v3
+## <a name="use-the-net-sdk-v3"></a>Użyj pliku .NET SDK V3
 
-Obiekt `ContainerProperties` z [zestawu .NET SDK v3](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/) (zobacz [ten przewodnik Szybki Start](create-sql-api-dotnet.md) dotyczący użycia) uwidacznia Właściwość `IndexingPolicy`, która umożliwia zmianę `IndexingMode` i dodanie lub usunięcie `IncludedPaths` i `ExcludedPaths`.
+Obiekt `ContainerProperties` z [platformy .NET SDK w wersji 3](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/) (zobacz [ten przewodnik Szybki start](create-sql-api-dotnet.md) dotyczący jego użycia) udostępnia `IndexingPolicy` właściwość, która umożliwia zmianę `IndexingMode` i dodawanie lub usuwanie `IncludedPaths` oraz `ExcludedPaths`.
 
 ```csharp
 // Retrieve the container's details
@@ -424,7 +424,7 @@ containerResponse.Resource.IndexingPolicy.CompositeIndexes.Add(new Collection<Co
 await client.GetContainer("database", "container").ReplaceContainerAsync(containerResponse.Resource);
 ```
 
-Aby śledzić postęp transformacji indeksu, należy przekazać obiekt `RequestOptions`, który ustawia właściwość `PopulateQuotaInfo` na `true`, a następnie pobrać wartość z nagłówka odpowiedzi `x-ms-documentdb-collection-index-transformation-progress`.
+Aby śledzić postęp transformacji `RequestOptions` indeksu, `PopulateQuotaInfo` przekaż `true`obiekt, który ustawia właściwość do , a następnie pobrać wartość z nagłówka `x-ms-documentdb-collection-index-transformation-progress` odpowiedzi.
 
 ```csharp
 // retrieve the container's details
@@ -433,7 +433,7 @@ ContainerResponse containerResponse = await client.GetContainer("database", "con
 long indexTransformationProgress = long.Parse(containerResponse.Headers["x-ms-documentdb-collection-index-transformation-progress"]);
 ```
 
-Podczas definiowania niestandardowych zasad indeksowania podczas tworzenia nowego kontenera, zestaw SDK V3's Fluent API umożliwia zapisanie tej definicji w zwięzłej i wydajnej sposób:
+Podczas definiowania niestandardowych zasad indeksowania podczas tworzenia nowego kontenera, płynny interfejs API SDK V3 umożliwia pisanie tej definicji w zwięzły i skuteczny sposób:
 
 ```csharp
 await client.GetDatabase("database").DefineContainer(name: "container", partitionKeyPath: "/myPartitionKey")
@@ -455,9 +455,9 @@ await client.GetDatabase("database").DefineContainer(name: "container", partitio
     .CreateIfNotExistsAsync();
 ```
 
-## <a name="use-the-java-sdk"></a>Korzystanie z zestawu SDK języka Java
+## <a name="use-the-java-sdk"></a>Korzystanie z sdk Java
 
-Obiekt `DocumentCollection` z [zestawu Java SDK](https://mvnrepository.com/artifact/com.microsoft.azure/azure-cosmosdb) (zobacz [ten przewodnik Szybki Start](create-sql-api-java.md) dotyczący użycia) uwidacznia metody `getIndexingPolicy()` i `setIndexingPolicy()`. Obiekt `IndexingPolicy`, do którego manipuluje, umożliwia zmianę trybu indeksowania i dodanie lub usunięcie ścieżek dołączony i wykluczony.
+Obiekt `DocumentCollection` z [java SDK](https://mvnrepository.com/artifact/com.microsoft.azure/azure-cosmosdb) (zobacz [ten przewodnik Szybki](create-sql-api-java.md) `getIndexingPolicy()` start `setIndexingPolicy()` dotyczący jego użycia) udostępnia i metody. Obiekt, `IndexingPolicy` który manipulują pozwala zmienić tryb indeksowania i dodać lub usunąć dołączone i wykluczone ścieżki.
 
 ```java
 // Retrieve the container's details
@@ -523,7 +523,7 @@ indexingPolicy.setCompositeIndexes(compositeIndexes);
 });
 ```
 
-Aby śledzić postęp transformacji indeksu w kontenerze, należy przekazać obiekt `RequestOptions`, który żąda wypełnienia informacji o przydziale, a następnie pobrać wartość z nagłówka odpowiedzi `x-ms-documentdb-collection-index-transformation-progress`.
+Aby śledzić postęp transformacji indeksu `RequestOptions` w kontenerze, przekaż obiekt, który żąda zapełnienia informacji o przydziałach, a następnie pobierz wartość z nagłówka `x-ms-documentdb-collection-index-transformation-progress` odpowiedzi.
 
 ```java
 // set the RequestOptions object
@@ -537,23 +537,23 @@ containerResponse.subscribe(result -> {
 });
 ```
 
-## <a name="use-the-nodejs-sdk"></a>Korzystanie z zestawu SDK środowiska Node. js
+## <a name="use-the-nodejs-sdk"></a>Korzystanie z sdk node.js
 
-Interfejs `ContainerDefinition` z [zestawu SDK środowiska Node. js](https://www.npmjs.com/package/@azure/cosmos) (zobacz [ten przewodnik Szybki Start](create-sql-api-nodejs.md) dotyczący użycia) uwidacznia Właściwość `indexingPolicy`, która umożliwia zmianę `indexingMode` i dodanie lub usunięcie `includedPaths` i `excludedPaths`.
+Interfejs `ContainerDefinition` z [node.js SDK](https://www.npmjs.com/package/@azure/cosmos) (zobacz [ten szybki start](create-sql-api-nodejs.md) `indexingPolicy` dotyczący jego użycia) `indexingMode` udostępnia właściwość, która umożliwia zmianę i dodawanie lub usuwanie `includedPaths` oraz `excludedPaths`.
 
-Pobierz szczegóły kontenera
+Pobieranie szczegółów kontenera
 
 ```javascript
 const containerResponse = await client.database('database').container('container').read();
 ```
 
-Ustawianie spójności trybu indeksowania
+Ustawianie spójnego trybu indeksowania
 
 ```javascript
 containerResponse.body.indexingPolicy.indexingMode = "consistent";
 ```
 
-Dodaj dołączoną ścieżkę obejmującą indeks przestrzenny
+Dodaj dołączona ścieżka, w tym indeks przestrzenny
 
 ```javascript
 containerResponse.body.indexingPolicy.includedPaths.push({
@@ -596,7 +596,7 @@ Aktualizowanie kontenera ze zmianami
 const replaceResponse = await client.database('database').container('container').replace(containerResponse.body);
 ```
 
-Aby śledzić postęp transformacji indeksu w kontenerze, należy przekazać obiekt `RequestOptions`, który ustawia właściwość `populateQuotaInfo` na `true`, a następnie pobrać wartość z nagłówka odpowiedzi `x-ms-documentdb-collection-index-transformation-progress`.
+Aby śledzić postęp transformacji indeksu `RequestOptions` w kontenerze, `true`przekaż obiekt, który ustawia `x-ms-documentdb-collection-index-transformation-progress` `populateQuotaInfo` właściwość do , a następnie pobrać wartość z nagłówka odpowiedzi.
 
 ```javascript
 // retrieve the container's details
@@ -607,24 +607,24 @@ const containerResponse = await client.database('database').container('container
 const indexTransformationProgress = replaceResponse.headers['x-ms-documentdb-collection-index-transformation-progress'];
 ```
 
-## <a name="use-the-python-sdk-v3"></a>Korzystanie z zestawu Python SDK v3
+## <a name="use-the-python-sdk-v3"></a>Korzystanie z języka Python SDK V3
 
-W przypadku korzystania z [zestawu Python SDK v3](https://pypi.org/project/azure-cosmos/) (zobacz [ten przewodnik Szybki Start](create-sql-api-python.md) dotyczący użycia) Konfiguracja kontenera jest zarządzana jako słownik. Z tego słownika można uzyskać dostęp do zasad indeksowania i wszystkich jej atrybutów.
+Podczas korzystania z [języka Python SDK V3](https://pypi.org/project/azure-cosmos/) (zobacz [ten Szybki start](create-sql-api-python.md) dotyczące jego użycia), konfiguracja kontenera jest zarządzana jako słownik. Z tego słownika można uzyskać dostęp do zasad indeksowania i wszystkich jego atrybutów.
 
-Pobierz szczegóły kontenera
+Pobieranie szczegółów kontenera
 
 ```python
 containerPath = 'dbs/database/colls/collection'
 container = client.ReadContainer(containerPath)
 ```
 
-Ustawianie spójności trybu indeksowania
+Ustawianie spójnego trybu indeksowania
 
 ```python
 container['indexingPolicy']['indexingMode'] = 'consistent'
 ```
 
-Definiowanie zasad indeksowania z dołączoną ścieżką i indeksem przestrzennym
+Definiowanie zasad indeksowania z uwzględniona ścieżka i indeks przestrzenny
 
 ```python
 container["indexingPolicy"] = {
@@ -638,7 +638,7 @@ container["indexingPolicy"] = {
 }
 ```
 
-Definiowanie zasad indeksowania przy użyciu ścieżki wykluczonej
+Definiowanie zasad indeksowania z wykluczoną ścieżką
 
 ```python
 container["indexingPolicy"] = {
@@ -671,11 +671,11 @@ Aktualizowanie kontenera ze zmianami
 response = client.ReplaceContainer(containerPath, container)
 ```
 
-## <a name="use-the-python-sdk-v4"></a>Korzystanie z zestawu SDK dla języka Python w wersji 4
+## <a name="use-the-python-sdk-v4"></a>Korzystanie z języka Python SDK V4
 
-W przypadku korzystania z [zestawu SDK języka Python w wersji 4](https://pypi.org/project/azure-cosmos/), konfiguracja kontenera jest zarządzana jako słownik. Z tego słownika można uzyskać dostęp do zasad indeksowania i wszystkich jej atrybutów.
+Podczas korzystania z [języka Python SDK V4,](https://pypi.org/project/azure-cosmos/)konfiguracja kontenera jest zarządzana jako słownik. Z tego słownika można uzyskać dostęp do zasad indeksowania i wszystkich jego atrybutów.
 
-Pobierz szczegóły kontenera
+Pobieranie szczegółów kontenera
 
 ```python
 database_client = cosmos_client.get_database_client('database')
@@ -683,7 +683,7 @@ container_client = database_client.get_container_client('container')
 container = container_client.read()
 ```
 
-Ustawianie spójności trybu indeksowania
+Ustawianie spójnego trybu indeksowania
 
 ```python
 indexingPolicy = {
@@ -691,7 +691,7 @@ indexingPolicy = {
 }
 ```
 
-Definiowanie zasad indeksowania z dołączoną ścieżką i indeksem przestrzennym
+Definiowanie zasad indeksowania z uwzględniona ścieżka i indeks przestrzenny
 
 ```python
 indexingPolicy = {
@@ -704,7 +704,7 @@ indexingPolicy = {
 }
 ```
 
-Definiowanie zasad indeksowania przy użyciu ścieżki wykluczonej
+Definiowanie zasad indeksowania z wykluczoną ścieżką
 
 ```python
 indexingPolicy = {

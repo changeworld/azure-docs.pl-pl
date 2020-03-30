@@ -1,6 +1,6 @@
 ---
-title: Konfigurowanie zarządzanych tożsamości na maszynie wirtualnej platformy Azure przy użyciu usługi REST — Azure AD
-description: Instrukcje krok po kroku dotyczące konfigurowania tożsamości zarządzanych przez system i użytkownika na maszynie wirtualnej platformy Azure przy użyciu zawieszania do wykonywania wywołań interfejsu API REST.
+title: Konfigurowanie tożsamości zarządzanych na maszynie Wirtualnej platformy Azure przy użyciu rest — usługi Azure AD
+description: Instrukcje krok po kroku dotyczące konfigurowania tożsamości zarządzanych przypisanych przez użytkownika na maszynie Wirtualnej platformy Azure przy użyciu funkcji CURL do wykonywania wywołań interfejsu API REST.
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -16,40 +16,40 @@ ms.date: 06/25/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9f975595e935a5c0254450168aa295e6e7366a94
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79244162"
 ---
-# <a name="configure-managed-identities-for-azure-resources-on-an-azure-vm-using-rest-api-calls"></a>Konfigurowanie zarządzanych tożsamości dla zasobów platformy Azure na maszynie wirtualnej platformy Azure przy użyciu wywołań interfejsu API REST
+# <a name="configure-managed-identities-for-azure-resources-on-an-azure-vm-using-rest-api-calls"></a>Konfigurowanie tożsamości zarządzanych dla zasobów platformy Azure na maszynie Wirtualnej platformy Azure przy użyciu wywołań interfejsu API REST
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
-Zarządzane tożsamości dla zasobów platformy Azure zapewniają usługi platformy Azure z automatycznie zarządzaną tożsamością systemu w Azure Active Directory. Tej tożsamości można użyć do uwierzytelniania w dowolnej usłudze, która obsługuje uwierzytelnianie usługi Azure AD, bez poświadczeń w kodzie. 
+Tożsamości zarządzane dla zasobów platformy Azure zapewniają usługom platformy Azure automatycznie zarządzaną tożsamość systemu w usłudze Azure Active Directory. Tej tożsamości można użyć do uwierzytelniania do dowolnej usługi, która obsługuje uwierzytelnianie usługi Azure AD, bez poświadczeń w kodzie. 
 
-W tym artykule, za pomocą zapełniania w celu wykonywania wywołań do punktu końcowego Azure Resource Manager REST, dowiesz się, jak wykonywać następujące tożsamości zarządzane dla operacji zasobów platformy Azure na maszynie wirtualnej platformy Azure:
+W tym artykule przy użyciu CURL do wywołania punktu końcowego REST usługi Azure Resource Manager, dowiedzieć się, jak wykonać następujące tożsamości zarządzane dla operacji zasobów platformy Azure na maszynie Wirtualnej platformy Azure:
 
-- Włączanie i wyłączanie zarządzanej tożsamości przypisanej do systemu na maszynie wirtualnej platformy Azure
-- Dodawanie i usuwanie tożsamości zarządzanej przypisanej przez użytkownika na maszynie wirtualnej platformy Azure
+- Włączanie i wyłączanie tożsamości zarządzanej przypisanej przez system na maszynie Wirtualnej platformy Azure
+- Dodawanie i usuwanie tożsamości zarządzanej przypisanej przez użytkownika na maszynie Wirtualnej platformy Azure
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Jeśli nie znasz tożsamości zarządzanych dla zasobów platformy Azure, zapoznaj się z [sekcją przegląd](overview.md). **Pamiętaj, aby zapoznać się z [różnicą między przypisaną przez system i tożsamością zarządzaną przez użytkownika](overview.md#how-does-the-managed-identities-for-azure-resources-work)** .
+- Jeśli nie znasz tożsamości zarządzanych dla zasobów platformy Azure, zapoznaj się z [sekcją omówienie](overview.md). **Pamiętaj, aby przejrzeć [różnicę między tożsamością zarządzaną przypisaną do systemu a przypisaną przez użytkownika](overview.md#how-does-the-managed-identities-for-azure-resources-work)**.
 - Jeśli nie masz jeszcze konta platformy Azure, [utwórz bezpłatne konto](https://azure.microsoft.com/free/) przed kontynuowaniem.
-- Jeśli używasz systemu Windows, zainstaluj [podsystem Windows dla systemu Linux](https://msdn.microsoft.com/commandline/wsl/about) lub Użyj [Azure Cloud Shell](../../cloud-shell/overview.md) w Azure Portal.
-- [Zainstaluj konsolę lokalną interfejsu wiersza polecenia platformy Azure](/cli/azure/install-azure-cli), jeśli używasz [podsystemu Windows dla systemu Linux](https://msdn.microsoft.com/commandline/wsl/about) lub [systemu operacyjnego dystrybucji Linux](/cli/azure/install-azure-cli-apt?view=azure-cli-latest).
-- Jeśli używasz lokalnej konsoli interfejsu wiersza polecenia platformy Azure, zaloguj się do platformy Azure `az login` przy użyciu konta, które jest skojarzone z subskrypcją platformy Azure, aby zarządzać tożsamościami zarządzanymi przez system lub użytkownika.
+- Jeśli używasz systemu Windows, zainstaluj [podsystem windows dla systemu Linux](https://msdn.microsoft.com/commandline/wsl/about) lub użyj [powłoki chmury Azure](../../cloud-shell/overview.md) w witrynie Azure portal.
+- [Zainstaluj lokalną konsolę interfejsu wiersza polecenia platformy Azure,](/cli/azure/install-azure-cli)jeśli używasz [podsystemu Windows dla systemu Linux](https://msdn.microsoft.com/commandline/wsl/about) lub systemu [operacyjnego dystrybucji systemu Linux](/cli/azure/install-azure-cli-apt?view=azure-cli-latest).
+- Jeśli używasz konsoli lokalnej interfejsu wiersza `az login` polecenia platformy Azure, zaloguj się na platformie Azure przy użyciu konta skojarzonego z subskrypcją platformy Azure, którą chcesz zarządzać tożsamościami zarządzanymi przypisanymi przez użytkownika.
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-## <a name="system-assigned-managed-identity"></a>Tożsamość zarządzana przypisana przez system
+## <a name="system-assigned-managed-identity"></a>Tożsamość zarządzana przypisana do systemu
 
-W tej sekcji dowiesz się, jak włączyć i wyłączyć tożsamość zarządzaną przypisaną przez system na maszynie wirtualnej platformy Azure przy użyciu zwinięcia, aby nawiązywać wywołania do punktu końcowego REST Azure Resource Manager.
+W tej sekcji dowiesz się, jak włączyć i wyłączyć tożsamości zarządzanej przypisane do systemu na maszynie Wirtualnej platformy Azure przy użyciu CURL do wywołania punktu końcowego REST usługi Azure Resource Manager.
 
-### <a name="enable-system-assigned-managed-identity-during-creation-of-an-azure-vm"></a>Włącz tożsamość zarządzaną przypisaną przez system podczas tworzenia maszyny wirtualnej platformy Azure
+### <a name="enable-system-assigned-managed-identity-during-creation-of-an-azure-vm"></a>Włączanie tożsamości zarządzanej przypisanej do systemu podczas tworzenia maszyny Wirtualnej platformy Azure
 
-Aby można było utworzyć maszynę wirtualną platformy Azure z włączoną tożsamością zarządzaną przypisaną przez system, Twoje konto wymaga przypisania roli [współautor maszyny wirtualnej](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) .  Nie są wymagane żadne dodatkowe przypisania ról w katalogu usługi Azure AD.
+Aby utworzyć maszynę wirtualną platformy Azure z włączoną tożsamością zarządzaną przypisaną do systemu, twoje konto wymaga przypisania roli [współautora maszyny wirtualnej.](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor)  Nie są wymagane żadne dodatkowe przypisania ról katalogu usługi Azure AD.
 
 1. Utwórz [grupę zasobów](../../azure-resource-manager/management/overview.md#terminology) w celu uwzględnienia i wdrożenia maszyny wirtualnej i jej powiązanych zasobów przy użyciu polecenia [az group create](/cli/azure/group/#az-group-create). Ten krok możesz pominąć, jeśli masz już grupę zasobów, której chcesz użyć w zamian:
 
@@ -57,19 +57,19 @@ Aby można było utworzyć maszynę wirtualną platformy Azure z włączoną to�
    az group create --name myResourceGroup --location westus
    ```
 
-2. Utwórz [interfejs sieciowy](/cli/azure/network/nic?view=azure-cli-latest#az-network-nic-create) dla maszyny wirtualnej:
+2. Utwórz [interfejs sieciowy](/cli/azure/network/nic?view=azure-cli-latest#az-network-nic-create) dla maszyny Wirtualnej:
 
    ```azurecli-interactive
     az network nic create -g myResourceGroup --vnet-name myVnet --subnet mySubnet -n myNic
    ```
 
-3. Pobierz token dostępu okaziciela, który będzie używany w następnym kroku w nagłówku autoryzacji, aby utworzyć maszynę wirtualną przy użyciu zarządzanej tożsamości przypisanej do systemu.
+3. Pobierz token dostępu na okaziciela, który będzie używany w następnym kroku w nagłówku autoryzacji, aby utworzyć maszynę wirtualną z tożsamością zarządzaną przypisaną przez system.
 
    ```azurecli-interactive
    az account get-access-token
    ``` 
 
-4. Utwórz maszynę wirtualną przy użyciu ZWINIĘCIEa, aby wywołać punkt końcowy usługi REST Azure Resource Manager. Poniższy przykład tworzy maszynę wirtualną o nazwie *myVM* z tożsamością zarządzaną przypisaną przez system, jak określono w treści żądania przez wartość `"identity":{"type":"SystemAssigned"}`. Zastąp `<ACCESS TOKEN>` wartością otrzymaną w poprzednim kroku, gdy zażądano tokenu dostępu okaziciela oraz wartości `<SUBSCRIPTION ID>`, jak jest to odpowiednie dla danego środowiska.
+4. Tworzenie maszyny Wirtualnej przy użyciu CURL do wywołania punktu końcowego REST usługi Azure Resource Manager. Poniższy przykład tworzy maszynę wirtualną o nazwie *myVM* z tożsamością zarządzaną przypisaną do systemu, zidentyfikowaną w treści żądania przez wartość `"identity":{"type":"SystemAssigned"}`. Zamień `<ACCESS TOKEN>` na wartość otrzymaną w poprzednim kroku, gdy zażądano tokenu dostępu na okaziciela i `<SUBSCRIPTION ID>` wartość odpowiednią dla danego środowiska.
 
    ```bash
    curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2018-06-01' -X PUT -d '{"location":"westus","name":"myVM","identity":{"type":"SystemAssigned"},"properties":{"hardwareProfile":{"vmSize":"Standard_D2_v2"},"storageProfile":{"imageReference":{"sku":"2016-Datacenter","publisher":"MicrosoftWindowsServer","version":"latest","offer":"WindowsServer"},"osDisk":{"caching":"ReadWrite","managedDisk":{"storageAccountType":"Standard_LRS"},"name":"myVM3osdisk","createOption":"FromImage"},"dataDisks":[{"diskSizeGB":1023,"createOption":"Empty","lun":0},{"diskSizeGB":1023,"createOption":"Empty","lun":1}]},"osProfile":{"adminUsername":"azureuser","computerName":"myVM","adminPassword":"<SECURE PASSWORD STRING>"},"networkProfile":{"networkInterfaces":[{"id":"/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkInterfaces/myNic","properties":{"primary":true}}]}}}' -H "Content-Type: application/json" -H "Authorization: Bearer <ACCESS TOKEN>"
@@ -84,7 +84,7 @@ Aby można było utworzyć maszynę wirtualną platformy Azure z włączoną to�
    |Nagłówek żądania  |Opis  |
    |---------|---------|
    |*Typ zawartości*     | Wymagany. Ustaw wartość `application/json`.        |
-   |*Autoryzacja*     | Wymagany. Ustaw prawidłowy token dostępu `Bearer`.        | 
+   |*Autoryzacji*     | Wymagany. Ustaw prawidłowy `Bearer` token dostępu.        | 
    
    **Treść żądania**
 
@@ -146,20 +146,20 @@ Aby można było utworzyć maszynę wirtualną platformy Azure z włączoną to�
     }  
    ```
 
-### <a name="enable-system-assigned-identity-on-an-existing-azure-vm"></a>Włączanie tożsamości przypisanej do systemu na istniejącej maszynie wirtualnej platformy Azure
+### <a name="enable-system-assigned-identity-on-an-existing-azure-vm"></a>Włączanie tożsamości przypisanej do systemu na istniejącej maszynie Wirtualnej platformy Azure
 
-Aby włączyć tożsamość zarządzaną przypisaną przez system na maszynie wirtualnej, która została pierwotnie zainicjowana bez niej, konto wymaga przypisania roli [współautor maszyny wirtualnej](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) .  Nie są wymagane żadne dodatkowe przypisania ról w katalogu usługi Azure AD.
+Aby włączyć tożsamość zarządzaną przypisaną do systemu na maszynie wirtualnej, która została pierwotnie zainicjowana bez niej, twoje konto wymaga przypisania roli [współautora maszyny wirtualnej.](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor)  Nie są wymagane żadne dodatkowe przypisania ról katalogu usługi Azure AD.
 
-1. Pobierz token dostępu okaziciela, który będzie używany w następnym kroku w nagłówku autoryzacji, aby utworzyć maszynę wirtualną przy użyciu zarządzanej tożsamości przypisanej do systemu.
+1. Pobierz token dostępu na okaziciela, który będzie używany w następnym kroku w nagłówku autoryzacji, aby utworzyć maszynę wirtualną z tożsamością zarządzaną przypisaną przez system.
 
    ```azurecli-interactive
    az account get-access-token
    ```
 
-2. Użyj następującego polecenia, aby wywołać punkt końcowy Azure Resource Manager REST w celu włączenia zarządzanej tożsamości przypisanej do systemu na maszynie wirtualnej zgodnie z opisem w treści żądania przez `{"identity":{"type":"SystemAssigned"}` wartości dla maszyny wirtualnej o nazwie *myVM*.  Zastąp `<ACCESS TOKEN>` wartością otrzymaną w poprzednim kroku, gdy zażądano tokenu dostępu okaziciela oraz wartości `<SUBSCRIPTION ID>`, jak jest to odpowiednie dla danego środowiska.
+2. Użyj następującego polecenia CURL, aby wywołać punkt końcowy USŁUGI Azure Resource Manager REST, aby włączyć przypisaną `{"identity":{"type":"SystemAssigned"}` do systemu tożsamość zarządzaną na maszynie Wirtualnej, jak określono w treści żądania przez wartość maszyny wirtualnej o nazwie *myVM*.  Zamień `<ACCESS TOKEN>` na wartość otrzymaną w poprzednim kroku, gdy zażądano tokenu dostępu na okaziciela i `<SUBSCRIPTION ID>` wartość odpowiednią dla danego środowiska.
    
    > [!IMPORTANT]
-   > Aby upewnić się, że nie usunięto żadnych istniejących tożsamości zarządzanych przypisanych przez użytkownika, które są przypisane do maszyny wirtualnej, należy listę zarządzanych tożsamości przypisanych przez użytkownika za pomocą tego polecenia ZWINIĘCIE: `curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP>/providers/Microsoft.Compute/virtualMachines/<VM NAME>?api-version=2018-06-01' -H "Authorization: Bearer <ACCESS TOKEN>"`. Jeśli do maszyny wirtualnej są przypisane skojarzone tożsamości przypisane przez użytkownika, zgodnie z opisem w `identity` wartość w odpowiedzi, przejdź do kroku 3, który pokazuje, jak zachować tożsamość zarządzaną przez użytkownika podczas włączania zarządzanej tożsamości przypisanej do systemu na maszynie wirtualnej.
+   > Aby upewnić się, że nie usuniesz żadnych istniejących tożsamości zarządzanych przypisanych przez użytkownika, które są przypisane do `curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP>/providers/Microsoft.Compute/virtualMachines/<VM NAME>?api-version=2018-06-01' -H "Authorization: Bearer <ACCESS TOKEN>"`maszyny Wirtualnej, należy wyświetlić listę tożsamości zarządzanych przypisanych przez użytkownika za pomocą tego polecenia CURL: . Jeśli do maszyny wirtualnej przypisanych przez użytkownika przypisano żadnych tożsamości `identity` zarządzanych, jak określono w wartości w odpowiedzi, przejdź do kroku 3, który pokazuje, jak zachować tożsamości zarządzane przypisane przez użytkownika, włączając tożsamość zarządzaną przypisaną do systemu na maszynie wirtualnej.
 
    ```bash
    curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2018-06-01' -X PATCH -d '{"identity":{"type":"SystemAssigned"}}' -H "Content-Type: application/json" -H Authorization:"Bearer <ACCESS TOKEN>"
@@ -173,7 +173,7 @@ Aby włączyć tożsamość zarządzaną przypisaną przez system na maszynie wi
    |Nagłówek żądania  |Opis  |
    |---------|---------|
    |*Typ zawartości*     | Wymagany. Ustaw wartość `application/json`.        |
-   |*Autoryzacja*     | Wymagany. Ustaw prawidłowy token dostępu `Bearer`.        | 
+   |*Autoryzacji*     | Wymagany. Ustaw prawidłowy `Bearer` token dostępu.        | 
    
    **Treść żądania**
     
@@ -185,13 +185,13 @@ Aby włączyć tożsamość zarządzaną przypisaną przez system na maszynie wi
     }
    ```
 
-3. Aby włączyć tożsamość zarządzaną przypisaną przez system na maszynie wirtualnej z istniejącymi tożsamościami zarządzanymi przypisanymi przez użytkownika, należy dodać `SystemAssigned` do wartości `type`.  
+3. Aby włączyć tożsamość zarządzaną przypisaną do systemu na maszynie wirtualnej z `SystemAssigned` istniejącymi tożsamościami zarządzanymi przypisanymi przez użytkownika, należy dodać do `type` wartości.  
    
-   Na przykład jeśli maszyna wirtualna ma zarządzane tożsamości przypisane przez użytkownika `ID1` i `ID2` przypisane do niej, a chcesz dodać tożsamość zarządzaną przypisaną przez system do maszyny wirtualnej, użyj następującego Wywołaj metodę. Zamień `<ACCESS TOKEN>` i `<SUBSCRIPTION ID>` na wartości odpowiednie dla danego środowiska.
+   Na przykład jeśli maszyna wirtualna ma przypisane `ID1` przez `ID2` użytkownika tożsamości zarządzane i przypisane do niej i chcesz dodać tożsamości zarządzanej przypisane przez system do maszyny Wirtualnej, użyj następującego wywołania CURL. Zastąp `<ACCESS TOKEN>` i `<SUBSCRIPTION ID>` wartościami odpowiednimi dla danego środowiska.
 
-   W wersji interfejsu API `2018-06-01` są przechowywane tożsamości zarządzane przypisane przez użytkownika w `userAssignedIdentities` wartość w formacie słownika, w przeciwieństwie do wartości `identityIds` w formacie tablicy używanym w wersji interfejsu API `2017-12-01`.
+   Wersja `2018-06-01` interfejsu API przechowuje tożsamości zarządzane `userAssignedIdentities` przypisane przez użytkownika w wartości `identityIds` w formacie słownika, `2017-12-01`w przeciwieństwie do wartości w formacie tablicy używanym w wersji interfejsu API .
    
-   **INTERFEJS API W WERSJI 2018-06-01**
+   **WERSJA INTERFEJSU API 2018-06-01**
 
    ```bash
    curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2018-06-01' -X PATCH -d '{"identity":{"type":"SystemAssigned, UserAssigned", "userAssignedIdentities":{"/subscriptions/<<SUBSCRIPTION ID>>/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID1":{},"/subscriptions/<SUBSCRIPTION ID>/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID2":{}}}}' -H "Content-Type: application/json" -H Authorization:"Bearer <ACCESS TOKEN>"
@@ -205,7 +205,7 @@ Aby włączyć tożsamość zarządzaną przypisaną przez system na maszynie wi
    |Nagłówek żądania  |Opis  |
    |---------|---------|
    |*Typ zawartości*     | Wymagany. Ustaw wartość `application/json`.        |
-   |*Autoryzacja*     | Wymagany. Ustaw prawidłowy token dostępu `Bearer`.        | 
+   |*Autoryzacji*     | Wymagany. Ustaw prawidłowy `Bearer` token dostępu.        | 
 
    **Treść żądania**
 
@@ -225,7 +225,7 @@ Aby włączyć tożsamość zarządzaną przypisaną przez system na maszynie wi
     }
    ```
 
-   **INTERFEJS API W WERSJI 2017-12-01**
+   **WERSJA INTERFEJSU API 2017-12-01**
 
    ```bash
    curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2017-12-01' -X PATCH -d '{"identity":{"type":"SystemAssigned, UserAssigned", "identityIds":["/subscriptions/<<SUBSCRIPTION ID>>/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID1","/subscriptions/<SUBSCRIPTION ID>/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID2"]}}' -H "Content-Type: application/json" -H Authorization:"Bearer <ACCESS TOKEN>"
@@ -240,7 +240,7 @@ Aby włączyć tożsamość zarządzaną przypisaną przez system na maszynie wi
    |Nagłówek żądania  |Opis  |
    |---------|---------|
    |*Typ zawartości*     | Wymagany. Ustaw wartość `application/json`.        |
-   |*Autoryzacja*     | Wymagany. Ustaw prawidłowy token dostępu `Bearer`.        | 
+   |*Autoryzacji*     | Wymagany. Ustaw prawidłowy `Bearer` token dostępu.        | 
 
    **Treść żądania**
 
@@ -256,20 +256,20 @@ Aby włączyć tożsamość zarządzaną przypisaną przez system na maszynie wi
     }
    ```   
 
-### <a name="disable-system-assigned-managed-identity-from-an-azure-vm"></a>Wyłączanie tożsamości zarządzanej przypisanej przez system z maszyny wirtualnej platformy Azure
+### <a name="disable-system-assigned-managed-identity-from-an-azure-vm"></a>Wyłączanie tożsamości zarządzanej przypisanej przez system z maszyny Wirtualnej platformy Azure
 
-Aby wyłączyć tożsamość zarządzaną przypisaną przez system na maszynie wirtualnej, Twoje konto wymaga przypisania roli [współautor maszyny wirtualnej](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) .  Nie są wymagane żadne dodatkowe przypisania ról w katalogu usługi Azure AD.
+Aby wyłączyć tożsamość zarządzaną przypisaną do systemu na maszynie wirtualnej, twoje konto wymaga przypisania roli [współautora maszyny wirtualnej.](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor)  Nie są wymagane żadne dodatkowe przypisania ról katalogu usługi Azure AD.
 
-1. Pobierz token dostępu okaziciela, który będzie używany w następnym kroku w nagłówku autoryzacji, aby utworzyć maszynę wirtualną przy użyciu zarządzanej tożsamości przypisanej do systemu.
+1. Pobierz token dostępu na okaziciela, który będzie używany w następnym kroku w nagłówku autoryzacji, aby utworzyć maszynę wirtualną z tożsamością zarządzaną przypisaną przez system.
 
    ```azurecli-interactive
    az account get-access-token
    ```
 
-2. Zaktualizuj maszynę wirtualną za pomocą zwinięcia, aby wywołać punkt końcowy Azure Resource Manager REST w celu wyłączenia zarządzanej tożsamości przypisanej do systemu.  W poniższym przykładzie jest wyłączona tożsamość zarządzana przypisana przez system zgodnie z opisem w treści żądania przez wartość `{"identity":{"type":"None"}}` z maszyny wirtualnej o nazwie *myVM*.  Zastąp `<ACCESS TOKEN>` wartością otrzymaną w poprzednim kroku, gdy zażądano tokenu dostępu okaziciela oraz wartości `<SUBSCRIPTION ID>`, jak jest to odpowiednie dla danego środowiska.
+2. Zaktualizuj maszynę wirtualną przy użyciu funkcji CURL, aby wywołać punkt końcowy usługi Azure Resource Manager REST w celu wyłączenia tożsamości zarządzanej przypisanej przez system.  Poniższy przykład wyłącza przypisaną do systemu tożsamość zarządzaną `{"identity":{"type":"None"}}` zidentyfikowaną w treści żądania przez wartość z maszyny Wirtualnej o nazwie *myVM*.  Zamień `<ACCESS TOKEN>` na wartość otrzymaną w poprzednim kroku, gdy zażądano tokenu dostępu na okaziciela i `<SUBSCRIPTION ID>` wartość odpowiednią dla danego środowiska.
 
    > [!IMPORTANT]
-   > Aby upewnić się, że nie usunięto żadnych istniejących tożsamości zarządzanych przypisanych przez użytkownika, które są przypisane do maszyny wirtualnej, należy listę zarządzanych tożsamości przypisanych przez użytkownika za pomocą tego polecenia ZWINIĘCIE: `curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP>/providers/Microsoft.Compute/virtualMachines/<VM NAME>?api-version=2018-06-01' -H "Authorization: Bearer <ACCESS TOKEN>"`. Jeśli do maszyny wirtualnej są przypisane skojarzone tożsamości przypisane przez użytkownika, zgodnie z opisem w `identity` wartość w odpowiedzi, przejdź do kroku 3, który pokazuje, jak zachować tożsamość zarządzaną przez użytkownika podczas wyłączania tożsamości zarządzanej przypisanej przez system na maszynie wirtualnej.
+   > Aby upewnić się, że nie usuniesz żadnych istniejących tożsamości zarządzanych przypisanych przez użytkownika, które są przypisane do `curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP>/providers/Microsoft.Compute/virtualMachines/<VM NAME>?api-version=2018-06-01' -H "Authorization: Bearer <ACCESS TOKEN>"`maszyny Wirtualnej, należy wyświetlić listę tożsamości zarządzanych przypisanych przez użytkownika za pomocą tego polecenia CURL: . Jeśli do maszyny wirtualnej przypisanych przez użytkownika przypisano żadnych tożsamości `identity` zarządzanych, jak określono w wartości w odpowiedzi, przejdź do kroku 3, który pokazuje, jak zachować tożsamości zarządzane przypisane przez użytkownika podczas wyłączania tożsamości zarządzanej przypisanej przez system na maszynie wirtualnej.
 
    ```bash
    curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2018-06-01' -X PATCH -d '{"identity":{"type":"None"}}' -H "Content-Type: application/json" -H Authorization:"Bearer <ACCESS TOKEN>"
@@ -283,7 +283,7 @@ Aby wyłączyć tożsamość zarządzaną przypisaną przez system na maszynie w
    |Nagłówek żądania  |Opis  |
    |---------|---------|
    |*Typ zawartości*     | Wymagany. Ustaw wartość `application/json`.        |
-   |*Autoryzacja*     | Wymagany. Ustaw prawidłowy token dostępu `Bearer`.        | 
+   |*Autoryzacji*     | Wymagany. Ustaw prawidłowy `Bearer` token dostępu.        | 
 
    **Treść żądania**
 
@@ -295,39 +295,39 @@ Aby wyłączyć tożsamość zarządzaną przypisaną przez system na maszynie w
     }
    ```
 
-   Aby usunąć tożsamość zarządzaną przypisaną przez system z maszyny wirtualnej, która ma tożsamości zarządzane przypisane przez użytkownika, Usuń `SystemAssigned` z `{"identity":{"type:" "}}` wartości, zachowując wartość `UserAssigned` oraz wartości słownika `userAssignedIdentities`, jeśli używasz **interfejsu API w wersji 2018-06-01**. Jeśli używasz **interfejsu API w wersji 2017-12-01** lub starszej, Zachowaj `identityIds` tablicę.
+   Aby usunąć tożsamość zarządzaną przypisaną przez system z maszyny wirtualnej, `{"identity":{"type:" "}}` do której `UserAssigned` przypisano `userAssignedIdentities` użytkownikowi tożsamości zarządzane, usuń `SystemAssigned` z wartości, zachowując wartość i wartości słownika, jeśli używasz **interfejsu API w wersji 2018-06-01**. Jeśli używasz **interfejsu API w wersji 2017-12-01** lub wcześniejszej, zachowaj tablicę. `identityIds`
 
 ## <a name="user-assigned-managed-identity"></a>Tożsamość zarządzana przypisana przez użytkownika
 
-W tej sekcji dowiesz się, jak dodać i usunąć tożsamość zarządzaną przez użytkownika na maszynie wirtualnej platformy Azure przy użyciu zwinięcia, aby wykonać wywołania do punktu końcowego REST Azure Resource Manager.
+W tej sekcji dowiesz się, jak dodać i usunąć tożsamość zarządzaną przypisaną przez użytkownika na maszynie Wirtualnej platformy Azure przy użyciu funkcji CURL do nawiązywać połączenia z punktem końcowym REST usługi Azure Resource Manager.
 
-### <a name="assign-a-user-assigned-managed-identity-during-the-creation-of-an-azure-vm"></a>Przypisywanie tożsamości zarządzanej przypisanej przez użytkownika podczas tworzenia maszyny wirtualnej platformy Azure
+### <a name="assign-a-user-assigned-managed-identity-during-the-creation-of-an-azure-vm"></a>Przypisywanie tożsamości zarządzanej przypisanej przez użytkownika podczas tworzenia maszyny Wirtualnej platformy Azure
 
-Do przypisywania tożsamości przypisanej przez użytkownika do maszyny wirtualnej wymagane są przypisania ról współautor i [operator tożsamości zarządzanej](/azure/role-based-access-control/built-in-roles#managed-identity-operator) [maszyny wirtualnej](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) . Nie są wymagane żadne dodatkowe przypisania ról w katalogu usługi Azure AD.
+Aby przypisać tożsamość przypisaną przez użytkownika do maszyny Wirtualnej, twoje konto wymaga przypisania roli [Współautor maszyny wirtualnej](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) i [Operator tożsamości zarządzanej.](/azure/role-based-access-control/built-in-roles#managed-identity-operator) Nie są wymagane żadne dodatkowe przypisania ról katalogu usługi Azure AD.
 
-1. Pobierz token dostępu okaziciela, który będzie używany w następnym kroku w nagłówku autoryzacji, aby utworzyć maszynę wirtualną przy użyciu zarządzanej tożsamości przypisanej do systemu.
+1. Pobierz token dostępu na okaziciela, który będzie używany w następnym kroku w nagłówku autoryzacji, aby utworzyć maszynę wirtualną z tożsamością zarządzaną przypisaną przez system.
 
    ```azurecli-interactive
    az account get-access-token
    ```
 
-2. Utwórz [interfejs sieciowy](/cli/azure/network/nic?view=azure-cli-latest#az-network-nic-create) dla maszyny wirtualnej:
+2. Utwórz [interfejs sieciowy](/cli/azure/network/nic?view=azure-cli-latest#az-network-nic-create) dla maszyny Wirtualnej:
 
    ```azurecli-interactive
     az network nic create -g myResourceGroup --vnet-name myVnet --subnet mySubnet -n myNic
    ```
 
-3. Pobierz token dostępu okaziciela, który będzie używany w następnym kroku w nagłówku autoryzacji, aby utworzyć maszynę wirtualną przy użyciu zarządzanej tożsamości przypisanej do systemu.
+3. Pobierz token dostępu na okaziciela, który będzie używany w następnym kroku w nagłówku autoryzacji, aby utworzyć maszynę wirtualną z tożsamością zarządzaną przypisaną przez system.
 
    ```azurecli-interactive
    az account get-access-token
    ``` 
 
-4. Tworzenie tożsamości zarządzanej przypisanej przez użytkownika przy użyciu instrukcji dostępnych tutaj: [Tworzenie tożsamości zarządzanej przypisanej przez użytkownika](how-to-manage-ua-identity-rest.md#create-a-user-assigned-managed-identity).
+4. Utwórz tożsamość zarządzaną przypisaną przez użytkownika, korzystając z instrukcji znalezionych w tym miejscu: [Utwórz tożsamość zarządzaną przypisaną przez użytkownika](how-to-manage-ua-identity-rest.md#create-a-user-assigned-managed-identity).
 
-5. Utwórz maszynę wirtualną przy użyciu ZWINIĘCIEa, aby wywołać punkt końcowy usługi REST Azure Resource Manager. Poniższy przykład tworzy maszynę wirtualną o nazwie *myVM* *w grupie zasobów grupa zasobu z* `ID1`tożsamości zarządzanej przypisanej przez użytkownika, zgodnie z opisem w treści żądania przez `"identity":{"type":"UserAssigned"}`wartość. Zastąp `<ACCESS TOKEN>` wartością otrzymaną w poprzednim kroku, gdy zażądano tokenu dostępu okaziciela oraz wartości `<SUBSCRIPTION ID>`, jak jest to odpowiednie dla danego środowiska.
+5. Tworzenie maszyny Wirtualnej przy użyciu CURL do wywołania punktu końcowego REST usługi Azure Resource Manager. Poniższy przykład tworzy maszynę wirtualną o nazwie *myVM* w grupie zasobów `ID1` *myResourceGroup* z tożsamością zarządzaną przypisaną przez użytkownika, zidentyfikowaną w treści żądania przez wartość `"identity":{"type":"UserAssigned"}`. Zamień `<ACCESS TOKEN>` na wartość otrzymaną w poprzednim kroku, gdy zażądano tokenu dostępu na okaziciela i `<SUBSCRIPTION ID>` wartość odpowiednią dla danego środowiska.
  
-   **INTERFEJS API W WERSJI 2018-06-01**
+   **WERSJA INTERFEJSU API 2018-06-01**
 
    ```bash   
    curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2018-06-01' -X PUT -d '{"location":"westus","name":"myVM","identity":{"type":"UserAssigned","identityIds":["/subscriptions/<SUBSCRIPTION ID>/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID1"]},"properties":{"hardwareProfile":{"vmSize":"Standard_D2_v2"},"storageProfile":{"imageReference":{"sku":"2016-Datacenter","publisher":"MicrosoftWindowsServer","version":"latest","offer":"WindowsServer"},"osDisk":{"caching":"ReadWrite","managedDisk":{"storageAccountType":"Standard_LRS"},"name":"myVM3osdisk","createOption":"FromImage"},"dataDisks":[{"diskSizeGB":1023,"createOption":"Empty","lun":0},{"diskSizeGB":1023,"createOption":"Empty","lun":1}]},"osProfile":{"adminUsername":"azureuser","computerName":"myVM","adminPassword":"myPassword12"},"networkProfile":{"networkInterfaces":[{"id":"/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkInterfaces/myNic","properties":{"primary":true}}]}}}' -H "Content-Type: application/json" -H "Authorization: Bearer <ACCESS TOKEN>"
@@ -342,7 +342,7 @@ Do przypisywania tożsamości przypisanej przez użytkownika do maszyny wirtualn
    |Nagłówek żądania  |Opis  |
    |---------|---------|
    |*Typ zawartości*     | Wymagany. Ustaw wartość `application/json`.        |
-   |*Autoryzacja*     | Wymagany. Ustaw prawidłowy token dostępu `Bearer`.        | 
+   |*Autoryzacji*     | Wymagany. Ustaw prawidłowy `Bearer` token dostępu.        | 
 
    **Treść żądania**
 
@@ -408,7 +408,7 @@ Do przypisywania tożsamości przypisanej przez użytkownika do maszyny wirtualn
 
    ```
   
-   **INTERFEJS API W WERSJI 2017-12-01**
+   **WERSJA INTERFEJSU API 2017-12-01**
 
    ```bash   
    curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2017-12-01' -X PUT -d '{"location":"westus","name":"myVM","identity":{"type":"UserAssigned","identityIds":["/subscriptions/<SUBSCRIPTION ID>/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID1"]},"properties":{"hardwareProfile":{"vmSize":"Standard_D2_v2"},"storageProfile":{"imageReference":{"sku":"2016-Datacenter","publisher":"MicrosoftWindowsServer","version":"latest","offer":"WindowsServer"},"osDisk":{"caching":"ReadWrite","managedDisk":{"storageAccountType":"Standard_LRS"},"name":"myVM3osdisk","createOption":"FromImage"},"dataDisks":[{"diskSizeGB":1023,"createOption":"Empty","lun":0},{"diskSizeGB":1023,"createOption":"Empty","lun":1}]},"osProfile":{"adminUsername":"azureuser","computerName":"myVM","adminPassword":"myPassword12"},"networkProfile":{"networkInterfaces":[{"id":"/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkInterfaces/myNic","properties":{"primary":true}}]}}}' -H "Content-Type: application/json" -H "Authorization: Bearer <ACCESS TOKEN>"
@@ -423,7 +423,7 @@ Do przypisywania tożsamości przypisanej przez użytkownika do maszyny wirtualn
    |Nagłówek żądania  |Opis  |
    |---------|---------|
    |*Typ zawartości*     | Wymagany. Ustaw wartość `application/json`.        |
-   |*Autoryzacja*     | Wymagany. Ustaw prawidłowy token dostępu `Bearer`.        | 
+   |*Autoryzacji*     | Wymagany. Ustaw prawidłowy `Bearer` token dostępu.        | 
 
    **Treść żądania**
 
@@ -488,19 +488,19 @@ Do przypisywania tożsamości przypisanej przez użytkownika do maszyny wirtualn
     }
    ```
 
-### <a name="assign-a-user-assigned-managed-identity-to-an-existing-azure-vm"></a>Przypisywanie tożsamości zarządzanej przypisanej przez użytkownika do istniejącej maszyny wirtualnej platformy Azure
+### <a name="assign-a-user-assigned-managed-identity-to-an-existing-azure-vm"></a>Przypisywanie tożsamości zarządzanej przypisanej przez użytkownika do istniejącej maszyny Wirtualnej platformy Azure
 
-Do przypisywania tożsamości przypisanej przez użytkownika do maszyny wirtualnej wymagane są przypisania ról współautor i [operator tożsamości zarządzanej](/azure/role-based-access-control/built-in-roles#managed-identity-operator) [maszyny wirtualnej](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) . Nie są wymagane żadne dodatkowe przypisania ról w katalogu usługi Azure AD.
+Aby przypisać tożsamość przypisaną przez użytkownika do maszyny Wirtualnej, twoje konto wymaga przypisania roli [Współautor maszyny wirtualnej](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) i [Operator tożsamości zarządzanej.](/azure/role-based-access-control/built-in-roles#managed-identity-operator) Nie są wymagane żadne dodatkowe przypisania ról katalogu usługi Azure AD.
 
-1. Pobierz token dostępu okaziciela, który będzie używany w następnym kroku w nagłówku autoryzacji, aby utworzyć maszynę wirtualną przy użyciu zarządzanej tożsamości przypisanej do systemu.
+1. Pobierz token dostępu na okaziciela, który będzie używany w następnym kroku w nagłówku autoryzacji, aby utworzyć maszynę wirtualną z tożsamością zarządzaną przypisaną przez system.
 
    ```azurecli-interactive
    az account get-access-token
    ```
 
-2.  Tworzenie tożsamości zarządzanej przypisanej przez użytkownika przy użyciu instrukcji znalezionych w tym miejscu, [Tworzenie tożsamości zarządzanej przypisanej przez użytkownika](how-to-manage-ua-identity-rest.md#create-a-user-assigned-managed-identity).
+2.  Utwórz tożsamość zarządzaną przypisaną przez użytkownika, korzystając z instrukcji znalezionych w tym miejscu, [Utwórz tożsamość zarządzaną przypisaną przez użytkownika](how-to-manage-ua-identity-rest.md#create-a-user-assigned-managed-identity).
 
-3. Aby nie usuwać istniejących tożsamości zarządzanych użytkownika lub systemu przypisanych do maszyny wirtualnej, należy wyświetlić listę typów tożsamości przypisanych do maszyny wirtualnej za pomocą następującego polecenia ZWINIĘCIE. Jeśli zarządzane tożsamości są przypisane do zestawu skalowania maszyn wirtualnych, są one wymienione w obszarze w wartości `identity`.
+3. Aby upewnić się, że nie usuniesz istniejących tożsamości zarządzanych przypisanych przez użytkownika lub system, które są przypisane do maszyny Wirtualnej, należy wyświetlić listę typów tożsamości przypisanych do maszyny Wirtualnej przy użyciu następującego polecenia CURL. Jeśli masz zarządzane tożsamości przypisane do zestawu skalowania maszyny wirtualnej, są one wymienione w `identity` wartości.
 
    ```bash
    curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP>/providers/Microsoft.Compute/virtualMachines/<VM NAME>?api-version=2018-06-01' -H "Authorization: Bearer <ACCESS TOKEN>" 
@@ -513,15 +513,15 @@ Do przypisywania tożsamości przypisanej przez użytkownika do maszyny wirtualn
 
    |Nagłówek żądania  |Opis  |
    |---------|---------|
-   |*Autoryzacja*     | Wymagany. Ustaw prawidłowy token dostępu `Bearer`.
+   |*Autoryzacji*     | Wymagany. Ustaw prawidłowy `Bearer` token dostępu.
 
-    Jeśli masz przypisane tożsamości zarządzane przez użytkownika lub system do maszyny wirtualnej, zgodnie z opisem w `identity` wartość w odpowiedzi, przejdź do kroku 5, w którym pokazano, jak zachować tożsamość zarządzaną przypisaną przez system podczas dodawania tożsamości zarządzanej przypisanej przez użytkownika na maszynie wirtualnej.
+    Jeśli masz żadnych tożsamości zarządzanych przypisanych przez użytkownika lub system przypisane `identity` do maszyny Wirtualnej, jak określono w wartości w odpowiedzi, przejdź do kroku 5, który pokazuje, jak zachować tożsamości zarządzanej przypisane przez system podczas dodawania tożsamości zarządzanej przypisanej przez użytkownika na maszynie wirtualnej.
 
-4. Jeśli nie masz żadnych tożsamości zarządzanych przypisanych przez użytkownika do maszyny wirtualnej, użyj następującego polecenia ZWINIĘCIE, aby wywołać punkt końcowy Azure Resource Manager REST w celu przypisania do maszyny wirtualnej pierwszej tożsamości zarządzanej przypisanej przez użytkownika.
+4. Jeśli nie masz żadnych tożsamości zarządzanych przypisanych przez użytkownika przypisane do maszyny Wirtualnej, użyj następującego polecenia CURL, aby wywołać punkt końcowy usługi Azure Resource Manager REST, aby przypisać pierwszą tożsamość zarządzaną przypisaną przez użytkownika do maszyny Wirtualnej.
 
-   W poniższych przykładach przypisano tożsamość zarządzaną przypisaną przez użytkownika, `ID1` do maszyny wirtualnej o nazwie *myVM* *w grupie zasobów*.  Zastąp `<ACCESS TOKEN>` wartością otrzymaną w poprzednim kroku, gdy zażądano tokenu dostępu okaziciela oraz wartości `<SUBSCRIPTION ID>`, jak jest to odpowiednie dla danego środowiska.
+   Poniższe przykłady przypisuje tożsamość zarządzaną `ID1` przypisaną przez użytkownika do maszyny wirtualnej o nazwie *myVM* w grupie zasobów *myResourceGroup*.  Zamień `<ACCESS TOKEN>` na wartość otrzymaną w poprzednim kroku, gdy zażądano tokenu dostępu na okaziciela i `<SUBSCRIPTION ID>` wartość odpowiednią dla danego środowiska.
 
-   **INTERFEJS API W WERSJI 2018-06-01**
+   **WERSJA INTERFEJSU API 2018-06-01**
 
    ```bash
    curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2018-06-01' -X PATCH -d '{"identity":{"type":"UserAssigned", "userAssignedIdentities":{"/subscriptions/<SUBSCRIPTION ID>/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID1":{}}}}' -H "Content-Type: application/json" -H Authorization:"Bearer <ACCESS TOKEN>"
@@ -535,7 +535,7 @@ Do przypisywania tożsamości przypisanej przez użytkownika do maszyny wirtualn
    |Nagłówek żądania  |Opis  |
    |---------|---------|
    |*Typ zawartości*     | Wymagany. Ustaw wartość `application/json`.        |
-   |*Autoryzacja*     | Wymagany. Ustaw prawidłowy token dostępu `Bearer`.        |
+   |*Autoryzacji*     | Wymagany. Ustaw prawidłowy `Bearer` token dostępu.        |
  
    **Treść żądania**
 
@@ -552,7 +552,7 @@ Do przypisywania tożsamości przypisanej przez użytkownika do maszyny wirtualn
     }
    ```
 
-   **INTERFEJS API W WERSJI 2017-12-01**
+   **WERSJA INTERFEJSU API 2017-12-01**
 
    ```bash
    curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2017-12-01' -X PATCH -d '{"identity":{"type":"userAssigned", "identityIds":["/subscriptions/<SUBSCRIPTION ID>/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID1"]}}' -H "Content-Type: application/json" -H Authorization:"Bearer <ACCESS TOKEN>"
@@ -567,7 +567,7 @@ Do przypisywania tożsamości przypisanej przez użytkownika do maszyny wirtualn
    |Nagłówek żądania  |Opis  |
    |---------|---------|
    |*Typ zawartości*     | Wymagany. Ustaw wartość `application/json`.        |
-   |*Autoryzacja*     | Wymagany. Ustaw prawidłowy token dostępu `Bearer`.        | 
+   |*Autoryzacji*     | Wymagany. Ustaw prawidłowy `Bearer` token dostępu.        | 
 
    **Treść żądania**
 
@@ -582,13 +582,13 @@ Do przypisywania tożsamości przypisanej przez użytkownika do maszyny wirtualn
     }
    ```
 
-5. Jeśli masz istniejącą tożsamość zarządzaną przez użytkownika lub przypisanej do systemu przypisanej do maszyny wirtualnej:
+5. Jeśli do maszyny Wirtualnej przypisana jest istniejąca tożsamość zarządzana przypisana przez użytkownika lub przypisana do systemu:
    
-   **INTERFEJS API W WERSJI 2018-06-01**
+   **WERSJA INTERFEJSU API 2018-06-01**
 
-   Dodaj tożsamość zarządzaną przypisaną przez użytkownika do wartości słownika `userAssignedIdentities`.
+   Dodaj tożsamość zarządzaną przypisaną `userAssignedIdentities` przez użytkownika do wartości słownika.
     
-   Jeśli na przykład masz tożsamość zarządzaną przypisaną przez system i tożsamość zarządzaną przez użytkownika `ID1` aktualnie przypisana do maszyny wirtualnej i chcesz dodać do niej tożsamość zarządzaną przez użytkownika, `ID2`:
+   Na przykład, jeśli masz przypisaną do systemu tożsamość zarządzaną i tożsamość `ID1` zarządzaną przypisaną przez użytkownika, aktualnie `ID2` przypisaną do maszyny Wirtualnej i chcesz dodać do niej tożsamość zarządzaną przypisaną przez użytkownika:
 
    ```bash
    curl  'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2018-06-01' -X PATCH -d '{"identity":{"type":"SystemAssigned, UserAssigned", "userAssignedIdentities":{"/subscriptions/<SUBSCRIPTION ID>/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID1":{},"/subscriptions/<SUBSCRIPTION ID>/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID2":{}}}}' -H "Content-Type: application/json" -H Authorization:"Bearer <ACCESS TOKEN>"
@@ -603,7 +603,7 @@ Do przypisywania tożsamości przypisanej przez użytkownika do maszyny wirtualn
    |Nagłówek żądania  |Opis  |
    |---------|---------|
    |*Typ zawartości*     | Wymagany. Ustaw wartość `application/json`.        |
-   |*Autoryzacja*     | Wymagany. Ustaw prawidłowy token dostępu `Bearer`.        | 
+   |*Autoryzacji*     | Wymagany. Ustaw prawidłowy `Bearer` token dostępu.        | 
 
    **Treść żądania**
 
@@ -623,11 +623,11 @@ Do przypisywania tożsamości przypisanej przez użytkownika do maszyny wirtualn
     }
    ```
 
-   **INTERFEJS API W WERSJI 2017-12-01**
+   **WERSJA INTERFEJSU API 2017-12-01**
 
-   Zachowaj zarządzane tożsamości przypisane przez użytkownika, które chcesz zachować w `identityIds` wartość tablicy podczas dodawania nowej tożsamości zarządzanej przypisanej przez użytkownika.
+   Zachowaj tożsamości zarządzane przypisane przez użytkownika, które `identityIds` chcesz zachować w wartości tablicy, dodając nową tożsamość zarządzaną przypisaną przez użytkownika.
 
-   Jeśli na przykład masz tożsamość zarządzaną przypisaną przez system i tożsamość zarządzaną przez użytkownika `ID1` aktualnie przypisana do maszyny wirtualnej i chcesz dodać do niej tożsamość zarządzaną przez użytkownika, `ID2`: 
+   Na przykład, jeśli masz przypisaną do systemu tożsamość zarządzaną i tożsamość `ID1` zarządzaną przypisaną przez użytkownika, aktualnie `ID2` przypisaną do maszyny Wirtualnej i chcesz dodać do niej tożsamość zarządzaną przypisaną przez użytkownika: 
 
    ```bash
    curl  'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2017-12-01' -X PATCH -d '{"identity":{"type":"SystemAssigned,UserAssigned", "identityIds":["/subscriptions/<SUBSCRIPTION ID>/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID1","/subscriptions/<SUBSCRIPTION ID>/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID2"]}}' -H "Content-Type: application/json" -H Authorization:"Bearer <ACCESS TOKEN>"
@@ -642,7 +642,7 @@ Do przypisywania tożsamości przypisanej przez użytkownika do maszyny wirtualn
    |Nagłówek żądania  |Opis  |
    |---------|---------|
    |*Typ zawartości*     | Wymagany. Ustaw wartość `application/json`.        |
-   |*Autoryzacja*     | Wymagany. Ustaw prawidłowy token dostępu `Bearer`.        | 
+   |*Autoryzacji*     | Wymagany. Ustaw prawidłowy `Bearer` token dostępu.        | 
 
    **Treść żądania**
 
@@ -658,17 +658,17 @@ Do przypisywania tożsamości przypisanej przez użytkownika do maszyny wirtualn
     }
    ```   
 
-### <a name="remove-a-user-assigned-managed-identity-from-an-azure-vm"></a>Usuwanie tożsamości zarządzanej przypisanej przez użytkownika z maszyny wirtualnej platformy Azure
+### <a name="remove-a-user-assigned-managed-identity-from-an-azure-vm"></a>Usuwanie tożsamości zarządzanej przypisanej przez użytkownika z maszyny Wirtualnej platformy Azure
 
-Aby usunąć tożsamość przypisaną przez użytkownika do maszyny wirtualnej, Twoje konto wymaga przypisania roli [współautor maszyny wirtualnej](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) .
+Aby usunąć tożsamość przypisaną przez użytkownika do maszyny Wirtualnej, twoje konto wymaga przypisania roli [współautora maszyny wirtualnej.](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor)
 
-1. Pobierz token dostępu okaziciela, który będzie używany w następnym kroku w nagłówku autoryzacji, aby utworzyć maszynę wirtualną przy użyciu zarządzanej tożsamości przypisanej do systemu.
+1. Pobierz token dostępu na okaziciela, który będzie używany w następnym kroku w nagłówku autoryzacji, aby utworzyć maszynę wirtualną z tożsamością zarządzaną przypisaną przez system.
 
    ```azurecli-interactive
    az account get-access-token
    ```
 
-2. Aby upewnić się, że nie usunięto żadnych istniejących tożsamości zarządzanych przypisanych przez użytkownika, które mają być przypisane do maszyny wirtualnej lub nie można usunąć tożsamości zarządzanej przypisanej przez system, należy wyświetlić listę zarządzanych tożsamości za pomocą następującego polecenia ZWINIĘCIE: 
+2. Aby upewnić się, że nie usuniesz żadnych istniejących tożsamości zarządzanych przypisanych przez użytkownika, które chcesz zachować przypisane do maszyny Wirtualnej lub usuniesz przypisaną do systemu tożsamość zarządzaną, musisz wyświetlić listę zarządzanych tożsamości za pomocą następującego polecenia CURL: 
 
    ```bash
    curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP>/providers/Microsoft.Compute/virtualMachines/<VM NAME>?api-version=2018-06-01' -H "Authorization: Bearer <ACCESS TOKEN>"
@@ -683,13 +683,13 @@ Aby usunąć tożsamość przypisaną przez użytkownika do maszyny wirtualnej, 
    |Nagłówek żądania  |Opis  |
    |---------|---------|
    |*Typ zawartości*     | Wymagany. Ustaw wartość `application/json`.        |
-   |*Autoryzacja*     | Wymagany. Ustaw prawidłowy token dostępu `Bearer`.
+   |*Autoryzacji*     | Wymagany. Ustaw prawidłowy `Bearer` token dostępu.
  
-   Jeśli masz zarządzane tożsamości przypisane do maszyny wirtualnej, są one wyświetlane w odpowiedzi w wartości `identity`.
+   Jeśli masz zarządzane tożsamości przypisane do maszyny Wirtualnej, są `identity` one wymienione w odpowiedzi w wartości.
 
-   Na przykład, jeśli masz przypisane przez użytkownika tożsamości zarządzane `ID1` i `ID2` przypisane do maszyny wirtualnej i chcesz tylko nadal `ID1` przypisane i zachować tożsamość przypisaną przez system:
+   Na przykład, jeśli masz przypisane przez `ID1` `ID2` użytkownika tożsamości zarządzane i przypisane do `ID1` maszyny Wirtualnej, a tylko chcesz zachować przypisaną i zachować tożsamość przypisaną do systemu:
    
-   **INTERFEJS API W WERSJI 2018-06-01**
+   **WERSJA INTERFEJSU API 2018-06-01**
 
    Dodaj `null` do tożsamości zarządzanej przypisanej przez użytkownika, którą chcesz usunąć:
 
@@ -706,7 +706,7 @@ Aby usunąć tożsamość przypisaną przez użytkownika do maszyny wirtualnej, 
    |Nagłówek żądania  |Opis  |
    |---------|---------|
    |*Typ zawartości*     | Wymagany. Ustaw wartość `application/json`.        |
-   |*Autoryzacja*     | Wymagany. Ustaw prawidłowy token dostępu `Bearer`.        | 
+   |*Autoryzacji*     | Wymagany. Ustaw prawidłowy `Bearer` token dostępu.        | 
 
    **Treść żądania**
 
@@ -721,9 +721,9 @@ Aby usunąć tożsamość przypisaną przez użytkownika do maszyny wirtualnej, 
     }
    ```
 
-   **INTERFEJS API W WERSJI 2017-12-01**
+   **WERSJA INTERFEJSU API 2017-12-01**
 
-   Przechowuj tylko tożsamości zarządzane przypisane przez użytkownika, które chcesz przechowywać w tablicy `identityIds`:
+   Zachowaj tylko tożsamości zarządzane przypisane przez użytkownika, które `identityIds` chcesz zachować w tablicy:
 
    ```bash
    curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2017-12-01' -X PATCH -d '{"identity":{"type":"SystemAssigned, UserAssigned", "identityIds":["/subscriptions/<SUBSCRIPTION ID>/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID1"]}}' -H "Content-Type: application/json" -H Authorization:"Bearer <ACCESS TOKEN>"
@@ -738,7 +738,7 @@ Aby usunąć tożsamość przypisaną przez użytkownika do maszyny wirtualnej, 
    |Nagłówek żądania  |Opis  |
    |---------|---------|
    |*Typ zawartości*     | Wymagany. Ustaw wartość `application/json`.        |
-   |*Autoryzacja*     | Wymagany. Ustaw prawidłowy token dostępu `Bearer`.        | 
+   |*Autoryzacji*     | Wymagany. Ustaw prawidłowy `Bearer` token dostępu.        | 
 
    **Treść żądania**
 
@@ -753,7 +753,7 @@ Aby usunąć tożsamość przypisaną przez użytkownika do maszyny wirtualnej, 
     }
    ```
 
-Jeśli maszyna wirtualna ma zarządzane tożsamości przypisane do systemu i przypisane przez użytkownika, możesz usunąć wszystkie zarządzane tożsamości przypisane przez użytkownika, przełączając do używania tylko tożsamości zarządzanej przypisanej do systemu przy użyciu następującego polecenia:
+Jeśli maszyna wirtualna ma zarówno tożsamości zarządzane przypisane do systemu, jak i przypisane przez użytkownika, można usunąć wszystkie tożsamości zarządzane przypisane przez użytkownika, przełączając się na używanie tylko tożsamości zarządzanej przypisanej do systemu za pomocą następującego polecenia:
 
 ```bash
 curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2018-06-01' -X PATCH -d '{"identity":{"type":"SystemAssigned"}}' -H "Content-Type: application/json" -H Authorization:"Bearer <ACCESS TOKEN>"
@@ -768,7 +768,7 @@ PATCH https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroup
 |Nagłówek żądania  |Opis  |
 |---------|---------|
 |*Typ zawartości*     | Wymagany. Ustaw wartość `application/json`.        |
-|*Autoryzacja*     | Wymagany. Ustaw prawidłowy token dostępu `Bearer`. | 
+|*Autoryzacji*     | Wymagany. Ustaw prawidłowy `Bearer` token dostępu. | 
 
 **Treść żądania**
 
@@ -780,7 +780,7 @@ PATCH https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroup
 }
 ```
     
-Jeśli maszyna wirtualna ma tylko tożsamości zarządzane przypisane przez użytkownika, a chcesz je usunąć, użyj następującego polecenia:
+Jeśli maszyna wirtualna ma tylko tożsamości zarządzane przypisane przez użytkownika i chcesz usunąć je wszystkie, użyj następującego polecenia:
 
 ```bash
 curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2018-06-01' -X PATCH -d '{"identity":{"type":"None"}}' -H "Content-Type: application/json" -H Authorization:"Bearer <ACCESS TOKEN>"
@@ -795,7 +795,7 @@ PATCH https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroup
 |Nagłówek żądania  |Opis  |
 |---------|---------|
 |*Typ zawartości*     | Wymagany. Ustaw wartość `application/json`.        |
-|*Autoryzacja*     | Wymagany. Ustaw prawidłowy token dostępu `Bearer`.| 
+|*Autoryzacji*     | Wymagany. Ustaw prawidłowy `Bearer` token dostępu.| 
 
 **Treść żądania**
 
@@ -809,6 +809,6 @@ PATCH https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroup
 
 ## <a name="next-steps"></a>Następne kroki
 
-Aby uzyskać informacje na temat tworzenia, wyświetlania lub usuwania tożsamości zarządzanych przez użytkownika przy użyciu usługi REST, zobacz:
+Aby uzyskać informacje dotyczące tworzenia, wystawiania lub usuwania tożsamości zarządzanych przypisanych przez użytkownika przy użyciu funkcji REST, zobacz:
 
-- [Utwórz, Wyświetl lub Usuń zarządzane tożsamości przypisane przez użytkownika przy użyciu wywołań interfejsu API REST](how-to-manage-ua-identity-rest.md)
+- [Tworzenie, wyświetlanie listy lub usuwanie tożsamości zarządzanych przypisanych przez użytkownika przy użyciu wywołań interfejsu API REST](how-to-manage-ua-identity-rest.md)

@@ -1,5 +1,5 @@
 ---
-title: Tożsamość modułu IoT Hub platformy Azure &a sznurki modułowe (Portal i .NET)
+title: Tożsamość modułu usługi Azure IoT Hub & bliźniaczej reprezentacji modułu (portal i .NET)
 description: Dowiedz się, jak utworzyć tożsamość modułu i zaktualizować bliźniaczą reprezentację modułu przy użyciu portalu i platformy.NET.
 author: robinsh
 manager: philmea
@@ -10,10 +10,10 @@ ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 08/20/2019
 ms.openlocfilehash: 289c269100eb6ab672bb8d60562c1fa77d8d091a
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73954617"
 ---
 # <a name="get-started-with-iot-hub-module-identity-and-module-twin-using-the-portal-and-net-device"></a>Rozpoczynanie pracy z tożsamością modułu i bliźniaczą reprezentacją modułu usługi IoT Hub przy użyciu portalu i urządzenia platformy .NET
@@ -21,48 +21,48 @@ ms.locfileid: "73954617"
 [!INCLUDE [iot-hub-selector-module-twin-getstarted](../../includes/iot-hub-selector-module-twin-getstarted.md)]
 
 > [!NOTE]
-> [Tożsamości modułów i bliźniacze reprezentacje modułów](iot-hub-devguide-module-twins.md) są podobne do tożsamości urządzenia i bliźniaczej reprezentacji urządzenia usługi Azure IoT Hub, ale zapewniają większy stopień szczegółowości. W czasie, gdy usługa Azure IoT Hub tożsamość urządzenia i sznurki urządzenia umożliwiają aplikacji zaplecza skonfigurowanie urządzenia i zapewnienie widoczności warunków urządzenia, tożsamość modułu i sznurki modułowe zapewniają te możliwości dla poszczególnych składników urządzenia. Na urządzeniach z obsługą wielu składników, takich jak urządzenia z systemem operacyjnym lub urządzenia oprogramowania układowego, tożsamości modułów i moduł bliźniaczych reprezentacji umożliwiają wyizolowaną konfigurację i warunki dla każdego składnika.
+> [Tożsamości modułów i bliźniacze reprezentacje modułów](iot-hub-devguide-module-twins.md) są podobne do tożsamości urządzenia i bliźniaczej reprezentacji urządzenia usługi Azure IoT Hub, ale zapewniają większy stopień szczegółowości. Podczas gdy tożsamość urządzenia usługi Azure IoT Hub i bliźniacza reprezentacja urządzenia umożliwiają aplikacji zaplecza konfigurowanie urządzenia i zapewnia wgląd w warunki urządzenia, tożsamość modułu i bliźniacza reprezentacja modułu zapewniają te możliwości dla poszczególnych składników urządzenia. Na urządzeniach obsługujących wiele składników, takich jak urządzenia oparte na systemie operacyjnym lub urządzenia oprogramowania układowego, tożsamości modułów i bliźniacze moduły umożliwiają izolowane konfiguracje i warunki dla każdego składnika.
 >
 
 Z tego samouczka dowiesz się:
 
 * Jak utworzyć tożsamość modułu w portalu.
 
-* Używanie zestawu SDK urządzenia .NET do aktualizowania sznurka modułu z urządzenia.
+* Jak zaktualizować moduł bliźniaczej reprezentacji modułu z urządzenia za pomocą pakietu SDK urządzenia .NET.
 
 > [!NOTE]
-> Aby uzyskać informacje na temat zestawów SDK usługi Azure IoT, których można użyć do tworzenia aplikacji do uruchamiania na urządzeniach i zaplecza rozwiązania, zobacz [zestawy SDK usługi Azure IoT](iot-hub-devguide-sdks.md).
+> Aby uzyskać informacje na temat zestawów SDK usługi Azure IoT, których można używać do tworzenia zarówno aplikacji do uruchamiania na urządzeniach, jak i zaplecza rozwiązania, zobacz [zestawy SDK usługi Azure IoT.](iot-hub-devguide-sdks.md)
 >
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 * Program Visual Studio.
 
-* Aktywne konto platformy Azure. Jeśli nie masz konta, możesz utworzyć [bezpłatne konto](https://azure.microsoft.com/pricing/free-trial/) w zaledwie kilka minut.
+* Aktywne konto platformy Azure. Jeśli go nie masz, możesz utworzyć [bezpłatne konto](https://azure.microsoft.com/pricing/free-trial/) w zaledwie kilka minut.
 
 ## <a name="create-a-hub"></a>Tworzenie koncentratora
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
-## <a name="register-a-new-device-in-the-hub"></a>Rejestrowanie nowego urządzenia w centrum
+## <a name="register-a-new-device-in-the-hub"></a>Zarejestruj nowe urządzenie w centrum
 
 [!INCLUDE [iot-hub-include-create-device](../../includes/iot-hub-include-create-device.md)]
 
 ## <a name="create-a-module-identity-in-the-portal"></a>Tworzenie tożsamości modułu w portalu
 
-W ramach jednej tożsamości urządzenia możesz utworzyć maksymalnie 20 tożsamości modułu. Aby dodać tożsamość, wykonaj następujące kroki:
+W ramach jednej tożsamości urządzenia możesz utworzyć maksymalnie 20 tożsamości modułu. Aby dodać tożsamość, wykonaj następujące czynności:
 
-1. W przypadku urządzenia utworzonego w poprzedniej sekcji Wybierz pozycję **Dodaj tożsamość modułu** , aby utworzyć pierwszą tożsamość modułu.
+1. Dla urządzenia utworzonego w poprzedniej sekcji wybierz pozycję **Dodaj tożsamość modułu,** aby utworzyć pierwszą tożsamość modułu.
 
-1. Wprowadź nazwę *myFirstModule*. Zapisz tożsamość modułu.
+1. Wprowadź nazwę *myFirstModule*. Zapisz swoją tożsamość modułu.
 
-    ![Dodaj tożsamość modułu](./media/iot-hub-portal-csharp-module-twin-getstarted/add-module-identity.png)
+    ![Dodawanie tożsamości modułu](./media/iot-hub-portal-csharp-module-twin-getstarted/add-module-identity.png)
 
-    Nowa tożsamość modułu pojawia się u dołu ekranu. Wybierz go, aby wyświetlić szczegóły tożsamości modułu.
+    Twoja nowa tożsamość modułu pojawi się u dołu ekranu. Wybierz go, aby wyświetlić szczegóły tożsamości modułu.
 
     ![Zobacz szczegóły tożsamości modułu](./media/iot-hub-portal-csharp-module-twin-getstarted/module-identity-details.png)
 
-Zapisz **ciąg połączenia — klucz podstawowy**. Użyjesz go w następnej sekcji, aby skonfigurować moduł na urządzeniu.
+Zapisz **ciąg Połącz — klucz podstawowy**. Używasz go w następnej sekcji, aby skonfigurować moduł na urządzeniu.
 
 ## <a name="update-the-module-twin-using-net-device-sdk"></a>Aktualizowanie bliźniaczej reprezentacji modułu przy użyciu zestawu SDK urządzenia platformy .NET
 
@@ -70,43 +70,43 @@ Pomyślnie utworzono tożsamość modułu w centrum IoT Hub. Spróbujmy nawiąza
 
 ### <a name="create-a-visual-studio-project"></a>Tworzenie projektu programu Visual Studio
 
-Aby utworzyć aplikację, która aktualizuje raportowane właściwości w module, wykonaj następujące czynności:
+Aby utworzyć aplikację, która aktualizuje właściwości zgłaszane bliźniaczej reprezentacji modułu, wykonaj następujące kroki:
 
-1. W programie Visual Studio wybierz pozycję **Utwórz nowy projekt**, a następnie wybierz pozycję **aplikacja konsoli (.NET Framework)** , a następnie wybierz przycisk **dalej**.
+1. W programie Visual Studio wybierz pozycję **Utwórz nowy projekt**, a następnie wybierz pozycję **Aplikacja konsoli (.NET Framework)** i wybierz pozycję **Dalej**.
 
-1. W obszarze **Konfigurowanie nowego projektu**wprowadź *UpdateModuleTwinReportedProperties* jako **nazwę projektu**. Wybierz pozycję **Utwórz** , aby kontynuować.
+1. W **obszarze Konfigurowanie nowego projektu**wprowadź funkcję *UpdateModuleTwinReportedProperties* jako **nazwę projektu**. Wybierz **pozycję Utwórz,** aby kontynuować.
 
-    ![Konfigurowanie projektu programu Visual Studio](./media/iot-hub-portal-csharp-module-twin-getstarted/configure-twins-project.png)
+    ![Konfigurowanie projektu visual studio](./media/iot-hub-portal-csharp-module-twin-getstarted/configure-twins-project.png)
 
-### <a name="install-the-latest-azure-iot-hub-net-device-sdk"></a>Zainstaluj najnowszą wersję zestawu SDK urządzeń usługi Azure IoT Hub .NET
+### <a name="install-the-latest-azure-iot-hub-net-device-sdk"></a>Instalowanie najnowszego pakietu SDK urządzenia usługi Azure IoT Hub .NET
 
-Tożsamość modułu i sznurki modułu są w publicznej wersji zapoznawczej. Jest on dostępny tylko w zestawach SDK urządzeń IoT Hub w wersji wstępnej. Aby go zainstalować, wykonaj następujące kroki:
+Tożsamość modułu i bliźniaczej reprezentacji modułu jest w publicznej wersji zapoznawczej. Jest dostępna tylko w szafach SDK urządzeń wersji wstępnej usługi IoT Hub. Aby go zainstalować, wykonaj następujące kroki:
 
-1. W programie Visual Studio Otwórz **narzędzia** > **menedżer pakietów NuGet** > **Zarządzanie pakietami NuGet dla rozwiązania**.
+1. W programie Visual Studio otwórz **program Tools** > **NuGet Package Manager** > **Manage NuGet Packages for Solution**.
 
-1. Wybierz pozycję **Przeglądaj**, a następnie wybierz pozycję **Uwzględnij wersję wstępną**. Wyszukaj ciąg *Microsoft. Azure. Devices. Client*. Wybierz najnowszą wersję i zainstaluj.
+1. Wybierz **pozycję Przeglądaj**, a następnie wybierz pozycję **Dołącz wydanie wstępne**. Wyszukaj *witrynę Microsoft.Azure.Devices.Client*. Wybierz najnowszą wersję i zainstaluj.
 
-    ![Instalowanie zestawu SDK usługi Azure IoT Hub .NET w wersji zapoznawczej](./media/iot-hub-csharp-csharp-module-twin-getstarted/install-sdk.png)
+    ![Instalowanie pakietu SDK usługi Azure IoT Hub .NET](./media/iot-hub-csharp-csharp-module-twin-getstarted/install-sdk.png)
 
     Teraz masz dostęp do wszystkich funkcji modułu.
 
 ### <a name="get-your-module-connection-string"></a>Pobierz parametry połączenia modułu
 
-Potrzebujesz parametrów połączenia modułu dla aplikacji konsolowej. Wykonaj następujące kroki:
+Potrzebny jest ciąg połączenia modułu dla aplikacji konsoli. Wykonaj następujące kroki:
 
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
+1. Zaloguj się do [Portalu Azure](https://portal.azure.com/).
 
-1. Przejdź do centrum IoT Hub i wybierz pozycję **urządzenia IoT**. Otwórz **myFirstDevice** i zobaczysz, że **myFirstModule** został pomyślnie utworzony.
+1. Przejdź do centrum IoT i wybierz pozycję **Urządzenia IoT**. Otwórz **myFirstDevice** i zobaczysz, że **myFirstModule** został pomyślnie utworzony.
 
-1. Wybierz pozycję **myFirstModule** w obszarze **tożsamości modułów**. W obszarze **szczegóły tożsamości modułu**Skopiuj **Parametry połączenia (klucz podstawowy)** .
+1. Wybierz **myFirstModule** w obszarze **Tożsamości modułu**. W **module Identity Details**, skopiuj ciąg połączenia **(klucz podstawowy)**.
 
     ![Szczegóły modułu w witrynie Azure Portal](./media/iot-hub-portal-csharp-module-twin-getstarted/module-identity-details.png)
 
-### <a name="create-updatemoduletwinreportedproperties-console-app"></a>Tworzenie aplikacji konsolowej UpdateModuleTwinReportedProperties
+### <a name="create-updatemoduletwinreportedproperties-console-app"></a>Tworzenie aplikacji konsoli UpdateModuleTwinReportedProperties
 
-Aby utworzyć aplikację, wykonaj następujące kroki:
+Aby utworzyć aplikację, wykonaj następujące czynności:
 
-1. Dodaj następujące instrukcje `using` w górnej części pliku **Program.cs**:
+1. Dodaj następujące `using` instrukcje w górnej części pliku **Program.cs:**
 
   ```csharp
   using Microsoft.Azure.Devices.Client;
@@ -138,7 +138,7 @@ Aby utworzyć aplikację, wykonaj następujące kroki:
       }
   ```
 
-4. Na koniec Zastąp metodę **Main** następującym kodem:
+4. Na koniec zastąp **Main** metody z następującym kodem:
 
   ```csharp
   static void Main(string[] args)
@@ -179,7 +179,7 @@ Aby utworzyć aplikację, wykonaj następujące kroki:
   }
   ```
   
-  Możesz skompilować i uruchomić tę aplikację za pomocą klawisza **F5**.
+  Możesz tworzyć i uruchamiać tę aplikację za pomocą **F5**.
 
 Ten przykładowy kod przedstawia sposób pobierania bliźniaczej reprezentacji modułu i aktualizacji zgłoszonych właściwości za pomocą protokołu AMQP. W publicznej wersji zapoznawczej na potrzeby operacji bliźniaczych reprezentacji modułów obsługujemy tylko protokół AMQP.
 
@@ -187,6 +187,6 @@ Ten przykładowy kod przedstawia sposób pobierania bliźniaczej reprezentacji m
 
 Aby kontynuować wprowadzenie do usługi IoT Hub i zapoznać się z innymi scenariuszami IoT, zobacz:
 
-* [Rozpoczynanie pracy z modułem IoT Hub tożsamość i moduły modułu przy użyciu programu .NET Backup i urządzenia .NET](iot-hub-csharp-csharp-module-twin-getstarted.md)
+* [Rozpoczynanie pracy z tożsamością modułu i bliźniaczą reprezentacją modułu usługi IoT Hub przy użyciu kopii zapasowej platformy .NET i urządzenia platformy .NET](iot-hub-csharp-csharp-module-twin-getstarted.md)
 
-* [Wprowadzenie do IoT Edge](../iot-edge/tutorial-simulate-device-linux.md)
+* [Getting started with IoT Edge](../iot-edge/tutorial-simulate-device-linux.md) (Wprowadzenie do usługi IoT Edge)

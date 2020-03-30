@@ -1,7 +1,7 @@
 ---
-title: 'Szybki Start: Tworzenie aplikacji Java w systemie Windows'
-description: Wdróż swoje pierwsze Hello world Java, aby Azure App Service w systemie Windows w ciągu kilku minut. Wtyczka aplikacji sieci Web platformy Azure dla usługi Maven umożliwia wdrażanie aplikacji języka Java.
-keywords: Azure, App Service, Web App, Windows, Java, Maven, szybki start
+title: 'Szybki start: tworzenie aplikacji Java w systemie Windows'
+description: Wdrożenie pierwszego oprogramowania Java Hello World w usłudze Azure App Service w systemie Windows w ciągu kilku minut. Wtyczka aplikacji Azure Web App dla maven ułatwia wdrażanie aplikacji Java.
+keywords: azure, usługa aplikacji, aplikacja internetowa, windows, java, maven, Szybki start
 author: msangapu-msft
 ms.assetid: 582bb3c2-164b-42f5-b081-95bfcb7a502a
 ms.devlang: Java
@@ -10,24 +10,24 @@ ms.date: 05/29/2019
 ms.author: jafreebe
 ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019
 ms.openlocfilehash: ed477e3c1431048d60e4a696f59aa0593e1b3f1f
-ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "79136333"
 ---
-# <a name="quickstart-create-a-java-app-on-azure-app-service-on-windows"></a>Szybki Start: Tworzenie aplikacji Java na Azure App Service w systemie Windows
+# <a name="quickstart-create-a-java-app-on-azure-app-service-on-windows"></a>Szybki start: tworzenie aplikacji Java w usłudze Azure App Service w systemie Windows
 
 > [!NOTE]
-> W tym artykule opisano wdrażanie aplikacji w usłudze App Service w systemie Windows. Aby wdrożyć program w celu App Service w systemie _Linux_, zobacz [Tworzenie aplikacji sieci Web Java w systemie Linux](./containers/quickstart-java.md).
+> W tym artykule opisano wdrażanie aplikacji w usłudze App Service w systemie Windows. Aby wdrożyć w usłudze App Service w _systemie Linux,_ zobacz [Tworzenie aplikacji internetowej Java na linuksie](./containers/quickstart-java.md).
 >
 
-Usługa [Azure App Service](overview.md) oferuje wysoce skalowalną i samonaprawialną usługę hostingu w Internecie.  W tym przewodniku szybki start pokazano, jak używać [interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) z [wtyczką aplikacji sieci Web platformy Azure dla usługi Maven](https://github.com/Microsoft/azure-maven-plugins/tree/develop/azure-webapp-maven-plugin) w celu wdrożenia pliku archiwum sieci Web (War) języka Java.
+[Usługa Azure App Service](overview.md) zapewnia wysoce skalowalną, samoładującą się usługę hostingu.  Ten przewodnik Szybki start pokazuje, jak używać [interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) za pomocą [wtyczki aplikacji Azure Web App dla maven](https://github.com/Microsoft/azure-maven-plugins/tree/develop/azure-webapp-maven-plugin) do wdrażania pliku archiwum internetowego Java (WAR).
 
 > [!NOTE]
-> Ten sam element można także wykonać przy użyciu popularnych środowisk IDE, takich jak IntelliJ i zaćmienie. Zapoznaj się z naszymi dokumentami w [Azure Toolkit for IntelliJ przewodniku szybki start](/java/azure/intellij/azure-toolkit-for-intellij-create-hello-world-web-app) lub [Azure Toolkit for Eclipse przewodnika Szybki Start](/java/azure/eclipse/azure-toolkit-for-eclipse-create-hello-world-web-app).
+> To samo można również zrobić za pomocą popularnych IDEs jak IntelliJ i Eclipse. Zapoznaj się z naszymi podobnymi dokumentami na [platformie Azure Toolkit dla programu IntelliJ Quickstart](/java/azure/intellij/azure-toolkit-for-intellij-create-hello-world-web-app) lub [Azure Toolkit for Eclipse Quickstart](/java/azure/eclipse/azure-toolkit-for-eclipse-create-hello-world-web-app).
 >
-![Przykładowa aplikacja działająca w Azure App Service](./media/app-service-web-get-started-java/java-hello-world-in-browser-azure-app-service.png)
+![Przykładowa aplikacja uruchomiona w usłudze Azure App Service](./media/app-service-web-get-started-java/java-hello-world-in-browser-azure-app-service.png)
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -97,10 +97,10 @@ Zaktualizuj następujące symbole zastępcze w konfiguracji wtyczki:
 
 | Symbol zastępczy | Opis |
 | ----------- | ----------- |
-| `SUBSCRIPTION_ID` | Unikatowy identyfikator subskrypcji, w której ma zostać wdrożona aplikacja. Identyfikator domyślnej subskrypcji można znaleźć w Cloud Shell lub interfejsie wiersza polecenia przy użyciu `az account show` polecenie. Dla wszystkich dostępnych subskrypcji Użyj polecenia `az account list`.|
-| `RESOURCEGROUP_NAME` | Nazwa nowej grupy zasobów, w której ma zostać utworzona aplikacja. Dzięki wprowadzeniu wszystkich zasobów dla aplikacji do grupy można nimi zarządzać jednocześnie. Na przykład usunięcie grupy zasobów spowodowałoby usunięcie wszystkich zasobów skojarzonych z aplikacją. Zaktualizuj tę wartość przy użyciu unikatowej nazwy nowej grupy zasobów, na przykład grupa *zasobów*. Za pomocą tej nazwy grupy zasobów wyczyścisz wszystkie zasoby platformy Azure w późniejszej sekcji. |
-| `WEBAPP_NAME` | Nazwa aplikacji będzie częścią nazwy hosta aplikacji po wdrożeniu na platformie Azure (WEBAPP_NAME. azurewebsites. NET). Zaktualizuj tę wartość przy użyciu unikatowej nazwy nowej aplikacji usługi App Service, która będzie hostem aplikacji Java, na przykład *contoso*. |
-| `REGION` | Region świadczenia usługi Azure, w którym aplikacja jest hostowana, na przykład *westus2*. Listę regionów można uzyskać z usługi Cloud Shell lub interfejsu wiersza polecenia przy użyciu polecenia `az account list-locations`. |
+| `SUBSCRIPTION_ID` | Unikatowy identyfikator subskrypcji, w której chcesz wdrożyć aplikację. Identyfikator domyślnej subskrypcji można znaleźć w usłudze Cloud `az account show` Shell lub CLI za pomocą polecenia. W przypadku wszystkich dostępnych subskrypcji `az account list` użyj polecenia.|
+| `RESOURCEGROUP_NAME` | Nazwa nowej grupy zasobów, w której ma zostać utworzona aplikacja. Dzięki wprowadzeniu wszystkich zasobów dla aplikacji do grupy można nimi zarządzać jednocześnie. Na przykład usunięcie grupy zasobów spowodowałoby usunięcie wszystkich zasobów skojarzonych z aplikacją. Zaktualizuj tę wartość o unikatową nową nazwę grupy zasobów, na przykład *myResourceGroup*. Za pomocą tej nazwy grupy zasobów wyczyścisz wszystkie zasoby platformy Azure w późniejszej sekcji. |
+| `WEBAPP_NAME` | Nazwa aplikacji będzie częścią nazwy hosta aplikacji po wdrożeniu na platformie Azure (WEBAPP_NAME.azurewebsites.net). Zaktualizuj tę wartość przy użyciu unikatowej nazwy nowej aplikacji usługi App Service, która będzie hostem aplikacji Java, na przykład *contoso*. |
+| `REGION` | Region platformy Azure, w którym aplikacja jest hostowana, na przykład *westus2*. Listę regionów można uzyskać z usługi Cloud Shell lub interfejsu wiersza polecenia przy użyciu polecenia `az account list-locations`. |
 
 ## <a name="deploy-the-app"></a>Wdrażanie aplikacji
 
@@ -112,27 +112,27 @@ mvn package azure-webapp:deploy
 
 Po zakończeniu wdrażania w przeglądarce internetowej przejdź do wdrożonej aplikacji, używając następującego adresu URL, na przykład `http://<webapp>.azurewebsites.net/`.
 
-![Przykładowa aplikacja działająca w Azure App Service](./media/app-service-web-get-started-java/java-hello-world-in-browser-azure-app-service.png)
+![Przykładowa aplikacja uruchomiona w usłudze Azure App Service](./media/app-service-web-get-started-java/java-hello-world-in-browser-azure-app-service.png)
 
-**Gratulacje!** Twoja pierwsza aplikacja Java została wdrożona w celu App Service w systemie Windows.
+**Gratulacje!** Pierwszą aplikację Java wdrożono w usłudze App Service w systemie Windows.
 
 [!INCLUDE [cli-samples-clean-up](../../includes/cli-samples-clean-up.md)]
 
 ## <a name="next-steps"></a>Następne kroki
 > [!div class="nextstepaction"]
-> [Nawiązywanie połączenia z usługą Azure SQL Database przy użyciu języka Java](/azure/sql-database/sql-database-connect-query-java?toc=%2Fazure%2Fjava%2Ftoc.json)
+> [Łączenie się z bazą danych SQL platformy Azure za pomocą języka Java](/azure/sql-database/sql-database-connect-query-java?toc=%2Fazure%2Fjava%2Ftoc.json)
 
 > [!div class="nextstepaction"]
-> [Nawiązywanie połączenia z usługą Azure DB for MySQL za pomocą języka Java](/azure/mysql/connect-java?toc=/azure/java/toc.json)
+> [Łączenie się z usługą Azure DB dla mysql za pomocą języka Java](/azure/mysql/connect-java?toc=/azure/java/toc.json)
 
 > [!div class="nextstepaction"]
-> [Nawiązywanie połączenia z usługą Azure DB for PostgreSQL za pomocą języka Java](/azure/postgresql/connect-java?toc=/azure/java/toc.json)
+> [Łączenie się z usługą Azure DB dla postgreSQL za pomocą języka Java](/azure/postgresql/connect-java?toc=/azure/java/toc.json)
 
 > [!div class="nextstepaction"]
-> [Zasoby dla deweloperów platformy Azure dla języka Java](/java/azure/)
+> [Zasoby platformy Azure dla deweloperów oprogramowania Java](/java/azure/)
 
 > [!div class="nextstepaction"]
 > [Mapowanie domeny niestandardowej](app-service-web-tutorial-custom-domain.md)
 
 > [!div class="nextstepaction"]
-> [Dowiedz się więcej o wtyczkach Maven dla platformy Azure](https://github.com/microsoft/azure-maven-plugins)
+> [Dowiedz się więcej o wtyczkach Maven na platformie Azure](https://github.com/microsoft/azure-maven-plugins)

@@ -10,92 +10,69 @@ ms.service: lab-services
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: tutorial
+ms.topic: how-to
 ms.custom: mvc
-ms.date: 09/19/2019
+ms.date: 03/17/2020
 ms.author: spelluru
-ms.openlocfilehash: 2ac9e8b8d0635eceb7d4f85ad867b102f7d064f5
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: db1e60ccd7e05cb8b6923d6b2ec008cdfb76eaa1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73585161"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79501932"
 ---
 # <a name="how-to-access-a-classroom-lab-in-azure-lab-services"></a>Jak uzyskać dostęp do laboratorium w usłudze Azure Lab Services
-W tym artykule opisano sposób rejestracji w laboratorium zajęć, wyświetlania wszystkich laboratoriów, do których można uzyskać dostęp, uruchamiania/zatrzymywania maszyny wirtualnej w laboratorium oraz nawiązywania połączenia z maszyną wirtualną. 
+W tym artykule opisano sposób rejestrowania się w laboratorium w klasie, wyświetlania wszystkich laboratoriów, do których można uzyskać dostęp, uruchamiania/zatrzymywania maszyny wirtualnej w laboratorium i łączenia się z maszyną wirtualną. 
 
 ## <a name="register-to-the-lab"></a>Zarejestruj się w laboratorium
 
-1. Przejdź do **adresu URL rejestracji** otrzymanego od nauczyciela. Po ukończeniu rejestracji nie musisz używać adresu URL rejestracji. Zamiast tego użyj adresu URL: [https://labs.azure.com](https://labs.azure.com). Program Internet Explorer 11 nie jest jeszcze obsługiwany. 
+1. Przejdź do **adresu URL rejestracji** otrzymanego od nauczyciela. Po ukończeniu rejestracji nie musisz używać adresu URL rejestracji. Zamiast tego użyj adresu [https://labs.azure.com](https://labs.azure.com)URL: . Program Internet Explorer 11 nie jest jeszcze obsługiwany. 
 1. Zaloguj się do usługi przy użyciu konta służbowego, aby ukończyć rejestrację. 
 
     > [!NOTE]
-    > Do korzystania z Azure Lab Services jest wymagany konto Microsoft. Jeśli próbujesz zalogować się do portalu przy użyciu innych konto Microsoft, takich jak Yahoo lub konta Google, postępuj zgodnie z instrukcjami, aby utworzyć konto Microsoft, który zostanie połączony z niekonto Microsoft. Następnie postępuj zgodnie z instrukcjami, aby ukończyć proces rejestracji. 
+    > Konto Microsoft jest wymagane do korzystania z usług Azure Lab Services. Jeśli próbujesz zalogować się do portalu za pomocą konta innego niż Microsoft, takiego jak Konta Yahoo lub Google, postępuj zgodnie z instrukcjami, aby utworzyć konto Microsoft, które będzie połączone z Twoim kontem spoza firmy Microsoft. Następnie wykonaj kroki, aby zakończyć proces rejestracji. 
 1. Po zarejestrowaniu upewnij się, że widzisz maszyny wirtualne dla laboratorium, do którego masz dostęp. 
-1. Zaczekaj, aż maszyna wirtualna będzie gotowa. Na kafelku maszyny wirtualnej Zwróć uwagę na następujące pola:
+1. Poczekaj, aż maszyna wirtualna będzie gotowa. Na kafelku maszyny Wirtualnej zwróć uwagę na następujące pola:
     1. W górnej części kafelka zobaczysz **nazwę laboratorium**.
-    1. Po prawej stronie zostanie wyświetlona ikona reprezentująca **system operacyjny (OS)** maszyny wirtualnej. W tym przykładzie jest to system operacyjny Windows. 
-    1. Zobaczysz ikonę/przyciski w dolnej części kafelka, aby uruchomić/zatrzymać maszynę wirtualną, a następnie nawiązać połączenie z maszyną wirtualną. 
-    1. Na prawo od przycisków zobaczysz stan maszyny wirtualnej. Upewnij się, że stan maszyny wirtualnej jest **zatrzymany**.
+    1. Po prawej stronie zobaczysz ikonę reprezentującą **system operacyjny maszyny** Wirtualnej. W tym przykładzie jest to system operacyjny Windows. 
+    1. Ikony/przyciski u dołu kafelka można wyświetlić, aby uruchomić/zatrzymać maszynę wirtualną i połączyć się z maszyną wirtualną. 
+    1. Po prawej stronie przycisków zobaczysz stan maszyny Wirtualnej. Upewnij się, że stan maszyny Wirtualnej jest **zatrzymany**.
 
         ![Maszyna wirtualna w stanie zatrzymania](../media/tutorial-connect-vm-in-classroom-lab/vm-in-stopped-state.png)
 
-## <a name="start-or-stop-the-vm"></a>Uruchamianie lub zatrzymywanie maszyny wirtualnej
-1. **Uruchom** maszynę wirtualną, wybierając pierwszy przycisk, jak pokazano na poniższej ilustracji. Ten proces zajmuje trochę czasu.  
+## <a name="start-or-stop-the-vm"></a>Uruchamianie lub zatrzymywania maszyny wirtualnej
+1. **Rozpocznij** maszynę wirtualną, wybierając pierwszy przycisk, jak pokazano na poniższej ilustracji. Ten proces zajmuje trochę czasu.  
 
     ![Uruchamianie maszyny wirtualnej](../media/tutorial-connect-vm-in-classroom-lab/start-vm.png)
-4. Upewnij się, że stan maszyny wirtualnej to **uruchomiono**. 
+4. Upewnij się, że stan maszyny Wirtualnej jest ustawiony na **Uruchomiony**. 
 
-    ![Maszyna wirtualna w stanie uruchomienia](../media/tutorial-connect-vm-in-classroom-lab/vm-running.png)
+    ![Maszyna wirtualna w stanie uruchomionym](../media/tutorial-connect-vm-in-classroom-lab/vm-running.png)
 
-    Zauważ, że ikona pierwszego przycisku została zmieniona, aby reprezentować operację **zatrzymania** . Możesz wybrać ten przycisk, aby zatrzymać maszynę wirtualną. 
+    Należy zauważyć, że ikona pierwszego przycisku zmieniono do reprezentowania operacji **zatrzymania.** Można wybrać ten przycisk, aby zatrzymać maszynę wirtualną. 
 
 ## <a name="connect-to-the-vm"></a>Łączenie z maszyną wirtualną
 
-1. Wybierz drugi przycisk, jak pokazano na poniższej ilustracji, aby **nawiązać połączenie** z maszyną wirtualną laboratorium. 
+1. Wybierz drugi przycisk, jak pokazano na poniższej ilustracji, aby **połączyć się z** maszyną wirtualną laboratorium. 
 
     ![Łączenie z maszyną wirtualną](../media/tutorial-connect-vm-in-classroom-lab/connect-vm.png)
 2. Wykonaj jedną z następujących czynności: 
-    1. W przypadku maszyn wirtualnych z **systemem Windows** Zapisz plik **RDP** na dysku twardym. Otwórz plik RDP, aby nawiązać połączenie z maszyną wirtualną. Zaloguj się na komputerze przy użyciu **nazwy użytkownika** i **hasła** uzyskanych z nauczycieli/profesor. 
-    3. W przypadku maszyn wirtualnych z **systemem Linux** można użyć protokołu **SSH** lub **RDP** (jeśli jest włączony), aby połączyć się z nimi. Aby uzyskać więcej informacji, zobacz [Włączanie usługi Podłączanie pulpitu zdalnego dla komputerów z systemem Linux](how-to-enable-remote-desktop-linux.md). 
-    1. Jeśli używasz **komputera Mac** do nawiązywania połączenia z maszyną wirtualną laboratorium, postępuj zgodnie z instrukcjami w następnej sekcji. 
-
-## <a name="connect-to-a-vm-using-rdp-on-a-mac"></a>Nawiązywanie połączenia z maszyną wirtualną przy użyciu protokołu RDP na komputerze Mac
-W tej sekcji pokazano, jak student może połączyć się z maszyną wirtualną z komputera Mac przy użyciu protokołu RDP.
-
-### <a name="step-1-install-microsoft-remote-desktop-on-a-mac"></a>Krok 1. Instalowanie Pulpit zdalny Microsoft na komputerze Mac
-1. Otwórz sklep App Store na komputerze Mac, a następnie wyszukaj **pulpit zdalny Microsoft**.
-
-    ![Pulpit zdalny Microsoft](../media/how-to-use-classroom-lab/install-ms-remote-desktop.png)
-1. Zainstaluj najnowszą wersję programu Pulpit zdalny Microsoft. 
-
-### <a name="step-2-access-the-vm-from-your-mac-using-rdp"></a>Krok 2. Uzyskiwanie dostępu do maszyny wirtualnej z komputera Mac przy użyciu protokołu RDP
-1. Otwórz plik **RDP** pobrany na komputerze z zainstalowanym **pulpit zdalny Microsoft** . Należy rozpocząć łączenie się z maszyną wirtualną. 
-
-    ![Łączenie z maszyną wirtualną](../media/how-to-use-classroom-lab/connect-linux-vm.png)
-1. Wybierz pozycję **Kontynuuj** , jeśli zostanie wyświetlone następujące ostrzeżenie. 
-
-    ![Ostrzeżenie dotyczące certyfikatu](../media/how-to-use-classroom-lab/certificate-error.png)
-1. Powinna zostać wyświetlona maszyna wirtualna. 
-
-    > [!NOTE]
-    > Poniższy przykład dotyczy maszyny wirtualnej z systemem CentOS Linux. 
-
-    ![VM](../media/how-to-use-classroom-lab/vm-ui.png)
+    1. W przypadku maszyn wirtualnych **z systemem Windows** zapisz plik **RDP** na dysku twardym. Otwórz plik RDP, aby połączyć się z maszyną wirtualną. Użyj **nazwy użytkownika** i **hasła,** które otrzymujesz od nauczyciela/profesora, aby zalogować się do urządzenia. 
+    3. W przypadku maszyn wirtualnych **systemu Linux** można połączyć się z nimi za pomocą **protokołu SSH** lub **RDP** (jeśli jest włączony). Aby uzyskać więcej informacji, zobacz [Włączanie połączenia pulpitu zdalnego dla komputerów z systemem Linux](how-to-enable-remote-desktop-linux.md). 
+    1. Jeśli używasz **komputera Mac** do łączenia się z maszyną wirtualną laboratorium, postępuj zgodnie z instrukcjami w następnej sekcji. 
 
 ## <a name="progress-bar"></a>Pasek postępu 
-Pasek postępu na kafelku pokazuje liczbę godzin użycia w odniesieniu do liczby godzin [przypisanych](how-to-configure-student-usage.md#set-quotas-for-users) do użytkownika. Ten czas jest dodatkowym czasem przydzielonym do czasu zaplanowanym dla laboratorium. Kolor paska postępu i tekstu pod paskiem postępu różnią się w zależności od następujących scenariuszy:
+Pasek postępu na kafelku pokazuje liczbę godzin używanych w stosunku do liczby [godzin przydziału](how-to-configure-student-usage.md#set-quotas-for-users) przypisanych do ciebie. Tym razem jest to dodatkowy czas przydzielony do Ciebie oprócz zaplanowanego czasu dla laboratorium. Kolor paska postępu i tekstu pod paskiem postępu różni się w zależności od następujących scenariuszy:
 
-- Jeśli klasa jest w toku (w ramach harmonogramu klasy), pasek postępu jest wyszarzony do reprezentowania godzin przydziału nie jest używany. 
+- Jeśli klasa jest w toku (w harmonogramie klasy), pasek postępu jest wyszarzony do reprezentowania godzin przydziału nie są używane. 
 
     ![Pasek postępu w kolorze szarym](../media/tutorial-connect-vm-in-classroom-lab/progress-bar-class-in-progress.png)
-- Jeśli limit przydziału nie zostanie przypisany (zero godzin), tekst **dostępny podczas klas** jest pokazywany zamiast paska postępu. 
+- Jeśli przydział nie jest przypisany (zero godzin), tekst **Dostępny tylko podczas zajęć** jest wyświetlany zamiast paska postępu. 
     
-    ![Stan, gdy nie ustawiono limitu przydziału](../media/tutorial-connect-vm-in-classroom-lab/available-during-class.png)
-- Jeśli wykorzystano **limit przydziału**, kolor paska postępu jest **czerwony**. 
+    ![Stan, gdy nie ustawiono przydziału](../media/tutorial-connect-vm-in-classroom-lab/available-during-class.png)
+- Jeśli zabrakło **limitu,** kolor paska postępu jest **czerwony**. 
 
     ![Pasek postępu w kolorze czerwonym](../media/tutorial-connect-vm-in-classroom-lab/progress-bar-red-color.png)
-- Kolor paska postępu jest **niebieski** , gdy jest on poza zaplanowanym terminem dla laboratorium i został użyty jakiś czas przydziału. 
+- Kolor paska postępu jest **niebieski,** gdy znajduje się poza zaplanowanym czasem laboratorium i użyto części czasu przydziału. 
 
     ![Pasek postępu w kolorze niebieskim](../media/tutorial-connect-vm-in-classroom-lab/progress-bar-blue-color.png)
 
@@ -103,7 +80,7 @@ Pasek postępu na kafelku pokazuje liczbę godzin użycia w odniesieniu do liczb
 ## <a name="view-all-the-classroom-labs"></a>Wyświetlanie wszystkich laboratoriów
 Po zarejestrowaniu się w laboratoriach możesz wyświetlić wszystkie laboratoria na potrzeby zajęć, wykonując następujące czynności: 
 
-1. Przejdź do strony [https://labs.azure.com](https://labs.azure.com). Program Internet Explorer 11 nie jest jeszcze obsługiwany. 
+1. Przejdź [https://labs.azure.com](https://labs.azure.com)do pliku . Program Internet Explorer 11 nie jest jeszcze obsługiwany. 
 2. Zaloguj się w usłudze przy użyciu konta użytkownika, którego użyto do zarejestrowania się do laboratorium. 
 3. Upewnij się, że są wyświetlone wszystkie laboratoria, do których masz dostęp. 
 

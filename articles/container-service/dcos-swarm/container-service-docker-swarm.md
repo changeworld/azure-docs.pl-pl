@@ -1,6 +1,6 @@
 ---
-title: PRZESTARZAŁE Zarządzanie klastrem usługi Azure Swarm za pomocą interfejsu API platformy Docker
-description: Wdrażanie kontenerów w klastrze Docker Swarm w Azure Container Service
+title: (PRZESTARZAŁE) Zarządzanie klastrem usługi Azure Swarm za pomocą interfejsu Api platformy Docker
+description: Wdrażanie kontenerów w klastrze Roju platformy Docker w usłudze Azure Container Service
 services: container-service
 author: rgardler
 manager: madhana
@@ -10,13 +10,13 @@ ms.date: 09/13/2016
 ms.author: rogardle
 ms.custom: mvc
 ms.openlocfilehash: c76701ce74aafcccdbb2f1a2454f9528b52fc096
-ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79136231"
 ---
-# <a name="deprecated-container-management-with-docker-swarm"></a>PRZESTARZAŁE Zarządzanie kontenerami przy użyciu rozwiązania Docker Swarm
+# <a name="deprecated-container-management-with-docker-swarm"></a>(PRZESTARZAŁE) Zarządzanie kontenerami za pomocą platformy Docker Swarm
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-deprecation.md)]
 
@@ -26,9 +26,9 @@ Rozwiązanie Docker Swarm oferuje środowisko wdrażania konteneryzowanych obci�
 
 Wymagania wstępne dotyczące ćwiczeń opisanych w tym dokumencie:
 
-[Utworzenie klastra Swarm usługi Azure Container Service](container-service-deployment.md)
+[Utworzenie klastra Swarm usługi kontenera platformy Azure](container-service-deployment.md)
 
-[Połączenie z klastrem Swarm w usłudze Azure Container Service](../container-service-connect.md)
+[Połączenie z klastrem Swarm w usłudze kontenera platformy Azure](../container-service-connect.md)
 
 ## <a name="deploy-a-new-container"></a>Wdrażanie nowego kontenera
 Aby utworzyć nowy kontener w rozwiązaniu Docker Swarm, użyj polecenia `docker run` (co zapewni otwarcie tunelu SSH do serwerów głównych zgodnie z powyższymi wymaganiami wstępnymi). W tym przykładzie kontener jest tworzony na podstawie obrazu `yeasy/simple-web`:
@@ -69,7 +69,7 @@ CONTAINER ID        IMAGE               COMMAND                  CREATED        
 ## <a name="deploy-containers-by-using-docker-compose"></a>Wdrażanie kontenerów przy użyciu rozwiązania Docker Compose
 Rozwiązania Docker Compose możesz używać do automatyzowania wdrażania i konfigurowania wielu kontenerów. W tym celu upewnij się, że utworzono tunel Secure Shell (SSH) oraz że ustawiono zmienną DOCKER_HOST (patrz wymagania wstępne powyżej).
 
-Utwórz plik docker-compose.yml w systemie lokalnym. W tym celu użyj tego przykładu:
+Utwórz plik docker-compose.yml w systemie lokalnym. Aby to zrobić, użyj tego przykładu:
 
 ```dockerfile
 web:

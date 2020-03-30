@@ -1,5 +1,6 @@
 ---
-title: Azure Key Vault usuwanie nietrwałe | Microsoft Docs
+title: Usuwanie nietrwałe usługi Azure Key Vault | Dokumenty firmy Microsoft
+description: Usuwanie nietrwałe w usłudze Azure Key Vault umożliwia odzyskiwanie usuniętych magazynów kluczy i obiektów magazynu kluczy, takich jak klucze, wpisy tajne i certyfikaty.
 ms.service: key-vault
 ms.subservice: general
 ms.topic: conceptual
@@ -7,91 +8,91 @@ author: msmbaldwin
 ms.author: mbaldwin
 manager: rkarlin
 ms.date: 03/19/2019
-ms.openlocfilehash: 31d3556609737212ee1257015d12e9e0621ea4ee
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 9c72b2ea71da94215fc9193ffdf3906449ec5571
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78197389"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79457376"
 ---
-# <a name="azure-key-vault-soft-delete-overview"></a>Azure Key Vault — przegląd usuwania nietrwałego
+# <a name="azure-key-vault-soft-delete-overview"></a>Azure Key Vault — omówienie usuwania nietrwałego
 
-Funkcja usuwania nietrwałego Key Vault umożliwia Odzyskiwanie usuniętych magazynów i obiektów magazynu, znanych jako nietrwałe usunięcie. W tym celu należy zająć się następującymi scenariuszami:
+Funkcja nietrwałego usuwania w magazynie kluczy umożliwia odzyskiwanie usuniętych przechowalni i obiektów przechowalni, znanych jako usuwanie nietrwałe. W szczególności możemy rozwiązać następujące scenariusze:
 
-- Obsługa odwracalnego usuwania magazynu kluczy
-- Obsługa odwracalnego usuwania obiektów magazynu kluczy (np. klucze, wpisy tajne, certyfikaty)
+- Obsługa możliwego do odzyskania usunięcia magazynu kluczy
+- Obsługa możliwego do odzyskania usunięcia obiektów magazynu kluczy (np. klucze, wpisy tajne, certyfikaty)
 
 ## <a name="supporting-interfaces"></a>Interfejsy pomocnicze
 
-Funkcja usuwania nietrwałego jest początkowo dostępna za pomocą interfejsu [rest](/rest/api/keyvault/), [interfejsu wiersza polecenia](key-vault-soft-delete-cli.md), [programu PowerShell](key-vault-soft-delete-powershell.md) i [platformy .NETC# ](/dotnet/api/microsoft.azure.keyvault?view=azure-dotnet) .
+Funkcja usuwania nietrwałego jest początkowo dostępna za pośrednictwem interfejsów [REST,](/rest/api/keyvault/) [CLI,](key-vault-soft-delete-cli.md) [PowerShell](key-vault-soft-delete-powershell.md) i [.NET/C#.](/dotnet/api/microsoft.azure.keyvault?view=azure-dotnet)
 
 ## <a name="scenarios"></a>Scenariusze
 
-Magazyny kluczy Azure to śledzone zasoby zarządzane przez Azure Resource Manager. Azure Resource Manager określa również dobrze zdefiniowane zachowanie do usunięcia, które wymaga pomyślnego usunięcia operacji, musi spowodować, że zasób nie jest już dostępny. Funkcja usuwania nietrwałego odnosi się do odzyskania usuniętego obiektu, bez względu na to, czy usunięcie było przypadkowe czy celowe.
+Usługi Azure Key Vaults są śledzone zasoby zarządzane przez usługę Azure Resource Manager. Usługa Azure Resource Manager określa również dobrze zdefiniowane zachowanie do usunięcia, które wymaga, że pomyślna operacja DELETE musi spowodować, że ten zasób nie jest już dostępny. Funkcja usuwania nietrwałego dotyczy odzyskiwania usuniętego obiektu, niezależnie od tego, czy usunięcie było przypadkowe, czy zamierzone.
 
-1. W typowym scenariuszu użytkownik mógł przypadkowo usunąć magazyn kluczy lub obiekt magazynu kluczy; Jeśli ten magazyn kluczy lub obiekt magazynu kluczy był możliwy do odzyskania w ustalonym okresie, użytkownik może cofnąć operację usuwania i odzyskać swoje dane.
+1. W typowym scenariuszu użytkownik mógł przypadkowo usunąć magazyn kluczy lub obiekt magazynu kluczy; jeśli ten magazyn kluczy lub obiekt magazynu kluczy były możliwe do odzyskania przez określony czas, użytkownik może cofnąć usunięcie i odzyskać swoje dane.
 
-2. W innym scenariuszu nieautoryzowany użytkownik może próbować usunąć magazyn kluczy lub obiekt magazynu kluczy, taki jak klucz w magazynie, aby spowodować zakłócenia działania firmy. Oddzielenie usunięcia magazynu kluczy lub obiektu magazynu kluczy od rzeczywistego usunięcia danych źródłowych może służyć jako środek bezpieczeństwa przez, na przykład, ograniczenie uprawnień do usuwania danych do innej zaufanej roli. Takie podejście efektywnie wymaga kworum dla operacji, co może spowodować natychmiastowe utratę danych.
+2. W innym scenariuszu nieautoryzowany użytkownik może próbować usunąć magazyn kluczy lub obiekt magazynu kluczy, taki jak klucz wewnątrz magazynu, aby spowodować zakłócenia biznesowe. Oddzielenie usunięcia obiektu magazynu kluczy lub magazynu kluczy od rzeczywistego usunięcia danych źródłowych może służyć jako środek bezpieczeństwa, na przykład ograniczając uprawnienia do usuwania danych do innej, zaufanej roli. Takie podejście skutecznie wymaga kworum dla operacji, które w przeciwnym razie może spowodować natychmiastową utratę danych.
 
-### <a name="soft-delete-behavior"></a>Zachowanie nietrwałego usuwania
+### <a name="soft-delete-behavior"></a>Zachowanie usuwania nietrwałego
 
-Po włączeniu usuwania nietrwałego zasoby oznaczone jako usunięte zasoby są zachowywane przez określony czas (domyślnie 90 dni). Usługa zapewnia Dodatkowo mechanizm odzyskiwania usuniętego obiektu, zasadniczo cofając operację usuwania.
+Po włączeniu usuwania nietrwałego zasoby oznaczone jako usunięte zasoby są zachowywane przez określony czas (domyślnie 90 dni). Usługa dodatkowo zapewnia mechanizm odzyskiwania usuniętego obiektu, zasadniczo cofając usunięcie.
 
-Podczas tworzenia nowego magazynu kluczy, usuwanie nietrwałe jest domyślnie włączone. Możesz utworzyć magazyn kluczy bez usuwania nietrwałego za pomocą [interfejsu wiersza polecenia platformy Azure](key-vault-soft-delete-cli.md) lub [programu Azure PowerShell](key-vault-soft-delete-powershell.md). Po włączeniu usuwania nietrwałego w magazynie kluczy nie można go wyłączyć
+Podczas tworzenia nowego magazynu kluczy, soft-delete jest domyślnie włączony. Można utworzyć magazyn kluczy bez usuwania nietrwałego za pośrednictwem [interfejsu wiersza polecenia platformy Azure](key-vault-soft-delete-cli.md) lub programu Azure [Powershell](key-vault-soft-delete-powershell.md). Po włączeniu usuwania nietrwałego w przechowalni kluczy nie można go wyłączyć
 
-Domyślny okres przechowywania to 90 dni, ale podczas tworzenia magazynu kluczy można ustawić interwał zasad przechowywania na wartość z przedziału od 7 do 90 dni za pośrednictwem Azure Portal. Zasady przechowywania ochrony przed przeczyszczeniem używają tego samego interwału. Po ustawieniu nie można zmienić interwału zasad przechowywania.
+Domyślny okres przechowywania wynosi 90 dni, ale podczas tworzenia magazynu kluczy można ustawić interwał zasad przechowywania na wartość od 7 do 90 dni za pośrednictwem witryny Azure portal. Zasady przechowywania ochrony przeczyszczania używa tego samego interwału. Po ustawieniu nie można zmienić interwału zasad przechowywania.
 
-Nie można ponownie użyć nazwy magazynu kluczy, który został usunięty jako nietrwały, dopóki nie upłynie okres przechowywania.
+Nie można ponownie użyć nazwy magazynu kluczy, który został usunięty bez systemu, dopóki nie upłynie okres przechowywania.
 
-### <a name="purge-protection"></a>Ochrona przeczyszczania 
+### <a name="purge-protection"></a>Ochrona przed oczyszczaniem 
 
-Ochrona przed czyszczeniem jest opcjonalnym zachowaniem Key Vault i **nie jest włączona domyślnie**. Można ją włączyć za pomocą [interfejsu wiersza polecenia](key-vault-soft-delete-cli.md#enabling-purge-protection) lub [programu PowerShell](key-vault-soft-delete-powershell.md#enabling-purge-protection).
+Ochrona przed przeczyszczaniem jest opcjonalnym zachowaniem magazynu kluczy i nie jest **domyślnie włączona.** Można go włączyć za pomocą [interfejsu WIERSZA LUB](key-vault-soft-delete-cli.md#enabling-purge-protection) [programu Powershell.](key-vault-soft-delete-powershell.md#enabling-purge-protection)
 
-Gdy ochrona przed przeczyszczeniem jest włączona, nie można wyczyścić magazynu ani obiektu w stanie usuniętym, dopóki nie upłynie okres przechowywania. Nieusunięte magazyny i obiekty nadal mogą być odzyskiwane, co oznacza, że zostaną zastosowane zasady przechowywania. 
+Gdy ochrona przed przeczyszczaniem jest wł., przechowalni lub obiekt w stanie usuniętym nie można wyczyścić, dopóki nie upłynie okres przechowywania. Nietrętne usunięte magazyny i obiekty nadal można odzyskać, zapewniając, że zasady przechowywania będą przestrzegane. 
 
-Domyślny okres przechowywania to 90 dni, ale można ustawić interwał zasad przechowywania na wartość z przedziału od 7 do 90 dni za pośrednictwem Azure Portal. Po ustawieniu interwału zasad przechowywania i zapisaniu go nie można go zmienić w tym magazynie. 
+Domyślny okres przechowywania wynosi 90 dni, ale można ustawić interwał zasad przechowywania na wartość od 7 do 90 dni za pośrednictwem witryny Azure portal. Po ustawieniu i zapisaniu interwału zasad przechowywania nie można go zmienić dla tego magazynu. 
 
-### <a name="permitted-purge"></a>Dozwolone przeczyszczanie
+### <a name="permitted-purge"></a>Dozwolone oczyszczanie
 
-Trwałe usuwanie, przeczyszczanie magazynu kluczy jest możliwe za pośrednictwem operacji POST na zasobie serwera proxy i wymaga specjalnych uprawnień. Ogólnie rzecz biorąc, tylko właściciel subskrypcji będzie mógł przeczyścić Magazyn kluczy. Operacja POST wyzwala natychmiastowe i nieodwracalne usuwanie tego magazynu. 
+Trwale usuwanie, czyszczenie, magazyn kluczy jest możliwe za pomocą operacji POST na zasób serwera proxy i wymaga specjalnych uprawnień. Ogólnie rzecz biorąc tylko właściciel subskrypcji będzie mógł przeczyścić magazyn kluczy. Operacja POST wyzwala natychmiastowe i nieodwracalne usunięcie tego magazynu. 
 
-Wyjątki są następujące:
-- Gdy subskrypcja platformy Azure została oznaczona jako *undeletable*. W takim przypadku tylko usługa może wykonać rzeczywiste usunięcie i tak jak w przypadku zaplanowanego procesu. 
-- Gdy flaga--Enable-przeczyszczania jest włączona w magazynie. W takim przypadku Key Vault będzie czekać przez 90 dni od momentu, gdy oryginalny obiekt tajny został oznaczony do usunięcia, aby usunąć go trwale.
+Wyjątek stanowią:
+- Gdy subskrypcja platformy Azure została oznaczona jako *cofalna*. W takim przypadku tylko usługa może następnie wykonać rzeczywiste usunięcie i robi to jako zaplanowany proces. 
+- Gdy flaga --enable-purge-protection jest włączona w samym przechowalni. W takim przypadku Usługa Key Vault będzie czekać 90 dni od momentu oznaczenia oryginalnego obiektu tajnego do usunięcia w celu trwałego usunięcia obiektu.
 
 ### <a name="key-vault-recovery"></a>Odzyskiwanie magazynu kluczy
 
-Po usunięciu magazynu kluczy Usługa tworzy zasób serwera proxy w ramach subskrypcji, dodając wystarczające metadane do odzyskania. Zasób serwera proxy jest przechowywanym obiektem, który jest dostępny w tej samej lokalizacji co usunięty Magazyn kluczy. 
+Po usunięciu magazynu kluczy usługa tworzy zasób serwera proxy w ramach subskrypcji, dodając wystarczające metadane do odzyskiwania. Zasób serwera proxy jest obiektem przechowywanym, dostępnym w tej samej lokalizacji co usunięty magazyn kluczy. 
 
-### <a name="key-vault-object-recovery"></a>Odzyskiwanie obiektu magazynu kluczy
+### <a name="key-vault-object-recovery"></a>Odzyskiwanie obiektów magazynu kluczy
 
-Po usunięciu obiektu magazynu kluczy, takiego jak klucz, usługa umieści obiekt w stanie usunięte, co uniemożliwi dostęp do żadnych operacji pobierania. W tym stanie obiekt magazynu kluczy może być wyświetlany na liście, odzyskany lub wymuszony/trwale usunięty. 
+Po usunięciu obiektu magazynu kluczy, takiego jak klucz, usługa umieści obiekt w stanie usuniętym, co spowoduje, że będzie on niedostępny dla wszystkich operacji pobierania. W tym stanie obiekt magazynu kluczy można wymienić, odzyskać lub trwale/trwale usunąć. 
 
-W tym samym czasie Key Vault Zaplanuj usunięcie danych źródłowych odpowiadających usuniętemu magazynowi kluczy lub obiektowi magazynu kluczy do wykonania po upływie wstępnie określonego interwału przechowywania. Rekord DNS odpowiadający magazynowi również jest zachowywany na czas trwania interwału przechowywania.
+W tym samym czasie Usługa Key Vault zaplanuje usunięcie danych bazowych odpowiadających usuniętemu magazynowi kluczy lub obiektowi magazynu kluczy do wykonania po określonym interwale przechowywania. Rekord DNS odpowiadający przechowalni jest również zachowywany przez cały czas trwania interwału przechowywania.
 
-### <a name="soft-delete-retention-period"></a>Okres przechowywania nietrwałego usuwania
+### <a name="soft-delete-retention-period"></a>Okres przechowywania usuwania nietrwałego
 
-Usunięte zasoby nietrwałe są przechowywane przez określony czas, 90 dni. Podczas okresu przechowywania nietrwałego usuwania należy zastosować następujące czynności:
+Nietrwałe usunięte zasoby są zachowywane przez określony czas, czyli 90 dni. Podczas okresu przechowywania usuwania nietrwałego stosuje się następujące zasady:
 
-- Możesz wyświetlić listę wszystkich magazynów kluczy i obiektów magazynu kluczy w stanie nietrwałego usuwania dla Twojej subskrypcji, a także uzyskać dostęp do informacji dotyczących ich usuwania i odzyskiwania.
-    - Tylko użytkownicy z uprawnieniami specjalnymi mogą wyświetlać usunięte magazyny. Firma Microsoft zaleca, aby naszym użytkownikom utworzyć rolę niestandardową z tymi specjalnymi uprawnieniami do obsługi usuniętych magazynów.
-- Nie można utworzyć magazynu kluczy o tej samej nazwie w tej samej lokalizacji; nie można utworzyć obiektu magazynu kluczy w danym magazynie, jeśli Magazyn kluczy zawiera obiekt o tej samej nazwie i który jest w stanie usunięty. 
-- Tylko specjalny użytkownik uprzywilejowany może przywrócić magazyn kluczy lub obiekt magazynu kluczy, wydając polecenie Recover na odpowiednim zasobie serwera proxy.
-    - Użytkownik, członek roli niestandardowej, który ma uprawnienia do tworzenia magazynu kluczy w ramach grupy zasobów, może przywrócić magazyn.
-- Tylko użytkownik z uprawnieniami specjalnymi może wymusić usunięcie magazynu kluczy lub obiektu magazynu kluczy, wydając polecenie usunięcia na odpowiednim zasobie serwera proxy.
+- Można wyświetlić listę wszystkich magazynów kluczy i obiektów magazynu kluczy w stanie usuwania nietrwałego dla subskrypcji, a także uzyskać dostęp do informacji o ich usuwaniu i usuwaniu odzyskiwania.
+    - Tylko użytkownicy ze specjalnymi uprawnieniami mogą wystawiać usunięte przechowalnie. Zaleca się, aby nasi użytkownicy tworzyli rolę niestandardową z tymi specjalnymi uprawnieniami do obsługi usuniętych magazynów.
+- Nie można utworzyć magazynu kluczy o tej samej nazwie w tej samej lokalizacji; odpowiednio nie można utworzyć obiektu magazynu kluczy w danym przechowalni, jeśli ten magazyn kluczy zawiera obiekt o tej samej nazwie i który znajduje się w stanie usuniętym 
+- Tylko specjalnie uprzywilejowany użytkownik może przywrócić magazyn kluczy lub obiekt magazynu kluczy, wydając polecenie odzyskiwania odpowiedniego zasobu serwera proxy.
+    - Użytkownik, członek roli niestandardowej, który ma uprawnienia do tworzenia magazynu kluczy w grupie zasobów, może przywrócić przechowalnię.
+- Tylko specjalnie uprzywilejowany użytkownik może wymęczeć usunąć przechowalnię kluczy lub obiekt magazynu kluczy, wydając polecenie usuwania odpowiedniego zasobu serwera proxy.
 
-Jeśli magazyn kluczy lub obiekt magazynu kluczy nie zostanie odzyskany, na końcu interwału przechowywania usługa wykonuje przeczyszczanie usuniętego nietrwałego magazynu kluczy lub obiektu magazynu kluczy i jego zawartości. Nie można ponownie zaplanować usunięcia zasobu.
+O ile nie zostanie odzyskana przechowalnia kluczy lub obiekt magazynu kluczy, po zakończeniu interwału przechowywania usługa wykonuje przeczyszczanie nietrwale usuniętego obiektu magazynu kluczy lub magazynu kluczy i jego zawartości. Usunięcie zasobów nie może być przełożone.
 
 ### <a name="billing-implications"></a>Implikacje rozliczeń
 
-Ogólnie rzecz biorąc, gdy obiekt (Magazyn kluczy lub klucz lub wpis tajny) jest w stanie usunięte, dostępne są tylko dwie operacje: "przeczyszczanie" i "Odzyskaj". Wszystkie inne operacje zakończą się niepowodzeniem. W związku z tym, mimo że obiekt istnieje, nie można wykonać żadnych operacji i dlatego nie wystąpił żaden rachunek. Istnieją jednak następujące wyjątki:
+Ogólnie rzecz biorąc, gdy obiekt (magazyn kluczy lub klucz lub klucz lub klucz tajny) jest w stanie usuniętym, możliwe są tylko dwie operacje: "przeczyszczanie" i "odzyskać". Wszystkie inne operacje zakończy się niepowodzeniem. W związku z tym, mimo że obiekt istnieje, nie można wykonać żadnych operacji i w związku z tym nie nastąpi użycie, więc nie rachunek. Istnieją jednak następujące wyjątki:
 
-- akcje "Wyczyść" i "Odzyskaj" będą wliczane do normalnych operacji magazynu kluczy i będą naliczane opłaty.
-- Jeśli obiekt jest kluczem modułu HSM, opłata za klucz chroniony przez moduł HSM na wersję klucza miesięcznie będzie stosowana, jeśli w ciągu ostatnich 30 dni zostanie użyta wersja klucza. Po tym, ponieważ obiekt jest w stanie usunięty, nie można wykonywać żadnych operacji, więc opłaty nie będą naliczane.
+- Akcje "przeczyścić" i "odzyskać" będą wliczane do normalnych operacji magazynu kluczy i będą rozliczane.
+- Jeśli obiekt jest kluczem HSM, zostanie naliczona opłata "Klucz chroniony HSM" za wersję klucza miesięcznie, jeśli wersja klucza została użyta w ciągu ostatnich 30 dni. Następnie, ponieważ obiekt jest w stanie usunięte, nie można wykonać żadnych operacji przeciwko niemu, więc nie zostanie naliczona żadna opłata.
 
 ## <a name="next-steps"></a>Następne kroki
 
-Poniższe dwa przewodniki oferują podstawowe scenariusze użycia do korzystania z funkcji usuwania nietrwałego.
+Następujące dwa przewodniki oferują podstawowe scenariusze użycia przy użyciu usuwania nietrwałego.
 
 - [Jak używać usuwania nietrwałego w usłudze Key Vault z programem PowerShell](key-vault-soft-delete-powershell.md) 
 - [Jak używać usuwania nietrwałego w usłudze Key Vault z interfejsem wiersza polecenia](key-vault-soft-delete-cli.md)

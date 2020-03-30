@@ -1,7 +1,7 @@
 ---
 title: Tworzenie niestandardowej sondy przy użyciu programu PowerShell
 titleSuffix: Azure Application Gateway
-description: Dowiedz się, jak utworzyć niestandardową sondę dla Application Gateway przy użyciu programu PowerShell w programie Menedżer zasobów
+description: Dowiedz się, jak utworzyć niestandardową sondę bramy aplikacji przy użyciu programu PowerShell w Menedżerze zasobów
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
@@ -9,30 +9,30 @@ ms.topic: article
 ms.date: 11/14/2019
 ms.author: victorh
 ms.openlocfilehash: 1fef24f4065ca6fc749f35a07143487e049ee6ea
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74075271"
 ---
-# <a name="create-a-custom-probe-for-azure-application-gateway-by-using-powershell-for-azure-resource-manager"></a>Utwórz niestandardową sondę dla Application Gateway platformy Azure przy użyciu programu PowerShell dla Azure Resource Manager
+# <a name="create-a-custom-probe-for-azure-application-gateway-by-using-powershell-for-azure-resource-manager"></a>Tworzenie niestandardowej sondy dla bramy aplikacji platformy Azure przy użyciu programu PowerShell for Azure Resource Manager
 
 > [!div class="op_single_selector"]
-> * [Azure Portal](application-gateway-create-probe-portal.md)
+> * [Portal Azure](application-gateway-create-probe-portal.md)
 > * [Azure Resource Manager — program PowerShell](application-gateway-create-probe-ps.md)
 > * [Klasyczny portal Azure — program PowerShell](application-gateway-create-probe-classic-ps.md)
 
-W tym artykule opisano Dodawanie niestandardowej sondy do istniejącej bramy aplikacji przy użyciu programu PowerShell. Niestandardowe sondy są przydatne w przypadku aplikacji, które mają konkretną kontrolę kondycji lub dla aplikacji, które nie zapewniają prawidłowej odpowiedzi w domyślnej aplikacji sieci Web.
+W tym artykule należy dodać niestandardową sondę do istniejącej bramy aplikacji z programem PowerShell. Sondy niestandardowe są przydatne dla aplikacji, które mają określoną stronę sprawdzania kondycji lub dla aplikacji, które nie zapewniają pomyślnej odpowiedzi w domyślnej aplikacji sieci web.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 [!INCLUDE [azure-ps-prerequisites-include.md](../../includes/azure-ps-prerequisites-include.md)]
 
-## <a name="create-an-application-gateway-with-a-custom-probe"></a>Tworzenie bramy aplikacji przy użyciu sondy niestandardowej
+## <a name="create-an-application-gateway-with-a-custom-probe"></a>Tworzenie bramy aplikacji za pomocą sondy niestandardowej
 
-### <a name="sign-in-and-create-resource-group"></a>Zaloguj się i Utwórz grupę zasobów
+### <a name="sign-in-and-create-resource-group"></a>Zaloguj się i utwórz grupę zasobów
 
-1. Użyj `Connect-AzAccount` do uwierzytelnienia.
+1. Służy `Connect-AzAccount` do uwierzytelniania.
 
    ```powershell
    Connect-AzAccount
@@ -50,19 +50,19 @@ W tym artykule opisano Dodawanie niestandardowej sondy do istniejącej bramy apl
    Select-AzSubscription -Subscriptionid '{subscriptionGuid}'
    ```
 
-1. Utwórz grupę zasobów. Możesz pominąć ten krok, jeśli masz istniejącą grupę zasobów.
+1. Utwórz grupę zasobów. Ten krok można pominąć, jeśli masz istniejącą grupę zasobów.
 
    ```powershell
    New-AzResourceGroup -Name appgw-rg -Location 'West US'
    ```
 
-Usługa Azure Resource Manager wymaga, żeby wszystkie grupy zasobów miały lokalizację. Ta lokalizacja będzie używana jako domyślna lokalizacja dla zasobów w danej grupie zasobów. Upewnij się, że wszystkie polecenia służące do tworzenia bramy aplikacji używają tej samej grupy zasobów.
+Usługa Azure Resource Manager wymaga, żeby wszystkie grupy zasobów miały lokalizację. Ta lokalizacja będzie używana jako domyślna lokalizacja dla zasobów w danej grupie zasobów. Upewnij się, że wszystkie polecenia do utworzenia bramy aplikacji używają tej samej grupy zasobów.
 
-W poprzednim przykładzie została utworzona grupa zasobów o nazwie **appgw-RG** w lokalizacji **zachodnie stany USA**.
+W poprzednim przykładzie utworzyliśmy grupę zasobów o nazwie **appgw-RG** w lokalizacji **Zachodnie stany USA**.
 
 ### <a name="create-a-virtual-network-and-a-subnet"></a>Tworzenie sieci wirtualnej i podsieci
 
-Poniższy przykład tworzy sieć wirtualną i podsieć dla bramy aplikacji. Brama aplikacji wymaga własnej podsieci do użycia. Z tego powodu podsieć utworzona dla bramy aplikacji powinna być mniejsza niż przestrzeń adresowa sieci wirtualnej, aby umożliwić tworzenie i używanie innych podsieci.
+Poniższy przykład tworzy sieć wirtualną i podsieć bramy aplikacji. Brama aplikacji wymaga własnej podsieci do użytku. Z tego powodu podsieć utworzona dla bramy aplikacji powinna być mniejsza niż przestrzeń adresowa sieci wirtualnej, aby umożliwić tworzenie i używane inne podsieci.
 
 ```powershell
 # Assign the address range 10.0.0.0/24 to a subnet variable to be used to create a virtual network.
@@ -77,7 +77,7 @@ $subnet = $vnet.Subnets[0]
 
 ### <a name="create-a-public-ip-address-for-the-front-end-configuration"></a>Tworzenie publicznego adresu IP dla konfiguracji frontonu
 
-Utwórz zasób publicznego adresu IP **publicIP01** w grupie zasobów **appgw-rg** dla regionu Zachodnie stany USA. Ten przykład używa publicznego adresu IP dla adresu IP frontonu bramy aplikacji.  Usługa Application Gateway wymaga, aby publiczny adres IP miał dynamicznie utworzoną nazwę DNS, dlatego nie można określić `-DomainNameLabel` podczas tworzenia publicznego adresu IP.
+Utwórz publiczny zasób IP **publicIP01** w **appgw-rg** grupy zasobów dla regionu Zachodnie stany USA. W tym przykładzie użyto publicznego adresu IP dla adresu IP front-end bramy aplikacji.  Brama aplikacji wymaga publicznego adresu IP, aby mieć `-DomainNameLabel` dynamicznie utworzoną nazwę DNS, dlatego nie można określić podczas tworzenia publicznego adresu IP.
 
 ```powershell
 $publicip = New-AzPublicIpAddress -ResourceGroupName appgw-rg -Name publicIP01 -Location 'West US' -AllocationMethod Dynamic
@@ -85,17 +85,17 @@ $publicip = New-AzPublicIpAddress -ResourceGroupName appgw-rg -Name publicIP01 -
 
 ### <a name="create-an-application-gateway"></a>Tworzenie bramy aplikacji
 
-Przed utworzeniem bramy aplikacji należy skonfigurować wszystkie elementy konfiguracji. Poniższy przykład tworzy elementy konfiguracji, które są zbędne dla zasobu bramy aplikacji.
+Przed utworzeniem bramy aplikacji należy skonfigurować wszystkie elementy konfiguracji. Poniższy przykład tworzy elementy konfiguracji, które są potrzebne dla zasobu bramy aplikacji.
 
 | **Składnik** | **Opis** |
 |---|---|
-| **Konfiguracja adresu IP bramy** | Konfiguracja adresu IP bramy aplikacji.|
-| **Pula zaplecza** | Pula adresów IP, nazw FQDN lub kart sieciowych, które znajdują się na serwerach aplikacji, które obsługują aplikację sieci Web|
-| **Sonda kondycji** | Niestandardowa sonda służąca do monitorowania kondycji elementów członkowskich puli zaplecza|
-| **Ustawienia protokołu HTTP** | Kolekcja ustawień, w tym port, protokół, koligacja, sonda i limit czasu oparty na plikach cookie.  Te ustawienia określają, jak ruch jest kierowany do członków puli zaplecza|
-| **Port frontonu** | Port, na którym Brama aplikacji nasłuchuje ruchu|
-| **Odbiornika** | Kombinacja protokołu, konfiguracji adresu IP frontonu i portu frontonu. Jest to, co nasłuchuje żądań przychodzących.
-|**Reguły**| Kierowanie ruchu do odpowiedniego zaplecza na podstawie ustawień protokołu HTTP.|
+| **Konfiguracja adresu IP bramy** | Konfiguracja IP bramy aplikacji.|
+| **Pula zaplecza** | Pula adresów IP, nazw FQDN lub kart sieciowych, które są do serwerów aplikacji obsługujących aplikację sieci web|
+| **Sonda kondycji** | Niestandardowa sonda używana do monitorowania kondycji elementów członkowskich puli wewnętrznej bazy danych|
+| **Ustawienia HTTP** | Kolekcja ustawień, w tym, port, protokół, koligacja oparta na plikach cookie, sondy i limit czasu.  Te ustawienia określają sposób kierowania ruchu do członków puli zaplecza|
+| **Port frontendu** | Port, który brama aplikacji nasłuchuje ruchu na|
+| **Odbiornika** | Połączenie protokołu, konfiguracji IP frontu i portu frontendu. To jest to, co nasłuchuje przychodzących żądań.
+|**Reguła**| Kieruje ruch do odpowiedniego zaplecza na podstawie ustawień HTTP.|
 
 ```powershell
 # Creates an application gateway Frontend IP configuration named gatewayIP01
@@ -197,5 +197,5 @@ DnsSettings              : {
 
 ## <a name="next-steps"></a>Następne kroki
 
-Informacje na temat konfigurowania odciążania protokołu SSL przez odwiedzenie: [Konfigurowanie odciążania protokołu SSL](application-gateway-ssl-arm.md)
+Dowiedz się, jak skonfigurować odciążanie SSL przez odwiedzając: [Konfigurowanie odciążania SSL](application-gateway-ssl-arm.md)
 

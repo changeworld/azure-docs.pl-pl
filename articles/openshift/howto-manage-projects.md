@@ -1,43 +1,43 @@
 ---
-title: Zarządzanie zasobami na platformie Azure Red Hat OpenShift | Microsoft Docs
-description: Zarządzanie projektami, szablonami, strumieniami obrazów w klastrze Red Hat OpenShift na platformie Azure
+title: Zarządzanie zasobami w usłudze Azure Red Hat OpenShift | Dokumenty firmy Microsoft
+description: Zarządzanie projektami, szablonami i strumieniami obrazów w klastrze OpenShift usługi Azure Red Hat
 services: openshift
-keywords: projekty Red Hat OpenShift żądają samoobsługowego udostępniania
+keywords: projekt openshift red hat żąda samoobsługowego
 author: mjudeikis
 ms.author: gwallace
 ms.date: 07/19/2019
 ms.topic: conceptual
 ms.service: container-service
 ms.openlocfilehash: d4f53238951784a74e6e3fc8a73d1f112ce75608
-ms.sourcegitcommit: d322d0a9d9479dbd473eae239c43707ac2c77a77
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79139117"
 ---
-# <a name="manage-projects-templates-image-streams-in-an-azure-red-hat-openshift-cluster"></a>Zarządzanie projektami, szablonami, strumieniami obrazów w klastrze Red Hat OpenShift na platformie Azure 
+# <a name="manage-projects-templates-image-streams-in-an-azure-red-hat-openshift-cluster"></a>Zarządzanie projektami, szablonami i strumieniami obrazów w klastrze OpenShift usługi Azure Red Hat 
 
-Na platformie kontenera OpenShift projekty są używane do grupowania i izolowania powiązanych obiektów. Jako administrator możesz dać deweloperom dostęp do określonych projektów, zezwolić im na tworzenie własnych projektów i udzielanie im praw administracyjnych do poszczególnych projektów.
+W platformie kontenerów OpenShift projekty są używane do grupowania i izolowania powiązanych obiektów. Jako administrator możesz dać deweloperom dostęp do określonych projektów, zezwolić im na tworzenie własnych projektów i przyznawać im prawa administracyjne do poszczególnych projektów.
 
-## <a name="self-provisioning-projects"></a>Projekty samoobsługowego udostępniania
+## <a name="self-provisioning-projects"></a>Projekty samoobsługowe
 
-Możesz umożliwić deweloperom tworzenie własnych projektów. Punkt końcowy interfejsu API jest odpowiedzialny za obsługę administracyjną projektu zgodnie z szablonem o nazwie Project-Request. Konsola sieci Web i polecenie `oc new-project` używają tego punktu końcowego, gdy deweloper tworzy nowy projekt.
+Można umożliwić deweloperom tworzenie własnych projektów. Punkt końcowy interfejsu API jest odpowiedzialny za inicjowanie obsługi administracyjnej projektu zgodnie z szablonem o nazwie żądanie projektu. Konsola sieci `oc new-project` web i polecenie używają tego punktu końcowego, gdy deweloper tworzy nowy projekt.
 
-Gdy żądanie projektu zostanie przesłane, interfejs API zastępuje następujące parametry w szablonie:
+Po przesłaniu żądania projektu interfejs API zastępuje następujące parametry w szablonie:
 
 | Parametr               | Opis                                    |
 | ----------------------- | ---------------------------------------------- |
 | PROJECT_NAME            | Nazwa projektu. Wymagany.             |
-| PROJECT_DISPLAYNAME     | Nazwa wyświetlana projektu. Może być pusty. |
+| PROJECT_DISPLAYNAME     | Wyświetlana nazwa projektu. Może być pusty. |
 | PROJECT_DESCRIPTION     | Opis projektu. Może być pusty.  |
-| PROJECT_ADMIN_USER      | Nazwa użytkownika administratora.       |
+| PROJECT_ADMIN_USER      | Nazwa użytkownika administrującego.       |
 | PROJECT_REQUESTING_USER | Nazwa użytkownika żądającego.           |
 
-Dostęp do interfejsu API jest udzielany deweloperom z powiązaniem roli klastra samoobsługi. Ta funkcja jest domyślnie dostępna dla wszystkich uwierzytelnionych deweloperów.
+Dostęp do interfejsu API jest przyznawany deweloperom z wiązaniem roli klastra samoaprosztowych. Ta funkcja jest domyślnie dostępna dla wszystkich uwierzytelnionych deweloperów.
 
-## <a name="modify-the-template-for-a-new-project"></a>Modyfikuj szablon dla nowego projektu 
+## <a name="modify-the-template-for-a-new-project"></a>Modyfikowanie szablonu dla nowego projektu 
 
-1. Zaloguj się jako użytkownik z uprawnieniami `customer-admin`.
+1. Zaloguj się jako `customer-admin` użytkownik z uprawnieniami.
 
 2. Edytuj domyślny szablon żądania projektu.
 
@@ -45,7 +45,7 @@ Dostęp do interfejsu API jest udzielany deweloperom z powiązaniem roli klastra
    oc edit template project-request -n openshift
    ```
 
-3. Usuń domyślny szablon projektu z procesu aktualizacji Red Hat OpenShift (ARO) platformy Azure, dodając następującą adnotację: `openshift.io/reconcile-protect: "true"`
+3. Usuń domyślny szablon projektu z procesu aktualizacji azure red hat openshift (ARO), dodając następującą adnotację:`openshift.io/reconcile-protect: "true"`
 
    ```
    ...
@@ -55,15 +55,15 @@ Dostęp do interfejsu API jest udzielany deweloperom z powiązaniem roli klastra
    ...
    ```
 
-   Szablon żądania projektu nie zostanie zaktualizowany przez proces aktualizacji ARO. Dzięki temu klienci mogą dostosować szablon i zachować te dostosowania podczas aktualizowania klastra.
+   Szablon żądania projektu nie zostanie zaktualizowany przez proces aktualizacji ARO. Dzięki temu klienci mogą dostosować szablon i zachować te dostosowania po zaktualizowaniu klastra.
 
-## <a name="disable-the-self-provisioning-role"></a>Wyłącz rolę samoobsługowego aprowizacji
+## <a name="disable-the-self-provisioning-role"></a>Wyłączanie roli samoobsługowej
 
-Można uniemożliwić uwierzytelnionej grupie użytkowników możliwość samoobsługowego udostępniania nowych projektów.
+Można uniemożliwić uwierzytelnionej grupie użytkowników samodzielne inicjowanie obsługi administracyjnej nowych projektów.
 
-1. Zaloguj się jako użytkownik z uprawnieniami `customer-admin`.
+1. Zaloguj się jako `customer-admin` użytkownik z uprawnieniami.
 
-2. Edytuj powiązanie roli klastra Provisioning.
+2. Edytuj samoaprowizatory powiązania roli klastra.
 
    ```
    oc edit clusterrolebinding.rbac.authorization.k8s.io self-provisioners
@@ -79,7 +79,7 @@ Można uniemożliwić uwierzytelnionej grupie użytkowników możliwość samoob
    ...
    ```
 
-4. Zmień powiązanie roli klastra, aby uniemożliwić `system:authenticated:oauth` tworzenia projektów:
+4. Zmień powiązanie roli `system:authenticated:oauth` klastra, aby uniemożliwić tworzenie projektów:
 
    ```
    apiVersion: rbac.authorization.k8s.io/v1
@@ -99,20 +99,20 @@ Można uniemożliwić uwierzytelnionej grupie użytkowników możliwość samoob
      name: osa-customer-admins
    ```
 
-## <a name="manage-default-templates-and-imagestreams"></a>Zarządzanie szablonami domyślnymi i imageStreams
+## <a name="manage-default-templates-and-imagestreams"></a>Zarządzanie domyślnymi szablonami i strumieniami obrazów
 
-W systemie Red Hat OpenShift na platformie Azure można wyłączyć aktualizacje dla wszystkich domyślnych szablonów i strumieni obrazów w przestrzeni nazw `openshift`.
-Aby wyłączyć aktualizacje dla wszystkich `Templates` i `ImageStreams` w przestrzeni nazw `openshift`:
+W usłudze Azure Red Hat OpenShift można wyłączyć aktualizacje `openshift` dla wszystkich szablonów domyślnych i strumieni obrazów wewnątrz obszaru nazw.
+Aby wyłączyć aktualizacje `ImageStreams` `openshift` dla WSZYSTKICH `Templates` i w obszarze nazw:
 
-1. Zaloguj się jako użytkownik z uprawnieniami `customer-admin`.
+1. Zaloguj się jako `customer-admin` użytkownik z uprawnieniami.
 
-2. Edytuj `openshift` przestrzeń nazw:
+2. Edytuj `openshift` obszar nazw:
 
    ```
    oc edit namespace openshift
    ```
 
-3. Usuń `openshift` przestrzeń nazw z procesu aktualizacji ARO, dodając następującą adnotację: `openshift.io/reconcile-protect: "true"`
+3. Usuń `openshift` obszar nazw z procesu aktualizacji ARO, dodając następującą adnotację:`openshift.io/reconcile-protect: "true"`
 
    ```
    ...
@@ -122,7 +122,7 @@ Aby wyłączyć aktualizacje dla wszystkich `Templates` i `ImageStreams` w przes
    ...
    ```
 
-   Każdy pojedynczy obiekt w przestrzeni nazw `openshift` można usunąć z procesu aktualizacji, dodając do niego adnotację `openshift.io/reconcile-protect: "true"`.
+   Każdy pojedynczy obiekt `openshift` w obszarze nazw można usunąć z procesu `openshift.io/reconcile-protect: "true"` aktualizacji, dodając do niego adnotację.
 
 ## <a name="next-steps"></a>Następne kroki
 

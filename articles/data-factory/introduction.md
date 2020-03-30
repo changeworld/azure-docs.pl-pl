@@ -10,10 +10,10 @@ ms.workload: data-services
 ms.topic: overview
 ms.date: 09/30/2019
 ms.openlocfilehash: e23268d21b01435aa71d4f471afc6d37ee9e9c1d
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "73672706"
 ---
 # <a name="what-is-azure-data-factory"></a>Czym jest usługa Azure Data Factory?
@@ -28,15 +28,15 @@ Do analizy tych dzienników firma musi użyć danych referencyjnych, np. informa
 
 Aby wyodrębnić szczegółowe informacje, chce przetworzyć połączone dane przy użyciu klastra Spark w chmurze (Azure HDInsight), a następnie opublikować przekształcone dane w magazynie danych w chmurze, takim jak Azure SQL Data Warehouse, co ułatwi tworzenie raportów na ich podstawie. Firma zamierza zautomatyzować przepływ pracy, a także monitorować go i zarządzać nim w cyklu dziennym. Poza tym chce wykonywać przepływ pracy, gdy pliki znajdą się w kontenerze usługi Blob Storage.
 
-Azure Data Factory to platforma, która umożliwia pracę z takimi scenariuszami danych. Jest to *Usługa ETL i integracja danych oparta na chmurze, która umożliwia tworzenie przepływów pracy opartych na danych na potrzeby organizowania przenoszenia danych i przekształcania danych na dużą skalę*. Za pomocą usługi Azure Data Factory można tworzyć oparte na danych przepływy pracy (nazywane potokami) i ustalać ich harmonogram. Można tworzyć złożone procesy ETL, które przekształcają dane graficznie przy użyciu przepływów danych lub usług obliczeniowych, takich jak Azure HDInsight Hadoop, Azure Databricks i Azure SQL Database. 
+Azure Data Factory to platforma, która umożliwia pracę z takimi scenariuszami danych. Jest to *oparta na chmurze usługa integracji ETL i integracji danych, która umożliwia tworzenie opartych na danych przepływów pracy w celu organizowania przenoszenia danych i przekształcania danych na dużą skalę.* Za pomocą usługi Azure Data Factory można tworzyć oparte na danych przepływy pracy (nazywane potokami) i ustalać ich harmonogram. Można tworzyć złożone procesy ETL, które przekształcają dane wizualnie za pomocą przepływów danych lub przy użyciu usług obliczeniowych, takich jak Azure HDInsight Hadoop, Azure Databricks i Azure SQL Database. 
 
-Ponadto możesz publikować przekształcone dane w magazynach danych, takich jak Azure SQL Data Warehouse for Business Intelligence (BI), aby korzystać z programu. Ostatecznie dzięki usłudze Azure Data Factory nieprzetworzone dane mogą być organizowane w praktyczne magazyny i usługi data lake ułatwiające podejmowanie właściwych decyzji biznesowych.
+Ponadto można opublikować przekształcone dane do magazynów danych, takich jak usługi Azure SQL Data Warehouse dla aplikacji analizy biznesowej (BI) do wykorzystania. Ostatecznie dzięki usłudze Azure Data Factory nieprzetworzone dane mogą być organizowane w praktyczne magazyny i usługi data lake ułatwiające podejmowanie właściwych decyzji biznesowych.
 
 ![Widok najwyższego poziomu usługi Data Factory](media/data-flow/overview.png)
 
 ## <a name="how-does-it-work"></a>Jak to działa?
 
-Data Factory zawiera szereg połączonych systemów, które zapewniają kompleksową platformę do obsługi inżynierów danych.
+Fabryka danych zawiera serię połączonych ze sobą systemów, które zapewniają kompletną platformę end-to-end dla inżynierów danych.
 
 ### <a name="connect-and-collect"></a>Łączenie i zbieranie
 
@@ -46,15 +46,15 @@ Pierwszy krok tworzenia systemu uzyskiwania informacji polega na połączeniu ws
 
 Firmy, które nie korzystają z usługi Data Factory, muszą tworzyć niestandardowe składniki umożliwiające przepływ danych lub projektować własne usługi, aby zintegrować źródła danych i systemy przetwarzania. Takie podejście jest kosztowne, a integracja i utrzymanie systemów stwarza trudności. Ponadto rozwiązanie to rzadko zapewnia mechanizmy kontrolne oraz funkcje monitorowania i wysyłania alertów na poziomie korporacyjnym. Możliwości te są natomiast dostępne w przypadku w pełni zarządzanej usługi.
 
-Usługa Data Factory udostępnia [działanie kopiowania](copy-activity-overview.md) w potoku danych, które pozwala przenosić dane z lokalnych magazynów danych i źródeł danych w chmurze do centralnego magazynu danych w chmurze w celu przeprowadzenia kolejnych etapów analizy. Można na przykład zebrać dane w Azure Data Lake Storage i przekształcić je później za pomocą usługi obliczeniowej Azure Data Lake Analytics. Można też pobrać dane z usługi Azure Blob Storage, aby przekształcić je później przy użyciu klastra usługi Azure HDInsight na platformie Hadoop.
+Usługa Data Factory udostępnia [działanie kopiowania](copy-activity-overview.md) w potoku danych, które pozwala przenosić dane z lokalnych magazynów danych i źródeł danych w chmurze do centralnego magazynu danych w chmurze w celu przeprowadzenia kolejnych etapów analizy. Na przykład można zbierać dane w usłudze Azure Data Lake Storage i przekształcać dane później przy użyciu usługi obliczeniowej usługi Azure Data Lake Analytics. Można też pobrać dane z usługi Azure Blob Storage, aby przekształcić je później przy użyciu klastra usługi Azure HDInsight na platformie Hadoop.
 
 ### <a name="transform-and-enrich"></a>Przekształcanie i wzbogacanie
-Gdy dane znajdują się w scentralizowanym magazynie danych w chmurze, przetwórz lub Przekształcaj zebrane dane przy użyciu funkcji ADF mapowania przepływów danych. Przepływy danych umożliwiają inżynierom danych Tworzenie i konserwowanie wykresów transformacji danych, które są wykonywane na platformie Spark bez konieczności zrozumienia klastrów Spark lub programowania Spark.
+Po obecności danych w scentralizowanym magazynie danych w chmurze, przetwarzaj lub przekształcaj zebrane dane przy użyciu przepływów danych mapowania ADF. Przepływy danych umożliwiają inżynierom danych tworzenie i obsługę wykresów transformacji danych, które są wykonywane w programie Spark bez konieczności zrozumienia klastrów platformy Spark lub programowania platformy Spark.
 
-Jeśli wolisz naliczać przekształcenia ręcznie, moduł ADF obsługuje działania zewnętrzne do wykonywania przekształceń usług obliczeniowych, takich jak HDInsight Hadoop, Spark, Data Lake Analytics i Machine Learning.
+Jeśli wolisz przekształcenia kodu ręcznie, ADF obsługuje działania zewnętrzne do wykonywania przekształceń w usługach obliczeniowych, takich jak HDInsight Hadoop, Spark, Data Lake Analytics i machine learning.
 
-### <a name="cicd-and-publish"></a>CI/CD i publikowanie
-Data Factory oferuje pełną obsługę ciągłej integracji i ciągłego wdrażania potoków danych przy użyciu usług Azure DevOps i GitHub. Dzięki temu można stopniowo opracowywać i dostarczać procesy ETL przed opublikowaniem gotowego produktu. Po przekształceniu danych pierwotnych do postaci gotowej dla działań biznesowych należy załadować je do magazynu Azure Data Warehouse, bazy danych Azure SQL Database, bazy danych Azure CosmosDB lub dowolnego aparatu analizy, z którego mogą korzystać użytkownicy biznesowi przy użyciu swoich narzędzi do analizy biznesowej.
+### <a name="cicd-and-publish"></a>CI/CD i publikować
+Usługa Data Factory oferuje pełną obsługę ciągłej integracji/ciągłego wdrażania potoków danych przy użyciu usług Azure DevOps i GitHub. Dzięki temu można stopniowo rozwijać i dostarczać procesy ETL przed opublikowaniem gotowego produktu. Po przekształceniu danych pierwotnych do postaci gotowej dla działań biznesowych należy załadować je do magazynu Azure Data Warehouse, bazy danych Azure SQL Database, bazy danych Azure CosmosDB lub dowolnego aparatu analizy, z którego mogą korzystać użytkownicy biznesowi przy użyciu swoich narzędzi do analizy biznesowej.
 
 ### <a name="monitor"></a>Monitorowanie
 Po pomyślnym utworzeniu i wdrożeniu potoku integracji danych, zapewniającego wartość biznesową danym przetworzonym, należy monitorować zaplanowane działania i potoki pod kątem współczynników powodzenia i niepowodzenia. Usługa Azure Data Factory dysponuje wbudowaną obsługą monitorowania potoków przy użyciu narzędzi Azure Monitor, API, PowerShell, dzienników usługi Azure Monitor i paneli kondycji w witrynie Azure Portal.
@@ -68,7 +68,7 @@ Fabryka danych może obejmować jeden lub wiele potoków. Potoki to logiczne gru
 Zaletą korzystania z potoku jest możliwość zarządzania zestawem działań, a nie pojedynczymi zadaniami. Działania w potoku można ze sobą połączyć w sposób sekwencyjny, mogą też działać niezależnie i równolegle.
 
 ### <a name="mapping-data-flows"></a>Przepływy danych mapowania
-Twórz wykresy logiki przekształcania danych i zarządzaj nimi, których możesz użyć do przekształcenia danych o dowolnym rozmiarze. Można utworzyć bibliotekę do wielokrotnego użytku procedur przekształcania danych i uruchamiać te procesy w sposób skalowalny w poziomie z potoków ADF. Data Factory wykona logikę w klastrze Spark, który zacznie działać i obracać się, gdy ich potrzebujesz. Nie trzeba już zarządzać klastrami ani ich obsługiwać.
+Tworzenie wykresów logiki przekształcania danych i zarządzanie nimi, których można użyć do przekształcania danych o dowolnym rozmiarze. Można utworzyć bibliotekę wielokrotnego wykorzystania procedur przekształcania danych i wykonać te procesy w sposób skalowany w poziomie z potoków usługi ADF. Fabryka danych wykona logikę w klastrze platformy Spark, który obraca się w górę i obraca się w dół, gdy jest to potrzebne. Nigdy nie będziesz musiał zarządzać klastrami ani utrzymywać ich.
 
 ### <a name="activity"></a>Działanie
 Działania reprezentują krok przetwarzania w potoku. Można na przykład użyć działania kopiowania w celu skopiowania danych z jednego magazynu danych do drugiego. Podobnie można użyć działania programu Hive, które uruchomi zapytanie programu Hive w klastrze usługi Azure HDInsight, aby przekształcić lub przeanalizować dane. Usługa Data Factory obsługuje trzy typy działań: działania przenoszenia danych, działania przekształcania danych i działania sterowania.
@@ -92,7 +92,7 @@ Wyzwalacze reprezentują jednostki przetwarzania, które określają, kiedy nale
 Uruchomienie potoku to wystąpienie wykonania potoku. Uruchomienia potoku są tworzone zazwyczaj przez przekazanie argumentów do parametrów zdefiniowanych w potokach. Argumenty można przekazać ręcznie lub w ramach definicji wyzwalacza.
 
 ### <a name="parameters"></a>Parametry
-Parametry to pary klucz-wartość w konfiguracji tylko do odczytu.  Parametry są definiowane w potoku. Argumenty dla zdefiniowanych parametrów są przekazywane w trakcie wykonania z kontekstu uruchomienia utworzonego przez wyzwalacz lub potok wykonany ręcznie. Działania w ramach potoku wykorzystują wartości parametrów.
+Parametry to pary klucz-wartość w konfiguracji tylko do odczytu.Parametry są definiowane w potoku. Argumenty dla zdefiniowanych parametrów są przekazywane w trakcie wykonania z kontekstu uruchomienia utworzonego przez wyzwalacz lub potok wykonany ręcznie. Działania w ramach potoku wykorzystują wartości parametrów.
 
 Zestaw danych to silnie typizowany parametr oraz obiekt wielokrotnego użytku, do którego można się odwoływać. Działanie może odwoływać się do zestawów danych oraz wykorzystywać właściwości określone w definicji zestawu danych.
 
@@ -105,17 +105,17 @@ Przepływ sterowania to inaczej organizacja działań potoku, która obejmuje dz
 Zmienne mogą być używane wewnątrz potoków do przechowywania wartości tymczasowych i mogą być również używane w połączeniu z parametrami, aby umożliwić przekazywanie wartości między potokami, przepływami danych i innymi działaniami.
 
 ## <a name="next-steps"></a>Następne kroki
-Poniżej przedstawiono ważne dokumenty w następnym kroku umożliwiające Eksplorowanie:
+Oto ważne dokumenty następnego kroku do zbadania:
 
 - [Dataset and linked services (Zestaw danych i połączone usługi)](concepts-datasets-linked-services.md)
 - [Potoki i działania](concepts-pipelines-activities.md)
 - [Integration Runtime (Produkt Integration Runtime)](concepts-integration-runtime.md)
-- [Mapowanie przepływów danych](concepts-data-flow-overview.md)
+- [Przepływy danych mapowania](concepts-data-flow-overview.md)
 - [Interfejs użytkownika usługi Data Factory w witrynie Azure Portal](quickstart-create-data-factory-portal.md)
 - [Narzędzie do kopiowania danych w witrynie Azure Portal](quickstart-create-data-factory-copy-data-tool.md)
-- [Program PowerShell](quickstart-create-data-factory-powershell.md)
+- [Powershell](quickstart-create-data-factory-powershell.md)
 - [.NET](quickstart-create-data-factory-dot-net.md)
 - [Python](quickstart-create-data-factory-python.md)
-- [REST](quickstart-create-data-factory-rest-api.md)
+- [Reszta](quickstart-create-data-factory-rest-api.md)
 - [Szablon usługi Azure Resource Manager](quickstart-create-data-factory-resource-manager-template.md)
  

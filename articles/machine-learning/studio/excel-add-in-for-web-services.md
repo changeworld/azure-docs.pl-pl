@@ -1,7 +1,7 @@
 ---
 title: Dodatek programu Excel dla usług sieci Web
 titleSuffix: ML Studio (classic) - Azure
-description: Jak używać usługi Azure Machine Learning w sieci Web bezpośrednio w programie Excel, bez konieczności pisania jakiegokolwiek kodu.
+description: Jak korzystać z usług Azure Machine Learning Web bezpośrednio w programie Excel bez pisania kodu.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -11,77 +11,77 @@ ms.author: keli19
 ms.custom: seodec18
 ms.date: 02/01/2018
 ms.openlocfilehash: e30103589c1baf9a165839cd041ff511a119c5ff
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79204379"
 ---
-# <a name="excel-add-in-for-azure-machine-learning-studio-classic-web-services"></a>Dodatek programu Excel dla usług sieci Web Azure Machine Learning Studio (klasyczny)
+# <a name="excel-add-in-for-azure-machine-learning-studio-classic-web-services"></a>Dodatek programu Excel dla usług Azure Machine Learning Studio (klasyczne) usługi sieci Web
 
 [!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
-Excel ułatwia wywołują usługi sieci web bezpośrednio, bez konieczności pisania kodu.
+Program Excel ułatwia bezpośrednie wywoływanie usług sieci web bez konieczności pisania kodu.
 
-## <a name="steps-to-use-an-existing-web-service-in-the-workbook"></a>Kroki, aby użyć usługi sieci web istniejące w skoroszycie
+## <a name="steps-to-use-an-existing-web-service-in-the-workbook"></a>Kroki, aby korzystać z istniejącej usługi sieci web w skoroszycie
 
-1. Otwórz [przykładowy plik programu Excel](https://aka.ms/amlexcel-sample-2), który zawiera dodatek programu Excel i dane dotyczące pasażerów w Titanic. 
+1. Otwórz [przykładowy plik programu Excel](https://aka.ms/amlexcel-sample-2), który zawiera dodatek Excel i dane o pasażerach na Titanicu. 
  
     > [!NOTE]
-    > Zobaczysz, że na liście usług sieci Web związane z nim do pliku i u dołu pola wyboru "Automatycznie — przewidywanie". Jeśli włączysz funkcję autoprzewidywania, prognozy **wszystkich** usług zostaną zaktualizowane po każdym wprowadzeniu zmiany w danych wejściowych. Jeśli nie jest zaznaczone trzeba będzie kliknąć "Przewidzieć All" w przypadku odświeżania. Umożliwiające automatyczne — przewidywanie na usługę poziomu przejdź do kroku 6.
+    > Zobaczysz listę usług sieci Web związanych z plikiem, a na dole pole wyboru "Automatyczne przewidywanie". Jeśli włączysz automatyczne przewidywanie prognoz **wszystkich** usług będą aktualizowane za każdym razem, gdy nastąpi zmiana danych wejściowych. Jeśli nie zaznaczone, trzeba będzie kliknąć na "Predict All" do odświeżenia. Aby włączyć automatyczne przewidywanie na poziomie usługi, przejdź do kroku 6.
 
-2. Wybierz usługę sieci web, klikając go — "Titanic renty predykcyjne (przykład dodatku Excel) [Wynik]" w tym przykładzie.
+2. Wybierz usługę sieci web, klikając ją — "Titanic Survivor Predictor (Excel Add-in Sample) [Score]" w tym przykładzie.
    
     ![Wybierz usługę sieci Web](./media/excel-add-in-for-web-services/image1.png)
-3. Spowoduje to przejście do sekcji **przewidywania** .  Ten skoroszyt zawiera już przykładowe dane, ale dla pustego skoroszytu możesz wybrać komórkę w programie Excel i kliknąć pozycję **Użyj przykładowych danych**.
-4. Wybierz dane z nagłówkami, a następnie kliknij ikonę zakres danych wejściowych.  Upewnij się, że zaznaczono pole "Moje dane mają nagłówki".
-5. W obszarze **dane wyjściowe**wprowadź numer komórki, w której mają być wyświetlane dane wyjściowe, na przykład "H1" w tym miejscu.
-6. Kliknij pozycję **przewidywanie**. Jeśli zaznaczysz pole wyboru "automatycznie predict" wszelkie zmiany w wybranych obszarach (te określone jako dane wejściowe) spowoduje wyzwolenie żądanie i aktualizacji komórek danych wyjściowych, bez konieczności naciśnięcia przycisku predict.
+3. Spowoduje to przejście do sekcji **Predict.**  Ten skoroszyt zawiera już przykładowe dane, ale w przypadku pustego skoroszytu można zaznaczyć komórkę w programie Excel i kliknąć pozycję **Użyj przykładowych danych**.
+4. Wybierz dane z nagłówkami i kliknij ikonę zakresu danych wejściowych.  Upewnij się, że pole "Moje dane ma nagłówki" jest zaznaczone.
+5. W obszarze **Dane wyjściowe**wprowadź numer komórki, w którym ma być dane wyjściowe, na przykład "H1" w tym miejscu.
+6. Kliknij **pozycję Wytypuj**. Jeśli wybierzesz pole wyboru "auto-predict" wszelkie zmiany w wybranych obszarach (te określone jako dane wejściowe) spowoduje żądanie i aktualizację komórek wyjściowych bez konieczności naciskania przycisku predict.
    
     ![Przewidywanie sekcji](./media/excel-add-in-for-web-services/image1.png)
 
-Wdrażanie usługi sieci web, lub użyj istniejącej usługi sieci Web. Aby uzyskać więcej informacji na temat wdrażania usługi sieci Web, zobacz [samouczek 3: Wdrażanie modelu ryzyka kredytowego](tutorial-part3-credit-risk-deploy.md).
+Wdrażanie usługi sieci web lub korzystanie z istniejącej usługi sieci Web. Aby uzyskać więcej informacji na temat wdrażania usługi sieci web, zobacz [Samouczek 3: Wdrażanie modelu ryzyka kredytowego](tutorial-part3-credit-risk-deploy.md).
 
-Uzyskaj klucz interfejsu API dla usługi sieci web. W przypadku, gdy wykonujesz tej akcji jest zależna od tego, czy opublikowana klasycznego uczenia maszynowego usługi sieci web usługi sieci web nowej usługi Machine Learning.
+Pobierz klucz interfejsu API dla usługi sieci web. Miejsce wykonania tej akcji zależy od tego, czy opublikowano klasyczną usługę sieci web uczenia maszynowego nowej usługi sieci web usługi uczenia maszynowego.
 
-**Korzystanie z klasycznej usługi sieci Web** 
+**Korzystanie z klasycznej usługi sieci web** 
 
-1. W Machine Learning Studio (klasyczny) kliknij sekcję **usługi sieci Web** w okienku po lewej stronie, a następnie wybierz usługę sieci Web.
+1. W usłudze Machine Learning Studio (klasyczna) kliknij sekcję **USŁUGI SIECI WEB** w lewym okienku, a następnie wybierz usługę sieci web.
    
-    ![Wybierz Studio usługi sieci Web](./media/excel-add-in-for-web-services/image4.png)
-2. Skopiuj klucz interfejsu API usługi sieci web.
+    ![Studio wybiera usługę sieci Web](./media/excel-add-in-for-web-services/image4.png)
+2. Skopiuj klucz interfejsu API dla usługi sieci web.
    
     ![Klucz interfejsu API programu Studio](./media/excel-add-in-for-web-services/image5.png)
-3. Na karcie **pulpit nawigacyjny** usługi sieci Web kliknij link **żądanie/odpowiedź** .
-4. Poszukaj sekcji **Żądaj identyfikatora URI** .  Skopiuj i Zapisz adres URL.
+3. Na karcie **DASHBOARD** dla usługi sieci web kliknij łącze **ŻĄDANIE/ODPOWIEDŹ.**
+4. Poszukaj sekcji **Identyfikator URI żądania.**  Skopiuj i zapisz adres URL.
 
 > [!NOTE]
-> Teraz można zalogować się do portalu [usług sieci web Azure Machine Learning](https://services.azureml.net) , aby uzyskać klucz interfejsu API dla klasycznej usługi sieci Web Machine Learning.
+> Teraz można zalogować się do portalu [usług Azure Machine Learning Web Services,](https://services.azureml.net) aby uzyskać klucz interfejsu API dla klasycznej usługi sieci web uczenia maszynowego.
 > 
 > 
 
-**Użyj nowej usługi sieci Web**
+**Korzystanie z nowej usługi sieci web**
 
-1. W portalu [usług sieci web Azure Machine Learning](https://services.azureml.net) kliknij pozycję **usługi sieci Web**, a następnie wybierz usługę sieci Web. 
-2. Kliknij **pozycję**Użyj.
-3. Poszukaj sekcji **podstawowe informacje o zużyciu** . Skopiuj i Zapisz **klucz podstawowy** i adres URL **odpowiedzi żądania** .
+1. W portalu [usług azure machine learning web services](https://services.azureml.net) kliknij pozycję Usługi sieci **Web**, a następnie wybierz usługę sieci web. 
+2. Kliknij **pozycję Pochówotwórz**.
+3. Poszukaj sekcji **Informacje o zużyciu podstawowym.** Skopiuj i zapisz **klucz podstawowy** i adres URL **żądania odpowiedzi.**
 
 ## <a name="steps-to-add-a-new-web-service"></a>Kroki, aby dodać nową usługę sieci web
 
-1. Wdrażanie usługi sieci web, lub użyj istniejącej usługi sieci Web. Aby uzyskać więcej informacji na temat wdrażania usługi sieci Web, zobacz [samouczek 3: Wdrażanie modelu ryzyka kredytowego](tutorial-part3-credit-risk-deploy.md).
-2. Kliknij **pozycję**Użyj.
-3. Poszukaj sekcji **podstawowe informacje o zużyciu** . Skopiuj i Zapisz **klucz podstawowy** i adres URL **odpowiedzi żądania** .
-4. W programie Excel przejdź do sekcji **usługi sieci Web** (Jeśli jesteś w sekcji **przewidywania** , kliknij strzałkę wstecz, aby przejść do listy usług sieci Web).
+1. Wdrażanie usługi sieci web lub korzystanie z istniejącej usługi sieci Web. Aby uzyskać więcej informacji na temat wdrażania usługi sieci web, zobacz [Samouczek 3: Wdrażanie modelu ryzyka kredytowego](tutorial-part3-credit-risk-deploy.md).
+2. Kliknij **pozycję Pochówotwórz**.
+3. Poszukaj sekcji **Informacje o zużyciu podstawowym.** Skopiuj i zapisz **klucz podstawowy** i adres URL **żądania odpowiedzi.**
+4. W programie Excel przejdź do sekcji **Usługi sieci Web** (jeśli znajdujesz się w sekcji **Przewidywanie,** kliknij strzałkę wstecz, aby przejść do listy usług sieci web).
    
-    ![Przejdź do wybór usługi sieci Web](./media/excel-add-in-for-web-services/image3.png)
-5. Kliknij pozycję **Dodaj usługę sieci Web**.
-6. Wklej adres URL do pola tekstowego dodatku programu Excel o nazwie **URL**.
-7. Wklej interfejs API/klucz podstawowy do pola tekstowego oznaczonego **kluczem interfejsu API**.
-8. Kliknij pozycję **Add** (Dodaj).
+    ![Przejdź do wyboru usługi sieci Web](./media/excel-add-in-for-web-services/image3.png)
+5. Kliknij **pozycję Dodaj usługę sieci Web**.
+6. Wklej adres URL do adresu URL dodatku programu Excel z etykietą **URL**.
+7. Wklejenie interfejsu API/klucza podstawowego do **klucza interfejsu API**z etykietą pola tekstowego .
+8. Kliknij przycisk **Dodaj**.
    
-    ![Adres URL i klucz API klasyczne usługi sieci Web.](./media/excel-add-in-for-web-services/image6.png)
-9. Aby użyć usługi sieci web, wykonaj czynności podane poprzedniej, "Kroki, aby użyć sieci web istniejące usługi".
+    ![Klucz adresu URL i interfejsu API klasycznej usługi sieci Web.](./media/excel-add-in-for-web-services/image6.png)
+9. Aby korzystać z usługi sieci web, postępuj zgodnie z poprzednimi wskazówkami, "Kroki, aby korzystać z istniejącej usługi sieci web."
 
 ## <a name="sharing-your-workbook"></a>Udostępnianie skoroszytu
-Po zapisaniu skoroszytu, klucz interfejsu API/podstawowej dla usług sieci web, które zostały dodane również jest zapisywany. Oznacza to, że skoroszyt powinien udostępniać tylko dla osób, którym ufasz.
+Jeśli zapiszesz skoroszyt, zostanie również zapisany klucz INTERFEJSU API/Podstawowego dla dodanych usług sieci web. Oznacza to, że skoroszyt należy udostępniać tylko zaufanym osobom.
 
-Zadawaj pytania w poniższej sekcji komentarza lub na naszym [forum](https://go.microsoft.com/fwlink/?LinkID=403669&clcid=0x409).
+Zadaj wszelkie pytania w poniższej sekcji komentarzy lub na naszym [forum.](https://go.microsoft.com/fwlink/?LinkID=403669&clcid=0x409)

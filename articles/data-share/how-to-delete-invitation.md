@@ -1,27 +1,27 @@
 ---
 title: Usuwanie zaproszenia w udziale danych platformy Azure
-description: Dowiedz się, jak usunąć zaproszenie do adresata udziału danych w udziale danych platformy Azure.
+description: Dowiedz się, jak usunąć zaproszenie do odbiorcy udziału danych w usłudze Azure Data Share.
 author: joannapea
 ms.author: joanpo
 ms.service: data-share
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.openlocfilehash: 97068ce652881818527557dd63a186b5d63a9363
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73490496"
 ---
-# <a name="how-to-delete-an-invitation-to-a-recipient-in-azure-data-share"></a>Jak usunąć zaproszenie do adresata w udziale danych platformy Azure
+# <a name="how-to-delete-an-invitation-to-a-recipient-in-azure-data-share"></a>Jak usunąć zaproszenie do adresata w usłudze Azure Data Share
 
-W tym artykule wyjaśniono, jak usunąć zaproszenie do adresata przed ich zaakceptowaniem. Uniemożliwi to Tworzenie subskrypcji udziałów i nigdy nie odbiera żadnych udostępnionych danych. Po usunięciu zaproszenia do konsumenta, który utworzył już subskrypcję udziału, usunięcie ich zaproszenia nie ma żadnego wpływu.
+Z tego artykułu dowiesz się, jak usunąć zaproszenie do odbiorcy, zanim go zaakceptuje. Uniemożliwi im to utworzenie subskrypcji udziału i nigdy nie otrzymają żadnych udostępnionych danych. Jeśli usuniesz zaproszenie do konsumenta, który już utworzył subskrypcję udziału, usunięcie ich zaproszenia nie będzie miało żadnego wpływu.
 
-## <a name="navigate-to-a-sent-data-share"></a>Przejdź do wysłanego udziału danych
+## <a name="navigate-to-a-sent-data-share"></a>Przechodzenie do folderu udostępniania danych wysłanych
 
-W udziale danych platformy Azure przejdź do wysłanego udziału i wybierz kartę **zaproszenia** . w tym miejscu znajdują się wszyscy adresaci zaproszeń do tego udziału danych. Kliknij pola obok adresatów, których zaproszenia chcesz usunąć, a następnie kliknij przycisk **Usuń**.
+W usłudze Azure Data Share przejdź do wysłanego udziału i wybierz kartę **Zaproszenia.** Kliknij pola obok adresatów, których zaproszenia chcesz usunąć, a następnie kliknij pozycję **Usuń**.
 
-![Usuwanie zaproszenia](./media/how-to/how-to-delete-invitation/delete-invitation.png)
+![Usuń zaproszenie](./media/how-to/how-to-delete-invitation/delete-invitation.png)
 
 ## <a name="next-steps"></a>Następne kroki
-Dowiedz się więcej na temat [odwoływania subskrypcji udziału](how-to-revoke-share-subscription.md).
+Dowiedz się więcej o tym, jak [odwołać subskrypcję udziału](how-to-revoke-share-subscription.md).

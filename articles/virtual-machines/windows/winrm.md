@@ -1,6 +1,6 @@
 ---
-title: Konfigurowanie dostępu do usługi WinRM dla maszyny wirtualnej platformy Azure
-description: Skonfiguruj dostęp do usługi WinRM do użycia z maszyną wirtualną platformy Azure utworzoną w modelu wdrażania Menedżer zasobów.
+title: Konfigurowanie dostępu usługi WinRM dla maszyny Wirtualnej platformy Azure
+description: Umożliwia instalację dostępu do usługi WinRM do użytku z maszyną wirtualną platformy Azure utworzoną w modelu wdrażania Usługi Resource Manager.
 services: virtual-machines-windows
 documentationcenter: ''
 author: singhkays
@@ -15,33 +15,33 @@ ms.topic: article
 ms.date: 06/16/2016
 ms.author: kasing
 ms.openlocfilehash: ca52a458104b4de0f7b3ed2aa3f76109a5623c97
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74067313"
 ---
-# <a name="setting-up-winrm-access-for-virtual-machines-in-azure-resource-manager"></a>Konfigurowanie dostępu do usługi WinRM dla Virtual Machines w Azure Resource Manager
+# <a name="setting-up-winrm-access-for-virtual-machines-in-azure-resource-manager"></a>Konfigurowanie dostępu Usługi WinRM dla maszyn wirtualnych w usłudze Azure Resource Manager
 
-Poniżej przedstawiono kroki, które należy wykonać, aby skonfigurować maszynę wirtualną z łącznością usługi WinRM
+Oto kroki, które należy wykonać, aby skonfigurować maszynę wirtualną z łącznością WinRM
 
 1. Tworzenie magazynu kluczy
 2. Tworzenie certyfikatu z podpisem własnym
-3. Przekaż certyfikat z podpisem własnym do Key Vault
-4. Pobierz adres URL certyfikatu z podpisem własnym w Key Vault
-5. Odwoływanie się do adresu URL certyfikatów z podpisem własnym podczas tworzenia maszyny wirtualnej
+3. Przekazywanie certyfikatu z podpisem własnym do usługi Key Vault
+4. Uzyskaj adres URL certyfikatu z podpisem własnym w magazynie kluczy
+5. Odwoływanie się do adresu URL certyfikatów z podpisem własnym podczas tworzenia maszyny Wirtualnej
 
  
 
-## <a name="step-1-create-a-key-vault"></a>Krok 1. Tworzenie Key Vault
-Możesz użyć poniższego polecenia, aby utworzyć Key Vault
+## <a name="step-1-create-a-key-vault"></a>Krok 1: Tworzenie skarbca kluczy
+Za pomocą poniższego polecenia można utworzyć przechowalnię kluczy
 
 ```
 New-AzKeyVault -VaultName "<vault-name>" -ResourceGroupName "<rg-name>" -Location "<vault-location>" -EnabledForDeployment -EnabledForTemplateDeployment
 ```
 
-## <a name="step-2-create-a-self-signed-certificate"></a>Krok 2. Tworzenie certyfikatu z podpisem własnym
-Możesz utworzyć certyfikat z podpisem własnym za pomocą tego skryptu programu PowerShell
+## <a name="step-2-create-a-self-signed-certificate"></a>Krok 2: Tworzenie certyfikatu z podpisem własnym
+Certyfikat z podpisem własnym można utworzyć przy użyciu tego skryptu programu PowerShell
 
 ```
 $certificateName = "somename"
@@ -55,8 +55,8 @@ $password = Read-Host -Prompt "Please enter the certificate password." -AsSecure
 Export-PfxCertificate -Cert $cert -FilePath ".\$certificateName.pfx" -Password $password
 ```
 
-## <a name="step-3-upload-your-self-signed-certificate-to-the-key-vault"></a>Krok 3. Przekaż certyfikat z podpisem własnym do Key Vault
-Przed przekazaniem certyfikatu do Key Vault utworzonego w kroku 1 musi on zostać przekonwertowany do formatu dostawcy zasobów Microsoft. COMPUTE. Poniższy skrypt programu PowerShell umożliwi wykonanie tej czynności
+## <a name="step-3-upload-your-self-signed-certificate-to-the-key-vault"></a>Krok 3: Przesyłanie certyfikatu z podpisem własnym do magazynu kluczy
+Przed przekazaniem certyfikatu do magazynu kluczy utworzonego w kroku 1 musi on być przekonwertowany na format, który zrozumie dostawca zasobów Microsoft.Compute. Poniższy skrypt programu PowerShell pozwoli Ci to zrobić
 
 ```
 $fileName = "<Path to the .pfx file>"
@@ -78,25 +78,25 @@ $secret = ConvertTo-SecureString -String $jsonEncoded -AsPlainText –Force
 Set-AzKeyVaultSecret -VaultName "<vault name>" -Name "<secret name>" -SecretValue $secret
 ```
 
-## <a name="step-4-get-the-url-for-your-self-signed-certificate-in-the-key-vault"></a>Krok 4. pobieranie adresu URL certyfikatu z podpisem własnym w Key Vault
-Dostawca zasobów Microsoft. COMPUTE wymaga adresu URL dla wpisu tajnego w Key Vault podczas aprowizacji maszyny wirtualnej. Umożliwia to pobranie klucza tajnego dostawcy zasobów Microsoft. COMPUTE i utworzenie równoważnego certyfikatu na maszynie wirtualnej.
+## <a name="step-4-get-the-url-for-your-self-signed-certificate-in-the-key-vault"></a>Krok 4: Uzyskaj adres URL certyfikatu z podpisem własnym w magazynie kluczy
+Dostawca zasobów Microsoft.Compute potrzebuje adresu URL do klucza tajnego wewnątrz magazynu kluczy podczas inicjowania obsługi administracyjnej maszyny Wirtualnej. Dzięki temu dostawca zasobów Microsoft.Compute może pobrać klucz tajny i utworzyć równoważny certyfikat na maszynie wirtualnej.
 
 > [!NOTE]
-> Adres URL klucza tajnego musi zawierać również wersję. Przykładowy adres URL wygląda jak poniżej https:\//contosovault.vault.azure.net:443/secrets/contososecret/01h9db0df2cd4300a20ence585a6s7ve
+> Adres URL klucza tajnego musi również zawierać wersję. Przykładowy adres URL wygląda\/następująco pod adresem https: /contosovault.vault.azure.net:443/secrets/contososecret/01h9db0df2cd4300a20ence585a6s7ve
 
 #### <a name="templates"></a>Szablony
-Możesz uzyskać link do adresu URL w szablonie przy użyciu poniższego kodu
+Możesz uzyskać link do adresu URL w szablonie, używając poniższego kodu
 
     "certificateUrl": "[reference(resourceId(resourceGroup().name, 'Microsoft.KeyVault/vaults/secrets', '<vault-name>', '<secret-name>'), '2015-06-01').secretUriWithVersion]"
 
 #### <a name="powershell"></a>PowerShell
-Ten adres URL można uzyskać przy użyciu poniższego polecenia programu PowerShell
+Możesz uzyskać ten adres URL za pomocą poniższego polecenia programu PowerShell
 
     $secretURL = (Get-AzKeyVaultSecret -VaultName "<vault name>" -Name "<secret name>").Id
 
-## <a name="step-5-reference-your-self-signed-certificates-url-while-creating-a-vm"></a>Krok 5. odwoływanie się do adresu URL certyfikatów z podpisem własnym podczas tworzenia maszyny wirtualnej
-#### <a name="azure-resource-manager-templates"></a>Szablony Azure Resource Manager
-Podczas tworzenia maszyny wirtualnej za pomocą szablonów do certyfikatu jest przywoływana sekcja wpisy tajne i usługa winRM w następujący sposób:
+## <a name="step-5-reference-your-self-signed-certificates-url-while-creating-a-vm"></a>Krok 5: Odwoływanie się do adresu URL certyfikatów z podpisem własnym podczas tworzenia maszyny Wirtualnej
+#### <a name="azure-resource-manager-templates"></a>Szablony usługi Azure Resource Manager
+Podczas tworzenia maszyny Wirtualnej za pomocą szablonów certyfikat jest odwoływany w sekcji wpisów tajnych i w sekcji winRM, jak poniżej:
 
     "osProfile": {
           ...
@@ -130,9 +130,9 @@ Podczas tworzenia maszyny wirtualnej za pomocą szablonów do certyfikatu jest p
           }
         },
 
-Przykładowy szablon dla powyższych można znaleźć w tym miejscu na stronie [201-VM-WinRM-kluczy — Windows](https://azure.microsoft.com/documentation/templates/201-vm-winrm-keyvault-windows)
+Przykładowy szablon dla powyższych można znaleźć tutaj w [201-vm-winrm-keyvault-windows](https://azure.microsoft.com/documentation/templates/201-vm-winrm-keyvault-windows)
 
-Kod źródłowy tego szablonu można znaleźć w witrynie [GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-winrm-keyvault-windows)
+Kod źródłowy tego szablonu można znaleźć w [usłudze GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-winrm-keyvault-windows)
 
 #### <a name="powershell"></a>PowerShell
     $vm = New-AzVMConfig -VMName "<VM name>" -VMSize "<VM Size>"
@@ -143,16 +143,16 @@ Kod źródłowy tego szablonu można znaleźć w witrynie [GitHub](https://githu
     $CertificateStore = "My"
     $vm = Add-AzVMSecret -VM $vm -SourceVaultId $sourceVaultId -CertificateStore $CertificateStore -CertificateUrl $secretURL
 
-## <a name="step-6-connecting-to-the-vm"></a>Krok 6. Nawiązywanie połączenia z maszyną wirtualną
-Przed nawiązaniem połączenia z maszyną wirtualną należy upewnić się, że komputer jest skonfigurowany do zdalnego zarządzania usługą WinRM. Uruchom program PowerShell jako administrator i uruchom poniższe polecenie, aby upewnić się, że jest skonfigurowane.
+## <a name="step-6-connecting-to-the-vm"></a>Krok 6: Łączenie się z maszyną wirtualną
+Przed nawiązaniem połączenia z maszyną wirtualną należy upewnić się, że komputer jest skonfigurowany do zdalnego zarządzania winrm. Uruchom program PowerShell jako administrator i wykonaj poniższe polecenie, aby upewnić się, że jesteś skonfigurowany.
 
     Enable-PSRemoting -Force
 
 > [!NOTE]
-> Może być konieczne upewnienie się, że usługa WinRM działa, jeśli powyższe nie działa. Można to zrobić za pomocą `Get-Service WinRM`
+> Może być konieczne upewnienie się, że usługa WinRM jest uruchomiona, jeśli powyższe nie działa. Można to zrobić za pomocą`Get-Service WinRM`
 > 
 > 
 
-Po zakończeniu instalacji możesz nawiązać połączenie z maszyną wirtualną przy użyciu poniższego polecenia
+Po zakończeniu konfiguracji można połączyć się z maszyną wirtualną za pomocą poniższego polecenia
 
     Enter-PSSession -ConnectionUri https://<public-ip-dns-of-the-vm>:5986 -Credential $cred -SessionOption (New-PSSessionOption -SkipCACheck -SkipCNCheck -SkipRevocationCheck) -Authentication Negotiate

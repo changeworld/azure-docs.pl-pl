@@ -1,33 +1,33 @@
 ---
-title: Poznaj język zapytań usługi Azure IoT Hub | Microsoft Docs
-description: Przewodnik dla deweloperów — opis języka zapytań IoT Hub w programie SQL Server, który służy do pobierania informacji o urządzeniu/module bliźniaczych reprezentacji i zadaniach z Centrum IoT Hub.
+title: Opis języka zapytań usługi Azure IoT Hub | Dokumenty firmy Microsoft
+description: Przewodnik dla deweloperów — opis języka zapytań usługi IoT hub podobny do języka SQL, używany do pobierania informacji o bliźniaczych urządzeń/modułach i zadaniach z centrum IoT Hub.
 author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: robinsh
-ms.openlocfilehash: b224de96f6b6baedc3b57e0245a4c4e8748576b4
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: ad8b4b39e582d10c2a3b6003bfa07138f4697b71
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79271137"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79499190"
 ---
-# <a name="iot-hub-query-language-for-device-and-module-twins-jobs-and-message-routing"></a>IoT Hub język zapytań dla urządzeń i modułów bliźniaczych reprezentacji, zadań i routingu komunikatów
+# <a name="iot-hub-query-language-for-device-and-module-twins-jobs-and-message-routing"></a>Język zapytań usługi IoT Hub dla urządzeń i bliźniaczych reprezentacji modułów, zadań i routingu komunikatów
 
-IoT Hub oferuje zaawansowany język przypominający SQL, który umożliwia pobieranie informacji dotyczących [urządzeń bliźniaczych reprezentacji](iot-hub-devguide-device-twins.md), [modułów bliźniaczych reprezentacji](iot-hub-devguide-module-twins.md), [zadań](iot-hub-devguide-jobs.md)i [routingu komunikatów](iot-hub-devguide-messages-d2c.md). W tym artykule przedstawiono następujące informacje:
+Usługa IoT Hub udostępnia zaawansowany język podobny do języka SQL, który umożliwia pobieranie informacji dotyczących [bliźniąt bliźniąt urządzeń,](iot-hub-devguide-device-twins.md) [bliźniaczych modułów,](iot-hub-devguide-module-twins.md) [zadań](iot-hub-devguide-jobs.md)i [routingu wiadomości.](iot-hub-devguide-messages-d2c.md) Ten artykuł przedstawia:
 
-* Wprowadzenie do głównych funkcji języka zapytań IoT Hub i
-* Szczegółowy opis języka. Aby uzyskać szczegółowe informacje dotyczące języka zapytań dla routingu wiadomości, zobacz [zapytania w obszarze Routing komunikatów](../iot-hub/iot-hub-devguide-routing-query-syntax.md).
+* Wprowadzenie do głównych funkcji języka zapytań usługi IoT Hub oraz
+* Szczegółowy opis języka. Aby uzyskać szczegółowe informacje na temat języka zapytań dotyczących routingu wiadomości, zobacz [kwerendy w routingu wiadomości](../iot-hub/iot-hub-devguide-routing-query-syntax.md).
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-partial.md)]
 
-## <a name="device-and-module-twin-queries"></a>Zapytania dotyczące bliźniaczych reprezentacji urządzeń i modułu
+## <a name="device-and-module-twin-queries"></a>Zapytania bliźniacze dwie urządzenia i modułu
 
-[Urządzenia bliźniaczych reprezentacji](iot-hub-devguide-device-twins.md) i [bliźniaczych reprezentacji modułu](iot-hub-devguide-module-twins.md) mogą zawierać dowolne obiekty JSON jako Tagi i właściwości. IoT Hub umożliwia wykonywanie zapytań dotyczących bliźniaczych reprezentacji i modułu bliźniaczych reprezentacji w postaci pojedynczego dokumentu JSON zawierającego wszystkie informacje o bliźniaczych wartościach.
+[Bliźniacze reprezentacje urządzeń](iot-hub-devguide-device-twins.md) i [bliźniaczych reprezentacji modułów](iot-hub-devguide-module-twins.md) mogą zawierać dowolne obiekty JSON zarówno jako znaczniki, jak i właściwości. Usługa IoT Hub umożliwia wykonywanie zapytań o bliźniacze urządzenia i bliźniacze reprezentacje modułów jako pojedynczy dokument JSON zawierający wszystkie informacje bliźniaczej reprezentacji.
 
-Załóżmy na przykład, że urządzenie usługi IoT Hub bliźniaczych reprezentacji ma następującą strukturę (sznurka modułu będzie podobna bezpośrednio do dodatkowej moduleId):
+Załóżmy na przykład, że bliźniacze urządzenia ioT hub mają następującą strukturę (bliźniacze moduły będą podobne tylko z dodatkowym identyfikatorem moduleId):
 
 ```json
 {
@@ -79,25 +79,25 @@ Załóżmy na przykład, że urządzenie usługi IoT Hub bliźniaczych reprezent
 }
 ```
 
-### <a name="device-twin-queries"></a>Zapytania dotyczące sznurka urządzenia
+### <a name="device-twin-queries"></a>Zapytania bliźniaczej reprezentacji urządzenia
 
-IoT Hub udostępnia bliźniaczych reprezentacji urządzenia jako kolekcję dokumentów o nazwie **Devices**. Na przykład następujące zapytanie pobiera cały zestaw bliźniaczych reprezentacji urządzeń:
+Usługa IoT Hub udostępnia bliźniacze urządzenia jako kolekcję dokumentów o nazwie **urządzenia.** Na przykład następująca kwerenda pobiera cały zestaw bliźniacze urządzenia:
 
 ```sql
 SELECT * FROM devices
 ```
 
 > [!NOTE]
-> [Zestawy SDK usługi Azure IoT](iot-hub-devguide-sdks.md) obsługują stronicowanie dużych wyników.
+> [ZestawY SDK usługi Azure IoT](iot-hub-devguide-sdks.md) obsługują stronicowanie dużych wyników.
 
-IoT Hub umożliwia pobieranie filtrowania bliźniaczych reprezentacji urządzeń z dowolnym warunkiem. Na przykład, aby odbierać bliźniaczych reprezentacji urządzeń, gdzie tag **Location. region** jest ustawiony na wartość **US** , użyj następującego zapytania:
+Centrum IoT hub umożliwia pobieranie bliźniąt bliźniąt urządzeń filtrowania z dowolnego warunku. Na przykład, aby odbierać bliźniacze urządzenia, w których tag **location.region** jest ustawiony na **US,** użyj następującej kwerendy:
 
 ```sql
 SELECT * FROM devices
 WHERE tags.location.region = 'US'
 ```
 
-Operatory logiczne i porównania arytmetyczne są również obsługiwane. Na przykład aby pobrać bliźniaczych reprezentacji urządzenia znajdujące się w Stanach Zjednoczonych i skonfigurować do wysyłania telemetrii mniej niż co minutę, użyj następującego zapytania:
+Obsługiwane są również operatory logiczne i porównania arytmetyczne. Na przykład, aby pobrać bliźniacze urządzenia znajdujące się w Stanach Zjednoczonych i skonfigurowane do wysyłania danych telemetrycznych mniej niż co minutę, należy użyć następującej kwerendy:
 
 ```sql
 SELECT * FROM devices
@@ -105,23 +105,23 @@ SELECT * FROM devices
     AND properties.reported.telemetryConfig.sendFrequencyInSecs >= 60
 ```
 
-Jako wygoda jest również możliwość użycia stałych tablicowych z operatorami **in** i **nZa** (Not in). Na przykład aby pobrać bliźniaczych reprezentacji urządzenia, które raportuje Wi-Fi lub połączenie przewodowe, użyj następującego zapytania:
+Dla wygody można również używać stałych tablicowych z operatorami **IN** i **NIN** (nie w). Na przykład, aby pobrać bliźniacze urządzenia, które zgłaszają WiFi lub łączność przewodową, użyj następującej kwerendy:
 
 ```sql
 SELECT * FROM devices
   WHERE properties.reported.connectivity IN ['wired', 'wifi']
 ```
 
-Często konieczne jest zidentyfikowanie wszystkich bliźniaczych reprezentacji urządzeń, które zawierają określoną właściwość. W tym celu IoT Hub obsługuje `is_defined()` funkcji. Na przykład aby pobrać bliźniaczych reprezentacji urządzenia, które definiują Właściwość `connectivity`, użyj następującego zapytania:
+Często jest konieczne, aby zidentyfikować wszystkie bliźniacze urządzenia, które zawierają określoną właściwość. Centrum IoT obsługuje `is_defined()` tę funkcję w tym celu. Na przykład, aby pobrać bliźniacze urządzenia, które definiują `connectivity` właściwość, użyj następującej kwerendy:
 
 ```SQL
 SELECT * FROM devices
   WHERE is_defined(properties.reported.connectivity)
 ```
 
-Zapoznaj się z sekcją [klauzula WHERE](iot-hub-devguide-query-language.md#where-clause) , aby uzyskać pełne informacje o możliwościach filtrowania.
+Aby uzyskać pełne odniesienie do możliwości filtrowania, zapoznaj się z sekcją [klauzuli WHERE.](iot-hub-devguide-query-language.md#where-clause)
 
-Grupowanie i agregacje są również obsługiwane. Na przykład aby znaleźć liczbę urządzeń w każdym stanie konfiguracji telemetrii, użyj następującego zapytania:
+Grupowanie i agregacje są również obsługiwane. Na przykład, aby znaleźć liczbę urządzeń w każdym stanie konfiguracji telemetrii, należy użyć następującej kwerendy:
 
 ```sql
 SELECT properties.reported.telemetryConfig.status AS status,
@@ -130,7 +130,7 @@ SELECT properties.reported.telemetryConfig.status AS status,
   GROUP BY properties.reported.telemetryConfig.status
 ```
 
-To zapytanie grupujące zwróci wynik podobny do następującego przykładu:
+Ta kwerenda grupująca zwróci wynik podobny do następującego przykładu:
 
 ```json
 [
@@ -149,29 +149,29 @@ To zapytanie grupujące zwróci wynik podobny do następującego przykładu:
 ]
 ```
 
-W tym przykładzie trzy urządzenia zgłosiły pomyślną konfigurację, dwie nadal stosują konfigurację, a jeden zgłosił błąd.
+W tym przykładzie trzy urządzenia zgłosiły pomyślną konfigurację, dwa nadal stosują konfigurację, a jeden zgłosił błąd.
 
-Zapytania projekcji umożliwiają deweloperom zwracanie tylko właściwości, o których się interesują. Na przykład aby pobrać czas ostatniego działania wszystkich odłączonych urządzeń, użyj następującego zapytania:
+Zapytania rzutowania umożliwiają deweloperom zwracanie tylko właściwości, na których im zależy. Na przykład, aby pobrać ostatni czas działania wszystkich odłączonych urządzeń, użyj następującej kwerendy:
 
 ```sql
 SELECT LastActivityTime FROM devices WHERE status = 'enabled'
 ```
 
-### <a name="module-twin-queries"></a>Zapytania bliźniaczye modułu
+### <a name="module-twin-queries"></a>Zapytania bliźniaczej reprezentacji modułu
 
-Wykonywanie zapytań dotyczących modułu bliźniaczych reprezentacji jest podobne do wykonywania zapytań dotyczących urządzeń bliźniaczych reprezentacji, ale przy użyciu innej kolekcji/przestrzeni nazw; zamiast z **urządzeń**należy wysyłać zapytania z **urządzeń. moduły**:
+Wykonywanie zapytań dotyczących bliźniąt bliźniąt modułów jest podobne do wykonywania zapytań dotyczących bliźniąt urządzeń, ale przy użyciu innej kolekcji/obszaru nazw; zamiast z **urządzeń**, zapytania z **devices.modules:**
 
 ```sql
 SELECT * FROM devices.modules
 ```
 
-Nie zezwalamy na sprzężenie między kolekcjami urządzeń i urządzeń. moduły. Jeśli chcesz wykonywać zapytania dotyczące modułu bliźniaczych reprezentacji na różnych urządzeniach, należy to zrobić w oparciu o Tagi. To zapytanie zwróci wszystkie bliźniaczych reprezentacji modułów na wszystkich urządzeniach ze stanem skanowania:
+Nie zezwalamy na łączenie między urządzeniami i kolekcjami devices.modules. Jeśli chcesz zbadać bliźniacze modułu na różnych urządzeniach, należy to zrobić na podstawie tagów. Ta kwerenda zwróci wszystkie bliźniacze moduły na wszystkich urządzeniach o stanie skanowania:
 
 ```sql
 SELECT * FROM devices.modules WHERE properties.reported.status = 'scanning'
 ```
 
-To zapytanie zwróci wszystkie moduły bliźniaczych reprezentacji ze stanem skanowania, ale tylko dla określonego podzestawu urządzeń:
+Ta kwerenda zwróci wszystkie bliźniacze moduły ze stanem skanowania, ale tylko na określonym podzbiorze urządzeń:
 
 ```sql
 SELECT * FROM devices.modules
@@ -179,11 +179,11 @@ SELECT * FROM devices.modules
   AND deviceId IN ['device1', 'device2']
 ```
 
-### <a name="c-example"></a>C#przyklad
+### <a name="c-example"></a>Przykład języka C#
 
-Funkcja zapytania jest udostępniana przez [ C# zestaw SDK usługi](iot-hub-devguide-sdks.md) **w klasie** .
+Funkcja kwerendy jest widoczna przez [SDK usługi C#](iot-hub-devguide-sdks.md) w **registryManager** klasy.
 
-Oto przykład prostego zapytania:
+Oto przykład prostej kwerendy:
 
 ```csharp
 var query = registryManager.CreateQuery("SELECT * FROM devices", 100);
@@ -197,15 +197,15 @@ while (query.HasMoreResults)
 }
 ```
 
-Obiekt **zapytania** jest skonkretyzowany przy użyciu rozmiaru strony (do 100). Następnie pobierane są wiele stron, wywołując metody **GetNextAsTwinAsync** wiele razy.
+Obiekt **kwerendy** jest tworzone z rozmiaru strony (do 100). Następnie wiele stron są pobierane przez wywołanie **GetNextAsTwinAsync** metody wiele razy.
 
-Obiekt zapytania uwidacznia wiele **kolejnych** wartości, w zależności od opcji deserializacji wymaganej przez zapytanie. Na przykład, sznurki lub obiekty zadania lub zwykły kod JSON podczas korzystania z projekcji.
+Obiekt kwerendy udostępnia wiele **Next** wartości, w zależności od opcji deserializacji wymagane przez kwerendę. Na przykład bliźniaczej reprezentacji urządzenia lub obiektów zadań lub zwykły JSON podczas korzystania z projekcji.
 
-### <a name="nodejs-example"></a>Przykład środowiska Node. js
+### <a name="nodejs-example"></a>Przykład node.js
 
-Funkcja zapytania jest udostępniana przez [zestaw SDK usługi Azure IoT dla środowiska Node. js](iot-hub-devguide-sdks.md) w obiekcie **rejestru** .
+Funkcja kwerendy jest rozpoznawana przez [zestaw SDK usługi Azure IoT dla node.js](iot-hub-devguide-sdks.md) w obiekcie **rejestru.**
 
-Oto przykład prostego zapytania:
+Oto przykład prostej kwerendy:
 
 ```javascript
 var query = registry.createQuery('SELECT * FROM devices', 100);
@@ -226,20 +226,20 @@ var onResults = function(err, results) {
 query.nextAsTwin(onResults);
 ```
 
-Obiekt **zapytania** jest skonkretyzowany przy użyciu rozmiaru strony (do 100). Następnie pobierane są wiele stron przez wywołanie metody **nextAsTwin** wiele razy.
+Obiekt **kwerendy** jest tworzone z rozmiaru strony (do 100). Następnie wiele stron są pobierane przez wywołanie **nextAsTwin** metody wiele razy.
 
-Obiekt zapytania uwidacznia wiele **kolejnych** wartości, w zależności od opcji deserializacji wymaganej przez zapytanie. Na przykład, sznurki lub obiekty zadania lub zwykły kod JSON podczas korzystania z projekcji.
+Obiekt kwerendy udostępnia wiele **Next** wartości, w zależności od opcji deserializacji wymagane przez kwerendę. Na przykład bliźniaczej reprezentacji urządzenia lub obiektów zadań lub zwykły JSON podczas korzystania z projekcji.
 
 ### <a name="limitations"></a>Ograniczenia
 
 > [!IMPORTANT]
-> Wyniki zapytania mogą zawierać kilka minut opóźnienia w odniesieniu do najnowszych wartości w urządzeniu bliźniaczych reprezentacji. W przypadku wykonywania zapytań dotyczących poszczególnych urządzeń bliźniaczych reprezentacji według identyfikatora należy użyć [interfejsu API REST Get-bliźniaczy](https://docs.microsoft.com/rest/api/iothub/service/gettwin). Ten interfejs API zawsze zwraca najnowsze wartości i ma wyższe limity ograniczania. Interfejs API REST można wydać bezpośrednio lub użyć funkcji równoważnych w jednym z [zestawów SDK usługi Azure IoT Hub](iot-hub-devguide-sdks.md#azure-iot-hub-service-sdks).
+> Wyniki kwerendy może mieć kilka minut opóźnienia w odniesieniu do najnowszych wartości w bliźniacze urządzenia. Jeśli kwerendy poszczególnych bliźniaczych reprezentacji urządzenia przez ID, należy użyć [pobierz bliźniaczej REST API](https://docs.microsoft.com/rest/api/iothub/service/twin/getdevicetwin). Ten interfejs API zawsze zwraca najnowsze wartości i ma wyższe limity ograniczania przepustowości. Interfejs API REST można wydać bezpośrednio lub użyć równoważnej funkcji w jednym z [zestawów SDK usługi Usługi Usługi Usługi Azure IoT Hub.](iot-hub-devguide-sdks.md#azure-iot-hub-service-sdks)
 
-Obecnie porównania są obsługiwane tylko dla typów pierwotnych (bez obiektów), na przykład `... WHERE properties.desired.config = properties.reported.config` jest obsługiwane tylko wtedy, gdy te właściwości mają wartości pierwotne.
+Obecnie porównania są obsługiwane tylko między typami pierwotnymi (bez `... WHERE properties.desired.config = properties.reported.config` obiektów), na przykład jest obsługiwany tylko wtedy, gdy te właściwości mają wartości pierwotne.
 
-## <a name="get-started-with-jobs-queries"></a>Wprowadzenie do zapytań zadań
+## <a name="get-started-with-jobs-queries"></a>Wprowadzenie do zapytań o zadania
 
-[Zadania](iot-hub-devguide-jobs.md) umożliwiają wykonywanie operacji na zestawach urządzeń. Poszczególne sznurki urządzeń zawierają informacje o zadaniach, których częścią jest kolekcja o nazwie **Jobs (zadania**).
+[Zadania](iot-hub-devguide-jobs.md) umożliwiają wykonywanie operacji na zestawach urządzeń. Każda bliźniacza bliźniaczka urządzenia zawiera informacje o zadaniach, których jest częścią kolekcji o nazwie **zadania**.
 
 ```json
 {
@@ -270,25 +270,25 @@ Obecnie porównania są obsługiwane tylko dla typów pierwotnych (bez obiektów
 }
 ```
 
-Obecnie ta kolekcja jest Queryable jako **Devices.Jobs** w języku zapytań IoT Hub.
+Obecnie ta kolekcja jest queryable jako **devices.jobs** w języku kwerendy Usługi IoT Hub.
 
 > [!IMPORTANT]
-> Obecnie Właściwość Jobs nie jest nigdy zwracana podczas wykonywania zapytania dotyczącego urządzenia bliźniaczych reprezentacji. Oznacza to, że zapytania zawierające element "z urządzeń". Do właściwości Jobs (zadania) można uzyskać dostęp bezpośrednio z użyciem zapytań przy użyciu `FROM devices.jobs`.
+> Obecnie właściwość zadań nigdy nie jest zwracana podczas wykonywania zapytań o bliźniacze urządzenia. Oznacza to, że kwerendy, które zawierają "Z urządzeń". Dostęp do właściwości zadań jest dostępny tylko `FROM devices.jobs`bezpośrednio za pomocą kwerend przy użyciu programu .
 >
 >
 
-Na przykład aby uzyskać wszystkie zadania (w przeszłości i zaplanowane), które mają wpływ na pojedyncze urządzenie, można użyć następującego zapytania:
+Na przykład, aby uzyskać wszystkie zadania (przeszłe i zaplanowane), które mają wpływ na jedno urządzenie, można użyć następującej kwerendy:
 
 ```sql
 SELECT * FROM devices.jobs
   WHERE devices.jobs.deviceId = 'myDeviceId'
 ```
 
-Zwróć uwagę, jak to zapytanie udostępnia stan specyficzny dla urządzenia (a także odpowiedź metody bezpośredniej) dla każdego zwróconego zadania.
+Należy zauważyć, jak ta kwerenda zapewnia stan specyficzne dla urządzenia (i ewentualnie bezpośredniej odpowiedzi metody) każdego zadania zwrócone.
 
-Istnieje również możliwość filtrowania z dowolnego warunku logicznego we wszystkich właściwościach obiektu w kolekcji **Devices.Jobs** .
+Istnieje również możliwość filtrowania z dowolnych warunków logicznych na wszystkie właściwości obiektu w **kolekcji devices.jobs.**
 
-Na przykład aby pobrać wszystkie ukończone zadania aktualizacji z użyciem sznurka urządzenia, które zostały utworzone po września 2016 dla określonego urządzenia, użyj następującego zapytania:
+Na przykład, aby pobrać wszystkie ukończone zadania aktualizacji bliźniaczej reprezentacji urządzenia, które zostały utworzone po wrześniu 2016 r. dla określonego urządzenia, należy użyć następującej kwerendy:
 
 ```sql
 SELECT * FROM devices.jobs
@@ -298,7 +298,7 @@ SELECT * FROM devices.jobs
     AND devices.jobs.createdTimeUtc > '2016-09-01'
 ```
 
-Możesz również pobrać wyniki poszczególnych urządzeń z jednego zadania.
+Można również pobrać wyniki na urządzenie pojedynczego zadania.
 
 ```sql
 SELECT * FROM devices.jobs
@@ -307,15 +307,15 @@ SELECT * FROM devices.jobs
 
 ### <a name="limitations"></a>Ograniczenia
 
-Obecnie zapytania w usłudze **Devices.Jobs** nie obsługują:
+Obecnie zapytania dotyczące **devices.jobs** nie obsługują:
 
-* Projekcje, dlatego tylko `SELECT *` jest możliwe.
-* Warunki odwołujące się do sznurka urządzenia oprócz właściwości zadania (zobacz poprzednią sekcję).
-* Wykonywanie agregacji, takich jak Count, AVG, Group by.
+* Prognozy, dlatego `SELECT *` tylko możliwe.
+* Warunki, które odnoszą się do bliźniaczej reprezentacji urządzenia oprócz właściwości zadania (zobacz poprzednią sekcję).
+* Wykonywanie agregacji, takich jak count, avg, group by.
 
-## <a name="basics-of-an-iot-hub-query"></a>Podstawy zapytania IoT Hub
+## <a name="basics-of-an-iot-hub-query"></a>Podstawy kwerendy Centrum IoT
 
-Każde zapytanie IoT Hub składa się z klauzul SELECT i FROM z opcjonalnymi klauzulami WHERE i GROUP BY. Każde zapytanie jest uruchamiane w kolekcji dokumentów JSON, na przykład bliźniaczych reprezentacji urządzeń. Klauzula FROM wskazuje kolekcję dokumentów, w której ma zostać wykonana iteracja (**urządzenia**, **urządzenia. moduły**lub **Devices.Jobs**). Następnie zostanie zastosowany filtr w klauzuli WHERE. W przypadku agregacji wyniki tego kroku są pogrupowane jak określono w klauzuli GROUP BY. Dla każdej grupy generowany jest wiersz określony w klauzuli SELECT.
+Każde zapytanie Centrum IoT składa się z klauzul SELECT i FROM z opcjonalnymi klauzulami WHERE i GROUP BY. Każde zapytanie jest uruchamiane na kolekcji dokumentów JSON, na przykład bliźniaczych reprezentacji urządzeń. Klauzula FROM wskazuje kolekcję dokumentów, która ma być iterowana (**urządzenia**, **devices.modules**lub **devices.jobs**). Następnie stosuje się filtr w klauzuli WHERE. W za pomocą agregacji wyniki tego kroku są zgrupowane zgodnie z klauzulą GROUP BY. Dla każdej grupy wiersz jest generowany zgodnie z klauzulą SELECT.
 
 ```sql
 SELECT <select_list>
@@ -326,20 +326,20 @@ SELECT <select_list>
 
 ## <a name="from-clause"></a>Klauzula FROM
 
-Klauzula **from < from_specification >** może przyjmować tylko trzy wartości: **od urządzeń** do wykonywania zapytań dotyczących urządzeń bliźniaczych reprezentacji, **od urządzeń. modułów** w celu wysyłania zapytań do modułu bliźniaczych reprezentacji lub **z Devices.Jobs** w celu wykonywania zapytań dotyczących poszczególnych urządzeń.
+**From <from_specification>** klauzula może przyjąć tylko trzy wartości: Z **urządzeń** do bliźniaczki zapytania urządzenia, **FROM devices.modules** do bliźniaczki modułu kwerendy lub FROM **devices.jobs** do kwerendy zadania na urządzenie szczegóły.
 
-## <a name="where-clause"></a>WHERE — Klauzula
+## <a name="where-clause"></a>Klauzula WHERE
 
-Klauzula **where < filter_condition >** jest opcjonalna. Określa jeden lub więcej warunków, które dokumenty JSON w kolekcji FROM muszą spełniać, aby były uwzględniane jako część wyniku. Każdy dokument JSON musi oszacować określone warunki do wartości "true", aby można je było uwzględnić w wyniku.
+Klauzula **WHERE <filter_condition>** jest opcjonalna. Określa jeden lub więcej warunków, które dokumenty JSON w from kolekcji muszą spełniać, aby być uwzględnione jako część wyniku. Każdy dokument JSON musi ocenić określone warunki do "true", które mają być uwzględnione w wyniku.
 
-Dozwolone warunki są opisane w sekcji [wyrażenia i warunki](iot-hub-devguide-query-language.md#expressions-and-conditions).
+Dozwolone warunki są opisane w sekcji [Wyrażenia i warunki](iot-hub-devguide-query-language.md#expressions-and-conditions).
 
-## <a name="select-clause"></a>SELECT — klauzula
+## <a name="select-clause"></a>Klauzula SELECT
 
-**> SELECT < select_list** jest obowiązkowy i określa, jakie wartości są pobierane z zapytania. Określa wartości JSON, które będą używane do generowania nowych obiektów JSON.
-Dla każdego elementu przefiltrowany (i opcjonalnie pogrupowany) podzbiór kolekcji FROM, etap projekcji generuje nowy obiekt JSON. Ten obiekt jest zbudowany z wartościami określonymi w klauzuli SELECT.
+**>select_list <SELECT** jest obowiązkowa i określa, jakie wartości są pobierane z kwerendy. Określa wartości JSON, które mają być używane do generowania nowych obiektów JSON.
+Dla każdego elementu filtrowanego (i opcjonalnie zgrupowanego) podzbioru kolekcji FROM faza projekcji generuje nowy obiekt JSON. Ten obiekt jest konstruowany z wartościami określonymi w klauzuli SELECT.
 
-Poniżej znajduje się Gramatyka klauzuli SELECT:
+Poniżej znajduje się gramatyka select klauzuli:
 
 ```
 SELECT [TOP <max number>] <projection list>
@@ -361,15 +361,15 @@ SELECT [TOP <max number>] <projection list>
     | max(<projection_element>)
 ```
 
-**Attribute_name** odwołuje się do dowolnej właściwości dokumentu JSON w kolekcji from. Niektóre przykłady klauzul SELECT można znaleźć w sekcji wprowadzenie do korzystania z zapytań dotyczących sznurów urządzeń.
+**Attribute_name** odnosi się do dowolnej właściwości dokumentu JSON w from kolekcji. Niektóre przykłady select klauzul można znaleźć w wprowadzenie do zapytań bliźniaczej reprezentacji urządzenia.
 
-Obecnie klauzule wyboru inne niż **SELECT*** są obsługiwane tylko w zapytaniach agregacji na urządzeniu bliźniaczych reprezentacji.
+Obecnie klauzule wyboru inne niż **SELECT*** są obsługiwane tylko w zapytaniach zbiorczych na bliźniacze urządzenia.
 
-## <a name="group-by-clause"></a>Klauzula GROUP BY
+## <a name="group-by-clause"></a>KLAUZULA GROUP BY
 
-Klauzula **GROUP BY < group_specification >** jest opcjonalnym krokiem, który jest wykonywany po filtrze określonym w klauzuli WHERE oraz przed określoną projekcją w zaznaczeniu. Grupuje dokumenty na podstawie wartości atrybutu. Te grupy są używane do generowania zagregowanych wartości, jak określono w klauzuli SELECT.
+**KLAUZULA GROUP BY <group_specification>** jest opcjonalnym krokiem, który jest wykonywany po filtrze określonym w klauzuli WHERE i przed projekcją określoną w SELECT. Grupuje dokumenty na podstawie wartości atrybutu. Grupy te są używane do generowania zagregowanych wartości, jak określono w klauzuli SELECT.
 
-Przykładem zapytania korzystającego z polecenia Grupuj według jest:
+Przykładem kwerendy używającej grupy GROUP BY jest:
 
 ```sql
 SELECT properties.reported.telemetryConfig.status AS status,
@@ -378,7 +378,7 @@ FROM devices
 GROUP BY properties.reported.telemetryConfig.status
 ```
 
-Formalna składnia dla polecenia Grupuj według jest następująca:
+Formalną składnią grupy WEDŁUG jest:
 
 ```
 GROUP BY <group_by_element>
@@ -387,24 +387,24 @@ GROUP BY <group_by_element>
     | < group_by_element > '.' attribute_name
 ```
 
-**Attribute_name** odwołuje się do dowolnej właściwości dokumentu JSON w kolekcji from.
+**Attribute_name** odnosi się do dowolnej właściwości dokumentu JSON w from kolekcji.
 
-Obecnie klauzula GROUP BY jest obsługiwana tylko podczas wysyłania zapytań do bliźniaczych reprezentacjiu urządzenia.
+Obecnie klauzula GROUP BY jest obsługiwana tylko podczas wykonywania zapytań o bliźniacze urządzenia.
 
 > [!IMPORTANT]
-> Termin `group` jest obecnie traktowany jako specjalne słowo kluczowe w zapytaniach. W przypadku użycia `group` jako nazwy właściwości, Rozważ umieszczenie jej w podwójnym nawiasie, aby uniknąć błędów, np. `SELECT * FROM devices WHERE tags.[[group]].name = 'some_value'`.
+> Termin `group` ten jest obecnie traktowany jako specjalne słowo kluczowe w kwerendach. W przypadku użycia `group` jako nazwy właściwości należy rozważyć jej otoczenie podwójnymi nawiasami, `SELECT * FROM devices WHERE tags.[[group]].name = 'some_value'`aby uniknąć błędów, np.
 >
 
 ## <a name="expressions-and-conditions"></a>Wyrażenia i warunki
 
-Na wysokim poziomie *wyrażenie*:
+Na wysokim poziomie *wyrażenie:*
 
-* Oblicza wystąpienie typu JSON (takie jak Boolean, Number, String, array lub Object).
-* Jest definiowana przez manipulowanie danymi pochodzącymi z dokumentu JSON i stałych, przy użyciu wbudowanych operatorów i funkcji.
+* Ocenia wystąpienie typu JSON (takie jak wartość logiczna, liczba, ciąg znaków, tablica lub obiekt).
+* Jest definiowany przez manipulowanie danymi pochodzącymi z dokumentu JSON urządzenia i stałych przy użyciu wbudowanych operatorów i funkcji.
 
-*Warunki* są wyrażeniami, które są obliczane jako wartość logiczna. Każda stała inna niż wartość logiczna **true** jest traktowana jako **false**. Ta reguła zawiera **wartości null**, **undefined**, wszelkie wystąpienia obiektu lub tablicy, dowolny ciąg i wartość logiczną **false**.
+*Warunki* są wyrażenia, które oceniają do wartości logicznej. Każda stała inna niż wartość **logiczna true** jest uważana za **fałszywą.** Ta reguła zawiera **null,** **undefined**, dowolny obiekt lub wystąpienie tablicy, dowolny ciąg i **fałd logiczny**.
 
-Składnia wyrażeń jest następująca:
+Składnia wyrażeń jest:
 
 ```
 <expression> ::=
@@ -432,22 +432,22 @@ Składnia wyrażeń jest następująca:
 <array_constant> ::= '[' <constant> [, <constant>]+ ']'
 ```
 
-Aby zrozumieć, co oznacza każdy symbol w składni wyrażeń, zapoznaj się z poniższą tabelą:
+Aby zrozumieć, co oznacza każdy symbol w składni wyrażeń, zapoznaj się z następującą tabelą:
 
 | Symbol | Definicja |
 | --- | --- |
-| attribute_name | Każda właściwość dokumentu JSON w kolekcji **from** . |
-| binary_operator | Dowolny operator binarny wymieniony w sekcji [operatorów](#operators) . |
-| function_name| Każda funkcja wymieniona w sekcji [Functions](#functions) . |
-| decimal_literal |Wartość zmiennoprzecinkowa wyrażona w notacji dziesiętnej. |
+| Attribute_name | Wszelkie właściwości dokumentu JSON w **from** kolekcji. |
+| binary_operator | Dowolny operator binarny wymieniony w sekcji [Operatorzy.](#operators) |
+| function_name| Dowolna funkcja wymieniona w sekcji [Funkcje.](#functions) |
+| decimal_literal |Pływak wyrażony w notacji dziesiętnej. |
 | hexadecimal_literal |Liczba wyrażona przez ciąg "0x", po którym następuje ciąg cyfr szesnastkowych. |
-| string_literal |Literały ciągów są reprezentowane przez Sekwencja zero lub więcej znaków Unicode lub sekwencji unikowych ciągów znaków Unicode. Literały ciągu są ujęte w apostrofy lub podwójne cudzysłowy. Dozwolone ucieczki: `\'`, `\"`, `\\``\uXXXX` dla znaków Unicode zdefiniowanych przez 4 cyfry szesnastkowe. |
+| string_literal |Literały ciągów to ciągi Unicode reprezentowane przez sekwencję zero lub więcej znaków Unicode lub sekwencji ucieczki. Literały ciągów są ujęte w cudzysłowie pojedyncze lub cudzysłowy. Dozwolone znaki unicode `\"` `\\`zdefiniowane przez 4 cyfry szesnastkowe. `\uXXXX` `\'` |
 
 ### <a name="operators"></a>Operatory
 
 Obsługiwane są następujące operatory:
 
-| Rodzina | Operatory |
+| Family | Operatory |
 | --- | --- |
 | Arytmetyczny |+, -, *, /, % |
 | Logiczny |AND, OR, NOT |
@@ -455,53 +455,53 @@ Obsługiwane są następujące operatory:
 
 ### <a name="functions"></a>Funkcje
 
-Podczas wykonywania zapytania dotyczącego bliźniaczych reprezentacji i zadań jedyną obsługiwaną funkcją jest:
+Podczas wykonywania zapytań o bliźniacze i zadania jedyną obsługiwana funkcją jest:
 
 | Funkcja | Opis |
 | -------- | ----------- |
-| IS_DEFINED (Właściwość) | Zwraca wartość Boolean wskazującą, czy do właściwości przypisano wartości (w tym `null`). |
+| IS_DEFINED(właściwość) | Zwraca wartość logiczną wskazującą, czy właściwość została `null`przypisana do wartości (w tym ). |
 
-W warunkach trasy obsługiwane są następujące funkcje matematyczne:
+W warunkach tras obsługiwane są następujące funkcje matematyczne:
 
 | Funkcja | Opis |
 | -------- | ----------- |
 | ABS(x) | Zwraca wartość bezwzględną (dodatnią) podanego wyrażenia liczbowego. |
-| EXP(x) | Zwraca wartość wykładniczą określonego wyrażenia liczbowego (e ^ x). |
-| MOC (x, y) | Zwraca wartość określonego wyrażenia do określonej potęgi (x ^ y).|
-| KWADRAT (x) | Zwraca kwadrat określoną wartość liczbową. |
-| GÓRNy limit (x) | Zwraca najmniejszą wartość całkowitą równą określonemu wyrażeniu liczbowemu lub większą. |
-| PODŁOGa (x) | Zwraca największą wartość całkowitą równą określonemu wyrażeniu liczbowemu lub mniejszą. |
-| SIGN(x) | Zwraca wynik dodatni (+ 1), wartość zero (0) lub minus (-1) z określonego wyrażenia liczbowego.|
-| SQRT(x) | Zwraca pierwiastek kwadratowy z określoną wartość liczbową. |
+| EXP(x) | Zwraca wartość wykładniczą określonego wyrażenia liczbowego (e^x). |
+| MOC(x,y) | Zwraca wartość określonego wyrażenia do określonej mocy (x^y).|
+| KWADRAT(x)    | Zwraca kwadrat określonej wartości liczbowej. |
+| SUFIT(x) | Zwraca najmniejszą wartość całkowitą równą określonemu wyrażeniu liczbowemu lub większą. |
+| PIĘTRO(x) | Zwraca największą wartość całkowitą równą określonemu wyrażeniu liczbowemu lub mniejszą. |
+| ZNAK(x) | Zwraca znak dodatni (+1), zero (0) lub ujemny (-1) określonego wyrażenia liczbowego.|
+| SQRT(x) | Zwraca pierwiastek kwadratowy określonej wartości liczbowej. |
 
-W warunkach trasy obsługiwane są następujące funkcje sprawdzania typu i rzutowania:
+W warunkach tras obsługiwane są następujące funkcje sprawdzania i odlewania typów:
 
 | Funkcja | Opis |
 | -------- | ----------- |
-| AS_NUMBER | Konwertuje ciąg wejściowy na liczbę. `noop`, jeśli dane wejściowe to liczba; `Undefined`, jeśli ciąg nie reprezentuje liczby.|
-| IS_ARRAY | Zwraca wartość logiczną wskazującą, czy Tablica typu z określonego wyrażenia. |
-| IS_BOOL | Zwraca wartość logiczną wskazującą, jeśli typ określonego wyrażenie jest wartością logiczną. |
+| AS_NUMBER | Konwertuje ciąg wejściowy na liczbę. `noop`jeśli dane wejściowe są liczbą; `Undefined` jeśli ciąg nie reprezentuje liczby.|
+| IS_ARRAY | Zwraca wartość logiczną wskazującą, czy typem określonego wyrażenia jest tablica. |
+| IS_BOOL | Zwraca wartość logiczną wskazującą, czy typem określonego wyrażenia jest wartość logiczna. |
 | IS_DEFINED | Zwraca wartość logiczną wskazującą, do właściwości przypisano wartość. |
-| IS_NULL | Zwraca wartość logiczną wskazującą, jeśli typ określonego wyrażenie ma wartość null. |
-| IS_NUMBER | Zwraca wartość logiczną wskazującą, jeżeli typ podanego wyrażenia jest liczbą. |
-| IS_OBJECT | Zwraca wartość logiczną wskazującą, czy obiekt JSON typu z określonego wyrażenia. |
-| IS_PRIMITIVE | Zwraca wartość logiczną wskazującą, czy typ określonego wyrażenia jest typem pierwotnym (String, Boolean, numeric lub `null`). |
-| IS_STRING | Zwraca wartość logiczną wskazującą, czy typ określonego wyrażenia ciągu. |
+| IS_NULL | Zwraca wartość logiczną wskazującą, czy typ określonego wyrażenia ma wartość null. |
+| IS_NUMBER | Zwraca wartość logiczną wskazującą, czy typem określonego wyrażenia jest liczba. |
+| IS_OBJECT | Zwraca wartość logiczną wskazującą, czy typem określonego wyrażenia jest obiekt JSON. |
+| IS_PRIMITIVE | Zwraca wartość logiczną wskazującą, czy typ określonego wyrażenia jest pierwotny (ciąg, wartość `null`logiczna, numeryczna lub ). |
+| IS_STRING | Zwraca wartość logiczną wskazującą, czy typem określonego wyrażenia jest ciąg. |
 
-W warunkach trasy obsługiwane są następujące funkcje ciągów:
+W warunkach tras obsługiwane są następujące funkcje ciągu:
 
 | Funkcja | Opis |
 | -------- | ----------- |
-| CONCAT (x, y,...) | Zwraca ciąg, który jest wynikiem połączenia co najmniej dwóch wartości ciągu. |
-| Długość (x) | Zwraca liczbę znaków z określonego wyrażenia ciągu.|
-| LOWER (x) | Zwraca wyrażenie ciągu po przekonwertowaniu danych znakowych wielkich liter na małe litery. |
-| UPPER (x) | Zwraca wyrażenie ciągu po przekonwertowaniu danych znakowych małych liter na wielkie litery. |
-| Podciąg (String, początek [, Długość]) | Zwraca część wyrażenia ciągu, zaczynając od pozycji liczony od zera określony znak i kontynuuje do określonej długości lub do końca ciągu. |
-| INDEX_OF (ciąg, fragment) | Zwraca pozycję początkową pierwszego wystąpienia drugiego ciągu wyrażenia w ramach pierwszego określonego wyrażenia ciągu lub wartość -1, jeśli ciąg nie zostanie znaleziony.|
-| STARTS_WITH (x, y) | Zwraca wartość logiczną wskazującą, czy pierwszy ciąg wyrażenia rozpoczyna się od drugiego. |
-| ENDS_WITH (x, y) | Zwraca wartość logiczną wskazującą, czy pierwszy ciąg wyrażenia kończy się na drugi. |
-| ZAWIERA (x, y) | Zwraca wartość logiczną wskazującą, czy pierwsze wyrażenie ciągu zawiera drugie. |
+| CONCAT(x, y, ...) | Zwraca ciąg, który jest wynikiem połączenia co najmniej dwóch wartości ciągu. |
+| DŁUGOŚĆ(x) | Zwraca liczbę znaków określonego wyrażenia ciągu.|
+| DOLNA(x) | Zwraca wyrażenie ciągu po przekonwertowaniu danych znakowych wielkich liter na małe litery. |
+| GÓRNA(x) | Zwraca wyrażenie ciągu po przekonwertowaniu danych znakowych małych liter na wielkie litery. |
+| PODCIĄGNIE(ciąg, start [, długość]) | Zwraca część wyrażenia ciągu, zaczynając od określonego znaku zerowego i kontynuuje do określonej długości lub na końcu ciągu. |
+| INDEX_OF(ciąg, fragment) | Zwraca pozycję początkową pierwszego wystąpienia drugiego ciągu wyrażenia w ramach pierwszego określonego wyrażenia ciągu lub wartość -1, jeśli ciąg nie zostanie znaleziony.|
+| STARTS_WITH(x, y) | Zwraca wartość logiczną wskazującą, czy pierwsze wyrażenie ciągu rozpoczyna się od drugiego. |
+| ENDS_WITH(x, y) | Zwraca wartość logiczną wskazującą, czy pierwsze wyrażenie ciągu kończy się na drugim. |
+| ZAWIERA(x,y) | Zwraca wartość logiczną wskazującą, czy pierwsze wyrażenie ciągu zawiera drugie. |
 
 ## <a name="next-steps"></a>Następne kroki
 
-Dowiedz się, jak wykonywać zapytania w aplikacjach przy użyciu [zestawów SDK usługi Azure IoT](iot-hub-devguide-sdks.md).
+Dowiedz się, jak wykonywać kwerendy w aplikacjach przy użyciu [zestawów SDK usługi Azure IoT.](iot-hub-devguide-sdks.md)

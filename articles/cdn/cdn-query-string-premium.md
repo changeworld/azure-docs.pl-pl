@@ -1,6 +1,6 @@
 ---
-title: Sterowanie zachowaniem Azure CDN buforowania za pomocą ciągów zapytań — warstwa Premium
-description: Azure CDN buforowanie ciągu zapytania kontroluje, jak pliki są buforowane, gdy żądanie sieci Web zawiera ciąg zapytania. W tym artykule opisano buforowanie ciągu zapytania w Azure CDN Premium z produktu Verizon.
+title: Sterowanie zachowaniem buforowania usługi Azure CDN za pomocą ciągów zapytań — warstwa premium
+description: Buforowanie ciągów zapytań usługi Azure CDN określa sposób buforowania plików, gdy żądanie sieci web zawiera ciąg zapytania. W tym artykule opisano buforowanie ciągów zapytań w usłudze Azure CDN Premium z produktu Verizon.
 services: cdn
 documentationcenter: ''
 author: mdgattuso
@@ -15,54 +15,54 @@ ms.topic: article
 ms.date: 06/11/2018
 ms.author: magattus
 ms.openlocfilehash: 365c52840d281c0f48d17aacc358e4cce513e3b4
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74083087"
 ---
-# <a name="control-azure-cdn-caching-behavior-with-query-strings---premium-tier"></a>Sterowanie zachowaniem Azure CDN buforowania za pomocą ciągów zapytań — warstwa Premium
+# <a name="control-azure-cdn-caching-behavior-with-query-strings---premium-tier"></a>Sterowanie zachowaniem buforowania usługi Azure CDN za pomocą ciągów zapytań — warstwa premium
 > [!div class="op_single_selector"]
 > * [Warstwa standardowa](cdn-query-string.md)
 > * [Warstwa Premium](cdn-query-string-premium.md)
 > 
 
-## <a name="overview"></a>Przegląd
-Za pomocą usługi Azure Content Delivery Network (CDN) można kontrolować sposób, w jaki pliki są buforowane dla żądania sieci Web, które zawiera ciąg zapytania. W żądaniu sieci Web za pomocą ciągu zapytania ciąg zapytania jest częścią żądania, która występuje po znaku zapytania (?). Ciąg zapytania może zawierać co najmniej jedną parę klucz-wartość, w której nazwa pola i jego wartość są oddzielone znakiem równości (=). Każda para klucz-wartość jest oddzielona znakiem handlowego "i" (&). Na przykład http:\//www.contoso.com/content.mov?field1=value1&field2=value2. Jeśli w ciągu zapytania żądania występuje więcej niż jedna para klucz-wartość, ich kolejność nie ma znaczenia. 
+## <a name="overview"></a>Omówienie
+Za pomocą usługi Azure Content Delivery Network (CDN) można kontrolować sposób buforowania plików dla żądania sieci web zawierającego ciąg zapytania. W żądaniu sieci web z ciągiem zapytania ciąg zapytania jest tą częścią żądania, która występuje po znaku zapytania (?). Ciąg zapytania może zawierać jedną lub więcej par klucz-wartość, w których nazwa pola i jego wartość są oddzielone znakiem równości (=). Każda para klucz-wartość jest oddzielona ampersand (&). Na przykład http:\//www.contoso.com/content.mov?field1=value1&field2=value2. Jeśli istnieje więcej niż jedna para klucz-wartość w ciągu zapytania żądania, ich kolejność nie ma znaczenia. 
 
 > [!IMPORTANT]
-> Produkty sieci CDN w warstwach Standardowa i Premium zapewniają te same funkcje buforowania ciągu zapytania, ale interfejs użytkownika różni się. W tym artykule opisano Interfejs **Azure CDN Premium z Verizon**. W przypadku buforowania ciągu zapytania z produktami Azure CDN Standard, zobacz [kontrola Azure CDN zachowanie buforowania za pomocą ciągów zapytań — warstwa standardowa](cdn-query-string.md).
+> Standardowe i premium produkty CDN zapewniają tę samą funkcję buforowania ciągów zapytań, ale interfejs użytkownika jest inny. W tym artykule opisano interfejs **usługi Azure CDN Premium firmy Verizon**. Aby uzyskać informacje o buforowaniu ciągów zapytań za pomocą standardowych produktów usługi Azure CDN, zobacz [Kontrolowanie zachowania buforowania usługi Azure CDN za pomocą ciągów zapytań — warstwa standardowa](cdn-query-string.md).
 >
 
 
 Dostępne są trzy tryby ciągu zapytania:
 
-- **pamięć podręczna**: tryb domyślny. W tym trybie węzeł punktu obecności (POP) usługi CDN przekazuje ciągi zapytania od osoby żądającej do serwera pochodzenia przy pierwszym żądaniu i buforuje element zawartości. Wszystkie kolejne żądania dla elementu zawartości, które są obsługiwane przez serwer POP, ignorują ciągi zapytania do momentu wygaśnięcia pamięci podręcznej.
+- **standardowa pamięć podręczna:** Tryb domyślny. W tym trybie węzeł punktu obecności sieci CDN (POP) przekazuje ciągi zapytań od żądacza do serwera pochodzenia przy pierwszym żądaniu i buforuje zasób. Wszystkie kolejne żądania dla zasobu, które są obsługiwane z serwera POP ignorują ciągi zapytań, dopóki zasób w pamięci podręcznej nie wygaśnie.
 
     >[!IMPORTANT] 
-    > Jeśli autoryzacja tokenu jest włączona dla dowolnej ścieżki na tym koncie, tryb pamięci podręcznej jest jedynym trybem, który może być używany. 
+    > Jeśli autoryzacja tokenu jest włączona dla dowolnej ścieżki na tym koncie, tryb standardowej pamięci podręcznej jest jedynym trybem, który może być używany. 
 
-- **Brak pamięci podręcznej**: w tym trybie żądania z ciągami zapytań nie są buforowane w węźle pop usługi CDN. Węzeł POP pobiera zasób bezpośrednio z serwera pochodzenia i przekazuje go do obiektu żądającego za pomocą każdego żądania.
+- **no-cache:** W tym trybie żądania z ciągami zapytań nie są buforowane w węźle POP sieci CDN. Węzeł POP pobiera zasób bezpośrednio z serwera pochodzenia i przekazuje go do żądacza przy każdym żądaniu.
 
-- **unikatowa pamięć podręczna**: w tym trybie każde żądanie z unikatowym adresem URL, w tym ciąg zapytania, jest traktowane jako unikatowy element zawartości z własną pamięcią podręczną. Na przykład odpowiedź z serwera pochodzenia dla żądania na przykład. ashx? q = TEST1 jest buforowana w węźle POP i zwracana dla kolejnych pamięci podręcznych z tym samym ciągiem zapytania. Żądanie na przykład. ashx? q = Test2 jest zapisywane w pamięci podręcznej jako osobny zasób z własnym ustawieniem czasu wygaśnięcia.
+- **unique-cache:** W tym trybie każde żądanie z unikatowym adresem URL, w tym ciągiem zapytania, jest traktowane jako unikatowy zasób z własną pamięcią podręczną. Na przykład odpowiedź z serwera pochodzenia dla żądania na przykład.ashx?q=test1 jest buforowana w węźle POP i zwracana dla kolejnych pamięci podręcznych z tym samym ciągiem zapytania. Żądanie na przykład.ashx?q=test2 jest buforowane jako oddzielny zasób z własnym ustawieniem czasu na żywo.
    
     >[!IMPORTANT] 
-    > Nie używaj tego trybu, gdy ciąg zapytania zawiera parametry, które zmienią się przy każdym żądaniu, takie jak identyfikator sesji lub nazwa użytkownika, ponieważ spowoduje to niską wartość współczynnika trafień w pamięci podręcznej.
+    > Nie należy używać tego trybu, gdy ciąg zapytania zawiera parametry, które będą się zmieniać przy każdym żądaniu, takie jak identyfikator sesji lub nazwa użytkownika, ponieważ spowoduje to niski współczynnik trafień pamięci podręcznej.
 
-## <a name="changing-query-string-caching-settings-for-premium-cdn-profiles"></a>Zmiana ustawień buforowania ciągu zapytania dla profilów usługi CDN w warstwie Premium
-1. Otwórz profil usługi CDN, a następnie kliknij pozycję **Zarządzaj**.
+## <a name="changing-query-string-caching-settings-for-premium-cdn-profiles"></a>Zmienianie ustawień buforowania ciągów zapytań dla profilów sieci CDN premium
+1. Otwórz profil sieci CDN, a następnie kliknij przycisk **Zarządzaj**.
    
-    ![Przycisk zarządzania profilem CDN](./media/cdn-query-string-premium/cdn-manage-btn.png)
+    ![Przycisk Zarządzanie profilem CDN](./media/cdn-query-string-premium/cdn-manage-btn.png)
    
-    Zostanie otwarty portal zarządzania sieci CDN.
-2. Umieść kursor na **duże karty http** , a następnie umieść wskaźnik myszy nad menu wysuwanym **Ustawienia pamięci podręcznej** . Kliknij opcję **buforowanie ciągu zapytania**.
+    Zostanie otwarty portal zarządzania siecią CDN.
+2. Umieść wskaźnik myszy na karcie **Duży http,** a następnie umieść wskaźnik myszy na menu wysuwu **ustawień pamięci podręcznej.** Kliknij **pozycję Buforowanie ciągów kwerend**.
    
-    Wyświetlane są opcje buforowania ciągu zapytania.
+    Wyświetlane są opcje buforowania ciągów zapytań.
    
-    ![Opcje buforowania ciągu zapytania usługi CDN](./media/cdn-query-string-premium/cdn-query-string.png)
+    ![Opcje buforowania ciągów zapytań cdn](./media/cdn-query-string-premium/cdn-query-string.png)
 3. Wybierz tryb ciągu zapytania, a następnie kliknij przycisk **Aktualizuj**.
 
 > [!IMPORTANT]
-> Ponieważ trwa czas na propagację rejestracji w usłudze CDN, zmiany ustawień ciągu pamięci podręcznej mogą nie być natychmiast widoczne. Propagacja jest zwykle zakończona w ciągu 10 minut.
+> Ponieważ wymaga czasu, aby rejestracja propagować za pośrednictwem sieci CDN, zmiany ustawień ciągu pamięci podręcznej może nie być natychmiast widoczne. Propagacja zwykle kończy się w ciągu 10 minut.
  
 

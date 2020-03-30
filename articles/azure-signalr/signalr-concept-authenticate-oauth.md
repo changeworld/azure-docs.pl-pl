@@ -1,16 +1,16 @@
 ---
-title: Przewodnik dotyczący uwierzytelniania klientów usługi Azure sygnalizujących
-description: Dowiedz się, jak wdrożyć własne uwierzytelnianie i zintegrować je z usługą Azure Signal Service, wykonując przykład E2E.
+title: Przewodnik dotyczący uwierzytelniania klientów usługi Azure SignalR
+description: Dowiedz się, jak zaimplementować własne uwierzytelnianie i zintegrować go z usługą Azure SignalR, postępuje zgodnie z przykładem e2e.
 author: sffamily
 ms.service: signalr
 ms.topic: conceptual
 ms.date: 11/13/2019
 ms.author: zhshang
 ms.openlocfilehash: cc955adffbe7df5809f9c4c860877ad22df3e99b
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74158278"
 ---
 # <a name="azure-signalr-service-authentication"></a>Uwierzytelnianie w usłudze Azure SignalR Service
@@ -31,10 +31,10 @@ Kod dla tego samouczka jest dostępny do pobrania w [repozytorium GitHub o nazwi
 
 ![Gotowa aplikacja OAuth hostowana na platformie Azure](media/signalr-concept-authenticate-oauth/signalr-oauth-complete-azure.png)
 
-Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
+Niniejszy samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
-> * Rejestrowanie nowej aplikacji OAuth za pomocą Twojego konta usługi GitHub
+> * Rejestrowanie nowej aplikacji OAuth za pomocą Twojego kona usługi GitHub
 > * Dodawanie kontrolera uwierzytelniania w celu obsługi uwierzytelniania usługi GitHub
 > * Wdrażanie aplikacji internetowej platformy ASP.NET Core na platformie Azure
 
@@ -45,16 +45,16 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 Do ukończenia tego samouczka niezbędne są:
 
 * Konto utworzone w usłudze [GitHub](https://github.com/)
-* [Usługa Git](https://git-scm.com/)
+* [Git](https://git-scm.com/)
 * [Zestaw SDK dla platformy .NET Core](https://www.microsoft.com/net/download/windows)
 * [Skonfigurowana usługa Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/quickstart)
-* Pobierz lub sklonuj repozytorium GitHub [AzureSignalR-sample](https://github.com/aspnet/AzureSignalR-samples).
+* Pobrane lub sklonowane repozytorium GitHub [AzureSignalR-sample](https://github.com/aspnet/AzureSignalR-samples)
 
 ## <a name="create-an-oauth-app"></a>Tworzenie aplikacji OAuth
 
 1. Otwórz przeglądarkę internetową, przejdź do witryny `https://github.com` i zaloguj się na swoje konto.
 
-2. Na swoim koncie przejdź do pozycji **Settings** > **Developer settings** (Ustawienia > Ustawienia dewelopera) i kliknij pozycję **Register a new application** (Zarejestruj nową aplikację) lub **New OAuth App** (Nowa aplikacja OAuth) w obszarze *OAuth Apps* (Aplikacje OAuth).
+2. Aby uzyskać informacje o swoim koncie, przejdź do**ustawień programisty** **ustawień** > i kliknij pozycję **Zarejestruj nową aplikację**lub Nową **aplikację OAuth** w obszarze *Aplikacje OAuth*.
 
 3. Użyj następujących ustawień dla nowej aplikacji OAuth, a następnie kliknij pozycję **Register application** (Zarejestruj aplikację):
 
@@ -377,7 +377,7 @@ W tej sekcji włączysz prawdziwe uwierzytelnianie, dodając atrybut `Authorize`
 
 ## <a name="deploy-the-app-to-azure"></a>Wdrażanie aplikacji na platformie Azure
 
-W tej sekcji użyjesz interfejsu wiersza polecenia platformy Azure (CLI) z Azure Cloud Shell, aby utworzyć nową aplikację sieci Web w usłudze [Azure App Service](https://docs.microsoft.com/azure/app-service/) do hostowania aplikacji ASP.NET na platformie Azure. Aplikacja internetowa zostanie skonfigurowana do używania lokalnego wdrożenia usługi Git. Aplikacja internetowa będzie również skonfigurowana za pomocą parametrów połączenia usługi SignalR, wpisów tajnych aplikacji OAuth usługi GitHub i użytkownika wdrożenia.
+W tej sekcji użyjesz interfejsu wiersza polecenia platformy Azure (CLI) z usługi Azure Cloud Shell, aby utworzyć nową aplikację sieci web w [usłudze Azure App Service](https://docs.microsoft.com/azure/app-service/) do hostowania aplikacji ASP.NET na platformie Azure. Aplikacja internetowa zostanie skonfigurowana do używania lokalnego wdrożenia usługi Git. Aplikacja internetowa będzie również skonfigurowana za pomocą parametrów połączenia usługi SignalR, wpisów tajnych aplikacji OAuth usługi GitHub i użytkownika wdrożenia.
 
 Kroki opisane w tej sekcji używają rozszerzenia *signalr* dla interfejsu wiersza polecenia platformy Azure. Uruchom następujące polecenie, aby zainstalować rozszerzenie *signalr* dla interfejsu wiersza polecenia platformy Azure:
 
@@ -539,7 +539,7 @@ Aby wdrożyć swój kod, należy wykonać następujące polecenia w powłoce Git
 
 Ostatnim zadaniem, które należy wykonać, jest aktualizacja **adresu URL strony głównej** i **adresu URL wywołania zwrotnego autoryzacji** aplikacji OAuth usługi GitHub, aby wskazywał nową hostowaną aplikację.
 
-1. Otwórz witrynę [https://github.com](https://github.com) w przeglądarce i przejdź do pozycji **Settings** > **Developer settings** > **Oauth Apps** (Ustawienia > Ustawienia dewelopera > Aplikacje Oauth) swojego konta.
+1. Otwórz [https://github.com](https://github.com) w przeglądarce i przejdź > do ustawień **ustawieniach** > konta**Oauth Apps**.**Developer settings**
 
 2. Kliknij aplikację uwierzytelniania oraz zaktualizuj **adres URL strony głównej** i **adres URL wywołania zwrotnego autoryzacji** w sposób przedstawiony poniżej:
 
@@ -563,9 +563,9 @@ W przeciwnym razie po zakończeniu pracy z przykładową aplikacją poradnika Sz
 
 Zaloguj się do witryny [Azure Portal](https://portal.azure.com) i kliknij pozycję **Grupy zasobów**.
 
-W polu tekstowym **Filtruj według nazwy...** wpisz nazwę grupy zasobów. Instrukcje w tym artykule używają grupy zasobów o nazwie *SignalRTestResources*. Dla grupy zasobów na liście wyników kliknij pozycję **...** , a następnie kliknij pozycję **Usuń grupę zasobów**.
+W polu tekstowym **Filtruj według nazwy...** wpisz nazwę grupy zasobów. Instrukcje w tym artykule używają grupy zasobów o nazwie *SignalRTestResources*. Dla grupy zasobów na liście wyników kliknij pozycję **...**, a następnie kliknij pozycję **Usuń grupę zasobów**.
 
-![Usuwanie](./media/signalr-concept-authenticate-oauth/signalr-delete-resource-group.png)
+![Usuń](./media/signalr-concept-authenticate-oauth/signalr-delete-resource-group.png)
 
 Zobaczysz prośbę o potwierdzenie usunięcia grupy zasobów. Wpisz nazwę grupy zasobów w celu potwierdzenia, a następnie kliknij pozycję **Usuń**.
 

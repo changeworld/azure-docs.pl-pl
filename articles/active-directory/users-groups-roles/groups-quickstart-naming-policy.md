@@ -1,5 +1,5 @@
 ---
-title: Zasady nazewnictwa grup — szybki start — Azure Active Directory | Microsoft Docs
+title: Szybki start zasad nazewnictwa grup — usługa Azure Active Directory | Dokumenty firmy Microsoft
 description: Wyjaśniono, jak dodać nowych użytkowników lub usunąć istniejących użytkowników w usłudze Azure Active Directory
 services: active-directory
 documentationcenter: ''
@@ -15,10 +15,10 @@ ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 84e419ac5c3d292b7e630d1ebb3d3b9f59ef7b8a
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "74026930"
 ---
 # <a name="quickstart-naming-policy-for-groups-in-azure-active-directory"></a>Szybki start: zasady nazewnictwa grup w usłudze Azure Active Directory
@@ -29,45 +29,45 @@ W tym przewodniku Szybki start utworzysz zasady nazewnictwa w dzierżawie usług
 * Łatwiejsze kategoryzowanie grup w książce adresowej.
 * Blokowanie konkretnych słów, aby uniemożliwić ich używanie w nazwach grup i aliasach.
 
-Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
+Jeśli nie masz subskrypcji platformy Azure, [utwórz bezpłatne konto](https://azure.microsoft.com/free/) przed rozpoczęciem.
 
-## <a name="configure-the-group-naming-policy-for-a-tenant-using-azure-portal"></a>Konfigurowanie zasad nazewnictwa grup dla dzierżawcy przy użyciu Azure Portal
+## <a name="configure-the-group-naming-policy-for-a-tenant-using-azure-portal"></a>Konfigurowanie zasad nazewnictwa grup dla dzierżawy przy użyciu witryny Azure Portal
 
-1. Zaloguj się do [Centrum administracyjnego usługi Azure AD](https://aad.portal.azure.com) przy użyciu konta administratora użytkownika.
-1. Wybierz pozycję **grupy**, a następnie wybierz pozycję **zasady nazewnictwa** , aby otworzyć stronę Zasady nazewnictwa.
+1. Zaloguj się do [centrum administracyjnego usługi Azure AD](https://aad.portal.azure.com) przy za pomocą konta administratora użytkownika.
+1. Wybierz **pozycję Grupy**, a następnie wybierz pozycję Zasady **nazewnictwa,** aby otworzyć stronę zasad nazewnictwa.
 
-    ![Otwórz stronę Zasady nazewnictwa w centrum administracyjnym](./media/groups-naming-policy/policy.png)
+    ![otwieranie strony zasad nazewnictwa w centrum administracyjnym](./media/groups-naming-policy/policy.png)
 
-### <a name="view-or-edit-the-prefix-suffix-naming-policy"></a>Wyświetl lub Edytuj zasady nazewnictwa sufiksu prefiksu
+### <a name="view-or-edit-the-prefix-suffix-naming-policy"></a>Wyświetlanie lub edytowanie zasad nazewnictwa sufiksu prefiksu
 
-1. Na stronie **zasady nazewnictwa** wybierz pozycję **zasady nazewnictwa grup**.
-1. Można wyświetlić lub edytować bieżące zasady nazewnictwa prefiksu lub sufiksu, wybierając atrybuty lub ciągi, które mają zostać wymuszone w ramach zasad nazewnictwa.
-1. Aby usunąć prefiks lub sufiks z listy, wybierz prefiks lub sufiks, a następnie wybierz pozycję **Usuń**. Jednocześnie można usunąć wiele elementów.
-1. Wybierz pozycję **Zapisz** , aby zmienić zasady, aby wejść w życie.
+1. Na stronie **Zasady nazewnictwa** wybierz pozycję **Zasada nazewnictwa grupy**.
+1. Bieżący prefiks lub zasady nazewnictwa sufiksów można wyświetlać lub edytować indywidualnie, wybierając atrybuty lub ciągi, które mają być wymuszane w ramach zasad nazewnictwa.
+1. Aby usunąć prefiks lub sufiks z listy, zaznacz prefiks lub sufiks, a następnie wybierz pozycję **Usuń**. Wiele elementów można usunąć w tym samym czasie.
+1. Wybierz **pozycję Zapisz,** aby zmiany w zasadach weszły w życie.
 
-### <a name="view-or-edit-the-custom-blocked-words"></a>Wyświetlanie lub edytowanie niestandardowo zablokowanych słów
+### <a name="view-or-edit-the-custom-blocked-words"></a>Wyświetlanie lub edytowanie niestandardowych zablokowanych wyrazów
 
-1. Na stronie **zasady nazewnictwa** wybierz pozycję **zablokowane słowa**.
+1. Na stronie **Zasady nazewnictwa** wybierz pozycję **Zablokowane wyrazy**.
 
-    ![Edytuj i przekaż listę zablokowanych wyrazów dla zasad nazewnictwa](./media/groups-naming-policy/blockedwords.png)
+    ![edytowanie i przesyłanie listy zablokowanych słów w celu nazewnictwa zasad](./media/groups-naming-policy/blockedwords.png)
 
-1. Wyświetl lub Edytuj bieżącą listę niestandardowych zablokowanych wyrazów, wybierając pozycję **Pobierz**.
-1. Przekaż nową listę niestandardowych zablokowanych słów, wybierając ikonę pliku.
-1. Wybierz pozycję **Zapisz** , aby zmienić zasady, aby wejść w życie.
+1. Wyświetl lub edytuj bieżącą listę niestandardowych zablokowanych słów, wybierając pozycję **Pobierz**.
+1. Prześlij nową listę niestandardowych zablokowanych słów, wybierając ikonę pliku.
+1. Wybierz **pozycję Zapisz,** aby zmiany w zasadach weszły w życie.
 
 Gotowe. Skonfigurowano zasady nazewnictwa i dodano niestandardowe słowa zablokowane.
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-### <a name="remove-the-naming-policy-using-azure-portal"></a>Usuń zasady nazewnictwa przy użyciu Azure Portal
+### <a name="remove-the-naming-policy-using-azure-portal"></a>Usuwanie zasad nazewnictwa przy użyciu witryny Azure Portal
 
-1. Na stronie **zasady nazewnictwa** wybierz pozycję **Usuń zasady**.
-1. Po potwierdzeniu usunięcia zasady nazewnictwa zostaną usunięte, w tym wszystkie zasady nazewnictwa sufiksów prefiksów i wszelkie niestandardowe niezablokowane słowa.
+1. Na stronie **Zasady nazewnictwa** wybierz pozycję **Usuń zasady**.
+1. Po potwierdzeniu usunięcia zasady nazewnictwa zostaną usunięte, w tym wszystkie zasady nazewnictwa prefiksów i wszelkie niestandardowe zablokowane słowa.
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym przewodniku szybki start wiesz już, jak ustawić zasady nazewnictwa dla organizacji usługi Azure AD za pomocą Azure Portal.
+W tym przewodniku Szybki start dowiesz się, jak ustawić zasady nazewnictwa dla organizacji usługi Azure AD za pośrednictwem witryny Azure portal.
 
-Przejdź do następnego artykułu, aby uzyskać więcej informacji, w tym poleceń cmdlet programu PowerShell dotyczących zasad nazewnictwa, ograniczeń technicznych, dodawania listy niestandardowych zablokowanych słów i środowiska użytkownika końcowego w aplikacjach pakietu Office 365.
+Przejdź do następnego artykułu, aby uzyskać więcej informacji, w tym polecenia cmdlet programu PowerShell dotyczące zasad nazewnictwa, ograniczenia techniczne, dodawanie listy niestandardowych zablokowanych słów i środowiska użytkownika końcowego w aplikacjach usługi Office 365.
 > [!div class="nextstepaction"]
 > [Zasady nazewnictwa programu PowerShell](groups-naming-policy.md)

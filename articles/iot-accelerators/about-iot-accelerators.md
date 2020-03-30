@@ -10,10 +10,10 @@ ms.service: iot-accelerators
 services: iot-accelerators
 manager: timlt
 ms.openlocfilehash: 1a27d748e16f892a748cf18569c13ca3f9ead1dd
-ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/26/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "71309515"
 ---
 # <a name="what-are-azure-iot-solution-accelerators"></a>Co to są akceleratory rozwiązań Azure IoT?
@@ -38,7 +38,7 @@ Obecnie dostępne do wdrożenia są cztery akceleratory rozwiązań:
 
 Za pomocą pulpitu nawigacyjnego zdalnego monitorowania można wyświetlać dane telemetryczne z połączonych urządzeń, aprowizować nowe urządzenia lub uaktualniać oprogramowanie układowe połączonych urządzeń:
 
-[![Wyświetlanie pulpitu nawigacyjnego rozwiązania do monitorowania zdalnego](./media/about-iot-accelerators/rm-dashboard-inline.png)](./media/about-iot-accelerators/rm-dashboard-expanded.png#lightbox)
+[![Pulpit nawigacyjny rozwiązania do zdalnego monitorowania](./media/about-iot-accelerators/rm-dashboard-inline.png)](./media/about-iot-accelerators/rm-dashboard-expanded.png#lightbox)
 
 ### <a name="connected-factory"></a>Połączona fabryka
 
@@ -46,15 +46,15 @@ Za pomocą pulpitu nawigacyjnego zdalnego monitorowania można wyświetlać dane
 
 Pulpit nawigacyjny połączonej fabryki umożliwia monitorowanie urządzeń przemysłowych i zarządzanie nimi:
 
-[![Pulpit nawigacyjny rozwiązania połączonej fabryki](./media/about-iot-accelerators/cf-dashboard-inline.png)](./media/about-iot-accelerators/cf-dashboard-expanded.png#lightbox)
+[![Połączony panel rozwiązań fabrycznych](./media/about-iot-accelerators/cf-dashboard-inline.png)](./media/about-iot-accelerators/cf-dashboard-expanded.png#lightbox)
 
-### <a name="predictive-maintenance"></a>Konserwacja predykcyjna
+### <a name="predictive-maintenance"></a>Konserwacja zapobiegawcza
 
 [Akcelerator rozwiązań Konserwacja predykcyjna](iot-accelerators-predictive-walkthrough.md) umożliwia przewidywanie, kiedy urządzenie zdalne ulegnie awarii, dzięki czemu można przeprowadzić konserwację przed awarią tego urządzenia. Akcelerator rozwiązania używa algorytmów uczenia maszynowego do przewidywania awarii na podstawie danych telemetrycznych z urządzenia. Przykładowe urządzenia to silniki lotnicze lub windy.
 
 Za pomocą pulpitu nawigacyjnego konserwacji predykcyjnej można wyświetlać analizę konserwacji predykcyjnej:
 
-[![Pulpit nawigacyjny rozwiązania połączonej fabryki](./media/about-iot-accelerators/pm-dashboard-inline.png)](./media/about-iot-accelerators/pm-dashboard-expanded.png#lightbox)
+[![Połączony panel rozwiązań fabrycznych](./media/about-iot-accelerators/pm-dashboard-inline.png)](./media/about-iot-accelerators/pm-dashboard-expanded.png#lightbox)
 
 ### <a name="device-simulation"></a>Symulacja urządzenia
 
@@ -62,7 +62,7 @@ Za pomocą pulpitu nawigacyjnego konserwacji predykcyjnej można wyświetlać an
 
 Za pomocą aplikacji internetowej symulacji urządzenia można konfigurować i uruchamiać symulacje:
 
-[![Pulpit nawigacyjny rozwiązania połączonej fabryki](./media/about-iot-accelerators/ds-dashboard-inline.png)](./media/about-iot-accelerators/ds-dashboard-expanded.png#lightbox)
+[![Połączony panel rozwiązań fabrycznych](./media/about-iot-accelerators/ds-dashboard-inline.png)](./media/about-iot-accelerators/ds-dashboard-expanded.png#lightbox)
 
 ## <a name="design-principles"></a>Zasady projektowania
 
@@ -81,7 +81,7 @@ Pierwotne akceleratory rozwiązań zostały napisane przy użyciu platformy .NET
 | Akcelerator rozwiązania   | Architektura  | Języki     |
 | ---------------------- | ------------- | ------------- |
 | Zdalne monitorowanie      | Mikrousługi | [Java](https://github.com/Azure/azure-iot-pcs-remote-monitoring-java) i [.NET](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet) |
-| Konserwacja predykcyjna | MVC           | [.NET](https://github.com/Azure/azure-iot-predictive-maintenance)          |
+| Konserwacja zapobiegawcza | MVC           | [.NET](https://github.com/Azure/azure-iot-predictive-maintenance)          |
 | Połączona fabryka      | MVC           | [.NET](https://github.com/Azure/azure-iot-connected-factory)          |
 | Symulacja urządzenia      | Mikrousługi | [.NET](https://github.com/Azure/device-simulation-dotnet)          |
 
@@ -93,9 +93,9 @@ Akceleratory rozwiązań można wdrażać z witryny [akceleratorów rozwiązań 
 
 Akcelerator rozwiązania do monitorowania zdalnego można wdrażać w następujących konfiguracjach:
 
-* **Standardowa:** Rozwinięte wdrożenie infrastruktury na potrzeby opracowywania wdrożenia produkcyjnego. Mikrousługi są wdrażane na kilku maszynach wirtualnych platformy Azure za pomocą usługi Azure Container Service. Platforma Kubernetes zarządza kontenerami aparatu Docker, w których są hostowane poszczególne mikrousługi.
-* **Podstawowa:** Tańsza wersja przeznaczona do celów demonstracyjnych i do testowania wdrożenia. Wszystkie mikrousługi są wdrażane na jednej maszynie wirtualnej platformy Azure.
-* **Lokalna:** Wdrożenie na maszynie lokalnej na potrzeby testowania i opracowywania. W tym podejściu mikrousługi są wdrażane w lokalnym kontenerze Docker, a także nawiązywane jest połączenie z usługą IoT Hub i Azure Cosmos DB oraz usługami Azure Storage w chmurze.
+* **Standardowa:** rozwinięte wdrożenie infrastruktury na potrzeby opracowywania wdrożenia produkcyjnego. Mikrousługi są wdrażane na kilku maszynach wirtualnych platformy Azure za pomocą usługi Azure Container Service. Platforma Kubernetes zarządza kontenerami aparatu Docker, w których są hostowane poszczególne mikrousługi.
+* **Podstawowa:** tańsza wersja przeznaczona do celów demonstracyjnych i do testowania wdrożenia. Wszystkie mikrousługi są wdrażane na jednej maszynie wirtualnej platformy Azure.
+* **Lokalna:** wdrożenie na maszynie lokalnej na potrzeby testowania i opracowywania. W tym podejściu mikrousługi są wdrażane w lokalnym kontenerze Docker, a także nawiązywane jest połączenie z usługą IoT Hub i Azure Cosmos DB oraz usługami Azure Storage w chmurze.
 
 Kosztem działania akceleratora rozwiązań jest łączny [koszt działania używanych przez niego podstawowych usług platformy Azure](https://azure.microsoft.com/pricing). Szczegóły używanych usług platformy Azure są widoczne podczas wybierania opcji wdrażania.
 

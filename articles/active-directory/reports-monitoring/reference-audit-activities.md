@@ -18,20 +18,20 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 843f12d14120a7becdc1e8b15bfcc65948602c44
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74007746"
 ---
 # <a name="azure-ad-audit-activity-reference"></a>Informacje o działaniach inspekcji usługi Azure AD
 
-Za pomocą raportów usługi Azure Active Directory (Azure AD) możesz uzyskać informacje potrzebne do określenia sposobu działania środowiska.
+Dzięki raportom usługi Azure Active Directory (Azure AD) można uzyskać informacje potrzebne do określenia działania środowiska.
 
 Architektura raportowania w usłudze Azure AD obejmuje następujące składniki:
 
 - **Raporty dotyczące działań** 
-    - [Logowania](concept-sign-ins.md) — zawiera informacje na temat użycia zarządzanych aplikacji i działań związanych z logowaniem użytkowników
+    - [Logowania](concept-sign-ins.md) — zawiera informacje o użyciu zarządzanych aplikacji i działań logowania użytkownika
     - [Dzienniki inspekcji](concept-audit-logs.md) — udostępnia możliwość śledzenia wszystkich zmian wprowadzanych przez różne funkcje usługi Azure AD za pomocą dzienników. 
     
 - **Raporty dotyczące zabezpieczeń** 
@@ -64,11 +64,11 @@ W tym artykule wymieniono działania inspekcji, które mogą być rejestrowane w
 |Przeglądy dostępu|Przeglądanie żądania zatwierdzenia żądania|
 |Przeglądy dostępu|Odłączanie kontroli programu|
 |Przeglądy dostępu|Aktualizowanie przeglądu dostępu|
-|Przeglądy dostępu|Aktualizowanie stanu dołączania przeglądów usługi Azure AD|
+|Przeglądy dostępu|Aktualizowanie stanu dołączania przeglądów programu Azure AD Access|
 |Przeglądy dostępu|Aktualizowanie ustawień powiadomień e-mail dla przeglądu dostępu|
-|Przeglądy dostępu|Aktualizuj ustawienie liczby cykli przeglądu dostępu|
-|Przeglądy dostępu|Aktualizowanie ustawienia czasu trwania cyklu przeglądu dostępu w dniach|
-|Przeglądy dostępu|Aktualizuj ustawienie typu zakończenia cyklu przeglądu dostępu|
+|Przeglądy dostępu|Aktualizowanie ustawienia liczby liczebność przeglądu dostępu|
+|Przeglądy dostępu|Aktualizowanie czasu trwania cyklu przeglądu dostępu w ustawieniu dni|
+|Przeglądy dostępu|Ustawienie typu końcowego przeglądu dostępu aktualizującego|
 |Przeglądy dostępu|Aktualizowanie ustawienia typu cyklu przeglądu dostępu|
 |Przeglądy dostępu|Aktualizowanie ustawień przypomnienia przeglądu dostępu|
 |Przeglądy dostępu|Aktualizowanie programu|
@@ -135,11 +135,11 @@ W tym artykule wymieniono działania inspekcji, które mogą być rejestrowane w
 |Zarządzanie aplikacjami|AdminPolicyDatas-SetResources|
 |Zarządzanie aplikacjami|AdminUserJourneys-GetResources|
 |Zarządzanie aplikacjami|AdminUserJourneys-RemoveResources|
-|Authentication|AdminUserJourneys-SetResources|
-|Authentication|Tworzenie dostawcy IdentityProvider|
-|Authentication|Tworzenie aplikacji w wersji 1|
-|Authentication|Tworzenie aplikacji w wersji 2|
-|Authentication|Tworzenie domen niestandardowych w ramach dzierżawy|
+|Uwierzytelnianie|AdminUserJourneys-SetResources|
+|Uwierzytelnianie|Tworzenie dostawcy IdentityProvider|
+|Uwierzytelnianie|Tworzenie aplikacji w wersji 1|
+|Uwierzytelnianie|Tworzenie aplikacji w wersji 2|
+|Uwierzytelnianie|Tworzenie domen niestandardowych w ramach dzierżawy|
 |Autoryzacja|Tworzenie nowego elementu AdminUserJourney|
 |Autoryzacja|Tworzenie zlokalizowanego pliku JSON zasobu|
 |Autoryzacja|Tworzenie nowego niestandardowego dostawcy tożsamości|
@@ -169,7 +169,7 @@ W tym artykule wymieniono działania inspekcji, które mogą być rejestrowane w
 |Autoryzacja|Pobieranie aplikacji w wersji 1|
 |Autoryzacja|Pobieranie aplikacji w wersji 2|
 |Autoryzacja|Pobieranie aplikacji w wersji 2|
-|Autoryzacja|Pobieranie zasobu katalogu B2C|
+|Autoryzacja|Pobierz zasób katalogu B2C|
 |Autoryzacja|Pobieranie listy domen niestandardowych w ramach dzierżawy|
 |Autoryzacja|Pobieranie podróży użytkownika|
 |Autoryzacja|Pobieranie dozwolonych oświadczeń aplikacji dla podróży użytkownika|
@@ -348,12 +348,12 @@ W tym artykule wymieniono działania inspekcji, które mogą być rejestrowane w
 
 |Kategorii inspekcji|Działanie|
 |---|---|
-|Zarządzanie jednostkami administracyjnymi|Pobierz typ wykrywania pojedynczego ryzyka|
+|Zarządzanie jednostkami administracyjnymi|Pobieranie pojedynczego typu wykrywania ryzyka|
 |Zarządzanie jednostkami administracyjnymi|Pobieranie administratorów i stanu zgody na podsumowanie tygodniowe|
 |Zarządzanie jednostkami administracyjnymi|Pobierz wszystkie typy wykrywania ryzyka|
-|Zarządzanie jednostkami administracyjnymi|Pobierz bezpłatne wykrycia ryzyka dla użytkowników|
+|Zarządzanie jednostkami administracyjnymi|Pobierz bezpłatne wykrywanie ryzyka użytkownika|
 |Zarządzanie jednostkami administracyjnymi|Pobieranie użytkowników oflagowanych w związku z ryzykiem|
-|Zarządzanie aplikacjami|Przetworzone zaproszenia zbiorcze|
+|Zarządzanie aplikacjami|Przetworzone zaproszenia zbiorcze |
 |Zarządzanie aplikacjami|Przekazane zaproszenia zbiorcze|
 |Zarządzanie aplikacjami|Dodawanie właściciela do zasad|
 |Zarządzanie aplikacjami|Dodawanie zasad|
@@ -398,7 +398,7 @@ W tym artykule wymieniono działania inspekcji, które mogą być rejestrowane w
 |Zarządzanie katalogami|Pobieranie zasobów katalogu B2C w ramach subskrypcji|
 |Zarządzanie katalogami|Pobieranie niestandardowego dostawcy tożsamości|
 |Zarządzanie katalogami|Pobieranie dostawcy tożsamości|
-|Zarządzanie katalogami|Pobieranie zasobu katalogu B2C|
+|Zarządzanie katalogami|Pobierz zasób katalogu B2C|
 |Zarządzanie katalogami|Pobieranie podróży użytkownika|
 |Zarządzanie katalogami|Pobieranie dozwolonych oświadczeń aplikacji dla podróży użytkownika|
 |Zarządzanie katalogami|Pobieranie dozwolonych i samodzielnie określonych oświadczeń dla podróży użytkownika|
@@ -408,14 +408,14 @@ W tym artykule wymieniono działania inspekcji, które mogą być rejestrowane w
 |Zarządzanie katalogami|Pobieranie dostawców tożsamości dla określonego przepływu administracyjnego|
 |Zarządzanie katalogami|Pobieranie listy wszystkich przepływów administracyjnych|
 |Zarządzanie katalogami|Pobieranie listy tagów wszystkich przepływów administracyjnych dla wszystkich użytkowników|
-|Zarządzanie grupami|Członkowie grupy pobierania zbiorczego — uruchomiono|
-|Zarządzanie grupami|Członkowie grupy pobierania zbiorczego — zakończono|
-|Zarządzanie grupami|Członkowie grupy importu zbiorczego — uruchomiono|
-|Zarządzanie grupami|Członkowie grupy importu zbiorczego — zakończono|
-|Zarządzanie grupami|Zbiorcze usuwanie członków grupy — rozpoczęto|
-|Zarządzanie grupami|Zbiorcze usuwanie członków grupy — zakończono|
-|Zarządzanie grupami|Grupy pobierania zbiorczego — rozpoczęte|
-|Zarządzanie grupami|Grupy pobierania zbiorczego — zakończono|
+|Zarządzanie grupami|Zbiorcze pobieranie członków grupy - rozpoczęto|
+|Zarządzanie grupami|Członkowie grupy pobierania zbiorczego - zakończone|
+|Zarządzanie grupami|Zbiorcze importowanie członków grupy - rozpoczęte|
+|Zarządzanie grupami|Członkowie grupy importu zbiorczego — gotowe|
+|Zarządzanie grupami|Zbiorcze usuwanie członków grupy - rozpoczęte|
+|Zarządzanie grupami|Zbiorcze usuwanie członków grupy - gotowe|
+|Zarządzanie grupami|Grupy pobierania zbiorczego - rozpoczęto|
+|Zarządzanie grupami|Grupy pobierania zbiorczego - gotowe|
 |Zarządzanie grupami|Pobieranie listy dzierżaw dla użytkownika|
 |Zarządzanie grupami|Pobieranie samodzielnie określonych oświadczeń kont lokalnych|
 |Zarządzanie grupami|Pobieranie zlokalizowanego pliku JSON zasobu|
@@ -475,16 +475,16 @@ W tym artykule wymieniono działania inspekcji, które mogą być rejestrowane w
 |Zarządzanie użytkownikami|Dodawanie członka w zakresie do roli|
 |Zarządzanie użytkownikami|Dodano|
 |Zarządzanie użytkownikami|Przypisywanie|
-|Zarządzanie użytkownikami|Tworzenie zbiorcze użytkowników — rozpoczęto|
-|Zarządzanie użytkownikami|Tworzenie zbiorczo użytkowników — zakończono|
-|Zarządzanie użytkownikami|Usuwanie zbiorcze użytkowników — rozpoczęto|
-|Zarządzanie użytkownikami|Usuwanie zbiorcze użytkowników — zakończono|
-|Zarządzanie użytkownikami|Użytkownicy pobierania zbiorczego — uruchomiono|
-|Zarządzanie użytkownikami|Użytkownicy pobierania zbiorczego — zakończono|
-|Zarządzanie użytkownikami|Przywrócenie zbiorcze usuniętych użytkowników — rozpoczęto|
-|Zarządzanie użytkownikami|Przywracanie zbiorcze — usunięto użytkowników — zakończono|
-|Zarządzanie użytkownikami|Zaproszeni użytkownicy zbiorczi — uruchomiono|
-|Zarządzanie użytkownikami|Zaproszeni użytkownicy zbiorczi — zakończono|
+|Zarządzanie użytkownikami|Zbiorcze tworzenie użytkowników - rozpoczęte|
+|Zarządzanie użytkownikami|Zbiorcze tworzenie użytkowników - gotowe|
+|Zarządzanie użytkownikami|Zbiorcze usuwanie użytkowników - rozpoczęte|
+|Zarządzanie użytkownikami|Zbiorcze usuwanie użytkowników - zakończone|
+|Zarządzanie użytkownikami|Użytkownicy do pobrania zbiorczego - rozpoczęty|
+|Zarządzanie użytkownikami|Użytkownicy do pobrania zbiorczego - zakończone|
+|Zarządzanie użytkownikami|Zbiorcze przywracanie usuniętych użytkowników — rozpoczęte|
+|Zarządzanie użytkownikami|Zbiorcze przywracanie usuniętych użytkowników - gotowe|
+|Zarządzanie użytkownikami|Użytkownicy zaproszenia zbiorczego — rozpoczęto|
+|Zarządzanie użytkownikami|Użytkownicy zaproszenia zbiorczego - gotowe|
 |Zarządzanie użytkownikami|Usuwanie zarejestrowanego właściciela z urządzenia|
 |Zarządzanie użytkownikami|Usuwanie zarejestrowanych użytkowników z urządzenia|
 |Zarządzanie użytkownikami|Usuwanie kwalifikującego się elementu członkowskiego z roli|
@@ -540,9 +540,9 @@ W tym artykule wymieniono działania inspekcji, które mogą być rejestrowane w
 |Zarządzanie grupami|Przeglądanie żądania zatwierdzenia żądania|
 |Zarządzanie grupami|Aktualizowanie przeglądu dostępu|
 |Zarządzanie grupami|Aktualizowanie ustawień powiadomień e-mail dla przeglądu dostępu|
-|Zarządzanie grupami|Aktualizuj ustawienie liczby cykli przeglądu dostępu|
-|Zarządzanie grupami|Aktualizowanie ustawienia czasu trwania cyklu przeglądu dostępu w dniach|
-|Zarządzanie użytkownikami|Aktualizuj ustawienie typu zakończenia cyklu przeglądu dostępu|
+|Zarządzanie grupami|Aktualizowanie ustawienia liczby liczebność przeglądu dostępu|
+|Zarządzanie grupami|Aktualizowanie czasu trwania cyklu przeglądu dostępu w ustawieniu dni|
+|Zarządzanie użytkownikami|Ustawienie typu końcowego przeglądu dostępu aktualizującego|
 |Zarządzanie użytkownikami|Aktualizowanie ustawienia typu cyklu przeglądu dostępu|
 
 
@@ -551,27 +551,27 @@ W tym artykule wymieniono działania inspekcji, które mogą być rejestrowane w
 
 |Kategorii inspekcji|Działanie|
 |---|---|
-|PROGRAMÓW|ActivationAborted|
-|PROGRAMÓW|ActivationApproved|
-|PROGRAMÓW|ActivationCanceled|
-|PROGRAMÓW|ActivationDenied|
-|PROGRAMÓW|ActivationRequested|
-|PROGRAMÓW|Dodano|
-|PROGRAMÓW|AddedOutsidePIM|
-|PROGRAMÓW|Przypisywanie|
-|PROGRAMÓW|DismissAlert|
-|PROGRAMÓW|Podnoszenie poziomu uprawnień|
-|PROGRAMÓW|ReactivateAlert|
-|PROGRAMÓW|Usunięto|
-|PROGRAMÓW|RemovedOutsidePIM|
-|PROGRAMÓW|Żądanie zatrzymania przeglądu|
-|PROGRAMÓW|Zmiany ustawienia roli|
-|PROGRAMÓW|ScanAlertsNow|
-|PROGRAMÓW|Rejestracja|
-|PROGRAMÓW|Anulować przypisania|
-|PROGRAMÓW|Obniżanie poziomu uprawnień|
-|PROGRAMÓW|UpdateAlertSettings|
-|PROGRAMÓW|UpdateCurrentState|
+|PIM|ActivationAborted|
+|PIM|ActivationApproved|
+|PIM|ActivationCanceled|
+|PIM|AktywacjaDenied|
+|PIM|ActivationRequested|
+|PIM|Dodano|
+|PIM|DodanooutsidePIM|
+|PIM|Przypisywanie|
+|PIM|OdrzućAltę|
+|PIM|Podnoszenie poziomu uprawnień|
+|PIM|Reaktywujalert|
+|PIM|Usunięto|
+|PIM|UsuniętoOutsidePIM|
+|PIM|Żądanie zatrzymania przeglądu|
+|PIM|Zmiany ustawienia roli|
+|PIM|ScanAlertsNow|
+|PIM|Rejestracja|
+|PIM|Niepodpisyj|
+|PIM|Obniżanie poziomu uprawnień|
+|PIM|UpdateAlertSettings|
+|PIM|UpdateCurrentState|
 
 
 ## <a name="self-service-group-management"></a>Samoobsługowe zarządzanie grupami
@@ -615,14 +615,14 @@ W tym artykule wymieniono działania inspekcji, które mogą być rejestrowane w
 |Warunki użytkowania|Usuń zgodę|
 |Warunki użytkowania|Usuwanie warunków użytkowania|
 |Warunki użytkowania|Edytowanie warunków użytkowania|
-|Warunki użytkowania|Warunki użytkowania|
-|Warunki użytkowania|Trwałe usuwanie warunków użytkowania|
+|Warunki użytkowania|Wygasane warunki użytkowania|
+|Warunki użytkowania|Warunki użytkowania twardego usuwania|
 |Warunki użytkowania|Publikowanie warunków użytkowania|
 |Warunki użytkowania|Cofanie publikacji warunków użytkowania|
 
 
 ## <a name="next-steps"></a>Następne kroki
 
-- [Przegląd raportów usługi Azure AD](overview-reports.md).
-- [Raport dotyczący dzienników inspekcji](concept-audit-logs.md). 
-- [Programistyczny dostęp do raportów usługi Azure AD](concept-reporting-api.md)
+- [Omówienie raportów usługi Azure AD](overview-reports.md).
+- [Raport dzienników inspekcji](concept-audit-logs.md). 
+- [Programowy dostęp do raportów usługi Azure AD](concept-reporting-api.md)
