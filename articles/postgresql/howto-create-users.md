@@ -1,62 +1,66 @@
 ---
-title: Tworzenie użytkowników — Azure Database for PostgreSQL — pojedynczy serwer
-description: W tym artykule opisano sposób tworzenia nowych kont użytkowników w celu współdziałania z serwerem Azure Database for PostgreSQL-pojedynczym.
+title: Tworzenie użytkowników — usługa Azure Database for PostgreSQL — pojedynczy serwer
+description: W tym artykule opisano, jak można utworzyć nowe konta użytkowników do interakcji z usługą Azure Database dla PostgreSQL — pojedynczy serwer.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/22/2019
-ms.openlocfilehash: 8e4c95c4c6c653854864aa4996f926177d3d55c7
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 127d484d6cfc35368803069f9c3d602e787baa56
+ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74763604"
+ms.lasthandoff: 03/29/2020
+ms.locfileid: "80384351"
 ---
-# <a name="create-users-in-azure-database-for-postgresql---single-server"></a>Tworzenie użytkowników w Azure Database for PostgreSQL — pojedynczy serwer
-W tym artykule opisano, jak można tworzyć użytkowników w ramach serwera Azure Database for PostgreSQL. 
+# <a name="create-users-in-azure-database-for-postgresql---single-server"></a>Tworzenie użytkowników w bazie danych azure dla postgreSQL — pojedynczy serwer
 
-Jeśli chcesz dowiedzieć się, jak tworzyć użytkowników subskrypcji platformy Azure i zarządzać nimi, możesz odwiedzić [artykuł kontroli dostępu opartej na rolach (RBAC) na platformie Azure](../role-based-access-control/built-in-roles.md) lub zapoznać [się z tematem jak dostosować role](../role-based-access-control/custom-roles.md).
+W tym artykule opisano, jak można tworzyć użytkowników w ramach usługi Azure Database dla serwera PostgreSQL.
+
+Jeśli chcesz dowiedzieć się, jak tworzyć i zarządzać użytkownikami subskrypcji platformy Azure i ich uprawnieniami, możesz odwiedzić [artykuł kontroli dostępu (RBAC) opartej na rolach platformy Azure](../role-based-access-control/built-in-roles.md) lub [przejrzeć sposób dostosowywania ról.](../role-based-access-control/custom-roles.md)
 
 ## <a name="the-server-admin-account"></a>Konto administratora serwera
-Podczas pierwszego tworzenia Azure Database for PostgreSQL podano nazwę użytkownika i hasło administratora serwera. Aby uzyskać więcej informacji, możesz skorzystać z [przewodnika Szybki Start](quickstart-create-server-database-portal.md) , aby zobaczyć podejście krok po kroku. Ponieważ nazwa użytkownika administratora serwera jest nazwą niestandardową, można zlokalizować wybraną nazwę użytkownika administratora serwera z Azure Portal.
 
-Serwer Azure Database for PostgreSQL jest tworzony z trzema zdefiniowanymi rolami domyślnymi. Te role można wyświetlić, uruchamiając polecenie: `SELECT rolname FROM pg_roles;`
+Podczas pierwszego tworzenia bazy danych usługi Azure database dla postgreSQL podano nazwę użytkownika administratora serwera i hasło. Aby uzyskać więcej informacji, można wykonać [szybki start,](quickstart-create-server-database-portal.md) aby wyświetlić podejście krok po kroku. Ponieważ nazwa użytkownika administratora serwera jest nazwą niestandardową, można zlokalizować wybraną nazwę użytkownika administratora serwera z witryny Azure portal.
+
+Usługa Azure Database for PostgreSQL server is created with the 3 default roles defined. Te role można wyświetlić, uruchamiając polecenie:`SELECT rolname FROM pg_roles;`
+
 - azure_pg_admin
 - azure_superuser
-- Administrator serwera
+- twój administrator serwera
 
-Administrator serwera jest członkiem roli azure_pg_admin. Jednak konto administratora serwera nie jest częścią roli azure_superuser. Ponieważ ta usługa jest zarządzaną usługą PaaS, tylko firma Microsoft jest częścią roli administratora. 
+Użytkownik administratora serwera jest członkiem roli azure_pg_admin. Jednak konto administratora serwera nie jest częścią roli azure_superuser. Ponieważ ta usługa jest zarządzaną usługą PaaS, tylko firma Microsoft jest częścią roli superużytnia.
 
-Aparat PostgreSQL używa uprawnień do kontrolowania dostępu do obiektów bazy danych, jak to opisano w [dokumentacji produktu PostgreSQL](https://www.postgresql.org/docs/current/static/sql-createrole.html). W Azure Database for PostgreSQL administrator serwera otrzymuje następujące uprawnienia: LOGIN, NOSUPERUSER, INHERIT, CREATEDB, DbRole, noreplication
+Aparat PostgreSQL używa uprawnień do kontrolowania dostępu do obiektów bazy danych, jak omówiono w [dokumentacji produktu PostgreSQL](https://www.postgresql.org/docs/current/static/sql-createrole.html). W usłudze Azure Database for PostgreSQL administrator serwera otrzymuje następujące uprawnienia: LOGIN, NOSUPERUSER, INHERIT, CREATEDB, CREATEROLE, NOREPLICATION
 
-Przy użyciu konta administratora serwera można utworzyć dodatkowych użytkowników i przyznać je użytkownikom w roli azure_pg_admin. Ponadto konto administratora serwera może służyć do tworzenia mniej uprzywilejowanych użytkowników i ról, które mają dostęp do poszczególnych baz danych i schematów.
+Konto użytkownika administratora serwera może służyć do tworzenia dodatkowych użytkowników i przyznawania tych użytkowników do roli azure_pg_admin. Ponadto konto administratora serwera może służyć do tworzenia mniej uprzywilejowanych użytkowników i ról, które mają dostęp do poszczególnych baz danych i schematów.
 
-## <a name="how-to-create-additional-admin-users-in-azure-database-for-postgresql"></a>Jak utworzyć dodatkowych użytkowników administracyjnych w Azure Database for PostgreSQL
-1. Pobierz informacje o połączeniu i nazwa użytkownika administratora.
-   Aby można było nawiązać połączenie z serwerem bazy danych, potrzebne są pełna nazwa serwera i poświadczenia logowania administratora. Możesz łatwo znaleźć nazwę serwera i informacje dotyczące logowania na stronie **Przegląd** serwera lub stronie **Właściwości** w Azure Portal. 
+## <a name="how-to-create-additional-admin-users-in-azure-database-for-postgresql"></a>Jak utworzyć dodatkowych użytkowników administratorów w usłudze Azure Database for PostgreSQL
 
-2. Aby nawiązać połączenie z serwerem bazy danych, użyj konta administratora i hasła. Skorzystaj z preferowanego narzędzia klienckiego, takiego jak pgAdmin lub PSQL.
-   Jeśli nie wiesz, jak nawiązać połączenie, zobacz [Przewodnik Szybki Start](./quickstart-create-server-database-portal.md)
+1. Pobierz informacje o połączeniu i nazwę użytkownika administratora.
+   Aby można było nawiązać połączenie z serwerem bazy danych, potrzebne są pełna nazwa serwera i poświadczenia logowania administratora. Nazwę serwera i informacje logowania można łatwo znaleźć ze strony **Przegląd** serwera lub na stronie **Właściwości** w witrynie Azure portal.
 
-3. Edytuj i uruchom następujący kod SQL. Zastąp nową nazwę użytkownika wartością zastępczą < new_user > i Zastąp hasło symbolem zastępczym własnym silnym hasłem. 
+2. Użyj konta administratora i hasła, aby połączyć się z serwerem bazy danych. Użyj preferowanego narzędzia klienta, takiego jak pgAdmin lub psql.
+   Jeśli nie masz pewności, jak się połączyć, [zobacz](./quickstart-create-server-database-portal.md)
+
+3. Edytuj i uruchom następujący kod SQL. Zastąp nową nazwę użytkownika dla wartości zastępczej <new_user> i zastąp hasło zastępcze własnym silnym hasłem. 
 
    ```sql
    CREATE ROLE <new_user> WITH LOGIN NOSUPERUSER INHERIT CREATEDB CREATEROLE NOREPLICATION PASSWORD '<StrongPassword!>';
-   
+
    GRANT azure_pg_admin TO <new_user>;
    ```
 
-## <a name="how-to-create-database-users-in-azure-database-for-postgresql"></a>Jak utworzyć użytkowników bazy danych w Azure Database for PostgreSQL
+## <a name="how-to-create-database-users-in-azure-database-for-postgresql"></a>Jak utworzyć użytkowników bazy danych w usłudze Azure Database for PostgreSQL
 
-1. Pobierz informacje o połączeniu i nazwa użytkownika administratora.
-   Aby można było nawiązać połączenie z serwerem bazy danych, potrzebne są pełna nazwa serwera i poświadczenia logowania administratora. Możesz łatwo znaleźć nazwę serwera i informacje dotyczące logowania na stronie **Przegląd** serwera lub stronie **Właściwości** w Azure Portal. 
+1. Pobierz informacje o połączeniu i nazwę użytkownika administratora.
+   Aby można było nawiązać połączenie z serwerem bazy danych, potrzebne są pełna nazwa serwera i poświadczenia logowania administratora. Nazwę serwera i informacje logowania można łatwo znaleźć ze strony **Przegląd** serwera lub na stronie **Właściwości** w witrynie Azure portal.
 
-2. Aby nawiązać połączenie z serwerem bazy danych, użyj konta administratora i hasła. Skorzystaj z preferowanego narzędzia klienckiego, takiego jak pgAdmin lub PSQL.
+2. Użyj konta administratora i hasła, aby połączyć się z serwerem bazy danych. Użyj preferowanego narzędzia klienta, takiego jak pgAdmin lub psql.
 
-3. Edytuj i uruchom następujący kod SQL. Zastąp wartość symbolu zastępczego `<db_user>` nową nazwą użytkownika i symbolem zastępczym `<newdb>` nazwą swojej bazy danych. Zastąp hasło symbolem zastępczym własnym silnym hasłem. 
+3. Edytuj i uruchom następujący kod SQL. Zastąp `<db_user>` wartość symbolu zastępczego nową nazwą `<newdb>` użytkownika i wartością zastępczą własną nazwą bazy danych. Zastąp hasło zastępcze własnym silnym hasłem.
 
-   Ta składnia kodu SQL tworzy nową bazę danych o nazwie TestDB, na przykład. Następnie tworzy nowego użytkownika w usłudze PostgreSQL i przyznaje uprawnienia do łączenia się z nową bazą danych dla tego użytkownika. 
+   Ta składnia kodu SQL tworzy nową bazę danych o nazwie testdb, na przykład celów. Następnie tworzy nowego użytkownika w usłudze PostgreSQL i udziela uprawnień do łączenia się z nową bazą danych dla tego użytkownika.
 
    ```sql
    CREATE DATABASE <newdb>;
@@ -66,18 +70,20 @@ Przy użyciu konta administratora serwera można utworzyć dodatkowych użytkown
    GRANT CONNECT ON DATABASE <newdb> TO <db_user>;
    ```
 
-4. Korzystając z konta administratora, może być konieczne przyznanie dodatkowych uprawnień do zabezpieczania obiektów w bazie danych. Więcej informacji na temat ról i uprawnień bazy danych znajduje się w [dokumentacji PostgreSQL](https://www.postgresql.org/docs/current/static/ddl-priv.html) . Na przykład: 
+4. Za pomocą konta administratora, może być konieczne przyznanie dodatkowych uprawnień do zabezpieczania obiektów w bazie danych. Więcej informacji na temat ról i uprawnień bazy danych można znaleźć w [dokumentacji PostgreSQL.](https://www.postgresql.org/docs/current/static/ddl-priv.html) Przykład:
+
    ```sql
    GRANT ALL PRIVILEGES ON DATABASE <newdb> TO <db_user>;
    ```
 
-5. Zaloguj się na serwerze, określając wydaną bazę danych przy użyciu nowej nazwy użytkownika i hasła. Ten przykład pokazuje wiersz polecenia PSQL. Za pomocą tego polecenia zostanie wyświetlony monit o podanie hasła dla nazwy użytkownika. Zastąp własną nazwę serwera, nazwę bazy danych i nazwę użytkownika.
+5. Zaloguj się do serwera, określając wyznaczoną bazę danych, używając nowej nazwy użytkownika i hasła. W tym przykładzie pokazano wiersz polecenia psql. Za pomocą tego polecenia zostanie wyświetlony monit o podanie hasła do nazwy użytkownika. Zastąp własną nazwę serwera, nazwę bazy danych i nazwę użytkownika.
 
-   ```azurecli-interactive
+   ```shell
    psql --host=mydemoserver.postgres.database.azure.com --port=5432 --username=db_user@mydemoserver --dbname=newdb
    ```
 
 ## <a name="next-steps"></a>Następne kroki
-Otwórz Zaporę dla adresów IP nowych maszyn użytkowników, aby umożliwić im nawiązanie połączenia: [Tworzenie reguł zapory Azure Database for PostgreSQL i zarządzanie nimi za pomocą Azure Portal](howto-manage-firewall-using-portal.md) lub [interfejsu wiersza polecenia platformy Azure](howto-manage-firewall-using-cli.md).
 
-Aby uzyskać więcej informacji dotyczących zarządzania kontami użytkowników, zobacz dokumentację produktu PostgreSQL dla [ról i uprawnień bazy danych](https://www.postgresql.org/docs/current/static/user-manag.html), [składnię](https://www.postgresql.org/docs/current/static/sql-grant.html)i [uprawnienia](https://www.postgresql.org/docs/current/static/ddl-priv.html).
+Otwórz zaporę dla adresów IP maszyn nowych użytkowników, aby umożliwić im nawiązanie połączenia: [tworzenie i zarządzanie regułami zapory usługi Azure Database dla postgreSQL przy użyciu witryny Azure portal](howto-manage-firewall-using-portal.md) lub interfejsu [wiersza polecenia platformy Azure.](howto-manage-firewall-using-cli.md)
+
+Aby uzyskać więcej informacji dotyczących zarządzania kontem użytkowników, zobacz Dokumentacja produktu PostgreSQL dla [ról i uprawnień bazy danych,](https://www.postgresql.org/docs/current/static/user-manag.html) [przyznać składnię](https://www.postgresql.org/docs/current/static/sql-grant.html)i [uprawnienia](https://www.postgresql.org/docs/current/static/ddl-priv.html).

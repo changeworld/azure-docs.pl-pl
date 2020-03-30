@@ -1,69 +1,65 @@
 ---
-title: Jak wykonywać zapytania dotyczące dzienników z Azure Monitor kontenerów | Microsoft Docs
-description: Azure Monitor dla kontenerów zbiera dane dotyczące metryk i dzienników, a w tym artykule opisano rekordy i zawiera przykładowe zapytania.
+title: Jak kwerendy dzienników z usługi Azure Monitor dla kontenerów | Dokumenty firmy Microsoft
+description: Usługa Azure Monitor dla kontenerów zbiera metryki i dane dziennika, a w tym artykule opisano rekordy i zawiera przykładowe kwerendy.
 ms.topic: conceptual
-ms.date: 10/15/2019
-ms.openlocfilehash: dcd1656673e549b583de26bca897d0055f389d0a
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.date: 03/26/2020
+ms.openlocfilehash: ff7cbff708b794847d8be69ca8f829e622d7c7ab
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79275362"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80333477"
 ---
-# <a name="how-to-query-logs-from-azure-monitor-for-containers"></a>Jak wykonywać zapytania dotyczące dzienników z Azure Monitor dla kontenerów
+# <a name="how-to-query-logs-from-azure-monitor-for-containers"></a>Jak wysyłać zapytania do dzienników z usługi Azure Monitor dla kontenerów
 
-Azure Monitor dla kontenerów gromadzi informacje o metrykach wydajności, danych spisu i informacjach o stanie kondycji z hostów kontenerów i kontenerów, a następnie przekazuje je do obszaru roboczego Log Analytics w Azure Monitor. Dane są gromadzone co trzy minuty. Te dane są dostępne dla [zapytań](../../azure-monitor/log-query/log-query-overview.md) w Azure monitor. Te dane można zastosować do scenariuszy, które obejmują Planowanie migracji, analizę pojemności, odnajdywanie i rozwiązywanie problemów z wydajnością na żądanie.
+Usługa Azure Monitor dla kontenerów zbiera metryki wydajności, dane spisu i informacje o stanie kondycji z hostów kontenerów i kontenerów i przekazuje je do obszaru roboczego usługi Log Analytics w usłudze Azure Monitor. Dane są zbierane co trzy minuty. Te dane są dostępne dla [kwerendy](../../azure-monitor/log-query/log-query-overview.md) w usłudze Azure Monitor. Te dane można zastosować do scenariuszy, które obejmują planowanie migracji, analizę zdolności produkcyjnych, odnajdowanie i rozwiązywanie problemów z wydajnością na żądanie.
 
-## <a name="container-records"></a>Rekordów kontenera
+## <a name="container-records"></a>Rekordy kontenerów
 
-Przykłady rekordy, które są zbierane przez usługi Azure Monitor dla kontenerów i typy danych, które są wyświetlane w wynikach wyszukiwania w dzienniku są wyświetlane w poniższej tabeli:
+Przykłady rekordów, które są zbierane przez usługę Azure Monitor dla kontenerów i typów danych, które pojawiają się w wynikach wyszukiwania dziennika są wyświetlane w poniższej tabeli:
 
-| Typ danych | Typ danych podczas wyszukiwania dziennika | Pola |
+| Typ danych | Typ danych w wyszukiwaniu dzienników | Pola |
 | --- | --- | --- |
-| Wydajność dla hostów i kontenerów | `Perf` | CounterName komputera, nazwa obiektu, &#40;czas procesora (%), dysk odczytuje MB, dysku zapisuje MB, MB użycia pamięci, sieci odbierania bajtów, sieci wysyłania w bajtach, procesor s użycia, sieć&#41;, CounterValue, TimeGenerated, Ścieżka_licznika, system źródłowy |
-| Kontener magazynu | `ContainerInventory` | TimeGenerated, komputera, nazwa kontenera, ContainerHostname, obraz, ImageTag, ContainerState, ExitCode, EnvironmentVar, polecenia, wartością CreatedTime, StartedTime, FinishedTime, system źródłowy, ContainerID, ImageID |
-| Dziennik kontenera | `ContainerLog` | TimeGenerated, komputer, identyfikator obrazu, pola Nazwa kontenera LogEntrySource, LogEntry, system źródłowy, ContainerID |
-| Spis węzłów kontenerów | `ContainerNodeInventory`| TimeGenerated, Computer, ClassName_s, DockerVersion_s, OperatingSystem_s, Volume_s, Network_s, NodeRole_s, OrchestratorType_s, InstanceID_g, SourceSystem|
-| Spis zasobników w klastrze Kubernetes | `KubePodInventory` | TimeGenerated, Computer, ClusterId, ContainerCreationTimeStamp, PodUid, PodCreationTimeStamp, ContainerRestartCount, PodRestartCount, PodStartTime, ContainerStartTime, ServiceName, ControllerKind, ControllerName, ContainerStatus,  ContainerStatusReason, ContainerID, ContainerName, Name, PodLabel, Namespace, PodStatus, ClusterName, PodIp, SourceSystem |
-| Spis węzłów będących częścią klastra Kubernetes | `KubeNodeInventory` | TimeGenerated, komputera, ClusterName, ClusterId, LastTransitionTimeReady, etykiety, stan, KubeletVersion, KubeProxyVersion, CreationTimeStamp, system źródłowy | 
-| Zdarzenia Kubernetes | `KubeEvents` | TimeGenerated, komputera, ClusterId_s, FirstSeen_t, LastSeen_t, Count_d, ObjectKind_s, Namespace_s, Name_s, Reason_s, Type_s, TimeGenerated_s, SourceComponent_s, ClusterName_s, komunikat o błędzie, system źródłowy | 
-| Usługi w klastrze Kubernetes | `KubeServices` | TimeGenerated, ServiceName_s, SelectorLabels_s, ServiceType_s, ClusterId_s, ClusterIP_s, Namespace_s, ClusterName_s, system źródłowy | 
-| Metryki wydajności dla części węzłów klastra Kubernetes | Perf &#124; gdzie ObjectName == "K8SNode" | Computer, ObjectName, &#40;CounterName CpuAllocatableBytes, MemoryAllocatableBytes, CpuCapacityNanoCores, MemoryCapacityBytes, MemoryRssBytes, CpuUsageNanoCores, MemoryWorkingsetBytes,&#41;RestartTimeEpoch, CounterValue, TimeGenerated, CounterPath, SourceSystem | 
-| Metryki wydajności dla kontenerów częścią klastra Kubernetes | Perf &#124; gdzie ObjectName == "K8SContainer" | CounterName &#40; CpuRequestNanoCores, MemoryRequestBytes, CpuLimitNanoCores, MemoryWorkingSetBytes, RestartTimeEpoch, CpuUsageNanoCores, memoryRssBytes&#41;, CounterValue, TimeGenerated, CounterPath, SourceSystem | 
-| Metryki niestandardowe |`InsightsMetrics` | Komputer, nazwa, przestrzeń nazw, pochodzenie, SourceSystem, znaczniki<sup>1</sup>, TimeGenerated, typ, Va, _ResourceId | 
+| Wydajność dla hostów i kontenerów | `Perf` | Komputer, ObjectName, CounterName &#40;%Czas procesora, Odczyty dysku MB, Zapisy dysków MB, Użycie pamięci MB, Bajty odbierania sieci, Bajty wysyłania sieci, Użycie procesora w s,&#41; sieci, Wartość licznika, Czasogenerowany, CounterPath, System źródłowy |
+| Zapasy kontenerów | `ContainerInventory` | TimeGenerated, Komputer, nazwa kontenera, ContainerHostname, Image, ImageTag, ContainerState, ExitCode, EnvironmentVar, Command, CreatedTime, StartedTime, FinishedTime, SourceSystem, ContainerID, ImageID |
+| Dziennik kontenerów | `ContainerLog` | CzasGenerowany, Komputer, identyfikator obrazu, nazwa kontenera, LogEntrySource, LogEntry, SourceSystem, ContainerID |
+| Magazyn węzła kontenera | `ContainerNodeInventory`| CzasGenerowany, Komputer, ClassName_s, DockerVersion_s, OperatingSystem_s, Volume_s, Network_s, NodeRole_s, OrchestratorType_s, InstanceID_g, System źródłowy|
+| Spis zasobników w klastrze Kubernetes | `KubePodInventory` | TimeGenerated, Komputer, ClusterId, ContainerCreationTimeStamp, PodUid, PodCreationTimeStamp, ContainerRestartCount, PodRestartCount, PodStartTime, ContainerStartTime, ServiceName, ControllerKind, ControllerName, ContainerStatus,  ContainerStatusReason, ContainerID, ContainerName, Name, PodLabel, Namespace, PodStatus, ClusterName, PodIp, SourceSystem |
+| Spis węzłów należących do klastra Kubernetes | `KubeNodeInventory` | CzasGenerowany, Komputer, ClusterName, ClusterId, LastTransitionTimeReady, Etykiety, Stan, KubeletVersion, KubeProxyVersion, CreationTimeStamp, SourceSystem | 
+| Zdarzenia Kubernetes | `KubeEvents` | Czasogenerowane, Komputer, ClusterId_s, FirstSeen_t, LastSeen_t, Count_d, ObjectKind_s, Namespace_s, Name_s, Reason_s, Type_s, TimeGenerated_s, SourceComponent_s, ClusterName_s, wiadomość, system źródłowy | 
+| Usługi w klastrze Kubernetes | `KubeServices` | CzasGenerowany, ServiceName_s, Namespace_s, SelectorLabels_s, ClusterId_s, ClusterName_s, ClusterIP_s, ServiceType_s, System źródłowy | 
+| Metryki wydajności dla węzłów należących do klastra Kubernetes | Perf &#124; gdzie ObjectName == "K8SNode" | Komputer, ObjectName, CounterName &#40;cpuAllocatableBytes, memoryAllocatableBytes, cpuCapacityNanoCores, memoryCapacityBytes, memoryRssBytes, cpuUsageNanoCores, memoryWorkingsetBytes, restartTimeEpoch&#41;, CounterValue, TimeGenerated, CounterPath, SourceSystem | 
+| Metryki wydajności kontenerów części klastra Kubernetes | Perf &#124; gdzie ObjectName == "K8SContainer" | Nazwa przeciwstawna &#40; cpuRequestNanoCores, memoryRequestBytes, cpuLimitNanoCores, memoryWorkingSetBytes, restartTimeEpoch, cpuUsageNanoCores, memoryRssBytes&#41;, CounterValue, TimeGenerated, CounterPath, SourceSystem | 
+| Metryki niestandardowe |`InsightsMetrics` | Komputer, Nazwa, Obszar nazw, Pochodzenie, SourceSystem, Tagi<sup>1</sup>, TimeGenerated, Typ, Va, _ResourceId | 
 
-<sup>1</sup> Właściwość *Tags* reprezentuje [wiele wymiarów](../platform/data-platform-metrics.md#multi-dimensional-metrics) dla odpowiedniej metryki. Aby uzyskać dodatkowe informacje na temat metryk zbieranych i przechowywanych w tabeli `InsightsMetrics` i opis właściwości rekordu, zobacz [InsightsMetrics Overview (przegląd](https://github.com/microsoft/OMS-docker/blob/vishwa/june19agentrel/docs/InsightsMetrics.md)).
+<sup>1</sup> *Właściwość Tags* reprezentuje [wiele wymiarów](../platform/data-platform-metrics.md#multi-dimensional-metrics) dla odpowiedniej metryki. Aby uzyskać dodatkowe informacje na temat metryk zebranych i przechowywanych w `InsightsMetrics` tabeli oraz opis właściwości rekordu, zobacz Przegląd [metryk insights](https://github.com/microsoft/OMS-docker/blob/vishwa/june19agentrel/docs/InsightsMetrics.md).
 
->[!NOTE]
->Obsługa usługi Prometheus jest w tej chwili funkcją w publicznej wersji zapoznawczej.
->
+## <a name="search-logs-to-analyze-data"></a>Szukaj dzienników do analizowania danych
 
-## <a name="search-logs-to-analyze-data"></a>Dzienniki wyszukiwania do analizy danych
+Dzienniki usługi Azure Monitor mogą pomóc w poszukiwaniu trendów, diagnozowaniu wąskich gardeł, prognozowaniu lub korelowaniu danych, które mogą pomóc w określeniu, czy bieżąca konfiguracja klastra działa optymalnie. Wstępnie zdefiniowane wyszukiwania dziennika są przewidziane, aby natychmiast rozpocząć korzystanie lub dostosować, aby zwrócić informacje w odpowiedni sposób.
 
-Dzienniki Azure Monitor mogą ułatwić wyszukiwanie trendów, diagnozowanie wąskich gardeł, prognozowanie lub skorelowanie danych, które mogą pomóc w ustaleniu, czy bieżąca Konfiguracja klastra działa optymalnie. Wstępnie zdefiniowane wyszukiwań w dziennikach znajdują się za Ciebie, aby od razu rozpocząć korzystanie z lub dostosować do zwracania informacji w żądany sposób.
+Interaktywną analizę danych w obszarze roboczym można przeprowadzić, wybierając opcję **Wyświetl dzienniki zdarzeń kubernetes** lub **Wyświetl dzienniki kontenerów** w okienku podglądu z listy rozwijanej **Widok w analizie.** Strona **Wyszukiwanie dzienników** jest wyświetlana po prawej stronie strony portalu Azure, na której się znajdowałeś.
 
-Możesz wykonać interaktywną analizę danych w obszarze roboczym, wybierając opcję **Wyświetl dzienniki zdarzeń Kubernetes** lub **Wyświetl dzienniki kontenerów** w okienku podglądu z listy rozwijanej **Widok w analizie** . Strona **przeszukiwanie dzienników** pojawia się po prawej stronie Azure Portal.
+![Analiza danych w usłudze Log Analytics](./media/container-insights-analyze/container-health-log-search-example.png)
 
-![Analiza danych w usłudze Log Analytics](./media/container-insights-analyze/container-health-log-search-example.png)   
+Dane wyjściowe dziennika kontenera, który jest przekazycony do obszaru roboczego są STDOUT i STDERR. Ponieważ usługa Azure Monitor monitoruje kubernetes zarządzane przez platformę Azure (AKS), system Kube nie jest zbierany dzisiaj ze względu na dużą ilość wygenerowanych danych. 
 
-Dane wyjściowe dzienników kontenerów, które są przekazywane do obszaru roboczego, to STDOUT i STDERR. Ponieważ usługa Azure Monitor jest monitorowanie usługi Azure managed Kubernetes (AKS), system klastra kubernetes w usłudze nie są zbierane już dziś ze względu na duże obciążenie wygenerowane dane. 
+### <a name="example-log-search-queries"></a>Przykładowe zapytania wyszukiwania dziennika
 
-### <a name="example-log-search-queries"></a>Przykład zapytania wyszukiwania w Dzienniku
-
-Często jest to przydatne do tworzenia zapytań, które zaczynać się przykładem lub dwa, a następnie zmodyfikuj je zgodnie z wymaganiami. Aby ułatwić tworzenie bardziej zaawansowanych zapytań, możesz eksperymentować z następujące przykładowe zapytania:
+Często jest przydatne do tworzenia zapytań, które zaczynają się od przykładu lub dwóch, a następnie zmodyfikować je, aby dopasować je do wymagań. Aby ułatwić tworzenie bardziej zaawansowanych zapytań, można eksperymentować z następującymi przykładowymi kwerendami:
 
 | Zapytanie | Opis | 
 |-------|-------------|
-| ContainerInventory<br> &#124;Projekt komputera, nazwa, obraz, ImageTag, ContainerState, wartością CreatedTime, StartedTime, FinishedTime<br> &#124;Renderowanie tabeli | Wyświetlić listę wszystkich informacji o cyklu życia kontenera| 
-| KubeEvents_CL<br> &#124;gdzie not(isempty(Namespace_s))<br> &#124;Sortuj według malejącej TimeGenerated<br> &#124;Renderowanie tabeli | Zdarzenia Kubernetes|
-| ContainerImageInventory<br> &#124;summarize AggregatedValue = count() by obrazu, ImageTag, działa | Spis obrazów | 
-| **Wybierz opcję wyświetlania wykresu liniowego**:<br> Wyd.<br> &#124;Gdzie ObjectName == "K8SContainer" i CounterName == "cpuUsageNanoCores" &#124; Podsumuj AvgCPUUsageNanoCores avg(CounterValue) przez bin (TimeGenerated, 30 min), InstanceName = | Procesora CPU kontenera | 
-| **Wybierz opcję wyświetlania wykresu liniowego**:<br> Wyd.<br> &#124;Gdzie ObjectName == "K8SContainer" i CounterName == "memoryRssBytes" &#124; Podsumuj AvgUsedRssMemoryBytes avg(CounterValue) przez bin (TimeGenerated, 30 min), InstanceName = | Pamięci kontenera |
-| InsightsMetrics<br> &#124;WHERE name = = "requests_count"<br> &#124;Sumuj wartość Val = any (Val) przez TimeGenerated = bin (TimeGenerated, 1M)<br> &#124;Sortuj według TimeGenerated ASC<br> &#124;Project RequestsPerMinute = Val-poprzedni (Val), TimeGenerated <br> &#124;Renderowanie BarChart  | Liczba żądań na minutę z metrykami niestandardowymi |
+| ContainerInventory (KontenerInwentory)<br> &#124; projektu Komputer, Nazwa, Obraz, ImageTag, ContainerState, CreatedTime, StartedTime, FinishedTime<br> &#124; tabela renderowania | Wyświetlanie wszystkich informacji o cyklu życia kontenera| 
+| KubeEvents_CL<br> &#124;, gdzie nie (niedosyt(Namespace_s))<br> &#124; sortowanie według czasuGenerowane desc<br> &#124; tabela renderowania | Zdarzenia Kubernetes|
+| ContainerImageInwentory<br> &#124; podsumuj aggregatedValue = count() według obrazu, ImageTag, Running | Inwentaryzacja obrazów | 
+| **Wybierz opcję wyświetlania wykresu liniowego:**<br> Wyd.<br> &#124; gdzie ObjectName == "K8SContainer" i CounterName == "cpuUsageNanoCores" &#124; podsumuj AvgCPUUsageNanoCores = avg(CounterValue) przez bin(TimeGenerated, 30m), InstanceName | Procesor kontenerowy | 
+| **Wybierz opcję wyświetlania wykresu liniowego:**<br> Wyd.<br> &#124; gdzie ObjectName == "K8SContainer" i CounterName == "memoryRssBytes" &#124; podsumuj AvgUsedRssMemoryBytes = avg(CounterValue) przez bin(TimeGenerated, 30m), InstanceName | Pamięć kontenera |
+| Wskaźniki insights<br> &#124; gdzie Nazwa == "requests_count"<br> &#124; podsumuj Val=any(Val) według timegenerated=bin(TimeGenerated, 1m)<br> &#124; sortowanie według timegenerated asc<br> &#124; projektu RequestsPerMinute = Val - prev(Val), TimeGenerated <br> &#124; renderowania wykresu barchart  | Żądania na minutę z niestandardowych metryk |
 
-## <a name="query-prometheus-metrics-data"></a>Zapytanie danych metryk Prometheus
+## <a name="query-prometheus-metrics-data"></a>Zapytanie Prometheus dane metryki
 
-Poniższy przykład to zapytanie metryki Prometheus przedstawiające Odczyty dysku na sekundę na dysk na węzeł.
+Poniższy przykład jest Prometheus metrics kwerendy pokazujący odczyty dysku na sekundę na dysk na węzeł.
 
 ```
 InsightsMetrics
@@ -84,7 +80,7 @@ InsightsMetrics
 
 ```
 
-Aby wyświetlić metryki Prometheus oddzielone przez Azure Monitor filtrowane według przestrzeni nazw, określ wartość "Prometheus". Oto przykładowe zapytanie umożliwiające wyświetlenie metryk Prometheus z przestrzeni nazw `default` Kubernetes.
+Aby wyświetlić metryki Prometheus zeskrobane przez usługę Azure Monitor filtrowane przez obszar nazw, określ "prometheus". Oto przykładowe zapytanie, aby wyświetlić metryki Prometheus z obszaru nazw `default` kubernetes.
 
 ```
 InsightsMetrics 
@@ -93,7 +89,7 @@ InsightsMetrics
 | summarize count() by Name
 ```
 
-Dane Prometheus można także zbadać bezpośrednio według nazwy.
+Prometheus dane mogą być również bezpośrednio wyszukiwane przez nazwę.
 
 ```
 InsightsMetrics 
@@ -101,18 +97,18 @@ InsightsMetrics
 | where Name contains "some_prometheus_metric"
 ```
 
-### <a name="query-config-or-scraping-errors"></a>Błędy podczas konfigurowania lub wypadków
+### <a name="query-config-or-scraping-errors"></a>Błędy konfiguracji lub skrobania kwerendy
 
-Aby zbadać wszelkie błędy związane z konfiguracją lub brakiem, następujące przykładowe zapytanie zwraca informacje o zdarzeniach z tabeli `KubeMonAgentEvents`.
+Aby zbadać wszelkie błędy konfiguracji lub skrobania, poniższa `KubeMonAgentEvents` przykładowa kwerenda zwraca zdarzenia informacyjne z tabeli.
 
 ```
 KubeMonAgentEvents | where Level != "Info" 
 ```
 
-Wyniki będą wyglądać podobnie do następujących:
+Dane wyjściowe pokażą wyniki podobne do następujących:
 
-![Rejestruj wyniki zapytania dotyczącego zdarzeń informacyjnych z agenta](./media/container-insights-log-search/log-query-example-kubeagent-events.png)
+![Rejestrowanie wyników kwerend zdarzeń informacyjnych z agenta](./media/container-insights-log-search/log-query-example-kubeagent-events.png)
 
 ## <a name="next-steps"></a>Następne kroki
 
-Azure Monitor kontenerów nie zawiera wstępnie zdefiniowanego zestawu alertów. Zapoznaj się z tematem [tworzenie alertów dotyczących wydajności za pomocą Azure monitor dla kontenerów](container-insights-alerts.md) , aby dowiedzieć się, jak utworzyć zalecane alerty dotyczące wysokiego użycia procesora i pamięci, aby zapewnić obsługę procesów i procedur operacyjnych DevOps. 
+Usługa Azure Monitor dla kontenerów nie zawiera wstępnie zdefiniowanego zestawu alertów. Przejrzyj [tworzenie alertów wydajności za pomocą usługi Azure Monitor dla kontenerów,](container-insights-alerts.md) aby dowiedzieć się, jak utworzyć zalecane alerty dotyczące wysokiego wykorzystania procesora CPU i pamięci w celu obsługi procesów i procedur operacyjnych. 

@@ -1,116 +1,116 @@
 ---
-title: Obsługiwane style mapy | Mapy Microsoft Azure
-description: W tym artykule omówiono różne style renderowania mapy obsługiwane przez Microsoft Azure Maps.
-author: farah-alyasari
-ms.author: v-faalya
+title: Obsługiwane style map | Mapy platformy Microsoft Azure
+description: W tym artykule dowiesz się o różnych stylach renderowania map obsługiwanych przez usługi Microsoft Azure Maps.
+author: philmea
+ms.author: philmea
 ms.date: 05/06/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: a65f20e04603403a1d3a180e364626d5b4440661
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 2eafe3c16a89723d55ec52fde785e9ec69e45e0c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77664523"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80334035"
 ---
-# <a name="azure-maps-supported-map-styles"></a>Azure Maps obsługiwane style mapy
-Azure Maps obsługuje kilka różnych wbudowanych stylów mapy, zgodnie z poniższym opisem.
+# <a name="azure-maps-supported-map-styles"></a>Obsługiwane style map usługi Azure Maps
+Usługa Azure Maps obsługuje kilka różnych wbudowanych stylów map, jak opisano poniżej.
 
-## <a name="road"></a>zwiększa
-Mapa **drogowa** to standardowa mapa, która wyświetla drogi, naturalne i sztuczne funkcje wraz z etykietami dla tych funkcji.
+## <a name="road"></a>Road
+Mapa **drogowa** to standardowa mapa, która wyświetla drogi, naturalne i sztuczne obiekty wraz z etykietami dla tych obiektów.
 
 ![styl mapy drogowej](./media/supported-map-styles/road.png)
 
 **Odpowiednie interfejsy API:**
 * [Obraz mapy](https://docs.microsoft.com/rest/api/maps/render/getmapimage)
-* [Kafelek mapy](https://docs.microsoft.com/rest/api/maps/render/getmaptile)
-* Kontrolka mapy zestawu SDK sieci Web
-* Kontrolka mapy systemu Android
+* [Kafelek Mapy](https://docs.microsoft.com/rest/api/maps/render/getmaptile)
+* Sterowanie mapą zestawu SDK w sieci Web
+* Kontrola mapy Androida
 
 ## <a name="blank-and-blank_accessible"></a>puste i blank_accessible
 
-Style " **puste** " i " **blank_accessible** map" zawierają pustą kanwę, na której można wizualizować dane. Styl **blank_accessible** będzie nadal udostępniać aktualizacje czytnika ekranu ze szczegółami lokalizacji mapy, nawet jeśli mapa podstawowa nie jest wyświetlana.
+**Style mapy puste** i **blank_accessible** zapewniają pustą kanwę, na której można wizualizować dane. Styl **blank_accessible** będzie nadal dostarczał aktualizacji czytnika ekranu ze szczegółami lokalizacji mapy, nawet jeśli mapa bazowa nie jest wyświetlana.
 
 > [!Note]
-> W zestawie SDK sieci Web można zmienić kolor tła mapy, ustawiając styl CSS `background-color` stylu elementu DIV mapy.
+> W web SDK można zmienić kolor tła mapy, `background-color` ustawiając styl CSS elementu DIV mapy.
 
 **Odpowiednie interfejsy API:**
-* Kontrolka mapy zestawu SDK sieci Web
+* Sterowanie mapą zestawu SDK w sieci Web
 
-## <a name="satellite"></a>urządzenia 
-Styl **satelity** to kombinacja zdjęć satelitarnych i antenowych.
+## <a name="satellite"></a>satellite 
+Styl **satelity** to połączenie zdjęć satelitarnych i lotniczych.
 
 ![styl mapy kafelków satelitarnych](./media/supported-map-styles/satellite.png)
 
 **Odpowiednie interfejsy API:**
-* [Kafelek satelitarny](https://docs.microsoft.com/rest/api/maps/render/getmapimagerytilepreview)
-* Kontrolka mapy zestawu SDK sieci Web
-* Kontrolka mapy systemu Android
+* [Płytka satelitarna](https://docs.microsoft.com/rest/api/maps/render/getmapimagerytilepreview)
+* Sterowanie mapą zestawu SDK w sieci Web
+* Kontrola mapy Androida
 
 ## <a name="satellite_road_labels"></a>satellite_road_labels
-Ten styl mapy jest hybrydą dróg i etykiet, które są nakładane na Zdjęcia satelitarne i anteny.
+Ten styl mapy jest hybrydą dróg i etykiet nałożonych na zdjęcia satelitarne i lotnicze.
 
-![styl mapy satellite_road_labels](./media/supported-map-styles/satellite-road-labels.png)
+![satellite_road_labels styl mapy](./media/supported-map-styles/satellite-road-labels.png)
 
 **Odpowiednie interfejsy API:**
-* Kontrolka mapy zestawu SDK sieci Web
-* Kontrolka mapy systemu Android
+* Sterowanie mapą zestawu SDK w sieci Web
+* Kontrola mapy Androida
 
 ## <a name="grayscale_dark"></a>grayscale_dark
-**ciemna Skala szarości** jest ciemną wersją stylu mapy drogowej.
+**szarość ciemny** jest ciemną wersją stylu mapy drogowej.
 
-![styl mapy gray_scale](./media/supported-map-styles/grayscale-dark.png)
+![gray_scale styl mapy](./media/supported-map-styles/grayscale-dark.png)
 
 **Odpowiednie interfejsy API:**
 * [Obraz mapy](https://docs.microsoft.com/rest/api/maps/render/getmapimage)
-* [Kafelek mapy](https://docs.microsoft.com/rest/api/maps/render/getmaptile)
-* Kontrolka mapy zestawu SDK sieci Web 
-* Kontrolka mapy systemu Android
+* [Kafelek Mapy](https://docs.microsoft.com/rest/api/maps/render/getmaptile)
+* Sterowanie mapą zestawu SDK w sieci Web 
+* Kontrola mapy Androida
 
 
 ## <a name="grayscale_light"></a>grayscale_light
-**sygnalizator skali szarości** to jasna wersja stylu mapy drogowej.
+**światło w skali szarości** jest lekką wersją stylu mapy drogowej.
 
-![styl mapy światła skali szarości](./media/supported-map-styles/grayscale-light.png)
+![styl mapy światła w skali szarości](./media/supported-map-styles/grayscale-light.png)
 
 **Odpowiednie interfejsy API:**
-* Kontrolka mapy zestawu SDK sieci Web
-* Kontrolka mapy systemu Android
+* Sterowanie mapą zestawu SDK w sieci Web
+* Kontrola mapy Androida
 
 
-## <a name="night"></a>Godzinach
-**nocna** to ciemna wersja stylu mapy drogowej z kolorami dróg i symboli.
+## <a name="night"></a>noc
+**noc** to ciemna wersja stylu mapy drogowej z kolorowymi drogami i symbolami.
 
 ![styl mapy nocnej](./media/supported-map-styles/night.png)
 
 **Odpowiednie interfejsy API:**
-* Kontrolka mapy zestawu SDK sieci Web
-* Kontrolka mapy systemu Android
+* Sterowanie mapą zestawu SDK w sieci Web
+* Kontrola mapy Androida
 
 ## <a name="road_shaded_relief"></a>road_shaded_relief
-nastąpi **odcień drogi** jest Azure Maps głównym stylem, który został ukończony z obprezentacją ziemi.
+**ulga w zacieniona droga** to główny styl usługi Azure Maps uzupełniony o kontury Ziemi.
 
-![styl mapy zacieniowanych ulg](./media/supported-map-styles/shaded-relief.png)
+![styl mapy cieniowane relief](./media/supported-map-styles/shaded-relief.png)
 
 **Odpowiednie interfejsy API:**
-* [Kafelek mapy](https://docs.microsoft.com/rest/api/maps/render/getmaptile)
-* Kontrolka mapy zestawu SDK sieci Web
-* Kontrolka mapy systemu Android
+* [Kafelek Mapy](https://docs.microsoft.com/rest/api/maps/render/getmaptile)
+* Sterowanie mapą zestawu SDK w sieci Web
+* Kontrola mapy Androida
 
 ## <a name="high_contrast_dark"></a>high_contrast_dark
 
-**high_contrast_dark** jest ciemnym stylem mapy z wyższym kontrastem niż inne style.
+**high_contrast_dark** jest ciemnym stylem mapy o wyższym kontraście niż inne style.
 
-![ciemny styl mapy o dużym kontraście](./media/supported-map-styles/high-contrast-dark.png)
+![styl ciemnej mapy o wysokim kontraście](./media/supported-map-styles/high-contrast-dark.png)
 
 **Odpowiednie interfejsy API:**
-* Kontrolka mapy zestawu SDK sieci Web
+* Sterowanie mapą zestawu SDK w sieci Web
 
 ## <a name="next-steps"></a>Następne kroki
 
-Dowiedz się więcej na temat sposobu ustawiania stylu mapy w Azure Maps:
+Dowiedz się, jak ustawić styl mapy w usłudze Azure Maps:
 
 > [!div class="nextstepaction"]
 > [Wybieranie stylu mapy](https://docs.microsoft.com/azure/azure-maps/choose-map-style)

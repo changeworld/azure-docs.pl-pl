@@ -1,59 +1,57 @@
 ---
-title: Oferty prywatne | Portal Azure Marketplace
-description: Prywatne oferty w witrynie Azure Marketplace dla wydawców aplikacji i usług.
-services: Azure, Marketplace, Compute
+title: Oferty prywatne | Azure Marketplace
+description: Oferty prywatne w portalu Azure Marketplace dla wydawców aplikacji i usług.
 author: qianw211
-manager: pabutler
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/1/2018
-ms.author: pabutler
-ms.openlocfilehash: 16903d4f9b1bad8a588b1a234ac84bc9c0150c4a
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 67aba077304117ad357d4e004ce7bdb25ac58352
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73827846"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80285048"
 ---
 # <a name="private-offers"></a>Oferty prywatne
 
-Oferty prywatne na [Microsoft Azure Marketplace](https://azuremarketplace.microsoft.com/) umożliwiają wydawcom tworzenie jednostek SKU, które są widoczne tylko dla klientów skierowanych do określonych.
+Oferty prywatne w portalu [Microsoft Azure Marketplace](https://azuremarketplace.microsoft.com/) umożliwiają wydawcom tworzenie jednostek SKU, które są widoczne tylko dla docelowych klientów.
 
-## <a name="unlock-enterprise-deals-with-private-offers"></a>Odblokuj transakcje przedsiębiorstwa z ofertami prywatnymi
+## <a name="unlock-enterprise-deals-with-private-offers"></a>Odblokowywanie ofert dla przedsiębiorstw za pomocą ofert prywatnych
 
-Klienci korporacyjni coraz częściej korzystają z rynków online do znajdowania, wypróbowania i kupowania rozwiązań w chmurze. Teraz dzięki ofertom prywatnym wydawcy mogą używać portalu Marketplace do prywatnego udostępniania dostosowanych rozwiązań klientom przeznaczonym dla klientów z możliwościami wymaganymi przez przedsiębiorstwa:
+Klienci korporacyjni coraz częściej korzystają z internetowych platform handlowych, aby znaleźć, wypróbować i kupić rozwiązania w chmurze. Teraz dzięki ofertom prywatnym wydawcy mogą korzystać z portalu Marketplace do prywatnego udostępniania niestandardowych rozwiązań klientom docelowym z możliwościami, których potrzebują przedsiębiorstwa:
 
-- *Wynegocjowane ceny* umożliwiają wydawcom rozliczanie rabatów i cenników spoza listy dostępnych publicznie.
-- Warunki i postanowienia *prywatne* umożliwiają wydawcom Dostosowywanie warunków i postanowień do określonego klienta.
-- *Wyspecjalizowane konfiguracje* umożliwiają wydawcom Dostosowywanie Virtual Machines, aplikacji platformy Azure i aplikacji SaaS do potrzeb poszczególnych klientów. Ta opcja umożliwia również wydawcom zapewnienie dostępu do wersji zapoznawczej do nowych funkcji produktu, przed rozpoczęciem szerszego uruchamiania wszystkich klientów.
+- *Wynegocjowane ceny* pozwalają wydawcom rozszerzyć rabaty i ceny poza listą z publicznie dostępnych ofert.
+- *Prywatne warunki umożliwiają* wydawcom dostosowanie warunków do konkretnego klienta.
+- *Wyspecjalizowane konfiguracje* umożliwiają wydawcom dostosowanie swoich maszyn wirtualnych, aplikacji platformy Azure i aplikacji SaaS do indywidualnych potrzeb klienta. Ta opcja umożliwia również wydawcom zapewnienie dostępu w wersji zapoznawczej do nowych funkcji produktu przed wprowadzeniem na rynek szerzej dla wszystkich klientów.
 
-Oferty prywatne umożliwiają wydawcom skorzystanie z zalet skalowalności i globalnej dostępności publicznej witryny Marketplace, z elastycznością i kontrolą potrzebną do negocjowania i dostarczania niestandardowych transakcji i konfiguracji. Razem te funkcje otwierają drzwi w celu uzyskania silnych rozwiązań korporacyjnych w chmurze.  Przedsiębiorstwa mogą teraz kupować i sprzedawać w oczekiwany sposób i popyt.
+Oferty prywatne umożliwiają wydawcom korzystanie ze skali i globalnej dostępności rynku publicznego dzięki elastyczności i kontroli niezbędnej do negocjowania i dostarczania niestandardowych ofert i konfiguracji. Te funkcje razem otwierają drzwi do silnego wdrażania rynków w chmurze w przedsiębiorstwach.  Przedsiębiorstwa mogą teraz kupować i sprzedawać w sposób, którego oczekują i popyt.
 
-Oferty prywatne są teraz dostępne dla maszyny wirtualnej, aplikacji platformy Azure (wdrożonej jako szablony rozwiązań lub aplikacji zarządzanych) i oferowanych przez aplikacje SaaS. Podobnie jak w przypadku ofert publicznych, można tworzyć oferty prywatne i zarządzać nimi za pośrednictwem [Portal Cloud partner](./cloud-partner-portal-orig/cloud-partner-portal-azure-private-skus.md).  Klientom można udzielić lub odwołać dostęp do ofert prywatnych w ciągu kilku minut.
+Oferty prywatne są teraz dostępne dla maszyny wirtualnej, aplikacji platformy Azure (zaimplementowanych jako szablony rozwiązań lub aplikacje zarządzane) i oferty aplikacji SaaS. Podobnie jak oferty publiczne, oferty prywatne mogą być tworzone i zarządzane za pośrednictwem [portalu Cloud Partner.](./cloud-partner-portal-orig/cloud-partner-portal-azure-private-skus.md)  Klienci mogą otrzymać lub odwołać dostęp do ofert prywatnych w ciągu kilku minut.
 
 ## <a name="creating-private-offers-using-skus-and-plans"></a>Tworzenie ofert prywatnych przy użyciu jednostek SKU i planów
 
-W przypadku *nowych lub istniejących ofert z publicznymi jednostkami SKU lub planami*wydawcy mogą łatwo tworzyć nowe, prywatne zmiany, tworząc nowe jednostki SKU lub plany i oznacz je jako prywatne.  [Prywatne jednostki SKU](./cloud-partner-portal-orig/cloud-partner-portal-azure-private-skus.md) i plany są składnikami oferty i są widoczne tylko dla klientów, którzy są jednostek. Prywatne jednostki SKU i plany mogą ponownie używać obrazów bazowych i/lub zaproponować już istniejące metadane dla publicznej jednostki SKU lub planu. Ta opcja umożliwia wydawcom tworzenie wielu prywatnych odmian oferty publicznej bez konieczności publikowania wielu wersji tego samego obrazu podstawowego i metadanych oferty. W przypadku maszyn wirtualnych i aplikacji platformy Azure tylko w przypadku, gdy prywatna jednostka SKU udostępnia obraz podstawowy z publiczną jednostką SKU, wszelkie zmiany obrazu podstawowego oferty będą propagowane dla wszystkich publicznych i prywatnych jednostek SKU przy użyciu tego obrazu podstawowego.
+W przypadku *nowych lub istniejących ofert z publicznymi jednostkami SKU lub planami*wydawcy mogą łatwo tworzyć nowe, prywatne odmiany, tworząc nowe jednostki SKU lub plany i oznaczając je jako prywatne.  [Prywatne jednostki SKU](./cloud-partner-portal-orig/cloud-partner-portal-azure-private-skus.md) i plany są składnikami oferty i są widoczne i dostępne tylko dla klientów docelowych. Prywatne jednostki SKU i plany mogą ponownie używać obrazów podstawowych i/lub oferować metadane już opublikowane dla publicznej jednostki SKU lub planu. Ta opcja umożliwia wydawcom tworzenie wielu prywatnych odmian oferty publicznej bez konieczności publikowania wielu wersji tego samego obrazu podstawowego i oferowania metadanych. W przypadku aplikacji Maszyny wirtualnej i platformy Azure oferuje tylko, gdy prywatna jednostka SKU udostępnia obraz podstawowy z publiczną jednostką SKU, wszelkie zmiany w obrazie podstawowym oferty będą propagowane we wszystkich publicznych i prywatnych jednostkach SKU przy użyciu tego obrazu podstawowego.
 
-W przypadku *nowych ofert, które zawierają tylko prywatne jednostki SKU lub plany*, wydawcy mogą utworzyć oferty jako każdą inną ofertę, a następnie oznaczyć jednostki SKU lub plany jako prywatne. Oferty, które mają tylko prywatne jednostki SKU lub plany, nie będą wykrywalne lub dostępne za pośrednictwem [portalu Azure Marketplace](https://azuremarketplace.microsoft.com) ani [Azure Portal](https://azure.microsoft.com/features/azure-portal/) przez klientów, którzy nie zostali powiązani z ofertą.
+W przypadku *nowych ofert, które obejmują tylko prywatne jednostki SKU lub plany,* wydawcy mogą tworzyć swoje oferty jako dowolną inną ofertę, a następnie oznaczać jednostki SKU lub plany jako prywatne. Oferty, które mają tylko prywatne jednostki SKU lub plany nie będą wykrywalne lub dostępne za pośrednictwem [portalu Azure Marketplace](https://azuremarketplace.microsoft.com) lub [witryny Azure](https://azure.microsoft.com/features/azure-portal/) przez klientów, którzy nie są skojarzone z ofertą.
 
-## <a name="targeting-customers-with-private-offers"></a>Kierowanie klientów do ofert prywatnych
-W przypadku nowych i istniejących ofert prywatnych wydawcy mogą kierować klientów, którzy korzystają z identyfikatorów subskrypcji. Wydawcy korzystający z maszyny wirtualnej lub oferty aplikacji platformy Azure mogą ograniczyć dostępność prywatnej jednostki SKU do indywidualnego identyfikatora subskrypcji platformy Azure lub przekazać plik CSV o wartości do 20 000 identyfikatorów subskrypcji platformy Azure. Przy użyciu prywatnej oferty aplikacji SaaS wydawcy mogą skojarzyć identyfikator subskrypcji platformy Azure lub identyfikator dzierżawy, aby ograniczyć dostępność planu prywatnego przy użyciu metody przekazywania ręcznego lub woluminu CSV.
+## <a name="targeting-customers-with-private-offers"></a>Kierowanie reklam do klientów za pomocą ofert prywatnych
+W przypadku zarówno nowych, jak i istniejących ofert prywatnych wydawcy mogą kierować reklamy do klientów przy użyciu identyfikatorów subskrypcji. Wydawcy korzystający z oferty aplikacji maszyny wirtualnej lub usługi Azure mogą ograniczyć dostępność prywatnej jednostki SKU do indywidualnego identyfikatora subskrypcji platformy Azure lub przekazać plik CSV o identyfikatorach subskrypcji platformy Azure o wydajności do 20 000. Podczas korzystania z oferty prywatnej aplikacji SaaS wydawcy mogą skojarzyć identyfikator subskrypcji platformy Azure lub identyfikator dzierżawy, aby ograniczyć dostępność planu prywatnego przy użyciu metody przekazywania ręcznego lub CSV.
 
-Po pobraniu i opublikowaniu oferty klienci mogą zaktualizować lub usunąć ją z jednostki SKU lub zaplanować w ciągu kilku minut, korzystając z funkcji Synchronizuj subskrypcje prywatne. Ta funkcja umożliwia wydawcom szybkie i łatwe aktualizowanie listy klientów, do których zostanie przedstawiona prywatna jednostka SKU lub plan bez ponownej certyfikacji lub ponownego opublikowania oferty.
+Po poświadczeniu i opublikowaniu oferty klienci mogą zostać zaktualizowani lub usunięci z jednostki SKU lub planu w ciągu kilku minut za pomocą funkcji Synchronizuj subskrypcje prywatne. Ta funkcja umożliwia wydawcom szybkie i łatwe aktualizowanie listy klientów, do których prezentowana jest prywatna jednostka SKU lub plan bez ponownej certyfikacji lub ponownego opublikowania oferty.
 
 ## <a name="deploying-private-offers"></a>Wdrażanie ofert prywatnych
 
-Oferty prywatne są wykrywalne wyłącznie za pośrednictwem [Azure Portal](https://azure.microsoft.com/features/azure-portal/) i nie są prezentowane za pośrednictwem [portalu Azure Marketplace](https://azuremarketplace.microsoft.com). Po zalogowaniu się do Azure Portal klienci mogą wybrać element nawigacyjny portalu Marketplace, aby uzyskać dostęp do swoich ofert prywatnych. Oferty prywatne będą również wyświetlane w wynikach wyszukiwania i można je wdrożyć za pośrednictwem wiersza polecenia i szablonów Azure Resource Manager, takich jak wszystkie inne oferty.
+Oferty prywatne można wykrywać tylko za pośrednictwem [portalu Azure](https://azure.microsoft.com/features/azure-portal/) i nie są prezentowane za pośrednictwem portalu [Azure Marketplace.](https://azuremarketplace.microsoft.com) Po zalogowaniu się do witryny Azure portal klienci mogą wybrać element nawigacji portalu Marketplace, aby uzyskać dostęp do swoich ofert prywatnych. Oferty prywatne pojawią się również w wynikach wyszukiwania i mogą być wdrażane za pomocą wiersza polecenia i szablonów usługi Azure Resource Manager, jak wszystkie inne oferty.
 
 ![[Oferty prywatne]](./media/marketplace-publishers-guide/private-offer.png)
 
-Oferty prywatne będą również wyświetlane w wynikach wyszukiwania. Po prostu wyszukaj wskaźnik "prywatny".
+Oferty prywatne pojawią się również w wynikach wyszukiwania. Wystarczy zwrócić uwagę na odznakę "Prywatne".
 
 >[!Note]
->Oferty prywatne nie są obsługiwane w przypadku subskrypcji ustanowionych przez odsprzedawcę programu dostawcy rozwiązań w chmurze (CSP).
+>Oferty prywatne nie są obsługiwane w ramach subskrypcji utworzonych za pośrednictwem sprzedawcy programu Dostawcy rozwiązań w chmurze (CSP).
 
 ## <a name="next-steps"></a>Następne kroki
 
-Aby rozpocząć korzystanie z ofert prywatnych, wykonaj kroki opisane w podręczniku [prywatne jednostki SKU i plany](./cloud-partner-portal-orig/cloud-partner-portal-azure-private-skus.md) .
+Aby rozpocząć korzystanie z ofert prywatnych, wykonaj kroki opisane w [przewodniku Prywatne jednostki SKU i plany.](./cloud-partner-portal-orig/cloud-partner-portal-azure-private-skus.md)

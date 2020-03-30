@@ -1,29 +1,29 @@
 ---
-title: Zarządzanie urządzeniami Azure IoT za pomocą rozszerzenia IoT dla interfejsu wiersza polecenia platformy Azure | Microsoft Docs
-description: Użyj rozszerzenia IoT dla narzędzia interfejsu wiersza polecenia platformy Azure dla usługi Azure IoT Hub zarządzanie urządzeniami, korzystając z metod bezpośrednich i opcji zarządzania żądanymi właściwościami sznurka.
+title: Zarządzanie urządzeniami Usługi Azure IoT z rozszerzeniem IoT dla interfejsu wiersza polecenia platformy Azure | Dokumenty firmy Microsoft
+description: Użyj rozszerzenia IoT dla narzędzia interfejsu wiersza polecenia platformy Azure do zarządzania urządzeniami usługi Azure IoT Hub, korzystając z metod bezpośrednich i opcji zarządzania żądanymi właściwościami bliźniaczej reprezentacji.
 author: chrissie926
 manager: ''
-keywords: Zarządzanie urządzeniami Azure IoT, zarządzanie urządzeniami w usłudze Azure IoT Hub, zarządzanie urządzeniami IoT, zarządzanie urządzeniami w usłudze IoT Hub
+keywords: azure iot device management, azure iot hub device management, device management iot, iot hub device management azure iot device management azure iot device management, azure iot hub device management
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 01/16/2018
 ms.author: menchi
-ms.openlocfilehash: c189ad1a6b6ebc13b71ca547176af27a43a78a7d
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.openlocfilehash: 88c3d1f4213b161d5e322349a7f0e1bc1dd952e7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78673439"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80239657"
 ---
-# <a name="use-the-iot-extension-for-azure-cli-for-azure-iot-hub-device-management"></a>Korzystanie z rozszerzenia IoT dla interfejsu wiersza polecenia platformy Azure dla usługi Azure IoT Hub zarządzanie urządzeniami
+# <a name="use-the-iot-extension-for-azure-cli-for-azure-iot-hub-device-management"></a>Użyj rozszerzenia IoT dla interfejsu wiersza polecenia platformy Azure dla zarządzania urządzeniami usługi Azure IoT Hub
 
-![Diagram kompleksowy](media/iot-hub-get-started-e2e-diagram/2.png)
+![Diagram end-to-end](media/iot-hub-get-started-e2e-diagram/2.png)
 
 [!INCLUDE [iot-hub-get-started-note](../../includes/iot-hub-get-started-note.md)]
 
-[Rozszerzenie IoT dla interfejsu wiersza polecenia platformy Azure](https://github.com/Azure/azure-iot-cli-extension) to rozszerzenie IoT typu open source, które dodaje możliwości [interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/overview?view=azure-cli-latest). Interfejs wiersza polecenia platformy Azure zawiera poleceń służących do współpracy z punktami końcowymi Azure Resource Manager i zarządzania. Na przykład możesz użyć interfejsu wiersza polecenia platformy Azure, aby utworzyć maszynę wirtualną platformy Azure lub Centrum IoT. Rozszerzenie interfejsu wiersza polecenia umożliwia usłudze platformy Azure rozszerzanie interfejsu wiersza polecenia platformy Azure zapewniającego dostęp do dodatkowych funkcji specyficznych dla usługi. Rozszerzenie IoT oferuje deweloperom programu IoT dostęp do wszystkich IoT Hub, IoT Edge i IoT Hub Device Provisioning Service funkcji.
+[Rozszerzenie IoT dla interfejsu wiersza polecenia platformy Azure](https://github.com/Azure/azure-iot-cli-extension) jest rozszerzeniem IoT typu open source, które dodaje do możliwości [interfejsu wiersza polecenia platformy Azure.](https://docs.microsoft.com/cli/azure/overview?view=azure-cli-latest) Interfejs wiersza polecenia platformy Azure zawiera polecenia do interakcji z usługą Azure Resource Manager i punktów końcowych zarządzania. Na przykład można użyć interfejsu wiersza polecenia platformy Azure, aby utworzyć maszynę wirtualną platformy Azure lub centrum IoT Hub. Rozszerzenie interfejsu wiersza polecenia umożliwia usłudze platformy Azure rozszerzenie interfejsu wiersza polecenia platformy Azure, zapewniając dostęp do dodatkowych funkcji specyficznych dla usługi. Rozszerzenie IoT daje deweloperom IoT dostęp do wiersza polecenia do wszystkich usług Usługi inicjowania obsługi administracyjnej usługi IoT Hub, IoT Edge i IoT Hub.
 
 [!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
 
@@ -31,19 +31,19 @@ ms.locfileid: "78673439"
 
 | Opcja zarządzania          | Zadanie  |
 |----------------------------|-----------|
-| Metody bezpośrednie             | Nadawanie urządzeniu działania takie jak uruchamianie lub zatrzymywanie wysyłania komunikatów lub ponowne uruchamianie urządzenia.                                        |
-| Właściwości dotyczące sznurka    | Umieść urządzenie w określonych stanach, takich jak ustawienie diody LED na zieloną lub ustawienie interwału wysyłania danych telemetrycznych na 30 minut.         |
-| Właściwości zgłoszone przez sznurek   | Pobierz zgłoszony stan urządzenia. Na przykład urządzenie raportuje diodę LED teraz.                                    |
-| Znaczniki bliźniaczych                  | Przechowuj metadane specyficzne dla urządzenia w chmurze. Na przykład lokalizacja wdrożenia maszyny sprzedaży.                         |
-| Zapytania dotyczące sznurka urządzenia        | Wykonaj zapytanie dotyczące wszystkich bliźniaczych reprezentacji urządzeń, aby pobrać te bliźniaczych reprezentacji z dowolnym warunkiem, na przykład identyfikując urządzenia, które są dostępne do użycia. |
+| Metody bezpośrednie             | Ustaw działanie urządzenia, takie jak uruchamianie lub zatrzymywanie wysyłania wiadomości lub ponowne uruchamianie urządzenia.                                        |
+| Dwie pożądanych właściwości    | Umieść urządzenie w określonych stanach, takich jak ustawienie diody LED na zielono lub ustawienie interwału wysyłania danych telemetrycznych na 30 minut.         |
+| Bliźniacze zgłaszane właściwości   | Pobierz zgłoszony stan urządzenia. Na przykład urządzenie zgłasza, że dioda LED miga teraz.                                    |
+| Podwójne tagi                  | Przechowuj metadane specyficzne dla urządzenia w chmurze. Na przykład lokalizacja wdrożenia automatu.                         |
+| Zapytania bliźniaczej reprezentacji urządzenia        | Kwerenda wszystkich bliźniąt bliźniąt urządzeń, aby pobrać te bliźniaczki z dowolnych warunków, takich jak identyfikowanie urządzeń, które są dostępne do użycia. |
 
-Aby uzyskać bardziej szczegółowe wyjaśnienie różnic i wskazówek dotyczących korzystania z tych opcji, zobacz [wskazówki dotyczące komunikacji między urządzeniami i chmurą](iot-hub-devguide-d2c-guidance.md) oraz [wskazówki dotyczące komunikacji między chmurą i urządzeniem](iot-hub-devguide-c2d-guidance.md).
+Aby uzyskać bardziej szczegółowe wyjaśnienie różnic i wskazówek dotyczących korzystania z tych opcji, zobacz [Wskazówki dotyczące komunikacji między urządzeniami](iot-hub-devguide-d2c-guidance.md) a chmurą oraz [wskazówki dotyczące komunikacji z chmury do urządzenia](iot-hub-devguide-c2d-guidance.md).
 
-Bliźniacze reprezentacje urządzeń to dokumenty JSON, które przechowują informacje o stanie urządzenia (metadane, konfiguracje i warunki). IoT Hub utrzymuje sznurki urządzenia dla każdego urządzenia, które nawiązuje z nim połączenie. Aby uzyskać więcej informacji na temat bliźniaczych reprezentacji urządzeń, zobacz [wprowadzenie do usługi Device bliźniaczych reprezentacji](iot-hub-node-node-twin-getstarted.md).
+Bliźniacze reprezentacje urządzeń to dokumenty JSON, które przechowują informacje o stanie urządzenia (metadane, konfiguracje i warunki). Centrum IoT hub utrzymuje bliźniaczej reprezentacji urządzenia dla każdego urządzenia, które łączy się z nim. Aby uzyskać więcej informacji na temat bliźniąt urządzeń, zobacz [Wprowadzenie do bliźniąt urządzeń](iot-hub-node-node-twin-getstarted.md).
 
 ## <a name="what-you-learn"></a>Omawiane zagadnienia
 
-Dowiesz się, jak używać rozszerzenia IoT dla interfejsu wiersza polecenia platformy Azure z różnymi opcjami zarządzania na komputerze deweloperskim.
+Nauczysz się używać rozszerzenia IoT dla interfejsu wiersza polecenia platformy Azure z różnymi opcjami zarządzania na komputerze deweloperskim.
 
 ## <a name="what-you-do"></a>Co robisz
 
@@ -51,17 +51,17 @@ Uruchom interfejs wiersza polecenia platformy Azure i rozszerzenie IoT dla inter
 
 ## <a name="what-you-need"></a>Co jest potrzebne
 
-* Ukończ samouczek [gry online Raspberry Pi](iot-hub-raspberry-pi-web-simulator-get-started.md) lub jedno z samouczków dotyczących urządzeń; na przykład [Raspberry Pi przy użyciu środowiska Node. js](iot-hub-raspberry-pi-kit-node-get-started.md). Te elementy obejmują następujące wymagania:
+* Ukończ samouczek [symulatora online Raspberry Pi](iot-hub-raspberry-pi-web-simulator-get-started.md) lub jeden z samouczków urządzenia; na przykład [Raspberry Pi z node.js](iot-hub-raspberry-pi-kit-node-get-started.md). Pozycje te obejmują następujące wymagania:
 
   - Aktywna subskrypcja platformy Azure.
-  - Usługa Azure IoT Hub w ramach Twojej subskrypcji.
-  - Aplikacja kliencka, która wysyła komunikaty do usługi Azure IoT Hub.
+  - Centrum Usługi Azure IoT w ramach subskrypcji.
+  - Aplikacja kliencka, która wysyła wiadomości do centrum Usługi Azure IoT Hub.
 
-* Upewnij się, że urządzenie jest uruchomione w aplikacji klienckiej w ramach tego samouczka.
+* Upewnij się, że urządzenie jest uruchomione z aplikacją kliencką podczas tego samouczka.
 
 * [Python 2.7x lub Python 3.x](https://www.python.org/downloads/)
 
-* Interfejs wiersza polecenia platformy Azure. Jeśli musisz ją zainstalować, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest). Minimalna wersja interfejsu wiersza polecenia platformy Azure musi być 2.0.70 lub nowsza. Użyj polecenia `az –version` w celu przeprowadzenia weryfikacji.
+* Interfejsu wiersza polecenia platformy Azure. Jeśli chcesz go zainstalować, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest). Co najmniej wersja interfejsu wiersza polecenia platformy Azure musi mieć wartość 2.0.70 lub nowszy. Użyj polecenia `az –version` w celu przeprowadzenia weryfikacji.
 
 [!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
 
@@ -71,75 +71,75 @@ Uruchom interfejs wiersza polecenia platformy Azure i rozszerzenie IoT dla inter
 
 Zaloguj się do konta platformy Azure, uruchamiając następujące polecenie:
 
-```bash
+```azurecli
 az login
 ```
 
 ## <a name="direct-methods"></a>Metody bezpośrednie
 
-```bash
+```azurecli
 az iot hub invoke-device-method --device-id <your device id> \
   --hub-name <your hub name> \
   --method-name <the method name> \
   --method-payload <the method payload>
 ```
 
-## <a name="device-twin-desired-properties"></a>Wymagane właściwości sznurka urządzenia
+## <a name="device-twin-desired-properties"></a>Dwie bliźniacze właściwości urządzenia
 
 Ustaw żądany interwał właściwości = 3000, uruchamiając następujące polecenie:
 
-```bash
+```azurecli
 az iot hub device-twin update -n <your hub name> \
   -d <your device id> --set properties.desired.interval = 3000
 ```
 
-Ta właściwość może zostać odczytana z urządzenia.
+Tę właściwość można odczytać z urządzenia.
 
-## <a name="device-twin-reported-properties"></a>Właściwości zgłoszone przez urządzenie
+## <a name="device-twin-reported-properties"></a>Właściwości zgłaszane bliźniaczej reprezentacji urządzenia
 
-Aby uzyskać raportowane właściwości urządzenia, należy uruchomić następujące polecenie:
+Pobierz zgłoszone właściwości urządzenia, uruchamiając następujące polecenie:
 
-```bash
+```azurecli
 az iot hub device-twin show -n <your hub name> -d <your device id>
 ```
 
-Jedną z właściwości raportowanych przez sznurek jest $metadata. $lastUpdated, która pokazuje ostatni czas aktualizacji zgłoszonego zestawu właściwości przez aplikację urządzenia.
+Jedną z bliźniaczych właściwości zgłoszonych jest $metadata.$lastUpdated, który pokazuje po raz ostatni aplikacja urządzenia zaktualizowała swój zgłoszony zestaw właściwości.
 
-## <a name="device-twin-tags"></a>Znaczniki sznurka urządzenia
+## <a name="device-twin-tags"></a>Podwójne tagi urządzenia
 
-Wyświetl Tagi i właściwości urządzenia, uruchamiając następujące polecenie:
+Wyświetl znaczniki i właściwości urządzenia, uruchamiając następujące polecenie:
 
-```bash
+```azurecli
 az iot hub device-twin show --hub-name <your hub name> --device-id <your device id>
 ```
 
-Dodaj rolę pola = temperatura & wilgotność do urządzenia, uruchamiając następujące polecenie:
+Dodaj rolę pola = temperatura&wilgotności do urządzenia, uruchamiając następujące polecenie:
 
-```bash
+```azurecli
 az iot hub device-twin update \
   --hub-name <your hub name> \
   --device-id <your device id> \
   --set tags = '{"role":"temperature&humidity"}}'
 ```
 
-## <a name="device-twin-queries"></a>Zapytania dotyczące sznurka urządzenia
+## <a name="device-twin-queries"></a>Zapytania bliźniaczej reprezentacji urządzenia
 
-Zbadaj urządzenia za pomocą tagu role = "temperatura & wilgotność", uruchamiając następujące polecenie:
+Wysyłaj zapytania do urządzeń z tagiem roli = "temperatura&wilgotność" przez uruchomienie następującego polecenia:
 
-```bash
+```azurecli
 az iot hub query --hub-name <your hub name> \
   --query-command "SELECT * FROM devices WHERE tags.role = 'temperature&humidity'"
 ```
 
-Wykonaj zapytanie o wszystkie urządzenia z wyjątkiem tych, które mają tag role = "temperatura & wilgotność", uruchamiając następujące polecenie:
+Zapytanie wszystkich urządzeń z wyjątkiem tych z tagiem roli = "temperatura&wilgotności" przez uruchomienie następującego polecenia:
 
-```bash
+```azurecli
 az iot hub query --hub-name <your hub name> \
   --query-command "SELECT * FROM devices WHERE tags.role != 'temperature&humidity'"
 ```
 
 ## <a name="next-steps"></a>Następne kroki
 
-Wiesz już, jak monitorować komunikaty z urządzenia do chmury i wysyłać komunikaty z chmury do urządzenia między urządzeniem IoT i usługą Azure IoT Hub.
+Dowiesz się, jak monitorować wiadomości między urządzeniami do chmury i wysyłać komunikaty z chmury do urządzenia między urządzeniem IoT a usługą Azure IoT Hub.
 
 [!INCLUDE [iot-hub-get-started-next-steps](../../includes/iot-hub-get-started-next-steps.md)]

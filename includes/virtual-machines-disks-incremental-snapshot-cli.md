@@ -8,35 +8,32 @@ ms.topic: include
 ms.date: 03/05/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 69be71a58c3aed4f52b77e63c9ddf12365301b08
-ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
+ms.openlocfilehash: cbd6f821326c86983ceb3ae5b90969e522c187fe
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79299191"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80343042"
 ---
 [!INCLUDE [virtual-machines-disks-incremental-snapshots-description](virtual-machines-disks-incremental-snapshots-description.md)]
 
-### <a name="supported-regions"></a>Obsługiwane regiony
-[!INCLUDE [virtual-machines-disks-incremental-snapshots-regions](virtual-machines-disks-incremental-snapshots-regions.md)]
-
-## <a name="restrictions"></a>{1&gt;Ograniczenia&lt;1}
+## <a name="restrictions"></a>Ograniczenia
 
 [!INCLUDE [virtual-machines-disks-incremental-snapshots-restrictions](virtual-machines-disks-incremental-snapshots-restrictions.md)]
 
 ## <a name="cli"></a>Interfejs wiersza polecenia
 
-Można utworzyć przyrostową migawkę przy użyciu interfejsu wiersza polecenia platformy Azure, która będzie potrzebna w najnowszej wersji interfejsu wiersza polecenia platformy Azure. 
+Możesz utworzyć migawkę przyrostową za pomocą interfejsu wiersza polecenia platformy Azure, będziesz potrzebować najnowszej wersji interfejsu wiersza polecenia platformy Azure. 
 
 W systemie Windows następujące polecenie zainstaluje lub zaktualizuje istniejącą instalację do najnowszej wersji:
 ```PowerShell
 Invoke-WebRequest -Uri https://aka.ms/installazurecliwindows -OutFile .\AzureCLI.msi; Start-Process msiexec.exe -Wait -ArgumentList '/I AzureCLI.msi /quiet'
 ```
-W systemie Linux instalacja interfejsu wiersza polecenia różni się w zależności od wersji systemu operacyjnego.  Zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli) dla konkretnej wersji systemu Linux.
+W systemie Linux instalacja interfejsu wiersza polecenia będzie się różnić w zależności od wersji systemu operacyjnego.  Zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli) dla określonej wersji systemu Linux.
 
-Aby utworzyć przyrostową migawkę, użyj [AZ Snapshot Create](https://docs.microsoft.com/cli/azure/snapshot?view=azure-cli-latest#az-snapshot-create) z parametrem `--incremental`.
+Aby utworzyć migawkę przyrostową, należy użyć `--incremental` [migawki az create](https://docs.microsoft.com/cli/azure/snapshot?view=azure-cli-latest#az-snapshot-create) z parametrem.
 
-Poniższy przykład obejmuje tworzenie przyrostowych migawek, zastępowanie `<yourDesiredSnapShotNameHere>`, `<yourResourceGroupNameHere>`,`<exampleDiskName>`i `<exampleLocation>` przy użyciu własnych wartości, a następnie uruchomienie przykładu:
+Poniższy przykład tworzy migawkę przyrostową, `<yourDesiredSnapShotNameHere>`zamień , `<yourResourceGroupNameHere>``<exampleDiskName>`i `<exampleLocation>` z własnymi wartościami, a następnie uruchom przykład:
 
 ```bash
 sourceResourceId=$(az disk show -g <yourResourceGroupNameHere> -n <exampleDiskName> --query '[id]' -o tsv)
@@ -48,13 +45,13 @@ az snapshot create -g <yourResourceGroupNameHere> \
 --incremental
 ```
 
-Można zidentyfikować przyrostowe migawki z tego samego dysku z `SourceResourceId` i `SourceUniqueId` właściwości migawek. `SourceResourceId` jest IDENTYFIKATORem zasobu Azure Resource Manager dysku nadrzędnego. `SourceUniqueId` jest wartością dziedziczoną z właściwości `UniqueId` dysku. Jeśli użytkownik usunął dysk, a następnie utworzy nowy dysk o tej samej nazwie, zmieni się wartość właściwości `UniqueId`.
+Można zidentyfikować przyrostowe migawki z tego `SourceResourceId` samego `SourceUniqueId` dysku z właściwości i migawek. `SourceResourceId`to identyfikator zasobu usługi Azure Resource Manager dysku nadrzędnego. `SourceUniqueId`jest wartością dziedziczoną `UniqueId` z właściwości dysku. Jeśli chcesz usunąć dysk, a następnie utworzyć nowy dysk o tej `UniqueId` samej nazwie, zmieni się wartość właściwości.
 
-Za pomocą `SourceResourceId` i `SourceUniqueId` można utworzyć listę wszystkich migawek skojarzonych z określonym dyskiem. Poniższy przykład wyświetla listę wszystkich migawek przyrostowych skojarzonych z określonym dyskiem, ale wymaga pewnego Instalatora.
+Można użyć `SourceResourceId` `SourceUniqueId` i utworzyć listę wszystkich migawek skojarzonych z określonym dyskiem. Poniższy przykład będzie lista wszystkich migawek przyrostowych skojarzonych z określonego dysku, ale wymaga pewnej konfiguracji.
 
-Ten przykład używa JQ do wykonywania zapytań dotyczących danych. Aby uruchomić ten przykład, należy [zainstalować JQ](https://stedolan.github.io/jq/download/).
+W tym przykładzie użyto jq do wykonywania zapytań o dane. Aby uruchomić przykład, należy [zainstalować jq](https://stedolan.github.io/jq/download/).
 
-Zastąp wartości `<yourResourceGroupNameHere>` i `<exampleDiskName>` wartościami, a następnie użyj poniższego przykładu, aby wyświetlić listę istniejących migawek przyrostowych, o ile zainstalowano także JQ:
+Zamień `<yourResourceGroupNameHere>` i `<exampleDiskName>` z wartościami, a następnie można użyć następującego przykładu, aby wyświetlić listę istniejących migawek przyrostowych, o ile zainstalowano również jq:
 
 ```bash
 sourceUniqueId=$(az disk show -g <yourResourceGroupNameHere> -n <exampleDiskName> --query '[uniqueId]' -o tsv)
@@ -68,7 +65,7 @@ az snapshot list -g <yourResourceGroupNameHere> -o json \
 
 ## <a name="resource-manager-template"></a>Szablon usługi Resource Manager
 
-Za pomocą szablonów Azure Resource Manager można także utworzyć przyrostową migawkę. Należy upewnić się, że apiVersion jest ustawiona na **2019-03-01** i że właściwość przyrostowa jest również ustawiona na wartość true. Poniższy fragment kodu stanowi przykład tworzenia przyrostowej migawki z szablonami Menedżer zasobów:
+Można również użyć szablonów usługi Azure Resource Manager, aby utworzyć migawkę przyrostową. Musisz upewnić się, że apiVersion jest ustawiona na **2019-03-01** i że właściwość przyrostowa jest również ustawiona na true. Poniższy urywek jest przykładem tworzenia migawki przyrostowej za pomocą szablonów Menedżera zasobów:
 
 ```json
 {
@@ -104,4 +101,4 @@ Za pomocą szablonów Azure Resource Manager można także utworzyć przyrostow�
 
 ## <a name="next-steps"></a>Następne kroki
 
-Jeśli chcesz zobaczyć przykładowy kod pokazujący różnicowe możliwości migawek przyrostowych, korzystając z platformy .NET, zobacz [Kopiuj kopie zapasowe platformy Azure Managed disks do innego regionu z różnicową możliwością migawek przyrostowych](https://github.com/Azure-Samples/managed-disks-dotnet-backup-with-incremental-snapshots).
+Jeśli chcesz zobaczyć przykładowy kod demonstrujący różnicowe możliwości migawek przyrostowych, za pomocą platformy .NET, zobacz [Kopiowanie kopii zapasowych dysków zarządzanych platformy Azure do innego regionu z możliwością różnicowania migawek przyrostowych](https://github.com/Azure-Samples/managed-disks-dotnet-backup-with-incremental-snapshots).

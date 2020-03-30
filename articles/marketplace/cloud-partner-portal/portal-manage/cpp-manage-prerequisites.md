@@ -1,20 +1,19 @@
 ---
-title: Wymagania wstępne dotyczące zarządzania kontami w portal Cloud Partner | Portal Azure Marketplace
-description: Przestarzały artykuł CPP został wskazany jako artykuł dotyczący komputera. była "wymagania wstępne dotyczące zarządzania kontami w witrynie Azure Marketplace na portal Cloud Partner".
-services: Azure, Marketplace, Cloud Partner Portal, Partner Center
-author: ChJenk
+title: Wymagania wstępne dotyczące zarządzania kontami w portalu Cloud Partner Portal | Azure Marketplace
+description: Przestarzały artykuł CPP, wskazał na artykuł PC; był "Wymagania wstępne dotyczące zarządzania kontami portalu partnerów w chmurze w portalu cloud partner".
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/27/2019
-ms.author: v-chjen
-ms.openlocfilehash: 1b6e7df904b6c564935a3f34ca2da12bed459c4f
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.author: dsindona
+ms.openlocfilehash: b01c6fbf1d35c786338308debc1281fa943a6bf3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74666464"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80279899"
 ---
-# <a name="prerequisites-for-managing-accounts-on-the-cloud-partner-portal"></a>Wymagania wstępne dotyczące zarządzania kontami w portal Cloud Partner
+# <a name="prerequisites-for-managing-accounts-on-the-cloud-partner-portal"></a>Wymagania wstępne dotyczące zarządzania kontami w portalu cloud partner
 
-Ta funkcja została przeniesiona do [portalu Centrum partnerskiego](https://partner.microsoft.com/)firmy Microsoft. Aby uzyskać więcej informacji, zobacz [jak zarządzać kontem komercyjnej witryny Marketplace w centrum partnerskim](https://docs.microsoft.com/azure/marketplace/partner-center-portal/manage-account).
+Ta funkcja została przeniesiona do [portalu Centrum partnerów](https://partner.microsoft.com/)firmy Microsoft . Aby uzyskać więcej informacji, zobacz [Jak zarządzać kontem w portalu Commercial Marketplace w Centrum partnerów.](https://docs.microsoft.com/azure/marketplace/partner-center-portal/manage-account)

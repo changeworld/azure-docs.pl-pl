@@ -1,6 +1,6 @@
 ---
-title: Kopiuj dane z SAP HANA
-description: Informacje o kopiowaniu danych z SAP HANA do obsługiwanych magazynów danych ujścia przy użyciu działania kopiowania w potoku Azure Data Factory.
+title: Kopiowanie danych z sap hana
+description: Dowiedz się, jak skopiować dane z usługi SAP HANA do obsługiwanych magazynów danych ujścia przy użyciu działania kopiowania w potoku usługi Azure Data Factory.
 services: data-factory
 ms.author: jingwang
 author: linda33wj
@@ -12,67 +12,67 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 02/17/2020
 ms.openlocfilehash: fa165c21622110bb18476efdebf3264a11e26ad7
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79265885"
 ---
-# <a name="copy-data-from-sap-hana-using-azure-data-factory"></a>Kopiowanie danych z SAP HANA przy użyciu Azure Data Factory
-> [!div class="op_single_selector" title1="Wybierz używaną wersję usługi Data Factory:"]
+# <a name="copy-data-from-sap-hana-using-azure-data-factory"></a>Kopiowanie danych z systemu SAP HANA przy użyciu usługi Azure Data Factory
+> [!div class="op_single_selector" title1="Wybierz wersję używanej usługi Data Factory:"]
 > * [Wersja 1](v1/data-factory-sap-hana-connector.md)
 > * [Bieżąca wersja](connector-sap-hana.md)
 
-W tym artykule opisano sposób używania działania kopiowania w Azure Data Factory do kopiowania danych z bazy danych SAP HANA. Jest ona oparta na [przeglądzie działania kopiowania](copy-activity-overview.md) , która przedstawia ogólne omówienie działania kopiowania.
+W tym artykule opisano, jak używać działania kopiowania w usłudze Azure Data Factory do kopiowania danych z bazy danych SAP HANA. Opiera się na [omówienie działania kopiowania](copy-activity-overview.md) artykuł, który przedstawia ogólny przegląd działania kopiowania.
 
 >[!TIP]
->Aby poznać ogólną pomoc techniczną w scenariuszu integracji danych w systemie SAP, zobacz [integracja danych SAP przy użyciu Azure Data Factory oficjalny dokument](https://github.com/Azure/Azure-DataFactory/blob/master/whitepaper/SAP%20Data%20Integration%20using%20Azure%20Data%20Factory.pdf) z szczegółowym wprowadzeniem, comparsion i wskazówkami.
+>Aby dowiedzieć się, że usługa ADF jest obsługiwana w scenariuszu integracji danych SAP, zobacz [integracja danych SAP przy użyciu oficjalnych dokumentów usługi Azure Data Factory](https://github.com/Azure/Azure-DataFactory/blob/master/whitepaper/SAP%20Data%20Integration%20using%20Azure%20Data%20Factory.pdf) ze szczegółowym wprowadzeniem, porównaniem i wskazówkami.
 
-## <a name="supported-capabilities"></a>Obsługiwane funkcje
+## <a name="supported-capabilities"></a>Obsługiwane możliwości
 
 Ten łącznik SAP HANA jest obsługiwany dla następujących działań:
 
-- [Działanie kopiowania](copy-activity-overview.md) z [obsługiwaną macierzą źródłową/ujścia](copy-activity-overview.md)
-- [Działanie Lookup](control-flow-lookup-activity.md)
+- [Kopiowanie aktywności](copy-activity-overview.md) z [obsługiwaną macierzą źródło/ujście](copy-activity-overview.md)
+- [Działanie odnośnika](control-flow-lookup-activity.md)
 
-Dane z bazy danych programu SAP HANA można kopiować do dowolnego obsługiwanego magazynu danych ujścia. Listę magazynów danych obsługiwanych jako źródła/ujścia przez działanie kopiowania można znaleźć w tabeli [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats) .
+Można skopiować dane z bazy danych SAP HANA do dowolnego obsługiwanego magazynu danych ujścia. Aby uzyskać listę magazynów danych obsługiwanych jako źródła/pochłaniacze przez działanie kopiowania, zobacz tabelę [Obsługiwane magazyny danych.](copy-activity-overview.md#supported-data-stores-and-formats)
 
-W SAP HANA ten łącznik obsługuje:
+W szczególności to złącze SAP HANA obsługuje:
 
-- Kopiowanie danych z dowolnej wersji SAP HANA Database.
-- Kopiowanie danych z **modeli informacji platformy Hana** (takich jak widoki analityczne i obliczeniowe) oraz **tabele wierszy/kolumn**.
-- Kopiowanie danych przy użyciu uwierzytelniania **podstawowego** lub **systemu Windows** .
-- Równoległe kopiowanie ze źródła SAP HANA. Aby uzyskać szczegółowe informacje, zobacz sekcję [Kopiowanie równoległe z SAP HANA](#parallel-copy-from-sap-hana) .
+- Kopiowanie danych z dowolnej wersji bazy danych SAP HANA.
+- Kopiowanie danych z **modeli informacyjnych HANA** (takich jak widoki analityczne i obliczeniowe) oraz **tabel wierszy/kolumn**.
+- Kopiowanie danych przy użyciu uwierzytelniania **podstawowego** lub **uwierzytelniania systemu Windows.**
+- Kopiowanie równoległe ze źródła SAP HANA. Zobacz [kopiowanie równoległe z SAP HANA](#parallel-copy-from-sap-hana) sekcji, aby uzyskać szczegółowe informacje.
 
 > [!TIP]
-> Aby skopiować dane **do** SAP HANA magazynu danych, użyj ogólnego łącznika ODBC. Aby uzyskać szczegółowe informacje, zobacz [SAP HANA sink](connector-odbc.md#sap-hana-sink) . Zwróć uwagę, że połączone usługi dla łącznika SAP HANA i łącznika ODBC są z różnymi rodzajami, więc nie mogą być ponownie używane.
+> Aby **skopiować** dane do magazynu danych SAP HANA, należy użyć ogólnego łącznika ODBC. Zobacz [SAP HANA umywalka](connector-odbc.md#sap-hana-sink) ze szczegółami. Należy zauważyć, że połączone usługi dla łącznika SAP HANA i łącznika ODBC są innego typu, dlatego nie można ponownie używać.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby użyć tego łącznika SAP HANA, musisz:
+Aby korzystać z tego łącznika SAP HANA, należy:
 
-- Skonfiguruj samodzielny Integration Runtime. Aby uzyskać szczegółowe informacje, zobacz artykuł [Integration Runtime samodzielny](create-self-hosted-integration-runtime.md) .
-- Zainstaluj SAP HANA sterownika ODBC na maszynie Integration Runtime. Sterownik SAP HANA ODBC można pobrać z [Centrum pobierania oprogramowania SAP](https://support.sap.com/swdc). Wyszukaj za pomocą słowa kluczowego **SAP HANA Client dla systemu Windows**.
+- Konfigurowanie środowiska wykonawczego integracji hostowanego samodzielnie. Zobacz [self-hosted Integration Runtime](create-self-hosted-integration-runtime.md) artykułu, aby uzyskać szczegółowe informacje.
+- Zainstaluj sterownik SAP HANA ODBC na komputerze integration runtime. Sterownik ODBC platformy SAP HANA możesz pobrać z witryny [SAP Software Download Center (Centrum pobierania oprogramowania SAP)](https://support.sap.com/swdc). Szukaj za pomocą słowa kluczowego **SAP HANA CLIENT for Windows**.
 
 ## <a name="getting-started"></a>Wprowadzenie
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
-Poniższe sekcje zawierają szczegółowe informacje o właściwościach, które są używane do definiowania Data Factory jednostek specyficznych dla łącznika SAP HANA.
+W poniższych sekcjach znajdują się szczegółowe informacje o właściwościach, które są używane do definiowania jednostek fabryki danych specyficznych dla łącznika SAP HANA.
 
-## <a name="linked-service-properties"></a>Właściwości usługi połączonej
+## <a name="linked-service-properties"></a>Połączone właściwości usługi
 
-Następujące właściwości są obsługiwane dla SAP HANA połączonej usługi:
+Następujące właściwości są obsługiwane dla usługi połączonej SAP HANA:
 
 | Właściwość | Opis | Wymagany |
 |:--- |:--- |:--- |
-| type | Właściwość Type musi mieć wartość: **SapHana** | Yes |
-| connectionString | Określ informacje, które są konieczne do nawiązania połączenia z SAP HANA przy użyciu **uwierzytelniania podstawowego** lub **uwierzytelniania systemu Windows**. Zapoznaj się z poniższymi przykładami.<br>W parametrach połączenia wymagany jest serwer/port (port domyślny to 30015), a nazwa użytkownika i hasło są wymagane w przypadku uwierzytelniania podstawowego. Aby uzyskać dodatkowe ustawienia zaawansowane, zapoznaj się z tematem [SAP HANA właściwości połączenia ODBC](<https://help.sap.com/viewer/0eec0d68141541d1b07893a39944924e/2.0.02/en-US/7cab593774474f2f8db335710b2f5c50.html>)<br/>Możesz również wprowadzić hasło w Azure Key Vault i ściągnąć konfigurację hasła z parametrów połączenia. Aby uzyskać więcej informacji, zobacz artykuł [przechowywanie poświadczeń w Azure Key Vault](store-credentials-in-key-vault.md) artykule. | Yes |
-| userName | Określ nazwę użytkownika w przypadku korzystania z uwierzytelniania systemu Windows. Przykład: `user@domain.com` | Nie |
-| hasło | Określ hasło dla konta użytkownika. Oznacz to pole jako element SecureString, aby bezpiecznie przechowywać go w Data Factory, lub [odwoływać się do wpisu tajnego przechowywanego w Azure Key Vault](store-credentials-in-key-vault.md). | Nie |
-| connectVia | [Integration Runtime](concepts-integration-runtime.md) używany do nawiązywania połączenia z magazynem danych. Samodzielna Integration Runtime jest wymagana, jak wspomniano w [wymaganiach wstępnych](#prerequisites). |Yes |
+| type | Właściwość typu musi być ustawiona na: **SapHana** | Tak |
+| Parametry połączenia | Określ informacje potrzebne do nawiązania połączenia z sap HANA przy użyciu **uwierzytelniania podstawowego** lub **uwierzytelniania systemu Windows**. Zapoznaj się z poniższymi przykładami.<br>W ciągu połączenia serwer/port jest obowiązkowy (domyślny port to 30015), a nazwa użytkownika i hasło są obowiązkowe podczas korzystania z uwierzytelniania podstawowego. Dodatkowe ustawienia zaawansowane można znaleźć we [właściwościach połączenia SAP HANA ODBC](<https://help.sap.com/viewer/0eec0d68141541d1b07893a39944924e/2.0.02/en-US/7cab593774474f2f8db335710b2f5c50.html>)<br/>Można również umieścić hasło w usłudze Azure Key Vault i wyciągnąć konfigurację hasła z ciągu połączenia. Więcej informacji można znaleźć [w artykule Poświadczenia sklepu w usłudze Azure Key Vault.](store-credentials-in-key-vault.md) | Tak |
+| userName | Określ nazwę użytkownika podczas korzystania z uwierzytelniania systemu Windows. Przykład: `user@domain.com` | Nie |
+| hasło | Określ hasło dla konta użytkownika. Oznacz to pole jako SecureString, aby bezpiecznie przechowywać go w fabryce danych lub [odwołaj się do klucza tajnego przechowywanego w usłudze Azure Key Vault.](store-credentials-in-key-vault.md) | Nie |
+| connectVia | [Środowisko wykonawcze integracji,](concepts-integration-runtime.md) które mają być używane do łączenia się z magazynem danych. Środowisko wykonawcze integracji hostowane samodzielnie jest wymagane, jak wspomniano w [wymaganiach wstępnych.](#prerequisites) |Tak |
 
-**Przykład: Użyj uwierzytelniania podstawowego**
+**Przykład: użyj uwierzytelniania podstawowego**
 
 ```json
 {
@@ -90,7 +90,7 @@ Następujące właściwości są obsługiwane dla SAP HANA połączonej usługi:
 }
 ```
 
-**Przykład: Użyj uwierzytelniania systemu Windows**
+**Przykład: użyj uwierzytelniania systemu Windows**
 
 ```json
 {
@@ -113,7 +113,7 @@ Następujące właściwości są obsługiwane dla SAP HANA połączonej usługi:
 }
 ```
 
-Jeśli używasz połączonej usługi SAP HANA z następującym ładunkiem, nadal jest ona obsługiwana w stanie takim, w jakim jesteś nowym użytkownikiem.
+Jeśli używasz usługi połączonej SAP HANA z następującym ładunkiem, nadal jest obsługiwana w stanie, w jakim jest, podczas gdy zaleca się użycie nowej usługi w przyszłości.
 
 **Przykład:**
 
@@ -141,15 +141,15 @@ Jeśli używasz połączonej usługi SAP HANA z następującym ładunkiem, nadal
 
 ## <a name="dataset-properties"></a>Właściwości zestawu danych
 
-Aby uzyskać pełną listę sekcji i właściwości dostępnych do definiowania zestawów danych, zobacz artykuł [zestawy danych](concepts-datasets-linked-services.md) . Ta sekcja zawiera listę właściwości obsługiwanych przez zestaw danych SAP HANA.
+Aby uzyskać pełną listę sekcji i właściwości dostępnych do definiowania zestawów danych, zobacz artykuł [o zestawach danych.](concepts-datasets-linked-services.md) Ta sekcja zawiera listę właściwości obsługiwanych przez zestaw danych SAP HANA.
 
-Aby skopiować dane z SAP HANA, obsługiwane są następujące właściwości:
+Aby skopiować dane z sap HANA, obsługiwane są następujące właściwości:
 
 | Właściwość | Opis | Wymagany |
 |:--- |:--- |:--- |
-| type | Właściwość Type zestawu danych musi być ustawiona na wartość: **SapHanaTable** | Yes |
-| schemat | Nazwa schematu w bazie danych SAP HANA. | Nie (Jeśli określono parametr "query" w źródle działania) |
-| tabela | Nazwa tabeli w bazie danych SAP HANA. | Nie (Jeśli określono parametr "query" w źródle działania) |
+| type | Właściwość typu zestawu danych musi być ustawiona na: **SapHanaTable** | Tak |
+| Schematu | Nazwa schematu w bazie danych SAP HANA. | Nie (jeśli określono "zapytanie" w źródle działania) |
+| tabela | Nazwa tabeli w bazie danych SAP HANA. | Nie (jeśli określono "zapytanie" w źródle działania) |
 
 **Przykład:**
 
@@ -171,27 +171,27 @@ Aby skopiować dane z SAP HANA, obsługiwane są następujące właściwości:
 }
 ```
 
-Jeśli używasz zestawu danych `RelationalTable` z określonym typem, nadal jest on obsługiwany w przypadku, gdy zamierzasz korzystać z nowego.
+Jeśli używasz `RelationalTable` wpisanego zestawu danych, jest on nadal obsługiwany w stanie gotowym do użycia, podczas gdy zaleca się użycie nowego w przyszłości.
 
 ## <a name="copy-activity-properties"></a>Właściwości działania kopiowania
 
-Aby uzyskać pełną listę sekcji i właściwości dostępnych do definiowania działań, zobacz artykuł [potoki](concepts-pipelines-activities.md) . Ta sekcja zawiera listę właściwości obsługiwanych przez SAP HANA źródło.
+Aby uzyskać pełną listę sekcji i właściwości dostępnych do definiowania działań, zobacz [Pipelines](concepts-pipelines-activities.md) artykułu. Ta sekcja zawiera listę właściwości obsługiwanych przez źródło SAP HANA.
 
 ### <a name="sap-hana-as-source"></a>SAP HANA jako źródło
 
 >[!TIP]
->Aby efektywnie pozyskiwać dane z SAP HANA przy użyciu partycjonowania danych, Dowiedz się więcej z sekcji [SAP HANA Copy (kopiowanie równoległe](#parallel-copy-from-sap-hana) ).
+>Aby skutecznie pozyskiwania danych z sap HANA przy użyciu partycjonowania danych, dowiedz się więcej z [kopiowania równoległego z sekcji SAP HANA.](#parallel-copy-from-sap-hana)
 
-Aby skopiować dane z SAP HANA, w sekcji **Źródło** działania kopiowania są obsługiwane następujące właściwości:
+Aby skopiować dane z sap HANA, następujące właściwości są obsługiwane w sekcji **źródła** działania kopiowania:
 
 | Właściwość | Opis | Wymagany |
 |:--- |:--- |:--- |
-| type | Właściwość Type źródła działania Copy musi być ustawiona na wartość: **SapHanaSource** | Yes |
-| query | Określa zapytanie SQL do odczytu danych z wystąpienia SAP HANA. | Yes |
-| partitionOptions | Określa opcje partycjonowania danych, które są używane do pozyskiwania danych z SAP HANA. Dowiedz się więcej z sekcji [SAP HANA Copy (kopiowanie równoległe](#parallel-copy-from-sap-hana) ).<br>Zezwalaj na wartości: **None** (wartość domyślna), **PhysicalPartitionsOfTable**, **SapHanaDynamicRange**. Dowiedz się więcej z sekcji [SAP HANA Copy (kopiowanie równoległe](#parallel-copy-from-sap-hana) ). `PhysicalPartitionsOfTable` można używać tylko podczas kopiowania danych z tabeli, ale nie zapytania. <br>Gdy opcja partycji jest włączona (to nie `None`), stopień równoległości do współbieżnego ładowania danych z SAP HANA jest kontrolowany przez ustawienie [`parallelCopies`](copy-activity-performance.md#parallel-copy) dla działania kopiowania. | False |
-| partitionSettings | Określ grupę ustawień partycjonowania danych.<br>Zastosuj, gdy opcja partycji jest `SapHanaDynamicRange`. | False |
-| partitionColumnName | Określ nazwę kolumny źródłowej, która będzie używana przez partycję do kopiowania równoległego. Jeśli nie zostanie określony, indeks lub klucz podstawowy tabeli są wykrywane i używane jako kolumny partycji.<br>Zastosuj, gdy opcja partycji jest `SapHanaDynamicRange`. Jeśli używasz zapytania do pobierania danych źródłowych, hak `?AdfHanaDynamicRangePartitionCondition` w klauzuli WHERE. Zobacz przykład w sekcji [Kopiowanie równoległe z SAP HANA](#parallel-copy-from-sap-hana) . | Tak, gdy jest używana partycja `SapHanaDynamicRange`. |
-| packetSize | Określa rozmiar pakietu sieciowego (w kilobajtach), aby podzielić dane na wiele bloków. Jeśli masz dużą ilość danych do skopiowania, zwiększenie rozmiaru pakietu może zwiększyć szybkość odczytywania SAP HANA w większości przypadków. Podczas dopasowywania rozmiaru pakietu zaleca się testowanie wydajności. | Nie.<br>Wartość domyślna to 2048 (2 MB). |
+| type | Właściwość typu źródła działania kopiowania musi być ustawiona na: **SapHanaSource** | Tak |
+| query | Określa kwerendę SQL do odczytu danych z wystąpienia SAP HANA. | Tak |
+| partitionOptions (opcje partycji) | Określa opcje partycjonowania danych używane do pozyskiwania danych z sap HANA. Dowiedz się więcej z [kopiowania równoległego z sekcji SAP HANA.](#parallel-copy-from-sap-hana)<br>Wartości zezwalania to: **Brak** (domyślnie), **PhysicalPartitionsOfTable**, **SapHanaDynamicRange**. Dowiedz się więcej z [kopiowania równoległego z sekcji SAP HANA.](#parallel-copy-from-sap-hana) `PhysicalPartitionsOfTable`można używać tylko podczas kopiowania danych z tabeli, ale nie kwerendy. <br>Gdy opcja partycji jest włączona `None`(czyli nie), stopień równoległości równoczesnych ładowania danych z [`parallelCopies`](copy-activity-performance.md#parallel-copy) SAP HANA jest kontrolowany przez ustawienie w działaniu kopiowania. | False |
+| podziałY | Określ grupę ustawień partycjonowania danych.<br>Zastosuj, gdy `SapHanaDynamicRange`opcja partycji jest . | False |
+| partitionColumnName | Określ nazwę kolumny źródłowej, która będzie używana przez partycję do kopiowania równoległego. Jeśli nie zostanie określony, indeks lub klucz podstawowy tabeli jest wykrywany automatycznie i używany jako kolumna partycji.<br>Zastosuj, gdy opcja `SapHanaDynamicRange`partycji jest . Jeśli używasz kwerendy do pobierania danych `?AdfHanaDynamicRangePartitionCondition` źródłowych, należy podłączyć w klauzuli WHERE. Zobacz przykład [w kopiowanie równoległe z sekcji SAP HANA.](#parallel-copy-from-sap-hana) | Tak podczas `SapHanaDynamicRange` korzystania z partycji. |
+| rozmiar pakietu | Określa rozmiar pakietu sieciowego (w kilobajtach) do dzielenia danych na wiele bloków. Jeśli masz dużą ilość danych do skopiowania, zwiększenie rozmiaru pakietu może zwiększyć szybkość odczytu z SAP HANA w większości przypadków. Podczas dostosowywania rozmiaru pakietu zaleca się testowanie wydajności. | Nie.<br>Wartość domyślna to 2048 (2MB). |
 
 **Przykład:**
 
@@ -225,24 +225,24 @@ Aby skopiować dane z SAP HANA, w sekcji **Źródło** działania kopiowania są
 ]
 ```
 
-Jeśli korzystasz ze źródła kopii typu `RelationalSource`, jest ono nadal obsługiwane w stanie takim, w jakim będziesz mieć możliwość korzystania z nowej usługi.
+Jeśli używasz `RelationalSource` wpisanego źródła kopii, jest ono nadal obsługiwane w stanie as-is, podczas gdy zaleca się użycie nowego w przyszłości.
 
-## <a name="parallel-copy-from-sap-hana"></a>Kopiowanie równoległe z SAP HANA
+## <a name="parallel-copy-from-sap-hana"></a>Kopia równoległa z SAP HANA
 
-Łącznik Data Factory SAP HANA zapewnia wbudowane Partycjonowanie danych do kopiowania danych ze SAP HANA równolegle. Opcje partycjonowania danych można znaleźć w tabeli **źródłowej** działania kopiowania.
+Łącznik SAP HANA fabryki danych zapewnia wbudowane partycjonowanie danych w celu równoległego kopiowania danych z systemu SAP HANA. Opcje partycjonowania danych można znaleźć w tabeli **Źródło** działania kopiowania.
 
 ![Zrzut ekranu przedstawiający opcje partycji](./media/connector-sap-hana/connector-sap-hana-partition-options.png)
 
-Po włączeniu kopiowania partycjonowanego Data Factory uruchamia zapytania równoległe względem źródła SAP HANA w celu pobrania danych przez partycje. Stopień równoległy jest kontrolowany przez [`parallelCopies`](copy-activity-performance.md#parallel-copy) ustawienia dla działania kopiowania. Na przykład jeśli ustawisz `parallelCopies` na cztery, Data Factory jednocześnie generuje i uruchamia cztery zapytania w oparciu o określoną opcję partycji i ustawienia, a każde zapytanie pobiera część danych z SAP HANA.
+Po włączeniu kopiowania podzielonego na partycje usługa Data Factory uruchamia równoległe kwerendy względem źródła SAP HANA w celu pobierania danych przez partycje. Stopień równoległy jest [`parallelCopies`](copy-activity-performance.md#parallel-copy) kontrolowany przez ustawienie działania kopiowania. Na przykład jeśli `parallelCopies` ustawisz cztery, usługa Data Factory jednocześnie generuje i uruchamia cztery kwerendy na podstawie określonej opcji partycji i ustawień, a każda kwerenda pobiera część danych z sap HANA.
 
-Zalecane jest włączenie kopiowania równoległego przy użyciu partycjonowania danych, szczególnie w przypadku pozyskiwania dużej ilości danych z SAP HANA. Poniżej przedstawiono sugerowane konfiguracje dla różnych scenariuszy. Podczas kopiowania danych do magazynu danych opartego na plikach zaleca się zapisanie do folderu jako wielu plików (określenie tylko nazwy folderu), w którym to przypadku wydajność jest lepsza niż zapis do pojedynczego pliku.
+Zaleca się włączenie kopiowania równoległego z partycjonowania danych, zwłaszcza podczas pozyskiwania dużej ilości danych z sap HANA. Poniżej przedstawiono sugerowane konfiguracje dla różnych scenariuszy. Podczas kopiowania danych do magazynu danych opartych na plikach zaleca się zapisywanie w folderze jako wielu plików (określanie tylko nazwy folderu), w którym to przypadku wydajność jest lepsza niż zapisywanie do jednego pliku.
 
 | Scenariusz                                           | Sugerowane ustawienia                                           |
 | -------------------------------------------------- | ------------------------------------------------------------ |
-| Pełne ładowanie z dużej tabeli.                        | **Opcja partycji**: partycje fizyczne tabeli. <br><br/>Podczas wykonywania Data Factory automatycznie wykrywa typ partycji fizycznej określonej tabeli SAP HANA i wybiera odpowiednią strategię partycji:<br>**partycjonowanie zakresu**- : Pobierz kolumny partycji i zakresy partycji zdefiniowane dla tabeli, a następnie skopiuj dane według zakresu. <br>- **partycjonowanie skrótów**: Użyj klucza partycji skrótu jako kolumny partycji, a następnie Podziel dane na partycje i skopiuj je na podstawie zakresów obliczeniowych ADF. <br>- **partycjonowanie okrężne** lub **Brak partycji**: Użyj klucza podstawowego jako kolumny partycji, a następnie Podziel dane na partycje i skopiuj je w oparciu o zakresy obliczeniowe ADF. |
-| Załaduj dużą ilość danych przy użyciu kwerendy niestandardowej. | **Opcja partycji**: dynamiczna partycja zakresu.<br>**Zapytanie**: `SELECT * FROM <TABLENAME> WHERE ?AdfHanaDynamicRangePartitionCondition AND <your_additional_where_clause>`.<br>**Kolumna partycji**: określ kolumnę używaną do stosowania dynamicznej partycji zakresów. <br><br>Podczas wykonywania, Data Factory po raz pierwsze oblicza zakresy wartości określonej kolumny partycji, przez równomierne rozłożenie wierszy w wielu zasobnikach zgodnie z liczbą unikatowych wartości kolumn partycji i ustawieniem kopiowania współbieżności ADF, a następnie zastępuje `?AdfHanaDynamicRangePartitionCondition` filtrowaniem zakres wartości kolumny partycji dla każdej partycji i wysyła do SAP HANA.<br><br>Jeśli chcesz użyć wielu kolumn jako kolumny partycji, możesz połączyć wartości każdej kolumny jako jedną kolumnę w zapytaniu i określić ją jako kolumnę partycji w podajniku APD, na przykład `SELECT * FROM (SELECT *, CONCAT(<KeyColumn1>, <KeyColumn2>) AS PARTITIONCOLUMN FROM <TABLENAME>) WHERE ?AdfHanaDynamicRangePartitionCondition`. |
+| Pełne obciążenie z dużego stołu.                        | **Opcja partycji**: Partycje fizyczne tabeli. <br><br/>Podczas wykonywania usługa Data Factory automatycznie wykrywa typ partycji fizycznej określonej tabeli SAP HANA i wybiera odpowiednią strategię partycji:<br>- **Partycjonowanie zakresu:** Pobierz kolumnę partycji i zakresy partycji zdefiniowane dla tabeli, a następnie skopiuj dane według zakresu. <br>- **Partycjonowanie skrótów:** Użyj klucza partycji mieszania jako kolumny partycji, a następnie partycji i skopiować dane na podstawie zakresów obliczeniowych ADF. <br>- **Partycjonowanie okrężne** lub **brak partycji:** Użyj klucza podstawowego jako kolumny partycji, a następnie partycjonuj i skopiuj dane na podstawie zakresów obliczeniowych ADF. |
+| Załaduj dużą ilość danych przy użyciu kwerendy niestandardowej. | **Opcja partycji**: Partycja zakresu dynamicznego.<br>**Zapytanie**: `SELECT * FROM <TABLENAME> WHERE ?AdfHanaDynamicRangePartitionCondition AND <your_additional_where_clause>`.<br>**Kolumna partycji**: Określ kolumnę używaną do zastosowania partycji zakresu dynamicznego. <br><br>Podczas wykonywania data factory najpierw oblicza zakresy wartości określonej kolumny partycji, równomiernie rozmieszcza wiersze w wielu zasobnikach zgodnie `?AdfHanaDynamicRangePartitionCondition` z liczbą odrębnych wartości kolumn partycji i ustawieniem kopiowania równoległego ADF, a następnie zastępuje filtrowanie zakresu wartości kolumny partycji dla każdej partycji i wysyła do SAP HANA.<br><br>Jeśli chcesz użyć wielu kolumn jako kolumny partycji, możesz połącz wartości każdej kolumny jako jedną kolumnę w kwerendzie i określić ją jako kolumnę partycji w podajniku ADF, na przykład `SELECT * FROM (SELECT *, CONCAT(<KeyColumn1>, <KeyColumn2>) AS PARTITIONCOLUMN FROM <TABLENAME>) WHERE ?AdfHanaDynamicRangePartitionCondition`. |
 
-**Przykład: zapytanie z partycjami fizycznymi tabeli**
+**Przykład: kwerenda z partycjami fizycznymi tabeli**
 
 ```json
 "source": {
@@ -251,7 +251,7 @@ Zalecane jest włączenie kopiowania równoległego przy użyciu partycjonowania
 }
 ```
 
-**Przykład: zapytanie z dynamiczną partycją zakresu**
+**Przykład: kwerenda z partycją zakresu dynamicznego**
 
 ```json
 "source": {
@@ -264,43 +264,43 @@ Zalecane jest włączenie kopiowania równoległego przy użyciu partycjonowania
 }
 ```
 
-## <a name="data-type-mapping-for-sap-hana"></a>Mapowanie typu danych dla SAP HANA
+## <a name="data-type-mapping-for-sap-hana"></a>Mapowanie typu danych dla sap HANA
 
-Podczas kopiowania danych z SAP HANA następujące mapowania są używane z SAP HANA typów danych do Azure Data Factory danych pośrednich. Zobacz [Mapowanie schematu i typu danych](copy-activity-schema-and-type-mapping.md) , aby dowiedzieć się, jak działanie kopiowania mapuje schemat źródłowy i typ danych do ujścia.
+Podczas kopiowania danych z sap HANA, następujące mapowania są używane z typów danych SAP HANA do usługi Azure Data Factory tymczasowych typów danych. Zobacz [Mapowania schematu i typu danych,](copy-activity-schema-and-type-mapping.md) aby dowiedzieć się, jak aktywność kopiowania mapuje schemat źródłowy i typ danych do ujścia.
 
-| Typ danych SAP HANA | Typ danych tymczasowych fabryki danych |
+| Typ danych SAP HANA | Tymczasowy typ danych fabryki danych |
 | ------------------ | ------------------------------ |
-| ALPHANUM           | Ciąg                         |
-| BIGINT             | Int64                          |
-| BINARY             | Byte[]                         |
-| BINTEXT            | Ciąg                         |
-| BLOB               | Byte[]                         |
-| BOOL               | Bajtów                           |
-| CLOB               | Ciąg                         |
+| ALFANUM           | Ciąg                         |
+| Bigint             | Int64                          |
+| Binarnym             | Bajt[]                         |
+| TEKST BINTEXT            | Ciąg                         |
+| Blob               | Bajt[]                         |
+| Bool               | Byte                           |
+| Clob               | Ciąg                         |
 | DATE               | DateTime                       |
-| DECIMAL            | Dziesiętna                        |
-| DOUBLE             | Podwójne                         |
-| FLOAT              | Podwójne                         |
-| INTEGER            | Int32                          |
-| NCLOB              | Ciąg                         |
-| NVARCHAR           | Ciąg                         |
-| REAL               | Single                         |
-| SECONDDATE         | DateTime                       |
-| SHORTTEXT          | Ciąg                         |
-| SMALLDECIMAL       | Dziesiętna                        |
-| SMALLINT           | Int16                          |
-| STGEOMETRYTYPE     | Byte[]                         |
-| STPOINTTYPE        | Byte[]                         |
-| TEXT               | Ciąg                         |
+| Dziesiętnych            | Wartość dziesiętna                        |
+| Podwójne             | Double                         |
+| Float              | Double                         |
+| LICZBA CAŁKOWITA            | Int32                          |
+| Nclob              | Ciąg                         |
+| Nvarchar           | Ciąg                         |
+| LICZBA RZECZYWISTA               | Single                         |
+| ODDELEGOWKA         | DateTime                       |
+| KRÓTKI TEKST          | Ciąg                         |
+| SMALLDECIMAL (MAŁE ROZMIARY)       | Wartość dziesiętna                        |
+| Smallint           | Int16                          |
+| Stgeometrytype     | Bajt[]                         |
+| STPOINTTYPE (TYP STPOINTTYPE)        | Bajt[]                         |
+| TEKST               | Ciąg                         |
 | CZAS               | przedział_czasu                       |
-| TINYINT            | Bajtów                           |
-| VARCHAR            | Ciąg                         |
-| TIMESTAMP          | DateTime                       |
-| VARBINARY          | Byte[]                         |
+| Tinyint            | Byte                           |
+| Varchar            | Ciąg                         |
+| Sygnatury czasowej          | DateTime                       |
+| Varbinary          | Bajt[]                         |
 
-## <a name="lookup-activity-properties"></a>Właściwości działania Lookup
+## <a name="lookup-activity-properties"></a>Właściwości działania odnośnika
 
-Aby dowiedzieć się więcej o właściwościach, sprawdź [działanie Lookup (wyszukiwanie](control-flow-lookup-activity.md)).
+Aby dowiedzieć się więcej o właściwościach, sprawdź [działanie odnośnika](control-flow-lookup-activity.md).
 
 ## <a name="next-steps"></a>Następne kroki
-Listę magazynów danych obsługiwanych jako źródła i ujścia przez działanie kopiowania w Azure Data Factory można znaleźć w temacie [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats).
+Aby uzyskać listę magazynów danych obsługiwanych jako źródła i pochłaniacze przez działanie kopiowania w usłudze Azure Data Factory, zobacz [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats).

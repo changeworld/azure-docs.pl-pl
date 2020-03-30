@@ -1,50 +1,53 @@
 ---
-title: Konfigurowanie kluczy zarządzanych przez klienta przy użyciuC#
-description: W tym artykule opisano sposób konfigurowania szyfrowania kluczy zarządzanych przez klienta na danych w usłudze Azure Eksplorator danych.
+title: 'Konfigurowanie kluczy zarządzanych przez klienta przy użyciu języka C #'
+description: W tym artykule opisano sposób konfigurowania szyfrowania kluczy zarządzanych przez klienta na danych w Eksploratorze danych platformy Azure.
 author: saguiitay
 ms.author: itsagui
 ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 01/06/2020
-ms.openlocfilehash: 16c108790dd696e98a1264691254c9e99dac6cd3
-ms.sourcegitcommit: d9ec6e731e7508d02850c9e05d98d26c4b6f13e6
+ms.openlocfilehash: a00b0876c4a188b932032129ed5a394e94198930
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/20/2020
-ms.locfileid: "76280610"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80297945"
 ---
-# <a name="configure-customer-managed-keys-using-c"></a>Konfigurowanie kluczy zarządzanych przez klienta przy użyciuC#
+# <a name="configure-customer-managed-keys-using-c"></a>Konfigurowanie kluczy zarządzanych przez klienta przy użyciu języka C #
 
 > [!div class="op_single_selector"]
-> * [C#](customer-managed-keys-csharp.md)
+> * [Portal](customer-managed-keys-portal.md)
+> * [C #](customer-managed-keys-csharp.md)
 > * [Szablon usługi Azure Resource Manager](customer-managed-keys-resource-manager.md)
 
 [!INCLUDE [data-explorer-configure-customer-managed-keys](../../includes/data-explorer-configure-customer-managed-keys.md)]
 
-## <a name="configure-encryption-with-customer-managed-keys"></a>Konfigurowanie szyfrowania przy użyciu kluczy zarządzanych przez klienta
+[!INCLUDE [data-explorer-configure-customer-managed-keys part 2](../../includes/data-explorer-configure-customer-managed-keys-b.md)]
 
-W tej sekcji pokazano, jak skonfigurować szyfrowanie kluczy zarządzanych przez klienta przy użyciu klienta Eksplorator danych C# platformy Azure. 
+## <a name="configure-encryption-with-customer-managed-keys"></a>Konfigurowanie szyfrowania za pomocą kluczy zarządzanych przez klienta
+
+W tej sekcji pokazano, jak skonfigurować szyfrowanie kluczy zarządzanych przez klienta przy użyciu klienta Usługi Azure Data Explorer C#. 
 
 ### <a name="prerequisites"></a>Wymagania wstępne
 
-* Jeśli nie masz zainstalowanego programu Visual Studio 2019, możesz pobrać i korzystać **bezpłatnie** z programu [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/). Podczas instalacji programu Visual Studio upewnij się, że jest włączona opcja **Programowanie na platformie Azure**.
+* Jeśli nie masz zainstalowanego programu Visual Studio 2019, możesz pobrać **bezpłatną** [wersję programu Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/)i korzystać z niej. Podczas instalacji programu Visual Studio upewnij się, że jest włączona opcja **Programowanie na platformie Azure**.
 
-* Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto platformy Azure](https://azure.microsoft.com/free/).
+* Jeśli nie masz subskrypcji platformy Azure, utwórz [bezpłatne konto platformy Azure](https://azure.microsoft.com/free/) przed rozpoczęciem.
 
-### <a name="install-c-nuget"></a>Zainstaluj C# pakiet NuGet
+### <a name="install-c-nuget"></a>Zainstaluj C# NuGet
 
-* Zainstaluj [pakiet NuGet platformy Azure Eksplorator danych (Kusto)](https://www.nuget.org/packages/Microsoft.Azure.Management.Kusto/).
+* Zainstaluj [pakiet Azure Data Explorer (Kusto) NuGet](https://www.nuget.org/packages/Microsoft.Azure.Management.Kusto/).
 
-* Zainstaluj [pakiet NuGet Microsoft. IdentityModel. clients. ActiveDirectory](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/) na potrzeby uwierzytelniania.
+* Zainstaluj [pakiet Microsoft.IdentityModel.Clients.ActiveDirectory NuGet](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/) do uwierzytelniania.
 
-### <a name="authentication"></a>Authentication
+### <a name="authentication"></a>Uwierzytelnianie
 
-Aby uruchomić przykłady z tego artykułu, należy [utworzyć aplikację usługi Azure AD](/azure/active-directory/develop/howto-create-service-principal-portal) i nazwę główną usługi, która może uzyskiwać dostęp do zasobów. Możesz dodać przypisanie roli do zakresu subskrypcji i uzyskać wymagane `Directory (tenant) ID`, `Application ID`i `Client Secret`.
+Aby uruchomić przykłady w tym artykule, należy utworzyć aplikację usługi Azure AD i [jednostkę](/azure/active-directory/develop/howto-create-service-principal-portal) usługi, która może uzyskać dostęp do zasobów. Można dodać przypisanie roli w zakresie subskrypcji `Directory (tenant) ID` `Application ID`i `Client Secret`uzyskać wymagane , i .
 
 ### <a name="configure-cluster"></a>Konfigurowanie klastra
 
-Domyślnie usługa Azure Eksplorator danych Encryption używa kluczy zarządzanych przez firmę Microsoft. Skonfiguruj klaster Eksplorator danych platformy Azure pod kątem używania kluczy zarządzanych przez klienta i określ klucz, który ma zostać skojarzony z klastrem.
+Domyślnie szyfrowanie usługi Azure Data Explorer używa kluczy zarządzanych przez firmę Microsoft. Skonfiguruj klaster usługi Azure Data Explorer do używania kluczy zarządzanych przez klienta i określ klucz do skojarzenia z klastrem.
 
 1. Zaktualizuj klaster przy użyciu następującego kodu:
 
@@ -80,17 +83,17 @@ Domyślnie usługa Azure Eksplorator danych Encryption używa kluczy zarządzany
     kustoManagementClient.Clusters.Get(resourceGroupName, clusterName);
     ```
 
-    Jeśli wynik zawiera `ProvisioningState` z wartością `Succeeded`, klaster został pomyślnie zaktualizowany.
+    Jeśli wynik `ProvisioningState` zawiera `Succeeded` wartość, klaster został pomyślnie zaktualizowany.
 
-## <a name="update-the-key-version"></a>Zaktualizuj wersję klucza
+## <a name="update-the-key-version"></a>Aktualizowanie wersji klucza
 
-Podczas tworzenia nowej wersji klucza należy zaktualizować klaster tak, aby korzystał z nowej wersji. Najpierw Wywołaj `Get-AzKeyVaultKey`, aby uzyskać najnowszą wersję klucza. Następnie zaktualizuj właściwości magazynu kluczy klastra, aby użyć nowej wersji klucza, jak pokazano w [Konfiguruj klaster](#configure-cluster).
+Podczas tworzenia nowej wersji klucza należy zaktualizować klaster, aby użyć nowej wersji. Najpierw zadzwoń, `Get-AzKeyVaultKey` aby uzyskać najnowszą wersję klucza. Następnie zaktualizuj właściwości magazynu kluczy klastra, aby użyć nowej wersji klucza, jak pokazano w [temacie Konfigurowanie klastra](#configure-cluster).
 
 ## <a name="next-steps"></a>Następne kroki
 
-* [Zabezpieczanie klastrów usługi Azure Eksplorator danych na platformie Azure](security.md)
-* [Konfigurowanie tożsamości zarządzanych dla klastra usługi Azure Eksplorator danych](managed-identities.md)
-* [Zabezpiecz swój klaster na platformie Azure Eksplorator danych — Azure Portal](manage-cluster-security.md) przez włączenie szyfrowania w stanie spoczynku.
-* [Konfigurowanie kluczy zarządzanych przez klienta przy użyciu szablonu Azure Resource Manager](customer-managed-keys-resource-manager.md)
+* [Zabezpieczanie klastrów eksploratora danych platformy Azure na platformie Azure](security.md)
+* [Konfigurowanie tożsamości zarządzanych dla klastra usługi Azure Data Explorer](managed-identities.md)
+* [Zabezpiecz swój klaster w usłudze Azure Data Explorer — witryna Azure portal,](manage-cluster-security.md) włączając szyfrowanie w spoczynku.
+* [Konfigurowanie kluczy zarządzanych przez klienta przy użyciu szablonu usługi Azure Resource Manager](customer-managed-keys-resource-manager.md)
 
 

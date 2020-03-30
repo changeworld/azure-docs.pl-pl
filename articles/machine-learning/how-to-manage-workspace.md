@@ -1,7 +1,7 @@
 ---
-title: Tworzenie Azure Machine Learning obszarów roboczych w portalu
+title: Tworzenie obszarów roboczych usługi Azure Machine Learning w portalu
 titleSuffix: Azure Machine Learning
-description: Dowiedz się, jak tworzyć, wyświetlać i usuwać obszary robocze Azure Machine Learning w Azure Portal.
+description: Dowiedz się, jak tworzyć, wyświetlać i usuwać obszary robocze usługi Azure Machine Learning w witrynie Azure portal.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,98 +10,99 @@ ms.author: sgilley
 author: sdgilley
 ms.date: 12/27/2019
 ms.custom: seodec18
-ms.openlocfilehash: 4f31c5583671ed3441e1a3f0f53c8518e550080a
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: f38b0895b0d6eddcf63c082d3df205f4d9de9d50
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79283552"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80297064"
 ---
-# <a name="create-and-manage-azure-machine-learning-workspaces-in-the-azure-portal"></a>Tworzenie obszarów roboczych usługi Azure Machine Learning i zarządzanie nimi w witrynie Azure Portal
+# <a name="create-and-manage-azure-machine-learning-workspaces-in-the-azure-portal"></a>Tworzenie obszarów roboczych usługi Azure Machine Learning i zarządzanie nimi w witrynie Azure portal
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-W tym artykule opisano tworzenie, wyświetlanie i usuwanie [**Azure Machine Learning obszarów roboczych**](concept-workspace.md) w Azure Portal dla [Azure Machine Learning](overview-what-is-azure-ml.md).  Portal jest najprostszym sposobem na rozpoczęcie pracy z obszarami roboczymi, ale w zależności od zmian lub wymagań dotyczących usługi Automation można także tworzyć i usuwać obszary robocze [przy użyciu interfejsu wiersza polecenia](reference-azure-machine-learning-cli.md), [z kodem języka Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) lub [za pośrednictwem rozszerzenia vs Code](tutorial-setup-vscode-extension.md).
+W tym artykule utworzysz, wyświetlisz i usuniesz [**obszary robocze usługi Azure Machine Learning**](concept-workspace.md) w witrynie Azure portal dla usługi Azure Machine [Learning.](overview-what-is-azure-ml.md)  Portal jest najprostszym sposobem, aby rozpocząć pracę z obszarami roboczymi, ale w miarę zmiany potrzeb lub zwiększenia wymagań dotyczących automatyzacji można również tworzyć i usuwać obszary robocze [za pomocą interfejsu wiersza polecenia](reference-azure-machine-learning-cli.md), z [kodem Pythona](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) lub [rozszerzeniem kodu VS.](tutorial-setup-vscode-extension.md)
 
 ## <a name="create-a-workspace"></a>Tworzenie obszaru roboczego
 
-Aby utworzyć obszar roboczy, musisz mieć subskrypcję platformy Azure. Jeśli nie masz subskrypcji na platformie Azure, przed rozpoczęciem utwórz bezpłatne konto. Wypróbuj [bezpłatną lub płatną wersję Azure Machine Learning](https://aka.ms/AMLFree) dzisiaj.
+Aby utworzyć obszar roboczy, potrzebujesz subskrypcji platformy Azure. Jeśli nie masz subskrypcji Azure, przed rozpoczęciem utwórz bezpłatne konto. Wypróbuj [bezpłatną lub płatną wersję usługi Azure Machine Learning](https://aka.ms/AMLFree) już dziś.
 
-1. Zaloguj się do [Azure Portal](https://portal.azure.com/) przy użyciu poświadczeń dla subskrypcji platformy Azure. 
+1. Zaloguj się do [witryny Azure portal](https://portal.azure.com/) przy użyciu poświadczeń dla subskrypcji platformy Azure. 
 
-1. W lewym górnym rogu Azure Portal wybierz pozycję **+ Utwórz zasób**.
+1. W lewym górnym rogu witryny Azure Portal wybierz pozycję **+ Utwórz zasób**.
 
       ![Tworzenie nowego zasobu](./media/how-to-manage-workspace/create-workspace.gif)
 
-1. Użyj paska wyszukiwania, aby znaleźć **Machine Learning**.
+1. Użyj paska wyszukiwania, aby znaleźć **uczenie maszynowe**.
 
-1. Wybierz **Machine Learning**.
+1. Wybierz **opcję Uczenie maszynowe**.
 
-1. W okienku **Machine Learning** wybierz pozycję **Utwórz** , aby rozpocząć.
+1. W okienku **Uczenie maszynowe** wybierz pozycję **Utwórz,** aby rozpocząć.
 
 1. Podaj następujące informacje, aby skonfigurować nowy obszar roboczy:
 
    Pole|Opis 
    ---|---
-   Nazwa obszaru roboczego |Wprowadź unikatową nazwę identyfikującą obszar roboczy. W tym przykładzie używamy **dokumentów-WS**. Nazwy muszą być unikatowe w ramach grupy zasobów. Użyj nazwy, która jest łatwa do odzyskania i odróżniania od obszarów roboczych utworzonych przez inne osoby. W nazwie obszaru roboczego nie jest rozróżniana wielkość liter.
+   Nazwa obszaru roboczego |Wprowadź unikatową nazwę identyfikującą obszar roboczy. W tym przykładzie używamy **docs-ws**. Nazwy muszą być unikatowe w całej grupie zasobów. Użyj nazwy, która jest łatwa do przywołania i odróżnienia od obszarów roboczych utworzonych przez inne osoby. Nazwa obszaru roboczego jest niewrażliwa na wielkości liter.
    Subskrypcja |Wybierz subskrypcję platformy Azure, której chcesz użyć.
-   Grupa zasobów | Użyj istniejącej grupy zasobów w subskrypcji lub wprowadź nazwę, aby utworzyć nową grupę zasobów. Grupa zasobów zawiera powiązane zasoby dla rozwiązania platformy Azure. W tym przykładzie używane są **dokumenty-AML**. 
-   Lokalizacja | Wybierz lokalizację znajdującą się najbliżej użytkowników i zasoby danych, aby utworzyć obszar roboczy.
-   Wersja obszaru roboczego | Wybierz pozycję **podstawowa** lub **Enterprise**.  Ta wersja obszaru roboczego określa funkcje, do których będziesz mieć dostęp i Cennik. Dowiedz się więcej o [ofertach Basic i Enterprise Edition](overview-what-is-azure-ml.md#sku). 
+   Grupa zasobów | Użyj grupy zasobów istniejącej w Twojej subskrypcji lub wprowadź nazwę, aby utworzyć nową grupę zasobów. Grupa zasobów przechowuje powiązane zasoby dla rozwiązania platformy Azure. W tym przykładzie używamy **docs-aml**. 
+   Lokalizacja | Wybierz lokalizację najbliższą użytkownikom i zasoby danych, aby utworzyć obszar roboczy.
+   Edycja obszaru roboczego | Wybierz **opcję Podstawowe** lub **Przedsiębiorstwo**.  Ta wersja obszaru roboczego określa funkcje, do których będziesz mieć dostęp i ceny. Dowiedz się więcej o [ofertach wersji Basic i Enterprise.](overview-what-is-azure-ml.md#sku) 
 
     ![Konfigurowanie obszaru roboczego](./media/how-to-manage-workspace/select-edition.png)
 
-1. Po zakończeniu konfigurowania obszaru roboczego wybierz pozycję **Utwórz**. 
+1. Po zakończeniu konfigurowania obszaru roboczego wybierz pozycję **Recenzja + Utwórz**.
+2. Przejrzyj ustawienia i wkonuj dodatkowe zmiany lub poprawki. Po zasysaniu ustawień wybierz pozycję **Utwórz**.
 
    > [!Warning] 
-   > Tworzenie obszaru roboczego w chmurze może potrwać kilka minut.
+   > Utworzenie obszaru roboczego w chmurze może potrwać kilka minut.
 
-   Po zakończeniu procesu zostanie wyświetlony komunikat o powodzeniu wdrożenia. 
+   Po zakończeniu procesu zostanie wyświetlony komunikat o powodzenie wdrożenia. 
  
  1. Aby wyświetlić nowy obszar roboczy, wybierz pozycję **Przejdź do zasobu**.
 
-### <a name="download-a-configuration-file"></a>Pobierz plik konfiguracji
+### <a name="download-a-configuration-file"></a>Pobieranie pliku konfiguracyjnego
 
-1. Jeśli utworzysz [wystąpienie obliczeniowe](tutorial-1st-experiment-sdk-setup.md#azure), Pomiń ten krok.
+1. Jeśli zostaniesz utworzyć [wystąpienie obliczeniowe,](tutorial-1st-experiment-sdk-setup.md#azure)pomiń ten krok.
 
-1. Jeśli planujesz używać kodu w środowisku lokalnym, który odwołuje się do tego obszaru roboczego, wybierz pozycję **Pobierz plik config. JSON** z sekcji **Przegląd** w obszarze roboczym.  
+1. Jeśli planujesz używać kodu w środowisku lokalnym, który odwołuje się do tego obszaru roboczego, wybierz **pobierz plik config.json** z sekcji **Przegląd** obszaru roboczego.  
 
-   ![Pobierz plik config. JSON](./media/how-to-manage-workspace/configure.png)
+   ![Pobierz config.json](./media/how-to-manage-workspace/configure.png)
    
-   Umieść plik w strukturze katalogów za pomocą skryptów języka Python lub notesów Jupyter. Może znajdować się w tym samym katalogu, podkatalogu o nazwie *. Azure*lub w katalogu nadrzędnym. Podczas tworzenia wystąpienia obliczeniowego ten plik jest dodawany do poprawnego katalogu na maszynie wirtualnej.
+   Umieść plik w strukturze katalogów za pomocą skryptów Pythona lub notesów Jupyter. Może znajdować się w tym samym katalogu, podkatalogu o nazwie *.azureml*lub w katalogu nadrzędnym. Podczas tworzenia wystąpienia obliczeniowego, ten plik jest dodawany do właściwego katalogu na maszynie wirtualnej dla Ciebie.
 
-## <a name="upgrade"></a>Uaktualnianie do wersji Enterprise
+## <a name="upgrade-to-enterprise-edition"></a><a name="upgrade"></a>Uaktualnienie do wersji Enterprise
 
-Możesz uaktualnić obszar roboczy z wersji podstawowa do wersji Enterprise, aby korzystać z rozszerzonych funkcji, takich jak środowisko o małym kodzie i ulepszone funkcje zabezpieczeń.
+Możesz uaktualnić obszar roboczy z wersji Basic do Enterprise, aby korzystać z ulepszonych funkcji, takich jak funkcje niskiego kodu i ulepszone funkcje zabezpieczeń.
 
-1. Zaloguj się do [Azure Machine Learning Studio](https://ml.azure.com).
+1. Zaloguj się do [studia usługi Azure Machine Learning](https://ml.azure.com).
 
 1. Wybierz obszar roboczy, który chcesz uaktualnić.
 
-1. Wybierz pozycję **Dowiedz się więcej** w prawym górnym rogu strony.
+1. Wybierz **pozycję Dowiedz się więcej** w prawym górnym rogu strony.
 
-   [![uaktualnić](./media/how-to-manage-workspace/upgrade.png) obszaru roboczego](./media/how-to-manage-workspace/upgrade.png#lightbox)
+   [![Uaktualnianie obszaru](./media/how-to-manage-workspace/upgrade.png) roboczego](./media/how-to-manage-workspace/upgrade.png#lightbox)
 
-1. W wyświetlonym oknie wybierz pozycję **Uaktualnij** .
+1. Wybierz **pozycję Uaktualnij** w wyświetlonym oknie.
 
 
 > [!IMPORTANT]
-> Nie można obniżyć poziomu obszaru roboczego Enterprise Edition do obszaru roboczego wersja podstawowa. 
+> Nie można obniżyć obszaru roboczego wersji Enterprise do obszaru roboczego wersji podstawowej. 
 
-## <a name="view"></a>Znajdowanie obszaru roboczego
+## <a name="find-a-workspace"></a><a name="view"></a>Znajdowanie obszaru roboczego
 
-1. W górnym polu wyszukiwania wpisz **Machine Learning**.  
+1. W górnym polu wyszukiwania wpisz machine **learning**.  
 
-1. Wybierz **Machine Learning**.
+1. Wybierz **opcję Uczenie maszynowe**.
 
-   ![Wyszukaj Azure Machine Learning obszar roboczy](./media/how-to-manage-workspace/find-workspaces.png)
+   ![Wyszukiwanie obszaru roboczego usługi Azure Machine Learning](./media/how-to-manage-workspace/find-workspaces.png)
 
-1. Przejrzyj listę obszarów roboczych, można odnaleźć. Można filtrować na podstawie subskrypcji, grupy zasobów i lokalizacji.  
+1. Przejrzyj listę znalezionych obszarów roboczych. Można filtrować na podstawie subskrypcji, grup zasobów i lokalizacji.  
 
 1. Wybierz obszar roboczy, aby wyświetlić jego właściwości.
 
 ## <a name="delete-a-workspace"></a>Usuwanie obszaru roboczego
 
-Przycisk Usuń w górnej części obszaru roboczego, który chcesz usunąć.
+Użyj przycisku Usuń u góry obszaru roboczego, który chcesz usunąć.
 
   ![Przycisk Usuń](./media/how-to-manage-workspace/delete-workspace.png)
 
@@ -115,20 +116,20 @@ Przycisk Usuń w górnej części obszaru roboczego, który chcesz usunąć.
 
 [!INCLUDE [machine-learning-resource-provider](../../includes/machine-learning-resource-provider.md)]
 
-### <a name="moving-the-workspace"></a>Przeniesienie obszaru roboczego
+### <a name="moving-the-workspace"></a>Przenoszenie obszaru roboczego
 
 > [!WARNING]
-> Przeniesienie obszaru roboczego Azure Machine Learning do innej subskrypcji lub przeniesienie subskrypcji będącej właścicielem do nowej dzierżawy nie jest obsługiwane. Wykonanie tej operacji może spowodować błędy.
+> Przenoszenie obszaru roboczego usługi Azure Machine Learning do innej subskrypcji lub przenoszenie subskrypcji właścicielskiej do nowej dzierżawy nie jest obsługiwane. Może to spowodować błędy.
 
-### <a name="deleting-the-azure-container-registry"></a>Usuwanie Azure Container Registry
+### <a name="deleting-the-azure-container-registry"></a>Usuwanie rejestru kontenerów platformy Azure
 
-W przypadku niektórych operacji Azure Machine Learning obszar roboczy używa Azure Container Registry (ACR). Zostanie automatycznie utworzone wystąpienie ACR, gdy jest ono najpierw wymagane.
+Obszar roboczy usługi Azure Machine Learning używa usługi Azure Container Registry (ACR) dla niektórych operacji. Automatycznie utworzy wystąpienie ACR, gdy po raz pierwszy będzie potrzebne.
 
 [!INCLUDE [machine-learning-delete-acr](../../includes/machine-learning-delete-acr.md)]
 
 ## <a name="next-steps"></a>Następne kroki
 
-Postępuj zgodnie z samouczkiem o pełnej długości, aby dowiedzieć się, jak używać obszaru roboczego do kompilowania, uczenia i wdrażania modeli przy użyciu Azure Machine Learning.
+Postępuj zgodnie z samouczkiem pełnej długości, aby dowiedzieć się, jak używać obszaru roboczego do tworzenia, uczenia i wdrażania modeli za pomocą usługi Azure Machine Learning.
 
 > [!div class="nextstepaction"]
-> [Samouczek: uczenie modeli](tutorial-train-models-with-aml.md)
+> [Samouczek: Modele pociągów](tutorial-train-models-with-aml.md)

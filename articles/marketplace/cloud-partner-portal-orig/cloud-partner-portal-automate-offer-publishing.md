@@ -1,32 +1,31 @@
 ---
-title: Automatyzuj publikowanie ofert | Portal Azure Marketplace
-description: Wyjaśnia, jak programowo zautomatyzować przepływ pracy publikowania maszyn wirtualnych.
-services: Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+title: Automatyzacja publikowania ofert | Azure Marketplace
+description: W tym artykule wyjaśniono, jak programowo zautomatyzować przepływ pracy publikowania maszyn wirtualnych.
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/13/2018
-ms.author: pabutler
-ms.openlocfilehash: 6464c8354c9d56092380e4b76c1ea962f5102c72
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 25c7429dc369fb8fc70a135950b16c0a5997656b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73824345"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80280341"
 ---
-<a name="automate-offer-publishing"></a>Automatyzuj publikowanie ofert
+<a name="automate-offer-publishing"></a>Automatyzowanie publikowania oferty
 =========================
 
-Można również programowo zautomatyzować przepływ pracy publikowania maszyn wirtualnych przy użyciu interfejsów API w sekcji [Dokumentacja interfejsu API](./cloud-partner-portal-api-overview.md) . Istnieją dwa różne scenariusze, które należy wziąć pod uwagę podczas planowania automatyzacji: oferowanie publikowania początkowego i późniejszej publikacji oferty.
+Można również programowo zautomatyzować przepływ pracy publikowania maszyn wirtualnych przy użyciu interfejsów API w sekcji [Odwołanie do interfejsu API.](./cloud-partner-portal-api-overview.md) Istnieją dwa różne scenariusze do rozważenia podczas planowania automatyzacji: zaoferuj początkowe publikowanie i późniejsze publikowanie ofert.
 
 
-<a name="offer-initial-publishing"></a>Oferuj publikację początkową
+<a name="offer-initial-publishing"></a>Zaoferuj publikację początkową
 -------------------------
 
-Po opublikowaniu oferty po raz pierwszy wymagane jest wykonanie kilku dodatkowych czynności przed przekazaniem ich do portalu Marketplace.  Na przykład należy przygotować metadane i utworzyć wersję roboczą oferty. Początkowy przepływ pracy publikowania jest pokazywany na poniższym diagramie.
+Gdy publikujesz ofertę po raz pierwszy, przed przesłaniem do portalu Marketplace wymaga ona kilku dodatkowych kroków.  Na przykład należy przygotować metadane i utworzyć projekt roboczy oferty. Początkowy przepływ pracy publikowania jest wyświetlany na poniższym diagramie.
 
-![Interakcje publikacji początkowej oferty](media/cloud-partner-portal-automate-offer-publishing/first-time-offer-publishing.png)
+![Interakcje wstępnej publikacji oferty](media/cloud-partner-portal-automate-offer-publishing/first-time-offer-publishing.png)
 
 Poniższy przykładowy kod demonstruje te kroki.
 
@@ -75,12 +74,12 @@ Poniższy przykładowy kod demonstruje te kroki.
 ```
 
 
-<a name="subsequent-offer-publishing"></a>Kolejna publikacja oferty
+<a name="subsequent-offer-publishing"></a>Kolejne publikacje ofert
 ---------------------------
 
-Po zintegrowaniu oferty maszyny wirtualnej z potokiem ciągłej integracji można zautomatyzować przepływ pracy publikowania do uruchamiania za każdym razem, gdy tworzony jest nowy wirtualny dysk twardy (VHD).  Ten przepływ pracy jest zilustrowany na poniższym diagramie i przykładowym kodzie.
+Po zintegrowaniu oferty maszyny wirtualnej z potokiem ciągłej integracji można zautomatyzować przepływ pracy publikowania w celu uruchomienia za każdym razem, gdy tworzony jest nowy wirtualny dysk twardy (VHD).  Ten przepływ pracy jest zilustrowany przez poniższy diagram i przykładowy kod.
 
-![Interakcje kolejnych publikacji oferty](media/cloud-partner-portal-automate-offer-publishing/update-offer-and-publish.png)
+![Interakcje kolejnych publikacji ofertowych](media/cloud-partner-portal-automate-offer-publishing/update-offer-and-publish.png)
 
 ``` csharp
     UpdateOfferAndPublish()

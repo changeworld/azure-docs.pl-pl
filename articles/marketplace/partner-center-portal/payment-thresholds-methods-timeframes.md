@@ -1,46 +1,45 @@
 ---
-Description: Szacowany czas na przeniesienie płatności, odpowiednie progi płatności i witryny Microsoft Marketplace, z których można otrzymywać płatności, mogą się różnić w zależności od typu konta kraju/regionu i wypłaty.
-title: Progi płatności, metody i ramy czasowe w komercyjnej witrynie Marketplace | Portal Azure Marketplace
+Description: Szacowany czas przelewu płatności, obowiązujące progi płatności i platformy microsoft, z których możesz otrzymywać płatności, mogą się różnić w zależności od kraju/regionu i typu konta wypłat.
+title: Progi płatności, metody i ramy czasowe na rynku komercyjnym | Azure Marketplace
 ms.date: 12/10/2019
-ms.topic: article
-author: MaggiePucciEvans
-manager: evansma
-ms.author: evansma
+ms.topic: conceptual
+author: dsindona
+ms.author: dsindona
 ms.service: marketplace
-ms.openlocfilehash: 6bb05513d59870b7fa0d997eb31510494a9938e0
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: fe18fab4a2ea61f41e017704105e37f28c20e456
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75931874"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80279729"
 ---
 # <a name="payment-thresholds-methods-and-time-frames"></a>Progi, metody i horyzonty czasowe płatności
 
-Szacowany czas na przeniesienie płatności i portale firmy Microsoft, z których można otrzymywać płatności, mogą się różnić w zależności od typu konta kraju/regionu i wypłaty. W tym temacie opisano formy płatności obsługiwane w poszczególnych krajach/regionach.
+Szacowany czas przelewu płatności oraz platformy handlowe firmy Microsoft, z których można otrzymywać płatności, mogą się różnić w zależności od kraju/regionu i typu konta wypłat. W tym temacie opisano metody płatności obsługiwane w każdym kraju/regionie.
 
-W przypadku każdego kraju/regionu będziemy używać wartości ACH/SEPA lub transferu z przelewem do dostarczania płatności. Ponadto niektóre kraje/regiony obsługują system PayPal jako formę płatności.
+W danym kraju/regionie będziemy używać ACH/SEPA lub przelewu bankowego do dostarczania naszych płatności. Ponadto niektóre kraje/regiony obsługują system PayPal jako metodę płatności.
 
-## <a name="number-of-days-for-payments-to-reach-payout-account"></a>Liczba dni, w których płatność jest realizowana na koncie wypłaty
+## <a name="number-of-days-for-payments-to-reach-payout-account"></a>Liczba dni, w których płatności mają dotrzeć do konta wypłat
 
-Firma Microsoft zazwyczaj wyśle płatność należną w danym miesiącu do 15-dniowego dnia danego miesiąca, ale w celu uzyskania płatności na Twoje konto zajmie dodatkowy czas. Liczba dni zależy od formy płatności używanej dla Twojego konta, zgodnie z poniższym opisem.
+Zazwyczaj wysyłamy wszelkie płatności należne w danym miesiącu do 15 dnia tego miesiąca, ale dotarcie do Twojego konta zajmie dodatkowy czas. Liczba dni zależy od metody płatności używanej przez nas na Koncie, jak opisano poniżej.
 
 > [!NOTE]
-> Pokazane poniżej dni są przybliżone; Wszelka wypłata może potrwać dłuższy lub krótszy czas.
+> Dni pokazane poniżej są przybliżone; każda wypłata może trwać dłużej lub krócej.
 
-| Metoda płatności     | Liczba dni do uzyskania dostępu do konta wypłaty     |
+| Metoda płatności     | Liczba dni, aby dotrzeć do konta wypłat     |
 |--------------------|--------------------------------------------|
 | PayPal             | 1 dzień roboczy                             |
-| ACH/SEPA           | 2-3 dni roboczych                          |
+| ACH/SEPA           | 2-3 dni robocze                          |
 | Przelew      | 7-10 dni roboczych                         |
 
-Aby zobaczyć kraje/regiony, w których te metody płatności są używane dla poszczególnych rynków, zapoznaj się z poniższymi tabelami.
+Aby zobaczyć kraje/regiony, w których te metody płatności są używane dla każdego rynku, zapoznaj się z poniższymi tabelami.
 
 ## <a name="payment-methods-in-countriesregions"></a>Metody płatności w krajach/regionach
 
 > [!NOTE]
-> Progi płatności we wszystkich regionach to $50 USD.
+> Progi płatności we wszystkich regionach to 50 USD.
 
-| Kraj                          | Azure Marketplace | Przechowywanie, reklamy, mikser i Minecraft | Office | Płatności w systemie PayPal |
+| Kraj                          | Azure Marketplace | Sklep, reklama, mikser i minecraft | Office | Płatności PayPal |
 |----------------------------------|-------------------|------------------------------------------|--------|-----------------|
 | Afganistan                      | Tak               | Tak                                      | Nie     | Nie              |
 | Albania                          | Tak               | Tak                                      | Tak    | Tak             |
@@ -75,12 +74,12 @@ Aby zobaczyć kraje/regiony, w których te metody płatności są używane dla p
 | Kolumbia                         | Tak               | Tak                                      | Tak    | Tak             |
 | Komory                          | Tak               | Tak                                      | Nie     | Nie              |
 | Kongo (DRK)                      | Tak               | Tak                                      | Tak    | Nie              |
-| Republika Konga               | Tak               | Tak                                      | Tak    | Nie              |
+| Kongo, Republika               | Tak               | Tak                                      | Tak    | Nie              |
 | Kostaryka                       | Tak               | Tak                                      | Tak    | Tak             |
-| Wybrzeże D'Ivoire                    | Tak               | Tak                                      | Tak    | Nie              |
+| D'Ivoire w Kuszu                    | Tak               | Tak                                      | Tak    | Nie              |
 | Chorwacja                          | Tak               | Tak                                      | Tak    | Nie              |
 | Cypr                           | Tak               | Tak                                      | Tak    | Tak             |
-| Republika Czeska                   | Tak               | Tak                                      | Tak    | Tak             |
+| Czechy                   | Tak               | Tak                                      | Tak    | Tak             |
 | Dania                          | Tak               | Tak                                      | Tak    | Tak             |
 | Dominika                         | Tak               | Tak                                      | Nie     | Tak             |
 | Dominikana               | Tak               | Tak                                      | Tak    | Tak             |
@@ -90,7 +89,7 @@ Aby zobaczyć kraje/regiony, w których te metody płatności są używane dla p
 | Erytrea                          | Tak               | Tak                                      | Tak    | Nie              |
 | Estonia                          | Tak               | Tak                                      | Tak    | Tak             |
 | Etiopia                         | Tak               | Tak                                      | Tak    | Nie              |
-| Fidżi                     | Tak               | Tak                                      | Nie     | Nie              |
+| Wyspy Fidżi                     | Tak               | Tak                                      | Nie     | Nie              |
 | Finlandia                          | Tak               | Tak                                      | Tak    | Tak             |
 | Francja                           | Tak               | Tak                                      | Tak    | Tak             |
 | Gruzja                          | Tak               | Tak                                      | Tak    | Tak             |
@@ -101,7 +100,7 @@ Aby zobaczyć kraje/regiony, w których te metody płatności są używane dla p
 | Gwinea                           | Tak               | Tak                                      | Tak    | Nie              |
 | Haiti                            | Tak               | Tak                                      | Tak    | Nie              |
 | Honduras                         | Tak               | Tak                                      | Tak    | Tak             |
-| SRA HongKong                        | Tak               | Tak                                      | Tak    | Tak             |
+| Hongkong                        | Tak               | Tak                                      | Tak    | Tak             |
 | Węgry                          | Tak               | Tak                                      | Tak    | Tak             |
 | Islandia                          | Tak               | Tak                                      | Tak    | Nie              |
 | Indie                            | Tak               | Tak                                      | Tak    | Tak             |
@@ -115,7 +114,7 @@ Aby zobaczyć kraje/regiony, w których te metody płatności są używane dla p
 | Jordania                           | Tak               | Tak                                      | Tak    | Tak             |
 | Kazachstan                       | Tak               | Tak                                      | Tak    | Tak             |
 | Kenia                            | Tak               | Tak                                      | Tak    | Tak             |
-| Korea Południowa (południe)                    | Tak               | Tak                                      | Tak    | Nie              |
+| Korea Południowa                    | Tak               | Tak                                      | Tak    | Nie              |
 | Kuwejt                           | Tak               | Tak                                      | Tak    | Tak             |
 | Kirgistan                       | Nie                | Nie                                       | Tak    | Nie              |
 | Laos                             | Tak               | Tak                                      | Tak    | Nie              |
@@ -125,7 +124,7 @@ Aby zobaczyć kraje/regiony, w których te metody płatności są używane dla p
 | Liechtenstein                    | Tak               | Tak                                      | Tak    | Tak             |
 | Litwa                        | Tak               | Tak                                      | Tak    | Nie              |
 | Luksemburg                       | Tak               | Tak                                      | Tak    | Tak             |
-| Macedonia Północna                        | Nie                | Tak                                      | Tak    | Nie              |
+| Macedonia                        | Nie                | Tak                                      | Tak    | Nie              |
 | Madagaskar                       | Tak               | Tak                                      | Tak    | Nie              |
 | Malawi                           | Tak               | Tak                                      | Tak    | Tak             |
 | Malezja                         | Tak               | Tak                                      | Tak    | Tak             |
@@ -139,7 +138,7 @@ Aby zobaczyć kraje/regiony, w których te metody płatności są używane dla p
 | Maroko                          | Tak               | Tak                                      | Tak    | Nie              |
 | Mozambik                       | Tak               | Tak                                      | Tak    | Tak             |
 | Nepal                            | Tak               | Tak                                      | Tak    | Nie              |
-| Holandia                 | Tak               | Tak                                      | Tak    | Tak             |
+| Niderlandy,                 | Tak               | Tak                                      | Tak    | Tak             |
 | Nowa Zelandia                      | Tak               | Tak                                      | Tak    | Tak             |
 | Nikaragua                        | Tak               | Tak                                      | Tak    | Tak             |
 | Niger                            | Tak               | Tak                                      | Tak    | Nie              |
@@ -186,7 +185,7 @@ Aby zobaczyć kraje/regiony, w których te metody płatności są używane dla p
 | Uganda                           | Tak               | Tak                                      | Tak    | Nie              |
 | Ukraina                          | Tak               | Tak                                      | Nie     | Nie              |
 | Zjednoczone Emiraty Arabskie             | Tak               | Tak                                      | Tak    | Tak             |
-| Zjednoczone Królestwo                   | Tak               | Tak                                      | Tak    | Tak             |
+| Wielka Brytania                   | Tak               | Tak                                      | Tak    | Tak             |
 | Stany Zjednoczone                    | Tak               | Tak                                      | Tak    | Tak             |
 | Urugwaj                          | Tak               | Tak                                      | Tak    | Tak             |
 | Uzbekistan                       | Tak               | Tak                                      | Nie     | Nie              |
