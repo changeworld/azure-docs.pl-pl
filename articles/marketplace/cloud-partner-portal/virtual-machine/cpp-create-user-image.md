@@ -1,43 +1,42 @@
 ---
-title: Tworzenie obrazu maszyny wirtualnej użytkownika dla portalu Azure Marketplace
-description: Zawiera listę czynności i odwołań wymaganych do utworzenia obrazu maszyny wirtualnej użytkownika.
-services: Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+title: Tworzenie obrazu maszyny Wirtualnej użytkownika dla portalu Azure Marketplace
+description: Wyświetla listę kroków i odwołań wymaganych do utworzenia obrazu maszyny Wirtualnej użytkownika.
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/29/2018
-ms.author: pabutler
-ms.openlocfilehash: e63f09dc538c5e66b244826cf3b5f92ac388b6a9
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 49db8c6717cd26886c3b49f8c99fdd2b08e8713d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73818698"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80278011"
 ---
 # <a name="create-a-user-vm-image"></a>Tworzenie obrazu maszyny wirtualnej użytkownika
 
-W tym artykule opisano dwa ogólne kroki wymagane do utworzenia obrazu niezarządzanego na podstawie uogólnionego wirtualnego dysku twardego.  Podano informacje, które przeprowadzą Cię przez poszczególne kroki: Przechwytywanie obrazu i uogólnianie obrazu.
+W tym artykule wyjaśniono dwa ogólne kroki wymagane do utworzenia obrazu niezarządzanego z uogólnionego dysku VHD.  Odniesienia są dostarczane, aby poprowadzić Cię przez każdy krok: przechwyć obraz i uogólnić obraz.
 
 
-## <a name="capture-the-vm-image"></a>Przechwytywanie obrazu maszyny wirtualnej
+## <a name="capture-the-vm-image"></a>Przechwytywanie obrazu maszyny Wirtualnej
 
-Instrukcje zawarte w następującym artykule dotyczą przechwytywania maszyny wirtualnej, która odnosi się do podejścia dostępu:
+Użyj instrukcji w poniższym artykule na przechwytywanie maszyny Wirtualnej, która odpowiada podejście dostępu:
 
--  PowerShell: [Tworzenie niezarządzanego obrazu maszyny wirtualnej na podstawie maszyny wirtualnej platformy Azure](../../../virtual-machines/windows/capture-image-resource.md)
--  Interfejs wiersza polecenia platformy Azure: [jak utworzyć obraz maszyny wirtualnej lub wirtualnego dysku twardego](../../../virtual-machines/linux/capture-image.md)
--  Interfejs API: [przechwytywanie Virtual Machines](https://docs.microsoft.com/rest/api/compute/virtualmachines/capture)
+-  Program PowerShell: [jak utworzyć niezarządzany obraz maszyny Wirtualnej z maszyny Wirtualnej platformy Azure](../../../virtual-machines/windows/capture-image-resource.md)
+-  Narzędzie CLI platformy Azure: [jak utworzyć obraz maszyny wirtualnej lub dysku VHD](../../../virtual-machines/linux/capture-image.md)
+-  API: [Maszyny wirtualne — przechwytywanie](https://docs.microsoft.com/rest/api/compute/virtualmachines/capture)
 
 
-## <a name="generalize-the-vm-image"></a>Uogólnianie obrazu maszyny wirtualnej
+## <a name="generalize-the-vm-image"></a>Uogólnianie obrazu maszyny Wirtualnej
 
-Ponieważ obraz użytkownika został wygenerowany z wcześniej uogólnionego wirtualnego dysku twardego, powinien również być uogólniony.  Ponownie wybierz następujący artykuł, który odnosi się do mechanizmu dostępu.  (Być może dysk został już uogólniony podczas przechwycenia).
+Ponieważ obraz użytkownika został wygenerowany z wcześniej uogólnionego dysku VHD, powinien on również zostać uogólniony.  Ponownie wybierz następujący artykuł, który odpowiada mechanizmowi dostępu.  (Być może dysk został już uogólniony podczas jego przechwytywania).
 
--  PowerShell: [uogólnianie maszyny wirtualnej](https://docs.microsoft.com/azure/virtual-machines/windows/sa-copy-generalized#generalize-the-vm)
--  Interfejs wiersza polecenia platformy Azure: [krok 2. Tworzenie obrazu maszyny wirtualnej](https://docs.microsoft.com/azure/virtual-machines/linux/capture-image#step-2-create-vm-image)
--  Interfejs API: [Virtual Machines-generalize](https://docs.microsoft.com/rest/api/compute/virtualmachines/generalize)
+-  Program PowerShell: [Uogólnianie maszyny wirtualnej](https://docs.microsoft.com/azure/virtual-machines/windows/sa-copy-generalized#generalize-the-vm)
+-  Interfejsu wiersza polecenia platformy Azure: [krok 2: tworzenie obrazu maszyny Wirtualnej](https://docs.microsoft.com/azure/virtual-machines/linux/capture-image#step-2-create-vm-image)
+-  INTERFEJS API: [Maszyny wirtualne — uogólnianie](https://docs.microsoft.com/rest/api/compute/virtualmachines/generalize)
 
 
 ## <a name="next-steps"></a>Następne kroki
 
-Następnie utworzysz [certyfikat](cpp-create-key-vault-cert.md) i zapiszesz go w nowym Azure Key Vault.  Ten certyfikat jest wymagany do nawiązania bezpiecznego połączenia usługi WinRM z maszyną wirtualną.
+Następnie [utworzysz certyfikat](cpp-create-key-vault-cert.md) i zapiszesz go w nowej usłudze Azure Key Vault.  Ten certyfikat jest wymagany do ustanowienia bezpiecznego połączenia Usługi WinRM z maszyną wirtualną.

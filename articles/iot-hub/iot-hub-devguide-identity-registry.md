@@ -1,6 +1,6 @@
 ---
-title: Informacje o rejestrze tożsamości usługi Azure IoT Hub | Microsoft Docs
-description: Przewodnik dla deweloperów — Opis rejestru tożsamości IoT Hub i sposobu korzystania z niego do zarządzania urządzeniami. Zawiera informacje na temat importowania i eksportowania tożsamości urządzeń zbiorczo.
+title: Opis rejestru tożsamości usługi Azure IoT Hub | Dokumenty firmy Microsoft
+description: Przewodnik dla deweloperów — opis rejestru tożsamości usługi IoT Hub i sposób używania go do zarządzania urządzeniami. Zawiera zbiorcze informacje o imporcie i wyeksportowaniu tożsamości urządzeń.
 author: wesmc7777
 manager: philmea
 ms.author: wesmc
@@ -8,118 +8,118 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 08/29/2018
-ms.openlocfilehash: d43ad2ce88108a728b26e10eecc7082262a4b637
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: ccb840caea5d28975daaf8cbf6f0d4985bdf006d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79271358"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79499144"
 ---
-# <a name="understand-the-identity-registry-in-your-iot-hub"></a>Informacje o rejestrze tożsamości w centrum IoT Hub
+# <a name="understand-the-identity-registry-in-your-iot-hub"></a>Opis rejestru tożsamości w centrum IoT
 
-Każde Centrum IoT Hub ma rejestr tożsamości, który przechowuje informacje o urządzeniach i modułach, które mogą nawiązywać połączenia z usługą IoT Hub. Aby urządzenie lub moduł mogły połączyć się z usługą IoT Hub, musi istnieć wpis dla tego urządzenia lub modułu w rejestrze tożsamości Centrum IoT. Urządzenie lub moduł musi także uwierzytelniać się w usłudze IoT Hub na podstawie poświadczeń przechowywanych w rejestrze tożsamości.
+Każdy centrum IoT ma rejestr tożsamości, który przechowuje informacje o urządzeniach i modułach dozwolonych do łączenia się z centrum IoT hub. Aby urządzenie lub moduł mogły połączyć się z centrum IoT hub, musi być wpis dla tego urządzenia lub modułu w rejestrze tożsamości centrum IoT hub. Urządzenie lub moduł musi również uwierzytelnić się za pomocą centrum IoT na podstawie poświadczeń przechowywanych w rejestrze tożsamości.
 
-Dla urządzenia lub identyfikatora modułu przechowywanego w rejestrze tożsamości jest rozróżniana wielkość liter.
+W identyfikatorze urządzenia lub modułu przechowywanym w rejestrze tożsamości rozróżniana jest wielkość liter.
 
-Na wysokim poziomie rejestr tożsamości to kolekcja zasobów urządzeń lub modułów z obsługą protokołu REST. Po dodaniu wpisu w rejestrze tożsamości IoT Hub tworzy zestaw zasobów dla poszczególnych urządzeń, takich jak kolejka, która zawiera komunikaty przesyłane z chmury do urządzenia.
+Na wysokim poziomie rejestru tożsamości jest rest-capable kolekcji zasobów tożsamości urządzenia lub modułu. Po dodaniu wpisu w rejestrze tożsamości Usługa IoT Hub tworzy zestaw zasobów na urządzenie, takich jak kolejka zawierająca komunikaty z chmury do urządzenia podczas lotu.
 
-Użyj rejestru tożsamości, gdy zachodzi taka potrzeba:
+Rejestru tożsamości należy używać w razie potrzeby:
 
-* Zainicjuj obsługę urządzeń lub modułów łączących się z Centrum IoT Hub.
-* Kontroluj dostęp dla poszczególnych urządzeń/poszczególnych modułów do urządzeń lub punktów końcowych dostępnych w module centrum.
+* Aprowizuj urządzenia lub moduły, które łączą się z centrum IoT Hub.
+* Kontroluj dostęp na urządzenie/na moduł do urządzenia lub punktów końcowych skierowanych do modułu.
 
 > [!NOTE]
 > * Rejestr tożsamości nie zawiera żadnych metadanych specyficznych dla aplikacji.
-> * Tożsamość modułu i sznurki modułu są w publicznej wersji zapoznawczej. Funkcja poniżej będzie obsługiwana w przypadku tożsamości modułu, gdy jest ona ogólnie dostępna.
+> * Tożsamość modułu i bliźniaczej reprezentacji modułu jest w publicznej wersji zapoznawczej. Poniższa funkcja będzie obsługiwana w przypadku tożsamości modułu, gdy jest ogólnie dostępna.
 >
 
 ## <a name="identity-registry-operations"></a>Operacje rejestru tożsamości
 
-Rejestr IoT Hub Identity uwidacznia następujące operacje:
+Rejestr tożsamości usługi IoT Hub udostępnia następujące operacje:
 
-* Utwórz tożsamość urządzenia lub modułu
+* Tworzenie tożsamości urządzenia lub modułu
 * Aktualizowanie tożsamości urządzenia lub modułu
-* Pobierz tożsamość urządzenia lub modułu według identyfikatora
+* Pobieranie tożsamości urządzenia lub modułu według identyfikatora
 * Usuwanie tożsamości urządzenia lub modułu
-* Wyświetl listę tożsamości do 1000
-* Eksportowanie tożsamości urządzeń do usługi Azure Blob Storage
-* Importowanie tożsamości urządzeń z usługi Azure Blob Storage
+* Lista do 1000 tożsamości
+* Eksportowanie tożsamości urządzeń do magazynu obiektów blob platformy Azure
+* Importowanie tożsamości urządzeń z magazynu obiektów blob platformy Azure
 
-Wszystkie te operacje mogą używać optymistycznej współbieżności, jak określono w [RFC7232](https://tools.ietf.org/html/rfc7232).
+Wszystkie te operacje można użyć optymistycznej współbieżności, jak określono w [RFC7232](https://tools.ietf.org/html/rfc7232).
 
 > [!IMPORTANT]
-> Jedynym sposobem pobrania wszystkich tożsamości w rejestrze tożsamości Centrum IoT jest użycie funkcji [eksportowania](iot-hub-devguide-identity-registry.md#import-and-export-device-identities) .
+> Jedynym sposobem pobrania wszystkich tożsamości w rejestrze tożsamości centrum IoT hub jest użycie funkcji [eksportu.](iot-hub-devguide-identity-registry.md#import-and-export-device-identities)
 
-Rejestr tożsamości IoT Hub:
+Rejestr tożsamości usługi IoT Hub:
 
 * Nie zawiera żadnych metadanych aplikacji.
-* Można uzyskać dostęp do słownika przy użyciu elementu **deviceId** lub **moduleId** jako klucza.
-* Nie obsługuje zapytań ekspresowych.
+* Można uzyskać dostęp jak słownik, za pomocą **deviceId** lub **moduleId** jako klucz.
+* Nie obsługuje ekspresyjnych zapytań.
 
-Rozwiązanie IoT zazwyczaj ma oddzielny magazyn specyficzny dla rozwiązań, który zawiera metadane specyficzne dla aplikacji. Na przykład magazyn specyficzny dla rozwiązania w inteligentnym rozwiązaniu do kompilowania będzie rejestrował pomieszczenie, w którym jest wdrożony czujnik temperatury.
+Rozwiązanie IoT zazwyczaj ma oddzielny magazyn specyficzny dla rozwiązania, który zawiera metadane specyficzne dla aplikacji. Na przykład magazyn specyficzny dla rozwiązania w rozwiązaniu inteligentnego budynku rejestruje pomieszczenie, w którym jest wdrażany czujnik temperatury.
 
 > [!IMPORTANT]
-> Tylko rejestr tożsamości służy do zarządzania urządzeniami i wykonywania operacji aprowizacji. Operacje o wysokiej przepływności w czasie wykonywania nie powinny być zależne od wykonywania operacji w rejestrze tożsamości. Na przykład sprawdzanie stanu połączenia urządzenia przed wysłaniem polecenia nie jest obsługiwanym wzorcem. Upewnij się, że są sprawdzane [szybkości ograniczania](iot-hub-devguide-quotas-throttling.md) dla rejestru tożsamości oraz wzorzec [pulsu urządzenia](iot-hub-devguide-identity-registry.md#device-heartbeat) .
+> Rejestru tożsamości należy używać tylko do zarządzania urządzeniami i inicjowania obsługi administracyjnej. Operacje wysokiej przepływności w czasie wykonywania nie powinny zależeć od wykonywania operacji w rejestrze tożsamości. Na przykład sprawdzanie stanu połączenia urządzenia przed wysłaniem polecenia nie jest obsługiwanym wzorcem. Upewnij się, aby sprawdzić [współczynniki ograniczania](iot-hub-devguide-quotas-throttling.md) przepustowości dla rejestru tożsamości i wzorzec [pulsu urządzenia.](iot-hub-devguide-identity-registry.md#device-heartbeat)
 
 ## <a name="disable-devices"></a>Wyłączanie urządzeń
 
-Urządzenia można wyłączyć, aktualizując Właściwość **stan** tożsamości w rejestrze tożsamości. Zazwyczaj ta właściwość jest używana w dwóch scenariuszach:
+Urządzenia można wyłączyć, aktualizując właściwość **stanu** tożsamości w rejestrze tożsamości. Zazwyczaj ta właściwość jest używana w dwóch scenariuszach:
 
-* Podczas procesu aranżacji aprowizacji. Aby uzyskać więcej informacji, zobacz [Inicjowanie obsługi urządzeń](iot-hub-devguide-identity-registry.md#device-provisioning).
+* Podczas procesu aranżacji inicjowania obsługi administracyjnej. Aby uzyskać więcej informacji, zobacz [Inicjowanie obsługi administracyjnej urządzeń](iot-hub-devguide-identity-registry.md#device-provisioning).
 
-* Jeśli z jakiegoś powodu podejrzewasz, że urządzenie zostało naruszone lub nie ma autoryzacji.
+* Jeśli z jakiegokolwiek powodu uważasz, że urządzenie zostało naruszone lub stało się nieautoryzowane.
 
-Ta funkcja jest niedostępna dla modułów.
+Ta funkcja nie jest dostępna dla modułów.
 
 ## <a name="import-and-export-device-identities"></a>Importowanie i eksportowanie tożsamości urządzeń
 
-Użyj operacji asynchronicznych w [punkcie końcowym dostawcy zasobów IoT Hub](iot-hub-devguide-endpoints.md) , aby wyeksportować tożsamości urządzeń zbiorczo z rejestru tożsamości Centrum IoT. Eksporty to długotrwałe zadania, które używają kontenera obiektów BLOB dostarczonego przez klienta w celu zapisywania danych tożsamości urządzenia odczytywanych z rejestru tożsamości.
+Operacje asynchroniczne w [punkcie końcowym dostawcy zasobów usługi IoT Hub](iot-hub-devguide-endpoints.md) są używane do zbiorczego eksportowania tożsamości urządzeń z rejestru tożsamości centrum IoT. Eksportuje to długotrwałe zadania, które używają kontenera obiektów blob dostarczonych przez klienta do zapisywania danych tożsamości urządzenia odczytanych z rejestru tożsamości.
 
-Użyj operacji asynchronicznych w [punkcie końcowym dostawcy zasobów IoT Hub](iot-hub-devguide-endpoints.md) , aby zaimportować tożsamość urządzeń zbiorczo do rejestru tożsamości Centrum IoT. Importy to długotrwałe zadania, które wykorzystują dane w kontenerze obiektów BLOB dostarczonym przez klienta w celu zapisania danych tożsamości urządzenia w rejestrze tożsamości.
+Operacje asynchroniczne w [punkcie końcowym dostawcy zasobów usługi IoT Hub](iot-hub-devguide-endpoints.md) zbiorczo importują tożsamości urządzeń do rejestru tożsamości centrum IoT. Importy są długotrwałe zadania, które używają danych w kontenerze obiektu blob dostarczone przez klienta do zapisu danych tożsamości urządzenia w rejestrze tożsamości.
 
-Aby uzyskać więcej informacji na temat interfejsów API importowania i eksportowania, zobacz [IoT Hub interfejsów API REST dostawcy zasobów](/rest/api/iothub/iothubresource). Aby dowiedzieć się więcej o uruchamianiu zadań importowania i eksportowania, zobacz [zbiorcze Zarządzanie tożsamościami urządzeń IoT Hub](iot-hub-bulk-identity-mgmt.md).
+Aby uzyskać więcej informacji na temat interfejsów API importowania i eksportowania, zobacz [Interfejsy API RESTI INTERFEJSU DOSTAWCY ZASOBÓW usługi IoT Hub](/rest/api/iothub/iothubresource). Aby dowiedzieć się więcej o uruchamianiu zadań importowania i eksportowania, zobacz [Zbiorcze zarządzanie tożsamościami urządzeń usługi IoT Hub](iot-hub-bulk-identity-mgmt.md).
 
-Tożsamości urządzeń można również eksportować i importować z IoT Hub za pośrednictwem interfejsu API usługi za pośrednictwem interfejsu [API REST](/rest/api/iothub/service/createimportexportjob) lub jednego z [zestawów SDK usługi](/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-hub-service-sdks)IoT Hub.
+Tożsamości urządzeń można również eksportować i importować z centrum IoT Hub za pośrednictwem interfejsu API usługi za pośrednictwem [interfejsu API REST](/rest/api/iothub/service/jobclient/createimportexportjob) lub jednego z [SDK usługi IoT](/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-hub-service-sdks)Hub .
 
-## <a name="device-provisioning"></a>Inicjowanie obsługi urządzeń
+## <a name="device-provisioning"></a>Inicjowanie obsługi administracyjnej urządzeń
 
-Dane urządzenia, które są przechowywane w ramach danego rozwiązania IoT, zależą od konkretnych wymagań tego rozwiązania. Jednak jako minimum, rozwiązanie musi przechowywać tożsamości urządzeń i klucze uwierzytelniania. Usługa Azure IoT Hub zawiera rejestr tożsamości, w którym można przechowywać wartości dla każdego urządzenia, takie jak identyfikatory, klucze uwierzytelniania i kody stanu. Rozwiązanie może korzystać z innych usług platformy Azure, takich jak Table Storage, BLOB Storage lub Cosmos DB, do przechowywania dodatkowych danych urządzeń.
+Dane urządzenia przechowywane przez dane rozwiązania IoT zależą od określonych wymagań tego rozwiązania. Jednak co najmniej rozwiązanie musi przechowywać tożsamości urządzeń i klucze uwierzytelniania. Usługa Azure IoT Hub zawiera rejestr tożsamości, który może przechowywać wartości dla każdego urządzenia, takie jak identyfikatory, klucze uwierzytelniania i kody stanu. Rozwiązanie można użyć innych usług platformy Azure, takich jak magazyn tabel, magazyn obiektów blob lub usługi Cosmos DB do przechowywania dodatkowych danych urządzenia.
 
-*Inicjowanie obsługi administracyjnej urządzeń* polega na dodaniu początkowych danych urządzenia do sklepów w rozwiązaniu. Aby umożliwić nowym urządzeniu łączenie się z centrum, należy dodać identyfikator i klucze urządzenia do rejestru tożsamości IoT Hub. W ramach procesu aprowizacji może być konieczne zainicjowanie danych specyficznych dla urządzenia w innych magazynach rozwiązań. Możesz również użyć IoT Hub Device Provisioning Service platformy Azure, aby włączyć funkcję bezobsługowego udostępniania w czasie just-in-Time do jednego lub kilku centrów IoT, bez konieczności interwencji człowieka. Aby dowiedzieć się więcej, zobacz [dokumentację usługi aprowizacji](https://azure.microsoft.com/documentation/services/iot-dps).
+*Inicjowanie obsługi administracyjnej urządzenia* to proces dodawania początkowych danych urządzenia do magazynów w rozwiązaniu. Aby włączyć nowe urządzenie do łączenia się z koncentratorem, należy dodać identyfikator urządzenia i klucze do rejestru tożsamości usługi IoT Hub. W ramach procesu inicjowania obsługi administracyjnej może być konieczne zainicjowanie danych specyficznych dla urządzenia w innych magazynach rozwiązań. Można również użyć usługi inicjowania obsługi administracyjnej urządzeń usługi Azure IoT Hub, aby włączyć obsługę obsługi administracyjnej typu "tylko w czasie" typu "zero-touch" dla jednego lub kilku centrów IoT bez konieczności interwencji międzyludzkiej. Aby dowiedzieć się więcej, zobacz [dokumentację usługi inicjowania obsługi administracyjnej](https://azure.microsoft.com/documentation/services/iot-dps).
 
 ## <a name="device-heartbeat"></a>Puls urządzenia
 
-Rejestr tożsamości IoT Hub zawiera pole o nazwie **connectionState**. Podczas tworzenia i debugowania Używaj tylko pola **connectionState** . Rozwiązania IoT nie powinny wysyłać zapytań do pola w czasie wykonywania. Na przykład nie należy wysyłać zapytania do pola **connectionState** , aby sprawdzić, czy urządzenie jest połączone przed wysłaniem komunikatu z chmury do urządzenia lub wiadomości SMS. Zalecamy subskrybowanie [zdarzeń **odłączenia urządzenia** ](iot-hub-event-grid.md#event-types) w Event Grid w celu uzyskania alertów i monitorowania stanu połączenia urządzenia. Skorzystaj z tego [samouczka](iot-hub-how-to-order-connection-state-events.md) , aby dowiedzieć się, jak zintegrować urządzenia połączone i odłączone urządzenia z IoT Hub w rozwiązaniu IoT.
+Rejestr tożsamości usługi IoT Hub zawiera pole o nazwie **connectionState**. Używaj **pola connectionState** tylko podczas tworzenia i debugowania. Rozwiązania IoT nie powinny wysyłać zapytań do pola w czasie wykonywania. Na przykład nie należy wysyłać kwerend do pola **connectionState,** aby sprawdzić, czy urządzenie jest połączone przed wysłaniem wiadomości z chmury do urządzenia lub wiadomości SMS. Zalecamy zasubskrybowanie zdarzenia [ **rozłączone urządzenie** ](iot-hub-event-grid.md#event-types) w usłudze Event Grid, aby otrzymywać alerty i monitorować stan połączenia urządzenia. Ten [samouczek](iot-hub-how-to-order-connection-state-events.md) służy do integrowania zdarzeń połączonych z urządzeniem i urządzeń z centrum IoT Hub w rozwiązaniu IoT.
 
-Jeśli Twoje rozwiązanie IoT musi wiedzieć, czy urządzenie jest połączone, można zaimplementować *wzorzec pulsu*.
-W przypadku wzorca pulsu urządzenie wysyła komunikaty z urządzenia do chmury co najmniej raz na ustalony czas (na przykład co najmniej raz na godzinę). W związku z tym nawet jeśli urządzenie nie ma żadnych danych do wysłania, nadal wysyła pustą wiadomość z urządzenia do chmury (zazwyczaj z właściwością identyfikującą ją jako puls). Po stronie usługi rozwiązanie zachowuje mapę z ostatnim pulsem odebranym dla każdego urządzenia. Jeśli rozwiązanie nie odbiera komunikatu pulsu w oczekiwanym czasie z urządzenia, zakłada się, że występuje problem z urządzeniem.
+Jeśli rozwiązanie IoT musi wiedzieć, czy urządzenie jest podłączone, można zaimplementować *wzorzec pulsu*.
+We wzorzec pulsu urządzenie wysyła komunikaty z urządzenia do chmury co najmniej raz na czas określony (na przykład co najmniej raz na godzinę). W związku z tym nawet jeśli urządzenie nie ma żadnych danych do wysłania, nadal wysyła pusty komunikat urządzenia do chmury (zwykle z właściwością, która identyfikuje go jako puls). Po stronie usługi rozwiązanie przechowuje mapę z ostatnim pulsem odebranym dla każdego urządzenia. Jeśli rozwiązanie nie otrzyma komunikat pulsu w oczekiwanym czasie z urządzenia, zakłada, że występuje problem z urządzeniem.
 
-Bardziej złożona implementacja może obejmować informacje z [Azure monitor](../azure-monitor/index.yml) i [Azure Resource Health](../service-health/resource-health-overview.md) do identyfikowania urządzeń próbujących nawiązać połączenie lub komunikację, ale kończy się niepowodzeniem, sprawdź monitor z przewodnikiem [diagnostycznym](iot-hub-monitor-resource-health.md) . Podczas implementowania wzorca pulsu upewnij się, że zaznaczono [IoT Hub przydziały i ograniczenia](iot-hub-devguide-quotas-throttling.md).
+Bardziej złożona implementacja może zawierać informacje z [usługi Azure Monitor](../azure-monitor/index.yml) i usługi Azure Resource [Health](../service-health/resource-health-overview.md) w celu zidentyfikowania urządzeń, które próbują połączyć się lub komunikować się, ale nie, sprawdź monitor z przewodnikiem [diagnostyki.](iot-hub-monitor-resource-health.md) Podczas implementowania wzorca pulsu należy sprawdzić [przydziały i ograniczenia usługi IoT Hub](iot-hub-devguide-quotas-throttling.md).
 
 > [!NOTE]
-> Jeśli rozwiązanie IoT używa stanu połączenia wyłącznie do określenia, czy wysyłać komunikaty z chmury do urządzenia, a komunikaty nie są emitowane do dużych zestawów urządzeń, należy rozważyć użycie *krótkiego wzorca czasu wygaśnięcia* . Ten wzorzec osiąga ten sam wynik jak utrzymywanie rejestru stanu połączenia urządzenia przy użyciu wzorca pulsu, a jednocześnie jest wydajniejszy. W przypadku żądania potwierdzeń komunikatów IoT Hub może powiadomić o tym, które urządzenia mogą odbierać komunikaty, które nie są.
+> Jeśli rozwiązanie IoT używa stanu połączenia wyłącznie do określenia, czy do wysyłania komunikatów z chmury do urządzenia, a wiadomości nie są emitowane do dużych zestawów urządzeń, należy rozważyć użycie prostszego wzorca *krótkiego czasu wygaśnięcia.* Ten wzorzec osiąga taki sam wynik jak utrzymanie rejestru stanu połączenia urządzenia przy użyciu wzorca pulsu, podczas gdy jest bardziej wydajne. Jeśli zażądasz potwierdzenia wiadomości, Usługa IoT Hub może powiadomić Cię o tym, które urządzenia mogą odbierać wiadomości, a które nie.
 
-## <a name="device-and-module-lifecycle-notifications"></a>Powiadomienia dotyczące cyklu życia urządzenia i modułu
+## <a name="device-and-module-lifecycle-notifications"></a>Powiadomienia o cyklu życia urządzeń i modułów
 
-IoT Hub może powiadomić rozwiązanie IoT o utworzeniu lub usunięciu tożsamości, wysyłając powiadomienia o cyklu życia. W tym celu Twoje rozwiązanie IoT musi utworzyć trasę i ustawić źródło danych równe *DeviceLifecycleEvents* lub *ModuleLifecycleEvents*. Domyślnie żadne powiadomienia o cyklu życia nie są wysyłane, oznacza to, że nie istnieją takie trasy. Komunikat powiadomienia zawiera właściwości i treść.
+Usługa IoT Hub może powiadamiać rozwiązanie IoT, gdy tożsamość jest tworzona lub usuwana przez wysyłanie powiadomień o cyklu życia. Aby to zrobić, rozwiązanie IoT musi utworzyć trasę i ustawić źródło danych równe *DeviceLifecycleEvents* lub *ModuleLifecycleEvents*. Domyślnie nie są wysyłane żadne powiadomienia o cyklu życia, oznacza to, że nie istnieją takie trasy. Komunikat powiadomienia zawiera właściwości i treść.
 
-Właściwości: właściwości systemu komunikatów są poprzedzone symbolem `$`.
+Właściwości: Właściwości systemu wiadomości są poprzedzone `$` symbolem.
 
 Komunikat powiadomienia dla urządzenia:
 
-| Name (Nazwa) | Wartość |
+| Nazwa | Wartość |
 | --- | --- |
 |Typ $content | application/json |
-|$iothub-enqueuedtime |  Godzina wysłania powiadomienia |
-|$iothub-message-source | deviceLifecycleEvents |
-|$content — kodowanie | UTF-8 |
-|opType | **createDeviceIdentity** lub **deleteDeviceIdentity** |
-|hubName | Nazwa IoT Hub |
+|$iothub-enqueuedtime |  Czas wysłania powiadomienia |
+|źródło $iothub-message | deviceLifecycleEvents |
+|Kodowanie $content | utf-8 |
+|Optype | **tworzenieUżuidentity** lub **deleteDeviceIdentity** |
+|nazwa centrum | Nazwa Centrum IoT |
 |deviceId | Identyfikator urządzenia |
-|operationTimestamp | ISO8601 sygnatura czasowa operacji |
-|iothub-message-schema | deviceLifecycleNotification |
+|operationStamp | Sygnatura czasowa ISO8601 |
+|schemat iothub-message | deviceLifecycleNotification |
 
-Treść: Ta sekcja jest w formacie JSON i reprezentuje sznurek utworzonej tożsamości urządzenia. Na przykład:
+Treść: Ta sekcja jest w formacie JSON i reprezentuje bliźniaczej reprezentacji utworzonej tożsamości urządzenia. Na przykład:
 
 ```json
 {
@@ -143,19 +143,19 @@ Treść: Ta sekcja jest w formacie JSON i reprezentuje sznurek utworzonej tożsa
 ```
 Komunikat powiadomienia dla modułu:
 
-| Name (Nazwa) | Wartość |
+| Nazwa | Wartość |
 | --- | --- |
 Typ $content | application/json |
-$iothub-enqueuedtime |  Godzina wysłania powiadomienia |
-$iothub-message-source | moduleLifecycleEvents |
-$content — kodowanie | UTF-8 |
-opType | **createModuleIdentity** lub **deleteModuleIdentity** |
-hubName | Nazwa IoT Hub |
-moduleId | Identyfikator modułu |
-operationTimestamp | ISO8601 sygnatura czasowa operacji |
-iothub-message-schema | moduleLifecycleNotification |
+$iothub-enqueuedtime |  Czas wysłania powiadomienia |
+źródło $iothub-message | modułLifecycleEvents |
+Kodowanie $content | utf-8 |
+Optype | **tworzenieModuleIdentity** lub **deleteModuleIdentity** |
+nazwa centrum | Nazwa Centrum IoT |
+identyfikator modułu | Identyfikator modułu |
+operationStamp | Sygnatura czasowa ISO8601 |
+schemat iothub-message | modułLifecycleNotification |
 
-Treść: Ta sekcja jest w formacie JSON i reprezentuje dwuosiową tożsamość utworzonego modułu. Na przykład:
+Treść: Ta sekcja jest w formacie JSON i reprezentuje bliźniaczej reprezentacji utworzonej tożsamości modułu. Na przykład:
 
 ```json
 {
@@ -181,80 +181,80 @@ Treść: Ta sekcja jest w formacie JSON i reprezentuje dwuosiową tożsamość u
 
 ## <a name="device-identity-properties"></a>Właściwości tożsamości urządzenia
 
-Tożsamości urządzeń są reprezentowane jako dokumenty JSON o następujących właściwościach:
+Tożsamości urządzeń są reprezentowane jako dokumenty JSON z następującymi właściwościami:
 
 | Właściwość | Opcje | Opis |
 | --- | --- | --- |
-| deviceId |wymagane, tylko do odczytu w aktualizacjach |Ciąg z rozróżnianą wielkością liter (do 128 znaków) ASCII 7-bitowe znaki alfanumeryczne i niektóre znaki specjalne: `- . + % _ # * ? ! ( ) , = @ $ '`. |
-| generationId |wymagane, tylko do odczytu |Ciąg z rozróżnianą wielkością liter, który jest generowany przez Centrum IoT, do 128 znaków. Ta wartość jest używana do rozróżniania urządzeń z tym samym identyfikatorem **deviceId**, gdy zostały usunięte i ponownie utworzone. |
-| etag |wymagane, tylko do odczytu |Ciąg reprezentujący słaby element ETag dla tożsamości urządzenia, zgodnie z [RFC7232](https://tools.ietf.org/html/rfc7232). |
-| uwierzytelniania |obowiązkowe |Obiekt złożony zawierający informacje o uwierzytelnianiu i materiały zabezpieczające. |
-| auth.symkey |obowiązkowe |Obiekt złożony zawierający klucz podstawowy i pomocniczy, przechowywany w formacie base64. |
-| status |wymagane |Wskaźnik dostępu. Można **włączyć** lub **wyłączyć**. Jeśli ta **Funkcja jest włączona**, urządzenie może nawiązać połączenie. Jeśli ta **możliwość jest wyłączona**, urządzenie nie może uzyskać dostępu do żadnego punktu końcowego mającego dostęp do urządzenia. |
-| statusReason |obowiązkowe |Ciąg o długości 128 znaków, który przechowuje przyczynę stanu tożsamości urządzenia. Dozwolone są wszystkie znaki UTF-8. |
-| statusUpdateTime |Tylko do odczytu |Wskaźnik czasowy przedstawiający datę i godzinę ostatniej aktualizacji stanu. |
-| connectionState |Tylko do odczytu |Pole wskazujące stan połączenia: **połączone** lub **rozłączone**. To pole reprezentuje widok IoT Hub stanu połączenia z urządzeniem. **Ważne**: to pole powinno być używane tylko na potrzeby tworzenia i debugowania. Stan połączenia jest aktualizowany tylko dla urządzeń korzystających z MQTT lub AMQP. Ponadto jest oparty na poleceniach ping na poziomie protokołu (MQTT Pings lub pinges AMQP) i może mieć maksymalnie 5 minut. Z tego względu można mieć fałszywe pozytywne, takie jak urządzenia zgłoszone jako połączone, ale które są rozłączone. |
-| connectionStateUpdatedTime |Tylko do odczytu |Wskaźnik danych czasowych, przedstawiający datę i godzinę ostatniego zaktualizowania stanu połączenia. |
-| lastActivityTime |Tylko do odczytu |Wskaźnik danych czasowych, przedstawiający datę i godzinę ostatniego połączenia urządzenia, odebrania lub wysłania wiadomości. |
+| deviceId |wymagane, tylko do odczytu w aktualizacjach |Ciąg z uwzględnieniem wielkości liter (o długości do 128 znaków) 7-bitowych znaków alfanumerycznej ASCII oraz niektóre znaki specjalne: `- . + % _ # * ? ! ( ) , = @ $ '`. |
+| generationId (ida generacji) |wymagane, tylko do odczytu |Ciąg ioT generowane przez centrum, rozróżniana wielkość liter o długości do 128 znaków. Ta wartość służy do rozróżniania urządzeń o tym samym **identyfikatorze deviceId**, gdy zostały usunięte i ponownie utworzone. |
+| Etag |wymagane, tylko do odczytu |Ciąg reprezentujący słaby ETag dla tożsamości urządzenia, zgodnie z [RFC7232](https://tools.ietf.org/html/rfc7232). |
+| Auth |optional |Obiekt złożony zawierający informacje uwierzytelniające i materiały zabezpieczające. |
+| auth.symkey |optional |Obiekt złożony zawierający klucz podstawowy i pomocniczy przechowywany w formacie base64. |
+| status |wymagany |Wskaźnik dostępu. Można **włączyć** lub **wyłączyć**. Jeśli **włączono,** urządzenie może się połączyć. Jeśli **wyłączone,** to urządzenie nie może uzyskać dostępu do dowolnego punktu końcowego skierowanego do urządzenia. |
+| statusReason |optional |Ciąg znaków o długości 128 znaków, który przechowuje przyczynę stanu tożsamości urządzenia. Dozwolone są wszystkie znaki UTF-8. |
+| statusUpdateTime |tylko do odczytu |Wskaźnik czasowy pokazujący datę i godzinę ostatniej aktualizacji stanu. |
+| connectionState (Stan połączenia) |tylko do odczytu |Pole wskazujące stan połączenia: **Połączone** lub **Rozłączone**. To pole reprezentuje widok Centrum IoT stanu połączenia urządzenia. **Ważne:** To pole powinno być używane tylko do celów rozwoju/debugowania. Stan połączenia jest aktualizowany tylko dla urządzeń korzystających z MQTT lub AMQP. Ponadto, jest on oparty na pingach na poziomie protokołu (Pingi MQTT lub pingi AMQP) i może mieć maksymalne opóźnienie tylko 5 minut. Z tych powodów mogą istnieć fałszywe alarmy, takie jak urządzenia zgłoszone jako połączone, ale które są rozłączone. |
+| connectionStateUpdatedTime |tylko do odczytu |Wskaźnik czasowy pokazujący datę i ostatni czas aktualizacji stanu połączenia. |
+| lastAktywnośćCzas |tylko do odczytu |Wskaźnik czasowy pokazujący datę i ostatni raz urządzenie połączyło się, odebrało lub wysłało wiadomość. |
 
 > [!NOTE]
-> Stan połączenia może reprezentować tylko widok IoT Hub stanu połączenia. Aktualizacje tego stanu mogą być opóźnione, w zależności od warunków i konfiguracji sieci.
+> Stan połączenia może reprezentować tylko widok Centrum IoT stanu połączenia. Aktualizacje tego stanu mogą być opóźnione, w zależności od warunków sieciowych i konfiguracji.
 
 > [!NOTE]
-> Obecnie zestawy SDK urządzeń nie obsługują używania `+` i `#` znaków w identyfikatorze **deviceId**.
+> Obecnie sdk urządzenia nie obsługuje przy `+` `#` użyciu znaków i w **deviceId**.
 
 ## <a name="module-identity-properties"></a>Właściwości tożsamości modułu
 
-Tożsamości modułów są reprezentowane jako dokumenty JSON o następujących właściwościach:
+Tożsamości modułu są reprezentowane jako dokumenty JSON z następującymi właściwościami:
 
 | Właściwość | Opcje | Opis |
 | --- | --- | --- |
-| deviceId |wymagane, tylko do odczytu w aktualizacjach |Ciąg z rozróżnianą wielkością liter (do 128 znaków) ASCII 7-bitowe znaki alfanumeryczne i niektóre znaki specjalne: `- . + % _ # * ? ! ( ) , = @ $ '`. |
-| moduleId |wymagane, tylko do odczytu w aktualizacjach |Ciąg z rozróżnianą wielkością liter (do 128 znaków) ASCII 7-bitowe znaki alfanumeryczne i niektóre znaki specjalne: `- . + % _ # * ? ! ( ) , = @ $ '`. |
-| generationId |wymagane, tylko do odczytu |Ciąg z rozróżnianą wielkością liter, który jest generowany przez Centrum IoT, do 128 znaków. Ta wartość jest używana do rozróżniania urządzeń z tym samym identyfikatorem **deviceId**, gdy zostały usunięte i ponownie utworzone. |
-| etag |wymagane, tylko do odczytu |Ciąg reprezentujący słaby element ETag dla tożsamości urządzenia, zgodnie z [RFC7232](https://tools.ietf.org/html/rfc7232). |
-| uwierzytelniania |obowiązkowe |Obiekt złożony zawierający informacje o uwierzytelnianiu i materiały zabezpieczające. |
-| auth.symkey |obowiązkowe |Obiekt złożony zawierający klucz podstawowy i pomocniczy, przechowywany w formacie base64. |
-| status |wymagane |Wskaźnik dostępu. Można **włączyć** lub **wyłączyć**. Jeśli ta **Funkcja jest włączona**, urządzenie może nawiązać połączenie. Jeśli ta **możliwość jest wyłączona**, urządzenie nie może uzyskać dostępu do żadnego punktu końcowego mającego dostęp do urządzenia. |
-| statusReason |obowiązkowe |Ciąg o długości 128 znaków, który przechowuje przyczynę stanu tożsamości urządzenia. Dozwolone są wszystkie znaki UTF-8. |
-| statusUpdateTime |Tylko do odczytu |Wskaźnik czasowy przedstawiający datę i godzinę ostatniej aktualizacji stanu. |
-| connectionState |Tylko do odczytu |Pole wskazujące stan połączenia: **połączone** lub **rozłączone**. To pole reprezentuje widok IoT Hub stanu połączenia z urządzeniem. **Ważne**: to pole powinno być używane tylko na potrzeby tworzenia i debugowania. Stan połączenia jest aktualizowany tylko dla urządzeń korzystających z MQTT lub AMQP. Ponadto jest oparty na poleceniach ping na poziomie protokołu (MQTT Pings lub pinges AMQP) i może mieć maksymalnie 5 minut. Z tego względu można mieć fałszywe pozytywne, takie jak urządzenia zgłoszone jako połączone, ale które są rozłączone. |
-| connectionStateUpdatedTime |Tylko do odczytu |Wskaźnik danych czasowych, przedstawiający datę i godzinę ostatniego zaktualizowania stanu połączenia. |
-| lastActivityTime |Tylko do odczytu |Wskaźnik danych czasowych, przedstawiający datę i godzinę ostatniego połączenia urządzenia, odebrania lub wysłania wiadomości. |
+| deviceId |wymagane, tylko do odczytu w aktualizacjach |Ciąg z uwzględnieniem wielkości liter (o długości do 128 znaków) 7-bitowych znaków alfanumerycznej ASCII oraz niektóre znaki specjalne: `- . + % _ # * ? ! ( ) , = @ $ '`. |
+| identyfikator modułu |wymagane, tylko do odczytu w aktualizacjach |Ciąg z uwzględnieniem wielkości liter (o długości do 128 znaków) 7-bitowych znaków alfanumerycznej ASCII oraz niektóre znaki specjalne: `- . + % _ # * ? ! ( ) , = @ $ '`. |
+| generationId (ida generacji) |wymagane, tylko do odczytu |Ciąg ioT generowane przez centrum, rozróżniana wielkość liter o długości do 128 znaków. Ta wartość służy do rozróżniania urządzeń o tym samym **identyfikatorze deviceId**, gdy zostały usunięte i ponownie utworzone. |
+| Etag |wymagane, tylko do odczytu |Ciąg reprezentujący słaby ETag dla tożsamości urządzenia, zgodnie z [RFC7232](https://tools.ietf.org/html/rfc7232). |
+| Auth |optional |Obiekt złożony zawierający informacje uwierzytelniające i materiały zabezpieczające. |
+| auth.symkey |optional |Obiekt złożony zawierający klucz podstawowy i pomocniczy przechowywany w formacie base64. |
+| status |wymagany |Wskaźnik dostępu. Można **włączyć** lub **wyłączyć**. Jeśli **włączono,** urządzenie może się połączyć. Jeśli **wyłączone,** to urządzenie nie może uzyskać dostępu do dowolnego punktu końcowego skierowanego do urządzenia. |
+| statusReason |optional |Ciąg znaków o długości 128 znaków, który przechowuje przyczynę stanu tożsamości urządzenia. Dozwolone są wszystkie znaki UTF-8. |
+| statusUpdateTime |tylko do odczytu |Wskaźnik czasowy pokazujący datę i godzinę ostatniej aktualizacji stanu. |
+| connectionState (Stan połączenia) |tylko do odczytu |Pole wskazujące stan połączenia: **Połączone** lub **Rozłączone**. To pole reprezentuje widok Centrum IoT stanu połączenia urządzenia. **Ważne:** To pole powinno być używane tylko do celów rozwoju/debugowania. Stan połączenia jest aktualizowany tylko dla urządzeń korzystających z MQTT lub AMQP. Ponadto, jest on oparty na pingach na poziomie protokołu (Pingi MQTT lub pingi AMQP) i może mieć maksymalne opóźnienie tylko 5 minut. Z tych powodów mogą istnieć fałszywe alarmy, takie jak urządzenia zgłoszone jako połączone, ale które są rozłączone. |
+| connectionStateUpdatedTime |tylko do odczytu |Wskaźnik czasowy pokazujący datę i ostatni czas aktualizacji stanu połączenia. |
+| lastAktywnośćCzas |tylko do odczytu |Wskaźnik czasowy pokazujący datę i ostatni raz urządzenie połączyło się, odebrało lub wysłało wiadomość. |
 
 > [!NOTE]
-> Obecnie zestawy SDK urządzeń nie obsługują używania `+` i `#` znaków w **deviceId** i **moduleId**.
+> Obecnie sdk urządzenia nie obsługuje przy `+` `#` użyciu znaków i w **deviceId** i **moduleId**.
 
-## <a name="additional-reference-material"></a>Dodatkowe materiały referencyjne
+## <a name="additional-reference-material"></a>Dodatkowy materiał referencyjny
 
-Inne tematy referencyjne w przewodniku dewelopera IoT Hub obejmują:
+Inne tematy referencyjne w przewodniku dla deweloperów usługi IoT Hub obejmują:
 
-* [IoT Hub punkty końcowe](iot-hub-devguide-endpoints.md) opisują różne punkty końcowe, które są uwidaczniane przez każde Centrum IoT Hub na potrzeby operacji w czasie wykonywania i zarządzania.
+* [Punkty końcowe usługi IoT Hub](iot-hub-devguide-endpoints.md) opisano różne punkty końcowe, które każdy centrum IoT udostępnia dla operacji wykonywania i zarządzania.
 
-* [Ograniczanie i przydziały](iot-hub-devguide-quotas-throttling.md) opisują zachowania przydziałów i ograniczania przepustowości, które mają zastosowanie do usługi IoT Hub.
+* [Ograniczanie i przydziały](iot-hub-devguide-quotas-throttling.md) opisuje przydziały i zachowania ograniczania przepustowości, które mają zastosowanie do usługi Centrum IoT.
 
-* [Zestawy SDK urządzeń i usług Azure IoT](iot-hub-devguide-sdks.md) wymieniają różne zestawy SDK języka, których można używać podczas tworzenia aplikacji dla urządzeń i usług, które współpracują z usługą IoT Hub.
+* [Zestaw SDK urządzeń i usług Usługi Azure IoT](iot-hub-devguide-sdks.md) zawiera listę zestawów SDK w różnych językach, których można używać podczas tworzenia aplikacji na urządzenia i usługi, które współdziałają z centrum IoT Hub.
 
-* [Język zapytań IoT Hub](iot-hub-devguide-query-language.md) zawiera opis języka zapytań, za pomocą którego można pobrać informacje z IoT Hub dotyczące bliźniaczych reprezentacji i zadań urządzenia.
+* [Język zapytań centrum IoT](iot-hub-devguide-query-language.md) zawiera opis języka zapytań, którego można użyć do pobierania informacji z Usługi IoT Hub o bliźniaczych urządzeń i zadaniach.
 
-* [IoT Hub obsługa MQTT](iot-hub-mqtt-support.md) zawiera więcej informacji na temat obsługi IoT Hub protokołu MQTT.
+* [Obsługa protokołu MQTT w uężoniać w uiszczaprzestwu IoT Hub](iot-hub-mqtt-support.md) zawiera więcej informacji na temat obsługi protokołu MQTT w centrum IoT Hub.
 
 ## <a name="next-steps"></a>Następne kroki
 
-Teraz, kiedy wiesz już, jak korzystać z rejestru tożsamości IoT Hub, możesz zainteresować następujące tematy IoT Hub Przewodnik dla deweloperów:
+Teraz, gdy masz instrukcje korzystania z rejestru tożsamości Usługi IoT Hub, możesz zainteresować się następującymi tematami przewodnika dla deweloperów usługi IoT Hub:
 
 * [Kontrola dostępu do usługi IoT Hub](iot-hub-devguide-security.md)
 
-* [Synchronizowanie stanu i konfiguracji przy użyciu urządzenia bliźniaczych reprezentacji](iot-hub-devguide-device-twins.md)
+* [Synchronizowanie stanu i konfiguracji za pomocą bliźniąt urządzeń](iot-hub-devguide-device-twins.md)
 
 * [Wywoływanie metody bezpośredniej na urządzeniu](iot-hub-devguide-direct-methods.md)
 
 * [Planowanie zadań na wielu urządzeniach](iot-hub-devguide-jobs.md)
 
-Aby wypróbować niektóre koncepcje opisane w tym artykule, zobacz następujący samouczek IoT Hub:
+Aby wypróbować niektóre pojęcia opisane w tym artykule, zobacz następujący samouczek Usługi IoT Hub:
 
-* [Rozpoczynanie pracy z usługą Azure IoT Hub](quickstart-send-telemetry-dotnet.md)
+* [Wprowadzenie do usługi Azure IoT Hub](quickstart-send-telemetry-dotnet.md)
 
-Aby poznać korzystanie z IoT Hub Device Provisioning Service w celu włączenia funkcji bezobsługowego, zainicjowania obsługi just-in-Time, zobacz: 
+Aby eksplorować korzystanie z usługi inicjowania obsługi administracyjnej urządzeń usługi IoT Hub, aby włączyć obsługę obsługi administracyjnej typu "tylko w czasie" typu "zero-touch", zobacz: 
 
 * [Usługa Azure IoT Hub Device Provisioning](https://azure.microsoft.com/documentation/services/iot-dps)

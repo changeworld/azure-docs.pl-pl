@@ -1,37 +1,36 @@
 ---
-title: Współpraca między partnerami i współsprzedażą | Portal Azure Marketplace
-description: Program współsprzedaży firmy Microsoft dla partnerów może pomóc Ci w osiągnięciu ogromnej podstawy klienta i wygenerowania nowej sprzedaży.
-author: MaggiePucciEvans
-manager: evansma
-ms.author: evansma
+title: Współpraca z partnerami | Azure Marketplace
+description: Program współsprzedaży firmy Microsoft dla partnerów może pomóc w osiągnięciu ogromnej bazy klientów i generowaniu nowych sprzedaży.
+author: dsindona
+ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/27/2019
-ms.openlocfilehash: 389e6f512f05c7bd1a6e9963e60afbcf27067fb3
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: 00ddfa9e7cc6805c39e149d9c7c9a163297c6c71
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75934672"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80279848"
 ---
 # <a name="co-sell-partner-engagement"></a>Współpraca między partnerami w zakresie sprzedaży
 
-Program do współsprzedaży firmy Microsoft umożliwia partnerom bezpośrednie współdziałanie z firmą Microsoft na potrzeby wspólnych możliwości sprzedaży. Możesz skontaktować się z ogromną społecznością klientów i utworzyć nowe możliwości sprzedaży, które mogą przyspieszyć rozwój firmy.
+Program współsprzedaży firmy Microsoft umożliwia partnerom bezpośrednią współpracę z firmą Microsoft w zakresie wspólnych możliwości sprzedaży. Możesz dotrzeć do ogromnej społeczności klientów i stworzyć nowe możliwości sprzedaży, które mogą pomóc przyspieszyć rozwój firmy.
 
-## <a name="partner-selling-motions"></a>Ruchy sprzedaży dla partnerów
+## <a name="partner-selling-motions"></a>Projekty sprzedaży partnerów
 
-Istnieją trzy ruchy sprzedaży dla partnerów:
+Istnieją trzy ruchy sprzedaży partnera:
 
-* *Sprzedawaj przez partnera*: możesz odsprzedawać technologię firmy Microsoft przez Twoich własnych przedstawicieli.
-* *Usługi współsprzedawane*: sprzedawcy i partnerzy współpracują nad sprzedażą projektu lub usług zarządzanych przy użyciu technologii firmy Microsoft Embedded.
-* Współsprzedaż do sieci *IP*: sprzedawcy/partnerzy współpracują w celu sprzedawania powtarzalnych, spakowanych rozwiązań IP *.
+* *Sprzedawaj za pośrednictwem partnera:* Możesz odsprzedawać technologię firmy Microsoft za pośrednictwem własnych sprzedawców.
+* *Współsprzedaży usług:* Sprzedawcy i partnerzy współpracują ze sobą w celu sprzedaży projektu lub usług zarządzanych za pomocą wbudowanej technologii firmy Microsoft.
+* *Współsprzedaży IP:* Sprzedawcy/partnerzy współpracują ze sobą, aby sprzedać powtarzalne, pakowane rozwiązanie IP*.
 
-\* niektóre z tych rozwiązań związanych ze współsprzedażą IP mogą otrzymać dodatkowe zachęty w przypadku pomyślnego sprzedaży i wdrożenia z zespołem ds. sprzedaży firmy Microsoft.
+\*Niektóre z tych rozwiązań współsprzedaży IP mogą otrzymać dodatkowe zachęty, gdy zostaną pomyślnie sprzedane i wdrożone w zespołach sprzedaży w terenie firmy Microsoft.
 
-![Nastąpi ponowne sprzedawanie](./media/marketplace-publishers-guide/marketplace-co-sell.png)
+![Co-sell dzieje](./media/marketplace-publishers-guide/marketplace-co-sell.png)
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Dowiedz się więcej o [sprzedawaniu z firmą Microsoft](https://partner.microsoft.com/membership/sell-with-microsoft).
-- Dowiedz się więcej o [opcji "co sprzedajesz" w centrum partnerskim](./partner-center-portal/commercial-marketplace-co-sell.md) .
+- Dowiedz się więcej o [sprzedaży za pomocą firmy Microsoft](https://partner.microsoft.com/membership/sell-with-microsoft).
+- Dowiedz się więcej o [opcji Wspólna sprzedaż w Centrum partnerów](./partner-center-portal/commercial-marketplace-co-sell.md) .

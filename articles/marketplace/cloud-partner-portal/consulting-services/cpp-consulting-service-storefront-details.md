@@ -1,109 +1,108 @@
 ---
-title: Wprowadź szczegółowe informacje o sklepie dla oferty konsultingowej | Portal Azure Marketplace
-description: Zdefiniuj szczegóły witryny sklepu w ofercie usługi konsultingowej platformy Azure lub Dynamics 365 w portal Cloud Partner.
-services: Azure, Marketplace, Cloud Partner Portal,
+title: Wprowadź szczegóły sklepu dla oferty konsultingowej | Azure Marketplace
+description: Zdefiniuj szczegóły witryny sklepowej w ofercie usługi konsultingowej platformy Azure lub Dynamics 365 w portalu cloud partnerów.
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/23/2019
-ms.author: pabutler
-ms.openlocfilehash: 557cfeb66301650e932e5ce271080e9fc8a256d6
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.author: dsindona
+ms.openlocfilehash: 7e1989ee5fcc428bc7d29c17432ded8dab24ecee
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77191167"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80281701"
 ---
 # <a name="storefront-details-tab"></a>Karta szczegółów sklepu
 
-W tym artykule wyjaśniono, jak wprowadzić szczegóły dotyczące Twojego sklepu. Karta **szczegóły witryny sklepu** zawiera następujące sekcje:
+Z tego artykułu dowiesz się, jak wprowadzić szczegóły dotyczące witryny sklepowej. Karta **Szczegóły sklepu** składa się z następujących sekcji:
 
 -   **Szczegóły oferty**
 -   **Informacje o wydawcy**
--   **Szczegóły listy**
+-   **Szczegóły aukcji**
 -   **Artefakty marketingowe**
 
-![Tworzenie nowej oferty usługi konsultingowej — Karta Szczegóły witryny sklepu](media/consultingoffer-storefront-details.png)
+![Tworzenie nowej oferty usług konsultingowych — karta Szczegóły witryny sklepu](media/consultingoffer-storefront-details.png)
 
 
 ## <a name="offer-details"></a>Szczegóły oferty
 
-Sekcja **szczegóły oferty** zawiera następujące pola:
+Sekcja **Szczegóły oferty** zawiera następujące pola:
 
--   **\* podsumowania oferty**
+-   **Podsumowanie oferty\***
 -   **Opis oferty\***
 
 
-### <a name="offer-summary"></a>\* podsumowania oferty
+### <a name="offer-summary"></a>Podsumowanie oferty\*
 
-Podsumowanie oferty to krótki opis oferty, która pojawia się tuż pod nazwą oferty. Użyj zwykłego tekstu, aby wprowadzić podsumowanie oferty bez podziałów wierszy. Poniższe przykłady to dobre podsumowanie oferty wraz z odpowiadającymi im nazwami ofert.
+Podsumowanie oferty to krótki opis oferty, który pojawia się tuż pod nazwą oferty. Użyj zwykłego tekstu, aby wprowadzić podsumowanie oferty bez żadnych podziałów wierszy. Poniższe przykłady są dobrymi podsumowaniami ofert wraz z odpowiadającymi im nazwami ofert.
 
 *Przykład 1*
 
--   **Nazwa oferty**: Analiza w chmurze: 3-dniowa warsztat
--   **Podsumowanie oferty**: Omówienie Microsoft Azure i Power BI, oceny bieżącego środowiska i minimalnej koncepcji ZK.
+-   **Nazwa oferty**: Cloud Analytics: 3-dniowe warsztaty
+-   **Podsumowanie oferty**: Omówienie platformy Microsoft Azure i usługi Power BI, ocena bieżącego środowiska i mini POC.
 
 *Przykład 2*
 
--   **Nazwa oferty**: przemysłowa usługa Azure IoT: 30-dniowa Weryfikacja koncepcji
--   **Podsumowanie oferty**: Utwórz program pilotażowy, który jest połączony z przemysłem, aby bezpiecznie połączyć sprzęt w polu z rozwiązaniem IoT Hub platformy Azure za pomocą pulpitów nawigacyjnych, raportów i powiadomień.
+-   **Nazwa oferty**: Industrial Azure IoT: 30-day Proof of Concept
+-   **Podsumowanie oferty:** Utwórz pilotażowy produkt połączony z przemysłem, aby bezpiecznie połączyć sprzęt w terenie z rozwiązaniem Usługi Azure IoT Hub z pulpitami nawigacyjnymi, raportami i powiadomieniami.
 
 *Przykład 3*
 
--   **Nazwa oferty**: Usługi profesjonalne: 1-HR
--   **Podsumowanie oferty**: przegląd i Demonstracja wstępnie skonfigurowanego, rozszerzonego rozwiązania Dynamics 365 dla operacji, które zapewnia ulepszone zarządzanie projektami, rozliczeniami i zasobami dla usług profesjonalnych.
+-   **Nazwa oferty**: Usługi profesjonalne: 1-Hr Briefing
+-   **Podsumowanie oferty**: Przegląd i prezentacja wstępnie skonfigurowanego, rozszerzonego rozwiązania Dynamics 365 for Operations, które zapewnia lepsze zarządzanie projektami, rozliczeniami i zasobami dla profesjonalnych usług.
 
 *Przykład 4*
 
--   **Nazwa oferty**: Power BI na świecie: 4-HR warsztat
--   **Podsumowanie oferty**: Rozpoczynanie pracy z pierwszym pulpitem nawigacyjnym i uczenie najlepszych rozwiązań. W przypadku maksymalnie 12 uczniów prowadzonych na miejscu.
+-   **Nazwa oferty**: Power BI w Twoim świecie: Warsztaty 4-Hr
+-   **Podsumowanie oferty**: Wykształć swoje pierwsze pulpity nawigacyjne i poznaj najlepsze praktyki. Dla maksymalnie 12 studentów, prowadzone na miejscu.
 
 *Przykład 5*
 
--   **Nazwa oferty**: Dynamics i projekty: 3-dniowa Ocena
--   **Podsumowanie oferty**: wymagania dotyczące zbierania i oceny rozwiązań ERP zaprojektowanych dla firm profesjonalnych usług i firm opartych na projekcie.
+-   **Nazwa oferty**: Dynamika i projekty: Ocena 3-dniowa
+-   **Podsumowanie oferty**: Zbieranie i ocena wymagań dotyczących rozwiązania ERP przeznaczonego dla profesjonalnych firm usługowych i przedsiębiorstw opartych na projektach.
 
 
 ### <a name="offer-description"></a>Opis oferty\*
 
-Wprowadź opis oferty usługi konsultingowej w polu **opis oferty** . Dobry opis oferty zawiera szczegółowe informacje o tym, jak wygląda zaangażowanie i końcowy element dostarczany dla klienta. Powinno to jasno pomóc klientom zrozumieć, co się stało. Dołączanie oferty do produktu firmy Microsoft, dla którego oferowane są usługi konsultingowe.
+Wprowadź opis oferty usług konsultingowych w polu **Opis oferty.** Dobry opis oferty zawiera dokładne szczegóły tego, jak wygląda zaangażowanie i koniec dostawy do klienta. Powinno to wyraźnie pomóc klientowi zrozumieć, co otrzymują. Uwzględnij, w jaki sposób oferta odnosi się do produktu firmy Microsoft, dla którego oferujesz usługi konsultingowe.
 
-Podaj swój adres e-mail lub numer telefonu w opisie oferty. Przycisk **kontakt ze mną** jest dołączony do oferty, aby przekazać potencjalni klienci do docelowego zarządzania potencjalnym liderem.
+Nie podawaj swojego adresu e-mail ani numeru telefonu w opisie oferty. Przycisk **Skontaktuj się** ze mną jest dołączony do oferty przesyłania potencjalnych klientów do głównego celu zarządzania, który identyfikujesz dla swojej oferty.
 
-Wprowadź opis oferty w formacie promocji. Jeśli nie masz doświadczenia w zakresie promocji lub formatowania kodu HTML, zobacz [Korzystanie z promocji w przypadku pisania dokumentów](/contribute/markdown-reference).
+Wprowadź opis oferty w formacie Markdown. Jeśli nie znasz markdown lub formatowania html, zobacz [Używanie znaczników do pisania dokumentów](/contribute/markdown-reference).
 
-Użyj tych formatów, aby upewnić się, że Twoja oferta jest łatwa do odczytania przez klientów.
+Użyj tych formatów, aby upewnić się, że oferta jest łatwa do odczytania przez klientów.
 
-Zadbaj o to, aby Twój opis oferty skrócił się do limitu znaków, ponieważ użytkownicy nie mają do czytania długiego tekstu. Możesz również przekazać broszury marketingowe, arkusze faktów i inne dokumenty, które opisują ofertę szczegółowo.
+Opis oferty należy zachować krótki opis oferty i przestrzegać limitu znaków, ponieważ użytkownicy nie lubią czytać długiego tekstu. Możesz również przesłać broszury marketingowe, arkusze informacyjne i inne dokumenty, które szczegółowo opisują Twoją ofertę.
 
-Poniższy przykład ilustruje dobrze utworzony opis oferty oraz jego powiązaną nazwę i podsumowanie:
+W poniższym przykładzie przedstawiono dobrze skomponowany opis oferty oraz powiązaną z nią nazwę i podsumowanie:
 
-**Nazwa oferty**: Analiza w chmurze: 3-dniowa warsztat
+**Nazwa oferty**: Cloud Analytics: 3-dniowe warsztaty
 
-**Podsumowanie oferty**: Omówienie Microsoft Azure i Power BI, oceny bieżącego środowiska i minimalnej koncepcji ZK.
+**Podsumowanie oferty**: Omówienie platformy Microsoft Azure i usługi Power BI, ocena bieżącego środowiska i mini POC.
 
-**Opis oferty**: te 3-dniowe warsztaty są przeznaczone dla liderów technicznych i służbowych i są przechowywane w lokacji klienta.
+**Opis oferty**: Ten trzydniowy warsztat jest przeznaczony dla liderów technicznych i biznesowych i odbywa się na miejscu w obiekcie klienta.
 
-Punktu
+Porządku obrad
 
-1 dzień
+Dzień 1.
 
--   Koncentruj się na sposobach zabezpieczania, skalowania i organizowania danych w chmurze firmy Microsoft przy użyciu Azure Data Lake, usługi Azure HDInsight lub Azure SQL Data Warehouse.
+-   Koncentruje się na tym, jak zabezpieczyć, skalować i organizować dane w chmurze firmy Microsoft przy użyciu usługi Azure Data Lake, Usługi Azure HDInsight lub usługi Azure SQL Data Warehouse.
 
-2 dni
+Dzień 2.
 
--   Opisuje sposób konfigurowania i wdrażania zaawansowanych rozwiązań analitycznych za pomocą oprogramowania Microsoft R i Azure Machine Learning.
+-   Obejmuje sposób konfigurowania i wdrażania zaawansowanych rozwiązań analitycznych za pomocą usług Microsoft R i usługi Azure Machine Learning.
 
-Dzień 3
+Dzień 3.
 
--   W tym artykule omówiono sposób rysowania szczegółowych informacji o działaniach i analiz operacjonalizować przy użyciu Power BI i obejmuje sesji współpracy w celu współtworzenia pulpitu nawigacyjnego Power BI.
+-   Obejmuje sposób rysowania szczegółowych informacji i operacjonalizacji analizy za pomocą usługi Power BI oraz sesji współpracy w celu współtworzynia pulpitu nawigacyjnego usługi Power BI.
 
 Rezultaty
 
-Na koniec warsztatu klient może zdefiniować plan wysokiego poziomu i harmonogram implementacji dla rozwiązań dotyczących danych i analiz w chmurze firmy Microsoft.
+Pod koniec warsztatu klient może zdefiniować plan wysokiego poziomu i plan wdrożenia rozwiązań do analizy danych i analiz w chmurze firmy Microsoft.
 
-Następujący przykładowy plik promocji jest przeznaczony dla poprzedniej oferty:
+Poniższy przykładowy plik Markdown dotyczy poprzedniej oferty:
 
     This 3-day workshop is for technical and business leaders and is held on-site at the client's facility.
 
@@ -128,85 +127,85 @@ Następujący przykładowy plik promocji jest przeznaczony dla poprzedniej ofert
 
 ## <a name="publisher-information"></a>Informacje o wydawcy
 
-**IDENTYFIKATOR MPN**
+**Identyfikator MPN**
 
-Wprowadź numer dziewięciu cyfr Microsoft Partner Network (MPN). Jeśli nie masz identyfikatora MPN, możesz go uzyskać w centrum partnerskim firmy Microsoft.
+Wprowadź dziewięciocyfrowy identyfikator sieci partnerów firmy Microsoft (MPN). Jeśli nie masz identyfikatora MPN, możesz go uzyskać w Centrum partnerów firmy Microsoft.
 
-**Identyfikator Centrum partnerskiego**
+**Identyfikator Centrum partnerów**
 
-Wprowadź nowy identyfikator Centrum partnerskiego, jeśli go masz.
+Wprowadź nowy identyfikator Centrum partnerskiego, jeśli go posiadasz.
 
-**IDENTYFIKATOR MPN**
+**Identyfikator MPN**
 
-Wprowadź klucz tajny, aby wyświetlić podgląd oferty w usłudze AppSource, zanim zacznie się ona na żywo.
+Wprowadź klucz tajny, aby wyświetlić podgląd oferty w u źródła usług AppSource, zanim zostanie ona włączona.
 Ten identyfikator nie jest hasłem.
 
 
-## <a name="listing-details"></a>Szczegóły listy
+## <a name="listing-details"></a>Szczegóły aukcji
 
 **Typ usługi konsultingowej**
 
-Firma Microsoft koncentruje się wyłącznie na stałym zakresie, stałym czasie trwania, szacowanej lub stałej cenie (lub bezpłatnie) i przede wszystkim z oferty usług konsultingowych ukierunkowanych na sprzedaż dla jednego klienta. Typy usług to Ocena, krótka, implementacja, Weryfikacja koncepcji oraz oferty warsztatowe wykonywane zarówno w ramach lokacji, jak i w praktyce. Portal AppSource Consulting Services Marketplace nie obsługuje aukcji dla usług zarządzanych lub subskrypcji.
+Firma Microsoft koncentruje się wyłącznie na stałym zakresie, stałym czasie trwania, szacowanej lub stałej cenie (lub bezpłatnej), a przede wszystkim na ofertach usług konsultingowych zorientowanych przedsprzedaży dla jednego klienta. Rodzaje usług to ocena, briefing, realizacja, dowód koncepcji i oferty warsztatowe prowadzone na miejscu lub wirtualnie. Rynek usług konsultingowych AppSource nie obsługuje aukcji dla usług zarządzanych lub subskrypcji.
 
 >[!Note]
->Usługi doradcze AppSource nie są odpowiednim rynkiem dla subskrypcji lub szkoleń na żądanie.
+>Usługi konsultingowe AppSource nie są odpowiednim rynkiem dla subskrypcji lub szkoleń na żądanie.
 
-Uwzględniono następujące pięć typów ofert:
+Uwzględniono następujące pięć rodzajów ofert:
 
--   **Ocena**: Ocena środowiska klienta w celu określenia możliwości zastosowania rozwiązania oraz oszacowania kosztów i chronometrażu.
--   **Krótki**opis: wprowadzenie do rozwiązania lub usługi konsultingowej w celu narysowania zainteresowania klienta przy użyciu struktur, pokazów i przykładów klientów. Należy przeprowadzić wymuszanie w witrynie.
--   **Implementacja**: Pełna instalacja, która powoduje w pełni robocze rozwiązanie. W przypadku tej pilotażu firma Microsoft zaleca ograniczenie do rozwiązań, które mogą być implementowane w ciągu jednego tygodnia lub mniej.
--   **Weryfikacja koncepcji**: implementacja ograniczonej zakresu, aby określić, czy rozwiązanie spełnia wymagania klienta.
--   **Warsztat**: interaktywne zaangażowanie w miejscu pracy klienta, które może obejmować sesje szkoleniowe, krótkie, oceny lub pokazy oparte na danych lub środowisku klienta.
+-   **Ocena**: Ocena środowiska klienta w celu określenia możliwości zastosowania rozwiązania i zapewnienia szacunkowych kosztów i terminów.
+-   **Briefing:** Wprowadzenie do rozwiązania lub usługi konsultingowej, aby przyciągnąć zainteresowanie klientów przy użyciu struktur, wersji demonstracyjnych i przykładów klientów. Na miejscu należy przeprowadzić briefingi.
+-   **Wykonanie**: Kompletna instalacja, która powoduje w pełni działające rozwiązanie. W przypadku tego programu pilotażowego firma Microsoft zaleca ograniczenie do rozwiązań, które można wdrożyć w ciągu jednego tygodnia lub mniej.
+-   **Dowód koncepcji:** Implementacja o ograniczonym zakresie w celu ustalenia, czy rozwiązanie spełnia wymagania klienta.
+-   **Warsztaty**: Interaktywne zaangażowanie prowadzone w siedzibie klienta, które może obejmować sesje szkoleniowe, briefingi, oceny lub pokazy oparte na danych lub środowisku klienta.
 
 **Dostępność kraju/regionu**
 
-Wybierz kraj i region, w którym dostępna jest oferta usługi konsultingowej. Nie można opublikować jednej oferty w wielu krajach lub regionach. Należy utworzyć nową ofertę dla każdego kraju lub regionu.
+Wybierz kraj i region, w którym dostępna jest ta oferta usług konsultingowych. Pojedynczej oferty nie można opublikować w wielu krajach lub regionach. Dla każdego kraju lub regionu należy utworzyć nową ofertę.
 
 >[!Note]
->Usługi doradcze AppSource są obecnie aktywne w Stany Zjednoczone, w Zjednoczonym Królestwie i w Kanadzie. Możesz przesłać ofertę dla kraju/regionu, który nie jest jeszcze na żywo i który zostanie zrecenzowany i przygotowany do użycia. Wymagana jest minimalna liczba ofert, które są gotowe do użycia, aby otworzyć nowy kraj/region, dlatego oferty dla krajów/regionów, które nie są na żywo, są zachęcane.
+>Usługi konsultingowe AppSource są obecnie aktywne w Stanach Zjednoczonych, Wielkiej Brytanii i Kanadzie. Możesz przesłać ofertę dla kraju/regionu, który jeszcze nie jest na żywo, a zostanie ona zweryfikowana i przygotowana do transmisji na żywo. Aby otworzyć nowy kraj/region, potrzebna jest minimalna liczba ofert gotowych do otwarcia nowego kraju/regionu, dlatego zachęcamy do składania ofert dla krajów/regionów, które nie żyją.
 
 **Branże**
 
-Wybierz branżę, której dotyczy oferta usługi konsultingowej.
+Wybierz branże, do których twoja oferta usług konsultingowych ma największe zastosowanie.
 
-**Trwania**
+**Czas trwania**
 
-Wybierz liczbę (na przykład 3 lub 4) w obszarze **czas trwania**, a następnie wybierz **pozycję godzina**, **dzień**lub **tydzień**.
+Wybierz liczbę (na przykład 3 lub 4) w obszarze **Czas trwania**, a następnie wybierz **godzinę,** **dzień**lub **tydzień**.
 
 **Produkty podstawowe**
 
-Aby publikować w portalu Azure Marketplace, wybierz pozycję **Azure** jako produkt podstawowy. Następnie wybierz odpowiednie **obszary rozwiązania**.
+Aby opublikować w portalu Azure Marketplace, wybierz **platformę Azure** jako produkt podstawowy. Następnie wybierz odpowiednie **obszary rozwiązania**.
 
-Aby opublikować w AppSource, wybierz pozycję **Dynamics 365**, **Power BI**lub **powerapps** jako produkt podstawowy. Można również wybrać inne odpowiednie **produkty**. Następnie oferta usługi konsultingowej będzie wyświetlana na listach, które są skojarzone z każdym z tych produktów w witrynie AppSource.
+Aby opublikować je w usłudze AppSource, wybierz **dynamics 365,** **Power BI**lub **PowerApps** jako produkt podstawowy. Można również wybrać inne odpowiednie **odpowiednie produkty.** Następnie oferta usługi konsultingowej pokazuje się w aukcjach, które są skojarzone z każdym z tych produktów w usłudze AppSource.
 
 **Odpowiednie kompetencje**
 
-Wybierz kompetencje odpowiednie dla tej oferty, aby były wyświetlane wraz ze szczegółami oferty.
+Wybierz kompetencje istotne dla tej oferty, aby były wyświetlane wraz ze szczegółami oferty.
 
 ## <a name="marketing-artifacts"></a>Artefakty marketingowe
 
-**Logo firmy (format PNG, 48 x 48 pikseli)**
+**Logo firmy (format png, 48 x 48 pikseli)**
 
-Przekaż obraz, który pojawia się na kafelku oferty na stronie Widok galerii ofert. Obraz musi być obrazem PNG o rozdzielczości 48 x 48 pikseli.
+Prześlij obraz, który pojawi się na kafelku oferty na stronie widoku galerii ofert. Obraz musi być obrazem png o rozdzielczości 48 x 48 pikseli.
 
-**Logo firmy (format PNG, 216 x 216 pikseli)**
+**Logo firmy (format png, 216 x 216 pikseli)**
 
-Przekaż obraz, który pojawia się na stronie szczegółów oferty. Obraz musi być obrazem PNG o rozdzielczości 216 x 216 pikseli.
+Prześlij obraz, który pojawi się na stronie szczegółów oferty. Obraz musi być obrazem png o rozdzielczości 216 x 216 pikseli.
 
-**Wideo (ograniczone do czterech)**
+**Filmy (ograniczone do czterech)**
 
-Przekazuj do czterech filmów wideo z analizą przypadku klientów lub materiałów wideo dotyczących klientów. Jeśli nie masz żadnego z nich, Przekaż wideo objaśniające wiedzę firmy powiązaną z ofertą. Jeśli masz pokaz Power BI lub rozwiązania PowerApps, Przekaż tutaj klip wideo z pokazem. Linki wideo muszą być przeznaczone dla usługi YouTube lub Vimeo.
+Prześlij maksymalnie cztery filmy ze studiów przypadku klientów lub filmy z referencjami klientów. Jeśli nie masz żadnego, prześlij film, który wyjaśnia wiedzę firmy związaną z ofertą. Jeśli masz prezentację rozwiązania usługi Power BI lub PowerApps, prześlij prezentację wideo tutaj. Linki wideo muszą być dla YouTube lub Vimeo.
 
 **Dokumenty (ograniczone do trzech)**
 
-Przekaż broszurę marketingową opisującą szczegóły oferty usługi konsultingowej. Możesz również przekazać przegląd firmy, arkusze faktów lub analizy przypadków. Upewnij się, że dokumenty korzystają z bieżących nazw proponowanych produktów i nie są oferowane produkty firmy Microsoft.
+Prześlij szczegółowo broszurę marketingową opisującą ofertę usług konsultingowych. Można również przesłać przegląd firmy, arkusze informacyjne lub studia przypadków. Upewnij się, że w dokumentach są używane bieżące nazwy polecanych produktów i nie są wyposażone w konkurencyjne produkty firmy Microsoft.
 
 **Zrzuty ekranu (ograniczone do pięciu)**
 
-Przekaż do pięciu obrazów, które zawierają więcej informacji na temat oferty, jej elementów dostarczanych lub Twojej firmy. Kilka przykładów zawiera fragment broszury marketingowej, odpowiedni slajd z prezentacji lub obraz pokazujący, że firma jest częścią rzeczy.
+Prześlij maksymalnie pięć obrazów, które zawierają więcej informacji o ofercie, jej dostarczanych urządzeniach lub firmie. Fragment broszury marketingowej, odpowiedni slajd z prezentacji lub obraz, który pokazuje dynamikę firmy lub wiedzę specjalistyczną to tylko niektóre przykłady.
 
 
 ## <a name="next-steps"></a>Następne kroki
 
-Jesteś teraz gotowy do [opublikowania oferty usług konsultingowych](./cpp-consulting-service-publish-offer.md) .
+Teraz możesz opublikować swoją ofertę [usług konsultingowych.](./cpp-consulting-service-publish-offer.md)

@@ -1,77 +1,93 @@
 ---
-title: Mapowanie przekształcenia wyszukiwania przepływu danych
-description: Przekształcenie przeszukiwania przepływu danych Azure Data Factory mapowania
+title: Transformacja odnośnika w przepływie danych mapowania
+description: Dane referencyjne z innego źródła przy użyciu transformacji odnośnika w przepływie danych mapowania.
 author: kromerm
+ms.reviewer: daperlov
 ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 02/26/2020
-ms.openlocfilehash: 2216e1bf058eef486dbfefba24d52bdc6bdb232f
-ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
+ms.date: 03/23/2020
+ms.openlocfilehash: 78c6c1363af011a90865770d88c0037e50e958c1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78164682"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80240419"
 ---
-# <a name="azure-data-factory-mapping-data-flow-lookup-transformation"></a>Przekształcenie przeszukiwania przepływu danych Azure Data Factory mapowania
+# <a name="lookup-transformation-in-mapping-data-flow"></a>Transformacja odnośnika w przepływie danych mapowania
 
-Użyj wyszukiwania, aby dodać dane referencyjne z innego źródła do przepływu danych. Transformacja wyszukiwania wymaga zdefiniowanego źródła wskazującego tabelę referencyjną i dopasowuje się do pól kluczy.
+Transformacja odnośnika służy do odwoływania się do danych z innego źródła w strumieniu przepływu danych. Transformacja odnośnika dołącza kolumny z dopasowanych danych do danych źródłowych.
 
-![Transformacja wyszukiwania](media/data-flow/lookup1.png "Wyszukiwanie")
+Transformacja odnośnika jest podobna do lewego sprzężenia zewnętrznego. Wszystkie wiersze ze strumienia podstawowego będą istnieć w strumieniu danych wyjściowych z dodatkowymi kolumnami ze strumienia odnośnych. 
 
-Wybierz pola klucza, które chcesz dopasować między polami strumienia przychodzącego a polami ze źródła odwołania. Najpierw należy utworzyć nowe źródło na kanwie projektu przepływu danych do użycia jako po prawej stronie dla wyszukiwania.
+## <a name="configuration"></a>Konfigurowanie
 
-Gdy zostaną znalezione dopasowania, wyniki i kolumny ze źródła odwołania zostaną dodane do przepływu danych. Możesz wybrać, które pola zainteresowania mają być uwzględnione w zlewie na końcu przepływu danych. Alternatywnie możesz użyć przekształcenia SELECT po wyszukiwaniu, aby oczyścić listę pól, aby zachować tylko pola z obu strumieni, które chcesz zachować.
+![Transformacja odnośnika](media/data-flow/lookup1.png "Wyszukiwanie")
 
-Transformacja wyszukiwania wykonuje odpowiednik lewego sprzężenia zewnętrznego. W związku z tym zobaczysz wszystkie wiersze z lewej strony Połącz z dopasowaniami po prawej stronie. Jeśli masz wiele pasujących wartości w odnośniku lub jeśli chcesz dostosować wyrażenie wyszukiwania, zaleca się przełączenie na transformację sprzężenia i użycie sprzężenia krzyżowego. Pozwoli to uniknąć ewentualnych błędów produktu kartezjańskiego podczas wykonywania.
+**Strumień podstawowy:** Przychodzący strumień danych. Ten strumień jest odpowiednikiem lewej strony sprzężenia.
 
-## <a name="match--no-match"></a>Dopasowanie/brak dopasowania
+**Strumień odnośny:** Dane, które są dołączane do strumienia podstawowego. Dane, które są dodawane, zależą od warunków wyszukiwania. Ten strumień jest odpowiednikiem prawej strony sprzężenia.
 
-Po przekształceniu wyszukiwania można użyć kolejnych przekształceń, aby sprawdzić wyniki każdego z wierszy dopasowania przy użyciu funkcji wyrażenia `isMatch()`, aby dokonać dalszych wyborów w logice w zależności od tego, czy wyszukiwanie spowodowało dopasowanie wierszy, czy nie.
+**Dopasuj wiele wierszy:** Jeśli ta opcja jest włączona, wiersz z wieloma dopasowaniami w strumieniu podstawowym zwróci wiele wierszy. W przeciwnym razie tylko jeden wiersz zostanie zwrócony na podstawie warunku "Dopasuj na".
 
-![Wzorzec wyszukiwania](media/data-flow/lookup111.png "Wzorzec wyszukiwania")
+**Mecz na:** Widoczne tylko wtedy, gdy jest włączona opcja "Dopasuj wiele wierszy". Wybierz, czy ma być dopasowywać dowolne wiersze, pierwszy czy ostatni mecz. Zaleca się dowolny wiersz, ponieważ wykonuje on najszybciej. Jeśli wybrano pierwszy lub ostatni wiersz, musisz określić warunki sortowania.
 
-Po użyciu transformacji wyszukiwania można dodać podział przekształcenia warunkowego do funkcji ```isMatch()```. W powyższym przykładzie pasujące wiersze przechodzą przez górny strumień i niepasujące wiersze w strumieniu ```NoMatch```.
+**Warunki odnośne:** Wybierz kolumny, które mają być zgodne. Jeśli warunek równości jest spełniony, wiersze będą traktowane jako dopasowanie. Umieść wskaźnik myszy i wybierz opcję "Obliczona kolumna", aby wyodrębnić wartość przy użyciu [języka wyrażenia przepływu danych](data-flow-expression-functions.md).
 
-## <a name="first-or-last-value"></a>Pierwsza lub Ostatnia wartość
+Transformacja odnośnika obsługuje tylko dopasowania równości. Aby dostosować wyrażenie odnośnika, tak aby uwzględnić inne operatory, takie jak większe niż, zaleca się użycie [sprzężenia krzyżowego w transformacji sprzężenia](data-flow-join.md#custom-cross-join). Sprzężenie krzyżowe pozwoli uniknąć ewentualnych błędów produktu kartezjańskiego podczas wykonywania.
 
-Transformacja wyszukiwania jest implementowana jako lewe sprzężenie zewnętrzne. Jeśli masz wiele dopasowań z wyszukiwania, możesz chcieć zmniejszyć liczbę dopasowanych wierszy, wybierając pierwszy dopasowany wiersz, ostatnie dopasowanie lub dowolny losowy wiersz.
+Wszystkie kolumny z obu strumieni są zawarte w danych wyjściowych. Aby upuścić zduplikowane lub niechciane kolumny, dodaj [transformację wyboru](data-flow-select.md) po transformacji odnośnika. Kolumny mogą być również porzucone lub zmienione w transformacji ujścia.
 
-### <a name="option-1"></a>Opcja 1
+## <a name="analyzing-matched-rows"></a>Analizowanie dopasowanych wierszy
 
-![Wyszukiwanie pojedynczego wiersza](media/data-flow/singlerowlookup.png "Wyszukiwanie pojedynczego wiersza")
+Po transformacji odnośnika `isMatch()` funkcja może służyć do sprawdzić, czy wyszukiwanie dopasowane dla poszczególnych wierszy.
 
-* Dopasuj wiele wierszy: pozostaw to pole puste, aby zwrócić pojedynczy wiersz dopasowania
-* Dopasuj na: wybierz pierwsze, ostatnie lub dowolne dopasowanie
-* Warunki sortowania: w przypadku wybrania opcji pierwszy lub ostatni moduł ADF wymaga, aby dane były uporządkowane w taki sposób, że logika jest za pierwsza i Ostatnia
+![Wzór odnośnika](media/data-flow/lookup111.png "Wzór odnośnika")
 
-> [!NOTE]
-> Użyj pierwszej lub ostatniej opcji w selektorze pojedynczego wiersza, jeśli musisz określić wartość, która ma zostać przywrócona z odnośnika. Użycie wyszukiwania "any" lub wiele wierszy będzie szybsze.
+Przykładem tego wzorca jest użycie transformacji podziału `isMatch()` warunkowego do podziału na funkcję. W powyższym przykładzie pasujące wiersze przechodzą przez górny strumień ```NoMatch``` i niepasujące wiersze przepływają przez strumień.
 
-### <a name="option-2"></a>Opcja 2
+## <a name="testing-lookup-conditions"></a>Warunki wyszukiwania testowania
 
-Można to również zrobić przy użyciu transformacji agregacji po wyszukiwaniu. W takim przypadku transformacja agregacji o nazwie ```PickFirst``` jest używana do wybrania pierwszej wartości z dopasowań wyszukiwania.
+Podczas testowania transformacji wyszukiwania z podglądem danych w trybie debugowania należy użyć niewielkiego zestawu znanych danych. Podczas próbkowania wierszy z dużego zestawu danych nie można przewidzieć, które wiersze i klucze będą odczytywane do testowania. Wynik nie jest deterministyczny, co oznacza, że warunki sprzężenia mogą nie zwracać żadnych dopasowań.
 
-![Agregowanie wyszukiwania](media/data-flow/lookup333.png "Agregowanie wyszukiwania")
+## <a name="broadcast-optimization"></a>Optymalizacja emisji
 
-![Wyszukaj w pierwszej kolejności](media/data-flow/lookup444.png "Wyszukaj w pierwszej kolejności")
-
-## <a name="optimizations"></a>Optymalizacje
-
-W Data Factory przepływy danych są wykonywane w skalowanych środowiskach Spark. Jeśli zestaw danych może pasować do przestrzeni pamięci węzła procesu roboczego, możemy zoptymalizować wydajność wyszukiwania.
+W usłudze Azure Data Factory przepływy danych mapowania są wykonywane w środowiskach platformy Spark skalowane w poziomie. Jeśli zestaw danych może zmieścić się w przestrzeni pamięci węzła procesu roboczego, wydajność wyszukiwania można zoptymalizować, włączając transmisję.
 
 ![Sprzężenie emisji](media/data-flow/broadcast.png "Sprzężenie emisji")
 
-### <a name="broadcast-join"></a>Sprzężenie emisji
+Włączenie transmisji wypycha cały zestaw danych do pamięci. W przypadku mniejszych zestawów danych zawierających tylko kilka tysięcy wierszy nadawanie może znacznie poprawić wydajność wyszukiwania. W przypadku dużych zestawów danych ta opcja może prowadzić do wyjątku braku pamięci.
 
-Wybierz pozycję sprzężenie emisji lewej i/lub prawej strony, aby zażądać podajnika APD w celu wypchnięcia całego zestawu danych z obu stron relacji wyszukiwania do pamięci. W przypadku mniejszych zestawów danych może to znacznie poprawić wydajność wyszukiwania.
+## <a name="data-flow-script"></a>Skrypt przepływu danych
 
-### <a name="data-partitioning"></a>Partycjonowanie danych
+### <a name="syntax"></a>Składnia
 
-Możesz również określić Partycjonowanie danych, wybierając pozycję "Ustaw partycjonowanie" na karcie Optymalizacja transformacji wyszukiwania, aby utworzyć zestawy danych, które mogą być lepiej dopasowane do pamięci na proces roboczy.
+```
+<leftStream>, <rightStream>
+    lookup(
+        <lookupConditionExpression>,
+        multiple: { true | false },
+        pickup: { 'first' | 'last' | 'any' },  ## Only required if false is selected for multiple
+        { desc | asc }( <sortColumn>, { true | false }), ## Only required if 'first' or 'last' is selected. true/false determines whether to put nulls first
+        broadcast: { 'none' | 'left' | 'right' | 'both' }
+    ) ~> <lookupTransformationName>
+```
+### <a name="example"></a>Przykład
 
-## <a name="next-steps"></a>Następne kroki
+![Transformacja odnośnika](media/data-flow/lookup-dsl-example.png "Wyszukiwanie")
 
-* Przekształcenia [sprzężeń](data-flow-join.md) i [istniejących](data-flow-exists.md) są podobne do zadań w MAPOWANIU przepływów danych ADF. Zapoznaj się z tymi przekształceniami dalej.
-* Użyj [podziału warunkowego](data-flow-conditional-split.md) z ```isMatch()```, aby podzielić wiersze na pasujące i niezgodne wartości
+Skrypt przepływu danych dla powyższej konfiguracji wyszukiwania znajduje się we wzorze kodu poniżej.
+
+```
+SQLProducts, DimProd lookup(ProductID == ProductKey,
+    multiple: false,
+    pickup: 'first',
+    asc(ProductKey, true),
+    broadcast: 'none')~> LookupKeys
+```
+## 
+Następne kroki
+
+* [Sprzężenie](data-flow-join.md) i [istnieje](data-flow-exists.md) przekształcenia zarówno wziąć w wielu danych wejściowych strumienia
+* Transformacja [podziału warunkowego](data-flow-conditional-split.md) umożliwia ```isMatch()``` dzielenie wierszy na pasujące i niepasujące wartości

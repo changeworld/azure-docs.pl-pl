@@ -1,18 +1,18 @@
 ---
-title: Nawiązywanie połączenia przy użyciu programu MySQL Workbench — Azure Database for MariaDB
+title: Połącz się przy użyciu mysql workbench — usługa Azure Database for MariaDB
 description: Ten przewodnik Szybki start zawiera działania umożliwiające wykorzystywanie aplikacji MySQL Workbench do łączenia z danymi usługi Azure Database for MariaDB i wykonywania zapytań względem nich.
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.custom: mvc
 ms.topic: quickstart
-ms.date: 12/02/2018
-ms.openlocfilehash: 85a38fe3e2d17eb53d1ed5f8f231898849bd01db
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 3/18/2020
+ms.openlocfilehash: 4bb1a71c5d8a58e6d94007554c72019001d395db
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74772065"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79529004"
 ---
 # <a name="azure-database-for-mariadb-use-mysql-workbench-to-connect-and-query-data"></a>Usługa Azure Database for MariaDB: nawiązywanie połączeń z danymi i wykonywanie na nich zapytań przy użyciu aplikacji MySQL Workbench
 
@@ -33,7 +33,7 @@ Ten przewodnik Szybki start używa jako punktu wyjścia zasobów utworzonych w j
 
 Pobierz informacje o połączeniu wymagane do nawiązania połączenia z wystąpieniem usługi Azure Database for MariaDB. Potrzebna jest w pełni kwalifikowana nazwa serwera i poświadczenia logowania.
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com/).
+1. Zaloguj się do [Portalu Azure](https://portal.azure.com/).
 
 2. W menu po lewej stronie w witrynie Azure Portal wybierz pozycję **Wszystkie zasoby**. Wyszukaj utworzony serwer (taki jak **mydemoserver**).
 
@@ -53,12 +53,12 @@ Aby nawiązać połączenie z serwerem usługi Azure Database for MariaDB przy u
 
    | Ustawienie | Sugerowana wartość | Opis pola |
    |---|---|---|
-   |   Nazwa połączenia | **Połączenie demonstracyjne** | Podaj etykietę dla tego połączenia. |
+   |   Nazwa połączenia | **Połączenie demo** | Podaj etykietę dla tego połączenia. |
    | Metoda połączenia | **Standardowa (TCP/IP)** | Metoda Standardowa (TCP/IP) jest wystarczająca. |
    | Nazwa hosta | *nazwa serwera* | Określ nazwę serwera użytą do utworzenia wystąpienia usługi Azure Database for MariaDB. Przykładowy serwer to **mydemoserver.mariadb.database.azure.com**. Użyj w pełni kwalifikowanej nazwy domeny (\*.mariadb.database.azure.com), tak jak pokazano w przykładzie. Jeśli nie pamiętasz nazwy serwera, wykonaj kroki w poprzedniej sekcji, aby uzyskać informacje dotyczące połączenia.  |
    | Port | **3306** | Zawsze używaj portu 3306 podczas łączenia z usługą Azure Database for MariaDB. |
-   | Nazwa użytkownika |  *nazwa logowania administratora serwera* | Podaj nazwę logowania administratora serwera użytą do utworzenia wystąpienia usługi Azure Database for MariaDB. Nasza przykładowa nazwa użytkownika to **webadmin\@mydemoserver**. Jeśli nie pamiętasz nazwy logowania administratora serwera, wykonaj instrukcje w poprzedniej sekcji, aby uzyskać informacje dotyczące połączenia. Format to *Nazwa użytkownika\@ServerName*.
-   | Hasło | *Twoje hasło* | Aby zapisać hasło, wybierz pozycję **Store in Vault** (Zapisz w magazynie). |
+   | Nazwa użytkownika |  *nazwa logowania administratora serwera* | Podaj nazwę logowania administratora serwera użytą do utworzenia wystąpienia usługi Azure Database for MariaDB. Nasza przykładowa nazwa użytkownika **to myadmin\@mydemoserver**. Jeśli nie pamiętasz nazwy logowania administratora serwera, wykonaj instrukcje w poprzedniej sekcji, aby uzyskać informacje dotyczące połączenia. Format to *\@nazwa serwera nazwy użytkownika*.
+   | Hasło | *twoje hasło* | Aby zapisać hasło, wybierz pozycję **Store in Vault** (Zapisz w magazynie). |
 
    ![Konfigurowanie nowego połączenia](./media/connect-workbench/2-setup-new-connection.png)
 

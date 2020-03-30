@@ -1,6 +1,6 @@
 ---
-title: Włącz wirtualizację zagnieżdżoną na maszynie wirtualnej szablonu w Azure Lab Services | Microsoft Docs
-description: Dowiedz się, jak utworzyć maszynę wirtualną szablonu z wieloma maszynami wirtualnymi wewnątrz.  Innymi słowy należy włączyć wirtualizację zagnieżdżoną na maszynie wirtualnej szablonu w Azure Lab Services.
+title: Włączanie wirtualizacji zagnieżdżonej na szablonie maszyny Wirtualnej w usłudze Azure Lab Services | Dokumenty firmy Microsoft
+description: Dowiedz się, jak utworzyć szablon maszyny Wirtualnej z wieloma maszynami wirtualnymi wewnątrz.  Innymi słowy włącz zagnieżdżoną wirtualizację na szablonie maszyny Wirtualnej w usłudze Azure Lab Services.
 services: lab-services
 documentationcenter: na
 author: spelluru
@@ -13,87 +13,51 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/04/2019
 ms.author: spelluru
-ms.openlocfilehash: 64097a5b3b62bcd5a84f4472a844bb95cf24cd6f
-ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
+ms.openlocfilehash: 59b32834369f76d39bb4a253dad4ec541e7ef999
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74555084"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79502011"
 ---
-# <a name="enable-nested-virtualization-on-a-template-virtual-machine-in-azure-lab-services"></a>Włącz wirtualizację zagnieżdżoną na maszynie wirtualnej szablonu w Azure Lab Services
+# <a name="enable-nested-virtualization-on-a-template-virtual-machine-in-azure-lab-services"></a>Włączanie wirtualizacji zagnieżdżonej na maszynie wirtualnej szablonu w usługach Azure Lab Services
 
-Obecnie Azure Lab Services umożliwia skonfigurowanie jednego szablonu maszyny wirtualnej w laboratorium i udostępnienie pojedynczej kopii dla każdego z użytkowników. Jeśli jesteś profesorami sieciowymi, bezpieczeństwem lub klasami IT, może być konieczne udostępnienie wszystkim uczniom środowiska, w którym wiele maszyn wirtualnych może komunikować się ze sobą za pośrednictwem sieci.
+Obecnie usługa Azure Lab Services umożliwia skonfigurowanie jednej maszyny wirtualnej szablonu w laboratorium i udostępnienie jednej kopii każdemu z użytkowników. Jeśli jesteś profesorem nauczania sieci, zabezpieczeń lub zajęć IT, może być konieczne zapewnienie każdemu z uczniów środowiska, w którym wiele maszyn wirtualnych może rozmawiać ze sobą za pośrednictwem sieci.
 
-Wirtualizacja zagnieżdżona umożliwia tworzenie środowiska z obsługą wiele maszyn wirtualnych w ramach maszyny wirtualnej szablonu laboratorium. Opublikowanie szablonu zapewni każdemu użytkownikowi w laboratorium z maszyną wirtualną skonfigurowaną z wieloma maszynami wirtualnymi.  W tym artykule opisano sposób konfigurowania wirtualizacji zagnieżdżonej na komputerze szablonu w Azure Lab Services.
+Wirtualizacja zagnieżdżona umożliwia utworzenie środowiska wielu maszyn wirtualnych wewnątrz maszyny wirtualnej szablonu laboratorium. Publikowanie szablonu zapewni każdemu użytkownikowi w laboratorium maszynę wirtualną skonfigurowaną z wieloma maszynami wirtualnymi w nim.  W tym artykule opisano sposób konfigurowania zagnieżdżonej wirtualizacji na komputerze szablonu w usłudze Azure Lab Services.
 
 ## <a name="what-is-nested-virtualization"></a>Co to jest wirtualizacja zagnieżdżona?
 
-Wirtualizacja zagnieżdżona umożliwia tworzenie maszyn wirtualnych w ramach maszyny wirtualnej. Wirtualizacja zagnieżdżona odbywa się za pośrednictwem funkcji Hyper-V i jest dostępna tylko na maszynach wirtualnych z systemem Windows.
+Wirtualizacja zagnieżdżona umożliwia tworzenie maszyn wirtualnych w obrębie maszyny wirtualnej. Wirtualizacja zagnieżdżona odbywa się za pośrednictwem funkcji Hyper-V i jest dostępna tylko na maszynach wirtualnych systemu Windows.
 
 Aby uzyskać więcej informacji na temat wirtualizacji zagnieżdżonej, zobacz następujące artykuły:
 
-- [Wirtualizacja zagnieżdżona na platformie Azure](https://azure.microsoft.com/blog/nested-virtualization-in-azure/)
-- [Jak włączyć wirtualizację zagnieżdżoną na maszynie wirtualnej platformy Azure](../../virtual-machines/windows/nested-virtualization.md)
+- [Zagnieżdżona wirtualizacja na platformie Azure](https://azure.microsoft.com/blog/nested-virtualization-in-azure/)
+- [Jak włączyć wirtualizację zagnieżdżoną na maszynie Wirtualnej platformy Azure](../../virtual-machines/windows/nested-virtualization.md)
 
 ## <a name="considerations"></a>Zagadnienia do rozważenia
 
-Przed skonfigurowaniem laboratorium z wirtualizacją zagnieżdżoną poniżej przedstawiono kilka kwestii, które należy wziąć pod uwagę.
+Przed utworzeniem laboratorium z zagnieżdżoną wirtualizacji, oto kilka rzeczy, które należy wziąć pod uwagę.
 
-- Podczas tworzenia nowego laboratorium wybierz rozmiar maszyny wirtualnej **Średni (Wirtualizacja zagnieżdżona)** lub **duża (Wirtualizacja zagnieżdżona)** . Te rozmiary maszyn wirtualnych obsługują wirtualizację zagnieżdżoną.
-- Wybierz rozmiar, który będzie zapewniał dobrą wydajność zarówno dla maszyn wirtualnych hosta, jak i klienta.  Należy pamiętać, że w przypadku korzystania z wirtualizacji wybrany rozmiar musi być odpowiedni dla nie tylko jednego komputera, ale host oraz wszystkie komputery klienckie, które muszą być uruchamiane współbieżnie.
+- Podczas tworzenia nowego laboratorium wybierz średnie **(wirtualizacja zagnieżdżona)** lub **Duże (wirtualizacja zagnieżdżona)** dla rozmiaru maszyny wirtualnej. Te rozmiary maszyn wirtualnych obsługują wirtualizację zagnieżdżoną.
+- Wybierz rozmiar, który zapewni dobrą wydajność zarówno dla maszyn wirtualnych hosta, jak i klienta.  Należy pamiętać, że podczas korzystania z wirtualizacji, rozmiar, który wybierzesz musi być odpowiedni nie tylko dla jednego komputera, ale hosta, jak również wszystkie maszyny klienckie, które muszą być uruchamiane jednocześnie.
 - Maszyny wirtualne klienta nie będą miały dostępu do zasobów platformy Azure, takich jak serwery DNS w sieci wirtualnej platformy Azure.
-- Maszyna wirtualna hosta wymaga, aby komputer kliencki miał łączność z Internetem.
-- Klienckie maszyny wirtualne są licencjonowane jako niezależne maszyny. Zobacz temat [Licencjonowanie firmy Microsoft](https://www.microsoft.com/licensing/default) , aby uzyskać informacje o licencjonowaniu systemów operacyjnych i produktów firmy Microsoft. Zapoznaj się z umowami licencyjnymi dotyczącymi wszelkich innych programów używanych przed skonfigurowaniem komputera szablonu.
+- Host maszyny wirtualnej wymaga konfiguracji, aby umożliwić maszynie klienckiej mieć łączność z Internetem.
+- Maszyny wirtualne klienta są licencjonowane jako niezależne maszyny. Informacje na temat licencjonowania systemów i produktów firmy Microsoft można znaleźć w [witrynie Licencjonowanie](https://www.microsoft.com/licensing/default) firmy Microsoft. Przed skonfigurowaniem komputera szablonu sprawdź umowy licencyjne dotyczące innego oprogramowania używanego.
 
 ## <a name="enable-nested-virtualization-on-a-template-vm"></a>Włączanie wirtualizacji zagnieżdżonej na maszynie wirtualnej szablonu
 
-W tym artykule przyjęto założenie, że utworzono konto laboratorium i laboratorium.  Aby uzyskać więcej informacji na temat tworzenia nowego konta laboratorium, zobacz [Samouczek dotyczący konfigurowania konta laboratorium](tutorial-setup-lab-account.md). Aby uzyskać więcej informacji na temat tworzenia laboratorium, zobacz [Samouczek dotyczący konfigurowania środowiska laboratoryjnego](tutorial-setup-classroom-lab.md).
+W tym artykule przyjęto założenie, że utworzono konto laboratorium i laboratorium.  Aby uzyskać więcej informacji na temat tworzenia nowego konta laboratorium, zobacz [samouczek konfigurowania konta laboratorium](tutorial-setup-lab-account.md). Aby uzyskać więcej informacji na temat tworzenia laboratorium, zobacz [konfigurowanie samouczka laboratorium w klasie](tutorial-setup-classroom-lab.md).
 
 >[!IMPORTANT]
->Wybierz opcję **duże (Wirtualizacja zagnieżdżona)** lub **Średni (Wirtualizacja zagnieżdżona)** dla rozmiaru maszyny wirtualnej podczas tworzenia laboratorium.  Wirtualizacja zagnieżdżona nie będzie działała inaczej.  
+>Wybierz **opcję Duże (wirtualizacja zagnieżdżona)** lub **Średnia (wirtualizacja zagnieżdżona)** dla rozmiaru maszyny wirtualnej podczas tworzenia laboratorium.  Zagnieżdżona wirtualizacja nie będzie działać inaczej.  
 
-Aby nawiązać połączenie z maszyną szablonu, zobacz [Tworzenie i zarządzanie szablonem klasy](how-to-create-manage-template.md). 
+Aby połączyć się z urządzeniem szablonu, zobacz [tworzenie szablonu klasy i zarządzanie nim](how-to-create-manage-template.md).
 
-Kroki opisane w tej sekcji koncentrują się na konfigurowaniu zagnieżdżonej wirtualizacji dla systemu Windows Server 2016 lub Windows Server 2019. Za pomocą skryptu można skonfigurować maszynę szablonu przy użyciu funkcji Hyper-V.  Poniższe kroki przeprowadzą Cię przez proces korzystania ze [skryptów funkcji Hyper-V dla usług Lab Services](https://github.com/Azure/azure-devtestlab/tree/master/samples/ClassroomLabs/Scripts/HyperV).
+### <a name="using-script-to-enable-nested-virtualization"></a>Za pomocą skryptu umożliwiającego zagnieżdżoną wirtualizację
 
-1. Jeśli używasz programu Internet Explorer, może być konieczne dodanie `https://github.com` do listy zaufanych witryn.
-    1. Otwórz program Internet Explorer.
-    1. Wybierz ikonę koła zębatego, a następnie wybierz pozycję **Opcje internetowe**.  
-    1. Po wyświetleniu okna dialogowego **Opcje internetowe** wybierz pozycję **zabezpieczenia**, wybierz pozycję **Zaufane witryny**, kliknij przycisk **witryny** .
-    1. Po wyświetleniu okna dialogowego **Zaufane witryny** Dodaj `https://github.com` do listy zaufanych witryn sieci Web i wybierz pozycję **Zamknij**.
+Aby użyć zautomatyzowanej konfiguracji do zagnieżdżonej wirtualizacji w systemie Windows Server 2016 lub Windows Server 2019, zobacz [Włączanie wirtualizacji zagnieżdżonej na maszynie wirtualnej szablonu w usługach Azure Lab Services przy użyciu skryptu](how-to-enable-nested-virtualization-template-vm-using-script.md). Do zainstalowania roli funkcji Hyper-V użyjesz skryptów ze [skryptów Funkcji Hyper-V usług Lab Services.](https://github.com/Azure/azure-devtestlab/tree/master/samples/ClassroomLabs/Scripts/HyperV)  Skrypty skonfigurują również sieć, dzięki czemu maszyny wirtualne funkcji Hyper-V mogą mieć dostęp do Internetu.
 
-        ![Zaufane witryny](../media/how-to-enable-nested-virtualization-template-vm/trusted-sites-dialog.png)
-1. Pobierz pliki repozytorium git, jak opisano w poniższych krokach.
-    1. Przejdź do [https://github.com/Azure/azure-devtestlab/](https://github.com/Azure/azure-devtestlab/).
-    1. Kliknij przycisk **klonowania lub pobierania** .
-    1. Kliknij pozycję **Pobierz plik zip**.
-    1. Wyodrębnij plik ZIP
+### <a name="using-windows-tools-to-enable-nested-virtualization"></a>Włączanie wirtualizacji zagnieżdżonej zagnieżdżonej za pomocą narzędzi systemu Windows
 
-    >[!TIP]
-    >Repozytorium git można również sklonować w [https://github.com/Azure/azure-devtestlab.git](https://github.com/Azure/azure-devtestlab.git).
-
-1. Uruchom program **PowerShell** w trybie **administratora** .
-1. W oknie programu PowerShell przejdź do folderu z pobranym skryptem. Jeśli przechodzenie jest z górnego folderu plików repozytorium, skrypt znajduje się w `azure-devtestlab\samples\ClassroomLabs\Scripts\HyperV\`.
-1. Może być konieczna zmiana zasad wykonywania w celu pomyślnego uruchomienia skryptu. Uruchom następujące polecenie:
-
-    ```powershell
-    Set-ExecutionPolicy bypass -force
-    ```
-
-1. Uruchom skrypt:
-
-    ```powershell
-    .\SetupForNestedVirtualization.ps1
-    ```
-
-    > [!NOTE]
-    > Skrypt może wymagać ponownego uruchomienia komputera. Postępuj zgodnie z instrukcjami ze skryptu, a następnie uruchom skrypt do momentu wyświetlenia **skryptu** w danych wyjściowych.
-1. Nie zapomnij zresetować zasad wykonywania. Uruchom następujące polecenie:
-
-    ```powershell
-    Set-ExecutionPolicy default -force
-    ```
-
-## <a name="conclusion"></a>Podsumowanie
-
-Teraz komputer z szablonem jest gotowy do tworzenia maszyn wirtualnych funkcji Hyper-V. Aby uzyskać instrukcje dotyczące tworzenia maszyn wirtualnych funkcji Hyper-v, zobacz temat [Tworzenie maszyny wirtualnej w funkcji Hyper-v](/windows-server/virtualization/hyper-v/get-started/create-a-virtual-machine-in-hyper-v) . Zobacz również artykuł [Microsoft Evaluation Center](https://www.microsoft.com/evalcenter/) , aby wyewidencjonować dostępne systemy operacyjne i oprogramowanie.  
+Konfiguracja wirtualizacji zagnieżdżonej dla systemu Windows Server 2016 lub Windows Server 2019 przy użyciu ról systemu Windows i narzędzi administracyjnych, zobacz [Ręczne włączanie wirtualizacji zagnieżdżonej na maszynie wirtualnej szablonu w usłudze Azure Lab Services](how-to-enable-nested-virtualization-template-vm-ui.md).  Instrukcje obejmują również sposób konfigurowania sieci, aby maszyny wirtualne funkcji Hyper-V mogły mieć dostęp do Internetu.

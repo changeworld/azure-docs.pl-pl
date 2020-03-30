@@ -1,7 +1,7 @@
 ---
-title: Konfigurowanie logowania jednokrotnego w systemach macOS i iOS
+title: Konfigurowanie sytego systemu w systemach macOS i iOS
 titleSuffix: Microsoft identity platform
-description: Dowiedz się, jak skonfigurować Logowanie jednokrotne (SSO) w systemach macOS i iOS.
+description: Dowiedz się, jak skonfigurować logowanie jednokrotne w systemach macOS i iOS.
 services: active-directory
 documentationcenter: dev-center-name
 author: mmacy
@@ -18,71 +18,71 @@ ms.author: marsma
 ms.reviewer: ''
 ms.custom: aaddev
 ms.openlocfilehash: 91a55520b37c549c8f1d94ba6cf08ecd24db85b5
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79262453"
 ---
-# <a name="how-to-configure-sso-on-macos-and-ios"></a>Instrukcje: Konfigurowanie logowania jednokrotnego w systemach macOS i iOS
+# <a name="how-to-configure-sso-on-macos-and-ios"></a>Jak: Konfigurowanie sytego systemu w systemach macOS i iOS
 
-Biblioteka Microsoft Authentication Library (MSAL) dla macOS i iOS obsługuje logowanie jednokrotne (SSO) między aplikacjami macOS/iOS i przeglądarkami. W tym artykule opisano następujące scenariusze logowania jednokrotnego:
+Biblioteka uwierzytelniania firmy Microsoft (MSAL) dla komputerów macOS i iOS obsługuje logowanie jednokrotne między aplikacjami i przeglądarkami systemu macOS/iOS. W tym artykule omówiono następujące scenariusze samego przysło:
 
-- [Dyskretne Logowanie jednokrotne między wieloma aplikacjami](#silent-sso-between-apps)
+- [Ciche jednokrotne połączenie między wieloma aplikacjami](#silent-sso-between-apps)
 
-Ten typ logowania jednokrotnego działa w wielu aplikacjach dystrybuowanych przez tego samego deweloperów firmy Apple. Zapewnia to dyskretne Logowanie jednokrotne (oznacza to, że użytkownik nie jest monitowany o poświadczenia) poprzez odczytywanie tokenów odświeżania pisanych przez inne aplikacje z łańcucha kluczy i wymianę ich na potrzeby tokenów dostępu dyskretnie.  
+Ten typ samego użytkownika działa między wieloma aplikacjami dystrybuowanymi przez tego samego dewelopera Apple. Zapewnia ciche logowania sytego (oznacza to, że użytkownik nie jest monitowany o poświadczenia) przez odczyt tokenów odświeżania napisanych przez inne aplikacje z pęku kluczy i wymieniając je na tokeny dostępu w trybie dyskretnym.  
 
-- [Logowanie jednokrotne za pośrednictwem brokera uwierzytelniania](#sso-through-authentication-broker-on-ios)
-
-> [!IMPORTANT]
-> Ten przepływ nie jest dostępny w witrynie macOS.
-
-Firma Microsoft udostępnia aplikacje, nazywane brokerami, które umożliwiają logowanie jednokrotne między aplikacjami od różnych dostawców, o ile urządzenie przenośne jest zarejestrowane w usłudze Azure Active Directory (AAD). Ten typ logowania jednokrotnego wymaga zainstalowania na urządzeniu użytkownika aplikacji brokera.
-
-- **Logowanie jednokrotne między MSAL a Safari**
-
-Logowanie jednokrotne jest realizowane za pomocą klasy [ASWebAuthenticationSession](https://developer.apple.com/documentation/authenticationservices/aswebauthenticationsession?language=objc) . Używa on istniejącego stanu logowania z innych aplikacji i przeglądarki Safari. Nie jest to ograniczone do aplikacji dystrybuowanych przez tego samego deweloperów firmy Apple, ale wymaga to pewnej interakcji z użytkownikiem.
-
-Jeśli używasz domyślnego widoku sieci Web w aplikacji do logowania użytkowników, uzyskasz automatyczne logowanie jednokrotne między aplikacjami opartymi na MSAL i Safari. Aby dowiedzieć się więcej o widokach sieci Web obsługiwanych przez program MSAL, odwiedź stronę [Dostosowywanie przeglądarek i WebViews](customize-webviews.md).
+- [SSO za pośrednictwem brokera uwierzytelniania](#sso-through-authentication-broker-on-ios)
 
 > [!IMPORTANT]
-> Ten typ logowania jednokrotnego nie jest obecnie dostępny w witrynie macOS. MSAL on macOS obsługuje tylko WKWebView, które nie obsługują logowania jednokrotnego za pomocą przeglądarki Safari. 
+> Ten przepływ nie jest dostępny w systemie macOS.
 
-- **Dyskretne Logowanie jednokrotne między bibliotekami ADAL i MSAL macOS/iOS**
+Firma Microsoft udostępnia aplikacje, nazywane brokerami, które umożliwiają rejestrowanie rejestracji w systemie SSO między aplikacjami różnych dostawców, o ile urządzenie przenośne jest zarejestrowane w usłudze Azure Active Directory (AAD). Ten typ rejestracji w tym celu wymaga zainstalowania aplikacji brokera na urządzeniu użytkownika.
 
-MSAL cel-C obsługuje migrację i logowanie jednokrotne za pomocą aplikacji opartych na języku C. Aplikacje muszą być dystrybuowane przez tego samego deweloperów firmy Apple.
+- **SSO między MSAL i Safari**
 
-Zobacz [Logowanie jednokrotne między aplikacjami ADAL i MSAL w systemie macOS i iOS,](sso-between-adal-msal-apps-macos-ios.md) Aby uzyskać instrukcje dotyczące rejestracji jednokrotnej w aplikacjach opartych na domenach ADAL i MSAL.
+SSO jest osiągany za pośrednictwem [KLASY ASWebAuthenticationSession.](https://developer.apple.com/documentation/authenticationservices/aswebauthenticationsession?language=objc) Używa istniejącego stanu logowania z innych aplikacji i przeglądarki Safari. Nie ogranicza się do aplikacji dystrybuowanych przez tego samego programistę Apple, ale wymaga pewnej interakcji z użytkownikiem.
 
-## <a name="silent-sso-between-apps"></a>Dyskretna Logowanie jednokrotne między aplikacjami
+Jeśli do logowania użytkowników używasz domyślnego widoku sieci Web w aplikacji, otrzymasz automatyczne logowanie logowanie między aplikacjami opartymi na msal i Safari. Aby dowiedzieć się więcej o widokach sieci Web, które obsługuje msal, odwiedź stronę [Dostosowywanie przeglądarek i webviews](customize-webviews.md).
 
-Usługa MSAL obsługuje udostępnianie Logowanie jednokrotne za pomocą grup dostępu łańcucha kluczy systemu iOS.
+> [!IMPORTANT]
+> Ten typ wpisu SSO jest obecnie niedostępny w systemie macOS. MSAL na macOS obsługuje tylko WKWebView, który nie ma obsługi jedno i administratora w przeglądarce Safari. 
 
-Aby włączyć logowanie jednokrotne w aplikacjach, należy wykonać następujące kroki, które opisano szczegółowo poniżej:
+- **Ciche przysłowiowe między aplikacjami ADAL i MSAL macOS/iOS**
+
+MSAL Objective-C obsługuje migrację i funkcję SSO za pomocą aplikacji opartych na języku ADAL Objective-C. Aplikacje muszą być dystrybuowane przez tego samego dewelopera Apple.
+
+Aby uzyskać instrukcje dotyczące sso syg jako krzyżowego między aplikacjami ADAL i MSAL, zobacz [samoustawne między aplikacjami ADAL i MSAL.](sso-between-adal-msal-apps-macos-ios.md)
+
+## <a name="silent-sso-between-apps"></a>Ciche przysłów YW między aplikacjami
+
+Msal obsługuje udostępnianie aplikacji SSO za pośrednictwem grup dostępu do pęku kluczy systemu iOS.
+
+Aby włączyć funkcję SSO w aplikacjach, należy wykonać następujące kroki, które zostały szczegółowo opisane poniżej:
 
 1. Upewnij się, że wszystkie aplikacje używają tego samego identyfikatora klienta lub identyfikatora aplikacji.
-1. Upewnij się, że wszystkie aplikacje mają ten sam certyfikat podpisywania od firmy Apple, aby można było udostępnić łańcuchy kluczy.
-1. Zażądaj tego samego uprawnienia łańcucha kluczy dla każdej aplikacji.
-1. Poinformuj zestaw SDK MSAL o udostępnionym pęku kluczy, którego chcesz użyć, jeśli jest inny niż domyślny.
+1. Upewnij się, że wszystkie aplikacje mają ten sam certyfikat podpisywania firmy Apple, dzięki czemu można udostępniać breloki kluczy.
+1. Poproś o te same uprawnienie do pęku kluczy dla każdej aplikacji.
+1. Powiedz sdk MSAL o udostępnionym pęku kluczy, którego chcesz użyć, jeśli różni się od domyślnego.
 
-### <a name="use-the-same-client-id-and-application-id"></a>Użyj tego samego identyfikatora klienta i identyfikatora aplikacji
+### <a name="use-the-same-client-id-and-application-id"></a>Używanie tego samego identyfikatora klienta i identyfikatora aplikacji
 
-Aby platforma tożsamości firmy Microsoft mogła dowiedzieć się, które aplikacje mogą udostępniać tokeny, te aplikacje muszą mieć ten sam identyfikator klienta lub identyfikator aplikacji. Jest to unikatowy identyfikator, który został dostarczony podczas rejestracji pierwszej aplikacji w portalu.
+Aby platforma tożsamości firmy Microsoft wiedziała, które aplikacje mogą współużytkować tokeny, te aplikacje muszą współużytkować ten sam identyfikator klienta lub identyfikator aplikacji. Jest to unikatowy identyfikator, który został podany podczas rejestracji pierwszej aplikacji w portalu.
 
-Sposób, w jaki platforma tożsamości firmy Microsoft informuje aplikacje, które używają tego samego identyfikatora aplikacji, jest przez ich **identyfikatory URI przekierowania**. Każda aplikacja może mieć wiele identyfikatorów URI przekierowania zarejestrowanych w portalu dołączania. Każda aplikacja w Twoim pakiecie będzie miała inny identyfikator URI przekierowania. Na przykład:
+Sposób, w jaki platforma tożsamości firmy Microsoft informuje aplikacje, które używają tego samego identyfikatora aplikacji od siebie, jest przez ich **identyfikatory URI przekierowania.** Każda aplikacja może mieć wiele identyfikatorów URI przekierowania zarejestrowanych w portalu dołączania. Każda aplikacja w pakiecie będzie miała inny identyfikator URI przekierowania. Przykład:
 
-Identyfikator URI przekierowania APP1: `msauth.com.contoso.mytestapp1://auth`  
-Identyfikator URI przekierowania APP2: `msauth.com.contoso.mytestapp2://auth`  
-Identyfikator URI przekierowania APP3: `msauth.com.contoso.mytestapp3://auth`  
+Przekierowanie identyfikatora URI aplikacji1:`msauth.com.contoso.mytestapp1://auth`  
+Przekierowanie URI aplikacji2:`msauth.com.contoso.mytestapp2://auth`  
+Przekierowanie identyfikatora URI aplikacji3:`msauth.com.contoso.mytestapp3://auth`  
 
 > [!IMPORTANT]
-> Format identyfikatorów URI przekierowania musi być zgodny z formatem MSAL obsługuje, który jest udokumentowany w [wymaganiach dotyczących formatu identyfikatora URI przekierowania MSAL](redirect-uris-ios.md#msal-redirect-uri-format-requirements).
+> Format przekierowania uris musi być zgodny z formatem msal obsługuje, który jest udokumentowany w [MSAL Redirect Wymagania formatu URI](redirect-uris-ios.md#msal-redirect-uri-format-requirements).
 
-### <a name="setup-keychain-sharing-between-applications"></a>Konfigurowanie udostępniania łańcucha kluczy między aplikacjami
+### <a name="setup-keychain-sharing-between-applications"></a>Konfigurowanie współużytkowania pęku kluczy między aplikacjami
 
-Zapoznaj się z artykułem [Dodawanie możliwości](https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/AppDistributionGuide/AddingCapabilities/AddingCapabilities.html) firmy Apple, aby włączyć udostępnianie łańcucha kluczy. Ważne jest, aby zdecydować, jak ma być wywoływana łańcucha kluczy, i dodać tę możliwość do wszystkich aplikacji, które będą objęte logowaniem jednokrotnym.
+Zapoznaj się z artykułem Apple [Dodawanie możliwości,](https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/AppDistributionGuide/AddingCapabilities/AddingCapabilities.html) aby włączyć udostępnianie pęku kluczy. Ważne jest, aby zdecydować, co ma być wywoływane pęk kluczy i dodać tę możliwość do wszystkich aplikacji, które będą zaangażowane w samouszeńca.
 
-Po poprawnym skonfigurowaniu uprawnień zobaczysz plik `entitlements.plist` w katalogu projektu, który zawiera coś podobne do tego przykładu:
+Jeśli uprawnienia są poprawnie skonfigurowane, w katalogu `entitlements.plist` projektu zostanie wyświetlony plik zawierający coś podobnego:
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -98,21 +98,21 @@ Po poprawnym skonfigurowaniu uprawnień zobaczysz plik `entitlements.plist` w ka
 </plist>
 ```
 
-#### <a name="add-a-new-keychain-group"></a>Dodaj nową grupę pęku kluczy
+#### <a name="add-a-new-keychain-group"></a>Dodawanie nowej grupy pęku kluczy
 
-Dodaj nową grupę pęku kluczy do **możliwości**projektu. Grupa łańcucha kluczy powinna:
-* `com.microsoft.adalcache` w systemie iOS 
-* `com.microsoft.identity.universalstorage` w macOS.
+Dodaj nową grupę pęku **kluczy**do możliwości projektu . Grupa pęku kluczy powinna być:
+* `com.microsoft.adalcache`w iOS 
+* `com.microsoft.identity.universalstorage`w systemie macOS.
 
-![przykład łańcucha kluczy](media/single-sign-on-macos-ios/keychain-example.png)
+![przykład pęku kluczy](media/single-sign-on-macos-ios/keychain-example.png)
 
 Aby uzyskać więcej informacji, zobacz [grupy pęku kluczy](howto-v2-keychain-objc.md).
 
 ## <a name="configure-the-application-object"></a>Konfigurowanie obiektu aplikacji
 
-Po włączeniu uprawnień łańcucha kluczy w każdej aplikacji i przygotowaniu się do korzystania z logowania jednokrotnego Skonfiguruj `MSALPublicClientApplication` z grupą dostępu łańcucha kluczy, tak jak w poniższym przykładzie:
+Po włączeniu uprawnienia do pęku kluczy w każdej z aplikacji i gotowości do `MSALPublicClientApplication` użycia jednocześnie skonfiguruj za pomocą grupy dostępu do pęku kluczy, jak w poniższym przykładzie:
 
-Cel-C:
+Cel C:
 
 ```objc
 NSError *error = nil;
@@ -122,7 +122,7 @@ configuration.cacheConfig.keychainSharingGroup = @"my.keychain.group";
 MSALPublicClientApplication *application = [[MSALPublicClientApplication alloc] initWithConfiguration:configuration error:&error];
 ```
 
-Adres
+Swift:
 
 ```swift
 let config = MSALPublicClientApplicationConfig(clientId: "<my-client-id>")
@@ -137,19 +137,19 @@ do {
 ```
 
 > [!WARNING]
-> Po udostępnieniu łańcucha kluczy w aplikacjach każda aplikacja może usuwać użytkowników, a nawet wszystkie tokeny w aplikacji.
-> Jest to szczególnie zagrożone w przypadku aplikacji korzystających z tokenów do wykonywania zadań w tle.
-> Udostępnianie łańcucha kluczy oznacza, że należy zachować ostrożność, gdy aplikacja korzysta z operacji usuwania Microsoft Identity SDK.
+> Po udostępnieniu pęku kluczy w aplikacjach każda aplikacja może usunąć użytkowników lub nawet wszystkie tokeny w aplikacji.
+> Jest to szczególnie istotne, jeśli masz aplikacje, które opierają się na tokeny do pracy w tle.
+> Udostępnianie pęku kluczy oznacza, że należy zachować szczególną ostrożność, gdy aplikacja używa microsoft tożsamości SDK usunąć operacje.
 
-Gotowe. Zestaw SDK tożsamości firmy Microsoft będzie teraz udostępniać poświadczenia dla wszystkich aplikacji. Lista kont również będzie współużytkowana przez wystąpienia aplikacji.
+Gotowe. Pakiet SDK tożsamości firmy Microsoft będzie teraz udostępniać poświadczenia we wszystkich aplikacjach. Lista kont będzie również współużytkowana przez wystąpienia aplikacji.
 
-## <a name="sso-through-authentication-broker-on-ios"></a>Logowanie jednokrotne za pośrednictwem brokera uwierzytelniania w systemie iOS
+## <a name="sso-through-authentication-broker-on-ios"></a>SSO za pośrednictwem brokera uwierzytelniania w iOS
 
-MSAL zapewnia obsługę uwierzytelniania obsługiwanego przez brokera Microsoft Authenticator. Microsoft Authenticator zapewnia Logowanie jednokrotne dla zarejestrowanych urządzeń usługi AAD, a także pomaga aplikacji stosować zasady dostępu warunkowego.
+Usługa MSAL zapewnia obsługę uwierzytelniania obsługiwanego przez brokera za pomocą programu Microsoft Authenticator. Microsoft Authenticator zapewnia sso dla urządzeń zarejestrowanych przez usługę AAD, a także pomaga aplikacji przestrzegać zasad dostępu warunkowego.
 
-Poniższe kroki umożliwiają włączenie logowania jednokrotnego przy użyciu brokera uwierzytelniania dla aplikacji:
+Poniższe kroki obejmują sposób włączania funkcji SSO przy użyciu brokera uwierzytelniania dla aplikacji:
 
-1. Zarejestruj format URI przekierowania zgodnego z brokerem dla aplikacji w informacji. plist aplikacji. Format identyfikatora URI przekierowania zgodnego z brokerem jest `msauth.<app.bundle.id>://auth`. Zastąp element "< App .Binding. ID >" "IDENTYFIKATORem pakietu aplikacji. Na przykład:
+1. Zarejestruj w info.plist formatu URI zgodnego z brokerem brokera. Format URI z kompatybilnym z brokerem to `msauth.<app.bundle.id>://auth`. Zamień '<app.bundle.id>'' identyfikatorem pakietu aplikacji. Przykład:
 
     ```xml
     <key>CFBundleURLSchemes</key>
@@ -158,7 +158,7 @@ Poniższe kroki umożliwiają włączenie logowania jednokrotnego przy użyciu b
     </array>
     ```
 
-1. Dodaj następujące schematy do informacji o aplikacji. plist w obszarze `LSApplicationQueriesSchemes`:
+1. Dodaj następujące schematy do info.plist `LSApplicationQueriesSchemes`aplikacji pod:
 
     ```xml
     <key>LSApplicationQueriesSchemes</key>
@@ -168,9 +168,9 @@ Poniższe kroki umożliwiają włączenie logowania jednokrotnego przy użyciu b
     </array>
     ```
 
-1. Dodaj następujący plik do pliku `AppDelegate.m`, aby obsłużyć wywołania zwrotne:
+1. Dodaj do pliku `AppDelegate.m` następujące elementy, aby obsłużyć wywołania zwrotne:
 
-    Cel-C:
+    Cel C:
     
     ```objc
     - (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<NSString *,id> *)options
@@ -179,7 +179,7 @@ Poniższe kroki umożliwiają włączenie logowania jednokrotnego przy użyciu b
     }
     ```
     
-    Adres
+    Swift:
     
     ```swift
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
@@ -187,10 +187,10 @@ Poniższe kroki umożliwiają włączenie logowania jednokrotnego przy użyciu b
     }
     ```
     
-**Jeśli używasz Xcode 11**, zamiast tego należy umieścić wywołanie zwrotne MSAL w pliku `SceneDelegate`.
-W przypadku obsługi UISceneDelegate i UIApplicationDelegate w celu zapewnienia zgodności ze starszymi wersjami systemu iOS należy umieścić wywołanie zwrotne w obu plikach.
+**Jeśli używasz Xcode 11,** należy umieścić wywołania `SceneDelegate` zwrotnego MSAL do pliku zamiast.
+Jeśli obsługujesz zarówno UISceneDelegate i UIApplicationDelegate dla zgodności ze starszymi systemami iOS, wywołania zwrotnego MSAL należy umieścić w obu plikach.
 
-Cel-C:
+Cel C:
 
 ```objc
  - (void)scene:(UIScene *)scene openURLContexts:(NSSet<UIOpenURLContext *> *)URLContexts
@@ -203,7 +203,7 @@ Cel-C:
  }
 ```
 
-Adres
+Swift:
 
 ```swift
 func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
@@ -221,4 +221,4 @@ func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>)
 
 ## <a name="next-steps"></a>Następne kroki
 
-Dowiedz się więcej na temat [przepływów uwierzytelniania i scenariuszy aplikacji](authentication-flows-app-scenarios.md)
+Dowiedz się więcej o [przepływach uwierzytelniania i scenariuszach aplikacji](authentication-flows-app-scenarios.md)

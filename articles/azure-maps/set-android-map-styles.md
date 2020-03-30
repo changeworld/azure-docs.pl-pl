@@ -1,33 +1,33 @@
 ---
-title: Ustawianie stylu mapy przy użyciu Azure Maps Android SDK | Mapy Microsoft Azure
-description: W tym artykule opisano Microsoft Azure mapowanie funkcji związanych z stylem Android SDK.
-author: farah-alyasari
-ms.author: v-faalya
+title: Ustawianie stylu mapy przy użyciu zestawu Azure Maps android SDK| Mapy platformy Microsoft Azure
+description: W tym artykule dowiesz się o funkcjach związanych ze stylem usługi Microsoft Azure Maps dla zestawu SDK systemu Android.
+author: philmea
+ms.author: philmea
 ms.date: 04/26/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 96564a89a2b64203eef913b0d8300f0dafa332c5
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: a4d761abf54682ed0263922d0a118debc9eccf0a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77209583"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80334357"
 ---
-# <a name="set-map-style-using-azure-maps-android-sdk"></a>Ustawianie stylu mapy przy użyciu Azure Maps Android SDK
+# <a name="set-map-style-using-azure-maps-android-sdk"></a>Ustawianie stylu mapy przy użyciu zestawu SDK usługi Azure Maps dla systemu Android
 
-W tym artykule przedstawiono dwa sposoby ustawiania stylów mapy przy użyciu Android SDK Azure Maps. Azure Maps ma sześć różnych stylów map do wyboru. Aby uzyskać więcej informacji na temat obsługiwanych stylów mapy, zobacz [obsługiwane style mapy w Azure Maps](./supported-map-styles.md).
+W tym artykule przedstawiono dwa sposoby ustawiania stylów map przy użyciu zestawu SDK usługi Azure Maps dla systemu Android. Usługa Azure Maps ma do wyboru sześć różnych stylów map. Aby uzyskać więcej informacji na temat obsługiwanych stylów map, zobacz [obsługiwane style map w usłudze Azure Maps](./supported-map-styles.md).
 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby ukończyć proces w tym artykule, należy zainstalować [Azure Maps Android SDK](https://docs.microsoft.com/azure/azure-maps/how-to-use-android-map-control-library) w celu załadowania mapy.
+Aby zakończyć proces w tym artykule, należy zainstalować [zestaw SDK systemu Azure Maps dla systemu Android,](https://docs.microsoft.com/azure/azure-maps/how-to-use-android-map-control-library) aby załadować mapę.
 
 
 ## <a name="set-map-style-in-the-layout"></a>Ustawianie stylu mapy w układzie
 
-Styl mapy można ustawić w pliku układu dla klasy Activity. Edytuj **> układ zasobów > activity_main. XML**, tak aby wyglądał wyglądać następująco:
+Styl mapy można ustawić w pliku układu dla klasy aktywności. Edytuj **układ res > > activity_main.xml**, więc wygląda jak ten poniżej:
 
 ```XML
 <?xml version="1.0" encoding="utf-8"?>
@@ -51,15 +51,15 @@ Styl mapy można ustawić w pliku układu dla klasy Activity. Edytuj **> układ 
 </FrameLayout>
 ```
 
-Powyższy atrybut `mapcontrol_style` ustawia styl mapy do **grayscale_dark**. 
+Powyższy `mapcontrol_style` atrybut ustawia styl mapy na **grayscale_dark**. 
 
 <center>
 
-![stylu grayscale_dark](./media/set-android-map-styles/grayscale-dark.png)</center>
+![styl grayscale_dark](./media/set-android-map-styles/grayscale-dark.png)</center>
 
-## <a name="set-map-style-in-the-activity-class"></a>Ustaw styl mapy w klasie Activity
+## <a name="set-map-style-in-the-activity-class"></a>Ustawianie stylu mapy w klasie aktywności
 
-Styl mapy można ustawić w klasie Activity. Skopiuj poniższy fragment kodu do metody **OnCreate ()** klasy `MainActivity.java`. Ten kod ustawi styl mapy do **satellite_road_labels**.
+Styl mapy można ustawić w klasie aktywności. Skopiuj poniższy fragment kodu do metody **onCreate()** danej `MainActivity.java` klasy. Ten kod ustawi styl mapy na **satellite_road_labels**.
 
 ```Java
 mapControl.onReady(map -> {
@@ -73,4 +73,4 @@ mapControl.onReady(map -> {
 
 <center>
 
-![styl — etykiety satelitarne i](./media/set-android-map-styles/satellite-road-labels.png)</center>
+![style-satelita-road-etykiety](./media/set-android-map-styles/satellite-road-labels.png)</center>

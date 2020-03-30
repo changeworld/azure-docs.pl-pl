@@ -1,88 +1,88 @@
 ---
-title: AZ wiosenn Cloud
-description: Zarządzanie chmurą wiosenną platformy Azure przy użyciu interfejsu wiersza polecenia platformy Azure
+title: az wiosenna chmura
+description: Zarządzanie wiosenną chmurą platformy Azure przy użyciu interfejsu wiersza polecenia platformy Azure
 author: bmitchell287
 ms.service: spring-cloud
 ms.topic: reference
 ms.date: 10/03/2019
 ms.author: brendm
-ms.openlocfilehash: 869a47469f8e0429d3726651c28f5a58acfcb856
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 33d13d2d4fa9003ef041c4c96be83a69ac595a78
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76279043"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80298778"
 ---
-# <a name="az-spring-cloud"></a>AZ Sprężyna — chmura
+# <a name="az-spring-cloud"></a>az wiosna-chmura
 
-## <a name="manage-azure-spring-cloud-using-the-azure-cli"></a>Zarządzanie chmurą wiosenną platformy Azure przy użyciu interfejsu wiersza polecenia platformy Azure
+## <a name="manage-azure-spring-cloud-using-the-azure-cli"></a>Zarządzanie wiosenną chmurą platformy Azure przy użyciu interfejsu wiersza polecenia platformy Azure
 
 >[!Note]
-> Chmura Wiosenna platformy Azure jest obecnie w wersji zapoznawczej.  Te polecenia mogą zostać zmienione lub usunięte w przyszłej wersji.
+> Usługa Azure Spring Cloud jest obecnie w wersji zapoznawczej.  Te polecenia mogą zostać zmienione lub usunięte w przyszłej wersji.
 
-| AZ Sprężyna — chmura |  |
+| az wiosna-chmura |  |
 |------|------:|
-| [AZ Sprężyna — tworzenie w chmurze](#az-spring-cloud-create) | Utwórz wystąpienie chmury wiosennej na platformie Azure. |
-| [AZ Sprężyna — usuwanie w chmurze](#az-spring-cloud-delete) | Usuń wystąpienie chmury wiosennej na platformie Azure. |
-| [AZ Sprężyna-Cloud list](#az-spring-cloud-list) | Wyświetl listę wszystkich wystąpień chmury wiosennej na platformie Azure w danej grupie zasobów, w przeciwnym razie Utwórz listę identyfikatorów subskrypcji. |
-| [AZ Sprężyna — pokaz w chmurze](#az-spring-cloud-show) | Pokaż szczegóły chmury wiosennej platformy Azure. |
+| [az wiosna-chmura tworzyć](#az-spring-cloud-create) | Utwórz wystąpienie usługi Azure Spring Cloud. |
+| [az sprężyna-chmura usunąć](#az-spring-cloud-delete) | Usuń wystąpienie usługi Azure Spring Cloud. |
+| [az lista sprężynowa-chmurowa](#az-spring-cloud-list) | Lista wszystkich wystąpień usługi Azure Spring Cloud w danej grupie zasobów, w przeciwnym razie lista identyfikatorów subskrypcji. |
+| [az wiosenno-chmurowy pokaz](#az-spring-cloud-show) | Pokaż szczegóły dotyczące usługi Azure Spring Cloud. |
 
-| AZ Sprężyna — aplikacja w chmurze | Polecenia do zarządzania aplikacjami w chmurze Azure wiosennej.  |
+| az aplikacja wiosna-chmura | Polecenia do zarządzania aplikacjami w chmurze Azure Spring Cloud.  |
 | ---- | ----: |
-| [AZ Sprężyna — Tworzenie aplikacji w chmurze](#az-spring-cloud-app-create) | Utwórz nową aplikację przy użyciu domyślnego wdrożenia w chmurze Azure wiosennej. |
-| [AZ Sprężyna — usuwanie aplikacji w chmurze](#az-spring-cloud-app-delete) | Usuń aplikację w chmurze Azure wiosennej. |
-| [AZ Sprężyna — wdrażanie aplikacji w chmurze](#az-spring-cloud-app-deploy) | Wdróż z kodu źródłowego lub wstępnie skompilowanego pliku binarnego w aplikacji i zaktualizuj powiązane konfiguracje. |
-| [AZ Wiosenna — lista aplikacji w chmurze](#az-spring-cloud-app-list) | Wyświetl listę wszystkich aplikacji w chmurze Azure wiosennej. |
-| [AZ Sprężyna — ponowne uruchamianie aplikacji w chmurze](#az-spring-cloud-app-restart) | Ponowne uruchamianie wystąpień aplikacji przy użyciu ustawień domyślnych wdrożenia produkcyjnego. |
-| [AZ Wiosenna — skalowanie aplikacji w chmurze](#az-spring-cloud-app-scale) | Ręczne skalowanie aplikacji lub jej wdrożeń. |
-| [AZ wiosenn-Cloud App Set-Deployment](#az-spring-cloud-app-set-deployment) | Ustawianie wdrożenia produkcyjnego aplikacji. |
-| [AZ wiosenn-Cloud App Show](#az-spring-cloud-app-show) | Pokaż szczegóły aplikacji w chmurze Azure wiosennej. |
-| [AZ wiosenn-Cloud App Show-Deploy-log](#az-spring-cloud-app-show-deploy-log) | Pokaż dzienniki kompilacji dla najnowszego wdrożenia ze źródła. Domyślnie wdrożenie produkcyjne. |
-| [Uruchom AZ wiosenn-Cloud App](#az-spring-cloud-app-start) | Uruchom wystąpienia aplikacji przy użyciu ustawień domyślnych wdrożenia produkcyjnego. |
-| [AZ Wiosenna — zatrzymywanie aplikacji w chmurze](#az-spring-cloud-app-stop) | Zatrzymaj wystąpienia aplikacji przy użyciu ustawień domyślnych wdrożenia produkcyjnego. |
-| [AZ Wiosenna — aktualizacja aplikacji w chmurze](#az-spring-cloud-app-update) | Zaktualizuj konfigurację określonej aplikacji. |
+| [az aplikacja wiosna-chmura utworzyć](#az-spring-cloud-app-create) | Utwórz nową aplikację z domyślnym wdrożeniem w chmurze Azure Spring Cloud. |
+| [az aplikacja wiosna-chmura usunąć](#az-spring-cloud-app-delete) | Usuwanie aplikacji w chmurze Azure Spring Cloud. |
+| [az sprężyna chmura aplikacja wdrożyć](#az-spring-cloud-app-deploy) | Wdrażanie z kodu źródłowego lub wstępnie utworzonego pliku binarnego do aplikacji i aktualizowanie powiązanych konfiguracji. |
+| [az wiosenna chmura lista aplikacji](#az-spring-cloud-app-list) | Wyświetl listę wszystkich aplikacji w chmurze Azure Spring Cloud. |
+| [AZ wiosenne ponowne uruchomienie aplikacji w chmurze](#az-spring-cloud-app-restart) | Uruchom ponownie wystąpienia aplikacji przy użyciu domyślnych wdrożeń produkcyjnych. |
+| [skala aplikacji wiosna-chmura az](#az-spring-cloud-app-scale) | Ręcznie skaluj aplikację lub jej wdrożenia. |
+| [az wiosenne wdrażanie aplikacji w chmurze](#az-spring-cloud-app-set-deployment) | Ustaw wdrożenie produkcyjne aplikacji. |
+| [az wiosenno-chmurowe app show](#az-spring-cloud-app-show) | Pokaż szczegóły aplikacji w chmurze Azure Spring Cloud. |
+| [az aplikacja wiosna-chmura show-deploy-log](#az-spring-cloud-app-show-deploy-log) | Pokaż dzienniki kompilacji dla najnowszego wdrożenia ze źródła. Domyślnie do wdrożenia produkcyjnego. |
+| [AZ wiosna-chmura aplikacja start](#az-spring-cloud-app-start) | Uruchom wystąpienia aplikacji przy użyciu domyślnych wdrożeń produkcyjnych. |
+| [az wiosna-chmura app stop](#az-spring-cloud-app-stop) | Zatrzymaj wystąpienia aplikacji przy użyciu domyślnych wdrożeń produkcyjnych. |
+| [az wiosenna aktualizacja aplikacji w chmurze](#az-spring-cloud-app-update) | Zaktualizuj konfigurację określonej aplikacji. |
 
-| AZ Sprężyna — powiązanie aplikacji w chmurze | Polecenia służące do zarządzania powiązaniami przy użyciu usługi Azure Data Services.  Aby te ustawienia zaczęły obowiązywać, należy ponownie uruchomić aplikację. |
+| az sprężynowa aplikacja powiązana | Polecenia do zarządzania powiązaniami za pomocą usług Azure Data Services.  Aplikacja musi zostać ponownie uruchomiona, zanim te ustawienia zajmą się efektem. |
 | --- | ---: |
-| [AZ Wiosenna — lista powiązań aplikacji w chmurze](#az-spring-cloud-app-binding-list) | Wyświetl wszystkie powiązania usługi w aplikacji. |
-| [AZ Sprężyna — Usuwanie powiązania aplikacji w chmurze](#az-spring-cloud-app-binding-remove) | Usuń powiązanie usługi z aplikacji. |
-| [AZ Sprężyna — Pokaż powiązanie aplikacji w chmurze](#az-spring-cloud-app-binding-show) | Pokaż szczegóły powiązania usługi. |
-| [AZ Wiosenna Cosmos — Dodawanie powiązania aplikacji w chmurze](#az-spring-cloud-app-binding-cosmos-add) | Powiąż usługę Azure CosmosDB z aplikacją. |
-| [AZ Wiosenna — Cosmos aktualizacja powiązania aplikacji](#az-spring-cloud-app-binding-cosmos-update) | Zaktualizuj powiązanie usługi Azure CosmosDB. |
-| [AZ wiosna aplikacji w chmurze powiązanie MySQL Add](#az-spring-cloud-app-binding-mysql-add) | Powiąż Azure Database for MySQL z aplikacją. |
-| [AZ wiosna aplikacji w chmurze — aktualizacja MySQL](#az-spring-cloud-app-binding-mysql-update) | Aktualizowanie powiązania usługi Azure Database for MySQL. |
-| [AZ Wiosenna Redis — Dodawanie powiązania aplikacji w chmurze](#az-spring-cloud-app-binding-redis-add) | Powiąż pamięć podręczną platformy Azure dla Redis z aplikacją. |
-| [AZ Wiosenna — Redis aktualizacja powiązania aplikacji](#az-spring-cloud-app-binding-redis-update) | Aktualizowanie powiązania usługi Azure cache for Redis. |
+| [az wiosenna lista powiązań aplikacji w chmurze](#az-spring-cloud-app-binding-list) | Wyświetl listę wszystkich powiązań usługi w aplikacji. |
+| [az sprężyna-chmura wiązanie usunąć](#az-spring-cloud-app-binding-remove) | Usuń powiązanie usługi z aplikacji. |
+| [az wiosenno-chmurowy pokaz oprawy aplikacji](#az-spring-cloud-app-binding-show) | Pokaż szczegóły powiązania usługi. |
+| [az wiosna-chmura aplikacja powiązanie kosmos dodać](#az-spring-cloud-app-binding-cosmos-add) | Powiąż usługę Azure CosmosDB z aplikacją. |
+| [az wiosenna aktualizacja programu windows-cloud](#az-spring-cloud-app-binding-cosmos-update) | Zaktualizuj powiązanie usługi Azure CosmosDB. |
+| [az wiosna-chmura aplikacja powiązanie mysql dodać](#az-spring-cloud-app-binding-mysql-add) | Powiąż usługę Azure Database for MySQL z aplikacją. |
+| [az wiosna-chmura aplikacja powiązanie mysql aktualizacja](#az-spring-cloud-app-binding-mysql-update) | Zaktualizuj powiązanie usługi MySQL usługi Azure Database. |
+| [az wiosna-chmura aplikacja powiązanie redis dodać](#az-spring-cloud-app-binding-redis-add) | Powiąż pamięć podręczną platformy Azure dla redis z aplikacją. |
+| [az wiosenna aktualizacja wiązań aplikacji w chmurze](#az-spring-cloud-app-binding-redis-update) | Zaktualizuj powiązanie usługi Usługi Redis w pamięci podręcznej platformy Azure. |
 
-| AZ Sprężyna — wdrażanie aplikacji w chmurze | Polecenia służące do zarządzania cyklem życia wdrożenia aplikacji w chmurze Azure wiosennej. |
+| wdrożenie aplikacji az wiosna-chmura | Polecenia do zarządzania cyklem wdrażania aplikacji w usłudze Azure Spring Cloud. |
 | --- | ---: |
-| [AZ Sprężyna — wdrażanie aplikacji w chmurze](#az-spring-cloud-app-deployment-create) | Utwórz wdrożenie przejściowe dla aplikacji. |
-| [AZ Sprężyna — usuwanie wdrożenia aplikacji w chmurze](#az-spring-cloud-app-deployment-delete) | Usuń wdrożenie aplikacji. |
-| [AZ Sprężyna — lista wdrożenia aplikacji w chmurze](#az-spring-cloud-app-deployment-list) | Wyświetl listę wszystkich wdrożeń w aplikacji. |
-| [AZ wiosenne — pokazywanie wdrożenia aplikacji w chmurze](#az-spring-cloud-app-deployment-show) | Pokaż szczegóły wdrożenia. |
+| [tworzenie aplikacji w wiosennej chmurze az](#az-spring-cloud-app-deployment-create) | Utwórz wdrożenie przejściowe dla aplikacji. |
+| [az wiosenne wdrażanie aplikacji w chmurze usunięte](#az-spring-cloud-app-deployment-delete) | Usuń wdrożenie aplikacji. |
+| [lista wdrażania aplikacji w wiosennej chmurze az](#az-spring-cloud-app-deployment-list) | Wyświetl listę wszystkich wdrożeń w aplikacji. |
+| [az wiosenno-chmurowy pokaz wdrażania aplikacji](#az-spring-cloud-app-deployment-show) | Pokaż szczegóły wdrożenia. |
 
-| AZ Sprężyna — konfiguracja w chmurze — serwer | Polecenia służące do zarządzania serwerem konfiguracji chmury Azure wiosennej. |
+| az wiosna-chmura config-serwer | Polecenia do zarządzania serwerem konfiguracyjnym w chmurze usługi Azure Spring Spring. |
 | --- | ---: |
-| [AZ Sprężyna — konfiguracja w chmurze — serwer Wyczyść](#az-spring-cloud-config-server-clear) | Wymaż wszystkie ustawienia na serwerze konfiguracji. |
-| [AZ wiosenn-Cloud config-server set](#az-spring-cloud-config-server-set) | Zdefiniuj serwer konfiguracji na podstawie pliku YAML. |
-| [AZ wiosenn-Cloud config-Server show](#az-spring-cloud-config-server-show) | Pokaż konfigurację serwera konfiguracji. |
-| [AZ Sprężyna — konfiguracja serwera Git w chmurze](#az-spring-cloud-config-server-git-set) | Zdefiniuj właściwości git dla serwera konfiguracji.  Poprzednie wartości zostaną nadpisywane. |
-| [AZ sprężyn-Cloud config Server git repozytorium Dodawanie](#az-spring-cloud-config-server-git-repo-add) | Dodaj nową konfigurację repozytorium git do serwera konfiguracji. |
-| [AZ sprężyn-Cloud config Server list repozytorium git](#az-spring-cloud-config-server-git-repo-list) | Wyświetl listę wszystkich konfiguracji repozytorium git dla serwera konfiguracji. |
-| [AZ sprężyn-Cloud config Server repozytorium git Remove](#az-spring-cloud-config-server-git-repo-remove) | Usuń określone repozytorium git z serwera konfiguracji. |
+| [az wiosna-chmura config-serwer wyczyść](#az-spring-cloud-config-server-clear) | Wymaż wszystkie ustawienia na serwerze config. |
+| [az spring-cloud config-server set az spring-cloud config-server set az spring-cloud config-server set az](#az-spring-cloud-config-server-set) | Zdefiniuj serwer konfiguracji z pliku YAML. |
+| [az wiosna-chmura config-serwer pokaż](#az-spring-cloud-config-server-show) | Pokaż konfigurację serwera konfiguracji. |
+| [az wiosna-chmura config serwer git zestaw](#az-spring-cloud-config-server-git-set) | Zdefiniuj właściwości git dla serwera config.  Poprzednie wartości zostaną zastąpione. |
+| [az wiosna-chmura config serwer git repo dodać](#az-spring-cloud-config-server-git-repo-add) | Dodaj nową konfigurę repozytorium git do config servera. |
+| [az wiosna-chmura config serwer git repo lista](#az-spring-cloud-config-server-git-repo-list) | Wymień wszystkie configy repozytorium git dla config servera. |
+| [az wiosna-chmura config serwer git repo usunąć](#az-spring-cloud-config-server-git-repo-remove) | Usuń określone repozytorium git z config server. |
 
-| AZ sprężyn-Cloud test-Endpoint | Polecenia umożliwiające zarządzanie testowaniem punktów końcowych w chmurze Azure wiosennej |
+| az punkt końcowy testu sprężyny i chmury | Polecenia do zarządzania testowaniem punktów końcowych w usłudze Azure Spring Cloud |
 | --- | ---: |
-| [AZ sprężyn-Cloud test-Endpoint Disable](#az-spring-cloud-test-endpoint-disable) | Wyłącz punkt końcowy testu. |
-| [AZ sprężyn-Cloud test-Endpoint Enable](#az-spring-cloud-test-endpoint-enable) | Włącz punkt końcowy testu. |
-| [AZ sprężyn-Cloud test-Endpoint List](#az-spring-cloud-test-endpoint-list) | Wyświetl klucze punktów końcowych testów. |
-| [AZ sprężyn-Cloud test-Endpoint Renew-Key](#az-spring-cloud-test-endpoint-renew-key) | Wygeneruj ponownie klucz test-Endpoint. |
+| [az punkt końcowy testu sprężyny-chmury wyłącza się](#az-spring-cloud-test-endpoint-disable) | Wyłącz punkt końcowy testu. |
+| [az punkt końcowy testu sprężyny i chmury](#az-spring-cloud-test-endpoint-enable) | Włącz punkt końcowy testu. |
+| [az lista punktów końcowych testu sprężyny i chmury](#az-spring-cloud-test-endpoint-list) | Lista kluczy punktu końcowego testu. |
+| [az wiosna-chmura test-punkt końcowy klucz odnawiania](#az-spring-cloud-test-endpoint-renew-key) | Ponowne generowanie klucza punktu końcowego testu. |
 
-## <a name="az-spring-cloud-create"></a>AZ Sprężyna — tworzenie w chmurze
+## <a name="az-spring-cloud-create"></a>az wiosna-chmura tworzyć
 
-Utwórz nową aplikację przy użyciu domyślnego wdrożenia w chmurze Azure wiosennej.
+Utwórz nową aplikację z domyślnym wdrożeniem w chmurze Azure Spring Cloud.
 
-```cli
+```azurecli
 az spring-cloud create  --name -n
                         --resource-group -g
                         --location -l
@@ -91,27 +91,27 @@ az spring-cloud create  --name -n
 
 | Parametry wymagane | |
 | --- | ---: |
-| --Name-n | Nazwa dla tego wystąpienia chmury Azure wiosennej. |
-| --Resource-Group-g | Określa grupę zasobów dla tej aplikacji.  Skonfiguruj domyślną grupę przy użyciu `az configure --defaults group=<name>` |
+| --name -n | Nazwa dla tego wystąpienia usługi Azure Spring Cloud. |
+| --resource-group -g | Określa grupę zasobów dla tej aplikacji.  Konfigurowanie grupy domyślnej przy użyciu`az configure --defaults group=<name>` |
 
 | Parametry opcjonalne | |
 | --- | ---: |
-| --Location-l | Określa lokalizację serwera dla tej aplikacji.  Znajdowanie prawidłowych lokalizacji przy użyciu `az account list-locations` |
-| --No-wait | Nie należy wykonywać długotrwałych operacji.
+| --lokalizacja -l | Określa lokalizację serwera dla tej aplikacji.  Znajdowanie prawidłowych lokalizacji przy użyciu`az account list-locations` |
+| --nie czekaj | Nie należy wykonywać długotrwałych operacji.
 
 ### <a name="examples"></a>Przykłady
 
-Tworzenie nowej chmury Azure wiosny w zachodnim regionie
+Tworzenie nowej chmury Azure Spring Cloud w WestUS
 
-```cli
+```azurecli
 az spring-cloud create -n MyService -g MyResourceGroup -l westus
 ```
 
-## <a name="az-spring-cloud-delete"></a>AZ Sprężyna — usuwanie w chmurze
+## <a name="az-spring-cloud-delete"></a>az sprężyna-chmura usunąć
 
-Usuń wystąpienie chmury wiosennej na platformie Azure.
+Usuń wystąpienie usługi Azure Spring Cloud.
 
-```cli
+```azurecli
 az spring cloud --name -n
                 --resource-group -g
                 --no-wait
@@ -119,52 +119,52 @@ az spring cloud --name -n
 
 | Parametry wymagane | |
 | --- | ---: |
-| --Name-n | Nazwa wystąpienia chmury wiosennej platformy Azure do usunięcia. |
-| --Resource-Group-g | Nazwa grupy zasobów, do której należy chmura sprężynowa platformy Azure. |
+| --name -n | Nazwa wystąpienia usługi Azure Spring Cloud do usunięcia. |
+| --resource-group -g | Nazwa grupy zasobów, do której należy usługa Azure Spring Cloud. |
 
 | Parametry opcjonalne | |
 | --- | ---: |
-| -nie — czekaj | Nie czekaj na zakończenie długotrwałych operacji. |
+| -no-wait | Nie czekaj na zakończenie długotrwałych operacji. |
 
 ### <a name="example"></a>Przykład
 
-Usuń wystąpienie chmury wiosennej platformy Azure o nazwie "Moja usługa" z elementu "Moja resourceName".
+Usuń wystąpienie usługi Azure Spring Cloud o nazwie "MyService" z "MyResourceGroup".
 
-```cli
+```azurecli
 az spring-cloud delete -n MyService -g MyResourceGroup
 ```
 
-## <a name="az-spring-cloud-list"></a>AZ Sprężyna-Cloud list
+## <a name="az-spring-cloud-list"></a>az lista sprężynowa-chmurowa
 
-Wyświetl listę wszystkich wystąpień chmury wiosennej platformy Azure skojarzonych z daną grupą zasobów. Jeśli grupa zasobów nie zostanie określona, należy podać identyfikator subskrypcji.
+Wyświetl listę wszystkich wystąpień usługi Azure Spring Cloud skojarzonych z daną grupą zasobów. Jeśli nie określono żadnej grupy zasobów, wyświetl identyfikatory subskrypcji.
 
-```cli
+```azurecli
 az spring-cloud list --resource-group -g
 ```
 
 | Parametry wymagane | |
 | --- | ---: |
-| --Resource-Group-g | Nazwa grupy zasobów. |
+| --resource-group -g | Nazwa grupy zasobów. |
 
-## <a name="az-spring-cloud-show"></a>AZ Sprężyna — pokaz w chmurze
+## <a name="az-spring-cloud-show"></a>az wiosenno-chmurowy pokaz
 
-Pokaż szczegóły określonego wystąpienia chmury Azure wiosennej.
+Pokaż szczegóły dla określonego wystąpienia usługi Azure Spring Cloud.
 
-```cli
+```azurecli
 az spring-cloud show --name -n
                      -- resource-group -g
 ```
 
 | Parametry wymagane | |
 | --- | ---: |
-| --Name-n | Nazwa wystąpienia chmury wiosennej na platformie Azure. |
-| --Resource-Group-g | Nazwa grupy zasobów, do której należy wystąpienie chmury Azure wiosennej.
+| --name -n | Nazwa wystąpienia usługi Azure Spring Cloud. |
+| --resource-group -g | Nazwa grupy zasobów, do której należy wystąpienie usługi Azure Spring Cloud.
 
-## <a name="az-spring-cloud-app-create"></a>AZ Sprężyna — Tworzenie aplikacji w chmurze
+## <a name="az-spring-cloud-app-create"></a>az aplikacja wiosna-chmura utworzyć
 
-Utwórz nową aplikację w chmurze Azure wiosennej.
+Utwórz nową aplikację w chmurze Azure Spring Cloud.
 
-```cli
+```azurecli
 az spring-cloud app create --name -n
                             --resource-group -g
                             --service -s
@@ -177,37 +177,37 @@ az spring-cloud app create --name -n
 
 | Parametry wymagane | |
 | --- | ---: |
-| --Name-n | Nazwa aplikacji. |
-| --Resource-Group-g | Nazwa grupy zasobów.  Grupę domyślną można skonfigurować przy użyciu `az configure --defaults group=<name>`. |
-| --Service-s | Nazwa chmury wiosennej platformy Azure.  Usługę domyślną można skonfigurować przy użyciu `az configure --defaults spring-cloud=<name>`. |
+| --name -n | Nazwa aplikacji. |
+| --resource-group -g | Nazwa grupy zasobów.  Grupę domyślną można `az configure --defaults group=<name>`skonfigurować za pomocą programu . |
+| --service -s | Nazwa chmury Azure Spring Cloud.  Usługę domyślną można skonfigurować za pomocą programu `az configure --defaults spring-cloud=<name>`. |
 
 | Parametry opcjonalne | |
 | --- | ---: |
-| --CPU | Liczba rdzeni wirtualnych na wystąpienie.  Wartość domyślna: 1. |
-| --Enable-persistent-Storage | Wartość logiczna.  W przypadku wartości true program instaluje dysk 50 GB z domyślną ścieżką. |
-| --instance-Count | Liczba wystąpień.  Wartość domyślna: 1. |
-| --is-Public | Wartość logiczna.  W przypadku wartości true przypisuje domenę publiczną. |
-| --pamięć | Liczba GB pamięci na wystąpienie.  Wartość domyślna: 1. |
+| --cpu | Liczba rdzeni wirtualnych na wystąpienie.  Domyślnie: 1. |
+| --enable-persistent-storage | Wartość logiczna.  Jeśli true, instaluje dysk 50GB ze ścieżką domyślną. |
+| --liczba wystąpień | Liczba wystąpień.  Domyślnie: 1. |
+| --jest publiczny | Wartość logiczna.  Jeśli true, przypisuje domenę publiczną. |
+| --memory | Liczba GB pamięci na wystąpienie.  Domyślnie: 1. |
 
 ### <a name="examples"></a>Przykłady
 
-Utwórz aplikację z domyślną konfiguracją.
+Utwórz aplikację z konfiguracją domyślną.
 
-```cli
+```azurecli
 az spring-cloud app create -n MyApp -s MyService
 ```
 
-Utwórz publicznie dostępną aplikację z 3 wystąpieniami.  Każde wystąpienie ma 3 GB pamięci i 2 rdzenie procesora CPU.
+Utwórz publicznie dostępną aplikację z 3 wystąpieniami.  Każde wystąpienie ma 3 GB pamięci i 2 rdzenie procesora.
 
-```cli
+```azurecli
 az spring-cloud app create -n MyApp -s MyService --is-public true --cpu 2 --memory 3
 ```
 
-## <a name="az-spring-cloud-app-delete"></a>AZ Sprężyna — usuwanie aplikacji w chmurze
+## <a name="az-spring-cloud-app-delete"></a>az aplikacja wiosna-chmura usunąć
 
-Usuwa aplikację w chmurze Azure wiosennej.
+Usuwa aplikację w chmurze Azure Spring Cloud.
 
-```cli
+```azurecli
 az spring cloud app delete  --name -n
                             --resource-group -g
                             --service -s
@@ -215,15 +215,15 @@ az spring cloud app delete  --name -n
 
 | Parametry wymagane | |
 | --- | ---: |
-| --Name-n | Nazwa aplikacji. |
-| --Resource-Group-g | Nazwa grupy zasobów.  Grupę domyślną można skonfigurować przy użyciu `az configure --defaults group=<name>`. |
-| --Service-s | Nazwa chmury wiosennej platformy Azure.  Usługę domyślną można skonfigurować przy użyciu `az configure --defaults spring-cloud=<name>`. |
+| --name -n | Nazwa aplikacji. |
+| --resource-group -g | Nazwa grupy zasobów.  Grupę domyślną można `az configure --defaults group=<name>`skonfigurować za pomocą programu . |
+| --service -s | Nazwa chmury Azure Spring Cloud.  Usługę domyślną można skonfigurować za pomocą programu `az configure --defaults spring-cloud=<name>`. |
 
-## <a name="az-spring-cloud-app-deploy"></a>AZ Sprężyna — wdrażanie aplikacji w chmurze
+## <a name="az-spring-cloud-app-deploy"></a>az sprężyna chmura aplikacja wdrożyć
 
-Wdróż aplikację w chmurze Azure wiosennej na podstawie kodu źródłowego lub wstępnie skompilowanego pliku binarnego, a następnie zaktualizuj powiązane konfiguracje.
+Wdrażanie aplikacji w chmurze Azure Spring Cloud z kodu źródłowego lub wstępnie utworzonego pliku binarnego i aktualizowanie powiązanych konfiguracji.
 
-```cli
+```azurecli
 az spring cloud app deploy  --name -n
                             --resource-group -g
                             --service -s
@@ -242,63 +242,63 @@ az spring cloud app deploy  --name -n
 
 | Parametry wymagane | |
 | --- | ---: |
-| --Name-n | Nazwa aplikacji. |
-| --Resource-Group-g | Nazwa grupy zasobów.  Grupę domyślną można skonfigurować przy użyciu `az configure --defaults group=<name>`. |
-| --Service-s | Nazwa chmury wiosennej platformy Azure.  Usługę domyślną można skonfigurować przy użyciu `az configure --defaults spring-cloud=<name>`. |
+| --name -n | Nazwa aplikacji. |
+| --resource-group -g | Nazwa grupy zasobów.  Grupę domyślną można `az configure --defaults group=<name>`skonfigurować za pomocą programu . |
+| --service -s | Nazwa chmury Azure Spring Cloud.  Usługę domyślną można skonfigurować za pomocą programu `az configure --defaults spring-cloud=<name>`. |
 
 | Parametry opcjonalne | |
 | --- | ---: |
-| --CPU | Liczba wirtualnych rdzeni CPI na wystąpienie. |
-| --Deployment-d | Nazwa istniejącego wdrożenia aplikacji.  Jeśli nie zostanie określony, wartością domyślną jest wdrożenie produkcyjne. |
-| --ENV | Zmienne środowiskowe rozdzielane spacjami w formacie "klucz [= wartość]". |
-| --instance-Count | Liczba wystąpień. |
-| --jar-Path | Jeśli jest podany, wdróż plik JAR na podstawie danej ścieżki. W przeciwnym razie Wdróż bieżący folder jako element pułapki. |
-| --JVM-Options | Ciąg zawierający opcje JVM.  Użyj wyrażenia "=" zamiast "", aby uniknąć błędów analizy powłoki. Np. `--jvm-options='-Xms1024m -Xmx2048m`. |
-| --pamięć | Liczba GB pamięci na wystąpienie. |
-| --No-wait | Nie czekaj na zakończenie długotrwałych operacji. |
-| --Runtime-Version | Wersja języka wykonawczego używanego w aplikacji.  Dozwolone wartości: `Java_11`, `Java_8`. |
-| --Target-module | Moduł podrzędny do wdrożenia.  Wymagane w przypadku kompilowania wielu pakietów jar z kodu źródłowego. |
-| --Version | Wersja wdrożenia.  Bez zmian, jeśli nie została ustawiona. |
+| --cpu | Liczba wirtualnych rdzeni CPI na wystąpienie. |
+| --wdrożenie -d | Nazwa istniejącego wdrożenia aplikacji.  Domyślnie wdrożenia produkcyjnego, jeśli nie określono. |
+| --env | Zmienne środowiskowe oddzielone spacją w formacie "key[=value]". |
+| --liczba wystąpień | Liczba wystąpień. |
+| --jar-ścieżka | Jeśli pod warunkiem, wdrożyć jar z danej ścieżki. W przeciwnym razie wdrożyć bieżący folder jako tar. |
+| --jvm-opcje | Ciąg zawierający opcje JVM.  Użyj '=' zamiast ' ' , aby uniknąć błędów analizy powłoki. `--jvm-options='-Xms1024m -Xmx2048m`Np. |
+| --memory | Liczba GB pamięci na wystąpienie. |
+| --nie czekaj | Nie czekaj na zakończenie długotrwałych operacji. |
+| --runtime-version | Wersja środowiska wykonawczego języka używanego w aplikacji.  Dozwolone wartości: `Java_11` `Java_8`, . |
+| --target-module | Moduł podrzędny do wdrożenia.  Wymagane, gdy wiele pakietów jar są zbudowane z kodu źródłowego. |
+| --wersja | Wersja wdrażania.  Bez zmian, jeśli nie jest ustawiona. |
 
 ### <a name="examples"></a>Przykłady
 
-Wdróż kod źródłowy w aplikacji. Spowoduje to spakowanie bieżącego katalogu, skompilowanie pliku binarnego za pomocą usługi kompilacji Pivoting, a następnie wdrożenie go w aplikacji.
+Wdrażanie kodu źródłowego w aplikacji. Spowoduje to spakowanie bieżącego katalogu, skompilowanie pliku binarnego przy użyciu usługi kompilacji kluczykowej, a następnie wdrożenie w aplikacji.
 
-```cli
+```azurecli
 az spring-cloud app deploy -n MyApp -s MyService
 ```
 
-Wdróż wstępnie utworzony plik JAR w aplikacji przy użyciu opcji JVM i zmiennych środowiskowych.
+Wdrażanie wstępnie utworzonego słoika w aplikacji przy użyciu opcji JVM i zmiennych środowiskowych.
 
-```cli
+```azurecli
 az spring-cloud app deploy -n MyApp -s MyService --jar-path app.jar --jvm-options="-XX:+UseG1GC -XX:+UseStringDeduplication" --env foo=bar
 ```
 
-Wdróż kod źródłowy w określonym wdrożeniu aplikacji.
+Wdrażanie kodu źródłowego do określonego wdrożenia aplikacji.
 
-```cli
+```azurecli
 az spring-cloud app deploy -n MyApp -s Myspring-cloud -d green-deployment
 ```
 
-## <a name="az-spring-cloud-app-list"></a>AZ Wiosenna — lista aplikacji w chmurze
+## <a name="az-spring-cloud-app-list"></a>az wiosenna chmura lista aplikacji
 
-Wyświetl listę wszystkich aplikacji w wystąpieniu usługi Azure wiosny Cloud.
+Wyświetl listę wszystkich aplikacji w wystąpieniu usługi Azure Spring Cloud.
 
-```cli
+```azurecli
 az spring-cloud app list --resource-group -g
                          --service -s
 ```
 
 |Parametry wymagane | |
 | --- | ---: |
-| --Resource-Group-g | Nazwa grupy zasobów.  Grupę domyślną można skonfigurować przy użyciu `az configure --defaults group=<name>`. |
-| --Service-s | Nazwa chmury wiosennej platformy Azure.  Usługę domyślną można skonfigurować przy użyciu `az configure --defaults spring-cloud=<name>`. |
+| --resource-group -g | Nazwa grupy zasobów.  Grupę domyślną można `az configure --defaults group=<name>`skonfigurować za pomocą programu . |
+| --service -s | Nazwa chmury Azure Spring Cloud.  Usługę domyślną można skonfigurować za pomocą programu `az configure --defaults spring-cloud=<name>`. |
 
-## <a name="az-spring-cloud-app-restart"></a>AZ Sprężyna — ponowne uruchamianie aplikacji w chmurze
+## <a name="az-spring-cloud-app-restart"></a>AZ wiosenne ponowne uruchomienie aplikacji w chmurze
 
-Ponowne uruchamianie wystąpień aplikacji.  Wartość domyślna to wdrożenie produkcyjne.
+Uruchom ponownie wystąpienia aplikacji.  Domyślnie do wdrożenia produkcyjnego.
 
-```cli
+```azurecli
 az spring-cloud app restart --name -n
                             --resource-group -g
                             --service -s
@@ -308,20 +308,20 @@ az spring-cloud app restart --name -n
 
 | Parametry wymagane | |
 | --- | ---: |
-| --Name-n | Nazwa aplikacji. |
-| --Resource-Group-g | Nazwa grupy zasobów.  Grupę domyślną można skonfigurować przy użyciu `az configure --defaults group=<name>`. |
-| --Service-s | Nazwa chmury wiosennej platformy Azure.  Usługę domyślną można skonfigurować przy użyciu `az configure --defaults spring-cloud=<name>`. |
+| --name -n | Nazwa aplikacji. |
+| --resource-group -g | Nazwa grupy zasobów.  Grupę domyślną można `az configure --defaults group=<name>`skonfigurować za pomocą programu . |
+| --service -s | Nazwa chmury Azure Spring Cloud.  Usługę domyślną można skonfigurować za pomocą programu `az configure --defaults spring-cloud=<name>`. |
 
 | Parametry opcjonalne | |
 | --- | ---: |
-| --Deployment-d | Nazwa istniejącego wdrożenia aplikacji.  Jeśli nie zostanie określony, wartością domyślną jest wdrożenie produkcyjne. |
-| --No-wait | Nie czekaj na zakończenie długotrwałych operacji. |
+| --wdrożenie -d | Nazwa istniejącego wdrożenia aplikacji.  Domyślnie wdrożenia produkcyjnego, jeśli nie określono. |
+| --nie czekaj | Nie czekaj na zakończenie długotrwałych operacji. |
 
-## <a name="az-spring-cloud-app-scale"></a>AZ Wiosenna — skalowanie aplikacji w chmurze
+## <a name="az-spring-cloud-app-scale"></a>skala aplikacji wiosna-chmura az
 
-Ręczne skalowanie aplikacji lub jej wdrożeń.
+Ręcznie skaluj aplikację lub jej wdrożenia.
 
-```cli
+```azurecli
 az spring-cloud app scale --name -n
                           --resource-group -g
                           --service -s
@@ -334,37 +334,37 @@ az spring-cloud app scale --name -n
 
 | Parametry wymagane | |
 | --- | ---: |
-| --Name-n | Nazwa aplikacji. |
-| --Resource-Group-g | Nazwa grupy zasobów.  Grupę domyślną można skonfigurować przy użyciu `az configure --defaults group=<name>`. |
-| --Service-s | Nazwa chmury wiosennej platformy Azure.  Usługę domyślną można skonfigurować przy użyciu `az configure --defaults spring-cloud=<name>`. |
+| --name -n | Nazwa aplikacji. |
+| --resource-group -g | Nazwa grupy zasobów.  Grupę domyślną można `az configure --defaults group=<name>`skonfigurować za pomocą programu . |
+| --service -s | Nazwa chmury Azure Spring Cloud.  Usługę domyślną można skonfigurować za pomocą programu `az configure --defaults spring-cloud=<name>`. |
 
 | Parametry opcjonalne | |
 | --- | ---: |
-| --CPU | Liczba rdzeni wirtualnych procesora CPU na wystąpienie aplikacji. |
-| --Deployment-d | Nazwa istniejącego wdrożenia aplikacji.  Jeśli nie zostanie określony, wartością domyślną jest wdrożenie produkcyjne. |
-| --instance-Count | Liczba wystąpień tej aplikacji. |
-| --pamięć | Liczba GB pamięci na wystąpienie aplikacji. |
-| --No-wait | Nie czekaj na zakończenie długotrwałych operacji. |
+| --cpu | Liczba wirtualnych rdzeni procesora CPU na wystąpienie aplikacji. |
+| --wdrożenie -d | Nazwa istniejącego wdrożenia aplikacji.  Domyślnie wdrożenia produkcyjnego, jeśli nie określono. |
+| --liczba wystąpień | Liczba wystąpień tej aplikacji. |
+| --memory | Liczba GB pamięci na wystąpienie aplikacji. |
+| --nie czekaj | Nie czekaj na zakończenie długotrwałych operacji. |
 
 ### <a name="examples"></a>Przykłady
 
-Skaluj w górę aplikację do 4 rdzeni procesora i 8 GB pamięci na wystąpienie.
+Skalowanie aplikacji do 4 rdzeni procesora CPU i 8 GB pamięci na wystąpienie.
 
-```cli
+```azurecli
 az spring-cloud app scale -n MyApp -s MyService --cpu 3 --memory 8
 ```
 
-Skalowanie wdrożenia aplikacji do 5 wystąpień.
+Skalowanie w poziomie wdrożenia aplikacji do 5 wystąpień.
 
-```cli
+```azurecli
 az spring-cloud app scale -n MyApp -s MyService -d green-deployment --instance-count 5
 ```
 
-## <a name="az-spring-cloud-app-set-deployment"></a>AZ wiosenn-Cloud App Set-Deployment
+## <a name="az-spring-cloud-app-set-deployment"></a>az wiosenne wdrażanie aplikacji w chmurze
 
 Ustaw opcje konfiguracji dla wdrożenia produkcyjnego aplikacji.
 
-```cli
+```azurecli
 az spring-cloud app set-deployment --deployment -d
                                    --name -n
                                    --resource-group -g
@@ -374,28 +374,28 @@ az spring-cloud app set-deployment --deployment -d
 
 | Parametry wymagane | |
 | --- | ---: |
-| --Deployment-d | Nazwa istniejącego wdrożenia aplikacji. |
-| --Name-n | Nazwa aplikacji. |
-| --Resource-Group-g | Nazwa grupy zasobów.  Grupę domyślną można skonfigurować przy użyciu `az configure --defaults group=<name>`. |
-| --Service-s | Nazwa chmury wiosennej platformy Azure.  Usługę domyślną można skonfigurować przy użyciu `az configure --defaults spring-cloud=<name>`. |
+| --wdrożenie -d | Nazwa istniejącego wdrożenia aplikacji. |
+| --name -n | Nazwa aplikacji. |
+| --resource-group -g | Nazwa grupy zasobów.  Grupę domyślną można `az configure --defaults group=<name>`skonfigurować za pomocą programu . |
+| --service -s | Nazwa chmury Azure Spring Cloud.  Usługę domyślną można skonfigurować za pomocą programu `az configure --defaults spring-cloud=<name>`. |
 
 | Parametry opcjonalne | |
 | --- | ---: |
-| --No-wait | Nie czekaj na zakończenie długotrwałych operacji. |
+| --nie czekaj | Nie czekaj na zakończenie długotrwałych operacji. |
 
 ### <a name="examples"></a>Przykłady
 
-Zamień wdrożenie przejściowe aplikacji do środowiska produkcyjnego.
+Zamień przejściowe wdrożenie aplikacji na produkcyjne.
 
-```cli
+```azurecli
 az spring-cloud app set-deployment -d green-deployment -n MyApp -s MyService
 ```
 
-## <a name="az-spring-cloud-app-show"></a>AZ wiosenn-Cloud App Show
+## <a name="az-spring-cloud-app-show"></a>az wiosenno-chmurowe app show
 
-Pokaż szczegóły aplikacji w chmurze Azure wiosennej.
+Pokaż szczegóły aplikacji w chmurze Azure Spring Cloud.
 
-```cli
+```azurecli
 az spring-cloud app show --name -n
                          --resource-group -g
                          --service -s
@@ -403,15 +403,15 @@ az spring-cloud app show --name -n
 
 | Parametry wymagane | |
 | --- | ---: |
-| --Name-n | Nazwa aplikacji. |
-| --Resource-Group-g | Nazwa grupy zasobów.  Grupę domyślną można skonfigurować przy użyciu `az configure --defaults group=<name>`. |
-| --Service-s | Nazwa chmury wiosennej platformy Azure.  Usługę domyślną można skonfigurować przy użyciu `az configure --defaults spring-cloud=<name>`. |
+| --name -n | Nazwa aplikacji. |
+| --resource-group -g | Nazwa grupy zasobów.  Grupę domyślną można `az configure --defaults group=<name>`skonfigurować za pomocą programu . |
+| --service -s | Nazwa chmury Azure Spring Cloud.  Usługę domyślną można skonfigurować za pomocą programu `az configure --defaults spring-cloud=<name>`. |
 
-## <a name="az-spring-cloud-app-show-deploy-log"></a>AZ wiosenn-Cloud App Show-Deploy-log
+## <a name="az-spring-cloud-app-show-deploy-log"></a>az aplikacja wiosna-chmura show-deploy-log
 
-Pokaż dziennik kompilacji ostatniego wdrożenia z kodu źródłowego.  Wartość domyślna to środowisko produkcyjne.
+Pokaż dziennik kompilacji ostatniego wdrożenia z kodu źródłowego.  Domyślnie środowisko produkcyjne.
 
-```cli
+```azurecli
 az spring-cloud app show-deploy-log --name -n
                                     --resource-group -g
                                     --service -s
@@ -420,19 +420,19 @@ az spring-cloud app show-deploy-log --name -n
 
 | Parametry wymagane | |
 | --- | ---: |
-| --Name-n | Nazwa aplikacji. |
-| --Resource-Group-g | Nazwa grupy zasobów.  Grupę domyślną można skonfigurować przy użyciu `az configure --defaults group=<name>`. |
-| --Service-s | Nazwa chmury wiosennej platformy Azure.  Usługę domyślną można skonfigurować przy użyciu `az configure --defaults spring-cloud=<name>`. |
+| --name -n | Nazwa aplikacji. |
+| --resource-group -g | Nazwa grupy zasobów.  Grupę domyślną można `az configure --defaults group=<name>`skonfigurować za pomocą programu . |
+| --service -s | Nazwa chmury Azure Spring Cloud.  Usługę domyślną można skonfigurować za pomocą programu `az configure --defaults spring-cloud=<name>`. |
 
 | Parametry opcjonalne | |
 | --- | ---: |
-| --Deployment-d | Nazwa istniejącego wdrożenia aplikacji.  Wartość domyślna to środowisko produkcyjne. |
+| --wdrożenie -d | Nazwa istniejącego wdrożenia aplikacji.  Domyślnie jest to środowisko produkcyjne. |
 
-## <a name="az-spring-cloud-app-start"></a>Uruchom AZ wiosenn-Cloud App
+## <a name="az-spring-cloud-app-start"></a>AZ wiosna-chmura aplikacja start
 
-Uruchamia wystąpienia aplikacji.  Wartość domyślna to środowisko produkcyjne.
+Uruchamia wystąpienia aplikacji.  Domyślnie środowisko produkcyjne.
 
-```cli
+```azurecli
 az spring-cloud app start --name -n
                           --resource-group -g
                           --service -s
@@ -442,20 +442,20 @@ az spring-cloud app start --name -n
 
 | Parametry wymagane | |
 | --- | ---: |
-| --Name-n | Nazwa aplikacji. |
-| --Resource-Group-g | Nazwa grupy zasobów.  Grupę domyślną można skonfigurować przy użyciu `az configure --defaults group=<name>`. |
-| --Service-s | Nazwa chmury wiosennej platformy Azure.  Usługę domyślną można skonfigurować przy użyciu `az configure --defaults spring-cloud=<name>`. |
+| --name -n | Nazwa aplikacji. |
+| --resource-group -g | Nazwa grupy zasobów.  Grupę domyślną można `az configure --defaults group=<name>`skonfigurować za pomocą programu . |
+| --service -s | Nazwa chmury Azure Spring Cloud.  Usługę domyślną można skonfigurować za pomocą programu `az configure --defaults spring-cloud=<name>`. |
 
 | Parametry opcjonalne | |
 | --- | ---: |
-| --Deployment-d | Nazwa istniejącego wdrożenia aplikacji.  Wartość domyślna to środowisko produkcyjne. |
-| --No-wait | Nie czekaj na zakończenie długotrwałych operacji. |
+| --wdrożenie -d | Nazwa istniejącego wdrożenia aplikacji.  Domyślnie jest to środowisko produkcyjne. |
+| --nie czekaj | Nie czekaj na zakończenie długotrwałych operacji. |
 
-## <a name="az-spring-cloud-app-stop"></a>AZ Wiosenna — zatrzymywanie aplikacji w chmurze
+## <a name="az-spring-cloud-app-stop"></a>az wiosna-chmura app stop
 
-Zatrzymaj wystąpienia aplikacji.  Wartość domyślna to środowisko produkcyjne.
+Zatrzymaj wystąpienia aplikacji.  Domyślnie jest to środowisko produkcyjne.
 
-```cli
+```azurecli
 az spring-cloud app stop --name -n
                          --resource-group -g
                          --service -s
@@ -465,20 +465,20 @@ az spring-cloud app stop --name -n
 
 | Parametry wymagane | |
 | --- | ---: |
-| --Name-n | Nazwa aplikacji. |
-| --Resource-Group-g | Nazwa grupy zasobów.  Grupę domyślną można skonfigurować przy użyciu `az configure --defaults group=<name>`. |
-| --Service-s | Nazwa chmury wiosennej platformy Azure.  Usługę domyślną można skonfigurować przy użyciu `az configure --defaults spring-cloud=<name>`. |
+| --name -n | Nazwa aplikacji. |
+| --resource-group -g | Nazwa grupy zasobów.  Grupę domyślną można `az configure --defaults group=<name>`skonfigurować za pomocą programu . |
+| --service -s | Nazwa chmury Azure Spring Cloud.  Usługę domyślną można skonfigurować za pomocą programu `az configure --defaults spring-cloud=<name>`. |
 
 | Parametry opcjonalne | |
 | --- | ---: |
-| --Deployment-d | Nazwa istniejącego wdrożenia aplikacji.  Wartość domyślna to środowisko produkcyjne. |
-| --No-wait | Nie czekaj na zakończenie długotrwałych operacji. |
+| --wdrożenie -d | Nazwa istniejącego wdrożenia aplikacji.  Domyślnie jest to środowisko produkcyjne. |
+| --nie czekaj | Nie czekaj na zakończenie długotrwałych operacji. |
 
-## <a name="az-spring-cloud-app-update"></a>AZ Wiosenna — aktualizacja aplikacji w chmurze
+## <a name="az-spring-cloud-app-update"></a>az wiosenna aktualizacja aplikacji w chmurze
 
-Aktualizowanie przechowywanej konfiguracji aplikacji.
+Zaktualizuj zapisaną konfigurację aplikacji.
 
-```cli
+```azurecli
 az spring-cloud app update --name -n
                            --resource-group -g
                            --service -s
@@ -493,33 +493,33 @@ az spring-cloud app update --name -n
 
 | Parametry wymagane | |
 | --- | ---: |
-| --Name-n | Nazwa aplikacji. |
-| --Resource-Group-g | Nazwa grupy zasobów.  Grupę domyślną można skonfigurować przy użyciu `az configure --defaults group=<name>`. |
-| --Service-s | Nazwa chmury wiosennej platformy Azure.  Usługę domyślną można skonfigurować przy użyciu `az configure --defaults spring-cloud=<name>`. |
+| --name -n | Nazwa aplikacji. |
+| --resource-group -g | Nazwa grupy zasobów.  Grupę domyślną można `az configure --defaults group=<name>`skonfigurować za pomocą programu . |
+| --service -s | Nazwa chmury Azure Spring Cloud.  Usługę domyślną można skonfigurować za pomocą programu `az configure --defaults spring-cloud=<name>`. |
 
 | Parametry opcjonalne | |
 | --- | ---: |
-| --Deployment-d | Nazwa istniejącego wdrożenia aplikacji.  Wartość domyślna to środowisko produkcyjne. |
-| --Enable-persistent-Storage | Typu.  W przypadku wartości true Zainstaluj dysk 50 GB z domyślną ścieżką. |
-| --ENV | Zmienne środowiskowe rozdzielane spacjami w formacie "klucz [= wartość]". |
-| --is-Public | Typu.  W przypadku wartości true Przypisz domenę publiczną do aplikacji. |
-| --JVM-Options | Ciąg zawierający opcje JVM.  Użyj wyrażenia "=" zamiast "", aby uniknąć błędów analizy powłoki. Np. `--jvm-options='-Xms1024m -Xmx2048m`. |
-| --No-wait | Nie czekaj na zakończenie długotrwałych operacji. |
-| --Runtime-Version | Wersja języka wykonawczego używanego w aplikacji.  Dozwolone wartości: `Java_11`, `Java_8`. |
+| --wdrożenie -d | Nazwa istniejącego wdrożenia aplikacji.  Domyślnie jest to środowisko produkcyjne. |
+| --enable-persistent-storage | Boolean.  Jeśli true, zainstaluj dysk 50GB ze ścieżką domyślną. |
+| --env | Zmienne środowiskowe oddzielone spacją w formacie "key[=value]". |
+| --jest publiczny | Boolean.  Jeśli true, przypisz domenę publiczną do aplikacji. |
+| --jvm-opcje | Ciąg zawierający opcje JVM.  Użyj '=' zamiast ' ' , aby uniknąć błędów analizy powłoki. `--jvm-options='-Xms1024m -Xmx2048m`Np. |
+| --nie czekaj | Nie czekaj na zakończenie długotrwałych operacji. |
+| --runtime-version | Wersja środowiska wykonawczego języka używanego w aplikacji.  Dozwolone wartości: `Java_11` `Java_8`, . |
 
 ### <a name="example"></a>Przykład
 
 Dodaj zmienną środowiskową dla aplikacji.
 
-```cli
+```azurecli
 az spring-cloud app update --env foo=bar
 ```
 
-## <a name="az-spring-cloud-app-binding-list"></a>AZ Wiosenna — lista powiązań aplikacji w chmurze
+## <a name="az-spring-cloud-app-binding-list"></a>az wiosenna lista powiązań aplikacji w chmurze
 
-Wyświetl wszystkie powiązania usługi w aplikacji.
+Wyświetl listę wszystkich powiązań usługi w aplikacji.
 
-```cli
+```azurecli
 az spring-cloud app binding list --app
                                  --resource-group -g
                                  --service -s
@@ -527,15 +527,15 @@ az spring-cloud app binding list --app
 
 | Parametry wymagane | |
 | --- | ---: |
-| --Aplikacja | Nazwa aplikacji. |
-| --Resource-Group-g | Nazwa grupy zasobów.  Grupę domyślną można skonfigurować przy użyciu `az configure --defaults group=<name>`. |
-| --Service-s | Nazwa chmury wiosennej platformy Azure.  Usługę domyślną można skonfigurować przy użyciu `az configure --defaults spring-cloud=<name>`. |
+| --aplikacja | Nazwa aplikacji. |
+| --resource-group -g | Nazwa grupy zasobów.  Grupę domyślną można `az configure --defaults group=<name>`skonfigurować za pomocą programu . |
+| --service -s | Nazwa chmury Azure Spring Cloud.  Usługę domyślną można skonfigurować za pomocą programu `az configure --defaults spring-cloud=<name>`. |
 
-## <a name="az-spring-cloud-app-binding-remove"></a>AZ Sprężyna — Usuwanie powiązania aplikacji w chmurze
+## <a name="az-spring-cloud-app-binding-remove"></a>az sprężyna-chmura wiązanie usunąć
 
 Usuń powiązanie usługi z aplikacji.
 
-```cli
+```azurecli
 az spring-cloud app binding list --app
                                  --name -n
                                  --resource-group -g
@@ -544,16 +544,16 @@ az spring-cloud app binding list --app
 
 | Parametry wymagane | |
 | --- | ---: |
-| --Aplikacja | Nazwa aplikacji. |
-| --Name | Nazwa powiązania usługi, które ma zostać usunięte. |
-| --Resource-Group-g | Nazwa grupy zasobów.  Grupę domyślną można skonfigurować przy użyciu `az configure --defaults group=<name>`. |
-| --Service-s | Nazwa chmury wiosennej platformy Azure.  Usługę domyślną można skonfigurować przy użyciu `az configure --defaults spring-cloud=<name>`. |
+| --aplikacja | Nazwa aplikacji. |
+| --name | Nazwa powiązania usługi do usunięcia. |
+| --resource-group -g | Nazwa grupy zasobów.  Grupę domyślną można `az configure --defaults group=<name>`skonfigurować za pomocą programu . |
+| --service -s | Nazwa chmury Azure Spring Cloud.  Usługę domyślną można skonfigurować za pomocą programu `az configure --defaults spring-cloud=<name>`. |
 
-## <a name="az-spring-cloud-app-binding-show"></a>AZ Sprężyna — Pokaż powiązanie aplikacji w chmurze
+## <a name="az-spring-cloud-app-binding-show"></a>az wiosenno-chmurowy pokaz oprawy aplikacji
 
 Pokaż szczegóły powiązania usługi.
 
-```cli
+```azurecli
 az spring-cloud app binding show --app
                                  --name -n
                                  --resource-group -g
@@ -562,16 +562,16 @@ az spring-cloud app binding show --app
 
 | Parametry wymagane | |
 | --- | ---: |
-| --Aplikacja | Nazwa aplikacji. |
-| --Name | Nazwa powiązania usługi. |
-| --Resource-Group-g | Nazwa grupy zasobów.  Grupę domyślną można skonfigurować przy użyciu `az configure --defaults group=<name>`. |
-| --Service-s | Nazwa chmury wiosennej platformy Azure.  Usługę domyślną można skonfigurować przy użyciu `az configure --defaults spring-cloud=<name>`. |
+| --aplikacja | Nazwa aplikacji. |
+| --name | Nazwa powiązania usługi. |
+| --resource-group -g | Nazwa grupy zasobów.  Grupę domyślną można `az configure --defaults group=<name>`skonfigurować za pomocą programu . |
+| --service -s | Nazwa chmury Azure Spring Cloud.  Usługę domyślną można skonfigurować za pomocą programu `az configure --defaults spring-cloud=<name>`. |
 
-## <a name="az-spring-cloud-app-binding-cosmos-add"></a>AZ Wiosenna Cosmos — Dodawanie powiązania aplikacji w chmurze
+## <a name="az-spring-cloud-app-binding-cosmos-add"></a>az wiosna-chmura aplikacja powiązanie kosmos dodać
 
-Powiąż Azure Cosmos DB z aplikacją.
+Powiąż usługę Azure Cosmos DB z aplikacją.
 
-```cli
+```azurecli
 az spring-cloud app binding cosmos add --api-type
                                        --app
                                        --name -n
@@ -583,7 +583,7 @@ az spring-cloud app binding cosmos add --api-type
                                        --key-space
 ```
 
-```cli
+```azurecli
 az spring-cloud app binding list --app
                                  --name -n
                                  --resource-group -g
@@ -592,21 +592,21 @@ az spring-cloud app binding list --app
 
 | Parametry wymagane | |
 | --- | ---: |
-| --Typ interfejsu API | Określ typ interfejsu API przy użyciu jednej z następujących wartości: Cassandra, Gremlin, Mongo, SQL, Table. |
-| --Aplikacja | Nazwa aplikacji. |
-| --Name | Nazwa powiązania usługi. |
-| --Resource-Group-g | Nazwa grupy zasobów.  Grupę domyślną można skonfigurować przy użyciu `az configure --defaults group=<name>`. |
-| --Service-s | Nazwa chmury wiosennej platformy Azure.  Usługę domyślną można skonfigurować przy użyciu `az configure --defaults spring-cloud=<name>`. |
+| --api-type | Określ typ interfejsu API przy użyciu jednej z następujących wartości: cassandra, gremlin, mongo, sql, table. |
+| --aplikacja | Nazwa aplikacji. |
+| --name | Nazwa powiązania usługi. |
+| --resource-group -g | Nazwa grupy zasobów.  Grupę domyślną można `az configure --defaults group=<name>`skonfigurować za pomocą programu . |
+| --service -s | Nazwa chmury Azure Spring Cloud.  Usługę domyślną można skonfigurować za pomocą programu `az configure --defaults spring-cloud=<name>`. |
 
 |Parametry opcjonalne | |
 | --- | ---: |
-| --Collection-Name | Nazwa kolekcji.  Wymagane w przypadku korzystania z Gremlin. |
-| --Nazwa bazy danych | Nazwa bazy danych.  Wymagane w przypadku korzystania z Mongo, SQL i Gremlin. |
-| --Key-Space | Cassandra.  Wymagane w przypadku korzystania z Cassandra. |
+| --collection-name | Nazwa kolekcji.  Wymagane podczas korzystania z Gremlin. |
+| --database-name | Nazwa bazy danych.  Wymagane podczas korzystania z Mongo, SQL i Gremlin. |
+| --key-space | Cassandra klucz-przestrzeń.  Wymagane podczas korzystania z Cassandra. |
 
-## <a name="az-spring-cloud-app-binding-cosmos-update"></a>AZ Wiosenna — Cosmos aktualizacja powiązania aplikacji
+## <a name="az-spring-cloud-app-binding-cosmos-update"></a>az wiosenna aktualizacja programu windows-cloud
 
-```cli
+```azurecli
 az spring-cloud app binding cosmos update --app
                                           --name -n
                                           --resource-group -g
@@ -618,20 +618,20 @@ az spring-cloud app binding cosmos update --app
 
 | Parametry wymagane | |
 | --- | ---: |
-| --Aplikacja | Nazwa aplikacji. |
-| --Name | Nazwa powiązania usługi. |
-| --Resource-Group-g | Nazwa grupy zasobów.  Grupę domyślną można skonfigurować przy użyciu `az configure --defaults group=<name>`. |
-| --Service-s | Nazwa chmury wiosennej platformy Azure.  Usługę domyślną można skonfigurować przy użyciu `az configure --defaults spring-cloud=<name>`. |
+| --aplikacja | Nazwa aplikacji. |
+| --name | Nazwa powiązania usługi. |
+| --resource-group -g | Nazwa grupy zasobów.  Grupę domyślną można `az configure --defaults group=<name>`skonfigurować za pomocą programu . |
+| --service -s | Nazwa chmury Azure Spring Cloud.  Usługę domyślną można skonfigurować za pomocą programu `az configure --defaults spring-cloud=<name>`. |
 
 |Parametry opcjonalne | |
 | --- | ---: |
-| --Collection-Name | Nazwa kolekcji.  Wymagane w przypadku korzystania z Gremlin. |
-| --Nazwa bazy danych | Nazwa bazy danych.  Wymagane w przypadku korzystania z Mongo, SQL i Gremlin. |
-| --Key-Space | Cassandra.  Wymagane w przypadku korzystania z Cassandra. |
+| --collection-name | Nazwa kolekcji.  Wymagane podczas korzystania z Gremlin. |
+| --database-name | Nazwa bazy danych.  Wymagane podczas korzystania z Mongo, SQL i Gremlin. |
+| --key-space | Cassandra klucz-przestrzeń.  Wymagane podczas korzystania z Cassandra. |
 
-## <a name="az-spring-cloud-app-binding-mysql-add"></a>AZ wiosna aplikacji w chmurze powiązanie MySQL Add
+## <a name="az-spring-cloud-app-binding-mysql-add"></a>az wiosna-chmura aplikacja powiązanie mysql dodać
 
-```cli
+```azurecli
 az spring-cloud app binding mysql add --app
                                       --database-name
                                       --key
@@ -643,20 +643,20 @@ az spring-cloud app binding mysql add --app
 
 | Parametry wymagane | |
 | --- | ---: |
-| --Aplikacja | Nazwa aplikacji. |
-| --Nazwa bazy danych | Nazwa bazy danych. |
-| --klucz | Klucz interfejsu API usługi. |
-| --Name | Nazwa powiązania usługi. |
-| --Resource-Group-g | Nazwa grupy zasobów.  Grupę domyślną można skonfigurować przy użyciu `az configure --defaults group=<name>`. |
-| --Resource-ID | Identyfikator zasobu platformy Azure dla usługi, z którą ma zostać utworzone powiązanie. |
-| --Service-s | Nazwa chmury wiosennej platformy Azure.  Usługę domyślną można skonfigurować przy użyciu `az configure --defaults spring-cloud=<name>`. |
-| --username | Nazwa użytkownika do uzyskiwania dostępu do bazy danych. |
+| --aplikacja | Nazwa aplikacji. |
+| --database-name | Nazwa bazy danych. |
+| --klucz | klucz interfejsu API usługi. |
+| --name | Nazwa powiązania usługi. |
+| --resource-group -g | Nazwa grupy zasobów.  Grupę domyślną można `az configure --defaults group=<name>`skonfigurować za pomocą programu . |
+| --resource-id | Identyfikator zasobu platformy Azure usługi do powiązania z. |
+| --service -s | Nazwa chmury Azure Spring Cloud.  Usługę domyślną można skonfigurować za pomocą programu `az configure --defaults spring-cloud=<name>`. |
+| --username | Nazwa użytkownika dostępu do bazy danych. |
 
-## <a name="az-spring-cloud-app-binding-mysql-update"></a>AZ wiosna aplikacji w chmurze — aktualizacja MySQL
+## <a name="az-spring-cloud-app-binding-mysql-update"></a>az wiosna-chmura aplikacja powiązanie mysql aktualizacja
 
-Zaktualizuj połączenie powiązania usługi dla aplikacji do Azure Database for MySQL.
+Zaktualizuj połączenie powiązania usługi aplikacji do bazy danych platformy Azure dla MySQL.
 
-```cli
+```azurecli
 az spring-cloud app binding mysql update --add
                                          --name -n
                                          --resource-group -g
@@ -668,22 +668,22 @@ az spring-cloud app binding mysql update --add
 
 | Parametry wymagane | |
 | --- | ---: |
-| --Aplikacja | Nazwa aplikacji. |
-| --Name | Nazwa powiązania usługi. |
-| --Resource-Group-g | Nazwa grupy zasobów.  Grupę domyślną można skonfigurować przy użyciu `az configure --defaults group=<name>`. |
-| --Service-s | Nazwa chmury wiosennej platformy Azure.  Usługę domyślną można skonfigurować przy użyciu `az configure --defaults spring-cloud=<name>`. |
+| --aplikacja | Nazwa aplikacji. |
+| --name | Nazwa powiązania usługi. |
+| --resource-group -g | Nazwa grupy zasobów.  Grupę domyślną można `az configure --defaults group=<name>`skonfigurować za pomocą programu . |
+| --service -s | Nazwa chmury Azure Spring Cloud.  Usługę domyślną można skonfigurować za pomocą programu `az configure --defaults spring-cloud=<name>`. |
 
 | Parametry opcjonalne | |
 | --- | ---: |
-| --Nazwa bazy danych | Nazwa bazy danych. |
-| --klucz | Klucz interfejsu API usługi. |
-| --username | Nazwa użytkownika do uzyskiwania dostępu do bazy danych. |
+| --database-name | Nazwa bazy danych. |
+| --klucz | klucz interfejsu API usługi. |
+| --username | Nazwa użytkownika dostępu do bazy danych. |
 
-## <a name="az-spring-cloud-app-binding-redis-add"></a>AZ Wiosenna Redis — Dodawanie powiązania aplikacji w chmurze
+## <a name="az-spring-cloud-app-binding-redis-add"></a>az wiosna-chmura aplikacja powiązanie redis dodać
 
-Powiąż pamięć podręczną platformy Azure dla Redis z aplikacją.
+Powiąż pamięć podręczną platformy Azure dla redis z aplikacją.
 
-```cli
+```azurecli
 az spring-cloud app binding redis add --app
                                       --name -n
                                       --resource-group -g
@@ -694,77 +694,77 @@ az spring-cloud app binding redis add --app
 
 | Parametry wymagane | |
 | --- | ---: |
-| --Aplikacja | Nazwa aplikacji. |
-| --Name | Nazwa powiązania usługi. |
-| --Resource-Group-g | Nazwa grupy zasobów.  Grupę domyślną można skonfigurować przy użyciu `az configure --defaults group=<name>`. |
-| --Resource-ID | Identyfikator zasobu platformy Azure dla usługi, z którą chcesz utworzyć powiązanie. |
-| --Service-s | Nazwa chmury wiosennej platformy Azure.  Usługę domyślną można skonfigurować przy użyciu `az configure --defaults spring-cloud=<name>`. |
+| --aplikacja | Nazwa aplikacji. |
+| --name | Nazwa powiązania usługi. |
+| --resource-group -g | Nazwa grupy zasobów.  Grupę domyślną można `az configure --defaults group=<name>`skonfigurować za pomocą programu . |
+| --resource-id | Identyfikator zasobu platformy Azure usługi, z którą chcesz powiązać. |
+| --service -s | Nazwa chmury Azure Spring Cloud.  Usługę domyślną można skonfigurować za pomocą programu `az configure --defaults spring-cloud=<name>`. |
 
 | Parametry opcjonalne | |
 | --- | ---: |
-| --Disable-SSL | Wyłącz protokół SSL. |
+| --disable-ssl | Wyłącz TLS. |
 
-## <a name="az-spring-cloud-app-binding-redis-update"></a>AZ Wiosenna — Redis aktualizacja powiązania aplikacji
+## <a name="az-spring-cloud-app-binding-redis-update"></a>az wiosenna aktualizacja wiązań aplikacji w chmurze
 
-Zaktualizuj powiązanie usługi dla pamięci podręcznej platformy Azure dla Redis.
+Zaktualizuj powiązanie usługi dla usługi Azure Cache for Redis.
 
 | Parametry wymagane | |
 | --- | ---: |
-| --Aplikacja | Nazwa aplikacji. |
-| --Name | Nazwa powiązania usługi. |
-| --Resource-Group-g | Nazwa grupy zasobów.  Grupę domyślną można skonfigurować przy użyciu `az configure --defaults group=<name>`. |
-| --Service-s | Nazwa chmury wiosennej platformy Azure.  Usługę domyślną można skonfigurować przy użyciu `az configure --defaults spring-cloud=<name>`. |
+| --aplikacja | Nazwa aplikacji. |
+| --name | Nazwa powiązania usługi. |
+| --resource-group -g | Nazwa grupy zasobów.  Grupę domyślną można `az configure --defaults group=<name>`skonfigurować za pomocą programu . |
+| --service -s | Nazwa chmury Azure Spring Cloud.  Usługę domyślną można skonfigurować za pomocą programu `az configure --defaults spring-cloud=<name>`. |
 
 | Parametry opcjonalne | |
 | --- | ---: |
-| --Disable-SSL | Wyłącz protokół SSL. |
+| --disable-ssl | Wyłącz TLS. |
 
-## <a name="az-spring-cloud-app-deployment-create"></a>AZ Sprężyna — wdrażanie aplikacji w chmurze
+## <a name="az-spring-cloud-app-deployment-create"></a>tworzenie aplikacji w wiosennej chmurze az
 
 Utwórz wdrożenie przejściowe dla aplikacji.
 
-Aby wdrożyć kod lub zaktualizować ustawienia do istniejącego wdrożenia, użyj `az spring-cloud app deploy --deployment <staging-deployment>` lub "AZ wiosenn-Cloud App Update--Deployment <staging deployment>.
+Aby wdrożyć kod lub zaktualizować ustawienia `az spring-cloud app deploy --deployment <staging-deployment>` do istniejącego wdrożenia, użyj lub <staging deployment>'az spring-cloud app update --deployment .
 
 | Parametry wymagane | |
 | --- | ---: |
-| --Aplikacja | Nazwa aplikacji. |
-| --Name | Nazwa powiązania usługi. |
-| --Resource-Group-g | Nazwa grupy zasobów.  Grupę domyślną można skonfigurować przy użyciu `az configure --defaults group=<name>`. |
-| --Service-s | Nazwa chmury wiosennej platformy Azure.  Usługę domyślną można skonfigurować przy użyciu `az configure --defaults spring-cloud=<name>`. |
+| --aplikacja | Nazwa aplikacji. |
+| --name | Nazwa powiązania usługi. |
+| --resource-group -g | Nazwa grupy zasobów.  Grupę domyślną można `az configure --defaults group=<name>`skonfigurować za pomocą programu . |
+| --service -s | Nazwa chmury Azure Spring Cloud.  Usługę domyślną można skonfigurować za pomocą programu `az configure --defaults spring-cloud=<name>`. |
 
 | Parametry opcjonalne | |
 | --- | ---: |
-| --CPU | Liczba wirtualnych rdzeni procesora CPU na wystąpienie.  Wartość domyślna: 1 |
-| --ENV | Zmienne środowiskowe rozdzielane spacjami w formacie "klucz [= wartość]". |
-| --instance-Count | Liczba wystąpień. Wartość domyślna: 1. |
-| --jar-Path | Jeśli jest podany, wdróż plik JAR.  W przeciwnym razie Wdróż bieżący folder jako element pułapki. |
-| --JVM-Options | Ciąg zawierający opcje JVM.  Użyj wyrażenia "=" zamiast "", aby uniknąć błędów analizy powłoki. Np. `--jvm-options='-Xms1024m -Xmx2048m`. |
-| --pamięć | Liczba GB pamięci na wystąpienie. |
-| --No-wait | Nie czekaj na zakończenie długotrwałych operacji. |
-| --Runtime-Version | Wersja języka wykonawczego używanego w aplikacji.  Dozwolone wartości: `Java_11`, `Java_8`. |
-| --Skip-klon-Settings | Utwórz wdrożenie przejściowe, klonowanie bieżących ustawień wdrożenia produkcyjnego. |
-| --Target-module | Moduł podrzędny do wdrożenia.  Wymagane w przypadku kompilowania wielu pakietów jar z kodu źródłowego. |
-| --Version | Wersja wdrożenia.  Bez zmian, jeśli nie została ustawiona. |
+| --cpu | Liczba wirtualnych rdzeni procesora CPU na wystąpienie.  Domyślne: 1 |
+| --env | Zmienne środowiskowe oddzielone spacją w formacie "key[=value]". |
+| --liczba wystąpień | Liczba wystąpień. Domyślnie: 1. |
+| --jar-ścieżka | Jeśli jest to przewidziane, wdrożyć jar.  W przeciwnym razie wdrożyć bieżący folder jako tar. |
+| --jvm-opcje | Ciąg zawierający opcje JVM.  Użyj '=' zamiast ' ' , aby uniknąć błędów analizy powłoki. `--jvm-options='-Xms1024m -Xmx2048m`Np. |
+| --memory | Liczba GB pamięci na wystąpienie. |
+| --nie czekaj | Nie czekaj na zakończenie długotrwałych operacji. |
+| --runtime-version | Wersja środowiska wykonawczego języka używanego w aplikacji.  Dozwolone wartości: `Java_11` `Java_8`, . |
+| --skip-clone-settings | Utwórz wdrożenie przejściowe przez klonowanie bieżących ustawień wdrożenia produkcyjnego. |
+| --target-module | Moduł podrzędny do wdrożenia.  Wymagane, gdy wiele pakietów jar są zbudowane z kodu źródłowego. |
+| --wersja | Wersja wdrażania.  Bez zmian, jeśli nie jest ustawiona. |
 
 ### <a name="examples"></a>Przykłady
 
-Wdróż kod źródłowy w nowym wdrożeniu aplikacji.  Spowoduje to spakowanie bieżącego katalogu, skompilowanie pliku binarnego przy użyciu systemu kompilacji wystawnej, a następnie wdrożenie.
+Wdrażanie kodu źródłowego w nowym wdrożeniu aplikacji.  Spowoduje to spakowanie bieżącego katalogu, zbudowanie pliku binarnego przy użyciu kluczowego systemu kompilacji, a następnie wdrożenie.
 
-```cli
+```azurecli
 az spring-cloud app deployment create -n green-deployment --app MyApp -s MyService
 ```
 
-Wdróż wstępnie zbudowany plik JAR w aplikacji z opcjami JVM i zmiennymi środowiskowymi.
+Wdrażanie wstępnie utworzonego słoika w aplikacji z opcjami JVM i zmiennymi środowiskowymi.
 
-```cli
+```azurecli
 az spring-cloud app deployment create -n green-deployment --app MyApp -s MyService --jar-path app.jar --jvm-options="-XX:+UseStringDeDuplication" --env foo=bar
 ```
 
-## <a name="az-spring-cloud-app-deployment-delete"></a>AZ Sprężyna — usuwanie wdrożenia aplikacji w chmurze
+## <a name="az-spring-cloud-app-deployment-delete"></a>az wiosenne wdrażanie aplikacji w chmurze usunięte
 
 Usuń wdrożenie aplikacji.
 
-```cli
+```azurecli
 az spring-cloud app deployment delete --app
                                       --name -n
                                       --resource-group -g
@@ -773,16 +773,16 @@ az spring-cloud app deployment delete --app
 
 | Parametry wymagane | |
 | --- | ---: |
-| --Aplikacja | Nazwa aplikacji. |
-| --Name | Nazwa wdrożenia. |
-| --Resource-Group-g | Nazwa grupy zasobów.  Grupę domyślną można skonfigurować przy użyciu `az configure --defaults group=<name>`. |
-| --Service-s | Nazwa chmury wiosennej platformy Azure.  Usługę domyślną można skonfigurować przy użyciu `az configure --defaults spring-cloud=<name>`. |
+| --aplikacja | Nazwa aplikacji. |
+| --name | Nazwa wdrożenia. |
+| --resource-group -g | Nazwa grupy zasobów.  Grupę domyślną można `az configure --defaults group=<name>`skonfigurować za pomocą programu . |
+| --service -s | Nazwa chmury Azure Spring Cloud.  Usługę domyślną można skonfigurować za pomocą programu `az configure --defaults spring-cloud=<name>`. |
 
-## <a name="az-spring-cloud-app-deployment-list"></a>AZ Sprężyna — lista wdrożenia aplikacji w chmurze
+## <a name="az-spring-cloud-app-deployment-list"></a>lista wdrażania aplikacji w wiosennej chmurze az
 
 Wyświetl listę wszystkich wdrożeń w aplikacji.
 
-```cli
+```azurecli
 az spring-cloud app deployment list --app
                                     --resource-group -g
                                     --service -s
@@ -790,15 +790,15 @@ az spring-cloud app deployment list --app
 
 | Parametry wymagane | |
 | --- | ---: |
-| --Aplikacja | Nazwa aplikacji. |
-| --Resource-Group-g | Nazwa grupy zasobów.  Grupę domyślną można skonfigurować przy użyciu `az configure --defaults group=<name>`. |
-| --Service-s | Nazwa chmury wiosennej platformy Azure.  Usługę domyślną można skonfigurować przy użyciu `az configure --defaults spring-cloud=<name>`. |
+| --aplikacja | Nazwa aplikacji. |
+| --resource-group -g | Nazwa grupy zasobów.  Grupę domyślną można `az configure --defaults group=<name>`skonfigurować za pomocą programu . |
+| --service -s | Nazwa chmury Azure Spring Cloud.  Usługę domyślną można skonfigurować za pomocą programu `az configure --defaults spring-cloud=<name>`. |
 
-## <a name="az-spring-cloud-app-deployment-show"></a>AZ wiosenne — pokazywanie wdrożenia aplikacji w chmurze
+## <a name="az-spring-cloud-app-deployment-show"></a>az wiosenno-chmurowy pokaz wdrażania aplikacji
 
 Pokaż szczegóły wdrożenia.
 
-```cli
+```azurecli
 az spring-cloud app deployment show --app
                                     --name -n
                                     --resource-group -g
@@ -807,30 +807,30 @@ az spring-cloud app deployment show --app
 
 | Parametry wymagane | |
 | --- | ---: |
-| --Aplikacja | Nazwa aplikacji. |
-| --Name | Nazwa wdrożenia. |
-| --Resource-Group-g | Nazwa grupy zasobów.  Grupę domyślną można skonfigurować przy użyciu `az configure --defaults group=<name>`. |
-| --Service-s | Nazwa chmury wiosennej platformy Azure.  Usługę domyślną można skonfigurować przy użyciu `az configure --defaults spring-cloud=<name>`. |
+| --aplikacja | Nazwa aplikacji. |
+| --name | Nazwa wdrożenia. |
+| --resource-group -g | Nazwa grupy zasobów.  Grupę domyślną można `az configure --defaults group=<name>`skonfigurować za pomocą programu . |
+| --service -s | Nazwa chmury Azure Spring Cloud.  Usługę domyślną można skonfigurować za pomocą programu `az configure --defaults spring-cloud=<name>`. |
 
-## <a name="az-spring-cloud-config-server-clear"></a>AZ Sprężyna — konfiguracja w chmurze — serwer Wyczyść
+## <a name="az-spring-cloud-config-server-clear"></a>az wiosna-chmura config-serwer wyczyść
 
-Wymaż wszystkie ustawienia konfiguracji na serwerze konfiguracji.
+Wymaż wszystkie ustawienia konfiguracji na serwerze config.
 
-```cli
+```azurecli
 az spring-cloud config-server clear --name
                                         --resource-group -g
 ```
 
 | Parametry wymagane | |
 | --- | ---: |
-| --Name | Nazwa chmury wiosennej platformy Azure. |
-| --Resource-Group-g | Nazwa grupy zasobów.  Grupę domyślną można skonfigurować przy użyciu `az configure --defaults group=<name>`. |
+| --name | Nazwa chmury Azure Spring Cloud. |
+| --resource-group -g | Nazwa grupy zasobów.  Grupę domyślną można `az configure --defaults group=<name>`skonfigurować za pomocą programu . |
 
-## <a name="az-spring-cloud-config-server-set"></a>AZ wiosenn-Cloud config-server set
+## <a name="az-spring-cloud-config-server-set"></a>az spring-cloud config-server set az spring-cloud config-server set az spring-cloud config-server set az
 
-Skonfiguruj ustawienia konfiguracji na serwerze konfiguracji przy użyciu pliku YAML.
+Ustaw ustawienia konfiguracji na serwerze config przy użyciu pliku YAML.
 
-```cli
+```azurecli
 az spring-cloud config-server set --config-file
                                   --name -n
                                   --resource-group -g
@@ -839,33 +839,33 @@ az spring-cloud config-server set --config-file
 
 | Parametry wymagane | |
 | --- | ---: |
-| --config-plik | Ścieżka pliku do manifestu YAML dla konfiguracji serwera konfiguracji. |
-| --Name | Nazwa chmury wiosennej platformy Azure. |
-| --Resource-Group-g | Nazwa grupy zasobów.  Grupę domyślną można skonfigurować przy użyciu `az configure --defaults group=<name>`. |
+| --config-file | Ścieżka pliku do manifestu YAML dla konfiguracji serwera konfiguracji. |
+| --name | Nazwa chmury Azure Spring Cloud. |
+| --resource-group -g | Nazwa grupy zasobów.  Grupę domyślną można `az configure --defaults group=<name>`skonfigurować za pomocą programu . |
 
 | Parametry opcjonalne | |
 | --- | ---: |
-| --No-wait | Nie należy wykonywać długotrwałych operacji.
+| --nie czekaj | Nie należy wykonywać długotrwałych operacji.
 
-## <a name="az-spring-cloud-config-server-show"></a>AZ wiosenn-Cloud config-Server show
+## <a name="az-spring-cloud-config-server-show"></a>az wiosna-chmura config-serwer pokaż
 
 Pokaż ustawienia serwera konfiguracji.
 
-```cli
+```azurecli
 az spring-cloud config-server show --name -n
                                    --resource-group -g
 ```
 
 | Parametry wymagane | |
 | --- | ---: |
-| --Name | Nazwa chmury wiosennej platformy Azure. |
-| --Resource-Group-g | Nazwa grupy zasobów.  Grupę domyślną można skonfigurować przy użyciu `az configure --defaults group=<name>`. |
+| --name | Nazwa chmury Azure Spring Cloud. |
+| --resource-group -g | Nazwa grupy zasobów.  Grupę domyślną można `az configure --defaults group=<name>`skonfigurować za pomocą programu . |
 
-## <a name="az-spring-cloud-config-server-git-set"></a>AZ Sprężyna — konfiguracja w chmurze — zestaw serwera git
+## <a name="az-spring-cloud-config-server-git-set"></a>az wiosna-chmura config-serwer git zestaw
 
-Ustaw właściwości git dla serwera konfiguracji.  Spowoduje to zastąpienie wszystkich istniejących właściwości usługi git.
+Ustaw właściwości git dla serwera config.  Spowoduje to zastąpienie wszystkich istniejących właściwości git.
 
-```cli
+```azurecli
 az spring-cloud config-server git set --name -n
                                       --resource-group g
                                       --uri
@@ -882,25 +882,25 @@ az spring-cloud config-server git set --name -n
 
 | Parametry wymagane | |
 | --- | ---: |
-| --Name | Nazwa chmury wiosennej platformy Azure. |
-| --Resource-Group-g | Nazwa grupy zasobów.  Grupę domyślną można skonfigurować przy użyciu `az configure --defaults group=<name>`. |
-| --URI | Identyfikator URI dodanej konfiguracji. |
+| --name | Nazwa chmury Azure Spring Cloud. |
+| --resource-group -g | Nazwa grupy zasobów.  Grupę domyślną można `az configure --defaults group=<name>`skonfigurować za pomocą programu . |
+| --uri | Identyfikator URI dodanego configu. |
 
 | Parametry opcjonalne | |
 | --- | ---: |
-| --Odłóż | Tymczasowo przechowuj obiekt w lokalnej pamięci podręcznej, zamiast wysyłać do platformy Azure.  Użyj `az cache`, aby wyświetlić/wyczyścić. |
-| --Host-Key | Klucz hosta dla dodanej konfiguracji. |
-| --Host-Key-Algorithm | Algorytm klucza hosta dla dodanej konfiguracji. |
-| --Etykieta | Etykieta dodanej konfiguracji. |
-| --password | Hasło do dodanej konfiguracji. |
-| --klucz prywatny | Klucz prywatny dodanej konfiguracji. |
-| --Search-Paths | Wyszukaj ścieżki dodanej konfiguracji.  Używaj ograniczników przecinków dla wielu ścieżek. |
-| --Strict-Host-Key-sprawdzij | Włącza dokładne sprawdzanie klucza hosta dodanej konfiguracji. |
-| --username | Nazwa użytkownika dodanej konfiguracji. |
+| --odroczyć | Tymczasowo przechowywać obiekt w lokalnej pamięci podręcznej zamiast wysyłania na platformę Azure.  Służy `az cache` do wyświetlania / wyczyść. |
+| --host-key | Klucz hosta dla dodanej konfiguracji. |
+| --host-key-algorithm | Algorytm klucza hosta dla dodanej konfiguracji. |
+| --label | Etykieta dodanego configu. |
+| --password | Hasło dodanego configu. |
+| --klucz prywatny | Klucz prywatny dodanego configu. |
+| --search-ścieżki | Szukaj ścieżek dodanego configu.  Użyj ograniczników przecinków dla wielu ścieżek. |
+| --strict-host-key-checking | Umożliwia ścisłe sprawdzanie klucza hosta dodanego configu. |
+| --username | Nazwa użytkownika dodanego configu. |
 
-## <a name="az-spring-cloud-config-server-git-repo-add"></a>AZ Sprężyna — konfiguracja w chmurze — Dodawanie repozytorium git
+## <a name="az-spring-cloud-config-server-git-repo-add"></a>az wiosna-chmura config-serwer git repo dodać
 
-```cli
+```azurecli
 az spring-cloud config-server git repo add --name -n
                                            --repo-name
                                            --resource-group -g
@@ -919,29 +919,29 @@ az spring-cloud config-server git repo add --name -n
 
 | Parametry wymagane | |
 | --- | ---: |
-| --Name | Nazwa chmury wiosennej platformy Azure. |
-| --repo-Name | Identyfikator URI repozytorium. |
-| --Resource-Group-g | Nazwa grupy zasobów.  Grupę domyślną można skonfigurować przy użyciu `az configure --defaults group=<name>`. |
-| --URI | Identyfikator URI dodanej konfiguracji. |
+| --name | Nazwa chmury Azure Spring Cloud. |
+| --nazwa repozytorium | Identyfikator URI repozytorium. |
+| --resource-group -g | Nazwa grupy zasobów.  Grupę domyślną można `az configure --defaults group=<name>`skonfigurować za pomocą programu . |
+| --uri | Identyfikator URI dodanego configu. |
 
 | Parametry opcjonalne | |
 | --- | ---: |
-| --Odłóż | Tymczasowo przechowuj obiekt w lokalnej pamięci podręcznej, zamiast wysyłać do platformy Azure.  Użyj `az cache`, aby wyświetlić/wyczyścić. |
-| --Host-Key | Klucz hosta dla dodanej konfiguracji. |
-| --Host-Key-Algorithm | Algorytm klucza hosta dla dodanej konfiguracji. |
-| --Etykieta | Etykieta dodanej konfiguracji. |
-| --password | Hasło do dodanej konfiguracji. |
-| --wzorzec | Wzorzec dla repozytorium.  Używaj ograniczników przecinków dla wielu ścieżek.|
-| --klucz prywatny | Klucz prywatny dodanej konfiguracji. |
-| --Search-Paths | Wyszukaj ścieżki dodanej konfiguracji.  Używaj ograniczników przecinków dla wielu ścieżek. |
-| --Strict-Host-Key-sprawdzij | Włącza dokładne sprawdzanie klucza hosta dodanej konfiguracji. |
-| --username | Nazwa użytkownika dodanej konfiguracji. |
+| --odroczyć | Tymczasowo przechowywać obiekt w lokalnej pamięci podręcznej zamiast wysyłania na platformę Azure.  Służy `az cache` do wyświetlania / wyczyść. |
+| --host-key | Klucz hosta dla dodanej konfiguracji. |
+| --host-key-algorithm | Algorytm klucza hosta dla dodanej konfiguracji. |
+| --label | Etykieta dodanego configu. |
+| --password | Hasło dodanego configu. |
+| --wzór | Wzorzec repozytorium.  Użyj ograniczników przecinków dla wielu ścieżek.|
+| --klucz prywatny | Klucz prywatny dodanego configu. |
+| --search-ścieżki | Szukaj ścieżek dodanego configu.  Użyj ograniczników przecinków dla wielu ścieżek. |
+| --strict-host-key-checking | Umożliwia ścisłe sprawdzanie klucza hosta dodanego configu. |
+| --username | Nazwa użytkownika dodanego configu. |
 
-## <a name="az-spring-cloud-config-server-git-repo-list"></a>AZ wiosenn-Cloud config-Server repozytorium git list
+## <a name="az-spring-cloud-config-server-git-repo-list"></a>az wiosna-chmura config-serwer git repo lista
 
-Wyświetl listę wszystkich repozytoriów Git zdefiniowanych na serwerze konfiguracji
+Lista wszystkich repozytoriów git zdefiniowanych w config server
 
-```cli
+```azurecli
 az spring-cloud config-server git repo list --name -n
                                        --resource-group -g
                                        --defer
@@ -949,18 +949,18 @@ az spring-cloud config-server git repo list --name -n
 
 | Parametry wymagane | |
 | --- | ---: |
-| --Name | Nazwa chmury wiosennej platformy Azure. |
-| --Resource-Group-g | Nazwa grupy zasobów.  Grupę domyślną można skonfigurować przy użyciu `az configure --defaults group=<name>`. |
+| --name | Nazwa chmury Azure Spring Cloud. |
+| --resource-group -g | Nazwa grupy zasobów.  Grupę domyślną można `az configure --defaults group=<name>`skonfigurować za pomocą programu . |
 
 | Parametry opcjonalne | |
 | --- | ---: |
-| --Odłóż | Tymczasowo przechowuj obiekt w lokalnej pamięci podręcznej, zamiast wysyłać do platformy Azure.  Użyj `az cache`, aby wyświetlić/wyczyścić. |
+| --odroczyć | Tymczasowo przechowywać obiekt w lokalnej pamięci podręcznej zamiast wysyłania na platformę Azure.  Służy `az cache` do wyświetlania / wyczyść. |
 
-## <a name="az-spring-cloud-config-server-git-repo-remove"></a>AZ Sprężyna — konfiguracja w chmurze — usuwanie repozytorium git
+## <a name="az-spring-cloud-config-server-git-repo-remove"></a>az wiosna-chmura config-serwer git repo usunąć
 
-Usuń istniejącą konfigurację repozytorium git z serwera konfiguracji.
+Usuń istniejącą konfigurację repozytorium git z config server.
 
-```cli
+```azurecli
 az spring-cloud config-server git repo remove --name -n
                                          --repo-name
                                          --resource-group -g
@@ -969,47 +969,47 @@ az spring-cloud config-server git repo remove --name -n
 
 | Parametry wymagane | |
 | --- | ---: |
-| --Name | Nazwa chmury wiosennej platformy Azure. |
-| --repo-Name | Identyfikator URI repozytorium. |
-| --Resource-Group-g | Nazwa grupy zasobów.  Grupę domyślną można skonfigurować przy użyciu `az configure --defaults group=<name>`. |
+| --name | Nazwa chmury Azure Spring Cloud. |
+| --nazwa repozytorium | Identyfikator URI repozytorium. |
+| --resource-group -g | Nazwa grupy zasobów.  Grupę domyślną można `az configure --defaults group=<name>`skonfigurować za pomocą programu . |
 
 | Parametry opcjonalne | |
 | --- | ---: |
-| --Odłóż | Tymczasowo przechowuj obiekt w lokalnej pamięci podręcznej, zamiast wysyłać do platformy Azure.  Użyj `az cache`, aby wyświetlić/wyczyścić. |
+| --odroczyć | Tymczasowo przechowywać obiekt w lokalnej pamięci podręcznej zamiast wysyłania na platformę Azure.  Służy `az cache` do wyświetlania / wyczyść. |
 
-## <a name="az-spring-cloud-test-endpoint-disable"></a>AZ sprężyn-Cloud test-Endpoint Disable
+## <a name="az-spring-cloud-test-endpoint-disable"></a>az punkt końcowy testu sprężyny-chmury wyłącza się
 
-Wyłącz test punktu końcowego chmury wiosennej platformy Azure
+Wyłączanie punktu końcowego testu w chmurze usługi Azure Spring Cloud
 
-```cli
+```azurecli
 az spring-cloud test-endpoint disable --name -n
                                       --resource-group -g
 ```
 
 | Parametry wymagane | |
 | --- | ---: |
-| --Name | Nazwa chmury wiosennej platformy Azure. |
-| --Resource-Group-g | Nazwa grupy zasobów.  Grupę domyślną można skonfigurować przy użyciu `az configure --defaults group=<name>`. |
+| --name | Nazwa chmury Azure Spring Cloud. |
+| --resource-group -g | Nazwa grupy zasobów.  Grupę domyślną można `az configure --defaults group=<name>`skonfigurować za pomocą programu . |
 
-## <a name="az-spring-cloud-test-endpoint-enable"></a>AZ sprężyn-Cloud test-Endpoint Enable
+## <a name="az-spring-cloud-test-endpoint-enable"></a>az punkt końcowy testu sprężyny i chmury
 
-Włącz punkt końcowy testu dla chmury wiosennej platformy Azure. 
+Włącz punkt końcowy testu dla usługi Azure Spring Cloud. 
 
-```cli 
+```azurecli
 az spring-cloud test-endpoint enable --name -n
                                      --resource-group -g
 ```
 
 | Parametry wymagane | |
 | --- | ---: |
-| --Name | Nazwa chmury wiosennej platformy Azure. |
-| --Resource-Group-g | Nazwa grupy zasobów.  Grupę domyślną można skonfigurować przy użyciu `az configure --defaults group=<name>`. |
+| --name | Nazwa chmury Azure Spring Cloud. |
+| --resource-group -g | Nazwa grupy zasobów.  Grupę domyślną można `az configure --defaults group=<name>`skonfigurować za pomocą programu . |
 
-## <a name="az-spring-cloud-test-endpoint-list"></a>AZ sprężyn-Cloud test-Endpoint List 
+## <a name="az-spring-cloud-test-endpoint-list"></a>az lista punktów końcowych testu sprężyny i chmury 
 
-Wyświetl listę dostępnych klawiszy punktów końcowych testów dla chmury wiosennej platformy Azure.
+Wyświetl listę dostępnych kluczy punktu końcowego testu dla usługi Azure Spring Cloud.
 
-```cli
+```azurecli
 az spring-cloud test-endpoint list --name -n
                                    --resource-group -g
                                    --app
@@ -1018,19 +1018,19 @@ az spring-cloud test-endpoint list --name -n
 
 | Parametry wymagane | |
 | --- | ---: |
-| --Name | Nazwa chmury wiosennej platformy Azure. |
-| --Resource-Group-g | Nazwa grupy zasobów.  Grupę domyślną można skonfigurować przy użyciu `az configure --defaults group=<name>`. |
+| --name | Nazwa chmury Azure Spring Cloud. |
+| --resource-group -g | Nazwa grupy zasobów.  Grupę domyślną można `az configure --defaults group=<name>`skonfigurować za pomocą programu . |
 
 | Parametry opcjonalne | |
 | --- | ---: |
-| --Aplikacja | Nazwa aplikacji. |
-| --Deployment-d | Nazwa istniejącego wdrożenia aplikacji.  Jeśli nie zostanie określony, wartością domyślną jest produkcja. |
+| --aplikacja | Nazwa aplikacji. |
+| --wdrożenie -d | Nazwa istniejącego wdrożenia aplikacji.  Domyślnie jest to produkcja, jeśli nieokreślona. |
 
-## <a name="az-spring-cloud-test-endpoint-renew-key"></a>AZ sprężyn-Cloud test-Endpoint Renew-Key
+## <a name="az-spring-cloud-test-endpoint-renew-key"></a>az wiosna-chmura test-punkt końcowy klucz odnawiania
 
-Wygeneruj ponownie klucz punktu końcowego testu dla chmury sieci platformy Azure.
+Ponowne generowanie klucza punktu końcowego testu dla usługi Azure Spring Cloud.
 
-```cli
+```azurecli
 az spring-cloud test-endpoint renew-key --name -n
                                         --resource-group -g
                                         --type
@@ -1038,6 +1038,6 @@ az spring-cloud test-endpoint renew-key --name -n
 
 | Parametry wymagane | |
 | --- | ---: |
-| --Name | Nazwa chmury wiosennej platformy Azure. |
-| --Resource-Group-g | Nazwa grupy zasobów.  Grupę domyślną można skonfigurować przy użyciu `az configure --defaults group=<name>`. |
-| --Wpisz | Typ klucza punktu końcowego testu.  Dozwolone wartości: podstawowe, pomocnicze. |
+| --name | Nazwa chmury Azure Spring Cloud. |
+| --resource-group -g | Nazwa grupy zasobów.  Grupę domyślną można `az configure --defaults group=<name>`skonfigurować za pomocą programu . |
+| --typ | Typ klucza punktu końcowego testu.  Dozwolone wartości: Podstawowy, Pomocniczy. |

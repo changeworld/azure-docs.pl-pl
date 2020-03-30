@@ -1,118 +1,117 @@
 ---
-title: Zintegrowane rozwiązania — Azure Marketplace
-description: Zintegrowane rozwiązania w witrynie Azure Marketplace i Microsoft AppSource
-services: Azure, Marketplace, Compute, Storage, Networking
-author: MaggiePucciEvans
+title: Zintegrowane rozwiązania - Azure Marketplace
+description: Zintegrowane rozwiązania w witrynie Azure Marketplace i microsoft appsource
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: article
+ms.topic: conceptual
 ms.date: 12/16/2019
-ms.author: evansma
-ms.openlocfilehash: 6f09df7c4ccdfa8a339b9d7f2655128c7ead5184
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.author: dsindona
+ms.openlocfilehash: 356713bd7d51be6f3550a6975a766fe1b6a0fc05
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75978647"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80286221"
 ---
 # <a name="publish-an-integrated-solution"></a>Publikowanie zintegrowanego rozwiązania
 
-W ramach jednej oferty zintegrowane rozwiązanie łączy technologie typu punkt-rozwiązanie od dostawców oprogramowania z wdrożeniem i wsparciem partnera usług. Partner usług zawiera listę ofert w Microsoft AppSource lub Azure Marketplace jako [usługę doradczą](https://docs.microsoft.com/azure/marketplace/consulting-services).
+W jednej ofercie pakietowej zintegrowane rozwiązanie łączy technologie rozwiązania punktowego od dostawców oprogramowania z wdrażaniem i wsparciem partnera usług. Partner usług wyświetla ofertę w usłudze Microsoft AppSource lub Azure Marketplace jako [usługę konsultingową.](https://docs.microsoft.com/azure/marketplace/consulting-services)
 
-Zintegrowane rozwiązania mają na celu rozwiązanie konkretnej potrzeby klienta lub scenariusza. Dostawcy zaczynają zrozumieć wyzwania branżowe lub punkty bólu. Następnie integrują dwie lub więcej najlepszych technologii, aby utworzyć ujednolicone i powtarzalne środowisko wdrażania dla klientów. Dostawcy mogą szybko korzystać z klientów. Oferują one pojedynczy punkt kontaktu z klientem, zapewniając odpowiednie dostosowania, doradztwo i obsługę rozwiązań. Wynikiem jest zintegrowane rozwiązanie, w tym technologia i usługi.
+Zintegrowane rozwiązania mają na celu zadąsienie konkretnych potrzeb klienta lub scenariusza. Dostawcy zaczynają od zrozumienia wyzwania branżowego lub punktów bólu. Następnie integrują dwie lub więcej najlepszych w swojej klasie technologii, aby stworzyć ujednolicone i powtarzalne środowisko wdrażania dla klientów. Dostawcy szybko uruchamiają klientów. Oferują one pojedynczy punkt kontaktowy dla klienta, zapewniając odpowiednie dostosowanie, doradztwo i wsparcie rozwiązań. Rezultatem jest zintegrowane rozwiązanie, w tym technologia i usługi.
 
-Aby zapoznać się z omówieniem programu Integrated Solutions, Obejrzyj [ten klip wideo](https://aka.ms/AA5qos4).
+Aby zapoznać się z omówieniem programu Zintegrowane rozwiązania, obejrzyj [ten film](https://aka.ms/AA5qos4).
 
-## <a name="benefits-of-integrated-solutions-in-the-marketplace"></a>Zalety rozwiązań zintegrowanych w portalu Marketplace
+## <a name="benefits-of-integrated-solutions-in-the-marketplace"></a>Korzyści ze zintegrowanych rozwiązań na rynku
 
-* Klienci mogą znaleźć spakowane rozwiązania, które rozwiązują kompleksowe wyzwania biznesowe w portalu Marketplace. Skracamy czas do wartości, ponieważ technologia jest zintegrowana z przodu. Klienci nie muszą angażować się oddzielnie z wieloma aplikacjami wdrożonymi w pofragmentowany sposób.
-* Adres IP jest spakowany wraz z innymi rozwiązaniami i usługami, które zwiększają wartość technologii, która jest dostarczana przez partnerów usług specjalistycznych.
-* Partnerzy usług tworzą wstępnie zdefiniowane, zintegrowane rozwiązania z najlepszą technologią, które umożliwiają skalowanie, gruntowe i rozszerzanie w większej liczbie klientów.
-* Firma Microsoft może używać tych wstępnie zintegrowanych, branżowych rozwiązań, aby łatwiej współsprzedawać klientów. Cennik i warunki są posortowane z góry.
+* Klienci mogą znaleźć pakowane rozwiązania, które rozwiązują kompleksowe wyzwania biznesowe za pośrednictwem rynku. Mają one przyspieszony czas do wartości, ponieważ technologia jest zintegrowana z góry. Klienci unikają konieczności angażowania się oddzielnie z wieloma aplikacjami wdrożonymi w sposób pofragmentowany.
+* Adres IP jest pakowany wraz z innymi rozwiązaniami i usługami, które zwiększają wartość technologii dostarczanej przez partnerów świadczących usługi specjalistyczne.
+* Partnerzy usług tworzą wstępnie zdefiniowane, wstępnie zintegrowane rozwiązania z najlepszą w swojej klasie technologią do skalowania, wyładowywać i rozszerzać się na więcej kont klientów.
+* Firma Microsoft może korzystać z tych wstępnie zintegrowanych rozwiązań dostosowanych do branży, aby łatwiej współsprzedać klientom. Ceny i warunki są sortowane z wyprzedzeniem.
 
 ## <a name="eligibility-criteria"></a>Kryteria kwalifikacji
 
 * Partnerzy uczestniczący muszą mieć identyfikator MPN.
-* Dostawcy usług uczestniczących powinni mieć przygotowaną wspólną sprzedaż.
-* Uczestniczący dostawca oprogramowania powinien być gotowy do współdziałania z adresem IP.
-* Co najmniej jeden partner uczestniczący musi mieć kompetencje Gold w jednym z następujących obszarów:
+* Uczestniczący dostawcy usług powinni być gotowi do współsprzedaży.
+* Uczestniczący dostawcy oprogramowania powinni być gotowi do współsprzedania IP.
+* Co najmniej jeden partner uczestniczący musi posiadać kompetencję Gold w jednym z następujących obszarów:
 
     * Projektowanie aplikacji
     * Integracja aplikacji
-    * Zarządzanie cyklem życia oprogramowania
-    * Platforma w chmurze
+    * Zarządzanie cyklem życia aplikacji
+    * Platforma chmurowa
     * Analiza danych
-    * Datacenter
+    * Centrum danych
     * Platforma danych
     * DevOps
 
-* Rozwiązanie musi zawierać co najmniej dwie organizacje partnerskie, łączące adresy IP i usługi w celu uzyskania kompletnego rozwiązania i środowiska klienta.
-* Adres IP partnera musi być zbudowany na platformie Azure, Dynamics 365 lub w platformę energetyczną.
-* Adres IP zintegrowanego rozwiązania musi być zróżnicowany od zwykłego adresu IP dostawcy oprogramowania i podstawowych ofert dostawców usług.
-* Wszyscy partnerzy mają zamierzyć cel tworzenia oferty możliwej do powtarzania, która może zostać wyświetlona i ostatecznie zrealizowana za pomocą Microsoft AppSource, Azure Marketplace lub obu.
+* Rozwiązanie musi obejmować co najmniej dwie organizacje partnerskie, łączące adres IP i usługi w celu uzyskania pełnego rozwiązania dla klienta i doświadczenia.
+* Adres IP partnera musi być zbudowany na platformie Azure, Dynamics 365 lub Power Platform.
+* Adres IP zintegrowanego rozwiązania należy odróżnić od samego adresu IP dostawcy oprogramowania i podstawowej oferty dostawcy usług.
+* Wszyscy partnerzy mają wspólny cel tworzenia powtarzalnej oferty, która może być wymieniona i ostatecznie transponowana za pośrednictwem usługi Microsoft AppSource, azure marketplace lub obu.
 
-## <a name="submit-a-nomination"></a>Prześlij nominację
+## <a name="submit-a-nomination"></a>Prześlij nominację.
 
-Partnerzy, którzy chcą uczestniczyć w programie, powinni identyfikować innych partnerów, z którymi chcą współpracować. Powinny one zakończyć [formularz nominacji zintegrowanych rozwiązań](https://aka.ms/AA5qicu). Zespół programu zintegrowanych rozwiązań przegląda nominację i postępuje zgodnie z upływem 10 dni roboczych. Zespół zapewnia zatwierdzenie i następne kroki.
+Partnerzy, którzy chcą uczestniczyć w programie, powinni zidentyfikować innych partnerów, z którymi chcą współpracować. Powinni oni wypełnić [formularz nominacji Zintegrowane rozwiązania](https://aka.ms/AA5qicu). Zespół programu Integrated Solutions przegląda nominację i kontynuuje w ciągu 10 dni roboczych. Zespół zapewnia zatwierdzenie i kolejne kroki.
 
-## <a name="develop-an-integrated-solution"></a>Opracowywanie zintegrowanego rozwiązania
+## <a name="develop-an-integrated-solution"></a>Opracowanie zintegrowanego rozwiązania
 
-Po zatwierdzeniu nominacji Użyj zasobów połączonego programu, aby opracować zintegrowane rozwiązanie. Wykonaj następujące kroki:
+Po zatwierdzeniu nominacji użyj połączonych zasobów programu, aby opracować zintegrowane rozwiązanie. Wykonaj następujące kroki:
 
-1. Wypełnij najważniejsze dyskusje biznesowe i techniczne w formacie warsztatów, aby zdefiniować rozwiązanie i podejście do integracji.
+1. Ukończ kluczowe dyskusje biznesowe i techniczne w formie warsztatowej, aby zdefiniować rozwiązanie i podejście integracyjne.
 
-    Dyskusja o rozwiązaniu powinna dotyczyć następujących punktów:
+    Dyskusja na temat rozwiązania powinna obejmować następujące kwestie:
     * Zakres
-    * Klienci docelowi
-    * Opis korzyści
+    * Kierowanie do klientów
+    * Wartości
     * Cennik
     * Licencjonowanie
-    * Postanowienia
-    * Podejście do pomocy technicznej
+    * Warunki i postanowienia
+    * Podejście wspierające
     * Działania marketingowe
     * Proces sprzedaży
     * Działania
 
-    Dyskusje na temat podejścia do integracji powinny dotyczyć następujących punktów:
+    Dyskusja na temat podejścia integracyjnego powinna obejmować następujące kwestie:
     * Punkty integracji
     * Architektura rozwiązania
-    * Authentication
+    * Uwierzytelnianie
     * Interfejs użytkownika
     * Monitorowanie
     * Mechanizm wdrażania
     * Interfejsy API
     * Ujednolicone repozytorium danych
 
-    Użyj tych zasobów dla procesu tworzenia:
+    Użyj tych zasobów dla procesu rozwoju:
 
-    * [Przewodnik po dyskusji dla warsztatów dotyczących decyzji służbowych](https://aka.ms/AA5qicx)
-    * [Przewodnik po dyskusji dla warsztatów dotyczących decyzji technicznej](https://aka.ms/AA5qid1)
-    * [Wideo szybkiego startu: warsztaty biznesowe i techniczne](https://aka.ms/AA5qos9)
+    * [Przewodnik po warsztatach decyzji biznesowych](https://aka.ms/AA5qicx)
+    * [Przewodnik po warsztatach decyzji technicznych](https://aka.ms/AA5qid1)
+    * [Wideo szybki start: Warsztaty biznesowe i techniczne](https://aka.ms/AA5qos9)
 
-1. Zidentyfikuj międzypartnerskiego menedżera projektu, aby zwiększyć plan projektu i oś czasu opracowaną w ramach warsztatów branżowych i technicznych.
+1. Zidentyfikuj międzyapartnera kierownika projektu, aby opracować plan projektu i harmonogram w warsztatach biznesowych i technicznych.
 
-1. Opracowuj pełną integrację techniczną rozwiązania.
+1. Opracowanie pełnej integracji technicznej rozwiązania.
 
-1. Zadecyduj o cenach rozwiązań i jednym punkcie cenowym do powierzchni na Microsoft AppSource lub w witrynie Azure Marketplace.
+1. Zdecyduj o cenach rozwiązań i pojedynczym punkcie cenowym do powierzchni w witrynie Microsoft AppSource lub Azure Marketplace.
 
-1. Uzupełnij materiały marketingowe dotyczące Microsoft AppSource lub oferty platformy Azure Marketplace, w tym:
+1. Uzupełnij zabezpieczenia marketingowe dla listy Microsoft AppSource lub Azure Marketplace, w tym:
 
-    * Nazwa połączonego rozwiązania.
-    * Opis listy zintegrowanego rozwiązania. Skorzystaj z oferty, aby wyświetlić [listę najlepszych](https://docs.microsoft.com/azure/marketplace/gtm-offer-listing-best-practices)rozwiązań.
-    * Klient korzystający z jednej strony. Użyj szablonu z jednym modułem [stronicowania](https://aka.ms/AA5s08a).
+    * Połączona nazwa rozwiązania.
+    * Opis zintegrowanego rozwiązania. Postępuj zgodnie [z najlepszymi praktykami z ofertą](https://docs.microsoft.com/azure/marketplace/gtm-offer-listing-best-practices).
+    * Jednostronicowa parcela dla klientów. Użyj [szablonu jednostronicowego](https://aka.ms/AA5s08a).
     * Prezentacja klienta. Użyj [szablonu prezentacji](https://aka.ms/AA5s7ql).
     * Logo połączonego rozwiązania.
 
-## <a name="publish-your-integrated-solution"></a>Publikowanie zintegrowanego rozwiązania
+## <a name="publish-your-integrated-solution"></a>Opublikuj swoje zintegrowane rozwiązanie
 
-Po zakończeniu integracji technicznej i materiałów marketingowych zapoznaj się z przewodnikiem wydawcy dotyczącym [usług doradczych dla Microsoft AppSource i witryny Azure Marketplace](https://docs.microsoft.com/azure/marketplace/consulting-services). Użyj tego zasobu, aby określić, czy Twoje rozwiązanie zostanie opublikowane w Microsoft AppSource lub witrynie Azure Marketplace. Skorzystaj również z przewodnika, aby przygotować artefakty publikowania i zakończyć proces publikowania.
+Po zakończeniu integracji technicznej i zabezpieczenia marketingowego zapoznaj się z przewodnikiem dla [wydawców dla usług konsultingowych dla microsoft appsource i azure marketplace](https://docs.microsoft.com/azure/marketplace/consulting-services). Użyj tego zasobu, aby ustalić, czy rozwiązanie zostanie opublikowane w usłudze Microsoft AppSource lub Azure Marketplace. Skorzystaj również z przewodnika, aby przygotować artefakty publikowania i ukończyć proces publikowania.
 
-Chociaż pięć typów usług jest dostępnych w przypadku ofert usług konsultingowych, zintegrowane rozwiązanie musi być dowodem koncepcji lub pełną implementacją.
+Chociaż pięć typów usług są dostępne dla ofert usług konsultingowych, zintegrowane rozwiązanie musi być albo dowód koncepcji lub pełnej implementacji.
 
 ## <a name="go-to-market-with-your-integrated-solution"></a>Przejdź na rynek dzięki zintegrowanemu rozwiązaniu
 
-Jeśli Twoje rozwiązanie działa w Microsoft AppSource lub witrynie Azure Marketplace, chcesz zwiększyć świadomość i zapotrzebowanie w ramach działań marketingowych. Przejrzyj działania wymienione w [planie projektu i na osi czasu](https://aka.ms/AA5qiuc). Ten zasób obejmuje działania, które partnerzy mogą znaleźć w ramach własnych zespołów i ze sobą. Następnie uzyskaj dostęp do [korzyści ze sprzedaży](https://docs.microsoft.com/azure/marketplace/gtm-your-marketplace-benefits#list-trial-and-consulting-benefits) dla partnerów, którzy publikują się w portalu Marketplace. Wszystkie oferty zintegrowanego rozwiązania są uprawnione do korzystania z korzyści na poziomie wersji próbnej.
+Gdy twoje rozwiązanie jest dostępne w usłudze Microsoft AppSource lub w portalu Azure Marketplace, należy zwiększyć rozpoznawalność i popyt za pomocą działań marketingowych. Przejrzyj działania wymienione w [planie projektu i na osi czasu](https://aka.ms/AA5qiuc). Ten zasób obejmuje działania, które partnerzy mogą prowadzić w ramach własnych zespołów i ze sobą nawzajem. Następnie uzyskaj dostęp [do korzyści dostępnych](https://docs.microsoft.com/azure/marketplace/gtm-your-marketplace-benefits#list-trial-and-consulting-benefits) dla partnerów, którzy publikują na rynku. Wszystkie oferty zintegrowanych rozwiązań kwalifikują się do świadczeń na poziomie próbnym.
 
 ## <a name="next-steps"></a>Następne kroki
 
-Aby uzyskać informacje na temat kupowania zintegrowanego rozwiązania w portalu Marketplace, zobacz [zintegrowane rozwiązania](https://docs.microsoft.com/azure/marketplace/integrated-solutions).
+Aby uzyskać informacje na temat zakupu zintegrowanego rozwiązania na rynku, zobacz [Zintegrowane rozwiązania](https://docs.microsoft.com/azure/marketplace/integrated-solutions).

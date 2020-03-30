@@ -1,7 +1,7 @@
 ---
-title: 'Oceń model: odwołanie do modułu'
+title: 'Ocena modelu: Odwołanie do modułu'
 titleSuffix: Azure Machine Learning
-description: Dowiedz się, jak używać modułu oceny modelu w Azure Machine Learning do mierzenia dokładności przeszkolonego modelu.
+description: Dowiedz się, jak użyć modułu Oceniaj model w usłudze Azure Machine Learning, aby zmierzyć dokładność uczonych modeli.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,20 +9,20 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 02/24/2020
-ms.openlocfilehash: a665ee97f923620bb484243d5cd4904a647969e4
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: c1bcbb6a368c9c80f968c48c1a6e0bc6c95133d6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77917440"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79456408"
 ---
-# <a name="evaluate-model-module"></a>Oceń moduł modelu
+# <a name="evaluate-model-module"></a>Ocena modułu modelu
 
-W tym artykule opisano moduł w programie Azure Machine Learning Designer (wersja zapoznawcza).
+W tym artykule opisano moduł w projektancie usługi Azure Machine Learning (wersja zapoznawcza).
 
-Ten moduł służy do mierzenia dokładności nauczonego modelu. Dostarczasz zestaw danych zawierający wyniki wygenerowane na podstawie modelu, a moduł **oceny modelu** obliczy zestaw metryk oceny standardowej w branży.
+Ten moduł służy do pomiaru dokładności przeszkolonego modelu. Podasz zestaw danych zawierający wyniki wygenerowane z modelu, a moduł **Oceń model** oblicza zestaw standardowych metryk oceny branżowej.
   
- Metryki zwracane przez **ocenę modelu** zależą od typu ocenianego modelu:  
+ Metryki zwracane przez **Oceń model** zależą od typu ocenianego modelu:  
   
 -   **Modele klasyfikacji**    
 -   **Modele regresji**  
@@ -30,56 +30,56 @@ Ten moduł służy do mierzenia dokładności nauczonego modelu. Dostarczasz zes
 
 
 > [!TIP]
-> Jeśli dopiero zaczynasz korzystać z wersji ewaluacyjnej modelu, zalecamy korzystanie z serii wideo przez Dr. Stephen Elston w ramach [kursu uczenia maszynowego](https://blogs.technet.microsoft.com/machinelearning/2015/09/08/new-edx-course-data-science-machine-learning-essentials/) z usługi EdX. 
+> Jeśli jesteś nowy w ocenie modelu, zalecamy serię wideo dr Stephena Elstona, w ramach [kursu uczenia maszynowego](https://blogs.technet.microsoft.com/machinelearning/2015/09/08/new-edx-course-data-science-machine-learning-essentials/) firmy EdX. 
 
 
-Istnieją trzy sposoby używania modułu **szacowania modelu** :
+Istnieją trzy sposoby użycia modułu **Oceń model:**
 
-+ Generuj wyniki na danych szkoleniowych i oceniaj model na podstawie tych wyników
-+ Generuj wyniki na modelu, ale Porównaj te wyniki z wynikami w zestawie testów zarezerwowanych
-+ Porównanie wyników dla dwóch różnych, ale powiązanych modeli, przy użyciu tego samego zestawu danych
++ Generowanie wyników na podstawie danych treningowych i ocena modelu na podstawie tych wyników
++ Generowanie wyników w modelu, ale porównać te wyniki z wynikami na zarezerwowanym zestawie testów
++ Porównaj wyniki dla dwóch różnych, ale powiązanych modeli, używając tego samego zestawu danych
 
 ## <a name="use-the-training-data"></a>Korzystanie z danych szkoleniowych
 
-Aby oszacować model, należy połączyć zestaw danych, który zawiera zestaw kolumn wejściowych i wyników.  Jeśli żadne inne dane nie są dostępne, możesz użyć oryginalnego zestawu danych.
+Aby ocenić model, należy połączyć zestaw danych zawierający zestaw kolumn wejściowych i wyników.  Jeśli żadne inne dane nie są dostępne, można użyć oryginalnego zestawu danych.
 
-1. Podłącz **wynikowy zestaw danych** wyjściowych z [modelu wynikowego](./score-model.md) do danych wejściowych **oceny modelu**. 
-2. Kliknij pozycję **Oceń moduł modelu** i uruchom potok, aby wygenerować wyniki oceny.
+1. Połącz dane **wyjściowe zestawu danych Scored** [modelu wynikowego](./score-model.md) z wejściem **evaluate modelu**. 
+2. Kliknij **przycisk Oceń moduł modelu** i uruchom potok, aby wygenerować wyniki oceny.
 
 ## <a name="use-testing-data"></a>Korzystanie z danych testowych
 
-Typowy scenariusz w uczeniu maszynowym polega na rozdzieleniu oryginalnego zestawu danych na szkolenia i testowanie zestawów DataSet przy użyciu modułu [Split](./split-data.md) lub [partycji i przykładowego](./partition-and-sample.md) modułu. 
+Typowym scenariuszem w uczeniu maszynowym jest oddzielenie oryginalnego zestawu danych na zestawy danych szkoleniowych i testowych przy użyciu modułu [Podziału](./split-data.md) lub [modułu Partycja i Przykład.](./partition-and-sample.md) 
 
-1. Podłącz **wynikowy zestaw danych** wyjściowych z [modelu wynikowego](score-model.md) do danych wejściowych **oceny modelu**. 
-2. Połącz dane wyjściowe modułu Split Data, który zawiera dane testowe do prawej strony **oceny modelu**.
-2. Kliknij pozycję **Oceń moduł modelu** i wybierz pozycję **Uruchom wybrane** , aby wygenerować wyniki oceny.
+1. Połącz dane **wyjściowe zestawu danych Scored** [modelu wynikowego](score-model.md) z wejściem **evaluate modelu**. 
+2. Połącz dane wyjściowe modułu Podziel dane, który zawiera dane testowe, z wejściem po prawej **stronie oceny modelu**.
+2. Kliknij **przycisk Oceń moduł modelu,** a następnie wybierz pozycję **Uruchom wybraną,** aby wygenerować wyniki oceny.
 
-## <a name="compare-scores-from-two-models"></a>Porównaj wyniki z dwóch modeli
+## <a name="compare-scores-from-two-models"></a>Porównanie wyników z dwóch modeli
 
-Możesz również połączyć drugi zestaw wyników do **oceny modelu**.  Wyniki mogą być udostępnionym zestawem ewaluacyjnym ze znanymi wynikami lub zestawem wyników z innego modelu dla tych samych danych.
+Można również podłączyć drugi zestaw wyników do **oceny modelu**.  Wyniki mogą być zestawem oceny udostępnionej, który ma znane wyniki lub zestaw wyników z innego modelu dla tych samych danych.
 
-Ta funkcja jest przydatna, ponieważ można łatwo porównać wyniki z dwóch różnych modeli na tych samych danych. Lub można porównać wyniki z dwóch różnych przebiegów nad tymi samymi danymi z różnymi parametrami.
+Ta funkcja jest przydatna, ponieważ można łatwo porównać wyniki z dwóch różnych modeli na tych samych danych. Można też porównać wyniki z dwóch różnych przebiegów za pomocą tych samych danych z różnymi parametrami.
 
-1. Podłącz **wynikowy zestaw danych** wyjściowych z [modelu wynikowego](score-model.md) do danych wejściowych **oceny modelu**. 
-2. Połącz dane wyjściowe modułu modelu wynikowego dla drugiego modelu z prawej strony **oceny modelu**.
-3. Uruchamianie potoku.
+1. Połącz dane **wyjściowe zestawu danych Scored** [modelu wynikowego](score-model.md) z wejściem **evaluate modelu**. 
+2. Podłącz dane wyjściowe modułu Score Model dla drugiego modelu do po prawej stronie wejścia **Oceniaj model**.
+3. Prześlij potok.
 
 ## <a name="results"></a>Wyniki
 
-Po uruchomieniu **oceny modelu**kliknij prawym przyciskiem myszy moduł i wybierz polecenie **Wizualizuj wyniki oceny** , aby wyświetlić wyniki.
+Po uruchomieniu **opcji Oceń model**kliknij prawym przyciskiem myszy moduł i wybierz polecenie **Wizualizacja wyników oceny,** aby wyświetlić wyniki.
 
-W przypadku łączenia zestawów danych z obydwoma danymi wejściowymi **modelu szacowania**wyniki będą zawierać metryki dla zestawu danych lub obu modeli.
-Model lub dane dołączone do lewego portu są przedstawiane jako pierwsze w raporcie, a następnie metryki dla zestawu danych lub modelu dołączonego do właściwego portu.  
+Jeśli połączysz zestawy danych z obu danych wejściowych **Evaluate Model,** wyniki będą zawierać metryki dla obu zestaw danych lub obu modeli.
+Model lub dane dołączone do lewego portu są prezentowane najpierw w raporcie, a następnie metryki dla zestawu danych lub modelu dołączonego na prawym porcie.  
 
-Na przykład poniższa ilustracja przedstawia porównanie wyników z dwóch modeli klastrowania utworzonych na podstawie tych samych danych, ale z innymi parametrami.  
+Na przykład poniższa ilustracja przedstawia porównanie wyników z dwóch modeli klastrowania, które zostały zbudowane na tych samych danych, ale z różnymi parametrami.  
 
-![Comparing2Models](media/module/evaluate-2-models.png)  
+![Porównanie2Modele](media/module/evaluate-2-models.png)  
 
-Ponieważ jest to Model klastrowania, wyniki oceny różnią się od tego, czy porównano wyniki z dwóch modeli regresji, czy porównano dwa modele klasyfikacji. Jednak ogólna prezentacja jest taka sama. 
+Ponieważ jest to model klastrowania, wyniki oceny są inne niż w przypadku porównania wyników z dwóch modeli regresji lub porównano dwa modele klasyfikacji. Jednak ogólna prezentacja jest taka sama. 
 
 ## <a name="metrics"></a>Metryki
 
-W tej sekcji opisano metryki zwracane dla określonych typów modeli obsługiwanych do użycia z **modelem oszacowania**:
+W tej sekcji opisano metryki zwrócone dla określonych typów modeli obsługiwanych do użycia z **oceną modelu:**
 
 + [modele klasyfikacji](#metrics-for-classification-models)
 + [modele regresji](#metrics-for-regression-models)
@@ -87,65 +87,65 @@ W tej sekcji opisano metryki zwracane dla określonych typów modeli obsługiwan
 
 ### <a name="metrics-for-classification-models"></a>Metryki dla modeli klasyfikacji
 
-Podczas oceniania modeli klasyfikacji są raportowane następujące metryki.
+Podczas oceny modeli klasyfikacji są zgłaszane następujące metryki.
   
--   **Dokładność** mierzy dobrą jakość modelu klasyfikacji jako proporcje prawdziwych wyników do łącznych przypadków.  
+-   **Dokładność** mierzy dobroć modelu klasyfikacji jako proporcję rzeczywistych wyników do wszystkich przypadków.  
   
--   **Precyzja** jest proporcją prawdziwych wyników dla wszystkich pozytywnych wyników.  
+-   **Precyzja** to proporcja prawdziwych wyników w stosunku do wszystkich pozytywnych wyników.  
   
--   Funkcja **odwoływania** jest częścią wszystkich poprawnych wyników zwracanych przez model.  
+-   **Odwołanie** jest ułamek wszystkich poprawnych wyników zwracanych przez model.  
   
--   **F-Score** jest obliczana jako średnia ważona precyzji i odzyskanie między 0 i 1, gdzie idealna wartość F-score to 1.  
+-   **Wynik F** jest obliczany jako średnia ważona precyzji i odwołania między 0 i 1, gdzie idealna wartość wyniku F wynosi 1.  
   
--   **AUC** mierzy obszar pod krzywą na podstawie prawdziwej liczby dodatniej na osi y i fałszywych wartości dodatnich na osi x. Ta Metryka jest przydatna, ponieważ udostępnia pojedynczą liczbę, która umożliwia porównywanie modeli różnych typów.  
+-   **AUC** mierzy obszar pod krzywą wykreśloną z prawdziwymi wartościami dodatnimi na osi y i fałszywymi alarmami na osi x. Ta metryka jest przydatna, ponieważ zawiera jedną liczbę, która umożliwia porównywanie modeli różnych typów.  
   
-- **Średnia utrata dzienników** to pojedynczy wynik służący do wyrażania grzywny dla nieprawidłowych wyników. Jest ona obliczana jako różnica między dwoma rozkładami prawdopodobieństwa — wartość true i jeden w modelu.  
+- **Średnia strata dziennika** jest pojedynczy wynik używany do wyrażania kary za złe wyniki. Jest obliczana jako różnica między dwoma rozkładami prawdopodobieństwa — prawdziwym i jednym w modelu.  
   
-- **Utrata dzienników szkoleń** to pojedynczy wynik, który reprezentuje zalety klasyfikatora w przypadku prognoz losowych. Utrata dziennika mierzy niepewność modelu, porównując prawdopodobieństwa, które wyprowadza do znanych wartości (podstawa prawdy) w etykietach. Chcesz zminimalizować utratę dzienników dla modelu jako całości.
+- **Utrata dziennika szkolenia** jest pojedynczy wynik, który reprezentuje przewagę klasyfikatora nad losowego przewidywania. Utrata dziennika mierzy niepewność modelu, porównując prawdopodobieństwa, które wyprowadza ze znanymi wartościami (prawdy o ziemi) w etykietach. Chcesz zminimalizować utratę dziennika dla modelu jako całości.
 
 ### <a name="metrics-for-regression-models"></a>Metryki dla modeli regresji
  
-Metryki zwracane dla modeli regresji zaprojektowano w celu oszacowania ilości błędu.  Model jest traktowany jak dopasować dane, jeśli różnica między wartościami obserwowanymi a przewidywanymi jest mała. Jednak, patrząc na wzorzec reszt (różnica między dowolnym przewidzianym punktem a odpowiadającą jej wartością rzeczywistą), może postanowić dużo o potencjalną bias w modelu.  
+Metryki zwracane dla modeli regresji są przeznaczone do szacowania ilości błędu.  Model jest uważany za dobrze dopasowany do danych, jeśli różnica między obserwowanymi i przewidywanymi wartościami jest niewielka. Jednak patrząc na wzór pozostałości (różnica między jednym przewidywanym punktem a odpowiadającą mu wartością rzeczywistą) może wiele powiedzieć o potencjalnym odchyleniu w modelu.  
   
  Następujące metryki są zgłaszane do oceny modeli regresji.
   
-- **Średnia wartość błędu bezwzględnego (Mae)** mierzy, jak blisko prognoz są rzeczywiste wyniki; w rezultacie niższy jest lepszy.  
+- **Średni błąd bezwzględny (MAE)** mierzy, jak blisko prognoz są rzeczywiste wyniki; w związku z tym lepszy jest niższy wynik.  
   
-- **Element główny średniej wartości kwadratowej (RMSE)** tworzy pojedynczą wartość, która podsumowuje błąd w modelu. Podniesienie różnica polega na tym, że Metryka nie uwzględnia różnicy między przekroczeniem prognozowania a podpowiadaniem.  
+- **Główny średni kwadratowy błąd (RMSE)** tworzy pojedynczą wartość, która podsumowuje błąd w modelu. Przez kwadratury różnicy, metryki pomija różnicę między przewidywanie i niedoprzewidowania.  
   
-- **Względny błąd względny (Rae)** jest względną absolutną różnicą między wartościami oczekiwanymi i rzeczywistymi. względne, ponieważ średnia różnica jest dzielona przez średnią arytmetyczną.  
+- **Względny błąd bezwzględny (RAE)** jest względną różnicą bezwzględną między wartościami oczekiwanymi a rzeczywistymi; względna, ponieważ średnia różnica jest podzielona przez średnią arytmetyczną.  
   
-- **Względny kwadratowy błąd (RSE)** podobnie normalizuje łączny kwadratowy błąd przewidywanych wartości przez podzielenie przez łączny kwadrat błędów rzeczywistych wartości.  
+- **Względny kwadratowy błąd (RSE)** podobnie normalizuje całkowity kwadratowy błąd przewidywanych wartości przez podzielenie przez całkowity kwadrat błędu rzeczywistych wartości.  
   
 
   
-- **Współczynnik wyznaczania**, często określany jako R<sup>2</sup>, reprezentuje siłę predykcyjną modelu jako wartość z przedziału od 0 do 1. Zero oznacza, że model jest losowo (wyjaśnia nic); 1 oznacza, że jest idealnym dopasowaniem. Należy zachować ostrożność w interpretacji wartości R<sup>2</sup> , ponieważ niskie wartości mogą być całkowicie normalne i mogą być podejrzane wysokie wartości.
+- **Współczynnik oznaczalności,** często określany jako R<sup>2,</sup>reprezentuje moc predykcyjną modelu jako wartość między 0 a 1. Zero oznacza, że model jest losowy (nic nie wyjaśnia); 1 oznacza, że jest idealne dopasowanie. Należy jednak zachować ostrożność podczas interpretacji wartości R<sup>2,</sup> ponieważ niskie wartości mogą być całkowicie normalne, a wysokie wartości mogą być podejrzane.
 
 ###  <a name="metrics-for-clustering-models"></a>Metryki dla modeli klastrowania
 
-Ponieważ modele klastrów znacznie różnią się od modeli klasyfikacji i regresji w wielu aspektach, funkcja [Oceń model](evaluate-model.md) zwraca również inny zestaw statystyk dla modeli klastrowania.  
+Ponieważ modele klastrowania różnią się znacznie od modeli klasyfikacji i regresji pod wieloma względami, [Funkcja Oceń model](evaluate-model.md) zwraca również inny zestaw statystyk dla modeli klastrowania.  
   
- Statystyki zwracane przez Model klastrowania opisują liczbę punktów danych przypisanych do każdego klastra, wielkość rozdzielenia między klastrami i jak ściśle te punkty danych są dzielone w ramach poszczególnych klastrów.  
+ Statystyki zwracane dla modelu klastrowania opisują, ile punktów danych zostało przypisanych do każdego klastra, ilość separacji między klastrami i jak ściśle punkty danych są zgrupowane w każdym klastrze.  
   
- Statystyki dla modelu klastrowania są uśredniane w całym zestawie danych, z dodatkowymi wierszami zawierającymi dane statystyczne na klaster.  
+ Statystyki modelu klastrowania są uśredniane w całym zestawie danych, z dodatkowymi wierszami zawierającymi statystyki na klaster.  
   
 Następujące metryki są zgłaszane do oceny modeli klastrowania.
     
--   Wyniki w kolumnie, **Średnia odległość do innego centrum**, reprezentują jak blisko, średnio, każdy punkt w klastrze to centroids wszystkich innych klastrów.   
+-   Wyniki w kolumnie **Średnia odległość do innego środka**, reprezentują, jak blisko, średnio, każdy punkt w klastrze jest do centroidów wszystkich innych klastrów.   
 
--   Wyniki w kolumnie, **Średnia odległość do centrum klastra**, reprezentują bliskość wszystkich punktów w klastrze do centroida tego klastra.  
+-   Wyniki w kolumnie **Średnia odległość do centrum klastra**reprezentują bliskość wszystkich punktów w klastrze z centroidem tego klastra.  
   
--   Kolumna **liczba punktów** pokazuje, ile punktów danych zostało przypisanych do każdego klastra, oraz łączną całkowitą liczbę punktów danych w dowolnym klastrze.  
+-   Kolumna **Liczba punktów** pokazuje, ile punktów danych zostało przypisanych do każdego klastra, wraz z całkowitą całkowitą liczbą punktów danych w dowolnym klastrze.  
   
      Jeśli liczba punktów danych przypisanych do klastrów jest mniejsza niż całkowita liczba dostępnych punktów danych, oznacza to, że nie można przypisać punktów danych do klastra.  
   
--   Wyniki w kolumnie, **maksymalnie odległość do centrum klastra**, reprezentują sumę odległości między każdym punktem a centroidaem klastra tego punktu.  
+-   Wyniki w kolumnie **Maksymalna odległość do Centrum klastra**reprezentują sumę odległości między każdym punktem a środkiem ciężkości klastra tego punktu.  
   
-     Jeśli ta liczba jest wysoka, może to oznaczać, że klaster jest szeroko rozpraszany. Należy zapoznać się z tą statystyką wraz z **średnim dystansem do centrum klastra** , aby określić rozmieszczenie klastra.   
+     Jeśli ta liczba jest wysoka, może to oznaczać, że klaster jest szeroko rozproszone. Należy przejrzeć tę statystykę wraz z **Centrum klastra średnia odległość** do klastra, aby określić rozkład klastra.   
 
--   **Łączny wynik oceny** u dołu każdej sekcji wyników zawiera listę średnich wyników dla klastrów utworzonych w tym konkretnym modelu.  
+-   **Wynik połączonej oceny** u dołu każdej sekcji wyników zawiera listę uśrednionych wyników dla klastrów utworzonych w tym konkretnym modelu.  
   
 
 ## <a name="next-steps"></a>Następne kroki
 
-Zapoznaj się z [zestawem modułów dostępnych](module-reference.md) do Azure Machine Learning. 
+Zobacz [zestaw modułów dostępnych dla](module-reference.md) usługi Azure Machine Learning. 

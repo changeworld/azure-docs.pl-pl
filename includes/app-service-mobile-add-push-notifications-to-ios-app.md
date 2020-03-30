@@ -5,22 +5,22 @@ ms.service: app-service-mobile
 ms.topic: include
 ms.date: 08/23/2018
 ms.openlocfilehash: a53d2b259bc4ece12c4ccb1cf47409cd2f0af86f
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67183916"
 ---
-**Objective-C**:
+**Cel C**:
 
-1. W **QSAppDelegate.m**, zaimportować zestaw SDK systemu iOS i **QSTodoService.h**:
+1. W **pliku QSAppDelegate.m**zaimportuj sdk iOS i **QSTodoService.h**:
 
     ```objc
     #import <MicrosoftAzureMobile/MicrosoftAzureMobile.h>
     #import "QSTodoService.h"
     ```
 
-2. W `didFinishLaunchingWithOptions` w **QSAppDelegate.m**, Wstaw następujące wiersze, tuż przedtem `return YES;`:
+2. W `didFinishLaunchingWithOptions` **pliku QSAppDelegate.m**wstawić następujące `return YES;`wiersze tuż przed:
 
     ```objc
     UIUserNotificationSettings* notificationSettings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert | UIUserNotificationTypeBadge | UIUserNotificationTypeSound categories:nil];
@@ -28,7 +28,7 @@ ms.locfileid: "67183916"
     [[UIApplication sharedApplication] registerForRemoteNotifications];
     ```
 
-3. W **QSAppDelegate.m**, Dodaj następujące metody programu obsługi. Aplikacji został zaktualizowany do obsługi powiadomień wypychanych. 
+3. W **pliku QSAppDelegate.m**dodaj następujące metody obsługi. Aplikacja jest teraz aktualizowana w celu obsługi powiadomień wypychanych. 
 
     ```objc
     // Registration with APNs is successful
@@ -97,9 +97,9 @@ ms.locfileid: "67183916"
     }
     ```
 
-**Kod SWIFT**:
+**Szybki**:
 
-1. Dodaj plik **ClientManager.swift** z następującą zawartością. Zastąp *AppUrl %* adres URL zaplecza aplikacji mobilnej Azure.
+1. Dodaj plik **ClientManager.swift** z następującą zawartością. Zamień *%AppUrl%* na adres URL zaplecza aplikacji azure mobile.
 
     ```swift
     class ClientManager {
@@ -107,13 +107,13 @@ ms.locfileid: "67183916"
     }
     ```
 
-2. W **ToDoTableViewController.swift**, Zastąp `let client` wiersza, która inicjuje `MSClient` z ten wiersz:
+2. W **ToDoTableViewController.swift**, `let client` zastąpić wiersz, `MSClient` który inicjuje z tego wiersza:
 
     ```swift
     let client = ClientManager.sharedClient
     ```
 
-3. W **AppDelegate.swift**, Zastąp treść metody `func application` w następujący sposób:
+3. W **AppDelegate.swift**, zastąpić `func application` treść w następujący sposób:
 
     ```swift
     func application(application: UIApplication,
@@ -126,7 +126,7 @@ ms.locfileid: "67183916"
     }
     ```
 
-4. W **AppDelegate.swift**, Dodaj następujące metody programu obsługi. Aplikacji został zaktualizowany do obsługi powiadomień wypychanych.
+4. W **AppDelegate.swift**, dodaj następujące metody obsługi. Aplikacja jest teraz aktualizowana w celu obsługi powiadomień wypychanych.
 
     ```swift
     func application(application: UIApplication,
