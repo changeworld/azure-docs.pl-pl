@@ -1,7 +1,7 @@
 ---
-title: Zarządzanie działaniami
-description: Opisuje koncepcje działania w rozwiązaniu VMware przez automatyczna synchronizacja
-titleSuffix: Azure VMware Solutions (AVS)
+title: Zarządzanie aktywnością CloudSimple
+titleSuffix: Azure VMware Solution by CloudSimple
+description: Opisuje pojęcia dotyczące aktywności w rozwiązaniu VMware przez CloudSimple
 author: sharaths-cs
 ms.author: dikamath
 ms.date: 04/30/2019
@@ -9,32 +9,32 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: ca20413b4f21ddfcf01021f8b003b30ad2195579
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 985fcc0aa99723fde5e0c11babe3777c31cbd4c3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77025099"
 ---
-# <a name="activity-management-overview"></a>Przegląd zarządzania działaniami
+# <a name="activity-management-overview"></a>Omówienie zarządzania aktywnością
 
-Funkcja automatycznej synchronizacji śledzi wszystkie działania, które mogą mieć wpływ na działanie środowiska chmury prywatnej do automatycznej synchronizacji. Działania obejmują alerty, zdarzenia, zadania i działania inspekcji. [Strony działań](monitor-activity.md) podsumowują wszystkie bieżące działania i umożliwiają przechodzenie do szczegółów w celu uzyskania dodatkowych szczegółów.
+CloudSimple śledzi wszystkie działania, które mogą mieć wpływ na funkcjonowanie środowiska chmury prywatnej. Działania obejmują alerty, zdarzenia, zadania i działania inspekcji. [Strony działania](monitor-activity.md) podsumowują wszystkie bieżące działania i umożliwiają przechodzenie do szczegółów, aby uzyskać dodatkowe informacje.
 
-## <a name="events"></a>Wydarzenia
+## <a name="events"></a>Zdarzenia
 
-Zdarzenia śledzą aktywność użytkowników i systemu w portalu automatycznej synchronizacji. Zdarzenia pokazują działanie powiązane z określonym zasobem i ważnością wpływu.  Zdarzenia można wyświetlić w portalu automatycznej synchronizacji.
+Zdarzenia śledzą aktywność użytkowników i systemu w portalu CloudSimple. Zdarzenia pokazują działanie skojarzone z określonym zasobem i ważność wpływu.  Zdarzenia można wyświetlić z portalu CloudSimple.
 
 ## <a name="alerts"></a>Alerty
 
-Alerty są powiadomieniami o wszelkich znaczących działaniach w środowisku automatycznej synchronizacji. Zdarzenia, które mają wpływ na rozliczenia lub dostęp użytkownika, są wyświetlane jako alerty. Alerty można potwierdzić w portalu automatycznej synchronizacji.
+Alerty są powiadomienia o wszelkich znaczących działań w środowisku CloudSimple. Zdarzenia wpływające na rozliczenia lub dostęp użytkowników są wyświetlane jako alerty.  Alerty można potwierdzić z portalu CloudSimple.
 
 ## <a name="tasks"></a>Zadania
 
-Zadania śledzą każdą operację użytkownika, która zajmuje więcej niż 30 sekund. Możesz monitorować postęp zadania w portalu automatycznej synchronizacji. W przypadku ukończonych zadań informacje obejmują łączny czas ukończenia.
+Zadania śledzą wszystkie działania użytkownika, które trwa więcej niż 30 sekund. Postęp zadania można monitorować za pomocą portalu CloudSimple.  W przypadku ukończonych zadań informacje obejmują całkowity czas ukończenia.
 
 ## <a name="audit"></a>Inspekcja
 
-Dzienniki inspekcji śledzą operacje użytkownika. Dzienniki inspekcji zawierają parametry podane dla operacji użytkownika. Dzienników inspekcji można użyć do monitorowania aktywności użytkowników dla wszystkich użytkowników.
+Dzienniki inspekcji śledzą operacje użytkownika. Dzienniki inspekcji zawierają parametry dostarczone dla operacji przez użytkownika.  Dzienniki inspekcji służy do monitorowania aktywności użytkowników dla wszystkich użytkowników.
 
 ## <a name="next-steps"></a>Następne kroki
 

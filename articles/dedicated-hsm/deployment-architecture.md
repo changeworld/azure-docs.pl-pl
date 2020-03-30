@@ -1,6 +1,6 @@
 ---
-title: Architektura wdrożenia - sprzętowego modułu zabezpieczeń platformy Azure w wersji dedykowanej | Dokumentacja firmy Microsoft
-description: Podstawowe zagadnienia, korzystając z platformy Azure w wersji dedykowanej w module HSM w ramach architektury aplikacji
+title: Architektura wdrażania — dedykowany moduł HSM platformy Azure | Dokumenty firmy Microsoft
+description: Podstawowe zagadnienia dotyczące projektowania podczas korzystania z dedykowanego modułu HSM platformy Azure jako części architektury aplikacji
 services: dedicated-hsm
 author: msmbaldwin
 manager: rkarlin
@@ -13,21 +13,21 @@ ms.topic: conceptual
 ms.date: 02/05/2020
 ms.author: mbaldwin
 ms.openlocfilehash: 89e3bf95a6b048e5e97cfb151ef9302b70eac1c9
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/06/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77048568"
 ---
 # <a name="azure-dedicated-hsm-deployment-architecture"></a>Architektura wdrożenia usługi Azure Dedicated HSM
 
-Azure w wersji dedykowanej przez sprzętowy moduł zabezpieczeń udostępnia kryptograficznych magazynu kluczy na platformie Azure. Spełnia wymagania dotyczące bezpieczeństwa. Klienci będą mogli korzystać z przy użyciu sprzętowego modułu zabezpieczeń platformy Azure w wersji dedykowanej, jeśli one:
+Dedykowany moduł HSM platformy Azure udostępnia kryptograficzne magazyny kluczy na platformie Azure. Spełnia rygorystyczne wymagania dotyczące zabezpieczeń. Klienci będą korzystać z korzystania z usługi Azure Dedykowany moduł HSM, jeśli:
 
-* Musi spełniać FIPS 140-2 Level 3 certyfikacji
-* Wymagają wyłącznego dostępu do modułu HSM
-* powinien mieć pełną kontrolę nad swoimi urządzeniami
+* Musi spełniać wymagania certyfikatu FIPS 140-2 Level 3
+* Wymagaj, aby miały wyłączny dostęp do modułu HSM
+* powinny mieć pełną kontrolę nad swoimi urządzeniami
 
-Moduły HSM są dystrybuowane w obrębie centrów danych firmy Microsoft i mogą łatwo udostępnić jako pary urządzeń jako podstawę rozwiązania o wysokiej dostępności. Mogą one również wdrożony kilku regionach, odporne na błędy rozwiązanie po awarii. Regiony z dedykowanego sprzętowego modułu zabezpieczeń dostępne obecnie są:
+Moduły HSM są rozproszone w centrach danych firmy Microsoft i mogą być łatwo udostępniane jako para urządzeń jako podstawa rozwiązania o wysokiej dostępności. Mogą one również być wdrażane w różnych regionach w celu rozwiązania odporne na awarie. Regiony z dedykowanym modułem HSM są obecnie dostępne:
 
 * Wschodnie stany USA
 * Wschodnie stany USA 2
@@ -48,29 +48,29 @@ Moduły HSM są dystrybuowane w obrębie centrów danych firmy Microsoft i mogą
 * Australia Wschodnia
 * Australia Południowo-Wschodnia
 
-Każda z tych regionów ma stojakami HSM wdrożone w dwóch niezależnych centrów danych lub przynajmniej dwóch strefach dostępności niezależne. Azja południowo-wschodnia ma trzy strefy dostępności i wschodnie stany USA 2 ma dwa. Europa, Azja Wschodnia i USA, które oferuje usługi w wersji dedykowanej przez moduł HSM jest daje w sumie ośmiu regionach. Aby uzyskać więcej informacji na temat regionów świadczenia usługi Azure, zapoznaj się z [informacjami o oficjalnych regionach platformy Azure](https://azure.microsoft.com/global-infrastructure/regions/).
-Pewne czynniki projektowania dla dowolnego rozwiązania oparte na dedykowany przez moduł HSM są lokalizacji/opóźnienia i wysokiej dostępności i obsługi innych aplikacji rozproszonych.
+Każdy z tych regionów ma stojaki HSM wdrożone w dwóch niezależnych centrach danych lub co najmniej dwóch niezależnych strefach dostępności. Azja Południowo-Wschodnia ma trzy strefy dostępności, a wschodnie STANY USA 2 dwa. Istnieje w sumie osiem regionów w Europie, Azji i USA, które oferują dedykowaną usługę HSM. Aby uzyskać więcej informacji na temat regionów platformy Azure, zobacz oficjalne [informacje o regionach platformy Azure](https://azure.microsoft.com/global-infrastructure/regions/).
+Niektóre czynniki projektowe dla dowolnego dedykowanego rozwiązania opartego na modułach HSM to lokalizacja/opóźnienie, wysoka dostępność i obsługa innych aplikacji rozproszonych.
 
 ## <a name="device-location"></a>Lokalizacja urządzenia
 
-Optymalne lokalizacji urządzenia sprzętowego modułu zabezpieczeń zbliża się najbliższy do aplikacji, wykonywanie operacji kryptograficznych. Opóźnienia w regionie powinien być oznaczony jedną cyfrą milisekund. Opóźnienie między regionami, może być 5 do 10 razy wyższa niż to.
+Optymalna lokalizacja urządzenia HSM znajduje się w najbliższej odległości od aplikacji wykonujących operacje kryptograficzne. Oczekuje się, że opóźnienie w regionie będzie jednocyfrowe milisekundy. Opóźnienie między regionami może być 5 do 10 razy wyższe niż to.
 
 ## <a name="high-availability"></a>Wysoka dostępność
 
-Osiągaj wysoką wydajność, klient korzystać tylko dwa urządzenia HSM w regionie, skonfigurowanych za pomocą oprogramowania firmy Gemalto jako parze o wysokiej dostępności. Ten typ wdrożenia zapewnia dostępność kluczy, jeśli pojedyncze urządzenie napotka problem uniemożliwia klucza operacji przetwarzania. Ponadto znacząco zmniejsza ryzyko podczas przeprowadzania konserwacji w zakresie usuwania awarii, takie jak zastąpienie dostaw energii. Jest ważne w przypadku projekt, aby uwzględnić regionalnym poziomie awarii. Regionalnymi awariami poziomu może się zdarzyć w przypadku klęski żywiołowe, takie jak hurricanes, powodzie lub trzęsienia ziemi. Te typy zdarzeń powinny być ograniczona przez inicjowania obsługi urządzeń przez moduł HSM w innym regionie. Urządzenia wdrożone w innym regionie mogą łączyć się ze sobą za pośrednictwem firmy Gemalto konfiguracji oprogramowania. Oznacza to, że minimalna wdrożenia o wysokiej dostępności i odzyskiwanie po awarii odporne na błędy rozwiązanie jest cztery urządzenia HSM w dwóch regionach. Lokalne nadmiarowość i nadmiarowości w regionach może służyć jako punkt odniesienia można dodać kolejne sprzętowego modułu zabezpieczeń urządzenia wdrożeń w celu zapewnienia obsługi opóźnienia, pojemności lub on spełniać inne wymagania specyficzne dla aplikacji.
+Aby osiągnąć wysoką dostępność, klient musi używać dwóch urządzeń HSM w regionie, które są skonfigurowane przy użyciu oprogramowania Gemalto jako pary wysokiej dostępności. Ten typ wdrożenia zapewnia dostępność kluczy, jeśli na jednym urządzeniu wystąpi problem uniemożliwiający mu przetwarzanie operacji klucza. To również znacznie zmniejsza ryzyko podczas wykonywania przerwy / naprawy konserwacji, takich jak wymiana zasilania. Ważne jest, aby projekt uwzględniał wszelkiego rodzaju awarie na poziomie regionalnym. Awarie na poziomie regionalnym mogą wystąpić, gdy występują klęski żywiołowe, takie jak huragany, powodzie lub trzęsienia ziemi. Te typy zdarzeń powinny być złagodzone przez inicjowanie obsługi administracyjnej urządzeń HSM w innym regionie. Urządzenia wdrożone w innym regionie mogą być sparowane ze sobą za pomocą konfiguracji oprogramowania Gemalto. Oznacza to, że minimalne wdrożenie dla rozwiązania o wysokiej dostępności i odporności na awarie to cztery urządzenia HSM w dwóch regionach. Nadmiarowość i nadmiarowość lokalna w różnych regionach może służyć jako punkt odniesienia, aby dodać wszelkie dalsze wdrożenia urządzeń HSM do obsługi opóźnienia, pojemności lub w celu spełnienia innych wymagań specyficznych dla aplikacji.
 
 ## <a name="distributed-application-support"></a>Obsługa aplikacji rozproszonych
 
-Dedykowane urządzenia sprzętowego modułu zabezpieczeń są zazwyczaj wdrożone w odniesieniu do aplikacji, które trzeba wykonać magazynu kluczy i operacjami pobierania klucza. Dedykowane urządzenia sprzętowego modułu zabezpieczeń znajduje się 10 partycji dla pomocy technicznej niezależnie od aplikacji. Lokalizacji urządzenia powinna być oparta na holistycznego widoku wszystkie aplikacje, które muszą korzystać z niej.
+Dedykowane urządzenia HSM są zazwyczaj wdrażane w celu obsługi aplikacji, które muszą wykonywać operacje przechowywania kluczy i pobierania kluczy. Dedykowane urządzenia HSM mają 10 partycji do obsługi niezależnych aplikacji. Lokalizacja urządzenia powinna opierać się na całościowym widoku wszystkich aplikacji, które muszą korzystać z usługi.
 
 ## <a name="next-steps"></a>Następne kroki
 
-Po określeniu architektura wdrożenia większość działań konfiguracyjnych do wdrożenia tej architektury będzie świadczona przez firmy Gemalto. Obejmuje to konfigurację urządzenia, a także aplikacji scenariuszy integracji. Aby uzyskać więcej informacji, Skorzystaj z portalu [obsługi klienta firmy Gemalto](https://supportportal.gemalto.com/csm/) i Pobierz przewodniki dotyczące administracji i konfiguracji. Witryna partner firmy Microsoft zawiera różne przewodnikach dotyczących integracji.
-Zaleca się, że wszystkie kluczowe pojęcia usługi, takie jak wysoka dostępność i bezpieczeństwo na przykład są dobrze zrozumiałe przed device provisioning lub projekt aplikacji i wdrożenia.
-Dodatkowe tematy poziomu pojęcia:
+Po określeniu architektury wdrażania większość działań konfiguracyjnych w celu zaimplementowania tej architektury zostanie dostarczona przez Gemalto. Obejmuje to konfigurację urządzenia, a także scenariusze integracji aplikacji. Aby uzyskać więcej informacji, skorzystaj z portalu [obsługi klienta Gemalto](https://supportportal.gemalto.com/csm/) i przewodników administracyjnych i konfiguracyjnych pobierania. Witryna partnera firmy Microsoft zawiera wiele przewodników integracji.
+Zaleca się, aby wszystkie kluczowe pojęcia usługi, takie jak wysoka dostępność i zabezpieczenia, na przykład były dobrze rozumiane przed inicjowania obsługi administracyjnej urządzenia lub projektowania aplikacji i wdrażania.
+Dalsze tematy na poziomie koncepcji:
 
 * [Wysoka dostępność](high-availability.md)
 * [Zabezpieczenia fizyczne](physical-security.md)
-* [Sieć](networking.md)
+* [Obsługa sieci](networking.md)
 * [Możliwości obsługi](supportability.md)
-* [Monitorowanie](monitoring.md)
+* [Monitorowania](monitoring.md)

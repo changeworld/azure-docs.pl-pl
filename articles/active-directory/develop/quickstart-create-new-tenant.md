@@ -9,18 +9,18 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: quickstart
-ms.date: 02/05/2019
+ms.date: 03/12/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev, identityplatformtop40, fasttrack-edit
-ms.openlocfilehash: ffd47d886a9d74c637f4f7ff634b3fd4c4a77574
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 1d2140ca0064e2eb6b12726bcee7bf5362de8fbe
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79240870"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79408287"
 ---
-# <a name="quickstart-set-up-a-tenant"></a>Szybki Start: Konfigurowanie dzierżawy
+# <a name="quickstart-set-up-a-tenant"></a>Szybki start: konfigurowanie dzierżawy
 
 Platforma tożsamości firmy Microsoft umożliwia deweloperom tworzenie aplikacji przeznaczonych dla wielu różnych niestandardowych środowisk oraz tożsamości usługi Microsoft 365. Aby rozpocząć korzystanie z platformy tożsamości firmy Microsoft, należy uzyskać dostęp do środowiska, nazywanego również dzierżawą usługi Azure AD, które umożliwia rejestrowania aplikacji i zarządzanie nimi, uzyskać dostęp do danych platformy Microsoft 365 i wdrożyć niestandardowe ograniczenia dostępu warunkowego i dzierżawy.
 
@@ -57,7 +57,7 @@ Jeśli nie masz istniejącej dzierżawy skojarzonej z kontem, pod nazwą konta z
 
 ### <a name="create-a-new-azure-ad-tenant"></a>Tworzenie nowej dzierżawy usługi Azure AD
 
-Jeśli nie masz jeszcze dzierżawy usługi Azure AD lub chcesz utworzyć nową na potrzeby projektowania, zobacz [Przewodnik Szybki Start](../fundamentals/active-directory-access-create-new-tenant.md) lub po prostu postępuj zgodnie z [tworzeniem katalogów](https://portal.azure.com/#create/Microsoft.AzureActiveDirectory). Aby utworzyć nową dzierżawę, należy podać następujące informacje:
+Jeśli nie masz jeszcze dzierżawy usługi Azure AD lub chcesz utworzyć nową dla rozwoju, zobacz [szybki start](../fundamentals/active-directory-access-create-new-tenant.md) lub po prostu postępuj zgodnie z [funkcją tworzenia katalogu.](https://portal.azure.com/#create/Microsoft.AzureActiveDirectory) Aby utworzyć nową dzierżawę, należy podać następujące informacje:
 
 - **Nazwa organizacji**
 - **Domena początkowa** — to część adresu *. onmicrosoft.com. Możesz dodatkowo dostosować domenę w przyszłości.
@@ -72,6 +72,6 @@ Aby rozpocząć tworzenie aplikacji, które umożliwiają logowanie za pomocą k
 
 ## <a name="next-steps"></a>Następne kroki
 
-* Zapoznaj się z podręcznikiem Szybki start dotyczącym kodowania i zacznij uwierzytelniać użytkowników. 
-* Aby uzyskać więcej szczegółowych przykładów kodu, zapoznaj się z sekcją **Samouczki** w dokumentacji.
-* Chcesz wdrożyć aplikację w chmurze? Zapoznaj się z artykułem dotyczącym[wdrażania kontenerów na platformie Azure](https://docs.microsoft.com/azure/index?pivot=products&panel=containers).
+* [Zarejestruj aplikację](quickstart-register-app.md) i zintegruj się z platformą tożsamości firmy Microsoft. 
+* Poznaj [podstawy uwierzytelniania](authentication-scenarios.md).
+* Zobacz, [jak subskrypcje platformy Azure są skojarzone z usługą Azure Active Directory,](../fundamentals/active-directory-how-subscriptions-associated-directory.md) aby uzyskać szczegółowe informacje na temat relacji między subskrypcjami a dzierżawą usługi Azure AD.

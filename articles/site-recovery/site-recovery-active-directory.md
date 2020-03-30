@@ -1,6 +1,6 @@
 ---
-title: Konfigurowanie odzyskiwania po awarii Active Directory/DNS przy użyciu Azure Site Recovery
-description: W tym artykule opisano sposób implementacji rozwiązania do odzyskiwania po awarii dla Active Directory i systemu DNS z Azure Site Recovery.
+title: Konfigurowanie odzyskiwania po awarii usługi Active Directory/DNS za pomocą usługi Azure Site Recovery
+description: W tym artykule opisano sposób implementowania rozwiązania do odzyskiwania po awarii dla usługi Active Directory i systemu DNS za pomocą usługi Azure Site Recovery.
 author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
@@ -8,107 +8,107 @@ ms.topic: conceptual
 ms.date: 4/9/2019
 ms.author: mayg
 ms.openlocfilehash: 8c1f85217db12b60cdcd8ea0bdb65792b8d02648
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79257812"
 ---
-# <a name="set-up-disaster-recovery-for-active-directory-and-dns"></a>Konfigurowanie odzyskiwania po awarii dla Active Directory i systemu DNS
+# <a name="set-up-disaster-recovery-for-active-directory-and-dns"></a>Konfigurowanie odzyskiwania po awarii dla usługi Active Directory i systemu DNS
 
-Aplikacje dla przedsiębiorstw, takie jak SharePoint, Dynamics AX i SAP, zależą od Active Directory i infrastruktury DNS w celu poprawnego działania. Po skonfigurowaniu odzyskiwania po awarii dla aplikacji często należy odzyskać Active Directory i system DNS przed odzyskanie innych składników aplikacji, aby zapewnić poprawne działanie aplikacji.
+Aplikacje dla przedsiębiorstw, takie jak SharePoint, Dynamics AX i SAP, zależą od usługi Active Directory i infrastruktury DNS, aby działać poprawnie. Podczas konfigurowania odzyskiwania po awarii dla aplikacji, często trzeba odzyskać usługi Active Directory i DNS przed odzyskaniem innych składników aplikacji, aby zapewnić poprawne funkcje aplikacji.
 
-Za pomocą [Site Recovery](site-recovery-overview.md) można utworzyć plan odzyskiwania po awarii dla Active Directory. W przypadku wystąpienia przerwy można zainicjować pracę w trybie failover. Active Directory można uruchomić w ciągu kilku minut. Jeśli wdrożono Active Directory dla wielu aplikacji w lokacji głównej, na przykład w przypadku programu SharePoint i oprogramowania SAP, może zajść potrzeba przełączenia całej lokacji do trybu failover. Najpierw można przejść do trybu failover Active Directory przy użyciu Site Recovery. Następnie można przenieść inne aplikacje do trybu failover przy użyciu planów odzyskiwania specyficznych dla aplikacji.
+Za pomocą [funkcji Odzysk lokacji](site-recovery-overview.md) można utworzyć plan odzyskiwania po awarii dla usługi Active Directory. W przypadku wystąpienia zakłócenia można zainicjować przewijaniu w stan failover. Usługę Active Directory można uruchomić w ciągu kilku minut. Jeśli wdrożono usługi Active Directory dla wielu aplikacji w lokacji głównej, na przykład dla programu SharePoint i SAP, można wykonać w trybie fail over pełną witrynę. Najpierw można przejmować w tryb failoranty usługi Active Directory przy użyciu usługi Site Recovery. Następnie w pracy awaryjnej innych aplikacji przy użyciu planów odzyskiwania specyficznych dla aplikacji.
 
-W tym artykule wyjaśniono, jak utworzyć rozwiązanie odzyskiwania po awarii dla Active Directory. Zawiera wymagania wstępne i instrukcje trybu failover. Przed rozpoczęciem należy zapoznać się z Active Directory i Site Recovery.
+W tym artykule wyjaśniono, jak utworzyć rozwiązanie do odzyskiwania po awarii dla usługi Active Directory. Zawiera wymagania wstępne i instrukcje pracy awaryjnej. Przed rozpoczęciem należy zapoznać się z usługą Active Directory i odzyskiwaniem witryn.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Jeśli przeprowadzasz replikację do platformy Azure, [Przygotuj zasoby platformy Azure](tutorial-prepare-azure.md), w tym subskrypcję, Virtual Network platformy Azure, konto magazynu i magazyn Recovery Services.
+* Jeśli replikujesz na platformę Azure, [przygotuj zasoby platformy Azure](tutorial-prepare-azure.md), w tym subskrypcję, sieć wirtualną platformy Azure, konto magazynu i magazyn usług odzyskiwania.
 * Zapoznaj się z [wymaganiami dotyczącymi obsługi](site-recovery-support-matrix-to-azure.md) wszystkich składników.
 
 ## <a name="replicate-the-domain-controller"></a>Replikowanie kontrolera domeny
 
-- Należy skonfigurować Site Recovery replikację na co najmniej jednej maszynie wirtualnej, która hostuje kontroler domeny lub serwer DNS.
-- Jeśli w danym środowisku znajduje się wiele kontrolerów domeny, należy również skonfigurować dodatkowy kontroler domeny w lokacji docelowej. Dodatkowy kontroler domeny może być na platformie Azure lub w pomocniczym lokalnym centrum danych.
-- Jeśli masz tylko kilka aplikacji i jeden kontroler domeny, możesz chcieć jednocześnie przełączyć całą lokację do trybu failover. W tym przypadku zalecamy używanie Site Recovery do replikowania kontrolera domeny do lokacji docelowej (na platformie Azure lub w pomocniczym lokalnym centrum danych). Do [testowania pracy w trybie failover](#test-failover-considerations)można użyć tego samego zreplikowanego kontrolera domeny lub maszyny wirtualnej DNS.
-- - Jeśli masz wiele aplikacji i więcej niż jeden kontroler domeny w środowisku lub jeśli planujesz awaryjne przełączenie kilku aplikacji jednocześnie, oprócz replikowania maszyny wirtualnej kontrolera domeny z Site Recovery zalecamy skonfigurowanie dodatkowy kontroler domeny w lokacji docelowej (na platformie Azure lub w pomocniczym lokalnym centrum danych). W przypadku [testowego przełączania do trybu failover](#test-failover-considerations)można użyć kontrolera domeny, który jest replikowany przez Site Recovery. W przypadku trybu failover można użyć dodatkowego kontrolera domeny w lokacji docelowej.
+- Replikację usługi Site Recovery należy skonfigurować na co najmniej jednej maszynie wirtualnej, która obsługuje kontroler domeny lub usługę DNS.
+- Jeśli w środowisku znajduje się wiele kontrolerów domeny, należy również skonfigurować dodatkowy kontroler domeny w lokacji docelowej. Dodatkowy kontroler domeny może znajdować się na platformie Azure lub w pomocniczym lokalnym centrum danych.
+- Jeśli masz tylko kilka aplikacji i jeden kontroler domeny, możesz chcieć połączyć się w stan faila całej lokacji. W takim przypadku zaleca się użycie usługi Site Recovery do replikowania kontrolera domeny do lokacji docelowej (na platformie Azure lub w pomocniczym lokalnym centrum danych). Do [testowania trybu failover](#test-failover-considerations)można użyć tego samego replikowanego kontrolera domeny lub maszyny wirtualnej DNS .
+- - Jeśli w środowisku znajduje się wiele aplikacji i więcej niż jeden kontroler domeny lub jeśli planujesz awaryjnie kilka aplikacji naraz, oprócz replikowania maszyny wirtualnej kontrolera domeny za pomocą funkcji Site Recovery, zalecamy skonfigurowanie dodatkowy kontroler domeny w lokacji docelowej (na platformie Azure lub w pomocniczym lokalnym centrum danych). W przypadku [testowania trybu failover](#test-failover-considerations)można użyć kontrolera domeny, który jest replikowany przez usługę Site Recovery. W przypadku pracy awaryjnej można użyć dodatkowego kontrolera domeny w lokacji docelowej.
 
-## <a name="enable-protection-with-site-recovery"></a>Włącz ochronę za pomocą Site Recovery
+## <a name="enable-protection-with-site-recovery"></a>Włącz ochronę dzięki odzyskiwaniu witryny
 
-Za pomocą Site Recovery można chronić maszynę wirtualną, która hostuje kontroler domeny lub serwer DNS.
+Za pomocą funkcji Site Recovery można chronić maszynę wirtualną hostującą kontroler domeny lub system DNS.
 
 ### <a name="protect-the-vm"></a>Ochrona maszyny wirtualnej
-Kontroler domeny, który jest replikowany za pomocą Site Recovery jest używany do [testowania pracy w trybie failover](#test-failover-considerations). Upewnij się, że spełnia on następujące wymagania:
+Kontroler domeny, który jest replikowany przy użyciu usługi Site Recovery jest używany do [testowania pracy awaryjnej](#test-failover-considerations). Upewnij się, że spełnia następujące wymagania:
 
 1. Kontroler domeny jest serwerem wykazu globalnego.
-2. Kontroler domeny powinien być właścicielem roli FSMO dla ról, które są zbędne podczas testu pracy w trybie failover. W przeciwnym razie te role będą musiały zostać [przejęte](https://aka.ms/ad_seize_fsmo) po przejściu do trybu failover.
+2. Kontroler domeny powinien być właścicielem roli FSMO dla ról, które są potrzebne podczas pracy awaryjnej testu. W przeciwnym razie te role będą musiały zostać [przejęte](https://aka.ms/ad_seize_fsmo) po przemijaniu awaryjnym.
 
-### <a name="configure-vm-network-settings"></a>Konfigurowanie ustawień sieci maszyny wirtualnej
-W przypadku maszyny wirtualnej, która hostuje kontroler domeny lub serwer DNS, w Site Recovery Skonfiguruj ustawienia sieci w obszarze Ustawienia **obliczeń i sieci** replikowanej maszyny wirtualnej. Gwarantuje to, że maszyna wirtualna jest dołączona do odpowiedniej sieci po przejściu do trybu failover.
+### <a name="configure-vm-network-settings"></a>Konfigurowanie ustawień sieciowej maszyny Wirtualnej
+Dla maszyny wirtualnej, która obsługuje kontroler domeny lub dns, w uczynka Odzyskiwania lokacji, skonfiguruj ustawienia sieciowe w **ustawieniach obliczeniowych i sieciowych** replikowanej maszyny wirtualnej. Gwarantuje to, że maszyna wirtualna jest podłączona do odpowiedniej sieci po przełączeniu w tryb failover.
 
-## <a name="protect-active-directory"></a>Ochrona Active Directory
+## <a name="protect-active-directory"></a>Ochrona usługi Active Directory
 
-### <a name="site-to-site-protection"></a>Ochrona lokacja-lokacja
-Utwórz kontroler domeny w lokacji dodatkowej. Podczas podwyższania poziomu serwera do roli kontrolera domeny należy określić nazwę tej samej domeny, która jest używana w lokacji głównej. Za pomocą przystawki **Lokacje i usługi Active Directory** można skonfigurować ustawienia obiektu linku lokacji, do którego dodawane są lokacje. Konfigurując ustawienia w łączu lokacji, można kontrolować, kiedy replikacja odbywa się między dwiema lub większą liczbą lokacji i jak często występuje. Aby uzyskać więcej informacji, zobacz [planowanie replikacji między lokacjami](https://technet.microsoft.com/library/cc731862.aspx).
+### <a name="site-to-site-protection"></a>Ochrona między lokacjami
+Utwórz kontroler domeny w lokacji dodatkowej. Podczas podwyższenia poziomu serwera do roli kontrolera domeny należy określić nazwę tej samej domeny, która jest używana w lokacji głównej. Przystawki **Lokacje i usługi Active Directory** można użyć do skonfigurowania ustawień obiektu łącza lokacji, do którego są dodawane witryny. Konfigurując ustawienia w łączu lokacji, można kontrolować, kiedy replikacja odbywa się między dwiema lub więcej lokacjami i jak często występuje. Aby uzyskać więcej informacji, zobacz [Planowanie replikacji między lokacjami](https://technet.microsoft.com/library/cc731862.aspx).
 
-### <a name="site-to-azure-protection"></a>Ochrona między lokacjami
-Najpierw utwórz kontroler domeny w sieci wirtualnej platformy Azure. Podczas podwyższania poziomu serwera do roli kontrolera domeny należy określić tę samą nazwę domeny, która jest używana w lokacji głównej.
+### <a name="site-to-azure-protection"></a>Ochrona między lokacjami a platformą Azure
+Najpierw utwórz kontroler domeny w sieci wirtualnej platformy Azure. Podczas podwyższenia poziomu serwera do roli kontrolera domeny należy określić tę samą nazwę domeny, która jest używana w lokacji głównej.
 
-Następnie ponownie skonfiguruj serwer DNS dla sieci wirtualnej, aby korzystał z serwera DNS na platformie Azure.
+Następnie ponownie skonfiguruj serwer DNS dla sieci wirtualnej, aby używała serwera DNS na platformie Azure.
 
 ![Azure Network](./media/site-recovery-active-directory/azure-network.png)
 
-### <a name="azure-to-azure-protection"></a>Ochrona systemu Azure na platformę Azure
-Najpierw utwórz kontroler domeny w sieci wirtualnej platformy Azure. Podczas podwyższania poziomu serwera do roli kontrolera domeny należy określić tę samą nazwę domeny, która jest używana w lokacji głównej.
+### <a name="azure-to-azure-protection"></a>Ochrona platformy Azure na platformie Azure
+Najpierw utwórz kontroler domeny w sieci wirtualnej platformy Azure. Podczas podwyższenia poziomu serwera do roli kontrolera domeny należy określić tę samą nazwę domeny, która jest używana w lokacji głównej.
 
-Następnie ponownie skonfiguruj serwer DNS dla sieci wirtualnej, aby korzystał z serwera DNS na platformie Azure.
+Następnie ponownie skonfiguruj serwer DNS dla sieci wirtualnej, aby używała serwera DNS na platformie Azure.
 
-## <a name="test-failover-considerations"></a>Uwagi dotyczące testowania pracy w trybie failover
-Aby uniknąć wpływu na obciążenia produkcyjne, test pracy w trybie failover odbywa się w sieci, która jest odizolowana od sieci produkcyjnej.
+## <a name="test-failover-considerations"></a>Testowanie zagadnień dotyczących trybu failover
+Aby uniknąć wpływu na obciążenia produkcyjne, test pracy awaryjnej występuje w sieci, która jest odizolowana od sieci produkcyjnej.
 
-Większość aplikacji wymaga obecności kontrolera domeny lub serwera DNS. W związku z tym przed przełączeniem aplikacji w tryb failover należy utworzyć kontroler domeny w sieci izolowanej, aby można było go używać na potrzeby testowego przełączania. Najprostszym sposobem jest użycie Site Recovery do replikowania maszyny wirtualnej, która hostuje kontroler domeny lub serwer DNS. Następnie uruchom test trybu failover maszyny wirtualnej kontrolera domeny przed uruchomieniem testowej pracy w trybie failover planu odzyskiwania dla aplikacji. Oto jak to zrobić:
+Większość aplikacji wymaga obecności kontrolera domeny lub serwera DNS. W związku z tym przed zakończeniem pracy aplikacji należy utworzyć kontroler domeny w izolowanej sieci, który będzie używany do testowania pracy awaryjnej. Najprostszym sposobem, aby to zrobić, jest użycie funkcji Site Recovery do replikowania maszyny wirtualnej, na której znajduje się kontroler domeny lub system DNS. Następnie uruchom testową przekładowanie awaryjne maszyny wirtualnej kontrolera domeny przed uruchomieniem testowej pracy awaryjnej planu odzyskiwania dla aplikacji. Oto jak to zrobić:
 
-1. Użyj Site Recovery, aby [replikować](vmware-azure-tutorial.md) maszynę wirtualną, która hostuje kontroler domeny lub serwer DNS.
-2. Utwórz sieć izolowaną. Każda sieć wirtualna utworzona na platformie Azure jest domyślnie odizolowana od innych sieci. Zalecamy używanie tego samego zakresu adresów IP dla tej sieci, która jest używana w sieci produkcyjnej. Nie włączaj łączności między lokacjami w tej sieci.
-3. Podaj adres IP DNS w sieci izolowanej. Użyj adresu IP, który ma zostać pobrany przez maszynę wirtualną DNS. Jeśli wykonujesz replikację do platformy Azure, podaj adres IP maszyny wirtualnej używanej w trybie failover. Aby wprowadzić adres IP, na zreplikowanej maszynie wirtualnej w ustawieniach **obliczenia i sieci** wybierz **docelowe ustawienia adresu IP** .
+1. Funkcja Odzysk lokacji umożliwia [replikowanie](vmware-azure-tutorial.md) maszyny wirtualnej hostującej kontroler domeny lub usługę DNS.
+2. Tworzenie izolowanej sieci. Każda sieć wirtualna utworzona na platformie Azure jest domyślnie odizolowana od innych sieci. Zaleca się używanie tego samego zakresu adresów IP dla tej sieci, który jest używany w sieci produkcyjnej. Nie włączaj łączności lokacja-lokacja w tej sieci.
+3. Podaj adres IP DNS w izolowanej sieci. Użyj adresu IP, który można uzyskać na maszynie wirtualnej DNS. Jeśli replikujesz na platformę Azure, podaj adres IP maszyny wirtualnej, która jest używana w trybie failover. Aby wprowadzić adres IP, na zreplikowanej maszynie wirtualnej w **ustawieniach obliczeń i sieci** wybierz docelowe ustawienia **IP.**
 
-    ![Azure test Network](./media/site-recovery-active-directory/azure-test-network.png)
+    ![Sieć testowa platformy Azure](./media/site-recovery-active-directory/azure-test-network.png)
 
     > [!TIP]
-    > Site Recovery próbuje utworzyć testowe maszyny wirtualne w podsieci o tej samej nazwie i przy użyciu tego samego adresu IP, który jest podany w ustawieniach **obliczeniowych i sieciowych** maszyny wirtualnej. Jeśli podsieć o tej samej nazwie nie jest dostępna w sieci wirtualnej platformy Azure podanej na potrzeby testowego przejścia w tryb failover, testowa maszyna wirtualna jest tworzona w pierwszej podsieci w kolejności alfabetycznej.
+    > Usługa Site Recovery próbuje utworzyć test maszyn wirtualnych w podsieci o tej samej nazwie i przy użyciu tego samego adresu IP, który jest podany w **ustawieniach obliczeniowych i sieci** maszyny wirtualnej. Jeśli podsieć o tej samej nazwie nie jest dostępna w sieci wirtualnej platformy Azure, która jest dostępna do testowania pracy awaryjnej, testowa maszyna wirtualna jest tworzona w alfabetycznej pierwszej podsieci.
     >
-    > Jeśli docelowy adres IP należy do wybranej podsieci, Site Recovery próbuje utworzyć maszynę wirtualną testowej pracy w trybie failover przy użyciu docelowego adresu IP. Jeśli docelowy adres IP nie należy do wybranej podsieci, maszyna wirtualna testowego trybu failover jest tworzona przy użyciu następnego dostępnego adresu IP w wybranej podsieci.
+    > Jeśli docelowy adres IP jest częścią wybranej podsieci, usługa Site Recovery próbuje utworzyć testową maszynę wirtualną trybu failover przy użyciu docelowego adresu IP. Jeśli docelowy adres IP nie jest częścią wybranej podsieci, testowa maszyna wirtualna trybu failover jest tworzona przy użyciu następnego dostępnego adresu IP w wybranej podsieci.
     >
     >
 
-### <a name="test-failover-to-a-secondary-site"></a>Testowanie pracy w trybie failover w lokacji dodatkowej
+### <a name="test-failover-to-a-secondary-site"></a>Testowanie pracy awaryjnej w lokacji dodatkowej
 
-1. Jeśli wykonujesz replikację do innej lokacji lokalnej i używasz protokołu DHCP, [Skonfiguruj DNS i DHCP na potrzeby testowego przełączania do trybu failover](hyper-v-vmm-test-failover.md#prepare-dhcp).
-2. Wykonaj test pracy w trybie failover maszyny wirtualnej kontrolera domeny, która działa w sieci izolowanej. Użyj najnowszego dostępnego punktu odzyskiwania *spójnego na poziomie aplikacji* maszyny wirtualnej kontrolera domeny w celu przeprowadzenia testowej pracy w trybie failover.
-3. Uruchom test pracy w trybie failover dla planu odzyskiwania zawierającego maszyny wirtualne, na których działa aplikacja.
-4. Po zakończeniu testowania *Oczyść test pracy w trybie failover* na maszynie wirtualnej kontrolera domeny. Ten krok powoduje usunięcie kontrolera domeny, który został utworzony na potrzeby testowego przełączania do trybu failover.
+1. Jeśli replikujesz się do innej lokacji lokalnej i używasz usługi DHCP, [skonfiguruj system DNS i DHCP do testowania pracy awaryjnej](hyper-v-vmm-test-failover.md#prepare-dhcp).
+2. Wykonaj testową przekład w tryb failover maszyny wirtualnej kontrolera domeny, która działa w sieci izolowanej. Użyj najnowszego dostępnego punktu odzyskiwania *spójnej aplikacji* maszyny wirtualnej kontrolera domeny, aby wykonać test pracy awaryjnej.
+3. Uruchom test pracy awaryjnej dla planu odzyskiwania, który zawiera maszyny wirtualne, na których działa aplikacja.
+4. Po zakończeniu testowania *należy wyczyścić test pracy awaryjnej* na maszynie wirtualnej kontrolera domeny. Ten krok powoduje usunięcie kontrolera domeny utworzonego w celu przetestowania trybu failover.
 
 
 ### <a name="remove-references-to-other-domain-controllers"></a>Usuwanie odwołań do innych kontrolerów domeny
-Po zainicjowaniu testowej pracy w trybie failover nie należy uwzględniać wszystkich kontrolerów domeny w sieci testowej. Aby usunąć odwołania do innych kontrolerów domeny istniejących w środowisku produkcyjnym, może być konieczne [przejęcie ról FSMO Active Directory](https://aka.ms/ad_seize_fsmo) i [oczyszczenie metadanych](https://technet.microsoft.com/library/cc816907.aspx) dla brakujących kontrolerów domeny.
+Podczas inicjowania testowego trybu failover nie należy uwzględniać wszystkich kontrolerów domeny w sieci testowej. Aby usunąć odwołania do innych kontrolerów domeny, które istnieją w środowisku produkcyjnym, może być konieczne [przejęcie ról usługi FSMO Active Directory](https://aka.ms/ad_seize_fsmo) i [oczyszczanie metadanych](https://technet.microsoft.com/library/cc816907.aspx) z powodu brakujących kontrolerów domeny.
 
 
-### <a name="issues-caused-by-virtualization-safeguards"></a>Problemy spowodowane przez zabezpieczenia wirtualizacji
+### <a name="issues-caused-by-virtualization-safeguards"></a>Problemy spowodowane zabezpieczeniami wirtualizacji
 
 > [!IMPORTANT]
-> Niektóre konfiguracje opisane w tej sekcji nie są standardowymi lub domyślnymi konfiguracjami kontrolerów domeny. Jeśli nie chcesz wprowadzać tych zmian na kontrolerze domeny produkcyjnej, możesz utworzyć kontroler domeny, który jest przeznaczony dla Site Recovery używany do testowania pracy w trybie failover. Wprowadź te zmiany tylko do tego kontrolera domeny.  
+> Niektóre konfiguracje opisane w tej sekcji nie są standardowymi ani domyślnymi konfiguracjami kontrolera domeny. Jeśli nie chcesz wprowadzać tych zmian na produkcyjnym kontrolerze domeny, możesz utworzyć kontroler domeny przeznaczony do odzyskiwania witryny do użycia w celu przetestowania trybu failover. Te zmiany należy wprowadzać tylko na tym kontrolerze domeny.  
 >
 >
 
-Począwszy od systemu Windows Server 2012, [dodatkowe zabezpieczenia są wbudowane w Active Directory Domain Services (AD DS)](https://technet.microsoft.com/windows-server-docs/identity/ad-ds/introduction-to-active-directory-domain-services-ad-ds-virtualization-level-100). Zabezpieczenia te ułatwiają ochronę zwirtualizowanych kontrolerów domeny przed wycofywaniem numerów USN, jeśli bazowa platforma hypervisor obsługuje **maszynę wirtualną-GenerationId**. Platforma Azure obsługuje **maszynę wirtualną GenerationId**. Z tego powodu kontrolery domeny z systemem Windows Server 2012 lub nowszym na maszynach wirtualnych platformy Azure mają takie dodatkowe zabezpieczenia.
+Począwszy od systemu Windows Server 2012, [dodatkowe zabezpieczenia są wbudowane w Usługi domenowe Active Directory (AD DS)](https://technet.microsoft.com/windows-server-docs/identity/ad-ds/introduction-to-active-directory-domain-services-ad-ds-virtualization-level-100). Zabezpieczenia te pomagają chronić zwirtualizowane kontrolery domeny przed wycofywaniem nazw USN, jeśli podstawowa platforma hypervisor obsługuje **VM-GenerationID**. Platforma Azure obsługuje **moduł generacji maszyn wirtualnych.** W związku z tym kontrolery domeny, które uruchamiają system Windows Server 2012 lub nowsze na maszynach wirtualnych platformy Azure mają te dodatkowe zabezpieczenia.
 
 
-Po zresetowaniu **maszyny wirtualnej GenerationId** jest również resetowana wartość **InvocationID** bazy danych AD DS. Ponadto Pula identyfikatorów RID została odrzucona, a folder SYSVOL jest oznaczony jako nieautorytatywny. Aby uzyskać więcej informacji, zobacz [wprowadzenie do wirtualizacji Active Directory Domain Services](https://technet.microsoft.com/windows-server-docs/identity/ad-ds/introduction-to-active-directory-domain-services-ad-ds-virtualization-level-100) i [bezpieczne Wirtualizacja usługi DFSR](https://blogs.technet.microsoft.com/filecab/2013/04/05/safely-virtualizing-dfsr/).
+Po zresetowaniu obiektu **VM-GenerationID** jest również resetowana wartość **InvocationID** bazy danych usług AD DS. Ponadto pula RID jest odrzucana, a folder sysvol jest oznaczony jako nieuzyskający. Aby uzyskać więcej informacji, zobacz [Wprowadzenie do wirtualizacji usług domenowych Active Directory](https://technet.microsoft.com/windows-server-docs/identity/ad-ds/introduction-to-active-directory-domain-services-ad-ds-virtualization-level-100) i [bezpieczne wirtualizacja systemu plików DFSR](https://blogs.technet.microsoft.com/filecab/2013/04/05/safely-virtualizing-dfsr/).
 
-Przełączenie w tryb failover do platformy Azure może spowodować zresetowanie **maszyny wirtualnej GenerationId** . Resetowanie **maszyny wirtualnej — GenerationId** wyzwala dodatkowe zabezpieczenia w przypadku uruchamiania maszyny wirtualnej kontrolera domeny na platformie Azure. Może to spowodować *znaczne opóźnienie* w możliwości zalogowania się do maszyny wirtualnej kontrolera domeny.
+Niepowodzenie platformy Azure może spowodować zresetowanie funkcji **VM-GenerationID.** Resetowanie **VM-GenerationID** wyzwala dodatkowe zabezpieczenia po uruchomieniu maszyny wirtualnej kontrolera domeny na platformie Azure. Może to spowodować *znaczne opóźnienie* w możliwości logowania się do maszyny wirtualnej kontrolera domeny.
 
-Ponieważ ten kontroler domeny jest używany tylko w testowaniu pracy w trybie failover, zabezpieczenia wirtualizacji nie są konieczne. Aby upewnić się, że wartość **GenerationId** maszyny wirtualnej kontrolera domeny nie ulega zmianie, można zmienić wartość następującego DWORD na **4** na lokalnym kontrolerze domeny:
+Ponieważ ten kontroler domeny jest używany tylko w testowej pracy awaryjnej, zabezpieczenia wirtualizacji nie są konieczne. Aby upewnić się, że wartość **identyfikatora generacji maszyny** wirtualnej maszyny kontrolera domeny nie ulegnie zmianie, można zmienić wartość następujących modułów DWORD na **4** w lokalnym kontrolerze domeny:
 
 
 `HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\gencounter\Start`
@@ -116,88 +116,88 @@ Ponieważ ten kontroler domeny jest używany tylko w testowaniu pracy w trybie f
 
 #### <a name="symptoms-of-virtualization-safeguards"></a>Objawy zabezpieczeń wirtualizacji
 
-Jeśli zabezpieczenia wirtualizacji są wyzwalane po testowym przejściu w tryb failover, może pojawić się jeden lub więcej z następujących objawów:  
+Jeśli zabezpieczenia wirtualizacji są wyzwalane po przejściu w tryb failover testu, może zostać wyświetlony co najmniej jeden z następujących symptomów:  
 
-* Wartość **GenerationId** ulega zmianie.
+* Zmienia się wartość **GenerationID.**
 
     ![Zmiana identyfikatora generacji](./media/site-recovery-active-directory/Event2170.png)
 
-* Wartość **InvocationID** ulega zmianie.
+* Zmienia się wartość **InvocationID.**
 
     ![Zmiana identyfikatora wywołania](./media/site-recovery-active-directory/Event1109.png)
 
-* Folder SYSVOL i udziały NETLOGON nie są dostępne.
+* Folder Sysvol i udziały NETLOGON nie są dostępne.
 
-    ![Udział folderu SYSVOL](./media/site-recovery-active-directory/sysvolshare.png)
+    ![Udział folderów Sysvol](./media/site-recovery-active-directory/sysvolshare.png)
 
-    ![Folder SYSVOL NtFrs](./media/site-recovery-active-directory/Event13565.png)
+    ![Folder sysvol NtFrs](./media/site-recovery-active-directory/Event13565.png)
 
 * Bazy danych DFSR są usuwane.
 
     ![Bazy danych DFSR są usuwane](./media/site-recovery-active-directory/Event2208.png)
 
 
-### <a name="troubleshoot-domain-controller-issues-during-test-failover"></a>Rozwiązywanie problemów z kontrolerem domeny podczas testu pracy w trybie failover
+### <a name="troubleshoot-domain-controller-issues-during-test-failover"></a>Rozwiązywanie problemów z kontrolerem domeny podczas pracy awaryjnej testu
 
 > [!IMPORTANT]
-> Niektóre konfiguracje opisane w tej sekcji nie są standardowymi lub domyślnymi konfiguracjami kontrolerów domeny. Jeśli nie chcesz wprowadzać tych zmian na kontrolerze domeny produkcyjnej, możesz utworzyć kontroler domeny, który jest przeznaczony do Site Recovery testowej pracy w trybie failover. Wprowadź zmiany tylko do tego dedykowanego kontrolera domeny.  
+> Niektóre konfiguracje opisane w tej sekcji nie są standardowe lub domyślne konfiguracje kontrolera domeny. Jeśli nie chcesz wprowadzać tych zmian na produkcyjnym kontrolerze domeny, możesz utworzyć kontroler domeny dedykowany do pracy awaryjnej testu odzyskiwania witryny. Wprowadzać zmiany tylko do tego dedykowanego kontrolera domeny.  
 >
 >
 
-1. W wierszu polecenia Uruchom następujące polecenie, aby sprawdzić, czy folder SYSVOL i folder NETLOGON są udostępnione:
+1. W wierszu polecenia uruchom następujące polecenie, aby sprawdzić, czy folder sysvol i folder NETLOGON są współużytkowane:
 
     `NET SHARE`
 
-2. W wierszu polecenia Uruchom następujące polecenie, aby upewnić się, że kontroler domeny działa prawidłowo:
+2. W wierszu polecenia uruchom następujące polecenie, aby upewnić się, że kontroler domeny działa poprawnie:
 
     `dcdiag /v > dcdiag.txt`
 
-3. W dzienniku danych wyjściowych poszukaj następującego tekstu. Tekst potwierdza, że kontroler domeny działa prawidłowo.
+3. W dzienniku danych wyjściowych poszukaj następującego tekstu. Tekst potwierdza, że kontroler domeny działa poprawnie.
 
-    * "Zakończono łączność testową"
-    * "Zakończono anonsowanie testów"
-    * "powodzenie testu MachineAccount"
+    * "przeszedł test Łączność"
+    * "zdał test Reklama"
+    * "zdał test MachineAccount"
 
-Jeśli powyższe warunki są spełnione, prawdopodobnie kontroler domeny działa prawidłowo. Jeśli nie, wykonaj następujące czynności:
+Jeśli powyższe warunki są spełnione, jest prawdopodobne, że kontroler domeny działa poprawnie. Jeśli tak nie jest, wykonaj następujące czynności:
 
-1. Wykonaj Autorytatywne przywracanie kontrolera domeny. Należy pamiętać o następujących kwestiach:
-    * Chociaż nie zalecamy [replikacji usługi FRS](https://blogs.technet.microsoft.com/filecab/2014/06/25/the-end-is-nigh-for-frs/), w przypadku korzystania z replikacji usługi FRS wykonaj kroki przywracania autorytatywnego. Ten proces jest opisany w temacie [przy użyciu klucza rejestru BURFLAGS, aby ponownie zainicjować usługę replikacji plików](https://support.microsoft.com/kb/290762).
+1. Wykonaj autorytatywne przywracanie kontrolera domeny. Należy pamiętać o następujących informacjach:
+    * Chociaż nie zalecamy [replikacji usługi FRS,](https://blogs.technet.microsoft.com/filecab/2014/06/25/the-end-is-nigh-for-frs/)jeśli używasz replikacji usługi FRS, wykonaj kroki dla autorytatywnego przywracania. Proces jest opisany w [za pomocą klucza rejestru BurFlags do ponownego zainicjowania usługi replikacji plików](https://support.microsoft.com/kb/290762).
 
-        Aby uzyskać więcej informacji na temat BurFlags, zobacz wpis w blogu [D2 i D4: co to jest?](https://blogs.technet.microsoft.com/janelewis/2006/09/18/d2-and-d4-what-is-it-for/).
-    * W przypadku korzystania z replikacji DFSR wykonaj kroki przywracania autorytatywnego. Ten proces jest opisany w [Wymuszaj synchronizację autorytatywną i nieautorytatywną dla folderu SYSVOL replikowanego przez usługę DFSR (na przykład "D4/D2" w przypadku usługi FRS)](https://support.microsoft.com/kb/2218556).
+        Aby uzyskać więcej informacji na temat BurFlags, zobacz blogu [D2 i D4: Do czego służy?](https://blogs.technet.microsoft.com/janelewis/2006/09/18/d2-and-d4-what-is-it-for/).
+    * Jeśli używasz replikacji DFSR, wykonaj kroki dla autorytatywnego przywracania. Proces jest opisany w [Życie autorytatywnej i nieujawniałej synchronizacji dla folderu sysvol replikowanego na DFSR (np.](https://support.microsoft.com/kb/2218556)
 
-        Można również użyć funkcji programu PowerShell. Aby uzyskać więcej informacji, zobacz usługi [DFSR-SYSVOL autorytatywne/nieautorytatywne Przywróć funkcje programu PowerShell](https://blogs.technet.microsoft.com/thbouche/2013/08/28/dfsr-sysvol-authoritative-non-authoritative-restore-powershell-functions/).
+        Można również użyć funkcji programu PowerShell. Aby uzyskać więcej informacji, zobacz [DFSR-SYSVOL autorytatywne/nieuzyskotające funkcje przywracania programu PowerShell](https://blogs.technet.microsoft.com/thbouche/2013/08/28/dfsr-sysvol-authoritative-non-authoritative-restore-powershell-functions/).
 
-2. Pomiń wymaganie synchronizacji początkowej przez ustawienie następującego klucza rejestru na **0** na lokalnym kontrolerze domeny. Jeśli wartość DWORD nie istnieje, można ją utworzyć w węźle **Parameters** .
+2. Pomiń wymóg synchronizacji początkowej, ustawiając następujący klucz rejestru na **0** na lokalnym kontrolerze domeny. Jeśli DWORD nie istnieje, można go utworzyć w węźle **Parametry.**
 
     `HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\NTDS\Parameters\Repl Perform Initial Synchronizations`
 
-    Aby uzyskać więcej informacji, zobacz [Rozwiązywanie problemów z identyfikatorem zdarzenia dns 4013: serwer DNS nie może załadować stref DNS zintegrowanych z usługą AD](https://support.microsoft.com/kb/2001093).
+    Aby uzyskać więcej informacji, zobacz [Rozwiązywanie problemów z identyfikatorem zdarzenia DNS 4013: Serwer DNS nie może załadować zintegrowanych stref DNS usługi AD](https://support.microsoft.com/kb/2001093).
 
-3. Wyłącz wymaganie, aby serwer wykazu globalnego był dostępny do weryfikacji logowania użytkownika. W tym celu w lokalnym kontrolerze domeny Ustaw następujący klucz rejestru na **1**. Jeśli wartość DWORD nie istnieje, można ją utworzyć w węźle **LSA** .
+3. Wyłącz wymóg, aby serwer wykazu globalnego był dostępny do sprawdzania poprawności logowania użytkownika. Aby to zrobić, na lokalnym kontrolerze domeny ustaw następujący klucz rejestru na **1**. Jeśli DWORD nie istnieje, można go utworzyć w węźle **Lsa.**
 
     `HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Lsa\IgnoreGCFailures`
 
-    Aby uzyskać więcej informacji, zobacz temat [wyłączanie wymagania dotyczącego dostępności serwera wykazu globalnego do sprawdzania poprawności logowań użytkowników](https://support.microsoft.com/kb/241789).
+    Aby uzyskać więcej informacji, zobacz [Wyłączanie wymogu, aby serwer wykazu globalnego był dostępny do sprawdzania poprawności logowania użytkowników](https://support.microsoft.com/kb/241789).
 
-### <a name="dns-and-domain-controller-on-different-machines"></a>System DNS i kontroler domeny na różnych komputerach
+### <a name="dns-and-domain-controller-on-different-machines"></a>DNS i kontroler domeny na różnych komputerach
 
-Jeśli na tej samej maszynie wirtualnej jest uruchomiony kontroler domeny i system DNs, można pominąć tę procedurę.
+Jeśli korzystasz z kontrolera domeny i nazw DN na tej samej maszynie wirtualnej, możesz pominąć tę procedurę.
 
 
-Jeśli usługa DNS nie znajduje się na tej samej maszynie wirtualnej, co kontroler domeny, należy utworzyć maszynę wirtualną DNS dla testu pracy w trybie failover. Możesz użyć nowego serwera DNS i utworzyć wszystkie wymagane strefy. Jeśli na przykład domena Active Directory to contoso.com, można utworzyć strefę DNS o nazwie contoso.com. Wpisy, które odpowiadają Active Directory muszą zostać zaktualizowane w systemie DNS w następujący sposób:
+Jeśli usługa DNS nie znajduje się na tej samej maszynie wirtualnej co kontroler domeny, należy utworzyć maszynę wirtualną DNS dla testowej pracy awaryjnej. Można użyć świeżego serwera DNS i utworzyć wszystkie wymagane strefy. Jeśli na przykład domena usługi Active Directory jest contoso.com, można utworzyć strefę DNS o nazwie contoso.com. Wpisy odpowiadające usłudze Active Directory muszą być aktualizowane w systemie DNS w następujący sposób:
 
-1. Upewnij się, że te ustawienia są stosowane przed rozpoczęciem jakiejkolwiek innej maszyny wirtualnej w planie odzyskiwania:
-   * Strefa musi mieć nazwę po nazwie głównej lasu.
-   * Strefa musi być oparta na plikach.
+1. Upewnij się, że te ustawienia są w miejscu przed uruchomieniem innej maszyny wirtualnej w planie odzyskiwania:
+   * Strefa musi być nazwana nazwą katalogu głównego lasu.
+   * Strefa musi być wspierana przez pliki.
    * Strefa musi być włączona dla bezpiecznych i niezabezpieczonych aktualizacji.
-   * Program rozpoznawania maszyny wirtualnej, który hostuje kontroler domeny, powinien wskazywać adres IP maszyny wirtualnej DNS.
+   * Program rozpoznawania nazw maszyny wirtualnej hostującej kontroler domeny powinien wskazywać adres IP maszyny wirtualnej DNS.
 
-2. Uruchom następujące polecenie na maszynie wirtualnej, która hostuje kontroler domeny:
+2. Uruchom następujące polecenie na maszynie wirtualnej, która obsługuje kontroler domeny:
 
     `nltest /dsregdns`
 
-3. Uruchom następujące polecenia, aby dodać strefę na serwerze DNS, zezwolić na niezabezpieczone aktualizacje i dodać wpis dla strefy do systemu DNS:
+3. Uruchom następujące polecenia, aby dodać strefę na serwerze DNS, zezwolić na niezabezpieczone aktualizacje i dodać wpis strefy do systemu DNS:
 
     `dnscmd /zoneadd contoso.com  /Primary`
 
@@ -208,4 +208,4 @@ Jeśli usługa DNS nie znajduje się na tej samej maszynie wirtualnej, co kontro
     `dnscmd /config contoso.com /allowupdate 1`
 
 ## <a name="next-steps"></a>Następne kroki
-Dowiedz się więcej o [ochronie obciążeń przedsiębiorstwa za pomocą Azure Site Recovery](site-recovery-workload.md).
+Dowiedz się więcej o [ochronie obciążeń korporacyjnych za pomocą usługi Azure Site Recovery](site-recovery-workload.md).

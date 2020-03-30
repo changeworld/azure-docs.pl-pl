@@ -1,6 +1,6 @@
 ---
-title: Filmy dotyczące platformy tożsamości firmy Microsoft | Azure
-description: Lista filmów wideo dotyczących platformy tożsamości firmy Microsoft
+title: Filmy wideo dotyczące platformy tożsamości firmy Microsoft | Azure
+description: Lista filmów o platformie tożsamości firmy Microsoft
 services: active-directory
 author: mmacy
 manager: CelesteDG
@@ -13,23 +13,23 @@ ms.author: marsma
 ms.custom: aaddev
 ms.reviewer: celested
 ms.openlocfilehash: 22149ccfa258852b36da61ffbabde5e1856df9de
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/08/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77085197"
 ---
 # <a name="microsoft-identity-platform-videos"></a>Wideo poświęcone platformie tożsamości firmy Microsoft
 
-Dowiedz się więcej na temat platformy tożsamości firmy Microsoft i bibliotek uwierzytelniania firmy Microsoft (MSAL). Są one zwykle 1-2 minuty.
+Dowiedz się więcej o platformie tożsamości firmy Microsoft i bibliotekach uwierzytelniania firmy Microsoft (MSAL). Zazwyczaj trwają 1-2 minuty.
 
-## <a name="microsoft-identity-platform-basics"></a>Podstawowe informacje dotyczące platformy tożsamości firmy Microsoft
+## <a name="microsoft-identity-platform-basics"></a>Podstawy platformy tożsamości firmy Microsoft
 
 **Poznaj podstawowe pojęcia dotyczące platformy tożsamości firmy Microsoft**
 
 :::row:::
     :::column:::
-        Microsoft Identity platform — Omówienie
+        Omówienie platformy tożsamości firmy Microsoft
     :::column-end:::
     :::column:::
         > [!VIDEO https://www.youtube.com/embed/bNlcFuIo3r8]
@@ -47,7 +47,7 @@ Dowiedz się więcej na temat platformy tożsamości firmy Microsoft i bibliotek
         > [!VIDEO https://www.youtube.com/embed/apbbx2n4tnU]
     :::column-end:::
     :::column:::
-        Jak MSAL ułatwia uwierzytelnianie
+        Jak ułatwienie uwierzytelniania msal
     :::column-end:::
     :::column:::
         > [!VIDEO https://www.youtube.com/embed/yLVEBU9Z96Q]
@@ -55,7 +55,7 @@ Dowiedz się więcej na temat platformy tożsamości firmy Microsoft i bibliotek
 :::row-end:::
 :::row:::
     :::column:::
-        Wyjaśnione zakresy
+        Wyjaśniono zakresy
     :::column-end:::
     :::column:::
         > [!VIDEO https://www.youtube.com/embed/eiPHOoLmGJs]
@@ -69,13 +69,13 @@ Dowiedz się więcej na temat platformy tożsamości firmy Microsoft i bibliotek
 :::row-end:::
 :::row:::
     :::column:::
-        Jakie identyfikatory URI przekierowania
+        Co robią przekierowania identyfikatorów URI
     :::column-end:::
     :::column:::
         > [!VIDEO https://www.youtube.com/embed/znSN_3JAuoU]
     :::column-end:::
     :::column:::
-        Wyjaśnienie dzierżawców
+        Najemców wyjaśnione
     :::column-end:::
     :::column:::
         > [!VIDEO https://www.youtube.com/embed/mDhT4Zv1fZU]
@@ -97,13 +97,13 @@ Dowiedz się więcej na temat platformy tożsamości firmy Microsoft i bibliotek
 :::row-end:::
 :::row:::
     :::column:::
-        Różnice konto Microsoft organizacyjnych i prywatnych
+        Organizacyjne i osobiste różnice w koncie Microsoft
     :::column-end:::
     :::column:::
         > [!VIDEO https://www.youtube.com/embed/E2OUluQQKSk]
     :::column-end:::
     :::column:::
-        Różnice dotyczące SPA i aplikacji sieci Web
+        Różnice w spa i aplikacjach internetowych
     :::column-end:::
     :::column:::
         > [!VIDEO https://www.youtube.com/embed/ZJirt7eTVw8?t=5]
@@ -112,17 +112,17 @@ Dowiedz się więcej na temat platformy tożsamości firmy Microsoft i bibliotek
 
 ## <a name="migrate-from-v10-to-v20"></a>Migrowanie z wersji 1.0 do wersji 2.0
 
-**Dowiedz się więcej na temat migracji do najnowszej wersji platformy tożsamości firmy Microsoft**
+**Dowiedz się więcej o migracji do najnowszej wersji platformy tożsamości firmy Microsoft**
 
 :::row:::
     :::column:::
-        Punkty końcowe i zalety przejścia do wersji 2.0
+        Punkty końcowe i korzyści wynikające z przejścia do wersji 2.0
     :::column-end:::
     :::column:::
         > [!VIDEO https://www.youtube.com/embed/qpdC45tZYDg]
     :::column-end:::
      :::column:::
-        Migrowanie bazy kodu ADAL do MSAL
+        Migrowanie bazy kodu ADAL do usługi MSAL
     :::column-end:::
     :::column:::
         > [!VIDEO https://www.youtube.com/embed/xgL_z9yCnrE]
@@ -130,13 +130,13 @@ Dowiedz się więcej na temat platformy tożsamości firmy Microsoft i bibliotek
 :::row-end:::
 :::row:::
     :::column:::
-        Dlaczego należy przeprowadzić migrację z biblioteki ADAL do MSAL
+        Dlaczego warto migrować z usługi ADAL do msal
     :::column-end:::
     :::column:::
         > [!VIDEO https://www.youtube.com/embed/qpdC45tZYDg]
     :::column-end:::
     :::column:::
-        Zalety MSAL za pośrednictwem biblioteki ADAL
+        Zalety MSAL w stosunku do ADAL
     :::column-end:::
     :::column:::
         > [!VIDEO https://www.youtube.com/embed/q-TDszj2O-4]
