@@ -1,31 +1,31 @@
 ---
 title: Lokalizacja zasobu szablonu
-description: Opisuje sposób ustawiania lokalizacji zasobów w szablonie Azure Resource Manager.
+description: W tym artykule opisano sposób ustawiania lokalizacji zasobów w szablonie usługi Azure Resource Manager.
 ms.topic: conceptual
 ms.date: 09/04/2019
-ms.openlocfilehash: 24d278df8f71fecfaec4f0fa3a84172bf1db942b
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: a8324dac1232eecd5624e5f1dc0e6656295c0a10
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76122410"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80156433"
 ---
-# <a name="set-resource-location-in-resource-manager-template"></a>Ustawianie lokalizacji zasobu w szablonie Menedżer zasobów
+# <a name="set-resource-location-in-arm-template"></a>Ustawianie lokalizacji zasobu w szablonie ARM
 
-Podczas wdrażania szablonu należy podać lokalizację każdego zasobu. Lokalizacja nie musi być taka sama jak lokalizacja grupy zasobów.
+Podczas wdrażania szablonu usługi Azure Resource Manager (ARM) należy podać lokalizację dla każdego zasobu. Lokalizacja nie musi być tą samą lokalizacją co lokalizacja grupy zasobów.
 
-## <a name="get-available-locations"></a>Pobierz dostępne lokalizacje
+## <a name="get-available-locations"></a>Uzyskaj dostępne lokalizacje
 
-Różne typy zasobów są obsługiwane w różnych lokalizacjach. Aby uzyskać obsługiwane lokalizacje dla typu zasobu, użyj Azure PowerShell lub interfejsu wiersza polecenia platformy Azure.
+Różne typy zasobów są obsługiwane w różnych lokalizacjach. Aby uzyskać obsługiwane lokalizacje dla typu zasobu, użyj narzędzia Azure PowerShell lub interfejsu wiersza polecenia platformy Azure.
 
-# <a name="powershelltabazure-powershell"></a>[Program PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
 
 ```azurepowershell-interactive
 ((Get-AzResourceProvider -ProviderNamespace Microsoft.Batch).ResourceTypes `
   | Where-Object ResourceTypeName -eq batchAccounts).Locations
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Interfejs wiersza polecenia platformy Azure](#tab/azure-cli)
+# <a name="azure-cli"></a>[Interfejs wiersza polecenia platformy Azure](#tab/azure-cli)
 
 ```azurecli-interactive
 az provider show \
@@ -36,11 +36,11 @@ az provider show \
 
 ---
 
-## <a name="use-location-parameter"></a>Użyj parametru Location
+## <a name="use-location-parameter"></a>Użyj parametru lokalizacji
 
-Aby zapewnić elastyczność podczas wdrażania szablonu, należy użyć parametru w celu określenia lokalizacji zasobów. Ustaw wartość domyślną parametru na `resourceGroup().location`.
+Aby zapewnić elastyczność podczas wdrażania szablonu, należy użyć parametru, aby określić lokalizację zasobów. Ustaw domyślną wartość parametru na `resourceGroup().location`.
 
-Poniższy przykład przedstawia konto magazynu wdrożone w lokalizacji określonej jako parametr:
+W poniższym przykładzie pokazano konto magazynu, które jest wdrażane w lokalizacji określonej jako parametr:
 
 ```json
 {
@@ -95,5 +95,5 @@ Poniższy przykład przedstawia konto magazynu wdrożone w lokalizacji określon
 
 ## <a name="next-steps"></a>Następne kroki
 
-* Aby zapoznać się z pełną listą funkcji szablonu, zobacz [Azure Resource Manager Template Functions](template-functions.md).
-* Aby uzyskać więcej informacji na temat plików szablonów, zobacz [Omówienie struktury i składni szablonów Azure Resource Manager](template-syntax.md).
+* Aby uzyskać pełną listę funkcji szablonu, zobacz [Funkcje szablonów usługi Azure Resource Manager](template-functions.md).
+* Aby uzyskać więcej informacji o plikach [szablonów, zobacz Opis struktury i składni szablonów ARM](template-syntax.md).

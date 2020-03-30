@@ -1,6 +1,6 @@
 ---
-title: Kontrolki zabezpieczeń dla usługi Azure VPN Gateway
-description: Lista kontrolna zabezpieczeń na potrzeby oceny VPN Gateway platformy Azure
+title: Mechanizmy kontroli zabezpieczeń bramy sieci VPN platformy Azure
+description: Lista kontrolna zabezpieczeń do oceny bramy sieci VPN platformy Azure
 services: sql-database
 author: msmbaldwin
 manager: rkarlin
@@ -9,58 +9,58 @@ ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: mbaldwin
 ms.openlocfilehash: cdf616b29a93e786ef26af83b5d3b3541f94d67c
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75972279"
 ---
-# <a name="security-controls-for-azure-vpn-gateway"></a>Kontrolki zabezpieczeń dla usługi Azure VPN Gateway
+# <a name="security-controls-for-azure-vpn-gateway"></a>Mechanizmy kontroli zabezpieczeń bramy sieci VPN platformy Azure
 
-W tym artykule opisano mechanizmy kontroli zabezpieczeń wbudowane w usługę Azure VPN Gateway.
+Ten artykuł dokumentuje mechanizmy kontroli zabezpieczeń wbudowane w usługę Azure VPN Gateway.
 
 [!INCLUDE [Security controls Header](../../includes/security-controls-header.md)]
 
 ## <a name="network"></a>Network (Sieć)
 
-| Kontrola zabezpieczeń | Tak/Nie | Uwagi |
+| Kontrola bezpieczeństwa | Tak/Nie | Uwagi |
 |---|---|--|
-| Obsługa punktów końcowych usługi| ND | |
-| Obsługa iniekcji sieci wirtualnej| ND | |
-| Izolacja sieci i obsługa zapór| Tak | Bramy sieci VPN to dedykowane wystąpienia maszyn wirtualnych dla poszczególnych klientów Virtual Network  |
-| Obsługa tunelowania wymuszonego| Tak |  |
+| Obsługa punktu końcowego usługi| Nie dotyczy | |
+| Obsługa wtrysku sieci wirtualnej| Nie dotyczy | |
+| Obsługa izolacji sieci i zapory sieciowej| Tak | Bramy sieci VPN są dedykowanymi wystąpieniami maszyn wirtualnych dla każdej sieci wirtualnej klienta  |
+| Wymuszone wsparcie tunelowania| Tak |  |
 
-## <a name="monitoring--logging"></a>Monitorowanie rejestrowania &
+## <a name="monitoring--logging"></a>Monitorowanie & rejestrowania
 
-| Kontrola zabezpieczeń | Tak/Nie | Uwagi|
+| Kontrola bezpieczeństwa | Tak/Nie | Uwagi|
 |---|---|--|
-| Pomoc techniczna dotycząca monitorowania platformy Azure (log Analytics, App Insights itp.)| Tak | Zobacz [dzienniki/alerty diagnostyki Azure Monitor & alertów](vpn-gateway-howto-setup-alerts-virtual-network-gateway-log.md) [Azure monitor metryki/alertów](vpn-gateway-howto-setup-alerts-virtual-network-gateway-metric.md).  |
-| Rejestrowanie i inspekcja płaszczyzny kontroli i zarządzania| Tak | Azure Resource Manager dziennik aktywności. |
-| Rejestrowanie i inspekcja płaszczyzny danych | Tak | [Azure monitor dzienników diagnostycznych](../azure-resource-manager/management/view-activity-logs.md) dotyczących rejestrowania i inspekcji łączności sieci VPN. |
+| Obsługa monitorowania platformy Azure (analiza dzienników, wgląd w aplikacje itp.)| Tak | Zobacz [Dzienniki diagnostyczne usługi Azure Monitor/alert](vpn-gateway-howto-setup-alerts-virtual-network-gateway-log.md) & [Metryki/alerty usługi Azure Monitor](vpn-gateway-howto-setup-alerts-virtual-network-gateway-metric.md).  |
+| Rejestrowanie i audyt płaszczyzny kontroli i zarządzania| Tak | Dziennik aktywności usługi Azure Resource Manager. |
+| Rejestrowanie i inspekcja płaszczyzny danych | Tak | [Dzienniki diagnostyczne usługi Azure Monitor](../azure-resource-manager/management/view-activity-logs.md) do rejestrowania i inspekcji łączności sieci VPN. |
 
 ## <a name="identity"></a>Tożsamość
 
-| Kontrola zabezpieczeń | Tak/Nie | Uwagi|
+| Kontrola bezpieczeństwa | Tak/Nie | Uwagi|
 |---|---|--|
-| Authentication| Tak | [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md) zarządzania usługą i konfigurowania bramy sieci VPN platformy Azure. |
-| Autoryzacja| Tak | Obsługa autoryzacji za pośrednictwem [RBAC](../role-based-access-control/overview.md). |
+| Uwierzytelnianie| Tak | [Usługa Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md) do zarządzania usługą i konfigurowania bramy sieci VPN platformy Azure. |
+| Autoryzacja| Tak | Autoryzacja wsparcia za pośrednictwem [RBAC](../role-based-access-control/overview.md). |
 
 ## <a name="data-protection"></a>Ochrona danych
 
-| Kontrola zabezpieczeń | Tak/Nie | Uwagi |
+| Kontrola bezpieczeństwa | Tak/Nie | Uwagi |
 |---|---|--|
-| Szyfrowanie po stronie serwera w czasie spoczynku: klucze zarządzane przez firmę Microsoft | ND | Dane klienta dotyczące tranzytowej bramy sieci VPN nie przechowują danych klienta |
-| Szyfrowanie podczas przesyłania (takie jak szyfrowanie ExpressRoute, szyfrowanie sieci wirtualnej i szyfrowanie sieci wirtualnej)| Tak | Usługa VPN Gateway szyfruje pakiety klienta między bramami sieci VPN platformy Azure i lokalnymi urządzeniami sieci VPN (S2S) lub klientami sieci VPN (P2S). Bramy VPN obsługują również szyfrowanie między sieciami wirtualnymi. |
-| Szyfrowanie po stronie serwera w spoczynku: klucze zarządzane przez klienta (BYOK) | Nie | Klucze wstępne określone przez klienta są szyfrowane w stanie spoczynku; ale nie jest to jeszcze zintegrowane z CMK. |
-| Szyfrowanie na poziomie kolumny (Data Services platformy Azure)| ND | |
-| Wywołania interfejsu API są szyfrowane| Tak | Za pośrednictwem [Azure Resource Manager](../azure-resource-manager/index.yml) i https  |
+| Szyfrowanie po stronie serwera w spoczynku: klucze zarządzane przez firmę Microsoft | Nie dotyczy | Brama sieci VPN przesyła dane klienta, NIE przechowuje danych klientów |
+| Szyfrowanie podczas przesyłania (takie jak szyfrowanie usługi ExpressRoute, szyfrowanie w sieci wirtualnej i szyfrowanie sieci wirtualnej wirtualnej)| Tak | Brama sieci VPN szyfruje pakiety klientów między bramami sieci VPN platformy Azure a lokalnymi urządzeniami sieci VPN (S2S) lub klientami sieci VPN (P2S). Bramy sieci VPN obsługują również szyfrowanie sieci wirtualnej do sieci wirtualnej. |
+| Szyfrowanie po stronie serwera w spoczynku: klucze zarządzane przez klienta (BYOK) | Nie | Klucze wstępnie udostępnione określone przez klienta są szyfrowane w spoczynku; ale nie jest jeszcze zintegrowany z CMK. |
+| Szyfrowanie na poziomie kolumny (usługi Azure Data Services)| Nie dotyczy | |
+| Szyfrowane wywołania interfejsu API| Tak | Za pośrednictwem [usługi Azure Resource Manager](../azure-resource-manager/index.yml) i HTTPS  |
 
 ## <a name="configuration-management"></a>Zarządzanie konfiguracją
 
-| Kontrola zabezpieczeń | Tak/Nie | Uwagi|
+| Kontrola bezpieczeństwa | Tak/Nie | Uwagi|
 |---|---|--|
-| Obsługa zarządzania konfiguracją (wersja konfiguracji itp.)| Tak | W przypadku operacji zarządzania stanem konfiguracji bramy sieci VPN platformy Azure można wyeksportować jako szablon Azure Resource Manager i wersję z biegiem czasu. |
+| Obsługa zarządzania konfiguracją (przechowywanie wersji konfiguracji itp.)| Tak | W przypadku operacji zarządzania stan konfiguracji bramy sieci VPN platformy Azure można wyeksportować jako szablon usługi Azure Resource Manager i wersjonować w czasie. |
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Dowiedz się więcej o [wbudowanych kontrolach zabezpieczeń w ramach usług platformy Azure](../security/fundamentals/security-controls.md).
+- Dowiedz się więcej o [wbudowanych zabezpieczeniach w usługach platformy Azure.](../security/fundamentals/security-controls.md)

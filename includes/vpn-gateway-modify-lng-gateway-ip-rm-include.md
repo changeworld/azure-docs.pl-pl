@@ -9,13 +9,13 @@ ms.date: 01/15/2020
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 6a90b23c10e08e8b14a18f9619cff5aaeb003cab
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76045677"
 ---
-### <a name="gwipnoconnection"></a>Aby zmodyfikować element „GatewayIpAddress” bramy sieci lokalnej — brak połączenia bramy
+### <a name="to-modify-the-local-network-gateway-gatewayipaddress---no-gateway-connection"></a><a name="gwipnoconnection"></a>Aby zmodyfikować element „GatewayIpAddress” bramy sieci lokalnej — brak połączenia bramy
 
 W przypadku zmiany publicznego adresu IP urządzenia sieci VPN, z którym chcesz nawiązać połączenie, musisz zmodyfikować bramę sieci lokalnej w celu odzwierciedlenia tej zmiany. Użyj przykładu, aby zmodyfikować bramę sieci lokalnej bez połączenia bramy.
 
@@ -27,7 +27,7 @@ New-AzLocalNetworkGateway -Name Site1 `
 -GatewayIpAddress "5.4.3.2" -ResourceGroupName TestRG1
 ```
 
-### <a name="gwipwithconnection"></a>Aby zmodyfikować element „GatewayIpAddress” bramy sieci lokalnej — istniejące połączenie bramy
+### <a name="to-modify-the-local-network-gateway-gatewayipaddress---existing-gateway-connection"></a><a name="gwipwithconnection"></a>Aby zmodyfikować element „GatewayIpAddress” bramy sieci lokalnej — istniejące połączenie bramy
 
 W przypadku zmiany publicznego adresu IP urządzenia sieci VPN, z którym chcesz nawiązać połączenie, musisz zmodyfikować bramę sieci lokalnej w celu odzwierciedlenia tej zmiany. Jeśli istnieje już połączenie bramy, musisz je najpierw usunąć. Po usunięciu połączenia możesz zmodyfikować adres IP bramy i ponownie utworzyć nowe połączenie. Jednocześnie możesz również zmodyfikować prefiksy adresów. Spowoduje to pewien przestój połączenia sieci VPN. W przypadku modyfikowania adresu IP bramy nie musisz usuwać bramy sieci VPN. Musisz usunąć tylko połączenie.
  
@@ -45,7 +45,7 @@ W przypadku zmiany publicznego adresu IP urządzenia sieci VPN, z którym chcesz
    -Location "East US" -AddressPrefix @('10.101.0.0/24','10.101.1.0/24') `
    -GatewayIpAddress "104.40.81.124" -ResourceGroupName TestRG1
    ```
-3. Utwórz połączenie. W tym przykładzie skonfigurujemy połączenie typu IPsec. Podczas ponownego tworzenia połączenia należy użyć typu połączenia, który został określony dla danej konfiguracji. O dodatkowych typach połączeń można przeczytać na stronie [PowerShell cmdlet](https://msdn.microsoft.com/library/mt603611.aspx) (Polecenia cmdlet programu PowerShell).  Aby uzyskać nazwę VirtualNetworkGateway, możesz uruchomić polecenie cmdlet "Get-AzVirtualNetworkGateway".
+3. Utwórz połączenie. W tym przykładzie skonfigurujemy połączenie typu IPsec. Podczas ponownego tworzenia połączenia należy użyć typu połączenia, który został określony dla danej konfiguracji. O dodatkowych typach połączeń można przeczytać na stronie [PowerShell cmdlet](https://msdn.microsoft.com/library/mt603611.aspx) (Polecenia cmdlet programu PowerShell).  Aby uzyskać nazwę VirtualNetworkGateway, można uruchomić polecenie cmdlet "Get-AzVirtualNetworkGateway".
    
     Ustaw zmienne.
 
