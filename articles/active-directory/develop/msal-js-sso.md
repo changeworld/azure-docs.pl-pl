@@ -1,7 +1,7 @@
 ---
-title: Logowanie jednokrotne (MSAL. js) | Azure
+title: Logowanie jednokrotne (MSAL.js) | Azure
 titleSuffix: Microsoft identity platform
-description: Dowiedz się więcej na temat tworzenia środowiska logowania jednokrotnego przy użyciu biblioteki uwierzytelniania firmy Microsoft dla języka JavaScript (MSAL. js).
+description: Dowiedz się więcej o tworzeniu środowiska logowania jednokrotnego przy użyciu biblioteki uwierzytelniania firmy Microsoft dla języka JavaScript (MSAL.js).
 services: active-directory
 author: navyasric
 manager: CelesteDG
@@ -14,23 +14,23 @@ ms.author: nacanuma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: 8080d4cf4c3f0091f7837b3fccead5474c42db55
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79262856"
 ---
 # <a name="single-sign-on-with-msaljs"></a>Logowanie jednokrotne za pomocą biblioteki MSAL.js
 
-Logowanie jednokrotne (SSO) umożliwia użytkownikom wprowadzanie poświadczeń raz w celu zalogowania się i ustanowienie sesji, która może być używana w wielu aplikacjach bez konieczności ponownego uwierzytelniania. Zapewnia to bezproblemowe środowisko użytkownika i zmniejsza powtarzające się instrukcje dotyczące poświadczeń.
+Logowanie jednokrotne (Logowanie jednokrotne) umożliwia użytkownikom wprowadzenie poświadczeń raz do zalogowania się i ustanowienia sesji, która może być ponownie używana w wielu aplikacjach bez konieczności ponownego uwierzytelniania. Zapewnia to bezproblemowe środowisko dla użytkownika i zmniejsza powtarzające się monity o poświadczenia.
 
-Usługa Azure AD udostępnia funkcje logowania jednokrotnego do aplikacji, ustawiając plik cookie sesji, gdy użytkownik uwierzytelnia się po raz pierwszy. Biblioteka MSAL. js umożliwia aplikacjom korzystanie z tego programu na kilka sposobów.
+Usługa Azure AD udostępnia aplikacjom funkcje SSO, ustawiając plik cookie sesji, gdy użytkownik uwierzytelnia się po raz pierwszy. Biblioteka MSAL.js umożliwia aplikacjom korzystanie z tego na kilka sposobów.
 
-## <a name="sso-between-browser-tabs"></a>Logowanie jednokrotne między kartami przeglądarki
+## <a name="sso-between-browser-tabs"></a>Przysyłanie między kartami przeglądarki
 
-Gdy aplikacja zostanie otwarta na wielu kartach, a użytkownik najpierw zaloguje się na jednej karcie, użytkownik jest również zalogowany na innych kartach bez monitowania. MSAL. js buforuje token identyfikatora użytkownika w przeglądarce `localStorage` i podpisuje użytkownika w aplikacji na innych otwartych kartach.
+Gdy aplikacja jest otwarta w wielu kartach i najpierw zalogujesz się na jednej karcie, użytkownik jest również zalogowany na innych kartach bez monitu. Msal.js buforuje token identyfikatora dla użytkownika `localStorage` w przeglądarce i zaloguje użytkownika do aplikacji na innych otwartych kartach.
 
-Domyślnie MSAL. js używa `sessionStorage`, co nie zezwala na udostępnianie sesji między kartami. Aby uzyskać Logowanie jednokrotne między kartami, należy ustawić `cacheLocation` w MSAL. js na `localStorage` jak pokazano poniżej.
+Domyślnie msal.js `sessionStorage` używa, który nie zezwala na sesji do współużytkowane między kartami. Aby uzyskać funkcję SSO między kartami, upewnij się, że `cacheLocation` w pliku MSAL.js ustawiono na tak, `localStorage` jak pokazano poniżej.
 
 ```javascript
 const config = {
@@ -45,27 +45,27 @@ const config = {
 const myMSALObj = new UserAgentApplication(config);
 ```
 
-## <a name="sso-between-apps"></a>Logowanie jednokrotne między aplikacjami
+## <a name="sso-between-apps"></a>SSO między aplikacjami
 
-Po uwierzytelnieniu użytkownika plik cookie sesji jest ustawiany w domenie usługi Azure AD w przeglądarce. MSAL. js korzysta z tego pliku cookie sesji w celu zapewnienia logowania jednokrotnego dla użytkownika między różnymi aplikacjami. MSAL. js buforuje także tokeny identyfikatorów i tokeny dostępu użytkownika w ramach magazynu przeglądarki dla każdej domeny aplikacji. W efekcie zachowanie logowania jednokrotnego różni się w zależności od sytuacji:  
+Gdy użytkownik uwierzytelnia się, plik cookie sesji jest ustawiany w domenie usługi Azure AD w przeglądarce. MSAL.js opiera się na tym pliku cookie sesji, aby zapewnić sytą dla użytkownika między różnymi aplikacjami. Msal.js również buforuje tokeny identyfikatorów i tokeny dostępu użytkownika w magazynie przeglądarki na domenę aplikacji. W rezultacie zachowanie samego siebie różni się w różnych przypadkach:  
 
 ### <a name="applications-on-the-same-domain"></a>Aplikacje w tej samej domenie
 
-Gdy aplikacje są hostowane w tej samej domenie, użytkownik może zalogować się do aplikacji jeden raz, a następnie uwierzytelnić się w innych aplikacjach bez monitu. MSAL. js korzysta z tokenów w pamięci podręcznej dla użytkownika w domenie w celu zapewnienia logowania jednokrotnego.
+Gdy aplikacje są hostowane w tej samej domenie, użytkownik może zalogować się do aplikacji raz, a następnie uzyskać uwierzytelnienie do innych aplikacji bez monitu. Msal.js wykorzystuje tokeny buforowane dla użytkownika w domenie, aby zapewnić sytą alokację.
 
-### <a name="applications-on-different-domain"></a>Aplikacje w innej domenie
+### <a name="applications-on-different-domain"></a>Aplikacje w różnych domenach
 
-Gdy aplikacje są hostowane w różnych domenach, w domenie B nie można uzyskać dostępu do tokenów w pamięci podręcznej domeny A MSAL. js.
+Gdy aplikacje są hostowane w różnych domenach, tokeny buforowane w domenie A nie mogą być dostępne dla msal.js w domenie B.
 
-Oznacza to, że gdy użytkownicy zalogowani w domenie A przejdą do aplikacji w domenie B, zostaną przekierowani lub zostanie wyświetlony monit ze stroną usługi Azure AD. Ponieważ usługa Azure AD nadal zawiera plik cookie sesji użytkownika, użytkownik zostanie zalogowany i nie będzie musiał ponownie wprowadzić poświadczeń. Jeśli użytkownik ma wiele kont użytkowników w sesji z usługą Azure AD, użytkownik zostanie poproszony o wybranie odpowiedniego konta w celu zalogowania się.
+Oznacza to, że gdy użytkownicy zalogowani w domenie A przejdź do aplikacji w domenie B, zostaną przekierowani lub monitowani za pomocą strony usługi Azure AD. Ponieważ usługa Azure AD nadal ma plik cookie sesji użytkownika, będzie logować się do użytkownika i nie będzie musiał ponownie wprowadzić poświadczenia. Jeśli użytkownik ma wiele kont użytkowników w sesji z usługą Azure AD, użytkownik zostanie poproszony o wybranie odpowiedniego konta, aby się zalogować.
 
-### <a name="automatically-select-account-on-azure-ad"></a>Automatycznie wybierz konto w usłudze Azure AD
+### <a name="automatically-select-account-on-azure-ad"></a>Automatyczne wybieranie konta w usłudze Azure AD
 
-W niektórych przypadkach aplikacja ma dostęp do kontekstu uwierzytelniania użytkownika i chce uniknąć wyświetlania konta usługi Azure AD w przypadku zalogowania się z wieloma kontami.  Można to zrobić na kilka różnych sposobów:
+W niektórych przypadkach aplikacja ma dostęp do kontekstu uwierzytelniania użytkownika i chce uniknąć monitu o wybór konta usługi Azure AD po zalogowaniu się na wiele kont.  Można to zrobić na kilka różnych sposobów:
 
-**Identyfikator sesji (SID)**
+**Używanie identyfikatora sesji (SID)**
 
-Identyfikator sesji to [opcjonalne](active-directory-optional-claims.md) , które można skonfigurować w tokenach identyfikatorów. To zastrzeżenie umożliwia aplikacji identyfikację sesji usługi Azure AD użytkownika niezależną od nazwy konta użytkownika lub użytkownika. Identyfikator SID można przekazać w parametrach żądania do wywołania `acquireTokenSilent`. Pozwoli to usłudze Azure AD pominąć wybór konta. Identyfikator SID jest powiązany z plikiem cookie sesji i nie będzie miał kontekstów między przeglądarkami.
+Identyfikator sesji to [opcjonalne oświadczenie,](active-directory-optional-claims.md) które można skonfigurować w tokenach identyfikatorów. To oświadczenie umożliwia aplikacji identyfikowanie sesji usługi Azure AD użytkownika niezależnie od nazwy konta lub nazwy użytkownika użytkownika. Identyfikator SID w parametrach żądania `acquireTokenSilent` można przekazać do wywołania. Umożliwi to usługę Azure AD ominięcie wyboru konta. Identyfikator SID jest powiązany z plikiem cookie sesji i nie będzie przechodził przez konteksty przeglądarki.
 
 ```javascript
 var request = {
@@ -82,12 +82,12 @@ userAgentApplication.acquireTokenSilent(request).then(function(response) {
 ```
 
 > [!Note]
-> Identyfikatora SID można używać tylko z dyskretnymi żądaniami uwierzytelniania wykonywanymi przez `acquireTokenSilent` wywołanie w MSAL. js.
-Kroki konfigurowania opcjonalnych oświadczeń w manifeście aplikacji można znaleźć [tutaj](active-directory-optional-claims.md).
+> Identyfikator SID może być używany tylko `acquireTokenSilent` z cichymi żądaniami uwierzytelniania wykonanymi przez wywołanie w pliku MSAL.js.
+Kroki konfigurowania oświadczeń opcjonalnych można znaleźć w manifeście aplikacji [tutaj](active-directory-optional-claims.md).
 
 **Korzystanie z wskazówki logowania**
 
-Jeśli nie masz skonfigurowanego lub nie chcesz pominąć monitu wyboru konta w ramach wywołań uwierzytelniania interakcyjnego, możesz to zrobić, podając `login_hint` w parametrach żądania i opcjonalnie `domain_hint` jako `extraQueryParameters` w metodach interaktywnych MSAL. js (`loginPopup`, `loginRedirect`, `acquireTokenPopup` i `acquireTokenRedirect`). Na przykład:
+Jeśli nie masz skonfigurowanego oświadczenia SID lub musisz pominąć monit o wybór konta w `login_hint` interakcyjnych wywołaniach uwierzytelniania, możesz to zrobić, podając parametry żądania i opcjonalnie `domain_hint` jak `extraQueryParameters` w interaktywnych metodach MSAL.js`loginPopup`( , `loginRedirect`, `acquireTokenPopup` i `acquireTokenRedirect`). Przykład:
 
 ```javascript
 var request = {
@@ -99,28 +99,28 @@ var request = {
 userAgentApplication.loginRedirect(request);
 ```
 
-Możesz uzyskać wartości dla login_hint i domain_hint, odczytując oświadczenia zwrócone w tokenie identyfikatora dla użytkownika.
+Można uzyskać wartości dla login_hint i domain_hint, odczytywanie oświadczeń zwróconych w tokenie identyfikatora dla użytkownika.
 
-* **loginHint** należy ustawić na wartość `preferred_username` w tokenie identyfikatora.
+* **loginHint** należy ustawić `preferred_username` na oświadczenie w tokenie identyfikatora.
 
-* **domain_hint** jest wymagana tylko w przypadku korzystania z urzędu/typowe. Warunek domeny jest określany na podstawie identyfikatora dzierżawy (TID).  Jeśli `tid` w tokenie identyfikatora jest `9188040d-6c67-4c5b-b112-36a304b66dad`, to konsumenci. W przeciwnym razie jest to organizacja.
+* **domain_hint** jest wymagane tylko do przekazania podczas korzystania z /common authority. Wskazówka domeny jest określana przez identyfikator dzierżawy(tid).  Jeśli `tid` oświadczenie w tokenie `9188040d-6c67-4c5b-b112-36a304b66dad` identyfikatora jest to konsumenci. W przeciwnym razie jest to organizacja.
 
-Przeczytaj [tutaj](v2-oauth2-implicit-grant-flow.md) , aby uzyskać więcej informacji na temat wartości wskazówki logowania i wskazówki dotyczącej domeny.
+Przeczytaj [tutaj,](v2-oauth2-implicit-grant-flow.md) aby uzyskać więcej informacji na temat wartości wskazówek dotyczących logowania i wskazówki dotyczące domeny.
 
 > [!Note]
-> Nie można jednocześnie przekazać identyfikatorów SID i login_hint. Spowoduje to powstanie odpowiedzi na błąd.
+> Nie można przekazać identyfikatora SID i login_hint w tym samym czasie. Spowoduje to odpowiedź na błąd.
 
-## <a name="sso-without-msaljs-login"></a>Logowanie jednokrotne bez logowania MSAL. js
+## <a name="sso-without-msaljs-login"></a>Logowanie SSO bez logowania do msal.js
 
-Zgodnie z projektem MSAL. js wymaga, aby metoda logowania była wywoływana w celu ustanowienia kontekstu użytkownika przed uzyskaniem tokenów dla interfejsów API. Ponieważ metody logowania są interaktywne, użytkownik widzi monit.
+Zgodnie z projektem MSAL.js wymaga, aby metoda logowania jest wywoływana w celu ustanowienia kontekstu użytkownika przed uzyskaniem tokenów dla interfejsów API. Ponieważ metody logowania są interaktywne, użytkownik widzi monit.
 
-Istnieją pewne przypadki, w których aplikacje mają dostęp do kontekstu lub tokenu identyfikatora uwierzytelnionego użytkownika przez uwierzytelnianie zainicjowane w innej aplikacji i chcą korzystać z logowania jednokrotnego w celu uzyskania tokenów bez wcześniejszego zalogowania się za pomocą MSAL. js.
+Istnieją pewne przypadki, w których aplikacje mają dostęp do kontekstu uwierzytelnionego użytkownika lub tokenu identyfikatora za pośrednictwem uwierzytelniania zainicjowanego w innej aplikacji i chcą wykorzystać logowanie jednośmiękowe do uzyskiwania tokenów bez uprzedniego logowania za pośrednictwem pliku MSAL.js.
 
-Oto przykład: użytkownik jest zalogowany do nadrzędnej aplikacji sieci Web, która hostuje inną aplikację JavaScript działającą jako dodatek lub dodatek.
+Przykładem tego jest: Użytkownik jest zalogowany do nadrzędnej aplikacji sieci web, która obsługuje inną aplikację JavaScript działającą jako dodatek lub wtyczka.
 
-Środowisko logowania jednokrotnego w tym scenariuszu można uzyskać w następujący sposób:
+Doświadczenie samoso w tym scenariuszu można osiągnąć w następujący sposób:
 
-Przekaż `sid`, jeśli są dostępne (lub `login_hint` i opcjonalnie `domain_hint`) jako parametry żądania do wywołania `acquireTokenSilent` MSAL. js w następujący sposób:
+Przekaż `sid` if available `login_hint` (lub `domain_hint`opcjonalnie) jako parametry żądania do `acquireTokenSilent` wywołania MSAL.js w następujący sposób:
 
 ```javascript
 var request = {
@@ -137,11 +137,11 @@ userAgentApplication.acquireTokenSilent(request).then(function(response) {
 });
 ```
 
-## <a name="sso-in-adaljs-to-msaljs-update"></a>Logowanie jednokrotne w bibliotece ADAL. js do MSAL. js Update
+## <a name="sso-in-adaljs-to-msaljs-update"></a>SSO w ADAL.js do aktualizacji MSAL.js
 
-MSAL. js zapewnia dostępność funkcji przy użyciu biblioteki ADAL. js dla scenariuszy uwierzytelniania usługi Azure AD. Aby umożliwić łatwą migrację z biblioteki ADAL. js do MSAL. js oraz uniknąć monitowania użytkowników o ponowne zalogowanie się, biblioteka odczytuje token identyfikatora reprezentujący sesję użytkownika w pamięci podręcznej ADAL. js i bezproblemowo podpisuje użytkownika w MSAL. js.  
+Program MSAL.js przynosi parzystość funkcji z plikem ADAL.js dla scenariuszy uwierzytelniania usługi Azure AD. Aby ułatwić migrację z pliku ADAL.js do pliku MSAL.js i uniknąć monitowania użytkowników o ponowne zalogowanie się, biblioteka odczytuje token identyfikatora reprezentujący sesję użytkownika w pamięci podręcznej ADAL.js i bezproblemowo loguje się w u użytkownika w pliku MSAL.js.  
 
-Aby skorzystać z zachowania logowania jednokrotnego (SSO) w przypadku aktualizacji z biblioteki ADAL. js, należy upewnić się, że biblioteki używają `localStorage` do buforowania tokenów. Ustaw `cacheLocation` na `localStorage` w konfiguracji MSAL. js i ADAL. js w następujący sposób:
+Aby skorzystać z zachowania logowania jednokrotnego podczas aktualizowania z usługi ADAL.js, należy upewnić `localStorage` się, że biblioteki są używane do buforowania tokenów. Ustaw `cacheLocation` na `localStorage` obu w konfiguracji MSAL.js i ADAL.js podczas inicjowania w następujący sposób:
 
 
 ```javascript
@@ -167,8 +167,8 @@ const config = {
 const myMSALObj = new UserAgentApplication(config);
 ```
 
-Po skonfigurowaniu programu MSAL. js będzie mógł odczytać zbuforowany stan uwierzytelnionego użytkownika w bibliotece ADAL. js i użyć go w celu zapewnienia logowania jednokrotnego w MSAL. js.
+Po skonfigurowaniu usługa MSAL.js będzie mogła odczytać stan pamięci podręcznej uwierzytelnionego użytkownika w pliku ADAL.js i użyć go do zapewnienia identyfikatora jednoświadczanego w pliku MSAL.js.
 
 ## <a name="next-steps"></a>Następne kroki
 
-Dowiedz się więcej na temat sesji logowania jednokrotnego [i okresu istnienia tokenu](active-directory-configurable-token-lifetimes.md) w usłudze Azure AD.
+Dowiedz się więcej o [sesji logowania jednokrotnego i](active-directory-configurable-token-lifetimes.md) wartości okresu istnienia tokenu w usłudze Azure AD.

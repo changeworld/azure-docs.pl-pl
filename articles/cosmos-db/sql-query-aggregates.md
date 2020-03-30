@@ -1,21 +1,21 @@
 ---
-title: Funkcje agregujące w Azure Cosmos DB
-description: Dowiedz się więcej na temat składni funkcji agregującej SQL, typów funkcji agregujących obsługiwanych przez Azure Cosmos DB.
+title: Agreguj funkcje w usłudze Azure Cosmos DB
+description: Dowiedz się więcej o składni funkcji agregacji SQL, typach funkcji agregujących obsługiwanych przez usługę Azure Cosmos DB.
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 03/05/2020
+ms.date: 03/16/2020
 ms.author: tisande
-ms.openlocfilehash: df9700dd51c8915ff28c34cf0a29c2f5e48baa44
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.openlocfilehash: 24acd1e9c13320244ff4c27abd13abeda6f70b2b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/07/2020
-ms.locfileid: "78897824"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79464465"
 ---
-# <a name="aggregate-functions-in-azure-cosmos-db"></a>Funkcje agregujące w Azure Cosmos DB
+# <a name="aggregate-functions-in-azure-cosmos-db"></a>Agreguj funkcje w usłudze Azure Cosmos DB
 
-Funkcje agregujące wykonują obliczenia na zestawie wartości w klauzuli SELECT i zwracają pojedynczą wartość. Na przykład następujące zapytanie zwraca liczbę elementów w kontenerze `Families`:
+Funkcje agregowane wykonują obliczenia na `SELECT` zestawie wartości w klauzuli i zwracają pojedynczą wartość. Na przykład następująca kwerenda zwraca liczbę `Families` elementów w kontenerze:
 
 ## <a name="examples"></a>Przykłady
 
@@ -32,7 +32,7 @@ Wyniki są następujące:
     }]
 ```
 
-Możesz również zwrócić tylko wartość skalarną agregacji za pomocą słowa kluczowego VALUE. Na przykład poniższe zapytanie zwraca liczbę wartości jako pojedynczą liczbę:
+Można również zwrócić tylko wartość skalarną agregacji przy użyciu słowa kluczowego WARTOŚĆ. Na przykład poniższe zapytanie zwraca liczbę wartości jako pojedynczą liczbę:
 
 ```sql
     SELECT VALUE COUNT(1)
@@ -45,7 +45,7 @@ Wyniki są następujące:
     [ 2 ]
 ```
 
-Można również łączyć agregacje z filtrami. Na przykład następujące zapytanie zwraca liczbę elementów ze stanem adresu `WA`.
+Można również łączyć agregacje z filtrami. Na przykład następująca kwerenda zwraca liczbę elementów `WA`o stanie adresu .
 
 ```sql
     SELECT VALUE COUNT(1)
@@ -61,7 +61,7 @@ Wyniki są następujące:
 
 ## <a name="types-of-aggregate-functions"></a>Typy funkcji agregujących
 
-Interfejs API SQL obsługuje następujące funkcje agregujące. Suma i średni czas działania na wartościach liczbowych oraz liczba, minimum i maksimum pracy dla liczb, ciągów, wartości logicznych i wartości null.
+Interfejs API SQL obsługuje następujące funkcje agregacji. `SUM`i `AVG` działać na wartościach `COUNT` `MIN`liczbowych `MAX` i , i pracować na liczbach, ciągach, wartościach logicznych i wartościach null.
 
 | Funkcja | Opis |
 |-------|-------------|
@@ -71,13 +71,17 @@ Interfejs API SQL obsługuje następujące funkcje agregujące. Suma i średni c
 | MAX   | Zwraca maksymalną wartość w wyrażeniu. |
 | AVG   | Zwraca średnią wartości w wyrażeniu. |
 
-Można również agregować wyniki iteracji tablicy.
+Można również agregować zaokiwki w wynikach iteracji tablicy.
 
 > [!NOTE]
-> W Eksplorator danych Azure Portal zapytania agregacji mogą agregować częściowe wyniki tylko przez jedną stronę zapytania. Zestaw SDK tworzy pojedynczą wartość skumulowaną na wszystkich stronach. Aby wykonywać zapytania agregacji przy użyciu kodu, należy użyć zestawu .NET SDK 1.12.0, zestaw .NET Core SDK 1.1.0 lub zestawu Java SDK 1.9.5 lub nowszego.
+> W Eksploratorze danych witryny Azure portal kwerendy agregacji mogą agregować częściowe wyniki tylko na jednej stronie kwerendy. SDK tworzy jedną skumulowaną wartość na wszystkich stronach. Aby wykonywać kwerendy agregacji przy użyciu kodu, należy .NET SDK 1.12.0, .NET Core SDK 1.1.0 lub Java SDK 1.9.5 lub powyżej.
+
+## <a name="remarks"></a>Uwagi
+
+Te zagregowane funkcje systemowe będą korzystać z [indeksu zakresu](index-policy.md#includeexclude-strategy). Jeśli oczekujesz, `COUNT`że `SUM` `MIN`wykonasz , , `MAX`, lub `AVG` na właściwości, należy [uwzględnić odpowiednią ścieżkę w zasadach indeksowania](index-policy.md#includeexclude-strategy).
 
 ## <a name="next-steps"></a>Następne kroki
 
-- [Wprowadzenie do Azure Cosmos DB](introduction.md)
+- [Wprowadzenie do usługi Azure Cosmos DB](introduction.md)
 - [Funkcje systemowe](sql-query-system-functions.md)
 - [Funkcje zdefiniowane przez użytkownika](sql-query-udfs.md)

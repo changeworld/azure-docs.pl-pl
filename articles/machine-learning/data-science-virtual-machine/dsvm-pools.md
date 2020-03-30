@@ -1,8 +1,8 @@
 ---
-title: Pule udostępnione
+title: Udostępnione pule
 titleSuffix: Azure Data Science Virtual Machine
-description: Dowiedz się, jak utworzyć & wdrożyć udostępnioną pulę usługi Data Science Virtual Machines (DSVMs) jako zasób udostępniony dla zespołu.
-keywords: głębokiego uczenia i sztucznej Inteligencji, narzędzia do analizy danych, maszyny wirtualnej do nauki o danych, geoprzestrzenna analiza, zespół danych dla celów naukowych
+description: Dowiedz się, jak utworzyć & wdrożyć udostępnioną pulę maszyn wirtualnych do nauki o danych (DSVM) jako zasobu udostępnionego dla zespołu.
+keywords: głębokie uczenie się, sztuczna inteligencja, narzędzia do nauki o danych, maszyna wirtualna do nauki o danych, analityka geoprzestrzenna, proces nauki o danych zespołowych
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: data-science-vm
@@ -10,65 +10,52 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 12/10/2018
-ms.openlocfilehash: c5b7f4eaac91e79dde625ea00bfb6b1ea8782b31
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: cc0efc0a076ddc3fc9425999f1e38b4a32dec7a3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75530616"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79477344"
 ---
-# <a name="create-a-shared-pool-of-data-science-virtual-machines"></a>Utwórz współużytkowanej puli maszyn wirtualnych do nauki o danych
+# <a name="create-a-shared-pool-of-data-science-virtual-machines"></a>Tworzenie udostępnionej puli maszyn wirtualnych do nauki o danych
 
-W tym artykule dowiesz się, jak utworzyć udostępnioną pulę Virtual Machines analizy danych (DSVMs) dla zespołu. Zalety korzystania z puli udostępnionej obejmują lepsze wykorzystanie zasobów, łatwiejsze udostępnianie i współpracę oraz wydajniejsze zarządzanie zasobami DSVM.
+W tym artykule dowiesz się, jak utworzyć udostępnioną pulę maszyn wirtualnych do nauki o danych (DSVM) dla zespołu. Korzyści płynące z korzystania z puli współużytkowania obejmują lepsze wykorzystanie zasobów, łatwiejsze udostępnianie i współpracę oraz skuteczniejsze zarządzanie zasobami DSVM.
 
-Aby utworzyć pulę maszyny, można użyć wielu metod i technologii. Ten artykuł koncentruje się na pulach dla interaktywnych maszyn wirtualnych. Alternatywna zarządzana infrastruktura obliczeniowa to Azure Machine Learning COMPUTE. Aby uzyskać więcej informacji, zobacz [set up COMPUTE targets](../how-to-set-up-training-targets.md#amlcompute).
+Można użyć wielu metod i technologii, aby utworzyć pulę dsvms. W tym artykule koncentruje się na pulach interaktywnych maszyn wirtualnych (maszyny wirtualne). Alternatywną zarządzaną infrastrukturą obliczeniową jest azure machine learning compute. Aby uzyskać więcej informacji, zobacz [Konfigurowanie celów obliczeniowych](../how-to-set-up-training-targets.md#amlcompute).
 
-## <a name="interactive-vm-pool"></a>Interaktywne puli maszyn wirtualnych
+## <a name="interactive-vm-pool"></a>Interaktywna pula maszyn wirtualnych
 
-Puli interaktywne maszyn wirtualnych, które są współużytkowane przez cały zespół do nauki o danych/sztuczna Inteligencja umożliwia użytkownikom logować się do dostępnego wystąpienia maszyny wirtualnej DSVM zamiast dedykowanego wystąpienia dla każdej grupy użytkowników. Ta konfiguracja zapewnia lepszą dostępność i bardziej efektywne wykorzystanie zasobów.
+Pula interaktywnych maszyn wirtualnych, które są współużytkowane przez cały zespół nauki o ai/danych umożliwia użytkownikom zalogowanie się do dostępnego wystąpienia DSVM zamiast dedykowanego wystąpienia dla każdego zestawu użytkowników. Ta konfiguracja umożliwia lepszą dostępność i bardziej efektywne wykorzystanie zasobów.
 
-Za pomocą technologii [Azure Virtual Machine Scale Sets](https://docs.microsoft.com/azure/virtual-machine-scale-sets/) można utworzyć interaktywną pulę maszyn wirtualnych. Tworzenie i zarządzanie nimi grupę identycznych, równoważenia obciążenia i automatyczne skalowanie maszyn wirtualnych, można użyć zestawów skalowania.
+Technologia [skalowania maszyny wirtualnej platformy Azure](https://docs.microsoft.com/azure/virtual-machine-scale-sets/) służy do tworzenia interaktywnej puli maszyn wirtualnych. Zestawy skalowania służy do tworzenia i zarządzania grupą identycznych, równoważenia obciążenia i skalowania automatycznego maszyn wirtualnych.
 
-Użytkownik loguje się do głównej puli adresów IP lub DNS. Zestaw skalowania automatycznie trasy sesji do maszyny wirtualnej DSVM dostępne w zestawie skalowania. Ponieważ użytkownicy chcą spójne i znane środowisko niezależnie od maszyny wirtualnej, do której się logują, wszystkie wystąpienia maszyny wirtualnej w zestawie skalowania instalują udostępniony dysk sieciowy, taki jak udział Azure Files lub udział systemu plików NFS. Udostępnionym obszarze roboczym użytkownika jest przechowywany na magazyn udostępniony plik, który jest zainstalowany na wszystkich wystąpień.
+Użytkownik loguje się do adresu IP lub DNS głównej puli. Zestaw skalowania automatycznie kieruje sesję do dostępnego dsvm w zestawie skalowania. Ponieważ użytkownicy chcą spójne i znane środowisko niezależnie od maszyny Wirtualnej są one logowania do wszystkich wystąpień maszyny Wirtualnej w zestawie skalowania zainstalować współużytkowany dysk sieciowy, takich jak udział usługi Azure Files lub udział sieciowego systemu plików (NFS). Udostępniony obszar roboczy użytkownika jest zwykle przechowywany w udostępnionym magazynie plików, który jest zamontowany w każdym z wystąpień.
 
-Można znaleźć przykładowy szablon usługi Azure Resource Manager, który tworzy zestaw skalowania z wystąpień maszyny wirtualnej DSVM Ubuntu na [GitHub](https://raw.githubusercontent.com/Azure/DataScienceVM/master/Scripts/CreateDSVM/Ubuntu/dsvm-vmss-cluster.json). Przykład [pliku parametrów](https://raw.githubusercontent.com/Azure/DataScienceVM/master/Scripts/CreateDSVM/Ubuntu/dsvm-vmss-cluster.parameters.json) dla szablonu Azure Resource Manager można znaleźć w tej samej lokalizacji.
+Przykładowy szablon usługi Azure Resource Manager, który tworzy zestaw skalowania z wystąpieniami Ubuntu DSVM w [usłudze GitHub.](https://raw.githubusercontent.com/Azure/DataScienceVM/master/Scripts/CreateDSVM/Ubuntu/dsvm-vmss-cluster.json) W tej samej lokalizacji znajdziesz przykładowy [plik parametru](https://raw.githubusercontent.com/Azure/DataScienceVM/master/Scripts/CreateDSVM/Ubuntu/dsvm-vmss-cluster.parameters.json) szablonu usługi Azure Resource Manager.
 
-Zestaw skalowania można utworzyć na podstawie szablonu Azure Resource Manager, określając wartości dla pliku parametru w interfejsie wiersza polecenia platformy Azure:
+Zestaw skalowania można utworzyć na podstawie szablonu usługi Azure Resource Manager, określając wartości dla pliku parametrów w pliku interfejsu wiersza polecenia platformy Azure:
 
-```
+```azurecli-interactive
 az group create --name [[NAME OF RESOURCE GROUP]] --location [[ Data center. For eg: "West US 2"]
 az group deployment create --resource-group  [[NAME OF RESOURCE GROUP ABOVE]]  --template-uri https://raw.githubusercontent.com/Azure/DataScienceVM/master/Scripts/CreateDSVM/Ubuntu/dsvm-vmss-cluster.json --parameters @[[PARAMETER JSON FILE]]
 ```
-Poprzednich poleceniach przyjęto założenie, że masz:
-* Kopia pliku parametrów za pomocą wartości określone dla swojego wystąpienia zestawu skalowania.
+
+Powyższe polecenia zakładają, że masz:
+
+* Kopia pliku parametrów z wartościami określonymi dla wystąpienia zestawu skalowania.
 * Liczba wystąpień maszyn wirtualnych.
-* Udostępnij wskaźników do usługi Azure Files.
-* Poświadczenia dla konta magazynu zostanie zainstalowany na każdej maszynie Wirtualnej.
+* Wskaźniki do udziału w plikach azure.
+* Poświadczenia dla konta magazynu, które będą zainstalowane na każdej maszynie wirtualnej.
 
-Plik parametrów odwołuje się do lokalnie w poleceniach. Można również przekazać parametry wbudowanych lub wyświetlenie dotyczącego ich monitu w skrypcie.  
+Do pliku parametrów odwołuje się lokalnie w poleceniach. Można również przekazać parametry wbudowane lub monit o nie w skrypcie.  
 
-Powyższy szablon umożliwia protokołu SSH i port JupyterHub z zestawu do puli zaplecza maszyny Ubuntu skalowania frontonu. Użytkownik loguje się do maszyny wirtualnej na Secure Shell (SSH) lub na JupyterHub w normalny sposób. Ponieważ wystąpienia maszyn wirtualnych można skalować w górę lub w dół, każdy stan musi być zapisany w zainstalowanym Azure Files udziale. Tej samej metody można użyć, aby utworzyć pulę Windows maszyny.
+Poprzedni szablon umożliwia SSH i Port JupyterHub z skalowania frontonu ustawionego do puli zaplecza Ubuntu DSVMs. Jako użytkownik logujesz się do maszyny Wirtualnej na bezpiecznej powłoki (SSH) lub na JupyterHub w normalny sposób. Ponieważ wystąpienia maszyny Wirtualnej można skalować dynamicznie w górę lub w dół, każdy stan musi być zapisany w zainstalowanym udziale usługi Azure Files. Tego samego podejścia można użyć do utworzenia puli dsvms systemu Windows.
 
-[Skrypt, który instaluje udział usługi Azure Files](https://raw.githubusercontent.com/Azure/DataScienceVM/master/Extensions/General/mountazurefiles.sh) jest również dostępna w repozytorium Azure DataScienceVM w usłudze GitHub. Skrypt instaluje udziału plików platformy Azure w punkcie instalacji określonym w pliku parametrów. Skrypt tworzy również linki do zainstalowanego dysku w katalogu macierzystym użytkownika początkowej. Katalog notesów specyficznych dla użytkownika w udziale Azure Files jest nieelastyczny — połączony z katalogiem `$HOME/notebooks/remote`, dzięki czemu użytkownicy będą mogli uzyskiwać dostęp do swoich notesów Jupyter, uruchamiać je i zapisywać. Podczas tworzenia dodatkowych użytkowników na maszynie Wirtualnej, aby wskazać każdy użytkownik Jupyter w obszarze roboczym do udziału plików platformy Azure, możesz użyć tej samej Konwencji.
+[Skrypt, który instaluje udział usługi Azure Files](https://raw.githubusercontent.com/Azure/DataScienceVM/master/Extensions/General/mountazurefiles.sh) jest również dostępny w repozytorium DataScienceVM platformy Azure w usłudze GitHub. Skrypt instaluje udział usługi Azure Files w określonym punkcie instalacji w pliku parametru. Skrypt tworzy również miękkie łącza do zainstalowanego dysku w katalogu macierzystym początkowego użytkownika. Katalog notesu specyficzny dla użytkownika w udziale usługi `$HOME/notebooks/remote` Azure Files jest niefunkcjonalny z katalogiem, dzięki czemu użytkownicy mogą uzyskiwać dostęp do notesów jupytera, uruchamiać je i zapisywać. Tej samej konwencji można użyć podczas tworzenia dodatkowych użytkowników na maszynie Wirtualnej, aby wskazać obszar roboczy jupyter każdego użytkownika do udziału usługi Azure Files.
 
-Zestawy skalowania maszyn wirtualnych obsługują skalowanie automatyczne. Możesz ustawić reguły, kiedy należy utworzyć dodatkowe wystąpienia i kiedy skalować wystąpienia w dół. Na przykład można skalować w dół zero wystąpienia, aby zaoszczędzić na koszty użycia sprzętu w chmurze, gdy maszyny wirtualne nie są w ogóle używane. Na stronach dokumentacji, zestawów skalowania maszyn wirtualnych znajdują się szczegółowe informacje na temat [skalowania automatycznego](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-autoscale-overview).
+Zestawy skalowania maszyny wirtualnej obsługują skalowanie automatyczne. Można ustawić reguły dotyczące tego, kiedy utworzyć dodatkowe wystąpienia i kiedy skalować w dół wystąpień. Na przykład można skalować w dół do zera wystąpień, aby zaoszczędzić na kosztach użycia sprzętu w chmurze, gdy maszyny wirtualne nie są w ogóle używane. Strony dokumentacji zestawów skalowania maszyny wirtualnej zawierają szczegółowe kroki [skalowania automatycznego.](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-autoscale-overview)
 
 ## <a name="next-steps"></a>Następne kroki
 
-* [Skonfiguruj wspólną tożsamość](dsvm-common-identity.md)
-* [Bezpieczne przechowywanie poświadczeń w celu dostępu do zasobów w chmurze](dsvm-secure-access-keys.md)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+* [Konfigurowanie wspólnej tożsamości](dsvm-common-identity.md)
+* [Bezpieczne przechowywanie poświadczeń w celu uzyskania dostępu do zasobów w chmurze](dsvm-secure-access-keys.md)

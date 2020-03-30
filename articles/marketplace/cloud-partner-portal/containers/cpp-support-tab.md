@@ -1,49 +1,48 @@
 ---
-title: Ustawienia obsługi dla obrazu kontenerów platformy Azure | Portal Azure Marketplace
-description: Skonfiguruj ustawienia obsługi dla kontenera platformy Azure.
-services: Azure, Marketplace, Cloud Partner Portal,
-author: dan-wesley
+title: Ustawienia pomocy technicznej dla obrazu kontenerów platformy Azure | Azure Marketplace
+description: Konfigurowanie ustawień pomocy technicznej dla kontenera platformy Azure.
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/24/2019
-ms.author: pabutler
-ms.openlocfilehash: 144512683e6afa643639ba12b071e2a3ed7e01bd
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 8124828c565f344387ae946a1fa6e61a84675b81
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73823105"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80279967"
 ---
 # <a name="container-support-tab"></a>Karta Obsługa kontenerów
 
-Skorzystaj z karty **Pomoc techniczna** na **nowej stronie oferty** , aby udostępnić zasoby techniczne i pomoc techniczną dla swojej oferty.  Następujące obszary danych wejściowych są dostępne w formularzu pomocy technicznej: **kontakt inżynieryjny**, **Obsługa klienta**i **adresy URL pomocy technicznej**. Gwiazdka (*) dołączona do nazwy pola wskazuje, że jest to wymagane.
+Użyj karty **Pomoc techniczna** na stronie **Nowa oferta,** aby zapewnić zasoby pomocy technicznej i pomocy technicznej dla swojej oferty.  W formularzu Pomocy technicznej znajdują się następujące obszary wejściowe: **Kontakt inżynierski,** **Obsługa klienta**i **Adresy URL pomocy technicznej.** Gwiazdka (*) dołączona do nazwy pola wskazuje, że jest ona wymagana.
 
 
 ## <a name="support-form-fields"></a>Pola formularza pomocy technicznej
 
-Podaj wymagane informacje dla kontaktów inżynieryjnych i pomocy technicznej dla klientów.
+Podaj wymagane informacje dla pól Kontakt inżynierski i Obsługa klienta.
 
 
-### <a name="engineering-contact"></a>Kontakt inżynieryjny
+### <a name="engineering-contact"></a>Kontakt techniczny
 
-Kontakt inżynieryjny jest kontaktem technicznym między organizacją i firmą Microsoft. Wymagane pola są indicted przez gwiazdkę (*).
+Kontakt inżynierski to kontakt techniczny między organizacją a firmą Microsoft. Wymagane pola są oskarżane gwiazdką (*).
 
-- **Nazwa\*** — Nazwa osoby lub grupy, która służy jako wsparcie techniczne/inżynieryjne.
-- **\*e-mail** — adres e-mail tej osoby kontaktowej.
-- **Telefon\*** — numer telefonu do pomocy technicznej.
+- **Nazwa\* ** — imię i nazwisko osoby lub grupy, która służy jako wsparcie techniczne/inżynieryjne.
+- **E-mail\* ** — adres e-mail tego kontaktu technicznego.
+- **Telefon\* ** - Numer telefonu do pomocy technicznej.
 
 
 ### <a name="customer-support"></a>Obsługa klienta
 
-Kontakt z działem pomocy technicznej otrzymuje bilety pomocy technicznej otwarte przez klientów na platformie Azure.  Wymagane pola są indicted przez gwiazdkę (*).
+Kontakt działu obsługi klienta otrzymuje bilety pomocy technicznej otwierane przez klientów na platformie Azure.  Wymagane pola są oskarżane gwiazdką (*).
 
-- **Nazwa\*** — Nazwa osoby lub grupy, która służy jako obsługa klienta.
-- **\*e-mail** — adres e-mail tego kontaktu z pomocą techniczną.
-- **Telefon\*** — numer telefonu do obsługi klienta.
+- **Nazwa\* ** — imię i nazwisko osoby lub grupy, która służy jako obsługa klienta.
+- **E-mail\* ** — adres e-mail tego kontaktu pomocy technicznej.
+- **Telefon\* ** - Numer telefonu do obsługi klienta.
 
 
 ## <a name="next-steps"></a>Następne kroki
 
-Po zapoznaniu się z informacjami o pomocy technicznej możesz [opublikować swoją ofertę](./cpp-publish-offer.md). 
+Po zakończeniu dostarczania informacji o pomocy technicznej możesz opublikować [ofertę.](./cpp-publish-offer.md) 
 

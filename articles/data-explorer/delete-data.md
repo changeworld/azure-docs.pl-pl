@@ -1,28 +1,28 @@
 ---
-title: Usuwanie danych z usługi Azure Eksplorator danych
-description: W tym artykule opisano usuwanie scenariuszy w usłudze Azure Eksplorator danych, w tym przeczyszczanie, usuwanie zakresów i usuwanie danych przechowywanych na podstawie przechowywania.
+title: Usuwanie danych z Eksploratora danych platformy Azure
+description: W tym artykule opisano usuwanie scenariuszy w Eksploratorze danych platformy Azure, w tym przeczyszczanie, upuszczanie zakresów i usuwania na podstawie przechowywania.
 author: orspod
 ms.author: orspodek
 ms.reviewer: avneraa
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 03/12/2020
-ms.openlocfilehash: 681cfd71d2666630b192935d66ba32eaf16c92de
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: dd0f8740d148a7817bcfe2fbad591ceeb1610d0f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79204617"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79501414"
 ---
-# <a name="delete-data-from-azure-data-explorer"></a>Usuwanie danych z usługi Azure Eksplorator danych
+# <a name="delete-data-from-azure-data-explorer"></a>Usuwanie danych z Eksploratora danych platformy Azure
 
-Usługa Azure Eksplorator danych obsługuje różne scenariusze usuwania opisane w tym artykule. 
+Usługa Azure Data Explorer obsługuje różne scenariusze usuwania opisane w tym artykule. 
 
 ## <a name="delete-data-using-the-retention-policy"></a>Usuwanie danych przy użyciu zasad przechowywania
 
-Usługa Azure Eksplorator danych automatycznie usuwa dane na podstawie [zasad przechowywania](/azure/kusto/management/retentionpolicy). Ta metoda to najbardziej wydajny i nieefektywny sposób usuwania danych. Ustaw zasady przechowywania na poziomie bazy danych lub tabeli.
+Usługa Azure Data Explorer automatycznie usuwa dane na podstawie [zasad przechowywania](/azure/kusto/management/retentionpolicy). Ta metoda jest najbardziej wydajnym i bezproblemowym sposobem usuwania danych. Ustaw zasady przechowywania na poziomie bazy danych lub tabeli.
 
-Rozważ użycie bazy danych lub tabeli, która jest ustawiona na 90 dni przechowywania. Jeśli potrzebne są tylko 60 dni, Usuń starsze dane w następujący sposób:
+Należy wziąć pod uwagę bazy danych lub tabeli, która jest ustawiona na 90 dni przechowywania. Jeśli potrzebne są tylko 60 dni danych, usuń starsze dane w następujący sposób:
 
 ```kusto
 .alter-merge database <DatabaseName> policy retention softdelete = 60d
@@ -30,13 +30,13 @@ Rozważ użycie bazy danych lub tabeli, która jest ustawiona na 90 dni przechow
 .alter-merge table <TableName> policy retention softdelete = 60d
 ```
 
-## <a name="delete-data-by-dropping-extents"></a>Usuń dane poprzez upuszczenie zakresów
+## <a name="delete-data-by-dropping-extents"></a>Usuwanie danych przez upuszczanie zakresów
 
-[Zakres (Data fragmentu)](/azure/kusto/management/extents-overview) to wewnętrzna struktura, w której są przechowywane dane. Każdy zakres może zawierać do milionów rekordów. Zakresy można usuwać pojedynczo lub jako grupę przy użyciu [poleceń usuwania zakresów](/azure/kusto/management/extents-commands#drop-extents). 
+[Extent (fragment danych)](/azure/kusto/management/extents-overview) jest wewnętrzną strukturą, w której przechowywane są dane. Każdy zakres może pomieścić do milionów rekordów. Zakresy można usuwać pojedynczo lub jako grupa za pomocą [poleceń zasięgu upuszczania](/azure/kusto/management/extents-commands#drop-extents). 
 
 ### <a name="examples"></a>Przykłady
 
-Można usunąć wszystkie wiersze w tabeli lub tylko określony zakres.
+Można usunąć wszystkie wiersze w tabeli lub tylko w określonym zakresie.
 
 * Usuń wszystkie wiersze w tabeli:
 
@@ -50,7 +50,7 @@ Można usunąć wszystkie wiersze w tabeli lub tylko określony zakres.
     .drop extent e9fac0d2-b6d5-4ce3-bdb4-dea052d13b42
     ```
 
-## <a name="delete-individual-rows-using-purge"></a>Usuwanie pojedynczych wierszy przy użyciu przeczyszczania
+## <a name="delete-individual-rows-using-purge"></a>Usuwanie pojedynczych wierszy przy użyciu przeczyszczać
 
-[Przeczyszczanie danych](/azure/kusto/management/data-purge) może służyć do usuwania pojedynczych wierszy. Usuwanie nie jest natychmiastowe i wymaga znaczących zasobów systemowych. W związku z tym jest zalecane tylko w przypadku scenariuszy zgodności.  
+[Przeczyszczanie danych](/azure/kusto/concepts/data-purge) może służyć do usuwania wierszy osób. Usunięcie nie jest natychmiastowe i wymaga znacznych zasobów systemowych. W związku z tym jest zalecane tylko dla scenariuszy zgodności.  
 

@@ -1,2146 +1,2146 @@
 ---
-title: Azure Monitor obsługiwane metryki według typu zasobu
-description: Lista metryk dostępnych dla każdego typu zasobu z Azure Monitor.
+title: Obsługiwane dane usługi Azure Monitor według typu zasobu
+description: Lista metryk dostępnych dla każdego typu zasobu za pomocą usługi Azure Monitor.
 author: anirudhcavale
 services: azure-monitor
 ms.topic: reference
-ms.date: 12/18/2019
+ms.date: 03/17/2020
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: 3e43d2baf4337e7a986d59c47f805183a920c7a1
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: e01ed9f784d77b3c425c60de31ab87f86dbb688b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79275388"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79500605"
 ---
-# <a name="supported-metrics-with-azure-monitor"></a>Obsługiwane metryki z Azure Monitor
+# <a name="supported-metrics-with-azure-monitor"></a>Obsługiwane metryki za pomocą usługi Azure Monitor
 
-Azure Monitor oferuje kilka sposobów współpracy z metrykami, w tym wykresów w portalu, uzyskiwania do nich dostępu za pośrednictwem interfejsu API REST lub wykonywania zapytań przy użyciu programu PowerShell lub interfejsu wiersza polecenia. Poniżej znajduje się pełna lista wszystkich metryk dostępnych obecnie z potoku metryk Azure Monitor. Inne metryki mogą być dostępne w portalu lub przy użyciu starszych interfejsów API. Ta lista zawiera tylko metryki dostępne przy użyciu potoku metryki Azure Monitor skonsolidowanej. Metryki są zorganizowane według przestrzeni nazw. Aby uzyskać listę usług i przestrzenie nazw, które należą do nich, zobacz [dostawcy zasobów dla usług platformy Azure](../../azure-resource-manager/management/azure-services-resource-providers.md). Aby wykonać zapytanie o i uzyskać dostęp do tych metryk programowo, użyj [wersji interfejsu api 2018-01-01](https://docs.microsoft.com/rest/api/monitor/metricdefinitions)
+Usługa Azure Monitor udostępnia kilka sposobów interakcji z metrykami, w tym wykresów w portalu, uzyskiwanie do nich dostępu za pośrednictwem interfejsu API REST lub wykonywanie zapytań o nie przy użyciu programu PowerShell lub interfejsu wiersza polecenia. Poniżej znajduje się pełna lista wszystkich metryk obecnie dostępnych w potoku metryki usługi Azure Monitor. Inne metryki mogą być dostępne w portalu lub przy użyciu starszych interfejsów API. Ta lista poniżej zawiera tylko metryki dostępne przy użyciu skonsolidowanego potoku metryk usługi Azure Monitor. Metryki są zorganizowane według obszaru nazw. Aby uzyskać listę usług i obszarów nazw, które do nich należą, zobacz [Dostawcy zasobów dla usług platformy Azure](../../azure-resource-manager/management/azure-services-resource-providers.md). Aby uzyskać zapytania i uzyskać dostęp do tych metryk programowo, użyj [wersji api 2018-01-01](https://docs.microsoft.com/rest/api/monitor/metricdefinitions)
 
 > [!NOTE]
 > Wysyłanie metryk wielowymiarowych za pomocą ustawień diagnostycznych nie jest obecnie obsługiwane. Metryki wielowymiarowe są eksportowane jako spłaszczone metryki jednowymiarowe z wartościami zagregowanymi we wszystkich wymiarach.
 >
 > *Na przykład*: metrykę „Komunikaty przychodzące” w centrum zdarzeń można przeglądać i przedstawiać na wykresie na poziomie pojedynczej kolejki. Jednak w przypadku eksportowania za pomocą ustawień diagnostycznych metryka ta jest przedstawiana jako wszystkie komunikaty przychodzące we wszystkich kolejkach w centrum zdarzeń.
 >
-> Aby uzyskać listę metryk platformy, które można eksportować za pośrednictwem ustawień diagnostycznych, zobacz [ten artykuł](metrics-supported-export-diagnostic-settings.md).
+> Aby uzyskać listę metryk platformy, które można eksportować za pomocą ustawień diagnostycznych, zobacz [ten artykuł](metrics-supported-export-diagnostic-settings.md).
 
 
 
-## <a name="microsoftanalysisservicesservers"></a>Microsoft.AnalysisServices/servers
+## <a name="microsoftanalysisservicesservers"></a>Microsoft.AnalysisSługa/serwery
 
-|Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary|
+|Metryka|Metryka Nazwa wyświetlana|Jednostka|Typ agregacji|Opis|Wymiary|
 |---|---|---|---|---|---|
-|qpu_metric|QPU|Licznik|Średnia|QPU. Zakres 0-100 dla S1, 0-200 dla S2 i 0-400 dla S4|ServerResourceType|
-|memory_metric|Memory (Pamięć)|Bajty|Średnia|Rozmiar. Zakres 0-25 GB dla S1, 0-50 GB dla S2 i 0-100 GB dla S4|ServerResourceType|
-|private_bytes_metric|Prywatne bajty|Bajty|Średnia|Bajty prywatne.|ServerResourceType|
-|virtual_bytes_metric|Bajty wirtualne|Bajty|Średnia|Bajty wirtualne.|ServerResourceType|
-|TotalConnectionRequests|Łączna liczba żądań połączenia|Licznik|Średnia|Łączna liczba żądań połączenia. Są to wejścia.|ServerResourceType|
-|SuccessfullConnectionsPerSec|Udane połączenia na sekundę|CountPerSecond|Średnia|Szybkość pomyślnych połączeń.|ServerResourceType|
-|TotalConnectionFailures|Łączna liczba błędów połączenia|Licznik|Średnia|Łączna liczba nieudanych prób połączenia.|ServerResourceType|
-|CurrentUserSessions|Bieżące sesje użytkowników|Licznik|Średnia|Bieżąca liczba ustanowionych sesji użytkowników.|ServerResourceType|
-|QueryPoolBusyThreads|Wątki zajęte w puli zapytań|Licznik|Średnia|Liczba zajętych wątków w puli wątków zapytań.|ServerResourceType|
-|CommandPoolJobQueueLength|Długość kolejki zadań puli poleceń|Licznik|Średnia|Liczba zadań w kolejce puli wątków poleceń.|ServerResourceType|
-|ProcessingPoolJobQueueLength|Długość kolejki zadań puli przetwarzania|Licznik|Średnia|Liczba zadań innych niż zadania we/wy w kolejce puli wątków przetwarzania.|ServerResourceType|
-|Wartości CurrentConnections|Połączenie: bieżące połączenia|Licznik|Średnia|Bieżąca liczba ustanowionych połączeń klientów.|ServerResourceType|
-|CleanerCurrentPrice|Pamięć: bieżąca cena oczyszczarki|Licznik|Średnia|Bieżąca cena pamięci, $/Byte/Time, znormalizowana do 1000.|ServerResourceType|
-|CleanerMemoryShrinkable|Pamięć: zmniejszanie ilości pamięci czyszczącej|Bajty|Średnia|Ilość pamięci, w bajtach, podlegająca przeczyszczaniu przez oczyszczarkę w tle.|ServerResourceType|
-|CleanerMemoryNonshrinkable|Pamięć: pamięć oczyszczarki niemożliwa do zmniejszenia|Bajty|Średnia|Ilość pamięci (w bajtach), która nie podlega wyprzeczyszczaniu przez oczyszczarkę w tle.|ServerResourceType|
-|MemoryUsage|Pamięć: użycie pamięci|Bajty|Średnia|Użycie pamięci przez proces serwera jako używany do obliczania ceny pamięci czyszczącej. Równa się licznikowi Process\PrivateBytes i rozmiarowi danych mapowanych na pamięć, ignorowanie wszelkich pamięci, które zostały zamapowane lub przydzielone przez aparat analityczny w pamięci xVelocity (VertiPaq) przekraczający limit pamięci aparatu xVelocity.|ServerResourceType|
-|MemoryLimitHard|Pamięć: sztywny limit pamięci|Bajty|Średnia|Limit pamięci twardej z pliku konfiguracji.|ServerResourceType|
-|MemoryLimitHigh|Pamięć: limit pamięci jest wysoki|Bajty|Średnia|Górny limit pamięci z pliku konfiguracji.|ServerResourceType|
-|MemoryLimitLow|Pamięć: limit pamięci — niski|Bajty|Średnia|Limit braku pamięci z pliku konfiguracji.|ServerResourceType|
-|MemoryLimitVertiPaq|Pamięć: limit pamięci — tryb VertiPaq|Bajty|Średnia|Limit w pamięci z pliku konfiguracji.|ServerResourceType|
-|Działa|Pamięć: limit przydziału|Bajty|Średnia|Bieżący limit pamięci (w bajtach). Przydział pamięci jest również nazywany przydziałem pamięci lub rezerwacją pamięci.|ServerResourceType|
-|QuotaBlocked|Pamięć: zablokowany limit przydziału|Licznik|Średnia|Bieżąca liczba żądań przydziałów blokowanych do momentu zwolnienia innych limitów przydziału pamięci.|ServerResourceType|
-|VertiPaqNonpaged|Pamięć: VertiPaq niestronicowana|Bajty|Średnia|Bajty pamięci zablokowane w zestawie roboczym do użycia przez aparat w pamięci.|ServerResourceType|
-|VertiPaqPaged|Pamięć: stronicowana na stronie VertiPaq|Bajty|Średnia|Bajty stronicowanej pamięci w użyciu dla danych w pamięci.|ServerResourceType|
-|RowsReadPerSec|Przetwarzanie: odczytane wiersze na sekundę|CountPerSecond|Średnia|Współczynnik wierszy odczytanych ze wszystkich relacyjnych baz danych.|ServerResourceType|
-|RowsConvertedPerSec|Przetwarzanie: przekonwertowane wiersze na sekundę|CountPerSecond|Średnia|Szybkość wierszy przekonwertowanych podczas przetwarzania.|ServerResourceType|
-|RowsWrittenPerSec|Przetwarzanie: liczba wierszy na sekundę|CountPerSecond|Średnia|Częstotliwość wierszy zapisywana podczas przetwarzania.|ServerResourceType|
-|CommandPoolBusyThreads|Wątki: zajęte wątki w puli poleceń|Licznik|Średnia|Liczba zajętych wątków w puli wątków poleceń.|ServerResourceType|
-|CommandPoolIdleThreads|Wątki: bezczynne wątki w puli poleceń|Licznik|Średnia|Liczba bezczynnych wątków w puli wątków poleceń.|ServerResourceType|
-|LongParsingBusyThreads|Wątki: zajęte wątki o długotrwałej analizie|Licznik|Średnia|Liczba zajętych wątków w puli wątków o długotrwałej analizie.|ServerResourceType|
-|LongParsingIdleThreads|Wątki: długotrwałe wątki bezczynne analizy|Licznik|Średnia|Liczba bezczynnych wątków w puli wątków o długotrwałej analizie.|ServerResourceType|
-|LongParsingJobQueueLength|Wątki: Długość kolejki zadań o długotrwałej analizie|Licznik|Średnia|Liczba zadań w kolejce puli wątków o długotrwałej analizie.|ServerResourceType|
-|ProcessingPoolBusyIOJobThreads|Wątki: wątki zadań we/wy puli przetwarzania|Licznik|Średnia|Liczba wątków uruchamiających zadania we/wy w puli wątków przetwarzania.|ServerResourceType|
-|ProcessingPoolBusyNonIOThreads|Wątki: zajęte wątki innych niż we/wy puli przetwarzania|Licznik|Średnia|Liczba wątków uruchamiających zadania inne niż we/wy w puli wątków przetwarzania.|ServerResourceType|
-|ProcessingPoolIOJobQueueLength|Wątki: Długość kolejki zadań we/wy puli przetwarzania|Licznik|Średnia|Liczba zadań we/wy w kolejce puli wątków przetwarzania.|ServerResourceType|
-|ProcessingPoolIdleIOJobThreads|Wątki: wątki zadań we/wy puli przetwarzania|Licznik|Średnia|Liczba bezczynnych wątków dla zadań we/wy w puli wątków przetwarzania.|ServerResourceType|
-|ProcessingPoolIdleNonIOThreads|Wątki: bezczynne wątki inne niż we/wy puli przetwarzania|Licznik|Średnia|Liczba bezczynnych wątków w puli wątków przetwarzania dedykowanych dla zadań innych niż zadania we/wy.|ServerResourceType|
-|QueryPoolIdleThreads|Wątki: bezczynne wątki puli zapytań|Licznik|Średnia|Liczba bezczynnych wątków dla zadań we/wy w puli wątków przetwarzania.|ServerResourceType|
-|QueryPoolJobQueueLength|Wątki: Długość kolejki zadań puli zapytań|Licznik|Średnia|Liczba zadań w kolejce puli wątków zapytań.|ServerResourceType|
-|ShortParsingBusyThreads|Wątki: zajęte wątki z krótkim analizowaniem|Licznik|Średnia|Liczba zajętych wątków w puli wątków o krótkiej analizie.|ServerResourceType|
-|ShortParsingIdleThreads|Wątki: bezczynne wątki z krótkim analizowaniem|Licznik|Średnia|Liczba bezczynnych wątków w puli wątków o krótkiej analizie.|ServerResourceType|
-|ShortParsingJobQueueLength|Wątki: Długość kolejki zadań o krótkiej analizie|Licznik|Średnia|Liczba zadań w kolejce puli wątków o krótkiej analizie.|ServerResourceType|
-|memory_thrashing_metric|Migotanie pamięci|Procent|Średnia|Średnia pamięć migotanie.|ServerResourceType|
-|mashup_engine_qpu_metric|M QPU aparatu|Licznik|Średnia|QPU użycie przez procesy aparatu mashupów|ServerResourceType|
-|mashup_engine_memory_metric|Pamięć aparatu M|Bajty|Średnia|Użycie pamięci przez procesy aparatu mashupów|ServerResourceType|
-|mashup_engine_private_bytes_metric|Liczba prywatnych bajtów aparatu M|Bajty|Średnia|Użycie bajtów prywatnych przez procesy aparatu mashupów.|ServerResourceType|
-|mashup_engine_virtual_bytes_metric|Liczba bajtów wirtualnych aparatu M|Bajty|Średnia|Użycie bajtów wirtualnych przez procesy aparatu mashupów.|ServerResourceType|
+|qpu_metric|Funkcja QPU|Liczba|Średnia|QPU. Zakres 0-100 dla S1, 0-200 dla S2 i 0-400 dla S4|Typ serwera|
+|memory_metric|Memory (Pamięć)|Bajty|Średnia|Memory (pamięć). Zakres 0-25 GB dla S1, 0-50 GB dla S2 i 0-100 GB dla S4|Typ serwera|
+|private_bytes_metric|Bajty prywatne|Bajty|Średnia|Bajty prywatne.|Typ serwera|
+|virtual_bytes_metric|Bajty wirtualne|Bajty|Średnia|Bajty wirtualne.|Typ serwera|
+|Wnioski o ponowne połączenie ogółem|Łączna liczba żądań połączeń|Liczba|Średnia|Łączna liczba żądań połączeń. Są to przyjazdy.|Typ serwera|
+|SuccessfullConnectionsPerSec|Pomyślne połączenia na sekundę|Połów połówek|Średnia|Szybkość pomyślnego ukończenia połączenia.|Typ serwera|
+|TotalConnectionFailures (Całkowita liczba połączeń)|Całkowita liczba niepowodzeń połączeń|Liczba|Średnia|Całkowita liczba nieudanych prób połączenia.|Typ serwera|
+|CurrentUserSessions|Bieżące sesje użytkowników|Liczba|Średnia|Bieżąca liczba sesji użytkowników ustalona.|Typ serwera|
+|QueryPoolBusyThreads|Wątki zajętych puli zapytań|Liczba|Średnia|Liczba zajęty wątków w puli wątków kwerendy.|Typ serwera|
+|CommandPoolJobQueueLength (PoleceniePoolJobQueueLength)|Długość kolejki zadania puli poleceń|Liczba|Średnia|Liczba zadań w kolejce puli wątków poleceń.|Typ serwera|
+|PrzetwarzaniePoolJobQueueLength|Długość kolejki zadania puli przetwarzania|Liczba|Średnia|Liczba zadań innych niż we/wy w kolejce puli wątków przetwarzania.|Typ serwera|
+|CurrentConnections (Połączenia prądowe)|Połączenie: Bieżące połączenia|Liczba|Średnia|Bieżąca liczba nawiązanych połączeń klientów.|Typ serwera|
+|CleanerCurrentPrice|Pamięć: Czystsza aktualna cena|Liczba|Średnia|Aktualna cena pamięci, $/byte/time, znormalizowana do 1000.|Typ serwera|
+|CleanerMemoryShrinkable|Pamięć: Czystsza pamięć z kurczliwa|Bajty|Średnia|Ilość pamięci w bajtach, podlega przeczyszczaniu przez środek czyszczący tło.|Typ serwera|
+|CleanerMemoryNiejmkliwi|Pamięć: Czystsza pamięć nierozskawalna|Bajty|Średnia|Ilość pamięci w bajtach, nie podlega przeczyszczaniu przez środek czyszczący tło.|Typ serwera|
+|MemoryUsage (Narzędzie pamięci)|Pamięć: Użycie pamięci|Bajty|Średnia|Użycie pamięci przez proces serwera, używane do obliczania ceny czystszej pamięci. Równe licznikowi Process\PrivateBytes plus rozmiar danych mapowanych w pamięci, ignorując dowolną pamięć, która została mapowana lub przydzielona przez aparat analizy w pamięci xVelocity (VertiPaq) w nadmiarze limitu pamięci silnika xVelocity.|Typ serwera|
+|MemoryLimitHard (Funkcja MemoryLimitHard)|Pamięć: Czas ogranicznik pamięci|Bajty|Średnia|Limit pamięci twardej z pliku konfiguracyjnego.|Typ serwera|
+|MemoryLimitHigh|Pamięć: Limit pamięci wysoki|Bajty|Średnia|Wysoki limit pamięci z pliku konfiguracyjnego.|Typ serwera|
+|MemoryLimitLow (Funkcja MemoryLimitLow)|Pamięć: Niski limit pamięci|Bajty|Średnia|Niski limit pamięci z pliku konfiguracyjnego.|Typ serwera|
+|MemoryLimitVertiPaq|Pamięć: VertiPaq limitu pamięci|Bajty|Średnia|Limit w pamięci, z pliku konfiguracyjnego.|Typ serwera|
+|Limit przydziału|Pamięć: Przydział|Bajty|Średnia|Bieżący przydział pamięci w bajtach. Przydział pamięci jest również znany jako przyznanie pamięci lub rezerwacja pamięci.|Typ serwera|
+|Blokada przydziału|Pamięć: Przydział zablokowany|Liczba|Średnia|Bieżąca liczba żądań przydziału, które są blokowane do momentu, gdy inne przydziały pamięci zostaną zwolnione.|Typ serwera|
+|VertiPaqNonpaged ( VertiPaqNonpaged )|Pamięć: VertiPaq Nonpaged|Bajty|Średnia|Bajty pamięci zablokowane w zestawie roboczym do użytku przez aparat w pamięci.|Typ serwera|
+|VertiPaqPaged ( VertiPaqPaged )|Pamięć: VertiPaq Paged|Bajty|Średnia|Bajty pamięci stronicowanych w użyciu dla danych w pamięci.|Typ serwera|
+|WierszeReadPerSec|Przetwarzanie: wiersze odczytywane na sekundę|Połów połówek|Średnia|Szybkość wierszy odczytywanych ze wszystkich relacyjnych baz danych.|Typ serwera|
+|WierszeConvertedPerSec|Przetwarzanie: wiersze konwertowane na sekundę|Połów połówek|Średnia|Szybkość wierszy przekonwertowanych podczas przetwarzania.|Typ serwera|
+|WierszeWrittenPerSec|Przetwarzanie: wiersze zapisane na sekundę|Połów połówek|Średnia|Szybkość wierszy zapisanych podczas przetwarzania.|Typ serwera|
+|CommandPoolBusyThreads (PoleceniaPoolBusyThreads)|Wątki: Wątki zajęty puli poleceń|Liczba|Średnia|Liczba zajęty wątków w puli wątków polecenia.|Typ serwera|
+|CommandPoolIdleThreads (PoleceniaPoolIdleThreads)|Wątki: Wątki bezczynności puli poleceń|Liczba|Średnia|Liczba bezczynnych wątków w puli wątków poleceń.|Typ serwera|
+|LongParsingBusyThreads|Wątki: Długie analizowanie zajętych wątków|Liczba|Średnia|Liczba wątków zajęty w puli wątków analizowania długich.|Typ serwera|
+|LongParsingIdleTyty|Wątki: Długie parsowanie bezczynnych wątków|Liczba|Średnia|Liczba bezczynnych wątków w puli wątków analizowania długich.|Typ serwera|
+|LongParsingJobQueueLength|Wątki: Długa długość kolejki zadań analizowania|Liczba|Średnia|Liczba zadań w kolejce puli wątków analizowania długich.|Typ serwera|
+|ProcessingPoolBusyIOJobTyty|Wątki: Przetwarzanie puli zajętych wątków zadań we/wy|Liczba|Średnia|Liczba wątków z uruchomionymi zadaniami we/wy w puli wątków przetwarzania.|Typ serwera|
+|ProcessingPoolBusyNonIOTyty|Wątki: Przetwarzanie puli zajętych wątków innych niż We/Wy|Liczba|Średnia|Liczba wątków z uruchomionymi zadaniami nieujętymi/wy w puli wątków przetwarzania.|Typ serwera|
+|ProcessingPoolIOJobQueueLength|Wątki: Długość kolejki we/wy puli przetwarzania|Liczba|Średnia|Liczba zadań we/wy w kolejce puli wątków przetwarzania.|Typ serwera|
+|ProcessingPoolIdleIOJobThreads|Wątki: Przetwarzanie wątków zadań bezczynności puli bezczynności we/wy|Liczba|Średnia|Liczba bezczynnych wątków dla zadań we/wy w puli wątków przetwarzania.|Typ serwera|
+|ProcessingPoolIdleNonIOTyty|Wątki: Przetwarzanie bezczynności wątków bezczynności puli|Liczba|Średnia|Liczba bezczynnych wątków w puli wątków przetwarzania przeznaczonych do zadań innych niż we/wy.|Typ serwera|
+|QueryPoolIdleThreads|Wątki: wątki bezczynności puli zapytań|Liczba|Średnia|Liczba bezczynnych wątków dla zadań we/wy w puli wątków przetwarzania.|Typ serwera|
+|QueryPoolJobQueueLength|Wątki: Lengt kolejki zadań puli zapytań|Liczba|Średnia|Liczba zadań w kolejce puli wątków kwerend.|Typ serwera|
+|ShortParsingBusyThreads|Wątki: Krótkie analizowanie zajętych wątków|Liczba|Średnia|Liczba wątków zajęty w puli wątków krótkiej analizy.|Typ serwera|
+|ShortParsingIdleThreads|Wątki: Krótkie parsowanie bezczynnych wątków|Liczba|Średnia|Liczba bezczynnych wątków w puli wątków krótkich analizowania.|Typ serwera|
+|ShortParsingJobQueueLength|Wątki: Krótka długość kolejki zadań analizowania|Liczba|Średnia|Liczba zadań w kolejce puli wątków krótkiej analizy.|Typ serwera|
+|memory_thrashing_metric|Przeładowywanie pamięci|Wartość procentowa|Średnia|Średnia pamięć thrashing.|Typ serwera|
+|mashup_engine_qpu_metric|Silnik M QPU|Liczba|Średnia|Użycie QPU przez procesy silnika mashup|Typ serwera|
+|mashup_engine_memory_metric|Pamięć silnika M|Bajty|Średnia|Użycie pamięci przez procesy silnika mashup|Typ serwera|
+|mashup_engine_private_bytes_metric|Prywatne bajty silnika M|Bajty|Średnia|Użycie bajtów prywatnych przez procesy aparatu mashup.|Typ serwera|
+|mashup_engine_virtual_bytes_metric|Wirtualne bajty silnika M|Bajty|Średnia|Użycie bajtów wirtualnych przez procesy aparatu mashup.|Typ serwera|
 
 
 ## <a name="microsoftapimanagementservice"></a>Microsoft.ApiManagement/service
 
-|Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary|
+|Metryka|Metryka Nazwa wyświetlana|Jednostka|Typ agregacji|Opis|Wymiary|
 |---|---|---|---|---|---|
-|TotalRequests|Łączna liczba żądań bramy (przestarzałe)|Licznik|Łącznie|Liczba żądań bramy — zamiast tego użyj metryki żądania wielowymiarowego z wymiarem GatewayResponseCodeCategory|Lokalizacja, nazwa hosta|
-|Żądania successfulrequests|Pomyślne żądania bramy (przestarzałe)|Licznik|Łącznie|Liczba pomyślnych żądań bramy — zamiast tego użyj metryki żądania wielowymiarowego z wymiarem GatewayResponseCodeCategory|Lokalizacja, nazwa hosta|
-|UnauthorizedRequests|Nieautoryzowane żądania bramy (przestarzałe)|Licznik|Łącznie|Liczba nieautoryzowanych żądań bramy — zamiast tego użyj metryki żądania wielowymiarowego z wymiarem GatewayResponseCodeCategory|Lokalizacja, nazwa hosta|
-|FailedRequests|Nieudane żądania bramy (przestarzałe)|Licznik|Łącznie|Liczba błędów w żądaniach bramy — zamiast tego użyj metryki żądania wielowymiarowego z wymiarem GatewayResponseCodeCategory|Lokalizacja, nazwa hosta|
-|OtherRequests|Inne żądania bramy (przestarzałe)|Licznik|Łącznie|Liczba innych żądań bramy — zamiast tego użyj metryki żądania wielowymiarowego z wymiarem GatewayResponseCodeCategory|Lokalizacja, nazwa hosta|
-|Czas trwania|Całkowity czas trwania żądań bramy|Milisekundy|Średnia|Całkowity czas trwania żądań bramy w milisekundach|Lokalizacja, nazwa hosta|
-|BackendDuration|Czas trwania żądań wewnętrznej bazy danych|Milisekundy|Średnia|Czas trwania żądań zaplecza w milisekundach|Lokalizacja, nazwa hosta|
-|Pojemność|Pojemność|Procent|Średnia|Metryka wykorzystania dla usługi ApiManagement|Lokalizacja|
-|EventHubTotalEvents|Łączna liczba zdarzeń EventHub|Licznik|Łącznie|Liczba zdarzeń wysyłanych do centrum EventHub|Lokalizacja|
-|EventHubSuccessfulEvents|Pomyślne zdarzenia EventHub|Licznik|Łącznie|Liczba pomyślnych zdarzeń EventHub|Lokalizacja|
-|EventHubTotalFailedEvents|Niepowodzenie zdarzeń EventHub|Licznik|Łącznie|Liczba zakończonych niepowodzeniem zdarzeń EventHub|Lokalizacja|
-|EventHubRejectedEvents|Odrzucone zdarzenia EventHub|Licznik|Łącznie|Liczba odrzuconych zdarzeń EventHub (niewłaściwa konfiguracja lub nieautoryzowana)|Lokalizacja|
-|EventHubThrottledEvents|Ograniczone zdarzenia EventHub|Licznik|Łącznie|Liczba zdarzeń zdarzenia EventHub z ograniczeniami|Lokalizacja|
-|EventHubTimedoutEvents|Przekroczono limit czasu zdarzeń EventHub|Licznik|Łącznie|Liczba przekroczeń limitu czasu zdarzeń EventHub|Lokalizacja|
-|EventHubDroppedEvents|Opuszczone zdarzenia EventHub|Licznik|Łącznie|Liczba pominiętych zdarzeń z powodu osiągnięcia limitu rozmiaru kolejki|Lokalizacja|
-|EventHubTotalBytesSent|Rozmiar zdarzeń EventHub|Bajty|Łącznie|Łączny rozmiar zdarzeń EventHub w bajtach|Lokalizacja|
-|Żądania|Żądania|Licznik|Łącznie|Metryki żądania bramy z wieloma wymiarami|Location, hostname, LastErrorReason, BackendResponseCode, GatewayResponseCode, BackendResponseCodeCategory, GatewayResponseCodeCategory|
+|TotalRequests|Całkowita liczba żądań bramy (przestarzała)|Liczba|Łącznie|Liczba żądań bramy — zamiast tego użyj metryki żądania wielowymiarowego z wymiarem GatewayResponseCodeCategory|Lokalizacja,Nazwa hosta|
+|Udane prośby|Pomyślne żądania bramy (przestarzałe)|Liczba|Łącznie|Liczba pomyślnych żądań bramy — zamiast tego użyj metryki żądania wielowymiarowego z wymiarem GatewayResponseCodeCategory|Lokalizacja,Nazwa hosta|
+|Nieautoryzowanezapytania|Nieautoryzowane żądania bramy (przestarzałe)|Liczba|Łącznie|Liczba nieautoryzowanych żądań bramy — zamiast tego użyj metryki żądania wielowymiarowego z wymiarem GatewayResponseCodeCategory|Lokalizacja,Nazwa hosta|
+|Nieudane zapisy|Żądania bramy nie powiodły się (przestarzałe)|Liczba|Łącznie|Liczba błędów w żądaniach bramy — zamiast tego użyj metryki żądania wielowymiarowego z wymiarem GatewayResponseCodeCategory|Lokalizacja,Nazwa hosta|
+|InneRequests|Inne żądania bramy (przestarzałe)|Liczba|Łącznie|Liczba innych żądań bramy — zamiast tego użyj metryki żądania wielowymiarowego z wymiarem GatewayResponseCodeCategory|Lokalizacja,Nazwa hosta|
+|Czas trwania|Całkowity czas trwania żądań bramy|Milisekund|Średnia|Całkowity czas trwania żądań bramy w milisekundach|Lokalizacja,Nazwa hosta|
+|Cofanie wsteczneDuration|Czas trwania żądań wewnętrznej bazy danych|Milisekund|Średnia|Czas trwania żądań wewnętrznej bazy danych w milisekundach|Lokalizacja,Nazwa hosta|
+|Pojemność|Pojemność|Wartość procentowa|Średnia|Metryka wykorzystania usługi ApiManagement|Lokalizacja|
+|EventHubTotalEvents|Łączna liczba zdarzeń EventHub|Liczba|Łącznie|Liczba zdarzeń wysłanych do eventhub|Lokalizacja|
+|EventHubSuccessfulEvents|Udane wydarzenia EventHub|Liczba|Łącznie|Liczba udanych zdarzeń EventHub|Lokalizacja|
+|EventHubTotalFailedAjnieje|Nieudane zdarzenia EventHub|Liczba|Łącznie|Liczba nieudanych zdarzeń eventhub|Lokalizacja|
+|EventHubRejectedWydarzenia|Odrzucone zdarzenia EventHub|Liczba|Łącznie|Liczba odrzuconych zdarzeń EventHub (nieprawidłowa konfiguracja lub nieautoryzowane)|Lokalizacja|
+|EventHubThrottledWydarzenia|Ograniczone zdarzenia EventHub|Liczba|Łącznie|Liczba zdarzeń usługi EventHub z ograniczeniem|Lokalizacja|
+|EventHubTimedoutEvents|Zdarzenia EventHub z przesunąłem czas|Liczba|Łącznie|Liczba zdarzeń eventhub o przeliczona o przesuń|Lokalizacja|
+|EventHubDroppedWydarzenia|Porzucone zdarzenia EventHub|Liczba|Łącznie|Liczba zdarzeń pominiętych z powodu osiągniętego limitu rozmiaru kolejki|Lokalizacja|
+|Usługa EventHubTotalBytesSent|Rozmiar zdarzeń EventHub|Bajty|Łącznie|Całkowity rozmiar zdarzeń EventHub w bajtach|Lokalizacja|
+|Żądania|Żądania|Liczba|Łącznie|Metryki żądań bramy z wieloma wymiarami|Lokalizacja,Nazwa hosta,LastErrorReason,BackendResponseCode,GatewayResponseCode,BackendResponseCodeCategory,GatewayResponseCodeCategory|
 
 
 ## <a name="microsoftappconfigurationconfigurationstores"></a>Microsoft.AppConfiguration/configurationStores
 
-|Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary|
+|Metryka|Metryka Nazwa wyświetlana|Jednostka|Typ agregacji|Opis|Wymiary|
 |---|---|---|---|---|---|
-|HttpIncomingRequestCount|HttpIncomingRequestCount|Licznik|Licznik|Łączna liczba przychodzących żądań HTTP.|None|
-|FailedHttpRequestCount|FailedHttpRequestCount|Licznik|Licznik|Nieudane żądania HTTP.|None|
-|HttpIncomingRequestDuration|HttpIncomingRequestDuration|Licznik|Średnia|Opóźnienie dla żądania HTTP.|None|
+|Konto HttpIncomingRequestCount|Konto HttpIncomingRequestCount|Liczba|Liczba|Całkowita liczba przychodzących żądań http.|Brak|
+|Nie możnahttprequestcount|Nie możnahttprequestcount|Liczba|Liczba|Nie powiodło się żądania http.|Brak|
+|HttpIncomingRequestDuration (HttpIncomingRequestDuration)|HttpIncomingRequestDuration (HttpIncomingRequestDuration)|Liczba|Średnia|Opóźnienie żądania http.|Brak|
 
 
-## <a name="microsoftappplatformspring"></a>Microsoft. AppPlatform/Sprężyna
+## <a name="microsoftappplatformspring"></a>Microsoft.AppPlatform/Wiosna
 
-|Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary|
+|Metryka|Metryka Nazwa wyświetlana|Jednostka|Typ agregacji|Opis|Wymiary|
 |---|---|---|---|---|---|
-|SystemCpuUsagePercentage|Procent użycia procesora systemu|Procent|Średnia|Ostatnie użycie procesora CPU całego systemu|Nazwa_aplikacji, pod|
-|AppCpuUsagePercentage|Procent użycia procesora aplikacji|Procent|Średnia|Procent użycia procesora CPU JVM aplikacji|Nazwa_aplikacji, pod|
-|AppMemoryCommitted|Przypisana pamięć aplikacji|Bajty|Średnia|Pamięć przypisana do JVM w bajtach|Nazwa_aplikacji, pod|
-|AppMemoryUsed|Użyta pamięć aplikacji|Bajty|Średnia|Pamięć aplikacji użyta w bajtach|Nazwa_aplikacji, pod|
-|AppMemoryMax|Maksymalna ilość pamięci aplikacji|Bajty|Maksimum|Maksymalna ilość pamięci w bajtach, która może być używana do zarządzania pamięcią|Nazwa_aplikacji, pod|
-|MaxOldGenMemoryPoolBytes|Maksymalna dostępna wartość starego rozmiaru danych generacji|Bajty|Średnia|Maksymalny rozmiar puli pamięci starej generacji|Nazwa_aplikacji, pod|
-|OldGenMemoryPoolBytes|Stary rozmiar danych generacji|Bajty|Średnia|Rozmiar starej puli pamięci generacji po pełnej operacji GC|Nazwa_aplikacji, pod|
-|OldGenPromotedBytes|Podwyższ poziom do starego rozmiaru danych generacji|Bajty|Maksimum|Liczba pozytywnych wzrostów rozmiaru starej puli pamięci generacji przed GC do po GC|Nazwa_aplikacji, pod|
-|YoungGenPromotedBytes|Podwyższ poziom do rozmiaru danych dla małych generacji|Bajty|Maksimum|Zwiększa się w celu zwiększenia rozmiaru puli pamięci młodej generacji po jednej operacji GC do wcześniejszej|Nazwa_aplikacji, pod|
-|GCPauseTotalCount|Liczba wstrzymań GC|Licznik|Łącznie|Liczba wstrzymań GC|Nazwa_aplikacji, pod|
-|GCPauseTotalTime|Całkowity czas wstrzymania odzyskiwania pamięci|Milisekundy|Łącznie|Całkowity czas wstrzymania odzyskiwania pamięci|Nazwa_aplikacji, pod|
-|TomcatSentBytes|Całkowita liczba wysłanych bajtów Tomcat|Bajty|Łącznie|Całkowita liczba wysłanych bajtów Tomcat|Nazwa_aplikacji, pod|
-|TomcatReceivedBytes|Całkowita liczba odebranych bajtów Tomcat|Bajty|Łącznie|Całkowita liczba odebranych bajtów Tomcat|Nazwa_aplikacji, pod|
-|TomcatRequestTotalTime|Łączny czas żądania Tomcat|Milisekundy|Łącznie|Łączny czas żądania Tomcat|Nazwa_aplikacji, pod|
-|TomcatRequestTotalCount|Łączna liczba żądań Tomcat|Licznik|Łącznie|Łączna liczba żądań Tomcat|Nazwa_aplikacji, pod|
-|TomcatResponseAvgTime|Średni czas żądania Tomcat|Milisekundy|Średnia|Średni czas żądania Tomcat|Nazwa_aplikacji, pod|
-|TomcatRequestMaxTime|Maksymalny czas żądania Tomcat|Milisekundy|Maksimum|Maksymalny czas żądania Tomcat|Nazwa_aplikacji, pod|
-|TomcatErrorCount|Błąd globalny Tomcat|Licznik|Łącznie|Błąd globalny Tomcat|Nazwa_aplikacji, pod|
-|TomcatSessionActiveMaxCount|Maksymalna liczba aktywnych sesji Tomcat|Licznik|Łącznie|Maksymalna liczba aktywnych sesji Tomcat|Nazwa_aplikacji, pod|
-|TomcatSessionAliveMaxTime|Maksymalny czas aktywności sesji Tomcat|Milisekundy|Maksimum|Maksymalny czas aktywności sesji Tomcat|Nazwa_aplikacji, pod|
-|TomcatSessionActiveCurrentCount|Liczba aktywności sesji Tomcat|Licznik|Łącznie|Liczba aktywności sesji Tomcat|Nazwa_aplikacji, pod|
-|TomcatSessionCreatedCount|Liczba utworzonych sesji Tomcat|Licznik|Łącznie|Liczba utworzonych sesji Tomcat|Nazwa_aplikacji, pod|
-|TomcatSessionExpiredCount|Liczba wygasłych sesji Tomcat|Licznik|Łącznie|Liczba wygasłych sesji Tomcat|Nazwa_aplikacji, pod|
-|TomcatSessionRejectedCount|Liczba odrzuconych sesji Tomcat|Licznik|Łącznie|Liczba odrzuconych sesji Tomcat|Nazwa_aplikacji, pod|
+|SystemCpuUsagePercentage|Procent użycia procesora CPU systemu|Wartość procentowa|Średnia|Ostatnie użycie procesora dla całego systemu|AppName,Pod|
+|AppCpuUsagePercentage|Procent użycia procesora CPU aplikacji|Wartość procentowa|Średnia|Procent użycia procesora JVM aplikacji|AppName,Pod|
+|AppMemoryZatwierdzone|Przypisana pamięć aplikacji|Bajty|Średnia|Pamięć przypisana do jvm w bajtach|AppName,Pod|
+|AppMemoryUżywane|Używana pamięć aplikacji|Bajty|Średnia|Pamięć aplikacji używana w bajtach|AppName,Pod|
+|AppMemoryMax (AppMemoryMax)|Maksymalna ilość pamięci aplikacji|Bajty|Maksimum|Maksymalna ilość pamięci w bajtach, która może być używana do zarządzania pamięcią|AppName,Pod|
+|MaxOldGenMemoryBajki|Maksymalny dostępny rozmiar danych starej generacji|Bajty|Średnia|Maksymalny rozmiar puli pamięci starej generacji|AppName,Pod|
+|OldGenMemoryBajki|Rozmiar danych starej generacji|Bajty|Średnia|Rozmiar puli pamięci starej generacji po pełnym GC|AppName,Pod|
+|OldGenPromotedBytes ( OldGenPromotedBytes )|Promowanie rozmiaru danych starej generacji|Bajty|Maksimum|Liczba dodatnich wzrostów wielkości puli pamięci starej generacji przed GC do po GC|AppName,Pod|
+|YoungGenPromotedBytes|Promuj rozmiar danych młodego pokolenia|Bajty|Maksimum|Zwiększa się w celu zwiększenia wielkości puli pamięci młodego pokolenia po jednym GC do przed następnym|AppName,Pod|
+|GCPauseTotalCount|Liczba wstrzymania GC|Liczba|Łącznie|Liczba wstrzymania GC|AppName,Pod|
+|GCPauseTotalTime|Całkowity czas pauzy GC|Milisekund|Łącznie|Całkowity czas pauzy GC|AppName,Pod|
+|TomcatsentBytes (TomcatSentBytes)|Tomcat całkowita wysłana bajty|Bajty|Łącznie|Tomcat całkowita wysłana bajty|AppName,Pod|
+|TomcatReceivedBytes|Tomcat Całkowita liczba odebranych bajtów|Bajty|Łącznie|Tomcat Całkowita liczba odebranych bajtów|AppName,Pod|
+|TomcatRequestTotalCzas|Tomcat Żądanie Całkowity czas|Milisekund|Łącznie|Tomcat Żądanie Całkowity czas|AppName,Pod|
+|TomcatRequestTotalCount|Całkowita liczba żądań Tomcat|Liczba|Łącznie|Całkowita liczba żądań Tomcat|AppName,Pod|
+|TomcatResponseAvgCzas|Tomcat żąda średni czas|Milisekund|Średnia|Tomcat żąda średni czas|AppName,Pod|
+|TomcatRequestMaxTime|Tomcat Wniosek Maksymalny czas|Milisekund|Maksimum|Tomcat Wniosek Maksymalny czas|AppName,Pod|
+|TomcatErrorCount|Błąd globalny Tomcat|Liczba|Łącznie|Błąd globalny Tomcat|AppName,Pod|
+|TomcatSessionActiveMaxCount|Tomcat Session Max Aktywna liczba|Liczba|Łącznie|Tomcat Session Max Aktywna liczba|AppName,Pod|
+|TomcatSessionAliveMaxTime|Tomcat Sesja Max Alive Czas|Milisekund|Maksimum|Tomcat Sesja Max Alive Czas|AppName,Pod|
+|TomcatSessionActiveCurrentCount|Tomcat Sesja Żywa Liczba|Liczba|Łącznie|Tomcat Sesja Żywa Liczba|AppName,Pod|
+|TomcatSessionCreatedCount|Liczba utworów sesji Tomcat|Liczba|Łącznie|Liczba utworów sesji Tomcat|AppName,Pod|
+|TomcatSessionExpiredCount|Liczba wygasłych sesji Tomcat|Liczba|Łącznie|Liczba wygasłych sesji Tomcat|AppName,Pod|
+|TomcatSessionRejectedCount|Liczba odrzuconych sesji Tomcat|Liczba|Łącznie|Liczba odrzuconych sesji Tomcat|AppName,Pod|
 
 
-## <a name="microsoftautomationautomationaccounts"></a>Microsoft.Automation/automationAccounts
+## <a name="microsoftautomationautomationaccounts"></a>Microsoft.Automation/automationKontacje
 
-|Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary|
+|Metryka|Metryka Nazwa wyświetlana|Jednostka|Typ agregacji|Opis|Wymiary|
 |---|---|---|---|---|---|
-|TotalJob|Łączna liczba zadań|Licznik|Łącznie|Całkowita liczba zadań|Element Runbook, stan|
-|TotalUpdateDeploymentRuns|Łączna liczba przebiegów wdrożenia aktualizacji|Licznik|Łącznie|Łączna liczba przebiegów wdrażania aktualizacji oprogramowania|. Softwareupdateconfigurationname, stan|
-|TotalUpdateDeploymentMachineRuns|Łączna liczba uruchomień maszyn wdrożenia aktualizacji|Licznik|Łącznie|Łączna liczba uruchomień maszyn wdrożenia aktualizacji oprogramowania w ramach wdrożenia aktualizacji oprogramowania|. Softwareupdateconfigurationname, status, TargetComputer,. Softwareupdateconfigurationrunid|
+|TotalJob (TotalJob)|Łączna liczba miejsc pracy|Liczba|Łącznie|Całkowita liczba miejsc pracy|Runbook,Stan|
+|TotalUpdateDeploymentRuns (Liczbarunów rozmieszczenia totalupdate|Łączna liczba przebiegów wdrażania aktualizacji|Liczba|Łącznie|Całkowita liczba uruchomień wdrażania aktualizacji oprogramowania|Nazwa,Stan usługi SoftwareUpdateConfiguration|
+|TotalUpdateDeploymentMachineRuns|Łączna liczba przebiegów wdrażania aktualizacji maszyny|Liczba|Łącznie|Całkowita aktualizacja oprogramowania komputer wdrożeniowy działa w przebiegu wdrażania aktualizacji oprogramowania|SoftwareUpdateConfigurationName,Status,TargetComputer,SoftwareUpdateConfigurationRunId|
 
 
-## <a name="microsoftbatchbatchaccounts"></a>Microsoft.Batch/batchAccounts
+## <a name="microsoftbatchbatchaccounts"></a>Microsoft.Batch/batchKonkludy
 
-|Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary|
+|Metryka|Metryka Nazwa wyświetlana|Jednostka|Typ agregacji|Opis|Wymiary|
 |---|---|---|---|---|---|
-|CoreCount|Liczba dedykowanych rdzeni|Licznik|Łącznie|Łączna liczba rdzeni dedykowanych na koncie wsadowym|None|
-|TotalNodeCount|Liczba dedykowanych węzłów|Licznik|Łącznie|Łączna liczba węzłów dedykowanych na koncie wsadowym|None|
-|LowPriorityCoreCount|LowPriority rdzeń|Licznik|Łącznie|Łączna liczba rdzeni o niskim priorytecie na koncie wsadowym|None|
-|TotalLowPriorityNodeCount|Liczba węzłów o niskim priorytecie|Licznik|Łącznie|Łączna liczba węzłów o niskim priorytecie na koncie wsadowym|None|
-|CreatingNodeCount|Tworzenie liczby węzłów|Licznik|Łącznie|Liczba tworzonych węzłów|None|
-|StartingNodeCount|Początkowa liczba węzłów|Licznik|Łącznie|Liczba początkowych węzłów|None|
-|WaitingForStartTaskNodeCount|Oczekiwanie na liczbę węzłów zadania uruchamiania|Licznik|Łącznie|Liczba węzłów oczekujących na zakończenie zadania uruchamiania|None|
-|StartTaskFailedNodeCount|Uruchamianie zadania nie powiodło się liczba węzłów|Licznik|Łącznie|Liczba węzłów, w których zadanie uruchomieniowe nie powiodło się|None|
-|IdleNodeCount|Liczba węzłów bezczynności|Licznik|Łącznie|Liczba bezczynnych węzłów|None|
-|OfflineNodeCount|Liczba węzłów w trybie offline|Licznik|Łącznie|Liczba węzłów offline|None|
-|RebootingNodeCount|Ponowny rozruch liczby węzłów|Licznik|Łącznie|Liczba ponownych uruchomień węzłów|None|
-|ReimagingNodeCount|Liczba węzłów regraficznych|Licznik|Łącznie|Liczba węzłów regraficznych|None|
-|RunningNodeCount|Liczba uruchomionych węzłów|Licznik|Łącznie|Liczba uruchomionych węzłów|None|
-|LeavingPoolNodeCount|Opuszczanie liczby węzłów puli|Licznik|Łącznie|Liczba węzłów opuszczających pulę|None|
-|UnusableNodeCount|Liczba węzłów, których nie można użyć|Licznik|Łącznie|Liczba nieużywanych węzłów|None|
-|PreemptedNodeCount|Liczba przeniesiona węzłów|Licznik|Łącznie|Liczba przeniesiona węzłów|None|
-|TaskStartEvent|Zdarzenia uruchamiania zadania|Licznik|Łącznie|Łączna liczba rozpoczętych zadań|None|
-|TaskCompleteEvent|Zdarzenia ukończenia zadania|Licznik|Łącznie|Całkowita liczba ukończonych zadań|None|
-|TaskFailEvent|Zdarzenia błędów zadań|Licznik|Łącznie|Łączna liczba zadań zakończonych niepowodzeniem w stanie niepowodzenia|None|
-|PoolCreateEvent|Zdarzenia tworzenia puli|Licznik|Łącznie|Łączna liczba utworzonych pul|None|
-|PoolResizeStartEvent|Zdarzenia rozpoczęcia zmiany rozmiaru puli|Licznik|Łącznie|Łączna liczba rozpoczętych rozmiarów puli|None|
-|PoolResizeCompleteEvent|Zdarzenia ukończenia zmiany rozmiaru puli|Licznik|Łącznie|Łączna liczba zakończono zmienionych rozmiarów puli|None|
-|PoolDeleteStartEvent|Zdarzenia uruchamiania usuwania puli|Licznik|Łącznie|Łączna liczba uruchomionych usunięć pul|None|
-|PoolDeleteCompleteEvent|Zdarzenia ukończenia usuwania puli|Licznik|Łącznie|Łączna liczba ukończonych usunięć pul|None|
-|JobDeleteCompleteEvent|Zdarzenia ukończenia usuwania zadania|Licznik|Łącznie|Całkowita liczba pomyślnie usuniętych zadań.|None|
-|JobDeleteStartEvent|Zdarzenia rozpoczęcia usuwania zadania|Licznik|Łącznie|Łączna liczba zadań, które zostały zażądane do usunięcia.|None|
-|JobDisableCompleteEvent|Zdarzenia ukończenia wyłączania zadania|Licznik|Łącznie|Łączna liczba zadań, które zostały pomyślnie wyłączone.|None|
-|JobDisableStartEvent|Wyłącz zdarzenia uruchamiania dla zadania|Licznik|Łącznie|Łączna liczba zadań, które zostały zlecone do wyłączenia.|None|
-|JobStartEvent|Zdarzenia uruchamiania zadania|Licznik|Łącznie|Łączna liczba zadań, które zostały pomyślnie uruchomione.|None|
-|JobTerminateCompleteEvent|Zdarzenia ukończenia kończenia zadania|Licznik|Łącznie|Łączna liczba zadań zakończonych pomyślnie.|None|
-|JobTerminateStartEvent|Zdarzenia rozpoczęcia zakończenia zadania|Licznik|Łącznie|Całkowita liczba zadań, które zostały zażądane do zakończenia.|None|
+|Liczba rdzeni|Dedykowana liczba rdzeni|Liczba|Łącznie|Łączna liczba dedykowanych rdzeni na koncie wsadowym|Brak|
+|TotalNodeCount (Liczba Całkowita)|Liczba dedykowanych węzłów|Liczba|Łącznie|Łączna liczba dedykowanych węzłów na koncie wsadowym|Brak|
+|Licznik NiskipriorityCoreCount|Liczba rdzeni o niskiej pozycjności|Liczba|Łącznie|Łączna liczba rdzeni o niskim priorytecie na koncie wsadowym|Brak|
+|TotalLowPriorityNodeCount|Liczba węzłów o niskim priorytecie|Liczba|Łącznie|Łączna liczba węzłów o niskim priorytecie na koncie wsadowym|Brak|
+|Tworzenie KontaNodeCount|Tworzenie liczby węzłów|Liczba|Łącznie|Liczba tworzonych węzłów|Brak|
+|StartingNodeCount|Liczba początkowa węzłów|Liczba|Łącznie|Liczba węzłów od rozpoczęcia|Brak|
+|WaitingForStartTaskNodeCount|Oczekiwanie na uruchomienie liczby węzłów zadań|Liczba|Łącznie|Liczba węzłów oczekujących na ukończenie zadania startowego|Brak|
+|StartTaskFailedNodeCount|Uruchom liczbę węzłów nie powiodło się zadania|Liczba|Łącznie|Liczba węzłów, w których zadanie uruchamiania nie powiodło się|Brak|
+|Liczba IdleNodeCount|Liczba węzłów bezczynnych|Liczba|Łącznie|Liczba bezczynnych węzłów|Brak|
+|Liczba plików offline|Liczba węzłów w trybie offline|Liczba|Łącznie|Liczba węzłów w trybie offline|Brak|
+|Ponowne uruchamianienodecount|Ponowna liczba węzłów|Liczba|Łącznie|Liczba węzłów ponownego uruchamiania|Brak|
+|ReimagingNodeCount (Liczba reimagingnodecount)|Liczba węzłów reimaging|Liczba|Łącznie|Liczba węzłów ponownego zagosnania|Brak|
+|RunningNodeCount (RunningNodeCount)|Liczba uruchomionych węzłów|Liczba|Łącznie|Liczba uruchomionych węzłów|Brak|
+|LeavingPoolNodeCount|Opuszczanie liczby węzłów puli|Liczba|Łącznie|Liczba węzłów opuszczających pulę|Brak|
+|BezużytecznyNodeCount|Liczba węzłów bezużytecznych|Liczba|Łącznie|Liczba węzłów bezużytecznych|Brak|
+|WywłaszczoneNodeCount|Wywłaszczona liczba węzłów|Liczba|Łącznie|Liczba wywłaszczonych węzłów|Brak|
+|ZadanieStartEvent|Zdarzenia rozpoczęcia zadania|Liczba|Łącznie|Całkowita liczba uruchomionych zadań|Brak|
+|ZadanieZamyknięcie|Zdarzenia ukończenia zadania|Liczba|Łącznie|Całkowita liczba ukończonych zadań|Brak|
+|ZadanieFailEvent (Zadanie)|Zdarzenia niepowodzenia zadania|Liczba|Łącznie|Całkowita liczba zadań, które zostały wykonane w stanie awarii|Brak|
+|PoolCreateEvent (Twórstwo na basenie)|Zdarzenia tworzenia puli|Liczba|Łącznie|Łączna liczba utworzonych puli|Brak|
+|Proces poolresizestartevent|Zdarzenia rozpoczęcia ponownego rozmiaru puli|Liczba|Łącznie|Całkowita liczba rozmiarów puli, które zostały uruchomione|Brak|
+|Impreza PoolResizeCompleteEvent|Zdarzenia ukończenia ponownego rozmiaru rozmiaru puli|Liczba|Łącznie|Całkowita liczba przesiąknów puli, które zostały ukończone|Brak|
+|Impreza PoolDeleteStartEvent|Zdarzenia rozpoczęcia usuwania puli|Liczba|Łącznie|Całkowita liczba usuniętych puli, które zostały rozpoczęte|Brak|
+|PoolDeleteCompleteEVent|Zdarzenia usuwania puli|Liczba|Łącznie|Całkowita liczba usuniętych puli, które zostały ukończone|Brak|
+|JobDeleteCompleteEVent|Zdarzenia zakończenia usuwania zadania|Liczba|Łącznie|Całkowita liczba zadań, które zostały pomyślnie usunięte.|Brak|
+|JobDeleteStartEvent (ZadanieDeletStartEvent)|Zdarzenia rozpoczęcia usuwania zadań|Liczba|Łącznie|Całkowita liczba zadań, które zostały żądane do usunięcia.|Brak|
+|JobDisableCompleteEVent (JobDisableCompleteEvent)|Zadanie wyłączanie zakończonych zdarzeń|Liczba|Łącznie|Całkowita liczba zadań, które zostały pomyślnie wyłączone.|Brak|
+|JobDisableStartEvent (ZadanieDisableStartEvent)|Wyłączanie zdarzeń startowych zadania|Liczba|Łącznie|Całkowita liczba zadań, które zostały żądane do wyłączenia.|Brak|
+|JobStartEvent (Początek zadania)|Zdarzenia rozpoczęcia zadania|Liczba|Łącznie|Całkowita liczba zadań, które zostały pomyślnie uruchomione.|Brak|
+|JobTerminateCompleteEvent (JobTerminateCompleteEvent)|Zakończenie zadania zdarzenia zakończone|Liczba|Łącznie|Całkowita liczba zadań, które zostały pomyślnie zakończone.|Brak|
+|JobTerminateStartEvent (ZadanieTerminateStartEvent)|Zakończenie zadania zdarzenia startowe|Liczba|Łącznie|Całkowita liczba zadań, które zostały żądane do zakończenia.|Brak|
 
 
-## <a name="microsoftbatchaiworkspaces"></a>Microsoft. Batchai Job/obszary robocze
+## <a name="microsoftbatchaiworkspaces"></a>Microsoft.BatchAI/obszary robocze
 
-|Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary|
+|Metryka|Metryka Nazwa wyświetlana|Jednostka|Typ agregacji|Opis|Wymiary|
 |---|---|---|---|---|---|
-|Przesłane zadanie|Przesłane zadanie|Licznik|Łącznie|Liczba przesłanych zadań|Scenariusz, ClusterName|
-|Ukończono zadanie|Ukończono zadanie|Licznik|Łącznie|Liczba ukończonych zadań|Scenariusz, ClusterName, ResultType|
-|Łączna liczba węzłów|Łączna liczba węzłów|Licznik|Średnia|Łączna liczba węzłów|Scenariusz, ClusterName|
-|Aktywne węzły|Aktywne węzły|Licznik|Średnia|Liczba uruchomionych węzłów|Scenariusz, ClusterName|
-|Węzły bezczynne|Węzły bezczynne|Licznik|Średnia|Liczba bezczynnych węzłów|Scenariusz, ClusterName|
-|Węzły niezdatne do użytku|Węzły niezdatne do użytku|Licznik|Średnia|Liczba nieużywanych węzłów|Scenariusz, ClusterName|
-|Zastępujące węzły|Zastępujące węzły|Licznik|Średnia|Liczba przeniesiona węzłów|Scenariusz, ClusterName|
-|Opuszczanie węzłów|Opuszczanie węzłów|Licznik|Średnia|Liczba wychodzących węzłów|Scenariusz, ClusterName|
-|Łączna liczba rdzeni|Łączna liczba rdzeni|Licznik|Średnia|Łączna liczba rdzeni|Scenariusz, ClusterName|
-|Aktywne rdzenie|Aktywne rdzenie|Licznik|Średnia|Liczba aktywnych rdzeni|Scenariusz, ClusterName|
-|Rdzenie bezczynne|Rdzenie bezczynne|Licznik|Średnia|Liczba rdzeni bezczynnych|Scenariusz, ClusterName|
-|Rdzenie, których nie można używać|Rdzenie, których nie można używać|Licznik|Średnia|Liczba rdzeni, których nie można używać|Scenariusz, ClusterName|
-|Występujące rdzenie|Występujące rdzenie|Licznik|Średnia|Liczba przeniesiona rdzeni|Scenariusz, ClusterName|
-|Opuszczanie rdzeni|Opuszczanie rdzeni|Licznik|Średnia|Liczba rdzeni wychodzących|Scenariusz, ClusterName|
-|Procent wykorzystania przydziałów|Procent wykorzystania przydziałów|Licznik|Średnia|Procent wykorzystania przydziałów|Scenariusz, ClusterName, VmFamilyName, VmPriority|
+|Przesłane zadanie|Przesłane zadanie|Liczba|Łącznie|Liczba zgłoszonych ofert pracy|Scenariusz,Nazwa klastra|
+|Zadanie zakończone|Zadanie zakończone|Liczba|Łącznie|Liczba ukończonych zadań|Scenariusz,Nazwa klastra,Typ wyniku|
+|Łączna liczba węzłów|Łączna liczba węzłów|Liczba|Średnia|Liczba węzłów całkowitych|Scenariusz,Nazwa klastra|
+|Aktywne węzły|Aktywne węzły|Liczba|Średnia|Liczba uruchomionych węzłów|Scenariusz,Nazwa klastra|
+|Węzły bezczynne|Węzły bezczynne|Liczba|Średnia|Liczba bezczynnych węzłów|Scenariusz,Nazwa klastra|
+|Niezniszalne węzły|Niezniszalne węzły|Liczba|Średnia|Liczba węzłów bezużytecznych|Scenariusz,Nazwa klastra|
+|Wstępnie wywłaszczone węzły|Wstępnie wywłaszczone węzły|Liczba|Średnia|Liczba wywłaszczonych węzłów|Scenariusz,Nazwa klastra|
+|Opuszczanie węzłów|Opuszczanie węzłów|Liczba|Średnia|Liczba węzłów opuszczających|Scenariusz,Nazwa klastra|
+|Całkowita liczba rdzeni|Całkowita liczba rdzeni|Liczba|Średnia|Liczba całkowitej liczby rdzeni|Scenariusz,Nazwa klastra|
+|Aktywne rdzenie|Aktywne rdzenie|Liczba|Średnia|Liczba aktywnych rdzeni|Scenariusz,Nazwa klastra|
+|Rdzenie bezczynne|Rdzenie bezczynne|Liczba|Średnia|Liczba bezczynnych rdzeni|Scenariusz,Nazwa klastra|
+|Niezniszalne rdzenie|Niezniszalne rdzenie|Liczba|Średnia|Liczba niezniszalnych rdzeni|Scenariusz,Nazwa klastra|
+|Wywłaszczone rdzenie|Wywłaszczone rdzenie|Liczba|Średnia|Liczba wywłaszczonych rdzeni|Scenariusz,Nazwa klastra|
+|Opuszczanie rdzeni|Opuszczanie rdzeni|Liczba|Średnia|Liczba rdzeni opuszczających|Scenariusz,Nazwa klastra|
+|Procent wykorzystania przydziału|Procent wykorzystania przydziału|Liczba|Średnia|Procent wykorzystanego przydziału|Scenariusz,Nazwa klastra,Nazwa wirtualna,VmPriority|
 
-## <a name="microsoftblockchainblockchainmembers"></a>Microsoft. łańcucha bloków/blockchainMembers
+## <a name="microsoftblockchainblockchainmembers"></a>Microsoft.Blockchain/blockchainCzłonek
 
-|Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary|
+|Metryka|Metryka Nazwa wyświetlana|Jednostka|Typ agregacji|Opis|Wymiary|
 |---|---|---|---|---|---|
-|CpuUsagePercentageInDouble|Procent użycia procesora CPU|Procent|Maksimum|Procent użycia procesora CPU|Węzeł|
-|MemoryUsage|Użycie pamięci|Bajty|Średnia|Użycie pamięci|Węzeł|
-|MemoryLimit|Limit pamięci|Bajty|Średnia|Limit pamięci|Węzeł|
-|MemoryUsagePercentageInDouble|Procent użycia pamięci|Procent|Średnia|Procent użycia pamięci|Węzeł|
-|StorageUsage|Użycie magazynu|Bajty|Średnia|Użycie magazynu|Węzeł|
-|IOReadBytes|Bajty odczytu we/wy|Bajty|Łącznie|Bajty odczytu we/wy|Węzeł|
-|IOWriteBytes|Bajty zapisu we/wy|Bajty|Łącznie|Bajty zapisu we/wy|Węzeł|
-|ConnectionAccepted|Zaakceptowane połączenia|Licznik|Łącznie|Zaakceptowane połączenia|Węzeł|
-|ConnectionHandled|Obsłużone połączenia|Licznik|Łącznie|Obsłużone połączenia|Węzeł|
-|ConnectionActive|Aktywne połączenia|Licznik|Średnia|Aktywne połączenia|Węzeł|
-|RequestHandled|Obsłużone żądania|Licznik|Łącznie|Obsłużone żądania|Węzeł|
-|ProcessedBlocks|Przetworzone bloki|Licznik|Łącznie|Przetworzone bloki|Węzeł|
-|ProcessedTransactions|Przetworzone transakcje|Licznik|Łącznie|Przetworzone transakcje|Węzeł|
-|PendingTransactions|Oczekujące transakcje|Licznik|Średnia|Oczekujące transakcje|Węzeł|
-|QueuedTransactions|Transakcje w kolejce|Licznik|Średnia|Transakcje w kolejce|Węzeł|
+|CpuUsagePercentageInDouble|Procent użycia procesora CPU|Wartość procentowa|Maksimum|Procent użycia procesora CPU|Węzeł|
+|MemoryUsage (Narzędzie pamięci)|Użycie pamięci|Bajty|Średnia|Użycie pamięci|Węzeł|
+|Memorylimit|Limit pamięci|Bajty|Średnia|Limit pamięci|Węzeł|
+|MemoryUsagePercentageInDouble|Procent użycia pamięci|Wartość procentowa|Średnia|Procent użycia pamięci|Węzeł|
+|StorageUsage|Użycie pamięci masowej|Bajty|Średnia|Użycie pamięci masowej|Węzeł|
+|IOReadBytes (IOReadBytes)|Bajty odczytu we/wy|Bajty|Łącznie|Bajty odczytu we/wy|Węzeł|
+|Bajty IOWrite|Bajty zapisu we/wy|Bajty|Łącznie|Bajty zapisu we/wy|Węzeł|
+|PołączenieAkceptowane|Akceptowane połączenia|Liczba|Łącznie|Akceptowane połączenia|Węzeł|
+|PołączenieHandled|Obsługiwane połączenia|Liczba|Łącznie|Obsługiwane połączenia|Węzeł|
+|ConnectionActive (Aktywny połączenie)|Aktywne połączenia|Liczba|Średnia|Aktywne połączenia|Węzeł|
+|RequestHandled (Nieobsługiwowany)|Obsługiwane żądania|Liczba|Łącznie|Obsługiwane żądania|Węzeł|
+|ProcessedBlocks|Przetworzone bloki|Liczba|Łącznie|Przetworzone bloki|Węzeł|
+|PrzetworzoneTransakcje|Przetworzone transakcje|Liczba|Łącznie|Przetworzone transakcje|Węzeł|
+|OczekująceTransakcje|Oczekujące transakcje|Liczba|Średnia|Oczekujące transakcje|Węzeł|
+|Usługi w kolejce|Transakcje w kolejce|Liczba|Średnia|Transakcje w kolejce|Węzeł|
 
 
 
-## <a name="microsoftcacheredis"></a>Microsoft.Cache/redis
+## <a name="microsoftcacheredis"></a>Pamięć podręczna/redis firmy Microsoft.Cache
 
-|Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary|
+|Metryka|Metryka Nazwa wyświetlana|Jednostka|Typ agregacji|Opis|Wymiary|
 |---|---|---|---|---|---|
-|connectedclients|Podłączeni klienci|Licznik|Maksimum||ShardId|
-|totalcommandsprocessed|Łączna liczba operacji|Licznik|Łącznie||ShardId|
-|cachehits|Trafienia pamięci podręcznej|Licznik|Łącznie||ShardId|
-|cachemisses|Chybienia w pamięci podręcznej|Licznik|Łącznie||ShardId|
-|cachemissrate|Współczynnik chybień w pamięci podręcznej|Procent|cachemissrate||ShardId|
-|GetCommands|Kto|Licznik|Łącznie||ShardId|
-|SetCommands|Przywraca|Licznik|Łącznie||ShardId|
-|operationsPerSecond|Liczba operacji na sekundę|Licznik|Maksimum||ShardId|
-|evictedkeys|Wykluczone klucze|Licznik|Łącznie||ShardId|
-|totalkeys|Łączna liczba kluczy|Licznik|Maksimum||ShardId|
-|expiredkeys|Wygasłe klucze|Licznik|Łącznie||ShardId|
-|usedmemory|Używana pamięć|Bajty|Maksimum||ShardId|
-|usedmemorypercentage|Wartość procentowa używanej pamięci|Procent|Maksimum||ShardId|
-|usedmemoryRss|Używana pamięć RSS|Bajty|Maksimum||ShardId|
-|serverLoad|Obciążenie serwera|Procent|Maksimum||ShardId|
-|cacheWrite|Zapis pamięci podręcznej|BytesPerSecond|Maksimum||ShardId|
-|cacheRead|Odczyt pamięci podręcznej|BytesPerSecond|Maksimum||ShardId|
-|percentProcessorTime|Procesor CPU|Procent|Maksimum||ShardId|
-|cacheLatency|Mikrosekundy opóźnienia pamięci podręcznej (wersja zapoznawcza)|Licznik|Średnia||ShardId|
-|błędy|Błędy|Licznik|Maksimum||ShardId, ErrorType|
-|connectedclients0|Połączeni klienci (fragmentu 0)|Licznik|Maksimum||None|
-|totalcommandsprocessed0|Łączna liczba operacji (fragmentu 0)|Licznik|Łącznie||None|
-|cachehits0|Trafienia pamięci podręcznej (fragmentu 0)|Licznik|Łącznie||None|
-|cachemisses0|Chybienia w pamięci podręcznej (fragmentu 0)|Licznik|Łącznie||None|
-|getcommands0|Pobiera (fragmentu 0)|Licznik|Łącznie||None|
-|setcommands0|Zestawy (fragmentu 0)|Licznik|Łącznie||None|
-|operationsPerSecond0|Operacje na sekundę (fragmentu 0)|Licznik|Maksimum||None|
-|evictedkeys0|Wykluczone klucze (fragmentu 0)|Licznik|Łącznie||None|
-|totalkeys0|Łączna liczba kluczy (fragmentu 0)|Licznik|Maksimum||None|
-|expiredkeys0|Wygasłe klucze (fragmentu 0)|Licznik|Łącznie||None|
-|usedmemory0|Używana pamięć (fragmentu 0)|Bajty|Maksimum||None|
-|usedmemoryRss0|Używana pamięć RSS (fragmentu 0)|Bajty|Maksimum||None|
-|serverLoad0|Ładowanie serwera (fragmentu 0)|Procent|Maksimum||None|
-|cacheWrite0|Zapis pamięci podręcznej (fragmentu 0)|BytesPerSecond|Maksimum||None|
-|cacheRead0|Odczyt pamięci podręcznej (fragmentu 0)|BytesPerSecond|Maksimum||None|
-|percentProcessorTime0|Procesor CPU (fragmentu 0)|Procent|Maksimum||None|
-|connectedclients1|Połączeni klienci (fragmentu 1)|Licznik|Maksimum||None|
-|totalcommandsprocessed1|Łączna liczba operacji (fragmentu 1)|Licznik|Łącznie||None|
-|cachehits1|Trafienia pamięci podręcznej (fragmentu 1)|Licznik|Łącznie||None|
-|cachemisses1|Chybienia w pamięci podręcznej (fragmentu 1)|Licznik|Łącznie||None|
-|getcommands1|Pobiera (fragmentu 1)|Licznik|Łącznie||None|
-|setcommands1|Zestawy (fragmentu 1)|Licznik|Łącznie||None|
-|operationsPerSecond1|Operacje na sekundę (fragmentu 1)|Licznik|Maksimum||None|
-|evictedkeys1|Wykluczone klucze (fragmentu 1)|Licznik|Łącznie||None|
-|totalkeys1|Łączna liczba kluczy (fragmentu 1)|Licznik|Maksimum||None|
-|expiredkeys1|Wygasłe klucze (fragmentu 1)|Licznik|Łącznie||None|
-|usedmemory1|Używana pamięć (fragmentu 1)|Bajty|Maksimum||None|
-|usedmemoryRss1|Używana pamięć RSS (fragmentu 1)|Bajty|Maksimum||None|
-|serverLoad1|Ładowanie serwera (fragmentu 1)|Procent|Maksimum||None|
-|cacheWrite1|Zapisywanie pamięci podręcznej (fragmentu 1)|BytesPerSecond|Maksimum||None|
-|cacheRead1|Odczyt pamięci podręcznej (fragmentu 1)|BytesPerSecond|Maksimum||None|
-|percentProcessorTime1|Procesor CPU (fragmentu 1)|Procent|Maksimum||None|
-|connectedclients2|Połączeni klienci (fragmentu 2)|Licznik|Maksimum||None|
-|totalcommandsprocessed2|Łączna liczba operacji (fragmentu 2)|Licznik|Łącznie||None|
-|cachehits2|Trafienia pamięci podręcznej (fragmentu 2)|Licznik|Łącznie||None|
-|cachemisses2|Chybienia w pamięci podręcznej (fragmentu 2)|Licznik|Łącznie||None|
-|getcommands2|Pobiera (fragmentu 2)|Licznik|Łącznie||None|
-|setcommands2|Zestawy (fragmentu 2)|Licznik|Łącznie||None|
-|operationsPerSecond2|Operacje na sekundę (fragmentu 2)|Licznik|Maksimum||None|
-|evictedkeys2|Wykluczone klucze (fragmentu 2)|Licznik|Łącznie||None|
-|totalkeys2|Łączna liczba kluczy (fragmentu 2)|Licznik|Maksimum||None|
-|expiredkeys2|Wygasłe klucze (fragmentu 2)|Licznik|Łącznie||None|
-|usedmemory2|Używana pamięć (fragmentu 2)|Bajty|Maksimum||None|
-|usedmemoryRss2|Używana pamięć RSS (fragmentu 2)|Bajty|Maksimum||None|
-|serverLoad2|Ładowanie serwera (fragmentu 2)|Procent|Maksimum||None|
-|cacheWrite2|Zapisywanie pamięci podręcznej (fragmentu 2)|BytesPerSecond|Maksimum||None|
-|cacheRead2|Odczyt pamięci podręcznej (fragmentu 2)|BytesPerSecond|Maksimum||None|
-|percentProcessorTime2|Procesor CPU (fragmentu 2)|Procent|Maksimum||None|
-|connectedclients3|Połączeni klienci (fragmentu 3)|Licznik|Maksimum||None|
-|totalcommandsprocessed3|Łączna liczba operacji (fragmentu 3)|Licznik|Łącznie||None|
-|cachehits3|Trafienia pamięci podręcznej (fragmentu 3)|Licznik|Łącznie||None|
-|cachemisses3|Chybienia w pamięci podręcznej (fragmentu 3)|Licznik|Łącznie||None|
-|getcommands3|Pobiera (fragmentu 3)|Licznik|Łącznie||None|
-|setcommands3|Zestawy (fragmentu 3)|Licznik|Łącznie||None|
-|operationsPerSecond3|Operacje na sekundę (fragmentu 3)|Licznik|Maksimum||None|
-|evictedkeys3|Wykluczone klucze (fragmentu 3)|Licznik|Łącznie||None|
-|totalkeys3|Łączna liczba kluczy (fragmentu 3)|Licznik|Maksimum||None|
-|expiredkeys3|Wygasłe klucze (fragmentu 3)|Licznik|Łącznie||None|
-|usedmemory3|Używana pamięć (fragmentu 3)|Bajty|Maksimum||None|
-|usedmemoryRss3|Używana pamięć RSS (fragmentu 3)|Bajty|Maksimum||None|
-|serverLoad3|Ładowanie serwera (fragmentu 3)|Procent|Maksimum||None|
-|cacheWrite3|Zapis w pamięci podręcznej (fragmentu 3)|BytesPerSecond|Maksimum||None|
-|cacheRead3|Odczyt pamięci podręcznej (fragmentu 3)|BytesPerSecond|Maksimum||None|
-|percentProcessorTime3|Procesor CPU (fragmentu 3)|Procent|Maksimum||None|
-|connectedclients4|Połączeni klienci (fragmentu 4)|Licznik|Maksimum||None|
-|totalcommandsprocessed4|Łączna liczba operacji (fragmentu 4)|Licznik|Łącznie||None|
-|cachehits4|Trafienia pamięci podręcznej (fragmentu 4)|Licznik|Łącznie||None|
-|cachemisses4|Chybienia w pamięci podręcznej (fragmentu 4)|Licznik|Łącznie||None|
-|getcommands4|Pobiera (fragmentu 4)|Licznik|Łącznie||None|
-|setcommands4|Zestawy (fragmentu 4)|Licznik|Łącznie||None|
-|operationsPerSecond4|Operacje na sekundę (fragmentu 4)|Licznik|Maksimum||None|
-|evictedkeys4|Wykluczone klucze (fragmentu 4)|Licznik|Łącznie||None|
-|totalkeys4|Łączna liczba kluczy (fragmentu 4)|Licznik|Maksimum||None|
-|expiredkeys4|Wygasłe klucze (fragmentu 4)|Licznik|Łącznie||None|
-|usedmemory4|Używana pamięć (fragmentu 4)|Bajty|Maksimum||None|
-|usedmemoryRss4|Używana pamięć RSS (fragmentu 4)|Bajty|Maksimum||None|
-|serverLoad4|Ładowanie serwera (fragmentu 4)|Procent|Maksimum||None|
-|cacheWrite4|Zapis pamięci podręcznej (fragmentu 4)|BytesPerSecond|Maksimum||None|
-|cacheRead4|Odczyt pamięci podręcznej (fragmentu 4)|BytesPerSecond|Maksimum||None|
-|percentProcessorTime4|Procesor CPU (fragmentu 4)|Procent|Maksimum||None|
-|connectedclients5|Połączeni klienci (fragmentu 5)|Licznik|Maksimum||None|
-|totalcommandsprocessed5|Łączna liczba operacji (fragmentu 5)|Licznik|Łącznie||None|
-|cachehits5|Trafienia pamięci podręcznej (fragmentu 5)|Licznik|Łącznie||None|
-|cachemisses5|Chybienia w pamięci podręcznej (fragmentu 5)|Licznik|Łącznie||None|
-|getcommands5|Pobiera (fragmentu 5)|Licznik|Łącznie||None|
-|setcommands5|Zestawy (fragmentu 5)|Licznik|Łącznie||None|
-|operationsPerSecond5|Operacje na sekundę (fragmentu 5)|Licznik|Maksimum||None|
-|evictedkeys5|Wykluczone klucze (fragmentu 5)|Licznik|Łącznie||None|
-|totalkeys5|Łączna liczba kluczy (fragmentu 5)|Licznik|Maksimum||None|
-|expiredkeys5|Wygasłe klucze (fragmentu 5)|Licznik|Łącznie||None|
-|usedmemory5|Używana pamięć (fragmentu 5)|Bajty|Maksimum||None|
-|usedmemoryRss5|Używana pamięć RSS (fragmentu 5)|Bajty|Maksimum||None|
-|serverLoad5|Ładowanie serwera (fragmentu 5)|Procent|Maksimum||None|
-|cacheWrite5|Zapis w pamięci podręcznej (fragmentu 5)|BytesPerSecond|Maksimum||None|
-|cacheRead5|Odczyt pamięci podręcznej (fragmentu 5)|BytesPerSecond|Maksimum||None|
-|percentProcessorTime5|Procesor CPU (fragmentu 5)|Procent|Maksimum||None|
-|connectedclients6|Połączeni klienci (fragmentu 6)|Licznik|Maksimum||None|
-|totalcommandsprocessed6|Łączna liczba operacji (fragmentu 6)|Licznik|Łącznie||None|
-|cachehits6|Trafienia pamięci podręcznej (fragmentu 6)|Licznik|Łącznie||None|
-|cachemisses6|Chybienia w pamięci podręcznej (fragmentu 6)|Licznik|Łącznie||None|
-|getcommands6|Pobiera (fragmentu 6)|Licznik|Łącznie||None|
-|setcommands6|Zestawy (fragmentu 6)|Licznik|Łącznie||None|
-|operationsPerSecond6|Operacje na sekundę (fragmentu 6)|Licznik|Maksimum||None|
-|evictedkeys6|Wykluczone klucze (fragmentu 6)|Licznik|Łącznie||None|
-|totalkeys6|Łączna liczba kluczy (fragmentu 6)|Licznik|Maksimum||None|
-|expiredkeys6|Wygasłe klucze (fragmentu 6)|Licznik|Łącznie||None|
-|usedmemory6|Używana pamięć (fragmentu 6)|Bajty|Maksimum||None|
-|usedmemoryRss6|Używana pamięć RSS (fragmentu 6)|Bajty|Maksimum||None|
-|serverLoad6|Ładowanie serwera (fragmentu 6)|Procent|Maksimum||None|
-|cacheWrite6|Zapis w pamięci podręcznej (fragmentu 6)|BytesPerSecond|Maksimum||None|
-|cacheRead6|Odczyt pamięci podręcznej (fragmentu 6)|BytesPerSecond|Maksimum||None|
-|percentProcessorTime6|Procesor CPU (fragmentu 6)|Procent|Maksimum||None|
-|connectedclients7|Połączeni klienci (fragmentu 7)|Licznik|Maksimum||None|
-|totalcommandsprocessed7|Łączna liczba operacji (fragmentu 7)|Licznik|Łącznie||None|
-|cachehits7|Trafienia pamięci podręcznej (fragmentu 7)|Licznik|Łącznie||None|
-|cachemisses7|Chybienia w pamięci podręcznej (fragmentu 7)|Licznik|Łącznie||None|
-|getcommands7|Pobiera (fragmentu 7)|Licznik|Łącznie||None|
-|setcommands7|Zestawy (fragmentu 7)|Licznik|Łącznie||None|
-|operationsPerSecond7|Operacje na sekundę (fragmentu 7)|Licznik|Maksimum||None|
-|evictedkeys7|Wykluczone klucze (fragmentu 7)|Licznik|Łącznie||None|
-|totalkeys7|Łączna liczba kluczy (fragmentu 7)|Licznik|Maksimum||None|
-|expiredkeys7|Wygasłe klucze (fragmentu 7)|Licznik|Łącznie||None|
-|usedmemory7|Używana pamięć (fragmentu 7)|Bajty|Maksimum||None|
-|usedmemoryRss7|Używana pamięć RSS (fragmentu 7)|Bajty|Maksimum||None|
-|serverLoad7|Ładowanie serwera (fragmentu 7)|Procent|Maksimum||None|
-|cacheWrite7|Zapis w pamięci podręcznej (fragmentu 7)|BytesPerSecond|Maksimum||None|
-|cacheRead7|Odczyt pamięci podręcznej (fragmentu 7)|BytesPerSecond|Maksimum||None|
-|percentProcessorTime7|Procesor CPU (fragmentu 7)|Procent|Maksimum||None|
-|connectedclients8|Połączeni klienci (fragmentu 8)|Licznik|Maksimum||None|
-|totalcommandsprocessed8|Łączna liczba operacji (fragmentu 8)|Licznik|Łącznie||None|
-|cachehits8|Trafienia pamięci podręcznej (fragmentu 8)|Licznik|Łącznie||None|
-|cachemisses8|Chybienia w pamięci podręcznej (fragmentu 8)|Licznik|Łącznie||None|
-|getcommands8|Pobiera (fragmentu 8)|Licznik|Łącznie||None|
-|setcommands8|Zestawy (fragmentu 8)|Licznik|Łącznie||None|
-|operationsPerSecond8|Operacje na sekundę (fragmentu 8)|Licznik|Maksimum||None|
-|evictedkeys8|Wykluczone klucze (fragmentu 8)|Licznik|Łącznie||None|
-|totalkeys8|Łączna liczba kluczy (fragmentu 8)|Licznik|Maksimum||None|
-|expiredkeys8|Wygasłe klucze (fragmentu 8)|Licznik|Łącznie||None|
-|usedmemory8|Używana pamięć (fragmentu 8)|Bajty|Maksimum||None|
-|usedmemoryRss8|Używana pamięć RSS (fragmentu 8)|Bajty|Maksimum||None|
-|serverLoad8|Ładowanie serwera (fragmentu 8)|Procent|Maksimum||None|
-|cacheWrite8|Zapis w pamięci podręcznej (fragmentu 8)|BytesPerSecond|Maksimum||None|
-|cacheRead8|Odczyt pamięci podręcznej (fragmentu 8)|BytesPerSecond|Maksimum||None|
-|percentProcessorTime8|Procesor CPU (fragmentu 8)|Procent|Maksimum||None|
-|connectedclients9|Połączeni klienci (fragmentu 9)|Licznik|Maksimum||None|
-|totalcommandsprocessed9|Łączna liczba operacji (fragmentu 9)|Licznik|Łącznie||None|
-|cachehits9|Trafienia pamięci podręcznej (fragmentu 9)|Licznik|Łącznie||None|
-|cachemisses9|Chybienia w pamięci podręcznej (fragmentu 9)|Licznik|Łącznie||None|
-|getcommands9|Pobiera (fragmentu 9)|Licznik|Łącznie||None|
-|setcommands9|Zestawy (fragmentu 9)|Licznik|Łącznie||None|
-|operationsPerSecond9|Operacje na sekundę (fragmentu 9)|Licznik|Maksimum||None|
-|evictedkeys9|Wykluczone klucze (fragmentu 9)|Licznik|Łącznie||None|
-|totalkeys9|Łączna liczba kluczy (fragmentu 9)|Licznik|Maksimum||None|
-|expiredkeys9|Wygasłe klucze (fragmentu 9)|Licznik|Łącznie||None|
-|usedmemory9|Używana pamięć (fragmentu 9)|Bajty|Maksimum||None|
-|usedmemoryRss9|Używana pamięć RSS (fragmentu 9)|Bajty|Maksimum||None|
-|serverLoad9|Ładowanie serwera (fragmentu 9)|Procent|Maksimum||None|
-|cacheWrite9|Zapis w pamięci podręcznej (fragmentu 9)|BytesPerSecond|Maksimum||None|
-|cacheRead9|Odczyt pamięci podręcznej (fragmentu 9)|BytesPerSecond|Maksimum||None|
-|percentProcessorTime9|Procesor CPU (fragmentu 9)|Procent|Maksimum||None|
+|podłączoneclients|Podłączeni klienci|Liczba|Maksimum||ShardId|
+|totalcommandsprocessed|Łączna liczba operacji|Liczba|Łącznie||ShardId|
+|cachehits (cachehits)|Trafienia w pamięci podręcznej|Liczba|Łącznie||ShardId|
+|cachemisses|Chybienia w pamięci podręcznej|Liczba|Łącznie||ShardId|
+|buforowaniemissrate|Współczynnik pominięcia pamięci podręcznej|Wartość procentowa|buforowaniemissrate||ShardId|
+|getcommands ( getcommands )|Pobiera|Liczba|Łącznie||ShardId|
+|setcommands (ustawianie pokańczów)|Zestawy|Liczba|Łącznie||ShardId|
+|operacjePerSekunda|Operacje na sekundę|Liczba|Maksimum||ShardId|
+|eksmitowane klucze|Eksmitowane klucze|Liczba|Łącznie||ShardId|
+|totalkeys (całkowita liczba kluczy)|Całkowita liczba kluczy|Liczba|Maksimum||ShardId|
+|expiredkeys|Wygasłe klucze|Liczba|Łącznie||ShardId|
+|używanememory|Używana pamięć|Bajty|Maksimum||ShardId|
+|usedmemorypercentage|Procent używanej pamięci|Wartość procentowa|Maksimum||ShardId|
+|używane memoryrss|Używane pamięci RSS|Bajty|Maksimum||ShardId|
+|serverLoad (Obciążenie serwerem)|Obciążenie serwera|Wartość procentowa|Maksimum||ShardId|
+|cacheWrite (buforowanie)|Zapis w pamięci podręcznej|PrzeztówPerSekunda|Maksimum||ShardId|
+|cacheCzytaj|Odczyt pamięci podręcznej|PrzeztówPerSekunda|Maksimum||ShardId|
+|procentProcesorTime|Procesor CPU|Wartość procentowa|Maksimum||ShardId|
+|cacheLatency (CacheLatency)|Mikrosekundy opóźnienia pamięci podręcznej (wersja zapoznawcza)|Liczba|Średnia||ShardId|
+|błędy|Errors|Liczba|Maksimum||Identyfikator niezależnego fragmentu,typ błędu|
+|connectedclients0|Połączeni klienci (odłamek 0)|Liczba|Maksimum||Brak|
+|totalcommandsprocessed0|Całkowita liczba operacji (odłamek 0)|Liczba|Łącznie||Brak|
+|cachehits0|Trafienia w pamięci podręcznej (odłamek 0)|Liczba|Łącznie||Brak|
+|cachemisses0|Chybienia pamięci podręcznej (odłamek 0)|Liczba|Łącznie||Brak|
+|getcommands0|Pobiera (odłamek 0)|Liczba|Łącznie||Brak|
+|setcommands0 setcommands0 setcommands0 setcom|Zestawy (odłamek 0)|Liczba|Łącznie||Brak|
+|operacjePerSecond0|Operacje na sekundę (odłamek 0)|Liczba|Maksimum||Brak|
+|eksmitowany klucze0|Eksmitowane klucze (odłamek 0)|Liczba|Łącznie||Brak|
+|totalkeys0|Całkowita liczba kluczy (odłamek 0)|Liczba|Maksimum||Brak|
+|expiredkeys0|Wygasłe klucze (odłamek 0)|Liczba|Łącznie||Brak|
+|używanememory0|Używana pamięć (odłamek 0)|Bajty|Maksimum||Brak|
+|używanememoryRss0|Używane pamięci RSS (odłamek 0)|Bajty|Maksimum||Brak|
+|serverLoad0|Obciążenie serwera (fragment 0)|Wartość procentowa|Maksimum||Brak|
+|cacheWrite0|Zapis pamięci podręcznej (fragment 0)|PrzeztówPerSekunda|Maksimum||Brak|
+|cacheRead0|Odczyt pamięci podręcznej (fragment 0)|PrzeztówPerSekunda|Maksimum||Brak|
+|procentProcesorCzas0|Procesor (odłamek 0)|Wartość procentowa|Maksimum||Brak|
+|connectedclients1|Połączeni klienci (odłamek 1)|Liczba|Maksimum||Brak|
+|totalcommandsprocessed1|Całkowita liczba operacji (odłamek 1)|Liczba|Łącznie||Brak|
+|cachehits1|Trafienia w pamięci podręcznej (odłamek 1)|Liczba|Łącznie||Brak|
+|cachemisses1|Chybienia w pamięci podręcznej (odłamek 1)|Liczba|Łącznie||Brak|
+|getcommands1|Pobiera (odłamek 1)|Liczba|Łącznie||Brak|
+|setcommands1|Zestawy (odłamek 1)|Liczba|Łącznie||Brak|
+|operacjePerSecond1|Operacje na sekundę (odłamek 1)|Liczba|Maksimum||Brak|
+|eksmitowane klucze1|Eksmitowane klucze (odłamek 1)|Liczba|Łącznie||Brak|
+|totalkeys1|Całkowita liczba kluczy (odłamek 1)|Liczba|Maksimum||Brak|
+|expiredkeys1|Wygasłe klucze (odłamek 1)|Liczba|Łącznie||Brak|
+|używanememory1|Używana pamięć (odłamek 1)|Bajty|Maksimum||Brak|
+|używanememoryRss1|Używane pamięci RSS (odłamek 1)|Bajty|Maksimum||Brak|
+|serverLoad1|Obciążenie serwera (fragment 1)|Wartość procentowa|Maksimum||Brak|
+|cacheWrite1|Zapis pamięci podręcznej (fragment 1)|PrzeztówPerSekunda|Maksimum||Brak|
+|pamięć podręcznaCzytaj1|Odczyt pamięci podręcznej (fragment 1)|PrzeztówPerSekunda|Maksimum||Brak|
+|procentProcesorTime1|Procesor (odłamek 1)|Wartość procentowa|Maksimum||Brak|
+|connectedclients2|Połączeni klienci (odłamek 2)|Liczba|Maksimum||Brak|
+|totalcommandsprocessed2|Całkowita liczba operacji (odłamek 2)|Liczba|Łącznie||Brak|
+|cachehits2|Trafienia w pamięci podręcznej (odłamek 2)|Liczba|Łącznie||Brak|
+|cachemisses2|Chybienia w pamięci podręcznej (odłamek 2)|Liczba|Łącznie||Brak|
+|getcommands2|Pobiera (odłamek 2)|Liczba|Łącznie||Brak|
+|setcommands2|Zestawy (odłamek 2)|Liczba|Łącznie||Brak|
+|operacjePerSecond2|Operacje na sekundę (odłamek 2)|Liczba|Maksimum||Brak|
+|eksmitowanykeys2|Eksmitowane klucze (odłamek 2)|Liczba|Łącznie||Brak|
+|totalkeys2|Całkowita liczba kluczy (odłamek 2)|Liczba|Maksimum||Brak|
+|expiredkeys2|Wygasłe klucze (odłamek 2)|Liczba|Łącznie||Brak|
+|używanememory2|Używana pamięć (odłamek 2)|Bajty|Maksimum||Brak|
+|używanememoryRss2|Używane pamięci RSS (odłamek 2)|Bajty|Maksimum||Brak|
+|serverLoad2|Obciążenie serwera (fragment 2)|Wartość procentowa|Maksimum||Brak|
+|cacheWrite2|Zapis pamięci podręcznej (fragment 2)|PrzeztówPerSekunda|Maksimum||Brak|
+|pamięć podręcznaCzytaj2|Odczyt pamięci podręcznej (fragment 2)|PrzeztówPerSekunda|Maksimum||Brak|
+|procentProcesorTime2|Procesor (odłamek 2)|Wartość procentowa|Maksimum||Brak|
+|connectedclients3|Połączeni klienci (odłamek 3)|Liczba|Maksimum||Brak|
+|totalcommandsprocessed3|Całkowita liczba operacji (odłamek 3)|Liczba|Łącznie||Brak|
+|cachehits3|Trafienia w pamięci podręcznej (odłamek 3)|Liczba|Łącznie||Brak|
+|cachemisses3|Chybienia w pamięci podręcznej (odłamek 3)|Liczba|Łącznie||Brak|
+|getcommands3|Pobiera (odłamek 3)|Liczba|Łącznie||Brak|
+|setcommands3|Zestawy (odłamek 3)|Liczba|Łącznie||Brak|
+|operacjePerSecond3|Operacje na sekundę (odłamek 3)|Liczba|Maksimum||Brak|
+|eksmitowanykeys3|Eksmitowane klucze (odłamek 3)|Liczba|Łącznie||Brak|
+|totalkeys3|Całkowita liczba kluczy (odłamek 3)|Liczba|Maksimum||Brak|
+|expiredkeys3|Wygasłe klucze (odłamek 3)|Liczba|Łącznie||Brak|
+|używanememory3|Używana pamięć (odłamek 3)|Bajty|Maksimum||Brak|
+|używanememoryRss3|Używane pamięci RSS (odłamek 3)|Bajty|Maksimum||Brak|
+|serverLoad3|Obciążenie serwera (fragment 3)|Wartość procentowa|Maksimum||Brak|
+|cacheWrite3|Zapis pamięci podręcznej (fragment 3)|PrzeztówPerSekunda|Maksimum||Brak|
+|pamięć cacheRead3|Odczyt pamięci podręcznej (fragment 3)|PrzeztówPerSekunda|Maksimum||Brak|
+|procentProcesorTime3|Procesor (odłamek 3)|Wartość procentowa|Maksimum||Brak|
+|connectedclients4|Połączeni klienci (odłamek 4)|Liczba|Maksimum||Brak|
+|totalcommandsprocessed4|Całkowita liczba operacji (odłamek 4)|Liczba|Łącznie||Brak|
+|cachehits4|Trafienia w pamięci podręcznej (odłamek 4)|Liczba|Łącznie||Brak|
+|cachemisses4|Chybienia w pamięci podręcznej (odłamek 4)|Liczba|Łącznie||Brak|
+|getcommands4|Pobiera (odłamek 4)|Liczba|Łącznie||Brak|
+|setcommands4|Zestawy (odłamek 4)|Liczba|Łącznie||Brak|
+|operacjePerSecond4|Operacje na sekundę (odłamek 4)|Liczba|Maksimum||Brak|
+|eksmitowanykeys4|Eksmitowane klucze (odłamek 4)|Liczba|Łącznie||Brak|
+|totalkeys4|Całkowita liczba kluczy (odłamek 4)|Liczba|Maksimum||Brak|
+|expiredkeys4|Wygasłe klucze (odłamek 4)|Liczba|Łącznie||Brak|
+|używanememory4|Używana pamięć (odłamek 4)|Bajty|Maksimum||Brak|
+|używanememoryRss4|Używane pamięci RSS (odłamek 4)|Bajty|Maksimum||Brak|
+|serverLoad4|Obciążenie serwera (fragment 4)|Wartość procentowa|Maksimum||Brak|
+|cacheWrite4|Zapis pamięci podręcznej (fragment 4)|PrzeztówPerSekunda|Maksimum||Brak|
+|pamięć cacheRead4|Odczyt pamięci podręcznej (fragment 4)|PrzeztówPerSekunda|Maksimum||Brak|
+|procentProcesorTime4|Procesor (odłamek 4)|Wartość procentowa|Maksimum||Brak|
+|connectedclients5|Połączeni klienci (odłamek 5)|Liczba|Maksimum||Brak|
+|totalcommandsprocessed5|Całkowita liczba operacji (odłamek 5)|Liczba|Łącznie||Brak|
+|cachehits5|Trafienia w pamięci podręcznej (odłamek 5)|Liczba|Łącznie||Brak|
+|cachemisses5|Chybienia w pamięci podręcznej (odłamek 5)|Liczba|Łącznie||Brak|
+|getcommands5|Pobiera (odłamek 5)|Liczba|Łącznie||Brak|
+|setcommands5|Zestawy (odłamek 5)|Liczba|Łącznie||Brak|
+|operacjePerSecond5|Operacje na sekundę (odłamek 5)|Liczba|Maksimum||Brak|
+|eksmitowane klucze5|Eksmitowane klucze (odłamek 5)|Liczba|Łącznie||Brak|
+|totalkeys5|Całkowita liczba kluczy (odłamek 5)|Liczba|Maksimum||Brak|
+|expiredkeys5|Wygasłe klucze (odłamek 5)|Liczba|Łącznie||Brak|
+|używanememory5|Używana pamięć (odłamek 5)|Bajty|Maksimum||Brak|
+|używanememoryRss5|Używane pamięci RSS (odłamek 5)|Bajty|Maksimum||Brak|
+|serverLoad5|Obciążenie serwera (fragment 5)|Wartość procentowa|Maksimum||Brak|
+|cacheWrite5|Zapis pamięci podręcznej (fragment 5)|PrzeztówPerSekunda|Maksimum||Brak|
+|pamięć podręcznaCzytaj5|Odczyt pamięci podręcznej (fragment 5)|PrzeztówPerSekunda|Maksimum||Brak|
+|procentProcesorTime5|Procesor (odłamek 5)|Wartość procentowa|Maksimum||Brak|
+|connectedclients6|Połączeni klienci (odłamek 6)|Liczba|Maksimum||Brak|
+|totalcommandsprocessed6|Całkowita liczba operacji (odłamek 6)|Liczba|Łącznie||Brak|
+|cachehits6|Trafienia w pamięci podręcznej (odłamek 6)|Liczba|Łącznie||Brak|
+|cachemisses6|Chybienia w pamięci podręcznej (odłamek 6)|Liczba|Łącznie||Brak|
+|getcommands6|Pobiera (odłamek 6)|Liczba|Łącznie||Brak|
+|setcommands6|Zestawy (odłamek 6)|Liczba|Łącznie||Brak|
+|operacjePerSecond6|Operacje na sekundę (odłamek 6)|Liczba|Maksimum||Brak|
+|eksmitowane klucze6|Eksmitowane klucze (odłamek 6)|Liczba|Łącznie||Brak|
+|totalkeys6|Całkowita liczba kluczy (odłamek 6)|Liczba|Maksimum||Brak|
+|expiredkeys6|Wygasłe klucze (odłamek 6)|Liczba|Łącznie||Brak|
+|używanememory6|Używana pamięć (odłamek 6)|Bajty|Maksimum||Brak|
+|używanememoryRss6|Używane pamięci RSS (odłamek 6)|Bajty|Maksimum||Brak|
+|serverLoad6|Obciążenie serwera (fragment 6)|Wartość procentowa|Maksimum||Brak|
+|cacheWrite6|Zapis pamięci podręcznej (fragment 6)|PrzeztówPerSekunda|Maksimum||Brak|
+|pamięć cacheRead6|Odczyt pamięci podręcznej (fragment 6)|PrzeztówPerSekunda|Maksimum||Brak|
+|procentProcesorTime6|Procesor (odłamek 6)|Wartość procentowa|Maksimum||Brak|
+|connectedclients7|Połączeni klienci (odłamek 7)|Liczba|Maksimum||Brak|
+|totalcommandsprocessed7|Całkowita liczba operacji (odłamek 7)|Liczba|Łącznie||Brak|
+|cachehits7|Trafienia w pamięci podręcznej (odłamek 7)|Liczba|Łącznie||Brak|
+|cachemisses7|Chybienia w pamięci podręcznej (odłamek 7)|Liczba|Łącznie||Brak|
+|getcommands7|Pobiera (odłamek 7)|Liczba|Łącznie||Brak|
+|setcommands7|Zestawy (odłamek 7)|Liczba|Łącznie||Brak|
+|operacjePerSecond7|Operacje na sekundę (odłamek 7)|Liczba|Maksimum||Brak|
+|eksmitowane klucze7|Eksmitowane klucze (odłamek 7)|Liczba|Łącznie||Brak|
+|totalkeys7|Całkowita liczba kluczy (odłamek 7)|Liczba|Maksimum||Brak|
+|expiredkeys7|Wygasłe klucze (odłamek 7)|Liczba|Łącznie||Brak|
+|używanememory7|Używana pamięć (odłamek 7)|Bajty|Maksimum||Brak|
+|używanememoryRss7|Używane pamięci RSS (odłamek 7)|Bajty|Maksimum||Brak|
+|serverLoad7|Obciążenie serwera (fragment 7)|Wartość procentowa|Maksimum||Brak|
+|cacheWrite7|Zapis pamięci podręcznej (fragment 7)|PrzeztówPerSekunda|Maksimum||Brak|
+|pamięć podręcznaCzytaj7|Odczyt pamięci podręcznej (fragment 7)|PrzeztówPerSekunda|Maksimum||Brak|
+|procentProcesorTime7|Procesor (odłamek 7)|Wartość procentowa|Maksimum||Brak|
+|connectedclients8|Połączeni klienci (odłamek 8)|Liczba|Maksimum||Brak|
+|totalcommandsprocessed8|Całkowita liczba operacji (odłamek 8)|Liczba|Łącznie||Brak|
+|cachehits8|Trafienia w pamięci podręcznej (odłamek 8)|Liczba|Łącznie||Brak|
+|cachemisses8|Chybienia w pamięci podręcznej (odłamek 8)|Liczba|Łącznie||Brak|
+|getcommands8|Pobiera (odłamek 8)|Liczba|Łącznie||Brak|
+|setcommands8|Zestawy (odłamek 8)|Liczba|Łącznie||Brak|
+|operacjePerSecond8|Operacje na sekundę (odłamek 8)|Liczba|Maksimum||Brak|
+|eksmitowane klucze8|Eksmitowane klucze (odłamek 8)|Liczba|Łącznie||Brak|
+|totalkeys8|Całkowita liczba kluczy (odłamek 8)|Liczba|Maksimum||Brak|
+|expiredkeys8|Wygasłe klucze (odłamek 8)|Liczba|Łącznie||Brak|
+|używanememory8|Używana pamięć (odłamek 8)|Bajty|Maksimum||Brak|
+|używanememoryRss8|Używane pamięci RSS (odłamek 8)|Bajty|Maksimum||Brak|
+|serverLoad8|Obciążenie serwera (fragment 8)|Wartość procentowa|Maksimum||Brak|
+|cacheWrite8|Zapis pamięci podręcznej (fragment 8)|PrzeztówPerSekunda|Maksimum||Brak|
+|pamięć podręcznaCzytaj8|Odczyt pamięci podręcznej (fragment 8)|PrzeztówPerSekunda|Maksimum||Brak|
+|procentProcesorTime8|Procesor (odłamek 8)|Wartość procentowa|Maksimum||Brak|
+|connectedclients9|Połączeni klienci (odłamek 9)|Liczba|Maksimum||Brak|
+|totalcommandsprocessed9|Całkowita liczba operacji (odłamek 9)|Liczba|Łącznie||Brak|
+|cachehits9|Trafienia w pamięci podręcznej (odłamek 9)|Liczba|Łącznie||Brak|
+|cachemisses9|Chybienia w pamięci podręcznej (odłamek 9)|Liczba|Łącznie||Brak|
+|getcommands9|Pobiera (odłamek 9)|Liczba|Łącznie||Brak|
+|setcommands9|Zestawy (odłamek 9)|Liczba|Łącznie||Brak|
+|operacjePerSecond9|Operacje na sekundę (odłamek 9)|Liczba|Maksimum||Brak|
+|eksmitowane klucze9|Eksmitowane klucze (odłamek 9)|Liczba|Łącznie||Brak|
+|totalkeys9|Całkowita liczba kluczy (odłamek 9)|Liczba|Maksimum||Brak|
+|expiredkeys9|Wygasłe klucze (odłamek 9)|Liczba|Łącznie||Brak|
+|używanememory9|Używana pamięć (odłamek 9)|Bajty|Maksimum||Brak|
+|używanememoryRss9|Używane pamięci RSS (odłamek 9)|Bajty|Maksimum||Brak|
+|serverLoad9|Obciążenie serwera (niezależnego fragmentu 9)|Wartość procentowa|Maksimum||Brak|
+|cacheWrite9|Zapis pamięci podręcznej (fragment 9)|PrzeztówPerSekunda|Maksimum||Brak|
+|pamięć cacheRead9|Odczyt pamięci podręcznej (fragment 9)|PrzeztówPerSekunda|Maksimum||Brak|
+|procentProcesorTime9|Procesor (odłamek 9)|Wartość procentowa|Maksimum||Brak|
 
 
 
-## <a name="microsoftcdncdnwebapplicationfirewallpolicies"></a>Microsoft. CDN/cdnwebapplicationfirewallpolicies
+## <a name="microsoftcdncdnwebapplicationfirewallpolicies"></a>Microsoft.Cdn/cdnwebapplicationfirewallpolicies
 
-|Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary|
+|Metryka|Metryka Nazwa wyświetlana|Jednostka|Typ agregacji|Opis|Wymiary|
 |---|---|---|---|---|---|
-|WebApplicationFirewallRequestCount|Liczba żądań zapory aplikacji sieci Web|Licznik|Łącznie|Liczba żądań klientów przetworzonych przez zaporę aplikacji sieci Web|PolicyName, RuleName, Akcja|
+|Konto WebApplicationFirewallRequestCount|Liczba żądań zapory aplikacji sieci Web|Liczba|Łącznie|Liczba żądań klientów przetworzonych przez Zaporę aplikacji sieci Web|Nazwa zasad,Nazwa reguły,Akcja|
 
 
-## <a name="microsoftclassiccomputevirtualmachines"></a>Microsoft.ClassicCompute/virtualMachines
+## <a name="microsoftclassiccomputevirtualmachines"></a>Microsoft.ClassicCompute/virtualMacyny
 
-|Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary|
+|Metryka|Metryka Nazwa wyświetlana|Jednostka|Typ agregacji|Opis|Wymiary|
 |---|---|---|---|---|---|
-|Procentowe użycie procesora CPU|Procentowe użycie procesora CPU|Procent|Średnia|Wartość procentowa przyznanych jednostek obliczeniowych, które są obecnie używane przez maszyny wirtualne.|None|
-|Sieć — wejście|Sieć — wejście|Bajty|Łącznie|Liczba bajtów odebranych na wszystkich interfejsach sieciowych przez maszyny wirtualne (ruch przychodzący).|None|
-|Sieć — wyjście|Sieć — wyjście|Bajty|Łącznie|Liczba bajtów wysłanych we wszystkich interfejsach sieciowych przez maszyny wirtualne (ruch wychodzący).|None|
-|Bajty odczytu dysku/s|Odczyt dysku|BytesPerSecond|Średnia|Średnia liczba bajtów odczytanych z dysku w okresie monitorowania.|None|
-|Bajty zapisu dysku/s|Zapis na dysku|BytesPerSecond|Średnia|Średnia liczba bajtów zapisywana na dysku w okresie monitorowania.|None|
-|Operacje odczytu z dysku/s|Operacje odczytu z dysku/s|CountPerSecond|Średnia|Operacje we/wy odczytu na dysku.|None|
-|Operacje zapisu na dysku/s|Operacje zapisu na dysku/s|CountPerSecond|Średnia|Liczba operacji we/wy zapisu na dysku.|None|
+|Procentowe użycie procesora CPU|Procentowe użycie procesora CPU|Wartość procentowa|Średnia|Procent przydzielonych jednostek obliczeniowych, które są obecnie używane przez maszynę wirtualną.|Brak|
+|Sieć — wejście|Sieć — wejście|Bajty|Łącznie|Liczba bajtów odebranych we wszystkich interfejsach sieciowych przez maszynę wirtualną (Ruch przychodzący).|Brak|
+|Sieć — wyjście|Sieć — wyjście|Bajty|Łącznie|Liczba bajtów na wszystkich interfejsach sieciowych przez maszynę wirtualną (ruch wychodzący).|Brak|
+|Bajty odczytu dysku/s|Odczyt dysku|PrzeztówPerSekunda|Średnia|Średni bajtów odczytywanych z dysku w okresie monitorowania.|Brak|
+|Bajty zapisu dysku/s|Zapis dysku|PrzeztówPerSekunda|Średnia|Średnie bajty zapisane na dysku w okresie monitorowania.|Brak|
+|Operacje odczytu dysku/s|Operacje odczytu dysku/s|Połów połówek|Średnia|Odczyt dysku IOPS.|Brak|
+|Operacje zapisu dysku/s|Operacje zapisu dysku/s|Połów połówek|Średnia|Wyw.|Brak|
 
 
 ## <a name="microsoftclassiccomputedomainnamesslotsroles"></a>Microsoft.ClassicCompute/domainNames/slots/roles
 
-|Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary|
+|Metryka|Metryka Nazwa wyświetlana|Jednostka|Typ agregacji|Opis|Wymiary|
 |---|---|---|---|---|---|
-|Procentowe użycie procesora CPU|Procentowe użycie procesora CPU|Procent|Średnia|Wartość procentowa przyznanych jednostek obliczeniowych, które są obecnie używane przez maszyny wirtualne.|RoleInstanceId|
-|Sieć — wejście|Sieć — wejście|Bajty|Łącznie|Liczba bajtów odebranych na wszystkich interfejsach sieciowych przez maszyny wirtualne (ruch przychodzący).|RoleInstanceId|
-|Sieć — wyjście|Sieć — wyjście|Bajty|Łącznie|Liczba bajtów wysłanych we wszystkich interfejsach sieciowych przez maszyny wirtualne (ruch wychodzący).|RoleInstanceId|
-|Bajty odczytu dysku/s|Odczyt dysku|BytesPerSecond|Średnia|Średnia liczba bajtów odczytanych z dysku w okresie monitorowania.|RoleInstanceId|
-|Bajty zapisu dysku/s|Zapis na dysku|BytesPerSecond|Średnia|Średnia liczba bajtów zapisywana na dysku w okresie monitorowania.|RoleInstanceId|
-|Operacje odczytu z dysku/s|Operacje odczytu z dysku/s|CountPerSecond|Średnia|Operacje we/wy odczytu na dysku.|RoleInstanceId|
-|Operacje zapisu na dysku/s|Operacje zapisu na dysku/s|CountPerSecond|Średnia|Liczba operacji we/wy zapisu na dysku.|RoleInstanceId|
+|Procentowe użycie procesora CPU|Procentowe użycie procesora CPU|Wartość procentowa|Średnia|Procent przydzielonych jednostek obliczeniowych, które są obecnie używane przez maszynę wirtualną.|Nieumiejęt roli|
+|Sieć — wejście|Sieć — wejście|Bajty|Łącznie|Liczba bajtów odebranych we wszystkich interfejsach sieciowych przez maszynę wirtualną (Ruch przychodzący).|Nieumiejęt roli|
+|Sieć — wyjście|Sieć — wyjście|Bajty|Łącznie|Liczba bajtów na wszystkich interfejsach sieciowych przez maszynę wirtualną (ruch wychodzący).|Nieumiejęt roli|
+|Bajty odczytu dysku/s|Odczyt dysku|PrzeztówPerSekunda|Średnia|Średni bajtów odczytywanych z dysku w okresie monitorowania.|Nieumiejęt roli|
+|Bajty zapisu dysku/s|Zapis dysku|PrzeztówPerSekunda|Średnia|Średnie bajty zapisane na dysku w okresie monitorowania.|Nieumiejęt roli|
+|Operacje odczytu dysku/s|Operacje odczytu dysku/s|Połów połówek|Średnia|Odczyt dysku IOPS.|Nieumiejęt roli|
+|Operacje zapisu dysku/s|Operacje zapisu dysku/s|Połów połówek|Średnia|Wyw.|Nieumiejęt roli|
 
 
 
-## <a name="microsoftclassicstoragestorageaccounts"></a>Microsoft. ClassicStorage/storageAccounts
+## <a name="microsoftclassicstoragestorageaccounts"></a>Konta programu Microsoft.ClassicStorage/storageKonta
 
-|Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary|
+|Metryka|Metryka Nazwa wyświetlana|Jednostka|Typ agregacji|Opis|Wymiary|
 |---|---|---|---|---|---|
-|UsedCapacity|Używana pojemność|Bajty|Średnia|Używana pojemność konta|None|
-|Transakcje|Transakcje|Licznik|Łącznie|Liczba żądań wysyłanych do usługi magazynu lub określonej operacji interfejsu API. Liczba ta obejmuje żądania zakończone powodzeniem i zakończone niepowodzeniem, a także żądania, które wygenerowały błędy. Korzystanie z wymiaru ResponseType numer innego typu odpowiedzi.|Responsetype, geotype, ApiName, uwierzytelnianie|
-|Ruch przychodzący|Ruch przychodzący|Bajty|Łącznie|Ilość danych przychodzących w bajtach. Ta liczba obejmuje dane przychodzące z klienta zewnętrznego do usługi Azure Storage, a także dane przychodzące w obrębie platformy Azure.|Geotype, ApiName, uwierzytelnianie|
-|Ruch wychodzący|Ruch wychodzący|Bajty|Łącznie|Ilość danych wychodzących w bajtach. Ta liczba obejmuje dane wychodzące z klienta zewnętrznego do usługi Azure Storage, a także dane wychodzące w obrębie platformy Azure. W rezultacie liczba ta nie odzwierciedla danych wychodzących uwzględnianych na rozliczeniu.|Geotype, ApiName, uwierzytelnianie|
-|SuccessServerLatency|Opóźnienie serwera dla powodzenia|Milisekundy|Średnia|Opóźnienie używane przez usługę Azure Storage do przetworzenia pomyślnego żądania w milisekundach. Ta wartość nie obejmuje opóźnienia sieci określonego przez wartość Opóźnienie E2E dla powodzenia.|Geotype, ApiName, uwierzytelnianie|
-|SuccessE2ELatency|Opóźnienie e2e dla powodzenia|Milisekundy|Średnia|Kompleksowe opóźnienie pomyślnych żądań kierowanych do usługi magazynu lub określonej operacji interfejsu API (w milisekundach). Ta wartość obejmuje wymagany czas przetwarzania w usłudze Azure Storage do odczytania żądania, wysłania odpowiedzi i odebrania potwierdzenia dla odpowiedzi.|Geotype, ApiName, uwierzytelnianie|
-|Dostępność|Dostępność|Procent|Średnia|Procent dostępności dla usługi magazynu lub określonej operacji interfejsu API. Dostępność jest obliczana przez podzielenie wartości TotalBillableRequests przez liczbę żądań mających zastosowanie, łącznie z tymi, które wygenerowały nieoczekiwane błędy. Wszystkie nieoczekiwane błędy powodują obniżenie poziomu dostępności usługi magazynu lub określonej operacji interfejsu API.|Geotype, ApiName, uwierzytelnianie|
+|UżywaneCapacity|Używana pojemność|Bajty|Średnia|Pojemność używanego konta|Brak|
+|Transakcje|Transakcje|Liczba|Łącznie|Liczba żądań wysyłanych do usługi magazynu lub określonej operacji interfejsu API. Liczba ta obejmuje żądania zakończone powodzeniem i zakończone niepowodzeniem, a także żądania, które wygenerowały błędy. Użyj wymiaru ResponseType dla liczby różnych typów odpowiedzi.|Typ odpowiedzi,Typ geograficzny,Nazwa api,Uwierzytelnianie|
+|Ruch przychodzący|Ruch przychodzący|Bajty|Łącznie|Ilość danych przychodzących w bajtach. Ta liczba obejmuje dane przychodzące z klienta zewnętrznego do usługi Azure Storage, a także dane przychodzące w obrębie platformy Azure.|Typ geograficzny,Nazwa api,Uwierzytelnianie|
+|Ruch wychodzący|Ruch wychodzący|Bajty|Łącznie|Ilość danych wychodzących w bajtach. Ta liczba obejmuje dane wychodzące z klienta zewnętrznego do usługi Azure Storage, a także dane wychodzące w obrębie platformy Azure. W rezultacie liczba ta nie odzwierciedla danych wychodzących uwzględnianych na rozliczeniu.|Typ geograficzny,Nazwa api,Uwierzytelnianie|
+|SuccessServerLatency|Opóźnienie serwera dla powodzenia|Milisekund|Średnia|Opóźnienie używane przez usługę Azure Storage do przetwarzania pomyślnego żądania w milisekundach. Ta wartość nie obejmuje opóźnienia sieci określonego przez wartość Opóźnienie E2E dla powodzenia.|Typ geograficzny,Nazwa api,Uwierzytelnianie|
+|SuccessE2ELatency|Opóźnienie E2E dla powodzenia|Milisekund|Średnia|Opóźnienie end-to-end pomyślnych żądań złożonych do usługi magazynu lub określonej operacji interfejsu API w milisekundach. Ta wartość obejmuje wymagany czas przetwarzania w usłudze Azure Storage do odczytania żądania, wysłania odpowiedzi i odebrania potwierdzenia dla odpowiedzi.|Typ geograficzny,Nazwa api,Uwierzytelnianie|
+|Dostępność|Dostępność|Wartość procentowa|Średnia|Procent dostępności usługi magazynu lub określonej operacji interfejsu API. Dostępność jest obliczana przez podzielenie wartości TotalBillableRequests przez liczbę żądań mających zastosowanie, łącznie z tymi, które wygenerowały nieoczekiwane błędy. Wszystkie nieoczekiwane błędy powodują obniżenie poziomu dostępności usługi magazynu lub określonej operacji interfejsu API.|Typ geograficzny,Nazwa api,Uwierzytelnianie|
 
-## <a name="microsoftclassicstoragestorageaccountsblobservices"></a>Microsoft. ClassicStorage/storageAccounts/blobServices
+## <a name="microsoftclassicstoragestorageaccountsblobservices"></a>Microsoft.ClassicStorage/storageKondyfika/obiektdusługi
 
-|Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary|
+|Metryka|Metryka Nazwa wyświetlana|Jednostka|Typ agregacji|Opis|Wymiary|
 |---|---|---|---|---|---|
-|BlobCapacity|Pojemność obiektu blob|Bajty|Średnia|Ilość miejsca używanego przez usługę obiektów Blob konta magazynu, w bajtach.|Blobtype, warstwa|
-|BlobCount|Liczba obiektów blob|Licznik|Średnia|Liczba obiektów Blob w usłudze obiektów Blob konta magazynu.|Blobtype, warstwa|
-|ContainerCount|Liczba kontenerów obiektów blob|Licznik|Średnia|Liczba kontenerów w usłudze obiektów Blob konta magazynu.|None|
-|IndexCapacity|Pojemność indeksu|Bajty|Średnia|Ilość miejsca do magazynowania używanego przez ADLS Gen2 (hierarchiczny) indeks w bajtach.|None|
-|Transakcje|Transakcje|Licznik|Łącznie|Liczba żądań wysyłanych do usługi magazynu lub określonej operacji interfejsu API. Liczba ta obejmuje żądania zakończone powodzeniem i zakończone niepowodzeniem, a także żądania, które wygenerowały błędy. Korzystanie z wymiaru ResponseType numer innego typu odpowiedzi.|Responsetype, geotype, ApiName, uwierzytelnianie|
-|Ruch przychodzący|Ruch przychodzący|Bajty|Łącznie|Ilość danych przychodzących w bajtach. Ta liczba obejmuje dane przychodzące z klienta zewnętrznego do usługi Azure Storage, a także dane przychodzące w obrębie platformy Azure.|Geotype, ApiName, uwierzytelnianie|
-|Ruch wychodzący|Ruch wychodzący|Bajty|Łącznie|Ilość danych wychodzących w bajtach. Ta liczba obejmuje dane wychodzące z klienta zewnętrznego do usługi Azure Storage, a także dane wychodzące w obrębie platformy Azure. W rezultacie liczba ta nie odzwierciedla danych wychodzących uwzględnianych na rozliczeniu.|Geotype, ApiName, uwierzytelnianie|
-|SuccessServerLatency|Opóźnienie serwera dla powodzenia|Milisekundy|Średnia|Opóźnienie używane przez usługę Azure Storage do przetworzenia pomyślnego żądania w milisekundach. Ta wartość nie obejmuje opóźnienia sieci określonego przez wartość Opóźnienie E2E dla powodzenia.|Geotype, ApiName, uwierzytelnianie|
-|SuccessE2ELatency|Opóźnienie e2e dla powodzenia|Milisekundy|Średnia|Kompleksowe opóźnienie pomyślnych żądań kierowanych do usługi magazynu lub określonej operacji interfejsu API (w milisekundach). Ta wartość obejmuje wymagany czas przetwarzania w usłudze Azure Storage do odczytania żądania, wysłania odpowiedzi i odebrania potwierdzenia dla odpowiedzi.|Geotype, ApiName, uwierzytelnianie|
-|Dostępność|Dostępność|Procent|Średnia|Procent dostępności dla usługi magazynu lub określonej operacji interfejsu API. Dostępność jest obliczana przez podzielenie wartości TotalBillableRequests przez liczbę żądań mających zastosowanie, łącznie z tymi, które wygenerowały nieoczekiwane błędy. Wszystkie nieoczekiwane błędy powodują obniżenie poziomu dostępności usługi magazynu lub określonej operacji interfejsu API.|Geotype, ApiName, uwierzytelnianie|
+|BlobCapacity (BlobCapacity)|Pojemność obiektu blob|Bajty|Średnia|Ilość miejsca do magazynowania używanego przez usługę obiektów Blob konta magazynu w bajtach.|Typ obiektu blob,warstwa|
+|Liczba obiektów BlobCount|Liczba obiektów blob|Liczba|Średnia|Liczba obiektów blob w usłudze obiektów Blob konta magazynu.|Typ obiektu blob,warstwa|
+|Liczba kontenerów|Liczba kontenerów obiektów blob|Liczba|Średnia|Liczba kontenerów w usłudze obiektów Blob konta magazynu.|Brak|
+|Indeks Zdolności|Pojemność indeksu|Bajty|Średnia|Ilość miejsca do magazynowania używanego przez indeks ADLS Gen2 (hierarchiczny) w bajtach.|Brak|
+|Transakcje|Transakcje|Liczba|Łącznie|Liczba żądań wysyłanych do usługi magazynu lub określonej operacji interfejsu API. Liczba ta obejmuje żądania zakończone powodzeniem i zakończone niepowodzeniem, a także żądania, które wygenerowały błędy. Użyj wymiaru ResponseType dla liczby różnych typów odpowiedzi.|Typ odpowiedzi,Typ geograficzny,Nazwa api,Uwierzytelnianie|
+|Ruch przychodzący|Ruch przychodzący|Bajty|Łącznie|Ilość danych przychodzących w bajtach. Ta liczba obejmuje dane przychodzące z klienta zewnętrznego do usługi Azure Storage, a także dane przychodzące w obrębie platformy Azure.|Typ geograficzny,Nazwa api,Uwierzytelnianie|
+|Ruch wychodzący|Ruch wychodzący|Bajty|Łącznie|Ilość danych wychodzących w bajtach. Ta liczba obejmuje dane wychodzące z klienta zewnętrznego do usługi Azure Storage, a także dane wychodzące w obrębie platformy Azure. W rezultacie liczba ta nie odzwierciedla danych wychodzących uwzględnianych na rozliczeniu.|Typ geograficzny,Nazwa api,Uwierzytelnianie|
+|SuccessServerLatency|Opóźnienie serwera dla powodzenia|Milisekund|Średnia|Opóźnienie używane przez usługę Azure Storage do przetwarzania pomyślnego żądania w milisekundach. Ta wartość nie obejmuje opóźnienia sieci określonego przez wartość Opóźnienie E2E dla powodzenia.|Typ geograficzny,Nazwa api,Uwierzytelnianie|
+|SuccessE2ELatency|Opóźnienie E2E dla powodzenia|Milisekund|Średnia|Opóźnienie end-to-end pomyślnych żądań złożonych do usługi magazynu lub określonej operacji interfejsu API w milisekundach. Ta wartość obejmuje wymagany czas przetwarzania w usłudze Azure Storage do odczytania żądania, wysłania odpowiedzi i odebrania potwierdzenia dla odpowiedzi.|Typ geograficzny,Nazwa api,Uwierzytelnianie|
+|Dostępność|Dostępność|Wartość procentowa|Średnia|Procent dostępności usługi magazynu lub określonej operacji interfejsu API. Dostępność jest obliczana przez podzielenie wartości TotalBillableRequests przez liczbę żądań mających zastosowanie, łącznie z tymi, które wygenerowały nieoczekiwane błędy. Wszystkie nieoczekiwane błędy powodują obniżenie poziomu dostępności usługi magazynu lub określonej operacji interfejsu API.|Typ geograficzny,Nazwa api,Uwierzytelnianie|
 
-## <a name="microsoftclassicstoragestorageaccountstableservices"></a>Microsoft. ClassicStorage/storageAccounts/tableServices
+## <a name="microsoftclassicstoragestorageaccountstableservices"></a>Microsoft.ClassicStorage/storageKonta/tableSługi
 
-|Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary|
+|Metryka|Metryka Nazwa wyświetlana|Jednostka|Typ agregacji|Opis|Wymiary|
 |---|---|---|---|---|---|
-|TableCapacity|Pojemność tabeli|Bajty|Średnia|Ilość miejsca używanego przez usługę tabeli konta magazynu, w bajtach.|None|
-|TableCount|Liczba tabel|Licznik|Średnia|Liczba tabel w usłudze tabeli konta magazynu.|None|
-|TableEntityCount|Liczba jednostek tabel|Licznik|Średnia|Liczba jednostek tabel w usłudze tabeli konta magazynu.|None|
-|Transakcje|Transakcje|Licznik|Łącznie|Liczba żądań wysyłanych do usługi magazynu lub określonej operacji interfejsu API. Liczba ta obejmuje żądania zakończone powodzeniem i zakończone niepowodzeniem, a także żądania, które wygenerowały błędy. Korzystanie z wymiaru ResponseType numer innego typu odpowiedzi.|Responsetype, geotype, ApiName, uwierzytelnianie|
-|Ruch przychodzący|Ruch przychodzący|Bajty|Łącznie|Ilość danych przychodzących w bajtach. Ta liczba obejmuje dane przychodzące z klienta zewnętrznego do usługi Azure Storage, a także dane przychodzące w obrębie platformy Azure.|Geotype, ApiName, uwierzytelnianie|
-|Ruch wychodzący|Ruch wychodzący|Bajty|Łącznie|Ilość danych wychodzących w bajtach. Ta liczba obejmuje dane wychodzące z klienta zewnętrznego do usługi Azure Storage, a także dane wychodzące w obrębie platformy Azure. W rezultacie liczba ta nie odzwierciedla danych wychodzących uwzględnianych na rozliczeniu.|Geotype, ApiName, uwierzytelnianie|
-|SuccessServerLatency|Opóźnienie serwera dla powodzenia|Milisekundy|Średnia|Opóźnienie używane przez usługę Azure Storage do przetworzenia pomyślnego żądania w milisekundach. Ta wartość nie obejmuje opóźnienia sieci określonego przez wartość Opóźnienie E2E dla powodzenia.|Geotype, ApiName, uwierzytelnianie|
-|SuccessE2ELatency|Opóźnienie e2e dla powodzenia|Milisekundy|Średnia|Kompleksowe opóźnienie pomyślnych żądań kierowanych do usługi magazynu lub określonej operacji interfejsu API (w milisekundach). Ta wartość obejmuje wymagany czas przetwarzania w usłudze Azure Storage do odczytania żądania, wysłania odpowiedzi i odebrania potwierdzenia dla odpowiedzi.|Geotype, ApiName, uwierzytelnianie|
-|Dostępność|Dostępność|Procent|Średnia|Procent dostępności dla usługi magazynu lub określonej operacji interfejsu API. Dostępność jest obliczana przez podzielenie wartości TotalBillableRequests przez liczbę żądań mających zastosowanie, łącznie z tymi, które wygenerowały nieoczekiwane błędy. Wszystkie nieoczekiwane błędy powodują obniżenie poziomu dostępności usługi magazynu lub określonej operacji interfejsu API.|Geotype, ApiName, uwierzytelnianie|
+|TableCapacity (Zdolność do pońoliczy)|Pojemność tabeli|Bajty|Średnia|Ilość miejsca do magazynowania używanego przez usługę tabel konta magazynu w bajtach.|Brak|
+|Liczba tabel|Liczba tabel|Liczba|Średnia|Liczba tabeli w usłudze tabel konta magazynu.|Brak|
+|Liczba entity tabeli|Liczba jednostek tabeli|Liczba|Średnia|Liczba jednostek tabeli w usłudze tabel konta magazynu.|Brak|
+|Transakcje|Transakcje|Liczba|Łącznie|Liczba żądań wysyłanych do usługi magazynu lub określonej operacji interfejsu API. Liczba ta obejmuje żądania zakończone powodzeniem i zakończone niepowodzeniem, a także żądania, które wygenerowały błędy. Użyj wymiaru ResponseType dla liczby różnych typów odpowiedzi.|Typ odpowiedzi,Typ geograficzny,Nazwa api,Uwierzytelnianie|
+|Ruch przychodzący|Ruch przychodzący|Bajty|Łącznie|Ilość danych przychodzących w bajtach. Ta liczba obejmuje dane przychodzące z klienta zewnętrznego do usługi Azure Storage, a także dane przychodzące w obrębie platformy Azure.|Typ geograficzny,Nazwa api,Uwierzytelnianie|
+|Ruch wychodzący|Ruch wychodzący|Bajty|Łącznie|Ilość danych wychodzących w bajtach. Ta liczba obejmuje dane wychodzące z klienta zewnętrznego do usługi Azure Storage, a także dane wychodzące w obrębie platformy Azure. W rezultacie liczba ta nie odzwierciedla danych wychodzących uwzględnianych na rozliczeniu.|Typ geograficzny,Nazwa api,Uwierzytelnianie|
+|SuccessServerLatency|Opóźnienie serwera dla powodzenia|Milisekund|Średnia|Opóźnienie używane przez usługę Azure Storage do przetwarzania pomyślnego żądania w milisekundach. Ta wartość nie obejmuje opóźnienia sieci określonego przez wartość Opóźnienie E2E dla powodzenia.|Typ geograficzny,Nazwa api,Uwierzytelnianie|
+|SuccessE2ELatency|Opóźnienie E2E dla powodzenia|Milisekund|Średnia|Opóźnienie end-to-end pomyślnych żądań złożonych do usługi magazynu lub określonej operacji interfejsu API w milisekundach. Ta wartość obejmuje wymagany czas przetwarzania w usłudze Azure Storage do odczytania żądania, wysłania odpowiedzi i odebrania potwierdzenia dla odpowiedzi.|Typ geograficzny,Nazwa api,Uwierzytelnianie|
+|Dostępność|Dostępność|Wartość procentowa|Średnia|Procent dostępności usługi magazynu lub określonej operacji interfejsu API. Dostępność jest obliczana przez podzielenie wartości TotalBillableRequests przez liczbę żądań mających zastosowanie, łącznie z tymi, które wygenerowały nieoczekiwane błędy. Wszystkie nieoczekiwane błędy powodują obniżenie poziomu dostępności usługi magazynu lub określonej operacji interfejsu API.|Typ geograficzny,Nazwa api,Uwierzytelnianie|
 
-## <a name="microsoftclassicstoragestorageaccountsfileservices"></a>Microsoft. ClassicStorage/storageAccounts/fileServices
+## <a name="microsoftclassicstoragestorageaccountsfileservices"></a>Microsoft.ClassicStorage/storageKonta/fileServices
 
-|Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary|
+|Metryka|Metryka Nazwa wyświetlana|Jednostka|Typ agregacji|Opis|Wymiary|
 |---|---|---|---|---|---|
-|FileCapacity|Pojemność plików|Bajty|Średnia|Ilość miejsca do magazynowania używanego przez usługę plików konta magazynu w bajtach.|Udziału|
-|FileCount|Liczba plików|Licznik|Średnia|Liczba plików w usłudze plików konta magazynu.|Udziału|
-|FileShareCount|Liczba udziałów plików|Licznik|Średnia|Liczba udziałów plików w usłudze plików konta magazynu.|None|
-|FileShareSnapshotCount|Liczba migawek udziału plików|Licznik|Średnia|Liczba migawek znajdujących się w udziale w usłudze plików konta magazynu.|Udziału|
-|FileShareSnapshotSize|Rozmiar migawki udziału plików|Bajty|Średnia|Ilość miejsca do magazynowania używanego przez migawki w usłudze plików konta magazynu w bajtach.|Udziału|
-|FileShareQuota|Rozmiar przydziału udziału plików|Bajty|Średnia|Górny limit ilości miejsca do magazynowania, który może być używany przez usługę Azure Files w bajtach.|Udziału|
-|Transakcje|Transakcje|Licznik|Łącznie|Liczba żądań wysyłanych do usługi magazynu lub określonej operacji interfejsu API. Liczba ta obejmuje żądania zakończone powodzeniem i zakończone niepowodzeniem, a także żądania, które wygenerowały błędy. Korzystanie z wymiaru ResponseType numer innego typu odpowiedzi.|Responsetype, geotype, ApiName, Authentication, przeudziale|
-|Ruch przychodzący|Ruch przychodzący|Bajty|Łącznie|Ilość danych przychodzących w bajtach. Ta liczba obejmuje dane przychodzące z klienta zewnętrznego do usługi Azure Storage, a także dane przychodzące w obrębie platformy Azure.|Geotyp, ApiName, uwierzytelnianie, przeudziale|
-|Ruch wychodzący|Ruch wychodzący|Bajty|Łącznie|Ilość danych wychodzących w bajtach. Ta liczba obejmuje dane wychodzące z klienta zewnętrznego do usługi Azure Storage, a także dane wychodzące w obrębie platformy Azure. W rezultacie liczba ta nie odzwierciedla danych wychodzących uwzględnianych na rozliczeniu.|Geotyp, ApiName, uwierzytelnianie, przeudziale|
-|SuccessServerLatency|Opóźnienie serwera dla powodzenia|Milisekundy|Średnia|Opóźnienie używane przez usługę Azure Storage do przetworzenia pomyślnego żądania w milisekundach. Ta wartość nie obejmuje opóźnienia sieci określonego przez wartość Opóźnienie E2E dla powodzenia.|Geotyp, ApiName, uwierzytelnianie, przeudziale|
-|SuccessE2ELatency|Opóźnienie e2e dla powodzenia|Milisekundy|Średnia|Kompleksowe opóźnienie pomyślnych żądań kierowanych do usługi magazynu lub określonej operacji interfejsu API (w milisekundach). Ta wartość obejmuje wymagany czas przetwarzania w usłudze Azure Storage do odczytania żądania, wysłania odpowiedzi i odebrania potwierdzenia dla odpowiedzi.|Geotyp, ApiName, uwierzytelnianie, przeudziale|
-|Dostępność|Dostępność|Procent|Średnia|Procent dostępności dla usługi magazynu lub określonej operacji interfejsu API. Dostępność jest obliczana przez podzielenie wartości TotalBillableRequests przez liczbę żądań mających zastosowanie, łącznie z tymi, które wygenerowały nieoczekiwane błędy. Wszystkie nieoczekiwane błędy powodują obniżenie poziomu dostępności usługi magazynu lub określonej operacji interfejsu API.|Geotyp, ApiName, uwierzytelnianie, przeudziale|
+|Zdolność do pończęcia plików|Pojemność pliku|Bajty|Średnia|Ilość miejsca używanego przez usługę plików konta magazynu w bajtach.|Fileshare|
+|Liczba plików|Liczba plików|Liczba|Średnia|Liczba plików w usłudze Plik konta magazynu.|Fileshare|
+|Liczba plików ShareCount|Liczba udziałów plików|Liczba|Średnia|Liczba udziałów plików w usłudze Plik konta magazynu.|Brak|
+|Konto FileShareSnapshotCount|Liczba migawek udziału plików|Liczba|Średnia|Liczba migawek obecnych w udziale w usłudze plików konta magazynu.|Fileshare|
+|Rozmiar plikuShareSnapshotSize|Rozmiar migawki udziału plików|Bajty|Średnia|Ilość miejsca do magazynowania używanego przez migawki w usłudze plików na koncie magazynu w bajtach.|Fileshare|
+|FileShareQuota (Polski)|Rozmiar przydziału udziału plików|Bajty|Średnia|Górny limit ilości magazynu, który może być używany przez usługę Azure Files Service w bajtach.|Fileshare|
+|Transakcje|Transakcje|Liczba|Łącznie|Liczba żądań wysyłanych do usługi magazynu lub określonej operacji interfejsu API. Liczba ta obejmuje żądania zakończone powodzeniem i zakończone niepowodzeniem, a także żądania, które wygenerowały błędy. Użyj wymiaru ResponseType dla liczby różnych typów odpowiedzi.|Typ odpowiedzi,Typ geograficzny,Nazwa api,Uwierzytelnianie,Udostępnianie pliku|
+|Ruch przychodzący|Ruch przychodzący|Bajty|Łącznie|Ilość danych przychodzących w bajtach. Ta liczba obejmuje dane przychodzące z klienta zewnętrznego do usługi Azure Storage, a także dane przychodzące w obrębie platformy Azure.|Typ geograficzny,Nazwa api,Uwierzytelnianie,Udostępnianie plików|
+|Ruch wychodzący|Ruch wychodzący|Bajty|Łącznie|Ilość danych wychodzących w bajtach. Ta liczba obejmuje dane wychodzące z klienta zewnętrznego do usługi Azure Storage, a także dane wychodzące w obrębie platformy Azure. W rezultacie liczba ta nie odzwierciedla danych wychodzących uwzględnianych na rozliczeniu.|Typ geograficzny,Nazwa api,Uwierzytelnianie,Udostępnianie plików|
+|SuccessServerLatency|Opóźnienie serwera dla powodzenia|Milisekund|Średnia|Opóźnienie używane przez usługę Azure Storage do przetwarzania pomyślnego żądania w milisekundach. Ta wartość nie obejmuje opóźnienia sieci określonego przez wartość Opóźnienie E2E dla powodzenia.|Typ geograficzny,Nazwa api,Uwierzytelnianie,Udostępnianie plików|
+|SuccessE2ELatency|Opóźnienie E2E dla powodzenia|Milisekund|Średnia|Opóźnienie end-to-end pomyślnych żądań złożonych do usługi magazynu lub określonej operacji interfejsu API w milisekundach. Ta wartość obejmuje wymagany czas przetwarzania w usłudze Azure Storage do odczytania żądania, wysłania odpowiedzi i odebrania potwierdzenia dla odpowiedzi.|Typ geograficzny,Nazwa api,Uwierzytelnianie,Udostępnianie plików|
+|Dostępność|Dostępność|Wartość procentowa|Średnia|Procent dostępności usługi magazynu lub określonej operacji interfejsu API. Dostępność jest obliczana przez podzielenie wartości TotalBillableRequests przez liczbę żądań mających zastosowanie, łącznie z tymi, które wygenerowały nieoczekiwane błędy. Wszystkie nieoczekiwane błędy powodują obniżenie poziomu dostępności usługi magazynu lub określonej operacji interfejsu API.|Typ geograficzny,Nazwa api,Uwierzytelnianie,Udostępnianie plików|
 
-## <a name="microsoftclassicstoragestorageaccountsqueueservices"></a>Microsoft. ClassicStorage/storageAccounts/queueServices
+## <a name="microsoftclassicstoragestorageaccountsqueueservices"></a>Microsoft.ClassicStorage/storageKonta/kolejkaUsługi
 
-|Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary|
+|Metryka|Metryka Nazwa wyświetlana|Jednostka|Typ agregacji|Opis|Wymiary|
 |---|---|---|---|---|---|
-|QueueCapacity|Pojemność kolejki|Bajty|Średnia|Ilość miejsca używanego przez usługę kolejki konta magazynu, w bajtach.|None|
-|QueueCount|Liczba kolejek|Licznik|Średnia|Liczba kolejek w usłudze kolejki konta magazynu.|None|
-|QueueMessageCount|Liczba komunikatów w kolejce|Licznik|Średnia|Przybliżona liczba komunikatów w kolejce w usłudze kolejki konta magazynu.|None|
-|Transakcje|Transakcje|Licznik|Łącznie|Liczba żądań wysyłanych do usługi magazynu lub określonej operacji interfejsu API. Liczba ta obejmuje żądania zakończone powodzeniem i zakończone niepowodzeniem, a także żądania, które wygenerowały błędy. Korzystanie z wymiaru ResponseType numer innego typu odpowiedzi.|Responsetype, geotype, ApiName, uwierzytelnianie|
-|Ruch przychodzący|Ruch przychodzący|Bajty|Łącznie|Ilość danych przychodzących w bajtach. Ta liczba obejmuje dane przychodzące z klienta zewnętrznego do usługi Azure Storage, a także dane przychodzące w obrębie platformy Azure.|Geotype, ApiName, uwierzytelnianie|
-|Ruch wychodzący|Ruch wychodzący|Bajty|Łącznie|Ilość danych wychodzących w bajtach. Ta liczba obejmuje dane wychodzące z klienta zewnętrznego do usługi Azure Storage, a także dane wychodzące w obrębie platformy Azure. W rezultacie liczba ta nie odzwierciedla danych wychodzących uwzględnianych na rozliczeniu.|Geotype, ApiName, uwierzytelnianie|
-|SuccessServerLatency|Opóźnienie serwera dla powodzenia|Milisekundy|Średnia|Opóźnienie używane przez usługę Azure Storage do przetworzenia pomyślnego żądania w milisekundach. Ta wartość nie obejmuje opóźnienia sieci określonego przez wartość Opóźnienie E2E dla powodzenia.|Geotype, ApiName, uwierzytelnianie|
-|SuccessE2ELatency|Opóźnienie e2e dla powodzenia|Milisekundy|Średnia|Kompleksowe opóźnienie pomyślnych żądań kierowanych do usługi magazynu lub określonej operacji interfejsu API (w milisekundach). Ta wartość obejmuje wymagany czas przetwarzania w usłudze Azure Storage do odczytania żądania, wysłania odpowiedzi i odebrania potwierdzenia dla odpowiedzi.|Geotype, ApiName, uwierzytelnianie|
-|Dostępność|Dostępność|Procent|Średnia|Procent dostępności dla usługi magazynu lub określonej operacji interfejsu API. Dostępność jest obliczana przez podzielenie wartości TotalBillableRequests przez liczbę żądań mających zastosowanie, łącznie z tymi, które wygenerowały nieoczekiwane błędy. Wszystkie nieoczekiwane błędy powodują obniżenie poziomu dostępności usługi magazynu lub określonej operacji interfejsu API.|Geotype, ApiName, uwierzytelnianie|
+|QueueCapacity (Zdolność do kolejek)|Pojemność kolejki|Bajty|Średnia|Ilość miejsca do magazynowania używanego przez usługę kolejka konta magazynu w bajtach.|Brak|
+|Liczba kolejek|Liczba kolejek|Liczba|Średnia|Liczba kolejek w usłudze Kolejka konta magazynu.|Brak|
+|KolejkaLiczna liczba|Liczba wiadomości w kolejce|Liczba|Średnia|Przybliżona liczba komunikatów kolejki w usłudze Kolejka konta magazynu.|Brak|
+|Transakcje|Transakcje|Liczba|Łącznie|Liczba żądań wysyłanych do usługi magazynu lub określonej operacji interfejsu API. Liczba ta obejmuje żądania zakończone powodzeniem i zakończone niepowodzeniem, a także żądania, które wygenerowały błędy. Użyj wymiaru ResponseType dla liczby różnych typów odpowiedzi.|Typ odpowiedzi,Typ geograficzny,Nazwa api,Uwierzytelnianie|
+|Ruch przychodzący|Ruch przychodzący|Bajty|Łącznie|Ilość danych przychodzących w bajtach. Ta liczba obejmuje dane przychodzące z klienta zewnętrznego do usługi Azure Storage, a także dane przychodzące w obrębie platformy Azure.|Typ geograficzny,Nazwa api,Uwierzytelnianie|
+|Ruch wychodzący|Ruch wychodzący|Bajty|Łącznie|Ilość danych wychodzących w bajtach. Ta liczba obejmuje dane wychodzące z klienta zewnętrznego do usługi Azure Storage, a także dane wychodzące w obrębie platformy Azure. W rezultacie liczba ta nie odzwierciedla danych wychodzących uwzględnianych na rozliczeniu.|Typ geograficzny,Nazwa api,Uwierzytelnianie|
+|SuccessServerLatency|Opóźnienie serwera dla powodzenia|Milisekund|Średnia|Opóźnienie używane przez usługę Azure Storage do przetwarzania pomyślnego żądania w milisekundach. Ta wartość nie obejmuje opóźnienia sieci określonego przez wartość Opóźnienie E2E dla powodzenia.|Typ geograficzny,Nazwa api,Uwierzytelnianie|
+|SuccessE2ELatency|Opóźnienie E2E dla powodzenia|Milisekund|Średnia|Opóźnienie end-to-end pomyślnych żądań złożonych do usługi magazynu lub określonej operacji interfejsu API w milisekundach. Ta wartość obejmuje wymagany czas przetwarzania w usłudze Azure Storage do odczytania żądania, wysłania odpowiedzi i odebrania potwierdzenia dla odpowiedzi.|Typ geograficzny,Nazwa api,Uwierzytelnianie|
+|Dostępność|Dostępność|Wartość procentowa|Średnia|Procent dostępności usługi magazynu lub określonej operacji interfejsu API. Dostępność jest obliczana przez podzielenie wartości TotalBillableRequests przez liczbę żądań mających zastosowanie, łącznie z tymi, które wygenerowały nieoczekiwane błędy. Wszystkie nieoczekiwane błędy powodują obniżenie poziomu dostępności usługi magazynu lub określonej operacji interfejsu API.|Typ geograficzny,Nazwa api,Uwierzytelnianie|
 
 
 ## <a name="microsoftcognitiveservicesaccounts"></a>Microsoft.CognitiveServices/accounts
 
-|Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary|
+|Metryka|Metryka Nazwa wyświetlana|Jednostka|Typ agregacji|Opis|Wymiary|
 |---|---|---|---|---|---|
-|TotalCalls|Łączna liczba wywołań|Licznik|Łącznie|Łączna liczba wywołań.|ApiName, OperationName, region|
-|SuccessfulCalls|Pomyślne wywołania|Licznik|Łącznie|Liczba pomyślnych wywołań.|ApiName, OperationName, region|
-|TotalErrors|Całkowita liczba błędów|Licznik|Łącznie|Łączna liczba wywołań z odpowiedzią na błąd (kod odpowiedzi HTTP 4xx lub 5xx).|ApiName, OperationName, region|
-|BlockedCalls|Zablokowane wywołania|Licznik|Łącznie|Liczba wywołań, które przekroczyły limit szybkości lub limitu przydziału.|ApiName, OperationName, region|
-|Błędy servererrors|Błędy serwera|Licznik|Łącznie|Liczba wywołań z błędem wewnętrznym usługi (5xx kodu odpowiedzi HTTP).|ApiName, OperationName, region|
-|ClientErrors|Błędy klienta|Licznik|Łącznie|Liczba wywołań z błędem po stronie klienta (4xx kodu odpowiedzi HTTP).|ApiName, OperationName, region|
-|Dane|Dane w|Bajty|Łącznie|Rozmiar danych przychodzących w bajtach.|ApiName, OperationName, region|
-|DataOut|Dane wychodzące|Bajty|Łącznie|Rozmiar danych wychodzących w bajtach.|ApiName, OperationName, region|
-|Opóźnienie|Opóźnienie|MilliSeconds|Średnia|Opóźnienie w milisekundach.|ApiName, OperationName, region|
-|CharactersTranslated|Znaki tłumaczone|Licznik|Łącznie|Całkowita liczba znaków w żądaniu tekstu przychodzącego.|ApiName, OperationName, region|
-|CharactersTrained|Znaki przeszkolone|Licznik|Łącznie|Łączna liczba znaków przeszkolonych.|ApiName, OperationName, region|
-|SpeechSessionDuration|Czas trwania sesji mowy|S|Łącznie|Łączny czas trwania sesji mowy (w sekundach).|ApiName, OperationName, region|
-|TotalTransactions|Łączna liczba transakcji|Licznik|Łącznie|Łączna liczba transakcji.|None|
-|TotalTokenCalls|Łączna liczba wywołań tokenów|Licznik|Łącznie|Łączna liczba wywołań tokenów.|ApiName, OperationName, region|
+|Całkowita liczba powołów|Łączna liczba połączeń|Liczba|Łącznie|Całkowita liczba połączeń.|Nazwa api,Nazwa operacji,Region|
+|Udane rozmowy|Udane połączenia|Liczba|Łącznie|Liczba udanych połączeń.|Nazwa api,Nazwa operacji,Region|
+|TotalErrors ( TotalErrors )|Całkowita liczba błędów|Liczba|Łącznie|Całkowita liczba połączeń z odpowiedzią na błąd (kod odpowiedzi HTTP 4xx lub 5xx).|Nazwa api,Nazwa operacji,Region|
+|BlockedCalls (Zablokowane telefony)|Zablokowane połączenia|Liczba|Łącznie|Liczba wywołań, które przekroczyły limit stawki lub przydziału.|Nazwa api,Nazwa operacji,Region|
+|Serwery serwerowe|Błędy serwera|Liczba|Łącznie|Liczba połączeń z wewnętrznym błędem usługi (kod odpowiedzi HTTP 5xx).|Nazwa api,Nazwa operacji,Region|
+|KlientErrors (KlientErrors)|Błędy klienta|Liczba|Łącznie|Liczba połączeń z błędem po stronie klienta (kod odpowiedzi HTTP 4xx).|Nazwa api,Nazwa operacji,Region|
+|DataIn (wyjdą|Dane w|Bajty|Łącznie|Rozmiar przychodzących danych w bajtach.|Nazwa api,Nazwa operacji,Region|
+|DataOut (DataOut)|Wyjście danych|Bajty|Łącznie|Rozmiar danych wychodzących w bajtach.|Nazwa api,Nazwa operacji,Region|
+|Opóźnienie|Opóźnienie|Milisekund|Średnia|Opóźnienie w milisekundach.|Nazwa api,Nazwa operacji,Region|
+|Znaki Przetłumaczone|Przetłumaczone znaki|Liczba|Łącznie|Całkowita liczba znaków w przychodzącym żądaniu tekstowym.|Nazwa api,Nazwa operacji,Region|
+|ZnakiSzkolone|Postacie wyszkolone|Liczba|Łącznie|Całkowita liczba przeszkolonych znaków.|Nazwa api,Nazwa operacji,Region|
+|MowaSessionDuration|Czas trwania sesji mowy|Sekundy|Łącznie|Całkowity czas trwania sesji mowy w sekundach.|Nazwa api,Nazwa operacji,Region|
+|TotalTransakcje|Łączna liczba transakcji|Liczba|Łącznie|Łączna liczba transakcji.|Brak|
+|TotalTokenCalls (Liczba powołów)|Łączna liczba wywołań tokenów|Liczba|Łącznie|Całkowita liczba wywołań tokenu.|Nazwa api,Nazwa operacji,Region|
 
 ## <a name="microsoftcomputevirtualmachines"></a>Microsoft.Compute/virtualMachines
 
-|Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary|
+|Metryka|Metryka Nazwa wyświetlana|Jednostka|Typ agregacji|Opis|Wymiary|
 |---|---|---|---|---|---|
-|Procentowe użycie procesora CPU|Procentowe użycie procesora CPU|Procent|Średnia|Procent przydzielonych jednostek obliczeniowych, które są obecnie używane przez maszyny wirtualne|None|
-|Sieć — wejście|Sieć jest rozliczana (przestarzałe)|Bajty|Łącznie|Liczba bajtów rozliczanych odebranych na wszystkich interfejsach sieciowych przez maszyny wirtualne (ruch przychodzący) (przestarzałe)|None|
-|Sieć — wyjście|Sieć — do rozliczania (przestarzałe)|Bajty|Łącznie|Liczba bajtów rozliczanych we wszystkich interfejsach sieciowych przez maszyny wirtualne (ruch wychodzący) (przestarzałe)|None|
-|Bajty odczytu dysku|Bajty odczytu dysku|Bajty|Łącznie|Bajty odczytane z dysku w okresie monitorowania|None|
-|Bajty zapisu dysku|Bajty zapisu dysku|Bajty|Łącznie|Bajty zapisywane na dysku w okresie monitorowania|None|
-|Operacje odczytu z dysku/s|Operacje odczytu z dysku/s|CountPerSecond|Średnia|Operacje we/wy odczytu dysku|None|
-|Operacje zapisu na dysku/s|Operacje zapisu na dysku/s|CountPerSecond|Średnia|Operacje we/wy zapisu na dysku|None|
-|Pozostałe kredyty procesora CPU|Pozostałe kredyty procesora CPU|Licznik|Średnia|Łączna liczba kredytów dostępnych dla serii|None|
-|Wykorzystane środki CPU|Wykorzystane środki CPU|Licznik|Średnia|Łączna liczba kredytów zużytych przez maszynę wirtualną|None|
-|Bajty odczytu na dysk/s|Bajty odczytu dysku danych/s (przestarzałe)|CountPerSecond|Średnia|Bajty/s odczytane z pojedynczego dysku w okresie monitorowania|SlotId|
-|Bajty zapisu na dysku/s|Bajty zapisu na dysku danych/s (przestarzałe)|CountPerSecond|Średnia|Bajty na sekundę zapisywane na pojedynczym dysku w okresie monitorowania|SlotId|
-|Operacje odczytu na dysk/s|Operacje odczytu z dysku danych/s (przestarzałe)|CountPerSecond|Średnia|Odczyt operacji we/wy na pojedynczym dysku w okresie monitorowania|SlotId|
-|Operacje zapisu na dysku/s|Operacje zapisu na dysku danych/s (przestarzałe)|CountPerSecond|Średnia|Zapisuj operacje we/wy na pojedynczym dysku w okresie monitorowania|SlotId|
-|Na dysk głębokość kolejki|Głębokość kolejki dysku danych (przestarzałe)|Licznik|Średnia|Głębokość kolejki dysku danych (lub długość kolejki)|SlotId|
-|Bajty odczytu dysku systemu operacyjnego/s|Bajty odczytu z dysku systemu operacyjnego/s (przestarzałe)|CountPerSecond|Średnia|Bajty/s odczytane z pojedynczego dysku w okresie monitorowania dla dysku systemu operacyjnego|None|
-|Bajty zapisu na dysku systemu operacyjnego/s|Bajty zapisu dysku systemu operacyjnego/s (przestarzałe)|CountPerSecond|Średnia|Bajty na sekundę zapisywane na pojedynczym dysku w okresie monitorowania dla dysku systemu operacyjnego|None|
-|Operacje odczytu na dysku systemu operacyjnego/s|Operacje odczytu z dysku systemu operacyjnego/s (przestarzałe)|CountPerSecond|Średnia|Odczyt operacji we/wy na pojedynczym dysku w okresie monitorowania dla dysku systemu operacyjnego|None|
-|Operacje zapisu na dysku systemu operacyjnego/s|Operacje zapisu na dysku systemu operacyjnego/s (przestarzałe)|CountPerSecond|Średnia|Zapisuj operacje we/wy na pojedynczym dysku w okresie monitorowania dla dysku systemu operacyjnego|None|
-|Głębokość kolejki systemu operacyjnego na dysku|Głębokość kolejki dysku systemu operacyjnego (przestarzałe)|Licznik|Średnia|Głębokość kolejki dysku systemu operacyjnego (lub długość kolejki)|None|
-|Bajty odczytu dysku danych/s|Bajty odczytu dysku danych/s (wersja zapoznawcza)|CountPerSecond|Średnia|Bajty/s odczytane z pojedynczego dysku w okresie monitorowania|JEDNOSTKA LUN|
-|Bajty zapisu na dysku danych/s|Bajty zapisu na dysku danych/s (wersja zapoznawcza)|CountPerSecond|Średnia|Bajty na sekundę zapisywane na pojedynczym dysku w okresie monitorowania|JEDNOSTKA LUN|
-|Operacje odczytu z dysku danych/s|Operacje odczytu z dysku danych/s (wersja zapoznawcza)|CountPerSecond|Średnia|Odczyt operacji we/wy na pojedynczym dysku w okresie monitorowania|JEDNOSTKA LUN|
-|Operacje zapisu na dysku danych/s|Operacje zapisu na dysku danych/s (wersja zapoznawcza)|CountPerSecond|Średnia|Zapisuj operacje we/wy na pojedynczym dysku w okresie monitorowania|JEDNOSTKA LUN|
-|Głębokość kolejki dysku danych|Głębokość kolejki dysku danych (wersja zapoznawcza)|Licznik|Średnia|Głębokość kolejki dysku danych (lub długość kolejki)|JEDNOSTKA LUN|
-|Bajty odczytu dysku systemu operacyjnego/s|Bajty odczytu dysku systemu operacyjnego/s (wersja zapoznawcza)|CountPerSecond|Średnia|Bajty/s odczytane z pojedynczego dysku w okresie monitorowania dla dysku systemu operacyjnego|None|
-|Bajty zapisu dysku systemu operacyjnego/s|Bajty zapisu dysku systemu operacyjnego/s (wersja zapoznawcza)|CountPerSecond|Średnia|Bajty na sekundę zapisywane na pojedynczym dysku w okresie monitorowania dla dysku systemu operacyjnego|None|
-|Operacje odczytu z dysku systemu operacyjnego/s|Operacje odczytu z dysku systemu operacyjnego/s (wersja zapoznawcza)|CountPerSecond|Średnia|Odczyt operacji we/wy na pojedynczym dysku w okresie monitorowania dla dysku systemu operacyjnego|None|
-|Operacje zapisu na dysku systemu operacyjnego/s|Operacje zapisu na dysku systemu operacyjnego/s (wersja zapoznawcza)|CountPerSecond|Średnia|Zapisuj operacje we/wy na pojedynczym dysku w okresie monitorowania dla dysku systemu operacyjnego|None|
-|Głębokość kolejki dysku systemu operacyjnego|Głębokość kolejki dysku systemu operacyjnego (wersja zapoznawcza)|Licznik|Średnia|Głębokość kolejki dysku systemu operacyjnego (lub długość kolejki)|None|
-|Przepływy przychodzące|Przepływy przychodzące|Licznik|Średnia|Przepływy przychodzące to liczba bieżących przepływów w kierunku przychodzącym (ruch przychodzący do maszyny wirtualnej)|None|
-|Przepływy wychodzące|Przepływy wychodzące|Licznik|Średnia|Przepływy wychodzące to liczba bieżących przepływów w kierunku ruchu wychodzącego (ruch wychodzący z maszyny wirtualnej)|None|
-|Maksymalny współczynnik tworzenia przepływów przychodzących|Maksymalny współczynnik tworzenia przepływów przychodzących (wersja zapoznawcza)|CountPerSecond|Średnia|Maksymalna szybkość tworzenia przepływów przychodzących (ruch przychodzący do maszyny wirtualnej)|None|
-|Maksymalny współczynnik tworzenia przepływów wychodzących|Maksymalny współczynnik tworzenia przepływów wychodzących (wersja zapoznawcza)|CountPerSecond|Średnia|Maksymalna szybkość tworzenia przepływów wychodzących (ruch wychodzący z maszyny wirtualnej)|None|
-|Trafienie odczytu pamięci podręcznej dysku danych w warstwie Premium|Trafienie odczytu pamięci podręcznej dysku danych Premium (wersja zapoznawcza)|Procent|Średnia|Trafienie odczytu pamięci podręcznej dysku danych w warstwie Premium|JEDNOSTKA LUN|
-|Chybienia odczytu pamięci podręcznej dysku danych w warstwie Premium|Chybienia odczytu pamięci podręcznej dysku z danymi Premium (wersja zapoznawcza)|Procent|Średnia|Chybienia odczytu pamięci podręcznej dysku danych w warstwie Premium|JEDNOSTKA LUN|
-|Trafienie odczytu pamięci podręcznej systemu operacyjnego Premium|Trafienie odczytu pamięci podręcznej systemu operacyjnego Premium (wersja zapoznawcza)|Procent|Średnia|Trafienie odczytu pamięci podręcznej systemu operacyjnego Premium|None|
-|Brak odczytu pamięci podręcznej dysku systemu operacyjnego w warstwie Premium|Brak chybień w pamięci podręcznej systemu operacyjnego Premium (wersja zapoznawcza)|Procent|Średnia|Brak odczytu pamięci podręcznej dysku systemu operacyjnego w warstwie Premium|None|
-|Sieć łącznie|Sieć łącznie|Bajty|Łącznie|Liczba bajtów odebranych na wszystkich interfejsach sieciowych przez maszyny wirtualne (ruch przychodzący)|None|
-|Całkowita liczba sieci|Całkowita liczba sieci|Bajty|Łącznie|Liczba bajtów wysłanych we wszystkich interfejsach sieciowych przez maszyny wirtualne (ruch wychodzący)|None|
+|Procentowe użycie procesora CPU|Procentowe użycie procesora CPU|Wartość procentowa|Średnia|Procent przydzielonych jednostek obliczeniowych, które są obecnie używane przez maszynę wirtualną|Brak|
+|Sieć — wejście|Sieć w rozliczanej (przestarzała)|Bajty|Łącznie|Liczba bajtów podlegaalnych z obciążeniem dla wszystkich interfejsów sieciowych przez maszynę wirtualną (ruch przychodzący) (przestarzały)|Brak|
+|Sieć — wyjście|Wyjęty z sieci (przestarzały)|Bajty|Łącznie|Liczba bajtów podlegających rozliczaniu na wszystkich interfejsach sieciowych przez maszynę wirtualną (ruch wychodzący) (przestarzały)|Brak|
+|Bajty odczytu dysku|Bajty odczytu dysku|Bajty|Łącznie|Bajty odczytywane z dysku w okresie monitorowania|Brak|
+|Bajty zapisu dysku|Bajty zapisu dysku|Bajty|Łącznie|Bajty zapisywane na dysku w okresie monitorowania|Brak|
+|Operacje odczytu dysku/s|Operacje odczytu dysku/s|Połów połówek|Średnia|Odczyt dysku — we/wy|Brak|
+|Operacje zapisu dysku/s|Operacje zapisu dysku/s|Połów połówek|Średnia|We/Wy zapisu dysku|Brak|
+|Pozostałe kredyty CPU|Pozostałe kredyty CPU|Liczba|Średnia|Łączna liczba kredytów dostępnych do rozerwania|Brak|
+|Zużyte kredyty CPU|Zużyte kredyty CPU|Liczba|Średnia|Łączna liczba kredytów wykorzystanych przez maszynę wirtualną|Brak|
+|Bajty odczytu dysku/s|Bajty odczytu dysku danych/s (przestarzałe)|Połów połówek|Średnia|Odczyt bajtów/s z jednego dysku w okresie monitorowania|SlotId (SlotId)|
+|Bajty zapisu na dysku/s|Bajty zapisu dysku danych/s (przestarzałe)|Połów połówek|Średnia|Bajty/s zapisane na jednym dysku w okresie monitorowania|SlotId (SlotId)|
+|Operacje odczytu dysku/s|Operacje odczytu dysku danych/s (przestarzałe)|Połów połówek|Średnia|Odczyt IOPS z jednego dysku w okresie monitorowania|SlotId (SlotId)|
+|Operacje zapisu na dysku/s|Operacje zapisu na dysku danych/s (przestarzałe)|Połów połówek|Średnia|Zapisywanie we/wy na jednym dysku podczas monitorowania|SlotId (SlotId)|
+|Na dysk QD|QD dysku danych (przestarzałe)|Liczba|Średnia|Głębokość kolejki dysku danych(lub długość kolejki)|SlotId (SlotId)|
+|Bajty odczytu systemu operacyjnego na dysk/s|Bajty odczytu dysku systemu operacyjnego/s (przestarzałe)|Połów połówek|Średnia|Odczyt bajtów/s z jednego dysku w okresie monitorowania dysku systemu operacyjnego|Brak|
+|Bajty zapisu systemu operacyjnego na dysk/s|Bajty zapisu dysku systemu operacyjnego/s (przestarzałe)|Połów połówek|Średnia|Bajty/S zapisane na jednym dysku w okresie monitorowania dysku systemu operacyjnego|Brak|
+|Operacje odczytu systemu operacyjnego na dysku/s|Operacje odczytu dysku systemu operacyjnego/s (przestarzałe)|Połów połówek|Średnia|Odczyt IOPS z jednego dysku w okresie monitorowania dysku systemu operacyjnego|Brak|
+|Operacje zapisu systemu operacyjnego na dysk/s|Operacje zapisu dysku systemu operacyjnego/s (przestarzałe)|Połów połówek|Średnia|Zapisywanie we/wy na jednym dysku z jednego dysku podczas monitorowania dysku systemu operacyjnego|Brak|
+|System operacyjny na dysk QD|QD dysku systemu operacyjnego (przestarzałe)|Liczba|Średnia|Głębokość kolejki systemu operacyjnego (lub długość kolejki)|Brak|
+|Bajty odczytu dysku danych/s|Bajty odczytu dysku danych/s (wersja zapoznawcza)|Połów połówek|Średnia|Odczyt bajtów/s z jednego dysku w okresie monitorowania|Jednostki lun|
+|Bajty zapisu dysku danych/s|Bajty zapisu dysku danych/s (wersja zapoznawcza)|Połów połówek|Średnia|Bajty/s zapisane na jednym dysku w okresie monitorowania|Jednostki lun|
+|Operacje odczytu dysku danych/s|Operacje odczytu dysku danych/s (wersja zapoznawcza)|Połów połówek|Średnia|Odczyt IOPS z jednego dysku w okresie monitorowania|Jednostki lun|
+|Operacje zapisu na dysku danych/s|Operacje zapisu na dysku danych/s (wersja zapoznawcza)|Połów połówek|Średnia|Zapisywanie we/wy na jednym dysku podczas monitorowania|Jednostki lun|
+|Głębokość kolejki dysku danych|Głębokość kolejki dysków danych (wersja zapoznawcza)|Liczba|Średnia|Głębokość kolejki dysku danych(lub długość kolejki)|Jednostki lun|
+|Bajty odczytu dysku systemu operacyjnego na sekundę|Bajty odczytu dysku systemu operacyjnego/s (wersja zapoznawcza)|Połów połówek|Średnia|Odczyt bajtów/s z jednego dysku w okresie monitorowania dysku systemu operacyjnego|Brak|
+|Bajty zapisu dysku systemu operacyjnego na sekundę|Bajty zapisu dysku systemu operacyjnego/s (wersja zapoznawcza)|Połów połówek|Średnia|Bajty/S zapisane na jednym dysku w okresie monitorowania dysku systemu operacyjnego|Brak|
+|Operacje odczytu dysku systemu operacyjnego/s|Operacje odczytu dysku systemu operacyjnego/s (wersja zapoznawcza)|Połów połówek|Średnia|Odczyt IOPS z jednego dysku w okresie monitorowania dysku systemu operacyjnego|Brak|
+|Operacje zapisu dysku systemu operacyjnego/s|Operacje zapisu dysku systemu operacyjnego/s (wersja zapoznawcza)|Połów połówek|Średnia|Zapisywanie we/wy na jednym dysku z jednego dysku podczas monitorowania dysku systemu operacyjnego|Brak|
+|Głębokość kolejki dysku systemu operacyjnego|Głębokość kolejki systemu operacyjnego (wersja zapoznawcza)|Liczba|Średnia|Głębokość kolejki systemu operacyjnego (lub długość kolejki)|Brak|
+|Przepływy przychodzące|Przepływy przychodzące|Liczba|Średnia|Przepływy przychodzące to liczba przepływów bieżących w kierunku przychodzącym (ruch przechodzący do maszyny Wirtualnej)|Brak|
+|Przepływy wychodzące|Przepływy wychodzące|Liczba|Średnia|Przepływy wychodzące to liczba przepływów bieżących w kierunku wychodzącym (ruch wychodzący z maszyny Wirtualnej)|Brak|
+|Maksymalna szybkość tworzenia przepływów przychodzących|Maksymalna szybkość tworzenia przepływów przychodzących (wersja zapoznawcza)|Połów połówek|Średnia|Maksymalna szybkość tworzenia przepływów przychodzących (ruch przechodzący do maszyny Wirtualnej)|Brak|
+|Maksymalna szybkość tworzenia przepływów wychodzących|Maksymalna szybkość tworzenia przepływów wychodzących (wersja zapoznawcza)|Połów połówek|Średnia|Maksymalna szybkość tworzenia przepływów wychodzących (ruch wychodzący z maszyny Wirtualnej)|Brak|
+|Trafienie odczytu pamięci podręcznej dysków danych premium|Trafienie odczytu pamięci podręcznej dysków premium (wersja zapoznawcza)|Wartość procentowa|Średnia|Trafienie odczytu pamięci podręcznej dysków danych premium|Jednostki lun|
+|Odczyt pamięci podręcznej dysku z danymi w warstwie Premium|Odczyt pamięci podręcznej dysków premium (wersja zapoznawcza)|Wartość procentowa|Średnia|Odczyt pamięci podręcznej dysku z danymi w warstwie Premium|Jednostki lun|
+|Trafienie odczytu pamięci podręcznej dysku systemu operacyjnego premium|Trafienie odczytu pamięci podręcznej dysku premium OS (wersja zapoznawcza)|Wartość procentowa|Średnia|Trafienie odczytu pamięci podręcznej dysku systemu operacyjnego premium|Brak|
+|Odczyt pamięci podręcznej systemu operacyjnego Premium|Odczyt pamięci podręcznej systemu operacyjnego Premium (wersja zapoznawcza)|Wartość procentowa|Średnia|Odczyt pamięci podręcznej systemu operacyjnego Premium|Brak|
+|Sieć w sumie|Sieć w sumie|Bajty|Łącznie|Liczba bajtów odebranych we wszystkich interfejsach sieciowych przez maszynę wirtualną (ruch przychodzący)|Brak|
+|Całkowita liczba wyjść sieci|Całkowita liczba wyjść sieci|Bajty|Łącznie|Liczba bajtów na wszystkich interfejsach sieciowych przez maszynę wirtualną (ruch wychodzący)|Brak|
 
 
 ## <a name="microsoftcomputevirtualmachinescalesets"></a>Microsoft.Compute/virtualMachineScaleSets
 
-|Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary|
+|Metryka|Metryka Nazwa wyświetlana|Jednostka|Typ agregacji|Opis|Wymiary|
 |---|---|---|---|---|---|
-|Procentowe użycie procesora CPU|Procentowe użycie procesora CPU|Procent|Średnia|Procent przydzielonych jednostek obliczeniowych, które są obecnie używane przez maszyny wirtualne|VMName|
-|Sieć — wejście|Sieć jest rozliczana (przestarzałe)|Bajty|Łącznie|Liczba bajtów rozliczanych odebranych na wszystkich interfejsach sieciowych przez maszyny wirtualne (ruch przychodzący) (przestarzałe)|VMName|
-|Sieć — wyjście|Sieć — do rozliczania (przestarzałe)|Bajty|Łącznie|Liczba bajtów rozliczanych we wszystkich interfejsach sieciowych przez maszyny wirtualne (ruch wychodzący) (przestarzałe)|VMName|
-|Bajty odczytu dysku|Bajty odczytu dysku|Bajty|Łącznie|Bajty odczytane z dysku w okresie monitorowania|VMName|
+|Procentowe użycie procesora CPU|Procentowe użycie procesora CPU|Wartość procentowa|Średnia|Procent przydzielonych jednostek obliczeniowych, które są obecnie używane przez maszynę wirtualną|VMName|
+|Sieć — wejście|Sieć w rozliczanej (przestarzała)|Bajty|Łącznie|Liczba bajtów podlegaalnych z obciążeniem dla wszystkich interfejsów sieciowych przez maszynę wirtualną (ruch przychodzący) (przestarzały)|VMName|
+|Sieć — wyjście|Wyjęty z sieci (przestarzały)|Bajty|Łącznie|Liczba bajtów podlegających rozliczaniu na wszystkich interfejsach sieciowych przez maszynę wirtualną (ruch wychodzący) (przestarzały)|VMName|
+|Bajty odczytu dysku|Bajty odczytu dysku|Bajty|Łącznie|Bajty odczytywane z dysku w okresie monitorowania|VMName|
 |Bajty zapisu dysku|Bajty zapisu dysku|Bajty|Łącznie|Bajty zapisywane na dysku w okresie monitorowania|VMName|
-|Operacje odczytu z dysku/s|Operacje odczytu z dysku/s|CountPerSecond|Średnia|Operacje we/wy odczytu dysku|VMName|
-|Operacje zapisu na dysku/s|Operacje zapisu na dysku/s|CountPerSecond|Średnia|Operacje we/wy zapisu na dysku|VMName|
-|Pozostałe kredyty procesora CPU|Pozostałe kredyty procesora CPU|Licznik|Średnia|Łączna liczba kredytów dostępnych dla serii|None|
-|Wykorzystane środki CPU|Wykorzystane środki CPU|Licznik|Średnia|Łączna liczba kredytów zużytych przez maszynę wirtualną|None|
-|Bajty odczytu na dysk/s|Bajty odczytu dysku danych/s (przestarzałe)|CountPerSecond|Średnia|Bajty/s odczytane z pojedynczego dysku w okresie monitorowania|SlotId|
-|Bajty zapisu na dysku/s|Bajty zapisu na dysku danych/s (przestarzałe)|CountPerSecond|Średnia|Bajty na sekundę zapisywane na pojedynczym dysku w okresie monitorowania|SlotId|
-|Operacje odczytu na dysk/s|Operacje odczytu z dysku danych/s (przestarzałe)|CountPerSecond|Średnia|Odczyt operacji we/wy na pojedynczym dysku w okresie monitorowania|SlotId|
-|Operacje zapisu na dysku/s|Operacje zapisu na dysku danych/s (przestarzałe)|CountPerSecond|Średnia|Zapisuj operacje we/wy na pojedynczym dysku w okresie monitorowania|SlotId|
-|Na dysk głębokość kolejki|Głębokość kolejki dysku danych (przestarzałe)|Licznik|Średnia|Głębokość kolejki dysku danych (lub długość kolejki)|SlotId|
-|Bajty odczytu dysku systemu operacyjnego/s|Bajty odczytu z dysku systemu operacyjnego/s (przestarzałe)|CountPerSecond|Średnia|Bajty/s odczytane z pojedynczego dysku w okresie monitorowania dla dysku systemu operacyjnego|None|
-|Bajty zapisu na dysku systemu operacyjnego/s|Bajty zapisu dysku systemu operacyjnego/s (przestarzałe)|CountPerSecond|Średnia|Bajty na sekundę zapisywane na pojedynczym dysku w okresie monitorowania dla dysku systemu operacyjnego|None|
-|Operacje odczytu na dysku systemu operacyjnego/s|Operacje odczytu z dysku systemu operacyjnego/s (przestarzałe)|CountPerSecond|Średnia|Odczyt operacji we/wy na pojedynczym dysku w okresie monitorowania dla dysku systemu operacyjnego|None|
-|Operacje zapisu na dysku systemu operacyjnego/s|Operacje zapisu na dysku systemu operacyjnego/s (przestarzałe)|CountPerSecond|Średnia|Zapisuj operacje we/wy na pojedynczym dysku w okresie monitorowania dla dysku systemu operacyjnego|None|
-|Głębokość kolejki systemu operacyjnego na dysku|Głębokość kolejki dysku systemu operacyjnego (przestarzałe)|Licznik|Średnia|Głębokość kolejki dysku systemu operacyjnego (lub długość kolejki)|None|
-|Bajty odczytu dysku danych/s|Bajty odczytu dysku danych/s (wersja zapoznawcza)|CountPerSecond|Średnia|Bajty/s odczytane z pojedynczego dysku w okresie monitorowania|Jednostka LUN, VMName|
-|Bajty zapisu na dysku danych/s|Bajty zapisu na dysku danych/s (wersja zapoznawcza)|CountPerSecond|Średnia|Bajty na sekundę zapisywane na pojedynczym dysku w okresie monitorowania|Jednostka LUN, VMName|
-|Operacje odczytu z dysku danych/s|Operacje odczytu z dysku danych/s (wersja zapoznawcza)|CountPerSecond|Średnia|Odczyt operacji we/wy na pojedynczym dysku w okresie monitorowania|Jednostka LUN, VMName|
-|Operacje zapisu na dysku danych/s|Operacje zapisu na dysku danych/s (wersja zapoznawcza)|CountPerSecond|Średnia|Zapisuj operacje we/wy na pojedynczym dysku w okresie monitorowania|Jednostka LUN, VMName|
-|Głębokość kolejki dysku danych|Głębokość kolejki dysku danych (wersja zapoznawcza)|Licznik|Średnia|Głębokość kolejki dysku danych (lub długość kolejki)|Jednostka LUN, VMName|
-|Bajty odczytu dysku systemu operacyjnego/s|Bajty odczytu dysku systemu operacyjnego/s (wersja zapoznawcza)|CountPerSecond|Średnia|Bajty/s odczytane z pojedynczego dysku w okresie monitorowania dla dysku systemu operacyjnego|VMName|
-|Bajty zapisu dysku systemu operacyjnego/s|Bajty zapisu dysku systemu operacyjnego/s (wersja zapoznawcza)|CountPerSecond|Średnia|Bajty na sekundę zapisywane na pojedynczym dysku w okresie monitorowania dla dysku systemu operacyjnego|VMName|
-|Operacje odczytu z dysku systemu operacyjnego/s|Operacje odczytu z dysku systemu operacyjnego/s (wersja zapoznawcza)|CountPerSecond|Średnia|Odczyt operacji we/wy na pojedynczym dysku w okresie monitorowania dla dysku systemu operacyjnego|VMName|
-|Operacje zapisu na dysku systemu operacyjnego/s|Operacje zapisu na dysku systemu operacyjnego/s (wersja zapoznawcza)|CountPerSecond|Średnia|Zapisuj operacje we/wy na pojedynczym dysku w okresie monitorowania dla dysku systemu operacyjnego|VMName|
-|Głębokość kolejki dysku systemu operacyjnego|Głębokość kolejki dysku systemu operacyjnego (wersja zapoznawcza)|Licznik|Średnia|Głębokość kolejki dysku systemu operacyjnego (lub długość kolejki)|VMName|
-|Przepływy przychodzące|Przepływy przychodzące|Licznik|Średnia|Przepływy przychodzące to liczba bieżących przepływów w kierunku przychodzącym (ruch przychodzący do maszyny wirtualnej)|VMName|
-|Przepływy wychodzące|Przepływy wychodzące|Licznik|Średnia|Przepływy wychodzące to liczba bieżących przepływów w kierunku ruchu wychodzącego (ruch wychodzący z maszyny wirtualnej)|VMName|
-|Maksymalny współczynnik tworzenia przepływów przychodzących|Maksymalny współczynnik tworzenia przepływów przychodzących (wersja zapoznawcza)|CountPerSecond|Średnia|Maksymalna szybkość tworzenia przepływów przychodzących (ruch przychodzący do maszyny wirtualnej)|VMName|
-|Maksymalny współczynnik tworzenia przepływów wychodzących|Maksymalny współczynnik tworzenia przepływów wychodzących (wersja zapoznawcza)|CountPerSecond|Średnia|Maksymalna szybkość tworzenia przepływów wychodzących (ruch wychodzący z maszyny wirtualnej)|VMName|
-|Trafienie odczytu pamięci podręcznej dysku danych w warstwie Premium|Trafienie odczytu pamięci podręcznej dysku danych Premium (wersja zapoznawcza)|Procent|Średnia|Trafienie odczytu pamięci podręcznej dysku danych w warstwie Premium|Jednostka LUN, VMName|
-|Chybienia odczytu pamięci podręcznej dysku danych w warstwie Premium|Chybienia odczytu pamięci podręcznej dysku z danymi Premium (wersja zapoznawcza)|Procent|Średnia|Chybienia odczytu pamięci podręcznej dysku danych w warstwie Premium|Jednostka LUN, VMName|
-|Trafienie odczytu pamięci podręcznej systemu operacyjnego Premium|Trafienie odczytu pamięci podręcznej systemu operacyjnego Premium (wersja zapoznawcza)|Procent|Średnia|Trafienie odczytu pamięci podręcznej systemu operacyjnego Premium|VMName|
-|Brak odczytu pamięci podręcznej dysku systemu operacyjnego w warstwie Premium|Brak chybień w pamięci podręcznej systemu operacyjnego Premium (wersja zapoznawcza)|Procent|Średnia|Brak odczytu pamięci podręcznej dysku systemu operacyjnego w warstwie Premium|VMName|
-|Sieć łącznie|Sieć łącznie|Bajty|Łącznie|Liczba bajtów odebranych na wszystkich interfejsach sieciowych przez maszyny wirtualne (ruch przychodzący)|VMName|
-|Całkowita liczba sieci|Całkowita liczba sieci|Bajty|Łącznie|Liczba bajtów wysłanych we wszystkich interfejsach sieciowych przez maszyny wirtualne (ruch wychodzący)|VMName|
+|Operacje odczytu dysku/s|Operacje odczytu dysku/s|Połów połówek|Średnia|Odczyt dysku — we/wy|VMName|
+|Operacje zapisu dysku/s|Operacje zapisu dysku/s|Połów połówek|Średnia|We/Wy zapisu dysku|VMName|
+|Pozostałe kredyty CPU|Pozostałe kredyty CPU|Liczba|Średnia|Łączna liczba kredytów dostępnych do rozerwania|Brak|
+|Zużyte kredyty CPU|Zużyte kredyty CPU|Liczba|Średnia|Łączna liczba kredytów wykorzystanych przez maszynę wirtualną|Brak|
+|Bajty odczytu dysku/s|Bajty odczytu dysku danych/s (przestarzałe)|Połów połówek|Średnia|Odczyt bajtów/s z jednego dysku w okresie monitorowania|SlotId (SlotId)|
+|Bajty zapisu na dysku/s|Bajty zapisu dysku danych/s (przestarzałe)|Połów połówek|Średnia|Bajty/s zapisane na jednym dysku w okresie monitorowania|SlotId (SlotId)|
+|Operacje odczytu dysku/s|Operacje odczytu dysku danych/s (przestarzałe)|Połów połówek|Średnia|Odczyt IOPS z jednego dysku w okresie monitorowania|SlotId (SlotId)|
+|Operacje zapisu na dysku/s|Operacje zapisu na dysku danych/s (przestarzałe)|Połów połówek|Średnia|Zapisywanie we/wy na jednym dysku podczas monitorowania|SlotId (SlotId)|
+|Na dysk QD|QD dysku danych (przestarzałe)|Liczba|Średnia|Głębokość kolejki dysku danych(lub długość kolejki)|SlotId (SlotId)|
+|Bajty odczytu systemu operacyjnego na dysk/s|Bajty odczytu dysku systemu operacyjnego/s (przestarzałe)|Połów połówek|Średnia|Odczyt bajtów/s z jednego dysku w okresie monitorowania dysku systemu operacyjnego|Brak|
+|Bajty zapisu systemu operacyjnego na dysk/s|Bajty zapisu dysku systemu operacyjnego/s (przestarzałe)|Połów połówek|Średnia|Bajty/S zapisane na jednym dysku w okresie monitorowania dysku systemu operacyjnego|Brak|
+|Operacje odczytu systemu operacyjnego na dysku/s|Operacje odczytu dysku systemu operacyjnego/s (przestarzałe)|Połów połówek|Średnia|Odczyt IOPS z jednego dysku w okresie monitorowania dysku systemu operacyjnego|Brak|
+|Operacje zapisu systemu operacyjnego na dysk/s|Operacje zapisu dysku systemu operacyjnego/s (przestarzałe)|Połów połówek|Średnia|Zapisywanie we/wy na jednym dysku z jednego dysku podczas monitorowania dysku systemu operacyjnego|Brak|
+|System operacyjny na dysk QD|QD dysku systemu operacyjnego (przestarzałe)|Liczba|Średnia|Głębokość kolejki systemu operacyjnego (lub długość kolejki)|Brak|
+|Bajty odczytu dysku danych/s|Bajty odczytu dysku danych/s (wersja zapoznawcza)|Połów połówek|Średnia|Odczyt bajtów/s z jednego dysku w okresie monitorowania|LUN,Nazwa VM|
+|Bajty zapisu dysku danych/s|Bajty zapisu dysku danych/s (wersja zapoznawcza)|Połów połówek|Średnia|Bajty/s zapisane na jednym dysku w okresie monitorowania|LUN,Nazwa VM|
+|Operacje odczytu dysku danych/s|Operacje odczytu dysku danych/s (wersja zapoznawcza)|Połów połówek|Średnia|Odczyt IOPS z jednego dysku w okresie monitorowania|LUN,Nazwa VM|
+|Operacje zapisu na dysku danych/s|Operacje zapisu na dysku danych/s (wersja zapoznawcza)|Połów połówek|Średnia|Zapisywanie we/wy na jednym dysku podczas monitorowania|LUN,Nazwa VM|
+|Głębokość kolejki dysku danych|Głębokość kolejki dysków danych (wersja zapoznawcza)|Liczba|Średnia|Głębokość kolejki dysku danych(lub długość kolejki)|LUN,Nazwa VM|
+|Bajty odczytu dysku systemu operacyjnego na sekundę|Bajty odczytu dysku systemu operacyjnego/s (wersja zapoznawcza)|Połów połówek|Średnia|Odczyt bajtów/s z jednego dysku w okresie monitorowania dysku systemu operacyjnego|VMName|
+|Bajty zapisu dysku systemu operacyjnego na sekundę|Bajty zapisu dysku systemu operacyjnego/s (wersja zapoznawcza)|Połów połówek|Średnia|Bajty/S zapisane na jednym dysku w okresie monitorowania dysku systemu operacyjnego|VMName|
+|Operacje odczytu dysku systemu operacyjnego/s|Operacje odczytu dysku systemu operacyjnego/s (wersja zapoznawcza)|Połów połówek|Średnia|Odczyt IOPS z jednego dysku w okresie monitorowania dysku systemu operacyjnego|VMName|
+|Operacje zapisu dysku systemu operacyjnego/s|Operacje zapisu dysku systemu operacyjnego/s (wersja zapoznawcza)|Połów połówek|Średnia|Zapisywanie we/wy na jednym dysku z jednego dysku podczas monitorowania dysku systemu operacyjnego|VMName|
+|Głębokość kolejki dysku systemu operacyjnego|Głębokość kolejki systemu operacyjnego (wersja zapoznawcza)|Liczba|Średnia|Głębokość kolejki systemu operacyjnego (lub długość kolejki)|VMName|
+|Przepływy przychodzące|Przepływy przychodzące|Liczba|Średnia|Przepływy przychodzące to liczba przepływów bieżących w kierunku przychodzącym (ruch przechodzący do maszyny Wirtualnej)|VMName|
+|Przepływy wychodzące|Przepływy wychodzące|Liczba|Średnia|Przepływy wychodzące to liczba przepływów bieżących w kierunku wychodzącym (ruch wychodzący z maszyny Wirtualnej)|VMName|
+|Maksymalna szybkość tworzenia przepływów przychodzących|Maksymalna szybkość tworzenia przepływów przychodzących (wersja zapoznawcza)|Połów połówek|Średnia|Maksymalna szybkość tworzenia przepływów przychodzących (ruch przechodzący do maszyny Wirtualnej)|VMName|
+|Maksymalna szybkość tworzenia przepływów wychodzących|Maksymalna szybkość tworzenia przepływów wychodzących (wersja zapoznawcza)|Połów połówek|Średnia|Maksymalna szybkość tworzenia przepływów wychodzących (ruch wychodzący z maszyny Wirtualnej)|VMName|
+|Trafienie odczytu pamięci podręcznej dysków danych premium|Trafienie odczytu pamięci podręcznej dysków premium (wersja zapoznawcza)|Wartość procentowa|Średnia|Trafienie odczytu pamięci podręcznej dysków danych premium|LUN,Nazwa VM|
+|Odczyt pamięci podręcznej dysku z danymi w warstwie Premium|Odczyt pamięci podręcznej dysków premium (wersja zapoznawcza)|Wartość procentowa|Średnia|Odczyt pamięci podręcznej dysku z danymi w warstwie Premium|LUN,Nazwa VM|
+|Trafienie odczytu pamięci podręcznej dysku systemu operacyjnego premium|Trafienie odczytu pamięci podręcznej dysku premium OS (wersja zapoznawcza)|Wartość procentowa|Średnia|Trafienie odczytu pamięci podręcznej dysku systemu operacyjnego premium|VMName|
+|Odczyt pamięci podręcznej systemu operacyjnego Premium|Odczyt pamięci podręcznej systemu operacyjnego Premium (wersja zapoznawcza)|Wartość procentowa|Średnia|Odczyt pamięci podręcznej systemu operacyjnego Premium|VMName|
+|Sieć w sumie|Sieć w sumie|Bajty|Łącznie|Liczba bajtów odebranych we wszystkich interfejsach sieciowych przez maszynę wirtualną (ruch przychodzący)|VMName|
+|Całkowita liczba wyjść sieci|Całkowita liczba wyjść sieci|Bajty|Łącznie|Liczba bajtów na wszystkich interfejsach sieciowych przez maszynę wirtualną (ruch wychodzący)|VMName|
 
 
 ## <a name="microsoftcomputevirtualmachinescalesetsvirtualmachines"></a>Microsoft.Compute/virtualMachineScaleSets/virtualMachines
 
-|Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary|
+|Metryka|Metryka Nazwa wyświetlana|Jednostka|Typ agregacji|Opis|Wymiary|
 |---|---|---|---|---|---|
-|Procentowe użycie procesora CPU|Procentowe użycie procesora CPU|Procent|Średnia|Procent przydzielonych jednostek obliczeniowych, które są obecnie używane przez maszyny wirtualne|None|
-|Sieć — wejście|Sieć jest rozliczana (przestarzałe)|Bajty|Łącznie|Liczba bajtów rozliczanych odebranych na wszystkich interfejsach sieciowych przez maszyny wirtualne (ruch przychodzący) (przestarzałe)|None|
-|Sieć — wyjście|Sieć — do rozliczania (przestarzałe)|Bajty|Łącznie|Liczba bajtów rozliczanych we wszystkich interfejsach sieciowych przez maszyny wirtualne (ruch wychodzący) (przestarzałe)|None|
-|Bajty odczytu dysku|Bajty odczytu dysku|Bajty|Łącznie|Bajty odczytane z dysku w okresie monitorowania|None|
-|Bajty zapisu dysku|Bajty zapisu dysku|Bajty|Łącznie|Bajty zapisywane na dysku w okresie monitorowania|None|
-|Operacje odczytu z dysku/s|Operacje odczytu z dysku/s|CountPerSecond|Średnia|Operacje we/wy odczytu dysku|None|
-|Operacje zapisu na dysku/s|Operacje zapisu na dysku/s|CountPerSecond|Średnia|Operacje we/wy zapisu na dysku|None|
-|Pozostałe kredyty procesora CPU|Pozostałe kredyty procesora CPU|Licznik|Średnia|Łączna liczba kredytów dostępnych dla serii|None|
-|Wykorzystane środki CPU|Wykorzystane środki CPU|Licznik|Średnia|Łączna liczba kredytów zużytych przez maszynę wirtualną|None|
-|Bajty odczytu na dysk/s|Bajty odczytu dysku danych/s (przestarzałe)|CountPerSecond|Średnia|Bajty/s odczytane z pojedynczego dysku w okresie monitorowania|SlotId|
-|Bajty zapisu na dysku/s|Bajty zapisu na dysku danych/s (przestarzałe)|CountPerSecond|Średnia|Bajty na sekundę zapisywane na pojedynczym dysku w okresie monitorowania|SlotId|
-|Operacje odczytu na dysk/s|Operacje odczytu z dysku danych/s (przestarzałe)|CountPerSecond|Średnia|Odczyt operacji we/wy na pojedynczym dysku w okresie monitorowania|SlotId|
-|Operacje zapisu na dysku/s|Operacje zapisu na dysku danych/s (przestarzałe)|CountPerSecond|Średnia|Zapisuj operacje we/wy na pojedynczym dysku w okresie monitorowania|SlotId|
-|Na dysk głębokość kolejki|Głębokość kolejki dysku danych (przestarzałe)|Licznik|Średnia|Głębokość kolejki dysku danych (lub długość kolejki)|SlotId|
-|Bajty odczytu dysku systemu operacyjnego/s|Bajty odczytu z dysku systemu operacyjnego/s (przestarzałe)|CountPerSecond|Średnia|Bajty/s odczytane z pojedynczego dysku w okresie monitorowania dla dysku systemu operacyjnego|None|
-|Bajty zapisu na dysku systemu operacyjnego/s|Bajty zapisu dysku systemu operacyjnego/s (przestarzałe)|CountPerSecond|Średnia|Bajty na sekundę zapisywane na pojedynczym dysku w okresie monitorowania dla dysku systemu operacyjnego|None|
-|Operacje odczytu na dysku systemu operacyjnego/s|Operacje odczytu z dysku systemu operacyjnego/s (przestarzałe)|CountPerSecond|Średnia|Odczyt operacji we/wy na pojedynczym dysku w okresie monitorowania dla dysku systemu operacyjnego|None|
-|Operacje zapisu na dysku systemu operacyjnego/s|Operacje zapisu na dysku systemu operacyjnego/s (przestarzałe)|CountPerSecond|Średnia|Zapisuj operacje we/wy na pojedynczym dysku w okresie monitorowania dla dysku systemu operacyjnego|None|
-|Głębokość kolejki systemu operacyjnego na dysku|Głębokość kolejki dysku systemu operacyjnego (przestarzałe)|Licznik|Średnia|Głębokość kolejki dysku systemu operacyjnego (lub długość kolejki)|None|
-|Bajty odczytu dysku danych/s|Bajty odczytu dysku danych/s (wersja zapoznawcza)|CountPerSecond|Średnia|Bajty/s odczytane z pojedynczego dysku w okresie monitorowania|JEDNOSTKA LUN|
-|Bajty zapisu na dysku danych/s|Bajty zapisu na dysku danych/s (wersja zapoznawcza)|CountPerSecond|Średnia|Bajty na sekundę zapisywane na pojedynczym dysku w okresie monitorowania|JEDNOSTKA LUN|
-|Operacje odczytu z dysku danych/s|Operacje odczytu z dysku danych/s (wersja zapoznawcza)|CountPerSecond|Średnia|Odczyt operacji we/wy na pojedynczym dysku w okresie monitorowania|JEDNOSTKA LUN|
-|Operacje zapisu na dysku danych/s|Operacje zapisu na dysku danych/s (wersja zapoznawcza)|CountPerSecond|Średnia|Zapisuj operacje we/wy na pojedynczym dysku w okresie monitorowania|JEDNOSTKA LUN|
-|Głębokość kolejki dysku danych|Głębokość kolejki dysku danych (wersja zapoznawcza)|Licznik|Średnia|Głębokość kolejki dysku danych (lub długość kolejki)|JEDNOSTKA LUN|
-|Bajty odczytu dysku systemu operacyjnego/s|Bajty odczytu dysku systemu operacyjnego/s (wersja zapoznawcza)|CountPerSecond|Średnia|Bajty/s odczytane z pojedynczego dysku w okresie monitorowania dla dysku systemu operacyjnego|None|
-|Bajty zapisu dysku systemu operacyjnego/s|Bajty zapisu dysku systemu operacyjnego/s (wersja zapoznawcza)|CountPerSecond|Średnia|Bajty na sekundę zapisywane na pojedynczym dysku w okresie monitorowania dla dysku systemu operacyjnego|None|
-|Operacje odczytu z dysku systemu operacyjnego/s|Operacje odczytu z dysku systemu operacyjnego/s (wersja zapoznawcza)|CountPerSecond|Średnia|Odczyt operacji we/wy na pojedynczym dysku w okresie monitorowania dla dysku systemu operacyjnego|None|
-|Operacje zapisu na dysku systemu operacyjnego/s|Operacje zapisu na dysku systemu operacyjnego/s (wersja zapoznawcza)|CountPerSecond|Średnia|Zapisuj operacje we/wy na pojedynczym dysku w okresie monitorowania dla dysku systemu operacyjnego|None|
-|Głębokość kolejki dysku systemu operacyjnego|Głębokość kolejki dysku systemu operacyjnego (wersja zapoznawcza)|Licznik|Średnia|Głębokość kolejki dysku systemu operacyjnego (lub długość kolejki)|None|
-|Przepływy przychodzące|Przepływy przychodzące|Licznik|Średnia|Przepływy przychodzące to liczba bieżących przepływów w kierunku przychodzącym (ruch przychodzący do maszyny wirtualnej)|None|
-|Przepływy wychodzące|Przepływy wychodzące|Licznik|Średnia|Przepływy wychodzące to liczba bieżących przepływów w kierunku ruchu wychodzącego (ruch wychodzący z maszyny wirtualnej)|None|
-|Maksymalny współczynnik tworzenia przepływów przychodzących|Maksymalny współczynnik tworzenia przepływów przychodzących (wersja zapoznawcza)|CountPerSecond|Średnia|Maksymalna szybkość tworzenia przepływów przychodzących (ruch przychodzący do maszyny wirtualnej)|None|
-|Maksymalny współczynnik tworzenia przepływów wychodzących|Maksymalny współczynnik tworzenia przepływów wychodzących (wersja zapoznawcza)|CountPerSecond|Średnia|Maksymalna szybkość tworzenia przepływów wychodzących (ruch wychodzący z maszyny wirtualnej)|None|
-|Trafienie odczytu pamięci podręcznej dysku danych w warstwie Premium|Trafienie odczytu pamięci podręcznej dysku danych Premium (wersja zapoznawcza)|Procent|Średnia|Trafienie odczytu pamięci podręcznej dysku danych w warstwie Premium|JEDNOSTKA LUN|
-|Chybienia odczytu pamięci podręcznej dysku danych w warstwie Premium|Chybienia odczytu pamięci podręcznej dysku z danymi Premium (wersja zapoznawcza)|Procent|Średnia|Chybienia odczytu pamięci podręcznej dysku danych w warstwie Premium|JEDNOSTKA LUN|
-|Trafienie odczytu pamięci podręcznej systemu operacyjnego Premium|Trafienie odczytu pamięci podręcznej systemu operacyjnego Premium (wersja zapoznawcza)|Procent|Średnia|Trafienie odczytu pamięci podręcznej systemu operacyjnego Premium|None|
-|Brak odczytu pamięci podręcznej dysku systemu operacyjnego w warstwie Premium|Brak chybień w pamięci podręcznej systemu operacyjnego Premium (wersja zapoznawcza)|Procent|Średnia|Brak odczytu pamięci podręcznej dysku systemu operacyjnego w warstwie Premium|None|
-|Sieć łącznie|Sieć łącznie|Bajty|Łącznie|Liczba bajtów odebranych na wszystkich interfejsach sieciowych przez maszyny wirtualne (ruch przychodzący)|None|
-|Całkowita liczba sieci|Całkowita liczba sieci|Bajty|Łącznie|Liczba bajtów wysłanych we wszystkich interfejsach sieciowych przez maszyny wirtualne (ruch wychodzący)|None|
+|Procentowe użycie procesora CPU|Procentowe użycie procesora CPU|Wartość procentowa|Średnia|Procent przydzielonych jednostek obliczeniowych, które są obecnie używane przez maszynę wirtualną|Brak|
+|Sieć — wejście|Sieć w rozliczanej (przestarzała)|Bajty|Łącznie|Liczba bajtów podlegaalnych z obciążeniem dla wszystkich interfejsów sieciowych przez maszynę wirtualną (ruch przychodzący) (przestarzały)|Brak|
+|Sieć — wyjście|Wyjęty z sieci (przestarzały)|Bajty|Łącznie|Liczba bajtów podlegających rozliczaniu na wszystkich interfejsach sieciowych przez maszynę wirtualną (ruch wychodzący) (przestarzały)|Brak|
+|Bajty odczytu dysku|Bajty odczytu dysku|Bajty|Łącznie|Bajty odczytywane z dysku w okresie monitorowania|Brak|
+|Bajty zapisu dysku|Bajty zapisu dysku|Bajty|Łącznie|Bajty zapisywane na dysku w okresie monitorowania|Brak|
+|Operacje odczytu dysku/s|Operacje odczytu dysku/s|Połów połówek|Średnia|Odczyt dysku — we/wy|Brak|
+|Operacje zapisu dysku/s|Operacje zapisu dysku/s|Połów połówek|Średnia|We/Wy zapisu dysku|Brak|
+|Pozostałe kredyty CPU|Pozostałe kredyty CPU|Liczba|Średnia|Łączna liczba kredytów dostępnych do rozerwania|Brak|
+|Zużyte kredyty CPU|Zużyte kredyty CPU|Liczba|Średnia|Łączna liczba kredytów wykorzystanych przez maszynę wirtualną|Brak|
+|Bajty odczytu dysku/s|Bajty odczytu dysku danych/s (przestarzałe)|Połów połówek|Średnia|Odczyt bajtów/s z jednego dysku w okresie monitorowania|SlotId (SlotId)|
+|Bajty zapisu na dysku/s|Bajty zapisu dysku danych/s (przestarzałe)|Połów połówek|Średnia|Bajty/s zapisane na jednym dysku w okresie monitorowania|SlotId (SlotId)|
+|Operacje odczytu dysku/s|Operacje odczytu dysku danych/s (przestarzałe)|Połów połówek|Średnia|Odczyt IOPS z jednego dysku w okresie monitorowania|SlotId (SlotId)|
+|Operacje zapisu na dysku/s|Operacje zapisu na dysku danych/s (przestarzałe)|Połów połówek|Średnia|Zapisywanie we/wy na jednym dysku podczas monitorowania|SlotId (SlotId)|
+|Na dysk QD|QD dysku danych (przestarzałe)|Liczba|Średnia|Głębokość kolejki dysku danych(lub długość kolejki)|SlotId (SlotId)|
+|Bajty odczytu systemu operacyjnego na dysk/s|Bajty odczytu dysku systemu operacyjnego/s (przestarzałe)|Połów połówek|Średnia|Odczyt bajtów/s z jednego dysku w okresie monitorowania dysku systemu operacyjnego|Brak|
+|Bajty zapisu systemu operacyjnego na dysk/s|Bajty zapisu dysku systemu operacyjnego/s (przestarzałe)|Połów połówek|Średnia|Bajty/S zapisane na jednym dysku w okresie monitorowania dysku systemu operacyjnego|Brak|
+|Operacje odczytu systemu operacyjnego na dysku/s|Operacje odczytu dysku systemu operacyjnego/s (przestarzałe)|Połów połówek|Średnia|Odczyt IOPS z jednego dysku w okresie monitorowania dysku systemu operacyjnego|Brak|
+|Operacje zapisu systemu operacyjnego na dysk/s|Operacje zapisu dysku systemu operacyjnego/s (przestarzałe)|Połów połówek|Średnia|Zapisywanie we/wy na jednym dysku z jednego dysku podczas monitorowania dysku systemu operacyjnego|Brak|
+|System operacyjny na dysk QD|QD dysku systemu operacyjnego (przestarzałe)|Liczba|Średnia|Głębokość kolejki systemu operacyjnego (lub długość kolejki)|Brak|
+|Bajty odczytu dysku danych/s|Bajty odczytu dysku danych/s (wersja zapoznawcza)|Połów połówek|Średnia|Odczyt bajtów/s z jednego dysku w okresie monitorowania|Jednostki lun|
+|Bajty zapisu dysku danych/s|Bajty zapisu dysku danych/s (wersja zapoznawcza)|Połów połówek|Średnia|Bajty/s zapisane na jednym dysku w okresie monitorowania|Jednostki lun|
+|Operacje odczytu dysku danych/s|Operacje odczytu dysku danych/s (wersja zapoznawcza)|Połów połówek|Średnia|Odczyt IOPS z jednego dysku w okresie monitorowania|Jednostki lun|
+|Operacje zapisu na dysku danych/s|Operacje zapisu na dysku danych/s (wersja zapoznawcza)|Połów połówek|Średnia|Zapisywanie we/wy na jednym dysku podczas monitorowania|Jednostki lun|
+|Głębokość kolejki dysku danych|Głębokość kolejki dysków danych (wersja zapoznawcza)|Liczba|Średnia|Głębokość kolejki dysku danych(lub długość kolejki)|Jednostki lun|
+|Bajty odczytu dysku systemu operacyjnego na sekundę|Bajty odczytu dysku systemu operacyjnego/s (wersja zapoznawcza)|Połów połówek|Średnia|Odczyt bajtów/s z jednego dysku w okresie monitorowania dysku systemu operacyjnego|Brak|
+|Bajty zapisu dysku systemu operacyjnego na sekundę|Bajty zapisu dysku systemu operacyjnego/s (wersja zapoznawcza)|Połów połówek|Średnia|Bajty/S zapisane na jednym dysku w okresie monitorowania dysku systemu operacyjnego|Brak|
+|Operacje odczytu dysku systemu operacyjnego/s|Operacje odczytu dysku systemu operacyjnego/s (wersja zapoznawcza)|Połów połówek|Średnia|Odczyt IOPS z jednego dysku w okresie monitorowania dysku systemu operacyjnego|Brak|
+|Operacje zapisu dysku systemu operacyjnego/s|Operacje zapisu dysku systemu operacyjnego/s (wersja zapoznawcza)|Połów połówek|Średnia|Zapisywanie we/wy na jednym dysku z jednego dysku podczas monitorowania dysku systemu operacyjnego|Brak|
+|Głębokość kolejki dysku systemu operacyjnego|Głębokość kolejki systemu operacyjnego (wersja zapoznawcza)|Liczba|Średnia|Głębokość kolejki systemu operacyjnego (lub długość kolejki)|Brak|
+|Przepływy przychodzące|Przepływy przychodzące|Liczba|Średnia|Przepływy przychodzące to liczba przepływów bieżących w kierunku przychodzącym (ruch przechodzący do maszyny Wirtualnej)|Brak|
+|Przepływy wychodzące|Przepływy wychodzące|Liczba|Średnia|Przepływy wychodzące to liczba przepływów bieżących w kierunku wychodzącym (ruch wychodzący z maszyny Wirtualnej)|Brak|
+|Maksymalna szybkość tworzenia przepływów przychodzących|Maksymalna szybkość tworzenia przepływów przychodzących (wersja zapoznawcza)|Połów połówek|Średnia|Maksymalna szybkość tworzenia przepływów przychodzących (ruch przechodzący do maszyny Wirtualnej)|Brak|
+|Maksymalna szybkość tworzenia przepływów wychodzących|Maksymalna szybkość tworzenia przepływów wychodzących (wersja zapoznawcza)|Połów połówek|Średnia|Maksymalna szybkość tworzenia przepływów wychodzących (ruch wychodzący z maszyny Wirtualnej)|Brak|
+|Trafienie odczytu pamięci podręcznej dysków danych premium|Trafienie odczytu pamięci podręcznej dysków premium (wersja zapoznawcza)|Wartość procentowa|Średnia|Trafienie odczytu pamięci podręcznej dysków danych premium|Jednostki lun|
+|Odczyt pamięci podręcznej dysku z danymi w warstwie Premium|Odczyt pamięci podręcznej dysków premium (wersja zapoznawcza)|Wartość procentowa|Średnia|Odczyt pamięci podręcznej dysku z danymi w warstwie Premium|Jednostki lun|
+|Trafienie odczytu pamięci podręcznej dysku systemu operacyjnego premium|Trafienie odczytu pamięci podręcznej dysku premium OS (wersja zapoznawcza)|Wartość procentowa|Średnia|Trafienie odczytu pamięci podręcznej dysku systemu operacyjnego premium|Brak|
+|Odczyt pamięci podręcznej systemu operacyjnego Premium|Odczyt pamięci podręcznej systemu operacyjnego Premium (wersja zapoznawcza)|Wartość procentowa|Średnia|Odczyt pamięci podręcznej systemu operacyjnego Premium|Brak|
+|Sieć w sumie|Sieć w sumie|Bajty|Łącznie|Liczba bajtów odebranych we wszystkich interfejsach sieciowych przez maszynę wirtualną (ruch przychodzący)|Brak|
+|Całkowita liczba wyjść sieci|Całkowita liczba wyjść sieci|Bajty|Łącznie|Liczba bajtów na wszystkich interfejsach sieciowych przez maszynę wirtualną (ruch wychodzący)|Brak|
 
-## <a name="microsoftcontainerinstancecontainergroups"></a>Microsoft.ContainerInstance/containerGroups
+## <a name="microsoftcontainerinstancecontainergroups"></a>Instancja kontenera firmy Microsoft/kontenerGrupy
 
-|Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary|
+|Metryka|Metryka Nazwa wyświetlana|Jednostka|Typ agregacji|Opis|Wymiary|
 |---|---|---|---|---|---|
-|CpuUsage|Użycie procesora CPU|Licznik|Średnia|Użycie procesora CPU we wszystkich rdzeniach w millicores.|containerName|
-|MemoryUsage|Użycie pamięci|Bajty|Średnia|Całkowite użycie pamięci w bajcie.|containerName|
-|NetworkBytesReceivedPerSecond|Bajty odebrane przez sieć na sekundę|Bajty|Średnia|Bajty odebrane przez sieć na sekundę.|None|
-|NetworkBytesTransmittedPerSecond|Bajty przesyłane przez sieć na sekundę|Bajty|Średnia|Bajty przesyłane przez sieć na sekundę.|None|
+|CpuUsage (|Użycie procesora|Liczba|Średnia|Użycie procesora na wszystkich rdzeniach w milikores.|containerName (Nazwa kontenera)|
+|MemoryUsage (Narzędzie pamięci)|Użycie pamięci|Bajty|Średnia|Całkowite użycie pamięci w bajtach.|containerName (Nazwa kontenera)|
+|NetworkBytesReceivedPerSecond|Bajty sieci odebrane na sekundę|Bajty|Średnia|Bajty sieciowe odebrane na sekundę.|Brak|
+|NetworkBytesTransmittedPerSecond|Bajty sieciowe przesyłane na sekundę|Bajty|Średnia|Bajty sieciowe przesyłane na sekundę.|Brak|
 
-## <a name="microsoftcontainerregistryregistries"></a>Microsoft.ContainerRegistry/registries
+## <a name="microsoftcontainerregistryregistries"></a>Microsoft.ContainerRegistry/rejestry
 
-|Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary|
+|Metryka|Metryka Nazwa wyświetlana|Jednostka|Typ agregacji|Opis|Wymiary|
 |---|---|---|---|---|---|
-|TotalPullCount|Łączna liczba ściągania|Licznik|Średnia|Całkowita liczba ściągania obrazów|None|
-|SuccessfulPullCount|Pomyślna liczba ściągania|Licznik|Średnia|Liczba pomyślnych operacji ściągania obrazu|None|
-|TotalPushCount|Łączna liczba wypychanych|Licznik|Średnia|Liczba wypchnięciów obrazów łącznie|None|
-|SuccessfulPushCount|Liczba wypychanych zakończonych powodzeniem|Licznik|Średnia|Liczba pomyślnych operacji wypychania obrazu|None|
-|RunDuration|Czas trwania przebiegu|Milisekundy|Łącznie|Czas trwania przebiegu w milisekundach|None|
+|TotalPullCount (Liczba całkowita)|Całkowita liczba pociągniętych|Liczba|Średnia|Całkowita liczba wyciągniętych obrazów|Brak|
+|SuccessfulPullCount (Liczba powiodła się)|Pomyślna liczba ściągnięcia|Liczba|Średnia|Liczba udanych ściągań obrazu|Brak|
+|Suma PushCount|Całkowita liczba wypycheń|Liczba|Średnia|Całkowita liczba wypychanych obrazów|Brak|
+|UdanyPulszcount|Pomyślna liczba wypycheń|Liczba|Średnia|Liczba udanych wypychań obrazu|Brak|
+|UruchomienieDuration|Czas trwania biegu|Milisekund|Łącznie|Uruchom czas trwania w milisekundach|Brak|
 
 
 ## <a name="microsoftcontainerservicemanagedclusters"></a>Microsoft.ContainerService/managedClusters
 
-|Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary|
+|Metryka|Metryka Nazwa wyświetlana|Jednostka|Typ agregacji|Opis|Wymiary|
 |---|---|---|---|---|---|
-|kube_node_status_allocatable_cpu_cores|Łączna liczba dostępnych rdzeni procesora CPU w zarządzanym klastrze|Licznik|Średnia|Łączna liczba dostępnych rdzeni procesora CPU w zarządzanym klastrze|None|
-|kube_node_status_allocatable_memory_bytes|Łączna ilość dostępnej pamięci w zarządzanym klastrze|Bajty|Średnia|Łączna ilość dostępnej pamięci w zarządzanym klastrze|None|
-|kube_pod_status_ready|Liczba zasobników w stanie gotowe|Licznik|Średnia|Liczba zasobników w stanie gotowe|Przestrzeń nazw, pod|
-|kube_node_status_condition|Stany różnych warunków węzła|Licznik|Średnia|Stany różnych warunków węzła|warunek, stan, status2, węzeł|
-|kube_pod_status_phase|Liczba etapów według fazy|Licznik|Średnia|Liczba etapów według fazy|faza, przestrzeń nazw, pod|
+|kube_node_status_allocatable_cpu_cores|Całkowita liczba dostępnych rdzeni procesora w zarządzanym klastrze|Liczba|Średnia|Całkowita liczba dostępnych rdzeni procesora w zarządzanym klastrze|Brak|
+|kube_node_status_allocatable_memory_bytes|Całkowita ilość dostępnej pamięci w klastrze zarządzanym|Bajty|Średnia|Całkowita ilość dostępnej pamięci w klastrze zarządzanym|Brak|
+|kube_pod_status_ready|Liczba zasobników w stanie Gotowy|Liczba|Średnia|Liczba zasobników w stanie Gotowy|obszar nazw,zasobnik|
+|kube_node_status_condition|Stany dla różnych warunków węzła|Liczba|Średnia|Stany dla różnych warunków węzła|warunek,stan,stan2,węzeł|
+|kube_pod_status_phase|Liczba strąków według fazy|Liczba|Średnia|Liczba strąków według fazy|faza,obszar nazw,zasobnik|
 
 
 
-## <a name="microsoftcustomprovidersresourceproviders"></a>Microsoft. CustomProviders/resourceproviders
+## <a name="microsoftcustomprovidersresourceproviders"></a>Dostawcy/dostawcy zasobów microsoft.custom
 
-|Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary|
+|Metryka|Metryka Nazwa wyświetlana|Jednostka|Typ agregacji|Opis|Wymiary|
 |---|---|---|---|---|---|
-|SuccessfullRequests|Żądania zakończone powodzeniem|Licznik|Łącznie|Pomyślne żądania wykonywane przez niestandardowego dostawcę|HttpMethod, CallPath, StatusCode|
-|FailedRequests|Żądania zakończone niepowodzeniem|Licznik|Łącznie|Pobiera dostępne dzienniki dla niestandardowych dostawców zasobów|HttpMethod, CallPath, StatusCode|
+|Udane prośby|Pomyślne żądania|Liczba|Łącznie|Pomyślne żądania złożone przez dostawcę niestandardowego|Httpmethod,CallPath,Kod stanu|
+|Nieudane zapisy|Żądania zakończone niepowodzeniem|Liczba|Łącznie|Pobiera dostępne dzienniki dla dostawców zasobów niestandardowych|Httpmethod,CallPath,Kod stanu|
 
 ## <a name="microsoftdataboxedgedataboxedgedevices"></a>Microsoft.DataBoxEdge/dataBoxEdgeDevices
 
-|Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary|
+|Metryka|Metryka Nazwa wyświetlana|Jednostka|Typ agregacji|Opis|Wymiary|
 |---|---|---|---|---|---|
-|NICReadThroughput|Przepływność odczytu (Sieć)|BytesPerSecond|Średnia|Przepływność odczytu interfejsu sieciowego na urządzeniu w okresie sprawozdawczym dla wszystkich woluminów w bramie.|InstanceName|
-|NICWriteThroughput|Przepływność zapisu (Sieć)|BytesPerSecond|Średnia|Przepływność zapisu interfejsu sieciowego na urządzeniu w okresie sprawozdawczym dla wszystkich woluminów w bramie.|InstanceName|
-|CloudReadThroughputPerShare|Przepływność pobierania w chmurze (udział)|BytesPerSecond|Średnia|Przepływność pobierania na platformę Azure z udziału w okresie raportowania.|Udział|
-|CloudUploadThroughputPerShare|Przepływność przekazywania w chmurze (udział)|BytesPerSecond|Średnia|Przepływność przekazywania do platformy Azure z udziału w okresie raportowania.|Udział|
-|BytesUploadedToCloudPerShare|Przekazane bajty w chmurze (udział)|Bajty|Średnia|Całkowita liczba bajtów przekazanych do platformy Azure z udziału w okresie raportowania.|Udział|
-|Łączna pojemność|Łączna pojemność|Bajty|Średnia|Łączna pojemność|None|
-|AvailableCapacity|Dostępna pojemność|Bajty|Średnia|Dostępna pojemność w bajtach w okresie raportowania.|None|
-|CloudUploadThroughput|Przepływność przekazywania w chmurze|BytesPerSecond|Średnia|W chmurze przekazano przepływność na platformę Azure w okresie raportowania.|None|
-|CloudReadThroughput|Przepływność pobierania w chmurze|BytesPerSecond|Średnia|Chmura pobiera przepływność na platformę Azure w okresie raportowania.|None|
-|BytesUploadedToCloud|Przekazane bajty w chmurze (urządzenie)|Bajty|Średnia|Całkowita liczba bajtów przekazana na platformę Azure z urządzenia w okresie raportowania.|None|
-|HyperVVirtualProcessorUtilization|Obliczenia brzegowe — procentowy procesor CPU|Procent|Średnia|Procent użycia procesora CPU|InstanceName|
-|HyperVMemoryUtilization|Obliczenia brzegowe — użycie pamięci|Procent|Średnia|Ilość pamięci RAM w użyciu|InstanceName|
+|NicReadThroughput|Przepływność odczytu (sieć)|PrzeztówPerSekunda|Średnia|Przepływność odczytu interfejsu sieciowego na urządzeniu w okresie raportowania dla wszystkich woluminów w bramie.|InstanceName|
+|NicWriteThroughput|Przepływność zapisu (sieć)|PrzeztówPerSekunda|Średnia|Przepływność zapisu interfejsu sieciowego na urządzeniu w okresie raportowania dla wszystkich woluminów w bramie.|InstanceName|
+|ChmuraReadThroughPutPerShare|Przepływność pobierania w chmurze (udział)|PrzeztówPerSekunda|Średnia|Przepływność pobierania na platformę Azure z udziału w okresie raportowania.|Udostępnij|
+|CloudUploadThroughPutPerShare|Przepływność przekazywania w chmurze (udział)|PrzeztówPerSekunda|Średnia|Przepływność przekazywania do platformy Azure z udziału w okresie raportowania.|Udostępnij|
+|BytesUploadedToCloudPerShare|Przesłane bajty w chmurze (udostępnianie)|Bajty|Średnia|Całkowita liczba bajtów, które są przekazywane do platformy Azure z udziału w okresie raportowania.|Udostępnij|
+|Całkowita zdolność produkcyjna|Całkowita pojemność|Bajty|Średnia|Całkowita pojemność|Brak|
+|DostępneJastość|Dostępna pojemność|Bajty|Średnia|Dostępna pojemność w bajtach w okresie sprawozdawczym.|Brak|
+|CloudUploadThroughput|Przepływność przekazywania w chmurze|PrzeztówPerSekunda|Średnia|Przepływność przekazywania w chmurze na platformę Azure w okresie raportowania.|Brak|
+|ChmuraReadThroughput|Przepływność pobierania w chmurze|PrzeztówPerSekunda|Średnia|Przepływność pobierania w chmurze na platformę Azure w okresie raportowania.|Brak|
+|BytesUploadedToCloud|Przesłane bajty w chmurze (urządzenie)|Bajty|Średnia|Całkowita liczba bajtów, które są przekazywane na platformę Azure z urządzenia w okresie raportowania.|Brak|
+|HyperVVirtualProcessorUtilization|Obliczeń krawędziowych — procent procesora CPU|Wartość procentowa|Średnia|Procent użycia procesora CPU|InstanceName|
+|HyperVMemoryutilization|Obliczanie krawędzi — użycie pamięci|Wartość procentowa|Średnia|Ilość używanej pamięci RAM|InstanceName|
 
 
-## <a name="microsoftdatafactorydatafactories"></a>Microsoft.DataFactory/datafactories
+## <a name="microsoftdatafactorydatafactories"></a>Microsoft.DataFactory/datafactories Microsoft.DataFactory/datafactories Microsoft.DataFactory/datafactories Microsoft.
 
-|Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary|
+|Metryka|Metryka Nazwa wyświetlana|Jednostka|Typ agregacji|Opis|Wymiary|
 |---|---|---|---|---|---|
-|FailedRuns|Nieudane uruchomienia|Licznik|Łącznie||potokname, ActivityName|
-|SuccessfulRuns|Pomyślne uruchomienia|Licznik|Łącznie||potokname, ActivityName|
+|Nieudaneruny|Nieudane przebiegi|Liczba|Łącznie||nazwa potoku,nazwa działania|
+|Udaneruny|Udane przebiegi|Liczba|Łącznie||nazwa potoku,nazwa działania|
 
 
-## <a name="microsoftdatafactoryfactories"></a>Microsoft.DataFactory/factories
+## <a name="microsoftdatafactoryfactories"></a>Microsoft.DataFactory/fabryki
 
-|Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary|
+|Metryka|Metryka Nazwa wyświetlana|Jednostka|Typ agregacji|Opis|Wymiary|
 |---|---|---|---|---|---|
-|PipelineFailedRuns|Metryki uruchomionych potoków zakończonych niepowodzeniem|Licznik|Łącznie||FailureType, nazwa|
-|PipelineSucceededRuns|Metryki uruchamiania potoków zakończonych powodzeniem|Licznik|Łącznie||FailureType, nazwa|
-|PipelineCancelledRuns|Metryki uruchomień potoku|Licznik|Łącznie||FailureType, nazwa|
-|ActivityFailedRuns|Metryki uruchamiania działań zakończonych niepowodzeniem|Licznik|Łącznie||ActivityType, Potokname, FailureType, nazwa|
-|ActivitySucceededRuns|Metryki uruchamiania działań zakończonych powodzeniem|Licznik|Łącznie||ActivityType, Potokname, FailureType, nazwa|
-|ActivityCancelledRuns|Metryki uruchomień działań|Licznik|Łącznie||ActivityType, Potokname, FailureType, nazwa|
-|TriggerFailedRuns|Metryki uruchomienia wyzwalacza zakończonego niepowodzeniem|Licznik|Łącznie||Nazwa, Niepowodzenie|
-|TriggerSucceededRuns|Wyzwalacze uruchomienia wyzwalają metryki|Licznik|Łącznie||Nazwa, Niepowodzenie|
-|TriggerCancelledRuns|Anulowane metryki uruchamiania wyzwalacza|Licznik|Łącznie||Nazwa, Niepowodzenie|
-|IntegrationRuntimeCpuPercentage|Użycie procesora Integration Runtime|Procent|Średnia||IntegrationRuntimeName, nodename|
-|IntegrationRuntimeAvailableMemory|Dostępna pamięć środowiska Integration Runtime|Bajty|Średnia||IntegrationRuntimeName, nodename|
-|IntegrationRuntimeAverageTaskPickupDelay|Czas trwania kolejki Integration Runtime|S|Średnia||IntegrationRuntimeName|
-|IntegrationRuntimeQueueLength|Długość kolejki środowiska Integration Runtime|Licznik|Średnia||IntegrationRuntimeName|
-|IntegrationRuntimeAvailableNodeNumber|Liczba dostępnych węzłów Integration Runtime|Licznik|Średnia||IntegrationRuntimeName|
-|MaxAllowedResourceCount|Maksymalna dozwolona liczba jednostek|Licznik|Maksimum||None|
-|MaxAllowedFactorySizeInGbUnits|Maksymalny dozwolony rozmiar fabryki (jednostka GB)|Licznik|Maksimum||None|
-|ResourceCount|Łączna liczba jednostek|Licznik|Maksimum||None|
-|FactorySizeInGbUnits|Łączny rozmiar fabryki (jednostka GB)|Licznik|Maksimum||None|
+|PipelineFailedRuns (Nieupowłożone runy potoku)|Nieudane przebiegi potoku|Liczba|Łącznie||Typ błędu,Nazwa|
+|PipelineSucceedRuns|Powiodło się, że potok uruchamia metryki|Liczba|Łącznie||Typ błędu,Nazwa|
+|PipelineCancelledRuns|Anulowane przebiegi potoku metryki|Liczba|Łącznie||Typ błędu,Nazwa|
+|DziałalnośćFailedRuns|Działanie nie powiodło się uruchamia metryki|Liczba|Łącznie||ActivityType,Nazwa potoku,Typ błędu,Nazwa|
+|DziałalnośćSucceedRuns|Działanie, które powiodło się, uruchamia metryki|Liczba|Łącznie||ActivityType,Nazwa potoku,Typ błędu,Nazwa|
+|ActivityCancelledRuns (ujedn.|Anulowane działanie uruchamia dane|Liczba|Łącznie||ActivityType,Nazwa potoku,Typ błędu,Nazwa|
+|TriggerFailedRuns (Nieugiętyrun)|Nieudany wyzwalacz uruchamia metryki|Liczba|Łącznie||Nazwa,Typ błędu|
+|WyzwalaczeSucceedRuns|Pomyślne uruchomienie wyzwalacza powoduje|Liczba|Łącznie||Nazwa,Typ błędu|
+|TriggerCancelledRuns (TriggerCancelledRuns)|Anulowane uruchomienia wyzwalacza metryki|Liczba|Łącznie||Nazwa,Typ błędu|
+|IntegracjaRuntimeCpuPercentage|Wykorzystanie procesora CPU w czasie wykonywania integracji|Wartość procentowa|Średnia||IntegrationRuntimeName,Nazwa węzła|
+|IntegracjaRuntimeAvailableMemory|Dostępna pamięć środowiska wykonawczego integracji|Bajty|Średnia||IntegrationRuntimeName,Nazwa węzła|
+|IntegracjaRuntimeAverageTaskPickupDelay|Czas trwania kolejki środowiska uruchomieniowego integracji|Sekundy|Średnia||Nazwa integrationruntimename|
+|IntegracjaRuntimeQueueLength|Długość kolejki środowiska uruchomieniowego integracji|Liczba|Średnia||Nazwa integrationruntimename|
+|IntegracjaDostępna Dosyłów.|Liczba dostępnych węzłów środowiska uruchomieniowego integracji|Liczba|Średnia||Nazwa integrationruntimename|
+|Maksymalna liczba zasobów maksymalnych|Liczba maksymalnych dozwolonych encji|Liczba|Maksimum||Brak|
+|Jednostki MaxAllowedFactorySizeInGbUnits|Maksymalny dozwolony rozmiar fabryki (jednostka GB)|Liczba|Maksimum||Brak|
+|Liczba zasobów|Łączna liczba jednostek|Liczba|Maksimum||Brak|
+|Jednostki FactorySizeInGbUnits|Całkowity rozmiar fabryki (jednostka GB)|Liczba|Maksimum||Brak|
 
 ## <a name="microsoftdatalakeanalyticsaccounts"></a>Microsoft.DataLakeAnalytics/accounts
 
-|Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary|
+|Metryka|Metryka Nazwa wyświetlana|Jednostka|Typ agregacji|Opis|Wymiary|
 |---|---|---|---|---|---|
-|JobEndedSuccess|Zadania zakończone powodzeniem|Licznik|Łącznie|Liczba zadań zakończonych powodzeniem.|None|
-|JobEndedFailure|Zadania zakończone niepowodzeniem|Licznik|Łącznie|Liczba zadań zakończonych niepowodzeniem.|None|
-|JobEndedCancelled|Anulowane zadania|Licznik|Łącznie|Liczba anulowanych zadań.|None|
-|JobAUEndedSuccess|Czas pomyślnej aktualizacji|S|Łącznie|Łączny czas dla zadań zakończonych powodzeniem.|None|
-|JobAUEndedFailure|Czas niepowodzenia|S|Łącznie|Łączny czas AU zadań zakończonych niepowodzeniem.|None|
-|JobAUEndedCancelled|Anulowano czas aktualizacji|S|Łącznie|Łączny czas AU dla anulowanych zadań.|None|
+|Sukces w zadaniach|Udane zadania|Liczba|Łącznie|Liczba udanych miejsc pracy.|Brak|
+|JobEndedFailure (JobEndedFailure)|Zadania nie powiodły się|Liczba|Łącznie|Liczba zadań, które nie powiodły się.|Brak|
+|JobEndedCancelled (Nieumiejeć)|Anulowane zadania|Liczba|Łącznie|Liczba anulowanych ofert pracy.|Brak|
+|Sukces w jobauendedsukces|Udany czas AU|Sekundy|Łącznie|Całkowity czas UA dla udanych zadań.|Brak|
+|JobAUEndedFailure|Nieudany czas AU|Sekundy|Łącznie|Całkowity czas UA dla zadań po awarii.|Brak|
+|JobAUEndedCancelled|Anulowany czas AU|Sekundy|Łącznie|Całkowity czas UA dla anulowanych zadań.|Brak|
 
 
-## <a name="microsoftdatalakestoreaccounts"></a>Microsoft.DataLakeStore/accounts
+## <a name="microsoftdatalakestoreaccounts"></a>Microsoft.DataLakeStore/konta
 
-|Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary|
+|Metryka|Metryka Nazwa wyświetlana|Jednostka|Typ agregacji|Opis|Wymiary|
 |---|---|---|---|---|---|
-|TotalStorage|Łączny magazyn|Bajty|Maksimum|Łączna ilość danych przechowywanych na koncie.|None|
-|Zapisywana|Zapisywane dane|Bajty|Łącznie|Całkowita ilość danych zapisywana na konto.|None|
-|Odczyt DataReady|Odczytane dane|Bajty|Łącznie|Łączna ilość danych odczytanych z konta.|None|
-|WriteRequests|Żądania zapisu|Licznik|Łącznie|Liczba żądań zapisu danych na koncie.|None|
-|ReadRequests|Żądania odczytu|Licznik|Łącznie|Liczba żądań odczytu danych do konta.|None|
+|Całkowitastorage|Łączny rozmiar magazynu|Bajty|Maksimum|Łączna ilość danych przechowywanych na koncie.|Brak|
+|DataWritten (DaneWritten)|Zapisane dane|Bajty|Łącznie|Łączna ilość danych zapisanych na koncie.|Brak|
+|Dataread|Odczyt danych|Bajty|Łącznie|Łączna ilość danych odczytanych z konta.|Brak|
+|WriteRequests (Zapisy)|Żądania zapisu|Liczba|Łącznie|Liczba żądań zapisu danych na konto.|Brak|
+|OdczytRequests|Żądania odczytu|Liczba|Łącznie|Liczba żądań odczytu danych do konta.|Brak|
 
 
-## <a name="microsoftdbformariadbservers"></a>Microsoft.DBforMariaDB/servers
+## <a name="microsoftdbformariadbservers"></a>Microsoft.DBforMariaDB/serwery
 
-|Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary|
+|Metryka|Metryka Nazwa wyświetlana|Jednostka|Typ agregacji|Opis|Wymiary|
 |---|---|---|---|---|---|
-|cpu_percent|Procent użycia procesora CPU|Procent|Średnia|Procent użycia procesora CPU|None|
-|memory_percent|Procent pamięci|Procent|Średnia|Procent pamięci|None|
-|io_consumption_percent|Procent operacji we/wy|Procent|Średnia|Procent operacji we/wy|None|
-|storage_percent|Procent magazynu|Procent|Średnia|Procent magazynu|None|
-|storage_used|Używany magazyn|Bajty|Średnia|Używany magazyn|None|
-|storage_limit|Limit magazynu|Bajty|Maksimum|Limit magazynu|None|
-|serverlog_storage_percent|Procent magazynu dzienników serwera|Procent|Średnia|Procent magazynu dzienników serwera|None|
-|serverlog_storage_usage|Używany magazyn dzienników serwera|Bajty|Średnia|Używany magazyn dzienników serwera|None|
-|serverlog_storage_limit|Limit magazynowania dziennika serwera|Bajty|Średnia|Limit magazynowania dziennika serwera|None|
-|active_connections|Aktywne połączenia|Licznik|Średnia|Aktywne połączenia|None|
-|connections_failed|Połączenia zakończone niepowodzeniem|Licznik|Łącznie|Połączenia zakończone niepowodzeniem|None|
-|seconds_behind_master|Opóźnienie replikacji w sekundach|Licznik|Maksimum|Opóźnienie replikacji w sekundach|None|
-|backup_storage_used|Używany magazyn kopii zapasowych|Bajty|Średnia|Używany magazyn kopii zapasowych|None|
-|network_bytes_egress|Sieć — wyjście|Bajty|Łącznie|Sieć poza aktywnymi połączeniami|None|
-|network_bytes_ingress|Sieć — wejście|Bajty|Łącznie|Sieć w ramach aktywnych połączeń|None|
+|cpu_percent|Procent procesora|Wartość procentowa|Średnia|Procent procesora|Brak|
+|memory_percent|Procent pamięci|Wartość procentowa|Średnia|Procent pamięci|Brak|
+|io_consumption_percent|Procent IO|Wartość procentowa|Średnia|Procent IO|Brak|
+|storage_percent|Procent miejsca|Wartość procentowa|Średnia|Procent miejsca|Brak|
+|storage_used|Używany magazyn|Bajty|Średnia|Używany magazyn|Brak|
+|storage_limit|Limit miejsca do magazynowania|Bajty|Maksimum|Limit miejsca do magazynowania|Brak|
+|serverlog_storage_percent|Procent magazynu dziennika serwera|Wartość procentowa|Średnia|Procent magazynu dziennika serwera|Brak|
+|serverlog_storage_usage|Używany magazyn dzienników serwera|Bajty|Średnia|Używany magazyn dzienników serwera|Brak|
+|serverlog_storage_limit|Limit magazynu dziennika serwera|Bajty|Średnia|Limit magazynu dziennika serwera|Brak|
+|active_connections|Aktywne połączenia|Liczba|Średnia|Aktywne połączenia|Brak|
+|connections_failed|Połączenia zakończone niepowodzeniem|Liczba|Łącznie|Połączenia zakończone niepowodzeniem|Brak|
+|seconds_behind_master|Opóźnienie replikacji w sekundach|Liczba|Maksimum|Opóźnienie replikacji w sekundach|Brak|
+|backup_storage_used|Używany magazyn kopii zapasowych|Bajty|Średnia|Używany magazyn kopii zapasowych|Brak|
+|network_bytes_egress|Sieć — wyjście|Bajty|Łącznie|Wyjście sieciowe w aktywnych połączeniach|Brak|
+|network_bytes_ingress|Sieć — wejście|Bajty|Łącznie|Sieć w różnych aktywnych połączeniach|Brak|
 
 
 ## <a name="microsoftdbformysqlservers"></a>Microsoft.DBforMySQL/servers
 
-|Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary|
+|Metryka|Metryka Nazwa wyświetlana|Jednostka|Typ agregacji|Opis|Wymiary|
 |---|---|---|---|---|---|
-|cpu_percent|Procent użycia procesora CPU|Procent|Średnia|Procent użycia procesora CPU|None|
-|memory_percent|Procent pamięci|Procent|Średnia|Procent pamięci|None|
-|io_consumption_percent|Procent operacji we/wy|Procent|Średnia|Procent operacji we/wy|None|
-|storage_percent|Procent magazynu|Procent|Średnia|Procent magazynu|None|
-|storage_used|Używany magazyn|Bajty|Średnia|Używany magazyn|None|
-|storage_limit|Limit magazynu|Bajty|Maksimum|Limit magazynu|None|
-|serverlog_storage_percent|Procent magazynu dzienników serwera|Procent|Średnia|Procent magazynu dzienników serwera|None|
-|serverlog_storage_usage|Używany magazyn dzienników serwera|Bajty|Średnia|Używany magazyn dzienników serwera|None|
-|serverlog_storage_limit|Limit magazynowania dziennika serwera|Bajty|Maksimum|Limit magazynowania dziennika serwera|None|
-|active_connections|Aktywne połączenia|Licznik|Średnia|Aktywne połączenia|None|
-|connections_failed|Połączenia zakończone niepowodzeniem|Licznik|Łącznie|Połączenia zakończone niepowodzeniem|None|
-|seconds_behind_master|Opóźnienie replikacji w sekundach|Licznik|Maksimum|Opóźnienie replikacji w sekundach|None|
-|backup_storage_used|Używany magazyn kopii zapasowych|Bajty|Średnia|Używany magazyn kopii zapasowych|None|
-|network_bytes_egress|Sieć — wyjście|Bajty|Łącznie|Sieć poza aktywnymi połączeniami|None|
-|network_bytes_ingress|Sieć — wejście|Bajty|Łącznie|Sieć w ramach aktywnych połączeń|None|
+|cpu_percent|Procent procesora|Wartość procentowa|Średnia|Procent procesora|Brak|
+|memory_percent|Procent pamięci|Wartość procentowa|Średnia|Procent pamięci|Brak|
+|io_consumption_percent|Procent IO|Wartość procentowa|Średnia|Procent IO|Brak|
+|storage_percent|Procent miejsca|Wartość procentowa|Średnia|Procent miejsca|Brak|
+|storage_used|Używany magazyn|Bajty|Średnia|Używany magazyn|Brak|
+|storage_limit|Limit miejsca do magazynowania|Bajty|Maksimum|Limit miejsca do magazynowania|Brak|
+|serverlog_storage_percent|Procent magazynu dziennika serwera|Wartość procentowa|Średnia|Procent magazynu dziennika serwera|Brak|
+|serverlog_storage_usage|Używany magazyn dzienników serwera|Bajty|Średnia|Używany magazyn dzienników serwera|Brak|
+|serverlog_storage_limit|Limit magazynu dziennika serwera|Bajty|Maksimum|Limit magazynu dziennika serwera|Brak|
+|active_connections|Aktywne połączenia|Liczba|Średnia|Aktywne połączenia|Brak|
+|connections_failed|Połączenia zakończone niepowodzeniem|Liczba|Łącznie|Połączenia zakończone niepowodzeniem|Brak|
+|seconds_behind_master|Opóźnienie replikacji w sekundach|Liczba|Maksimum|Opóźnienie replikacji w sekundach|Brak|
+|backup_storage_used|Używany magazyn kopii zapasowych|Bajty|Średnia|Używany magazyn kopii zapasowych|Brak|
+|network_bytes_egress|Sieć — wyjście|Bajty|Łącznie|Wyjście sieciowe w aktywnych połączeniach|Brak|
+|network_bytes_ingress|Sieć — wejście|Bajty|Łącznie|Sieć w różnych aktywnych połączeniach|Brak|
 
 
 ## <a name="microsoftdbforpostgresqlservers"></a>Microsoft.DBforPostgreSQL/servers
 
-|Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary|
+|Metryka|Metryka Nazwa wyświetlana|Jednostka|Typ agregacji|Opis|Wymiary|
 |---|---|---|---|---|---|
-|cpu_percent|Procent użycia procesora CPU|Procent|Średnia|Procent użycia procesora CPU|None|
-|memory_percent|Procent pamięci|Procent|Średnia|Procent pamięci|None|
-|io_consumption_percent|Procent operacji we/wy|Procent|Średnia|Procent operacji we/wy|None|
-|storage_percent|Procent magazynu|Procent|Średnia|Procent magazynu|None|
-|storage_used|Używany magazyn|Bajty|Średnia|Używany magazyn|None|
-|storage_limit|Limit magazynu|Bajty|Maksimum|Limit magazynu|None|
-|serverlog_storage_percent|Procent magazynu dzienników serwera|Procent|Średnia|Procent magazynu dzienników serwera|None|
-|serverlog_storage_usage|Używany magazyn dzienników serwera|Bajty|Średnia|Używany magazyn dzienników serwera|None|
-|serverlog_storage_limit|Limit magazynowania dziennika serwera|Bajty|Maksimum|Limit magazynowania dziennika serwera|None|
-|active_connections|Aktywne połączenia|Licznik|Średnia|Aktywne połączenia|None|
-|connections_failed|Połączenia zakończone niepowodzeniem|Licznik|Łącznie|Połączenia zakończone niepowodzeniem|None|
-|backup_storage_used|Używany magazyn kopii zapasowych|Bajty|Średnia|Używany magazyn kopii zapasowych|None|
-|network_bytes_egress|Sieć — wyjście|Bajty|Łącznie|Sieć poza aktywnymi połączeniami|None|
-|network_bytes_ingress|Sieć — wejście|Bajty|Łącznie|Sieć w ramach aktywnych połączeń|None|
-|pg_replica_log_delay_in_seconds|Zwłoka repliki|S|Maksimum|Opóźnienie repliki w sekundach|None|
-|pg_replica_log_delay_in_bytes|Maksymalne opóźnienie między replikami|Bajty|Maksimum|Opóźnienie w bajtach najbardziej opóźnionej repliki|None|
+|cpu_percent|Procent procesora|Wartość procentowa|Średnia|Procent procesora|Brak|
+|memory_percent|Procent pamięci|Wartość procentowa|Średnia|Procent pamięci|Brak|
+|io_consumption_percent|Procent IO|Wartość procentowa|Średnia|Procent IO|Brak|
+|storage_percent|Procent miejsca|Wartość procentowa|Średnia|Procent miejsca|Brak|
+|storage_used|Używany magazyn|Bajty|Średnia|Używany magazyn|Brak|
+|storage_limit|Limit miejsca do magazynowania|Bajty|Maksimum|Limit miejsca do magazynowania|Brak|
+|serverlog_storage_percent|Procent magazynu dziennika serwera|Wartość procentowa|Średnia|Procent magazynu dziennika serwera|Brak|
+|serverlog_storage_usage|Używany magazyn dzienników serwera|Bajty|Średnia|Używany magazyn dzienników serwera|Brak|
+|serverlog_storage_limit|Limit magazynu dziennika serwera|Bajty|Maksimum|Limit magazynu dziennika serwera|Brak|
+|active_connections|Aktywne połączenia|Liczba|Średnia|Aktywne połączenia|Brak|
+|connections_failed|Połączenia zakończone niepowodzeniem|Liczba|Łącznie|Połączenia zakończone niepowodzeniem|Brak|
+|backup_storage_used|Używany magazyn kopii zapasowych|Bajty|Średnia|Używany magazyn kopii zapasowych|Brak|
+|network_bytes_egress|Sieć — wyjście|Bajty|Łącznie|Wyjście sieciowe w aktywnych połączeniach|Brak|
+|network_bytes_ingress|Sieć — wejście|Bajty|Łącznie|Sieć w różnych aktywnych połączeniach|Brak|
+|pg_replica_log_delay_in_seconds|Opóźnienie repliki|Sekundy|Maksimum|Opóźnienie repliki w sekundach|Brak|
+|pg_replica_log_delay_in_bytes|Maksymalne opóźnienie w replikach|Bajty|Maksimum|Opóźnienie w bajtach najbardziej opóźnionych replik|Brak|
 
 
 ## <a name="microsoftdbforpostgresqlserversv2"></a>Microsoft.DBforPostgreSQL/serversv2
 
-|Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary|
+|Metryka|Metryka Nazwa wyświetlana|Jednostka|Typ agregacji|Opis|Wymiary|
 |---|---|---|---|---|---|
-|cpu_percent|Procent użycia procesora CPU|Procent|Średnia|Procent użycia procesora CPU|None|
-|memory_percent|Procent pamięci|Procent|Średnia|Procent pamięci|None|
-|Wejścia|Liczba operacji we/wy na sekundę|Licznik|Średnia|Operacje we/wy na sekundę|None|
-|storage_percent|Procent magazynu|Procent|Średnia|Procent magazynu|None|
-|storage_used|Używany magazyn|Bajty|Średnia|Używany magazyn|None|
-|active_connections|Aktywne połączenia|Licznik|Średnia|Aktywne połączenia|None|
-|network_bytes_egress|Sieć — wyjście|Bajty|Łącznie|Sieć poza aktywnymi połączeniami|None|
-|network_bytes_ingress|Sieć — wejście|Bajty|Łącznie|Sieć w ramach aktywnych połączeń|None|
+|cpu_percent|Procent procesora|Wartość procentowa|Średnia|Procent procesora|Brak|
+|memory_percent|Procent pamięci|Wartość procentowa|Średnia|Procent pamięci|Brak|
+|Iops|Liczba operacji we/wy na sekundę|Liczba|Średnia|Operacje we/wy na sekundę|Brak|
+|storage_percent|Procent miejsca|Wartość procentowa|Średnia|Procent miejsca|Brak|
+|storage_used|Używany magazyn|Bajty|Średnia|Używany magazyn|Brak|
+|active_connections|Aktywne połączenia|Liczba|Średnia|Aktywne połączenia|Brak|
+|network_bytes_egress|Sieć — wyjście|Bajty|Łącznie|Wyjście sieciowe w aktywnych połączeniach|Brak|
+|network_bytes_ingress|Sieć — wejście|Bajty|Łącznie|Sieć w różnych aktywnych połączeniach|Brak|
 
 
 
 
 
-## <a name="microsoftdevicesiothubs"></a>Microsoft.Devices/IotHubs
+## <a name="microsoftdevicesiothubs"></a>Urządzenia firmy Microsoft.Devices/IotHubs
 
-|Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary|
+|Metryka|Metryka Nazwa wyświetlana|Jednostka|Typ agregacji|Opis|Wymiary|
 |---|---|---|---|---|---|
-|d2c.telemetry.ingress.allProtocol|Próby wysłania komunikatów telemetrycznych|Licznik|Łącznie|Liczba komunikatów telemetrycznych z urządzenia do chmury, które próbowano wysłać do centrum IoT Hub|None|
-|d2c.telemetry.ingress.success|Wysłane komunikaty telemetryczne|Licznik|Łącznie|Liczba pomyślnie wysłanych komunikatów telemetrycznych z urządzenia do chmury do centrum IoT Hub|None|
-|c2d.commands.egress.complete.success|Zakończono dostarczanie komunikatów C2D|Licznik|Łącznie|Liczba dostaw komunikatów z chmury do urządzenia ukończonych pomyślnie przez urządzenie|None|
-|c2d.commands.egress.abandon.success|Porzucone komunikaty C2D|Licznik|Łącznie|Liczba komunikatów z chmury do urządzenia porzuconych przez urządzenie|None|
-|c2d.commands.egress.reject.success|Odrzucone komunikaty C2D|Licznik|Łącznie|Liczba komunikatów z chmury do urządzenia odrzuconych przez urządzenie|None|
-|C2DMessagesExpired|Komunikaty C2D wygasły (wersja zapoznawcza)|Licznik|Łącznie|Liczba wygasłych komunikatów z chmury do urządzenia|None|
-|Devices. totalDevices|Łączna liczba urządzeń (przestarzałe)|Licznik|Łącznie|Liczba urządzeń zarejestrowanych w usłudze IoT Hub|None|
-|devices.connectedDevices.allProtocol|Podłączone urządzenia (przestarzałe) |Licznik|Łącznie|Liczba urządzeń podłączonych do centrum IoT Hub|None|
-|d2c.telemetry.egress.success|Routing: dostarczono komunikaty telemetryczne|Licznik|Łącznie|Liczba pomyślnie dostarczonych komunikatów do wszystkich punktów końcowych używających routingu IoT Hub. Jeśli komunikat jest kierowany do wielu punktów końcowych, ta wartość zwiększa się o jeden dla każdego pomyślnego dostarczenia. Jeśli wiadomość jest przekazywana do tego samego punktu końcowego wiele razy, ta wartość zwiększa się o jeden dla każdego pomyślnego dostarczenia.|None|
-|d2c.telemetry.egress.dropped|Routing: porzucone komunikaty telemetryczne |Licznik|Łącznie|Liczba porzuconych komunikatów przez IoT Hub Routing ze względu na martwe punkty końcowe. Ta wartość nie zlicza komunikatów dostarczonych do trasy rezerwowej, ponieważ opuszczone wiadomości nie są tam dostarczane.|None|
-|d2c.telemetry.egress.orphaned|Routing: oddzielone komunikaty telemetryczne |Licznik|Łącznie|Liczba oddzielonych komunikatów przez IoT Hub Routing, ponieważ nie są one zgodne z żadną regułą routingu (w tym regułą rezerwową). |None|
-|d2c.telemetry.egress.invalid|Routing: komunikaty telemetryczne są niezgodne|Licznik|Łącznie|Liczba przypadków, gdy Routing IoT Hub nie mógł dostarczyć komunikatów z powodu niezgodności z punktem końcowym. Ta wartość nie obejmuje ponownych prób.|None|
-|d2c.telemetry.egress.fallback|Routing: komunikaty dostarczane do powrotu|Licznik|Łącznie|Liczba IoT Hub komunikatów dostarczonych przez funkcję routingu do punktu końcowego skojarzonego z trasą rezerwową.|None|
-|d2c.endpoints.egress.eventHubs|Routing: komunikaty dostarczane do centrum zdarzeń|Licznik|Łącznie|Liczba pomyślnie dostarczonych komunikatów do punktów końcowych centrum zdarzeń w usłudze IoT Hub Routing.|None|
-|d2c.endpoints.latency.eventHubs|Routing: opóźnienie komunikatu dla centrum zdarzeń|Milisekundy|Średnia|Średnie opóźnienie (w milisekundach) między komunikatami przychodzącymi do IoT Hub i komunikatów przychodzących w punkcie końcowym centrum zdarzeń.|None|
-|d2c.endpoints.egress.serviceBusQueues|Routing: komunikaty dostarczone do kolejki Service Bus|Licznik|Łącznie|Liczba pomyślnie dostarczonych komunikatów do Service Bus punktów końcowych kolejki w usłudze IoT Hub Routing.|None|
-|d2c.endpoints.latency.serviceBusQueues|Routing: opóźnienie komunikatu dla kolejki Service Bus|Milisekundy|Średnia|Średnie opóźnienie (w milisekundach) między komunikatami przychodzącymi do IoT Hub i telemetrii komunikatów przychodzących do punktu końcowego kolejki Service Bus.|None|
-|d2c.endpoints.egress.serviceBusTopics|Routing: komunikaty dostarczane do Service Bus tematu|Licznik|Łącznie|Liczba pomyślnie dostarczonych komunikatów przez IoT Hub Routing do Service Bus punktów końcowych tematu.|None|
-|d2c.endpoints.latency.serviceBusTopics|Routing: opóźnienie komunikatu dla Service Bus tematu|Milisekundy|Średnia|Średnie opóźnienie (w milisekundach) między komunikatami przychodzącymi do IoT Hub i komunikatów telemetrycznych w punkcie końcowym tematu Service Bus.|None|
-|d2c.endpoints.egress.builtIn.events|Routing: komunikaty dostarczane do komunikatów/zdarzeń|Licznik|Łącznie|Liczba pomyślnie dostarczonych komunikatów do wbudowanego punktu końcowego (komunikaty/zdarzenia) IoT Hub Routing.|None|
-|d2c.endpoints.latency.builtIn.events|Routing: opóźnienie komunikatów dla komunikatów/zdarzeń|Milisekundy|Średnia|Średnie opóźnienie (w milisekundach) między komunikatami przychodzącymi do IoT Hub i komunikatów telemetrycznych w wbudowanym punkcie końcowym (komunikaty/zdarzenia).|None|
-|d2c.endpoints.egress.storage|Routing: komunikaty dostarczane do magazynu|Licznik|Łącznie|Liczba pomyślnie dostarczonych komunikatów do punktów końcowych usługi Routing IoT Hub.|None|
-|d2c.endpoints.latency.storage|Routing: opóźnienie komunikatu dla magazynu|Milisekundy|Średnia|Średnie opóźnienie (w milisekundach) między komunikatami przychodzącymi do IoT Hub i komunikatów telemetrycznych w punkcie końcowym magazynu.|None|
-|d2c.endpoints.egress.storage.bytes|Routing: dane dostarczane do magazynu|Bajty|Łącznie|Ilość danych (w bajtach) IoT Hub Routing dostarczany do punktów końcowych magazynu.|None|
-|d2c.endpoints.egress.storage.blobs|Routing: obiekty blob dostarczane do magazynu|Licznik|Łącznie|Ile razy usługa Routing IoT Hub dostarczać obiekty blob do punktów końcowych magazynu.|None|
-|EventGridDeliveries|Dostawy Event Grid (wersja zapoznawcza)|Licznik|Łącznie|Liczba zdarzeń IoT Hub opublikowanych do Event Grid. Użyj wymiaru wynik dla liczby żądań zakończonych powodzeniem i niepowodzeniem. Wymiar EventType przedstawia typ zdarzenia (https://aka.ms/ioteventgrid).|ResourceId, wynik, typ zdarzenia|
-|EventGridLatency|Opóźnienie Event Grid (wersja zapoznawcza)|Milisekundy|Średnia|Średnie opóźnienie (w milisekundach) od momentu wygenerowania zdarzenia usługi IoT Hub po opublikowaniu zdarzenia w Event Grid. Ta liczba jest średnia między wszystkimi typami zdarzeń. Użyj wymiaru EventType, aby zobaczyć opóźnienie określonego typu zdarzenia.|ResourceId, EventType|
-|d2c.twin.read.success|Pomyślne odczyty sznurów z urządzeń|Licznik|Łącznie|Liczba wszystkich udanych operacji zainicjowanych przez urządzenie.|None|
-|d2c.twin.read.failure|Nieudane odczyty sznurów z urządzeń|Licznik|Łącznie|Liczba wszystkich nieudanych operacji zainicjowanych przez urządzenie.|None|
-|d2c.twin.read.size|Rozmiar odpowiedzi dla sznurów odczytanych z urządzeń|Bajty|Średnia|Średnia, minimum i maksimum wszystkich udanych zainicjowanych przez urządzenia sznurów.|None|
-|d2c.twin.update.success|Pomyślne aktualizacje bliźniaczych urządzeń|Licznik|Łącznie|Liczba wszystkich pomyślnych aktualizacji typu bliźniaczych zainicjowanych przez urządzenie.|None|
-|d2c.twin.update.failure|Niepowodzenie aktualizacji bliźniaczych z urządzeń|Licznik|Łącznie|Liczba wszystkich niezakończonych niepowodzeniem aktualizacji dwuosiowych zainicjowanych przez urządzenie.|None|
-|d2c.twin.update.size|Rozmiar aktualizacji bliźniaczych z urządzeń|Bajty|Średnia|Średni, minimalny i maksymalny rozmiar wszystkich pomyślnych aktualizacji typu dwuosiowego zainicjowanego przez urządzenie.|None|
-|c2d.methods.success|Pomyślne wywołania metody bezpośredniej|Licznik|Łącznie|Liczba wszystkich pomyślnych wywołań metody bezpośredniej.|None|
-|C2D. Methods. Failure|Nieudane wywołania metody bezpośredniej|Licznik|Łącznie|Liczba wszystkich wywołań metod bezpośrednich zakończonych niepowodzeniem.|None|
-|c2d.methods.requestSize|Rozmiar żądania wywołań metody bezpośredniej|Bajty|Średnia|Średnia, minimum i maksimum wszystkich pomyślnych żądań metody bezpośredniej.|None|
-|c2d.methods.responseSize|Rozmiar odpowiedzi wywołań metody bezpośredniej|Bajty|Średnia|Średnia, minimum i maksimum wszystkich zakończonych powodzeniem odpowiedzi metody bezpośredniej.|None|
-|c2d.twin.read.success|Pomyślne odczyty sznurów z zaplecza|Licznik|Łącznie|Liczba wszystkich zakończonych powodzeniem odczytów dwuosiowych zainicjowanych z powrotem.|None|
-|c2d.twin.read.failure|Nieudane odczyty sznurów z zaplecza|Licznik|Łącznie|Liczba wszystkich zakończonych niepowodzeniem odczytów dwuosiowych zainicjowanych z powrotem.|None|
-|c2d.twin.read.size|Rozmiar odpowiedzi na odwrocie od zaplecza|Bajty|Średnia|Średnia, minimum i maksimum wszystkich udanych zainicjowanych z powrotem sznurów danych.|None|
-|c2d.twin.update.success|Pomyślne aktualizacje bliźniaczych z zaplecza|Licznik|Łącznie|Liczba wszystkich pomyślnych aktualizacji typu bliźniaczych zainicjowanych z powrotem.|None|
-|c2d.twin.update.failure|Niepowodzenie aktualizacji bliźniaczych z zaplecza|Licznik|Łącznie|Liczba wszystkich niezakończonych niepowodzeniem aktualizacji typu bliźniaczych zainicjowanych z powrotem.|None|
-|c2d.twin.update.size|Rozmiar aktualizacji przędzy od zaplecza|Bajty|Średnia|Średni, minimalny i maksymalny rozmiar wszystkich pomyślnych aktualizacji typu sznurka zainicjowanych z powrotem.|None|
-|twinQueries.success|Pomyślne zapytania bliźniaczy|Licznik|Łącznie|Liczba wszystkich udanych zapytań bliźniaczych.|None|
-|twinQueries.failure|Niepowodzenie zapytań bliźniaczych|Licznik|Łącznie|Liczba wszystkich zakończonych niepowodzeniem zapytań bliźniaczych.|None|
-|twinQueries.resultSize|Rozmiar wyniku zapytań bliźniaczych|Bajty|Średnia|Średnia, minimalna i maksymalna wielkość wyniku wszystkich udanych zapytań bliźniaczych.|None|
-|jobs.createTwinUpdateJob.success|Pomyślne utworzenie dwuosiowych zadań aktualizacji|Licznik|Łącznie|Liczba wszystkich udanych tworzenia zadań aktualizacji z przędzą.|None|
-|jobs.createTwinUpdateJob.failure|Nie można utworzyć dwuosiowych zadań aktualizacji|Licznik|Łącznie|Liczba wszystkich nieudanych operacji tworzenia zadań aktualizacji z przędzą.|None|
-|jobs.createDirectMethodJob.success|Pomyślne utworzenie zadań wywołania metody|Licznik|Łącznie|Liczba wszystkich pomyślnych operacji tworzenia zadań wywołania metody bezpośredniej.|None|
-|jobs.createDirectMethodJob.failure|Nie można utworzyć zadań wywołania metody|Licznik|Łącznie|Liczba wszystkich nieudanych operacji tworzenia zadań wywołania metody bezpośredniej.|None|
-|jobs.listJobs.success|Pomyślne wywołania do zadań na liście|Licznik|Łącznie|Liczba wszystkich udanych wywołań do listy zadań.|None|
-|jobs.listJobs.failure|Wywołania zakończone niepowodzeniem do listy zadań|Licznik|Łącznie|Liczba wszystkich wywołań zakończonych niepowodzeniem w celu wyświetlenia listy zadań.|None|
-|jobs.cancelJob.success|Pomyślne anulowania zadań|Licznik|Łącznie|Liczba wszystkich udanych wywołań do anulowania zadania.|None|
-|jobs.cancelJob.failure|Nieudane anulowania zadań|Licznik|Łącznie|Liczba wszystkich wywołań zakończonych niepowodzeniem w celu anulowania zadania.|None|
-|jobs.queryJobs.success|Pomyślne zapytania dotyczące zadań|Licznik|Łącznie|Liczba wszystkich udanych wywołań do zadań zapytań.|None|
-|jobs.queryJobs.failure|Nieudane kwerendy zadań|Licznik|Łącznie|Liczba wszystkich wywołań zakończonych niepowodzeniem w celu wykonywania zapytań dotyczących zadań.|None|
-|zadania. ukończone|Ukończone zadania|Licznik|Łącznie|Liczba wszystkich ukończonych zadań.|None|
-|zadania. Niepowodzenie|Zadania zakończone niepowodzeniem|Licznik|Łącznie|Liczba wszystkich zadań zakończonych niepowodzeniem.|None|
-|d2c.telemetry.ingress.sendThrottle|Liczba błędów ograniczania|Licznik|Łącznie|Liczba błędów ograniczania z powodu ograniczeń przepływności urządzenia|None|
-|dailyMessageQuotaUsed|Całkowita liczba użytych komunikatów|Licznik|Średnia|Łączna liczba użytych komunikatów|None|
-|deviceDataUsage|Całkowite użycie danych urządzenia|Bajty|Łącznie|Bajty przesłane do i z dowolnych urządzeń podłączonych do usługi IotHub|None|
-|deviceDataUsageV2|Całkowite użycie danych urządzenia (wersja zapoznawcza)|Bajty|Łącznie|Bajty przesłane do i z dowolnych urządzeń podłączonych do usługi IotHub|None|
-|totalDeviceCount|Łączna liczba urządzeń (wersja zapoznawcza)|Licznik|Średnia|Liczba urządzeń zarejestrowanych w usłudze IoT Hub|None|
-|connectedDeviceCount|Podłączone urządzenia (wersja zapoznawcza)|Licznik|Średnia|Liczba urządzeń podłączonych do centrum IoT Hub|None|
-|konfiguracje|Metryki konfiguracji|Licznik|Łącznie|Metryki dla operacji konfiguracji|None|
+|d2c.telemetry.ingress.allProtocol|Próby wysyłania wiadomości telemetrycznych|Liczba|Łącznie|Liczba komunikatów telemetrycznych z urządzenia do chmury, które próbowano wysłać do centrum IoT hub|Brak|
+|d2c.telemetry.ingress.success|Wysłane wiadomości telemetryczne|Liczba|Łącznie|Liczba komunikatów telemetrycznych z urządzenia do chmury wysłanych pomyślnie do centrum IoT hub|Brak|
+|c2d.commands.egress.complete.success|Zakończono dostarczanie wiadomości C2D|Liczba|Łącznie|Liczba dostaw komunikatów z chmury do urządzenia zakończonych pomyślnie przez urządzenie|Brak|
+|c2d.commands.egress.abandon.success|Porzucone wiadomości C2D|Liczba|Łącznie|Liczba komunikatów z chmury do urządzenia porzuconych przez urządzenie|Brak|
+|c2d.commands.egress.reject.success|Wiadomości C2D odrzucone|Liczba|Łącznie|Liczba komunikatów z chmury do urządzenia odrzuconych przez urządzenie|Brak|
+|C2DMessagesExpired|Wiadomości C2D wygasły (wersja zapoznawcza)|Liczba|Łącznie|Liczba wygasłych komunikatów z chmury do urządzenia|Brak|
+|devices.totalUrządzenia|Łączna liczba urządzeń (przestarzała)|Liczba|Łącznie|Liczba urządzeń zarejestrowanych w centrum IoT|Brak|
+|devices.connectedDevices.allProtocol|Podłączone urządzenia (przestarzałe) |Liczba|Łącznie|Liczba urządzeń podłączonych do centrum IoT|Brak|
+|d2c.telemetry.egress.success|Routing: dostarczane wiadomości telemetryczne|Liczba|Łącznie|Liczba wiadomości zostały pomyślnie dostarczone do wszystkich punktów końcowych przy użyciu routingu Usługi IoT Hub. Jeśli wiadomość jest kierowana do wielu punktów końcowych, ta wartość zwiększa się o jeden dla każdego pomyślnego dostarczania. Jeśli wiadomość jest dostarczana do tego samego punktu końcowego wiele razy, ta wartość zwiększa się o jeden dla każdego pomyślnego dostarczania.|Brak|
+|d2c.telemetry.egress.dropped d2c.telemetry.egress.dropped d2c.telemetry.egress.dropped d2|Routing: wiadomości telemetryczne porzucone |Liczba|Łącznie|Liczba wiadomości zostały usunięte przez routing usługi IoT Hub z powodu martwych punktów końcowych. Ta wartość nie zlicza wiadomości dostarczonych do trasy rezerwowej, ponieważ porzucone wiadomości nie są tam dostarczane.|Brak|
+|d2c.telemetry.egress.orphaned|Routing: wiadomości telemetryczne oddzielone |Liczba|Łącznie|Liczba wiadomości były oddzielone przez routing usługi IoT Hub, ponieważ nie pasują do żadnych reguł routingu (w tym reguły rezerwowej). |Brak|
+|d2c.telemetry.egress.invalid d2c.telemetry.egress.invalid d2c.telemetry.egress.invalid d2|Routing: komunikaty telemetryczne niezgodne|Liczba|Łącznie|Liczba razy routingu Usługi IoT Hub nie można dostarczyć wiadomości z powodu niezgodności z punktem końcowym. Ta wartość nie obejmuje ponownych prób.|Brak|
+|d2c.telemetry.egress.fallback|Routing: wiadomości dostarczane do rezerwowego|Liczba|Łącznie|Liczba razy routing usługi IoT Hub dostarczane wiadomości do punktu końcowego skojarzonego z trasy rezerwowej.|Brak|
+|d2c.endpoints.egress.eventHubs|Routing: wiadomości dostarczane do Centrum zdarzeń|Liczba|Łącznie|Ile razy routing usługi IoT Hub pomyślnie dostarczał wiadomości do punktów końcowych usługi Event Hub.|Brak|
+|d2c.endpoints.latency.eventHubs|Routing: opóźnienie komunikatów dla Centrum zdarzeń|Milisekund|Średnia|Średnie opóźnienie (milisekundy) między wejściem w błąd i transferu komunikatu do usługi IoT Hub i transferu komunikatu przychodzącego do punktu końcowego usługi Event Hub.|Brak|
+|d2c.endpoints.egress.serviceBusQueues|Routing: wiadomości dostarczane do kolejki magistrali usług|Liczba|Łącznie|Ile razy routing usługi IoT Hub pomyślnie dostarczył wiadomości do punktów końcowych kolejki usługi Service Bus.|Brak|
+|d2c.endpoints.latency.serviceBusQueues|Routing: opóźnienie komunikatu dla kolejki magistrali usług|Milisekund|Średnia|Średnie opóźnienie (milisekundy) między transferem przychodzącym wiadomości do usługi IoT Hub a transferem danych wejściowych wiadomości telemetrycznych do punktu końcowego kolejki usługi Service Bus.|Brak|
+|d2c.endpoints.egress.serviceBusTopics|Routing: wiadomości dostarczane do tematu magistrali usług|Liczba|Łącznie|Ile razy routing usługi IoT Hub pomyślnie dostarczył wiadomości do punktów końcowych tematu usługi Service Bus.|Brak|
+|d2c.endpoints.latency.serviceBusTopics|Routing: opóźnienie komunikatu dla tematu magistrali usług|Milisekund|Średnia|Średnie opóźnienie (milisekundy) między transferem przychodzącym wiadomości do usługi IoT Hub a transferem danych wejściowych wiadomości telemetrycznych do punktu końcowego tematu usługi Service Bus.|Brak|
+|d2c.endpoints.egress.builtIn.events|Routing: wiadomości dostarczane do wiadomości/zdarzeń|Liczba|Łącznie|Ile razy routing usługi IoT Hub pomyślnie dostarczył wiadomości do wbudowanego punktu końcowego (wiadomości/zdarzenia).|Brak|
+|d2c.endpoints.latency.builtIn.events|Routing: opóźnienie wiadomości/zdarzeń|Milisekund|Średnia|Średnie opóźnienie (milisekundy) między wejściem w błąd i transferu danych przychodzących do usługi IoT Hub i transferu danych wejściowych do wbudowanego punktu końcowego (wiadomości/zdarzenia).|Brak|
+|d2c.endpoints.egress.storage|Routing: wiadomości dostarczane do magazynu|Liczba|Łącznie|Ile razy routing usługi IoT Hub pomyślnie dostarczał wiadomości do punktów końcowych magazynu.|Brak|
+|d2c.endpoints.latency.storage|Routing: opóźnienie komunikatu dla magazynu|Milisekund|Średnia|Średnie opóźnienie (milisekundy) między wejściem w błąd do usługi IoT Hub a wejściem transferu danych wejściowych do punktu końcowego magazynu.|Brak|
+|d2c.endpoints.egress.storage.bytes|Routing: dane dostarczane do magazynu|Bajty|Łącznie|Ilość routingu usługi IoT Hub danych dostarczonych do punktów końcowych magazynu.|Brak|
+|d2c.endpoints.egress.storage.blob|Routing: obiekty blob dostarczane do magazynu|Liczba|Łącznie|Liczba czasów routingu usługi IoT Hub dostarczane obiekty blob do punktów końcowych magazynu.|Brak|
+|EventGridDeliveries|Dostawy w siatce zdarzeń (wersja zapoznawcza)|Liczba|Łącznie|Liczba zdarzeń usługi IoT Hub opublikowanych w usztywnieniu zdarzeń. Użyj wymiaru Wynik dla liczby pomyślnych i nieudanych żądań. Wymiar EventType pokazuje typhttps://aka.ms/ioteventgrid)zdarzenia ( .|Identyfikator zasobu,Wynik,Typ zdarzenia|
+|EventGridLatency|Opóźnienie siatki zdarzeń (wersja zapoznawcza)|Milisekund|Średnia|Średnie opóźnienie (milisekundy) od momentu wygenerowania zdarzenia Iot Hub do momentu opublikowania zdarzenia w uścisku zdarzeń. Liczba ta jest średnią między wszystkimi typami zdarzeń. Użyj eventtype wymiar, aby zobaczyć opóźnienie określonego typu zdarzenia.|Identyfikator zasobu,Typ zdarzenia|
+|d2c.twin.read.success|Udane bliźniacze odczyty z urządzeń|Liczba|Łącznie|Liczba wszystkich pomyślnych odczytów bliźniaczych zainicjowanych przez urządzenie.|Brak|
+|d2c.twin.read.failure|Nieudane bliźniacze odczyty z urządzeń|Liczba|Łącznie|Liczba wszystkich odczytów bliźniaczej inicjowanych przez urządzenie nie powiodło się.|Brak|
+|d2c.twin.read.size|Rozmiar odpowiedzi bliźniaczych odczytów z urządzeń|Bajty|Średnia|Średnia, min i max wszystkich udanych urządzeń zainicjowane bliźniaczej odsłony.|Brak|
+|d2c.twin.update.success|Pomyślne bliźniacze aktualizacje z urządzeń|Liczba|Łącznie|Liczba wszystkich pomyślnych aktualizacji bliźniaczych zainicjowanych przez urządzenie.|Brak|
+|d2c.twin.update.failure|Nieudane bliźniacze aktualizacje z urządzeń|Liczba|Łącznie|Liczba wszystkich aktualizacji bliźniaczych zainicjowanych przez urządzenie nie powiodło się.|Brak|
+|d2c.twin.update.size|Rozmiar bliźniaczych aktualizacji z urządzeń|Bajty|Średnia|Średni, min i maksymalny rozmiar wszystkich pomyślnych aktualizacji bliźniaczych zainicjowanych przez urządzenie.|Brak|
+|c2d.methods.success|Pomyślne wywołanie metody bezpośredniej|Liczba|Łącznie|Liczba wszystkich udanych wywołań metody bezpośredniej.|Brak|
+|c2d.methods.failure|Wywołania metod bezpośrednich nie powiodły się|Liczba|Łącznie|Liczba wszystkich nieudanych wywołań metody bezpośredniej.|Brak|
+|c2d.methods.requestSize|Rozmiar żądania wywołań metody bezpośredniej|Bajty|Średnia|Średnia, min i maks.|Brak|
+|c2d.methods.responseZmializowanie|Rozmiar odpowiedzi wywołań metody bezpośredniej|Bajty|Średnia|Średnia, min i maks.|Brak|
+|c2d.twin.read.success|Udane bliźniacze odczyty z zaplecza|Liczba|Łącznie|Liczba wszystkich pomyślnych wstecznych zainicjowanych odczytów bliźniaczych.|Brak|
+|c2d.twin.read.failure|Nieudane bliźniacze odczyty z zaplecza|Liczba|Łącznie|Liczba wszystkich nieudanych odczytów bliźniaczych zainicjowanych zapleczem.|Brak|
+|c2d.twin.read.size|Rozmiar odpowiedzi bliźniaczych odczytów z zaplecza|Bajty|Średnia|Średnia, min i max wszystkich udanych back-end inicjowane bliźniacze odczyty.|Brak|
+|c2d.twin.update.success|Pomyślne podwójne aktualizacje z zaplecza|Liczba|Łącznie|Liczba wszystkich pomyślnych aktualizacji bliźniaczych zainicjowanych zapleczem.|Brak|
+|c2d.twin.update.failure|Nieudane bliźniacze aktualizacje z zaplecza|Liczba|Łącznie|Liczba wszystkich aktualizacji bliźniaczych zainicjowanych zapleczem nie powiodło się.|Brak|
+|c2d.twin.update.size|Rozmiar bliźniaczych aktualizacji z zaplecza|Bajty|Średnia|Średni, min i maksymalny rozmiar wszystkich pomyślnych aktualizacji bliźniaczych zainicjowanych zapleczem.|Brak|
+|twinQueries.success|Pomyślne zapytania bliźniaczej reprezentacji|Liczba|Łącznie|Liczba wszystkich pomyślnych zapytań bliźniaczych reprezentacji.|Brak|
+|twinQueries.failure|Nieudane zapytania bliźniaczej reprezentacji|Liczba|Łącznie|Liczba wszystkich nieudanych zapytań bliźniaczych reprezentacji.|Brak|
+|twinQueries.resultSize|Rozmiar wyników zapytań bliźniaczych|Bajty|Średnia|Średnia, min i max rozmiaru wyniku wszystkich pomyślnych zapytań bliźniaczych.|Brak|
+|jobs.createTwinUpdateJob.success|Udane tworzenie zadań bliźniaczej aktualizacji|Liczba|Łącznie|Liczba wszystkich pomyślnego tworzenia zadań aktualizacji bliźniaczej.|Brak|
+|zadania.createTwinUpdateJob.failure|Nieudane tworzenie zadań aktualizacji bliźniaczej|Liczba|Łącznie|Liczba wszystkich nie powiodło się utworzenie zadań aktualizacji bliźniaczej.|Brak|
+|jobs.createDirectMethodJob.success|Pomyślne tworzenie zadań wywoływania metody|Liczba|Łącznie|Liczba wszystkich pomyślnego tworzenia zadań wywołania metody bezpośredniej.|Brak|
+|zadania.createDirectMethodJob.failure|Nieudane tworzenie zadań wywoływania metody|Liczba|Łącznie|Liczba wszystkich nieudanych tworzenia zadań wywołania metody bezpośredniej.|Brak|
+|jobs.listJobs.success|Pomyślne wywołania listy zadań|Liczba|Łącznie|Liczba wszystkich udanych wywołań do listy zadań.|Brak|
+|zadania.listJobs.failure|Nieudane wywołania listy zadań|Liczba|Łącznie|Liczba wszystkich nieudanych wywołań do listy zadań.|Brak|
+|jobs.cancelJob.success|Pomyślne anulowanie zadania|Liczba|Łącznie|Liczba wszystkich pomyślnych wywołań anulowania zadania.|Brak|
+|jobs.cancelJob.failure|Anulowanie zadania nie powiodło się|Liczba|Łącznie|Liczba wszystkich nieudanych wywołań anulowania zadania.|Brak|
+|jobs.queryJobs.success|Pomyślne kwerendy o zadania|Liczba|Łącznie|Liczba wszystkich pomyślnych wywołań zadań zapytań.|Brak|
+|zadania.queryJobs.failure|Nieudane kwerendy zadań|Liczba|Łącznie|Liczba wszystkich nieudanych wywołań zadań zapytań.|Brak|
+|zadania.ukończone|Ukończone zadania|Liczba|Łącznie|Liczba wszystkich ukończonych zadań.|Brak|
+|zadania.failed|Zadania nie powiodły się|Liczba|Łącznie|Liczba wszystkich zadań nie powiodło się.|Brak|
+|d2c.telemetry.ingress.sendTrottle|Liczba błędów ograniczania przepustowości|Liczba|Łącznie|Liczba błędów ograniczania przepustowości z powodu przepustów przepływności urządzenia|Brak|
+|dailyMessageQuotaUżywane|Łączna liczba używanych wiadomości|Liczba|Średnia|Łączna liczba używanych wiadomości|Brak|
+|deviceDataUsage|Całkowite użycie danych urządzenia|Bajty|Łącznie|Bajty przesyłane do i z wszystkich urządzeń podłączonych do usługi IotHub|Brak|
+|deviceDataUsageV2|Całkowite użycie danych urządzenia (podgląd)|Bajty|Łącznie|Bajty przesyłane do i z wszystkich urządzeń podłączonych do usługi IotHub|Brak|
+|totalDeviceCount|Łączna liczba urządzeń (wersja zapoznawcza)|Liczba|Średnia|Liczba urządzeń zarejestrowanych w centrum IoT|Brak|
+|connectedDeviceCount|Podłączone urządzenia (wersja zapoznawcza)|Liczba|Średnia|Liczba urządzeń podłączonych do centrum IoT|Brak|
+|Konfiguracji|Metryki konfiguracji|Liczba|Łącznie|Metryki dla operacji konfiguracyjnych|Brak|
 
 
-## <a name="microsoftdevicesprovisioningservices"></a>Microsoft.Devices/provisioningServices
+## <a name="microsoftdevicesprovisioningservices"></a>Urządzenia firmy Microsoft.Devices/inicjowanie obsługi administracyjnejUsługi
 
-|Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary|
+|Metryka|Metryka Nazwa wyświetlana|Jednostka|Typ agregacji|Opis|Wymiary|
 |---|---|---|---|---|---|
-|RegistrationAttempts|Próby rejestracji|Licznik|Łącznie|Liczba prób przeprowadzenia rejestracji urządzeń|ProvisioningServiceName, IotHubName, status|
-|DeviceAssignments|Przypisane urządzenia|Licznik|Łącznie|Liczba urządzeń przypisanych do centrum IoT Hub|ProvisioningServiceName, IotHubName|
-|AttestationAttempts|Próby zaświadczania|Licznik|Łącznie|Liczba podjętych prób zaświadczania urządzenia|ProvisioningServiceName, stan, protokół|
+|RejestracjaPróbuje|Próby rejestracji|Liczba|Łącznie|Liczba prób rejestracji urządzeń|Nazwa usługi inicjowania obsługi administracyjnej,IotHubName,Stan|
+|Przypisania urządzenia|Przypisane urządzenia|Liczba|Łącznie|Liczba urządzeń przypisanych do centrum IoT|Nazwa usługi inicjowania obsługi administracyjnej,IotHubName|
+|AtestyPty|Próby zaświadczania|Liczba|Łącznie|Liczba prób uzyskania zaświadczeń o urządzeniu|Nazwa usługi inicjowania obsługi administracyjnej,Stan,Protokół|
 
 
-## <a name="microsoftdocumentdbdatabaseaccounts"></a>Microsoft.DocumentDB/databaseAccounts
+## <a name="microsoftdocumentdbdatabaseaccounts"></a>Microsoft.DocumentDB/databaseKonta kont
 
-|Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary|
+|Metryka|Metryka Nazwa wyświetlana|Jednostka|Typ agregacji|Opis|Wymiary|
 |---|---|---|---|---|---|
-|Addregion|Dodano region|Licznik|Licznik|Dodano region|Region|
-|AvailableStorage|Dostępny magazyn|Bajty|Łącznie|Łączna ilość dostępnego magazynu zgłoszona z dokładnością do 5 minut|CollectionName, DatabaseName, region|
-|CassandraConnectionClosures|Zamknięcia połączeń Cassandra|Licznik|Łącznie|Liczba zamkniętych połączeń Cassandra, które zostały zgłoszone z dokładnością do 1 minuty|APIType, region, ClosureReason|
-|CassandraRequestCharges|Opłaty za żądania Cassandra|Licznik|Łącznie|Jednostek ru zużyte dla żądań Cassandra|APIType, DatabaseName, CollectionName, region, OperationType, ResourceType|
-|CassandraRequests|Żądania Cassandra|Licznik|Licznik|Liczba wykonanych żądań Cassandra|APIType, DatabaseName, CollectionName, region, OperationType, ResourceType, ErrorCode|
-|Konto|Utworzono konto|Licznik|Licznik|Utworzono konto|None|
-|Datausage|Użycie danych|Bajty|Łącznie|Całkowite użycie danych zgłoszone z dokładnością do 5 minut|CollectionName, DatabaseName, region|
-|DeleteAccount|Konto zostało usunięte|Licznik|Licznik|Konto zostało usunięte|None|
-|DocumentCount|Liczba dokumentów|Licznik|Łącznie|Łączna liczba dokumentów raportowana z dokładnością do 5 minut|CollectionName, DatabaseName, region|
-|DocumentQuota|Przydział dokumentu|Bajty|Łącznie|Łączny przydział magazynu zgłoszony z dokładnością do 5 minut|CollectionName, DatabaseName, region|
-|IndexUsage|Użycie indeksu|Bajty|Łącznie|Całkowite użycie indeksów zgłoszone na 5 minut|CollectionName, DatabaseName, region|
-|MetadataRequests|Żądania metadanych|Licznik|Licznik|Liczba żądań metadanych. Cosmos DB przechowuje zbieranie metadanych systemu dla każdego konta, które pozwala na Wyliczanie kolekcji, baz danych itp. i ich konfiguracji bez opłat.|DatabaseName, CollectionName, region, StatusCode, rola|
-|MongoRequestCharge|Opłata żądania Mongo|Licznik|Łącznie|Wykorzystane jednostki żądania Mongo|DatabaseName, CollectionName, region, CommandName, ErrorCode|
-|MongoRequests|Żądania Mongo|Licznik|Licznik|Liczba wykonanych żądań Mongo|DatabaseName, CollectionName, region, CommandName, ErrorCode|
-|MongoRequestsCount|Częstotliwość żądania Mongo|CountPerSecond|Średnia|Liczba żądań Mongo na sekundę|DatabaseName, CollectionName, region, CommandName, ErrorCode|
-|MongoRequestsDelete|Mongo — wskaźnik żądania usunięcia|CountPerSecond|Średnia|Żądanie usunięcia Mongo na sekundę|DatabaseName, CollectionName, region, CommandName, ErrorCode|
-|MongoRequestsInsert|Liczba żądań wstawienia Mongo|CountPerSecond|Średnia|Liczba operacji wstawiania Mongo na sekundę|DatabaseName, CollectionName, region, CommandName, ErrorCode|
-|MongoRequestsQuery|Częstotliwość żądań zapytań Mongo|CountPerSecond|Średnia|Żądania zapytania Mongo na sekundę|DatabaseName, CollectionName, region, CommandName, ErrorCode|
-|MongoRequestsUpdate|Częstotliwość żądań aktualizacji Mongo|CountPerSecond|Średnia|Żądanie aktualizacji Mongo na sekundę|DatabaseName, CollectionName, region, CommandName, ErrorCode|
-|ProvisionedThroughput|Aprowizowana przepływność|Licznik|Maksimum|Aprowizowana przepływność|DatabaseName, CollectionName|
-|RegionFailover|Region w trybie failover|Licznik|Licznik|Region w trybie failover|None|
-|RemoveRegion|Usunięto region|Licznik|Licznik|Usunięto region|Region|
-|ReplicationLatency|Opóźnienie replikacji poziomie P99|MilliSeconds|Średnia|Opóźnienie replikacji poziomie P99 w regionach źródłowym i docelowym dla konta z obsługą geograficzną|SourceRegion,TargetRegion|
-|Dostępność|Dostępność usługi|Procent|Średnia|Dostępność żądania konta o jednej godzinie, dniu lub o dokładności|None|
-|TotalRequestUnits|Łączna liczba jednostek żądania|Licznik|Łącznie|Wykorzystane jednostki żądania|DatabaseName, CollectionName, region, StatusCode, OperationType|
-|TotalRequests|Łączna liczba żądań|Licznik|Licznik|Liczba wykonanych żądań|DatabaseName, CollectionName, region, StatusCode, OperationType|
-|UpdateAccountKeys|Zaktualizowano klucze konta|Licznik|Licznik|Zaktualizowano klucze konta|keyType|
-|UpdateAccountNetworkSettings|Zaktualizowano ustawienia sieci konta|Licznik|Licznik|Zaktualizowano ustawienia sieci konta|None|
-|UpdateAccountReplicationSettings|Zaktualizowano ustawienia replikacji konta|Licznik|Licznik|Zaktualizowano ustawienia replikacji konta|None|
+|Dodaj region|Dodano region|Liczba|Liczba|Dodano region|Region|
+|DostępneStorage|Dostępna pamięć|Bajty|Łącznie|Całkowita dostępna pamięć masowa zgłoszona po 5 minutach ziarnistości|Nazwa kolekcji,Nazwa bazy danych,Region|
+|CassandraConnectionClosures|Zamknięcia połączeń Cassandra|Liczba|Łącznie|Liczba połączeń Cassandra, które zostały zamknięte, zgłoszone po 1 minutze|Typ interfejsu API,Region,ZamknięciePorezon|
+|Ładunki CassandraRequestCharge|Opłaty za żądanie Cassandra|Liczba|Łącznie|RUs zużyte dla cassandra wniosków złożonych|TYP INTERFEJSU API,Nazwa bazy danych,Nazwa kolekcji,Region,OperationType,Typ zasobu|
+|CassandraSwoki|Prośby Cassandra|Liczba|Liczba|Liczba złożonych wniosków cassandra|APIType,Nazwa bazy danych,Nazwa kolekcji,Region,OperationType,ResourceType,ErrorCode|
+|Utwórz konto|Utworzone konto|Liczba|Liczba|Utworzone konto|Brak|
+|DataUsage (DataUsage)|Użycie danych|Bajty|Łącznie|Całkowite wykorzystanie danych zgłoszone po 5 minutach szczegółowości|Nazwa kolekcji,Nazwa bazy danych,Region|
+|Usuńkonta|Usunięte konto|Liczba|Liczba|Usunięte konto|Brak|
+|Liczba dokumentów|Liczba dokumentów|Liczba|Łącznie|Całkowita liczba dokumentów zgłoszonych przy 5 minutach szczegółowości|Nazwa kolekcji,Nazwa bazy danych,Region|
+|DocumentQuota (DokumentQuota)|Przydział dokumentu|Bajty|Łącznie|Całkowity przydział magazynowania zgłoszony przy 5 minutach szczegółowości|Nazwa kolekcji,Nazwa bazy danych,Region|
+|IndeksUsage|Użycie indeksu|Bajty|Łącznie|Całkowite użycie indeksu zgłoszone po 5 minutach szczegółowości|Nazwa kolekcji,Nazwa bazy danych,Region|
+|MetadataRequests|Żądania metadanych|Liczba|Liczba|Liczba żądań metadanych. Usługa Cosmos DB przechowuje zbieranie metadanych systemu dla każdego konta, co pozwala na bezpłatne wyliczanie kolekcji, baz danych itp.|Nazwa bazy danych,Nazwa kolekcji,Region,Kod stanu,Rola|
+|MongoRequestCharge|Opłata za żądanie Mongo|Liczba|Łącznie|Jednostki żądające Mongo zużyte|Nazwa bazy danych,Nazwa kolekcji,Region,Nazwa polecenia,Kod błędu|
+|MongoRequests|Prośby Mongo|Liczba|Liczba|Liczba złożonych wniosków mongo|Nazwa bazy danych,Nazwa kolekcji,Region,Nazwa polecenia,Kod błędu|
+|MongoRequestsCount|Mongo Cena żądania|Połów połówek|Średnia|Liczba żądań Mongo na sekundę|Nazwa bazy danych,Nazwa kolekcji,Region,Nazwa polecenia,Kod błędu|
+|MongoRequestsDelete|Mongo Delete Cena żądania|Połów połówek|Średnia|Mongo Usuń żądanie na sekundę|Nazwa bazy danych,Nazwa kolekcji,Region,Nazwa polecenia,Kod błędu|
+|MongoRequestsInsert|Mongo Wstawić cena żądania|Połów połówek|Średnia|Mongo Liczba wstawiania na sekundę|Nazwa bazy danych,Nazwa kolekcji,Region,Nazwa polecenia,Kod błędu|
+|Klasztor MongoRequestsQuery|Szybkość żądania kwerendy Mongo|Połów połówek|Średnia|Żądanie mongo kwerendy na sekundę|Nazwa bazy danych,Nazwa kolekcji,Region,Nazwa polecenia,Kod błędu|
+|MongoRequestsUpdate|Mongo Update Cena żądania|Połów połówek|Średnia|Żądanie aktualizacji Mongo na sekundę|Nazwa bazy danych,Nazwa kolekcji,Region,Nazwa polecenia,Kod błędu|
+|AprowizowanaWyt.|Aprowizowana przepływność|Liczba|Maksimum|Aprowizowana przepływność|Nazwa bazy danych,Nazwa kolekcji|
+|RegionUuUchomor|Przemij regionu po awarii|Liczba|Liczba|Przemij regionu po awarii|Brak|
+|UsuńRegion|Usunięto region|Liczba|Liczba|Usunięto region|Region|
+|ReplikacjaLatency|Opóźnienie replikacji P99|Milisekund|Średnia|P99 Opóźnienie replikacji w regionach źródłowych i docelowych dla konta z obsługą geograficzną|Region źródłowy,Region docelowy|
+|Dostępność usług|Dostępność usług|Wartość procentowa|Średnia|Dostępność żądań konta z dokładnością do jednej godziny, dnia lub miesiąca|Brak|
+|Jednostki TotalRequestUnits|Łączna liczba jednostek żądań|Liczba|Łącznie|Zużyte jednostki żądań|Nazwa bazy danych,Nazwa kolekcji,Region,Kod stanu,Rodzaj operacji|
+|TotalRequests|Łączna liczba żądań|Liczba|Liczba|Liczba złożonych wniosków|Nazwa bazy danych,Nazwa kolekcji,Region,Kod stanu,Rodzaj operacji|
+|Aktualizujnaklucza konta|Zaktualizowano klucze konta|Liczba|Liczba|Zaktualizowano klucze konta|Keytype|
+|AktualizacjaAccountNetworkSettings|Zaktualizowano ustawienia sieciowe konta|Liczba|Liczba|Zaktualizowano ustawienia sieciowe konta|Brak|
+|UpdateAccountReplicationSettings|Zaktualizowano ustawienia replikacji konta|Liczba|Liczba|Zaktualizowano ustawienia replikacji konta|Brak|
 
 
 
-## <a name="microsoftenterpriseknowledgegraphservices"></a>Microsoft. EnterpriseKnowledgeGraph/usługi
+## <a name="microsoftenterpriseknowledgegraphservices"></a>Microsoft.EnterpriseKnowledgeGraph/usługi
 
-|Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary|
+|Metryka|Metryka Nazwa wyświetlana|Jednostka|Typ agregacji|Opis|Wymiary|
 |---|---|---|---|---|---|
-|TransactionCount|Liczba transakcji|Licznik|Licznik|Łączna liczba transakcji|TransactionCount|
-|SuccessCount|Liczba sukcesów|Licznik|Licznik|Liczba zakończonych pomyślnie transakcji|SuccessCount|
-|FailureCount|Liczba błędów|Licznik|Licznik|Liczba transakcji zakończonych niepowodzeniem|FailureCount|
-|SuccessLatency|Opóźnienie sukcesu|MilliSeconds|Średnia|Opóźnienie transakcji zakończonych powodzeniem|SuccessCount|
+|Liczba transakcji|Liczba transakcji|Liczba|Liczba|Łączna liczba transakcji|Liczba transakcji|
+|Liczba sukcesów|Liczba powodzeń|Liczba|Liczba|Liczba transakcji powiodła się|Liczba sukcesów|
+|Liczba błędów|Liczba niepowodzeń|Liczba|Liczba|Liczba nieudanych transakcji|Liczba błędów|
+|SukcesLatywa|Opóźnienie sukcesu|Milisekund|Średnia|Opóźnienie udanych transakcji|Liczba sukcesów|
 
-## <a name="microsofteventgriddomains"></a>Microsoft. EventGrid/domeny
+## <a name="microsofteventgriddomains"></a>Microsoft.EventGrid/domeny
 
-|Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary|
+|Metryka|Metryka Nazwa wyświetlana|Jednostka|Typ agregacji|Opis|Wymiary|
 |---|---|---|---|---|---|
-|PublishSuccessCount|Zdarzenia opublikowane|Licznik|Łącznie|Łączna liczba zdarzeń opublikowanych w tym temacie|Temat|
-|PublishFailCount|Publikowanie zdarzeń zakończonych niepowodzeniem|Licznik|Łącznie|Całkowita liczba zdarzeń, których publikowanie nie powiodło się w tym temacie|Temat, Błądtype, błąd|
-|PublishSuccessLatencyInMs|Czas oczekiwania na pomyślne publikowanie|Milisekundy|Łącznie|Opóźnienie sukcesu publikacji w milisekundach|None|
-|MatchedEventCount|Dopasowane zdarzenia|Licznik|Łącznie|Łączna liczba zdarzeń dopasowanych do tej subskrypcji zdarzeń|Temat, EventSubscriptionName, DomainEventSubscriptionName|
-|DeliveryAttemptFailCount|Zdarzenia zakończonych niepowodzeniem|Licznik|Łącznie|Całkowita liczba zdarzeń, których dostarczenie do tej subskrypcji zdarzeń nie powiodło się|Temat, EventSubscriptionName, DomainEventSubscriptionName, Error, ErrorType|
-|DeliverySuccessCount|Dostarczone zdarzenia|Licznik|Łącznie|Całkowita liczba zdarzeń dostarczonych do tej subskrypcji zdarzeń|Temat, EventSubscriptionName, DomainEventSubscriptionName|
-|DestinationProcessingDurationInMs|Czas przetwarzania docelowego|Milisekundy|Średnia|Czas trwania przetwarzania docelowego w milisekundach|Temat, EventSubscriptionName, DomainEventSubscriptionName|
-|DroppedEventCount|Opuszczone zdarzenia|Licznik|Łącznie|Całkowita liczba porzuconych zdarzeń pasujących do tej subskrypcji zdarzeń|Temat, EventSubscriptionName, DomainEventSubscriptionName, DropReason|
-|DeadLetteredCount|Zdarzenia utraconych wiadomości|Licznik|Łącznie|Łączna liczba utraconych zdarzeń, które pasują do tej subskrypcji zdarzeń|Temat, EventSubscriptionName, DomainEventSubscriptionName, DeadLetterReason|
+|PublishSuccessCount|Opublikowane wydarzenia|Liczba|Łącznie|Łączna liczba zdarzeń opublikowanych w tym temacie|Temat|
+|Konto PublishFailCount|Publikowanie zdarzeń nie powiodło się|Liczba|Łącznie|Całkowita liczba zdarzeń nie może opublikować w tym temacie|Temat,Typ błędu,Błąd|
+|PublishSuccessLatencyInMs|Publikowanie opóźnienia sukcesu|Milisekund|Łącznie|Publikowanie opóźnienia sukcesu w milisekundach|Brak|
+|MatchedEventCount|Dopasowane wydarzenia|Liczba|Łącznie|Łączna liczba zdarzeń dopasowanych do tej subskrypcji wydarzenia|Temat,Nazwa pliku EventSubscriptionName,DomainEventsubscriptionName|
+|DeliveryAttemptFailCount|Zdarzenia nieudane dostawy|Liczba|Łącznie|Całkowita liczba zdarzeń nie została do dostarczenia do tej subskrypcji zdarzenia|Temat,EventSubscriptionName,DomainEventsubscriptionName,Error,ErrorType|
+|Liczba dostawsukcesy|Dostarczone zdarzenia|Liczba|Łącznie|Łączna liczba zdarzeń dostarczonych do tej subskrypcji wydarzenia|Temat,Nazwa pliku EventSubscriptionName,DomainEventsubscriptionName|
+|Miejsca doceloweProcessingDurationInMs|Docelowy czas przetwarzania|Milisekund|Średnia|Docelowy czas przetwarzania w milisekundach|Temat,Nazwa pliku EventSubscriptionName,DomainEventsubscriptionName|
+|Liczba porzuconychwentów|Porzucone zdarzenia|Liczba|Łącznie|Łączna liczba usuniętych zdarzeń pasujących do tej subskrypcji zdarzenia|Temat,Nazwa pliku EventSubscriptionName,DomainEventSubscriptionName,DropReason|
+|Liczba nienaliczonych liter|Zdarzenia z martwymi literami|Liczba|Łącznie|Łączna liczba martwych zdarzeń z literami pasującymi do tej subskrypcji zdarzenia|Temat,EventSubscriptionName,DomainEventSubscriptionName,DeadLetterReason|
 
-## <a name="microsofteventgridtopics"></a>Microsoft. EventGrid/tematy
+## <a name="microsofteventgridtopics"></a>Microsoft.EventGrid/tematy
 
-|Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary|
+|Metryka|Metryka Nazwa wyświetlana|Jednostka|Typ agregacji|Opis|Wymiary|
 |---|---|---|---|---|---|
-|PublishSuccessCount|Zdarzenia opublikowane|Licznik|Łącznie|Łączna liczba zdarzeń opublikowanych w tym temacie|None|
-|PublishFailCount|Publikowanie zdarzeń zakończonych niepowodzeniem|Licznik|Łącznie|Całkowita liczba zdarzeń, których publikowanie nie powiodło się w tym temacie|ErrorType, błąd|
-|UnmatchedEventCount|Niedopasowane zdarzenia|Licznik|Łącznie|Łączna liczba zdarzeń, które nie pasują do żadnej subskrypcji zdarzeń dla tego tematu|None|
-|PublishSuccessLatencyInMs|Czas oczekiwania na pomyślne publikowanie|Milisekundy|Łącznie|Opóźnienie sukcesu publikacji w milisekundach|None|
-|MatchedEventCount|Dopasowane zdarzenia|Licznik|Łącznie|Łączna liczba zdarzeń dopasowanych do tej subskrypcji zdarzeń|EventSubscriptionName|
-|DeliveryAttemptFailCount|Zdarzenia zakończonych niepowodzeniem|Licznik|Łącznie|Całkowita liczba zdarzeń, których dostarczenie do tej subskrypcji zdarzeń nie powiodło się|Error, ErrorType, EventSubscriptionName|
-|DeliverySuccessCount|Dostarczone zdarzenia|Licznik|Łącznie|Całkowita liczba zdarzeń dostarczonych do tej subskrypcji zdarzeń|EventSubscriptionName|
-|DestinationProcessingDurationInMs|Czas przetwarzania docelowego|Milisekundy|Średnia|Czas trwania przetwarzania docelowego w milisekundach|EventSubscriptionName|
-|DroppedEventCount|Opuszczone zdarzenia|Licznik|Łącznie|Całkowita liczba porzuconych zdarzeń pasujących do tej subskrypcji zdarzeń|DropReason,EventSubscriptionName|
-|DeadLetteredCount|Zdarzenia utraconych wiadomości|Licznik|Łącznie|Łączna liczba utraconych zdarzeń, które pasują do tej subskrypcji zdarzeń|DeadLetterReason,EventSubscriptionName|
+|PublishSuccessCount|Opublikowane wydarzenia|Liczba|Łącznie|Łączna liczba zdarzeń opublikowanych w tym temacie|Brak|
+|Konto PublishFailCount|Publikowanie zdarzeń nie powiodło się|Liczba|Łącznie|Całkowita liczba zdarzeń nie może opublikować w tym temacie|Typ błędu,Błąd|
+|Niedoścignionalicznik|Niedopasowane wydarzenia|Liczba|Łącznie|Łączna liczba zdarzeń, które nie pasują do żadnej z subskrypcji zdarzeń w tym temacie|Brak|
+|PublishSuccessLatencyInMs|Publikowanie opóźnienia sukcesu|Milisekund|Łącznie|Publikowanie opóźnienia sukcesu w milisekundach|Brak|
+|MatchedEventCount|Dopasowane wydarzenia|Liczba|Łącznie|Łączna liczba zdarzeń dopasowanych do tej subskrypcji wydarzenia|Nazwa zdarzenia|
+|DeliveryAttemptFailCount|Zdarzenia nieudane dostawy|Liczba|Łącznie|Całkowita liczba zdarzeń nie została do dostarczenia do tej subskrypcji zdarzenia|Błąd,Typ błędu,Nazwasubscription Zdarzenia|
+|Liczba dostawsukcesy|Dostarczone zdarzenia|Liczba|Łącznie|Łączna liczba zdarzeń dostarczonych do tej subskrypcji wydarzenia|Nazwa zdarzenia|
+|Miejsca doceloweProcessingDurationInMs|Docelowy czas przetwarzania|Milisekund|Średnia|Docelowy czas przetwarzania w milisekundach|Nazwa zdarzenia|
+|Liczba porzuconychwentów|Porzucone zdarzenia|Liczba|Łącznie|Łączna liczba usuniętych zdarzeń pasujących do tej subskrypcji zdarzenia|DropReason,Nazwa zdarzenia|
+|Liczba nienaliczonych liter|Zdarzenia z martwymi literami|Liczba|Łącznie|Łączna liczba martwych zdarzeń z literami pasującymi do tej subskrypcji zdarzenia|DeadLetterReason,Nazwa zdarzenia|
 
 ## <a name="microsofteventgrideventsubscriptions"></a>Microsoft.EventGrid/eventSubscriptions
 
-|Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary|
+|Metryka|Metryka Nazwa wyświetlana|Jednostka|Typ agregacji|Opis|Wymiary|
 |---|---|---|---|---|---|
-|MatchedEventCount|Dopasowane zdarzenia|Licznik|Łącznie|Łączna liczba zdarzeń dopasowanych do tej subskrypcji zdarzeń|None|
-|DeliveryAttemptFailCount|Zdarzenia zakończonych niepowodzeniem|Licznik|Łącznie|Całkowita liczba zdarzeń, których dostarczenie do tej subskrypcji zdarzeń nie powiodło się|Błąd, Błądtype|
-|DeliverySuccessCount|Dostarczone zdarzenia|Licznik|Łącznie|Całkowita liczba zdarzeń dostarczonych do tej subskrypcji zdarzeń|None|
-|DestinationProcessingDurationInMs|Czas przetwarzania docelowego|Milisekundy|Średnia|Czas trwania przetwarzania docelowego w milisekundach|None|
-|DroppedEventCount|Opuszczone zdarzenia|Licznik|Łącznie|Całkowita liczba porzuconych zdarzeń pasujących do tej subskrypcji zdarzeń|DropReason|
-|DeadLetteredCount|Zdarzenia utraconych wiadomości|Licznik|Łącznie|Łączna liczba utraconych zdarzeń, które pasują do tej subskrypcji zdarzeń|DeadLetterReason|
+|MatchedEventCount|Dopasowane wydarzenia|Liczba|Łącznie|Łączna liczba zdarzeń dopasowanych do tej subskrypcji wydarzenia|Brak|
+|DeliveryAttemptFailCount|Zdarzenia nieudane dostawy|Liczba|Łącznie|Całkowita liczba zdarzeń nie została do dostarczenia do tej subskrypcji zdarzenia|Błąd,Typ błędu|
+|Liczba dostawsukcesy|Dostarczone zdarzenia|Liczba|Łącznie|Łączna liczba zdarzeń dostarczonych do tej subskrypcji wydarzenia|Brak|
+|Miejsca doceloweProcessingDurationInMs|Docelowy czas przetwarzania|Milisekund|Średnia|Docelowy czas przetwarzania w milisekundach|Brak|
+|Liczba porzuconychwentów|Porzucone zdarzenia|Liczba|Łącznie|Łączna liczba usuniętych zdarzeń pasujących do tej subskrypcji zdarzenia|DropReason ( DropReason )|
+|Liczba nienaliczonych liter|Zdarzenia z martwymi literami|Liczba|Łącznie|Łączna liczba martwych zdarzeń z literami pasującymi do tej subskrypcji zdarzenia|DeadLetterReason (Nie żyje)|
 
-## <a name="microsofteventgridextensiontopics"></a>Microsoft. EventGrid/extensionTopics
+## <a name="microsofteventgridextensiontopics"></a>Microsoft.EventGrid/extensionTopics
 
-|Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary|
+|Metryka|Metryka Nazwa wyświetlana|Jednostka|Typ agregacji|Opis|Wymiary|
 |---|---|---|---|---|---|
-|PublishSuccessCount|Zdarzenia opublikowane|Licznik|Łącznie|Łączna liczba zdarzeń opublikowanych w tym temacie|None|
-|PublishFailCount|Publikowanie zdarzeń zakończonych niepowodzeniem|Licznik|Łącznie|Całkowita liczba zdarzeń, których publikowanie nie powiodło się w tym temacie|ErrorType, błąd|
-|UnmatchedEventCount|Niedopasowane zdarzenia|Licznik|Łącznie|Łączna liczba zdarzeń, które nie pasują do żadnej subskrypcji zdarzeń dla tego tematu|None|
-|PublishSuccessLatencyInMs|Czas oczekiwania na pomyślne publikowanie|Milisekundy|Łącznie|Opóźnienie sukcesu publikacji w milisekundach|None|
+|PublishSuccessCount|Opublikowane wydarzenia|Liczba|Łącznie|Łączna liczba zdarzeń opublikowanych w tym temacie|Brak|
+|Konto PublishFailCount|Publikowanie zdarzeń nie powiodło się|Liczba|Łącznie|Całkowita liczba zdarzeń nie może opublikować w tym temacie|Typ błędu,Błąd|
+|Niedoścignionalicznik|Niedopasowane wydarzenia|Liczba|Łącznie|Łączna liczba zdarzeń, które nie pasują do żadnej z subskrypcji zdarzeń w tym temacie|Brak|
+|PublishSuccessLatencyInMs|Publikowanie opóźnienia sukcesu|Milisekund|Łącznie|Publikowanie opóźnienia sukcesu w milisekundach|Brak|
 
 
 
-## <a name="microsofteventhubnamespaces"></a>Microsoft.EventHub/namespaces
+## <a name="microsofteventhubnamespaces"></a>Microsoft.EventHub/przestrzenie nazw
 
-|Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary|
+|Metryka|Metryka Nazwa wyświetlana|Jednostka|Typ agregacji|Opis|Wymiary|
 |---|---|---|---|---|---|
-|Żądania successfulrequests|Żądania zakończone powodzeniem|Licznik|Łącznie|Pomyślne żądania dla elementu Microsoft. EventHub.|EntityName, klasy OperationResult|
-|Błędy servererrors|Błędy serwera.|Licznik|Łącznie|Błędy serwera dla elementu Microsoft. EventHub.|EntityName, klasy OperationResult|
-|Błędy usererrors|Błędy użytkownika.|Licznik|Łącznie|Błędy użytkowników dla elementu Microsoft. EventHub.|EntityName, klasy OperationResult|
-|Błędy quotaexceedederrors|Błędy przekroczenia limitu przydziału.|Licznik|Łącznie|Przekroczono limit przydziału dla elementu Microsoft. EventHub.|EntityName, klasy OperationResult|
-|ThrottledRequests|Żądania z ograniczeniami.|Licznik|Łącznie|Żądania ograniczone dla elementu Microsoft. EventHub.|EntityName, klasy OperationResult|
-|Żądania incomingrequests|Żądania przychodzące|Licznik|Łącznie|Żądania przychodzące dla elementu Microsoft. EventHub.|EntityName|
-|Komunikaty incomingmessages|Komunikaty przychodzące|Licznik|Łącznie|Komunikaty przychodzące dla elementu Microsoft. EventHub.|EntityName|
-|Komunikaty outgoingmessages|Komunikaty wychodzące|Licznik|Łącznie|Komunikaty wychodzące dla elementu Microsoft. EventHub.|EntityName|
-|Bajty incomingbytes|Bajty przychodzące.|Bajty|Łącznie|Przychodzące bajty dla elementu Microsoft. EventHub.|EntityName|
-|Bajty outgoingbytes|Bajty wychodzące.|Bajty|Łącznie|Bajty wychodzące dla elementu Microsoft. EventHub.|EntityName|
-|Połączeń ActiveConnections|Połączeń ActiveConnections|Licznik|Średnia|Łączna liczba aktywnych połączeń dla elementu Microsoft. EventHub.|None|
-|Połączenia connectionsopened|Otwarte połączenia.|Licznik|Średnia|Połączenia otwarte dla elementu Microsoft. EventHub.|EntityName|
-|Połączenia connectionsclosed|Połączenia zamknięte.|Licznik|Średnia|Połączenia zamknięte dla elementu Microsoft. EventHub.|EntityName|
-|CaptureBacklog|Zaległości przechwytywania.|Licznik|Łącznie|Zaległości przechwytywania dla elementu Microsoft. EventHub.|EntityName|
-|CapturedMessages|Przechwycone komunikaty.|Licznik|Łącznie|Przechwycone komunikaty dla elementu Microsoft. EventHub.|EntityName|
-|CapturedBytes|Przechwycone bajty.|Bajty|Łącznie|Przechwycone bajty dla elementu Microsoft. EventHub.|EntityName|
-|Rozmiar|Rozmiar|Bajty|Średnia|Rozmiar centrum EventHub w bajtach.|EntityName|
-|INREQS|Żądania przychodzące (przestarzałe)|Licznik|Łącznie|Całkowita liczba żądań wysłania przychodzącego dla przestrzeni nazw (przestarzałe)|None|
-|SUCCREQ|Żądania zakończone powodzeniem (przestarzałe)|Licznik|Łącznie|Łączna liczba pomyślnych żądań dla przestrzeni nazw (przestarzałe)|None|
-|FAILREQ|Nieudane żądania (przestarzałe)|Licznik|Łącznie|Łączna liczba nieudanych żądań dla przestrzeni nazw (przestarzałe)|None|
-|SVRBSY|Błędy zajęte przez serwer (przestarzałe)|Licznik|Łącznie|Łączna liczba błędów zajętości serwera dla przestrzeni nazw (przestarzałe)|None|
-|MIĘDZY|Wewnętrzne błędy serwera (przestarzałe)|Licznik|Łącznie|Łączna liczba błędów wewnętrznego serwera dla przestrzeni nazw (przestarzałe)|None|
-|MISCERR|Inne błędy (przestarzałe)|Licznik|Łącznie|Łączna liczba nieudanych żądań dla przestrzeni nazw (przestarzałe)|None|
-|INMSGS|Komunikaty przychodzące (przestarzałe) (przestarzałe)|Licznik|Łącznie|Całkowita liczba komunikatów przychodzących dla przestrzeni nazw. Ta Metryka jest przestarzała. Zamiast tego użyj metryki komunikatów przychodzących (przestarzałe)|None|
-|EHINMSGS|Komunikaty przychodzące (przestarzałe)|Licznik|Łącznie|Całkowita liczba komunikatów przychodzących dla przestrzeni nazw (przestarzałe)|None|
-|OUTMSGS|Wiadomości wychodzące (przestarzałe) (przestarzałe)|Licznik|Łącznie|Całkowita liczba komunikatów wychodzących dla przestrzeni nazw. Ta Metryka jest przestarzała. Zamiast tego użyj metryki komunikatów wychodzących (przestarzałe)|None|
-|EHOUTMSGS|Wiadomości wychodzące (przestarzałe)|Licznik|Łącznie|Całkowita liczba komunikatów wychodzących dla przestrzeni nazw (przestarzałe)|None|
-|EHINMBS|Przychodzące bajty (przestarzałe) (przestarzałe)|Bajty|Łącznie|Przepływność komunikatów przychodzących centrum zdarzeń dla przestrzeni nazw. Ta Metryka jest przestarzała. Zamiast tego użyj metryki bajtów przychodzących (przestarzałe)|None|
-|EHINBYTES|Przychodzące bajty (przestarzałe)|Bajty|Łącznie|Przepływność komunikatów przychodzących centrum zdarzeń dla przestrzeni nazw (przestarzałe)|None|
-|EHOUTMBS|Bajty wychodzące (przestarzałe) (przestarzałe)|Bajty|Łącznie|Przepływność komunikatów wychodzących centrum zdarzeń dla przestrzeni nazw. Ta Metryka jest przestarzała. Zamiast tego użyj metryki bajtów wychodzących (przestarzałe)|None|
-|EHOUTBYTES|Bajty wychodzące (przestarzałe)|Bajty|Łącznie|Przepływność komunikatów wychodzących centrum zdarzeń dla przestrzeni nazw (przestarzałe)|None|
-|EHABL|Archiwum komunikatów zaległości (przestarzałe)|Licznik|Łącznie|Komunikaty archiwum centrum zdarzeń w zaległości dla przestrzeni nazw (przestarzałe)|None|
-|EHAMSGS|Komunikaty archiwalne (przestarzałe)|Licznik|Łącznie|Zarchiwizowane komunikaty centrum zdarzeń w przestrzeni nazw (przestarzałe)|None|
-|EHAMBS|Przepływność komunikatów archiwalnych (przestarzałe)|Bajty|Łącznie|Przepływność komunikatów archiwalnych centrum zdarzeń w przestrzeni nazw (przestarzałe)|None|
+|Udane prośby|Pomyślne żądania|Liczba|Łącznie|Pomyślne żądania dla witryny Microsoft.EventHub.|Nazwa elementu,OperacjaWysoki|
+|Serwery serwerowe|Błędy serwera.|Liczba|Łącznie|Błędy serwera dla witryny Microsoft.EventHub.|Nazwa elementu,OperacjaWysoki|
+|UserErrors (UżytkownikErrors)|Błędy użytkownika.|Liczba|Łącznie|Błędy użytkownika dla witryny Microsoft.EventHub.|Nazwa elementu,OperacjaWysoki|
+|QuotaExceedErrors|Przekroczone błędy przydziału.|Liczba|Łącznie|Przekroczono limit przydziału dla witryny Microsoft.EventHub.|Nazwa elementu,OperacjaWysoki|
+|ThrottledRequests|Ograniczone żądania.|Liczba|Łącznie|Ograniczone żądania dla witryny Microsoft.EventHub.|Nazwa elementu,OperacjaWysoki|
+|Przychodzącerepy|Żądania przychodzące|Liczba|Łącznie|Przychodzące żądania dla witryny Microsoft.EventHub.|Nazwa elementu|
+|Przychodzącenaśniacje|Wiadomości przychodzące|Liczba|Łącznie|Przychodzące wiadomości dla witryny Microsoft.EventHub.|Nazwa elementu|
+|Wychodzące Wiadomości|Wiadomości wychodzące|Liczba|Łącznie|Wiadomości wychodzące dla witryny Microsoft.EventHub.|Nazwa elementu|
+|Przychodzących bajtów|Bajty przychodzące.|Bajty|Łącznie|Bajty przychodzące dla witryny Microsoft.EventHub.|Nazwa elementu|
+|Bajty wychodzące|Bajty wychodzące.|Bajty|Łącznie|Bajty wychodzące dla witryny Microsoft.EventHub.|Nazwa elementu|
+|ActiveConnections (Aktywne połączenia)|ActiveConnections (Aktywne połączenia)|Liczba|Średnia|Łączna liczba aktywnych połączeń dla witryny Microsoft.EventHub.|Brak|
+|ConnectionsOtwarte|Połączenia otwarte.|Liczba|Średnia|Połączenia otwarte dla witryny Microsoft.EventHub.|Nazwa elementu|
+|Połączenia Zamknięte|Połączenia zamknięte.|Liczba|Średnia|Połączenia zamknięte dla witryny Microsoft.EventHub.|Nazwa elementu|
+|Dziennik CaptureBacklog|Przechwytywanie zaległości.|Liczba|Łącznie|Przechwytywanie zaległości dla microsoft.eventhub.|Nazwa elementu|
+|Przechwyconewydacje|Przechwycone wiadomości.|Liczba|Łącznie|Przechwycone wiadomości dla witryny Microsoft.EventHub.|Nazwa elementu|
+|Przechwycone bajty|Przechwycone bajty.|Bajty|Łącznie|Przechwycone bajty dla witryny Microsoft.EventHub.|Nazwa elementu|
+|Rozmiar|Rozmiar|Bajty|Średnia|Rozmiar eventhubu w bajtach.|Nazwa elementu|
+|INREQS ( INREQS )|Przychodzące żądania (przestarzałe)|Liczba|Łącznie|Całkowita liczba przychodzących żądań wysyłania dla obszaru nazw (przestarzała)|Brak|
+|SUCCREQ ( SUCCREQ )|Pomyślne żądania (przestarzałe)|Liczba|Łącznie|Łączna liczba pomyślnych żądań dla obszaru nazw (przestarzała)|Brak|
+|FailreQ ( failreq )|Żądania nie powiodły się (przestarzałe)|Liczba|Łącznie|Całkowita liczba nieudanych żądań dla obszaru nazw (przestarzała)|Brak|
+|SVRBSY ( SVRBSY )|Błędy zajętości serwera (przestarzałe)|Liczba|Łącznie|Całkowita liczba błędów zajętych serwerów dla obszaru nazw (przestarzała)|Brak|
+|Interr (w przedr.|Wewnętrzne błędy serwera (przestarzałe)|Liczba|Łącznie|Całkowita liczba błędów serwera wewnętrznego dla obszaru nazw (przestarzała)|Brak|
+|MISCERR (MISCERR)|Inne błędy (przestarzałe)|Liczba|Łącznie|Całkowita liczba nieudanych żądań dla obszaru nazw (przestarzała)|Brak|
+|INMSGS (WŁASK.|Wiadomości przychodzące (przestarzałe) (przestarzałe)|Liczba|Łącznie|Całkowita liczba wiadomości przychodzących dla obszaru nazw. Ta metryka jest przestarzała. Zamiast tego użyj danych Wiadomości przychodzące (przestarzałe)|Brak|
+|EHINMSGS ( EHINMSGS )|Wiadomości przychodzące (przestarzałe)|Liczba|Łącznie|Całkowita liczba wiadomości przychodzących dla obszaru nazw (przestarzała)|Brak|
+|OUTMSGS (WYJDĄCE)|Wiadomości wychodzące (przestarzałe) (przestarzałe)|Liczba|Łącznie|Łączna liczba wiadomości wychodzących dla obszaru nazw. Ta metryka jest przestarzała. Zamiast tego użyj danych Wiadomości wychodzących (przestarzałe)|Brak|
+|EHOUTMSGS|Wiadomości wychodzące (przestarzałe)|Liczba|Łącznie|Całkowita liczba wiadomości wychodzących dla obszaru nazw (przestarzała)|Brak|
+|EHINMBS ( EHINMBS )|Bajty przychodzące (przestarzałe) (przestarzałe)|Bajty|Łącznie|Przepływność komunikatów przychodzących centrum zdarzeń dla obszaru nazw. Ta metryka jest przestarzała. Zamiast tego użyj danych Bajtów przychodzących (przestarzałe)|Brak|
+|EHINBYTES (EHINBYTES)|Bajty przychodzące (przestarzałe)|Bajty|Łącznie|Przepływność komunikatów przychodzących centrum zdarzeń dla obszaru nazw (przestarzała)|Brak|
+|EHOUTMBS ( EHOUTMBS )|Bajty wychodzące (przestarzałe) (przestarzałe)|Bajty|Łącznie|Przepływność komunikatów wychodzących usługi Event Hub dla obszaru nazw. Ta metryka jest przestarzała. Zamiast tego użyj danych bajtów wychodzących (przestarzałe)|Brak|
+|EHOUTBYTES|Bajty wychodzące (przestarzałe)|Bajty|Łącznie|Przepływność komunikatów wychodzących usługi Event Hub dla obszaru nazw (przestarzała)|Brak|
+|EHABL|Archiwizuj komunikaty zaległości (przestarzałe)|Liczba|Łącznie|Usługa Event Hub archiwizacji wiadomości w zaległości dla obszaru nazw (przestarzałe)|Brak|
+|EHAMSGS ( EHAMSGS )|Archiwizowanie wiadomości (przestarzałe)|Liczba|Łącznie|Usługa Event Hub archiwizowała wiadomości w obszarze nazw (przestarzałe)|Brak|
+|EHAMBS ( EHAMBS )|Przepływność wiadomości archiwum (przestarzała)|Bajty|Łącznie|Usługa Event Hub zarchiwizowana przepływność wiadomości w obszarze nazw (przestarzała)|Brak|
 
-## <a name="microsofteventhubclusters"></a>Microsoft. EventHub/klastry
+## <a name="microsofteventhubclusters"></a>Microsoft.EventHub/klastry
 
-|Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary|
+|Metryka|Metryka Nazwa wyświetlana|Jednostka|Typ agregacji|Opis|Wymiary|
 |---|---|---|---|---|---|
-|Żądania successfulrequests|Żądania zakończone powodzeniem|Licznik|Łącznie|Pomyślne żądania dla elementu Microsoft. EventHub.|OperationResult|
-|Błędy servererrors|Błędy serwera.|Licznik|Łącznie|Błędy serwera dla elementu Microsoft. EventHub.|OperationResult|
-|Błędy usererrors|Błędy użytkownika.|Licznik|Łącznie|Błędy użytkowników dla elementu Microsoft. EventHub.|OperationResult|
-|Błędy quotaexceedederrors|Błędy przekroczenia limitu przydziału.|Licznik|Łącznie|Przekroczono limit przydziału dla elementu Microsoft. EventHub.|OperationResult|
-|ThrottledRequests|Żądania z ograniczeniami.|Licznik|Łącznie|Żądania ograniczone dla elementu Microsoft. EventHub.|OperationResult|
-|Żądania incomingrequests|Żądania przychodzące|Licznik|Łącznie|Żądania przychodzące dla elementu Microsoft. EventHub.|None|
-|Komunikaty incomingmessages|Komunikaty przychodzące|Licznik|Łącznie|Komunikaty przychodzące dla elementu Microsoft. EventHub.|None|
-|Komunikaty outgoingmessages|Komunikaty wychodzące|Licznik|Łącznie|Komunikaty wychodzące dla elementu Microsoft. EventHub.|None|
-|Bajty incomingbytes|Bajty przychodzące.|Bajty|Łącznie|Przychodzące bajty dla elementu Microsoft. EventHub.|None|
-|Bajty outgoingbytes|Bajty wychodzące.|Bajty|Łącznie|Bajty wychodzące dla elementu Microsoft. EventHub.|None|
-|Połączeń ActiveConnections|Połączeń ActiveConnections|Licznik|Średnia|Łączna liczba aktywnych połączeń dla elementu Microsoft. EventHub.|None|
-|Połączenia connectionsopened|Otwarte połączenia.|Licznik|Średnia|Połączenia otwarte dla elementu Microsoft. EventHub.|None|
-|Połączenia connectionsclosed|Połączenia zamknięte.|Licznik|Średnia|Połączenia zamknięte dla elementu Microsoft. EventHub.|None|
-|CaptureBacklog|Zaległości przechwytywania.|Licznik|Łącznie|Zaległości przechwytywania dla elementu Microsoft. EventHub.|None|
-|CapturedMessages|Przechwycone komunikaty.|Licznik|Łącznie|Przechwycone komunikaty dla elementu Microsoft. EventHub.|None|
-|CapturedBytes|Przechwycone bajty.|Bajty|Łącznie|Przechwycone bajty dla elementu Microsoft. EventHub.|None|
-|Procesor CPU|Procesor CPU|Procent|Maksimum|Użycie procesora CPU przez klaster centrum zdarzeń jako wartość procentowa|Rola|
-|AvailableMemory|Dostępna pamięć|Procent|Maksimum|Dostępna pamięć dla klastra centrum zdarzeń jako procent całkowitej ilości pamięci.|Rola|
+|Udane prośby|Pomyślne żądania|Liczba|Łącznie|Pomyślne żądania dla witryny Microsoft.EventHub.|Operationresult|
+|Serwery serwerowe|Błędy serwera.|Liczba|Łącznie|Błędy serwera dla witryny Microsoft.EventHub.|Operationresult|
+|UserErrors (UżytkownikErrors)|Błędy użytkownika.|Liczba|Łącznie|Błędy użytkownika dla witryny Microsoft.EventHub.|Operationresult|
+|QuotaExceedErrors|Przekroczone błędy przydziału.|Liczba|Łącznie|Przekroczono limit przydziału dla witryny Microsoft.EventHub.|Operationresult|
+|ThrottledRequests|Ograniczone żądania.|Liczba|Łącznie|Ograniczone żądania dla witryny Microsoft.EventHub.|Operationresult|
+|Przychodzącerepy|Żądania przychodzące|Liczba|Łącznie|Przychodzące żądania dla witryny Microsoft.EventHub.|Brak|
+|Przychodzącenaśniacje|Wiadomości przychodzące|Liczba|Łącznie|Przychodzące wiadomości dla witryny Microsoft.EventHub.|Brak|
+|Wychodzące Wiadomości|Wiadomości wychodzące|Liczba|Łącznie|Wiadomości wychodzące dla witryny Microsoft.EventHub.|Brak|
+|Przychodzących bajtów|Bajty przychodzące.|Bajty|Łącznie|Bajty przychodzące dla witryny Microsoft.EventHub.|Brak|
+|Bajty wychodzące|Bajty wychodzące.|Bajty|Łącznie|Bajty wychodzące dla witryny Microsoft.EventHub.|Brak|
+|ActiveConnections (Aktywne połączenia)|ActiveConnections (Aktywne połączenia)|Liczba|Średnia|Łączna liczba aktywnych połączeń dla witryny Microsoft.EventHub.|Brak|
+|ConnectionsOtwarte|Połączenia otwarte.|Liczba|Średnia|Połączenia otwarte dla witryny Microsoft.EventHub.|Brak|
+|Połączenia Zamknięte|Połączenia zamknięte.|Liczba|Średnia|Połączenia zamknięte dla witryny Microsoft.EventHub.|Brak|
+|Dziennik CaptureBacklog|Przechwytywanie zaległości.|Liczba|Łącznie|Przechwytywanie zaległości dla microsoft.eventhub.|Brak|
+|Przechwyconewydacje|Przechwycone wiadomości.|Liczba|Łącznie|Przechwycone wiadomości dla witryny Microsoft.EventHub.|Brak|
+|Przechwycone bajty|Przechwycone bajty.|Bajty|Łącznie|Przechwycone bajty dla witryny Microsoft.EventHub.|Brak|
+|Procesor CPU|Procesor CPU|Wartość procentowa|Maksimum|Wykorzystanie procesora CPU dla klastra centrum zdarzeń jako wartość procentowa|Rola|
+|DostępneMemory|Dostępna pamięć|Wartość procentowa|Maksimum|Dostępna pamięć dla klastra Centrum zdarzeń jako procent pamięci całkowitej.|Rola|
 
 
-## <a name="microsofthdinsightclusters"></a>Microsoft.HDInsight/clusters
+## <a name="microsofthdinsightclusters"></a>Microsoft.HDInsight/klastry
 
-|Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary|
+|Metryka|Metryka Nazwa wyświetlana|Jednostka|Typ agregacji|Opis|Wymiary|
 |---|---|---|---|---|---|
-|GatewayRequests|Żądania bramy|Licznik|Łącznie|Liczba żądań bramy|HttpStatus|
-|CategorizedGatewayRequests|Skategoryzowane żądania bramy|Licznik|Łącznie|Liczba żądań bramy według kategorii (1XX/2xx/3xx/4xx/5xx)|HttpStatus|
-|NumActiveWorkers|Liczba aktywnych procesów roboczych|Licznik|Maksimum|Liczba aktywnych procesów roboczych|MetricName|
+|Prośby o bramę|Żądania bramy|Liczba|Łącznie|Liczba żądań bramy|Stan http|
+|CategorizedGatewayZastynia|Kategoryzowane żądania bramy|Liczba|Łącznie|Liczba żądań bramy według kategorii (1xx/2xx/3xx/4xx/5xx)|Stan http|
+|Liczba aktywnych pracowników|Liczba aktywnych pracowników|Liczba|Maksimum|Liczba aktywnych pracowników|MetricName|
 
 
-## <a name="microsoftinsightsautoscalesettings"></a>Microsoft.Insights/AutoscaleSettings
+## <a name="microsoftinsightsautoscalesettings"></a>Microsoft.Insights/Skalowanie automatyczneStawienia
 
-|Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary|
+|Metryka|Metryka Nazwa wyświetlana|Jednostka|Typ agregacji|Opis|Wymiary|
 |---|---|---|---|---|---|
-|ObservedMetricValue|Obserwowana wartość metryki|Licznik|Średnia|Wartość obliczona przez automatyczne skalowanie podczas wykonywania|MetricTriggerSource|
-|MetricThreshold|Próg metryki|Licznik|Średnia|Skonfigurowany próg automatycznego skalowania podczas uruchamiania automatycznego skalowania.|MetricTriggerRule|
-|ObservedCapacity|Zaobserwowana pojemność|Licznik|Średnia|Pojemność zgłoszona do automatycznego skalowania podczas jego wykonywania.|None|
-|ScaleActionsInitiated|Zainicjowane akcje skalowania|Licznik|Łącznie|Kierunek operacji skalowania.|ScaleDirection|
+|Wartość ObservedMetricValue|Obserwowana wartość metryczna|Liczba|Średnia|Wartość obliczona przez skalowanie automatyczne podczas wykonywania|MetricTriggerSource (Źródło metryki)|
+|MetricThreshold (MetricThreshold)|Próg metryczny|Liczba|Średnia|Skonfigurowany próg skalowania automatycznego po uruchomieniu skalowania automatycznego.|MetricTriggerRule (Reguła metrictriggera)|
+|ObservedCapacity (Zdolność obserwowana)|Obserwowana pojemność|Liczba|Średnia|Pojemność zgłoszona do skalowania automatycznego podczas wykonywania.|Brak|
+|ScaleActionsInitiated|Zainicjowano akcje skalowania|Liczba|Łącznie|Kierunek operacji skalowania.|SkalaKierunkowa|
 
 
 
 
-## <a name="microsoftinsightscomponents"></a>Microsoft. Insights/składniki
+## <a name="microsoftinsightscomponents"></a>Microsoft.Insights/Składniki
 
-|Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary|
+|Metryka|Metryka Nazwa wyświetlana|Jednostka|Typ agregacji|Opis|Wymiary|
 |---|---|---|---|---|---|
-|availabilityResults/availabilityPercentage|Dostępność|Procent|Średnia|Procent pomyślnie ukończonych testów dostępności|availabilityResult/nazwa, availabilityResult/lokalizacja|
-|availabilityResults/liczba|Testy dostępności|Licznik|Licznik|Liczba testów dostępności|availabilityResult/nazwa, availabilityResult/lokalizacja, availabilityResult/sukces|
-|availabilityResults/czas trwania|Czas trwania testu dostępności|MilliSeconds|Średnia|Czas trwania testu dostępności|availabilityResult/nazwa, availabilityResult/lokalizacja, availabilityResult/sukces|
-|browserTimings/networkDuration|Czas połączenia sieciowego ładowania strony|MilliSeconds|Średnia|Czas między żądaniem użytkownika a połączeniem sieciowym. Obejmuje wyszukiwanie DNS i połączenie transportowe.|None|
-|browserTimings/processingDuration|Czas przetwarzania klienta|MilliSeconds|Średnia|Czas między odebraniem ostatniego bajtu dokumentu do momentu załadowania modelu DOM. Żądania asynchroniczne nadal mogą być przetwarzane.|None|
-|browserTimings/receiveDuration|Czas odpowiedzi na odebranie|MilliSeconds|Średnia|Czas między pierwszym i ostatnim bajtem lub do momentu odłączenia.|None|
-|browserTimings/sendDuration|Czas żądania wysłania|MilliSeconds|Średnia|Czas między połączeniem sieciowym i odebraniem pierwszego bajtu.|None|
-|browserTimings/totalDuration|Czas ładowania strony w przeglądarce|MilliSeconds|Średnia|Czas od żądania użytkownika do załadowania modelu DOM, arkuszy stylów, skryptów i obrazów.|None|
-|zależności/liczba|Wywołania zależności|Licznik|Licznik|Liczba wywołań wykonanych przez aplikację do zasobów zewnętrznych.|zależność/typ, zależność/performanceBucket, zależność/powodzenie, zależność/cel, operacja/syntetyczne, Chmura/roleInstance, Chmura/rolename|
-|zależności/czas trwania|Czas trwania zależności|MilliSeconds|Średnia|Czas trwania wywołań wykonanych przez aplikację do zasobów zewnętrznych.|zależność/typ, zależność/performanceBucket, zależność/powodzenie, zależność/cel, operacja/syntetyczne, Chmura/roleInstance, Chmura/rolename|
-|zależności/niepowodzenie|Błędy wywołań zależności|Licznik|Licznik|Liczba wywołań zależności zakończonych niepowodzeniem wykonanych przez aplikację w zasobach zewnętrznych.|zależność/typ, zależność/performanceBucket, zależność/powodzenie, zależność/cel, operacja/syntetyczne, Chmura/roleInstance, Chmura/rolename|
-|pageViews/liczba|Wyświetlenia stron|Licznik|Licznik|Liczba wyświetleń stron.|Operacja/syntetyczne, Chmura/rolename|
-|pageViews/czas trwania|Czas ładowania widoku strony|MilliSeconds|Średnia|Czas ładowania widoku strony|Operacja/syntetyczne, Chmura/rolename|
-|Liczniki wydajności/requestExecutionTime|Czas wykonywania żądania HTTP|MilliSeconds|Średnia|Czas wykonywania najnowszego żądania.|Chmura/roleInstance|
-|performanceCounters/requestsInQueue|Żądania HTTP w kolejce aplikacji|Licznik|Średnia|Długość kolejki żądań aplikacji.|Chmura/roleInstance|
-|performanceCounters/requestsPerSecond|Częstotliwość żądań HTTP|CountPerSecond|Średnia|Szybkość wszystkich żądań wysyłanych do aplikacji w ciągu sekundy od ASP.NET.|Chmura/roleInstance|
-|Liczniki wydajności/exceptionsPerSecond|Częstotliwość wyjątków|CountPerSecond|Średnia|Liczba obsłużonych i nieobsłużonych wyjątków zgłoszonych w systemie Windows, łącznie z wyjątkami platformy .NET i niezarządzanymi wyjątkami przekonwertowanymi na wyjątki platformy .NET.|Chmura/roleInstance|
-|Liczniki wydajności/processIOBytesPerSecond|Szybkość operacji we/wy procesu|BytesPerSecond|Średnia|Łączna liczba bajtów odczytanych i zapisywana w plikach, sieci i urządzeniach.|Chmura/roleInstance|
-|Liczniki wydajności/processCpuPercentage|Procesor CPU procesu|Procent|Średnia|Wyrażony w procentach czas, przez jaki wszystkie wątki procesów używały procesora do wykonywania instrukcji. Może się to różnić od od 0 do 100. Ta Metryka wskazuje na wydajność samego procesu w3wp.|Chmura/roleInstance|
-|Liczniki wydajności/processorCpuPercentage|Czas procesora|Procent|Średnia|Procent czasu spędzanego przez procesor w wątkach, które nie są bezczynne.|Chmura/roleInstance|
-|Liczniki wydajności/memoryAvailableBytes|Dostępna pamięć|Bajty|Średnia|Pamięć fizyczna natychmiast dostępna do przydzielenia do procesu lub do użycia przez system.|Chmura/roleInstance|
-|Liczniki wydajności/processPrivateBytes|Prywatne bajty procesu|Bajty|Średnia|Pamięć przypisana wyłącznie do procesów monitorowanej aplikacji.|Chmura/roleInstance|
-|żądania/czas trwania|Czas odpowiedzi serwera|MilliSeconds|Średnia|Czas między odebraniem żądania HTTP i zakończeniem wysyłania odpowiedzi.|żądanie/performanceBucket, żądanie/resultCode, Operation/syntetyczne, Cloud/roleInstance, żądanie/powodzenie, Chmura/rolename|
-|Liczba żądań na sekundę|Żądania serwera|Licznik|Licznik|Liczba ukończonych żądań HTTP.|żądanie/performanceBucket, żądanie/resultCode, Operation/syntetyczne, Cloud/roleInstance, żądanie/powodzenie, Chmura/rolename|
-|żądania/niepowodzenie|Żądania zakończone niepowodzeniem|Licznik|Licznik|Liczba żądań HTTP oznaczonych jako zakończone niepowodzeniem. W większości przypadków są to żądania z kodem odpowiedzi > = 400, a nie równe 401.|żądanie/performanceBucket, żądanie/resultCode, żądanie/sukces, operacja/syntetyczne, Cloud/roleInstance, Cloud/rolename|
-|żądania/częstotliwość|Liczba żądań serwera|CountPerSecond|Średnia|Liczba żądań serwera na sekundę|żądanie/performanceBucket, żądanie/resultCode, Operation/syntetyczne, Cloud/roleInstance, żądanie/powodzenie, Chmura/rolename|
-|wyjątki/liczba|Wyjątki|Licznik|Licznik|Łączna liczba wszystkich nieprzechwyconych wyjątków.|Chmura/rolename, Cloud/roleInstance, klient/typ|
-|wyjątki/przeglądarka|Wyjątki przeglądarki|Licznik|Licznik|Liczba nieprzechwyconych wyjątków zgłoszonych w przeglądarce.|Klient/isserwer, Chmura/rolename|
-|wyjątki/serwer|Wyjątki serwera|Licznik|Licznik|Liczba nieprzechwyconych wyjątków zgłoszonych w aplikacji serwera.|Klient/isserwer, Chmura/rolename, Cloud/roleInstance|
-|ślady/liczba|Ścieżki|Licznik|Licznik|Liczba dokumentów śledzenia|Trace/severityLevel, Operations/syntetyczne, Cloud/rolename, Cloud/roleInstance|
+|dostępnośćWyniki/dostępnośćPercentage|Dostępność|Wartość procentowa|Średnia|Procent pomyślnie zakończonych testów dostępności|availabilityResult/name,availabilityResult/location|
+|dostępnośćWyniki/liczba|Testy dostępności|Liczba|Liczba|Liczba testów dostępności|availabilityResult/name,availabilityResult/location,availabilityResult/success|
+|dostępnośćWyniki/czas trwania|Czas trwania testu dostępności|Milisekund|Średnia|Czas trwania testu dostępności|availabilityResult/name,availabilityResult/location,availabilityResult/success|
+|przeglądarkaTimings/networkDuration|Czas ładowania strony sieciowej|Milisekund|Średnia|Czas między żądaniem użytkownika a połączeniem sieciowym. Zawiera wyszukiwanie DNS i połączenie transportowe.|Brak|
+|przeglądarkaTimings/processingDuration|Czas przetwarzania klienta|Milisekund|Średnia|Czas między odebraniem ostatniego bajtu dokumentu do załadowania modelu DOM. Żądania asynchronii mogą nadal być przetwarzane.|Brak|
+|przeglądarkaTimings/receiveDuration|Odbieranie czasu odpowiedzi|Milisekund|Średnia|Czas między pierwszym i ostatnim bajtami lub do rozłączenia.|Brak|
+|przeglądarkaTimings/sendDuration|Wyślij czas żądania|Milisekund|Średnia|Czas między połączeniem sieciowym a odebraniem pierwszego bajtu.|Brak|
+|przeglądarkaTimings/totalDuration|Czas ładowania strony przeglądarki|Milisekund|Średnia|Czas od żądania użytkownika do DOM, arkusze stylów, skrypty i obrazy są ładowane.|Brak|
+|zależności/liczba|Wywołania zależności|Liczba|Liczba|Liczba wywołań wykonanych przez aplikację do zasobów zewnętrznych.|zależność/typ,zależność/wydajnośćBucket,zależność/sukces,zależność/cel,operacja/syntetyczna,chmura/rolaInstacja,chmura/roleName|
+|zależności/czas trwania|Czas trwania zależności|Milisekund|Średnia|Czas trwania wywołań składanych przez aplikację do zasobów zewnętrznych.|zależność/typ,zależność/wydajnośćBucket,zależność/sukces,zależność/cel,operacja/syntetyczna,chmura/rolaInstacja,chmura/roleName|
+|zależności/nie powiodło się|Niepowodzenia wywołania zależności|Liczba|Liczba|Liczba nieudanych wywołań zależności wykonanych przez aplikację do zasobów zewnętrznych.|zależność/typ,zależność/wydajnośćBucket,zależność/sukces,zależność/cel,operacja/syntetyczna,chmura/rolaInstacja,chmura/roleName|
+|odsłony/liczba|Wyświetlenia strony|Liczba|Liczba|Liczba wyświetleń strony.|operacja/syntetyczna,chmura/nazwa roli|
+|odsłon/czasu trwania strony|Czas ładowania widoku strony|Milisekund|Średnia|Czas ładowania widoku strony|operacja/syntetyczna,chmura/nazwa roli|
+|performanceCounters/requestExecutionTime|Czas wykonania żądania HTTP|Milisekund|Średnia|Czas wykonania ostatniego żądania.|chmura/rolaInstance|
+|performanceCounters/requestsInQueue|Żądania HTTP w kolejce aplikacji|Liczba|Średnia|Długość kolejki żądań aplikacji.|chmura/rolaInstance|
+|performanceCounters/requestsPerSekund|Stawka żądania HTTP|Połów połówek|Średnia|Szybkość wszystkich żądań do aplikacji na sekundę z ASP.NET.|chmura/rolaInstance|
+|performanceCounters/exceptionsPerSekund|Współczynnik wyjątków|Połów połówek|Średnia|Liczba obsługiwanych i nieobsługiwał wyjątków zgłoszonych do okien, w tym wyjątków .NET i niezarządzanych wyjątków, które są konwertowane na wyjątki .NET.|chmura/rolaInstance|
+|performanceCounters/processIOBytesPerSekund|Szybkość we/wy procesu|PrzeztówPerSekunda|Średnia|Całkowita liczba bajtów na sekundę odczytu i zapisania w plikach, sieci i urządzeniach.|chmura/rolaInstance|
+|performanceCounters/processCpuPercentage|Przetwarzanie procesora|Wartość procentowa|Średnia|Procent czasu, który upłynął, że wszystkie wątki procesu używane procesora do wykonywania instrukcji. Może to wynosić od 0 do 100. Ta metryka wskazuje wydajność samego procesu w3wp.|chmura/rolaInstance|
+|performanceCounters/processorCpuPercentage|Czas procesora|Wartość procentowa|Średnia|Procent czasu, który procesor spędza w wątkach nie bezczynnych.|chmura/rolaInstance|
+|performanceCounters/memoryDostępne bajty|Dostępna pamięć|Bajty|Średnia|Pamięć fizyczna natychmiast dostępna do alokacji do procesu lub do użytku systemowego.|chmura/rolaInstance|
+|performanceCounters/processPrivateBytes|Przetwarzanie bajtów prywatnych|Bajty|Średnia|Pamięć przypisana wyłącznie do procesów monitorowanych aplikacji.|chmura/rolaInstance|
+|żądania/czas trwania|Czas odpowiedzi serwera|Milisekund|Średnia|Czas między odebraniem żądania HTTP a zakończeniem wysyłania odpowiedzi.|żądanie/wydajnośćBucket,żądanie/wynikKod,operacja/syntetyczny,chmura/rolaInstancja,żądanie/sukces,chmura/roleName|
+|żądania/liczba|Żądania serwera|Liczba|Liczba|Liczba ukończonych żądań HTTP.|żądanie/wydajnośćBucket,żądanie/wynikKod,operacja/syntetyczny,chmura/rolaInstancja,żądanie/sukces,chmura/roleName|
+|żądania/niepowodzenie|Żądania zakończone niepowodzeniem|Liczba|Liczba|Liczba żądań HTTP oznaczonych jako nieudane. W większości przypadków są to żądania z kodem odpowiedzi >= 400 i nie równa 401.|żądanie/wydajnośćBucket,żądanie/wynikKod,żądanie/sukces,operacja/syntetyczny,chmura/rolaInstacja,chmura/roleName|
+|żądania/stawka|Szybkość żądań serwera|Połów połówek|Średnia|Szybkość żądań serwera na sekundę|żądanie/wydajnośćBucket,żądanie/wynikKod,operacja/syntetyczny,chmura/rolaInstancja,żądanie/sukces,chmura/roleName|
+|wyjątki/liczba|Wyjątki|Liczba|Liczba|Łączna liczba wszystkich nieprzechoczonych wyjątków.|chmura/nazwa roli,chmura/rolaInstance,klient/typ|
+|wyjątki/przeglądarka|Wyjątki przeglądarki|Liczba|Liczba|Liczba nieprzechoczonych wyjątków zgłaszanych w przeglądarce.|klient/isServer,chmura/nazwa roli|
+|wyjątki/serwer|Wyjątki serwera|Liczba|Liczba|Liczba nieprzechoczonych wyjątków zgłaszanych w aplikacji serwera.|klient/isServer,chmura/roleName,chmura/rolaInstance|
+|ślady/liczba|Ślady|Liczba|Liczba|Śledzenie liczby dokumentów|śledzenie/severityPoziomowanie,operacja/syntetyczne,chmura/rolaname,chmura/rolaInstance|
 
 
 
-## <a name="microsoftkeyvaultvaults"></a>Microsoft.KeyVault/vaults
+## <a name="microsoftkeyvaultvaults"></a>Microsoft.KeyVault/przechowalnia
 
-|Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary|
+|Metryka|Metryka Nazwa wyświetlana|Jednostka|Typ agregacji|Opis|Wymiary|
 |---|---|---|---|---|---|
-|ServiceApiHit|Całkowita liczba trafień interfejsu API usługi|Licznik|Licznik|Łączna liczba trafień interfejsu API usługi|ActivityType, ActivityName|
-|ServiceApiLatency|Ogólne opóźnienie interfejsu API usługi|Milisekundy|Średnia|Ogólne opóźnienie żądań interfejsu API usługi|ActivityType, ActivityName, StatusCode, StatusCodeClass|
-|ServiceApiResult|Łączna liczba wyników interfejsu API usługi|Licznik|Licznik|Łączna liczba wyników interfejsu API usługi|ActivityType, ActivityName, StatusCode, StatusCodeClass|
-|SaturationShoebox|Ogólne nasycenie magazynu|Procent|Średnia|Używane pojemność magazynu|ActivityType, ActivityName, TransactionType|
-|Dostępność|Ogólna dostępność magazynu|Procent|Średnia|Dostępność żądań magazynu|ActivityType, ActivityName, StatusCode, StatusCodeClass|
+|SerwisApiHit|Całkowita liczba trafień interfejsu API usługi|Liczba|Liczba|Liczba całkowitych trafień api usługi|Typ działania,Nazwa działania|
+|ServiceApiLatency|Ogólne opóźnienie interfejsu api usługi|Milisekund|Średnia|Ogólne opóźnienie żądań interfejsu API usługi|ActivityType,ActivityName,StatusCode,StatusCodeClass|
+|ServiceApiResult (ServiceApiResult)|Wyniki interfejsu API usługi razem|Liczba|Liczba|Liczba całkowitych wyników api usługi|ActivityType,ActivityName,StatusCode,StatusCodeClass|
+|NasycenieShoebox|Ogólne nasycenie skarbca|Wartość procentowa|Średnia|Wykorzystana pojemność przechowalni|Typ działania,Nazwa działania,Typ transakcji|
+|Dostępność|Ogólna dostępność magazynu|Wartość procentowa|Średnia|Dostępność żądań vault|ActivityType,ActivityName,StatusCode,StatusCodeClass|
 
-## <a name="microsoftkustoclusters"></a>Microsoft.Kusto/Clusters
+## <a name="microsoftkustoclusters"></a>Microsoft.Kusto/klastry
 
-|Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary|
+|Metryka|Metryka Nazwa wyświetlana|Jednostka|Typ agregacji|Opis|Wymiary|
 |---|---|---|---|---|---|
-|CacheUtilization|Użycie pamięci podręcznej|Procent|Średnia|Poziom użycia w zakresie klastra|None|
-|QueryDuration|Czas trwania zapytania|Milisekundy|Średnia|Czas trwania zapytań (w sekundach)|QueryStatus|
-|IngestionUtilization|Wykorzystanie pozyskiwania|Procent|Średnia|Współczynnik używania miejsc pozyskiwania w klastrze|None|
-|KeepAlive|Utrzymywanie aktywności|Licznik|Średnia|Sprawdzenie Sanity wskazuje, że klaster reaguje na zapytania|None|
-|IngestionVolumeInMB|Wolumin pozyskiwania (w MB)|Licznik|Łącznie|Ogólna ilość danych pozyskiwanych w klastrze (w MB)|Baza danych|
-|IngestionLatencyInSeconds|Opóźnienie pozyskiwania (w sekundach)|S|Średnia|Czas pozyskiwania ze źródła (np. komunikat jest w centrum EventHub) do klastra w ciągu kilku sekund|None|
-|EventsProcessedForEventHubs|Zdarzenia przetwarzane (dla centrów zdarzeń/IoT)|Licznik|Łącznie|Liczba zdarzeń przetwarzanych przez klaster podczas pozyskiwania ze zdarzenia/IoT Hub|EventStatus|
-|IngestionResult|Wynik pozyskiwania|Licznik|Licznik|Liczba operacji pozyskiwania|IngestionResultDetails|
-|Procesor CPU|Procesor CPU|Procent|Średnia|Poziom użycia procesora CPU|None|
-|ContinuousExportNumOfRecordsExported|Eksport ciągły — liczba eksportowanych rekordów|Licznik|Łącznie|Liczba wyeksportowanych rekordów, które są generowane dla każdego artefaktu magazynu zapisanego podczas operacji eksportowania|None|
-|ExportUtilization|Użycie eksportu|Procent|Maksimum|Użycie eksportu|None|
-|ContinuousExportPendingCount|Liczba oczekujących eksportu ciągłego|Licznik|Maksimum|Liczba oczekujących zadań eksportu ciągłego gotowych do wykonania|None|
-|ContinuousExportMaxLatenessMinutes|Maksymalna liczba minut opóźnienia eksportu|Licznik|Maksimum|Maksymalna liczba opóźnień w minutach wszystkich oczekujących eksportów ciągłych i gotowych do wykonania|None|
-|ContinuousExportResult|Wynik eksportu ciągłego|Licznik|Licznik|Wskazuje, czy ciągły eksport zakończył się powodzeniem, czy niepowodzeniem|ContinuousExportName, wynik, baza danych|
-|StreamingIngestDuration|Czas trwania pozyskiwania strumieniowego|Milisekundy|Średnia|Czas trwania pozyskiwania strumieniowego w milisekundach|None|
-|StreamingIngestDataRate|Szybkość danych pozyskiwania przesyłania strumieniowego|Licznik|Średnia|Szybkość danych pozyskiwania przesyłania strumieniowego (MB na sekundę)|None|
-|SteamingIngestRequestRate|Szybkość żądania pozyskiwania strumieniowego|Licznik|RateRequestsPerSecond|Szybkość żądania pozyskiwania strumieniowego (żądania na sekundę)|None|
-|StreamingIngestResults|Wynik pozyskiwania strumieniowego|Licznik|Średnia|Wynik pozyskiwania strumieniowego|Wynik|
-|TotalNumberOfConcurrentQueries|Łączna liczba współbieżnych zapytań|Licznik|Łącznie|Łączna liczba współbieżnych zapytań|None|
-|TotalNumberOfThrottledQueries|Łączna liczba zapytań z ograniczeniami|Licznik|Łącznie|Łączna liczba zapytań z ograniczeniami|None|
-|TotalNumberOfThrottledCommands|Łączna liczba poleceń z ograniczeniami|Licznik|Łącznie|Łączna liczba poleceń z ograniczeniami|CommandType|
-|TotalNumberOfExtents|Łączna Liczba zakresów|Licznik|Łącznie|Łączna Liczba zakresów danych|None|
+|Buforowanie alokacji|Wykorzystanie pamięci podręcznej|Wartość procentowa|Średnia|Poziom wykorzystania w zakresie klastra|Brak|
+|Wyszukiwanie zapytań|Czas trwania kwerendy|Milisekund|Średnia|Czas trwania zapytań w sekundach|Querystatus|
+|Połknieniauutilization|Wykorzystanie spożycia|Wartość procentowa|Średnia|Stosunek używanych gniazd połkowych w klastrze|Brak|
+|Keepalive|Utrzymać przy życiu|Liczba|Średnia|Sprawdzanie poczytalności wskazuje, że klaster odpowiada na zapytania|Brak|
+|PołkliwienieVolumeInMB|Głośność pozyskiwania (w MB)|Liczba|Łącznie|Całkowita ilość przyjmowanych danych do klastra (w MB)|baza danych|
+|PołkwianieLatencyInSekundy|Opóźnienie połknięcia (w sekundach)|Sekundy|Średnia|Czas pozyskiwania ze źródła (np. komunikat znajduje się w uliczce EventHub) do klastra w sekundach|Brak|
+|WydarzeniaProcessedForEventHubs|Przetwarzane zdarzenia (dla centrów zdarzeń/IoT)|Liczba|Łącznie|Liczba zdarzeń przetwarzanych przez klaster podczas pozyskiwania z usługi Event/IoT Hub|EventStatus|
+|PołknienieWyskuj|Wynik spożycia|Liczba|Liczba|Liczba operacji pozyskiwania|PołknięciaWyskłości szczegółowe|
+|Procesor CPU|Procesor CPU|Wartość procentowa|Średnia|Poziom wykorzystania procesora|Brak|
+|ContinuousExportNumOfRecordsExported|Ciągły eksport – liczba eksportowanych rekordów|Liczba|Łącznie|Liczba wyeksportowanych rekordów, wystrzelonych dla każdego artefaktu magazynu zapisanego podczas operacji eksportowania|Brak|
+|Eksportutilization|Wykorzystanie eksportu|Wartość procentowa|Maksimum|Wykorzystanie eksportu|Brak|
+|Ciągła liczba ekspportów|Ciągła liczba oczekujących na eksport|Liczba|Maksimum|Liczba oczekujących zadań ciągłego eksportu gotowych do wykonania|Brak|
+|ContinuousExportMaxLatenessMinutes|Ciągłe eksportowanie Max Lateness Minut|Liczba|Maksimum|Maksymalna opóźnienia w ciągu kilku minut wszystkich ciągłych wywozu oczekujących i gotowych do realizacji|Brak|
+|CiągłyWydajnik|Ciągły wynik eksportu|Liczba|Liczba|Wskazuje, czy eksport ciągły zakończył się pomyślnie, czy nie powiodło się|Ciągłanana nazwa ekspedycjowa,Wynik,Baza danych|
+|StreamingOwanieDuration|Czas pozyskiwania przesyłania strumieniowego|Milisekund|Średnia|Czas pozyskiwania przesyłania strumieniowego w milisekundach|Brak|
+|Szybkość pozyskiwania danych w strumieniu strumieniowym|Szybkość pozyskiwania danych przesyłania strumieniowego|Liczba|Średnia|Szybkość przesyłania strumieniowego danych pozyskiwania (MB na sekundę)|Brak|
+|SteamingIngestRequestRate (SteamingIngestRequestRate)|Szybkość pozyskiwania przesyłania strumieniowego|Liczba|RateRequestsPerSecond|Szybkość pozyskiwania przesyłania strumieniowego (żądania na sekundę)|Brak|
+|Wyniki pozyskiwania strumieniowego|Streaming Ingest Wynik|Liczba|Średnia|Wynik pozyskiwania przesyłania strumieniowego|Wynik|
+|TotalNumberOfConcurrentQueries|Całkowita liczba równoczesnych zapytań|Liczba|Łącznie|Całkowita liczba równoczesnych zapytań|Brak|
+|TotalNumberOfThrottledQueries (Liczba NumerOfThrottledQueries)|Całkowita liczba kwerend z ograniczeniami|Liczba|Łącznie|Całkowita liczba kwerend z ograniczeniami|Brak|
+|TotalNumberOfThrottledCommands|Całkowita liczba poleceń z ograniczeniem|Liczba|Łącznie|Całkowita liczba poleceń z ograniczeniem|Commandtype|
+|TotalNumberOfExtents|Łączna liczba zakresów|Liczba|Łącznie|Łączna liczba zakresów danych|Brak|
 
 
-## <a name="microsoftlogicworkflows"></a>Microsoft.Logic/workflows
+## <a name="microsoftlogicworkflows"></a>Microsoft.Logic/przepływy pracy
 
-|Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary|
+|Metryka|Metryka Nazwa wyświetlana|Jednostka|Typ agregacji|Opis|Wymiary|
 |---|---|---|---|---|---|
-|RunsStarted|Uruchomienia uruchomione|Licznik|Łącznie|Liczba uruchomionych przebiegów przepływu pracy.|None|
-|RunsCompleted|Przebiegi zakończone|Licznik|Łącznie|Liczba ukończonych przebiegów przepływu pracy.|None|
-|RunsSucceeded|Przebiegi zakończone powodzeniem|Licznik|Łącznie|Liczba przebiegów przepływu pracy zakończonych powodzeniem.|None|
-|RunsFailed|Przebiegi zakończone niepowodzeniem|Licznik|Łącznie|Liczba przebiegów przepływu pracy zakończonych niepowodzeniem.|None|
-|RunsCancelled|Przebiegi anulowane|Licznik|Łącznie|Liczba anulowanych przebiegów przepływu pracy.|None|
-|RunLatency|Opóźnienie uruchamiania|S|Średnia|Opóźnienie ukończonych przebiegów przepływu pracy.|None|
-|RunSuccessLatency|Opóźnienie sukcesu przebiegu|S|Średnia|Opóźnienie przebiegów przepływu pracy zakończonych powodzeniem.|None|
-|RunThrottledEvents|Uruchamianie zdarzeń z ograniczeniami|Licznik|Łącznie|Liczba zdarzeń związanych ze zdarzeniami przepływu pracy lub wyzwalaczem.|None|
-|RunStartThrottledEvents|Uruchom zdarzenia uruchamiania z ograniczeniami|Licznik|Łącznie|Liczba uruchomionych zdarzeń ograniczających przepływ pracy.|None|
-|RunFailurePercentage|Procent niepowodzeń przebiegu|Procent|Łącznie|Procent przebiegów przepływu pracy zakończonych niepowodzeniem.|None|
-|ActionsStarted|Akcje uruchomione |Licznik|Łącznie|Liczba rozpoczętych akcji przepływu pracy.|None|
-|ActionsCompleted|Wykonane akcje |Licznik|Łącznie|Liczba ukończonych akcji przepływu pracy.|None|
-|ActionsSucceeded|Akcje zakończone powodzeniem |Licznik|Łącznie|Liczba akcji przepływu pracy zakończonych powodzeniem.|None|
-|ActionsFailed|Akcje zakończone niepowodzeniem |Licznik|Łącznie|Liczba akcji przepływu pracy zakończonych niepowodzeniem.|None|
-|ActionsSkipped|Pominięte akcje |Licznik|Łącznie|Liczba pominiętych akcji przepływu pracy.|None|
-|ActionLatency|Opóźnienie akcji |S|Średnia|Opóźnienie ukończonych akcji przepływu pracy.|None|
-|ActionSuccessLatency|Opóźnienie sukcesu akcji |S|Średnia|Opóźnienie akcji przepływu pracy zakończonych powodzeniem.|None|
-|ActionThrottledEvents|Zdarzenia ograniczające akcję|Licznik|Łącznie|Liczba zdarzeń ograniczających przepływ pracy...|None|
-|TriggersStarted|Uruchomiono wyzwalacze |Licznik|Łącznie|Liczba uruchomionych wyzwalaczy przepływu pracy.|None|
-|TriggersCompleted|Ukończone wyzwalacze |Licznik|Łącznie|Liczba ukończonych wyzwalaczy przepływu pracy.|None|
-|TriggersSucceeded|Wyzwalacze zakończone powodzeniem |Licznik|Łącznie|Liczba wyzwalaczy przepływu pracy zakończonych powodzeniem.|None|
-|TriggersFailed|Wyzwalacze zakończone niepowodzeniem |Licznik|Łącznie|Liczba wyzwalaczy przepływu pracy zakończonych niepowodzeniem.|None|
-|TriggersSkipped|Pominięte wyzwalacze|Licznik|Łącznie|Liczba pominiętych wyzwalaczy przepływu pracy.|None|
-|TriggersFired|Wyzwolone wyzwalacze |Licznik|Łącznie|Liczba wyzwolonych wyzwalaczy przepływu pracy.|None|
-|TriggerLatency|Opóźnienie wyzwalacza |S|Średnia|Opóźnienie ukończonych wyzwalaczy przepływu pracy.|None|
-|TriggerFireLatency|Opóźnienie wyzwalania wyzwalacza |S|Średnia|Opóźnienie wyzwalanych wyzwalaczy przepływu pracy.|None|
-|TriggerSuccessLatency|Opóźnienie sukcesu wyzwalacza |S|Średnia|Opóźnienie wyzwalaczy przepływu pracy zakończonych powodzeniem.|None|
-|TriggerThrottledEvents|Wyzwalaj zdarzenia ograniczające|Licznik|Łącznie|Liczba zdarzeń ograniczenia wyzwalacza przepływu pracy.|None|
-|BillableActionExecutions|Rozliczane wykonania akcji|Licznik|Łącznie|Liczba rozliczanych wykonań akcji przepływu pracy.|None|
-|BillableTriggerExecutions|Rozliczane wykonania wyzwalacza|Licznik|Łącznie|Liczba rozliczanych wykonań wyzwalacza przepływu pracy.|None|
-|TotalBillableExecutions|Łączna Liczba wykonań rozliczanych|Licznik|Łącznie|Liczba rozliczanych wykonań przepływu pracy.|None|
-|BillingUsageNativeOperation|Użycie rozliczeń dla natywnych wykonań operacji|Licznik|Łącznie|Liczba rozliczanych wykonań operacji natywnych.|None|
-|BillingUsageStandardConnector|Użycie rozliczeń dla wykonywania łączników standardowych|Licznik|Łącznie|Liczba rozliczanych wykonań łączników standardowych.|None|
-|BillingUsageStorageConsumption|Użycie rozliczeń dla wykonań zużycia magazynu|Licznik|Łącznie|Liczba rozliczanych wykonań zużycia magazynu.|None|
-|BillingUsageNativeOperation|Użycie rozliczeń dla natywnych wykonań operacji|Licznik|Łącznie|Liczba rozliczanych wykonań operacji natywnych.|None|
-|BillingUsageStandardConnector|Użycie rozliczeń dla wykonywania łączników standardowych|Licznik|Łącznie|Liczba rozliczanych wykonań łączników standardowych.|None|
-|BillingUsageStorageConsumption|Użycie rozliczeń dla wykonań zużycia magazynu|Licznik|Łącznie|Liczba rozliczanych wykonań zużycia magazynu.|None|
+|UruchamianieRozpoczęło się|Uruchomiono|Liczba|Łącznie|Liczba uruchomionych uruchomień przepływu pracy.|Brak|
+|RunsCompleted (Wykończone trasy)|Ukończono przebiegi|Liczba|Łącznie|Liczba ukończonych przebiegów przepływu pracy.|Brak|
+|BiegiSucceededed|Przebiegi powiodły się|Liczba|Łącznie|Liczba przebiegów przepływu pracy powiodła się.|Brak|
+|DziałaFailed|Przebiegi nie powiodły się|Liczba|Łącznie|Liczba uruchomień przepływu pracy nie powiodła się.|Brak|
+|DziałaCancelled|Przebiegi anulowane|Liczba|Łącznie|Liczba anulowanych uruchomień przepływu pracy.|Brak|
+|RunLatency (RunLatency)|Opóźnienie uruchamiania|Sekundy|Średnia|Opóźnienie zakończonych przebiegów przepływu pracy.|Brak|
+|RunSuccessLatency|Uruchamianie opóźnienia sukcesu|Sekundy|Średnia|Opóźnienie pomyślnych przebiegów przepływu pracy.|Brak|
+|RunThrottledWydarzenia|Uruchamianie zdarzeń z ograniczeniem|Liczba|Łącznie|Liczba akcji przepływu pracy lub wyzwalacza zdarzeń z ograniczeniem.|Brak|
+|RunStartThrottledWydarzenia|Uruchamianie zdarzeń z ograniczeniem startu|Liczba|Łącznie|Liczba uruchomionych zdarzeń uruchamiania przepływu pracy.|Brak|
+|RunFailurePercentage|Procent niepowodzenia uruchomienia|Wartość procentowa|Łącznie|Procent przebiegów przepływu pracy nie powiodło się.|Brak|
+|AkcjeStartowane|Rozpoczęto akcje |Liczba|Łącznie|Liczba uruchomionych akcji przepływu pracy.|Brak|
+|AkcjeUpełnione|Akcje zakończone |Liczba|Łącznie|Liczba zakończonych akcji przepływu pracy.|Brak|
+|DziałaniaSucceeded|Akcje zakończyły się pomyślnie |Liczba|Łącznie|Liczba akcji przepływu pracy powiodła się.|Brak|
+|AkcjeNiewiększone|Akcje nie powiodły się |Liczba|Łącznie|Liczba akcji przepływu pracy nie powiodła się.|Brak|
+|AkcjeWysłane|Pominięte akcje |Liczba|Łącznie|Liczba pominiętych akcji przepływu pracy.|Brak|
+|ActionLatency (Włastwerwość|Opóźnienie akcji |Sekundy|Średnia|Opóźnienie zakończonych akcji przepływu pracy.|Brak|
+|DziałanieSukceslatywa|Opóźnienie sukcesu akcji |Sekundy|Średnia|Opóźnienie akcji przepływu pracy, które zakończyły się pomyślnie.|Brak|
+|AkcjaTrocesy|Zdarzenia ograniczone do akcji|Liczba|Łącznie|Liczba zdarzeń ograniczonej akcją przepływu pracy..|Brak|
+|WyzwalaczeStarted|Uruchomiono wyzwalacze |Liczba|Łącznie|Liczba uruchomionych wyzwalaczy przepływu pracy.|Brak|
+|WyzwalaczeUkoletowane|Ukończono wyzwalacze |Liczba|Łącznie|Liczba ukończonych wyzwalaczy przepływu pracy.|Brak|
+|TriggersSucceeded|Wyzwalacze powiodły się |Liczba|Łącznie|Liczba wyzwalaczy przepływu pracy powiodła się.|Brak|
+|WyzwalaczeNieNie niesie zezonych|Wyzwalacze nie powiodły się |Liczba|Łącznie|Liczba wyzwalaczy przepływu pracy nie powiodła się.|Brak|
+|WyzwalaczeSsekpped|Pominięte wyzwalacze|Liczba|Łącznie|Liczba pominiętych wyzwalaczy przepływu pracy.|Brak|
+|WyzwalaczePalione|Wyzwalacze opalane |Liczba|Łącznie|Liczba wyzwalaczy przepływu pracy.|Brak|
+|TriggerLatency (TriggerLatency)|Opóźnienie wyzwalacza |Sekundy|Średnia|Opóźnienie ukończonych wyzwalaczy przepływu pracy.|Brak|
+|TriggerFireLatency (TriggerFireLatency)|Opóźnienie pożaru wyzwalacza |Sekundy|Średnia|Opóźnienie wyzwalaczy wyzwalaczy przepływu pracy.|Brak|
+|TriggerSuccessLatency|Opóźnienie sukcesu wyzwalacza |Sekundy|Średnia|Opóźnienie pomyślnych wyzwalaczy przepływu pracy.|Brak|
+|TriggerThrottledWydarzenia|Wyzwalacz ograniczone zdarzenia|Liczba|Łącznie|Liczba zdarzeń z ograniczeniem wyzwalacza przepływu pracy.|Brak|
+|BillableActionWykonań|Egzekucje akcji podlegające rozliczaniu|Liczba|Łącznie|Liczba wykonań akcji przepływu pracy, które są rozliczane.|Brak|
+|BillableTriggerWykonania|Egzekucje wyzwalaczy podlegające rozliczani|Liczba|Łącznie|Liczba wykonań wyzwalaczy przepływu pracy, które są rozliczane.|Brak|
+|TotalBillableWykonań|Łączna liczba wykonywalnych wykonań|Liczba|Łącznie|Liczba wykonań przepływu pracy rozliczanych.|Brak|
+|RozliczeniaUsageNativeOperation|Użycie rozliczeń dla natywnych wykonań operacji|Liczba|Łącznie|Liczba natywnych wykonań operacji, które są rozliczane.|Brak|
+|RozliczenieUsageStandardconnector|Użycie rozliczeń dla wykonania łącznika standardowego|Liczba|Łącznie|Liczba standardowych wykonań łącznika, które są rozliczane.|Brak|
+|RozliczeniaUsageStorageKonsumpcja|Użycie rozliczeń dla wykonań zużycia magazynu|Liczba|Łącznie|Liczba wykonań zużycia magazynu, które są rozliczane.|Brak|
+|RozliczeniaUsageNativeOperation|Użycie rozliczeń dla natywnych wykonań operacji|Liczba|Łącznie|Liczba natywnych wykonań operacji, które są rozliczane.|Brak|
+|RozliczenieUsageStandardconnector|Użycie rozliczeń dla wykonania łącznika standardowego|Liczba|Łącznie|Liczba standardowych wykonań łącznika, które są rozliczane.|Brak|
+|RozliczeniaUsageStorageKonsumpcja|Użycie rozliczeń dla wykonań zużycia magazynu|Liczba|Łącznie|Liczba wykonań zużycia magazynu, które są rozliczane.|Brak|
 
 
 
 ## <a name="microsoftlogicintegrationserviceenvironments"></a>Microsoft.Logic/integrationServiceEnvironments
 
-|Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary|
+|Metryka|Metryka Nazwa wyświetlana|Jednostka|Typ agregacji|Opis|Wymiary|
 |---|---|---|---|---|---|
-|RunsStarted|Uruchomienia uruchomione|Licznik|Łącznie|Liczba uruchomionych przebiegów przepływu pracy.|None|
-|RunsCompleted|Przebiegi zakończone|Licznik|Łącznie|Liczba ukończonych przebiegów przepływu pracy.|None|
-|RunsSucceeded|Przebiegi zakończone powodzeniem|Licznik|Łącznie|Liczba przebiegów przepływu pracy zakończonych powodzeniem.|None|
-|RunsFailed|Przebiegi zakończone niepowodzeniem|Licznik|Łącznie|Liczba przebiegów przepływu pracy zakończonych niepowodzeniem.|None|
-|RunsCancelled|Przebiegi anulowane|Licznik|Łącznie|Liczba anulowanych przebiegów przepływu pracy.|None|
-|RunLatency|Opóźnienie uruchamiania|S|Średnia|Opóźnienie ukończonych przebiegów przepływu pracy.|None|
-|RunSuccessLatency|Opóźnienie sukcesu przebiegu|S|Średnia|Opóźnienie przebiegów przepływu pracy zakończonych powodzeniem.|None|
-|RunThrottledEvents|Uruchamianie zdarzeń z ograniczeniami|Licznik|Łącznie|Liczba zdarzeń związanych ze zdarzeniami przepływu pracy lub wyzwalaczem.|None|
-|RunStartThrottledEvents|Uruchom zdarzenia uruchamiania z ograniczeniami|Licznik|Łącznie|Liczba uruchomionych zdarzeń ograniczających przepływ pracy.|None|
-|RunFailurePercentage|Procent niepowodzeń przebiegu|Procent|Łącznie|Procent przebiegów przepływu pracy zakończonych niepowodzeniem.|None|
-|ActionsStarted|Akcje uruchomione |Licznik|Łącznie|Liczba rozpoczętych akcji przepływu pracy.|None|
-|ActionsCompleted|Wykonane akcje |Licznik|Łącznie|Liczba ukończonych akcji przepływu pracy.|None|
-|ActionsSucceeded|Akcje zakończone powodzeniem |Licznik|Łącznie|Liczba akcji przepływu pracy zakończonych powodzeniem.|None|
-|ActionsFailed|Akcje zakończone niepowodzeniem |Licznik|Łącznie|Liczba akcji przepływu pracy zakończonych niepowodzeniem.|None|
-|ActionsSkipped|Pominięte akcje |Licznik|Łącznie|Liczba pominiętych akcji przepływu pracy.|None|
-|ActionLatency|Opóźnienie akcji |S|Średnia|Opóźnienie ukończonych akcji przepływu pracy.|None|
-|ActionSuccessLatency|Opóźnienie sukcesu akcji |S|Średnia|Opóźnienie akcji przepływu pracy zakończonych powodzeniem.|None|
-|ActionThrottledEvents|Zdarzenia ograniczające akcję|Licznik|Łącznie|Liczba zdarzeń ograniczających przepływ pracy...|None|
-|TriggersStarted|Uruchomiono wyzwalacze |Licznik|Łącznie|Liczba uruchomionych wyzwalaczy przepływu pracy.|None|
-|TriggersCompleted|Ukończone wyzwalacze |Licznik|Łącznie|Liczba ukończonych wyzwalaczy przepływu pracy.|None|
-|TriggersSucceeded|Wyzwalacze zakończone powodzeniem |Licznik|Łącznie|Liczba wyzwalaczy przepływu pracy zakończonych powodzeniem.|None|
-|TriggersFailed|Wyzwalacze zakończone niepowodzeniem |Licznik|Łącznie|Liczba wyzwalaczy przepływu pracy zakończonych niepowodzeniem.|None|
-|TriggersSkipped|Pominięte wyzwalacze|Licznik|Łącznie|Liczba pominiętych wyzwalaczy przepływu pracy.|None|
-|TriggersFired|Wyzwolone wyzwalacze |Licznik|Łącznie|Liczba wyzwolonych wyzwalaczy przepływu pracy.|None|
-|TriggerLatency|Opóźnienie wyzwalacza |S|Średnia|Opóźnienie ukończonych wyzwalaczy przepływu pracy.|None|
-|TriggerFireLatency|Opóźnienie wyzwalania wyzwalacza |S|Średnia|Opóźnienie wyzwalanych wyzwalaczy przepływu pracy.|None|
-|TriggerSuccessLatency|Opóźnienie sukcesu wyzwalacza |S|Średnia|Opóźnienie wyzwalaczy przepływu pracy zakończonych powodzeniem.|None|
-|TriggerThrottledEvents|Wyzwalaj zdarzenia ograniczające|Licznik|Łącznie|Liczba zdarzeń ograniczenia wyzwalacza przepływu pracy.|None|
-|IntegrationServiceEnvironmentWorkflowProcessorUsage|Użycie procesora przepływu pracy dla środowisko usługi integracji|Procent|Średnia|Użycie procesora przez przepływ pracy dla środowiska usługi integracji.|None|
-|IntegrationServiceEnvironmentWorkflowMemoryUsage|Użycie pamięci przez przepływ pracy dla środowisko usługi integracji|Procent|Średnia|Użycie pamięci przez przepływ pracy dla środowiska usługi integracji.|None|
-|IntegrationServiceEnvironmentConnectorProcessorUsage|Użycie procesora przez łącznik dla środowisko usługi integracji|Procent|Średnia|Użycie procesora przez łącznik dla środowiska usługi integracji.|None|
-|IntegrationServiceEnvironmentConnectorMemoryUsage|Użycie pamięci przez łącznik dla środowisko usługi integracji|Procent|Średnia|Użycie pamięci przez łącznik dla środowiska usługi integracji.|None|
+|UruchamianieRozpoczęło się|Uruchomiono|Liczba|Łącznie|Liczba uruchomionych uruchomień przepływu pracy.|Brak|
+|RunsCompleted (Wykończone trasy)|Ukończono przebiegi|Liczba|Łącznie|Liczba ukończonych przebiegów przepływu pracy.|Brak|
+|BiegiSucceededed|Przebiegi powiodły się|Liczba|Łącznie|Liczba przebiegów przepływu pracy powiodła się.|Brak|
+|DziałaFailed|Przebiegi nie powiodły się|Liczba|Łącznie|Liczba uruchomień przepływu pracy nie powiodła się.|Brak|
+|DziałaCancelled|Przebiegi anulowane|Liczba|Łącznie|Liczba anulowanych uruchomień przepływu pracy.|Brak|
+|RunLatency (RunLatency)|Opóźnienie uruchamiania|Sekundy|Średnia|Opóźnienie zakończonych przebiegów przepływu pracy.|Brak|
+|RunSuccessLatency|Uruchamianie opóźnienia sukcesu|Sekundy|Średnia|Opóźnienie pomyślnych przebiegów przepływu pracy.|Brak|
+|RunThrottledWydarzenia|Uruchamianie zdarzeń z ograniczeniem|Liczba|Łącznie|Liczba akcji przepływu pracy lub wyzwalacza zdarzeń z ograniczeniem.|Brak|
+|RunStartThrottledWydarzenia|Uruchamianie zdarzeń z ograniczeniem startu|Liczba|Łącznie|Liczba uruchomionych zdarzeń uruchamiania przepływu pracy.|Brak|
+|RunFailurePercentage|Procent niepowodzenia uruchomienia|Wartość procentowa|Łącznie|Procent przebiegów przepływu pracy nie powiodło się.|Brak|
+|AkcjeStartowane|Rozpoczęto akcje |Liczba|Łącznie|Liczba uruchomionych akcji przepływu pracy.|Brak|
+|AkcjeUpełnione|Akcje zakończone |Liczba|Łącznie|Liczba zakończonych akcji przepływu pracy.|Brak|
+|DziałaniaSucceeded|Akcje zakończyły się pomyślnie |Liczba|Łącznie|Liczba akcji przepływu pracy powiodła się.|Brak|
+|AkcjeNiewiększone|Akcje nie powiodły się |Liczba|Łącznie|Liczba akcji przepływu pracy nie powiodła się.|Brak|
+|AkcjeWysłane|Pominięte akcje |Liczba|Łącznie|Liczba pominiętych akcji przepływu pracy.|Brak|
+|ActionLatency (Włastwerwość|Opóźnienie akcji |Sekundy|Średnia|Opóźnienie zakończonych akcji przepływu pracy.|Brak|
+|DziałanieSukceslatywa|Opóźnienie sukcesu akcji |Sekundy|Średnia|Opóźnienie akcji przepływu pracy, które zakończyły się pomyślnie.|Brak|
+|AkcjaTrocesy|Zdarzenia ograniczone do akcji|Liczba|Łącznie|Liczba zdarzeń ograniczonej akcją przepływu pracy..|Brak|
+|WyzwalaczeStarted|Uruchomiono wyzwalacze |Liczba|Łącznie|Liczba uruchomionych wyzwalaczy przepływu pracy.|Brak|
+|WyzwalaczeUkoletowane|Ukończono wyzwalacze |Liczba|Łącznie|Liczba ukończonych wyzwalaczy przepływu pracy.|Brak|
+|TriggersSucceeded|Wyzwalacze powiodły się |Liczba|Łącznie|Liczba wyzwalaczy przepływu pracy powiodła się.|Brak|
+|WyzwalaczeNieNie niesie zezonych|Wyzwalacze nie powiodły się |Liczba|Łącznie|Liczba wyzwalaczy przepływu pracy nie powiodła się.|Brak|
+|WyzwalaczeSsekpped|Pominięte wyzwalacze|Liczba|Łącznie|Liczba pominiętych wyzwalaczy przepływu pracy.|Brak|
+|WyzwalaczePalione|Wyzwalacze opalane |Liczba|Łącznie|Liczba wyzwalaczy przepływu pracy.|Brak|
+|TriggerLatency (TriggerLatency)|Opóźnienie wyzwalacza |Sekundy|Średnia|Opóźnienie ukończonych wyzwalaczy przepływu pracy.|Brak|
+|TriggerFireLatency (TriggerFireLatency)|Opóźnienie pożaru wyzwalacza |Sekundy|Średnia|Opóźnienie wyzwalaczy wyzwalaczy przepływu pracy.|Brak|
+|TriggerSuccessLatency|Opóźnienie sukcesu wyzwalacza |Sekundy|Średnia|Opóźnienie pomyślnych wyzwalaczy przepływu pracy.|Brak|
+|TriggerThrottledWydarzenia|Wyzwalacz ograniczone zdarzenia|Liczba|Łącznie|Liczba zdarzeń z ograniczeniem wyzwalacza przepływu pracy.|Brak|
+|IntegrationServiceEnvironmentPracflowProcessorUsage|Użycie procesora przepływu pracy w środowisku usługi integracji|Wartość procentowa|Średnia|Użycie procesora przepływu pracy dla środowiska usługi integracji.|Brak|
+|IntegrationServiceEnvironmentWorkflowMemoryUsage|Użycie pamięci przepływu pracy dla środowiska usługi integracji|Wartość procentowa|Średnia|Użycie pamięci przepływu pracy dla środowiska usługi integracji.|Brak|
+|IntegrationServiceEnvironmentConnectorProcessorUsage|Użycie procesora łącznika w środowisku usługi integracji|Wartość procentowa|Średnia|Użycie procesora łącznika dla środowiska usługi integracji.|Brak|
+|IntegrationServiceEnvironmentConnectorMemoryUsage|Użycie pamięci łącznika dla środowiska usługi integracji|Wartość procentowa|Średnia|Użycie pamięci łącznika dla środowiska usługi integracji.|Brak|
 
-## <a name="microsoftmachinelearningservicesworkspaces"></a>Microsoft.MachineLearningServices/workspaces
+## <a name="microsoftmachinelearningservicesworkspaces"></a>Microsoft.MachineLearningUsługi/obszary robocze
 
-|Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary|
+|Metryka|Metryka Nazwa wyświetlana|Jednostka|Typ agregacji|Opis|Wymiary|
 |---|---|---|---|---|---|
-|Ukończone uruchomienia|Ukończone uruchomienia|Licznik|Łącznie|Liczba przebiegów pomyślnie ukończonych dla tego obszaru roboczego|Scenariusz, RunType, PublishedPipelineId, Computetype, PipelineStepType|
-|Uruchomione uruchomienia|Uruchomione uruchomienia|Licznik|Łącznie|Liczba rozpoczętych uruchomień dla tego obszaru roboczego|Scenariusz, RunType, PublishedPipelineId, Computetype, PipelineStepType|
-|Nieudane uruchomienia|Nieudane uruchomienia|Licznik|Łącznie|Liczba uruchomień dla tego obszaru roboczego nie powiodła się|Scenariusz, RunType, PublishedPipelineId, Computetype, PipelineStepType|
-|Rejestrowanie modelu powiodło się|Rejestrowanie modelu powiodło się|Licznik|Łącznie|Liczba rejestracji modelu zakończonych powodzeniem w tym obszarze roboczym|Scenariusz|
-|Nie można zarejestrować modelu|Nie można zarejestrować modelu|Licznik|Łącznie|Liczba rejestracji modelu zakończonych niepowodzeniem w tym obszarze roboczym|Scenariusz, StatusCode|
-|Uruchomiono Wdrażanie modelu|Uruchomiono Wdrażanie modelu|Licznik|Łącznie|Liczba rozpoczętych wdrożeń modelu w tym obszarze roboczym|Scenariusz|
-|Wdrażanie modelu powiodło się|Wdrażanie modelu powiodło się|Licznik|Łącznie|Liczba wdrożeń modelu, które zakończyły się pomyślnie w tym obszarze roboczym|Scenariusz|
-|Wdrażanie modelu nie powiodło się|Wdrażanie modelu nie powiodło się|Licznik|Łącznie|Liczba wdrożeń modelu, które zakończyły się niepowodzeniem w tym obszarze roboczym|Scenariusz, StatusCode|
-|Łączna liczba węzłów|Łączna liczba węzłów|Licznik|Średnia|Łączna liczba węzłów. Ta suma obejmuje niektóre aktywne węzły, bezczynne węzły, węzły niezdatne do użytku, węzły zastępujące, pozostawiając węzły|Scenariusz, ClusterName|
-|Aktywne węzły|Aktywne węzły|Licznik|Średnia|Liczba węzłów Active. Są to węzły, w których aktywnie uruchomiono zadanie.|Scenariusz, ClusterName|
-|Węzły bezczynne|Węzły bezczynne|Licznik|Średnia|Liczba bezczynnych węzłów. Węzły bezczynne są węzłami, w których nie są uruchomione żadne zadania, ale mogą akceptować nowe zadanie, jeśli jest dostępne.|Scenariusz, ClusterName|
-|Węzły niezdatne do użytku|Węzły niezdatne do użytku|Licznik|Średnia|Liczba nieużywanych węzłów. Węzły, które nie są użyteczne, nie działają z powodu problemu z nierozpoznawalne. Platforma Azure przeprowadzi odtwarzanie tych węzłów.|Scenariusz, ClusterName|
-|Zastępujące węzły|Zastępujące węzły|Licznik|Średnia|Liczba przeniesiona węzłów. Te węzły są węzłami o niskim priorytecie, które znajdują się poza dostępną pulą węzłów.|Scenariusz, ClusterName|
-|Opuszczanie węzłów|Opuszczanie węzłów|Licznik|Średnia|Liczba pozostałych węzłów. Opuszczenie węzłów to węzły, które po prostu zakończyły przetwarzanie zadania i przechodzą w stan bezczynności.|Scenariusz, ClusterName|
-|Łączna liczba rdzeni|Łączna liczba rdzeni|Licznik|Średnia|Łączna liczba rdzeni|Scenariusz, ClusterName|
-|Aktywne rdzenie|Aktywne rdzenie|Licznik|Średnia|Liczba aktywnych rdzeni|Scenariusz, ClusterName|
-|Rdzenie bezczynne|Rdzenie bezczynne|Licznik|Średnia|Liczba rdzeni bezczynnych|Scenariusz, ClusterName|
-|Rdzenie, których nie można używać|Rdzenie, których nie można używać|Licznik|Średnia|Liczba rdzeni, których nie można używać|Scenariusz, ClusterName|
-|Występujące rdzenie|Występujące rdzenie|Licznik|Średnia|Liczba przeniesiona rdzeni|Scenariusz, ClusterName|
-|Opuszczanie rdzeni|Opuszczanie rdzeni|Licznik|Średnia|Liczba rdzeni wychodzących|Scenariusz, ClusterName|
-|Procent wykorzystania przydziałów|Procent wykorzystania przydziałów|Licznik|Średnia|Procent wykorzystania przydziałów|Scenariusz, ClusterName, VmFamilyName, VmPriority|
-|CpuUtilization|CpuUtilization|Licznik|Średnia|Procesor CPU (wersja zapoznawcza)|Scenariusz, runId, NodeId, CreatedTime|
-|GpuUtilization|GpuUtilization|Licznik|Średnia|Procesor GPU (wersja zapoznawcza)|Scenariusz, runId, NodeId, CreatedTime, DeviceId|
+|Ukończone przebiegi|Ukończone przebiegi|Liczba|Łącznie|Liczba przebiegów zakończonych pomyślnie dla tego obszaru roboczego|Scenariusz,RunType,PublishedPipelineId,ComputeType,PipelineStepType|
+|Rozpoczęte biegi|Rozpoczęte biegi|Liczba|Łącznie|Liczba uruchomień rozpoczętych dla tego obszaru roboczego|Scenariusz,RunType,PublishedPipelineId,ComputeType,PipelineStepType|
+|Nieudane przebiegi|Nieudane przebiegi|Liczba|Łącznie|Liczba uruchomień nie powiodła się dla tego obszaru roboczego|Scenariusz,RunType,PublishedPipelineId,ComputeType,PipelineStepType|
+|Rejestr modelu zakończył się pomyślnie|Rejestr modelu zakończył się pomyślnie|Liczba|Łącznie|Liczba rejestracji modelu, które powiodły się w tym obszarze roboczym|Scenariusz|
+|Rejestr modelu nie powiódł się|Rejestr modelu nie powiódł się|Liczba|Łącznie|Liczba rejestracji modelu, które nie powiodły się w tym obszarze roboczym|Scenariusz,Kod stanu|
+|Rozpoczęto wdrażanie modelu|Rozpoczęto wdrażanie modelu|Liczba|Łącznie|Liczba wdrożeń modelu rozpoczętych w tym obszarze roboczym|Scenariusz|
+|Wdrożenie modelu powiodło się|Wdrożenie modelu powiodło się|Liczba|Łącznie|Liczba wdrożeń modelu, które powiodły się w tym obszarze roboczym|Scenariusz|
+|Wdrażanie modelu nie powiodło się|Wdrażanie modelu nie powiodło się|Liczba|Łącznie|Liczba wdrożeń modelu, które nie powiodły się w tym obszarze roboczym|Scenariusz,Kod stanu|
+|Łączna liczba węzłów|Łączna liczba węzłów|Liczba|Średnia|Liczba węzłów ogółem. Suma ta obejmuje niektóre aktywne węzły, węzły bezczynności, węzły bezużyteczne, wstępnie wywłaszczone węzły, opuszczanie węzłów|Scenariusz,Nazwa klastra|
+|Aktywne węzły|Aktywne węzły|Liczba|Średnia|Liczba węzłów Acitve. Są to węzły, które aktywnie uruchamiają zadanie.|Scenariusz,Nazwa klastra|
+|Węzły bezczynne|Węzły bezczynne|Liczba|Średnia|Liczba bezczynnych węzłów. Bezczynne węzły są węzłami, które nie są uruchomione żadne zadania, ale można zaakceptować nowe zadanie, jeśli są dostępne.|Scenariusz,Nazwa klastra|
+|Niezniszalne węzły|Niezniszalne węzły|Liczba|Średnia|Liczba węzłów bezużytecznych. Nieużywalne węzły nie są funkcjonalne z powodu pewnego problemu nierozwiązywalne. Platforma Azure będzie przetwarzać te węzły.|Scenariusz,Nazwa klastra|
+|Wstępnie wywłaszczone węzły|Wstępnie wywłaszczone węzły|Liczba|Średnia|Liczba wywłaszczonych węzłów. Te węzły są węzły o niskim priorytecie, które są zabierane z puli dostępnych węzłów.|Scenariusz,Nazwa klastra|
+|Opuszczanie węzłów|Opuszczanie węzłów|Liczba|Średnia|Liczba węzłów opuszczających. Pozostawiając węzły są węzły, które właśnie zakończył przetwarzania zadania i przejdzie do stanu bezczynnego.|Scenariusz,Nazwa klastra|
+|Całkowita liczba rdzeni|Całkowita liczba rdzeni|Liczba|Średnia|Liczba całkowitej liczby rdzeni|Scenariusz,Nazwa klastra|
+|Aktywne rdzenie|Aktywne rdzenie|Liczba|Średnia|Liczba aktywnych rdzeni|Scenariusz,Nazwa klastra|
+|Rdzenie bezczynne|Rdzenie bezczynne|Liczba|Średnia|Liczba bezczynnych rdzeni|Scenariusz,Nazwa klastra|
+|Niezniszalne rdzenie|Niezniszalne rdzenie|Liczba|Średnia|Liczba niezniszalnych rdzeni|Scenariusz,Nazwa klastra|
+|Wywłaszczone rdzenie|Wywłaszczone rdzenie|Liczba|Średnia|Liczba wywłaszczonych rdzeni|Scenariusz,Nazwa klastra|
+|Opuszczanie rdzeni|Opuszczanie rdzeni|Liczba|Średnia|Liczba rdzeni opuszczających|Scenariusz,Nazwa klastra|
+|Procent wykorzystania przydziału|Procent wykorzystania przydziału|Liczba|Średnia|Procent wykorzystanego przydziału|Scenariusz,Nazwa klastra,Nazwa wirtualna,VmPriority|
+|Utilizacja procesora|Utilizacja procesora|Liczba|Średnia|Procesor (wersja zapoznawcza)|Scenariusz,runId,Identyfikator węzła,CreatedTime|
+|GpuUtilization|GpuUtilization|Liczba|Średnia|GPU (wersja zapoznawcza)|Scenariusz,runId,Identyfikator węzła,CreatedTime,Identyfikator urządzenia|
 
 
-## <a name="microsoftmapsaccounts"></a>Microsoft. Maps/konta
+## <a name="microsoftmapsaccounts"></a>Microsoft.Maps/accounts Microsoft.Maps/accounts Microsoft.Maps/accounts Microsoft.
 
-|Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary|
+|Metryka|Metryka Nazwa wyświetlana|Jednostka|Typ agregacji|Opis|Wymiary|
 |---|---|---|---|---|---|
-|Sposób użycia|Sposób użycia|Licznik|Licznik|Liczba wywołań interfejsu API|ApiCategory, ApiName, ResultType, ResponseCode|
-|Dostępność|Dostępność|Procent|Średnia|Dostępność interfejsów API|ApiCategory, ApiName|
+|Sposób użycia|Sposób użycia|Liczba|Liczba|Liczba wywołań interfejsu API|Kategoria api,ApiName,Typ wyniku,Kod odpowiedzi|
+|Dostępność|Dostępność|Wartość procentowa|Średnia|Dostępność interfejsów API|Kategoria api,Nazwa api|
 
-## <a name="microsoftmediamediaservicesstreamingendpoints"></a>Microsoft. Media/MediaServices/streamingEndpoints
+## <a name="microsoftmediamediaservicesstreamingendpoints"></a>Microsoft.Media/mediaservices/streamingWypunkty końcowe
 
-|Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary|
+|Metryka|Metryka Nazwa wyświetlana|Jednostka|Typ agregacji|Opis|Wymiary|
 |---|---|---|---|---|---|
-|Ruch wychodzący|Ruch wychodzący|Bajty|Łącznie|Ilość danych wyjściowych w bajtach.|OutputFormat|
-|SuccessE2ELatency|Pomyślne zakończenie oczekiwania|Milisekundy|Średnia|Średnie opóźnienie dla pomyślnych żądań w milisekundach.|OutputFormat|
-|Żądania|Żądania|Licznik|Łącznie|Żądania do punktu końcowego przesyłania strumieniowego.|OutputFormat, HttpStatusCode, ErrorCode|
+|Ruch wychodzący|Ruch wychodzący|Bajty|Łącznie|Ilość danych ruchu wychodzącego w bajtach.|Format wyjściowy|
+|SuccessE2ELatency|Sukces koniec do końca Latencja|Milisekund|Średnia|Średnie opóźnienie dla pomyślnych żądań w milisekundach.|Format wyjściowy|
+|Żądania|Żądania|Liczba|Łącznie|Żądania do punktu końcowego przesyłania strumieniowego.|Dataformat,HttpStatusCode,Kod błędu|
 
 
-## <a name="microsoftmediamediaservices"></a>Microsoft. Media/MediaServices
+## <a name="microsoftmediamediaservices"></a>Usługi Microsoft.Media/media
 
-|Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary|
+|Metryka|Metryka Nazwa wyświetlana|Jednostka|Typ agregacji|Opis|Wymiary|
 |---|---|---|---|---|---|
-|AssetQuota|Przydział zasobów|Licznik|Średnia|Ile zasobów jest dozwolonych dla bieżącego konta usługi multimediów|None|
-|AssetCount|Liczba zasobów|Licznik|Średnia|Ile zasobów zostało już utworzonych na bieżącym koncie usługi multimediów|None|
-|AssetQuotaUsedPercentage|Procent użycia przydziału zasobów|Procent|Średnia|Procent użycia zasobów w bieżącym koncie usługi multimediów|None|
-|ContentKeyPolicyQuota|Przydział zasad dotyczących kluczy zawartości|Licznik|Średnia|Ile zasad kluczy zawartości jest dozwolonych dla bieżącego konta usługi multimediów|None|
-|ContentKeyPolicyCount|Liczba zasad dotyczących kluczy zawartości|Licznik|Średnia|Ile zasad kluczy zawartości zostało już utworzonych na bieżącym koncie usługi multimediów|None|
-|ContentKeyPolicyQuotaUsedPercentage|Procent użycia przydziału zasad klucza zawartości|Procent|Średnia|Procent użycia zasad klucza zawartości w bieżącym koncie usługi multimediów|None|
-|StreamingPolicyQuota|Limit przydziału zasad przesyłania strumieniowego|Licznik|Średnia|Ile zasad przesyłania strumieniowego jest dozwolonych dla bieżącego konta usługi multimediów|None|
-|StreamingPolicyCount|Liczba zasad przesyłania strumieniowego|Licznik|Średnia|Ile zasad przesyłania strumieniowego zostało już utworzonych na bieżącym koncie usługi multimediów|None|
-|StreamingPolicyQuotaUsedPercentage|Procent użycia limitu przydziału zasad przesyłania strumieniowego|Procent|Średnia|Procent użycia zasad przesyłania strumieniowego w bieżącym koncie usługi multimediów|None|
+|AssetQuota (Quota aktywów)|Przydział środków trwałych|Liczba|Średnia|Ile zasobów jest dozwolonych dla bieżącego konta usługi multimediów|Brak|
+|AssetCount (licz assetcount)|Liczba zasobów|Liczba|Średnia|Ile zasobów jest już utworzonych na bieżącym koncie usługi multimediów|Brak|
+|AssetQuotaUsedPercentage|Użyta wartość procentowa przydziału zasobów|Wartość procentowa|Średnia|Procent użycia zasobu na bieżącym koncie usługi multimediów|Brak|
+|ContentKeyPolicyQuota (ContentKeyPolicyQuota)|Przydział zasad klucza zawartości|Liczba|Średnia|Ile treści kluczowych zasady są dozwolone dla bieżącego konta usługi multimedialnej|Brak|
+|ContentKeyPolicyCount (Liczba klawiatur contentkeypolicycount)|Liczba zasad klucza zawartości|Liczba|Średnia|Ile zasad klucza zawartości jest już utworzonych na bieżącym koncie usługi multimedialnej|Brak|
+|ContentKeyPolicyQuotaUsedPercentage|Użyto wartości procentowej przydziału zasad klucza zawartości|Wartość procentowa|Średnia|Zasady klucza zawartości używane procentowe na bieżącym koncie usługi multimedialnej|Brak|
+|StreamingPolicyQuota|Przydział zasad przesyłania strumieniowego|Liczba|Średnia|Ile zasad przesyłania strumieniowego jest dozwolonych dla bieżącego konta usługi multimediów|Brak|
+|StreamingPolicyCount|Liczba zasad przesyłania strumieniowego|Liczba|Średnia|Ile zasad przesyłania strumieniowego jest już utworzonych na bieżącym koncie usługi multimediów|Brak|
+|StreamingPolicyQuotaUsedPercentage|Użyty procent przydziału zasad przesyłania strumieniowego|Wartość procentowa|Średnia|Polityka przesyłania strumieniowego używana procent na bieżącym koncie usługi multimedialnej|Brak|
 
-## <a name="microsoftnetappnetappaccountscapacitypoolsvolumes"></a>Microsoft. NetApp/netAppAccounts/capacityPools/woluminy
+## <a name="microsoftnetappnetappaccountscapacitypoolsvolumes"></a>Microsoft.NetApp/netAppKonakony/pojemnośćPuly/woluminy
 
-|Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary|
+|Metryka|Metryka Nazwa wyświetlana|Jednostka|Typ agregacji|Opis|Wymiary|
 |---|---|---|---|---|---|
-|AverageReadLatency|Średnie opóźnienie odczytu|MilliSeconds|Średnia|Średnie opóźnienie odczytu w milisekundach na operację|None|
-|AverageWriteLatency|Średnie opóźnienie zapisu|MilliSeconds|Średnia|Średnie opóźnienie zapisu w milisekundach na operację|None|
-|VolumeLogicalSize|Rozmiar logiczny woluminu|Bajty|Średnia|Rozmiar logiczny woluminu (zużyte bajty)|None|
-|VolumeSnapshotSize|Rozmiar migawki woluminu|Bajty|Średnia|Rozmiar wszystkich migawek w woluminie|None|
-|ReadIops|Odczyt operacji we/wy|CountPerSecond|Średnia|Operacje odczytu/out na sekundę|None|
-|WriteIops|Zapisz operacje we/wy|CountPerSecond|Średnia|Operacje zapisu/wylogowania na sekundę|None|
+|ŚredniareadLatency|Średnie opóźnienie odczytu|Milisekund|Średnia|Średnie opóźnienie odczytu w milisekundach na operację|Brak|
+|Średnia Średniawłasność|Średnie opóźnienie zapisu|Milisekund|Średnia|Średnie opóźnienie zapisu w milisekundach na operację|Brak|
+|Rozmiar volumeLogicalSize|Rozmiar logiczny woluminu|Bajty|Średnia|Rozmiar logiczny woluminu (używane bajty)|Brak|
+|Rozmiar pliku VolumeSnapshotSize|Rozmiar migawki woluminu|Bajty|Średnia|Rozmiar wszystkich migawek w woluminie|Brak|
+|ReadIops (ReadIops)|Przeczytaj iops|Połów połówek|Średnia|Operacje odczytu/wyjścia na sekundę|Brak|
+|WriteIops (WriteIops)|Napisz iops|Połów połówek|Średnia|Zapis operacji wpuszczania/wyjścia na sekundę|Brak|
 
-## <a name="microsoftnetappnetappaccountscapacitypools"></a>Microsoft.NetApp/netAppAccounts/capacityPools
+## <a name="microsoftnetappnetappaccountscapacitypools"></a>Microsoft.NetApp/netAppKonakony/pojemność Pools
 
-|Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary|
+|Metryka|Metryka Nazwa wyświetlana|Jednostka|Typ agregacji|Opis|Wymiary|
 |---|---|---|---|---|---|
-|VolumePoolAllocatedUsed|Użyte przydzieloną pulę woluminów|Bajty|Średnia|Przydzielono używany rozmiar puli|None|
-|VolumePoolTotalLogicalSize|Łączny rozmiar logiczny puli woluminów|Bajty|Średnia|Suma rozmiaru logicznego wszystkich woluminów należących do puli|None|
+|VolumePoolPrzydzieliłUżywane|Użyta pula woluminów|Bajty|Średnia|Przydzielony używany rozmiar puli|Brak|
+|Rozmiar woluminuPoolTotalLogicalSize|Całkowity rozmiar logiczny puli woluminów|Bajty|Średnia|Suma logicznego rozmiaru wszystkich tomów należących do puli|Brak|
 
 ## <a name="microsoftnetworknetworkinterfaces"></a>Microsoft.Network/networkInterfaces
 
-|Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary|
+|Metryka|Metryka Nazwa wyświetlana|Jednostka|Typ agregacji|Opis|Wymiary|
 |---|---|---|---|---|---|
-|BytesSentRate|Bajty wysłane|Bajty|Łącznie|Liczba bajtów wysłanych przez interfejs sieciowy|None|
-|BytesReceivedRate|Bajty odebrane|Bajty|Łącznie|Liczba bajtów odebranych przez interfejs sieciowy|None|
-|PacketsSentRate|Wysłane pakiety|Licznik|Łącznie|Liczba pakietów wysłanych przez interfejs sieciowy|None|
-|PacketsReceivedRate|Odebrane pakiety|Licznik|Łącznie|Liczba pakietów odebranych przez interfejs sieciowy|None|
+|BytesSentRate (BytesSentRate)|Bajty wysłane|Bajty|Łącznie|Liczba bajtów wysłanych przez interfejs sieciowy|Brak|
+|BytesReceivedRate (Właso)|Bajty odebrane|Bajty|Łącznie|Liczba bajtów odebranych przez interfejs sieciowy|Brak|
+|PacketsSentRate (Szybkość pakietu)|Wysłane pakiety|Liczba|Łącznie|Liczba pakietów wysłanych przez interfejs sieciowy|Brak|
+|PakietyReceivedRate|Odebrane pakiety|Liczba|Łącznie|Liczba pakietów odebranych przez interfejs sieciowy|Brak|
 
 ## <a name="microsoftnetworkloadbalancers"></a>Microsoft.Network/loadBalancers
 
-|Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary|
+|Metryka|Metryka Nazwa wyświetlana|Jednostka|Typ agregacji|Opis|Wymiary|
 |---|---|---|---|---|---|
-|VipAvailability|Dostępność ścieżki danych|Licznik|Średnia|Średnia dostępność ścieżki danych Load Balancer na czas trwania|FrontendIPAddress,FrontendPort|
-|DipAvailability|Stan sondy kondycji|Licznik|Średnia|Średni stan sondy kondycji Load Balancer na czas trwania|ProtocolType, BackendPort, FrontendIPAddress, FrontendPort, BackendIPAddress|
-|ByteCount|Liczba bajtów|Licznik|Łącznie|Łączna liczba bajtów przesłanych w okresie|FrontendIPAddress, FrontendPort, kierunek|
-|PacketCount|Liczba pakietów|Licznik|Łącznie|Łączna liczba pakietów wysłanych w czasie|FrontendIPAddress, FrontendPort, kierunek|
-|SYNCount|Liczba SYN|Licznik|Łącznie|Łączna liczba pakietów SYN wysłanych w czasie|FrontendIPAddress, FrontendPort, kierunek|
-|SnatConnectionCount|Liczba połączeń z translatorem adresów sieciowych|Licznik|Łącznie|Łączna liczba nowych połączeń z przyłączaniem do adresów w czasie|FrontendIPAddress,BackendIPAddress,ConnectionState|
-|AllocatedSnatPorts|Przydzielono porty przydziałów (wersja zapoznawcza)|Licznik|Łącznie|Łączna liczba portów przydzieloną porty adresów sieciowych w okresie|FrontendIPAddress, BackendIPAddress, ProtocolType, IsAwaitingRemoval|
-|UsedSnatPorts|Używane porty (wersja zapoznawcza)|Licznik|Łącznie|Łączna liczba portów przydziałów adresów sieciowych używanych w czasie|FrontendIPAddress, BackendIPAddress, ProtocolType, IsAwaitingRemoval|
+|Dostępność Vip|Dostępność ścieżki danych|Liczba|Średnia|Dostępność ścieżki danych średniego modułu równoważenia obciążenia na czas trwania|FrontendIPAddress,FrontendPort|
+|DipDostępność|Stan sondy kondycji|Liczba|Średnia|Średnia kondycja modułu równoważenia obciążenia stan na czas trwania|ProtocolType,BackendPort,FrontendIPAddress,FrontendPort,BackendIPAddress|
+|Bytecount|Liczba bajtów|Liczba|Łącznie|Całkowita liczba bajtów przesłanych w okresie czasu|FrontendIPAddress,FrontendPort,Kierunek|
+|Liczba pakietów|Liczba pakietów|Liczba|Łącznie|Całkowita liczba pakietów przesłanych w okresie czasu|FrontendIPAddress,FrontendPort,Kierunek|
+|Konto SYNCount|Liczba SYN|Liczba|Łącznie|Całkowita liczba pakietów SYN przesłanych w okresie czasu|FrontendIPAddress,FrontendPort,Kierunek|
+|SnatConnectionCount (Liczba połączeń SnatConnection)|Liczba połączeń SNAT|Liczba|Łącznie|Łączna liczba nowych połączeń SNAT utworzonych w okresie czasu|FrontendIPAddress,BackendIPAddress,ConnectionState|
+|AllocatedSnatPorts (Porty AllocatedSnat)|Przydzielone porty SNAT (wersja zapoznawcza)|Liczba|Łącznie|Łączna liczba portów SNAT przydzielonych w okresie czasu|FrontendIPAddress,BackendIPAddress,ProtocolType,IsAwaitingRemoval|
+|UżywanePorty sznat|Używane porty SNAT (wersja zapoznawcza)|Liczba|Łącznie|Całkowita liczba portów SNAT używanych w okresie czasu|FrontendIPAddress,BackendIPAddress,ProtocolType,IsAwaitingRemoval|
 
 
 ## <a name="microsoftnetworkdnszones"></a>Microsoft.Network/dnszones
 
-|Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary|
+|Metryka|Metryka Nazwa wyświetlana|Jednostka|Typ agregacji|Opis|Wymiary|
 |---|---|---|---|---|---|
-|QueryVolume|Wolumin zapytania|Licznik|Łącznie|Liczba zapytań obsłużonych dla strefy DNS|None|
-|RecordSetCount|Liczba zestawów rekordów|Licznik|Maksimum|Liczba zestawów rekordów w strefie DNS|None|
-|RecordSetCapacityUtilization|Wykorzystanie pojemności zestawu rekordów|Procent|Maksimum|Procent pojemności zestawu rekordów używany przez strefę DNS|None|
+|QueryVolume (Wyw.|Wolumin kwerendy|Liczba|Łącznie|Liczba zapytań obsługiwanych dla strefy DNS|Brak|
+|Konto RecordSetCount|Liczba zestawów rekordów|Liczba|Maksimum|Liczba zestawów rekordów w strefie DNS|Brak|
+|Ulatnianie recordSetCapacityUtilization|Rekordowe wykorzystanie pojemności zestawu mocy produkcyjnych|Wartość procentowa|Maksimum|Procent pojemności zestawu rekordów wykorzystywanej przez strefę DNS|Brak|
 
 
 ## <a name="microsoftnetworkpublicipaddresses"></a>Microsoft.Network/publicIPAddresses
 
-|Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary|
+|Metryka|Metryka Nazwa wyświetlana|Jednostka|Typ agregacji|Opis|Wymiary|
 |---|---|---|---|---|---|
-|PacketsInDDoS|Pakiety przychodzące DDoS|CountPerSecond|Maksimum|Pakiety przychodzące DDoS|None|
-|PacketsDroppedDDoS|Odrzucone pakiety przychodzące DDoS|CountPerSecond|Maksimum|Odrzucone pakiety przychodzące DDoS|None|
-|PacketsForwardedDDoS|Przekazane pakiety przychodzące DDoS|CountPerSecond|Maksimum|Przekazane pakiety przychodzące DDoS|None|
-|TCPPacketsInDDoS|Przychodzące pakiety TCP DDoS|CountPerSecond|Maksimum|Przychodzące pakiety TCP DDoS|None|
-|TCPPacketsDroppedDDoS|Liczba porzuconych pakietów TCP przychodzących DDoS|CountPerSecond|Maksimum|Liczba porzuconych pakietów TCP przychodzących DDoS|None|
-|TCPPacketsForwardedDDoS|Przychodzące pakiety TCP przesłane dalej DDoS|CountPerSecond|Maksimum|Przychodzące pakiety TCP przesłane dalej DDoS|None|
-|UDPPacketsInDDoS|Przychodzące pakiety UDP DDoS|CountPerSecond|Maksimum|Przychodzące pakiety UDP DDoS|None|
-|UDPPacketsDroppedDDoS|Liczba porzuconych pakietów przychodzących UDP DDoS|CountPerSecond|Maksimum|Liczba porzuconych pakietów przychodzących UDP DDoS|None|
-|UDPPacketsForwardedDDoS|Przychodzące pakiety UDP DDoS przesłane dalej|CountPerSecond|Maksimum|Przychodzące pakiety UDP DDoS przesłane dalej|None|
-|BytesInDDoS|Bajty przychodzące DDoS|BytesPerSecond|Maksimum|Bajty przychodzące DDoS|None|
-|BytesDroppedDDoS|Bajty przychodzące opuszczone DDoS|BytesPerSecond|Maksimum|Bajty przychodzące opuszczone DDoS|None|
-|BytesForwardedDDoS|Przekazane bajty przychodzące DDoS|BytesPerSecond|Maksimum|Przekazane bajty przychodzące DDoS|None|
-|TCPBytesInDDoS|Przychodzące bajty TCP DDoS|BytesPerSecond|Maksimum|Przychodzące bajty TCP DDoS|None|
-|TCPBytesDroppedDDoS|Liczba porzuconych bajtów przychodzących protokołu TCP DDoS|BytesPerSecond|Maksimum|Liczba porzuconych bajtów przychodzących protokołu TCP DDoS|None|
-|TCPBytesForwardedDDoS|Przekazane DDoS przychodzące bajty TCP|BytesPerSecond|Maksimum|Przekazane DDoS przychodzące bajty TCP|None|
-|UDPBytesInDDoS|Przychodzące bajty UDP DDoS|BytesPerSecond|Maksimum|Przychodzące bajty UDP DDoS|None|
-|UDPBytesDroppedDDoS|Liczba porzuconych bajtów przychodzących UDP DDoS|BytesPerSecond|Maksimum|Liczba porzuconych bajtów przychodzących UDP DDoS|None|
-|UDPBytesForwardedDDoS|Przekazane przychodzące bajty UDP DDoS|BytesPerSecond|Maksimum|Przekazane przychodzące bajty UDP DDoS|None|
-|IfUnderDDoSAttack|W obszarze atak DDoS|Licznik|Maksimum|W obszarze atak DDoS|None|
-|DDoSTriggerTCPPackets|Przychodzące pakiety TCP do wyzwalania łagodzenia DDoS|CountPerSecond|Maksimum|Przychodzące pakiety TCP do wyzwalania łagodzenia DDoS|None|
-|DDoSTriggerUDPPackets|Przychodzące pakiety UDP do wyzwalania łagodzenia DDoS|CountPerSecond|Maksimum|Przychodzące pakiety UDP do wyzwalania łagodzenia DDoS|None|
-|DDoSTriggerSYNPackets|Pakiety przychodzących SYN wyzwalające łagodzenie DDoS|CountPerSecond|Maksimum|Pakiety przychodzących SYN wyzwalające łagodzenie DDoS|None|
-|VipAvailability|Dostępność ścieżki danych|Licznik|Średnia|Średnia dostępność adresów IP na czas trwania|Port|
-|ByteCount|Liczba bajtów|Licznik|Łącznie|Łączna liczba bajtów przesłanych w okresie|Port, kierunek|
-|PacketCount|Liczba pakietów|Licznik|Łącznie|Łączna liczba pakietów wysłanych w czasie|Port, kierunek|
-|SynCount|Liczba SYN|Licznik|Łącznie|Łączna liczba pakietów SYN wysłanych w czasie|Port, kierunek|
+|PacketsInDDoS (Usługi wg.|Pakiety przychodzące DDoS|Połów połówek|Maksimum|Pakiety przychodzące DDoS|Brak|
+|PakietyDroppedDDoS|Pakiety przychodzące porzucone DDoS|Połów połówek|Maksimum|Pakiety przychodzące porzucone DDoS|Brak|
+|PacketsForwardedDDoS|Pakiety przychodzące przesyłane dalej DDoS|Połów połówek|Maksimum|Pakiety przychodzące przesyłane dalej DDoS|Brak|
+|Protokół TCPPacketsIndDoS|Przychodzące pakiety TCP DDoS|Połów połówek|Maksimum|Przychodzące pakiety TCP DDoS|Brak|
+|Protokół TCPPacketsDroppedDDoS|Przychodzące pakiety TCP porzucone DDoS|Połów połówek|Maksimum|Przychodzące pakiety TCP porzucone DDoS|Brak|
+|TCPPacketsForwardedDDoS|Przychodzące pakiety TCP przesyłane dalej DDoS|Połów połówek|Maksimum|Przychodzące pakiety TCP przesyłane dalej DDoS|Brak|
+|UDPPacketsIndDoS|Przychodzące pakiety UDP DDoS|Połów połówek|Maksimum|Przychodzące pakiety UDP DDoS|Brak|
+|UDPPacketsDroppedDDoS|Przychodzące pakiety UDP porzucone DDoS|Połów połówek|Maksimum|Przychodzące pakiety UDP porzucone DDoS|Brak|
+|UDPPacketsForwardedDDoS|Przychodzące pakiety UDP przekazywane ddos|Połów połówek|Maksimum|Przychodzące pakiety UDP przekazywane ddos|Brak|
+|BytesIndDoS (BytesInDDoS)|Bajty przychodzące DDoS|PrzeztówPerSekunda|Maksimum|Bajty przychodzące DDoS|Brak|
+|BajtyDroppedDDoS|Bajty przychodzące porzucone DDoS|PrzeztówPerSekunda|Maksimum|Bajty przychodzące porzucone DDoS|Brak|
+|BajtówForwardedDDoS|Bajty przychodzące przekazywane dalej DDoS|PrzeztówPerSekunda|Maksimum|Bajty przychodzące przekazywane dalej DDoS|Brak|
+|Protokół TCPBytesInDDoS|Przychodzące bajty TCP DDoS|PrzeztówPerSekunda|Maksimum|Przychodzące bajty TCP DDoS|Brak|
+|Protokół TCPBytesDroppedDDoS|Przychodzące bajty TCP porzucone DDoS|PrzeztówPerSekunda|Maksimum|Przychodzące bajty TCP porzucone DDoS|Brak|
+|TCPBytesForwardedDDoS|Przychodzące bajty TCP przekazywane dalej DDoS|PrzeztówPerSekunda|Maksimum|Przychodzące bajty TCP przekazywane dalej DDoS|Brak|
+|UDPBytesIndDoS|Przychodzące bajty UDP DDoS|PrzeztówPerSekunda|Maksimum|Przychodzące bajty UDP DDoS|Brak|
+|UDPBytesDroppedDDoS|Przychodzące bajty UDP porzucone DDoS|PrzeztówPerSekunda|Maksimum|Przychodzące bajty UDP porzucone DDoS|Brak|
+|UDPBytesForwardedDDoS|Przychodzące bajty UDP przekazywane dalej DDoS|PrzeztówPerSekunda|Maksimum|Przychodzące bajty UDP przekazywane dalej DDoS|Brak|
+|Atak IfUnderDDoS|W ramach ataku DDoS lub nie|Liczba|Maksimum|W ramach ataku DDoS lub nie|Brak|
+|Pakiety DDoSTriggerTCP|Przychodzące pakiety TCP wyzwalające środki ograniczające DDoS|Połów połówek|Maksimum|Przychodzące pakiety TCP wyzwalające środki ograniczające DDoS|Brak|
+|Pakiety DDoSTriggeruDP|Przychodzące pakiety UDP w celu wyzwolenia ograniczania DDoS|Połów połówek|Maksimum|Przychodzące pakiety UDP w celu wyzwolenia ograniczania DDoS|Brak|
+|Pakiety DDoSTriggerSYN|Przychodzące pakiety SYN w celu wyzwolenia łagodzenia DDoS|Połów połówek|Maksimum|Przychodzące pakiety SYN w celu wyzwolenia łagodzenia DDoS|Brak|
+|Dostępność Vip|Dostępność ścieżki danych|Liczba|Średnia|Średnia dostępność adresu IP na czas trwania|Port|
+|Bytecount|Liczba bajtów|Liczba|Łącznie|Całkowita liczba bajtów przesłanych w okresie czasu|Port,Kierunek|
+|Liczba pakietów|Liczba pakietów|Liczba|Łącznie|Całkowita liczba pakietów przesłanych w okresie czasu|Port,Kierunek|
+|Konto SynCount|Liczba SYN|Liczba|Łącznie|Całkowita liczba pakietów SYN przesłanych w okresie czasu|Port,Kierunek|
 
 
 
-## <a name="microsoftnetworkvirtualnetworks"></a>Microsoft.Network/virtualNetworks
+## <a name="microsoftnetworkvirtualnetworks"></a>Sieć Microsoft.Network/virtual Sieci
 
-|Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary|
+|Metryka|Metryka Nazwa wyświetlana|Jednostka|Typ agregacji|Opis|Wymiary|
 |---|---|---|---|---|---|
-|PingMeshAverageRoundtripMs|Czas błądzenia dla poleceń ping dla maszyny wirtualnej|MilliSeconds|Średnia|Czas błądzenia dla poleceń ping wysyłanych do docelowej maszyny wirtualnej|SourceCustomerAddress,DestinationCustomerAddress|
-|PingMeshProbesFailedPercent|Nieudane polecenia ping do maszyny wirtualnej|Procent|Średnia|Procent liczby zakończonych niepowodzeniem poleceń ping do całkowitego wysłania poleceń ping dla docelowej maszyny wirtualnej|SourceCustomerAddress,DestinationCustomerAddress|
+|PingMeshAverageRoundtripMs|Czas podróży w obie strony dla pingów na maszynę wirtualną|Milisekund|Średnia|Czas podróży w obie strony dla pingów wysłanych do docelowej maszyny Wirtualnej|ŹródłoCustomerAddress,DestinationCustomerAddress|
+|PingMeshProbesFailedPercent|Nieudane pingi do maszyny Wirtualnej|Wartość procentowa|Średnia|Procent liczby nieudanych pingów do sumy wysłanych pingów docelowej maszyny Wirtualnej|ŹródłoCustomerAddress,DestinationCustomerAddress|
 
 
 ## <a name="microsoftnetworkazurefirewalls"></a>Microsoft.Network/azurefirewalls
 
-|Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary|
+|Metryka|Metryka Nazwa wyświetlana|Jednostka|Typ agregacji|Opis|Wymiary|
 |---|---|---|---|---|---|
-|ApplicationRuleHit|Liczba trafień reguł aplikacji|Licznik|Łącznie|Liczba trafień reguł aplikacji|Stan, powód, protokół|
-|NetworkRuleHit|Liczba trafień reguł sieci|Licznik|Łącznie|Liczba trafień reguł sieci|Stan, powód, protokół|
-|FirewallHealth|Stan kondycji zapory|Procent|Średnia|Stan kondycji zapory|Stan, Przyczyna|
-|Przetwarzanie dataprocessed|Przetworzone dane|Bajty|Łącznie|Łączna ilość danych przetworzonych przez zaporę|None|
-|SNATPortUtilization|Wykorzystanie portów przez przytranslatora adresów sieciowych|Procent|Średnia|Wykorzystanie portów przez przytranslatora adresów sieciowych|None|
+|ApplicationRuleHit (Reguła aplikacji)|Liczba trafień reguł aplikacji|Liczba|Łącznie|Ile razy zostały trafione reguły aplikacji|Stan,Przyczyna,Protokół|
+|NetworkRuleHit (Zasady sieciowe)|Liczba trafień reguł sieciowych|Liczba|Łącznie|Liczba trafień reguł sieciowych|Stan,Przyczyna,Protokół|
+|FirewallHealth (FirewallHealth)|Stan kondycji zapory|Wartość procentowa|Średnia|Stan kondycji zapory|Stan,Przyczyna|
+|Przetwarzanie danych|Przetwarzane dane|Bajty|Łącznie|Łączna ilość danych przetwarzanych przez zaporę sieciową|Brak|
+|SNATPortutilization (SNATPortutilization)|Wykorzystanie portu SNAT|Wartość procentowa|Średnia|Wykorzystanie portu SNAT|Brak|
 
 
 ## <a name="microsoftnetworkapplicationgateways"></a>Microsoft.Network/applicationGateways
 
-|Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary|
+|Metryka|Metryka Nazwa wyświetlana|Jednostka|Typ agregacji|Opis|Wymiary|
 |---|---|---|---|---|---|
-|Przepływność|Przepływność|BytesPerSecond|Średnia|Liczba bajtów na sekundę obsłużonych przez Application Gateway|None|
-|UnhealthyHostCount|Liczba hostów w złej kondycji|Licznik|Średnia|Liczba hostów zaplecza w złej kondycji|BackendSettingsPool|
-|HealthyHostCount|Liczba hostów w dobrej kondycji|Licznik|Średnia|Liczba hostów zaplecza w dobrej kondycji|BackendSettingsPool|
-|TotalRequests|Łączna liczba żądań|Licznik|Łącznie|Liczba pomyślnych żądań obsłużonych przez Application Gateway|BackendSettingsPool|
-|AvgRequestCountPerHealthyHost|Liczba żądań na minutę na hosta w dobrej kondycji|Licznik|Średnia|Średnia liczba żądań na minutę na hosta zaplecza w dobrej kondycji w puli|BackendSettingsPool|
-|FailedRequests|Żądania zakończone niepowodzeniem|Licznik|Łącznie|Liczba żądań zakończonych niepowodzeniem, które zostały obsłużone przez Application Gateway|BackendSettingsPool|
-|ResponseStatus|Stan odpowiedzi|Licznik|Łącznie|Stan odpowiedzi HTTP zwrócony przez Application Gateway|HttpStatusGroup|
-|Wartości CurrentConnections|Bieżące połączenia|Licznik|Łącznie|Liczba bieżących połączeń ustanowionych z Application Gateway|None|
-|CpuUtilization|Użycie procesora CPU|Procent|Średnia|Bieżące wykorzystanie procesora CPU Application Gateway|None|
-|CapacityUnits|Bieżące jednostki wydajności|Licznik|Średnia|Zużyte jednostki wydajności|None|
-|ComputeUnits|Bieżące jednostki obliczeniowe|Licznik|Średnia|Wykorzystane jednostki obliczeniowe|None|
-|BackendResponseStatus|Stan odpowiedzi zaplecza|Licznik|Łącznie|Liczba kodów odpowiedzi HTTP wygenerowanych przez składowe zaplecza. Nie obejmuje to żadnych kodów odpowiedzi wygenerowanych przez Application Gateway.|BackendServer, ustawień httpsettings elementu, BackendHttpSetting, HttpStatusGroup|
-|TlsProtocol|Protokół TLS klienta|Licznik|Łącznie|Liczba żądań TLS i innych niż TLS zainicjowanych przez klienta, które ustanowiły połączenie z Application Gateway. Aby wyświetlić dystrybucję protokołu TLS, należy filtrować według protokołu TLS wymiaru.|Odbiornik, TlsProtocol|
-|BytesSent|Bajty wysłane|Bajty|Łącznie|Całkowita liczba bajtów wysłanych przez Application Gateway do klientów|Odbiornika|
-|BytesReceived|Bajty odebrane|Bajty|Łącznie|Całkowita liczba bajtów odebranych przez Application Gateway od klientów|Odbiornika|
-|ClientRtt|Czas RTT klienta|MilliSeconds|Średnia|Średni czas błądzenia między klientami a Application Gateway. Ta Metryka wskazuje, jak długo trwa ustanawianie połączeń i zwracanie potwierdzeń|Odbiornika|
-|ApplicationGatewayTotalTime|Łączny czas Application Gateway|MilliSeconds|Średnia|Średni czas przetwarzania żądania i jego odpowiedź do wysłania. Ta wartość jest obliczana jako średnia interwału od momentu, kiedy Application Gateway otrzymuje pierwszy bajt żądania HTTP do momentu zakończenia operacji wysyłania odpowiedzi. Należy pamiętać, że zwykle obejmuje to czas przetwarzania Application Gateway, czas, przez który pakiety żądań i odpowiedzi są przesyłane przez sieć i czas odpowiedzi serwera wewnętrznej bazy danych.|Odbiornika|
-|BackendConnectTime|Czas połączenia z zapleczem|MilliSeconds|Średnia|Czas nawiązywania połączenia z serwerem wewnętrznej bazy danych|Listener, BackendServer, ustawień httpsettings elementu, BackendHttpSetting|
-|BackendFirstByteResponseTime|Czas odpowiedzi na pierwszy bajt zaplecza|MilliSeconds|Średnia|Interwał czasu między rozpoczęciem ustanawiania połączenia z serwerem zaplecza i otrzymywania pierwszego bajtu nagłówka odpowiedzi, który zbliża czas przetwarzania serwera wewnętrznej bazy danych|Listener, BackendServer, ustawień httpsettings elementu, BackendHttpSetting|
-|BackendLastByteResponseTime|Czas odpowiedzi ostatniego bajtu wewnętrznej bazy danych|MilliSeconds|Średnia|Interwał czasu między rozpoczęciem ustanawiania połączenia z serwerem zaplecza i otrzymywania ostatniego bajtu treści odpowiedzi|Listener, BackendServer, ustawień httpsettings elementu, BackendHttpSetting|
-|MatchedCount|Dystrybucja reguł dla zapory aplikacji sieci Web|Licznik|Łącznie|Dystrybucja reguły dla ruchu przychodzącego przez zaporę aplikacji sieci Web|Rule, RuleId|
-|BlockedCount|Dystrybucja reguły zablokowanych żądań zapory aplikacji sieci Web|Licznik|Łącznie|Dystrybucja reguły zablokowanych żądań zapory aplikacji sieci Web|Rule, RuleId|
-|BlockedReqCount|Liczba zablokowanych żądań zapory aplikacji sieci Web|Licznik|Łącznie|Liczba zablokowanych żądań zapory aplikacji sieci Web|None|
+|Przepływność|Przepływność|PrzeztówPerSekunda|Średnia|Liczba bajtów na sekundę, które obsługiwała brama aplikacji|Brak|
+|UnhealthyHostCount|Liczba niezdrowych hostów|Liczba|Średnia|Liczba niezdrowych hostów zaplecza|BackendSettingsPool|
+|HealthyHostCount|Liczba zdrowych hostów|Liczba|Średnia|Liczba zdrowych hostów zaplecza|BackendSettingsPool|
+|TotalRequests|Łączna liczba żądań|Liczba|Łącznie|Liczba pomyślnych żądań obsługiwanych przez bramę aplikacji|BackendSettingsPool|
+|AvgRequestCountPerHealthyHost|Żądania na minutę na zdrowego hosta|Liczba|Średnia|Średnia liczba żądań na minutę na gospodarza zaplecza w dobrej kondycji w puli|BackendSettingsPool|
+|Nieudane zapisy|Żądania zakończone niepowodzeniem|Liczba|Łącznie|Liczba nieudanych żądań obsługiwanych przez bramę aplikacji|BackendSettingsPool|
+|Status odpowiedzi|Stan odpowiedzi|Liczba|Łącznie|Stan odpowiedzi http zwrócony przez bramę aplikacji|Grupa HttpStatus|
+|CurrentConnections (Połączenia prądowe)|Bieżące połączenia|Liczba|Łącznie|Liczba bieżących połączeń nawiązanych za pomocą bramy aplikacji|Brak|
+|Utilizacja procesora|Wykorzystanie procesora|Wartość procentowa|Średnia|Bieżące wykorzystanie procesora bramy aplikacji|Brak|
+|Jednostki pojemnościowe|Bieżące jednostki pojemności|Liczba|Średnia|Zużywane jednostki pojemnościowe|Brak|
+|Jednostki obliczeniowe|Bieżące jednostki obliczeniowe|Liczba|Średnia|Zużyte jednostki obliczeniowe|Brak|
+|Stan wewnętrznej odpowiedzi|Stan odpowiedzi wewnętrznej bazy danych|Liczba|Łącznie|Liczba kodów odpowiedzi HTTP generowanych przez członków wewnętrznej bazy danych. Nie obejmuje to żadnych kodów odpowiedzi generowanych przez bramę aplikacji.|Serwer zaplecza,backendpool,zapleczehttpsetting,httpStatusGroup|
+|TlsProtocol ( TlsProtocol )|Protokół TLS klienta|Liczba|Łącznie|Liczba żądań TLS i innych niż TLS zainicjowanych przez klienta, który nawiązał połączenie z bramą aplikacji. Aby wyświetlić dystrybucję protokołu TLS, filtruj według wymiaru protokołu TLS.|Słuchacz,TlsProtocol|
+|Bajtów|Bajty wysłane|Bajty|Łącznie|Całkowita liczba bajtów wysłanych przez bramę aplikacji do klientów|Odbiornik|
+|Bytesreceived|Bajty odebrane|Bajty|Łącznie|Całkowita liczba bajtów odebranych przez bramę aplikacji od klientów|Odbiornik|
+|KlientRtt|RtT klienta|Milisekund|Średnia|Średni czas podróży w obie strony między klientami a bramą aplikacji. Ta metryka wskazuje, jak długo trwa ustanawianie połączeń i zwracanie potwierdzeń|Odbiornik|
+|ApplicationGatewayTotalTime|Całkowita liczba czasu bramy aplikacji|Milisekund|Średnia|Średni czas przetwarzania żądania i wysłania odpowiedzi. Jest to obliczane jako średnia interwału od momentu, gdy brama aplikacji odbiera pierwszy bajt żądania HTTP do czasu zakończenia operacji wysyłania odpowiedzi. Należy pamiętać, że zwykle obejmuje to czas przetwarzania bramy aplikacji, czas, przez który pakiety żądań i odpowiedzi są przesyłane przez sieć, oraz czas, przez jaki serwer wewnętrznej bazy danych potrzebował odpowiedzi.|Odbiornik|
+|BackendConnectTime (Czas połączenia wsteczne)|Czas połączenia wewnętrznej bazy danych|Milisekund|Średnia|Czas spędzony na nawiązywaniu połączenia z serwerem zaplecza|Odbiornik,Serwer zaplecza,BackendPool,Zapleczehttpsetting|
+|BackendFirstByteResponseTime|Czas odpowiedzi pierwszego bajtu wewnętrznej bazy danych|Milisekund|Średnia|Przedział czasu między rozpoczęciem ustanawiania połączenia z serwerem wewnętrznej bazy danych a odbieraniem pierwszego bajtu nagłówka odpowiedzi, przybliżając czas przetwarzania serwera wewnętrznej bazy danych|Odbiornik,Serwer zaplecza,BackendPool,Zapleczehttpsetting|
+|Czas wewnętrznej bazy DanychLastByteResponse|Czas odpowiedzi ostatniego bajtu wewnętrznej bazy danych|Milisekund|Średnia|Przedział czasu między rozpoczęciem ustanawiania połączenia z serwerem wewnętrznej bazy danych a odbieraniem ostatniego bajtu treści odpowiedzi|Odbiornik,Serwer zaplecza,BackendPool,Zapleczehttpsetting|
+|MatchedCount|Dystrybucja reguł całkowitej zapory aplikacji sieci Web w wersji 1|Liczba|Łącznie|Zapora aplikacji sieci Web w wersji 1 Całkowita dystrybucja reguł dla ruchu przychodzącego|Grupa reguł,RuleId|
+|BlockedCount|Dystrybucja reguł zablokowanych żądań zapory aplikacji sieci Web w wersji 1|Liczba|Łącznie|Zapora aplikacji sieci Web w wersji 1 zablokowana dystrybucja reguł żądań|Grupa reguł,RuleId|
+|BlockedReqCount|Liczba zablokowanych żądań zapory aplikacji sieci Web w wersji 1|Liczba|Łącznie|Liczba zablokowanych żądań zapory aplikacji sieci Web w wersji 1|Brak|
 
 ## <a name="microsoftnetworkvirtualnetworkgateways"></a>Microsoft.Network/virtualNetworkGateways
 
-|Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary|
+|Metryka|Metryka Nazwa wyświetlana|Jednostka|Typ agregacji|Opis|Wymiary|
 |---|---|---|---|---|---|
-|AverageBandwidth|Przepustowość S2S bramy|BytesPerSecond|Średnia|Średnia przepustowość lokacja-lokacja bramy w bajtach na sekundę|None|
-|P2SBandwidth|Przepustowość P2S bramy|BytesPerSecond|Średnia|Średnia przepustowość typu punkt-lokacja bramy w bajtach na sekundę|None|
-|P2SConnectionCount|Liczba połączeń P2S|Licznik|Maksimum|Liczba połączeń punkt-lokacja bramy|Protokół|
-|TunnelAverageBandwidth|Przepustowość tunelu|BytesPerSecond|Średnia|Średnia przepustowość tunelu w bajtach na sekundę|ConnectionName, RemoteIP|
-|TunnelEgressBytes|Bajty wychodzące tunelu|Bajty|Łącznie|Wychodzące bajty tunelu|ConnectionName, RemoteIP|
-|TunnelIngressBytes|Bajty transferu danych wejściowych tunelu|Bajty|Łącznie|Przychodzące bajty tunelu|ConnectionName, RemoteIP|
-|TunnelEgressPackets|Pakiety wychodzące tuneli|Licznik|Łącznie|Liczba wychodzących pakietów tunelu|ConnectionName, RemoteIP|
-|TunnelIngressPackets|Pakiety przychodzące tunelu|Licznik|Łącznie|Liczba przychodzących pakietów tunelu|ConnectionName, RemoteIP|
-|TunnelEgressPacketDropTSMismatch|Porzucanie pakietów wychodzących przez tunelowanie|Licznik|Łącznie|Liczba porzucenia pakietów wychodzących z niezgodności selektora ruchu tunelu|ConnectionName, RemoteIP|
-|TunnelIngressPacketDropTSMismatch|Wyrzucanie niezgodności pakietów przez tunelowanie|Licznik|Łącznie|Liczba porzucenia pakietów przychodzących z niezgodności selektora ruchu tunelu|ConnectionName, RemoteIP|
+|ŚredniaPaswidth|Przepustowość bramy S2S|PrzeztówPerSekunda|Średnia|Średnia przepustowość bramy między lokacjami w bajtach na sekundę|Brak|
+|P2SBandwidth (P2SBandwidth)|Przepustowość bramy P2S|PrzeztówPerSekunda|Średnia|Średnia przepustowość bramy w punkt-lokacja w bajtach na sekundę|Brak|
+|P2SConnectionCount|Liczba połączeń P2S|Liczba|Maksimum|Liczba połączeń z punktem lokacji bramy|Protocol (Protokół)|
+|TunelAverageBandwidth|Przepustowość tunelu|PrzeztówPerSekunda|Średnia|Średnia przepustowość tunelu w bajtach na sekundę|Nazwa połączenia,RemoteIP|
+|TunelEgressbytes|Bajty ruchu wychodzącego tunelu|Bajty|Łącznie|Bajty wychodzące tunelu|Nazwa połączenia,RemoteIP|
+|TunelowanieBytes|Bajty w ruchu tunelowym|Bajty|Łącznie|Przychodzące bajty tunelu|Nazwa połączenia,RemoteIP|
+|Pakiety pakietów tunelowych|Pakiety wychodzące tunelu|Liczba|Łącznie|Liczba pakietów wychodzących tunelu|Nazwa połączenia,RemoteIP|
+|Pakiety tunelowe|Pakiety przychodzące tunelu|Liczba|Łącznie|Przychodząca liczba pakietów tunelu|Nazwa połączenia,RemoteIP|
+|TunnelEgressPacketDropTSMismatch|Spadek pakietu niezgodności usługi TS w ruchu tunelowym|Liczba|Łącznie|Liczba upuszczania pakietów wychodzących z niezgodności selektora ruchu w tunelu|Nazwa połączenia,RemoteIP|
+|TunelowaniePacketDropTSMismatch|Spadek pakietu niezgodności ts w tunelu|Liczba|Łącznie|Przychodząca liczba upuszczania pakietów z niezgodności selektora ruchu tunelu|Nazwa połączenia,RemoteIP|
 
 
-## <a name="microsoftnetworkexpressrouteports"></a>Microsoft. Network/expressRoutePorts
+## <a name="microsoftnetworkexpressrouteports"></a>Usługi Microsoft.Network/expressRoutePorts
 
-|Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary|
+|Metryka|Metryka Nazwa wyświetlana|Jednostka|Typ agregacji|Opis|Wymiary|
 |---|---|---|---|---|---|
-|RxLightLevel|RxLightLevel|Licznik|Średnia|Poziom oświetlenia odbierania w dBm|Link, tor|
-|TxLightLevel|TxLightLevel|Licznik|Średnia|Poziom oświetlenia TX w dBm|Link, tor|
-|AdminState|AdminState|Licznik|Średnia|Stan administratora portu|Link|
-|LineProtocol|LineProtocol|Licznik|Średnia|Stan protokołu wiersza portu|Link|
-|PortBitsInPerSecond|BitsInPerSecond|CountPerSecond|Średnia|Usługa BITS na sekundę na platformie Azure|Link|
-|PortBitsOutPerSecond|BitsOutPerSecond|CountPerSecond|Średnia|Ruch przychodzący z platformy Azure na sekundę|Link|
+|RxLightPoziom|RxLightPoziom|Liczba|Średnia|Rx Poziom światła w dBm|Link,Lane|
+|Poziom TxLight|Poziom TxLight|Liczba|Średnia|Poziom światła TX w dBm|Link,Lane|
+|Stan administracyjny|Stan administracyjny|Liczba|Średnia|Stan administracyjny portu|Link|
+|LiniaProtocol|LiniaProtocol|Liczba|Średnia|Stan protokołu wiersza portu|Link|
+|PortBitsInPerSekund|BitsInPerSekund|Połów połówek|Średnia|Bity przychodzące na sekundę z platformą Azure|Link|
+|PortBitsOutPerSekunda|BitsOutPerSekunda|Połów połówek|Średnia|Bity wychodzące z platformy Azure na sekundę|Link|
 
 ## <a name="microsoftnetworkexpressroutecircuits"></a>Microsoft.Network/expressRouteCircuits
 
-|Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary|
+|Metryka|Metryka Nazwa wyświetlana|Jednostka|Typ agregacji|Opis|Wymiary|
 |---|---|---|---|---|---|
-|BitsInPerSecond|BitsInPerSecond|CountPerSecond|Średnia|Usługa BITS na sekundę na platformie Azure|PeeringType|
-|BitsOutPerSecond|BitsOutPerSecond|CountPerSecond|Średnia|Ruch przychodzący z platformy Azure na sekundę|PeeringType|
-|GlobalReachBitsInPerSecond|GlobalReachBitsInPerSecond|CountPerSecond|Średnia|Usługa BITS na sekundę na platformie Azure|PeeredCircuitSKey|
-|GlobalReachBitsOutPerSecond|GlobalReachBitsOutPerSecond|CountPerSecond|Średnia|Ruch przychodzący z platformy Azure na sekundę|PeeredCircuitSKey|
-|BgpAvailability|Dostępność protokołu BGP|Procent|Średnia|Dostępność protokołu BGP od MSEE do wszystkich elementów równorzędnych.|PeeringType, element równorzędny|
-|ArpAvailability|Dostępność protokołu ARP|Procent|Średnia|Dostępność protokołu ARP od MSEE do wszystkich elementów równorzędnych.|PeeringType, element równorzędny|
-|QosDropBitsInPerSecond|DroppedInBitsPerSecond|CountPerSecond|Średnia|Liczba porzuconych bitów danych przychodzących na sekundę|None|
-|QosDropBitsOutPerSecond|DroppedOutBitsPerSecond|CountPerSecond|Średnia|Liczba porzuconych bitów danych wyjściowych na sekundę|None|
+|BitsInPerSekund|BitsInPerSekund|Połów połówek|Średnia|Bity przychodzące na sekundę z platformą Azure|Typ komunikacji równorzędnej|
+|BitsOutPerSekunda|BitsOutPerSekunda|Połów połówek|Średnia|Bity wychodzące z platformy Azure na sekundę|Typ komunikacji równorzędnej|
+|GlobalReachBitsInPerSecond|GlobalReachBitsInPerSecond|Połów połówek|Średnia|Bity przychodzące na sekundę z platformą Azure|Klucz PeeredCircuitSKey|
+|GlobalReachBitsOutPerSekunda|GlobalReachBitsOutPerSekunda|Połów połówek|Średnia|Bity wychodzące z platformy Azure na sekundę|Klucz PeeredCircuitSKey|
+|BgpWakość|Dostępność BGP|Wartość procentowa|Średnia|Dostępność protokołu BGP z msee do wszystkich elementów równorzędnych.|Typ komunikacji równorzędnej,Element równorzędny|
+|ArpDostępność|Dostępność Arp|Wartość procentowa|Średnia|Dostępność ARP z MSEE do wszystkich peers. 1904.|Typ komunikacji równorzędnej,Element równorzędny|
+|QosDropBitsInPerSekund|PołówNieWywiększona połów|Połów połówek|Średnia|Liczba danych porzuconych na sekundę|Brak|
+|QosDropBitsOutPerSekunda|Połów PołówNiesieniaka|Połów połówek|Średnia|Przepływy bitów danych porzuconych na sekundę|Brak|
 
-## <a name="microsoftnetworkexpressroutecircuitspeerings"></a>Microsoft. Network/expressRouteCircuits/Komunikacja równorzędna
+## <a name="microsoftnetworkexpressroutecircuitspeerings"></a>Microsoft.Network/expressRouteCircuits/peerings
 
-|Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary|
+|Metryka|Metryka Nazwa wyświetlana|Jednostka|Typ agregacji|Opis|Wymiary|
 |---|---|---|---|---|---|
-|BitsInPerSecond|BitsInPerSecond|CountPerSecond|Średnia|Usługa BITS na sekundę na platformie Azure|None|
-|BitsOutPerSecond|BitsOutPerSecond|CountPerSecond|Średnia|Ruch przychodzący z platformy Azure na sekundę|None|
+|BitsInPerSekund|BitsInPerSekund|Połów połówek|Średnia|Bity przychodzące na sekundę z platformą Azure|Brak|
+|BitsOutPerSekunda|BitsOutPerSekunda|Połów połówek|Średnia|Bity wychodzące z platformy Azure na sekundę|Brak|
 
-## <a name="microsoftnetworkconnections"></a>Microsoft. Network/Connections
+## <a name="microsoftnetworkconnections"></a>Sieć/połączenia firmy Microsoft.Network
 
-|Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary|
+|Metryka|Metryka Nazwa wyświetlana|Jednostka|Typ agregacji|Opis|Wymiary|
 |---|---|---|---|---|---|
-|BitsInPerSecond|BitsInPerSecond|CountPerSecond|Średnia|Usługa BITS na sekundę na platformie Azure|None|
-|BitsOutPerSecond|BitsOutPerSecond|CountPerSecond|Średnia|Ruch przychodzący z platformy Azure na sekundę|None|
+|BitsInPerSekund|BitsInPerSekund|Połów połówek|Średnia|Bity przychodzące na sekundę z platformą Azure|Brak|
+|BitsOutPerSekunda|BitsOutPerSekunda|Połów połówek|Średnia|Bity wychodzące z platformy Azure na sekundę|Brak|
 
-## <a name="microsoftnetworkexpressroutegateways"></a>Microsoft. Network/expressRouteGateways
+## <a name="microsoftnetworkexpressroutegateways"></a>Microsoft.Network/expressRouteGateways
 
-|Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary|
+|Metryka|Metryka Nazwa wyświetlana|Jednostka|Typ agregacji|Opis|Wymiary|
 |---|---|---|---|---|---|
-|ErGatewayConnectionBitsInPerSecond|BitsInPerSecond|CountPerSecond|Średnia|Usługa BITS na sekundę na platformie Azure|ConnectionName|
-|ErGatewayConnectionBitsOutPerSecond|BitsOutPerSecond|CountPerSecond|Średnia|Ruch przychodzący z platformy Azure na sekundę|ConnectionName|
+|ErGatewayConnectionBitsInPerSekund|BitsInPerSekund|Połów połówek|Średnia|Bity przychodzące na sekundę z platformą Azure|ConnectionName|
+|ErGatewayConnectionBitsOutPerSekunda|BitsOutPerSekunda|Połów połówek|Średnia|Bity wychodzące z platformy Azure na sekundę|ConnectionName|
 
 ## <a name="microsoftnetworktrafficmanagerprofiles"></a>Microsoft.Network/trafficManagerProfiles
 
-|Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary|
+|Metryka|Metryka Nazwa wyświetlana|Jednostka|Typ agregacji|Opis|Wymiary|
 |---|---|---|---|---|---|
-|QpsByEndpoint|Zwrócone zapytania według punktu końcowego|Licznik|Łącznie|Liczba zwróconych punktów końcowych Traffic Manager w danym przedziale czasu|EndpointName|
-|ProbeAgentCurrentEndpointStateByProfileResourceId|Stan punktu końcowego według punktu końcowego|Licznik|Maksimum|1 Jeśli sonda punktu końcowego ma stan "włączone", 0 w przeciwnym razie.|EndpointName|
+|Punkt QpsByEnd|Zwracane zapytania według punktu końcowego|Liczba|Łącznie|Ile razy punkt końcowy programu Traffic Manager został zwrócony w danym przedziale czasowym|Nazwa punktu końcowego|
+|ProbeAgentCurrentEndpointStateByProfileResourceId|Stan punktu końcowego według punktu końcowego|Liczba|Maksimum|1, jeśli stan sondy punktu końcowego jest "Włączone", 0 w przeciwnym razie.|Nazwa punktu końcowego|
 
 
 
 ## <a name="microsoftnetworknetworkwatchersconnectionmonitors"></a>Microsoft.Network/networkWatchers/connectionMonitors
 
-|Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary|
+|Metryka|Metryka Nazwa wyświetlana|Jednostka|Typ agregacji|Opis|Wymiary|
 |---|---|---|---|---|---|
-|ProbesFailedPercent|% Sond nie powiodło się|Procent|Średnia|% sond monitorowania łączności nie powiodło się|None|
-|AverageRoundtripMs|Średni czas błądzenia (MS)|MilliSeconds|Średnia|Średni czas błądzenia sieci (MS) dla sond monitorowania łączności przesyłanych między źródłem a miejscem docelowym|None|
-|ChecksFailedPercent|Sprawdza procent niepowodzenia (wersja zapoznawcza)|Procent|Średnia|% testów monitorowania łączności nie powiodło się|SourceAddress, SourceName, identyfikator sourceresourceid, SourceType, Protocol, DestinationAddress, DestinationName, DestinationResourceId, DestinationType, DestinationPort, TestGroupName, TestConfigurationName|
-|RoundTripTimeMs|Czas błądzenia (MS) (wersja zapoznawcza)|MilliSeconds|Średnia|Czas błądzenia w milisekundach dla kontroli monitorowania łączności|SourceAddress, SourceName, identyfikator sourceresourceid, SourceType, Protocol, DestinationAddress, DestinationName, DestinationResourceId, DestinationType, DestinationPort, TestGroupName, TestConfigurationName|
+|ProbesFailedPercent (SondaFailedPercent)|% sond nie powiodło się|Wartość procentowa|Średnia|% sond monitorujących łączność nie powiodło się|Brak|
+|ŚredniaRoundtripMs|Śr. Czas podróży w obie strony (ms)|Milisekund|Średnia|Średni czas przejazdu sieciowego (ms) dla sond monitorowania łączności wysyłanych między źródłem a miejscem docelowym|Brak|
+|ChecksFailedPercent (SprawdzanieFailedPercent)|Sprawdzanie procentu nie powiodło się (wersja zapoznawcza)|Wartość procentowa|Średnia|% kontroli monitorowania łączności nie powiodło się|SourceAddress,SourceName,SourceResourceId,SourceType,Protocol,DestinationAddress,DestinationName,DestinationResourceId,DestinationType,DestinationPort,TestGroupName,TestConfigurationName|
+|RoundTripTimeMs|Czas podróży w obie strony (ms) (wersja zapoznawcza)|Milisekund|Średnia|Czas podróży w milisekundach do kontroli monitorowania łączności|SourceAddress,SourceName,SourceResourceId,SourceType,Protocol,DestinationAddress,DestinationName,DestinationResourceId,DestinationType,DestinationPort,TestGroupName,TestConfigurationName|
 
 
-## <a name="microsoftnetworkfrontdoors"></a>Microsoft. Network/usługi frontdoor
+## <a name="microsoftnetworkfrontdoors"></a>Microsoft.Network/frontdoory
 
-|Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary|
+|Metryka|Metryka Nazwa wyświetlana|Jednostka|Typ agregacji|Opis|Wymiary|
 |---|---|---|---|---|---|
-|RequestCount|Liczba żądań|Licznik|Łącznie|Liczba żądań klientów obsłużonych przez serwer proxy HTTP/S|Wartości httpStatus, HttpStatusGroup, ClientRegion, ClientCountry|
-|RequestSize|Rozmiar żądania|Bajty|Łącznie|Liczba bajtów wysłanych jako żądania od klientów do serwera proxy HTTP/S|Wartości httpStatus, HttpStatusGroup, ClientRegion, ClientCountry|
-|ResponseSize|Rozmiar odpowiedzi|Bajty|Łącznie|Liczba bajtów wysłanych jako odpowiedzi z serwera proxy HTTP/S do klientów|Wartości httpStatus, HttpStatusGroup, ClientRegion, ClientCountry|
-|BillableResponseSize|Rozmiar odpowiedzi do rozliczenia|Bajty|Łącznie|Liczba bajtów rozliczanych (minimalna 2KB na żądanie) wysyłanych jako odpowiedzi z serwera proxy HTTP/S do klientów.|Wartości httpStatus, HttpStatusGroup, ClientRegion, ClientCountry|
-|BackendRequestCount|Liczba żądań wewnętrznej bazy danych|Licznik|Łącznie|Liczba żądań wysyłanych z serwera proxy HTTP/S do frontonu|Wartości httpStatus, HttpStatusGroup, zaplecze|
-|BackendRequestLatency|Opóźnienie żądania wewnętrznej bazy danych|MilliSeconds|Średnia|Czas obliczony od momentu wysłania żądania przez serwer proxy HTTP/S do zaplecza do momentu odebrania przez serwer proxy HTTP/S ostatniego bajtu odpowiedzi z zaplecza|Danych|
-|TotalLatency|Łączne opóźnienie|MilliSeconds|Średnia|Czas obliczony od momentu odebrania żądania klienta przez serwer proxy HTTP/S do momentu potwierdzenia przez klienta ostatniego bajtu odpowiedzi z serwera proxy HTTP/S|Wartości httpStatus, HttpStatusGroup, ClientRegion, ClientCountry|
-|BackendHealthPercentage|Procent kondycji zaplecza|Procent|Średnia|Procent pomyślnych sond kondycji z serwera proxy HTTP/S do frontonu|Zaplecze, ustawień httpsettings elementu|
-|WebApplicationFirewallRequestCount|Liczba żądań zapory aplikacji sieci Web|Licznik|Łącznie|Liczba żądań klientów przetworzonych przez zaporę aplikacji sieci Web|PolicyName, RuleName, Akcja|
+|Liczba żądań|Liczba żądań|Liczba|Łącznie|Liczba żądań klientów obsługiwanych przez serwer proxy HTTP/S|HttpStatus,HttpStatusGroup,ClientRegion,ClientCountry|
+|Rozmiar żądania|Rozmiar żądania|Bajty|Łącznie|Liczba bajtów wysyłanych jako żądania od klientów do serwera proxy HTTP/S|HttpStatus,HttpStatusGroup,ClientRegion,ClientCountry|
+|Rozmiar odpowiedzi|Rozmiar odpowiedzi|Bajty|Łącznie|Liczba bajtów wysłanych jako odpowiedzi z serwera proxy HTTP/S do klientów|HttpStatus,HttpStatusGroup,ClientRegion,ClientCountry|
+|Rozmiar billableResponseSize|Rozmiar odpowiedzi podlegania rozliczania|Bajty|Łącznie|Liczba bajtów podlega chytralnych (co najmniej 2 KB na żądanie) wysłanych jako odpowiedzi z serwera proxy HTTP/S do klientów.|HttpStatus,HttpStatusGroup,ClientRegion,ClientCountry|
+|ZapleczeRequestCount|Liczba żądań wewnętrznej bazy danych|Liczba|Łącznie|Liczba żądań wysłanych z serwera proxy HTTP/S do zaplecza|HttpStatus,HttpStatusGroup,Zaplecze|
+|BackendRequestLatency (BackendRequestLatency)|Opóźnienie żądania wewnętrznej bazy danych|Milisekund|Średnia|Czas obliczony od momentu wysłania żądania przez serwer proxy HTTP/S do wewnętrznej bazy danych do momentu odebranie przez serwer proxy HTTP/S ostatniego bajtu odpowiedzi z wewnętrznej bazy danych|Zaplecze|
+|TotalLatency (TotalLatency)|Całkowite opóźnienie|Milisekund|Średnia|Czas obliczony od momentu odebraniem żądania klienta przez serwer proxy HTTP/S do momentu potwierdzenia przez klienta ostatniego bajtu odpowiedzi z serwera proxy HTTP/S|HttpStatus,HttpStatusGroup,ClientRegion,ClientCountry|
+|BackendHealthPercentage|Procent kondycji wewnętrznej bazy danych|Wartość procentowa|Średnia|Procent pomyślnych sond kondycji od serwera proxy HTTP/S do zaplecza|Zaplecze,Zaplecze|
+|Konto WebApplicationFirewallRequestCount|Liczba żądań zapory aplikacji sieci Web|Liczba|Łącznie|Liczba żądań klientów przetworzonych przez Zaporę aplikacji sieci Web|Nazwa zasad,Nazwa reguły,Akcja|
 
 
-## <a name="microsoftnotificationhubsnamespacesnotificationhubs"></a>Microsoft.NotificationHubs/Namespaces/NotificationHubs
+## <a name="microsoftnotificationhubsnamespacesnotificationhubs"></a>Microsoft.NotificationHubs/Przestrzenie nazw/NotificationHubs
 
-|Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary|
+|Metryka|Metryka Nazwa wyświetlana|Jednostka|Typ agregacji|Opis|Wymiary|
 |---|---|---|---|---|---|
-|Rejestracja. wszystkie|Operacje rejestracji|Licznik|Łącznie|Liczba wszystkich operacji rejestracji zakończonych powodzeniem (Tworzenie aktualizacji zapytań i usunięć). |None|
-|registration.create|Operacje tworzenia rejestracji|Licznik|Łącznie|Liczba wszystkich operacji tworzenia rejestracji zakończonych powodzeniem.|None|
-|registration.update|Operacje aktualizacji rejestracji|Licznik|Łącznie|Liczba wszystkich aktualizacji rejestracji zakończonych powodzeniem.|None|
-|registration.get|Operacje odczytu rejestracji|Licznik|Łącznie|Liczba wszystkich zapytań rejestracji zakończonych powodzeniem.|None|
-|registration.delete|Operacje usuwania rejestracji|Licznik|Łącznie|Liczba wszystkich operacji usunięcia rejestracji zakończonych powodzeniem.|None|
-|przychodzące|Komunikaty przychodzące|Licznik|Łącznie|Liczba wszystkich pomyślnie wysłanych wywołań interfejsu API. |None|
-|incoming.scheduled|Przesłane zaplanowane powiadomienia wypychane|Licznik|Łącznie|Anulowano zaplanowane powiadomienia wypychane|None|
-|incoming.scheduled.cancel|Anulowano zaplanowane powiadomienia wypychane|Licznik|Łącznie|Anulowano zaplanowane powiadomienia wypychane|None|
-|scheduled.pending|Oczekujące zaplanowane powiadomienia|Licznik|Łącznie|Oczekujące zaplanowane powiadomienia|None|
-|Instalacja. wszystkie|Operacje zarządzania instalacją|Licznik|Łącznie|Operacje zarządzania instalacją|None|
-|Instalacja. Get|Pobierz operacje instalacji|Licznik|Łącznie|Pobierz operacje instalacji|None|
-|Instalacja. upsert|Tworzenie lub aktualizowanie operacji instalacji|Licznik|Łącznie|Tworzenie lub aktualizowanie operacji instalacji|None|
-|installation.patch|Operacje instalacji poprawek|Licznik|Łącznie|Operacje instalacji poprawek|None|
-|installation.delete|Usuwanie operacji instalacji|Licznik|Łącznie|Usuwanie operacji instalacji|None|
-|outgoing.allpns.success|Powiadomienia zakończone powodzeniem|Licznik|Łącznie|Liczba wszystkich udanych powiadomień.|None|
-|wychodzący. allpns. invalidpayload|Błędy ładunku|Licznik|Łącznie|Liczba wypchnięciów zakończonych niepowodzeniem, ponieważ PNS zwrócił zły błąd ładunku.|None|
-|outgoing.allpns.pnserror|Błędy zewnętrznego systemu powiadomień|Licznik|Łącznie|Liczba wypchnięciów, które zakończyły się niepowodzeniem, ponieważ wystąpił problem z komunikacją z PNS (wyklucza problemy z uwierzytelnianiem).|None|
-|outgoing.allpns.channelerror|Błędy kanałów|Licznik|Łącznie|Liczba wypchnięciów zakończonych niepowodzeniem, ponieważ kanał był nieprawidłowy, nie jest skojarzony z poprawną aplikacją lub wygasłą.|None|
-|outgoing.allpns.badorexpiredchannel|Błędy nieprawidłowych lub wygasłych kanałów|Licznik|Łącznie|Liczba wypchnięciów, które zakończyły się niepowodzeniem, ponieważ kanał/token/Identyfikator rejestracji w rejestracji został wygasły lub nieprawidłowy.|None|
-|outgoing.wns.success|WNS pomyślne powiadomienia|Licznik|Łącznie|Liczba wszystkich udanych powiadomień.|None|
-|wychodzący. WNS. invalidcredentials|WNS błędy autoryzacji (Nieprawidłowe poświadczenia)|Licznik|Łącznie|Liczba wypchnięciów, które zakończyły się niepowodzeniem, ponieważ PNS nie zaakceptował podanych poświadczeń lub poświadczenia są zablokowane. (Usługa Windows Live nie rozpoznaje poświadczeń).|None|
-|outgoing.wns.badchannel|Błąd nieprawidłowego kanału WNS|Licznik|Łącznie|Liczba wypchnięciów, które zakończyły się niepowodzeniem, ponieważ identyfikator channeluri w rejestracji nie zostały rozpoznane (WNS status: 404).|None|
-|outgoing.wns.expiredchannel|Błąd WNS kanału wygasłego|Licznik|Łącznie|Liczba wypchnięciów, które zakończyły się niepowodzeniem z powodu wygaśnięcia identyfikator channeluri (stan WNS: 410).|None|
-|wychodzące. WNS. dławienia|WNS powiadomienia z ograniczeniami|Licznik|Łącznie|Liczba wypchnięciów, które zakończyły się niepowodzeniem, ponieważ WNS ogranicza tę aplikację (stan WNS: 406 nie akceptowalny).|None|
-|outgoing.wns.tokenproviderunreachable|Błędy autoryzacji WNS (nieosiągalne)|Licznik|Łącznie|Usługa Windows Live jest nieosiągalna.|None|
-|outgoing.wns.invalidtoken|Błędy autoryzacji WNS (nieprawidłowy token)|Licznik|Łącznie|Token dostarczony do WNS jest nieprawidłowy (stan WNS: 401 Brak autoryzacji).|None|
-|outgoing.wns.wrongtoken|WNS błędy autoryzacji (nieprawidłowy token)|Licznik|Łącznie|Token dostarczony do WNS jest prawidłowy, ale dla innej aplikacji (stan WNS: 403 zabroniony). Może się tak zdarzyć, jeśli identyfikator channeluri w rejestracji jest skojarzony z inną aplikacją. Sprawdź, czy aplikacja kliencka jest skojarzona z tą samą aplikacją, której poświadczenia znajdują się w centrum powiadomień.|None|
-|outgoing.wns.invalidnotificationformat|Nieprawidłowy format powiadomienia WNS|Licznik|Łącznie|Format powiadomienia jest nieprawidłowy (stan WNS: 400). Należy pamiętać, że WNS nie odrzuca wszystkich nieprawidłowych ładunków.|None|
-|outgoing.wns.invalidnotificationsize|Błąd nieprawidłowego rozmiaru powiadomienia WNS|Licznik|Łącznie|Ładunek powiadomienia jest zbyt duży (stan WNS: 413).|None|
-|outgoing.wns.channelthrottled|Ograniczenie kanału WNS|Licznik|Łącznie|Powiadomienie zostało porzucone, ponieważ identyfikator channeluri w rejestracji jest ograniczany (nagłówek odpowiedzi WNS: X-WNS-NotificationStatus: channelThrottled).|None|
-|outgoing.wns.channeldisconnected|Kanał WNS został odłączony|Licznik|Łącznie|Powiadomienie zostało porzucone, ponieważ identyfikator channeluri w rejestracji jest ograniczany (WNS w nagłówku odpowiedzi: X-WNS-DeviceConnectionStatus: disconnected).|None|
-|outgoing.wns.dropped|WNS usunięte powiadomienia|Licznik|Łącznie|Powiadomienie zostało porzucone, ponieważ identyfikator channeluri w rejestracji jest ograniczany (X-WNS-NotificationStatus: porzucone, ale nie X-WNS-DeviceConnectionStatus: disconnected).|None|
-|outgoing.wns.pnserror|Błędy WNS|Licznik|Łącznie|Powiadomienie nie zostało dostarczone z powodu błędów komunikacji z WNS.|None|
-|outgoing.wns.authenticationerror|Błędy uwierzytelniania WNS|Licznik|Łącznie|Powiadomienie nie zostało dostarczone z powodu błędów komunikacji z nieprawidłowymi poświadczeniami usługi Windows Live lub nieprawidłowym tokenem.|None|
-|outgoing.apns.success|Pomyślne powiadomienia usługi APNS|Licznik|Łącznie|Liczba wszystkich udanych powiadomień.|None|
-|outgoing.apns.invalidcredentials|Błędy autoryzacji usługi APNS|Licznik|Łącznie|Liczba wypchnięciów, które zakończyły się niepowodzeniem, ponieważ PNS nie zaakceptował podanych poświadczeń lub poświadczenia są zablokowane.|None|
-|outgoing.apns.badchannel|Błąd nieprawidłowego kanału usługi APNS|Licznik|Łącznie|Liczba wypchnięciów, które zakończyły się niepowodzeniem, ponieważ token jest nieprawidłowy (kod stanu usługi APNS: 8).|None|
-|outgoing.apns.expiredchannel|Błąd wygasłego kanału usługi APNS|Licznik|Łącznie|Liczba tokenów unieważnionych przez kanał opinii usługi APNS.|None|
-|outgoing.apns.invalidnotificationsize|Błąd nieprawidłowego rozmiaru powiadomienia usługi APNS|Licznik|Łącznie|Liczba wypchnięciów, które zakończyły się niepowodzeniem, ponieważ ładunek jest zbyt duży (kod stanu usługi APNS: 7).|None|
-|outgoing.apns.pnserror|Błędy usługi APNS|Licznik|Łącznie|Liczba wypchnięciów zakończonych niepowodzeniem z powodu błędów komunikacji z usługą APNS.|None|
-|outgoing.gcm.success|GCM pomyślne powiadomienia|Licznik|Łącznie|Liczba wszystkich udanych powiadomień.|None|
-|outgoing.gcm.invalidcredentials|GCM błędy autoryzacji (Nieprawidłowe poświadczenia)|Licznik|Łącznie|Liczba wypchnięciów, które zakończyły się niepowodzeniem, ponieważ PNS nie zaakceptował podanych poświadczeń lub poświadczenia są zablokowane.|None|
-|outgoing.gcm.badchannel|Błąd nieprawidłowego kanału GCM|Licznik|Łącznie|Liczba wypchnięciów, które zakończyły się niepowodzeniem, ponieważ identyfikator rejestracji w rejestracji nie został rozpoznany (wynik GCM: nieprawidłowa rejestracja).|None|
-|outgoing.gcm.expiredchannel|Błąd GCM kanału wygasłego|Licznik|Łącznie|Liczba wypchnięciów, które zakończyły się niepowodzeniem z powodu wygaśnięcia Identyfikator rejestracji w rejestracji (wynik GCM: NotRegistered).|None|
-|outgoing.gcm.throttled|GCM powiadomienia z ograniczeniami|Licznik|Łącznie|Liczba wypchnięciów, które zakończyły się niepowodzeniem, ponieważ GCM ograniczenie tej aplikacji (kod stanu GCM: 501-599 lub wynik: niedostępne).|None|
-|outgoing.gcm.invalidnotificationformat|Nieprawidłowy format powiadomienia GCM|Licznik|Łącznie|Liczba wypchnięciów, które zakończyły się niepowodzeniem, ponieważ ładunek nie został poprawnie sformatowany (wynik GCM: InvalidDataKey lub InvalidTtl).|None|
-|outgoing.gcm.invalidnotificationsize|Błąd nieprawidłowego rozmiaru powiadomienia GCM|Licznik|Łącznie|Liczba wypchnięciów, które zakończyły się niepowodzeniem, ponieważ ładunek jest zbyt duży (wynik GCM: MessageTooBig).|None|
-|outgoing.gcm.wrongchannel|Błąd nieprawidłowego kanału GCM|Licznik|Łącznie|Liczba wypchnięciów, które zakończyły się niepowodzeniem, ponieważ identyfikator rejestracji w rejestracji nie jest skojarzony z bieżącą aplikacją (GCM Result: InvalidPackageName).|None|
-|outgoing.gcm.pnserror|Błędy GCM|Licznik|Łącznie|Liczba wypchnięciów, które zakończyły się niepowodzeniem z powodu błędów komunikacji z GCM.|None|
-|outgoing.gcm.authenticationerror|Błędy uwierzytelniania GCM|Licznik|Łącznie|Liczba wypchnięciów, które zakończyły się niepowodzeniem, ponieważ PNS nie zaakceptował podanych poświadczeń, a SenderId nie jest poprawnie skonfigurowana w aplikacji (wynik GCM: MismatchedSenderId).|None|
-|outgoing.mpns.success|USŁUGI MPNS pomyślne powiadomienia|Licznik|Łącznie|Liczba wszystkich udanych powiadomień.|None|
-|outgoing.mpns.invalidcredentials|USŁUGI MPNS nieprawidłowe poświadczenia|Licznik|Łącznie|Liczba wypchnięciów, które zakończyły się niepowodzeniem, ponieważ PNS nie zaakceptował podanych poświadczeń lub poświadczenia są zablokowane.|None|
-|outgoing.mpns.badchannel|Błąd nieprawidłowego kanału usługi MPNS|Licznik|Łącznie|Liczba wypchnięciów, które zakończyły się niepowodzeniem, ponieważ identyfikator channeluri w rejestracji nie zostały rozpoznane (usługi MPNS status: 404).|None|
-|wychodzące. usługi MPNS. dławienia|USŁUGI MPNS powiadomienia z ograniczeniami|Licznik|Łącznie|Liczba wypchnięciów, które zakończyły się niepowodzeniem, ponieważ usługi MPNS ogranicza tę aplikację (WNS usługi MPNS: 406 nieakceptowalny).|None|
-|outgoing.mpns.invalidnotificationformat|Nieprawidłowy format powiadomienia usługi MPNS|Licznik|Łącznie|Liczba wypchnięciów zakończonych niepowodzeniem, ponieważ ładunek powiadomienia był zbyt duży.|None|
-|outgoing.mpns.channeldisconnected|Kanał usługi MPNS został odłączony|Licznik|Łącznie|Liczba wypchnięciów, które zakończyły się niepowodzeniem, ponieważ identyfikator channeluri w rejestracji został rozłączony (stan usługi MPNS: 412 nie został znaleziony).|None|
-|outgoing.mpns.dropped|USŁUGI MPNS usunięte powiadomienia|Licznik|Łącznie|Liczba wypchnięciów, które zostały porzucone przez usługi MPNS (nagłówek odpowiedzi usługi MPNS: X-NotificationStatus: QueueFull lub pomijane).|None|
-|outgoing.mpns.pnserror|Błędy usługi MPNS|Licznik|Łącznie|Liczba wypchnięciów, które zakończyły się niepowodzeniem z powodu błędów komunikacji z usługi MPNS.|None|
-|outgoing.mpns.authenticationerror|Błędy uwierzytelniania usługi MPNS|Licznik|Łącznie|Liczba wypchnięciów, które zakończyły się niepowodzeniem, ponieważ PNS nie zaakceptował podanych poświadczeń lub poświadczenia są zablokowane.|None|
-|notificationhub.pushes|Wszystkie powiadomienia wychodzące|Licznik|Łącznie|Wszystkie powiadomienia wychodzące centrum powiadomień|None|
-|incoming.all.requests|Wszystkie żądania przychodzące|Licznik|Łącznie|Łączna liczba żądań przychodzących dla centrum powiadomień|None|
-|przychodzące. ALL. failedrequests|Wszystkie przychodzące żądania zakończone niepowodzeniem|Licznik|Łącznie|Łączna liczba nieudanych żądań przychodzących dla centrum powiadomień|None|
+|rejestracja.wszystko|Operacje rejestracji|Liczba|Łącznie|Liczba wszystkich pomyślnych operacji rejestracji (kreacje aktualizuje kwerendy i usunięcia). |Brak|
+|rejestracja.tworzenie|Rejestracja tworzenie operacji|Liczba|Łącznie|Liczba wszystkich pomyślnych kreacji rejestracji.|Brak|
+|rejestracja.update|Operacje aktualizacji rejestracji|Liczba|Łącznie|Liczba wszystkich pomyślnych aktualizacji rejestracji.|Brak|
+|rejestracja.get|Operacje odczytu rejestracji|Liczba|Łącznie|Liczba wszystkich pomyślnych zapytań rejestracyjnych.|Brak|
+|rejestracja.delete|Operacje usuwania rejestracji|Liczba|Łącznie|Liczba wszystkich pomyślnych usunień rejestracji.|Brak|
+|Przychodzące|Wiadomości przychodzące|Liczba|Łącznie|Liczba wszystkich pomyślnych wywołań interfejsu API wysyłania. |Brak|
+|incoming.scheduled|Wysłane zaplanowane powiadomienia wypychane|Liczba|Łącznie|Anulowane zaplanowane powiadomienia wypychane|Brak|
+|incoming.scheduled.cancel|Anulowane zaplanowane powiadomienia wypychane|Liczba|Łącznie|Anulowane zaplanowane powiadomienia wypychane|Brak|
+|scheduled.pending|Oczekujące zaplanowane powiadomienia|Liczba|Łącznie|Oczekujące zaplanowane powiadomienia|Brak|
+|instalacja.wszystko|Operacje zarządzania instalacją|Liczba|Łącznie|Operacje zarządzania instalacją|Brak|
+|installation.get|Pobierz operacje instalacyjne|Liczba|Łącznie|Pobierz operacje instalacyjne|Brak|
+|instalacja.upsert|Tworzenie lub aktualizowanie operacji instalacji|Liczba|Łącznie|Tworzenie lub aktualizowanie operacji instalacji|Brak|
+|installation.patch|Operacje instalacji poprawek|Liczba|Łącznie|Operacje instalacji poprawek|Brak|
+|installation.delete|Usuń operacje instalacji|Liczba|Łącznie|Usuń operacje instalacji|Brak|
+|outgoing.allpns.success|Pomyślne powiadomienia|Liczba|Łącznie|Liczba wszystkich pomyślnych powiadomień.|Brak|
+|outgoing.allpns.invalidpayload|Błędy ładunku|Liczba|Łącznie|Liczba wypycheń, które nie powiodły się, ponieważ system PNS zwrócił błąd nieprawidłowego ładunku.|Brak|
+|outgoing.allpns.pnserror|Błędy zewnętrznego systemu powiadomień|Liczba|Łącznie|Liczba wypycheń, które nie powiodły się, ponieważ wystąpił problem z komunikacją z systemem PNS (wyklucza problemy z uwierzytelnianiem).|Brak|
+|outgoing.allpns.channelerror|Błędy kanału|Liczba|Łącznie|Liczba wypycheń, które nie powiodły się, ponieważ kanał był nieprawidłowy, nie jest skojarzony z poprawną aplikacją, która została ograniczona lub wygasła.|Brak|
+|outgoing.allpns.badorexpiredchannel|Nieprawidłowe lub wygasłe błędy kanału|Liczba|Łącznie|Liczba wypycheń, które nie powiodły się, ponieważ kanał/token/registrationId w rejestracji wygasła lub nieprawidłowa.|Brak|
+|outgoing.wns.success|Pomyślne powiadomienia w ucho.|Liczba|Łącznie|Liczba wszystkich pomyślnych powiadomień.|Brak|
+|outgoing.wns.invalidcredentials|Błędy autoryzacji WNS (nieprawidłowe poświadczenia)|Liczba|Łącznie|Liczba wypycheń, które nie powiodły się, ponieważ numer PNS nie zaakceptował podanych poświadczeń lub poświadczenia są blokowane. (Usługa Windows Live nie rozpoznaje poświadczeń).|Brak|
+|outgoing.wns.badchannel|Błąd nieprawidłowego kanału WNS|Liczba|Łącznie|Liczba wypycheń, które nie powiodły się, ponieważ ChannelURI w rejestracji nie został rozpoznany (stan WNS: 404 nie znaleziono).|Brak|
+|plik outgoing.wns.expiredchannel|Błąd wygasłego kanału WNS|Liczba|Łącznie|Liczba wypycheń, które nie powiodły się, ponieważ ChannelURI wygasł (stan WNS: 410 Gone).|Brak|
+|outgoing.wns.throttled|Powiadomienia w sieci WNS z ograniczeniem|Liczba|Łącznie|Liczba wypycheń, które nie powiodły się, ponieważ WNS jest ograniczanie tej aplikacji (stan WNS: 406 Nie do przyjęcia).|Brak|
+|outgoing.wns.tokenproviderunreachable|Błędy autoryzacji WNS (nieosiągalne)|Liczba|Łącznie|Usługa Windows Live jest niedoścignięci.|Brak|
+|outgoing.wns.invalidtoken|Błędy autoryzacji WNS (nieprawidłowy token)|Liczba|Łącznie|Token dostarczony do sieci WNS jest nieprawidłowy (stan WNS: 401 Unauthorized).|Brak|
+|outgoing.wns.wrongtoken|Błędy autoryzacji WNS (nieprawidłowy token)|Liczba|Łącznie|Token dostarczony do usługi WNS jest prawidłowy, ale dla innej aplikacji (stan WNS: 403 Zabronione). Może się tak zdarzyć, jeśli ChannelURI w rejestracji jest skojarzony z inną aplikacją. Sprawdź, czy aplikacja kliencka jest skojarzona z tą samą aplikacją, której poświadczenia znajdują się w Centrum powiadomień.|Brak|
+|outgoing.wns.invalidnotificationformat|Nieprawidłowy format powiadomienia WNS|Liczba|Łącznie|Format powiadomienia jest nieprawidłowy (stan WNS: 400). Należy zauważyć, że WNS nie odrzuca wszystkich nieprawidłowych ładunków.|Brak|
+|rozmiar pliku outgoing.wns.invalidnotificationsize|Błąd nieprawidłowego rozmiaru powiadomienia WNS|Liczba|Łącznie|Ładunek powiadomień jest za duży (stan WNS: 413).|Brak|
+|outgoing.wns.channelthrottled|Kanał WNS ograniczona|Liczba|Łącznie|Powiadomienie zostało usunięte, ponieważ ChannelURI w rejestracji jest ograniczona (nagłówek odpowiedzi WNS: X-WNS-NotificationStatus:channelThrottled).|Brak|
+|outgoing.wns.channelzłączone|Kanał WNS rozłączony|Liczba|Łącznie|Powiadomienie zostało usunięte, ponieważ ChannelURI w rejestracji jest ograniczona (nagłówek odpowiedzi WNS: X-WNS-DeviceConnectionStatus: disconnected).|Brak|
+|outgoing.wns.dropped|Powiadomienia o upuszczeniu w umorzone w sieci WNS|Liczba|Łącznie|Powiadomienie zostało usunięte, ponieważ ChannelURI w rejestracji jest ograniczona (X-WNS-NotificationStatus: porzucone, ale nie X-WNS-DeviceConnectionStatus: disconnected).|Brak|
+|outgoing.wns.pnserror|Błędy WNS|Liczba|Łącznie|Powiadomienie nie zostało dostarczone z powodu błędów komunikacji z siecią WNS.|Brak|
+|plik outgoing.wns.authenticationeror|Błędy uwierzytelniania WNS|Liczba|Łącznie|Powiadomienie nie zostało dostarczone z powodu błędów komunikujących się z nieprawidłowymi poświadczeniami usługi Windows Live lub nieprawidłowym tokenem.|Brak|
+|outgoing.apns.success|Pomyślne powiadomienia apns|Liczba|Łącznie|Liczba wszystkich pomyślnych powiadomień.|Brak|
+|outgoing.apns.invalidedentials|Błędy autoryzacji apns|Liczba|Łącznie|Liczba wypycheń, które nie powiodły się, ponieważ numer PNS nie zaakceptował podanych poświadczeń lub poświadczenia są blokowane.|Brak|
+|outgoing.apns.badchannel|Błąd nieprawidłowego kanału APNS|Liczba|Łącznie|Liczba wypycheń, które nie powiodły się, ponieważ token jest nieprawidłowy (kod stanu APNS: 8).|Brak|
+|plik outgoing.apns.expiredchannel|Błąd wygasłego kanału APNS|Liczba|Łącznie|Liczba tokenów, które zostały unieważnione przez kanał opinii APNS.|Brak|
+|plik outgoing.apns.invalidnotificationsize|Błąd nieprawidłowego rozmiaru powiadomienia apns|Liczba|Łącznie|Liczba wypycheń, które nie powiodły się, ponieważ ładunek był zbyt duży (kod stanu APNS: 7).|Brak|
+|outgoing.apns.pnserror|Błędy apns|Liczba|Łącznie|Liczba wypycheń, które nie powiodły się z powodu błędów komunikujących się z programem APNS.|Brak|
+|outgoing.gcm.success|Pomyślne powiadomienia gcm|Liczba|Łącznie|Liczba wszystkich pomyślnych powiadomień.|Brak|
+|outgoing.gcm.invalidcredentials|Błędy autoryzacji GCM (nieprawidłowe poświadczenia)|Liczba|Łącznie|Liczba wypycheń, które nie powiodły się, ponieważ numer PNS nie zaakceptował podanych poświadczeń lub poświadczenia są blokowane.|Brak|
+|outgoing.gcm.badchannel|Błąd nieprawidłowego kanału GCM|Liczba|Łącznie|Liczba wypycheń, które nie powiodły się, ponieważ identyfikator registrationId w rejestracji nie został rozpoznany (wynik GCM: Nieprawidłowa rejestracja).|Brak|
+|outgoing.gcm.expiredchannel|Błąd wygasłego kanału GCM|Liczba|Łącznie|Liczba wypycheń, które nie powiodły się, ponieważ identyfikator registrationId w rejestracji wygasł (wynik GCM: NotRegistered).|Brak|
+|outgoing.gcm.throttled|Powiadomienia o ograniczeniu gcm|Liczba|Łącznie|Liczba wypycheń, które nie powiodły się, ponieważ GCM ograniczył tę aplikację (kod stanu GCM: 501-599 lub result:Unavailable).|Brak|
+|outgoing.gcm.invalidnotificationformat|Nieprawidłowy format powiadomienia GCM|Liczba|Łącznie|Liczba wypycheń, które nie powiodły się, ponieważ ładunek nie został poprawnie sformatowany (wynik GCM: InvalidDataKey lub InvalidTtl).|Brak|
+|rozmiar pliku outgoing.gcm.invalidnotificationsize|Błąd nieprawidłowego rozmiaru powiadomienia GCM|Liczba|Łącznie|Liczba wypycheń, które nie powiodły się, ponieważ ładunek był zbyt duży (wynik GCM: MessageTooBig).|Brak|
+|plik wychodzący.gcm.wrongchannel|Błąd nieprawidłowego kanału GCM|Liczba|Łącznie|Liczba wypycheń, które nie powiodły się, ponieważ identyfikator registrationId w rejestracji nie jest skojarzony z bieżącą aplikacją (wynik GCM: InvalidPackageName).|Brak|
+|outgoing.gcm.pnserror|Błędy GCM|Liczba|Łącznie|Liczba wypycheń, które nie powiodły się z powodu błędów komunikujących się z GCM.|Brak|
+|outgoing.gcm.authenticationerror|Błędy uwierzytelniania GCM|Liczba|Łącznie|Liczba wypycheń, które nie powiodły się, ponieważ numer PNS nie zaakceptował podanych poświadczeń, poświadczenia są blokowane lub SenderId nie jest poprawnie skonfigurowany w aplikacji (wynik GCM: Niezgodność ZD).|Brak|
+|outgoing.mpns.success|Pomyślne powiadomienia MPNS|Liczba|Łącznie|Liczba wszystkich pomyślnych powiadomień.|Brak|
+|outgoing.mpns.invaliddedentials|Nieprawidłowe poświadczenia MPNS|Liczba|Łącznie|Liczba wypycheń, które nie powiodły się, ponieważ numer PNS nie zaakceptował podanych poświadczeń lub poświadczenia są blokowane.|Brak|
+|outgoing.mpns.badchannel|Błąd nieprawidłowego kanału MPNS|Liczba|Łącznie|Liczba wypycheń, które nie powiodły się, ponieważ channeluri w rejestracji nie został rozpoznany (stan MPNS: 404 nie znaleziono).|Brak|
+|outgoing.mpns.throttled|Powiadomienia z ograniczeniem mpns|Liczba|Łącznie|Liczba wypycheń, które nie powiodły się, ponieważ MPNS jest ograniczanie tej aplikacji (WNS MPNS: 406 Nie do przyjęcia).|Brak|
+|outgoing.mpns.invalidnotificationformat|Nieprawidłowy format powiadomienia MPNS|Liczba|Łącznie|Liczba wypycheń, które nie powiodły się, ponieważ ładunek powiadomienia był zbyt duży.|Brak|
+|outgoing.mpns.channelzłączone|Kanał MPNS odłączony|Liczba|Łącznie|Liczba wypycheń, które nie powiodły się, ponieważ channeluri w rejestracji został rozłączony (stan MPNS: 412 nie znaleziono).|Brak|
+|outgoing.mpns.dropped|Powiadomienia o porzuceniu mpns|Liczba|Łącznie|Liczba wypycheń, które zostały usunięte przez MPNS (nagłówek odpowiedzi MPNS: X-NotificationStatus: QueueFull lub Suppressed).|Brak|
+|outgoing.mpns.pnserror|Błędy MPNS|Liczba|Łącznie|Liczba wypycheń, które nie powiodły się z powodu błędów komunikujących się z mpns.|Brak|
+|outgoing.mpns.authenticationeroror|Błędy uwierzytelniania MPNS|Liczba|Łącznie|Liczba wypycheń, które nie powiodły się, ponieważ numer PNS nie zaakceptował podanych poświadczeń lub poświadczenia są blokowane.|Brak|
+|notificationhub.pushes|Wszystkie powiadomienia wychodzące|Liczba|Łącznie|Wszystkie powiadomienia wychodzące centrum powiadomień|Brak|
+|incoming.all.requests|Wszystkie przychodzące żądania|Liczba|Łącznie|Łączna liczba przychodzących żądań dla centrum powiadomień|Brak|
+|przychodzące.all.failedrequests|Wszystkie przychodzące żądania nieudane|Liczba|Łącznie|Łączna liczba przychodzących nieudanych żądań dla centrum powiadomień|Brak|
 
-## <a name="microsoftoperationalinsightsworkspaces"></a>Microsoft.OperationalInsights/workspaces
+## <a name="microsoftoperationalinsightsworkspaces"></a>Microsoft.OperationalInsights/obszary robocze
 
-|Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary|
+|Metryka|Metryka Nazwa wyświetlana|Jednostka|Typ agregacji|Opis|Wymiary|
 |---|---|---|---|---|---|
-|Average_% bezpłatne węzłów i|% Wolnego węzłów i|Licznik|Średnia|Average_% bezpłatne węzłów i|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Wolne miejsce w Average_%|Wartość procentowa wolnego miejsca|Licznik|Średnia|Wolne miejsce w Average_%|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Average_ użyto węzłów i|% Użytych węzłów i|Licznik|Średnia|Average_ użyto węzłów i|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Używane miejsce Average_%|Procent wykorzystania miejsca|Licznik|Średnia|Używane miejsce Average_%|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Bajty odczytu Average_Disk/s|Bajty odczytu dysku/s|Licznik|Średnia|Bajty odczytu Average_Disk/s|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Odczyty Average_Disk/s|Odczyty dysku/s|Licznik|Średnia|Odczyty Average_Disk/s|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Transfery Average_Disk/s|Transfery dyskowe/s|Licznik|Średnia|Transfery Average_Disk/s|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Bajty zapisu Average_Disk/s|Bajty zapisu dysku/s|Licznik|Średnia|Bajty zapisu Average_Disk/s|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Zapisy Average_Disk/s|Zapisy dysku/s|Licznik|Średnia|Zapisy Average_Disk/s|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Average_Free megabajtów|Wolne megabajty|Licznik|Średnia|Average_Free megabajtów|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Bajty dysku Average_Logical/s|Bajty dysku logicznego/s|Licznik|Średnia|Bajty dysku Average_Logical/s|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Dostępna pamięć Average_%|Dostępna pamięć (%)|Licznik|Średnia|Dostępna pamięć Average_%|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Dostępny obszar wymiany Average_%|Dostępny obszar wymiany (%)|Licznik|Średnia|Dostępny obszar wymiany Average_%|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Użyta pamięć Average_%|Używana pamięć (%)|Licznik|Średnia|Użyta pamięć Average_%|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Używany obszar wymiany Average_%|Używany obszar wymiany (%)|Licznik|Średnia|Używany obszar wymiany Average_%|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Pamięć Average_Available MB|Dostępna pamięć (MB)|Licznik|Średnia|Pamięć Average_Available MB|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Zamiana Average_Available MB|Dostępny obszar wymiany (MB)|Licznik|Średnia|Zamiana Average_Available MB|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Odczyty Average_Page/s|Odczyty stron/s|Licznik|Średnia|Odczyty Average_Page/s|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Zapisy Average_Page/s|Zapisy stron/s|Licznik|Średnia|Zapisy Average_Page/s|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Average_Pages/s|Strony/s|Licznik|Średnia|Average_Pages/s|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Przestrzeń wymiany Average_Used MB|Używany obszar wymiany (MB)|Licznik|Średnia|Przestrzeń wymiany Average_Used MB|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Pamięć Average_Used pamięci (MB)|Używana pamięć (MB)|Licznik|Średnia|Pamięć Average_Used pamięci (MB)|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Przesyłane Average_Total bajty|Całkowita liczba przesłanych bajtów|Licznik|Średnia|Przesyłane Average_Total bajty|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Bajty odebrane Average_Total|Całkowita liczba odebranych bajtów|Licznik|Średnia|Bajty odebrane Average_Total|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Average_Total bajty|Łączna liczba bajtów|Licznik|Średnia|Average_Total bajty|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Average_Total przesyłane pakiety|Całkowita liczba przesłanych pakietów|Licznik|Średnia|Average_Total przesyłane pakiety|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Odebrane pakiety Average_Total|Całkowita liczba odebranych pakietów|Licznik|Średnia|Odebrane pakiety Average_Total|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Average_Total błędy odbierania|Całkowita liczba błędów odbierania|Licznik|Średnia|Average_Total błędy odbierania|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Błędy wysyłania Average_Total|Całkowita liczba błędów transmisji|Licznik|Średnia|Błędy wysyłania Average_Total|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Average_Total kolizje|Łączna liczba kolizji|Licznik|Średnia|Average_Total kolizje|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Average_Avg. wartość operacji dysku na sek./odczyt|Średni czas dysku w s/odczyt|Licznik|Średnia|Average_Avg. wartość operacji dysku na sek./odczyt|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Average_Avg. szybkość transferu z dysku w sekundach|Średni czas dysku w s/transfer|Licznik|Średnia|Average_Avg. szybkość transferu z dysku w sekundach|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Average_Avg. dysku na sek./zapis|Średni czas dysku w s/zapis|Licznik|Średnia|Average_Avg. dysku na sek./zapis|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Bajty dysku Average_Physical/s|Bajty dysku fizycznego/s|Licznik|Średnia|Bajty dysku Average_Physical/s|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Average_Pct uprzywilejowany czas|Czas uprzywilejowany PCT|Licznik|Średnia|Average_Pct uprzywilejowany czas|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Czas użytkownika Average_Pct|Czas użytkownika PCT|Licznik|Średnia|Czas użytkownika Average_Pct|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Pamięć Average_Used w kilobajtach|Używana pamięć (w kilobajtach)|Licznik|Średnia|Pamięć Average_Used w kilobajtach|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Average_Virtual pamięci współdzielonej|Wirtualna pamięć udostępniona|Licznik|Średnia|Average_Virtual pamięci współdzielonej|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Czas DPC Average_%|Czas DPC (%)|Licznik|Średnia|Czas DPC Average_%|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Czas bezczynności Average_%|Czas bezczynności (%)|Licznik|Średnia|Czas bezczynności Average_%|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Average_ czas przerwań (%)|Czas przerwań (%)|Licznik|Średnia|Average_ czas przerwań (%)|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Czas oczekiwania operacji we/wy Average_%|Czas oczekiwania operacji we/wy (%)|Licznik|Średnia|Czas oczekiwania operacji we/wy Average_%|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Average_% czasu całkiem|% Całkiem czasu|Licznik|Średnia|Average_% czasu całkiem|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Average_% czasu uprzywilejowanego|Czas uprzywilejowany (%)|Licznik|Średnia|Average_% czasu uprzywilejowanego|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Average_ czas procesora (%)|Czas procesora (%)|Licznik|Średnia|Average_ czas procesora (%)|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Czas użytkownika Average_%|Czas użytkownika (%)|Licznik|Średnia|Czas użytkownika Average_%|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Average_Free pamięci fizycznej|Wolna pamięć fizyczna|Licznik|Średnia|Average_Free pamięci fizycznej|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Average_Free miejsce w plikach stronicowania|Wolne miejsce w plikach stronicowania|Licznik|Średnia|Average_Free miejsce w plikach stronicowania|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Average_Free pamięć wirtualną|Wolna pamięć wirtualna|Licznik|Średnia|Average_Free pamięć wirtualną|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Average_Processes|Procesy|Licznik|Średnia|Average_Processes|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Average_Size przechowywane w plikach stronicowania|Rozmiar zapisany w plikach stronicowania|Licznik|Średnia|Average_Size przechowywane w plikach stronicowania|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Average_Uptime|Czas działania|Licznik|Średnia|Average_Uptime|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Average_Users|Użytkownicy|Licznik|Średnia|Average_Users|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Average_Avg. wartość operacji dysku na sek./odczyt|Średni czas dysku w s/odczyt|Licznik|Średnia|Average_Avg. wartość operacji dysku na sek./odczyt|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Average_Avg. dysku na sek./zapis|Średni czas dysku w s/zapis|Licznik|Średnia|Average_Avg. dysku na sek./zapis|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Average_Current długość kolejki dysku|Bieżąca długość kolejki dysku|Licznik|Średnia|Average_Current długość kolejki dysku|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Odczyty Average_Disk/s|Odczyty dysku/s|Licznik|Średnia|Odczyty Average_Disk/s|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Transfery Average_Disk/s|Transfery dyskowe/s|Licznik|Średnia|Transfery Average_Disk/s|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Zapisy Average_Disk/s|Zapisy dysku/s|Licznik|Średnia|Zapisy Average_Disk/s|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Average_Free megabajtów|Wolne megabajty|Licznik|Średnia|Average_Free megabajtów|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Wolne miejsce w Average_%|Wartość procentowa wolnego miejsca|Licznik|Średnia|Wolne miejsce w Average_%|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Average_Available MB|Dostępna pamięć (MB)|Licznik|Średnia|Average_Available MB|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Average_% zadeklarowanych bajtów w użyciu|% Zadeklarowanych bajtów w użyciu|Licznik|Średnia|Average_% zadeklarowanych bajtów w użyciu|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Odebrane Average_Bytes/s|Bajty odebrane/s|Licznik|Średnia|Odebrane Average_Bytes/s|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Wysłane Average_Bytes/s|Bajty wysłane/s|Licznik|Średnia|Wysłane Average_Bytes/s|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Average_Bytes całkowita/s|Całkowita liczba bajtów/s|Licznik|Średnia|Average_Bytes całkowita/s|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Average_ czas procesora (%)|Czas procesora (%)|Licznik|Średnia|Average_ czas procesora (%)|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Długość kolejki Average_Processor|Długość kolejki procesora|Licznik|Średnia|Długość kolejki Average_Processor|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Puls|Puls|Licznik|Łącznie|Puls|Komputer, OSType, wersja, SourceComputerId|
-|Aktualizacja|Aktualizacja|Licznik|Średnia|Aktualizacja|Komputer, produkt, klasyfikacja, UpdateState, opcjonalne, zatwierdzone|
-|Wydarzenie|Wydarzenie|Licznik|Średnia|Wydarzenie|Source, EventLog, Computer, EventCategory, EventLevel, EventLevelName, EventID|
+|Average_% darmowe i-węzły|% wolnych i-węzłów|Liczba|Średnia|Average_% darmowe i-węzły|Komputer,Nazwa obiektu,Nazwa wystąpienia,Ścieżka licznika,System źródła|
+|Average_% wolnego miejsca|% wolnego miejsca|Liczba|Średnia|Average_% wolnego miejsca|Komputer,Nazwa obiektu,Nazwa wystąpienia,Ścieżka licznika,System źródła|
+|Average_% używanych iwody|% zużytych i-węzłów|Liczba|Średnia|Average_% używanych iwody|Komputer,Nazwa obiektu,Nazwa wystąpienia,Ścieżka licznika,System źródła|
+|Average_% używanej przestrzeni|% używanej przestrzeni|Liczba|Średnia|Average_% używanej przestrzeni|Komputer,Nazwa obiektu,Nazwa wystąpienia,Ścieżka licznika,System źródła|
+|Average_Disk odczytu bajtów/s|Bajty odczytu dysku/s|Liczba|Średnia|Average_Disk odczytu bajtów/s|Komputer,Nazwa obiektu,Nazwa wystąpienia,Ścieżka licznika,System źródła|
+|odczyty Average_Disk/s|Odczyty dysku/s|Liczba|Średnia|odczyty Average_Disk/s|Komputer,Nazwa obiektu,Nazwa wystąpienia,Ścieżka licznika,System źródła|
+|Average_Disk transfery/s|Transfery dysków/s|Liczba|Średnia|Average_Disk transfery/s|Komputer,Nazwa obiektu,Nazwa wystąpienia,Ścieżka licznika,System źródła|
+|Average_Disk bajtów zapisu/s|Bajty zapisu dysku na sekundę|Liczba|Średnia|Average_Disk bajtów zapisu/s|Komputer,Nazwa obiektu,Nazwa wystąpienia,Ścieżka licznika,System źródła|
+|Average_Disk zapisy/s|Zapisy na dysku/s|Liczba|Średnia|Average_Disk zapisy/s|Komputer,Nazwa obiektu,Nazwa wystąpienia,Ścieżka licznika,System źródła|
+|megabajty Average_Free|Darmowe megabajty|Liczba|Średnia|megabajty Average_Free|Komputer,Nazwa obiektu,Nazwa wystąpienia,Ścieżka licznika,System źródła|
+|Average_Logical bajtów dysku na sekundę|Bajty dysku logicznego na sekundę|Liczba|Średnia|Average_Logical bajtów dysku na sekundę|Komputer,Nazwa obiektu,Nazwa wystąpienia,Ścieżka licznika,System źródła|
+|Average_% dostępnej pamięci|% dostępnej pamięci|Liczba|Średnia|Average_% dostępnej pamięci|Komputer,Nazwa obiektu,Nazwa wystąpienia,Ścieżka licznika,System źródła|
+|Average_% dostępnej przestrzeni wymiany|% dostępnej przestrzeni wymiany|Liczba|Średnia|Average_% dostępnej przestrzeni wymiany|Komputer,Nazwa obiektu,Nazwa wystąpienia,Ścieżka licznika,System źródła|
+|Average_% używanej pamięci|% używanej pamięci|Liczba|Średnia|Average_% używanej pamięci|Komputer,Nazwa obiektu,Nazwa wystąpienia,Ścieżka licznika,System źródła|
+|Average_% używanej przestrzeni wymiany|% używanej przestrzeni wymiany|Liczba|Średnia|Average_% używanej przestrzeni wymiany|Komputer,Nazwa obiektu,Nazwa wystąpienia,Ścieżka licznika,System źródła|
+|Average_Available pamięci MBytes|Dostępna pamięć MBytes|Liczba|Średnia|Average_Available pamięci MBytes|Komputer,Nazwa obiektu,Nazwa wystąpienia,Ścieżka licznika,System źródła|
+|Average_Available MBytes Swap|Dostępne wymiany bajtów|Liczba|Średnia|Average_Available MBytes Swap|Komputer,Nazwa obiektu,Nazwa wystąpienia,Ścieżka licznika,System źródła|
+|odczyty Average_Page/s|Odczyty strony/s|Liczba|Średnia|odczyty Average_Page/s|Komputer,Nazwa obiektu,Nazwa wystąpienia,Ścieżka licznika,System źródła|
+|Average_Page Zapisy/s|Zapis strony/s|Liczba|Średnia|Average_Page Zapisy/s|Komputer,Nazwa obiektu,Nazwa wystąpienia,Ścieżka licznika,System źródła|
+|Average_Pages/s|Strony/s|Liczba|Średnia|Average_Pages/s|Komputer,Nazwa obiektu,Nazwa wystąpienia,Ścieżka licznika,System źródła|
+|Average_Used przestrzeni wymiany bajtów|Używana przestrzeń wymiany bajtów MBytes|Liczba|Średnia|Average_Used przestrzeni wymiany bajtów|Komputer,Nazwa obiektu,Nazwa wystąpienia,Ścieżka licznika,System źródła|
+|Average_Used MBytes pamięci|Używane mbyty pamięci|Liczba|Średnia|Average_Used MBytes pamięci|Komputer,Nazwa obiektu,Nazwa wystąpienia,Ścieżka licznika,System źródła|
+|Average_Total bajtów przesyłanych|Łączna liczba przesłanych bajtów|Liczba|Średnia|Average_Total bajtów przesyłanych|Komputer,Nazwa obiektu,Nazwa wystąpienia,Ścieżka licznika,System źródła|
+|Odebrano bajty Average_Total|Całkowita liczba odebranych bajtów|Liczba|Średnia|Odebrano bajty Average_Total|Komputer,Nazwa obiektu,Nazwa wystąpienia,Ścieżka licznika,System źródła|
+|bajty Average_Total|Całkowita liczba bajtów|Liczba|Średnia|bajty Average_Total|Komputer,Nazwa obiektu,Nazwa wystąpienia,Ścieżka licznika,System źródła|
+|Average_Total przesyłane pakiety|Łączna liczba przesłanych pakietów|Liczba|Średnia|Average_Total przesyłane pakiety|Komputer,Nazwa obiektu,Nazwa wystąpienia,Ścieżka licznika,System źródła|
+|Odebrane Average_Total pakiety|Łączna liczba odebranych pakietów|Liczba|Średnia|Odebrane Average_Total pakiety|Komputer,Nazwa obiektu,Nazwa wystąpienia,Ścieżka licznika,System źródła|
+|Average_Total błędy Rx|Całkowita liczba błędów Rx|Liczba|Średnia|Average_Total błędy Rx|Komputer,Nazwa obiektu,Nazwa wystąpienia,Ścieżka licznika,System źródła|
+|Average_Total błędy TX|Całkowita liczba błędów TX|Liczba|Średnia|Average_Total błędy TX|Komputer,Nazwa obiektu,Nazwa wystąpienia,Ścieżka licznika,System źródła|
+|Kolizje Average_Total|Łączna liczba kolizji|Liczba|Średnia|Kolizje Average_Total|Komputer,Nazwa obiektu,Nazwa wystąpienia,Ścieżka licznika,System źródła|
+|Average_Avg. wartość operacji dysku na sek./odczyt|Średnia dysk s/odczyt|Liczba|Średnia|Average_Avg. wartość operacji dysku na sek./odczyt|Komputer,Nazwa obiektu,Nazwa wystąpienia,Ścieżka licznika,System źródła|
+|Average_Avg. Transfery dysku/s|Średnia s/transfer dysku|Liczba|Średnia|Average_Avg. Transfery dysku/s|Komputer,Nazwa obiektu,Nazwa wystąpienia,Ścieżka licznika,System źródła|
+|Average_Avg. dysku na sek./zapis|Średnia sek./zapis|Liczba|Średnia|Average_Avg. dysku na sek./zapis|Komputer,Nazwa obiektu,Nazwa wystąpienia,Ścieżka licznika,System źródła|
+|Average_Physical bajtów dysku na sekundę|Bajty dysku fizycznego/s|Liczba|Średnia|Average_Physical bajtów dysku na sekundę|Komputer,Nazwa obiektu,Nazwa wystąpienia,Ścieżka licznika,System źródła|
+|Average_Pct uprzywilejowany czas|Pct Uprzywilejowany czas|Liczba|Średnia|Average_Pct uprzywilejowany czas|Komputer,Nazwa obiektu,Nazwa wystąpienia,Ścieżka licznika,System źródła|
+|Average_Pct czas użytkownika|Pct Czas użytkownika|Liczba|Średnia|Average_Pct czas użytkownika|Komputer,Nazwa obiektu,Nazwa wystąpienia,Ścieżka licznika,System źródła|
+|Average_Used pamięci kBytes|Używane pamięci kBytes|Liczba|Średnia|Average_Used pamięci kBytes|Komputer,Nazwa obiektu,Nazwa wystąpienia,Ścieżka licznika,System źródła|
+|Average_Virtual pamięć udostępniona|Wirtualna pamięć współdzielona|Liczba|Średnia|Average_Virtual pamięć udostępniona|Komputer,Nazwa obiektu,Nazwa wystąpienia,Ścieżka licznika,System źródła|
+|Average_% czasu DPC|% czasu DPC|Liczba|Średnia|Average_% czasu DPC|Komputer,Nazwa obiektu,Nazwa wystąpienia,Ścieżka licznika,System źródła|
+|Average_% czasu bezczynnego|Czas bezczynności (%)|Liczba|Średnia|Average_% czasu bezczynnego|Komputer,Nazwa obiektu,Nazwa wystąpienia,Ścieżka licznika,System źródła|
+|Average_% czasu przerwania|% czasu przerwania|Liczba|Średnia|Average_% czasu przerwania|Komputer,Nazwa obiektu,Nazwa wystąpienia,Ścieżka licznika,System źródła|
+|Average_% czasu oczekiwania we/wy|% czasu oczekiwania we/wy|Liczba|Średnia|Average_% czasu oczekiwania we/wy|Komputer,Nazwa obiektu,Nazwa wystąpienia,Ścieżka licznika,System źródła|
+|Average_% miły czas|% Miły czas|Liczba|Średnia|Average_% miły czas|Komputer,Nazwa obiektu,Nazwa wystąpienia,Ścieżka licznika,System źródła|
+|Average_% czasu uprzywilejowanego|% czasu uprzywilejowanego|Liczba|Średnia|Average_% czasu uprzywilejowanego|Komputer,Nazwa obiektu,Nazwa wystąpienia,Ścieżka licznika,System źródła|
+|Average_% czasu procesora|Czas procesora (%)|Liczba|Średnia|Average_% czasu procesora|Komputer,Nazwa obiektu,Nazwa wystąpienia,Ścieżka licznika,System źródła|
+|Average_% czasu użytkownika|% czasu użytkownika|Liczba|Średnia|Average_% czasu użytkownika|Komputer,Nazwa obiektu,Nazwa wystąpienia,Ścieżka licznika,System źródła|
+|Average_Free pamięć fizyczna|Wolna pamięć fizyczna|Liczba|Średnia|Average_Free pamięć fizyczna|Komputer,Nazwa obiektu,Nazwa wystąpienia,Ścieżka licznika,System źródła|
+|Average_Free miejsca w plikach stronicowania|Wolne miejsce w plikach stronicowania|Liczba|Średnia|Average_Free miejsca w plikach stronicowania|Komputer,Nazwa obiektu,Nazwa wystąpienia,Ścieżka licznika,System źródła|
+|Average_Free pamięci wirtualnej|Darmowa pamięć wirtualna|Liczba|Średnia|Average_Free pamięci wirtualnej|Komputer,Nazwa obiektu,Nazwa wystąpienia,Ścieżka licznika,System źródła|
+|Average_Processes|Procesy|Liczba|Średnia|Average_Processes|Komputer,Nazwa obiektu,Nazwa wystąpienia,Ścieżka licznika,System źródła|
+|Average_Size przechowywane w plikach stronicowania|Rozmiar przechowywany w plikach stronicowania|Liczba|Średnia|Average_Size przechowywane w plikach stronicowania|Komputer,Nazwa obiektu,Nazwa wystąpienia,Ścieżka licznika,System źródła|
+|Average_Uptime|Uptime|Liczba|Średnia|Average_Uptime|Komputer,Nazwa obiektu,Nazwa wystąpienia,Ścieżka licznika,System źródła|
+|Average_Users|Użytkownicy|Liczba|Średnia|Average_Users|Komputer,Nazwa obiektu,Nazwa wystąpienia,Ścieżka licznika,System źródła|
+|Average_Avg. wartość operacji dysku na sek./odczyt|Średnia dysk s/odczyt|Liczba|Średnia|Average_Avg. wartość operacji dysku na sek./odczyt|Komputer,Nazwa obiektu,Nazwa wystąpienia,Ścieżka licznika,System źródła|
+|Average_Avg. dysku na sek./zapis|Średnia sek./zapis|Liczba|Średnia|Average_Avg. dysku na sek./zapis|Komputer,Nazwa obiektu,Nazwa wystąpienia,Ścieżka licznika,System źródła|
+|Average_Current długość kolejki dysku|Bieżąca długość kolejki dysku|Liczba|Średnia|Average_Current długość kolejki dysku|Komputer,Nazwa obiektu,Nazwa wystąpienia,Ścieżka licznika,System źródła|
+|odczyty Average_Disk/s|Odczyty dysku/s|Liczba|Średnia|odczyty Average_Disk/s|Komputer,Nazwa obiektu,Nazwa wystąpienia,Ścieżka licznika,System źródła|
+|Average_Disk transfery/s|Transfery dysków/s|Liczba|Średnia|Average_Disk transfery/s|Komputer,Nazwa obiektu,Nazwa wystąpienia,Ścieżka licznika,System źródła|
+|Average_Disk zapisy/s|Zapisy na dysku/s|Liczba|Średnia|Average_Disk zapisy/s|Komputer,Nazwa obiektu,Nazwa wystąpienia,Ścieżka licznika,System źródła|
+|megabajty Average_Free|Darmowe megabajty|Liczba|Średnia|megabajty Average_Free|Komputer,Nazwa obiektu,Nazwa wystąpienia,Ścieżka licznika,System źródła|
+|Average_% wolnego miejsca|% wolnego miejsca|Liczba|Średnia|Average_% wolnego miejsca|Komputer,Nazwa obiektu,Nazwa wystąpienia,Ścieżka licznika,System źródła|
+|Average_Available MBytes|Dostępne MBytes|Liczba|Średnia|Average_Available MBytes|Komputer,Nazwa obiektu,Nazwa wystąpienia,Ścieżka licznika,System źródła|
+|Average_% używanych bajtów|% używanych bajtów na które|Liczba|Średnia|Average_% używanych bajtów|Komputer,Nazwa obiektu,Nazwa wystąpienia,Ścieżka licznika,System źródła|
+|Average_Bytes odebrane/s|Bajty odebrane/s|Liczba|Średnia|Average_Bytes odebrane/s|Komputer,Nazwa obiektu,Nazwa wystąpienia,Ścieżka licznika,System źródła|
+|Average_Bytes wysłane/s|Bajty wysłane/s|Liczba|Średnia|Average_Bytes wysłane/s|Komputer,Nazwa obiektu,Nazwa wystąpienia,Ścieżka licznika,System źródła|
+|Average_Bytes Suma/s|Suma bajtów/s|Liczba|Średnia|Average_Bytes Suma/s|Komputer,Nazwa obiektu,Nazwa wystąpienia,Ścieżka licznika,System źródła|
+|Average_% czasu procesora|Czas procesora (%)|Liczba|Średnia|Average_% czasu procesora|Komputer,Nazwa obiektu,Nazwa wystąpienia,Ścieżka licznika,System źródła|
+|Długość Average_Processor kolejki|Długość kolejki procesora|Liczba|Średnia|Długość Average_Processor kolejki|Komputer,Nazwa obiektu,Nazwa wystąpienia,Ścieżka licznika,System źródła|
+|Puls|Puls|Liczba|Łącznie|Puls|Komputer,Typ systemu operacyjnego,Wersja,Komputer źródłowy|
+|Aktualizacja|Aktualizacja|Liczba|Średnia|Aktualizacja|Komputer,Produkt,Klasyfikacja,UpdateState,Opcjonalnie,Zatwierdzone|
+|Wydarzenie|Wydarzenie|Liczba|Średnia|Wydarzenie|Źródło,EventLog,Komputer,Kategoria zdarzeń,EventLevel,EventLevelName,EventID|
 
-## <a name="microsoftpeeringpeeringservices"></a>Microsoft. Komunikacja równorzędna/peeringServices
+## <a name="microsoftpeeringpeeringservices"></a>Usługi komunikacji równorzędnej/komunikacji firmy Microsoft
 
-|Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary|
+|Metryka|Metryka Nazwa wyświetlana|Jednostka|Typ agregacji|Opis|Wymiary|
 |---|---|---|---|---|---|
-|PrefixLatency|Opóźnienie prefiksu|Milisekundy|Średnia|Średnie opóźnienie prefiksu|Prefiksname|
+|PrefiksLatency|Opóźnienie prefiksu|Milisekund|Średnia|Mediana opóźnienia prefiksu|Nazwa_prefiksu|
 
-## <a name="microsoftpeeringpeerings"></a>Microsoft. Komunikacja równorzędna/Komunikacja równorzędna
+## <a name="microsoftpeeringpeerings"></a>Komunikacja równorzędna/komunikacja równorzędna firmy Microsoft
 
-|Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary|
+|Metryka|Metryka Nazwa wyświetlana|Jednostka|Typ agregacji|Opis|Wymiary|
 |---|---|---|---|---|---|
-|SessionAvailabilityV4|Dostępność sesji v4|Procent|Średnia|Dostępność sesji v4|ConnectionId|
-|SessionAvailabilityV6|Dostępność sesji w wersji 6|Procent|Średnia|Dostępność sesji V6|ConnectionId|
-|IngressTrafficRate|Szybkość ruchu przychodzącego|BitsPerSecond|Średnia|Szybkość ruchu przychodzącego w bitach na sekundę|ConnectionId|
-|EgressTrafficRate|Szybkość ruchu wychodzącego|BitsPerSecond|Średnia|Szybkość ruchu wychodzącego w bitach na sekundę|ConnectionId|
+|SesjaDostępnośćV4|Dostępność sesji v4|Wartość procentowa|Średnia|Dostępność sesji V4|Connectionid|
+|SesjaDostępnośćV6|Dostępność sesji V6|Wartość procentowa|Średnia|Dostępność sesji V6|Connectionid|
+|IngressTrafficRate (Wzrost ruchu ingresicrate)|Szybkość ruchu przychodzącego|BitsPerSecond (BitsPerSecond)|Średnia|Szybkość ruchu przychodzącego w bitach na sekundę|Connectionid|
+|Ruch wychodzącyAterwa|Szybkość ruchu wychodzącego|BitsPerSecond (BitsPerSecond)|Średnia|Szybkość ruchu wychodzącego w bitach na sekundę|Connectionid|
 
-## <a name="microsoftpowerbidedicatedcapacities"></a>Microsoft.PowerBIDedicated/capacities
+## <a name="microsoftpowerbidedicatedcapacities"></a>Microsoft.PowerBIDedicated/capacitys
 
-|Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary|
+|Metryka|Metryka Nazwa wyświetlana|Jednostka|Typ agregacji|Opis|Wymiary|
 |---|---|---|---|---|---|
-|QueryDuration|Czas trwania zapytania|Milisekundy|Średnia|Czas trwania zapytania języka DAX w ostatnim interwale|Nie wymiarów|
-|QueryPoolJobQueueLength|Wątki: Długość kolejki zadań puli zapytań|Licznik|Średnia|Liczba zadań w kolejce puli wątków zapytań.|Nie wymiarów|
-|qpu_high_utilization_metric|QPU wysokie wykorzystanie|Licznik|Łącznie|QPU wysokie użycie w ciągu ostatnich minut, 1 do dużego użycia QPU, w przeciwnym razie 0|Nie wymiarów|
-|memory_metric|Memory (Pamięć)|Bajty|Średnia|Rozmiar. Zakres 0-3 GB dla a1, 0-5 GB dla a2, 0-10 GB dla a3, 0-25 GB dla A4, 0-50 GB dla A5 i 0-100 GB dla A6|Nie wymiarów|
-|memory_thrashing_metric|Migotanie pamięci|Procent|Średnia|Średnia pamięć migotanie.|Nie wymiarów|
+|Wyszukiwanie zapytań|Czas trwania zapytania|Milisekund|Średnia|Czas trwania kwerendy języka DAX w ostatnim interwale|Brak wymiarów|
+|QueryPoolJobQueueLength|Wątki: Długość kolejki zadań puli zapytań|Liczba|Średnia|Liczba zadań w kolejce puli wątków kwerend.|Brak wymiarów|
+|qpu_high_utilization_metric|Wysokie wykorzystanie jednostek QPU|Liczba|Łącznie|QPU High Utilization In Last Minute, 1 dla wysokiego wykorzystania QPU, w przeciwnym razie 0|Brak wymiarów|
+|memory_metric|Memory (Pamięć)|Bajty|Średnia|Memory (pamięć). Zakres 0-3 GB dla A1, 0-5 GB dla A2, 0-10 GB dla A3, 0-25 GB dla A4, 0-50 GB dla A5 i 0-100 GB dla A6|Brak wymiarów|
+|memory_thrashing_metric|Przeładowywanie pamięci|Wartość procentowa|Średnia|Średnia pamięć thrashing.|Brak wymiarów|
 
 
 
-## <a name="microsoftrelaynamespaces"></a>Microsoft. Relay/przestrzenie nazw
+## <a name="microsoftrelaynamespaces"></a>Microsoft.Relay/przestrzenie nazw
 
-|Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary|
+|Metryka|Metryka Nazwa wyświetlana|Jednostka|Typ agregacji|Opis|Wymiary|
 |---|---|---|---|---|---|
-|ListenerConnections-Success|ListenerConnections-Success|Licznik|Łącznie|Pomyślne ListenerConnections dla elementu Microsoft. Relay.|EntityName, klasy OperationResult|
-|ListenerConnections — błąd clienterror|ListenerConnections — błąd clienterror|Licznik|Łącznie|Błąd clienterror on ListenerConnections dla elementu Microsoft. Relay.|EntityName, klasy OperationResult|
-|ListenerConnections-ServerError|ListenerConnections-ServerError|Licznik|Łącznie|Błąd servererror on ListenerConnections dla elementu Microsoft. Relay.|EntityName, klasy OperationResult|
-|SenderConnections-Success|SenderConnections-Success|Licznik|Łącznie|Pomyślne SenderConnections dla elementu Microsoft. Relay.|EntityName, klasy OperationResult|
-|SenderConnections-ClientError|SenderConnections-ClientError|Licznik|Łącznie|Błąd clienterror on SenderConnections dla elementu Microsoft. Relay.|EntityName, klasy OperationResult|
-|SenderConnections-ServerError|SenderConnections-ServerError|Licznik|Łącznie|Błąd servererror on SenderConnections dla elementu Microsoft. Relay.|EntityName, klasy OperationResult|
-|ListenerConnections-TotalRequests|ListenerConnections-TotalRequests|Licznik|Łącznie|Łącznie ListenerConnections dla elementu Microsoft. Relay.|EntityName|
-|SenderConnections-TotalRequests|SenderConnections-TotalRequests|Licznik|Łącznie|Łączna liczba żądań SenderConnections dla elementu Microsoft. Relay.|EntityName|
-|Połączeń ActiveConnections|Połączeń ActiveConnections|Licznik|Łącznie|Łącznie połączeń ActiveConnections dla elementu Microsoft. Relay.|EntityName|
-|ActiveListeners|ActiveListeners|Licznik|Łącznie|Łącznie ActiveListeners dla elementu Microsoft. Relay.|EntityName|
-|BytesTransferred|BytesTransferred|Licznik|Łącznie|Łącznie BytesTransferred dla elementu Microsoft. Relay.|EntityName|
-|ListenerDisconnects|ListenerDisconnects|Licznik|Łącznie|Łącznie ListenerDisconnects dla elementu Microsoft. Relay.|EntityName|
-|SenderDisconnects|SenderDisconnects|Licznik|Łącznie|Łącznie SenderDisconnects dla elementu Microsoft. Relay.|EntityName|
+|ListenerConnections-Sukces|ListenerConnections-Sukces|Liczba|Łącznie|Pomyślne połączenia listener dla programu Microsoft.Relay.|Nazwa elementu,OperacjaWysoki|
+|OdbiornikConnections-ClientError|OdbiornikConnections-ClientError|Liczba|Łącznie|ClientError na ListenerConnections dla microsoft.relay.|Nazwa elementu,OperacjaWysoki|
+|OdbiornikConnections-ServerError|OdbiornikConnections-ServerError|Liczba|Łącznie|ServerError na ListenerConnections dla microsoft.relay.|Nazwa elementu,OperacjaWysoki|
+|SenderConnections-Sukces|SenderConnections-Sukces|Liczba|Łącznie|Pomyślne połączenia nadawcze dla microsoft.relay.|Nazwa elementu,OperacjaWysoki|
+|SenderConnections-ClientError|SenderConnections-ClientError|Liczba|Łącznie|ClientError na SenderConnections dla microsoft.relay.|Nazwa elementu,OperacjaWysoki|
+|SenderConnections-ServerError|SenderConnections-ServerError|Liczba|Łącznie|ServerError na SenderConnections dla microsoft.relay.|Nazwa elementu,OperacjaWysoki|
+|Połączenia słuchaczy-TotalRequests|Połączenia słuchaczy-TotalRequests|Liczba|Łącznie|Całkowita liczba połączeń listenerconnections dla programu Microsoft.Relay.|Nazwa elementu|
+|Połączenia nadawców-TotalRequests|Połączenia nadawców-TotalRequests|Liczba|Łącznie|Łączna liczba żądań SenderConnections dla programu Microsoft.Relay.|Nazwa elementu|
+|ActiveConnections (Aktywne połączenia)|ActiveConnections (Aktywne połączenia)|Liczba|Łącznie|Całkowita liczba activeconnections dla microsoft.relay.|Nazwa elementu|
+|AktywneListenery|AktywneListenery|Liczba|Łącznie|Całkowita liczba activelisteners dla microsoft.relay.|Nazwa elementu|
+|BajtyPrzejstrzej|BajtyPrzejstrzej|Liczba|Łącznie|Całkowita liczba bajtówprzejęta dla programu Microsoft.Relay.|Nazwa elementu|
+|OdbiornikRozłącza|OdbiornikRozłącza|Liczba|Łącznie|Całkowita liczba odbiornikówRozłącza dla microsoft.relay.|Nazwa elementu|
+|SenderDisconnects|SenderDisconnects|Liczba|Łącznie|Całkowita liczba połączeń senderdisconnects dla microsoft.relay.|Nazwa elementu|
 
 
-## <a name="microsoftsearchsearchservices"></a>Microsoft.Search/searchServices
+## <a name="microsoftsearchsearchservices"></a>Microsoft.Search/searchSługs
 
-|Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary|
+|Metryka|Metryka Nazwa wyświetlana|Jednostka|Typ agregacji|Opis|Wymiary|
 |---|---|---|---|---|---|
-|SearchLatency|Opóźnienie wyszukiwania|S|Średnia|Średnie opóźnienie wyszukiwania dla usługi wyszukiwania|None|
-|SearchQueriesPerSecond|Zapytania wyszukiwania na sekundę|CountPerSecond|Średnia|Zapytania wyszukiwania na sekundę dla usługi wyszukiwania|None|
-|ThrottledSearchQueriesPercentage|Procent zapytań wyszukiwania z ograniczeniami|Procent|Średnia|Procent zapytań wyszukiwania, które zostały ograniczone dla usługi wyszukiwania|None|
+|SearchLatency (WyszukiwanieLatency)|Opóźnienie wyszukiwania|Sekundy|Średnia|Średnie opóźnienie wyszukiwania usługi wyszukiwania|Brak|
+|SearchQueriesPerSecond|Zapytania wyszukiwania na sekundę|Połów połówek|Średnia|Zapytania na sekundę dla usługi wyszukiwania|Brak|
+|ThrottledSearchQueriesPercentage|Ograniczona wartość procentowa zapytań|Wartość procentowa|Średnia|Procent zapytań, które zostały ograniczone dla usługi wyszukiwania|Brak|
 
 
-## <a name="microsoftservicebusnamespaces"></a>Microsoft.ServiceBus/namespaces
+## <a name="microsoftservicebusnamespaces"></a>Microsoft.ServiceBus/przestrzenie nazw
 
-|Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary|
+|Metryka|Metryka Nazwa wyświetlana|Jednostka|Typ agregacji|Opis|Wymiary|
 |---|---|---|---|---|---|
-|Żądania successfulrequests|Żądania zakończone powodzeniem|Licznik|Łącznie|Łączna liczba pomyślnych żądań dla przestrzeni nazw|EntityName, klasy OperationResult|
-|Błędy servererrors|Błędy serwera.|Licznik|Łącznie|Błędy serwera dla elementu Microsoft. ServiceBus.|EntityName, klasy OperationResult|
-|Błędy usererrors|Błędy użytkownika.|Licznik|Łącznie|Błędy użytkowników dla elementu Microsoft. ServiceBus.|EntityName, klasy OperationResult|
-|ThrottledRequests|Żądania z ograniczeniami.|Licznik|Łącznie|Żądania ograniczone dla elementu Microsoft. ServiceBus.|EntityName, klasy OperationResult|
-|Żądania incomingrequests|Żądania przychodzące|Licznik|Łącznie|Żądania przychodzące dla Microsoft. ServiceBus.|EntityName|
-|Komunikaty incomingmessages|Komunikaty przychodzące|Licznik|Łącznie|Komunikaty przychodzące dla elementu Microsoft. ServiceBus.|EntityName|
-|Komunikaty outgoingmessages|Komunikaty wychodzące|Licznik|Łącznie|Komunikaty wychodzące dla elementu Microsoft. ServiceBus.|EntityName|
-|Połączeń ActiveConnections|Połączeń ActiveConnections|Licznik|Łącznie|Całkowita liczba aktywnych połączeń dla elementu Microsoft. ServiceBus.|None|
-|Połączenia connectionsopened|Otwarte połączenia.|Licznik|Średnia|Połączenia otwarte dla elementu Microsoft. ServiceBus.|EntityName|
-|Połączenia connectionsclosed|Połączenia zamknięte.|Licznik|Średnia|Połączenia zamknięte dla elementu Microsoft. ServiceBus.|EntityName|
-|Rozmiar|Rozmiar|Bajty|Średnia|Rozmiar kolejki/tematu w bajtach.|EntityName|
-|Komunikaty|Liczba komunikatów w kolejce/temacie.|Licznik|Średnia|Liczba komunikatów w kolejce/temacie.|EntityName|
-|ActiveMessages|Liczba aktywnych komunikatów w kolejce/temacie.|Licznik|Średnia|Liczba aktywnych komunikatów w kolejce/temacie.|EntityName|
-|DeadletteredMessages|Liczba utraconych wiadomości w kolejce/temacie.|Licznik|Średnia|Liczba utraconych wiadomości w kolejce/temacie.|EntityName|
-|ScheduledMessages|Liczba zaplanowanych komunikatów w kolejce/temacie.|Licznik|Średnia|Liczba zaplanowanych komunikatów w kolejce/temacie.|EntityName|
-|NamespaceCpuUsage|Procesor CPU|Procent|Maksimum|Metryka użycia procesora przestrzeni nazw w warstwie Premium usługi Service Bus.|Replika|
-|NamespaceMemoryUsage|Użycie pamięci|Procent|Maksimum|Metryka użycia pamięci przestrzeni nazw Premium usługi Service Bus.|Replika|
-|CPUXNS|PROCESOR (przestarzałe)|Procent|Maksimum|Metryka użycia procesora przestrzeni nazw w warstwie Premium usługi Service Bus. Ta Metryka to przestarzałe. Użyj zamiast tego metryki procesora (NamespaceCpuUsage).|Replika|
-|WSXNS|Użycie pamięci (przestarzałe)|Procent|Maksimum|Metryka użycia pamięci przestrzeni nazw Premium usługi Service Bus. Ta Metryka jest przestarzała. Użyj zamiast tego metryki użycie pamięci (NamespaceMemoryUsage).|Replika|
+|Udane prośby|Pomyślne żądania|Liczba|Łącznie|Łączna liczba pomyślnych żądań dotyczących obszaru nazw|Nazwa elementu,OperacjaWysoki|
+|Serwery serwerowe|Błędy serwera.|Liczba|Łącznie|Błędy serwera dla microsoft.servicebus.|Nazwa elementu,OperacjaWysoki|
+|UserErrors (UżytkownikErrors)|Błędy użytkownika.|Liczba|Łącznie|Błędy użytkownika dla microsoft.servicebus.|Nazwa elementu,OperacjaWysoki|
+|ThrottledRequests|Ograniczone żądania.|Liczba|Łącznie|Ograniczone żądania dla microsoft.ServiceBus.|Nazwa elementu,OperacjaWysoki|
+|Przychodzącerepy|Żądania przychodzące|Liczba|Łącznie|Przychodzące żądania dla microsoft.servicebus.|Nazwa elementu|
+|Przychodzącenaśniacje|Wiadomości przychodzące|Liczba|Łącznie|Wiadomości przychodzące dla usługi Microsoft.ServiceBus.|Nazwa elementu|
+|Wychodzące Wiadomości|Wiadomości wychodzące|Liczba|Łącznie|Wiadomości wychodzące dla usługi Microsoft.ServiceBus.|Nazwa elementu|
+|ActiveConnections (Aktywne połączenia)|ActiveConnections (Aktywne połączenia)|Liczba|Łącznie|Całkowita liczba aktywnych połączeń dla usługi Microsoft.ServiceBus.|Brak|
+|ConnectionsOtwarte|Połączenia otwarte.|Liczba|Średnia|Połączenia otwarte dla microsoft.servicebus.|Nazwa elementu|
+|Połączenia Zamknięte|Połączenia zamknięte.|Liczba|Średnia|Połączenia zamknięte dla microsoft.servicebus.|Nazwa elementu|
+|Rozmiar|Rozmiar|Bajty|Średnia|Rozmiar kolejki/tematu w bajtach.|Nazwa elementu|
+|Komunikaty|Liczba wiadomości w kolejce/temacie.|Liczba|Średnia|Liczba wiadomości w kolejce/temacie.|Nazwa elementu|
+|ActiveMessages (Aktywne"|Liczba aktywnych wiadomości w kolejce/temacie.|Liczba|Średnia|Liczba aktywnych wiadomości w kolejce/temacie.|Nazwa elementu|
+|DeadletteredNadycje|Liczba wiadomości utraconych w kolejce/temacie.|Liczba|Średnia|Liczba wiadomości utraconych w kolejce/temacie.|Nazwa elementu|
+|Zaplanowane-Messages|Liczba zaplanowanych wiadomości w kolejce/temacie.|Liczba|Średnia|Liczba zaplanowanych wiadomości w kolejce/temacie.|Nazwa elementu|
+|NamespaceCpuUsage|Procesor CPU|Wartość procentowa|Maksimum|Metryka użycia procesora CPU dla obszaru nazw usługi premium.|Replika|
+|NamespaceMemoryUsage|Użycie pamięci|Wartość procentowa|Maksimum|Metryka użycia pamięci obszaru nazw usługi premium.|Replika|
+|CPUXNS ( CPUXNS )|Procesor (przestarzały)|Wartość procentowa|Maksimum|Metryka użycia procesora CPU dla obszaru nazw usługi premium. Ta metryka jest depricated. Zamiast tego użyj metryki procesora (NamespaceCpuUsage).|Replika|
+|WSXNS ( WSXNS )|Użycie pamięci (przestarzałe)|Wartość procentowa|Maksimum|Metryka użycia pamięci obszaru nazw usługi premium. Ta metryka jest przestarzała. Zamiast tego użyj metryki Użycie pamięci (NamespaceMemoryUsage).|Replika|
 
 
 ## <a name="microsoftservicefabricmeshapplications"></a>Microsoft.ServiceFabricMesh/applications
 
-|Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary|
+|Metryka|Metryka Nazwa wyświetlana|Jednostka|Typ agregacji|Opis|Wymiary|
 |---|---|---|---|---|---|
-|AllocatedCpu|AllocatedCpu|Licznik|Średnia|Procesor CPU przydzielony do tego kontenera w rdzeniach Milli|ApplicationName, ServiceName, CodePackageName, servicereplicaname|
-|AllocatedMemory|AllocatedMemory|Bajty|Średnia|Pamięć przypisana do tego kontenera w MB|ApplicationName, ServiceName, CodePackageName, servicereplicaname|
-|ActualCpu|ActualCpu|Licznik|Średnia|Rzeczywiste użycie procesora CPU w rdzeniach Milli|ApplicationName, ServiceName, CodePackageName, servicereplicaname|
-|ActualMemory|ActualMemory|Bajty|Średnia|Rzeczywiste użycie pamięci w MB|ApplicationName, ServiceName, CodePackageName, servicereplicaname|
-|CpuUtilization|CpuUtilization|Procent|Średnia|Użycie procesora CPU dla tego kontenera jako wartości procentowej AllocatedCpu|ApplicationName, ServiceName, CodePackageName, servicereplicaname|
-|MemoryUtilization|MemoryUtilization|Procent|Średnia|Użycie procesora CPU dla tego kontenera jako wartości procentowej AllocatedCpu|ApplicationName, ServiceName, CodePackageName, servicereplicaname|
-|ApplicationStatus|ApplicationStatus|Licznik|Średnia|Stan aplikacji siatki Service Fabric|ApplicationName, status|
-|Bajty|Bajty|Licznik|Średnia|Stan kondycji usługi w aplikacji Service Fabric siatki|ApplicationName, status, ServiceName|
-|ServiceReplicaStatus|ServiceReplicaStatus|Licznik|Średnia|Stan kondycji repliki usługi w aplikacji Service Fabric siatki|ApplicationName, status, ServiceName, servicereplicaname|
-|ContainerStatus|ContainerStatus|Licznik|Średnia|Stan kontenera w aplikacji Service Fabric siatki|ApplicationName, ServiceName, CodePackageName, servicereplicaname, status|
-|RestartCount|RestartCount|Licznik|Średnia|Liczba ponownych uruchomień kontenera w aplikacji Service Fabric siatki|ApplicationName, status, ServiceName, servicereplicaname, CodePackageName|
+|AllocatedCpu (Protokół zaalokowany)|AllocatedCpu (Protokół zaalokowany)|Liczba|Średnia|Procesor przydzielony do tego kontenera w rdzeniach milli|Nazwa aplikacji,Nazwa usługi,Nazwa pakietu kodu,Nazwa usługi|
+|AllocatedMemory (Memory)|AllocatedMemory (Memory)|Bajty|Średnia|Pamięć przydzielona do tego kontenera w MB|Nazwa aplikacji,Nazwa usługi,Nazwa pakietu kodu,Nazwa usługi|
+|Rzeczywista protokółCpu|Rzeczywista protokółCpu|Liczba|Średnia|Rzeczywiste użycie procesora w rdzeniach milli|Nazwa aplikacji,Nazwa usługi,Nazwa pakietu kodu,Nazwa usługi|
+|Wartość rzeczywista|Wartość rzeczywista|Bajty|Średnia|Rzeczywiste użycie pamięci w MB|Nazwa aplikacji,Nazwa usługi,Nazwa pakietu kodu,Nazwa usługi|
+|Utilizacja procesora|Utilizacja procesora|Wartość procentowa|Średnia|Wykorzystanie procesora DLA tego kontenera jako procent allocatedCpu|Nazwa aplikacji,Nazwa usługi,Nazwa pakietu kodu,Nazwa usługi|
+|MemoryUtilization (Funkcja MemoryUtilization)|MemoryUtilization (Funkcja MemoryUtilization)|Wartość procentowa|Średnia|Wykorzystanie procesora DLA tego kontenera jako procent allocatedCpu|Nazwa aplikacji,Nazwa usługi,Nazwa pakietu kodu,Nazwa usługi|
+|Stan aplikacji|Stan aplikacji|Liczba|Średnia|Stan aplikacji siatki sieci szkieletowej usług|Nazwa aplikacji,Stan|
+|Stan serwisu|Stan serwisu|Liczba|Średnia|Stan kondycji usługi w aplikacji sieci szkieletowej usług|Nazwa aplikacji,Stan,Nazwa usługi|
+|ServiceReplicaStatus (Stan ServiceReplica)|ServiceReplicaStatus (Stan ServiceReplica)|Liczba|Średnia|Stan kondycji repliki usługi w aplikacji sieci szkieletowej usługi|Nazwa aplikacji,Stan,Nazwa usługi,Nazwa usługi|
+|Stan kontenera|Stan kontenera|Liczba|Średnia|Stan kontenera w aplikacji sieci szkieletowej usługi|Nazwa aplikacji,Nazwa usługi,Nazwa pakietu kodu,Nazwa usługi,Nazwa usługi|
+|Liczba restartów|Liczba restartów|Liczba|Średnia|Ponowna liczba kontenera w aplikacji sieci szkieletowej usługi|Nazwa aplikacji,Stan,Nazwa usługi,Nazwa usługi,Nazwa usługi,Nazwa pakietu kodu CodePackageName|
 
-## <a name="microsoftsignalrservicesignalr"></a>Microsoft.SignalRService/SignalR
+## <a name="microsoftsignalrservicesignalr"></a>Microsoft.SignalRService/SignalrService/Signalr
 
-|Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary|
+|Metryka|Metryka Nazwa wyświetlana|Jednostka|Typ agregacji|Opis|Wymiary|
 |---|---|---|---|---|---|
-|ConnectionCount|Liczba połączeń|Licznik|Maksimum|Ilość połączenia użytkownika.|Endpoint|
-|MessageCount|Liczba komunikatów|Licznik|Łącznie|Całkowita ilość komunikatów.|None|
-|InboundTraffic|Ruch przychodzący|Bajty|Łącznie|Ruch przychodzący usługi|None|
-|OutboundTraffic|Ruch wychodzący|Bajty|Łącznie|Ruch wychodzący usługi|None|
-|Błędy usererrors|Błędy użytkownika|Procent|Maksimum|Procent błędów użytkownika|None|
-|SystemErrors|Błędy systemu|Procent|Maksimum|Procent błędów systemu|None|
+|Liczba połączeń|Liczba połączeń|Liczba|Maksimum|Ilość połączenia użytkownika.|Endpoint|
+|Liczba wiadomości|Liczba wiadomości|Liczba|Łącznie|Całkowita ilość wiadomości.|Brak|
+|Ruch przychodzący|Ruch przychodzący|Bajty|Łącznie|Ruch przychodzący usługi|Brak|
+|Ruch wychodzący|Ruch wychodzący|Bajty|Łącznie|Ruch wychodzący usługi|Brak|
+|UserErrors (UżytkownikErrors)|Błędy użytkownika|Wartość procentowa|Maksimum|Procent błędów użytkownika|Brak|
+|SystemErrors (SystemErrors)|Błędy systemu|Wartość procentowa|Maksimum|Procent błędów systemu|Brak|
 
 
 
 
 
-## <a name="microsoftsqlserversdatabases"></a>Microsoft.Sql/servers/databases
+## <a name="microsoftsqlserversdatabases"></a>Microsoft.Sql/serwery/bazy danych
 
-|Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary|
+|Metryka|Metryka Nazwa wyświetlana|Jednostka|Typ agregacji|Opis|Wymiary|
 |---|---|---|---|---|---|
-|cpu_percent|Procent użycia procesora CPU|Procent|Średnia|Procent użycia procesora CPU|None|
-|physical_data_read_percent|Procent użycia operacji we/wy na danych|Procent|Średnia|Procent użycia operacji we/wy na danych|None|
-|log_write_percent|Procent operacji we/wy dziennika|Procent|Średnia|Procent operacji we/wy dziennika. Nie dotyczy hurtowni danych.|None|
-|dtu_consumption_percent|Procent użycia jednostek DTU|Procent|Średnia|Procent jednostek DTU. Dotyczy baz danych opartych na jednostkach DTU.|None|
-|Chowan|Używane miejsce na dane|Bajty|Maksimum|Używane miejsce na dane. Nie dotyczy hurtowni danych.|None|
-|connection_successful|Udane połączenia|Licznik|Łącznie|Udane połączenia|None|
-|connection_failed|Połączenia zakończone niepowodzeniem|Licznik|Łącznie|Połączenia zakończone niepowodzeniem|None|
-|blocked_by_firewall|Zablokowane przez zaporę|Licznik|Łącznie|Zablokowane przez zaporę|None|
-|zakleszczenie|Zakleszczenia|Licznik|Łącznie|Zakleszczenia. Nie dotyczy hurtowni danych.|None|
-|storage_percent|Procent użytego miejsca na danych|Procent|Maksimum|Procent użytego miejsca na danych. Nie dotyczy magazynów danych ani baz danych w skali.|None|
-|xtp_storage_percent|Procent magazynu OLTP w pamięci|Procent|Średnia|Procent magazynu OLTP w pamięci. Nie dotyczy hurtowni danych.|None|
-|workers_percent|Procent pracowników|Procent|Średnia|Procent pracowników. Nie dotyczy hurtowni danych.|None|
-|sessions_percent|Procent sesji|Procent|Średnia|Procent sesji. Nie dotyczy hurtowni danych.|None|
-|dtu_limit|DTU Limit|Licznik|Średnia|Limit jednostek DTU. Dotyczy baz danych opartych na jednostkach DTU.|None|
-|dtu_used|Używane jednostki DTU|Licznik|Średnia|Użyto jednostek DTU. Dotyczy baz danych opartych na jednostkach DTU.|None|
-|cpu_limit|Limit CPU|Licznik|Średnia|Limit czasu procesora CPU. Dotyczy baz danych opartych na rdzeń wirtualny.|None|
-|cpu_used|Użycie procesora CPU|Licznik|Średnia|Użycie procesora CPU. Dotyczy baz danych opartych na rdzeń wirtualny.|None|
-|dwu_limit|Limit jednostek dwu|Licznik|Maksimum|Limit jednostek dwu. Dotyczy tylko magazynów danych.|None|
-|dwu_consumption_percent|JEDNOSTEK dwu procent|Procent|Maksimum|Procent jednostek dwu. Dotyczy tylko magazynów danych.|None|
-|dwu_used|JEDNOSTEK dwu używane|Licznik|Maksimum|JEDNOSTEK dwu. Dotyczy tylko magazynów danych.|None|
-|cache_hit_percent|Procent trafień w pamięci podręcznej|Procent|Maksimum|Procent trafień w pamięci podręcznej. Dotyczy tylko magazynów danych.|None|
-|cache_used_percent|Procent użycia pamięci podręcznej|Procent|Maksimum|Procent użycia pamięci podręcznej. Dotyczy tylko magazynów danych.|None|
-|sqlserver_process_core_percent|Procent podstawowych procesów SQL Server|Procent|Maksimum|Procent użycia procesora CPU dla procesu SQL Server, mierzony przez system operacyjny. Obecnie dostępne tylko dla bezserwerowych baz danych.|None|
-|sqlserver_process_memory_percent|Procent pamięci procesu SQL Server|Procent|Maksimum|Procent użycia pamięci dla procesu SQL Server, mierzony przez system operacyjny. Obecnie dostępne tylko dla bezserwerowych baz danych.|None|
-|tempdb_data_size|Rozmiar pliku danych tempdb kilobajtów|Licznik|Maksimum|Rozmiar pliku danych tempdb kilobajtów. Nie dotyczy hurtowni danych.|None|
-|tempdb_log_size|Rozmiar pliku dziennika bazy danych tempdb kilobajtów|Licznik|Maksimum|Rozmiar pliku dziennika bazy danych tempdb kilobajtów. Nie dotyczy hurtowni danych.|None|
-|tempdb_log_used_percent|Użyto dziennika% tempdb|Procent|Maksimum|Użyto dziennika bazy danych tempdb. Nie dotyczy hurtowni danych.|None|
-|local_tempdb_usage_percent|Procent lokalnej bazy danych tempdb|Procent|Średnia|Procent lokalnej bazy danych tempdb. Dotyczy tylko magazynów danych.|None|
-|app_cpu_billed|Rozliczane użycie procesora przez aplikację|Licznik|Łącznie|Rozliczane użycie procesora przez aplikację. Dotyczy bezserwerowych baz danych.|None|
-|app_cpu_percent|Procent użycia procesora CPU aplikacji|Procent|Średnia|Procent użycia procesora CPU aplikacji. Dotyczy bezserwerowych baz danych.|None|
-|app_memory_percent|Procent pamięci aplikacji|Procent|Średnia|Procent pamięci aplikacji. Dotyczy bezserwerowych baz danych.|None|
-|allocated_data_storage|Przydzielono miejsce na danych|Bajty|Średnia|Przydzielony magazyn danych. Nie dotyczy hurtowni danych.|None|
-|memory_usage_percent|Procent pamięci|Procent|Maksimum|Procent pamięci. Dotyczy tylko magazynów danych.|None|
-|full_backup_size_bytes|Rozmiar magazynu pełnej kopii zapasowej|Bajty|Maksimum|Łączny rozmiar magazynu pełnej kopii zapasowej. Dotyczy baz danych opartych na rdzeń wirtualny. Nie dotyczy baz danych w skali.|None|
-|diff_backup_size_bytes|Różnicowy rozmiar magazynu kopii zapasowych|Bajty|Maksimum|Skumulowany, zróżnicowany rozmiar magazynu kopii zapasowych. Dotyczy baz danych opartych na rdzeń wirtualny. Nie dotyczy baz danych w skali.|None|
-|log_backup_size_bytes|Rozmiar magazynu kopii zapasowej dziennika|Bajty|Maksimum|Rozmiar magazynu kopii zapasowej dziennika zbiorczego. Dotyczy baz danych opartych na rdzeń wirtualny. Nie dotyczy baz danych w skali.|None|
+|cpu_percent|Procent użycia procesora CPU|Wartość procentowa|Średnia|Procent użycia procesora CPU|Brak|
+|physical_data_read_percent|Procent użycia operacji we/wy na danych|Wartość procentowa|Średnia|Procent użycia operacji we/wy na danych|Brak|
+|log_write_percent|Log Procent we/wy|Wartość procentowa|Średnia|Log IO procent. Nie dotyczy hurtowni danych.|Brak|
+|dtu_consumption_percent|Procent użycia jednostek DTU|Wartość procentowa|Średnia|Procent YTW. Dotyczy baz danych opartych na UJ.|Brak|
+|magazyn|Wykorzystano miejsce na dane|Bajty|Maksimum|Wykorzystano miejsce na dane. Nie dotyczy hurtowni danych.|Brak|
+|connection_successful|Udane połączenia|Liczba|Łącznie|Udane połączenia|Brak|
+|connection_failed|Połączenia zakończone niepowodzeniem|Liczba|Łącznie|Połączenia zakończone niepowodzeniem|Brak|
+|blocked_by_firewall|Zablokowane przez zaporę sieciową|Liczba|Łącznie|Zablokowane przez zaporę sieciową|Brak|
+|Zakleszczenie|Zakleszczenia|Liczba|Łącznie|Zakleszczenia. Nie dotyczy hurtowni danych.|Brak|
+|storage_percent|Procent wykorzystanej przestrzeni danych|Wartość procentowa|Maksimum|Ilość używanego miejsca na dane. Nie dotyczy magazynów danych lub baz danych w hiperskali.|Brak|
+|xtp_storage_percent|Procent pamięci OLTP|Wartość procentowa|Średnia|Procent magazynu OLTP w pamięci. Nie dotyczy hurtowni danych.|Brak|
+|workers_percent|Procent pracowników|Wartość procentowa|Średnia|Procent pracowników. Nie dotyczy hurtowni danych.|Brak|
+|sessions_percent|Procent sesji|Wartość procentowa|Średnia|Procent sesji. Nie dotyczy hurtowni danych.|Brak|
+|dtu_limit|DTU Limit|Liczba|Średnia|Limit DTU. Dotyczy baz danych opartych na UJ.|Brak|
+|dtu_used|Używane DTU|Liczba|Średnia|Używane przy użyciu DTU. Dotyczy baz danych opartych na UJ.|Brak|
+|cpu_limit|Limit procesora|Liczba|Średnia|limit procesora. Dotyczy baz danych opartych na wynikach wirtualnych.|Brak|
+|cpu_used|Używany procesor|Liczba|Średnia|Używany procesor. Dotyczy baz danych opartych na wynikach wirtualnych.|Brak|
+|dwu_limit|Limit DWU|Liczba|Maksimum|LIMIT DWU. Dotyczy tylko magazynów danych.|Brak|
+|dwu_consumption_percent|Dwu procent|Wartość procentowa|Maksimum|DWU procent. Dotyczy tylko magazynów danych.|Brak|
+|dwu_used|DWU używany|Liczba|Maksimum|DWU używane. Dotyczy tylko magazynów danych.|Brak|
+|cache_hit_percent|Procent trafienia w pamięci podręcznej|Wartość procentowa|Maksimum|Procent trafienia w pamięci podręcznej. Dotyczy tylko magazynów danych.|Brak|
+|cache_used_percent|Wartość procentowa używanej pamięci podręcznej|Wartość procentowa|Maksimum|Pamięć podręczna używana procent. Dotyczy tylko magazynów danych.|Brak|
+|sqlserver_process_core_percent|Procent rdzenia procesu programu SQL Server|Wartość procentowa|Maksimum|Procent użycia procesora CPU dla procesu programu SQL Server, mierzony przez system operacyjny.|Brak|
+|sqlserver_process_memory_percent|Procent pamięci procesu programu SQL Server|Wartość procentowa|Maksimum|Procent użycia pamięci dla procesu programu SQL Server, mierzony przez system operacyjny.|Brak|
+|tempdb_data_size|Kilobajty rozmiaru pliku danych tempdb|Liczba|Maksimum|Kilobajty o rozmiarze pliku danych tempdb. Nie dotyczy hurtowni danych.|Brak|
+|tempdb_log_size|Kilobajty rozmiaru pliku dziennika tempdb|Liczba|Maksimum|Kilobajty o rozmiarze pliku dziennika tempdb. Nie dotyczy hurtowni danych.|Brak|
+|tempdb_log_used_percent|Używany dziennik procentu tempdb|Wartość procentowa|Maksimum|Używany dziennik procentu tempdb. Nie dotyczy hurtowni danych.|Brak|
+|local_tempdb_usage_percent|Lokalny procent tempdb|Wartość procentowa|Średnia|Lokalny procent tempdb. Dotyczy tylko magazynów danych.|Brak|
+|app_cpu_billed|Obciążenie procesora aplikacji naliczane|Liczba|Łącznie|Obciążenie procesora aplikacji naliczane. Dotyczy baz danych bezserwerowych.|Brak|
+|app_cpu_percent|Procent procesora aplikacji|Wartość procentowa|Średnia|Procent procesora aplikacji. Dotyczy baz danych bezserwerowych.|Brak|
+|app_memory_percent|Procent pamięci aplikacji|Wartość procentowa|Średnia|Procent pamięci aplikacji. Dotyczy baz danych bezserwerowych.|Brak|
+|allocated_data_storage|Przydzielone miejsce na dane|Bajty|Średnia|Przydzielone przechowywanie danych. Nie dotyczy hurtowni danych.|Brak|
+|memory_usage_percent|Procent pamięci|Wartość procentowa|Maksimum|Procent pamięci. Dotyczy tylko magazynów danych.|Brak|
+|full_backup_size_bytes|Pełny rozmiar pamięci masowej kopii zapasowej|Bajty|Maksimum|Skumulowany pełny rozmiar magazynu kopii zapasowej. Dotyczy baz danych opartych na wynikach wirtualnych. Nie dotyczy baz danych na dużą skalę.|Brak|
+|diff_backup_size_bytes|Rozmiar magazynu kopii zapasowych różnicowego|Bajty|Maksimum|Skumulowany rozmiar magazynu różnicowego kopii zapasowej. Dotyczy baz danych opartych na wynikach wirtualnych. Nie dotyczy baz danych na dużą skalę.|Brak|
+|log_backup_size_bytes|Rozmiar magazynu kopii zapasowej dziennika|Bajty|Maksimum|Skumulowany rozmiar magazynu kopii zapasowej dziennika. Dotyczy baz danych opartych na wynikach wirtualnych. Nie dotyczy baz danych na dużą skalę.|Brak|
 
 
 ## <a name="microsoftsqlserverselasticpools"></a>Microsoft.Sql/servers/elasticPools
 
-|Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary|
+|Metryka|Metryka Nazwa wyświetlana|Jednostka|Typ agregacji|Opis|Wymiary|
 |---|---|---|---|---|---|
-|cpu_percent|Procent użycia procesora CPU|Procent|Średnia|Procent użycia procesora CPU|None|
-|database_cpu_percent|Procent użycia procesora CPU|Procent|Średnia|Procent użycia procesora CPU|DatabaseResourceId|
-|physical_data_read_percent|Procent użycia operacji we/wy na danych|Procent|Średnia|Procent użycia operacji we/wy na danych|None|
-|database_physical_data_read_percent|Procent użycia operacji we/wy na danych|Procent|Średnia|Procent użycia operacji we/wy na danych|DatabaseResourceId|
-|log_write_percent|Procent operacji we/wy dziennika|Procent|Średnia|Procent operacji we/wy dziennika|None|
-|database_log_write_percent|Procent operacji we/wy dziennika|Procent|Średnia|Procent operacji we/wy dziennika|DatabaseResourceId|
-|dtu_consumption_percent|Procent użycia jednostek DTU|Procent|Średnia|Procent jednostek DTU. Dotyczy pul elastycznych opartych na jednostkach DTU.|None|
-|database_dtu_consumption_percent|Procent użycia jednostek DTU|Procent|Średnia|Procent użycia jednostek DTU|DatabaseResourceId|
-|storage_percent|Procent użytego miejsca na danych|Procent|Średnia|Procent użytego miejsca na danych|None|
-|workers_percent|Procent pracowników|Procent|Średnia|Procent pracowników|None|
-|database_workers_percent|Procent pracowników|Procent|Średnia|Procent pracowników|DatabaseResourceId|
-|sessions_percent|Procent sesji|Procent|Średnia|Procent sesji|None|
-|database_sessions_percent|Procent sesji|Procent|Średnia|Procent sesji|DatabaseResourceId|
-|eDTU_limit|limit liczby jednostek eDTU|Licznik|Średnia|limit liczby jednostek eDTU. Dotyczy pul elastycznych opartych na jednostkach DTU.|None|
-|storage_limit|Maksymalny rozmiar danych|Bajty|Średnia|Maksymalny rozmiar danych|None|
-|eDTU_used|użyta wartość eDTU|Licznik|Średnia|użyta wartość eDTU. Dotyczy pul elastycznych opartych na jednostkach DTU.|None|
-|database_eDTU_used|użyta wartość eDTU|Licznik|Średnia|użyta wartość eDTU|DatabaseResourceId|
-|storage_used|Używane miejsce na dane|Bajty|Średnia|Używane miejsce na dane|None|
-|database_storage_used|Używane miejsce na dane|Bajty|Średnia|Używane miejsce na dane|DatabaseResourceId|
-|xtp_storage_percent|Procent magazynu OLTP w pamięci|Procent|Średnia|Procent magazynu OLTP w pamięci|None|
-|cpu_limit|Limit CPU|Licznik|Średnia|Limit czasu procesora CPU. Dotyczy pul elastycznych opartych na rdzeń wirtualny.|None|
-|database_cpu_limit|Limit CPU|Licznik|Średnia|Limit CPU|DatabaseResourceId|
-|cpu_used|Użycie procesora CPU|Licznik|Średnia|Użycie procesora CPU. Dotyczy pul elastycznych opartych na rdzeń wirtualny.|None|
-|database_cpu_used|Użycie procesora CPU|Licznik|Średnia|Użycie procesora CPU|DatabaseResourceId|
-|sqlserver_process_core_percent|Procent podstawowych procesów SQL Server|Procent|Maksimum|Użycie procesora jako procent procesu bazy danych SQL. Dotyczy pul elastycznych.|None|
-|sqlserver_process_memory_percent|Procent pamięci procesu SQL Server|Procent|Maksimum|Użycie pamięci jako procent procesu bazy danych SQL. Dotyczy pul elastycznych.|None|
-|tempdb_data_size|Rozmiar pliku danych tempdb kilobajtów|Licznik|Maksimum|Rozmiar pliku danych tempdb kilobajtów|None|
-|tempdb_log_size|Rozmiar pliku dziennika bazy danych tempdb kilobajtów|Licznik|Maksimum|Rozmiar pliku dziennika bazy danych tempdb kilobajtów|None|
-|tempdb_log_used_percent|Użyto dziennika% tempdb|Procent|Maksimum|Użyto dziennika% tempdb|None|
-|allocated_data_storage|Przydzielono miejsce na danych|Bajty|Średnia|Przydzielono miejsce na danych|None|
-|database_allocated_data_storage|Przydzielono miejsce na danych|Bajty|Średnia|Przydzielono miejsce na danych|DatabaseResourceId|
-|allocated_data_storage_percent|Procent przydzielonych przestrzeni danych|Procent|Maksimum|Procent przydzielonych przestrzeni danych|None|
+|cpu_percent|Procent użycia procesora CPU|Wartość procentowa|Średnia|Procent użycia procesora CPU|Brak|
+|database_cpu_percent|Procent użycia procesora CPU|Wartość procentowa|Średnia|Procent użycia procesora CPU|DataResourceId|
+|physical_data_read_percent|Procent użycia operacji we/wy na danych|Wartość procentowa|Średnia|Procent użycia operacji we/wy na danych|Brak|
+|database_physical_data_read_percent|Procent użycia operacji we/wy na danych|Wartość procentowa|Średnia|Procent użycia operacji we/wy na danych|DataResourceId|
+|log_write_percent|Log Procent we/wy|Wartość procentowa|Średnia|Log Procent we/wy|Brak|
+|database_log_write_percent|Log Procent we/wy|Wartość procentowa|Średnia|Log Procent we/wy|DataResourceId|
+|dtu_consumption_percent|Procent użycia jednostek DTU|Wartość procentowa|Średnia|Procent YTW. Dotyczy elastycznych pul opartych na UJ.|Brak|
+|database_dtu_consumption_percent|Procent użycia jednostek DTU|Wartość procentowa|Średnia|Procent użycia jednostek DTU|DataResourceId|
+|storage_percent|Procent wykorzystanej przestrzeni danych|Wartość procentowa|Średnia|Procent wykorzystanej przestrzeni danych|Brak|
+|workers_percent|Procent pracowników|Wartość procentowa|Średnia|Procent pracowników|Brak|
+|database_workers_percent|Procent pracowników|Wartość procentowa|Średnia|Procent pracowników|DataResourceId|
+|sessions_percent|Procent sesji|Wartość procentowa|Średnia|Procent sesji|Brak|
+|database_sessions_percent|Procent sesji|Wartość procentowa|Średnia|Procent sesji|DataResourceId|
+|eDTU_limit|Limit eDTU|Liczba|Średnia|limitu eDTU. Dotyczy elastycznych pul opartych na UJ.|Brak|
+|storage_limit|Maksymalny rozmiar danych|Bajty|Średnia|Maksymalny rozmiar danych|Brak|
+|eDTU_used|EDTU używane|Liczba|Średnia|eDTU. Dotyczy elastycznych pul opartych na UJ.|Brak|
+|database_eDTU_used|EDTU używane|Liczba|Średnia|EDTU używane|DataResourceId|
+|storage_used|Wykorzystano miejsce na dane|Bajty|Średnia|Wykorzystano miejsce na dane|Brak|
+|database_storage_used|Wykorzystano miejsce na dane|Bajty|Średnia|Wykorzystano miejsce na dane|DataResourceId|
+|xtp_storage_percent|Procent pamięci OLTP|Wartość procentowa|Średnia|Procent pamięci OLTP|Brak|
+|cpu_limit|Limit procesora|Liczba|Średnia|limit procesora. Dotyczy elastycznych pul opartych na pulach opartych na pulach typu vCore.|Brak|
+|database_cpu_limit|Limit procesora|Liczba|Średnia|Limit procesora|DataResourceId|
+|cpu_used|Używany procesor|Liczba|Średnia|Używany procesor. Dotyczy elastycznych pul opartych na pulach opartych na pulach typu vCore.|Brak|
+|database_cpu_used|Używany procesor|Liczba|Średnia|Używany procesor|DataResourceId|
+|sqlserver_process_core_percent|Procent rdzenia procesu programu SQL Server|Wartość procentowa|Maksimum|Procent użycia procesora CPU dla procesu programu SQL Server, mierzony przez system operacyjny. Dotyczy basenów elastycznych.|Brak|
+|sqlserver_process_memory_percent|Procent pamięci procesu programu SQL Server|Wartość procentowa|Maksimum|Procent użycia pamięci dla procesu programu SQL Server, mierzony przez system operacyjny. Dotyczy basenów elastycznych.|Brak|
+|tempdb_data_size|Kilobajty rozmiaru pliku danych tempdb|Liczba|Maksimum|Kilobajty rozmiaru pliku danych tempdb|Brak|
+|tempdb_log_size|Kilobajty rozmiaru pliku dziennika tempdb|Liczba|Maksimum|Kilobajty rozmiaru pliku dziennika tempdb|Brak|
+|tempdb_log_used_percent|Używany dziennik procentu tempdb|Wartość procentowa|Maksimum|Używany dziennik procentu tempdb|Brak|
+|allocated_data_storage|Przydzielone miejsce na dane|Bajty|Średnia|Przydzielone miejsce na dane|Brak|
+|database_allocated_data_storage|Przydzielone miejsce na dane|Bajty|Średnia|Przydzielone miejsce na dane|DataResourceId|
+|allocated_data_storage_percent|Procent przydzielonego miejsca na dane|Wartość procentowa|Maksimum|Procent przydzielonego miejsca na dane|Brak|
 
-## <a name="microsoftsqlservers"></a>Microsoft.Sql/servers
+## <a name="microsoftsqlservers"></a>Microsoft.Sql/serwery
 
-|Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary|
+|Metryka|Metryka Nazwa wyświetlana|Jednostka|Typ agregacji|Opis|Wymiary|
 |---|---|---|---|---|---|
-|dtu_consumption_percent|Procent użycia jednostek DTU|Procent|Średnia|Procent użycia jednostek DTU|ElasticPoolResourceId|
-|database_dtu_consumption_percent|Procent użycia jednostek DTU|Procent|Średnia|Procent użycia jednostek DTU|DatabaseResourceId,ElasticPoolResourceId|
-|storage_used|Używane miejsce na dane|Bajty|Średnia|Używane miejsce na dane|ElasticPoolResourceId|
-|database_storage_used|Używane miejsce na dane|Bajty|Średnia|Używane miejsce na dane|DatabaseResourceId,ElasticPoolResourceId|
-|dtu_used|Używane jednostki DTU|Licznik|Średnia|Używane jednostki DTU|DatabaseResourceId|
+|dtu_consumption_percent|Procent użycia jednostek DTU|Wartość procentowa|Średnia|Procent użycia jednostek DTU|Elastyczny PulszaResourceId|
+|database_dtu_consumption_percent|Procent użycia jednostek DTU|Wartość procentowa|Średnia|Procent użycia jednostek DTU|DataResourceId,ElasticPoolResourceId|
+|storage_used|Wykorzystano miejsce na dane|Bajty|Średnia|Wykorzystano miejsce na dane|Elastyczny PulszaResourceId|
+|database_storage_used|Wykorzystano miejsce na dane|Bajty|Średnia|Wykorzystano miejsce na dane|DataResourceId,ElasticPoolResourceId|
+|dtu_used|Używane DTU|Liczba|Średnia|Używane DTU|DataResourceId|
 
 ## <a name="microsoftsqlmanagedinstances"></a>Microsoft.Sql/managedInstances
 
-|Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary|
+|Metryka|Metryka Nazwa wyświetlana|Jednostka|Typ agregacji|Opis|Wymiary|
 |---|---|---|---|---|---|
-|virtual_core_count|Liczba rdzeni wirtualnych|Licznik|Średnia|Liczba rdzeni wirtualnych|None|
-|avg_cpu_percent|Średni procent procesora CPU|Procent|Średnia|Średni procent procesora CPU|None|
-|reserved_storage_mb|Zarezerwowane miejsce w magazynie|Licznik|Średnia|Zarezerwowane miejsce w magazynie|None|
-|storage_space_used_mb|Używane miejsce do magazynowania|Licznik|Średnia|Używane miejsce do magazynowania|None|
-|io_requests|Liczba żądań we/wy|Licznik|Średnia|Liczba żądań we/wy|None|
-|io_bytes_read|Odczytane bajty we/wy|Bajty|Średnia|Odczytane bajty we/wy|None|
-|io_bytes_written|Bajty we/wy zapisywane|Bajty|Średnia|Bajty we/wy zapisywane|None|
+|virtual_core_count|Liczba rdzeni wirtualnych|Liczba|Średnia|Liczba rdzeni wirtualnych|Brak|
+|avg_cpu_percent|Średni procent procesora|Wartość procentowa|Średnia|Średni procent procesora|Brak|
+|reserved_storage_mb|Zarezerwowane miejsce do przechowywania|Liczba|Średnia|Zarezerwowane miejsce do przechowywania|Brak|
+|storage_space_used_mb|Wykorzystane miejsce do przechowywania|Liczba|Średnia|Wykorzystane miejsce do przechowywania|Brak|
+|io_requests|Liczba żądań we/wy|Liczba|Średnia|Liczba żądań we/wy|Brak|
+|io_bytes_read|Odczyt bajtów we/wy|Bajty|Średnia|Odczyt bajtów we/wy|Brak|
+|io_bytes_written|Bajty we/wy napisane|Bajty|Średnia|Bajty we/wy napisane|Brak|
 
 
 
-## <a name="microsoftstoragestorageaccounts"></a>Microsoft.Storage/storageAccounts
+## <a name="microsoftstoragestorageaccounts"></a>Microsoft.Storage/storageKondyje
 
-|Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary|
+|Metryka|Metryka Nazwa wyświetlana|Jednostka|Typ agregacji|Opis|Wymiary|
 |---|---|---|---|---|---|
-|UsedCapacity|Używana pojemność|Bajty|Średnia|Używana pojemność konta|None|
-|Transakcje|Transakcje|Licznik|Łącznie|Liczba żądań wysyłanych do usługi magazynu lub określonej operacji interfejsu API. Liczba ta obejmuje żądania zakończone powodzeniem i zakończone niepowodzeniem, a także żądania, które wygenerowały błędy. Korzystanie z wymiaru ResponseType numer innego typu odpowiedzi.|Responsetype, geotype, ApiName, uwierzytelnianie|
-|Ruch przychodzący|Ruch przychodzący|Bajty|Łącznie|Ilość danych przychodzących w bajtach. Ta liczba obejmuje dane przychodzące z klienta zewnętrznego do usługi Azure Storage, a także dane przychodzące w obrębie platformy Azure.|Geotype, ApiName, uwierzytelnianie|
-|Ruch wychodzący|Ruch wychodzący|Bajty|Łącznie|Ilość danych wychodzących w bajtach. Ta liczba obejmuje dane wychodzące z klienta zewnętrznego do usługi Azure Storage, a także dane wychodzące w obrębie platformy Azure. W rezultacie liczba ta nie odzwierciedla danych wychodzących uwzględnianych na rozliczeniu.|Geotype, ApiName, uwierzytelnianie|
-|SuccessServerLatency|Opóźnienie serwera dla powodzenia|Milisekundy|Średnia|Średni czas oczekiwania, używane przez usługę Azure Storage do przetwarzania żądania zakończonego powodzeniem w milisekundach. Ta wartość nie obejmuje opóźnienia sieci uwzględnionego w wartości AverageE2ELatency.|Geotype, ApiName, uwierzytelnianie|
-|SuccessE2ELatency|Opóźnienie e2e dla powodzenia|Milisekundy|Średnia|Średnie opóźnienie end-to-end żądań zakończonych powodzeniem kierowanych do usługi magazynu lub określonej operacji interfejsu API (w milisekundach). Ta wartość obejmuje wymagany czas przetwarzania w usłudze Azure Storage do odczytania żądania, wysłania odpowiedzi i odebrania potwierdzenia dla odpowiedzi.|Geotype, ApiName, uwierzytelnianie|
-|Dostępność|Dostępność|Procent|Średnia|Procent dostępności dla usługi magazynu lub określonej operacji interfejsu API. Dostępność jest obliczana przez podzielenie wartości TotalBillableRequests przez liczbę żądań mających zastosowanie, łącznie z tymi, które wygenerowały nieoczekiwane błędy. Wszystkie nieoczekiwane błędy powodują obniżenie poziomu dostępności usługi magazynu lub określonej operacji interfejsu API.|Geotype, ApiName, uwierzytelnianie|
+|UżywaneCapacity|Używana pojemność|Bajty|Średnia|Pojemność używanego konta|Brak|
+|Transakcje|Transakcje|Liczba|Łącznie|Liczba żądań wysyłanych do usługi magazynu lub określonej operacji interfejsu API. Liczba ta obejmuje żądania zakończone powodzeniem i zakończone niepowodzeniem, a także żądania, które wygenerowały błędy. Użyj wymiaru ResponseType dla liczby różnych typów odpowiedzi.|Typ odpowiedzi,Typ geograficzny,Nazwa api,Uwierzytelnianie|
+|Ruch przychodzący|Ruch przychodzący|Bajty|Łącznie|Ilość danych przychodzących w bajtach. Ta liczba obejmuje dane przychodzące z klienta zewnętrznego do usługi Azure Storage, a także dane przychodzące w obrębie platformy Azure.|Typ geograficzny,Nazwa api,Uwierzytelnianie|
+|Ruch wychodzący|Ruch wychodzący|Bajty|Łącznie|Ilość danych wychodzących w bajtach. Ta liczba obejmuje dane wychodzące z klienta zewnętrznego do usługi Azure Storage, a także dane wychodzące w obrębie platformy Azure. W rezultacie liczba ta nie odzwierciedla danych wychodzących uwzględnianych na rozliczeniu.|Typ geograficzny,Nazwa api,Uwierzytelnianie|
+|SuccessServerLatency|Opóźnienie serwera dla powodzenia|Milisekund|Średnia|Średnie opóźnienie używane przez usługę Azure Storage do przetwarzania pomyślnego żądania w milisekundach. Ta wartość nie obejmuje opóźnienia sieci uwzględnionego w wartości AverageE2ELatency.|Typ geograficzny,Nazwa api,Uwierzytelnianie|
+|SuccessE2ELatency|Opóźnienie E2E dla powodzenia|Milisekund|Średnia|Średnie opóźnienie end-to-end pomyślnych żądań złożonych do usługi magazynu lub określonej operacji interfejsu API w milisekundach. Ta wartość obejmuje wymagany czas przetwarzania w usłudze Azure Storage do odczytania żądania, wysłania odpowiedzi i odebrania potwierdzenia dla odpowiedzi.|Typ geograficzny,Nazwa api,Uwierzytelnianie|
+|Dostępność|Dostępność|Wartość procentowa|Średnia|Procent dostępności usługi magazynu lub określonej operacji interfejsu API. Dostępność jest obliczana przez podzielenie wartości TotalBillableRequests przez liczbę żądań mających zastosowanie, łącznie z tymi, które wygenerowały nieoczekiwane błędy. Wszystkie nieoczekiwane błędy powodują obniżenie poziomu dostępności usługi magazynu lub określonej operacji interfejsu API.|Typ geograficzny,Nazwa api,Uwierzytelnianie|
 
-## <a name="microsoftstoragestorageaccountsblobservices"></a>Microsoft.Storage/storageAccounts/blobServices
+## <a name="microsoftstoragestorageaccountsblobservices"></a>Magazyn/magazyn firmy MicrosoftKonserwowanie/obiekt usługi
 
-|Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary|
+|Metryka|Metryka Nazwa wyświetlana|Jednostka|Typ agregacji|Opis|Wymiary|
 |---|---|---|---|---|---|
-|BlobCapacity|Pojemność obiektu blob|Bajty|Średnia|Ilość miejsca używanego przez usługę obiektów Blob konta magazynu, w bajtach.|Blobtype, warstwa|
-|BlobCount|Liczba obiektów blob|Licznik|Średnia|Liczba obiektów Blob w usłudze obiektów Blob konta magazynu.|Blobtype, warstwa|
-|ContainerCount|Liczba kontenerów obiektów blob|Licznik|Średnia|Liczba kontenerów w usłudze obiektów Blob konta magazynu.|None|
-|IndexCapacity|Pojemność indeksu|Bajty|Średnia|Ilość miejsca do magazynowania używanego przez ADLS Gen2 (hierarchiczny) indeks w bajtach.|None|
-|Transakcje|Transakcje|Licznik|Łącznie|Liczba żądań wysyłanych do usługi magazynu lub określonej operacji interfejsu API. Liczba ta obejmuje żądania zakończone powodzeniem i zakończone niepowodzeniem, a także żądania, które wygenerowały błędy. Korzystanie z wymiaru ResponseType numer innego typu odpowiedzi.|Responsetype, geotype, ApiName, uwierzytelnianie|
-|Ruch przychodzący|Ruch przychodzący|Bajty|Łącznie|Ilość danych przychodzących w bajtach. Ta liczba obejmuje dane przychodzące z klienta zewnętrznego do usługi Azure Storage, a także dane przychodzące w obrębie platformy Azure.|Geotype, ApiName, uwierzytelnianie|
-|Ruch wychodzący|Ruch wychodzący|Bajty|Łącznie|Ilość danych wychodzących w bajtach. Ta liczba obejmuje dane wychodzące z klienta zewnętrznego do usługi Azure Storage, a także dane wychodzące w obrębie platformy Azure. W rezultacie liczba ta nie odzwierciedla danych wychodzących uwzględnianych na rozliczeniu.|Geotype, ApiName, uwierzytelnianie|
-|SuccessServerLatency|Opóźnienie serwera dla powodzenia|Milisekundy|Średnia|Średni czas oczekiwania, używane przez usługę Azure Storage do przetwarzania żądania zakończonego powodzeniem w milisekundach. Ta wartość nie obejmuje opóźnienia sieci uwzględnionego w wartości AverageE2ELatency.|Geotype, ApiName, uwierzytelnianie|
-|SuccessE2ELatency|Opóźnienie e2e dla powodzenia|Milisekundy|Średnia|Średnie opóźnienie end-to-end żądań zakończonych powodzeniem kierowanych do usługi magazynu lub określonej operacji interfejsu API (w milisekundach). Ta wartość obejmuje wymagany czas przetwarzania w usłudze Azure Storage do odczytania żądania, wysłania odpowiedzi i odebrania potwierdzenia dla odpowiedzi.|Geotype, ApiName, uwierzytelnianie|
-|Dostępność|Dostępność|Procent|Średnia|Procent dostępności dla usługi magazynu lub określonej operacji interfejsu API. Dostępność jest obliczana przez podzielenie wartości TotalBillableRequests przez liczbę żądań mających zastosowanie, łącznie z tymi, które wygenerowały nieoczekiwane błędy. Wszystkie nieoczekiwane błędy powodują obniżenie poziomu dostępności usługi magazynu lub określonej operacji interfejsu API.|Geotype, ApiName, uwierzytelnianie|
+|BlobCapacity (BlobCapacity)|Pojemność obiektu blob|Bajty|Średnia|Ilość miejsca do magazynowania używanego przez usługę obiektów Blob konta magazynu w bajtach.|Typ obiektu blob,warstwa|
+|Liczba obiektów BlobCount|Liczba obiektów blob|Liczba|Średnia|Liczba obiektów blob w usłudze obiektów Blob konta magazynu.|Typ obiektu blob,warstwa|
+|Liczba kontenerów|Liczba kontenerów obiektów blob|Liczba|Średnia|Liczba kontenerów w usłudze obiektów Blob konta magazynu.|Brak|
+|Indeks Zdolności|Pojemność indeksu|Bajty|Średnia|Ilość miejsca do magazynowania używanego przez indeks ADLS Gen2 (hierarchiczny) w bajtach.|Brak|
+|Transakcje|Transakcje|Liczba|Łącznie|Liczba żądań wysyłanych do usługi magazynu lub określonej operacji interfejsu API. Liczba ta obejmuje żądania zakończone powodzeniem i zakończone niepowodzeniem, a także żądania, które wygenerowały błędy. Użyj wymiaru ResponseType dla liczby różnych typów odpowiedzi.|Typ odpowiedzi,Typ geograficzny,Nazwa api,Uwierzytelnianie|
+|Ruch przychodzący|Ruch przychodzący|Bajty|Łącznie|Ilość danych przychodzących w bajtach. Ta liczba obejmuje dane przychodzące z klienta zewnętrznego do usługi Azure Storage, a także dane przychodzące w obrębie platformy Azure.|Typ geograficzny,Nazwa api,Uwierzytelnianie|
+|Ruch wychodzący|Ruch wychodzący|Bajty|Łącznie|Ilość danych wychodzących w bajtach. Ta liczba obejmuje dane wychodzące z klienta zewnętrznego do usługi Azure Storage, a także dane wychodzące w obrębie platformy Azure. W rezultacie liczba ta nie odzwierciedla danych wychodzących uwzględnianych na rozliczeniu.|Typ geograficzny,Nazwa api,Uwierzytelnianie|
+|SuccessServerLatency|Opóźnienie serwera dla powodzenia|Milisekund|Średnia|Średnie opóźnienie używane przez usługę Azure Storage do przetwarzania pomyślnego żądania w milisekundach. Ta wartość nie obejmuje opóźnienia sieci uwzględnionego w wartości AverageE2ELatency.|Typ geograficzny,Nazwa api,Uwierzytelnianie|
+|SuccessE2ELatency|Opóźnienie E2E dla powodzenia|Milisekund|Średnia|Średnie opóźnienie end-to-end pomyślnych żądań złożonych do usługi magazynu lub określonej operacji interfejsu API w milisekundach. Ta wartość obejmuje wymagany czas przetwarzania w usłudze Azure Storage do odczytania żądania, wysłania odpowiedzi i odebrania potwierdzenia dla odpowiedzi.|Typ geograficzny,Nazwa api,Uwierzytelnianie|
+|Dostępność|Dostępność|Wartość procentowa|Średnia|Procent dostępności usługi magazynu lub określonej operacji interfejsu API. Dostępność jest obliczana przez podzielenie wartości TotalBillableRequests przez liczbę żądań mających zastosowanie, łącznie z tymi, które wygenerowały nieoczekiwane błędy. Wszystkie nieoczekiwane błędy powodują obniżenie poziomu dostępności usługi magazynu lub określonej operacji interfejsu API.|Typ geograficzny,Nazwa api,Uwierzytelnianie|
 
-## <a name="microsoftstoragestorageaccountstableservices"></a>Microsoft.Storage/storageAccounts/tableServices
+## <a name="microsoftstoragestorageaccountstableservices"></a>Magazyn/magazyn firmy MicrosoftKonserwowanie/tabelaUsługi
 
-|Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary|
+|Metryka|Metryka Nazwa wyświetlana|Jednostka|Typ agregacji|Opis|Wymiary|
 |---|---|---|---|---|---|
-|TableCapacity|Pojemność tabeli|Bajty|Średnia|Ilość miejsca używanego przez usługę tabeli konta magazynu, w bajtach.|None|
-|TableCount|Liczba tabel|Licznik|Średnia|Liczba tabel w usłudze tabeli konta magazynu.|None|
-|TableEntityCount|Liczba jednostek tabel|Licznik|Średnia|Liczba jednostek tabel w usłudze tabeli konta magazynu.|None|
-|Transakcje|Transakcje|Licznik|Łącznie|Liczba żądań wysyłanych do usługi magazynu lub określonej operacji interfejsu API. Liczba ta obejmuje żądania zakończone powodzeniem i zakończone niepowodzeniem, a także żądania, które wygenerowały błędy. Korzystanie z wymiaru ResponseType numer innego typu odpowiedzi.|Responsetype, geotype, ApiName, uwierzytelnianie|
-|Ruch przychodzący|Ruch przychodzący|Bajty|Łącznie|Ilość danych przychodzących w bajtach. Ta liczba obejmuje dane przychodzące z klienta zewnętrznego do usługi Azure Storage, a także dane przychodzące w obrębie platformy Azure.|Geotype, ApiName, uwierzytelnianie|
-|Ruch wychodzący|Ruch wychodzący|Bajty|Łącznie|Ilość danych wychodzących w bajtach. Ta liczba obejmuje dane wychodzące z klienta zewnętrznego do usługi Azure Storage, a także dane wychodzące w obrębie platformy Azure. W rezultacie liczba ta nie odzwierciedla danych wychodzących uwzględnianych na rozliczeniu.|Geotype, ApiName, uwierzytelnianie|
-|SuccessServerLatency|Opóźnienie serwera dla powodzenia|Milisekundy|Średnia|Średni czas oczekiwania, używane przez usługę Azure Storage do przetwarzania żądania zakończonego powodzeniem w milisekundach. Ta wartość nie obejmuje opóźnienia sieci uwzględnionego w wartości AverageE2ELatency.|Geotype, ApiName, uwierzytelnianie|
-|SuccessE2ELatency|Opóźnienie e2e dla powodzenia|Milisekundy|Średnia|Średnie opóźnienie end-to-end żądań zakończonych powodzeniem kierowanych do usługi magazynu lub określonej operacji interfejsu API (w milisekundach). Ta wartość obejmuje wymagany czas przetwarzania w usłudze Azure Storage do odczytania żądania, wysłania odpowiedzi i odebrania potwierdzenia dla odpowiedzi.|Geotype, ApiName, uwierzytelnianie|
-|Dostępność|Dostępność|Procent|Średnia|Procent dostępności dla usługi magazynu lub określonej operacji interfejsu API. Dostępność jest obliczana przez podzielenie wartości TotalBillableRequests przez liczbę żądań mających zastosowanie, łącznie z tymi, które wygenerowały nieoczekiwane błędy. Wszystkie nieoczekiwane błędy powodują obniżenie poziomu dostępności usługi magazynu lub określonej operacji interfejsu API.|Geotype, ApiName, uwierzytelnianie|
+|TableCapacity (Zdolność do pońoliczy)|Pojemność tabeli|Bajty|Średnia|Ilość miejsca do magazynowania używanego przez usługę tabel konta magazynu w bajtach.|Brak|
+|Liczba tabel|Liczba tabel|Liczba|Średnia|Liczba tabeli w usłudze tabel konta magazynu.|Brak|
+|Liczba entity tabeli|Liczba jednostek tabeli|Liczba|Średnia|Liczba jednostek tabeli w usłudze tabel konta magazynu.|Brak|
+|Transakcje|Transakcje|Liczba|Łącznie|Liczba żądań wysyłanych do usługi magazynu lub określonej operacji interfejsu API. Liczba ta obejmuje żądania zakończone powodzeniem i zakończone niepowodzeniem, a także żądania, które wygenerowały błędy. Użyj wymiaru ResponseType dla liczby różnych typów odpowiedzi.|Typ odpowiedzi,Typ geograficzny,Nazwa api,Uwierzytelnianie|
+|Ruch przychodzący|Ruch przychodzący|Bajty|Łącznie|Ilość danych przychodzących w bajtach. Ta liczba obejmuje dane przychodzące z klienta zewnętrznego do usługi Azure Storage, a także dane przychodzące w obrębie platformy Azure.|Typ geograficzny,Nazwa api,Uwierzytelnianie|
+|Ruch wychodzący|Ruch wychodzący|Bajty|Łącznie|Ilość danych wychodzących w bajtach. Ta liczba obejmuje dane wychodzące z klienta zewnętrznego do usługi Azure Storage, a także dane wychodzące w obrębie platformy Azure. W rezultacie liczba ta nie odzwierciedla danych wychodzących uwzględnianych na rozliczeniu.|Typ geograficzny,Nazwa api,Uwierzytelnianie|
+|SuccessServerLatency|Opóźnienie serwera dla powodzenia|Milisekund|Średnia|Średnie opóźnienie używane przez usługę Azure Storage do przetwarzania pomyślnego żądania w milisekundach. Ta wartość nie obejmuje opóźnienia sieci uwzględnionego w wartości AverageE2ELatency.|Typ geograficzny,Nazwa api,Uwierzytelnianie|
+|SuccessE2ELatency|Opóźnienie E2E dla powodzenia|Milisekund|Średnia|Średnie opóźnienie end-to-end pomyślnych żądań złożonych do usługi magazynu lub określonej operacji interfejsu API w milisekundach. Ta wartość obejmuje wymagany czas przetwarzania w usłudze Azure Storage do odczytania żądania, wysłania odpowiedzi i odebrania potwierdzenia dla odpowiedzi.|Typ geograficzny,Nazwa api,Uwierzytelnianie|
+|Dostępność|Dostępność|Wartość procentowa|Średnia|Procent dostępności usługi magazynu lub określonej operacji interfejsu API. Dostępność jest obliczana przez podzielenie wartości TotalBillableRequests przez liczbę żądań mających zastosowanie, łącznie z tymi, które wygenerowały nieoczekiwane błędy. Wszystkie nieoczekiwane błędy powodują obniżenie poziomu dostępności usługi magazynu lub określonej operacji interfejsu API.|Typ geograficzny,Nazwa api,Uwierzytelnianie|
 
-## <a name="microsoftstoragestorageaccountsfileservices"></a>Microsoft.Storage/storageAccounts/fileServices
+## <a name="microsoftstoragestorageaccountsfileservices"></a>Magazyn microsoft.storage/storageKonta/fileSługi
 
-|Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary|
+|Metryka|Metryka Nazwa wyświetlana|Jednostka|Typ agregacji|Opis|Wymiary|
 |---|---|---|---|---|---|
-|FileCapacity|Pojemność plików|Bajty|Średnia|Ilość miejsca do magazynowania używanego przez usługę plików konta magazynu w bajtach.|Udziału|
-|FileCount|Liczba plików|Licznik|Średnia|Liczba plików w usłudze plików konta magazynu.|Udziału|
-|FileShareCount|Liczba udziałów plików|Licznik|Średnia|Liczba udziałów plików w usłudze plików konta magazynu.|None|
-|FileShareSnapshotCount|Liczba migawek udziału plików|Licznik|Średnia|Liczba migawek znajdujących się w udziale w usłudze plików konta magazynu.|Udziału|
-|FileShareSnapshotSize|Rozmiar migawki udziału plików|Bajty|Średnia|Ilość miejsca do magazynowania używanego przez migawki w usłudze plików konta magazynu w bajtach.|Udziału|
-|FileShareQuota|Rozmiar przydziału udziału plików|Bajty|Średnia|Górny limit ilości miejsca do magazynowania, który może być używany przez usługę Azure Files w bajtach.|Udziału|
-|Transakcje|Transakcje|Licznik|Łącznie|Liczba żądań wysyłanych do usługi magazynu lub określonej operacji interfejsu API. Liczba ta obejmuje żądania zakończone powodzeniem i zakończone niepowodzeniem, a także żądania, które wygenerowały błędy. Korzystanie z wymiaru ResponseType numer innego typu odpowiedzi.|Responsetype, geotype, ApiName, Authentication, przeudziale|
-|Ruch przychodzący|Ruch przychodzący|Bajty|Łącznie|Ilość danych przychodzących w bajtach. Ta liczba obejmuje dane przychodzące z klienta zewnętrznego do usługi Azure Storage, a także dane przychodzące w obrębie platformy Azure.|Geotyp, ApiName, uwierzytelnianie, przeudziale|
-|Ruch wychodzący|Ruch wychodzący|Bajty|Łącznie|Ilość danych wychodzących w bajtach. Ta liczba obejmuje dane wychodzące z klienta zewnętrznego do usługi Azure Storage, a także dane wychodzące w obrębie platformy Azure. W rezultacie liczba ta nie odzwierciedla danych wychodzących uwzględnianych na rozliczeniu.|Geotyp, ApiName, uwierzytelnianie, przeudziale|
-|SuccessServerLatency|Opóźnienie serwera dla powodzenia|Milisekundy|Średnia|Średni czas oczekiwania, używane przez usługę Azure Storage do przetwarzania żądania zakończonego powodzeniem w milisekundach. Ta wartość nie obejmuje opóźnienia sieci uwzględnionego w wartości AverageE2ELatency.|Geotyp, ApiName, uwierzytelnianie, przeudziale|
-|SuccessE2ELatency|Opóźnienie e2e dla powodzenia|Milisekundy|Średnia|Średnie opóźnienie end-to-end żądań zakończonych powodzeniem kierowanych do usługi magazynu lub określonej operacji interfejsu API (w milisekundach). Ta wartość obejmuje wymagany czas przetwarzania w usłudze Azure Storage do odczytania żądania, wysłania odpowiedzi i odebrania potwierdzenia dla odpowiedzi.|Geotyp, ApiName, uwierzytelnianie, przeudziale|
-|Dostępność|Dostępność|Procent|Średnia|Procent dostępności dla usługi magazynu lub określonej operacji interfejsu API. Dostępność jest obliczana przez podzielenie wartości TotalBillableRequests przez liczbę żądań mających zastosowanie, łącznie z tymi, które wygenerowały nieoczekiwane błędy. Wszystkie nieoczekiwane błędy powodują obniżenie poziomu dostępności usługi magazynu lub określonej operacji interfejsu API.|Geotyp, ApiName, uwierzytelnianie, przeudziale|
+|Zdolność do pończęcia plików|Pojemność pliku|Bajty|Średnia|Ilość miejsca używanego przez usługę plików konta magazynu w bajtach.|Fileshare|
+|Liczba plików|Liczba plików|Liczba|Średnia|Liczba plików w usłudze Plik konta magazynu.|Fileshare|
+|Liczba plików ShareCount|Liczba udziałów plików|Liczba|Średnia|Liczba udziałów plików w usłudze Plik konta magazynu.|Brak|
+|Konto FileShareSnapshotCount|Liczba migawek udziału plików|Liczba|Średnia|Liczba migawek obecnych w udziale w usłudze plików konta magazynu.|Fileshare|
+|Rozmiar plikuShareSnapshotSize|Rozmiar migawki udziału plików|Bajty|Średnia|Ilość miejsca do magazynowania używanego przez migawki w usłudze plików na koncie magazynu w bajtach.|Fileshare|
+|FileShareQuota (Polski)|Rozmiar przydziału udziału plików|Bajty|Średnia|Górny limit ilości magazynu, który może być używany przez usługę Azure Files Service w bajtach.|Fileshare|
+|Transakcje|Transakcje|Liczba|Łącznie|Liczba żądań wysyłanych do usługi magazynu lub określonej operacji interfejsu API. Liczba ta obejmuje żądania zakończone powodzeniem i zakończone niepowodzeniem, a także żądania, które wygenerowały błędy. Użyj wymiaru ResponseType dla liczby różnych typów odpowiedzi.|Typ odpowiedzi,Typ geograficzny,Nazwa api,Uwierzytelnianie,Udostępnianie pliku|
+|Ruch przychodzący|Ruch przychodzący|Bajty|Łącznie|Ilość danych przychodzących w bajtach. Ta liczba obejmuje dane przychodzące z klienta zewnętrznego do usługi Azure Storage, a także dane przychodzące w obrębie platformy Azure.|Typ geograficzny,Nazwa api,Uwierzytelnianie,Udostępnianie plików|
+|Ruch wychodzący|Ruch wychodzący|Bajty|Łącznie|Ilość danych wychodzących w bajtach. Ta liczba obejmuje dane wychodzące z klienta zewnętrznego do usługi Azure Storage, a także dane wychodzące w obrębie platformy Azure. W rezultacie liczba ta nie odzwierciedla danych wychodzących uwzględnianych na rozliczeniu.|Typ geograficzny,Nazwa api,Uwierzytelnianie,Udostępnianie plików|
+|SuccessServerLatency|Opóźnienie serwera dla powodzenia|Milisekund|Średnia|Średnie opóźnienie używane przez usługę Azure Storage do przetwarzania pomyślnego żądania w milisekundach. Ta wartość nie obejmuje opóźnienia sieci uwzględnionego w wartości AverageE2ELatency.|Typ geograficzny,Nazwa api,Uwierzytelnianie,Udostępnianie plików|
+|SuccessE2ELatency|Opóźnienie E2E dla powodzenia|Milisekund|Średnia|Średnie opóźnienie end-to-end pomyślnych żądań złożonych do usługi magazynu lub określonej operacji interfejsu API w milisekundach. Ta wartość obejmuje wymagany czas przetwarzania w usłudze Azure Storage do odczytania żądania, wysłania odpowiedzi i odebrania potwierdzenia dla odpowiedzi.|Typ geograficzny,Nazwa api,Uwierzytelnianie,Udostępnianie plików|
+|Dostępność|Dostępność|Wartość procentowa|Średnia|Procent dostępności usługi magazynu lub określonej operacji interfejsu API. Dostępność jest obliczana przez podzielenie wartości TotalBillableRequests przez liczbę żądań mających zastosowanie, łącznie z tymi, które wygenerowały nieoczekiwane błędy. Wszystkie nieoczekiwane błędy powodują obniżenie poziomu dostępności usługi magazynu lub określonej operacji interfejsu API.|Typ geograficzny,Nazwa api,Uwierzytelnianie,Udostępnianie plików|
 
-## <a name="microsoftstoragestorageaccountsqueueservices"></a>Microsoft.Storage/storageAccounts/queueServices
+## <a name="microsoftstoragestorageaccountsqueueservices"></a>Magazyn/magazyn firmy MicrosoftKonserwowanie/kolejkaUsługi
 
-|Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary|
+|Metryka|Metryka Nazwa wyświetlana|Jednostka|Typ agregacji|Opis|Wymiary|
 |---|---|---|---|---|---|
-|QueueCapacity|Pojemność kolejki|Bajty|Średnia|Ilość miejsca używanego przez usługę kolejki konta magazynu, w bajtach.|None|
-|QueueCount|Liczba kolejek|Licznik|Średnia|Liczba kolejek w usłudze kolejki konta magazynu.|None|
-|QueueMessageCount|Liczba komunikatów w kolejce|Licznik|Średnia|Przybliżona liczba komunikatów w kolejce w usłudze kolejki konta magazynu.|None|
-|Transakcje|Transakcje|Licznik|Łącznie|Liczba żądań wysyłanych do usługi magazynu lub określonej operacji interfejsu API. Liczba ta obejmuje żądania zakończone powodzeniem i zakończone niepowodzeniem, a także żądania, które wygenerowały błędy. Korzystanie z wymiaru ResponseType numer innego typu odpowiedzi.|Responsetype, geotype, ApiName, uwierzytelnianie|
-|Ruch przychodzący|Ruch przychodzący|Bajty|Łącznie|Ilość danych przychodzących w bajtach. Ta liczba obejmuje dane przychodzące z klienta zewnętrznego do usługi Azure Storage, a także dane przychodzące w obrębie platformy Azure.|Geotype, ApiName, uwierzytelnianie|
-|Ruch wychodzący|Ruch wychodzący|Bajty|Łącznie|Ilość danych wychodzących w bajtach. Ta liczba obejmuje dane wychodzące z klienta zewnętrznego do usługi Azure Storage, a także dane wychodzące w obrębie platformy Azure. W rezultacie liczba ta nie odzwierciedla danych wychodzących uwzględnianych na rozliczeniu.|Geotype, ApiName, uwierzytelnianie|
-|SuccessServerLatency|Opóźnienie serwera dla powodzenia|Milisekundy|Średnia|Średni czas oczekiwania, używane przez usługę Azure Storage do przetwarzania żądania zakończonego powodzeniem w milisekundach. Ta wartość nie obejmuje opóźnienia sieci uwzględnionego w wartości AverageE2ELatency.|Geotype, ApiName, uwierzytelnianie|
-|SuccessE2ELatency|Opóźnienie e2e dla powodzenia|Milisekundy|Średnia|Średnie opóźnienie end-to-end żądań zakończonych powodzeniem kierowanych do usługi magazynu lub określonej operacji interfejsu API (w milisekundach). Ta wartość obejmuje wymagany czas przetwarzania w usłudze Azure Storage do odczytania żądania, wysłania odpowiedzi i odebrania potwierdzenia dla odpowiedzi.|Geotype, ApiName, uwierzytelnianie|
-|Dostępność|Dostępność|Procent|Średnia|Procent dostępności dla usługi magazynu lub określonej operacji interfejsu API. Dostępność jest obliczana przez podzielenie wartości TotalBillableRequests przez liczbę żądań mających zastosowanie, łącznie z tymi, które wygenerowały nieoczekiwane błędy. Wszystkie nieoczekiwane błędy powodują obniżenie poziomu dostępności usługi magazynu lub określonej operacji interfejsu API.|Geotype, ApiName, uwierzytelnianie|
+|QueueCapacity (Zdolność do kolejek)|Pojemność kolejki|Bajty|Średnia|Ilość miejsca do magazynowania używanego przez usługę kolejka konta magazynu w bajtach.|Brak|
+|Liczba kolejek|Liczba kolejek|Liczba|Średnia|Liczba kolejek w usłudze Kolejka konta magazynu.|Brak|
+|KolejkaLiczna liczba|Liczba wiadomości w kolejce|Liczba|Średnia|Przybliżona liczba komunikatów kolejki w usłudze Kolejka konta magazynu.|Brak|
+|Transakcje|Transakcje|Liczba|Łącznie|Liczba żądań wysyłanych do usługi magazynu lub określonej operacji interfejsu API. Liczba ta obejmuje żądania zakończone powodzeniem i zakończone niepowodzeniem, a także żądania, które wygenerowały błędy. Użyj wymiaru ResponseType dla liczby różnych typów odpowiedzi.|Typ odpowiedzi,Typ geograficzny,Nazwa api,Uwierzytelnianie|
+|Ruch przychodzący|Ruch przychodzący|Bajty|Łącznie|Ilość danych przychodzących w bajtach. Ta liczba obejmuje dane przychodzące z klienta zewnętrznego do usługi Azure Storage, a także dane przychodzące w obrębie platformy Azure.|Typ geograficzny,Nazwa api,Uwierzytelnianie|
+|Ruch wychodzący|Ruch wychodzący|Bajty|Łącznie|Ilość danych wychodzących w bajtach. Ta liczba obejmuje dane wychodzące z klienta zewnętrznego do usługi Azure Storage, a także dane wychodzące w obrębie platformy Azure. W rezultacie liczba ta nie odzwierciedla danych wychodzących uwzględnianych na rozliczeniu.|Typ geograficzny,Nazwa api,Uwierzytelnianie|
+|SuccessServerLatency|Opóźnienie serwera dla powodzenia|Milisekund|Średnia|Średnie opóźnienie używane przez usługę Azure Storage do przetwarzania pomyślnego żądania w milisekundach. Ta wartość nie obejmuje opóźnienia sieci uwzględnionego w wartości AverageE2ELatency.|Typ geograficzny,Nazwa api,Uwierzytelnianie|
+|SuccessE2ELatency|Opóźnienie E2E dla powodzenia|Milisekund|Średnia|Średnie opóźnienie end-to-end pomyślnych żądań złożonych do usługi magazynu lub określonej operacji interfejsu API w milisekundach. Ta wartość obejmuje wymagany czas przetwarzania w usłudze Azure Storage do odczytania żądania, wysłania odpowiedzi i odebrania potwierdzenia dla odpowiedzi.|Typ geograficzny,Nazwa api,Uwierzytelnianie|
+|Dostępność|Dostępność|Wartość procentowa|Średnia|Procent dostępności usługi magazynu lub określonej operacji interfejsu API. Dostępność jest obliczana przez podzielenie wartości TotalBillableRequests przez liczbę żądań mających zastosowanie, łącznie z tymi, które wygenerowały nieoczekiwane błędy. Wszystkie nieoczekiwane błędy powodują obniżenie poziomu dostępności usługi magazynu lub określonej operacji interfejsu API.|Typ geograficzny,Nazwa api,Uwierzytelnianie|
 
 
 
 
 
-## <a name="microsoftstoragecachecaches"></a>Microsoft. StorageCache/pamięci podręczne
+## <a name="microsoftstoragecachecaches"></a>Microsoft.StorageCache/caches
 
-|Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary|
+|Metryka|Metryka Nazwa wyświetlana|Jednostka|Typ agregacji|Opis|Wymiary|
 |---|---|---|---|---|---|
-|ClientIOPS|Łączna liczba operacji we/wy klienta|Licznik|Średnia|Częstotliwość operacji plików klienta przetwarzanych przez pamięć podręczną.|None|
-|ClientLatency|Średnie opóźnienie klienta|Milisekundy|Średnia|Średnie opóźnienie operacji plików klienta w pamięci podręcznej magazynu.|None|
-|ClientReadIOPS|Liczba operacji we/wy odczytu klienta|CountPerSecond|Średnia|Operacje odczytu klienta na sekundę.|None|
-|ClientReadThroughput|Średnia przepływność odczytu pamięci podręcznej|BytesPerSecond|Średnia|Szybkość transferu danych odczytu klienta.|None|
-|ClientWriteIOPS|Liczba operacji we/wy zapisu klienta|CountPerSecond|Średnia|Operacje zapisu klienta na sekundę.|None|
-|ClientWriteThroughput|Średnia przepływność zapisu w pamięci podręcznej|BytesPerSecond|Średnia|Szybkość transferu danych przez zapis klienta.|None|
-|ClientMetadataReadIOPS|Liczba operacji we/wy odczytu metadanych klienta|CountPerSecond|Średnia|Częstotliwość operacji plików klienta wysyłanych do pamięci podręcznej, z wyłączeniem odczytów danych, które nie modyfikują trwałego stanu.|None|
-|ClientMetadataWriteIOPS|Liczba IOPS zapisu metadanych klienta|CountPerSecond|Średnia|Szybkość operacji plików klienta wysyłanych do pamięci podręcznej, z wyjątkiem zapisów danych, które modyfikują stan trwały.|None|
-|ClientLockIOPS|Liczba operacji we/wy blokady klienta|CountPerSecond|Średnia|Operacje blokowania plików klienta na sekundę.|None|
-|StorageTargetHealth|Kondycja docelowa magazynu|Licznik|Średnia|Wartość logiczna wyników testu łączności między pamięcią podręczną i magazynem.|None|
-|Czas działania|Czas działania|Licznik|Średnia|Wartość logiczna wyników testu łączności między pamięcią podręczną i systemem monitorowania.|None|
-|StorageTargetIOPS|Łączna liczba operacji we/wy StorageTarget|Licznik|Średnia|Szybkość wszystkich operacji na plikach wysyłanych przez pamięć podręczną do określonego StorageTarget.|StorageTarget|
-|StorageTargetWriteIOPS|StorageTarget zapisu IOPS|Licznik|Średnia|Częstotliwość operacji zapisu plików wysyłanych przez pamięć podręczną do określonego StorageTarget.|StorageTarget|
-|StorageTargetAsyncWriteThroughput|Przepływność zapisu asynchronicznego StorageTarget|BytesPerSecond|Średnia|Częstotliwość asynchronicznego zapisywania danych w pamięci podręcznej w określonym StorageTarget. Są to zapisy oportunistyczne, które nie powodują blokowania klientów.|StorageTarget|
-|StorageTargetSyncWriteThroughput|Przepływność zapisu synchronicznego StorageTarget|BytesPerSecond|Średnia|Częstotliwość synchronicznego zapisywania danych w pamięci podręcznej w określonym StorageTarget. Są to zapisy, które powodują blokowanie klientów.|StorageTarget|
-|StorageTargetTotalWriteThroughput|StorageTarget całkowita przepływność zapisu|BytesPerSecond|Średnia|Łączna szybkość, z jaką pamięć podręczna zapisuje dane do określonego StorageTarget.|StorageTarget|
-|StorageTargetLatency|Opóźnienie StorageTarget|Milisekundy|Średnia|Średnie opóźnienie błądzenia wszystkich operacji plików wysyłanych przez pamięć podręczną do partricular StorageTarget.|StorageTarget|
-|StorageTargetMetadataReadIOPS|Liczba operacji we/wy odczytu metadanych StorageTarget|CountPerSecond|Średnia|Częstotliwość operacji na plikach, które nie modyfikują stanu trwałego i z wyłączeniem operacji odczytu, którą pamięć podręczna wysyła do określonego StorageTarget.|StorageTarget|
-|StorageTargetMetadataWriteIOPS|Liczba IOPS zapisu w metadanych StorageTarget|CountPerSecond|Średnia|Częstotliwość wykonywania operacji na plikach, która modyfikuje trwały stan i wykluczając operację zapisu, którą pamięć podręczna wysyła do określonego StorageTarget.|StorageTarget|
-|StorageTargetReadIOPS|StorageTarget operacji we/wy odczytu|CountPerSecond|Średnia|Częstotliwość operacji odczytu plików wysyłanych przez pamięć podręczną do określonego StorageTarget.|StorageTarget|
-|StorageTargetReadAheadThroughput|StorageTarget z wyprzedzeniem|BytesPerSecond|Średnia|Częstotliwość odczytywania przez opportunisticly pamięci podręcznej danych z StorageTarget.|StorageTarget|
-|StorageTargetFillThroughput|Przepływność wypełnienia StorageTarget|BytesPerSecond|Średnia|Częstotliwość odczytywania przez pamięć podręczną danych z StorageTarget w celu obsługi chybień w pamięci podręcznej.|StorageTarget|
-|StorageTargetTotalReadThroughput|StorageTarget całkowita przepływność odczytu|BytesPerSecond|Średnia|Łączna szybkość, z jaką pamięć podręczna odczytuje dane z określonego StorageTarget.|StorageTarget|
+|KlientIOPS|Całkowita liczba we/wy klienta|Liczba|Średnia|Szybkość operacji plików klienta przetwarzanych przez pamięć podręczną.|Brak|
+|KlientLatency|Średnie opóźnienie klienta|Milisekund|Średnia|Średnie opóźnienie operacji plików klienta w pamięci podręcznej magazynu.|Brak|
+|ClientReadIOPS (ClientReadIOPS)|Odczyt klienta We/Wy|Połów połówek|Średnia|Operacje odczytu klienta na sekundę.|Brak|
+|Przepustowość doczynienia obsługi klienta|Średnia przepływność odczytu pamięci podręcznej|PrzeztówPerSekunda|Średnia|Szybkość przesyłania danych odczytu przez klienta.|Brak|
+|KlientWriteIOPS|Zapis klienta We/Wy|Połów połówek|Średnia|Operacje zapisu klienta na sekundę.|Brak|
+|KlientWriteThroughput|Średnia przepływność zapisu w pamięci podręcznej|PrzeztówPerSekunda|Średnia|Szybkość transferu danych zapisu klienta.|Brak|
+|ClientMetadataReadIOPS (ClientMetadataReadIOPS)|Odczytywanie przez nieprzechodnień we/wy między metadanych klienta|Połów połówek|Średnia|Szybkość operacji na plikach klienta wysyłanych do pamięci podręcznej, z wyłączeniem odczytów danych, które nie modyfikują stanu trwałego.|Brak|
+|ClientMetadataWriteIOPS|Zapis iOPS metadanych klienta|Połów połówek|Średnia|Szybkość operacji na plikach klienta wysyłanych do pamięci podręcznej, z wyłączeniem zapisów danych, które modyfikują stan trwały.|Brak|
+|ClientLockIOPS|We/wy blokady klienta|Połów połówek|Średnia|Operacje blokowania plików klienta na sekundę.|Brak|
+|StorageTargetHealth (Zdrowie celów pamięci masowej)|Kondycja obiektu docelowego magazynu|Liczba|Średnia|Wyniki logiczne testu łączności między pamięcią podręczną a docelowymi magazynami.|Brak|
+|Uptime|Uptime|Liczba|Średnia|Wyniki logiczne testu łączności między pamięcią podręczną a systemem monitorowania.|Brak|
+|StorageTargetIOPS|Całkowita liczba we/wy dla magazynu|Liczba|Średnia|Szybkość wszystkich operacji plików, które pamięć podręczna wysyła do określonego programu StorageTarget.|Nośnik danych magazynu|
+|StorageTargetWriteIOPS|PrzechowywanieTarget Zapisu We/Wy|Liczba|Średnia|Szybkość operacji zapisu pliku, które pamięć podręczna wysyła do określonego programu StorageTarget.|Nośnik danych magazynu|
+|PrzechowywanieTargetAsyncWriteThroughput|Przepływność zapisu asynchronitycznego StorageTarget|PrzeztówPerSekunda|Średnia|Szybkość pamięci podręcznej asynchronicznie zapisuje dane do określonego StorageTarget. Są to zapisy oportunistyczne, które nie powodują blokowania klientów.|Nośnik danych magazynu|
+|PrzechowywanieTargetSyncWriteThroughput|Synchronicz zapisu StorageTarget|PrzeztówPerSekunda|Średnia|Szybkość pamięci podręcznej synchronicznie zapisuje dane do określonego StorageTarget. Są to zapisy, które powodują, że klienci blokują.|Nośnik danych magazynu|
+|StorageTargetTotalWriteThroughput|Całkowita przepływność zapisu w celu zasysanie celu|PrzeztówPerSekunda|Średnia|Całkowita szybkość, że pamięć podręczna zapisuje dane do określonego StorageTarget.|Nośnik danych magazynu|
+|Sposób działania celów magazynu|Opóźnienie celu magazynu|Milisekund|Średnia|Średnie opóźnienie podróży w obie strony wszystkich operacji plików, które pamięć podręczna wysyła do partricular StorageTarget.|Nośnik danych magazynu|
+|StorageTargetMetadataReadIOPS|Odczyt iops metadanych storagetarget|Połów połówek|Średnia|Szybkość operacji plików, które nie modyfikują stanu trwałego i z wyłączeniem operacji odczytu, która jest wysyłana przez pamięć podręczną do określonego programu StorageTarget.|Nośnik danych magazynu|
+|StorageTargetMetadataEeEiteIOPS|Identyfikatory We/Wy dotyczące zapisu metadanych storagetarget|Połów połówek|Średnia|Szybkość operacji plików, które modyfikują stan trwały i z wyłączeniem operacji zapisu, który pamięć podręczna wysyła do określonego StorageTarget.|Nośnik danych magazynu|
+|StorageTargetReadIOPS|Odczyt iOPS z odczytem storagetarget|Połów połówek|Średnia|Szybkość operacji odczytu pliku, które pamięć podręczna wysyła do określonego programu StorageTarget.|Nośnik danych magazynu|
+|StorageTargetReadAheadThroughput|Przepływność odczytu do odczytu z wyprzedzeniem w celu przechowywania|PrzeztówPerSekunda|Średnia|Szybkość cache oportunistyczny odczytuje dane z StorageTarget.|Nośnik danych magazynu|
+|PrzechowywanieTargetFillThroughput|Przepływność wypełniania nastawy dla celów magazynu|PrzeztówPerSekunda|Średnia|Szybkość cache odczytuje dane z StorageTarget do obsługi miss pamięci podręcznej.|Nośnik danych magazynu|
+|StorageTargetTotalReadThroughput|Całkowita przepływność odczytu w celu całkowitej dojście do magazynu|PrzeztówPerSekunda|Średnia|Całkowita szybkość, że pamięć podręczna odczytuje dane z określonego StorageTarget.|Nośnik danych magazynu|
 
 ## <a name="microsoftstoragesyncstoragesyncservices"></a>microsoft.storagesync/storageSyncServices
 
-|Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary|
+|Metryka|Metryka Nazwa wyświetlana|Jednostka|Typ agregacji|Opis|Wymiary|
 |---|---|---|---|---|---|
-|ServerSyncSessionResult|Wynik synchronizacji sesji|Licznik|Średnia|Metryka, która rejestruje wartość 1 za każdym razem, gdy punkt końcowy serwera pomyślnie ukończy sesję synchronizacji z punktem końcowym w chmurze|SyncGroupName,ServerEndpointName,SyncDirection|
-|StorageSyncSyncSessionAppliedFilesCount|Synchronizowane pliki|Licznik|Łącznie|Liczba synchronizowanych plików|SyncGroupName,ServerEndpointName,SyncDirection|
-|StorageSyncSyncSessionPerItemErrorsCount|Pliki, których nie należy synchronizować|Licznik|Łącznie|Nie można zsynchronizować liczby plików|SyncGroupName,ServerEndpointName,SyncDirection|
-|StorageSyncBatchTransferredFileBytes|Zsynchronizowane bajty|Bajty|Łącznie|Łączny rozmiar pliku transferowanego dla sesji synchronizacji|SyncGroupName,ServerEndpointName,SyncDirection|
-|StorageSyncServerHeartbeat|Stan online serwera|Licznik|Maksimum|Metryka, która rejestruje wartość 1 za każdym razem, gdy serwer resigtered pomyślnie rejestruje puls przy użyciu punktu końcowego w chmurze|ServerName|
-|StorageSyncRecallIOTotalSizeBytes|Odwołanie do warstw w chmurze|Bajty|Łącznie|Łączny rozmiar danych, które zostały wywołane przez serwer|ServerName|
-|StorageSyncRecalledTotalNetworkBytes|Rozmiar odwołania do warstw w chmurze|Bajty|Łącznie|Rozmiar danych, które zostały odwołane|SyncGroupName, ServerName|
-|StorageSyncRecallThroughputBytesPerSecond|Przepływność odwołań do warstw w chmurze|BytesPerSecond|Średnia|Rozmiar przepływności operacji odwoływania danych|SyncGroupName, ServerName|
-|StorageSyncRecalledNetworkBytesByApplication|Rozmiar odwołania do warstw w chmurze według aplikacji|Bajty|Łącznie|Rozmiar danych, które zostały wywołane przez aplikację|SyncGroupName, ServerName, ApplicationName|
+|ServerSyncSessionResult|Wynik sesji synchronizacji|Liczba|Średnia|Metryka, która rejestruje wartość 1 za każdym razem, gdy punkt końcowy serwera pomyślnie kończy sesję synchronizacji z punktem końcowym chmury|SyncGroupName,ServerEndpointName,SyncDirection|
+|StorageSyncSyncSessionAppliedFilesCount|Pliki zsynchronizowane|Liczba|Łącznie|Liczba zsynchronizowanych plików|SyncGroupName,ServerEndpointName,SyncDirection|
+|Pamięć Programu StorageSyncSyncSessionPerItemErrorsCount|Pliki niezsynchronizowane|Liczba|Łącznie|Nie można zsynchronizować liczby plików|SyncGroupName,ServerEndpointName,SyncDirection|
+|Pamięć masowa SynchronizcBatchTransferredFileBytes|Bajty zsynchronizowane|Bajty|Łącznie|Całkowity rozmiar pliku przesłany dla sesji synchronizacji|SyncGroupName,ServerEndpointName,SyncDirection|
+|Pamięć Pamięci Masowego SerweraHeartbeat|Stan usługi Online serwera|Liczba|Maksimum|Metryka, która rejestruje wartość 1 za każdym razem, gdy serwer resigtered pomyślnie rejestruje bicie serca z punktem końcowym w chmurze|ServerName|
+|Pamięć masowaSyncRecallIOTotalSizeBytes|Przywoływanie warstw w chmurze|Bajty|Łącznie|Całkowity rozmiar danych przywoływaniu przez serwer|ServerName|
+|StorageSyncRecalledTotalNetworkBytes|Rozmiar odwołania warstwowego chmury|Bajty|Łącznie|Wielkość przywoływania danych|Nazwa syncgroup,Nazwa serwera|
+|StorageSyncRecallThroughPutBytesPerSecond|Przepływność wycofywania warstwowego w chmurze|PrzeztówPerSekunda|Średnia|Rozmiar przepływności wycofywania danych|Nazwa syncgroup,Nazwa serwera|
+|StorageSyncRecalledNetworkBytesApplication|Rozmiar odwołania warstwowego w chmurze według aplikacji|Bajty|Łącznie|Rozmiar danych przywoływaniu przez aplikację|Nazwa syncgroup,Nazwa serwera,Nazwa aplikacji|
 
-## <a name="microsoftstoragesyncstoragesyncservicessyncgroups"></a>Microsoft. storagesync/storageSyncServices/syncGroups
+## <a name="microsoftstoragesyncstoragesyncservicessyncgroups"></a>microsoft.storagesync/storageSyncServices/syncGroups
 
-|Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary|
+|Metryka|Metryka Nazwa wyświetlana|Jednostka|Typ agregacji|Opis|Wymiary|
 |---|---|---|---|---|---|
-|SyncGroupSyncSessionAppliedFilesCount|Synchronizowane pliki|Licznik|Łącznie|Liczba synchronizowanych plików|SyncGroupName,ServerEndpointName,SyncDirection|
-|SyncGroupSyncSessionPerItemErrorsCount|Pliki, których nie należy synchronizować|Licznik|Łącznie|Nie można zsynchronizować liczby plików|SyncGroupName,ServerEndpointName,SyncDirection|
-|SyncGroupBatchTransferredFileBytes|Zsynchronizowane bajty|Bajty|Łącznie|Łączny rozmiar pliku transferowanego dla sesji synchronizacji|SyncGroupName,ServerEndpointName,SyncDirection|
+|SyncGroupSyncSessionAppliedFilesCount|Pliki zsynchronizowane|Liczba|Łącznie|Liczba zsynchronizowanych plików|SyncGroupName,ServerEndpointName,SyncDirection|
+|SyncGroupSyncSessionPerItemErrorsCount|Pliki niezsynchronizowane|Liczba|Łącznie|Nie można zsynchronizować liczby plików|SyncGroupName,ServerEndpointName,SyncDirection|
+|SyncGroupBatchTransferredFileBytes|Bajty zsynchronizowane|Bajty|Łącznie|Całkowity rozmiar pliku przesłany dla sesji synchronizacji|SyncGroupName,ServerEndpointName,SyncDirection|
 
-## <a name="microsoftstoragesyncstoragesyncservicessyncgroupsserverendpoints"></a>Microsoft. storagesync/storageSyncServices/syncGroups/serverEndpoints
+## <a name="microsoftstoragesyncstoragesyncservicessyncgroupsserverendpoints"></a>microsoft.storagesync/storageSyncServices/syncGroups/serverEndpoints
 
-|Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary|
+|Metryka|Metryka Nazwa wyświetlana|Jednostka|Typ agregacji|Opis|Wymiary|
 |---|---|---|---|---|---|
-|ServerEndpointSyncSessionAppliedFilesCount|Synchronizowane pliki|Licznik|Łącznie|Liczba synchronizowanych plików|ServerEndpointName,SyncDirection|
-|ServerEndpointSyncSessionPerItemErrorsCount|Pliki, których nie należy synchronizować|Licznik|Łącznie|Nie można zsynchronizować liczby plików|ServerEndpointName,SyncDirection|
-|ServerEndpointBatchTransferredFileBytes|Zsynchronizowane bajty|Bajty|Łącznie|Łączny rozmiar pliku transferowanego dla sesji synchronizacji|ServerEndpointName,SyncDirection|
+|ServerEndpointSyncSessionAppliedFilesCount|Pliki zsynchronizowane|Liczba|Łącznie|Liczba zsynchronizowanych plików|ServerEndpointName,SyncDirection|
+|ServerEndpointSyncSessionPerItemErrorsCount|Pliki niezsynchronizowane|Liczba|Łącznie|Nie można zsynchronizować liczby plików|ServerEndpointName,SyncDirection|
+|ServerEndpointBatchTransferredFileBytes|Bajty zsynchronizowane|Bajty|Łącznie|Całkowity rozmiar pliku przesłany dla sesji synchronizacji|ServerEndpointName,SyncDirection|
 
-## <a name="microsoftstoragesyncstoragesyncservicesregisteredservers"></a>Microsoft. storagesync/storageSyncServices/registeredServers
+## <a name="microsoftstoragesyncstoragesyncservicesregisteredservers"></a>microsoft.storagesync/storageSyncServices/registeredServers
 
-|Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary|
+|Metryka|Metryka Nazwa wyświetlana|Jednostka|Typ agregacji|Opis|Wymiary|
 |---|---|---|---|---|---|
-|ServerHeartbeat|Stan online serwera|Licznik|Maksimum|Metryka, która rejestruje wartość 1 za każdym razem, gdy serwer resigtered pomyślnie rejestruje puls przy użyciu punktu końcowego w chmurze|ServerResourceId, ServerName|
-|ServerRecallIOTotalSizeBytes|Odwołanie do warstw w chmurze|Bajty|Łącznie|Łączny rozmiar danych, które zostały wywołane przez serwer|ServerResourceId, ServerName|
+|ServerHeartbeat (ServerHeartbeat)|Stan usługi Online serwera|Liczba|Maksimum|Metryka, która rejestruje wartość 1 za każdym razem, gdy serwer resigtered pomyślnie rejestruje bicie serca z punktem końcowym w chmurze|ServerResourceId,Nazwa serwera|
+|ServerRecallIOTotalSizeBytes|Przywoływanie warstw w chmurze|Bajty|Łącznie|Całkowity rozmiar danych przywoływaniu przez serwer|ServerResourceId,Nazwa serwera|
 
 
 
-## <a name="microsoftstreamanalyticsstreamingjobs"></a>Microsoft.StreamAnalytics/streamingjobs
+## <a name="microsoftstreamanalyticsstreamingjobs"></a>Microsoft.StreamAnalityka/szybkość przesyłania strumieniowego
 
-|Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary|
+|Metryka|Metryka Nazwa wyświetlana|Jednostka|Typ agregacji|Opis|Wymiary|
 |---|---|---|---|---|---|
-|ResourceUtilization|% wykorzystania SU|Procent|Maksimum|% wykorzystania SU|Logicznaname, PartitionId|
-|InputEvents|Zdarzenia wejściowe|Licznik|Łącznie|Zdarzenia wejściowe|Logicznaname, PartitionId|
-|InputEventBytes|Zdarzenia wejściowe (bajty)|Bajty|Łącznie|Zdarzenia wejściowe (bajty)|Logicznaname, PartitionId|
-|LateInputEvents|Opóźnione zdarzenia wejściowe|Licznik|Łącznie|Opóźnione zdarzenia wejściowe|Logicznaname, PartitionId|
-|OutputEvents|Zdarzenia wyjściowe|Licznik|Łącznie|Zdarzenia wyjściowe|Logicznaname, PartitionId|
-|ConversionErrors|Błędy konwersji danych|Licznik|Łącznie|Błędy konwersji danych|Logicznaname, PartitionId|
-|Błędy|Błędy w czasie wykonywania|Licznik|Łącznie|Błędy w czasie wykonywania|Logicznaname, PartitionId|
-|DroppedOrAdjustedEvents|Zdarzenia poza kolejnością|Licznik|Łącznie|Zdarzenia poza kolejnością|Logicznaname, PartitionId|
-|AMLCalloutRequests|Żądania funkcji|Licznik|Łącznie|Żądania funkcji|Logicznaname, PartitionId|
-|AMLCalloutFailedRequests|Żądania funkcji zakończone niepowodzeniem|Licznik|Łącznie|Żądania funkcji zakończone niepowodzeniem|Logicznaname, PartitionId|
-|AMLCalloutInputEvents|Zdarzenia funkcji|Licznik|Łącznie|Zdarzenia funkcji|Logicznaname, PartitionId|
-|DeserializationError|Błędy deserializacji danych wejściowych|Licznik|Łącznie|Błędy deserializacji danych wejściowych|Logicznaname, PartitionId|
-|EarlyInputEvents|Wczesne zdarzenia wejściowe|Licznik|Łącznie|Wczesne zdarzenia wejściowe|Logicznaname, PartitionId|
-|OutputWatermarkDelaySeconds|Opóźnienie znaku wodnego|S|Maksimum|Opóźnienie znaku wodnego|Logicznaname, PartitionId|
-|InputEventsSourcesBacklogged|Zaległe zdarzenia wejściowe|Licznik|Maksimum|Zaległe zdarzenia wejściowe|Logicznaname, PartitionId|
-|InputEventsSourcesPerSecond|Odebrane źródła wejściowe|Licznik|Łącznie|Odebrane źródła wejściowe|Logicznaname, PartitionId|
+|Alokacja zasobów|Wykorzystanie SU %|Wartość procentowa|Maksimum|Wykorzystanie SU %|Nazwa logiczna,Identyfikator partycji|
+|WejściaUchny|Zdarzenia wejściowe|Liczba|Łącznie|Zdarzenia wejściowe|Nazwa logiczna,Identyfikator partycji|
+|InputEventBytes (WejściaEwentnebyty)|Bajty zdarzenia wejściowego|Bajty|Łącznie|Bajty zdarzenia wejściowego|Nazwa logiczna,Identyfikator partycji|
+|LateInputEvents|Zdarzenia późnego wprowadzania|Liczba|Łącznie|Zdarzenia późnego wprowadzania|Nazwa logiczna,Identyfikator partycji|
+|Dane wyjścioweWzdowy|Zdarzenia wyjściowe|Liczba|Łącznie|Zdarzenia wyjściowe|Nazwa logiczna,Identyfikator partycji|
+|KonwersjeErrors|Błędy konwersji danych|Liczba|Łącznie|Błędy konwersji danych|Nazwa logiczna,Identyfikator partycji|
+|Errors|Błędy środowiska uruchomieniowego|Liczba|Łącznie|Błędy środowiska uruchomieniowego|Nazwa logiczna,Identyfikator partycji|
+|DroppedOrAdjustedWydarzenia|Zdarzenia poza kolejnością|Liczba|Łącznie|Zdarzenia poza kolejnością|Nazwa logiczna,Identyfikator partycji|
+|AMLCalloutZasuty|Żądania funkcji|Liczba|Łącznie|Żądania funkcji|Nazwa logiczna,Identyfikator partycji|
+|AMLCalloutFailedZasty|Nieudane żądania funkcji|Liczba|Łącznie|Nieudane żądania funkcji|Nazwa logiczna,Identyfikator partycji|
+|AMLCalloutInputAvents|Zdarzenia funkcji|Liczba|Łącznie|Zdarzenia funkcji|Nazwa logiczna,Identyfikator partycji|
+|DeserializacjaError|Błędy deserializacji danych wejściowych|Liczba|Łącznie|Błędy deserializacji danych wejściowych|Nazwa logiczna,Identyfikator partycji|
+|EarlyInputEvents|Zdarzenia wczesnego wprowadzania|Liczba|Łącznie|Zdarzenia wczesnego wprowadzania|Nazwa logiczna,Identyfikator partycji|
+|WyjścieWodawodnikDelaySekundy|Opóźnienie znaku wodnego|Sekundy|Maksimum|Opóźnienie znaku wodnego|Nazwa logiczna,Identyfikator partycji|
+|Dane wejściaEventsSourcesBacklogged|Zaległe zdarzenia wejściowe|Liczba|Maksimum|Zaległe zdarzenia wejściowe|Nazwa logiczna,Identyfikator partycji|
+|Dane wejścioweSourcesPerSecond|Odebrane źródła wejściowe|Liczba|Łącznie|Odebrane źródła wejściowe|Nazwa logiczna,Identyfikator partycji|
 
-## <a name="microsofttimeseriesinsightsenvironments"></a>Microsoft. TimeSeriesInsights/środowiska
+## <a name="microsofttimeseriesinsightsenvironments"></a>Microsoft.TimeSeriesInsights/environments
 
-|Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary|
+|Metryka|Metryka Nazwa wyświetlana|Jednostka|Typ agregacji|Opis|Wymiary|
 |---|---|---|---|---|---|
-|IngressReceivedMessages|Odebrane komunikaty transferu danych przychodzących|Licznik|Łącznie|Liczba komunikatów odczytanych ze wszystkich źródeł zdarzeń centrum zdarzeń lub Centrum IoT Hub|None|
-|IngressReceivedInvalidMessages|Odebrano nieprawidłowe komunikaty dotyczące transferu danych przychodzących|Licznik|Łącznie|Liczba nieprawidłowych komunikatów odczytywanych ze wszystkich centrów zdarzeń lub źródeł zdarzeń usługi IoT Hub|None|
-|IngressReceivedBytes|Bajty odebrane z ruchu przychodzącego|Bajty|Łącznie|Liczba bajtów odczytanych ze wszystkich źródeł zdarzeń|None|
-|IngressStoredBytes|Bajty przechowywane w ruchu przychodzącym|Bajty|Łącznie|Łączny rozmiar zdarzeń pomyślnie przetworzonych i dostępnych dla zapytania|None|
-|IngressStoredEvents|Zdarzenia związane z transferem danych przychodzących|Licznik|Łącznie|Liczba zdarzeń spłaszczonych pomyślnie przetworzonych i dostępnych dla zapytania|None|
-|IngressReceivedMessagesTimeLag|Zwłoka czasu odbierania komunikatów przychodzących|S|Maksimum|Różnica między czasem, w którym wiadomość jest przetworzona do kolejki w źródle zdarzeń i czasie, w którym jest przetwarzany w danych wejściowych|None|
-|IngressReceivedMessagesCountLag|Opóźnienie liczby odebranych komunikatów przychodzących|Licznik|Średnia|Różnica między numerem sekwencyjnym ostatnio zarejestrowanego komunikatu w partycji źródłowej zdarzenia a sekwencją sekwencji komunikatów przetwarzanych w ramach ruchu przychodzącego|None|
-|WarmStorageMaxProperties|Maksymalna liczba właściwości magazynu ciepłego|Licznik|Maksimum|Maksymalna liczba właściwości używanych przez środowisko dla jednostki SKU S1/S2 i Maksymalna liczba właściwości dozwolona przez magazyn ciepły dla jednostki SKU|None|
-|WarmStorageUsedProperties|Właściwości używanej pamięci masowej |Licznik|Maksimum|Liczba właściwości używanych przez środowisko dla jednostki SKU S1/S2 i liczby właściwości używanych przez magazyn ciepły dla jednostek SKU|None|
+|IngressReceivedMessages (IngressReceivedMessages)|Odebrane wiadomości przychodzące|Liczba|Łącznie|Liczba wiadomości odczytywanych ze wszystkich źródeł zdarzeń Centrum zdarzeń usługi Event hub lub IoT Hub|Brak|
+|IngressReceivedInvalidMessages|Odebrane nieprawidłowe wiadomości przychodzące|Liczba|Łącznie|Liczba nieprawidłowych wiadomości odczytywanych ze wszystkich źródeł zdarzeń Centrum zdarzeń usługi Event Hub lub IoT Hub|Brak|
+|IngressReceivedBytes (Wnikanie)|Odebrane bajty przychodzące|Bajty|Łącznie|Liczba bajtów odczytanych ze wszystkich źródeł zdarzeń|Brak|
+|IngressStoredBytes (WnikajsiestoredBytes)|Bajty przechowywane przy ruchu przychodzącego|Bajty|Łącznie|Całkowity rozmiar zdarzeń pomyślnie przetworzonych i dostępnych dla kwerendy|Brak|
+|IngressStoredEvents|Zdarzenia przechowywane w ruchu przychodzącym|Liczba|Łącznie|Liczba spłaszczonych zdarzeń pomyślnie przetworzonych i dostępnych dla kwerendy|Brak|
+|IngressReceivedMessagesTimeLag|Opóźnienie czasu odebranych wiadomości przychodzących|Sekundy|Maksimum|Różnica między czasem, w której wiadomość jest ujmowana w kolejce do źródła zdarzenia, a czasem przetwarzania w u danych przychodzących|Brak|
+|IngressReceivedMessagesCountLag|Opóźnienie liczby odebranych wiadomości przychodzących|Liczba|Średnia|Różnica między numerem sekwencyjnym ostatniej wiadomości w kolejce w partycji źródłowej zdarzenia a numerem sekwencyjnym komunikatów przetwarzanych w u danych przychodzących|Brak|
+|Właściwości WarmStorageMaxProperties|Właściwości maksymalnej pamięci masowej|Liczba|Maksimum|Maksymalna liczba właściwości używanych przez środowisko dla SKU S1/S2 i maksymalna liczba właściwości dozwolona przez Ciepły magazyn dla payg sku|Brak|
+|WarmStorageUżywanewłaściwości|Właściwości używane do ciepłej pamięci masowej |Liczba|Maksimum|Liczba właściwości używanych przez środowisko dla jednostki SKU S1/S2 i liczba właściwości używanych przez Warm Store dla payg sku|Brak|
 
-## <a name="microsofttimeseriesinsightsenvironmentseventsources"></a>Microsoft. TimeSeriesInsights/Environments/eventsources
+## <a name="microsofttimeseriesinsightsenvironmentseventsources"></a>Microsoft.TimeSeriesInsights/environments/eventsources
 
-|Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary|
+|Metryka|Metryka Nazwa wyświetlana|Jednostka|Typ agregacji|Opis|Wymiary|
 |---|---|---|---|---|---|
-|IngressReceivedMessages|Odebrane komunikaty transferu danych przychodzących|Licznik|Łącznie|Liczba komunikatów odczytanych ze źródła zdarzeń|None|
-|IngressReceivedInvalidMessages|Odebrano nieprawidłowe komunikaty dotyczące transferu danych przychodzących|Licznik|Łącznie|Liczba nieprawidłowych komunikatów odczytanych ze źródła zdarzeń|None|
-|IngressReceivedBytes|Bajty odebrane z ruchu przychodzącego|Bajty|Łącznie|Liczba bajtów odczytanych ze źródła zdarzenia|None|
-|IngressStoredBytes|Bajty przechowywane w ruchu przychodzącym|Bajty|Łącznie|Łączny rozmiar zdarzeń pomyślnie przetworzonych i dostępnych dla zapytania|None|
-|IngressStoredEvents|Zdarzenia związane z transferem danych przychodzących|Licznik|Łącznie|Liczba zdarzeń spłaszczonych pomyślnie przetworzonych i dostępnych dla zapytania|None|
-|IngressReceivedMessagesTimeLag|Zwłoka czasu odbierania komunikatów przychodzących|S|Maksimum|Różnica między czasem, w którym wiadomość jest przetworzona do kolejki w źródle zdarzeń i czasie, w którym jest przetwarzany w danych wejściowych|None|
-|IngressReceivedMessagesCountLag|Opóźnienie liczby odebranych komunikatów przychodzących|Licznik|Średnia|Różnica między numerem sekwencyjnym ostatnio zarejestrowanego komunikatu w partycji źródłowej zdarzenia a sekwencją sekwencji komunikatów przetwarzanych w ramach ruchu przychodzącego|None|
-|WarmStorageMaxProperties|Maksymalna liczba właściwości magazynu ciepłego|Licznik|Maksimum|Maksymalna liczba właściwości używanych przez środowisko dla jednostki SKU S1/S2 i Maksymalna liczba właściwości dozwolona przez magazyn ciepły dla jednostki SKU|None|
-|WarmStorageUsedProperties|Właściwości używanej pamięci masowej |Licznik|Maksimum|Liczba właściwości używanych przez środowisko dla jednostki SKU S1/S2 i liczby właściwości używanych przez magazyn ciepły dla jednostek SKU|None|
+|IngressReceivedMessages (IngressReceivedMessages)|Odebrane wiadomości przychodzące|Liczba|Łącznie|Liczba wiadomości odczytanych ze źródła zdarzeń|Brak|
+|IngressReceivedInvalidMessages|Odebrane nieprawidłowe wiadomości przychodzące|Liczba|Łącznie|Liczba nieprawidłowych wiadomości odczytanych ze źródła zdarzeń|Brak|
+|IngressReceivedBytes (Wnikanie)|Odebrane bajty przychodzące|Bajty|Łącznie|Liczba bajtów odczytanych ze źródła zdarzeń|Brak|
+|IngressStoredBytes (WnikajsiestoredBytes)|Bajty przechowywane przy ruchu przychodzącego|Bajty|Łącznie|Całkowity rozmiar zdarzeń pomyślnie przetworzonych i dostępnych dla kwerendy|Brak|
+|IngressStoredEvents|Zdarzenia przechowywane w ruchu przychodzącym|Liczba|Łącznie|Liczba spłaszczonych zdarzeń pomyślnie przetworzonych i dostępnych dla kwerendy|Brak|
+|IngressReceivedMessagesTimeLag|Opóźnienie czasu odebranych wiadomości przychodzących|Sekundy|Maksimum|Różnica między czasem, w której wiadomość jest ujmowana w kolejce do źródła zdarzenia, a czasem przetwarzania w u danych przychodzących|Brak|
+|IngressReceivedMessagesCountLag|Opóźnienie liczby odebranych wiadomości przychodzących|Liczba|Średnia|Różnica między numerem sekwencyjnym ostatniej wiadomości w kolejce w partycji źródłowej zdarzenia a numerem sekwencyjnym komunikatów przetwarzanych w u danych przychodzących|Brak|
+|Właściwości WarmStorageMaxProperties|Właściwości maksymalnej pamięci masowej|Liczba|Maksimum|Maksymalna liczba właściwości używanych przez środowisko dla SKU S1/S2 i maksymalna liczba właściwości dozwolona przez Ciepły magazyn dla payg sku|Brak|
+|WarmStorageUżywanewłaściwości|Właściwości używane do ciepłej pamięci masowej |Liczba|Maksimum|Liczba właściwości używanych przez środowisko dla jednostki SKU S1/S2 i liczba właściwości używanych przez Warm Store dla payg sku|Brak|
 
-## <a name="microsoftvmwarecloudsimplevirtualmachines"></a>Microsoft. VMwareCloudSimple/virtualMachines
+## <a name="microsoftvmwarecloudsimplevirtualmachines"></a>Microsoft.VMwareCloudSimple/virtualMachines
 
-|Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary|
+|Metryka|Metryka Nazwa wyświetlana|Jednostka|Typ agregacji|Opis|Wymiary|
 |---|---|---|---|---|---|
-|DiskReadBytesPerSecond|Bajty odczytu dysku/s|BytesPerSecond|Średnia|Średnia przepływność dysku spowodowana operacjami odczytu w okresie próbkowania.|None|
-|DiskWriteBytesPerSecond|Bajty zapisu dysku/s|BytesPerSecond|Średnia|Średnia przepływność dysku spowodowana operacją zapisu w okresie próbnym.|None|
-|Bajty odczytu dysku|Bajty odczytu dysku|Bajty|Łącznie|Łączna przepływność dysku spowodowana operacjami odczytu w okresie próbkowania.|None|
-|Bajty zapisu dysku|Bajty zapisu dysku|Bajty|Łącznie|Łączna przepływność dysku spowodowana operacjami zapisu w okresie próbkowania.|None|
-|DiskReadOperations|Operacje odczytu z dysku|Licznik|Łącznie|Liczba operacji odczytu we/wy w poprzednim okresie próbkowania. Należy pamiętać, że operacje te mogą mieć rozmiar zmienny.|None|
-|DiskWriteOperations|Operacje zapisu na dysku|Licznik|Łącznie|Liczba operacji zapisu we/wy w poprzednim okresie próbkowania. Należy pamiętać, że operacje te mogą mieć rozmiar zmienny.|None|
-|Operacje odczytu z dysku/s|Operacje odczytu z dysku/s|CountPerSecond|Średnia|Średnia liczba operacji odczytu we/wy w poprzednim okresie próbkowania. Należy pamiętać, że operacje te mogą mieć rozmiar zmienny.|None|
-|Operacje zapisu na dysku/s|Operacje zapisu na dysku/s|CountPerSecond|Średnia|Średnia liczba operacji we/wy zapisu w poprzednim okresie próbkowania. Należy pamiętać, że operacje te mogą mieć rozmiar zmienny.|None|
-|DiskReadLatency|Opóźnienie odczytu dysku|Milisekundy|Średnia|Całkowite opóźnienie odczytu. Suma opóźnień odczytu urządzenia i jądra.|None|
-|DiskWriteLatency|Opóźnienie zapisu na dysku|Milisekundy|Średnia|Całkowite opóźnienie zapisu. Suma opóźnień między urządzeniem i zapisem jądra.|None|
-|NetworkInBytesPerSecond|Sieć w bajtach/s|BytesPerSecond|Średnia|Średnia przepływność sieci dla odebranego ruchu.|None|
-|NetworkOutBytesPerSecond|Bajty wychodzące z sieci/s|BytesPerSecond|Średnia|Średnia przepływność sieci dla przesyłanego ruchu.|None|
-|Sieć — wejście|Sieć — wejście|Bajty|Łącznie|Całkowita przepływność sieci dla odebranego ruchu.|None|
-|Sieć — wyjście|Sieć — wyjście|Bajty|Łącznie|Całkowita przepustowość sieci przesyłanych danych.|None|
-|MemoryUsed|Używana pamięć|Bajty|Średnia|Ilość pamięci maszyny używanej przez maszynę wirtualną.|None|
-|MemoryGranted|Przydzielone pamięci|Bajty|Średnia|Ilość pamięci przydzielonej maszynie wirtualnej przez hosta. Pamięć nie jest przydzielana do hosta, dopóki nie zostanie ona nałożona jeden raz, a przyznana pamięć może zostać zamieniony lub zaznaczono w dymku, jeśli VMkernel wymaga pamięci.|None|
-|MemoryActive|Pamięć aktywna|Bajty|Średnia|Ilość pamięci używanej przez maszynę wirtualną w minionym małym oknie czasu. Jest to wartość "prawda" ilości pamięci wymaganej przez maszynę wirtualną. Dodatkowa niewykorzystana pamięć może zostać zastąpiona lub zaprowadzona bez wpływu na wydajność gościa.|None|
-|Procentowe użycie procesora CPU|Procentowe użycie procesora CPU|Procent|Średnia|Użycie procesora CPU. Ta wartość jest raportowana przy użyciu 100% reprezentujących wszystkie rdzenie procesora w systemie. Przykładowo 2-kierunkowa maszyna wirtualna używająca 50% systemu z czterema rdzeniem korzysta całkowicie z dwóch rdzeni.|None|
-|PercentageCpuReady|Procent gotowych do użycia procesora|Milisekundy|Łącznie|Czas gotowości to czas oczekiwania, aż procesor CPU stanie się dostępny w okresie ostatniej aktualizacji.|None|
+|DiskReadBytesPerSecond|Bajty odczytu dysku/s|PrzeztówPerSekunda|Średnia|Średnia przepustowość dysku z powodu operacji odczytu w okresie próbkowania.|Brak|
+|DiskWriteBytesPerSekund|Bajty zapisu dysku/s|PrzeztówPerSekunda|Średnia|Średnia przepływność dysku z powodu operacji zapisu w okresie próbkowania.|Brak|
+|Bajty odczytu dysku|Bajty odczytu dysku|Bajty|Łącznie|Całkowita przepustowość dysku z powodu operacji odczytu w okresie próbkowania.|Brak|
+|Bajty zapisu dysku|Bajty zapisu dysku|Bajty|Łącznie|Całkowita przepływność dysku z powodu operacji zapisu w okresie próbkowania.|Brak|
+|DiskReadOperations (Działania diskread)|Operacje odczytu dysku|Liczba|Łącznie|Liczba operacji odczytu we/wy w poprzednim okresie próbkowania. Należy zauważyć, że te operacje mogą mieć zmienny rozmiar.|Brak|
+|Działania diskwrite|Operacje zapisu dysku|Liczba|Łącznie|Liczba operacji zapisu we/wy w poprzednim okresie próbkowania. Należy zauważyć, że te operacje mogą mieć zmienny rozmiar.|Brak|
+|Operacje odczytu dysku/s|Operacje odczytu dysku/s|Połów połówek|Średnia|Średnia liczba operacji odczytu we/wy w poprzednim okresie próby. Należy zauważyć, że te operacje mogą mieć zmienny rozmiar.|Brak|
+|Operacje zapisu dysku/s|Operacje zapisu dysku/s|Połów połówek|Średnia|Średnia liczba operacji zapisu we/wy w poprzednim okresie próbkowania. Należy zauważyć, że te operacje mogą mieć zmienny rozmiar.|Brak|
+|DiskReadLatency (DiskReadLatency)|Opóźnienie odczytu dysku|Milisekund|Średnia|Całkowite opóźnienie odczytu. Suma opóźnień odczytu urządzenia i jądra.|Brak|
+|DiskWriteLatency (Właswoenie dysku)|Opóźnienie zapisu dysku|Milisekund|Średnia|Całkowite opóźnienie zapisu. Suma opóźnień zapisu urządzenia i jądra.|Brak|
+|NetworkInBytesPerSecond|Sieć w bajtach/s|PrzeztówPerSekunda|Średnia|Średnia przepustowość sieci dla odebranego ruchu.|Brak|
+|NetworkOutBytesPerSecond|Bajty wyjścia sieci/s|PrzeztówPerSekunda|Średnia|Średnia przepustowość sieci dla ruchu przesyłanych.|Brak|
+|Sieć — wejście|Sieć — wejście|Bajty|Łącznie|Całkowita przepustowość sieci dla odebranego ruchu.|Brak|
+|Sieć — wyjście|Sieć — wyjście|Bajty|Łącznie|Całkowita przepustowość sieci dla przesyłu przesyłanym.|Brak|
+|Użycie pamięci|Używana pamięć|Bajty|Średnia|Ilość pamięci komputera, która jest używana przez maszynę wirtualną.|Brak|
+|PamięćGranted|Przyznano pamięć|Bajty|Średnia|Ilość pamięci, która została przyznana maszynie Wirtualnej przez hosta. Pamięć nie jest przyznawana do hosta, dopóki nie zostanie dotknięty jeden raz i przyznane pamięci mogą być zamienione lub balonem od, jeśli VMkernel potrzebuje pamięci.|Brak|
+|PamięćAktywna|Pamięć aktywna|Bajty|Średnia|Ilość pamięci używanej przez maszynę wirtualną w ciągu ostatnich małych przedział czasu. Jest to "true" liczba, ile pamięci maszyny Wirtualnej obecnie potrzebuje. Dodatkowa, nieużywana pamięć może zostać zamieniona lub odbita bez wpływu na wydajność gościa.|Brak|
+|Procentowe użycie procesora CPU|Procentowe użycie procesora CPU|Wartość procentowa|Średnia|Wykorzystanie procesora CPU. Ta wartość jest raportowana w 100% reprezentującym wszystkie rdzenie procesora w systemie. Na przykład 2-drożna maszyna wirtualna używająca 50% systemu czterordzeniowego całkowicie używa dwóch rdzeni.|Brak|
+|PercentageCpuReady (ProcentcpuReady)|Procentowa gotowość procesora|Milisekund|Łącznie|Czas gotowości to czas oczekiwania na udostępnienie procesorów CPU w poprzednim przedziale aktualizacji.|Brak|
 
 
 
@@ -2151,175 +2151,182 @@ Azure Monitor oferuje kilka sposobów współpracy z metrykami, w tym wykresów 
 
 
 
-## <a name="microsoftwebserverfarms"></a>Microsoft.Web/serverfarms
+## <a name="microsoftwebserverfarms"></a>Microsoft.Web/farmy serwerów
 
-|Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary|
+|Metryka|Metryka Nazwa wyświetlana|Jednostka|Typ agregacji|Opis|Wymiary|
 |---|---|---|---|---|---|
-|CpuPercentage|Procent użycia procesora CPU|Procent|Średnia|Procent użycia procesora CPU|Wystąpienie|
-|MemoryPercentage|Procent pamięci|Procent|Średnia|Procent pamięci|Wystąpienie|
-|DiskQueueLength|Długość kolejki dysku|Licznik|Średnia|Długość kolejki dysku|Wystąpienie|
-|HttpQueueLength|Długość kolejki http|Licznik|Średnia|Długość kolejki http|Wystąpienie|
-|BytesReceived|Dane w|Bajty|Łącznie|Dane w|Wystąpienie|
-|BytesSent|Dane wychodzące|Bajty|Łącznie|Dane wychodzące|Wystąpienie|
-|TcpSynSent|Wysłano pakiet TCP syn|Licznik|Średnia|Wysłano pakiet TCP syn|Wystąpienie|
-|TcpSynReceived|Odebrano pakiet TCP syn|Licznik|Średnia|Odebrano pakiet TCP syn|Wystąpienie|
-|TcpEstablished|Nawiązano ruch TCP|Licznik|Średnia|Nawiązano ruch TCP|Wystąpienie|
-|TcpFinWait1|Oczekiwanie na TCP FIN 1|Licznik|Średnia|Oczekiwanie na TCP FIN 1|Wystąpienie|
-|TcpFinWait2|Oczekiwanie na TCP fin 2|Licznik|Średnia|Oczekiwanie na TCP fin 2|Wystąpienie|
-|TcpClosing|Zamykanie protokołu TCP|Licznik|Średnia|Zamykanie protokołu TCP|Wystąpienie|
-|TcpCloseWait|Oczekiwanie na zamknięcie protokołu TCP|Licznik|Średnia|Oczekiwanie na zamknięcie protokołu TCP|Wystąpienie|
-|TcpLastAck|Ostatnie potwierdzenie TCP|Licznik|Średnia|Ostatnie potwierdzenie TCP|Wystąpienie|
-|TcpTimeWait|Czas oczekiwania TCP|Licznik|Średnia|Czas oczekiwania TCP|Wystąpienie|
+|CpuPercentage (CpuPercentage)|Procent użycia procesora CPU|Wartość procentowa|Średnia|Procent użycia procesora CPU|Wystąpienie|
+|MemoryPercentage (PamięćPrzestńczliwienie)|Procent pamięci|Wartość procentowa|Średnia|Procent pamięci|Wystąpienie|
+|Funkcja DiskQueueLength|Długość kolejki dysku|Liczba|Średnia|Długość kolejki dysku|Wystąpienie|
+|Funkcja HttpQueueLength|Długość kolejki http|Liczba|Średnia|Długość kolejki http|Wystąpienie|
+|Bytesreceived|Dane w|Bajty|Łącznie|Dane w|Wystąpienie|
+|Bajtów|Wyjście danych|Bajty|Łącznie|Wyjście danych|Wystąpienie|
+|TcpSynsent (wytłk, w tym)|Wysłane syn TCP|Liczba|Średnia|Wysłane syn TCP|Wystąpienie|
+|TcpSynReceived|Odebrano syn TCP|Liczba|Średnia|Odebrano syn TCP|Wystąpienie|
+|TcpNaestablishowany|TCP ustanowiony|Liczba|Średnia|TCP ustanowiony|Wystąpienie|
+|TcpFinWait1 (Wacik.|TCP Fin Czekaj 1|Liczba|Średnia|TCP Fin Czekaj 1|Wystąpienie|
+|TcpFinWait2 (Wacik.|TCP Fin Czekaj 2|Liczba|Średnia|TCP Fin Czekaj 2|Wystąpienie|
+|TcpClosing (Nie ma)|Zamykanie protokołu TCP|Liczba|Średnia|Zamykanie protokołu TCP|Wystąpienie|
+|TcpCloseWait (TcpCloseWait)|Oczekiwanie zamknięcia protokołu TCP|Liczba|Średnia|Oczekiwanie zamknięcia protokołu TCP|Wystąpienie|
+|TcpLastAck (TcpLastAck)|TCP Ostatni Ack|Liczba|Średnia|TCP Ostatni Ack|Wystąpienie|
+|TcpTimeWait (TcpTimeWait)|Oczekiwanie czasu TCP|Liczba|Średnia|Oczekiwanie czasu TCP|Wystąpienie|
 
-## <a name="microsoftwebsites-excluding-functions"></a>Microsoft. Web/Sites (z wyjątkiem funkcji)
+## <a name="microsoftwebsites-excluding-functions"></a>Microsoft.Web/sites (z wyłączeniem funkcji)
 
-|Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary|
+> [!NOTE]
+> **Użycie systemu plików** to nowa metryka wdrażana globalnie, nie oczekuje się żadnych danych, chyba że zostałasz na białej liście do prywatnej wersji zapoznawczej.
+
+> [!IMPORTANT]
+> **Średni czas odpowiedzi** zostanie przestarzały, aby uniknąć pomyłek z agregacjami metryk. Użyj **czasu odpowiedzi** jako zamiennika.
+
+|Metryka|Metryka Nazwa wyświetlana|Jednostka|Typ agregacji|Opis|Wymiary|
 |---|---|---|---|---|---|
-|CpuTime|Czas procesora CPU|S|Łącznie|Czas procesora CPU|Wystąpienie|
-|Żądania|Żądania|Licznik|Łącznie|Żądania|Wystąpienie|
-|BytesReceived|Dane w|Bajty|Łącznie|Dane w|Wystąpienie|
-|BytesSent|Dane wychodzące|Bajty|Łącznie|Dane wychodzące|Wystąpienie|
-|Http101|Http 101|Licznik|Łącznie|Http 101|Wystąpienie|
-|Http2xx|Http 2xx|Licznik|Łącznie|Http 2xx|Wystąpienie|
-|Http3xx|Http 3xx|Licznik|Łącznie|Http 3xx|Wystąpienie|
-|Http401|HTTP 401|Licznik|Łącznie|HTTP 401|Wystąpienie|
-|Http403|HTTP 403|Licznik|Łącznie|HTTP 403|Wystąpienie|
-|Http404|HTTP 404|Licznik|Łącznie|HTTP 404|Wystąpienie|
-|Http406|Http 406|Licznik|Łącznie|Http 406|Wystąpienie|
-|Http4xx|Http 4xx|Licznik|Łącznie|Http 4xx|Wystąpienie|
-|Http5xx|Błędy serwera http|Licznik|Łącznie|Błędy serwera http|Wystąpienie|
-|MemoryWorkingSet|Zestaw roboczy pamięci|Bajty|Średnia|Zestaw roboczy pamięci|Wystąpienie|
-|AverageMemoryWorkingSet|Średni zestaw roboczy pamięci|Bajty|Średnia|Średni zestaw roboczy pamięci|Wystąpienie|
-|AverageResponseTime|Średni czas odpowiedzi|S|Średnia|Średni czas odpowiedzi|Wystąpienie|
-|AppConnections|Połączenia|Licznik|Średnia|Połączenia|Wystąpienie|
-|Realizuj|Liczba dojść|Licznik|Średnia|Liczba dojść|Wystąpienie|
-|Wątki|Liczba wątków|Licznik|Średnia|Liczba wątków|Wystąpienie|
-|PrivateBytes|Prywatne bajty|Bajty|Średnia|Prywatne bajty|Wystąpienie|
-|IoReadBytesPerSecond|Bajty odczytu we/wy na sekundę|BytesPerSecond|Łącznie|Bajty odczytu we/wy na sekundę|Wystąpienie|
-|IoWriteBytesPerSecond|Bajty zapisu we/wy na sekundę|BytesPerSecond|Łącznie|Bajty zapisu we/wy na sekundę|Wystąpienie|
-|IoOtherBytesPerSecond|Inne bajty we/wy na sekundę|BytesPerSecond|Łącznie|Inne bajty we/wy na sekundę|Wystąpienie|
-|IoReadOperationsPerSecond|Operacje odczytu we/wy na sekundę|BytesPerSecond|Łącznie|Operacje odczytu we/wy na sekundę|Wystąpienie|
-|IoWriteOperationsPerSecond|Operacje zapisu we/wy na sekundę|BytesPerSecond|Łącznie|Operacje zapisu we/wy na sekundę|Wystąpienie|
-|IoOtherOperationsPerSecond|Inne operacje we/wy na sekundę|BytesPerSecond|Łącznie|Inne operacje we/wy na sekundę|Wystąpienie|
-|RequestsInApplicationQueue|Żądania w kolejce aplikacji|Licznik|Średnia|Żądania w kolejce aplikacji|Wystąpienie|
-|CurrentAssemblies|Bieżące zestawy|Licznik|Średnia|Bieżące zestawy|Wystąpienie|
-|TotalAppDomains|Łączna liczba domen aplikacji|Licznik|Średnia|Łączna liczba domen aplikacji|Wystąpienie|
-|TotalAppDomainsUnloaded|Całkowita liczba zwolnionych domen aplikacji|Licznik|Średnia|Całkowita liczba zwolnionych domen aplikacji|Wystąpienie|
-|Gen0Collections|Zbieranie elementów bezużytecznych generacji 0|Licznik|Łącznie|Zbieranie elementów bezużytecznych generacji 0|Wystąpienie|
-|Gen1Collections|Wyrzucanie elementów bezużytecznych generacji 1|Licznik|Łącznie|Wyrzucanie elementów bezużytecznych generacji 1|Wystąpienie|
-|Gen2Collections|Zbieranie elementów bezużytecznych generacji 2|Licznik|Łącznie|Zbieranie elementów bezużytecznych generacji 2|Wystąpienie|
-|HealthCheckStatus|Stan sprawdzania kondycji|Licznik|Średnia|Stan sprawdzania kondycji|Wystąpienie|
-|FileSystemUsage|Użycie systemu plików|Bajty|Średnia|Użycie systemu plików|None|
+|CpuTime (Czas procesora)|Czas procesora|Sekundy|Łącznie|Czas procesora|Wystąpienie|
+|Żądania|Żądania|Liczba|Łącznie|Żądania|Wystąpienie|
+|Bytesreceived|Dane w|Bajty|Łącznie|Dane w|Wystąpienie|
+|Bajtów|Wyjście danych|Bajty|Łącznie|Wyjście danych|Wystąpienie|
+|Http101|Http 101|Liczba|Łącznie|Http 101|Wystąpienie|
+|Protokół Http2xx|Http 2xx|Liczba|Łącznie|Http 2xx|Wystąpienie|
+|Protokół Http3xx|Http 3xx|Liczba|Łącznie|Http 3xx|Wystąpienie|
+|Http401|Http 401|Liczba|Łącznie|Http 401|Wystąpienie|
+|Http403|Http 403|Liczba|Łącznie|Http 403|Wystąpienie|
+|Http404|Http 404|Liczba|Łącznie|Http 404|Wystąpienie|
+|Http406|Http 406|Liczba|Łącznie|Http 406|Wystąpienie|
+|Protokół Http4xx (polski)|Http 4xx|Liczba|Łącznie|Http 4xx|Wystąpienie|
+|Protokół Http5xx|Błędy serwera http|Liczba|Łącznie|Błędy serwera http|Wystąpienie|
+|Zestaw pamięci|Zestaw roboczy pamięci|Bajty|Średnia|Zestaw roboczy pamięci|Wystąpienie|
+|ŚredniaZapraca Zestaw|Zestaw pracy średniej pamięci|Bajty|Średnia|Zestaw pracy średniej pamięci|Wystąpienie|
+|Czas reakcji|Czas reakcji|Sekundy|Łącznie|Czas reakcji|Wystąpienie|
+|ŚredniaResponseTime|Średni czas odpowiedzi (przestarzały)|Sekundy|Średnia|Średni czas reakcji|Wystąpienie|
+|Połączenia z aplikacjami|Połączenia|Liczba|Średnia|Połączenia|Wystąpienie|
+|Handles|Liczba dojść|Liczba|Średnia|Liczba dojść|Wystąpienie|
+|Wątki|Liczba wątków|Liczba|Średnia|Liczba wątków|Wystąpienie|
+|Bajty prywatne|Bajty prywatne|Bajty|Średnia|Bajty prywatne|Wystąpienie|
+|IoReadBytesPerSekund|Bajty odczytu we/wy na sekundę|PrzeztówPerSekunda|Łącznie|Bajty odczytu we/wy na sekundę|Wystąpienie|
+|IoWriteBytesPerSekund|Bajty zapisu we/wy na sekundę|PrzeztówPerSekunda|Łącznie|Bajty zapisu we/wy na sekundę|Wystąpienie|
+|IoOtherBytesPerSekund|IO inne bajty na sekundę|PrzeztówPerSekunda|Łącznie|IO inne bajty na sekundę|Wystąpienie|
+|IoReadOperationsPerSecond|Operacje odczytu we/wy na sekundę|PrzeztówPerSekunda|Łącznie|Operacje odczytu we/wy na sekundę|Wystąpienie|
+|IoWriteOperationsPerSecond|Operacje zapisu we/wy na sekundę|PrzeztówPerSekunda|Łącznie|Operacje zapisu we/wy na sekundę|Wystąpienie|
+|IoOtherOperationsPerSecond|Inne operacje we/wy na sekundę|PrzeztówPerSekunda|Łącznie|Inne operacje we/wy na sekundę|Wystąpienie|
+|RequestsInApplicationQueue|Żądania w kolejce aplikacji|Liczba|Średnia|Żądania w kolejce aplikacji|Wystąpienie|
+|CurrentAssemblies|Bieżące złożenia|Liczba|Średnia|Bieżące złożenia|Wystąpienie|
+|TotalAppDomains (TotalAppDomains)|Łączna liczba domen aplikacji|Liczba|Średnia|Łączna liczba domen aplikacji|Wystąpienie|
+|TotalAppDomainsNiezaładkłano|Całkowita liczba niezaładowanych domen aplikacji|Liczba|Średnia|Całkowita liczba niezaładowanych domen aplikacji|Wystąpienie|
+|Gen0Kolekcje|Odpady odśmieskowe Gen 0|Liczba|Łącznie|Odpady odśmieskowe Gen 0|Wystąpienie|
+|Gen1Kolekcje|Wyrzucanie elementów bezużytecznych gen 1|Liczba|Łącznie|Wyrzucanie elementów bezużytecznych gen 1|Wystąpienie|
+|Gen2Kolekcje|Odpady odśmieskowe gen 2|Liczba|Łącznie|Odpady odśmieskowe gen 2|Wystąpienie|
+|Stan zdrowiaSeksus|Stan kontroli kondycji|Liczba|Średnia|Stan kontroli kondycji|Wystąpienie|
+|System PlikówUsage|Użycie systemu plików|Bajty|Średnia|Użycie systemu plików|Brak|
 
-## <a name="microsoftwebsites-functions"></a>Microsoft. Web/Sites (funkcje)
+## <a name="microsoftwebsites-functions"></a>Microsoft.Web/sites (funkcje)
 
-|Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary|
+|Metryka|Metryka Nazwa wyświetlana|Jednostka|Typ agregacji|Opis|Wymiary|
 |---|---|---|---|---|---|
-|BytesReceived|Dane w|Bajty|Łącznie|Dane w|Wystąpienie|
-|BytesSent|Dane wychodzące|Bajty|Łącznie|Dane wychodzące|Wystąpienie|
-|Http5xx|Błędy serwera http|Licznik|Łącznie|Błędy serwera http|Wystąpienie|
-|MemoryWorkingSet|Zestaw roboczy pamięci|Bajty|Średnia|Zestaw roboczy pamięci|Wystąpienie|
-|AverageMemoryWorkingSet|Średni zestaw roboczy pamięci|Bajty|Średnia|Średni zestaw roboczy pamięci|Wystąpienie|
-|FunctionExecutionUnits|Jednostki wykonywania funkcji|MB/milisekundy|Łącznie|[Jednostki wykonywania funkcji](https://github.com/Azure/Azure-Functions/wiki/Consumption-Plan-Cost-Billing-FAQ#how-can-i-view-graphs-of-execution-count-and-gb-seconds)|Wystąpienie|
-|FunctionExecutionCount|Liczba wykonań funkcji|Licznik|Łącznie|Liczba wykonań funkcji|Wystąpienie|
-|PrivateBytes|Prywatne bajty|Bajty|Średnia|Prywatne bajty|Wystąpienie|
-|IoReadBytesPerSecond|Bajty odczytu we/wy na sekundę|BytesPerSecond|Łącznie|Bajty odczytu we/wy na sekundę|Wystąpienie|
-|IoWriteBytesPerSecond|Bajty zapisu we/wy na sekundę|BytesPerSecond|Łącznie|Bajty zapisu we/wy na sekundę|Wystąpienie|
-|IoOtherBytesPerSecond|Inne bajty we/wy na sekundę|BytesPerSecond|Łącznie|Inne bajty we/wy na sekundę|Wystąpienie|
-|IoReadOperationsPerSecond|Operacje odczytu we/wy na sekundę|BytesPerSecond|Łącznie|Operacje odczytu we/wy na sekundę|Wystąpienie|
-|IoWriteOperationsPerSecond|Operacje zapisu we/wy na sekundę|BytesPerSecond|Łącznie|Operacje zapisu we/wy na sekundę|Wystąpienie|
-|IoOtherOperationsPerSecond|Inne operacje we/wy na sekundę|BytesPerSecond|Łącznie|Inne operacje we/wy na sekundę|Wystąpienie|
-|RequestsInApplicationQueue|Żądania w kolejce aplikacji|Licznik|Średnia|Żądania w kolejce aplikacji|Wystąpienie|
-|CurrentAssemblies|Bieżące zestawy|Licznik|Średnia|Bieżące zestawy|Wystąpienie|
-|TotalAppDomains|Łączna liczba domen aplikacji|Licznik|Średnia|Łączna liczba domen aplikacji|Wystąpienie|
-|TotalAppDomainsUnloaded|Całkowita liczba zwolnionych domen aplikacji|Licznik|Średnia|Całkowita liczba zwolnionych domen aplikacji|Wystąpienie|
-|Gen0Collections|Zbieranie elementów bezużytecznych generacji 0|Licznik|Łącznie|Zbieranie elementów bezużytecznych generacji 0|Wystąpienie|
-|Gen1Collections|Wyrzucanie elementów bezużytecznych generacji 1|Licznik|Łącznie|Wyrzucanie elementów bezużytecznych generacji 1|Wystąpienie|
-|Gen2Collections|Zbieranie elementów bezużytecznych generacji 2|Licznik|Łącznie|Zbieranie elementów bezużytecznych generacji 2|Wystąpienie|
-|HealthCheckStatus|Stan sprawdzania kondycji|Licznik|Średnia|Stan sprawdzania kondycji|Wystąpienie|
-|FileSystemUsage|Użycie systemu plików|Bajty|Średnia|Użycie systemu plików|None|
+|Bytesreceived|Dane w|Bajty|Łącznie|Dane w|Wystąpienie|
+|Bajtów|Wyjście danych|Bajty|Łącznie|Wyjście danych|Wystąpienie|
+|Protokół Http5xx|Błędy serwera http|Liczba|Łącznie|Błędy serwera http|Wystąpienie|
+|Zestaw pamięci|Zestaw roboczy pamięci|Bajty|Średnia|Zestaw roboczy pamięci|Wystąpienie|
+|ŚredniaZapraca Zestaw|Zestaw pracy średniej pamięci|Bajty|Średnia|Zestaw pracy średniej pamięci|Wystąpienie|
+|Jednostki funkcyjne|Jednostki wykonawcze funkcji|MB / Milisekundy|Łącznie|[Jednostki wykonawcze funkcji](https://github.com/Azure/Azure-Functions/wiki/Consumption-Plan-Cost-Billing-FAQ#how-can-i-view-graphs-of-execution-count-and-gb-seconds)|Wystąpienie|
+|FunkcjaWykonaniaLicznik|Liczba wykonania funkcji|Liczba|Łącznie|Liczba wykonania funkcji|Wystąpienie|
+|Bajty prywatne|Bajty prywatne|Bajty|Średnia|Bajty prywatne|Wystąpienie|
+|IoReadBytesPerSekund|Bajty odczytu we/wy na sekundę|PrzeztówPerSekunda|Łącznie|Bajty odczytu we/wy na sekundę|Wystąpienie|
+|IoWriteBytesPerSekund|Bajty zapisu we/wy na sekundę|PrzeztówPerSekunda|Łącznie|Bajty zapisu we/wy na sekundę|Wystąpienie|
+|IoOtherBytesPerSekund|IO inne bajty na sekundę|PrzeztówPerSekunda|Łącznie|IO inne bajty na sekundę|Wystąpienie|
+|IoReadOperationsPerSecond|Operacje odczytu we/wy na sekundę|PrzeztówPerSekunda|Łącznie|Operacje odczytu we/wy na sekundę|Wystąpienie|
+|IoWriteOperationsPerSecond|Operacje zapisu we/wy na sekundę|PrzeztówPerSekunda|Łącznie|Operacje zapisu we/wy na sekundę|Wystąpienie|
+|IoOtherOperationsPerSecond|Inne operacje we/wy na sekundę|PrzeztówPerSekunda|Łącznie|Inne operacje we/wy na sekundę|Wystąpienie|
+|RequestsInApplicationQueue|Żądania w kolejce aplikacji|Liczba|Średnia|Żądania w kolejce aplikacji|Wystąpienie|
+|CurrentAssemblies|Bieżące złożenia|Liczba|Średnia|Bieżące złożenia|Wystąpienie|
+|TotalAppDomains (TotalAppDomains)|Łączna liczba domen aplikacji|Liczba|Średnia|Łączna liczba domen aplikacji|Wystąpienie|
+|TotalAppDomainsNiezaładkłano|Całkowita liczba niezaładowanych domen aplikacji|Liczba|Średnia|Całkowita liczba niezaładowanych domen aplikacji|Wystąpienie|
+|Gen0Kolekcje|Odpady odśmieskowe Gen 0|Liczba|Łącznie|Odpady odśmieskowe Gen 0|Wystąpienie|
+|Gen1Kolekcje|Wyrzucanie elementów bezużytecznych gen 1|Liczba|Łącznie|Wyrzucanie elementów bezużytecznych gen 1|Wystąpienie|
+|Gen2Kolekcje|Odpady odśmieskowe gen 2|Liczba|Łącznie|Odpady odśmieskowe gen 2|Wystąpienie|
+|Stan zdrowiaSeksus|Stan kontroli kondycji|Liczba|Średnia|Stan kontroli kondycji|Wystąpienie|
+|System PlikówUsage|Użycie systemu plików|Bajty|Średnia|Użycie systemu plików|Brak|
 
 
 ## <a name="microsoftwebsitesslots"></a>Microsoft.Web/sites/slots
 
-|Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary|
+|Metryka|Metryka Nazwa wyświetlana|Jednostka|Typ agregacji|Opis|Wymiary|
 |---|---|---|---|---|---|
-|CpuTime|Czas procesora CPU|S|Łącznie|Czas procesora CPU|Wystąpienie|
-|Żądania|Żądania|Licznik|Łącznie|Żądania|Wystąpienie|
-|BytesReceived|Dane w|Bajty|Łącznie|Dane w|Wystąpienie|
-|BytesSent|Dane wychodzące|Bajty|Łącznie|Dane wychodzące|Wystąpienie|
-|Http101|Http 101|Licznik|Łącznie|Http 101|Wystąpienie|
-|Http2xx|Http 2xx|Licznik|Łącznie|Http 2xx|Wystąpienie|
-|Http3xx|Http 3xx|Licznik|Łącznie|Http 3xx|Wystąpienie|
-|Http401|HTTP 401|Licznik|Łącznie|HTTP 401|Wystąpienie|
-|Http403|HTTP 403|Licznik|Łącznie|HTTP 403|Wystąpienie|
-|Http404|HTTP 404|Licznik|Łącznie|HTTP 404|Wystąpienie|
-|Http406|Http 406|Licznik|Łącznie|Http 406|Wystąpienie|
-|Http4xx|Http 4xx|Licznik|Łącznie|Http 4xx|Wystąpienie|
-|Http5xx|Błędy serwera http|Licznik|Łącznie|Błędy serwera http|Wystąpienie|
-|MemoryWorkingSet|Zestaw roboczy pamięci|Bajty|Średnia|Zestaw roboczy pamięci|Wystąpienie|
-|AverageMemoryWorkingSet|Średni zestaw roboczy pamięci|Bajty|Średnia|Średni zestaw roboczy pamięci|Wystąpienie|
-|AverageResponseTime|Średni czas odpowiedzi|S|Średnia|Średni czas odpowiedzi|Wystąpienie|
-|HttpResponseTime|Czas odpowiedzi|S|Średnia|Czas odpowiedzi|Wystąpienie|
-|FunctionExecutionUnits|Jednostki wykonywania funkcji|Licznik|Łącznie|Jednostki wykonywania funkcji|Wystąpienie|
-|FunctionExecutionCount|Liczba wykonań funkcji|Licznik|Łącznie|Liczba wykonań funkcji|Wystąpienie|
-|AppConnections|Połączenia|Licznik|Średnia|Połączenia|Wystąpienie|
-|Realizuj|Liczba dojść|Licznik|Średnia|Liczba dojść|Wystąpienie|
-|Wątki|Liczba wątków|Licznik|Średnia|Liczba wątków|Wystąpienie|
-|PrivateBytes|Prywatne bajty|Bajty|Średnia|Prywatne bajty|Wystąpienie|
-|IoReadBytesPerSecond|Bajty odczytu we/wy na sekundę|BytesPerSecond|Łącznie|Bajty odczytu we/wy na sekundę|Wystąpienie|
-|IoWriteBytesPerSecond|Bajty zapisu we/wy na sekundę|BytesPerSecond|Łącznie|Bajty zapisu we/wy na sekundę|Wystąpienie|
-|IoOtherBytesPerSecond|Inne bajty we/wy na sekundę|BytesPerSecond|Łącznie|Inne bajty we/wy na sekundę|Wystąpienie|
-|IoReadOperationsPerSecond|Operacje odczytu we/wy na sekundę|BytesPerSecond|Łącznie|Operacje odczytu we/wy na sekundę|Wystąpienie|
-|IoWriteOperationsPerSecond|Operacje zapisu we/wy na sekundę|BytesPerSecond|Łącznie|Operacje zapisu we/wy na sekundę|Wystąpienie|
-|IoOtherOperationsPerSecond|Inne operacje we/wy na sekundę|BytesPerSecond|Łącznie|Inne operacje we/wy na sekundę|Wystąpienie|
-|RequestsInApplicationQueue|Żądania w kolejce aplikacji|Licznik|Średnia|Żądania w kolejce aplikacji|Wystąpienie|
-|CurrentAssemblies|Bieżące zestawy|Licznik|Średnia|Bieżące zestawy|Wystąpienie|
-|TotalAppDomains|Łączna liczba domen aplikacji|Licznik|Średnia|Łączna liczba domen aplikacji|Wystąpienie|
-|TotalAppDomainsUnloaded|Całkowita liczba zwolnionych domen aplikacji|Licznik|Średnia|Całkowita liczba zwolnionych domen aplikacji|Wystąpienie|
-|Gen0Collections|Zbieranie elementów bezużytecznych generacji 0|Licznik|Łącznie|Zbieranie elementów bezużytecznych generacji 0|Wystąpienie|
-|Gen1Collections|Wyrzucanie elementów bezużytecznych generacji 1|Licznik|Łącznie|Wyrzucanie elementów bezużytecznych generacji 1|Wystąpienie|
-|Gen2Collections|Zbieranie elementów bezużytecznych generacji 2|Licznik|Łącznie|Zbieranie elementów bezużytecznych generacji 2|Wystąpienie|
-|HealthCheckStatus|Stan sprawdzania kondycji|Licznik|Średnia|Stan sprawdzania kondycji|Wystąpienie|
-|FileSystemUsage|Użycie systemu plików|Bajty|Średnia|Użycie systemu plików|None|
+|CpuTime (Czas procesora)|Czas procesora|Sekundy|Łącznie|Czas procesora|Wystąpienie|
+|Żądania|Żądania|Liczba|Łącznie|Żądania|Wystąpienie|
+|Bytesreceived|Dane w|Bajty|Łącznie|Dane w|Wystąpienie|
+|Bajtów|Wyjście danych|Bajty|Łącznie|Wyjście danych|Wystąpienie|
+|Http101|Http 101|Liczba|Łącznie|Http 101|Wystąpienie|
+|Protokół Http2xx|Http 2xx|Liczba|Łącznie|Http 2xx|Wystąpienie|
+|Protokół Http3xx|Http 3xx|Liczba|Łącznie|Http 3xx|Wystąpienie|
+|Http401|Http 401|Liczba|Łącznie|Http 401|Wystąpienie|
+|Http403|Http 403|Liczba|Łącznie|Http 403|Wystąpienie|
+|Http404|Http 404|Liczba|Łącznie|Http 404|Wystąpienie|
+|Http406|Http 406|Liczba|Łącznie|Http 406|Wystąpienie|
+|Protokół Http4xx (polski)|Http 4xx|Liczba|Łącznie|Http 4xx|Wystąpienie|
+|Protokół Http5xx|Błędy serwera http|Liczba|Łącznie|Błędy serwera http|Wystąpienie|
+|Zestaw pamięci|Zestaw roboczy pamięci|Bajty|Średnia|Zestaw roboczy pamięci|Wystąpienie|
+|ŚredniaZapraca Zestaw|Zestaw pracy średniej pamięci|Bajty|Średnia|Zestaw pracy średniej pamięci|Wystąpienie|
+|ŚredniaResponseTime|Średni czas reakcji|Sekundy|Średnia|Średni czas reakcji|Wystąpienie|
+|Funkcja HttpResponseTime|Czas reakcji|Sekundy|Średnia|Czas reakcji|Wystąpienie|
+|Jednostki funkcyjne|Jednostki wykonawcze funkcji|Liczba|Łącznie|Jednostki wykonawcze funkcji|Wystąpienie|
+|FunkcjaWykonaniaLicznik|Liczba wykonania funkcji|Liczba|Łącznie|Liczba wykonania funkcji|Wystąpienie|
+|Połączenia z aplikacjami|Połączenia|Liczba|Średnia|Połączenia|Wystąpienie|
+|Handles|Liczba dojść|Liczba|Średnia|Liczba dojść|Wystąpienie|
+|Wątki|Liczba wątków|Liczba|Średnia|Liczba wątków|Wystąpienie|
+|Bajty prywatne|Bajty prywatne|Bajty|Średnia|Bajty prywatne|Wystąpienie|
+|IoReadBytesPerSekund|Bajty odczytu we/wy na sekundę|PrzeztówPerSekunda|Łącznie|Bajty odczytu we/wy na sekundę|Wystąpienie|
+|IoWriteBytesPerSekund|Bajty zapisu we/wy na sekundę|PrzeztówPerSekunda|Łącznie|Bajty zapisu we/wy na sekundę|Wystąpienie|
+|IoOtherBytesPerSekund|IO inne bajty na sekundę|PrzeztówPerSekunda|Łącznie|IO inne bajty na sekundę|Wystąpienie|
+|IoReadOperationsPerSecond|Operacje odczytu we/wy na sekundę|PrzeztówPerSekunda|Łącznie|Operacje odczytu we/wy na sekundę|Wystąpienie|
+|IoWriteOperationsPerSecond|Operacje zapisu we/wy na sekundę|PrzeztówPerSekunda|Łącznie|Operacje zapisu we/wy na sekundę|Wystąpienie|
+|IoOtherOperationsPerSecond|Inne operacje we/wy na sekundę|PrzeztówPerSekunda|Łącznie|Inne operacje we/wy na sekundę|Wystąpienie|
+|RequestsInApplicationQueue|Żądania w kolejce aplikacji|Liczba|Średnia|Żądania w kolejce aplikacji|Wystąpienie|
+|CurrentAssemblies|Bieżące złożenia|Liczba|Średnia|Bieżące złożenia|Wystąpienie|
+|TotalAppDomains (TotalAppDomains)|Łączna liczba domen aplikacji|Liczba|Średnia|Łączna liczba domen aplikacji|Wystąpienie|
+|TotalAppDomainsNiezaładkłano|Całkowita liczba niezaładowanych domen aplikacji|Liczba|Średnia|Całkowita liczba niezaładowanych domen aplikacji|Wystąpienie|
+|Gen0Kolekcje|Odpady odśmieskowe Gen 0|Liczba|Łącznie|Odpady odśmieskowe Gen 0|Wystąpienie|
+|Gen1Kolekcje|Wyrzucanie elementów bezużytecznych gen 1|Liczba|Łącznie|Wyrzucanie elementów bezużytecznych gen 1|Wystąpienie|
+|Gen2Kolekcje|Odpady odśmieskowe gen 2|Liczba|Łącznie|Odpady odśmieskowe gen 2|Wystąpienie|
+|Stan zdrowiaSeksus|Stan kontroli kondycji|Liczba|Średnia|Stan kontroli kondycji|Wystąpienie|
+|System PlikówUsage|Użycie systemu plików|Bajty|Średnia|Użycie systemu plików|Brak|
 
-## <a name="microsoftwebhostingenvironmentsmultirolepools"></a>Microsoft.Web/hostingEnvironments/multiRolePools
+## <a name="microsoftwebhostingenvironmentsmultirolepools"></a>Microsoft.Web/hostingŚrodowiska/multiRolePools
 
-|Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary|
+|Metryka|Metryka Nazwa wyświetlana|Jednostka|Typ agregacji|Opis|Wymiary|
 |---|---|---|---|---|---|
-|Żądania|Żądania|Licznik|Łącznie|Żądania|Wystąpienie|
-|BytesReceived|Dane w|Bajty|Łącznie|Dane w|Wystąpienie|
-|BytesSent|Dane wychodzące|Bajty|Łącznie|Dane wychodzące|Wystąpienie|
-|Http101|Http 101|Licznik|Łącznie|Http 101|Wystąpienie|
-|Http2xx|Http 2xx|Licznik|Łącznie|Http 2xx|Wystąpienie|
-|Http3xx|Http 3xx|Licznik|Łącznie|Http 3xx|Wystąpienie|
-|Http401|HTTP 401|Licznik|Łącznie|HTTP 401|Wystąpienie|
-|Http403|HTTP 403|Licznik|Łącznie|HTTP 403|Wystąpienie|
-|Http404|HTTP 404|Licznik|Łącznie|HTTP 404|Wystąpienie|
-|Http406|Http 406|Licznik|Łącznie|Http 406|Wystąpienie|
-|Http4xx|Http 4xx|Licznik|Łącznie|Http 4xx|Wystąpienie|
-|Http5xx|Błędy serwera http|Licznik|Łącznie|Błędy serwera http|Wystąpienie|
-|AverageResponseTime|Średni czas odpowiedzi|S|Średnia|Średni czas odpowiedzi|Wystąpienie|
-|CpuPercentage|Procent użycia procesora CPU|Procent|Średnia|Procent użycia procesora CPU|Wystąpienie|
-|MemoryPercentage|Procent pamięci|Procent|Średnia|Procent pamięci|Wystąpienie|
-|DiskQueueLength|Długość kolejki dysku|Licznik|Średnia|Długość kolejki dysku|Wystąpienie|
-|HttpQueueLength|Długość kolejki http|Licznik|Średnia|Długość kolejki http|Wystąpienie|
-|ActiveRequests|Aktywne żądania|Licznik|Łącznie|Aktywne żądania|Wystąpienie|
-|TotalFrontEnds|Łączne frontony|Licznik|Średnia|Łączne frontony|None|
-|SmallAppServicePlanInstances|Niewielka App Service planowanie procesów roboczych|Licznik|Średnia|Niewielka App Service planowanie procesów roboczych|None|
-|MediumAppServicePlanInstances|Średni App Service pracowników planu|Licznik|Średnia|Średni App Service pracowników planu|None|
-|LargeAppServicePlanInstances|Duże App Service planowanie procesów roboczych|Licznik|Średnia|Duże App Service planowanie procesów roboczych|None|
+|Żądania|Żądania|Liczba|Łącznie|Żądania|Wystąpienie|
+|Bytesreceived|Dane w|Bajty|Łącznie|Dane w|Wystąpienie|
+|Bajtów|Wyjście danych|Bajty|Łącznie|Wyjście danych|Wystąpienie|
+|Http101|Http 101|Liczba|Łącznie|Http 101|Wystąpienie|
+|Protokół Http2xx|Http 2xx|Liczba|Łącznie|Http 2xx|Wystąpienie|
+|Protokół Http3xx|Http 3xx|Liczba|Łącznie|Http 3xx|Wystąpienie|
+|Http401|Http 401|Liczba|Łącznie|Http 401|Wystąpienie|
+|Http403|Http 403|Liczba|Łącznie|Http 403|Wystąpienie|
+|Http404|Http 404|Liczba|Łącznie|Http 404|Wystąpienie|
+|Http406|Http 406|Liczba|Łącznie|Http 406|Wystąpienie|
+|Protokół Http4xx (polski)|Http 4xx|Liczba|Łącznie|Http 4xx|Wystąpienie|
+|Protokół Http5xx|Błędy serwera http|Liczba|Łącznie|Błędy serwera http|Wystąpienie|
+|ŚredniaResponseTime|Średni czas reakcji|Sekundy|Średnia|Średni czas reakcji|Wystąpienie|
+|CpuPercentage (CpuPercentage)|Procent użycia procesora CPU|Wartość procentowa|Średnia|Procent użycia procesora CPU|Wystąpienie|
+|MemoryPercentage (PamięćPrzestńczliwienie)|Procent pamięci|Wartość procentowa|Średnia|Procent pamięci|Wystąpienie|
+|Funkcja DiskQueueLength|Długość kolejki dysku|Liczba|Średnia|Długość kolejki dysku|Wystąpienie|
+|Funkcja HttpQueueLength|Długość kolejki http|Liczba|Średnia|Długość kolejki http|Wystąpienie|
+|Prośby o activerequests|Aktywne żądania|Liczba|Łącznie|Aktywne żądania|Wystąpienie|
+|TotalFrontEnds (Całkowita liczba podań)|Całkowite przednie końce|Liczba|Średnia|Całkowite przednie końce|Brak|
+|SmallAppServicePlanInstans (Nienasycenie smallappserviceplan)|Pracownicy planu usługi aplikacji dla małych aplikacji|Liczba|Średnia|Pracownicy planu usługi aplikacji dla małych aplikacji|Brak|
+|ŚredniAppServicePlanInstans|Pracownicy średniego planu usługi aplikacji|Liczba|Średnia|Pracownicy średniego planu usługi aplikacji|Brak|
+|Duże usługi Nainstancje MapAppServicePlan|Pracownicy planu dużych usług aplikacji|Liczba|Średnia|Pracownicy planu dużych usług aplikacji|Brak|
 
-## <a name="microsoftwebhostingenvironmentsworkerpools"></a>Microsoft. Web/hostingEnvironments/workerPools
+## <a name="microsoftwebhostingenvironmentsworkerpools"></a>Microsoft.Web/hostingŚrodowienia/pracownicy Pools
 
-|Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary|
+|Metryka|Metryka Nazwa wyświetlana|Jednostka|Typ agregacji|Opis|Wymiary|
 |---|---|---|---|---|---|
-|Łączna|Łączna liczba procesów roboczych|Licznik|Średnia|Łączna liczba procesów roboczych|None|
-|WorkersAvailable|Dostępni pracownicy|Licznik|Średnia|Dostępni pracownicy|None|
-|WorkersUsed|Używani pracownicy|Licznik|Średnia|Używani pracownicy|None|
-|CpuPercentage|Procent użycia procesora CPU|Procent|Średnia|Procent użycia procesora CPU|Wystąpienie|
-|MemoryPercentage|Procent pamięci|Procent|Średnia|Procent pamięci|Wystąpienie|
+|PracownicyWzrzesi|Łączna liczba pracowników|Liczba|Średnia|Łączna liczba pracowników|Brak|
+|PracownicyDostępni|Dostępni pracownicy|Liczba|Średnia|Dostępni pracownicy|Brak|
+|PracownicyUżywane|Pracownicy zaustosowni|Liczba|Średnia|Pracownicy zaustosowni|Brak|
+|CpuPercentage (CpuPercentage)|Procent użycia procesora CPU|Wartość procentowa|Średnia|Procent użycia procesora CPU|Wystąpienie|
+|MemoryPercentage (PamięćPrzestńczliwienie)|Procent pamięci|Wartość procentowa|Średnia|Procent pamięci|Wystąpienie|
 ## <a name="next-steps"></a>Następne kroki
-* [Przeczytaj informacje o metrykach w Azure Monitor](data-platform.md)
+* [Przeczytaj o metrykach w usłudze Azure Monitor](data-platform.md)
 * [Tworzenie alertów dotyczących metryk](alerts-overview.md)
-* [Eksportowanie metryk do magazynu, centrum zdarzeń lub Log Analytics](platform-logs-overview.md)
+* [Eksportowanie danych do magazynu, Centrum zdarzeń lub analizy dzienników](platform-logs-overview.md)

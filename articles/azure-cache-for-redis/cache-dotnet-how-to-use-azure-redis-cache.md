@@ -1,5 +1,5 @@
 ---
-title: 'Szybki Start: korzystanie z usługi Azure cache for Redis z aplikacjami .NET'
+title: 'Szybki start: używanie pamięci podręcznej Azure cache dla funkcji Redis w aplikacjach .NET'
 description: Z tego przewodnika Szybki start dowiesz się, jak uzyskiwać dostęp do pamięci podręcznej Azure Cache for Redis z poziomu aplikacji platformy .NET.
 author: yegu-ms
 ms.author: yegu
@@ -9,21 +9,21 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/11/2020
 ms.openlocfilehash: 6384416c2feef3c9a9517bce08374a7667eb5d6b
-ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/14/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "79369067"
 ---
-# <a name="quickstart-use-azure-cache-for-redis-with-a-net-framework-application"></a>Szybki Start: korzystanie z usługi Azure cache for Redis z aplikacją .NET Framework
+# <a name="quickstart-use-azure-cache-for-redis-with-a-net-framework-application"></a>Szybki start: używanie pamięci podręcznej Azure cache dla programu Redis za pomocą aplikacji .NET Framework
 
-W tym przewodniku szybki start dodaliśmy usługę Azure cache for Redis do aplikacji .NET Framework, aby uzyskać dostęp do bezpiecznej, dedykowanej pamięci podręcznej dostępnej z dowolnej aplikacji na platformie Azure. Należy używać klienta [stackexchange. Redis](https://github.com/StackExchange/StackExchange.Redis) z C# kodem w aplikacji konsolowej platformy .NET.
+W tym przewodniku Szybki start można włączyć usługi Azure Cache for Redis do aplikacji .NET Framework, aby mieć dostęp do bezpiecznej, dedykowanej pamięci podręcznej, która jest dostępna z dowolnej aplikacji na platformie Azure. W szczególności należy użyć [StackExchange.Redis](https://github.com/StackExchange/StackExchange.Redis) klienta z kodem C# w aplikacji konsoli .NET.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Subskrypcja platformy Azure — [Utwórz ją bezpłatnie](https://azure.microsoft.com/free/)
-- [Program Visual Studio 2019](https://www.visualstudio.com/downloads/)
-- [.NET Framework 4 lub więcej](https://www.microsoft.com/net/download/dotnet-framework-runtime), co jest wymagane przez klienta stackexchange. Redis.
+- Subskrypcja platformy Azure — [utwórz bezpłatną subskrypcję](https://azure.microsoft.com/free/)
+- [Visual Studio 2019](https://www.visualstudio.com/downloads/)
+- [.NET Framework 4 lub nowsza](https://www.microsoft.com/net/download/dotnet-framework-runtime), która jest wymagana przez klienta StackExchange.Redis.
 
 ## <a name="create-a-cache"></a>Tworzenie pamięci podręcznej
 [!INCLUDE [redis-cache-create](../../includes/redis-cache-create.md)]
@@ -47,9 +47,9 @@ Zastąp element `<access-key>` kluczem podstawowym pamięci podręcznej.
 
 ## <a name="create-a-console-app"></a>Tworzenie aplikacji konsolowej
 
-W programie Visual Studio kliknij kolejno pozycje **Plik** > **Nowy** > **Projekt**.
+W programie Visual Studio kliknij pozycję **Plik** > **nowego** > **projektu**.
 
-Wybierz pozycję **aplikacja konsoli (.NET Framework)** , a **następnie** Skonfiguruj aplikację. Wpisz **nazwę projektu** , a następnie kliknij przycisk **Utwórz** , aby utworzyć nową aplikację konsolową.
+Wybierz **pozycję Aplikacja konsoli (.NET Framework)** i **Dalej,** aby skonfigurować aplikację. Wpisz **nazwę projektu** i kliknij przycisk **Utwórz,** aby utworzyć nową aplikację konsoli.
 
 <a name="configure-the-cache-clients"></a>
 
@@ -57,7 +57,7 @@ Wybierz pozycję **aplikacja konsoli (.NET Framework)** , a **następnie** Skonf
 
 W tej sekcji skonfigurujesz aplikację konsolową umożliwiającą korzystanie z klienta [StackExchange.Redis](https://github.com/StackExchange/StackExchange.Redis) na platformie .NET.
 
-W programie Visual Studio kliknij pozycję **Narzędzia** > **Menedżer pakietów NuGet** > **Konsola menedżera pakietów** i uruchom poniższe polecenie w oknie Konsola menedżera pakietów.
+W programie Visual Studio kliknij pozycję **Konsola** > **Menedżera pakietów**Menedżera > pakietów narzędzia**NuGet Package**Manager i uruchom następujące polecenie w oknie Konsoli Menedżera pakietów.
 
 ```powershell
 Install-Package StackExchange.Redis
@@ -68,7 +68,7 @@ Po ukończeniu instalacji klient pamięci podręcznej *StackExchange.Redis* będ
 
 ## <a name="connect-to-the-cache"></a>Łączenie z pamięcią podręczną
 
-W programie Visual Studio Otwórz plik *App. config* i zaktualizuj go, aby zawierał `appSettings` atrybut `file` odwołujący się do pliku *CacheSecrets. config* .
+W programie Visual Studio otwórz plik *App.config* i zaktualizuj go, aby uwzględnić atrybut `appSettings` `file`, który odwołuje się do pliku *CacheSecrets.config*.
 
 ```xml
 <?xml version="1.0" encoding="utf-8" ?>
@@ -178,7 +178,7 @@ Usługa Azure Cache for Redis może buforować obiekty platformy .NET oraz pierw
 
 Prostym sposobem na wykonanie serializacji obiektów jest użycie metod serializacji `JsonConvert` w środowisku [Newtonsoft.Json](https://www.nuget.org/packages/Newtonsoft.Json/) oraz serializacja do i z formatu JSON. W tej sekcji dodasz obiekt platformy .NET do pamięci podręcznej.
 
-W programie Visual Studio kliknij pozycję **Narzędzia** > **Menedżer pakietów NuGet** > **Konsola menedżera pakietów** i uruchom poniższe polecenie w oknie Konsola menedżera pakietów.
+W programie Visual Studio kliknij pozycję **Konsola** > **Menedżera pakietów**Menedżera > pakietów narzędzia**NuGet Package**Manager i uruchom następujące polecenie w oknie Konsoli Menedżera pakietów.
 
 ```powershell
 Install-Package Newtonsoft.Json
@@ -226,7 +226,7 @@ W dolnej części procedury `Main()` w pliku *Program.cs* i przed wywołaniem do
 
 Naciśnij klawisze **Ctrl+F5**, aby skompilować i uruchomić aplikację konsolową na potrzeby testowania serializacji obiektów platformy .NET. 
 
-![Ukończona aplikacja konsolowa](./media/cache-dotnet-how-to-use-azure-redis-cache/cache-console-app-complete.png)
+![Ukończono tworzenie aplikacji konsolowej](./media/cache-dotnet-how-to-use-azure-redis-cache/cache-console-app-complete.png)
 
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
@@ -241,7 +241,7 @@ W przeciwnym razie po zakończeniu pracy z przykładową aplikacją poradnika Sz
 
 Zaloguj się do witryny [Azure Portal](https://portal.azure.com) i kliknij pozycję **Grupy zasobów**.
 
-W polu tekstowym **Filtruj według nazwy...** wpisz nazwę grupy zasobów. Instrukcje w tym artykule używają grupy zasobów o nazwie *TestResources*. Dla grupy zasobów na liście wyników kliknij pozycję **...** , a następnie kliknij pozycję **Usuń grupę zasobów**.
+W polu tekstowym **Filtruj według nazwy...** wpisz nazwę grupy zasobów. Instrukcje w tym artykule używają grupy zasobów o nazwie *TestResources*. Dla grupy zasobów na liście wyników kliknij pozycję **...**, a następnie kliknij pozycję **Usuń grupę zasobów**.
 
 ![Usuń](./media/cache-dotnet-how-to-use-azure-redis-cache/cache-delete-resource-group.png)
 
@@ -255,7 +255,7 @@ Po krótkim czasie grupa zasobów i wszystkie zawarte w niej zasoby zostaną usu
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym przewodniku Szybki start przedstawiono sposób użycia usługi Azure Cache for Redis z poziomu aplikacji platformy .NET. Przejdź do kolejnego Szybkiego startu, w którym wyjaśniono użycie usługi Microsoft Azure Cache for Redis z poziomu aplikacji internetowej ASP.NET.
+W tym przewodniku Szybki start przedstawiono sposób użycia usługi Azure Cache for Redis z poziomu aplikacji platformy .NET. Przejdź do kolejnego Szybkiego startu, w którym wyjaśniono, jak używać usługi Microsoft Azure Cache for Redis z poziomu aplikacji internetowej ASP.NET.
 
 > [!div class="nextstepaction"]
 > [Tworzenie na platformie ASP.NET aplikacji internetowej, która korzysta z usługi Microsoft Azure Cache for Redis.](./cache-web-app-howto.md)

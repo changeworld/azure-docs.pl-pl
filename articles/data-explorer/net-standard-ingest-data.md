@@ -1,6 +1,6 @@
 ---
-title: Pozyskiwanie danych za pomocą usługi Azure Eksplorator danych .NET Standard SDK (wersja zapoznawcza)
-description: W tym artykule dowiesz się, jak pozyskiwanie (ładować) danych do platformy Azure Eksplorator danych przy użyciu zestawu .NET Standard SDK.
+title: Pozyskiwania danych za pomocą standardowego sdk usługi Azure Data Explorer .NET (wersja zapoznawcza)
+description: W tym artykule dowiesz się, jak pozyskiwania (ładowania) danych do usługi Azure Data Explorer przy użyciu .NET Standard SDK.
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
@@ -8,19 +8,19 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 06/03/2019
 ms.openlocfilehash: 9b6eda60f0b0cb1b697560cccc2cffe719d58536
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79251780"
 ---
-# <a name="ingest-data-using-the-azure-data-explorer-net-standard-sdk-preview"></a>Pozyskiwanie danych przy użyciu usługi Azure Eksplorator danych .NET Standard SDK (wersja zapoznawcza)
+# <a name="ingest-data-using-the-azure-data-explorer-net-standard-sdk-preview"></a>Pozyskiwania danych przy użyciu standardowego sdk Usługi Azure Data Explorer .NET (wersja zapoznawcza)
 
-Azure Data Explorer (ADX) to szybka i wysoce skalowalna usługa eksploracji danych na potrzeby danych dziennika i telemetrycznych. Usługa ADX udostępnia dwie biblioteki klienckie dla platformy .NET Standard: [bibliotekę pozyskiwania](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Ingest.NETStandard) i [bibliotekę danych](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Data.NETStandard). Te biblioteki umożliwiają pozyskiwanie (ładowanie) danych do klastra i wykonywanie zapytań o dane z kodu. W tym artykule należy najpierw utworzyć mapowanie tabeli i danych w klastrze testowym. Następnie umieścisz pozyskiwanie w kolejce do klastra i sprawdzisz poprawność wyników.
+Azure Data Explorer (ADX) to szybka i wysoce skalowalna usługa eksploracji danych na potrzeby danych dziennika i telemetrycznych. Usługa ADX udostępnia dwie biblioteki klienckie dla platformy .NET Standard: [bibliotekę pozyskiwania](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Ingest.NETStandard) i [bibliotekę danych](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Data.NETStandard). Te biblioteki umożliwiają pozyskiwanie (ładowanie) danych do klastra i wykonywanie zapytań o dane z kodu. W tym artykule najpierw należy utworzyć tabelę i mapowanie danych w klastrze testowym. Następnie umieścisz pozyskiwanie w kolejce do klastra i sprawdzisz poprawność wyników.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto platformy Azure](https://azure.microsoft.com/free/).
+* Jeśli nie masz subskrypcji platformy Azure, utwórz [bezpłatne konto platformy Azure](https://azure.microsoft.com/free/) przed rozpoczęciem.
 
 * [Klaster testowy i baza danych](create-cluster-database-portal.md)
 
@@ -74,7 +74,7 @@ var kustoConnectionStringBuilder =
 
 ## <a name="set-source-file-information"></a>Ustawianie informacji o pliku źródłowym
 
-Ustaw ścieżkę dla pliku źródłowego. W tym przykładzie używany jest przykładowy plik hostowany w usłudze Azure Blob Storage. Przykładowy zestaw danych **StormEvents** zawiera dane dotyczące pogody pochodzące z organizacji [National Centers for Environmental Information](https://www.ncdc.noaa.gov/stormevents/).
+Ustaw ścieżkę dla pliku źródłowego. W tym przykładzie używany jest przykładowy plik hostowany w usłudze Azure Blob Storage. Przykładowy zestaw danych **StormEvents** zawiera dane związane z pogodą z [National Centers for Environmental Information](https://www.ncdc.noaa.gov/stormevents/).
 
 ```csharp
 var blobPath = "https://kustosamplefiles.blob.core.windows.net/samplefiles/StormEvents.csv?st=2018-08-31T22%3A02%3A25Z&se=2020-09-01T22%3A02%3A00Z&sp=r&sv=2018-03-28&sr=b&sig=LQIbomcKI8Ooz425hWtjeq6d61uEaq21UVX7YrM61N4%3D";
@@ -209,7 +209,7 @@ using (var cslQueryProvider = KustoClientFactory.CreateCslQueryProvider(kustoCon
 
 ## <a name="run-troubleshooting-queries"></a>Uruchamianie zapytań dotyczących rozwiązywania problemów
 
-Zaloguj się do portalu [https://dataexplorer.azure.com](https://dataexplorer.azure.com) i nawiąż połączenie z klastrem. Uruchom następujące polecenie w bazie danych, aby sprawdzić, czy wystąpiły jakieś niepowodzenia pozyskiwania w ciągu ostatnich czterech godzin. Przed uruchomieniem zastąp nazwę bazy danych.
+Zaloguj się [https://dataexplorer.azure.com](https://dataexplorer.azure.com) i połącz się z klastrem. Uruchom następujące polecenie w bazie danych, aby sprawdzić, czy wystąpiły jakieś niepowodzenia pozyskiwania w ciągu ostatnich czterech godzin. Przed uruchomieniem zastąp nazwę bazy danych.
 
 ```Kusto
 .show ingestion failures
@@ -226,7 +226,7 @@ Uruchom następujące polecenie, aby wyświetlić stan wszystkich operacji pozys
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Jeśli planujesz postępować zgodnie z innymi artykułami, Zachowaj utworzone zasoby. W przeciwnym razie uruchom następujące polecenie w bazie danych, aby wyczyścić tabelę `StormEvents`.
+Jeśli planujesz śledzić nasze inne artykuły, zachowaj utworzone zasoby. W przeciwnym razie uruchom następujące polecenie w bazie danych, aby wyczyścić tabelę `StormEvents`.
 
 ```Kusto
 .drop table StormEvents

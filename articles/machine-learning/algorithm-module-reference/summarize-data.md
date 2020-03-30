@@ -1,7 +1,7 @@
 ---
 title: Podsumowywanie danych
 titleSuffix: Azure Machine Learning
-description: Dowiedz się, jak za pomocą modułu podsumowywania danych w Azure Machine Learning wygenerować podstawowy raport statystyk opisowych dla kolumn w zestawie danych.
+description: Dowiedz się, jak użyć modułu Sumuj dane w usłudze Azure Machine Learning do generowania podstawowego raportu statystyk opisowych dla kolumn w zestawie danych.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,82 +9,82 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 01/27/2020
-ms.openlocfilehash: be6fd633f026c98e8f75467dc8661e695e121721
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: b0def12582dd3795e1b17334406e28d77c3c5656
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76841271"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79477446"
 ---
 # <a name="summarize-data"></a>Podsumowywanie danych
 
-W tym artykule opisano moduł programu Azure Machine Learning Designer (wersja zapoznawcza).
+W tym artykule opisano moduł projektanta usługi Azure Machine Learning (wersja zapoznawcza).
 
-Moduł podsumowujące dane służy do tworzenia zestawu standardowych miar statystycznych, które opisują poszczególne kolumny w tabeli wejściowej.
+Moduł Sumuj dane służy do tworzenia zestawu standardowych miar statystycznych opisujących każdą kolumnę w tabeli wprowadzania.
 
-Statystyki podsumowujące są przydatne, gdy chcesz zrozumieć charakterystykę kompletnego zestawu danych. Na przykład może być konieczne poznanie:
+Statystyki podsumowania są przydatne, gdy chcesz zrozumieć cechy pełnego zestawu danych. Na przykład może być konieczne:
 
 - Ile brakujących wartości znajduje się w każdej kolumnie?
-- Ile unikatowych wartości znajduje się w kolumnie funkcji?
-- Co to jest średnie i odchylenie standardowe dla każdej kolumny?
+- Ile unikatowych wartości znajduje się w kolumnie obiektowej?
+- Jaka jest średnia i odchylenie standardowe dla każdej kolumny?
 
-Moduł oblicza ważne wyniki dla każdej kolumny i zwraca wiersz statystyk podsumowujących dla każdej zmiennej (kolumny danych) podanej jako dane wejściowe.
+Moduł oblicza ważne wyniki dla każdej kolumny i zwraca wiersz statystyk podsumowania dla każdej zmiennej (kolumny danych) dostarczonej jako dane wejściowe.
 
-## <a name="how-to-configure-summarize-data"></a>Jak skonfigurować dane podsumowujące  
+## <a name="how-to-configure-summarize-data"></a>Jak skonfigurować sumuj dane  
 
-1. Dodaj moduł **podsumowujące dane** do potoku. Ten moduł można znaleźć w kategorii **funkcje statystyczne** w projektancie.
+1. Dodaj **moduł Sumuj dane** do potoku. Ten moduł można znaleźć w kategorii **Funkcje statystyczne** w projektancie.
 
 1. Połącz zestaw danych, dla którego chcesz wygenerować raport.
 
-    Jeśli chcesz utworzyć raport dotyczący tylko niektórych kolumn, użyj modułu [SELECT Columns in DataSet (Wybieranie kolumn w zestawie danych](select-columns-in-dataset.md) ) do zaprojektowania podzestawu kolumn, z którym chcesz współpracować.
+    Jeśli chcesz raportować tylko niektóre kolumny, użyj wybierz kolumny w module [Zestaw danych,](select-columns-in-dataset.md) aby rzutować podzbiór kolumn do pracy.
 
-1. Nie są wymagane żadne dodatkowe parametry. Domyślnie moduł analizuje wszystkie kolumny, które są dostarczane jako dane wejściowe, i w zależności od typu wartości w kolumnach, wyprowadza odpowiedni zestaw statystyk zgodnie z opisem w sekcji [wyniki](#results) .
+1. Nie są wymagane żadne dodatkowe parametry. Domyślnie moduł analizuje wszystkie kolumny, które są dostarczane jako dane wejściowe i w zależności od typu wartości w kolumnach, wyprowadza odpowiedni zestaw statystyk, zgodnie z opisem w sekcji [Wyniki.](#results)
 
-1. Uruchamianie potoku.
+1. Prześlij potok.
 
 ## <a name="results"></a>Wyniki
 
-Raport z modułu może zawierać następujące dane statystyczne. 
+Raport z modułu może zawierać następujące statystyki. 
 
 |Nazwa kolumny|Opis|
 |------|------|  
 |**Funkcja**|Nazwa kolumny|
-|**Liczbą**|Liczba wszystkich wierszy|
-|**Liczba unikatowych wartości**|Liczba unikatowych wartości w kolumnie|
-|**Brak liczby wartości**|Liczba unikatowych wartości w kolumnie|
+|**Liczba**|Liczba wszystkich wierszy|
+|**Unikatowa liczba wartości**|Liczba unikatowych wartości w kolumnie|
+|**Liczba brakujących wartości**|Liczba unikatowych wartości w kolumnie|
 |**Min**|Najniższa wartość w kolumnie|  
-|**Maksymalna**|Najwyższa wartość w kolumnie|
-|**Zależność**|Średnia dla wszystkich wartości kolumn|
-|**Odchylenie średnie**|Średnia odchylenia wartości kolumn|
-|**1. kwartyl**|Wartość przy pierwszym kwartyl|
-|**Mediana**|Wartość kolumny mediana|
-|**3. kwartyl**|Wartość przy trzecim kwartyl|
-|**Wyst**|Tryb wartości kolumn|
-|**Zakres**|Liczba całkowita reprezentująca liczbę wartości z zakresu wartości maksymalnej i minimalnej|
-|**WARIANCJA próbki**|WARIANCJA dla kolumny; Zobacz Uwaga|
-|**Przykładowe odchylenie standardowe**|Odchylenie standardowe dla kolumny; Zobacz Uwaga|
-|**Przykład skośności**|Skośność kolumny; Zobacz Uwaga|
-|**Przykładowa kurtoza**|Kurtoza dla kolumny; Zobacz Uwaga|
-|**P 0,5**|0,5% percentyl|
-|**P1**|1% percentyl|
+|**Max**|Najwyższa wartość w kolumnie|
+|**Średnia**|Średnia wszystkich wartości kolumn|
+|**Średnie odchylenie**|Średnie odchylenie wartości kolumn|
+|**1. kwartyl**|Wartość w pierwszym kwartylu|
+|**Mediana**|Mediana wartości kolumny|
+|**3. kwartyl**|Wartość w trzecim kwartylu|
+|**Tryb**|Tryb wartości kolumn|
+|**Zakres**|Liczba całkowita reprezentująca liczbę wartości między wartościami maksymalnymi i minimalnymi|
+|**Odchylenie próbki**|Odchylenie dla kolumny; patrz Uwaga|
+|**Odchylenie standardowe próbki**|Odchylenie standardowe dla kolumny; patrz Uwaga|
+|**Pochylenie próbki**|Skośność dla kolumny; patrz Uwaga|
+|**Kurtoza próbki**|Kurtoza dla kolumny; patrz Uwaga|
+|**P0,5**|0,5% percentyli|
+|**P1**|1% percentyli|
 |**P5**|5% percentyl|
 |**P95**|95% percentyl|
-|**P 99,5**|99,5% percentyl |
+|**P99.5**|99,5% percentyli |
 
 ## <a name="technical-notes"></a>Uwagi techniczne
 
-- W przypadku kolumn nieliczbowych są obliczane tylko wartości licznika, liczba unikatowych wartości i brakująca wartość. W przypadku innych statystyk zwracana jest wartość null.
+- W przypadku kolumn nielicznych obliczane są tylko wartości count, unique value count i missing value count. W przypadku innych statystyk zwracana jest wartość null.
 
 - Kolumny zawierające wartości logiczne są przetwarzane przy użyciu następujących reguł:
 
-    - Przy obliczaniu wartości minimalnej jest stosowana wartość logiczna i.
+    - Podczas obliczania Min, logiczne I jest stosowany.
     
-    - Podczas obliczania wartości Max, wartość logiczna lub jest stosowana
+    - Podczas obliczania max, logiczne OR jest stosowany
     
-    - Podczas przetwarzania zakresu moduł najpierw sprawdza, czy liczba unikatowych wartości w kolumnie jest równa 2.
+    - Podczas obliczania zakresu moduł najpierw sprawdza, czy liczba unikatowych wartości w kolumnie jest równa 2.
     
-    - Podczas obliczania statystyk wymagającej obliczeń zmiennoprzecinkowych wartości true są traktowane jako 1,0, a wartości false są traktowane jako 0,0.
+    - Podczas obliczania wszelkich statystyk, które wymagają obliczeń zmiennoprzecinkowych, wartości True są traktowane jako 1.0, a wartości False są traktowane jako 0.0.
 
 ## <a name="next-steps"></a>Następne kroki
 
-Zapoznaj się z [zestawem modułów dostępnych](module-reference.md) do Azure Machine Learning.  
+Zobacz [zestaw modułów dostępnych dla](module-reference.md) usługi Azure Machine Learning.  

@@ -1,6 +1,6 @@
 ---
-title: Microsoft Identity platform (v 2.0) — Omówienie — Azure
-description: Dowiedz się więcej o punkcie końcowym i platformie Microsoft Identity platform (v 2.0).
+title: Omówienie platformy tożsamości firmy Microsoft (w wersji 2.0) — platforma Azure
+description: Dowiedz się więcej o punkcie końcowym i platformie platformy tożsamości firmy Microsoft (w wersji 2.0).
 services: active-directory
 documentationcenter: dev-center-name
 author: rwike77
@@ -17,70 +17,70 @@ ms.author: ryanwi
 ms.reviewer: agirling, saeeda, benv
 ms.custom: aaddev, identityplatformtop40
 ms.openlocfilehash: f6953fb5d016c802db260c55bc4970c3f029ab1a
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "79240828"
 ---
-# <a name="microsoft-identity-platform-v20-overview"></a>Microsoft Identity platform (v 2.0) — Omówienie
+# <a name="microsoft-identity-platform-v20-overview"></a>Omówienie platformy tożsamości firmy Microsoft (w wersji 2.0)
 
-Platforma tożsamości firmy Microsoft jest ewolucją platformy deweloperskiej Azure Active Directory (Azure AD). Dzięki temu deweloperzy mogą tworzyć aplikacje, które logują się do wszystkich tożsamości firmy Microsoft i uzyskują tokeny do wywoływania interfejsów API firmy Microsoft, takich jak Microsoft Graph, lub interfejsów API, które zostały skompilowane przez deweloperów. Platforma tożsamości firmy Microsoft składa się z:
+Platforma tożsamości firmy Microsoft jest ewolucją platformy deweloperskiej Azure Active Directory (Azure AD). Umożliwia deweloperom tworzenie aplikacji, które logują się we wszystkich tożsamościach firmy Microsoft i otrzymują tokeny do wywoływania interfejsów API firmy Microsoft, takich jak Microsoft Graph lub interfejsów API, które stworzyli deweloperzy. Platforma tożsamości firmy Microsoft składa się z:
 
-- **Uwierzytelnianie OAuth 2,0 i OpenID Connect Connect Standard-zgodna z usługą** , która umożliwia deweloperom uwierzytelnianie dowolnej tożsamości firmy Microsoft, w tym:
-  - Konta służbowe (obsługiwane za pomocą usługi Azure AD)
-  - Osobiste konta Microsoft (np. Skype, Xbox i Outlook.com)
-  - Konta społecznościowe lub lokalne (za pośrednictwem Azure AD B2C)
-- **Biblioteki Open Source**: biblioteki uwierzytelniania firmy Microsoft (MSAL) i obsługa innych bibliotek zgodnych ze standardami
-- **Portal zarządzania aplikacjami**: środowisko rejestracji i konfiguracji wbudowane w Azure Portal oraz wszystkie inne możliwości zarządzania platformy Azure.
-- **Interfejs API konfiguracji aplikacji i program PowerShell**: umożliwiające programistyczną konfigurację aplikacji za pomocą interfejsu API Microsoft Graph i programu PowerShell, dzięki czemu można zautomatyzować zadania DevOps.
-- **Zawartość dla deweloperów**: Dokumentacja dotycząca pojęć i referencyjnych, przykłady przewodnika Szybki Start, przykłady kodu, samouczki i przewodniki dotyczące wykonywania instrukcji.
+- **Usługa uwierzytelniania zgodnego ze standardem OAuth 2.0 i OpenID Connect,** która umożliwia deweloperom uwierzytelnianie dowolnej tożsamości firmy Microsoft, w tym:
+  - Konta służbowe (aprowizowane za pośrednictwem usługi Azure AD)
+  - Osobiste konta Microsoft (takie jak Skype, Xbox i Outlook.com)
+  - Konta społecznościowe lub lokalne (za pośrednictwem usługi Azure AD B2C)
+- **Biblioteki open source**: Biblioteki uwierzytelniania firmy Microsoft (MSAL) i obsługa innych bibliotek zgodnych ze standardami
+- **Portal zarządzania aplikacjami:** środowisko rejestracji i konfiguracji wbudowane w witrynę Azure portal, wraz ze wszystkimi innymi możliwościami zarządzania platformy Azure.
+- **Interfejs API konfiguracji aplikacji i program PowerShell**: który umożliwia programową konfigurację aplikacji za pośrednictwem interfejsu API programu Microsoft Graph i programu PowerShell, dzięki czemu można zautomatyzować zadania DevOps.
+- **Zawartość dewelopera:** dokumentacja koncepcyjna i referencyjna, przykłady szybkiego startu, przykłady kodu, samouczki i instrukcje.
 
-W przypadku deweloperów platforma tożsamości firmy Microsoft oferuje bezproblemową integrację innowacji w zakresie tożsamości i miejsca zabezpieczeń, takich jak uwierzytelnianie bez hasła, uwierzytelnianie krok po kroku i dostęp warunkowy.  Nie musisz wprowadzać takich funkcji samodzielnie: Aplikacje zintegrowane z platformą tożsamości firmy Microsoft w sposób natywny wykorzystują takie innowacje.
+Dla deweloperów platforma tożsamości firmy Microsoft oferuje bezproblemową integrację z innowacjami w przestrzeni tożsamości i zabezpieczeń, takimi jak uwierzytelnianie bez hasła, uwierzytelnianie step-up i dostęp warunkowy.  Nie musisz samodzielnie implementować takich funkcji: aplikacje zintegrowane z platformą tożsamości firmy Microsoft natywnie wykorzystują takie innowacje.
 
-Korzystając z platformy tożsamości firmy Microsoft, możesz napisać kod jeden raz i skontaktować się z dowolnym użytkownikiem. Aplikację można skompilować raz i korzystać z niej na wielu platformach lub utworzyć aplikację, która działa jako klient, a także aplikację zasobów (API).
+Za pomocą platformy tożsamości firmy Microsoft można napisać kod raz i dotrzeć do dowolnego użytkownika. Możesz utworzyć aplikację raz i mieć go działać na wielu platformach lub utworzyć aplikację, która działa jako klient, a także aplikacji zasobów (API).
 
 ## <a name="getting-started"></a>Wprowadzenie
 
 Praca z tożsamościami nie musi być trudna. 
 
-Obejrzyj [film wideo dotyczący platformy tożsamości firmy Microsoft](identity-videos.md) , aby poznać podstawy. 
+Obejrzyj [film wideo z platformy tożsamości firmy Microsoft,](identity-videos.md) aby poznać podstawy. 
 
-Wybierz [scenariusz](authentication-flows-app-scenarios.md) , który ma zastosowanie do Ciebie — każda ścieżka scenariusza zawiera Przewodnik Szybki Start i stronę z omówieniem, aby rozpocząć działanie w ciągu kilku minut:
+Wybierz [scenariusz,](authentication-flows-app-scenarios.md) który dotyczy Ciebie — każda ścieżka scenariusza ma szybki start i stronę przeglądu, aby rozpocząć i uruchomić w ciągu kilku minut:
 
 - [Tworzenie aplikacji jednostronicowej](scenario-spa-overview.md)
-- [Tworzenie aplikacji sieci Web, która umożliwia użytkownikom logowanie się](scenario-web-app-sign-user-overview.md)
-- [Tworzenie aplikacji sieci Web, która wywołuje interfejsy API sieci Web](scenario-web-app-call-api-overview.md)
+- [Tworzenie aplikacji internetowej z możliwością logowania użytkowników](scenario-web-app-sign-user-overview.md)
+- [Tworzenie aplikacji internetowej wywołującej internetowe interfejsy API](scenario-web-app-call-api-overview.md)
 - [Tworzenie chronionego internetowego interfejsu API](scenario-protected-web-api-overview.md)
-- [Tworzenie interfejsu API sieci Web, który wywołuje interfejsy API sieci Web](scenario-web-api-call-api-overview.md)
+- [Tworzenie internetowego interfejsu API, który wywołuje internetowe interfejsy API](scenario-web-api-call-api-overview.md)
 - [Tworzenie aplikacji klasycznej](scenario-desktop-overview.md)
 - [Tworzenie aplikacji demona](scenario-daemon-overview.md)
 - [Tworzenie aplikacji mobilnej](scenario-mobile-overview.md)
 
-Poniższy wykres przedstawia typowe scenariusze aplikacji uwierzytelniania — Użyj go jako odniesienia podczas integracji platformy tożsamości firmy Microsoft z Twoją aplikacją.
+Na poniższym wykresie przedstawiono typowe scenariusze aplikacji uwierzytelniania — użyj go jako odwołanie podczas integrowania platformy tożsamości firmy Microsoft z aplikacją.
 
-[scenariusze aplikacji ![na platformie tożsamości firmy Microsoft](./media/v2-overview/application-scenarios-identity-platform.png)](./media/v2-overview/application-scenarios-identity-platform.svg#lightbox)
+[![Scenariusze aplikacji na platformie tożsamości firmy Microsoft](./media/v2-overview/application-scenarios-identity-platform.png)](./media/v2-overview/application-scenarios-identity-platform.svg#lightbox)
 
 ## <a name="next-steps"></a>Następne kroki
 
-Jeśli chcesz dowiedzieć się więcej o podstawowych pojęciach dotyczących uwierzytelniania, zalecamy rozpoczęcie pracy z następującymi tematami:
+Jeśli chcesz dowiedzieć się więcej o podstawowych pojęciach dotyczących uwierzytelniania, zalecamy rozpoczęcie od następujących tematów:
 
 - [Przepływy uwierzytelniania i scenariusze aplikacji](authentication-flows-app-scenarios.md)
-- [Informacje podstawowe o uwierzytelnianiu](authentication-scenarios.md)
-- [Nazwy główne aplikacji i usługi](app-objects-and-service-principals.md)
+- [Podstawowe informacje o uwierzytelnianiu](authentication-scenarios.md)
+- [Podmioty zleceniodawcy aplikacji i usług](app-objects-and-service-principals.md)
 - [Odbiorców](v2-supported-account-types.md)
 - [Uprawnienia i zgoda](v2-permissions-and-consent.md)
 - [Tokeny identyfikatorów](id-tokens.md) i [tokeny dostępu](access-tokens.md)
 
-Tworzenie aplikacji bogatej w dane, która wywołuje [Microsoft Graph](https://docs.microsoft.com/graph/overview).
+Tworzenie aplikacji bogatej w dane, która wywołuje [program Microsoft Graph](https://docs.microsoft.com/graph/overview).
 
-Gdy wszystko będzie gotowe do uruchomienia aplikacji w **środowisku produkcyjnym**, należy zapoznać się z następującymi najlepszymi rozwiązaniami:
+Gdy wszystko będzie gotowe do uruchomienia aplikacji w **środowisku produkcyjnym,** zapoznaj się z tymi sprawdzonymi rozwiązaniami:
 
 - [Włącz rejestrowanie](msal-logging.md) w aplikacji.
-- Włącz telemetrię w aplikacji.
-- Włącz [serwery proxy i Dostosuj klientów http](msal-net-provide-httpclient.md).
-- Przetestuj integrację, postępując zgodnie z [listą kontrolną integracji z platformą Microsoft Identity](identity-platform-integration-checklist.md).
+- Włącz dane telemetryczne w aplikacji.
+- Włącz [serwery proxy i dostosuj klientów HTTP](msal-net-provide-httpclient.md).
+- Przetestuj integrację, postępając zgodnie z [listą kontrolną integracji platformy tożsamości firmy Microsoft.](identity-platform-integration-checklist.md)
 
 ## <a name="learn-more"></a>Dowiedz się więcej
 
-Jeśli planujesz utworzenie aplikacji przeznaczonej dla klienta, która jest używana w tożsamościach społecznościowych i lokalnych, zobacz [omówienie Azure AD B2C](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-add-identity-providers).
+Jeśli planujesz utworzyć aplikację skierowaną do klienta, która loguje się w tożsamościach społecznościowych i lokalnych, zobacz [omówienie usługi Azure AD B2C.](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-add-identity-providers)

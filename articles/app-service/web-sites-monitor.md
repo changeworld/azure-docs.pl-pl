@@ -1,161 +1,165 @@
 ---
 title: Monitorowanie aplikacji
-description: Dowiedz się, jak monitorować aplikacje w Azure App Service przy użyciu Azure Portal. Zapoznaj się z raportowanymi przydziałami i metrykami.
+description: Dowiedz się, jak monitorować aplikacje w usłudze Azure App Service przy użyciu witryny Azure portal. Opis przydziałów i metryk, które są zgłaszane.
 author: btardif
 ms.assetid: d273da4e-07de-48e0-b99d-4020d84a425e
 ms.topic: article
 ms.date: 01/11/2019
 ms.author: byvinyal
 ms.custom: seodec18
-ms.openlocfilehash: 2bca4521184fa42002e6649a90bb9101fded595c
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.openlocfilehash: d84340730391abd7dba4d13202503d37941c09b5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75658444"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79500433"
 ---
-# <a name="monitor-apps-in-azure-app-service"></a>Monitorowanie aplikacji w Azure App Service
-[Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) zapewnia wbudowaną funkcję monitorowania dla aplikacji sieci Web, urządzeń przenośnych i aplikacji interfejsu API w [Azure Portal](https://portal.azure.com).
+# <a name="monitor-apps-in-azure-app-service"></a>Monitorowanie aplikacji w usłudze Azure App Service
+[Usługa Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) udostępnia wbudowane funkcje monitorowania aplikacji sieci web, aplikacji mobilnych i aplikacji interfejsu API w [witrynie Azure portal.](https://portal.azure.com)
 
-W Azure Portal można sprawdzić *przydziały* i *metryki* dla aplikacji oraz plan App Service i skonfigurować *alerty* i *skalowanie* automatyczne, które są oparte na metrykach.
+W witrynie Azure portal można przeglądać *przydziały* i *metryki* dla aplikacji i planu usługi App Service oraz *konfigurowanie alertów* i metryk opartych na regułach *skalowania automatycznego.*
 
-## <a name="understand-quotas"></a>Informacje o przydziałach
+## <a name="understand-quotas"></a>Zrozumienie przydziałów
 
-Aplikacje hostowane w App Service podlegają pewnym ograniczeniom dotyczącym zasobów, których mogą używać. Limity są definiowane przez plan App Service, który jest skojarzony z aplikacją.
+Aplikacje hostowane w usłudze App Service podlegają pewnym ograniczeniom zasobów, z których mogą korzystać. Limity są definiowane przez plan usługi aplikacji, który jest skojarzony z aplikacją.
 
 [!INCLUDE [app-service-dev-test-note](../../includes/app-service-dev-test-note.md)]
 
-Jeśli aplikacja jest hostowana w planie *bezpłatnym* lub *współdzielonym* , limity dla zasobów, które mogą być używane przez aplikację, są definiowane przez przydziały.
+Jeśli aplikacja jest hostowana w planie *bezpłatnym* lub *udostępnionym,* limity zasobów, z których aplikacja może korzystać, są definiowane przez przydziały.
 
-Jeśli aplikacja jest hostowana w planie w warstwie *podstawowa*, *standardowa*lub *Premium* , limity zasobów, których mogą używać są ustawiane przez *rozmiar* (mały, średni, duży) i *Liczba wystąpień* (1, 2, 3 i tak dalej) planu App Service.
+Jeśli aplikacja jest hostowana w planie *Podstawowym,* *Standard*lub *Premium,* limity zasobów, których mogą używać, są ustawiane przez *rozmiar* (Mały, Średni, Duży) i *liczba wystąpień* (1, 2, 3 itd.) planu usługi app service.
 
-Przydziały dla aplikacji bezpłatnych lub udostępnionych:
+Przydziały dla aplikacji bezpłatnych lub udostępnionych to:
 
-| Przydział | Opis |
+| Limit przydziału | Opis |
 | --- | --- |
-| **PROCESOR (krótki)** | Ilość procesora CPU dozwolona dla tej aplikacji w interwale 5-minutowym. Ten przydział resetuje co pięć minut. |
-| **PROCESOR (dzień)** | Całkowita ilość procesora CPU dozwolona dla tej aplikacji w ciągu dnia. Ten przydział resetuje co 24 godziny o północy czasu UTC. |
-| **Pamięć** | Całkowita ilość pamięci dozwolonej dla tej aplikacji. |
-| **Bandwidth** | Całkowita ilość wychodzącej przepustowości dozwolonej dla tej aplikacji w ciągu dnia. Ten przydział resetuje co 24 godziny o północy czasu UTC. |
-| **Filesystem** | Łączna ilość dozwolonego miejsca w magazynie. |
+| **Procesor (krótki)** | Ilość procesora CPU dozwolona dla tej aplikacji w odstępie 5 minut. Ten przydział jest resetowany co pięć minut. |
+| **Procesor (dzień)** | Całkowita ilość procesora CPU dozwolone dla tej aplikacji w ciągu dnia. Ten przydział jest resetowany co 24 godziny o północy czasu UTC. |
+| **Pamięci** | Całkowita ilość pamięci dozwolona dla tej aplikacji. |
+| **Przepustowość** | Całkowita przepustowość wychodząca dozwolona dla tej aplikacji w ciągu dnia. Ten przydział jest resetowany co 24 godziny o północy czasu UTC. |
+| **Filesystem** | Całkowita dozwolona ilość miejsca do magazynowania. |
 
-Jedynym przydziałem stosowanym dla aplikacji hostowanych w warstwach *podstawowa*, *standardowa*i *Premium* jest system plików.
+Jedynym przydziałem mającym zastosowanie do aplikacji hostowanych w *językach Basic,* *Standard*i *Premium* jest system plików.
 
-Aby uzyskać więcej informacji o określonych limitach przydziału, limitach i funkcjach dostępnych dla różnych jednostek SKU App Service, zobacz [limity usługi subskrypcji platformy Azure](../azure-resource-manager/management/azure-subscription-service-limits.md#app-service-limits).
+Aby uzyskać więcej informacji na temat określonych przydziałów, limitów i funkcji dostępnych dla różnych jednostek SKU usługi App Service, zobacz [Limity usług subskrypcji platformy Azure](../azure-resource-manager/management/azure-subscription-service-limits.md#app-service-limits).
 
-### <a name="quota-enforcement"></a>Wymuszanie przydziałów
+### <a name="quota-enforcement"></a>Egzekwowanie kwot
 
-Jeśli aplikacja przekroczy *procesor (krótki)* , *procesor (dzień)* lub limit *przepustowości* , aplikacja zostanie zatrzymana do momentu zresetowania limitu przydziału. W tym czasie wszystkie żądania przychodzące powodują błąd HTTP 403.
+Jeśli aplikacja przekroczy *procesor (krótki)*, *PROCESOR (dzień)* lub przydział *przepustowości,* aplikacja zostanie zatrzymana, dopóki przydział nie zostanie zresetowany. W tym czasie wszystkie przychodzące żądania powodują błąd HTTP 403.
 
-![komunikat o błędzie 403][http403]
+![Komunikat o błędzie 403][http403]
 
-W przypadku przekroczenia limitu przydziału pamięci aplikacji aplikacja zostanie uruchomiona ponownie.
+Jeśli limit pamięci aplikacji zostanie przekroczony, aplikacja zostanie ponownie uruchomiona.
 
-W przypadku przekroczenia limitu przydziału systemu plików operacja zapisu nie powiedzie się. Błędy operacji zapisu obejmują wszystkie zapisy w dziennikach.
+Jeśli przydział systemu plików zostanie przekroczony, każda operacja zapisu zakończy się niepowodzeniem. Błędy operacji zapisu obejmują wszelkie zapisy w dziennikach.
 
-Można zwiększyć lub usunąć przydziały z aplikacji, uaktualniając plan App Service.
+Możesz zwiększyć lub usunąć przydziały z aplikacji, uaktualniając plan usługi App Service.
 
-## <a name="understand-metrics"></a>Informacje o metrykach
+## <a name="understand-metrics"></a>Zrozumienie danych
 
 > [!NOTE]
-> **Użycie systemu plików** to nowa Metryka, która jest wdrażana globalnie, nie jest oczekiwane żadne dane, chyba że listy dozwolonych się do prywatnej wersji zapoznawczej.
+> **Użycie systemu plików** to nowa metryka wdrażana globalnie, nie oczekuje się żadnych danych, chyba że zostałasz na białej liście do prywatnej wersji zapoznawczej.
 > 
 
-Metryki zawierają informacje dotyczące aplikacji lub zachowania planu App Service.
+> [!IMPORTANT]
+> **Średni czas odpowiedzi** zostanie przestarzały, aby uniknąć pomyłek z agregacjami metryk. Użyj **czasu odpowiedzi** jako zamiennika.
 
-W przypadku aplikacji dostępne są następujące metryki:
+Metryki zawierają informacje o aplikacji lub zachowanie planu usługi app service.
+
+W przypadku aplikacji dostępne dane to:
 
 | Metryka | Opis |
 | --- | --- |
-| **Średni czas odpowiedzi** | Średni czas, w którym aplikacja będzie obsługiwała żądania (w sekundach). |
-| **Średni zestaw roboczy pamięci** | Średnia ilość pamięci używanej przez aplikację w megabajtach (MiB). |
-| **Połączenia** | Liczba powiązanych gniazd istniejących w piaskownicy (w3wp. exe i jej procesów podrzędnych).  Powiązane gniazdo jest tworzone przez wywoływanie interfejsów API bind ()/Connect () i pozostanie do momentu zamknięcia wskazanego gniazda przy użyciu funkcji CloseHandle ()/closesocket (). |
-| **Czas procesora CPU** | Ilość procesora CPU zużywanego przez aplikację w sekundach. Aby uzyskać więcej informacji na temat tej metryki, zobacz [czas procesora CPU w porównaniu z wartością procentową procesora](#cpu-time-vs-cpu-percentage)CPU. |
-| **Bieżące zestawy** | Bieżąca liczba zestawów załadowanych we wszystkich domenach aplikacji. |
-| **Dane w** | Ilość przychodzącej przepustowości zużywanej przez aplikację w usłudze MiB. |
-| **Dane wychodzące** | Ilość wychodzącej przepustowości zużywanej przez aplikację w usłudze MiB. |
-| **Użycie systemu plików** | Procent przydziału systemu plików zużywany przez aplikację. |
-| **Zbieranie elementów bezużytecznych generacji 0** | Liczba obiektów generacji 0, które są zbierane jako elementy bezużyteczne od momentu rozpoczęcia procesu aplikacji. Wyższa generacja operacje odzyskiwania pamięci obejmuje wszystkie niższe operacje odzyskiwania pamięci generacji.|
-| **Wyrzucanie elementów bezużytecznych generacji 1** | Liczba obiektów generacji 1, które są zbierane jako elementy bezużyteczne od momentu rozpoczęcia procesu aplikacji. Wyższa generacja operacje odzyskiwania pamięci obejmuje wszystkie niższe operacje odzyskiwania pamięci generacji.|
-| **Zbieranie elementów bezużytecznych generacji 2** | Liczba obiektów generacji 2, które są zbierane jako elementy bezużyteczne od momentu rozpoczęcia procesu aplikacji.|
-| **Liczba dojść** | Łączna liczba dojść aktualnie otwartych przez proces aplikacji.|
-| **Http 2xx** | Liczba żądań, które wynikają z kodu stanu HTTP ≥ 200, ale < 300. |
-| **Http 3xx** | Liczba żądań, które wynikają z kodu stanu HTTP ≥ 300, ale < 400. |
-| **HTTP 401** | Liczba żądań, które wynikają z kodu stanu HTTP 401. |
-| **HTTP 403** | Liczba żądań, które wynikają z kodu stanu HTTP 403. |
-| **HTTP 404** | Liczba żądań, które wynikają z kodu stanu HTTP 404. |
-| **Http 406** | Liczba żądań, które wynikają z kodu stanu HTTP 406. |
-| **Http 4xx** | Liczba żądań, które wynikają z kodu stanu HTTP ≥ 400, ale < 500. |
-| **Błędy serwera http** | Liczba żądań, które wynikają z kodu stanu HTTP ≥ 500, ale < 600. |
-| **Inne bajty we/wy na sekundę** | Szybkość, z jaką proces aplikacji wysyła bajty do operacji we/wy, które nie obejmują danych, takich jak operacje sterowania.|
-| **Inne operacje we/wy na sekundę** | Szybkość, z jaką proces aplikacji wysyła operacje we/wy, które nie są operacjami odczytu lub zapisu.|
+| **Czas reakcji** | Czas przeznaczony dla aplikacji do obsługi żądań w sekundach. |
+| **Średni czas odpowiedzi (przestarzały)** | Średni czas wyświetlania żądań przez aplikację w sekundach. |
+| **Zestaw pracy średniej pamięci** | Średnia ilość pamięci używanej przez aplikację w megabajtach (MiB). |
+| **Połączenia** | Liczba gniazd powiązanych istniejących w piaskownicy (w3wp.exe i jego procesy podrzędne).  Gniazdo powiązane jest tworzone przez wywoływanie interfejsów API bind()/connect() i pozostaje do momentu zamknięcia wspomnianego gniazda za pomocą CloseHandle()/closesocket(). |
+| **Czas procesora** | Ilość procesora CPU zużywanego przez aplikację w ciągu kilku sekund. Aby uzyskać więcej informacji na temat tej metryki, zobacz [czas procesora cpu a procent procesora .](#cpu-time-vs-cpu-percentage) |
+| **Bieżące złożenia** | Bieżąca liczba zestawów załadowany przez wszystkie AppDomains w tej aplikacji. |
+| **Dane w** | Ilość przychodzącej przepustowości zużywanej przez aplikację w MiB. |
+| **Wyjście danych** | Ilość wychodzącej przepustowości zużywanej przez aplikację w MiB. |
+| **Użycie systemu plików** | Procent przydziału systemu plików zużytego przez aplikację. |
+| **Odpady odśmieskowe Gen 0** | Liczba razy generacji 0 obiekty są śmieci zebrane od początku procesu aplikacji. Kontrolery nowej generacji obejmują wszystkie dc niższej generacji.|
+| **Wyrzucanie elementów bezużytecznych gen 1** | Liczba razy generacji 1 obiekty są śmieci zebrane od początku procesu aplikacji. Kontrolery nowej generacji obejmują wszystkie dc niższej generacji.|
+| **Odpady odśmieskowe gen 2** | Liczba razy generacji 2 obiekty są śmieci zebrane od początku procesu aplikacji.|
+| **Liczba dojść** | Całkowita liczba dojść aktualnie otwartych przez proces aplikacji.|
+| **Http 2xx** | Liczba żądań powodujących kod stanu HTTP ≥ 200, ale < 300. |
+| **Http 3xx** | Liczba żądań powodujących kod stanu HTTP ≥ 300, ale < 400. |
+| **Http 401** | Liczba żądań powodujących kod stanu HTTP 401. |
+| **Http 403** | Liczba żądań powodujących kod stanu HTTP 403. |
+| **Http 404** | Liczba żądań powodujących kod stanu HTTP 404. |
+| **Http 406** | Liczba żądań powodujących kod stanu HTTP 406. |
+| **Http 4xx** | Liczba żądań powodujących kod stanu HTTP ≥ 400, ale < 500. |
+| **Błędy serwera http** | Liczba żądań powodujących kod stanu HTTP ≥ 500, ale < 600. |
+| **IO inne bajty na sekundę** | Szybkość, z jaką proces aplikacji jest wydawanie bajtów do operacji we/wy, które nie obejmują danych, takich jak operacje kontroli.|
+| **Inne operacje we/wy na sekundę** | Szybkość, z jaką proces aplikacji jest wystawianie operacji we/wy, które nie są operacje odczytu lub zapisu.|
 | **Bajty odczytu we/wy na sekundę** | Szybkość, z jaką proces aplikacji odczytuje bajty z operacji we/wy.|
-| **Operacje odczytu we/wy na sekundę** | Szybkość, z jaką proces aplikacji wystawia operacje we/wy odczytu.|
-| **Bajty zapisu we/wy na sekundę** | Szybkość, z jaką proces aplikacji zapisuje bajty w operacjach we/wy.|
-| **Operacje zapisu we/wy na sekundę** | Szybkość, z jaką proces aplikacji wysyła operacje we/wy zapisu.|
-| **Zestaw roboczy pamięci** | Bieżąca ilość pamięci używanej przez aplikację w usłudze MiB. |
-| **Bajty prywatne** | Bajty prywatne to bieżący rozmiar (w bajtach) pamięci przydzielonej przez proces aplikacji, która nie może być współużytkowana z innymi procesami.|
-| **Żądań** | Całkowita liczba żądań niezależnie od ich wyników w kodzie stanu HTTP. |
+| **Operacje odczytu we/wy na sekundę** | Szybkość, z jaką proces aplikacji jest wydawanie operacji we/wy odczytu.|
+| **Bajty zapisu we/wy na sekundę** | Szybkość, z jaką proces aplikacji jest zapisywanie bajtów do operacji we/wy.|
+| **Operacje zapisu we/wy na sekundę** | Szybkość, z jaką proces aplikacji jest wydawanie operacji we/wy zapisu.|
+| **Zestaw roboczy pamięci** | Bieżąca ilość pamięci używanej przez aplikację w MiB. |
+| **Bajty prywatne** | Bajty prywatne to bieżący rozmiar w bajtach pamięci przydzielonej przez proces aplikacji, która nie może być współużytkowana z innymi procesami.|
+| **Żądania** | Całkowita liczba żądań niezależnie od ich wynikowego kodu stanu HTTP. |
 | **Żądania w kolejce aplikacji** | Liczba żądań w kolejce żądań aplikacji.|
-| **Liczba wątków** | Liczba wątków aktywnych obecnie w procesie aplikacji.|
-| **Łączna liczba domen aplikacji** | Bieżąca liczba domen aplikacji załadowanych w tej aplikacji.|
-| **Całkowita liczba zwolnionych domen aplikacji** | Całkowita liczba elementów AppDomain zwolnionych od początku aplikacji.|
+| **Liczba wątków** | Liczba wątków aktualnie aktywnych w procesie aplikacji.|
+| **Łączna liczba domen aplikacji** | Bieżąca liczba AppDomains załadowany w tej aplikacji.|
+| **Całkowita liczba niezaładowanych domen aplikacji** | Całkowita liczba AppDomains zwolniony od początku aplikacji.|
 
 
-W przypadku planu App Service dostępne są następujące metryki:
+W przypadku planu usługi app service dostępne są następujące dane:
 
 > [!NOTE]
-> Metryki planu App Service są dostępne tylko w przypadku planów w warstwach *podstawowa*, *standardowa*i *Premium* .
+> Metryki planu usługi app service są dostępne tylko dla planów w warstwach *Podstawowe,* *Standardowe*i *Premium.*
 > 
 
 | Metryka | Opis |
 | --- | --- |
-| **Procent użycia procesora CPU** | Średni procesor używany przez wszystkie wystąpienia planu. |
-| **Procent pamięci** | Średnia pamięć użyta we wszystkich wystąpieniach planu. |
-| **Dane w** | Średnia przepustowość przychodząca używana przez wszystkie wystąpienia planu. |
-| **Dane wychodzące** | Średnia wychodząca przepustowość używana we wszystkich wystąpieniach planu. |
-| **Długość kolejki dysku** | Średnia liczba żądań odczytu i zapisu, które zostały dodane do kolejki w magazynie. Duża długość kolejki dysku to wskazanie aplikacji, która może ulec spowolnieniu z powodu nadmiernej liczby operacji we/wy dysku. |
-| **Długość kolejki http** | Średnia liczba żądań HTTP, które musiały zostać obsłużone w kolejce przed ich ukończeniem. Duża lub większa długość kolejki HTTP jest objawem planu pod dużym obciążeniem. |
+| **Procent procesora** | Średni procesor cpu używany we wszystkich wystąpieniach planu. |
+| **Procent pamięci** | Średnia pamięć używana we wszystkich wystąpieniach planu. |
+| **Dane w** | Średnia przepustowość przychodząca używana we wszystkich wystąpieniach planu. |
+| **Wyjście danych** | Średnia przepustowość wychodząca używana we wszystkich wystąpieniach planu. |
+| **Długość kolejki dysku** | Średnia liczba żądań odczytu i zapisu, które zostały umieszczone w kolejce w magazynie. Wysoka długość kolejki dysku jest wskazaniem aplikacji, która może spowalniać z powodu nadmiernego we/wy dysku. |
+| **Długość kolejki http** | Średnia liczba żądań HTTP, które musiały siedzieć w kolejce przed ich spełnieniem. Wysoka lub rosnąca długość kolejki HTTP jest objawem planu pod dużym obciążeniem. |
 
-### <a name="cpu-time-vs-cpu-percentage"></a>Czas procesora (%) w porównaniu z procesorem CPU
+### <a name="cpu-time-vs-cpu-percentage"></a>Czas procesora a procent procesora
 <!-- To do: Fix Anchor (#CPU-time-vs.-CPU-percentage) -->
 
-Istnieją dwie metryki odzwierciedlające użycie procesora CPU:
+Istnieją dwa metryki, które odzwierciedlają użycie procesora:
 
-**Czas procesora**: przydatne w przypadku aplikacji hostowanych w planach bezpłatnych lub wspólnych, ponieważ jeden z ich przydziałów jest zdefiniowany w minutach procesora używanego przez aplikację.
+**Czas procesora:** Przydatne dla aplikacji hostowanych w planach wolnych lub udostępnionych, ponieważ jeden z ich przydziałów jest zdefiniowany w minutach procesora używanego przez aplikację.
 
-**Procent użycia procesora CPU**: przydatne w przypadku aplikacji hostowanych w planach Basic, standard i Premium, ponieważ mogą one być skalowane w poziomie. Wartość procentowa procesora CPU jest dobrym wskaźnikiem ogólnego użycia we wszystkich wystąpieniach.
+**Procent procesora:** przydatne w przypadku aplikacji hostowanych w planach podstawowych, standardowych i premium, ponieważ można je skalować w poziomie. Procent procesora CPU jest dobrym wskaźnikiem ogólnego użycia we wszystkich wystąpieniach.
 
-## <a name="metrics-granularity-and-retention-policy"></a>Zasady szczegółowości i przechowywania metryk
-Metryki dla aplikacji i planu usługi App Service są rejestrowane i agregowane przez usługę z użyciem następujących zasad szczegółowości i przechowywania:
+## <a name="metrics-granularity-and-retention-policy"></a>Szczegółowe metryki i zasady przechowywania
+Metryki planu usługi aplikacji i aplikacji są rejestrowane i agregowane przez usługę, z następującymi szczegółowościami i zasadami przechowywania:
 
-* Metryki stopnia szczegółowości **minut** są przechowywane przez 30 godzin.
-* Metryki szczegółowości **godzinowej** są przechowywane przez 30 dni.
-* **Metryki stopnia szczegółowości** są przechowywane przez 30 dni.
+* **Metryki** ziarnistości minut są przechowywane przez 30 godzin.
+* **Metryki** ziarnistości godzin są przechowywane przez 30 dni.
+* Wskaźniki ziarnistości **dziennej** są przechowywane przez 30 dni.
 
-## <a name="monitoring-quotas-and-metrics-in-the-azure-portal"></a>Monitorowanie przydziałów i metryk w Azure Portal
-Aby sprawdzić stan różnych przydziałów i metryk, które mają wpływ na aplikację, przejdź do [Azure Portal](https://portal.azure.com).
+## <a name="monitoring-quotas-and-metrics-in-the-azure-portal"></a>Monitorowanie przydziałów i metryk w witrynie Azure portal
+Aby przejrzeć stan różnych przydziałów i metryk, które mają wpływ na aplikację, przejdź do [witryny Azure portal](https://portal.azure.com).
 
-![Przydziały wykresu w Azure Portal][quotas]
+![Wykres przydziałów w witrynie Azure portal][quotas]
 
-Aby znaleźć przydziały, wybierz pozycję **ustawienia** > **limity przydziału**. Na wykresie można przejrzeć: 
+Aby znaleźć przydziały, wybierz **pozycję Ustawienia** > **Przydziały**. Na wykresie możesz przejrzeć: 
 1. Nazwa przydziału.
 1. Jego interwał resetowania.
-1. Bieżący limit.
+1. Jego obecny limit.
 1. Jego bieżąca wartość.
 
-![wykres metryki w Azure Portal][metrics] możesz uzyskać dostęp do metryk bezpośrednio z poziomu strony **Przegląd** zasobów. Tutaj zobaczysz wykresy przedstawiające niektóre metryki aplikacji.
+![Wykres metrykowy w][metrics] witrynie Azure portal Można uzyskać dostęp do metryk bezpośrednio ze strony **Przegląd** zasobu. Tutaj zobaczysz wykresy przedstawiające niektóre dane aplikacji.
 
-Kliknięcie dowolnego z tych wykresów spowoduje przejście do widoku metryk, w którym można tworzyć niestandardowe wykresy, wysyłać zapytania o różne metryki i wiele innych. 
+Kliknięcie dowolnego z tych wykresów spowoduje wyświetlenie widoku metryk, w którym można tworzyć wykresy niestandardowe, wyszukiwać różne metryki i wiele więcej. 
 
-Aby dowiedzieć się więcej o metrykach, zobacz [monitorowanie metryk usług](../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md).
+Aby dowiedzieć się więcej o metrykach, zobacz [Monitorowanie metryk usługi](../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md).
 
-## <a name="alerts-and-autoscale"></a>Alerty i automatyczne skalowanie
-Metryki dla aplikacji lub planu App Service mogą być podłączane do alertów. Aby uzyskać więcej informacji, zobacz [Receive alert notifications](../monitoring-and-diagnostics/insights-alerts-portal.md) (Otrzymywanie powiadomień o alertach).
+## <a name="alerts-and-autoscale"></a>Alerty i skalowanie automatyczne
+Metryki dla aplikacji lub planu usługi aplikacji można podłączyć do alertów. Aby uzyskać więcej informacji, zobacz [Receive alert notifications](../monitoring-and-diagnostics/insights-alerts-portal.md) (Otrzymywanie powiadomień o alertach).
 
-App Service aplikacje hostowane w planach App Service w warstwie Podstawowa lub wyższa obsługują automatyczne skalowanie. Funkcja automatycznego skalowania umożliwia skonfigurowanie reguł, które monitorują metryki planu App Service. Reguły mogą zwiększyć lub zmniejszyć liczbę wystąpień, co może zapewnić dodatkowe zasoby w razie konieczności. Reguły mogą również ułatwić oszczędność pieniędzy, gdy aplikacja jest nadmiernie obsługiwana.
+Aplikacje usługi App Service hostowane w planach usługi App Service w trybie podstawowym lub wyższym obsługują skalowanie automatyczne. Za pomocą skalowania automatycznego można skonfigurować reguły monitorujące metryki planu usługi App Service. Reguły można zwiększyć lub zmniejszyć liczbę wystąpień, które mogą zapewnić dodatkowe zasoby w razie potrzeby. Reguły mogą również pomóc zaoszczędzić pieniądze, gdy aplikacja jest nadmiernie aprowizacji.
 
-Aby uzyskać więcej informacji na temat automatycznego skalowania, zobacz [Jak skalować](../monitoring-and-diagnostics/insights-how-to-scale.md) i [najlepsze rozwiązania dotyczące Azure monitor skalowanie](../azure-monitor/platform/autoscale-best-practices.md)automatyczne.
+Aby uzyskać więcej informacji na temat skalowania automatycznego, zobacz [Jak skalować](../monitoring-and-diagnostics/insights-how-to-scale.md) i [najważniejsze wskazówki dotyczące skalowania automatycznego usługi Azure Monitor](../azure-monitor/platform/autoscale-best-practices.md).
 
 [fzilla]:https://go.microsoft.com/fwlink/?LinkId=247914
 [vmsizes]:https://go.microsoft.com/fwlink/?LinkID=309169

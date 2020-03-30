@@ -1,6 +1,6 @@
 ---
-title: Żądanie pakietu dostępu — Zarządzanie prawami usługi Azure AD
-description: Dowiedz się, jak za pomocą portalu dostępu uzyskiwać żądania dostępu do pakietu dostępu w Azure Active Directory Zarządzanie uprawnieniami.
+title: Żądanie pakietu dostępu — zarządzanie uprawnieniami usługi Azure AD
+description: Dowiedz się, jak korzystać z portalu Mój dostęp, aby zażądać dostępu do pakietu dostępu w zarządzaniu uprawnieniami usługi Azure Active Directory.
 services: active-directory
 documentationCenter: ''
 author: msaburnley
@@ -17,111 +17,111 @@ ms.author: ajburnle
 ms.reviewer: mamkumar
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4b1ccde2f1f92237978ab4e68acaa26393bbb9d8
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79261751"
 ---
-# <a name="request-access-to-an-access-package-in-azure-ad-entitlement-management"></a>Zażądaj dostępu do pakietu dostępu w usłudze Azure AD uprawnienia do zarządzania
+# <a name="request-access-to-an-access-package-in-azure-ad-entitlement-management"></a>Żądanie dostępu do pakietu dostępu w zarządzaniu uprawnieniami usługi Azure AD
 
-Dzięki zarządzaniu prawami usługi Azure AD pakiet dostępu umożliwia jednorazowe skonfigurowanie zasobów i zasad, które automatycznie zarządzają dostępem w okresie istnienia pakietu dostępu. 
+Dzięki zarządzaniu uprawnieniami usługi Azure AD pakiet dostępu umożliwia jednorazową konfigurację zasobów i zasad, które automatycznie administrują dostępem przez cały okres ważności pakietu dostępu. 
 
-Menedżer pakietów dostępu może skonfigurować zasady, aby wymagać zatwierdzenia użytkownikom dostępu do pakietów dostępu. Użytkownik wymagający dostępu do pakietu dostępu może przesłać żądanie uzyskania dostępu. W tym artykule opisano, jak przesłać żądanie dostępu.
+Menedżer pakietów dostępu można skonfigurować zasady, aby wymagać zatwierdzenia dla użytkowników, aby mieć dostęp do pakietów dostępu. Użytkownik, który potrzebuje dostępu do pakietu dostępu można przesłać żądanie, aby uzyskać dostęp. W tym artykule opisano sposób przesyłania żądania dostępu.
 
-## <a name="sign-in-to-the-my-access-portal"></a>Logowanie się do portalu My Access
+## <a name="sign-in-to-the-my-access-portal"></a>Logowanie się do portalu Mój dostęp
 
-Pierwszym krokiem jest zalogowanie się w portalu do mojego dostępu, w którym można zażądać dostępu do pakietu dostępu.
+Pierwszym krokiem jest zalogowanie się do portalu Mój dostęp, gdzie można zażądać dostępu do pakietu dostępu.
 
-**Rola wymagana wstępnie:** Obiektu żądającego
+**Rola wstępna:** Żądającego
 
-1. Poszukaj wiadomości e-mail lub wiadomości z programu Project lub Business Manager, z którym pracujesz. Wiadomość e-mail powinna zawierać link do pakietu dostępu, do którego będzie potrzebny dostęp. Łącze rozpoczyna się od `myaccess`, zawiera wskazówkę katalogu i kończą się IDENTYFIKATORem pakietu dostępu.  (W przypadku instytucji rządowych Stanów Zjednoczonych domena może być `https://myaccess.microsoft.us`).
+1. Poszukaj wiadomości e-mail lub wiadomości od projektu lub menedżera firmy, z którą pracujesz. Wiadomość e-mail powinna zawierać łącze do pakietu dostępu, do którego będziesz potrzebować dostępu. Łącze rozpoczyna `myaccess`się od , zawiera wskazówkę katalogu, a kończy się identyfikatorem pakietu dostępu.  (W przypadku instytucji rządowych `https://myaccess.microsoft.us` i samorządowych domena może być domeną).
  
     `https://myaccess.microsoft.com/@<directory_hint>#/access-packages/<access_package_id>`
 
-1. Otwórz link.
+1. Otwórz łącze.
 
-1. Zaloguj się do portalu My Access.
+1. Zaloguj się do portalu Mój dostęp.
 
-    Upewnij się, że używasz konta organizacji (służbowego). Jeśli nie masz pewności, skontaktuj się z projektem lub menedżerem biznesowym.
+    Upewnij się, że korzystasz z konta instytucji (służbowego) w tej instytucji. Jeśli nie masz pewności, skontaktuj się z menedżerem projektu lub firmy.
 
-## <a name="request-an-access-package"></a>Żądaj pakietu dostępu
+## <a name="request-an-access-package"></a>Żądanie pakietu dostępu
 
-Po znalezieniu pakietu dostępu w portalu dostępu można przesłać żądanie.
+Po znalezieniu pakietu dostępu w portalu Mój dostęp można przesłać żądanie.
 
-**Rola wymagana wstępnie:** Obiektu żądającego
+**Rola wstępna:** Żądającego
 
-1. Znajdź na liście pakiet dostępu.  W razie potrzeby można wyszukać, wpisując ciąg wyszukiwania, a następnie wybierając pozycję **Nazwa**, **wykaz**lub filtr **zasobów** .
+1. Znajdź pakiet dostępu na liście.  W razie potrzeby można wyszukiwać, wpisując ciąg wyszukiwania, a następnie wybierając filtr **Nazwa,** **Katalog**lub **Zasoby.**
 
-    ![Portal dostępu — Wyszukiwanie zasobów](./media/entitlement-management-request-access/my-access-resource-search.png)
+    ![Mój portal dostępu — wyszukiwanie zasobów](./media/entitlement-management-request-access/my-access-resource-search.png)
 
 1. Kliknij znacznik wyboru, aby wybrać pakiet dostępu.
 
-1. Kliknij pozycję **Zażądaj dostępu** , aby otworzyć okienko żądania dostępu.
+1. Kliknij **pozycję Poproś o dostęp,** aby otworzyć okienko Dostęp żądania.
 
-    ![Portal dostępu — dostęp — pakiety](./media/entitlement-management-request-access/my-access-request-access-button.png)
+    ![Mój portal dostępu — pakiety dostępu](./media/entitlement-management-request-access/my-access-request-access-button.png)
 
-1. Jeśli zostanie wyświetlone pole **uzasadnienie biznesowe** , wpisz uzasadnienie dostępu.
+1. Jeśli jest wyświetlane pole **Uzasadnienie biznesowe,** wpisz uzasadnienie potrzeby dostępu.
 
-1. Jeśli jest włączone **żądanie dla określonego okresu?** , wybierz opcję **tak** lub **nie**.
+1. Jeśli **opcja Żądanie na określony okres jest** włączona, wybierz opcję **Tak** lub **Nie**.
 
-1. W razie potrzeby określ datę początkową i datę końcową.
+1. W razie potrzeby określ datę rozpoczęcia i datę zakończenia.
 
-    ![Portal dostępu — żądanie dostępu](./media/entitlement-management-shared/my-access-request-access.png)
+    ![Mój portal dostępu — prośba o dostęp](./media/entitlement-management-shared/my-access-request-access.png)
 
-1. Po zakończeniu kliknij pozycję **Prześlij** , aby przesłać żądanie.
+1. Po zakończeniu kliknij przycisk **Prześlij,** aby przesłać zgłoszenie.
 
-1. Kliknij pozycję **historia żądań** , aby wyświetlić listę żądań i stan.
+1. Kliknij **pozycję Historia żądań,** aby wyświetlić listę żądań i stan.
 
-    Jeśli pakiet dostępu wymaga zatwierdzenia, żądanie jest teraz w stanie oczekiwania na zatwierdzenie.
+    Jeśli pakiet dostępu wymaga zatwierdzenia, żądanie jest teraz w stanie oczekującego zatwierdzenia.
 
 ### <a name="select-a-policy"></a>Wybieranie zasad
 
-Jeśli zażądano dostępu do pakietu dostępu z wieloma zasadami, które mają zastosowanie, może zostać wyświetlony monit o wybranie zasad. Na przykład Menedżer pakietów dostępu może skonfigurować pakiet dostępu z dwiema zasadami dla dwóch grup pracowników wewnętrznych. Pierwsze zasady mogą zezwalać na dostęp przez 60 dni i wymagać zatwierdzenia. Drugie zasady mogą zezwalać na dostęp przez 2 dni i nie wymagać zatwierdzania. Jeśli wystąpi ten scenariusz, należy wybrać zasady, które mają być używane.
+Jeśli zażądasz dostępu do pakietu dostępu, który ma wiele zasad, które mają zastosowanie, może zostać poproszony o wybranie zasad. Na przykład menedżer pakietów dostępu może skonfigurować pakiet dostępu z dwiema zasadami dla dwóch grup pracowników wewnętrznych. Pierwsza zasada może zezwalać na dostęp przez 60 dni i wymagać zatwierdzenia. Druga zasada może zezwalać na dostęp przez 2 dni i nie wymaga zatwierdzenia. Jeśli napotkasz ten scenariusz, musisz wybrać zasady, których chcesz użyć.
 
-![Portal dostępu — dostęp do żądania — wiele zasad](./media/entitlement-management-request-access/my-access-multiple-policies.png)
+![Mój portal dostępu — żądanie dostępu — wiele zasad](./media/entitlement-management-request-access/my-access-multiple-policies.png)
 
-## <a name="resubmit-a-request"></a>Prześlij ponownie żądanie
+## <a name="resubmit-a-request"></a>Ponowne przesłanie żądania
 
-Żądanie dostępu do pakietu dostępu może być odrzucone lub żądanie może wygasnąć, jeśli osoby zatwierdzające nie odpowiadają na czas. Jeśli potrzebujesz dostępu, możesz ponowić próbę i ponownie przesłać żądanie. Poniższa procedura wyjaśnia, jak ponownie przesłać żądanie dostępu:
+Gdy zażądasz dostępu do pakietu dostępu, żądanie może zostać odrzucone lub żądanie może wygasnąć, jeśli osoby zatwierdzające nie odpowiedzą na czas. Jeśli potrzebujesz dostępu, możesz spróbować ponownie i ponownie przesłać żądanie. W poniższej procedurze wyjaśniono, jak ponownie przesłać żądanie dostępu:
 
-**Rola wymagana wstępnie:** Obiektu żądającego
+**Rola wstępna:** Żądającego
 
-1. Zaloguj się do portalu **My Access** .
+1. Zaloguj się do portalu **Mój dostęp.**
 
-1. Kliknij pozycję **historia żądań** w menu nawigacji po lewej stronie.
+1. Kliknij **pozycję Żądaj historii** z menu nawigacji po lewej stronie.
 
-1. Znajdź pakiet dostępu, dla którego chcesz ponownie przesłać żądanie.
+1. Znajdź pakiet dostępu, dla którego ponownie należy przesłać żądanie.
 
 1. Kliknij znacznik wyboru, aby wybrać pakiet dostępu.
 
-1. Kliknij link Blue **View** z prawej strony wybranego pakietu dostępu.
+1. Kliknij niebieskie **łącze Widok** po prawej stronie wybranego pakietu dostępu.
     
-    ![Wybierz pakiet dostępu i link do widoku](./media/entitlement-management-request-access/resubmit-request-select-request-and-view.png)
+    ![Wybierz pakiet dostępu i łącze widoku](./media/entitlement-management-request-access/resubmit-request-select-request-and-view.png)
 
-    Zostanie otwarte okienko po prawej stronie z historią żądań dla pakietu dostępu.
+    Okienko zostanie otwarte po prawej stronie z historią żądań dla pakietu dostępu.
     
     ![Wybierz przycisk Prześlij ponownie](./media/entitlement-management-request-access/resubmit-request-select-resubmit.png)
 
-1. Kliknij przycisk **Prześlij ponownie** w dolnej części okienka.
+1. Kliknij przycisk **Prześlij ponownie** u dołu okienka.
 
-## <a name="cancel-a-request"></a>Anuluj żądanie
+## <a name="cancel-a-request"></a>Anulowanie żądania
 
-W przypadku przesyłania żądania dostępu, gdy żądanie jest nadal w stanie **oczekiwania na zatwierdzenie** , można anulować żądanie.
+Jeśli prześlesz żądanie dostępu, a żądanie jest nadal w stanie **oczekującego zatwierdzenia,** możesz anulować żądanie.
 
-**Rola wymagana wstępnie:** Obiektu żądającego
+**Rola wstępna:** Żądającego
 
-1. W portalu mój dostęp po lewej stronie kliknij pozycję **historia żądań** , aby wyświetlić listę żądań i stan.
+1. W portalu Mój dostęp po lewej stronie kliknij pozycję **Historia żądań,** aby wyświetlić listę żądań i stan.
 
-1. Kliknij link **Wyświetl** dla żądania, które chcesz anulować.
+1. Kliknij łącze **Wyświetl** żądanie, które chcesz anulować.
 
-1. Jeśli żądanie jest nadal w stanie **oczekiwania na zatwierdzenie** , możesz kliknąć przycisk **Anuluj żądanie** , aby anulować żądanie.
+1. Jeśli żądanie jest nadal w stanie **oczekującego zatwierdzenia,** można kliknąć **przycisk Anuluj żądanie,** aby anulować żądanie.
 
-    ![Portal dostępu — Anuluj żądanie](./media/entitlement-management-request-access/my-access-cancel-request.png)
+    ![Mój portal dostępu — anulowanie żądania](./media/entitlement-management-request-access/my-access-cancel-request.png)
 
-1. Kliknij pozycję **historia żądań** , aby potwierdzić, że żądanie zostało anulowane.
+1. Kliknij **pozycję Historia żądań,** aby potwierdzić, że żądanie zostało anulowane.
 
 ## <a name="next-steps"></a>Następne kroki
 
-- [Zatwierdzanie lub odrzucanie żądań dostępu](entitlement-management-request-approve.md)
+- [Zatwierdzanie lub odmawianie żądań dostępu](entitlement-management-request-approve.md)
 - [Proces żądania i powiadomienia e-mail](entitlement-management-process.md)

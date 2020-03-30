@@ -1,67 +1,66 @@
 ---
-title: Oferta aplikacji platformy Azure | Portal Azure Marketplace
-description: Przegląd procesu publikowania oferty aplikacji platformy Azure w portalu Azure Marketplace.
-services: Azure, Marketplace, Cloud Partner Portal,
-author: dan-wesley
+title: Oferta aplikacji platformy Azure | Azure Marketplace
+description: Omówienie procesu publikowania oferty aplikacji platformy Azure w portalu Azure Marketplace.
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 02/06/2019
-ms.author: pabutler
-ms.openlocfilehash: 9125b5c71b63b27c58ea72b7bfd49f730854b33d
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: ed086ffdc49e21b819c0ee05b38ad882b4e269d7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73818802"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80285320"
 ---
 # <a name="azure-application-offer"></a>Oferta aplikacji platformy Azure
 
 |    |    |
 |-----------------------------------------------------------------|------------------------------------------|
-| <div class="body"> W tej sekcji opisano sposób publikowania nowej oferty aplikacji platformy Azure w [portalu Azure Marketplace](https://azuremarketplace.microsoft.com).  Każda aplikacja platformy Azure zawiera szablon Azure Resource Manager, który definiuje wszystkie zasoby techniczne używane przez aplikację, która zwykle zawiera co najmniej jedną maszynę wirtualną i inne pomocnicze usługi platformy Azure lub sieci Web. Wszystkie oferty aplikacji platformy Azure muszą włączać zabezpieczenia dostępu za pomocą [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/).  </div> | ![Ikona aplikacji platformy Azure](./media/azureapp-icon1.png)  |
+| <div class="body"> W tej sekcji wyjaśniono, jak opublikować nową ofertę aplikacji platformy Azure w [portalu Azure Marketplace.](https://azuremarketplace.microsoft.com)  Każda aplikacja platformy Azure zawiera szablon usługi Azure Resource Manager, który definiuje wszystkie zasoby techniczne używane przez aplikację, która zazwyczaj obejmuje jedną lub więcej maszyn wirtualnych i innych usług obsługujących platformę Azure lub usługi oparte na sieci Web. Wszystkie oferty aplikacji platformy Azure muszą włączać zabezpieczenia dostępu za pośrednictwem [usługi Azure Active Directory.](https://docs.microsoft.com/azure/active-directory/)  </div> | ![Ikona aplikacji platformy Azure](./media/azureapp-icon1.png)  |
 
-## <a name="publishing-overview"></a>Przegląd publikowania
+## <a name="publishing-overview"></a>Omówienie publikowania
 
-Następujące wideo, [Budowanie szablonów rozwiązań i zarządzane aplikacje dla portalu Azure Marketplace](https://channel9.msdn.com/Events/Build/2018/BRK3603)to wprowadzenie: jakie typy ofert są dostępne, jakie zasoby techniczne są wymagane, sposób tworzenia szablonu Azure Resource Manager, opracowywanie i testowania interfejsu użytkownika aplikacji, sposobu publikowania oferty aplikacji oraz procesu przeglądu aplikacji.
+W poniższym klipie wideo, [Szablony rozwiązań budowlanych i aplikacje zarządzane dla portalu Azure Marketplace,](https://channel9.msdn.com/Events/Build/2018/BRK3603)jest wprowadzenie: jakie typy ofert są dostępne, jakie zasoby techniczne są wymagane, jak autor szablonu usługi Azure Resource Manager, tworzenie i testowanie interfejsu użytkownika aplikacji, jak opublikować ofertę aplikacji i proces przeglądu aplikacji.
 
 >[!VIDEO https://channel9.msdn.com/Events/Build/2018/BRK3603/player]
 
 
 ## <a name="types-of-azure-applications"></a>Typy aplikacji platformy Azure
 
-Istnieją dwa rodzaje aplikacji platformy Azure: zarządzane aplikacje i szablony rozwiązań. 
+Istnieją dwa rodzaje aplikacji platformy Azure: aplikacje zarządzane i szablony rozwiązań. 
 
-- Szablony rozwiązań to jeden z głównych sposobów publikowania rozwiązania w portalu Marketplace. Ten typ oferty jest używany, gdy rozwiązanie wymaga dodatkowego wdrożenia i automatyzacji konfiguracji poza jedną maszyną wirtualną. Możesz zautomatyzować dostarczanie więcej niż jednej maszyny wirtualnej przy użyciu szablonu rozwiązania. Ta Automatyzacja obejmuje obsługę zasobów sieciowych i magazynowych w celu zapewnienia złożonych rozwiązań IaaS. Aby zapoznać się z omówieniem wymagań szablonów rozwiązań i modelu rozliczeń, zobacz [aplikacje platformy Azure: szablony rozwiązań](https://docs.microsoft.com/azure/marketplace/marketplace-solution-templates).
+- Szablony rozwiązań są jednym z głównych sposobów publikowania rozwiązania w portalu Marketplace. Ten typ oferty jest używany, gdy rozwiązanie wymaga dodatkowego wdrożenia i automatyzacji konfiguracji poza jedną maszyną wirtualną (maszynę wirtualną). Można zautomatyzować dostarczanie więcej niż jednej maszyny Wirtualnej przy użyciu szablonu rozwiązania. Ta automatyzacja obejmuje inicjowanie obsługi administracyjnej zasobów sieciowych i magazynowych w celu zapewnienia złożonych rozwiązań IaaS. Aby zapoznać się z omówieniem wymagań dotyczących szablonów rozwiązań i modelu rozliczeń, zobacz [Szablony rozwiązań usługi Azure Applications:](https://docs.microsoft.com/azure/marketplace/marketplace-solution-templates).
 
-- Aplikacje zarządzane są podobne do szablonów rozwiązań z jedną różnicą kluczową. Najważniejsza różnica między nimi polega na tym, że w aplikacji zarządzanej zasoby są wdrażane w grupie zasobów zarządzanej przez wydawcę aplikacji. Grupa zasobów znajduje się w subskrypcji klienta, ale tożsamość w dzierżawie wydawcy ma dostęp do tej grupy zasobów. Wydawca określa koszt bieżącej obsługi rozwiązania. Korzystaj z aplikacji zarządzanych przez platformę Azure, aby łatwo tworzyć i dostarczać klientom w pełni zarządzane aplikacje gotowe.
+- Aplikacje zarządzane są podobne do szablonów rozwiązań, z jedną kluczową różnicą. Najważniejsza różnica między nimi polega na tym, że w aplikacji zarządzanej zasoby są wdrażane w grupie zasobów zarządzanej przez wydawcę aplikacji. Grupa zasobów znajduje się w subskrypcji klienta, ale tożsamość w dzierżawie wydawcy ma dostęp do tej grupy zasobów. Wydawca określa koszt bieżącej obsługi rozwiązania. Użyj aplikacji zarządzanych platformy Azure, aby łatwo tworzyć i dostarczać klientom w pełni zarządzane, gotowe aplikacje.
 
-Oprócz portalu Azure Marketplace można również oferować zarządzane aplikacje w katalogu usług. Wykaz usług to wewnętrzny katalog zatwierdzonych rozwiązań, przeznaczonych dla użytkowników w organizacji. Katalog jest używany do zaspokajania standardów organizacyjnych, a jednocześnie oferuje rozwiązania dla grup w organizacji. Wykaz pozwala pracownikom łatwo znajdować aplikacje zalecane i zatwierdzone przez działy IT.
+Oprócz portalu Azure Marketplace można również oferować aplikacje zarządzane w katalogu usług. Wykaz usług to wewnętrzny katalog zatwierdzonych rozwiązań, przeznaczonych dla użytkowników w organizacji. Katalog służy do spełniania standardów organizacyjnych, jednocześnie oferując rozwiązania dla grup w organizacji. Wykaz pozwala pracownikom łatwo znajdować aplikacje zalecane i zatwierdzone przez działy IT.
 
 >[!Note]
->Niedostępność kanału partnera dostawcy rozwiązań w chmurze (CSP) jest teraz dostępna.  Zobacz [dostawcy rozwiązań w chmurze](../../cloud-solution-providers.md) , aby uzyskać więcej informacji na temat marketingu oferty przez kanały partnerskie programu Microsoft CSP.
+>Usługa wyboru kanału partnerskiego dostawców rozwiązań w chmurze (CSP) jest już dostępna.  Zobacz [dostawców rozwiązań w chmurze, aby](../../cloud-solution-providers.md) uzyskać więcej informacji na temat marketingu oferty za pośrednictwem kanałów partnerów CSP firmy Microsoft.
 
-Aby uzyskać więcej informacji o zaletach i typach zarządzanych aplikacji, zobacz [Omówienie usługi Azure Managed Applications](https://docs.microsoft.com/azure/managed-applications/overview).
+Aby uzyskać więcej informacji na temat zalet i typów aplikacji zarządzanych, zobacz [omówienie aplikacji zarządzanych platformy Azure](https://docs.microsoft.com/azure/managed-applications/overview).
 
 
 ## <a name="publishing-process-workflow"></a>Przepływ pracy procesu publikowania
 
-Na poniższym diagramie przedstawiono proces wysokiego poziomu służący do publikowania oferty aplikacji platformy Azure.
+Na poniższym diagramie przedstawiono proces wysokiego poziomu publikowania oferty aplikacji platformy Azure.
 
 ![Przepływ pracy dla oferty publikowania](./media/new-offer-process.png)
 
-Poniżej przedstawiono ogólne kroki publikowania oferty aplikacji platformy Azure:
+Kroki wysokiego poziomu publikowania oferty aplikacji platformy Azure to:
 
-1. Spełnienie wymagań [wstępnych](./cpp-prerequisites.md) — (nie pokazano) Sprawdź, czy zostały spełnione wymagania biznesowe i techniczne dotyczące publikowania aplikacji platformy Azure w portalu Azure Marketplace. 
+1. Spełnij [wymagania wstępne](./cpp-prerequisites.md) — (nie pokazano) Sprawdź, czy spełniasz wymagania biznesowe i techniczne dotyczące publikowania aplikacji platformy Azure w portalu Azure Marketplace. 
 
-1. [Utwórz ofertę](./cpp-create-offer.md) — podaj szczegółowe informacje o ofercie. Te informacje obejmują: opis oferty, materiały marketingowe, informacje o pomocy technicznej i specyfikacje zasobów.
+1. [Utwórz ofertę](./cpp-create-offer.md) — podaj szczegółowe informacje o ofercie. Informacje te obejmują: opis oferty, materiały marketingowe, informacje o pomocy technicznej i specyfikacje zasobów.
 
-1. [Twórz lub Zbieraj istniejące zasoby biznesowe i techniczne](./cpp-create-technical-assets.md) — Twórz zasoby biznesowe (dokumenty prawne i materiały marketingowe) oraz zasoby techniczne dla powiązanego rozwiązania.
+1. [Tworzenie lub zbieranie istniejących zasobów biznesowych i technicznych](./cpp-create-technical-assets.md) — tworzenie zasobów biznesowych (dokumentów prawnych i materiałów marketingowych) oraz zasobów technicznych dla skojarzonego rozwiązania.
 
-1. [Utwórz jednostkę SKU](./cpp-skus-tab.md) — Utwórz jednostki SKU skojarzone z ofertą. Dla każdego obrazu, który ma zostać opublikowany, wymagana jest unikatowa jednostka SKU.
+1. [Utwórz jednostkę SKU](./cpp-skus-tab.md) — utwórz jednostki SKU skojarzone z ofertą. Unikatowa jednostka SKU jest wymagana dla każdego obrazu, który planujesz opublikować.
 
-1. Certyfikowanie i [Publikowanie oferty](./cpp-publish-offer.md) — po zakończeniu oferty i rozpoczęciu zasobów technicznych można przesłać ofertę. To przesyłanie rozpocznie proces publikowania. W trakcie tego procesu rozwiązanie jest testowane, weryfikowane, certyfikowane, a następnie "trafia na żywo" w portalu Azure Marketplace.
+1. Poświadczaj i [publikuj ofertę](./cpp-publish-offer.md) - Po zakończeniu oferty i aktywów technicznych można złożyć ofertę. To przesłanie rozpoczyna proces publikowania. Podczas tego procesu rozwiązanie jest testowane, sprawdzane, certyfikowane, a następnie "przechodzi na rynek" w portalu Azure Marketplace.
 
 ## <a name="next-steps"></a>Następne kroki
 
-Przed zainstalowaniem tych kroków należy spełnić [wymagania techniczne i biznesowe](./cpp-prerequisites.md) dotyczące publikowania aplikacji zarządzanej w Microsoft Azure Marketplace.
+Przed rozważeniem tych kroków należy spełnić [wymagania techniczne i biznesowe dotyczące](./cpp-prerequisites.md) publikowania aplikacji zarządzanej w witrynie Microsoft Azure Marketplace.

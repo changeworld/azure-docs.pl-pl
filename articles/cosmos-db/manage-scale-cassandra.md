@@ -1,66 +1,68 @@
 ---
-title: Elastyczne skalowanie przy użyciu interfejs API Cassandra w Azure Cosmos DB
-description: Dowiedz się więcej o opcjach dostępnych do skalowania Azure Cosmos DB konta interfejs API Cassandra i ich zalety/wady
+title: Elastyczna skala za pomocą interfejsu API Cassandra w usłudze Azure Cosmos DB
+description: Dowiedz się więcej o dostępnych opcjach skalowania konta interfejsu API usługi Azure Cosmos DB Cassandra oraz o ich zaletach/wadach
 author: TheovanKraay
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 01/13/2020
 ms.author: thvankra
-ms.openlocfilehash: e2967a6d12fba2d81dad9de31e7476a027a39d1c
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: 10d81de48c0d8f56c7c3fd26e3fd82a8c3df84c6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77468834"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79474683"
 ---
-# <a name="elastically-scale-an-azure-cosmos-db-cassandra-api-account"></a>Elastyczne skalowanie Azure Cosmos DB interfejs API Cassandra konta
+# <a name="elastically-scale-an-azure-cosmos-db-cassandra-api-account"></a>Elastyczne skalowanie konta interfejsu API usługi Azure Cosmos DB Cassandra
 
-Istnieje wiele opcji umożliwiających Eksplorowanie elastycznego charakteru interfejsu API Azure Cosmos DB Cassandra. Aby zrozumieć, jak efektywnie skalować w Azure Cosmos DB, ważne jest, aby zrozumieć, jak zapewnić odpowiednią ilość jednostek żądań (RU/s) w celu uwzględnienia wymagań dotyczących wydajności w systemie. Aby dowiedzieć się więcej na temat jednostek żądania, zobacz artykuł dotyczący [jednostek](request-units.md) żądania. 
+Istnieje wiele opcji, aby eksplorować elastyczny charakter interfejsu API usługi Azure Cosmos DB dla Cassandra. Aby zrozumieć, jak skutecznie skalować w usłudze Azure Cosmos DB, ważne jest, aby zrozumieć, jak aprowizować odpowiednią ilość jednostek żądań (RU/s) do uwzględnienia wymagań dotyczących wydajności w systemie. Aby dowiedzieć się więcej o jednostkach żądań, zobacz artykuł [o jednostkach żądań.](request-units.md) 
+
+W przypadku interfejsu API Cassandra można pobrać opłatę za jednostkę żądania dla poszczególnych zapytań przy użyciu [.NET i Java SDK](https://docs.microsoft.com/azure/cosmos-db/find-request-unit-charge#cassandra-api). Jest to pomocne w określeniu ilości RU/s, które należy udostępnić w usłudze.
 
 ![Operacje bazy danych zużywają jednostki żądań](./media/request-units/request-units.png)
 
-## <a name="handling-rate-limiting-429-errors"></a>Ograniczanie szybkości obsługi (błędy 429)
+## <a name="handling-rate-limiting-429-errors"></a>Ograniczenie szybkości obsługi (429 błędów)
 
-W przypadku, gdy klienci zużywają więcej zasobów (RU/s) niż ilość, która została zainicjowana, Azure Cosmos DB będą zwracać błędy o szybkości ograniczonej (429). Interfejs API Cassandra w Azure Cosmos DB tłumaczy te wyjątki na przeciążone błędy w protokole natywnym Cassandra. 
+Usługa Azure Cosmos DB zwróci błędy o ograniczonej szybkości (429), jeśli klienci zużywają więcej zasobów (RU/s) niż kwota, która została zainicjowana. Interfejs API Cassandra w usłudze Azure Cosmos DB tłumaczy te wyjątki na przeciążone błędy w protokole macierzystym Cassandra. 
 
-Jeśli system nie jest wrażliwy na opóźnienia, może być wystarczające do obsłużenia ograniczenia przepływności przy użyciu ponownych prób. Zobacz [przykład kodu Java](https://github.com/Azure-Samples/azure-cosmos-cassandra-java-retry-sample) , aby dowiedzieć się, jak obsługiwać ograniczanie szybkości w sposób niewidoczny przy użyciu [rozszerzenia Azure Cosmos DB](https://github.com/Azure/azure-cosmos-cassandra-extensions) dla [zasad ponawiania Cassandra](https://docs.datastax.com/en/developer/java-driver/4.4/manual/core/retries/) w języku Java. Można również użyć [rozszerzenia Spark](https://mvnrepository.com/artifact/com.microsoft.azure.cosmosdb/azure-cosmos-cassandra-spark-helper) , aby obsłużyć ograniczenie szybkości.
+Jeśli system nie jest wrażliwy na opóźnienie, może być wystarczające do obsługi ograniczania przepustowości przy użyciu ponownych prób. Zobacz [przykładowy kod Java,](https://github.com/Azure-Samples/azure-cosmos-cassandra-java-retry-sample) jak obsługiwać ograniczenie szybkości w sposób przejrzysty przy użyciu [rozszerzenia usługi Azure Cosmos DB](https://github.com/Azure/azure-cosmos-cassandra-extensions) dla [zasad ponawiania próby Cassandra](https://docs.datastax.com/en/developer/java-driver/4.4/manual/core/retries/) w języku Java. Można również użyć [rozszerzenia Platformy Spark](https://mvnrepository.com/artifact/com.microsoft.azure.cosmosdb/azure-cosmos-cassandra-spark-helper) do obsługi ograniczania szybkości.
 
 ## <a name="manage-scaling"></a>Zarządzanie skalowaniem
 
-Jeśli zachodzi potrzeba zminimalizowania opóźnień, istnieje szeroki zakres opcji zarządzania przepływem i skalowaniem (jednostek ru) w interfejs API Cassandra:
+Jeśli chcesz zminimalizować opóźnienia, istnieje spektrum opcji zarządzania skalą i aprowizowania przepływności (RUs) w interfejsie API Cassandra:
 
-* [Ręczne przy użyciu Azure Portal](#use-azure-portal)
-* [Programowo przy użyciu funkcji płaszczyzny kontroli](#use-control-plane)
-* [Programowo przy użyciu poleceń CQL z określonym zestawem SDK](#use-cql-queries)
-* [Dynamicznie przy użyciu funkcji autopilotaż](#use-autopilot)
+* [Ręcznie przy użyciu witryny Azure portal](#use-azure-portal)
+* [Programowo przy użyciu operacji płaszczyzny sterowania](#use-control-plane)
+* [Programowo przy użyciu poleceń CQL z określonym plikiem SDK](#use-cql-queries)
+* [Dynamicznie za pomocą autopilota](#use-autopilot)
 
-W poniższych sekcjach wyjaśniono zalety i wady poszczególnych rozwiązań. Następnie można określić najlepszą strategię, aby zrównoważyć wymagania dotyczące skalowania systemu, łączny koszt oraz potrzeby związane z wydajnością rozwiązania.
+W poniższych sekcjach wyjaśniono zalety i wady każdego podejścia. Następnie można zdecydować się na najlepszą strategię, aby zrównoważyć potrzeby skalowania systemu, ogólne koszty i potrzeby w zakresie wydajności rozwiązania.
 
-## <a id="use-azure-portal"></a>Użyj Azure Portal
+## <a name="use-the-azure-portal"></a><a id="use-azure-portal"></a>Korzystanie z witryny Azure Portal
 
-Możesz skalować zasoby w Azure Cosmos DB interfejs API Cassandra koncie przy użyciu Azure Portal. Aby dowiedzieć się więcej, zobacz artykuł dotyczący [obsługi przepływności na kontenerach i bazach danych](set-throughput.md). W tym artykule wyjaśniono względne zalety ustawiania przepływności na poziomie [bazy danych](set-throughput.md#set-throughput-on-a-database) lub [kontenera](set-throughput.md#set-throughput-on-a-container) w Azure Portal. Warunki "Database" i "Container" wymienione w tych artykułach są mapowane na "przestrzeń kluczy" i "Tabela" odpowiednio dla interfejs API Cassandra.
+Zasoby można skalować na koncie interfejsu API usługi Azure Cosmos DB Cassandra przy użyciu witryny Azure portal. Aby dowiedzieć się więcej, zobacz artykuł [na temat aprowizowania przepływności kontenerów i baz danych](set-throughput.md). W tym artykule opisano względne korzyści wynikające z ustawiania przepływności na poziomie [bazy danych](set-throughput.md#set-throughput-on-a-database) lub [kontenera](set-throughput.md#set-throughput-on-a-container) w witrynie Azure portal. Terminy "baza danych" i "kontener" wymienione w tych artykułach są mapowane odpowiednio na "keyspace" i "table" dla interfejsu API Cassandra.
 
-Zaletą tej metody jest to, że jest to prosty gotowe sposób zarządzania wydajnością przepływności w bazie danych. Jednak Wadą jest to, że w wielu przypadkach podejście do skalowania może wymagać, aby niektóre poziomy automatyzacji były opłacalne i wysokie. W następnych sekcjach opisano odpowiednie scenariusze i metody.
+Zaletą tej metody jest to, że jest to prosty sposób "pod klucz", aby zarządzać przepustowością w bazie danych. Jednak wadą jest to, że w wielu przypadkach podejście do skalowania może wymagać pewnych poziomów automatyzacji, aby być zarówno opłacalne i wysokiej wydajności. W następnych sekcjach wyjaśniono odpowiednie scenariusze i metody.
 
-## <a id="use-control-plane"></a>Korzystanie z płaszczyzny kontroli
+## <a name="use-the-control-plane"></a><a id="use-control-plane"></a>Użyj płaszczyzny sterowania
 
-Interfejs API Azure Cosmos DB dla Cassandra umożliwia programistyczne Dostosowywanie przepływności przy użyciu różnych funkcji płaszczyzny kontroli. Zobacz artykuły dotyczące [Azure Resource Manager](manage-cassandra-with-resource-manager.md), [programu PowerShell](powershell-samples-cassandra.md)i [interfejsu wiersza polecenia platformy Azure](cli-samples-cassandra.md) , aby uzyskać wskazówki i przykłady.
+Interfejs API usługi Azure Cosmos DB dla firmy Cassandra umożliwia programowe dostosowywanie przepływności przy użyciu naszych różnych funkcji płaszczyzny sterowania. Zapoznaj się z artykułami [usługi Azure Resource Manager](manage-cassandra-with-resource-manager.md), [Powershell](powershell-samples-cassandra.md)i [Azure CLI,](cli-samples-cassandra.md) aby uzyskać wskazówki i przykłady.
 
-Zaletą tej metody jest Automatyzacja skalowania w górę lub w dół zasobów na podstawie czasomierza w celu uwzględnienia aktywności szczytowej lub okresów niskiej aktywności. Zapoznaj się z naszym przykładem, aby dowiesz się, jak to [zrobić za pomocą](https://github.com/Azure-Samples/azure-cosmos-throughput-scheduler) Azure Functions i programu PowerShell.
+Zaletą tej metody jest to, że można zautomatyzować skalowanie w górę lub w dół zasobów na podstawie czasomierza do konta dla szczytowej aktywności lub okresów niskiej aktywności. Zapoznaj się z naszym przykładem [tutaj,](https://github.com/Azure-Samples/azure-cosmos-throughput-scheduler) aby dowiedzieć się, jak to zrobić za pomocą usługi Azure Functions i Powershell.
 
-Wadą tego podejścia może być, że nie można odpowiedzieć na nieprzewidywalne potrzeby zmiany skalowania w czasie rzeczywistym. Zamiast tego może być konieczne wykorzystanie kontekstu aplikacji w systemie na poziomie klienta/zestawu SDK lub przy użyciu opcji [autopilotaż](provision-throughput-autopilot.md).
+Wadą tego podejścia może być to, że nie można reagować na nieprzewidywalne potrzeby skali zmiany w czasie rzeczywistym. Zamiast tego może być konieczne wykorzystanie kontekstu aplikacji w systemie, na poziomie klienta/SDK lub za pomocą [autopilota](provision-throughput-autopilot.md).
 
-## <a id="use-cql-queries"></a>Korzystanie z zapytań CQL z określonym zestawem SDK
+## <a name="use-cql-queries-with-a-specific-sdk"></a><a id="use-cql-queries"></a>Używanie zapytań CQL z określonym sdk
 
-Można dynamicznie skalować system przy użyciu kodu, wykonując [polecenia CQL ALTER](cassandra-support.md#keyspace-and-table-options) dla danej bazy danych lub kontenera.
+System można skalować dynamicznie za pomocą kodu, wykonując [polecenia CQL ALTER](cassandra-support.md#keyspace-and-table-options) dla danej bazy danych lub kontenera.
 
-Zaletą tego podejścia jest to, że pozwala to na dynamiczne reagowanie na potrzeby skalowania i w sposób niestandardowy, który jest przeznaczony dla aplikacji. Korzystając z tej metody, można nadal korzystać ze standardowych stawek za RU/s. Jeśli wymagania dotyczące skalowania systemu są w większości przewidywalne (około 70% lub więcej), korzystanie z zestawu SDK z CQL może być bardziej opłacalną metodą automatycznego skalowania, niż przy użyciu programu pilotażowego. Wadą tego podejścia jest to, że może być dość skomplikowane do wdrożenia ponownych prób, podczas gdy ograniczenie szybkości może zwiększyć opóźnienia.
+Zaletą tego podejścia jest to, że pozwala na reagowanie na potrzeby skalowania dynamicznie i w niestandardowy sposób, który odpowiada aplikacji. Dzięki takiemu podejściu nadal możesz wykorzystać standardowe opłaty i stawki RU/s. Jeśli potrzeby skalowania systemu są w większości przewidywalne (około 70% lub więcej), używanie SDK z CQL może być bardziej opłacalną metodą automatycznego skalowania niż korzystanie z autopilota. Wadą tego podejścia jest to, że może być dość skomplikowane do zaimplementowania ponownych prób, podczas gdy ograniczenie szybkości może zwiększyć opóźnienie.
 
-## <a id="use-autopilot"></a>Użyj autopilotażu
+## <a name="use-autopilot"></a><a id="use-autopilot"></a>Korzystanie z autopilota
 
-Oprócz ręcznych i programistycznych metod aprowizacji można także skonfigurować kontenery usługi Azure Cosmos w trybie autopilotażu. Tryb automatycznego pilotażu będzie automatycznie i natychmiast skalowany na potrzeby użycia w określonych zakresach RU bez naruszenia umowy SLA. Aby dowiedzieć się więcej, zobacz artykuł [Tworzenie kontenerów i baz danych usługi Azure Cosmos w trybie autopilotażu](provision-throughput-autopilot.md) .
+Oprócz ręcznego lub programowego sposobu inicjowania obsługi administracyjnej przepływności można również skonfigurować kontenery usługi Azure cosmos w trybie autopilota. Tryb autopilota będzie automatycznie i natychmiast skalowany do twoich potrzeb konsumpcyjnych w określonych zakresach RU bez uszczerbku dla sla. Aby dowiedzieć się więcej, zobacz [tworzenie kontenerów i baz danych usługi Azure Cosmos w trybie autopilota.](provision-throughput-autopilot.md)
 
-Zaletą tego podejścia jest najprostszy sposób zarządzania potrzebami skalowania w systemie. Gwarantuje to, że nie ma zastosowania ograniczenia stawki **w skonfigurowanych zakresach ru**. Wadą jest to, że jeśli wymagania dotyczące skalowania w systemie są przewidywalne, automatyczne rozwiązanie pilotażowe może być tańszym sposobem obsługi wymagań dotyczących skalowania niż korzystanie z Bespoke płaszczyzny kontroli lub poziomu zestawu SDK wymienionych powyżej.
+Zaletą tego podejścia jest to, że jest to najprostszy sposób zarządzania potrzeb skalowania w systemie. Gwarantuje, że nie będzie stosować ograniczania szybkości **w skonfigurowanych zakresach RU.** Wadą jest to, że jeśli potrzeby skalowania w systemie są przewidywalne, Autopilot może być mniej opłacalnym sposobem obsługi potrzeb skalowania niż przy użyciu na zamówienie płaszczyzny sterowania lub podejścia na poziomie SDK wymienionych powyżej.
 
 ## <a name="next-steps"></a>Następne kroki
 

@@ -1,5 +1,6 @@
 ---
-title: Azure Cloud Services def. Rola procesu roboczego schemat | Microsoft Docs
+title: Schemat obnażania schematu zaroli usług w chmurze platformy Azure | Dokumenty firmy Microsoft
+description: Rola procesu roboczego platformy Azure jest używana do rozwoju uogólnionego i może wykonywać przetwarzanie w tle dla roli sieci web. Dowiedz się więcej o schemacie roli procesu roboczego platformy Azure.
 services: cloud-services
 ms.custom: ''
 ms.date: 04/14/2015
@@ -12,20 +13,20 @@ ms.assetid: 41cd46bc-c479-43fa-96e5-d6c83e4e6d89
 caps.latest.revision: 55
 author: tgore03
 ms.author: tagore
-ms.openlocfilehash: 518fa0b64277d056796669a3c9f93c9c22325d91
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 26225442c72fb209bb1ac4cd2bf4777fb39542fb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75449019"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79534375"
 ---
-# <a name="azure-cloud-services-definition-workerrole-schema"></a>Schemat rola procesu roboczego definicji Cloud Services platformy Azure
-Rola procesu roboczego platformy Azure to rola, która jest przydatna do uogólnionego programowania i może wykonywać przetwarzanie w tle dla roli sieci Web.
+# <a name="azure-cloud-services-definition-workerrole-schema"></a>Schemat definicji definicji usług w chmurze platformy Azure
+Rola procesu roboczego platformy Azure jest rolą, która jest przydatna dla rozwoju uogólnionego i może wykonywać przetwarzanie w tle dla roli sieci web.
 
-Domyślnym rozszerzeniem dla pliku definicji usługi jest. csdef.
+Domyślnym rozszerzeniem pliku definicji usługi jest .csdef.
 
 ## <a name="basic-service-definition-schema-for-a-worker-role"></a>Podstawowy schemat definicji usługi dla roli procesu roboczego.
-Poniżej przedstawiono podstawowy format pliku definicji usługi zawierającego rolę procesu roboczego.
+Podstawowy format pliku definicji usługi zawierającego rolę procesu roboczego jest następujący.
 
 ```xml
 <ServiceDefinition …>
@@ -85,39 +86,39 @@ Poniżej przedstawiono podstawowy format pliku definicji usługi zawierającego 
 ```
 
 ## <a name="schema-elements"></a>Elementy schematu
-Plik definicji usługi zawiera te elementy, które opisano szczegółowo w kolejnych sekcjach w tym temacie:
+Plik definicji usługi zawiera te elementy, opisane szczegółowo w kolejnych sekcjach w tym temacie:
 
-[WorkerRole](#WorkerRole)
+[Robotniczarol](#WorkerRole)
 
-[ConfigurationSettings](#ConfigurationSettings)
+[Configurationsettings](#ConfigurationSettings)
 
 [Ustawienie](#Setting)
 
-[LocalResources](#LocalResources)
+[Zasoby lokalne](#LocalResources)
 
-[LocalStorage](#LocalStorage)
+[Localstorage](#LocalStorage)
 
 [Punkty końcowe](#Endpoints)
 
-[InputEndpoint](#InputEndpoint)
+[Punkt wprowadzania](#InputEndpoint)
 
-[InternalEndpoint](#InternalEndpoint)
+[Punkt wewnętrzny](#InternalEndpoint)
 
-[InstanceInputEndpoint](#InstanceInputEndpoint)
+[Punkt instancja](#InstanceInputEndpoint)
 
-[AllocatePublicPortFrom](#AllocatePublicPortFrom)
+[PrzydzielpublicznieOd](#AllocatePublicPortFrom)
 
-[FixedPort](#FixedPort)
+[Port stały](#FixedPort)
 
-[FixedPortRange](#FixedPortRange)
+[Stała relacja portów](#FixedPortRange)
 
 [Certyfikaty](#Certificates)
 
 [Certyfikat](#Certificate)
 
-[Importowania](#Imports)
+[Przywozu](#Imports)
 
-[Importowanie](#Import)
+[Import](#Import)
 
 [Środowisko uruchomieniowe](#Runtime)
 
@@ -125,295 +126,295 @@ Plik definicji usługi zawiera te elementy, które opisano szczegółowo w kolej
 
 [EntryPoint](#EntryPoint)
 
-[NetFxEntryPoint](#NetFxEntryPoint)
+[NetFxEntryPoint (NetFxEntryPoint)](#NetFxEntryPoint)
 
 [ProgramEntryPoint](#ProgramEntryPoint)
 
-[Zmiennej](#Variable)
+[Zmienna](#Variable)
 
-[RoleInstanceValue](#RoleInstanceValue)
+[Wartość roli](#RoleInstanceValue)
 
-[Startup](#Startup)
+[Uruchamianie](#Startup)
 
-[Zadanie podrzędne](#Task)
+[Zadanie](#Task)
 
 [Zawartość](#Contents)
 
 [Zawartość](#Content)
 
-[SourceDirectory](#SourceDirectory)
+[ŹródłoDirectory](#SourceDirectory)
 
-##  <a name="WorkerRole"></a>Rola procesu roboczego
-Element `WorkerRole` opisuje rolę, która jest przydatna w przypadku opracowywania uogólnionego, i może wykonywać przetwarzanie w tle dla roli sieci Web. Usługa może zawierać co najmniej zero ról procesów roboczych.
+##  <a name="workerrole"></a><a name="WorkerRole"></a>Robotniczarol
+Element `WorkerRole` opisuje rolę, która jest przydatna dla rozwoju uogólnionego i może wykonywać przetwarzanie w tle dla roli sieci web. Usługa może zawierać zero lub więcej ról procesu roboczego.
 
-W poniższej tabeli opisano atrybuty elementu `WorkerRole`.
-
-| Atrybut | Typ | Opis |
-| --------- | ---- | ----------- |
-|name|string|Wymagany. Nazwa roli procesu roboczego. Nazwa roli musi być unikatowa.|
-|enableNativeCodeExecution|wartość logiczna|Element opcjonalny. Wartość domyślna to `true`; wykonywanie kodu natywnego i pełne zaufanie są domyślnie włączone. Ustaw ten atrybut na `false`, aby wyłączyć wykonywanie kodu natywnego dla roli procesu roboczego, a zamiast tego użyj częściowej relacji zaufania platformy Azure.|
-|vmsize|string|Element opcjonalny. Ustaw tę wartość, aby zmienić rozmiar maszyny wirtualnej przydzielonej dla tej roli. Wartością domyślną jest `Small`. Aby uzyskać listę możliwych rozmiarów maszyn wirtualnych i ich atrybutów, zobacz [rozmiary maszyn wirtualnych dla Cloud Services](cloud-services-sizes-specs.md).|
-
-##  <a name="ConfigurationSettings"></a>ConfigurationSettings
-Element `ConfigurationSettings` opisuje zbiór ustawień konfiguracji dla roli proces roboczy. Ten element jest elementem nadrzędnym elementu `Setting`.
-
-##  <a name="Setting"></a>Konfigurowania
-Element `Setting` opisuje parę nazw i wartości, która określa ustawienia konfiguracji dla wystąpienia roli.
-
-W poniższej tabeli opisano atrybuty elementu `Setting`.
+W poniższej tabeli `WorkerRole` opisano atrybuty elementu.
 
 | Atrybut | Typ | Opis |
 | --------- | ---- | ----------- |
-|name|string|Wymagany. Unikatowa nazwa ustawienia konfiguracji.|
+|name|ciąg|Wymagany. Nazwa roli procesu roboczego. Nazwa roli musi być unikatowa.|
+|enableNativeCodeExecution (Umożliwianie ujedn.|wartość logiczna|Element opcjonalny. Wartością domyślną jest `true`; wykonanie kodu macierzystego i pełne zaufanie są domyślnie włączone. Ustaw ten atrybut, aby `false` wyłączyć wykonanie kodu macierzystego dla roli procesu roboczego i zamiast tego użyj częściowego zaufania platformy Azure.|
+|rozmiar maszyn wirtualnych|ciąg|Element opcjonalny. Ustaw tę wartość, aby zmienić rozmiar maszyny wirtualnej, która jest przydzielona do tej roli. Wartością domyślną jest `Small`. Aby uzyskać listę możliwych rozmiarów maszyn wirtualnych i ich atrybutów, zobacz [Rozmiary maszyn wirtualnych dla usług w chmurze](cloud-services-sizes-specs.md).|
 
-Ustawienia konfiguracji roli to pary nazw i wartości, które są zadeklarowane w pliku definicji usługi i ustawiane w pliku konfiguracji usługi.
+##  <a name="configurationsettings"></a><a name="ConfigurationSettings"></a>Configurationsettings
+Element `ConfigurationSettings` opisuje kolekcję ustawień konfiguracji dla roli procesu roboczego. Ten element jest elementem nadrzędnym `Setting` elementu.
 
-##  <a name="LocalResources"></a>LocalResources
-Element `LocalResources` opisuje kolekcję zasobów magazynu lokalnego dla roli proces roboczy. Ten element jest elementem nadrzędnym elementu `LocalStorage`.
+##  <a name="setting"></a><a name="Setting"></a>Ustawienie
+Element `Setting` opisuje parę nazw i wartości, która określa ustawienie konfiguracji dla wystąpienia roli.
 
-##  <a name="LocalStorage"></a>LocalStorage
-Element `LocalStorage` identyfikuje zasób magazynu lokalnego, który zapewnia przestrzeń systemu plików dla usługi w czasie wykonywania. Rola może definiować zero lub więcej zasobów magazynu lokalnego.
+W poniższej tabeli `Setting` opisano atrybuty elementu.
+
+| Atrybut | Typ | Opis |
+| --------- | ---- | ----------- |
+|name|ciąg|Wymagany. Unikatowa nazwa ustawienia konfiguracji.|
+
+Ustawienia konfiguracji roli to pary nazw i wartości, które są zadeklarowane w pliku definicji usługi i ustawione w pliku konfiguracji usługi.
+
+##  <a name="localresources"></a><a name="LocalResources"></a>Zasoby lokalne
+Element `LocalResources` opisuje kolekcję zasobów magazynu lokalnego dla roli procesu roboczego. Ten element jest elementem nadrzędnym `LocalStorage` elementu.
+
+##  <a name="localstorage"></a><a name="LocalStorage"></a>Localstorage
+Element `LocalStorage` identyfikuje zasób magazynu lokalnego, który zapewnia miejsce w systemie plików dla usługi w czasie wykonywania. Rola może zdefiniować zero lub więcej zasobów magazynu lokalnego.
 
 > [!NOTE]
->  Element `LocalStorage` może być wyświetlany jako element podrzędny elementu `WorkerRole` w celu zapewnienia zgodności z wcześniejszymi wersjami zestawu Azure SDK.
+>  Element `LocalStorage` może pojawić się jako `WorkerRole` element podrzędny elementu do obsługi zgodności z wcześniejszymi wersjami pakietu Azure SDK.
 
-W poniższej tabeli opisano atrybuty elementu `LocalStorage`.
+W poniższej tabeli `LocalStorage` opisano atrybuty elementu.
 
 | Atrybut | Typ | Opis |
 | --------- | ---- | ----------- |
-|name|string|Wymagany. Unikatowa nazwa magazynu lokalnego.|
-|cleanOnRoleRecycle|wartość logiczna|Element opcjonalny. Wskazuje, czy Magazyn lokalny ma być czyszczony, gdy rola zostanie ponownie uruchomiona. Wartość domyślna to `true`.|
-|sizeInMb|int|Element opcjonalny. Wymagana ilość miejsca do magazynowania do przydzielenia dla lokalnego magazynu, w MB. Jeśli nie zostanie określony, domyślnym miejscem do magazynowania jest 100 MB. Minimalna ilość dostępnego miejsca do magazynowania to 1 MB.<br /><br /> Maksymalny rozmiar zasobów lokalnych zależy od rozmiaru maszyny wirtualnej. Aby uzyskać więcej informacji, zobacz [rozmiary maszyn wirtualnych dla Cloud Services](cloud-services-sizes-specs.md).|
+|name|ciąg|Wymagany. Unikatowa nazwa lokalnego sklepu.|
+|cleanOnRoleRecycle|wartość logiczna|Element opcjonalny. Wskazuje, czy magazyn lokalny powinien zostać wyczyszczony po ponownym uruchomieniu roli. Wartością `true`domyślną jest .|
+|rozmiarInMb|int|Element opcjonalny. Żądana ilość miejsca do przydzielenia dla magazynu lokalnego w MB. Jeśli nie zostanie określony, domyślne przydzielone miejsce do magazynowania wynosi 100 MB. Minimalna ilość miejsca do magazynowania, które mogą być przydzielone jest 1 MB.<br /><br /> Maksymalny rozmiar zasobów lokalnych zależy od rozmiaru maszyny wirtualnej. Aby uzyskać więcej informacji, zobacz [Rozmiary maszyn wirtualnych dla usług w chmurze](cloud-services-sizes-specs.md).|
 
-Nazwa katalogu przypisana do zasobu magazynu lokalnego odpowiada wartości podanej dla atrybutu Name.
+Nazwa katalogu przydzielonego do zasobu magazynu lokalnego odpowiada wartości podanej dla atrybutu nazwa.
 
-##  <a name="Endpoints"></a>Punktów końcowych
-Element `Endpoints` opisuje kolekcję wejściowych punktów końcowych (zewnętrznych), wewnętrznych i wejściowych wystąpień dla roli. Ten element jest elementem nadrzędnym elementów `InputEndpoint`, `InternalEndpoint`i `InstanceInputEndpoint`.
+##  <a name="endpoints"></a><a name="Endpoints"></a>Punkty końcowe
+Element `Endpoints` opisuje zbieranie danych wejściowych (zewnętrznych), wewnętrznych i wystąpień wejściowych punktów końcowych dla roli. Ten element jest elementem nadrzędnym `InputEndpoint`elementu , `InternalEndpoint`i `InstanceInputEndpoint` elementów.
 
-Wejściowe i wewnętrzne punkty końcowe są przydzielone osobno. Usługa może mieć łączną liczbę punktów końcowych wejściowych, wewnętrznych i wejściowych wystąpień, które można przydzielyć w ramach 25 ról dozwolonych w usłudze. Na przykład jeśli masz 5 ról, możesz przydzielić 5 wejściowych punktów końcowych na rolę lub przydzielić 25 wejściowych punktów końcowych do pojedynczej roli lub można przydzielić 1 wejściowy punkt końcowy każdy do 25 ról.
+Wejściowe i wewnętrzne punkty końcowe są przydzielane oddzielnie. Usługa może mieć łącznie 25 wejściowych, wewnętrznych i wystąpień wejściowych punktów końcowych, które mogą być przydzielane między 25 ról dozwolonych w usłudze. Na przykład jeśli mają 5 ról można przydzielić 5 wejściowych punktów końcowych na rolę lub można przydzielić 25 wejściowych punktów końcowych do jednej roli lub można przydzielić 1 wejściowego punktu końcowego do 25 ról.
 
 > [!NOTE]
->  Wszystkie wdrożone role wymagają jednego wystąpienia na rolę. Domyślne Inicjowanie obsługi dla subskrypcji jest ograniczone do 20 rdzeni i w rezultacie jest ograniczone do 20 wystąpień roli. Jeśli aplikacja wymaga więcej wystąpień niż jest to obsługiwane przez domyślne Inicjowanie obsługi [, zobacz Zarządzanie rozliczeniami, subskrypcjami i przydziałami,](https://azure.microsoft.com/support/options/) Aby uzyskać więcej informacji na temat zwiększania limitu przydziału.
+>  Każda wdrożona rola wymaga jednego wystąpienia na rolę. Domyślna inicjowanie obsługi administracyjnej dla subskrypcji jest ograniczona do 20 rdzeni i w związku z tym jest ograniczona do 20 wystąpień roli. Jeśli aplikacja wymaga więcej wystąpień niż jest podana przez domyślne inicjowania obsługi administracyjnej [zobacz rozliczenia, zarządzanie subskrypcjami i obsługi przydziałów](https://azure.microsoft.com/support/options/) więcej informacji na temat zwiększania przydziału.
 
-##  <a name="InputEndpoint"></a>InputEndpoint
-Element `InputEndpoint` opisuje zewnętrzny punkt końcowy do roli procesu roboczego.
+##  <a name="inputendpoint"></a><a name="InputEndpoint"></a>Punkt wprowadzania
+Element `InputEndpoint` opisuje zewnętrzny punkt końcowy roli procesu roboczego.
 
-Istnieje możliwość zdefiniowania wielu punktów końcowych, które są kombinacją punktów końcowych HTTP, HTTPS, UDP i TCP. Możesz określić dowolny numer portu wybrany dla wejściowego punktu końcowego, ale numery portów określone dla każdej roli w usłudze muszą być unikatowe. Na przykład, jeśli określisz, że w przypadku protokołu HTTP i portu 443 dla roli jest stosowany port 80, możesz określić, że druga rola używa portu 8080 dla protokołu HTTP i portu 8043 dla protokołu HTTPS.
+Można zdefiniować wiele punktów końcowych, które są kombinacją punktów końcowych HTTP, HTTPS, UDP i TCP. Można określić dowolny numer portu, który wybierzesz dla wejściowego punktu końcowego, ale numery portów określone dla każdej roli w usłudze muszą być unikatowe. Jeśli na przykład określisz, że rola używa portu 80 dla protokołu HTTP i portu 443 dla protokołu HTTPS, możesz określić, że druga rola używa portu 8080 dla protokołu HTTP i portu 8043 dla protokołu HTTPS.
 
-W poniższej tabeli opisano atrybuty elementu `InputEndpoint`.
-
-| Atrybut | Typ | Opis |
-| --------- | ---- | ----------- |
-|name|string|Wymagany. Unikatowa nazwa zewnętrznego punktu końcowego.|
-|protocol|string|Wymagany. Protokół transportu dla zewnętrznego punktu końcowego. Dla roli proces roboczy możliwe wartości to `HTTP`, `HTTPS`, `UDP`lub `TCP`.|
-|port|int|Wymagany. Port zewnętrznego punktu końcowego. Możesz określić dowolny wybrany numer portu, ale numery portów określone dla każdej roli w usłudze muszą być unikatowe.<br /><br /> Możliwe wartości mieszczą się w zakresie od 1 do 65535 włącznie (zestaw SDK platformy Azure w wersji 1,7 lub nowszej).|
-|certyfikat|string|Wymagane dla punktu końcowego HTTPS. Nazwa certyfikatu zdefiniowana przez element `Certificate`.|
-|localPort|int|Element opcjonalny. Określa port używany na potrzeby połączeń wewnętrznych w punkcie końcowym. Atrybut `localPort` mapuje port zewnętrzny w punkcie końcowym na port wewnętrzny w roli. Jest to przydatne w scenariuszach, w których rola musi komunikować się z wewnętrznym składnikiem na porcie, który różni się od tego, który jest udostępniany zewnętrznie.<br /><br /> Jeśli nie zostanie określony, wartość `localPort` jest taka sama jak atrybut `port`. Ustaw wartość `localPort` na "*", aby automatycznie przypisywać nieprzydzielony port, który jest wykrywalny przy użyciu interfejsu API środowiska uruchomieniowego.<br /><br /> Możliwe wartości mieszczą się w zakresie od 1 do 65535 włącznie (zestaw SDK platformy Azure w wersji 1,7 lub nowszej).<br /><br /> Atrybut `localPort` jest dostępny tylko przy użyciu zestawu Azure SDK w wersji 1,3 lub nowszej.|
-|ignoreRoleInstanceStatus|wartość logiczna|Element opcjonalny. Gdy wartość tego atrybutu jest ustawiona na `true`, stan usługi jest ignorowany, a punkt końcowy nie zostanie usunięty przez moduł równoważenia obciążenia. Ustawienie tej wartości `true` przydatne do debugowania zajętych wystąpień usługi. Wartością domyślną jest `false`. **Uwaga:** Punkt końcowy może nadal odbierać ruch nawet wtedy, gdy rola nie jest w stanie gotowości.|
-|loadBalancerProbe|string|Element opcjonalny. Nazwa sondy modułu równoważenia obciążenia skojarzona z wejściowym punktem końcowym. Aby uzyskać więcej informacji, zobacz [schemat LoadBalancerProbe](schema-csdef-loadbalancerprobe.md).|
-
-##  <a name="InternalEndpoint"></a>InternalEndpoint
-Element `InternalEndpoint` opisuje wewnętrzny punkt końcowy do roli procesu roboczego. Wewnętrzny punkt końcowy jest dostępny tylko dla innych wystąpień roli uruchomionych w ramach usługi. nie jest on dostępny dla klientów spoza usługi. Rola procesu roboczego może mieć maksymalnie pięć wewnętrznych punktów końcowych HTTP, UDP lub TCP.
-
-W poniższej tabeli opisano atrybuty elementu `InternalEndpoint`.
+W poniższej tabeli `InputEndpoint` opisano atrybuty elementu.
 
 | Atrybut | Typ | Opis |
 | --------- | ---- | ----------- |
-|name|string|Wymagany. Unikatowa nazwa wewnętrznego punktu końcowego.|
-|protocol|string|Wymagany. Protokół transportu dla wewnętrznego punktu końcowego. Możliwe wartości to `HTTP`, `TCP`, `UDP`lub `ANY`.<br /><br /> Wartość `ANY` określa, że dowolny protokół, dowolny port jest dozwolony.|
-|port|int|Element opcjonalny. Port używany do wewnętrznych połączeń z równoważeniem obciążenia w punkcie końcowym. Punkt końcowy ze zrównoważonym obciążeniem używa dwóch portów. Port używany dla publicznego adresu IP oraz port używany przez prywatny adres IP. Zazwyczaj są to te same ustawienia, ale można wybrać używanie różnych portów.<br /><br /> Możliwe wartości mieszczą się w zakresie od 1 do 65535 włącznie (zestaw SDK platformy Azure w wersji 1,7 lub nowszej).<br /><br /> Atrybut `Port` jest dostępny tylko przy użyciu zestawu Azure SDK w wersji 1,3 lub nowszej.|
+|name|ciąg|Wymagany. Unikatowa nazwa zewnętrznego punktu końcowego.|
+|Protokół|ciąg|Wymagany. Protokół transportu dla zewnętrznego punktu końcowego. Dla roli pracownika możliwe `HTTP`wartości `HTTPS` `UDP`to `TCP`, , , lub .|
+|port|int|Wymagany. Port dla zewnętrznego punktu końcowego. Można określić dowolny numer portu, który wybierzesz, ale numery portów określone dla każdej roli w usłudze muszą być unikatowe.<br /><br /> Możliwe wartości wahają się od 1 do 65535 włącznie (zestaw SDK platformy Azure w wersji 1.7 lub nowszej).|
+|certyfikat|ciąg|Wymagane dla punktu końcowego HTTPS. Nazwa certyfikatu zdefiniowanego `Certificate` przez element.|
+|Port_lokalny|int|Element opcjonalny. Określa port używany dla połączeń wewnętrznych w punkcie końcowym. Atrybut `localPort` mapuje port zewnętrzny w punkcie końcowym do portu wewnętrznego w roli. Jest to przydatne w scenariuszach, w których rola musi komunikować się z wewnętrznym składnikiem na porcie, który różni się od tego, który jest narażony na zewnątrz.<br /><br /> Jeśli nie zostanie określony, wartość `localPort` jest `port` taka sama jak atrybut. Ustaw wartość `localPort` na "*", aby automatycznie przypisać nieprzydzielony port, który jest wykrywalny przy użyciu interfejsu API środowiska wykonawczego.<br /><br /> Możliwe wartości wahają się od 1 do 65535 włącznie (zestaw SDK platformy Azure w wersji 1.7 lub nowszej).<br /><br /> Atrybut `localPort` jest dostępny tylko przy użyciu narzędzia Azure SDK w wersji 1.3 lub nowszej.|
+|ignoreRoleInstanceStatus ignoruje|wartość logiczna|Element opcjonalny. Gdy wartość tego atrybutu jest `true`ustawiona na , stan usługi jest ignorowany i punkt końcowy nie zostanie usunięty przez moduł równoważenia obciążenia. Ustawienie tej `true` wartości jest przydatne do debugowania zajęty wystąpień usługi. Wartością domyślną jest `false`. **Uwaga:** Punkt końcowy nadal może odbierać ruch, nawet jeśli rola nie jest w stanie Gotowy.|
+|loadBalancerProbe|ciąg|Element opcjonalny. Nazwa sondy modułu równoważenia obciążenia skojarzonej z wejściowym punktem końcowym. Aby uzyskać więcej informacji, zobacz [Schemat LoadBalancerProbe](schema-csdef-loadbalancerprobe.md).|
 
-##  <a name="InstanceInputEndpoint"></a>InstanceInputEndpoint
-Element `InstanceInputEndpoint` opisuje wejściowy punkt końcowy wystąpienia do roli procesu roboczego. Wejściowy punkt końcowy wystąpienia jest skojarzony z określonym wystąpieniem roli przy użyciu przekazywania portów w module równoważenia obciążenia. Każdy wejściowy punkt końcowy wystąpienia jest mapowany na określony port z zakresu możliwych portów. Ten element jest elementem nadrzędnym elementu `AllocatePublicPortFrom`.
+##  <a name="internalendpoint"></a><a name="InternalEndpoint"></a>Punkt wewnętrzny
+Element `InternalEndpoint` opisuje wewnętrzny punkt końcowy roli procesu roboczego. Wewnętrzny punkt końcowy jest dostępny tylko dla innych wystąpień roli uruchomionych w ramach usługi; nie jest dostępna dla klientów spoza usługi. Rola procesu roboczego może mieć maksymalnie pięć wewnętrznych punktów końcowych HTTP, UDP lub TCP.
 
-Element `InstanceInputEndpoint` jest dostępny tylko przy użyciu zestawu Azure SDK w wersji 1,7 lub nowszej.
-
-W poniższej tabeli opisano atrybuty elementu `InstanceInputEndpoint`.
-
-| Atrybut | Typ | Opis |
-| --------- | ---- | ----------- |
-|name|string|Wymagany. Unikatowa nazwa punktu końcowego.|
-|localPort|int|Wymagany. Określa port wewnętrzny, do którego wszystkie wystąpienia ról będą nasłuchiwać w celu odbierania ruchu przychodzącego przesyłanego z modułu równoważenia obciążenia. Możliwe wartości mieszczą się w zakresie od 1 do 65535 włącznie.|
-|protocol|string|Wymagany. Protokół transportu dla wewnętrznego punktu końcowego. Możliwe wartości to `udp` lub `tcp`. Użyj `tcp` dla ruchu opartego na protokole HTTP/HTTPS.|
-
-##  <a name="AllocatePublicPortFrom"></a>AllocatePublicPortFrom
-Element `AllocatePublicPortFrom` opisuje publiczny zakres portów, który może być używany przez klientów zewnętrznych do uzyskiwania dostępu do każdego wejściowego punktu końcowego wystąpienia. Numer portu publicznego (VIP) jest przydzielany z tego zakresu i przypisywany do każdego punktu końcowego poszczególnych wystąpień ról podczas wdrażania i aktualizowania dzierżawy. Ten element jest elementem nadrzędnym elementu `FixedPortRange`.
-
-Element `AllocatePublicPortFrom` jest dostępny tylko przy użyciu zestawu Azure SDK w wersji 1,7 lub nowszej.
-
-##  <a name="FixedPort"></a>FixedPort
-`FixedPort` element określa port wewnętrznego punktu końcowego, który umożliwia połączenia z równoważeniem obciążenia w punkcie końcowym.
-
-Element `FixedPort` jest dostępny tylko przy użyciu zestawu Azure SDK w wersji 1,3 lub nowszej.
-
-W poniższej tabeli opisano atrybuty elementu `FixedPort`.
+W poniższej tabeli `InternalEndpoint` opisano atrybuty elementu.
 
 | Atrybut | Typ | Opis |
 | --------- | ---- | ----------- |
-|port|int|Wymagany. Port wewnętrznego punktu końcowego. Ma to taki sam efekt jak ustawienie `FixedPortRange` minimum i maksimum na ten sam port.<br /><br /> Możliwe wartości mieszczą się w zakresie od 1 do 65535 włącznie (zestaw SDK platformy Azure w wersji 1,7 lub nowszej).|
+|name|ciąg|Wymagany. Unikatowa nazwa wewnętrznego punktu końcowego.|
+|Protokół|ciąg|Wymagany. Protokół transportu dla wewnętrznego punktu końcowego. Możliwe wartości `HTTP` `TCP`to `UDP`, `ANY`, , lub .<br /><br /> Wartość `ANY` określa, że każdy protokół, każdy port jest dozwolony.|
+|port|int|Element opcjonalny. Port używany dla połączeń z równoważenia obciążenia wewnętrznego w punkcie końcowym. Punkt końcowy z równoważenia obciążenia używa dwóch portów. Port używany dla publicznego adresu IP i portu używanego na prywatnym adresie IP. Zazwyczaj są to takie same, ale można wybrać użycie różnych portów.<br /><br /> Możliwe wartości wahają się od 1 do 65535 włącznie (zestaw SDK platformy Azure w wersji 1.7 lub nowszej).<br /><br /> Atrybut `Port` jest dostępny tylko przy użyciu narzędzia Azure SDK w wersji 1.3 lub nowszej.|
 
-##  <a name="FixedPortRange"></a> FixedPortRange
-`FixedPortRange` element określa zakres portów przypisanych do wewnętrznego punktu końcowego lub wejściowy punkt końcowy wystąpienia oraz ustawia port używany na potrzeby połączeń z równoważeniem obciążenia w punkcie końcowym.
+##  <a name="instanceinputendpoint"></a><a name="InstanceInputEndpoint"></a>Punkt instancja
+Element `InstanceInputEndpoint` opisuje punkt końcowy wejściowego wystąpienia do roli procesu roboczego. Wejściowy punkt końcowy wystąpienia jest skojarzony z wystąpieniem określonej roli przy użyciu przekazywania portów w równoważeniu obciążenia. Każdy punkt końcowy wejściowego wystąpienia jest mapowany do określonego portu z zakresu możliwych portów. Ten element jest elementem nadrzędnym `AllocatePublicPortFrom` elementu.
+
+Element `InstanceInputEndpoint` jest dostępny tylko przy użyciu narzędzia Azure SDK w wersji 1.7 lub nowszej.
+
+W poniższej tabeli `InstanceInputEndpoint` opisano atrybuty elementu.
+
+| Atrybut | Typ | Opis |
+| --------- | ---- | ----------- |
+|name|ciąg|Wymagany. Unikatowa nazwa punktu końcowego.|
+|Port_lokalny|int|Wymagany. Określa port wewnętrzny, który będą nasłuchiwać wszystkich wystąpień roli w celu odbierania ruchu przychodzącego przesyłany dalej z modułu równoważenia obciążenia. Możliwe wartości wahają się od 1 do 65535 włącznie.|
+|Protokół|ciąg|Wymagany. Protokół transportu dla wewnętrznego punktu końcowego. Możliwe wartości to `udp` lub `tcp`. Użyj `tcp` dla ruchu opartego na http/https.|
+
+##  <a name="allocatepublicportfrom"></a><a name="AllocatePublicPortFrom"></a>PrzydzielpublicznieOd
+Element `AllocatePublicPortFrom` opisuje zakres portów publicznych, które mogą być używane przez klientów zewnętrznych, aby uzyskać dostęp do każdego punktu końcowego wejściowego wystąpienia. Numer portu publicznego (VIP) jest przydzielany z tego zakresu i przypisywany do każdego punktu końcowego wystąpienia roli podczas wdrażania i aktualizacji dzierżawy. Ten element jest elementem nadrzędnym `FixedPortRange` elementu.
+
+Element `AllocatePublicPortFrom` jest dostępny tylko przy użyciu narzędzia Azure SDK w wersji 1.7 lub nowszej.
+
+##  <a name="fixedport"></a><a name="FixedPort"></a>Port stały
+Element `FixedPort` określa port dla wewnętrznego punktu końcowego, który umożliwia połączenia z równoważenia obciążenia w punkcie końcowym.
+
+Element `FixedPort` jest dostępny tylko przy użyciu narzędzia Azure SDK w wersji 1.3 lub nowszej.
+
+W poniższej tabeli `FixedPort` opisano atrybuty elementu.
+
+| Atrybut | Typ | Opis |
+| --------- | ---- | ----------- |
+|port|int|Wymagany. Port dla wewnętrznego punktu końcowego. Ma to taki sam `FixedPortRange` efekt jak ustawienie min i max na tym samym porcie.<br /><br /> Możliwe wartości wahają się od 1 do 65535 włącznie (zestaw SDK platformy Azure w wersji 1.7 lub nowszej).|
+
+##  <a name="fixedportrange"></a><a name="FixedPortRange"></a>Stała relacja portów
+Element `FixedPortRange` określa zakres portów, które są przypisane do wewnętrznego punktu końcowego końcowego lub punktu końcowego wejściowego wystąpienia i ustawia port używany dla połączeń z równoważenia obciążenia w punkcie końcowym.
 
 > [!NOTE]
->  `FixedPortRange` element działa inaczej w zależności od elementu, w którym się znajduje. Gdy `FixedPortRange` elementu znajduje się w elemencie `InternalEndpoint`, otwiera wszystkie porty w module równoważenia obciążenia w zakresie atrybutów minimalnych i maksymalnych dla wszystkich maszyn wirtualnych, na których jest uruchomiona rola. Gdy `FixedPortRange` element znajduje się w elemencie `InstanceInputEndpoint`, otwiera tylko jeden port w zakresie atrybutów minimalnych i maksymalnych na każdej maszynie wirtualnej, na której działa rola.
+>  Element `FixedPortRange` działa inaczej w zależności od elementu, w którym się znajduje. Gdy `FixedPortRange` element znajduje `InternalEndpoint` się w elemencie, otwiera wszystkie porty na modułze równoważenia obciążenia w zakresie atrybutów min i max dla wszystkich maszyn wirtualnych, na których działa rola. Gdy `FixedPortRange` element znajduje `InstanceInputEndpoint` się w elemencie, otwiera tylko jeden port w zakresie atrybutów min i max na każdej maszynie wirtualnej z uruchomioną rolą.
 
-Element `FixedPortRange` jest dostępny tylko przy użyciu zestawu Azure SDK w wersji 1,3 lub nowszej.
+Element `FixedPortRange` jest dostępny tylko przy użyciu narzędzia Azure SDK w wersji 1.3 lub nowszej.
 
-W poniższej tabeli opisano atrybuty elementu `FixedPortRange`.
-
-| Atrybut | Typ | Opis |
-| --------- | ---- | ----------- |
-|min.|int|Wymagany. Minimalny port w zakresie. Możliwe wartości mieszczą się w zakresie od 1 do 65535 włącznie (zestaw SDK platformy Azure w wersji 1,7 lub nowszej).|
-|maks.|string|Wymagany. Maksymalny port w zakresie. Możliwe wartości mieszczą się w zakresie od 1 do 65535 włącznie (zestaw SDK platformy Azure w wersji 1,7 lub nowszej).|
-
-##  <a name="Certificates"></a>Przystawki
-Element `Certificates` opisuje zbiór certyfikatów dla roli proces roboczy. Ten element jest elementem nadrzędnym elementu `Certificate`. Rola może mieć dowolną liczbę skojarzonych certyfikatów. Aby uzyskać więcej informacji na temat korzystania z elementu Certificates, zobacz [Modyfikowanie pliku definicji usługi za pomocą certyfikatu](cloud-services-configure-ssl-certificate-portal.md#step-2-modify-the-service-definition-and-configuration-files).
-
-##  <a name="Certificate"></a>Certyfikatu
-Element `Certificate` opisuje certyfikat skojarzony z rolą proces roboczy.
-
-W poniższej tabeli opisano atrybuty elementu `Certificate`.
+W poniższej tabeli `FixedPortRange` opisano atrybuty elementu.
 
 | Atrybut | Typ | Opis |
 | --------- | ---- | ----------- |
-|name|string|Wymagany. Nazwa tego certyfikatu, która jest używana do odwoływania się do niego, gdy jest skojarzona z elementem `InputEndpoint` HTTPS.|
-|storeLocation|string|Wymagany. Lokalizacja magazynu certyfikatów, w którym ten certyfikat znajduje się na komputerze lokalnym. Możliwe wartości to `CurrentUser` i `LocalMachine`.|
-|storeName|string|Wymagany. Nazwa magazynu certyfikatów, w którym znajduje się ten certyfikat na komputerze lokalnym. Możliwe wartości obejmują nazwy wbudowanych magazynów `My`, `Root`, `CA`, `Trust`, `Disallowed`, `TrustedPeople`, `TrustedPublisher`, `AuthRoot`, `AddressBook`lub dowolnej nazwy magazynu niestandardowego. Jeśli określono niestandardową nazwę magazynu, magazyn zostanie utworzony automatycznie.|
-|permissionLevel|string|Element opcjonalny. Określa uprawnienia dostępu nadawane procesom roli. Jeśli chcesz, aby dostęp do klucza prywatnego był możliwy tylko z podniesionymi procesami, określ uprawnienia `elevated`. uprawnienie `limitedOrElevated` umożliwia wszystkim procesom roli dostęp do klucza prywatnego. Możliwe wartości to `limitedOrElevated` lub `elevated`. Wartością domyślną jest `limitedOrElevated`.|
+|min|int|Wymagany. Minimalny port w zakresie. Możliwe wartości wahają się od 1 do 65535 włącznie (zestaw SDK platformy Azure w wersji 1.7 lub nowszej).|
+|max|ciąg|Wymagany. Maksymalny port w zakresie. Możliwe wartości wahają się od 1 do 65535 włącznie (zestaw SDK platformy Azure w wersji 1.7 lub nowszej).|
 
-##  <a name="Imports"></a>Importowania
-Element `Imports` opisuje zbiór modułów importu dla roli proces roboczy, który dodaje składniki do systemu operacyjnego gościa. Ten element jest elementem nadrzędnym elementu `Import`. Ten element jest opcjonalny, a rola może mieć tylko jeden blok czasu wykonywania.
+##  <a name="certificates"></a><a name="Certificates"></a>Certyfikaty
+Element `Certificates` opisuje kolekcję certyfikatów dla roli procesu roboczego. Ten element jest elementem nadrzędnym `Certificate` elementu. Rola może mieć dowolną liczbę skojarzonych certyfikatów. Aby uzyskać więcej informacji na temat używania elementu certyfikatów, zobacz [Modyfikowanie pliku definicji usługi za pomocą certyfikatu](cloud-services-configure-ssl-certificate-portal.md#step-2-modify-the-service-definition-and-configuration-files).
 
-Element `Imports` jest dostępny tylko przy użyciu zestawu Azure SDK w wersji 1,3 lub nowszej.
+##  <a name="certificate"></a><a name="Certificate"></a>Certyfikat
+Element `Certificate` opisuje certyfikat, który jest skojarzony z rolą procesu roboczego.
 
-##  <a name="Import"></a>Zaimportować
-Element `Import` określa moduł, który ma zostać dodany do systemu operacyjnego gościa.
-
-Element `Import` jest dostępny tylko przy użyciu zestawu Azure SDK w wersji 1,3 lub nowszej.
-
-W poniższej tabeli opisano atrybuty elementu `Import`.
+W poniższej tabeli `Certificate` opisano atrybuty elementu.
 
 | Atrybut | Typ | Opis |
 | --------- | ---- | ----------- |
-|{1&gt;nazwaModułu&lt;1}|string|Wymagany. Nazwa modułu do zaimportowania. Prawidłowe moduły importu:<br /><br /> -RemoteAccess<br />- RemoteForwarder<br />-Diagnostyka<br /><br /> Moduły RemoteAccess i RemoteForwarder umożliwiają skonfigurowanie wystąpienia roli dla połączeń pulpitu zdalnego. Aby uzyskać więcej informacji, zobacz [włączanie Podłączanie pulpitu zdalnego](cloud-services-role-enable-remote-desktop-new-portal.md).<br /><br /> Moduł diagnostyki umożliwia zbieranie danych diagnostycznych dla wystąpienia roli|
+|name|ciąg|Wymagany. Nazwa tego certyfikatu, który jest używany do odwoływania się do `InputEndpoint` niego, gdy jest skojarzony z elementem HTTPS.|
+|Storelocation|ciąg|Wymagany. Lokalizacja magazynu certyfikatów, w której ten certyfikat można znaleźć na komputerze lokalnym. Możliwe wartości `CurrentUser` `LocalMachine`są i .|
+|Storename|ciąg|Wymagany. Nazwa magazynu certyfikatów, w którym ten certyfikat znajduje się na komputerze lokalnym. Możliwe wartości obejmują wbudowane `My`nazwy `Root` `CA`sklepu `Trust` `Disallowed`, `TrustedPeople` `TrustedPublisher`, `AuthRoot` `AddressBook`, , , , , , , , lub dowolną niestandardową nazwę sklepu. Jeśli określono niestandardową nazwę sklepu, magazyn jest tworzony automatycznie.|
+|uprawnieniaPoziom|ciąg|Element opcjonalny. Określa uprawnienia dostępu przyznane procesom roli. Jeśli chcesz, aby tylko procesy z podwyższonym poziomem `elevated` uprawnień mogły uzyskać dostęp do klucza prywatnego, określ uprawnienie. `limitedOrElevated`uprawnienie umożliwia wszystkim procesom roli dostęp do klucza prywatnego. Możliwe wartości to `limitedOrElevated` lub `elevated`. Wartością domyślną jest `limitedOrElevated`.|
 
-##  <a name="Runtime"></a>Środowiska uruchomieniowego
-Element `Runtime` opisuje zbiór ustawień zmiennych środowiskowych dla roli procesu roboczego kontrolujących środowisko uruchomieniowe procesu hosta platformy Azure. Ten element jest elementem nadrzędnym elementu `Environment`. Ten element jest opcjonalny, a rola może mieć tylko jeden blok czasu wykonywania.
+##  <a name="imports"></a><a name="Imports"></a>Przywozu
+Element `Imports` opisuje kolekcję modułów importu dla roli procesu roboczego, które dodają składniki do systemu operacyjnego gościa. Ten element jest elementem nadrzędnym `Import` elementu. Ten element jest opcjonalny i rola może mieć tylko jeden blok środowiska uruchomieniowego.
 
-Element `Runtime` jest dostępny tylko przy użyciu zestawu Azure SDK w wersji 1,3 lub nowszej.
+Element `Imports` jest dostępny tylko przy użyciu narzędzia Azure SDK w wersji 1.3 lub nowszej.
 
-W poniższej tabeli opisano atrybuty elementu `Runtime`:
+##  <a name="import"></a><a name="Import"></a>Importu
+Element `Import` określa moduł, który ma być dodawany do systemu operacyjnego gościa.
 
-| Atrybut | Typ | Opis |
-| --------- | ---- | ----------- |
-|executionContext|string|Element opcjonalny. Określa kontekst, w którym uruchamiany jest proces roli. Domyślny kontekst to `limited`.<br /><br /> -   `limited` — proces jest uruchamiany bez uprawnień administratora.<br />-   `elevated` — proces jest uruchamiany z uprawnieniami administratora.|
+Element `Import` jest dostępny tylko przy użyciu narzędzia Azure SDK w wersji 1.3 lub nowszej.
 
-##  <a name="Environment"></a>Naturalne
-Element `Environment` opisuje zbiór ustawień zmiennych środowiskowych dla roli proces roboczy. Ten element jest elementem nadrzędnym elementu `Variable`. Rola może mieć określoną liczbę zmiennych środowiskowych.
-
-##  <a name="Variable"></a>Zmiennej
-Element `Variable` określa zmienną środowiskową do ustawienia w systemie operacyjnym gościa.
-
-Element `Variable` jest dostępny tylko przy użyciu zestawu Azure SDK w wersji 1,3 lub nowszej.
-
-W poniższej tabeli opisano atrybuty elementu `Variable`:
+W poniższej tabeli `Import` opisano atrybuty elementu.
 
 | Atrybut | Typ | Opis |
 | --------- | ---- | ----------- |
-|name|string|Wymagany. Nazwa zmiennej środowiskowej, która ma zostać ustawiona.|
-|wartość|string|Element opcjonalny. Wartość, która ma zostać ustawiona dla zmiennej środowiskowej. Musisz dołączyć atrybut value lub `RoleInstanceValue` elementu.|
+|nazwa modułu|ciąg|Wymagany. Nazwa modułu do zaimportowania. Prawidłowe moduły importu to:<br /><br /> - RemoteAccess<br />- RemoteForwarder<br />- Diagnostyka<br /><br /> Moduły Dostępu zdalnego i programu RemoteForwarder umożliwiają skonfigurowanie wystąpienia roli dla połączeń pulpitu zdalnego. Aby uzyskać więcej informacji, zobacz [Włączanie połączenia pulpitu zdalnego](cloud-services-role-enable-remote-desktop-new-portal.md).<br /><br /> Moduł Diagnostyka umożliwia zbieranie danych diagnostycznych dla wystąpienia roli|
 
-##  <a name="RoleInstanceValue"></a>RoleInstanceValue
-Element `RoleInstanceValue` określa wyrażenie xPath, z którego ma zostać pobrana wartość zmiennej.
+##  <a name="runtime"></a><a name="Runtime"></a>Środowiska wykonawczego
+Element `Runtime` opisuje kolekcję ustawień zmiennych środowiskowych dla roli procesu roboczego, które kontrolują środowisko wykonawcze procesu hosta platformy Azure. Ten element jest elementem nadrzędnym `Environment` elementu. Ten element jest opcjonalny i rola może mieć tylko jeden blok środowiska uruchomieniowego.
 
-W poniższej tabeli opisano atrybuty elementu `RoleInstanceValue`.
+Element `Runtime` jest dostępny tylko przy użyciu narzędzia Azure SDK w wersji 1.3 lub nowszej.
+
+W poniższej tabeli `Runtime` opisano atrybuty elementu:
 
 | Atrybut | Typ | Opis |
 | --------- | ---- | ----------- |
-|Lokalizacja|string|Element opcjonalny. Ścieżka lokalizacji ustawień wdrożenia dla tego wystąpienia. Aby uzyskać więcej informacji, zobacz [Zmienne konfiguracyjne z wyrażeniem XPath](cloud-services-role-config-xpath.md).<br /><br /> Musisz dołączyć atrybut value lub `RoleInstanceValue` elementu.|
+|Executioncontext|ciąg|Element opcjonalny. Określa kontekst, w którym jest uruchamiany proces roli. Domyślnym kontekstem jest `limited`.<br /><br /> -   `limited`– Proces jest uruchamiany bez uprawnień administratora.<br />-   `elevated`– Proces jest uruchamiany z uprawnieniami administratora.|
 
-##  <a name="EntryPoint"></a> EntryPoint
-Element `EntryPoint` określa punkt wejścia dla roli. Ten element jest elementem nadrzędnym `NetFxEntryPoint` elementów. Te elementy umożliwiają określenie aplikacji innej niż domyślna WaWorkerHost. exe do działania jako punkt wejścia roli.
+##  <a name="environment"></a><a name="Environment"></a>Środowiska
+Element `Environment` opisuje zbiór ustawień zmiennej środowiskowej dla roli procesu roboczego. Ten element jest elementem nadrzędnym `Variable` elementu. Rola może mieć dowolną liczbę zmiennych środowiskowych ustawionych.
 
-Element `EntryPoint` jest dostępny tylko przy użyciu zestawu Azure SDK w wersji 1,5 lub nowszej.
+##  <a name="variable"></a><a name="Variable"></a>Zmiennej
+Element `Variable` określa zmienną środowiskową ustawioną w trybie obsługi gościa.
 
-##  <a name="NetFxEntryPoint"></a> NetFxEntryPoint
-`NetFxEntryPoint` element określa program do uruchomienia dla roli.
+Element `Variable` jest dostępny tylko przy użyciu narzędzia Azure SDK w wersji 1.3 lub nowszej.
+
+W poniższej tabeli `Variable` opisano atrybuty elementu:
+
+| Atrybut | Typ | Opis |
+| --------- | ---- | ----------- |
+|name|ciąg|Wymagany. Nazwa zmiennej środowiskowej do ustawienia.|
+|value|ciąg|Element opcjonalny. Wartość ustawiona dla zmiennej środowiskowej. Należy dołączyć atrybut wartości lub `RoleInstanceValue` element.|
+
+##  <a name="roleinstancevalue"></a><a name="RoleInstanceValue"></a>Wartość roli
+Element `RoleInstanceValue` określa xPath, z którego można pobrać wartość zmiennej.
+
+W poniższej tabeli `RoleInstanceValue` opisano atrybuty elementu.
+
+| Atrybut | Typ | Opis |
+| --------- | ---- | ----------- |
+|Xpath|ciąg|Element opcjonalny. Ścieżka lokalizacji ustawień wdrażania dla wystąpienia. Aby uzyskać więcej informacji, zobacz [Zmienne konfiguracyjne za pomocą programu XPath](cloud-services-role-config-xpath.md).<br /><br /> Należy dołączyć atrybut wartości lub `RoleInstanceValue` element.|
+
+##  <a name="entrypoint"></a><a name="EntryPoint"></a>Entrypoint
+Element `EntryPoint` określa punkt wejścia dla roli. Ten element jest elementem nadrzędnym `NetFxEntryPoint` elementów. Te elementy umożliwiają określenie aplikacji innej niż domyślna WaWorkerHost.exe do działania jako punkt wejścia roli.
+
+Element `EntryPoint` jest dostępny tylko przy użyciu narzędzia Azure SDK w wersji 1.5 lub nowszej.
+
+##  <a name="netfxentrypoint"></a><a name="NetFxEntryPoint"></a>NetFxEntryPoint (NetFxEntryPoint)
+Element `NetFxEntryPoint` określa program do uruchomienia dla roli.
 
 > [!NOTE]
->  Element `NetFxEntryPoint` jest dostępny tylko przy użyciu zestawu Azure SDK w wersji 1,5 lub nowszej.
+>  Element `NetFxEntryPoint` jest dostępny tylko przy użyciu narzędzia Azure SDK w wersji 1.5 lub nowszej.
 
-W poniższej tabeli opisano atrybuty elementu `NetFxEntryPoint`.
+W poniższej tabeli `NetFxEntryPoint` opisano atrybuty elementu.
 
 | Atrybut | Typ | Opis |
 | --------- | ---- | ----------- |
-|{1&gt;nazwaZestawu&lt;1}|string|Wymagany. Ścieżka i nazwa pliku zestawu zawierającego punkt wejścia. Ścieżka jest względna w stosunku do folderu **\\%ROLEROOT%\Approot** (nie określaj **\\%ROLEROOT%\Approot** w `commandLine`, przyjmuje się, że założono). **% ROLEROOT%** to zmienna środowiskowa obsługiwana przez platformę Azure, która reprezentuje lokalizację folderu głównego dla Twojej roli. Folder **\\%ROLEROOT%\Approot** reprezentuje folder aplikacji dla Twojej roli.|
-|targetFrameworkVersion|string|Wymagany. Wersja programu .NET Framework, na którym został skompilowany zestaw. Na przykład `targetFrameworkVersion="v4.0"`.|
+|Assemblyname|ciąg|Wymagany. Ścieżka i nazwa pliku zestawu zawierającego punkt wejścia. Ścieżka jest względem folderu `commandLine` ** \\%ROLEROOT%\Approot** (nie należy określać ** \\%ROLEROOT%\Approot** in , zakłada się). **%ROLEROOT%** jest zmienną środowiskową obsługiwaną przez platformę Azure i reprezentuje lokalizację folderu głównego dla Twojej roli. Folder ** \\%ROLEROOT%\Approot** reprezentuje folder aplikacji dla Twojej roli.|
+|Targetframeworkversion|ciąg|Wymagany. Wersja platformy .NET, na której został zbudowany zestaw. Na przykład `targetFrameworkVersion="v4.0"`.|
 
-##  <a name="ProgramEntryPoint"></a> ProgramEntryPoint
-`ProgramEntryPoint` element określa program do uruchomienia dla roli. Element `ProgramEntryPoint` umożliwia określenie punktu wejścia programu, który nie jest oparty na zestawie .NET.
+##  <a name="programentrypoint"></a><a name="ProgramEntryPoint"></a>ProgramEntryPoint
+Element `ProgramEntryPoint` określa program do uruchomienia dla roli. Element `ProgramEntryPoint` umożliwia określenie punktu wejścia programu, który nie jest oparty na zestawie .NET.
 
 > [!NOTE]
->  Element `ProgramEntryPoint` jest dostępny tylko przy użyciu zestawu Azure SDK w wersji 1,5 lub nowszej.
+>  Element `ProgramEntryPoint` jest dostępny tylko przy użyciu narzędzia Azure SDK w wersji 1.5 lub nowszej.
 
-W poniższej tabeli opisano atrybuty elementu `ProgramEntryPoint`.
+W poniższej tabeli `ProgramEntryPoint` opisano atrybuty elementu.
 
 | Atrybut | Typ | Opis |
 | --------- | ---- | ----------- |
-|Wiersza polecenia|string|Wymagany. Ścieżka, nazwa pliku i argumenty wiersza polecenia programu do wykonania. Ścieżka jest względna w stosunku do folderu **%ROLEROOT%\Approot** (nie określaj **%ROLEROOT%\Approot** w wierszu polecenia, jest założono). **% ROLEROOT%** to zmienna środowiskowa obsługiwana przez platformę Azure, która reprezentuje lokalizację folderu głównego dla Twojej roli. Folder **%ROLEROOT%\Approot** reprezentuje folder aplikacji dla Twojej roli.<br /><br /> Jeśli program zostanie zakończony, rola jest odtwarzana, dlatego na ogół ustawia program do dalszego uruchomienia, a nie program, który właśnie uruchamia i uruchamia skończone zadanie.|
-|setReadyOnProcessStart|wartość logiczna|Wymagany. Określa, czy wystąpienie roli czeka na uruchomienie programu wiersza polecenia. Ta wartość musi być teraz ustawiona na `true`. Ustawienie wartości `false` jest zarezerwowane do użytku w przyszłości.|
+|Commandline|ciąg|Wymagany. Ścieżka, nazwa pliku i wszelkie argumenty wiersza polecenia programu do wykonania. Ścieżka jest względem folderu **%ROLEROOT%\Approot** (nie określaj **%ROLEROOT%\Approot** w commandLine, zakłada się). **%ROLEROOT%** jest zmienną środowiskową obsługiwaną przez platformę Azure i reprezentuje lokalizację folderu głównego dla Twojej roli. Folder **%ROLEROOT%\Approot** reprezentuje folder aplikacji dla Twojej roli.<br /><br /> Jeśli program się kończy, rola jest poddawana recyklingowi, więc zazwyczaj ustaw program tak, aby nadal działał, zamiast być programem, który dopiero się uruchamia i uruchamia skończone zadanie.|
+|setReadyOnProcessStart|wartość logiczna|Wymagany. Określa, czy wystąpienie roli czeka na sygnał, że program wiersza polecenia zostanie uruchomiony. Wartość ta musi `true` być ustawiona na w tej chwili. Ustawienie wartości `false` jest zarezerwowane do wykorzystania w przyszłości.|
 
-##  <a name="Startup"></a>Folderze
-Element `Startup` opisuje zbiór zadań, które są uruchamiane, gdy rola zostanie uruchomiona. Ten element może być elementem nadrzędnym elementu `Variable`. Aby uzyskać więcej informacji o korzystaniu z zadań uruchamiania roli, zobacz [jak skonfigurować zadania uruchamiania](cloud-services-startup-tasks.md). Ten element jest opcjonalny i rola może mieć tylko jeden blok startowy.
+##  <a name="startup"></a><a name="Startup"></a>Uruchamiania
+Element `Startup` opisuje zbiór zadań, które są uruchamiane po uruchomieniu roli. Ten element może być `Variable` elementem nadrzędnym elementu. Aby uzyskać więcej informacji na temat korzystania z zadań uruchamiania ról, zobacz [Jak skonfigurować zadania uruchamiania](cloud-services-startup-tasks.md). Ten element jest opcjonalny i rola może mieć tylko jeden blok uruchamiania.
 
-W poniższej tabeli opisano atrybut elementu `Startup`.
+W poniższej tabeli opisano `Startup` atrybut elementu.
 
 | Atrybut | Typ | Opis |
 | --------- | ---- | ----------- |
 |priority|int|Tylko do użytku wewnętrznego.|
 
-##  <a name="Task"></a>Zadaniem
-`Task` element Określa zadanie uruchamiania, które odbywa się podczas uruchamiania roli. Zadania uruchamiania mogą służyć do wykonywania zadań przygotowujących rolę do uruchamiania takich składników oprogramowania lub uruchamiania innych aplikacji. Zadania są wykonywane w kolejności, w jakiej występują w bloku elementu `Startup`.
+##  <a name="task"></a><a name="Task"></a>Zadanie
+Element `Task` określa zadanie uruchamiania, które ma miejsce po uruchomieniu roli. Zadania uruchamiania mogą służyć do wykonywania zadań, które przygotowują rolę do uruchamiania takich składników oprogramowania instalowania lub uruchamiania innych aplikacji. Zadania wykonywane w kolejności, w `Startup` jakiej pojawiają się w bloku elementu.
 
-Element `Task` jest dostępny tylko przy użyciu zestawu Azure SDK w wersji 1,3 lub nowszej.
+Element `Task` jest dostępny tylko przy użyciu narzędzia Azure SDK w wersji 1.3 lub nowszej.
 
-W poniższej tabeli opisano atrybuty elementu `Task`.
-
-| Atrybut | Typ | Opis |
-| --------- | ---- | ----------- |
-|Wiersza polecenia|string|Wymagany. Skrypt, taki jak plik CMD zawierający polecenia do uruchomienia. Polecenia uruchamiania i pliki wsadowe muszą być zapisane w formacie ANSI. Formaty plików ustawiające znacznik kolejności bajtów na początku pliku nie będą przetwarzać się prawidłowo.|
-|executionContext|string|Określa kontekst, w którym skrypt jest uruchamiany.<br /><br /> -   `limited` [domyślnie] — Uruchom z takimi samymi uprawnieniami jak rola hostującym proces.<br />-   `elevated` — Uruchom z uprawnieniami administratora.|
-|taskType|string|Określa zachowanie wykonywania polecenia.<br /><br /> -   `simple` [domyślnie] — system czeka na zakończenie zadania przed uruchomieniem innych zadań.<br />-   `background` — system nie czeka na zakończenie zadania.<br />-   `foreground` — podobnie jak w tle, z wyjątkiem tego, że rola nie zostanie uruchomiona ponownie do momentu zakończenia wszystkich zadań pierwszego planu.|
-
-##  <a name="Contents"></a>Contents
-Element `Contents` opisuje zbiór zawartości dla roli proces roboczy. Ten element jest elementem nadrzędnym elementu `Content`.
-
-Element `Contents` jest dostępny tylko przy użyciu zestawu Azure SDK w wersji 1,5 lub nowszej.
-
-##  <a name="Content"></a>Treści
-Element `Content` definiuje lokalizację źródłową zawartości do skopiowania na maszynę wirtualną platformy Azure i ścieżkę docelową, do której jest kopiowany.
-
-Element `Content` jest dostępny tylko przy użyciu zestawu Azure SDK w wersji 1,5 lub nowszej.
-
-W poniższej tabeli opisano atrybuty elementu `Content`.
+W poniższej tabeli `Task` opisano atrybuty elementu.
 
 | Atrybut | Typ | Opis |
 | --------- | ---- | ----------- |
-|destination|string|Wymagany. Lokalizacja na maszynie wirtualnej platformy Azure, do której zostanie umieszczona zawartość. Ta lokalizacja jest określana względem folderu **%ROLEROOT%\Approot**.|
+|Commandline|ciąg|Wymagany. Skrypt, taki jak plik CMD, zawierający polecenia do uruchomienia. Pliki poleceń uruchamiania i wsadowych muszą być zapisane w formacie ANSI. Formaty plików, które ustawiają znacznik kolejności bajtów na początku pliku, nie będą poprawnie przetwarzać.|
+|Executioncontext|ciąg|Określa kontekst, w którym skrypt jest uruchamiany.<br /><br /> -   `limited`[Domyślnie] — uruchom z tymi samymi uprawnieniami, co rola hostująca proces.<br />-   `elevated`– Uruchom z uprawnieniami administratora.|
+|Tasktype|ciąg|Określa zachowanie wykonywania polecenia.<br /><br /> -   `simple`[Domyślnie] — system czeka na zakończenie zadania przed uruchomieniem innych zadań.<br />-   `background`– System nie czeka na zakończenie zadania.<br />-   `foreground`– Podobnie jak w tle, z wyjątkiem roli nie jest uruchamiany ponownie, dopóki nie zakończy się wszystkie zadania pierwszego planu.|
 
-Ten element jest elementem nadrzędnym elementu `SourceDirectory`.
+##  <a name="contents"></a><a name="Contents"></a>Zawartość
+Element `Contents` opisuje kolekcję zawartości dla roli procesu roboczego. Ten element jest elementem nadrzędnym `Content` elementu.
 
-##  <a name="SourceDirectory"></a>SourceDirectory
-Element `SourceDirectory` definiuje katalog lokalny, z którego kopiowana jest zawartość. Użyj tego elementu, aby określić lokalną zawartość do skopiowania na maszynę wirtualną platformy Azure.
+Element `Contents` jest dostępny tylko przy użyciu narzędzia Azure SDK w wersji 1.5 lub nowszej.
 
-Element `SourceDirectory` jest dostępny tylko przy użyciu zestawu Azure SDK w wersji 1,5 lub nowszej.
+##  <a name="content"></a><a name="Content"></a>Zawartości
+Element `Content` definiuje lokalizację źródłową zawartości, która ma zostać skopiowana do maszyny wirtualnej platformy Azure i ścieżkę docelową, do której jest kopiowana.
 
-W poniższej tabeli opisano atrybuty elementu `SourceDirectory`.
+Element `Content` jest dostępny tylko przy użyciu narzędzia Azure SDK w wersji 1.5 lub nowszej.
+
+W poniższej tabeli `Content` opisano atrybuty elementu.
 
 | Atrybut | Typ | Opis |
 | --------- | ---- | ----------- |
-|Ścieżka|string|Wymagany. Ścieżka względna lub bezwzględna katalogu lokalnego, którego zawartość zostanie skopiowana na maszynę wirtualną platformy Azure. Rozszerzanie zmiennych środowiskowych w ścieżce katalogu jest obsługiwane.|
+|destination|ciąg|Wymagany. Lokalizacja na maszynie wirtualnej platformy Azure, do której jest umieszczana zawartość. Ta lokalizacja jest względem folderu **%ROLEROOT%\Approot**.|
+
+Ten element jest elementem `SourceDirectory` nadrzędnym elementu.
+
+##  <a name="sourcedirectory"></a><a name="SourceDirectory"></a>ŹródłoDirectory
+Element `SourceDirectory` definiuje katalog lokalny, z którego kopiowana jest zawartość. Ten element służy do określania zawartości lokalnej do kopiowania na maszynie wirtualnej platformy Azure.
+
+Element `SourceDirectory` jest dostępny tylko przy użyciu narzędzia Azure SDK w wersji 1.5 lub nowszej.
+
+W poniższej tabeli `SourceDirectory` opisano atrybuty elementu.
+
+| Atrybut | Typ | Opis |
+| --------- | ---- | ----------- |
+|ścieżka|ciąg|Wymagany. Ścieżka względna lub bezwzględna katalogu lokalnego, którego zawartość zostanie skopiowana na maszynę wirtualną platformy Azure. Obsługiwane jest rozszerzanie zmiennych środowiskowych w ścieżce katalogu.|
 
 ## <a name="see-also"></a>Zobacz też
 [Schemat definicji usługi w chmurze (klasycznej)](schema-csdef-file.md)

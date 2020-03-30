@@ -1,6 +1,6 @@
 ---
-title: 'Szybki Start: Ustawianie & pobierania klucza tajnego z Key Vault przy użyciu programu PowerShell'
-description: W tym przewodniku szybki start dowiesz się, jak tworzyć, pobierać i usuwać wpisy tajne z magazynu kluczy platformy Azure przy użyciu programu PowerShell
+title: 'Szybki start: ustawianie & pobierania klucza tajnego z magazynu kluczy za pomocą programu PowerShell'
+description: W tym przewodniku Szybki start dowiedz się, jak tworzyć, pobierać i usuwać wpisy tajne z usługi Azure Key Vault przy użyciu programu Azure PowerShell.
 services: key-vault
 author: msmbaldwin
 manager: rkarlin
@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 11/08/2019
 ms.author: mbaldwin
-ms.openlocfilehash: f2b3b7d42ec7eac6dba402c0f553760548c78044
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 627d74f48c0f2b3da8665cd255102f36869477c2
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78197797"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79472762"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-powershell"></a>Szybki start: konfigurowanie i pobieranie wpisów tajnych z usługi Azure Key Vault przy użyciu programu PowerShell
 
@@ -24,7 +24,7 @@ ms.locfileid: "78197797"
 
 Azure Key Vault to usługa w chmurze, która działa jako bezpieczny magazyn wpisów tajnych. Możesz bezpiecznie przechowywać klucze, hasła, certyfikaty oraz inne wpisy tajne. Aby uzyskać więcej informacji na temat usługi Key Vault, możesz zapoznać się z [omówieniem](key-vault-overview.md). W tym przewodniku Szybki start opisano tworzenie magazynu kluczy przy użyciu programu PowerShell, a następnie umieszczanie wpisu tajnego w nowo utworzonym magazynie.
 
-Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Jeśli nie masz subskrypcji platformy Azure, utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) przed rozpoczęciem.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -34,7 +34,7 @@ Jeśli postanowisz zainstalować program PowerShell i używać go lokalnie, to t
 Login-AzAccount
 ```
 
-## <a name="create-a-resource-group"></a>Utwórz grupę zasobów
+## <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
 
 Utwórz grupę zasobów platformy Azure za pomocą polecenia [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup). Grupa zasobów to logiczny kontener przeznaczony do wdrażania zasobów platformy Azure i zarządzania nimi. 
 
@@ -49,8 +49,8 @@ Następnie utworzysz magazyn kluczy. Podczas wykonywania tego kroku potrzebne b�
 Mimo iż w tym przewodniku Szybki start używany nazwy „Contoso KeyVault2” jako nazwy usługi Key Vault, musisz użyć unikatowej nazwy.
 
 - **Nazwa magazynu**: Contoso Vault2.
-- **Nazwa grupy zasobów**: ContosoResourceGroup.
-- **Lokalizacja**: Wschodnie stany USA.
+- **Nazwa grupy zasobów** ContosoResourceGroup.
+- **Lokalizacja** Wschodnie stany USA.
 
 ```azurepowershell-interactive
 New-AzKeyVault -Name 'Contoso-Vault2' -ResourceGroupName 'ContosoResourceGroup' -Location 'East US'
@@ -101,9 +101,9 @@ Remove-AzResourceGroup -Name ContosoResourceGroup
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym przewodniku szybki start utworzono Key Vault i Zapisano w nim wpis tajny. Aby dowiedzieć się więcej na temat Key Vault i sposobu integrowania go z aplikacjami, przejdź do artykułu poniżej.
+W tym przewodniku Szybki start utworzono magazyn kluczy i zapis tajny. Aby dowiedzieć się więcej o programie Key Vault i integruj go z aplikacjami, przejdź do poniższych artykułów.
 
-- Zapoznaj się [z omówieniem Azure Key Vault](key-vault-overview.md)
-- Zobacz informacje dotyczące [Azure PowerShell poleceń cmdlet Key Vault](/powershell/module/az.keyvault/?view=azps-2.6.0#key_vault)
-- Informacje o [kluczach, wpisach tajnych i certyfikatach](about-keys-secrets-and-certificates.md)
-- Przegląd [Azure Key Vault najlepszych](key-vault-best-practices.md) rozwiązań
+- Przeczytaj [omówienie usługi Azure Key Vault](key-vault-overview.md)
+- Zobacz odwołanie do [poleceń cmdlet usługi Azure PowerShell Key Vault](/powershell/module/az.keyvault/?view=azps-2.6.0#key_vault)
+- Dowiedz się więcej o [kluczach, wpisach tajnych i certyfikatach](about-keys-secrets-and-certificates.md)
+- Zapoznaj się z [najlepszymi rozwiązaniami usługi Azure Key Vault](key-vault-best-practices.md)

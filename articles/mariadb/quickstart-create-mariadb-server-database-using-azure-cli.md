@@ -1,29 +1,29 @@
 ---
-title: 'Szybki Start: Tworzenie serwera — interfejs wiersza polecenia platformy Azure — Azure Database for MariaDB'
+title: 'Szybki start: Tworzenie serwera — narzędzie interfejsu wiersza polecenia platformy Azure — usługa Azure Database dla bazy mariadb'
 description: W tym przewodniku Szybki start opisano, jak utworzyć serwer usługi Azure Database for MariaDB w grupie zasobów platformy Azure za pomocą interfejsu wiersza polecenia platformy Azure.
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.devlang: azurecli
 ms.topic: quickstart
-ms.date: 12/02/2019
+ms.date: 3/18/2020
 ms.custom: mvc
-ms.openlocfilehash: 5cfdcf2664871849d4488be4320f6aa03e296ce7
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: f83af794a179634b9b6b7adedd329ea6f4a7b8d0
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74770037"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79536466"
 ---
 # <a name="create-an-azure-database-for-mariadb-server-by-using-the-azure-cli"></a>Tworzenie serwera usługi Azure Database for MariaDB za pomocą interfejsu wiersza polecenia platformy Azure
 
-Interfejs wiersza polecenia platformy Azure może służyć do tworzenia zasobów platformy Azure i zarządzania nimi z poziomu wiersza polecenia lub skryptów. W tym przewodniku Szybki start opisano, jak utworzyć serwer usługi Azure Database for MariaDB w grupie zasobów platformy Azure za pomocą interfejsu wiersza polecenia platformy Azure w czasie około pięciu minut. 
+Interfejs wiersza polecenia platformy Azure może służyć do tworzenia zasobów platformy Azure i zarządzania nimi z poziomu wiersza polecenia lub skryptów. W tym przewodniku Szybki start opisano, jak utworzyć serwer usługi Azure Database for MariaDB w grupie zasobów platformy Azure za pomocą interfejsu wiersza polecenia platformy Azure w czasie około pięciu minut.
 
-Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne](https://azure.microsoft.com/free/) konto.
+Jeśli nie masz subskrypcji platformy Azure, utwórz [bezpłatne](https://azure.microsoft.com/free/) konto przed rozpoczęciem.
 
 [!INCLUDE [cloud-shell-try-it](../../includes/cloud-shell-try-it.md)]
 
-Jeśli zainstalujesz interfejs wiersza polecenia i korzystasz z niego lokalnie, w tym przewodniku Szybki start musisz uruchomić interfejs wiersza polecenia platformy Azure w wersji 2.0 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja wiersza polecenia lub jego uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure 2.0]( /cli/azure/install-azure-cli). 
+Jeśli zainstalujesz interfejs wiersza polecenia i korzystasz z niego lokalnie, w tym przewodniku Szybki start musisz uruchomić interfejs wiersza polecenia platformy Azure w wersji 2.0 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja wiersza polecenia lub jego uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure 2.0]( /cli/azure/install-azure-cli).
 
 Jeśli masz wiele subskrypcji, wybierz tę subskrypcję, która zawiera zasób, lub subskrypcję, w której są naliczane opłaty. Aby wybrać określony identyfikator subskrypcji na Twoim koncie, użyj polecenia [az account set](/cli/azure/account#az-account-set):
 
@@ -31,7 +31,7 @@ Jeśli masz wiele subskrypcji, wybierz tę subskrypcję, która zawiera zasób, 
 az account set --subscription 00000000-0000-0000-0000-000000000000
 ```
 
-## <a name="create-a-resource-group"></a>Utwórz grupę zasobów
+## <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
 
 Utwórz [grupę zasobów platformy Azure](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) za pomocą polecenia [az group create](/cli/azure/group#az-group-create). Grupa zasobów to logiczny kontener przeznaczony do wdrażania zasobów platformy Azure i zarządzania nimi w formie grupy.
 
@@ -48,16 +48,16 @@ Utwórz serwer usługi Azure Database for MariaDB za pomocą polecenia [az maria
 Ustawienie | Wartość przykładowa | Opis
 ---|---|---
 name | **mydemoserver** | Wprowadź unikatową nazwę, która identyfikuje Twój serwer usługi Azure Database for MariaDB. Nazwa serwera może zawierać tylko małe litery, cyfry i znaki łącznika (-). Musi zawierać od 3 do 63 znaków.
-resource-group | **myresourcegroup** | Wprowadź nazwę grupy zasobów platformy Azure.
-sku-name | **GP_Gen5_2** | Nazwa jednostki SKU. Zgodnie z konwencją *warstwa cenowa*\_*generacja obliczeniowa*\_*rdzenie wirtualne* w skrócie. Aby uzyskać więcej informacji na temat parametru **sku-name**, zobacz sekcję poniżej tabeli.
+resource-group | **grupa myresource** | Wprowadź nazwę grupy zasobów platformy Azure.
+sku-name | **GP_Gen5_2** | Nazwa jednostki SKU. Wynika z konwencji *cen owych wytwarzania*\_\_korli*wytwarzania* w*skrócie.* Aby uzyskać więcej informacji na temat parametru **sku-name**, zobacz sekcję poniżej tabeli.
 backup-retention | **7** | Jak długo należy przechowywać kopię zapasową. Jednostka to dni. Zakres: 7–35. 
-geo-redundant-backup | **Disabled (Wyłączone)** | Określa, czy dla tego serwera powinny być włączone geograficznie nadmiarowe kopie zapasowe. Dozwolone wartości: **Enabled (Włączone)** i **Disabled (Wyłączone)** .
+geo-redundant-backup | **Wyłączone** | Określa, czy dla tego serwera powinny być włączone geograficznie nadmiarowe kopie zapasowe. Dozwolone wartości: **Włączone**, **Wyłączone**.
 location | **westus** | Lokalizacja platformy Azure dla serwera.
-ssl-enforcement | **Enabled (Włączone)** | Określa, czy dla tego serwera powinien być włączony protokół SSL. Dozwolone wartości: **Enabled (Włączone)** i **Disabled (Wyłączone)** .
+ssl-enforcement | **Enabled (Włączony)** | Określa, czy dla tego serwera powinien być włączony protokół SSL. Dozwolone wartości: **Włączone**, **Wyłączone**.
 storage-size | **51200** | Pojemność magazynu serwera (w megabajtach). Prawidłowy rozmiar magazynu to 5120 MB (minimum) rosnący z przyrostem 1024 MB. Aby uzyskać więcej informacji na temat limitów rozmiaru magazynu, zobacz [Warstwy cenowe](./concepts-pricing-tiers.md). 
 version | **10.2** | Wersja główna aparatu MariaDB.
 admin-user | **myadmin** | Nazwa użytkownika w przypadku logowania administratora. Parametr **admin-user** nie może mieć wartości **azure_superuser**, **admin**, **administrator**, **root**, **guest** ani **public**.
-admin-password | *Twoje hasło* | Hasło użytkownika administratora. Twoje hasło musi zawierać od 8 do 128 znaków. Musi ono zawierać znaki z trzech z następujących kategorii: wielkie litery angielskie, małe litery angielskie, cyfry i znaki inne niż alfanumeryczne.
+admin-password | *twoje hasło* | Hasło użytkownika administratora. Twoje hasło musi zawierać od 8 do 128 znaków. Musi ono zawierać znaki z trzech z następujących kategorii: wielkie litery angielskie, małe litery angielskie, cyfry i znaki inne niż alfanumeryczne.
 
 Wartość parametru sku-name jest zgodna z konwencją {warstwa cenowa}\_{generacja obliczeniowa}\_{rdzenie wirtualne}, jak pokazano w przykładach poniżej:
 + `--sku-name B_Gen5_1` — warstwa podstawowa, 5. generacja, 1 rdzeń wirtualny. Ta opcja to najmniejsza dostępna jednostka SKU.
@@ -74,13 +74,12 @@ az mariadb server create --resource-group myresourcegroup --name mydemoserver  -
 
 > [!NOTE]
 > Jeśli niewielkie zasoby obliczeniowe i we/wy są wystarczające dla Twojego obciążenia, warto rozważyć użycie warstwy cenowej Podstawowa. Pamiętaj, że serwerów utworzonych w warstwie cenowej Podstawowa nie można później przeskalować do warstwy Ogólnego przeznaczenia lub Zoptymalizowana pod kątem pamięci. Przejdź na [stronę cennika](https://azure.microsoft.com/pricing/details/mariadb/), aby uzyskać więcej informacji.
-> 
 
 ## <a name="configure-a-firewall-rule"></a>Konfigurowanie reguły zapory
 
-Utwórz regułę zapory na poziomie serwera usługi Azure Database for MariaDB za pomocą polecenia [az mariadb server firewall-rule create](/cli/azure/mariadb/server/firewall-rule#az-mariadb-server-firewall-rule-create). Reguła zapory na poziomie serwera pozwala aplikacji zewnętrznej, takiej jak narzędzie wiersza polecenia mysql lub program MySQL Workbench, na nawiązywanie połączeń z Twoim serwerem przez zaporę usługi Azure Database for MariaDB. 
+Utwórz regułę zapory na poziomie serwera usługi Azure Database for MariaDB za pomocą polecenia [az mariadb server firewall-rule create](/cli/azure/mariadb/server/firewall-rule#az-mariadb-server-firewall-rule-create). Reguła zapory na poziomie serwera pozwala aplikacji zewnętrznej, takiej jak narzędzie wiersza polecenia mysql lub program MySQL Workbench, na nawiązywanie połączeń z Twoim serwerem przez zaporę usługi Azure Database for MariaDB.
 
-Poniższy przykład powoduje utworzenie reguły zapory o nazwie `AllowMyIP`, która zezwala na połączenia z określonego adresu IP – 192.168.0.1. Zastąp adres IP lub zakres adresów IP, który odnosi się do lokalizacji, z której się łączysz. 
+Poniższy przykład powoduje utworzenie reguły zapory o nazwie `AllowMyIP`, która zezwala na połączenia z określonego adresu IP – 192.168.0.1. Zastąp adres IP lub zakres adresów IP, który odnosi się do lokalizacji, z której się łączysz.
 
 ```azurecli-interactive
 az mariadb server firewall-rule create --resource-group myresourcegroup --server mydemoserver --name AllowMyIP --start-ip-address 192.168.0.1 --end-ip-address 192.168.0.1
@@ -88,14 +87,13 @@ az mariadb server firewall-rule create --resource-group myresourcegroup --server
 
 > [!NOTE]
 > Połączenia z usługą Azure Database for MariaDB korzystają z portu 3306. Jeśli próbujesz nawiązać połączenie z sieci firmowej, ruch wychodzący na porcie 3306 może być zablokowany. W takim przypadku możesz połączyć się z własnym serwerem tylko wtedy, gdy Twój dział IT otworzy port 3306.
-> 
 
 ## <a name="configure-ssl-settings"></a>Konfigurowanie ustawień SSL
 
 Domyślnie połączenia SSL między Twoim serwerem i aplikacjami klienckimi są wymuszane. To domyślne ustawienie zapewnia bezpieczeństwo danych „w ruchu” przez szyfrowanie strumienia danych przesyłanych przez Internet. W tym przewodniku Szybki start wyłącz połączenia SSL dla Twojego serwera. Nie zaleca się wyłączania połączenia SSL w przypadku serwerów produkcyjnych. Aby uzyskać więcej informacji, zobacz [Configure SSL connectivity in your application to securely connect to Azure Database for MySQL (Konfigurowanie łączności SSL w aplikacji w celu bezpiecznego nawiązywania połączeń z usługą Azure Database for MariaDB)](./howto-configure-ssl.md).
 
 Poniższy przykład powoduje wyłączenie protokołu SSL wymuszane na Twoim serwerze usługi Azure Database for MariaDB:
- 
+
 ```azurecli-interactive
 az mariadb server update --resource-group myresourcegroup --name mydemoserver --ssl-enforcement Disabled
 ```
@@ -156,9 +154,10 @@ Aby nawiązać połączenie z serwerem, używając narzędzia wiersza polecenia 
    ```sql
    status
    ```
+
    Powinien zostać wyświetlony tekst podobny do poniższego:
 
-   ```bash
+   ```cmd
    C:\Users\>mysql -h mydemoserver.mariadb.database.azure.com -u myadmin@mydemoserver -p
    Enter password: ***********
    Welcome to the MySQL monitor.  Commands end with ; or \g.
@@ -213,12 +212,12 @@ Aby nawiązać połączenie z serwerem, używając narzędzia wiersza polecenia 
 
    | Ustawienie | Sugerowana wartość | Opis |
    |---|---|---|
-   | Nazwa połączenia | **Połączenie demonstracyjne** | Wprowadź etykietę dla tego połączenia (nazwa połączenia może być dowolna) |
+   | Nazwa połączenia | **Połączenie demo** | Wprowadź etykietę dla tego połączenia (nazwa połączenia może być dowolna) |
    | Metoda połączenia | **Standardowa (TCP/IP)** | Użyj protokołu TCP/IP do nawiązania połączenia z usługą Azure Database for MariaDB |
    | Nazwa hosta | **mydemoserver.mariadb.database.azure.com** | Zanotowana wcześniej nazwa serwera. |
    | Port | **3306** | Domyślny port dla usługi Azure Database for MariaDB. |
-   | Nazwa użytkownika | **Administrator\@mydemoserver** | Zanotowany wcześniej identyfikator logowania administratora serwera. |
-   | Hasło | *Twoje hasło* | Użyj skonfigurowanego wcześniej hasła konta administratora. |
+   | Nazwa użytkownika | **mydemoserver myadmin\@** | Zanotowany wcześniej identyfikator logowania administratora serwera. |
+   | Hasło | *twoje hasło* | Użyj skonfigurowanego wcześniej hasła konta administratora. |
 
 3. Aby sprawdzić, czy wszystkie parametry zostały skonfigurowane poprawnie, wybierz pozycję **Testuj połączenie**.
 

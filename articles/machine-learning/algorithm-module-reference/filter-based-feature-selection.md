@@ -1,7 +1,7 @@
 ---
-title: 'Wybór funkcji oparty na filtrowaniu: odwołanie do modułu'
+title: 'Wybór funkcji oparty na filtrze: odwołanie do modułu'
 titleSuffix: Azure Machine Learning
-description: Dowiedz się, w jaki sposób używać modułu wyboru funkcji opartego na filtrze w Azure Machine Learning, aby identyfikować funkcje w zestawie danych z największą potęgą predykcyjną.
+description: Dowiedz się, jak korzystać z modułu wyboru funkcji opartych na filtrze w usłudze Azure Machine Learning, aby zidentyfikować funkcje w zestawie danych o największej mocy predykcyjnej.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,131 +9,131 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/10/2019
-ms.openlocfilehash: bd1a6d4009181056ff0f91fc115d59851539bbe8
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: c009a98931240e92527035e51fdce3f1c92f5212
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76548479"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79477599"
 ---
 # <a name="filter-based-feature-selection"></a>Wybór funkcji oparty na filtrze
 
-W tym artykule opisano, jak używać modułu wyboru funkcji opartego na filtrze w programie Azure Machine Learning Designer (wersja zapoznawcza). Ten moduł pomaga identyfikować kolumny w wejściowym zestawie danych, które mają największą siłę predykcyjną. 
+W tym artykule opisano, jak używać modułu wyboru funkcji opartych na filtrze w projektancie usługi Azure Machine Learning (wersja zapoznawcza). Ten moduł pomaga zidentyfikować kolumny w zestawie danych wejściowych, które mają największą moc predykcyjną. 
 
-Ogólnie rzecz biorąc, *wybór funkcji* odnosi się do procesu zastosowania testów statystycznych do danych wejściowych, z uwzględnieniem określonych danych wyjściowych. Celem jest określenie, które kolumny są bardziej predykcyjne w danych wyjściowych. Moduł wyboru funkcji oparty na filtrze zawiera wiele algorytmów wyboru funkcji do wyboru. Moduł zawiera metody korelacji, takie jak korelacja Pearsona i wartości chi-kwadrat. 
+Ogólnie rzecz *biorąc, wybór funkcji* odnosi się do procesu stosowania testów statystycznych do danych wejściowych, biorąc pod uwagę określone dane wyjściowe. Celem jest określenie, które kolumny są bardziej predykcyjne danych wyjściowych. Moduł wyboru funkcji oparty na filtrze udostępnia wiele algorytmów wyboru funkcji do wyboru. Moduł zawiera metody korelacji, takie jak korelacja Pearsona i wartości chi-kwadrat. 
 
-W przypadku korzystania z modułu wyboru funkcji opartego na filtrze należy podać zestaw danych i określić kolumnę, która zawiera etykietę lub zmienną zależną. Następnie należy określić jedną metodę do użycia podczas mierzenia znaczenia funkcji.
+Korzystając z modułu Wyboru funkcji opartych na filtrze, należy podać zestaw danych i zidentyfikować kolumnę zawierającą etykietę lub zmienną zależną. Następnie należy określić jedną metodę, która ma być używana w pomiarze ważności operacji.
 
-Moduł wyprowadza zestaw danych, który zawiera kolumny najlepszych funkcji, zgodnie z możliwością predykcyjną. Powoduje także wyprowadzanie nazw funkcji i ich ocen z wybranej metryki.  
+Moduł wyprowadza zestaw danych, który zawiera najlepsze kolumny funkcji, zgodnie z danymi o mocy predykcyjnej. Wyprowadza również nazwy funkcji i ich wyniki z wybranej metryki.  
 
-## <a name="what-filter-based-feature-selection-is"></a>Wybór funkcji opartej na filtrze to  
+## <a name="what-filter-based-feature-selection-is"></a>Jaki jest wybór funkcji oparty na filtrze  
 
-Ten moduł dla wyboru funkcji jest nazywany "opartym na filtrowaniu", ponieważ jest używana wybrana Metryka do znajdowania nieistotnych atrybutów. Następnie należy odfiltrować nadmiarowe kolumny z modelu. Wybierasz jedną miarę statystyczną, która będzie odpowiadała danym, a moduł oblicza ocenę dla każdej kolumny funkcji. Kolumny są zwracane w rankingu według ich wyników funkcji. 
+Ten moduł do wyboru funkcji jest nazywany "oparty na filtrze", ponieważ używasz wybranej metryki, aby znaleźć nieistotne atrybuty. Następnie odfiltrowuj nadmiarowe kolumny z modelu. Wybierz jedną miarę statystyczną, która odpowiada danym, a moduł oblicza wynik dla każdej kolumny funkcji. Kolumny są zwracane w rankingu według ich wyników funkcji. 
 
-Po wybraniu odpowiednich funkcji można poprawić dokładność i wydajność klasyfikacji. 
+Wybierając odpowiednie funkcje, można potencjalnie poprawić dokładność i wydajność klasyfikacji. 
 
-Zwykle używane są tylko kolumny z najlepszymi wynikami w celu utworzenia modelu predykcyjnego. Kolumny z nieprawidłowymi wynikami wyboru funkcji mogą pozostać w zestawie danych i ignorowane podczas kompilowania modelu.  
+Zazwyczaj używasz tylko kolumny z najlepszymi wynikami do tworzenia modelu predykcyjnego. Kolumny ze słabymi wynikami wyboru funkcji można pozostawić w zestawie danych i zignorować podczas tworzenia modelu.  
 
 ## <a name="how-to-choose-a-feature-selection-metric"></a>Jak wybrać metrykę wyboru funkcji
 
-Moduł wyboru funkcji oparty na filtrach zawiera różne metryki do oceny wartości informacji w każdej kolumnie. Ta sekcja zawiera ogólny opis każdej metryki i sposób jej zastosowania. Dodatkowe wymagania dotyczące korzystania z każdej metryki w [uwagach technicznych](#technical-notes) i instrukcje dotyczące konfigurowania poszczególnych modułów można znaleźć w [temacie](#how-to-configure-filter-based-feature-selection) .
+Moduł wybór funkcji oparty na filtrze zawiera wiele metryk do oceny wartości informacji w każdej kolumnie. Ta sekcja zawiera ogólny opis każdej metryki i sposobu jej zastosowania. Dodatkowe wymagania dotyczące używania każdej metryki można znaleźć w [uwagach technicznych](#technical-notes) i w [instrukcjach](#how-to-configure-filter-based-feature-selection) konfigurowania każdego modułu.
 
 -   **Korelacja Pearsona**  
 
-    Statystyka korelacji Pearsona lub współczynnik korelacji Pearsona są również znane w modelach statystycznych jako wartość `r`. Dla każdej dwóch zmiennych zwraca wartość wskazującą siłę korelacji.
+    Statystyka korelacji Pearsona lub współczynnik korelacji Pearsona są również znane w modelach statystycznych jako `r` wartość. Dla dowolnych dwóch zmiennych zwraca wartość, która wskazuje siłę korelacji.
 
-    Współczynnik korelacji Pearsona jest obliczany przez przejęcie kowariancji dwóch zmiennych i podzielenie przez iloczyn standardowych odchyleń. Zmiany skali w dwóch zmiennych nie wpływają na współczynnik.  
+    Współczynnik korelacji Pearsona jest obliczany przez przyjęcie kowariancji dwóch zmiennych i podzielenie przez iloczyn ich odchyleń standardowych. Zmiany skali w dwóch zmiennych nie wpływają na współczynnik.  
 
--   **Chi kwadratowy**  
+-   **Chi kwadrat**  
 
-    Dwukierunkowy test chi-kwadrat jest metodą statystyczną, która określa, jak blisko oczekiwanych wartości są rzeczywiste wyniki. Metoda zakłada, że zmienne są losowo i rysowane z odpowiednich próbek zmiennych niezależnych. Wynikowa Statystyka chi-kwadrat wskazuje, jak daleko wynika z oczekiwanego (losowego) wyniku.  
+    Dwukierunkowy test chi-kwadrat jest metodą statystyczną, która mierzy, jak blisko oczekiwanych wartości są do rzeczywistych wyników. Metoda zakłada, że zmienne są losowe i pobierane z odpowiedniej próbki zmiennych niezależnych. Wynikowa statystyka chi-kwadrat wskazuje, jak daleko są wyniki od oczekiwanego (losowego) wyniku.  
 
 
 > [!TIP]
-> Jeśli potrzebujesz innej opcji niestandardowej metody wyboru funkcji, użyj modułu [skryptu języka R](execute-r-script.md) . 
+> Jeśli potrzebujesz innej opcji dla metody wyboru operacji niestandardowej, użyj modułu [Wykonaj skrypt R.](execute-r-script.md) 
 
-## <a name="how-to-configure-filter-based-feature-selection"></a>Jak skonfigurować wybór funkcji oparty na filtrze
+## <a name="how-to-configure-filter-based-feature-selection"></a>Jak skonfigurować wybór funkcji opartych na filtrze
 
-Wybierasz standardową metrykę statystyczną. Moduł oblicza korelację między parą kolumn: kolumną etykieta i kolumną funkcji.
+Wybierz standardową metrykę statystyczną. Moduł oblicza korelację między parą kolumn: kolumną etykiety a kolumną obiektową.
 
-1.  Dodaj moduł wyboru funkcji oparty na filtrze do potoku. Można go znaleźć w kategorii **wybór funkcji** w projektancie.
+1.  Dodaj moduł wyboru funkcji opartych na filtrze do potoku. Można go znaleźć w kategorii **Wybór funkcji** w projektancie.
 
-2. Połącz zestaw danych wejściowych zawierający co najmniej dwie kolumny, które są potencjalnymi funkcjami.  
+2. Połącz wejściowy zestaw danych zawierający co najmniej dwie kolumny, które są potencjalnymi funkcjami.  
 
-    Aby zapewnić przeanalizowanie kolumny i wygenerowanie oceny funkcji, użyj modułu [Edytowanie metadanych](edit-metadata.md) , aby ustawić atrybut **isfeature** . 
+    Aby upewnić się, że kolumna jest analizowana i generowany jest wynik funkcji, użyj modułu [Edytuj metadane,](edit-metadata.md) aby ustawić atrybut **IsFeature.** 
 
     > [!IMPORTANT]
-    > Upewnij się, że kolumny, które są udostępniane jako dane wejściowe, są potencjalnymi funkcjami. Na przykład kolumna, która zawiera pojedynczą wartość nie ma wartości informacji.
+    > Upewnij się, że kolumny, które udostępniasz jako dane wejściowe, są potencjalnymi funkcjami. Na przykład kolumna, która zawiera pojedynczą wartość nie ma wartości informacyjnej.
     >
-    > Jeśli wiesz, że niektóre kolumny spowodują nieprawidłowe funkcje, możesz je usunąć z zaznaczenia kolumny. Możesz również użyć modułu [Edytowanie metadanych](edit-metadata.md) , aby oznaczyć je jako **kategorii**. 
-3.  W przypadku **metody oceny funkcji**należy wybrać jedną z następujących ustalonych metod statystycznych do użycia podczas obliczania wyników.  
+    > Jeśli wiesz, że niektóre kolumny będą tworzyć złe funkcje, możesz usunąć je z zaznaczenia kolumny. Można również użyć modułu [Edytuj metadane,](edit-metadata.md) aby oznaczyć je jako **kategoryczne**. 
+3.  W przypadku **metody oceniania funkcji**wybierz jedną z następujących ustalonych metod statystycznych, które mają być używane do obliczania wyników.  
 
     | Metoda              | Wymagania                             |
     | ------------------- | ---------------------------------------- |
-    | Korelacja Pearsona | Etykieta może być tekstem lub cyfrą. Funkcje muszą być liczbowe. |
-    Chi kwadratowy| Etykiety i funkcje mogą być tekstowe lub liczbowe. Ta metoda służy do obliczania ważności funkcji dla dwóch kolumn kategorii.|
+    | Korelacja Pearsona | Etykieta może być tekstem lub numerem. Operacje muszą być numeryczne. |
+    Chi kwadrat| Etykiety i funkcje mogą być tekstowe lub numeryczne. Ta metoda służy do obliczania ważności funkcji dla dwóch kolumn kategorii.|
 
     > [!TIP]
-    > Jeśli zmienisz wybraną metrykę, wszystkie pozostałe zaznaczenia zostaną zresetowane. Upewnij się, że najpierw należy ustawić tę opcję.
-4.  Wybierz opcję **Pracuj w przypadku kolumn funkcji tylko** w celu wygenerowania oceny tylko dla kolumn, które zostały wcześniej oznaczone jako funkcje. 
+    > Jeśli zmienisz wybraną metrykę, wszystkie inne zaznaczenia zostaną zresetowane. Więc pamiętaj, aby najpierw ustawić tę opcję.
+4.  Wybierz opcję **Działaj tylko na kolumnach elementów,** aby wygenerować wynik tylko dla kolumn, które wcześniej były oznaczone jako obiekty. 
 
-    Jeśli wyczyścisz tę opcję, moduł utworzy ocenę dla każdej kolumny, która w przeciwnym razie spełnia kryteria, do liczby kolumn określonych w polu **Liczba żądanych funkcji**.  
+    Jeśli wyczyścisz tę opcję, moduł utworzy wynik dla dowolnej kolumny, która w przeciwnym razie spełnia kryteria, do liczby kolumn określonych w **Liczba żądanych funkcji**.  
 
-5.  Dla **kolumny Target**wybierz pozycję **Uruchom selektor kolumny** , aby wybrać kolumnę etykieta według nazwy lub indeksu. (Indeksy są oparte na jednym z nich).  
-    Kolumna etykieta jest wymagana dla wszystkich metod, które obejmują korelację statystyczną. Moduł zwraca błąd czasu projektowania, jeśli nie wybrano kolumny etykiety ani kolumn z wieloma etykietami. 
+5.  W **polu Kolumna Docelowa**wybierz **opcję Uruchom selektor kolumny,** aby wybrać kolumnę etykiety według nazwy lub indeksu. (Indeksy są oparte na jednej).  
+    Kolumna etykiety jest wymagana dla wszystkich metod, które obejmują korelację statystyczną. Moduł zwraca błąd czasu projektowania, jeśli wybierzesz żadną kolumnę etykiety lub wiele kolumn etykiet. 
 
-6.  W polu **Liczba żądanych funkcji**wprowadź liczbę kolumn funkcji, które mają zostać zwrócone w wyniku:  
+6.  W polu **Liczba żądanych operacji**wprowadź liczbę kolumn elementów, które mają zostać zwrócone w rezultacie:  
 
-    - Minimalna liczba funkcji, które można określić, to jeden, ale zalecamy zwiększenie tej wartości.  
+    - Minimalna liczba obiektów, które można określić jest jeden, ale zaleca się zwiększenie tej wartości.  
 
-    - Jeśli określona liczba żądanych funkcji jest większa niż liczba kolumn w zestawie danych, wszystkie funkcje są zwracane. Zwracane są nawet funkcje z zerowymi wynikami.  
+    - Jeśli określona liczba żądanych operacji jest większa niż liczba kolumn w zestawie danych, zwracane są wszystkie operacje. Zwracane są nawet funkcje z zerowymi wynikami.  
 
-    - Jeśli określisz mniejszą liczbę kolumn wyników niż kolumny funkcji, funkcje są klasyfikowane według malejącego wyniku. Tylko najważniejsze funkcje są zwracane. 
+    - Jeśli określisz mniej kolumn wyników niż kolumnach obiektów, operacje są klasyfikowane według malejącego wyniku. Zwracane są tylko najważniejsze funkcje. 
 
-7.  Uruchom potok lub wybierz moduł wyboru funkcji oparty na filtrze, a następnie wybierz pozycję **Uruchom wybrane**.
+7.  Prześlij potok lub wybierz moduł Wyboru operacji opartych na filtrze, a następnie wybierz pozycję **Uruchom zaznaczone**.
 
 
 ## <a name="results"></a>Wyniki
 
 Po zakończeniu przetwarzania:
 
-+ Aby wyświetlić pełną listę przeanalizowanych kolumn funkcji i ich ocen, kliknij prawym przyciskiem myszy moduł i wybierz polecenie **Wizualizuj**.  
++ Aby wyświetlić pełną listę analizowanych kolumn funkcji i ich wyników, kliknij prawym przyciskiem myszy moduł i wybierz polecenie **Wizualizuj**.  
 
-+ Aby wyświetlić zestaw danych na podstawie kryteriów wyboru funkcji, kliknij prawym przyciskiem myszy moduł i wybierz polecenie **Wizualizuj**. 
++ Aby wyświetlić zestaw danych na podstawie kryteriów wyboru obiektu, kliknij prawym przyciskiem myszy moduł i wybierz polecenie **Wizualizuj**. 
 
-Jeśli zestaw danych zawiera mniejszą liczbę kolumn niż oczekiwano, sprawdź ustawienia modułu. Sprawdź również typy danych kolumn dostarczonych jako dane wejściowe. Jeśli na przykład ustawisz **liczbę żądanych funkcji** na 1, wyjściowy zestaw danych zawiera tylko dwie kolumny: kolumnę Label oraz kolumnę o największej rangi.
+Jeśli zestaw danych zawiera mniej kolumn niż oczekiwano, sprawdź ustawienia modułu. Sprawdź również typy danych kolumn dostarczonych jako dane wejściowe. Na przykład jeśli **ustawisz liczbę żądanych obiektów** na 1, wyjściowy zestaw danych zawiera tylko dwie kolumny: kolumnę etykiety i najbardziej uszeregowę kolumnę funkcji.
 
 
 ##  <a name="technical-notes"></a>Uwagi techniczne  
 
 ### <a name="implementation-details"></a>Szczegóły implementacji
 
-Jeśli używasz korelacji Pearsona dla funkcji liczbowej i etykiety kategorii, wynik funkcji jest obliczany w następujący sposób:  
+Jeśli używasz korelacji Pearsona na operacji numerycznej i kategorycznej, wynik operacji jest obliczany w następujący sposób:  
 
-1.  Dla każdego poziomu w kolumnie kategorii Obliczanie średniej warunkowej kolumny liczbowej.  
+1.  Dla każdego poziomu w kolumnie kategorycznej oblicz średnią warunkową kolumny numerycznej.  
 
-2.  Skorelowanie kolumny warunkowego z kolumną liczbową.  
+2.  Skorelować kolumnę środków warunkowych z kolumną numeryczną.  
 
 ### <a name="requirements"></a>Wymagania  
 
--   Nie można wygenerować wyniku wyboru funkcji dla żadnej kolumny, która jest oznaczona jako **etykieta** lub kolumna **oceny** .  
+-   Wynik wyboru funkcji nie może być generowany dla żadnej kolumny, która jest oznaczona jako kolumna **Etykieta** lub **Wynik.**  
 
--   Jeśli spróbujesz użyć metody oceniania z kolumną typu danych, która nie jest obsługiwana przez tę metodę, moduł zgłosi błąd. Lub do kolumny zostanie przypisany wynik zerowy.  
+-   Jeśli spróbujesz użyć metody oceniania z kolumną typu danych, której metoda nie obsługuje, moduł spowoduje wyświetlenie błędu. Lub zerowy wynik zostanie przypisany do kolumny.  
 
--   Jeśli kolumna zawiera wartości logiczne (true/false), są one przetwarzane jako `True = 1` i `False = 0`.  
+-   Jeśli kolumna zawiera wartości logiczne (prawda/fałsz), są one przetwarzane jako `True = 1` i `False = 0`.  
 
--   Kolumna nie może być funkcją, jeśli została wyoznaczona jako **etykieta** lub **wynik**.  
+-   Kolumna nie może być funkcją, jeśli została oznaczona jako **Etykieta** lub **Wynik**.  
 
-### <a name="how-missing-values-are-handled"></a>Jak są obsługiwane brakujące wartości  
+### <a name="how-missing-values-are-handled"></a>Jak obsługiwane są brakujące wartości  
 
--   Nie można określić jako kolumny docelowej (etykieta) żadnej kolumny, która ma wszystkie brakujące wartości.  
+-   Nie można określić jako kolumny docelowej (etykiety) żadnej kolumny, w której brakuje wszystkich wartości.  
 
 -   Jeśli kolumna zawiera brakujące wartości, moduł ignoruje je podczas obliczania wyniku dla kolumny.  
 
--   Jeśli kolumna wyoznaczona jako kolumna funkcji ma wszystkie brakujące wartości, moduł przypisuje wynik zerowy.   
+-   Jeśli kolumna wyznaczona jako kolumna obiektowa zawiera wszystkie brakujące wartości, moduł przypisuje wynik zerowy.   
 
 
 ## <a name="next-steps"></a>Następne kroki
 
-Zapoznaj się z [zestawem modułów dostępnych](module-reference.md) do Azure Machine Learning. 
+Zobacz [zestaw modułów dostępnych dla](module-reference.md) usługi Azure Machine Learning. 
 

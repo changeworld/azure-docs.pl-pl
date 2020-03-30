@@ -1,92 +1,92 @@
 ---
-title: Dzienniki wolnych zapytań — Azure Database for MariaDB
-description: Opisuje dzienniki dostępne w Azure Database for MariaDB i dostępne parametry dotyczące włączania różnych poziomów rejestrowania.
+title: Powolne dzienniki zapytań — usługa Azure Database for MariaDB
+description: W tym artykule opisano dzienniki dostępne w usłudze Azure Database dla mariadb i dostępne parametry włączania różnych poziomów rejestrowania.
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 01/28/2020
-ms.openlocfilehash: 3f82a061f276aaf786bc0a9bae15b60e8bdda009
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.date: 3/18/2020
+ms.openlocfilehash: 2c07e5eeedd2e4f42ec7b165bf161e142421df58
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76846328"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79527898"
 ---
-# <a name="slow-query-logs-in-azure-database-for-mariadb"></a>Wolne dzienniki zapytań w Azure Database for MariaDB
-W Azure Database for MariaDB dziennik wolnych zapytań jest dostępny dla użytkowników. Dostęp do dziennika transakcji nie jest obsługiwany. Dziennik wolnych zapytań może służyć do identyfikowania wąskich gardeł wydajności w celu rozwiązywania problemów.
+# <a name="slow-query-logs-in-azure-database-for-mariadb"></a>Powolne dzienniki zapytań w bazie danych platformy Azure dla mariadb
+W usłudze Azure Database for MariaDB dziennik wolnych zapytań jest dostępny dla użytkowników. Dostęp do dziennika transakcji nie jest obsługiwany. Dziennik wolnych zapytań może służyć do identyfikowania wąskich gardeł wydajności w celu rozwiązywania problemów.
 
-Aby uzyskać więcej informacji na temat długiego dziennika zapytań, zobacz dokumentację MariaDB dla [wolnego dziennika zapytań](https://mariadb.com/kb/en/library/slow-query-log-overview/).
+Aby uzyskać więcej informacji na temat dziennika wolnych zapytań, zobacz dokumentację MariaDB dla [dziennika kwerend powolnych](https://mariadb.com/kb/en/library/slow-query-log-overview/).
 
-## <a name="access-slow-query-logs"></a>Dostęp do dzienników wolnych zapytań
-Można wyświetlać i pobierać Azure Database for MariaDB wolnych dzienników zapytań przy użyciu Azure Portal i interfejsu wiersza polecenia platformy Azure.
+## <a name="access-slow-query-logs"></a>Dostęp do wolnych dzienników kwerend
+Można wyświetlić listę i pobrać usługę Azure Database dla dzienników wolnych zapytań MariaDB przy użyciu witryny Azure portal i interfejsu wiersza polecenia platformy Azure.
 
-W Azure Portal wybierz serwer Azure Database for MariaDB. W obszarze nagłówek **monitorowania** wybierz stronę **Dzienniki serwera** .
+W witrynie Azure portal wybierz swoją usługę Azure Database dla serwera MariaDB. W nagłówku **Monitorowanie** wybierz stronę **Dzienniki serwera.**
 
-Aby uzyskać więcej informacji na temat interfejsu wiersza polecenia platformy Azure, zobacz [Konfigurowanie i dostęp do dzienników serwera przy użyciu interfejsu wiersza polecenia platformy Azure](howto-configure-server-logs-cli.md).
+Aby uzyskać więcej informacji na temat interfejsu wiersza polecenia platformy Azure, zobacz [Konfigurowanie i uzyskiwanie dostępu do dzienników serwera przy użyciu interfejsu wiersza polecenia platformy Azure](howto-configure-server-logs-cli.md).
 
-Podobnie można potokować dzienniki, aby Azure Monitor przy użyciu dzienników diagnostycznych. Aby uzyskać więcej informacji, zobacz [poniżej](concepts-server-logs.md#diagnostic-logs) .
+Podobnie można potok dzienniki do usługi Azure Monitor przy użyciu dzienników diagnostycznych. Zobacz [poniżej,](concepts-server-logs.md#diagnostic-logs) aby uzyskać więcej informacji.
 
-## <a name="log-retention"></a>Przechowywanie dziennika
-Dzienniki są dostępne przez maksymalnie siedem dni od ich utworzenia. Jeśli całkowity rozmiar dostępnych dzienników przekracza 7 GB, najstarsze pliki zostaną usunięte do momentu udostępnienia miejsca.
+## <a name="log-retention"></a>Przechowywanie dzienników
+Dzienniki są dostępne przez maksymalnie siedem dni od ich utworzenia. Jeśli całkowity rozmiar dostępnych dzienników przekracza 7 GB, najstarsze pliki są usuwane, dopóki nie będzie dostępne miejsce.
 
 Dzienniki są obracane co 24 godziny lub 7 GB, w zależności od tego, co nastąpi wcześniej.
 
-## <a name="configure-slow-query-logging"></a>Skonfiguruj rejestrowanie wolnych zapytań
-Domyślnie dziennik wolnych zapytań jest wyłączony. Aby ją włączyć, ustaw wartość slow_query_log na włączone.
+## <a name="configure-slow-query-logging"></a>Konfigurowanie powolnego rejestrowania zapytań
+Domyślnie powolny dziennik kwerend jest wyłączony. Aby ją włączyć, ustaw slow_query_log na ON.
 
 Inne parametry, które można dostosować, obejmują:
 
-- **long_query_time**: Jeśli zapytanie trwa dłużej niż long_query_time (w sekundach), rejestrowane jest zapytanie. Wartość domyślna to 10 sekund.
-- **log_slow_admin_statements**: Jeśli on zawiera instrukcje administracyjne, takie jak ALTER_TABLE i ANALYZE_TABLE w instrukcjach zapisanych do slow_query_log.
-- **log_queries_not_using_indexes**: określa, czy zapytania, które nie używają indeksów są rejestrowane w slow_query_log
-- **log_throttle_queries_not_using_indexes**: ten parametr ogranicza liczbę zapytań, które nie są indeksami, które można zapisać w dzienniku wolnych zapytań. Ten parametr zacznie obowiązywać, gdy log_queries_not_using_indexes jest ustawiona na wartość włączone.
-- **log_output**: Jeśli "plik" umożliwia zapisanie dziennika wolnych zapytań do lokalnego magazynu serwera i Azure monitor dzienników diagnostycznych. W przypadku braku "Dziennik wolnych zapytań zostanie zapisany tylko w przypadku dzienników diagnostyki Azure Monitor. 
+- **long_query_time**: jeśli kwerenda trwa dłużej niż long_query_time (w sekundach), to kwerenda jest rejestrowana. Wartość domyślna to 10 sekund.
+- **log_slow_admin_statements**: jeśli ON zawiera oświadczenia administracyjne, takie jak ALTER_TABLE i ANALYZE_TABLE w oświadczeniach napisanych do slow_query_log.
+- **log_queries_not_using_indexes**: określa, czy kwerendy, które nie używają indeksów są rejestrowane w slow_query_log
+- **log_throttle_queries_not_using_indexes:** Ten parametr ogranicza liczbę kwerend innych niż indeks, które mogą być zapisywane w dzienniku kwerend powolnych. Ten parametr staje się skuteczny, gdy log_queries_not_using_indexes jest ustawiona na ON.
+- **log_output:** jeśli "Plik", umożliwia powolne dziennik kwerendy mają być zapisywane zarówno do magazynu serwera lokalnego i do dziennika diagnostycznego usługi Azure Monitor. Jeśli "Brak", dziennik kwerend powolny zostanie zapisany tylko w dziennikach diagnostyki usługi Azure Monitor. 
 
 > [!IMPORTANT]
-> Jeśli tabele nie są indeksowane, ustawienie parametrów `log_queries_not_using_indexes` i `log_throttle_queries_not_using_indexes` na wartość włączone może mieć wpływ na wydajność MariaDB, ponieważ wszystkie zapytania uruchomione względem tych nieindeksowanych tabel zostaną zazapisywane w dzienniku wolnych zapytań.<br><br>
-> Jeśli planujesz rejestrowanie wolnych zapytań przez dłuższy czas, zaleca się ustawienie `log_output` na "Brak". W przypadku wybrania opcji "plik" te dzienniki są zapisywane w magazynie serwera lokalnego i mogą mieć wpływ na wydajność MariaDB. 
+> Jeśli tabele nie są indeksowane, ustawienie `log_queries_not_using_indexes` i `log_throttle_queries_not_using_indexes` parametry na ON może mieć wpływ na wydajność MariaDB, ponieważ wszystkie kwerendy uruchomione względem tych tabel nieindeksowanych zostaną zapisane w dzienniku kwerend powolnych.<br><br>
+> Jeśli planujesz rejestrowanie powolnych zapytań przez dłuższy okres czasu, `log_output` zaleca się ustawienie "Brak". Jeśli ustawiona na "Plik", te dzienniki są zapisywane w magazynie serwera lokalnego i mogą mieć wpływ na wydajność MariaDB. 
 
-Zapoznaj się z [dokumentacją dziennika wolnych zapytań](https://mariadb.com/kb/en/library/slow-query-log-overview/) MariaDB w celu uzyskania pełnych opisów parametrów dziennika wolnych zapytań.
+Zobacz [dokumentację dziennika powolnych zapytań](https://mariadb.com/kb/en/library/slow-query-log-overview/) MariaDB, aby uzyskać pełne opisy parametrów dziennika kwerend powolnych.
 
 ## <a name="diagnostic-logs"></a>Dzienniki diagnostyczne
-Azure Database for MariaDB jest zintegrowana z Azure Monitor dzienników diagnostycznych. Po włączeniu wolnych dzienników zapytań na serwerze MariaDB można je wyemitować do dzienników Azure Monitor, Event Hubs lub Azure Storage. Aby dowiedzieć się więcej na temat włączania dzienników diagnostycznych, zobacz sekcję jak [znaleźć w dokumentacji dzienników diagnostycznych](../azure-monitor/platform/platform-logs-overview.md).
+Usługa Azure Database for MariaDB jest zintegrowana z dziennikami diagnostycznymi usługi Azure Monitor. Po włączeniu powolnych dzienników zapytań na serwerze MariaDB można wybrać opcję ich emisji do dzienników usługi Azure Monitor, centrów zdarzeń lub usługi Azure Storage. Aby dowiedzieć się więcej o włączaniu dzienników diagnostycznych, zobacz sekcję [dokumentacji dzienników diagnostycznych](../azure-monitor/platform/platform-logs-overview.md).
 
-W poniższej tabeli opisano zawartość poszczególnych dzienników. W zależności od metody Output pola uwzględnione i kolejność ich wyświetlania mogą się różnić.
+W poniższej tabeli opisano, co jest w każdym dzienniku. W zależności od metody danych wyjściowych uwzględnione pola i kolejność, w jakiej się pojawiają, mogą się różnić.
 
 | **Właściwość** | **Opis** |
 |---|---|
 | `TenantId` | Identyfikator dzierżawy |
 | `SourceSystem` | `Azure` |
-| `TimeGenerated` [UTC] | Sygnatura czasowa, gdy dziennik został zarejestrowany w formacie UTC |
-| `Type` | Typ dziennika. zawsze `AzureDiagnostics` |
-| `SubscriptionId` | Identyfikator GUID subskrypcji, do której należy serwer |
+| `TimeGenerated`[UTC] | Sygnatura czasowa, gdy dziennik został zarejestrowany w utc |
+| `Type` | Typ dziennika. Zawsze`AzureDiagnostics` |
+| `SubscriptionId` | Identyfikator GUID dla subskrypcji, do której należy serwer |
 | `ResourceGroup` | Nazwa grupy zasobów, do której należy serwer |
-| `ResourceProvider` | Nazwa dostawcy zasobów. zawsze `MICROSOFT.DBFORMARIADB` |
+| `ResourceProvider` | Nazwa dostawcy zasobów. Zawsze`MICROSOFT.DBFORMARIADB` |
 | `ResourceType` | `Servers` |
 | `ResourceId` | Identyfikator URI zasobu |
 | `Resource` | Nazwa serwera |
 | `Category` | `MySqlSlowLogs` |
 | `OperationName` | `LogEvent` |
 | `Logical_server_name_s` | Nazwa serwera |
-| `start_time_t` [UTC] | Godzina rozpoczęcia zapytania |
-| `query_time_s` | Łączny czas wykonywania zapytania |
-| `lock_time_s` | Łączny czas zablokowania zapytania |
+| `start_time_t`[UTC] | Czas rozpoczęcia kwerendy |
+| `query_time_s` | Całkowity czas wykonania kwerendy |
+| `lock_time_s` | Całkowity czas zablokowania kwerendy |
 | `user_host_s` | Nazwa użytkownika |
 | `rows_sent_s` | Liczba wysłanych wierszy |
 | `rows_examined_s` | Liczba badanych wierszy |
 | `last_insert_id_s` | [last_insert_id](https://mariadb.com/kb/en/library/last_insert_id/) |
-| `insert_id_s` | Wstaw identyfikator |
-| `sql_text_s` | Pełne zapytanie |
+| `insert_id_s` | Identyfikator wstawiania |
+| `sql_text_s` | Pełna kwerenda |
 | `server_id_s` | Identyfikator serwera |
 | `thread_id_s` | Identyfikator wątku |
 | `\_ResourceId` | Identyfikator URI zasobu |
 
-## <a name="analyze-logs-in-azure-monitor-logs"></a>Analizowanie dzienników w dziennikach Azure Monitor
+## <a name="analyze-logs-in-azure-monitor-logs"></a>Analizowanie dzienników w dziennikach monitora platformy Azure
 
-Po powolnych dziennikach zapytań do Azure Monitor dzienników za poorednictwem dzienników diagnostycznych można przeprowadzić dalsze analizy wolnych zapytań. Poniżej przedstawiono kilka przykładowych zapytań, które pomogą Ci rozpocząć pracę. Pamiętaj o zaktualizowaniu poniższej nazwy serwera.
+Gdy dzienniki kwerend powolny są potoku do dzienników usługi Azure Monitor za pośrednictwem dzienników diagnostycznych, można wykonać dalszą analizę powolnych zapytań. Poniżej znajduje się kilka przykładowych zapytań, które pomogą Ci rozpocząć pracę. Pamiętaj, aby zaktualizować poniższą nazwę serwera.
 
-- Zapytania dłuższe niż 10 sekund na określonym serwerze
+- Kwerendy dłuższe niż 10 sekund na określonym serwerze
 
     ```Kusto
     AzureDiagnostics
@@ -96,7 +96,7 @@ Po powolnych dziennikach zapytań do Azure Monitor dzienników za poorednictwem 
     | where query_time_d > 10
     ```
 
-- Wyświetlanie 5 najważniejszych zapytań na określonym serwerze
+- Lista 5 najdłuższych zapytań na danym serwerze
 
     ```Kusto
     AzureDiagnostics
@@ -107,7 +107,7 @@ Po powolnych dziennikach zapytań do Azure Monitor dzienników za poorednictwem 
     | take 5
     ```
 
-- Podsumuj wolne zapytania według minimalnej, maksymalnej, średniej i odchylenia standardowego czasu zapytania na określonym serwerze
+- Podsumowywanie powolnych zapytań według minimalnego, maksymalnego, średniego i czasu kwerendy odchylenia standardowego na określonym serwerze
 
     ```Kusto
     AzureDiagnostics
@@ -117,7 +117,7 @@ Po powolnych dziennikach zapytań do Azure Monitor dzienników za poorednictwem 
     | summarize count(), min(query_time_d), max(query_time_d), avg(query_time_d), stdev(query_time_d), percentile(query_time_d, 95) by LogicalServerName_s
     ```
 
-- Tworzenie grafu wolnej dystrybucji zapytań na określonym serwerze
+- Wykres powolnego rozkładu zapytań na określonym serwerze
 
     ```Kusto
     AzureDiagnostics
@@ -128,7 +128,7 @@ Po powolnych dziennikach zapytań do Azure Monitor dzienników za poorednictwem 
     | render timechart
     ```
 
-- Wyświetlaj zapytania dłużej niż 10 sekund na wszystkich serwerach MariaDB z włączonymi dziennikami diagnostycznymi
+- Wyświetlanie zapytań dłuższych niż 10 sekund na wszystkich serwerach MariaDB z włączonymi dziennikami diagnostycznymi
 
     ```Kusto
     AzureDiagnostics
@@ -138,5 +138,5 @@ Po powolnych dziennikach zapytań do Azure Monitor dzienników za poorednictwem 
     ```    
     
 ## <a name="next-steps"></a>Następne kroki
-- [Jak skonfigurować dziennik wolnych zapytań z Azure Portal](howto-configure-server-logs-portal.md)
-- [Jak konfigurować dzienniki wolnych zapytań z poziomu interfejsu wiersza polecenia platformy Azure](howto-configure-server-logs-cli.md)
+- [Jak skonfigurować dzienniki wolnych zapytań z witryny Azure Portal](howto-configure-server-logs-portal.md)
+- [Jak skonfigurować powolne dzienniki zapytań z interfejsu wiersza polecenia platformy Azure](howto-configure-server-logs-cli.md)

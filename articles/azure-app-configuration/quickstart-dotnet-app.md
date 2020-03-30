@@ -8,46 +8,48 @@ ms.service: azure-app-configuration
 ms.topic: quickstart
 ms.date: 12/17/2019
 ms.author: lcozzens
-ms.openlocfilehash: 8190265753bddb3038c5403411c4be193dd8075c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 1c56088a2c51c50c7f9cf1ff1e790d580fdb08d8
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75433617"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80245399"
 ---
-# <a name="quickstart-create-a-net-framework-app-with-azure-app-configuration"></a>Szybki Start: Tworzenie aplikacji .NET Framework przy użyciu konfiguracji aplikacji platformy Azure
+# <a name="quickstart-create-a-net-framework-app-with-azure-app-configuration"></a>Szybki start: tworzenie aplikacji .NET Framework za pomocą konfiguracji aplikacji platformy Azure
 
-W tym przewodniku szybki start dołączysz konfigurację aplikacji platformy Azure do aplikacji konsolowej opartej na .NET Framework w celu scentralizowanego przechowywania i zarządzania ustawieniami aplikacji oddzielonymi od kodu.
+W tym przewodniku Szybki start można włączyć konfigurację aplikacji platformy Azure do aplikacji konsoli opartej na platformie .NET Framework, aby scentralizować przechowywanie i zarządzanie ustawieniami aplikacji oddzielnie od kodu.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Subskrypcja platformy Azure — [Utwórz ją bezpłatnie](https://azure.microsoft.com/free/)
+- Subskrypcja platformy Azure — [utwórz bezpłatną subskrypcję](https://azure.microsoft.com/free/)
 - [Visual Studio 2019](https://visualstudio.microsoft.com/vs)
 - [.NET Framework 4.7.2](https://dotnet.microsoft.com/download)
 
-## <a name="create-an-app-configuration-store"></a>Tworzenie magazynu konfiguracji aplikacji
+## <a name="create-an-app-configuration-store"></a>Tworzenie sklepu konfiguracji aplikacji
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-6. Wybierz pozycję **Eksplorator konfiguracji** > **Utwórz** , aby dodać następujące pary klucz-wartość:
+6. Wybierz pozycję Tworzenie**Create** > **wartości klucza** w **Eksploratorze** > konfiguracji, aby dodać następujące pary klucz-wartość:
 
     | Klucz | Wartość |
     |---|---|
     | TestApp:Settings:Message | Dane z usługi Azure App Configuration |
 
-    Dla tej pory pozostaw pustą **etykietę** i **Typ zawartości** .
+    Pozostaw **etykietę** i **typ zawartości** puste na razie.
+
+7. Wybierz przycisk **Zastosuj**.
 
 ## <a name="create-a-net-console-app"></a>Tworzenie aplikacji konsolowej platformy .NET
 
-1. Uruchom program Visual Studio i wybierz pozycję **plik** > **Nowy** > **projekt**.
+1. Uruchom program Visual Studio i wybierz pozycję **Plik** > **nowego** > **projektu**.
 
-1. W obszarze **Utwórz nowy projekt**odfiltruj typ projektu **konsoli** i kliknij pozycję **Aplikacja konsolowa (.NET Framework)** . Wybierz opcję **Dalej**.
+1. W **programie Tworzenie nowego projektu**filtruj typ projektu **konsoli** i kliknij aplikację Console **App (.NET Framework).** Wybierz **pozycję Dalej**.
 
-1. W obszarze **Konfigurowanie nowego projektu**wprowadź nazwę projektu. W obszarze **Struktura**wybierz pozycję **.NET Framework 4.7.1** lub wyższy. Wybierz pozycję **Utwórz**.
+1. W **obszarze Konfiguruj nowy projekt**wprowadź nazwę projektu. W obszarze **Framework**wybierz opcję **.NET Framework 4.7.1** lub nowszą. Wybierz **pozycję Utwórz**.
 
-## <a name="connect-to-an-app-configuration-store"></a>Nawiązywanie połączenia z magazynem konfiguracji aplikacji
+## <a name="connect-to-an-app-configuration-store"></a>Łączenie się ze sklepem konfiguracji aplikacji
 
-1. Kliknij prawym przyciskiem myszy projekt, a następnie wybierz pozycję **Zarządzaj pakietami NuGet**. Na karcie **Przeglądaj** Wyszukaj i Dodaj następujące pakiety NuGet do swojego projektu. Jeśli nie możesz ich znaleźć, zaznacz pole wyboru **Uwzględnij wersję wstępną** .
+1. Kliknij prawym przyciskiem myszy projekt i wybierz polecenie **Zarządzaj pakietami NuGet**. Na karcie **Przeglądaj** wyszukaj i dodaj do projektu następujące pakiety NuGet. Jeśli nie możesz ich znaleźć, zaznacz pole wyboru **Dołącz wydanie wstępne.**
 
     ```
     Microsoft.Configuration.ConfigurationBuilders.AzureAppConfiguration 1.0.0 preview or later
@@ -55,7 +57,7 @@ W tym przewodniku szybki start dołączysz konfigurację aplikacji platformy Azu
     System.Configuration.ConfigurationManager version 4.6.0 or later
     ```
 
-1. Zaktualizuj plik *App. config* projektu w następujący sposób:
+1. Zaktualizuj plik *App.config* projektu w następujący sposób:
 
     ```xml
     <configSections>
@@ -75,9 +77,9 @@ W tym przewodniku szybki start dołączysz konfigurację aplikacji platformy Azu
     </appSettings>
     ```
 
-   Parametry połączenia magazynu konfiguracji aplikacji są odczytywane ze zmiennej środowiskowej `ConnectionString`. Dodaj `Environment` konstruktora konfiguracji przed `MyConfigStore` we właściwości `configBuilders` sekcji `appSettings`.
+   Ciąg połączenia sklepu konfiguracji aplikacji jest odczytywany ze zmiennej `ConnectionString`środowiskowej . Dodaj `Environment` konstruktora `MyConfigStore` konfiguracji `configBuilders` przed właściwością `appSettings` sekcji.
 
-1. Otwórz *program.cs*i zaktualizuj metodę `Main`, aby użyć konfiguracji aplikacji przez wywołanie `ConfigurationManager`.
+1. Otwórz *Program.cs*i zaktualizuj `Main` metodę używania konfiguracji aplikacji przez wywołanie `ConfigurationManager`.
 
     ```csharp
     static void Main(string[] args)
@@ -90,9 +92,9 @@ W tym przewodniku szybki start dołączysz konfigurację aplikacji platformy Azu
 
 ## <a name="build-and-run-the-app-locally"></a>Lokalne kompilowanie i uruchamianie aplikacji
 
-1. Ustaw zmienną środowiskową o nazwie **ConnectionString** na parametry połączenia magazynu konfiguracji aplikacji. Jeśli używasz wiersza polecenia systemu Windows, uruchom następujące polecenie:
+1. Ustaw zmienną środowiskową o nazwie **ConnectionString** na ciąg połączenia magazynu konfiguracji aplikacji. Jeśli używasz wiersza polecenia systemu Windows, uruchom następujące polecenie:
 
-    ```CLI
+    ```cmd
         setx ConnectionString "connection-string-of-your-app-configuration-store"
     ```
 
@@ -101,7 +103,7 @@ W tym przewodniku szybki start dołączysz konfigurację aplikacji platformy Azu
     ```azurepowershell
         $Env:ConnectionString = "connection-string-of-your-app-configuration-store"
     ```
-1. Uruchom ponownie program Visual Studio, aby zmiany zaczęły obowiązywać. Naciśnij kombinację klawiszy CTRL + F5, aby skompilować i uruchomić aplikację konsolową.
+1. Uruchom ponownie program Visual Studio, aby umożliwić zmianę, aby wejść w życie. Naciśnij klawisze Ctrl + F5, aby utworzyć i uruchomić aplikację konsoli.
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
@@ -109,7 +111,7 @@ W tym przewodniku szybki start dołączysz konfigurację aplikacji platformy Azu
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym przewodniku szybki start utworzono nowy magazyn konfiguracji aplikacji i używał go z aplikacją konsolową .NET Framework. Wartość `AppSettings` `ConfigurationManager` nie zmieni się po uruchomieniu aplikacji. Biblioteka dostawcy konfiguracji .NET Standard konfiguracji aplikacji, ale również może być używana w aplikacji .NET Framework. Aby dowiedzieć się, jak włączyć dynamiczne Odświeżanie ustawień konfiguracji aplikacji .NET Framework, przejdź do następnego samouczka.
+W tym przewodniku Szybki start utworzono nowy magazyn konfiguracji aplikacji i użyto go z aplikacją konsoli .NET Framework. Wartość `AppSettings` nie `ConfigurationManager` zmieni się po uruchomieniu aplikacji. Biblioteka dostawcy konfiguracji .NET Standard konfiguracji można jednak również używać w aplikacji .NET Framework. Aby dowiedzieć się, jak włączyć aplikację .NET Framework dynamicznie odświeżać ustawienia konfiguracji, przejdź do następnego samouczka.
 
 > [!div class="nextstepaction"]
 > [Włącz konfigurację dynamiczną](./enable-dynamic-configuration-dotnet.md)

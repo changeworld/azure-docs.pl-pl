@@ -1,7 +1,7 @@
 ---
-title: Co to są FPGA — jak wdrożyć
+title: Co to są FPGA - jak wdrożyć
 titleSuffix: Azure Machine Learning
-description: Dowiedz się, jak wdrożyć usługę sieci Web z modelem działającym na FPGA z Azure Machine Learning na potrzeby wnioskowania o bardzo małych opóźnieniach.
+description: Dowiedz się, jak wdrożyć usługę sieci web z modelem uruchomionym na fpga z usługą Azure Machine Learning dla wnioskowania o bardzo małych opóźnieniach.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,95 +11,92 @@ ms.author: jordane
 author: jpe316
 ms.date: 03/05/2020
 ms.custom: seodec18
-ms.openlocfilehash: b036dd9c440e01bf32b35ee01c1d39d4ce6e129b
-ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.openlocfilehash: 8cb6cf49e302122849dc2402bcff008e72e15608
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78402701"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79472362"
 ---
-# <a name="what-are-field-programmable-gate-arrays-fpga-and-how-to-deploy"></a>Co to są tablice z bramą programowalną w polu (FPGA) i sposób wdrażania
+# <a name="what-are-field-programmable-gate-arrays-fpga-and-how-to-deploy"></a>Czym są programowalne w terenie tablice bramek (FPGA) i jak wdrożyć
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-Ten artykuł zawiera wprowadzenie do wielopolowych tablic bram (FPGA) oraz sposób wdrażania modeli przy użyciu Azure Machine Learning na platformie Azure FPGA. 
+W tym artykule przedstawiono wprowadzenie do tablic bramy programowalne w terenie (FPGA) i pokazano, jak wdrożyć modele przy użyciu usługi Azure Machine Learning do usługi Azure FPGA.
 
-FPGA zawierają tablicę programowalnych bloków logiki oraz hierarchię z ponownymi konfigurowalnymi połączeniami. Połączenia międzyłączne umożliwiają skonfigurowanie tych bloków na różne sposoby po zakończeniu produkcji. W porównaniu z innymi mikroukładami FPGA zapewniają kombinację programowania i wydajności.
+Układy FPGA zawierają tablicę programowalnych bloków logicznych i hierarchię możliwych do ponownego skonfigurowania wzajemnych połączeń. Połączenia te umożliwiają konfigurację tych bloków na różne sposoby po zakończeniu produkcji. W porównaniu z innymi chipami, układy FPGA zapewniają połączenie programowalności i wydajności.
 
-## <a name="fpgas-vs-cpu-gpu-and-asic"></a>FPGA a procesor CPU, procesor GPU i ASIC
+## <a name="fpgas-vs-cpu-gpu-and-asic"></a>Układy FPGA a cpu, GPU i ASIC
 
-Na poniższym diagramie i tabeli przedstawiono sposób porównywania FPGA z innymi procesorami.
+Na poniższym diagramie i tabeli pokazano, jak układy FPGA porównują się do innych procesorów.
 
-![Diagram Azure Machine Learning porównania FPGA](./media/how-to-deploy-fpga-web-service/azure-machine-learning-fpga-comparison.png)
+![Diagram porównania fpga usługi Azure Machine Learning](./media/how-to-deploy-fpga-web-service/azure-machine-learning-fpga-comparison.png)
 
 |Procesor||Opis|
 |---|:-------:|------|
-|Scalonych specyficzne dla aplikacji|ASICs|Obwody niestandardowe, takie jak Google TensorFlow procesora jednostki (TPU), zapewnia najwyższą efektywnością. Nie można ich ponownie skonfigurować zgodnie z potrzebami zmian.|
-|Tablice programowalny bramy|Układy FPGA|FPGA, takie jak te dostępne na platformie Azure, zapewniają wydajność zbliżoną do ASICs. Są one również elastyczne i można je skonfigurować w miarę upływu czasu w celu zaimplementowania nowej logiki.|
-|Procesory graficzne|Procesory GPU|Popularny wybór dla obliczeń AI. Procesory GPU oferują równoległe możliwości przetwarzania, przyspieszając renderowanie obrazów niż procesory CPU.|
-|Jednostek centralnych|Procesory CPU|Procesor ogólnego przeznaczenia, wydajność, która nie jest idealnym rozwiązaniem w przypadku przetwarzania grafiki i wideo.|
+|Układy scalonowe specyficzne dla danego zastosowania|Asics|Obwody niestandardowe, takie jak jednostki procesora TensorFlow (TPU) firmy Google, zapewniają najwyższą wydajność. Nie można ich ponownie skonfigurować w miarę zmiany potrzeb.|
+|Tablice bramek programowalnych w terenie|Układy FPGA|Układy FPGA, takie jak te dostępne na platformie Azure, zapewniają wydajność zbliżoną do asic. Są one również elastyczne i reconfigurable w czasie, aby zaimplementować nową logikę.|
+|Jednostki przetwarzania grafiki|Procesory GPU|Popularny wybór dla obliczeń SI. Procesory gpu oferują możliwości przetwarzania równoległego, dzięki czemu są szybsze w renderowaniu obrazów niż procesory.|
+|Jednostki centralne|Procesory CPU|Procesory ogólnego przeznaczenia, których wydajność nie jest idealna do przetwarzania grafiki i wideo.|
 
-FPGA na platformie Azure są oparte na urządzeniach FPGA firmy Intel, których analityki danych i Deweloperzy używają do przyspieszenia obliczeń w czasie rzeczywistym. Ta architektura z obsługą FPGA oferuje wydajność, elastyczność i skalowalność oraz jest dostępna na platformie Azure.
+Układy FPGA na platformie Azure są oparte na urządzeniach FPGA firmy Intel, których analitycy danych i deweloperzy używają do przyspieszania obliczeń sztucznej inteligencji w czasie rzeczywistym. Ta architektura obsługująca FPGA oferuje wydajność, elastyczność i skalę i jest dostępna na platformie Azure.
 
-FPGA umożliwiają osiągnięcie małych opóźnień dla żądań wnioskowania w czasie rzeczywistym (lub oceniania modeli). Żądania asynchroniczne (wsadowe) nie są potrzebne. Przetwarzanie wsadowe może spowodować opóźnienia, ponieważ trzeba przetworzyć więcej danych. Implementacje jednostek przetwarzania neuronowych nie wymagają przetwarzania wsadowego; w związku z tym opóźnienie może być znacznie mniejsze, w porównaniu z procesorami CPU i procesora GPU.
+Układy FPGA umożliwiają osiągnięcie małych opóźnień w przypadku żądań wnioskowania (lub oceniania modelu) w czasie rzeczywistym. Asynchroniczne żądania (przetwarzanie wsadowe) nie są potrzebne. Przetwarzanie wsadowe może spowodować opóźnienie, ponieważ więcej danych musi być przetwarzanych. Implementacje jednostek przetwarzania neuronowego nie wymagają przetwarzania wsadowego; w związku z tym opóźnienie może być wiele razy niższe, w porównaniu do procesorów CPU i procesorów GPU.
 
-### <a name="reconfigurable-power"></a>Możliwych do ponownego skonfigurowania zasilania
-Można ponownie skonfigurować FPGA dla różnych typów modeli uczenia maszynowego. Ta elastyczność ułatwia przyspieszenie aplikacji na podstawie najbardziej optymalną precyzja wartości liczbowych i model pamięci używane. Ze względu na to, że FPGA są modyfikowane, można zachować aktualność z wymaganiami natychmiastowej zmiany algorytmów AI.
+### <a name="reconfigurable-power"></a>Moc rekonfigurowalna
+Można ponownie skonfigurować układy FPGA dla różnych typów modeli uczenia maszynowego. Ta elastyczność ułatwia przyspieszenie aplikacji w oparciu o najbardziej optymalną precyzję numeryczną i używany model pamięci. Ponieważ układy FPGA można rekonfigurować, można zachować aktualną wartość z wymaganiami szybko zmieniających się algorytmów sztucznej inteligencji.
 
-## <a name="whats-supported-on-azure"></a>Co to jest obsługiwana na platformie Azure
-Microsoft Azure to największe inwestycje chmury w FPGA. Przy użyciu tej architektury włączone FPGA sprzętu, przeszkolonych sieci neuronowych uruchomić szybkie i mniejsze opóźnienie. Platforma Azure może zrównoleglanie wstępnie szkolonych sieci neuronowych (DNN) w całej FPGA w celu skalowania usługi. Sieci mogą być wstępnie przeszkolonych, jako głębokiego featurized transferu uczenia lub dostosowaniu za pomocą wag zaktualizowane.
+## <a name="whats-supported-on-azure"></a>Co jest obsługiwane na platformie Azure
+Microsoft Azure to największa na świecie inwestycja w chmurę w układy FPGA. Korzystając z tej architektury sprzętowej obsługującej technologię FPGA, przeszkolone sieci neuronowe działają szybko i z mniejszym opóźnieniem. Platforma Azure może zrównować wstępnie przeszkolonych sieci głębokich sieci neuronowych (DNN) w układach FPGA w celu skalowania w poziomie usługi. Numery DN można wstępnie wyszkolić, jako głęboki featurizer do nauki transferu lub dostrojony do zaktualizowanych wag.
 
-FPGA na platformie Azure obsługuje:
+Układy FPGA na platformie Azure obsługuje:
 
-+ Scenariusze dotyczące klasyfikacji i rozpoznawania obrazu
-+ TensorFlow wdrożenia
-+ Sprzęt firmy Intel FPGA 
++ Scenariusze klasyfikacji i rozpoznawania obrazów
++ Wdrożenie TensorFlow
++ Sprzęt Intel FPGA
 
 Te modele DNN są obecnie dostępne:
   - ResNet 50
   - ResNet 152
-  - DenseNet-121
+  - GęstyNet-121
   - VGG-16
   - SSD-VGG
 
-FPGA są dostępne w tych regionach świadczenia usługi Azure:
+Układy FPGA są dostępne w następujących regionach platformy Azure:
   - Wschodnie stany USA
   - Azja Południowo-Wschodnia
   - Europa Zachodnia
   - Zachodnie stany USA 2
 
 > [!IMPORTANT]
-> Aby zoptymalizować opóźnienia i przepływność, klient wysyłający dane do modelu FPGA powinien znajdować się w jednym z powyższych regionów (na którym został wdrożony model).
+> Aby zoptymalizować opóźnienie i przepływność, klient wysyłający dane do modelu FPGA powinien znajdować się w jednym z powyższych regionów (w tym, w których wdrożono model).
 
-**Rodzina PBS maszyn wirtualnych platformy Azure** zawiera technologię Intel Arria 10 FPGA. Zostanie on wyświetlony jako "standardowa rodzina PBS procesorów wirtualnych vCPU" podczas sprawdzania przydziału przydziału platformy Azure. Maszyna wirtualna w PB6 ma sześć procesorów wirtualnych vCPU i jeden FPGA i zostanie automatycznie zainicjowana przez usługę Azure ML w ramach wdrażania modelu w FPGA. Jest ona używana tylko z platformą Azure ML i nie może uruchamiać dowolnego bitstreams. Na przykład nie będzie można wykonać czynności Flash FPGA z bitstreams do szyfrowania, kodowania itp.
+**Rodzina maszyn wirtualnych platformy Azure usługi PbS** zawiera układy FPGA Intel Arria 10. Będzie ono wyświetlane jako "Standardowe procesory wirtualne rodziny książek telefonicznych" podczas sprawdzania alokacji przydziału platformy Azure. Maszyna wirtualna PB6 ma sześć procesorów wirtualnych i jedną fpga i zostanie automatycznie zainicjowana przez usługę Azure ML w ramach wdrażania modelu w fpga. Jest on używany tylko z usługą Azure ML i nie można uruchomić dowolnego strumieni bitów. Na przykład nie będzie można flashować FPGA z strumieniami bitów do szyfrowania, kodowania itp.
 
 ### <a name="scenarios-and-applications"></a>Scenariusze i aplikacje
 
-Usługa Azure FPGA jest zintegrowana z usługą Azure Machine Learning. Firma Microsoft używa usługi FPGA do oceny DNN, klasyfikacji wyszukiwania Bing i przyspieszenia sieci zdefiniowanej przez oprogramowanie (SDN) w celu skrócenia opóźnień, jednocześnie zwalniając procesory dla innych zadań.
+Układy FPGA platformy Azure są zintegrowane z usługą Azure Machine Learning. Firma Microsoft używa układów FPGA do oceny DNN, rankingu wyszukiwania Bing i przyspieszania sieci zdefiniowanej programowo (SDN) w celu zmniejszenia opóźnień przy jednoczesnym zwalnianiu procesorów do innych zadań.
 
-Następujące scenariusze używają FPGA:
+W następujących scenariuszach użyto układów FPGA:
 + [Zautomatyzowany system kontroli optycznej](https://blogs.microsoft.com/ai/build-2018-project-brainwave/)
 
-+ [Mapowanie okładki gruntowej](https://blogs.technet.microsoft.com/machinelearning/2018/05/29/how-to-use-fpgas-for-deep-learning-inference-to-perform-land-cover-mapping-on-terabytes-of-aerial-images/)
++ [Mapowanie pokrycia terenu](https://blogs.technet.microsoft.com/machinelearning/2018/05/29/how-to-use-fpgas-for-deep-learning-inference-to-perform-land-cover-mapping-on-terabytes-of-aerial-images/)
 
+## <a name="example-deploy-models-on-fpgas"></a>Przykład: Wdrażanie modeli na układach FPGA
 
-
-## <a name="example-deploy-models-on-fpgas"></a>Przykład: Wdróż modele w FPGA 
-
-Model można wdrożyć jako usługę sieci Web na FPGA z Modele z przyspieszaniem sprzętowym Azure Machine Learning. Korzystanie z usługi FPGA zapewnia bardzo małe ilości opóźnienia, nawet w przypadku pojedynczego rozmiaru partii. Wnioskowanie lub ocenianie modelu to faza, w której wdrożony model jest używany do prognozowania, najczęściej dotyczący danych produkcyjnych.
-
+Model można wdrożyć jako usługę sieci web w układach FPGA za pomocą modeli przyspieszanych sprzętowo usługi Azure Machine Learning. Za pomocą układów FPGA zapewnia wnioskowanie o bardzo niskim opóźnieniu, nawet przy jednym rozmiarze partii. Wnioskowanie lub ocenianie modelu jest fazą, w której wdrożony model jest używany do przewidywania, najczęściej na danych produkcyjnych.
 
 ### <a name="prerequisites"></a>Wymagania wstępne
 
-- Subskrypcja platformy Azure.  Jeśli nie masz takiego konta, przed rozpoczęciem utwórz bezpłatne konto. Wypróbuj [bezpłatną lub płatną wersję Azure Machine Learning](https://aka.ms/AMLFree) dzisiaj.
+- Subskrypcja platformy Azure.  Jeśli nie masz subskrypcji, przed rozpoczęciem utwórz bezpłatne konto. Wypróbuj [bezpłatną lub płatną wersję usługi Azure Machine Learning](https://aka.ms/AMLFree) już dziś.
 
-- Limit przydziału FPGA. Użyj interfejsu wiersza polecenia platformy Azure, aby sprawdzić, czy masz limit przydziału:
+- fpga. Użyj interfejsu wiersza polecenia platformy Azure, aby sprawdzić, czy masz przydział:
 
-    ```shell
+    ```azurecli-interactive
     az vm list-usage --location "eastus" -o table --query "[?localName=='Standard PBS Family vCPUs']"
     ```
 
     > [!TIP]
-    > Inne możliwe lokalizacje to ``southeastasia``, ``westeurope``i ``westus2``.
+    > Inne możliwe lokalizacje ``southeastasia`` ``westeurope``to ``westus2``, i .
 
     Polecenie zwraca tekst podobny do następującego:
 
@@ -109,36 +106,36 @@ Model można wdrożyć jako usługę sieci Web na FPGA z Modele z przyspieszanie
     0               6        Standard PBS Family vCPUs
     ```
 
-    Upewnij się, że masz co najmniej 6 procesorów wirtualnych vCPU w obszarze __CurrentValue__.
+    Upewnij się, że masz co najmniej 6 procesorów wirtualnych w obszarze __CurrentValue__.
 
-    Jeśli nie masz przydziału, Prześlij żądanie w [https://aka.ms/accelerateAI](https://aka.ms/accelerateAI).
+    Jeśli nie masz przydziału, prześlij żądanie w pliku [https://aka.ms/accelerateAI](https://aka.ms/accelerateAI).
 
-- Zainstalowano obszar roboczy Azure Machine Learning i Azure Machine Learning SDK dla języka Python. Aby uzyskać więcej informacji, zobacz [Tworzenie obszaru roboczego](how-to-manage-workspace.md).
+- Zainstalowany obszar roboczy usługi Azure Machine Learning i zestaw SDK usługi Azure Machine Learning dla języka Python. Aby uzyskać więcej informacji, zobacz [Tworzenie obszaru roboczego](how-to-manage-workspace.md).
  
-- Zestaw SDK języka Python dla modeli przyspieszanych sprzętowo:
+- Moduł SDK języka Python dla modeli przyspieszanych sprzętowo:
 
-    ```shell
+    ```bash
     pip install --upgrade azureml-accel-models
     ```
 
 
-## <a name="1-create-and-containerize-models"></a>1. Utwórz i konteneryzowanie modele
+## <a name="1-create-and-containerize-models"></a>1. Tworzenie i konteneryzowanie modeli
 
-W tym dokumencie opisano sposób tworzenia grafu TensorFlow w celu wstępnego przetworzenia obrazu wejściowego, przeprowadzenia featurized przy użyciu ResNet 50 na FPGA, a następnie uruchomienia funkcji za pomocą klasyfikatora przeszkolonego na zestawie danych ImageNet.
+W tym dokumencie opisano, jak utworzyć wykres TensorFlow do wstępnego przetwarzania obrazu wejściowego, uczynić go featurizer przy użyciu ResNet 50 na FPGA, a następnie uruchomić funkcje za pośrednictwem klasyfikatora przeszkolonych w zestawie danych ImageNet.
 
 Postępuj zgodnie z instrukcjami, aby:
 
-* Zdefiniuj model TensorFlow
-* Konwertuj model
+* Definiowanie modelu TensorFlow
+* Konwertowanie modelu
 * Wdrażanie modelu
-* Używanie wdrożonego modelu
+* Korzystanie z wdrożonego modelu
 * Usuwanie wdrożonych usług
 
-Użyj [zestawu SDK Azure Machine Learning dla języka Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) , aby utworzyć definicję usługi. Definicja usługi jest plikiem opisującym potok grafów (Input, featurized i klasyfikator) oparty na TensorFlow. Polecenie wdrożenia automatycznie kompresuje definicje i wykresy do pliku ZIP i przekazuje je do usługi Azure Blob Storage. DNN jest już wdrożony do uruchamiania na FPGA.
+Użyj zestawu [SDK usługi Azure Machine Learning dla języka Python,](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) aby utworzyć definicję usługi. Definicja usługi to plik opisujący potok wykresów (dane wejściowe, featurizer i klasyfikator) oparty na TensorFlow. Polecenie wdrażania automatycznie kompresuje definicję i wykresy do pliku ZIP i przekazuje zip do magazynu obiektów Blob platformy Azure. DNN jest już wdrożony do uruchomienia na FPGA.
 
-### <a name="load-azure-machine-learning-workspace"></a>Załaduj obszar roboczy Azure Machine Learning
+### <a name="load-azure-machine-learning-workspace"></a>Załaduj obszar roboczy usługi Azure Machine Learning
 
-Załaduj obszar roboczy Azure Machine Learning.
+Załaduj swój obszar roboczy usługi Azure Machine Learning.
 
 ```python
 import os
@@ -150,9 +147,9 @@ ws = Workspace.from_config()
 print(ws.name, ws.resource_group, ws.location, ws.subscription_id, sep='\n')
 ```
 
-### <a name="preprocess-image"></a>Wstępne przetwarzanie obrazu
+### <a name="preprocess-image"></a>Obraz przetwarzania wstępnego
 
-Wejście do usługi sieci Web jest obrazem JPEG.  Pierwszym krokiem jest Dekodowanie obrazu JPEG i jego wstępne przetworzenie.  Obrazy JPEG są traktowane jako ciągi, a wynikiem są dwuplikowe dane wejściowe modelu ResNet 50.
+Dane wejściowe do usługi sieci web to obraz JPEG.  Pierwszym krokiem jest dekodowanie obrazu JPEG i wstępne przetwarzanie go.  Obrazy JPEG są traktowane jako ciągi, a wynik są tensors, które będą dane wejściowe do modelu ResNet 50.
 
 ```python
 # Input images as a two-dimensional tensor containing an arbitrary number of images represented a strings
@@ -164,13 +161,13 @@ image_tensors = utils.preprocess_array(in_images)
 print(image_tensors.shape)
 ```
 
-### <a name="load-featurizer"></a>Ładuj featurized
+### <a name="load-featurizer"></a>Załaduj featurizer
 
-Inicjowanie modelu i Pobierz punkt kontrolny TensorFlow wykonywanie kwantyzowanych wersji ResNet50 ma być używany jako featurized.  W poniższym fragmencie kodu można zastąpić "QuantizedResnet50", importując inne sieci głębokiej neuronowych:
+Zainicjować model i pobrać punkt kontrolny TensorFlow ilościowej wersji ResNet50 do użycia jako featurizer.  Możesz zastąpić "QuantizedResnet50" w poniższym fragmentie kodu, importując inne głębokie sieci neuronowe:
 
 - QuantizedResnet152
 - QuantizedVgg16
-- Densenet121
+- Gęsty 121
 
 ```python
 from azureml.accel.models import QuantizedResnet50
@@ -182,18 +179,18 @@ print(feature_tensor.name)
 print(feature_tensor.shape)
 ```
 
-### <a name="add-classifier"></a>Dodaj klasyfikator
+### <a name="add-classifier"></a>Dodaj klasyfikatora
 
-Po zapoznaniu to klasyfikatora na zestawie danych sieci ImageNet.  Przykłady dotyczące uczenia i szkolenia z zakresu przenoszenia są dostępne w zestawie [przykładowych notesów](https://aka.ms/aml-notebooks).
+Ten klasyfikator został przeszkolony w zestawie danych ImageNet.  Przykłady przenoszenia uczenia się i szkolenia dostosowanych wag są dostępne w zestawie [przykładowych notesów.](https://aka.ms/aml-notebooks)
 
 ```python
 classifier_output = model_graph.get_default_classifier(feature_tensor)
 print(classifier_output)
 ```
 
-### <a name="save-the-model"></a>Zapisz model
+### <a name="save-the-model"></a>Zapisywanie modelu
 
-Teraz, gdy preprocesor, ResNet 50 featurized i klasyfikator został załadowany, Zapisz wykres i skojarzone zmienne jako model.
+Teraz, gdy preprocesor, ResNet 50 featurizer i klasyfikator zostały załadowane, zapisz wykres i skojarzone zmienne jako model.
 
 ```python
 model_name = "resnet50"
@@ -207,8 +204,8 @@ with tf.Session() as sess:
                                outputs={'output_alias': classifier_output})
 ```
 
-### <a name="save-input-and-output-tensors"></a>Zapisz natężenia wejścia i wyjścia
-W przypadku konwersji modelu i wnioskowania będą wymagane dwuetapy wejściowe i wyjściowe, które zostały utworzone podczas procesu przetwarzania wstępnego i klasyfikatora.
+### <a name="save-input-and-output-tensors"></a>Zapisywanie tensorów wejściowych i wyjściowych
+Tensory wejściowe i wyjściowe, które zostały utworzone podczas kroków przetwarzania wstępnego i klasyfikatora, będą potrzebne do konwersji i wnioskowania modelu.
 
 ```python
 input_tensors = in_images.name
@@ -219,9 +216,9 @@ print(output_tensors)
 ```
 
 > [!IMPORTANT]
-> Zapisz natężenia wejścia i wyjścia, ponieważ będą potrzebne do konwersji modeli i żądań wnioskowania.
+> Zapisz tensory wejściowe i wyjściowe, ponieważ będą one potrzebne do konwersji modelu i wnioskowania żądań.
 
-Dostępne są następujące modele i odpowiednie rozdzielacze domyślne klasyfikatora, które są używane do wnioskowania, jeśli użyto klasyfikatora domyślnego.
+Dostępne modele i odpowiadające im domyślne tensory wyjściowe klasyfikatora znajdują się poniżej, czyli co służy do wnioskowania, jeśli użyto domyślnego klasyfikatora.
 
 + Resnet50, QuantizedResnet50
   ```python
@@ -246,7 +243,7 @@ Dostępne są następujące modele i odpowiednie rozdzielacze domyślne klasyfik
 
 ### <a name="register-model"></a>Rejestrowanie modelu
 
-[Zarejestruj](concept-model-management-and-deployment.md) model przy użyciu zestawu SDK z plikiem zip w usłudze Azure Blob Storage. Dodawanie tagów i innych metadanych dotyczących modelu ułatwia śledzenie przeszkolonych modeli.
+[Zarejestruj](concept-model-management-and-deployment.md) model przy użyciu zestawu SDK z plikiem ZIP w magazynie obiektów Blob platformy Azure. Dodawanie tagów i innych metadanych dotyczących modelu ułatwia śledzenie przeszkolonych modeli.
 
 ```python
 from azureml.core.model import Model
@@ -270,9 +267,9 @@ print(registered_model.name, registered_model.description,
       registered_model.version, sep='\t')
 ```
 
-### <a name="convert-model"></a>Konwertuj model
+### <a name="convert-model"></a>Konwertowanie modelu
 
-Przekonwertuj wykres TensorFlow na format Open neuronowych Network Exchange ([ONNX](https://onnx.ai/)).  Należy podać nazwy natężeń wejściowych i wyjściowych, a te nazwy będą używane przez klienta podczas korzystania z usługi sieci Web.
+Konwertuj wykres TensorFlow na format Otwartej wymiany sieci neuronowej[(ONNX).](https://onnx.ai/)  Należy podać nazwy tensorów wejściowych i wyjściowych, a te nazwy będą używane przez klienta podczas korzystania z usługi sieci web.
 
 ```python
 from azureml.accel import AccelOnnxConverter
@@ -291,7 +288,7 @@ print("\nSuccessfully converted: ", converted_model.name, converted_model.url, c
 
 ### <a name="create-docker-image"></a>Tworzenie obrazu platformy Docker
 
-Przekonwertowany model i wszystkie zależności są dodawane do obrazu platformy Docker.  Ten obraz platformy Docker można następnie wdrożyć i utworzyć jego wystąpienie.  Obsługiwane cele wdrożenia obejmują AKS w chmurze lub urządzenie brzegowe, takie jak [Azure Data Box Edge](https://docs.microsoft.com/azure/databox-online/data-box-edge-overview).  Możesz również dodać tagi i opisy dla zarejestrowanego obrazu platformy Docker.
+Przekonwertowany model i wszystkie zależności są dodawane do obrazu platformy Docker.  Ten obraz platformy Docker można następnie wdrożyć i utworzyć wystąpienia.  Obsługiwane obiekty docelowe wdrażania obejmują usługę AKS w chmurze lub urządzenie brzegowe, takie jak [usługa Azure Data Box Edge.](https://docs.microsoft.com/azure/databox-online/data-box-edge-overview)  Możesz również dodać tagi i opisy zarejestrowanego obrazu platformy Docker.
 
 ```python
 from azureml.core.image import Image
@@ -308,7 +305,7 @@ image = Image.create(name=image_name,
 image.wait_for_creation(show_output=False)
 ```
 
-Wyświetl listę obrazów według tagów i uzyskaj szczegółowe dzienniki dla dowolnego debugowania.
+Lista obrazów według tagu i uzyskać szczegółowe dzienniki dla debugowania.
 
 ```python
 for i in Image.list(workspace=ws):
@@ -316,11 +313,11 @@ for i in Image.list(workspace=ws):
         i.name, i.version, i.creation_state, i.image_location, i.image_build_log_uri))
 ```
 
-## <a name="2-deploy-to-cloud-or-edge"></a>2. Wdróż w chmurze lub w usłudze Edge
+## <a name="2-deploy-to-cloud-or-edge"></a>2. Wdrażanie w chmurze lub na krawędzi
 
 ### <a name="deploy-to-the-cloud"></a>Wdrażanie w chmurze
 
-Aby wdrożyć modelu w postaci usługi sieci web o dużej skali w środowisku produkcyjnym, należy użyć usługi Azure Kubernetes Service (AKS). Nowy element można utworzyć przy użyciu zestawu SDK Azure Machine Learning, interfejsu wiersza polecenia lub [Azure Machine Learning Studio](https://ml.azure.com).
+Aby wdrożyć model jako produkcyjną usługę sieci web na dużą skalę, użyj usługi Azure Kubernetes Service (AKS). Możesz utworzyć nowy przy użyciu usługi Azure Machine Learning SDK, CLI lub [Azure Machine Learning studio.](https://ml.azure.com)
 
 ```python
 from azureml.core.compute import AksCompute, ComputeTarget
@@ -337,7 +334,7 @@ aks_target = ComputeTarget.create(workspace=ws,
                                   provisioning_configuration=prov_config)
 ```
 
-Wdrożenie AKS może potrwać około 15 minut.  Sprawdź, czy wdrożenie zakończyło się pomyślnie.
+Wdrożenie usługi AKS może potrwać około 15 minut.  Sprawdź, czy wdrożenie zakończyło się pomyślnie.
 
 ```python
 aks_target.wait_for_completion(show_output=True)
@@ -345,7 +342,7 @@ print(aks_target.provisioning_state)
 print(aks_target.provisioning_errors)
 ```
 
-Wdróż kontener w klastrze AKS.
+Wdrażanie kontenera w klastrze AKS.
 ```python
 from azureml.core.webservice import Webservice, AksWebservice
 
@@ -365,11 +362,11 @@ aks_service.wait_for_deployment(show_output=True)
 ```
 
 #### <a name="test-the-cloud-service"></a>Testowanie usługi w chmurze
-Obraz platformy Docker obsługuje gRPC i TensorFlow obsługujący interfejs API "przewidywania".  Użyj przykładowego klienta do wywołania obrazu platformy Docker w celu uzyskania prognoz z modelu.  Kod przykładowego klienta jest dostępny:
+Obraz platformy Docker obsługuje gRPC i TensorFlow obsługujących "przewidzieć" API.  Użyj przykładowego klienta do wywołania obrazu platformy Docker, aby uzyskać prognoz z modelu.  Przykładowy kod klienta jest dostępny:
 - [Python](https://github.com/Azure/aml-real-time-ai/blob/master/pythonlib/amlrealtimeai/client.py)
-- [C#](https://github.com/Azure/aml-real-time-ai/blob/master/sample-clients/csharp)
+- [C #](https://github.com/Azure/aml-real-time-ai/blob/master/sample-clients/csharp)
 
-Jeśli chcesz korzystać z TensorFlow, możesz [pobrać przykładowego klienta](https://www.tensorflow.org/serving/setup).
+Jeśli chcesz użyć TensorFlow Serving, możesz [pobrać przykładowego klienta](https://www.tensorflow.org/serving/setup).
 
 ```python
 # Using the grpc client in Azure ML Accelerated Models SDK package
@@ -387,7 +384,7 @@ client = PredictionClient(address=address,
                           service_name=aks_service.name)
 ```
 
-Ponieważ ten klasyfikator został przeszkolony w zestawie danych [ImageNet](http://www.image-net.org/) , Mapuj klasy na etykiety czytelne dla człowieka.
+Ponieważ ten klasyfikator został przeszkolony w zestawie danych [ImageNet,](http://www.image-net.org/) mapuj klasy na etykiety czytelne dla człowieka.
 
 ```python
 import requests
@@ -408,8 +405,8 @@ for top in sorted_results[:5]:
     print(classes_entries[top[0]], 'confidence:', top[1])
 ```
 
-### <a name="clean-up-the-service"></a>Czyszczenie usługi
-Usuń usługę sieci Web, obraz i model (należy wykonać w tej kolejności, ponieważ istnieją zależności).
+### <a name="clean-up-the-service"></a>Oczyszczanie usługi
+Usuń usługę sieci web, obraz i model (należy wykonać w tej kolejności, ponieważ istnieją zależności).
 
 ```python
 aks_service.delete()
@@ -421,21 +418,21 @@ converted_model.delete()
 
 ### <a name="deploy-to-a-local-edge-server"></a>Wdrażanie na lokalnym serwerze brzegowym
 
-Wszystkie [urządzenia Azure Data Box Edge](https://docs.microsoft.com/azure/databox-online/data-box-edge-overview
-) zawierają FPGA do uruchamiania modelu.  Tylko jeden model może być uruchomiony w FPGA jednocześnie.  Aby uruchomić inny model, po prostu wdróż nowy kontener. Instrukcje i przykładowy kod można znaleźć w [tym przykładzie platformy Azure](https://github.com/Azure-Samples/aml-hardware-accelerated-models).
+Wszystkie [urządzenia usługi Azure Data Box Edge](https://docs.microsoft.com/azure/databox-online/data-box-edge-overview
+) zawierają fpga do uruchamiania modelu.  Tylko jeden model może być uruchomiony na FPGA w tym samym czasie.  Aby uruchomić inny model, wystarczy wdrożyć nowy kontener. Instrukcje i przykładowy kod można znaleźć w [tym przykładzie platformy Azure.](https://github.com/Azure-Samples/aml-hardware-accelerated-models)
 
-## <a name="secure-fpga-web-services"></a>Zabezpieczania usług sieci web FPGA
+## <a name="secure-fpga-web-services"></a>Bezpieczne usługi internetowe FPGA
 
-Aby zabezpieczyć FPGA usługi sieci Web, zobacz dokument [Secure Web Services](how-to-secure-web-service.md) .
+Aby zabezpieczyć usługi sieci web FPGA, zobacz dokument [Bezpieczne usługi sieci Web.](how-to-secure-web-service.md)
 
 ## <a name="next-steps"></a>Następne kroki
 
-Zapoznaj się z tymi notesami, klipami wideo i blogami:
+Zapoznaj się z tymi notesami, filmami i blogami:
 
 + Kilka [przykładowych notesów](https://aka.ms/aml-accel-models-notebooks)
 
-+ [Sprzęt ze skalowaniem: ML na dużą skalę na platformie Azure i FPGA: kompilacja 2018 (wideo)](https://channel9.msdn.com/events/Build/2018/BRK3202)
++ [Sprzęt hiperskali: ml w skali na górze platformy Azure + FPGA: Kompilacja 2018 (wideo)](https://channel9.msdn.com/events/Build/2018/BRK3202)
 
-+ [W ramach konfigurowalnej chmury opartej na programie Microsoft FPGA (wideo)](https://channel9.msdn.com/Events/Build/2017/B8063)
++ [Wewnątrz konfigurowalnej chmury opartej na FPGA firmy Microsoft (wideo)](https://channel9.msdn.com/Events/Build/2017/B8063)
 
-+ [Project Brainwave dla strony głównej projektu AI w czasie rzeczywistym](https://www.microsoft.com/research/project/project-brainwave/)
++ [Projekt Brainwave dla AI w czasie rzeczywistym: strona główna projektu](https://www.microsoft.com/research/project/project-brainwave/)

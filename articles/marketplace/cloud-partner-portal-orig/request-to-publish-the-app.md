@@ -1,31 +1,29 @@
 ---
-title: Żądanie opublikowania aplikacji
-description: .
-services: Azure, Marketplace, Cloud Partner Portal,
-author: pbutlerm
-manager: Ricardo.Villalobos
+title: Wniosek o opublikowanie wniosku
+description: Informacje o publikowaniu aplikacji w portalu Partner Center marketplace.
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/13/2018
-ms.author: pabutler
-ms.openlocfilehash: 9558e7684fa8ab742319890940800da85daa1706
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: bbe829314358b42b52db51d65b3e76d438eb1f87
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73814752"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80285422"
 ---
-# <a name="request-to-publish-the-app"></a>Żądanie opublikowania aplikacji
+# <a name="request-to-publish-the-app"></a>Prośba o opublikowanie aplikacji
 
 ![Kliknij, aby opublikować](./media/CRMScreenShot18.png)
 
-1. Kliknij przycisk Publikuj, aby przesłać swoją ofertę do naszego zespołu certyfikacji. Będziesz mieć możliwość wyświetlania stanu oferty na karcie stan.
+1. Kliknij przycisk Publikuj, aby przesłać ofertę do naszego zespołu certyfikacyjnego. Stan oferty będzie można wyświetlić na karcie Stan.
 
-![Przegląd stanu publikacji](./media/CRMScreenShot19.png)
+![Sprawdź stan publikacji](./media/CRMScreenShot19.png)
 
 ## <a name="republish-the-app"></a>Ponowne publikowanie aplikacji
 
- Jeśli musisz wykonać żądanie ponownego opublikowania aplikacji, kliknij przycisk Anuluj publikowanie na karcie stan (Jeśli żądanie nie jest już aktywne, Pomiń ten krok). Wprowadź zmiany w aplikacji, odpowiednio zaktualizuj ofertę, a następnie kliknij przycisk Publikuj, aby ponownie przesłać. # Specjalne zagadnienia dotyczące programu Microsoft Dynamics 365 Business Edition należy pamiętać, że rozwiązania utworzone dla systemu Microsoft Dynamics 365 Business są poddawane dodatkowym testom podczas certyfikacji, aby zapewnić przestrzeganie limitów wersji firmy. Limity wersji Business Edition są udokumentowane w tym miejscu. # Uzyskać pomoc. Jeśli wystąpią problemy, możesz zarejestrować bilet pomocy technicznej, klikając w prawym górnym rogu i przejdź do.
+ Jeśli chcesz wysłać żądanie ponownego opublikowania aplikacji, najpierw kliknij przycisk Anuluj publikowanie na karcie Stan (jeśli żądanie nie jest już aktywne, pomiń ten krok). Wprowadzać zmiany w aplikacji, odpowiednio aktualizować ofertę, a następnie kliknąć przycisk Publikuj ponownie, aby ponownie przesłać. # Uwagi specjalne dotyczące systemu Microsoft Dynamics 365 Business Edition Należy pamiętać, że rozwiązania stworzone dla systemu Microsoft Dynamics 365 Business Editions zostaną poddane dodatkowym kontrolom podczas certyfikacji, aby upewnić się, że limity wersji Business Edition są przestrzegane. Limity wersji Business Edition są udokumentowane tutaj. # Uzyskiwanie pomocy. Jeśli napotkasz problemy, możesz zarejestrować bilet pomocy technicznej, klikając w prawym górnym rogu i przechodząc do.
 
-![Ponowne publikowanie aplikacji](./media/CRMScreenShot20.png)
+![Ponowne opublikowanie aplikacji](./media/CRMScreenShot20.png)

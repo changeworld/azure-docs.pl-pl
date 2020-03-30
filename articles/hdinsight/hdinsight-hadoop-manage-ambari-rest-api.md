@@ -1,6 +1,6 @@
 ---
-title: Monitorowanie platformy Hadoop i zarządzanie nią za pomocą interfejsu API REST Ambari — Azure HDInsight
-description: Dowiedz się, jak używać Ambari do monitorowania klastrów Hadoop i zarządzania nimi w usłudze Azure HDInsight. W tym dokumencie przedstawiono sposób korzystania z interfejsu API REST Ambari dołączonego do klastrów usługi HDInsight.
+title: Monitoruj i zarządzaj Hadoop za pomocą interfejsu API Ambari REST — Azure HDInsight
+description: Dowiedz się, jak używać ambari do monitorowania klastrów Hadoop i zarządzania nimi w usłudze Azure HDInsight. W tym dokumencie dowiesz się, jak korzystać z interfejsu API AMbari REST dołączonego do klastrów HDInsight.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,49 +9,49 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/07/2019
 ms.openlocfilehash: 1d684957939c5cb83aae05962c1694f7a8d8da23
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79272398"
 ---
-# <a name="manage-hdinsight-clusters-by-using-the-apache-ambari-rest-api"></a>Zarządzanie klastrami usługi HDInsight przy użyciu interfejsu API REST usługi Apache Ambari
+# <a name="manage-hdinsight-clusters-by-using-the-apache-ambari-rest-api"></a>Zarządzanie klastrami HDInsight przy użyciu interfejsu API Apache Ambari REST
 
 [!INCLUDE [ambari-selector](../../includes/hdinsight-ambari-selector.md)]
 
-Dowiedz się, jak używać interfejsu API REST usługi Apache Ambari do zarządzania klastrami Apache Hadoop w usłudze Azure HDInsight i ich monitorowania.
+Dowiedz się, jak używać interfejsu API Apache Ambari REST do zarządzania klastrami Apache Hadoop i monitorowania ich w usłudze Azure HDInsight.
 
-## <a id="whatis"></a>Co to jest Apache Ambari
+## <a name="what-is-apache-ambari"></a><a id="whatis"></a>Co to jest Apache Ambari
 
-Platforma [Apache Ambari](https://ambari.apache.org) upraszcza zarządzanie i monitorowanie klastrów usługi Hadoop, zapewniając łatwy do użycia interfejs użytkownika sieci Web, który jest obsługiwany przez [interfejsy API REST](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md).  Ambari jest domyślnie dostarczany z klastrami usługi HDInsight opartymi na systemie Linux.
+[Apache Ambari](https://ambari.apache.org) upraszcza zarządzanie i monitorowanie klastrów Hadoop, zapewniając łatwy w użyciu interfejs użytkownika sieci web wspierany przez [interfejsy API REST](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md).  Ambari jest domyślnie dostarczany z klastrami HDInsight opartymi na systemie Linux.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* **Klaster usługi Hadoop w usłudze HDInsight**. Zobacz Rozpoczynanie [pracy z usługą HDInsight w systemie Linux](hadoop/apache-hadoop-linux-tutorial-get-started.md).
+* **Klaster Hadoop na HDInsight**. Zobacz [Wprowadzenie do HDInsight w systemie Linux](hadoop/apache-hadoop-linux-tutorial-get-started.md).
 
-* **Bash na Ubuntu w systemie Windows 10**.  W przykładach w tym artykule użyto powłoki bash w systemie Windows 10. Aby uzyskać instrukcje dotyczące instalacji, zobacz artykuł [podsystem instalacji systemu Windows dla systemu Linux w systemie Windows 10](https://docs.microsoft.com/windows/wsl/install-win10) .  Inne [powłoki systemu UNIX](https://www.gnu.org/software/bash/) również będą działały.  Przykłady, z niewielkimi modyfikacjami, mogą współpracować z wierszem polecenia systemu Windows.  Alternatywnie możesz użyć programu Windows PowerShell.
+* **Bash na Ubuntu na Windows 10**.  Przykłady w tym artykule używają powłoki Bash w systemie Windows 10. Aby uzyskać instrukcje instalacji, zobacz [Podręcznik instalacji systemu Windows dla systemu Linux dla systemu Windows 10.](https://docs.microsoft.com/windows/wsl/install-win10)  Inne [powłoki Unix](https://www.gnu.org/software/bash/) będzie działać, jak również.  Przykłady, z niewielkimi modyfikacjami, mogą działać w wierszu polecenia systemu Windows.  Alternatywnie można użyć programu Windows PowerShell.
 
-* **JQ**, procesor JSON w wierszu polecenia.  Zobacz [https://stedolan.github.io/jq/](https://stedolan.github.io/jq/).
+* **jq**, procesor JSON wiersza polecenia.  Zobacz [https://stedolan.github.io/jq/](https://stedolan.github.io/jq/).
 
-* Program **Windows PowerShell**.  Alternatywnie możesz użyć [bash](https://www.gnu.org/software/bash/).
+* **Program Windows PowerShell**.  Alternatywnie, można użyć [Bash](https://www.gnu.org/software/bash/).
 
-## <a name="base-uri-for-ambari-rest-api"></a>Podstawowy identyfikator URI interfejsu API REST usługi Ambari
+## <a name="base-uri-for-ambari-rest-api"></a>Podstawowy identyfikator URI dla interfejsu API odpoczynku Ambari
 
- Podstawowy Uniform Resource Identifier (URI) dla interfejsu API REST usługi Ambari w usłudze HDInsight jest `https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME`, gdzie `CLUSTERNAME` jest nazwą klastra.  Nazwy klastra w identyfikatorach URI są **rozróżniane wielkości**liter.  Podczas gdy nazwa klastra w pełni kwalifikowana nazwa domeny (FQDN) w ramach identyfikatora URI (`CLUSTERNAME.azurehdinsight.net`) nie uwzględnia wielkości liter, inne wystąpienia w identyfikatorze URI uwzględniają wielkość liter.
+ Podstawowym jednolitym identyfikatorem zasobów (URI) dla interfejsu API AMbari REST w programie HDInsight jest `https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME`nazwa `CLUSTERNAME` klastra.  W nazwach klasterów w identyfikatorach URI **rozróżniana jest wielkość liter.**  Podczas gdy nazwa klastra w w pełni kwalifikowanej nazwy domeny`CLUSTERNAME.azurehdinsight.net`(FQDN) część identyfikatora URI ( ) jest bez uwzględniania wielkości liter, inne wystąpienia w identyfikatorze URI są uwzględniane wielkość liter.
 
 ## <a name="authentication"></a>Uwierzytelnianie
 
-Połączenie z usługą Ambari w usłudze HDInsight wymaga protokołu HTTPS. Użyj nazwy konta administratora (wartość domyślna to **admin**) i hasła podanego podczas tworzenia klastra.
+Łączenie się z Ambari na HDInsight wymaga protokołu HTTPS. Użyj nazwy konta administratora (domyślnie jest **to administrator)** i hasła podanego podczas tworzenia klastra.
 
-W przypadku klastrów pakiet Enterprise Security, a nie `admin`, należy użyć w pełni kwalifikowanej nazwy użytkownika, takiej jak `username@domain.onmicrosoft.com`.
+W przypadku klastrów pakietów `admin`zabezpieczeń przedsiębiorstwa zamiast `username@domain.onmicrosoft.com`użyj w pełni kwalifikowanej nazwy użytkownika, takiej jak .
 
 ## <a name="examples"></a>Przykłady
 
-### <a name="setup-preserve-credentials"></a>Instalacja (zachowywanie poświadczeń)
-Zachowaj poświadczenia, aby uniknąć ich przetworzenia w każdym przykładzie.  Nazwa klastra zostanie zachowana w osobnym kroku.
+### <a name="setup-preserve-credentials"></a>Instalator (zachowywanie poświadczeń)
+Zachowaj poświadczenia, aby uniknąć ponownego ich wniesienia dla każdego przykładu.  Nazwa klastra zostanie zachowana w osobnym kroku.
 
-**A. bash**  
-Edytuj Poniższy skrypt, zastępując `PASSWORD` hasłem rzeczywistym.  Następnie wprowadź polecenie.
+**A. Bash**  
+Edytuj poniższy skrypt, zastępując `PASSWORD` swoim rzeczywistym hasłem.  Następnie wprowadź polecenie.
 
 ```bash
 export password='PASSWORD'
@@ -63,10 +63,10 @@ export password='PASSWORD'
 $creds = Get-Credential -UserName "admin" -Message "Enter the HDInsight login"
 ```
 
-### <a name="identify-correctly-cased-cluster-name"></a>Zidentyfikuj poprawną nazwę klastra z wielkością liter
-Rzeczywista wielkość liter nazwy klastra może być inna niż oczekiwano, w zależności od sposobu utworzenia klastra.  Kroki opisane w tym miejscu spowodują wyświetlenie rzeczywistej wielkości liter, a następnie zapisanie jej w zmiennej dla wszystkich kolejnych przykładów.
+### <a name="identify-correctly-cased-cluster-name"></a>Identyfikowanie poprawnie obudowie nazwy klastra
+Rzeczywista wielkość liter nazwy klastra może być inna niż oczekiwano, w zależności od sposobu utworzenia klastra.  Kroki w tym miejscu pokaże rzeczywistą wielkość liter, a następnie zapisać go w zmiennej dla wszystkich kolejnych przykładów.
 
-Edytuj poniższe skrypty, aby zastąpić `CLUSTERNAME` nazwą klastra. Następnie wprowadź polecenie. (Nazwa klastra nazwy FQDN nie jest rozróżniana wielkość liter).
+Edytuj poniższe skrypty, aby zastąpić `CLUSTERNAME` je nazwą klastra. Następnie wprowadź polecenie. (W nazwie klastra nazwy FQDN nie jest rozróżniana wielkość liter).
 
 ```bash
 export clusterName=$(curl -u admin:$password -sS -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters" | jq -r '.items[].Clusters.cluster_name')
@@ -85,7 +85,7 @@ $clusterName
 
 ### <a name="parsing-json-data"></a>Analizowanie danych JSON
 
-Poniższy przykład używa [JQ](https://stedolan.github.io/jq/) lub [ConvertFrom-JSON](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/convertfrom-json) do analizy dokumentu odpowiedzi Json i wyświetlania tylko `health_report` informacji z wyników.
+W poniższym przykładzie użyto [jq](https://stedolan.github.io/jq/) lub [ConvertFrom-Json](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/convertfrom-json) do przeanalizowania `health_report` dokumentu odpowiedzi JSON i wyświetlenia tylko informacji z wyników.
 
 ```bash
 curl -u admin:$password -sS -G "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName" \
@@ -99,9 +99,9 @@ $respObj = ConvertFrom-Json $resp.Content
 $respObj.Clusters.health_report
 ```
 
-### <a name="example-get-the-fqdn-of-cluster-nodes"></a>Pobieranie nazwy FQDN węzłów klastra
+### <a name="get-the-fqdn-of-cluster-nodes"></a><a name="example-get-the-fqdn-of-cluster-nodes"></a>Pobierz numer FQDN węzłów klastra
 
-Podczas pracy z usługą HDInsight może być konieczne poznanie w pełni kwalifikowanej nazwy domeny (FQDN) węzła klastra. Możesz łatwo pobrać nazwę FQDN dla różnych węzłów w klastrze, korzystając z następujących przykładów:
+Podczas pracy z hdinsight, może być konieczne poznanie w pełni kwalifikowanej nazwy domeny (FQDN) węzła klastra. Można łatwo pobrać FQDN dla różnych węzłów w klastrze, korzystając z następujących przykładów:
 
 **Wszystkie węzły**  
 
@@ -117,7 +117,7 @@ $respObj = ConvertFrom-Json $resp.Content
 $respObj.items.Hosts.host_name
 ```
 
-**Węzły główne**  
+**Węzły głowy**  
 
 ```bash
 curl -u admin:$password -sS -G "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName/services/HDFS/components/NAMENODE" \
@@ -145,7 +145,7 @@ $respObj = ConvertFrom-Json $resp.Content
 $respObj.host_components.HostRoles.host_name
 ```
 
-**Dozorcy węzły**
+**Węzły zookeeper**
 
 ```bash
 curl -u admin:$password -sS -G "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName/services/ZOOKEEPER/components/ZOOKEEPER_SERVER" \
@@ -159,13 +159,13 @@ $respObj = ConvertFrom-Json $resp.Content
 $respObj.host_components.HostRoles.host_name
 ```
 
-### <a name="example-get-the-internal-ip-address-of-cluster-nodes"></a>Pobieranie wewnętrznego adresu IP węzłów klastra
+### <a name="get-the-internal-ip-address-of-cluster-nodes"></a><a name="example-get-the-internal-ip-address-of-cluster-nodes"></a>Uzyskaj wewnętrzny adres IP węzłów klastra
 
-Adresy IP zwracane przez przykłady w tej sekcji nie są bezpośrednio dostępne przez Internet. Są one dostępne tylko w ramach Virtual Network platformy Azure, które zawierają klaster usługi HDInsight.
+Adresy IP zwracane przez przykłady w tej sekcji nie są bezpośrednio dostępne przez Internet. Są one dostępne tylko w ramach sieci wirtualnej platformy Azure, która zawiera klaster HDInsight.
 
-Aby uzyskać więcej informacji na temat pracy z usługą HDInsight i sieciami wirtualnymi, zobacz [Planowanie sieci wirtualnej dla usługi HDInsight](hdinsight-plan-virtual-network-deployment.md).
+Aby uzyskać więcej informacji na temat pracy z sieciami HDInsight i sieciami wirtualnymi, zobacz [Planowanie sieci wirtualnej dla usługi HDInsight](hdinsight-plan-virtual-network-deployment.md).
 
-Aby znaleźć adres IP, należy znać wewnętrzną w pełni kwalifikowaną nazwę domeny (FQDN) węzłów klastra. Po skonfigurowaniu nazwy FQDN można uzyskać adres IP hosta. Poniższe przykłady najpierw pytają Ambari o nazwę FQDN wszystkich węzłów hosta, a następnie wysyłają zapytania do Ambari dla adresu IP każdego hosta.
+Aby znaleźć adres IP, musisz znać wewnętrzną w pełni kwalifikowaną nazwę domeny (FQDN) węzłów klastra. Po uzyskaniu sieci FQDN można uzyskać adres IP hosta. Poniższe przykłady najpierw kwerendy Ambari dla FQDN wszystkich węzłów hosta, a następnie kwerendy Ambari dla adresu IP każdego hosta.
 
 ```bash
 for HOSTNAME in $(curl -u admin:$password -sS -G "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName/hosts" | jq -r '.items[].Hosts.host_name')
@@ -189,9 +189,9 @@ foreach($item in $respObj.items) {
 }
 ```
 
-### <a name="get-the-default-storage"></a>Pobieranie magazynu domyślnego
+### <a name="get-the-default-storage"></a>Pobierz domyślną pamięć masową
 
-Podczas tworzenia klastra usługi HDInsight należy użyć konta magazynu platformy Azure lub Data Lake Storage jako domyślnego magazynu klastra. Możesz użyć Ambari, aby pobrać te informacje po utworzeniu klastra. Na przykład, jeśli chcesz odczytywać i zapisywać dane w kontenerze poza usługą HDInsight.
+Podczas tworzenia klastra HDInsight należy użyć konta usługi Azure Storage lub magazynu usługi Data Lake jako domyślnego magazynu dla klastra. Za pomocą programu Ambari można pobrać te informacje po utworzeniu klastra. Na przykład, jeśli chcesz odczytać/zapisywać dane do kontenera poza HDInsight.
 
 Poniższe przykłady pobierają domyślną konfigurację magazynu z klastra:
 
@@ -208,17 +208,17 @@ $respObj.items.configurations.properties.'fs.defaultFS'
 ```
 
 > [!IMPORTANT]  
-> Te przykłady zwracają pierwszą konfigurację zastosowana do serwera (`service_config_version=1`), który zawiera te informacje. W przypadku pobrania wartości, która została zmodyfikowana po utworzeniu klastra, może być konieczne wyświetlenie listy wersji konfiguracji i pobranie najnowszego.
+> Te przykłady zwracają pierwszą konfigurację`service_config_version=1`zastosowaną do serwera ( ), która zawiera te informacje. Jeśli pobierasz wartość, która została zmodyfikowana po utworzeniu klastra, może być konieczne wyświetlenie listy wersji konfiguracji i pobranie najnowszej.
 
-Wartość zwracana jest podobna do jednego z następujących przykładów:
+Zwracana wartość jest podobna do jednego z następujących przykładów:
 
-* `wasbs://CONTAINER@ACCOUNTNAME.blob.core.windows.net` — ta wartość wskazuje, że klaster korzysta z konta usługi Azure Storage na potrzeby magazynu domyślnego. Wartość `ACCOUNTNAME` jest nazwą konta magazynu. Częścią `CONTAINER` jest nazwa kontenera obiektów BLOB na koncie magazynu. Kontener jest katalogiem głównym magazynu zgodnego z systemem plików HDFS dla klastra.
+* `wasbs://CONTAINER@ACCOUNTNAME.blob.core.windows.net`- Ta wartość wskazuje, że klaster używa konta usługi Azure Storage dla magazynu domyślnego. Wartość `ACCOUNTNAME` to nazwa konta magazynu. Część `CONTAINER` jest nazwą kontenera obiektów blob na koncie magazynu. Kontener jest katalogiem głównym pamięci masowej zgodnej z systemem plików HDFS dla klastra.
 
-* `abfs://CONTAINER@ACCOUNTNAME.dfs.core.windows.net` — ta wartość wskazuje, że klaster używa Azure Data Lake Storage Gen2 magazynu domyślnego. Wartości `ACCOUNTNAME` i `CONTAINER` mają takie same znaczenie jak w przypadku usługi Azure Storage wymienionej wcześniej.
+* `abfs://CONTAINER@ACCOUNTNAME.dfs.core.windows.net`- Ta wartość wskazuje, że klaster używa usługi Azure Data Lake Storage Gen2 dla magazynu domyślnego. I `ACCOUNTNAME` `CONTAINER` wartości mają takie same znaczenia jak dla usługi Azure Storage wspomniano wcześniej.
 
-* `adl://home` — ta wartość wskazuje, że klaster używa Azure Data Lake Storage Gen1 magazynu domyślnego.
+* `adl://home`- Ta wartość wskazuje, że klaster używa usługi Azure Data Lake Storage Gen1 dla magazynu domyślnego.
 
-    Aby znaleźć nazwę konta Data Lake Storage, użyj następujących przykładów:
+    Aby znaleźć nazwę konta usługi Data Lake Storage, użyj następujących przykładów:
 
     ```bash
     curl -u admin:$password -sS -G "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName/configurations/service_config_versions?service_name=HDFS&service_config_version=1" \
@@ -232,9 +232,9 @@ Wartość zwracana jest podobna do jednego z następujących przykładów:
     $respObj.items.configurations.properties.'dfs.adls.home.hostname'
     ```
 
-    Wartość zwracana jest podobna do `ACCOUNTNAME.azuredatalakestore.net`, gdzie `ACCOUNTNAME` jest nazwą konta Data Lake Storage.
+    Zwracana wartość jest `ACCOUNTNAME.azuredatalakestore.net`podobna do , gdzie `ACCOUNTNAME` jest nazwa konta magazynu usługi Data Lake.
 
-    Aby znaleźć katalog w Data Lake Storage zawierającym magazyn klastra, użyj następujących przykładów:
+    Aby znaleźć katalog w magazynie usługi Data Lake, który zawiera magazyn dla klastra, użyj następujących przykładów:
 
     ```bash
     curl -u admin:$password -sS -G "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName/configurations/service_config_versions?service_name=HDFS&service_config_version=1" \
@@ -248,14 +248,14 @@ Wartość zwracana jest podobna do jednego z następujących przykładów:
     $respObj.items.configurations.properties.'dfs.adls.home.mountpoint'
     ```
 
-    Wartość zwracana jest podobna do `/clusters/CLUSTERNAME/`. Ta wartość jest ścieżką w ramach konta Data Lake Storage. Ta ścieżka jest katalogiem głównym zgodnego systemu plików HDFS dla klastra.  
+    Zwracana wartość jest `/clusters/CLUSTERNAME/`podobna do . Ta wartość jest ścieżką w ramach konta usługi Data Lake Storage. Ta ścieżka jest katalogiem głównym systemu plików zgodnego z systemem plików HDFS dla klastra.  
 
 > [!NOTE]  
-> Polecenie cmdlet [Get-AzHDInsightCluster](https://docs.microsoft.com/powershell/module/az.hdinsight/get-azhdinsightcluster) zapewniane przez [Azure PowerShell](/powershell/azure/overview) również zwraca informacje o magazynie dla klastra.
+> Polecenie cmdlet [Get-AzHDInsightCluster](https://docs.microsoft.com/powershell/module/az.hdinsight/get-azhdinsightcluster) dostarczone przez [usługę Azure PowerShell](/powershell/azure/overview) zwraca również informacje o magazynie dla klastra.
 
-### <a name="get-all-configurations"></a>Pobierz wszystkie konfiguracje
+### <a name="get-all-configurations"></a><a name="get-all-configurations"></a>Pobierz wszystkie konfiguracje
 
-Pobierz konfiguracje, które są dostępne dla danego klastra.
+Pobierz konfiguracje, które są dostępne dla klastra.
 
 ```bash
 curl -u admin:$password -sS -G "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName?fields=Clusters/desired_configs"
@@ -267,7 +267,7 @@ $respObj = Invoke-WebRequest -Uri "https://$clusterName.azurehdinsight.net/api/v
 $respObj.Content
 ```
 
-Ten przykład zwraca dokument JSON zawierający bieżącą konfigurację (identyfikowane przez wartość *tagu* ) dla składników zainstalowanych w klastrze. Poniższy przykład to fragment danych zwróconych z typu klastra Spark.
+W tym przykładzie zwraca dokument JSON zawierający bieżącą konfigurację (identyfikowaną przez wartość *znacznika)* dla składników zainstalowanych w klastrze. Poniższy przykład jest fragment danych zwróconych z typu klastra platformy Spark.
 
 ```json
 "jupyter-site" : {
@@ -284,9 +284,9 @@ Ten przykład zwraca dokument JSON zawierający bieżącą konfigurację (identy
 },
 ```
 
-### <a name="get-configuration-for-specific-component"></a>Pobierz konfigurację określonego składnika
+### <a name="get-configuration-for-specific-component"></a>Pobierz konfigurację dla określonego składnika
 
-Pobierz konfigurację dla interesującego Cię składnika. W poniższym przykładzie Zastąp `INITIAL` wartością tagu zwracaną z poprzedniego żądania.
+Pobierz konfigurację składnika, który Cię interesuje. W poniższym przykładzie zastąp `INITIAL` wartością znacznika zwróconą z poprzedniego żądania.
 
 ```bash
 curl -u admin:$password -sS -G "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName/configurations?type=livy2-conf&tag=INITIAL"
@@ -298,24 +298,24 @@ $resp = Invoke-WebRequest -Uri "https://$clusterName.azurehdinsight.net/api/v1/c
 $resp.Content
 ```
 
-Ten przykład zwraca dokument JSON zawierający bieżącą konfigurację składnika `livy2-conf`.
+W tym przykładzie zwraca dokument JSON `livy2-conf` zawierający bieżącą konfigurację składnika.
 
 ### <a name="update-configuration"></a>Aktualizowanie konfiguracji
 
-1. Utwórz `newconfig.json`.  
-   Zmodyfikuj, a następnie wprowadź poniższe polecenia:
+1. Utwórz `newconfig.json`plik .  
+   Modyfikuj, a następnie wprowadź poniższe polecenia:
 
-   * Zastąp `livy2-conf` pożądanym składnikiem.
-   * Zastąp `INITIAL` wartością rzeczywistą pobraną dla `tag` z opcji [Pobierz wszystkie konfiguracje](#get-all-configurations).
+   * Wymień `livy2-conf` na żądany komponent.
+   * Zamień `INITIAL` na `tag` rzeczywistą wartość pobraną z Pobierz wszystkie [konfiguracje](#get-all-configurations).
 
-     **A. bash**  
+     **A. Bash**  
      ```bash
      curl -u admin:$password -sS -G "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName/configurations?type=livy2-conf&tag=INITIAL" \
      | jq --arg newtag $(echo version$(date +%s%N)) '.items[] | del(.href, .version, .Config) | .tag |= $newtag | {"Clusters": {"desired_config": .}}' > newconfig.json
      ```
 
      **B. PowerShell**  
-     Skrypt programu PowerShell używa [JQ](https://stedolan.github.io/jq/).  Edytuj `C:\HD\jq\jq-win64` poniżej, aby odzwierciedlić rzeczywistą ścieżkę i wersję [JQ](https://stedolan.github.io/jq/).
+     Skrypt programu PowerShell używa [pliku jq](https://stedolan.github.io/jq/).  Edytuj `C:\HD\jq\jq-win64` poniżej, aby odzwierciedlić rzeczywistą ścieżkę i wersję [jq](https://stedolan.github.io/jq/).
 
      ```powershell
      $epoch = Get-Date -Year 1970 -Month 1 -Day 1 -Hour 0 -Minute 0 -Second 0
@@ -326,19 +326,19 @@ Ten przykład zwraca dokument JSON zawierający bieżącą konfigurację składn
      $resp.Content | C:\HD\jq\jq-win64 --arg newtag "version$unixTimeStamp" '.items[] | del(.href, .version, .Config) | .tag |= $newtag | {"Clusters": {"desired_config": .}}' > newconfig.json
      ```
 
-     JQ służy do przekształcania danych pobranych z usługi HDInsight do nowego szablonu konfiguracji. W tych przykładach są wykonywane następujące akcje:
+     Jq służy do przekształcania danych pobranych z usługi HDInsight w nowy szablon konfiguracji. W szczególności te przykłady wykonują następujące akcje:
 
-   * Tworzy unikatową wartość zawierającą ciąg "wersja" i datę przechowywaną w `newtag`.
+   * Tworzy unikatową wartość zawierającą ciąg "version" i datę, która jest przechowywana w `newtag`pliku .
 
    * Tworzy dokument główny dla nowej żądanej konfiguracji.
 
-   * Pobiera zawartość tablicy `.items[]` i dodaje ją do elementu **desired_config** .
+   * Pobiera zawartość tablicy `.items[]` i dodaje go w desired_config element. **desired_config**
 
-   * Usuwa elementy `href`, `version`i `Config`, ponieważ te elementy nie są potrzebne do przesłania nowej konfiguracji.
+   * Usuwa elementy `href` `version`, `Config` i elementy, ponieważ te elementy nie są potrzebne do przesłania nowej konfiguracji.
 
-   * Dodaje `tag` element z wartością `version#################`. Część liczbowa jest zależna od bieżącej daty. Każda konfiguracja musi mieć unikatowy tag.
+   * Dodaje `tag` element o wartości `version#################`. Część liczbowa jest oparta na bieżącej dacie. Każda konfiguracja musi mieć unikatowy tag.
 
-     Na koniec dane są zapisywane do dokumentu `newconfig.json`. Struktura dokumentu powinna wyglądać podobnie do poniższego przykładu:
+     Na koniec dane są zapisywane w dokumencie. `newconfig.json` Struktura dokumentu powinna wyglądać podobnie do następującego przykładu:
 
      ```json
      {
@@ -359,7 +359,7 @@ Ten przykład zwraca dokument JSON zawierający bieżącą konfigurację składn
      ```
 
 2. Edytuj `newconfig.json`.  
-   Otwórz dokument `newconfig.json` i zmodyfikuj/Dodaj wartości w obiekcie `properties`. Poniższy przykład zmienia wartość `"livy.server.csrf_protection.enabled"` z `"true"` na `"false"`.
+   Otwórz `newconfig.json` dokument i modyfikuj/dodaj `properties` wartości w obiekcie. Poniższy przykład zmienia `"livy.server.csrf_protection.enabled"` wartość `"true"` `"false"`z do .
 
         "livy.server.csrf_protection.enabled": "false",
 
@@ -382,13 +382,13 @@ Ten przykład zwraca dokument JSON zawierający bieżącą konfigurację składn
     $resp.Content
     ```  
 
-    Te polecenia przesyłają zawartość pliku **newconfig. JSON** do klastra jako nową pożądaną konfigurację. Żądanie zwraca dokument JSON. Element **versionTag** w tym dokumencie powinien odpowiadać przesłanej wersji, a obiekt **configs** zawiera żądane zmiany konfiguracji.
+    Te polecenia przesłać zawartość pliku **newconfig.json** do klastra jako nową żądaną konfigurację. Żądanie zwraca dokument JSON. Element **versionTag** w tym dokumencie powinien być zgodny z przesłanym wersją, a obiekt **configs** zawiera żądane zmiany konfiguracji.
 
 ### <a name="restart-a-service-component"></a>Ponowne uruchamianie składnika usługi
 
-W tym momencie, Jeśli zobaczysz interfejs użytkownika sieci Web Ambari, usługa Spark wskazuje, że wymaga ponownego uruchomienia, zanim zacznie obowiązywać nowa konfiguracja. Wykonaj następujące kroki, aby ponownie uruchomić usługę.
+W tym momencie, jeśli spojrzeć na interfejs użytkownika sieci Web Ambari, usługa Spark wskazuje, że musi zostać ponownie uruchomiony, zanim nowa konfiguracja może zostać uwzględniona. Aby ponownie uruchomić usługę, należy wykonać następujące kroki.
 
-1. Aby włączyć tryb konserwacji dla usługi Spark2, należy wykonać następujące czynności:
+1. Aby włączyć tryb konserwacji usługi Spark2, należy użyć następujących czynności:
 
     ```bash
     curl -u admin:$password -sS -H "X-Requested-By: ambari" \
@@ -404,9 +404,9 @@ W tym momencie, Jeśli zobaczysz interfejs użytkownika sieci Web Ambari, usług
         -Body '{"RequestInfo": {"context": "turning on maintenance mode for SPARK2"},"Body": {"ServiceInfo": {"maintenance_state":"ON"}}}'
     ```
 
-2. Sprawdź tryb konserwacji  
+2. Weryfikowanie trybu konserwacji  
 
-    Te polecenia umożliwiają wysłanie dokumentu JSON do serwera, który włącza tryb konserwacji. Możesz sprawdzić, czy usługa działa teraz w trybie konserwacji, używając następującego żądania:
+    Te polecenia wysyłają dokument JSON do serwera, który włącza tryb konserwacji. Można sprawdzić, czy usługa jest teraz w trybie konserwacji przy użyciu następującego żądania:
 
     ```bash
     curl -u admin:$password -sS -H "X-Requested-By: ambari" \
@@ -421,9 +421,9 @@ W tym momencie, Jeśli zobaczysz interfejs użytkownika sieci Web Ambari, usług
     $respObj.ServiceInfo.maintenance_state
     ```
 
-    Wartość zwracana jest `ON`.
+    Zwracana wartość `ON`to .
 
-3. Następnie użyj poniższego, aby wyłączyć usługę Spark2:
+3. Następnie użyj następujących opcji, aby wyłączyć usługę Spark2:
 
     ```bash
     curl -u admin:$password -sS -H "X-Requested-By: ambari" \
@@ -453,10 +453,10 @@ W tym momencie, Jeśli zobaczysz interfejs użytkownika sieci Web Ambari, usług
     ```
 
     > [!IMPORTANT]  
-    > Wartość `href` zwracana przez ten identyfikator URI używa wewnętrznego adresu IP węzła klastra. Aby użyć go spoza klastra, Zastąp część `10.0.0.18:8080` nazwą FQDN klastra.  
+    > Wartość `href` zwracana przez ten identyfikator URI używa wewnętrznego adresu IP węzła klastra. Aby użyć go spoza klastra, zastąp `10.0.0.18:8080` część fqdn klastra.  
 
-4. Sprawdź poprawność żądania.  
-    Edytuj poniższe polecenie, zastępując `29` wartością rzeczywistą `id` zwróconych z poprzedniego kroku.  Następujące polecenia powodują pobranie stanu żądania:
+4. Sprawdź żądanie.  
+    Edytuj poniższe polecenie, zastępując `29` rzeczywistą wartością `id` zwróconą z poprzedniego kroku.  Następujące polecenia pobierają stan żądania:
 
     ```bash
     curl -u admin:$password -sS -H "X-Requested-By: ambari" \
@@ -473,7 +473,7 @@ W tym momencie, Jeśli zobaczysz interfejs użytkownika sieci Web Ambari, usług
 
     Odpowiedź `COMPLETED` wskazuje, że żądanie zostało zakończone.
 
-5. Po zakończeniu poprzedniego żądania wykonaj następujące czynności, aby uruchomić usługę Spark2.
+5. Po zakończeniu poprzedniego żądania należy użyć następujących czynności, aby uruchomić usługę Spark2.
 
     ```bash
     curl -u admin:$password -sS -H "X-Requested-By: ambari" \
@@ -490,7 +490,7 @@ W tym momencie, Jeśli zobaczysz interfejs użytkownika sieci Web Ambari, usług
     $resp.Content
     ```
 
-    Usługa używa teraz nowej konfiguracji.
+    Usługa korzysta teraz z nowej konfiguracji.
 
 6. Na koniec użyj poniższego, aby wyłączyć tryb konserwacji.
 
@@ -510,4 +510,4 @@ W tym momencie, Jeśli zobaczysz interfejs użytkownika sieci Web Ambari, usług
 
 ## <a name="next-steps"></a>Następne kroki
 
-Aby uzyskać pełne informacje na temat interfejsu API REST, zobacz [wersja 1 interfejsu API platformy Apache Ambari](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md).  Zobacz również [Autoryzowanie użytkowników na potrzeby widoków Apache Ambari](./hdinsight-authorize-users-to-ambari.md)
+Aby uzyskać pełne odwołanie do interfejsu API REST, zobacz [Apache Ambari API Reference V1](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md).  Zobacz też, [Autoryzuj użytkowników dla Widoków Apache Ambari](./hdinsight-authorize-users-to-ambari.md)

@@ -1,7 +1,7 @@
 ---
 title: DevOps dla potoku pozyskiwania danych
 titleSuffix: Azure Machine Learning
-description: Dowiedz się, jak stosować praktyki DevOps do implementacji potoku pozyskiwania danych, która służy do przygotowywania danych do szkolenia modeli.
+description: Dowiedz się, jak zastosować praktyki DevOps do implementacji potoku pozyskiwania danych używanego do przygotowywania danych do szkolenia modelu.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,57 +11,57 @@ author: eedorenko
 manager: davete
 ms.reviewer: larryfr
 ms.date: 01/30/2020
-ms.openlocfilehash: 49b384e9e2d9b77179a0154bf2d96524c064c2ca
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: d987171d41bd6d80bab4cce91ef9ecec1f0dc7a4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76960973"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80247184"
 ---
 # <a name="devops-for-a-data-ingestion-pipeline"></a>DevOps dla potoku pozyskiwania danych
 
-W większości scenariuszy rozwiązanie do pozyskiwania danych to kompozycja skryptów, wywołań usługi i potoku, który organizuje wszystkie działania. W tym artykule dowiesz się, jak stosować praktyki DevOps do cyklu życia opracowywania wspólnego potoku pozyskiwania danych. Potok przygotowuje dane do szkolenia modelu Machine Learning.
+W większości scenariuszy rozwiązanie pozyskiwania danych jest kompozycją skryptów, wywołania usługi i potoku aranżującego wszystkie działania. W tym artykule dowiesz się, jak zastosować praktyki DevOps do cyklu życia rozwoju wspólnego potoku pozyskiwania danych. Potok przygotowuje dane do szkolenia modelu uczenia maszynowego.
 
 ## <a name="the-solution"></a>Rozwiązanie
 
-Weź pod uwagę następujący przepływ pracy pozyskiwania danych:
+Należy wziąć pod uwagę następujący przepływ pracy pozyskiwania danych:
 
-![Pozyskiwanie danych — potok](media/how-to-cicd-data-ingestion/data-ingestion-pipeline.png)
+![potok pozyskiwania danych](media/how-to-cicd-data-ingestion/data-ingestion-pipeline.png)
 
-W tym podejściu dane szkoleniowe są przechowywane w usłudze Azure Blob Storage. Potok Azure Data Factory pobiera dane z wejściowego kontenera obiektów blob, przekształca je i zapisuje dane w wyjściowym kontenerze obiektów BLOB. Ten kontener służy jako [Magazyn danych](https://docs.microsoft.com/azure/machine-learning/concept-data#access-data-in-storage) dla usługi Azure Machine Learning. Po przygotowaniu danych potok Data Factory wywołuje potok Machine Learning szkolenia, aby szkolić model. W tym konkretnym przykładzie transformacja danych jest wykonywana przez Notes języka Python, uruchomiony w klastrze Azure Databricks. 
+W tym podejściu dane szkoleniowe są przechowywane w magazynie obiektów blob platformy Azure. Potok usługi Azure Data Factory pobiera dane z wejściowego kontenera obiektów blob, przekształca je i zapisuje dane w wyjściowym kontenerze obiektów blob. Ten kontener służy jako [magazyn danych](concept-data.md) dla usługi Azure Machine Learning. Po przygotowaniu danych potoku fabryki danych wywołuje potok uczenia maszynowego szkolenia do uczenia modelu. W tym konkretnym przykładzie transformacja danych jest wykonywana przez notes języka Python, uruchomiony w klastrze usługi Azure Databricks. 
 
-## <a name="what-we-are-building"></a>Co tworzysz
+## <a name="what-we-are-building"></a>Co budujemy
 
-Podobnie jak w przypadku dowolnego rozwiązania oprogramowania, istnieje zespół (na przykład inżynierowie danych) pracujący nad nim. 
+Podobnie jak w przypadku każdego rozwiązania programowego, pracuje nad nim zespół (na przykład Inżynierowie danych). 
 
-![cicd — pozyskiwanie danych](media/how-to-cicd-data-ingestion/cicd-data-ingestion.png)
+![cicd-data-łękiwanie](media/how-to-cicd-data-ingestion/cicd-data-ingestion.png)
 
-Współpracują i udostępniają te same zasoby platformy Azure, takie jak Azure Data Factory, Azure Databricks, konto usługi Azure Storage i takie. Zbieranie tych zasobów to środowisko programistyczne. Inżynierowie danych składają się na tę samą bazę kodu źródłowego. Proces ciągłej integracji składa kod, sprawdza go za pomocą testów jakości kodu, testów jednostkowych i tworzy artefakty, takie jak testowany kod i szablony Azure Resource Manager. Proces ciągłego dostarczania wdraża artefakty w środowiskach podrzędnych. W tym artykule przedstawiono sposób automatyzacji procesów CI i dysków CD przy użyciu [Azure Pipelines](https://azure.microsoft.com/services/devops/pipelines/).
+Współpracują i udostępniają te same zasoby platformy Azure, takie jak usługa Azure Data Factory, usługa Azure Databricks, konto usługi Azure Storage i takie. Kolekcja tych zasobów jest środowisko programistyczne. Inżynierowie danych przyczyniają się do tej samej bazy kodu źródłowego. Proces ciągłej integracji zestawia kod, sprawdza go za pomocą testów jakości kodu, testów jednostkowych i tworzy artefakty, takie jak testowany kod i szablony usługi Azure Resource Manager. Proces ciągłego dostarczania wdraża artefakty w środowiskach podrzędnych. W tym artykule pokazano, jak zautomatyzować procesy ciągłej integracji i dysków CD za pomocą [usługi Azure Pipelines](https://azure.microsoft.com/services/devops/pipelines/).
 
 ## <a name="source-control-management"></a>Zarządzanie kontrolą źródła
 
-Członkowie zespołu pracują na nieco różnych sposobach współpracy w kodzie źródłowym notesu Python i kodzie źródłowym Azure Data Factory. Jednak w obu przypadkach kod jest przechowywany w repozytorium kontroli źródła (na przykład Azure DevOps, GitHub, GitLab), a współpraca jest zwykle oparta na modelu rozgałęziania (na przykład [GitFlow](https://datasift.github.io/gitflow/IntroducingGitFlow.html)).
+Członkowie zespołu pracują na nieco inne sposoby współpracy nad kodem źródłowym notesu języka Python i kodem źródłowym usługi Azure Data Factory. Jednak w obu przypadkach kod jest przechowywany w repozytorium kontroli źródła (na przykład Azure DevOps, GitHub, GitLab), a współpraca jest zwykle oparta na jakimś modelu rozgałęzienia (na przykład [GitFlow).](https://datasift.github.io/gitflow/IntroducingGitFlow.html)
 
-### <a name="python-notebook-source-code"></a>Kod źródłowy notesu Python
+### <a name="python-notebook-source-code"></a>Kod źródłowy notesu języka Python
 
-Inżynierowie danych współpracują z kodem źródłowym notesu języka Python lokalnie w środowisku IDE (na przykład [Visual Studio Code](https://code.visualstudio.com)) lub bezpośrednio w obszarze roboczym datakosteks. Druga z nich umożliwia debugowanie kodu w środowisku deweloperskim. W każdym przypadku kod zostanie scalony z repozytorium po rozgałęzieniu zasad. Zdecydowanie zaleca się przechowywanie kodu w plikach `.py`, a nie w formacie `.ipynb` notesu Jupyter. Zwiększa czytelność kodu i umożliwia automatyczne sprawdzanie jakości kodu w procesie CI.
+Inżynierowie danych pracują z kodem źródłowym notesu języka Python lokalnie w IDE (na przykład [Visual Studio Code)](https://code.visualstudio.com)lub bezpośrednio w obszarze roboczym Databricks. Ten ostatni daje możliwość debugowania kodu w środowisku programistycznym. W każdym przypadku kod zostanie scalony do repozytorium zgodnie z zasadami rozgałęzienia. Zaleca się przechowywanie kodu w `.py` plikach, `.ipynb` a nie w formacie notebooka Jupyter. Poprawia czytelność kodu i umożliwia automatyczne sprawdzanie jakości kodu w procesie ciągłej integracji.
 
-### <a name="azure-data-factory-source-code"></a>Azure Data Factory kod źródłowy
+### <a name="azure-data-factory-source-code"></a>Kod źródłowy fabryki danych platformy Azure
 
-Kod źródłowy potoków Azure Data Factory jest kolekcją plików JSON generowanych przez obszar roboczy. Zwykle inżynierowie danych pracują z projektantem wizualnym w obszarze roboczym Azure Data Factory, a nie bezpośrednio z plikami kodu źródłowego. Skonfiguruj obszar roboczy z repozytorium kontroli źródła zgodnie z opisem w [dokumentacji Azure Data Factory](https://docs.microsoft.com/azure/data-factory/source-control#author-with-azure-repos-git-integration). W przypadku tej konfiguracji inżynierowie danych mogą współpracować nad kodem źródłowym, korzystając z preferowanego przepływu pracy rozgałęziania.    
+Kod źródłowy potoków usługi Azure Data Factory jest kolekcją plików json generowanych przez obszar roboczy. Zwykle inżynierowie danych pracują z projektantem wizualnym w obszarze roboczym usługi Azure Data Factory, a nie bezpośrednio z plikami kodu źródłowego. Skonfiguruj obszar roboczy za pomocą repozytorium kontroli źródła, zgodnie z opisem w [dokumentacji usługi Azure Data Factory.](https://docs.microsoft.com/azure/data-factory/source-control#author-with-azure-repos-git-integration) Dzięki tej konfiguracji inżynierowie danych mogą współpracować nad kodem źródłowym zgodnie z preferowanym przepływem pracy rozgałęzienia.    
 
-## <a name="continuous-integration-ci"></a>Ciągła integracja
+## <a name="continuous-integration-ci"></a>Ciągła integracja (CI)
 
-Ostatecznym celem procesu ciągłej integracji jest zebranie współpracującego zespołu z kodu źródłowego i przygotowanie go do wdrożenia w środowiskach podrzędnych. Podobnie jak w przypadku zarządzania kodem źródłowym ten proces jest różny dla notesów Python i potoków Azure Data Factory. 
+Ostatecznym celem procesu ciągłej integracji jest zebranie wspólnej pracy zespołu z kodu źródłowego i przygotowanie go do wdrożenia w środowiskach podrzędnych. Podobnie jak w przypadku zarządzania kodem źródłowym ten proces jest inny dla notesów języka Python i potoków usługi Azure Data Factory. 
 
-### <a name="python-notebook-ci"></a>Element konfiguracji notesu języka Python
+### <a name="python-notebook-ci"></a>Notebook Pythona CI
 
-Proces CI dla notesów języka Python Pobiera kod z gałęzi współpracy (na przykład ***Master*** lub ***opracowywać***) i wykonuje następujące działania:
-* Zaznaczanie błędów kodu
-* Testy jednostkowe
+Proces ciągłej integracji notesów języka Python pobiera kod z gałęzi współpracy (na przykład ***wzorzec*** lub ***rozwijanie)*** i wykonuje następujące działania:
+* Linting kodu
+* Testowanie jednostek
 * Zapisywanie kodu jako artefaktu
 
-Poniższy fragment kodu ilustruje implementację tych kroków w potoku usługi Azure DevOps ***YAML*** :
+Poniższy fragment kodu demonstruje implementację tych kroków w potoku ***yaml*** usługi Azure DevOps:
 
 ```yaml
 steps:
@@ -87,18 +87,18 @@ steps:
 
 ```
 
-Potok używa ***flake8*** do wykonania kodu w języku Python Zaznaczanie błędów. Uruchamia testy jednostkowe zdefiniowane w kodzie źródłowym i publikuje wyniki Zaznaczanie błędów i testy, aby były dostępne na ekranie wykonywania potoku platformy Azure:
+Potoku używa ***flake8*** do linting kodu Języka Python. Uruchamia testy jednostkowe zdefiniowane w kodzie źródłowym i publikuje wyniki linting i test, dzięki czemu są one dostępne na ekranie wykonywania potoku platformy Azure:
 
-![Zaznaczanie błędów-Unit-Tests](media/how-to-cicd-data-ingestion/linting-unit-tests.png)
+![linting-testy jednostkowe](media/how-to-cicd-data-ingestion/linting-unit-tests.png)
 
-Jeśli Zaznaczanie błędów i testy jednostkowe zakończyły się powodzeniem, potok skopiuje kod źródłowy do repozytorium artefaktów, który będzie używany przez kolejne kroki wdrażania.
+Jeśli linting i testowanie jednostkowe zakończy się pomyślnie, potok skopiuje kod źródłowy do repozytorium artefaktów, które ma być używane przez kolejne kroki wdrażania.
 
-### <a name="azure-data-factory-ci"></a>Azure Data Factory CI
+### <a name="azure-data-factory-ci"></a>Fabryka danych platformy Azure
 
-Proces CI dla potoku Azure Data Factory jest wąskim gardłem w całym wątku ciągłej integracji i ciągłego wdrażania danych. Brak ***ciągłej*** integracji. Artefaktem wdrożonym dla Azure Data Factory jest kolekcja Azure Resource Manager szablonów. Jedynym sposobem tworzenia tych szablonów jest kliknięcie przycisku ***Publikuj*** w obszarze roboczym Azure Data Factory. Nie ma tutaj automatyzacji.
-Inżynierowie danych scalają kod źródłowy z gałęzi funkcji do gałęzi współpracy, na przykład ***Master*** lub ***opracowywać***. Następnie ktoś z przyznanymi uprawnieniami klika przycisk ***Publikuj*** , aby generować Azure Resource Manager szablony z kodu źródłowego w gałęzi współpracy. Gdy przycisk zostanie kliknięty, obszar roboczy sprawdza poprawność potoków (Pomyśl o tym, jak zaznaczanie błędów i testy jednostkowe), generuje szablony Azure Resource Manager (Zastanów się nad kompilacją) i zapisuje wygenerowane szablony do gałęzi technicznej ***adf_publish*** w tym samym repozytorium kodu (należy wziąć pod uwagę publikowanie artefaktów). Ta gałąź jest tworzona automatycznie przez obszar roboczy Azure Data Factory. Ten proces został opisany szczegółowo w [dokumentacji Azure Data Factory](https://docs.microsoft.com/azure/data-factory/continuous-integration-deployment).
+Proces ciągłej integracji dla potoku usługi Azure Data Factory jest wąskim gardłem w całej historii ciągłej integracji/ciągłego wdrażania dla potoku pozyskiwania danych. Nie ma ***ciągłej*** integracji. Artefakt, który można wdrożyć dla usługi Azure Data Factory, to zbiór szablonów usługi Azure Resource Manager. Jedynym sposobem, aby utworzyć te szablony jest kliknięcie przycisku ***publikowania*** w obszarze roboczym usługi Azure Data Factory. Nie ma tu automatyzacji.
+Inżynierowie danych łączą kod źródłowy ze swoich gałęzi funkcji z gałęzią współpracy, na przykład ***wzorcem*** lub ***rozwijaniem***. Następnie ktoś z przyznanymi uprawnieniami klika przycisk ***publikowania,*** aby wygenerować szablony usługi Azure Resource Manager z kodu źródłowego w gałęzi współpracy. Po kliknięciu przycisku obszar roboczy sprawdza poprawność potoków (pomyśl o nim jako linting i testowania jednostek), generuje szablony usługi Azure Resource Manager (pomyśl o tym jako o tworzeniu) i zapisuje wygenerowane szablony do gałęzi technicznej ***adf_publish*** w tym samym repozytorium kodu (pomyśl o tym jak o artefaktach publikowania). Ta gałąź jest tworzony automatycznie przez obszar roboczy usługi Azure Data Factory. Ten proces jest opisany w szczegółach w [dokumentacji usługi Azure Data Factory](https://docs.microsoft.com/azure/data-factory/continuous-integration-deployment).
 
-Ważne jest, aby upewnić się, że wygenerowane szablony Azure Resource Manager są środowiskiem niezależny od. Oznacza to, że wszystkie wartości, które mogą się różnić między środowiskami, są parametryczne. Azure Data Factory jest wystarczająco inteligentny, aby uwidocznić większość takich wartości jako parametry. Na przykład w poniższym szablonie właściwości połączenia z obszarem roboczym Azure Machine Learning są ujawniane jako parametry:
+Ważne jest, aby upewnić się, że wygenerowane szablony usługi Azure Resource Manager są niezależne od środowiska. Oznacza to, że wszystkie wartości, które mogą się różnić od między środowiskami są parametryzowane. Usługa Azure Data Factory jest wystarczająco inteligentny, aby udostępnić większość takich wartości, jak parametry. Na przykład w poniższym szablonie właściwości połączenia z obszarem roboczym usługi Azure Machine Learning są udostępniane jako parametry:
 
 ```json
 {
@@ -127,7 +127,7 @@ Ważne jest, aby upewnić się, że wygenerowane szablony Azure Resource Manager
 }
 ```
 
-Jednak możesz chcieć uwidocznić niestandardowe właściwości, które nie są obsługiwane domyślnie przez obszar roboczy Azure Data Factory. W scenariuszu tego artykułu potok Azure Data Factory wywołuje Notes języka Python przetwarzający dane. Notes akceptuje parametr o nazwie pliku danych wejściowych.
+Jednak można udostępnić właściwości niestandardowe, które nie są obsługiwane przez obszar roboczy usługi Azure Data Factory domyślnie. W scenariuszu tego artykułu potok usługi Azure Data Factory wywołuje notes języka Python przetwarzania danych. Notes akceptuje parametr o nazwie pliku danych wejściowych.
 
 ```Python
 import pandas as pd
@@ -140,15 +140,15 @@ labels = np.array(data['target'])
 ...
 ```
 
-Ta nazwa jest inna dla środowisk ***dev***, ***pytań i odpowiedzi***, ***przeprowadzających***i ***produkcyjnego*** . W złożonym potoku z wieloma działaniami może istnieć kilka właściwości niestandardowych. Dobrym sposobem jest zebranie wszystkich wartości w jednym miejscu i Definiowanie ich jako ***zmiennych***potoku:
+Ta nazwa jest inna w przypadku środowisk ***Dev,*** ***QA,*** ***UAT***i ***PROD.*** W złożonym potoku z wieloma działaniami może istnieć kilka właściwości niestandardowych. Dobrą praktyką jest zebranie wszystkich tych wartości w jednym miejscu i zdefiniowanie ich jako ***zmiennych potoku:***
 
-![ADF — zmienne](media/how-to-cicd-data-ingestion/adf-variables.png)
+![adf-zmienne](media/how-to-cicd-data-ingestion/adf-variables.png)
 
-Działania potoku mogą odwoływać się do zmiennych potoku podczas ich rzeczywistego używania:
+Działania potoku mogą odnosić się do zmiennych potoku, podczas gdy faktycznie z nich korzystają:
 
-![ADF — parametry notesu](media/how-to-cicd-data-ingestion/adf-notebook-parameters.png)
+![adf-notebook-parametry](media/how-to-cicd-data-ingestion/adf-notebook-parameters.png)
 
-W obszarze roboczym Azure Data Factory ***nie*** są domyślnie uwidaczniane zmienne potoku jako parametry szablonów Azure Resource Manager. W obszarze roboczym jest stosowany [domyślny szablon parametryzacja](https://docs.microsoft.com/azure/data-factory/continuous-integration-deployment#default-parameterization-template) , który określa, jakie właściwości potoku powinny być uwidocznione jako Azure Resource Manager parametry szablonu. Aby dodać do listy zmienne potoku, zaktualizuj sekcję "Microsoft. DataFactory/factorers/Pipelines" [domyślnego szablonu parametryzacja](https://docs.microsoft.com/azure/data-factory/continuous-integration-deployment#default-parameterization-template) z następującym fragmentem kodu i umieść plik JSON z wynikami w katalogu głównym folderu źródłowego:
+Obszar roboczy usługi Azure Data Factory ***domyślnie nie*** udostępnia zmiennych potoku jako parametrów szablonów usługi Azure Resource Manager. Obszar roboczy używa [domyślnego szablonu parametryzacji,](https://docs.microsoft.com/azure/data-factory/continuous-integration-deployment#default-parameterization-template) który dyktuje, jakie właściwości potoku powinny być udostępniane jako parametry szablonu usługi Azure Resource Manager. Aby dodać zmienne potoku do listy, zaktualizuj sekcję "Microsoft.DataFactory/factorys/pipelines" [domyślnego szablonu parametryzacji](https://docs.microsoft.com/azure/data-factory/continuous-integration-deployment#default-parameterization-template) za pomocą następującego fragmentu kodu i umieść plik json wynikowy w katalogu głównym folderu źródłowego:
 
 ```json
 "Microsoft.DataFactory/factories/pipelines": {
@@ -162,7 +162,7 @@ W obszarze roboczym Azure Data Factory ***nie*** są domyślnie uwidaczniane zmi
     }
 ```
 
-Spowoduje to wymuszenie, aby obszar roboczy Azure Data Factory dodać zmienne do listy parametrów po kliknięciu przycisku ***Publikuj*** :
+W ten sposób wymusi obszar roboczy usługi Azure Data Factory, aby dodać zmienne do listy parametrów po kliknięciu przycisku ***publikowania:***
 
 ```json
 {
@@ -180,21 +180,21 @@ Spowoduje to wymuszenie, aby obszar roboczy Azure Data Factory dodać zmienne do
 }
 ```
 
-Wartości w pliku JSON są wartościami domyślnymi skonfigurowanymi w definicji potoku. Po wdrożeniu szablonu Azure Resource Manager powinny one zostać zastąpione wartościami środowiska docelowego.
+Wartości w pliku json są wartościami domyślnymi skonfigurowane w definicji potoku. Oczekuje się, że zostaną one zastąpione wartościami środowiska docelowego po wdrożeniu szablonu usługi Azure Resource Manager.
 
-## <a name="continuous-delivery-cd"></a>Ciągłe dostarczanie
+## <a name="continuous-delivery-cd"></a>Ciągłe dostarczanie (CD)
 
-Proces ciągłego dostarczania wykonuje artefakty i wdraża je w pierwszym środowisku docelowym. Upewnij się, że rozwiązanie działa, uruchamiając testy. Jeśli to się powiedzie, przechodzi do następnego środowiska. Potok na platformie Azure obejmuje wiele etapów przedstawiających środowiska. Każdy etap zawiera [wdrożenia](https://docs.microsoft.com/azure/devops/pipelines/process/deployment-jobs?view=azure-devops) i [zadania](https://docs.microsoft.com/azure/devops/pipelines/process/phases?view=azure-devops&tabs=yaml) , które wykonują następujące czynności:
-* Wdróż Notes w języku Python w Azure Databricks obszarze roboczym
-* Wdróż potok Azure Data Factory 
+Proces ciągłego dostarczania pobiera artefakty i wdraża je w pierwszym środowisku docelowym. Upewnia się, że rozwiązanie działa przez uruchomienie testów. Jeśli się powiedzie, kontynuuje do następnego środowiska. Potok platformy Azure cd składa się z wielu etapów reprezentujących środowiska. Każdy etap zawiera [wdrożenia](https://docs.microsoft.com/azure/devops/pipelines/process/deployment-jobs?view=azure-devops) i [zadania,](https://docs.microsoft.com/azure/devops/pipelines/process/phases?view=azure-devops&tabs=yaml) które wykonują następujące kroki:
+* Wdrażanie notesu języka Python w obszarze roboczym usługi Azure Databricks
+* Wdrażanie potoku usługi Azure Data Factory 
 * Uruchamianie potoku
 * Sprawdzanie wyniku pozyskiwania danych
 
-Etapy potoku można skonfigurować przy użyciu [zatwierdzeń](https://docs.microsoft.com/azure/devops/pipelines/process/approvals?view=azure-devops&tabs=check-pass) i [bram](https://docs.microsoft.com/azure/devops/pipelines/release/approvals/gates?view=azure-devops) , które zapewniają dodatkową kontrolę nad sposobem rozwoju procesu wdrażania przez łańcuch środowisk.
+Etapy potoku można skonfigurować za pomocą [zatwierdzeń](https://docs.microsoft.com/azure/devops/pipelines/process/approvals?view=azure-devops&tabs=check-pass) i [bram,](https://docs.microsoft.com/azure/devops/pipelines/release/approvals/gates?view=azure-devops) które zapewniają dodatkową kontrolę nad rozwojem procesu wdrażania w łańcuchu środowisk.
 
-### <a name="deploy-a-python-notebook"></a>Wdrażanie notesu w języku Python
+### <a name="deploy-a-python-notebook"></a>Wdrażanie notesu języka Python
 
-Poniższy fragment kodu definiuje [wdrożenie](https://docs.microsoft.com/azure/devops/pipelines/process/deployment-jobs?view=azure-devops) potoku platformy Azure, które kopiuje Notes w języku Python do klastra datakostki:
+Poniższy fragment kodu definiuje [wdrożenie](https://docs.microsoft.com/azure/devops/pipelines/process/deployment-jobs?view=azure-devops) potoku platformy Azure, które kopiuje notes języka Python do klastra Databricks:
 
 ```yaml
 - stage: 'Deploy_to_QA'
@@ -230,12 +230,12 @@ Poniższy fragment kodu definiuje [wdrożenie](https://docs.microsoft.com/azure/
               displayName: 'Deploy (copy) data processing notebook to the Databricks cluster'       
 ```            
 
-Artefakty utworzone przez CI są automatycznie kopiowane do agenta wdrażania i są dostępne w folderze ***$ (Pipeline. Workspace)*** . W takim przypadku zadanie wdrażania odwołuje się do artefaktu ***"di-Notess"*** zawierającego Notes języka Python. To [wdrożenie](https://docs.microsoft.com/azure/devops/pipelines/process/deployment-jobs?view=azure-devops) używa [rozszerzenia Azure DevOps](https://marketplace.visualstudio.com/items?itemName=riserrad.azdo-databricks) w celu skopiowania plików notesu do obszaru roboczego datakosteks.
-Etap ***Deploy_to_QA*** zawiera odwołanie do grupy zmiennych ***DevOps-ds-pytania-VG*** zdefiniowanej w projekcie DevOps platformy Azure. Kroki w tym etapie odwołują się do zmiennych z tej grupy zmiennych (na przykład $ (DATABRICKS_URL), $ (DATABRICKS_TOKEN)). Pomysłem jest to, że kolejny etap (na przykład ***Deploy_to_UAT***) będzie działać z tymi samymi nazwami zmiennych zdefiniowanymi w jego własnej grupie zmiennych o zakresie przeprowadzających.
+Artefakty produkowane przez pw. ***$(Pipeline.Workspace)*** W takim przypadku zadanie wdrażania odnosi się do artefaktu ***di-notesów*** zawierającego notes języka Python. To [wdrożenie](https://docs.microsoft.com/azure/devops/pipelines/process/deployment-jobs?view=azure-devops) używa [rozszerzenia Databricks Azure DevOps](https://marketplace.visualstudio.com/items?itemName=riserrad.azdo-databricks) do kopiowania plików notesu do obszaru roboczego Databricks.
+Etap ***Deploy_to_QA*** zawiera odwołanie do ***grupy zmiennych devops-ds-qa-vg*** zdefiniowanej w projekcie Azure DevOps. Kroki na tym etapie odnoszą się do zmiennych z tej grupy zmiennych (na przykład $(DATABRICKS_URL), $(DATABRICKS_TOKEN)). Chodzi o to, że następny etap (na przykład ***Deploy_to_UAT***) będzie działać z tymi samymi nazwami zmiennych zdefiniowanymi we własnej grupie zmiennych o zakresie UAT.
 
-### <a name="deploy-an-azure-data-factory-pipeline"></a>Wdróż potok Azure Data Factory
+### <a name="deploy-an-azure-data-factory-pipeline"></a>Wdrażanie potoku usługi Azure Data Factory
 
-Artefaktem do wdrożenia Azure Data Factory jest szablon Azure Resource Manager. W związku z tym zostanie on wdrożony przy użyciu zadania ***wdrażania grupy zasobów platformy Azure*** , jak pokazano w poniższym fragmencie kodu:
+Artefakt, który można wdrożyć dla usługi Azure Data Factory, to szablon usługi Azure Resource Manager. W związku z tym zostanie wdrożony za pomocą zadania ***wdrażania grupy zasobów platformy Azure,*** jak pokazano w następującym urywek:
 
 ```yaml
   - deployment: "Deploy_to_ADF"
@@ -256,11 +256,11 @@ Artefaktem do wdrożenia Azure Data Factory jest szablon Azure Resource Manager.
                 csmParametersFile: '$(Pipeline.Workspace)/adf-pipelines/ARMTemplateParametersForFactory.json'
                 overrideParameters: -data-ingestion-pipeline_properties_variables_data_file_name_defaultValue "$(DATA_FILE_NAME)"
 ```
-Wartość parametru Data filename pochodzi ze zmiennej $ (DATA_FILE_NAME) zdefiniowanej w grupie zmiennych etapów kontroli jakości. Podobnie wszystkie parametry zdefiniowane w ***ARMTemplateForFactory. JSON*** mogą zostać zastąpione. Jeśli tak nie jest, są używane wartości domyślne.
+Wartość parametru data filename pochodzi ze zmiennej $(DATA_FILE_NAME) zdefiniowanej w grupie zmiennych etapowych kontroli jakości. Podobnie wszystkie parametry zdefiniowane w ***ARMTemplateForFactory.json*** mogą zostać zastąpione. Jeśli tak nie jest, używane są wartości domyślne.
 
 ### <a name="run-the-pipeline-and-check-the-data-ingestion-result"></a>Uruchamianie potoku i sprawdzanie wyniku pozyskiwania danych
 
-Następnym krokiem jest upewnienie się, że wdrożone rozwiązanie działa. Poniższa Definicja zadania uruchamia potok Azure Data Factory za pomocą [skryptu programu PowerShell](https://github.com/microsoft/DataOps/tree/master/adf/utils) i wykonuje Notes w języku Python w klastrze Azure Databricks. Notes sprawdza, czy dane zostały pozyskane prawidłowo, i sprawdza poprawność pliku danych wynikowych o nazwie $ (bin_FILE_NAME).
+Następnym krokiem jest upewnienie się, że wdrożone rozwiązanie działa. Następująca definicja zadania uruchamia potok usługi Azure Data Factory ze [skryptem programu PowerShell](https://github.com/microsoft/DataOps/tree/master/adf/utils) i wykonuje notes języka Python w klastrze usługi Azure Databricks. Notes sprawdza, czy dane zostały poprawnie pożyczone i sprawdza poprawność pliku danych wynikowego o nazwie $(bin_FILE_NAME).
 
 ```yaml
   - job: "Integration_test_job"
@@ -301,19 +301,19 @@ Następnym krokiem jest upewnienie się, że wdrożone rozwiązanie działa. Pon
       displayName: 'Wait until the testing is done'
 ```
 
-Końcowe zadanie w zadaniu sprawdza wynik wykonania notesu. Jeśli zwróci błąd, ustawia stan wykonywania potoku na niepowodzenie.
+Ostatnie zadanie w zadaniu sprawdza wynik wykonania notesu. Jeśli zwraca błąd, ustawia stan wykonania potoku nie powiodło się.
 
-## <a name="putting-pieces-together"></a>Umieszczanie fragmentów
+## <a name="putting-pieces-together"></a>Łączenie elementów
 
-Wynikiem tego artykułu jest potok platformy Azure ciągłej integracji i ciągłego wdrażania, który składa się z następujących etapów:
+Wynikiem tego artykułu jest ci/CD azure potoku, który składa się z następujących etapów:
 * CI
-* Wdróż w usłudze pytań i odpowiedzi
-    * Wdróż w usłudze datakostki + Wdróż w usłudze ADF
+* Wdrażanie w celu kontroli jakości
+    * Wdrażanie w programie Databricks + Wdrażanie w ujmiju ADF
     * Test integracji
 
-Zawiera kilka etapów ***wdrażania*** równych liczbie środowisk docelowych. Każdy etap ***wdrażania*** zawiera dwa [wdrożenia](https://docs.microsoft.com/azure/devops/pipelines/process/deployment-jobs?view=azure-devops) , które są uruchamiane równolegle, a [zadanie](https://docs.microsoft.com/azure/devops/pipelines/process/phases?view=azure-devops&tabs=yaml) uruchamiane po wdrożeniach w celu przetestowania rozwiązania w środowisku.
+Zawiera szereg etapów ***wdrażania*** równych liczbie posiadanych środowisk docelowych. Każdy etap ***wdrażania*** zawiera dwa wdrożenia, które są [uruchamiane](https://docs.microsoft.com/azure/devops/pipelines/process/deployment-jobs?view=azure-devops) równolegle i [zadanie,](https://docs.microsoft.com/azure/devops/pipelines/process/phases?view=azure-devops&tabs=yaml) które jest uruchamiane po wdrożeniach w celu przetestowania rozwiązania w środowisku.
 
-Przykładowa implementacja potoku jest przedłożono w następującym fragmencie kodu ***YAML*** :
+Przykładowa implementacja potoku jest montowana w następującym fragmentie ***kodu yaml:***
 
 ```yaml
 variables:
@@ -450,6 +450,6 @@ stages:
 
 ## <a name="next-steps"></a>Następne kroki
 
-* [Kontrola źródła w Azure Data Factory](https://docs.microsoft.com/azure/data-factory/source-control)
-* [Ciągła integracja i dostarczanie w Azure Data Factory](https://docs.microsoft.com/azure/data-factory/continuous-integration-deployment)
-* [DevOps Azure Databricks](https://marketplace.visualstudio.com/items?itemName=riserrad.azdo-databricks)
+* [Kontrola źródła w usłudze Azure Data Factory](https://docs.microsoft.com/azure/data-factory/source-control)
+* [Ciągła integracja i dostarczanie w fabryce danych platformy Azure](https://docs.microsoft.com/azure/data-factory/continuous-integration-deployment)
+* [DevOps for Azure Databricks](https://marketplace.visualstudio.com/items?itemName=riserrad.azdo-databricks)

@@ -1,38 +1,37 @@
 ---
-title: Tworzenie & Query Azure Data Lake Analytics — interfejs wiersza polecenia platformy Azure
-description: Dowiedz się, jak utworzyć konto Azure Data Lake Analytics i przesłać zadanie U-SQL przy użyciu interfejsu wiersza polecenia platformy Azure.
+title: Tworzenie & kwerendy usługi Azure Data Lake Analytics — narzędzie interfejsu wiersza polecenia platformy Azure
+description: Dowiedz się, jak utworzyć konto usługi Azure Data Lake Analytics za pomocą interfejsu wiersza polecenia platformy Azure i przesłać zadanie U-SQL.
 ms.service: data-lake-analytics
 author: saveenr
 ms.author: saveenr
 ms.reviewer: jasonwhowell
 ms.topic: conceptual
 ms.date: 06/18/2017
-ms.openlocfilehash: c9781165affb1755e73919931d8d158ae9b535ac
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: d9fc9bee98391f7272a417324b9c3a540b6adbe6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75438780"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79474513"
 ---
 # <a name="get-started-with-azure-data-lake-analytics-using-azure-cli"></a>Rozpoczynanie pracy z usługą Azure Data Lake Analytics przy użyciu interfejsu wiersza polecenia platformy Azure
 [!INCLUDE [get-started-selector](../../includes/data-lake-analytics-selector-get-started.md)]
 
-W tym artykule opisano sposób używania interfejsu wiersza polecenia platformy Azure do tworzenia kont Azure Data Lake Analytics, przesyłania zadań USQL i wykazów. Zadanie odczytuje zawartość pliku z wartościami rozdzielanymi tabulatorami (TSV) i konwertuje je do pliku z wartościami rozdzielanymi przecinkami (CSV). 
+W tym artykule opisano, jak używać interfejsu wiersza polecenia interfejsu wiersza interfejsu wiersza interfejsu wiersza platformy Azure do tworzenia kont usługi Azure Data Lake Analytics, przesyłania zadań USQL i katalogów. Zadanie odczytuje zawartość pliku z wartościami rozdzielanymi tabulatorami (TSV) i konwertuje je do pliku z wartościami rozdzielanymi przecinkami (CSV). 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 Przed rozpoczęciem musisz mieć następujące elementy:
 
 * **Subskrypcja platformy Azure**. Zobacz temat [Uzyskiwanie bezpłatnej wersji próbnej platformy Azure](https://azure.microsoft.com/pricing/free-trial/).
-* Ten artykuł wymaga uruchomienia interfejsu wiersza polecenia platformy Azure w wersji 2,0 lub nowszej. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure]( /cli/azure/install-azure-cli). 
+* Ten artykuł wymaga, aby użytkownik był uruchomiony w wersji 2.0 lub nowszej platformy Azure. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure]( /cli/azure/install-azure-cli). 
 
 
 
-## <a name="log-in-to-azure"></a>Zaloguj się do platformy Azure.
+## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
 
 Aby zalogować się do subskrypcji platformy Azure:
 
-```
-azurecli
+```azurecli
 az login
 ```
 
@@ -42,7 +41,7 @@ Po zalogowaniu polecenie logowania spowoduje wyświetlenie listy subskrypcji.
 
 Aby użyć określonej subskrypcji:
 
-```
+```azurecli
 az account set --subscription <subscription id>
 ```
 
@@ -53,23 +52,23 @@ Aby można było uruchomić jakiekolwiek zadanie, musisz mieć konto usługi Dat
 
 Aby wyświetlić listę istniejących grup zasobów w ramach subskrypcji:
 
-```
+```azurecli
 az group list
 ```
 
 Aby utworzyć nową grupę zasobów:
 
-```
+```azurecli
 az group create --name "<Resource Group Name>" --location "<Azure Location>"
 ```
 
-* **Nazwa konta usługi Data Lake Analytics**. Każde konto usługi Data Lake Analytics ma nazwę.
+* **Data Lake Analytics nazwa konta**. Każde konto usługi Data Lake Analytics ma nazwę.
 * **Lokalizacja**. Użyj centrum danych platformy Azure, które obsługuje usługę Data Lake Analytics.
-* **Domyślne konto usługi Data Lake Store**: każde konto usługi Data Lake Analytics ma domyślne konto usługi Data Lake Store.
+* **Domyślne konto w sklepie Data Lake Store:** każde konto usługi Data Lake Analytics ma domyślne konto w sklepie Data Lake Store.
 
 Aby wyświetlić istniejące konto usługi Data Lake Store:
 
-```
+```azurecli
 az dls account list
 ```
 
@@ -81,13 +80,13 @@ az dls account create --account "<Data Lake Store Account Name>" --resource-grou
 
 Użyj następującej składni, aby utworzyć konto usługi Data Lake Analytics:
 
-```
+```azurecli
 az dla account create --account "<Data Lake Analytics Account Name>" --resource-group "<Resource Group Name>" --location "<Azure location>" --default-data-lake-store "<Default Data Lake Store Account Name>"
 ```
 
 Po utworzeniu konta można użyć następujących poleceń w celu wyświetlenia listy kont i szczegółów konta:
 
-```
+```azurecli
 az dla account list
 az dla account show --account "<Data Lake Analytics Account Name>"            
 ```
@@ -97,9 +96,9 @@ W ramach tego samouczka przetworzysz wybrane dzienniki wyszukiwania.  Dziennik w
 
 Witryna Azure Portal udostępnia interfejs użytkownika umożliwiający skopiowanie przykładowych plików danych na domyślne konto usługi Data Lake Store. Pliki te obejmują również dziennik wyszukiwania. Zobacz temat [Przygotowanie danych źródłowych](data-lake-analytics-get-started-portal.md), aby przekazać dane na domyślne konto usługi Data Lake Store.
 
-Aby przekazać pliki przy użyciu interfejsu wiersza polecenia platformy Azure, użyj następujących poleceń:
+Aby przekazać pliki przy użyciu interfejsu wiersza polecenia platformy Azure, należy użyć następujących poleceń:
 
-```
+```azurecli
 az dls fs upload --account "<Data Lake Store Account Name>" --source-path "<Source File Path>" --destination-path "<Destination File Path>"
 az dls fs list --account "<Data Lake Store Account Name>" --path "<Path>"
 ```
@@ -126,7 +125,7 @@ OUTPUT @a
     USING Outputters.Csv();
 ```
 
-Ten skrypt U-SQL odczytuje źródłowy plik danych przy użyciu ekstraktora **Extractors.Tsv()** , a następnie tworzy plik csv przy użyciu ekstraktora **Outputters.Csv()** .
+Ten skrypt U-SQL odczytuje źródłowy plik danych przy użyciu ekstraktora **Extractors.Tsv()**, a następnie tworzy plik csv przy użyciu ekstraktora **Outputters.Csv()**.
 
 Nie należy modyfikować tych dwóch ścieżek, jeśli plik źródłowy nie został skopiowany do innej lokalizacji.  Jeśli folder wyjściowy nie istnieje, usługa Data Lake Analytics go utworzy.
 
@@ -151,27 +150,26 @@ wasb://<BlobContainerName>@<StorageAccountName>.blob.core.windows.net/Samples/Da
 
 Użyj następującej składni, aby przesłać zadanie.
 
-```
+```azurecli
 az dla job submit --account "<Data Lake Analytics Account Name>" --job-name "<Job Name>" --script "<Script Path and Name>"
 ```
 
 Przykład:
 
-```
+```azurecli
 az dla job submit --account "myadlaaccount" --job-name "myadlajob" --script @"C:\DLA\myscript.txt"
 ```
 
 **Aby wyświetlić listę zadań i szczegóły zadania**
 
-```
-azurecli
+```azurecli
 az dla job list --account "<Data Lake Analytics Account Name>"
 az dla job show --account "<Data Lake Analytics Account Name>" --job-identity "<Job Id>"
 ```
 
 **Aby anulować zadania**
 
-```
+```azurecli
 az dla job cancel --account "<Data Lake Analytics Account Name>" --job-identity "<Job Id>"
 ```
 
@@ -179,7 +177,7 @@ az dla job cancel --account "<Data Lake Analytics Account Name>" --job-identity 
 
 Po zakończeniu zadania można użyć następujących poleceń, aby wyświetlić pliki wyjściowe i pobrać pliki:
 
-```
+```azurecli
 az dls fs list --account "<Data Lake Store Account Name>" --source-path "/Output" --destination-path "<Destination>"
 az dls fs preview --account "<Data Lake Store Account Name>" --path "/Output/SearchLog-from-Data-Lake.csv"
 az dls fs preview --account "<Data Lake Store Account Name>" --path "/Output/SearchLog-from-Data-Lake.csv" --length 128 --offset 0
@@ -188,12 +186,12 @@ az dls fs download --account "<Data Lake Store Account Name>" --source-path "/Ou
 
 Przykład:
 
-```
+```azurecli
 az dls fs download --account "myadlsaccount" --source-path "/Output/SearchLog-from-Data-Lake.csv" --destination-path "C:\DLA\myfile.csv"
 ```
 
 ## <a name="next-steps"></a>Następne kroki
 
-* Aby wyświetlić Data Lake Analytics dokument referencyjny interfejsu wiersza polecenia platformy Azure, zobacz [Data Lake Analytics](/cli/azure/dla).
-* Aby wyświetlić Data Lake Store dokument referencyjny interfejsu wiersza polecenia platformy Azure, zobacz [Data Lake Store](/cli/azure/dls).
+* Aby wyświetlić dokument referencyjny interfejsu wiersza polecenia usługi Data Lake Analytics dotyczący interfejsu wiersza polecenia platformy Azure, zobacz [Data Lake Analytics](/cli/azure/dla).
+* Aby wyświetlić dokument referencyjny interfejsu WIERSZA POLECENIA usługi Azure Store dla usług, zobacz [Magazyn danych Lake](/cli/azure/dls).
 * Aby uzyskać informacje na temat bardziej złożonego zapytania, zobacz temat [Analizowanie dzienników witryn sieci Web przy użyciu usługi Azure Data Lake Analytics](data-lake-analytics-analyze-weblogs.md).
