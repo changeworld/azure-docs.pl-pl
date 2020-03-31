@@ -1,66 +1,66 @@
 ---
-title: Użyj kanału informacyjnego zmiany szacowania Azure Cosmos DB
-description: Dowiedz się, jak za pomocą szacowaniania zmian przeanalizować postęp procesora źródła zmian
+title: Użyj estymatora kanału informacyjnego zmian — Usługa Azure Cosmos DB
+description: Dowiedz się, jak za pomocą estymatora pliku danych zmian analizować postęp procesora pliku danych zmian
 author: ealsur
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/15/2019
 ms.author: maquaran
-ms.openlocfilehash: 8bd024fae7496db6c9cb6410df26975fde1984f7
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 0023f68400b36b9abd3b9d4a789895e79f67aa03
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77585292"
 ---
-# <a name="use-the-change-feed-estimator"></a>Korzystanie ze źródła zmian szacowania
+# <a name="use-the-change-feed-estimator"></a>Użyj estymatora źródła danych zmian
 
-W tym artykule opisano, jak można monitorować postęp wystąpień [procesora źródła zmian](./change-feed-processor.md) podczas odczytywania źródła zmian.
+W tym artykule opisano, jak można monitorować postęp wystąpień [procesora pliku danych o zmianach](./change-feed-processor.md) podczas czytania pliku danych o zmianach.
 
-## <a name="why-is-monitoring-progress-important"></a>Dlaczego monitorowanie postępu jest ważne?
+## <a name="why-is-monitoring-progress-important"></a>Dlaczego monitorowanie postępów jest ważne?
 
-Procesor kanału informacyjnego zmian działa jako wskaźnik, który przechodzi do przodu w [kanale informacyjnym zmiany](./change-feed.md) i dostarcza zmiany w implementacji delegata. 
+Procesor pliku danych zmian działa jako wskaźnik, który przesuwa się do przodu w [pliku danych o zmianach](./change-feed.md) i dostarcza zmiany do implementacji delegata. 
 
-Wdrożenie procesora kanału informacyjnego zmian może przetwarzać zmiany z określoną szybkością na podstawie dostępnych zasobów, takich jak procesor CPU, pamięć, Sieć i tak dalej.
+Wdrożenie procesora pliku danych zmian może przetwarzać zmiany w określonym tempie na podstawie dostępnych zasobów, takich jak procesor, pamięć, sieć i tak dalej.
 
-Jeśli ta częstotliwość jest mniejsza niż szybkość, z jaką zmiany są wykonywane w kontenerze usługi Azure Cosmos, procesor rozpocznie się w stosunku do opóźnienia.
+Jeśli ta szybkość jest wolniejsza niż szybkość, z jaką zmiany się w kontenerze usługi Azure Cosmos, procesor zacznie pozostawać w tyle.
 
-Określenie tego scenariusza pomaga zrozumieć, czy konieczne jest skalowanie wdrożenia procesora kanału informacyjnego zmian.
+Zidentyfikowanie tego scenariusza pomaga zrozumieć, czy musimy skalować nasze wdrożenie procesora pliku danych zmian.
 
-## <a name="implement-the-change-feed-estimator"></a>Zaimplementuj szacowania źródła zmian
+## <a name="implement-the-change-feed-estimator"></a>Wdrożenie estymatora źródła danych zmian
 
-Podobnie jak w przypadku [procesora kanału informacyjnego zmiany](./change-feed-processor.md), szacowania kanału informacyjnego działa jako model wypychania. Szacowania będzie mierzyć różnicę między ostatnim przetworzonym elementem (zdefiniowanym przez stan kontenera dzierżaw) i ostatnią zmianą w kontenerze i wypchnięciem tej wartości do delegata. Interwał, w którym jest wykonywana pomiar, można również dostosować przy użyciu wartości domyślnej wynoszącej 5 sekund.
+Podobnie jak [procesor podawania zmian,](./change-feed-processor.md)estymator kanału zmian działa jako model wypychania. Estymator zmierzy różnicę między ostatnim przetworzonym elementem (zdefiniowanym przez stan kontenera dzierżawy) a ostatnią zmianą w kontenerze i wypchnie tę wartość do pełnomocnika. Interwał, w którym pomiar jest pobierany, można również dostosować z domyślną wartością 5 sekund.
 
-Przykładowo, jeśli procesor źródła zmian został zdefiniowany w następujący sposób:
+Na przykład, jeśli procesor pliku danych zmian jest zdefiniowany w następujący sposób:
 
-:::code language="csharp" source="~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed/Program.cs" id="StartProcessorEstimator":::
+[!code-csharp[Main](~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed/Program.cs?name=StartProcessorEstimator)]
 
-Poprawna Metoda inicjowania szacowania do mierzenia tego procesora będzie używana `GetChangeFeedEstimatorBuilder`, takich jak:
+Prawidłowy sposób inicjowania estymatora do `GetChangeFeedEstimatorBuilder` pomiaru, że procesor będzie używał tak:
 
-:::code language="csharp" source="~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed/Program.cs" id="StartEstimator":::
+[!code-csharp[Main](~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed/Program.cs?name=StartEstimator)]
 
-Gdzie zarówno procesor, jak i szacowania mają takie same `leaseContainer` i tę samą nazwę.
+W przypadku gdy zarówno procesor, jak `leaseContainer` i estymator mają tę samą nazwę.
 
-Pozostałe dwa parametry są delegatem, który będzie zawierać numer, który reprezentuje liczbę **oczekujących zmian, które mają zostać odczytane** przez procesor, oraz przedział czasu, w którym ma zostać wykonana ta miara.
+Pozostałe dwa parametry to delegat, który otrzyma liczbę reprezentującą **liczbę oczekujących na odczyt zmian** przez procesor i przedział czasu, w którym ma zostać wykonany ten pomiar.
 
-Przykładem delegata, który otrzymuje oszacowanie, jest:
+Przykładem delegata, który odbiera oszacowanie jest:
 
-:::code language="csharp" source="~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed/Program.cs" id="EstimationDelegate":::
+[!code-csharp[Main](~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed/Program.cs?name=EstimationDelegate)]
 
-Można wysłać to oszacowanie do rozwiązania monitorowania i użyć go do zrozumienia, jak postęp zachowuje się wraz z upływem czasu.
+Możesz wysłać tę oszacowanie do rozwiązania monitorowania i użyć go, aby zrozumieć, jak postępy zachowują się w czasie.
 
 > [!NOTE]
-> Nie trzeba wdrażać szacowania źródła zmian w ramach procesora kanału informacyjnego zmian ani nie jest częścią tego samego projektu. Może być niezależna i działać w zupełnie innym wystąpieniu. Wystarczy użyć tej samej konfiguracji nazwy i dzierżawy.
+> Estymator kanału informacyjnego zmian nie musi być wdrażany jako część procesora pliku danych zmian ani być częścią tego samego projektu. Może być niezależny i działać w zupełnie innym wystąpieniu. Po prostu musi używać tej samej nazwy i konfiguracji dzierżawy.
 
-## <a name="additional-resources"></a>Dodatkowe zasoby
+## <a name="additional-resources"></a>Zasoby dodatkowe
 
-* [Zestaw SDK Azure Cosmos DB](sql-api-sdk-dotnet.md)
-* [Przykłady użycia w witrynie GitHub](https://github.com/Azure/azure-cosmos-dotnet-v3/tree/master/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed)
-* [Dodatkowe przykłady w witrynie GitHub](https://github.com/Azure-Samples/cosmos-dotnet-change-feed-processor)
+* [Azure Cosmos DB SDK](sql-api-sdk-dotnet.md)
+* [Przykłady użycia w usłudze GitHub](https://github.com/Azure/azure-cosmos-dotnet-v3/tree/master/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed)
+* [Dodatkowe przykłady w usłudze GitHub](https://github.com/Azure-Samples/cosmos-dotnet-change-feed-processor)
 
 ## <a name="next-steps"></a>Następne kroki
 
-Teraz można dowiedzieć się więcej o procesorze źródła zmian w następujących artykułach:
+Teraz możesz dowiedzieć się więcej o procesorze pliku danych zmian w następujących artykułach:
 
-* [Omówienie procesora kanału informacyjnego zmiany](change-feed-processor.md)
-* [Czas rozpoczęcia procesora kanału informacyjnego](how-to-configure-change-feed-start-time.md)
+* [Omówienie procesora pliku danych zmian](change-feed-processor.md)
+* [Czas rozpoczęcia procesora zestawienia zmian](how-to-configure-change-feed-start-time.md)

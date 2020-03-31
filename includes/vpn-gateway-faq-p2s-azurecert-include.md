@@ -9,27 +9,27 @@ ms.date: 08/14/2019
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: f322803d3484b4ec2d5449e19d67d75b35d6d92f
-ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "75751685"
 ---
 [!INCLUDE [P2S FAQ All](vpn-gateway-faq-p2s-all-include.md)]
 
-### <a name="what-should-i-do-if-im-getting-a-certificate-mismatch-when-connecting-using-certificate-authentication"></a>Co należy zrobić, jeśli podczas nawiązywania połączenia przy użyciu uwierzytelniania certyfikatu występuje niezgodność certyfikatu?
+### <a name="what-should-i-do-if-im-getting-a-certificate-mismatch-when-connecting-using-certificate-authentication"></a>Co należy zrobić, jeśli podczas nawiązywania połączenia przy użyciu uwierzytelniania certyfikatów ostępuje niedopasowanie certyfikatów?
 
-Usuń zaznaczenie pola wyboru **"Weryfikuj tożsamość serwera, sprawdzając certyfikat"** lub **Dodaj nazwę FQDN serwera wraz z certyfikatem** podczas ręcznego tworzenia profilu. Można to zrobić, uruchamiając polecenie **Rasphone** z wiersza polecenia i wybierając profil z listy rozwijanej.
+Odznacz **opcję "Sprawdź tożsamość serwera, sprawdzając certyfikat"** lub **dodaj numer FQDN serwera wraz z certyfikatem** podczas ręcznego tworzenia profilu. Można to zrobić, uruchamiając **rasphone** z wiersza polecenia i wybierając profil z listy rozwijanej.
 
-Pomijanie sprawdzania poprawności tożsamości serwera nie jest zalecane, ale z uwierzytelnianiem przy użyciu certyfikatu platformy Azure, ten sam certyfikat jest używany do sprawdzania poprawności serwera w protokole tunelowania sieci VPN (IKEv2/SSTP) i protokół EAP. Ponieważ certyfikat serwera i nazwa FQDN są już weryfikowane przez protokół tunelowania sieci VPN, nadmiarowe sprawdzenie poprawności tego samego ponownie w protokole EAP.
+Pomijanie sprawdzania poprawności tożsamości serwera nie jest ogólnie zalecane, ale w przypadku uwierzytelniania certyfikatu platformy Azure ten sam certyfikat jest używany do sprawdzania poprawności serwera w protokole tunelowania sieci VPN (IKEv2/SSTP) i protokole EAP. Ponieważ certyfikat serwera i nazwa FQDN są już weryfikowane przez protokół tunelowania sieci VPN, ponowne sprawdzenie poprawności tego samego w eap jest zbędne.
 
-![punkt-lokacja](./media/vpn-gateway-faq-p2s-all-include/servercert.png "Certyfikat serwera")
+![punkt do lokacji](./media/vpn-gateway-faq-p2s-all-include/servercert.png "Certyfikat serwera")
 
-### <a name="can-i-use-my-own-internal-pki-root-ca-to-generate-certificates-for-point-to-site-connectivity"></a>Czy można użyć własnego głównego urzędu certyfikacji PKI do generowania certyfikatów dla połączeń punkt-lokacja?
+### <a name="can-i-use-my-own-internal-pki-root-ca-to-generate-certificates-for-point-to-site-connectivity"></a>Czy mogę używać własnego wewnętrznego głównego urzędu certyfikacji infrastruktury kluczy publicznych do generowania certyfikatów dla łączności typu punkt-lokacja?
 
 Tak. Wcześniej można było używać tylko certyfikatów głównych z podpisem własnym. Nadal można przesłać 20 certyfikatów głównych.
 
-### <a name="can-i-use-certificates-from-azure-key-vault"></a>Czy mogę używać certyfikatów z Azure Key Vault?
+### <a name="can-i-use-certificates-from-azure-key-vault"></a>Czy mogę używać certyfikatów z usługi Azure Key Vault?
 
 Nie.
 
@@ -37,7 +37,7 @@ Nie.
 
 Możesz użyć rozwiązania infrastruktury kluczy publicznych przedsiębiorstwa (wewnętrznej infrastruktury kluczy publicznych), programu Azure PowerShell, narzędzia MakeCert lub protokołu OpenSSL.
 
-### <a name="certsettings"></a>Czy są dostępne instrukcje dotyczące ustawień i parametrów certyfikatów?
+### <a name="are-there-instructions-for-certificate-settings-and-parameters"></a><a name="certsettings"></a>Czy są dostępne instrukcje dotyczące ustawień i parametrów certyfikatów?
 
 * **Wewnętrzne rozwiązanie infrastruktury kluczy publicznych/rozwiązanie infrastruktury kluczy publicznych w przedsiębiorstwie:** zobacz procedurę [generowania certyfikatów](../articles/vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md#generatecert).
 

@@ -1,240 +1,240 @@
 ---
-title: Grupuj i uruchamiaj akcje według zakresu
-description: Tworzenie akcji w zakresie, które są uruchamiane na podstawie stanu grupy w Azure Logic Apps
+title: Grupowanie i uruchamianie działań według zakresu
+description: Tworzenie akcji o określonym zakresie, które są uruchamiane na podstawie stanu grupy w usłudze Azure Logic Apps
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.date: 10/03/2018
 ms.topic: article
 ms.openlocfilehash: b84db69f79b1611347a4c55d929e5426141e7ac6
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74791491"
 ---
-# <a name="run-actions-based-on-group-status-by-using-scopes-in-azure-logic-apps"></a>Uruchamianie akcji na podstawie stanu grupy przy użyciu zakresów w Azure Logic Apps
+# <a name="run-actions-based-on-group-status-by-using-scopes-in-azure-logic-apps"></a>Uruchamianie akcji na podstawie stanu grupy przy użyciu zakresów w usłudze Azure Logic Apps
 
-Aby uruchamiać akcje dopiero po pomyślnym lub niepowodzeniu innej grupy akcji, należy zgrupować te akcje w *zakresie*. Ta struktura jest przydatna, gdy chcesz organizować akcje jako grupę logiczną, oszacować stan grupy i wykonywać akcje, które są oparte na stanie zakresu. Gdy wszystkie akcje w zakresie zakończą działanie, zakres pobiera również własny stan. Można na przykład użyć zakresów, gdy chcesz zaimplementować [obsługę wyjątków i błędów](../logic-apps/logic-apps-exception-handling.md#scopes). 
+Aby uruchamiać akcje tylko wtedy, gdy inna grupa akcji zakończy się powodzeniem lub niepowodzeniem, pogrupuj te akcje wewnątrz *zakresu*. Ta struktura jest przydatna, gdy chcesz zorganizować akcje jako grupę logiczną, ocenić stan tej grupy i wykonać akcje, które są oparte na stanie zakresu. Po zakończeniu wszystkich akcji w zakresie, zakres również pobiera swój własny stan. Na przykład można użyć zakresów, gdy chcesz zaimplementować [obsługę wyjątków i błędów](../logic-apps/logic-apps-exception-handling.md#scopes). 
 
-Aby sprawdzić stan zakresu, można użyć tych samych kryteriów, które są używane do określania stanu uruchomienia aplikacji logiki, takich jak "powodzenie", "Niepowodzenie", "anulowane" i tak dalej. Domyślnie, gdy wszystkie akcje tego zakresu zakończyły się powodzeniem, stan zakresu jest oznaczony jako "powodzenie". Ale jeśli jakakolwiek akcja w zakresie nie powiedzie się lub zostanie anulowana, stan zakresu jest oznaczony jako "Niepowodzenie". Aby uzyskać ograniczenia dotyczące zakresów, zobacz [limity i konfiguracja](../logic-apps/logic-apps-limits-and-config.md). 
+Aby sprawdzić stan zakresu, można użyć tych samych kryteriów, których używasz do określenia stanu uruchamiania aplikacji logiki, takich jak "Powodem", "Nie powiodło się", "Anulowane" i tak dalej. Domyślnie, gdy wszystkie działania zakresu zakończy się pomyślnie, stan zakresu jest oznaczony jako "Powodem". Ale gdy jakakolwiek akcja w zakresie zakończy się niepowodzeniem lub zostanie anulowana, stan zakresu jest oznaczony jako "Nie powiodło się". Aby uzyskać limity dotyczące zakresów, zobacz [Limity i config](../logic-apps/logic-apps-limits-and-config.md). 
 
-Na przykład poniżej znajduje się aplikacja logiki wysokiego poziomu, która używa zakresu do uruchamiania określonych akcji i warunku do sprawdzenia stanu zakresu. Jeśli jakiekolwiek akcje w zakresie zakończą się niepowodzeniem lub kończą się nieoczekiwanie, zakres jest oznaczony odpowiednio "Niepowodzenie" lub "przerwane", a aplikacja logiki wysyła komunikat "zakres nie powiódł się". Jeśli wszystkie akcje w zakresie zostały wykonane pomyślnie, aplikacja logiki wyśle komunikat "zakres został pomyślnie".
+Na przykład w tym miejscu jest aplikacja logiki wysokiego poziomu, który używa zakresu do uruchamiania określonych akcji i warunek, aby sprawdzić stan zakresu. Jeśli wszelkie akcje w zakresie nie powiedzie się lub zakończyć nieoczekiwanie, zakres jest oznaczony jako "Failed" lub "Aborted" odpowiednio, a aplikacja logiki wysyła komunikat "Zakres nie powiodło się". Jeśli wszystkie akcje o określonym zakresie powiedzą się, aplikacja logiki wysyła komunikat "Zakres powiódł się".
 
-![Konfigurowanie wyzwalacza "harmonogram-cykl"](./media/logic-apps-control-flow-run-steps-group-scopes/scope-high-level.png)
+![Konfigurowanie wyzwalacza "Harmonogram — cykl"](./media/logic-apps-control-flow-run-steps-group-scopes/scope-high-level.png)
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby postępować zgodnie z przykładem w tym artykule, potrzebne są następujące elementy:
+Aby postępować zgodnie z przykładem w tym artykule, potrzebujesz tych elementów:
 
 * Subskrypcja platformy Azure. Jeśli nie masz subskrypcji, [zarejestruj się w celu założenia bezpłatnego konta platformy Azure](https://azure.microsoft.com/free/). 
 
-* Konto e-mail od dowolnego dostawcy poczty e-mail obsługiwanego przez Logic Apps. W tym przykładzie używa Outlook.com. Jeśli używasz innego dostawcy, przepływ ogólny pozostaje taki sam, ale interfejs użytkownika wygląda inaczej.
+* Konto e-mail od dowolnego dostawcy poczty e-mail obsługiwane przez aplikacje logiki. W tym przykładzie użyto Outlook.com. Jeśli używasz innego dostawcy, ogólny przepływ pozostaje taki sam, ale interfejs użytkownika wygląda inaczej.
 
-* Klucz mapy usługi Bing. Aby uzyskać ten klucz, zobacz sekcję <a href="https://msdn.microsoft.com/library/ff428642.aspx" target="_blank">Pobieranie klucza usługi mapy Bing</a>.
+* Klucz mapy Bing. Aby uzyskać ten klucz, zobacz <a href="https://msdn.microsoft.com/library/ff428642.aspx" target="_blank">Pobierz klucz Mapy Bing</a>.
 
-* Podstawowa wiedza [na temat tworzenia aplikacji logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md)
+* Podstawowa wiedza na temat [tworzenia aplikacji logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 
 ## <a name="create-sample-logic-app"></a>Tworzenie przykładowej aplikacji logiki
 
-Najpierw Utwórz tę przykładową aplikację logiki, aby można było dodać zakres później:
+Najpierw utwórz tę przykładową aplikację logiki, aby dodać zakres później:
 
 ![Tworzenie przykładowej aplikacji logiki](./media/logic-apps-control-flow-run-steps-group-scopes/finished-sample-app.png)
 
-* Wyzwalacz **harmonogramu cyklicznego** , który sprawdza usługę mapy Bing w określonym interwale
-* **Mapy Bing — Pobierz akcję trasy** , która sprawdza czas podróży między dwiema lokalizacjami
-* Instrukcja warunkowa, która sprawdza, czy czas podróży przekracza określony czas podróży
+* A **Schedule - Wyzwalacz cyklu,** który sprawdza usługę Mapy Bing w określonym interwale
+* **Mapy Bing — pobierz** akcję trasy, która sprawdza czas podróży między dwiema lokalizacjami
+* Oświadczenie warunkowe, które sprawdza, czy czas podróży przekracza określony czas podróży
 * Akcja, która wysyła wiadomość e-mail, że bieżący czas podróży przekracza określony czas
 
-Aplikację logiki można zapisać w dowolnym momencie, dlatego Zapisz swoją służbę często.
+Możesz zapisać aplikację logiki w dowolnym momencie, więc często zapisuj swoją pracę.
 
-1. Zaloguj się do <a href="https://portal.azure.com" target="_blank">Azure Portal</a>, jeśli jeszcze tego nie zrobiono. Tworzenia pustej aplikacji logiki.
+1. Zaloguj się do <a href="https://portal.azure.com" target="_blank">witryny Azure portal</a>, jeśli jeszcze tego nie zrobiłeś. Tworzenia pustej aplikacji logiki.
 
-1. Dodaj wyzwalacz **harmonogram-cykl** z tymi ustawieniami: **Interval** = "1" i **częstotliwość** = "minuta"
+1. Dodaj wyzwalacz **harmonogramu - cyklu** z tymi ustawieniami: **Interwał** = "1" i **Częstotliwość** = "Minuta"
 
-   ![Konfigurowanie wyzwalacza "harmonogram-cykl"](./media/logic-apps-control-flow-run-steps-group-scopes/recurrence.png)
+   ![Konfigurowanie wyzwalacza "Harmonogram — cykl"](./media/logic-apps-control-flow-run-steps-group-scopes/recurrence.png)
 
    > [!TIP]
-   > Aby wizualnie uprościć widok i ukryć szczegóły każdej akcji w projektancie, Zwiń każdy kształt akcji w trakcie wykonywania tych kroków.
+   > Aby wizualnie uprościć widok i ukryć szczegóły każdej akcji w projektancie, zwiń kształt każdej akcji w miarę postępów w tych krokach.
 
-1. Dodaj akcję **mapy Bing — Pobierz trasę** . 
+1. Dodaj **akcję Mapy Bing — pobierz trasę.** 
 
-   1. Jeśli nie masz jeszcze połączenia z usługą mapy Bing, zostanie wyświetlony monit o utworzenie połączenia.
+   1. Jeśli nie masz jeszcze połączenia mapy Bing Maps, zostaniesz poproszony o utworzenie połączenia.
 
       | Ustawienie | Wartość | Opis |
       | ------- | ----- | ----------- |
       | **Nazwa połączenia** | BingMapsConnection | Podaj nazwę połączenia. | 
-      | **Klucz interfejsu API** | <*klucz_usługi_Mapy_Bing*> | Wprowadź uzyskany wcześniej klucz usługi Mapy Bing. | 
+      | **Klucz INTERFEJSU API** | <*twój-Bing-Mapy-klucz*> | Wprowadź uzyskany wcześniej klucz usługi Mapy Bing. | 
       ||||  
 
-   1. Skonfiguruj akcję **Pobierz trasę** , tak jak pokazano w poniższej tabeli:
+   1. Skonfiguruj akcję **Pobierz trasę,** jak pokazano w tabeli pod tym obrazem:
 
-      ![Skonfiguruj akcję "mapy Bing — Pobierz trasę"](./media/logic-apps-control-flow-run-steps-group-scopes/get-route.png) 
+      ![Konfigurowanie akcji "Mapy Bing - Pobierz trasę"](./media/logic-apps-control-flow-run-steps-group-scopes/get-route.png) 
 
       Aby uzyskać więcej informacji na temat tych parametrów, zobacz [Calculate route (Obliczanie trasy)](https://msdn.microsoft.com/library/ff701717.aspx).
 
       | Ustawienie | Wartość | Opis |
       | ------- | ----- | ----------- |
-      | **Punkt nawigacyjny 1** | <> *Start* | Wprowadź Początek trasy. | 
-      | **Punkt nawigacyjny 2** | > *końcowy* < | Wprowadź lokalizację docelową trasy. | 
-      | **Unikaj** | Brak | Wprowadź elementy, które mają być unikane na trasie, takie jak Autostrade, opłaty i tak dalej. Aby uzyskać możliwe wartości, zobacz [Obliczanie trasy](https://msdn.microsoft.com/library/ff701717.aspx). | 
-      | **Optymalizacja** | timeWithTraffic | Wybierz parametr, aby zoptymalizować trasę, na przykład odległość, czas z bieżącymi informacjami o ruchu itd. Ten przykład używa tej wartości: "timeWithTraffic" | 
-      | **Jednostka odległości** | <*według_preferencji*> | Wprowadź jednostkę odległości do obliczenia trasy. Ten przykład używa tej wartości: "mila" | 
-      | **Tryb podróży** | Jazda samochodem | Wprowadź tryb podróży dla trasy. W tym przykładzie jest stosowana ta wartość "kierowanie" | 
+      | **Punkt nawigacyjny 1** | <*Uruchomić*> | Wprowadź początek trasy. | 
+      | **Punkt nawigacyjny 2** | <*Końcu*> | Wprowadź miejsce docelowe trasy. | 
+      | **Unikaj** | Brak | Wprowadź elementy, których należy unikać na trasie, takie jak autostrady, opłaty drogowe itd. Aby uzyskać możliwe wartości, zobacz [Obliczanie trasy](https://msdn.microsoft.com/library/ff701717.aspx). | 
+      | **Optymalizacji** | timeWithTraffic | Wybierz parametr, aby zoptymalizować trasę, na przykład odległość, czas z bieżącymi informacjami o ruchu drogowym i tak dalej. W tym przykładzie użyto tej wartości: "timeWithTraffic" | 
+      | **Jednostka odległości** | <*twoje preferencje*> | Wprowadź jednostkę odległości, aby obliczyć trasę. W tym przykładzie użyto tej wartości: "Mile" | 
+      | **Tryb podróży** | Jazda samochodem | Wprowadź tryb podróży dla trasy. W tym przykładzie użyto tej wartości "Jazda" | 
       | **Transport publiczny — data i godzina** | Brak | Dotyczy tylko trybu tranzytowego. | 
       | **Typ daty tranzytu** | Brak | Dotyczy tylko trybu tranzytowego. | 
       ||||  
 
-1. [Dodaj warunek](../logic-apps/logic-apps-control-flow-conditional-statement.md) , który sprawdza, czy bieżący czas podróży z ruchem przekracza określony czas. 
+1. [Dodaj warunek,](../logic-apps/logic-apps-control-flow-conditional-statement.md) który sprawdza, czy bieżący czas podróży z ruchem przekracza określony czas. 
    W tym przykładzie wykonaj następujące kroki:
 
-   1. Zmień nazwę warunku na ten opis: **Jeśli czas ruchu jest większy niż określony czas**
+   1. Zmień nazwę warunku o ten opis: **Jeśli czas ruchu jest większy niż określony czas**
 
-   1. W kolumnie z lewej strony kliknij wewnątrz pola **Wybierz wartość** , aby wyświetlić listę zawartość dynamiczna. Z tej listy wybierz pole **ruch czasu trwania podróży** (w sekundach). 
+   1. W kolumnie po lewej stronie kliknij wewnątrz pola **Wybierz wartość,** aby wyświetlić dynamiczną listę zawartości. Z tej listy wybierz pole **Ruch czasowy podróży,** które znajduje się w sekundach. 
 
       ![Kompilowanie warunku](./media/logic-apps-control-flow-run-steps-group-scopes/build-condition.png)
 
-   1. W środkowym polu Wybierz pozycję Ten operator: **jest większe niż**
+   1. W polu środkowym wybierz ten operator: **jest większy niż**
 
-   1. W kolumnie po prawej stronie Wprowadź tę wartość porównania, która jest w sekundach i równa 10 minut: **600**
+   1. W prawej kolumnie wprowadź tę wartość porównania, która jest w sekundach i odpowiada 10 minutom: **600**
 
       Gdy wszystko będzie gotowe, warunek będzie wyglądać następująco:
 
-      ![Ukończony warunek](./media/logic-apps-control-flow-run-steps-group-scopes/finished-condition.png)
+      ![Stan gotowy](./media/logic-apps-control-flow-run-steps-group-scopes/finished-condition.png)
 
-1. W gałęzi w **przypadku wartości true** Dodaj akcję "Wyślij wiadomość e-mail" dla dostawcy poczty e-mail. 
+1. W gałęzi **Jeśli prawdziwa** dodaj akcję "Wyślij wiadomość e-mail" dla swojego dostawcy poczty e-mail. 
    Skonfiguruj tę akcję, wykonując czynności opisane w tym obrazie:
 
-   ![Dodaj akcję "Wyślij wiadomość e-mail" do gałęzi "w przypadku wartości true"](./media/logic-apps-control-flow-run-steps-group-scopes/send-email.png)
+   ![Dodaj akcję "Wyślij wiadomość e-mail" do gałęzi "Jeśli jest prawdziwa"](./media/logic-apps-control-flow-run-steps-group-scopes/send-email.png)
 
-   1. W polu **do** wprowadź swój adres e-mail na potrzeby testowania.
+   1. W polu **Do** wprowadź swój adres e-mail do celów testowych.
 
-   1. W polu **podmiot** wprowadź następujący tekst:
+   1. W polu **Temat** wprowadź ten tekst:
 
       ```Time to leave: Traffic more than 10 minutes```
 
-   1. W polu **treść** wprowadź ten tekst z końcowym miejscem: 
+   1. W polu **Treść** wprowadź ten tekst z spacją końcową: 
 
       ```Travel time:```
 
-      Gdy kursor pojawi się w polu **treść** , lista zawartości dynamicznej pozostaje otwarta, aby można było wybrać dowolne parametry, które są dostępne w tym punkcie.
+      Gdy kursor pojawia się w polu **Treść,** dynamiczna lista zawartości pozostaje otwarta, dzięki czemu można wybrać dowolne parametry, które są dostępne w tym momencie.
 
    1. Na liście zawartości dynamicznej wybierz pozycję **Wyrażenie**.
 
-   1. Znajdź i wybierz funkcję **DIV ()** . 
+   1. Znajdź i wybierz funkcję **div().** 
       Umieść kursor wewnątrz nawiasów funkcji.
 
-   1. Gdy kursor znajduje się wewnątrz nawiasów funkcji, wybierz **zawartość dynamiczną** , aby wyświetlić listę zawartości dynamicznej. 
+   1. Gdy kursor znajduje się w nawiasach funkcji, wybierz pozycję **Zawartość dynamiczna,** aby wyświetlić dynamiczną listę zawartości. 
    
-   1. W sekcji **pobieranie trasy** zaznacz pole ruch związany z ruchem **czasowym** .
+   1. W sekcji **Uzyskaj trasę** wybierz pole **Ruch czasowy.**
 
-      ![Wybierz pozycję "ruch w czasie trwania ruchu"](./media/logic-apps-control-flow-run-steps-group-scopes/send-email-2.png)
+      ![Wybierz "Ruch na czas trwania ruchu"](./media/logic-apps-control-flow-run-steps-group-scopes/send-email-2.png)
 
-   1. Po rozpoczęciu w formacie JSON pola, Dodaj **przecinek** (```,```), a następnie liczbę ```60```, aby przekonwertować wartość w polu **ruch związany z ruchem** z sekund na minuty. 
+   1. Po rozwiązaniu pola do formatu JSON```,```dodaj **przecinek** ```60``` ( ), po którym następuje liczba, aby przekonwertować wartość w **ruchu czas trwania ruchu** z sekund na minuty. 
    
       ```
       div(body('Get_route')?['travelDurationTraffic'],60)
       ```
 
-      Wyrażenie wygląda teraz tak, jak w poniższym przykładzie:
+      Wyrażenie wygląda teraz następująco:
 
-      ![Wyrażenie zakończenia](./media/logic-apps-control-flow-run-steps-group-scopes/send-email-3.png)  
+      ![Wyrażenie Zakończ](./media/logic-apps-control-flow-run-steps-group-scopes/send-email-3.png)  
 
    1. Gdy wszystko będzie gotowe, wybierz pozycję **OK**.
 
    <!-- markdownlint-disable MD038 -->
-   1. Po rozpoczęciu wyrażenia Dodaj ten tekst z wiodącym miejscem: ``` minutes```
+   1. Po zakończeniu rozpoznawania wyrażenia dodaj ten tekst z interwnianą przestrzenią:``` minutes```
   
-       Pole **treści** wygląda teraz następująco:
+       Twoje pole **Ciało** wygląda teraz następująco:
 
-       Zakończono ![pola "Body"](./media/logic-apps-control-flow-run-steps-group-scopes/send-email-4.png)
+       ![Gotowe pole "Ciało"](./media/logic-apps-control-flow-run-steps-group-scopes/send-email-4.png)
    <!-- markdownlint-enable MD038 -->
 
 1. Zapisz aplikację logiki.
 
-Następnie Dodaj zakres, aby można było grupować określone akcje i oszacować ich stan.
+Następnie dodaj zakres, aby można było grupować określone akcje i oceniać ich stan.
 
 ## <a name="add-a-scope"></a>Dodawanie zakresu
 
-1. Jeśli jeszcze tego nie zrobiono, Otwórz aplikację logiki w Projektancie aplikacji logiki. 
+1. Jeśli jeszcze tego nie zrobiłeś, otwórz aplikację logiki w logice App Designer. 
 
-1. Dodaj zakres w pożądanej lokalizacji przepływu pracy. Na przykład aby dodać zakres między istniejącymi krokami przepływu pracy aplikacji logiki, wykonaj następujące kroki: 
+1. Dodaj zakres w żądanej lokalizacji przepływu pracy. Na przykład, aby dodać zakres między istniejącymi krokami w przepływie pracy aplikacji logiki, wykonaj następujące kroki: 
 
-   1. Przesuń wskaźnik myszy nad strzałkę, w której chcesz dodać zakres. 
-   Wybierz znak **Plus** ( **+** ) > **Dodaj akcję**.
+   1. Przesuń wskaźnik myszy na strzałkę, w której chcesz dodać zakres. 
+   Wybierz **znak** plus**+**( ) > **Dodaj akcję**.
 
       ![Dodawanie zakresu](./media/logic-apps-control-flow-run-steps-group-scopes/add-scope.png)
 
-   1. W polu wyszukiwania wprowadź "Scope" jako filtr. 
-   Wybierz akcję **zakresu** .
+   1. W polu wyszukiwania wpisz "zakres" jako filtr. 
+   Wybierz akcję **Zakres.**
 
-## <a name="add-steps-to-scope"></a>Dodaj kroki do zakresu
+## <a name="add-steps-to-scope"></a>Dodawanie kroków do zakresu
 
-1. Teraz Dodaj kroki lub przeciągnij istniejące kroki, które chcesz uruchomić w zakresie. W tym przykładzie przeciągnij te akcje do zakresu:
+1. Teraz dodaj kroki lub przeciągnij istniejące kroki, które chcesz uruchomić wewnątrz zakresu. W tym przykładzie przeciągnij te akcje do zakresu:
       
    * **Pobierz trasę**
-   * **Jeśli czas ruchu przekracza określony czas**, który obejmuje gałęzie **prawdziwe** i **fałszywe**
+   * **Jeśli czas ruchu jest większy niż określony czas,** który obejmuje zarówno **prawdziwe,** jak i **fałszywe** gałęzie
 
-   Aplikacja logiki będzie teraz wyglądać następująco:
+   Aplikacja logiki wygląda teraz następująco:
 
    ![Dodano zakres](./media/logic-apps-control-flow-run-steps-group-scopes/scope-added.png)
 
-1. W obszarze Zakres Dodaj warunek, który sprawdza stan zakresu. Zmień nazwę warunku na ten opis: **Jeśli zakres nie powiódł się**
+1. W ramach zakresu dodaj warunek, który sprawdza stan zakresu. Zmień nazwę warunku z tym opisem: **Jeśli zakres nie powiódł się**
 
    ![Dodaj warunek, aby sprawdzić stan zakresu](./media/logic-apps-control-flow-run-steps-group-scopes/add-condition-check-scope-status.png)
   
-1. W warunku Dodaj te wyrażenia, które sprawdzają, czy stan zakresu jest równy "Niepowodzenie" lub "przerwane". 
+1. W warunku dodaj te wyrażenia, które sprawdzają, czy stan zakresu jest równy "Nie powiodło się" lub "Przerwane". 
 
    1. Aby dodać kolejny wiersz, wybierz pozycję **Dodaj**. 
 
-   1. W każdym wierszu kliknij wewnątrz lewej strony, aby wyświetlić listę zawartości dynamicznej. 
-   Z listy zawartość dynamiczna wybierz pozycję **wyrażenie**. W polu edycji wprowadź wyrażenie, a następnie wybierz przycisk **OK**: 
+   1. W każdym wierszu kliknij wewnątrz lewego pola, aby wyświetlić dynamiczną listę zawartości. 
+   Z dynamicznej listy zawartości wybierz pozycję **Wyrażenie**. W polu edycji wprowadź to wyrażenie, a następnie wybierz przycisk **OK**: 
    
       `result('Scope')[0]['status']`
 
       ![Dodaj wyrażenie, które sprawdza stan zakresu](./media/logic-apps-control-flow-run-steps-group-scopes/check-scope-status.png)
 
-   1. Dla obu wierszy wybierz opcję **jest równa** operatorowi. 
+   1. Dla obu wierszy wybierz **jest równa** jako operator. 
    
-   1. Dla wartości porównania w pierwszym wierszu wprowadź `Failed`. 
-   W drugim wierszu wprowadź `Aborted`. 
+   1. Dla wartości porównawczych w pierwszym `Failed`wierszu wprowadź . 
+   W drugim wierszu `Aborted`wprowadź . 
 
       Gdy wszystko będzie gotowe, warunek będzie wyglądać następująco:
 
       ![Dodaj wyrażenie, które sprawdza stan zakresu](./media/logic-apps-control-flow-run-steps-group-scopes/check-scope-status-finished.png)
 
-      Teraz ustaw właściwość `runAfter` warunku, tak aby warunek sprawdzał stan zakresu i uruchomił akcję pasującą, która została zdefiniowana w dalszych krokach.
+      Teraz ustaw `runAfter` właściwość warunku, aby warunek sprawdzał stan zakresu i uruchamia pasujące działania, które można zdefiniować w późniejszych krokach.
 
-   1. W warunku **Jeśli warunek nie powiódł się** , wybierz przycisk **wielokropka** (...), a następnie wybierz pozycję **Skonfiguruj przebieg po**.
+   1. W warunku **Jeśli zakres nie powiodło się,** wybierz przycisk **wielokropka** (...) , a następnie wybierz pozycję **Konfiguruj uruchamianie po**.
 
-      ![Skonfiguruj Właściwość "runAfter"](./media/logic-apps-control-flow-run-steps-group-scopes/configure-run-after.png)
+      ![Konfigurowanie właściwości "runAfter"](./media/logic-apps-control-flow-run-steps-group-scopes/configure-run-after.png)
 
-   1. Wybierz wszystkie te Stany zakresu: **powodzenie**, zakończone **niepowodzeniem**, **pominięto**i przekroczono **limit czasu**
+   1. Wybierz wszystkie te stany zakresu: **zakończy się pomyślnie,** **nie powiodło się,** **jest pomijany**i **ma limit czasu**
 
-      ![Wybierz Stany zakresu](./media/logic-apps-control-flow-run-steps-group-scopes/select-run-after-statuses.png)
+      ![Wybieranie stanów zakresu](./media/logic-apps-control-flow-run-steps-group-scopes/select-run-after-statuses.png)
 
    1. Po zakończeniu wybierz pozycję **Gotowe**. 
-   W tym warunku zostanie wyświetlona ikona "informacje".
+   Warunek pokazuje teraz ikonę "informacje".
 
-1. W gałęziach **if true** i **Jeśli false** Dodaj akcje, które chcesz wykonać na podstawie każdego stanu zakresu, na przykład Wyślij wiadomość e-mail lub wiadomość.
+1. W **jeśli true** i **Jeśli fałszywe** gałęzie, dodaj akcje, które chcesz wykonać na podstawie każdego stanu zakresu, na przykład wysłać wiadomość e-mail lub wiadomość.
 
-   ![Dodaj akcje do wykonania na podstawie stanu zakresu](./media/logic-apps-control-flow-run-steps-group-scopes/handle-true-false-branches.png)
+   ![Dodawanie akcji do podjęcia na podstawie stanu zakresu](./media/logic-apps-control-flow-run-steps-group-scopes/handle-true-false-branches.png)
 
 1. Zapisz aplikację logiki.
 
-Gotowa aplikacja logiki będzie teraz wyglądać następująco:
+Twoja ukończona aplikacja logiki wygląda teraz następująco:
 
-![Zakończono działanie aplikacji logiki z zakresem](./media/logic-apps-control-flow-run-steps-group-scopes/scopes-overview.png)
+![Ukończona aplikacja logiczna z zakresem](./media/logic-apps-control-flow-run-steps-group-scopes/scopes-overview.png)
 
-## <a name="test-your-work"></a>Przetestuj swoją służbę
+## <a name="test-your-work"></a>Przetestuj swoją pracę
 
-Na pasku narzędzi projektanta wybierz pozycję **Uruchom**. Jeśli wszystkie akcje w zakresie zostały wykonane pomyślnie, zostanie wyświetlony komunikat "zakres został pomyślnie". Jeśli jakiekolwiek akcje w zakresie nie powiedzie się, zostanie wyświetlony komunikat "zakres nie powiódł się". 
+Na pasku narzędzi projektanta wybierz pozycję **Uruchom**. Jeśli wszystkie akcje o określonym zakresie powiedzą się, zostanie wyświetlony komunikat "Zakres zakończył się pomyślnie". Jeśli akcje o określonym zakresie nie powiedzie się, zostanie wyświetlony komunikat "Zakres nie powiodło się". 
 
 <a name="scopes-json"></a>
 
 ## <a name="json-definition"></a>Definicja JSON
 
-Jeśli pracujesz w widoku kodu, możesz zdefiniować w zamian strukturę zakresu w definicji JSON aplikacji logiki. Na przykład Oto definicja JSON dla wyzwalacza i akcji w poprzedniej aplikacji logiki:
+Jeśli pracujesz w widoku kodu, można zdefiniować strukturę zakresu w definicji JSON aplikacji logiki zamiast. Na przykład oto definicja JSON dla wyzwalacza i akcji w poprzedniej aplikacji logiki:
 
 ``` json
 "triggers": {
@@ -386,14 +386,14 @@ Jeśli pracujesz w widoku kodu, możesz zdefiniować w zamian strukturę zakresu
 },
 ```
 
-## <a name="get-support"></a>Uzyskaj pomoc techniczną
+## <a name="get-support"></a>Uzyskiwanie pomocy technicznej
 
 * Jeśli masz pytania, odwiedź [forum usługi Azure Logic Apps](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
-* Aby przesłać funkcje i sugestie lub zagłosować na nie, odwiedź [witrynę opinii o Azure Logic Apps użytkownika](https://aka.ms/logicapps-wish).
+* Aby przesłać lub zagłosować na funkcje i sugestie, odwiedź [witrynę opinii użytkowników usługi Azure Logic Apps](https://aka.ms/logicapps-wish).
 
 ## <a name="next-steps"></a>Następne kroki
 
-* [Wykonaj kroki na podstawie warunku (instrukcje warunkowe)](../logic-apps/logic-apps-control-flow-conditional-statement.md)
-* [Wykonaj kroki na podstawie różnych wartości (przełącznik instrukcji switch)](../logic-apps/logic-apps-control-flow-switch-statement.md)
-* [Uruchom i powtórz kroki (pętle)](../logic-apps/logic-apps-control-flow-loops.md)
-* [Uruchamianie lub scalanie równoległych kroków (gałęzie)](../logic-apps/logic-apps-control-flow-branches.md)
+* [Uruchamianie kroków na podstawie warunku (instrukcje warunkowe)](../logic-apps/logic-apps-control-flow-conditional-statement.md)
+* [Uruchamianie kroków na podstawie różnych wartości (instrukcje switch)](../logic-apps/logic-apps-control-flow-switch-statement.md)
+* [Uruchamianie i powtarzanie kroków (pętli)](../logic-apps/logic-apps-control-flow-loops.md)
+* [Uruchamianie lub scalanie równoległych kroków (gałęzi)](../logic-apps/logic-apps-control-flow-branches.md)

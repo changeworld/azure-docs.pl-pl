@@ -8,10 +8,10 @@ ms.date: 06/07/2018
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: 4bd9c64e1b9219f6752172d9dc518af71ad67e70
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79268147"
 ---
 # <a name="use-an-azure-file-share-with-windows"></a>Korzystanie z udziału plików platformy Azure w systemie Windows
@@ -23,31 +23,31 @@ Z udziałów plików platformy Azure można korzystać w instalacji systemu Wind
 
 | Wersja systemu Windows        | Wersja protokołu SMB | Możliwa instalacja na maszynie wirtualnej platformy Azure | Możliwa instalacja w środowisku lokalnym |
 |------------------------|-------------|-----------------------|-----------------------|
-| Windows Server 2019 | SMB 3.0 | Yes | Yes |
-| Windows 10<sup>1</sup> | SMB 3.0 | Yes | Yes |
-| Windows Server semi-annual channel<sup>2</sup> | SMB 3.0 | Yes | Yes |
-| Windows Server 2016 | SMB 3.0 | Yes | Yes |
-| Windows 8.1 | SMB 3.0 | Yes | Yes |
-| Windows Server 2012 R2 | SMB 3.0 | Yes | Yes |
-| Windows Server 2012 | SMB 3.0 | Yes | Yes |
-| Windows 7<sup>3</sup> | SMB 2.1 | Yes | Nie |
-| Windows Server 2008 R2<sup>3</sup> | SMB 2.1 | Yes | Nie |
+| Windows Server 2019 | SMB 3.0 | Tak | Tak |
+| Windows 10<sup>1</sup> | SMB 3.0 | Tak | Tak |
+| Windows Server semi-annual channel<sup>2</sup> | SMB 3.0 | Tak | Tak |
+| Windows Server 2016 | SMB 3.0 | Tak | Tak |
+| Windows 8.1 | SMB 3.0 | Tak | Tak |
+| Windows Server 2012 R2 | SMB 3.0 | Tak | Tak |
+| Windows Server 2012 | SMB 3.0 | Tak | Tak |
+| Windows 7<sup>3</sup> | SMB 2.1 | Tak | Nie |
+| Windows Server 2008 R2<sup>3</sup> | SMB 2.1 | Tak | Nie |
 
-<sup>1</sup> Windows 10, wersje 1507, 1607, 1709, 1803, 1809, 1903 i 1909.  
-<sup>2</sup> System Windows Server, wersje 1809, 1903 i 1909.  
-<sup>3</sup> Zakończono regularne wsparcie firmy Microsoft dla systemów Windows 7 i Windows Server 2008 R2. Dodatkowe wsparcie dla aktualizacji zabezpieczeń można zakupić tylko za pomocą [programu Extended Security Update (ESU)](https://support.microsoft.com/help/4497181/lifecycle-faq-extended-security-updates). Zdecydowanie zalecamy Migrowanie z tych systemów operacyjnych.
+<sup>1.</sup> Windows 10, wersje 1507, 1607, 1709, 1803, 1809, 1903 i 1909.  
+<sup>2.</sup> Windows Server, wersje 1809, 1903 i 1909.  
+<sup>3</sup> Zakończono regularne wsparcie firmy Microsoft dla systemów Windows 7 i Windows Server 2008 R2. Dodatkowe wsparcie dla aktualizacji zabezpieczeń można kupić tylko za pośrednictwem [programu Rozszerzonej Aktualizacji Zabezpieczeń (ESU).](https://support.microsoft.com/help/4497181/lifecycle-faq-extended-security-updates) Zdecydowanie zaleca się migrację z tych systemów operacyjnych.
 
 > [!Note]  
 > Zawsze zalecamy pobranie najnowszej aktualizacji KB dla danej wersji systemu Windows.
 
 ## <a name="prerequisites"></a>Wymagania wstępne 
-* **Nazwa konta magazynu**: Aby zainstalować udział plików platformy Azure, konieczne będzie podanie nazwy konta magazynu.
+* **Nazwa konta magazynu:** Aby zainstalować udział plików platformy Azure, potrzebna będzie nazwa konta magazynu.
 
-* **Klucz konta magazynu**: Aby zainstalować udział plików platformy Azure, konieczne będzie posiadanie podstawowego (lub dodatkowego) klucza magazynu. Klucze sygnatur dostępu współdzielonego nie są aktualnie obsługiwane na potrzeby instalowania.
+* **Klucz konta magazynu:** Aby zainstalować udział plików platformy Azure, potrzebny jest podstawowy (lub pomocniczy) klucz magazynu. Klucze sygnatur dostępu współdzielonego nie są aktualnie obsługiwane na potrzeby instalowania.
 
-* **Otwarty port 445**: protokół SMB wymaga otwartego portu TCP 445; połączenia zakończą się niepowodzeniem, jeśli port 445 będzie zablokowany. Aby sprawdzić, czy zapora blokuje port 445, można użyć polecenia cmdlet `Test-NetConnection`. Można dowiedzieć się więcej [na temat różnych sposobów obejścia zablokowanego portu 445 w tym miejscu](https://docs.microsoft.com/azure/storage/files/storage-troubleshoot-windows-file-connection-problems#cause-1-port-445-is-blocked).
+* **Otwarty port 445**: protokół SMB wymaga otwartego portu TCP 445; połączenia zakończą się niepowodzeniem, jeśli port 445 będzie zablokowany. Aby sprawdzić, czy zapora blokuje port 445, można użyć polecenia cmdlet `Test-NetConnection`. Możesz dowiedzieć się o [różnych sposobach obejścia zablokowanego portu 445 tutaj](https://docs.microsoft.com/azure/storage/files/storage-troubleshoot-windows-file-connection-problems#cause-1-port-445-is-blocked).
 
-    W poniższym kodzie programu PowerShell założono, że zainstalowano moduł Azure PowerShell, zobacz [Install Azure PowerShell module](https://docs.microsoft.com/powershell/azure/install-az-ps) , aby uzyskać więcej informacji. Pamiętaj, aby zastąpić wyrażenia `<your-storage-account-name>` i `<your-resource-group-name>` nazwami odpowiednimi dla konta magazynu.
+    Poniższy kod programu PowerShell zakłada, że masz zainstalowany moduł programu Azure PowerShell, zobacz [Instalowanie modułu programu Azure PowerShell,](https://docs.microsoft.com/powershell/azure/install-az-ps) aby uzyskać więcej informacji. Pamiętaj, aby zastąpić wyrażenia `<your-storage-account-name>` i `<your-resource-group-name>` nazwami odpowiednimi dla konta magazynu.
 
     ```powershell
     $resourceGroupName = "<your-resource-group-name>"
@@ -80,7 +80,7 @@ Z udziałów plików platformy Azure można korzystać w instalacji systemu Wind
 ## <a name="using-an-azure-file-share-with-windows"></a>Korzystanie z udziału plików platformy Azure w systemie Windows
 Aby używać udziału plików platformy Azure w systemie Windows, musisz go zainstalować, czyli przypisać do niego literę dysku bądź ścieżkę do punktu instalacji, lub uzyskiwać do niego dostęp za pośrednictwem jego [ścieżki UNC](https://msdn.microsoft.com/library/windows/desktop/aa365247.aspx). 
 
-W przeciwieństwie do innych udziałów SMB, z którymi możesz wchodzić w interakcje, na przykład takich jak te hostowane w systemie Windows Server, na serwerze Samba w systemie Linux lub na urządzeniu NAS, udziały plików platformy Azure aktualnie nie obsługują uwierzytelniania Kerberos za pomocą tożsamości usługi Active Directory (AD) lub Azure Active Directory (AAD), ale [pracujemy nad](https://feedback.azure.com/forums/217298-storage/suggestions/6078420-acl-s-for-azurefiles) włączeniem takiej możliwości. Zamiast tego dostęp do udziału plików platformy Azure musi być uzyskiwany przy użyciu klucza konta magazynu zawierającego ten udział plików platformy Azure. Klucz konta magazynu to klucz administratora dla konta magazynu, w tym uprawnienia administratora do wszystkich plików i folderów w udziale plików, do którego uzyskujesz dostęp, a także dla wszystkich udziałów plików i innych zasobów magazynu (obiektów blob, kolejek, tabel itp.). na koncie magazynu. Jeśli te uprawnienia nie są wystarczające na potrzeby danego obciążenia, [usługa Azure File Sync](storage-sync-files-planning.md) może tymczasowo zastąpić brak obsługi uwierzytelniania Kerberos i list kontroli dostępu, dopóki obsługa uwierzytelniania Kerberos opartego na usłudze AAD i list kontroli dostępu zostanie publicznie udostępniona.
+W przeciwieństwie do innych udziałów SMB, z którymi możesz wchodzić w interakcje, na przykład takich jak te hostowane w systemie Windows Server, na serwerze Samba w systemie Linux lub na urządzeniu NAS, udziały plików platformy Azure aktualnie nie obsługują uwierzytelniania Kerberos za pomocą tożsamości usługi Active Directory (AD) lub Azure Active Directory (AAD), ale [pracujemy nad](https://feedback.azure.com/forums/217298-storage/suggestions/6078420-acl-s-for-azurefiles) włączeniem takiej możliwości. Zamiast tego dostęp do udziału plików platformy Azure musi być uzyskiwany przy użyciu klucza konta magazynu zawierającego ten udział plików platformy Azure. Klucz konta magazynu jest kluczem administratora dla konta magazynu, w tym uprawnienia administratora do wszystkich plików i folderów w udziale plików, do którego uzyskujesz dostęp, oraz dla wszystkich udziałów plików i innych zasobów magazynu (obiektów blob, kolejek, tabel itp.) zawartych w nich na koncie pamięci masowej. Jeśli te uprawnienia nie są wystarczające na potrzeby danego obciążenia, [usługa Azure File Sync](storage-sync-files-planning.md) może tymczasowo zastąpić brak obsługi uwierzytelniania Kerberos i list kontroli dostępu, dopóki obsługa uwierzytelniania Kerberos opartego na usłudze AAD i list kontroli dostępu zostanie publicznie udostępniona.
 
 Typowym sposobem na przeniesienie na platformę Azure aplikacji biznesowych (LOB), które oczekują obsługi udziału plików SMB, jest użycie udziału plików platformy Azure jako alternatywy do uruchamiania dedykowanego serwera plików Windows na maszynie wirtualnej platformy Azure. Ważnym zagadnieniem warunkującym pomyślną migrację aplikacji biznesowej do korzystania z udziału plików platformy Azure jest to, że wiele aplikacji biznesowych działa w kontekście dedykowanego konta usługi z ograniczonymi uprawnieniami systemowymi, a nie w kontekście konta administracyjnego maszyny wirtualnej. W związku z tym należy się upewnić, że poświadczenia dla udziału plików platformy Azure zostały zainstalowane/zapisane w kontekście konta usługi, a nie konta administracyjnego.
 
@@ -182,11 +182,11 @@ Remove-PSDrive -Name <desired-drive-letter>
 
 1. Otwórz Eksploratora plików. Można to zrobić przy użyciu menu Start lub przez naciśnięcie skrótu Win+E.
 
-2. Przejdź do elementu **Ten komputer** w lewej części okna. Spowoduje to zmianę menu dostępnego na wstążce. W menu Komputer wybierz pozycję **Mapuj dysk sieciowy**.
+2. Przejdź do **elementu Ten komputer** po lewej stronie okna. Spowoduje to zmianę menu dostępnego na wstążce. W menu Komputer wybierz polecenie **Mapuj dysk sieciowy**.
     
     ![Zrzut ekranu przedstawiający menu rozwijane „Mapuj dysk sieciowy”](./media/storage-how-to-use-files-windows/1_MountOnWindows10.png)
 
-3. Skopiuj ścieżkę UNC z okienka **Połącz** w witrynie Azure Portal. 
+3. Skopiuj ścieżkę UNC z okienka **Połącz** w witrynie Azure portal. 
 
     ![Ścieżka UNC z okienka Połącz usługi Azure Files](./media/storage-how-to-use-files-windows/portal_netuse_connect.png)
 
@@ -205,7 +205,7 @@ Remove-PSDrive -Name <desired-drive-letter>
 7. Gdy zajdzie potrzeba odinstalowania udziału plików platformy Azure, możesz to zrobić przez kliknięcie prawym przyciskiem myszy wpisu dla udziału w obszarze **Lokalizacje sieciowe** w Eksploratorze plików i wybranie polecenia **Odłącz**.
 
 ### <a name="accessing-share-snapshots-from-windows"></a>Dostęp do migawek udziałów z systemu Windows
-Jeśli migawkę udziału utworzono ręcznie lub automatycznie za pomocą skryptu bądź usługi, takiej jak Azure Backup, możesz wyświetlić poprzednie wersje udziału, katalogu lub konkretnego pliku z udziału plików w systemie Windows. Migawkę udziału można wykonać za pomocą [Azure Portal](storage-how-to-use-files-portal.md), [Azure PowerShell](storage-how-to-use-files-powershell.md)i [interfejsu wiersza polecenia platformy Azure](storage-how-to-use-files-cli.md).
+Jeśli migawkę udziału utworzono ręcznie lub automatycznie za pomocą skryptu bądź usługi, takiej jak Azure Backup, możesz wyświetlić poprzednie wersje udziału, katalogu lub konkretnego pliku z udziału plików w systemie Windows. Migawkę udziału można zrobić z [witryny Azure Portal](storage-how-to-use-files-portal.md), [Azure PowerShell](storage-how-to-use-files-powershell.md)i [Interfejsu wiersza polecenia platformy Azure.](storage-how-to-use-files-cli.md)
 
 #### <a name="list-previous-versions"></a>Wyświetlanie listy poprzednich wersji
 Przejdź do elementu lub elementu nadrzędnego, który należy przywrócić. Kliknij dwukrotnie, aby przejść do żądanego katalogu. Kliknij prawym przyciskiem myszy i wybierz z menu pozycję **Właściwości**.
@@ -243,7 +243,7 @@ W poniższej tabeli zebrano szczegółowe informacje dotyczące stanu protokołu
 | Windows 7                                 | Enabled (Włączony)              | Wyłączenie za pomocą rejestru       | 
 
 ### <a name="auditing-smb-1-usage"></a>Inspekcja użycia protokołu SMB 1
-> Dotyczy systemu Windows Server 2019, półrocznego kanału z systemem Windows Server (wersje 1709 i 1803), Windows Server 2016, Windows 10 (wersje 1507, 1607, 1703, 1709 i 1803), Windows Server 2012 R2 i Windows 8.1
+> Dotyczy kanałów półrocznych systemu Windows Server 2019, Windows Server (wersje 1709 i 1803), Windows Server 2016, Windows 10 (wersje 1507, 1607, 1703, 1709 i 1803), Windows Server 2012 R2 i Windows 8.1
 
 Przed usunięciem protokołu SMB 1 ze środowiska można przeprowadzić inspekcję użycia tego protokołu, aby sprawdzić, czy ta zmiana będzie miała negatywny wpływ na działanie jakichś klientów. W przypadku wystąpienia jakichkolwiek żądań względem udziałów SMB za pośrednictwem protokołu SMB 1 zdarzenia inspekcji będą rejestrowane w dzienniku zdarzeń w ścieżce `Applications and Services Logs > Microsoft > Windows > SMBServer > Audit`. 
 
@@ -257,7 +257,7 @@ Set-SmbServerConfiguration –AuditSmb1Access $true
 ```
 
 ### <a name="removing-smb-1-from-windows-server"></a>Usuwanie protokołu SMB 1 z systemu Windows Server
-> Dotyczy systemu Windows Server 2019, półrocznego kanału z systemem Windows Server (wersje 1709 i 1803), Windows Server 2016, Windows Server 2012 R2
+> Dotyczy kanałów półrocznych systemu Windows Server 2019, Windows Server (wersje 1709 i 1803), Windows Server 2016, Windows Server 2012 R2
 
 Aby usunąć protokół SMB 1 z wystąpienia systemu Windows Server, wykonaj następujące polecenie cmdlet w sesji programu PowerShell z podwyższonym poziomem uprawnień:
 
@@ -303,5 +303,5 @@ Po utworzeniu tego klucza rejestru należy ponownie uruchomić serwer, aby wył�
 ## <a name="next-steps"></a>Następne kroki
 Poniższe linki umożliwiają uzyskanie dodatkowych informacji na temat usługi Azure Files:
 - [Planowanie wdrożenia usługi Azure Files](storage-files-planning.md)
-- [Często zadawane pytania](../storage-files-faq.md)
+- [Najczęściej zadawane pytania](../storage-files-faq.md)
 - [Rozwiązywanie problemów w systemie Windows](storage-troubleshoot-windows-file-connection-problems.md)      

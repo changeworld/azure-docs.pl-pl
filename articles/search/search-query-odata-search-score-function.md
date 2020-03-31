@@ -1,7 +1,7 @@
 ---
-title: Wyszukiwanie OData. Informacje o funkcji oceny
+title: Odwołanie do funkcji search.score OData
 titleSuffix: Azure Cognitive Search
-description: Składnia i dokumentacja referencyjna dotycząca korzystania z funkcji Search. Score w zapytaniach usługi Azure Wyszukiwanie poznawcze.
+description: Składnia i dokumentacja referencyjna do korzystania z funkcji search.score w zapytaniach usługi Azure Cognitive Search.
 manager: nitinme
 author: brjohnstmsft
 ms.author: brjohnst
@@ -20,28 +20,28 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: 2439d4f03184f8dbb85b229b3908dff95013b4bc
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74113139"
 ---
-# <a name="odata-searchscore-function-in-azure-cognitive-search"></a>Funkcja `search.score` OData na platformie Azure Wyszukiwanie poznawcze
+# <a name="odata-searchscore-function-in-azure-cognitive-search"></a>Funkcja OData `search.score` w usłudze Azure Cognitive Search
 
-Po wysłaniu zapytania do Wyszukiwanie poznawcze platformy Azure bez parametru [ **$OrderBy** ](search-query-odata-orderby.md), przywracane wyniki zostaną posortowane w kolejności malejącej według oceny istotności. Nawet w przypadku używania **$OrderBy**ocena znaczenia będzie używana w celu podzielenia powiązań domyślnie. Jednak czasami warto użyć oceny istotności jako początkowego kryterium sortowania i innych kryteriów jako powiązania. Funkcja `search.score` umożliwia wykonywanie tych czynności.
+Po wysłaniu kwerendy do usługi Azure Cognitive Search bez [parametru **$orderby** ](search-query-odata-orderby.md)wyniki, które wracają, zostaną posortowane w kolejności malejącej według wyniku istotności. Nawet jeśli używasz **$orderby,** wynik trafności będzie domyślnie używany do zerwania więzi. Jednak czasami warto użyć wyniku trafności jako początkowych kryteriów sortowania, a niektóre inne kryteria jako tie-breaker. Funkcja `search.score` pozwala to zrobić.
 
 ## <a name="syntax"></a>Składnia
 
-Składnia `search.score` w **$OrderBy** jest `search.score()`. Funkcja `search.score` nie przyjmuje żadnych parametrów. Może być używany z specyfikatorem kolejności sortowania `asc` lub `desc`, podobnie jak każda inna klauzula w parametrze **$OrderBy** . Może pojawić się w dowolnym miejscu na liście kryteriów sortowania.
+Składnia `search.score` w **$orderby** jest `search.score()`. Funkcja `search.score` nie przyjmuje żadnych parametrów. Może być używany `asc` z `desc` specyfikatorem lub sort-order, podobnie jak każda inna klauzula w **parametrze $orderby.** Może pojawić się w dowolnym miejscu na liście kryteriów sortowania.
 
 ## <a name="example"></a>Przykład
 
-Sortuj Hotele w kolejności malejącej według `search.score` i `rating`, a następnie w kolejności rosnącej według odległości od danego współrzędnych, tak aby między dwiema hoteli z identyczną klasyfikacją były najpierw wymienione najbliższe:
+Sortuj hotele `search.score` w `rating`porządku malejącym według i , a następnie w kolejności rosnącej według odległości od podanych współrzędnych, tak aby między dwoma hotelami o identycznych ocenach, najbliższy jest wymieniony jako pierwszy:
 
     search.score() desc,rating desc,geo.distance(location, geography'POINT(-122.131577 47.678581)') asc
 
 ## <a name="next-steps"></a>Następne kroki  
 
-- [Omówienie języka wyrażeń OData dla platformy Azure Wyszukiwanie poznawcze](query-odata-filter-orderby-syntax.md)
-- [Dokumentacja składni wyrażenia OData dla usługi Azure Wyszukiwanie poznawcze](search-query-odata-syntax-reference.md)
-- [Wyszukaj dokumenty &#40;w usłudze Azure wyszukiwanie POZNAWCZE Est API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
+- [Omówienie języka wyrażenia OData dla usługi Azure Cognitive Search](query-odata-filter-orderby-syntax.md)
+- [Odwołanie do składni wyrażenia OData dla usługi Azure Cognitive Search](search-query-odata-syntax-reference.md)
+- [&#41;interfejsu API usługi Azure Cognitive Search EST &#40;dokumentów wyszukiwania](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)

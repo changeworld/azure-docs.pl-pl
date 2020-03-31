@@ -1,6 +1,6 @@
 ---
-title: Korzystanie z istniejących odtwarzaczy do odtwarzania zawartości — Azure | Microsoft Docs
-description: Ten artykuł zawiera listę istniejących odtwarzaczy, których można użyć do odtwarzania zawartości.
+title: Odtwarzanie zawartości za pomocą istniejących odtwarzaczy — Azure | Dokumenty firmy Microsoft
+description: W tym artykule wymieniono istniejących graczy, których można użyć do odtwarzania zawartości.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -15,38 +15,38 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
 ms.openlocfilehash: 07537d3d67e41f7e1179a709ffa19f3d84aa4539
-ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/23/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77565829"
 ---
-# <a name="playing-your-content-with-existing-players"></a>Odtwarzanie zawartości za pomocą istniejących graczy
-Azure Media Services obsługuje wiele popularnych formatów przesyłania strumieniowego, takich jak Smooth Streaming, HTTP Live Streaming i MPEG-kreska. Ten temat prowadzi do istniejących graczy, których można użyć do testowania strumieni.
+# <a name="playing-your-content-with-existing-players"></a>Odtwarzanie zawartości w istniejących odtwarzaczach
+Usługa Azure Media Services obsługuje wiele popularnych formatów przesyłania strumieniowego, takich jak płynne przesyłanie strumieniowe, przesyłanie strumieniowe na żywo HTTP i mpeg-dash. W tym temacie wskazano istniejące odtwarzacze, których można użyć do testowania strumieni.
 
-### <a name="the-azure-portal-media-services-content-player"></a>Azure Portal Media Services odtwarzacz zawartości
-Witryna **Azure** Portal udostępnia odtwarzacz zawartości, którego można użyć do testowania wideo.
+### <a name="the-azure-portal-media-services-content-player"></a>Odtwarzacz zawartości usługi Azure portal Media Services
+**Portal Azure** udostępnia odtwarzacz zawartości, którego można użyć do testowania wideo.
 
-Kliknij żądany film wideo (Upewnij się, że został [opublikowany](media-services-portal-publish.md)), a następnie kliknij przycisk **Odtwórz** w dolnej części portalu.
+Kliknij żądany film (upewnij się, że został [opublikowany)](media-services-portal-publish.md)i kliknij przycisk **Odtwórz** u dołu portalu.
 
 Zagadnienia do rozważenia:
 
-* **Odtwarzacz zawartości MEDIA SERVICES** odtwarza z domyślnego punktu końcowego przesyłania strumieniowego. Do odtwarzania z punktu końcowego przesyłania strumieniowego innego niż domyślny należy użyć innego odtwarzacza Na przykład [Azure Media Player](https://aka.ms/azuremediaplayer).
+* **Odtwarzacz zawartości MEDIA SERVICES** odtwarza z domyślnego punktu końcowego przesyłania strumieniowego. Do odtwarzania z punktu końcowego przesyłania strumieniowego innego niż domyślny należy użyć innego odtwarzacza Na przykład [program Azure Media Player](https://aka.ms/azuremediaplayer).
 
 ![AMSPlayer][AMSPlayer]
 
 ### <a name="azure-media-player"></a>Azure Media Player
 
-Użyj [Azure Media Player](https://aka.ms/azuremediaplayer) do odtwarzania zawartości (wyczyść lub chroniona) w jednym z następujących formatów:
+Użyj [programu Azure Media Player](https://aka.ms/azuremediaplayer) do odtwarzania zawartości (wyczyszczonej lub chronionej) w dowolnym z następujących formatów:
 
 * Smooth Streaming
 * MPEG DASH
 * HLS
-* Pliki MP4 progresywne
+* Progresywny MP4
 
-### <a name="flash-player"></a>Program Flash Player
+### <a name="flash-player"></a>Flash Player
 
-#### <a name="aes-encrypted-with-token"></a>AES — szyfrowany przy użyciu tokenu
+#### <a name="aes-encrypted-with-token"></a>Szyfrowane AES za pomocą tokenu
 
 [https://aestoken.azurewebsites.net](https://aestoken.azurewebsites.net)
 
@@ -54,7 +54,7 @@ Użyj [Azure Media Player](https://aka.ms/azuremediaplayer) do odtwarzania zawar
 
 [https://sltoken.azurewebsites.net](https://sltoken.azurewebsites.net)
 
-### <a name="dash-players"></a>Odtwarzacze PAUZ
+### <a name="dash-players"></a>Gracze DASH
 
 [https://dashplayer.azurewebsites.net](https://dashplayer.azurewebsites.net)
 
@@ -63,13 +63,13 @@ Użyj [Azure Media Player](https://aka.ms/azuremediaplayer) do odtwarzania zawar
 ### <a name="other"></a>Inne
 Aby przetestować adresy URL HLS, można również użyć:
 
-* **Przeglądarka Safari** na urządzeniu z systemem iOS lub
+* **Safari** na urządzeniu z systemem iOS lub
 * **3ivx HLS Player** w systemie Windows.
 
 ## <a name="media-services-learning-paths"></a>Ścieżki szkoleniowe dotyczące usługi Media Services
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Przekaż opinię
+## <a name="provide-feedback"></a>Przekazywanie opinii
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 [AMSPlayer]: ./media/media-services-playback-content-with-existing-players/media-services-portal-player.png

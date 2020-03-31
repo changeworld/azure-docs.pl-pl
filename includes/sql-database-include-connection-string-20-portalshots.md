@@ -1,7 +1,7 @@
 ---
-title: Uzyskaj parametry połączenia w witrynie Azure portal
-description: Uzyskaj parametry połączenia w witrynie Azure portal
-keywords: połączenie z SQL, ciąg połączenia
+title: Uzyskiwanie ciągu połączenia z witryny Azure portal
+description: Uzyskiwanie ciągu połączenia z witryny Azure portal
+keywords: połączenie sql,parametry połączenia
 services: sql-database
 author: dalechen
 manager: craigg
@@ -11,34 +11,34 @@ ms.topic: include
 ms.date: 07/13/2018
 ms.author: ninarn
 ms.openlocfilehash: 6ead2e0ea326b5c3f2e76e7aa9cc4ab3c50d4154
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67183311"
 ---
-### <a name="obtain-the-connection-string-from-the-azure-portal"></a>Uzyskaj parametry połączenia w witrynie Azure portal
-Użyj [witryny Azure portal](https://portal.azure.com/) uzyskać parametry połączenia, który jest konieczny, aby program kliencki do interakcji z usługą Azure SQL Database.
+### <a name="obtain-the-connection-string-from-the-azure-portal"></a>Uzyskiwanie ciągu połączenia z witryny Azure portal
+Użyj [witryny Azure Portal,](https://portal.azure.com/) aby uzyskać parametry połączenia, które jest niezbędne dla programu klienckiego do interakcji z usługą Azure SQL Database.
 
-1. Wybierz **wszystkich usług** > **baz danych SQL**.
+1. Wybierz **wszystkie usługi** > **baz danych SQL**.
 
-2. Wprowadź nazwę bazy danych w polu tekstowym filtru w pobliżu lewego górnego rogu **baz danych SQL** bloku.
+2. Wprowadź nazwę bazy danych w polu tekstowym filtru w lewym górnym rogu bloku **baz danych SQL.**
 
-3. Wybierz wiersz dla bazy danych.
+3. Wybierz wiersz bazy danych.
 
-4. Po bloku pojawia się dla bazy danych, wybierz pozycję visual wygody **Minimalizuj** przycisków, aby zwinąć bloki umożliwiający przeglądanie i filtrowanie bazy danych.
+4. Po pojawi się blok dla bazy danych, dla wygody wizualnej wybierz **przyciski Minimalizuj,** aby zwinąć ostrza używane do przeglądania i filtrowania bazy danych.
 
-5. W bloku bazy danych, wybierz **Pokaż parametry połączenia bazy danych**.
+5. W bloku bazy danych wybierz pozycję **Pokaż parametry połączenia bazy danych**.
 
-6. Skopiuj parametry połączenia. czyli jeśli zamierzasz używać biblioteki połączeń ADO.NET, skopiuj odpowiedni ciąg z **ADO.NET** kartę.
+6. Skopiuj odpowiedni parametry połączenia. czyli jeśli zamierzasz korzystać z biblioteki połączeń ADO.NET, skopiuj odpowiedni ciąg z karty **ADO.NET.**
 
-    ![Skopiuj parametry połączenia ADO bazy danych][20-CopyAdoConnectionString]
+    ![Kopiowanie ciągu połączenia ADO dla bazy danych][20-CopyAdoConnectionString]
 
-7. Edytuj parametry połączenia, zgodnie z potrzebami. czyli wstawianie hasło parametrów połączenia lub usuń "@&lt;servername&gt;" z nazwy użytkownika, jeśli nazwa użytkownika lub nazwa serwera jest zbyt długa.
+7. W razie potrzeby edytuj ciąg połączenia. czyli włóż hasło do ciągu połączenia lub usuń&lt;"@&gt;nazwa_serwera" z nazwy użytkownika, jeśli nazwa użytkownika lub nazwa serwera są zbyt długie.
 
-8. W jednym formacie lub innym informacje o parametrach połączenia należy wkleić kod klienta programu.
+8. W tym czy innym formacie wklej informacje o ciągu połączenia do kodu programu klienta.
 
-Aby uzyskać więcej informacji, zobacz [parametry połączenia i pliki konfiguracyjne](https://msdn.microsoft.com/library/ms254494.aspx).
+Aby uzyskać więcej informacji, zobacz [Parametry połączenia i pliki konfiguracyjne](https://msdn.microsoft.com/library/ms254494.aspx).
 
 <!-- Image references. -->
 

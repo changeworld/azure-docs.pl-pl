@@ -1,6 +1,6 @@
 ---
-title: Schemat dziennika logowania w Azure Monitor | Microsoft Docs
-description: Opisz logowanie do usługi Azure AD w schemacie rejestrowania do użycia w Azure Monitor
+title: Schemat dziennika logowania w usłudze Azure Monitor | Dokumenty firmy Microsoft
+description: Opis schematu dziennika logowania usługi Azure AD do użycia w usłudze Azure Monitor
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -18,15 +18,15 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5525f2f8ab4ef83ba9c3aeeff945bc9d875600d5
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75748665"
 ---
-# <a name="interpret-the-azure-ad-sign-in-logs-schema-in-azure-monitor"></a>Interpretuj schemat dzienników logowania usługi Azure AD w Azure Monitor
+# <a name="interpret-the-azure-ad-sign-in-logs-schema-in-azure-monitor"></a>Interpretowanie schematu dzienników logowania usługi Azure AD w usłudze Azure Monitor
 
-W tym artykule opisano schemat dziennika logowania Azure Active Directory (Azure AD) w programie Azure Monitor. Większość informacji związanych z logowaniem jest udostępniana w atrybucie *Właściwości* obiektu `records`.
+W tym artykule opisano schemat dziennika logowania usługi Azure Active Directory (Azure AD) w usłudze Azure Monitor. Większość informacji, które są związane z logowania jest pod właściwości *atrybut* `records` obiektu.
 
 
 ```json
@@ -145,29 +145,29 @@ W tym artykule opisano schemat dziennika logowania Azure Active Directory (Azure
 
 | Nazwa pola | Opis |
 |------------|-------------|
-| Czas | Data i godzina w formacie UTC. |
+| Time | Data i godzina w czasie UTC. |
 | ResourceId | Ta wartość jest niezamapowana i można bezpiecznie zignorować to pole.  |
-| OperationName | W przypadku logowania ta wartość jest zawsze *aktywność logowania*. |
-| OperationVersion | Wersja interfejsu API REST, która jest wymagana przez klienta programu. |
-| Kategoria | W przypadku logowania ta wartość jest zawsze *rejestracja*. | 
+| OperationName | W przypadku logowania ta wartość jest zawsze *działaniem logowania.* |
+| OperacjaVersion | Wersja interfejsu API REST, która jest wymagana przez klienta. |
+| Kategoria | W przypadku logowania ta wartość jest zawsze *SignIn*. | 
 | TenantId | Identyfikator GUID dzierżawy, który jest skojarzony z dziennikami. |
-| Result | Wynik operacji logowania może być spowodowany *sukcesem* lub *niepowodzeniem*. | 
-| ResultSignature | Zawiera kod błędu (jeśli istnieje) dla operacji logowania. |
-| ResultDescription | Zawiera opis błędu dla operacji logowania. |
-| riskDetail | riskDetail | Zapewnia "powód" w odniesieniu do określonego stanu ryzykownego użytkownika, logowania lub wykrywania ryzyka. Możliwe wartości to: `none`, `adminGeneratedTemporaryPassword`, `userPerformedSecuredPasswordChange`, `userPerformedSecuredPasswordReset`, `adminConfirmedSigninSafe`, `aiConfirmedSigninSafe`, `userPassedMFADrivenByRiskBasedPolicy`, `adminDismissedAllRiskForUser`, `adminConfirmedSigninCompromised`, `unknownFutureValue`. Wartość `none` oznacza, że nie wykonano żadnych akcji na użytkowniku lub logowanie do tej pory. <br>**Uwaga:** Szczegóły tej właściwości wymagają licencji na Azure AD — wersja Premium P2. Inne licencje zwracają wartość `hidden`. |
-| riskEventTypes | riskEventTypes | Typy wykrywania ryzyka skojarzone z logowaniem. Możliwe wartości to: `unlikelyTravel`, `anonymizedIPAddress`, `maliciousIPAddress`, `unfamiliarFeatures`, `malwareInfectedIPAddress`, `suspiciousIPAddress`, `leakedCredentials`, `investigationsThreatIntelligence`, `generic`i `unknownFutureValue`. |
-| riskLevelAggregated | riskLevel | Zagregowany poziom ryzyka. Możliwe wartości to: `none`, `low`, `medium`, `high`, `hidden`i `unknownFutureValue`. Wartość `hidden` oznacza, że użytkownik lub logowanie nie zostało włączone dla Azure AD Identity Protection. **Uwaga:** Szczegóły dotyczące tej właściwości są dostępne tylko dla klientów Azure AD — wersja Premium P2. Wszyscy pozostali klienci będą mogli zwrócić `hidden`. |
-| riskLevelDuringSignIn | riskLevel | Poziom ryzyka podczas logowania. Możliwe wartości to: `none`, `low`, `medium`, `high`, `hidden`i `unknownFutureValue`. Wartość `hidden` oznacza, że użytkownik lub logowanie nie zostało włączone dla Azure AD Identity Protection. **Uwaga:** Szczegóły dotyczące tej właściwości są dostępne tylko dla klientów Azure AD — wersja Premium P2. Wszyscy pozostali klienci będą mogli zwrócić `hidden`. |
-| riskState | riskState | Zgłasza stan ryzykownego użytkownika, logowania lub wykrywania ryzyka. Możliwe wartości to: `none`, `confirmedSafe`, `remediated`, `dismissed`, `atRisk`, `confirmedCompromised`, `unknownFutureValue`. |
-| Milisekundach) |  Ta wartość jest niezamapowana i można bezpiecznie zignorować to pole. |
-| CallerIpAddress | Adres IP klienta, który wykonał żądanie. | 
-| CorrelationId | Opcjonalny identyfikator GUID, który jest przesyłany przez klienta. Ta wartość może pomóc skorelować operacje po stronie klienta przy użyciu operacji po stronie serwera i jest przydatna podczas śledzenia dzienników obejmujących usługi. |
-| Tożsamość | Tożsamość z tokenu, która została przedstawiona podczas żądania. Może to być konto użytkownika, konto System lub nazwa główna usługi. |
-| Poziom | Udostępnia typ komunikatu. W przypadku inspekcji zawsze jest to *informacja*. |
-| Lokalizacja | Udostępnia lokalizację działania związanego z logowaniem. |
-| Właściwości | Wyświetla wszystkie właściwości, które są skojarzone z logowaniem. Aby uzyskać więcej informacji, zobacz [Microsoft Graph dokumentacja interfejsu API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/signin). Ten schemat używa tych samych nazw atrybutów co zasób logowania, co umożliwia ich czytelność.
+| Resulttype | Wynikiem operacji logowania może być *powodzenie* lub *niepowodzenie*. | 
+| ResultSignature | Zawiera kod błędu, jeśli istnieje, dla operacji logowania. |
+| Opis wyników | Zawiera opis błędu dla operacji logowania. |
+| ryzykoDetail | ryzykoDetail | Podaje "przyczynę" określonego stanu ryzykownego użytkownika, logowania lub wykrywania ryzyka. Możliwe `none`wartości to: `adminGeneratedTemporaryPassword` `userPerformedSecuredPasswordChange`, `userPerformedSecuredPasswordReset` `adminConfirmedSigninSafe`, `aiConfirmedSigninSafe` `userPassedMFADrivenByRiskBasedPolicy`, `adminDismissedAllRiskForUser` `adminConfirmedSigninCompromised`, `unknownFutureValue`, , , , , . Wartość `none` oznacza, że do tej pory nie wykonano żadnej akcji na użytkowniku lub loguch. <br>**Uwaga:** Szczegóły dotyczące tej właściwości wymagają licencji usługi Azure AD Premium P2. Inne licencje zwracają `hidden`wartość . |
+| riskEventTypes (Typy ryzyka) | riskEventTypes (Typy ryzyka) | Typy wykrywania ryzyka skojarzone z logowaniem. Możliwe `unlikelyTravel`wartości to: `anonymizedIPAddress` `maliciousIPAddress`, `unfamiliarFeatures` `malwareInfectedIPAddress`, `suspiciousIPAddress` `leakedCredentials`, `investigationsThreatIntelligence` `generic`, `unknownFutureValue`, , , , , i . |
+| riskLevelAggregated | riskPoziom | Zagregowany poziom ryzyka. Możliwe wartości `none`to: `low` `medium`, `high` `hidden`, `unknownFutureValue`, , i . Wartość `hidden` oznacza, że użytkownik lub logowanie nie zostało włączone dla usługi Azure AD Identity Protection. **Uwaga:** Szczegóły dotyczące tej właściwości są dostępne tylko dla klientów usługi Azure AD Premium P2. Wszyscy pozostali klienci `hidden`zostaną zwróconi. |
+| riskLevelDuringSignIn | riskPoziom | Poziom ryzyka podczas logowania. Możliwe wartości `none`to: `low` `medium`, `high` `hidden`, `unknownFutureValue`, , i . Wartość `hidden` oznacza, że użytkownik lub logowanie nie zostało włączone dla usługi Azure AD Identity Protection. **Uwaga:** Szczegóły dotyczące tej właściwości są dostępne tylko dla klientów usługi Azure AD Premium P2. Wszyscy pozostali klienci `hidden`zostaną zwróconi. |
+| riskPaństwo | riskPaństwo | Raportuje stan ryzykownego użytkownika, logowania lub wykrywania ryzyka. Możliwe `none`wartości to: `confirmedSafe` `remediated`, `dismissed` `atRisk`, `confirmedCompromised` `unknownFutureValue`, , , , . |
+| Czas trwaniaMs |  Ta wartość jest niezamapowana i można bezpiecznie zignorować to pole. |
+| CallerIpAddress (Adres callerIpAddress) | Adres IP klienta, który złożył żądanie. | 
+| CorrelationId | Opcjonalny identyfikator GUID, który jest przekazywany przez klienta. Ta wartość może pomóc skorelować operacje po stronie klienta z operacjami po stronie serwera i jest przydatna podczas śledzenia dzienników obejmujących usługi. |
+| Tożsamość | Tożsamość z tokenu, który został przedstawiony podczas żądania. Może to być konto użytkownika, konto systemowe lub jednostki usługi. |
+| Poziom | Zawiera typ wiadomości. W przypadku audytu jest to zawsze *informacje.* |
+| Lokalizacja | Zapewnia lokalizację działania logowania. |
+| Właściwości | Wyświetla listę wszystkich właściwości, które są skojarzone z logowania. Aby uzyskać więcej informacji, zobacz [Microsoft Graph API Reference](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/signin). Ten schemat używa tych samych nazw atrybutów jako zasobu logowania, aby uzyskać czytelność.
 
 ## <a name="next-steps"></a>Następne kroki
 
-* [Interpret audit logs schema in Azure Monitor (Interpretowanie schematu dzienników inspekcji w usłudze Azure Monitor)](reference-azure-monitor-audit-log-schema.md)
-* [Przeczytaj więcej na temat dzienników diagnostycznych platformy Azure](../../azure-monitor/platform/platform-logs-overview.md)
+* [Interpretowanie schematu dzienników inspekcji w usłudze Azure Monitor](reference-azure-monitor-audit-log-schema.md)
+* [Dowiedz się więcej o dziennikach diagnostycznych platformy Azure](../../azure-monitor/platform/platform-logs-overview.md)

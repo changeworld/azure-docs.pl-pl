@@ -9,21 +9,21 @@ ms.date: 07/12/2019
 ms.author: danlep
 ms.custom: include file
 ms.openlocfilehash: ceda7bd6bd165df1eece555c6ce8a9a6c863b2c1
-ms.sourcegitcommit: 323c3f2e518caed5ca4dd31151e5dee95b8a1578
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/10/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77112308"
 ---
 ### <a name="create-a-user-assigned-identity"></a>Tworzenie tożsamości przypisanej przez użytkownika
 
-Utwórz tożsamość o nazwie *myACRTasksId* w subskrypcji za pomocą polecenia [AZ Identity Create][az-identity-create] . Możesz użyć tej samej grupy zasobów, która została wcześniej użyta do utworzenia rejestru kontenerów lub innej.
+Utwórz tożsamość o nazwie *myACRTasksId* w subskrypcji przy użyciu polecenia [az identity create.][az-identity-create] Można użyć tej samej grupy zasobów, która wcześniej była używana do utworzenia rejestru kontenerów, lub innej.
 
 ```azurecli-interactive
 az identity create --resource-group myResourceGroup --name myACRTasksId
 ```
 
-Aby skonfigurować tożsamość przypisaną przez użytkownika w poniższych krokach, użyj polecenia [AZ Identity show][az-identity-show] do przechowywania identyfikatora zasobu tożsamości, identyfikatora podmiotu zabezpieczeń i identyfikatora klienta w zmiennych.
+Aby skonfigurować tożsamość przypisaną przez użytkownika w poniższych krokach, użyj polecenia [az identity show][az-identity-show] do przechowywania identyfikatora zasobu tożsamości, identyfikatora głównego i identyfikatora klienta w zmiennych.
 
 ```azurecli
 # Get resource ID of the user-assigned identity

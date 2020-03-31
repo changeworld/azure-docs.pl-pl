@@ -4,17 +4,17 @@ description: Dowiedz się, jak efektywnie korzystać z usługi Azure Container R
 ms.topic: article
 ms.date: 09/27/2018
 ms.openlocfilehash: 233d84b8bfa6f3d8c800e76032ef74a643db11ca
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79247074"
 ---
 # <a name="best-practices-for-azure-container-registry"></a>Najlepsze rozwiązania dla usługi Azure Container Registry
 
 Stosując te najlepsze rozwiązania, można osiągnąć maksymalną wydajność i oszczędność kosztów podczas korzystania z rejestru prywatnego platformy Docker na platformie Azure.
 
-Zapoznaj się również z [zaleceniami dotyczącymi tagowania i przechowywania wersji obrazów kontenerów](container-registry-image-tag-version.md) w celu uzyskania strategii tagów i wersji obrazów w rejestrze. 
+Zobacz też [Zalecenia dotyczące oznaczania i przechowywania obrazów kontenerów](container-registry-image-tag-version.md) w celu uzyskania strategii oznaczania i tworzenia obrazów wersji w rejestrze. 
 
 ## <a name="network-close-deployment"></a>Wdrażanie w pobliskiej sieci
 
@@ -33,7 +33,7 @@ Aby dowiedzieć się, jak korzystać z replikacji geograficznej, zobacz trzyczę
 
 Dzięki wykorzystaniu przestrzeni nazw repozytoriów można zezwolić na udostępnianie jednego rejestru w wielu grupach w organizacji. Rejestry mogą być współużytkowane przez wdrożenia i zespoły. Usługa Azure Container Registry obsługuje zagnieżdżone przestrzenie nazw, umożliwiając izolację grup.
 
-Rozważmy na przykład poniższe znaczniki obrazów kontenera. Obrazy używane w całej firmie, takie jak `aspnetcore`, są umieszczane w głównej przestrzeni nazw, natomiast obrazy kontenerów należące do poszczególnych produktów i grup marketingowych używają własnych przestrzeni nazw.
+Rozważmy na przykład poniższe znaczniki obrazów kontenera. Obrazy, które są używane `aspnetcore`w całej firmie, takie jak , są umieszczane w głównym obszarze nazw, podczas gdy obrazy kontenerów należące do grup Produktów i Marketingu używają własnych obszarów nazw.
 
 - *contoso.azurecr.io/aspnetcore:2.0*
 - *contoso.azurecr.io/products/widget/web:1*
@@ -42,7 +42,7 @@ Rozważmy na przykład poniższe znaczniki obrazów kontenera. Obrazy używane w
 
 ## <a name="dedicated-resource-group"></a>Dedykowana grupa zasobów
 
-Ponieważ rejestry kontenerów to zasoby, które są używane na wielu hostach kontenerów, Rejestr powinien znajdować się w własnej grupie zasobów.
+Ponieważ rejestry kontenerów są zasobami, które są używane w wielu hostach kontenerów, rejestr powinien znajdować się we własnej grupie zasobów.
 
 Choć możesz eksperymentować z określonym typem hosta, na przykład z usługą Azure Container Instances, prawdopodobnie zechcesz usunąć wystąpienie kontenera po zakończeniu pracy z nim. Można jednak również zachować kolekcję obrazów, które zostały wypchnięte do usługi Azure Container Registry. Dzięki umieszczeniu rejestru w jego własnej grupie zasobów można zminimalizować ryzyko przypadkowego usunięcia kolekcji obrazów w rejestrze podczas usuwania grupy zasobów wystąpienia kontenera.
 
@@ -53,15 +53,15 @@ Istnieją dwa podstawowe scenariusze uwierzytelniania w usłudze Azure Container
 | Typ | Przykładowy scenariusz | Zalecana metoda |
 |---|---|---|
 | Indywidualne tożsamości | Deweloper ściągający obrazy na swoją maszynę deweloperską lub wypychający z niej obrazy. | Polecenie [az acr login](/cli/azure/acr?view=azure-cli-latest#az-acr-login) |
-| Bezobsługowe/tożsamość usługi | Potoki kompilacji i wdrażania, w których użytkownik nie bierze bezpośrednio udziału. | [Jednostka usługi](container-registry-authentication.md#service-principal) |
+| Bezobsługowe/tożsamość usługi | Potoki kompilacji i wdrażania, w których użytkownik nie bierze bezpośrednio udziału. | [Dyrektor serwisu](container-registry-authentication.md#service-principal) |
 
 Aby uzyskać szczegółowe informacje o uwierzytelnianiu w usłudze Azure Container Registry, zobacz [Authenticate with an Azure container registry](container-registry-authentication.md) (Uwierzytelnianie w usłudze Azure Container Registry).
 
 ## <a name="manage-registry-size"></a>Zarządzanie rozmiarem rejestru
 
-Ograniczenia magazynu dla każdej [jednostki SKU rejestru kontenerów][container-registry-skus] są przeznaczone do dopasowania w typowym scenariuszu: **podstawowa** dla rozpoczynania, **standardowego** dla większości aplikacji produkcyjnych i **Premium** w przypadku wydajności i [replikacji geograficznej][container-registry-geo-replication]funkcji Hyper-Skala. W ciągu cyklu życia rejestru należy zarządzać jego rozmiarem, okresowo usuwając nieużywaną zawartość.
+Ograniczenia magazynu każdej [jednostki SKU rejestru kontenerów][container-registry-skus] służą zachowaniu zgodności z typowym scenariuszem: **Podstawowa** służąca do rozpoczynania pracy, **Standardowa** przeznaczona do większości aplikacji produkcyjnych oraz **Premium** zapewniająca wydajność w hiperskali i [replikację geograficzną][container-registry-geo-replication]. W ciągu cyklu życia rejestru należy zarządzać jego rozmiarem, okresowo usuwając nieużywaną zawartość.
 
-Użyj interfejsu wiersza polecenia platformy Azure [AZ ACR show-Usage][az-acr-show-usage] , aby wyświetlić bieżący rozmiar rejestru:
+Użyj polecenia interfejsu wiersza polecenia azure [az acr show-usage,][az-acr-show-usage] aby wyświetlić bieżący rozmiar rejestru:
 
 ```azurecli
 az acr show-usage --resource-group myResourceGroup --name myregistry --output table
@@ -74,15 +74,15 @@ Size      536870912000  185444288        Bytes
 Webhooks  100                            Count
 ```
 
-Bieżący magazyn używany w **przeglądzie** rejestru można również znaleźć w Azure Portal:
+Bieżący magazyn używany w **rejestrze** można również znaleźć w witrynie Azure portal:
 
 ![Informacje o użyciu rejestru w witrynie Azure Portal][registry-overview-quotas]
 
-### <a name="delete-image-data"></a>Usuń dane obrazu
+### <a name="delete-image-data"></a>Usuwanie danych obrazu
 
-Azure Container Registry obsługuje kilka metod usuwania danych obrazu z rejestru kontenerów. Można usuwać obrazy według tagów lub skrótu manifestu albo usuwać całe repozytorium.
+Usługa Azure Container Registry obsługuje kilka metod usuwania danych obrazu z rejestru kontenerów. Obrazy można usuwać według znaczników lub podsumowania manifestu lub usuwać całe repozytorium.
 
-Aby uzyskać szczegółowe informacje na temat usuwania danych obrazu z rejestru, w tym nieoznakowany (czasami nazywany "zawieszonego" lub "oddzielony"), zobacz [usuwanie kontenerów obrazów w Azure Container Registry](container-registry-delete.md).
+Aby uzyskać szczegółowe informacje na temat usuwania danych obrazu z rejestru, w tym obrazów nieoznakowanych (czasami nazywanych "zwisającymi" lub "osieroconymi"), zobacz [Usuwanie obrazów kontenerów w rejestrze kontenerów platformy Azure](container-registry-delete.md).
 
 ## <a name="next-steps"></a>Następne kroki
 

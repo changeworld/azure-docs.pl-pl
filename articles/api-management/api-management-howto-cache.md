@@ -14,10 +14,10 @@ ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: apimpm
 ms.openlocfilehash: bf8d8a2c11962467300ae8d65fe5bbbe9a65cf92
-ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75708359"
 ---
 # <a name="add-caching-to-improve-performance-in-azure-api-management"></a>Dodawanie buforowania w celu poprawy wydajności usługi Azure API Management
@@ -46,17 +46,17 @@ W celu ukończenia tego samouczka:
 + [Utwórz wystąpienie usługi Azure API Management](get-started-create-service-instance.md)
 + [Zaimportuj i opublikuj interfejs API](import-and-publish.md)
 
-## <a name="caching-policies"> </a>Dodawanie zasad buforowania
+## <a name="add-the-caching-policies"></a><a name="caching-policies"> </a>Dodawanie zasad buforowania
 
 W zasadach buforowania pokazanych w tym przykładzie pierwsze żądanie operacji **GetSpeakers** zwraca odpowiedź z usługi zaplecza. Ta odpowiedź jest zbuforowana z kluczem uwzględniającym określone nagłówki i parametry ciągu zapytania. Dla kolejnych wywołań operacji z pasującymi parametrami będą zwracana buforowaną odpowiedź do czasu wygaśnięcia interwału czasu trwania pamięci podręcznej.
 
-1. Zaloguj się do witryny Azure Portal pod adresem [https://portal.azure.com](https://portal.azure.com).
+1. Zaloguj się do witryny Azure portal w [https://portal.azure.com](https://portal.azure.com).
 2. Przejdź do swojego wystąpienia usługi APIM.
 3. Wybierz kartę **API**.
 4. Kliknij pozycję **Demo Conference API** (Pokazowy interfejs API konferencji) na liście interfejsów API.
 5. Wybierz operację **GetSpeakers**.
 6. W górnej części ekranu wybierz kartę **Projektowanie**.
-7. W sekcji **Przetwarzanie danych przychodzących** kliknij ikonę **</>** .
+7. W sekcji **Przetwarzanie danych przychodzących** kliknij ikonę **</>**.
 
     ![edytor kodu](media/api-management-howto-cache/code-editor.png)
 
@@ -77,17 +77,17 @@ W zasadach buforowania pokazanych w tym przykładzie pierwsze żądanie operacji
 > [!TIP]
 > Jeśli używasz zewnętrznej pamięci podręcznej zgodnie z opisem w temacie [Używanie zewnętrznej pamięci podręcznej Azure Cache for Redis w usłudze Azure API Management](api-management-howto-cache-external.md), warto określić atrybut `caching-type` zasad buforowania. Zobacz [Zasady buforowania usługi API Management](api-management-caching-policies.md), aby uzyskać więcej informacji.
 
-## <a name="test-operation"> </a>Wywoływanie operacji i testowanie buforowania
+## <a name="call-an-operation-and-test-the-caching"></a><a name="test-operation"> </a>Wywoływanie operacji i testowanie buforowania
 Wywołaj operację z portalu dla deweloperów, aby sprawdzić działanie buforowania.
 
 1. W portalu Azure przejdź do swojego wystąpienia usługi APIM.
-2. Wybierz kartę **Interfejsy API**.
+2. Wybierz kartę **Interfejsy API.**
 3. Wybierz interfejs API, do którego dodano zasady buforowania.
 4. Wybierz operację **GetSpeakers**.
 5. Kliknij kartę **Test** w prawym górnym menu.
 6. Kliknij pozycję **Wyślij**.
 
-## <a name="next-steps"> </a>Następne kroki
+## <a name="next-steps"></a><a name="next-steps"> </a>Następne kroki
 * Więcej informacji na temat zasad buforowania, można znaleźć w temacie [Caching policies][Caching policies] (Zasady buforowania) w artykule [API Management policy reference][API Management policy reference] (Dokumentacja zasad usługi API Management).
 * Aby poznać informacje na temat buforowania elementów według kluczy przy użyciu wyrażeń zasad, zobacz artykuł [Custom caching in Azure API Management](api-management-sample-cache-by-key.md) (Niestandardowe buforowanie w usłudze Azure API Management).
 * Aby uzyskać więcej informacji o korzystaniu z zewnętrznej pamięci podręcznej Azure Cache for Redis, zobacz [Używanie zewnętrznej pamięci podręcznej Azure Cache for Redis w usłudze Azure API Management](api-management-howto-cache-external.md).
