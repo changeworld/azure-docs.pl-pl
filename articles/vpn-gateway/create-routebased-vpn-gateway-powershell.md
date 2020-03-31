@@ -1,6 +1,6 @@
 ---
-title: 'Azure VPN Gateway: Tworzenie bramy opartej na trasach: PowerShell'
-description: Szybkie tworzenie VPN Gateway opartej na trasach przy użyciu programu PowerShell
+title: 'Brama sieci VPN platformy Azure: tworzenie bramy opartej na marszrutach: Program PowerShell'
+description: Szybkie tworzenie bramy sieci VPN opartej na trasach przy użyciu programu PowerShell
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
@@ -8,35 +8,35 @@ ms.topic: article
 ms.date: 02/10/2020
 ms.author: cherylmc
 ms.openlocfilehash: 8a4bb9d2ac7b8124fa9b1e00f3ecceda4f4a4cdf
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77152962"
 ---
-# <a name="create-a-route-based-vpn-gateway-using-powershell"></a>Tworzenie bramy sieci VPN opartej na trasie przy użyciu programu PowerShell
+# <a name="create-a-route-based-vpn-gateway-using-powershell"></a>Tworzenie bramy sieci VPN opartej na marszrutach przy użyciu programu PowerShell
 
-Ten artykuł ułatwia szybkie tworzenie bramy sieci VPN opartej na trasach przy użyciu programu PowerShell. Brama sieci VPN jest używana podczas tworzenia połączenia sieci VPN z siecią lokalną. Do łączenia się z usługą sieci wirtualnych można także użyć bramy sieci VPN.
+Ten artykuł ułatwia szybkie tworzenie bramy sieci VPN opartej na marszrutach przy użyciu programu PowerShell. Brama sieci VPN jest używana podczas tworzenia połączenia sieci VPN z siecią lokalną. Można również użyć bramy sieci VPN do łączenia sieci wirtualnych.
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
-Kroki opisane w tym artykule spowodują utworzenie sieci wirtualnej, podsieci, podsieci bramy i bramy sieci VPN opartej na trasach (bramy sieci wirtualnej). Po zakończeniu tworzenia bramy można utworzyć połączenia. Te kroki wymagają subskrypcji platformy Azure. Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Kroki opisane w tym artykule utworzy sieć wirtualną, podsieć, podsieć bramy i bramę sieci VPN opartą na trasie (brama sieci wirtualnej). Po zakończeniu tworzenia bramy można następnie utworzyć połączenia. Te kroki wymagają subskrypcji platformy Azure. Jeśli nie masz subskrypcji platformy Azure, utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) przed rozpoczęciem.
 
 ### <a name="working-with-azure-powershell"></a>Praca z programem Azure PowerShell
 
 [!INCLUDE [powershell](../../includes/vpn-gateway-cloud-shell-powershell-about.md)]
 
-## <a name="create-a-resource-group"></a>Utwórz grupę zasobów
+## <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
 
-Utwórz grupę zasobów platformy Azure za pomocą polecenia [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup). Grupa zasobów to logiczny kontener przeznaczony do wdrażania zasobów platformy Azure i zarządzania nimi. Utwórz grupę zasobów. Jeśli używasz programu PowerShell lokalnie, Otwórz konsolę programu PowerShell z podwyższonym poziomem uprawnień i Połącz się z platformą Azure za pomocą polecenia `Connect-AzAccount`.
+Utwórz grupę zasobów platformy Azure za pomocą polecenia [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup). Grupa zasobów to logiczny kontener przeznaczony do wdrażania zasobów platformy Azure i zarządzania nimi. Utwórz grupę zasobów. Jeśli używasz programu PowerShell lokalnie, otwórz konsolę programu PowerShell z `Connect-AzAccount` podwyższonymi uprawnieniami i połącz się z platformą Azure za pomocą polecenia.
 
 ```azurepowershell-interactive
 New-AzResourceGroup -Name TestRG1 -Location EastUS
 ```
 
-## <a name="vnet"></a>Tworzenie sieci wirtualnej
+## <a name="create-a-virtual-network"></a><a name="vnet"></a>Tworzenie sieci wirtualnej
 
-Utwórz sieć wirtualną przy użyciu polecenia [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork). Poniższy przykład tworzy sieć wirtualną o nazwie **VNet1** w lokalizacji **Wschodnie** :
+Utwórz sieć wirtualną przy użyciu polecenia [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork). Poniższy przykład tworzy sieć wirtualną o nazwie **VNet1** w lokalizacji **EastUS:**
 
 ```azurepowershell-interactive
 $virtualNetwork = New-AzVirtualNetwork `
@@ -46,7 +46,7 @@ $virtualNetwork = New-AzVirtualNetwork `
   -AddressPrefix 10.1.0.0/16
 ```
 
-Utwórz konfigurację podsieci przy użyciu polecenia cmdlet [New-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig) .
+Utwórz konfigurację podsieci przy użyciu polecenia cmdlet [New-AzVirtualNetworkSubnetConfig.](/powershell/module/az.network/new-azvirtualnetworksubnetconfig)
 
 ```azurepowershell-interactive
 $subnetConfig = Add-AzVirtualNetworkSubnetConfig `
@@ -55,16 +55,16 @@ $subnetConfig = Add-AzVirtualNetworkSubnetConfig `
   -VirtualNetwork $virtualNetwork
 ```
 
-Ustaw konfigurację podsieci dla sieci wirtualnej przy użyciu polecenia cmdlet [Set-AzVirtualNetwork](/powershell/module/az.network/Set-azVirtualNetwork) .
+Ustaw konfigurację podsieci dla sieci wirtualnej za pomocą polecenia cmdlet [Set-AzVirtualNetwork.](/powershell/module/az.network/Set-azVirtualNetwork)
 
 
 ```azurepowershell-interactive
 $virtualNetwork | Set-AzVirtualNetwork
 ```
 
-## <a name="gwsubnet"></a>Dodawanie podsieci bramy
+## <a name="add-a-gateway-subnet"></a><a name="gwsubnet"></a>Dodawanie podsieci bramy
 
-Podsieć bramy zawiera zastrzeżone adresy IP, z których korzystają usługi bramy sieci wirtualnej. Aby dodać podsieć bramy, użyj następujących przykładów:
+Podsieć bramy zawiera zastrzeżone adresy IP używane przez usługi bramy sieci wirtualnej. Aby dodać podsieć bramy, należy użyć następujących przykładów:
 
 Ustaw zmienną dla sieci wirtualnej.
 
@@ -72,27 +72,27 @@ Ustaw zmienną dla sieci wirtualnej.
 $vnet = Get-AzVirtualNetwork -ResourceGroupName TestRG1 -Name VNet1
 ```
 
-Utwórz podsieć bramy przy użyciu polecenia cmdlet [Add-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/Add-azVirtualNetworkSubnetConfig) .
+Utwórz podsieć bramy przy użyciu polecenia cmdlet [Add-AzVirtualNetworkSubnetConfig.](/powershell/module/az.network/Add-azVirtualNetworkSubnetConfig)
 
 ```azurepowershell-interactive
 Add-AzVirtualNetworkSubnetConfig -Name 'GatewaySubnet' -AddressPrefix 10.1.255.0/27 -VirtualNetwork $vnet
 ```
 
-Ustaw konfigurację podsieci dla sieci wirtualnej przy użyciu polecenia cmdlet [Set-AzVirtualNetwork](/powershell/module/az.network/Set-azVirtualNetwork) .
+Ustaw konfigurację podsieci dla sieci wirtualnej za pomocą polecenia cmdlet [Set-AzVirtualNetwork.](/powershell/module/az.network/Set-azVirtualNetwork)
 
 ```azurepowershell-interactive
 $vnet | Set-AzVirtualNetwork
 ```
 
-## <a name="PublicIP"></a>Żądanie publicznego adresu IP
+## <a name="request-a-public-ip-address"></a><a name="PublicIP"></a>Przesłanie żądania dotyczącego publicznego adresu IP
 
-Brama sieci VPN musi mieć dynamicznie przydzieloną publiczny adres IP. Po utworzeniu połączenia z bramą sieci VPN jest to adres IP określony przez użytkownika. Użyj poniższego przykładu, aby zażądać publicznego adresu IP:
+Brama sieci VPN musi mieć dynamicznie przydzielony publiczny adres IP. Podczas tworzenia połączenia z bramą sieci VPN jest to adres IP określony przez użytkownika. Użyj następującego przykładu, aby zażądać publicznego adresu IP:
 
 ```azurepowershell-interactive
 $gwpip= New-AzPublicIpAddress -Name VNet1GWIP -ResourceGroupName TestRG1 -Location 'East US' -AllocationMethod Dynamic
 ```
 
-## <a name="GatewayIPConfig"></a>Utwórz konfigurację adresu IP bramy
+## <a name="create-the-gateway-ip-address-configuration"></a><a name="GatewayIPConfig"></a>Tworzenie konfiguracji adresu IP bramy
 
 W ramach konfiguracji bramy zostaje zdefiniowana podsieć i publiczny adres IP do użycia. Poniższy przykład umożliwia utworzenie własnej konfiguracji bramy:
 
@@ -101,9 +101,9 @@ $vnet = Get-AzVirtualNetwork -Name VNet1 -ResourceGroupName TestRG1
 $subnet = Get-AzVirtualNetworkSubnetConfig -Name 'GatewaySubnet' -VirtualNetwork $vnet
 $gwipconfig = New-AzVirtualNetworkGatewayIpConfig -Name gwipconfig1 -SubnetId $subnet.Id -PublicIpAddressId $gwpip.Id
 ```
-## <a name="CreateGateway"></a>Tworzenie bramy sieci VPN
+## <a name="create-the-vpn-gateway"></a><a name="CreateGateway"></a>Tworzenie bramy sieci VPN
 
-Tworzenie bramy sieci VPN może potrwać 45 minut lub dłużej. Po zakończeniu bramy można utworzyć połączenie między siecią wirtualną i inną wirtualną. Można też utworzyć połączenie między siecią wirtualną i lokalizacją lokalną. Utwórz bramę sieci VPN za pomocą polecenia cmdlet [New-AzVirtualNetworkGateway](/powershell/module/az.network/New-azVirtualNetworkGateway).
+Tworzenie bramy sieci VPN może potrwać 45 minut lub dłużej. Po zakończeniu bramy można utworzyć połączenie między siecią wirtualną a inną siecią wirtualną. Możesz też utworzyć połączenie między siecią wirtualną a lokalizacją lokalną. Utwórz bramę sieci VPN za pomocą polecenia cmdlet [New-AzVirtualNetworkGateway](/powershell/module/az.network/New-azVirtualNetworkGateway).
 
 ```azurepowershell-interactive
 New-AzVirtualNetworkGateway -Name VNet1GW -ResourceGroupName TestRG1 `
@@ -111,9 +111,9 @@ New-AzVirtualNetworkGateway -Name VNet1GW -ResourceGroupName TestRG1 `
 -VpnType RouteBased -GatewaySku VpnGw1
 ```
 
-## <a name="viewgw"></a>Wyświetlanie bramy sieci VPN
+## <a name="view-the-vpn-gateway"></a><a name="viewgw"></a>Wyświetlanie bramy sieci VPN
 
-Bramę sieci VPN można wyświetlić za pomocą polecenia cmdlet [Get-AzVirtualNetworkGateway](/powershell/module/az.network/Get-azVirtualNetworkGateway) .
+Bramę sieci VPN można wyświetlić za pomocą polecenia cmdlet [Get-AzVirtualNetworkGateway.](/powershell/module/az.network/Get-azVirtualNetworkGateway)
 
 ```azurepowershell-interactive
 Get-AzVirtualNetworkGateway -Name Vnet1GW -ResourceGroup TestRG1
@@ -164,15 +164,15 @@ BgpSettings            : {
      
 ```
 
-## <a name="viewgwpip"></a>Wyświetl publiczny adres IP
+## <a name="view-the-public-ip-address"></a><a name="viewgwpip"></a>Wyświetlanie publicznego adresu IP
 
-Aby wyświetlić publiczny adres IP dla bramy sieci VPN, należy użyć polecenia cmdlet [Get-AzPublicIpAddress](/powershell/module/az.network/Get-azPublicIpAddress) .
+Aby wyświetlić publiczny adres IP bramy sieci VPN, użyj polecenia cmdlet [Get-AzPublicIpAddress.](/powershell/module/az.network/Get-azPublicIpAddress)
 
 ```azurepowershell-interactive
 Get-AzPublicIpAddress -Name VNet1GWIP -ResourceGroupName TestRG1
 ```
 
-W przykładzie odpowiedzi wartość IpAddress jest publicznym adresem IP.
+W odpowiedzi przykładowej wartość IpAddress jest publicznym adresem IP.
 
 ```
 Name                     : VNet1GWIP
@@ -211,9 +211,9 @@ Remove-AzResourceGroup -Name TestRG1
 
 ## <a name="next-steps"></a>Następne kroki
 
-Po zakończeniu tworzenia bramy można utworzyć połączenie między Twoją siecią wirtualną a inną. Można też utworzyć połączenie między siecią wirtualną i lokalizacją lokalną.
+Po zakończeniu tworzenia bramy można utworzyć połączenie między siecią wirtualną a inną siecią wirtualną. Możesz też utworzyć połączenie między siecią wirtualną a lokalizacją lokalną.
 
 > [!div class="nextstepaction"]
-> [Utwórz połączenie lokacja-lokacja](vpn-gateway-create-site-to-site-rm-powershell.md)<br><br>
+> [Tworzenie połączenia typu lokacja-lokacja](vpn-gateway-create-site-to-site-rm-powershell.md)<br><br>
 > [Tworzenie połączenia typu punkt-lokacja](vpn-gateway-howto-point-to-site-rm-ps.md)<br><br>
-> [Utwórz połączenie z inną siecią wirtualną](vpn-gateway-vnet-vnet-rm-ps.md)
+> [Tworzenie połączenia z inną siecią wirtualną](vpn-gateway-vnet-vnet-rm-ps.md)

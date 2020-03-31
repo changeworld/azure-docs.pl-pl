@@ -1,6 +1,6 @@
 ---
-title: Szybki Start — Tworzenie zestawu skalowania maszyn wirtualnych za pomocą Azure PowerShell
-description: Rozpocznij pracę z wdrożeniami, Dowiedz się, jak szybko utworzyć skalę maszyny wirtualnej za pomocą Azure PowerShell.
+title: Szybki start — tworzenie zestawu skalowania maszyny wirtualnej za pomocą programu Azure PowerShell
+description: Rozpocznij wdrażanie, ucząc się szybko utworzyć skalę maszyny wirtualnej za pomocą programu Azure PowerShell.
 author: cynthn
 ms.service: virtual-machine-scale-sets
 ms.workload: infrastructure-services
@@ -9,10 +9,10 @@ ms.custom: mvc
 ms.date: 11/08/2018
 ms.author: cynthn
 ms.openlocfilehash: b3454291a40a1d39b281e28b7d1ebdbcac4020b4
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "76270894"
 ---
 # <a name="quickstart-create-a-virtual-machine-scale-set-with-azure-powershell"></a>Szybki start: tworzenie zestawu skalowania maszyn wirtualnych przy użyciu programu Azure PowerShell
@@ -21,13 +21,13 @@ ms.locfileid: "76270894"
 
 Zestaw skalowania maszyn wirtualnych umożliwia wdrożenie zestawu identycznych, automatycznie skalowanych maszyn wirtualnych, oraz zarządzanie nimi. Maszyny wirtualne w zestawie skalowania możesz skalować ręcznie lub możesz zdefiniować reguły skalowania automatycznego na podstawie użycia takich zasobów jak procesor CPU, zapotrzebowanie na pamięć lub ruch sieciowy. Moduł równoważenia obciążenia platformy Azure następnie dystrybuuje ruch do wystąpień maszyn wirtualnych w zestawie skalowania. W tym przewodniku Szybki start utworzysz zestaw skalowania maszyn wirtualnych i wdrożysz przykładową aplikację przy użyciu programu Azure PowerShell.
 
-Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Jeśli nie masz subskrypcji platformy Azure, utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) przed rozpoczęciem.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 
 ## <a name="create-a-scale-set"></a>Tworzenie zestawu skalowania
-Zanim będzie można utworzyć zestaw skalowania, Utwórz grupę zasobów przy użyciu funkcji [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup). W poniższym przykładzie pokazano tworzenie grupy zasobów o nazwie *myResourceGroup* w lokalizacji *eastus*:
+Przed utworzeniem zestawu skalowania należy utworzyć grupę zasobów za pomocą [aplikacji New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup). Poniższy przykład tworzy grupę zasobów o nazwie *myResourceGroup* w lokalizacji *eastus:*
 
 ```azurepowershell-interactive
 New-AzResourceGroup -ResourceGroupName "myResourceGroup" -Location "EastUS"

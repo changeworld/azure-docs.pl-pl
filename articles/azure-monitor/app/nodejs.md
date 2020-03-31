@@ -4,15 +4,15 @@ description: Monitoruj wydajność i diagnozuj problemy w usługach Node.js za p
 ms.topic: conceptual
 ms.date: 03/14/2019
 ms.openlocfilehash: 320ec62e642155002e42c59d4656f51673249eb1
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
-ms.translationtype: MT
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77670019"
 ---
 # <a name="monitor-your-nodejs-services-and-apps-with-application-insights"></a>Monitorowanie usług i aplikacji Node.js za pomocą usługi Application Insights
 
-[Usługa Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) monitoruje usługi i składniki zaplecza po wdrożeniu, aby ułatwić odnajdywanie i Szybkie diagnozowanie wydajności i innych problemów. Usługi Application Insights dla usług środowiska Node.js hostowanych w centrum danych można używać w maszynach wirtualnych platformy Azure i aplikacjach internetowych, a nawet w innych chmurach publicznych.
+[Usługa Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) monitoruje usługi zaplecza i składniki po wdrożeniu, aby ułatwić odnajdywanie i szybkie diagnozowanie wydajności i innych problemów. Usługi Application Insights dla usług środowiska Node.js hostowanych w centrum danych można używać w maszynach wirtualnych platformy Azure i aplikacjach internetowych, a nawet w innych chmurach publicznych.
 
 Aby móc odbierać, przechowywać i eksplorować dane monitorowania, uwzględnij zestaw SDK w kodzie, a następnie skonfiguruj odpowiedni zasób usługi Application Insights na platformie Azure. Zestaw SDK wysyła dane do zasobu na potrzeby przyszłej analizy i eksploracji.
 
@@ -20,27 +20,27 @@ Zestaw Node.js SDK może automatycznie monitorować przychodzące i wychodzące 
 
 Do ręcznego instrumentowania i monitorowania dodatkowych aspektów aplikacji i systemu można używać interfejsu API TelemetryClient. Interfejs API TelemetryClient został szczegółowo opisany w dalszej części tego artykułu.
 
-## <a name="get-started"></a>Rozpoczynanie pracy
+## <a name="get-started"></a>Wprowadzenie
 
 Wykonaj następujące zadania w celu skonfigurowania monitorowania aplikacji lub usługi.
 
 ### <a name="prerequisites"></a>Wymagania wstępne
 
-Przed rozpoczęciem upewnij się, że masz subskrypcję platformy Azure, lub [bezpłatnie Uzyskaj nową][azure-free-offer]. Jeśli organizacja ma już subskrypcję platformy Azure, administrator może wykonać [te instrukcje][add-aad-user] , aby dodać do niej użytkownika.
+Przed rozpoczęciem upewnij się, że masz subskrypcję platformy Azure, lub [bezpłatnie uzyskaj nową][azure-free-offer]. Jeśli Twoja organizacja ma już subskrypcję platformy Azure, administrator może dodać Cię do niej, wykonując [te instrukcje][add-aad-user].
 
 [azure-free-offer]: https://azure.microsoft.com/free/
 [add-aad-user]: https://docs.microsoft.com/azure/active-directory/active-directory-users-create-azure-portal
 
 
-### <a name="resource"></a> Konfigurowanie zasobu usługi Application Insights
+### <a name="set-up-an-application-insights-resource"></a><a name="resource"></a>Konfigurowanie zasobu usługi Application Insights
 
 
-1. Zaloguj się do [Azure portal][portal].
-2. Wybierz pozycję **Utwórz zasób** > **Narzędzia deweloperskie** > **Application Insights**. Zasób zawiera punkt końcowy do odbierania danych telemetrycznych, magazyn danych, zapisane raporty oraz pulpity nawigacyjne, konfigurację reguły i alertu oraz inne elementy.
+1. Zaloguj się do [Portalu Azure][portal].
+2. Wybierz pozycję **Utwórz narzędzie** > **Developer tools** > deweloperskie aplikacji **.** Zasób zawiera punkt końcowy do odbierania danych telemetrycznych, magazyn danych, zapisane raporty oraz pulpity nawigacyjne, konfigurację reguły i alertu oraz inne elementy.
 
 3. Na stronie tworzenia zasobu w polu **Typ aplikacji** wybierz pozycję **Aplikacja Node.js**. Typ aplikacji określa domyślne tworzone pulpity nawigacyjne i raporty. (Dowolny zasób usługi Application Insights może w rzeczywistości zbierać dane dla dowolnego języka i platformy).
 
-### <a name="sdk"></a> Konfigurowanie zestawu Node.js SDK
+### <a name="set-up-the-nodejs-sdk"></a><a name="sdk"></a> Konfigurowanie zestawu Node.js SDK
 
 Uwzględnij zestaw SDK w aplikacji, aby mógł zbierać dane. 
 
@@ -70,11 +70,11 @@ Uwzględnij zestaw SDK w aplikacji, aby mógł zbierać dane.
 
    Zestaw SDK możesz wypróbować bez wysyłania danych telemetrycznych przez ustawienie elementu `appInsights.defaultClient.config.disableAppInsights = true`.
 
-### <a name="monitor"></a> Monitorowanie aplikacji
+### <a name="monitor-your-app"></a><a name="monitor"></a>Monitorowanie aplikacji
 
 Zestaw SDK automatycznie zbiera dane telemetryczne dotyczące środowiska uruchomieniowego Node.js i niektórych popularnych modułów innych firm. Użyj swojej aplikacji, aby wygenerować niektóre z tych danych.
 
-Następnie w [Azure Portal][portal] przejdź do zasobu Application Insights utworzonego wcześniej. W obszarze **Oś czasu przeglądu** wyszukaj kilka pierwszych punktów danych. Aby wyświetlić bardziej szczegółowe dane, wybierz inne składniki wykresów.
+Następnie w witrynie [Azure Portal][portal] przejdź do usługi Application Insights i otwórz utworzony zasób. W obszarze **Oś czasu przeglądu** wyszukaj kilka pierwszych punktów danych. Aby wyświetlić bardziej szczegółowe dane, wybierz inne składniki wykresów.
 
 Aby wyświetlić topologię odnajdowaną dla aplikacji, wybierz przycisk **Mapa aplikacji**. Wybierz składniki na mapie, aby zobaczyć więcej szczegółów.
 

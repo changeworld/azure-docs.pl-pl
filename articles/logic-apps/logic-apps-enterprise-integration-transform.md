@@ -1,6 +1,6 @@
 ---
-title: Przekształć XML między formatami
-description: Twórz przekształcenia lub mapy, które konwertują XML między formatami w Azure Logic Apps z Pakiet integracyjny dla przedsiębiorstw
+title: Przekształcanie formatu XML między formatami
+description: Tworzenie przekształceń lub map konwertowania formatów XML między formatami w usłudze Azure Logic Apps za pomocą pakietu Enterprise Integration Pack
 services: logic-apps
 ms.suite: integration
 author: divyaswarnkar
@@ -9,82 +9,82 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 07/08/2016
 ms.openlocfilehash: 500769a39ba7658b35c1abb80101f6234170c941
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74792383"
 ---
-# <a name="create-maps-that-transform-xml-between-formats-in-azure-logic-apps-with-enterprise-integration-pack"></a>Tworzenie map, które przekształcają XML między formatami w Azure Logic Apps z Pakiet integracyjny dla przedsiębiorstw
+# <a name="create-maps-that-transform-xml-between-formats-in-azure-logic-apps-with-enterprise-integration-pack"></a>Tworzenie map, które przekształcają formaty XML między formatami w usłudze Azure Logic Apps za pomocą pakietu Enterprise Integration Pack
 
-Łącznik transformacji integracji przedsiębiorstwa konwertuje dane z jednego formatu na inny. Na przykład może istnieć komunikat przychodzący zawierający bieżącą datę w formacie YearMonthDay. Możesz użyć przekształcenia, aby ponownie sformatować datę, która ma być w formacie MonthDayYear.
+Łącznik transformacji integracji przedsiębiorstwa konwertuje dane z jednego formatu na inny. Na przykład może mieć wiadomość przychodzącą, która zawiera bieżącą datę w formacie YearMonthDay. Transformacja służy do formatowania daty w formacie MonthDayYear.
 
-## <a name="what-does-a-transform-do"></a>Co to jest transformacja?
-Transformacja, która jest również znana jako mapa, składa się ze źródłowego schematu XML (dane wejściowe) i docelowego schematu XML (dane wyjściowe). Można użyć różnych wbudowanych funkcji, które ułatwiają manipulowanie danymi, w tym manipulowanie ciągami, przypisania warunkowe, wyrażenia arytmetyczne, Programy formatujące daty i godziny, a nawet konstrukcje pętli.
+## <a name="what-does-a-transform-do"></a>Do czego robi się transformacja?
+A Transform, który jest również znany jako mapa, składa się ze źródłowego schematu XML (dane wejściowe) i docelowego schematu XML (dane wyjściowe). Można użyć różnych wbudowanych funkcji, aby ułatwić manipulowanie lub kontrolowanie danych, w tym manipulacje ciągami, przypisania warunkowe, wyrażenia arytmetyczne, formatery daty i godziny, a nawet konstrukcje pętli.
 
-## <a name="how-to-create-a-transform"></a>Jak utworzyć transformację?
-Można utworzyć transformację/mapę przy użyciu [zestawu SDK](https://aka.ms/vsmapsandschemas)programu Visual Studio integracja dla przedsiębiorstw. Po zakończeniu tworzenia i testowania transformacji Przekształć ją na konto integracji. 
+## <a name="how-to-create-a-transform"></a>Jak stworzyć transformację?
+Transformację/mapę można utworzyć za pomocą [zestawu SDK integracji](https://aka.ms/vsmapsandschemas)programu Visual Studio Enterprise . Po zakończeniu tworzenia i testowania transformacji, przekazać transformację do konta integracji. 
 
-## <a name="how-to-use-a-transform"></a>Jak używać transformacji
-Po przekazaniu przekształcenia/mapy do konta integracji można użyć go do utworzenia aplikacji logiki. Aplikacja logiki uruchamia przekształcenia przy każdym wyzwoleniu aplikacji logiki (i ma zawartość wejściową, która musi zostać przekształcona).
+## <a name="how-to-use-a-transform"></a>Jak korzystać z transformacji
+Po przesłaniu transformacji/mapy do konta integracji, można go użyć do utworzenia aplikacji logiki. Aplikacja Logika uruchamia przekształcenia za każdym razem, gdy aplikacja logiki jest wyzwalana (i istnieje zawartość wejściowa, która musi zostać przekształcona).
 
-**Poniżej przedstawiono kroki, które należy wykonać, aby użyć przekształcenia**:
+**Oto kroki, aby użyć transformacji:**
 
 ### <a name="prerequisites"></a>Wymagania wstępne
 
 * Tworzenie konta integracji i dodawanie do niego mapy  
 
-Teraz, po pobraniu wymagań wstępnych, należy utworzyć aplikację logiki:  
+Teraz, gdy już zadbasz o wymagania wstępne, nadszedł czas, aby utworzyć aplikację logiki:  
 
-1. Utwórz aplikację logiki i [Połącz ją z kontem integracji](../logic-apps/logic-apps-enterprise-integration-accounts.md "Dowiedz się, jak połączyć konto integracji z aplikacją logiki") zawierającym mapę.
-2. Dodawanie wyzwalacza **żądania** do aplikacji logiki  
+1. Utwórz aplikację logiki i [połącz ją z kontem integracji,](../logic-apps/logic-apps-enterprise-integration-accounts.md "Dowiedz się, jak połączyć konto integracji z aplikacją Logika") które zawiera mapę.
+2. Dodawanie wyzwalacza **żądania** do aplikacji Logika  
    ![](./media/logic-apps-enterprise-integration-transforms/transform-1.png)    
-3. Dodaj akcję **Przekształć XML** , wybierając najpierw pozycję **Dodaj akcję**   
+3. Dodaj akcję **Przekształć XML,** wybierając najpierw pozycję **Dodaj akcję**   
    ![](./media/logic-apps-enterprise-integration-transforms/transform-2.png)   
-4. Wprowadź *transformację* wyrazu w polu wyszukiwania, aby odfiltrować wszystkie akcje, które mają być używane.  
+4. Wprowadź *przekształcenie* wyrazu w polu wyszukiwania, aby filtrować wszystkie akcje do tego, którego chcesz użyć  
    ![](./media/logic-apps-enterprise-integration-transforms/transform-3.png)  
-5. Wybierz akcję **Przekształć XML**   
-6. Dodaj przekształcenie **zawartość** XML. Możesz użyć dowolnych danych XML otrzymywanych w żądaniu HTTP jako **zawartości**. W tym przykładzie wybierz treść żądania HTTP, które wyzwoliło aplikację logiki.
+5. Wybierz akcję **Przekształcanie XML**   
+6. Dodaj przekształconą **zawartość** XML. Jako **zawartość**można użyć dowolnych danych XML otrzymanych w żądaniu HTTP. W tym przykładzie wybierz treść żądania HTTP, które wyzwoliło aplikację Logika.
 
    > [!NOTE]
-   > Upewnij się, że zawartość **pliku XML transformacji** to XML. Jeśli zawartość nie jest w formacie XML lub jest zakodowana algorytmem Base64, należy określić wyrażenie, które przetwarza zawartość. Na przykład można użyć [funkcji](logic-apps-workflow-definition-language.md#functions), takich jak ```@base64ToBinary``` do dekodowania zawartości lub ```@xml``` do przetwarzania zawartości jako XML.
+   > Upewnij się, że zawartość pliku **XML transformacji** to XML. Jeśli zawartość nie jest w formacie XML lub jest zakodowana w formacie base4, należy określić wyrażenie, które przetwarza zawartość. Na przykład można [functions](logic-apps-workflow-definition-language.md#functions)użyć funkcji ```@base64ToBinary``` , takich ```@xml``` jak dekodowanie zawartości lub przetwarzania zawartości jako XML.
  
 
-7. Wybierz nazwę **mapy** , która ma zostać użyta do przeprowadzenia transformacji. Mapa musi już znajdować się na koncie integracji. W poprzednim kroku masz już dostęp do aplikacji logiki do konta integracji, które zawiera Twoje mapowanie.      
+7. Wybierz nazwę **map,** który ma być używany do przeprowadzenia transformacji. Mapa musi być już na koncie integracji. We wcześniejszym kroku już nadałeś aplikacji logiki dostęp do konta integracji, które zawiera mapę.      
    ![](./media/logic-apps-enterprise-integration-transforms/transform-4.png) 
-8. Zapisz swoją służbę  
+8. Zapisz wyniki dotychczasowej pracy  
     ![](./media/logic-apps-enterprise-integration-transforms/transform-5.png) 
 
-W tym momencie skończysz Konfigurowanie mapy. W świecie rzeczywistym można przechowywać przekształcone dane w aplikacji LOB, takiej jak SalesForce. Możesz łatwo wykonać akcję wysłania danych wyjściowych transformacji do usługi Salesforce. 
+W tym momencie zakończono konfigurowanie mapy. W rzeczywistych aplikacjach można przechowywać przekształcone dane w aplikacji LOB, takiej jak SalesForce. Można łatwo jako akcja, aby wysłać dane wyjściowe transformacji do Salesforce. 
 
-Możesz teraz przetestować transformację, wysyłając żądanie do punktu końcowego HTTP.  
+Teraz można przetestować transformację, wysyłając żądanie do punktu końcowego HTTP.  
 
 
 ## <a name="features-and-use-cases"></a>Funkcje i przypadki użycia
-* Transformacja utworzona w mapie może być prosta, taka jak kopiowanie nazwy i adresu z jednego dokumentu do drugiego. Można też tworzyć bardziej złożone przekształcenia przy użyciu wbudowanych operacji na mapie.  
-* Wiele operacji lub funkcji mapy jest łatwo dostępnych, takich jak ciągi, funkcje daty i godziny itd.  
-* Można wykonać bezpośrednią kopię danych między schematami. W odwzorze zawartym w zestawie SDK jest to proste, jak rysowanie linii łączącej elementy w schemacie źródłowym z odpowiadającymi im odpowiednikami w schemacie docelowym.  
-* Podczas tworzenia mapy można wyświetlić graficzną reprezentację mapy, która zawiera wszystkie utworzone relacje i linki.
-* Użyj funkcji mapy testów, aby dodać przykładowy komunikat XML. Za pomocą prostego kliknięcia można przetestować utworzoną mapę i wyświetlić wygenerowane dane wyjściowe.  
-* Przekaż istniejące mapy  
+* Transformacja utworzona na mapie może być prosta, na przykład kopiowanie nazwy i adresu z jednego dokumentu do drugiego. Można też tworzyć bardziej złożone przekształcenia przy użyciu gotowych operacji mapy.  
+* Wiele operacji mapy lub funkcje są łatwo dostępne, w tym ciągi, funkcje daty i tak dalej.  
+* Można wykonać bezpośrednią kopię danych między schematami. W mapera zawarte w zestawie SDK jest to tak proste, jak rysowanie linii, która łączy elementy w schemacie źródłowym z ich odpowiednikami w schemacie docelowym.  
+* Podczas tworzenia mapy można wyświetlić graficzną reprezentację mapy, która pokazuje wszystkie utworzone relacje i łącza.
+* Użyj funkcji Test Map, aby dodać przykładowy komunikat XML. Za pomocą jednego kliknięcia można przetestować utworzoną mapę i wyświetlić wygenerowane dane wyjściowe.  
+* Przekazywanie istniejących map  
 * Obejmuje obsługę formatu XML.
 
 ## <a name="advanced-features"></a>Funkcje zaawansowane
 
-### <a name="reference-assembly-or-custom-code-from-maps"></a>Zestaw referencyjny lub kod niestandardowy z map 
-Akcja przekształcenia obsługuje również mapy lub przekształcenia z odwołaniem do zestawu zewnętrznego. Ta funkcja umożliwia wywołania niestandardowego kodu platformy .NET bezpośrednio z map XSLT. Poniżej przedstawiono wymagania wstępne dotyczące używania zestawu w usłudze Maps.
+### <a name="reference-assembly-or-custom-code-from-maps"></a>Zestaw referencyjny lub niestandardowy kod z map 
+Akcja transformacji obsługuje również mapy lub przekształca w odniesieniu do zgromadzeń zewnętrznych. Ta funkcja umożliwia wywołania niestandardowego kodu platformy .NET bezpośrednio z map XSLT. Oto wymagania wstępne do użycia zestawu na mapach.
 
-* Mapa i zestaw, do których odwołuje się mapowanie, muszą zostać [przekazane do konta integracji](./logic-apps-enterprise-integration-maps.md). 
+* Mapa i zestaw, do którego odwołuje się mapa, muszą zostać [przesłane na konto integracji.](./logic-apps-enterprise-integration-maps.md) 
 
   > [!NOTE]
-  > Mapowanie i zestaw są wymagane do przekazania w określonej kolejności. Należy przekazać zestaw przed przekazaniem mapy, która odwołuje się do zestawu.
+  > Mapa i zestaw muszą zostać przesłane w określonej kolejności. Należy przekazać zestaw przed przekazaniem mapy, która odwołuje się do zestawu.
 
 * Mapa musi mieć również te atrybuty i sekcję CDATA, która zawiera wywołanie kodu zestawu:
 
-    * **Nazwa** jest nazwą niestandardowego zestawu.
-    * **przestrzeń nazw** jest przestrzenią nazw w zestawie, która zawiera kod niestandardowy.
+    * **nazwa** jest nazwą zestawu niestandardowego.
+    * **obszar nazw** jest obszar nazw w zestawie, który zawiera kod niestandardowy.
 
-  Ten przykład pokazuje mapę, która odwołuje się do zestawu o nazwie "XslUtilitiesLib" i wywołuje metodę `circumreference` z zestawu.
+  W tym przykładzie pokazano mapę, która odwołuje się do zestawu `circumreference` o nazwie "XslUtilitiesLib" i wywołuje metodę z zestawu.
 
   ```xml
   <?xml version="1.0" encoding="UTF-8"?>
@@ -110,8 +110,8 @@ Akcja przekształcenia obsługuje również mapy lub przekształcenia z odwołan
   ```
 
 
-### <a name="byte-order-mark"></a>Znacznik kolejności bajtów
-Domyślnie odpowiedź z transformacji zaczyna się od znacznika kolejności bajtów (BOM). Możesz uzyskać dostęp do tej funkcji tylko podczas pracy w edytorze widoku kodu. Aby wyłączyć tę funkcję, określ `disableByteOrderMark` właściwości `transformOptions`:
+### <a name="byte-order-mark"></a>Znacznik zamówienia bajtów
+Domyślnie odpowiedź z transformacji rozpoczyna się od znaku kolejności bajtów (BOM). Dostęp do tej funkcji można uzyskać tylko podczas pracy w edytorze widoku kodu. Aby wyłączyć tę funkcję, należy określić `disableByteOrderMark` `transformOptions` dla właściwości:
 
 ```json
 "Transform_XML": {
@@ -134,6 +134,6 @@ Domyślnie odpowiedź z transformacji zaczyna się od znacznika kolejności bajt
 
 
 ## <a name="learn-more"></a>Dowiedz się więcej
-* [Dowiedz się więcej o Pakiet integracyjny dla przedsiębiorstw](../logic-apps/logic-apps-enterprise-integration-overview.md "Dowiedz się więcej o Pakiet integracyjny dla przedsiębiorstw")  
-* [Dowiedz się więcej o mapach](../logic-apps/logic-apps-enterprise-integration-maps.md "Dowiedz się więcej na temat map integracji przedsiębiorstwa")  
+* [Dowiedz się więcej o pakiecie integracji dla przedsiębiorstw](../logic-apps/logic-apps-enterprise-integration-overview.md "Dowiedz się więcej o pakiecie integracji w przedsiębiorstwie")  
+* [Dowiedz się więcej o mapach](../logic-apps/logic-apps-enterprise-integration-maps.md "Dowiedz się więcej o mapach integracji przedsiębiorstwa")  
 

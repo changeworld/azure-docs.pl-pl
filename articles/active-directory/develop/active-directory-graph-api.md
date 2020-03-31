@@ -1,6 +1,6 @@
 ---
-title: Azure Active Directory interfejs API programu Graph | Microsoft Docs
-description: Przewodnik przegląd i szybki start dotyczący usługi Azure AD interfejs API programu Graph, który umożliwia programistyczny dostęp do usługi Azure AD za pomocą punktów końcowych interfejsu API REST.
+title: Interfejs API wykresu usługi Azure Active Directory | Dokumenty firmy Microsoft
+description: Omówienie i przewodnik szybki start dla interfejsu API programu Azure AD Graph, który umożliwia programowy dostęp do usługi Azure AD za pośrednictwem punktów końcowych interfejsu API REST.
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -14,57 +14,57 @@ ms.author: ryanwi
 ms.reviewer: dkershaw, sureshja
 ms.custom: aaddev, identityplatformtop40
 ms.openlocfilehash: ef042b9eb625a0d0de5d5dcb883b823c3a499aa9
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76698921"
 ---
 # <a name="azure-active-directory-graph-api"></a>Interfejs API programu Graph usługi Azure Active Directory
 
 > [!IMPORTANT]
-> Zdecydowanie zalecamy używanie [Microsoft Graph](https://developer.microsoft.com/graph) zamiast usługi Azure AD interfejs API programu Graph do uzyskiwania dostępu do zasobów Azure Active Directory (Azure AD). Obecnie koncentrujemy nasze działania deweloperskie na programie Microsoft Graph i nie planujemy żadnych dodatkowych rozszerzeń dla interfejsu API funkcji Azure AD Graph. Istnieje bardzo ograniczona liczba scenariuszy, w których usługa Azure AD interfejs API programu Graph nadal może być odpowiednia; Aby uzyskać więcej informacji, zapoznaj się z wpisami w blogu [Microsoft Graph lub Azure AD Graph](https://dev.office.com/blogs/microsoft-graph-or-azure-ad-graph) i [Migrowanie aplikacji Azure ad Graph do Microsoft Graph](https://docs.microsoft.com/graph/migrate-azure-ad-graph-overview).
+> Zdecydowanie zaleca się, aby uzyskać dostęp do zasobów usługi Azure Active Directory (Azure AD) za pomocą [programu Microsoft Graph](https://developer.microsoft.com/graph) zamiast interfejsu API programu Azure AD Graph. Obecnie koncentrujemy nasze działania deweloperskie na programie Microsoft Graph i nie planujemy żadnych dodatkowych rozszerzeń dla interfejsu API funkcji Azure AD Graph. Istnieje bardzo ograniczona liczba scenariuszy, dla których interfejs API programu Azure AD Graph może być nadal odpowiedni; Aby uzyskać więcej informacji, zobacz wpis w blogu [programu Microsoft Graph lub microsoft AD Graph](https://dev.office.com/blogs/microsoft-graph-or-azure-ad-graph) i [migruj aplikacje programu Azure AD Graph do programu Microsoft Graph](https://docs.microsoft.com/graph/migrate-azure-ad-graph-overview).
 
-Ten artykuł ma zastosowanie do usługi Azure AD interfejs API programu Graph. Aby poznać podobne informacje dotyczące interfejsu API Microsoft Graph, zobacz [Korzystanie z interfejsu api Microsoft Graph](https://docs.microsoft.com/graph/use-the-api).
+Ten artykuł dotyczy interfejsu API programu Azure AD Graph. Aby uzyskać podobne informacje dotyczące interfejsu API programu Microsoft Graph, zobacz [Korzystanie z interfejsu API programu Microsoft Graph](https://docs.microsoft.com/graph/use-the-api).
 
-Interfejs API usługi Azure Active Directory Graph zapewnia dostęp programistyczny do usługi Azure AD za pomocą punktów końcowych interfejsu API REST. Aplikacje mogą używać usługi Azure AD interfejs API programu Graph do wykonywania operacji tworzenia, odczytu, aktualizacji i usuwania (CRUD) na danych i obiektach katalogu. Na przykład usługa Azure AD interfejs API programu Graph obsługuje następujące typowe operacje dla obiektu użytkownika:
+Interfejs API usługi Azure Active Directory Graph zapewnia dostęp programistyczny do usługi Azure AD za pomocą punktów końcowych interfejsu API REST. Aplikacje mogą używać interfejsu API programu Azure AD Graph do wykonywania operacji tworzenia, odczytu, aktualizacji i usuwania (CRUD) na danych i obiektach katalogu. Na przykład interfejs API programu Azure AD Graph obsługuje następujące typowe operacje dla obiektu użytkownika:
 
 * Tworzenie nowego użytkownika w katalogu
-* Uzyskiwanie szczegółowych właściwości użytkownika, takich jak ich grupy
-* Aktualizowanie właściwości użytkownika, takich jak lokalizacja i numer telefonu, lub zmiana hasła
-* Sprawdź członkostwo w grupie użytkownika w celu uzyskania dostępu opartego na rolach
-* Wyłącz konto użytkownika lub usuń je całkowicie
+* Uzyskaj szczegółowe właściwości użytkownika, takie jak ich grupy
+* Aktualizowanie właściwości użytkownika, takich jak jego lokalizacja i numer telefonu, lub zmienianie hasła
+* Sprawdzanie członkostwa w grupie użytkownika pod kątem dostępu opartego na rolach
+* Wyłączanie konta użytkownika lub całkowite usunięcie go
 
-Ponadto można wykonywać podobne operacje na innych obiektach, takich jak grupy i aplikacje. Aby wywoływać interfejs API programu Graph usługi Azure AD w katalogu, aplikacja musi być zarejestrowana w usłudze Azure AD. Do aplikacji należy również uzyskać dostęp do usługi Azure AD interfejs API programu Graph. Ten dostęp zazwyczaj uzyskuje się za pomocą przepływu zgody użytkownika lub administratora.
+Ponadto można wykonywać podobne operacje na innych obiektach, takich jak grupy i aplikacje. Aby wywołać interfejs API programu Azure AD Graph w katalogu, aplikacja musi być zarejestrowana w usłudze Azure AD. Aplikacja musi również mieć dostęp do interfejsu API programu Azure AD Graph. Ten dostęp jest zwykle osiągany za pośrednictwem przepływu zgody użytkownika lub administratora.
 
-Aby rozpocząć korzystanie z interfejs API programu Graph Azure Active Directory, zapoznaj się z [przewodnikiem Szybki Start dotyczącym usługi Azure ad interfejs API programu Graph](active-directory-graph-api-quickstart.md)lub Wyświetl [dokumentację referencyjną usługi Azure AD interfejs API programu Graph](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/api-catalog).
+Aby rozpocząć korzystanie z interfejsu API wykresu usługi Azure Active Directory, zobacz [przewodnik szybki start interfejsu API programu Azure AD Graph](active-directory-graph-api-quickstart.md)lub zapoznaj się z [dokumentacją referencyjną interaktywnego interfejsu API programu Azure AD Graph.](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/api-catalog)
 
 ## <a name="features"></a>Funkcje
 
-Usługa Azure AD interfejs API programu Graph udostępnia następujące funkcje:
+Interfejs API programu Azure AD Graph zawiera następujące funkcje:
 
-* **Punkty końcowe interfejsu API REST**: usługa Azure AD interfejs API programu Graph jest usługą RESTfulą obejmującą punkty końcowe, do których uzyskuje się dostęp przy użyciu standardowych żądań HTTP. Usługa Azure AD interfejs API programu Graph obsługuje typy zawartości XML lub JavaScript (JSON) dla żądań i odpowiedzi. Aby uzyskać więcej informacji, zobacz [Dokumentacja interfejsu API REST usługi Azure AD Graph](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/api-catalog).
-* **Uwierzytelnianie za pomocą usługi Azure AD**: każde żądanie do usługi azure AD interfejs API programu Graph musi zostać uwierzytelnione przez dołączenie tokenu w sieci Web JSON (JWT) w nagłówku autoryzacji żądania. Ten token jest uzyskiwany przez utworzenie żądania punktu końcowego tokenu usługi Azure AD i podanie prawidłowych poświadczeń. Możesz użyć przepływu poświadczeń klienta OAuth 2,0 lub przepływu przydzielenia kodu autoryzacji, aby uzyskać token do wywołania grafu. Aby uzyskać więcej informacji, [OAuth 2,0 w usłudze Azure AD](https://msdn.microsoft.com/library/azure/dn645545.aspx).
-* **Autoryzacja oparta na rolach (RBAC)** : grupy zabezpieczeń służą do przeprowadzania RBAC w usłudze Azure AD interfejs API programu Graph. Na przykład jeśli chcesz określić, czy użytkownik ma dostęp do określonego zasobu, aplikacja może wywołać operację [Sprawdź członkostwo w grupie (przechodnie)](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/functions-and-actions#checkMemberGroups) , która zwraca wartość PRAWDA lub FAŁSZ.
-* **Zapytanie różnicowe**: zapytanie różnicowe umożliwia śledzenie zmian w katalogu między dwoma okresami bez konieczności częstego wykonywania zapytań w usłudze Azure AD interfejs API programu Graph. Ten typ żądania zwróci tylko zmiany wprowadzone między poprzednim żądaniem zapytania różnicowego a bieżącym żądaniem. Aby uzyskać więcej informacji, zobacz [zapytanie różnicowe usługi Azure AD interfejs API programu Graph](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-differential-query).
-* **Rozszerzenia katalogów**: można dodawać niestandardowe właściwości do obiektów katalogu bez konieczności zewnętrznego magazynu danych. Na przykład jeśli aplikacja wymaga właściwości identyfikatora Skype dla każdego użytkownika, można zarejestrować nową właściwość w katalogu i będzie ona dostępna do użycia dla każdego obiektu użytkownika. Aby uzyskać więcej informacji, zobacz [rozszerzenia schematu katalogu usługi Azure AD interfejs API programu Graph](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-directory-schema-extensions).
-* **Zabezpieczone przez zakresy uprawnień**: usługa Azure AD interfejs API programu Graph uwidacznia zakresy uprawnień, które umożliwiają bezpieczny dostęp do danych usługi Azure AD przy użyciu protokołu OAuth 2,0. Obsługuje różne typy aplikacji klienckich, w tym:
+* **Punkty końcowe interfejsu API REST:** Interfejs API programu Azure AD Graph to usługa RESTful składająca się z punktów końcowych, do których są dostępne przy użyciu standardowych żądań HTTP. Interfejs API programu Azure AD Graph obsługuje typy zawartości XML lub Javascript Object Notation (JSON) dla żądań i odpowiedzi. Aby uzyskać więcej informacji, zobacz [odwołanie interfejsu API rest programu Azure AD Graph](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/api-catalog).
+* **Uwierzytelnianie za pomocą usługi Azure AD:** Każde żądanie do interfejsu API programu Azure AD Graph musi być uwierzytelnione przez dołączenie tokenu JSON Web Token (JWT) w nagłówku autoryzacji żądania. Ten token jest pobierany przez złożenie żądania do punktu końcowego tokenu usługi Azure AD i podanie prawidłowych poświadczeń. Przepływ poświadczeń klienta OAuth 2.0 lub przepływ udzielania kodu autoryzacji można uzyskać token do wywołania wykresu. Aby uzyskać więcej informacji, [OAuth 2.0 w usłudze Azure AD](https://msdn.microsoft.com/library/azure/dn645545.aspx).
+* **Autoryzacja oparta na rolach (RBAC)**: Grupy zabezpieczeń są używane do wykonywania funkcji RBAC w interfejsie API programu Azure AD Graph. Na przykład jeśli chcesz ustalić, czy użytkownik ma dostęp do określonego zasobu, aplikacja może wywołać [check group membership (przechodnie)](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/functions-and-actions#checkMemberGroups) operacji, która zwraca true lub false.
+* **Kwerenda różnicowa:** Kwerenda różnicowa umożliwia śledzenie zmian w katalogu między dwoma okresami czasu bez konieczności częstego wykonywania zapytań do interfejsu API programu Azure AD Graph. Ten typ żądania zwróci tylko zmiany wprowadzone między poprzednim żądaniem kwerendy różnicowej a bieżącym żądaniem. Aby uzyskać więcej informacji, zobacz [kwerenda różnicowa interfejsu API programu Azure AD Graph](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-differential-query).
+* **Rozszerzenia katalogów:** Można dodawać właściwości niestandardowe do obiektów katalogu bez konieczności przechowywania danych zewnętrznych. Na przykład jeśli aplikacja wymaga właściwości Skype ID dla każdego użytkownika, można zarejestrować nową właściwość w katalogu i będzie ona dostępna do użycia na każdym obiekcie użytkownika. Aby uzyskać więcej informacji, zobacz [rozszerzenia schematu katalogów interfejsu API programu Azure AD Graph](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-directory-schema-extensions).
+* **Zabezpieczone przez zakresy uprawnień:** Interfejs API programu Azure AD Graph udostępnia zakresy uprawnień, które umożliwiają bezpieczny dostęp do danych usługi Azure AD przy użyciu OAuth 2.0. Obsługuje różne typy aplikacji klienckich, w tym:
   
-  * interfejsy użytkownika, które mają delegowany dostęp do danych za pośrednictwem autoryzacji z zalogowanego użytkownika (delegowany)
-  * service/daemon applications that operate in the background without a signed-in user being present and use application-defined role-based access control
+  * interfejsy użytkownika, które mają delegowany dostęp do danych za pośrednictwem autoryzacji od zalogowany użytkownik (delegowane)
+  * aplikacje usługi/demonów, które działają w tle bez obecności zalogowanego użytkownika i korzystają z kontroli dostępu opartej na rolach zdefiniowanej przez aplikację
     
-    Both delegated and application permissions represent a privilege exposed by the Azure AD Graph API and can be requested by client applications through application registration permissions features in the [Azure portal](https://portal.azure.com). [Azure AD Graph API permission scopes](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-permission-scopes) provides information on what's available for use by your client application.
+    Uprawnienia delegowane i uprawnienia aplikacji reprezentują uprawnienia udostępniane przez interfejs API programu Azure AD Graph i mogą być wymagane przez aplikacje klienckie za pośrednictwem funkcji uprawnień rejestracji aplikacji w [witrynie Azure portal.](https://portal.azure.com) [Zakresy uprawnień interfejsu API programu Azure AD Graph](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-permission-scopes) zawierają informacje o tym, co jest dostępne do użycia przez aplikację kliencką.
 
 ## <a name="scenarios"></a>Scenariusze
 
-Azure AD Graph API enables many application scenarios. The following scenarios are the most common:
+Interfejs API programu Azure AD Graph umożliwia wiele scenariuszy aplikacji. Następujące scenariusze są najczęściej:
 
-* **Line of Business (Single Tenant) Application**: In this scenario, an enterprise developer works for an organization that has an Office 365 subscription. The developer is building a web application that interacts with Azure AD to perform tasks such as assigning a license to a user. This task requires access to the Azure AD Graph API, so the developer registers the single tenant application in Azure AD and configures read and write permissions for Azure AD Graph API. Then the application is configured to use either its own credentials or those of the currently sign-in user to acquire a token to call the Azure AD Graph API.
-* **Software as a Service Application (Multi-Tenant)** : In this scenario, an independent software vendor (ISV) is developing a hosted multi-tenant web application that provides user management features for other organizations that use Azure AD. These features require access to directory objects, so the application needs to call the Azure AD Graph API. The developer registers the application in Azure AD, configures it to require read and write permissions for Azure AD Graph API, and then enables external access so that other organizations can consent to use the application in their directory. When a user in another organization authenticates to the application for the first time, they are shown a consent dialog with the permissions the application is requesting. Granting consent will then give the application those requested permissions to Azure AD Graph API in the user’s directory. For more information on the consent framework, see [Overview of the consent framework](consent-framework.md).
+* **Aplikacja wiersza pracy (pojedyncza dzierżawa):** W tym scenariuszu deweloper dla przedsiębiorstwa pracuje dla organizacji, która ma subskrypcję usługi Office 365. Deweloper buduje aplikację sieci web, która współdziała z usługą Azure AD do wykonywania zadań, takich jak przypisywanie licencji do użytkownika. To zadanie wymaga dostępu do interfejsu API programu Azure AD Graph, więc deweloper rejestruje aplikację pojedynczej dzierżawy w usłudze Azure AD i konfiguruje uprawnienia do odczytu i zapisu dla interfejsu API programu Azure AD Graph. Następnie aplikacja jest skonfigurowana do używania własnych poświadczeń lub tych aktualnie logowania użytkownika, aby uzyskać token do wywołania interfejsu API programu Azure AD Graph.
+* **Oprogramowanie jako aplikacja usługi (multi-dzierżawca)**: W tym scenariuszu niezależny dostawca oprogramowania (ISV) opracowuje hostowane wielodostępne aplikacje sieci web, która zapewnia funkcje zarządzania użytkownikami dla innych organizacji korzystających z usługi Azure AD. Te funkcje wymagają dostępu do obiektów katalogu, więc aplikacja musi wywołać interfejs API programu Azure AD Graph. Deweloper rejestruje aplikację w usłudze Azure AD, konfiguruje ją tak, aby wymagał uprawnień do odczytu i zapisu dla interfejsu API programu Azure AD Graph, a następnie włącza dostęp zewnętrzny, aby inne organizacje mogły wyrazić zgodę na korzystanie z aplikacji w ich katalogu. Gdy użytkownik w innej organizacji uwierzytelnia się w aplikacji po raz pierwszy, są one wyświetlane okno dialogowe zgody z uprawnieniami, których żąda aplikacja. Udzielanie zgody następnie przyzna aplikacji te żądane uprawnienia do interfejsu API programu Azure AD Graph w katalogu użytkownika. Aby uzyskać więcej informacji na temat ram zgody, zobacz [Omówienie ram zgody](consent-framework.md).
 
 ## <a name="next-steps"></a>Następne kroki
 
-To begin using the Azure Active Directory Graph API, see the following topics:
+Aby rozpocząć korzystanie z interfejsu API wykresu usługi Azure Active Directory, zobacz następujące tematy:
 
-* [Azure AD Graph API quickstart guide](active-directory-graph-api-quickstart.md)
-* [Azure AD Graph REST documentation](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/api-catalog)
+* [Przewodnik szybki start interfejsu API programu Azure AD Graph](active-directory-graph-api-quickstart.md)
+* [Dokumentacja REST programu Azure AD Graph](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/api-catalog)

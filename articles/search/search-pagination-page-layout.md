@@ -1,51 +1,51 @@
 ---
-title: Jak korzystać z wyników wyszukiwania
+title: Jak pracować z wynikami wyszukiwania
 titleSuffix: Azure Cognitive Search
-description: Tworzenie struktury i sortowanie wyników wyszukiwania, pobieranie liczby dokumentów i Dodawanie nawigacji zawartości do wyników wyszukiwania w usłudze Azure Wyszukiwanie poznawcze.
+description: Strukturyzuj i sortuj wyniki wyszukiwania, uzyskaj liczbę dokumentów i dodaj nawigację zawartości do wyników wyszukiwania w usłudze Azure Cognitive Search.
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/24/2020
-ms.openlocfilehash: e83ecb3888ed4b19933233f3ab511d1e86fb37af
-ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
+ms.openlocfilehash: 124f1ce3d30ce87d5e9d8fa027e5a7d6c0b3cb17
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/12/2020
-ms.locfileid: "79136994"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79481606"
 ---
-# <a name="how-to-work-with-search-results-in-azure-cognitive-search"></a>Jak korzystać z wyników wyszukiwania w usłudze Azure Wyszukiwanie poznawcze
-Ten artykuł zawiera wskazówki dotyczące implementowania standardowych elementów strony wyników wyszukiwania, takich jak łączna liczba, pobieranie dokumentów, kolejność sortowania i nawigacja. Opcje dotyczące strony, które tworzą dane lub informacje w wynikach wyszukiwania, są określane za pomocą żądań [przeszukiwania dokumentów](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) wysyłanych do usługi Azure wyszukiwanie poznawcze. 
+# <a name="how-to-work-with-search-results-in-azure-cognitive-search"></a>Jak pracować z wynikami wyszukiwania w usłudze Azure Cognitive Search
+Ten artykuł zawiera wskazówki dotyczące implementowania standardowych elementów strony wyników wyszukiwania, takich jak całkowita liczba, pobieranie dokumentów, sortowanie zamówień i nawigacja. Opcje związane ze stroną, które współtworzyą dane lub informacje do wyników wyszukiwania, są określane za pomocą żądań [dokumentu wyszukiwania](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) wysyłanych do usługi Azure Cognitive Search. 
 
-W interfejsie API REST żądania obejmują pobieranie parametrów poleceń, ścieżek i zapytań, które informują o tym, co jest wymagane, i jak sformułować odpowiedź. W zestawie SDK platformy .NET równoważny interfejs API jest [klasą DocumentSearchResult](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.documentsearchresult-1).
+W interfejsie API REST żądania zawierają polecenie GET, ścieżkę i parametry kwerendy, które informują usługę o żądanym żądaniu i jak sformułować odpowiedź. W pliku .NET SDK równoważnym interfejsem API jest [klasa DocumentSearchResult](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.documentsearchresult-1).
 
-Aby szybko wygenerować stronę wyszukiwania dla klienta, zapoznaj się z następującymi opcjami:
+Aby szybko wygenerować stronę wyszukiwania dla klienta, zapoznaj się z tymi opcjami:
 
 + Użyj [generatora aplikacji](search-create-app-portal.md) w portalu, aby utworzyć stronę HTML z paskiem wyszukiwania, nawigacją aspektową i obszarem wyników.
-+ Postępuj zgodnie z samouczkiem [Tworzenie C# pierwszej aplikacji w](tutorial-csharp-create-first-app.md) celu utworzenia klienta funkcjonalnego.
++ Postępuj zgodnie [z Tworzenie pierwszej aplikacji w języku C#](tutorial-csharp-create-first-app.md) samouczek, aby utworzyć klienta funkcjonalnego.
 
-Kilka przykładów kodu obejmuje interfejs frontonu sieci Web, który można znaleźć tutaj: [aplikacja demonstracyjna zadań w Nowym Jorku](https://aka.ms/azjobsdemo), [przykładowy kod JavaScript z aktywną witryną demonstracyjną](https://github.com/liamca/azure-search-javascript-samples)i [CognitiveSearchFrontEnd](https://github.com/LuisCabrer/CognitiveSearchFrontEnd).
+Kilka przykładów kodu zawiera interfejs frontonu sieci Web, który można znaleźć tutaj: [Aplikacja demonstracyjna New York City Jobs,](https://aka.ms/azjobsdemo) [przykładowy kod JavaScript z witryną demonstracyjnej na żywo](https://github.com/liamca/azure-search-javascript-samples)i [CognitiveSearchFrontEnd](https://github.com/LuisCabrer/CognitiveSearchFrontEnd).
 
 > [!NOTE]
-> Prawidłowe żądanie zawiera wiele elementów, takich jak adres URL usługi i ścieżka, zlecenie HTTP, `api-version`itd. W przypadku zwięzłości zostały przycięte przykłady w celu wyróżnienia tylko składni, która jest istotna dla dzielenia na strony. Aby uzyskać więcej informacji na temat składni żądania, zobacz [interfejsy API REST platformy Azure wyszukiwanie poznawcze](https://docs.microsoft.com/rest/api/searchservice).
+> Prawidłowe żądanie zawiera szereg elementów, takich jak adres URL `api-version`usługi i ścieżka, zlecenie HTTP i tak dalej. Dla zwięzłości przycinamy przykłady, aby wyróżnić tylko składnię, która jest istotna dla podziałki na strony. Aby uzyskać więcej informacji na temat składni żądań, zobacz [Interfejsy API REST usługi Azure Cognitive Search](https://docs.microsoft.com/rest/api/searchservice).
 >
 
-## <a name="total-hits-and-page-counts"></a>Łączna liczba trafień i liczb stron
+## <a name="total-hits-and-page-counts"></a>Łączna liczba trafień i liczba stron
 
-Pokazywanie łącznej liczby wyników zwróconych z zapytania, a następnie zwrócenie tych wyników w mniejszych fragmentach, ma podstawowe znaczenie dla praktycznie wszystkich stron wyszukiwania.
+Wyświetlanie całkowitej liczby wyników zwróconych z kwerendy, a następnie zwracanie tych wyników w mniejszych fragmentach, ma podstawowe znaczenie dla praktycznie wszystkich stron wyszukiwania.
 
 ![][1]
 
-W przypadku usługi Azure Wyszukiwanie poznawcze należy użyć parametrów `$count`, `$top`i `$skip`, aby zwrócić te wartości. Poniższy przykład przedstawia przykładowe żądanie dla łącznej liczby trafień w indeksie o nazwie "online-Catalog", zwracane jako `@odata.count`:
+W usłudze Azure Cognitive `$count` `$top`Search `$skip` używasz programu , i parametrów do zwrócenia tych wartości. Poniższy przykład przedstawia przykładowe żądanie całkowitej liczby trafień w `@odata.count`indeksie o nazwie "katalog online", zwrócone jako:
 
     GET /indexes/online-catalog/docs?$count=true
 
-Pobierz dokumenty z grup 15, a także Pokaż łączne trafienia, zaczynając od pierwszej strony:
+Pobierz dokumenty w grupach po 15, a także pokaż łączną liczbę trafień, zaczynając od pierwszej strony:
 
     GET /indexes/online-catalog/docs?search=*&$top=15&$skip=0&$count=true
 
-Wyniki paginating wymagają zarówno `$top`, jak i `$skip`, gdzie `$top` określa liczbę elementów do zwrócenia w partii, a `$skip` określa liczbę elementów do pominięcia. W poniższym przykładzie każda strona pokazuje następne 15 elementów, wskazywanych przez przyrostowe uskoki w parametrze `$skip`.
+Wyniki podziałania na `$top` `$skip`strony `$top` wymagają zarówno, jak i , gdzie `$skip` określa, ile elementów do zwrócenia w partii i określa, ile elementów pominąć. W poniższym przykładzie każda strona pokazuje następne 15 elementów, wskazywanych przez przyrostowe skoki w parametrze. `$skip`
 
     GET /indexes/online-catalog/docs?search=*&$top=15&$skip=0&$count=true
 
@@ -55,49 +55,49 @@ Wyniki paginating wymagają zarówno `$top`, jak i `$skip`, gdzie `$top` określ
 
 ## <a name="layout"></a>Układ
 
-Na stronie Wyniki wyszukiwania możesz chcieć wyświetlić obraz miniatury, podzestaw pól i link do strony kompletnego produktu.
+Na stronie wyników wyszukiwania możesz chcieć wyświetlić obraz miniatury, podzbiór pól i łącze do pełnej strony produktu.
 
  ![][2]
 
-W przypadku usługi Azure Wyszukiwanie poznawcze należy użyć `$select` i [żądania interfejsu API wyszukiwania](https://docs.microsoft.com/rest/api/searchservice/search-documents) do zaimplementowania tego środowiska.
+W usłudze Azure Cognitive `$select` Search należy użyć i [żądanie interfejsu API wyszukiwania,](https://docs.microsoft.com/rest/api/searchservice/search-documents) aby zaimplementować to środowisko.
 
-Aby zwrócić podzestaw pól dla układu wieloukładowego:
+Aby zwrócić podzbiór pól dla układu sąsiadującego:
 
     GET /indexes/online-catalog/docs?search=*&$select=productName,imageFile,description,price,rating
 
-Obrazy i pliki multimedialne nie są bezpośrednio przeszukiwane i powinny być przechowywane na innej platformie magazynu, takiej jak usługa Azure Blob Storage, aby zmniejszyć koszty. W indeksie i dokumentach Zdefiniuj pole przechowujące adres URL zawartości zewnętrznej. Można następnie użyć pola jako odwołania do obrazu. Adres URL obrazu powinien znajdować się w dokumencie.
+Obrazy i pliki multimedialne nie są bezpośrednio przeszukiwalne i powinny być przechowywane w innej platformie magazynu, takiej jak magazyn obiektów Blob platformy Azure, aby zmniejszyć koszty. W indeksie i dokumentach zdefiniuj pole, w które przechowuje adres URL zawartości zewnętrznej. Następnie można użyć pola jako odniesienia do obrazu. Adres URL obrazu powinien znajdować się w dokumencie.
 
-Aby pobrać stronę opisu produktu dla zdarzenia **onkliknięcia** , użyj [dokumentu wyszukiwania](https://docs.microsoft.com/rest/api/searchservice/Lookup-Document) do przekazania klucza dokumentu do pobrania. Typ danych klucza jest `Edm.String`. W tym przykładzie jest to *246810*.
+Aby pobrać stronę opisu produktu dla zdarzenia **onClick,** użyj [dokumentu odnośnego,](https://docs.microsoft.com/rest/api/searchservice/Lookup-Document) aby przekazać klucz dokumentu do pobrania. Typ danych klucza `Edm.String`to . W tym przykładzie jest *to 246810*.
 
     GET /indexes/online-catalog/docs/246810
 
-## <a name="sort-by-relevance-rating-or-price"></a>Sortuj według istotności, klasyfikacji lub ceny
+## <a name="sort-by-relevance-rating-or-price"></a>Sortowanie według trafności, klasyfikacji lub ceny
 
-Kolejność sortowania jest często określana jako istotna, ale jest powszechna możliwość zapewnienia, że alternatywne zamówienia sortowania są łatwo dostępne, dzięki czemu klienci mogą szybko ponownie wylosować istniejące wyniki w innym porządku rangi.
+Sortuj zamówienia często domyślnie do istotności, ale jest to wspólne, aby alternatywne zamówienia sortowania łatwo dostępne, tak aby klienci mogą szybko przetasowania istniejących wyników w innej kolejności.
 
  ![][3]
 
-Na platformie Azure Wyszukiwanie poznawcze sortowanie opiera się na wyrażeniu `$orderby`, dla wszystkich pól, które są indeksowane jako `"Sortable": true.` klauzula `$orderby` jest wyrażeniem OData. Aby uzyskać informacje na temat składni, zobacz [składnia wyrażenia OData dla filtrów i klauzul ORDER by](query-odata-filter-orderby-syntax.md).
+W usłudze Azure Cognitive Search `$orderby` sortowanie jest oparte na wyrażeniu, dla wszystkich pól, które są indeksowane jako `"Sortable": true.` klauzula An `$orderby` jest wyrażeniem OData. Aby uzyskać informacje o składni, zobacz [Składnia wyrażenia OData dla filtrów i klauzul typu "kolejność według".](query-odata-filter-orderby-syntax.md)
 
-Istotność jest silnie skojarzona z profilami oceniania. Możesz użyć domyślnej oceny, która opiera się na analizie tekstu i statystyce do klasyfikowania wszystkich wyników, z wyższymi wynikami do dokumentów o większej lub silniejszym dopasowań w wyszukiwanym terminie.
+Trafność jest silnie związana z profilami oceniania. Można użyć domyślnego oceniania, który opiera się na analizie tekstu i statystykach, aby uszeregować kolejność wszystkich wyników, przy czym wyższe wyniki będą trafiać do dokumentów z większą lub silniejszą dopasowaniami w wyszukiwanym terminie.
 
-Alternatywne zamówienia sortowania są zwykle skojarzone ze zdarzeniami **onkliknięcia** , które wywołują z powrotem do metody, która kompiluje porządek sortowania. Na przykład, uwzględniając ten element strony:
+Alternatywne zamówienia sortowania są zazwyczaj skojarzone ze zdarzeniami **onClick,** które odwołują się do metody, która tworzy kolejność sortowania. Na przykład, biorąc pod uwagę ten element strony:
 
  ![][4]
 
-Utworzysz metodę, która akceptuje wybraną opcję sortowania jako dane wejściowe i zwraca listę uporządkowaną dla kryteriów skojarzonych z tą opcją.
+Należy utworzyć metodę, która akceptuje wybraną opcję sortowania jako dane wejściowe i zwraca uporządkowaną listę kryteriów skojarzonych z tą opcją.
 
  ![][5]
 
 > [!NOTE]
-> Chociaż domyślne ocenianie jest wystarczające dla wielu scenariuszy, zalecamy oparcie w niestandardowym profilu oceniania. Niestandardowy profil oceniania umożliwia podniesienie poziomu elementów, które są bardziej korzystne dla Twojej firmy. Aby uzyskać więcej informacji, zobacz [Dodawanie profilów oceniania](index-add-scoring-profiles.md) .
+> Podczas gdy domyślne ocenianie jest wystarczające dla wielu scenariuszy, zaleca się oparcie trafności na niestandardowym profilu oceniania. Niestandardowy profil punktacji umożliwia promowanie przedmiotów, które są bardziej korzystne dla Twojej firmy. Aby uzyskać więcej [informacji, zobacz Dodawanie profili oceniania.](index-add-scoring-profiles.md)
 >
 
 ## <a name="hit-highlighting"></a>Wyróżnianie trafień
 
-Możesz zastosować formatowanie do dopasowywania terminów w wynikach wyszukiwania, co ułatwia dopasowanie do dopasowania. Instrukcje wyróżniania trafień są dostępne w [żądaniu zapytania](https://docs.microsoft.com/rest/api/searchservice/search-documents). 
+Formatowanie można zastosować do pasujących terminów w wynikach wyszukiwania, co ułatwia wykrycie dopasowania. Instrukcje wyróżniania trafienia znajdują się w [żądaniu kwerendy](https://docs.microsoft.com/rest/api/searchservice/search-documents). 
 
-Formatowanie jest stosowane do zapytań w całym okresie. Zapytania dotyczące częściowych warunków, takich jak Wyszukiwanie rozmyte lub wyszukiwanie przy użyciu symboli wieloznacznych, które powodują rozwinięcie zapytania w aparacie, nie mogą używać wyróżniania trafień.
+Formatowanie jest stosowane do kwerend cały termin. Kwerendy na warunkach częściowych, takich jak wyszukiwanie rozmyte lub wieloznaczne wyszukiwania, które powodują rozszerzenie kwerendy w silniku, nie można użyć wyróżniania trafień.
 
 ```http
 POST /indexes/hotels/docs/search?api-version=2019-05-06 
@@ -107,28 +107,31 @@ POST /indexes/hotels/docs/search?api-version=2019-05-06
     }
 ```
 
-
+> [!IMPORTANT]
+> Usługi utworzone po 15 lipca 2020 r. zapewnią inne wrażenia z wyróżniania. Usługi utworzone przed tą datą nie zmienią się w ich zachowaniu wyróżniania. Dzięki tej zmianie zostaną zwrócone tylko frazy, które pasują do kwerendy pełnej frazy. Ponadto będzie można określić rozmiar fragmentu zwrócony dla podświetlenia.
+>
+> Podczas pisania kodu klienta, który implementuje naciśnięcie wyróżniania, należy pamiętać o tej zmianie. Należy zauważyć, że nie będzie to miało wpływu na ciebie, chyba że utworzysz zupełnie nową usługę wyszukiwania.
 
 ## <a name="faceted-navigation"></a>Nawigacja aspektowa
 
-Nawigacja wyszukiwania jest wspólna na stronie wyników, często znajdującej się na stronie lub w górnej części strony. Na platformie Azure Wyszukiwanie poznawcze Nawigacja aspektowa udostępnia funkcję wyszukiwania na podstawie wstępnie zdefiniowanych filtrów. Aby uzyskać szczegółowe informacje, zobacz [nawigację aspektową w usłudze Azure wyszukiwanie poznawcze](search-faceted-navigation.md) .
+Nawigacja w wynikach jest często spotykana na stronie wyników, często znajdującej się z boku lub u góry strony. W usłudze Azure Cognitive Search nawigacja aspektowa zapewnia wyszukiwanie kierowane samodzielnie na podstawie wstępnie zdefiniowanych filtrów. Zobacz [nawigacji aspektowej w usłudze Azure Cognitive Search, aby](search-faceted-navigation.md) uzyskać szczegółowe informacje.
 
 ## <a name="filters-at-the-page-level"></a>Filtry na poziomie strony
 
-Jeśli projekt rozwiązania zawiera dedykowane strony wyszukiwania dla określonych typów zawartości (na przykład aplikacji detalicznej online zawierającej działy w górnej części strony), można wstawić [wyrażenie filtru](search-filters.md) obok zdarzenia **onkliknięcia** , aby otworzyć stronę w stanie sprzed odfiltrowania.
+Jeśli projekt rozwiązania zawierał dedykowane strony wyszukiwania dla określonych typów zawartości (na przykład aplikacja sieci sprzedaży online, która ma działy wymienione w górnej części strony), można wstawić [wyrażenie filtru](search-filters.md) obok zdarzenia **onClick,** aby otworzyć stronę w stanie wstępnie filtrowanym.
 
-Filtr można wysłać z wyrażeniem wyszukiwania lub bez niego. Na przykład następujące żądanie przefiltruje nazwę marki, zwracając tylko te dokumenty, które pasują do niego.
+Filtr można wysyłać z wyrażeniem wyszukiwania lub bez niego. Na przykład następujące żądanie będzie filtrować nazwę marki, zwracając tylko te dokumenty, które go odpowiadają.
 
     GET /indexes/online-catalog/docs?$filter=brandname eq 'Microsoft' and category eq 'Games'
 
-Więcej informacji na temat wyrażeń `$filter` można znaleźć w temacie [Wyszukiwanie dokumentów (Azure wyszukiwanie POZNAWCZE API)](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) .
+Aby uzyskać więcej informacji na temat `$filter` wyrażeń, zobacz Dokumenty wyszukiwania [(azure cognitive search API).](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
 
 ## <a name="see-also"></a>Zobacz też
 
-- [Interfejs API REST usługi Azure Wyszukiwanie poznawcze](https://docs.microsoft.com/rest/api/searchservice)
-- [Operacje indeksowania](https://docs.microsoft.com/rest/api/searchservice/Index-operations)
-- [Operacje dokumentu](https://docs.microsoft.com/rest/api/searchservice/Document-operations)
-- [Nawigacja aspektowa na platformie Azure Wyszukiwanie poznawcze](search-faceted-navigation.md)
+- [Interfejs API REST usługi Azure Cognitive Search](https://docs.microsoft.com/rest/api/searchservice)
+- [Operacje indeksu](https://docs.microsoft.com/rest/api/searchservice/Index-operations)
+- [Operacje na dokumentach](https://docs.microsoft.com/rest/api/searchservice/Document-operations)
+- [Nawigacja aspektowa w wyszukiwarce cognitive azure](search-faceted-navigation.md)
 
 <!--Image references-->
 [1]: ./media/search-pagination-page-layout/Pages-1-Viewing1ofNResults.PNG

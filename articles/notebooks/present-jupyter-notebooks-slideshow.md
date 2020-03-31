@@ -1,100 +1,100 @@
 ---
-title: Prezentowanie notesu Jupyter jako pokazu slajdów w wersji zapoznawczej Azure Notebooks
-description: Dowiedz się, jak skonfigurować komórki dla trybu pokazu slajdów w notesie Jupyter, a następnie przedstawić pokaz slajdów przy użyciu rozszerzenia wzrostu.
+title: Przedstawianie notesu Jupyter jako pokazu slajdów w wersji Zapoznawczej notesów platformy Azure
+description: Dowiedz się, jak skonfigurować komórki do trybu pokazu slajdów w notesie Jupyter, a następnie zaprezentować pokaz slajdów za pomocą rozszerzenia RISE.
 ms.topic: how-to
 ms.date: 12/04/2018
 ms.openlocfilehash: 05dd3d9c5580e208ecf6f9e6d762476b0b493a6c
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75647122"
 ---
-# <a name="run-a-notebook-slideshow-in-azure-notebooks-preview"></a>Uruchamianie pokazu slajdów notesu w podglądzie Azure Notebooks
+# <a name="run-a-notebook-slideshow-in-azure-notebooks-preview"></a>Uruchamianie pokazu slajdów notesu w usłudze Azure Notebooks Preview
 
-Notesy platformy Azure jest wstępnie skonfigurowana za pomocą rozszerzenia pokaz slajdów Jupyter/IPython (wzrost), który umożliwia prezentowanie notesu bezpośrednio jako pokaz slajdów. W pokaz slajdów komórek są zwykle wyświetlane pojedynczo przy użyciu rozmiaru czcionki, która jest odpowiednia dla stawać na dużym ekranie, na które może być nadal uruchomiony kod zamiast przełączania na komputerze oddzielnym pokaz.
+Notesy platformy Azure jest wstępnie skonfigurowany z Jupyter/IPython Slideshow Extension (RISE), który umożliwia prezentowanie notesu bezpośrednio jako pokaz slajdów. W pokazie slajdów komórki są zazwyczaj wyświetlane po kolei przy użyciu rozmiaru czcionki, który jest odpowiedni do prezentowania na dużych ekranach i nadal można uruchomić kod, zamiast przełączać się na oddzielny komputer demonstracyjny.
 
 [!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
-Na poniższej ilustracji przedstawiono widok notesu standardowego, w którym można zobaczyć języka znaczników Markdown i komórki kodu wszystko ze sobą:
+Na poniższej ilustracji przedstawiono standardowy widok notesu, w którym można wyświetlić markdown i komórki kodu razem:
 
-![Notes w standardowy widok](media/slideshow/slideshow-notebook-view.png)
+![Notes w widoku standardowym](media/slideshow/slideshow-notebook-view.png)
 
-Po uruchomieniu pokaz slajdów, pierwszej komórki powiększenia do wypełniania w przeglądarce, gdzie **X** w lewym górnym rogu zamyka pokaz slajdów, **?** w dolnym lewym wyświetla skróty klawiaturowe i strzałki w prawym dolnym rogu przechodzić między slajdami:
+Po uruchomieniu pokazu slajdów, pierwsza komórka jest powiększony, aby wypełnić przeglądarkę, gdzie **X** w lewym górnym rogu wychodzi z pokazu slajdów, **?** w lewym dolnym dolnym połówka wyświetla skróty klawiaturowe, a strzałki w prawym dolnym dolnym prawa nawigują między slajdami:
 
-![Notes w trybie pokaz slajdów](media/slideshow/slideshow-slide-view.png)
+![Notes w trybie pokazu slajdów](media/slideshow/slideshow-slide-view.png)
 
-Przygotowywanie notebook pokazu slajdów obejmuje dwa podstawowe zadania:
+Przygotowanie notesu do pokazu slajdów obejmuje dwa podstawowe działania:
 
-1. Ponieważ komórek Markdown są renderowane przy użyciu duży rozmiar czcionki, część zawartości może nie być widoczne w pokaz slajdów. Dlatego zwykle ograniczają ilość tekstu w dowolnej komórki; Nagłówek z czterech do sześciu wiersze zwykle sprawdza się najlepiej. Jeśli masz więcej tekstu, Podziel te informacje do wielu komórek.
+1. Ponieważ komórki Markdown są renderowane przy dużych czcionkach, niektóre treści mogą nie być widoczne w pokazie slajdów. W ten sposób zazwyczaj ogranicza się ilość tekstu w danej komórce; nagłówek z czterema do sześciu wierszy zwykle działa najlepiej. Jeśli masz więcej tekstu, podziel te informacje na wiele komórek.
 
-2. Skonfiguruj zachowanie każdej komórki w pokaz slajdów, za pomocą narzędzi komórki pokaz slajdów. Typy komórki określają zachowanie przycisków nawigacji.
+2. Skonfiguruj zachowanie każdej komórki w pokazie slajdów za pomocą paska narzędzi komórki pokazu slajdów. Typy komórek określają zachowanie przycisków nawigacyjnych.
 
-## <a name="the-anatomy-of-a-slideshow"></a>Anatomia pokaz slajdów
+## <a name="the-anatomy-of-a-slideshow"></a>Anatomia pokazu slajdów
 
-Czy wykonać notesu losowych i używać go w ramach pokazu slajdów, zwykle znajdziesz czy wszystkie komórki są mieszane ze sobą, a większość zawartości jest ukryty u dołu okna przeglądarki. Aby ułatwić skuteczne prezentacji, należy następnie przypisać typu Pokaz slajdów do każdej komórki za pomocą narzędzi komórki pokaz slajdów:
+Jeśli weźmiesz losowy notes i użyjesz go do pokazu slajdów, zazwyczaj okaże się, że wszystkie komórki są pomieszane ze sobą, a większość zawartości jest ukryta u dołu okna przeglądarki. Aby stworzyć skuteczną prezentację, należy przypisać typ pokazu slajdów do każdej komórki za pomocą paska narzędzi komórki pokazu slajdów:
 
-1. Na **widoku** menu, wybierz opcję **narzędzi komórki** > **pokaz slajdów**:
+1. W menu **Widok** wybierz polecenie Pokaz > **slajdów** **paska narzędzi komórki:**
 
-    ![Włączanie na pasku narzędzi Pokaz slajdów komórki](media/slideshow/slideshow-view-cell-toolbar.png)
+    ![Włączanie paska narzędzi pokazu slajdów komórki](media/slideshow/slideshow-view-cell-toolbar.png)
 
-1. A **typu slajdu** listy rozwijanej pojawia się w prawym górnym rogu każdej komórce w notesie:
+1. W prawym górnym rogu każdej komórki notesu pojawi się listy rozwijanej **Typ slajdu:**
 
-    ![Pasek narzędzi Pokaz slajdów komórki](media/slideshow/slideshow-cell-toolbar.png)
+    ![Pasek narzędzi pokazu slajdów komórki](media/slideshow/slideshow-cell-toolbar.png)
 
 1. Dla każdej komórki wybierz jeden z pięciu typów:
 
-    ![Typy pokaz slajdów komórki](media/slideshow/slideshow-cell-slide-types.png)
+    ![Typy pokazu slajdów komórek](media/slideshow/slideshow-cell-slide-types.png)
 
     | Typ slajdu | Zachowanie |
     | --- | --- |
-    | -(nie ustawiono) | Komórka jest wyświetlana przy użyciu poprzedniej komórki, często nie jest uwzględnione w pokaz slajdów. |
-    | Slajd | Komórka jest podstawowym slajdów, przejście, używając strzałek lewego i prawego formantu nawigacji. |
-    | Slajd podrzędnych | Komórka jest "podstawowym slajdów, przejście, za pomocą kontrolki nawigacji strzałkę w dół below". Zwraca strzałkę w górę do głównej slajdu. Slajdy podrzędne są używane do dodatkowej materiał, można pominąć w ścieżce głównej prezentacji, ale są łatwo dostępne, jeśli to konieczne. |
-    | Fragment | Zawartość komórki pojawia się w kontekście poprzedni slajd lub podrzędną slajdów, korzystając z nawigacji strzałkę w dół (fragment zostanie usunięta, gdy za pomocą strzałki w górę). Fragment z komórkę kodu służy do sprawić, że kod pojawiają się w obrębie slajdu lub można użyć wielu fragmentów, można wprowadzić tekst, który punktory są wyświetlane pojedynczo (Zobacz przykład w następnej sekcji). Ponieważ fragmenty kompilacji bieżącego slajdu, nadmiarowe fragmenty nie będzie widoczny u dołu okna przeglądarki. |
-    | Pomiń | Komórki nie jest wyświetlany w pokaz slajdów. |
-    | Uwagi | W komórce jako notatki prelegenta, które nie są wyświetlane w pokaz slajdów. |
+    | - (nie ustawiono) | Komórka jest wyświetlana z poprzednią komórką, co często nie jest pożądanym efektem w pokazie slajdów. |
+    | Slajdów | Komórka jest slajdem podstawowym, poruszanym za pomocą strzałek w lewo i w prawo formantu nawigacji. |
+    | Podsułka | Komórka jest "poniżej" slajdu podstawowego, przejdź do za pomocą strzałki w dół formantu nawigacji. Strzałka w górę powraca do slajdu podstawowego. Podszkieły są używane dla materiału pomocniczego, który można pominąć w głównej ścieżce prezentacji, ale jest łatwo dostępny w razie potrzeby. |
+    | Fragment | Zawartość komórki pojawia się w kontekście poprzedniego slajdu lub podszkieli podczas używania strzałki nawigacji w dół (fragment jest usuwany podczas używania strzałki w górę). Można użyć fragmentu z komórką kodu, aby ten kod był wyświetlany w slajdzie, lub można użyć wielu fragmentów, aby punktory tekstowe były wyświetlane jeden po drugim (zobacz przykład w następnej sekcji). Ponieważ fragmenty są budowane na bieżącym slajdzie, nadmiar fragmentów nie będzie widoczny u dołu okna przeglądarki. |
+    | Skip | Komórka nie jest wyświetlana w pokazie slajdów. |
+    | Uwagi | Komórka zawiera jako notatki prelegenta, które nie są wyświetlane w pokazie slajdów. |
 
-1. Początkowo jest przydatne wybrać **slajd** dla każdej komórki. Następnie można uruchomić pokaz slajdów i wprowadź odpowiednie zmiany.
+1. Początkowo warto wybrać opcję **Slajd** dla każdej komórki. Następnie można uruchomić pokaz slajdów i wprowadzić odpowiednie zmiany.
 
-### <a name="example-fragment-cells-for-bullet-items"></a>Przykład: fragmentu komórek elementów punktora
+### <a name="example-fragment-cells-for-bullet-items"></a>Przykład: komórki fragmentu dla elementów punktorów
 
-Zapewnienie punktory na slajdzie występować o jedno, miejsce nagłówka slajdów w komórce kodu Markdown z **slajdów** typu, a następnie umieść każdy punktor w oddzielnej komórki języka znaczników Markdown za pomocą **fragmentu** typu:
+Aby punktory na slajdzie były wyświetlane jeden po drugim, umieść nagłówek slajdu w komórce Markdown z typem **slajdu,** a następnie umieść każdy punktor w osobnej komórce Markdown z **typem Fragment:**
 
-![Przykład tworzenia wielu komórek języka znaczników Markdown dla elementów punktora](media/slideshow/slideshow-fragments.png)
+![Przykład utworzenia wielu komórek znaczników dla elementów punktorów](media/slideshow/slideshow-fragments.png)
 
-Ponieważ pokaz slajdów renderuje fragmenty z więcej pionowe odstępy niż gdy punktory znajdują się w tej samej komórki, nie można użyć dowolnej liczby punktów.
+Ponieważ pokaz slajdów renderuje fragmenty z bardziej pionowymi odstępami niż wtedy, gdy wszystkie punktory znajdują się w tej samej komórce, użycie większej liczby elementów punktora może być nie.
 
-## <a name="run-the-slideshow"></a>Uruchom pokaz slajdów
+## <a name="run-the-slideshow"></a>Uruchamianie pokazu slajdów
 
-1. Jeśli edytowane komórki dowolnego języka znaczników Markdown, upewnij się uruchomić je do renderowania ich HTML, w przeciwnym razie pojawiają się *jako* języka Markdown na platformie pokaz slajdów.
+1. Jeśli masz edytowane komórki Markdown, upewnij się, że uruchomisz je w celu renderowania kodu HTML, w przeciwnym razie są wyświetlane *jako* Markdown w pokazie slajdów.
 
-1. Po skonfigurowaniu **typu slajdu** dla każdej komórki, zaznacz komórkę za pomocą którego można rozpocząć pokaz slajdów, a następnie wybierz **Enter/zakończenia ROSNĄĆ w pokaz slajdów** na listwie narzędziowej główne:
+1. Po skonfigurowaniu tekstu **slajdu** dla każdej komórki zaznacz komórkę, za pomocą której chcesz rozpocząć pokaz slajdów, a następnie wybierz przycisk **Enter/Exit RISE Slideshow** na głównym pasku narzędzi:
 
-    ![Przycisk włączany/wyłączany ROSNĄĆ w pokazu slajdów na głównym pasku narzędzi](media/slideshow/slideshow-start.png)
+    ![Przycisk Enter/Exit RISE Pokaz slajdów na głównym pasku narzędzi](media/slideshow/slideshow-start.png)
 
-1. Aby poruszać się między slajdy, a także fragmenty, należy użyć strzałek w lewo i w prawo w formancie nawigacji. Tekst w kontrolce pokazuje liczbę reprezentującą *slajdów slide.sub*.
+1. Aby poruszać się między slajdami, a także fragmentami, użyj strzałek w lewo i w prawo w formancie nawigacji. Tekst w formancie pokazuje liczbę reprezentującą *slide.sub-slide*.
 
-    ![Kontrola nawigacji pokaz slajdów](media/slideshow/slideshow-navigation-control.png)
+    ![Kontrolka nawigacji w pokazie slajdów](media/slideshow/slideshow-navigation-control.png)
 
-1. Aby poruszać się między slajdy i slajdy podrzędnych, a także fragmenty, w górę i strzałkę w dół, jeśli włączona:
+1. Aby poruszać się między slajdami i podsukaniami, a także fragmentami, użyj strzałek w górę i w dół, jeśli jest włączona:
 
-    ![Pokaz slajdów kontrolki podrzędne slajdów](media/slideshow/slideshow-navigation-control-subslide.png)
+    ![Kontrolki nawigacji w pokazie slajdów dla podsulatów](media/slideshow/slideshow-navigation-control-subslide.png)
 
-1. W komórce kodu użyj przycisku odtwarzania, do uruchomienia kodu; dane wyjściowe pojawia się na slajdzie:
+1. W komórce kodu użyj przycisku odtwarzania, aby uruchomić kod; na slajdzie pojawi się wyjście:
 
     ![Przycisk Odtwórz, aby uruchomić komórkę kodu](media/slideshow/slideshow-run-code-cell.png)
 
-    ![Wyjście komórki kodu, który pojawia się w pokaz slajdów](media/slideshow/slideshow-run-code-cell-output.png)
+    ![Dane wyjściowe komórki kodu są wyświetlane w pokazie slajdów](media/slideshow/slideshow-run-code-cell-output.png)
 
     > [!Tip]
-    > Dane wyjściowe komórki jest uważany za część komórki w pokaz slajdów. Jeśli uruchamiasz komórce w notesie lub pokaz slajdów, dane wyjściowe pojawia się w innych widokach także. Aby wyczyścić dane wyjściowe, należy użyć **komórki** > **bieżące dane wyjściowe** > **wyczyść** polecenia (w przypadku bieżącej komórki) lub **komórki**  >  **Wszystkie dane wyjściowe** > **wyczyść** (dla wszystkich komórek).
+    > Dane wyjściowe komórki są uważane za część komórki w pokazie slajdów. Jeśli uruchomisz komórkę w widoku notesu lub pokazu slajdów, dane wyjściowe pojawią się również w innym widoku. Aby wyczyścić dane**wyjściowe,** użyj polecenia > **Wyczyść** bieżące wyjścia **komórki** > (dla bieżącej komórki) lub > **Wyczyść** > **Clear** wszystkie wyjścia **komórki**(dla wszystkich komórek).
 
-1. Po zakończeniu korzystania z pokazu slajdów, użyj **X** aby powrócić do widoku notesu.
+1. Po zakończeniu pokazu slajdów użyj **x,** aby powrócić do widoku notesu.
 
 ## <a name="next-steps"></a>Następne kroki
 
-- [Porady: Konfigurowanie projektów i zarządzanie nimi](configure-manage-azure-notebooks-projects.md)
-- [Porady: Instalowanie pakietów z w ramach notesu](install-packages-jupyter-notebook.md)
-- [Porady: Praca z plikami danych](work-with-project-data-files.md)
-- [Porady: dostęp do zasobów danych](access-data-resources-jupyter-notebooks.md)
+- [Jak: Konfigurowanie projektów i zarządzanie nimi](configure-manage-azure-notebooks-projects.md)
+- [Jak: Instalowanie pakietów z poziomu notesu](install-packages-jupyter-notebook.md)
+- [Jak: Praca z plikami danych](work-with-project-data-files.md)
+- [Jak: Dostęp do zasobów danych](access-data-resources-jupyter-notebooks.md)

@@ -1,6 +1,6 @@
 ---
-title: Rozwiązania do zdalnego monitorowania Importuj pakiet — Azure | Dokumentacja firmy Microsoft
-description: W tym artykule opisano jak zaimportować pakiet zarządzania automatyczne urządzenia do akceleratora rozwiązania monitorowania zdalnego
+title: Pakiet importu rozwiązania do zdalnego monitorowania — Azure | Dokumenty firmy Microsoft
+description: W tym artykule opisano sposób importowania automatycznego pakietu zarządzania urządzeniami do akceleratora rozwiązań zdalnego monitorowania
 author: dominicbetts
 manager: philmea
 ms.author: dobett
@@ -9,56 +9,56 @@ services: iot-accelerators
 ms.date: 11/29/2018
 ms.topic: conceptual
 ms.openlocfilehash: 8100914e9a1d1489cb80de55a689e17f6d28a941
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "61443449"
 ---
-# <a name="import-an-automatic-device-management-package-into-your-remote-monitoring-solution-accelerator"></a>Importowanie pakietu zarządzania urządzenia automatycznego Twój akcelerator rozwiązań zdalnego monitorowania
+# <a name="import-an-automatic-device-management-package-into-your-remote-monitoring-solution-accelerator"></a>Importowanie automatycznego pakietu zarządzania urządzeniami do akceleratora rozwiązań do zdalnego monitorowania
 
-Konfiguracja zarządzania urządzeniami automatyczne definiuje zmian konfiguracji, aby wdrożyć do grupy urządzeń. W tym artykule przyjęto założenie, że deweloper w Twojej organizacji został już utworzony przez konfigurację zarządzania urządzeniami automatyczne. Aby dowiedzieć się, jak deweloper tworzy konfigurację, zobacz jeden z następujących artykułów z instrukcjami usługi IoT Hub:
+Automatyczna konfiguracja zarządzania urządzeniami definiuje zmiany konfiguracji do wdrożenia w grupie urządzeń. W tym artykule założono, że deweloper w organizacji utworzył już automatyczną konfigurację zarządzania urządzeniami. Aby dowiedzieć się, jak deweloper tworzy konfigurację, zobacz jeden z następujących artykułów infiguracyjnych usługi IoT Hub:
 
 - [Konfigurowanie i monitorowanie urządzeń IoT na dużą skalę przy użyciu witryny Azure portal](../iot-hub/iot-hub-auto-device-config.md)
-- [Konfigurowanie i monitorowanie urządzeń IoT na dużą skalę przy użyciu wiersza polecenia platformy Azure](../iot-hub/iot-hub-auto-device-config-cli.md)
+- [Konfigurowanie i monitorowanie urządzeń IoT na dużą skalę przy użyciu interfejsu wiersza polecenia platformy Azure](../iot-hub/iot-hub-auto-device-config-cli.md)
 
-Deweloper tworzy i testuje Konfiguracja zarządzania urządzeniami automatyczne w środowisku programistycznym. Gdy wszystko będzie gotowe, możesz zaimportować konfigurację w akceleratorze rozwiązanie monitorowania zdalnego.
+Deweloper tworzy i testuje automatyczną konfigurację zarządzania urządzeniami w środowisku deweloperskim. Gdy będziesz gotowy, możesz zaimportować konfigurację do akceleratora rozwiązań do zdalnego monitorowania.
 
 ## <a name="export-a-configuration"></a>Eksportowanie konfiguracji
 
-Aby wyeksportować konfigurację zarządzania urządzeniami automatyczne w środowisku deweloperskim, należy użyć witryny Azure portal:
+Użyj witryny Azure portal, aby wyeksportować konfigurację automatycznego zarządzania urządzeniami ze środowiska deweloperskiego:
 
-1. W witrynie Azure portal przejdź do Centrum IoT hub, używane do tworzenia i testowania urządzeń IoT. Kliknij przycisk **konfiguracji urządzenia IoT**:
+1. W witrynie Azure portal przejdź do centrum IoT hub, którego używasz do tworzenia i testowania urządzeń IoT. Kliknij pozycję **Konfiguracja urządzenia IoT:**
 
     [![Konfiguracja urządzenia IoT](./media/iot-accelerators-remote-monitoring-import-adm-package/deviceconfiguration-inline.png)](./media/iot-accelerators-remote-monitoring-import-adm-package/deviceconfiguration-expanded.png#lightbox)
 
-1. Kliknij pozycję Konfiguracja, którego chcesz użyć. **Szczegóły konfiguracji urządzenia** spowoduje wyświetlenie strony:
+1. Kliknij konfigurację, której chcesz użyć. Zostanie wyświetlona strona **Szczegóły konfiguracji urządzenia:**
 
     [![Szczegóły konfiguracji urządzenia IoT](./media/iot-accelerators-remote-monitoring-import-adm-package/configuration-details-inline.png)](./media/iot-accelerators-remote-monitoring-import-adm-package/configuration-details-expanded.png#lightbox)
-1. Kliknij przycisk **pobierania pliku konfiguracyjnego**:
+1. Kliknij **pobierz plik konfiguracyjny**:
 
-    [![Pobierz plik konfiguracji](./media/iot-accelerators-remote-monitoring-import-adm-package/download-inline.png)](./media/iot-accelerators-remote-monitoring-import-adm-package/download-expanded.png#lightbox)
+    [![Pobierz plik konfiguracyjny](./media/iot-accelerators-remote-monitoring-import-adm-package/download-inline.png)](./media/iot-accelerators-remote-monitoring-import-adm-package/download-expanded.png#lightbox)
 
 1. Zapisz plik JSON jako plik lokalny o nazwie **configuration.json**.
 
-Masz teraz plik, który zawiera konfigurację zarządzania urządzeniami automatyczne. W następnej sekcji można zaimportować tej konfiguracji w pakiecie do rozwiązania do zdalnego monitorowania.
+Teraz masz plik, który zawiera automatyczną konfigurację zarządzania urządzeniami. W następnej sekcji zaimportujesz tę konfigurację jako pakiet do rozwiązania do zdalnego monitorowania.
 
 ## <a name="import-a-package"></a>Importowanie pakietu
 
-Wykonaj poniższe kroki, aby zaimportować konfigurację zarządzania urządzeniami automatyczne jako pakiet do rozwiązania:
+Wykonaj poniższe czynności, aby zaimportować do rozwiązania automatyczną konfigurację zarządzania urządzeniami jako pakiet:
 
-1. Przejdź do **pakietów** strony w internetowym interfejsie użytkownika zdalnego monitorowania:  ![Strona pakietów](media/iot-accelerators-remote-monitoring-import-adm-package/packagepage.png)
+1. Przejdź do strony **Pakiety** na stronie ![Interfejs użytkownika sieci Web zdalnego monitorowania: pakiety](media/iot-accelerators-remote-monitoring-import-adm-package/packagepage.png)
 
-1. Kliknij przycisk **+ nowy pakiet**, wybierz **konfiguracji** typ pakietu, a następnie kliknij przycisk **Przeglądaj** wybrać **configuration.json** plik zapisany w poprzedniej sekcji:
+1. Kliknij **przycisk + Nowy pakiet**, wybierz pozycję **Konfiguracja** jako typ pakietu, a następnie kliknij przycisk **Przeglądaj,** aby wybrać plik **configuration.json** zapisany w poprzedniej sekcji:
 
     ![Wybierz konfigurację](media/iot-accelerators-remote-monitoring-import-adm-package/uploadpackage.png)
 
-1. Kliknij przycisk **przekazywanie** Dodaj pakiet do rozwiązania monitorowania zdalnego:
+1. Kliknij **przycisk Przekaż,** aby dodać pakiet do rozwiązania do zdalnego monitorowania:
 
-    ![Przekazany pakiet.](media/iot-accelerators-remote-monitoring-import-adm-package/uploadedpackage.png)
+    ![Przesłany pakiet](media/iot-accelerators-remote-monitoring-import-adm-package/uploadedpackage.png)
 
-Konfiguracja zarządzania urządzeniami automatyczne przekazaniu teraz jako pakiet. Na **wdrożeń** strony, można wdrożyć tego pakietu do połączonych urządzeń.
+Teraz prześlesz konfigurację automatycznego zarządzania urządzeniami jako pakiet. Na stronie **Wdrożenia** można wdrożyć ten pakiet na podłączonych urządzeniach.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Teraz, kiedy znasz, jak utworzyć pakiet konfiguracji i zaimportować go do z rozwiązania do zdalnego monitorowania, następnym krokiem jest Dowiedz się, jak [urządzeń podłączonych do monitorowania zdalnego zbiorcze zarządzanie](iot-accelerators-remote-monitoring-bulk-configuration-update.md).
+Teraz, gdy już wiesz, jak utworzyć pakiet konfiguracyjny i zaimportować go do rozwiązania zdalnego monitorowania, następnym krokiem jest nauczenie się [zbiorczego zarządzania urządzeniami podłączonymi do zdalnego monitorowania.](iot-accelerators-remote-monitoring-bulk-configuration-update.md)

@@ -1,6 +1,6 @@
 ---
-title: Lista zdarzeń SRE | Microsoft Docs
-description: Uczestnictwo w globalnej społeczności SRE przez uczestnictwo tych zdarzeń.
+title: Lista zdarzeń SRE | Dokumenty firmy Microsoft
+description: Weź udział w globalnej społeczności SRE, uczestnicząc w tych wydarzeniach.
 author: dnblankedelman
 manager: efreeman
 ms.service: site-reliability-engineering
@@ -8,16 +8,16 @@ ms.topic: article
 ms.date: 02/18/2020
 ms.author: dnb
 ms.openlocfilehash: 5360ada6dab19564bfa88697d2adc6ef751f3935
-ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78254801"
 ---
-# <a name="participate-in-the-global-site-reliability-engineering-community"></a>Uczestnictwo w społeczności Inżynieria niezawodności witryny globalnej
+# <a name="participate-in-the-global-site-reliability-engineering-community"></a>Weź udział w globalnej społeczności inżynierów niezawodności witryn
 
-Podobnie jak w przypadku odczytywania w usłudze SRE, często ważne jest, aby porozmawiać na temat tego elementu z elementami równorzędnymi. Omawianie wyzwań, sukcesów i niepowodzeń związanych z SRE może być decydujące do zdobycia złożonychej wiedzy dotyczącej tematu.
+Równie ważne jak czytanie o inżynierii SRE może być porozmawianie o tym rozwiązaniu ze współpracownikami. Omawianie wyzwań, sukcesów i niepowodzeń związanych z SRE może mieć kluczowe znaczenie dla szczegółowego zrozumienia tematu.
 
-Istnieje wiele spotkań i konferencji, które SRE zawartość. Być może najbardziej bezpośrednio dotyczy globalnie dystrybuowanych [konferencji SREcon](https://www.usenix.org/conferences) , które są wprowadzane przez USENIX.
+Istnieje kilka spotkań i konferencji, które poruszają kwestię SRE. Być może najbardziej bezpośrednio istotne są globalnie [rozproszone konferencje SREcon](https://www.usenix.org/conferences) wprowadzone przez USENIX.
 
-Więcej i więcej zawartości SRE to sposób na konferencje, takie jak [Lisa](https://www.usenix.org/conferences/byname/5), [całodzienne DevOps](https://www.alldaydevops.com), [DevOps Enterprise szczyt](https://events.itrevolution.com) i lokalne konferencje DevOps, takie jak [DevOps Days](https://www.devopsdays.org). Zapoznaj się z tą zawartością i innymi osobami zainteresowanymi w tym temacie wszędzie tam, gdzie znajdziesz ją i.
+Coraz więcej treści SRE trafia na konferencje takie jak [LISA,](https://www.usenix.org/conferences/byname/5) [All Day DevOps,](https://www.alldaydevops.com) [DevOps Enterprise Summit](https://events.itrevolution.com) i lokalne konferencje DevOps, takie jak [DevOps Days.](https://www.devopsdays.org) Szukaj tych treści i innych zainteresowanych tematem, gdziekolwiek możesz je znaleźć i je.
