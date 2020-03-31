@@ -1,60 +1,60 @@
 ---
-title: Zoptymalizuj Środowisko Active Directory przy użyciu Azure Monitor | Microsoft Docs
-description: Możesz użyć rozwiązania do sprawdzania kondycji Active Directory, aby ocenić ryzyko i kondycję środowisk w regularnych odstępach czasu.
+title: Optymalizuj środowisko usługi Active Directory za pomocą usługi Azure Monitor | Dokumenty firmy Microsoft
+description: Za pomocą rozwiązania Sprawdzania kondycji usługi Active Directory można regularnie oceniać ryzyko i kondycję środowisk.
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/10/2019
 ms.openlocfilehash: 57c474c8391168702154b71e0c454253ab921dc1
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77667231"
 ---
-# <a name="optimize-your-active-directory-environment-with-the-active-directory-health-check-solution-in-azure-monitor"></a>Zoptymalizuj Środowisko Active Directory przy użyciu rozwiązania do sprawdzania kondycji Active Directory w Azure Monitor
+# <a name="optimize-your-active-directory-environment-with-the-active-directory-health-check-solution-in-azure-monitor"></a>Optymalizowanie środowiska usługi Active Directory za pomocą rozwiązania Active Directory Health Check w usłudze Azure Monitor
 
-![Symbol kontroli kondycji usługi AD](./media/ad-assessment/ad-assessment-symbol.png)
+![Symbol sprawdzania kondycji usługi AD](./media/ad-assessment/ad-assessment-symbol.png)
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-Możesz użyć rozwiązania do sprawdzania kondycji Active Directory, aby ocenić ryzyko i kondycję środowisk serwera w regularnych odstępach czasu. W tym artykule opisano sposób instalowania i używania rozwiązania, dzięki któremu można podejmować działania naprawcze w celu uzyskania potencjalnych problemów.
+Za pomocą rozwiązania Sprawdzania kondycji usługi Active Directory można regularnie oceniać ryzyko i kondycję środowisk serwerowych. Ten artykuł ułatwia instalowanie i używanie rozwiązania, dzięki czemu można podjąć działania naprawcze w przypadku potencjalnych problemów.
 
-To rozwiązanie zapewnia priorytetową listę zaleceń specyficznych dla wdrożonej infrastruktury serwera. Zalecenia są podzielone na cztery obszary koncentracji uwagi, które ułatwiają szybkie zrozumienie ryzyka i podejmowanie działań.
+To rozwiązanie zawiera priorytetową listę zaleceń specyficznych dla wdrożonej infrastruktury serwera. Zalecenia są podzielone na cztery obszary fokusowe, które pomagają szybko zrozumieć ryzyko i podjąć działania.
 
-Zalecenia są oparte na wiedzy i doświadczeniu zdobytym przez inżynierów firmy Microsoft z tysięcy wizyt klientów. Każde zalecenie zawiera wskazówki dotyczące przyczyny problemu oraz sposobu implementacji sugerowanych zmian.
+Zalecenia są oparte na wiedzy i doświadczeniu zdobytym przez inżynierów firmy Microsoft podczas tysięcy wizyt klientów. Każde zalecenie zawiera wskazówki dotyczące przyczyn, które mogą mieć znaczenie dla Ciebie i jak zaimplementować sugerowane zmiany.
 
-Możesz wybrać obszary koncentracji, które są najważniejsze dla Twojej organizacji, i śledzić postęp w kierunku działania wolnego i zdrowego środowiska.
+Możesz wybrać obszary fokusu, które są najważniejsze dla Twojej organizacji i śledzić swoje postępy w prowadzeniu środowiska wolnego od ryzyka i zdrowego.
 
-Po dodaniu rozwiązania i zakończeniu sprawdzania informacje podsumowujące dotyczące obszarów koncentracji są wyświetlane na pulpicie nawigacyjnym **sprawdzania kondycji usługi AD** dla infrastruktury w środowisku. W poniższych sekcjach opisano, jak korzystać z informacji na pulpicie nawigacyjnym **sprawdzania kondycji usługi AD** , gdzie można wyświetlać i podejmować zalecane akcje dla infrastruktury serwera Active Directory.  
+Po dodaniu rozwiązania i zakończeniu sprawdzania informacje podsumowujące obszary fokusu są wyświetlane na pulpicie nawigacyjnym **sprawdzania kondycji usługi AD** dla infrastruktury w twoim środowisku. W poniższych sekcjach opisano sposób używania informacji na pulpicie nawigacyjnym **sprawdzania kondycji usługi AD,** na którym można wyświetlać, a następnie podejmować zalecane akcje dla infrastruktury serwera usługi Active Directory.  
 
-![obraz kafelka kontroli kondycji usługi AD](./media/ad-assessment/ad-healthcheck-summary-tile.png)
+![obraz kafelka sprawdzanie kondycji usługi AD](./media/ad-assessment/ad-healthcheck-summary-tile.png)
 
 ![obraz pulpitu nawigacyjnego sprawdzania kondycji usługi AD](./media/ad-assessment/ad-healthcheck-dashboard-01.png)
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Na każdym komputerze, na którym jest zainstalowany agent programu Log Analytics dla systemu Windows (określane również jako Microsoft Monitoring Agent (MMA), Active Directory .NET Framework rozwiązanie do sprawdzania kondycji.  Agent jest używany przez program System Center 2016 — Operations Manager, Operations Manager 2012 R2 i Azure Monitor.
+* Rozwiązanie do sprawdzania kondycji usługi Active Directory wymaga obsługiwanej wersji programu .NET Framework 4.6.2 lub nowszej zainstalowanej na każdym komputerze z zainstalowanym agentem usługi Log Analytics dla systemu Windows (zwanym również agentem microsoft monitoring agenta (MMA)).  Agent jest używany przez System Center 2016 — Operations Manager, Operations Manager 2012 R2 i Azure Monitor.
 * Rozwiązanie obsługuje kontrolery domeny z systemami Windows Server 2008 i 2008 R2, Windows Server 2012 i 2012 R2 oraz Windows Server 2016.
-* Log Analytics obszar roboczy, aby dodać rozwiązanie Active Directory Sprawdzanie kondycji z witryny Azure Marketplace w Azure Portal. Nie jest wymagana żadna dodatkowa konfiguracja.
+* Obszar roboczy usługi Log Analytics w celu dodania rozwiązania do sprawdzania kondycji usługi Active Directory z portalu Azure w portalu Azure. Nie jest wymagana żadna dodatkowa konfiguracja.
 
   > [!NOTE]
-  > Po dodaniu rozwiązania do serwerów z agentami zostanie dodany plik AdvisorAssessment. exe. Dane konfiguracji są odczytywane, a następnie wysyłane do Azure Monitor w chmurze w celu przetworzenia. Logika jest stosowana do odebranych danych, a usługa w chmurze rejestruje dane.
+  > Po dodaniu rozwiązania plik AdvisorAssessment.exe jest dodawany do serwerów z agentami. Dane konfiguracji są odczytywane, a następnie wysyłane do usługi Azure Monitor w chmurze do przetwarzania. Logika jest stosowana do odebranych danych, a usługa w chmurze rejestruje dane.
   >
   >
 
-Aby przeprowadzić kontrolę kondycji na kontrolerach domeny należących do domeny, które mają zostać ocenione, każdy kontroler domeny w tej domenie wymaga agenta i łączności do Azure Monitor przy użyciu jednej z następujących obsługiwanych metod:
+Aby przeprowadzić sprawdzanie kondycji kontrolerów domeny, które są członkami domeny, które mają zostać ocenione, każdy kontroler domeny w tej domenie wymaga agenta i łączności z usługą Azure Monitor przy użyciu jednej z następujących obsługiwanych metod:
 
-1. Zainstaluj [agenta log Analytics dla systemu Windows](../../azure-monitor/platform/agent-windows.md) , Jeśli kontroler domeny nie jest jeszcze monitorowany przez program System Center 2016 — Operations Manager lub Operations Manager 2012 R2.
-2. Jeśli jest monitorowana z programem System Center 2016-Operations Manager lub Operations Manager 2012 R2, a grupa zarządzania nie jest zintegrowana z Azure Monitor, kontroler domeny może być wieloadresowy z Azure Monitor do zbierania danych i przekazywania ich do usługi i nadal monitorowane przez Operations Manager.  
-3. W przeciwnym razie, jeśli grupa zarządzania Operations Manager jest zintegrowana z usługą, należy dodać kontrolery domeny dla zbierania danych przez usługę zgodnie z instrukcjami w obszarze [Dodawanie komputerów zarządzanych przez agentów](../../azure-monitor/platform/om-agents.md#connecting-operations-manager-to-azure-monitor) po włączeniu rozwiązania w obszarze roboczym.  
+1. Zainstaluj [agenta usługi Log Analytics dla systemu Windows,](../../azure-monitor/platform/agent-windows.md) jeśli kontroler domeny nie jest jeszcze monitorowany przez system Center 2016 — Program Operations Manager lub Program Operations Manager 2012 R2.
+2. Jeśli jest monitorowany za pomocą programu System Center 2016 — Program Operations Manager lub Program Operations Manager 2012 R2, a grupa zarządzania nie jest zintegrowana z usługą Azure Monitor, kontroler domeny może być wielozadaniowy z usługą Azure Monitor w celu zbierania danych i przesyłania dalej do usługi i nadal monitorowane przez operations managera.  
+3. W przeciwnym razie jeśli grupa zarządzania programu Operations Manager jest zintegrowana z usługą, należy dodać kontrolery domeny do zbierania danych przez usługę, wykonując kroki opisane w obszarze [dodawanie komputerów zarządzanych przez agenta](../../azure-monitor/platform/om-agents.md#connecting-operations-manager-to-azure-monitor) po włączeniu rozwiązania w obszarze roboczym.  
 
-Agent na kontrolerze domeny, który raportuje do Operations Manager grupy zarządzania, zbiera dane, przekazuje do przypisanego do niego serwera zarządzania, a następnie jest wysyłany bezpośrednio z serwera zarządzania do Azure Monitor.  Dane nie są zapisywane w Operations Manager bazach danych.  
+Agent na kontrolerze domeny, który raportuje grupę zarządzania programu Operations Manager, zbiera dane, przekazuje do przypisanego mu serwera zarządzania, a następnie jest wysyłany bezpośrednio z serwera zarządzania do usługi Azure Monitor.  Dane nie są zapisywane w bazach danych programu Operations Manager.  
 
-## <a name="active-directory-health-check-data-collection-details"></a>Szczegóły zbierania danych dotyczących sprawdzania kondycji Active Directory
+## <a name="active-directory-health-check-data-collection-details"></a>Szczegóły zbierania danych w rozwiązaniu Active Directory Health Check
 
-Active Directory Sprawdzanie kondycji zbiera dane z następujących źródeł przy użyciu dostępnego agenta:
+Sprawdzanie kondycji usługi Active Directory zbiera dane z następujących źródeł przy użyciu włączonego agenta:
 
 - Rejestr
 - LDAP
@@ -63,156 +63,156 @@ Active Directory Sprawdzanie kondycji zbiera dane z następujących źródeł pr
 - Interfejsy usługi Active Directory (ADSI)
 - Windows PowerShell
 - Dane pliku
-- Windows Management Instrumentation (WMI)
+- Instrumentacja zarządzania Windows (WMI)
 - Interfejs API narzędzia DCDIAG
 - Interfejs API usługi replikacji plików (NTFRS)
-- Kod C# niestandardowy
+- Niestandardowy kod języka C#
 
-Dane są zbierane na kontrolerze domeny i przekazywane do Azure Monitor co siedem dni.  
+Dane są zbierane na kontrolerze domeny i przekazywane do usługi Azure Monitor co siedem dni.  
 
-## <a name="understanding-how-recommendations-are-prioritized"></a>Informacje o priorytetach zaleceń
+## <a name="understanding-how-recommendations-are-prioritized"></a>Opis priorytetyzacji zaleceń
 
-Każda z zaleceń otrzymuje wartość ważenia, która identyfikuje względną ważność zalecenia. Wyświetlane są tylko 10 najważniejszych zaleceń.
+Każde wydane zalecenie otrzymuje wartość ważącą, która określa względne znaczenie zalecenia. Pokazano tylko 10 najważniejszych zaleceń.
 
-### <a name="how-weights-are-calculated"></a>Jak są obliczane wagi
+### <a name="how-weights-are-calculated"></a>Sposób obliczania wag
 
-Wagi są wartościami zagregowanymi opartymi na trzech kluczowych czynnikach:
+Współczynniki kory'u są wartościami zagregowanymi na podstawie trzech kluczowych czynników:
 
-* *Prawdopodobieństwo* zidentyfikowania problemu powoduje problemy. Wyższe prawdopodobieństwo jest równe większym ogólnym wynikom zalecenia.
-* *Wpływ* problemu w organizacji, jeśli spowoduje to wystąpienie problemu. Wyższy wpływ jest równy większym ogólnym wynikom zalecenia.
-* *Nakład pracy* wymagany do wdrożenia zalecenia. Wyższy nakład pracy odpowiada mniejszemu ogólnemu wynikowi zalecenia.
+* *Prawdopodobieństwo,* że zidentyfikowany problem powoduje problemy. Większe prawdopodobieństwo równa się większe ogólny wynik dla zalecenia.
+* *Wpływ* problemu na organizację, jeśli powoduje to problem. Większy wpływ oznacza większy ogólny wynik dla zalecenia.
+* *Wysiłek* niezbędny do wdrożenia zalecenia. Większy wysiłek oznacza mniejszy ogólny wynik zalecenia.
 
-Waga dla każdego zalecenia jest wyrażona jako wartość procentowa łącznego wyniku dostępnego dla każdego obszaru koncentracji uwagi. Na przykład jeśli zalecenie w obszarze koncentracji zabezpieczenia i zgodność ma wynik 5%, implementacja tego zalecenia spowoduje zwiększenie ogólnej oceny zabezpieczeń i zgodności o 5%.
+Waga dla każdego zalecenia jest wyrażona jako procent całkowitego wyniku dostępnego dla każdego obszaru ostrości. Jeśli na przykład zalecenie w obszarze fokus bezpieczeństwa i zgodności ma wynik 5%, wdrożenie tego zalecenia zwiększa ogólny wynik zabezpieczeń i zgodności o 5%.
 
-### <a name="focus-areas"></a>Obszary koncentracji uwagi
+### <a name="focus-areas"></a>Obszary fokusu
 
-**Bezpieczeństwo i zgodność** — w tym obszarze znajdują się zalecenia dotyczące potencjalnych zagrożeń bezpieczeństwa i naruszeń, zasad firmowych oraz wymagań dotyczących zgodności z przepisami technicznymi i prawnymi.
+**Bezpieczeństwo i zgodność** — ten obszar ostrości zawiera zalecenia dotyczące potencjalnych zagrożeń i naruszeń zabezpieczeń, zasad firmowych oraz wymagań technicznych, prawnych i regulacyjnych dotyczących zgodności.
 
-**Dostępność i ciągłość** działania — w tym obszarze przedstawiono zalecenia dotyczące dostępności usług, odporności infrastruktury i ochrony firmy.
+**Dostępność i ciągłość działania** — ten obszar ostrości zawiera zalecenia dotyczące dostępności usług, odporności infrastruktury i ochrony biznesowej.
 
-**Wydajność i skalowalność** — ten obszar skupiania zawiera zalecenia ułatwiające rozwój infrastruktury IT w organizacji, upewnij się, że środowisko IT spełnia bieżące wymagania dotyczące wydajności i jest w stanie reagować na zmieniające się potrzeby związane z infrastrukturą.
+**Wydajność i skalowalność** — ten obszar ostrości zawiera zalecenia, które pomogą w rozwoju infrastruktury IT w organizacji, upewnią się, że środowisko IT spełnia bieżące wymagania dotyczące wydajności i jest w stanie reagować na zmieniające się potrzeby infrastrukturalne.
 
-**Uaktualnianie, migracja i wdrażanie** — w tym obszarze fokusu przedstawiono zalecenia ułatwiające uaktualnianie, migrowanie i wdrażanie Active Directory w istniejącej infrastrukturze.
+**Uaktualnianie, migracja i wdrażanie** — w tym obszarze fokusu przedstawiono zalecenia ułatwiające uaktualnianie, migrację i wdrażanie usługi Active Directory w istniejącej infrastrukturze.
 
-### <a name="should-you-aim-to-score-100-in-every-focus-area"></a>Czy chcesz zwrócić uwagę na 100% w każdym obszarze fokusu?
+### <a name="should-you-aim-to-score-100-in-every-focus-area"></a>Czy należy dążyć do osiągnięcia wyniku 100% w każdym obszarze fokusu?
 
-Niekoniecznie. Zalecenia są oparte na wiedzy i doświadczeniach zdobytych przez inżynierów firmy Microsoft w tysiącach wizyt klientów. Jednak żadne dwie infrastruktury serwera nie są takie same, a konkretne zalecenia mogą być bardziej lub mniej odpowiednie dla użytkownika. Na przykład niektóre zalecenia dotyczące zabezpieczeń mogą być mniej istotne, jeśli maszyny wirtualne nie są dostępne w Internecie. Niektóre zalecenia dotyczące dostępności mogą być mniej istotne w przypadku usług zapewniających zbieranie i raportowanie danych ad hoc o niskim priorytecie. Problemy, które są ważne dla dorosłych firm, mogą być mniej ważne do uruchomienia. Możesz chcieć określić, które obszary koncentracji są priorytetami, a następnie sprawdzić, jak wyniki zmieniają się wraz z upływem czasu.
+Niekoniecznie. Zalecenia są oparte na wiedzy i doświadczeniach zdobytych przez inżynierów firmy Microsoft podczas tysięcy wizyt klientów. Jednak nie dwie infrastruktury serwera są takie same, a konkretne zalecenia mogą być mniej lub bardziej istotne dla Ciebie. Na przykład niektóre zalecenia dotyczące zabezpieczeń mogą być mniej istotne, jeśli maszyny wirtualne nie są udostępniane w Internecie. Niektóre zalecenia dotyczące dostępności mogą być mniej istotne dla usług, które zapewniają gromadzenie i raportowanie danych ad hoc o niskim priorytecie. Kwestie, które są ważne dla dojrzałego biznesu, mogą być mniej ważne dla start-upu. Możesz określić, które obszary fokusu są Twoimi priorytetami, a następnie sprawdzić, jak twoje wyniki zmieniają się w czasie.
 
-Każde zalecenie zawiera wskazówki dotyczące przyczyny tego znaczenia. Należy użyć tych wskazówek, aby sprawdzić, czy wdrożenie zalecenia jest odpowiednie dla Ciebie, ze względu na charakter usług IT i potrzeby biznesowe Twojej organizacji.
+Każde zalecenie zawiera wskazówki, dlaczego jest to ważne. Należy użyć tych wskazówek, aby ocenić, czy wdrożenie zalecenia jest odpowiednie dla Ciebie, biorąc pod uwagę charakter usług IT i potrzeby biznesowe organizacji.
 
-## <a name="use-health-check-focus-area-recommendations"></a>Użyj zaleceń dotyczących obszaru fokusu sprawdzania kondycji
+## <a name="use-health-check-focus-area-recommendations"></a>Korzystanie z zaleceń dotyczących obszaru fokusu sprawdzania kondycji
 
-Po zainstalowaniu programu można wyświetlić podsumowanie zaleceń przy użyciu kafelka Sprawdzanie kondycji na stronie rozwiązania w Azure Portal.
+Po zainstalowaniu można wyświetlić podsumowanie zaleceń przy użyciu kafelka Sprawdzanie kondycji na stronie rozwiązania w witrynie Azure portal.
 
-Wyświetl podsumowanie ocen zgodności dla infrastruktury, a następnie zapoznaj się z zaleceniami.
+Wyświetl podsumowane oceny zgodności dla infrastruktury, a następnie przejdź do szczegółów zaleceń.
 
-### <a name="to-view-recommendations-for-a-focus-area-and-take-corrective-action"></a>Aby wyświetlić zalecenia dotyczące obszaru koncentracji uwagi i podjąć działania naprawcze
+### <a name="to-view-recommendations-for-a-focus-area-and-take-corrective-action"></a>Aby wyświetlić zalecenia dotyczące obszaru fokusu i podjąć działania naprawcze
 
 [!INCLUDE [azure-monitor-solutions-overview-page](../../../includes/azure-monitor-solutions-overview-page.md)]
 
-1. Na stronie **Przegląd** kliknij kafelek **sprawdzanie kondycji Active Directory** .
+1. Na stronie **Przegląd** kliknij kafelek **Sprawdzanie kondycji usługi Active Directory.**
 
-2. Na stronie **Sprawdzanie kondycji** Przejrzyj informacje podsumowujące na jednym z bloków obszaru fokusu, a następnie kliknij jeden, aby wyświetlić zalecenia dotyczące tego obszaru.
+2. Na stronie **Sprawdzanie kondycji** przejrzyj informacje podsumowujące w jednym z bloków obszaru fokusu, a następnie kliknij jeden z nich, aby wyświetlić zalecenia dotyczące tego obszaru fokusu.
 
-3. Na dowolnej stronie obszaru fokusu można wyświetlić zalecenia z priorytetami wykonane dla danego środowiska. Kliknij zalecenie w obszarze powiązane **obiekty** , aby wyświetlić szczegóły dotyczące przyczyny tego zalecenia.
+3. Na dowolnej stronie obszaru fokusu można wyświetlić priorytetowe zalecenia dla środowiska. Kliknij zalecenie w obszarze **Obiekty, których dotyczy problem,** aby wyświetlić szczegółowe informacje o tym, dlaczego zalecenie zostało sformułowane.
 
-    ![obraz przedstawiający zalecenia dotyczące sprawdzania kondycji](./media/ad-assessment/ad-healthcheck-dashboard-02.png)
+    ![obraz zaleceń dotyczących kontroli kondycji](./media/ad-assessment/ad-healthcheck-dashboard-02.png)
 
-4. W **sugerowanych akcjach**można wykonać akcje naprawcze. Gdy element został rozkierowany, w późniejszych wersjach oceny są uwzględniane zalecane akcje i zostanie zwiększony wynik oceny zgodności. Poprawione elementy są wyświetlane jako **obiekty zakończone**.
+4. W obszarze **Sugerowane działania**można podjąć działania naprawcze sugerowane . Po zajmaniu się elementem, późniejsze rekordy ocen, które zostały podjęte zalecane działania i wynik zgodności wzrośnie. Poprawione elementy są wyświetlane jako **przekazane obiekty**.
 
-## <a name="ignore-recommendations"></a>Ignoruj zalecenia
+## <a name="ignore-recommendations"></a>Ignorowanie zaleceń
 
-Jeśli masz zalecenia, które chcesz zignorować, możesz utworzyć plik tekstowy, który będzie używany przez Azure Monitor, aby zapobiec wyświetlaniu zaleceń w wynikach oceny.
+Jeśli masz zalecenia, które chcesz zignorować, można utworzyć plik tekstowy, który będzie używany przez usługę Azure Monitor, aby zapobiec pojawianiu się zaleceń w wynikach oceny.
 
-### <a name="to-identify-recommendations-that-you-will-ignore"></a>Aby zidentyfikować rekomendacje, które zostaną zignorowane
+### <a name="to-identify-recommendations-that-you-will-ignore"></a>Aby zidentyfikować zalecenia, które zignorujesz
 
 [!INCLUDE [azure-monitor-log-queries](../../../includes/azure-monitor-log-queries.md)]
 
-Użyj następującego zapytania, aby wyświetlić listę zaleceń, których nie powiodło się w przypadku komputerów w danym środowisku.
+Poniższa kwerenda służy do listy zaleceń, które nie powiodły się dla komputerów w twoim środowisku.
 
 ```
 ADAssessmentRecommendation | where RecommendationResult == "Failed" | sort by Computer asc | project Computer, RecommendationId, Recommendation
 ```
 
-Oto zrzut ekranu przedstawiający zapytanie dziennika: <
+Oto zrzut ekranu przedstawiający kwerendę dziennika:<
 
-![zalecenia zakończone niepowodzeniem](media/ad-assessment/ad-failed-recommendations.png)
+![nieudane zalecenia](media/ad-assessment/ad-failed-recommendations.png)
 
-Wybierz zalecenia, które chcesz zignorować. W następnej procedurze użyjesz wartości dla RecommendationId.
+Wybierz zalecenia, które chcesz zignorować. Użyjesz wartości dla RecommendationId w następnej procedurze.
 
-### <a name="to-create-and-use-an-ignorerecommendationstxt-text-file"></a>Aby utworzyć plik tekstowy IgnoreRecommendations. txt i korzystać z niego
+### <a name="to-create-and-use-an-ignorerecommendationstxt-text-file"></a>Aby utworzyć plik tekstowy IgnoreRecommenddations.txt i używać go
 
-1. Utwórz plik o nazwie IgnoreRecommendations. txt.
+1. Utwórz plik o nazwie IgnoreRecommendations.txt.
 
-2. Wklej lub wpisz każdą RecommendationId każdego zalecenia, które Azure Monitor mają być ignorowane w osobnym wierszu, a następnie Zapisz i zamknij plik.
+2. Wklej lub wpisz każdy obiekt RecommendationId dla każdego zalecenia, które chcesz, aby usługa Azure Monitor zignorowała w osobnym wierszu, a następnie zapisz i zamknij plik.
 
-3. Umieść plik w następującym folderze na każdym komputerze, na którym ma Azure Monitor ignorowanie zaleceń.
+3. Umieść plik w następującym folderze na każdym komputerze, na którym chcesz, aby usługa Azure Monitor ignorowała zalecenia.
 
-   * Na komputerach z Microsoft Monitoring Agent (połączone bezpośrednio lub za pomocą Operations Manager)- *dysk_systemowy*: \Program Files\Microsoft monitoring Agent\Agent
-   * Na Operations Manager 2012 R2 Management Server- *dysk_systemowy*: \Program Files\Microsoft System Center 2012 R2\Operations Manager\Server
-   * Na Operations Manager 2016 Management Server- *dysk_systemowy*: \Program Files\Microsoft System Center 2016 \ Operations Manager\Server
+   * Na komputerach z agentem microsoft monitoringu (połączonym bezpośrednio lub za pośrednictwem programu Operations Manager) — *SystemDrive*:\Program Files\Microsoft Monitoring Agent\Agent
+   * Na serwerze zarządzania programu Operations Manager 2012 R2 — *SystemDrive*:\Program Files\Microsoft System Center 2012 R2\Operations Manager\Server
+   * Na serwerze zarządzania programu Operations Manager 2016 — *SystemDrive*:\Program Files\Microsoft System Center 2016\Operations Manager\Server
 
 ### <a name="to-verify-that-recommendations-are-ignored"></a>Aby sprawdzić, czy zalecenia są ignorowane
 
-Po następnym zaplanowanym zaplanowaniu kondycji domyślnie co siedem dni określone zalecenia są oznaczone jako *ignorowane* i nie będą wyświetlane na pulpicie nawigacyjnym.
+Po uruchomieniu następnego zaplanowanego sprawdzania kondycji, domyślnie co siedem dni, określone zalecenia są oznaczone *jako Ignorowane* i nie będą wyświetlane na pulpicie nawigacyjnym.
 
-1. Aby wyświetlić listę wszystkich ignorowanych zaleceń, można użyć poniższych zapytań dzienników.
+1. Za pomocą następujących kwerend dziennika można wyświetlić listę wszystkich zignorowanych zaleceń.
 
     ```
     ADAssessmentRecommendation | where RecommendationResult == "Ignored" | sort by Computer asc | project Computer, RecommendationId, Recommendation
     ```
 
-2. Jeśli zdecydujesz się później, aby zobaczyć zignorowane zalecenia, Usuń wszystkie pliki IgnoreRecommendations. txt lub Usuń z nich RecommendationIDs.
+2. Jeśli później zdecydujesz, że chcesz zobaczyć zignorowane zalecenia, usuń wszystkie pliki IgnoreRecommendations.txt lub możesz usunąć z nich identyfikatory rekomendacji.
 
-## <a name="ad-health-check-solutions-faq"></a>Sprawdzanie kondycji rozwiązań usługi AD — często zadawane pytania
+## <a name="ad-health-check-solutions-faq"></a>Rozwiązania AD Health Check — często zadawane pytania
 
-*Jakie testy są wykonywane przez rozwiązanie AD Assessment?*
+*Jakie kontrole są przeprowadzane przez rozwiązanie oceny usługi AD?*
 
-* Następujące zapytanie zawiera opis wszystkich aktualnie wykonanych testów:
+* Następująca kwerenda zawiera opis wszystkich aktualnie wykonywanych kontroli:
 
 ```Kusto
 ADAssessmentRecommendation
 | distinct RecommendationId, FocusArea, ActionArea, Recommendation, Description
 | sort by FocusArea,ActionArea, Recommendation
 ```
-Następnie można wyeksportować wyniki do programu Excel w celu dalszego przeglądu.
+Wyniki można następnie wyeksportować do programu Excel w celu dalszego przeglądu.
 
-*Jak często jest uruchamiane Sprawdzanie kondycji?*
+*Jak często przebiega sprawdzanie kondycji?*
 
-* Sprawdzanie jest przeprowadzane co siedem dni.
+* Kontrola odbywa się co siedem dni.
 
-*Czy istnieje sposób skonfigurowania, jak często jest przeprowadzane sprawdzanie kondycji?*
-
-* Nie w tej chwili.
-
-*Jeśli po dodaniu rozwiązania do sprawdzania kondycji zostanie odnaleziony inny serwer dla programu, zostanie on sprawdzony*
-
-* Tak, po jego znalezieniu jest on sprawdzany w dniu, co siedem dni.
-
-*Jeśli serwer zostanie zlikwidowany, gdy zostanie usunięty ze sprawdzenia kondycji?*
-
-* Jeśli serwer nie przesyła danych przez 3 tygodnie, zostanie usunięty.
-
-*Jaka jest nazwa procesu, który wykonuje zbieranie danych?*
-
-* AdvisorAssessment.exe
-
-*Jak długo trwa zbieranie danych?*
-
-* Rzeczywista zbieranie danych na serwerze trwa około 1 godziny. Korzystanie z dużej liczby serwerów Active Directory może zająć więcej czasu.
-
-*Czy istnieje sposób skonfigurowania zbierania danych?*
+*Czy istnieje sposób, aby skonfigurować, jak często działa sprawdzanie kondycji?*
 
 * Nie w tej chwili.
 
-*Dlaczego są wyświetlane tylko 10 najważniejszych zaleceń?*
+*Jeśli po dodaniu rozwiązania do sprawdzania kondycji zostanie wykryty inny serwer, zostanie on sprawdzony*
 
-* Zamiast zapewniać wyczerpującą listę zadań, zalecamy najpierw skupić się na rozwiązaniu zaleceń z priorytetami. Po wprowadzeniu dodatkowych rekomendacji staną się dostępne. Jeśli wolisz wyświetlić listę Szczegółowa, możesz wyświetlić wszystkie zalecenia przy użyciu zapytania dziennika.
+* Tak, po odkryciu jest sprawdzany od tego czasu, co siedem dni.
 
-*Czy istnieje sposób na ignorowanie rekomendacji?*
+*Jeśli serwer zostanie wycofany z eksploatacji, kiedy zostanie usunięty z kontroli kondycji?*
 
-* Tak, zobacz sekcję [Ignorowanie rekomendacji](#ignore-recommendations) powyżej.
+* Jeśli serwer nie przesyła danych przez 3 tygodnie, zostanie on usunięty.
+
+*Jaka jest nazwa procesu, który zbiera dane?*
+
+* DoradcaAssessment.exe
+
+*Jak długo trwa gromadzenie danych?*
+
+* Rzeczywiste zbieranie danych na serwerze trwa około 1 godziny. Może to potrwać dłużej na serwerach, które mają dużą liczbę serwerów usługi Active Directory.
+
+*Czy istnieje sposób konfigurowania podczas zbierania danych?*
+
+* Nie w tej chwili.
+
+*Dlaczego wyświetlać tylko 10 najlepszych rekomendacji?*
+
+* Zamiast podawać wyczerpującą przytłaczającą listę zadań, zalecamy skupienie się najpierw na rozwiązaniu priorytetowych zaleceń. Po ich rozwiązaniu dostępne będą dodatkowe zalecenia. Jeśli wolisz zobaczyć szczegółową listę, możesz wyświetlić wszystkie zalecenia za pomocą kwerendy dziennika.
+
+*Czy istnieje sposób, aby zignorować zalecenie?*
+
+* Tak, zobacz [Sekcję Ignoruj zalecenia](#ignore-recommendations) powyżej.
 
 ## <a name="next-steps"></a>Następne kroki
 
-Użyj [zapytań dzienników Azure monitor](../log-query/log-query-overview.md) , aby dowiedzieć się, jak analizować szczegółowe dane i zalecenia dotyczące kontroli kondycji usługi AD.
+Użyj [zapytań dziennika usługi Azure Monitor,](../log-query/log-query-overview.md) aby dowiedzieć się, jak analizować szczegółowe dane i zalecenia dotyczące sprawdzania kondycji usługi AD.

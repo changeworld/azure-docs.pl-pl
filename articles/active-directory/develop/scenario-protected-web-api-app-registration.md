@@ -1,5 +1,5 @@
 ---
-title: Rejestracja aplikacji chronionego interfejsu API sieci Web | Azure
+title: Rejestracja aplikacji interfejsu API chronionego w sieci Web | Azure
 titleSuffix: Microsoft identity platform
 description: Dowiedz się, jak utworzyć chroniony internetowy interfejs API i informacje potrzebne do zarejestrowania aplikacji.
 services: active-directory
@@ -17,100 +17,100 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: 2d9e5d051f101288b8528b47fa88b4783a040950
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79262505"
 ---
-# <a name="protected-web-api-app-registration"></a>Chroniony internetowy interfejs API: Rejestracja aplikacji
+# <a name="protected-web-api-app-registration"></a>Chroniony interfejs API sieci Web: rejestracja aplikacji
 
-W tym artykule opisano informacje o rejestracji aplikacji dla chronionego internetowego interfejsu API.
+W tym artykule opisano szczegóły rejestracji aplikacji dla chronionego interfejsu API sieci web.
 
-Aby zapoznać się z typowymi krokami rejestracji aplikacji, zobacz [Szybki Start: rejestrowanie aplikacji na platformie tożsamości firmy Microsoft](quickstart-register-app.md).
+Aby zapoznać się z typowymi krokami, aby zarejestrować aplikację, zobacz [Szybki start: Rejestrowanie aplikacji na platformie tożsamości firmy Microsoft](quickstart-register-app.md).
 
 ## <a name="accepted-token-version"></a>Zaakceptowana wersja tokenu
 
-Punkt końcowy platformy tożsamości firmy Microsoft może wystawiać tokeny 1.0 i tokeny v 2.0. Aby uzyskać więcej informacji na temat tych tokenów, zobacz [tokeny dostępu](access-tokens.md).
+Punkt końcowy platformy tożsamości firmy Microsoft może wystawiać tokeny w wersji 1.0 i tokeny w wersji 2.0. Aby uzyskać więcej informacji na temat tych tokenów, zobacz [Tokeny programu Access](access-tokens.md).
 
-Zaakceptowana wersja tokenu zależy od **obsługiwanej wartości typów kont** wybranych podczas tworzenia aplikacji.
+Zaakceptowana wersja tokenu zależy od wartości **typów obsługiwanych kont,** którą wybierzesz podczas tworzenia aplikacji.
 
-- Jeśli wartość **obsługiwanych typów kont** to **konta w dowolnym katalogu organizacyjnym i osobiste konta Microsoft (np. Skype, Xbox, Outlook.com)** , zaakceptowana wersja tokenu to v 2.0.
-- W przeciwnym razie zaakceptowana wersja tokenu to v 1.0.
+- Jeśli wartością **obsługiwanych typów kont** są konta w dowolnym katalogu **organizacyjnym i osobistych kontach Microsoft (np Outlook.com.**
+- W przeciwnym razie zaakceptowana wersja tokenu jest w wersji 1.0.
 
-Po utworzeniu aplikacji możesz określić lub zmienić zaakceptowaną wersję tokenu, wykonując następujące czynności:
+Po utworzeniu aplikacji można określić lub zmienić zaakceptowana wersja tokenu, wykonując następujące kroki:
 
-1. W Azure Portal wybierz aplikację, a następnie wybierz pozycję **manifest**.
-1. Znajdź właściwość **accessTokenAcceptedVersion** w manifeście. Wartość domyślna właściwości to 2.
-1. Wartość określa Azure Active Directory (Azure AD), która wersja tokenu akceptuje interfejs API sieci Web.
-    - Jeśli wartość jest równa 2, internetowy interfejs API akceptuje tokeny v 2.0.
-    - Jeśli wartość jest **równa null**, internetowy interfejs API akceptuje tokeny v 1.0.
-1. Jeśli została zmieniona wersja tokenu, wybierz pozycję **Zapisz**.
+1. W witrynie Azure portal wybierz aplikację, a następnie wybierz **pozycję Manifest**.
+1. Znajdź **właściwość accessTokenAcceptedVersion** w manifeście. Wartość domyślna właściwości to 2.
+1. Wartość określa usługi Azure Active Directory (Azure AD), którą wersję tokenu akceptuje internetowy interfejs API.
+    - Jeśli wartość wynosi 2, internetowy interfejs API akceptuje tokeny w wersji 2.0.
+    - Jeśli wartość ma **wartość null,** internetowy interfejs API akceptuje tokeny w wersji 1.0.
+1. Jeśli zmieniono wersję tokenu, wybierz pozycję **Zapisz**.
 
 > [!NOTE]
-> Internetowy interfejs API określa, która wersja tokenu akceptuje. Gdy klient zażąda tokenu dla internetowego interfejsu API z punktu końcowego Microsoft Identity platform (v 2.0), klient otrzymuje token wskazujący, która wersja tokenu jest akceptowana przez internetowy interfejs API.
+> Internetowy interfejs API określa, którą wersję tokenu akceptuje. Gdy klient żąda tokenu dla interfejsu API sieci web z punktu końcowego platformy tożsamości firmy Microsoft (wersja 2.0), klient otrzymuje token wskazujący, którą wersję tokenu akceptuje internetowy interfejs API.
 
 ## <a name="no-redirect-uri"></a>Brak identyfikatora URI przekierowania
 
-Interfejsy API sieci Web nie muszą rejestrować identyfikatora URI przekierowania, ponieważ żaden użytkownik nie jest zalogowany interaktywnie.
+Interfejsy API sieci Web nie muszą rejestrować identyfikatora URI przekierowania, ponieważ żaden użytkownik nie jest zalogowany.
 
-## <a name="exposed-api"></a>Uwidoczniony interfejs API
+## <a name="exposed-api"></a>Odsłonięty interfejs API
 
-Inne ustawienia specyficzne dla interfejsów API sieci Web to uwidoczniony interfejs API i udostępniane zakresy.
+Inne ustawienia specyficzne dla interfejsów API sieci web są narażony interfejs API i zakresy narażone.
 
 ### <a name="application-id-uri-and-scopes"></a>Identyfikator URI i zakresy identyfikatora aplikacji
 
-Zakresy mają zwykle postać `resourceURI/scopeName`. W przypadku Microsoft Graph zakresy mają skróty. Na przykład `User.Read` jest skrótem `https://graph.microsoft.com/user.read`.
+Zakresy zwykle mają `resourceURI/scopeName`formularz . W przypadku programu Microsoft Graph zakresy mają skróty. Na przykład `User.Read` jest skrótem do `https://graph.microsoft.com/user.read`.
 
 Podczas rejestracji aplikacji należy zdefiniować następujące parametry:
 
 - Identyfikator URI zasobu
-- Co najmniej jeden zakres
+- Jeden lub więcej zakresów
 - Co najmniej jedna rola aplikacji
 
-Domyślnie Portal rejestracji aplikacji zaleca użycie identyfikatora URI zasobu `api://{clientId}`. Ten identyfikator URI jest unikatowy, ale nie jest możliwy do odczytania przez człowieka. Jeśli zmienisz identyfikator URI, upewnij się, że nowa wartość jest unikatowa.
+Domyślnie portal rejestracji aplikacji zaleca użycie identyfikatora `api://{clientId}`URI zasobu . Ten identyfikator URI jest unikatowy, ale nie czytelny dla człowieka. Jeśli zmienisz identyfikator URI, upewnij się, że nowa wartość jest unikatowa.
 
-W przypadku aplikacji klienckich zakresy są wyświetlane jako uprawnienia *delegowane* i role aplikacji są wyświetlane jako *uprawnienia aplikacji* dla internetowego interfejsu API.
+Do aplikacji klienckich zakresy są wyświetlane jako *delegowane uprawnienia,* a role aplikacji są wyświetlane jako *uprawnienia aplikacji* dla internetowego interfejsu API.
 
-Zakresy są również wyświetlane w oknie zgody prezentowanym użytkownikom aplikacji. W związku z tym należy podać odpowiednie ciągi opisujące zakres:
+Zakresy są również wyświetlane w oknie zgody, które jest prezentowane użytkownikom aplikacji. Dlatego musisz podać odpowiednie ciągi, które opisują zakres:
 
-- Widziane przez użytkownika.
-- Jak widać Administrator dzierżawy, który może udzielić zgody administratora.
+- Jak widać przez użytkownika.
+- Jak widać przez administratora dzierżawy, który może udzielić zgody administratora.
 
-### <a name="exposing-delegated-permissions-scopes"></a>Uwidacznianie delegowanych uprawnień (zakresy)
+### <a name="exposing-delegated-permissions-scopes"></a>Udostępnianie uprawnień delegowanych (zakresów)
 
-1. Wybierz opcję **Uwidacznianie interfejsu API** w rejestracji aplikacji.
+1. Wybierz **pozycję Uwidaczniaj interfejs API** w rejestracji aplikacji.
 1. Wybierz polecenie **Dodaj zakres**.
-1. Jeśli zostanie wyświetlony monit, zaakceptuj proponowany identyfikator URI aplikacji (`api://{clientId}`), wybierając pozycję **Zapisz i Kontynuuj**.
+1. Jeśli zostanie wyświetlony monit, zaakceptuj proponowany`api://{clientId}`identyfikator URI identyfikatora aplikacji ( ) wybierając **pozycję Zapisz i Kontynuuj**.
 1. Określ następujące wartości:
-    - Wybierz pozycję **Nazwa zakresu** i wprowadź **access_as_user**.
-    - Wybierz **osoby, które mogą wyrazić zgodę** i upewnij się, że wybrano **administratorów i użytkowników** .
-    - Wybierz opcję **Nazwa wyświetlana zgody administratora** i wprowadź **TodoListService dostępu jako użytkownika**.
-    - Wybierz pozycję **Opis zgody administratora** i wprowadź **dostęp do internetowego interfejsu API TodoListService jako użytkownika**.
-    - Wybierz pozycję **Nazwa wyświetlana zgody użytkownika** i wprowadź **TodoListService dostępu jako użytkownika**.
-    - Wybierz pozycję **Opis zgody użytkownika** i wprowadź **dostęp do internetowego interfejsu API TodoListService jako użytkownika**.
-    - Zachowaj wartość **stanu** ustawioną na **włączone**.
- 1. Wybierz pozycję **Dodaj zakres**.
+    - Wybierz **nazwę zakresu** i wprowadź **access_as_user**.
+    - Wybierz **pozycję Kto może wyrazić zgodę** i upewnij się, że **wybrano administratorów i użytkowników.**
+    - Wybierz **nazwę wyświetlaną zgody administratora** i wprowadź **access TodoListService jako użytkownika**.
+    - Wybierz **opis zgody administratora** i wprowadź **dostęp do interfejsu API sieci Web TodoListService jako użytkownika**.
+    - Wybierz **nazwę wyświetlaną zgody użytkownika** i wprowadź access **TodoListService jako użytkownika**.
+    - Wybierz **opis zgody użytkownika** i wprowadź dostęp do interfejsu API sieci Web **TodoListService jako użytkownika**.
+    - Zachowaj wartość **Stan** ustawioną na **Włączono**.
+ 1. Wybierz **pozycję Dodaj zakres**.
 
 ### <a name="if-your-web-api-is-called-by-a-daemon-app"></a>Jeśli internetowy interfejs API jest wywoływany przez aplikację demona
 
-W tej sekcji dowiesz się, jak zarejestrować chroniony internetowy interfejs API, dzięki czemu aplikacje demona mogą bezpiecznie je wywoływać.
+W tej sekcji dowiesz się, jak zarejestrować chroniony interfejs API sieci Web, aby aplikacje demonów mogły bezpiecznie go wywołać.
 
-- Należy zadeklarować i uwidocznić tylko *uprawnienia aplikacji* , ponieważ aplikacje demona nie współpracują z użytkownikami. Delegowane uprawnienia nie będą mieć sensu.
-- Administratorzy dzierżawy mogą wymagać, aby usługa Azure AD wydawała tokeny interfejsu API sieci Web tylko aplikacjom, które zostały zarejestrowane w celu uzyskania dostępu do jednego z uprawnień aplikacji interfejsu API.
+- Deklarujesz i udostępniasz tylko *uprawnienia aplikacji,* ponieważ aplikacje demonów nie wchodzą w interakcje z użytkownikami. Delegowane uprawnienia nie miałoby sensu.
+- Administratorzy dzierżawy mogą wymagać usługi Azure AD do wystawiania tokenów interfejsu API sieci web tylko do aplikacji, które zostały zarejestrowane, aby uzyskać dostęp do jednego z uprawnień aplikacji interfejsu API.
 
-#### <a name="exposing-application-permissions-app-roles"></a>Udostępnianie uprawnień aplikacji (ról aplikacji)
+#### <a name="exposing-application-permissions-app-roles"></a>Udostępnianie uprawnień aplikacji (role aplikacji)
 
-Aby uwidocznić uprawnienia aplikacji, należy edytować manifest.
+Aby udostępnić uprawnienia aplikacji, należy edytować manifest.
 
-1. W obszarze Rejestracja aplikacji dla aplikacji wybierz pozycję **manifest**.
-1. Aby edytować manifest, Znajdź `appRoles` ustawienie i Dodaj role aplikacji. Definicje ról są podane w następującym przykładowym bloku JSON.
-1. Pozostaw `allowedMemberTypes` ustawiony tylko na `"Application"`.
-1. Upewnij się, że `id` jest unikatowym identyfikatorem GUID.
-1. Upewnij się, że `displayName` i `value` nie zawierają spacji.
+1. W rejestracji aplikacji dla aplikacji **wybierz**manifest .
+1. Aby edytować manifest, `appRoles` znajdź ustawienie i dodaj role aplikacji. Definicje ról znajdują się w poniższym przykładowym bloku JSON.
+1. `allowedMemberTypes` Pozostaw `"Application"` tylko na ustaw.
+1. Upewnij `id` się, że jest to unikatowy identyfikator GUID.
+1. Upewnij `displayName` się `value` i nie zawiera spacji.
 1. Zapisz manifest.
 
-Poniższy przykład pokazuje zawartość `appRoles`, gdzie wartość `id` może być dowolnym unikatowym identyfikatorem GUID.
+Poniższy przykład przedstawia `appRoles`zawartość , gdzie `id` wartość może być dowolny unikatowy identyfikator GUID.
 
 ```JSon
 "appRoles": [
@@ -127,31 +127,31 @@ Poniższy przykład pokazuje zawartość `appRoles`, gdzie wartość `id` może 
 ],
 ```
 
-#### <a name="ensuring-that-azure-ad-issues-tokens-for-your-web-api-to-only-allowed-clients"></a>Upewnienie się, że tokeny wystawia usługi Azure AD dla internetowego interfejsu API tylko dla dozwolonych klientów
+#### <a name="ensuring-that-azure-ad-issues-tokens-for-your-web-api-to-only-allowed-clients"></a>Zapewnienie, że usługa Azure AD wystawia tokeny dla internetowego interfejsu API tylko dla klientów
 
-Interfejs API sieci Web sprawdza rolę aplikacji. Ta rola jest programistą oprogramowania do udostępniania uprawnień aplikacji. Usługę Azure AD można także skonfigurować do wystawiania tokenów interfejsu API tylko dla aplikacji, które Administrator dzierżawy zatwierdził dostęp do interfejsu API.
+Internetowy interfejs API sprawdza rolę aplikacji. Ta rola jest sposób dewelopera oprogramowania, aby udostępnić uprawnienia aplikacji. Można również skonfigurować usługę Azure AD do wystawiania tokenów interfejsu API tylko do aplikacji, które administrator dzierżawy zatwierdza dla dostępu do interfejsu API.
 
-Aby dodać zwiększone zabezpieczenia:
+Aby dodać zwiększone bezpieczeństwo:
 
-1. Przejdź do strony **Przegląd** aplikacji dotyczącej rejestracji aplikacji.
-1. W obszarze **aplikacja zarządzana w katalogu lokalnym**wybierz łącze z nazwą aplikacji. Etykieta dla tego zaznaczenia może zostać obcięta. Na przykład **aplikacja zarządzana może być widoczna w...**
+1. Przejdź do strony Przegląd aplikacji, **aby** uzyskać rejestrację aplikacji.
+1. W obszarze **Aplikacja zarządzana w katalogu lokalnym**wybierz łącze z nazwą aplikacji. Etykieta dla tego zaznaczenia może być obcięty. Na przykład możesz zobaczyć **aplikację zarządzana w ...**
 
    > [!NOTE]
    >
-   > Po wybraniu tego linku przejdź do strony **przeglądu aplikacji przedsiębiorstwa** . Ta strona jest skojarzona z jednostką usługi dla Twojej aplikacji w dzierżawie, w której została utworzona. Możesz przejść do strony rejestracji aplikacji, korzystając z przycisku Wstecz w przeglądarce.
+   > Po wybraniu tego łącza przejdź do strony **Przegląd aplikacji przedsiębiorstwa.** Ta strona jest skojarzona z jednostką usługi dla aplikacji w dzierżawie, w której została utworzona. Możesz przejść do strony rejestracji aplikacji za pomocą przycisku Wstecz przeglądarki.
 
-1. Wybierz stronę **Właściwości** w sekcji **Zarządzanie** na stronach aplikacji dla przedsiębiorstw.
-1. Jeśli chcesz, aby usługa Azure AD zezwalała na dostęp do internetowego interfejsu API tylko z niektórych klientów, należy ustawić **wymagane przypisanie użytkownika?** na **wartość tak**.
+1. Wybierz stronę **Właściwości** w sekcji **Zarządzanie** na stronach aplikacji Przedsiębiorstwo.
+1. Jeśli chcesz, aby usługa Azure AD zezwalała na dostęp do internetowego **Yes**interfejsu API tylko od niektórych klientów, ustaw **przypisanie użytkownika wymagane?**
 
    > [!IMPORTANT]
    >
-   > Jeśli ustawisz **przypisanie użytkownika jako wymagane?** na **tak**, usługa Azure AD sprawdzi przypisania roli aplikacji klienta, gdy zażąda tokenu dostępu do interfejsu API sieci Web. Jeśli klient nie jest przypisany do żadnych ról aplikacji, usługa Azure AD zwróci komunikat o błędzie "invalid_client: AADSTS501051: aplikacja \<nazwa aplikacji\> nie jest przypisana do roli dla \<internetowego interfejsu API\>".
+   > Jeśli **ustawisz przypisanie użytkownika wymagane na** **Tak,** usługa Azure AD sprawdza przypisania roli aplikacji klienta, gdy żąda tokenu dostępu do interfejsu API sieci Web. Jeśli klient nie jest przypisany do żadnych ról aplikacji, usługa Azure AD zwróci komunikat o błędzie "invalid_client: AADSTS501051: \<Nazwa\> aplikacji nie jest przypisana do roli dla internetowego \<interfejsu API\>".
    >
-   > Jeśli jest **wymagane przypisanie użytkownika?** wartość **nie**, usługa Azure AD nie będzie sprawdzać przypisań roli aplikacji, gdy klient zażąda tokenu dostępu dla internetowego interfejsu API. Każdy klient demona, który oznacza dowolnego klienta używający przepływu poświadczeń klienta, może uzyskać token dostępu dla interfejsu API tylko przez określenie jego odbiorców. Każda aplikacja może uzyskać dostęp do interfejsu API bez konieczności żądania uprawnień do niego.
+   > Jeśli **zachowasz przypisanie użytkownika wymagane?** ustawiona na **Nie**, usługa Azure AD nie będzie sprawdzać przypisań ról aplikacji, gdy klient żąda tokenu dostępu dla internetowego interfejsu API. Każdy klient demona, co oznacza, że każdy klient przy użyciu przepływu poświadczeń klienta, można uzyskać token dostępu dla interfejsu API tylko określając jego odbiorców. Każda aplikacja może uzyskać dostęp do interfejsu API bez konieczności żądania uprawnień dla niego.
    >
-   > Jednak zgodnie z opisem w poprzedniej sekcji internetowy interfejs API może zawsze sprawdzić, czy aplikacja ma odpowiednią rolę, która jest autoryzowana przez administratora dzierżawy. Interfejs API wykonuje tę weryfikację, sprawdzając, czy token dostępu ma rolę i czy wartość tego żądania jest poprawna. W poprzednim przykładzie JSON wartość jest `access_as_application`.
+   > Ale jak wyjaśniono w poprzedniej sekcji, interfejs API sieci web zawsze można sprawdzić, czy aplikacja ma właściwą rolę, która jest autoryzowana przez administratora dzierżawy. Interfejs API wykonuje tę weryfikację, sprawdzając, czy token dostępu ma oświadczenie ról i czy wartość dla tego oświadczenia jest poprawna. W poprzednim przykładzie JSON `access_as_application`wartość jest .
 
-1. Wybierz pozycję **Zapisz**.
+1. Wybierz **pozycję Zapisz**.
 
 ## <a name="next-steps"></a>Następne kroki
 

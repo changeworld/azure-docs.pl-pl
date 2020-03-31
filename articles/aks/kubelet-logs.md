@@ -1,39 +1,39 @@
 ---
 title: Wyświetlanie dzienników kubelet w usłudze Azure Kubernetes Service (AKS)
-description: Dowiedz się, jak wyświetlać informacje dotyczące rozwiązywania problemów w dziennikach kubelet z węzłów usługi Azure Kubernetes Service (AKS)
+description: Dowiedz się, jak wyświetlić informacje dotyczące rozwiązywania problemów w dziennikach kubelet z węzłów usługi Azure Kubernetes Service (AKS)
 services: container-service
 ms.topic: article
 ms.date: 03/05/2019
 ms.openlocfilehash: b7a74803af916f9e9de72dd528273007ce37832f
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77595386"
 ---
-# <a name="get-kubelet-logs-from-azure-kubernetes-service-aks-cluster-nodes"></a>Pobieranie dzienników kubelet z węzłów klastra usługi Azure Kubernetes Service (AKS)
+# <a name="get-kubelet-logs-from-azure-kubernetes-service-aks-cluster-nodes"></a>Pobieranie dzienników agenta kubelet z węzłów klastra usługi Azure Kubernetes Service
 
-W ramach działania klastra AKS może być konieczne przejrzenie dzienników w celu rozwiązania problemu. Wbudowana w Azure Portal jest możliwość wyświetlania dzienników dla [głównych składników][aks-master-logs] lub [kontenerów AKS w klastrze AKS][azure-container-logs]. Czasami może być konieczne uzyskanie dzienników *kubelet* z węzła AKS w celu rozwiązywania problemów.
+W ramach obsługi klastra AKS może być konieczne przejrzenie dzienników w celu rozwiązania problemu. Wbudowany w witrynę Azure portal umożliwia wyświetlanie dzienników [składników wzorcowych][aks-master-logs] lub kontenerów usługi AKS [w klastrze AKS.][azure-container-logs] Od czasu do czasu może być konieczne uzyskanie dzienników *kubelet* z węzła AKS do celów rozwiązywania problemów.
 
 W tym artykule pokazano, jak można użyć `journalctl` do wyświetlania dzienników *kubelet* w węźle AKS.
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
-W tym artykule przyjęto założenie, że masz istniejący klaster AKS. Jeśli potrzebujesz klastra AKS, zapoznaj się z przewodnikiem Szybki Start AKS [przy użyciu interfejsu wiersza polecenia platformy Azure][aks-quickstart-cli] lub [przy użyciu Azure Portal][aks-quickstart-portal].
+W tym artykule przyjęto założenie, że masz istniejący klaster AKS. Jeśli potrzebujesz klastra AKS, zobacz szybki start usługi AKS [przy użyciu interfejsu wiersza polecenia platformy Azure][aks-quickstart-cli] lub za pomocą portalu [Azure.][aks-quickstart-portal]
 
 ## <a name="create-an-ssh-connection"></a>Tworzenie połączenia SSH
 
-Najpierw utwórz połączenie SSH z węzłem, na którym chcesz wyświetlić dzienniki *kubelet* . Ta operacja jest szczegółowo opisana w dokumencie [nodes SSH w usłudze Azure Kubernetes Service (AKS)][aks-ssh] .
+Najpierw utwórz połączenie SSH z węzłem, na którym należy wyświetlić dzienniki *kubelet.* Ta operacja jest szczegółowo opisana w dokumencie [węzłów klastra usługi Azure Kubernetes (Azure Kubernetes)][aks-ssh] .
 
 ## <a name="get-kubelet-logs"></a>Pobieranie dzienników agenta kubelet
 
-Po nawiązaniu połączenia z węzłem Uruchom następujące polecenie, aby ściągnąć dzienniki *kubelet* :
+Po nawiązaniu połączenia z węzłem uruchom następujące polecenie, aby wyciągnąć dzienniki *kubelet:*
 
 ```console
 sudo journalctl -u kubelet -o cat
 ```
 
-Następujące przykładowe dane wyjściowe przedstawiają dane dziennika *kubelet* :
+Następujące przykładowe dane dziennika przedstawia dane dziennika *kubelet:*
 
 ```
 I0508 12:26:17.905042    8672 kubelet_node_status.go:497] Using Node Hostname from cloudprovider: "aks-agentpool-11482510-0"
@@ -61,7 +61,7 @@ I0508 12:28:58.344656    8672 kubelet_node_status.go:497] Using Node Hostname fr
 
 ## <a name="next-steps"></a>Następne kroki
 
-Jeśli potrzebujesz dodatkowych informacji dotyczących rozwiązywania problemów z poziomu wzorca Kubernetes, zobacz [Wyświetlanie dzienników głównego węzła Kubernetes w AKS][aks-master-logs].
+Jeśli potrzebujesz dodatkowych informacji o rozwiązywaniu problemów z wzorca narzędzia Kubernetes, zobacz [wyświetlanie dzienników węzłów głównych kubernetes w uzyk AKS][aks-master-logs].
 
 <!-- LINKS - internal -->
 [aks-ssh]: ssh.md

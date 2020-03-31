@@ -1,143 +1,143 @@
 ---
-title: Skonfiguruj urządzenie Azure Migrate dla serwerów fizycznych
-description: Dowiedz się, jak skonfigurować urządzenie Azure Migrate na potrzeby oceny serwera fizycznego.
+title: Konfigurowanie urządzenia migracji platformy Azure dla serwerów fizycznych
+description: Dowiedz się, jak skonfigurować urządzenie migracji platformy Azure do oceny serwera fizycznego.
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: article
 ms.date: 11/19/2019
 ms.author: raynew
 ms.openlocfilehash: b60a30e5e30ee81cbaca7d5e4691ccedac2462b6
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77598174"
 ---
 # <a name="set-up-an-appliance-for-physical-servers"></a>Konfigurowanie urządzenia dla serwerów fizycznych
 
-W tym artykule opisano sposób konfigurowania urządzenia Azure Migrate w przypadku oceniania serwerów fizycznych za pomocą narzędzia do oceny serwera Azure Migrate:.
+W tym artykule opisano sposób konfigurowania urządzenia migracji platformy Azure, jeśli oceniasz serwery fizyczne za pomocą narzędzia Azure Migrate: Server Assessment.
 
-Urządzenie Azure Migrate jest lekkim urządzeniem używanym do oceny Azure Migrate Server, aby wykonać następujące czynności:
+Urządzenie migracji platformy Azure jest urządzeniem lekkim, używanym przez usługę Azure Migrate Server Assessment w celu wykonania następujących czynności:
 
-- Odnajdywanie serwerów lokalnych.
-- Wysyłanie metadanych i danych wydajności dla odnalezionych serwerów w celu Azure Migrate oceny serwera.
+- Odnajdowanie serwerów lokalnych.
+- Wysyłanie metadanych i danych o wydajności wykrytych serwerów do oceny serwera migracji platformy Azure.
 
-[Dowiedz się więcej](migrate-appliance.md) o urządzeniu Azure Migrate.
+[Dowiedz się więcej](migrate-appliance.md) o urządzeniu migracji platformy Azure.
 
 
 ## <a name="appliance-deployment-steps"></a>Kroki wdrażania urządzenia
 
-Aby skonfigurować urządzenie:
-- Pobierz spakowany plik ze skryptem Instalatora Azure Migrate z Azure Portal.
-- Wyodrębnij zawartość z pliku spakowanego. Uruchom konsolę programu PowerShell z uprawnieniami administracyjnymi.
-- Wykonaj skrypt programu PowerShell, aby uruchomić aplikację sieci Web urządzenia.
-- Skonfiguruj urządzenie po raz pierwszy i zarejestruj je w projekcie Azure Migrate.
+Aby skonfigurować urządzenie, które:
+- Pobierz spakowany plik za pomocą skryptu instalatora migracji usługi Azure z witryny Azure portal.
+- Wyodrębnij zawartość z pliku spakowane. Uruchom konsolę programu PowerShell z uprawnieniami administracyjnymi.
+- Wykonaj skrypt programu PowerShell, aby uruchomić aplikację internetową urządzenia.
+- Skonfiguruj urządzenie po raz pierwszy i zarejestruj go w projekcie migracji platformy Azure.
 
-## <a name="download-the-installer-script"></a>Pobierz skrypt Instalatora
+## <a name="download-the-installer-script"></a>Pobierz skrypt instalatora
 
-Pobierz spakowany plik dla urządzenia.
+Pobierz spakowany plik urządzenia.
 
-1. W obszarze **cele migracji** > **serwery** > **Azure Migrate: Ocena serwera**, kliknij przycisk **odkryj**.
-2. W obszarze **odnajdywanie maszyn** > **są zwirtualizowane maszyny?** kliknij pozycję **niezwirtualizowane/inne**.
-3. Kliknij pozycję **Pobierz** , aby pobrać plik zip.
+1. W **obszarze** > Cele migracji**Serwery** > **usługi Azure Migrate: Ocena serwera**kliknij przycisk **Odkryj**.
+2. W **discover maszyny** > **Czy twoje maszyny są zwirtualizowane?**, kliknij nie **zwirtualizowany/Inne**.
+3. Kliknij **przycisk Pobierz,** aby pobrać spakowany plik.
 
-    ![Pobierz maszynę wirtualną](./media/tutorial-assess-physical/download-appliance.png)
+    ![Pobieranie maszyny wirtualnej](./media/tutorial-assess-physical/download-appliance.png)
 
 
-### <a name="verify-security"></a>Weryfikuj zabezpieczenia
+### <a name="verify-security"></a>Weryfikowanie zabezpieczeń
 
-Przed wdrożeniem należy sprawdzić, czy spakowany plik jest bezpieczny.
+Przed wdrożeniem pliku jest bezpieczny, zanim go wdrożysz.
 
 1. Na maszynie, na którą pobrano plik, otwórz okno wiersza polecenia administratora.
-2. Uruchom następujące polecenie, aby wygenerować skrót dla wirtualnego dysku twardego
+2. Uruchom następujące polecenie, aby wygenerować skrót dla dysku VHD
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
     - Przykład użycia: ```C:\>CertUtil -HashFile C:\AzureMigrate\AzureMigrate.ova SHA256```
 3.  W przypadku najnowszej wersji urządzenia wygenerowany skrót powinien być zgodny z tymi [ustawieniami](https://docs.microsoft.com/azure/migrate/tutorial-assess-physical#verify-security).
 
 
 
-## <a name="run-the-azure-migrate-installer-script"></a>Uruchom skrypt Instalatora Azure Migrate
-Skrypt Instalatora wykonuje następujące czynności:
+## <a name="run-the-azure-migrate-installer-script"></a>Uruchamianie skryptu instalatora migracji platformy Azure
+Skrypt instalatora wykonuje następujące czynności:
 
-- Instaluje agentów i aplikację sieci Web na potrzeby odnajdywania i oceny serwera fizycznego.
-- Zainstaluj role systemu Windows, w tym usługi aktywacji systemu Windows, usług IIS i programu PowerShell ISE.
-- Pobierz i zainstaluj moduł, który ma zostać przezapisywalny usług IIS. [Dowiedz się więcej](https://www.microsoft.com/download/details.aspx?id=7435).
-- Aktualizuje klucz rejestru (HKLM) z trwałymi ustawieniami ustawień dla Azure Migrate.
-- Tworzy następujące pliki w ścieżce:
-    - **Pliki konfiguracji**:%ProgramData%\Microsoft Azure\Config
-    - **Pliki dziennika**:%ProgramData%\Microsoft Azure\Logs
+- Instaluje agentów i aplikację sieci web do wykrywania i oceny serwera fizycznego.
+- Zainstaluj role systemu Windows, w tym Usługę aktywacji systemu Windows, usługi IIS i program PowerShell ISE.
+- Pobierz i zainstaluje moduł wielokrotnego zapisu usługi IIS. [Dowiedz się więcej](https://www.microsoft.com/download/details.aspx?id=7435).
+- Aktualizuje klucz rejestru (HKLM) ze szczegółami ustawień trwałych dla migracji platformy Azure.
+- Tworzy następujące pliki pod ścieżką:
+    - **Pliki konfiguracyjne:**%Programdata%\Microsoft Azure\Config
+    - **Pliki dziennika:**%Programdata%\Microsoft Azure\Logs
 
 Uruchom skrypt w następujący sposób:
 
-1. Wyodrębnij spakowany plik do folderu na serwerze, który będzie hostować urządzenie.
-2. Uruchom program PowerShell na powyższym serwerze z uprawnieniami administracyjnymi (z podwyższonym poziomem uprawnień).
-3. Zmień katalog programu PowerShell do folderu, w którym zawartość została wyodrębniona z pobranego pliku spakowanego.
-4. Uruchom skrypt o nazwie **AzureMigrateInstaller. ps1** , uruchamiając następujące polecenie:
+1. Wyodrębnij spakowany plik do folderu na serwerze, w który będzie obsługiwał urządzenie.
+2. Uruchom program PowerShell na powyższym serwerze z uprawnieniami administracyjnymi (podwyższonymi).
+3. Zmień katalog programu PowerShell na folder, w którym zawartość została wyodrębniona z pobranego pliku spakowanym.
+4. Uruchom skrypt o nazwie **AzureMigrateInstaller.ps1,** uruchamiając następujące polecenie:
     ```
     PS C:\Users\administrator\Desktop\AzureMigrateInstaller> AzureMigrateInstaller.ps1
     ```
-Po pomyślnym zakończeniu działania skryptu zostanie uruchomiona aplikacja sieci Web urządzenia.
+Skrypt uruchomi aplikację internetową urządzenia po pomyślnym zakończeniu.
 
-W razie jakichkolwiek problemów możesz uzyskać dostęp do dzienników skryptów w witrynie C:\ProgramData\Microsoft Azure\Logs\ AzureMigrateScenarioInstaller_<em>timestamp</em>. log w celu rozwiązywania problemów.
+W przypadku jakichkolwiek problemów można uzyskać dostęp do dzienników skryptów w witrynie C:\ProgramData\Microsoft Azure\Logs\AzureMigrateScenarioInstaller_<em>Timestamp</em>.log w celu rozwiązania problemu.
 
 > [!NOTE]
-> Nie wykonuj skryptu Instalatora Azure Migrate na istniejącym urządzeniu Azure Migrate.
+> Proszę nie wykonywać skryptu instalatora migracji platformy Azure na istniejącym urządzeniu migracji platformy Azure.
 
 ### <a name="verify-appliance-access-to-azure"></a>Weryfikowanie dostępu urządzenia do platformy Azure
 
-Upewnij się, że maszyna wirtualna urządzenia może nawiązać połączenie z wymaganymi [adresami URL platformy Azure](migrate-appliance.md#url-access).
+Upewnij się, że maszyna wirtualna urządzenia może łączyć się z wymaganymi [adresami URL platformy Azure](migrate-appliance.md#url-access).
 
 ## <a name="configure-the-appliance"></a>Konfigurowanie urządzenia
 
 Skonfiguruj urządzenie po raz pierwszy.
 
-1. Otwórz przeglądarkę na dowolnym komputerze, który może nawiązać połączenie z maszyną wirtualną, a następnie otwórz adres URL aplikacji sieci Web urządzenia: **https://*Nazwa urządzenia lub adres IP*: 44368**.
+1. Otwórz przeglądarkę na dowolnym komputerze, który może połączyć się z maszyną wirtualną, i otwórz adres URL aplikacji internetowej urządzenia: **https:// nazwę urządzenia lub adres*IP:* 44368**.
 
-   Możesz też otworzyć aplikację z poziomu pulpitu, klikając skrót do aplikacji.
-2. W aplikacji internetowej > **skonfigurować wymagania wstępne**, wykonaj następujące czynności:
-    - **Licencja**: zaakceptuj postanowienia licencyjne i przeczytaj informacje o innych firmach.
-    - **Łączność**: aplikacja sprawdza, czy maszyna wirtualna ma dostęp do Internetu. Jeśli maszyna wirtualna używa serwera proxy:
-        - Kliknij pozycję **Ustawienia serwera proxy**i określ adres serwera proxy i port nasłuchujący w formularzu http://ProxyIPAddress lub http://ProxyFQDN.
+   Alternatywnie możesz otworzyć aplikację z pulpitu, klikając skrót do aplikacji.
+2. W aplikacji sieci web > **Konfigurowanie wymagań wstępnych**wykonaj następujące czynności:
+    - **Licencja**: Zaakceptuj postanowienia licencyjne i przeczytaj informacje innych firm.
+    - **Łączność:** Aplikacja sprawdza, czy maszyna wirtualna ma dostęp do Internetu. Jeśli maszyna wirtualna używa serwera proxy:
+        - Kliknij pozycję **Ustawienia serwera proxy**i określ adres http://ProxyIPAddress http://ProxyFQDNserwera proxy i port nasłuchiwania w formularzu lub .
         - Jeśli serwer proxy wymaga uwierzytelnienia, wprowadź poświadczenia.
         - Obsługiwane są tylko serwery proxy HTTP.
-    - **Synchronizacja czasu**: godzina została zweryfikowana. Czas na urządzeniu powinien być zsynchronizowany z czasem Internetu, aby funkcja odnajdywania maszyn wirtualnych działała prawidłowo.
-    - **Instalowanie aktualizacji**: ocena serwera Azure Migrate sprawdza, czy na urządzeniu zainstalowano najnowsze aktualizacje.
+    - **Synchronizacja czasu:** czas jest weryfikowany. Czas na urządzeniu powinien być zsynchronizowany z czasem internetowym, aby odnajdowanie maszyn wirtualnych działało poprawnie.
+    - **Zainstaluj aktualizacje:** Ocena programu Azure Migrate Server sprawdza, czy urządzenie ma zainstalowane najnowsze aktualizacje.
 
-### <a name="register-the-appliance-with-azure-migrate"></a>Zarejestruj urządzenie w Azure Migrate
+### <a name="register-the-appliance-with-azure-migrate"></a>Zarejestruj urządzenie za pomocą usługi Azure Migrate
 
-1. Kliknij przycisk **Zaloguj**. Jeśli ta wartość nie jest wyświetlana, upewnij się, że w przeglądarce wyłączono blokowanie wyskakujących okienek.
-2. Na nowej karcie Zaloguj się przy użyciu poświadczeń platformy Azure.
-    - Zaloguj się przy użyciu nazwy użytkownika i hasła.
-    - Logowanie przy użyciu numeru PIN nie jest obsługiwane.
-3. Po pomyślnym zalogowaniu Wróć do aplikacji sieci Web.
-4. Wybierz subskrypcję, w której został utworzony projekt Azure Migrate. Następnie wybierz projekt.
+1. Kliknij **pozycję Zaloguj**się . Jeśli nie jest wyświetlany, upewnij się, że wyłączono blokowanie wyskakujących wyskakujących w przeglądarce.
+2. Na nowej karcie zaloguj się przy użyciu poświadczeń platformy Azure.
+    - Zaloguj się przy użyciu swojej nazwy użytkownika i hasła.
+    - Logowanie za pomocą numeru PIN nie jest obsługiwane.
+3. Po pomyślnym zalogowaniu wróć do aplikacji sieci web.
+4. Wybierz subskrypcję, w której został utworzony projekt migracji platformy Azure. Następnie wybierz projekt.
 5. Określ nazwę urządzenia. Nazwa powinna być alfanumeryczna z 14 znakami lub mniej.
-6. Kliknij pozycję **zarejestruj**.
+6. Kliknij **pozycję Zarejestruj**.
 
 
-## <a name="start-continuous-discovery"></a>Uruchom odnajdywanie ciągłe
+## <a name="start-continuous-discovery"></a>Rozpocznij ciągłe odnajdowanie
 
-Nawiąż połączenie z urządzeniem z serwerami fizycznymi, a następnie Uruchom odnajdywanie.
+Połącz się z urządzenia z serwerami fizycznymi i rozpocznij odnajdowanie.
 
-1. Kliknij pozycję **Dodaj poświadczenia** , aby określić poświadczenia konta, które będą używane przez urządzenie do odnajdywania serwerów.  
-2. Określ **system operacyjny**, przyjazną nazwę dla poświadczeń, **nazwę użytkownika** i **hasło** , a następnie kliknij przycisk **Dodaj**.
-Można dodać jeden zestaw poświadczeń dla serwerów z systemami Windows i Linux.
-4. Kliknij przycisk **Dodaj serwer**i określ szczegóły serwera — nazwa FQDN/adres IP i przyjazna nazwa poświadczenia (jeden wpis na wiersz), aby połączyć się z serwerem.
-3. Kliknij pozycję **Validate** (Waliduj). Po sprawdzeniu poprawności zostanie wyświetlona lista serwerów, które mogą zostać odnalezione.
-    - Jeśli walidacja nie powiedzie się dla serwera, przejrzyj błąd, umieszczając kursor nad ikoną w kolumnie **stan** . Usuń problemy i ponownie sprawdź poprawność.
-    - Aby usunąć serwer, wybierz pozycję > **Usuń**.
-4. Po sprawdzeniu poprawności kliknij przycisk **Zapisz i Rozpocznij odnajdywanie** , aby rozpocząć proces odnajdywania.
+1. Kliknij **przycisk Dodaj poświadczenia,** aby określić poświadczenia konta używane przez urządzenie do odnajdywać serwery.  
+2. Określ **system operacyjny**, przyjazną nazwę poświadczeń, nazwę **użytkownika** i **hasło** oraz kliknij przycisk **Dodaj**.
+Można dodać jeden zestaw poświadczeń dla serwerów Windows i Linux.
+4. Kliknij **przycisk Dodaj serwer**i określ szczegóły serwera — adres FQDN/IP i przyjazną nazwę poświadczeń (jeden wpis na wiersz), aby połączyć się z serwerem.
+3. Kliknij pozycję **Validate** (Waliduj). Po weryfikacji zostanie wyświetlona lista serwerów, które można odnajdować.
+    - Jeśli sprawdzanie poprawności nie powiedzie się dla serwera, przejrzyj błąd, najeżdżając kursorem na ikonę w kolumnie **Stan.** Rozwiązywanie problemów i sprawdzanie poprawności ponownie.
+    - Aby usunąć serwer, zaznacz opcję > **Usuń**.
+4. Po weryfikacji kliknij przycisk **Zapisz i rozpocznij odnajdowanie,** aby rozpocząć proces odnajdywania.
 
-Spowoduje to uruchomienie odnajdywania. Metadane wykrytych maszyn wirtualnych mogą pojawić się w Azure Portal około 15 minut.
+To rozpoczyna odnajdowanie. Trwa około 15 minut dla metadanych odnalezionych maszyn wirtualnych do wyświetlenia w witrynie Azure portal.
 
 ## <a name="verify-servers-in-the-portal"></a>Weryfikowanie serwerów w portalu
 
-Po zakończeniu odnajdywania możesz sprawdzić, czy serwery są wyświetlane w portalu.
+Po zakończeniu odnajdywania można sprawdzić, czy serwery są wyświetlane w portalu.
 
-1. Otwórz pulpit nawigacyjny Azure Migrate.
-2. W **Azure Migrate serwery** > **Azure Migrate: Strona Ocena serwera** kliknij ikonę, która wyświetla liczbę **odnalezionych serwerów**.
+1. Otwórz pulpit nawigacyjny migracji platformy Azure.
+2. W **obszarze Migracja platformy Azure — serwery, strona** > **Migracja platformy Azure: Ocena serwera,** kliknij ikonę, która wyświetla liczbę **odnalezionych serwerów**.
 
 
 ## <a name="next-steps"></a>Następne kroki
 
-Wypróbuj [ocenę serwerów fizycznych](tutorial-assess-physical.md) za pomocą oceny Azure Migrate Server.
+Wypróbuj [ocenę serwerów fizycznych za](tutorial-assess-physical.md) pomocą oceny serwera migracji usługi Azure.
